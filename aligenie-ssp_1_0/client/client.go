@@ -1437,6 +1437,409 @@ func (s *AuthLoginWithThirdUserInfoResponse) SetBody(v *AuthLoginWithThirdUserIn
 	return s
 }
 
+type CheckAndDoVoipCallForHotelHeaders struct {
+	CommonHeaders           map[string]*string `json:"commonHeaders,omitempty" xml:"commonHeaders,omitempty"`
+	XAcsAligenieAccessToken *string            `json:"x-acs-aligenie-access-token,omitempty" xml:"x-acs-aligenie-access-token,omitempty"`
+	Authorization           *string            `json:"Authorization,omitempty" xml:"Authorization,omitempty"`
+}
+
+func (s CheckAndDoVoipCallForHotelHeaders) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CheckAndDoVoipCallForHotelHeaders) GoString() string {
+	return s.String()
+}
+
+func (s *CheckAndDoVoipCallForHotelHeaders) SetCommonHeaders(v map[string]*string) *CheckAndDoVoipCallForHotelHeaders {
+	s.CommonHeaders = v
+	return s
+}
+
+func (s *CheckAndDoVoipCallForHotelHeaders) SetXAcsAligenieAccessToken(v string) *CheckAndDoVoipCallForHotelHeaders {
+	s.XAcsAligenieAccessToken = &v
+	return s
+}
+
+func (s *CheckAndDoVoipCallForHotelHeaders) SetAuthorization(v string) *CheckAndDoVoipCallForHotelHeaders {
+	s.Authorization = &v
+	return s
+}
+
+type CheckAndDoVoipCallForHotelRequest struct {
+	BizData        *string                                      `json:"BizData,omitempty" xml:"BizData,omitempty"`
+	CalleeNick     *string                                      `json:"CalleeNick,omitempty" xml:"CalleeNick,omitempty"`
+	CalleePhoneNum *string                                      `json:"CalleePhoneNum,omitempty" xml:"CalleePhoneNum,omitempty"`
+	DeviceInfo     *CheckAndDoVoipCallForHotelRequestDeviceInfo `json:"DeviceInfo,omitempty" xml:"DeviceInfo,omitempty" type:"Struct"`
+	UserInfo       *CheckAndDoVoipCallForHotelRequestUserInfo   `json:"UserInfo,omitempty" xml:"UserInfo,omitempty" type:"Struct"`
+}
+
+func (s CheckAndDoVoipCallForHotelRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CheckAndDoVoipCallForHotelRequest) GoString() string {
+	return s.String()
+}
+
+func (s *CheckAndDoVoipCallForHotelRequest) SetBizData(v string) *CheckAndDoVoipCallForHotelRequest {
+	s.BizData = &v
+	return s
+}
+
+func (s *CheckAndDoVoipCallForHotelRequest) SetCalleeNick(v string) *CheckAndDoVoipCallForHotelRequest {
+	s.CalleeNick = &v
+	return s
+}
+
+func (s *CheckAndDoVoipCallForHotelRequest) SetCalleePhoneNum(v string) *CheckAndDoVoipCallForHotelRequest {
+	s.CalleePhoneNum = &v
+	return s
+}
+
+func (s *CheckAndDoVoipCallForHotelRequest) SetDeviceInfo(v *CheckAndDoVoipCallForHotelRequestDeviceInfo) *CheckAndDoVoipCallForHotelRequest {
+	s.DeviceInfo = v
+	return s
+}
+
+func (s *CheckAndDoVoipCallForHotelRequest) SetUserInfo(v *CheckAndDoVoipCallForHotelRequestUserInfo) *CheckAndDoVoipCallForHotelRequest {
+	s.UserInfo = v
+	return s
+}
+
+type CheckAndDoVoipCallForHotelRequestDeviceInfo struct {
+	EncodeKey      *string `json:"EncodeKey,omitempty" xml:"EncodeKey,omitempty"`
+	EncodeType     *string `json:"EncodeType,omitempty" xml:"EncodeType,omitempty"`
+	Id             *string `json:"Id,omitempty" xml:"Id,omitempty"`
+	IdType         *string `json:"IdType,omitempty" xml:"IdType,omitempty"`
+	OrganizationId *string `json:"OrganizationId,omitempty" xml:"OrganizationId,omitempty"`
+}
+
+func (s CheckAndDoVoipCallForHotelRequestDeviceInfo) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CheckAndDoVoipCallForHotelRequestDeviceInfo) GoString() string {
+	return s.String()
+}
+
+func (s *CheckAndDoVoipCallForHotelRequestDeviceInfo) SetEncodeKey(v string) *CheckAndDoVoipCallForHotelRequestDeviceInfo {
+	s.EncodeKey = &v
+	return s
+}
+
+func (s *CheckAndDoVoipCallForHotelRequestDeviceInfo) SetEncodeType(v string) *CheckAndDoVoipCallForHotelRequestDeviceInfo {
+	s.EncodeType = &v
+	return s
+}
+
+func (s *CheckAndDoVoipCallForHotelRequestDeviceInfo) SetId(v string) *CheckAndDoVoipCallForHotelRequestDeviceInfo {
+	s.Id = &v
+	return s
+}
+
+func (s *CheckAndDoVoipCallForHotelRequestDeviceInfo) SetIdType(v string) *CheckAndDoVoipCallForHotelRequestDeviceInfo {
+	s.IdType = &v
+	return s
+}
+
+func (s *CheckAndDoVoipCallForHotelRequestDeviceInfo) SetOrganizationId(v string) *CheckAndDoVoipCallForHotelRequestDeviceInfo {
+	s.OrganizationId = &v
+	return s
+}
+
+type CheckAndDoVoipCallForHotelRequestUserInfo struct {
+	EncodeKey      *string `json:"EncodeKey,omitempty" xml:"EncodeKey,omitempty"`
+	EncodeType     *string `json:"EncodeType,omitempty" xml:"EncodeType,omitempty"`
+	Id             *string `json:"Id,omitempty" xml:"Id,omitempty"`
+	IdType         *string `json:"IdType,omitempty" xml:"IdType,omitempty"`
+	OrganizationId *string `json:"OrganizationId,omitempty" xml:"OrganizationId,omitempty"`
+}
+
+func (s CheckAndDoVoipCallForHotelRequestUserInfo) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CheckAndDoVoipCallForHotelRequestUserInfo) GoString() string {
+	return s.String()
+}
+
+func (s *CheckAndDoVoipCallForHotelRequestUserInfo) SetEncodeKey(v string) *CheckAndDoVoipCallForHotelRequestUserInfo {
+	s.EncodeKey = &v
+	return s
+}
+
+func (s *CheckAndDoVoipCallForHotelRequestUserInfo) SetEncodeType(v string) *CheckAndDoVoipCallForHotelRequestUserInfo {
+	s.EncodeType = &v
+	return s
+}
+
+func (s *CheckAndDoVoipCallForHotelRequestUserInfo) SetId(v string) *CheckAndDoVoipCallForHotelRequestUserInfo {
+	s.Id = &v
+	return s
+}
+
+func (s *CheckAndDoVoipCallForHotelRequestUserInfo) SetIdType(v string) *CheckAndDoVoipCallForHotelRequestUserInfo {
+	s.IdType = &v
+	return s
+}
+
+func (s *CheckAndDoVoipCallForHotelRequestUserInfo) SetOrganizationId(v string) *CheckAndDoVoipCallForHotelRequestUserInfo {
+	s.OrganizationId = &v
+	return s
+}
+
+type CheckAndDoVoipCallForHotelShrinkRequest struct {
+	BizData          *string `json:"BizData,omitempty" xml:"BizData,omitempty"`
+	CalleeNick       *string `json:"CalleeNick,omitempty" xml:"CalleeNick,omitempty"`
+	CalleePhoneNum   *string `json:"CalleePhoneNum,omitempty" xml:"CalleePhoneNum,omitempty"`
+	DeviceInfoShrink *string `json:"DeviceInfo,omitempty" xml:"DeviceInfo,omitempty"`
+	UserInfoShrink   *string `json:"UserInfo,omitempty" xml:"UserInfo,omitempty"`
+}
+
+func (s CheckAndDoVoipCallForHotelShrinkRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CheckAndDoVoipCallForHotelShrinkRequest) GoString() string {
+	return s.String()
+}
+
+func (s *CheckAndDoVoipCallForHotelShrinkRequest) SetBizData(v string) *CheckAndDoVoipCallForHotelShrinkRequest {
+	s.BizData = &v
+	return s
+}
+
+func (s *CheckAndDoVoipCallForHotelShrinkRequest) SetCalleeNick(v string) *CheckAndDoVoipCallForHotelShrinkRequest {
+	s.CalleeNick = &v
+	return s
+}
+
+func (s *CheckAndDoVoipCallForHotelShrinkRequest) SetCalleePhoneNum(v string) *CheckAndDoVoipCallForHotelShrinkRequest {
+	s.CalleePhoneNum = &v
+	return s
+}
+
+func (s *CheckAndDoVoipCallForHotelShrinkRequest) SetDeviceInfoShrink(v string) *CheckAndDoVoipCallForHotelShrinkRequest {
+	s.DeviceInfoShrink = &v
+	return s
+}
+
+func (s *CheckAndDoVoipCallForHotelShrinkRequest) SetUserInfoShrink(v string) *CheckAndDoVoipCallForHotelShrinkRequest {
+	s.UserInfoShrink = &v
+	return s
+}
+
+type CheckAndDoVoipCallForHotelResponseBody struct {
+	Code      *int32                                        `json:"Code,omitempty" xml:"Code,omitempty"`
+	Message   *string                                       `json:"Message,omitempty" xml:"Message,omitempty"`
+	RequestId *string                                       `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	Result    *CheckAndDoVoipCallForHotelResponseBodyResult `json:"Result,omitempty" xml:"Result,omitempty" type:"Struct"`
+}
+
+func (s CheckAndDoVoipCallForHotelResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CheckAndDoVoipCallForHotelResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *CheckAndDoVoipCallForHotelResponseBody) SetCode(v int32) *CheckAndDoVoipCallForHotelResponseBody {
+	s.Code = &v
+	return s
+}
+
+func (s *CheckAndDoVoipCallForHotelResponseBody) SetMessage(v string) *CheckAndDoVoipCallForHotelResponseBody {
+	s.Message = &v
+	return s
+}
+
+func (s *CheckAndDoVoipCallForHotelResponseBody) SetRequestId(v string) *CheckAndDoVoipCallForHotelResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *CheckAndDoVoipCallForHotelResponseBody) SetResult(v *CheckAndDoVoipCallForHotelResponseBodyResult) *CheckAndDoVoipCallForHotelResponseBody {
+	s.Result = v
+	return s
+}
+
+type CheckAndDoVoipCallForHotelResponseBodyResult struct {
+	DeviceTargets   *CheckAndDoVoipCallForHotelResponseBodyResultDeviceTargets   `json:"DeviceTargets,omitempty" xml:"DeviceTargets,omitempty" type:"Struct"`
+	IsStartCall     *bool                                                        `json:"IsStartCall,omitempty" xml:"IsStartCall,omitempty"`
+	Passed          *bool                                                        `json:"Passed,omitempty" xml:"Passed,omitempty"`
+	StartCallResult *CheckAndDoVoipCallForHotelResponseBodyResultStartCallResult `json:"StartCallResult,omitempty" xml:"StartCallResult,omitempty" type:"Struct"`
+}
+
+func (s CheckAndDoVoipCallForHotelResponseBodyResult) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CheckAndDoVoipCallForHotelResponseBodyResult) GoString() string {
+	return s.String()
+}
+
+func (s *CheckAndDoVoipCallForHotelResponseBodyResult) SetDeviceTargets(v *CheckAndDoVoipCallForHotelResponseBodyResultDeviceTargets) *CheckAndDoVoipCallForHotelResponseBodyResult {
+	s.DeviceTargets = v
+	return s
+}
+
+func (s *CheckAndDoVoipCallForHotelResponseBodyResult) SetIsStartCall(v bool) *CheckAndDoVoipCallForHotelResponseBodyResult {
+	s.IsStartCall = &v
+	return s
+}
+
+func (s *CheckAndDoVoipCallForHotelResponseBodyResult) SetPassed(v bool) *CheckAndDoVoipCallForHotelResponseBodyResult {
+	s.Passed = &v
+	return s
+}
+
+func (s *CheckAndDoVoipCallForHotelResponseBodyResult) SetStartCallResult(v *CheckAndDoVoipCallForHotelResponseBodyResultStartCallResult) *CheckAndDoVoipCallForHotelResponseBodyResult {
+	s.StartCallResult = v
+	return s
+}
+
+type CheckAndDoVoipCallForHotelResponseBodyResultDeviceTargets struct {
+	Code *int32                                                           `json:"Code,omitempty" xml:"Code,omitempty"`
+	Data []*CheckAndDoVoipCallForHotelResponseBodyResultDeviceTargetsData `json:"Data,omitempty" xml:"Data,omitempty" type:"Repeated"`
+	Msg  *string                                                          `json:"Msg,omitempty" xml:"Msg,omitempty"`
+}
+
+func (s CheckAndDoVoipCallForHotelResponseBodyResultDeviceTargets) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CheckAndDoVoipCallForHotelResponseBodyResultDeviceTargets) GoString() string {
+	return s.String()
+}
+
+func (s *CheckAndDoVoipCallForHotelResponseBodyResultDeviceTargets) SetCode(v int32) *CheckAndDoVoipCallForHotelResponseBodyResultDeviceTargets {
+	s.Code = &v
+	return s
+}
+
+func (s *CheckAndDoVoipCallForHotelResponseBodyResultDeviceTargets) SetData(v []*CheckAndDoVoipCallForHotelResponseBodyResultDeviceTargetsData) *CheckAndDoVoipCallForHotelResponseBodyResultDeviceTargets {
+	s.Data = v
+	return s
+}
+
+func (s *CheckAndDoVoipCallForHotelResponseBodyResultDeviceTargets) SetMsg(v string) *CheckAndDoVoipCallForHotelResponseBodyResultDeviceTargets {
+	s.Msg = &v
+	return s
+}
+
+type CheckAndDoVoipCallForHotelResponseBodyResultDeviceTargetsData struct {
+	DeviceIcon *string `json:"DeviceIcon,omitempty" xml:"DeviceIcon,omitempty"`
+	DeviceName *string `json:"DeviceName,omitempty" xml:"DeviceName,omitempty"`
+	DeviceType *string `json:"DeviceType,omitempty" xml:"DeviceType,omitempty"`
+	Online     *bool   `json:"Online,omitempty" xml:"Online,omitempty"`
+	Uuid       *string `json:"Uuid,omitempty" xml:"Uuid,omitempty"`
+}
+
+func (s CheckAndDoVoipCallForHotelResponseBodyResultDeviceTargetsData) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CheckAndDoVoipCallForHotelResponseBodyResultDeviceTargetsData) GoString() string {
+	return s.String()
+}
+
+func (s *CheckAndDoVoipCallForHotelResponseBodyResultDeviceTargetsData) SetDeviceIcon(v string) *CheckAndDoVoipCallForHotelResponseBodyResultDeviceTargetsData {
+	s.DeviceIcon = &v
+	return s
+}
+
+func (s *CheckAndDoVoipCallForHotelResponseBodyResultDeviceTargetsData) SetDeviceName(v string) *CheckAndDoVoipCallForHotelResponseBodyResultDeviceTargetsData {
+	s.DeviceName = &v
+	return s
+}
+
+func (s *CheckAndDoVoipCallForHotelResponseBodyResultDeviceTargetsData) SetDeviceType(v string) *CheckAndDoVoipCallForHotelResponseBodyResultDeviceTargetsData {
+	s.DeviceType = &v
+	return s
+}
+
+func (s *CheckAndDoVoipCallForHotelResponseBodyResultDeviceTargetsData) SetOnline(v bool) *CheckAndDoVoipCallForHotelResponseBodyResultDeviceTargetsData {
+	s.Online = &v
+	return s
+}
+
+func (s *CheckAndDoVoipCallForHotelResponseBodyResultDeviceTargetsData) SetUuid(v string) *CheckAndDoVoipCallForHotelResponseBodyResultDeviceTargetsData {
+	s.Uuid = &v
+	return s
+}
+
+type CheckAndDoVoipCallForHotelResponseBodyResultStartCallResult struct {
+	Message  *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	RetCode  *int32  `json:"RetCode,omitempty" xml:"RetCode,omitempty"`
+	RetValue *string `json:"RetValue,omitempty" xml:"RetValue,omitempty"`
+	Success  *bool   `json:"Success,omitempty" xml:"Success,omitempty"`
+	TraceId  *string `json:"TraceId,omitempty" xml:"TraceId,omitempty"`
+}
+
+func (s CheckAndDoVoipCallForHotelResponseBodyResultStartCallResult) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CheckAndDoVoipCallForHotelResponseBodyResultStartCallResult) GoString() string {
+	return s.String()
+}
+
+func (s *CheckAndDoVoipCallForHotelResponseBodyResultStartCallResult) SetMessage(v string) *CheckAndDoVoipCallForHotelResponseBodyResultStartCallResult {
+	s.Message = &v
+	return s
+}
+
+func (s *CheckAndDoVoipCallForHotelResponseBodyResultStartCallResult) SetRetCode(v int32) *CheckAndDoVoipCallForHotelResponseBodyResultStartCallResult {
+	s.RetCode = &v
+	return s
+}
+
+func (s *CheckAndDoVoipCallForHotelResponseBodyResultStartCallResult) SetRetValue(v string) *CheckAndDoVoipCallForHotelResponseBodyResultStartCallResult {
+	s.RetValue = &v
+	return s
+}
+
+func (s *CheckAndDoVoipCallForHotelResponseBodyResultStartCallResult) SetSuccess(v bool) *CheckAndDoVoipCallForHotelResponseBodyResultStartCallResult {
+	s.Success = &v
+	return s
+}
+
+func (s *CheckAndDoVoipCallForHotelResponseBodyResultStartCallResult) SetTraceId(v string) *CheckAndDoVoipCallForHotelResponseBodyResultStartCallResult {
+	s.TraceId = &v
+	return s
+}
+
+type CheckAndDoVoipCallForHotelResponse struct {
+	Headers    map[string]*string                      `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                                  `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *CheckAndDoVoipCallForHotelResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s CheckAndDoVoipCallForHotelResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CheckAndDoVoipCallForHotelResponse) GoString() string {
+	return s.String()
+}
+
+func (s *CheckAndDoVoipCallForHotelResponse) SetHeaders(v map[string]*string) *CheckAndDoVoipCallForHotelResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *CheckAndDoVoipCallForHotelResponse) SetStatusCode(v int32) *CheckAndDoVoipCallForHotelResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *CheckAndDoVoipCallForHotelResponse) SetBody(v *CheckAndDoVoipCallForHotelResponseBody) *CheckAndDoVoipCallForHotelResponse {
+	s.Body = v
+	return s
+}
+
 type CheckAuthCodeBindForExtHeaders struct {
 	CommonHeaders           map[string]*string `json:"commonHeaders,omitempty" xml:"commonHeaders,omitempty"`
 	XAcsAligenieAccessToken *string            `json:"x-acs-aligenie-access-token,omitempty" xml:"x-acs-aligenie-access-token,omitempty"`
@@ -1636,7 +2039,8 @@ func (s *CheckAuthCodeBindForExtResponseBodyResult) SetUserOpenInfo(v *CheckAuth
 }
 
 type CheckAuthCodeBindForExtResponseBodyResultDeviceOpenInfo struct {
-	Id     *string `json:"Id,omitempty" xml:"Id,omitempty"`
+	Id *string `json:"Id,omitempty" xml:"Id,omitempty"`
+	// DEVICE_ID
 	IdType *string `json:"IdType,omitempty" xml:"IdType,omitempty"`
 }
 
@@ -1659,7 +2063,8 @@ func (s *CheckAuthCodeBindForExtResponseBodyResultDeviceOpenInfo) SetIdType(v st
 }
 
 type CheckAuthCodeBindForExtResponseBodyResultUserOpenInfo struct {
-	Id     *string `json:"Id,omitempty" xml:"Id,omitempty"`
+	Id *string `json:"Id,omitempty" xml:"Id,omitempty"`
+	// USER_ID
 	IdType *string `json:"IdType,omitempty" xml:"IdType,omitempty"`
 }
 
@@ -1706,6 +2111,288 @@ func (s *CheckAuthCodeBindForExtResponse) SetStatusCode(v int32) *CheckAuthCodeB
 }
 
 func (s *CheckAuthCodeBindForExtResponse) SetBody(v *CheckAuthCodeBindForExtResponseBody) *CheckAuthCodeBindForExtResponse {
+	s.Body = v
+	return s
+}
+
+type CloudPlayerHeaders struct {
+	CommonHeaders           map[string]*string `json:"commonHeaders,omitempty" xml:"commonHeaders,omitempty"`
+	XAcsAligenieAccessToken *string            `json:"x-acs-aligenie-access-token,omitempty" xml:"x-acs-aligenie-access-token,omitempty"`
+	Authorization           *string            `json:"Authorization,omitempty" xml:"Authorization,omitempty"`
+}
+
+func (s CloudPlayerHeaders) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CloudPlayerHeaders) GoString() string {
+	return s.String()
+}
+
+func (s *CloudPlayerHeaders) SetCommonHeaders(v map[string]*string) *CloudPlayerHeaders {
+	s.CommonHeaders = v
+	return s
+}
+
+func (s *CloudPlayerHeaders) SetXAcsAligenieAccessToken(v string) *CloudPlayerHeaders {
+	s.XAcsAligenieAccessToken = &v
+	return s
+}
+
+func (s *CloudPlayerHeaders) SetAuthorization(v string) *CloudPlayerHeaders {
+	s.Authorization = &v
+	return s
+}
+
+type CloudPlayerRequest struct {
+	CurPlayIndex *int32                        `json:"CurPlayIndex,omitempty" xml:"CurPlayIndex,omitempty"`
+	DeviceInfo   *CloudPlayerRequestDeviceInfo `json:"DeviceInfo,omitempty" xml:"DeviceInfo,omitempty" type:"Struct"`
+	PlayMode     *string                       `json:"PlayMode,omitempty" xml:"PlayMode,omitempty"`
+	SongId       *string                       `json:"SongId,omitempty" xml:"SongId,omitempty"`
+	SongIdList   []*string                     `json:"SongIdList,omitempty" xml:"SongIdList,omitempty" type:"Repeated"`
+	Source       *string                       `json:"Source,omitempty" xml:"Source,omitempty"`
+	UserInfo     *CloudPlayerRequestUserInfo   `json:"UserInfo,omitempty" xml:"UserInfo,omitempty" type:"Struct"`
+}
+
+func (s CloudPlayerRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CloudPlayerRequest) GoString() string {
+	return s.String()
+}
+
+func (s *CloudPlayerRequest) SetCurPlayIndex(v int32) *CloudPlayerRequest {
+	s.CurPlayIndex = &v
+	return s
+}
+
+func (s *CloudPlayerRequest) SetDeviceInfo(v *CloudPlayerRequestDeviceInfo) *CloudPlayerRequest {
+	s.DeviceInfo = v
+	return s
+}
+
+func (s *CloudPlayerRequest) SetPlayMode(v string) *CloudPlayerRequest {
+	s.PlayMode = &v
+	return s
+}
+
+func (s *CloudPlayerRequest) SetSongId(v string) *CloudPlayerRequest {
+	s.SongId = &v
+	return s
+}
+
+func (s *CloudPlayerRequest) SetSongIdList(v []*string) *CloudPlayerRequest {
+	s.SongIdList = v
+	return s
+}
+
+func (s *CloudPlayerRequest) SetSource(v string) *CloudPlayerRequest {
+	s.Source = &v
+	return s
+}
+
+func (s *CloudPlayerRequest) SetUserInfo(v *CloudPlayerRequestUserInfo) *CloudPlayerRequest {
+	s.UserInfo = v
+	return s
+}
+
+type CloudPlayerRequestDeviceInfo struct {
+	EncodeKey      *string `json:"EncodeKey,omitempty" xml:"EncodeKey,omitempty"`
+	EncodeType     *string `json:"EncodeType,omitempty" xml:"EncodeType,omitempty"`
+	Id             *string `json:"Id,omitempty" xml:"Id,omitempty"`
+	IdType         *string `json:"IdType,omitempty" xml:"IdType,omitempty"`
+	OrganizationId *string `json:"OrganizationId,omitempty" xml:"OrganizationId,omitempty"`
+}
+
+func (s CloudPlayerRequestDeviceInfo) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CloudPlayerRequestDeviceInfo) GoString() string {
+	return s.String()
+}
+
+func (s *CloudPlayerRequestDeviceInfo) SetEncodeKey(v string) *CloudPlayerRequestDeviceInfo {
+	s.EncodeKey = &v
+	return s
+}
+
+func (s *CloudPlayerRequestDeviceInfo) SetEncodeType(v string) *CloudPlayerRequestDeviceInfo {
+	s.EncodeType = &v
+	return s
+}
+
+func (s *CloudPlayerRequestDeviceInfo) SetId(v string) *CloudPlayerRequestDeviceInfo {
+	s.Id = &v
+	return s
+}
+
+func (s *CloudPlayerRequestDeviceInfo) SetIdType(v string) *CloudPlayerRequestDeviceInfo {
+	s.IdType = &v
+	return s
+}
+
+func (s *CloudPlayerRequestDeviceInfo) SetOrganizationId(v string) *CloudPlayerRequestDeviceInfo {
+	s.OrganizationId = &v
+	return s
+}
+
+type CloudPlayerRequestUserInfo struct {
+	EncodeKey      *string `json:"EncodeKey,omitempty" xml:"EncodeKey,omitempty"`
+	EncodeType     *string `json:"EncodeType,omitempty" xml:"EncodeType,omitempty"`
+	Id             *string `json:"Id,omitempty" xml:"Id,omitempty"`
+	IdType         *string `json:"IdType,omitempty" xml:"IdType,omitempty"`
+	OrganizationId *string `json:"OrganizationId,omitempty" xml:"OrganizationId,omitempty"`
+}
+
+func (s CloudPlayerRequestUserInfo) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CloudPlayerRequestUserInfo) GoString() string {
+	return s.String()
+}
+
+func (s *CloudPlayerRequestUserInfo) SetEncodeKey(v string) *CloudPlayerRequestUserInfo {
+	s.EncodeKey = &v
+	return s
+}
+
+func (s *CloudPlayerRequestUserInfo) SetEncodeType(v string) *CloudPlayerRequestUserInfo {
+	s.EncodeType = &v
+	return s
+}
+
+func (s *CloudPlayerRequestUserInfo) SetId(v string) *CloudPlayerRequestUserInfo {
+	s.Id = &v
+	return s
+}
+
+func (s *CloudPlayerRequestUserInfo) SetIdType(v string) *CloudPlayerRequestUserInfo {
+	s.IdType = &v
+	return s
+}
+
+func (s *CloudPlayerRequestUserInfo) SetOrganizationId(v string) *CloudPlayerRequestUserInfo {
+	s.OrganizationId = &v
+	return s
+}
+
+type CloudPlayerShrinkRequest struct {
+	CurPlayIndex     *int32  `json:"CurPlayIndex,omitempty" xml:"CurPlayIndex,omitempty"`
+	DeviceInfoShrink *string `json:"DeviceInfo,omitempty" xml:"DeviceInfo,omitempty"`
+	PlayMode         *string `json:"PlayMode,omitempty" xml:"PlayMode,omitempty"`
+	SongId           *string `json:"SongId,omitempty" xml:"SongId,omitempty"`
+	SongIdListShrink *string `json:"SongIdList,omitempty" xml:"SongIdList,omitempty"`
+	Source           *string `json:"Source,omitempty" xml:"Source,omitempty"`
+	UserInfoShrink   *string `json:"UserInfo,omitempty" xml:"UserInfo,omitempty"`
+}
+
+func (s CloudPlayerShrinkRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CloudPlayerShrinkRequest) GoString() string {
+	return s.String()
+}
+
+func (s *CloudPlayerShrinkRequest) SetCurPlayIndex(v int32) *CloudPlayerShrinkRequest {
+	s.CurPlayIndex = &v
+	return s
+}
+
+func (s *CloudPlayerShrinkRequest) SetDeviceInfoShrink(v string) *CloudPlayerShrinkRequest {
+	s.DeviceInfoShrink = &v
+	return s
+}
+
+func (s *CloudPlayerShrinkRequest) SetPlayMode(v string) *CloudPlayerShrinkRequest {
+	s.PlayMode = &v
+	return s
+}
+
+func (s *CloudPlayerShrinkRequest) SetSongId(v string) *CloudPlayerShrinkRequest {
+	s.SongId = &v
+	return s
+}
+
+func (s *CloudPlayerShrinkRequest) SetSongIdListShrink(v string) *CloudPlayerShrinkRequest {
+	s.SongIdListShrink = &v
+	return s
+}
+
+func (s *CloudPlayerShrinkRequest) SetSource(v string) *CloudPlayerShrinkRequest {
+	s.Source = &v
+	return s
+}
+
+func (s *CloudPlayerShrinkRequest) SetUserInfoShrink(v string) *CloudPlayerShrinkRequest {
+	s.UserInfoShrink = &v
+	return s
+}
+
+type CloudPlayerResponseBody struct {
+	Code    *int32  `json:"Code,omitempty" xml:"Code,omitempty"`
+	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// Id of the request
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	Result    *bool   `json:"Result,omitempty" xml:"Result,omitempty"`
+}
+
+func (s CloudPlayerResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CloudPlayerResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *CloudPlayerResponseBody) SetCode(v int32) *CloudPlayerResponseBody {
+	s.Code = &v
+	return s
+}
+
+func (s *CloudPlayerResponseBody) SetMessage(v string) *CloudPlayerResponseBody {
+	s.Message = &v
+	return s
+}
+
+func (s *CloudPlayerResponseBody) SetRequestId(v string) *CloudPlayerResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *CloudPlayerResponseBody) SetResult(v bool) *CloudPlayerResponseBody {
+	s.Result = &v
+	return s
+}
+
+type CloudPlayerResponse struct {
+	Headers    map[string]*string       `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                   `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *CloudPlayerResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s CloudPlayerResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CloudPlayerResponse) GoString() string {
+	return s.String()
+}
+
+func (s *CloudPlayerResponse) SetHeaders(v map[string]*string) *CloudPlayerResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *CloudPlayerResponse) SetStatusCode(v int32) *CloudPlayerResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *CloudPlayerResponse) SetBody(v *CloudPlayerResponseBody) *CloudPlayerResponse {
 	s.Body = v
 	return s
 }
@@ -9028,6 +9715,7 @@ func (s *GetWeatherShrinkRequest) SetUserInfoShrink(v string) *GetWeatherShrinkR
 }
 
 type GetWeatherResponseBody struct {
+	// HttpCode
 	Code      *int32                        `json:"Code,omitempty" xml:"Code,omitempty"`
 	Message   *string                       `json:"Message,omitempty" xml:"Message,omitempty"`
 	RequestId *string                       `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
@@ -10225,8 +10913,9 @@ func (s *ListAlbumDetailRequest) SetPageSize(v int32) *ListAlbumDetailRequest {
 }
 
 type ListAlbumDetailResponseBody struct {
-	Code      *int32                             `json:"Code,omitempty" xml:"Code,omitempty"`
-	Message   *string                            `json:"Message,omitempty" xml:"Message,omitempty"`
+	Code    *int32  `json:"Code,omitempty" xml:"Code,omitempty"`
+	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// Id of the request
 	RequestId *string                            `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	Result    *ListAlbumDetailResponseBodyResult `json:"Result,omitempty" xml:"Result,omitempty" type:"Struct"`
 }
@@ -11009,8 +11698,9 @@ func (s *ListCateContentShrinkRequest) SetUserInfoShrink(v string) *ListCateCont
 }
 
 type ListCateContentResponseBody struct {
-	Code      *int32                             `json:"Code,omitempty" xml:"Code,omitempty"`
-	Message   *string                            `json:"Message,omitempty" xml:"Message,omitempty"`
+	Code    *int32  `json:"Code,omitempty" xml:"Code,omitempty"`
+	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// Id of the request
 	RequestId *string                            `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	Result    *ListCateContentResponseBodyResult `json:"Result,omitempty" xml:"Result,omitempty" type:"Struct"`
 }
@@ -13157,10 +13847,11 @@ func (s *ListPlayHistoryShrinkRequest) SetUserInfoShrink(v string) *ListPlayHist
 }
 
 type ListPlayHistoryResponseBody struct {
-	Code      *int32                               `json:"Code,omitempty" xml:"Code,omitempty"`
-	Message   *string                              `json:"Message,omitempty" xml:"Message,omitempty"`
-	Result    []*ListPlayHistoryResponseBodyResult `json:"Result,omitempty" xml:"Result,omitempty" type:"Repeated"`
-	RequestId *string                              `json:"requestId,omitempty" xml:"requestId,omitempty"`
+	Code    *int32                               `json:"Code,omitempty" xml:"Code,omitempty"`
+	Message *string                              `json:"Message,omitempty" xml:"Message,omitempty"`
+	Result  []*ListPlayHistoryResponseBodyResult `json:"Result,omitempty" xml:"Result,omitempty" type:"Repeated"`
+	// Id of the request
+	RequestId *string `json:"requestId,omitempty" xml:"requestId,omitempty"`
 }
 
 func (s ListPlayHistoryResponseBody) String() string {
@@ -14405,7 +15096,8 @@ func (s *ListSubAlbumHeaders) SetAuthorization(v string) *ListSubAlbumHeaders {
 }
 
 type ListSubAlbumRequest struct {
-	DeviceInfo                    *ListSubAlbumRequestDeviceInfo                    `json:"DeviceInfo,omitempty" xml:"DeviceInfo,omitempty" type:"Struct"`
+	DeviceInfo *ListSubAlbumRequestDeviceInfo `json:"DeviceInfo,omitempty" xml:"DeviceInfo,omitempty" type:"Struct"`
+	// request
 	QuerySubscriptionAlbumRequest *ListSubAlbumRequestQuerySubscriptionAlbumRequest `json:"QuerySubscriptionAlbumRequest,omitempty" xml:"QuerySubscriptionAlbumRequest,omitempty" type:"Struct"`
 	UserInfo                      *ListSubAlbumRequestUserInfo                      `json:"UserInfo,omitempty" xml:"UserInfo,omitempty" type:"Struct"`
 }
@@ -14574,7 +15266,8 @@ func (s *ListSubAlbumRequestUserInfo) SetOrganizationId(v string) *ListSubAlbumR
 }
 
 type ListSubAlbumShrinkRequest struct {
-	DeviceInfoShrink                    *string `json:"DeviceInfo,omitempty" xml:"DeviceInfo,omitempty"`
+	DeviceInfoShrink *string `json:"DeviceInfo,omitempty" xml:"DeviceInfo,omitempty"`
+	// request
 	QuerySubscriptionAlbumRequestShrink *string `json:"QuerySubscriptionAlbumRequest,omitempty" xml:"QuerySubscriptionAlbumRequest,omitempty"`
 	UserInfoShrink                      *string `json:"UserInfo,omitempty" xml:"UserInfo,omitempty"`
 }
@@ -16683,6 +17376,221 @@ func (s *QueryMusicTypeResponse) SetBody(v *QueryMusicTypeResponseBody) *QueryMu
 	return s
 }
 
+type QueryUserDeviceListByTmeUserIdHeaders struct {
+	CommonHeaders           map[string]*string `json:"commonHeaders,omitempty" xml:"commonHeaders,omitempty"`
+	XAcsAligenieAccessToken *string            `json:"x-acs-aligenie-access-token,omitempty" xml:"x-acs-aligenie-access-token,omitempty"`
+	Authorization           *string            `json:"Authorization,omitempty" xml:"Authorization,omitempty"`
+}
+
+func (s QueryUserDeviceListByTmeUserIdHeaders) String() string {
+	return tea.Prettify(s)
+}
+
+func (s QueryUserDeviceListByTmeUserIdHeaders) GoString() string {
+	return s.String()
+}
+
+func (s *QueryUserDeviceListByTmeUserIdHeaders) SetCommonHeaders(v map[string]*string) *QueryUserDeviceListByTmeUserIdHeaders {
+	s.CommonHeaders = v
+	return s
+}
+
+func (s *QueryUserDeviceListByTmeUserIdHeaders) SetXAcsAligenieAccessToken(v string) *QueryUserDeviceListByTmeUserIdHeaders {
+	s.XAcsAligenieAccessToken = &v
+	return s
+}
+
+func (s *QueryUserDeviceListByTmeUserIdHeaders) SetAuthorization(v string) *QueryUserDeviceListByTmeUserIdHeaders {
+	s.Authorization = &v
+	return s
+}
+
+type QueryUserDeviceListByTmeUserIdRequest struct {
+	Sp        *string `json:"Sp,omitempty" xml:"Sp,omitempty"`
+	TmeUserId *string `json:"TmeUserId,omitempty" xml:"TmeUserId,omitempty"`
+}
+
+func (s QueryUserDeviceListByTmeUserIdRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s QueryUserDeviceListByTmeUserIdRequest) GoString() string {
+	return s.String()
+}
+
+func (s *QueryUserDeviceListByTmeUserIdRequest) SetSp(v string) *QueryUserDeviceListByTmeUserIdRequest {
+	s.Sp = &v
+	return s
+}
+
+func (s *QueryUserDeviceListByTmeUserIdRequest) SetTmeUserId(v string) *QueryUserDeviceListByTmeUserIdRequest {
+	s.TmeUserId = &v
+	return s
+}
+
+type QueryUserDeviceListByTmeUserIdResponseBody struct {
+	Code      *int32                                            `json:"Code,omitempty" xml:"Code,omitempty"`
+	Message   *string                                           `json:"Message,omitempty" xml:"Message,omitempty"`
+	RequestId *string                                           `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	Result    *QueryUserDeviceListByTmeUserIdResponseBodyResult `json:"Result,omitempty" xml:"Result,omitempty" type:"Struct"`
+	Success   *bool                                             `json:"Success,omitempty" xml:"Success,omitempty"`
+}
+
+func (s QueryUserDeviceListByTmeUserIdResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s QueryUserDeviceListByTmeUserIdResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *QueryUserDeviceListByTmeUserIdResponseBody) SetCode(v int32) *QueryUserDeviceListByTmeUserIdResponseBody {
+	s.Code = &v
+	return s
+}
+
+func (s *QueryUserDeviceListByTmeUserIdResponseBody) SetMessage(v string) *QueryUserDeviceListByTmeUserIdResponseBody {
+	s.Message = &v
+	return s
+}
+
+func (s *QueryUserDeviceListByTmeUserIdResponseBody) SetRequestId(v string) *QueryUserDeviceListByTmeUserIdResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *QueryUserDeviceListByTmeUserIdResponseBody) SetResult(v *QueryUserDeviceListByTmeUserIdResponseBodyResult) *QueryUserDeviceListByTmeUserIdResponseBody {
+	s.Result = v
+	return s
+}
+
+func (s *QueryUserDeviceListByTmeUserIdResponseBody) SetSuccess(v bool) *QueryUserDeviceListByTmeUserIdResponseBody {
+	s.Success = &v
+	return s
+}
+
+type QueryUserDeviceListByTmeUserIdResponseBodyResult struct {
+	AligenieUserInfoList []*QueryUserDeviceListByTmeUserIdResponseBodyResultAligenieUserInfoList `json:"AligenieUserInfoList,omitempty" xml:"AligenieUserInfoList,omitempty" type:"Repeated"`
+	EncodeKey            *string                                                                 `json:"EncodeKey,omitempty" xml:"EncodeKey,omitempty"`
+	EncodeType           *string                                                                 `json:"EncodeType,omitempty" xml:"EncodeType,omitempty"`
+	Sp                   *string                                                                 `json:"Sp,omitempty" xml:"Sp,omitempty"`
+}
+
+func (s QueryUserDeviceListByTmeUserIdResponseBodyResult) String() string {
+	return tea.Prettify(s)
+}
+
+func (s QueryUserDeviceListByTmeUserIdResponseBodyResult) GoString() string {
+	return s.String()
+}
+
+func (s *QueryUserDeviceListByTmeUserIdResponseBodyResult) SetAligenieUserInfoList(v []*QueryUserDeviceListByTmeUserIdResponseBodyResultAligenieUserInfoList) *QueryUserDeviceListByTmeUserIdResponseBodyResult {
+	s.AligenieUserInfoList = v
+	return s
+}
+
+func (s *QueryUserDeviceListByTmeUserIdResponseBodyResult) SetEncodeKey(v string) *QueryUserDeviceListByTmeUserIdResponseBodyResult {
+	s.EncodeKey = &v
+	return s
+}
+
+func (s *QueryUserDeviceListByTmeUserIdResponseBodyResult) SetEncodeType(v string) *QueryUserDeviceListByTmeUserIdResponseBodyResult {
+	s.EncodeType = &v
+	return s
+}
+
+func (s *QueryUserDeviceListByTmeUserIdResponseBodyResult) SetSp(v string) *QueryUserDeviceListByTmeUserIdResponseBodyResult {
+	s.Sp = &v
+	return s
+}
+
+type QueryUserDeviceListByTmeUserIdResponseBodyResultAligenieUserInfoList struct {
+	AuthorizedDeviceList []*QueryUserDeviceListByTmeUserIdResponseBodyResultAligenieUserInfoListAuthorizedDeviceList `json:"AuthorizedDeviceList,omitempty" xml:"AuthorizedDeviceList,omitempty" type:"Repeated"`
+	OpenUserId           *string                                                                                     `json:"OpenUserId,omitempty" xml:"OpenUserId,omitempty"`
+	UserNickname         *string                                                                                     `json:"UserNickname,omitempty" xml:"UserNickname,omitempty"`
+}
+
+func (s QueryUserDeviceListByTmeUserIdResponseBodyResultAligenieUserInfoList) String() string {
+	return tea.Prettify(s)
+}
+
+func (s QueryUserDeviceListByTmeUserIdResponseBodyResultAligenieUserInfoList) GoString() string {
+	return s.String()
+}
+
+func (s *QueryUserDeviceListByTmeUserIdResponseBodyResultAligenieUserInfoList) SetAuthorizedDeviceList(v []*QueryUserDeviceListByTmeUserIdResponseBodyResultAligenieUserInfoListAuthorizedDeviceList) *QueryUserDeviceListByTmeUserIdResponseBodyResultAligenieUserInfoList {
+	s.AuthorizedDeviceList = v
+	return s
+}
+
+func (s *QueryUserDeviceListByTmeUserIdResponseBodyResultAligenieUserInfoList) SetOpenUserId(v string) *QueryUserDeviceListByTmeUserIdResponseBodyResultAligenieUserInfoList {
+	s.OpenUserId = &v
+	return s
+}
+
+func (s *QueryUserDeviceListByTmeUserIdResponseBodyResultAligenieUserInfoList) SetUserNickname(v string) *QueryUserDeviceListByTmeUserIdResponseBodyResultAligenieUserInfoList {
+	s.UserNickname = &v
+	return s
+}
+
+type QueryUserDeviceListByTmeUserIdResponseBodyResultAligenieUserInfoListAuthorizedDeviceList struct {
+	DeviceName   *string `json:"DeviceName,omitempty" xml:"DeviceName,omitempty"`
+	Online       *bool   `json:"Online,omitempty" xml:"Online,omitempty"`
+	OpenDeviceId *string `json:"OpenDeviceId,omitempty" xml:"OpenDeviceId,omitempty"`
+}
+
+func (s QueryUserDeviceListByTmeUserIdResponseBodyResultAligenieUserInfoListAuthorizedDeviceList) String() string {
+	return tea.Prettify(s)
+}
+
+func (s QueryUserDeviceListByTmeUserIdResponseBodyResultAligenieUserInfoListAuthorizedDeviceList) GoString() string {
+	return s.String()
+}
+
+func (s *QueryUserDeviceListByTmeUserIdResponseBodyResultAligenieUserInfoListAuthorizedDeviceList) SetDeviceName(v string) *QueryUserDeviceListByTmeUserIdResponseBodyResultAligenieUserInfoListAuthorizedDeviceList {
+	s.DeviceName = &v
+	return s
+}
+
+func (s *QueryUserDeviceListByTmeUserIdResponseBodyResultAligenieUserInfoListAuthorizedDeviceList) SetOnline(v bool) *QueryUserDeviceListByTmeUserIdResponseBodyResultAligenieUserInfoListAuthorizedDeviceList {
+	s.Online = &v
+	return s
+}
+
+func (s *QueryUserDeviceListByTmeUserIdResponseBodyResultAligenieUserInfoListAuthorizedDeviceList) SetOpenDeviceId(v string) *QueryUserDeviceListByTmeUserIdResponseBodyResultAligenieUserInfoListAuthorizedDeviceList {
+	s.OpenDeviceId = &v
+	return s
+}
+
+type QueryUserDeviceListByTmeUserIdResponse struct {
+	Headers    map[string]*string                          `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                                      `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *QueryUserDeviceListByTmeUserIdResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s QueryUserDeviceListByTmeUserIdResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s QueryUserDeviceListByTmeUserIdResponse) GoString() string {
+	return s.String()
+}
+
+func (s *QueryUserDeviceListByTmeUserIdResponse) SetHeaders(v map[string]*string) *QueryUserDeviceListByTmeUserIdResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *QueryUserDeviceListByTmeUserIdResponse) SetStatusCode(v int32) *QueryUserDeviceListByTmeUserIdResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *QueryUserDeviceListByTmeUserIdResponse) SetBody(v *QueryUserDeviceListByTmeUserIdResponseBody) *QueryUserDeviceListByTmeUserIdResponse {
+	s.Body = v
+	return s
+}
+
 type ReadMessageHeaders struct {
 	CommonHeaders           map[string]*string `json:"commonHeaders,omitempty" xml:"commonHeaders,omitempty"`
 	XAcsAligenieAccessToken *string            `json:"x-acs-aligenie-access-token,omitempty" xml:"x-acs-aligenie-access-token,omitempty"`
@@ -16911,8 +17819,9 @@ func (s *ScanCodeBindRequest) SetUserInfo(v *ScanCodeBindRequestUserInfo) *ScanC
 
 type ScanCodeBindRequestBindReq struct {
 	ClientId *string `json:"ClientId,omitempty" xml:"ClientId,omitempty"`
-	Code     *string `json:"Code,omitempty" xml:"Code,omitempty"`
-	ExtInfo  *string `json:"ExtInfo,omitempty" xml:"ExtInfo,omitempty"`
+	// authCode
+	Code    *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	ExtInfo *string `json:"ExtInfo,omitempty" xml:"ExtInfo,omitempty"`
 }
 
 func (s ScanCodeBindRequestBindReq) String() string {
@@ -17038,8 +17947,12 @@ func (s *ScanCodeBindResponseBody) SetResult(v *ScanCodeBindResponseBodyResult) 
 }
 
 type ScanCodeBindResponseBodyResult struct {
-	BizGroup *string `json:"bizGroup,omitempty" xml:"bizGroup,omitempty"`
-	BizType  *string `json:"bizType,omitempty" xml:"bizType,omitempty"`
+	BizGroup *string `json:"BizGroup,omitempty" xml:"BizGroup,omitempty"`
+	BizType  *string `json:"BizType,omitempty" xml:"BizType,omitempty"`
+	// A963*0158
+	DeviceOpenId *string `json:"DeviceOpenId,omitempty" xml:"DeviceOpenId,omitempty"`
+	// DAFE****ce3ej=
+	UserOpenId *string `json:"UserOpenId,omitempty" xml:"UserOpenId,omitempty"`
 }
 
 func (s ScanCodeBindResponseBodyResult) String() string {
@@ -17057,6 +17970,16 @@ func (s *ScanCodeBindResponseBodyResult) SetBizGroup(v string) *ScanCodeBindResp
 
 func (s *ScanCodeBindResponseBodyResult) SetBizType(v string) *ScanCodeBindResponseBodyResult {
 	s.BizType = &v
+	return s
+}
+
+func (s *ScanCodeBindResponseBodyResult) SetDeviceOpenId(v string) *ScanCodeBindResponseBodyResult {
+	s.DeviceOpenId = &v
+	return s
+}
+
+func (s *ScanCodeBindResponseBodyResult) SetUserOpenId(v string) *ScanCodeBindResponseBodyResult {
+	s.UserOpenId = &v
 	return s
 }
 
@@ -17334,7 +18257,7 @@ type ScgSearchResponseBodyResult struct {
 	IsAudition      *bool                             `json:"IsAudition,omitempty" xml:"IsAudition,omitempty"`
 	IsCharge        *string                           `json:"IsCharge,omitempty" xml:"IsCharge,omitempty"`
 	NeedCharge      *bool                             `json:"NeedCharge,omitempty" xml:"NeedCharge,omitempty"`
-	RawId           *int64                            `json:"RawId,omitempty" xml:"RawId,omitempty"`
+	RawId           *string                           `json:"RawId,omitempty" xml:"RawId,omitempty"`
 	Singers         *string                           `json:"Singers,omitempty" xml:"Singers,omitempty"`
 	Source          *string                           `json:"Source,omitempty" xml:"Source,omitempty"`
 	SupportAudition *bool                             `json:"SupportAudition,omitempty" xml:"SupportAudition,omitempty"`
@@ -17410,7 +18333,7 @@ func (s *ScgSearchResponseBodyResult) SetNeedCharge(v bool) *ScgSearchResponseBo
 	return s
 }
 
-func (s *ScgSearchResponseBodyResult) SetRawId(v int64) *ScgSearchResponseBodyResult {
+func (s *ScgSearchResponseBodyResult) SetRawId(v string) *ScgSearchResponseBodyResult {
 	s.RawId = &v
 	return s
 }
@@ -17727,8 +18650,9 @@ func (s *SearchContentShrinkRequest) SetUserInfoShrink(v string) *SearchContentS
 }
 
 type SearchContentResponseBody struct {
-	Code      *int32                             `json:"Code,omitempty" xml:"Code,omitempty"`
-	Message   *string                            `json:"Message,omitempty" xml:"Message,omitempty"`
+	Code    *int32  `json:"Code,omitempty" xml:"Code,omitempty"`
+	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// Id of the request
 	RequestId *string                            `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	Result    []*SearchContentResponseBodyResult `json:"Result,omitempty" xml:"Result,omitempty" type:"Repeated"`
 }
@@ -19255,18 +20179,6 @@ func (client *Client) GetEndpoint(productId *string, regionId *string, endpointR
 	return _result, _err
 }
 
-func (client *Client) AddAndRemoveFavoriteContent(request *AddAndRemoveFavoriteContentRequest) (_result *AddAndRemoveFavoriteContentResponse, _err error) {
-	runtime := &util.RuntimeOptions{}
-	headers := &AddAndRemoveFavoriteContentHeaders{}
-	_result = &AddAndRemoveFavoriteContentResponse{}
-	_body, _err := client.AddAndRemoveFavoriteContentWithOptions(request, headers, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
-	return _result, _err
-}
-
 func (client *Client) AddAndRemoveFavoriteContentWithOptions(tmpReq *AddAndRemoveFavoriteContentRequest, headers *AddAndRemoveFavoriteContentHeaders, runtime *util.RuntimeOptions) (_result *AddAndRemoveFavoriteContentResponse, _err error) {
 	_err = util.ValidateModel(tmpReq)
 	if _err != nil {
@@ -19274,16 +20186,16 @@ func (client *Client) AddAndRemoveFavoriteContentWithOptions(tmpReq *AddAndRemov
 	}
 	request := &AddAndRemoveFavoriteContentShrinkRequest{}
 	openapiutil.Convert(tmpReq, request)
-	if !tea.BoolValue(util.IsUnset(tea.ToMap(tmpReq.DeviceInfo))) {
-		request.DeviceInfoShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tea.ToMap(tmpReq.DeviceInfo), tea.String("DeviceInfo"), tea.String("json"))
+	if !tea.BoolValue(util.IsUnset(tmpReq.DeviceInfo)) {
+		request.DeviceInfoShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.DeviceInfo, tea.String("DeviceInfo"), tea.String("json"))
 	}
 
-	if !tea.BoolValue(util.IsUnset(tea.ToMap(tmpReq.OpenAddAndRemoveFavoriteContentRequest))) {
-		request.OpenAddAndRemoveFavoriteContentRequestShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tea.ToMap(tmpReq.OpenAddAndRemoveFavoriteContentRequest), tea.String("OpenAddAndRemoveFavoriteContentRequest"), tea.String("json"))
+	if !tea.BoolValue(util.IsUnset(tmpReq.OpenAddAndRemoveFavoriteContentRequest)) {
+		request.OpenAddAndRemoveFavoriteContentRequestShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.OpenAddAndRemoveFavoriteContentRequest, tea.String("OpenAddAndRemoveFavoriteContentRequest"), tea.String("json"))
 	}
 
-	if !tea.BoolValue(util.IsUnset(tea.ToMap(tmpReq.UserInfo))) {
-		request.UserInfoShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tea.ToMap(tmpReq.UserInfo), tea.String("UserInfo"), tea.String("json"))
+	if !tea.BoolValue(util.IsUnset(tmpReq.UserInfo)) {
+		request.UserInfoShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.UserInfo, tea.String("UserInfo"), tea.String("json"))
 	}
 
 	query := map[string]interface{}{}
@@ -19338,11 +20250,11 @@ func (client *Client) AddAndRemoveFavoriteContentWithOptions(tmpReq *AddAndRemov
 	return _result, _err
 }
 
-func (client *Client) AddSub(request *AddSubRequest) (_result *AddSubResponse, _err error) {
+func (client *Client) AddAndRemoveFavoriteContent(request *AddAndRemoveFavoriteContentRequest) (_result *AddAndRemoveFavoriteContentResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
-	headers := &AddSubHeaders{}
-	_result = &AddSubResponse{}
-	_body, _err := client.AddSubWithOptions(request, headers, runtime)
+	headers := &AddAndRemoveFavoriteContentHeaders{}
+	_result = &AddAndRemoveFavoriteContentResponse{}
+	_body, _err := client.AddAndRemoveFavoriteContentWithOptions(request, headers, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -19357,16 +20269,16 @@ func (client *Client) AddSubWithOptions(tmpReq *AddSubRequest, headers *AddSubHe
 	}
 	request := &AddSubShrinkRequest{}
 	openapiutil.Convert(tmpReq, request)
-	if !tea.BoolValue(util.IsUnset(tea.ToMap(tmpReq.AddSubscriptionInfoRequest))) {
-		request.AddSubscriptionInfoRequestShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tea.ToMap(tmpReq.AddSubscriptionInfoRequest), tea.String("AddSubscriptionInfoRequest"), tea.String("json"))
+	if !tea.BoolValue(util.IsUnset(tmpReq.AddSubscriptionInfoRequest)) {
+		request.AddSubscriptionInfoRequestShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.AddSubscriptionInfoRequest, tea.String("AddSubscriptionInfoRequest"), tea.String("json"))
 	}
 
-	if !tea.BoolValue(util.IsUnset(tea.ToMap(tmpReq.DeviceInfo))) {
-		request.DeviceInfoShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tea.ToMap(tmpReq.DeviceInfo), tea.String("DeviceInfo"), tea.String("json"))
+	if !tea.BoolValue(util.IsUnset(tmpReq.DeviceInfo)) {
+		request.DeviceInfoShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.DeviceInfo, tea.String("DeviceInfo"), tea.String("json"))
 	}
 
-	if !tea.BoolValue(util.IsUnset(tea.ToMap(tmpReq.UserInfo))) {
-		request.UserInfoShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tea.ToMap(tmpReq.UserInfo), tea.String("UserInfo"), tea.String("json"))
+	if !tea.BoolValue(util.IsUnset(tmpReq.UserInfo)) {
+		request.UserInfoShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.UserInfo, tea.String("UserInfo"), tea.String("json"))
 	}
 
 	query := map[string]interface{}{}
@@ -19419,11 +20331,11 @@ func (client *Client) AddSubWithOptions(tmpReq *AddSubRequest, headers *AddSubHe
 	return _result, _err
 }
 
-func (client *Client) AuthLoginWithAligenieUserInfo(request *AuthLoginWithAligenieUserInfoRequest) (_result *AuthLoginWithAligenieUserInfoResponse, _err error) {
+func (client *Client) AddSub(request *AddSubRequest) (_result *AddSubResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
-	headers := &AuthLoginWithAligenieUserInfoHeaders{}
-	_result = &AuthLoginWithAligenieUserInfoResponse{}
-	_body, _err := client.AuthLoginWithAligenieUserInfoWithOptions(request, headers, runtime)
+	headers := &AddSubHeaders{}
+	_result = &AddSubResponse{}
+	_body, _err := client.AddSubWithOptions(request, headers, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -19482,11 +20394,11 @@ func (client *Client) AuthLoginWithAligenieUserInfoWithOptions(request *AuthLogi
 	return _result, _err
 }
 
-func (client *Client) AuthLoginWithAligenieUserInfoGeneratedByPhoneNumber(request *AuthLoginWithAligenieUserInfoGeneratedByPhoneNumberRequest) (_result *AuthLoginWithAligenieUserInfoGeneratedByPhoneNumberResponse, _err error) {
+func (client *Client) AuthLoginWithAligenieUserInfo(request *AuthLoginWithAligenieUserInfoRequest) (_result *AuthLoginWithAligenieUserInfoResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
-	headers := &AuthLoginWithAligenieUserInfoGeneratedByPhoneNumberHeaders{}
-	_result = &AuthLoginWithAligenieUserInfoGeneratedByPhoneNumberResponse{}
-	_body, _err := client.AuthLoginWithAligenieUserInfoGeneratedByPhoneNumberWithOptions(request, headers, runtime)
+	headers := &AuthLoginWithAligenieUserInfoHeaders{}
+	_result = &AuthLoginWithAligenieUserInfoResponse{}
+	_body, _err := client.AuthLoginWithAligenieUserInfoWithOptions(request, headers, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -19541,11 +20453,11 @@ func (client *Client) AuthLoginWithAligenieUserInfoGeneratedByPhoneNumberWithOpt
 	return _result, _err
 }
 
-func (client *Client) AuthLoginWithTaobaoUserInfo(request *AuthLoginWithTaobaoUserInfoRequest) (_result *AuthLoginWithTaobaoUserInfoResponse, _err error) {
+func (client *Client) AuthLoginWithAligenieUserInfoGeneratedByPhoneNumber(request *AuthLoginWithAligenieUserInfoGeneratedByPhoneNumberRequest) (_result *AuthLoginWithAligenieUserInfoGeneratedByPhoneNumberResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
-	headers := &AuthLoginWithTaobaoUserInfoHeaders{}
-	_result = &AuthLoginWithTaobaoUserInfoResponse{}
-	_body, _err := client.AuthLoginWithTaobaoUserInfoWithOptions(request, headers, runtime)
+	headers := &AuthLoginWithAligenieUserInfoGeneratedByPhoneNumberHeaders{}
+	_result = &AuthLoginWithAligenieUserInfoGeneratedByPhoneNumberResponse{}
+	_body, _err := client.AuthLoginWithAligenieUserInfoGeneratedByPhoneNumberWithOptions(request, headers, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -19604,11 +20516,11 @@ func (client *Client) AuthLoginWithTaobaoUserInfoWithOptions(request *AuthLoginW
 	return _result, _err
 }
 
-func (client *Client) AuthLoginWithThirdUserInfo(request *AuthLoginWithThirdUserInfoRequest) (_result *AuthLoginWithThirdUserInfoResponse, _err error) {
+func (client *Client) AuthLoginWithTaobaoUserInfo(request *AuthLoginWithTaobaoUserInfoRequest) (_result *AuthLoginWithTaobaoUserInfoResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
-	headers := &AuthLoginWithThirdUserInfoHeaders{}
-	_result = &AuthLoginWithThirdUserInfoResponse{}
-	_body, _err := client.AuthLoginWithThirdUserInfoWithOptions(request, headers, runtime)
+	headers := &AuthLoginWithTaobaoUserInfoHeaders{}
+	_result = &AuthLoginWithTaobaoUserInfoResponse{}
+	_body, _err := client.AuthLoginWithTaobaoUserInfoWithOptions(request, headers, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -19681,11 +20593,96 @@ func (client *Client) AuthLoginWithThirdUserInfoWithOptions(tmpReq *AuthLoginWit
 	return _result, _err
 }
 
-func (client *Client) CheckAuthCodeBindForExt(request *CheckAuthCodeBindForExtRequest) (_result *CheckAuthCodeBindForExtResponse, _err error) {
+func (client *Client) AuthLoginWithThirdUserInfo(request *AuthLoginWithThirdUserInfoRequest) (_result *AuthLoginWithThirdUserInfoResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
-	headers := &CheckAuthCodeBindForExtHeaders{}
-	_result = &CheckAuthCodeBindForExtResponse{}
-	_body, _err := client.CheckAuthCodeBindForExtWithOptions(request, headers, runtime)
+	headers := &AuthLoginWithThirdUserInfoHeaders{}
+	_result = &AuthLoginWithThirdUserInfoResponse{}
+	_body, _err := client.AuthLoginWithThirdUserInfoWithOptions(request, headers, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) CheckAndDoVoipCallForHotelWithOptions(tmpReq *CheckAndDoVoipCallForHotelRequest, headers *CheckAndDoVoipCallForHotelHeaders, runtime *util.RuntimeOptions) (_result *CheckAndDoVoipCallForHotelResponse, _err error) {
+	_err = util.ValidateModel(tmpReq)
+	if _err != nil {
+		return _result, _err
+	}
+	request := &CheckAndDoVoipCallForHotelShrinkRequest{}
+	openapiutil.Convert(tmpReq, request)
+	if !tea.BoolValue(util.IsUnset(tmpReq.DeviceInfo)) {
+		request.DeviceInfoShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.DeviceInfo, tea.String("DeviceInfo"), tea.String("json"))
+	}
+
+	if !tea.BoolValue(util.IsUnset(tmpReq.UserInfo)) {
+		request.UserInfoShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.UserInfo, tea.String("UserInfo"), tea.String("json"))
+	}
+
+	body := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.BizData)) {
+		body["BizData"] = request.BizData
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.CalleeNick)) {
+		body["CalleeNick"] = request.CalleeNick
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.CalleePhoneNum)) {
+		body["CalleePhoneNum"] = request.CalleePhoneNum
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.DeviceInfoShrink)) {
+		body["DeviceInfo"] = request.DeviceInfoShrink
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.UserInfoShrink)) {
+		body["UserInfo"] = request.UserInfoShrink
+	}
+
+	realHeaders := make(map[string]*string)
+	if !tea.BoolValue(util.IsUnset(headers.CommonHeaders)) {
+		realHeaders = headers.CommonHeaders
+	}
+
+	if !tea.BoolValue(util.IsUnset(headers.XAcsAligenieAccessToken)) {
+		realHeaders["x-acs-aligenie-access-token"] = util.ToJSONString(headers.XAcsAligenieAccessToken)
+	}
+
+	if !tea.BoolValue(util.IsUnset(headers.Authorization)) {
+		realHeaders["Authorization"] = util.ToJSONString(headers.Authorization)
+	}
+
+	req := &openapi.OpenApiRequest{
+		Headers: realHeaders,
+		Body:    openapiutil.ParseToMap(body),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("CheckAndDoVoipCallForHotel"),
+		Version:     tea.String("ssp_1.0"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/v1.0/ssp/checkAndDoVoipCallForHotel"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("ROA"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &CheckAndDoVoipCallForHotelResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) CheckAndDoVoipCallForHotel(request *CheckAndDoVoipCallForHotelRequest) (_result *CheckAndDoVoipCallForHotelResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	headers := &CheckAndDoVoipCallForHotelHeaders{}
+	_result = &CheckAndDoVoipCallForHotelResponse{}
+	_body, _err := client.CheckAndDoVoipCallForHotelWithOptions(request, headers, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -19700,8 +20697,8 @@ func (client *Client) CheckAuthCodeBindForExtWithOptions(tmpReq *CheckAuthCodeBi
 	}
 	request := &CheckAuthCodeBindForExtShrinkRequest{}
 	openapiutil.Convert(tmpReq, request)
-	if !tea.BoolValue(util.IsUnset(tea.ToMap(tmpReq.UserInfo))) {
-		request.UserInfoShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tea.ToMap(tmpReq.UserInfo), tea.String("UserInfo"), tea.String("json"))
+	if !tea.BoolValue(util.IsUnset(tmpReq.UserInfo)) {
+		request.UserInfoShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.UserInfo, tea.String("UserInfo"), tea.String("json"))
 	}
 
 	query := map[string]interface{}{}
@@ -19758,11 +20755,108 @@ func (client *Client) CheckAuthCodeBindForExtWithOptions(tmpReq *CheckAuthCodeBi
 	return _result, _err
 }
 
-func (client *Client) CreateAlarm(request *CreateAlarmRequest) (_result *CreateAlarmResponse, _err error) {
+func (client *Client) CheckAuthCodeBindForExt(request *CheckAuthCodeBindForExtRequest) (_result *CheckAuthCodeBindForExtResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
-	headers := &CreateAlarmHeaders{}
-	_result = &CreateAlarmResponse{}
-	_body, _err := client.CreateAlarmWithOptions(request, headers, runtime)
+	headers := &CheckAuthCodeBindForExtHeaders{}
+	_result = &CheckAuthCodeBindForExtResponse{}
+	_body, _err := client.CheckAuthCodeBindForExtWithOptions(request, headers, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) CloudPlayerWithOptions(tmpReq *CloudPlayerRequest, headers *CloudPlayerHeaders, runtime *util.RuntimeOptions) (_result *CloudPlayerResponse, _err error) {
+	_err = util.ValidateModel(tmpReq)
+	if _err != nil {
+		return _result, _err
+	}
+	request := &CloudPlayerShrinkRequest{}
+	openapiutil.Convert(tmpReq, request)
+	if !tea.BoolValue(util.IsUnset(tmpReq.DeviceInfo)) {
+		request.DeviceInfoShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.DeviceInfo, tea.String("DeviceInfo"), tea.String("json"))
+	}
+
+	if !tea.BoolValue(util.IsUnset(tmpReq.SongIdList)) {
+		request.SongIdListShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.SongIdList, tea.String("SongIdList"), tea.String("json"))
+	}
+
+	if !tea.BoolValue(util.IsUnset(tmpReq.UserInfo)) {
+		request.UserInfoShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.UserInfo, tea.String("UserInfo"), tea.String("json"))
+	}
+
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.CurPlayIndex)) {
+		query["CurPlayIndex"] = request.CurPlayIndex
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.DeviceInfoShrink)) {
+		query["DeviceInfo"] = request.DeviceInfoShrink
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.PlayMode)) {
+		query["PlayMode"] = request.PlayMode
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.SongId)) {
+		query["SongId"] = request.SongId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.SongIdListShrink)) {
+		query["SongIdList"] = request.SongIdListShrink
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Source)) {
+		query["Source"] = request.Source
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.UserInfoShrink)) {
+		query["UserInfo"] = request.UserInfoShrink
+	}
+
+	realHeaders := make(map[string]*string)
+	if !tea.BoolValue(util.IsUnset(headers.CommonHeaders)) {
+		realHeaders = headers.CommonHeaders
+	}
+
+	if !tea.BoolValue(util.IsUnset(headers.XAcsAligenieAccessToken)) {
+		realHeaders["x-acs-aligenie-access-token"] = util.ToJSONString(headers.XAcsAligenieAccessToken)
+	}
+
+	if !tea.BoolValue(util.IsUnset(headers.Authorization)) {
+		realHeaders["Authorization"] = util.ToJSONString(headers.Authorization)
+	}
+
+	req := &openapi.OpenApiRequest{
+		Headers: realHeaders,
+		Query:   openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("CloudPlayer"),
+		Version:     tea.String("ssp_1.0"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/v1.0/ssp/cloud/player"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("ROA"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &CloudPlayerResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) CloudPlayer(request *CloudPlayerRequest) (_result *CloudPlayerResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	headers := &CloudPlayerHeaders{}
+	_result = &CloudPlayerResponse{}
+	_body, _err := client.CloudPlayerWithOptions(request, headers, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -19777,16 +20871,16 @@ func (client *Client) CreateAlarmWithOptions(tmpReq *CreateAlarmRequest, headers
 	}
 	request := &CreateAlarmShrinkRequest{}
 	openapiutil.Convert(tmpReq, request)
-	if !tea.BoolValue(util.IsUnset(tea.ToMap(tmpReq.DeviceInfo))) {
-		request.DeviceInfoShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tea.ToMap(tmpReq.DeviceInfo), tea.String("DeviceInfo"), tea.String("json"))
+	if !tea.BoolValue(util.IsUnset(tmpReq.DeviceInfo)) {
+		request.DeviceInfoShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.DeviceInfo, tea.String("DeviceInfo"), tea.String("json"))
 	}
 
-	if !tea.BoolValue(util.IsUnset(tea.ToMap(tmpReq.Payload))) {
-		request.PayloadShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tea.ToMap(tmpReq.Payload), tea.String("Payload"), tea.String("json"))
+	if !tea.BoolValue(util.IsUnset(tmpReq.Payload)) {
+		request.PayloadShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.Payload, tea.String("Payload"), tea.String("json"))
 	}
 
-	if !tea.BoolValue(util.IsUnset(tea.ToMap(tmpReq.UserInfo))) {
-		request.UserInfoShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tea.ToMap(tmpReq.UserInfo), tea.String("UserInfo"), tea.String("json"))
+	if !tea.BoolValue(util.IsUnset(tmpReq.UserInfo)) {
+		request.UserInfoShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.UserInfo, tea.String("UserInfo"), tea.String("json"))
 	}
 
 	body := map[string]interface{}{}
@@ -19839,11 +20933,11 @@ func (client *Client) CreateAlarmWithOptions(tmpReq *CreateAlarmRequest, headers
 	return _result, _err
 }
 
-func (client *Client) CreatePlayingList(request *CreatePlayingListRequest) (_result *CreatePlayingListResponse, _err error) {
+func (client *Client) CreateAlarm(request *CreateAlarmRequest) (_result *CreateAlarmResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
-	headers := &CreatePlayingListHeaders{}
-	_result = &CreatePlayingListResponse{}
-	_body, _err := client.CreatePlayingListWithOptions(request, headers, runtime)
+	headers := &CreateAlarmHeaders{}
+	_result = &CreateAlarmResponse{}
+	_body, _err := client.CreateAlarmWithOptions(request, headers, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -19858,16 +20952,16 @@ func (client *Client) CreatePlayingListWithOptions(tmpReq *CreatePlayingListRequ
 	}
 	request := &CreatePlayingListShrinkRequest{}
 	openapiutil.Convert(tmpReq, request)
-	if !tea.BoolValue(util.IsUnset(tea.ToMap(tmpReq.DeviceInfo))) {
-		request.DeviceInfoShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tea.ToMap(tmpReq.DeviceInfo), tea.String("DeviceInfo"), tea.String("json"))
+	if !tea.BoolValue(util.IsUnset(tmpReq.DeviceInfo)) {
+		request.DeviceInfoShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.DeviceInfo, tea.String("DeviceInfo"), tea.String("json"))
 	}
 
-	if !tea.BoolValue(util.IsUnset(tea.ToMap(tmpReq.OpenCreatePlayingListRequest))) {
-		request.OpenCreatePlayingListRequestShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tea.ToMap(tmpReq.OpenCreatePlayingListRequest), tea.String("OpenCreatePlayingListRequest"), tea.String("json"))
+	if !tea.BoolValue(util.IsUnset(tmpReq.OpenCreatePlayingListRequest)) {
+		request.OpenCreatePlayingListRequestShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.OpenCreatePlayingListRequest, tea.String("OpenCreatePlayingListRequest"), tea.String("json"))
 	}
 
-	if !tea.BoolValue(util.IsUnset(tea.ToMap(tmpReq.UserInfo))) {
-		request.UserInfoShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tea.ToMap(tmpReq.UserInfo), tea.String("UserInfo"), tea.String("json"))
+	if !tea.BoolValue(util.IsUnset(tmpReq.UserInfo)) {
+		request.UserInfoShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.UserInfo, tea.String("UserInfo"), tea.String("json"))
 	}
 
 	query := map[string]interface{}{}
@@ -19922,11 +21016,11 @@ func (client *Client) CreatePlayingListWithOptions(tmpReq *CreatePlayingListRequ
 	return _result, _err
 }
 
-func (client *Client) CreateScheduleTask(request *CreateScheduleTaskRequest) (_result *CreateScheduleTaskResponse, _err error) {
+func (client *Client) CreatePlayingList(request *CreatePlayingListRequest) (_result *CreatePlayingListResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
-	headers := &CreateScheduleTaskHeaders{}
-	_result = &CreateScheduleTaskResponse{}
-	_body, _err := client.CreateScheduleTaskWithOptions(request, headers, runtime)
+	headers := &CreatePlayingListHeaders{}
+	_result = &CreatePlayingListResponse{}
+	_body, _err := client.CreatePlayingListWithOptions(request, headers, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -19941,16 +21035,16 @@ func (client *Client) CreateScheduleTaskWithOptions(tmpReq *CreateScheduleTaskRe
 	}
 	request := &CreateScheduleTaskShrinkRequest{}
 	openapiutil.Convert(tmpReq, request)
-	if !tea.BoolValue(util.IsUnset(tea.ToMap(tmpReq.DeviceInfo))) {
-		request.DeviceInfoShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tea.ToMap(tmpReq.DeviceInfo), tea.String("DeviceInfo"), tea.String("json"))
+	if !tea.BoolValue(util.IsUnset(tmpReq.DeviceInfo)) {
+		request.DeviceInfoShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.DeviceInfo, tea.String("DeviceInfo"), tea.String("json"))
 	}
 
-	if !tea.BoolValue(util.IsUnset(tea.ToMap(tmpReq.Payload))) {
-		request.PayloadShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tea.ToMap(tmpReq.Payload), tea.String("Payload"), tea.String("json"))
+	if !tea.BoolValue(util.IsUnset(tmpReq.Payload)) {
+		request.PayloadShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.Payload, tea.String("Payload"), tea.String("json"))
 	}
 
-	if !tea.BoolValue(util.IsUnset(tea.ToMap(tmpReq.UserInfo))) {
-		request.UserInfoShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tea.ToMap(tmpReq.UserInfo), tea.String("UserInfo"), tea.String("json"))
+	if !tea.BoolValue(util.IsUnset(tmpReq.UserInfo)) {
+		request.UserInfoShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.UserInfo, tea.String("UserInfo"), tea.String("json"))
 	}
 
 	body := map[string]interface{}{}
@@ -20003,11 +21097,11 @@ func (client *Client) CreateScheduleTaskWithOptions(tmpReq *CreateScheduleTaskRe
 	return _result, _err
 }
 
-func (client *Client) DeleteAlarms(request *DeleteAlarmsRequest) (_result *DeleteAlarmsResponse, _err error) {
+func (client *Client) CreateScheduleTask(request *CreateScheduleTaskRequest) (_result *CreateScheduleTaskResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
-	headers := &DeleteAlarmsHeaders{}
-	_result = &DeleteAlarmsResponse{}
-	_body, _err := client.DeleteAlarmsWithOptions(request, headers, runtime)
+	headers := &CreateScheduleTaskHeaders{}
+	_result = &CreateScheduleTaskResponse{}
+	_body, _err := client.CreateScheduleTaskWithOptions(request, headers, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -20022,16 +21116,16 @@ func (client *Client) DeleteAlarmsWithOptions(tmpReq *DeleteAlarmsRequest, heade
 	}
 	request := &DeleteAlarmsShrinkRequest{}
 	openapiutil.Convert(tmpReq, request)
-	if !tea.BoolValue(util.IsUnset(tea.ToMap(tmpReq.DeviceInfo))) {
-		request.DeviceInfoShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tea.ToMap(tmpReq.DeviceInfo), tea.String("DeviceInfo"), tea.String("json"))
+	if !tea.BoolValue(util.IsUnset(tmpReq.DeviceInfo)) {
+		request.DeviceInfoShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.DeviceInfo, tea.String("DeviceInfo"), tea.String("json"))
 	}
 
-	if !tea.BoolValue(util.IsUnset(tea.ToMap(tmpReq.Payload))) {
-		request.PayloadShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tea.ToMap(tmpReq.Payload), tea.String("Payload"), tea.String("json"))
+	if !tea.BoolValue(util.IsUnset(tmpReq.Payload)) {
+		request.PayloadShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.Payload, tea.String("Payload"), tea.String("json"))
 	}
 
-	if !tea.BoolValue(util.IsUnset(tea.ToMap(tmpReq.UserInfo))) {
-		request.UserInfoShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tea.ToMap(tmpReq.UserInfo), tea.String("UserInfo"), tea.String("json"))
+	if !tea.BoolValue(util.IsUnset(tmpReq.UserInfo)) {
+		request.UserInfoShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.UserInfo, tea.String("UserInfo"), tea.String("json"))
 	}
 
 	body := map[string]interface{}{}
@@ -20084,11 +21178,11 @@ func (client *Client) DeleteAlarmsWithOptions(tmpReq *DeleteAlarmsRequest, heade
 	return _result, _err
 }
 
-func (client *Client) DeleteScheduleTask(request *DeleteScheduleTaskRequest) (_result *DeleteScheduleTaskResponse, _err error) {
+func (client *Client) DeleteAlarms(request *DeleteAlarmsRequest) (_result *DeleteAlarmsResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
-	headers := &DeleteScheduleTaskHeaders{}
-	_result = &DeleteScheduleTaskResponse{}
-	_body, _err := client.DeleteScheduleTaskWithOptions(request, headers, runtime)
+	headers := &DeleteAlarmsHeaders{}
+	_result = &DeleteAlarmsResponse{}
+	_body, _err := client.DeleteAlarmsWithOptions(request, headers, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -20103,16 +21197,16 @@ func (client *Client) DeleteScheduleTaskWithOptions(tmpReq *DeleteScheduleTaskRe
 	}
 	request := &DeleteScheduleTaskShrinkRequest{}
 	openapiutil.Convert(tmpReq, request)
-	if !tea.BoolValue(util.IsUnset(tea.ToMap(tmpReq.DeviceInfo))) {
-		request.DeviceInfoShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tea.ToMap(tmpReq.DeviceInfo), tea.String("DeviceInfo"), tea.String("json"))
+	if !tea.BoolValue(util.IsUnset(tmpReq.DeviceInfo)) {
+		request.DeviceInfoShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.DeviceInfo, tea.String("DeviceInfo"), tea.String("json"))
 	}
 
-	if !tea.BoolValue(util.IsUnset(tea.ToMap(tmpReq.Payload))) {
-		request.PayloadShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tea.ToMap(tmpReq.Payload), tea.String("Payload"), tea.String("json"))
+	if !tea.BoolValue(util.IsUnset(tmpReq.Payload)) {
+		request.PayloadShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.Payload, tea.String("Payload"), tea.String("json"))
 	}
 
-	if !tea.BoolValue(util.IsUnset(tea.ToMap(tmpReq.UserInfo))) {
-		request.UserInfoShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tea.ToMap(tmpReq.UserInfo), tea.String("UserInfo"), tea.String("json"))
+	if !tea.BoolValue(util.IsUnset(tmpReq.UserInfo)) {
+		request.UserInfoShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.UserInfo, tea.String("UserInfo"), tea.String("json"))
 	}
 
 	body := map[string]interface{}{}
@@ -20165,11 +21259,11 @@ func (client *Client) DeleteScheduleTaskWithOptions(tmpReq *DeleteScheduleTaskRe
 	return _result, _err
 }
 
-func (client *Client) DeleteSub(request *DeleteSubRequest) (_result *DeleteSubResponse, _err error) {
+func (client *Client) DeleteScheduleTask(request *DeleteScheduleTaskRequest) (_result *DeleteScheduleTaskResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
-	headers := &DeleteSubHeaders{}
-	_result = &DeleteSubResponse{}
-	_body, _err := client.DeleteSubWithOptions(request, headers, runtime)
+	headers := &DeleteScheduleTaskHeaders{}
+	_result = &DeleteScheduleTaskResponse{}
+	_body, _err := client.DeleteScheduleTaskWithOptions(request, headers, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -20224,11 +21318,11 @@ func (client *Client) DeleteSubWithOptions(request *DeleteSubRequest, headers *D
 	return _result, _err
 }
 
-func (client *Client) DeviceControl(request *DeviceControlRequest) (_result *DeviceControlResponse, _err error) {
+func (client *Client) DeleteSub(request *DeleteSubRequest) (_result *DeleteSubResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
-	headers := &DeviceControlHeaders{}
-	_result = &DeviceControlResponse{}
-	_body, _err := client.DeviceControlWithOptions(request, headers, runtime)
+	headers := &DeleteSubHeaders{}
+	_result = &DeleteSubResponse{}
+	_body, _err := client.DeleteSubWithOptions(request, headers, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -20243,12 +21337,12 @@ func (client *Client) DeviceControlWithOptions(tmpReq *DeviceControlRequest, hea
 	}
 	request := &DeviceControlShrinkRequest{}
 	openapiutil.Convert(tmpReq, request)
-	if !tea.BoolValue(util.IsUnset(tea.ToMap(tmpReq.ControlRequest))) {
-		request.ControlRequestShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tea.ToMap(tmpReq.ControlRequest), tea.String("ControlRequest"), tea.String("json"))
+	if !tea.BoolValue(util.IsUnset(tmpReq.ControlRequest)) {
+		request.ControlRequestShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.ControlRequest, tea.String("ControlRequest"), tea.String("json"))
 	}
 
-	if !tea.BoolValue(util.IsUnset(tea.ToMap(tmpReq.DeviceInfo))) {
-		request.DeviceInfoShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tea.ToMap(tmpReq.DeviceInfo), tea.String("DeviceInfo"), tea.String("json"))
+	if !tea.BoolValue(util.IsUnset(tmpReq.DeviceInfo)) {
+		request.DeviceInfoShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.DeviceInfo, tea.String("DeviceInfo"), tea.String("json"))
 	}
 
 	query := map[string]interface{}{}
@@ -20299,11 +21393,11 @@ func (client *Client) DeviceControlWithOptions(tmpReq *DeviceControlRequest, hea
 	return _result, _err
 }
 
-func (client *Client) EcologyOpennessAuthenticate(request *EcologyOpennessAuthenticateRequest) (_result *EcologyOpennessAuthenticateResponse, _err error) {
+func (client *Client) DeviceControl(request *DeviceControlRequest) (_result *DeviceControlResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
-	headers := &EcologyOpennessAuthenticateHeaders{}
-	_result = &EcologyOpennessAuthenticateResponse{}
-	_body, _err := client.EcologyOpennessAuthenticateWithOptions(request, headers, runtime)
+	headers := &DeviceControlHeaders{}
+	_result = &DeviceControlResponse{}
+	_body, _err := client.DeviceControlWithOptions(request, headers, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -20366,11 +21460,11 @@ func (client *Client) EcologyOpennessAuthenticateWithOptions(request *EcologyOpe
 	return _result, _err
 }
 
-func (client *Client) EcologyOpennessSendVerificationCode(request *EcologyOpennessSendVerificationCodeRequest) (_result *EcologyOpennessSendVerificationCodeResponse, _err error) {
+func (client *Client) EcologyOpennessAuthenticate(request *EcologyOpennessAuthenticateRequest) (_result *EcologyOpennessAuthenticateResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
-	headers := &EcologyOpennessSendVerificationCodeHeaders{}
-	_result = &EcologyOpennessSendVerificationCodeResponse{}
-	_body, _err := client.EcologyOpennessSendVerificationCodeWithOptions(request, headers, runtime)
+	headers := &EcologyOpennessAuthenticateHeaders{}
+	_result = &EcologyOpennessAuthenticateResponse{}
+	_body, _err := client.EcologyOpennessAuthenticateWithOptions(request, headers, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -20433,11 +21527,11 @@ func (client *Client) EcologyOpennessSendVerificationCodeWithOptions(request *Ec
 	return _result, _err
 }
 
-func (client *Client) FindUserlistToAuthLoginWithPhoneNumber(request *FindUserlistToAuthLoginWithPhoneNumberRequest) (_result *FindUserlistToAuthLoginWithPhoneNumberResponse, _err error) {
+func (client *Client) EcologyOpennessSendVerificationCode(request *EcologyOpennessSendVerificationCodeRequest) (_result *EcologyOpennessSendVerificationCodeResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
-	headers := &FindUserlistToAuthLoginWithPhoneNumberHeaders{}
-	_result = &FindUserlistToAuthLoginWithPhoneNumberResponse{}
-	_body, _err := client.FindUserlistToAuthLoginWithPhoneNumberWithOptions(request, headers, runtime)
+	headers := &EcologyOpennessSendVerificationCodeHeaders{}
+	_result = &EcologyOpennessSendVerificationCodeResponse{}
+	_body, _err := client.EcologyOpennessSendVerificationCodeWithOptions(request, headers, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -20504,11 +21598,11 @@ func (client *Client) FindUserlistToAuthLoginWithPhoneNumberWithOptions(request 
 	return _result, _err
 }
 
-func (client *Client) GetAlarm(request *GetAlarmRequest) (_result *GetAlarmResponse, _err error) {
+func (client *Client) FindUserlistToAuthLoginWithPhoneNumber(request *FindUserlistToAuthLoginWithPhoneNumberRequest) (_result *FindUserlistToAuthLoginWithPhoneNumberResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
-	headers := &GetAlarmHeaders{}
-	_result = &GetAlarmResponse{}
-	_body, _err := client.GetAlarmWithOptions(request, headers, runtime)
+	headers := &FindUserlistToAuthLoginWithPhoneNumberHeaders{}
+	_result = &FindUserlistToAuthLoginWithPhoneNumberResponse{}
+	_body, _err := client.FindUserlistToAuthLoginWithPhoneNumberWithOptions(request, headers, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -20523,16 +21617,16 @@ func (client *Client) GetAlarmWithOptions(tmpReq *GetAlarmRequest, headers *GetA
 	}
 	request := &GetAlarmShrinkRequest{}
 	openapiutil.Convert(tmpReq, request)
-	if !tea.BoolValue(util.IsUnset(tea.ToMap(tmpReq.DeviceInfo))) {
-		request.DeviceInfoShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tea.ToMap(tmpReq.DeviceInfo), tea.String("DeviceInfo"), tea.String("json"))
+	if !tea.BoolValue(util.IsUnset(tmpReq.DeviceInfo)) {
+		request.DeviceInfoShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.DeviceInfo, tea.String("DeviceInfo"), tea.String("json"))
 	}
 
-	if !tea.BoolValue(util.IsUnset(tea.ToMap(tmpReq.Payload))) {
-		request.PayloadShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tea.ToMap(tmpReq.Payload), tea.String("Payload"), tea.String("json"))
+	if !tea.BoolValue(util.IsUnset(tmpReq.Payload)) {
+		request.PayloadShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.Payload, tea.String("Payload"), tea.String("json"))
 	}
 
-	if !tea.BoolValue(util.IsUnset(tea.ToMap(tmpReq.UserInfo))) {
-		request.UserInfoShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tea.ToMap(tmpReq.UserInfo), tea.String("UserInfo"), tea.String("json"))
+	if !tea.BoolValue(util.IsUnset(tmpReq.UserInfo)) {
+		request.UserInfoShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.UserInfo, tea.String("UserInfo"), tea.String("json"))
 	}
 
 	body := map[string]interface{}{}
@@ -20585,11 +21679,11 @@ func (client *Client) GetAlarmWithOptions(tmpReq *GetAlarmRequest, headers *GetA
 	return _result, _err
 }
 
-func (client *Client) GetAlbum(request *GetAlbumRequest) (_result *GetAlbumResponse, _err error) {
+func (client *Client) GetAlarm(request *GetAlarmRequest) (_result *GetAlarmResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
-	headers := &GetAlbumHeaders{}
-	_result = &GetAlbumResponse{}
-	_body, _err := client.GetAlbumWithOptions(request, headers, runtime)
+	headers := &GetAlarmHeaders{}
+	_result = &GetAlarmResponse{}
+	_body, _err := client.GetAlarmWithOptions(request, headers, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -20648,11 +21742,11 @@ func (client *Client) GetAlbumWithOptions(request *GetAlbumRequest, headers *Get
 	return _result, _err
 }
 
-func (client *Client) GetAlbumDetailById(request *GetAlbumDetailByIdRequest) (_result *GetAlbumDetailByIdResponse, _err error) {
+func (client *Client) GetAlbum(request *GetAlbumRequest) (_result *GetAlbumResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
-	headers := &GetAlbumDetailByIdHeaders{}
-	_result = &GetAlbumDetailByIdResponse{}
-	_body, _err := client.GetAlbumDetailByIdWithOptions(request, headers, runtime)
+	headers := &GetAlbumHeaders{}
+	_result = &GetAlbumResponse{}
+	_body, _err := client.GetAlbumWithOptions(request, headers, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -20707,11 +21801,11 @@ func (client *Client) GetAlbumDetailByIdWithOptions(request *GetAlbumDetailByIdR
 	return _result, _err
 }
 
-func (client *Client) GetAligenieUserInfo(request *GetAligenieUserInfoRequest) (_result *GetAligenieUserInfoResponse, _err error) {
+func (client *Client) GetAlbumDetailById(request *GetAlbumDetailByIdRequest) (_result *GetAlbumDetailByIdResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
-	headers := &GetAligenieUserInfoHeaders{}
-	_result = &GetAligenieUserInfoResponse{}
-	_body, _err := client.GetAligenieUserInfoWithOptions(request, headers, runtime)
+	headers := &GetAlbumDetailByIdHeaders{}
+	_result = &GetAlbumDetailByIdResponse{}
+	_body, _err := client.GetAlbumDetailByIdWithOptions(request, headers, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -20766,11 +21860,11 @@ func (client *Client) GetAligenieUserInfoWithOptions(request *GetAligenieUserInf
 	return _result, _err
 }
 
-func (client *Client) GetCodeEnhance(request *GetCodeEnhanceRequest) (_result *GetCodeEnhanceResponse, _err error) {
+func (client *Client) GetAligenieUserInfo(request *GetAligenieUserInfoRequest) (_result *GetAligenieUserInfoResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
-	headers := &GetCodeEnhanceHeaders{}
-	_result = &GetCodeEnhanceResponse{}
-	_body, _err := client.GetCodeEnhanceWithOptions(request, headers, runtime)
+	headers := &GetAligenieUserInfoHeaders{}
+	_result = &GetAligenieUserInfoResponse{}
+	_body, _err := client.GetAligenieUserInfoWithOptions(request, headers, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -20785,12 +21879,12 @@ func (client *Client) GetCodeEnhanceWithOptions(tmpReq *GetCodeEnhanceRequest, h
 	}
 	request := &GetCodeEnhanceShrinkRequest{}
 	openapiutil.Convert(tmpReq, request)
-	if !tea.BoolValue(util.IsUnset(tea.ToMap(tmpReq.ChannelInfo))) {
-		request.ChannelInfoShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tea.ToMap(tmpReq.ChannelInfo), tea.String("ChannelInfo"), tea.String("json"))
+	if !tea.BoolValue(util.IsUnset(tmpReq.ChannelInfo)) {
+		request.ChannelInfoShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.ChannelInfo, tea.String("ChannelInfo"), tea.String("json"))
 	}
 
-	if !tea.BoolValue(util.IsUnset(tea.ToMap(tmpReq.UserInfo))) {
-		request.UserInfoShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tea.ToMap(tmpReq.UserInfo), tea.String("UserInfo"), tea.String("json"))
+	if !tea.BoolValue(util.IsUnset(tmpReq.UserInfo)) {
+		request.UserInfoShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.UserInfo, tea.String("UserInfo"), tea.String("json"))
 	}
 
 	query := map[string]interface{}{}
@@ -20839,11 +21933,11 @@ func (client *Client) GetCodeEnhanceWithOptions(tmpReq *GetCodeEnhanceRequest, h
 	return _result, _err
 }
 
-func (client *Client) GetContent(request *GetContentRequest) (_result *GetContentResponse, _err error) {
+func (client *Client) GetCodeEnhance(request *GetCodeEnhanceRequest) (_result *GetCodeEnhanceResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
-	headers := &GetContentHeaders{}
-	_result = &GetContentResponse{}
-	_body, _err := client.GetContentWithOptions(request, headers, runtime)
+	headers := &GetCodeEnhanceHeaders{}
+	_result = &GetCodeEnhanceResponse{}
+	_body, _err := client.GetCodeEnhanceWithOptions(request, headers, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -20902,11 +21996,11 @@ func (client *Client) GetContentWithOptions(request *GetContentRequest, headers 
 	return _result, _err
 }
 
-func (client *Client) GetCurrentPlayingItem(request *GetCurrentPlayingItemRequest) (_result *GetCurrentPlayingItemResponse, _err error) {
+func (client *Client) GetContent(request *GetContentRequest) (_result *GetContentResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
-	headers := &GetCurrentPlayingItemHeaders{}
-	_result = &GetCurrentPlayingItemResponse{}
-	_body, _err := client.GetCurrentPlayingItemWithOptions(request, headers, runtime)
+	headers := &GetContentHeaders{}
+	_result = &GetContentResponse{}
+	_body, _err := client.GetContentWithOptions(request, headers, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -20921,12 +22015,12 @@ func (client *Client) GetCurrentPlayingItemWithOptions(tmpReq *GetCurrentPlaying
 	}
 	request := &GetCurrentPlayingItemShrinkRequest{}
 	openapiutil.Convert(tmpReq, request)
-	if !tea.BoolValue(util.IsUnset(tea.ToMap(tmpReq.DeviceInfo))) {
-		request.DeviceInfoShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tea.ToMap(tmpReq.DeviceInfo), tea.String("DeviceInfo"), tea.String("json"))
+	if !tea.BoolValue(util.IsUnset(tmpReq.DeviceInfo)) {
+		request.DeviceInfoShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.DeviceInfo, tea.String("DeviceInfo"), tea.String("json"))
 	}
 
-	if !tea.BoolValue(util.IsUnset(tea.ToMap(tmpReq.UserInfo))) {
-		request.UserInfoShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tea.ToMap(tmpReq.UserInfo), tea.String("UserInfo"), tea.String("json"))
+	if !tea.BoolValue(util.IsUnset(tmpReq.UserInfo)) {
+		request.UserInfoShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.UserInfo, tea.String("UserInfo"), tea.String("json"))
 	}
 
 	query := map[string]interface{}{}
@@ -20975,11 +22069,11 @@ func (client *Client) GetCurrentPlayingItemWithOptions(tmpReq *GetCurrentPlaying
 	return _result, _err
 }
 
-func (client *Client) GetCurrentPlayingList(request *GetCurrentPlayingListRequest) (_result *GetCurrentPlayingListResponse, _err error) {
+func (client *Client) GetCurrentPlayingItem(request *GetCurrentPlayingItemRequest) (_result *GetCurrentPlayingItemResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
-	headers := &GetCurrentPlayingListHeaders{}
-	_result = &GetCurrentPlayingListResponse{}
-	_body, _err := client.GetCurrentPlayingListWithOptions(request, headers, runtime)
+	headers := &GetCurrentPlayingItemHeaders{}
+	_result = &GetCurrentPlayingItemResponse{}
+	_body, _err := client.GetCurrentPlayingItemWithOptions(request, headers, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -20994,16 +22088,16 @@ func (client *Client) GetCurrentPlayingListWithOptions(tmpReq *GetCurrentPlaying
 	}
 	request := &GetCurrentPlayingListShrinkRequest{}
 	openapiutil.Convert(tmpReq, request)
-	if !tea.BoolValue(util.IsUnset(tea.ToMap(tmpReq.DeviceInfo))) {
-		request.DeviceInfoShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tea.ToMap(tmpReq.DeviceInfo), tea.String("DeviceInfo"), tea.String("json"))
+	if !tea.BoolValue(util.IsUnset(tmpReq.DeviceInfo)) {
+		request.DeviceInfoShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.DeviceInfo, tea.String("DeviceInfo"), tea.String("json"))
 	}
 
-	if !tea.BoolValue(util.IsUnset(tea.ToMap(tmpReq.OpenQueryPlayListRequest))) {
-		request.OpenQueryPlayListRequestShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tea.ToMap(tmpReq.OpenQueryPlayListRequest), tea.String("OpenQueryPlayListRequest"), tea.String("json"))
+	if !tea.BoolValue(util.IsUnset(tmpReq.OpenQueryPlayListRequest)) {
+		request.OpenQueryPlayListRequestShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.OpenQueryPlayListRequest, tea.String("OpenQueryPlayListRequest"), tea.String("json"))
 	}
 
-	if !tea.BoolValue(util.IsUnset(tea.ToMap(tmpReq.UserInfo))) {
-		request.UserInfoShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tea.ToMap(tmpReq.UserInfo), tea.String("UserInfo"), tea.String("json"))
+	if !tea.BoolValue(util.IsUnset(tmpReq.UserInfo)) {
+		request.UserInfoShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.UserInfo, tea.String("UserInfo"), tea.String("json"))
 	}
 
 	query := map[string]interface{}{}
@@ -21058,11 +22152,11 @@ func (client *Client) GetCurrentPlayingListWithOptions(tmpReq *GetCurrentPlaying
 	return _result, _err
 }
 
-func (client *Client) GetDeviceBasicInfo(request *GetDeviceBasicInfoRequest) (_result *GetDeviceBasicInfoResponse, _err error) {
+func (client *Client) GetCurrentPlayingList(request *GetCurrentPlayingListRequest) (_result *GetCurrentPlayingListResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
-	headers := &GetDeviceBasicInfoHeaders{}
-	_result = &GetDeviceBasicInfoResponse{}
-	_body, _err := client.GetDeviceBasicInfoWithOptions(request, headers, runtime)
+	headers := &GetCurrentPlayingListHeaders{}
+	_result = &GetCurrentPlayingListResponse{}
+	_body, _err := client.GetCurrentPlayingListWithOptions(request, headers, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -21077,8 +22171,8 @@ func (client *Client) GetDeviceBasicInfoWithOptions(tmpReq *GetDeviceBasicInfoRe
 	}
 	request := &GetDeviceBasicInfoShrinkRequest{}
 	openapiutil.Convert(tmpReq, request)
-	if !tea.BoolValue(util.IsUnset(tea.ToMap(tmpReq.DeviceInfo))) {
-		request.DeviceInfoShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tea.ToMap(tmpReq.DeviceInfo), tea.String("DeviceInfo"), tea.String("json"))
+	if !tea.BoolValue(util.IsUnset(tmpReq.DeviceInfo)) {
+		request.DeviceInfoShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.DeviceInfo, tea.String("DeviceInfo"), tea.String("json"))
 	}
 
 	query := map[string]interface{}{}
@@ -21123,11 +22217,11 @@ func (client *Client) GetDeviceBasicInfoWithOptions(tmpReq *GetDeviceBasicInfoRe
 	return _result, _err
 }
 
-func (client *Client) GetDeviceIdByIdentity(request *GetDeviceIdByIdentityRequest) (_result *GetDeviceIdByIdentityResponse, _err error) {
+func (client *Client) GetDeviceBasicInfo(request *GetDeviceBasicInfoRequest) (_result *GetDeviceBasicInfoResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
-	headers := &GetDeviceIdByIdentityHeaders{}
-	_result = &GetDeviceIdByIdentityResponse{}
-	_body, _err := client.GetDeviceIdByIdentityWithOptions(request, headers, runtime)
+	headers := &GetDeviceBasicInfoHeaders{}
+	_result = &GetDeviceBasicInfoResponse{}
+	_body, _err := client.GetDeviceBasicInfoWithOptions(request, headers, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -21198,11 +22292,11 @@ func (client *Client) GetDeviceIdByIdentityWithOptions(request *GetDeviceIdByIde
 	return _result, _err
 }
 
-func (client *Client) GetDeviceSetting(request *GetDeviceSettingRequest) (_result *GetDeviceSettingResponse, _err error) {
+func (client *Client) GetDeviceIdByIdentity(request *GetDeviceIdByIdentityRequest) (_result *GetDeviceIdByIdentityResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
-	headers := &GetDeviceSettingHeaders{}
-	_result = &GetDeviceSettingResponse{}
-	_body, _err := client.GetDeviceSettingWithOptions(request, headers, runtime)
+	headers := &GetDeviceIdByIdentityHeaders{}
+	_result = &GetDeviceIdByIdentityResponse{}
+	_body, _err := client.GetDeviceIdByIdentityWithOptions(request, headers, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -21217,8 +22311,8 @@ func (client *Client) GetDeviceSettingWithOptions(tmpReq *GetDeviceSettingReques
 	}
 	request := &GetDeviceSettingShrinkRequest{}
 	openapiutil.Convert(tmpReq, request)
-	if !tea.BoolValue(util.IsUnset(tea.ToMap(tmpReq.DeviceInfo))) {
-		request.DeviceInfoShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tea.ToMap(tmpReq.DeviceInfo), tea.String("DeviceInfo"), tea.String("json"))
+	if !tea.BoolValue(util.IsUnset(tmpReq.DeviceInfo)) {
+		request.DeviceInfoShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.DeviceInfo, tea.String("DeviceInfo"), tea.String("json"))
 	}
 
 	if !tea.BoolValue(util.IsUnset(tmpReq.Keys)) {
@@ -21271,11 +22365,11 @@ func (client *Client) GetDeviceSettingWithOptions(tmpReq *GetDeviceSettingReques
 	return _result, _err
 }
 
-func (client *Client) GetDeviceStatusDetail(request *GetDeviceStatusDetailRequest) (_result *GetDeviceStatusDetailResponse, _err error) {
+func (client *Client) GetDeviceSetting(request *GetDeviceSettingRequest) (_result *GetDeviceSettingResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
-	headers := &GetDeviceStatusDetailHeaders{}
-	_result = &GetDeviceStatusDetailResponse{}
-	_body, _err := client.GetDeviceStatusDetailWithOptions(request, headers, runtime)
+	headers := &GetDeviceSettingHeaders{}
+	_result = &GetDeviceSettingResponse{}
+	_body, _err := client.GetDeviceSettingWithOptions(request, headers, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -21290,8 +22384,8 @@ func (client *Client) GetDeviceStatusDetailWithOptions(tmpReq *GetDeviceStatusDe
 	}
 	request := &GetDeviceStatusDetailShrinkRequest{}
 	openapiutil.Convert(tmpReq, request)
-	if !tea.BoolValue(util.IsUnset(tea.ToMap(tmpReq.DeviceInfo))) {
-		request.DeviceInfoShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tea.ToMap(tmpReq.DeviceInfo), tea.String("DeviceInfo"), tea.String("json"))
+	if !tea.BoolValue(util.IsUnset(tmpReq.DeviceInfo)) {
+		request.DeviceInfoShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.DeviceInfo, tea.String("DeviceInfo"), tea.String("json"))
 	}
 
 	if !tea.BoolValue(util.IsUnset(tmpReq.Keys)) {
@@ -21344,11 +22438,11 @@ func (client *Client) GetDeviceStatusDetailWithOptions(tmpReq *GetDeviceStatusDe
 	return _result, _err
 }
 
-func (client *Client) GetDeviceStatusInfo(request *GetDeviceStatusInfoRequest) (_result *GetDeviceStatusInfoResponse, _err error) {
+func (client *Client) GetDeviceStatusDetail(request *GetDeviceStatusDetailRequest) (_result *GetDeviceStatusDetailResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
-	headers := &GetDeviceStatusInfoHeaders{}
-	_result = &GetDeviceStatusInfoResponse{}
-	_body, _err := client.GetDeviceStatusInfoWithOptions(request, headers, runtime)
+	headers := &GetDeviceStatusDetailHeaders{}
+	_result = &GetDeviceStatusDetailResponse{}
+	_body, _err := client.GetDeviceStatusDetailWithOptions(request, headers, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -21363,8 +22457,8 @@ func (client *Client) GetDeviceStatusInfoWithOptions(tmpReq *GetDeviceStatusInfo
 	}
 	request := &GetDeviceStatusInfoShrinkRequest{}
 	openapiutil.Convert(tmpReq, request)
-	if !tea.BoolValue(util.IsUnset(tea.ToMap(tmpReq.DeviceInfo))) {
-		request.DeviceInfoShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tea.ToMap(tmpReq.DeviceInfo), tea.String("DeviceInfo"), tea.String("json"))
+	if !tea.BoolValue(util.IsUnset(tmpReq.DeviceInfo)) {
+		request.DeviceInfoShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.DeviceInfo, tea.String("DeviceInfo"), tea.String("json"))
 	}
 
 	query := map[string]interface{}{}
@@ -21409,11 +22503,11 @@ func (client *Client) GetDeviceStatusInfoWithOptions(tmpReq *GetDeviceStatusInfo
 	return _result, _err
 }
 
-func (client *Client) GetDeviceTag(request *GetDeviceTagRequest) (_result *GetDeviceTagResponse, _err error) {
+func (client *Client) GetDeviceStatusInfo(request *GetDeviceStatusInfoRequest) (_result *GetDeviceStatusInfoResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
-	headers := &GetDeviceTagHeaders{}
-	_result = &GetDeviceTagResponse{}
-	_body, _err := client.GetDeviceTagWithOptions(request, headers, runtime)
+	headers := &GetDeviceStatusInfoHeaders{}
+	_result = &GetDeviceStatusInfoResponse{}
+	_body, _err := client.GetDeviceStatusInfoWithOptions(request, headers, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -21428,8 +22522,8 @@ func (client *Client) GetDeviceTagWithOptions(tmpReq *GetDeviceTagRequest, heade
 	}
 	request := &GetDeviceTagShrinkRequest{}
 	openapiutil.Convert(tmpReq, request)
-	if !tea.BoolValue(util.IsUnset(tea.ToMap(tmpReq.DeviceInfo))) {
-		request.DeviceInfoShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tea.ToMap(tmpReq.DeviceInfo), tea.String("DeviceInfo"), tea.String("json"))
+	if !tea.BoolValue(util.IsUnset(tmpReq.DeviceInfo)) {
+		request.DeviceInfoShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.DeviceInfo, tea.String("DeviceInfo"), tea.String("json"))
 	}
 
 	query := map[string]interface{}{}
@@ -21474,11 +22568,11 @@ func (client *Client) GetDeviceTagWithOptions(tmpReq *GetDeviceTagRequest, heade
 	return _result, _err
 }
 
-func (client *Client) GetScheduleTask(request *GetScheduleTaskRequest) (_result *GetScheduleTaskResponse, _err error) {
+func (client *Client) GetDeviceTag(request *GetDeviceTagRequest) (_result *GetDeviceTagResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
-	headers := &GetScheduleTaskHeaders{}
-	_result = &GetScheduleTaskResponse{}
-	_body, _err := client.GetScheduleTaskWithOptions(request, headers, runtime)
+	headers := &GetDeviceTagHeaders{}
+	_result = &GetDeviceTagResponse{}
+	_body, _err := client.GetDeviceTagWithOptions(request, headers, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -21493,16 +22587,16 @@ func (client *Client) GetScheduleTaskWithOptions(tmpReq *GetScheduleTaskRequest,
 	}
 	request := &GetScheduleTaskShrinkRequest{}
 	openapiutil.Convert(tmpReq, request)
-	if !tea.BoolValue(util.IsUnset(tea.ToMap(tmpReq.DeviceInfo))) {
-		request.DeviceInfoShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tea.ToMap(tmpReq.DeviceInfo), tea.String("DeviceInfo"), tea.String("json"))
+	if !tea.BoolValue(util.IsUnset(tmpReq.DeviceInfo)) {
+		request.DeviceInfoShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.DeviceInfo, tea.String("DeviceInfo"), tea.String("json"))
 	}
 
-	if !tea.BoolValue(util.IsUnset(tea.ToMap(tmpReq.Payload))) {
-		request.PayloadShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tea.ToMap(tmpReq.Payload), tea.String("Payload"), tea.String("json"))
+	if !tea.BoolValue(util.IsUnset(tmpReq.Payload)) {
+		request.PayloadShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.Payload, tea.String("Payload"), tea.String("json"))
 	}
 
-	if !tea.BoolValue(util.IsUnset(tea.ToMap(tmpReq.UserInfo))) {
-		request.UserInfoShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tea.ToMap(tmpReq.UserInfo), tea.String("UserInfo"), tea.String("json"))
+	if !tea.BoolValue(util.IsUnset(tmpReq.UserInfo)) {
+		request.UserInfoShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.UserInfo, tea.String("UserInfo"), tea.String("json"))
 	}
 
 	body := map[string]interface{}{}
@@ -21555,11 +22649,11 @@ func (client *Client) GetScheduleTaskWithOptions(tmpReq *GetScheduleTaskRequest,
 	return _result, _err
 }
 
-func (client *Client) GetUnreadMessageCount(request *GetUnreadMessageCountRequest) (_result *GetUnreadMessageCountResponse, _err error) {
+func (client *Client) GetScheduleTask(request *GetScheduleTaskRequest) (_result *GetScheduleTaskResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
-	headers := &GetUnreadMessageCountHeaders{}
-	_result = &GetUnreadMessageCountResponse{}
-	_body, _err := client.GetUnreadMessageCountWithOptions(request, headers, runtime)
+	headers := &GetScheduleTaskHeaders{}
+	_result = &GetScheduleTaskResponse{}
+	_body, _err := client.GetScheduleTaskWithOptions(request, headers, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -21574,8 +22668,8 @@ func (client *Client) GetUnreadMessageCountWithOptions(tmpReq *GetUnreadMessageC
 	}
 	request := &GetUnreadMessageCountShrinkRequest{}
 	openapiutil.Convert(tmpReq, request)
-	if !tea.BoolValue(util.IsUnset(tea.ToMap(tmpReq.UserInfo))) {
-		request.UserInfoShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tea.ToMap(tmpReq.UserInfo), tea.String("UserInfo"), tea.String("json"))
+	if !tea.BoolValue(util.IsUnset(tmpReq.UserInfo)) {
+		request.UserInfoShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.UserInfo, tea.String("UserInfo"), tea.String("json"))
 	}
 
 	query := map[string]interface{}{}
@@ -21620,11 +22714,11 @@ func (client *Client) GetUnreadMessageCountWithOptions(tmpReq *GetUnreadMessageC
 	return _result, _err
 }
 
-func (client *Client) GetUserByDeviceId(request *GetUserByDeviceIdRequest) (_result *GetUserByDeviceIdResponse, _err error) {
+func (client *Client) GetUnreadMessageCount(request *GetUnreadMessageCountRequest) (_result *GetUnreadMessageCountResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
-	headers := &GetUserByDeviceIdHeaders{}
-	_result = &GetUserByDeviceIdResponse{}
-	_body, _err := client.GetUserByDeviceIdWithOptions(request, headers, runtime)
+	headers := &GetUnreadMessageCountHeaders{}
+	_result = &GetUnreadMessageCountResponse{}
+	_body, _err := client.GetUnreadMessageCountWithOptions(request, headers, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -21639,8 +22733,8 @@ func (client *Client) GetUserByDeviceIdWithOptions(tmpReq *GetUserByDeviceIdRequ
 	}
 	request := &GetUserByDeviceIdShrinkRequest{}
 	openapiutil.Convert(tmpReq, request)
-	if !tea.BoolValue(util.IsUnset(tea.ToMap(tmpReq.DeviceInfo))) {
-		request.DeviceInfoShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tea.ToMap(tmpReq.DeviceInfo), tea.String("DeviceInfo"), tea.String("json"))
+	if !tea.BoolValue(util.IsUnset(tmpReq.DeviceInfo)) {
+		request.DeviceInfoShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.DeviceInfo, tea.String("DeviceInfo"), tea.String("json"))
 	}
 
 	query := map[string]interface{}{}
@@ -21685,11 +22779,11 @@ func (client *Client) GetUserByDeviceIdWithOptions(tmpReq *GetUserByDeviceIdRequ
 	return _result, _err
 }
 
-func (client *Client) GetWeather(request *GetWeatherRequest) (_result *GetWeatherResponse, _err error) {
+func (client *Client) GetUserByDeviceId(request *GetUserByDeviceIdRequest) (_result *GetUserByDeviceIdResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
-	headers := &GetWeatherHeaders{}
-	_result = &GetWeatherResponse{}
-	_body, _err := client.GetWeatherWithOptions(request, headers, runtime)
+	headers := &GetUserByDeviceIdHeaders{}
+	_result = &GetUserByDeviceIdResponse{}
+	_body, _err := client.GetUserByDeviceIdWithOptions(request, headers, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -21704,16 +22798,16 @@ func (client *Client) GetWeatherWithOptions(tmpReq *GetWeatherRequest, headers *
 	}
 	request := &GetWeatherShrinkRequest{}
 	openapiutil.Convert(tmpReq, request)
-	if !tea.BoolValue(util.IsUnset(tea.ToMap(tmpReq.DeviceInfo))) {
-		request.DeviceInfoShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tea.ToMap(tmpReq.DeviceInfo), tea.String("DeviceInfo"), tea.String("json"))
+	if !tea.BoolValue(util.IsUnset(tmpReq.DeviceInfo)) {
+		request.DeviceInfoShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.DeviceInfo, tea.String("DeviceInfo"), tea.String("json"))
 	}
 
-	if !tea.BoolValue(util.IsUnset(tea.ToMap(tmpReq.Payload))) {
-		request.PayloadShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tea.ToMap(tmpReq.Payload), tea.String("Payload"), tea.String("json"))
+	if !tea.BoolValue(util.IsUnset(tmpReq.Payload)) {
+		request.PayloadShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.Payload, tea.String("Payload"), tea.String("json"))
 	}
 
-	if !tea.BoolValue(util.IsUnset(tea.ToMap(tmpReq.UserInfo))) {
-		request.UserInfoShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tea.ToMap(tmpReq.UserInfo), tea.String("UserInfo"), tea.String("json"))
+	if !tea.BoolValue(util.IsUnset(tmpReq.UserInfo)) {
+		request.UserInfoShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.UserInfo, tea.String("UserInfo"), tea.String("json"))
 	}
 
 	body := map[string]interface{}{}
@@ -21766,11 +22860,11 @@ func (client *Client) GetWeatherWithOptions(tmpReq *GetWeatherRequest, headers *
 	return _result, _err
 }
 
-func (client *Client) IndexControlPlayingList(request *IndexControlPlayingListRequest) (_result *IndexControlPlayingListResponse, _err error) {
+func (client *Client) GetWeather(request *GetWeatherRequest) (_result *GetWeatherResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
-	headers := &IndexControlPlayingListHeaders{}
-	_result = &IndexControlPlayingListResponse{}
-	_body, _err := client.IndexControlPlayingListWithOptions(request, headers, runtime)
+	headers := &GetWeatherHeaders{}
+	_result = &GetWeatherResponse{}
+	_body, _err := client.GetWeatherWithOptions(request, headers, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -21785,16 +22879,16 @@ func (client *Client) IndexControlPlayingListWithOptions(tmpReq *IndexControlPla
 	}
 	request := &IndexControlPlayingListShrinkRequest{}
 	openapiutil.Convert(tmpReq, request)
-	if !tea.BoolValue(util.IsUnset(tea.ToMap(tmpReq.DeviceInfo))) {
-		request.DeviceInfoShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tea.ToMap(tmpReq.DeviceInfo), tea.String("DeviceInfo"), tea.String("json"))
+	if !tea.BoolValue(util.IsUnset(tmpReq.DeviceInfo)) {
+		request.DeviceInfoShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.DeviceInfo, tea.String("DeviceInfo"), tea.String("json"))
 	}
 
-	if !tea.BoolValue(util.IsUnset(tea.ToMap(tmpReq.OpenIndexControlRequest))) {
-		request.OpenIndexControlRequestShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tea.ToMap(tmpReq.OpenIndexControlRequest), tea.String("OpenIndexControlRequest"), tea.String("json"))
+	if !tea.BoolValue(util.IsUnset(tmpReq.OpenIndexControlRequest)) {
+		request.OpenIndexControlRequestShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.OpenIndexControlRequest, tea.String("OpenIndexControlRequest"), tea.String("json"))
 	}
 
-	if !tea.BoolValue(util.IsUnset(tea.ToMap(tmpReq.UserInfo))) {
-		request.UserInfoShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tea.ToMap(tmpReq.UserInfo), tea.String("UserInfo"), tea.String("json"))
+	if !tea.BoolValue(util.IsUnset(tmpReq.UserInfo)) {
+		request.UserInfoShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.UserInfo, tea.String("UserInfo"), tea.String("json"))
 	}
 
 	query := map[string]interface{}{}
@@ -21849,11 +22943,11 @@ func (client *Client) IndexControlPlayingListWithOptions(tmpReq *IndexControlPla
 	return _result, _err
 }
 
-func (client *Client) ListAlarms(request *ListAlarmsRequest) (_result *ListAlarmsResponse, _err error) {
+func (client *Client) IndexControlPlayingList(request *IndexControlPlayingListRequest) (_result *IndexControlPlayingListResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
-	headers := &ListAlarmsHeaders{}
-	_result = &ListAlarmsResponse{}
-	_body, _err := client.ListAlarmsWithOptions(request, headers, runtime)
+	headers := &IndexControlPlayingListHeaders{}
+	_result = &IndexControlPlayingListResponse{}
+	_body, _err := client.IndexControlPlayingListWithOptions(request, headers, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -21868,16 +22962,16 @@ func (client *Client) ListAlarmsWithOptions(tmpReq *ListAlarmsRequest, headers *
 	}
 	request := &ListAlarmsShrinkRequest{}
 	openapiutil.Convert(tmpReq, request)
-	if !tea.BoolValue(util.IsUnset(tea.ToMap(tmpReq.DeviceInfo))) {
-		request.DeviceInfoShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tea.ToMap(tmpReq.DeviceInfo), tea.String("DeviceInfo"), tea.String("json"))
+	if !tea.BoolValue(util.IsUnset(tmpReq.DeviceInfo)) {
+		request.DeviceInfoShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.DeviceInfo, tea.String("DeviceInfo"), tea.String("json"))
 	}
 
-	if !tea.BoolValue(util.IsUnset(tea.ToMap(tmpReq.Payload))) {
-		request.PayloadShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tea.ToMap(tmpReq.Payload), tea.String("Payload"), tea.String("json"))
+	if !tea.BoolValue(util.IsUnset(tmpReq.Payload)) {
+		request.PayloadShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.Payload, tea.String("Payload"), tea.String("json"))
 	}
 
-	if !tea.BoolValue(util.IsUnset(tea.ToMap(tmpReq.UserInfo))) {
-		request.UserInfoShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tea.ToMap(tmpReq.UserInfo), tea.String("UserInfo"), tea.String("json"))
+	if !tea.BoolValue(util.IsUnset(tmpReq.UserInfo)) {
+		request.UserInfoShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.UserInfo, tea.String("UserInfo"), tea.String("json"))
 	}
 
 	body := map[string]interface{}{}
@@ -21930,11 +23024,11 @@ func (client *Client) ListAlarmsWithOptions(tmpReq *ListAlarmsRequest, headers *
 	return _result, _err
 }
 
-func (client *Client) ListAlbumDetail(request *ListAlbumDetailRequest) (_result *ListAlbumDetailResponse, _err error) {
+func (client *Client) ListAlarms(request *ListAlarmsRequest) (_result *ListAlarmsResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
-	headers := &ListAlbumDetailHeaders{}
-	_result = &ListAlbumDetailResponse{}
-	_body, _err := client.ListAlbumDetailWithOptions(request, headers, runtime)
+	headers := &ListAlarmsHeaders{}
+	_result = &ListAlarmsResponse{}
+	_body, _err := client.ListAlarmsWithOptions(request, headers, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -21997,11 +23091,11 @@ func (client *Client) ListAlbumDetailWithOptions(request *ListAlbumDetailRequest
 	return _result, _err
 }
 
-func (client *Client) ListAlbumIsAdded(request *ListAlbumIsAddedRequest) (_result *ListAlbumIsAddedResponse, _err error) {
+func (client *Client) ListAlbumDetail(request *ListAlbumDetailRequest) (_result *ListAlbumDetailResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
-	headers := &ListAlbumIsAddedHeaders{}
-	_result = &ListAlbumIsAddedResponse{}
-	_body, _err := client.ListAlbumIsAddedWithOptions(request, headers, runtime)
+	headers := &ListAlbumDetailHeaders{}
+	_result = &ListAlbumDetailResponse{}
+	_body, _err := client.ListAlbumDetailWithOptions(request, headers, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -22020,12 +23114,12 @@ func (client *Client) ListAlbumIsAddedWithOptions(tmpReq *ListAlbumIsAddedReques
 		request.AlbumIdListShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.AlbumIdList, tea.String("AlbumIdList"), tea.String("json"))
 	}
 
-	if !tea.BoolValue(util.IsUnset(tea.ToMap(tmpReq.DeviceInfo))) {
-		request.DeviceInfoShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tea.ToMap(tmpReq.DeviceInfo), tea.String("DeviceInfo"), tea.String("json"))
+	if !tea.BoolValue(util.IsUnset(tmpReq.DeviceInfo)) {
+		request.DeviceInfoShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.DeviceInfo, tea.String("DeviceInfo"), tea.String("json"))
 	}
 
-	if !tea.BoolValue(util.IsUnset(tea.ToMap(tmpReq.UserInfo))) {
-		request.UserInfoShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tea.ToMap(tmpReq.UserInfo), tea.String("UserInfo"), tea.String("json"))
+	if !tea.BoolValue(util.IsUnset(tmpReq.UserInfo)) {
+		request.UserInfoShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.UserInfo, tea.String("UserInfo"), tea.String("json"))
 	}
 
 	query := map[string]interface{}{}
@@ -22078,11 +23172,11 @@ func (client *Client) ListAlbumIsAddedWithOptions(tmpReq *ListAlbumIsAddedReques
 	return _result, _err
 }
 
-func (client *Client) ListCateContent(request *ListCateContentRequest) (_result *ListCateContentResponse, _err error) {
+func (client *Client) ListAlbumIsAdded(request *ListAlbumIsAddedRequest) (_result *ListAlbumIsAddedResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
-	headers := &ListCateContentHeaders{}
-	_result = &ListCateContentResponse{}
-	_body, _err := client.ListCateContentWithOptions(request, headers, runtime)
+	headers := &ListAlbumIsAddedHeaders{}
+	_result = &ListAlbumIsAddedResponse{}
+	_body, _err := client.ListAlbumIsAddedWithOptions(request, headers, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -22097,16 +23191,16 @@ func (client *Client) ListCateContentWithOptions(tmpReq *ListCateContentRequest,
 	}
 	request := &ListCateContentShrinkRequest{}
 	openapiutil.Convert(tmpReq, request)
-	if !tea.BoolValue(util.IsUnset(tea.ToMap(tmpReq.DeviceInfo))) {
-		request.DeviceInfoShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tea.ToMap(tmpReq.DeviceInfo), tea.String("DeviceInfo"), tea.String("json"))
+	if !tea.BoolValue(util.IsUnset(tmpReq.DeviceInfo)) {
+		request.DeviceInfoShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.DeviceInfo, tea.String("DeviceInfo"), tea.String("json"))
 	}
 
-	if !tea.BoolValue(util.IsUnset(tea.ToMap(tmpReq.Request))) {
-		request.RequestShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tea.ToMap(tmpReq.Request), tea.String("Request"), tea.String("json"))
+	if !tea.BoolValue(util.IsUnset(tmpReq.Request)) {
+		request.RequestShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.Request, tea.String("Request"), tea.String("json"))
 	}
 
-	if !tea.BoolValue(util.IsUnset(tea.ToMap(tmpReq.UserInfo))) {
-		request.UserInfoShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tea.ToMap(tmpReq.UserInfo), tea.String("UserInfo"), tea.String("json"))
+	if !tea.BoolValue(util.IsUnset(tmpReq.UserInfo)) {
+		request.UserInfoShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.UserInfo, tea.String("UserInfo"), tea.String("json"))
 	}
 
 	query := map[string]interface{}{}
@@ -22161,11 +23255,11 @@ func (client *Client) ListCateContentWithOptions(tmpReq *ListCateContentRequest,
 	return _result, _err
 }
 
-func (client *Client) ListCateInfo(request *ListCateInfoRequest) (_result *ListCateInfoResponse, _err error) {
+func (client *Client) ListCateContent(request *ListCateContentRequest) (_result *ListCateContentResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
-	headers := &ListCateInfoHeaders{}
-	_result = &ListCateInfoResponse{}
-	_body, _err := client.ListCateInfoWithOptions(request, headers, runtime)
+	headers := &ListCateContentHeaders{}
+	_result = &ListCateContentResponse{}
+	_body, _err := client.ListCateContentWithOptions(request, headers, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -22220,11 +23314,11 @@ func (client *Client) ListCateInfoWithOptions(request *ListCateInfoRequest, head
 	return _result, _err
 }
 
-func (client *Client) ListCommonCateFirstFloor(request *ListCommonCateFirstFloorRequest) (_result *ListCommonCateFirstFloorResponse, _err error) {
+func (client *Client) ListCateInfo(request *ListCateInfoRequest) (_result *ListCateInfoResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
-	headers := &ListCommonCateFirstFloorHeaders{}
-	_result = &ListCommonCateFirstFloorResponse{}
-	_body, _err := client.ListCommonCateFirstFloorWithOptions(request, headers, runtime)
+	headers := &ListCateInfoHeaders{}
+	_result = &ListCateInfoResponse{}
+	_body, _err := client.ListCateInfoWithOptions(request, headers, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -22279,11 +23373,11 @@ func (client *Client) ListCommonCateFirstFloorWithOptions(request *ListCommonCat
 	return _result, _err
 }
 
-func (client *Client) ListCommonCateSecondFloor(request *ListCommonCateSecondFloorRequest) (_result *ListCommonCateSecondFloorResponse, _err error) {
+func (client *Client) ListCommonCateFirstFloor(request *ListCommonCateFirstFloorRequest) (_result *ListCommonCateFirstFloorResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
-	headers := &ListCommonCateSecondFloorHeaders{}
-	_result = &ListCommonCateSecondFloorResponse{}
-	_body, _err := client.ListCommonCateSecondFloorWithOptions(request, headers, runtime)
+	headers := &ListCommonCateFirstFloorHeaders{}
+	_result = &ListCommonCateFirstFloorResponse{}
+	_body, _err := client.ListCommonCateFirstFloorWithOptions(request, headers, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -22338,11 +23432,11 @@ func (client *Client) ListCommonCateSecondFloorWithOptions(request *ListCommonCa
 	return _result, _err
 }
 
-func (client *Client) ListDeviceBasicInfo(request *ListDeviceBasicInfoRequest) (_result *ListDeviceBasicInfoResponse, _err error) {
+func (client *Client) ListCommonCateSecondFloor(request *ListCommonCateSecondFloorRequest) (_result *ListCommonCateSecondFloorResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
-	headers := &ListDeviceBasicInfoHeaders{}
-	_result = &ListDeviceBasicInfoResponse{}
-	_body, _err := client.ListDeviceBasicInfoWithOptions(request, headers, runtime)
+	headers := &ListCommonCateSecondFloorHeaders{}
+	_result = &ListCommonCateSecondFloorResponse{}
+	_body, _err := client.ListCommonCateSecondFloorWithOptions(request, headers, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -22357,8 +23451,8 @@ func (client *Client) ListDeviceBasicInfoWithOptions(tmpReq *ListDeviceBasicInfo
 	}
 	request := &ListDeviceBasicInfoShrinkRequest{}
 	openapiutil.Convert(tmpReq, request)
-	if !tea.BoolValue(util.IsUnset(tea.ToMap(tmpReq.DeviceInfos))) {
-		request.DeviceInfosShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tea.ToMap(tmpReq.DeviceInfos), tea.String("DeviceInfos"), tea.String("json"))
+	if !tea.BoolValue(util.IsUnset(tmpReq.DeviceInfos)) {
+		request.DeviceInfosShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.DeviceInfos, tea.String("DeviceInfos"), tea.String("json"))
 	}
 
 	query := map[string]interface{}{}
@@ -22403,11 +23497,11 @@ func (client *Client) ListDeviceBasicInfoWithOptions(tmpReq *ListDeviceBasicInfo
 	return _result, _err
 }
 
-func (client *Client) ListDeviceByUserId(request *ListDeviceByUserIdRequest) (_result *ListDeviceByUserIdResponse, _err error) {
+func (client *Client) ListDeviceBasicInfo(request *ListDeviceBasicInfoRequest) (_result *ListDeviceBasicInfoResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
-	headers := &ListDeviceByUserIdHeaders{}
-	_result = &ListDeviceByUserIdResponse{}
-	_body, _err := client.ListDeviceByUserIdWithOptions(request, headers, runtime)
+	headers := &ListDeviceBasicInfoHeaders{}
+	_result = &ListDeviceBasicInfoResponse{}
+	_body, _err := client.ListDeviceBasicInfoWithOptions(request, headers, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -22422,8 +23516,8 @@ func (client *Client) ListDeviceByUserIdWithOptions(tmpReq *ListDeviceByUserIdRe
 	}
 	request := &ListDeviceByUserIdShrinkRequest{}
 	openapiutil.Convert(tmpReq, request)
-	if !tea.BoolValue(util.IsUnset(tea.ToMap(tmpReq.UserInfo))) {
-		request.UserInfoShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tea.ToMap(tmpReq.UserInfo), tea.String("UserInfo"), tea.String("json"))
+	if !tea.BoolValue(util.IsUnset(tmpReq.UserInfo)) {
+		request.UserInfoShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.UserInfo, tea.String("UserInfo"), tea.String("json"))
 	}
 
 	query := map[string]interface{}{}
@@ -22468,11 +23562,11 @@ func (client *Client) ListDeviceByUserIdWithOptions(tmpReq *ListDeviceByUserIdRe
 	return _result, _err
 }
 
-func (client *Client) ListDeviceByUserIdAndChanel(request *ListDeviceByUserIdAndChanelRequest) (_result *ListDeviceByUserIdAndChanelResponse, _err error) {
+func (client *Client) ListDeviceByUserId(request *ListDeviceByUserIdRequest) (_result *ListDeviceByUserIdResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
-	headers := &ListDeviceByUserIdAndChanelHeaders{}
-	_result = &ListDeviceByUserIdAndChanelResponse{}
-	_body, _err := client.ListDeviceByUserIdAndChanelWithOptions(request, headers, runtime)
+	headers := &ListDeviceByUserIdHeaders{}
+	_result = &ListDeviceByUserIdResponse{}
+	_body, _err := client.ListDeviceByUserIdWithOptions(request, headers, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -22487,12 +23581,12 @@ func (client *Client) ListDeviceByUserIdAndChanelWithOptions(tmpReq *ListDeviceB
 	}
 	request := &ListDeviceByUserIdAndChanelShrinkRequest{}
 	openapiutil.Convert(tmpReq, request)
-	if !tea.BoolValue(util.IsUnset(tea.ToMap(tmpReq.ChannelInfo))) {
-		request.ChannelInfoShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tea.ToMap(tmpReq.ChannelInfo), tea.String("ChannelInfo"), tea.String("json"))
+	if !tea.BoolValue(util.IsUnset(tmpReq.ChannelInfo)) {
+		request.ChannelInfoShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.ChannelInfo, tea.String("ChannelInfo"), tea.String("json"))
 	}
 
-	if !tea.BoolValue(util.IsUnset(tea.ToMap(tmpReq.UserInfo))) {
-		request.UserInfoShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tea.ToMap(tmpReq.UserInfo), tea.String("UserInfo"), tea.String("json"))
+	if !tea.BoolValue(util.IsUnset(tmpReq.UserInfo)) {
+		request.UserInfoShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.UserInfo, tea.String("UserInfo"), tea.String("json"))
 	}
 
 	query := map[string]interface{}{}
@@ -22541,11 +23635,11 @@ func (client *Client) ListDeviceByUserIdAndChanelWithOptions(tmpReq *ListDeviceB
 	return _result, _err
 }
 
-func (client *Client) ListDeviceIdByIdentities(request *ListDeviceIdByIdentitiesRequest) (_result *ListDeviceIdByIdentitiesResponse, _err error) {
+func (client *Client) ListDeviceByUserIdAndChanel(request *ListDeviceByUserIdAndChanelRequest) (_result *ListDeviceByUserIdAndChanelResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
-	headers := &ListDeviceIdByIdentitiesHeaders{}
-	_result = &ListDeviceIdByIdentitiesResponse{}
-	_body, _err := client.ListDeviceIdByIdentitiesWithOptions(request, headers, runtime)
+	headers := &ListDeviceByUserIdAndChanelHeaders{}
+	_result = &ListDeviceByUserIdAndChanelResponse{}
+	_body, _err := client.ListDeviceByUserIdAndChanelWithOptions(request, headers, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -22622,11 +23716,11 @@ func (client *Client) ListDeviceIdByIdentitiesWithOptions(tmpReq *ListDeviceIdBy
 	return _result, _err
 }
 
-func (client *Client) ListMusic(request *ListMusicRequest) (_result *ListMusicResponse, _err error) {
+func (client *Client) ListDeviceIdByIdentities(request *ListDeviceIdByIdentitiesRequest) (_result *ListDeviceIdByIdentitiesResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
-	headers := &ListMusicHeaders{}
-	_result = &ListMusicResponse{}
-	_body, _err := client.ListMusicWithOptions(request, headers, runtime)
+	headers := &ListDeviceIdByIdentitiesHeaders{}
+	_result = &ListDeviceIdByIdentitiesResponse{}
+	_body, _err := client.ListDeviceIdByIdentitiesWithOptions(request, headers, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -22641,16 +23735,16 @@ func (client *Client) ListMusicWithOptions(tmpReq *ListMusicRequest, headers *Li
 	}
 	request := &ListMusicShrinkRequest{}
 	openapiutil.Convert(tmpReq, request)
-	if !tea.BoolValue(util.IsUnset(tea.ToMap(tmpReq.DeviceInfo))) {
-		request.DeviceInfoShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tea.ToMap(tmpReq.DeviceInfo), tea.String("DeviceInfo"), tea.String("json"))
+	if !tea.BoolValue(util.IsUnset(tmpReq.DeviceInfo)) {
+		request.DeviceInfoShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.DeviceInfo, tea.String("DeviceInfo"), tea.String("json"))
 	}
 
-	if !tea.BoolValue(util.IsUnset(tea.ToMap(tmpReq.Payload))) {
-		request.PayloadShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tea.ToMap(tmpReq.Payload), tea.String("Payload"), tea.String("json"))
+	if !tea.BoolValue(util.IsUnset(tmpReq.Payload)) {
+		request.PayloadShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.Payload, tea.String("Payload"), tea.String("json"))
 	}
 
-	if !tea.BoolValue(util.IsUnset(tea.ToMap(tmpReq.UserInfo))) {
-		request.UserInfoShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tea.ToMap(tmpReq.UserInfo), tea.String("UserInfo"), tea.String("json"))
+	if !tea.BoolValue(util.IsUnset(tmpReq.UserInfo)) {
+		request.UserInfoShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.UserInfo, tea.String("UserInfo"), tea.String("json"))
 	}
 
 	body := map[string]interface{}{}
@@ -22703,11 +23797,11 @@ func (client *Client) ListMusicWithOptions(tmpReq *ListMusicRequest, headers *Li
 	return _result, _err
 }
 
-func (client *Client) ListPlayHistory(request *ListPlayHistoryRequest) (_result *ListPlayHistoryResponse, _err error) {
+func (client *Client) ListMusic(request *ListMusicRequest) (_result *ListMusicResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
-	headers := &ListPlayHistoryHeaders{}
-	_result = &ListPlayHistoryResponse{}
-	_body, _err := client.ListPlayHistoryWithOptions(request, headers, runtime)
+	headers := &ListMusicHeaders{}
+	_result = &ListMusicResponse{}
+	_body, _err := client.ListMusicWithOptions(request, headers, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -22722,16 +23816,16 @@ func (client *Client) ListPlayHistoryWithOptions(tmpReq *ListPlayHistoryRequest,
 	}
 	request := &ListPlayHistoryShrinkRequest{}
 	openapiutil.Convert(tmpReq, request)
-	if !tea.BoolValue(util.IsUnset(tea.ToMap(tmpReq.DeviceInfo))) {
-		request.DeviceInfoShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tea.ToMap(tmpReq.DeviceInfo), tea.String("DeviceInfo"), tea.String("json"))
+	if !tea.BoolValue(util.IsUnset(tmpReq.DeviceInfo)) {
+		request.DeviceInfoShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.DeviceInfo, tea.String("DeviceInfo"), tea.String("json"))
 	}
 
-	if !tea.BoolValue(util.IsUnset(tea.ToMap(tmpReq.Request))) {
-		request.RequestShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tea.ToMap(tmpReq.Request), tea.String("Request"), tea.String("json"))
+	if !tea.BoolValue(util.IsUnset(tmpReq.Request)) {
+		request.RequestShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.Request, tea.String("Request"), tea.String("json"))
 	}
 
-	if !tea.BoolValue(util.IsUnset(tea.ToMap(tmpReq.UserInfo))) {
-		request.UserInfoShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tea.ToMap(tmpReq.UserInfo), tea.String("UserInfo"), tea.String("json"))
+	if !tea.BoolValue(util.IsUnset(tmpReq.UserInfo)) {
+		request.UserInfoShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.UserInfo, tea.String("UserInfo"), tea.String("json"))
 	}
 
 	query := map[string]interface{}{}
@@ -22786,11 +23880,11 @@ func (client *Client) ListPlayHistoryWithOptions(tmpReq *ListPlayHistoryRequest,
 	return _result, _err
 }
 
-func (client *Client) ListRecommendContent(request *ListRecommendContentRequest) (_result *ListRecommendContentResponse, _err error) {
+func (client *Client) ListPlayHistory(request *ListPlayHistoryRequest) (_result *ListPlayHistoryResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
-	headers := &ListRecommendContentHeaders{}
-	_result = &ListRecommendContentResponse{}
-	_body, _err := client.ListRecommendContentWithOptions(request, headers, runtime)
+	headers := &ListPlayHistoryHeaders{}
+	_result = &ListPlayHistoryResponse{}
+	_body, _err := client.ListPlayHistoryWithOptions(request, headers, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -22805,16 +23899,16 @@ func (client *Client) ListRecommendContentWithOptions(tmpReq *ListRecommendConte
 	}
 	request := &ListRecommendContentShrinkRequest{}
 	openapiutil.Convert(tmpReq, request)
-	if !tea.BoolValue(util.IsUnset(tea.ToMap(tmpReq.DeviceInfo))) {
-		request.DeviceInfoShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tea.ToMap(tmpReq.DeviceInfo), tea.String("DeviceInfo"), tea.String("json"))
+	if !tea.BoolValue(util.IsUnset(tmpReq.DeviceInfo)) {
+		request.DeviceInfoShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.DeviceInfo, tea.String("DeviceInfo"), tea.String("json"))
 	}
 
-	if !tea.BoolValue(util.IsUnset(tea.ToMap(tmpReq.Request))) {
-		request.RequestShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tea.ToMap(tmpReq.Request), tea.String("Request"), tea.String("json"))
+	if !tea.BoolValue(util.IsUnset(tmpReq.Request)) {
+		request.RequestShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.Request, tea.String("Request"), tea.String("json"))
 	}
 
-	if !tea.BoolValue(util.IsUnset(tea.ToMap(tmpReq.UserInfo))) {
-		request.UserInfoShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tea.ToMap(tmpReq.UserInfo), tea.String("UserInfo"), tea.String("json"))
+	if !tea.BoolValue(util.IsUnset(tmpReq.UserInfo)) {
+		request.UserInfoShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.UserInfo, tea.String("UserInfo"), tea.String("json"))
 	}
 
 	query := map[string]interface{}{}
@@ -22869,11 +23963,11 @@ func (client *Client) ListRecommendContentWithOptions(tmpReq *ListRecommendConte
 	return _result, _err
 }
 
-func (client *Client) ListSub(request *ListSubRequest) (_result *ListSubResponse, _err error) {
+func (client *Client) ListRecommendContent(request *ListRecommendContentRequest) (_result *ListRecommendContentResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
-	headers := &ListSubHeaders{}
-	_result = &ListSubResponse{}
-	_body, _err := client.ListSubWithOptions(request, headers, runtime)
+	headers := &ListRecommendContentHeaders{}
+	_result = &ListRecommendContentResponse{}
+	_body, _err := client.ListRecommendContentWithOptions(request, headers, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -22888,16 +23982,16 @@ func (client *Client) ListSubWithOptions(tmpReq *ListSubRequest, headers *ListSu
 	}
 	request := &ListSubShrinkRequest{}
 	openapiutil.Convert(tmpReq, request)
-	if !tea.BoolValue(util.IsUnset(tea.ToMap(tmpReq.DeviceInfo))) {
-		request.DeviceInfoShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tea.ToMap(tmpReq.DeviceInfo), tea.String("DeviceInfo"), tea.String("json"))
+	if !tea.BoolValue(util.IsUnset(tmpReq.DeviceInfo)) {
+		request.DeviceInfoShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.DeviceInfo, tea.String("DeviceInfo"), tea.String("json"))
 	}
 
-	if !tea.BoolValue(util.IsUnset(tea.ToMap(tmpReq.Page))) {
-		request.PageShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tea.ToMap(tmpReq.Page), tea.String("Page"), tea.String("json"))
+	if !tea.BoolValue(util.IsUnset(tmpReq.Page)) {
+		request.PageShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.Page, tea.String("Page"), tea.String("json"))
 	}
 
-	if !tea.BoolValue(util.IsUnset(tea.ToMap(tmpReq.UserInfo))) {
-		request.UserInfoShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tea.ToMap(tmpReq.UserInfo), tea.String("UserInfo"), tea.String("json"))
+	if !tea.BoolValue(util.IsUnset(tmpReq.UserInfo)) {
+		request.UserInfoShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.UserInfo, tea.String("UserInfo"), tea.String("json"))
 	}
 
 	query := map[string]interface{}{}
@@ -22950,11 +24044,11 @@ func (client *Client) ListSubWithOptions(tmpReq *ListSubRequest, headers *ListSu
 	return _result, _err
 }
 
-func (client *Client) ListSubAlbum(request *ListSubAlbumRequest) (_result *ListSubAlbumResponse, _err error) {
+func (client *Client) ListSub(request *ListSubRequest) (_result *ListSubResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
-	headers := &ListSubAlbumHeaders{}
-	_result = &ListSubAlbumResponse{}
-	_body, _err := client.ListSubAlbumWithOptions(request, headers, runtime)
+	headers := &ListSubHeaders{}
+	_result = &ListSubResponse{}
+	_body, _err := client.ListSubWithOptions(request, headers, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -22969,16 +24063,16 @@ func (client *Client) ListSubAlbumWithOptions(tmpReq *ListSubAlbumRequest, heade
 	}
 	request := &ListSubAlbumShrinkRequest{}
 	openapiutil.Convert(tmpReq, request)
-	if !tea.BoolValue(util.IsUnset(tea.ToMap(tmpReq.DeviceInfo))) {
-		request.DeviceInfoShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tea.ToMap(tmpReq.DeviceInfo), tea.String("DeviceInfo"), tea.String("json"))
+	if !tea.BoolValue(util.IsUnset(tmpReq.DeviceInfo)) {
+		request.DeviceInfoShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.DeviceInfo, tea.String("DeviceInfo"), tea.String("json"))
 	}
 
-	if !tea.BoolValue(util.IsUnset(tea.ToMap(tmpReq.QuerySubscriptionAlbumRequest))) {
-		request.QuerySubscriptionAlbumRequestShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tea.ToMap(tmpReq.QuerySubscriptionAlbumRequest), tea.String("QuerySubscriptionAlbumRequest"), tea.String("json"))
+	if !tea.BoolValue(util.IsUnset(tmpReq.QuerySubscriptionAlbumRequest)) {
+		request.QuerySubscriptionAlbumRequestShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.QuerySubscriptionAlbumRequest, tea.String("QuerySubscriptionAlbumRequest"), tea.String("json"))
 	}
 
-	if !tea.BoolValue(util.IsUnset(tea.ToMap(tmpReq.UserInfo))) {
-		request.UserInfoShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tea.ToMap(tmpReq.UserInfo), tea.String("UserInfo"), tea.String("json"))
+	if !tea.BoolValue(util.IsUnset(tmpReq.UserInfo)) {
+		request.UserInfoShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.UserInfo, tea.String("UserInfo"), tea.String("json"))
 	}
 
 	query := map[string]interface{}{}
@@ -23031,11 +24125,11 @@ func (client *Client) ListSubAlbumWithOptions(tmpReq *ListSubAlbumRequest, heade
 	return _result, _err
 }
 
-func (client *Client) ListSubscriptionAlbumCategory(request *ListSubscriptionAlbumCategoryRequest) (_result *ListSubscriptionAlbumCategoryResponse, _err error) {
+func (client *Client) ListSubAlbum(request *ListSubAlbumRequest) (_result *ListSubAlbumResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
-	headers := &ListSubscriptionAlbumCategoryHeaders{}
-	_result = &ListSubscriptionAlbumCategoryResponse{}
-	_body, _err := client.ListSubscriptionAlbumCategoryWithOptions(request, headers, runtime)
+	headers := &ListSubAlbumHeaders{}
+	_result = &ListSubAlbumResponse{}
+	_body, _err := client.ListSubAlbumWithOptions(request, headers, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -23090,11 +24184,11 @@ func (client *Client) ListSubscriptionAlbumCategoryWithOptions(request *ListSubs
 	return _result, _err
 }
 
-func (client *Client) ListUserMessage(request *ListUserMessageRequest) (_result *ListUserMessageResponse, _err error) {
+func (client *Client) ListSubscriptionAlbumCategory(request *ListSubscriptionAlbumCategoryRequest) (_result *ListSubscriptionAlbumCategoryResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
-	headers := &ListUserMessageHeaders{}
-	_result = &ListUserMessageResponse{}
-	_body, _err := client.ListUserMessageWithOptions(request, headers, runtime)
+	headers := &ListSubscriptionAlbumCategoryHeaders{}
+	_result = &ListSubscriptionAlbumCategoryResponse{}
+	_body, _err := client.ListSubscriptionAlbumCategoryWithOptions(request, headers, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -23109,8 +24203,8 @@ func (client *Client) ListUserMessageWithOptions(tmpReq *ListUserMessageRequest,
 	}
 	request := &ListUserMessageShrinkRequest{}
 	openapiutil.Convert(tmpReq, request)
-	if !tea.BoolValue(util.IsUnset(tea.ToMap(tmpReq.UserInfo))) {
-		request.UserInfoShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tea.ToMap(tmpReq.UserInfo), tea.String("UserInfo"), tea.String("json"))
+	if !tea.BoolValue(util.IsUnset(tmpReq.UserInfo)) {
+		request.UserInfoShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.UserInfo, tea.String("UserInfo"), tea.String("json"))
 	}
 
 	query := map[string]interface{}{}
@@ -23163,11 +24257,11 @@ func (client *Client) ListUserMessageWithOptions(tmpReq *ListUserMessageRequest,
 	return _result, _err
 }
 
-func (client *Client) PlayAndPauseControl(request *PlayAndPauseControlRequest) (_result *PlayAndPauseControlResponse, _err error) {
+func (client *Client) ListUserMessage(request *ListUserMessageRequest) (_result *ListUserMessageResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
-	headers := &PlayAndPauseControlHeaders{}
-	_result = &PlayAndPauseControlResponse{}
-	_body, _err := client.PlayAndPauseControlWithOptions(request, headers, runtime)
+	headers := &ListUserMessageHeaders{}
+	_result = &ListUserMessageResponse{}
+	_body, _err := client.ListUserMessageWithOptions(request, headers, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -23182,16 +24276,16 @@ func (client *Client) PlayAndPauseControlWithOptions(tmpReq *PlayAndPauseControl
 	}
 	request := &PlayAndPauseControlShrinkRequest{}
 	openapiutil.Convert(tmpReq, request)
-	if !tea.BoolValue(util.IsUnset(tea.ToMap(tmpReq.DeviceInfo))) {
-		request.DeviceInfoShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tea.ToMap(tmpReq.DeviceInfo), tea.String("DeviceInfo"), tea.String("json"))
+	if !tea.BoolValue(util.IsUnset(tmpReq.DeviceInfo)) {
+		request.DeviceInfoShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.DeviceInfo, tea.String("DeviceInfo"), tea.String("json"))
 	}
 
-	if !tea.BoolValue(util.IsUnset(tea.ToMap(tmpReq.OpenPlayAndPauseControlParam))) {
-		request.OpenPlayAndPauseControlParamShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tea.ToMap(tmpReq.OpenPlayAndPauseControlParam), tea.String("OpenPlayAndPauseControlParam"), tea.String("json"))
+	if !tea.BoolValue(util.IsUnset(tmpReq.OpenPlayAndPauseControlParam)) {
+		request.OpenPlayAndPauseControlParamShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.OpenPlayAndPauseControlParam, tea.String("OpenPlayAndPauseControlParam"), tea.String("json"))
 	}
 
-	if !tea.BoolValue(util.IsUnset(tea.ToMap(tmpReq.UserInfo))) {
-		request.UserInfoShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tea.ToMap(tmpReq.UserInfo), tea.String("UserInfo"), tea.String("json"))
+	if !tea.BoolValue(util.IsUnset(tmpReq.UserInfo)) {
+		request.UserInfoShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.UserInfo, tea.String("UserInfo"), tea.String("json"))
 	}
 
 	query := map[string]interface{}{}
@@ -23246,11 +24340,11 @@ func (client *Client) PlayAndPauseControlWithOptions(tmpReq *PlayAndPauseControl
 	return _result, _err
 }
 
-func (client *Client) PlayModeControl(request *PlayModeControlRequest) (_result *PlayModeControlResponse, _err error) {
+func (client *Client) PlayAndPauseControl(request *PlayAndPauseControlRequest) (_result *PlayAndPauseControlResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
-	headers := &PlayModeControlHeaders{}
-	_result = &PlayModeControlResponse{}
-	_body, _err := client.PlayModeControlWithOptions(request, headers, runtime)
+	headers := &PlayAndPauseControlHeaders{}
+	_result = &PlayAndPauseControlResponse{}
+	_body, _err := client.PlayAndPauseControlWithOptions(request, headers, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -23265,16 +24359,16 @@ func (client *Client) PlayModeControlWithOptions(tmpReq *PlayModeControlRequest,
 	}
 	request := &PlayModeControlShrinkRequest{}
 	openapiutil.Convert(tmpReq, request)
-	if !tea.BoolValue(util.IsUnset(tea.ToMap(tmpReq.DeviceInfo))) {
-		request.DeviceInfoShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tea.ToMap(tmpReq.DeviceInfo), tea.String("DeviceInfo"), tea.String("json"))
+	if !tea.BoolValue(util.IsUnset(tmpReq.DeviceInfo)) {
+		request.DeviceInfoShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.DeviceInfo, tea.String("DeviceInfo"), tea.String("json"))
 	}
 
-	if !tea.BoolValue(util.IsUnset(tea.ToMap(tmpReq.OpenPlayModeControlRequest))) {
-		request.OpenPlayModeControlRequestShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tea.ToMap(tmpReq.OpenPlayModeControlRequest), tea.String("OpenPlayModeControlRequest"), tea.String("json"))
+	if !tea.BoolValue(util.IsUnset(tmpReq.OpenPlayModeControlRequest)) {
+		request.OpenPlayModeControlRequestShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.OpenPlayModeControlRequest, tea.String("OpenPlayModeControlRequest"), tea.String("json"))
 	}
 
-	if !tea.BoolValue(util.IsUnset(tea.ToMap(tmpReq.UserInfo))) {
-		request.UserInfoShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tea.ToMap(tmpReq.UserInfo), tea.String("UserInfo"), tea.String("json"))
+	if !tea.BoolValue(util.IsUnset(tmpReq.UserInfo)) {
+		request.UserInfoShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.UserInfo, tea.String("UserInfo"), tea.String("json"))
 	}
 
 	query := map[string]interface{}{}
@@ -23329,11 +24423,11 @@ func (client *Client) PlayModeControlWithOptions(tmpReq *PlayModeControlRequest,
 	return _result, _err
 }
 
-func (client *Client) PreviousAndNextControl(request *PreviousAndNextControlRequest) (_result *PreviousAndNextControlResponse, _err error) {
+func (client *Client) PlayModeControl(request *PlayModeControlRequest) (_result *PlayModeControlResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
-	headers := &PreviousAndNextControlHeaders{}
-	_result = &PreviousAndNextControlResponse{}
-	_body, _err := client.PreviousAndNextControlWithOptions(request, headers, runtime)
+	headers := &PlayModeControlHeaders{}
+	_result = &PlayModeControlResponse{}
+	_body, _err := client.PlayModeControlWithOptions(request, headers, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -23348,16 +24442,16 @@ func (client *Client) PreviousAndNextControlWithOptions(tmpReq *PreviousAndNextC
 	}
 	request := &PreviousAndNextControlShrinkRequest{}
 	openapiutil.Convert(tmpReq, request)
-	if !tea.BoolValue(util.IsUnset(tea.ToMap(tmpReq.DeviceInfo))) {
-		request.DeviceInfoShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tea.ToMap(tmpReq.DeviceInfo), tea.String("DeviceInfo"), tea.String("json"))
+	if !tea.BoolValue(util.IsUnset(tmpReq.DeviceInfo)) {
+		request.DeviceInfoShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.DeviceInfo, tea.String("DeviceInfo"), tea.String("json"))
 	}
 
-	if !tea.BoolValue(util.IsUnset(tea.ToMap(tmpReq.OpenControlPlayingListRequest))) {
-		request.OpenControlPlayingListRequestShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tea.ToMap(tmpReq.OpenControlPlayingListRequest), tea.String("OpenControlPlayingListRequest"), tea.String("json"))
+	if !tea.BoolValue(util.IsUnset(tmpReq.OpenControlPlayingListRequest)) {
+		request.OpenControlPlayingListRequestShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.OpenControlPlayingListRequest, tea.String("OpenControlPlayingListRequest"), tea.String("json"))
 	}
 
-	if !tea.BoolValue(util.IsUnset(tea.ToMap(tmpReq.UserInfo))) {
-		request.UserInfoShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tea.ToMap(tmpReq.UserInfo), tea.String("UserInfo"), tea.String("json"))
+	if !tea.BoolValue(util.IsUnset(tmpReq.UserInfo)) {
+		request.UserInfoShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.UserInfo, tea.String("UserInfo"), tea.String("json"))
 	}
 
 	query := map[string]interface{}{}
@@ -23412,11 +24506,11 @@ func (client *Client) PreviousAndNextControlWithOptions(tmpReq *PreviousAndNextC
 	return _result, _err
 }
 
-func (client *Client) ProgressControl(request *ProgressControlRequest) (_result *ProgressControlResponse, _err error) {
+func (client *Client) PreviousAndNextControl(request *PreviousAndNextControlRequest) (_result *PreviousAndNextControlResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
-	headers := &ProgressControlHeaders{}
-	_result = &ProgressControlResponse{}
-	_body, _err := client.ProgressControlWithOptions(request, headers, runtime)
+	headers := &PreviousAndNextControlHeaders{}
+	_result = &PreviousAndNextControlResponse{}
+	_body, _err := client.PreviousAndNextControlWithOptions(request, headers, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -23431,16 +24525,16 @@ func (client *Client) ProgressControlWithOptions(tmpReq *ProgressControlRequest,
 	}
 	request := &ProgressControlShrinkRequest{}
 	openapiutil.Convert(tmpReq, request)
-	if !tea.BoolValue(util.IsUnset(tea.ToMap(tmpReq.DeviceInfo))) {
-		request.DeviceInfoShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tea.ToMap(tmpReq.DeviceInfo), tea.String("DeviceInfo"), tea.String("json"))
+	if !tea.BoolValue(util.IsUnset(tmpReq.DeviceInfo)) {
+		request.DeviceInfoShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.DeviceInfo, tea.String("DeviceInfo"), tea.String("json"))
 	}
 
-	if !tea.BoolValue(util.IsUnset(tea.ToMap(tmpReq.OpenProgressControlRequest))) {
-		request.OpenProgressControlRequestShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tea.ToMap(tmpReq.OpenProgressControlRequest), tea.String("OpenProgressControlRequest"), tea.String("json"))
+	if !tea.BoolValue(util.IsUnset(tmpReq.OpenProgressControlRequest)) {
+		request.OpenProgressControlRequestShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.OpenProgressControlRequest, tea.String("OpenProgressControlRequest"), tea.String("json"))
 	}
 
-	if !tea.BoolValue(util.IsUnset(tea.ToMap(tmpReq.UserInfo))) {
-		request.UserInfoShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tea.ToMap(tmpReq.UserInfo), tea.String("UserInfo"), tea.String("json"))
+	if !tea.BoolValue(util.IsUnset(tmpReq.UserInfo)) {
+		request.UserInfoShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.UserInfo, tea.String("UserInfo"), tea.String("json"))
 	}
 
 	query := map[string]interface{}{}
@@ -23495,11 +24589,11 @@ func (client *Client) ProgressControlWithOptions(tmpReq *ProgressControlRequest,
 	return _result, _err
 }
 
-func (client *Client) QueryMusicType(request *QueryMusicTypeRequest) (_result *QueryMusicTypeResponse, _err error) {
+func (client *Client) ProgressControl(request *ProgressControlRequest) (_result *ProgressControlResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
-	headers := &QueryMusicTypeHeaders{}
-	_result = &QueryMusicTypeResponse{}
-	_body, _err := client.QueryMusicTypeWithOptions(request, headers, runtime)
+	headers := &ProgressControlHeaders{}
+	_result = &ProgressControlResponse{}
+	_body, _err := client.ProgressControlWithOptions(request, headers, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -23514,16 +24608,16 @@ func (client *Client) QueryMusicTypeWithOptions(tmpReq *QueryMusicTypeRequest, h
 	}
 	request := &QueryMusicTypeShrinkRequest{}
 	openapiutil.Convert(tmpReq, request)
-	if !tea.BoolValue(util.IsUnset(tea.ToMap(tmpReq.DeviceInfo))) {
-		request.DeviceInfoShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tea.ToMap(tmpReq.DeviceInfo), tea.String("DeviceInfo"), tea.String("json"))
+	if !tea.BoolValue(util.IsUnset(tmpReq.DeviceInfo)) {
+		request.DeviceInfoShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.DeviceInfo, tea.String("DeviceInfo"), tea.String("json"))
 	}
 
-	if !tea.BoolValue(util.IsUnset(tea.ToMap(tmpReq.Payload))) {
-		request.PayloadShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tea.ToMap(tmpReq.Payload), tea.String("Payload"), tea.String("json"))
+	if !tea.BoolValue(util.IsUnset(tmpReq.Payload)) {
+		request.PayloadShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.Payload, tea.String("Payload"), tea.String("json"))
 	}
 
-	if !tea.BoolValue(util.IsUnset(tea.ToMap(tmpReq.UserInfo))) {
-		request.UserInfoShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tea.ToMap(tmpReq.UserInfo), tea.String("UserInfo"), tea.String("json"))
+	if !tea.BoolValue(util.IsUnset(tmpReq.UserInfo)) {
+		request.UserInfoShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.UserInfo, tea.String("UserInfo"), tea.String("json"))
 	}
 
 	body := map[string]interface{}{}
@@ -23576,11 +24670,74 @@ func (client *Client) QueryMusicTypeWithOptions(tmpReq *QueryMusicTypeRequest, h
 	return _result, _err
 }
 
-func (client *Client) ReadMessage(request *ReadMessageRequest) (_result *ReadMessageResponse, _err error) {
+func (client *Client) QueryMusicType(request *QueryMusicTypeRequest) (_result *QueryMusicTypeResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
-	headers := &ReadMessageHeaders{}
-	_result = &ReadMessageResponse{}
-	_body, _err := client.ReadMessageWithOptions(request, headers, runtime)
+	headers := &QueryMusicTypeHeaders{}
+	_result = &QueryMusicTypeResponse{}
+	_body, _err := client.QueryMusicTypeWithOptions(request, headers, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) QueryUserDeviceListByTmeUserIdWithOptions(request *QueryUserDeviceListByTmeUserIdRequest, headers *QueryUserDeviceListByTmeUserIdHeaders, runtime *util.RuntimeOptions) (_result *QueryUserDeviceListByTmeUserIdResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.Sp)) {
+		query["Sp"] = request.Sp
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.TmeUserId)) {
+		query["TmeUserId"] = request.TmeUserId
+	}
+
+	realHeaders := make(map[string]*string)
+	if !tea.BoolValue(util.IsUnset(headers.CommonHeaders)) {
+		realHeaders = headers.CommonHeaders
+	}
+
+	if !tea.BoolValue(util.IsUnset(headers.XAcsAligenieAccessToken)) {
+		realHeaders["x-acs-aligenie-access-token"] = util.ToJSONString(headers.XAcsAligenieAccessToken)
+	}
+
+	if !tea.BoolValue(util.IsUnset(headers.Authorization)) {
+		realHeaders["Authorization"] = util.ToJSONString(headers.Authorization)
+	}
+
+	req := &openapi.OpenApiRequest{
+		Headers: realHeaders,
+		Query:   openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("QueryUserDeviceListByTmeUserId"),
+		Version:     tea.String("ssp_1.0"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/v1.0/ssp/queryUserDeviceListByTmeUserId"),
+		Method:      tea.String("GET"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("ROA"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &QueryUserDeviceListByTmeUserIdResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) QueryUserDeviceListByTmeUserId(request *QueryUserDeviceListByTmeUserIdRequest) (_result *QueryUserDeviceListByTmeUserIdResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	headers := &QueryUserDeviceListByTmeUserIdHeaders{}
+	_result = &QueryUserDeviceListByTmeUserIdResponse{}
+	_body, _err := client.QueryUserDeviceListByTmeUserIdWithOptions(request, headers, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -23595,8 +24752,8 @@ func (client *Client) ReadMessageWithOptions(tmpReq *ReadMessageRequest, headers
 	}
 	request := &ReadMessageShrinkRequest{}
 	openapiutil.Convert(tmpReq, request)
-	if !tea.BoolValue(util.IsUnset(tea.ToMap(tmpReq.UserInfo))) {
-		request.UserInfoShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tea.ToMap(tmpReq.UserInfo), tea.String("UserInfo"), tea.String("json"))
+	if !tea.BoolValue(util.IsUnset(tmpReq.UserInfo)) {
+		request.UserInfoShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.UserInfo, tea.String("UserInfo"), tea.String("json"))
 	}
 
 	query := map[string]interface{}{}
@@ -23645,11 +24802,11 @@ func (client *Client) ReadMessageWithOptions(tmpReq *ReadMessageRequest, headers
 	return _result, _err
 }
 
-func (client *Client) ScanCodeBind(request *ScanCodeBindRequest) (_result *ScanCodeBindResponse, _err error) {
+func (client *Client) ReadMessage(request *ReadMessageRequest) (_result *ReadMessageResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
-	headers := &ScanCodeBindHeaders{}
-	_result = &ScanCodeBindResponse{}
-	_body, _err := client.ScanCodeBindWithOptions(request, headers, runtime)
+	headers := &ReadMessageHeaders{}
+	_result = &ReadMessageResponse{}
+	_body, _err := client.ReadMessageWithOptions(request, headers, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -23664,12 +24821,12 @@ func (client *Client) ScanCodeBindWithOptions(tmpReq *ScanCodeBindRequest, heade
 	}
 	request := &ScanCodeBindShrinkRequest{}
 	openapiutil.Convert(tmpReq, request)
-	if !tea.BoolValue(util.IsUnset(tea.ToMap(tmpReq.BindReq))) {
-		request.BindReqShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tea.ToMap(tmpReq.BindReq), tea.String("BindReq"), tea.String("json"))
+	if !tea.BoolValue(util.IsUnset(tmpReq.BindReq)) {
+		request.BindReqShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.BindReq, tea.String("BindReq"), tea.String("json"))
 	}
 
-	if !tea.BoolValue(util.IsUnset(tea.ToMap(tmpReq.UserInfo))) {
-		request.UserInfoShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tea.ToMap(tmpReq.UserInfo), tea.String("UserInfo"), tea.String("json"))
+	if !tea.BoolValue(util.IsUnset(tmpReq.UserInfo)) {
+		request.UserInfoShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.UserInfo, tea.String("UserInfo"), tea.String("json"))
 	}
 
 	body := map[string]interface{}{}
@@ -23718,11 +24875,11 @@ func (client *Client) ScanCodeBindWithOptions(tmpReq *ScanCodeBindRequest, heade
 	return _result, _err
 }
 
-func (client *Client) ScgSearch(request *ScgSearchRequest) (_result *ScgSearchResponse, _err error) {
+func (client *Client) ScanCodeBind(request *ScanCodeBindRequest) (_result *ScanCodeBindResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
-	headers := &ScgSearchHeaders{}
-	_result = &ScgSearchResponse{}
-	_body, _err := client.ScgSearchWithOptions(request, headers, runtime)
+	headers := &ScanCodeBindHeaders{}
+	_result = &ScanCodeBindResponse{}
+	_body, _err := client.ScanCodeBindWithOptions(request, headers, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -23737,8 +24894,8 @@ func (client *Client) ScgSearchWithOptions(tmpReq *ScgSearchRequest, headers *Sc
 	}
 	request := &ScgSearchShrinkRequest{}
 	openapiutil.Convert(tmpReq, request)
-	if !tea.BoolValue(util.IsUnset(tea.ToMap(tmpReq.ScgFilter))) {
-		request.ScgFilterShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tea.ToMap(tmpReq.ScgFilter), tea.String("ScgFilter"), tea.String("json"))
+	if !tea.BoolValue(util.IsUnset(tmpReq.ScgFilter)) {
+		request.ScgFilterShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.ScgFilter, tea.String("ScgFilter"), tea.String("json"))
 	}
 
 	query := map[string]interface{}{}
@@ -23787,11 +24944,11 @@ func (client *Client) ScgSearchWithOptions(tmpReq *ScgSearchRequest, headers *Sc
 	return _result, _err
 }
 
-func (client *Client) SearchContent(request *SearchContentRequest) (_result *SearchContentResponse, _err error) {
+func (client *Client) ScgSearch(request *ScgSearchRequest) (_result *ScgSearchResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
-	headers := &SearchContentHeaders{}
-	_result = &SearchContentResponse{}
-	_body, _err := client.SearchContentWithOptions(request, headers, runtime)
+	headers := &ScgSearchHeaders{}
+	_result = &ScgSearchResponse{}
+	_body, _err := client.ScgSearchWithOptions(request, headers, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -23806,16 +24963,16 @@ func (client *Client) SearchContentWithOptions(tmpReq *SearchContentRequest, hea
 	}
 	request := &SearchContentShrinkRequest{}
 	openapiutil.Convert(tmpReq, request)
-	if !tea.BoolValue(util.IsUnset(tea.ToMap(tmpReq.DeviceInfo))) {
-		request.DeviceInfoShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tea.ToMap(tmpReq.DeviceInfo), tea.String("DeviceInfo"), tea.String("json"))
+	if !tea.BoolValue(util.IsUnset(tmpReq.DeviceInfo)) {
+		request.DeviceInfoShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.DeviceInfo, tea.String("DeviceInfo"), tea.String("json"))
 	}
 
-	if !tea.BoolValue(util.IsUnset(tea.ToMap(tmpReq.Request))) {
-		request.RequestShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tea.ToMap(tmpReq.Request), tea.String("Request"), tea.String("json"))
+	if !tea.BoolValue(util.IsUnset(tmpReq.Request)) {
+		request.RequestShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.Request, tea.String("Request"), tea.String("json"))
 	}
 
-	if !tea.BoolValue(util.IsUnset(tea.ToMap(tmpReq.UserInfo))) {
-		request.UserInfoShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tea.ToMap(tmpReq.UserInfo), tea.String("UserInfo"), tea.String("json"))
+	if !tea.BoolValue(util.IsUnset(tmpReq.UserInfo)) {
+		request.UserInfoShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.UserInfo, tea.String("UserInfo"), tea.String("json"))
 	}
 
 	query := map[string]interface{}{}
@@ -23870,11 +25027,11 @@ func (client *Client) SearchContentWithOptions(tmpReq *SearchContentRequest, hea
 	return _result, _err
 }
 
-func (client *Client) SendMessage(request *SendMessageRequest) (_result *SendMessageResponse, _err error) {
+func (client *Client) SearchContent(request *SearchContentRequest) (_result *SearchContentResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
-	headers := &SendMessageHeaders{}
-	_result = &SendMessageResponse{}
-	_body, _err := client.SendMessageWithOptions(request, headers, runtime)
+	headers := &SearchContentHeaders{}
+	_result = &SearchContentResponse{}
+	_body, _err := client.SearchContentWithOptions(request, headers, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -23889,8 +25046,8 @@ func (client *Client) SendMessageWithOptions(tmpReq *SendMessageRequest, headers
 	}
 	request := &SendMessageShrinkRequest{}
 	openapiutil.Convert(tmpReq, request)
-	if !tea.BoolValue(util.IsUnset(tea.ToMap(tmpReq.UserInfo))) {
-		request.UserInfoShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tea.ToMap(tmpReq.UserInfo), tea.String("UserInfo"), tea.String("json"))
+	if !tea.BoolValue(util.IsUnset(tmpReq.UserInfo)) {
+		request.UserInfoShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.UserInfo, tea.String("UserInfo"), tea.String("json"))
 	}
 
 	query := map[string]interface{}{}
@@ -23939,11 +25096,11 @@ func (client *Client) SendMessageWithOptions(tmpReq *SendMessageRequest, headers
 	return _result, _err
 }
 
-func (client *Client) SetDeviceSetting(request *SetDeviceSettingRequest) (_result *SetDeviceSettingResponse, _err error) {
+func (client *Client) SendMessage(request *SendMessageRequest) (_result *SendMessageResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
-	headers := &SetDeviceSettingHeaders{}
-	_result = &SetDeviceSettingResponse{}
-	_body, _err := client.SetDeviceSettingWithOptions(request, headers, runtime)
+	headers := &SendMessageHeaders{}
+	_result = &SendMessageResponse{}
+	_body, _err := client.SendMessageWithOptions(request, headers, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -23958,8 +25115,8 @@ func (client *Client) SetDeviceSettingWithOptions(tmpReq *SetDeviceSettingReques
 	}
 	request := &SetDeviceSettingShrinkRequest{}
 	openapiutil.Convert(tmpReq, request)
-	if !tea.BoolValue(util.IsUnset(tea.ToMap(tmpReq.DeviceInfo))) {
-		request.DeviceInfoShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tea.ToMap(tmpReq.DeviceInfo), tea.String("DeviceInfo"), tea.String("json"))
+	if !tea.BoolValue(util.IsUnset(tmpReq.DeviceInfo)) {
+		request.DeviceInfoShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.DeviceInfo, tea.String("DeviceInfo"), tea.String("json"))
 	}
 
 	query := map[string]interface{}{}
@@ -24014,11 +25171,11 @@ func (client *Client) SetDeviceSettingWithOptions(tmpReq *SetDeviceSettingReques
 	return _result, _err
 }
 
-func (client *Client) UnbindAligenieUser(request *UnbindAligenieUserRequest) (_result *UnbindAligenieUserResponse, _err error) {
+func (client *Client) SetDeviceSetting(request *SetDeviceSettingRequest) (_result *SetDeviceSettingResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
-	headers := &UnbindAligenieUserHeaders{}
-	_result = &UnbindAligenieUserResponse{}
-	_body, _err := client.UnbindAligenieUserWithOptions(request, headers, runtime)
+	headers := &SetDeviceSettingHeaders{}
+	_result = &SetDeviceSettingResponse{}
+	_body, _err := client.SetDeviceSettingWithOptions(request, headers, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -24073,11 +25230,11 @@ func (client *Client) UnbindAligenieUserWithOptions(request *UnbindAligenieUserR
 	return _result, _err
 }
 
-func (client *Client) UnbindDevice(request *UnbindDeviceRequest) (_result *UnbindDeviceResponse, _err error) {
+func (client *Client) UnbindAligenieUser(request *UnbindAligenieUserRequest) (_result *UnbindAligenieUserResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
-	headers := &UnbindDeviceHeaders{}
-	_result = &UnbindDeviceResponse{}
-	_body, _err := client.UnbindDeviceWithOptions(request, headers, runtime)
+	headers := &UnbindAligenieUserHeaders{}
+	_result = &UnbindAligenieUserResponse{}
+	_body, _err := client.UnbindAligenieUserWithOptions(request, headers, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -24092,12 +25249,12 @@ func (client *Client) UnbindDeviceWithOptions(tmpReq *UnbindDeviceRequest, heade
 	}
 	request := &UnbindDeviceShrinkRequest{}
 	openapiutil.Convert(tmpReq, request)
-	if !tea.BoolValue(util.IsUnset(tea.ToMap(tmpReq.DeviceInfo))) {
-		request.DeviceInfoShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tea.ToMap(tmpReq.DeviceInfo), tea.String("DeviceInfo"), tea.String("json"))
+	if !tea.BoolValue(util.IsUnset(tmpReq.DeviceInfo)) {
+		request.DeviceInfoShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.DeviceInfo, tea.String("DeviceInfo"), tea.String("json"))
 	}
 
-	if !tea.BoolValue(util.IsUnset(tea.ToMap(tmpReq.UserInfo))) {
-		request.UserInfoShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tea.ToMap(tmpReq.UserInfo), tea.String("UserInfo"), tea.String("json"))
+	if !tea.BoolValue(util.IsUnset(tmpReq.UserInfo)) {
+		request.UserInfoShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.UserInfo, tea.String("UserInfo"), tea.String("json"))
 	}
 
 	body := map[string]interface{}{}
@@ -24146,11 +25303,11 @@ func (client *Client) UnbindDeviceWithOptions(tmpReq *UnbindDeviceRequest, heade
 	return _result, _err
 }
 
-func (client *Client) UpdateAlarm(request *UpdateAlarmRequest) (_result *UpdateAlarmResponse, _err error) {
+func (client *Client) UnbindDevice(request *UnbindDeviceRequest) (_result *UnbindDeviceResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
-	headers := &UpdateAlarmHeaders{}
-	_result = &UpdateAlarmResponse{}
-	_body, _err := client.UpdateAlarmWithOptions(request, headers, runtime)
+	headers := &UnbindDeviceHeaders{}
+	_result = &UnbindDeviceResponse{}
+	_body, _err := client.UnbindDeviceWithOptions(request, headers, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -24165,16 +25322,16 @@ func (client *Client) UpdateAlarmWithOptions(tmpReq *UpdateAlarmRequest, headers
 	}
 	request := &UpdateAlarmShrinkRequest{}
 	openapiutil.Convert(tmpReq, request)
-	if !tea.BoolValue(util.IsUnset(tea.ToMap(tmpReq.DeviceInfo))) {
-		request.DeviceInfoShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tea.ToMap(tmpReq.DeviceInfo), tea.String("DeviceInfo"), tea.String("json"))
+	if !tea.BoolValue(util.IsUnset(tmpReq.DeviceInfo)) {
+		request.DeviceInfoShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.DeviceInfo, tea.String("DeviceInfo"), tea.String("json"))
 	}
 
-	if !tea.BoolValue(util.IsUnset(tea.ToMap(tmpReq.Payload))) {
-		request.PayloadShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tea.ToMap(tmpReq.Payload), tea.String("Payload"), tea.String("json"))
+	if !tea.BoolValue(util.IsUnset(tmpReq.Payload)) {
+		request.PayloadShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.Payload, tea.String("Payload"), tea.String("json"))
 	}
 
-	if !tea.BoolValue(util.IsUnset(tea.ToMap(tmpReq.UserInfo))) {
-		request.UserInfoShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tea.ToMap(tmpReq.UserInfo), tea.String("UserInfo"), tea.String("json"))
+	if !tea.BoolValue(util.IsUnset(tmpReq.UserInfo)) {
+		request.UserInfoShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.UserInfo, tea.String("UserInfo"), tea.String("json"))
 	}
 
 	body := map[string]interface{}{}
@@ -24224,5 +25381,17 @@ func (client *Client) UpdateAlarmWithOptions(tmpReq *UpdateAlarmRequest, headers
 		return _result, _err
 	}
 	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) UpdateAlarm(request *UpdateAlarmRequest) (_result *UpdateAlarmResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	headers := &UpdateAlarmHeaders{}
+	_result = &UpdateAlarmResponse{}
+	_body, _err := client.UpdateAlarmWithOptions(request, headers, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
 	return _result, _err
 }
