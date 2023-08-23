@@ -6209,6 +6209,7 @@ func (s *DescribeDcdnDomainBpsDataByLayerResponse) SetBody(v *DescribeDcdnDomain
 }
 
 type DescribeDcdnDomainByCertificateRequest struct {
+	Exact *bool `json:"Exact,omitempty" xml:"Exact,omitempty"`
 	// The public key of the certificate.
 	//
 	// You must use Base64 encoding schemes and then the encodeURIComponent method to encode the public key. PEM files are supported.
@@ -6226,6 +6227,11 @@ func (s DescribeDcdnDomainByCertificateRequest) String() string {
 
 func (s DescribeDcdnDomainByCertificateRequest) GoString() string {
 	return s.String()
+}
+
+func (s *DescribeDcdnDomainByCertificateRequest) SetExact(v bool) *DescribeDcdnDomainByCertificateRequest {
+	s.Exact = &v
+	return s
 }
 
 func (s *DescribeDcdnDomainByCertificateRequest) SetSSLPub(v string) *DescribeDcdnDomainByCertificateRequest {
@@ -6612,7 +6618,7 @@ func (s *DescribeDcdnDomainCcActivityLogResponse) SetBody(v *DescribeDcdnDomainC
 }
 
 type DescribeDcdnDomainCertificateInfoRequest struct {
-	// The certificate information of the domain name.
+	// The accelerated domain name. You can specify only one domain name in each request.
 	DomainName *string `json:"DomainName,omitempty" xml:"DomainName,omitempty"`
 }
 
@@ -6630,20 +6636,9 @@ func (s *DescribeDcdnDomainCertificateInfoRequest) SetDomainName(v string) *Desc
 }
 
 type DescribeDcdnDomainCertificateInfoResponseBody struct {
-	// The validity period of the certificate. Unit: **months** or **years**.
+	// The information about the certificate.
 	CertInfos *DescribeDcdnDomainCertificateInfoResponseBodyCertInfos `json:"CertInfos,omitempty" xml:"CertInfos,omitempty" type:"Struct"`
-	// The status of the certificate. Valid values:
-	//
-	// *   **success**: The certificate has taken effect.
-	// *   **checking**: The system is checking whether the domain name is using Dynamic Route for CDN (DCDN).
-	// *   **cname_error**: The domain name is not using DCDN.
-	// *   **domain_invalid**: The domain name contains invalid characters.
-	// *   **unsupport_wildcard**: The wildcard domain name is not supported.
-	// *   **applying**: Certificate application is in progress.
-	// *   **get_token_timeout**: The certificate application request has timed out.
-	// *   **check_token_timeout**: The verification has timed out.
-	// *   **get_cert_timeout**: The request to obtain the certificate has timed out.
-	// *   **failed**: The certificate application request failed.
+	// The ID of the request.
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -6683,40 +6678,46 @@ func (s *DescribeDcdnDomainCertificateInfoResponseBodyCertInfos) SetCertInfo(v [
 }
 
 type DescribeDcdnDomainCertificateInfoResponseBodyCertInfosCertInfo struct {
-	// The certificate authority (CA) that issued the certificate.
+	// The domain name that matches the certificate.
 	CertDomainName *string `json:"CertDomainName,omitempty" xml:"CertDomainName,omitempty"`
+	// The time at which the certificate expires.
+	CertExpireTime *string `json:"CertExpireTime,omitempty" xml:"CertExpireTime,omitempty"`
+	// The ID of the certificate.
+	CertId *string `json:"CertId,omitempty" xml:"CertId,omitempty"`
+	// The validity period of the certificate. Unit: **months** or **years**.
+	CertLife *string `json:"CertLife,omitempty" xml:"CertLife,omitempty"`
+	// The name of the certificate.
+	CertName *string `json:"CertName,omitempty" xml:"CertName,omitempty"`
+	// The certificate authority (CA) that issued the certificate.
+	CertOrg *string `json:"CertOrg,omitempty" xml:"CertOrg,omitempty"`
+	// The region where the certificate is used.
+	CertRegion *string `json:"CertRegion,omitempty" xml:"CertRegion,omitempty"`
+	// The type of the certificate.
+	//
+	// *   **cas**: a certificate that is purchased by using Certificates Management Service
+	// *   **upload**: a custom certificate that you upload
+	CertType *string `json:"CertType,omitempty" xml:"CertType,omitempty"`
+	// The accelerated domain name.
+	DomainName *string `json:"DomainName,omitempty" xml:"DomainName,omitempty"`
 	// The status of HTTPS. Valid values:
 	//
-	// *   **on**: enabled
-	// *   **off**: disabled
-	CertExpireTime *string `json:"CertExpireTime,omitempty" xml:"CertExpireTime,omitempty"`
-	// The type of the certificate. Valid values:
-	//
-	// *   **free**: a free certificate
-	// *   **cas**: a certificate that is purchased from Alibaba Cloud SSL Certificates Service
-	// *   **upload**: a certificate that is uploaded by the user
-	CertId *string `json:"CertId,omitempty" xml:"CertId,omitempty"`
-	// The public key of the certificate.
-	CertLife *string `json:"CertLife,omitempty" xml:"CertLife,omitempty"`
-	// The accelerated domain name.
-	CertName *string `json:"CertName,omitempty" xml:"CertName,omitempty"`
-	// >  The maximum number of times that each user can call this operation per second is 100.
-	CertOrg *string `json:"CertOrg,omitempty" xml:"CertOrg,omitempty"`
-	// The expiration time of the certificate.
-	CertRegion *string `json:"CertRegion,omitempty" xml:"CertRegion,omitempty"`
-	// The name of the certificate.
-	CertType *string `json:"CertType,omitempty" xml:"CertType,omitempty"`
-	// The domain name that matches the certificate.
-	DomainName *string `json:"DomainName,omitempty" xml:"DomainName,omitempty"`
-	// The domain name that matches the certificate.
+	// *   **on**
+	// *   **off**
 	SSLProtocol *string `json:"SSLProtocol,omitempty" xml:"SSLProtocol,omitempty"`
-	// The type of the certificate. Valid values:
-	//
-	// *   **free**: a free certificate
-	// *   **cas**: a certificate that is purchased from Alibaba Cloud SSL Certificates Service
-	// *   **upload**: a certificate that is uploaded by the user
+	// The public key of the certificate.
 	SSLPub *string `json:"SSLPub,omitempty" xml:"SSLPub,omitempty"`
-	// The expiration time of the certificate.
+	// The status of the certificate. Valid values:
+	//
+	// *   **success**: The certificate has taken effect.
+	// *   **checking**: The system is checking whether the domain name is using Dynamic Route for CDN (DCDN).
+	// *   **cname_error**: The domain name is not using DCDN.
+	// *   **domain_invalid**: The domain name contains invalid characters.
+	// *   **unsupport_wildcard**: The wildcard domain name is not supported.
+	// *   **applying**: Certificate application is in progress.
+	// *   **get_token_timeout**: The certificate application request has timed out.
+	// *   **check_token_timeout**: The verification has timed out.
+	// *   **get_cert_timeout**: The request to obtain the certificate has timed out.
+	// *   **failed**: The certificate application request failed.
 	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
 }
 
@@ -8228,7 +8229,7 @@ type DescribeDcdnDomainIpaConnDataRequest struct {
 	// *   domain: Query results are grouped by accelerated domain name.
 	// *   An empty string: Query results are not grouped.
 	SplitBy *string `json:"SplitBy,omitempty" xml:"SplitBy,omitempty"`
-	// The beginning of the time range to query.
+	// The start of the time range to query.
 	//
 	// Specify the time in the ISO 8601 standard in the yyyy-MM-ddTHH:mm:ssZ format. The time must be in UTC.
 	StartTime *string `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
@@ -8267,7 +8268,7 @@ type DescribeDcdnDomainIpaConnDataResponseBody struct {
 	ConnectionDataPerInterval *DescribeDcdnDomainIpaConnDataResponseBodyConnectionDataPerInterval `json:"ConnectionDataPerInterval,omitempty" xml:"ConnectionDataPerInterval,omitempty" type:"Struct"`
 	// The end of the time range during which data was queried.
 	EndTime *string `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
-	// The ID of the request.
+	// The request ID.
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	// The beginning of the time range during which data was queried.
 	StartTime *string `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
@@ -8323,7 +8324,7 @@ type DescribeDcdnDomainIpaConnDataResponseBodyConnectionDataPerIntervalDataModul
 	Connections *int64 `json:"Connections,omitempty" xml:"Connections,omitempty"`
 	// The accelerated domain name.
 	Domain *string `json:"Domain,omitempty" xml:"Domain,omitempty"`
-	// The timestamp of the returned data.
+	// The timestamp of the data returned.
 	TimeStamp *string `json:"TimeStamp,omitempty" xml:"TimeStamp,omitempty"`
 }
 
@@ -16038,7 +16039,9 @@ func (s *DescribeDcdnIpaUserDomainsResponse) SetBody(v *DescribeDcdnIpaUserDomai
 }
 
 type DescribeDcdnKvAccountResponseBody struct {
-	CapacityString     *string `json:"CapacityString,omitempty" xml:"CapacityString,omitempty"`
+	// The available capacity of all namespaces.
+	CapacityString *string `json:"CapacityString,omitempty" xml:"CapacityString,omitempty"`
+	// All namespaces have used capacity.
 	CapacityUsedString *string `json:"CapacityUsedString,omitempty" xml:"CapacityUsedString,omitempty"`
 	// Details about the namespaces.
 	NamespaceList []*DescribeDcdnKvAccountResponseBodyNamespaceList `json:"NamespaceList,omitempty" xml:"NamespaceList,omitempty" type:"Repeated"`
@@ -16099,7 +16102,9 @@ func (s *DescribeDcdnKvAccountResponseBody) SetStatus(v string) *DescribeDcdnKvA
 }
 
 type DescribeDcdnKvAccountResponseBodyNamespaceList struct {
-	CapacityString     *string `json:"CapacityString,omitempty" xml:"CapacityString,omitempty"`
+	// The available capacity of the namespace.
+	CapacityString *string `json:"CapacityString,omitempty" xml:"CapacityString,omitempty"`
+	// The namespace has used capacity.
 	CapacityUsedString *string `json:"CapacityUsedString,omitempty" xml:"CapacityUsedString,omitempty"`
 	// The description of the namespace.
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
@@ -16259,7 +16264,9 @@ func (s *DescribeDcdnKvNamespaceRequest) SetNamespace(v string) *DescribeDcdnKvN
 }
 
 type DescribeDcdnKvNamespaceResponseBody struct {
-	CapacityString     *string `json:"CapacityString,omitempty" xml:"CapacityString,omitempty"`
+	// The available capacity of namespace.
+	CapacityString *string `json:"CapacityString,omitempty" xml:"CapacityString,omitempty"`
+	// Used capacity of namespace.
 	CapacityUsedString *string `json:"CapacityUsedString,omitempty" xml:"CapacityUsedString,omitempty"`
 	// The description of the namespace.
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
@@ -16632,8 +16639,10 @@ type DescribeDcdnRefreshQuotaResponseBody struct {
 	// The maximum number of directories that can be refreshed on the current day.
 	DirQuota *string `json:"DirQuota,omitempty" xml:"DirQuota,omitempty"`
 	// The remaining number of directories that can be refreshed on the current day.
-	DirRemain          *string `json:"DirRemain,omitempty" xml:"DirRemain,omitempty"`
-	IgnoreParamsQuota  *string `json:"IgnoreParamsQuota,omitempty" xml:"IgnoreParamsQuota,omitempty"`
+	DirRemain *string `json:"DirRemain,omitempty" xml:"DirRemain,omitempty"`
+	// The maximum number of URLs or directories with parameters ignored that can be refreshed on the current day.
+	IgnoreParamsQuota *string `json:"IgnoreParamsQuota,omitempty" xml:"IgnoreParamsQuota,omitempty"`
+	// The number of remaining URLs or directories that can be refreshed with parameters ignored on the current day.
 	IgnoreParamsRemain *string `json:"IgnoreParamsRemain,omitempty" xml:"IgnoreParamsRemain,omitempty"`
 	// The maximum number of URLs that can be prefetched on the current day.
 	PreloadQuota *string `json:"PreloadQuota,omitempty" xml:"PreloadQuota,omitempty"`
@@ -17196,6 +17205,7 @@ func (s *DescribeDcdnRegionAndIspRequest) SetSecurityToken(v string) *DescribeDc
 }
 
 type DescribeDcdnRegionAndIspResponseBody struct {
+	// The list of ISPs.
 	Isps *DescribeDcdnRegionAndIspResponseBodyIsps `json:"Isps,omitempty" xml:"Isps,omitempty" type:"Struct"`
 	// The list of regions.
 	Regions *DescribeDcdnRegionAndIspResponseBodyRegions `json:"Regions,omitempty" xml:"Regions,omitempty" type:"Struct"`
@@ -17244,7 +17254,9 @@ func (s *DescribeDcdnRegionAndIspResponseBodyIsps) SetIsp(v []*DescribeDcdnRegio
 }
 
 type DescribeDcdnRegionAndIspResponseBodyIspsIsp struct {
+	// The English name of the region.
 	NameEn *string `json:"NameEn,omitempty" xml:"NameEn,omitempty"`
+	// The Chinese name of the ISP.
 	NameZh *string `json:"NameZh,omitempty" xml:"NameZh,omitempty"`
 }
 
@@ -19358,11 +19370,11 @@ func (s *DescribeDcdnUserBillTypeResponse) SetBody(v *DescribeDcdnUserBillTypeRe
 }
 
 type DescribeDcdnUserCertificateExpireCountResponseBody struct {
-	// The number of domain names whose SSL certificates are about to expire within 30 days.
+	// The number of domain names whose SSL certificates are about to expires within 30 days.
 	ExpireWithin30DaysCount *int32 `json:"ExpireWithin30DaysCount,omitempty" xml:"ExpireWithin30DaysCount,omitempty"`
 	// The number of domain names whose SSL certificates have already expired.
 	ExpiredCount *int32 `json:"ExpiredCount,omitempty" xml:"ExpiredCount,omitempty"`
-	// The ID of the request.
+	// The request ID.
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -19778,7 +19790,12 @@ type DescribeDcdnUserDomainsResponseBodyDomainsPageData struct {
 	SSLProtocol *string `json:"SSLProtocol,omitempty" xml:"SSLProtocol,omitempty"`
 	// Indicates whether the accelerated domain name was in a sandbox.
 	Sandbox *string `json:"Sandbox,omitempty" xml:"Sandbox,omitempty"`
-	Scene   *string `json:"Scene,omitempty" xml:"Scene,omitempty"`
+	// The moderation scenario. Valid values:
+	//
+	// *   **apiscene**: Api scene acceleration.
+	// *   **webservicescene**: Web scene acceleration.
+	// *   **staticscene**: Video and graphic scene acceleration.
+	Scene *string `json:"Scene,omitempty" xml:"Scene,omitempty"`
 	// The information about the origin server.
 	Sources *DescribeDcdnUserDomainsResponseBodyDomainsPageDataSources `json:"Sources,omitempty" xml:"Sources,omitempty" type:"Struct"`
 }
@@ -20274,8 +20291,10 @@ type DescribeDcdnUserQuotaResponseBody struct {
 	// The remaining number of URLs that can be blocked.
 	BlockRemain *int32 `json:"BlockRemain,omitempty" xml:"BlockRemain,omitempty"`
 	// The maximum number of accelerated domains.
-	DomainQuota        *int32 `json:"DomainQuota,omitempty" xml:"DomainQuota,omitempty"`
-	IgnoreParamsQuota  *int32 `json:"IgnoreParamsQuota,omitempty" xml:"IgnoreParamsQuota,omitempty"`
+	DomainQuota *int32 `json:"DomainQuota,omitempty" xml:"DomainQuota,omitempty"`
+	// The maximum number of URLs or directories with parameters ignored that can be refreshed on the current day.
+	IgnoreParamsQuota *int32 `json:"IgnoreParamsQuota,omitempty" xml:"IgnoreParamsQuota,omitempty"`
+	// The number of remaining URLs or directories that can be refreshed with parameters ignored on the current day.
 	IgnoreParamsRemain *int32 `json:"IgnoreParamsRemain,omitempty" xml:"IgnoreParamsRemain,omitempty"`
 	// The maximum number of URLs that can be prefetched.
 	PreloadQuota *int32 `json:"PreloadQuota,omitempty" xml:"PreloadQuota,omitempty"`
@@ -21065,7 +21084,8 @@ func (s *DescribeDcdnUserTagsResponseBody) SetTags(v []*DescribeDcdnUserTagsResp
 
 type DescribeDcdnUserTagsResponseBodyTags struct {
 	// The tag key.
-	Key   *string   `json:"Key,omitempty" xml:"Key,omitempty"`
+	Key *string `json:"Key,omitempty" xml:"Key,omitempty"`
+	// The value of the tag that you want to query.
 	Value []*string `json:"Value,omitempty" xml:"Value,omitempty" type:"Repeated"`
 }
 
@@ -21601,7 +21621,8 @@ type DescribeDcdnWafDomainDetailResponseBodyDomainDefenseScenes struct {
 	// *   whitelist: whitelist
 	DefenseScene *string `json:"DefenseScene,omitempty" xml:"DefenseScene,omitempty"`
 	// The ID of the protection policy.
-	PolicyId  *int64  `json:"PolicyId,omitempty" xml:"PolicyId,omitempty"`
+	PolicyId *int64 `json:"PolicyId,omitempty" xml:"PolicyId,omitempty"`
+	// The IDs of the protection policy.
 	PolicyIds *string `json:"PolicyIds,omitempty" xml:"PolicyIds,omitempty"`
 }
 
@@ -26295,7 +26316,7 @@ func (s *ListDcdnKvResponseBody) SetTotalCount(v int32) *ListDcdnKvResponseBody 
 }
 
 type ListDcdnKvResponseBodyKeys struct {
-	// The name of the key.
+	// The value of the key obtained in this traversal.
 	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
 	// The time when the key was updated.
 	UpdateTime *string `json:"UpdateTime,omitempty" xml:"UpdateTime,omitempty"`
@@ -27387,7 +27408,9 @@ func (s *PublishRoutineCodeRevisionResponse) SetBody(v *PublishRoutineCodeRevisi
 }
 
 type PutDcdnKvRequest struct {
-	Expiration    *int64 `json:"Expiration,omitempty" xml:"Expiration,omitempty"`
+	// The time when the key expires.Example: "1690081381".
+	Expiration *int64 `json:"Expiration,omitempty" xml:"Expiration,omitempty"`
+	// The time when the key expires.Example: "3600".
 	ExpirationTtl *int64 `json:"ExpirationTtl,omitempty" xml:"ExpirationTtl,omitempty"`
 	// The key. The key can be up to 512 characters in length, and cannot contain spaces.
 	Key *string `json:"Key,omitempty" xml:"Key,omitempty"`
@@ -32234,8 +32257,7 @@ func (client *Client) DeleteDcdnWafGroup(request *DeleteDcdnWafGroupRequest) (_r
 }
 
 /**
- * #
- * *   You can call this operation up to 20 times per second.
+ * *   You can call this operation up to 20 times per second per account.
  * *   Alibaba Cloud Dynamic Content Delivery Network (DCDN) supports POST requests.
  *
  * @param request DeleteDcdnWafPolicyRequest
@@ -32276,8 +32298,7 @@ func (client *Client) DeleteDcdnWafPolicyWithOptions(request *DeleteDcdnWafPolic
 }
 
 /**
- * #
- * *   You can call this operation up to 20 times per second.
+ * *   You can call this operation up to 20 times per second per account.
  * *   Alibaba Cloud Dynamic Content Delivery Network (DCDN) supports POST requests.
  *
  * @param request DeleteDcdnWafPolicyRequest
@@ -33264,6 +33285,10 @@ func (client *Client) DescribeDcdnDomainByCertificateWithOptions(request *Descri
 		return _result, _err
 	}
 	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.Exact)) {
+		query["Exact"] = request.Exact
+	}
+
 	if !tea.BoolValue(util.IsUnset(request.SSLPub)) {
 		query["SSLPub"] = request.SSLPub
 	}
@@ -33404,7 +33429,7 @@ func (client *Client) DescribeDcdnDomainCcActivityLog(request *DescribeDcdnDomai
 }
 
 /**
- * The ID of the request.
+ * > You can call this operation up to 100 times per second per account.
  *
  * @param request DescribeDcdnDomainCertificateInfoRequest
  * @param runtime runtime options for this request RuntimeOptions
@@ -33444,7 +33469,7 @@ func (client *Client) DescribeDcdnDomainCertificateInfoWithOptions(request *Desc
 }
 
 /**
- * The ID of the request.
+ * > You can call this operation up to 100 times per second per account.
  *
  * @param request DescribeDcdnDomainCertificateInfoRequest
  * @return DescribeDcdnDomainCertificateInfoResponse
@@ -33824,11 +33849,16 @@ func (client *Client) DescribeDcdnDomainHttpCodeData(request *DescribeDcdnDomain
 }
 
 /**
- * #
- * *   You can call this operation up to 20 times per second per account.
- * *   You cannot query the distribution of HTTP status codes by IP protocol.
- * *   If you do not set the **StartTime** or **EndTime** parameter, the request returns the data collected in the last 24 hours. If you set both the **StartTime** and **EndTime** parameters, the request returns the data collected within the specified time range.
- * **Time granularity** The time granularity supported by the Interval parameter, the maximum time period within which historical data is available, and the data delay vary with the maximum time range per query, as described in the following table. |Time granularity |Maximum time range per query |Historical data available |Data delay | -------------- | -------------- | ------ |5 minutes |3 days |93 days |15 minutes |1 hour |31 days |186 days |4 hours |1 day |366 days |366 days |04:00 on the next day
+ * * You can call this operation up to 20 times per second per account.
+ * * You cannot query the distribution of HTTP status codes by IP protocol.
+ * * If you do not specify the **StartTime** or **EndTime** parameter, the data that is collected within the last 24 hours is collected. If you specify both the **StartTime** and **EndTime** parameters, the data that is collected within the time range that you specify is collected.
+ * **Time granularity**
+ * The time granularity supported by the Interval parameter, the maximum time period within which historical data is available, and the data delay vary with the maximum time range per query, as described in the following table.
+ * |Time granularity|Maximum time range per query|Historical data available|Data delay|
+ * |---|---|---|---|
+ * |5 minutes|3 days|93 days|15 minutes|
+ * |1 hour|31 days|186 days|4 hours|
+ * |1 day|366 days|366 days|04:00 on the next day|
  *
  * @param request DescribeDcdnDomainHttpCodeDataByLayerRequest
  * @param runtime runtime options for this request RuntimeOptions
@@ -33892,11 +33922,16 @@ func (client *Client) DescribeDcdnDomainHttpCodeDataByLayerWithOptions(request *
 }
 
 /**
- * #
- * *   You can call this operation up to 20 times per second per account.
- * *   You cannot query the distribution of HTTP status codes by IP protocol.
- * *   If you do not set the **StartTime** or **EndTime** parameter, the request returns the data collected in the last 24 hours. If you set both the **StartTime** and **EndTime** parameters, the request returns the data collected within the specified time range.
- * **Time granularity** The time granularity supported by the Interval parameter, the maximum time period within which historical data is available, and the data delay vary with the maximum time range per query, as described in the following table. |Time granularity |Maximum time range per query |Historical data available |Data delay | -------------- | -------------- | ------ |5 minutes |3 days |93 days |15 minutes |1 hour |31 days |186 days |4 hours |1 day |366 days |366 days |04:00 on the next day
+ * * You can call this operation up to 20 times per second per account.
+ * * You cannot query the distribution of HTTP status codes by IP protocol.
+ * * If you do not specify the **StartTime** or **EndTime** parameter, the data that is collected within the last 24 hours is collected. If you specify both the **StartTime** and **EndTime** parameters, the data that is collected within the time range that you specify is collected.
+ * **Time granularity**
+ * The time granularity supported by the Interval parameter, the maximum time period within which historical data is available, and the data delay vary with the maximum time range per query, as described in the following table.
+ * |Time granularity|Maximum time range per query|Historical data available|Data delay|
+ * |---|---|---|---|
+ * |5 minutes|3 days|93 days|15 minutes|
+ * |1 hour|31 days|186 days|4 hours|
+ * |1 day|366 days|366 days|04:00 on the next day|
  *
  * @param request DescribeDcdnDomainHttpCodeDataByLayerRequest
  * @return DescribeDcdnDomainHttpCodeDataByLayerResponse
@@ -34004,8 +34039,7 @@ func (client *Client) DescribeDcdnDomainIpaBpsData(request *DescribeDcdnDomainIp
 }
 
 /**
- * #
- * *   You can call this operation up to 10 times per second per account.
+ * *   You can call this operation up to 10 times per second per user.
  * *   If you do not set the **StartTime** or **EndTime** parameter, the request returns the data collected in the last 24 hours. If you set both the **StartTime** and **EndTime** parameters, the request returns the data collected within the specified time range.
  * *   The minimum time granularity at which the data is queried is 5 minutes. The maximum time range for a single query is 31 days. The period within which historical data is available is 366 days. The data latency is no more than 10 minutes.
  *
@@ -34059,8 +34093,7 @@ func (client *Client) DescribeDcdnDomainIpaConnDataWithOptions(request *Describe
 }
 
 /**
- * #
- * *   You can call this operation up to 10 times per second per account.
+ * *   You can call this operation up to 10 times per second per user.
  * *   If you do not set the **StartTime** or **EndTime** parameter, the request returns the data collected in the last 24 hours. If you set both the **StartTime** and **EndTime** parameters, the request returns the data collected within the specified time range.
  * *   The minimum time granularity at which the data is queried is 5 minutes. The maximum time range for a single query is 31 days. The period within which historical data is available is 366 days. The data latency is no more than 10 minutes.
  *
@@ -34771,14 +34804,15 @@ func (client *Client) DescribeDcdnDomainQpsData(request *DescribeDcdnDomainQpsDa
 }
 
 /**
- * - You can call this operation up to 20 times per second per account.
- * - If you do not set the **StartTime** or **EndTime** parameter, the request returns the data collected in the last 24 hours. If you set both the **StartTime** and **EndTime** parameters, the request returns the data collected within the specified time range.
- * **Time granularity**The time granularity supported by the Interval parameter varies with the maximum time range per query. The following table describes the time period within which historical data is available and the data delay.
- * | Time granularity | Maximum time range per query | Historical data available | Data delay |
- * | ---------------- | ---------------------------- | ------------------------- | ---------- |
- * | 5 minutes | 3 days | 93 days | 15 minutes |
- * | 1 hour | 31 days | 186 days | 4 hours |
- * | 1 day | 366 days | 366 days | 04:00 on the next day |
+ * * You can call this operation up to 20 times per second per account.
+ * * If you do not set the **StartTime** or **EndTime** parameter, the request returns the data collected in the last 24 hours. If you set both the **StartTime** and **EndTime** parameters, the request returns the data collected within the specified time range.
+ * **Time granularity**
+ * The time granularity supported by the Interval parameter, the maximum time period within which historical data is available, and the data delay vary with the time range to query, as described in the following table.
+ * |Time granularity|Maximum time range per query|Historical data available|Data delay|
+ * |---|---|---|---|
+ * |5 minutes|3 days|93 days|15 minutes|
+ * |1 hour|31 days|186 days|4 hours|
+ * |1 day|366 days|366 days|04:00 on the next day|
  *
  * @param request DescribeDcdnDomainQpsDataByLayerRequest
  * @param runtime runtime options for this request RuntimeOptions
@@ -34842,14 +34876,15 @@ func (client *Client) DescribeDcdnDomainQpsDataByLayerWithOptions(request *Descr
 }
 
 /**
- * - You can call this operation up to 20 times per second per account.
- * - If you do not set the **StartTime** or **EndTime** parameter, the request returns the data collected in the last 24 hours. If you set both the **StartTime** and **EndTime** parameters, the request returns the data collected within the specified time range.
- * **Time granularity**The time granularity supported by the Interval parameter varies with the maximum time range per query. The following table describes the time period within which historical data is available and the data delay.
- * | Time granularity | Maximum time range per query | Historical data available | Data delay |
- * | ---------------- | ---------------------------- | ------------------------- | ---------- |
- * | 5 minutes | 3 days | 93 days | 15 minutes |
- * | 1 hour | 31 days | 186 days | 4 hours |
- * | 1 day | 366 days | 366 days | 04:00 on the next day |
+ * * You can call this operation up to 20 times per second per account.
+ * * If you do not set the **StartTime** or **EndTime** parameter, the request returns the data collected in the last 24 hours. If you set both the **StartTime** and **EndTime** parameters, the request returns the data collected within the specified time range.
+ * **Time granularity**
+ * The time granularity supported by the Interval parameter, the maximum time period within which historical data is available, and the data delay vary with the time range to query, as described in the following table.
+ * |Time granularity|Maximum time range per query|Historical data available|Data delay|
+ * |---|---|---|---|
+ * |5 minutes|3 days|93 days|15 minutes|
+ * |1 hour|31 days|186 days|4 hours|
+ * |1 day|366 days|366 days|04:00 on the next day|
  *
  * @param request DescribeDcdnDomainQpsDataByLayerRequest
  * @return DescribeDcdnDomainQpsDataByLayerResponse
@@ -35496,9 +35531,14 @@ func (client *Client) DescribeDcdnDomainRealTimeSrcTrafficData(request *Describe
 }
 
 /**
- * #
  * You can call this operation up to 50 times per second per user.
- * **Time granularity** The time granularity varies with the time range specified by the StartTime and EndTime parameters. The following table describes the time period within which historical data is available and the data delay. |Time granularity |Maximum time range per query |Historical data available|Data delay| |---------------|--------| |1 minute|1 hour|7 days|5 minutes| |5 minutes|3 days|93 days|15 minutes| |1 hour|31 days|186 days|4 hours|
+ * **Time granularity**
+ * The time granularity varies with the time range specified by the StartTime and EndTime parameters. The following table describes the time period within which historical data is available and the data delay.
+ * |Time granularity|Maximum time range per query|Historical data available|Data delay|
+ * |---|---|---|---|
+ * |1 minute|1 hour|7 days|5 minutes|
+ * |5 minutes|3 days|93 days|15 minutes|
+ * |1 hour|31 days|186 days|4 hours|
  *
  * @param request DescribeDcdnDomainRealTimeTrafficDataRequest
  * @param runtime runtime options for this request RuntimeOptions
@@ -35546,9 +35586,14 @@ func (client *Client) DescribeDcdnDomainRealTimeTrafficDataWithOptions(request *
 }
 
 /**
- * #
  * You can call this operation up to 50 times per second per user.
- * **Time granularity** The time granularity varies with the time range specified by the StartTime and EndTime parameters. The following table describes the time period within which historical data is available and the data delay. |Time granularity |Maximum time range per query |Historical data available|Data delay| |---------------|--------| |1 minute|1 hour|7 days|5 minutes| |5 minutes|3 days|93 days|15 minutes| |1 hour|31 days|186 days|4 hours|
+ * **Time granularity**
+ * The time granularity varies with the time range specified by the StartTime and EndTime parameters. The following table describes the time period within which historical data is available and the data delay.
+ * |Time granularity|Maximum time range per query|Historical data available|Data delay|
+ * |---|---|---|---|
+ * |1 minute|1 hour|7 days|5 minutes|
+ * |5 minutes|3 days|93 days|15 minutes|
+ * |1 hour|31 days|186 days|4 hours|
  *
  * @param request DescribeDcdnDomainRealTimeTrafficDataRequest
  * @return DescribeDcdnDomainRealTimeTrafficDataResponse
@@ -36092,10 +36137,15 @@ func (client *Client) DescribeDcdnDomainUvData(request *DescribeDcdnDomainUvData
 }
 
 /**
- * #
- * *   You can call this operation up to 100 times per second per account.
- * *   If you do not set the **StartTime** or **EndTime** parameter, the request returns the data collected in the last 24 hours. If you set both the **StartTime** and **EndTime** parameters, the request returns the data collected within the specified time range.
- * **Time granularity** The time granularity supported by the Interval parameter, the maximum time period within which historical data is available, and the data delay vary with the maximum time range per query, as described in the following table. |Time granularity |Maximum time range per query |Historical data available |Data delay | -------------- | -------------- | ------ |5 minutes |3 days |93 days |15 minutes |1 hour |31 days |186 days |4 hours |1 day |366 days |366 days |04:00 on the next day
+ * * You can call this operation up to 100 times per second per account.
+ * * If you do not set the **StartTime** or **EndTime** parameter, the request returns the data collected in the last 24 hours. If you set both the **StartTime** and **EndTime** parameters, the request returns the data collected within the specified time range.
+ * **Time granularity**
+ * The time granularity supported by the Interval parameter, the maximum time period within which historical data is available, and the data delay vary with the maximum time range per query, as described in the following table.
+ * |Time granularity|Maximum time range per query|Historical data available|Data delay|
+ * |---|---|---|---|
+ * |5 minutes|3 days|93 days|15 minutes|
+ * |1 hour|31 days|186 days|4 hours|
+ * |1 day|366 days|366 days|04:00 on the next day|
  *
  * @param request DescribeDcdnDomainWebsocketBpsDataRequest
  * @param runtime runtime options for this request RuntimeOptions
@@ -36155,10 +36205,15 @@ func (client *Client) DescribeDcdnDomainWebsocketBpsDataWithOptions(request *Des
 }
 
 /**
- * #
- * *   You can call this operation up to 100 times per second per account.
- * *   If you do not set the **StartTime** or **EndTime** parameter, the request returns the data collected in the last 24 hours. If you set both the **StartTime** and **EndTime** parameters, the request returns the data collected within the specified time range.
- * **Time granularity** The time granularity supported by the Interval parameter, the maximum time period within which historical data is available, and the data delay vary with the maximum time range per query, as described in the following table. |Time granularity |Maximum time range per query |Historical data available |Data delay | -------------- | -------------- | ------ |5 minutes |3 days |93 days |15 minutes |1 hour |31 days |186 days |4 hours |1 day |366 days |366 days |04:00 on the next day
+ * * You can call this operation up to 100 times per second per account.
+ * * If you do not set the **StartTime** or **EndTime** parameter, the request returns the data collected in the last 24 hours. If you set both the **StartTime** and **EndTime** parameters, the request returns the data collected within the specified time range.
+ * **Time granularity**
+ * The time granularity supported by the Interval parameter, the maximum time period within which historical data is available, and the data delay vary with the maximum time range per query, as described in the following table.
+ * |Time granularity|Maximum time range per query|Historical data available|Data delay|
+ * |---|---|---|---|
+ * |5 minutes|3 days|93 days|15 minutes|
+ * |1 hour|31 days|186 days|4 hours|
+ * |1 day|366 days|366 days|04:00 on the next day|
  *
  * @param request DescribeDcdnDomainWebsocketBpsDataRequest
  * @return DescribeDcdnDomainWebsocketBpsDataResponse
@@ -36175,9 +36230,14 @@ func (client *Client) DescribeDcdnDomainWebsocketBpsData(request *DescribeDcdnDo
 }
 
 /**
- * #
  * You can call this operation up to 100 times per second per account.
- * **Time granularity** The time granularity supported by the Interval parameter, the maximum time period within which historical data is available, and the data delay vary with the maximum time range per query, as described in the following table. |Time granularity |Maximum time range per query |Historical data available |Data delay | -------------- | -------------- | ------ |5 minutes |3 days |93 days |15 minutes |1 hour |31 days |186 days |4 hours |1 day |366 days |366 days |04:00 on the next day
+ * **Time granularity**
+ * The time granularity supported by the Interval parameter, the maximum time period within which historical data is available, and the data delay vary with the time range to query, as described in the following table.
+ * |Time granularity|Maximum time range per query|Historical data available|Data delay|
+ * |---|---|---|---|
+ * |5 minutes|3 days|93 days|15 minutes|
+ * |1 hour|31 days|186 days|4 hours|
+ * |1 day|366 days|366 days|04:00 on the next day|
  *
  * @param request DescribeDcdnDomainWebsocketHttpCodeDataRequest
  * @param runtime runtime options for this request RuntimeOptions
@@ -36237,9 +36297,14 @@ func (client *Client) DescribeDcdnDomainWebsocketHttpCodeDataWithOptions(request
 }
 
 /**
- * #
  * You can call this operation up to 100 times per second per account.
- * **Time granularity** The time granularity supported by the Interval parameter, the maximum time period within which historical data is available, and the data delay vary with the maximum time range per query, as described in the following table. |Time granularity |Maximum time range per query |Historical data available |Data delay | -------------- | -------------- | ------ |5 minutes |3 days |93 days |15 minutes |1 hour |31 days |186 days |4 hours |1 day |366 days |366 days |04:00 on the next day
+ * **Time granularity**
+ * The time granularity supported by the Interval parameter, the maximum time period within which historical data is available, and the data delay vary with the time range to query, as described in the following table.
+ * |Time granularity|Maximum time range per query|Historical data available|Data delay|
+ * |---|---|---|---|
+ * |5 minutes|3 days|93 days|15 minutes|
+ * |1 hour|31 days|186 days|4 hours|
+ * |1 day|366 days|366 days|04:00 on the next day|
  *
  * @param request DescribeDcdnDomainWebsocketHttpCodeDataRequest
  * @return DescribeDcdnDomainWebsocketHttpCodeDataResponse
@@ -36349,7 +36414,6 @@ func (client *Client) DescribeDcdnDomainWebsocketTrafficData(request *DescribeDc
 }
 
 /**
- * # Usage notes
  * *   You can call this operation up to 10 times per second per account.
  * *   The minimum time granularity for a query is 1 hour. The maximum time span for a query is 24 hours. The time period within which historical data is available for a query is 366 days.
  *
@@ -36407,7 +36471,6 @@ func (client *Client) DescribeDcdnErUsageDataWithOptions(request *DescribeDcdnEr
 }
 
 /**
- * # Usage notes
  * *   You can call this operation up to 10 times per second per account.
  * *   The minimum time granularity for a query is 1 hour. The maximum time span for a query is 24 hours. The time period within which historical data is available for a query is 366 days.
  *
@@ -38360,7 +38423,6 @@ func (client *Client) DescribeDcdnUserBillType(request *DescribeDcdnUserBillType
 }
 
 /**
- * # Usage notes
  * > You can call this operation up to 100 times per second per account.
  *
  * @param request DescribeDcdnUserCertificateExpireCountRequest
@@ -38390,7 +38452,6 @@ func (client *Client) DescribeDcdnUserCertificateExpireCountWithOptions(runtime 
 }
 
 /**
- * # Usage notes
  * > You can call this operation up to 100 times per second per account.
  *
  * @return DescribeDcdnUserCertificateExpireCountResponse
@@ -39225,7 +39286,6 @@ func (client *Client) DescribeDcdnWafDomain(request *DescribeDcdnWafDomainReques
 }
 
 /**
- * # Usage notes
  * You can call this operation up to 20 times per second per account.
  *
  * @param request DescribeDcdnWafDomainDetailRequest
@@ -39266,7 +39326,6 @@ func (client *Client) DescribeDcdnWafDomainDetailWithOptions(request *DescribeDc
 }
 
 /**
- * # Usage notes
  * You can call this operation up to 20 times per second per account.
  *
  * @param request DescribeDcdnWafDomainDetailRequest
@@ -39284,7 +39343,6 @@ func (client *Client) DescribeDcdnWafDomainDetail(request *DescribeDcdnWafDomain
 }
 
 /**
- * #
  * You can call this operation up to 20 times per second per account.
  *
  * @param request DescribeDcdnWafDomainsRequest
@@ -39333,7 +39391,6 @@ func (client *Client) DescribeDcdnWafDomainsWithOptions(request *DescribeDcdnWaf
 }
 
 /**
- * #
  * You can call this operation up to 20 times per second per account.
  *
  * @param request DescribeDcdnWafDomainsRequest
@@ -39855,7 +39912,6 @@ func (client *Client) DescribeDcdnWafPolicyDomains(request *DescribeDcdnWafPolic
 }
 
 /**
- * #
  * You can call this operation up to 20 times per second per account.
  *
  * @param request DescribeDcdnWafPolicyValidDomainsRequest
@@ -39908,7 +39964,6 @@ func (client *Client) DescribeDcdnWafPolicyValidDomainsWithOptions(request *Desc
 }
 
 /**
- * #
  * You can call this operation up to 20 times per second per account.
  *
  * @param request DescribeDcdnWafPolicyValidDomainsRequest
@@ -40215,7 +40270,7 @@ func (client *Client) DescribeDcdnWafSpecInfo() (_result *DescribeDcdnWafSpecInf
 }
 
 /**
- * >*   You can call this operation up to 10 times per second per account.
+ * *   You can call this operation up to 10 times per second per account.
  * *   The minimum time granularity for a query is 5 minutes. The maximum time span for a query is 31 days. The time period within which historical data is available for a query is 90 days.
  *
  * @param request DescribeDcdnWafUsageDataRequest
@@ -40272,7 +40327,7 @@ func (client *Client) DescribeDcdnWafUsageDataWithOptions(request *DescribeDcdnW
 }
 
 /**
- * >*   You can call this operation up to 10 times per second per account.
+ * *   You can call this operation up to 10 times per second per account.
  * *   The minimum time granularity for a query is 5 minutes. The maximum time span for a query is 31 days. The time period within which historical data is available for a query is 90 days.
  *
  * @param request DescribeDcdnWafUsageDataRequest
@@ -41459,7 +41514,6 @@ func (client *Client) ModifyDcdnWafGroup(request *ModifyDcdnWafGroupRequest) (_r
 }
 
 /**
- * #
  * *   You can call this operation up to 20 times per second per account.
  * *   Alibaba Cloud Dynamic Content Delivery Network (DCDN) supports POST requests.
  *
@@ -41509,7 +41563,6 @@ func (client *Client) ModifyDcdnWafPolicyWithOptions(request *ModifyDcdnWafPolic
 }
 
 /**
- * #
  * *   You can call this operation up to 20 times per second per account.
  * *   Alibaba Cloud Dynamic Content Delivery Network (DCDN) supports POST requests.
  *
@@ -41601,9 +41654,8 @@ func (client *Client) ModifyDcdnWafPolicyDomains(request *ModifyDcdnWafPolicyDom
 }
 
 /**
- * #
- * *   You can call this operation up to 20 times per second.
- * *   Alibaba Cloud Dynamic Route for CDN (DCDN) supports POST requests.
+ * *   You can call this operation up to 20 times per second per account.
+ * *   Alibaba Cloud Dynamic Content Delivery Network (DCDN) supports POST requests.
  * *   You must configure at least one of the **RuleStatus**, **RuleName** and **RuleConfig** parameters.
  *
  * @param request ModifyDcdnWafRuleRequest
@@ -41656,9 +41708,8 @@ func (client *Client) ModifyDcdnWafRuleWithOptions(request *ModifyDcdnWafRuleReq
 }
 
 /**
- * #
- * *   You can call this operation up to 20 times per second.
- * *   Alibaba Cloud Dynamic Route for CDN (DCDN) supports POST requests.
+ * *   You can call this operation up to 20 times per second per account.
+ * *   Alibaba Cloud Dynamic Content Delivery Network (DCDN) supports POST requests.
  * *   You must configure at least one of the **RuleStatus**, **RuleName** and **RuleConfig** parameters.
  *
  * @param request ModifyDcdnWafRuleRequest
