@@ -817,9 +817,10 @@ func (s *NotificationStrategyGroupingSettingGroupingItems) SetType(v string) *No
 }
 
 type NotificationStrategyPushingSetting struct {
-	Range        *string   `json:"Range,omitempty" xml:"Range,omitempty"`
-	TargetUuids  []*string `json:"TargetUuids,omitempty" xml:"TargetUuids,omitempty" type:"Repeated"`
-	TemplateUuid *string   `json:"TemplateUuid,omitempty" xml:"TemplateUuid,omitempty"`
+	PushingDataFormat *string   `json:"PushingDataFormat,omitempty" xml:"PushingDataFormat,omitempty"`
+	Range             *string   `json:"Range,omitempty" xml:"Range,omitempty"`
+	TargetUuids       []*string `json:"TargetUuids,omitempty" xml:"TargetUuids,omitempty" type:"Repeated"`
+	TemplateUuid      *string   `json:"TemplateUuid,omitempty" xml:"TemplateUuid,omitempty"`
 }
 
 func (s NotificationStrategyPushingSetting) String() string {
@@ -828,6 +829,11 @@ func (s NotificationStrategyPushingSetting) String() string {
 
 func (s NotificationStrategyPushingSetting) GoString() string {
 	return s.String()
+}
+
+func (s *NotificationStrategyPushingSetting) SetPushingDataFormat(v string) *NotificationStrategyPushingSetting {
+	s.PushingDataFormat = &v
+	return s
 }
 
 func (s *NotificationStrategyPushingSetting) SetRange(v string) *NotificationStrategyPushingSetting {
@@ -4533,9 +4539,7 @@ type CreateInstantSiteMonitorRequest struct {
 	OptionsJson *string `json:"OptionsJson,omitempty" xml:"OptionsJson,omitempty"`
 	// The number of detection points.
 	//
-	// >
-	//
-	// *   You must specify one of the `IspCities` and `RandomIspCity` parameters. If you specify the `RandomIspCity` parameter, the `IspCities` parameter automatically becomes invalid.
+	// > You must specify one of the `IspCities` and `RandomIspCity` parameters. If you specify the `RandomIspCity` parameter, the `IspCities` parameter automatically becomes invalid.
 	RandomIspCity *int32  `json:"RandomIspCity,omitempty" xml:"RandomIspCity,omitempty"`
 	RegionId      *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 	// The name of the instant test task.
@@ -26245,34 +26249,48 @@ func (s *DescribeSiteMonitorAttributeResponseBodySiteMonitorsIspCitiesIspCity) S
 }
 
 type DescribeSiteMonitorAttributeResponseBodySiteMonitorsOptionJson struct {
-	Assertions         *DescribeSiteMonitorAttributeResponseBodySiteMonitorsOptionJsonAssertions `json:"assertions,omitempty" xml:"assertions,omitempty" type:"Struct"`
-	Attempts           *int64                                                                    `json:"attempts,omitempty" xml:"attempts,omitempty"`
-	Authentication     *int32                                                                    `json:"authentication,omitempty" xml:"authentication,omitempty"`
-	Cookie             *string                                                                   `json:"cookie,omitempty" xml:"cookie,omitempty"`
-	DiagnosisMtr       *bool                                                                     `json:"diagnosis_mtr,omitempty" xml:"diagnosis_mtr,omitempty"`
-	DiagnosisPing      *bool                                                                     `json:"diagnosis_ping,omitempty" xml:"diagnosis_ping,omitempty"`
-	DnsHijackWhitelist *string                                                                   `json:"dns_hijack_whitelist,omitempty" xml:"dns_hijack_whitelist,omitempty"`
-	DnsMatchRule       *string                                                                   `json:"dns_match_rule,omitempty" xml:"dns_match_rule,omitempty"`
-	DnsServer          *string                                                                   `json:"dns_server,omitempty" xml:"dns_server,omitempty"`
-	DnsType            *string                                                                   `json:"dns_type,omitempty" xml:"dns_type,omitempty"`
-	ExpectValue        *string                                                                   `json:"expect_value,omitempty" xml:"expect_value,omitempty"`
-	FailureRate        *float32                                                                  `json:"failure_rate,omitempty" xml:"failure_rate,omitempty"`
-	Header             *string                                                                   `json:"header,omitempty" xml:"header,omitempty"`
-	HttpMethod         *string                                                                   `json:"http_method,omitempty" xml:"http_method,omitempty"`
-	IsBase64Encode     *string                                                                   `json:"isBase64Encode,omitempty" xml:"isBase64Encode,omitempty"`
-	MatchRule          *int32                                                                    `json:"match_rule,omitempty" xml:"match_rule,omitempty"`
-	MinTlsVersion      *string                                                                   `json:"min_tls_version,omitempty" xml:"min_tls_version,omitempty"`
-	Password           *string                                                                   `json:"password,omitempty" xml:"password,omitempty"`
-	PingNum            *int32                                                                    `json:"ping_num,omitempty" xml:"ping_num,omitempty"`
-	Port               *int32                                                                    `json:"port,omitempty" xml:"port,omitempty"`
-	Protocol           *string                                                                   `json:"protocol,omitempty" xml:"protocol,omitempty"`
-	RequestContent     *string                                                                   `json:"request_content,omitempty" xml:"request_content,omitempty"`
-	RequestFormat      *string                                                                   `json:"request_format,omitempty" xml:"request_format,omitempty"`
-	ResponseContent    *string                                                                   `json:"response_content,omitempty" xml:"response_content,omitempty"`
-	ResponseFormat     *string                                                                   `json:"response_format,omitempty" xml:"response_format,omitempty"`
-	RetryDelay         *int32                                                                    `json:"retry_delay,omitempty" xml:"retry_delay,omitempty"`
-	TimeOut            *int64                                                                    `json:"time_out,omitempty" xml:"time_out,omitempty"`
-	Username           *string                                                                   `json:"username,omitempty" xml:"username,omitempty"`
+	Assertions                    *DescribeSiteMonitorAttributeResponseBodySiteMonitorsOptionJsonAssertions                    `json:"assertions,omitempty" xml:"assertions,omitempty" type:"Struct"`
+	Attempts                      *int64                                                                                       `json:"attempts,omitempty" xml:"attempts,omitempty"`
+	Authentication                *int32                                                                                       `json:"authentication,omitempty" xml:"authentication,omitempty"`
+	BlockedUrlList                *DescribeSiteMonitorAttributeResponseBodySiteMonitorsOptionJsonBlockedUrlList                `json:"blocked_url_list,omitempty" xml:"blocked_url_list,omitempty" type:"Struct"`
+	BrowserHeaders                *DescribeSiteMonitorAttributeResponseBodySiteMonitorsOptionJsonBrowserHeaders                `json:"browser_headers,omitempty" xml:"browser_headers,omitempty" type:"Struct"`
+	BrowserHosts                  *DescribeSiteMonitorAttributeResponseBodySiteMonitorsOptionJsonBrowserHosts                  `json:"browser_hosts,omitempty" xml:"browser_hosts,omitempty" type:"Struct"`
+	BrowserInfo                   *DescribeSiteMonitorAttributeResponseBodySiteMonitorsOptionJsonBrowserInfo                   `json:"browser_info,omitempty" xml:"browser_info,omitempty" type:"Struct"`
+	BrowserInsecure               *bool                                                                                        `json:"browser_insecure,omitempty" xml:"browser_insecure,omitempty"`
+	BrowserTaskVersion            *string                                                                                      `json:"browser_task_version,omitempty" xml:"browser_task_version,omitempty"`
+	Cookie                        *string                                                                                      `json:"cookie,omitempty" xml:"cookie,omitempty"`
+	DiagnosisMtr                  *bool                                                                                        `json:"diagnosis_mtr,omitempty" xml:"diagnosis_mtr,omitempty"`
+	DiagnosisPing                 *bool                                                                                        `json:"diagnosis_ping,omitempty" xml:"diagnosis_ping,omitempty"`
+	DnsHijackWhitelist            *string                                                                                      `json:"dns_hijack_whitelist,omitempty" xml:"dns_hijack_whitelist,omitempty"`
+	DnsMatchRule                  *string                                                                                      `json:"dns_match_rule,omitempty" xml:"dns_match_rule,omitempty"`
+	DnsServer                     *string                                                                                      `json:"dns_server,omitempty" xml:"dns_server,omitempty"`
+	DnsType                       *string                                                                                      `json:"dns_type,omitempty" xml:"dns_type,omitempty"`
+	ExpectExistString             *DescribeSiteMonitorAttributeResponseBodySiteMonitorsOptionJsonExpectExistString             `json:"expect_exist_string,omitempty" xml:"expect_exist_string,omitempty" type:"Struct"`
+	ExpectNonExistString          *DescribeSiteMonitorAttributeResponseBodySiteMonitorsOptionJsonExpectNonExistString          `json:"expect_non_exist_string,omitempty" xml:"expect_non_exist_string,omitempty" type:"Struct"`
+	ExpectValue                   *string                                                                                      `json:"expect_value,omitempty" xml:"expect_value,omitempty"`
+	FailureRate                   *float32                                                                                     `json:"failure_rate,omitempty" xml:"failure_rate,omitempty"`
+	Header                        *string                                                                                      `json:"header,omitempty" xml:"header,omitempty"`
+	HttpMethod                    *string                                                                                      `json:"http_method,omitempty" xml:"http_method,omitempty"`
+	IsBase64Encode                *string                                                                                      `json:"isBase64Encode,omitempty" xml:"isBase64Encode,omitempty"`
+	MatchRule                     *int32                                                                                       `json:"match_rule,omitempty" xml:"match_rule,omitempty"`
+	MinTlsVersion                 *string                                                                                      `json:"min_tls_version,omitempty" xml:"min_tls_version,omitempty"`
+	Password                      *string                                                                                      `json:"password,omitempty" xml:"password,omitempty"`
+	PingNum                       *int32                                                                                       `json:"ping_num,omitempty" xml:"ping_num,omitempty"`
+	PingPort                      *int32                                                                                       `json:"ping_port,omitempty" xml:"ping_port,omitempty"`
+	PingType                      *string                                                                                      `json:"ping_type,omitempty" xml:"ping_type,omitempty"`
+	Port                          *int32                                                                                       `json:"port,omitempty" xml:"port,omitempty"`
+	Protocol                      *string                                                                                      `json:"protocol,omitempty" xml:"protocol,omitempty"`
+	RequestContent                *string                                                                                      `json:"request_content,omitempty" xml:"request_content,omitempty"`
+	RequestFormat                 *string                                                                                      `json:"request_format,omitempty" xml:"request_format,omitempty"`
+	ResponseContent               *string                                                                                      `json:"response_content,omitempty" xml:"response_content,omitempty"`
+	ResponseFormat                *string                                                                                      `json:"response_format,omitempty" xml:"response_format,omitempty"`
+	RetryDelay                    *int32                                                                                       `json:"retry_delay,omitempty" xml:"retry_delay,omitempty"`
+	StrictMode                    *bool                                                                                        `json:"strict_mode,omitempty" xml:"strict_mode,omitempty"`
+	TimeOut                       *int64                                                                                       `json:"time_out,omitempty" xml:"time_out,omitempty"`
+	TrafficHijackElementBlacklist *DescribeSiteMonitorAttributeResponseBodySiteMonitorsOptionJsonTrafficHijackElementBlacklist `json:"traffic_hijack_element_blacklist,omitempty" xml:"traffic_hijack_element_blacklist,omitempty" type:"Struct"`
+	TrafficHijackElementCount     *int32                                                                                       `json:"traffic_hijack_element_count,omitempty" xml:"traffic_hijack_element_count,omitempty"`
+	TrafficHijackElementWhitelist *DescribeSiteMonitorAttributeResponseBodySiteMonitorsOptionJsonTrafficHijackElementWhitelist `json:"traffic_hijack_element_whitelist,omitempty" xml:"traffic_hijack_element_whitelist,omitempty" type:"Struct"`
+	Username                      *string                                                                                      `json:"username,omitempty" xml:"username,omitempty"`
 }
 
 func (s DescribeSiteMonitorAttributeResponseBodySiteMonitorsOptionJson) String() string {
@@ -26295,6 +26313,36 @@ func (s *DescribeSiteMonitorAttributeResponseBodySiteMonitorsOptionJson) SetAtte
 
 func (s *DescribeSiteMonitorAttributeResponseBodySiteMonitorsOptionJson) SetAuthentication(v int32) *DescribeSiteMonitorAttributeResponseBodySiteMonitorsOptionJson {
 	s.Authentication = &v
+	return s
+}
+
+func (s *DescribeSiteMonitorAttributeResponseBodySiteMonitorsOptionJson) SetBlockedUrlList(v *DescribeSiteMonitorAttributeResponseBodySiteMonitorsOptionJsonBlockedUrlList) *DescribeSiteMonitorAttributeResponseBodySiteMonitorsOptionJson {
+	s.BlockedUrlList = v
+	return s
+}
+
+func (s *DescribeSiteMonitorAttributeResponseBodySiteMonitorsOptionJson) SetBrowserHeaders(v *DescribeSiteMonitorAttributeResponseBodySiteMonitorsOptionJsonBrowserHeaders) *DescribeSiteMonitorAttributeResponseBodySiteMonitorsOptionJson {
+	s.BrowserHeaders = v
+	return s
+}
+
+func (s *DescribeSiteMonitorAttributeResponseBodySiteMonitorsOptionJson) SetBrowserHosts(v *DescribeSiteMonitorAttributeResponseBodySiteMonitorsOptionJsonBrowserHosts) *DescribeSiteMonitorAttributeResponseBodySiteMonitorsOptionJson {
+	s.BrowserHosts = v
+	return s
+}
+
+func (s *DescribeSiteMonitorAttributeResponseBodySiteMonitorsOptionJson) SetBrowserInfo(v *DescribeSiteMonitorAttributeResponseBodySiteMonitorsOptionJsonBrowserInfo) *DescribeSiteMonitorAttributeResponseBodySiteMonitorsOptionJson {
+	s.BrowserInfo = v
+	return s
+}
+
+func (s *DescribeSiteMonitorAttributeResponseBodySiteMonitorsOptionJson) SetBrowserInsecure(v bool) *DescribeSiteMonitorAttributeResponseBodySiteMonitorsOptionJson {
+	s.BrowserInsecure = &v
+	return s
+}
+
+func (s *DescribeSiteMonitorAttributeResponseBodySiteMonitorsOptionJson) SetBrowserTaskVersion(v string) *DescribeSiteMonitorAttributeResponseBodySiteMonitorsOptionJson {
+	s.BrowserTaskVersion = &v
 	return s
 }
 
@@ -26330,6 +26378,16 @@ func (s *DescribeSiteMonitorAttributeResponseBodySiteMonitorsOptionJson) SetDnsS
 
 func (s *DescribeSiteMonitorAttributeResponseBodySiteMonitorsOptionJson) SetDnsType(v string) *DescribeSiteMonitorAttributeResponseBodySiteMonitorsOptionJson {
 	s.DnsType = &v
+	return s
+}
+
+func (s *DescribeSiteMonitorAttributeResponseBodySiteMonitorsOptionJson) SetExpectExistString(v *DescribeSiteMonitorAttributeResponseBodySiteMonitorsOptionJsonExpectExistString) *DescribeSiteMonitorAttributeResponseBodySiteMonitorsOptionJson {
+	s.ExpectExistString = v
+	return s
+}
+
+func (s *DescribeSiteMonitorAttributeResponseBodySiteMonitorsOptionJson) SetExpectNonExistString(v *DescribeSiteMonitorAttributeResponseBodySiteMonitorsOptionJsonExpectNonExistString) *DescribeSiteMonitorAttributeResponseBodySiteMonitorsOptionJson {
+	s.ExpectNonExistString = v
 	return s
 }
 
@@ -26378,6 +26436,16 @@ func (s *DescribeSiteMonitorAttributeResponseBodySiteMonitorsOptionJson) SetPing
 	return s
 }
 
+func (s *DescribeSiteMonitorAttributeResponseBodySiteMonitorsOptionJson) SetPingPort(v int32) *DescribeSiteMonitorAttributeResponseBodySiteMonitorsOptionJson {
+	s.PingPort = &v
+	return s
+}
+
+func (s *DescribeSiteMonitorAttributeResponseBodySiteMonitorsOptionJson) SetPingType(v string) *DescribeSiteMonitorAttributeResponseBodySiteMonitorsOptionJson {
+	s.PingType = &v
+	return s
+}
+
 func (s *DescribeSiteMonitorAttributeResponseBodySiteMonitorsOptionJson) SetPort(v int32) *DescribeSiteMonitorAttributeResponseBodySiteMonitorsOptionJson {
 	s.Port = &v
 	return s
@@ -26413,8 +26481,28 @@ func (s *DescribeSiteMonitorAttributeResponseBodySiteMonitorsOptionJson) SetRetr
 	return s
 }
 
+func (s *DescribeSiteMonitorAttributeResponseBodySiteMonitorsOptionJson) SetStrictMode(v bool) *DescribeSiteMonitorAttributeResponseBodySiteMonitorsOptionJson {
+	s.StrictMode = &v
+	return s
+}
+
 func (s *DescribeSiteMonitorAttributeResponseBodySiteMonitorsOptionJson) SetTimeOut(v int64) *DescribeSiteMonitorAttributeResponseBodySiteMonitorsOptionJson {
 	s.TimeOut = &v
+	return s
+}
+
+func (s *DescribeSiteMonitorAttributeResponseBodySiteMonitorsOptionJson) SetTrafficHijackElementBlacklist(v *DescribeSiteMonitorAttributeResponseBodySiteMonitorsOptionJsonTrafficHijackElementBlacklist) *DescribeSiteMonitorAttributeResponseBodySiteMonitorsOptionJson {
+	s.TrafficHijackElementBlacklist = v
+	return s
+}
+
+func (s *DescribeSiteMonitorAttributeResponseBodySiteMonitorsOptionJson) SetTrafficHijackElementCount(v int32) *DescribeSiteMonitorAttributeResponseBodySiteMonitorsOptionJson {
+	s.TrafficHijackElementCount = &v
+	return s
+}
+
+func (s *DescribeSiteMonitorAttributeResponseBodySiteMonitorsOptionJson) SetTrafficHijackElementWhitelist(v *DescribeSiteMonitorAttributeResponseBodySiteMonitorsOptionJsonTrafficHijackElementWhitelist) *DescribeSiteMonitorAttributeResponseBodySiteMonitorsOptionJson {
+	s.TrafficHijackElementWhitelist = v
 	return s
 }
 
@@ -26472,6 +26560,165 @@ func (s *DescribeSiteMonitorAttributeResponseBodySiteMonitorsOptionJsonAssertion
 
 func (s *DescribeSiteMonitorAttributeResponseBodySiteMonitorsOptionJsonAssertionsAssertions) SetType(v string) *DescribeSiteMonitorAttributeResponseBodySiteMonitorsOptionJsonAssertionsAssertions {
 	s.Type = &v
+	return s
+}
+
+type DescribeSiteMonitorAttributeResponseBodySiteMonitorsOptionJsonBlockedUrlList struct {
+	BlockedUrlList []*string `json:"blocked_url_list,omitempty" xml:"blocked_url_list,omitempty" type:"Repeated"`
+}
+
+func (s DescribeSiteMonitorAttributeResponseBodySiteMonitorsOptionJsonBlockedUrlList) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeSiteMonitorAttributeResponseBodySiteMonitorsOptionJsonBlockedUrlList) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeSiteMonitorAttributeResponseBodySiteMonitorsOptionJsonBlockedUrlList) SetBlockedUrlList(v []*string) *DescribeSiteMonitorAttributeResponseBodySiteMonitorsOptionJsonBlockedUrlList {
+	s.BlockedUrlList = v
+	return s
+}
+
+type DescribeSiteMonitorAttributeResponseBodySiteMonitorsOptionJsonBrowserHeaders struct {
+	BrowserHeaders []map[string]interface{} `json:"browser_headers,omitempty" xml:"browser_headers,omitempty" type:"Repeated"`
+}
+
+func (s DescribeSiteMonitorAttributeResponseBodySiteMonitorsOptionJsonBrowserHeaders) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeSiteMonitorAttributeResponseBodySiteMonitorsOptionJsonBrowserHeaders) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeSiteMonitorAttributeResponseBodySiteMonitorsOptionJsonBrowserHeaders) SetBrowserHeaders(v []map[string]interface{}) *DescribeSiteMonitorAttributeResponseBodySiteMonitorsOptionJsonBrowserHeaders {
+	s.BrowserHeaders = v
+	return s
+}
+
+type DescribeSiteMonitorAttributeResponseBodySiteMonitorsOptionJsonBrowserHosts struct {
+	BrowserHosts []*string `json:"browser_hosts,omitempty" xml:"browser_hosts,omitempty" type:"Repeated"`
+}
+
+func (s DescribeSiteMonitorAttributeResponseBodySiteMonitorsOptionJsonBrowserHosts) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeSiteMonitorAttributeResponseBodySiteMonitorsOptionJsonBrowserHosts) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeSiteMonitorAttributeResponseBodySiteMonitorsOptionJsonBrowserHosts) SetBrowserHosts(v []*string) *DescribeSiteMonitorAttributeResponseBodySiteMonitorsOptionJsonBrowserHosts {
+	s.BrowserHosts = v
+	return s
+}
+
+type DescribeSiteMonitorAttributeResponseBodySiteMonitorsOptionJsonBrowserInfo struct {
+	BrowserInfo []*DescribeSiteMonitorAttributeResponseBodySiteMonitorsOptionJsonBrowserInfoBrowserInfo `json:"browser_info,omitempty" xml:"browser_info,omitempty" type:"Repeated"`
+}
+
+func (s DescribeSiteMonitorAttributeResponseBodySiteMonitorsOptionJsonBrowserInfo) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeSiteMonitorAttributeResponseBodySiteMonitorsOptionJsonBrowserInfo) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeSiteMonitorAttributeResponseBodySiteMonitorsOptionJsonBrowserInfo) SetBrowserInfo(v []*DescribeSiteMonitorAttributeResponseBodySiteMonitorsOptionJsonBrowserInfoBrowserInfo) *DescribeSiteMonitorAttributeResponseBodySiteMonitorsOptionJsonBrowserInfo {
+	s.BrowserInfo = v
+	return s
+}
+
+type DescribeSiteMonitorAttributeResponseBodySiteMonitorsOptionJsonBrowserInfoBrowserInfo struct {
+	Browser *string `json:"browser,omitempty" xml:"browser,omitempty"`
+	Device  *string `json:"device,omitempty" xml:"device,omitempty"`
+}
+
+func (s DescribeSiteMonitorAttributeResponseBodySiteMonitorsOptionJsonBrowserInfoBrowserInfo) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeSiteMonitorAttributeResponseBodySiteMonitorsOptionJsonBrowserInfoBrowserInfo) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeSiteMonitorAttributeResponseBodySiteMonitorsOptionJsonBrowserInfoBrowserInfo) SetBrowser(v string) *DescribeSiteMonitorAttributeResponseBodySiteMonitorsOptionJsonBrowserInfoBrowserInfo {
+	s.Browser = &v
+	return s
+}
+
+func (s *DescribeSiteMonitorAttributeResponseBodySiteMonitorsOptionJsonBrowserInfoBrowserInfo) SetDevice(v string) *DescribeSiteMonitorAttributeResponseBodySiteMonitorsOptionJsonBrowserInfoBrowserInfo {
+	s.Device = &v
+	return s
+}
+
+type DescribeSiteMonitorAttributeResponseBodySiteMonitorsOptionJsonExpectExistString struct {
+	ExpectExistString []*string `json:"expect_exist_string,omitempty" xml:"expect_exist_string,omitempty" type:"Repeated"`
+}
+
+func (s DescribeSiteMonitorAttributeResponseBodySiteMonitorsOptionJsonExpectExistString) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeSiteMonitorAttributeResponseBodySiteMonitorsOptionJsonExpectExistString) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeSiteMonitorAttributeResponseBodySiteMonitorsOptionJsonExpectExistString) SetExpectExistString(v []*string) *DescribeSiteMonitorAttributeResponseBodySiteMonitorsOptionJsonExpectExistString {
+	s.ExpectExistString = v
+	return s
+}
+
+type DescribeSiteMonitorAttributeResponseBodySiteMonitorsOptionJsonExpectNonExistString struct {
+	ExpectNonExistString []*string `json:"expect_non_exist_string,omitempty" xml:"expect_non_exist_string,omitempty" type:"Repeated"`
+}
+
+func (s DescribeSiteMonitorAttributeResponseBodySiteMonitorsOptionJsonExpectNonExistString) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeSiteMonitorAttributeResponseBodySiteMonitorsOptionJsonExpectNonExistString) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeSiteMonitorAttributeResponseBodySiteMonitorsOptionJsonExpectNonExistString) SetExpectNonExistString(v []*string) *DescribeSiteMonitorAttributeResponseBodySiteMonitorsOptionJsonExpectNonExistString {
+	s.ExpectNonExistString = v
+	return s
+}
+
+type DescribeSiteMonitorAttributeResponseBodySiteMonitorsOptionJsonTrafficHijackElementBlacklist struct {
+	TrafficHijackElementBlacklist []*string `json:"traffic_hijack_element_blacklist,omitempty" xml:"traffic_hijack_element_blacklist,omitempty" type:"Repeated"`
+}
+
+func (s DescribeSiteMonitorAttributeResponseBodySiteMonitorsOptionJsonTrafficHijackElementBlacklist) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeSiteMonitorAttributeResponseBodySiteMonitorsOptionJsonTrafficHijackElementBlacklist) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeSiteMonitorAttributeResponseBodySiteMonitorsOptionJsonTrafficHijackElementBlacklist) SetTrafficHijackElementBlacklist(v []*string) *DescribeSiteMonitorAttributeResponseBodySiteMonitorsOptionJsonTrafficHijackElementBlacklist {
+	s.TrafficHijackElementBlacklist = v
+	return s
+}
+
+type DescribeSiteMonitorAttributeResponseBodySiteMonitorsOptionJsonTrafficHijackElementWhitelist struct {
+	TrafficHijackElementWhitelist []*string `json:"traffic_hijack_element_whitelist,omitempty" xml:"traffic_hijack_element_whitelist,omitempty" type:"Repeated"`
+}
+
+func (s DescribeSiteMonitorAttributeResponseBodySiteMonitorsOptionJsonTrafficHijackElementWhitelist) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeSiteMonitorAttributeResponseBodySiteMonitorsOptionJsonTrafficHijackElementWhitelist) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeSiteMonitorAttributeResponseBodySiteMonitorsOptionJsonTrafficHijackElementWhitelist) SetTrafficHijackElementWhitelist(v []*string) *DescribeSiteMonitorAttributeResponseBodySiteMonitorsOptionJsonTrafficHijackElementWhitelist {
+	s.TrafficHijackElementWhitelist = v
 	return s
 }
 
@@ -27616,8 +27863,11 @@ func (s *DescribeSiteMonitorListResponse) SetBody(v *DescribeSiteMonitorListResp
 }
 
 type DescribeSiteMonitorLogRequest struct {
+	Browser     *string `json:"Browser,omitempty" xml:"Browser,omitempty"`
+	BrowserInfo *string `json:"BrowserInfo,omitempty" xml:"BrowserInfo,omitempty"`
 	// The city identification code.
-	City *string `json:"City,omitempty" xml:"City,omitempty"`
+	City   *string `json:"City,omitempty" xml:"City,omitempty"`
+	Device *string `json:"Device,omitempty" xml:"Device,omitempty"`
 	// The end of the time range to query data. The following formats are supported:
 	//
 	// *   UNIX timestamp: the number of milliseconds that have elapsed since 00:00:00 Thursday, January 1, 1970
@@ -27661,8 +27911,23 @@ func (s DescribeSiteMonitorLogRequest) GoString() string {
 	return s.String()
 }
 
+func (s *DescribeSiteMonitorLogRequest) SetBrowser(v string) *DescribeSiteMonitorLogRequest {
+	s.Browser = &v
+	return s
+}
+
+func (s *DescribeSiteMonitorLogRequest) SetBrowserInfo(v string) *DescribeSiteMonitorLogRequest {
+	s.BrowserInfo = &v
+	return s
+}
+
 func (s *DescribeSiteMonitorLogRequest) SetCity(v string) *DescribeSiteMonitorLogRequest {
 	s.City = &v
+	return s
+}
+
+func (s *DescribeSiteMonitorLogRequest) SetDevice(v string) *DescribeSiteMonitorLogRequest {
+	s.Device = &v
 	return s
 }
 
@@ -40029,7 +40294,7 @@ func (client *Client) CreateHybridMonitorTask(request *CreateHybridMonitorTaskRe
 }
 
 /**
- * You can create an instant test task only by using the Alibaba Cloud account that you used to enable Network Analysis and Monitoring. For more information, see [Billing of Network Analysis and Monitoring](~~341649~~).
+ * You can create an instant test task only by using the Alibaba Cloud account that you used to enable Network Analysis and Monitoring.
  * This topic provides an example to show how to create an instant test task. The name of the task is `task1`. The tested address is `http://www.aliyun.com`. The test type is `HTTP`. The number of detection points is `1`.
  *
  * @param request CreateInstantSiteMonitorRequest
@@ -40090,7 +40355,7 @@ func (client *Client) CreateInstantSiteMonitorWithOptions(request *CreateInstant
 }
 
 /**
- * You can create an instant test task only by using the Alibaba Cloud account that you used to enable Network Analysis and Monitoring. For more information, see [Billing of Network Analysis and Monitoring](~~341649~~).
+ * You can create an instant test task only by using the Alibaba Cloud account that you used to enable Network Analysis and Monitoring.
  * This topic provides an example to show how to create an instant test task. The name of the task is `task1`. The tested address is `http://www.aliyun.com`. The test type is `HTTP`. The number of detection points is `1`.
  *
  * @param request CreateInstantSiteMonitorRequest
@@ -46029,7 +46294,7 @@ func (client *Client) DescribeSiteMonitorList(request *DescribeSiteMonitorListRe
 }
 
 /**
- * You can create an instant test task only by using the Alibaba Cloud account that you used to enable Network Analysis and Monitoring. For more information, see [Billing of Network Analysis and Monitoring](~~341649~~).
+ * You can create an instant test task only by using the Alibaba Cloud account that you used to enable Network Analysis and Monitoring.
  * This topic provides an example to show how to query the logs of an instant test task whose ID is `afa5c3ce-f944-4363-9edb-ce919a29****`.
  *
  * @param request DescribeSiteMonitorLogRequest
@@ -46042,8 +46307,20 @@ func (client *Client) DescribeSiteMonitorLogWithOptions(request *DescribeSiteMon
 		return _result, _err
 	}
 	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.Browser)) {
+		query["Browser"] = request.Browser
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.BrowserInfo)) {
+		query["BrowserInfo"] = request.BrowserInfo
+	}
+
 	if !tea.BoolValue(util.IsUnset(request.City)) {
 		query["City"] = request.City
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Device)) {
+		query["Device"] = request.Device
 	}
 
 	if !tea.BoolValue(util.IsUnset(request.EndTime)) {
@@ -46102,7 +46379,7 @@ func (client *Client) DescribeSiteMonitorLogWithOptions(request *DescribeSiteMon
 }
 
 /**
- * You can create an instant test task only by using the Alibaba Cloud account that you used to enable Network Analysis and Monitoring. For more information, see [Billing of Network Analysis and Monitoring](~~341649~~).
+ * You can create an instant test task only by using the Alibaba Cloud account that you used to enable Network Analysis and Monitoring.
  * This topic provides an example to show how to query the logs of an instant test task whose ID is `afa5c3ce-f944-4363-9edb-ce919a29****`.
  *
  * @param request DescribeSiteMonitorLogRequest
