@@ -5048,6 +5048,99 @@ func (s *DescribeNatFirewallControlPolicyResponse) SetBody(v *DescribeNatFirewal
 	return s
 }
 
+type DescribeNatFirewallPolicyPriorUsedRequest struct {
+	Direction    *string `json:"Direction,omitempty" xml:"Direction,omitempty"`
+	IpVersion    *string `json:"IpVersion,omitempty" xml:"IpVersion,omitempty"`
+	Lang         *string `json:"Lang,omitempty" xml:"Lang,omitempty"`
+	NatGatewayId *string `json:"NatGatewayId,omitempty" xml:"NatGatewayId,omitempty"`
+}
+
+func (s DescribeNatFirewallPolicyPriorUsedRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeNatFirewallPolicyPriorUsedRequest) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeNatFirewallPolicyPriorUsedRequest) SetDirection(v string) *DescribeNatFirewallPolicyPriorUsedRequest {
+	s.Direction = &v
+	return s
+}
+
+func (s *DescribeNatFirewallPolicyPriorUsedRequest) SetIpVersion(v string) *DescribeNatFirewallPolicyPriorUsedRequest {
+	s.IpVersion = &v
+	return s
+}
+
+func (s *DescribeNatFirewallPolicyPriorUsedRequest) SetLang(v string) *DescribeNatFirewallPolicyPriorUsedRequest {
+	s.Lang = &v
+	return s
+}
+
+func (s *DescribeNatFirewallPolicyPriorUsedRequest) SetNatGatewayId(v string) *DescribeNatFirewallPolicyPriorUsedRequest {
+	s.NatGatewayId = &v
+	return s
+}
+
+type DescribeNatFirewallPolicyPriorUsedResponseBody struct {
+	End       *int32  `json:"End,omitempty" xml:"End,omitempty"`
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	Start     *int32  `json:"Start,omitempty" xml:"Start,omitempty"`
+}
+
+func (s DescribeNatFirewallPolicyPriorUsedResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeNatFirewallPolicyPriorUsedResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeNatFirewallPolicyPriorUsedResponseBody) SetEnd(v int32) *DescribeNatFirewallPolicyPriorUsedResponseBody {
+	s.End = &v
+	return s
+}
+
+func (s *DescribeNatFirewallPolicyPriorUsedResponseBody) SetRequestId(v string) *DescribeNatFirewallPolicyPriorUsedResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *DescribeNatFirewallPolicyPriorUsedResponseBody) SetStart(v int32) *DescribeNatFirewallPolicyPriorUsedResponseBody {
+	s.Start = &v
+	return s
+}
+
+type DescribeNatFirewallPolicyPriorUsedResponse struct {
+	Headers    map[string]*string                              `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                                          `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *DescribeNatFirewallPolicyPriorUsedResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s DescribeNatFirewallPolicyPriorUsedResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeNatFirewallPolicyPriorUsedResponse) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeNatFirewallPolicyPriorUsedResponse) SetHeaders(v map[string]*string) *DescribeNatFirewallPolicyPriorUsedResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *DescribeNatFirewallPolicyPriorUsedResponse) SetStatusCode(v int32) *DescribeNatFirewallPolicyPriorUsedResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *DescribeNatFirewallPolicyPriorUsedResponse) SetBody(v *DescribeNatFirewallPolicyPriorUsedResponseBody) *DescribeNatFirewallPolicyPriorUsedResponse {
+	s.Body = v
+	return s
+}
+
 type DescribeOutgoingDestinationIPRequest struct {
 	// The application type in the access control policy. Valid values:
 	//
@@ -6950,6 +7043,183 @@ func (s *DescribeRiskEventGroupResponse) SetStatusCode(v int32) *DescribeRiskEve
 }
 
 func (s *DescribeRiskEventGroupResponse) SetBody(v *DescribeRiskEventGroupResponseBody) *DescribeRiskEventGroupResponse {
+	s.Body = v
+	return s
+}
+
+type DescribeRiskEventPayloadRequest struct {
+	DstIP        *string `json:"DstIP,omitempty" xml:"DstIP,omitempty"`
+	DstVpcId     *string `json:"DstVpcId,omitempty" xml:"DstVpcId,omitempty"`
+	EndTime      *string `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
+	FirewallType *string `json:"FirewallType,omitempty" xml:"FirewallType,omitempty"`
+	PublicIP     *string `json:"PublicIP,omitempty" xml:"PublicIP,omitempty"`
+	SrcIP        *string `json:"SrcIP,omitempty" xml:"SrcIP,omitempty"`
+	SrcVpcId     *string `json:"SrcVpcId,omitempty" xml:"SrcVpcId,omitempty"`
+	StartTime    *string `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
+	UUID         *string `json:"UUID,omitempty" xml:"UUID,omitempty"`
+}
+
+func (s DescribeRiskEventPayloadRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeRiskEventPayloadRequest) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeRiskEventPayloadRequest) SetDstIP(v string) *DescribeRiskEventPayloadRequest {
+	s.DstIP = &v
+	return s
+}
+
+func (s *DescribeRiskEventPayloadRequest) SetDstVpcId(v string) *DescribeRiskEventPayloadRequest {
+	s.DstVpcId = &v
+	return s
+}
+
+func (s *DescribeRiskEventPayloadRequest) SetEndTime(v string) *DescribeRiskEventPayloadRequest {
+	s.EndTime = &v
+	return s
+}
+
+func (s *DescribeRiskEventPayloadRequest) SetFirewallType(v string) *DescribeRiskEventPayloadRequest {
+	s.FirewallType = &v
+	return s
+}
+
+func (s *DescribeRiskEventPayloadRequest) SetPublicIP(v string) *DescribeRiskEventPayloadRequest {
+	s.PublicIP = &v
+	return s
+}
+
+func (s *DescribeRiskEventPayloadRequest) SetSrcIP(v string) *DescribeRiskEventPayloadRequest {
+	s.SrcIP = &v
+	return s
+}
+
+func (s *DescribeRiskEventPayloadRequest) SetSrcVpcId(v string) *DescribeRiskEventPayloadRequest {
+	s.SrcVpcId = &v
+	return s
+}
+
+func (s *DescribeRiskEventPayloadRequest) SetStartTime(v string) *DescribeRiskEventPayloadRequest {
+	s.StartTime = &v
+	return s
+}
+
+func (s *DescribeRiskEventPayloadRequest) SetUUID(v string) *DescribeRiskEventPayloadRequest {
+	s.UUID = &v
+	return s
+}
+
+type DescribeRiskEventPayloadResponseBody struct {
+	DstIP       *string `json:"DstIP,omitempty" xml:"DstIP,omitempty"`
+	DstPort     *int32  `json:"DstPort,omitempty" xml:"DstPort,omitempty"`
+	DstVpcId    *string `json:"DstVpcId,omitempty" xml:"DstVpcId,omitempty"`
+	Payload     *string `json:"Payload,omitempty" xml:"Payload,omitempty"`
+	PayloadLen  *int32  `json:"PayloadLen,omitempty" xml:"PayloadLen,omitempty"`
+	Proto       *string `json:"Proto,omitempty" xml:"Proto,omitempty"`
+	RealIp      *string `json:"RealIp,omitempty" xml:"RealIp,omitempty"`
+	RequestId   *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	SrcIP       *string `json:"SrcIP,omitempty" xml:"SrcIP,omitempty"`
+	SrcPort     *int32  `json:"SrcPort,omitempty" xml:"SrcPort,omitempty"`
+	SrcVpcId    *string `json:"SrcVpcId,omitempty" xml:"SrcVpcId,omitempty"`
+	XForwardFor *string `json:"XForwardFor,omitempty" xml:"XForwardFor,omitempty"`
+}
+
+func (s DescribeRiskEventPayloadResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeRiskEventPayloadResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeRiskEventPayloadResponseBody) SetDstIP(v string) *DescribeRiskEventPayloadResponseBody {
+	s.DstIP = &v
+	return s
+}
+
+func (s *DescribeRiskEventPayloadResponseBody) SetDstPort(v int32) *DescribeRiskEventPayloadResponseBody {
+	s.DstPort = &v
+	return s
+}
+
+func (s *DescribeRiskEventPayloadResponseBody) SetDstVpcId(v string) *DescribeRiskEventPayloadResponseBody {
+	s.DstVpcId = &v
+	return s
+}
+
+func (s *DescribeRiskEventPayloadResponseBody) SetPayload(v string) *DescribeRiskEventPayloadResponseBody {
+	s.Payload = &v
+	return s
+}
+
+func (s *DescribeRiskEventPayloadResponseBody) SetPayloadLen(v int32) *DescribeRiskEventPayloadResponseBody {
+	s.PayloadLen = &v
+	return s
+}
+
+func (s *DescribeRiskEventPayloadResponseBody) SetProto(v string) *DescribeRiskEventPayloadResponseBody {
+	s.Proto = &v
+	return s
+}
+
+func (s *DescribeRiskEventPayloadResponseBody) SetRealIp(v string) *DescribeRiskEventPayloadResponseBody {
+	s.RealIp = &v
+	return s
+}
+
+func (s *DescribeRiskEventPayloadResponseBody) SetRequestId(v string) *DescribeRiskEventPayloadResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *DescribeRiskEventPayloadResponseBody) SetSrcIP(v string) *DescribeRiskEventPayloadResponseBody {
+	s.SrcIP = &v
+	return s
+}
+
+func (s *DescribeRiskEventPayloadResponseBody) SetSrcPort(v int32) *DescribeRiskEventPayloadResponseBody {
+	s.SrcPort = &v
+	return s
+}
+
+func (s *DescribeRiskEventPayloadResponseBody) SetSrcVpcId(v string) *DescribeRiskEventPayloadResponseBody {
+	s.SrcVpcId = &v
+	return s
+}
+
+func (s *DescribeRiskEventPayloadResponseBody) SetXForwardFor(v string) *DescribeRiskEventPayloadResponseBody {
+	s.XForwardFor = &v
+	return s
+}
+
+type DescribeRiskEventPayloadResponse struct {
+	Headers    map[string]*string                    `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                                `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *DescribeRiskEventPayloadResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s DescribeRiskEventPayloadResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeRiskEventPayloadResponse) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeRiskEventPayloadResponse) SetHeaders(v map[string]*string) *DescribeRiskEventPayloadResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *DescribeRiskEventPayloadResponse) SetStatusCode(v int32) *DescribeRiskEventPayloadResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *DescribeRiskEventPayloadResponse) SetBody(v *DescribeRiskEventPayloadResponseBody) *DescribeRiskEventPayloadResponse {
 	s.Body = v
 	return s
 }
@@ -16453,6 +16723,62 @@ func (client *Client) DescribeNatFirewallControlPolicy(request *DescribeNatFirew
 	return _result, _err
 }
 
+func (client *Client) DescribeNatFirewallPolicyPriorUsedWithOptions(request *DescribeNatFirewallPolicyPriorUsedRequest, runtime *util.RuntimeOptions) (_result *DescribeNatFirewallPolicyPriorUsedResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.Direction)) {
+		query["Direction"] = request.Direction
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.IpVersion)) {
+		query["IpVersion"] = request.IpVersion
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Lang)) {
+		query["Lang"] = request.Lang
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.NatGatewayId)) {
+		query["NatGatewayId"] = request.NatGatewayId
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("DescribeNatFirewallPolicyPriorUsed"),
+		Version:     tea.String("2017-12-07"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &DescribeNatFirewallPolicyPriorUsedResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) DescribeNatFirewallPolicyPriorUsed(request *DescribeNatFirewallPolicyPriorUsedRequest) (_result *DescribeNatFirewallPolicyPriorUsedResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &DescribeNatFirewallPolicyPriorUsedResponse{}
+	_body, _err := client.DescribeNatFirewallPolicyPriorUsedWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
 func (client *Client) DescribeOutgoingDestinationIPWithOptions(request *DescribeOutgoingDestinationIPRequest, runtime *util.RuntimeOptions) (_result *DescribeOutgoingDestinationIPResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -16917,6 +17243,82 @@ func (client *Client) DescribeRiskEventGroup(request *DescribeRiskEventGroupRequ
 	runtime := &util.RuntimeOptions{}
 	_result = &DescribeRiskEventGroupResponse{}
 	_body, _err := client.DescribeRiskEventGroupWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) DescribeRiskEventPayloadWithOptions(request *DescribeRiskEventPayloadRequest, runtime *util.RuntimeOptions) (_result *DescribeRiskEventPayloadResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.DstIP)) {
+		query["DstIP"] = request.DstIP
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.DstVpcId)) {
+		query["DstVpcId"] = request.DstVpcId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.EndTime)) {
+		query["EndTime"] = request.EndTime
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.FirewallType)) {
+		query["FirewallType"] = request.FirewallType
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.PublicIP)) {
+		query["PublicIP"] = request.PublicIP
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.SrcIP)) {
+		query["SrcIP"] = request.SrcIP
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.SrcVpcId)) {
+		query["SrcVpcId"] = request.SrcVpcId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.StartTime)) {
+		query["StartTime"] = request.StartTime
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.UUID)) {
+		query["UUID"] = request.UUID
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("DescribeRiskEventPayload"),
+		Version:     tea.String("2017-12-07"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &DescribeRiskEventPayloadResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) DescribeRiskEventPayload(request *DescribeRiskEventPayloadRequest) (_result *DescribeRiskEventPayloadResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &DescribeRiskEventPayloadResponse{}
+	_body, _err := client.DescribeRiskEventPayloadWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
