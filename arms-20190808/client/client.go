@@ -2316,9 +2316,9 @@ func (s *AddPrometheusInstanceResponse) SetBody(v *AddPrometheusInstanceResponse
 }
 
 type AddPrometheusIntegrationRequest struct {
-	// The ID of the Prometheus instance. Only aliyun-cs and ecs instances are supported.
+	// The ID of the Prometheus instance. Only a Prometheus instance for Container Service or a Prometheus instance for ECS is supported.
 	ClusterId *string `json:"ClusterId,omitempty" xml:"ClusterId,omitempty"`
-	// The integration type.
+	// The type of the integration.
 	IntegrationType *string `json:"IntegrationType,omitempty" xml:"IntegrationType,omitempty"`
 	// The configurations of the exporter. The value is a JSON string.
 	Param *string `json:"Param,omitempty" xml:"Param,omitempty"`
@@ -2357,9 +2357,9 @@ func (s *AddPrometheusIntegrationRequest) SetRegionId(v string) *AddPrometheusIn
 type AddPrometheusIntegrationResponseBody struct {
 	// The status code or error code.
 	Code *int32 `json:"Code,omitempty" xml:"Code,omitempty"`
-	// The returned struct.
+	// The struct returned.
 	Data *AddPrometheusIntegrationResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
-	// The returned message.
+	// The message returned.
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
 	// Id of the request
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
@@ -2394,9 +2394,9 @@ func (s *AddPrometheusIntegrationResponseBody) SetRequestId(v string) *AddPromet
 }
 
 type AddPrometheusIntegrationResponseBodyData struct {
-	// The exporter ID.
+	// The ID of the exporter.
 	InstanceId *int64 `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	// The exporter name.
+	// The name of the exporter.
 	InstanceName *string `json:"InstanceName,omitempty" xml:"InstanceName,omitempty"`
 }
 
@@ -2448,11 +2448,11 @@ func (s *AddPrometheusIntegrationResponse) SetBody(v *AddPrometheusIntegrationRe
 }
 
 type AddPrometheusRemoteWriteRequest struct {
-	// The ID of the Prometheus instance. Only aliyun-cs and ecs instances are supported.
+	// The ID of the Prometheus instance. Only a Prometheus instance for Container Service or a Prometheus instance for ECS is supported.
 	ClusterId *string `json:"ClusterId,omitempty" xml:"ClusterId,omitempty"`
 	// The region ID.
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	// The remote write configuration. Specify the value in the YAML format.
+	// The details of the remote write configuration item. Specify the value in the YAML format.
 	RemoteWriteYaml *string `json:"RemoteWriteYaml,omitempty" xml:"RemoteWriteYaml,omitempty"`
 }
 
@@ -2480,11 +2480,11 @@ func (s *AddPrometheusRemoteWriteRequest) SetRemoteWriteYaml(v string) *AddProme
 }
 
 type AddPrometheusRemoteWriteResponseBody struct {
-	// The status code. The status code 200 indicates that the request was successful. Other status codes indicate that the request failed.
+	// The status code. The status code 200 indicates that the request was successful. If another status code is returned, the request failed.
 	Code *int32 `json:"Code,omitempty" xml:"Code,omitempty"`
-	// The name of the remote write configuration that was added, or the exception information.
+	// The name of the remote write configuration item. If the request fails, an error message is returned.
 	Data *string `json:"Data,omitempty" xml:"Data,omitempty"`
-	// The returned message.
+	// The message returned.
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
 	// The request ID.
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
@@ -3043,12 +3043,12 @@ func (s *BindPrometheusGrafanaInstanceRequest) SetResourceGroupId(v string) *Bin
 type BindPrometheusGrafanaInstanceResponseBody struct {
 	// The status code. The status code 200 indicates that the request was successful. If another status code is returned, the request failed.
 	Code *int32 `json:"Code,omitempty" xml:"Code,omitempty"`
-	// Indicates whether the request was successful. Valid values:
+	// Indicates whether the request was successful.
 	//
 	// *   true
 	// *   false
 	Data *bool `json:"Data,omitempty" xml:"Data,omitempty"`
-	// The returned message.
+	// The message returned.
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
 	// Id of the request
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
@@ -3246,7 +3246,7 @@ func (s *ChangeResourceGroupResponse) SetBody(v *ChangeResourceGroupResponseBody
 type CheckServiceStatusRequest struct {
 	// The region ID.
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	// The service code of an Alibaba Cloud service. The service code of Prometheus Service is prometheus.
+	// The service code of an Alibaba Cloud service. The service code of Managed Service for Prometheus is prometheus.
 	SvcCode *string `json:"SvcCode,omitempty" xml:"SvcCode,omitempty"`
 }
 
@@ -3271,10 +3271,10 @@ func (s *CheckServiceStatusRequest) SetSvcCode(v string) *CheckServiceStatusRequ
 type CheckServiceStatusResponseBody struct {
 	// Indicates whether the request was successful. Valid values:
 	//
-	// *   true
-	// *   false
+	// *   true.
+	// *   false.
 	Data *string `json:"Data,omitempty" xml:"Data,omitempty"`
-	// The request ID. You can use the ID to query logs and troubleshoot issues.
+	// The request ID. You can use the ID to find logs and troubleshoot issues.
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -3930,11 +3930,11 @@ type CreateOrUpdateAlertRuleRequest struct {
 	// *   RUNNING (default)
 	// *   STOPPED
 	AlertStatus *string `json:"AlertStatus,omitempty" xml:"AlertStatus,omitempty"`
-	// The type of the alert rule.
+	// The type of the alert rule. Valid values:
 	//
-	// *   APPLICATION_MONITORING_ALERT_RULE: an alert rule of Application Monitoring
-	// *   BROWSER_MONITORING_ALERT_RULE: an alert rule of Browser Monitoring
-	// *   PROMETHEUS_MONITORING_ALERT_RULE: an alert rule of Prometheus Service
+	// *   APPLICATION_MONITORING_ALERT_RULE: alert rule for Application Monitoring
+	// *   BROWSER_MONITORING_ALERT_RULE: alert rule for Browser Monitoring
+	// *   PROMETHEUS_MONITORING_ALERT_RULE: alert rule for Prometheus Service
 	//
 	// Valid values:
 	//
@@ -3949,14 +3949,14 @@ type CreateOrUpdateAlertRuleRequest struct {
 	Annotations *string `json:"Annotations,omitempty" xml:"Annotations,omitempty"`
 	// Specifies whether to apply the alert rule to new applications that are created in Application Monitoring or Browser Monitoring. Valid values:
 	//
-	// *   `true`: yes
-	// *   `false`: no
+	// *   `true`: enables the health check feature.
+	// *   `false`: disables the automatic backup feature.
 	AutoAddNewApplication *bool `json:"AutoAddNewApplication,omitempty" xml:"AutoAddNewApplication,omitempty"`
-	// The cluster ID of the Prometheus alert rule.
+	// The ID of the monitored cluster.
 	ClusterId *string `json:"ClusterId,omitempty" xml:"ClusterId,omitempty"`
 	// The duration of the Prometheus alert rule. Unit: minutes.
 	Duration *int64 `json:"Duration,omitempty" xml:"Duration,omitempty"`
-	// The filter conditions of the Application Monitoring or Browser Monitoring alert rule. The name must meet the following format requirements:
+	// The filter conditions of the Application Monitoring or Browser Monitoring alert rule. The following code shows the format of matching rules:
 	//
 	//     "DimFilters": [
 	//     {
@@ -3992,7 +3992,7 @@ type CreateOrUpdateAlertRuleRequest struct {
 	MetricsType *string `json:"MetricsType,omitempty" xml:"MetricsType,omitempty"`
 	// The notification policy.
 	//
-	// *   If you set this parameter to null, no notification policy is specified. After you create an alert rule, you can create a notification policy and specify match rules and match conditions. For example, you can specify the name of the alert rule as the match condition. If the alert rule is triggered, an alert event is generated and an alert notification is sent to the contacts or contact groups that are specified in the notification policy.
+	// *   If you set this parameter to null, no notification policy is specified. After you create an alert rule, you can create a notification policy and specify match rules and match conditions. For example, you can specify the name of the alert rule as the match condition. When the alert rule is triggered, an alert event is generated and an alert notification is sent to the contacts or contact groups that are specified in the notification policy.
 	// *   To specify a notification policy, set this parameter to the ID of the notification policy. Application Real-Time Monitoring Service (ARMS) automatically adds a match rule to the notification policy and specifies the ID of the alert rule as the match condition. The name of the alert rule is also displayed. This way, the alert events that are generated based on the alert rule can be matched by the specified notification policy.
 	NotifyStrategy *string `json:"NotifyStrategy,omitempty" xml:"NotifyStrategy,omitempty"`
 	// The process ID (PID) that is associated with the Application Monitoring or Browser Monitoring alert rule.
@@ -4194,22 +4194,22 @@ type CreateOrUpdateAlertRuleResponseBodyAlertRule struct {
 	// *   STOPPED
 	// *   PAUSED
 	//
-	// > The **PAUSED** status indicates that the alert rule was abnormal and was paused by the system. The alert rule might be paused because it was not unique or the associated cluster was deleted.
+	// > The PAUSED status indicates that the alert rule is abnormal and is actively paused by the system. The alert rule may be paused because that it is not unique or the associated cluster has been deleted.
 	AlertStatus *string `json:"AlertStatus,omitempty" xml:"AlertStatus,omitempty"`
-	// The type of the alert rule.
+	// The type of the alert rule. Valid values:
 	//
-	// *   APPLICATION_MONITORING_ALERT_RULE: an alert rule of Application Monitoring
-	// *   BROWSER_MONITORING_ALERT_RULE: an alert rule of Browser Monitoring
-	// *   PROMETHEUS_MONITORING_ALERT_RULE: an alert rule of Prometheus Service
+	// *   APPLICATION_MONITORING_ALERT_RULE: alert rule for Application Monitoring
+	// *   BROWSER_MONITORING_ALERT_RULE: alert rule for Browser Monitoring
+	// *   PROMETHEUS_MONITORING_ALERT_RULE: alert rule for Prometheus Service
 	AlertType *string `json:"AlertType,omitempty" xml:"AlertType,omitempty"`
 	// The annotations of the Prometheus alert rule.
 	Annotations []*CreateOrUpdateAlertRuleResponseBodyAlertRuleAnnotations `json:"Annotations,omitempty" xml:"Annotations,omitempty" type:"Repeated"`
 	// Indicates whether the alert rule was applied to new applications that were created in Application Monitoring or Browser Monitoring. Valid values:
 	//
-	// *   `true`: yes
-	// *   `false`: no
+	// *   `true`: enables the health check feature.
+	// *   `false`: disables the automatic backup feature.
 	AutoAddNewApplication *bool `json:"AutoAddNewApplication,omitempty" xml:"AutoAddNewApplication,omitempty"`
-	// The cluster ID of the Prometheus alert rule.
+	// The ID of the monitored cluster.
 	ClusterId *string `json:"ClusterId,omitempty" xml:"ClusterId,omitempty"`
 	// The timestamp generated when the alert rule was created. Unit: seconds.
 	CreatedTime *int64 `json:"CreatedTime,omitempty" xml:"CreatedTime,omitempty"`
@@ -5447,6 +5447,7 @@ func (s *CreateOrUpdateIMRobotResponse) SetBody(v *CreateOrUpdateIMRobotResponse
 }
 
 type CreateOrUpdateNotificationPolicyRequest struct {
+	DirectedMode *bool `json:"DirectedMode,omitempty" xml:"DirectedMode,omitempty"`
 	// The ID of the escalation policy.
 	EscalationPolicyId *int64 `json:"EscalationPolicyId,omitempty" xml:"EscalationPolicyId,omitempty"`
 	// An array of alert event group objects.
@@ -5535,6 +5536,11 @@ func (s CreateOrUpdateNotificationPolicyRequest) GoString() string {
 	return s.String()
 }
 
+func (s *CreateOrUpdateNotificationPolicyRequest) SetDirectedMode(v bool) *CreateOrUpdateNotificationPolicyRequest {
+	s.DirectedMode = &v
+	return s
+}
+
 func (s *CreateOrUpdateNotificationPolicyRequest) SetEscalationPolicyId(v int64) *CreateOrUpdateNotificationPolicyRequest {
 	s.EscalationPolicyId = &v
 	return s
@@ -5621,6 +5627,7 @@ func (s *CreateOrUpdateNotificationPolicyResponseBody) SetRequestId(v string) *C
 }
 
 type CreateOrUpdateNotificationPolicyResponseBodyNotificationPolicy struct {
+	DirectedMode *bool `json:"DirectedMode,omitempty" xml:"DirectedMode,omitempty"`
 	// The ID of the escalation policy.
 	EscalationPolicyId *int64 `json:"EscalationPolicyId,omitempty" xml:"EscalationPolicyId,omitempty"`
 	// An array of alert event group objects.
@@ -5657,6 +5664,11 @@ func (s CreateOrUpdateNotificationPolicyResponseBodyNotificationPolicy) String()
 
 func (s CreateOrUpdateNotificationPolicyResponseBodyNotificationPolicy) GoString() string {
 	return s.String()
+}
+
+func (s *CreateOrUpdateNotificationPolicyResponseBodyNotificationPolicy) SetDirectedMode(v bool) *CreateOrUpdateNotificationPolicyResponseBodyNotificationPolicy {
+	s.DirectedMode = &v
+	return s
 }
 
 func (s *CreateOrUpdateNotificationPolicyResponseBodyNotificationPolicy) SetEscalationPolicyId(v int64) *CreateOrUpdateNotificationPolicyResponseBodyNotificationPolicy {
@@ -6712,29 +6724,29 @@ func (s *CreatePrometheusAlertRuleResponse) SetBody(v *CreatePrometheusAlertRule
 }
 
 type CreatePrometheusInstanceRequest struct {
+	// 创建GlobalView时，是否要求所有子实例都校验成功时，才创建GlobalView实例。默认是false，即可以部分成功。
 	AllSubClustersSuccess *bool `json:"AllSubClustersSuccess,omitempty" xml:"AllSubClustersSuccess,omitempty"`
-	// The cluster ID. This parameter is required if you set the ClusterType parameter to aliyun-cs��.
+	// The ID of the cluster. This parameter is required if you set ClusterType to aliyun-cs��.
 	ClusterId *string `json:"ClusterId,omitempty" xml:"ClusterId,omitempty"`
-	// The name of the cluster. This parameter is required if you set the ClusterType parameter to remote-write, ecs, or global-view.
+	// The name of the cluster. This parameter is required if you set ClusterType to remote-write, ecs, or global-view.
 	ClusterName *string `json:"ClusterName,omitempty" xml:"ClusterName,omitempty"`
-	// The type of the Prometheus instance. The following types are provided: remote-write (Prometheus instance for Remote Write) ecs (Prometheus instance for ECS) cloud-monitor� (Prometheus instance for Alibaba Cloud services in China) cloud-product (Prometheus instance for Alibaba Cloud services outside China) global-view (Prometheus instance for GlobalView) aliyun-cs�� (Prometheus instances for Container Service)
+	// The type of the Prometheus instance. Valid values: remote-write: Prometheus instance for remote write. ecs: Prometheus instance for ECS. cloud-monitor�: Prometheus instance for cloud services in China. cloud-product: Prometheus instance for Alibaba Cloud services outside China. global-view: Prometheus instance for GlobalView. aliyun-cs��: Prometheus instance for Container Service.
 	ClusterType *string `json:"ClusterType,omitempty" xml:"ClusterType,omitempty"`
-	// The ID of the Grafana dedicated instance. This parameter is available if you set the ClusterType parameter to ecs.
+	// The ID of the Grafana dedicated instance. This parameter is available if you set ClusterType to ecs.
 	GrafanaInstanceId *string `json:"GrafanaInstanceId,omitempty" xml:"GrafanaInstanceId,omitempty"`
-	ParamJson         *string `json:"ParamJson,omitempty" xml:"ParamJson,omitempty"`
-	// The region ID. If you create a Prometheus instance for cloud services in China, set the value to cn-shanghai.
+	// The region ID. If you create a Prometheus instance for a cloud service in China, set this parameter to cn-shanghai.
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	// The ID of the custom resource group. You can configure this parameter to bind the instance to the resource group.
+	// The ID of the custom resource group. You can specify this parameter to bind the instance to the resource group.
 	ResourceGroupId *string `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
-	// The security group. This parameter is required if you set the clusterType parameter to ecs or create an ASK managed cluster.
+	// The ID of the security group. This parameter is required if you set ClusterType to ecs or create an ASK managed cluster.
 	SecurityGroupId *string `json:"SecurityGroupId,omitempty" xml:"SecurityGroupId,omitempty"`
-	// The child instances of the global aggregation instance. The value is a JSON string.
+	// The child instances of the Prometheus instance for GlobalView. The value is a JSON string.
 	SubClustersJson *string `json:"SubClustersJson,omitempty" xml:"SubClustersJson,omitempty"`
-	// The tags of the instance. You can configure this parameter to manage tags for the instance.
+	// The tags of the instance. You can specify this parameter to manage tags for the instance.
 	Tags []*CreatePrometheusInstanceRequestTags `json:"Tags,omitempty" xml:"Tags,omitempty" type:"Repeated"`
-	// The vSwitch. This parameter is required if you set the clusterType parameter to ecs or create an ASK managed cluster.
+	// The ID of the vSwitch. This parameter is required if you set ClusterType to ecs or create an ASK managed cluster.
 	VSwitchId *string `json:"VSwitchId,omitempty" xml:"VSwitchId,omitempty"`
-	// The virtual private cloud (VPC). This parameter is required if you set the clusterType parameter to ecs or create a serverless Kubernetes (ASK) managed cluster.
+	// The ID of the virtual private cloud (VPC). This parameter is required if you set ClusterType to ecs or create a serverless Kubernetes (ASK) managed cluster.
 	VpcId *string `json:"VpcId,omitempty" xml:"VpcId,omitempty"`
 }
 
@@ -6768,11 +6780,6 @@ func (s *CreatePrometheusInstanceRequest) SetClusterType(v string) *CreatePromet
 
 func (s *CreatePrometheusInstanceRequest) SetGrafanaInstanceId(v string) *CreatePrometheusInstanceRequest {
 	s.GrafanaInstanceId = &v
-	return s
-}
-
-func (s *CreatePrometheusInstanceRequest) SetParamJson(v string) *CreatePrometheusInstanceRequest {
-	s.ParamJson = &v
 	return s
 }
 
@@ -6835,16 +6842,16 @@ func (s *CreatePrometheusInstanceRequestTags) SetValue(v string) *CreatePromethe
 }
 
 type CreatePrometheusInstanceResponseBody struct {
-	// The HTTP status code returned for the request. Valid values:
+	// The status code that is returned. Valid values:
 	//
-	// *   `2XX`: The request is successful.
-	// *   `3XX`: A redirection message is returned.
-	// *   `4XX`: The request is invalid.
-	// *   `5XX`: A server error occurs.
+	// *   `2XX: The request is successful.`
+	// *   `3XX: A redirection message is returned.`
+	// *   `4XX: The request is invalid.`
+	// *   `5XX: A server error occurred.`
 	Code *int32 `json:"Code,omitempty" xml:"Code,omitempty"`
 	// The ID of the created Prometheus instance.
 	Data *string `json:"Data,omitempty" xml:"Data,omitempty"`
-	// The error message returned if the call fails.
+	// The error message that is returned if the request failed.
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
 	// The request ID.
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
@@ -6914,9 +6921,7 @@ type CreatePrometheusMonitoringRequest struct {
 	ConfigYaml *string `json:"ConfigYaml,omitempty" xml:"ConfigYaml,omitempty"`
 	// The region ID.
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	// The status of the monitoring configuration. Valid values: run and stop.
-	// When not transmitted, the default value: run.
-	// Probe does not support status, this field set empty.
+	// The status of the monitoring configuration. Valid values: run and stop. Default value: run. This parameter is not available if the Type parameter is set to Probe.
 	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
 	// The type of the monitoring configuration.
 	// Valid values for a Prometheus instance for Container Service: ServiceMonitor, PodMonitor, CustomJob, and Probe.
@@ -6960,7 +6965,7 @@ func (s *CreatePrometheusMonitoringRequest) SetType(v string) *CreatePrometheusM
 type CreatePrometheusMonitoringResponseBody struct {
 	// The status code. The status code 200 indicates that the request was successful.
 	Code *int32 `json:"Code,omitempty" xml:"Code,omitempty"`
-	// The name of the remote write configuration that was added, or the exception information.
+	// The name of the monitoring configuration that was added, or the exception information.
 	Data *string `json:"Data,omitempty" xml:"Data,omitempty"`
 	// The returned message.
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
@@ -7137,7 +7142,8 @@ func (s *CreateRetcodeAppResponseBody) SetSuccess(v bool) *CreateRetcodeAppRespo
 }
 
 type CreateRetcodeAppResponseBodyRetcodeAppDataBean struct {
-	AppId           *int64                                              `json:"AppId,omitempty" xml:"AppId,omitempty"`
+	AppId *int64 `json:"AppId,omitempty" xml:"AppId,omitempty"`
+	// PID。
 	Pid             *string                                             `json:"Pid,omitempty" xml:"Pid,omitempty"`
 	ResourceGroupId *string                                             `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
 	Tags            *CreateRetcodeAppResponseBodyRetcodeAppDataBeanTags `json:"Tags,omitempty" xml:"Tags,omitempty" type:"Struct"`
@@ -10235,9 +10241,11 @@ func (s *DeleteIntegrationRequest) SetRegionId(v string) *DeleteIntegrationReque
 }
 
 type DeleteIntegrationResponseBody struct {
+	// The HTTP status code. The status code 200 indicates that the request was successful. Other status codes indicate that the request failed.
 	Code *int32 `json:"Code,omitempty" xml:"Code,omitempty"`
 	// Indicates whether the call was successful.
-	Data    *string `json:"Data,omitempty" xml:"Data,omitempty"`
+	Data *string `json:"Data,omitempty" xml:"Data,omitempty"`
+	// The returned message.
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
 	// The request ID.
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
@@ -10625,11 +10633,11 @@ func (s *DeletePrometheusGlobalViewResponse) SetBody(v *DeletePrometheusGlobalVi
 }
 
 type DeletePrometheusIntegrationRequest struct {
-	// The ID of the Prometheus instance. Only aliyun-cs and ecs instances are supported.
+	// The ID of the Prometheus instance. Only a Prometheus instance for Container Service or a Prometheus instance for ECS is supported.
 	ClusterId *string `json:"ClusterId,omitempty" xml:"ClusterId,omitempty"`
-	// The ID of the exporter that is integrated into the Prometheus instance.
+	// The ID of the exporter.
 	InstanceId *int64 `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	// The integration type.
+	// The type of the integration.
 	IntegrationType *string `json:"IntegrationType,omitempty" xml:"IntegrationType,omitempty"`
 	// The region ID.
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
@@ -10666,9 +10674,9 @@ func (s *DeletePrometheusIntegrationRequest) SetRegionId(v string) *DeletePromet
 type DeletePrometheusIntegrationResponseBody struct {
 	// The status code. The status code 200 indicates that the request was successful. If another status code is returned, the request failed.
 	Code *int32 `json:"Code,omitempty" xml:"Code,omitempty"`
-	// The success or failure information.
+	// success or an error message.
 	Data *string `json:"Data,omitempty" xml:"Data,omitempty"`
-	// The returned message.
+	// The message returned.
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
 	// Id of the request
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
@@ -10839,7 +10847,7 @@ func (s *DeletePrometheusMonitoringResponse) SetBody(v *DeletePrometheusMonitori
 }
 
 type DeletePrometheusRemoteWriteRequest struct {
-	// The ID of the Prometheus instance.
+	// The ID of the Prometheus instance. Only a Prometheus instance for Container Service or a Prometheus instance for ECS is supported.
 	ClusterId *string `json:"ClusterId,omitempty" xml:"ClusterId,omitempty"`
 	// The region ID.
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
@@ -10873,7 +10881,7 @@ func (s *DeletePrometheusRemoteWriteRequest) SetRemoteWriteNames(v string) *Dele
 type DeletePrometheusRemoteWriteResponseBody struct {
 	// The status code or error code.
 	Code *int32 `json:"Code,omitempty" xml:"Code,omitempty"`
-	// The number of remote write configuration items that are deleted, or an error message.
+	// The remote write configuration items. If the request fails, an error message is returned.
 	Data *string `json:"Data,omitempty" xml:"Data,omitempty"`
 	// The message returned.
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
@@ -13449,16 +13457,43 @@ func (s *GetAgentDownloadUrlResponse) SetBody(v *GetAgentDownloadUrlResponseBody
 }
 
 type GetAlertRulesRequest struct {
-	AlertIds    *string                     `json:"AlertIds,omitempty" xml:"AlertIds,omitempty"`
-	AlertNames  *string                     `json:"AlertNames,omitempty" xml:"AlertNames,omitempty"`
-	AlertStatus *string                     `json:"AlertStatus,omitempty" xml:"AlertStatus,omitempty"`
-	AlertType   *string                     `json:"AlertType,omitempty" xml:"AlertType,omitempty"`
-	ClusterId   *string                     `json:"ClusterId,omitempty" xml:"ClusterId,omitempty"`
-	Page        *int64                      `json:"Page,omitempty" xml:"Page,omitempty"`
-	ProductCode *string                     `json:"ProductCode,omitempty" xml:"ProductCode,omitempty"`
-	RegionId    *string                     `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	Size        *int64                      `json:"Size,omitempty" xml:"Size,omitempty"`
-	Tags        []*GetAlertRulesRequestTags `json:"Tags,omitempty" xml:"Tags,omitempty" type:"Repeated"`
+	// The unique IDs of alert rules.
+	//
+	// *   If you do not specify this parameter, the API operation does not filter alert rules based on their IDs.
+	// *   If you specify this parameter, the API operation returns only the information of the specified alert rules. Other filter conditions also take effect.
+	//
+	// > When you call the GetAlertRules operation, you can specify other request parameters to obtain the AlertIds parameter from the response. Then, you can specify the AlertIds parameter to query the specified alert rules.
+	AlertIds *string `json:"AlertIds,omitempty" xml:"AlertIds,omitempty"`
+	// The names of alert rules. When you create alert rules of the new version, you cannot specify duplicate names. However, existing alert rules may have duplicate names. Therefore, the **AlertName** parameter does not uniquely identify an alert rule.
+	//
+	// *   If you do not specify this parameter, the API operation does not filter alert rules based on their names.
+	// *   If you specify this parameter, the API operation returns only the information of the specified alert rules. Other filter conditions also take effect.
+	AlertNames *string `json:"AlertNames,omitempty" xml:"AlertNames,omitempty"`
+	// The status of the alert rule. Valid values:
+	//
+	// *   RUNNING
+	// *   STOPPED
+	// *   PAUSED
+	//
+	// > The **PAUSED** status indicates that the alert rule is abnormal and is actively paused by the system. The alert rule may be paused because that it is not unique or the associated cluster has been deleted.
+	AlertStatus *string `json:"AlertStatus,omitempty" xml:"AlertStatus,omitempty"`
+	// The type of the alert rule.
+	//
+	// *   APPLICATION_MONITORING_ALERT_RULE: alert rule for Application Monitoring
+	// *   BROWSER_MONITORING_ALERT_RULE: an alert rule for Browser Monitoring.
+	// *   PROMETHEUS_MONITORING_ALERT_RULE: alert rule for Managed Service for Prometheus.
+	AlertType *string `json:"AlertType,omitempty" xml:"AlertType,omitempty"`
+	// The ID of the monitored cluster.
+	ClusterId *string `json:"ClusterId,omitempty" xml:"ClusterId,omitempty"`
+	// The number of the page to return.
+	Page *int64 `json:"Page,omitempty" xml:"Page,omitempty"`
+	// You do not need to configure this parameter.
+	ProductCode *string `json:"ProductCode,omitempty" xml:"ProductCode,omitempty"`
+	// The region ID.
+	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	// The number of alert rules to return on each page.
+	Size *int64                      `json:"Size,omitempty" xml:"Size,omitempty"`
+	Tags []*GetAlertRulesRequestTags `json:"Tags,omitempty" xml:"Tags,omitempty" type:"Repeated"`
 }
 
 func (s GetAlertRulesRequest) String() string {
@@ -13543,8 +13578,10 @@ func (s *GetAlertRulesRequestTags) SetValue(v string) *GetAlertRulesRequestTags 
 }
 
 type GetAlertRulesResponseBody struct {
-	PageBean  *GetAlertRulesResponseBodyPageBean `json:"PageBean,omitempty" xml:"PageBean,omitempty" type:"Struct"`
-	RequestId *string                            `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The pages returned.
+	PageBean *GetAlertRulesResponseBodyPageBean `json:"PageBean,omitempty" xml:"PageBean,omitempty" type:"Struct"`
+	// The request ID.
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
 func (s GetAlertRulesResponseBody) String() string {
@@ -13566,10 +13603,14 @@ func (s *GetAlertRulesResponseBody) SetRequestId(v string) *GetAlertRulesRespons
 }
 
 type GetAlertRulesResponseBodyPageBean struct {
+	// The list of alert rules.
 	AlertRules []*GetAlertRulesResponseBodyPageBeanAlertRules `json:"AlertRules,omitempty" xml:"AlertRules,omitempty" type:"Repeated"`
-	Page       *int64                                         `json:"Page,omitempty" xml:"Page,omitempty"`
-	Size       *int64                                         `json:"Size,omitempty" xml:"Size,omitempty"`
-	Total      *int64                                         `json:"Total,omitempty" xml:"Total,omitempty"`
+	// The number of pages returned.
+	Page *int64 `json:"Page,omitempty" xml:"Page,omitempty"`
+	// The number of alert rules returned per page.
+	Size *int64 `json:"Size,omitempty" xml:"Size,omitempty"`
+	// The total number of queried alert rules.
+	Total *int64 `json:"Total,omitempty" xml:"Total,omitempty"`
 }
 
 func (s GetAlertRulesResponseBodyPageBean) String() string {
@@ -13601,31 +13642,83 @@ func (s *GetAlertRulesResponseBodyPageBean) SetTotal(v int64) *GetAlertRulesResp
 }
 
 type GetAlertRulesResponseBodyPageBeanAlertRules struct {
-	AlertCheckType        *string                                                      `json:"AlertCheckType,omitempty" xml:"AlertCheckType,omitempty"`
-	AlertGroup            *int64                                                       `json:"AlertGroup,omitempty" xml:"AlertGroup,omitempty"`
-	AlertId               *float32                                                     `json:"AlertId,omitempty" xml:"AlertId,omitempty"`
-	AlertName             *string                                                      `json:"AlertName,omitempty" xml:"AlertName,omitempty"`
-	AlertRuleContent      *GetAlertRulesResponseBodyPageBeanAlertRulesAlertRuleContent `json:"AlertRuleContent,omitempty" xml:"AlertRuleContent,omitempty" type:"Struct"`
-	AlertStatus           *string                                                      `json:"AlertStatus,omitempty" xml:"AlertStatus,omitempty"`
-	AlertType             *string                                                      `json:"AlertType,omitempty" xml:"AlertType,omitempty"`
-	Annotations           []*GetAlertRulesResponseBodyPageBeanAlertRulesAnnotations    `json:"Annotations,omitempty" xml:"Annotations,omitempty" type:"Repeated"`
-	AutoAddNewApplication *bool                                                        `json:"AutoAddNewApplication,omitempty" xml:"AutoAddNewApplication,omitempty"`
-	ClusterId             *string                                                      `json:"ClusterId,omitempty" xml:"ClusterId,omitempty"`
-	CreatedTime           *int64                                                       `json:"CreatedTime,omitempty" xml:"CreatedTime,omitempty"`
-	Duration              *string                                                      `json:"Duration,omitempty" xml:"Duration,omitempty"`
-	Extend                *string                                                      `json:"Extend,omitempty" xml:"Extend,omitempty"`
-	Filters               *GetAlertRulesResponseBodyPageBeanAlertRulesFilters          `json:"Filters,omitempty" xml:"Filters,omitempty" type:"Struct"`
-	Labels                []*GetAlertRulesResponseBodyPageBeanAlertRulesLabels         `json:"Labels,omitempty" xml:"Labels,omitempty" type:"Repeated"`
-	Level                 *string                                                      `json:"Level,omitempty" xml:"Level,omitempty"`
-	Message               *string                                                      `json:"Message,omitempty" xml:"Message,omitempty"`
-	MetricsType           *string                                                      `json:"MetricsType,omitempty" xml:"MetricsType,omitempty"`
-	NotifyStrategy        *string                                                      `json:"NotifyStrategy,omitempty" xml:"NotifyStrategy,omitempty"`
-	Pids                  []*string                                                    `json:"Pids,omitempty" xml:"Pids,omitempty" type:"Repeated"`
-	PromQL                *string                                                      `json:"PromQL,omitempty" xml:"PromQL,omitempty"`
-	RegionId              *string                                                      `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	Tags                  []*GetAlertRulesResponseBodyPageBeanAlertRulesTags           `json:"Tags,omitempty" xml:"Tags,omitempty" type:"Repeated"`
-	UpdatedTime           *int64                                                       `json:"UpdatedTime,omitempty" xml:"UpdatedTime,omitempty"`
-	UserId                *string                                                      `json:"UserId,omitempty" xml:"UserId,omitempty"`
+	// The alert check type of the Prometheus alert rule. Valid values:
+	//
+	// *   STATIC: static threshold value
+	// *   CUSTOM: custom PromQL statement
+	AlertCheckType *string `json:"AlertCheckType,omitempty" xml:"AlertCheckType,omitempty"`
+	// The ID of the alert contact group to which the alert rule belongs. Valid values:
+	//
+	// *   \-1: custom PromQL
+	// *   1: Kubernetes load
+	// *   15: Kubernetes node
+	AlertGroup *int64 `json:"AlertGroup,omitempty" xml:"AlertGroup,omitempty"`
+	// The ID of the alert rule.
+	AlertId *float32 `json:"AlertId,omitempty" xml:"AlertId,omitempty"`
+	// The name of the alert rule.
+	AlertName *string `json:"AlertName,omitempty" xml:"AlertName,omitempty"`
+	// The content of the Application Monitoring or Browser Monitoring alert rule.
+	AlertRuleContent *GetAlertRulesResponseBodyPageBeanAlertRulesAlertRuleContent `json:"AlertRuleContent,omitempty" xml:"AlertRuleContent,omitempty" type:"Struct"`
+	// The status of the alert rule. Valid values:
+	//
+	// *   RUNNING
+	// *   STOPPED
+	// *   PAUSED
+	//
+	// > The **PAUSED** status indicates that the alert rule is abnormal and is actively paused by the system. The alert rule may be paused because that it is not unique or the associated cluster has been deleted.
+	AlertStatus *string `json:"AlertStatus,omitempty" xml:"AlertStatus,omitempty"`
+	// The type of the alert rule.
+	//
+	// *   APPLICATION_MONITORING_ALERT_RULE: alert rule for Application Monitoring
+	// *   BROWSER_MONITORING_ALERT_RULE: alert rule for Browser Monitoring
+	// *   PROMETHEUS_MONITORING_ALERT_RULE: alert rule for Managed Service for Prometheus
+	AlertType *string `json:"AlertType,omitempty" xml:"AlertType,omitempty"`
+	// The annotations of the Prometheus alert rule.
+	Annotations []*GetAlertRulesResponseBodyPageBeanAlertRulesAnnotations `json:"Annotations,omitempty" xml:"Annotations,omitempty" type:"Repeated"`
+	// Indicates whether the alert rule was applied to new applications that were created in Application Monitoring or Browser Monitoring. Valid values:
+	//
+	// *   `true`
+	// *   `false`
+	AutoAddNewApplication *bool `json:"AutoAddNewApplication,omitempty" xml:"AutoAddNewApplication,omitempty"`
+	// The cluster ID of the Prometheus alert rule.
+	ClusterId *string `json:"ClusterId,omitempty" xml:"ClusterId,omitempty"`
+	// The time when the alert rule was created. The value is a timestamp. Unit: milliseconds.
+	CreatedTime *int64 `json:"CreatedTime,omitempty" xml:"CreatedTime,omitempty"`
+	// The duration of the Prometheus alert rule.
+	Duration *string `json:"Duration,omitempty" xml:"Duration,omitempty"`
+	// The extended fields.
+	//
+	// > For existing Application Monitoring alert rules, the fields contained information such as contacts, alert template, and notification content.
+	Extend *string `json:"Extend,omitempty" xml:"Extend,omitempty"`
+	// The filter conditions of the Application Monitoring or Browser Monitoring alert rule.
+	Filters *GetAlertRulesResponseBodyPageBeanAlertRulesFilters `json:"Filters,omitempty" xml:"Filters,omitempty" type:"Struct"`
+	// The tags of the Prometheus alert rule.
+	Labels []*GetAlertRulesResponseBodyPageBeanAlertRulesLabels `json:"Labels,omitempty" xml:"Labels,omitempty" type:"Repeated"`
+	// The severity level of the Prometheus alert rule.
+	//
+	// *   P1: Alert notifications are sent for major issues that affect the availability of core business, have a huge impact, and may lead to serious consequences.
+	// *   P2: Alert notifications are sent for service errors that affect the system availability with relatively limited impact.
+	// *   P3: Alert notifications are sent for issues that may cause service errors or negative effects, or alert notifications for services that are relatively less important.
+	// *   P4: Alert notifications are sent for low-priority issues that do not affect your business.
+	// *   Default: Alert notifications are sent regardless of alert levels.
+	Level *string `json:"Level,omitempty" xml:"Level,omitempty"`
+	// The alert message of the Prometheus alert rule.
+	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// The metric type of the Application Monitoring or Browser Monitoring alert rule.
+	MetricsType *string `json:"MetricsType,omitempty" xml:"MetricsType,omitempty"`
+	// The name of the notification policy.
+	NotifyStrategy *string `json:"NotifyStrategy,omitempty" xml:"NotifyStrategy,omitempty"`
+	// The process ID (PID) that was associated with the Application Monitoring or Browser Monitoring alert rule.
+	Pids []*string `json:"Pids,omitempty" xml:"Pids,omitempty" type:"Repeated"`
+	// The PromQL statement of the Prometheus alert rule.
+	PromQL *string `json:"PromQL,omitempty" xml:"PromQL,omitempty"`
+	// The region ID.
+	RegionId *string                                            `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	Tags     []*GetAlertRulesResponseBodyPageBeanAlertRulesTags `json:"Tags,omitempty" xml:"Tags,omitempty" type:"Repeated"`
+	// The time when the alert rule was updated. The value is a timestamp. Unit: milliseconds.
+	UpdatedTime *int64 `json:"UpdatedTime,omitempty" xml:"UpdatedTime,omitempty"`
+	// The ID of the Alibaba Cloud account to which the resource belongs.
+	UserId *string `json:"UserId,omitempty" xml:"UserId,omitempty"`
 }
 
 func (s GetAlertRulesResponseBodyPageBeanAlertRules) String() string {
@@ -13762,8 +13855,13 @@ func (s *GetAlertRulesResponseBodyPageBeanAlertRules) SetUserId(v string) *GetAl
 }
 
 type GetAlertRulesResponseBodyPageBeanAlertRulesAlertRuleContent struct {
+	// The trigger conditions of the Application Monitoring or Browser Monitoring alert rule.
 	AlertRuleItems []*GetAlertRulesResponseBodyPageBeanAlertRulesAlertRuleContentAlertRuleItems `json:"AlertRuleItems,omitempty" xml:"AlertRuleItems,omitempty" type:"Repeated"`
-	Condition      *string                                                                      `json:"Condition,omitempty" xml:"Condition,omitempty"`
+	// The relationship between multiple alert conditions specified for the Application Monitoring or Browser Monitoring alert rule. Valid values:
+	//
+	// *   OR: meets any of the specified conditions.
+	// *   AND: meets all the specified conditions.
+	Condition *string `json:"Condition,omitempty" xml:"Condition,omitempty"`
 }
 
 func (s GetAlertRulesResponseBodyPageBeanAlertRulesAlertRuleContent) String() string {
@@ -13785,11 +13883,30 @@ func (s *GetAlertRulesResponseBodyPageBeanAlertRulesAlertRuleContent) SetConditi
 }
 
 type GetAlertRulesResponseBodyPageBeanAlertRulesAlertRuleContentAlertRuleItems struct {
-	Aggregate *string  `json:"Aggregate,omitempty" xml:"Aggregate,omitempty"`
-	MetricKey *string  `json:"MetricKey,omitempty" xml:"MetricKey,omitempty"`
-	N         *float32 `json:"N,omitempty" xml:"N,omitempty"`
-	Operator  *string  `json:"Operator,omitempty" xml:"Operator,omitempty"`
-	Value     *string  `json:"Value,omitempty" xml:"Value,omitempty"`
+	// The aggregation method of the alert condition. Valid values:
+	//
+	// *   AVG: calculates the average value
+	// *   SUM: calculates the total value
+	// *   MAX: selects the maximum value
+	// *   MIN: selects the minimum value
+	Aggregate *string `json:"Aggregate,omitempty" xml:"Aggregate,omitempty"`
+	// The metric of the alert condition.
+	MetricKey *string `json:"MetricKey,omitempty" xml:"MetricKey,omitempty"`
+	// Indicates the last N minutes.
+	N *float32 `json:"N,omitempty" xml:"N,omitempty"`
+	// The comparison operator that was used to compare the metric value with the threshold. Valid values:
+	//
+	// *   CURRENT_GTE: greater than or equal to
+	// *   CURRENT_LTE: less than or equal to
+	// *   PREVIOUS_UP: the increase percentage compared with the last period
+	// *   PREVIOUS_DOWN: the decrease percentage compared with the last period
+	// *   HOH_UP: the increase percentage compared with the last hour
+	// *   HOH_DOWN: the decrease percentage compared with the last hour
+	// *   DOD_UP: the increase percentage compared with the last day
+	// *   DOD_DOWN: the decrease percentage compared with the last day
+	Operator *string `json:"Operator,omitempty" xml:"Operator,omitempty"`
+	// The threshold of the alert condition.
+	Value *string `json:"Value,omitempty" xml:"Value,omitempty"`
 }
 
 func (s GetAlertRulesResponseBodyPageBeanAlertRulesAlertRuleContentAlertRuleItems) String() string {
@@ -13826,7 +13943,9 @@ func (s *GetAlertRulesResponseBodyPageBeanAlertRulesAlertRuleContentAlertRuleIte
 }
 
 type GetAlertRulesResponseBodyPageBeanAlertRulesAnnotations struct {
-	Name  *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// The key of the annotation.
+	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// The value of the annotation.
 	Value *string `json:"Value,omitempty" xml:"Value,omitempty"`
 }
 
@@ -13849,10 +13968,14 @@ func (s *GetAlertRulesResponseBodyPageBeanAlertRulesAnnotations) SetValue(v stri
 }
 
 type GetAlertRulesResponseBodyPageBeanAlertRulesFilters struct {
-	CustomSLSFilters           []*GetAlertRulesResponseBodyPageBeanAlertRulesFiltersCustomSLSFilters `json:"CustomSLSFilters,omitempty" xml:"CustomSLSFilters,omitempty" type:"Repeated"`
-	CustomSLSGroupByDimensions []*string                                                             `json:"CustomSLSGroupByDimensions,omitempty" xml:"CustomSLSGroupByDimensions,omitempty" type:"Repeated"`
-	CustomSLSWheres            []*string                                                             `json:"CustomSLSWheres,omitempty" xml:"CustomSLSWheres,omitempty" type:"Repeated"`
-	DimFilters                 []*GetAlertRulesResponseBodyPageBeanAlertRulesFiltersDimFilters       `json:"DimFilters,omitempty" xml:"DimFilters,omitempty" type:"Repeated"`
+	// The custom filter condition of the Browser Monitoring alert rule.
+	CustomSLSFilters []*GetAlertRulesResponseBodyPageBeanAlertRulesFiltersCustomSLSFilters `json:"CustomSLSFilters,omitempty" xml:"CustomSLSFilters,omitempty" type:"Repeated"`
+	// The information of the aggregation dimension.
+	CustomSLSGroupByDimensions []*string `json:"CustomSLSGroupByDimensions,omitempty" xml:"CustomSLSGroupByDimensions,omitempty" type:"Repeated"`
+	// The details of the custom filter condition.
+	CustomSLSWheres []*string `json:"CustomSLSWheres,omitempty" xml:"CustomSLSWheres,omitempty" type:"Repeated"`
+	// The information about each filter condition of the Application Monitoring or Browser Monitoring alert rule.
+	DimFilters []*GetAlertRulesResponseBodyPageBeanAlertRulesFiltersDimFilters `json:"DimFilters,omitempty" xml:"DimFilters,omitempty" type:"Repeated"`
 }
 
 func (s GetAlertRulesResponseBodyPageBeanAlertRulesFilters) String() string {
@@ -13884,10 +14007,18 @@ func (s *GetAlertRulesResponseBodyPageBeanAlertRulesFilters) SetDimFilters(v []*
 }
 
 type GetAlertRulesResponseBodyPageBeanAlertRulesFiltersCustomSLSFilters struct {
-	Key   *string `json:"Key,omitempty" xml:"Key,omitempty"`
-	Opt   *string `json:"Opt,omitempty" xml:"Opt,omitempty"`
-	Show  *bool   `json:"Show,omitempty" xml:"Show,omitempty"`
-	T     *string `json:"T,omitempty" xml:"T,omitempty"`
+	// The key of the filter condition.
+	Key *string `json:"Key,omitempty" xml:"Key,omitempty"`
+	// The logical operator of the filter condition. Valid values:
+	//
+	// *   \=: equal to
+	// *   not: not equal to
+	Opt *string `json:"Opt,omitempty" xml:"Opt,omitempty"`
+	// Indicates whether this filter condition was displayed on the frontend.
+	Show *bool `json:"Show,omitempty" xml:"Show,omitempty"`
+	// Indicates the log type of Browser Monitoring. This field was not included in other filter conditions.
+	T *string `json:"T,omitempty" xml:"T,omitempty"`
+	// The value of the filter condition.
 	Value *string `json:"Value,omitempty" xml:"Value,omitempty"`
 }
 
@@ -13925,8 +14056,11 @@ func (s *GetAlertRulesResponseBodyPageBeanAlertRulesFiltersCustomSLSFilters) Set
 }
 
 type GetAlertRulesResponseBodyPageBeanAlertRulesFiltersDimFilters struct {
-	FilterKey    *string   `json:"FilterKey,omitempty" xml:"FilterKey,omitempty"`
-	FilterOpt    *string   `json:"FilterOpt,omitempty" xml:"FilterOpt,omitempty"`
+	// The key of the filter condition.
+	FilterKey *string `json:"FilterKey,omitempty" xml:"FilterKey,omitempty"`
+	// The logical operator of the filter condition.
+	FilterOpt *string `json:"FilterOpt,omitempty" xml:"FilterOpt,omitempty"`
+	// The details of the filter condition.
 	FilterValues []*string `json:"FilterValues,omitempty" xml:"FilterValues,omitempty" type:"Repeated"`
 }
 
@@ -13954,7 +14088,9 @@ func (s *GetAlertRulesResponseBodyPageBeanAlertRulesFiltersDimFilters) SetFilter
 }
 
 type GetAlertRulesResponseBodyPageBeanAlertRulesLabels struct {
-	Name  *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// The tag key.
+	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// The tag value.
 	Value *string `json:"Value,omitempty" xml:"Value,omitempty"`
 }
 
@@ -14820,13 +14956,16 @@ func (s *GetIntegrationStateResponse) SetBody(v *GetIntegrationStateResponseBody
 }
 
 type GetManagedPrometheusStatusRequest struct {
-	// __null__
-	ClusterId   *string `json:"ClusterId,omitempty" xml:"ClusterId,omitempty"`
+	// The ID of the ASK cluster. This parameter is required if the ClusterType parameter is set to ask.
+	ClusterId *string `json:"ClusterId,omitempty" xml:"ClusterId,omitempty"`
+	// The type of the monitoring object. Valid values: ask and ecs.
 	ClusterType *string `json:"ClusterType,omitempty" xml:"ClusterType,omitempty"`
-	// code!=200
-	RegionId        *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	// The region ID.
+	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	// The ID of the resource group to which the Prometheus instance belongs.
 	ResourceGroupId *string `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
-	VpcId           *string `json:"VpcId,omitempty" xml:"VpcId,omitempty"`
+	// This parameter is required if the ClusterType parameter is set to ecs.
+	VpcId *string `json:"VpcId,omitempty" xml:"VpcId,omitempty"`
 }
 
 func (s GetManagedPrometheusStatusRequest) String() string {
@@ -14863,11 +15002,24 @@ func (s *GetManagedPrometheusStatusRequest) SetVpcId(v string) *GetManagedPromet
 }
 
 type GetManagedPrometheusStatusResponseBody struct {
-	Code      *int32  `json:"Code,omitempty" xml:"Code,omitempty"`
-	Data      *string `json:"Data,omitempty" xml:"Data,omitempty"`
-	Message   *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// The status code or error code.
+	Code *int32 `json:"Code,omitempty" xml:"Code,omitempty"`
+	// The status of the Prometheus instance.
+	//
+	// *   Installing: The Prometheus instance is created and the Prometheus agent has no registration information.
+	// *   Succeed: The Prometheus instance is created and the Prometheus agent is registered.
+	// *   Failure: The Prometheus instance failed to be created or the Prometheus agent failed to be registered.
+	// *   Unknown: No status of the Prometheus instance is available.
+	Data *string `json:"Data,omitempty" xml:"Data,omitempty"`
+	// The returned message.
+	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// The request ID.
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	Success   *bool   `json:"Success,omitempty" xml:"Success,omitempty"`
+	// Indicates whether the request was successful. Valid values:
+	//
+	// *   `true`
+	// *   `false`
+	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
 }
 
 func (s GetManagedPrometheusStatusResponseBody) String() string {
@@ -15616,6 +15768,7 @@ func (s *GetOnCallSchedulesDetailResponse) SetBody(v *GetOnCallSchedulesDetailRe
 }
 
 type GetPrometheusApiTokenRequest struct {
+	// The region ID.
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 }
 
@@ -15633,8 +15786,10 @@ func (s *GetPrometheusApiTokenRequest) SetRegionId(v string) *GetPrometheusApiTo
 }
 
 type GetPrometheusApiTokenResponseBody struct {
+	// The request ID.
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	Token     *string `json:"Token,omitempty" xml:"Token,omitempty"`
+	// The token required for integrating Prometheus Service.
+	Token *string `json:"Token,omitempty" xml:"Token,omitempty"`
 }
 
 func (s GetPrometheusApiTokenResponseBody) String() string {
@@ -15801,7 +15956,7 @@ func (s *GetPrometheusInstanceRequest) SetRegionId(v string) *GetPrometheusInsta
 }
 
 type GetPrometheusInstanceResponseBody struct {
-	// The status code returned. The status code 200 indicates that the request was successful. Other status codes indicate that the request failed.
+	// The status code. The status code 200 indicates that the request was successful. If another status code is returned, the request failed.
 	Code *int32 `json:"Code,omitempty" xml:"Code,omitempty"`
 	// The returned information.
 	Data *GetPrometheusInstanceResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
@@ -15842,31 +15997,39 @@ func (s *GetPrometheusInstanceResponseBody) SetRequestId(v string) *GetPrometheu
 type GetPrometheusInstanceResponseBodyData struct {
 	// The ID of the Prometheus instance.
 	ClusterId *string `json:"ClusterId,omitempty" xml:"ClusterId,omitempty"`
-	// The name of the cluster.
+	// The name of the monitoring object.
 	ClusterName *string `json:"ClusterName,omitempty" xml:"ClusterName,omitempty"`
-	// The instance type. Valid values: remote-write (Prometheus instance for Remote Write), ecs (Prometheus instance for ECS), cloud-monitor (Prometheus instance for Alibaba Cloud services in China), cloud-product (Prometheus instance for Alibaba Cloud services outside China), global-view (Prometheus instance for GlobalView), aliyun-cs (Prometheus instance for Container Service).
+	// *   remote-write: Prometheus instance for Remote Write
+	// *   ecs: Prometheus instances for ECS
+	// *   cloud-monitor: Prometheus instance for cloud services (Chinese mainland)
+	// *   cloud-monitor: Prometheus instance for cloud services (regions outside the Chinese mainland)
+	// *   global-view: Prometheus instance for GlobalView
+	// *   aliyun-cs: Prometheus instance for Container Service
 	ClusterType *string `json:"ClusterType,omitempty" xml:"ClusterType,omitempty"`
 	// The ID of the Grafana workspace.
 	GrafanaInstanceId *string `json:"GrafanaInstanceId,omitempty" xml:"GrafanaInstanceId,omitempty"`
-	// The billing method. Valid values: PREPAY (subscription) and POSTPAY (pay-as-you-go).
+	// The billing method. Valid values:
+	//
+	// *   PREPAY: subscription
+	// *   POSTPAY: pay-as-you-go
 	PaymentType *string `json:"PaymentType,omitempty" xml:"PaymentType,omitempty"`
 	// The region ID.
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 	// The ID of the resource group to which the instance belongs.
 	ResourceGroupId *string `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
-	// The type of the resource. Valid value: PROMETHEUS.
+	// The type of the resource. Set the value to PROMETHEUS.
 	ResourceType *string `json:"ResourceType,omitempty" xml:"ResourceType,omitempty"`
 	// The ID of the security group.
 	SecurityGroupId *string `json:"SecurityGroupId,omitempty" xml:"SecurityGroupId,omitempty"`
-	// The child instances of the global aggregation instance. The value is a JSON string.
+	// The child instances of the Prometheus instance for GlobalView. The value is a JSON string.
 	SubClustersJson *string `json:"SubClustersJson,omitempty" xml:"SubClustersJson,omitempty"`
-	// The tags that are bound to the instance.
+	// The tags of the instance.
 	Tags []*GetPrometheusInstanceResponseBodyDataTags `json:"Tags,omitempty" xml:"Tags,omitempty" type:"Repeated"`
 	// The user ID.
 	UserId *string `json:"UserId,omitempty" xml:"UserId,omitempty"`
-	// The ID of the VSwitch.
+	// The ID of the vSwitch.
 	VSwitchId *string `json:"VSwitchId,omitempty" xml:"VSwitchId,omitempty"`
-	// The ID of the virtual private cloud (VPC) in which the instance resides.
+	// The virtual private cloud (VPC) where the monitoring object resides.
 	VpcId *string `json:"VpcId,omitempty" xml:"VpcId,omitempty"`
 }
 
@@ -15949,9 +16112,9 @@ func (s *GetPrometheusInstanceResponseBodyData) SetVpcId(v string) *GetPrometheu
 }
 
 type GetPrometheusInstanceResponseBodyDataTags struct {
-	// The tag key.
+	// The tag key of the instance.
 	TagKey *string `json:"TagKey,omitempty" xml:"TagKey,omitempty"`
-	// The tag value.
+	// The tag value of the instance.
 	TagValue *string `json:"TagValue,omitempty" xml:"TagValue,omitempty"`
 }
 
@@ -16003,11 +16166,11 @@ func (s *GetPrometheusInstanceResponse) SetBody(v *GetPrometheusInstanceResponse
 }
 
 type GetPrometheusIntegrationRequest struct {
-	// The ID of the Prometheus instance. Only aliyun-cs and ecs instances are supported.
+	// The ID of the Prometheus instance. Only a Prometheus instance for Container Service or a Prometheus instance for ECS is supported.
 	ClusterId *string `json:"ClusterId,omitempty" xml:"ClusterId,omitempty"`
-	// The ID of the exporter that is integrated into the Prometheus instance.
+	// The exporter ID.
 	InstanceId *int64 `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	// The integration type.
+	// The type of the integration.
 	IntegrationType *string `json:"IntegrationType,omitempty" xml:"IntegrationType,omitempty"`
 	// The region ID.
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
@@ -16044,9 +16207,9 @@ func (s *GetPrometheusIntegrationRequest) SetRegionId(v string) *GetPrometheusIn
 type GetPrometheusIntegrationResponseBody struct {
 	// The status code. The status code 200 indicates that the request was successful. If another status code is returned, the request failed.
 	Code *int32 `json:"Code,omitempty" xml:"Code,omitempty"`
-	// The returned struct.
+	// The struct returned.
 	Data *GetPrometheusIntegrationResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
-	// The returned message.
+	// The message returned.
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
 	// Id of the request
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
@@ -16083,11 +16246,11 @@ func (s *GetPrometheusIntegrationResponseBody) SetRequestId(v string) *GetPromet
 type GetPrometheusIntegrationResponseBodyData struct {
 	// Indicates whether the exporter can be deleted.
 	CanDelete *bool `json:"CanDelete,omitempty" xml:"CanDelete,omitempty"`
-	// Indicates whether the exporter can be edited.
+	// Indicates whether the exporter can be modified.
 	CanEditor *bool `json:"CanEditor,omitempty" xml:"CanEditor,omitempty"`
 	// The ID of the Prometheus instance.
 	ClusterId *string `json:"ClusterId,omitempty" xml:"ClusterId,omitempty"`
-	// The name of the container.
+	// The container name.
 	ContainerName *string `json:"ContainerName,omitempty" xml:"ContainerName,omitempty"`
 	// The description of the exporter.
 	Describe *string `json:"Describe,omitempty" xml:"Describe,omitempty"`
@@ -16097,7 +16260,7 @@ type GetPrometheusIntegrationResponseBodyData struct {
 	InstanceId *int64 `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
 	// The name of the exporter.
 	InstanceName *string `json:"InstanceName,omitempty" xml:"InstanceName,omitempty"`
-	// The integration type.
+	// The type of the integration.
 	IntegrationType *string `json:"IntegrationType,omitempty" xml:"IntegrationType,omitempty"`
 	// The namespace.
 	Namespace *string `json:"Namespace,omitempty" xml:"Namespace,omitempty"`
@@ -16113,7 +16276,7 @@ type GetPrometheusIntegrationResponseBodyData struct {
 	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
 	// The monitored IP address.
 	Target *string `json:"Target,omitempty" xml:"Target,omitempty"`
-	// The version number.
+	// The version information.
 	Version *string `json:"Version,omitempty" xml:"Version,omitempty"`
 }
 
@@ -16393,11 +16556,11 @@ func (s *GetPrometheusMonitoringResponse) SetBody(v *GetPrometheusMonitoringResp
 }
 
 type GetPrometheusRemoteWriteRequest struct {
-	// The ID of the Prometheus instance.
+	// The ID of the Prometheus instance. Only a Prometheus instance for Container Service or a Prometheus instance for ECS is supported.
 	ClusterId *string `json:"ClusterId,omitempty" xml:"ClusterId,omitempty"`
 	// The region ID.
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	// The name of the remote write configuration.
+	// The name of the remote write configuration item.
 	RemoteWriteName *string `json:"RemoteWriteName,omitempty" xml:"RemoteWriteName,omitempty"`
 }
 
@@ -16425,9 +16588,9 @@ func (s *GetPrometheusRemoteWriteRequest) SetRemoteWriteName(v string) *GetProme
 }
 
 type GetPrometheusRemoteWriteResponseBody struct {
-	// The status code returned. The status code 200 indicates that the request was successful.
+	// The status code. The status code 200 indicates that the request was successful.
 	Code *int32 `json:"Code,omitempty" xml:"Code,omitempty"`
-	// The queried remote write configuration.
+	// The details of the remote write configuration item.
 	Data *GetPrometheusRemoteWriteResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
 	// The message returned.
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
@@ -16476,9 +16639,9 @@ func (s *GetPrometheusRemoteWriteResponseBody) SetSuccess(v bool) *GetPrometheus
 type GetPrometheusRemoteWriteResponseBodyData struct {
 	// The ID of the Prometheus instance.
 	ClusterId *string `json:"ClusterId,omitempty" xml:"ClusterId,omitempty"`
-	// The name of the remote write configuration.
+	// The name of the remote write configuration item.
 	RemoteWriteName *string `json:"RemoteWriteName,omitempty" xml:"RemoteWriteName,omitempty"`
-	// The remote write configuration. The configuration is displayed in the YAML format.
+	// The details of the remote write configuration item. The value is in the YAML format.
 	RemoteWriteYaml *string `json:"RemoteWriteYaml,omitempty" xml:"RemoteWriteYaml,omitempty"`
 }
 
@@ -20825,25 +20988,25 @@ func (s *InstallCmsExporterResponse) SetBody(v *InstallCmsExporterResponseBody) 
 }
 
 type InstallManagedPrometheusRequest struct {
-	// The response object.
+	// The ID of the ACK cluster.
 	ClusterId *string `json:"ClusterId,omitempty" xml:"ClusterId,omitempty"`
-	// The request ID.
+	// The name of the ECS instance. If you set the ClusterType parameter to ecs, you must configure this parameter.
 	ClusterName *string `json:"ClusterName,omitempty" xml:"ClusterName,omitempty"`
-	// The response content. In most cases, the installation status of the Prometheus agent is returned.
+	// The type of the monitoring object. Valid values: ask and ecs.
 	ClusterType *string `json:"ClusterType,omitempty" xml:"ClusterType,omitempty"`
-	// success=false
+	// The ID of the Grafana workspace used by the ASK cluster or ECS instance. If you set the value to free or leave the parameter empty, a shared Grafana workspace is used.
 	GrafanaInstanceId *string `json:"GrafanaInstanceId,omitempty" xml:"GrafanaInstanceId,omitempty"`
-	// __null__
+	// This parameter is not supported.
 	KubeConfig *string `json:"KubeConfig,omitempty" xml:"KubeConfig,omitempty"`
-	// The parameter is not supported.
+	// The region ID.
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	// Prometheus实例的资源组ID。
+	// The ID of the resource group to which the Prometheus instance belongs.
 	ResourceGroupId *string `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
-	// The status code. The status code 200 indicates that the request was successful. If another status code is returned, the request failed.
+	// The security group of the ASK cluster or ECS instance.
 	SecurityGroupId *string `json:"SecurityGroupId,omitempty" xml:"SecurityGroupId,omitempty"`
-	// The error message returned if the Prometheus agent failed to be installed.
+	// The vSwitch used by the ASK cluster or ECS instance.
 	VSwitchId *string `json:"VSwitchId,omitempty" xml:"VSwitchId,omitempty"`
-	// Indicates whether the Prometheus agent was installed.
+	// The virtual private cloud (VPC) where the ASK cluster or ECS instance resides.
 	VpcId *string `json:"VpcId,omitempty" xml:"VpcId,omitempty"`
 }
 
@@ -20906,11 +21069,16 @@ func (s *InstallManagedPrometheusRequest) SetVpcId(v string) *InstallManagedProm
 }
 
 type InstallManagedPrometheusResponseBody struct {
-	Code      *int32  `json:"Code,omitempty" xml:"Code,omitempty"`
-	Data      *string `json:"Data,omitempty" xml:"Data,omitempty"`
-	Message   *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// The status code. The status code 200 indicates that the request was successful. If another status code is returned, the request failed.
+	Code *int32 `json:"Code,omitempty" xml:"Code,omitempty"`
+	// The response content. The status of the Prometheus instance is returned.
+	Data *string `json:"Data,omitempty" xml:"Data,omitempty"`
+	// The error message returned if the Prometheus instance fails to be created.
+	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// The request ID.
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	Success   *bool   `json:"Success,omitempty" xml:"Success,omitempty"`
+	// Indicates whether the Prometheus instance was created.
+	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
 }
 
 func (s InstallManagedPrometheusResponseBody) String() string {
@@ -21552,6 +21720,7 @@ type ListAlertsRequest struct {
 	EndTime         *string `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
 	IntegrationType *string `json:"IntegrationType,omitempty" xml:"IntegrationType,omitempty"`
 	Page            *int64  `json:"Page,omitempty" xml:"Page,omitempty"`
+	RegionId        *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 	Severity        *string `json:"Severity,omitempty" xml:"Severity,omitempty"`
 	ShowActivities  *bool   `json:"ShowActivities,omitempty" xml:"ShowActivities,omitempty"`
 	ShowEvents      *bool   `json:"ShowEvents,omitempty" xml:"ShowEvents,omitempty"`
@@ -21590,6 +21759,11 @@ func (s *ListAlertsRequest) SetIntegrationType(v string) *ListAlertsRequest {
 
 func (s *ListAlertsRequest) SetPage(v int64) *ListAlertsRequest {
 	s.Page = &v
+	return s
+}
+
+func (s *ListAlertsRequest) SetRegionId(v string) *ListAlertsRequest {
+	s.RegionId = &v
 	return s
 }
 
@@ -22303,9 +22477,9 @@ type ListDashboardsRequest struct {
 	ClusterType *string `json:"ClusterType,omitempty" xml:"ClusterType,omitempty"`
 	// The unique names of the dashboards. You can query dashboards by specifying their names. The **dashboard title** can be changed whereas the **dashboard name** cannot. You can specify multiple names and separate them with commas (,), for example, `k8s-event,k8s-overview`. A dashboard may have multiple versions. If you want to specify a version, you can add version information after the name, for example, `k8s-event:v1,k8s-overview:latest`.
 	DashboardName *string `json:"DashboardName,omitempty" xml:"DashboardName,omitempty"`
-	// The language of the returned Grafana dashboard. Valid values: en and zh. Default value: en.
+	// The language of the Grafana dashboards. Valid values: en and zh. Default value: en.
 	Language *string `json:"Language,omitempty" xml:"Language,omitempty"`
-	// The cloud service code. This parameter is required if you set the ClusterType parameter to `cloud-product-prometheus`. The following cloud services are available: Serverless App Engine, Microservices Engine, Message Queue for Apache RocketMQ, Lindorm, Message Queue for Apache Kafka, ApsaraDB for ClickHouse, Data Lake Analytics, Message Queue for RabbitMQ, ApsaraDB for MongoDB, Time Series Database (TSDB) for InfluxDB, MSE Cloud-native Gateway, Grafana Service, SchedulerX, Global Transaction Service, Enterprise Distributed Application Service, Machine Learning Platform for AI - Elastic Algorithm Service (EAS), Application High Availability Service, and Performance Testing.
+	// The code of the cloud service. This parameter is required if you set the ClusterType parameter to `cloud-product-prometheus`. The following cloud services are available: Serverless App Engine, Microservices Engine, Message Queue for Apache RocketMQ, Lindorm, Message Queue for Apache Kafka, ApsaraDB for ClickHouse, Data Lake Analytics, Message Queue for RabbitMQ, ApsaraDB for MongoDB, Time Series Database (TSDB) for InfluxDB, MSE Cloud-native Gateway, Grafana Service, SchedulerX, Global Transaction Service, Enterprise Distributed Application Service, Machine Learning Platform for AI - Elastic Algorithm Service (EAS), Application High Availability Service, and Performance Testing.
 	Product *string `json:"Product,omitempty" xml:"Product,omitempty"`
 	// Specifies whether to create or query a virtual cluster. This parameter provides backward compatibility.
 	RecreateSwitch *bool `json:"RecreateSwitch,omitempty" xml:"RecreateSwitch,omitempty"`
@@ -22414,7 +22588,7 @@ type ListDashboardsResponseBodyDashboardVos struct {
 	HttpUrl *string `json:"HttpUrl,omitempty" xml:"HttpUrl,omitempty"`
 	// The URL of the Grafana dashboard.
 	HttpsUrl *string `json:"HttpsUrl,omitempty" xml:"HttpsUrl,omitempty"`
-	// The information about the Grafana dashboards.
+	// The information about the Grafana dashboard.
 	I18nChild *ListDashboardsResponseBodyDashboardVosI18nChild `json:"I18nChild,omitempty" xml:"I18nChild,omitempty" type:"Struct"`
 	// The ID of the Grafana dashboard. The value is unique only when you install the Grafana dashboard.
 	Id *string `json:"Id,omitempty" xml:"Id,omitempty"`
@@ -22433,7 +22607,7 @@ type ListDashboardsResponseBodyDashboardVos struct {
 	NeedUpdate *bool `json:"NeedUpdate,omitempty" xml:"NeedUpdate,omitempty"`
 	// The tags of the Grafana dashboard.
 	Tags []*string `json:"Tags,omitempty" xml:"Tags,omitempty" type:"Repeated"`
-	// The timestamp generated when the Grafana dashboard was created. Unit: seconds
+	// The timestamp when the Grafana dashboard was created. Unit: seconds.
 	Time *string `json:"Time,omitempty" xml:"Time,omitempty"`
 	// The title of the Grafana dashboard.
 	Title *string `json:"Title,omitempty" xml:"Title,omitempty"`
@@ -23695,6 +23869,7 @@ func (s *ListIntegrationResponse) SetBody(v *ListIntegrationResponseBody) *ListI
 }
 
 type ListNotificationPoliciesRequest struct {
+	DirectedMode *bool `json:"DirectedMode,omitempty" xml:"DirectedMode,omitempty"`
 	// The ID of the notification policy.
 	Ids *string `json:"Ids,omitempty" xml:"Ids,omitempty"`
 	// Specifies whether to query the details about notification policies. Valid values:
@@ -23718,6 +23893,11 @@ func (s ListNotificationPoliciesRequest) String() string {
 
 func (s ListNotificationPoliciesRequest) GoString() string {
 	return s.String()
+}
+
+func (s *ListNotificationPoliciesRequest) SetDirectedMode(v bool) *ListNotificationPoliciesRequest {
+	s.DirectedMode = &v
+	return s
 }
 
 func (s *ListNotificationPoliciesRequest) SetIds(v string) *ListNotificationPoliciesRequest {
@@ -23815,6 +23995,7 @@ func (s *ListNotificationPoliciesResponseBodyPageBean) SetTotal(v int64) *ListNo
 }
 
 type ListNotificationPoliciesResponseBodyPageBeanNotificationPolicies struct {
+	DirectedMode *bool `json:"DirectedMode,omitempty" xml:"DirectedMode,omitempty"`
 	// The ID of the escalation rule.
 	EscalationPolicyId *int64 `json:"EscalationPolicyId,omitempty" xml:"EscalationPolicyId,omitempty"`
 	// The grouping rule for alert events.
@@ -23851,6 +24032,11 @@ func (s ListNotificationPoliciesResponseBodyPageBeanNotificationPolicies) String
 
 func (s ListNotificationPoliciesResponseBodyPageBeanNotificationPolicies) GoString() string {
 	return s.String()
+}
+
+func (s *ListNotificationPoliciesResponseBodyPageBeanNotificationPolicies) SetDirectedMode(v bool) *ListNotificationPoliciesResponseBodyPageBeanNotificationPolicies {
+	s.DirectedMode = &v
+	return s
 }
 
 func (s *ListNotificationPoliciesResponseBodyPageBeanNotificationPolicies) SetEscalationPolicyId(v int64) *ListNotificationPoliciesResponseBodyPageBeanNotificationPolicies {
@@ -24906,11 +25092,12 @@ func (s *ListPrometheusGlobalViewResponse) SetBody(v *ListPrometheusGlobalViewRe
 }
 
 type ListPrometheusInstanceByTagAndResourceGroupIdRequest struct {
-	// code!=200
+	// The region ID of the Prometheus instance.
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	// http://arms.${regionId}.aliyun-inc.com:8099/prometheus/ListPrometheusInstanceByTagAndResourceGroupId.json
-	ResourceGroupId *string                                                    `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
-	Tag             []*ListPrometheusInstanceByTagAndResourceGroupIdRequestTag `json:"Tag,omitempty" xml:"Tag,omitempty" type:"Repeated"`
+	// The ID of the resource group.
+	ResourceGroupId *string `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
+	// The tags.
+	Tag []*ListPrometheusInstanceByTagAndResourceGroupIdRequestTag `json:"Tag,omitempty" xml:"Tag,omitempty" type:"Repeated"`
 }
 
 func (s ListPrometheusInstanceByTagAndResourceGroupIdRequest) String() string {
@@ -24937,7 +25124,9 @@ func (s *ListPrometheusInstanceByTagAndResourceGroupIdRequest) SetTag(v []*ListP
 }
 
 type ListPrometheusInstanceByTagAndResourceGroupIdRequestTag struct {
-	Key   *string `json:"Key,omitempty" xml:"Key,omitempty"`
+	// The key of the tag.
+	Key *string `json:"Key,omitempty" xml:"Key,omitempty"`
+	// The value of the tag.
 	Value *string `json:"Value,omitempty" xml:"Value,omitempty"`
 }
 
@@ -24960,10 +25149,14 @@ func (s *ListPrometheusInstanceByTagAndResourceGroupIdRequestTag) SetValue(v str
 }
 
 type ListPrometheusInstanceByTagAndResourceGroupIdResponseBody struct {
-	Code      *string                                                        `json:"Code,omitempty" xml:"Code,omitempty"`
-	Data      *ListPrometheusInstanceByTagAndResourceGroupIdResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
-	Message   *string                                                        `json:"Message,omitempty" xml:"Message,omitempty"`
-	RequestId *string                                                        `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The response code. The status code 200 indicates that the request was successful. Other status codes indicate that the request failed.
+	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	// The struct returned.
+	Data *ListPrometheusInstanceByTagAndResourceGroupIdResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
+	// The returned message.
+	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// Id of the request
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
 func (s ListPrometheusInstanceByTagAndResourceGroupIdResponseBody) String() string {
@@ -24995,6 +25188,7 @@ func (s *ListPrometheusInstanceByTagAndResourceGroupIdResponseBody) SetRequestId
 }
 
 type ListPrometheusInstanceByTagAndResourceGroupIdResponseBodyData struct {
+	// The queried Prometheus instances.
 	PrometheusInstances []*ListPrometheusInstanceByTagAndResourceGroupIdResponseBodyDataPrometheusInstances `json:"PrometheusInstances,omitempty" xml:"PrometheusInstances,omitempty" type:"Repeated"`
 }
 
@@ -25012,21 +25206,43 @@ func (s *ListPrometheusInstanceByTagAndResourceGroupIdResponseBodyData) SetProme
 }
 
 type ListPrometheusInstanceByTagAndResourceGroupIdResponseBodyDataPrometheusInstances struct {
-	ClusterId         *string `json:"ClusterId,omitempty" xml:"ClusterId,omitempty"`
-	ClusterName       *string `json:"ClusterName,omitempty" xml:"ClusterName,omitempty"`
-	ClusterType       *string `json:"ClusterType,omitempty" xml:"ClusterType,omitempty"`
+	// The ID of the Prometheus instance.
+	ClusterId *string `json:"ClusterId,omitempty" xml:"ClusterId,omitempty"`
+	// The name of the Prometheus instance.
+	ClusterName *string `json:"ClusterName,omitempty" xml:"ClusterName,omitempty"`
+	// The type of the cluster. Valid values: remote-write: Prometheus instance for remote write.
+	//
+	// *   ecs: Prometheus instances for ECS.
+	// *   cloud-monitor: Prometheus instance for Alibaba Cloud services in the Chinese mainland.
+	// *   cloud-product: Prometheus instance for Alibaba Cloud services outside China.
+	// *   global-view: Prometheus instance for GlobalView.
+	// *   aliyun-cs: Prometheus instance for Container Service.
+	ClusterType *string `json:"ClusterType,omitempty" xml:"ClusterType,omitempty"`
+	// The ID of the Grafana workspace.
 	GrafanaInstanceId *string `json:"GrafanaInstanceId,omitempty" xml:"GrafanaInstanceId,omitempty"`
-	PaymentType       *string `json:"PaymentType,omitempty" xml:"PaymentType,omitempty"`
-	RegionId          *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	ResourceGroupId   *string `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
+	// The billing method. Valid values:
+	//
+	// *   PREPAY: subscription.
+	// *   POSTPAY: pay-as-you-go.
+	PaymentType *string `json:"PaymentType,omitempty" xml:"PaymentType,omitempty"`
+	// The region ID of the Prometheus instance.
+	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	// The ID of the resource group to which the Prometheus instance belongs.
+	ResourceGroupId *string `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
 	// 资源类型
-	ResourceType    *string                                                                                 `json:"ResourceType,omitempty" xml:"ResourceType,omitempty"`
-	SecurityGroupId *string                                                                                 `json:"SecurityGroupId,omitempty" xml:"SecurityGroupId,omitempty"`
-	SubClustersJson *string                                                                                 `json:"SubClustersJson,omitempty" xml:"SubClustersJson,omitempty"`
-	Tags            []*ListPrometheusInstanceByTagAndResourceGroupIdResponseBodyDataPrometheusInstancesTags `json:"Tags,omitempty" xml:"Tags,omitempty" type:"Repeated"`
-	UserId          *string                                                                                 `json:"UserId,omitempty" xml:"UserId,omitempty"`
-	VSwitchId       *string                                                                                 `json:"VSwitchId,omitempty" xml:"VSwitchId,omitempty"`
-	VpcId           *string                                                                                 `json:"VpcId,omitempty" xml:"VpcId,omitempty"`
+	ResourceType *string `json:"ResourceType,omitempty" xml:"ResourceType,omitempty"`
+	// The ID of the security group.
+	SecurityGroupId *string `json:"SecurityGroupId,omitempty" xml:"SecurityGroupId,omitempty"`
+	// The child instances of the Prometheus instance for GlobalView instance. The value is a JSON string.
+	SubClustersJson *string `json:"SubClustersJson,omitempty" xml:"SubClustersJson,omitempty"`
+	// The tags.
+	Tags []*ListPrometheusInstanceByTagAndResourceGroupIdResponseBodyDataPrometheusInstancesTags `json:"Tags,omitempty" xml:"Tags,omitempty" type:"Repeated"`
+	// The ID of the user.
+	UserId *string `json:"UserId,omitempty" xml:"UserId,omitempty"`
+	// The ID of the vSwitch.
+	VSwitchId *string `json:"VSwitchId,omitempty" xml:"VSwitchId,omitempty"`
+	// The ID of the virtual private cloud (VPC).
+	VpcId *string `json:"VpcId,omitempty" xml:"VpcId,omitempty"`
 }
 
 func (s ListPrometheusInstanceByTagAndResourceGroupIdResponseBodyDataPrometheusInstances) String() string {
@@ -25108,7 +25324,9 @@ func (s *ListPrometheusInstanceByTagAndResourceGroupIdResponseBodyDataPrometheus
 }
 
 type ListPrometheusInstanceByTagAndResourceGroupIdResponseBodyDataPrometheusInstancesTags struct {
-	TagKey   *string `json:"TagKey,omitempty" xml:"TagKey,omitempty"`
+	// The key of the tag.
+	TagKey *string `json:"TagKey,omitempty" xml:"TagKey,omitempty"`
+	// The value of the tag.
 	TagValue *string `json:"TagValue,omitempty" xml:"TagValue,omitempty"`
 }
 
@@ -25293,13 +25511,13 @@ func (s *ListPrometheusIntegrationRequest) SetRegionId(v string) *ListPrometheus
 }
 
 type ListPrometheusIntegrationResponseBody struct {
-	// The status code. The status code 200 indicates that the request was successful.
+	// The response code. The status code 200 indicates that the request was successful.
 	Code *int32 `json:"Code,omitempty" xml:"Code,omitempty"`
 	// The queried exporters.
 	Data []*ListPrometheusIntegrationResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Repeated"`
 	// The returned message.
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
-	// The request ID.
+	// Id of the request
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -25362,7 +25580,7 @@ type ListPrometheusIntegrationResponseBodyData struct {
 	ShowDescribe *bool `json:"ShowDescribe,omitempty" xml:"ShowDescribe,omitempty"`
 	// Indicates whether the exporter logs are displayed.
 	ShowLog *bool `json:"ShowLog,omitempty" xml:"ShowLog,omitempty"`
-	// The status of the exporter.
+	// The state of the exporter.
 	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
 	// The monitored IP address.
 	Target *string `json:"Target,omitempty" xml:"Target,omitempty"`
@@ -25644,7 +25862,7 @@ func (s *ListPrometheusMonitoringResponse) SetBody(v *ListPrometheusMonitoringRe
 }
 
 type ListPrometheusRemoteWritesRequest struct {
-	// The ID of the Prometheus instance. Only aliyun-cs and ecs instances are supported.
+	// The ID of the Prometheus instance. Only a Prometheus instance for Container Service or a Prometheus instance for ECS is supported.
 	ClusterId *string `json:"ClusterId,omitempty" xml:"ClusterId,omitempty"`
 	// The region ID.
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
@@ -25671,9 +25889,9 @@ func (s *ListPrometheusRemoteWritesRequest) SetRegionId(v string) *ListPrometheu
 type ListPrometheusRemoteWritesResponseBody struct {
 	// The status code. The status code 200 indicates that the request was successful. If another status code is returned, the request failed.
 	Code *int32 `json:"Code,omitempty" xml:"Code,omitempty"`
-	// The queried remote write configurations.
+	// The remote write configuration items returned.
 	Data []*ListPrometheusRemoteWritesResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Repeated"`
-	// The returned message.
+	// The message returned.
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
 	// The request ID.
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
@@ -25717,9 +25935,9 @@ func (s *ListPrometheusRemoteWritesResponseBody) SetSuccess(v bool) *ListPrometh
 type ListPrometheusRemoteWritesResponseBodyData struct {
 	// The ID of the Prometheus instance.
 	ClusterId *string `json:"ClusterId,omitempty" xml:"ClusterId,omitempty"`
-	// The name of the remote write configuration.
+	// The name of the remote write configuration item.
 	RemoteWriteName *string `json:"RemoteWriteName,omitempty" xml:"RemoteWriteName,omitempty"`
-	// The remote write configuration. The configuration is displayed in the YAML format.
+	// The information about the queried remote write configuration item of the Prometheus instance. The information is displayed in the YAML format.
 	RemoteWriteYaml *string `json:"RemoteWriteYaml,omitempty" xml:"RemoteWriteYaml,omitempty"`
 }
 
@@ -27300,8 +27518,16 @@ func (s *OpenArmsDefaultSLRResponse) SetBody(v *OpenArmsDefaultSLRResponseBody) 
 }
 
 type OpenArmsServiceSecondVersionRequest struct {
+	// The region ID.
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	Type     *string `json:"Type,omitempty" xml:"Type,omitempty"`
+	// The type of the service. Valid values:
+	//
+	// *   `arms`: ARMS
+	// *   `arms_app`: Application Monitoring
+	// *   `arms_web`: Browser Monitoring
+	// *   `prometheus_monitor`: Managed Service for Prometheus
+	// *   `synthetic_post`: Synthetic Monitoring
+	Type *string `json:"Type,omitempty" xml:"Type,omitempty"`
 }
 
 func (s OpenArmsServiceSecondVersionRequest) String() string {
@@ -27323,7 +27549,9 @@ func (s *OpenArmsServiceSecondVersionRequest) SetType(v string) *OpenArmsService
 }
 
 type OpenArmsServiceSecondVersionResponseBody struct {
-	OrderId   *string `json:"OrderId,omitempty" xml:"OrderId,omitempty"`
+	// The service ID that is returned if the service is activated.
+	OrderId *string `json:"OrderId,omitempty" xml:"OrderId,omitempty"`
+	// The request ID.
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -27379,7 +27607,7 @@ type OpenVClusterRequest struct {
 	ClusterType *string `json:"ClusterType,omitempty" xml:"ClusterType,omitempty"`
 	// The length of the cluster ID. Default value: 10.
 	Length *int32 `json:"Length,omitempty" xml:"Length,omitempty"`
-	// The name of the cloud service. This parameter must be specified when ClusterType is set to `cloud-product-prometheus`. Valid values: influxdb, mongodb, and DLA. You cannot specify multiple service names.
+	// The name of the cloud service. This parameter is required if you set ClusterType to `cloud-product-prometheus`. Valid values: influxdb, mongodb, and DLA. You cannot specify multiple service names.
 	Product *string `json:"Product,omitempty" xml:"Product,omitempty"`
 	// Specifies whether to create or query a virtual cluster. This parameter provides backward compatibility.
 	RecreateSwitch *bool `json:"RecreateSwitch,omitempty" xml:"RecreateSwitch,omitempty"`
@@ -27421,9 +27649,9 @@ func (s *OpenVClusterRequest) SetRegionId(v string) *OpenVClusterRequest {
 }
 
 type OpenVClusterResponseBody struct {
-	// The cluster ID.
+	// The cluster ID. The value is a string.
 	Data *string `json:"Data,omitempty" xml:"Data,omitempty"`
-	// The request ID. You can use the ID to query logs and troubleshoot issues.
+	// The request ID. You can use the ID to find logs and troubleshoot issues.
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -32196,18 +32424,11 @@ func (s *SyncRecordingRulesResponse) SetBody(v *SyncRecordingRulesResponseBody) 
 }
 
 type TagResourcesRequest struct {
-	// Schema of Response
+	// The resource IDs. You can specify a maximum of 50 resource IDs.
 	ResourceId []*string `json:"ResourceId,omitempty" xml:"ResourceId,omitempty" type:"Repeated"`
-	// The resource type.
-	//
-	// WEB-front-end monitoring
-	// APPLICATION-Application Monitoring
-	// PROMETHEUS-PROM monitoring
-	// SYNTHETICTASK-Cloud dial test
-	// ALERTRULE - Application Monitoring Similar
-	// PROMETHEUSALERTRULE - Prometheus monitoring
+	// The type of the ARMS resources for which you want to modify tags. Valid values: WEB: Browser Monitoring APPLICATION: Application Monitoring PROMETHEUS: Managed Service for Prometheus SYNTHETICTASK: Synthetic Monitoring ALERTRULE: Application Monitoring alert rules PROMETHEUSALERTRULE: Prometheus alert rules
 	ResourceType *string `json:"ResourceType,omitempty" xml:"ResourceType,omitempty"`
-	// The returned result.
+	// The tags to add to the resource. You can specify a maximum of 20 tags.
 	Tag []*TagResourcesRequestTag `json:"Tag,omitempty" xml:"Tag,omitempty" type:"Repeated"`
 }
 
@@ -32235,8 +32456,9 @@ func (s *TagResourcesRequest) SetTag(v []*TagResourcesRequestTag) *TagResourcesR
 }
 
 type TagResourcesRequestTag struct {
-	// http://arms.${regionId}.aliyun-inc.com:8099/tag/TagResources.json
-	Key   *string `json:"Key,omitempty" xml:"Key,omitempty"`
+	// The key of the tag.
+	Key *string `json:"Key,omitempty" xml:"Key,omitempty"`
+	// The value of the tag.
 	Value *string `json:"Value,omitempty" xml:"Value,omitempty"`
 }
 
@@ -32312,13 +32534,16 @@ func (s *TagResourcesResponse) SetBody(v *TagResourcesResponseBody) *TagResource
 }
 
 type UninstallManagedPrometheusRequest struct {
-	// __null__
-	ClusterId   *string `json:"ClusterId,omitempty" xml:"ClusterId,omitempty"`
+	// The ID of the ASK cluster. This parameter is required if the ClusterType parameter is set to ask.
+	ClusterId *string `json:"ClusterId,omitempty" xml:"ClusterId,omitempty"`
+	// The type of the monitoring object. Valid values: ask and ecs.
 	ClusterType *string `json:"ClusterType,omitempty" xml:"ClusterType,omitempty"`
-	// code!=200
-	RegionId        *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	// The region ID.
+	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	// The ID of the resource group to which the Prometheus instance belongs.
 	ResourceGroupId *string `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
-	VpcId           *string `json:"VpcId,omitempty" xml:"VpcId,omitempty"`
+	// The virtual private cloud (VPC) where the ASK cluster or ECS instance resides.
+	VpcId *string `json:"VpcId,omitempty" xml:"VpcId,omitempty"`
 }
 
 func (s UninstallManagedPrometheusRequest) String() string {
@@ -32355,11 +32580,16 @@ func (s *UninstallManagedPrometheusRequest) SetVpcId(v string) *UninstallManaged
 }
 
 type UninstallManagedPrometheusResponseBody struct {
-	Code      *int32  `json:"Code,omitempty" xml:"Code,omitempty"`
-	Data      *string `json:"Data,omitempty" xml:"Data,omitempty"`
-	Message   *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// The status code. The status code 200 indicates that the request was successful. If another status code is returned, the request failed.
+	Code *int32 `json:"Code,omitempty" xml:"Code,omitempty"`
+	// The response content. The status of the Prometheus instance is returned.
+	Data *string `json:"Data,omitempty" xml:"Data,omitempty"`
+	// The error message that is returned if the request fails.
+	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// The request ID.
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	Success   *bool   `json:"Success,omitempty" xml:"Success,omitempty"`
+	// Indicates whether the Prometheus instance was removed.
+	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
 }
 
 func (s UninstallManagedPrometheusResponseBody) String() string {
@@ -32450,13 +32680,13 @@ func (s *UninstallPromClusterRequest) SetRegionId(v string) *UninstallPromCluste
 }
 
 type UninstallPromClusterResponseBody struct {
-	// The status code returned. The status code 200 indicates that the request was successful.
+	// The status code. The status code 200 indicates that the request was successful.
 	Code *int32 `json:"Code,omitempty" xml:"Code,omitempty"`
 	// Indicates whether the request was successful.
 	Data *string `json:"Data,omitempty" xml:"Data,omitempty"`
-	// The message returned.
+	// The returned message.
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
-	// The request ID. You can use the ID to query logs and troubleshoot issues.
+	// The request ID. You can use the ID to find logs and troubleshoot issues.
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -33710,12 +33940,11 @@ type UpdatePrometheusGlobalViewRequest struct {
 	ClusterId    *string `json:"ClusterId,omitempty" xml:"ClusterId,omitempty"`
 	GroupName    *string `json:"GroupName,omitempty" xml:"GroupName,omitempty"`
 	MostRegionId *string `json:"MostRegionId,omitempty" xml:"MostRegionId,omitempty"`
-	ParamJson    *string `json:"ParamJson,omitempty" xml:"ParamJson,omitempty"`
-	// The region ID.
+	// The ID of the region in which the Prometheus instance resides.
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 	// The ID of the resource group to which the Prometheus instance belongs.
 	ResourceGroupId *string `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
-	// The data sources of the global aggregation instance.
+	// The data sources of the Prometheus instance for GlobalView.
 	SubClustersJson *string `json:"SubClustersJson,omitempty" xml:"SubClustersJson,omitempty"`
 }
 
@@ -33747,11 +33976,6 @@ func (s *UpdatePrometheusGlobalViewRequest) SetMostRegionId(v string) *UpdatePro
 	return s
 }
 
-func (s *UpdatePrometheusGlobalViewRequest) SetParamJson(v string) *UpdatePrometheusGlobalViewRequest {
-	s.ParamJson = &v
-	return s
-}
-
 func (s *UpdatePrometheusGlobalViewRequest) SetRegionId(v string) *UpdatePrometheusGlobalViewRequest {
 	s.RegionId = &v
 	return s
@@ -33768,13 +33992,13 @@ func (s *UpdatePrometheusGlobalViewRequest) SetSubClustersJson(v string) *Update
 }
 
 type UpdatePrometheusGlobalViewResponseBody struct {
-	// The status code. The status code 200 indicates that the request was successful.
+	// The response code. The status code 200 indicates that the request was successful.
 	Code *int32 `json:"Code,omitempty" xml:"Code,omitempty"`
 	// The returned struct.
 	Data *UpdatePrometheusGlobalViewResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
-	// The error message returned if the Prometheus agent failed to be installed.
+	// The error message that is returned if the request failed.
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
-	// The request ID. You can use the ID to query logs and troubleshoot issues.
+	// The ID of the request. You can use the ID to query logs and troubleshoot issues.
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -33807,7 +34031,7 @@ func (s *UpdatePrometheusGlobalViewResponseBody) SetRequestId(v string) *UpdateP
 }
 
 type UpdatePrometheusGlobalViewResponseBodyData struct {
-	// The Prometheus instances or data sources that failed to be updated.
+	// The data sources that failed to be updated.
 	FailedInstances []*UpdatePrometheusGlobalViewResponseBodyDataFailedInstances `json:"FailedInstances,omitempty" xml:"FailedInstances,omitempty" type:"Repeated"`
 	// Indicates whether the request was successful. Valid values:
 	//
@@ -33839,11 +34063,7 @@ type UpdatePrometheusGlobalViewResponseBodyDataFailedInstances struct {
 	ClusterId *string `json:"ClusterId,omitempty" xml:"ClusterId,omitempty"`
 	// The name of the data source.
 	SourceName *string `json:"SourceName,omitempty" xml:"SourceName,omitempty"`
-	// The type of the data source. Valid values:
-	//
-	// *   AlibabaPrometheus
-	// *   MetricStore
-	// *   CustomPrometheus
+	// The type of the data source. AlibabaPrometheus MetricStore CustomPrometheus
 	SourceType *string `json:"SourceType,omitempty" xml:"SourceType,omitempty"`
 	// The user ID.
 	UserId *string `json:"UserId,omitempty" xml:"UserId,omitempty"`
@@ -33907,12 +34127,15 @@ func (s *UpdatePrometheusGlobalViewResponse) SetBody(v *UpdatePrometheusGlobalVi
 }
 
 type UpdatePrometheusIntegrationRequest struct {
-	// arms-hz-central
-	ClusterId       *string `json:"ClusterId,omitempty" xml:"ClusterId,omitempty"`
-	InstanceId      *int64  `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	// The ID of the Prometheus instance. Only a Prometheus instance for Container Service or a Prometheus instance for ECS is supported.
+	ClusterId *string `json:"ClusterId,omitempty" xml:"ClusterId,omitempty"`
+	// The exporter ID.
+	InstanceId *int64 `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	// The type of the integration.
 	IntegrationType *string `json:"IntegrationType,omitempty" xml:"IntegrationType,omitempty"`
-	Param           *string `json:"Param,omitempty" xml:"Param,omitempty"`
-	// success=false
+	// The configurations of the exporter. The value is a JSON string.
+	Param *string `json:"Param,omitempty" xml:"Param,omitempty"`
+	// The region ID.
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 }
 
@@ -33950,10 +34173,14 @@ func (s *UpdatePrometheusIntegrationRequest) SetRegionId(v string) *UpdatePromet
 }
 
 type UpdatePrometheusIntegrationResponseBody struct {
-	Code      *int32                                       `json:"Code,omitempty" xml:"Code,omitempty"`
-	Data      *UpdatePrometheusIntegrationResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
-	Message   *string                                      `json:"Message,omitempty" xml:"Message,omitempty"`
-	RequestId *string                                      `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The status code or error code.
+	Code *int32 `json:"Code,omitempty" xml:"Code,omitempty"`
+	// The struct returned.
+	Data *UpdatePrometheusIntegrationResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
+	// The message returned.
+	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// Id of the request
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
 func (s UpdatePrometheusIntegrationResponseBody) String() string {
@@ -33985,7 +34212,9 @@ func (s *UpdatePrometheusIntegrationResponseBody) SetRequestId(v string) *Update
 }
 
 type UpdatePrometheusIntegrationResponseBodyData struct {
-	InstanceId   *int64  `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	// The exporter ID.
+	InstanceId *int64 `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	// The exporter name.
 	InstanceName *string `json:"InstanceName,omitempty" xml:"InstanceName,omitempty"`
 }
 
@@ -34269,7 +34498,7 @@ type UpdatePrometheusRemoteWriteRequest struct {
 	ClusterId *string `json:"ClusterId,omitempty" xml:"ClusterId,omitempty"`
 	// The region ID.
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	// The name of the remote write configuration.
+	// The name of the remote write configuration item.
 	RemoteWriteName *string `json:"RemoteWriteName,omitempty" xml:"RemoteWriteName,omitempty"`
 	// The remote write configuration. Specify the value in the YAML format.
 	RemoteWriteYaml *string `json:"RemoteWriteYaml,omitempty" xml:"RemoteWriteYaml,omitempty"`
@@ -34304,18 +34533,18 @@ func (s *UpdatePrometheusRemoteWriteRequest) SetRemoteWriteYaml(v string) *Updat
 }
 
 type UpdatePrometheusRemoteWriteResponseBody struct {
-	// The status code returned. The status code 200 indicates that the request was successful.
+	// The status code. A value of 200 indicates that the request is successful.
 	Code *int32 `json:"Code,omitempty" xml:"Code,omitempty"`
-	// The name of the remote write configuration item or the exception information.
+	// The name of the remote write configuration that was modified, or the exception information.
 	Data *string `json:"Data,omitempty" xml:"Data,omitempty"`
 	// The message returned.
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
 	// Id of the request
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// Indicates whether the call was successful. Valid values:
+	// Indicates whether the request is successful. Valid values:
 	//
-	// *   `true`: The call was successful.
-	// *   `false`: The call failed.
+	// *   `true`
+	// *   `false`
 	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
 }
 
@@ -37166,6 +37395,10 @@ func (client *Client) CreateOrUpdateNotificationPolicyWithOptions(request *Creat
 		return _result, _err
 	}
 	body := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.DirectedMode)) {
+		body["DirectedMode"] = request.DirectedMode
+	}
+
 	if !tea.BoolValue(util.IsUnset(request.EscalationPolicyId)) {
 		body["EscalationPolicyId"] = request.EscalationPolicyId
 	}
@@ -37488,10 +37721,6 @@ func (client *Client) CreatePrometheusInstanceWithOptions(request *CreatePrometh
 
 	if !tea.BoolValue(util.IsUnset(request.GrafanaInstanceId)) {
 		query["GrafanaInstanceId"] = request.GrafanaInstanceId
-	}
-
-	if !tea.BoolValue(util.IsUnset(request.ParamJson)) {
-		query["ParamJson"] = request.ParamJson
 	}
 
 	if !tea.BoolValue(util.IsUnset(request.RegionId)) {
@@ -40385,7 +40614,7 @@ func (client *Client) GetOnCallSchedulesDetail(request *GetOnCallSchedulesDetail
 }
 
 /**
- * The ID of the request.
+ * None.
  *
  * @param request GetPrometheusApiTokenRequest
  * @param runtime runtime options for this request RuntimeOptions
@@ -40425,7 +40654,7 @@ func (client *Client) GetPrometheusApiTokenWithOptions(request *GetPrometheusApi
 }
 
 /**
- * The ID of the request.
+ * None.
  *
  * @param request GetPrometheusApiTokenRequest
  * @return GetPrometheusApiTokenResponse
@@ -41586,7 +41815,7 @@ func (client *Client) InstallCmsExporter(request *InstallCmsExporterRequest) (_r
 }
 
 /**
- * $.parameters[5].schema.example
+ * If you call the operation to monitor an ASK cluster or an ECS instance, a Prometheus agent is installed in the ASK cluster or ECS instance. Make sure that the ASK cluster or ECS instance has no Prometheus agent installed in advance.
  *
  * @param request InstallManagedPrometheusRequest
  * @param runtime runtime options for this request RuntimeOptions
@@ -41662,7 +41891,7 @@ func (client *Client) InstallManagedPrometheusWithOptions(request *InstallManage
 }
 
 /**
- * $.parameters[5].schema.example
+ * If you call the operation to monitor an ASK cluster or an ECS instance, a Prometheus agent is installed in the ASK cluster or ECS instance. Make sure that the ASK cluster or ECS instance has no Prometheus agent installed in advance.
  *
  * @param request InstallManagedPrometheusRequest
  * @return InstallManagedPrometheusResponse
@@ -41826,6 +42055,10 @@ func (client *Client) ListAlertsWithOptions(request *ListAlertsRequest, runtime 
 
 	if !tea.BoolValue(util.IsUnset(request.Page)) {
 		query["Page"] = request.Page
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.RegionId)) {
+		query["RegionId"] = request.RegionId
 	}
 
 	if !tea.BoolValue(util.IsUnset(request.Severity)) {
@@ -42381,6 +42614,10 @@ func (client *Client) ListNotificationPoliciesWithOptions(request *ListNotificat
 		return _result, _err
 	}
 	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.DirectedMode)) {
+		query["DirectedMode"] = request.DirectedMode
+	}
+
 	if !tea.BoolValue(util.IsUnset(request.Ids)) {
 		query["Ids"] = request.Ids
 	}
@@ -43338,6 +43575,17 @@ func (client *Client) OpenArmsDefaultSLR(request *OpenArmsDefaultSLRRequest) (_r
 	return _result, _err
 }
 
+/**
+ * The **OpenArmsServiceSecondVersion** operation supports the following sub-service editions:
+ * *   Application Monitoring: Basic Edition
+ * *   Browser Monitoring: Basic Edition
+ * *   Synthetic Monitoring: Pro Edition (pay-as-you-go)
+ * *   Prometheus Service: Pro Edition
+ *
+ * @param request OpenArmsServiceSecondVersionRequest
+ * @param runtime runtime options for this request RuntimeOptions
+ * @return OpenArmsServiceSecondVersionResponse
+ */
 func (client *Client) OpenArmsServiceSecondVersionWithOptions(request *OpenArmsServiceSecondVersionRequest, runtime *util.RuntimeOptions) (_result *OpenArmsServiceSecondVersionResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -43375,6 +43623,16 @@ func (client *Client) OpenArmsServiceSecondVersionWithOptions(request *OpenArmsS
 	return _result, _err
 }
 
+/**
+ * The **OpenArmsServiceSecondVersion** operation supports the following sub-service editions:
+ * *   Application Monitoring: Basic Edition
+ * *   Browser Monitoring: Basic Edition
+ * *   Synthetic Monitoring: Pro Edition (pay-as-you-go)
+ * *   Prometheus Service: Pro Edition
+ *
+ * @param request OpenArmsServiceSecondVersionRequest
+ * @return OpenArmsServiceSecondVersionResponse
+ */
 func (client *Client) OpenArmsServiceSecondVersion(request *OpenArmsServiceSecondVersionRequest) (_result *OpenArmsServiceSecondVersionResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &OpenArmsServiceSecondVersionResponse{}
@@ -45147,7 +45405,7 @@ func (client *Client) TagResources(request *TagResourcesRequest) (_result *TagRe
 }
 
 /**
- * The status code. The status code 200 indicates that the request was successful. If another status code is returned, the request failed.
+ * Make sure that the ASK cluster or ECS instance is monitored in Managed Service for Prometheus.
  *
  * @param request UninstallManagedPrometheusRequest
  * @param runtime runtime options for this request RuntimeOptions
@@ -45203,7 +45461,7 @@ func (client *Client) UninstallManagedPrometheusWithOptions(request *UninstallMa
 }
 
 /**
- * The status code. The status code 200 indicates that the request was successful. If another status code is returned, the request failed.
+ * Make sure that the ASK cluster or ECS instance is monitored in Managed Service for Prometheus.
  *
  * @param request UninstallManagedPrometheusRequest
  * @return UninstallManagedPrometheusResponse
@@ -45780,10 +46038,6 @@ func (client *Client) UpdatePrometheusGlobalViewWithOptions(request *UpdateProme
 
 	if !tea.BoolValue(util.IsUnset(request.MostRegionId)) {
 		query["MostRegionId"] = request.MostRegionId
-	}
-
-	if !tea.BoolValue(util.IsUnset(request.ParamJson)) {
-		query["ParamJson"] = request.ParamJson
 	}
 
 	if !tea.BoolValue(util.IsUnset(request.RegionId)) {
