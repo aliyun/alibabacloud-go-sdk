@@ -3423,6 +3423,7 @@ func (s *DescribeCdnDeliverListResponse) SetBody(v *DescribeCdnDeliverListRespon
 }
 
 type DescribeCdnDomainByCertificateRequest struct {
+	Exact *bool `json:"Exact,omitempty" xml:"Exact,omitempty"`
 	// The public key of the SSL certificate. You must encode the public key in Base64 before you invoke the encodeURIComponent function to encode a URI component.
 	//
 	// A public key in the Privacy Enhanced Mail (PEM) format is supported.
@@ -3440,6 +3441,11 @@ func (s DescribeCdnDomainByCertificateRequest) String() string {
 
 func (s DescribeCdnDomainByCertificateRequest) GoString() string {
 	return s.String()
+}
+
+func (s *DescribeCdnDomainByCertificateRequest) SetExact(v bool) *DescribeCdnDomainByCertificateRequest {
+	s.Exact = &v
+	return s
 }
 
 func (s *DescribeCdnDomainByCertificateRequest) SetSSLPub(v string) *DescribeCdnDomainByCertificateRequest {
@@ -3893,8 +3899,7 @@ type DescribeCdnDomainDetailResponseBodyGetDomainDetailModel struct {
 	// *   **check_failed**
 	// *   **stopping**
 	// *   **deleting**
-	DomainStatus       *string `json:"DomainStatus,omitempty" xml:"DomainStatus,omitempty"`
-	GlobalResourcePlan *string `json:"GlobalResourcePlan,omitempty" xml:"GlobalResourcePlan,omitempty"`
+	DomainStatus *string `json:"DomainStatus,omitempty" xml:"DomainStatus,omitempty"`
 	// The time when the domain name was created.
 	GmtCreated *string `json:"GmtCreated,omitempty" xml:"GmtCreated,omitempty"`
 	// The time when the domain name was last modified.
@@ -3944,11 +3949,6 @@ func (s *DescribeCdnDomainDetailResponseBodyGetDomainDetailModel) SetDomainName(
 
 func (s *DescribeCdnDomainDetailResponseBodyGetDomainDetailModel) SetDomainStatus(v string) *DescribeCdnDomainDetailResponseBodyGetDomainDetailModel {
 	s.DomainStatus = &v
-	return s
-}
-
-func (s *DescribeCdnDomainDetailResponseBodyGetDomainDetailModel) SetGlobalResourcePlan(v string) *DescribeCdnDomainDetailResponseBodyGetDomainDetailModel {
-	s.GlobalResourcePlan = &v
 	return s
 }
 
@@ -6886,8 +6886,10 @@ type DescribeCdnUserQuotaResponseBody struct {
 	// The remaining number of URLs and directories that can be blocked.
 	BlockRemain *int32 `json:"BlockRemain,omitempty" xml:"BlockRemain,omitempty"`
 	// The maximum number of accelerated domain names.
-	DomainQuota        *int32 `json:"DomainQuota,omitempty" xml:"DomainQuota,omitempty"`
-	IgnoreParamsQuota  *int32 `json:"IgnoreParamsQuota,omitempty" xml:"IgnoreParamsQuota,omitempty"`
+	DomainQuota *int32 `json:"DomainQuota,omitempty" xml:"DomainQuota,omitempty"`
+	// The maximum number of ignore params that can be refreshed.
+	IgnoreParamsQuota *int32 `json:"IgnoreParamsQuota,omitempty" xml:"IgnoreParamsQuota,omitempty"`
+	// The remaining number of ignore params that can be refreshed.
 	IgnoreParamsRemain *int32 `json:"IgnoreParamsRemain,omitempty" xml:"IgnoreParamsRemain,omitempty"`
 	// The maximum number of URLs that can be prefetched.
 	PreloadQuota *int32 `json:"PreloadQuota,omitempty" xml:"PreloadQuota,omitempty"`
@@ -17178,7 +17180,7 @@ func (s *DescribeFCTriggerResponse) SetBody(v *DescribeFCTriggerResponseBody) *D
 }
 
 type DescribeIpInfoRequest struct {
-	// The IP address that you want to query. You can specify only one IP address in each request.
+	// The IP address. You can specify only one IP address.
 	IP *string `json:"IP,omitempty" xml:"IP,omitempty"`
 }
 
@@ -17197,17 +17199,16 @@ func (s *DescribeIpInfoRequest) SetIP(v string) *DescribeIpInfoRequest {
 
 type DescribeIpInfoResponseBody struct {
 	// Indicates whether the IP address belongs to an Alibaba Cloud CDN POP.
-	//
-	// *   **True**
-	// *   **False**
+	// *   **True**:Yes.
+	// *   **False**:No.
 	CdnIp *string `json:"CdnIp,omitempty" xml:"CdnIp,omitempty"`
-	// The Chinese name of the ISP.
+	// The name of the ISP in Chinese.
 	ISP *string `json:"ISP,omitempty" xml:"ISP,omitempty"`
-	// The English name of the Internet service provider (ISP).
+	// The name of the ISP.
 	IspEname *string `json:"IspEname,omitempty" xml:"IspEname,omitempty"`
-	// The Chinese name of the region.
+	// The name of the region in Chinese.
 	Region *string `json:"Region,omitempty" xml:"Region,omitempty"`
-	// The English name of the region.
+	// The name of the region.
 	RegionEname *string `json:"RegionEname,omitempty" xml:"RegionEname,omitempty"`
 	// The ID of the request.
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
@@ -19456,8 +19457,7 @@ type DescribeUserDomainsResponseBodyDomainsPageData struct {
 	// *   **check_failed**
 	// *   **stopping**
 	// *   **deleting**
-	DomainStatus       *string `json:"DomainStatus,omitempty" xml:"DomainStatus,omitempty"`
-	GlobalResourcePlan *string `json:"GlobalResourcePlan,omitempty" xml:"GlobalResourcePlan,omitempty"`
+	DomainStatus *string `json:"DomainStatus,omitempty" xml:"DomainStatus,omitempty"`
 	// The time when the accelerated domain name was added.
 	GmtCreated *string `json:"GmtCreated,omitempty" xml:"GmtCreated,omitempty"`
 	// The time when the accelerated domain name was modified.
@@ -19515,11 +19515,6 @@ func (s *DescribeUserDomainsResponseBodyDomainsPageData) SetDomainName(v string)
 
 func (s *DescribeUserDomainsResponseBodyDomainsPageData) SetDomainStatus(v string) *DescribeUserDomainsResponseBodyDomainsPageData {
 	s.DomainStatus = &v
-	return s
-}
-
-func (s *DescribeUserDomainsResponseBodyDomainsPageData) SetGlobalResourcePlan(v string) *DescribeUserDomainsResponseBodyDomainsPageData {
-	s.GlobalResourcePlan = &v
 	return s
 }
 
@@ -25722,6 +25717,10 @@ func (client *Client) DescribeCdnDomainByCertificateWithOptions(request *Describ
 		return _result, _err
 	}
 	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.Exact)) {
+		query["Exact"] = request.Exact
+	}
+
 	if !tea.BoolValue(util.IsUnset(request.SSLPub)) {
 		query["SSLPub"] = request.SSLPub
 	}
@@ -30968,13 +30967,6 @@ func (client *Client) DescribeFCTrigger(request *DescribeFCTriggerRequest) (_res
 	return _result, _err
 }
 
-/**
- * > You can call this operation up to 50 times per second per account.
- *
- * @param request DescribeIpInfoRequest
- * @param runtime runtime options for this request RuntimeOptions
- * @return DescribeIpInfoResponse
- */
 func (client *Client) DescribeIpInfoWithOptions(request *DescribeIpInfoRequest, runtime *util.RuntimeOptions) (_result *DescribeIpInfoResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -31008,12 +31000,6 @@ func (client *Client) DescribeIpInfoWithOptions(request *DescribeIpInfoRequest, 
 	return _result, _err
 }
 
-/**
- * > You can call this operation up to 50 times per second per account.
- *
- * @param request DescribeIpInfoRequest
- * @return DescribeIpInfoResponse
- */
 func (client *Client) DescribeIpInfo(request *DescribeIpInfoRequest) (_result *DescribeIpInfoResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &DescribeIpInfoResponse{}
