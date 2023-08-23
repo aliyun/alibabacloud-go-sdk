@@ -9538,7 +9538,8 @@ type ListPatchBaselinesRequest struct {
 	// *   Debian
 	// *   RedhatEnterpriseLinux
 	// *   Anolis
-	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	RegionId        *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	ResourceGroupld *string `json:"ResourceGroupld,omitempty" xml:"ResourceGroupld,omitempty"`
 	// The token that is used to retrieve the next page of results.
 	ShareType *string                          `json:"ShareType,omitempty" xml:"ShareType,omitempty"`
 	Sources   []*string                        `json:"Sources,omitempty" xml:"Sources,omitempty" type:"Repeated"`
@@ -9585,6 +9586,11 @@ func (s *ListPatchBaselinesRequest) SetOperationSystem(v string) *ListPatchBasel
 
 func (s *ListPatchBaselinesRequest) SetRegionId(v string) *ListPatchBaselinesRequest {
 	s.RegionId = &v
+	return s
+}
+
+func (s *ListPatchBaselinesRequest) SetResourceGroupld(v string) *ListPatchBaselinesRequest {
+	s.ResourceGroupld = &v
 	return s
 }
 
@@ -9646,7 +9652,8 @@ type ListPatchBaselinesShrinkRequest struct {
 	// *   Debian
 	// *   RedhatEnterpriseLinux
 	// *   Anolis
-	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	RegionId        *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	ResourceGroupld *string `json:"ResourceGroupld,omitempty" xml:"ResourceGroupld,omitempty"`
 	// The token that is used to retrieve the next page of results.
 	ShareType     *string `json:"ShareType,omitempty" xml:"ShareType,omitempty"`
 	SourcesShrink *string `json:"Sources,omitempty" xml:"Sources,omitempty"`
@@ -9693,6 +9700,11 @@ func (s *ListPatchBaselinesShrinkRequest) SetOperationSystem(v string) *ListPatc
 
 func (s *ListPatchBaselinesShrinkRequest) SetRegionId(v string) *ListPatchBaselinesShrinkRequest {
 	s.RegionId = &v
+	return s
+}
+
+func (s *ListPatchBaselinesShrinkRequest) SetResourceGroupld(v string) *ListPatchBaselinesShrinkRequest {
+	s.ResourceGroupld = &v
 	return s
 }
 
@@ -9767,6 +9779,7 @@ type ListPatchBaselinesResponseBodyPatchBaselines struct {
 	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
 	// The description of the patch baseline.
 	OperationSystem *string `json:"OperationSystem,omitempty" xml:"OperationSystem,omitempty"`
+	ResourceGroupld *string `json:"ResourceGroupld,omitempty" xml:"ResourceGroupld,omitempty"`
 	// Queries the details of patch baselines.
 	ShareType *string                                             `json:"ShareType,omitempty" xml:"ShareType,omitempty"`
 	Sources   []*string                                           `json:"Sources,omitempty" xml:"Sources,omitempty" type:"Repeated"`
@@ -9827,6 +9840,11 @@ func (s *ListPatchBaselinesResponseBodyPatchBaselines) SetName(v string) *ListPa
 
 func (s *ListPatchBaselinesResponseBodyPatchBaselines) SetOperationSystem(v string) *ListPatchBaselinesResponseBodyPatchBaselines {
 	s.OperationSystem = &v
+	return s
+}
+
+func (s *ListPatchBaselinesResponseBodyPatchBaselines) SetResourceGroupld(v string) *ListPatchBaselinesResponseBodyPatchBaselines {
+	s.ResourceGroupld = &v
 	return s
 }
 
@@ -19477,6 +19495,10 @@ func (client *Client) ListPatchBaselinesWithOptions(tmpReq *ListPatchBaselinesRe
 
 	if !tea.BoolValue(util.IsUnset(request.RegionId)) {
 		query["RegionId"] = request.RegionId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ResourceGroupld)) {
+		query["ResourceGroupld"] = request.ResourceGroupld
 	}
 
 	if !tea.BoolValue(util.IsUnset(request.ShareType)) {
