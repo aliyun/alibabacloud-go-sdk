@@ -2044,69 +2044,6 @@ func (s *DeleteFolderResponse) SetBody(v *DeleteFolderResponseBody) *DeleteFolde
 	return s
 }
 
-type DeleteInvalidCloudAccountRecordRequest struct {
-	RecordId *string `json:"RecordId,omitempty" xml:"RecordId,omitempty"`
-}
-
-func (s DeleteInvalidCloudAccountRecordRequest) String() string {
-	return tea.Prettify(s)
-}
-
-func (s DeleteInvalidCloudAccountRecordRequest) GoString() string {
-	return s.String()
-}
-
-func (s *DeleteInvalidCloudAccountRecordRequest) SetRecordId(v string) *DeleteInvalidCloudAccountRecordRequest {
-	s.RecordId = &v
-	return s
-}
-
-type DeleteInvalidCloudAccountRecordResponseBody struct {
-	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-}
-
-func (s DeleteInvalidCloudAccountRecordResponseBody) String() string {
-	return tea.Prettify(s)
-}
-
-func (s DeleteInvalidCloudAccountRecordResponseBody) GoString() string {
-	return s.String()
-}
-
-func (s *DeleteInvalidCloudAccountRecordResponseBody) SetRequestId(v string) *DeleteInvalidCloudAccountRecordResponseBody {
-	s.RequestId = &v
-	return s
-}
-
-type DeleteInvalidCloudAccountRecordResponse struct {
-	Headers    map[string]*string                           `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                                       `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *DeleteInvalidCloudAccountRecordResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
-}
-
-func (s DeleteInvalidCloudAccountRecordResponse) String() string {
-	return tea.Prettify(s)
-}
-
-func (s DeleteInvalidCloudAccountRecordResponse) GoString() string {
-	return s.String()
-}
-
-func (s *DeleteInvalidCloudAccountRecordResponse) SetHeaders(v map[string]*string) *DeleteInvalidCloudAccountRecordResponse {
-	s.Headers = v
-	return s
-}
-
-func (s *DeleteInvalidCloudAccountRecordResponse) SetStatusCode(v int32) *DeleteInvalidCloudAccountRecordResponse {
-	s.StatusCode = &v
-	return s
-}
-
-func (s *DeleteInvalidCloudAccountRecordResponse) SetBody(v *DeleteInvalidCloudAccountRecordResponseBody) *DeleteInvalidCloudAccountRecordResponse {
-	s.Body = v
-	return s
-}
-
 type DeleteMessageContactRequest struct {
 	// The ID of the contact.
 	ContactId *string `json:"ContactId,omitempty" xml:"ContactId,omitempty"`
@@ -10354,50 +10291,6 @@ func (client *Client) DeleteFolder(request *DeleteFolderRequest) (_result *Delet
 	runtime := &util.RuntimeOptions{}
 	_result = &DeleteFolderResponse{}
 	_body, _err := client.DeleteFolderWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
-	return _result, _err
-}
-
-func (client *Client) DeleteInvalidCloudAccountRecordWithOptions(request *DeleteInvalidCloudAccountRecordRequest, runtime *util.RuntimeOptions) (_result *DeleteInvalidCloudAccountRecordResponse, _err error) {
-	_err = util.ValidateModel(request)
-	if _err != nil {
-		return _result, _err
-	}
-	query := map[string]interface{}{}
-	if !tea.BoolValue(util.IsUnset(request.RecordId)) {
-		query["RecordId"] = request.RecordId
-	}
-
-	req := &openapi.OpenApiRequest{
-		Query: openapiutil.Query(query),
-	}
-	params := &openapi.Params{
-		Action:      tea.String("DeleteInvalidCloudAccountRecord"),
-		Version:     tea.String("2022-04-19"),
-		Protocol:    tea.String("HTTPS"),
-		Pathname:    tea.String("/"),
-		Method:      tea.String("POST"),
-		AuthType:    tea.String("AK"),
-		Style:       tea.String("RPC"),
-		ReqBodyType: tea.String("formData"),
-		BodyType:    tea.String("json"),
-	}
-	_result = &DeleteInvalidCloudAccountRecordResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
-}
-
-func (client *Client) DeleteInvalidCloudAccountRecord(request *DeleteInvalidCloudAccountRecordRequest) (_result *DeleteInvalidCloudAccountRecordResponse, _err error) {
-	runtime := &util.RuntimeOptions{}
-	_result = &DeleteInvalidCloudAccountRecordResponse{}
-	_body, _err := client.DeleteInvalidCloudAccountRecordWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}

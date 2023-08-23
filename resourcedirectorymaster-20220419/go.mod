@@ -1,4 +1,4 @@
-module github.com/alibabacloud-go/resourcedirectorymaster-20220419
+module github.com/alibabacloud-go/resourcedirectorymaster-20220419/v2
 
 go 1.15
 
