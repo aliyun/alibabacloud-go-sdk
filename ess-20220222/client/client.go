@@ -3213,7 +3213,8 @@ type CreateScalingConfigurationRequest struct {
 	// The ID of the dedicated host on which you want to create an ECS instance. You cannot create preemptible instances on dedicated hosts. If you specify DedicatedHostId, SpotStrategy and SpotPriceLimit are ignored.
 	//
 	// You can call the DescribeDedicatedHosts operation to query dedicated host IDs.
-	DedicatedHostId *string `json:"DedicatedHostId,omitempty" xml:"DedicatedHostId,omitempty"`
+	DedicatedHostId    *string `json:"DedicatedHostId,omitempty" xml:"DedicatedHostId,omitempty"`
+	DeletionProtection *bool   `json:"DeletionProtection,omitempty" xml:"DeletionProtection,omitempty"`
 	// The ID of the deployment set of the ECS instances that are created by using the scaling configuration.
 	DeploymentSetId *string `json:"DeploymentSetId,omitempty" xml:"DeploymentSetId,omitempty"`
 	// The hostname of the ECS instance. The hostname cannot start or end with a period (.) or a hyphen (-). The hostname cannot contain consecutive periods (.) or hyphens (-). Naming conventions for different types of instances:
@@ -3419,6 +3420,11 @@ func (s *CreateScalingConfigurationRequest) SetDataDisks(v []*CreateScalingConfi
 
 func (s *CreateScalingConfigurationRequest) SetDedicatedHostId(v string) *CreateScalingConfigurationRequest {
 	s.DedicatedHostId = &v
+	return s
+}
+
+func (s *CreateScalingConfigurationRequest) SetDeletionProtection(v bool) *CreateScalingConfigurationRequest {
+	s.DeletionProtection = &v
 	return s
 }
 
@@ -4167,7 +4173,8 @@ type CreateScalingConfigurationShrinkRequest struct {
 	// The ID of the dedicated host on which you want to create an ECS instance. You cannot create preemptible instances on dedicated hosts. If you specify DedicatedHostId, SpotStrategy and SpotPriceLimit are ignored.
 	//
 	// You can call the DescribeDedicatedHosts operation to query dedicated host IDs.
-	DedicatedHostId *string `json:"DedicatedHostId,omitempty" xml:"DedicatedHostId,omitempty"`
+	DedicatedHostId    *string `json:"DedicatedHostId,omitempty" xml:"DedicatedHostId,omitempty"`
+	DeletionProtection *bool   `json:"DeletionProtection,omitempty" xml:"DeletionProtection,omitempty"`
 	// The ID of the deployment set of the ECS instances that are created by using the scaling configuration.
 	DeploymentSetId *string `json:"DeploymentSetId,omitempty" xml:"DeploymentSetId,omitempty"`
 	// The hostname of the ECS instance. The hostname cannot start or end with a period (.) or a hyphen (-). The hostname cannot contain consecutive periods (.) or hyphens (-). Naming conventions for different types of instances:
@@ -4373,6 +4380,11 @@ func (s *CreateScalingConfigurationShrinkRequest) SetDataDisks(v []*CreateScalin
 
 func (s *CreateScalingConfigurationShrinkRequest) SetDedicatedHostId(v string) *CreateScalingConfigurationShrinkRequest {
 	s.DedicatedHostId = &v
+	return s
+}
+
+func (s *CreateScalingConfigurationShrinkRequest) SetDeletionProtection(v bool) *CreateScalingConfigurationShrinkRequest {
+	s.DeletionProtection = &v
 	return s
 }
 
@@ -9754,7 +9766,12 @@ func (s *DescribeNotificationTypesResponse) SetBody(v *DescribeNotificationTypes
 }
 
 type DescribeRegionsRequest struct {
-	// The ID of the request.
+	// The language used for the returned value. Valid values:
+	//
+	// *   **zh-CN**: Chinese.
+	// *   **en-US**: English.
+	//
+	// >  Default value: **zh-CN**.
 	AcceptLanguage       *string `json:"AcceptLanguage,omitempty" xml:"AcceptLanguage,omitempty"`
 	OwnerId              *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
 	ResourceOwnerAccount *string `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
@@ -9792,7 +9809,7 @@ func (s *DescribeRegionsRequest) SetResourceOwnerId(v int64) *DescribeRegionsReq
 type DescribeRegionsResponseBody struct {
 	// Details of the regions.
 	Regions []*DescribeRegionsResponseBodyRegions `json:"Regions,omitempty" xml:"Regions,omitempty" type:"Repeated"`
-	// Details of the regions.
+	// The ID of the request.
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -9815,15 +9832,21 @@ func (s *DescribeRegionsResponseBody) SetRequestId(v string) *DescribeRegionsRes
 }
 
 type DescribeRegionsResponseBodyRegions struct {
-	// The endpoint of the region.
+	// Indicates whether the region supports scaling groups of the classic network type. Valid values:
+	//
+	// *   true
+	// *   false
 	ClassicUnavailable *bool `json:"ClassicUnavailable,omitempty" xml:"ClassicUnavailable,omitempty"`
-	// China (Beijing)
-	LocalName *string `json:"LocalName,omitempty" xml:"LocalName,omitempty"`
 	// The name of the region.
+	LocalName *string `json:"LocalName,omitempty" xml:"LocalName,omitempty"`
+	// The endpoint of the region.
 	RegionEndpoint *string `json:"RegionEndpoint,omitempty" xml:"RegionEndpoint,omitempty"`
-	// auditing
-	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 	// The ID of the region.
+	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	// Indicates whether the region supports scaling groups of the virtual private cloud (VPC) type. Valid values:
+	//
+	// *   true: The region does not support scaling groups of the VPC type.
+	// *   false: The region supports scaling groups of the VPC type.
 	VpcUnavailable *bool `json:"VpcUnavailable,omitempty" xml:"VpcUnavailable,omitempty"`
 }
 
@@ -10491,7 +10514,8 @@ type DescribeScalingConfigurationsResponseBodyScalingConfigurations struct {
 	// The ID of the dedicated host on which the ECS instance is created. Preemptible instances cannot be created on dedicated hosts. If you specify the DedicatedHostId parameter, the SpotStrategy and SpotPriceLimit parameters are ignored.
 	//
 	// You can call the DescribeDedicatedHosts operation to query dedicated host IDs.
-	DedicatedHostId *string `json:"DedicatedHostId,omitempty" xml:"DedicatedHostId,omitempty"`
+	DedicatedHostId    *string `json:"DedicatedHostId,omitempty" xml:"DedicatedHostId,omitempty"`
+	DeletionProtection *bool   `json:"DeletionProtection,omitempty" xml:"DeletionProtection,omitempty"`
 	// The ID of the deployment set to which the Elastic Compute Service (ECS) instance belongs.
 	DeploymentSetId *string `json:"DeploymentSetId,omitempty" xml:"DeploymentSetId,omitempty"`
 	// The hostname of the ECS instance.
@@ -10703,6 +10727,11 @@ func (s *DescribeScalingConfigurationsResponseBodyScalingConfigurations) SetData
 
 func (s *DescribeScalingConfigurationsResponseBodyScalingConfigurations) SetDedicatedHostId(v string) *DescribeScalingConfigurationsResponseBodyScalingConfigurations {
 	s.DedicatedHostId = &v
+	return s
+}
+
+func (s *DescribeScalingConfigurationsResponseBodyScalingConfigurations) SetDeletionProtection(v bool) *DescribeScalingConfigurationsResponseBodyScalingConfigurations {
+	s.DeletionProtection = &v
 	return s
 }
 
@@ -14516,17 +14545,24 @@ func (s *ExecuteScalingRuleResponse) SetBody(v *ExecuteScalingRuleResponseBody) 
 }
 
 type ExitStandbyRequest struct {
-	// Moves an Elastic Compute Service (ECS) instance out of the Standby state.
+	// Specifies whether to put the ECS instance into the Standby state in an asynchronous manner. Valid values:
+	//
+	// *   true
+	// *   false
+	//
+	// Default value: false.
 	Async *bool `json:"Async,omitempty" xml:"Async,omitempty"`
-	// The ID of the scaling activity.
+	// The client token that is used to ensure the idempotence of the request. You can use the client to generate the value, but you must ensure that it is unique among different requests.
+	//
+	// The token can only contain ASCII characters and cannot exceed 64 characters in length. For more information, see [How to ensure idempotence](~~25965~~).
 	ClientToken *string `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
-	// The ID of the scaling group.
+	// The IDs of the ECS instances.
 	InstanceIds []*string `json:"InstanceIds,omitempty" xml:"InstanceIds,omitempty" type:"Repeated"`
 	OwnerId     *int64    `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
-	// ExitStandby
+	// The ID of the region.
 	RegionId             *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 	ResourceOwnerAccount *string `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
-	// The region ID of the scaling group.
+	// The ID of the scaling group.
 	ScalingGroupId *string `json:"ScalingGroupId,omitempty" xml:"ScalingGroupId,omitempty"`
 }
 
@@ -14574,8 +14610,9 @@ func (s *ExitStandbyRequest) SetScalingGroupId(v string) *ExitStandbyRequest {
 }
 
 type ExitStandbyResponseBody struct {
-	// 330440
-	RequestId         *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The ID of the request.
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The ID of the scaling activity.
 	ScalingActivityId *string `json:"ScalingActivityId,omitempty" xml:"ScalingActivityId,omitempty"`
 }
 
@@ -14913,13 +14950,18 @@ func (s *ListTagResourcesResponse) SetBody(v *ListTagResourcesResponseBody) *Lis
 }
 
 type ListTagValuesRequest struct {
-	Key                  *string `json:"Key,omitempty" xml:"Key,omitempty"`
-	NextToken            *string `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
-	OwnerId              *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
-	PageSize             *int32  `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	// The key of the messages that you want to query.
+	Key *string `json:"Key,omitempty" xml:"Key,omitempty"`
+	// The token that determines the start point of the query. The return value is the value of the NextToken response parameter that was returned last time the QueryInstanceByTag operation was called.
+	NextToken *string `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
+	OwnerId   *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
+	// The number of entries to return on each page. Default value: 10. Maximum value: 100.
+	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	// The region ID of the scaling group.
 	RegionId             *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 	ResourceOwnerAccount *string `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
-	ResourceType         *string `json:"ResourceType,omitempty" xml:"ResourceType,omitempty"`
+	// The type of the Auto Scaling resource. Only scaling groups are supported. Set the value to scalinggroup.
+	ResourceType *string `json:"ResourceType,omitempty" xml:"ResourceType,omitempty"`
 }
 
 func (s ListTagValuesRequest) String() string {
@@ -14966,10 +15008,14 @@ func (s *ListTagValuesRequest) SetResourceType(v string) *ListTagValuesRequest {
 }
 
 type ListTagValuesResponseBody struct {
-	NextToken *string   `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
-	PageSize  *int32    `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	RequestId *string   `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	Values    []*string `json:"Values,omitempty" xml:"Values,omitempty" type:"Repeated"`
+	// The token that is returned for the next query.
+	NextToken *string `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
+	// The number of entries returned per page.
+	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	// The ID of the request.
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The information of the tag values.
+	Values []*string `json:"Values,omitempty" xml:"Values,omitempty" type:"Repeated"`
 }
 
 func (s ListTagValuesResponseBody) String() string {
@@ -17392,7 +17438,8 @@ type ModifyScalingConfigurationRequest struct {
 	// The ID of the dedicated host on which you want to create ECS instances. You cannot create preemptible instances on dedicated hosts. If you specify DedicatedHostId, SpotStrategy and SpotPriceLimit are ignored.
 	//
 	// You can call the DescribeDedicatedHosts operation to query the most recent list of dedicated host IDs.
-	DedicatedHostId *string `json:"DedicatedHostId,omitempty" xml:"DedicatedHostId,omitempty"`
+	DedicatedHostId    *string `json:"DedicatedHostId,omitempty" xml:"DedicatedHostId,omitempty"`
+	DeletionProtection *bool   `json:"DeletionProtection,omitempty" xml:"DeletionProtection,omitempty"`
 	// The ID of the deployment set of the ECS instances that are created by using the scaling configuration.
 	DeploymentSetId *string `json:"DeploymentSetId,omitempty" xml:"DeploymentSetId,omitempty"`
 	// The hostname of the ECS instance. The hostname cannot start or end with a period (.) or a hyphen (-). The hostname cannot contain consecutive periods (.) or hyphens (-). Naming conventions for different types of instances:
@@ -17565,6 +17612,11 @@ func (s *ModifyScalingConfigurationRequest) SetDataDisks(v []*ModifyScalingConfi
 
 func (s *ModifyScalingConfigurationRequest) SetDedicatedHostId(v string) *ModifyScalingConfigurationRequest {
 	s.DedicatedHostId = &v
+	return s
+}
+
+func (s *ModifyScalingConfigurationRequest) SetDeletionProtection(v bool) *ModifyScalingConfigurationRequest {
+	s.DeletionProtection = &v
 	return s
 }
 
@@ -18282,7 +18334,8 @@ type ModifyScalingConfigurationShrinkRequest struct {
 	// The ID of the dedicated host on which you want to create ECS instances. You cannot create preemptible instances on dedicated hosts. If you specify DedicatedHostId, SpotStrategy and SpotPriceLimit are ignored.
 	//
 	// You can call the DescribeDedicatedHosts operation to query the most recent list of dedicated host IDs.
-	DedicatedHostId *string `json:"DedicatedHostId,omitempty" xml:"DedicatedHostId,omitempty"`
+	DedicatedHostId    *string `json:"DedicatedHostId,omitempty" xml:"DedicatedHostId,omitempty"`
+	DeletionProtection *bool   `json:"DeletionProtection,omitempty" xml:"DeletionProtection,omitempty"`
 	// The ID of the deployment set of the ECS instances that are created by using the scaling configuration.
 	DeploymentSetId *string `json:"DeploymentSetId,omitempty" xml:"DeploymentSetId,omitempty"`
 	// The hostname of the ECS instance. The hostname cannot start or end with a period (.) or a hyphen (-). The hostname cannot contain consecutive periods (.) or hyphens (-). Naming conventions for different types of instances:
@@ -18455,6 +18508,11 @@ func (s *ModifyScalingConfigurationShrinkRequest) SetDataDisks(v []*ModifyScalin
 
 func (s *ModifyScalingConfigurationShrinkRequest) SetDedicatedHostId(v string) *ModifyScalingConfigurationShrinkRequest {
 	s.DedicatedHostId = &v
+	return s
+}
+
+func (s *ModifyScalingConfigurationShrinkRequest) SetDeletionProtection(v bool) *ModifyScalingConfigurationShrinkRequest {
+	s.DeletionProtection = &v
 	return s
 }
 
@@ -20659,7 +20717,18 @@ func (s *SetGroupDeletionProtectionResponse) SetBody(v *SetGroupDeletionProtecti
 }
 
 type SetInstanceHealthRequest struct {
-	HealthStatus         *string `json:"HealthStatus,omitempty" xml:"HealthStatus,omitempty"`
+	// The health status of the ECS instance in the scaling group. If ECS instances do not run as expected, Auto Scaling considers the ECS instances unhealthy. Valid values:
+	//
+	// *   Healthy
+	// *   Unhealthy
+	//
+	// Auto Scaling automatically removes unhealthy ECS instances from the scaling group and then releases the automatically created instances among the unhealthy instances.
+	//
+	// Unhealthy ECS instances that are manually added to the scaling group are released based on the management mode of the instance lifecycles. If the lifecycles of the ECS instances are not managed by the scaling group, Auto Scaling removes the instances from the scaling group but does not release the instances. If the lifecycles of the ECS instances are managed by the scaling group, Auto Scaling removes the instances from the scaling group and releases the instances.
+	//
+	// >  Make sure that you have sufficient balance within your Alibaba Cloud account. If you have overdue payments within your Alibaba Cloud account, pay-as-you-go and preemptible instances are stopped or released. For information about how the states of ECS instances change when you have overdue payments within your Alibaba Cloud account, see [Overdue payments](~~170589~~).
+	HealthStatus *string `json:"HealthStatus,omitempty" xml:"HealthStatus,omitempty"`
+	// The ID of the instance.
 	InstanceId           *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
 	OwnerId              *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
 	ResourceOwnerAccount *string `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
@@ -20694,6 +20763,7 @@ func (s *SetInstanceHealthRequest) SetResourceOwnerAccount(v string) *SetInstanc
 }
 
 type SetInstanceHealthResponseBody struct {
+	// The ID of the request.
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -20740,11 +20810,17 @@ func (s *SetInstanceHealthResponse) SetBody(v *SetInstanceHealthResponseBody) *S
 }
 
 type SetInstancesProtectionRequest struct {
-	InstanceIds          []*string `json:"InstanceIds,omitempty" xml:"InstanceIds,omitempty" type:"Repeated"`
-	OwnerId              *int64    `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
-	ProtectedFromScaleIn *bool     `json:"ProtectedFromScaleIn,omitempty" xml:"ProtectedFromScaleIn,omitempty"`
-	ResourceOwnerAccount *string   `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
-	ScalingGroupId       *string   `json:"ScalingGroupId,omitempty" xml:"ScalingGroupId,omitempty"`
+	// The IDs of the ECS instances.
+	InstanceIds []*string `json:"InstanceIds,omitempty" xml:"InstanceIds,omitempty" type:"Repeated"`
+	OwnerId     *int64    `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
+	// Specifies whether to put ECS instances into the Protected state. Auto Scaling does not remove ECS instances in the Protected state from scaling groups during scale-in activities.
+	//
+	// *   true
+	// *   false
+	ProtectedFromScaleIn *bool   `json:"ProtectedFromScaleIn,omitempty" xml:"ProtectedFromScaleIn,omitempty"`
+	ResourceOwnerAccount *string `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
+	// The ID of the scaling group.
+	ScalingGroupId *string `json:"ScalingGroupId,omitempty" xml:"ScalingGroupId,omitempty"`
 }
 
 func (s SetInstancesProtectionRequest) String() string {
@@ -20781,6 +20857,7 @@ func (s *SetInstancesProtectionRequest) SetScalingGroupId(v string) *SetInstance
 }
 
 type SetInstancesProtectionResponseBody struct {
+	// The ID of the request.
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -22531,6 +22608,10 @@ func (client *Client) CreateScalingConfigurationWithOptions(tmpReq *CreateScalin
 
 	if !tea.BoolValue(util.IsUnset(request.DedicatedHostId)) {
 		query["DedicatedHostId"] = request.DedicatedHostId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.DeletionProtection)) {
+		query["DeletionProtection"] = request.DeletionProtection
 	}
 
 	if !tea.BoolValue(util.IsUnset(request.DeploymentSetId)) {
@@ -25812,13 +25893,6 @@ func (client *Client) ExecuteScalingRule(request *ExecuteScalingRuleRequest) (_r
 	return _result, _err
 }
 
-/**
- * The IDs of the ECS instances. The value of this parameter can be a JSON array that consists of up to 20 instance IDs. Separate multiple instance IDs with commas (,).
- *
- * @param request ExitStandbyRequest
- * @param runtime runtime options for this request RuntimeOptions
- * @return ExitStandbyResponse
- */
 func (client *Client) ExitStandbyWithOptions(request *ExitStandbyRequest, runtime *util.RuntimeOptions) (_result *ExitStandbyResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -25876,12 +25950,6 @@ func (client *Client) ExitStandbyWithOptions(request *ExitStandbyRequest, runtim
 	return _result, _err
 }
 
-/**
- * The IDs of the ECS instances. The value of this parameter can be a JSON array that consists of up to 20 instance IDs. Separate multiple instance IDs with commas (,).
- *
- * @param request ExitStandbyRequest
- * @return ExitStandbyResponse
- */
 func (client *Client) ExitStandby(request *ExitStandbyRequest) (_result *ExitStandbyResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &ExitStandbyResponse{}
@@ -26673,6 +26741,10 @@ func (client *Client) ModifyScalingConfigurationWithOptions(tmpReq *ModifyScalin
 
 	if !tea.BoolValue(util.IsUnset(request.DedicatedHostId)) {
 		query["DedicatedHostId"] = request.DedicatedHostId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.DeletionProtection)) {
+		query["DeletionProtection"] = request.DeletionProtection
 	}
 
 	if !tea.BoolValue(util.IsUnset(request.DeploymentSetId)) {
@@ -27700,6 +27772,13 @@ func (client *Client) SetGroupDeletionProtection(request *SetGroupDeletionProtec
 	return _result, _err
 }
 
+/**
+ * Configures the health check feature for Elastic Compute Service (ECS) instances.
+ *
+ * @param request SetInstanceHealthRequest
+ * @param runtime runtime options for this request RuntimeOptions
+ * @return SetInstanceHealthResponse
+ */
 func (client *Client) SetInstanceHealthWithOptions(request *SetInstanceHealthRequest, runtime *util.RuntimeOptions) (_result *SetInstanceHealthResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -27745,6 +27824,12 @@ func (client *Client) SetInstanceHealthWithOptions(request *SetInstanceHealthReq
 	return _result, _err
 }
 
+/**
+ * Configures the health check feature for Elastic Compute Service (ECS) instances.
+ *
+ * @param request SetInstanceHealthRequest
+ * @return SetInstanceHealthResponse
+ */
 func (client *Client) SetInstanceHealth(request *SetInstanceHealthRequest) (_result *SetInstanceHealthResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &SetInstanceHealthResponse{}
@@ -27756,6 +27841,13 @@ func (client *Client) SetInstanceHealth(request *SetInstanceHealthRequest) (_res
 	return _result, _err
 }
 
+/**
+ * Puts one or more Elastic Compute Service (ECS) instances into the Protected state.
+ *
+ * @param request SetInstancesProtectionRequest
+ * @param runtime runtime options for this request RuntimeOptions
+ * @return SetInstancesProtectionResponse
+ */
 func (client *Client) SetInstancesProtectionWithOptions(request *SetInstancesProtectionRequest, runtime *util.RuntimeOptions) (_result *SetInstancesProtectionResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -27805,6 +27897,12 @@ func (client *Client) SetInstancesProtectionWithOptions(request *SetInstancesPro
 	return _result, _err
 }
 
+/**
+ * Puts one or more Elastic Compute Service (ECS) instances into the Protected state.
+ *
+ * @param request SetInstancesProtectionRequest
+ * @return SetInstancesProtectionResponse
+ */
 func (client *Client) SetInstancesProtection(request *SetInstancesProtectionRequest) (_result *SetInstancesProtectionResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &SetInstancesProtectionResponse{}
