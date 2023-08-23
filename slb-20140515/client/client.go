@@ -5229,24 +5229,28 @@ func (s *DescribeAccessControlListAttributeResponse) SetBody(v *DescribeAccessCo
 }
 
 type DescribeAccessControlListsRequest struct {
-	// The operation that you want to perform. Set the value to **DescribeAccessControlLists**.
+	// The name of the network ACL. The name of the network ACL. The name must be 1 to 80 characters in length, and can contain letters, digits, periods (.), hyphens (-), forward slashes (/), and underscores (\_). The name of the network ACL must be unique within each region. Fuzzy match is supported.
 	AclName *string `json:"AclName,omitempty" xml:"AclName,omitempty"`
-	// The number of the page to return. Default value: **1**.
+	// The IP version of the Classic Load Balancer (CLB) instance with which the network ACL is associated. Valid values:
+	//
+	// *   **ipv4**
+	// *   **ipv6**
 	AddressIPVersion *string `json:"AddressIPVersion,omitempty" xml:"AddressIPVersion,omitempty"`
 	OwnerAccount     *string `json:"OwnerAccount,omitempty" xml:"OwnerAccount,omitempty"`
 	OwnerId          *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
-	// The ID of the network ACL.
+	// The page number. Default value: **1**.
 	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
-	// The ID of the resource group.
+	// The number of entries to return on each page. Maximum value: **50**. Default value: **10**.
 	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	// The IP version that is used by the associated CLB instance.
-	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	// The ID of the region where the network ACL is created.
+	// The ID of the region where the ACL is created.
 	//
-	// You can call the [DescribeRegions](~~27584~~) operation to query the IDs of regions.
-	ResourceGroupId      *string `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
-	ResourceOwnerAccount *string `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
-	ResourceOwnerId      *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
+	// You can call the [DescribeRegions](~~27584~~) operation to query the most recent region list.
+	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	// The ID of the resource group.
+	ResourceGroupId      *string                                 `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
+	ResourceOwnerAccount *string                                 `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
+	ResourceOwnerId      *int64                                  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
+	Tag                  []*DescribeAccessControlListsRequestTag `json:"Tag,omitempty" xml:"Tag,omitempty" type:"Repeated"`
 }
 
 func (s DescribeAccessControlListsRequest) String() string {
@@ -5307,18 +5311,46 @@ func (s *DescribeAccessControlListsRequest) SetResourceOwnerId(v int64) *Describ
 	return s
 }
 
+func (s *DescribeAccessControlListsRequest) SetTag(v []*DescribeAccessControlListsRequestTag) *DescribeAccessControlListsRequest {
+	s.Tag = v
+	return s
+}
+
+type DescribeAccessControlListsRequestTag struct {
+	Key   *string `json:"Key,omitempty" xml:"Key,omitempty"`
+	Value *string `json:"Value,omitempty" xml:"Value,omitempty"`
+}
+
+func (s DescribeAccessControlListsRequestTag) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeAccessControlListsRequestTag) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeAccessControlListsRequestTag) SetKey(v string) *DescribeAccessControlListsRequestTag {
+	s.Key = &v
+	return s
+}
+
+func (s *DescribeAccessControlListsRequestTag) SetValue(v string) *DescribeAccessControlListsRequestTag {
+	s.Value = &v
+	return s
+}
+
 type DescribeAccessControlListsResponseBody struct {
-	// The ID of the request.
+	// A list of network ACLs.
 	Acls *DescribeAccessControlListsResponseBodyAcls `json:"Acls,omitempty" xml:"Acls,omitempty" type:"Struct"`
-	// The list of network ACLs.
+	// The number of network ACLs on the current page.
 	Count *int32 `json:"Count,omitempty" xml:"Count,omitempty"`
-	// The name of the network ACL.
-	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
-	// The number of entries to return on each page. Maximum value: **50**. Default value: **10**.
-	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
 	// The number of the returned page. Pages start from page **1**. Default value: **1**.
-	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
 	// The number of entries returned on each page. Maximum value: **50**. Default value: **10**.
+	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	// The request ID.
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The number of network ACLs.
 	TotalCount *int32 `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
 }
 
@@ -5378,14 +5410,18 @@ func (s *DescribeAccessControlListsResponseBodyAcls) SetAcl(v []*DescribeAccessC
 }
 
 type DescribeAccessControlListsResponseBodyAclsAcl struct {
-	// The ID of the resource group to which the CLB instance belongs.
-	AclId   *string `json:"AclId,omitempty" xml:"AclId,omitempty"`
+	// The ACL ID.
+	AclId *string `json:"AclId,omitempty" xml:"AclId,omitempty"`
+	// The name of the ACL.
 	AclName *string `json:"AclName,omitempty" xml:"AclName,omitempty"`
-	// The number of network ACLs on the current page.
-	AddressIPVersion *string                                            `json:"AddressIPVersion,omitempty" xml:"AddressIPVersion,omitempty"`
-	CreateTime       *string                                            `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
-	ResourceGroupId  *string                                            `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
-	Tags             *DescribeAccessControlListsResponseBodyAclsAclTags `json:"Tags,omitempty" xml:"Tags,omitempty" type:"Struct"`
+	// The IP version that is used by the associated CLB instance.
+	AddressIPVersion *string `json:"AddressIPVersion,omitempty" xml:"AddressIPVersion,omitempty"`
+	// The time when the CLB instance was created. The time follows the `YYYY-MM-DDThh:mm:ssZ` format.
+	CreateTime *string `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
+	// The ID of the resource group.
+	ResourceGroupId *string `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
+	// The list of tags added to the network ACL. The value of this parameter must be a STRING list in the JSON format.
+	Tags *DescribeAccessControlListsResponseBodyAclsAclTags `json:"Tags,omitempty" xml:"Tags,omitempty" type:"Struct"`
 }
 
 func (s DescribeAccessControlListsResponseBodyAclsAcl) String() string {
@@ -5444,6 +5480,8 @@ func (s *DescribeAccessControlListsResponseBodyAclsAclTags) SetTag(v []*Describe
 }
 
 type DescribeAccessControlListsResponseBodyAclsAclTagsTag struct {
+	TagKey   *string `json:"TagKey,omitempty" xml:"TagKey,omitempty"`
+	TagValue *string `json:"TagValue,omitempty" xml:"TagValue,omitempty"`
 }
 
 func (s DescribeAccessControlListsResponseBodyAclsAclTagsTag) String() string {
@@ -5452,6 +5490,16 @@ func (s DescribeAccessControlListsResponseBodyAclsAclTagsTag) String() string {
 
 func (s DescribeAccessControlListsResponseBodyAclsAclTagsTag) GoString() string {
 	return s.String()
+}
+
+func (s *DescribeAccessControlListsResponseBodyAclsAclTagsTag) SetTagKey(v string) *DescribeAccessControlListsResponseBodyAclsAclTagsTag {
+	s.TagKey = &v
+	return s
+}
+
+func (s *DescribeAccessControlListsResponseBodyAclsAclTagsTag) SetTagValue(v string) *DescribeAccessControlListsResponseBodyAclsAclTagsTag {
+	s.TagValue = &v
+	return s
 }
 
 type DescribeAccessControlListsResponse struct {
@@ -5913,9 +5961,10 @@ type DescribeCACertificatesRequest struct {
 	// This value is a UNIX timestamp representing the number of milliseconds that have elapsed since the epoch time January 1, 1970, 00:00:00 UTC.
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 	// The ID of the resource group.
-	ResourceGroupId      *string `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
-	ResourceOwnerAccount *string `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
-	ResourceOwnerId      *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
+	ResourceGroupId      *string                             `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
+	ResourceOwnerAccount *string                             `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
+	ResourceOwnerId      *int64                              `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
+	Tag                  []*DescribeCACertificatesRequestTag `json:"Tag,omitempty" xml:"Tag,omitempty" type:"Repeated"`
 }
 
 func (s DescribeCACertificatesRequest) String() string {
@@ -5958,6 +6007,34 @@ func (s *DescribeCACertificatesRequest) SetResourceOwnerAccount(v string) *Descr
 
 func (s *DescribeCACertificatesRequest) SetResourceOwnerId(v int64) *DescribeCACertificatesRequest {
 	s.ResourceOwnerId = &v
+	return s
+}
+
+func (s *DescribeCACertificatesRequest) SetTag(v []*DescribeCACertificatesRequestTag) *DescribeCACertificatesRequest {
+	s.Tag = v
+	return s
+}
+
+type DescribeCACertificatesRequestTag struct {
+	Key   *string `json:"Key,omitempty" xml:"Key,omitempty"`
+	Value *string `json:"Value,omitempty" xml:"Value,omitempty"`
+}
+
+func (s DescribeCACertificatesRequestTag) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeCACertificatesRequestTag) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeCACertificatesRequestTag) SetKey(v string) *DescribeCACertificatesRequestTag {
+	s.Key = &v
+	return s
+}
+
+func (s *DescribeCACertificatesRequestTag) SetValue(v string) *DescribeCACertificatesRequestTag {
+	s.Value = &v
 	return s
 }
 
@@ -6107,6 +6184,8 @@ func (s *DescribeCACertificatesResponseBodyCACertificatesCACertificateTags) SetT
 }
 
 type DescribeCACertificatesResponseBodyCACertificatesCACertificateTagsTag struct {
+	TagKey   *string `json:"TagKey,omitempty" xml:"TagKey,omitempty"`
+	TagValue *string `json:"TagValue,omitempty" xml:"TagValue,omitempty"`
 }
 
 func (s DescribeCACertificatesResponseBodyCACertificatesCACertificateTagsTag) String() string {
@@ -6115,6 +6194,16 @@ func (s DescribeCACertificatesResponseBodyCACertificatesCACertificateTagsTag) St
 
 func (s DescribeCACertificatesResponseBodyCACertificatesCACertificateTagsTag) GoString() string {
 	return s.String()
+}
+
+func (s *DescribeCACertificatesResponseBodyCACertificatesCACertificateTagsTag) SetTagKey(v string) *DescribeCACertificatesResponseBodyCACertificatesCACertificateTagsTag {
+	s.TagKey = &v
+	return s
+}
+
+func (s *DescribeCACertificatesResponseBodyCACertificatesCACertificateTagsTag) SetTagValue(v string) *DescribeCACertificatesResponseBodyCACertificatesCACertificateTagsTag {
+	s.TagValue = &v
+	return s
 }
 
 type DescribeCACertificatesResponse struct {
@@ -8685,6 +8774,8 @@ func (s *DescribeLoadBalancerListenersRequest) SetTag(v []*DescribeLoadBalancerL
 }
 
 type DescribeLoadBalancerListenersRequestTag struct {
+	Key   *string `json:"Key,omitempty" xml:"Key,omitempty"`
+	Value *string `json:"Value,omitempty" xml:"Value,omitempty"`
 }
 
 func (s DescribeLoadBalancerListenersRequestTag) String() string {
@@ -8693,6 +8784,16 @@ func (s DescribeLoadBalancerListenersRequestTag) String() string {
 
 func (s DescribeLoadBalancerListenersRequestTag) GoString() string {
 	return s.String()
+}
+
+func (s *DescribeLoadBalancerListenersRequestTag) SetKey(v string) *DescribeLoadBalancerListenersRequestTag {
+	s.Key = &v
+	return s
+}
+
+func (s *DescribeLoadBalancerListenersRequestTag) SetValue(v string) *DescribeLoadBalancerListenersRequestTag {
+	s.Value = &v
+	return s
 }
 
 type DescribeLoadBalancerListenersResponseBody struct {
@@ -10264,7 +10365,8 @@ type DescribeLoadBalancersRequest struct {
 	// The ID of the secondary zone to which the CLB instance belongs.
 	//
 	// CLB instances on Alibaba Finance Cloud do not support cross-zone deployment.
-	SlaveZoneId *string `json:"SlaveZoneId,omitempty" xml:"SlaveZoneId,omitempty"`
+	SlaveZoneId *string                            `json:"SlaveZoneId,omitempty" xml:"SlaveZoneId,omitempty"`
+	Tag         []*DescribeLoadBalancersRequestTag `json:"Tag,omitempty" xml:"Tag,omitempty" type:"Repeated"`
 	// The tags that are added to the CLB instance. The tags must be key-value pairs that are contained in a JSON dictionary.
 	//
 	// You can specify up to 10 tags in each call.
@@ -10388,6 +10490,11 @@ func (s *DescribeLoadBalancersRequest) SetSlaveZoneId(v string) *DescribeLoadBal
 	return s
 }
 
+func (s *DescribeLoadBalancersRequest) SetTag(v []*DescribeLoadBalancersRequestTag) *DescribeLoadBalancersRequest {
+	s.Tag = v
+	return s
+}
+
 func (s *DescribeLoadBalancersRequest) SetTags(v string) *DescribeLoadBalancersRequest {
 	s.Tags = &v
 	return s
@@ -10400,6 +10507,29 @@ func (s *DescribeLoadBalancersRequest) SetVSwitchId(v string) *DescribeLoadBalan
 
 func (s *DescribeLoadBalancersRequest) SetVpcId(v string) *DescribeLoadBalancersRequest {
 	s.VpcId = &v
+	return s
+}
+
+type DescribeLoadBalancersRequestTag struct {
+	Key   *string `json:"Key,omitempty" xml:"Key,omitempty"`
+	Value *string `json:"Value,omitempty" xml:"Value,omitempty"`
+}
+
+func (s DescribeLoadBalancersRequestTag) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeLoadBalancersRequestTag) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeLoadBalancersRequestTag) SetKey(v string) *DescribeLoadBalancersRequestTag {
+	s.Key = &v
+	return s
+}
+
+func (s *DescribeLoadBalancersRequestTag) SetValue(v string) *DescribeLoadBalancersRequestTag {
+	s.Value = &v
 	return s
 }
 
@@ -11075,6 +11205,8 @@ func (s *DescribeMasterSlaveServerGroupsRequest) SetTag(v []*DescribeMasterSlave
 }
 
 type DescribeMasterSlaveServerGroupsRequestTag struct {
+	Key   *string `json:"Key,omitempty" xml:"Key,omitempty"`
+	Value *string `json:"Value,omitempty" xml:"Value,omitempty"`
 }
 
 func (s DescribeMasterSlaveServerGroupsRequestTag) String() string {
@@ -11083,6 +11215,16 @@ func (s DescribeMasterSlaveServerGroupsRequestTag) String() string {
 
 func (s DescribeMasterSlaveServerGroupsRequestTag) GoString() string {
 	return s.String()
+}
+
+func (s *DescribeMasterSlaveServerGroupsRequestTag) SetKey(v string) *DescribeMasterSlaveServerGroupsRequestTag {
+	s.Key = &v
+	return s
+}
+
+func (s *DescribeMasterSlaveServerGroupsRequestTag) SetValue(v string) *DescribeMasterSlaveServerGroupsRequestTag {
+	s.Value = &v
+	return s
 }
 
 type DescribeMasterSlaveServerGroupsResponseBody struct {
@@ -12119,14 +12261,19 @@ func (s *DescribeRulesResponse) SetBody(v *DescribeRulesResponseBody) *DescribeR
 type DescribeServerCertificatesRequest struct {
 	OwnerAccount *string `json:"OwnerAccount,omitempty" xml:"OwnerAccount,omitempty"`
 	OwnerId      *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
-	// The ID of the server certificate.
+	// The region where the CLB instances are deployed.
+	//
+	// You can call the [DescribeRegions](~~27584~~) operation to query the most recent region list.
+	//
+	// >  If the endpoint of the region is slb.aliyuncs.com, you must specify the `RegionId` parameter.
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 	// The ID of the resource group.
 	ResourceGroupId      *string `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
 	ResourceOwnerAccount *string `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
 	ResourceOwnerId      *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
-	// The domain name of the certificate. The domain name is specified in the `CommonName` field.
-	ServerCertificateId *string `json:"ServerCertificateId,omitempty" xml:"ServerCertificateId,omitempty"`
+	// The ID of the server certificate.
+	ServerCertificateId *string                                 `json:"ServerCertificateId,omitempty" xml:"ServerCertificateId,omitempty"`
+	Tag                 []*DescribeServerCertificatesRequestTag `json:"Tag,omitempty" xml:"Tag,omitempty" type:"Repeated"`
 }
 
 func (s DescribeServerCertificatesRequest) String() string {
@@ -12172,8 +12319,36 @@ func (s *DescribeServerCertificatesRequest) SetServerCertificateId(v string) *De
 	return s
 }
 
+func (s *DescribeServerCertificatesRequest) SetTag(v []*DescribeServerCertificatesRequestTag) *DescribeServerCertificatesRequest {
+	s.Tag = v
+	return s
+}
+
+type DescribeServerCertificatesRequestTag struct {
+	Key   *string `json:"Key,omitempty" xml:"Key,omitempty"`
+	Value *string `json:"Value,omitempty" xml:"Value,omitempty"`
+}
+
+func (s DescribeServerCertificatesRequestTag) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeServerCertificatesRequestTag) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeServerCertificatesRequestTag) SetKey(v string) *DescribeServerCertificatesRequestTag {
+	s.Key = &v
+	return s
+}
+
+func (s *DescribeServerCertificatesRequestTag) SetValue(v string) *DescribeServerCertificatesRequestTag {
+	s.Value = &v
+	return s
+}
+
 type DescribeServerCertificatesResponseBody struct {
-	// The timestamp generated when the server certificate is uploaded.
+	// The ID of the request.
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	// The list of server certificates.
 	ServerCertificates *DescribeServerCertificatesResponseBodyServerCertificates `json:"ServerCertificates,omitempty" xml:"ServerCertificates,omitempty" type:"Struct"`
@@ -12215,37 +12390,36 @@ func (s *DescribeServerCertificatesResponseBodyServerCertificates) SetServerCert
 }
 
 type DescribeServerCertificatesResponseBodyServerCertificatesServerCertificate struct {
-	AliCloudCertificateId *string `json:"AliCloudCertificateId,omitempty" xml:"AliCloudCertificateId,omitempty"`
-	// The time when the server certificate is uploaded.
-	AliCloudCertificateName *string `json:"AliCloudCertificateName,omitempty" xml:"AliCloudCertificateName,omitempty"`
 	// The ID of the server certificate from Alibaba Cloud Certificate Management Service.
+	AliCloudCertificateId *string `json:"AliCloudCertificateId,omitempty" xml:"AliCloudCertificateId,omitempty"`
+	// The name of the server certificate from Alibaba Cloud Certificate Management Service.
+	AliCloudCertificateName *string `json:"AliCloudCertificateName,omitempty" xml:"AliCloudCertificateName,omitempty"`
+	// The domain name of the certificate. The domain name is specified in the `CommonName` field.
 	CommonName *string `json:"CommonName,omitempty" xml:"CommonName,omitempty"`
-	// The ID of the region where the server certificate is created.
+	// The time when the server certificate is uploaded.
 	CreateTime *string `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
-	// The operation that you want to perform. Set the value to **DescribeServerCertificates**.
+	// The timestamp generated when the server certificate is uploaded.
 	CreateTimeStamp *int64 `json:"CreateTimeStamp,omitempty" xml:"CreateTimeStamp,omitempty"`
-	// The ID of the resource group.
+	// The expiration time.
 	ExpireTime *string `json:"ExpireTime,omitempty" xml:"ExpireTime,omitempty"`
+	// The timestamp that indicates when the certificate expires.
+	ExpireTimeStamp *int64 `json:"ExpireTimeStamp,omitempty" xml:"ExpireTimeStamp,omitempty"`
+	// The fingerprint of the server certificate.
+	Fingerprint *string `json:"Fingerprint,omitempty" xml:"Fingerprint,omitempty"`
 	// Indicates whether the server certificate is from Alibaba Cloud Certificate Management Service. Valid values:
 	//
 	// *   **1**: yes
 	// *   **0**: no
-	ExpireTimeStamp *int64 `json:"ExpireTimeStamp,omitempty" xml:"ExpireTimeStamp,omitempty"`
-	// The name of the server certificate from Alibaba Cloud Certificate Management Service.
-	Fingerprint           *string `json:"Fingerprint,omitempty" xml:"Fingerprint,omitempty"`
-	IsAliCloudCertificate *int32  `json:"IsAliCloudCertificate,omitempty" xml:"IsAliCloudCertificate,omitempty"`
-	// The ID of the server certificate.
+	IsAliCloudCertificate *int32 `json:"IsAliCloudCertificate,omitempty" xml:"IsAliCloudCertificate,omitempty"`
+	// The ID of the region where the server certificate is created.
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	// The ID of the request.
+	// The ID of the resource group.
 	ResourceGroupId *string `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
-	// The region where the CLB instances are deployed.
-	//
-	// You can call the [DescribeRegions](~~27584~~) operation to query the most recent region list.
-	//
-	// >  If the endpoint of the region is slb.aliyuncs.com, you must specify the `RegionId` parameter.
+	// The ID of the server certificate.
 	ServerCertificateId *string `json:"ServerCertificateId,omitempty" xml:"ServerCertificateId,omitempty"`
-	// The timestamp that indicates when the certificate expires.
-	ServerCertificateName   *string                                                                                           `json:"ServerCertificateName,omitempty" xml:"ServerCertificateName,omitempty"`
+	// The name of the server certificate.
+	ServerCertificateName *string `json:"ServerCertificateName,omitempty" xml:"ServerCertificateName,omitempty"`
+	// The list of alternative domain names of the server certificate. The alternative domain names are specified in the `Subject Alternative Name` field of the server certificate.
 	SubjectAlternativeNames *DescribeServerCertificatesResponseBodyServerCertificatesServerCertificateSubjectAlternativeNames `json:"SubjectAlternativeNames,omitempty" xml:"SubjectAlternativeNames,omitempty" type:"Struct"`
 	Tags                    *DescribeServerCertificatesResponseBodyServerCertificatesServerCertificateTags                    `json:"Tags,omitempty" xml:"Tags,omitempty" type:"Struct"`
 }
@@ -12368,6 +12542,8 @@ func (s *DescribeServerCertificatesResponseBodyServerCertificatesServerCertifica
 }
 
 type DescribeServerCertificatesResponseBodyServerCertificatesServerCertificateTagsTag struct {
+	TagKey   *string `json:"TagKey,omitempty" xml:"TagKey,omitempty"`
+	TagValue *string `json:"TagValue,omitempty" xml:"TagValue,omitempty"`
 }
 
 func (s DescribeServerCertificatesResponseBodyServerCertificatesServerCertificateTagsTag) String() string {
@@ -12376,6 +12552,16 @@ func (s DescribeServerCertificatesResponseBodyServerCertificatesServerCertificat
 
 func (s DescribeServerCertificatesResponseBodyServerCertificatesServerCertificateTagsTag) GoString() string {
 	return s.String()
+}
+
+func (s *DescribeServerCertificatesResponseBodyServerCertificatesServerCertificateTagsTag) SetTagKey(v string) *DescribeServerCertificatesResponseBodyServerCertificatesServerCertificateTagsTag {
+	s.TagKey = &v
+	return s
+}
+
+func (s *DescribeServerCertificatesResponseBodyServerCertificatesServerCertificateTagsTag) SetTagValue(v string) *DescribeServerCertificatesResponseBodyServerCertificatesServerCertificateTagsTag {
+	s.TagValue = &v
+	return s
 }
 
 type DescribeServerCertificatesResponse struct {
@@ -12929,6 +13115,8 @@ func (s *DescribeVServerGroupsRequest) SetTag(v []*DescribeVServerGroupsRequestT
 }
 
 type DescribeVServerGroupsRequestTag struct {
+	Key   *string `json:"Key,omitempty" xml:"Key,omitempty"`
+	Value *string `json:"Value,omitempty" xml:"Value,omitempty"`
 }
 
 func (s DescribeVServerGroupsRequestTag) String() string {
@@ -12937,6 +13125,16 @@ func (s DescribeVServerGroupsRequestTag) String() string {
 
 func (s DescribeVServerGroupsRequestTag) GoString() string {
 	return s.String()
+}
+
+func (s *DescribeVServerGroupsRequestTag) SetKey(v string) *DescribeVServerGroupsRequestTag {
+	s.Key = &v
+	return s
+}
+
+func (s *DescribeVServerGroupsRequestTag) SetValue(v string) *DescribeVServerGroupsRequestTag {
+	s.Value = &v
+	return s
 }
 
 type DescribeVServerGroupsResponseBody struct {
@@ -14897,16 +15095,26 @@ func (s *ModifyVServerGroupBackendServersResponse) SetBody(v *ModifyVServerGroup
 }
 
 type MoveResourceGroupRequest struct {
-	NewResourceGroupId   *string `json:"NewResourceGroupId,omitempty" xml:"NewResourceGroupId,omitempty"`
-	OwnerAccount         *string `json:"OwnerAccount,omitempty" xml:"OwnerAccount,omitempty"`
-	OwnerId              *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
-	RegionId             *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	ResourceGroupId      *string `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
+	// The ID of the resource group to which you want to move the resource.
+	NewResourceGroupId *string `json:"NewResourceGroupId,omitempty" xml:"NewResourceGroupId,omitempty"`
+	OwnerAccount       *string `json:"OwnerAccount,omitempty" xml:"OwnerAccount,omitempty"`
+	OwnerId            *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
+	// The region ID of the Classic Load Balancer (CLB) instance.
+	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	// The resource group ID.
+	ResourceGroupId *string `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
+	// The resource ID.
 	ResourceId           *string `json:"ResourceId,omitempty" xml:"ResourceId,omitempty"`
 	ResourceOwnerAccount *string `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
 	ResourceOwnerId      *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
-	ResourceType         *string `json:"ResourceType,omitempty" xml:"ResourceType,omitempty"`
-	AccessKeyId          *string `json:"access_key_id,omitempty" xml:"access_key_id,omitempty"`
+	// The type of the resource. Valid values:
+	//
+	// *   **loadbalancer**: a CLB instance
+	// *   **certificate**: a certificate
+	// *   **acl**: an access control list (ACL)
+	ResourceType *string `json:"ResourceType,omitempty" xml:"ResourceType,omitempty"`
+	// The AccessKey ID provided by Alibaba Cloud.
+	AccessKeyId *string `json:"access_key_id,omitempty" xml:"access_key_id,omitempty"`
 }
 
 func (s MoveResourceGroupRequest) String() string {
@@ -14968,6 +15176,7 @@ func (s *MoveResourceGroupRequest) SetAccessKeyId(v string) *MoveResourceGroupRe
 }
 
 type MoveResourceGroupResponseBody struct {
+	// The request ID.
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -22938,6 +23147,10 @@ func (client *Client) DescribeAccessControlListsWithOptions(request *DescribeAcc
 		query["ResourceOwnerId"] = request.ResourceOwnerId
 	}
 
+	if !tea.BoolValue(util.IsUnset(request.Tag)) {
+		query["Tag"] = request.Tag
+	}
+
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
 	}
@@ -23172,6 +23385,10 @@ func (client *Client) DescribeCACertificatesWithOptions(request *DescribeCACerti
 
 	if !tea.BoolValue(util.IsUnset(request.ResourceOwnerId)) {
 		query["ResourceOwnerId"] = request.ResourceOwnerId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Tag)) {
+		query["Tag"] = request.Tag
 	}
 
 	req := &openapi.OpenApiRequest{
@@ -24128,6 +24345,10 @@ func (client *Client) DescribeLoadBalancersWithOptions(request *DescribeLoadBala
 		query["SlaveZoneId"] = request.SlaveZoneId
 	}
 
+	if !tea.BoolValue(util.IsUnset(request.Tag)) {
+		query["Tag"] = request.Tag
+	}
+
 	if !tea.BoolValue(util.IsUnset(request.Tags)) {
 		query["Tags"] = request.Tags
 	}
@@ -24511,7 +24732,7 @@ func (client *Client) DescribeRules(request *DescribeRulesRequest) (_result *Des
 }
 
 /**
- * The name of the server certificate.
+ * >  For security reasons, only fingerprints and names of the server certificates are returned. The content of the server certificates and private keys is not returned.
  *
  * @param request DescribeServerCertificatesRequest
  * @param runtime runtime options for this request RuntimeOptions
@@ -24551,6 +24772,10 @@ func (client *Client) DescribeServerCertificatesWithOptions(request *DescribeSer
 		query["ServerCertificateId"] = request.ServerCertificateId
 	}
 
+	if !tea.BoolValue(util.IsUnset(request.Tag)) {
+		query["Tag"] = request.Tag
+	}
+
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
 	}
@@ -24575,7 +24800,7 @@ func (client *Client) DescribeServerCertificatesWithOptions(request *DescribeSer
 }
 
 /**
- * The name of the server certificate.
+ * >  For security reasons, only fingerprints and names of the server certificates are returned. The content of the server certificates and private keys is not returned.
  *
  * @param request DescribeServerCertificatesRequest
  * @return DescribeServerCertificatesResponse
