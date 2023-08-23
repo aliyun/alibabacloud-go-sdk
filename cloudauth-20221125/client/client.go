@@ -183,6 +183,211 @@ func (s *EntElementVerifyResponse) SetBody(v *EntElementVerifyResponseBody) *Ent
 	return s
 }
 
+type EntRiskQueryRequest struct {
+	MerchantBizId     *string `json:"MerchantBizId,omitempty" xml:"MerchantBizId,omitempty"`
+	MerchantUserId    *string `json:"MerchantUserId,omitempty" xml:"MerchantUserId,omitempty"`
+	ParamType         *string `json:"ParamType,omitempty" xml:"ParamType,omitempty"`
+	ParamValue        *string `json:"ParamValue,omitempty" xml:"ParamValue,omitempty"`
+	SceneCode         *string `json:"SceneCode,omitempty" xml:"SceneCode,omitempty"`
+	UserAuthorization *string `json:"UserAuthorization,omitempty" xml:"UserAuthorization,omitempty"`
+}
+
+func (s EntRiskQueryRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s EntRiskQueryRequest) GoString() string {
+	return s.String()
+}
+
+func (s *EntRiskQueryRequest) SetMerchantBizId(v string) *EntRiskQueryRequest {
+	s.MerchantBizId = &v
+	return s
+}
+
+func (s *EntRiskQueryRequest) SetMerchantUserId(v string) *EntRiskQueryRequest {
+	s.MerchantUserId = &v
+	return s
+}
+
+func (s *EntRiskQueryRequest) SetParamType(v string) *EntRiskQueryRequest {
+	s.ParamType = &v
+	return s
+}
+
+func (s *EntRiskQueryRequest) SetParamValue(v string) *EntRiskQueryRequest {
+	s.ParamValue = &v
+	return s
+}
+
+func (s *EntRiskQueryRequest) SetSceneCode(v string) *EntRiskQueryRequest {
+	s.SceneCode = &v
+	return s
+}
+
+func (s *EntRiskQueryRequest) SetUserAuthorization(v string) *EntRiskQueryRequest {
+	s.UserAuthorization = &v
+	return s
+}
+
+type EntRiskQueryResponseBody struct {
+	Code      *string                         `json:"Code,omitempty" xml:"Code,omitempty"`
+	Message   *string                         `json:"Message,omitempty" xml:"Message,omitempty"`
+	RequestId *string                         `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	Result    *EntRiskQueryResponseBodyResult `json:"Result,omitempty" xml:"Result,omitempty" type:"Struct"`
+}
+
+func (s EntRiskQueryResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s EntRiskQueryResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *EntRiskQueryResponseBody) SetCode(v string) *EntRiskQueryResponseBody {
+	s.Code = &v
+	return s
+}
+
+func (s *EntRiskQueryResponseBody) SetMessage(v string) *EntRiskQueryResponseBody {
+	s.Message = &v
+	return s
+}
+
+func (s *EntRiskQueryResponseBody) SetRequestId(v string) *EntRiskQueryResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *EntRiskQueryResponseBody) SetResult(v *EntRiskQueryResponseBodyResult) *EntRiskQueryResponseBody {
+	s.Result = v
+	return s
+}
+
+type EntRiskQueryResponseBodyResult struct {
+	BizCode  *string                                   `json:"BizCode,omitempty" xml:"BizCode,omitempty"`
+	RiskList []*EntRiskQueryResponseBodyResultRiskList `json:"RiskList,omitempty" xml:"RiskList,omitempty" type:"Repeated"`
+	Status   *string                                   `json:"Status,omitempty" xml:"Status,omitempty"`
+}
+
+func (s EntRiskQueryResponseBodyResult) String() string {
+	return tea.Prettify(s)
+}
+
+func (s EntRiskQueryResponseBodyResult) GoString() string {
+	return s.String()
+}
+
+func (s *EntRiskQueryResponseBodyResult) SetBizCode(v string) *EntRiskQueryResponseBodyResult {
+	s.BizCode = &v
+	return s
+}
+
+func (s *EntRiskQueryResponseBodyResult) SetRiskList(v []*EntRiskQueryResponseBodyResultRiskList) *EntRiskQueryResponseBodyResult {
+	s.RiskList = v
+	return s
+}
+
+func (s *EntRiskQueryResponseBodyResult) SetStatus(v string) *EntRiskQueryResponseBodyResult {
+	s.Status = &v
+	return s
+}
+
+type EntRiskQueryResponseBodyResultRiskList struct {
+	CreditCode    *string `json:"CreditCode,omitempty" xml:"CreditCode,omitempty"`
+	EntName       *string `json:"EntName,omitempty" xml:"EntName,omitempty"`
+	ListedDate    *string `json:"ListedDate,omitempty" xml:"ListedDate,omitempty"`
+	ListedReason  *string `json:"ListedReason,omitempty" xml:"ListedReason,omitempty"`
+	OperationOrg  *string `json:"OperationOrg,omitempty" xml:"OperationOrg,omitempty"`
+	RegNo         *string `json:"RegNo,omitempty" xml:"RegNo,omitempty"`
+	RemovedDate   *string `json:"RemovedDate,omitempty" xml:"RemovedDate,omitempty"`
+	RemovedOrg    *string `json:"RemovedOrg,omitempty" xml:"RemovedOrg,omitempty"`
+	RemovedReason *string `json:"RemovedReason,omitempty" xml:"RemovedReason,omitempty"`
+}
+
+func (s EntRiskQueryResponseBodyResultRiskList) String() string {
+	return tea.Prettify(s)
+}
+
+func (s EntRiskQueryResponseBodyResultRiskList) GoString() string {
+	return s.String()
+}
+
+func (s *EntRiskQueryResponseBodyResultRiskList) SetCreditCode(v string) *EntRiskQueryResponseBodyResultRiskList {
+	s.CreditCode = &v
+	return s
+}
+
+func (s *EntRiskQueryResponseBodyResultRiskList) SetEntName(v string) *EntRiskQueryResponseBodyResultRiskList {
+	s.EntName = &v
+	return s
+}
+
+func (s *EntRiskQueryResponseBodyResultRiskList) SetListedDate(v string) *EntRiskQueryResponseBodyResultRiskList {
+	s.ListedDate = &v
+	return s
+}
+
+func (s *EntRiskQueryResponseBodyResultRiskList) SetListedReason(v string) *EntRiskQueryResponseBodyResultRiskList {
+	s.ListedReason = &v
+	return s
+}
+
+func (s *EntRiskQueryResponseBodyResultRiskList) SetOperationOrg(v string) *EntRiskQueryResponseBodyResultRiskList {
+	s.OperationOrg = &v
+	return s
+}
+
+func (s *EntRiskQueryResponseBodyResultRiskList) SetRegNo(v string) *EntRiskQueryResponseBodyResultRiskList {
+	s.RegNo = &v
+	return s
+}
+
+func (s *EntRiskQueryResponseBodyResultRiskList) SetRemovedDate(v string) *EntRiskQueryResponseBodyResultRiskList {
+	s.RemovedDate = &v
+	return s
+}
+
+func (s *EntRiskQueryResponseBodyResultRiskList) SetRemovedOrg(v string) *EntRiskQueryResponseBodyResultRiskList {
+	s.RemovedOrg = &v
+	return s
+}
+
+func (s *EntRiskQueryResponseBodyResultRiskList) SetRemovedReason(v string) *EntRiskQueryResponseBodyResultRiskList {
+	s.RemovedReason = &v
+	return s
+}
+
+type EntRiskQueryResponse struct {
+	Headers    map[string]*string        `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                    `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *EntRiskQueryResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s EntRiskQueryResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s EntRiskQueryResponse) GoString() string {
+	return s.String()
+}
+
+func (s *EntRiskQueryResponse) SetHeaders(v map[string]*string) *EntRiskQueryResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *EntRiskQueryResponse) SetStatusCode(v int32) *EntRiskQueryResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *EntRiskQueryResponse) SetBody(v *EntRiskQueryResponseBody) *EntRiskQueryResponse {
+	s.Body = v
+	return s
+}
+
 type EntVerifyRequest struct {
 	AccountNo         *string `json:"AccountNo,omitempty" xml:"AccountNo,omitempty"`
 	EntName           *string `json:"EntName,omitempty" xml:"EntName,omitempty"`
@@ -516,6 +721,70 @@ func (client *Client) EntElementVerify(request *EntElementVerifyRequest) (_resul
 	runtime := &util.RuntimeOptions{}
 	_result = &EntElementVerifyResponse{}
 	_body, _err := client.EntElementVerifyWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) EntRiskQueryWithOptions(request *EntRiskQueryRequest, runtime *util.RuntimeOptions) (_result *EntRiskQueryResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.MerchantBizId)) {
+		query["MerchantBizId"] = request.MerchantBizId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.MerchantUserId)) {
+		query["MerchantUserId"] = request.MerchantUserId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ParamType)) {
+		query["ParamType"] = request.ParamType
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ParamValue)) {
+		query["ParamValue"] = request.ParamValue
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.SceneCode)) {
+		query["SceneCode"] = request.SceneCode
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.UserAuthorization)) {
+		query["UserAuthorization"] = request.UserAuthorization
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("EntRiskQuery"),
+		Version:     tea.String("2022-11-25"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &EntRiskQueryResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) EntRiskQuery(request *EntRiskQueryRequest) (_result *EntRiskQueryResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &EntRiskQueryResponse{}
+	_body, _err := client.EntRiskQueryWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
