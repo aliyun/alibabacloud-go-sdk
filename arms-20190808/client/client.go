@@ -3981,7 +3981,8 @@ type CreateOrUpdateAlertRuleRequest struct {
 	// *   P3: Alert notifications are sent for issues that may cause service errors or negative effects, or alert notifications for services that are relatively less important.
 	// *   P4: Alert notifications are sent for low-priority issues that do not affect your business.
 	// *   Default: Alert notifications are sent regardless of alert levels.
-	Level *string `json:"Level,omitempty" xml:"Level,omitempty"`
+	Level    *string                                   `json:"Level,omitempty" xml:"Level,omitempty"`
+	MarkTags []*CreateOrUpdateAlertRuleRequestMarkTags `json:"MarkTags,omitempty" xml:"MarkTags,omitempty" type:"Repeated"`
 	// The alert message of the Prometheus alert rule.
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
 	// The alert metrics. If you set the **AlertCheckType** parameter to **STATIC** when you create a Prometheus alert rule, you must specify the **MetricsKey** parameter.
@@ -4082,6 +4083,11 @@ func (s *CreateOrUpdateAlertRuleRequest) SetLevel(v string) *CreateOrUpdateAlert
 	return s
 }
 
+func (s *CreateOrUpdateAlertRuleRequest) SetMarkTags(v []*CreateOrUpdateAlertRuleRequestMarkTags) *CreateOrUpdateAlertRuleRequest {
+	s.MarkTags = v
+	return s
+}
+
 func (s *CreateOrUpdateAlertRuleRequest) SetMessage(v string) *CreateOrUpdateAlertRuleRequest {
 	s.Message = &v
 	return s
@@ -4119,6 +4125,29 @@ func (s *CreateOrUpdateAlertRuleRequest) SetRegionId(v string) *CreateOrUpdateAl
 
 func (s *CreateOrUpdateAlertRuleRequest) SetTags(v []*CreateOrUpdateAlertRuleRequestTags) *CreateOrUpdateAlertRuleRequest {
 	s.Tags = v
+	return s
+}
+
+type CreateOrUpdateAlertRuleRequestMarkTags struct {
+	Key   *string `json:"Key,omitempty" xml:"Key,omitempty"`
+	Value *string `json:"Value,omitempty" xml:"Value,omitempty"`
+}
+
+func (s CreateOrUpdateAlertRuleRequestMarkTags) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateOrUpdateAlertRuleRequestMarkTags) GoString() string {
+	return s.String()
+}
+
+func (s *CreateOrUpdateAlertRuleRequestMarkTags) SetKey(v string) *CreateOrUpdateAlertRuleRequestMarkTags {
+	s.Key = &v
+	return s
+}
+
+func (s *CreateOrUpdateAlertRuleRequestMarkTags) SetValue(v string) *CreateOrUpdateAlertRuleRequestMarkTags {
+	s.Value = &v
 	return s
 }
 
@@ -11421,8 +11450,9 @@ func (s *DeleteSyntheticTaskResponse) SetBody(v *DeleteSyntheticTaskResponseBody
 }
 
 type DeleteTimingSyntheticTaskRequest struct {
-	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	TaskId   *string `json:"TaskId,omitempty" xml:"TaskId,omitempty"`
+	RegionId        *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	ResourceGroupId *string `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
+	TaskId          *string `json:"TaskId,omitempty" xml:"TaskId,omitempty"`
 }
 
 func (s DeleteTimingSyntheticTaskRequest) String() string {
@@ -11435,6 +11465,11 @@ func (s DeleteTimingSyntheticTaskRequest) GoString() string {
 
 func (s *DeleteTimingSyntheticTaskRequest) SetRegionId(v string) *DeleteTimingSyntheticTaskRequest {
 	s.RegionId = &v
+	return s
+}
+
+func (s *DeleteTimingSyntheticTaskRequest) SetResourceGroupId(v string) *DeleteTimingSyntheticTaskRequest {
+	s.ResourceGroupId = &v
 	return s
 }
 
@@ -37041,6 +37076,10 @@ func (client *Client) CreateOrUpdateAlertRuleWithOptions(request *CreateOrUpdate
 		body["Level"] = request.Level
 	}
 
+	if !tea.BoolValue(util.IsUnset(request.MarkTags)) {
+		body["MarkTags"] = request.MarkTags
+	}
+
 	if !tea.BoolValue(util.IsUnset(request.Message)) {
 		body["Message"] = request.Message
 	}
@@ -39443,6 +39482,10 @@ func (client *Client) DeleteTimingSyntheticTaskWithOptions(request *DeleteTiming
 	query := map[string]interface{}{}
 	if !tea.BoolValue(util.IsUnset(request.RegionId)) {
 		query["RegionId"] = request.RegionId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ResourceGroupId)) {
+		query["ResourceGroupId"] = request.ResourceGroupId
 	}
 
 	if !tea.BoolValue(util.IsUnset(request.TaskId)) {
