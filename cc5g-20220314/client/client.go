@@ -3298,6 +3298,87 @@ func (s *ListBatchOperateCardsTasksResponse) SetBody(v *ListBatchOperateCardsTas
 	return s
 }
 
+type ListCardAreaLimitSupportAreaRequest struct {
+	AcceptLanguage *string `json:"AcceptLanguage,omitempty" xml:"AcceptLanguage,omitempty"`
+	ProvinceName   *string `json:"ProvinceName,omitempty" xml:"ProvinceName,omitempty"`
+	RegionId       *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+}
+
+func (s ListCardAreaLimitSupportAreaRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListCardAreaLimitSupportAreaRequest) GoString() string {
+	return s.String()
+}
+
+func (s *ListCardAreaLimitSupportAreaRequest) SetAcceptLanguage(v string) *ListCardAreaLimitSupportAreaRequest {
+	s.AcceptLanguage = &v
+	return s
+}
+
+func (s *ListCardAreaLimitSupportAreaRequest) SetProvinceName(v string) *ListCardAreaLimitSupportAreaRequest {
+	s.ProvinceName = &v
+	return s
+}
+
+func (s *ListCardAreaLimitSupportAreaRequest) SetRegionId(v string) *ListCardAreaLimitSupportAreaRequest {
+	s.RegionId = &v
+	return s
+}
+
+type ListCardAreaLimitSupportAreaResponseBody struct {
+	Provinces []*string `json:"Provinces,omitempty" xml:"Provinces,omitempty" type:"Repeated"`
+	RequestId *string   `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+}
+
+func (s ListCardAreaLimitSupportAreaResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListCardAreaLimitSupportAreaResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *ListCardAreaLimitSupportAreaResponseBody) SetProvinces(v []*string) *ListCardAreaLimitSupportAreaResponseBody {
+	s.Provinces = v
+	return s
+}
+
+func (s *ListCardAreaLimitSupportAreaResponseBody) SetRequestId(v string) *ListCardAreaLimitSupportAreaResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+type ListCardAreaLimitSupportAreaResponse struct {
+	Headers    map[string]*string                        `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                                    `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *ListCardAreaLimitSupportAreaResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s ListCardAreaLimitSupportAreaResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListCardAreaLimitSupportAreaResponse) GoString() string {
+	return s.String()
+}
+
+func (s *ListCardAreaLimitSupportAreaResponse) SetHeaders(v map[string]*string) *ListCardAreaLimitSupportAreaResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *ListCardAreaLimitSupportAreaResponse) SetStatusCode(v int32) *ListCardAreaLimitSupportAreaResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *ListCardAreaLimitSupportAreaResponse) SetBody(v *ListCardAreaLimitSupportAreaResponseBody) *ListCardAreaLimitSupportAreaResponse {
+	s.Body = v
+	return s
+}
+
 type ListCardDayUsagesRequest struct {
 	Iccids                   []*string `json:"Iccids,omitempty" xml:"Iccids,omitempty" type:"Repeated"`
 	LatestMonthNum           *int32    `json:"LatestMonthNum,omitempty" xml:"LatestMonthNum,omitempty"`
@@ -5907,6 +5988,93 @@ func (s *RemoveWirelessCloudConnectorFromGroupResponse) SetStatusCode(v int32) *
 }
 
 func (s *RemoveWirelessCloudConnectorFromGroupResponse) SetBody(v *RemoveWirelessCloudConnectorFromGroupResponseBody) *RemoveWirelessCloudConnectorFromGroupResponse {
+	s.Body = v
+	return s
+}
+
+type ResetAreaLimitCardsRequest struct {
+	ClientToken *string   `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
+	DryRun      *bool     `json:"DryRun,omitempty" xml:"DryRun,omitempty"`
+	Iccids      []*string `json:"Iccids,omitempty" xml:"Iccids,omitempty" type:"Repeated"`
+	Province    *string   `json:"Province,omitempty" xml:"Province,omitempty"`
+	RegionId    *string   `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+}
+
+func (s ResetAreaLimitCardsRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ResetAreaLimitCardsRequest) GoString() string {
+	return s.String()
+}
+
+func (s *ResetAreaLimitCardsRequest) SetClientToken(v string) *ResetAreaLimitCardsRequest {
+	s.ClientToken = &v
+	return s
+}
+
+func (s *ResetAreaLimitCardsRequest) SetDryRun(v bool) *ResetAreaLimitCardsRequest {
+	s.DryRun = &v
+	return s
+}
+
+func (s *ResetAreaLimitCardsRequest) SetIccids(v []*string) *ResetAreaLimitCardsRequest {
+	s.Iccids = v
+	return s
+}
+
+func (s *ResetAreaLimitCardsRequest) SetProvince(v string) *ResetAreaLimitCardsRequest {
+	s.Province = &v
+	return s
+}
+
+func (s *ResetAreaLimitCardsRequest) SetRegionId(v string) *ResetAreaLimitCardsRequest {
+	s.RegionId = &v
+	return s
+}
+
+type ResetAreaLimitCardsResponseBody struct {
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+}
+
+func (s ResetAreaLimitCardsResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ResetAreaLimitCardsResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *ResetAreaLimitCardsResponseBody) SetRequestId(v string) *ResetAreaLimitCardsResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+type ResetAreaLimitCardsResponse struct {
+	Headers    map[string]*string               `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                           `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *ResetAreaLimitCardsResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s ResetAreaLimitCardsResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ResetAreaLimitCardsResponse) GoString() string {
+	return s.String()
+}
+
+func (s *ResetAreaLimitCardsResponse) SetHeaders(v map[string]*string) *ResetAreaLimitCardsResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *ResetAreaLimitCardsResponse) SetStatusCode(v int32) *ResetAreaLimitCardsResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *ResetAreaLimitCardsResponse) SetBody(v *ResetAreaLimitCardsResponseBody) *ResetAreaLimitCardsResponse {
 	s.Body = v
 	return s
 }
@@ -8851,6 +9019,46 @@ func (client *Client) ListBatchOperateCardsTasks(request *ListBatchOperateCardsT
 	return _result, _err
 }
 
+func (client *Client) ListCardAreaLimitSupportAreaWithOptions(request *ListCardAreaLimitSupportAreaRequest, runtime *util.RuntimeOptions) (_result *ListCardAreaLimitSupportAreaResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := openapiutil.Query(util.ToMap(request))
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("ListCardAreaLimitSupportArea"),
+		Version:     tea.String("2022-03-14"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("GET"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &ListCardAreaLimitSupportAreaResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) ListCardAreaLimitSupportArea(request *ListCardAreaLimitSupportAreaRequest) (_result *ListCardAreaLimitSupportAreaResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &ListCardAreaLimitSupportAreaResponse{}
+	_body, _err := client.ListCardAreaLimitSupportAreaWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
 func (client *Client) ListCardDayUsagesWithOptions(request *ListCardDayUsagesRequest, runtime *util.RuntimeOptions) (_result *ListCardDayUsagesResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -9628,6 +9836,66 @@ func (client *Client) RemoveWirelessCloudConnectorFromGroup(request *RemoveWirel
 	runtime := &util.RuntimeOptions{}
 	_result = &RemoveWirelessCloudConnectorFromGroupResponse{}
 	_body, _err := client.RemoveWirelessCloudConnectorFromGroupWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) ResetAreaLimitCardsWithOptions(request *ResetAreaLimitCardsRequest, runtime *util.RuntimeOptions) (_result *ResetAreaLimitCardsResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.ClientToken)) {
+		query["ClientToken"] = request.ClientToken
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.DryRun)) {
+		query["DryRun"] = request.DryRun
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Iccids)) {
+		query["Iccids"] = request.Iccids
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Province)) {
+		query["Province"] = request.Province
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.RegionId)) {
+		query["RegionId"] = request.RegionId
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("ResetAreaLimitCards"),
+		Version:     tea.String("2022-03-14"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &ResetAreaLimitCardsResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) ResetAreaLimitCards(request *ResetAreaLimitCardsRequest) (_result *ResetAreaLimitCardsResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &ResetAreaLimitCardsResponse{}
+	_body, _err := client.ResetAreaLimitCardsWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
