@@ -305,59 +305,6 @@ func (s *CreatePrivateAccessApplicationRequestPortRanges) SetEnd(v int32) *Creat
 	return s
 }
 
-type CreatePrivateAccessApplicationShrinkRequest struct {
-	AddressesShrink  *string `json:"Addresses,omitempty" xml:"Addresses,omitempty"`
-	Description      *string `json:"Description,omitempty" xml:"Description,omitempty"`
-	Name             *string `json:"Name,omitempty" xml:"Name,omitempty"`
-	PortRangesShrink *string `json:"PortRanges,omitempty" xml:"PortRanges,omitempty"`
-	Protocol         *string `json:"Protocol,omitempty" xml:"Protocol,omitempty"`
-	Status           *string `json:"Status,omitempty" xml:"Status,omitempty"`
-	TagIdsShrink     *string `json:"TagIds,omitempty" xml:"TagIds,omitempty"`
-}
-
-func (s CreatePrivateAccessApplicationShrinkRequest) String() string {
-	return tea.Prettify(s)
-}
-
-func (s CreatePrivateAccessApplicationShrinkRequest) GoString() string {
-	return s.String()
-}
-
-func (s *CreatePrivateAccessApplicationShrinkRequest) SetAddressesShrink(v string) *CreatePrivateAccessApplicationShrinkRequest {
-	s.AddressesShrink = &v
-	return s
-}
-
-func (s *CreatePrivateAccessApplicationShrinkRequest) SetDescription(v string) *CreatePrivateAccessApplicationShrinkRequest {
-	s.Description = &v
-	return s
-}
-
-func (s *CreatePrivateAccessApplicationShrinkRequest) SetName(v string) *CreatePrivateAccessApplicationShrinkRequest {
-	s.Name = &v
-	return s
-}
-
-func (s *CreatePrivateAccessApplicationShrinkRequest) SetPortRangesShrink(v string) *CreatePrivateAccessApplicationShrinkRequest {
-	s.PortRangesShrink = &v
-	return s
-}
-
-func (s *CreatePrivateAccessApplicationShrinkRequest) SetProtocol(v string) *CreatePrivateAccessApplicationShrinkRequest {
-	s.Protocol = &v
-	return s
-}
-
-func (s *CreatePrivateAccessApplicationShrinkRequest) SetStatus(v string) *CreatePrivateAccessApplicationShrinkRequest {
-	s.Status = &v
-	return s
-}
-
-func (s *CreatePrivateAccessApplicationShrinkRequest) SetTagIdsShrink(v string) *CreatePrivateAccessApplicationShrinkRequest {
-	s.TagIdsShrink = &v
-	return s
-}
-
 type CreatePrivateAccessApplicationResponseBody struct {
 	ApplicationId *string `json:"ApplicationId,omitempty" xml:"ApplicationId,omitempty"`
 	RequestId     *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
@@ -523,87 +470,6 @@ func (s *CreatePrivateAccessPolicyRequestCustomUserAttributes) SetUserGroupType(
 
 func (s *CreatePrivateAccessPolicyRequestCustomUserAttributes) SetValue(v string) *CreatePrivateAccessPolicyRequestCustomUserAttributes {
 	s.Value = &v
-	return s
-}
-
-type CreatePrivateAccessPolicyShrinkRequest struct {
-	ApplicationIdsShrink       *string `json:"ApplicationIds,omitempty" xml:"ApplicationIds,omitempty"`
-	ApplicationType            *string `json:"ApplicationType,omitempty" xml:"ApplicationType,omitempty"`
-	CustomUserAttributesShrink *string `json:"CustomUserAttributes,omitempty" xml:"CustomUserAttributes,omitempty"`
-	Description                *string `json:"Description,omitempty" xml:"Description,omitempty"`
-	Name                       *string `json:"Name,omitempty" xml:"Name,omitempty"`
-	PolicyAction               *string `json:"PolicyAction,omitempty" xml:"PolicyAction,omitempty"`
-	Priority                   *int32  `json:"Priority,omitempty" xml:"Priority,omitempty"`
-	Status                     *string `json:"Status,omitempty" xml:"Status,omitempty"`
-	// 内网访问标签ID集合。最多可输入100个内网访问标签ID。当**ApplicationType**为**Tag时**，必填。和**ApplicationIds**互斥。
-	TagIdsShrink       *string `json:"TagIds,omitempty" xml:"TagIds,omitempty"`
-	UserGroupIdsShrink *string `json:"UserGroupIds,omitempty" xml:"UserGroupIds,omitempty"`
-	// 内网访问策略的用户组类型。取值：
-	// - **Normal**：普通用户组。
-	// - **Custom**：自定义用户组。
-	UserGroupMode *string `json:"UserGroupMode,omitempty" xml:"UserGroupMode,omitempty"`
-}
-
-func (s CreatePrivateAccessPolicyShrinkRequest) String() string {
-	return tea.Prettify(s)
-}
-
-func (s CreatePrivateAccessPolicyShrinkRequest) GoString() string {
-	return s.String()
-}
-
-func (s *CreatePrivateAccessPolicyShrinkRequest) SetApplicationIdsShrink(v string) *CreatePrivateAccessPolicyShrinkRequest {
-	s.ApplicationIdsShrink = &v
-	return s
-}
-
-func (s *CreatePrivateAccessPolicyShrinkRequest) SetApplicationType(v string) *CreatePrivateAccessPolicyShrinkRequest {
-	s.ApplicationType = &v
-	return s
-}
-
-func (s *CreatePrivateAccessPolicyShrinkRequest) SetCustomUserAttributesShrink(v string) *CreatePrivateAccessPolicyShrinkRequest {
-	s.CustomUserAttributesShrink = &v
-	return s
-}
-
-func (s *CreatePrivateAccessPolicyShrinkRequest) SetDescription(v string) *CreatePrivateAccessPolicyShrinkRequest {
-	s.Description = &v
-	return s
-}
-
-func (s *CreatePrivateAccessPolicyShrinkRequest) SetName(v string) *CreatePrivateAccessPolicyShrinkRequest {
-	s.Name = &v
-	return s
-}
-
-func (s *CreatePrivateAccessPolicyShrinkRequest) SetPolicyAction(v string) *CreatePrivateAccessPolicyShrinkRequest {
-	s.PolicyAction = &v
-	return s
-}
-
-func (s *CreatePrivateAccessPolicyShrinkRequest) SetPriority(v int32) *CreatePrivateAccessPolicyShrinkRequest {
-	s.Priority = &v
-	return s
-}
-
-func (s *CreatePrivateAccessPolicyShrinkRequest) SetStatus(v string) *CreatePrivateAccessPolicyShrinkRequest {
-	s.Status = &v
-	return s
-}
-
-func (s *CreatePrivateAccessPolicyShrinkRequest) SetTagIdsShrink(v string) *CreatePrivateAccessPolicyShrinkRequest {
-	s.TagIdsShrink = &v
-	return s
-}
-
-func (s *CreatePrivateAccessPolicyShrinkRequest) SetUserGroupIdsShrink(v string) *CreatePrivateAccessPolicyShrinkRequest {
-	s.UserGroupIdsShrink = &v
-	return s
-}
-
-func (s *CreatePrivateAccessPolicyShrinkRequest) SetUserGroupMode(v string) *CreatePrivateAccessPolicyShrinkRequest {
-	s.UserGroupMode = &v
 	return s
 }
 
@@ -5024,65 +4890,6 @@ func (s *UpdatePrivateAccessApplicationRequestPortRanges) SetEnd(v int32) *Updat
 	return s
 }
 
-type UpdatePrivateAccessApplicationShrinkRequest struct {
-	AddressesShrink  *string `json:"Addresses,omitempty" xml:"Addresses,omitempty"`
-	ApplicationId    *string `json:"ApplicationId,omitempty" xml:"ApplicationId,omitempty"`
-	Description      *string `json:"Description,omitempty" xml:"Description,omitempty"`
-	ModifyType       *string `json:"ModifyType,omitempty" xml:"ModifyType,omitempty"`
-	PortRangesShrink *string `json:"PortRanges,omitempty" xml:"PortRanges,omitempty"`
-	Protocol         *string `json:"Protocol,omitempty" xml:"Protocol,omitempty"`
-	Status           *string `json:"Status,omitempty" xml:"Status,omitempty"`
-	TagIdsShrink     *string `json:"TagIds,omitempty" xml:"TagIds,omitempty"`
-}
-
-func (s UpdatePrivateAccessApplicationShrinkRequest) String() string {
-	return tea.Prettify(s)
-}
-
-func (s UpdatePrivateAccessApplicationShrinkRequest) GoString() string {
-	return s.String()
-}
-
-func (s *UpdatePrivateAccessApplicationShrinkRequest) SetAddressesShrink(v string) *UpdatePrivateAccessApplicationShrinkRequest {
-	s.AddressesShrink = &v
-	return s
-}
-
-func (s *UpdatePrivateAccessApplicationShrinkRequest) SetApplicationId(v string) *UpdatePrivateAccessApplicationShrinkRequest {
-	s.ApplicationId = &v
-	return s
-}
-
-func (s *UpdatePrivateAccessApplicationShrinkRequest) SetDescription(v string) *UpdatePrivateAccessApplicationShrinkRequest {
-	s.Description = &v
-	return s
-}
-
-func (s *UpdatePrivateAccessApplicationShrinkRequest) SetModifyType(v string) *UpdatePrivateAccessApplicationShrinkRequest {
-	s.ModifyType = &v
-	return s
-}
-
-func (s *UpdatePrivateAccessApplicationShrinkRequest) SetPortRangesShrink(v string) *UpdatePrivateAccessApplicationShrinkRequest {
-	s.PortRangesShrink = &v
-	return s
-}
-
-func (s *UpdatePrivateAccessApplicationShrinkRequest) SetProtocol(v string) *UpdatePrivateAccessApplicationShrinkRequest {
-	s.Protocol = &v
-	return s
-}
-
-func (s *UpdatePrivateAccessApplicationShrinkRequest) SetStatus(v string) *UpdatePrivateAccessApplicationShrinkRequest {
-	s.Status = &v
-	return s
-}
-
-func (s *UpdatePrivateAccessApplicationShrinkRequest) SetTagIdsShrink(v string) *UpdatePrivateAccessApplicationShrinkRequest {
-	s.TagIdsShrink = &v
-	return s
-}
-
 type UpdatePrivateAccessApplicationResponseBody struct {
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
@@ -5248,93 +5055,6 @@ func (s *UpdatePrivateAccessPolicyRequestCustomUserAttributes) SetUserGroupType(
 
 func (s *UpdatePrivateAccessPolicyRequestCustomUserAttributes) SetValue(v string) *UpdatePrivateAccessPolicyRequestCustomUserAttributes {
 	s.Value = &v
-	return s
-}
-
-type UpdatePrivateAccessPolicyShrinkRequest struct {
-	ApplicationIdsShrink       *string `json:"ApplicationIds,omitempty" xml:"ApplicationIds,omitempty"`
-	ApplicationType            *string `json:"ApplicationType,omitempty" xml:"ApplicationType,omitempty"`
-	CustomUserAttributesShrink *string `json:"CustomUserAttributes,omitempty" xml:"CustomUserAttributes,omitempty"`
-	Description                *string `json:"Description,omitempty" xml:"Description,omitempty"`
-	ModifyType                 *string `json:"ModifyType,omitempty" xml:"ModifyType,omitempty"`
-	PolicyAction               *string `json:"PolicyAction,omitempty" xml:"PolicyAction,omitempty"`
-	PolicyId                   *string `json:"PolicyId,omitempty" xml:"PolicyId,omitempty"`
-	Priority                   *int32  `json:"Priority,omitempty" xml:"Priority,omitempty"`
-	Status                     *string `json:"Status,omitempty" xml:"Status,omitempty"`
-	// 内网访问标签ID集合。一条策略最多支持100个内网访问标签ID。
-	TagIdsShrink       *string `json:"TagIds,omitempty" xml:"TagIds,omitempty"`
-	UserGroupIdsShrink *string `json:"UserGroupIds,omitempty" xml:"UserGroupIds,omitempty"`
-	// 内网访问策略的用户组类型。取值：
-	// - **Normal**：普通用户组。
-	// - **Custom**：自定义用户组。
-	UserGroupMode *string `json:"UserGroupMode,omitempty" xml:"UserGroupMode,omitempty"`
-}
-
-func (s UpdatePrivateAccessPolicyShrinkRequest) String() string {
-	return tea.Prettify(s)
-}
-
-func (s UpdatePrivateAccessPolicyShrinkRequest) GoString() string {
-	return s.String()
-}
-
-func (s *UpdatePrivateAccessPolicyShrinkRequest) SetApplicationIdsShrink(v string) *UpdatePrivateAccessPolicyShrinkRequest {
-	s.ApplicationIdsShrink = &v
-	return s
-}
-
-func (s *UpdatePrivateAccessPolicyShrinkRequest) SetApplicationType(v string) *UpdatePrivateAccessPolicyShrinkRequest {
-	s.ApplicationType = &v
-	return s
-}
-
-func (s *UpdatePrivateAccessPolicyShrinkRequest) SetCustomUserAttributesShrink(v string) *UpdatePrivateAccessPolicyShrinkRequest {
-	s.CustomUserAttributesShrink = &v
-	return s
-}
-
-func (s *UpdatePrivateAccessPolicyShrinkRequest) SetDescription(v string) *UpdatePrivateAccessPolicyShrinkRequest {
-	s.Description = &v
-	return s
-}
-
-func (s *UpdatePrivateAccessPolicyShrinkRequest) SetModifyType(v string) *UpdatePrivateAccessPolicyShrinkRequest {
-	s.ModifyType = &v
-	return s
-}
-
-func (s *UpdatePrivateAccessPolicyShrinkRequest) SetPolicyAction(v string) *UpdatePrivateAccessPolicyShrinkRequest {
-	s.PolicyAction = &v
-	return s
-}
-
-func (s *UpdatePrivateAccessPolicyShrinkRequest) SetPolicyId(v string) *UpdatePrivateAccessPolicyShrinkRequest {
-	s.PolicyId = &v
-	return s
-}
-
-func (s *UpdatePrivateAccessPolicyShrinkRequest) SetPriority(v int32) *UpdatePrivateAccessPolicyShrinkRequest {
-	s.Priority = &v
-	return s
-}
-
-func (s *UpdatePrivateAccessPolicyShrinkRequest) SetStatus(v string) *UpdatePrivateAccessPolicyShrinkRequest {
-	s.Status = &v
-	return s
-}
-
-func (s *UpdatePrivateAccessPolicyShrinkRequest) SetTagIdsShrink(v string) *UpdatePrivateAccessPolicyShrinkRequest {
-	s.TagIdsShrink = &v
-	return s
-}
-
-func (s *UpdatePrivateAccessPolicyShrinkRequest) SetUserGroupIdsShrink(v string) *UpdatePrivateAccessPolicyShrinkRequest {
-	s.UserGroupIdsShrink = &v
-	return s
-}
-
-func (s *UpdatePrivateAccessPolicyShrinkRequest) SetUserGroupMode(v string) *UpdatePrivateAccessPolicyShrinkRequest {
-	s.UserGroupMode = &v
 	return s
 }
 
@@ -5684,28 +5404,15 @@ func (client *Client) CreateDynamicRoute(request *CreateDynamicRouteRequest) (_r
 	return _result, _err
 }
 
-func (client *Client) CreatePrivateAccessApplicationWithOptions(tmpReq *CreatePrivateAccessApplicationRequest, runtime *util.RuntimeOptions) (_result *CreatePrivateAccessApplicationResponse, _err error) {
-	_err = util.ValidateModel(tmpReq)
+func (client *Client) CreatePrivateAccessApplicationWithOptions(request *CreatePrivateAccessApplicationRequest, runtime *util.RuntimeOptions) (_result *CreatePrivateAccessApplicationResponse, _err error) {
+	_err = util.ValidateModel(request)
 	if _err != nil {
 		return _result, _err
 	}
-	request := &CreatePrivateAccessApplicationShrinkRequest{}
-	openapiutil.Convert(tmpReq, request)
-	if !tea.BoolValue(util.IsUnset(tmpReq.Addresses)) {
-		request.AddressesShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.Addresses, tea.String("Addresses"), tea.String("json"))
-	}
-
-	if !tea.BoolValue(util.IsUnset(tmpReq.PortRanges)) {
-		request.PortRangesShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.PortRanges, tea.String("PortRanges"), tea.String("json"))
-	}
-
-	if !tea.BoolValue(util.IsUnset(tmpReq.TagIds)) {
-		request.TagIdsShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.TagIds, tea.String("TagIds"), tea.String("json"))
-	}
-
 	body := map[string]interface{}{}
-	if !tea.BoolValue(util.IsUnset(request.AddressesShrink)) {
-		body["Addresses"] = request.AddressesShrink
+	bodyFlat := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.Addresses)) {
+		bodyFlat["Addresses"] = request.Addresses
 	}
 
 	if !tea.BoolValue(util.IsUnset(request.Description)) {
@@ -5716,8 +5423,8 @@ func (client *Client) CreatePrivateAccessApplicationWithOptions(tmpReq *CreatePr
 		body["Name"] = request.Name
 	}
 
-	if !tea.BoolValue(util.IsUnset(request.PortRangesShrink)) {
-		body["PortRanges"] = request.PortRangesShrink
+	if !tea.BoolValue(util.IsUnset(request.PortRanges)) {
+		bodyFlat["PortRanges"] = request.PortRanges
 	}
 
 	if !tea.BoolValue(util.IsUnset(request.Protocol)) {
@@ -5728,10 +5435,12 @@ func (client *Client) CreatePrivateAccessApplicationWithOptions(tmpReq *CreatePr
 		body["Status"] = request.Status
 	}
 
-	if !tea.BoolValue(util.IsUnset(request.TagIdsShrink)) {
-		body["TagIds"] = request.TagIdsShrink
+	if !tea.BoolValue(util.IsUnset(request.TagIds)) {
+		bodyFlat["TagIds"] = request.TagIds
 	}
 
+	body = tea.ToMap(body,
+		openapiutil.Query(bodyFlat))
 	req := &openapi.OpenApiRequest{
 		Body: openapiutil.ParseToMap(body),
 	}
@@ -5766,40 +5475,23 @@ func (client *Client) CreatePrivateAccessApplication(request *CreatePrivateAcces
 	return _result, _err
 }
 
-func (client *Client) CreatePrivateAccessPolicyWithOptions(tmpReq *CreatePrivateAccessPolicyRequest, runtime *util.RuntimeOptions) (_result *CreatePrivateAccessPolicyResponse, _err error) {
-	_err = util.ValidateModel(tmpReq)
+func (client *Client) CreatePrivateAccessPolicyWithOptions(request *CreatePrivateAccessPolicyRequest, runtime *util.RuntimeOptions) (_result *CreatePrivateAccessPolicyResponse, _err error) {
+	_err = util.ValidateModel(request)
 	if _err != nil {
 		return _result, _err
 	}
-	request := &CreatePrivateAccessPolicyShrinkRequest{}
-	openapiutil.Convert(tmpReq, request)
-	if !tea.BoolValue(util.IsUnset(tmpReq.ApplicationIds)) {
-		request.ApplicationIdsShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.ApplicationIds, tea.String("ApplicationIds"), tea.String("json"))
-	}
-
-	if !tea.BoolValue(util.IsUnset(tmpReq.CustomUserAttributes)) {
-		request.CustomUserAttributesShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.CustomUserAttributes, tea.String("CustomUserAttributes"), tea.String("json"))
-	}
-
-	if !tea.BoolValue(util.IsUnset(tmpReq.TagIds)) {
-		request.TagIdsShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.TagIds, tea.String("TagIds"), tea.String("json"))
-	}
-
-	if !tea.BoolValue(util.IsUnset(tmpReq.UserGroupIds)) {
-		request.UserGroupIdsShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.UserGroupIds, tea.String("UserGroupIds"), tea.String("json"))
-	}
-
 	body := map[string]interface{}{}
-	if !tea.BoolValue(util.IsUnset(request.ApplicationIdsShrink)) {
-		body["ApplicationIds"] = request.ApplicationIdsShrink
+	bodyFlat := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.ApplicationIds)) {
+		bodyFlat["ApplicationIds"] = request.ApplicationIds
 	}
 
 	if !tea.BoolValue(util.IsUnset(request.ApplicationType)) {
 		body["ApplicationType"] = request.ApplicationType
 	}
 
-	if !tea.BoolValue(util.IsUnset(request.CustomUserAttributesShrink)) {
-		body["CustomUserAttributes"] = request.CustomUserAttributesShrink
+	if !tea.BoolValue(util.IsUnset(request.CustomUserAttributes)) {
+		bodyFlat["CustomUserAttributes"] = request.CustomUserAttributes
 	}
 
 	if !tea.BoolValue(util.IsUnset(request.Description)) {
@@ -5822,18 +5514,20 @@ func (client *Client) CreatePrivateAccessPolicyWithOptions(tmpReq *CreatePrivate
 		body["Status"] = request.Status
 	}
 
-	if !tea.BoolValue(util.IsUnset(request.TagIdsShrink)) {
-		body["TagIds"] = request.TagIdsShrink
+	if !tea.BoolValue(util.IsUnset(request.TagIds)) {
+		bodyFlat["TagIds"] = request.TagIds
 	}
 
-	if !tea.BoolValue(util.IsUnset(request.UserGroupIdsShrink)) {
-		body["UserGroupIds"] = request.UserGroupIdsShrink
+	if !tea.BoolValue(util.IsUnset(request.UserGroupIds)) {
+		bodyFlat["UserGroupIds"] = request.UserGroupIds
 	}
 
 	if !tea.BoolValue(util.IsUnset(request.UserGroupMode)) {
 		body["UserGroupMode"] = request.UserGroupMode
 	}
 
+	body = tea.ToMap(body,
+		openapiutil.Query(bodyFlat))
 	req := &openapi.OpenApiRequest{
 		Body: openapiutil.ParseToMap(body),
 	}
@@ -7169,28 +6863,15 @@ func (client *Client) UpdateDynamicRoute(request *UpdateDynamicRouteRequest) (_r
 	return _result, _err
 }
 
-func (client *Client) UpdatePrivateAccessApplicationWithOptions(tmpReq *UpdatePrivateAccessApplicationRequest, runtime *util.RuntimeOptions) (_result *UpdatePrivateAccessApplicationResponse, _err error) {
-	_err = util.ValidateModel(tmpReq)
+func (client *Client) UpdatePrivateAccessApplicationWithOptions(request *UpdatePrivateAccessApplicationRequest, runtime *util.RuntimeOptions) (_result *UpdatePrivateAccessApplicationResponse, _err error) {
+	_err = util.ValidateModel(request)
 	if _err != nil {
 		return _result, _err
 	}
-	request := &UpdatePrivateAccessApplicationShrinkRequest{}
-	openapiutil.Convert(tmpReq, request)
-	if !tea.BoolValue(util.IsUnset(tmpReq.Addresses)) {
-		request.AddressesShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.Addresses, tea.String("Addresses"), tea.String("json"))
-	}
-
-	if !tea.BoolValue(util.IsUnset(tmpReq.PortRanges)) {
-		request.PortRangesShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.PortRanges, tea.String("PortRanges"), tea.String("json"))
-	}
-
-	if !tea.BoolValue(util.IsUnset(tmpReq.TagIds)) {
-		request.TagIdsShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.TagIds, tea.String("TagIds"), tea.String("json"))
-	}
-
 	body := map[string]interface{}{}
-	if !tea.BoolValue(util.IsUnset(request.AddressesShrink)) {
-		body["Addresses"] = request.AddressesShrink
+	bodyFlat := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.Addresses)) {
+		bodyFlat["Addresses"] = request.Addresses
 	}
 
 	if !tea.BoolValue(util.IsUnset(request.ApplicationId)) {
@@ -7205,8 +6886,8 @@ func (client *Client) UpdatePrivateAccessApplicationWithOptions(tmpReq *UpdatePr
 		body["ModifyType"] = request.ModifyType
 	}
 
-	if !tea.BoolValue(util.IsUnset(request.PortRangesShrink)) {
-		body["PortRanges"] = request.PortRangesShrink
+	if !tea.BoolValue(util.IsUnset(request.PortRanges)) {
+		bodyFlat["PortRanges"] = request.PortRanges
 	}
 
 	if !tea.BoolValue(util.IsUnset(request.Protocol)) {
@@ -7217,10 +6898,12 @@ func (client *Client) UpdatePrivateAccessApplicationWithOptions(tmpReq *UpdatePr
 		body["Status"] = request.Status
 	}
 
-	if !tea.BoolValue(util.IsUnset(request.TagIdsShrink)) {
-		body["TagIds"] = request.TagIdsShrink
+	if !tea.BoolValue(util.IsUnset(request.TagIds)) {
+		bodyFlat["TagIds"] = request.TagIds
 	}
 
+	body = tea.ToMap(body,
+		openapiutil.Query(bodyFlat))
 	req := &openapi.OpenApiRequest{
 		Body: openapiutil.ParseToMap(body),
 	}
@@ -7255,40 +6938,23 @@ func (client *Client) UpdatePrivateAccessApplication(request *UpdatePrivateAcces
 	return _result, _err
 }
 
-func (client *Client) UpdatePrivateAccessPolicyWithOptions(tmpReq *UpdatePrivateAccessPolicyRequest, runtime *util.RuntimeOptions) (_result *UpdatePrivateAccessPolicyResponse, _err error) {
-	_err = util.ValidateModel(tmpReq)
+func (client *Client) UpdatePrivateAccessPolicyWithOptions(request *UpdatePrivateAccessPolicyRequest, runtime *util.RuntimeOptions) (_result *UpdatePrivateAccessPolicyResponse, _err error) {
+	_err = util.ValidateModel(request)
 	if _err != nil {
 		return _result, _err
 	}
-	request := &UpdatePrivateAccessPolicyShrinkRequest{}
-	openapiutil.Convert(tmpReq, request)
-	if !tea.BoolValue(util.IsUnset(tmpReq.ApplicationIds)) {
-		request.ApplicationIdsShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.ApplicationIds, tea.String("ApplicationIds"), tea.String("json"))
-	}
-
-	if !tea.BoolValue(util.IsUnset(tmpReq.CustomUserAttributes)) {
-		request.CustomUserAttributesShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.CustomUserAttributes, tea.String("CustomUserAttributes"), tea.String("json"))
-	}
-
-	if !tea.BoolValue(util.IsUnset(tmpReq.TagIds)) {
-		request.TagIdsShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.TagIds, tea.String("TagIds"), tea.String("json"))
-	}
-
-	if !tea.BoolValue(util.IsUnset(tmpReq.UserGroupIds)) {
-		request.UserGroupIdsShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.UserGroupIds, tea.String("UserGroupIds"), tea.String("json"))
-	}
-
 	body := map[string]interface{}{}
-	if !tea.BoolValue(util.IsUnset(request.ApplicationIdsShrink)) {
-		body["ApplicationIds"] = request.ApplicationIdsShrink
+	bodyFlat := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.ApplicationIds)) {
+		bodyFlat["ApplicationIds"] = request.ApplicationIds
 	}
 
 	if !tea.BoolValue(util.IsUnset(request.ApplicationType)) {
 		body["ApplicationType"] = request.ApplicationType
 	}
 
-	if !tea.BoolValue(util.IsUnset(request.CustomUserAttributesShrink)) {
-		body["CustomUserAttributes"] = request.CustomUserAttributesShrink
+	if !tea.BoolValue(util.IsUnset(request.CustomUserAttributes)) {
+		bodyFlat["CustomUserAttributes"] = request.CustomUserAttributes
 	}
 
 	if !tea.BoolValue(util.IsUnset(request.Description)) {
@@ -7315,18 +6981,20 @@ func (client *Client) UpdatePrivateAccessPolicyWithOptions(tmpReq *UpdatePrivate
 		body["Status"] = request.Status
 	}
 
-	if !tea.BoolValue(util.IsUnset(request.TagIdsShrink)) {
-		body["TagIds"] = request.TagIdsShrink
+	if !tea.BoolValue(util.IsUnset(request.TagIds)) {
+		bodyFlat["TagIds"] = request.TagIds
 	}
 
-	if !tea.BoolValue(util.IsUnset(request.UserGroupIdsShrink)) {
-		body["UserGroupIds"] = request.UserGroupIdsShrink
+	if !tea.BoolValue(util.IsUnset(request.UserGroupIds)) {
+		bodyFlat["UserGroupIds"] = request.UserGroupIds
 	}
 
 	if !tea.BoolValue(util.IsUnset(request.UserGroupMode)) {
 		body["UserGroupMode"] = request.UserGroupMode
 	}
 
+	body = tea.ToMap(body,
+		openapiutil.Query(bodyFlat))
 	req := &openapi.OpenApiRequest{
 		Body: openapiutil.ParseToMap(body),
 	}
