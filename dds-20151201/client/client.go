@@ -722,7 +722,8 @@ type CreateDBInstanceRequest struct {
 	OwnerAccount *string `json:"OwnerAccount,omitempty" xml:"OwnerAccount,omitempty"`
 	OwnerId      *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
 	// The ID of the vSwitch to which the instance is connected.
-	Period *int32 `json:"Period,omitempty" xml:"Period,omitempty"`
+	Period          *int32 `json:"Period,omitempty" xml:"Period,omitempty"`
+	ProvisionedIops *int64 `json:"ProvisionedIops,omitempty" xml:"ProvisionedIops,omitempty"`
 	// The storage type of the instance. Valid values:
 	//
 	// *   **cloud_essd1** :ESSD PL1.
@@ -929,6 +930,11 @@ func (s *CreateDBInstanceRequest) SetOwnerId(v int64) *CreateDBInstanceRequest {
 
 func (s *CreateDBInstanceRequest) SetPeriod(v int32) *CreateDBInstanceRequest {
 	s.Period = &v
+	return s
+}
+
+func (s *CreateDBInstanceRequest) SetProvisionedIops(v int64) *CreateDBInstanceRequest {
+	s.ProvisionedIops = &v
 	return s
 }
 
@@ -1732,7 +1738,8 @@ type CreateShardingDBInstanceRequest struct {
 	//
 	// *   **mongodb**: the MongoDB protocol
 	// *   **dynamodb**: the DynamoDB protocol
-	ProtocolType *string `json:"ProtocolType,omitempty" xml:"ProtocolType,omitempty"`
+	ProtocolType    *string `json:"ProtocolType,omitempty" xml:"ProtocolType,omitempty"`
+	ProvisionedIops *int64  `json:"ProvisionedIops,omitempty" xml:"ProvisionedIops,omitempty"`
 	// The region ID of the instance. You can call the [DescribeRegions](~~61933~~) operation to query the most recent region list.
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 	// The shard nodes of the instance.
@@ -1915,6 +1922,11 @@ func (s *CreateShardingDBInstanceRequest) SetPeriod(v int32) *CreateShardingDBIn
 
 func (s *CreateShardingDBInstanceRequest) SetProtocolType(v string) *CreateShardingDBInstanceRequest {
 	s.ProtocolType = &v
+	return s
+}
+
+func (s *CreateShardingDBInstanceRequest) SetProvisionedIops(v int64) *CreateShardingDBInstanceRequest {
+	s.ProvisionedIops = &v
 	return s
 }
 
@@ -2517,7 +2529,7 @@ func (s *DeleteNodeResponse) SetBody(v *DeleteNodeResponseBody) *DeleteNodeRespo
 type DescribeAccountsRequest struct {
 	// The name of the account. Set the value to **root**.
 	AccountName *string `json:"AccountName,omitempty" xml:"AccountName,omitempty"`
-	// The ID of the instance.
+	// The instance ID.
 	DBInstanceId         *string `json:"DBInstanceId,omitempty" xml:"DBInstanceId,omitempty"`
 	OwnerAccount         *string `json:"OwnerAccount,omitempty" xml:"OwnerAccount,omitempty"`
 	OwnerId              *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
@@ -2570,9 +2582,9 @@ func (s *DescribeAccountsRequest) SetSecurityToken(v string) *DescribeAccountsRe
 }
 
 type DescribeAccountsResponseBody struct {
-	// Details about the accounts.
+	// The username of the account.
 	Accounts *DescribeAccountsResponseBodyAccounts `json:"Accounts,omitempty" xml:"Accounts,omitempty" type:"Struct"`
-	// The ID of the request.
+	// The request ID.
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -2613,21 +2625,23 @@ func (s *DescribeAccountsResponseBodyAccounts) SetAccount(v []*DescribeAccountsR
 
 type DescribeAccountsResponseBodyAccountsAccount struct {
 	// The description of the account.
+	//
+	// > This parameter is returned only after you configure the description of the account by calling the [ModifyAccountDescription](~~468391~~) operation.
 	AccountDescription *string `json:"AccountDescription,omitempty" xml:"AccountDescription,omitempty"`
 	// The name of the account.
 	AccountName *string `json:"AccountName,omitempty" xml:"AccountName,omitempty"`
 	// The status of the account.
 	//
-	// *   Unavailable
-	// *   Available
+	// *   **Unavailable**
+	// *   **Available**
 	AccountStatus *string `json:"AccountStatus,omitempty" xml:"AccountStatus,omitempty"`
 	// The role of the account. Valid values:
 	//
-	// *   db: shard
-	// *   cs: Configserver
-	// *   mongos: mongos
-	// *   logic: sharded cluster instance
-	// *   normal: replica set instance
+	// *   **db**: shard
+	// *   **cs**: Configserver
+	// *   **mongos**: mongos
+	// *   **logic:** sharded cluster instance
+	// *   **normal:** replica set instance
 	CharacterType *string `json:"CharacterType,omitempty" xml:"CharacterType,omitempty"`
 	// The name of the instance to which the account belongs.
 	DBInstanceId *string `json:"DBInstanceId,omitempty" xml:"DBInstanceId,omitempty"`
@@ -2964,13 +2978,19 @@ func (s *DescribeActiveOperationTaskTypeResponse) SetBody(v *DescribeActiveOpera
 }
 
 type DescribeAuditLogFilterRequest struct {
+	// The ID of the instance.
 	DBInstanceId         *string `json:"DBInstanceId,omitempty" xml:"DBInstanceId,omitempty"`
 	OwnerAccount         *string `json:"OwnerAccount,omitempty" xml:"OwnerAccount,omitempty"`
 	OwnerId              *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
 	ResourceOwnerAccount *string `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
 	ResourceOwnerId      *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
-	RoleType             *string `json:"RoleType,omitempty" xml:"RoleType,omitempty"`
-	SecurityToken        *string `json:"SecurityToken,omitempty" xml:"SecurityToken,omitempty"`
+	// The role of the node in the instance. Valid values:
+	//
+	// * **mongos**: mongos node.
+	// * **db** : shard node.
+	// * **logic** : logical instance.
+	RoleType      *string `json:"RoleType,omitempty" xml:"RoleType,omitempty"`
+	SecurityToken *string `json:"SecurityToken,omitempty" xml:"SecurityToken,omitempty"`
 }
 
 func (s DescribeAuditLogFilterRequest) String() string {
@@ -3017,9 +3037,20 @@ func (s *DescribeAuditLogFilterRequest) SetSecurityToken(v string) *DescribeAudi
 }
 
 type DescribeAuditLogFilterResponseBody struct {
-	Filter    *string `json:"Filter,omitempty" xml:"Filter,omitempty"`
+	// The type of the audit log entries. Valid values:
+	//
+	// *   **admin**: O\&M and management operations
+	// *   **slow**: slow query logs
+	// *   **query**: query operations
+	// *   **insert**: insert operations
+	// *   **update**: update operations
+	// *   **delete**: delete operations
+	// *   **command**: protocol commands such as the aggregate method
+	Filter *string `json:"Filter,omitempty" xml:"Filter,omitempty"`
+	// The ID of the request.
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	RoleType  *string `json:"RoleType,omitempty" xml:"RoleType,omitempty"`
+	// The role of the node.
+	RoleType *string `json:"RoleType,omitempty" xml:"RoleType,omitempty"`
 }
 
 func (s DescribeAuditLogFilterResponseBody) String() string {
@@ -5045,6 +5076,7 @@ func (s *DescribeDBInstanceAttributeResponseBodyDBInstances) SetDBInstance(v []*
 }
 
 type DescribeDBInstanceAttributeResponseBodyDBInstancesDBInstance struct {
+	BurstingEnabled *bool `json:"BurstingEnabled,omitempty" xml:"BurstingEnabled,omitempty"`
 	// The storage type of the instance. Valid values:
 	//
 	// **cloud_essd1** :ESSD PL1 **cloud_essd2**: ESSD of PL2. **cloud_essd3**: ESSD of PL3. **local_ssd**: local SSD.
@@ -5173,7 +5205,8 @@ type DescribeDBInstanceAttributeResponseBodyDBInstancesDBInstance struct {
 	// *   **4.0**
 	NetworkType *string `json:"NetworkType,omitempty" xml:"NetworkType,omitempty"`
 	// Test database
-	ProtocolType *string `json:"ProtocolType,omitempty" xml:"ProtocolType,omitempty"`
+	ProtocolType    *string `json:"ProtocolType,omitempty" xml:"ProtocolType,omitempty"`
+	ProvisionedIops *int64  `json:"ProvisionedIops,omitempty" xml:"ProvisionedIops,omitempty"`
 	// The kind code of the instance. Valid values:
 	//
 	// *   **0**: physical machine
@@ -5264,6 +5297,11 @@ func (s DescribeDBInstanceAttributeResponseBodyDBInstancesDBInstance) String() s
 
 func (s DescribeDBInstanceAttributeResponseBodyDBInstancesDBInstance) GoString() string {
 	return s.String()
+}
+
+func (s *DescribeDBInstanceAttributeResponseBodyDBInstancesDBInstance) SetBurstingEnabled(v bool) *DescribeDBInstanceAttributeResponseBodyDBInstancesDBInstance {
+	s.BurstingEnabled = &v
+	return s
 }
 
 func (s *DescribeDBInstanceAttributeResponseBodyDBInstancesDBInstance) SetCapacityUnit(v string) *DescribeDBInstanceAttributeResponseBodyDBInstancesDBInstance {
@@ -5413,6 +5451,11 @@ func (s *DescribeDBInstanceAttributeResponseBodyDBInstancesDBInstance) SetNetwor
 
 func (s *DescribeDBInstanceAttributeResponseBodyDBInstancesDBInstance) SetProtocolType(v string) *DescribeDBInstanceAttributeResponseBodyDBInstancesDBInstance {
 	s.ProtocolType = &v
+	return s
+}
+
+func (s *DescribeDBInstanceAttributeResponseBodyDBInstancesDBInstance) SetProvisionedIops(v int64) *DescribeDBInstanceAttributeResponseBodyDBInstancesDBInstance {
+	s.ProvisionedIops = &v
 	return s
 }
 
@@ -14593,7 +14636,9 @@ func (s *ModifyDBInstanceMaintainTimeResponse) SetBody(v *ModifyDBInstanceMainta
 }
 
 type ModifyDBInstanceMonitorRequest struct {
-	DBInstanceId         *string `json:"DBInstanceId,omitempty" xml:"DBInstanceId,omitempty"`
+	// The ID of the instance.
+	DBInstanceId *string `json:"DBInstanceId,omitempty" xml:"DBInstanceId,omitempty"`
+	// The collection frequency of monitoring data. Valid values: **1** or **300**. Unit: seconds.
 	Granularity          *string `json:"Granularity,omitempty" xml:"Granularity,omitempty"`
 	OwnerAccount         *string `json:"OwnerAccount,omitempty" xml:"OwnerAccount,omitempty"`
 	OwnerId              *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
@@ -14646,6 +14691,7 @@ func (s *ModifyDBInstanceMonitorRequest) SetSecurityToken(v string) *ModifyDBIns
 }
 
 type ModifyDBInstanceMonitorResponseBody struct {
+	// The ID of the request.
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -19032,6 +19078,10 @@ func (client *Client) CreateDBInstanceWithOptions(request *CreateDBInstanceReque
 		query["Period"] = request.Period
 	}
 
+	if !tea.BoolValue(util.IsUnset(request.ProvisionedIops)) {
+		query["ProvisionedIops"] = request.ProvisionedIops
+	}
+
 	if !tea.BoolValue(util.IsUnset(request.ReadonlyReplicas)) {
 		query["ReadonlyReplicas"] = request.ReadonlyReplicas
 	}
@@ -19535,6 +19585,10 @@ func (client *Client) CreateShardingDBInstanceWithOptions(request *CreateShardin
 		query["ProtocolType"] = request.ProtocolType
 	}
 
+	if !tea.BoolValue(util.IsUnset(request.ProvisionedIops)) {
+		query["ProvisionedIops"] = request.ProvisionedIops
+	}
+
 	if !tea.BoolValue(util.IsUnset(request.RegionId)) {
 		query["RegionId"] = request.RegionId
 	}
@@ -19894,7 +19948,7 @@ func (client *Client) DeleteNode(request *DeleteNodeRequest) (_result *DeleteNod
 }
 
 /**
- * >  This operation can query only the information of the root account.
+ * >  You can call this operation to query only the information of the root account.
  *
  * @param request DescribeAccountsRequest
  * @param runtime runtime options for this request RuntimeOptions
@@ -19958,7 +20012,7 @@ func (client *Client) DescribeAccountsWithOptions(request *DescribeAccountsReque
 }
 
 /**
- * >  This operation can query only the information of the root account.
+ * >  You can call this operation to query only the information of the root account.
  *
  * @param request DescribeAccountsRequest
  * @return DescribeAccountsResponse
@@ -20107,9 +20161,9 @@ func (client *Client) DescribeActiveOperationTaskType(request *DescribeActiveOpe
 }
 
 /**
- * The role of the node in the instance. Valid values:
- * *   **primary**
- * *   **secondary**
+ * *   The instance must be in the running state when you call this operation.
+ * *   This operation is applicable only to **general-purpose local-disk** and **dedicated local-disk** instances.
+ * *   You can call this operation up to 30 times per minute. To call this operation at a higher frequency, use a Logstore. For more information, see [Manage a Logstore](~~48990~~).
  *
  * @param request DescribeAuditLogFilterRequest
  * @param runtime runtime options for this request RuntimeOptions
@@ -20173,9 +20227,9 @@ func (client *Client) DescribeAuditLogFilterWithOptions(request *DescribeAuditLo
 }
 
 /**
- * The role of the node in the instance. Valid values:
- * *   **primary**
- * *   **secondary**
+ * *   The instance must be in the running state when you call this operation.
+ * *   This operation is applicable only to **general-purpose local-disk** and **dedicated local-disk** instances.
+ * *   You can call this operation up to 30 times per minute. To call this operation at a higher frequency, use a Logstore. For more information, see [Manage a Logstore](~~48990~~).
  *
  * @param request DescribeAuditLogFilterRequest
  * @return DescribeAuditLogFilterResponse
@@ -24378,10 +24432,10 @@ func (client *Client) ModifyDBInstanceMaintainTime(request *ModifyDBInstanceMain
 }
 
 /**
- * >  operation is currently unavailable.
+ * >  This operation is applicable only to the ApsaraDB for MongoDB console of the previous version due to the change in the frequency at which the monitoring data of an ApsaraDB for MongoDB instance is collected.
  * Before you call this operation, make sure that the following requirements are met:
- * *   A replica set or sharded cluster instance is used.
- * *   MongoDB 3.4 (the latest minor version) or 4.0 must be selected.
+ * *   The instance is a replica set or sharded cluster instance.
+ * *   The instance runs MongoDB 3.4 (the latest minor version) or 4.0.
  *
  * @param request ModifyDBInstanceMonitorRequest
  * @param runtime runtime options for this request RuntimeOptions
@@ -24445,10 +24499,10 @@ func (client *Client) ModifyDBInstanceMonitorWithOptions(request *ModifyDBInstan
 }
 
 /**
- * >  operation is currently unavailable.
+ * >  This operation is applicable only to the ApsaraDB for MongoDB console of the previous version due to the change in the frequency at which the monitoring data of an ApsaraDB for MongoDB instance is collected.
  * Before you call this operation, make sure that the following requirements are met:
- * *   A replica set or sharded cluster instance is used.
- * *   MongoDB 3.4 (the latest minor version) or 4.0 must be selected.
+ * *   The instance is a replica set or sharded cluster instance.
+ * *   The instance runs MongoDB 3.4 (the latest minor version) or 4.0.
  *
  * @param request ModifyDBInstanceMonitorRequest
  * @return ModifyDBInstanceMonitorResponse
