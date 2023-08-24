@@ -34364,7 +34364,8 @@ type ModifyDesensitizationStrategyRequest struct {
 	// >  You can also call the [ListColumns](~~141870~~) operation to query the field name.
 	ColumnName *string `json:"ColumnName,omitempty" xml:"ColumnName,omitempty"`
 	// The ID of the database. You can call the [ListDatabases](~~141873~~) operation to query the ID.
-	DbId *int32 `json:"DbId,omitempty" xml:"DbId,omitempty"`
+	DbId      *int32 `json:"DbId,omitempty" xml:"DbId,omitempty"`
+	IsDefault *bool  `json:"IsDefault,omitempty" xml:"IsDefault,omitempty"`
 	// Specifies whether the database is a logical database. Valid values:
 	//
 	// *   **true:** The database is a physical database.
@@ -34407,6 +34408,11 @@ func (s *ModifyDesensitizationStrategyRequest) SetColumnName(v string) *ModifyDe
 
 func (s *ModifyDesensitizationStrategyRequest) SetDbId(v int32) *ModifyDesensitizationStrategyRequest {
 	s.DbId = &v
+	return s
+}
+
+func (s *ModifyDesensitizationStrategyRequest) SetIsDefault(v bool) *ModifyDesensitizationStrategyRequest {
+	s.IsDefault = &v
 	return s
 }
 
@@ -50880,6 +50886,10 @@ func (client *Client) ModifyDesensitizationStrategyWithOptions(request *ModifyDe
 
 	if !tea.BoolValue(util.IsUnset(request.DbId)) {
 		query["DbId"] = request.DbId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.IsDefault)) {
+		query["IsDefault"] = request.IsDefault
 	}
 
 	if !tea.BoolValue(util.IsUnset(request.IsLogic)) {
