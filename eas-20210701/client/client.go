@@ -291,6 +291,7 @@ type Resource struct {
 	PrePaidInstanceCount  *int32                 `json:"PrePaidInstanceCount,omitempty" xml:"PrePaidInstanceCount,omitempty"`
 	ResourceId            *string                `json:"ResourceId,omitempty" xml:"ResourceId,omitempty"`
 	ResourceName          *string                `json:"ResourceName,omitempty" xml:"ResourceName,omitempty"`
+	ResourceType          *string                `json:"ResourceType,omitempty" xml:"ResourceType,omitempty"`
 	Status                *string                `json:"Status,omitempty" xml:"Status,omitempty"`
 	UpdateTime            *string                `json:"UpdateTime,omitempty" xml:"UpdateTime,omitempty"`
 }
@@ -355,6 +356,11 @@ func (s *Resource) SetResourceId(v string) *Resource {
 
 func (s *Resource) SetResourceName(v string) *Resource {
 	s.ResourceName = &v
+	return s
+}
+
+func (s *Resource) SetResourceType(v string) *Resource {
+	s.ResourceType = &v
 	return s
 }
 
@@ -996,12 +1002,17 @@ func (s *CreateBenchmarkTaskResponse) SetBody(v *CreateBenchmarkTaskResponseBody
 }
 
 type CreateResourceRequest struct {
-	AutoRenewal      *bool   `json:"AutoRenewal,omitempty" xml:"AutoRenewal,omitempty"`
-	ChargeType       *string `json:"ChargeType,omitempty" xml:"ChargeType,omitempty"`
-	EcsInstanceCount *int32  `json:"EcsInstanceCount,omitempty" xml:"EcsInstanceCount,omitempty"`
-	EcsInstanceType  *string `json:"EcsInstanceType,omitempty" xml:"EcsInstanceType,omitempty"`
-	SystemDiskSize   *int32  `json:"SystemDiskSize,omitempty" xml:"SystemDiskSize,omitempty"`
-	Zone             *string `json:"Zone,omitempty" xml:"Zone,omitempty"`
+	AutoRenewal       *bool                                   `json:"AutoRenewal,omitempty" xml:"AutoRenewal,omitempty"`
+	ChargeType        *string                                 `json:"ChargeType,omitempty" xml:"ChargeType,omitempty"`
+	EcsInstanceCount  *int32                                  `json:"EcsInstanceCount,omitempty" xml:"EcsInstanceCount,omitempty"`
+	EcsInstanceType   *string                                 `json:"EcsInstanceType,omitempty" xml:"EcsInstanceType,omitempty"`
+	ExternalClusterId *string                                 `json:"ExternalClusterId,omitempty" xml:"ExternalClusterId,omitempty"`
+	NodeMatchLabels   map[string]*string                      `json:"NodeMatchLabels,omitempty" xml:"NodeMatchLabels,omitempty"`
+	NodeTolerations   []*CreateResourceRequestNodeTolerations `json:"NodeTolerations,omitempty" xml:"NodeTolerations,omitempty" type:"Repeated"`
+	ResourceType      *string                                 `json:"ResourceType,omitempty" xml:"ResourceType,omitempty"`
+	RoleName          *string                                 `json:"RoleName,omitempty" xml:"RoleName,omitempty"`
+	SystemDiskSize    *int32                                  `json:"SystemDiskSize,omitempty" xml:"SystemDiskSize,omitempty"`
+	Zone              *string                                 `json:"Zone,omitempty" xml:"Zone,omitempty"`
 }
 
 func (s CreateResourceRequest) String() string {
@@ -1032,6 +1043,31 @@ func (s *CreateResourceRequest) SetEcsInstanceType(v string) *CreateResourceRequ
 	return s
 }
 
+func (s *CreateResourceRequest) SetExternalClusterId(v string) *CreateResourceRequest {
+	s.ExternalClusterId = &v
+	return s
+}
+
+func (s *CreateResourceRequest) SetNodeMatchLabels(v map[string]*string) *CreateResourceRequest {
+	s.NodeMatchLabels = v
+	return s
+}
+
+func (s *CreateResourceRequest) SetNodeTolerations(v []*CreateResourceRequestNodeTolerations) *CreateResourceRequest {
+	s.NodeTolerations = v
+	return s
+}
+
+func (s *CreateResourceRequest) SetResourceType(v string) *CreateResourceRequest {
+	s.ResourceType = &v
+	return s
+}
+
+func (s *CreateResourceRequest) SetRoleName(v string) *CreateResourceRequest {
+	s.RoleName = &v
+	return s
+}
+
 func (s *CreateResourceRequest) SetSystemDiskSize(v int32) *CreateResourceRequest {
 	s.SystemDiskSize = &v
 	return s
@@ -1039,6 +1075,41 @@ func (s *CreateResourceRequest) SetSystemDiskSize(v int32) *CreateResourceReques
 
 func (s *CreateResourceRequest) SetZone(v string) *CreateResourceRequest {
 	s.Zone = &v
+	return s
+}
+
+type CreateResourceRequestNodeTolerations struct {
+	Effect   *string `json:"effect,omitempty" xml:"effect,omitempty"`
+	Key      *string `json:"key,omitempty" xml:"key,omitempty"`
+	Operator *string `json:"operator,omitempty" xml:"operator,omitempty"`
+	Value    *string `json:"value,omitempty" xml:"value,omitempty"`
+}
+
+func (s CreateResourceRequestNodeTolerations) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateResourceRequestNodeTolerations) GoString() string {
+	return s.String()
+}
+
+func (s *CreateResourceRequestNodeTolerations) SetEffect(v string) *CreateResourceRequestNodeTolerations {
+	s.Effect = &v
+	return s
+}
+
+func (s *CreateResourceRequestNodeTolerations) SetKey(v string) *CreateResourceRequestNodeTolerations {
+	s.Key = &v
+	return s
+}
+
+func (s *CreateResourceRequestNodeTolerations) SetOperator(v string) *CreateResourceRequestNodeTolerations {
+	s.Operator = &v
+	return s
+}
+
+func (s *CreateResourceRequestNodeTolerations) SetValue(v string) *CreateResourceRequestNodeTolerations {
+	s.Value = &v
 	return s
 }
 
@@ -2726,6 +2797,7 @@ type DescribeResourceResponseBody struct {
 	RequestId             *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	ResourceId            *string `json:"ResourceId,omitempty" xml:"ResourceId,omitempty"`
 	ResourceName          *string `json:"ResourceName,omitempty" xml:"ResourceName,omitempty"`
+	ResourceType          *string `json:"ResourceType,omitempty" xml:"ResourceType,omitempty"`
 	Status                *string `json:"Status,omitempty" xml:"Status,omitempty"`
 	UpdateTime            *string `json:"UpdateTime,omitempty" xml:"UpdateTime,omitempty"`
 }
@@ -2800,6 +2872,11 @@ func (s *DescribeResourceResponseBody) SetResourceId(v string) *DescribeResource
 
 func (s *DescribeResourceResponseBody) SetResourceName(v string) *DescribeResourceResponseBody {
 	s.ResourceName = &v
+	return s
+}
+
+func (s *DescribeResourceResponseBody) SetResourceType(v string) *DescribeResourceResponseBody {
+	s.ResourceType = &v
 	return s
 }
 
@@ -4458,6 +4535,7 @@ type ListResourcesRequest struct {
 	PageSize     *int32  `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
 	ResourceId   *string `json:"ResourceId,omitempty" xml:"ResourceId,omitempty"`
 	ResourceName *string `json:"ResourceName,omitempty" xml:"ResourceName,omitempty"`
+	ResourceType *string `json:"ResourceType,omitempty" xml:"ResourceType,omitempty"`
 }
 
 func (s ListResourcesRequest) String() string {
@@ -4485,6 +4563,11 @@ func (s *ListResourcesRequest) SetResourceId(v string) *ListResourcesRequest {
 
 func (s *ListResourcesRequest) SetResourceName(v string) *ListResourcesRequest {
 	s.ResourceName = &v
+	return s
+}
+
+func (s *ListResourcesRequest) SetResourceType(v string) *ListResourcesRequest {
+	s.ResourceType = &v
 	return s
 }
 
@@ -5687,7 +5770,9 @@ func (s *UpdateBenchmarkTaskResponse) SetBody(v *UpdateBenchmarkTaskResponseBody
 }
 
 type UpdateResourceRequest struct {
-	ResourceName *string `json:"ResourceName,omitempty" xml:"ResourceName,omitempty"`
+	NodeMatchLabels map[string]*string                      `json:"NodeMatchLabels,omitempty" xml:"NodeMatchLabels,omitempty"`
+	NodeTolerations []*UpdateResourceRequestNodeTolerations `json:"NodeTolerations,omitempty" xml:"NodeTolerations,omitempty" type:"Repeated"`
+	ResourceName    *string                                 `json:"ResourceName,omitempty" xml:"ResourceName,omitempty"`
 }
 
 func (s UpdateResourceRequest) String() string {
@@ -5698,8 +5783,53 @@ func (s UpdateResourceRequest) GoString() string {
 	return s.String()
 }
 
+func (s *UpdateResourceRequest) SetNodeMatchLabels(v map[string]*string) *UpdateResourceRequest {
+	s.NodeMatchLabels = v
+	return s
+}
+
+func (s *UpdateResourceRequest) SetNodeTolerations(v []*UpdateResourceRequestNodeTolerations) *UpdateResourceRequest {
+	s.NodeTolerations = v
+	return s
+}
+
 func (s *UpdateResourceRequest) SetResourceName(v string) *UpdateResourceRequest {
 	s.ResourceName = &v
+	return s
+}
+
+type UpdateResourceRequestNodeTolerations struct {
+	Effect   *string `json:"effect,omitempty" xml:"effect,omitempty"`
+	Key      *string `json:"key,omitempty" xml:"key,omitempty"`
+	Operator *string `json:"operator,omitempty" xml:"operator,omitempty"`
+	Value    *string `json:"value,omitempty" xml:"value,omitempty"`
+}
+
+func (s UpdateResourceRequestNodeTolerations) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UpdateResourceRequestNodeTolerations) GoString() string {
+	return s.String()
+}
+
+func (s *UpdateResourceRequestNodeTolerations) SetEffect(v string) *UpdateResourceRequestNodeTolerations {
+	s.Effect = &v
+	return s
+}
+
+func (s *UpdateResourceRequestNodeTolerations) SetKey(v string) *UpdateResourceRequestNodeTolerations {
+	s.Key = &v
+	return s
+}
+
+func (s *UpdateResourceRequestNodeTolerations) SetOperator(v string) *UpdateResourceRequestNodeTolerations {
+	s.Operator = &v
+	return s
+}
+
+func (s *UpdateResourceRequestNodeTolerations) SetValue(v string) *UpdateResourceRequestNodeTolerations {
+	s.Value = &v
 	return s
 }
 
@@ -6741,6 +6871,26 @@ func (client *Client) CreateResourceWithOptions(request *CreateResourceRequest, 
 
 	if !tea.BoolValue(util.IsUnset(request.EcsInstanceType)) {
 		body["EcsInstanceType"] = request.EcsInstanceType
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ExternalClusterId)) {
+		body["ExternalClusterId"] = request.ExternalClusterId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.NodeMatchLabels)) {
+		body["NodeMatchLabels"] = request.NodeMatchLabels
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.NodeTolerations)) {
+		body["NodeTolerations"] = request.NodeTolerations
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ResourceType)) {
+		body["ResourceType"] = request.ResourceType
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.RoleName)) {
+		body["RoleName"] = request.RoleName
 	}
 
 	if !tea.BoolValue(util.IsUnset(request.SystemDiskSize)) {
@@ -8514,6 +8664,10 @@ func (client *Client) ListResourcesWithOptions(request *ListResourcesRequest, he
 		query["ResourceName"] = request.ResourceName
 	}
 
+	if !tea.BoolValue(util.IsUnset(request.ResourceType)) {
+		query["ResourceType"] = request.ResourceType
+	}
+
 	req := &openapi.OpenApiRequest{
 		Headers: headers,
 		Query:   openapiutil.Query(query),
@@ -9107,6 +9261,14 @@ func (client *Client) UpdateResourceWithOptions(ClusterId *string, ResourceId *s
 		return _result, _err
 	}
 	body := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.NodeMatchLabels)) {
+		body["NodeMatchLabels"] = request.NodeMatchLabels
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.NodeTolerations)) {
+		body["NodeTolerations"] = request.NodeTolerations
+	}
+
 	if !tea.BoolValue(util.IsUnset(request.ResourceName)) {
 		body["ResourceName"] = request.ResourceName
 	}
