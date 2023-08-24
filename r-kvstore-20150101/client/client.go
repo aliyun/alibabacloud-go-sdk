@@ -832,10 +832,11 @@ func (s *CreateCacheAnalysisTaskResponse) SetBody(v *CreateCacheAnalysisTaskResp
 type CreateGlobalDistributeCacheRequest struct {
 	OwnerAccount         *string `json:"OwnerAccount,omitempty" xml:"OwnerAccount,omitempty"`
 	OwnerId              *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
+	ResourceGroupId      *string `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
 	ResourceOwnerAccount *string `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
 	ResourceOwnerId      *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
 	SecurityToken        *string `json:"SecurityToken,omitempty" xml:"SecurityToken,omitempty"`
-	// The ID of the request.
+	// The ID of the existing instance.
 	SeedSubInstanceId *string `json:"SeedSubInstanceId,omitempty" xml:"SeedSubInstanceId,omitempty"`
 }
 
@@ -854,6 +855,11 @@ func (s *CreateGlobalDistributeCacheRequest) SetOwnerAccount(v string) *CreateGl
 
 func (s *CreateGlobalDistributeCacheRequest) SetOwnerId(v int64) *CreateGlobalDistributeCacheRequest {
 	s.OwnerId = &v
+	return s
+}
+
+func (s *CreateGlobalDistributeCacheRequest) SetResourceGroupId(v string) *CreateGlobalDistributeCacheRequest {
+	s.ResourceGroupId = &v
 	return s
 }
 
@@ -878,6 +884,7 @@ func (s *CreateGlobalDistributeCacheRequest) SetSeedSubInstanceId(v string) *Cre
 }
 
 type CreateGlobalDistributeCacheResponseBody struct {
+	// The ID of the request.
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -1176,6 +1183,7 @@ type CreateInstanceRequest struct {
 	//
 	// *   **VPC**
 	NetworkType  *string `json:"NetworkType,omitempty" xml:"NetworkType,omitempty"`
+	NodeType     *string `json:"NodeType,omitempty" xml:"NodeType,omitempty"`
 	OwnerAccount *string `json:"OwnerAccount,omitempty" xml:"OwnerAccount,omitempty"`
 	OwnerId      *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
 	// The password that is used to connect to the instance. The password must be 8 to 32 characters in length and must contain at least three of the following character types: uppercase letters, lowercase letters, digits, and specific special characters. These special characters include `! @ # $ % ^ & * ( ) _ + - =`
@@ -1328,6 +1336,11 @@ func (s *CreateInstanceRequest) SetInstanceType(v string) *CreateInstanceRequest
 
 func (s *CreateInstanceRequest) SetNetworkType(v string) *CreateInstanceRequest {
 	s.NetworkType = &v
+	return s
+}
+
+func (s *CreateInstanceRequest) SetNodeType(v string) *CreateInstanceRequest {
+	s.NodeType = &v
 	return s
 }
 
@@ -1939,6 +1952,7 @@ type CreateTairInstanceRequest struct {
 	InstanceType *string `json:"InstanceType,omitempty" xml:"InstanceType,omitempty"`
 	OwnerAccount *string `json:"OwnerAccount,omitempty" xml:"OwnerAccount,omitempty"`
 	OwnerId      *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
+	ParamGroupId *string `json:"ParamGroupId,omitempty" xml:"ParamGroupId,omitempty"`
 	// The password that is used to connect to the instance. The password must meet the following requirements:
 	//
 	// *   The password is 8 to 32 characters in length.
@@ -2107,6 +2121,11 @@ func (s *CreateTairInstanceRequest) SetOwnerAccount(v string) *CreateTairInstanc
 
 func (s *CreateTairInstanceRequest) SetOwnerId(v int64) *CreateTairInstanceRequest {
 	s.OwnerId = &v
+	return s
+}
+
+func (s *CreateTairInstanceRequest) SetParamGroupId(v string) *CreateTairInstanceRequest {
+	s.ParamGroupId = &v
 	return s
 }
 
@@ -3640,7 +3659,8 @@ type DescribeAvailableResourceRequest struct {
 	// The ID of the instance.
 	//
 	// > This parameter is available and required only if the **OrderType** parameter is set to **UPGRADE** or **DOWNGRADE**.
-	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	InstanceId    *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	InstanceScene *string `json:"InstanceScene,omitempty" xml:"InstanceScene,omitempty"`
 	// The ID of the data node for which you want to query available resources that can be created. You can call the [DescribeLogicInstanceTopology](~~94665~~) operation to query the ID of the data node. Remove the number sign (`#`) and the content that follows the number sign. For example, retain only r-bp10noxlhcoim2\*\*\*\*-db-0.
 	//
 	// > Before you specify this parameter, you must set the **InstanceId** parameter to the ID of an instance that uses the cluster or read/write splitting architecture.
@@ -3699,6 +3719,11 @@ func (s *DescribeAvailableResourceRequest) SetInstanceChargeType(v string) *Desc
 
 func (s *DescribeAvailableResourceRequest) SetInstanceId(v string) *DescribeAvailableResourceRequest {
 	s.InstanceId = &v
+	return s
+}
+
+func (s *DescribeAvailableResourceRequest) SetInstanceScene(v string) *DescribeAvailableResourceRequest {
+	s.InstanceScene = &v
 	return s
 }
 
@@ -4272,6 +4297,7 @@ func (s *DescribeBackupPolicyRequest) SetSecurityToken(v string) *DescribeBackup
 }
 
 type DescribeBackupPolicyResponseBody struct {
+	AccessDeniedDetail *DescribeBackupPolicyResponseBodyAccessDeniedDetail `json:"AccessDeniedDetail,omitempty" xml:"AccessDeniedDetail,omitempty" type:"Struct"`
 	// The retention period of the backup data. Unit: days.
 	BackupRetentionPeriod *string `json:"BackupRetentionPeriod,omitempty" xml:"BackupRetentionPeriod,omitempty"`
 	// Indicates whether incremental data backup is enabled. Valid values:
@@ -4305,6 +4331,11 @@ func (s DescribeBackupPolicyResponseBody) GoString() string {
 	return s.String()
 }
 
+func (s *DescribeBackupPolicyResponseBody) SetAccessDeniedDetail(v *DescribeBackupPolicyResponseBodyAccessDeniedDetail) *DescribeBackupPolicyResponseBody {
+	s.AccessDeniedDetail = v
+	return s
+}
+
 func (s *DescribeBackupPolicyResponseBody) SetBackupRetentionPeriod(v string) *DescribeBackupPolicyResponseBody {
 	s.BackupRetentionPeriod = &v
 	return s
@@ -4332,6 +4363,59 @@ func (s *DescribeBackupPolicyResponseBody) SetPreferredNextBackupTime(v string) 
 
 func (s *DescribeBackupPolicyResponseBody) SetRequestId(v string) *DescribeBackupPolicyResponseBody {
 	s.RequestId = &v
+	return s
+}
+
+type DescribeBackupPolicyResponseBodyAccessDeniedDetail struct {
+	AuthAction               *string `json:"AuthAction,omitempty" xml:"AuthAction,omitempty"`
+	AuthPrincipalDisplayName *string `json:"AuthPrincipalDisplayName,omitempty" xml:"AuthPrincipalDisplayName,omitempty"`
+	AuthPrincipalOwnerId     *string `json:"AuthPrincipalOwnerId,omitempty" xml:"AuthPrincipalOwnerId,omitempty"`
+	AuthPrincipalType        *string `json:"AuthPrincipalType,omitempty" xml:"AuthPrincipalType,omitempty"`
+	EncodedDiagnosticMessage *string `json:"EncodedDiagnosticMessage,omitempty" xml:"EncodedDiagnosticMessage,omitempty"`
+	NoPermissionType         *string `json:"NoPermissionType,omitempty" xml:"NoPermissionType,omitempty"`
+	PolicyType               *string `json:"PolicyType,omitempty" xml:"PolicyType,omitempty"`
+}
+
+func (s DescribeBackupPolicyResponseBodyAccessDeniedDetail) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeBackupPolicyResponseBodyAccessDeniedDetail) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeBackupPolicyResponseBodyAccessDeniedDetail) SetAuthAction(v string) *DescribeBackupPolicyResponseBodyAccessDeniedDetail {
+	s.AuthAction = &v
+	return s
+}
+
+func (s *DescribeBackupPolicyResponseBodyAccessDeniedDetail) SetAuthPrincipalDisplayName(v string) *DescribeBackupPolicyResponseBodyAccessDeniedDetail {
+	s.AuthPrincipalDisplayName = &v
+	return s
+}
+
+func (s *DescribeBackupPolicyResponseBodyAccessDeniedDetail) SetAuthPrincipalOwnerId(v string) *DescribeBackupPolicyResponseBodyAccessDeniedDetail {
+	s.AuthPrincipalOwnerId = &v
+	return s
+}
+
+func (s *DescribeBackupPolicyResponseBodyAccessDeniedDetail) SetAuthPrincipalType(v string) *DescribeBackupPolicyResponseBodyAccessDeniedDetail {
+	s.AuthPrincipalType = &v
+	return s
+}
+
+func (s *DescribeBackupPolicyResponseBodyAccessDeniedDetail) SetEncodedDiagnosticMessage(v string) *DescribeBackupPolicyResponseBodyAccessDeniedDetail {
+	s.EncodedDiagnosticMessage = &v
+	return s
+}
+
+func (s *DescribeBackupPolicyResponseBodyAccessDeniedDetail) SetNoPermissionType(v string) *DescribeBackupPolicyResponseBodyAccessDeniedDetail {
+	s.NoPermissionType = &v
+	return s
+}
+
+func (s *DescribeBackupPolicyResponseBodyAccessDeniedDetail) SetPolicyType(v string) *DescribeBackupPolicyResponseBodyAccessDeniedDetail {
+	s.PolicyType = &v
 	return s
 }
 
@@ -4427,6 +4511,7 @@ func (s *DescribeBackupTasksRequest) SetSecurityToken(v string) *DescribeBackupT
 }
 
 type DescribeBackupTasksResponseBody struct {
+	AccessDeniedDetail *DescribeBackupTasksResponseBodyAccessDeniedDetail `json:"AccessDeniedDetail,omitempty" xml:"AccessDeniedDetail,omitempty" type:"Struct"`
 	// The ID of the ApsaraDB for Redis instance. You can call the [DescribeInstances](~~60933~~) operation to query instance IDs.
 	BackupJobs []*DescribeBackupTasksResponseBodyBackupJobs `json:"BackupJobs,omitempty" xml:"BackupJobs,omitempty" type:"Repeated"`
 	// The ID of the instance.
@@ -4450,6 +4535,11 @@ func (s DescribeBackupTasksResponseBody) GoString() string {
 	return s.String()
 }
 
+func (s *DescribeBackupTasksResponseBody) SetAccessDeniedDetail(v *DescribeBackupTasksResponseBodyAccessDeniedDetail) *DescribeBackupTasksResponseBody {
+	s.AccessDeniedDetail = v
+	return s
+}
+
 func (s *DescribeBackupTasksResponseBody) SetBackupJobs(v []*DescribeBackupTasksResponseBodyBackupJobs) *DescribeBackupTasksResponseBody {
 	s.BackupJobs = v
 	return s
@@ -4462,6 +4552,59 @@ func (s *DescribeBackupTasksResponseBody) SetInstanceId(v string) *DescribeBacku
 
 func (s *DescribeBackupTasksResponseBody) SetRequestId(v string) *DescribeBackupTasksResponseBody {
 	s.RequestId = &v
+	return s
+}
+
+type DescribeBackupTasksResponseBodyAccessDeniedDetail struct {
+	AuthAction               *string `json:"AuthAction,omitempty" xml:"AuthAction,omitempty"`
+	AuthPrincipalDisplayName *string `json:"AuthPrincipalDisplayName,omitempty" xml:"AuthPrincipalDisplayName,omitempty"`
+	AuthPrincipalOwnerId     *string `json:"AuthPrincipalOwnerId,omitempty" xml:"AuthPrincipalOwnerId,omitempty"`
+	AuthPrincipalType        *string `json:"AuthPrincipalType,omitempty" xml:"AuthPrincipalType,omitempty"`
+	EncodedDiagnosticMessage *string `json:"EncodedDiagnosticMessage,omitempty" xml:"EncodedDiagnosticMessage,omitempty"`
+	NoPermissionType         *string `json:"NoPermissionType,omitempty" xml:"NoPermissionType,omitempty"`
+	PolicyType               *string `json:"PolicyType,omitempty" xml:"PolicyType,omitempty"`
+}
+
+func (s DescribeBackupTasksResponseBodyAccessDeniedDetail) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeBackupTasksResponseBodyAccessDeniedDetail) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeBackupTasksResponseBodyAccessDeniedDetail) SetAuthAction(v string) *DescribeBackupTasksResponseBodyAccessDeniedDetail {
+	s.AuthAction = &v
+	return s
+}
+
+func (s *DescribeBackupTasksResponseBodyAccessDeniedDetail) SetAuthPrincipalDisplayName(v string) *DescribeBackupTasksResponseBodyAccessDeniedDetail {
+	s.AuthPrincipalDisplayName = &v
+	return s
+}
+
+func (s *DescribeBackupTasksResponseBodyAccessDeniedDetail) SetAuthPrincipalOwnerId(v string) *DescribeBackupTasksResponseBodyAccessDeniedDetail {
+	s.AuthPrincipalOwnerId = &v
+	return s
+}
+
+func (s *DescribeBackupTasksResponseBodyAccessDeniedDetail) SetAuthPrincipalType(v string) *DescribeBackupTasksResponseBodyAccessDeniedDetail {
+	s.AuthPrincipalType = &v
+	return s
+}
+
+func (s *DescribeBackupTasksResponseBodyAccessDeniedDetail) SetEncodedDiagnosticMessage(v string) *DescribeBackupTasksResponseBodyAccessDeniedDetail {
+	s.EncodedDiagnosticMessage = &v
+	return s
+}
+
+func (s *DescribeBackupTasksResponseBodyAccessDeniedDetail) SetNoPermissionType(v string) *DescribeBackupTasksResponseBodyAccessDeniedDetail {
+	s.NoPermissionType = &v
+	return s
+}
+
+func (s *DescribeBackupTasksResponseBodyAccessDeniedDetail) SetPolicyType(v string) *DescribeBackupTasksResponseBodyAccessDeniedDetail {
+	s.PolicyType = &v
 	return s
 }
 
@@ -4640,11 +4783,12 @@ func (s *DescribeBackupsRequest) SetStartTime(v string) *DescribeBackupsRequest 
 }
 
 type DescribeBackupsResponseBody struct {
-	Backups    *DescribeBackupsResponseBodyBackups `json:"Backups,omitempty" xml:"Backups,omitempty" type:"Struct"`
-	PageNumber *int32                              `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
-	PageSize   *int32                              `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	RequestId  *string                             `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	TotalCount *int32                              `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
+	AccessDeniedDetail *DescribeBackupsResponseBodyAccessDeniedDetail `json:"AccessDeniedDetail,omitempty" xml:"AccessDeniedDetail,omitempty" type:"Struct"`
+	Backups            *DescribeBackupsResponseBodyBackups            `json:"Backups,omitempty" xml:"Backups,omitempty" type:"Struct"`
+	PageNumber         *int32                                         `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
+	PageSize           *int32                                         `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	RequestId          *string                                        `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	TotalCount         *int32                                         `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
 }
 
 func (s DescribeBackupsResponseBody) String() string {
@@ -4653,6 +4797,11 @@ func (s DescribeBackupsResponseBody) String() string {
 
 func (s DescribeBackupsResponseBody) GoString() string {
 	return s.String()
+}
+
+func (s *DescribeBackupsResponseBody) SetAccessDeniedDetail(v *DescribeBackupsResponseBodyAccessDeniedDetail) *DescribeBackupsResponseBody {
+	s.AccessDeniedDetail = v
+	return s
 }
 
 func (s *DescribeBackupsResponseBody) SetBackups(v *DescribeBackupsResponseBodyBackups) *DescribeBackupsResponseBody {
@@ -4677,6 +4826,59 @@ func (s *DescribeBackupsResponseBody) SetRequestId(v string) *DescribeBackupsRes
 
 func (s *DescribeBackupsResponseBody) SetTotalCount(v int32) *DescribeBackupsResponseBody {
 	s.TotalCount = &v
+	return s
+}
+
+type DescribeBackupsResponseBodyAccessDeniedDetail struct {
+	AuthAction               *string `json:"AuthAction,omitempty" xml:"AuthAction,omitempty"`
+	AuthPrincipalDisplayName *string `json:"AuthPrincipalDisplayName,omitempty" xml:"AuthPrincipalDisplayName,omitempty"`
+	AuthPrincipalOwnerId     *string `json:"AuthPrincipalOwnerId,omitempty" xml:"AuthPrincipalOwnerId,omitempty"`
+	AuthPrincipalType        *string `json:"AuthPrincipalType,omitempty" xml:"AuthPrincipalType,omitempty"`
+	EncodedDiagnosticMessage *string `json:"EncodedDiagnosticMessage,omitempty" xml:"EncodedDiagnosticMessage,omitempty"`
+	NoPermissionType         *string `json:"NoPermissionType,omitempty" xml:"NoPermissionType,omitempty"`
+	PolicyType               *string `json:"PolicyType,omitempty" xml:"PolicyType,omitempty"`
+}
+
+func (s DescribeBackupsResponseBodyAccessDeniedDetail) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeBackupsResponseBodyAccessDeniedDetail) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeBackupsResponseBodyAccessDeniedDetail) SetAuthAction(v string) *DescribeBackupsResponseBodyAccessDeniedDetail {
+	s.AuthAction = &v
+	return s
+}
+
+func (s *DescribeBackupsResponseBodyAccessDeniedDetail) SetAuthPrincipalDisplayName(v string) *DescribeBackupsResponseBodyAccessDeniedDetail {
+	s.AuthPrincipalDisplayName = &v
+	return s
+}
+
+func (s *DescribeBackupsResponseBodyAccessDeniedDetail) SetAuthPrincipalOwnerId(v string) *DescribeBackupsResponseBodyAccessDeniedDetail {
+	s.AuthPrincipalOwnerId = &v
+	return s
+}
+
+func (s *DescribeBackupsResponseBodyAccessDeniedDetail) SetAuthPrincipalType(v string) *DescribeBackupsResponseBodyAccessDeniedDetail {
+	s.AuthPrincipalType = &v
+	return s
+}
+
+func (s *DescribeBackupsResponseBodyAccessDeniedDetail) SetEncodedDiagnosticMessage(v string) *DescribeBackupsResponseBodyAccessDeniedDetail {
+	s.EncodedDiagnosticMessage = &v
+	return s
+}
+
+func (s *DescribeBackupsResponseBodyAccessDeniedDetail) SetNoPermissionType(v string) *DescribeBackupsResponseBodyAccessDeniedDetail {
+	s.NoPermissionType = &v
+	return s
+}
+
+func (s *DescribeBackupsResponseBodyAccessDeniedDetail) SetPolicyType(v string) *DescribeBackupsResponseBodyAccessDeniedDetail {
+	s.PolicyType = &v
 	return s
 }
 
@@ -5222,10 +5424,14 @@ func (s *DescribeCacheAnalysisReportListResponse) SetBody(v *DescribeCacheAnalys
 
 type DescribeClusterMemberInfoRequest struct {
 	// The ID of the ApsaraDB for Redis instance. You can call the [DescribeInstances](~~60933~~) operation to query instance IDs.
-	InstanceId           *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	OwnerAccount         *string `json:"OwnerAccount,omitempty" xml:"OwnerAccount,omitempty"`
-	OwnerId              *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
-	PageNumber           *int32  `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
+	InstanceId   *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	OwnerAccount *string `json:"OwnerAccount,omitempty" xml:"OwnerAccount,omitempty"`
+	OwnerId      *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
+	// The number of the page to return. The value must be an integer that is greater than **0**. Default value: **1**.
+	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
+	// The number of entries to return on each page. Valid values: **30**, **50**, and **100**.
+	//
+	// >  Default value: **30**.
 	PageSize             *int32  `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
 	ResourceOwnerAccount *string `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
 	ResourceOwnerId      *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
@@ -10176,11 +10382,12 @@ func (s *DescribeLogicInstanceTopologyResponseBodyRedisShardList) SetNodeInfo(v 
 }
 
 type DescribeLogicInstanceTopologyResponseBodyRedisShardListNodeInfo struct {
-	Bandwidth  *string `json:"Bandwidth,omitempty" xml:"Bandwidth,omitempty"`
-	Capacity   *string `json:"Capacity,omitempty" xml:"Capacity,omitempty"`
-	Connection *string `json:"Connection,omitempty" xml:"Connection,omitempty"`
-	NodeId     *string `json:"NodeId,omitempty" xml:"NodeId,omitempty"`
-	NodeType   *string `json:"NodeType,omitempty" xml:"NodeType,omitempty"`
+	Bandwidth       *string `json:"Bandwidth,omitempty" xml:"Bandwidth,omitempty"`
+	Capacity        *string `json:"Capacity,omitempty" xml:"Capacity,omitempty"`
+	Connection      *string `json:"Connection,omitempty" xml:"Connection,omitempty"`
+	NodeId          *string `json:"NodeId,omitempty" xml:"NodeId,omitempty"`
+	NodeType        *string `json:"NodeType,omitempty" xml:"NodeType,omitempty"`
+	SubInstanceType *string `json:"SubInstanceType,omitempty" xml:"SubInstanceType,omitempty"`
 }
 
 func (s DescribeLogicInstanceTopologyResponseBodyRedisShardListNodeInfo) String() string {
@@ -10213,6 +10420,11 @@ func (s *DescribeLogicInstanceTopologyResponseBodyRedisShardListNodeInfo) SetNod
 
 func (s *DescribeLogicInstanceTopologyResponseBodyRedisShardListNodeInfo) SetNodeType(v string) *DescribeLogicInstanceTopologyResponseBodyRedisShardListNodeInfo {
 	s.NodeType = &v
+	return s
+}
+
+func (s *DescribeLogicInstanceTopologyResponseBodyRedisShardListNodeInfo) SetSubInstanceType(v string) *DescribeLogicInstanceTopologyResponseBodyRedisShardListNodeInfo {
+	s.SubInstanceType = &v
 	return s
 }
 
@@ -15948,6 +16160,124 @@ func (s *ModifyInstanceNetExpireTimeResponse) SetBody(v *ModifyInstanceNetExpire
 	return s
 }
 
+type ModifyInstanceParameterRequest struct {
+	InstanceId           *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	OwnerAccount         *string `json:"OwnerAccount,omitempty" xml:"OwnerAccount,omitempty"`
+	OwnerId              *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
+	ParameterGroupId     *string `json:"ParameterGroupId,omitempty" xml:"ParameterGroupId,omitempty"`
+	Parameters           *string `json:"Parameters,omitempty" xml:"Parameters,omitempty"`
+	ResourceOwnerAccount *string `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
+	ResourceOwnerId      *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
+	SecurityToken        *string `json:"SecurityToken,omitempty" xml:"SecurityToken,omitempty"`
+}
+
+func (s ModifyInstanceParameterRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ModifyInstanceParameterRequest) GoString() string {
+	return s.String()
+}
+
+func (s *ModifyInstanceParameterRequest) SetInstanceId(v string) *ModifyInstanceParameterRequest {
+	s.InstanceId = &v
+	return s
+}
+
+func (s *ModifyInstanceParameterRequest) SetOwnerAccount(v string) *ModifyInstanceParameterRequest {
+	s.OwnerAccount = &v
+	return s
+}
+
+func (s *ModifyInstanceParameterRequest) SetOwnerId(v int64) *ModifyInstanceParameterRequest {
+	s.OwnerId = &v
+	return s
+}
+
+func (s *ModifyInstanceParameterRequest) SetParameterGroupId(v string) *ModifyInstanceParameterRequest {
+	s.ParameterGroupId = &v
+	return s
+}
+
+func (s *ModifyInstanceParameterRequest) SetParameters(v string) *ModifyInstanceParameterRequest {
+	s.Parameters = &v
+	return s
+}
+
+func (s *ModifyInstanceParameterRequest) SetResourceOwnerAccount(v string) *ModifyInstanceParameterRequest {
+	s.ResourceOwnerAccount = &v
+	return s
+}
+
+func (s *ModifyInstanceParameterRequest) SetResourceOwnerId(v int64) *ModifyInstanceParameterRequest {
+	s.ResourceOwnerId = &v
+	return s
+}
+
+func (s *ModifyInstanceParameterRequest) SetSecurityToken(v string) *ModifyInstanceParameterRequest {
+	s.SecurityToken = &v
+	return s
+}
+
+type ModifyInstanceParameterResponseBody struct {
+	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	// Id of the request
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	TaskId    *int64  `json:"TaskId,omitempty" xml:"TaskId,omitempty"`
+}
+
+func (s ModifyInstanceParameterResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ModifyInstanceParameterResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *ModifyInstanceParameterResponseBody) SetInstanceId(v string) *ModifyInstanceParameterResponseBody {
+	s.InstanceId = &v
+	return s
+}
+
+func (s *ModifyInstanceParameterResponseBody) SetRequestId(v string) *ModifyInstanceParameterResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *ModifyInstanceParameterResponseBody) SetTaskId(v int64) *ModifyInstanceParameterResponseBody {
+	s.TaskId = &v
+	return s
+}
+
+type ModifyInstanceParameterResponse struct {
+	Headers    map[string]*string                   `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                               `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *ModifyInstanceParameterResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s ModifyInstanceParameterResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ModifyInstanceParameterResponse) GoString() string {
+	return s.String()
+}
+
+func (s *ModifyInstanceParameterResponse) SetHeaders(v map[string]*string) *ModifyInstanceParameterResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *ModifyInstanceParameterResponse) SetStatusCode(v int32) *ModifyInstanceParameterResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *ModifyInstanceParameterResponse) SetBody(v *ModifyInstanceParameterResponseBody) *ModifyInstanceParameterResponse {
+	s.Body = v
+	return s
+}
+
 type ModifyInstanceSSLRequest struct {
 	// The ID of the task.
 	InstanceId           *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
@@ -16249,26 +16579,36 @@ func (s *ModifyInstanceSpecResponse) SetBody(v *ModifyInstanceSpecResponseBody) 
 }
 
 type ModifyInstanceTDERequest struct {
-	// $.parameters[2].schema.description
+	// The ID of the custom key. You can call the [DescribeEncryptionKeyList](~~302339~~) operation to query the key ID.
+	//
+	// >
+	//
+	// *   If you do not specify this parameter, [Key Management Service (KMS)](~~28935~~) automatically generates a key.
+	//
+	// *   To create a custom key, you can call the [CreateKey](~~28947~~) operation of the KMS API.
 	EncryptionKey *string `json:"EncryptionKey,omitempty" xml:"EncryptionKey,omitempty"`
-	// The Alibaba Cloud Resource Name (ARN) of the RAM role that you want to attach to your ApsaraDB for Redis instance. The ARN must be in the format of `acs:ram::$accountID:role/$roleName`. After the role is attached, your ApsaraDB for Redis instance can use KMS.
+	// The encryption algorithm. Default value: AES-CTR-256.
 	//
-	// > - `$accountID`: the ID of the Alibaba Cloud account. To view the account ID, log on to the Alibaba Cloud console, move the pointer over your profile picture in the upper-right corner of the page, and then click **Security Settings**.
-	// - `$roleName`: the name of the RAM role. Replace $roleName with **AliyunRdsInstanceEncryptionDefaultRole**.
+	// > This parameter is available only if the **TDEStatus** parameter is set to **Enabled**.
 	EncryptionName *string `json:"EncryptionName,omitempty" xml:"EncryptionName,omitempty"`
-	// The ID of the custom key. You can call the [DescribeEncryptionKeyList](https://www.alibabacloud.com/help/en/apsaradb-for-redis/latest/describeencryptionkeylist) operation to query key IDs.
-	//
-	// > - If you do not specify this parameter, [Key Management Service (KMS)](https://www.alibabacloud.com/help/en/key-management-service/latest/what-is-key-management-service) automatically generates a key.
-	// - To create a custom key, you can call the [CreateKey](https://www.alibabacloud.com/help/en/key-management-service/latest/createkey) operation of the KMS API.
+	// The ID of the instance. You can call the [DescribeInstances](~~60933~~) operation to query the ID of the instance.
 	InstanceId           *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
 	OwnerAccount         *string `json:"OwnerAccount,omitempty" xml:"OwnerAccount,omitempty"`
 	OwnerId              *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
 	ResourceOwnerAccount *string `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
 	ResourceOwnerId      *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
-	// $.parameters[2].schema.example
+	// The Alibaba Cloud Resource Name (ARN) of the Resource Access Management (RAM) role that you want to attach to your ApsaraDB for Redis instance. The ARN must be in the format of `acs:ram::$accountID:role/$roleName`. After the role is attached, your ApsaraDB for Redis instance can use KMS.
+	//
+	// >
+	//
+	// *   `$accountID`: the ID of the Alibaba Cloud account. To view the account ID, log on to the Alibaba Cloud console, move the pointer over your profile picture in the upper-right corner of the page, and then click **Security Settings**.
+	//
+	// *   `$roleName`: the name of the RAM role. Replace $roleName with **AliyunRdsInstanceEncryptionDefaultRole**.
 	RoleArn       *string `json:"RoleArn,omitempty" xml:"RoleArn,omitempty"`
 	SecurityToken *string `json:"SecurityToken,omitempty" xml:"SecurityToken,omitempty"`
-	// The ID of the request.
+	// Specifies whether to enable TDE. Set the value to **Enabled**.
+	//
+	// > TDE cannot be disabled after it is enabled. Before you enable it, evaluate whether this feature affects your business. For more information, see [Enable TDE](~~265913~~).
 	TDEStatus *string `json:"TDEStatus,omitempty" xml:"TDEStatus,omitempty"`
 }
 
@@ -16331,7 +16671,7 @@ func (s *ModifyInstanceTDERequest) SetTDEStatus(v string) *ModifyInstanceTDERequ
 }
 
 type ModifyInstanceTDEResponseBody struct {
-	// $.parameters[2].schema.enumValueTitles
+	// The ID of the request.
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -19624,7 +19964,10 @@ func (client *Client) CreateCacheAnalysisTask(request *CreateCacheAnalysisTaskRe
 }
 
 /**
- * The ID of the existing instance.
+ * You cannot directly create a distributed instance. If you require a distributed instance, you must call this operation to convert an existing instance to the first child instance of the distributed instance. After the instance is converted, the distributed instance is created. Before you call this operation, make sure that the following requirements are met:
+ * *   A [DRAM-based instance](~~126164~~) of Enhanced Edition is used.
+ * *   If the existing instance is a cluster instance, the direct connection mode must be disabled for the instance. For more information, see [Release a private endpoint](~~150047~~).
+ * > You can also call the [CreateInstance](~~60873~~) operation to create an instance that is specified as the first child instance of a distributed instance. After the child instance is created, the distributed instance to which the child instance belongs is created.
  *
  * @param request CreateGlobalDistributeCacheRequest
  * @param runtime runtime options for this request RuntimeOptions
@@ -19642,6 +19985,10 @@ func (client *Client) CreateGlobalDistributeCacheWithOptions(request *CreateGlob
 
 	if !tea.BoolValue(util.IsUnset(request.OwnerId)) {
 		query["OwnerId"] = request.OwnerId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ResourceGroupId)) {
+		query["ResourceGroupId"] = request.ResourceGroupId
 	}
 
 	if !tea.BoolValue(util.IsUnset(request.ResourceOwnerAccount)) {
@@ -19684,7 +20031,10 @@ func (client *Client) CreateGlobalDistributeCacheWithOptions(request *CreateGlob
 }
 
 /**
- * The ID of the existing instance.
+ * You cannot directly create a distributed instance. If you require a distributed instance, you must call this operation to convert an existing instance to the first child instance of the distributed instance. After the instance is converted, the distributed instance is created. Before you call this operation, make sure that the following requirements are met:
+ * *   A [DRAM-based instance](~~126164~~) of Enhanced Edition is used.
+ * *   If the existing instance is a cluster instance, the direct connection mode must be disabled for the instance. For more information, see [Release a private endpoint](~~150047~~).
+ * > You can also call the [CreateInstance](~~60873~~) operation to create an instance that is specified as the first child instance of a distributed instance. After the child instance is created, the distributed instance to which the child instance belongs is created.
  *
  * @param request CreateGlobalDistributeCacheRequest
  * @return CreateGlobalDistributeCacheResponse
@@ -19869,6 +20219,10 @@ func (client *Client) CreateInstanceWithOptions(request *CreateInstanceRequest, 
 
 	if !tea.BoolValue(util.IsUnset(request.NetworkType)) {
 		query["NetworkType"] = request.NetworkType
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.NodeType)) {
+		query["NodeType"] = request.NodeType
 	}
 
 	if !tea.BoolValue(util.IsUnset(request.OwnerAccount)) {
@@ -20197,6 +20551,10 @@ func (client *Client) CreateTairInstanceWithOptions(request *CreateTairInstanceR
 
 	if !tea.BoolValue(util.IsUnset(request.OwnerId)) {
 		query["OwnerId"] = request.OwnerId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ParamGroupId)) {
+		query["ParamGroupId"] = request.ParamGroupId
 	}
 
 	if !tea.BoolValue(util.IsUnset(request.Password)) {
@@ -20998,6 +21356,10 @@ func (client *Client) DescribeAvailableResourceWithOptions(request *DescribeAvai
 
 	if !tea.BoolValue(util.IsUnset(request.InstanceId)) {
 		query["InstanceId"] = request.InstanceId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.InstanceScene)) {
+		query["InstanceScene"] = request.InstanceScene
 	}
 
 	if !tea.BoolValue(util.IsUnset(request.NodeId)) {
@@ -26009,6 +26371,78 @@ func (client *Client) ModifyInstanceNetExpireTime(request *ModifyInstanceNetExpi
 	return _result, _err
 }
 
+func (client *Client) ModifyInstanceParameterWithOptions(request *ModifyInstanceParameterRequest, runtime *util.RuntimeOptions) (_result *ModifyInstanceParameterResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.InstanceId)) {
+		query["InstanceId"] = request.InstanceId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.OwnerAccount)) {
+		query["OwnerAccount"] = request.OwnerAccount
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.OwnerId)) {
+		query["OwnerId"] = request.OwnerId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ParameterGroupId)) {
+		query["ParameterGroupId"] = request.ParameterGroupId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Parameters)) {
+		query["Parameters"] = request.Parameters
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ResourceOwnerAccount)) {
+		query["ResourceOwnerAccount"] = request.ResourceOwnerAccount
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ResourceOwnerId)) {
+		query["ResourceOwnerId"] = request.ResourceOwnerId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.SecurityToken)) {
+		query["SecurityToken"] = request.SecurityToken
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("ModifyInstanceParameter"),
+		Version:     tea.String("2015-01-01"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &ModifyInstanceParameterResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) ModifyInstanceParameter(request *ModifyInstanceParameterRequest) (_result *ModifyInstanceParameterResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &ModifyInstanceParameterResponse{}
+	_body, _err := client.ModifyInstanceParameterWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
 /**
  * Modifies SSL encryption configurations. Valid values:
  * *   **Disable**: The SSL encryption is disabled.
@@ -26230,8 +26664,7 @@ func (client *Client) ModifyInstanceSpec(request *ModifyInstanceSpecRequest) (_r
 }
 
 /**
- * The encryption algorithm. Default value: AES-CTR-256.
- * >  This parameter takes effect only if the **TDEStatus** parameter is set to **Enabled**.
+ * > For more information about TDE and the impact of TDE, see [Enable TDE](~~265913~~).
  *
  * @param request ModifyInstanceTDERequest
  * @param runtime runtime options for this request RuntimeOptions
@@ -26307,8 +26740,7 @@ func (client *Client) ModifyInstanceTDEWithOptions(request *ModifyInstanceTDEReq
 }
 
 /**
- * The encryption algorithm. Default value: AES-CTR-256.
- * >  This parameter takes effect only if the **TDEStatus** parameter is set to **Enabled**.
+ * > For more information about TDE and the impact of TDE, see [Enable TDE](~~265913~~).
  *
  * @param request ModifyInstanceTDERequest
  * @return ModifyInstanceTDEResponse
