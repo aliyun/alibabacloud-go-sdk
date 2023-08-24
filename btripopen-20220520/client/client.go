@@ -59586,17 +59586,17 @@ func (client *Client) FlightCancelOrderV2WithOptions(request *FlightCancelOrderV
 	if _err != nil {
 		return _result, _err
 	}
-	body := map[string]interface{}{}
+	query := map[string]interface{}{}
 	if !tea.BoolValue(util.IsUnset(request.IsvName)) {
-		body["isv_name"] = request.IsvName
+		query["isv_name"] = request.IsvName
 	}
 
 	if !tea.BoolValue(util.IsUnset(request.OrderId)) {
-		body["order_id"] = request.OrderId
+		query["order_id"] = request.OrderId
 	}
 
 	if !tea.BoolValue(util.IsUnset(request.OutOrderId)) {
-		body["out_order_id"] = request.OutOrderId
+		query["out_order_id"] = request.OutOrderId
 	}
 
 	realHeaders := make(map[string]*string)
@@ -59610,7 +59610,7 @@ func (client *Client) FlightCancelOrderV2WithOptions(request *FlightCancelOrderV
 
 	req := &openapi.OpenApiRequest{
 		Headers: realHeaders,
-		Body:    openapiutil.ParseToMap(body),
+		Query:   openapiutil.Query(query),
 	}
 	params := &openapi.Params{
 		Action:      tea.String("FlightCancelOrderV2"),
@@ -59620,7 +59620,7 @@ func (client *Client) FlightCancelOrderV2WithOptions(request *FlightCancelOrderV
 		Method:      tea.String("DELETE"),
 		AuthType:    tea.String("AK"),
 		Style:       tea.String("ROA"),
-		ReqBodyType: tea.String("formData"),
+		ReqBodyType: tea.String("json"),
 		BodyType:    tea.String("json"),
 	}
 	_result = &FlightCancelOrderV2Response{}
@@ -60294,25 +60294,25 @@ func (client *Client) FlightModifyCancelV2WithOptions(request *FlightModifyCance
 	if _err != nil {
 		return _result, _err
 	}
-	body := map[string]interface{}{}
+	query := map[string]interface{}{}
 	if !tea.BoolValue(util.IsUnset(request.IsvName)) {
-		body["isv_name"] = request.IsvName
+		query["isv_name"] = request.IsvName
 	}
 
 	if !tea.BoolValue(util.IsUnset(request.OrderId)) {
-		body["order_id"] = request.OrderId
+		query["order_id"] = request.OrderId
 	}
 
 	if !tea.BoolValue(util.IsUnset(request.OutOrderId)) {
-		body["out_order_id"] = request.OutOrderId
+		query["out_order_id"] = request.OutOrderId
 	}
 
 	if !tea.BoolValue(util.IsUnset(request.OutSubOrderId)) {
-		body["out_sub_order_id"] = request.OutSubOrderId
+		query["out_sub_order_id"] = request.OutSubOrderId
 	}
 
 	if !tea.BoolValue(util.IsUnset(request.SubOrderId)) {
-		body["sub_order_id"] = request.SubOrderId
+		query["sub_order_id"] = request.SubOrderId
 	}
 
 	realHeaders := make(map[string]*string)
@@ -60326,7 +60326,7 @@ func (client *Client) FlightModifyCancelV2WithOptions(request *FlightModifyCance
 
 	req := &openapi.OpenApiRequest{
 		Headers: realHeaders,
-		Body:    openapiutil.ParseToMap(body),
+		Query:   openapiutil.Query(query),
 	}
 	params := &openapi.Params{
 		Action:      tea.String("FlightModifyCancelV2"),
@@ -60336,7 +60336,7 @@ func (client *Client) FlightModifyCancelV2WithOptions(request *FlightModifyCance
 		Method:      tea.String("DELETE"),
 		AuthType:    tea.String("AK"),
 		Style:       tea.String("ROA"),
-		ReqBodyType: tea.String("formData"),
+		ReqBodyType: tea.String("json"),
 		BodyType:    tea.String("json"),
 	}
 	_result = &FlightModifyCancelV2Response{}
