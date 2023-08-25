@@ -2578,7 +2578,7 @@ func (s *CreateSparkTemplateResponse) SetBody(v *CreateSparkTemplateResponseBody
 type DeleteAccountRequest struct {
 	// The name of the database account.
 	//
-	// > You can call the [DescribeAccounts](~~~~) operation to query the information about database accounts in a cluster, including the database account name.
+	// > You can call the [DescribeAccounts](~~612430~~) operation to query the information about database accounts in a cluster, including the database account name.
 	AccountName *string `json:"AccountName,omitempty" xml:"AccountName,omitempty"`
 	// The ID of the AnalyticDB for MySQL Data Lakehouse Edition (V3.0) cluster.
 	DBClusterId *string `json:"DBClusterId,omitempty" xml:"DBClusterId,omitempty"`
@@ -2728,7 +2728,7 @@ type DeleteDBResourceGroupRequest struct {
 	DBClusterId *string `json:"DBClusterId,omitempty" xml:"DBClusterId,omitempty"`
 	// The name of the resource group.
 	//
-	// > You can call the [DescribeDBResourceGroup](~~~~) operation to query the resource group information of a cluster, including the resource group name.
+	// > You can call the [DescribeDBResourceGroup](~~612410~~) operation to query the resource group information of a cluster, including the resource group name.
 	GroupName *string `json:"GroupName,omitempty" xml:"GroupName,omitempty"`
 }
 
@@ -4324,6 +4324,261 @@ func (s *DescribeAdbMySqlTablesResponse) SetBody(v *DescribeAdbMySqlTablesRespon
 	return s
 }
 
+type DescribeAllDataSourceRequest struct {
+	DBClusterId *string `json:"DBClusterId,omitempty" xml:"DBClusterId,omitempty"`
+	RegionId    *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	SchemaName  *string `json:"SchemaName,omitempty" xml:"SchemaName,omitempty"`
+	TableName   *string `json:"TableName,omitempty" xml:"TableName,omitempty"`
+}
+
+func (s DescribeAllDataSourceRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeAllDataSourceRequest) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeAllDataSourceRequest) SetDBClusterId(v string) *DescribeAllDataSourceRequest {
+	s.DBClusterId = &v
+	return s
+}
+
+func (s *DescribeAllDataSourceRequest) SetRegionId(v string) *DescribeAllDataSourceRequest {
+	s.RegionId = &v
+	return s
+}
+
+func (s *DescribeAllDataSourceRequest) SetSchemaName(v string) *DescribeAllDataSourceRequest {
+	s.SchemaName = &v
+	return s
+}
+
+func (s *DescribeAllDataSourceRequest) SetTableName(v string) *DescribeAllDataSourceRequest {
+	s.TableName = &v
+	return s
+}
+
+type DescribeAllDataSourceResponseBody struct {
+	Columns   *DescribeAllDataSourceResponseBodyColumns `json:"Columns,omitempty" xml:"Columns,omitempty" type:"Struct"`
+	RequestId *string                                   `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	Schemas   *DescribeAllDataSourceResponseBodySchemas `json:"Schemas,omitempty" xml:"Schemas,omitempty" type:"Struct"`
+	Tables    *DescribeAllDataSourceResponseBodyTables  `json:"Tables,omitempty" xml:"Tables,omitempty" type:"Struct"`
+}
+
+func (s DescribeAllDataSourceResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeAllDataSourceResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeAllDataSourceResponseBody) SetColumns(v *DescribeAllDataSourceResponseBodyColumns) *DescribeAllDataSourceResponseBody {
+	s.Columns = v
+	return s
+}
+
+func (s *DescribeAllDataSourceResponseBody) SetRequestId(v string) *DescribeAllDataSourceResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *DescribeAllDataSourceResponseBody) SetSchemas(v *DescribeAllDataSourceResponseBodySchemas) *DescribeAllDataSourceResponseBody {
+	s.Schemas = v
+	return s
+}
+
+func (s *DescribeAllDataSourceResponseBody) SetTables(v *DescribeAllDataSourceResponseBodyTables) *DescribeAllDataSourceResponseBody {
+	s.Tables = v
+	return s
+}
+
+type DescribeAllDataSourceResponseBodyColumns struct {
+	Column []*DescribeAllDataSourceResponseBodyColumnsColumn `json:"Column,omitempty" xml:"Column,omitempty" type:"Repeated"`
+}
+
+func (s DescribeAllDataSourceResponseBodyColumns) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeAllDataSourceResponseBodyColumns) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeAllDataSourceResponseBodyColumns) SetColumn(v []*DescribeAllDataSourceResponseBodyColumnsColumn) *DescribeAllDataSourceResponseBodyColumns {
+	s.Column = v
+	return s
+}
+
+type DescribeAllDataSourceResponseBodyColumnsColumn struct {
+	AutoIncrementColumn *bool   `json:"AutoIncrementColumn,omitempty" xml:"AutoIncrementColumn,omitempty"`
+	ColumnName          *string `json:"ColumnName,omitempty" xml:"ColumnName,omitempty"`
+	DBClusterId         *string `json:"DBClusterId,omitempty" xml:"DBClusterId,omitempty"`
+	PrimaryKey          *bool   `json:"PrimaryKey,omitempty" xml:"PrimaryKey,omitempty"`
+	SchemaName          *string `json:"SchemaName,omitempty" xml:"SchemaName,omitempty"`
+	TableName           *string `json:"TableName,omitempty" xml:"TableName,omitempty"`
+	Type                *string `json:"Type,omitempty" xml:"Type,omitempty"`
+}
+
+func (s DescribeAllDataSourceResponseBodyColumnsColumn) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeAllDataSourceResponseBodyColumnsColumn) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeAllDataSourceResponseBodyColumnsColumn) SetAutoIncrementColumn(v bool) *DescribeAllDataSourceResponseBodyColumnsColumn {
+	s.AutoIncrementColumn = &v
+	return s
+}
+
+func (s *DescribeAllDataSourceResponseBodyColumnsColumn) SetColumnName(v string) *DescribeAllDataSourceResponseBodyColumnsColumn {
+	s.ColumnName = &v
+	return s
+}
+
+func (s *DescribeAllDataSourceResponseBodyColumnsColumn) SetDBClusterId(v string) *DescribeAllDataSourceResponseBodyColumnsColumn {
+	s.DBClusterId = &v
+	return s
+}
+
+func (s *DescribeAllDataSourceResponseBodyColumnsColumn) SetPrimaryKey(v bool) *DescribeAllDataSourceResponseBodyColumnsColumn {
+	s.PrimaryKey = &v
+	return s
+}
+
+func (s *DescribeAllDataSourceResponseBodyColumnsColumn) SetSchemaName(v string) *DescribeAllDataSourceResponseBodyColumnsColumn {
+	s.SchemaName = &v
+	return s
+}
+
+func (s *DescribeAllDataSourceResponseBodyColumnsColumn) SetTableName(v string) *DescribeAllDataSourceResponseBodyColumnsColumn {
+	s.TableName = &v
+	return s
+}
+
+func (s *DescribeAllDataSourceResponseBodyColumnsColumn) SetType(v string) *DescribeAllDataSourceResponseBodyColumnsColumn {
+	s.Type = &v
+	return s
+}
+
+type DescribeAllDataSourceResponseBodySchemas struct {
+	Schema []*DescribeAllDataSourceResponseBodySchemasSchema `json:"Schema,omitempty" xml:"Schema,omitempty" type:"Repeated"`
+}
+
+func (s DescribeAllDataSourceResponseBodySchemas) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeAllDataSourceResponseBodySchemas) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeAllDataSourceResponseBodySchemas) SetSchema(v []*DescribeAllDataSourceResponseBodySchemasSchema) *DescribeAllDataSourceResponseBodySchemas {
+	s.Schema = v
+	return s
+}
+
+type DescribeAllDataSourceResponseBodySchemasSchema struct {
+	DBClusterId *string `json:"DBClusterId,omitempty" xml:"DBClusterId,omitempty"`
+	SchemaName  *string `json:"SchemaName,omitempty" xml:"SchemaName,omitempty"`
+}
+
+func (s DescribeAllDataSourceResponseBodySchemasSchema) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeAllDataSourceResponseBodySchemasSchema) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeAllDataSourceResponseBodySchemasSchema) SetDBClusterId(v string) *DescribeAllDataSourceResponseBodySchemasSchema {
+	s.DBClusterId = &v
+	return s
+}
+
+func (s *DescribeAllDataSourceResponseBodySchemasSchema) SetSchemaName(v string) *DescribeAllDataSourceResponseBodySchemasSchema {
+	s.SchemaName = &v
+	return s
+}
+
+type DescribeAllDataSourceResponseBodyTables struct {
+	Table []*DescribeAllDataSourceResponseBodyTablesTable `json:"Table,omitempty" xml:"Table,omitempty" type:"Repeated"`
+}
+
+func (s DescribeAllDataSourceResponseBodyTables) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeAllDataSourceResponseBodyTables) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeAllDataSourceResponseBodyTables) SetTable(v []*DescribeAllDataSourceResponseBodyTablesTable) *DescribeAllDataSourceResponseBodyTables {
+	s.Table = v
+	return s
+}
+
+type DescribeAllDataSourceResponseBodyTablesTable struct {
+	DBClusterId *string `json:"DBClusterId,omitempty" xml:"DBClusterId,omitempty"`
+	SchemaName  *string `json:"SchemaName,omitempty" xml:"SchemaName,omitempty"`
+	TableName   *string `json:"TableName,omitempty" xml:"TableName,omitempty"`
+}
+
+func (s DescribeAllDataSourceResponseBodyTablesTable) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeAllDataSourceResponseBodyTablesTable) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeAllDataSourceResponseBodyTablesTable) SetDBClusterId(v string) *DescribeAllDataSourceResponseBodyTablesTable {
+	s.DBClusterId = &v
+	return s
+}
+
+func (s *DescribeAllDataSourceResponseBodyTablesTable) SetSchemaName(v string) *DescribeAllDataSourceResponseBodyTablesTable {
+	s.SchemaName = &v
+	return s
+}
+
+func (s *DescribeAllDataSourceResponseBodyTablesTable) SetTableName(v string) *DescribeAllDataSourceResponseBodyTablesTable {
+	s.TableName = &v
+	return s
+}
+
+type DescribeAllDataSourceResponse struct {
+	Headers    map[string]*string                 `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                             `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *DescribeAllDataSourceResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s DescribeAllDataSourceResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeAllDataSourceResponse) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeAllDataSourceResponse) SetHeaders(v map[string]*string) *DescribeAllDataSourceResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *DescribeAllDataSourceResponse) SetStatusCode(v int32) *DescribeAllDataSourceResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *DescribeAllDataSourceResponse) SetBody(v *DescribeAllDataSourceResponseBody) *DescribeAllDataSourceResponse {
+	s.Body = v
+	return s
+}
+
 type DescribeApsActionLogsRequest struct {
 	// The ID of the AnalyticDB for MySQL Data Lakehouse Edition (V3.0) cluster.
 	//
@@ -5409,6 +5664,163 @@ func (s *DescribeClusterNetInfoResponse) SetStatusCode(v int32) *DescribeCluster
 }
 
 func (s *DescribeClusterNetInfoResponse) SetBody(v *DescribeClusterNetInfoResponseBody) *DescribeClusterNetInfoResponse {
+	s.Body = v
+	return s
+}
+
+type DescribeColumnsRequest struct {
+	DBClusterId *string `json:"DBClusterId,omitempty" xml:"DBClusterId,omitempty"`
+	RegionId    *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	SchemaName  *string `json:"SchemaName,omitempty" xml:"SchemaName,omitempty"`
+	TableName   *string `json:"TableName,omitempty" xml:"TableName,omitempty"`
+}
+
+func (s DescribeColumnsRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeColumnsRequest) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeColumnsRequest) SetDBClusterId(v string) *DescribeColumnsRequest {
+	s.DBClusterId = &v
+	return s
+}
+
+func (s *DescribeColumnsRequest) SetRegionId(v string) *DescribeColumnsRequest {
+	s.RegionId = &v
+	return s
+}
+
+func (s *DescribeColumnsRequest) SetSchemaName(v string) *DescribeColumnsRequest {
+	s.SchemaName = &v
+	return s
+}
+
+func (s *DescribeColumnsRequest) SetTableName(v string) *DescribeColumnsRequest {
+	s.TableName = &v
+	return s
+}
+
+type DescribeColumnsResponseBody struct {
+	Items     *DescribeColumnsResponseBodyItems `json:"Items,omitempty" xml:"Items,omitempty" type:"Struct"`
+	RequestId *string                           `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+}
+
+func (s DescribeColumnsResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeColumnsResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeColumnsResponseBody) SetItems(v *DescribeColumnsResponseBodyItems) *DescribeColumnsResponseBody {
+	s.Items = v
+	return s
+}
+
+func (s *DescribeColumnsResponseBody) SetRequestId(v string) *DescribeColumnsResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+type DescribeColumnsResponseBodyItems struct {
+	Column []*DescribeColumnsResponseBodyItemsColumn `json:"Column,omitempty" xml:"Column,omitempty" type:"Repeated"`
+}
+
+func (s DescribeColumnsResponseBodyItems) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeColumnsResponseBodyItems) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeColumnsResponseBodyItems) SetColumn(v []*DescribeColumnsResponseBodyItemsColumn) *DescribeColumnsResponseBodyItems {
+	s.Column = v
+	return s
+}
+
+type DescribeColumnsResponseBodyItemsColumn struct {
+	AutoIncrementColumn *bool   `json:"AutoIncrementColumn,omitempty" xml:"AutoIncrementColumn,omitempty"`
+	ColumnName          *string `json:"ColumnName,omitempty" xml:"ColumnName,omitempty"`
+	DBClusterId         *string `json:"DBClusterId,omitempty" xml:"DBClusterId,omitempty"`
+	PrimaryKey          *bool   `json:"PrimaryKey,omitempty" xml:"PrimaryKey,omitempty"`
+	SchemaName          *string `json:"SchemaName,omitempty" xml:"SchemaName,omitempty"`
+	TableName           *string `json:"TableName,omitempty" xml:"TableName,omitempty"`
+	Type                *string `json:"Type,omitempty" xml:"Type,omitempty"`
+}
+
+func (s DescribeColumnsResponseBodyItemsColumn) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeColumnsResponseBodyItemsColumn) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeColumnsResponseBodyItemsColumn) SetAutoIncrementColumn(v bool) *DescribeColumnsResponseBodyItemsColumn {
+	s.AutoIncrementColumn = &v
+	return s
+}
+
+func (s *DescribeColumnsResponseBodyItemsColumn) SetColumnName(v string) *DescribeColumnsResponseBodyItemsColumn {
+	s.ColumnName = &v
+	return s
+}
+
+func (s *DescribeColumnsResponseBodyItemsColumn) SetDBClusterId(v string) *DescribeColumnsResponseBodyItemsColumn {
+	s.DBClusterId = &v
+	return s
+}
+
+func (s *DescribeColumnsResponseBodyItemsColumn) SetPrimaryKey(v bool) *DescribeColumnsResponseBodyItemsColumn {
+	s.PrimaryKey = &v
+	return s
+}
+
+func (s *DescribeColumnsResponseBodyItemsColumn) SetSchemaName(v string) *DescribeColumnsResponseBodyItemsColumn {
+	s.SchemaName = &v
+	return s
+}
+
+func (s *DescribeColumnsResponseBodyItemsColumn) SetTableName(v string) *DescribeColumnsResponseBodyItemsColumn {
+	s.TableName = &v
+	return s
+}
+
+func (s *DescribeColumnsResponseBodyItemsColumn) SetType(v string) *DescribeColumnsResponseBodyItemsColumn {
+	s.Type = &v
+	return s
+}
+
+type DescribeColumnsResponse struct {
+	Headers    map[string]*string           `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                       `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *DescribeColumnsResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s DescribeColumnsResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeColumnsResponse) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeColumnsResponse) SetHeaders(v map[string]*string) *DescribeColumnsResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *DescribeColumnsResponse) SetStatusCode(v int32) *DescribeColumnsResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *DescribeColumnsResponse) SetBody(v *DescribeColumnsResponseBody) *DescribeColumnsResponse {
 	s.Body = v
 	return s
 }
@@ -9177,6 +9589,121 @@ func (s *DescribeSQLPatternsResponse) SetBody(v *DescribeSQLPatternsResponseBody
 	return s
 }
 
+type DescribeSchemasRequest struct {
+	DBClusterId *string `json:"DBClusterId,omitempty" xml:"DBClusterId,omitempty"`
+	RegionId    *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+}
+
+func (s DescribeSchemasRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeSchemasRequest) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeSchemasRequest) SetDBClusterId(v string) *DescribeSchemasRequest {
+	s.DBClusterId = &v
+	return s
+}
+
+func (s *DescribeSchemasRequest) SetRegionId(v string) *DescribeSchemasRequest {
+	s.RegionId = &v
+	return s
+}
+
+type DescribeSchemasResponseBody struct {
+	Items     *DescribeSchemasResponseBodyItems `json:"Items,omitempty" xml:"Items,omitempty" type:"Struct"`
+	RequestId *string                           `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+}
+
+func (s DescribeSchemasResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeSchemasResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeSchemasResponseBody) SetItems(v *DescribeSchemasResponseBodyItems) *DescribeSchemasResponseBody {
+	s.Items = v
+	return s
+}
+
+func (s *DescribeSchemasResponseBody) SetRequestId(v string) *DescribeSchemasResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+type DescribeSchemasResponseBodyItems struct {
+	Schema []*DescribeSchemasResponseBodyItemsSchema `json:"Schema,omitempty" xml:"Schema,omitempty" type:"Repeated"`
+}
+
+func (s DescribeSchemasResponseBodyItems) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeSchemasResponseBodyItems) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeSchemasResponseBodyItems) SetSchema(v []*DescribeSchemasResponseBodyItemsSchema) *DescribeSchemasResponseBodyItems {
+	s.Schema = v
+	return s
+}
+
+type DescribeSchemasResponseBodyItemsSchema struct {
+	DBClusterId *string `json:"DBClusterId,omitempty" xml:"DBClusterId,omitempty"`
+	SchemaName  *string `json:"SchemaName,omitempty" xml:"SchemaName,omitempty"`
+}
+
+func (s DescribeSchemasResponseBodyItemsSchema) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeSchemasResponseBodyItemsSchema) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeSchemasResponseBodyItemsSchema) SetDBClusterId(v string) *DescribeSchemasResponseBodyItemsSchema {
+	s.DBClusterId = &v
+	return s
+}
+
+func (s *DescribeSchemasResponseBodyItemsSchema) SetSchemaName(v string) *DescribeSchemasResponseBodyItemsSchema {
+	s.SchemaName = &v
+	return s
+}
+
+type DescribeSchemasResponse struct {
+	Headers    map[string]*string           `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                       `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *DescribeSchemasResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s DescribeSchemasResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeSchemasResponse) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeSchemasResponse) SetHeaders(v map[string]*string) *DescribeSchemasResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *DescribeSchemasResponse) SetStatusCode(v int32) *DescribeSchemasResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *DescribeSchemasResponse) SetBody(v *DescribeSchemasResponseBody) *DescribeSchemasResponse {
+	s.Body = v
+	return s
+}
+
 type DescribeSparkCodeLogRequest struct {
 	DBClusterId *string `json:"DBClusterId,omitempty" xml:"DBClusterId,omitempty"`
 	JobId       *int64  `json:"JobId,omitempty" xml:"JobId,omitempty"`
@@ -9857,6 +10384,133 @@ func (s *DescribeTableAccessCountResponse) SetBody(v *DescribeTableAccessCountRe
 	return s
 }
 
+type DescribeTablesRequest struct {
+	DBClusterId *string `json:"DBClusterId,omitempty" xml:"DBClusterId,omitempty"`
+	RegionId    *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	SchemaName  *string `json:"SchemaName,omitempty" xml:"SchemaName,omitempty"`
+}
+
+func (s DescribeTablesRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeTablesRequest) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeTablesRequest) SetDBClusterId(v string) *DescribeTablesRequest {
+	s.DBClusterId = &v
+	return s
+}
+
+func (s *DescribeTablesRequest) SetRegionId(v string) *DescribeTablesRequest {
+	s.RegionId = &v
+	return s
+}
+
+func (s *DescribeTablesRequest) SetSchemaName(v string) *DescribeTablesRequest {
+	s.SchemaName = &v
+	return s
+}
+
+type DescribeTablesResponseBody struct {
+	Items     *DescribeTablesResponseBodyItems `json:"Items,omitempty" xml:"Items,omitempty" type:"Struct"`
+	RequestId *string                          `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+}
+
+func (s DescribeTablesResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeTablesResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeTablesResponseBody) SetItems(v *DescribeTablesResponseBodyItems) *DescribeTablesResponseBody {
+	s.Items = v
+	return s
+}
+
+func (s *DescribeTablesResponseBody) SetRequestId(v string) *DescribeTablesResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+type DescribeTablesResponseBodyItems struct {
+	Table []*DescribeTablesResponseBodyItemsTable `json:"Table,omitempty" xml:"Table,omitempty" type:"Repeated"`
+}
+
+func (s DescribeTablesResponseBodyItems) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeTablesResponseBodyItems) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeTablesResponseBodyItems) SetTable(v []*DescribeTablesResponseBodyItemsTable) *DescribeTablesResponseBodyItems {
+	s.Table = v
+	return s
+}
+
+type DescribeTablesResponseBodyItemsTable struct {
+	DBClusterId *string `json:"DBClusterId,omitempty" xml:"DBClusterId,omitempty"`
+	SchemaName  *string `json:"SchemaName,omitempty" xml:"SchemaName,omitempty"`
+	TableName   *string `json:"TableName,omitempty" xml:"TableName,omitempty"`
+}
+
+func (s DescribeTablesResponseBodyItemsTable) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeTablesResponseBodyItemsTable) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeTablesResponseBodyItemsTable) SetDBClusterId(v string) *DescribeTablesResponseBodyItemsTable {
+	s.DBClusterId = &v
+	return s
+}
+
+func (s *DescribeTablesResponseBodyItemsTable) SetSchemaName(v string) *DescribeTablesResponseBodyItemsTable {
+	s.SchemaName = &v
+	return s
+}
+
+func (s *DescribeTablesResponseBodyItemsTable) SetTableName(v string) *DescribeTablesResponseBodyItemsTable {
+	s.TableName = &v
+	return s
+}
+
+type DescribeTablesResponse struct {
+	Headers    map[string]*string          `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                      `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *DescribeTablesResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s DescribeTablesResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeTablesResponse) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeTablesResponse) SetHeaders(v map[string]*string) *DescribeTablesResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *DescribeTablesResponse) SetStatusCode(v int32) *DescribeTablesResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *DescribeTablesResponse) SetBody(v *DescribeTablesResponseBody) *DescribeTablesResponse {
+	s.Body = v
+	return s
+}
+
 type DisableElasticPlanRequest struct {
 	// The ID of the cluster.
 	//
@@ -10362,9 +11016,9 @@ func (s *GetDatabaseObjectsResponse) SetBody(v *GetDatabaseObjectsResponseBody) 
 type GetSparkAppAttemptLogRequest struct {
 	// The ID of the log.
 	//
-	// >  You can call the [ListSparkAppAttempts](~~455887~~) operation to query the retry history of an application, including the log ID of a retry attempt.
+	// > You can call the [ListSparkAppAttempts](~~455887~~) operation to query the information about the retry attempts of a Spark application, including the retry log IDs.
 	AttemptId *string `json:"AttemptId,omitempty" xml:"AttemptId,omitempty"`
-	// The number of rows to return in the log. Valid values: 1 to 500. Default value: 300.
+	// The number of log entries to return. Valid values: 1 to 500. Default value: 300.
 	LogLength *int64 `json:"LogLength,omitempty" xml:"LogLength,omitempty"`
 }
 
@@ -10387,9 +11041,9 @@ func (s *GetSparkAppAttemptLogRequest) SetLogLength(v int64) *GetSparkAppAttempt
 }
 
 type GetSparkAppAttemptLogResponseBody struct {
-	// The data returned.
+	// The queried log.
 	Data *GetSparkAppAttemptLogResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
-	// The ID of the request.
+	// The request ID.
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -10412,10 +11066,11 @@ func (s *GetSparkAppAttemptLogResponseBody) SetRequestId(v string) *GetSparkAppA
 }
 
 type GetSparkAppAttemptLogResponseBodyData struct {
+	// The ID of the Data Lakehouse Edition (V3.0) cluster.
 	DBClusterId *string `json:"DBClusterId,omitempty" xml:"DBClusterId,omitempty"`
 	// The content of the log.
 	LogContent *string `json:"LogContent,omitempty" xml:"LogContent,omitempty"`
-	// The alert message returned for the operation, such as task execution failure or insufficient resources. Null is returned if no alert occurs.
+	// The alert message returned for the request, such as task execution failure or insufficient resources. If no alert occurs, null is returned.
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
 }
 
@@ -10472,6 +11127,9 @@ func (s *GetSparkAppAttemptLogResponse) SetBody(v *GetSparkAppAttemptLogResponse
 }
 
 type GetSparkAppInfoRequest struct {
+	// The ID of the application.
+	//
+	// >  You can call the [ListSparkApps](/help/en/analyticdb-for-mysql/latest/listsparkapps) operation to query the Spark application ID.
 	AppId *string `json:"AppId,omitempty" xml:"AppId,omitempty"`
 }
 
@@ -10489,8 +11147,23 @@ func (s *GetSparkAppInfoRequest) SetAppId(v string) *GetSparkAppInfoRequest {
 }
 
 type GetSparkAppInfoResponseBody struct {
-	Data      *SparkAppInfo `json:"Data,omitempty" xml:"Data,omitempty"`
-	RequestId *string       `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// Details of the Spark application. Fields in the response parameter:
+	//
+	// - **Data**: the data of the Spark application template.
+	// - **EstimateExecutionCpuTimeInSeconds**: the amount of time it takes to consume CPU resources for running the Spark application. Unit: milliseconds.
+	// - **LogRootPath**: the storage path of log files.
+	// - **LastAttemptId**: the most recent attempt ID.
+	// - **WebUiAddress**: the web UI URL.
+	// - **SubmittedTimeInMillis**: the time when the Spark application was submitted. The time is displayed in the UNIX timestamp format. Unit: milliseconds.
+	// - **StartedTimeInMillis**: the time when the Spark application was created. The time is displayed in the UNIX timestamp format. Unit: milliseconds.
+	// - **LastUpdatedTimeInMillis**: the time when the Spark application was last updated. The time is displayed in the UNIX timestamp format. Unit: milliseconds.
+	// - **TerminatedTimeInMillis**: the time when the Spark application task was terminated. The time is displayed in the UNIX timestamp format. Unit: milliseconds.
+	// - **DBClusterId**: the ID of the cluster on which the Spark application runs.
+	// - **ResourceGroupName**: the name of the job resource group.
+	// - **DurationInMillis**: the amount of time it takes to run the Spark application. Unit: milliseconds.
+	Data *SparkAppInfo `json:"Data,omitempty" xml:"Data,omitempty"`
+	// The ID of the request.
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
 func (s GetSparkAppInfoResponseBody) String() string {
@@ -11155,6 +11828,7 @@ func (s *GetSparkConfigLogPathResponse) SetBody(v *GetSparkConfigLogPathResponse
 }
 
 type GetSparkDefinitionsRequest struct {
+	// The ID of the cluster.
 	DBClusterId *string `json:"DBClusterId,omitempty" xml:"DBClusterId,omitempty"`
 }
 
@@ -11172,7 +11846,9 @@ func (s *GetSparkDefinitionsRequest) SetDBClusterId(v string) *GetSparkDefinitio
 }
 
 type GetSparkDefinitionsResponseBody struct {
-	Data      *string `json:"Data,omitempty" xml:"Data,omitempty"`
+	// The common definitions of Spark applications.
+	Data *string `json:"Data,omitempty" xml:"Data,omitempty"`
+	// The ID of the request.
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -13508,7 +14184,7 @@ type ModifyAccountDescriptionRequest struct {
 	AccountDescription *string `json:"AccountDescription,omitempty" xml:"AccountDescription,omitempty"`
 	// The name of the database account.
 	//
-	// > You can call the [DescribeAccounts](~~~) operation to query the information about database accounts in a cluster, including the database account name.
+	// > You can call the [DescribeAccounts](~~612430~~) operation to query the information about database accounts in a cluster, including the database account name.
 	AccountName *string `json:"AccountName,omitempty" xml:"AccountName,omitempty"`
 	// The ID of the AnalyticDB for MySQL Data Lakehouse Edition (V3.0) cluster.
 	DBClusterId *string `json:"DBClusterId,omitempty" xml:"DBClusterId,omitempty"`
@@ -14818,7 +15494,7 @@ type ResetAccountPasswordRequest struct {
 	AccountDescription *string `json:"AccountDescription,omitempty" xml:"AccountDescription,omitempty"`
 	// The name of the database account.
 	//
-	// > You can call the [DescribeAccounts](~~~) operation to query the information about database accounts in a cluster, including the database account name.
+	// > You can call the [DescribeAccounts](~~612430~~) operation to query the information about database accounts in a cluster, including the database account name.
 	AccountName *string `json:"AccountName,omitempty" xml:"AccountName,omitempty"`
 	// The password of the database account.
 	//
@@ -15447,7 +16123,7 @@ func (s *SubmitSparkLogAnalyzeTaskResponse) SetBody(v *SubmitSparkLogAnalyzeTask
 type UnbindAccountRequest struct {
 	// The name of the database account.
 	//
-	// > You can call the [DescribeAccounts](~~~~) operation to view the information about a database account in a cluster, including the name of the database account.
+	// > You can call the [DescribeAccounts](~~612430~~) operation to view the information about a database account in a cluster, including the name of the database account.
 	AccountName *string `json:"AccountName,omitempty" xml:"AccountName,omitempty"`
 	// The ID of the AnalyticDB for MySQL Data Lakehouse Edition (V3.0) cluster.
 	DBClusterId *string `json:"DBClusterId,omitempty" xml:"DBClusterId,omitempty"`
@@ -17056,6 +17732,62 @@ func (client *Client) DescribeAdbMySqlTables(request *DescribeAdbMySqlTablesRequ
 	return _result, _err
 }
 
+func (client *Client) DescribeAllDataSourceWithOptions(request *DescribeAllDataSourceRequest, runtime *util.RuntimeOptions) (_result *DescribeAllDataSourceResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.DBClusterId)) {
+		query["DBClusterId"] = request.DBClusterId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.RegionId)) {
+		query["RegionId"] = request.RegionId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.SchemaName)) {
+		query["SchemaName"] = request.SchemaName
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.TableName)) {
+		query["TableName"] = request.TableName
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("DescribeAllDataSource"),
+		Version:     tea.String("2021-12-01"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &DescribeAllDataSourceResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) DescribeAllDataSource(request *DescribeAllDataSourceRequest) (_result *DescribeAllDataSourceResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &DescribeAllDataSourceResponse{}
+	_body, _err := client.DescribeAllDataSourceWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
 func (client *Client) DescribeApsActionLogsWithOptions(request *DescribeApsActionLogsRequest, runtime *util.RuntimeOptions) (_result *DescribeApsActionLogsResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -17397,6 +18129,62 @@ func (client *Client) DescribeClusterNetInfo(request *DescribeClusterNetInfoRequ
 	runtime := &util.RuntimeOptions{}
 	_result = &DescribeClusterNetInfoResponse{}
 	_body, _err := client.DescribeClusterNetInfoWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) DescribeColumnsWithOptions(request *DescribeColumnsRequest, runtime *util.RuntimeOptions) (_result *DescribeColumnsResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.DBClusterId)) {
+		query["DBClusterId"] = request.DBClusterId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.RegionId)) {
+		query["RegionId"] = request.RegionId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.SchemaName)) {
+		query["SchemaName"] = request.SchemaName
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.TableName)) {
+		query["TableName"] = request.TableName
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("DescribeColumns"),
+		Version:     tea.String("2021-12-01"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &DescribeColumnsResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) DescribeColumns(request *DescribeColumnsRequest) (_result *DescribeColumnsResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &DescribeColumnsResponse{}
+	_body, _err := client.DescribeColumnsWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -18432,6 +19220,54 @@ func (client *Client) DescribeSQLPatterns(request *DescribeSQLPatternsRequest) (
 	return _result, _err
 }
 
+func (client *Client) DescribeSchemasWithOptions(request *DescribeSchemasRequest, runtime *util.RuntimeOptions) (_result *DescribeSchemasResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.DBClusterId)) {
+		query["DBClusterId"] = request.DBClusterId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.RegionId)) {
+		query["RegionId"] = request.RegionId
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("DescribeSchemas"),
+		Version:     tea.String("2021-12-01"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &DescribeSchemasResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) DescribeSchemas(request *DescribeSchemasRequest) (_result *DescribeSchemasResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &DescribeSchemasResponse{}
+	_body, _err := client.DescribeSchemasWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
 func (client *Client) DescribeSparkCodeLogWithOptions(request *DescribeSparkCodeLogRequest, runtime *util.RuntimeOptions) (_result *DescribeSparkCodeLogResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -18721,6 +19557,58 @@ func (client *Client) DescribeTableAccessCount(request *DescribeTableAccessCount
 	runtime := &util.RuntimeOptions{}
 	_result = &DescribeTableAccessCountResponse{}
 	_body, _err := client.DescribeTableAccessCountWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) DescribeTablesWithOptions(request *DescribeTablesRequest, runtime *util.RuntimeOptions) (_result *DescribeTablesResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.DBClusterId)) {
+		query["DBClusterId"] = request.DBClusterId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.RegionId)) {
+		query["RegionId"] = request.RegionId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.SchemaName)) {
+		query["SchemaName"] = request.SchemaName
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("DescribeTables"),
+		Version:     tea.String("2021-12-01"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &DescribeTablesResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) DescribeTables(request *DescribeTablesRequest) (_result *DescribeTablesResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &DescribeTablesResponse{}
+	_body, _err := client.DescribeTablesWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
