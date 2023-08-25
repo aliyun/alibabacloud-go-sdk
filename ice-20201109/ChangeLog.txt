@@ -1,3 +1,6 @@
+2023-08-25 Version: v2.1.0
+- Generated golang 2020-11-09 for ICE.
+
 2023-06-06 Version: v2.0.10
 - Add KMS apis and hls encryption transcoding.
 

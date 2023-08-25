@@ -1382,6 +1382,134 @@ func (s *CreateAuditResponse) SetBody(v *CreateAuditResponseBody) *CreateAuditRe
 	return s
 }
 
+type CreateAvatarTrainingJobRequest struct {
+	AvatarDescription *string `json:"AvatarDescription,omitempty" xml:"AvatarDescription,omitempty"`
+	AvatarName        *string `json:"AvatarName,omitempty" xml:"AvatarName,omitempty"`
+	AvatarType        *string `json:"AvatarType,omitempty" xml:"AvatarType,omitempty"`
+	Portrait          *string `json:"Portrait,omitempty" xml:"Portrait,omitempty"`
+	Thumbnail         *string `json:"Thumbnail,omitempty" xml:"Thumbnail,omitempty"`
+	Transparent       *bool   `json:"Transparent,omitempty" xml:"Transparent,omitempty"`
+	Video             *string `json:"Video,omitempty" xml:"Video,omitempty"`
+}
+
+func (s CreateAvatarTrainingJobRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateAvatarTrainingJobRequest) GoString() string {
+	return s.String()
+}
+
+func (s *CreateAvatarTrainingJobRequest) SetAvatarDescription(v string) *CreateAvatarTrainingJobRequest {
+	s.AvatarDescription = &v
+	return s
+}
+
+func (s *CreateAvatarTrainingJobRequest) SetAvatarName(v string) *CreateAvatarTrainingJobRequest {
+	s.AvatarName = &v
+	return s
+}
+
+func (s *CreateAvatarTrainingJobRequest) SetAvatarType(v string) *CreateAvatarTrainingJobRequest {
+	s.AvatarType = &v
+	return s
+}
+
+func (s *CreateAvatarTrainingJobRequest) SetPortrait(v string) *CreateAvatarTrainingJobRequest {
+	s.Portrait = &v
+	return s
+}
+
+func (s *CreateAvatarTrainingJobRequest) SetThumbnail(v string) *CreateAvatarTrainingJobRequest {
+	s.Thumbnail = &v
+	return s
+}
+
+func (s *CreateAvatarTrainingJobRequest) SetTransparent(v bool) *CreateAvatarTrainingJobRequest {
+	s.Transparent = &v
+	return s
+}
+
+func (s *CreateAvatarTrainingJobRequest) SetVideo(v string) *CreateAvatarTrainingJobRequest {
+	s.Video = &v
+	return s
+}
+
+type CreateAvatarTrainingJobResponseBody struct {
+	Data      *CreateAvatarTrainingJobResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
+	RequestId *string                                  `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	Success   *bool                                    `json:"Success,omitempty" xml:"Success,omitempty"`
+}
+
+func (s CreateAvatarTrainingJobResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateAvatarTrainingJobResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *CreateAvatarTrainingJobResponseBody) SetData(v *CreateAvatarTrainingJobResponseBodyData) *CreateAvatarTrainingJobResponseBody {
+	s.Data = v
+	return s
+}
+
+func (s *CreateAvatarTrainingJobResponseBody) SetRequestId(v string) *CreateAvatarTrainingJobResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *CreateAvatarTrainingJobResponseBody) SetSuccess(v bool) *CreateAvatarTrainingJobResponseBody {
+	s.Success = &v
+	return s
+}
+
+type CreateAvatarTrainingJobResponseBodyData struct {
+	JobId *string `json:"JobId,omitempty" xml:"JobId,omitempty"`
+}
+
+func (s CreateAvatarTrainingJobResponseBodyData) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateAvatarTrainingJobResponseBodyData) GoString() string {
+	return s.String()
+}
+
+func (s *CreateAvatarTrainingJobResponseBodyData) SetJobId(v string) *CreateAvatarTrainingJobResponseBodyData {
+	s.JobId = &v
+	return s
+}
+
+type CreateAvatarTrainingJobResponse struct {
+	Headers    map[string]*string                   `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                               `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *CreateAvatarTrainingJobResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s CreateAvatarTrainingJobResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateAvatarTrainingJobResponse) GoString() string {
+	return s.String()
+}
+
+func (s *CreateAvatarTrainingJobResponse) SetHeaders(v map[string]*string) *CreateAvatarTrainingJobResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *CreateAvatarTrainingJobResponse) SetStatusCode(v int32) *CreateAvatarTrainingJobResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *CreateAvatarTrainingJobResponse) SetBody(v *CreateAvatarTrainingJobResponseBody) *CreateAvatarTrainingJobResponse {
+	s.Body = v
+	return s
+}
+
 type CreateCustomTemplateRequest struct {
 	Name           *string `json:"Name,omitempty" xml:"Name,omitempty"`
 	Subtype        *int32  `json:"Subtype,omitempty" xml:"Subtype,omitempty"`
@@ -1536,6 +1664,128 @@ func (s *CreateCustomTemplateResponse) SetStatusCode(v int32) *CreateCustomTempl
 }
 
 func (s *CreateCustomTemplateResponse) SetBody(v *CreateCustomTemplateResponseBody) *CreateCustomTemplateResponse {
+	s.Body = v
+	return s
+}
+
+type CreateCustomizedVoiceJobRequest struct {
+	Gender    *string `json:"Gender,omitempty" xml:"Gender,omitempty"`
+	Scenario  *string `json:"Scenario,omitempty" xml:"Scenario,omitempty"`
+	VoiceDesc *string `json:"VoiceDesc,omitempty" xml:"VoiceDesc,omitempty"`
+	VoiceId   *string `json:"VoiceId,omitempty" xml:"VoiceId,omitempty"`
+	VoiceName *string `json:"VoiceName,omitempty" xml:"VoiceName,omitempty"`
+}
+
+func (s CreateCustomizedVoiceJobRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateCustomizedVoiceJobRequest) GoString() string {
+	return s.String()
+}
+
+func (s *CreateCustomizedVoiceJobRequest) SetGender(v string) *CreateCustomizedVoiceJobRequest {
+	s.Gender = &v
+	return s
+}
+
+func (s *CreateCustomizedVoiceJobRequest) SetScenario(v string) *CreateCustomizedVoiceJobRequest {
+	s.Scenario = &v
+	return s
+}
+
+func (s *CreateCustomizedVoiceJobRequest) SetVoiceDesc(v string) *CreateCustomizedVoiceJobRequest {
+	s.VoiceDesc = &v
+	return s
+}
+
+func (s *CreateCustomizedVoiceJobRequest) SetVoiceId(v string) *CreateCustomizedVoiceJobRequest {
+	s.VoiceId = &v
+	return s
+}
+
+func (s *CreateCustomizedVoiceJobRequest) SetVoiceName(v string) *CreateCustomizedVoiceJobRequest {
+	s.VoiceName = &v
+	return s
+}
+
+type CreateCustomizedVoiceJobResponseBody struct {
+	Data      *CreateCustomizedVoiceJobResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
+	RequestId *string                                   `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	Success   *bool                                     `json:"Success,omitempty" xml:"Success,omitempty"`
+}
+
+func (s CreateCustomizedVoiceJobResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateCustomizedVoiceJobResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *CreateCustomizedVoiceJobResponseBody) SetData(v *CreateCustomizedVoiceJobResponseBodyData) *CreateCustomizedVoiceJobResponseBody {
+	s.Data = v
+	return s
+}
+
+func (s *CreateCustomizedVoiceJobResponseBody) SetRequestId(v string) *CreateCustomizedVoiceJobResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *CreateCustomizedVoiceJobResponseBody) SetSuccess(v bool) *CreateCustomizedVoiceJobResponseBody {
+	s.Success = &v
+	return s
+}
+
+type CreateCustomizedVoiceJobResponseBodyData struct {
+	JobId   *string `json:"JobId,omitempty" xml:"JobId,omitempty"`
+	VoiceId *string `json:"VoiceId,omitempty" xml:"VoiceId,omitempty"`
+}
+
+func (s CreateCustomizedVoiceJobResponseBodyData) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateCustomizedVoiceJobResponseBodyData) GoString() string {
+	return s.String()
+}
+
+func (s *CreateCustomizedVoiceJobResponseBodyData) SetJobId(v string) *CreateCustomizedVoiceJobResponseBodyData {
+	s.JobId = &v
+	return s
+}
+
+func (s *CreateCustomizedVoiceJobResponseBodyData) SetVoiceId(v string) *CreateCustomizedVoiceJobResponseBodyData {
+	s.VoiceId = &v
+	return s
+}
+
+type CreateCustomizedVoiceJobResponse struct {
+	Headers    map[string]*string                    `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                                `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *CreateCustomizedVoiceJobResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s CreateCustomizedVoiceJobResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateCustomizedVoiceJobResponse) GoString() string {
+	return s.String()
+}
+
+func (s *CreateCustomizedVoiceJobResponse) SetHeaders(v map[string]*string) *CreateCustomizedVoiceJobResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *CreateCustomizedVoiceJobResponse) SetStatusCode(v int32) *CreateCustomizedVoiceJobResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *CreateCustomizedVoiceJobResponse) SetBody(v *CreateCustomizedVoiceJobResponseBody) *CreateCustomizedVoiceJobResponse {
 	s.Body = v
 	return s
 }
@@ -2857,6 +3107,98 @@ func (s *DecryptKMSDataKeyResponse) SetBody(v *DecryptKMSDataKeyResponseBody) *D
 	return s
 }
 
+type DeleteAvatarTrainingJobRequest struct {
+	JobId *string `json:"JobId,omitempty" xml:"JobId,omitempty"`
+}
+
+func (s DeleteAvatarTrainingJobRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DeleteAvatarTrainingJobRequest) GoString() string {
+	return s.String()
+}
+
+func (s *DeleteAvatarTrainingJobRequest) SetJobId(v string) *DeleteAvatarTrainingJobRequest {
+	s.JobId = &v
+	return s
+}
+
+type DeleteAvatarTrainingJobResponseBody struct {
+	Data      *DeleteAvatarTrainingJobResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
+	RequestId *string                                  `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	Success   *bool                                    `json:"Success,omitempty" xml:"Success,omitempty"`
+}
+
+func (s DeleteAvatarTrainingJobResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DeleteAvatarTrainingJobResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *DeleteAvatarTrainingJobResponseBody) SetData(v *DeleteAvatarTrainingJobResponseBodyData) *DeleteAvatarTrainingJobResponseBody {
+	s.Data = v
+	return s
+}
+
+func (s *DeleteAvatarTrainingJobResponseBody) SetRequestId(v string) *DeleteAvatarTrainingJobResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *DeleteAvatarTrainingJobResponseBody) SetSuccess(v bool) *DeleteAvatarTrainingJobResponseBody {
+	s.Success = &v
+	return s
+}
+
+type DeleteAvatarTrainingJobResponseBodyData struct {
+	JobId *string `json:"JobId,omitempty" xml:"JobId,omitempty"`
+}
+
+func (s DeleteAvatarTrainingJobResponseBodyData) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DeleteAvatarTrainingJobResponseBodyData) GoString() string {
+	return s.String()
+}
+
+func (s *DeleteAvatarTrainingJobResponseBodyData) SetJobId(v string) *DeleteAvatarTrainingJobResponseBodyData {
+	s.JobId = &v
+	return s
+}
+
+type DeleteAvatarTrainingJobResponse struct {
+	Headers    map[string]*string                   `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                               `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *DeleteAvatarTrainingJobResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s DeleteAvatarTrainingJobResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DeleteAvatarTrainingJobResponse) GoString() string {
+	return s.String()
+}
+
+func (s *DeleteAvatarTrainingJobResponse) SetHeaders(v map[string]*string) *DeleteAvatarTrainingJobResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *DeleteAvatarTrainingJobResponse) SetStatusCode(v int32) *DeleteAvatarTrainingJobResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *DeleteAvatarTrainingJobResponse) SetBody(v *DeleteAvatarTrainingJobResponseBody) *DeleteAvatarTrainingJobResponse {
+	s.Body = v
+	return s
+}
+
 type DeleteCategoryRequest struct {
 	CateId *int64 `json:"CateId,omitempty" xml:"CateId,omitempty"`
 }
@@ -2985,6 +3327,75 @@ func (s *DeleteCustomTemplateResponse) SetStatusCode(v int32) *DeleteCustomTempl
 }
 
 func (s *DeleteCustomTemplateResponse) SetBody(v *DeleteCustomTemplateResponseBody) *DeleteCustomTemplateResponse {
+	s.Body = v
+	return s
+}
+
+type DeleteCustomizedVoiceJobRequest struct {
+	JobId *string `json:"JobId,omitempty" xml:"JobId,omitempty"`
+}
+
+func (s DeleteCustomizedVoiceJobRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DeleteCustomizedVoiceJobRequest) GoString() string {
+	return s.String()
+}
+
+func (s *DeleteCustomizedVoiceJobRequest) SetJobId(v string) *DeleteCustomizedVoiceJobRequest {
+	s.JobId = &v
+	return s
+}
+
+type DeleteCustomizedVoiceJobResponseBody struct {
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	Success   *bool   `json:"Success,omitempty" xml:"Success,omitempty"`
+}
+
+func (s DeleteCustomizedVoiceJobResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DeleteCustomizedVoiceJobResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *DeleteCustomizedVoiceJobResponseBody) SetRequestId(v string) *DeleteCustomizedVoiceJobResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *DeleteCustomizedVoiceJobResponseBody) SetSuccess(v bool) *DeleteCustomizedVoiceJobResponseBody {
+	s.Success = &v
+	return s
+}
+
+type DeleteCustomizedVoiceJobResponse struct {
+	Headers    map[string]*string                    `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                                `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *DeleteCustomizedVoiceJobResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s DeleteCustomizedVoiceJobResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DeleteCustomizedVoiceJobResponse) GoString() string {
+	return s.String()
+}
+
+func (s *DeleteCustomizedVoiceJobResponse) SetHeaders(v map[string]*string) *DeleteCustomizedVoiceJobResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *DeleteCustomizedVoiceJobResponse) SetStatusCode(v int32) *DeleteCustomizedVoiceJobResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *DeleteCustomizedVoiceJobResponse) SetBody(v *DeleteCustomizedVoiceJobResponseBody) *DeleteCustomizedVoiceJobResponse {
 	s.Body = v
 	return s
 }
@@ -7562,6 +7973,116 @@ func (s *DescribeQueryConfigsResponse) SetBody(v *DescribeQueryConfigsResponseBo
 	return s
 }
 
+type DetectAudioForCustomizedVoiceJobRequest struct {
+	AudioRecordId *int32  `json:"AudioRecordId,omitempty" xml:"AudioRecordId,omitempty"`
+	RecordUrl     *string `json:"RecordUrl,omitempty" xml:"RecordUrl,omitempty"`
+	VoiceId       *string `json:"VoiceId,omitempty" xml:"VoiceId,omitempty"`
+}
+
+func (s DetectAudioForCustomizedVoiceJobRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DetectAudioForCustomizedVoiceJobRequest) GoString() string {
+	return s.String()
+}
+
+func (s *DetectAudioForCustomizedVoiceJobRequest) SetAudioRecordId(v int32) *DetectAudioForCustomizedVoiceJobRequest {
+	s.AudioRecordId = &v
+	return s
+}
+
+func (s *DetectAudioForCustomizedVoiceJobRequest) SetRecordUrl(v string) *DetectAudioForCustomizedVoiceJobRequest {
+	s.RecordUrl = &v
+	return s
+}
+
+func (s *DetectAudioForCustomizedVoiceJobRequest) SetVoiceId(v string) *DetectAudioForCustomizedVoiceJobRequest {
+	s.VoiceId = &v
+	return s
+}
+
+type DetectAudioForCustomizedVoiceJobResponseBody struct {
+	Data      *DetectAudioForCustomizedVoiceJobResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
+	RequestId *string                                           `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	Success   *bool                                             `json:"Success,omitempty" xml:"Success,omitempty"`
+}
+
+func (s DetectAudioForCustomizedVoiceJobResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DetectAudioForCustomizedVoiceJobResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *DetectAudioForCustomizedVoiceJobResponseBody) SetData(v *DetectAudioForCustomizedVoiceJobResponseBodyData) *DetectAudioForCustomizedVoiceJobResponseBody {
+	s.Data = v
+	return s
+}
+
+func (s *DetectAudioForCustomizedVoiceJobResponseBody) SetRequestId(v string) *DetectAudioForCustomizedVoiceJobResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *DetectAudioForCustomizedVoiceJobResponseBody) SetSuccess(v bool) *DetectAudioForCustomizedVoiceJobResponseBody {
+	s.Success = &v
+	return s
+}
+
+type DetectAudioForCustomizedVoiceJobResponseBodyData struct {
+	Pass   *bool   `json:"Pass,omitempty" xml:"Pass,omitempty"`
+	Reason *string `json:"Reason,omitempty" xml:"Reason,omitempty"`
+}
+
+func (s DetectAudioForCustomizedVoiceJobResponseBodyData) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DetectAudioForCustomizedVoiceJobResponseBodyData) GoString() string {
+	return s.String()
+}
+
+func (s *DetectAudioForCustomizedVoiceJobResponseBodyData) SetPass(v bool) *DetectAudioForCustomizedVoiceJobResponseBodyData {
+	s.Pass = &v
+	return s
+}
+
+func (s *DetectAudioForCustomizedVoiceJobResponseBodyData) SetReason(v string) *DetectAudioForCustomizedVoiceJobResponseBodyData {
+	s.Reason = &v
+	return s
+}
+
+type DetectAudioForCustomizedVoiceJobResponse struct {
+	Headers    map[string]*string                            `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                                        `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *DetectAudioForCustomizedVoiceJobResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s DetectAudioForCustomizedVoiceJobResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DetectAudioForCustomizedVoiceJobResponse) GoString() string {
+	return s.String()
+}
+
+func (s *DetectAudioForCustomizedVoiceJobResponse) SetHeaders(v map[string]*string) *DetectAudioForCustomizedVoiceJobResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *DetectAudioForCustomizedVoiceJobResponse) SetStatusCode(v int32) *DetectAudioForCustomizedVoiceJobResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *DetectAudioForCustomizedVoiceJobResponse) SetBody(v *DetectAudioForCustomizedVoiceJobResponseBody) *DetectAudioForCustomizedVoiceJobResponse {
+	s.Body = v
+	return s
+}
+
 type GenerateKMSDataKeyResponseBody struct {
 	DataKey   *GenerateKMSDataKeyResponseBodyDataKey `json:"DataKey,omitempty" xml:"DataKey,omitempty" type:"Struct"`
 	RequestId *string                                `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
@@ -7639,6 +8160,332 @@ func (s *GenerateKMSDataKeyResponse) SetStatusCode(v int32) *GenerateKMSDataKeyR
 }
 
 func (s *GenerateKMSDataKeyResponse) SetBody(v *GenerateKMSDataKeyResponseBody) *GenerateKMSDataKeyResponse {
+	s.Body = v
+	return s
+}
+
+type GetAvatarRequest struct {
+	AvatarId *string `json:"AvatarId,omitempty" xml:"AvatarId,omitempty"`
+}
+
+func (s GetAvatarRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetAvatarRequest) GoString() string {
+	return s.String()
+}
+
+func (s *GetAvatarRequest) SetAvatarId(v string) *GetAvatarRequest {
+	s.AvatarId = &v
+	return s
+}
+
+type GetAvatarResponseBody struct {
+	Data      *GetAvatarResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
+	RequestId *string                    `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	Success   *bool                      `json:"Success,omitempty" xml:"Success,omitempty"`
+}
+
+func (s GetAvatarResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetAvatarResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *GetAvatarResponseBody) SetData(v *GetAvatarResponseBodyData) *GetAvatarResponseBody {
+	s.Data = v
+	return s
+}
+
+func (s *GetAvatarResponseBody) SetRequestId(v string) *GetAvatarResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *GetAvatarResponseBody) SetSuccess(v bool) *GetAvatarResponseBody {
+	s.Success = &v
+	return s
+}
+
+type GetAvatarResponseBodyData struct {
+	Avatar *GetAvatarResponseBodyDataAvatar `json:"Avatar,omitempty" xml:"Avatar,omitempty" type:"Struct"`
+}
+
+func (s GetAvatarResponseBodyData) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetAvatarResponseBodyData) GoString() string {
+	return s.String()
+}
+
+func (s *GetAvatarResponseBodyData) SetAvatar(v *GetAvatarResponseBodyDataAvatar) *GetAvatarResponseBodyData {
+	s.Avatar = v
+	return s
+}
+
+type GetAvatarResponseBodyDataAvatar struct {
+	AvatarDescription *string `json:"AvatarDescription,omitempty" xml:"AvatarDescription,omitempty"`
+	AvatarId          *string `json:"AvatarId,omitempty" xml:"AvatarId,omitempty"`
+	AvatarName        *string `json:"AvatarName,omitempty" xml:"AvatarName,omitempty"`
+	AvatarType        *string `json:"AvatarType,omitempty" xml:"AvatarType,omitempty"`
+	Portrait          *string `json:"Portrait,omitempty" xml:"Portrait,omitempty"`
+	Thumbnail         *string `json:"Thumbnail,omitempty" xml:"Thumbnail,omitempty"`
+	Transparent       *bool   `json:"Transparent,omitempty" xml:"Transparent,omitempty"`
+}
+
+func (s GetAvatarResponseBodyDataAvatar) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetAvatarResponseBodyDataAvatar) GoString() string {
+	return s.String()
+}
+
+func (s *GetAvatarResponseBodyDataAvatar) SetAvatarDescription(v string) *GetAvatarResponseBodyDataAvatar {
+	s.AvatarDescription = &v
+	return s
+}
+
+func (s *GetAvatarResponseBodyDataAvatar) SetAvatarId(v string) *GetAvatarResponseBodyDataAvatar {
+	s.AvatarId = &v
+	return s
+}
+
+func (s *GetAvatarResponseBodyDataAvatar) SetAvatarName(v string) *GetAvatarResponseBodyDataAvatar {
+	s.AvatarName = &v
+	return s
+}
+
+func (s *GetAvatarResponseBodyDataAvatar) SetAvatarType(v string) *GetAvatarResponseBodyDataAvatar {
+	s.AvatarType = &v
+	return s
+}
+
+func (s *GetAvatarResponseBodyDataAvatar) SetPortrait(v string) *GetAvatarResponseBodyDataAvatar {
+	s.Portrait = &v
+	return s
+}
+
+func (s *GetAvatarResponseBodyDataAvatar) SetThumbnail(v string) *GetAvatarResponseBodyDataAvatar {
+	s.Thumbnail = &v
+	return s
+}
+
+func (s *GetAvatarResponseBodyDataAvatar) SetTransparent(v bool) *GetAvatarResponseBodyDataAvatar {
+	s.Transparent = &v
+	return s
+}
+
+type GetAvatarResponse struct {
+	Headers    map[string]*string     `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                 `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *GetAvatarResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s GetAvatarResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetAvatarResponse) GoString() string {
+	return s.String()
+}
+
+func (s *GetAvatarResponse) SetHeaders(v map[string]*string) *GetAvatarResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *GetAvatarResponse) SetStatusCode(v int32) *GetAvatarResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *GetAvatarResponse) SetBody(v *GetAvatarResponseBody) *GetAvatarResponse {
+	s.Body = v
+	return s
+}
+
+type GetAvatarTrainingJobRequest struct {
+	JobId *string `json:"JobId,omitempty" xml:"JobId,omitempty"`
+}
+
+func (s GetAvatarTrainingJobRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetAvatarTrainingJobRequest) GoString() string {
+	return s.String()
+}
+
+func (s *GetAvatarTrainingJobRequest) SetJobId(v string) *GetAvatarTrainingJobRequest {
+	s.JobId = &v
+	return s
+}
+
+type GetAvatarTrainingJobResponseBody struct {
+	Data      *GetAvatarTrainingJobResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
+	RequestId *string                               `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	Success   *bool                                 `json:"Success,omitempty" xml:"Success,omitempty"`
+}
+
+func (s GetAvatarTrainingJobResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetAvatarTrainingJobResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *GetAvatarTrainingJobResponseBody) SetData(v *GetAvatarTrainingJobResponseBodyData) *GetAvatarTrainingJobResponseBody {
+	s.Data = v
+	return s
+}
+
+func (s *GetAvatarTrainingJobResponseBody) SetRequestId(v string) *GetAvatarTrainingJobResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *GetAvatarTrainingJobResponseBody) SetSuccess(v bool) *GetAvatarTrainingJobResponseBody {
+	s.Success = &v
+	return s
+}
+
+type GetAvatarTrainingJobResponseBodyData struct {
+	AvatarTrainingJob *GetAvatarTrainingJobResponseBodyDataAvatarTrainingJob `json:"AvatarTrainingJob,omitempty" xml:"AvatarTrainingJob,omitempty" type:"Struct"`
+}
+
+func (s GetAvatarTrainingJobResponseBodyData) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetAvatarTrainingJobResponseBodyData) GoString() string {
+	return s.String()
+}
+
+func (s *GetAvatarTrainingJobResponseBodyData) SetAvatarTrainingJob(v *GetAvatarTrainingJobResponseBodyDataAvatarTrainingJob) *GetAvatarTrainingJobResponseBodyData {
+	s.AvatarTrainingJob = v
+	return s
+}
+
+type GetAvatarTrainingJobResponseBodyDataAvatarTrainingJob struct {
+	AvatarDescription *string `json:"AvatarDescription,omitempty" xml:"AvatarDescription,omitempty"`
+	AvatarId          *string `json:"AvatarId,omitempty" xml:"AvatarId,omitempty"`
+	AvatarName        *string `json:"AvatarName,omitempty" xml:"AvatarName,omitempty"`
+	AvatarType        *string `json:"AvatarType,omitempty" xml:"AvatarType,omitempty"`
+	FirstTrainingTime *string `json:"FirstTrainingTime,omitempty" xml:"FirstTrainingTime,omitempty"`
+	JobId             *string `json:"JobId,omitempty" xml:"JobId,omitempty"`
+	LastTrainingTime  *string `json:"LastTrainingTime,omitempty" xml:"LastTrainingTime,omitempty"`
+	Message           *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	Portrait          *string `json:"Portrait,omitempty" xml:"Portrait,omitempty"`
+	Status            *string `json:"Status,omitempty" xml:"Status,omitempty"`
+	Thumbnail         *string `json:"Thumbnail,omitempty" xml:"Thumbnail,omitempty"`
+	Transparent       *bool   `json:"Transparent,omitempty" xml:"Transparent,omitempty"`
+	Video             *string `json:"Video,omitempty" xml:"Video,omitempty"`
+}
+
+func (s GetAvatarTrainingJobResponseBodyDataAvatarTrainingJob) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetAvatarTrainingJobResponseBodyDataAvatarTrainingJob) GoString() string {
+	return s.String()
+}
+
+func (s *GetAvatarTrainingJobResponseBodyDataAvatarTrainingJob) SetAvatarDescription(v string) *GetAvatarTrainingJobResponseBodyDataAvatarTrainingJob {
+	s.AvatarDescription = &v
+	return s
+}
+
+func (s *GetAvatarTrainingJobResponseBodyDataAvatarTrainingJob) SetAvatarId(v string) *GetAvatarTrainingJobResponseBodyDataAvatarTrainingJob {
+	s.AvatarId = &v
+	return s
+}
+
+func (s *GetAvatarTrainingJobResponseBodyDataAvatarTrainingJob) SetAvatarName(v string) *GetAvatarTrainingJobResponseBodyDataAvatarTrainingJob {
+	s.AvatarName = &v
+	return s
+}
+
+func (s *GetAvatarTrainingJobResponseBodyDataAvatarTrainingJob) SetAvatarType(v string) *GetAvatarTrainingJobResponseBodyDataAvatarTrainingJob {
+	s.AvatarType = &v
+	return s
+}
+
+func (s *GetAvatarTrainingJobResponseBodyDataAvatarTrainingJob) SetFirstTrainingTime(v string) *GetAvatarTrainingJobResponseBodyDataAvatarTrainingJob {
+	s.FirstTrainingTime = &v
+	return s
+}
+
+func (s *GetAvatarTrainingJobResponseBodyDataAvatarTrainingJob) SetJobId(v string) *GetAvatarTrainingJobResponseBodyDataAvatarTrainingJob {
+	s.JobId = &v
+	return s
+}
+
+func (s *GetAvatarTrainingJobResponseBodyDataAvatarTrainingJob) SetLastTrainingTime(v string) *GetAvatarTrainingJobResponseBodyDataAvatarTrainingJob {
+	s.LastTrainingTime = &v
+	return s
+}
+
+func (s *GetAvatarTrainingJobResponseBodyDataAvatarTrainingJob) SetMessage(v string) *GetAvatarTrainingJobResponseBodyDataAvatarTrainingJob {
+	s.Message = &v
+	return s
+}
+
+func (s *GetAvatarTrainingJobResponseBodyDataAvatarTrainingJob) SetPortrait(v string) *GetAvatarTrainingJobResponseBodyDataAvatarTrainingJob {
+	s.Portrait = &v
+	return s
+}
+
+func (s *GetAvatarTrainingJobResponseBodyDataAvatarTrainingJob) SetStatus(v string) *GetAvatarTrainingJobResponseBodyDataAvatarTrainingJob {
+	s.Status = &v
+	return s
+}
+
+func (s *GetAvatarTrainingJobResponseBodyDataAvatarTrainingJob) SetThumbnail(v string) *GetAvatarTrainingJobResponseBodyDataAvatarTrainingJob {
+	s.Thumbnail = &v
+	return s
+}
+
+func (s *GetAvatarTrainingJobResponseBodyDataAvatarTrainingJob) SetTransparent(v bool) *GetAvatarTrainingJobResponseBodyDataAvatarTrainingJob {
+	s.Transparent = &v
+	return s
+}
+
+func (s *GetAvatarTrainingJobResponseBodyDataAvatarTrainingJob) SetVideo(v string) *GetAvatarTrainingJobResponseBodyDataAvatarTrainingJob {
+	s.Video = &v
+	return s
+}
+
+type GetAvatarTrainingJobResponse struct {
+	Headers    map[string]*string                `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                            `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *GetAvatarTrainingJobResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s GetAvatarTrainingJobResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetAvatarTrainingJobResponse) GoString() string {
+	return s.String()
+}
+
+func (s *GetAvatarTrainingJobResponse) SetHeaders(v map[string]*string) *GetAvatarTrainingJobResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *GetAvatarTrainingJobResponse) SetStatusCode(v int32) *GetAvatarTrainingJobResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *GetAvatarTrainingJobResponse) SetBody(v *GetAvatarTrainingJobResponseBody) *GetAvatarTrainingJobResponse {
 	s.Body = v
 	return s
 }
@@ -8092,6 +8939,272 @@ func (s *GetCustomTemplateResponse) SetBody(v *GetCustomTemplateResponseBody) *G
 	return s
 }
 
+type GetCustomizedVoiceRequest struct {
+	VoiceId *string `json:"VoiceId,omitempty" xml:"VoiceId,omitempty"`
+}
+
+func (s GetCustomizedVoiceRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetCustomizedVoiceRequest) GoString() string {
+	return s.String()
+}
+
+func (s *GetCustomizedVoiceRequest) SetVoiceId(v string) *GetCustomizedVoiceRequest {
+	s.VoiceId = &v
+	return s
+}
+
+type GetCustomizedVoiceResponseBody struct {
+	Data      *GetCustomizedVoiceResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
+	RequestId *string                             `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	Success   *bool                               `json:"Success,omitempty" xml:"Success,omitempty"`
+}
+
+func (s GetCustomizedVoiceResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetCustomizedVoiceResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *GetCustomizedVoiceResponseBody) SetData(v *GetCustomizedVoiceResponseBodyData) *GetCustomizedVoiceResponseBody {
+	s.Data = v
+	return s
+}
+
+func (s *GetCustomizedVoiceResponseBody) SetRequestId(v string) *GetCustomizedVoiceResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *GetCustomizedVoiceResponseBody) SetSuccess(v bool) *GetCustomizedVoiceResponseBody {
+	s.Success = &v
+	return s
+}
+
+type GetCustomizedVoiceResponseBodyData struct {
+	CustomizedVoice *GetCustomizedVoiceResponseBodyDataCustomizedVoice `json:"CustomizedVoice,omitempty" xml:"CustomizedVoice,omitempty" type:"Struct"`
+}
+
+func (s GetCustomizedVoiceResponseBodyData) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetCustomizedVoiceResponseBodyData) GoString() string {
+	return s.String()
+}
+
+func (s *GetCustomizedVoiceResponseBodyData) SetCustomizedVoice(v *GetCustomizedVoiceResponseBodyDataCustomizedVoice) *GetCustomizedVoiceResponseBodyData {
+	s.CustomizedVoice = v
+	return s
+}
+
+type GetCustomizedVoiceResponseBodyDataCustomizedVoice struct {
+	DemoAudioMediaId *string `json:"DemoAudioMediaId,omitempty" xml:"DemoAudioMediaId,omitempty"`
+	Gender           *string `json:"Gender,omitempty" xml:"Gender,omitempty"`
+	Scenario         *string `json:"Scenario,omitempty" xml:"Scenario,omitempty"`
+	VoiceDesc        *string `json:"VoiceDesc,omitempty" xml:"VoiceDesc,omitempty"`
+	VoiceId          *string `json:"VoiceId,omitempty" xml:"VoiceId,omitempty"`
+	VoiceName        *string `json:"VoiceName,omitempty" xml:"VoiceName,omitempty"`
+}
+
+func (s GetCustomizedVoiceResponseBodyDataCustomizedVoice) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetCustomizedVoiceResponseBodyDataCustomizedVoice) GoString() string {
+	return s.String()
+}
+
+func (s *GetCustomizedVoiceResponseBodyDataCustomizedVoice) SetDemoAudioMediaId(v string) *GetCustomizedVoiceResponseBodyDataCustomizedVoice {
+	s.DemoAudioMediaId = &v
+	return s
+}
+
+func (s *GetCustomizedVoiceResponseBodyDataCustomizedVoice) SetGender(v string) *GetCustomizedVoiceResponseBodyDataCustomizedVoice {
+	s.Gender = &v
+	return s
+}
+
+func (s *GetCustomizedVoiceResponseBodyDataCustomizedVoice) SetScenario(v string) *GetCustomizedVoiceResponseBodyDataCustomizedVoice {
+	s.Scenario = &v
+	return s
+}
+
+func (s *GetCustomizedVoiceResponseBodyDataCustomizedVoice) SetVoiceDesc(v string) *GetCustomizedVoiceResponseBodyDataCustomizedVoice {
+	s.VoiceDesc = &v
+	return s
+}
+
+func (s *GetCustomizedVoiceResponseBodyDataCustomizedVoice) SetVoiceId(v string) *GetCustomizedVoiceResponseBodyDataCustomizedVoice {
+	s.VoiceId = &v
+	return s
+}
+
+func (s *GetCustomizedVoiceResponseBodyDataCustomizedVoice) SetVoiceName(v string) *GetCustomizedVoiceResponseBodyDataCustomizedVoice {
+	s.VoiceName = &v
+	return s
+}
+
+type GetCustomizedVoiceResponse struct {
+	Headers    map[string]*string              `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                          `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *GetCustomizedVoiceResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s GetCustomizedVoiceResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetCustomizedVoiceResponse) GoString() string {
+	return s.String()
+}
+
+func (s *GetCustomizedVoiceResponse) SetHeaders(v map[string]*string) *GetCustomizedVoiceResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *GetCustomizedVoiceResponse) SetStatusCode(v int32) *GetCustomizedVoiceResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *GetCustomizedVoiceResponse) SetBody(v *GetCustomizedVoiceResponseBody) *GetCustomizedVoiceResponse {
+	s.Body = v
+	return s
+}
+
+type GetCustomizedVoiceJobRequest struct {
+	JobId *string `json:"JobId,omitempty" xml:"JobId,omitempty"`
+}
+
+func (s GetCustomizedVoiceJobRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetCustomizedVoiceJobRequest) GoString() string {
+	return s.String()
+}
+
+func (s *GetCustomizedVoiceJobRequest) SetJobId(v string) *GetCustomizedVoiceJobRequest {
+	s.JobId = &v
+	return s
+}
+
+type GetCustomizedVoiceJobResponseBody struct {
+	Data      *GetCustomizedVoiceJobResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
+	RequestId *string                                `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	Success   *bool                                  `json:"Success,omitempty" xml:"Success,omitempty"`
+}
+
+func (s GetCustomizedVoiceJobResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetCustomizedVoiceJobResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *GetCustomizedVoiceJobResponseBody) SetData(v *GetCustomizedVoiceJobResponseBodyData) *GetCustomizedVoiceJobResponseBody {
+	s.Data = v
+	return s
+}
+
+func (s *GetCustomizedVoiceJobResponseBody) SetRequestId(v string) *GetCustomizedVoiceJobResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *GetCustomizedVoiceJobResponseBody) SetSuccess(v bool) *GetCustomizedVoiceJobResponseBody {
+	s.Success = &v
+	return s
+}
+
+type GetCustomizedVoiceJobResponseBodyData struct {
+	CustomizedVoiceJob *GetCustomizedVoiceJobResponseBodyDataCustomizedVoiceJob `json:"CustomizedVoiceJob,omitempty" xml:"CustomizedVoiceJob,omitempty" type:"Struct"`
+}
+
+func (s GetCustomizedVoiceJobResponseBodyData) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetCustomizedVoiceJobResponseBodyData) GoString() string {
+	return s.String()
+}
+
+func (s *GetCustomizedVoiceJobResponseBodyData) SetCustomizedVoiceJob(v *GetCustomizedVoiceJobResponseBodyDataCustomizedVoiceJob) *GetCustomizedVoiceJobResponseBodyData {
+	s.CustomizedVoiceJob = v
+	return s
+}
+
+type GetCustomizedVoiceJobResponseBodyDataCustomizedVoiceJob struct {
+	JobId   *string `json:"JobId,omitempty" xml:"JobId,omitempty"`
+	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	Status  *string `json:"Status,omitempty" xml:"Status,omitempty"`
+	VoiceId *string `json:"VoiceId,omitempty" xml:"VoiceId,omitempty"`
+}
+
+func (s GetCustomizedVoiceJobResponseBodyDataCustomizedVoiceJob) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetCustomizedVoiceJobResponseBodyDataCustomizedVoiceJob) GoString() string {
+	return s.String()
+}
+
+func (s *GetCustomizedVoiceJobResponseBodyDataCustomizedVoiceJob) SetJobId(v string) *GetCustomizedVoiceJobResponseBodyDataCustomizedVoiceJob {
+	s.JobId = &v
+	return s
+}
+
+func (s *GetCustomizedVoiceJobResponseBodyDataCustomizedVoiceJob) SetMessage(v string) *GetCustomizedVoiceJobResponseBodyDataCustomizedVoiceJob {
+	s.Message = &v
+	return s
+}
+
+func (s *GetCustomizedVoiceJobResponseBodyDataCustomizedVoiceJob) SetStatus(v string) *GetCustomizedVoiceJobResponseBodyDataCustomizedVoiceJob {
+	s.Status = &v
+	return s
+}
+
+func (s *GetCustomizedVoiceJobResponseBodyDataCustomizedVoiceJob) SetVoiceId(v string) *GetCustomizedVoiceJobResponseBodyDataCustomizedVoiceJob {
+	s.VoiceId = &v
+	return s
+}
+
+type GetCustomizedVoiceJobResponse struct {
+	Headers    map[string]*string                 `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                             `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *GetCustomizedVoiceJobResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s GetCustomizedVoiceJobResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetCustomizedVoiceJobResponse) GoString() string {
+	return s.String()
+}
+
+func (s *GetCustomizedVoiceJobResponse) SetHeaders(v map[string]*string) *GetCustomizedVoiceJobResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *GetCustomizedVoiceJobResponse) SetStatusCode(v int32) *GetCustomizedVoiceJobResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *GetCustomizedVoiceJobResponse) SetBody(v *GetCustomizedVoiceJobResponseBody) *GetCustomizedVoiceJobResponse {
+	s.Body = v
+	return s
+}
+
 type GetDefaultStorageLocationResponseBody struct {
 	Bucket      *string `json:"Bucket,omitempty" xml:"Bucket,omitempty"`
 	Path        *string `json:"Path,omitempty" xml:"Path,omitempty"`
@@ -8158,6 +9271,127 @@ func (s *GetDefaultStorageLocationResponse) SetStatusCode(v int32) *GetDefaultSt
 }
 
 func (s *GetDefaultStorageLocationResponse) SetBody(v *GetDefaultStorageLocationResponseBody) *GetDefaultStorageLocationResponse {
+	s.Body = v
+	return s
+}
+
+type GetDemonstrationForCustomizedVoiceJobRequest struct {
+	Scenario *string `json:"Scenario,omitempty" xml:"Scenario,omitempty"`
+}
+
+func (s GetDemonstrationForCustomizedVoiceJobRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetDemonstrationForCustomizedVoiceJobRequest) GoString() string {
+	return s.String()
+}
+
+func (s *GetDemonstrationForCustomizedVoiceJobRequest) SetScenario(v string) *GetDemonstrationForCustomizedVoiceJobRequest {
+	s.Scenario = &v
+	return s
+}
+
+type GetDemonstrationForCustomizedVoiceJobResponseBody struct {
+	Data      *GetDemonstrationForCustomizedVoiceJobResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
+	RequestId *string                                                `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	Success   *bool                                                  `json:"Success,omitempty" xml:"Success,omitempty"`
+}
+
+func (s GetDemonstrationForCustomizedVoiceJobResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetDemonstrationForCustomizedVoiceJobResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *GetDemonstrationForCustomizedVoiceJobResponseBody) SetData(v *GetDemonstrationForCustomizedVoiceJobResponseBodyData) *GetDemonstrationForCustomizedVoiceJobResponseBody {
+	s.Data = v
+	return s
+}
+
+func (s *GetDemonstrationForCustomizedVoiceJobResponseBody) SetRequestId(v string) *GetDemonstrationForCustomizedVoiceJobResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *GetDemonstrationForCustomizedVoiceJobResponseBody) SetSuccess(v bool) *GetDemonstrationForCustomizedVoiceJobResponseBody {
+	s.Success = &v
+	return s
+}
+
+type GetDemonstrationForCustomizedVoiceJobResponseBodyData struct {
+	DemonstrationList []*GetDemonstrationForCustomizedVoiceJobResponseBodyDataDemonstrationList `json:"DemonstrationList,omitempty" xml:"DemonstrationList,omitempty" type:"Repeated"`
+}
+
+func (s GetDemonstrationForCustomizedVoiceJobResponseBodyData) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetDemonstrationForCustomizedVoiceJobResponseBodyData) GoString() string {
+	return s.String()
+}
+
+func (s *GetDemonstrationForCustomizedVoiceJobResponseBodyData) SetDemonstrationList(v []*GetDemonstrationForCustomizedVoiceJobResponseBodyDataDemonstrationList) *GetDemonstrationForCustomizedVoiceJobResponseBodyData {
+	s.DemonstrationList = v
+	return s
+}
+
+type GetDemonstrationForCustomizedVoiceJobResponseBodyDataDemonstrationList struct {
+	AudioId   *int32  `json:"AudioId,omitempty" xml:"AudioId,omitempty"`
+	DemoAudio *string `json:"DemoAudio,omitempty" xml:"DemoAudio,omitempty"`
+	Text      *string `json:"Text,omitempty" xml:"Text,omitempty"`
+}
+
+func (s GetDemonstrationForCustomizedVoiceJobResponseBodyDataDemonstrationList) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetDemonstrationForCustomizedVoiceJobResponseBodyDataDemonstrationList) GoString() string {
+	return s.String()
+}
+
+func (s *GetDemonstrationForCustomizedVoiceJobResponseBodyDataDemonstrationList) SetAudioId(v int32) *GetDemonstrationForCustomizedVoiceJobResponseBodyDataDemonstrationList {
+	s.AudioId = &v
+	return s
+}
+
+func (s *GetDemonstrationForCustomizedVoiceJobResponseBodyDataDemonstrationList) SetDemoAudio(v string) *GetDemonstrationForCustomizedVoiceJobResponseBodyDataDemonstrationList {
+	s.DemoAudio = &v
+	return s
+}
+
+func (s *GetDemonstrationForCustomizedVoiceJobResponseBodyDataDemonstrationList) SetText(v string) *GetDemonstrationForCustomizedVoiceJobResponseBodyDataDemonstrationList {
+	s.Text = &v
+	return s
+}
+
+type GetDemonstrationForCustomizedVoiceJobResponse struct {
+	Headers    map[string]*string                                 `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                                             `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *GetDemonstrationForCustomizedVoiceJobResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s GetDemonstrationForCustomizedVoiceJobResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetDemonstrationForCustomizedVoiceJobResponse) GoString() string {
+	return s.String()
+}
+
+func (s *GetDemonstrationForCustomizedVoiceJobResponse) SetHeaders(v map[string]*string) *GetDemonstrationForCustomizedVoiceJobResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *GetDemonstrationForCustomizedVoiceJobResponse) SetStatusCode(v int32) *GetDemonstrationForCustomizedVoiceJobResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *GetDemonstrationForCustomizedVoiceJobResponse) SetBody(v *GetDemonstrationForCustomizedVoiceJobResponseBody) *GetDemonstrationForCustomizedVoiceJobResponse {
 	s.Body = v
 	return s
 }
@@ -12575,9 +13809,12 @@ func (s *GetPlayInfoResponseBody) SetRequestId(v string) *GetPlayInfoResponseBod
 }
 
 type GetPlayInfoResponseBodyMediaBase struct {
+	CateId       *int64  `json:"CateId,omitempty" xml:"CateId,omitempty"`
 	CoverURL     *string `json:"CoverURL,omitempty" xml:"CoverURL,omitempty"`
 	CreationTime *string `json:"CreationTime,omitempty" xml:"CreationTime,omitempty"`
+	Description  *string `json:"Description,omitempty" xml:"Description,omitempty"`
 	MediaId      *string `json:"MediaId,omitempty" xml:"MediaId,omitempty"`
+	MediaTags    *string `json:"MediaTags,omitempty" xml:"MediaTags,omitempty"`
 	MediaType    *string `json:"MediaType,omitempty" xml:"MediaType,omitempty"`
 	Status       *string `json:"Status,omitempty" xml:"Status,omitempty"`
 	Title        *string `json:"Title,omitempty" xml:"Title,omitempty"`
@@ -12591,6 +13828,11 @@ func (s GetPlayInfoResponseBodyMediaBase) GoString() string {
 	return s.String()
 }
 
+func (s *GetPlayInfoResponseBodyMediaBase) SetCateId(v int64) *GetPlayInfoResponseBodyMediaBase {
+	s.CateId = &v
+	return s
+}
+
 func (s *GetPlayInfoResponseBodyMediaBase) SetCoverURL(v string) *GetPlayInfoResponseBodyMediaBase {
 	s.CoverURL = &v
 	return s
@@ -12601,8 +13843,18 @@ func (s *GetPlayInfoResponseBodyMediaBase) SetCreationTime(v string) *GetPlayInf
 	return s
 }
 
+func (s *GetPlayInfoResponseBodyMediaBase) SetDescription(v string) *GetPlayInfoResponseBodyMediaBase {
+	s.Description = &v
+	return s
+}
+
 func (s *GetPlayInfoResponseBodyMediaBase) SetMediaId(v string) *GetPlayInfoResponseBodyMediaBase {
 	s.MediaId = &v
+	return s
+}
+
+func (s *GetPlayInfoResponseBodyMediaBase) SetMediaTags(v string) *GetPlayInfoResponseBodyMediaBase {
+	s.MediaTags = &v
 	return s
 }
 
@@ -17514,6 +18766,356 @@ func (s *ListAllPublicMediaTagsResponse) SetBody(v *ListAllPublicMediaTagsRespon
 	return s
 }
 
+type ListAvatarTrainingJobsRequest struct {
+	PageNo   *int32  `json:"PageNo,omitempty" xml:"PageNo,omitempty"`
+	PageSize *int32  `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	Status   *string `json:"Status,omitempty" xml:"Status,omitempty"`
+}
+
+func (s ListAvatarTrainingJobsRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListAvatarTrainingJobsRequest) GoString() string {
+	return s.String()
+}
+
+func (s *ListAvatarTrainingJobsRequest) SetPageNo(v int32) *ListAvatarTrainingJobsRequest {
+	s.PageNo = &v
+	return s
+}
+
+func (s *ListAvatarTrainingJobsRequest) SetPageSize(v int32) *ListAvatarTrainingJobsRequest {
+	s.PageSize = &v
+	return s
+}
+
+func (s *ListAvatarTrainingJobsRequest) SetStatus(v string) *ListAvatarTrainingJobsRequest {
+	s.Status = &v
+	return s
+}
+
+type ListAvatarTrainingJobsResponseBody struct {
+	Data      *ListAvatarTrainingJobsResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
+	RequestId *string                                 `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	Success   *bool                                   `json:"Success,omitempty" xml:"Success,omitempty"`
+}
+
+func (s ListAvatarTrainingJobsResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListAvatarTrainingJobsResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *ListAvatarTrainingJobsResponseBody) SetData(v *ListAvatarTrainingJobsResponseBodyData) *ListAvatarTrainingJobsResponseBody {
+	s.Data = v
+	return s
+}
+
+func (s *ListAvatarTrainingJobsResponseBody) SetRequestId(v string) *ListAvatarTrainingJobsResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *ListAvatarTrainingJobsResponseBody) SetSuccess(v bool) *ListAvatarTrainingJobsResponseBody {
+	s.Success = &v
+	return s
+}
+
+type ListAvatarTrainingJobsResponseBodyData struct {
+	AvatarTrainingJobList []*ListAvatarTrainingJobsResponseBodyDataAvatarTrainingJobList `json:"AvatarTrainingJobList,omitempty" xml:"AvatarTrainingJobList,omitempty" type:"Repeated"`
+	TotalCount            *int64                                                         `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
+}
+
+func (s ListAvatarTrainingJobsResponseBodyData) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListAvatarTrainingJobsResponseBodyData) GoString() string {
+	return s.String()
+}
+
+func (s *ListAvatarTrainingJobsResponseBodyData) SetAvatarTrainingJobList(v []*ListAvatarTrainingJobsResponseBodyDataAvatarTrainingJobList) *ListAvatarTrainingJobsResponseBodyData {
+	s.AvatarTrainingJobList = v
+	return s
+}
+
+func (s *ListAvatarTrainingJobsResponseBodyData) SetTotalCount(v int64) *ListAvatarTrainingJobsResponseBodyData {
+	s.TotalCount = &v
+	return s
+}
+
+type ListAvatarTrainingJobsResponseBodyDataAvatarTrainingJobList struct {
+	AvatarDescription *string `json:"AvatarDescription,omitempty" xml:"AvatarDescription,omitempty"`
+	AvatarId          *string `json:"AvatarId,omitempty" xml:"AvatarId,omitempty"`
+	AvatarName        *string `json:"AvatarName,omitempty" xml:"AvatarName,omitempty"`
+	AvatarType        *string `json:"AvatarType,omitempty" xml:"AvatarType,omitempty"`
+	CreateTime        *string `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
+	FirstTrainingTime *string `json:"FirstTrainingTime,omitempty" xml:"FirstTrainingTime,omitempty"`
+	JobId             *string `json:"JobId,omitempty" xml:"JobId,omitempty"`
+	LastTrainingTime  *string `json:"LastTrainingTime,omitempty" xml:"LastTrainingTime,omitempty"`
+	Message           *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	Portrait          *string `json:"Portrait,omitempty" xml:"Portrait,omitempty"`
+	Status            *string `json:"Status,omitempty" xml:"Status,omitempty"`
+}
+
+func (s ListAvatarTrainingJobsResponseBodyDataAvatarTrainingJobList) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListAvatarTrainingJobsResponseBodyDataAvatarTrainingJobList) GoString() string {
+	return s.String()
+}
+
+func (s *ListAvatarTrainingJobsResponseBodyDataAvatarTrainingJobList) SetAvatarDescription(v string) *ListAvatarTrainingJobsResponseBodyDataAvatarTrainingJobList {
+	s.AvatarDescription = &v
+	return s
+}
+
+func (s *ListAvatarTrainingJobsResponseBodyDataAvatarTrainingJobList) SetAvatarId(v string) *ListAvatarTrainingJobsResponseBodyDataAvatarTrainingJobList {
+	s.AvatarId = &v
+	return s
+}
+
+func (s *ListAvatarTrainingJobsResponseBodyDataAvatarTrainingJobList) SetAvatarName(v string) *ListAvatarTrainingJobsResponseBodyDataAvatarTrainingJobList {
+	s.AvatarName = &v
+	return s
+}
+
+func (s *ListAvatarTrainingJobsResponseBodyDataAvatarTrainingJobList) SetAvatarType(v string) *ListAvatarTrainingJobsResponseBodyDataAvatarTrainingJobList {
+	s.AvatarType = &v
+	return s
+}
+
+func (s *ListAvatarTrainingJobsResponseBodyDataAvatarTrainingJobList) SetCreateTime(v string) *ListAvatarTrainingJobsResponseBodyDataAvatarTrainingJobList {
+	s.CreateTime = &v
+	return s
+}
+
+func (s *ListAvatarTrainingJobsResponseBodyDataAvatarTrainingJobList) SetFirstTrainingTime(v string) *ListAvatarTrainingJobsResponseBodyDataAvatarTrainingJobList {
+	s.FirstTrainingTime = &v
+	return s
+}
+
+func (s *ListAvatarTrainingJobsResponseBodyDataAvatarTrainingJobList) SetJobId(v string) *ListAvatarTrainingJobsResponseBodyDataAvatarTrainingJobList {
+	s.JobId = &v
+	return s
+}
+
+func (s *ListAvatarTrainingJobsResponseBodyDataAvatarTrainingJobList) SetLastTrainingTime(v string) *ListAvatarTrainingJobsResponseBodyDataAvatarTrainingJobList {
+	s.LastTrainingTime = &v
+	return s
+}
+
+func (s *ListAvatarTrainingJobsResponseBodyDataAvatarTrainingJobList) SetMessage(v string) *ListAvatarTrainingJobsResponseBodyDataAvatarTrainingJobList {
+	s.Message = &v
+	return s
+}
+
+func (s *ListAvatarTrainingJobsResponseBodyDataAvatarTrainingJobList) SetPortrait(v string) *ListAvatarTrainingJobsResponseBodyDataAvatarTrainingJobList {
+	s.Portrait = &v
+	return s
+}
+
+func (s *ListAvatarTrainingJobsResponseBodyDataAvatarTrainingJobList) SetStatus(v string) *ListAvatarTrainingJobsResponseBodyDataAvatarTrainingJobList {
+	s.Status = &v
+	return s
+}
+
+type ListAvatarTrainingJobsResponse struct {
+	Headers    map[string]*string                  `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                              `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *ListAvatarTrainingJobsResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s ListAvatarTrainingJobsResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListAvatarTrainingJobsResponse) GoString() string {
+	return s.String()
+}
+
+func (s *ListAvatarTrainingJobsResponse) SetHeaders(v map[string]*string) *ListAvatarTrainingJobsResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *ListAvatarTrainingJobsResponse) SetStatusCode(v int32) *ListAvatarTrainingJobsResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *ListAvatarTrainingJobsResponse) SetBody(v *ListAvatarTrainingJobsResponseBody) *ListAvatarTrainingJobsResponse {
+	s.Body = v
+	return s
+}
+
+type ListAvatarsRequest struct {
+	AvatarType *string `json:"AvatarType,omitempty" xml:"AvatarType,omitempty"`
+	PageNo     *int32  `json:"PageNo,omitempty" xml:"PageNo,omitempty"`
+	PageSize   *int32  `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+}
+
+func (s ListAvatarsRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListAvatarsRequest) GoString() string {
+	return s.String()
+}
+
+func (s *ListAvatarsRequest) SetAvatarType(v string) *ListAvatarsRequest {
+	s.AvatarType = &v
+	return s
+}
+
+func (s *ListAvatarsRequest) SetPageNo(v int32) *ListAvatarsRequest {
+	s.PageNo = &v
+	return s
+}
+
+func (s *ListAvatarsRequest) SetPageSize(v int32) *ListAvatarsRequest {
+	s.PageSize = &v
+	return s
+}
+
+type ListAvatarsResponseBody struct {
+	Data      *ListAvatarsResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
+	RequestId *string                      `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	Success   *bool                        `json:"Success,omitempty" xml:"Success,omitempty"`
+}
+
+func (s ListAvatarsResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListAvatarsResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *ListAvatarsResponseBody) SetData(v *ListAvatarsResponseBodyData) *ListAvatarsResponseBody {
+	s.Data = v
+	return s
+}
+
+func (s *ListAvatarsResponseBody) SetRequestId(v string) *ListAvatarsResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *ListAvatarsResponseBody) SetSuccess(v bool) *ListAvatarsResponseBody {
+	s.Success = &v
+	return s
+}
+
+type ListAvatarsResponseBodyData struct {
+	AvatarList []*ListAvatarsResponseBodyDataAvatarList `json:"AvatarList,omitempty" xml:"AvatarList,omitempty" type:"Repeated"`
+	TotalCount *int64                                   `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
+}
+
+func (s ListAvatarsResponseBodyData) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListAvatarsResponseBodyData) GoString() string {
+	return s.String()
+}
+
+func (s *ListAvatarsResponseBodyData) SetAvatarList(v []*ListAvatarsResponseBodyDataAvatarList) *ListAvatarsResponseBodyData {
+	s.AvatarList = v
+	return s
+}
+
+func (s *ListAvatarsResponseBodyData) SetTotalCount(v int64) *ListAvatarsResponseBodyData {
+	s.TotalCount = &v
+	return s
+}
+
+type ListAvatarsResponseBodyDataAvatarList struct {
+	AvatarDescription *string `json:"AvatarDescription,omitempty" xml:"AvatarDescription,omitempty"`
+	AvatarId          *string `json:"AvatarId,omitempty" xml:"AvatarId,omitempty"`
+	AvatarName        *string `json:"AvatarName,omitempty" xml:"AvatarName,omitempty"`
+	AvatarType        *string `json:"AvatarType,omitempty" xml:"AvatarType,omitempty"`
+	Portrait          *string `json:"Portrait,omitempty" xml:"Portrait,omitempty"`
+	Thumbnail         *string `json:"Thumbnail,omitempty" xml:"Thumbnail,omitempty"`
+	Transparent       *bool   `json:"Transparent,omitempty" xml:"Transparent,omitempty"`
+}
+
+func (s ListAvatarsResponseBodyDataAvatarList) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListAvatarsResponseBodyDataAvatarList) GoString() string {
+	return s.String()
+}
+
+func (s *ListAvatarsResponseBodyDataAvatarList) SetAvatarDescription(v string) *ListAvatarsResponseBodyDataAvatarList {
+	s.AvatarDescription = &v
+	return s
+}
+
+func (s *ListAvatarsResponseBodyDataAvatarList) SetAvatarId(v string) *ListAvatarsResponseBodyDataAvatarList {
+	s.AvatarId = &v
+	return s
+}
+
+func (s *ListAvatarsResponseBodyDataAvatarList) SetAvatarName(v string) *ListAvatarsResponseBodyDataAvatarList {
+	s.AvatarName = &v
+	return s
+}
+
+func (s *ListAvatarsResponseBodyDataAvatarList) SetAvatarType(v string) *ListAvatarsResponseBodyDataAvatarList {
+	s.AvatarType = &v
+	return s
+}
+
+func (s *ListAvatarsResponseBodyDataAvatarList) SetPortrait(v string) *ListAvatarsResponseBodyDataAvatarList {
+	s.Portrait = &v
+	return s
+}
+
+func (s *ListAvatarsResponseBodyDataAvatarList) SetThumbnail(v string) *ListAvatarsResponseBodyDataAvatarList {
+	s.Thumbnail = &v
+	return s
+}
+
+func (s *ListAvatarsResponseBodyDataAvatarList) SetTransparent(v bool) *ListAvatarsResponseBodyDataAvatarList {
+	s.Transparent = &v
+	return s
+}
+
+type ListAvatarsResponse struct {
+	Headers    map[string]*string       `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                   `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *ListAvatarsResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s ListAvatarsResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListAvatarsResponse) GoString() string {
+	return s.String()
+}
+
+func (s *ListAvatarsResponse) SetHeaders(v map[string]*string) *ListAvatarsResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *ListAvatarsResponse) SetStatusCode(v int32) *ListAvatarsResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *ListAvatarsResponse) SetBody(v *ListAvatarsResponseBody) *ListAvatarsResponse {
+	s.Body = v
+	return s
+}
+
 type ListCustomTemplatesRequest struct {
 	Name       *string `json:"Name,omitempty" xml:"Name,omitempty"`
 	OrderBy    *string `json:"OrderBy,omitempty" xml:"OrderBy,omitempty"`
@@ -17698,6 +19300,326 @@ func (s *ListCustomTemplatesResponse) SetStatusCode(v int32) *ListCustomTemplate
 }
 
 func (s *ListCustomTemplatesResponse) SetBody(v *ListCustomTemplatesResponseBody) *ListCustomTemplatesResponse {
+	s.Body = v
+	return s
+}
+
+type ListCustomizedVoiceJobsRequest struct {
+	PageNo   *int32 `json:"PageNo,omitempty" xml:"PageNo,omitempty"`
+	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+}
+
+func (s ListCustomizedVoiceJobsRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListCustomizedVoiceJobsRequest) GoString() string {
+	return s.String()
+}
+
+func (s *ListCustomizedVoiceJobsRequest) SetPageNo(v int32) *ListCustomizedVoiceJobsRequest {
+	s.PageNo = &v
+	return s
+}
+
+func (s *ListCustomizedVoiceJobsRequest) SetPageSize(v int32) *ListCustomizedVoiceJobsRequest {
+	s.PageSize = &v
+	return s
+}
+
+type ListCustomizedVoiceJobsResponseBody struct {
+	Data      *ListCustomizedVoiceJobsResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
+	RequestId *string                                  `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	Success   *bool                                    `json:"Success,omitempty" xml:"Success,omitempty"`
+}
+
+func (s ListCustomizedVoiceJobsResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListCustomizedVoiceJobsResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *ListCustomizedVoiceJobsResponseBody) SetData(v *ListCustomizedVoiceJobsResponseBodyData) *ListCustomizedVoiceJobsResponseBody {
+	s.Data = v
+	return s
+}
+
+func (s *ListCustomizedVoiceJobsResponseBody) SetRequestId(v string) *ListCustomizedVoiceJobsResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *ListCustomizedVoiceJobsResponseBody) SetSuccess(v bool) *ListCustomizedVoiceJobsResponseBody {
+	s.Success = &v
+	return s
+}
+
+type ListCustomizedVoiceJobsResponseBodyData struct {
+	CustomizedVoiceJobList []*ListCustomizedVoiceJobsResponseBodyDataCustomizedVoiceJobList `json:"CustomizedVoiceJobList,omitempty" xml:"CustomizedVoiceJobList,omitempty" type:"Repeated"`
+	TotalCount             *int32                                                           `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
+}
+
+func (s ListCustomizedVoiceJobsResponseBodyData) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListCustomizedVoiceJobsResponseBodyData) GoString() string {
+	return s.String()
+}
+
+func (s *ListCustomizedVoiceJobsResponseBodyData) SetCustomizedVoiceJobList(v []*ListCustomizedVoiceJobsResponseBodyDataCustomizedVoiceJobList) *ListCustomizedVoiceJobsResponseBodyData {
+	s.CustomizedVoiceJobList = v
+	return s
+}
+
+func (s *ListCustomizedVoiceJobsResponseBodyData) SetTotalCount(v int32) *ListCustomizedVoiceJobsResponseBodyData {
+	s.TotalCount = &v
+	return s
+}
+
+type ListCustomizedVoiceJobsResponseBodyDataCustomizedVoiceJobList struct {
+	Gender    *string `json:"Gender,omitempty" xml:"Gender,omitempty"`
+	GmtCreate *string `json:"GmtCreate,omitempty" xml:"GmtCreate,omitempty"`
+	JobId     *string `json:"JobId,omitempty" xml:"JobId,omitempty"`
+	Message   *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	Scenario  *string `json:"Scenario,omitempty" xml:"Scenario,omitempty"`
+	Status    *string `json:"Status,omitempty" xml:"Status,omitempty"`
+	VoiceDesc *string `json:"VoiceDesc,omitempty" xml:"VoiceDesc,omitempty"`
+	VoiceId   *string `json:"VoiceId,omitempty" xml:"VoiceId,omitempty"`
+	VoiceName *string `json:"VoiceName,omitempty" xml:"VoiceName,omitempty"`
+}
+
+func (s ListCustomizedVoiceJobsResponseBodyDataCustomizedVoiceJobList) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListCustomizedVoiceJobsResponseBodyDataCustomizedVoiceJobList) GoString() string {
+	return s.String()
+}
+
+func (s *ListCustomizedVoiceJobsResponseBodyDataCustomizedVoiceJobList) SetGender(v string) *ListCustomizedVoiceJobsResponseBodyDataCustomizedVoiceJobList {
+	s.Gender = &v
+	return s
+}
+
+func (s *ListCustomizedVoiceJobsResponseBodyDataCustomizedVoiceJobList) SetGmtCreate(v string) *ListCustomizedVoiceJobsResponseBodyDataCustomizedVoiceJobList {
+	s.GmtCreate = &v
+	return s
+}
+
+func (s *ListCustomizedVoiceJobsResponseBodyDataCustomizedVoiceJobList) SetJobId(v string) *ListCustomizedVoiceJobsResponseBodyDataCustomizedVoiceJobList {
+	s.JobId = &v
+	return s
+}
+
+func (s *ListCustomizedVoiceJobsResponseBodyDataCustomizedVoiceJobList) SetMessage(v string) *ListCustomizedVoiceJobsResponseBodyDataCustomizedVoiceJobList {
+	s.Message = &v
+	return s
+}
+
+func (s *ListCustomizedVoiceJobsResponseBodyDataCustomizedVoiceJobList) SetScenario(v string) *ListCustomizedVoiceJobsResponseBodyDataCustomizedVoiceJobList {
+	s.Scenario = &v
+	return s
+}
+
+func (s *ListCustomizedVoiceJobsResponseBodyDataCustomizedVoiceJobList) SetStatus(v string) *ListCustomizedVoiceJobsResponseBodyDataCustomizedVoiceJobList {
+	s.Status = &v
+	return s
+}
+
+func (s *ListCustomizedVoiceJobsResponseBodyDataCustomizedVoiceJobList) SetVoiceDesc(v string) *ListCustomizedVoiceJobsResponseBodyDataCustomizedVoiceJobList {
+	s.VoiceDesc = &v
+	return s
+}
+
+func (s *ListCustomizedVoiceJobsResponseBodyDataCustomizedVoiceJobList) SetVoiceId(v string) *ListCustomizedVoiceJobsResponseBodyDataCustomizedVoiceJobList {
+	s.VoiceId = &v
+	return s
+}
+
+func (s *ListCustomizedVoiceJobsResponseBodyDataCustomizedVoiceJobList) SetVoiceName(v string) *ListCustomizedVoiceJobsResponseBodyDataCustomizedVoiceJobList {
+	s.VoiceName = &v
+	return s
+}
+
+type ListCustomizedVoiceJobsResponse struct {
+	Headers    map[string]*string                   `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                               `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *ListCustomizedVoiceJobsResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s ListCustomizedVoiceJobsResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListCustomizedVoiceJobsResponse) GoString() string {
+	return s.String()
+}
+
+func (s *ListCustomizedVoiceJobsResponse) SetHeaders(v map[string]*string) *ListCustomizedVoiceJobsResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *ListCustomizedVoiceJobsResponse) SetStatusCode(v int32) *ListCustomizedVoiceJobsResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *ListCustomizedVoiceJobsResponse) SetBody(v *ListCustomizedVoiceJobsResponseBody) *ListCustomizedVoiceJobsResponse {
+	s.Body = v
+	return s
+}
+
+type ListCustomizedVoicesRequest struct {
+	PageNo   *int32 `json:"PageNo,omitempty" xml:"PageNo,omitempty"`
+	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+}
+
+func (s ListCustomizedVoicesRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListCustomizedVoicesRequest) GoString() string {
+	return s.String()
+}
+
+func (s *ListCustomizedVoicesRequest) SetPageNo(v int32) *ListCustomizedVoicesRequest {
+	s.PageNo = &v
+	return s
+}
+
+func (s *ListCustomizedVoicesRequest) SetPageSize(v int32) *ListCustomizedVoicesRequest {
+	s.PageSize = &v
+	return s
+}
+
+type ListCustomizedVoicesResponseBody struct {
+	Data      *ListCustomizedVoicesResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
+	RequestId *string                               `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	Success   *bool                                 `json:"Success,omitempty" xml:"Success,omitempty"`
+}
+
+func (s ListCustomizedVoicesResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListCustomizedVoicesResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *ListCustomizedVoicesResponseBody) SetData(v *ListCustomizedVoicesResponseBodyData) *ListCustomizedVoicesResponseBody {
+	s.Data = v
+	return s
+}
+
+func (s *ListCustomizedVoicesResponseBody) SetRequestId(v string) *ListCustomizedVoicesResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *ListCustomizedVoicesResponseBody) SetSuccess(v bool) *ListCustomizedVoicesResponseBody {
+	s.Success = &v
+	return s
+}
+
+type ListCustomizedVoicesResponseBodyData struct {
+	CustomizedVoiceList []*ListCustomizedVoicesResponseBodyDataCustomizedVoiceList `json:"CustomizedVoiceList,omitempty" xml:"CustomizedVoiceList,omitempty" type:"Repeated"`
+	TotalCount          *int32                                                     `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
+}
+
+func (s ListCustomizedVoicesResponseBodyData) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListCustomizedVoicesResponseBodyData) GoString() string {
+	return s.String()
+}
+
+func (s *ListCustomizedVoicesResponseBodyData) SetCustomizedVoiceList(v []*ListCustomizedVoicesResponseBodyDataCustomizedVoiceList) *ListCustomizedVoicesResponseBodyData {
+	s.CustomizedVoiceList = v
+	return s
+}
+
+func (s *ListCustomizedVoicesResponseBodyData) SetTotalCount(v int32) *ListCustomizedVoicesResponseBodyData {
+	s.TotalCount = &v
+	return s
+}
+
+type ListCustomizedVoicesResponseBodyDataCustomizedVoiceList struct {
+	DemoAudioMediaId *string `json:"DemoAudioMediaId,omitempty" xml:"DemoAudioMediaId,omitempty"`
+	Gender           *string `json:"Gender,omitempty" xml:"Gender,omitempty"`
+	Scenario         *string `json:"Scenario,omitempty" xml:"Scenario,omitempty"`
+	VoiceDesc        *string `json:"VoiceDesc,omitempty" xml:"VoiceDesc,omitempty"`
+	VoiceId          *string `json:"VoiceId,omitempty" xml:"VoiceId,omitempty"`
+	VoiceName        *string `json:"VoiceName,omitempty" xml:"VoiceName,omitempty"`
+}
+
+func (s ListCustomizedVoicesResponseBodyDataCustomizedVoiceList) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListCustomizedVoicesResponseBodyDataCustomizedVoiceList) GoString() string {
+	return s.String()
+}
+
+func (s *ListCustomizedVoicesResponseBodyDataCustomizedVoiceList) SetDemoAudioMediaId(v string) *ListCustomizedVoicesResponseBodyDataCustomizedVoiceList {
+	s.DemoAudioMediaId = &v
+	return s
+}
+
+func (s *ListCustomizedVoicesResponseBodyDataCustomizedVoiceList) SetGender(v string) *ListCustomizedVoicesResponseBodyDataCustomizedVoiceList {
+	s.Gender = &v
+	return s
+}
+
+func (s *ListCustomizedVoicesResponseBodyDataCustomizedVoiceList) SetScenario(v string) *ListCustomizedVoicesResponseBodyDataCustomizedVoiceList {
+	s.Scenario = &v
+	return s
+}
+
+func (s *ListCustomizedVoicesResponseBodyDataCustomizedVoiceList) SetVoiceDesc(v string) *ListCustomizedVoicesResponseBodyDataCustomizedVoiceList {
+	s.VoiceDesc = &v
+	return s
+}
+
+func (s *ListCustomizedVoicesResponseBodyDataCustomizedVoiceList) SetVoiceId(v string) *ListCustomizedVoicesResponseBodyDataCustomizedVoiceList {
+	s.VoiceId = &v
+	return s
+}
+
+func (s *ListCustomizedVoicesResponseBodyDataCustomizedVoiceList) SetVoiceName(v string) *ListCustomizedVoicesResponseBodyDataCustomizedVoiceList {
+	s.VoiceName = &v
+	return s
+}
+
+type ListCustomizedVoicesResponse struct {
+	Headers    map[string]*string                `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                            `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *ListCustomizedVoicesResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s ListCustomizedVoicesResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListCustomizedVoicesResponse) GoString() string {
+	return s.String()
+}
+
+func (s *ListCustomizedVoicesResponse) SetHeaders(v map[string]*string) *ListCustomizedVoicesResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *ListCustomizedVoicesResponse) SetStatusCode(v int32) *ListCustomizedVoicesResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *ListCustomizedVoicesResponse) SetBody(v *ListCustomizedVoicesResponseBody) *ListCustomizedVoicesResponse {
 	s.Body = v
 	return s
 }
@@ -22171,8 +24093,12 @@ func (s *ListSmartSysAvatarModelsResponseBody) SetTotalCount(v int32) *ListSmart
 type ListSmartSysAvatarModelsResponseBodySmartSysAvatarModelList struct {
 	AvatarId   *string `json:"AvatarId,omitempty" xml:"AvatarId,omitempty"`
 	AvatarName *string `json:"AvatarName,omitempty" xml:"AvatarName,omitempty"`
+	Bitrate    *int32  `json:"Bitrate,omitempty" xml:"Bitrate,omitempty"`
 	CoverUrl   *string `json:"CoverUrl,omitempty" xml:"CoverUrl,omitempty"`
+	Height     *int32  `json:"Height,omitempty" xml:"Height,omitempty"`
+	OutputMask *bool   `json:"OutputMask,omitempty" xml:"OutputMask,omitempty"`
 	VideoUrl   *string `json:"VideoUrl,omitempty" xml:"VideoUrl,omitempty"`
+	Width      *int32  `json:"Width,omitempty" xml:"Width,omitempty"`
 }
 
 func (s ListSmartSysAvatarModelsResponseBodySmartSysAvatarModelList) String() string {
@@ -22193,13 +24119,33 @@ func (s *ListSmartSysAvatarModelsResponseBodySmartSysAvatarModelList) SetAvatarN
 	return s
 }
 
+func (s *ListSmartSysAvatarModelsResponseBodySmartSysAvatarModelList) SetBitrate(v int32) *ListSmartSysAvatarModelsResponseBodySmartSysAvatarModelList {
+	s.Bitrate = &v
+	return s
+}
+
 func (s *ListSmartSysAvatarModelsResponseBodySmartSysAvatarModelList) SetCoverUrl(v string) *ListSmartSysAvatarModelsResponseBodySmartSysAvatarModelList {
 	s.CoverUrl = &v
 	return s
 }
 
+func (s *ListSmartSysAvatarModelsResponseBodySmartSysAvatarModelList) SetHeight(v int32) *ListSmartSysAvatarModelsResponseBodySmartSysAvatarModelList {
+	s.Height = &v
+	return s
+}
+
+func (s *ListSmartSysAvatarModelsResponseBodySmartSysAvatarModelList) SetOutputMask(v bool) *ListSmartSysAvatarModelsResponseBodySmartSysAvatarModelList {
+	s.OutputMask = &v
+	return s
+}
+
 func (s *ListSmartSysAvatarModelsResponseBodySmartSysAvatarModelList) SetVideoUrl(v string) *ListSmartSysAvatarModelsResponseBodySmartSysAvatarModelList {
 	s.VideoUrl = &v
+	return s
+}
+
+func (s *ListSmartSysAvatarModelsResponseBodySmartSysAvatarModelList) SetWidth(v int32) *ListSmartSysAvatarModelsResponseBodySmartSysAvatarModelList {
+	s.Width = &v
 	return s
 }
 
@@ -26463,11 +28409,12 @@ func (s *SearchEditingProjectResponse) SetBody(v *SearchEditingProjectResponseBo
 }
 
 type SearchMediaRequest struct {
-	EntityId *string `json:"EntityId,omitempty" xml:"EntityId,omitempty"`
-	Match    *string `json:"Match,omitempty" xml:"Match,omitempty"`
-	PageNo   *int32  `json:"PageNo,omitempty" xml:"PageNo,omitempty"`
-	PageSize *int32  `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	SortBy   *string `json:"SortBy,omitempty" xml:"SortBy,omitempty"`
+	EntityId    *string `json:"EntityId,omitempty" xml:"EntityId,omitempty"`
+	Match       *string `json:"Match,omitempty" xml:"Match,omitempty"`
+	PageNo      *int32  `json:"PageNo,omitempty" xml:"PageNo,omitempty"`
+	PageSize    *int32  `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	ScrollToken *string `json:"ScrollToken,omitempty" xml:"ScrollToken,omitempty"`
+	SortBy      *string `json:"SortBy,omitempty" xml:"SortBy,omitempty"`
 }
 
 func (s SearchMediaRequest) String() string {
@@ -26498,6 +28445,11 @@ func (s *SearchMediaRequest) SetPageSize(v int32) *SearchMediaRequest {
 	return s
 }
 
+func (s *SearchMediaRequest) SetScrollToken(v string) *SearchMediaRequest {
+	s.ScrollToken = &v
+	return s
+}
+
 func (s *SearchMediaRequest) SetSortBy(v string) *SearchMediaRequest {
 	s.SortBy = &v
 	return s
@@ -26507,6 +28459,7 @@ type SearchMediaResponseBody struct {
 	Code          *string                                 `json:"Code,omitempty" xml:"Code,omitempty"`
 	MediaInfoList []*SearchMediaResponseBodyMediaInfoList `json:"MediaInfoList,omitempty" xml:"MediaInfoList,omitempty" type:"Repeated"`
 	RequestId     *string                                 `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	ScrollToken   *string                                 `json:"ScrollToken,omitempty" xml:"ScrollToken,omitempty"`
 	Success       *string                                 `json:"Success,omitempty" xml:"Success,omitempty"`
 	Total         *int64                                  `json:"Total,omitempty" xml:"Total,omitempty"`
 }
@@ -26531,6 +28484,11 @@ func (s *SearchMediaResponseBody) SetMediaInfoList(v []*SearchMediaResponseBodyM
 
 func (s *SearchMediaResponseBody) SetRequestId(v string) *SearchMediaResponseBody {
 	s.RequestId = &v
+	return s
+}
+
+func (s *SearchMediaResponseBody) SetScrollToken(v string) *SearchMediaResponseBody {
+	s.ScrollToken = &v
 	return s
 }
 
@@ -28615,6 +30573,98 @@ func (s *SubmitAudioProduceJobResponse) SetBody(v *SubmitAudioProduceJobResponse
 	return s
 }
 
+type SubmitAvatarTrainingJobRequest struct {
+	JobId *string `json:"JobId,omitempty" xml:"JobId,omitempty"`
+}
+
+func (s SubmitAvatarTrainingJobRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s SubmitAvatarTrainingJobRequest) GoString() string {
+	return s.String()
+}
+
+func (s *SubmitAvatarTrainingJobRequest) SetJobId(v string) *SubmitAvatarTrainingJobRequest {
+	s.JobId = &v
+	return s
+}
+
+type SubmitAvatarTrainingJobResponseBody struct {
+	Data      *SubmitAvatarTrainingJobResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
+	RequestId *string                                  `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	Success   *bool                                    `json:"Success,omitempty" xml:"Success,omitempty"`
+}
+
+func (s SubmitAvatarTrainingJobResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s SubmitAvatarTrainingJobResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *SubmitAvatarTrainingJobResponseBody) SetData(v *SubmitAvatarTrainingJobResponseBodyData) *SubmitAvatarTrainingJobResponseBody {
+	s.Data = v
+	return s
+}
+
+func (s *SubmitAvatarTrainingJobResponseBody) SetRequestId(v string) *SubmitAvatarTrainingJobResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *SubmitAvatarTrainingJobResponseBody) SetSuccess(v bool) *SubmitAvatarTrainingJobResponseBody {
+	s.Success = &v
+	return s
+}
+
+type SubmitAvatarTrainingJobResponseBodyData struct {
+	JobId *string `json:"JobId,omitempty" xml:"JobId,omitempty"`
+}
+
+func (s SubmitAvatarTrainingJobResponseBodyData) String() string {
+	return tea.Prettify(s)
+}
+
+func (s SubmitAvatarTrainingJobResponseBodyData) GoString() string {
+	return s.String()
+}
+
+func (s *SubmitAvatarTrainingJobResponseBodyData) SetJobId(v string) *SubmitAvatarTrainingJobResponseBodyData {
+	s.JobId = &v
+	return s
+}
+
+type SubmitAvatarTrainingJobResponse struct {
+	Headers    map[string]*string                   `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                               `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *SubmitAvatarTrainingJobResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s SubmitAvatarTrainingJobResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s SubmitAvatarTrainingJobResponse) GoString() string {
+	return s.String()
+}
+
+func (s *SubmitAvatarTrainingJobResponse) SetHeaders(v map[string]*string) *SubmitAvatarTrainingJobResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *SubmitAvatarTrainingJobResponse) SetStatusCode(v int32) *SubmitAvatarTrainingJobResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *SubmitAvatarTrainingJobResponse) SetBody(v *SubmitAvatarTrainingJobResponseBody) *SubmitAvatarTrainingJobResponse {
+	s.Body = v
+	return s
+}
+
 type SubmitAvatarVideoJobRequest struct {
 	Description   *string `json:"Description,omitempty" xml:"Description,omitempty"`
 	EditingConfig *string `json:"EditingConfig,omitempty" xml:"EditingConfig,omitempty"`
@@ -28717,6 +30767,110 @@ func (s *SubmitAvatarVideoJobResponse) SetStatusCode(v int32) *SubmitAvatarVideo
 }
 
 func (s *SubmitAvatarVideoJobResponse) SetBody(v *SubmitAvatarVideoJobResponseBody) *SubmitAvatarVideoJobResponse {
+	s.Body = v
+	return s
+}
+
+type SubmitCustomizedVoiceJobRequest struct {
+	DemoAudioMediaURL *string `json:"DemoAudioMediaURL,omitempty" xml:"DemoAudioMediaURL,omitempty"`
+	VoiceId           *string `json:"VoiceId,omitempty" xml:"VoiceId,omitempty"`
+}
+
+func (s SubmitCustomizedVoiceJobRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s SubmitCustomizedVoiceJobRequest) GoString() string {
+	return s.String()
+}
+
+func (s *SubmitCustomizedVoiceJobRequest) SetDemoAudioMediaURL(v string) *SubmitCustomizedVoiceJobRequest {
+	s.DemoAudioMediaURL = &v
+	return s
+}
+
+func (s *SubmitCustomizedVoiceJobRequest) SetVoiceId(v string) *SubmitCustomizedVoiceJobRequest {
+	s.VoiceId = &v
+	return s
+}
+
+type SubmitCustomizedVoiceJobResponseBody struct {
+	Data      *SubmitCustomizedVoiceJobResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
+	RequestId *string                                   `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	Success   *bool                                     `json:"Success,omitempty" xml:"Success,omitempty"`
+}
+
+func (s SubmitCustomizedVoiceJobResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s SubmitCustomizedVoiceJobResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *SubmitCustomizedVoiceJobResponseBody) SetData(v *SubmitCustomizedVoiceJobResponseBodyData) *SubmitCustomizedVoiceJobResponseBody {
+	s.Data = v
+	return s
+}
+
+func (s *SubmitCustomizedVoiceJobResponseBody) SetRequestId(v string) *SubmitCustomizedVoiceJobResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *SubmitCustomizedVoiceJobResponseBody) SetSuccess(v bool) *SubmitCustomizedVoiceJobResponseBody {
+	s.Success = &v
+	return s
+}
+
+type SubmitCustomizedVoiceJobResponseBodyData struct {
+	JobId   *string `json:"JobId,omitempty" xml:"JobId,omitempty"`
+	VoiceId *string `json:"VoiceId,omitempty" xml:"VoiceId,omitempty"`
+}
+
+func (s SubmitCustomizedVoiceJobResponseBodyData) String() string {
+	return tea.Prettify(s)
+}
+
+func (s SubmitCustomizedVoiceJobResponseBodyData) GoString() string {
+	return s.String()
+}
+
+func (s *SubmitCustomizedVoiceJobResponseBodyData) SetJobId(v string) *SubmitCustomizedVoiceJobResponseBodyData {
+	s.JobId = &v
+	return s
+}
+
+func (s *SubmitCustomizedVoiceJobResponseBodyData) SetVoiceId(v string) *SubmitCustomizedVoiceJobResponseBodyData {
+	s.VoiceId = &v
+	return s
+}
+
+type SubmitCustomizedVoiceJobResponse struct {
+	Headers    map[string]*string                    `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                                `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *SubmitCustomizedVoiceJobResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s SubmitCustomizedVoiceJobResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s SubmitCustomizedVoiceJobResponse) GoString() string {
+	return s.String()
+}
+
+func (s *SubmitCustomizedVoiceJobResponse) SetHeaders(v map[string]*string) *SubmitCustomizedVoiceJobResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *SubmitCustomizedVoiceJobResponse) SetStatusCode(v int32) *SubmitCustomizedVoiceJobResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *SubmitCustomizedVoiceJobResponse) SetBody(v *SubmitCustomizedVoiceJobResponseBody) *SubmitCustomizedVoiceJobResponse {
 	s.Body = v
 	return s
 }
@@ -36425,6 +38579,134 @@ func (s *SubmitTranscodeJobResponse) SetBody(v *SubmitTranscodeJobResponseBody) 
 	return s
 }
 
+type UpdateAvatarTrainingJobRequest struct {
+	AvatarDescription *string `json:"AvatarDescription,omitempty" xml:"AvatarDescription,omitempty"`
+	AvatarName        *string `json:"AvatarName,omitempty" xml:"AvatarName,omitempty"`
+	JobId             *string `json:"JobId,omitempty" xml:"JobId,omitempty"`
+	Portrait          *string `json:"Portrait,omitempty" xml:"Portrait,omitempty"`
+	Thumbnail         *string `json:"Thumbnail,omitempty" xml:"Thumbnail,omitempty"`
+	Transparent       *bool   `json:"Transparent,omitempty" xml:"Transparent,omitempty"`
+	Video             *string `json:"Video,omitempty" xml:"Video,omitempty"`
+}
+
+func (s UpdateAvatarTrainingJobRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UpdateAvatarTrainingJobRequest) GoString() string {
+	return s.String()
+}
+
+func (s *UpdateAvatarTrainingJobRequest) SetAvatarDescription(v string) *UpdateAvatarTrainingJobRequest {
+	s.AvatarDescription = &v
+	return s
+}
+
+func (s *UpdateAvatarTrainingJobRequest) SetAvatarName(v string) *UpdateAvatarTrainingJobRequest {
+	s.AvatarName = &v
+	return s
+}
+
+func (s *UpdateAvatarTrainingJobRequest) SetJobId(v string) *UpdateAvatarTrainingJobRequest {
+	s.JobId = &v
+	return s
+}
+
+func (s *UpdateAvatarTrainingJobRequest) SetPortrait(v string) *UpdateAvatarTrainingJobRequest {
+	s.Portrait = &v
+	return s
+}
+
+func (s *UpdateAvatarTrainingJobRequest) SetThumbnail(v string) *UpdateAvatarTrainingJobRequest {
+	s.Thumbnail = &v
+	return s
+}
+
+func (s *UpdateAvatarTrainingJobRequest) SetTransparent(v bool) *UpdateAvatarTrainingJobRequest {
+	s.Transparent = &v
+	return s
+}
+
+func (s *UpdateAvatarTrainingJobRequest) SetVideo(v string) *UpdateAvatarTrainingJobRequest {
+	s.Video = &v
+	return s
+}
+
+type UpdateAvatarTrainingJobResponseBody struct {
+	Data      *UpdateAvatarTrainingJobResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
+	RequestId *string                                  `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	Success   *bool                                    `json:"Success,omitempty" xml:"Success,omitempty"`
+}
+
+func (s UpdateAvatarTrainingJobResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UpdateAvatarTrainingJobResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *UpdateAvatarTrainingJobResponseBody) SetData(v *UpdateAvatarTrainingJobResponseBodyData) *UpdateAvatarTrainingJobResponseBody {
+	s.Data = v
+	return s
+}
+
+func (s *UpdateAvatarTrainingJobResponseBody) SetRequestId(v string) *UpdateAvatarTrainingJobResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *UpdateAvatarTrainingJobResponseBody) SetSuccess(v bool) *UpdateAvatarTrainingJobResponseBody {
+	s.Success = &v
+	return s
+}
+
+type UpdateAvatarTrainingJobResponseBodyData struct {
+	JobId *string `json:"JobId,omitempty" xml:"JobId,omitempty"`
+}
+
+func (s UpdateAvatarTrainingJobResponseBodyData) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UpdateAvatarTrainingJobResponseBodyData) GoString() string {
+	return s.String()
+}
+
+func (s *UpdateAvatarTrainingJobResponseBodyData) SetJobId(v string) *UpdateAvatarTrainingJobResponseBodyData {
+	s.JobId = &v
+	return s
+}
+
+type UpdateAvatarTrainingJobResponse struct {
+	Headers    map[string]*string                   `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                               `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *UpdateAvatarTrainingJobResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s UpdateAvatarTrainingJobResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UpdateAvatarTrainingJobResponse) GoString() string {
+	return s.String()
+}
+
+func (s *UpdateAvatarTrainingJobResponse) SetHeaders(v map[string]*string) *UpdateAvatarTrainingJobResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *UpdateAvatarTrainingJobResponse) SetStatusCode(v int32) *UpdateAvatarTrainingJobResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *UpdateAvatarTrainingJobResponse) SetBody(v *UpdateAvatarTrainingJobResponseBody) *UpdateAvatarTrainingJobResponse {
+	s.Body = v
+	return s
+}
+
 type UpdateCategoryRequest struct {
 	CateId   *int64  `json:"CateId,omitempty" xml:"CateId,omitempty"`
 	CateName *string `json:"CateName,omitempty" xml:"CateName,omitempty"`
@@ -36571,6 +38853,81 @@ func (s *UpdateCustomTemplateResponse) SetStatusCode(v int32) *UpdateCustomTempl
 }
 
 func (s *UpdateCustomTemplateResponse) SetBody(v *UpdateCustomTemplateResponseBody) *UpdateCustomTemplateResponse {
+	s.Body = v
+	return s
+}
+
+type UpdateCustomizedVoiceRequest struct {
+	DemoAudioMediaId *string `json:"DemoAudioMediaId,omitempty" xml:"DemoAudioMediaId,omitempty"`
+	VoiceId          *string `json:"VoiceId,omitempty" xml:"VoiceId,omitempty"`
+}
+
+func (s UpdateCustomizedVoiceRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UpdateCustomizedVoiceRequest) GoString() string {
+	return s.String()
+}
+
+func (s *UpdateCustomizedVoiceRequest) SetDemoAudioMediaId(v string) *UpdateCustomizedVoiceRequest {
+	s.DemoAudioMediaId = &v
+	return s
+}
+
+func (s *UpdateCustomizedVoiceRequest) SetVoiceId(v string) *UpdateCustomizedVoiceRequest {
+	s.VoiceId = &v
+	return s
+}
+
+type UpdateCustomizedVoiceResponseBody struct {
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	Success   *bool   `json:"Success,omitempty" xml:"Success,omitempty"`
+}
+
+func (s UpdateCustomizedVoiceResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UpdateCustomizedVoiceResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *UpdateCustomizedVoiceResponseBody) SetRequestId(v string) *UpdateCustomizedVoiceResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *UpdateCustomizedVoiceResponseBody) SetSuccess(v bool) *UpdateCustomizedVoiceResponseBody {
+	s.Success = &v
+	return s
+}
+
+type UpdateCustomizedVoiceResponse struct {
+	Headers    map[string]*string                 `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                             `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *UpdateCustomizedVoiceResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s UpdateCustomizedVoiceResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UpdateCustomizedVoiceResponse) GoString() string {
+	return s.String()
+}
+
+func (s *UpdateCustomizedVoiceResponse) SetHeaders(v map[string]*string) *UpdateCustomizedVoiceResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *UpdateCustomizedVoiceResponse) SetStatusCode(v int32) *UpdateCustomizedVoiceResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *UpdateCustomizedVoiceResponse) SetBody(v *UpdateCustomizedVoiceResponseBody) *UpdateCustomizedVoiceResponse {
 	s.Body = v
 	return s
 }
@@ -38651,6 +41008,74 @@ func (client *Client) CreateAudit(request *CreateAuditRequest) (_result *CreateA
 	return _result, _err
 }
 
+func (client *Client) CreateAvatarTrainingJobWithOptions(request *CreateAvatarTrainingJobRequest, runtime *util.RuntimeOptions) (_result *CreateAvatarTrainingJobResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.AvatarDescription)) {
+		query["AvatarDescription"] = request.AvatarDescription
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.AvatarName)) {
+		query["AvatarName"] = request.AvatarName
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.AvatarType)) {
+		query["AvatarType"] = request.AvatarType
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Portrait)) {
+		query["Portrait"] = request.Portrait
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Thumbnail)) {
+		query["Thumbnail"] = request.Thumbnail
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Transparent)) {
+		query["Transparent"] = request.Transparent
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Video)) {
+		query["Video"] = request.Video
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("CreateAvatarTrainingJob"),
+		Version:     tea.String("2020-11-09"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &CreateAvatarTrainingJobResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) CreateAvatarTrainingJob(request *CreateAvatarTrainingJobRequest) (_result *CreateAvatarTrainingJobResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &CreateAvatarTrainingJobResponse{}
+	_body, _err := client.CreateAvatarTrainingJobWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
 func (client *Client) CreateCustomTemplateWithOptions(request *CreateCustomTemplateRequest, runtime *util.RuntimeOptions) (_result *CreateCustomTemplateResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -38700,6 +41125,66 @@ func (client *Client) CreateCustomTemplate(request *CreateCustomTemplateRequest)
 	runtime := &util.RuntimeOptions{}
 	_result = &CreateCustomTemplateResponse{}
 	_body, _err := client.CreateCustomTemplateWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) CreateCustomizedVoiceJobWithOptions(request *CreateCustomizedVoiceJobRequest, runtime *util.RuntimeOptions) (_result *CreateCustomizedVoiceJobResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.Gender)) {
+		query["Gender"] = request.Gender
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Scenario)) {
+		query["Scenario"] = request.Scenario
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.VoiceDesc)) {
+		query["VoiceDesc"] = request.VoiceDesc
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.VoiceId)) {
+		query["VoiceId"] = request.VoiceId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.VoiceName)) {
+		query["VoiceName"] = request.VoiceName
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("CreateCustomizedVoiceJob"),
+		Version:     tea.String("2020-11-09"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &CreateCustomizedVoiceJobResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) CreateCustomizedVoiceJob(request *CreateCustomizedVoiceJobRequest) (_result *CreateCustomizedVoiceJobResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &CreateCustomizedVoiceJobResponse{}
+	_body, _err := client.CreateCustomizedVoiceJobWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -39247,6 +41732,50 @@ func (client *Client) DecryptKMSDataKey(request *DecryptKMSDataKeyRequest) (_res
 	return _result, _err
 }
 
+func (client *Client) DeleteAvatarTrainingJobWithOptions(request *DeleteAvatarTrainingJobRequest, runtime *util.RuntimeOptions) (_result *DeleteAvatarTrainingJobResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.JobId)) {
+		query["JobId"] = request.JobId
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("DeleteAvatarTrainingJob"),
+		Version:     tea.String("2020-11-09"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &DeleteAvatarTrainingJobResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) DeleteAvatarTrainingJob(request *DeleteAvatarTrainingJobRequest) (_result *DeleteAvatarTrainingJobResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &DeleteAvatarTrainingJobResponse{}
+	_body, _err := client.DeleteAvatarTrainingJobWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
 func (client *Client) DeleteCategoryWithOptions(request *DeleteCategoryRequest, runtime *util.RuntimeOptions) (_result *DeleteCategoryResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -39328,6 +41857,50 @@ func (client *Client) DeleteCustomTemplate(request *DeleteCustomTemplateRequest)
 	runtime := &util.RuntimeOptions{}
 	_result = &DeleteCustomTemplateResponse{}
 	_body, _err := client.DeleteCustomTemplateWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) DeleteCustomizedVoiceJobWithOptions(request *DeleteCustomizedVoiceJobRequest, runtime *util.RuntimeOptions) (_result *DeleteCustomizedVoiceJobResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.JobId)) {
+		query["JobId"] = request.JobId
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("DeleteCustomizedVoiceJob"),
+		Version:     tea.String("2020-11-09"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &DeleteCustomizedVoiceJobResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) DeleteCustomizedVoiceJob(request *DeleteCustomizedVoiceJobRequest) (_result *DeleteCustomizedVoiceJobResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &DeleteCustomizedVoiceJobResponse{}
+	_body, _err := client.DeleteCustomizedVoiceJobWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -41497,6 +44070,58 @@ func (client *Client) DescribeQueryConfigs(request *DescribeQueryConfigsRequest)
 	return _result, _err
 }
 
+func (client *Client) DetectAudioForCustomizedVoiceJobWithOptions(request *DetectAudioForCustomizedVoiceJobRequest, runtime *util.RuntimeOptions) (_result *DetectAudioForCustomizedVoiceJobResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.AudioRecordId)) {
+		query["AudioRecordId"] = request.AudioRecordId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.RecordUrl)) {
+		query["RecordUrl"] = request.RecordUrl
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.VoiceId)) {
+		query["VoiceId"] = request.VoiceId
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("DetectAudioForCustomizedVoiceJob"),
+		Version:     tea.String("2020-11-09"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &DetectAudioForCustomizedVoiceJobResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) DetectAudioForCustomizedVoiceJob(request *DetectAudioForCustomizedVoiceJobRequest) (_result *DetectAudioForCustomizedVoiceJobResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &DetectAudioForCustomizedVoiceJobResponse{}
+	_body, _err := client.DetectAudioForCustomizedVoiceJobWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
 func (client *Client) GenerateKMSDataKeyWithOptions(runtime *util.RuntimeOptions) (_result *GenerateKMSDataKeyResponse, _err error) {
 	req := &openapi.OpenApiRequest{}
 	params := &openapi.Params{
@@ -41523,6 +44148,94 @@ func (client *Client) GenerateKMSDataKey() (_result *GenerateKMSDataKeyResponse,
 	runtime := &util.RuntimeOptions{}
 	_result = &GenerateKMSDataKeyResponse{}
 	_body, _err := client.GenerateKMSDataKeyWithOptions(runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) GetAvatarWithOptions(request *GetAvatarRequest, runtime *util.RuntimeOptions) (_result *GetAvatarResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.AvatarId)) {
+		query["AvatarId"] = request.AvatarId
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("GetAvatar"),
+		Version:     tea.String("2020-11-09"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &GetAvatarResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) GetAvatar(request *GetAvatarRequest) (_result *GetAvatarResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &GetAvatarResponse{}
+	_body, _err := client.GetAvatarWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) GetAvatarTrainingJobWithOptions(request *GetAvatarTrainingJobRequest, runtime *util.RuntimeOptions) (_result *GetAvatarTrainingJobResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.JobId)) {
+		query["JobId"] = request.JobId
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("GetAvatarTrainingJob"),
+		Version:     tea.String("2020-11-09"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &GetAvatarTrainingJobResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) GetAvatarTrainingJob(request *GetAvatarTrainingJobRequest) (_result *GetAvatarTrainingJobResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &GetAvatarTrainingJobResponse{}
+	_body, _err := client.GetAvatarTrainingJobWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -41675,6 +44388,94 @@ func (client *Client) GetCustomTemplate(request *GetCustomTemplateRequest) (_res
 	return _result, _err
 }
 
+func (client *Client) GetCustomizedVoiceWithOptions(request *GetCustomizedVoiceRequest, runtime *util.RuntimeOptions) (_result *GetCustomizedVoiceResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.VoiceId)) {
+		query["VoiceId"] = request.VoiceId
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("GetCustomizedVoice"),
+		Version:     tea.String("2020-11-09"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &GetCustomizedVoiceResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) GetCustomizedVoice(request *GetCustomizedVoiceRequest) (_result *GetCustomizedVoiceResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &GetCustomizedVoiceResponse{}
+	_body, _err := client.GetCustomizedVoiceWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) GetCustomizedVoiceJobWithOptions(request *GetCustomizedVoiceJobRequest, runtime *util.RuntimeOptions) (_result *GetCustomizedVoiceJobResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.JobId)) {
+		query["JobId"] = request.JobId
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("GetCustomizedVoiceJob"),
+		Version:     tea.String("2020-11-09"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &GetCustomizedVoiceJobResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) GetCustomizedVoiceJob(request *GetCustomizedVoiceJobRequest) (_result *GetCustomizedVoiceJobResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &GetCustomizedVoiceJobResponse{}
+	_body, _err := client.GetCustomizedVoiceJobWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
 func (client *Client) GetDefaultStorageLocationWithOptions(runtime *util.RuntimeOptions) (_result *GetDefaultStorageLocationResponse, _err error) {
 	req := &openapi.OpenApiRequest{}
 	params := &openapi.Params{
@@ -41701,6 +44502,50 @@ func (client *Client) GetDefaultStorageLocation() (_result *GetDefaultStorageLoc
 	runtime := &util.RuntimeOptions{}
 	_result = &GetDefaultStorageLocationResponse{}
 	_body, _err := client.GetDefaultStorageLocationWithOptions(runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) GetDemonstrationForCustomizedVoiceJobWithOptions(request *GetDemonstrationForCustomizedVoiceJobRequest, runtime *util.RuntimeOptions) (_result *GetDemonstrationForCustomizedVoiceJobResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.Scenario)) {
+		query["Scenario"] = request.Scenario
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("GetDemonstrationForCustomizedVoiceJob"),
+		Version:     tea.String("2020-11-09"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &GetDemonstrationForCustomizedVoiceJobResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) GetDemonstrationForCustomizedVoiceJob(request *GetDemonstrationForCustomizedVoiceJobRequest) (_result *GetDemonstrationForCustomizedVoiceJobResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &GetDemonstrationForCustomizedVoiceJobResponse{}
+	_body, _err := client.GetDemonstrationForCustomizedVoiceJobWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -43097,6 +45942,110 @@ func (client *Client) ListAllPublicMediaTags(request *ListAllPublicMediaTagsRequ
 	return _result, _err
 }
 
+func (client *Client) ListAvatarTrainingJobsWithOptions(request *ListAvatarTrainingJobsRequest, runtime *util.RuntimeOptions) (_result *ListAvatarTrainingJobsResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.PageNo)) {
+		query["PageNo"] = request.PageNo
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.PageSize)) {
+		query["PageSize"] = request.PageSize
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Status)) {
+		query["Status"] = request.Status
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("ListAvatarTrainingJobs"),
+		Version:     tea.String("2020-11-09"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &ListAvatarTrainingJobsResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) ListAvatarTrainingJobs(request *ListAvatarTrainingJobsRequest) (_result *ListAvatarTrainingJobsResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &ListAvatarTrainingJobsResponse{}
+	_body, _err := client.ListAvatarTrainingJobsWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) ListAvatarsWithOptions(request *ListAvatarsRequest, runtime *util.RuntimeOptions) (_result *ListAvatarsResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.AvatarType)) {
+		query["AvatarType"] = request.AvatarType
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.PageNo)) {
+		query["PageNo"] = request.PageNo
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.PageSize)) {
+		query["PageSize"] = request.PageSize
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("ListAvatars"),
+		Version:     tea.String("2020-11-09"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &ListAvatarsResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) ListAvatars(request *ListAvatarsRequest) (_result *ListAvatarsResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &ListAvatarsResponse{}
+	_body, _err := client.ListAvatarsWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
 func (client *Client) ListCustomTemplatesWithOptions(request *ListCustomTemplatesRequest, runtime *util.RuntimeOptions) (_result *ListCustomTemplatesResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -43158,6 +46107,102 @@ func (client *Client) ListCustomTemplates(request *ListCustomTemplatesRequest) (
 	runtime := &util.RuntimeOptions{}
 	_result = &ListCustomTemplatesResponse{}
 	_body, _err := client.ListCustomTemplatesWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) ListCustomizedVoiceJobsWithOptions(request *ListCustomizedVoiceJobsRequest, runtime *util.RuntimeOptions) (_result *ListCustomizedVoiceJobsResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.PageNo)) {
+		query["PageNo"] = request.PageNo
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.PageSize)) {
+		query["PageSize"] = request.PageSize
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("ListCustomizedVoiceJobs"),
+		Version:     tea.String("2020-11-09"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &ListCustomizedVoiceJobsResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) ListCustomizedVoiceJobs(request *ListCustomizedVoiceJobsRequest) (_result *ListCustomizedVoiceJobsResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &ListCustomizedVoiceJobsResponse{}
+	_body, _err := client.ListCustomizedVoiceJobsWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) ListCustomizedVoicesWithOptions(request *ListCustomizedVoicesRequest, runtime *util.RuntimeOptions) (_result *ListCustomizedVoicesResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.PageNo)) {
+		query["PageNo"] = request.PageNo
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.PageSize)) {
+		query["PageSize"] = request.PageSize
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("ListCustomizedVoices"),
+		Version:     tea.String("2020-11-09"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &ListCustomizedVoicesResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) ListCustomizedVoices(request *ListCustomizedVoicesRequest) (_result *ListCustomizedVoicesResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &ListCustomizedVoicesResponse{}
+	_body, _err := client.ListCustomizedVoicesWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -45063,6 +48108,10 @@ func (client *Client) SearchMediaWithOptions(request *SearchMediaRequest, runtim
 		query["PageSize"] = request.PageSize
 	}
 
+	if !tea.BoolValue(util.IsUnset(request.ScrollToken)) {
+		query["ScrollToken"] = request.ScrollToken
+	}
+
 	if !tea.BoolValue(util.IsUnset(request.SortBy)) {
 		query["SortBy"] = request.SortBy
 	}
@@ -45785,6 +48834,50 @@ func (client *Client) SubmitAudioProduceJob(request *SubmitAudioProduceJobReques
 	return _result, _err
 }
 
+func (client *Client) SubmitAvatarTrainingJobWithOptions(request *SubmitAvatarTrainingJobRequest, runtime *util.RuntimeOptions) (_result *SubmitAvatarTrainingJobResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.JobId)) {
+		query["JobId"] = request.JobId
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("SubmitAvatarTrainingJob"),
+		Version:     tea.String("2020-11-09"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &SubmitAvatarTrainingJobResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) SubmitAvatarTrainingJob(request *SubmitAvatarTrainingJobRequest) (_result *SubmitAvatarTrainingJobResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &SubmitAvatarTrainingJobResponse{}
+	_body, _err := client.SubmitAvatarTrainingJobWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
 func (client *Client) SubmitAvatarVideoJobWithOptions(request *SubmitAvatarVideoJobRequest, runtime *util.RuntimeOptions) (_result *SubmitAvatarVideoJobResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -45842,6 +48935,54 @@ func (client *Client) SubmitAvatarVideoJob(request *SubmitAvatarVideoJobRequest)
 	runtime := &util.RuntimeOptions{}
 	_result = &SubmitAvatarVideoJobResponse{}
 	_body, _err := client.SubmitAvatarVideoJobWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) SubmitCustomizedVoiceJobWithOptions(request *SubmitCustomizedVoiceJobRequest, runtime *util.RuntimeOptions) (_result *SubmitCustomizedVoiceJobResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.DemoAudioMediaURL)) {
+		query["DemoAudioMediaURL"] = request.DemoAudioMediaURL
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.VoiceId)) {
+		query["VoiceId"] = request.VoiceId
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("SubmitCustomizedVoiceJob"),
+		Version:     tea.String("2020-11-09"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &SubmitCustomizedVoiceJobResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) SubmitCustomizedVoiceJob(request *SubmitCustomizedVoiceJobRequest) (_result *SubmitCustomizedVoiceJobResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &SubmitCustomizedVoiceJobResponse{}
+	_body, _err := client.SubmitCustomizedVoiceJobWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -47202,6 +50343,74 @@ func (client *Client) SubmitTranscodeJob(request *SubmitTranscodeJobRequest) (_r
 	return _result, _err
 }
 
+func (client *Client) UpdateAvatarTrainingJobWithOptions(request *UpdateAvatarTrainingJobRequest, runtime *util.RuntimeOptions) (_result *UpdateAvatarTrainingJobResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.AvatarDescription)) {
+		query["AvatarDescription"] = request.AvatarDescription
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.AvatarName)) {
+		query["AvatarName"] = request.AvatarName
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.JobId)) {
+		query["JobId"] = request.JobId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Portrait)) {
+		query["Portrait"] = request.Portrait
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Thumbnail)) {
+		query["Thumbnail"] = request.Thumbnail
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Transparent)) {
+		query["Transparent"] = request.Transparent
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Video)) {
+		query["Video"] = request.Video
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("UpdateAvatarTrainingJob"),
+		Version:     tea.String("2020-11-09"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &UpdateAvatarTrainingJobResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) UpdateAvatarTrainingJob(request *UpdateAvatarTrainingJobRequest) (_result *UpdateAvatarTrainingJobResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &UpdateAvatarTrainingJobResponse{}
+	_body, _err := client.UpdateAvatarTrainingJobWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
 func (client *Client) UpdateCategoryWithOptions(request *UpdateCategoryRequest, runtime *util.RuntimeOptions) (_result *UpdateCategoryResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -47295,6 +50504,54 @@ func (client *Client) UpdateCustomTemplate(request *UpdateCustomTemplateRequest)
 	runtime := &util.RuntimeOptions{}
 	_result = &UpdateCustomTemplateResponse{}
 	_body, _err := client.UpdateCustomTemplateWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) UpdateCustomizedVoiceWithOptions(request *UpdateCustomizedVoiceRequest, runtime *util.RuntimeOptions) (_result *UpdateCustomizedVoiceResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.DemoAudioMediaId)) {
+		query["DemoAudioMediaId"] = request.DemoAudioMediaId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.VoiceId)) {
+		query["VoiceId"] = request.VoiceId
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("UpdateCustomizedVoice"),
+		Version:     tea.String("2020-11-09"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &UpdateCustomizedVoiceResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) UpdateCustomizedVoice(request *UpdateCustomizedVoiceRequest) (_result *UpdateCustomizedVoiceResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &UpdateCustomizedVoiceResponse{}
+	_body, _err := client.UpdateCustomizedVoiceWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
