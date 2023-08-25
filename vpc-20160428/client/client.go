@@ -15412,7 +15412,7 @@ type CreateVpnConnectionRequest struct {
 	// *   **true** (default) After NAT traversal is enabled, the initiator does not check the UDP ports during IKE negotiations and can automatically discover NAT gateway devices along the VPN tunnel.
 	// *   **false**
 	EnableNatTraversal *bool `json:"EnableNatTraversal,omitempty" xml:"EnableNatTraversal,omitempty"`
-	// 是否为隧道开启BGP功能。取值：**true**或**false**（默认值）。
+	// Specifies whether to enable the BGP feature for the tunnel. Valid values: **true** and **false**. Default value: **false**.
 	EnableTunnelsBgp *bool `json:"EnableTunnelsBgp,omitempty" xml:"EnableTunnelsBgp,omitempty"`
 	// The health check configuration:
 	//
@@ -15492,9 +15492,7 @@ type CreateVpnConnectionRequest struct {
 	//
 	// Each tag key corresponds to one tag value. You can specify up to 20 tag values in each call.
 	Tags []*CreateVpnConnectionRequestTags `json:"Tags,omitempty" xml:"Tags,omitempty" type:"Repeated"`
-	// 配置隧道。
-	//
-	// 如果当前VPN网关实例支持创建双隧道模式的IPsec-VPN连接，您必须同时为IPsec-VPN连接添加主隧道和备隧道的配置（即配置**TunnelOptionsSpecification**数组下的参数）。一个IPsec-VPN连接下仅支持添加主备两条隧道。
+	// TunnelOptionsSpecification parameters are supported by dual-tunnel IPsec-VPN gateways. You can modify both the active and standby tunnels of the IPsec-VPN connection.
 	TunnelOptionsSpecification []*CreateVpnConnectionRequestTunnelOptionsSpecification `json:"TunnelOptionsSpecification,omitempty" xml:"TunnelOptionsSpecification,omitempty" type:"Repeated"`
 	// The ID of the VPN gateway.
 	VpnGatewayId *string `json:"VpnGatewayId,omitempty" xml:"VpnGatewayId,omitempty"`
@@ -15657,39 +15655,37 @@ func (s *CreateVpnConnectionRequestTags) SetValue(v string) *CreateVpnConnection
 }
 
 type CreateVpnConnectionRequestTunnelOptionsSpecification struct {
-	// 隧道关联的用户网关ID。
+	// The ID of the customer gateway associated with the tunnel.
 	//
-	// > - 在VPN网关实例支持创建双隧道模式的IPsec-VPN连接的场景下，本参数必填。
-	// - 如果当前VPN网关实例支持创建双隧道模式的IPsec-VPN连接，您必须同时为IPsec-VPN连接添加主隧道和备隧道的配置（即配置**TunnelOptionsSpecification**数组下的参数）。一个IPsec-VPN连接仅支持添加主备两条隧道。
+	// > - This parameter is required if the VPN gateway supports the dual-tunnel mode.
+	// > - If the VPN gateway supports the dual-tunnel mode, you need to configure the active tunnel and standby tunnel by specifying the parameters in the **TunnelOptionsSpecification** array. Each IPsec-VPN connection supports only one active tunnel and one standby tunnel.
 	CustomerGatewayId *string `json:"CustomerGatewayId,omitempty" xml:"CustomerGatewayId,omitempty"`
-	// 是否为隧道开启DPD（对等体存活检测）功能。取值：
+	// Specifies whether to enable the DPD feature for the tunnel. Valid values:
 	//
-	// - **true**（默认值）：开启DPD功能。IPsec发起端会发送DPD报文用来检测对端的设备是否存活，如果在设定时间内未收到正确回应则认为对端已经断线，IPsec将删除ISAKMP SA和相应的IPsec SA，安全隧道同样也会被删除。
-	//
-	// - **false**：不开启DPD功能，IPsec发起端不会发送DPD探测报文。
+	// - **true** (default): The initiator of the IPsec-VPN connection sends DPD packets to verify the existence and availability of the peer. If no feedback is received from the peer within a specified period of time, the connection fails. ISAKMP SAs and IPsec SAs are deleted. The IPsec tunnel is also deleted.
+	// - **false**
 	EnableDpd *bool `json:"EnableDpd,omitempty" xml:"EnableDpd,omitempty"`
-	// 是否为隧道开启NAT穿越功能。取值：
+	// Specifies whether to enable NAT traversal for the tunnel. Valid values:
 	//
-	// - **true**（默认值）：开启NAT穿越功能。开启后，IKE协商过程会删除对UDP端口号的验证过程，同时实现对隧道中NAT网关设备的发现功能。
+	// - **true** (default): After NAT traversal is enabled, the verification process for the peer UDP port is deleted from IKE negotiations. In addition, the NAT gateway in the tunnel can be found.
 	//
-	// - **false**：不开启NAT穿越功能。
+	// - **false**: no
 	EnableNatTraversal *bool `json:"EnableNatTraversal,omitempty" xml:"EnableNatTraversal,omitempty"`
-	// 如果当前VPN网关实例为国密型VPN网关，您需要为隧道配置对端的CA证书。
+	// If the VPN gateway is of the SM type, you need to configure a CA certificate for the peer gateway device.
 	//
-	// - 对于国密型VPN网关，此项必填。
-	//
-	// - 对于普通型VPN网关，此项需要为空。
+	// - This parameter is required for an SM VPN gateway.
+	// - You can ignore this parameter when a standard VPN gateway is used to create the IPsec-VPN connection.
 	RemoteCaCertificate *string `json:"RemoteCaCertificate,omitempty" xml:"RemoteCaCertificate,omitempty"`
-	// 隧道的角色。取值：
+	// The tunnel role. Valid values:
 	//
-	// - **master**：表示当前隧道为主隧道。
-	// - **slave**：表示当前隧道为备隧道。
+	// - **master**
+	// - **slave**
 	Role *string `json:"Role,omitempty" xml:"Role,omitempty"`
-	// 为隧道添加BGP配置。
+	// The BGP configurations.
 	TunnelBgpConfig *CreateVpnConnectionRequestTunnelOptionsSpecificationTunnelBgpConfig `json:"TunnelBgpConfig,omitempty" xml:"TunnelBgpConfig,omitempty" type:"Struct"`
-	// 第一阶段协商的配置信息。
+	// The configuration of Phase 1 negotiations.
 	TunnelIkeConfig *CreateVpnConnectionRequestTunnelOptionsSpecificationTunnelIkeConfig `json:"TunnelIkeConfig,omitempty" xml:"TunnelIkeConfig,omitempty" type:"Struct"`
-	// 第二阶段协商的配置信息。
+	// The configuration of Phase 2 negotiations.
 	TunnelIpsecConfig *CreateVpnConnectionRequestTunnelOptionsSpecificationTunnelIpsecConfig `json:"TunnelIpsecConfig,omitempty" xml:"TunnelIpsecConfig,omitempty" type:"Struct"`
 }
 
@@ -15742,17 +15738,17 @@ func (s *CreateVpnConnectionRequestTunnelOptionsSpecification) SetTunnelIpsecCon
 }
 
 type CreateVpnConnectionRequestTunnelOptionsSpecificationTunnelBgpConfig struct {
-	// 隧道本端（阿里云侧）的自治系统号。自治系统号取值范围：**1**~**4294967295**。默认值：**45104**。
+	// The autonomous system number (ASN) on the Alibaba Cloud side. Valid values: **1** to **4294967295**. Default value: **45104**.
 	//
-	// > - 当您为IPsec连接开启BGP功能后（即指定**EnableTunnelsBgp**参数的值为**true**）需要配置该参数。
-	// - 在添加BGP配置前，建议您先了解BGP动态路由功能的工作机制和使用限制。更多信息，请参见[VPN网关支持BGP动态路由公告](~~170235~~)。
-	// - 建议您使用自治系统号的私有号码与阿里云建立BGP连接。自治系统号的私有号码范围请自行查阅文档。
+	// > - After you enable BGP for the IPsec-VPN connection, you need to set **EnableTunnelsBgp** to true.
+	// > - Before you configure BGP, we recommend that you learn about how BGP works and its limits. For more information, see [VPN Gateway supports BGP dynamic routing](~~170235~~).
+	// > - We recommend that you use a private ASN to establish a connection with Alibaba Cloud over BGP. Refer to the relevant documentation for the private ASN range.
 	LocalAsn *int64 `json:"LocalAsn,omitempty" xml:"LocalAsn,omitempty"`
-	// 隧道本端（阿里云侧）的BGP地址。该地址为BGP网段内的一个IP地址。
+	// The BGP address on the Alibaba Cloud side. The address is an IP address that falls within the BGP CIDR block.
 	LocalBgpIp *string `json:"LocalBgpIp,omitempty" xml:"LocalBgpIp,omitempty"`
-	// 隧道的BGP网段。该网段需是一个在169.254.0.0/16内的掩码长度为30的网段。
+	// The BGP CIDR block of the tunnel. The CIDR block must belong to 169.254.0.0/16. The subnet mask of the CIDR block must be 30 bits in length.
 	//
-	// >在一个VPN网关实例下，每个隧道的BGP网段需保持唯一。
+	// >The BGP CIDR block of each tunnel on a VPN gateway must be unique.
 	TunnelCidr *string `json:"TunnelCidr,omitempty" xml:"TunnelCidr,omitempty"`
 }
 
@@ -15780,56 +15776,55 @@ func (s *CreateVpnConnectionRequestTunnelOptionsSpecificationTunnelBgpConfig) Se
 }
 
 type CreateVpnConnectionRequestTunnelOptionsSpecificationTunnelIkeConfig struct {
-	// 第一阶段协商的认证算法。
+	// The authentication algorithm that is used in Phase 1 negotiations.
 	//
-	// <props="intl"><ph>取值：**md5**、**sha1**、**sha256**、**sha384**、**sha512**。默认值：**md5**。</ph></props>
+	// <props="intl"><ph>Valid values: **md5**, **sha1**, **sha256**, **sha384**, **sha512**. Default value: **md5**. </ph></props>
 	//
 	// <props="china"><ph>如果VPN网关实例类型为普通型，则取值：**md5**、**sha1**、**sha256**、**sha384**、**sha512**。默认值：**md5**。</ph></props>
 	//
 	// <props="china"><ph>如果VPN网关实例类型为国密型，则取值为**sm3**（默认值）。</ph></props>
 	IkeAuthAlg *string `json:"IkeAuthAlg,omitempty" xml:"IkeAuthAlg,omitempty"`
-	// 第一阶段协商的加密算法。
+	// The encryption algorithm that is used in Phase 1 negotiations.
 	//
-	// <props="intl"><ph>取值：**aes**、**aes192**、**aes256**、**des**或**3des**。默认值：**aes**。 </ph></props>
+	// <props="intl"><ph>Valid values: **aes**, **aes192**, **aes256**, **des**, **3des**. Default value: **aes**. </ph></props>
 	//
 	// <props="china"><ph>如果VPN网关实例类型为普通型，则取值为**aes**、**aes192**、**aes256**、**des**或**3des**。默认值：**aes**。</ph></props>
 	//
 	// <props="china"><ph>如果VPN网关实例类型为国密型，则取值为**sm4**（默认值）。</ph></props>
 	IkeEncAlg *string `json:"IkeEncAlg,omitempty" xml:"IkeEncAlg,omitempty"`
-	// 第一阶段协商出的SA的生存周期。单位：秒。
+	// The SA lifetime that is determined by Phase 1 negotiations. Unit: seconds.
 	//
-	// 取值范围：**0**~**86400**。默认值：**86400**。
+	// Valid values: **0** to **86400**. Default value: **86400**.
 	IkeLifetime *int64 `json:"IkeLifetime,omitempty" xml:"IkeLifetime,omitempty"`
-	// IKE版本的协商模式。取值：**main**或**aggressive**。默认值：**main**。
+	// The IKE negotiation mode. Valid values: **main** and **aggressive**. Default value: **main**.
 	//
-	// - **main**：主模式，协商过程安全性高。
-	// - **aggressive**：野蛮模式，协商快速且协商成功率高。
+	// - **main**: This mode offers higher security during negotiations.
+	// - **aggressive**: This mode is faster and has a higher success rate.
 	//
 	// <props="china"><ph>如果VPN网关实例类型为国密型，则协商模式仅支持**main**。</ph></props>
 	IkeMode *string `json:"IkeMode,omitempty" xml:"IkeMode,omitempty"`
-	// 第一阶段协商使用的Diffie-Hellman密钥交换算法。默认值：**group2**。
-	// 取值：**group1**、**group2**、**group5**、**group14**。
+	// The Diffie-Hellman key exchange algorithm that is used in Phase 1 negotiations.
+	// Default value: **group2**. Valid values: **group1**, **group2**, **group5**, and **group14**.
 	IkePfs *string `json:"IkePfs,omitempty" xml:"IkePfs,omitempty"`
-	// IKE协议的版本。取值：**ikev1**或**ikev2**。默认值：**ikev1**。
-	//
-	// 相对于IKEv1版本，IKEv2版本简化了SA的协商过程并且对于多网段的场景提供了更好的支持。
+	// The IKE version. Valid values: **ikev1** and **ikev2**. Default value: **ikev1**.
+	// Compared with IKEv1, IKEv2 simplifies the SA negotiation process and is more suitable for scenarios in which multiple CIDR blocks are used.
 	//
 	// <props="china"><ph>如果VPN网关实例类型为国密型，则IKE版本仅支持**ikev1**。</ph></props>
 	IkeVersion *string `json:"IkeVersion,omitempty" xml:"IkeVersion,omitempty"`
-	// 隧道本端（阿里云侧）的标识，用于第一阶段的协商。长度限制为100个字符。默认值为隧道的IP地址。
-	//
-	// **LocalId**支持FQDN格式，如果您使用FQDN格式，协商模式建议选择为**aggressive**（野蛮模式）。
+	// The identifier on the Alibaba Cloud side, which is used in Phase 1 negotiations.
+	// The description can be up to 100 characters in length. The default identifier is the tunnel IP address.
+	// You can set **LocalId** to a fully qualified domain name (FQDN). In this case, we recommend that you set Negotiation Mode to **aggressive**.
 	LocalId *string `json:"LocalId,omitempty" xml:"LocalId,omitempty"`
-	// 预共享密钥，用于隧道与隧道对端之间的身份认证。
+	// The pre-shared key, which is used for identity authentication between the tunnel and the tunnel peer.
 	//
-	//     - 密钥长度为1~100个字符，支持数字、大小写英文字母以及以下字符。```~!\`@#$%^&*()_-+={}[]|;:\",.<>/?```
-	//     - 若您未指定预共享密钥，系统会随机生成一个16位的字符串作为预共享密钥。您可以调用[DescribeVpnConnection](~~120374~~)接口查询系统自动生成的预共享密钥。
+	// - The key must be 1 to 100 characters in length and can contain digits, letters, and the following characters: ```~!\`@#$%^&*()_-+={}[]|;:\",.<>/?```
+	// - If you do not specify a pre-shared key, the system generates a random 16-character string as the pre-shared key. You can call the [DescribeVpnConnection](~~120374~~) operation to query the pre-shared key that is generated by the system.
 	//
-	//         > 隧道及隧道对端的预共享密钥需一致，否则系统无法正常建立隧道。
+	// > Make sure that the tunnel and peer use the same pre-shared key. Otherwise, tunnel communication cannot be established.
 	Psk *string `json:"Psk,omitempty" xml:"Psk,omitempty"`
-	// 隧道对端的标识，用于第一阶段的协商。长度限制为100个字符。默认值为隧道关联的用户网关的IP地址。
-	//
-	// **RemoteId**支持FQDN格式，如果您使用FQDN格式，协商模式建议选择为**aggressive**（野蛮模式）。
+	// The identifier of the tunnel peer, which is used in Phase 1 negotiations.
+	// The description can be up to 100 characters in length. The default identifier is the IP address of the customer gateway.
+	// You can set **RemoteId** to an FQDN. In this case, we recommend that you set Negotiation Mode to **aggressive**.
 	RemoteId *string `json:"RemoteId,omitempty" xml:"RemoteId,omitempty"`
 }
 
@@ -15887,29 +15882,29 @@ func (s *CreateVpnConnectionRequestTunnelOptionsSpecificationTunnelIkeConfig) Se
 }
 
 type CreateVpnConnectionRequestTunnelOptionsSpecificationTunnelIpsecConfig struct {
-	// 第二阶段协商的认证算法。
+	// The authentication algorithm that was used in Phase 2 negotiations.
 	//
-	// <props="intl"><ph>取值：**md5**、**sha1**、**sha256**、**sha384**、**sha512**。默认值：**md5**。</ph></props>
+	// <props="intl"><ph>Valid values: **md5**, **sha1**, **sha256**, **sha384**, **sha512**. Default value: **md5**. </ph></props>
 	//
 	// <props="china"><ph>如果VPN网关实例类型为普通型，则取值：**md5**、**sha1**、**sha256**、**sha384**、**sha512**。默认值：**md5**。</ph></props>
 	//
 	// <props="china"><ph>如果VPN网关实例类型为国密型，则取值为**sm3**（默认值）。</ph></props>
 	IpsecAuthAlg *string `json:"IpsecAuthAlg,omitempty" xml:"IpsecAuthAlg,omitempty"`
-	// 第二阶段协商的加密算法。
+	// The encryption algorithm that is used in Phase 2 negotiations.
 	//
-	// <props="intl"><ph>取值：**aes**、**aes192**、**aes256**、**des**或**3des**。默认值：**aes**。 </ph></props>
+	// <props="intl"><ph>Valid values: **aes**, **aes192**, **aes256**, **des**, **3des**. Default value: **aes**. </ph></props>
 	//
 	// <props="china"><ph>如果VPN网关实例类型为普通型，则取值为**aes**、**aes192**、**aes256**、**des**或**3des**。默认值：**aes**。</ph></props>
 	//
 	// <props="china"><ph>如果VPN网关实例类型为国密型，则取值为**sm4**（默认值）。</ph></props>
 	IpsecEncAlg *string `json:"IpsecEncAlg,omitempty" xml:"IpsecEncAlg,omitempty"`
-	// 第二阶段协商出的SA的生存周期。单位：秒。
+	// The SA lifetime that is determined by Phase 2 negotiations. Unit: seconds.
 	//
-	// 取值范围：**0**~**86400**。默认值：**86400**。
+	// Valid values: **0** to **86400**. Default value: **86400**.
 	IpsecLifetime *int64 `json:"IpsecLifetime,omitempty" xml:"IpsecLifetime,omitempty"`
-	// 第二阶段协商使用的Diffie-Hellman密钥交换算法。默认值：**group2**。
+	// The Diffie-Hellman key exchange algorithm that is used in Phase 2 negotiations. Default value: **group2**.
 	//
-	// 取值：**disabled**、**group1**、**group2**、**group5**、**group14**。
+	// Valid values: **disabled**, **group1**, **group2**, **group5**, and **group14**.
 	IpsecPfs *string `json:"IpsecPfs,omitempty" xml:"IpsecPfs,omitempty"`
 }
 
@@ -43043,8 +43038,8 @@ type DescribeVpnConnectionResponseBodyTunnelOptionsSpecificationTunnelOptions st
 	RemoteCaCertificate *string `json:"RemoteCaCertificate,omitempty" xml:"RemoteCaCertificate,omitempty"`
 	// The tunnel role. Valid values:
 	//
-	// - **false**
-	// - **true**
+	// - **master**
+	// - **slave**
 	Role *string `json:"Role,omitempty" xml:"Role,omitempty"`
 	// The tunnel status. Valid values:
 	//
@@ -43917,7 +43912,11 @@ type DescribeVpnConnectionsResponseBodyVpnConnectionsVpnConnection struct {
 	//
 	// *   **false**: disabled
 	EnableNatTraversal *bool `json:"EnableNatTraversal,omitempty" xml:"EnableNatTraversal,omitempty"`
-	EnableTunnelsBgp   *bool `json:"EnableTunnelsBgp,omitempty" xml:"EnableTunnelsBgp,omitempty"`
+	// The BGP status of the tunnel. Valid values:
+	//
+	// - **false**
+	// - **true**
+	EnableTunnelsBgp *bool `json:"EnableTunnelsBgp,omitempty" xml:"EnableTunnelsBgp,omitempty"`
 	// The configurations of phase 1 negotiations.
 	IkeConfig *DescribeVpnConnectionsResponseBodyVpnConnectionsVpnConnectionIkeConfig `json:"IkeConfig,omitempty" xml:"IkeConfig,omitempty" type:"Struct"`
 	// The gateway IP address of the IPsec-VPN connection.
@@ -43971,9 +43970,9 @@ type DescribeVpnConnectionsResponseBodyVpnConnectionsVpnConnection struct {
 	TransitRouterId *string `json:"TransitRouterId,omitempty" xml:"TransitRouterId,omitempty"`
 	// The name of the transit router.
 	TransitRouterName *string `json:"TransitRouterName,omitempty" xml:"TransitRouterName,omitempty"`
-	// IPsec连接的隧道配置信息。
+	// The tunnel configuration of the IPsec-VPN connection.
 	//
-	// 仅查询双隧道模式的IPsec连接会返回**TunnelOptionsSpecification**数组下的参数。
+	// Parameters in **TunnelOptionsSpecification** are returned only if you query IPsec-VPN connections in dual-tunnel mode.
 	TunnelOptionsSpecification *DescribeVpnConnectionsResponseBodyVpnConnectionsVpnConnectionTunnelOptionsSpecification `json:"TunnelOptionsSpecification,omitempty" xml:"TunnelOptionsSpecification,omitempty" type:"Struct"`
 	// The health check configurations.
 	VcoHealthCheck *DescribeVpnConnectionsResponseBodyVpnConnectionsVpnConnectionVcoHealthCheck `json:"VcoHealthCheck,omitempty" xml:"VcoHealthCheck,omitempty" type:"Struct"`
@@ -44314,60 +44313,50 @@ func (s *DescribeVpnConnectionsResponseBodyVpnConnectionsVpnConnectionTunnelOpti
 }
 
 type DescribeVpnConnectionsResponseBodyVpnConnectionsVpnConnectionTunnelOptionsSpecificationTunnelOptions struct {
-	// 隧道关联的用户网关ID。
+	// The ID of the customer gateway associated with the tunnel.
 	CustomerGatewayId *string `json:"CustomerGatewayId,omitempty" xml:"CustomerGatewayId,omitempty"`
-	// 隧道是否已开启DPD（对等体存活检测）功能。
-	// - **false**：未开启。
-	// - **true**：已开启。
+	// Indicates whether DPD is enabled for the tunnel. Valid values:
+	//
+	// - **false**
+	// - **true**
 	EnableDpd *string `json:"EnableDpd,omitempty" xml:"EnableDpd,omitempty"`
-	// 隧道是否已开启NAT穿越功能。
+	// Indicates whether NAT traversal is enabled for the tunnel. Valid values:
 	//
-	// - **false**：未开启。
-	// - **true**：已开启。
+	// - **false**
+	// - **true**
 	EnableNatTraversal *string `json:"EnableNatTraversal,omitempty" xml:"EnableNatTraversal,omitempty"`
-	// 隧道的IP地址。
+	// The tunnel IP address.
 	InternetIp *string `json:"InternetIp,omitempty" xml:"InternetIp,omitempty"`
-	// 隧道对端的CA证书。
+	// The CA certificate of the tunnel peer.
 	//
-	// 仅VPN网关实例的类型为国密型时才会返回当前参数。
+	// This parameter is returned only if the VPN gateway is of the ShangMi (SM) type.
 	RemoteCaCertificate *string `json:"RemoteCaCertificate,omitempty" xml:"RemoteCaCertificate,omitempty"`
-	// 隧道的角色。
+	// The tunnel role. Valid values:
 	//
-	// - **master**：表示当前隧道为主隧道。
-	// - **slave**：表示当前隧道为备隧道。
+	// - **master**
+	// - **slave**
 	Role *string `json:"Role,omitempty" xml:"Role,omitempty"`
-	// IPsec连接与转发路由器实例的绑定状态。
-	//
-	// - **active**：IPsec连接已与VPN网关实例绑定，状态正常。
-	// - **init**：IPsec连接未绑定任何资源，IPsec连接初始化。
-	// - **attaching**：IPsec连接与转发路由器实例绑定中。
-	// - **attached**：IPsec连接已与转发路由器实例绑定。
-	// - **detaching**：IPsec连接与转发路由器实例解绑中。
-	// - **financialLocked**：欠费锁定。
-	// - **provisioning**：资源准备中。
-	// - **updating**：更新中。
-	// - **upgrading**：升级中。
-	// - **deleted**：已删除。
+	// The tunnel status. Valid values:
+	// - **active**
+	// - **updating**
+	// - **deleting**
 	State *string `json:"State,omitempty" xml:"State,omitempty"`
-	// IPsec连接的状态。
+	// The status of the IPsec-VPN connection. Valid values:
 	//
-	// - **ike_sa_not_established**：第一阶段协商失败。
-	//
-	// - **ike_sa_established**：第一阶段协商成功。
-	//
-	// - **ipsec_sa_not_established**：第二阶段协商失败。
-	//
-	// - **ipsec_sa_established**：第二阶段协商成功。
+	// *   **ike_sa_not_established**: Phase 1 negotiations failed.
+	// *   **ike_sa_established**: Phase 1 negotiations were successful.
+	// *   **ipsec_sa_not_established**: Phase 2 negotiations failed.
+	// *   **ipsec_sa_established**: Phase 2 negotiations were successful.
 	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
-	// 隧道的BGP配置信息。
+	// The BGP configuration.
 	TunnelBgpConfig *DescribeVpnConnectionsResponseBodyVpnConnectionsVpnConnectionTunnelOptionsSpecificationTunnelOptionsTunnelBgpConfig `json:"TunnelBgpConfig,omitempty" xml:"TunnelBgpConfig,omitempty" type:"Struct"`
-	// 隧道ID。
+	// The tunnel ID.
 	TunnelId *string `json:"TunnelId,omitempty" xml:"TunnelId,omitempty"`
-	// 第一阶段协商的配置。
+	// The configuration of Phase 1 negotiations.
 	TunnelIkeConfig *DescribeVpnConnectionsResponseBodyVpnConnectionsVpnConnectionTunnelOptionsSpecificationTunnelOptionsTunnelIkeConfig `json:"TunnelIkeConfig,omitempty" xml:"TunnelIkeConfig,omitempty" type:"Struct"`
-	// 第二阶段协商的配置。
+	// The configuration of Phase 2 negotiations.
 	TunnelIpsecConfig *DescribeVpnConnectionsResponseBodyVpnConnectionsVpnConnectionTunnelOptionsSpecificationTunnelOptionsTunnelIpsecConfig `json:"TunnelIpsecConfig,omitempty" xml:"TunnelIpsecConfig,omitempty" type:"Struct"`
-	// 隧道部署的可用区。
+	// The zone of the tunnel.
 	ZoneNo *string `json:"ZoneNo,omitempty" xml:"ZoneNo,omitempty"`
 }
 
@@ -44445,20 +44434,20 @@ func (s *DescribeVpnConnectionsResponseBodyVpnConnectionsVpnConnectionTunnelOpti
 }
 
 type DescribeVpnConnectionsResponseBodyVpnConnectionsVpnConnectionTunnelOptionsSpecificationTunnelOptionsTunnelBgpConfig struct {
-	// BGP的协商状态。
+	// The negotiation status of BGP. Valid values:
 	//
-	// - **success**：正常。
-	// - **false**：异常。
+	// - **success**
+	// - **false**
 	BgpStatus *string `json:"BgpStatus,omitempty" xml:"BgpStatus,omitempty"`
-	// 隧道本端（阿里云侧）的自治系统号。
+	// The ASN on the Alibaba Cloud side.
 	LocalAsn *string `json:"LocalAsn,omitempty" xml:"LocalAsn,omitempty"`
-	// 隧道本端（阿里云侧）的BGP地址。
+	// The BGP IP address on the Alibaba Cloud side.
 	LocalBgpIp *string `json:"LocalBgpIp,omitempty" xml:"LocalBgpIp,omitempty"`
-	// 隧道对端的自治系统号。
+	// The peer ASN.
 	PeerAsn *string `json:"PeerAsn,omitempty" xml:"PeerAsn,omitempty"`
-	// 隧道对端的BGP地址。
+	// The peer BGP IP address.
 	PeerBgpIp *string `json:"PeerBgpIp,omitempty" xml:"PeerBgpIp,omitempty"`
-	// 隧道的BGP网段。
+	// The BGP CIDR block of the tunnel.
 	TunnelCidr *string `json:"TunnelCidr,omitempty" xml:"TunnelCidr,omitempty"`
 }
 
@@ -44501,26 +44490,26 @@ func (s *DescribeVpnConnectionsResponseBodyVpnConnectionsVpnConnectionTunnelOpti
 }
 
 type DescribeVpnConnectionsResponseBodyVpnConnectionsVpnConnectionTunnelOptionsSpecificationTunnelOptionsTunnelIkeConfig struct {
-	// IKE阶段认证算法。
+	// The authentication algorithm in the IKE phase.
 	IkeAuthAlg *string `json:"IkeAuthAlg,omitempty" xml:"IkeAuthAlg,omitempty"`
-	// IKE阶段加密算法。
+	// The encryption algorithm in the IKE phase.
 	IkeEncAlg *string `json:"IkeEncAlg,omitempty" xml:"IkeEncAlg,omitempty"`
-	// IKE阶段生存时间。单位：秒。
+	// The lifetime in the IKE phase. Unit: seconds.
 	IkeLifetime *string `json:"IkeLifetime,omitempty" xml:"IkeLifetime,omitempty"`
-	// IKE协商模式。
+	// The IKE negotiation mode.
 	//
-	// - **main**：主模式，协商过程安全性高。
-	// - **aggressive**：野蛮模式，协商快速且协商成功率高。
+	// - **main**: This mode offers higher security during negotiations.
+	// - **aggressive**: This mode is faster and has a higher success rate.
 	IkeMode *string `json:"IkeMode,omitempty" xml:"IkeMode,omitempty"`
-	// IKE阶段DH分组。
+	// The DH group in the IKE phase.
 	IkePfs *string `json:"IkePfs,omitempty" xml:"IkePfs,omitempty"`
-	// IKE协议版本。
+	// The IKE version.
 	IkeVersion *string `json:"IkeVersion,omitempty" xml:"IkeVersion,omitempty"`
-	// 隧道本端（阿里云侧）的标识。
+	// The identifier on the Alibaba Cloud side.
 	LocalId *string `json:"LocalId,omitempty" xml:"LocalId,omitempty"`
-	// 预共享密钥。
+	// The pre-shared key.
 	Psk *string `json:"Psk,omitempty" xml:"Psk,omitempty"`
-	// 隧道对端的标识。
+	// The peer identifier.
 	RemoteId *string `json:"RemoteId,omitempty" xml:"RemoteId,omitempty"`
 }
 
@@ -44578,13 +44567,13 @@ func (s *DescribeVpnConnectionsResponseBodyVpnConnectionsVpnConnectionTunnelOpti
 }
 
 type DescribeVpnConnectionsResponseBodyVpnConnectionsVpnConnectionTunnelOptionsSpecificationTunnelOptionsTunnelIpsecConfig struct {
-	// IPsec阶段认证算法。
+	// The authentication algorithm in the IPsec phase.
 	IpsecAuthAlg *string `json:"IpsecAuthAlg,omitempty" xml:"IpsecAuthAlg,omitempty"`
-	// IPsec阶段加密算法。
+	// The encryption algorithm in the IPsec phase.
 	IpsecEncAlg *string `json:"IpsecEncAlg,omitempty" xml:"IpsecEncAlg,omitempty"`
-	// IPsec阶段生存时间。单位：秒。
+	// The lifetime in the IPsec phase. Unit: seconds.
 	IpsecLifetime *string `json:"IpsecLifetime,omitempty" xml:"IpsecLifetime,omitempty"`
-	// IPsec阶段DH分组。
+	// The DH group in the IPsec phase.
 	IpsecPfs *string `json:"IpsecPfs,omitempty" xml:"IpsecPfs,omitempty"`
 }
 
@@ -45061,13 +45050,12 @@ type DescribeVpnGatewayResponseBody struct {
 	CreateTime *int64 `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
 	// The description of the VPN gateway.
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
-	// 系统为VPN网关实例分配的用于创建IPsec-VPN连接的第二个IP地址。
-	//
-	// 仅支持创建双隧道模式IPsec-VPN连接的VPN网关实例会返回当前参数。
+	// The second IP address assigned by the system to create an IPsec-VPN connection.
+	// This parameter is returned only when the VPN gateway supports the dual-tunnel mode.
 	DisasterRecoveryInternetIp *string `json:"DisasterRecoveryInternetIp,omitempty" xml:"DisasterRecoveryInternetIp,omitempty"`
-	// VPN网关实例关联的第二个交换机ID。
+	// The ID of the second vSwitch associated with the VPN gateway.
 	//
-	// 仅支持创建双隧道模式IPsec-VPN连接的VPN网关实例会返回当前参数。
+	// This parameter is returned only when the VPN gateway supports the dual-tunnel mode.
 	DisasterRecoveryVSwitchId *string `json:"DisasterRecoveryVSwitchId,omitempty" xml:"DisasterRecoveryVSwitchId,omitempty"`
 	// Indicates whether BGP is enabled for the VPN gateway. Valid values:
 	//
@@ -45078,7 +45066,10 @@ type DescribeVpnGatewayResponseBody struct {
 	//
 	// This value is a UNIX timestamp representing the number of milliseconds that have elapsed since the epoch time January 1, 1970, 00:00:00 UTC.
 	EndTime *int64 `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
-	// The public IP address of the VPN gateway.
+	// - If the VPN gateway supports IPsec-VPN connections in single-tunnel mode, the address is the IP address of the VPN gateway and can be used to create an IPsec-VPN connection or an SSL-VPN connection.
+	// - If the VPN gateway supports IPsec-VPN connections in dual-tunnel mode, the address is the first IP address used to create an IPsec-VPN connection. The address cannot be used to create an SSL-VPN connection.
+	//
+	// If the VPN gateway supports IPsec-VPN connections in dual-tunnel mode, the system assigns two IP addresses to the VPN gateway to create two encrypted tunnels.
 	InternetIp *string `json:"InternetIp,omitempty" xml:"InternetIp,omitempty"`
 	// Indicates whether the IPsec-VPN feature is enabled. Valid values:
 	//
@@ -45107,9 +45098,9 @@ type DescribeVpnGatewayResponseBody struct {
 	// *   **enable**
 	// *   **disable**
 	SslVpn *string `json:"SslVpn,omitempty" xml:"SslVpn,omitempty"`
-	// SSL-VPN连接的IP地址。
+	// The IP address of the SSL-VPN connection.
 	//
-	// 仅支持创建双隧道模式IPsec-VPN连接的公网网络类型的VPN网关实例开启SSL-VPN功能后，才会返回当前参数。
+	// This parameter is returned only when the VPN gateway is a public VPN gateway and supports only the single-tunnel mode. In addition, the VPN gateway must have the SSL-VPN feature enabled.
 	SslVpnInternetIp *string `json:"SslVpnInternetIp,omitempty" xml:"SslVpnInternetIp,omitempty"`
 	// The status of the VPN gateway. Valid values:
 	//
@@ -45678,13 +45669,13 @@ type DescribeVpnGatewaysResponseBodyVpnGatewaysVpnGateway struct {
 	CreateTime *int64 `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
 	// The description of the VPN gateway.
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
-	// 系统为VPN网关实例分配的用于创建IPsec-VPN连接的第二个IP地址。
+	// The second IP address assigned by the system to create an IPsec-VPN connection.
 	//
-	// 仅支持创建双隧道模式IPsec-VPN连接的VPN网关实例会返回当前参数。
+	// This parameter is returned only when the VPN gateway supports the dual-tunnel mode.
 	DisasterRecoveryInternetIp *string `json:"DisasterRecoveryInternetIp,omitempty" xml:"DisasterRecoveryInternetIp,omitempty"`
-	// VPN网关实例关联的第二个交换机ID。
+	// The ID of the second vSwitch associated with the VPN gateway.
 	//
-	// 仅支持创建双隧道模式IPsec-VPN连接的VPN网关实例会返回当前参数。
+	// This parameter is returned only when the VPN gateway supports the dual-tunnel mode.
 	DisasterRecoveryVSwitchId *string `json:"DisasterRecoveryVSwitchId,omitempty" xml:"DisasterRecoveryVSwitchId,omitempty"`
 	// The BGP status of the VPN gateway.
 	//
@@ -45695,7 +45686,10 @@ type DescribeVpnGatewaysResponseBodyVpnGatewaysVpnGateway struct {
 	//
 	// This value is a UNIX timestamp representing the number of milliseconds that have elapsed since the epoch time January 1, 1970, 00:00:00 UTC.
 	EndTime *int64 `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
-	// The public IP address of the VPN gateway.
+	// - If the VPN gateway supports IPsec-VPN connections in single-tunnel mode, the address is the IP address of the VPN gateway and can be used to create an IPsec-VPN connection or an SSL-VPN connection.
+	// - If the VPN gateway supports IPsec-VPN connections in dual-tunnel mode, the address is the first IP address used to create an IPsec-VPN connection. The address cannot be used to create an SSL-VPN connection.
+	//
+	// If the VPN gateway supports IPsec-VPN connections in dual-tunnel mode, the system assigns two IP addresses to the VPN gateway to create two encrypted tunnels.
 	InternetIp *string `json:"InternetIp,omitempty" xml:"InternetIp,omitempty"`
 	// Indicates whether IPsec-VPN is enabled for the VPN gateway.
 	//
@@ -45722,9 +45716,9 @@ type DescribeVpnGatewaysResponseBodyVpnGatewaysVpnGateway struct {
 	// *   **enable**: enabled
 	// *   **disable**: disabled
 	SslVpn *string `json:"SslVpn,omitempty" xml:"SslVpn,omitempty"`
-	// SSL-VPN连接的IP地址。
+	// The IP address of the SSL-VPN connection.
 	//
-	// 仅支持创建双隧道模式IPsec-VPN连接的公网网络类型的VPN网关实例开启SSL-VPN功能后，才会返回当前参数。
+	// This parameter is returned only when the VPN gateway is a public VPN gateway and supports only the single-tunnel mode. In addition, the VPN gateway must have the SSL-VPN feature enabled.
 	SslVpnInternetIp *string `json:"SslVpnInternetIp,omitempty" xml:"SslVpnInternetIp,omitempty"`
 	// The status of the pending order.
 	//
@@ -46184,7 +46178,10 @@ type DescribeVpnPbrRouteEntriesResponseBodyVpnPbrRouteEntriesVpnPbrRouteEntry st
 	// This value is a UNIX timestamp representing the number of milliseconds that have elapsed since the epoch time January 1, 1970, 00:00:00 UTC.
 	CreateTime *int64 `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
 	// The next hop of the policy-based route.
-	NextHop         *string `json:"NextHop,omitempty" xml:"NextHop,omitempty"`
+	NextHop *string `json:"NextHop,omitempty" xml:"NextHop,omitempty"`
+	// The ID of the tunnel associated with the next hop of the policy-based route.
+	//
+	// This parameter is returned only if the VPN gateway supports the dual-tunnel mode.
 	NextHopTunnelId *string `json:"NextHopTunnelId,omitempty" xml:"NextHopTunnelId,omitempty"`
 	// The priority of the policy-based route.
 	//
@@ -46203,8 +46200,10 @@ type DescribeVpnPbrRouteEntriesResponseBodyVpnPbrRouteEntriesVpnPbrRouteEntry st
 	VpnInstanceId *string `json:"VpnInstanceId,omitempty" xml:"VpnInstanceId,omitempty"`
 	// The weight of the policy-based route. Valid values:
 	//
-	// *   **100**: The IPsec-VPN connection associated with the policy-based route serves as an active connection.
-	// *   **0**: The IPsec-VPN connection associated with the policy-based route serves as a standby connection.
+	// - For a VPN gateway that supports the dual-tunnel mode, the default weight is **100**.
+	// - For a VPN gateway that supports the single-tunnel mode, the weight specifies the priority of the policy-based route.
+	//    - **100**: a high priority. If multiple policy-based routes with the same source CIDR block and destination CIDR block exist, the IPsec-VPN connection associated with the policy-based route is the active connection.
+	//    - **0**: a low priority. If multiple policy-based routes with the same source CIDR block and destination CIDR block exist, the IPsec-VPN connection associated with the policy-based route is the standby connection.
 	Weight *int32 `json:"Weight,omitempty" xml:"Weight,omitempty"`
 }
 
@@ -56834,7 +56833,8 @@ type ListVpcEndpointServicesByEndUserResponseBody struct {
 	// The ID of the request.
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	// The list of entries returned.
-	Services []*ListVpcEndpointServicesByEndUserResponseBodyServices `json:"Services,omitempty" xml:"Services,omitempty" type:"Repeated"`
+	Services   []*ListVpcEndpointServicesByEndUserResponseBodyServices `json:"Services,omitempty" xml:"Services,omitempty" type:"Repeated"`
+	TotalCount *string                                                 `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
 }
 
 func (s ListVpcEndpointServicesByEndUserResponseBody) String() string {
@@ -56862,6 +56862,11 @@ func (s *ListVpcEndpointServicesByEndUserResponseBody) SetRequestId(v string) *L
 
 func (s *ListVpcEndpointServicesByEndUserResponseBody) SetServices(v []*ListVpcEndpointServicesByEndUserResponseBodyServices) *ListVpcEndpointServicesByEndUserResponseBody {
 	s.Services = v
+	return s
+}
+
+func (s *ListVpcEndpointServicesByEndUserResponseBody) SetTotalCount(v string) *ListVpcEndpointServicesByEndUserResponseBody {
+	s.TotalCount = &v
 	return s
 }
 
@@ -75871,7 +75876,6 @@ func (client *Client) AssociateVpcCidrBlock(request *AssociateVpcCidrBlockReques
 }
 
 /**
- * ## Usage notes
  * Before you associate a VPN gateway with an SSL certificate, take note of the following items:
  * *   You can associate only VPN gateways of the ShangMi (SM) type with SSL certificates. You need to associate a VPN gateway of the SM type with two SSL certificates, one as the encryption certificate and the other as the signature certificate.
  * *   The SSL certificates must use the SM algorithm.
@@ -75942,7 +75946,6 @@ func (client *Client) AssociateVpnGatewayWithCertificateWithOptions(request *Ass
 }
 
 /**
- * ## Usage notes
  * Before you associate a VPN gateway with an SSL certificate, take note of the following items:
  * *   You can associate only VPN gateways of the ShangMi (SM) type with SSL certificates. You need to associate a VPN gateway of the SM type with two SSL certificates, one as the encryption certificate and the other as the signature certificate.
  * *   The SSL certificates must use the SM algorithm.
@@ -82127,9 +82130,8 @@ func (client *Client) CreateVpconnFromVbr(request *CreateVpconnFromVbrRequest) (
 }
 
 /**
- * # Usage notes
  * By default, an IPsec-VPN connection created by calling the `CreateVpnAttachment` operation is not associated with a resource. You can associate an IPsec-VPN connection with a transit router by calling the [CreateTransitRouterVpnAttachment](~~443993~~) operation.
- * # Prerequisites
+ * ### Prerequisites
  * Before you create an IPsec-VPN connection, make sure that you created a customer gateway in the region where you want to create the IPsec-VPN connection. For more information, see [CreateCustomerGateway](~~120368~~).
  * If you want to add BGP configurations to an IPsec-VPN connection, make sure that an autonomous system number (ASN) is assigned to the customer gateway.
  *
@@ -82247,9 +82249,8 @@ func (client *Client) CreateVpnAttachmentWithOptions(request *CreateVpnAttachmen
 }
 
 /**
- * # Usage notes
  * By default, an IPsec-VPN connection created by calling the `CreateVpnAttachment` operation is not associated with a resource. You can associate an IPsec-VPN connection with a transit router by calling the [CreateTransitRouterVpnAttachment](~~443993~~) operation.
- * # Prerequisites
+ * ### Prerequisites
  * Before you create an IPsec-VPN connection, make sure that you created a customer gateway in the region where you want to create the IPsec-VPN connection. For more information, see [CreateCustomerGateway](~~120368~~).
  * If you want to add BGP configurations to an IPsec-VPN connection, make sure that an autonomous system number (ASN) is assigned to the customer gateway.
  *
@@ -82268,7 +82269,6 @@ func (client *Client) CreateVpnAttachment(request *CreateVpnAttachmentRequest) (
 }
 
 /**
- * # Usage notes
  * *   **CreateVpnConnection** is an asynchronous operation. After a request is sent, the system returns a request ID and runs the task in the background. You can call [DescribeVpnGateway](~~73720~~) to query the status of the task.
  *     *   If the VPN gateway is in the **updating** state, the IPsec-VPN connection is being created.
  *     *   If the VPN gateway is in the **active** state, the IPsec-VPN connection is created.
@@ -82405,7 +82405,6 @@ func (client *Client) CreateVpnConnectionWithOptions(request *CreateVpnConnectio
 }
 
 /**
- * # Usage notes
  * *   **CreateVpnConnection** is an asynchronous operation. After a request is sent, the system returns a request ID and runs the task in the background. You can call [DescribeVpnGateway](~~73720~~) to query the status of the task.
  *     *   If the VPN gateway is in the **updating** state, the IPsec-VPN connection is being created.
  *     *   If the VPN gateway is in the **active** state, the IPsec-VPN connection is created.
@@ -93371,7 +93370,6 @@ func (client *Client) DissociateRouteTablesFromVpcGatewayEndpoint(request *Disso
 }
 
 /**
- * ## Usage notes
  * *   **DissociateVpnGatewayWithCertificate** is an asynchronous operation. After a request is sent, the system returns a request and runs the task in the background. You can call the [DescribeVpnGateway](~~73720~~) operation to query the status the task.
  *     *   If the VPN gateway is in the **updating** state, the SSL certificate is being disassociated from the VPN gateway.
  *     *   If the VPN gateway is in the **active** state, the SSL certificate is disassociated from the VPN gateway.
@@ -93435,7 +93433,6 @@ func (client *Client) DissociateVpnGatewayWithCertificateWithOptions(request *Di
 }
 
 /**
- * ## Usage notes
  * *   **DissociateVpnGatewayWithCertificate** is an asynchronous operation. After a request is sent, the system returns a request and runs the task in the background. You can call the [DescribeVpnGateway](~~73720~~) operation to query the status the task.
  *     *   If the VPN gateway is in the **updating** state, the SSL certificate is being disassociated from the VPN gateway.
  *     *   If the VPN gateway is in the **active** state, the SSL certificate is disassociated from the VPN gateway.
@@ -96535,7 +96532,6 @@ func (client *Client) ListVpcGatewayEndpoints(request *ListVpcGatewayEndpointsRe
 }
 
 /**
- * ## Usage notes
  * When you call **ListVpnCertificateAssociations**, take note of the following information:
  * *   If you specify only **RegionId**, the SSL certificates associated with all VPN gateways in the specified region are queried.
  * *   If you specify **RegionId** and **CertificateType**, the SSL certificates of the specified type that are associated with the VPN gateways in the specified region are queried.
@@ -96600,7 +96596,6 @@ func (client *Client) ListVpnCertificateAssociationsWithOptions(request *ListVpn
 }
 
 /**
- * ## Usage notes
  * When you call **ListVpnCertificateAssociations**, take note of the following information:
  * *   If you specify only **RegionId**, the SSL certificates associated with all VPN gateways in the specified region are queried.
  * *   If you specify **RegionId** and **CertificateType**, the SSL certificates of the specified type that are associated with the VPN gateways in the specified region are queried.
