@@ -13989,7 +13989,8 @@ type GetMySQLAllSessionAsyncResponseBodyDataSessionDataSessionList struct {
 	// The name of the database.
 	DbName *string `json:"DbName,omitempty" xml:"DbName,omitempty"`
 	// The session ID.
-	SessionId *int64 `json:"SessionId,omitempty" xml:"SessionId,omitempty"`
+	SessionId     *int64  `json:"SessionId,omitempty" xml:"SessionId,omitempty"`
+	SqlTemplateId *string `json:"SqlTemplateId,omitempty" xml:"SqlTemplateId,omitempty"`
 	// The SQL statement executed in the session.
 	SqlText *string `json:"SqlText,omitempty" xml:"SqlText,omitempty"`
 	// The status of the session.
@@ -14031,6 +14032,11 @@ func (s *GetMySQLAllSessionAsyncResponseBodyDataSessionDataSessionList) SetDbNam
 
 func (s *GetMySQLAllSessionAsyncResponseBodyDataSessionDataSessionList) SetSessionId(v int64) *GetMySQLAllSessionAsyncResponseBodyDataSessionDataSessionList {
 	s.SessionId = &v
+	return s
+}
+
+func (s *GetMySQLAllSessionAsyncResponseBodyDataSessionDataSessionList) SetSqlTemplateId(v string) *GetMySQLAllSessionAsyncResponseBodyDataSessionDataSessionList {
+	s.SqlTemplateId = &v
 	return s
 }
 
