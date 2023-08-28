@@ -172,12 +172,13 @@ func (s *AddShardingNodeResponse) SetBody(v *AddShardingNodeResponseBody) *AddSh
 }
 
 type AllocateDirectConnectionRequest struct {
-	// The prefix of the private endpoint. The prefix must start with a lowercase letter and can contain lowercase letters and digits. The prefix can be 8 to 40 characters in length.
+	// The prefix of the private endpoint. The prefix must start with a lowercase letter and can contain lowercase letters and digits. The prefix must be 8 to 40 characters in length.
 	ConnectionString *string `json:"ConnectionString,omitempty" xml:"ConnectionString,omitempty"`
-	// The ID of the request.
-	InstanceId           *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	OwnerAccount         *string `json:"OwnerAccount,omitempty" xml:"OwnerAccount,omitempty"`
-	OwnerId              *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
+	// The ID of the instance.
+	InstanceId   *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	OwnerAccount *string `json:"OwnerAccount,omitempty" xml:"OwnerAccount,omitempty"`
+	OwnerId      *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
+	// The port number of the instance. Valid values: **1024** to **65535**. Default value: **6379**.
 	Port                 *string `json:"Port,omitempty" xml:"Port,omitempty"`
 	ResourceOwnerAccount *string `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
 	ResourceOwnerId      *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
@@ -233,6 +234,7 @@ func (s *AllocateDirectConnectionRequest) SetSecurityToken(v string) *AllocateDi
 }
 
 type AllocateDirectConnectionResponseBody struct {
+	// The ID of the request.
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -389,17 +391,19 @@ func (s *AllocateInstancePublicConnectionResponse) SetBody(v *AllocateInstancePu
 }
 
 type CheckCloudResourceAuthorizedRequest struct {
-	// The Alibaba Cloud Resource Name (ARN) of the RAM role that you want to attach to your ApsaraDB for Redis instance. The ARN must be in the format of `acs:ram::$accountID:role/$roleName`. After the role is attached, your ApsaraDB for Redis instance can use KMS.
-	//
-	// >
-	// *   `$accountID`: the ID of the Alibaba Cloud account. To view the account ID, log on to the Alibaba Cloud console, move the pointer over your profile picture in the upper-right corner of the page, and then click **Security Settings**.
-	// *   `$roleName`: the name of the RAM role. Replace $roleName with **AliyunRdsInstanceEncryptionDefaultRole**.
+	// The ID of the instance. You can call the [DescribeInstances](~~60933~~) operation to query the ID of the instance.
 	InstanceId           *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
 	OwnerAccount         *string `json:"OwnerAccount,omitempty" xml:"OwnerAccount,omitempty"`
 	OwnerId              *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
 	ResourceOwnerAccount *string `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
 	ResourceOwnerId      *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
-	// Queries whether an ApsaraDB for Redis instance is authorized to use Key Management Service (KMS).
+	// The Alibaba Cloud Resource Name (ARN) of the Resource Access Management (RAM) role that you want to attach to your ApsaraDB for Redis instance. The ARN must be in the format of `acs:ram::$accountID:role/$roleName`. After the role is attached, your ApsaraDB for Redis instance can use KMS.
+	//
+	// >
+	//
+	// *   `$accountID`: the ID of the Alibaba Cloud account. To view the account ID, log on to the Alibaba Cloud console, move the pointer over your profile picture in the upper-right corner of the page, and then click **Security Settings**.
+	//
+	// *   `$roleName`: the name of the RAM role. Replace $roleName with **AliyunRdsInstanceEncryptionDefaultRole**.
 	RoleArn       *string `json:"RoleArn,omitempty" xml:"RoleArn,omitempty"`
 	SecurityToken *string `json:"SecurityToken,omitempty" xml:"SecurityToken,omitempty"`
 }
@@ -448,9 +452,14 @@ func (s *CheckCloudResourceAuthorizedRequest) SetSecurityToken(v string) *CheckC
 }
 
 type CheckCloudResourceAuthorizedResponseBody struct {
-	// CheckCloudResourceAuthorized
-	AuthorizationState *int32  `json:"AuthorizationState,omitempty" xml:"AuthorizationState,omitempty"`
-	RequestId          *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// Indicates whether the instance is authorized to use KMS. Valid values:
+	//
+	// *   **0**: The instance is authorized to use KMS.
+	// *   **1**: The instance is not authorized to use KMS.
+	// *   **2**: KMS is not activated. For more information, see [Activate KMS](~~153781~~).
+	AuthorizationState *int32 `json:"AuthorizationState,omitempty" xml:"AuthorizationState,omitempty"`
+	// The ID of the request.
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
 func (s CheckCloudResourceAuthorizedResponseBody) String() string {
@@ -501,11 +510,28 @@ func (s *CheckCloudResourceAuthorizedResponse) SetBody(v *CheckCloudResourceAuth
 }
 
 type CreateAccountRequest struct {
-	AccountDescription   *string `json:"AccountDescription,omitempty" xml:"AccountDescription,omitempty"`
-	AccountName          *string `json:"AccountName,omitempty" xml:"AccountName,omitempty"`
-	AccountPassword      *string `json:"AccountPassword,omitempty" xml:"AccountPassword,omitempty"`
-	AccountPrivilege     *string `json:"AccountPrivilege,omitempty" xml:"AccountPrivilege,omitempty"`
-	AccountType          *string `json:"AccountType,omitempty" xml:"AccountType,omitempty"`
+	// The description of the account.
+	//
+	// *   The description must start with a letter, and cannot start with `http://` or `https://`.
+	// *   The description can contain letters, digits, underscores (\_), and hyphens (-).
+	// *   The description must be 2 to 256 characters in length.
+	AccountDescription *string `json:"AccountDescription,omitempty" xml:"AccountDescription,omitempty"`
+	// The name of the account. The name must meet the following requirements:
+	//
+	// *   The name can contain lowercase letters, digits, and hyphens (-), and must start with a lowercase letter.
+	// *   The name can be up to 100 characters in length.
+	// *   The name cannot be one of the reserved words in the [Reserved words for Redis account names](~~92665~~#title-84o-mok-b6h) section.
+	AccountName *string `json:"AccountName,omitempty" xml:"AccountName,omitempty"`
+	// The password of the account. The password must be 8 to 32 characters in length and must contain at least three of the following character types: uppercase letters, lowercase letters, digits, and specific special characters. These special characters include `! @ # $ % ^ & * ( ) _ + - =`
+	AccountPassword *string `json:"AccountPassword,omitempty" xml:"AccountPassword,omitempty"`
+	// The permissions of the account. Valid values:
+	//
+	// *   **RoleReadOnly**: The account has read-only permissions.
+	// *   **RoleReadWrite**: The account has read and write permissions.
+	AccountPrivilege *string `json:"AccountPrivilege,omitempty" xml:"AccountPrivilege,omitempty"`
+	// The type of the account. Set the value to **Normal**, which indicates that the account is a standard account.
+	AccountType *string `json:"AccountType,omitempty" xml:"AccountType,omitempty"`
+	// The ID of the instance.
 	InstanceId           *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
 	OwnerAccount         *string `json:"OwnerAccount,omitempty" xml:"OwnerAccount,omitempty"`
 	OwnerId              *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
@@ -578,9 +604,12 @@ func (s *CreateAccountRequest) SetSecurityToken(v string) *CreateAccountRequest 
 }
 
 type CreateAccountResponseBody struct {
+	// The name of the account.
 	AcountName *string `json:"AcountName,omitempty" xml:"AcountName,omitempty"`
+	// The ID of the instance.
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	RequestId  *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The ID of the request.
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
 func (s CreateAccountResponseBody) String() string {
@@ -636,7 +665,7 @@ func (s *CreateAccountResponse) SetBody(v *CreateAccountResponseBody) *CreateAcc
 }
 
 type CreateBackupRequest struct {
-	// The ID of the request.
+	// The ID of the instance.
 	InstanceId           *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
 	OwnerAccount         *string `json:"OwnerAccount,omitempty" xml:"OwnerAccount,omitempty"`
 	OwnerId              *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
@@ -684,9 +713,10 @@ func (s *CreateBackupRequest) SetSecurityToken(v string) *CreateBackupRequest {
 }
 
 type CreateBackupResponseBody struct {
-	// The operation that you want to perform. Set the value to **CreateBackup**.
+	// The ID of the backup task.
 	BackupJobID *string `json:"BackupJobID,omitempty" xml:"BackupJobID,omitempty"`
-	RequestId   *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The ID of the request.
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
 func (s CreateBackupResponseBody) String() string {
@@ -737,6 +767,7 @@ func (s *CreateBackupResponse) SetBody(v *CreateBackupResponseBody) *CreateBacku
 }
 
 type CreateCacheAnalysisTaskRequest struct {
+	// The ID of the instance. You can call the [DescribeInstances](~~60933~~) operation to query the ID of the instance.
 	InstanceId           *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
 	OwnerAccount         *string `json:"OwnerAccount,omitempty" xml:"OwnerAccount,omitempty"`
 	OwnerId              *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
@@ -784,6 +815,7 @@ func (s *CreateCacheAnalysisTaskRequest) SetSecurityToken(v string) *CreateCache
 }
 
 type CreateCacheAnalysisTaskResponseBody struct {
+	// The ID of the request.
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -1186,6 +1218,7 @@ type CreateInstanceRequest struct {
 	NodeType     *string `json:"NodeType,omitempty" xml:"NodeType,omitempty"`
 	OwnerAccount *string `json:"OwnerAccount,omitempty" xml:"OwnerAccount,omitempty"`
 	OwnerId      *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
+	ParamGroupId *string `json:"ParamGroupId,omitempty" xml:"ParamGroupId,omitempty"`
 	// The password that is used to connect to the instance. The password must be 8 to 32 characters in length and must contain at least three of the following character types: uppercase letters, lowercase letters, digits, and specific special characters. These special characters include `! @ # $ % ^ & * ( ) _ + - =`
 	Password *string `json:"Password,omitempty" xml:"Password,omitempty"`
 	// The subscription duration. Valid values: **1**, 2, 3, 4, 5, 6, 7, 8, **9**, **12**, **24**,**36**, and **60**. Unit: months.
@@ -1351,6 +1384,11 @@ func (s *CreateInstanceRequest) SetOwnerAccount(v string) *CreateInstanceRequest
 
 func (s *CreateInstanceRequest) SetOwnerId(v int64) *CreateInstanceRequest {
 	s.OwnerId = &v
+	return s
+}
+
+func (s *CreateInstanceRequest) SetParamGroupId(v string) *CreateInstanceRequest {
+	s.ParamGroupId = &v
 	return s
 }
 
@@ -1931,7 +1969,7 @@ type CreateTairInstanceRequest struct {
 	EngineVersion *string `json:"EngineVersion,omitempty" xml:"EngineVersion,omitempty"`
 	// The ID of the distributed instance.
 	GlobalInstanceId *string `json:"GlobalInstanceId,omitempty" xml:"GlobalInstanceId,omitempty"`
-	// 实例的全局IP白名单模板，多个IP白名单模板请用英文逗号（,）分隔，不可重复。
+	// The global IP whitelist template of the instance. Separate multiple IP whitelist templates with commas (,) and make sure that each IP whitelist template is unique.
 	GlobalSecurityGroupIds *string `json:"GlobalSecurityGroupIds,omitempty" xml:"GlobalSecurityGroupIds,omitempty"`
 	// The instance type. For more information, see the following topics:
 	//
@@ -1952,6 +1990,7 @@ type CreateTairInstanceRequest struct {
 	InstanceType *string `json:"InstanceType,omitempty" xml:"InstanceType,omitempty"`
 	OwnerAccount *string `json:"OwnerAccount,omitempty" xml:"OwnerAccount,omitempty"`
 	OwnerId      *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
+	// 参数模板ID，根据新创建的参数模板参数创建实例，不可重复。
 	ParamGroupId *string `json:"ParamGroupId,omitempty" xml:"ParamGroupId,omitempty"`
 	// The password that is used to connect to the instance. The password must meet the following requirements:
 	//
@@ -1983,19 +2022,15 @@ type CreateTairInstanceRequest struct {
 	ResourceOwnerId      *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
 	// The ID of the secondary zone. You can call the [DescribeRegions](~~61012~~) operation to query the ID of the secondary zone.
 	//
-	// >
-	//
-	// *   You cannot specify multiple zone IDs or set this parameter to a value that is the same as that of the **ZoneId** parameter.
-	//
-	// *   If you set both the SecondaryZoneId and **ZoneId** parameters, the master node is deployed in the primary zone and the replica node is deployed in the secondary zone within the same region. In this case, the instance adopts the zone-disaster recovery architecture.
+	// > You cannot specify multiple zone IDs or set this parameter to a value that is the same as that of the ZoneId parameter.
 	SecondaryZoneId *string `json:"SecondaryZoneId,omitempty" xml:"SecondaryZoneId,omitempty"`
 	SecurityToken   *string `json:"SecurityToken,omitempty" xml:"SecurityToken,omitempty"`
-	// The number of data shards in the instance. Default value: 1. Valid values:
+	// The number of data nodes in the instance. Valid values:
 	//
-	// *   **1**: You can create an instance in the [standard architecture](~~52228~~) that contains only a single data shard.
-	// *   **2** to **32**: You can create an instance in the [cluster architecture](~~52228~~) that contains the specified number of data shards.
+	// *   **1**: You can create an instance in the standard architecture that contains only one data node. For more information about the standard architecture, see [Cluster master-replica instances](~~52228~~). This is the default value.
+	// *   **2** to **32**: You can create an instance in the cluster architecture that contains the specified number of data nodes. For more information about the cluster architecture, see [Cluster master-replica instances](~~52228~~).
 	//
-	// > Only persistent memory-optimized instances can use the cluster architecture. You can set this parameter to an integer from **2** to **32** only if you set the **InstanceType** parameter to **tair_scm**.
+	// > Only persistent memory-optimized instances can use the cluster architecture. Therefore, you can set this parameter to an integer from **2** to **32** only if you set the **InstanceType** parameter to **tair_scm**.
 	ShardCount *int32 `json:"ShardCount,omitempty" xml:"ShardCount,omitempty"`
 	// The data shard type of the instance. Default value: MASTER_SLAVE. Valid values:
 	//
@@ -2020,9 +2055,9 @@ type CreateTairInstanceRequest struct {
 	VSwitchId *string `json:"VSwitchId,omitempty" xml:"VSwitchId,omitempty"`
 	// The ID of the virtual private cloud (VPC). You can call the [DescribeVpcs](~~35739~~) operation to query the ID of the VPC.
 	VpcId *string `json:"VpcId,omitempty" xml:"VpcId,omitempty"`
-	// The primary zone ID of the instance. You can call the [DescribeRegions](~~61012~~) operation to query the most recent zone list.
+	// The primary zone ID of the instance. You can call the [DescribeRegions](~~61012~~) operation to query the IDs of available zones.
 	//
-	// > If you want to create an instance that adopts the zone-disaster recovery architecture, you can deploy the master node and replica node of the instance in different zones within the same region. You can set the **SecondaryZoneId** parameter to specify the secondary zone. In this case, do not set the ZoneId parameter to multiple zone IDs.
+	// >  You can also set the SecondaryZoneId parameter to specify the secondary zone. The primary and secondary nodes will then be deployed in the specified primary and secondary zones to implement the master-replica zone-disaster recovery architecture. For example, you can set the ZoneId parameter to cn-hangzhou-h and the SecondaryZoneId parameter to cn-hangzhou-g.
 	ZoneId *string `json:"ZoneId,omitempty" xml:"ZoneId,omitempty"`
 }
 
@@ -2963,9 +2998,9 @@ type DescribeActiveOperationTaskRequest struct {
 	IsHistory    *int32  `json:"IsHistory,omitempty" xml:"IsHistory,omitempty"`
 	OwnerAccount *string `json:"OwnerAccount,omitempty" xml:"OwnerAccount,omitempty"`
 	OwnerId      *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
-	// The deadline before which the time to execute the O\&M task can be modified. The time in UTC is displayed in the *yyyy-MM-dd*T*HH:mm:ss*Z format.
+	// The number of the page to return. The value must be an integer that is greater than **0**. Default value: **1**.
 	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
-	// The operation that you want to perform. Set the value to **DescribeActiveOperationTask**.
+	// The number of entries to return on each page. Specify a value greater than **10**. Default value: **30**.
 	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
 	// The ID of the O\&M task.
 	Region               *string `json:"Region,omitempty" xml:"Region,omitempty"`
@@ -3035,7 +3070,7 @@ func (s *DescribeActiveOperationTaskRequest) SetTaskType(v string) *DescribeActi
 }
 
 type DescribeActiveOperationTaskResponseBody struct {
-	// The time when the system performs the switchover operation. The time in UTC is displayed in the *yyyy-MM-dd*T*HH:mm:ss*Z format.
+	// The O\&M tasks of the instance.
 	Items []*DescribeActiveOperationTaskResponseBodyItems `json:"Items,omitempty" xml:"Items,omitempty" type:"Repeated"`
 	// The number of the page to return. It must be an integer that is greater than **0** and less than or equal to the maximum value supported by the integer data type. Default value: **1**.
 	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
@@ -3083,30 +3118,41 @@ func (s *DescribeActiveOperationTaskResponseBody) SetTotalRecordCount(v int32) *
 }
 
 type DescribeActiveOperationTaskResponseBodyItems struct {
+	// The time when the O\&M task was created. The time follows the ISO 8601 standard in the *yyyy-MM-dd*T*HH:mm:ss*Z format. The time is displayed in UTC.
 	CreatedTime *string `json:"CreatedTime,omitempty" xml:"CreatedTime,omitempty"`
-	// Queries the information about operations and maintenance (O&M) tasks for an ApsaraDB for Redis instance.
+	// The engine type of the instance. The return value is **Redis**.
 	DbType *string `json:"DbType,omitempty" xml:"DbType,omitempty"`
-	// The time when the O\&M task was modified. The time in UTC is displayed in the *yyyy-MM-dd*T*HH:mm:ss*Z format.
+	// The deadline before which the time to perform the O\&M task can be modified. The time follows the ISO 8601 standard in the *yyyy-MM-dd*T*HH:mm:ss*Z format. The time is displayed in UTC.
 	Deadline *string `json:"Deadline,omitempty" xml:"Deadline,omitempty"`
-	Id       *int32  `json:"Id,omitempty" xml:"Id,omitempty"`
-	// The ID of the request.
+	// The ID of the O\&M task.
+	Id *int32 `json:"Id,omitempty" xml:"Id,omitempty"`
+	// The ID of the ApsaraDB for Redis instance.
 	InsName *string `json:"InsName,omitempty" xml:"InsName,omitempty"`
-	// The maximum number of entries that were returned per page.
+	// The time when the O\&M task was modified. The time follows the ISO 8601 standard in the *yyyy-MM-dd*T*HH:mm:ss*Z format. The time is displayed in UTC.
 	ModifiedTime *string `json:"ModifiedTime,omitempty" xml:"ModifiedTime,omitempty"`
+	// The required preparation period between the task start time and the switchover time. The time is displayed in the *HH:mm:ss* format.
+	PrepareInterval *string `json:"PrepareInterval,omitempty" xml:"PrepareInterval,omitempty"`
+	// The region ID.
+	Region *string `json:"Region,omitempty" xml:"Region,omitempty"`
+	// The time when the O\&M task was performed. The time follows the ISO 8601 standard in the *yyyy-MM-dd*T*HH:mm:ss*Z format. The time is displayed in UTC.
+	StartTime *string `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
+	// The state of the O\&M task. Valid values:
+	//
+	// *   **2**: The task is waiting for users to specify a switchover time.
+	// *   **3**: The task is waiting to be performed.
+	// *   **4**: The task is being performed. If the task is in this state, the [ModifyActiveOperationTask](~~197384~~) operation cannot be called to modify the scheduled switchover time.
+	// *   **5**: The task is performed.
+	// *   **6**: The task fails.
+	// *   **7**: The task is canceled.
+	Status *int32 `json:"Status,omitempty" xml:"Status,omitempty"`
+	// The time when the switchover operation was performed. The time follows the ISO 8601 standard in the *yyyy-MM-dd*T*HH:mm:ss*Z format. The time is displayed in UTC.
+	SwitchTime *string `json:"SwitchTime,omitempty" xml:"SwitchTime,omitempty"`
 	// The type of the task. Valid values:
 	//
-	// *   **rds_apsaradb_ha**: switchover between a master node and a replica node.
-	// *   **rds_apsaradb_transfer**: instance migration task.
-	// *   **rds_apsaradb_upgrade**: minor version upgrade.
-	// *   **all**: all task types.
-	PrepareInterval *string `json:"PrepareInterval,omitempty" xml:"PrepareInterval,omitempty"`
-	Region          *string `json:"Region,omitempty" xml:"Region,omitempty"`
-	// The page number of the returned page.
-	StartTime *string `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
-	// The required preparation period between the task start time and the switchover time. The time is displayed in the *HH:mm:ss* format.
-	Status     *int32  `json:"Status,omitempty" xml:"Status,omitempty"`
-	SwitchTime *string `json:"SwitchTime,omitempty" xml:"SwitchTime,omitempty"`
-	// The number of entries to return on each page. Specify a value greater than **10**. Default value: **30**.
+	// *   **rds_apsaradb_ha**: primary/secondary switchover
+	// *   **rds_apsaradb_transfer**: instance migration
+	// *   **rds_apsaradb_upgrade**: minor version update
+	// *   **all**: all types
 	TaskType *string `json:"TaskType,omitempty" xml:"TaskType,omitempty"`
 }
 
@@ -3208,11 +3254,11 @@ func (s *DescribeActiveOperationTaskResponse) SetBody(v *DescribeActiveOperation
 }
 
 type DescribeAuditLogConfigRequest struct {
-	// The region ID of the instance. You can call the [DescribeInstanceAttribute](~~60996~~) operation to query the region ID of the instance.
+	// The ID of the instance. You can call the [DescribeInstances](~~60933~~) operation to query the ID of the instance.
 	InstanceId   *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
 	OwnerAccount *string `json:"OwnerAccount,omitempty" xml:"OwnerAccount,omitempty"`
 	OwnerId      *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
-	// The retention period of audit logs. Unit: day.
+	// The region ID of the instance. You can call the [DescribeInstanceAttribute](~~60996~~) operation to query the region ID of the instance.
 	RegionId             *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 	ResourceOwnerAccount *string `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
 	ResourceOwnerId      *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
@@ -3263,16 +3309,16 @@ func (s *DescribeAuditLogConfigRequest) SetSecurityToken(v string) *DescribeAudi
 }
 
 type DescribeAuditLogConfigResponseBody struct {
-	// The ID of the instance. You can call the [DescribeInstances](~~60933~~) operation to query the ID of the instance.
+	// Indicates whether the audit log feature is enabled. Valid values:
+	//
+	// *   **true**: enabled
+	// *   **false**: disabled
+	//
+	// > You can call the [ModifyAuditLogConfig](~~130206~~) operation to enable or disable the audit log feature for an ApsaraDB for Redis instance.
 	DbAudit *string `json:"DbAudit,omitempty" xml:"DbAudit,omitempty"`
 	// The ID of the request.
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// Indicates whether the audit log feature is enabled. Valid values:
-	//
-	// *   **true**: The audit log feature is enabled.
-	// *   **false**: The audit log feature is disabled.
-	//
-	// >  You can call the [ModifyAuditLogConfig](~~130206~~) operation to enable or disable the audit log feature for an ApsaraDB for Redis instance.
+	// The retention period of audit logs. Unit: days.
 	Retention *string `json:"Retention,omitempty" xml:"Retention,omitempty"`
 }
 
@@ -4453,7 +4499,12 @@ type DescribeBackupTasksRequest struct {
 	BackupJobId *string `json:"BackupJobId,omitempty" xml:"BackupJobId,omitempty"`
 	// The details of the backup tasks.
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	// The operation that you want to perform. The operation that you want to perform. Set the value to **DescribeBackupTasks**.
+	// The backup mode. Valid values:
+	//
+	// *   **Automated**: automatic backup. You can call the [DescribeBackupPolicy](~~61078~~) operation to query the automatic backup policy.
+	// *   **Manual**: manual backup.
+	//
+	// > By default, the information about backup tasks in both modes is returned.
 	JobMode              *string `json:"JobMode,omitempty" xml:"JobMode,omitempty"`
 	OwnerAccount         *string `json:"OwnerAccount,omitempty" xml:"OwnerAccount,omitempty"`
 	OwnerId              *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
@@ -4512,7 +4563,7 @@ func (s *DescribeBackupTasksRequest) SetSecurityToken(v string) *DescribeBackupT
 
 type DescribeBackupTasksResponseBody struct {
 	AccessDeniedDetail *DescribeBackupTasksResponseBodyAccessDeniedDetail `json:"AccessDeniedDetail,omitempty" xml:"AccessDeniedDetail,omitempty" type:"Struct"`
-	// The ID of the ApsaraDB for Redis instance. You can call the [DescribeInstances](~~60933~~) operation to query instance IDs.
+	// The details of the backup tasks.
 	BackupJobs []*DescribeBackupTasksResponseBodyBackupJobs `json:"BackupJobs,omitempty" xml:"BackupJobs,omitempty" type:"Repeated"`
 	// The ID of the instance.
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
@@ -4611,19 +4662,30 @@ func (s *DescribeBackupTasksResponseBodyAccessDeniedDetail) SetPolicyType(v stri
 type DescribeBackupTasksResponseBodyBackupJobs struct {
 	// The ID of the backup task.
 	BackupJobID *int32 `json:"BackupJobID,omitempty" xml:"BackupJobID,omitempty"`
-	// The beginning time when the backup task started. The time is in the *yyyy-MM-dd*T*HH:mm:ss*Z format and displayed in UTC.
+	// The state of the backup task. Valid values:
+	//
+	// *   **NoStart**: The backup task is not started.
+	// *   **Preparing**: The backup task is being prepared.
+	// *   **Waiting**: The backup task is pending.
+	// *   **Uploading**: The system is uploading the backup file.
+	// *   **Checking**: The system is checking the uploaded backup file.
+	// *   **Finished**: The backup task is completed.
 	BackupProgressStatus *string `json:"BackupProgressStatus,omitempty" xml:"BackupProgressStatus,omitempty"`
-	// Manual
-	JobMode *string `json:"JobMode,omitempty" xml:"JobMode,omitempty"`
-	// The ID of the request.
-	NodeId *string `json:"NodeId,omitempty" xml:"NodeId,omitempty"`
 	// The backup mode. Valid values:
 	//
 	// *   **Automated**: automatic backup
 	// *   **Manual**: manual backup
+	JobMode *string `json:"JobMode,omitempty" xml:"JobMode,omitempty"`
+	// The ID of the data node.
+	NodeId *string `json:"NodeId,omitempty" xml:"NodeId,omitempty"`
+	// The progress of the backup task in percentage.
 	Process *string `json:"Process,omitempty" xml:"Process,omitempty"`
-	// 1162****
-	StartTime  *string `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
+	// The start time of the backup task. The time follows the ISO 8601 standard in the *yyyy-MM-dd*T*HH:mm:ss*Z format. The time is displayed in UTC.
+	StartTime *string `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
+	// The type of the backup task. Valid values:
+	//
+	// *   **TempBackupTask**: The backup task was manually performed.
+	// *   **NormalBackupTask**: The backup task was automatically performed.
 	TaskAction *string `json:"TaskAction,omitempty" xml:"TaskAction,omitempty"`
 }
 
@@ -4700,18 +4762,30 @@ func (s *DescribeBackupTasksResponse) SetBody(v *DescribeBackupTasksResponseBody
 }
 
 type DescribeBackupsRequest struct {
-	BackupId             *int32  `json:"BackupId,omitempty" xml:"BackupId,omitempty"`
-	EndTime              *string `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
-	InstanceId           *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	NeedAof              *string `json:"NeedAof,omitempty" xml:"NeedAof,omitempty"`
-	OwnerAccount         *string `json:"OwnerAccount,omitempty" xml:"OwnerAccount,omitempty"`
-	OwnerId              *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
-	PageNumber           *int32  `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
+	// The ID of the backup file.
+	BackupId *int32 `json:"BackupId,omitempty" xml:"BackupId,omitempty"`
+	// The end of the time range to query. Specify the time in the *yyyy-MM-dd*T*HH:mm*Z format. The time must be in UTC. The end time must be later than the start time.
+	EndTime *string `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
+	// The ID of the instance whose backup files you want to query.
+	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	// Specifies whether to enable append-only files (AOFs) persistence. Valid values:
+	//
+	// *   **0**: no
+	// *   **1**: yes
+	//
+	// >  The default value is **0**.
+	NeedAof      *string `json:"NeedAof,omitempty" xml:"NeedAof,omitempty"`
+	OwnerAccount *string `json:"OwnerAccount,omitempty" xml:"OwnerAccount,omitempty"`
+	OwnerId      *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
+	// The number of the page to return. The value must be an integer that is greater than **0**. Default value: **1**.
+	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
+	// The number of entries to return on each page. Valid values: 30, 50, 100, 200, and 300.
 	PageSize             *int32  `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
 	ResourceOwnerAccount *string `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
 	ResourceOwnerId      *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
 	SecurityToken        *string `json:"SecurityToken,omitempty" xml:"SecurityToken,omitempty"`
-	StartTime            *string `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
+	// The beginning of the time range to query. Specify the time in the ISO 8601 standard in the *yyyy-MM-dd*T*HH:mm*Z format. The time must be in UTC.
+	StartTime *string `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
 }
 
 func (s DescribeBackupsRequest) String() string {
@@ -4784,11 +4858,16 @@ func (s *DescribeBackupsRequest) SetStartTime(v string) *DescribeBackupsRequest 
 
 type DescribeBackupsResponseBody struct {
 	AccessDeniedDetail *DescribeBackupsResponseBodyAccessDeniedDetail `json:"AccessDeniedDetail,omitempty" xml:"AccessDeniedDetail,omitempty" type:"Struct"`
-	Backups            *DescribeBackupsResponseBodyBackups            `json:"Backups,omitempty" xml:"Backups,omitempty" type:"Struct"`
-	PageNumber         *int32                                         `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
-	PageSize           *int32                                         `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	RequestId          *string                                        `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	TotalCount         *int32                                         `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
+	// Details of the backup files.
+	Backups *DescribeBackupsResponseBodyBackups `json:"Backups,omitempty" xml:"Backups,omitempty" type:"Struct"`
+	// The page number of the returned page.
+	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
+	// The number of entries returned on each page.
+	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	// The ID of the request.
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The total number of backup files that were returned.
+	TotalCount *int32 `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
 }
 
 func (s DescribeBackupsResponseBody) String() string {
@@ -4900,20 +4979,50 @@ func (s *DescribeBackupsResponseBodyBackups) SetBackup(v []*DescribeBackupsRespo
 }
 
 type DescribeBackupsResponseBodyBackupsBackup struct {
-	BackupDBNames             *string `json:"BackupDBNames,omitempty" xml:"BackupDBNames,omitempty"`
-	BackupDownloadURL         *string `json:"BackupDownloadURL,omitempty" xml:"BackupDownloadURL,omitempty"`
-	BackupEndTime             *string `json:"BackupEndTime,omitempty" xml:"BackupEndTime,omitempty"`
-	BackupId                  *int32  `json:"BackupId,omitempty" xml:"BackupId,omitempty"`
+	// The databases that are backed up. Default value: **all**, which indicates that all databases are backed up.
+	BackupDBNames *string `json:"BackupDBNames,omitempty" xml:"BackupDBNames,omitempty"`
+	// The public download URL of the backup file.
+	BackupDownloadURL *string `json:"BackupDownloadURL,omitempty" xml:"BackupDownloadURL,omitempty"`
+	// The end time of the backup.
+	BackupEndTime *string `json:"BackupEndTime,omitempty" xml:"BackupEndTime,omitempty"`
+	// The ID of the backup file.
+	BackupId *int32 `json:"BackupId,omitempty" xml:"BackupId,omitempty"`
+	// The internal download URL of the backup file.
+	//
+	// >  You can download the backup file by using this URL from the Elastic Compute Service (ECS) instance that is connected to the ApsaraDB for Redis instance. The ECS instance and ApsaraDB for Redis instance must reside in the classic network or the same virtual private cloud (VPC) within the same region.
 	BackupIntranetDownloadURL *string `json:"BackupIntranetDownloadURL,omitempty" xml:"BackupIntranetDownloadURL,omitempty"`
-	BackupJobID               *int32  `json:"BackupJobID,omitempty" xml:"BackupJobID,omitempty"`
-	BackupMethod              *string `json:"BackupMethod,omitempty" xml:"BackupMethod,omitempty"`
-	BackupMode                *string `json:"BackupMode,omitempty" xml:"BackupMode,omitempty"`
-	BackupSize                *int64  `json:"BackupSize,omitempty" xml:"BackupSize,omitempty"`
-	BackupStartTime           *string `json:"BackupStartTime,omitempty" xml:"BackupStartTime,omitempty"`
-	BackupStatus              *string `json:"BackupStatus,omitempty" xml:"BackupStatus,omitempty"`
-	BackupType                *string `json:"BackupType,omitempty" xml:"BackupType,omitempty"`
-	EngineVersion             *string `json:"EngineVersion,omitempty" xml:"EngineVersion,omitempty"`
-	NodeInstanceId            *string `json:"NodeInstanceId,omitempty" xml:"NodeInstanceId,omitempty"`
+	// The ID of the backup task.
+	BackupJobID *int32 `json:"BackupJobID,omitempty" xml:"BackupJobID,omitempty"`
+	// The backup method. Valid values:
+	//
+	// *   **Logical**
+	// *   **Physical**
+	BackupMethod *string `json:"BackupMethod,omitempty" xml:"BackupMethod,omitempty"`
+	// The backup mode. Valid values:
+	//
+	// *   **Automated**
+	// *   **Manual**
+	BackupMode *string `json:"BackupMode,omitempty" xml:"BackupMode,omitempty"`
+	// The size of the backup file.
+	BackupSize *int64 `json:"BackupSize,omitempty" xml:"BackupSize,omitempty"`
+	// The start time of the backup.
+	BackupStartTime *string `json:"BackupStartTime,omitempty" xml:"BackupStartTime,omitempty"`
+	// The state of the backup task. Valid values:
+	//
+	// *   **Success**: The task is successful.
+	// *   **Failed**: The task failed.
+	BackupStatus *string `json:"BackupStatus,omitempty" xml:"BackupStatus,omitempty"`
+	// The backup type of the backup file. Valid values:
+	//
+	// *   **FullBackup**
+	// *   **IncrementalBackup**
+	BackupType *string `json:"BackupType,omitempty" xml:"BackupType,omitempty"`
+	// The major engine version of the instance.
+	EngineVersion *string `json:"EngineVersion,omitempty" xml:"EngineVersion,omitempty"`
+	// The node ID.
+	//
+	// >  If a standard instance is used, the instance ID is returned.
+	NodeInstanceId *string `json:"NodeInstanceId,omitempty" xml:"NodeInstanceId,omitempty"`
 }
 
 func (s DescribeBackupsResponseBodyBackupsBackup) String() string {
@@ -5024,19 +5133,25 @@ func (s *DescribeBackupsResponse) SetBody(v *DescribeBackupsResponseBody) *Descr
 }
 
 type DescribeCacheAnalysisReportRequest struct {
-	// The maximum number of entries returned per page.
+	// The type of analytics. Set the value to **BigKey**.
 	AnalysisType *string `json:"AnalysisType,omitempty" xml:"AnalysisType,omitempty"`
-	// The page number of the returned page.
+	// The date to query. You can query the report for one day each time. Specify the date in the *yyyy-MM-dd*Z format. The time must be in UTC.
 	Date *string `json:"Date,omitempty" xml:"Date,omitempty"`
-	// The number of entries to return on each page. Valid values: **30**, **50**, and **100**.
+	// The ID of the instance.
+	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	// The ID of the child node in the cluster instance.
 	//
-	// >  Default value: **30**.
-	InstanceId   *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	// > If this parameter is not specified, the analytics results of all child nodes in the instance are returned.
 	NodeId       *string `json:"NodeId,omitempty" xml:"NodeId,omitempty"`
 	OwnerAccount *string `json:"OwnerAccount,omitempty" xml:"OwnerAccount,omitempty"`
 	OwnerId      *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
-	PageNumbers  *int32  `json:"PageNumbers,omitempty" xml:"PageNumbers,omitempty"`
-	// The ID of the request.
+	// The number of the page to return.
+	//
+	// > If the parameter value exceeds the maximum number of the returned pages, an empty large key list is returned.
+	PageNumbers *int32 `json:"PageNumbers,omitempty" xml:"PageNumbers,omitempty"`
+	// The number of entries to return on each page. Valid values: **30**, **50**, and **100**.
+	//
+	// > The default value is **30**.
 	PageSize             *int32  `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
 	ResourceOwnerAccount *string `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
 	ResourceOwnerId      *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
@@ -5107,13 +5222,22 @@ func (s *DescribeCacheAnalysisReportRequest) SetSecurityToken(v string) *Describ
 }
 
 type DescribeCacheAnalysisReportResponseBody struct {
-	BigKeys          []map[string]interface{} `json:"BigKeys,omitempty" xml:"BigKeys,omitempty" type:"Repeated"`
-	HotKeys          []map[string]interface{} `json:"HotKeys,omitempty" xml:"HotKeys,omitempty" type:"Repeated"`
-	PageNumber       *int32                   `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
-	PageRecordCount  *int32                   `json:"PageRecordCount,omitempty" xml:"PageRecordCount,omitempty"`
-	PageSize         *int32                   `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	RequestId        *string                  `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	TotalRecordCount *int32                   `json:"TotalRecordCount,omitempty" xml:"TotalRecordCount,omitempty"`
+	// Details of the large keys.
+	BigKeys []map[string]interface{} `json:"BigKeys,omitempty" xml:"BigKeys,omitempty" type:"Repeated"`
+	// Details of the hotkeys.
+	//
+	// > This parameter is not returned because ApsaraDB for Redis does not support hotkey analytics.
+	HotKeys []map[string]interface{} `json:"HotKeys,omitempty" xml:"HotKeys,omitempty" type:"Repeated"`
+	// The page number of the returned page.
+	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
+	// The number of entries returned on the current page.
+	PageRecordCount *int32 `json:"PageRecordCount,omitempty" xml:"PageRecordCount,omitempty"`
+	// The maximum number of entries returned per page.
+	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	// The ID of the request.
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The total number of entries returned.
+	TotalRecordCount *int32 `json:"TotalRecordCount,omitempty" xml:"TotalRecordCount,omitempty"`
 }
 
 func (s DescribeCacheAnalysisReportResponseBody) String() string {
@@ -5189,19 +5313,23 @@ func (s *DescribeCacheAnalysisReportResponse) SetBody(v *DescribeCacheAnalysisRe
 }
 
 type DescribeCacheAnalysisReportListRequest struct {
-	// The ID of the child node in the cluster instance.
+	// The time range to query. Default value: 7. Unit: days.
 	//
-	// >  If this parameter is not specified, the analysis results of all child nodes in the instance are returned.
+	// > If daily automatic analysis has not started and manual analysis is not performed, no records are returned.
 	Days *int32 `json:"Days,omitempty" xml:"Days,omitempty"`
 	// The ID of the instance.
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	// 7
+	// The ID of the child node in the cluster instance.
+	//
+	// > If this parameter is not specified, the analysis results of all child nodes in the instance are returned.
 	NodeId       *string `json:"NodeId,omitempty" xml:"NodeId,omitempty"`
 	OwnerAccount *string `json:"OwnerAccount,omitempty" xml:"OwnerAccount,omitempty"`
 	OwnerId      *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
-	// The ID of the instance.
+	// The number of the page to return.
 	PageNumbers *int32 `json:"PageNumbers,omitempty" xml:"PageNumbers,omitempty"`
-	// r-bp1zxszhcgatnx****-db-0
+	// The number of entries to return on each page. Valid values: **30**, **50**, and **100**.
+	//
+	// > The default value is **30**.
 	PageSize             *int32  `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
 	ResourceOwnerAccount *string `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
 	ResourceOwnerId      *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
@@ -5267,11 +5395,11 @@ func (s *DescribeCacheAnalysisReportListRequest) SetSecurityToken(v string) *Des
 }
 
 type DescribeCacheAnalysisReportListResponseBody struct {
-	// 30
+	// Details of the offline key analytics tasks.
 	DailyTasks *DescribeCacheAnalysisReportListResponseBodyDailyTasks `json:"DailyTasks,omitempty" xml:"DailyTasks,omitempty" type:"Struct"`
-	// The date when the offline key analysis task was performed.
+	// The ID of the instance.
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	// The ID of the task.
+	// The ID of the request.
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -5316,9 +5444,9 @@ func (s *DescribeCacheAnalysisReportListResponseBodyDailyTasks) SetDailyTask(v [
 }
 
 type DescribeCacheAnalysisReportListResponseBodyDailyTasksDailyTask struct {
-	// The number of the page to return.
+	// The date when the offline key analytics task was performed.
 	Date *string `json:"Date,omitempty" xml:"Date,omitempty"`
-	// Details about the offline key analysis tasks.
+	// Details of the offline key analytics tasks.
 	Tasks *DescribeCacheAnalysisReportListResponseBodyDailyTasksDailyTaskTasks `json:"Tasks,omitempty" xml:"Tasks,omitempty" type:"Struct"`
 }
 
@@ -5358,10 +5486,16 @@ func (s *DescribeCacheAnalysisReportListResponseBodyDailyTasksDailyTaskTasks) Se
 }
 
 type DescribeCacheAnalysisReportListResponseBodyDailyTasksDailyTaskTasksTask struct {
-	NodeId    *string `json:"NodeId,omitempty" xml:"NodeId,omitempty"`
-	StartTime *string `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
 	// The ID of the child node in the cluster instance.
+	NodeId *string `json:"NodeId,omitempty" xml:"NodeId,omitempty"`
+	// The start time of the offline key analytics task.
+	StartTime *string `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
+	// The state of the offline key analytics task. Valid values:
+	//
+	// *   **success**
+	// *   **running**
 	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
+	// The ID of the task.
 	TaskId *string `json:"TaskId,omitempty" xml:"TaskId,omitempty"`
 }
 
@@ -6563,7 +6697,7 @@ func (s *DescribeEncryptionKeyResponse) SetBody(v *DescribeEncryptionKeyResponse
 }
 
 type DescribeEncryptionKeyListRequest struct {
-	// The operation that you want to perform. Set the value to **DescribeEncryptionKeyList**.
+	// The ID of the instance. You can call the [DescribeInstances](~~60933~~) operation to query the ID of the instance.
 	InstanceId           *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
 	OwnerAccount         *string `json:"OwnerAccount,omitempty" xml:"OwnerAccount,omitempty"`
 	OwnerId              *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
@@ -6611,9 +6745,9 @@ func (s *DescribeEncryptionKeyListRequest) SetSecurityToken(v string) *DescribeE
 }
 
 type DescribeEncryptionKeyListResponseBody struct {
-	// DescribeEncryptionKeyList
+	// The custom keys that are available in the region.
 	KeyIds *DescribeEncryptionKeyListResponseBodyKeyIds `json:"KeyIds,omitempty" xml:"KeyIds,omitempty" type:"Struct"`
-	// Queries the custom keys that are available for an ApsaraDB for Redis instance to use transparent data encryption (TDE).
+	// The ID of the request.
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -6882,9 +7016,9 @@ type DescribeGlobalDistributeCacheRequest struct {
 	GlobalInstanceId *string `json:"GlobalInstanceId,omitempty" xml:"GlobalInstanceId,omitempty"`
 	OwnerAccount     *string `json:"OwnerAccount,omitempty" xml:"OwnerAccount,omitempty"`
 	OwnerId          *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
-	// The total number of entries returned.
+	// The number of the page to return. The value must be an integer that is greater than **0**. Default value: **1**.
 	PageNumber *string `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
-	// The ID of the region.
+	// The number of entries to return on each page.
 	PageSize             *string `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
 	ResourceOwnerAccount *string `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
 	ResourceOwnerId      *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
@@ -7432,21 +7566,43 @@ func (s *DescribeHistoryMonitorValuesResponse) SetBody(v *DescribeHistoryMonitor
 }
 
 type DescribeHistoryTasksRequest struct {
-	FromExecTime         *int32  `json:"FromExecTime,omitempty" xml:"FromExecTime,omitempty"`
-	FromStartTime        *string `json:"FromStartTime,omitempty" xml:"FromStartTime,omitempty"`
-	InstanceId           *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	InstanceType         *string `json:"InstanceType,omitempty" xml:"InstanceType,omitempty"`
-	PageNumber           *int32  `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
-	PageSize             *int32  `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	// The minimum execution duration of a task. This parameter is used to filter tasks whose execution duration is longer than the minimum execution duration. Unit: seconds. The default value is 0, which indicates that no limit is imposed.
+	FromExecTime *int32 `json:"FromExecTime,omitempty" xml:"FromExecTime,omitempty"`
+	// The beginning of the time range to query. Only tasks that have a start time later than or equal to the time specified by this parameter are queried. Specify the time in the ISO 8601 standard in the yyyy-MM-ddTHH:mm:ssZ format. The time must be in UTC. The start time can be up to 30 days earlier than the current time. If you set this parameter to a time more than 30 days earlier than the current time, this time is automatically converted to a time that is exactly 30 days earlier than the current time.
+	FromStartTime *string `json:"FromStartTime,omitempty" xml:"FromStartTime,omitempty"`
+	// The instance ID. Separate multiple instance IDs with commas (,). You can specify up to 30 instance IDs. This parameter is empty by default, which indicates that you can specify an unlimited number of instance IDs.
+	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	// Set the value to Instance.
+	InstanceType *string `json:"InstanceType,omitempty" xml:"InstanceType,omitempty"`
+	// The page number. Pages start from page 1. Default value: 1.
+	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
+	// The number of entries per page. Valid values: 10 to 100. Default value: 10.
+	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	// The region ID of the pending task. You can call the [DescribeRegions](https://next.api.aliyun.com/document/R-kvstore/2015-01-01/DescribeRegions) operation to query the most recent region list.
 	RegionId             *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 	ResourceOwnerAccount *int64  `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
 	ResourceOwnerId      *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
 	SecurityToken        *string `json:"SecurityToken,omitempty" xml:"SecurityToken,omitempty"`
-	Status               *string `json:"Status,omitempty" xml:"Status,omitempty"`
-	TaskId               *string `json:"TaskId,omitempty" xml:"TaskId,omitempty"`
-	TaskType             *string `json:"TaskType,omitempty" xml:"TaskType,omitempty"`
-	ToExecTime           *int32  `json:"ToExecTime,omitempty" xml:"ToExecTime,omitempty"`
-	ToStartTime          *string `json:"ToStartTime,omitempty" xml:"ToStartTime,omitempty"`
+	// The task status. Valid values:
+	//
+	// *   Scheduled
+	// *   Running
+	// *   Succeed
+	// *   Failed
+	// *   Cancelling
+	// *   Canceled
+	// *   Waiting
+	//
+	// Separate multiple states with commas (,). This parameter is empty by default, which indicates that tasks in all states are queried.
+	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
+	// The task ID. Separate multiple task IDs with commas (,). You can specify up to 30 task IDs. This parameter is empty by default, which indicates that you can specify an unlimited number of task IDs.
+	TaskId *string `json:"TaskId,omitempty" xml:"TaskId,omitempty"`
+	// The task type. Separate multiple task types with commas (,). You can specify up to 30 task types. This parameter is empty by default, which indicates that you can specify an unlimited number of task types.
+	TaskType *string `json:"TaskType,omitempty" xml:"TaskType,omitempty"`
+	// The maximum execution duration of a task. This parameter is used to filter tasks whose execution duration is shorter than or equal to the maximum execution duration. Unit: seconds. The default value is 0, which indicates that no limit is imposed.
+	ToExecTime *int32 `json:"ToExecTime,omitempty" xml:"ToExecTime,omitempty"`
+	// The end of the time range to query. Only tasks that have a start time earlier than or equal to the time specified by this parameter are queried. Specify the time in the ISO 8601 standard in the yyyy-MM-ddTHH:mm:ssZ format. The time must be in UTC.
+	ToStartTime *string `json:"ToStartTime,omitempty" xml:"ToStartTime,omitempty"`
 }
 
 func (s DescribeHistoryTasksRequest) String() string {
@@ -7533,11 +7689,16 @@ func (s *DescribeHistoryTasksRequest) SetToStartTime(v string) *DescribeHistoryT
 }
 
 type DescribeHistoryTasksResponseBody struct {
-	Items      []*DescribeHistoryTasksResponseBodyItems `json:"Items,omitempty" xml:"Items,omitempty" type:"Repeated"`
-	PageNumber *int32                                   `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
-	PageSize   *int32                                   `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	RequestId  *string                                  `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	TotalCount *int32                                   `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
+	// The request source. Valid values: System and User.
+	Items []*DescribeHistoryTasksResponseBodyItems `json:"Items,omitempty" xml:"Items,omitempty" type:"Repeated"`
+	// The page number. Pages start from page 1. Default value: 1.
+	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
+	// The number of entries per page. Valid values: 10 to 100. Default value: 10.
+	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	// The unique ID of the request. If the request fails, provide this ID for technical support to troubleshoot the failure.
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The total number of tasks that meet these constraints without taking pagination into account.
+	TotalCount *int32 `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
 }
 
 func (s DescribeHistoryTasksResponseBody) String() string {
@@ -8693,20 +8854,20 @@ func (s *DescribeInstanceSSLRequest) SetSecurityToken(v string) *DescribeInstanc
 }
 
 type DescribeInstanceSSLResponseBody struct {
-	// The common name of the SSL certificate, which is the domain name for which you want to apply for the SSL certificate. The default value is the internal endpoint of the instance.
+	// The common name of the CA certificate. The default value is the internal endpoint of the instance.
 	CertCommonName *string `json:"CertCommonName,omitempty" xml:"CertCommonName,omitempty"`
-	// Download URL for CA certificate.
+	// The download URL of the CA certificate.
 	CertDownloadURL *string `json:"CertDownloadURL,omitempty" xml:"CertDownloadURL,omitempty"`
 	// The ID of the instance.
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
 	// The ID of the request.
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// Indicates whether SSL encryption is enabled. Valid values:
+	// The status of the TLS (SSL) encryption feature. Valid values:
 	//
 	// *   **Enable**: SSL encryption is enabled.
 	// *   **Disable**: SSL encryption is disabled.
 	SSLEnabled *string `json:"SSLEnabled,omitempty" xml:"SSLEnabled,omitempty"`
-	// The expiration time of the SSL certificate.
+	// The time when the CA certificate expires.
 	SSLExpiredTime *string `json:"SSLExpiredTime,omitempty" xml:"SSLExpiredTime,omitempty"`
 }
 
@@ -8778,7 +8939,7 @@ func (s *DescribeInstanceSSLResponse) SetBody(v *DescribeInstanceSSLResponseBody
 }
 
 type DescribeInstanceTDEStatusRequest struct {
-	// The ID of the request.
+	// The ID of the ApsaraDB for Redis instance. You can call the [DescribeInstances](~~60933~~) operation to query instance IDs.
 	InstanceId           *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
 	OwnerAccount         *string `json:"OwnerAccount,omitempty" xml:"OwnerAccount,omitempty"`
 	OwnerId              *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
@@ -8826,8 +8987,12 @@ func (s *DescribeInstanceTDEStatusRequest) SetSecurityToken(v string) *DescribeI
 }
 
 type DescribeInstanceTDEStatusResponseBody struct {
+	// The ID of the request.
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// The operation that you want to perform. Set the value to **DescribeInstanceTDEStatus**.
+	// Indicates whether TDE is enabled. Valid values:
+	//
+	// *   **Enabled**: TDE is enabled.
+	// *   **Disable**: TDE is disabled.
 	TDEStatus *string `json:"TDEStatus,omitempty" xml:"TDEStatus,omitempty"`
 }
 
@@ -10124,7 +10289,7 @@ type DescribeIntranetAttributeResponseBody struct {
 	//
 	// > If no extra internal bandwidth is purchased, this parameter is not returned.
 	AutoRenewal *bool `json:"AutoRenewal,omitempty" xml:"AutoRenewal,omitempty"`
-	// The time when the extra internal bandwidth that you purchased expires. The time follows the ISO 8601 standard in the *yyyy-MM-dd*T*HH:mm:ss*Z format. The time is displayed in UTC.
+	// The expiration time of the purchased bandwidth. The time follows the ISO 8601 standard in the *yyyy-MM-dd* T *HH:mm:ss* Z format.
 	//
 	// > If no extra internal bandwidth is purchased, this parameter is not returned.
 	BandwidthExpireTime *string `json:"BandwidthExpireTime,omitempty" xml:"BandwidthExpireTime,omitempty"`
@@ -10133,9 +10298,12 @@ type DescribeIntranetAttributeResponseBody struct {
 	//
 	// > If no extra internal bandwidth for temporary use is purchased or the extra internal bandwidth that you purchased for temporary use has expired, **0** is returned for this parameter.
 	ExpireTime *string `json:"ExpireTime,omitempty" xml:"ExpireTime,omitempty"`
-	// Does the instance have unexpired prepaid bandwidth package, value:
-	// - true
-	// - false
+	// Specifies whether the instance has unexpired bandwidth plans. Valid values:
+	//
+	// *   **true**: The instance has unexpired bandwidth plans.
+	// *   **false**: The instance does not have unexpired bandwidth plans.
+	//
+	// > If no extra internal bandwidth is purchased, this parameter is not returned.
 	HasPrePaidBandWidthOrderRunning *bool `json:"HasPrePaidBandWidthOrderRunning,omitempty" xml:"HasPrePaidBandWidthOrderRunning,omitempty"`
 	// The current internal bandwidth of the instance. Unit: Mbit/s.
 	IntranetBandwidth *int32 `json:"IntranetBandwidth,omitempty" xml:"IntranetBandwidth,omitempty"`
@@ -10216,7 +10384,7 @@ func (s *DescribeIntranetAttributeResponse) SetBody(v *DescribeIntranetAttribute
 }
 
 type DescribeLogicInstanceTopologyRequest struct {
-	// The storage capacity of the node. Unit: MB.
+	// The ID of the instance whose topology information you want to query.
 	InstanceId           *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
 	OwnerAccount         *string `json:"OwnerAccount,omitempty" xml:"OwnerAccount,omitempty"`
 	OwnerId              *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
@@ -10264,12 +10432,12 @@ func (s *DescribeLogicInstanceTopologyRequest) SetSecurityToken(v string) *Descr
 }
 
 type DescribeLogicInstanceTopologyResponseBody struct {
-	// The operation that you want to perform. Set the value to **DescribeLogicInstanceTopology**.
+	// The ID of the instance.
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	// The bandwidth throttling of the node. Unit: MB/s.
+	// The detailed proxy information, including information about proxy nodes.
 	RedisProxyList *DescribeLogicInstanceTopologyResponseBodyRedisProxyList `json:"RedisProxyList,omitempty" xml:"RedisProxyList,omitempty" type:"Struct"`
 	RedisShardList *DescribeLogicInstanceTopologyResponseBodyRedisShardList `json:"RedisShardList,omitempty" xml:"RedisShardList,omitempty" type:"Struct"`
-	// The ID of the instance.
+	// The ID of the request.
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -10319,15 +10487,18 @@ func (s *DescribeLogicInstanceTopologyResponseBodyRedisProxyList) SetNodeInfo(v 
 }
 
 type DescribeLogicInstanceTopologyResponseBodyRedisProxyListNodeInfo struct {
-	// The ID of the request.
+	// The bandwidth throttling of the node. Unit: MB/s.
 	Bandwidth *string `json:"Bandwidth,omitempty" xml:"Bandwidth,omitempty"`
-	// The detailed proxy information, including information about proxy nodes.
+	// The storage capacity of the node. Unit: MB.
 	Capacity *string `json:"Capacity,omitempty" xml:"Capacity,omitempty"`
-	// The ID of the instance whose topology information you want to query.
+	// The maximum number of connections.
 	Connection *string `json:"Connection,omitempty" xml:"Connection,omitempty"`
-	// Queries the logical topology of an ApsaraDB for Redis instance.
-	NodeId *string `json:"NodeId,omitempty" xml:"NodeId,omitempty"`
 	// The ID of the node.
+	NodeId *string `json:"NodeId,omitempty" xml:"NodeId,omitempty"`
+	// The node type. Valid values:
+	//
+	// *   **proxy**: proxy node
+	// *   **db**: data node
 	NodeType *string `json:"NodeType,omitempty" xml:"NodeType,omitempty"`
 }
 
@@ -10783,10 +10954,10 @@ func (s *DescribeParameterModificationHistoryResponse) SetBody(v *DescribeParame
 }
 
 type DescribeParameterTemplatesRequest struct {
-	// Indicates whether the parameter can be reconfigured. Valid values:
+	// The architecture of the instance. For more information, see [Overview](~~86132~~). Valid values:
 	//
-	// *   **true**: The parameter can be reconfigured.
-	// *   **false**: The parameter cannot be reconfigured.
+	// *   **logic**: The instance is a cluster or read/write splitting instance.
+	// *   **normal**: The instance is a standard master-replica instance.
 	CharacterType *string `json:"CharacterType,omitempty" xml:"CharacterType,omitempty"`
 	// The operation that you want to perform. Set the value to **DescribeParameterTemplates**.
 	Engine *string `json:"Engine,omitempty" xml:"Engine,omitempty"`
@@ -10871,7 +11042,7 @@ type DescribeParameterTemplatesResponseBody struct {
 	// *   **logic**: The instance is a cluster master-replica instance or a read/write splitting instance.
 	// *   **normal**: The instance is a standard master-replica instance.
 	ParameterCount *string `json:"ParameterCount,omitempty" xml:"ParameterCount,omitempty"`
-	// Redis
+	// Details of the returned parameters.
 	Parameters *DescribeParameterTemplatesResponseBodyParameters `json:"Parameters,omitempty" xml:"Parameters,omitempty" type:"Struct"`
 	// The name of the parameter. For more information about the parameters and the parameter settings, see [Parameters](~~259681~~).
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
@@ -10928,18 +11099,23 @@ func (s *DescribeParameterTemplatesResponseBodyParameters) SetTemplateRecord(v [
 }
 
 type DescribeParameterTemplatesResponseBodyParametersTemplateRecord struct {
-	// The number of parameters that are supported by the instance.
+	// The check code that indicates the valid values of the parameter.
 	CheckingCode *string `json:"CheckingCode,omitempty" xml:"CheckingCode,omitempty"`
-	// DescribeParameterTemplates
-	ForceModify *bool `json:"ForceModify,omitempty" xml:"ForceModify,omitempty"`
-	// Queries the parameters and default values of an ApsaraDB for Redis instance that runs a specific major version in a specific architecture.
-	ForceRestart         *bool   `json:"ForceRestart,omitempty" xml:"ForceRestart,omitempty"`
-	ParameterDescription *string `json:"ParameterDescription,omitempty" xml:"ParameterDescription,omitempty"`
-	// 5.0
-	ParameterName *string `json:"ParameterName,omitempty" xml:"ParameterName,omitempty"`
-	// The ID of the resource group to which the instance belongs. You can call the [ListResourceGroups](~~158855~~) operation to query the IDs of resource groups.
+	// Indicates whether the parameter can be reset. Valid values:
 	//
-	// >  You can also query the ID of a resource group in the Resource Management console. For more information, see [View the basic information of a resource group](~~151181~~).
+	// *   **true**: The parameter can be reset.
+	// *   **false**: The parameter cannot be reset.
+	ForceModify *bool `json:"ForceModify,omitempty" xml:"ForceModify,omitempty"`
+	// Indicates whether a restart of the instance is required after the parameter is reset. Valid values:
+	//
+	// *   **true**: After the parameter is reset, you must restart the instance to make the new value of the parameter take effect.
+	// *   **false**: After the parameter is reset, the new value of the parameter immediately takes effect. You do not need to restart the instance.
+	ForceRestart *bool `json:"ForceRestart,omitempty" xml:"ForceRestart,omitempty"`
+	// The description of the parameter.
+	ParameterDescription *string `json:"ParameterDescription,omitempty" xml:"ParameterDescription,omitempty"`
+	// The name of the parameter. For more information about the parameters and the parameter settings, see [Parameters](~~259681~~).
+	ParameterName *string `json:"ParameterName,omitempty" xml:"ParameterName,omitempty"`
+	// The default value of the parameter.
 	ParameterValue *string `json:"ParameterValue,omitempty" xml:"ParameterValue,omitempty"`
 }
 
@@ -11302,56 +11478,67 @@ func (s *DescribeParametersResponse) SetBody(v *DescribeParametersResponseBody) 
 }
 
 type DescribePriceRequest struct {
-	// The coupon code. Default value: youhuiquan_promotion_option_id_for_blank. This value indicates that no coupon code is available.
-	BusinessInfo *string `json:"BusinessInfo,omitempty" xml:"BusinessInfo,omitempty"`
-	// The region ID of the instance. You can call the [DescribeRegions](~~61012~~) operation to query the most recent region list.
-	Capacity *int64 `json:"Capacity,omitempty" xml:"Capacity,omitempty"`
-	// The actual price of the order.
-	ChargeType *string `json:"ChargeType,omitempty" xml:"ChargeType,omitempty"`
-	// Specify the instance type. You must set InstanceClass or Capacity to specify the instance type. We recommend that you use InstanceClass to specify the instance type.
-	//
-	// To view the instance type, perform the following steps:
-	//
-	// 1\. In the [Overview](~~26350~~) topic, click the link in the **Reference** column corresponding to the instance type that you want to view.
-	//
-	// 2\. In the instance type table of the page that appears, find the code corresponding to the instance type in the **InstanceClass** column.
-	CouponNo *string `json:"CouponNo,omitempty" xml:"CouponNo,omitempty"`
-	// The node type. Set the value to MASTER_SLAVE. This value indicates that the node type is master-replica.
-	ForceUpgrade *bool `json:"ForceUpgrade,omitempty" xml:"ForceUpgrade,omitempty"`
-	// Specifies whether to forcefully change the configurations of the instance. Default value: true. Valid values:
-	//
-	// *   **false**: The system forcefully changes the configurations.
-	// *   **true**: The system does not forcefully change the configurations.
-	//
-	// >  Default value: **true**.
-	InstanceClass *string `json:"InstanceClass,omitempty" xml:"InstanceClass,omitempty"`
-	// The subscription period. Unit: months. Valid values: **1**, 2, 3, 4, 5, 6, 7, 8, **9**, **12**, **24**, and **36**.
-	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	// The storage capacity of the instance. Unit: MB. You must set **InstanceClass** or **Capacity** to specify the instance type. We recommend that you use **InstanceClass** to specify the instance type.
-	Instances *string `json:"Instances,omitempty" xml:"Instances,omitempty"`
-	// The discount amount of the order.
-	NodeType *string `json:"NodeType,omitempty" xml:"NodeType,omitempty"`
-	// Indicates whether the coupon was selected.
-	OrderParamOut *string `json:"OrderParamOut,omitempty" xml:"OrderParamOut,omitempty"`
-	// The service fees of the order.
-	OrderType    *string `json:"OrderType,omitempty" xml:"OrderType,omitempty"`
-	OwnerAccount *string `json:"OwnerAccount,omitempty" xml:"OwnerAccount,omitempty"`
-	OwnerId      *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
 	// The extended information such as the promotional event ID and business information.
-	Period *int64 `json:"Period,omitempty" xml:"Period,omitempty"`
-	// The currency used for payment. A value of CNY is used when the order was generated on the China site (aliyun.com), and a value of USD is used when the order was generated on the international site (alibabacloud.com).
-	Quantity *int64 `json:"Quantity,omitempty" xml:"Quantity,omitempty"`
+	BusinessInfo *string `json:"BusinessInfo,omitempty" xml:"BusinessInfo,omitempty"`
+	// The storage capacity of the instance. Unit: MB. You must specify one of the **InstanceClass** and **Capacity** parameters to specify the instance type. We recommend that you use **InstanceClass** to specify the instance type.
+	Capacity *int64 `json:"Capacity,omitempty" xml:"Capacity,omitempty"`
 	// The billing method of the instance. Valid values:
 	//
 	// *   **PostPaid**: pay-as-you-go
-	// *   **PrePaid**: subscription
+	// *   **PrePaid**: subscription.
 	//
-	// >  Default value: **PostPaid**.
+	// > The default value is **PostPaid**.
+	ChargeType *string `json:"ChargeType,omitempty" xml:"ChargeType,omitempty"`
+	// The coupon code. Default value: youhuiquan_promotion_option_id_for_blank. This value indicates that no coupon code is available.
+	CouponNo *string `json:"CouponNo,omitempty" xml:"CouponNo,omitempty"`
+	// Specifies whether to forcefully change the configurations of the instance. Valid values:
+	//
+	// *   **false**: forcefully changes the configurations.
+	// *   **true**: does not forcefully change the configurations.
+	//
+	// > The default value is **true**.
+	ForceUpgrade *bool `json:"ForceUpgrade,omitempty" xml:"ForceUpgrade,omitempty"`
+	// The instance type of the instance. You must specify one of the InstanceClass and Capacity parameters to specify the instance type. We recommend that you use InstanceClass to specify the instance type.
+	//
+	// To query the instance type, perform the following steps:
+	//
+	// 1.  In the [Overview](~~26350~~) topic, click the link in the **Reference** column corresponding to the instance type that you want to view.
+	// 2.  In the instance type table of the page that appears, find the instance type in the **InstanceClass** column.
+	InstanceClass *string `json:"InstanceClass,omitempty" xml:"InstanceClass,omitempty"`
+	// The ID of the instance.
+	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	// A JSON string that contains multiple instances. For more information, see [Description of the Instances parameter in the DescribePrice API operation](~~161811~~).
+	Instances *string `json:"Instances,omitempty" xml:"Instances,omitempty"`
+	// The node type. Set the value to MASTER_SLAVE. This value indicates that the node type is master-replica.
+	NodeType *string `json:"NodeType,omitempty" xml:"NodeType,omitempty"`
+	// Specifies whether to return parameters related to the order. Valid values:
+	//
+	// *   **false**: does not return parameters related to the order.
+	// *   **true**: returns parameters related to the order.
+	//
+	// > The default value is **false**.
+	OrderParamOut *string `json:"OrderParamOut,omitempty" xml:"OrderParamOut,omitempty"`
+	// The order type. Valid values:
+	//
+	// *   **BUY**: The order is used to purchase instances.
+	// *   **UPGRADE**: The order is used to change the configurations of instances.
+	// *   **RENEW**: The order is used to renew instances.
+	// *   **CONVERT**: The order is used to change the billing methods of instances.
+	OrderType    *string `json:"OrderType,omitempty" xml:"OrderType,omitempty"`
+	OwnerAccount *string `json:"OwnerAccount,omitempty" xml:"OwnerAccount,omitempty"`
+	OwnerId      *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
+	// The subscription duration. Unit: months. Valid values: **1**, 2, 3, 4, 5, 6, 7, 8, **9**, **12**, **24**, and **36**.
+	Period *int64 `json:"Period,omitempty" xml:"Period,omitempty"`
+	// The number of instances that you want to purchase. Valid values: **1** to **30**.
+	//
+	// > The default value is **1**.
+	Quantity *int64 `json:"Quantity,omitempty" xml:"Quantity,omitempty"`
+	// The region ID of the instance. You can call the [DescribeRegions](~~61012~~) operation to query the most recent region list.
 	RegionId             *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 	ResourceOwnerAccount *string `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
 	ResourceOwnerId      *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
 	SecurityToken        *string `json:"SecurityToken,omitempty" xml:"SecurityToken,omitempty"`
-	// The description of the coupon.
+	// The zone ID of the instance. You can call the [DescribeZones](~~94527~~) operation to query the most recent zone list.
 	ZoneId *string `json:"ZoneId,omitempty" xml:"ZoneId,omitempty"`
 }
 
@@ -11464,15 +11651,15 @@ func (s *DescribePriceRequest) SetZoneId(v string) *DescribePriceRequest {
 }
 
 type DescribePriceResponseBody struct {
-	// The number of instances that you want to purchase. Valid values: **1** to **30**.
-	//
-	// >  Default value: **1**.
+	// The order information.
 	Order *DescribePriceResponseBodyOrder `json:"Order,omitempty" xml:"Order,omitempty" type:"Struct"`
-	// Details about coupons.
+	// The parameters of the order. This parameter is returned when OrderParamOut is set to `true`.
 	OrderParams *string `json:"OrderParams,omitempty" xml:"OrderParams,omitempty"`
-	// A JSON string that contains multiple instances. For more information, see [Description of the Instances parameter in the DescribePrice API operation](~~161811~~).
-	RequestId *string                             `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	Rules     *DescribePriceResponseBodyRules     `json:"Rules,omitempty" xml:"Rules,omitempty" type:"Struct"`
+	// The ID of the request.
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// Details about promotion rules.
+	Rules *DescribePriceResponseBodyRules `json:"Rules,omitempty" xml:"Rules,omitempty" type:"Struct"`
+	// Details about rules that match the coupon.
 	SubOrders *DescribePriceResponseBodySubOrders `json:"SubOrders,omitempty" xml:"SubOrders,omitempty" type:"Struct"`
 }
 
@@ -11510,23 +11697,19 @@ func (s *DescribePriceResponseBody) SetSubOrders(v *DescribePriceResponseBodySub
 }
 
 type DescribePriceResponseBodyOrder struct {
-	// Queries the fees that you must pay when you create, upgrade, or renew an ApsaraDB for Redis instance.
+	// Details about coupons.
 	Coupons *DescribePriceResponseBodyOrderCoupons `json:"Coupons,omitempty" xml:"Coupons,omitempty" type:"Struct"`
-	// The order type. Valid values:
-	//
-	// *   **BUY**
-	// *   **UPGRADE**
-	// *   **RENEW**
-	// *   **CONVERT**
+	// The currency used for payment. A value of CNY is used when the order was generated on the China site (aliyun.com), and a value of USD is used when the order was generated on the international site (alibabacloud.com).
 	Currency *string `json:"Currency,omitempty" xml:"Currency,omitempty"`
-	// The order information.
+	// The discount amount of the order.
 	DiscountAmount *string `json:"DiscountAmount,omitempty" xml:"DiscountAmount,omitempty"`
-	// The name of the coupon.
+	// The service fees of the order.
 	HandlingFeeAmount *string `json:"HandlingFeeAmount,omitempty" xml:"HandlingFeeAmount,omitempty"`
-	// The coupon number.
-	OriginalAmount *string                                `json:"OriginalAmount,omitempty" xml:"OriginalAmount,omitempty"`
-	RuleIds        *DescribePriceResponseBodyOrderRuleIds `json:"RuleIds,omitempty" xml:"RuleIds,omitempty" type:"Struct"`
-	// The ID of the request.
+	// The original price of the order.
+	OriginalAmount *string `json:"OriginalAmount,omitempty" xml:"OriginalAmount,omitempty"`
+	// Details about promotion rule IDs.
+	RuleIds *DescribePriceResponseBodyOrderRuleIds `json:"RuleIds,omitempty" xml:"RuleIds,omitempty" type:"Struct"`
+	// The transaction price of the order.
 	TradeAmount *string `json:"TradeAmount,omitempty" xml:"TradeAmount,omitempty"`
 }
 
@@ -11591,10 +11774,14 @@ func (s *DescribePriceResponseBodyOrderCoupons) SetCoupon(v []*DescribePriceResp
 }
 
 type DescribePriceResponseBodyOrderCouponsCoupon struct {
-	CouponNo    *string `json:"CouponNo,omitempty" xml:"CouponNo,omitempty"`
+	// The coupon number.
+	CouponNo *string `json:"CouponNo,omitempty" xml:"CouponNo,omitempty"`
+	// The description of the coupon.
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
-	IsSelected  *string `json:"IsSelected,omitempty" xml:"IsSelected,omitempty"`
-	Name        *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// Indicates whether the coupon was selected.
+	IsSelected *string `json:"IsSelected,omitempty" xml:"IsSelected,omitempty"`
+	// The name of the coupon.
+	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
 }
 
 func (s DescribePriceResponseBodyOrderCouponsCoupon) String() string {
@@ -11660,9 +11847,12 @@ func (s *DescribePriceResponseBodyRules) SetRule(v []*DescribePriceResponseBodyR
 }
 
 type DescribePriceResponseBodyRulesRule struct {
-	Name       *string `json:"Name,omitempty" xml:"Name,omitempty"`
-	RuleDescId *int64  `json:"RuleDescId,omitempty" xml:"RuleDescId,omitempty"`
-	Title      *string `json:"Title,omitempty" xml:"Title,omitempty"`
+	// The name of the rule.
+	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// The ID of the rule.
+	RuleDescId *int64 `json:"RuleDescId,omitempty" xml:"RuleDescId,omitempty"`
+	// The title of the rule.
+	Title *string `json:"Title,omitempty" xml:"Title,omitempty"`
 }
 
 func (s DescribePriceResponseBodyRulesRule) String() string {
@@ -11706,11 +11896,16 @@ func (s *DescribePriceResponseBodySubOrders) SetSubOrder(v []*DescribePriceRespo
 }
 
 type DescribePriceResponseBodySubOrdersSubOrder struct {
-	DiscountAmount *string                                            `json:"DiscountAmount,omitempty" xml:"DiscountAmount,omitempty"`
-	InstanceId     *string                                            `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	OriginalAmount *string                                            `json:"OriginalAmount,omitempty" xml:"OriginalAmount,omitempty"`
-	RuleIds        *DescribePriceResponseBodySubOrdersSubOrderRuleIds `json:"RuleIds,omitempty" xml:"RuleIds,omitempty" type:"Struct"`
-	TradeAmount    *string                                            `json:"TradeAmount,omitempty" xml:"TradeAmount,omitempty"`
+	// The discount amount of the order.
+	DiscountAmount *string `json:"DiscountAmount,omitempty" xml:"DiscountAmount,omitempty"`
+	// The ID of the instance.
+	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	// The original price of the order.
+	OriginalAmount *string `json:"OriginalAmount,omitempty" xml:"OriginalAmount,omitempty"`
+	// Details about promotion rule IDs.
+	RuleIds *DescribePriceResponseBodySubOrdersSubOrderRuleIds `json:"RuleIds,omitempty" xml:"RuleIds,omitempty" type:"Struct"`
+	// The transaction price of the order.
+	TradeAmount *string `json:"TradeAmount,omitempty" xml:"TradeAmount,omitempty"`
 }
 
 func (s DescribePriceResponseBodySubOrdersSubOrder) String() string {
@@ -11984,15 +12179,19 @@ type DescribeRoleZoneInfoRequest struct {
 	InstanceId   *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
 	OwnerAccount *string `json:"OwnerAccount,omitempty" xml:"OwnerAccount,omitempty"`
 	OwnerId      *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
-	// The minor version of the node.
+	// The number of the page to return. The value must be an integer that is greater than **0**. Default value: **1**.
 	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
-	// The operation that you want to perform. Set the value to **DescribeRoleZoneInfo**.
+	// The number of entries to return on each page. Valid values: **10**, **20**, and **50**. Default value: **10**.
 	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	// The current bandwidth of the node, which consists of the default bandwidth and the increased bandwidth. Unit: MB/s.
+	// The type of the node to query. Default value: 1. Valid values:
 	//
-	// >
-	// *   You can call the [EnableAdditionalBandwidth](~~206173~~) operation to specify the increased bandwidth.
-	// *   You can also use this parameter to calculate the increased bandwidth. For example, if the default bandwidth of the node is 96 MB/s and the returned value of this parameter is 100, the increased bandwidth is 4 MB/s.
+	// *   **0**: proxy node
+	//
+	//     **
+	//
+	//     **Note**This parameter is supported only for cluster and read/write splitting instances.
+	//
+	// *   **1**: data node
 	QueryType            *int32  `json:"QueryType,omitempty" xml:"QueryType,omitempty"`
 	ResourceOwnerAccount *string `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
 	ResourceOwnerId      *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
@@ -12860,7 +13059,7 @@ func (s *DescribeSecurityIpsResponse) SetBody(v *DescribeSecurityIpsResponseBody
 type DescribeSlowLogRecordsRequest struct {
 	// The name of the database.
 	DBName *string `json:"DBName,omitempty" xml:"DBName,omitempty"`
-	// The end of the time range to query. The end time must be later than the start time. The time range cannot exceed one day. We recommend that you set the time range to 1 hour. Specify the time in the *yyyy-MM-dd*T*HH:mm*Z format. The time must be in UTC.
+	// The end of the time range to query. The end time must be later than the start time. The time range cannot exceed one day. We recommend that you specify 1 hour. Specify the time in the *yyyy-MM-dd*T*HH:mm*Z format. The time must be in UTC.
 	EndTime *string `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
 	// The ID of the instance.
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
@@ -12991,7 +13190,7 @@ type DescribeSlowLogRecordsResponseBody struct {
 	Engine *string `json:"Engine,omitempty" xml:"Engine,omitempty"`
 	// The ID of the instance.
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	// Details of slow log entries.
+	// The slow log entries.
 	Items *DescribeSlowLogRecordsResponseBodyItems `json:"Items,omitempty" xml:"Items,omitempty" type:"Struct"`
 	// The page number of the returned page.
 	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
@@ -13090,11 +13289,11 @@ type DescribeSlowLogRecordsResponseBodyItemsLogRecords struct {
 	DataBaseName *string `json:"DataBaseName,omitempty" xml:"DataBaseName,omitempty"`
 	// The amount of time consumed to execute the slow query statement. Unit: microseconds.
 	ElapsedTime *int64 `json:"ElapsedTime,omitempty" xml:"ElapsedTime,omitempty"`
-	// The start time when the slow query statement was executed. The time is displayed in the yyyy-MM-ddTHH:mm:ssZ format.
+	// The start time when the slow query statement was executed. The time is displayed in the YYYY-MM-DDTHH:mm:ssZ format.
 	ExecuteTime *string `json:"ExecuteTime,omitempty" xml:"ExecuteTime,omitempty"`
 	// The IP address of the client.
 	IPAddress *string `json:"IPAddress,omitempty" xml:"IPAddress,omitempty"`
-	// The ID of the node.
+	// The node ID.
 	NodeId *string `json:"NodeId,omitempty" xml:"NodeId,omitempty"`
 }
 
@@ -13187,9 +13386,9 @@ type DescribeTasksRequest struct {
 	InstanceId   *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
 	OwnerAccount *string `json:"OwnerAccount,omitempty" xml:"OwnerAccount,omitempty"`
 	OwnerId      *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
-	// The ID of the task.
+	// The number of the page to return. The value must be an integer that is greater than **0**. Default value: **1**.
 	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
-	// The operation that you want to perform. Set the value to **DescribeTasks**.
+	// The number of entries to return on each page. Valid values: **30**, **50**, and **100**. Default value: **30**.
 	PageSize             *int32  `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
 	ResourceOwnerAccount *string `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
 	ResourceOwnerId      *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
@@ -13430,9 +13629,10 @@ func (s *DescribeTasksResponse) SetBody(v *DescribeTasksResponseBody) *DescribeT
 }
 
 type DescribeZonesRequest struct {
-	AcceptLanguage       *string `json:"AcceptLanguage,omitempty" xml:"AcceptLanguage,omitempty"`
-	OwnerAccount         *string `json:"OwnerAccount,omitempty" xml:"OwnerAccount,omitempty"`
-	OwnerId              *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
+	AcceptLanguage *string `json:"AcceptLanguage,omitempty" xml:"AcceptLanguage,omitempty"`
+	OwnerAccount   *string `json:"OwnerAccount,omitempty" xml:"OwnerAccount,omitempty"`
+	OwnerId        *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
+	// The region ID.
 	RegionId             *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 	ResourceOwnerAccount *string `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
 	ResourceOwnerId      *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
@@ -13483,8 +13683,9 @@ func (s *DescribeZonesRequest) SetSecurityToken(v string) *DescribeZonesRequest 
 }
 
 type DescribeZonesResponseBody struct {
-	RequestId *string                         `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	Zones     *DescribeZonesResponseBodyZones `json:"Zones,omitempty" xml:"Zones,omitempty" type:"Struct"`
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The queried zones.
+	Zones *DescribeZonesResponseBodyZones `json:"Zones,omitempty" xml:"Zones,omitempty" type:"Struct"`
 }
 
 func (s DescribeZonesResponseBody) String() string {
@@ -13523,12 +13724,24 @@ func (s *DescribeZonesResponseBodyZones) SetKVStoreZone(v []*DescribeZonesRespon
 }
 
 type DescribeZonesResponseBodyZonesKVStoreZone struct {
-	Disabled      *bool   `json:"Disabled,omitempty" xml:"Disabled,omitempty"`
-	IsRds         *bool   `json:"IsRds,omitempty" xml:"IsRds,omitempty"`
-	RegionId      *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	SwitchNetwork *bool   `json:"SwitchNetwork,omitempty" xml:"SwitchNetwork,omitempty"`
-	ZoneId        *string `json:"ZoneId,omitempty" xml:"ZoneId,omitempty"`
-	ZoneName      *string `json:"ZoneName,omitempty" xml:"ZoneName,omitempty"`
+	// Indicates whether ApsaraDB for Redis instances can be created in the current zone. Valid values:
+	//
+	// *   **true**: ApsaraDB for Redis instances cannot be created in the current zone.
+	// *   **false**: ApsaraDB for Redis instances can be created in the current zone.
+	Disabled *bool `json:"Disabled,omitempty" xml:"Disabled,omitempty"`
+	// Indicates whether the zone is managed by ApsaraDB RDS. The return value of this parameter is **true** in ApsaraDB for Redis.
+	IsRds *bool `json:"IsRds,omitempty" xml:"IsRds,omitempty"`
+	// The ID of the region.
+	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	// Indicates whether the network type of the instance can be changed from the classic network to Virtual Private Cloud (VPC). Valid values:
+	//
+	// *   **true**: The network type of the instance can be changed from the classic network to VPC.
+	// *   **false**: The network type of the instance cannot be changed from the classic network to VPC.
+	SwitchNetwork *bool `json:"SwitchNetwork,omitempty" xml:"SwitchNetwork,omitempty"`
+	// The ID of the zone within the specified region.
+	ZoneId *string `json:"ZoneId,omitempty" xml:"ZoneId,omitempty"`
+	// The name of the zone within the specified region.
+	ZoneName *string `json:"ZoneName,omitempty" xml:"ZoneName,omitempty"`
 }
 
 func (s DescribeZonesResponseBodyZonesKVStoreZone) String() string {
@@ -13783,7 +13996,12 @@ func (s *EnableAdditionalBandwidthResponse) SetBody(v *EnableAdditionalBandwidth
 }
 
 type FlushExpireKeysRequest struct {
-	// The ID of the request.
+	// The time when to delete the expired keys. Default value: Immediately. Valid values:
+	//
+	// *   **Immediately**: deletes the keys immediately.
+	// *   **MaintainTime**: deletes the keys during the maintenance window.
+	//
+	// > You can call the [ModifyInstanceMaintainTime](~~61000~~) operation to modify the maintenance window of an ApsaraDB for Redis instance.
 	EffectiveTime *string `json:"EffectiveTime,omitempty" xml:"EffectiveTime,omitempty"`
 	// The ID of the task.
 	InstanceId           *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
@@ -13991,7 +14209,9 @@ func (s *FlushInstanceResponse) SetBody(v *FlushInstanceResponseBody) *FlushInst
 }
 
 type FlushInstanceForDBRequest struct {
-	DbIndex              *int32  `json:"DbIndex,omitempty" xml:"DbIndex,omitempty"`
+	// The index number of the database. Valid values: 0 to 255.
+	DbIndex *int32 `json:"DbIndex,omitempty" xml:"DbIndex,omitempty"`
+	// The instance ID. You can call the [DescribeInstances](~~60933~~) operation to query the ID of the instance.
 	InstanceId           *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
 	OwnerAccount         *string `json:"OwnerAccount,omitempty" xml:"OwnerAccount,omitempty"`
 	OwnerId              *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
@@ -14044,6 +14264,7 @@ func (s *FlushInstanceForDBRequest) SetSecurityToken(v string) *FlushInstanceFor
 }
 
 type FlushInstanceForDBResponseBody struct {
+	// The ID of the request.
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -14855,14 +15076,18 @@ func (s *ModifyAccountPasswordResponse) SetBody(v *ModifyAccountPasswordResponse
 }
 
 type ModifyActiveOperationTaskRequest struct {
-	// The ID of the request.
+	// The ID of the O\&M task. Separate multiple IDs with commas (,).
+	//
+	// > You can call the [DescribeActiveOperationTask](~~197387~~) operation to query the ID of an O\&M task.
 	Ids                  *string `json:"Ids,omitempty" xml:"Ids,omitempty"`
 	OwnerAccount         *string `json:"OwnerAccount,omitempty" xml:"OwnerAccount,omitempty"`
 	OwnerId              *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
 	ResourceOwnerAccount *string `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
 	ResourceOwnerId      *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
 	SecurityToken        *string `json:"SecurityToken,omitempty" xml:"SecurityToken,omitempty"`
-	// The operation that you want to perform. Set the value to: **ModifyActiveOperationTask**.
+	// The scheduled switchover time to be specified. Specify the time in the ISO 8601 standard in the *yyyy-MM-dd*T*HH:mm:ss*Z format. The time must be in UTC.
+	//
+	// > The time cannot be later than the latest operation time. You can call the [DescribeActiveOperationTask](~~197387~~) operation to obtain the latest operation time, which is the value of the **Deadline** parameter in the response.
 	SwitchTime *string `json:"SwitchTime,omitempty" xml:"SwitchTime,omitempty"`
 }
 
@@ -14910,11 +15135,9 @@ func (s *ModifyActiveOperationTaskRequest) SetSwitchTime(v string) *ModifyActive
 }
 
 type ModifyActiveOperationTaskResponseBody struct {
-	// The scheduled switchover time to be specified. Specify the time in the *yyyy-MM-dd*T*HH:mm:ss*Z format. The time must be in UTC.
-	//
-	// >  The time cannot be later than the latest operation time. You can call the [DescribeActiveOperationTask](~~197387~~) operation. The **Deadline** parameter in the response indicates the latest operation time.
+	// The ID of the O\&M task. IDs are separated by commas (,).
 	Ids *string `json:"Ids,omitempty" xml:"Ids,omitempty"`
-	// Modifies the scheduled switchover time of an operations and maintenance (O&M) task.
+	// The ID of the request.
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -14966,15 +15189,25 @@ func (s *ModifyActiveOperationTaskResponse) SetBody(v *ModifyActiveOperationTask
 }
 
 type ModifyAuditLogConfigRequest struct {
+	// Specifies whether to enable the audit log feature. Default value: true. Valid values:
+	//
+	// *   **true**: enables the audit log feature.
+	// *   **false**: disables the audit log feature.
+	//
+	// > If the instance uses the [cluster architecture](~~52228~~) or [read/write splitting architecture](~~62870~~), the audit log feature is enabled or disabled for both the data nodes and proxy nodes. You cannot separately enable the audit log feature for the data nodes or proxy nodes.
 	DbAudit *bool `json:"DbAudit,omitempty" xml:"DbAudit,omitempty"`
-	// The ID of the request.
+	// The ID of the instance. You can call the [DescribeInstances](~~60933~~) operation to query the ID of the instance.
 	InstanceId           *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
 	OwnerAccount         *string `json:"OwnerAccount,omitempty" xml:"OwnerAccount,omitempty"`
 	OwnerId              *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
 	ResourceOwnerAccount *string `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
 	ResourceOwnerId      *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
-	Retention            *int32  `json:"Retention,omitempty" xml:"Retention,omitempty"`
-	SecurityToken        *string `json:"SecurityToken,omitempty" xml:"SecurityToken,omitempty"`
+	// The retention period of audit logs. Valid values: **1** to **365**. Unit: days.
+	//
+	// > *   This parameter is required only if the **DbAudit** parameter is set to **true**.
+	// > *   The value of this parameter takes effect for all ApsaraDB for Redis instances in the current region.
+	Retention     *int32  `json:"Retention,omitempty" xml:"Retention,omitempty"`
+	SecurityToken *string `json:"SecurityToken,omitempty" xml:"SecurityToken,omitempty"`
 }
 
 func (s ModifyAuditLogConfigRequest) String() string {
@@ -15026,6 +15259,7 @@ func (s *ModifyAuditLogConfigRequest) SetSecurityToken(v string) *ModifyAuditLog
 }
 
 type ModifyAuditLogConfigResponseBody struct {
+	// The ID of the request.
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -15072,15 +15306,36 @@ func (s *ModifyAuditLogConfigResponse) SetBody(v *ModifyAuditLogConfigResponseBo
 }
 
 type ModifyBackupPolicyRequest struct {
-	EnableBackupLog       *int32  `json:"EnableBackupLog,omitempty" xml:"EnableBackupLog,omitempty"`
-	InstanceId            *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	OwnerAccount          *string `json:"OwnerAccount,omitempty" xml:"OwnerAccount,omitempty"`
-	OwnerId               *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
+	// Enables or disables the data flashback feature for the instance. Valid values:
+	//
+	// *   **1**: enables the data flashback feature. Before you can use data flashback, you must make sure that AOF persistence is enabled for the instance (`appendonly` set to `yes`).
+	// *   **0** (default): disables the data flashback feature.
+	//
+	// > This parameter is available only for Tair DRAM-based and persistent memory-optimized instances. For more information, see [Data flashback](~~443784~~).
+	EnableBackupLog *int32 `json:"EnableBackupLog,omitempty" xml:"EnableBackupLog,omitempty"`
+	// The ID of the instance.
+	InstanceId   *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	OwnerAccount *string `json:"OwnerAccount,omitempty" xml:"OwnerAccount,omitempty"`
+	OwnerId      *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
+	// The days of the week to back up data. Valid values:
+	//
+	// *   **Monday**: every Monday
+	// *   **Tuesday**: every Tuesday
+	// *   **Wednesday**: every Wednesday
+	// *   **Thursday**: every Thursday
+	// *   **Friday**: every Friday
+	// *   **Saturday**: every Saturday
+	// *   **Sunday**: every Sunday
+	//
+	// >  Separate multiple options with commas (,).
 	PreferredBackupPeriod *string `json:"PreferredBackupPeriod,omitempty" xml:"PreferredBackupPeriod,omitempty"`
-	PreferredBackupTime   *string `json:"PreferredBackupTime,omitempty" xml:"PreferredBackupTime,omitempty"`
-	ResourceOwnerAccount  *string `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
-	ResourceOwnerId       *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
-	SecurityToken         *string `json:"SecurityToken,omitempty" xml:"SecurityToken,omitempty"`
+	// The time range to back up data. Specify the time in the ISO 8601 standard in the *HH:mm*Z-*HH:mm*Z format. The time must be in UTC.
+	//
+	// >  The beginning and end of the time range must be on the hour. The duration must be an hour.
+	PreferredBackupTime  *string `json:"PreferredBackupTime,omitempty" xml:"PreferredBackupTime,omitempty"`
+	ResourceOwnerAccount *string `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
+	ResourceOwnerId      *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
+	SecurityToken        *string `json:"SecurityToken,omitempty" xml:"SecurityToken,omitempty"`
 }
 
 func (s ModifyBackupPolicyRequest) String() string {
@@ -15137,6 +15392,7 @@ func (s *ModifyBackupPolicyRequest) SetSecurityToken(v string) *ModifyBackupPoli
 }
 
 type ModifyBackupPolicyResponseBody struct {
+	// The ID of the request.
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -15313,20 +15569,20 @@ func (s *ModifyDBInstanceConnectionStringResponse) SetBody(v *ModifyDBInstanceCo
 }
 
 type ModifyInstanceAttributeRequest struct {
-	// The new password for the default account. The default account is named after the instance ID. Default account example: r-bp10noxlhcoim2****.
-	//
-	// >  The password must be 8 to 32 characters in length and contain at least three of the following character types: uppercase letters, lowercase letters, digits, and special characters. Special characters include `! @ # $ % ^ & * ( ) _ + - =`
+	// The ID of the instance.
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	// The release protection state of the instance. Valid values:
-	//
-	// *   **true**: The release protection is enabled.
-	// *   **false**: The release protection is disabled.
-	//
-	// >  This parameter is available only for pay-as-you-go instances.
+	// The new name of the instance. The name must be 2 to 80 characters in length. The name must start with a letter and cannot contain spaces and the following special characters: `@ / : = " < > { [ ] }`
 	InstanceName *string `json:"InstanceName,omitempty" xml:"InstanceName,omitempty"`
-	// The operation that you want to perform. Set the value to **ModifyInstanceAttribute**.
+	// [The release protection state of the instance.](~~165005~~) Valid values:
+	//
+	// *   **true**: enabled
+	// *   **false**: disabled
+	//
+	// > This parameter is available only for pay-as-you-go instances.
 	InstanceReleaseProtection *bool `json:"InstanceReleaseProtection,omitempty" xml:"InstanceReleaseProtection,omitempty"`
-	// The ID of the request.
+	// The new password for the default account. The default account is named after the instance ID. Example: r-bp10noxlhcoim2\*\*\*\*.
+	//
+	// > The password must be 8 to 32 characters in length and contain at least three of the following character types: uppercase letters, lowercase letters, digits, and special characters. These special characters include `! @ # $ % ^ & * ( ) _ + - =`
 	NewPassword          *string `json:"NewPassword,omitempty" xml:"NewPassword,omitempty"`
 	OwnerAccount         *string `json:"OwnerAccount,omitempty" xml:"OwnerAccount,omitempty"`
 	OwnerId              *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
@@ -15389,7 +15645,7 @@ func (s *ModifyInstanceAttributeRequest) SetSecurityToken(v string) *ModifyInsta
 }
 
 type ModifyInstanceAttributeResponseBody struct {
-	// Modifies the attributes of an ApsaraDB for Redis instance, such as the name, password, and state of release protection.
+	// The ID of the request.
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -15554,7 +15810,11 @@ func (s *ModifyInstanceAutoRenewalAttributeResponse) SetBody(v *ModifyInstanceAu
 }
 
 type ModifyInstanceConfigRequest struct {
-	Config               *string `json:"Config,omitempty" xml:"Config,omitempty"`
+	// The configuration parameters of the instance in the JSON format.
+	//
+	// > For more information, see [Supported parameters](~~259681~~).
+	Config *string `json:"Config,omitempty" xml:"Config,omitempty"`
+	// The ID of the instance.
 	InstanceId           *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
 	OwnerAccount         *string `json:"OwnerAccount,omitempty" xml:"OwnerAccount,omitempty"`
 	OwnerId              *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
@@ -15607,6 +15867,7 @@ func (s *ModifyInstanceConfigRequest) SetSecurityToken(v string) *ModifyInstance
 }
 
 type ModifyInstanceConfigResponseBody struct {
+	// The ID of the request.
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -15653,8 +15914,13 @@ func (s *ModifyInstanceConfigResponse) SetBody(v *ModifyInstanceConfigResponseBo
 }
 
 type ModifyInstanceMaintainTimeRequest struct {
-	InstanceId           *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	MaintainEndTime      *string `json:"MaintainEndTime,omitempty" xml:"MaintainEndTime,omitempty"`
+	// The ID of the instance.
+	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	// The end time of the maintenance window. The time is in the *HH:mm*Z format. The time is displayed in UTC. For example, if you want the maintenance to end at 2:00 (UTC+8), set this parameter to `18:00Z`.
+	//
+	// > The end time must be one hour later than the start time. For example, if the value of the MaintainStartTime parameter is `17:00Z`, the value of the MaintainEndTime parameter must be `18:00Z`.
+	MaintainEndTime *string `json:"MaintainEndTime,omitempty" xml:"MaintainEndTime,omitempty"`
+	// The start time of the maintenance window. The time is in the *HH:mm*Z format. The time is displayed in UTC. For example, if you want the maintenance to start at 1:00 (UTC+8), set this parameter to `17:00Z`. After you call the API operation, you can view the actual time in the ApsaraDB for Redis console. For more information, see [Set a maintenance window](~~55252~~).
 	MaintainStartTime    *string `json:"MaintainStartTime,omitempty" xml:"MaintainStartTime,omitempty"`
 	OwnerAccount         *string `json:"OwnerAccount,omitempty" xml:"OwnerAccount,omitempty"`
 	OwnerId              *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
@@ -15712,6 +15978,7 @@ func (s *ModifyInstanceMaintainTimeRequest) SetSecurityToken(v string) *ModifyIn
 }
 
 type ModifyInstanceMaintainTimeResponseBody struct {
+	// The ID of the request.
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -15758,11 +16025,16 @@ func (s *ModifyInstanceMaintainTimeResponse) SetBody(v *ModifyInstanceMaintainTi
 }
 
 type ModifyInstanceMajorVersionRequest struct {
-	// The major version to which you want to upgrade the instance. Valid values: **4.0** and **5.0**.
+	// The time when the major version is upgraded. Valid values:
+	//
+	// *   **Immediately**: immediately upgrades the major version. This is the default value.
+	// *   **MaintainTime**: upgrades the major version in the maintenance window.
+	//
+	// >  You can call the [ModifyInstanceMaintainTime](~~61000~~) operation to modify the maintenance window of an ApsaraDB for Redis instance.
 	EffectiveTime *string `json:"EffectiveTime,omitempty" xml:"EffectiveTime,omitempty"`
-	// The ID of the request.
+	// The ID of the instance.
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	// The operation that you want to perform. Set the value to **ModifyInstanceMajorVersion**.
+	// The major version to which you want to upgrade the instance. Valid values: **4.0** and **5.0**.
 	MajorVersion         *string `json:"MajorVersion,omitempty" xml:"MajorVersion,omitempty"`
 	OwnerAccount         *string `json:"OwnerAccount,omitempty" xml:"OwnerAccount,omitempty"`
 	OwnerId              *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
@@ -15820,6 +16092,7 @@ func (s *ModifyInstanceMajorVersionRequest) SetSecurityToken(v string) *ModifyIn
 }
 
 type ModifyInstanceMajorVersionResponseBody struct {
+	// The ID of the request.
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -15866,11 +16139,16 @@ func (s *ModifyInstanceMajorVersionResponse) SetBody(v *ModifyInstanceMajorVersi
 }
 
 type ModifyInstanceMinorVersionRequest struct {
-	// The minor version to which you want to update. Default value: **latest_version**.
+	// The time when the minor version is updated. Valid values:
+	//
+	// *   **Immediately**: The minor version is immediately updated.
+	// *   **MaintainTime**: The minor version is updated within the maintenance window.
+	//
+	// >  You can call the [ModifyInstanceMaintainTime](~~61000~~) operation to modify the maintenance window of an ApsaraDB for Redis instance.
 	EffectiveTime *string `json:"EffectiveTime,omitempty" xml:"EffectiveTime,omitempty"`
-	// The ID of the request.
+	// The ID of the instance.
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	// The operation that you want to perform. Set the value to **ModifyInstanceMinorVersion**.
+	// The minor version to which you want to update. Default value: **latest_version**.
 	Minorversion         *string `json:"Minorversion,omitempty" xml:"Minorversion,omitempty"`
 	OwnerAccount         *string `json:"OwnerAccount,omitempty" xml:"OwnerAccount,omitempty"`
 	OwnerId              *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
@@ -15928,7 +16206,7 @@ func (s *ModifyInstanceMinorVersionRequest) SetSecurityToken(v string) *ModifyIn
 }
 
 type ModifyInstanceMinorVersionResponseBody struct {
-	// Upgrades the minor version of an ApsaraDB for Redis instance.
+	// The ID of the request.
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -16285,7 +16563,11 @@ type ModifyInstanceSSLRequest struct {
 	OwnerId              *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
 	ResourceOwnerAccount *string `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
 	ResourceOwnerId      *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
-	// The ID of the request.
+	// Specifies whether to enable TLS (SSL) encryption. Valid values:
+	//
+	// *   **Disable**: disables SSL encryption.
+	// *   **Enable**: enables SSL encryption.
+	// *   **Update**: updates the SSL certificate.
 	SSLEnabled    *string `json:"SSLEnabled,omitempty" xml:"SSLEnabled,omitempty"`
 	SecurityToken *string `json:"SecurityToken,omitempty" xml:"SecurityToken,omitempty"`
 }
@@ -16394,28 +16676,57 @@ func (s *ModifyInstanceSSLResponse) SetBody(v *ModifyInstanceSSLResponseBody) *M
 }
 
 type ModifyInstanceSpecRequest struct {
-	AutoPay       *bool   `json:"AutoPay,omitempty" xml:"AutoPay,omitempty"`
-	BusinessInfo  *string `json:"BusinessInfo,omitempty" xml:"BusinessInfo,omitempty"`
-	ClientToken   *string `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
-	CouponNo      *string `json:"CouponNo,omitempty" xml:"CouponNo,omitempty"`
+	// Specifies whether to enable auto-renewal. Default value: true. Valid values:
+	//
+	// *   **true**: enables auto-renewal.
+	// *   **false**: disables auto-renewal. If you set this parameter to **false**, the instance must be manually renewed before it expires. For more information, see [Renew an instance](~~26352~~).
+	AutoPay *bool `json:"AutoPay,omitempty" xml:"AutoPay,omitempty"`
+	// The ID of the promotional event or business information.
+	BusinessInfo *string `json:"BusinessInfo,omitempty" xml:"BusinessInfo,omitempty"`
+	// The client token that is used to ensure the idempotence of the request. You can use the client to generate the value, but you must make sure that it is unique among different requests. The token can contain only ASCII characters and cannot exceed 64 characters in length.
+	ClientToken *string `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
+	// The coupon code. Default value: `youhuiquan_promotion_option_id_for_blank`.
+	CouponNo *string `json:"CouponNo,omitempty" xml:"CouponNo,omitempty"`
+	// The time when to change the configurations. Default value: Immediately. Valid values:
+	//
+	// *   **Immediately**: The configurations are immediately changed.
+	// *   **MaintainTime**: The configurations are changed within the maintenance window. You can call the [ModifyInstanceMaintainTime](~~61000~~) operation to change the maintenance window.
 	EffectiveTime *string `json:"EffectiveTime,omitempty" xml:"EffectiveTime,omitempty"`
 	ForceTrans    *bool   `json:"ForceTrans,omitempty" xml:"ForceTrans,omitempty"`
-	ForceUpgrade  *bool   `json:"ForceUpgrade,omitempty" xml:"ForceUpgrade,omitempty"`
+	// Specifies whether to forcefully change the configurations of the instance. Default value: true. Valid values:
+	//
+	// *   **false**: The system does not forcefully change the configurations.
+	// *   **true**: The system forcefully changes the configurations.
+	ForceUpgrade *bool `json:"ForceUpgrade,omitempty" xml:"ForceUpgrade,omitempty"`
+	// The new instance type. You can call the [DescribeAvailableResource](~~120580~~) operation to query the instance types available for configuration change within the zone to which the instance belongs.
+	//
+	// >  For more information about the instance types, see [Overview](~~26350~~).
 	InstanceClass *string `json:"InstanceClass,omitempty" xml:"InstanceClass,omitempty"`
-	// ModifyInstanceSpec
-	InstanceId    *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	MajorVersion  *string `json:"MajorVersion,omitempty" xml:"MajorVersion,omitempty"`
-	OrderType     *string `json:"OrderType,omitempty" xml:"OrderType,omitempty"`
-	OwnerAccount  *string `json:"OwnerAccount,omitempty" xml:"OwnerAccount,omitempty"`
-	OwnerId       *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
-	ReadOnlyCount *int32  `json:"ReadOnlyCount,omitempty" xml:"ReadOnlyCount,omitempty"`
-	// Changes the configurations of an ApsaraDB for Redis instance.
+	// The ID of the instance. You can call the [DescribeInstances](~~60933~~) operation to query the ID of the instance.
+	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	// The major version to which you want to upgrade. When you change the configurations of an instance, you can upgrade the major version of the instance by setting this parameter. Valid values: **4.0** and **5.0**.
+	MajorVersion *string `json:"MajorVersion,omitempty" xml:"MajorVersion,omitempty"`
+	// The change type. This parameter is required when you change the configurations of a subscription instance. Default value: UPGRADE. Valid values:
+	//
+	// *   **UPGRADE**: upgrades the configurations of a subscription instance.
+	// *   **DOWNGRADE**: downgrades the configurations of a subscription instance.
+	//
+	// > *   To downgrade a subscription instance, you must set this parameter to **DOWNGRADE**.
+	// > *   If the price of an instance increases after its configurations are changed, the instance is upgraded. If the price decreases, the instance is downgraded. For example, the price of an 8 GB read/write splitting instance with five read replicas is higher than that of a 16 GB cluster instance. If you want to change a 16 GB cluster instance to an 8 GB read/write splitting instance with five read replicas, you must upgrade the instance.
+	OrderType    *string `json:"OrderType,omitempty" xml:"OrderType,omitempty"`
+	OwnerAccount *string `json:"OwnerAccount,omitempty" xml:"OwnerAccount,omitempty"`
+	OwnerId      *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
+	// The number of read-only nodes. This parameter is available only for read/write splitting instances that use cloud disks. Valid values: 1 to 5.
+	ReadOnlyCount *int32 `json:"ReadOnlyCount,omitempty" xml:"ReadOnlyCount,omitempty"`
+	// The region ID of the instance. You can call the [DescribeRegions](~~61012~~) operation to query the most recent region list.
 	RegionId             *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 	ResourceOwnerAccount *string `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
 	ResourceOwnerId      *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
 	SecurityToken        *string `json:"SecurityToken,omitempty" xml:"SecurityToken,omitempty"`
-	ShardCount           *int32  `json:"ShardCount,omitempty" xml:"ShardCount,omitempty"`
-	SourceBiz            *string `json:"SourceBiz,omitempty" xml:"SourceBiz,omitempty"`
+	// The number of shards. This parameter is available only for cluster instances that use cloud disks.
+	ShardCount *int32 `json:"ShardCount,omitempty" xml:"ShardCount,omitempty"`
+	// The source of the operation. This parameter is used only for internal maintenance. You do not need to specify this parameter.
+	SourceBiz *string `json:"SourceBiz,omitempty" xml:"SourceBiz,omitempty"`
 }
 
 func (s ModifyInstanceSpecRequest) String() string {
@@ -16527,7 +16838,9 @@ func (s *ModifyInstanceSpecRequest) SetSourceBiz(v string) *ModifyInstanceSpecRe
 }
 
 type ModifyInstanceSpecResponseBody struct {
-	OrderId   *string `json:"OrderId,omitempty" xml:"OrderId,omitempty"`
+	// The ID of the order.
+	OrderId *string `json:"OrderId,omitempty" xml:"OrderId,omitempty"`
+	// The ID of the request.
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -16718,19 +17031,19 @@ func (s *ModifyInstanceTDEResponse) SetBody(v *ModifyInstanceTDEResponseBody) *M
 }
 
 type ModifyInstanceVpcAuthModeRequest struct {
-	// The operation that you want to perform. Set the value to **ModifyInstanceVpcAuthMode**.
+	// The ID of the instance.
 	InstanceId           *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
 	OwnerAccount         *string `json:"OwnerAccount,omitempty" xml:"OwnerAccount,omitempty"`
 	OwnerId              *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
 	ResourceOwnerAccount *string `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
 	ResourceOwnerId      *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
 	SecurityToken        *string `json:"SecurityToken,omitempty" xml:"SecurityToken,omitempty"`
-	// Specifies whether to enable password authentication for access in the VPC. Valid values:
+	// Specifies whether to disable password-free access. Valid values:
 	//
-	// *   **Open**: enables password authentication.
-	// *   **Close**: disables password authentication.
+	// *   **Open**: disables password-free access.
+	// *   **Close**: enables password-free access.
 	//
-	// >  Default value: **Open**.
+	// > The default value is **Open**.
 	VpcAuthMode *string `json:"VpcAuthMode,omitempty" xml:"VpcAuthMode,omitempty"`
 }
 
@@ -16778,6 +17091,7 @@ func (s *ModifyInstanceVpcAuthModeRequest) SetVpcAuthMode(v string) *ModifyInsta
 }
 
 type ModifyInstanceVpcAuthModeResponseBody struct {
+	// The ID of the request.
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -17056,7 +17370,7 @@ func (s *ModifyResourceGroupResponse) SetBody(v *ModifyResourceGroupResponseBody
 }
 
 type ModifySecurityGroupConfigurationRequest struct {
-	// The operation that you want to perform. Set the value to **ModifySecurityGroupConfiguration**.
+	// The ID of the instance.
 	DBInstanceId         *string `json:"DBInstanceId,omitempty" xml:"DBInstanceId,omitempty"`
 	OwnerAccount         *string `json:"OwnerAccount,omitempty" xml:"OwnerAccount,omitempty"`
 	OwnerId              *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
@@ -17111,6 +17425,7 @@ func (s *ModifySecurityGroupConfigurationRequest) SetSecurityToken(v string) *Mo
 }
 
 type ModifySecurityGroupConfigurationResponseBody struct {
+	// The ID of the request.
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -17157,21 +17472,23 @@ func (s *ModifySecurityGroupConfigurationResponse) SetBody(v *ModifySecurityGrou
 }
 
 type ModifySecurityIpsRequest struct {
-	// The ID of the request.
-	InstanceId               *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	ModifyMode               *string `json:"ModifyMode,omitempty" xml:"ModifyMode,omitempty"`
-	OwnerAccount             *string `json:"OwnerAccount,omitempty" xml:"OwnerAccount,omitempty"`
-	OwnerId                  *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
-	ResourceOwnerAccount     *string `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
-	ResourceOwnerId          *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
-	SecurityIpGroupAttribute *string `json:"SecurityIpGroupAttribute,omitempty" xml:"SecurityIpGroupAttribute,omitempty"`
-	// The method of modification. Valid values:
+	// The ID of the instance.
+	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	// The method that is used to modify the whitelist. Valid values:
 	//
-	// *   **Cover**: overwrites the whitelist.
+	// *   **Cover**: overwrites the original whitelist.
 	// *   **Append**: appends data to the whitelist.
 	// *   **Delete**: deletes the whitelist.
+	ModifyMode           *string `json:"ModifyMode,omitempty" xml:"ModifyMode,omitempty"`
+	OwnerAccount         *string `json:"OwnerAccount,omitempty" xml:"OwnerAccount,omitempty"`
+	OwnerId              *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
+	ResourceOwnerAccount *string `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
+	ResourceOwnerId      *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
+	// By default, this parameter is left empty. The attribute of the whitelist. The console does not display the whitelist whose value of this parameter is **hidden**.
+	SecurityIpGroupAttribute *string `json:"SecurityIpGroupAttribute,omitempty" xml:"SecurityIpGroupAttribute,omitempty"`
+	// The name of the whitelist.
 	SecurityIpGroupName *string `json:"SecurityIpGroupName,omitempty" xml:"SecurityIpGroupName,omitempty"`
-	// The operation that you want to perform. Set the value to **ModifySecurityIps**.
+	// The IP addresses in the whitelist. Up to 1,000 IP addresses can be specified in a whitelist. Separate multiple IP addresses with a comma (,). Specify an IP address in the 0.0.0.0/0, 10.23.12.24, or 10.23.12.24/24 format. In CIDR block 10.23.12.24/24, /24 specifies the length of the prefix of an IP address. The prefix length ranges from 1 to 32.
 	SecurityIps   *string `json:"SecurityIps,omitempty" xml:"SecurityIps,omitempty"`
 	SecurityToken *string `json:"SecurityToken,omitempty" xml:"SecurityToken,omitempty"`
 }
@@ -17235,6 +17552,7 @@ func (s *ModifySecurityIpsRequest) SetSecurityToken(v string) *ModifySecurityIps
 }
 
 type ModifySecurityIpsResponseBody struct {
+	// The ID of the request.
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -17985,7 +18303,17 @@ func (s *ResetAccountPasswordResponse) SetBody(v *ResetAccountPasswordResponseBo
 }
 
 type RestartInstanceRequest struct {
-	// The ID of the instance.
+	// The time when you want to restart the instance. Default value: Immediately. Valid values:
+	//
+	// *   **Immediately**: immediately restarts the instance.
+	// *   **MaintainTime**: restarts the instance during the maintenance window.
+	//
+	// Enumeration values:
+	//
+	// *   0
+	// *   1
+	// *   Immediately
+	// *   MaintainTime
 	EffectiveTime *string `json:"EffectiveTime,omitempty" xml:"EffectiveTime,omitempty"`
 	// The operation that you want to perform. Set the value to **RestartInstance**.
 	InstanceId           *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
@@ -17994,7 +18322,13 @@ type RestartInstanceRequest struct {
 	ResourceOwnerAccount *string `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
 	ResourceOwnerId      *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
 	SecurityToken        *string `json:"SecurityToken,omitempty" xml:"SecurityToken,omitempty"`
-	UpgradeMinorVersion  *bool   `json:"UpgradeMinorVersion,omitempty" xml:"UpgradeMinorVersion,omitempty"`
+	// Specifies whether to update the instance to the latest minor version when the instance is restarted. Valid values:
+	//
+	// *   **true**: updates the minor version.
+	// *   **false**: does not update the minor version.
+	//
+	// > The default value is **true**.
+	UpgradeMinorVersion *bool `json:"UpgradeMinorVersion,omitempty" xml:"UpgradeMinorVersion,omitempty"`
 }
 
 func (s RestartInstanceRequest) String() string {
@@ -18131,7 +18465,7 @@ type RestoreInstanceRequest struct {
 	// The restoration mode. Default value: 0. Valid values:
 	//
 	// *   **0**: restores data from the specified backup set.
-	// *   **1**: restores data to a specified point in time. This parameter is available only if the [data flashback](~~148479~~) feature is enabled for the instance. If you specify this value, you must also specify the **RestoreTime** parameter.
+	// *   **1**: restores data to a specified point in time. You can specify this value only if the [data flashback](~~148479~~) feature is enabled for the instance. If you specify this value, you must also specify the **RestoreTime** parameter.
 	RestoreType   *string `json:"RestoreType,omitempty" xml:"RestoreType,omitempty"`
 	SecurityToken *string `json:"SecurityToken,omitempty" xml:"SecurityToken,omitempty"`
 	// The expiration offset time point of a key. Specify the time in the ISO 8601 standard in the yyyy-MM-ddTHH:mmZ format. The time must be in UTC. The key expires after the remaining validity period of the key elapses based on the expiration offset time point.
@@ -18485,11 +18819,12 @@ type SwitchNetworkRequest struct {
 	// The ID of the request.
 	RetainClassic *string `json:"RetainClassic,omitempty" xml:"RetainClassic,omitempty"`
 	SecurityToken *string `json:"SecurityToken,omitempty" xml:"SecurityToken,omitempty"`
-	// The ID of the VPC to which you want to switch. You can call the [DescribeVpcs](~~35739~~) operation to query VPC IDs.
+	// The network type to which you want to switch. Set the value to **VPC**.
 	//
-	// >
-	// *   The VPC and the ApsaraDB for Redis instance must be deployed in the same region.
-	// *   After you set this parameter, you must also set the **VSwitchId** parameter.
+	// Valid values:
+	//
+	// *   CLASSIC
+	// *   VPC
 	TargetNetworkType *string `json:"TargetNetworkType,omitempty" xml:"TargetNetworkType,omitempty"`
 	// The ID of the instance. You can call the [DescribeInstances](~~60933~~) operation to query instance IDs.
 	VSwitchId *string `json:"VSwitchId,omitempty" xml:"VSwitchId,omitempty"`
@@ -18622,10 +18957,7 @@ func (s *SwitchNetworkResponse) SetBody(v *SwitchNetworkResponseBody) *SwitchNet
 }
 
 type SyncDtsStatusRequest struct {
-	// Disables configuration change for the instance. Valid values:
-	//
-	// *   **0**: no
-	// *   **1**: yes. If you attempt to modify the configurations of the instance, the system sends a prompt about the restriction.
+	// The ID of the instance.
 	InstanceId   *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
 	OwnerAccount *string `json:"OwnerAccount,omitempty" xml:"OwnerAccount,omitempty"`
 	OwnerId      *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
@@ -18634,9 +18966,14 @@ type SyncDtsStatusRequest struct {
 	ResourceOwnerAccount *string `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
 	ResourceOwnerId      *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
 	SecurityToken        *string `json:"SecurityToken,omitempty" xml:"SecurityToken,omitempty"`
-	// cn-hangzhou
+	// Disables configuration changes for the instance. Valid values:
+	//
+	// *   **0**: does not disable configuration changes.
+	// *   **1**: disables configuration changes. In this case, if you attempt to modify the configurations of the instance, the system informs you that the operation cannot be performed.
 	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
-	// Disables the configuration change of an ApsaraDB for Redis instance before you use Data Transmission Service (DTS) to migrate or synchronize data of the instance. This prevents migration and synchronization task failures due to the configuration change.
+	// The ID of the DTS instance. You can view the ID in the [DTS console](https://dts.console.aliyun.com/).
+	//
+	// > An ApsaraDB for Redis instance may be involved in multiple data migration or synchronization tasks. If you want to cancel the restriction on the instance, you can specify this parameter to prevent repeated operation calls.
 	TaskId *string `json:"TaskId,omitempty" xml:"TaskId,omitempty"`
 }
 
@@ -18694,7 +19031,7 @@ func (s *SyncDtsStatusRequest) SetTaskId(v string) *SyncDtsStatusRequest {
 }
 
 type SyncDtsStatusResponseBody struct {
-	// The region ID of the instance.
+	// The ID of the request.
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -19145,10 +19482,10 @@ func (s *TransformToPrePaidResponse) SetBody(v *TransformToPrePaidResponseBody) 
 }
 
 type UntagResourcesRequest struct {
-	// Specifies whether to remove all tags from the instance. Default value: false. Valid values:
+	// Specifies whether to remove all tags from the instance. Valid values:
 	//
 	// *   **true**: removes all tags from the instance.
-	// *   **false**: does not remove all tags from the instance.
+	// *   **false** (default): does not remove all tags from the instance.
 	//
 	// > If you specify both this parameter and the **TagKey.N** parameter, this parameter does not take effect.
 	All          *bool   `json:"All,omitempty" xml:"All,omitempty"`
@@ -19462,7 +19799,13 @@ func (client *Client) AddShardingNode(request *AddShardingNodeRequest) (_result 
 }
 
 /**
- * The ID of the instance.
+ * In direct connection mode, you can use private endpoints to bypass proxy nodes and connect to ApsaraDB for Redis instances from clients in the same manner as you connect to native Redis clusters. The direct connection mode can reduce communication overheads and accelerate the response speed. For more information, see [Enable the direct connection mode](~~146901~~).
+ * To call this operation, the instance must meet the following requirements:
+ * *   The instance is an ApsaraDB for Redis cluster instance.
+ * *   The instance is a Community Edition instance that runs Redis 4.0 or 5.0, or an Enhanced Edition instance (Tair) that runs Redis 5.0.
+ * *   The instance is deployed in a virtual private cloud (VPC). If the instance is deployed in the classic network, call the [SwitchNetwork](~~61005~~) operation to change the network type to VPC.
+ * *   SSL encryption is disabled for the instance. If SSL encryption is enabled, you can call the [ModifyInstanceSSL](~~96194~~) operation to disable it.
+ * *   The vSwitch to which the instance is connected has sufficient IP addresses to be allocated. For more information, see [Obtain the number of available IP addresses in the vSwitch to which an ApsaraDB for Redis instance is connected](~~183151~~).
  *
  * @param request AllocateDirectConnectionRequest
  * @param runtime runtime options for this request RuntimeOptions
@@ -19530,7 +19873,13 @@ func (client *Client) AllocateDirectConnectionWithOptions(request *AllocateDirec
 }
 
 /**
- * The ID of the instance.
+ * In direct connection mode, you can use private endpoints to bypass proxy nodes and connect to ApsaraDB for Redis instances from clients in the same manner as you connect to native Redis clusters. The direct connection mode can reduce communication overheads and accelerate the response speed. For more information, see [Enable the direct connection mode](~~146901~~).
+ * To call this operation, the instance must meet the following requirements:
+ * *   The instance is an ApsaraDB for Redis cluster instance.
+ * *   The instance is a Community Edition instance that runs Redis 4.0 or 5.0, or an Enhanced Edition instance (Tair) that runs Redis 5.0.
+ * *   The instance is deployed in a virtual private cloud (VPC). If the instance is deployed in the classic network, call the [SwitchNetwork](~~61005~~) operation to change the network type to VPC.
+ * *   SSL encryption is disabled for the instance. If SSL encryption is enabled, you can call the [ModifyInstanceSSL](~~96194~~) operation to disable it.
+ * *   The vSwitch to which the instance is connected has sufficient IP addresses to be allocated. For more information, see [Obtain the number of available IP addresses in the vSwitch to which an ApsaraDB for Redis instance is connected](~~183151~~).
  *
  * @param request AllocateDirectConnectionRequest
  * @return AllocateDirectConnectionResponse
@@ -19632,7 +19981,8 @@ func (client *Client) AllocateInstancePublicConnection(request *AllocateInstance
 }
 
 /**
- * The operation that you want to perform. Set the value to **CheckCloudResourceAuthorized**.
+ * *   For information about Transparent Data Encryption (TDE) and the usage notes of TDE, see [Enable TDE](~~265913~~).
+ * *   If the ApsaraDB for Redis instance is authorized to use KMS, you can call the [ModifyInstanceTDE](~~302337~~) operation to enable TDE.
  *
  * @param request CheckCloudResourceAuthorizedRequest
  * @param runtime runtime options for this request RuntimeOptions
@@ -19696,7 +20046,8 @@ func (client *Client) CheckCloudResourceAuthorizedWithOptions(request *CheckClou
 }
 
 /**
- * The operation that you want to perform. Set the value to **CheckCloudResourceAuthorized**.
+ * *   For information about Transparent Data Encryption (TDE) and the usage notes of TDE, see [Enable TDE](~~265913~~).
+ * *   If the ApsaraDB for Redis instance is authorized to use KMS, you can call the [ModifyInstanceTDE](~~302337~~) operation to enable TDE.
  *
  * @param request CheckCloudResourceAuthorizedRequest
  * @return CheckCloudResourceAuthorizedResponse
@@ -19713,7 +20064,11 @@ func (client *Client) CheckCloudResourceAuthorized(request *CheckCloudResourceAu
 }
 
 /**
- * The name of the account.
+ * >
+ * *   This operation is supported only for ApsaraDB for Redis instances that run Redis 4.0 or later.
+ * *   The ApsaraDB for Redis instance for which you want to call this operation must be in the running state.
+ * *   You can create up to 18 accounts for an ApsaraDB for Redis instance.
+ * You can also create an account in the ApsaraDB for Redis console. For more information, see [Manage database accounts](~~92665~~).
  *
  * @param request CreateAccountRequest
  * @param runtime runtime options for this request RuntimeOptions
@@ -19793,7 +20148,11 @@ func (client *Client) CreateAccountWithOptions(request *CreateAccountRequest, ru
 }
 
 /**
- * The name of the account.
+ * >
+ * *   This operation is supported only for ApsaraDB for Redis instances that run Redis 4.0 or later.
+ * *   The ApsaraDB for Redis instance for which you want to call this operation must be in the running state.
+ * *   You can create up to 18 accounts for an ApsaraDB for Redis instance.
+ * You can also create an account in the ApsaraDB for Redis console. For more information, see [Manage database accounts](~~92665~~).
  *
  * @param request CreateAccountRequest
  * @return CreateAccountResponse
@@ -19810,7 +20169,7 @@ func (client *Client) CreateAccount(request *CreateAccountRequest) (_result *Cre
 }
 
 /**
- * The ID of the backup job.
+ * You can also back up an instance in the ApsaraDB for Redis console. For more information, see [Backup and recovery](~~43886~~).
  *
  * @param request CreateBackupRequest
  * @param runtime runtime options for this request RuntimeOptions
@@ -19870,7 +20229,7 @@ func (client *Client) CreateBackupWithOptions(request *CreateBackupRequest, runt
 }
 
 /**
- * The ID of the backup job.
+ * You can also back up an instance in the ApsaraDB for Redis console. For more information, see [Backup and recovery](~~43886~~).
  *
  * @param request CreateBackupRequest
  * @return CreateBackupResponse
@@ -19887,7 +20246,13 @@ func (client *Client) CreateBackup(request *CreateBackupRequest) (_result *Creat
 }
 
 /**
- * The operation that you want to perform. Set the value to **CreateCacheAnalysisTask**.
+ * > ApsaraDB for Redis has optimized the cache analytics feature to improve user experience. This API operation is phased out. You can use the new API operation for cache analytics. For more information, see [API operations for cache analytics are upgraded](~~186019~~).
+ * Before you call this operation, make sure that the instance meets the following requirements:
+ * *   The engine version of the instance is Redis 4.0 or later.
+ * *   The instance is a Community Edition instance or an Enhanced Edition (Tair) [DRAM-based instance](~~126164~~).
+ * This feature is unavailable for cloud disk-based cluster instances. For more information, see [Comparison between ApsaraDB for Redis instances that use local disks and those that use cloud disks](~~188068~~).
+ * *   The instance is of the latest minor version. For more information about whether you must update the minor version of an instance, see [How do I check whether the minor version of an ApsaraDB for Redis instance is the latest?](~~129203~~)
+ * After you call this operation, you can call the [DescribeCacheAnalysisReport](~~128808~~) operation to view the analytic results.
  *
  * @param request CreateCacheAnalysisTaskRequest
  * @param runtime runtime options for this request RuntimeOptions
@@ -19947,7 +20312,13 @@ func (client *Client) CreateCacheAnalysisTaskWithOptions(request *CreateCacheAna
 }
 
 /**
- * The operation that you want to perform. Set the value to **CreateCacheAnalysisTask**.
+ * > ApsaraDB for Redis has optimized the cache analytics feature to improve user experience. This API operation is phased out. You can use the new API operation for cache analytics. For more information, see [API operations for cache analytics are upgraded](~~186019~~).
+ * Before you call this operation, make sure that the instance meets the following requirements:
+ * *   The engine version of the instance is Redis 4.0 or later.
+ * *   The instance is a Community Edition instance or an Enhanced Edition (Tair) [DRAM-based instance](~~126164~~).
+ * This feature is unavailable for cloud disk-based cluster instances. For more information, see [Comparison between ApsaraDB for Redis instances that use local disks and those that use cloud disks](~~188068~~).
+ * *   The instance is of the latest minor version. For more information about whether you must update the minor version of an instance, see [How do I check whether the minor version of an ApsaraDB for Redis instance is the latest?](~~129203~~)
+ * After you call this operation, you can call the [DescribeCacheAnalysisReport](~~128808~~) operation to view the analytic results.
  *
  * @param request CreateCacheAnalysisTaskRequest
  * @return CreateCacheAnalysisTaskResponse
@@ -20231,6 +20602,10 @@ func (client *Client) CreateInstanceWithOptions(request *CreateInstanceRequest, 
 
 	if !tea.BoolValue(util.IsUnset(request.OwnerId)) {
 		query["OwnerId"] = request.OwnerId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ParamGroupId)) {
+		query["ParamGroupId"] = request.ParamGroupId
 	}
 
 	if !tea.BoolValue(util.IsUnset(request.Password)) {
@@ -21127,10 +21502,10 @@ func (client *Client) DescribeActiveOperationTask(request *DescribeActiveOperati
 }
 
 /**
- * >  You can call the [ModifyAuditLogConfig](~~130206~~) operation to enable or disable the audit log feature for an ApsaraDB for Redis instance. For more information, see [Enable the new audit log feature](~~102015~~).
- * Before you call this API operation, make sure that the ApsaraDB for Redis instance meets the following requirements:
- * *   The instance is an instance of the ApsaraDB for Redis Community Edition or a performance-enhanced instance of the ApsaraDB for Redis Enhanced Edition (Tair). For more information, see [Performance-enhanced instances](~~126164~~).
- * *   The engine version of the instance is Redis 4.0 or later, and the latest minor version is used. You can call the [DescribeEngineVersion](~~95268~~) operation to check whether the instance uses the latest major version and minor version.
+ * > You can call the [ModifyAuditLogConfig](~~130206~~) operation to enable or disable the audit log feature for an ApsaraDB for Redis instance. For more information, see [Enable the new audit log feature](~~102015~~).
+ * Before you call this operation, make sure that the ApsaraDB for Redis instance meets the following requirements:
+ * *   The instance is an ApsaraDB for Redis Community Edition instance or ApsaraDB for Redis Enhanced Edition (Tair) [DRAM-based instance](~~126164~~).
+ * *   The engine version of the instance is Redis 4.0 or later, and the latest minor version is used. You can call the [DescribeEngineVersion](~~95268~~) operation to check whether the instance uses the latest minor version.
  * *   The audit log feature is enabled for the instance. For more information, see [ModifyAuditLogConfig](~~130206~~).
  *
  * @param request DescribeAuditLogConfigRequest
@@ -21195,10 +21570,10 @@ func (client *Client) DescribeAuditLogConfigWithOptions(request *DescribeAuditLo
 }
 
 /**
- * >  You can call the [ModifyAuditLogConfig](~~130206~~) operation to enable or disable the audit log feature for an ApsaraDB for Redis instance. For more information, see [Enable the new audit log feature](~~102015~~).
- * Before you call this API operation, make sure that the ApsaraDB for Redis instance meets the following requirements:
- * *   The instance is an instance of the ApsaraDB for Redis Community Edition or a performance-enhanced instance of the ApsaraDB for Redis Enhanced Edition (Tair). For more information, see [Performance-enhanced instances](~~126164~~).
- * *   The engine version of the instance is Redis 4.0 or later, and the latest minor version is used. You can call the [DescribeEngineVersion](~~95268~~) operation to check whether the instance uses the latest major version and minor version.
+ * > You can call the [ModifyAuditLogConfig](~~130206~~) operation to enable or disable the audit log feature for an ApsaraDB for Redis instance. For more information, see [Enable the new audit log feature](~~102015~~).
+ * Before you call this operation, make sure that the ApsaraDB for Redis instance meets the following requirements:
+ * *   The instance is an ApsaraDB for Redis Community Edition instance or ApsaraDB for Redis Enhanced Edition (Tair) [DRAM-based instance](~~126164~~).
+ * *   The engine version of the instance is Redis 4.0 or later, and the latest minor version is used. You can call the [DescribeEngineVersion](~~95268~~) operation to check whether the instance uses the latest minor version.
  * *   The audit log feature is enabled for the instance. For more information, see [ModifyAuditLogConfig](~~130206~~).
  *
  * @param request DescribeAuditLogConfigRequest
@@ -21576,6 +21951,14 @@ func (client *Client) DescribeBackupTasks(request *DescribeBackupTasksRequest) (
 	return _result, _err
 }
 
+/**
+ * ## Debugging
+ * [OpenAPI Explorer automatically calculates the signature value. For your convenience, we recommend that you call this operation in OpenAPI Explorer. OpenAPI Explorer dynamically generates the sample code of the operation for different SDKs.](https://api.aliyun.com/#product=R-kvstore\\&api=DescribeBackups\\&type=RPC\\&version=2015-01-01)
+ *
+ * @param request DescribeBackupsRequest
+ * @param runtime runtime options for this request RuntimeOptions
+ * @return DescribeBackupsResponse
+ */
 func (client *Client) DescribeBackupsWithOptions(request *DescribeBackupsRequest, runtime *util.RuntimeOptions) (_result *DescribeBackupsResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -21653,6 +22036,13 @@ func (client *Client) DescribeBackupsWithOptions(request *DescribeBackupsRequest
 	return _result, _err
 }
 
+/**
+ * ## Debugging
+ * [OpenAPI Explorer automatically calculates the signature value. For your convenience, we recommend that you call this operation in OpenAPI Explorer. OpenAPI Explorer dynamically generates the sample code of the operation for different SDKs.](https://api.aliyun.com/#product=R-kvstore\\&api=DescribeBackups\\&type=RPC\\&version=2015-01-01)
+ *
+ * @param request DescribeBackupsRequest
+ * @return DescribeBackupsResponse
+ */
 func (client *Client) DescribeBackups(request *DescribeBackupsRequest) (_result *DescribeBackupsResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &DescribeBackupsResponse{}
@@ -21665,7 +22055,10 @@ func (client *Client) DescribeBackups(request *DescribeBackupsRequest) (_result 
 }
 
 /**
- * The number of entries returned on the current page.
+ * > ApsaraDB for Redis has optimized the cache analytics feature to improve user experience. This API operation is phased out. You can use the new API operation for cache analytics. For more information, see [API operations for cache analytics are upgraded](~~186019~~).
+ * Before you call this operation, make sure that the instance meets the following requirements:
+ * *   The engine version of the instance is Redis 4.0 or later.
+ * *   The instance uses the latest minor version. For more information about how to check whether to update the minor version of an instance, see [How do I check whether the minor version of an ApsaraDB for Redis instance is the latest?](~~129203~~)
  *
  * @param request DescribeCacheAnalysisReportRequest
  * @param runtime runtime options for this request RuntimeOptions
@@ -21745,7 +22138,10 @@ func (client *Client) DescribeCacheAnalysisReportWithOptions(request *DescribeCa
 }
 
 /**
- * The number of entries returned on the current page.
+ * > ApsaraDB for Redis has optimized the cache analytics feature to improve user experience. This API operation is phased out. You can use the new API operation for cache analytics. For more information, see [API operations for cache analytics are upgraded](~~186019~~).
+ * Before you call this operation, make sure that the instance meets the following requirements:
+ * *   The engine version of the instance is Redis 4.0 or later.
+ * *   The instance uses the latest minor version. For more information about how to check whether to update the minor version of an instance, see [How do I check whether the minor version of an ApsaraDB for Redis instance is the latest?](~~129203~~)
  *
  * @param request DescribeCacheAnalysisReportRequest
  * @return DescribeCacheAnalysisReportResponse
@@ -21762,7 +22158,10 @@ func (client *Client) DescribeCacheAnalysisReport(request *DescribeCacheAnalysis
 }
 
 /**
- * The operation that you want to perform. Set the value to **DescribeCacheAnalysisReportList**.
+ * > ApsaraDB for Redis has optimized the cache analytics feature to improve user experience. This API operation is phased out. You can use the new API operation for cache analytics. For more information, see [API operations for cache analytics are upgraded](~~186019~~).
+ * Before you call this operation, make sure that the instance meets the following requirements:
+ * *   The engine version of the instance is Redis 4.0 or later.
+ * *   The instance uses the latest minor version. For more information about how to check whether to update the minor version of an instance, see [How do I check whether the minor version of an ApsaraDB for Redis instance is the latest?](~~129203~~)
  *
  * @param request DescribeCacheAnalysisReportListRequest
  * @param runtime runtime options for this request RuntimeOptions
@@ -21838,7 +22237,10 @@ func (client *Client) DescribeCacheAnalysisReportListWithOptions(request *Descri
 }
 
 /**
- * The operation that you want to perform. Set the value to **DescribeCacheAnalysisReportList**.
+ * > ApsaraDB for Redis has optimized the cache analytics feature to improve user experience. This API operation is phased out. You can use the new API operation for cache analytics. For more information, see [API operations for cache analytics are upgraded](~~186019~~).
+ * Before you call this operation, make sure that the instance meets the following requirements:
+ * *   The engine version of the instance is Redis 4.0 or later.
+ * *   The instance uses the latest minor version. For more information about how to check whether to update the minor version of an instance, see [How do I check whether the minor version of an ApsaraDB for Redis instance is the latest?](~~129203~~)
  *
  * @param request DescribeCacheAnalysisReportListRequest
  * @return DescribeCacheAnalysisReportListResponse
@@ -22204,7 +22606,8 @@ func (client *Client) DescribeEncryptionKey(request *DescribeEncryptionKeyReques
 }
 
 /**
- * The ID of the request.
+ * *   You can specify a custom key when you call the [ModifyInstanceTDE](~~302337~~) operation to enable Transparent Data Encryption (TDE). You can call the DescribeEncryptionKeyList operation to query the custom keys that are in use. To create a custom key, you can call the [CreateKey](~~28947~~) operation of Key Management Service (KMS).
+ * *   For more information about TDE and the usage notes of TDE, see [Enable TDE](~~265913~~).
  *
  * @param request DescribeEncryptionKeyListRequest
  * @param runtime runtime options for this request RuntimeOptions
@@ -22264,7 +22667,8 @@ func (client *Client) DescribeEncryptionKeyListWithOptions(request *DescribeEncr
 }
 
 /**
- * The ID of the request.
+ * *   You can specify a custom key when you call the [ModifyInstanceTDE](~~302337~~) operation to enable Transparent Data Encryption (TDE). You can call the DescribeEncryptionKeyList operation to query the custom keys that are in use. To create a custom key, you can call the [CreateKey](~~28947~~) operation of Key Management Service (KMS).
+ * *   For more information about TDE and the usage notes of TDE, see [Enable TDE](~~265913~~).
  *
  * @param request DescribeEncryptionKeyListRequest
  * @return DescribeEncryptionKeyListResponse
@@ -22962,7 +23366,8 @@ func (client *Client) DescribeInstanceSSL(request *DescribeInstanceSSLRequest) (
 }
 
 /**
- * r-bp1zxszhcgatnx****
+ * For more information about TDE and the usage notes of TDE, see [Enable TDE](~~265913~~).
+ * >  You can call the [ModifyInstanceTDE](~~302337~~) to enable or disable TDE.
  *
  * @param request DescribeInstanceTDEStatusRequest
  * @param runtime runtime options for this request RuntimeOptions
@@ -23022,7 +23427,8 @@ func (client *Client) DescribeInstanceTDEStatusWithOptions(request *DescribeInst
 }
 
 /**
- * r-bp1zxszhcgatnx****
+ * For more information about TDE and the usage notes of TDE, see [Enable TDE](~~265913~~).
+ * >  You can call the [ModifyInstanceTDE](~~302337~~) to enable or disable TDE.
  *
  * @param request DescribeInstanceTDEStatusRequest
  * @return DescribeInstanceTDEStatusResponse
@@ -23403,7 +23809,7 @@ func (client *Client) DescribeIntranetAttribute(request *DescribeIntranetAttribu
 }
 
 /**
- * The maximum number of connections.
+ * This parameter is supported only for cluster and read/write splitting instances.
  *
  * @param request DescribeLogicInstanceTopologyRequest
  * @param runtime runtime options for this request RuntimeOptions
@@ -23463,7 +23869,7 @@ func (client *Client) DescribeLogicInstanceTopologyWithOptions(request *Describe
 }
 
 /**
- * The maximum number of connections.
+ * This parameter is supported only for cluster and read/write splitting instances.
  *
  * @param request DescribeLogicInstanceTopologyRequest
  * @return DescribeLogicInstanceTopologyResponse
@@ -24886,6 +25292,14 @@ func (client *Client) FlushInstance(request *FlushInstanceRequest) (_result *Flu
 	return _result, _err
 }
 
+/**
+ * Each ApsaraDB for Redis or Tair instance can contain up to 256 databases. Each database does not have a separate memory usage limit. The memory capacity that a database can use is subject to the total memory limit of the instance. You can execute the `SELECT` statement to switch between databases. For more information, see [What is the size of each database on an ApsaraDB for Redis instance, and how can I choose databases?](~~38688~~)
+ * >  This operation is available only for cloud-native instances that use cloud disks.
+ *
+ * @param request FlushInstanceForDBRequest
+ * @param runtime runtime options for this request RuntimeOptions
+ * @return FlushInstanceForDBResponse
+ */
 func (client *Client) FlushInstanceForDBWithOptions(request *FlushInstanceForDBRequest, runtime *util.RuntimeOptions) (_result *FlushInstanceForDBResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -24943,6 +25357,13 @@ func (client *Client) FlushInstanceForDBWithOptions(request *FlushInstanceForDBR
 	return _result, _err
 }
 
+/**
+ * Each ApsaraDB for Redis or Tair instance can contain up to 256 databases. Each database does not have a separate memory usage limit. The memory capacity that a database can use is subject to the total memory limit of the instance. You can execute the `SELECT` statement to switch between databases. For more information, see [What is the size of each database on an ApsaraDB for Redis instance, and how can I choose databases?](~~38688~~)
+ * >  This operation is available only for cloud-native instances that use cloud disks.
+ *
+ * @param request FlushInstanceForDBRequest
+ * @return FlushInstanceForDBResponse
+ */
 func (client *Client) FlushInstanceForDB(request *FlushInstanceForDBRequest) (_result *FlushInstanceForDBResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &FlushInstanceForDBResponse{}
@@ -25460,7 +25881,7 @@ func (client *Client) ModifyAccountPassword(request *ModifyAccountPasswordReques
 }
 
 /**
- * 11111,22222
+ * You can receive notifications for ApsaraDB for Redis events such as instance migration and version upgrade by text message, phone call, email, internal message, or by using the ApsaraDB for Redis console. You can also change the scheduled switchover time of a task in the ApsaraDB for Redis console. For more information, see [Query or manage pending events](~~187022~~).
  *
  * @param request ModifyActiveOperationTaskRequest
  * @param runtime runtime options for this request RuntimeOptions
@@ -25524,7 +25945,7 @@ func (client *Client) ModifyActiveOperationTaskWithOptions(request *ModifyActive
 }
 
 /**
- * 11111,22222
+ * You can receive notifications for ApsaraDB for Redis events such as instance migration and version upgrade by text message, phone call, email, internal message, or by using the ApsaraDB for Redis console. You can also change the scheduled switchover time of a task in the ApsaraDB for Redis console. For more information, see [Query or manage pending events](~~187022~~).
  *
  * @param request ModifyActiveOperationTaskRequest
  * @return ModifyActiveOperationTaskResponse
@@ -25541,10 +25962,10 @@ func (client *Client) ModifyActiveOperationTask(request *ModifyActiveOperationTa
 }
 
 /**
- * Specifies whether to enable the audit log feature. Default value: true. Valid values:
- * *   **true**: enables the audit log feature.
- * *   **false**: disables the audit log feature.
- * > If the instance uses the [cluster architecture](~~52228~~) or [read/write splitting architecture](~~62870~~), the audit log feature is enabled or disabled for both the data nodes and proxy nodes. You cannot separately enable the audit log feature for the data nodes or proxy nodes.
+ * Before you call this operation, make sure that you understand the billing methods and [pricing](~~54532~~) of the audit log feature.
+ * Before you call this operation, make sure that the ApsaraDB for Redis instance meets the following requirements:
+ * *   The instance is an ApsaraDB for Redis Community Edition instance or ApsaraDB for Redis Enhanced Edition (Tair) [DRAM-based instance](~~126164~~).
+ * *   The engine version of the instance is Redis 4.0 or later, and the latest minor version is used. You can call the [DescribeEngineVersion](~~95268~~) operation to check whether the instance uses the latest major version and minor version.
  *
  * @param request ModifyAuditLogConfigRequest
  * @param runtime runtime options for this request RuntimeOptions
@@ -25612,10 +26033,10 @@ func (client *Client) ModifyAuditLogConfigWithOptions(request *ModifyAuditLogCon
 }
 
 /**
- * Specifies whether to enable the audit log feature. Default value: true. Valid values:
- * *   **true**: enables the audit log feature.
- * *   **false**: disables the audit log feature.
- * > If the instance uses the [cluster architecture](~~52228~~) or [read/write splitting architecture](~~62870~~), the audit log feature is enabled or disabled for both the data nodes and proxy nodes. You cannot separately enable the audit log feature for the data nodes or proxy nodes.
+ * Before you call this operation, make sure that you understand the billing methods and [pricing](~~54532~~) of the audit log feature.
+ * Before you call this operation, make sure that the ApsaraDB for Redis instance meets the following requirements:
+ * *   The instance is an ApsaraDB for Redis Community Edition instance or ApsaraDB for Redis Enhanced Edition (Tair) [DRAM-based instance](~~126164~~).
+ * *   The engine version of the instance is Redis 4.0 or later, and the latest minor version is used. You can call the [DescribeEngineVersion](~~95268~~) operation to check whether the instance uses the latest major version and minor version.
  *
  * @param request ModifyAuditLogConfigRequest
  * @return ModifyAuditLogConfigResponse
@@ -25801,7 +26222,7 @@ func (client *Client) ModifyDBInstanceConnectionString(request *ModifyDBInstance
 }
 
 /**
- * uW8+nsrp
+ * You can also modify the information of an instance in the ApsaraDB for Redis console. For more information, see [Change or reset the password](~~43874~~).
  *
  * @param request ModifyInstanceAttributeRequest
  * @param runtime runtime options for this request RuntimeOptions
@@ -25873,7 +26294,7 @@ func (client *Client) ModifyInstanceAttributeWithOptions(request *ModifyInstance
 }
 
 /**
- * uW8+nsrp
+ * You can also modify the information of an instance in the ApsaraDB for Redis console. For more information, see [Change or reset the password](~~43874~~).
  *
  * @param request ModifyInstanceAttributeRequest
  * @return ModifyInstanceAttributeResponse
@@ -26042,6 +26463,13 @@ func (client *Client) ModifyInstanceConfig(request *ModifyInstanceConfigRequest)
 	return _result, _err
 }
 
+/**
+ * You can also modify the maintenance window of an instance in the ApsaraDB for Redis console. For more information, see [Set a maintenance window](~~55252~~).
+ *
+ * @param request ModifyInstanceMaintainTimeRequest
+ * @param runtime runtime options for this request RuntimeOptions
+ * @return ModifyInstanceMaintainTimeResponse
+ */
 func (client *Client) ModifyInstanceMaintainTimeWithOptions(request *ModifyInstanceMaintainTimeRequest, runtime *util.RuntimeOptions) (_result *ModifyInstanceMaintainTimeResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -26103,6 +26531,12 @@ func (client *Client) ModifyInstanceMaintainTimeWithOptions(request *ModifyInsta
 	return _result, _err
 }
 
+/**
+ * You can also modify the maintenance window of an instance in the ApsaraDB for Redis console. For more information, see [Set a maintenance window](~~55252~~).
+ *
+ * @param request ModifyInstanceMaintainTimeRequest
+ * @return ModifyInstanceMaintainTimeResponse
+ */
 func (client *Client) ModifyInstanceMaintainTime(request *ModifyInstanceMaintainTimeRequest) (_result *ModifyInstanceMaintainTimeResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &ModifyInstanceMaintainTimeResponse{}
@@ -26115,7 +26549,7 @@ func (client *Client) ModifyInstanceMaintainTime(request *ModifyInstanceMaintain
 }
 
 /**
- * r-bp1zxszhcgatnx****
+ * For more information about how to perform the corresponding operation in the console, see [Upgrade the major version](~~101764~~).
  *
  * @param request ModifyInstanceMajorVersionRequest
  * @param runtime runtime options for this request RuntimeOptions
@@ -26183,7 +26617,7 @@ func (client *Client) ModifyInstanceMajorVersionWithOptions(request *ModifyInsta
 }
 
 /**
- * r-bp1zxszhcgatnx****
+ * For more information about how to perform the corresponding operation in the console, see [Upgrade the major version](~~101764~~).
  *
  * @param request ModifyInstanceMajorVersionRequest
  * @return ModifyInstanceMajorVersionResponse
@@ -26200,7 +26634,10 @@ func (client *Client) ModifyInstanceMajorVersion(request *ModifyInstanceMajorVer
 }
 
 /**
- * The ID of the instance.
+ * The procedure to update the minor version of an instance varies based on types of ApsaraDB for Redis instances. For more information, see [Upgrade the minor version](~~56450~~).
+ * >
+ * *   Before you call this operation, you can call the [DescribeEngineVersion](~~95268~~) operation to query the minor version of the current instance.
+ * *   When you switch your workloads over from the original instance to a new instance or from the master node to the replica node in the original instance, you may experience disconnections that last a few seconds. The original instance stays in the read-only state within 60 seconds until all data is synchronized. We recommend that you upgrade the original instance during off-peak hours and make sure that your application is configured to automatically reconnect to the original instance.
  *
  * @param request ModifyInstanceMinorVersionRequest
  * @param runtime runtime options for this request RuntimeOptions
@@ -26268,7 +26705,10 @@ func (client *Client) ModifyInstanceMinorVersionWithOptions(request *ModifyInsta
 }
 
 /**
- * The ID of the instance.
+ * The procedure to update the minor version of an instance varies based on types of ApsaraDB for Redis instances. For more information, see [Upgrade the minor version](~~56450~~).
+ * >
+ * *   Before you call this operation, you can call the [DescribeEngineVersion](~~95268~~) operation to query the minor version of the current instance.
+ * *   When you switch your workloads over from the original instance to a new instance or from the master node to the replica node in the original instance, you may experience disconnections that last a few seconds. The original instance stays in the read-only state within 60 seconds until all data is synchronized. We recommend that you upgrade the original instance during off-peak hours and make sure that your application is configured to automatically reconnect to the original instance.
  *
  * @param request ModifyInstanceMinorVersionRequest
  * @return ModifyInstanceMinorVersionResponse
@@ -26531,7 +26971,7 @@ func (client *Client) ModifyInstanceSSL(request *ModifyInstanceSSLRequest) (_res
 }
 
 /**
- * The ID of the promotional event or business information.
+ * >  For more information about the procedure, impacts, limits, and fees of this operation, see [Change the configurations of an instance](~~26353~~).
  *
  * @param request ModifyInstanceSpecRequest
  * @param runtime runtime options for this request RuntimeOptions
@@ -26647,7 +27087,7 @@ func (client *Client) ModifyInstanceSpecWithOptions(request *ModifyInstanceSpecR
 }
 
 /**
- * The ID of the promotional event or business information.
+ * >  For more information about the procedure, impacts, limits, and fees of this operation, see [Change the configurations of an instance](~~26353~~).
  *
  * @param request ModifyInstanceSpecRequest
  * @return ModifyInstanceSpecResponse
@@ -26757,7 +27197,8 @@ func (client *Client) ModifyInstanceTDE(request *ModifyInstanceTDERequest) (_res
 }
 
 /**
- * The ID of the request.
+ * When the password-free access feature is enabled, Elastic Compute Service (ECS) instances in the same virtual private cloud (VPC) can connect to the ApsaraDB for Redis instance without a password. You can also use the username and password to connect to the ApsaraDB for Redis instance.
+ * > The ApsaraDB for Redis instance is deployed in a VPC. For more information, see [Enable password-free access](~~85168~~).
  *
  * @param request ModifyInstanceVpcAuthModeRequest
  * @param runtime runtime options for this request RuntimeOptions
@@ -26821,7 +27262,8 @@ func (client *Client) ModifyInstanceVpcAuthModeWithOptions(request *ModifyInstan
 }
 
 /**
- * The ID of the request.
+ * When the password-free access feature is enabled, Elastic Compute Service (ECS) instances in the same virtual private cloud (VPC) can connect to the ApsaraDB for Redis instance without a password. You can also use the username and password to connect to the ApsaraDB for Redis instance.
+ * > The ApsaraDB for Redis instance is deployed in a VPC. For more information, see [Enable password-free access](~~85168~~).
  *
  * @param request ModifyInstanceVpcAuthModeRequest
  * @return ModifyInstanceVpcAuthModeResponse
@@ -27012,7 +27454,7 @@ func (client *Client) ModifyResourceGroup(request *ModifyResourceGroupRequest) (
 }
 
 /**
- * The ID of the request.
+ * > After you call this operation, the security groups that are added to the whitelists of the ApsaraDB for Redis instance are deleted, and the security group specified by the **SecurityGroupId** parameter are added to the whitelists. For more information about how to reset security groups in the ApsaraDB for Redis console, see [Add security groups](~~148267~~).
  *
  * @param request ModifySecurityGroupConfigurationRequest
  * @param runtime runtime options for this request RuntimeOptions
@@ -27076,7 +27518,7 @@ func (client *Client) ModifySecurityGroupConfigurationWithOptions(request *Modif
 }
 
 /**
- * The ID of the request.
+ * > After you call this operation, the security groups that are added to the whitelists of the ApsaraDB for Redis instance are deleted, and the security group specified by the **SecurityGroupId** parameter are added to the whitelists. For more information about how to reset security groups in the ApsaraDB for Redis console, see [Add security groups](~~148267~~).
  *
  * @param request ModifySecurityGroupConfigurationRequest
  * @return ModifySecurityGroupConfigurationResponse
@@ -27093,7 +27535,7 @@ func (client *Client) ModifySecurityGroupConfiguration(request *ModifySecurityGr
 }
 
 /**
- * The IP addresses in the whitelist group. Up to 1,000 IP addresses can be specified in each whitelist. Separate multiple IP addresses with a comma (,). You can add 0.0.0.0/0, IP addresses such as 10.23.12.24, and Classless Inter-Domain Routing (CIDR) blocks such as 10.23.12.24/24 to the whitelist group. In CIDR block 10.23.12.24/24, /24 specifies the length of the prefix in the IP addresses. The prefix length ranges from 1 to 32.
+ * You can also modify the whitelists of an instance in the ApsaraDB for Redis console. For more information, see [Configure a whitelist for an instance](~~56464~~).
  *
  * @param request ModifySecurityIpsRequest
  * @param runtime runtime options for this request RuntimeOptions
@@ -27169,7 +27611,7 @@ func (client *Client) ModifySecurityIpsWithOptions(request *ModifySecurityIpsReq
 }
 
 /**
- * The IP addresses in the whitelist group. Up to 1,000 IP addresses can be specified in each whitelist. Separate multiple IP addresses with a comma (,). You can add 0.0.0.0/0, IP addresses such as 10.23.12.24, and Classless Inter-Domain Routing (CIDR) blocks such as 10.23.12.24/24 to the whitelist group. In CIDR block 10.23.12.24/24, /24 specifies the length of the prefix in the IP addresses. The prefix length ranges from 1 to 32.
+ * You can also modify the whitelists of an instance in the ApsaraDB for Redis console. For more information, see [Configure a whitelist for an instance](~~56464~~).
  *
  * @param request ModifySecurityIpsRequest
  * @return ModifySecurityIpsResponse
