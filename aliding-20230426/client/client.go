@@ -660,6 +660,579 @@ func (s *CreateSheetResponse) SetBody(v *CreateSheetResponseBody) *CreateSheetRe
 	return s
 }
 
+type CreateTodoTaskHeaders struct {
+	CommonHeaders  map[string]*string                   `json:"commonHeaders,omitempty" xml:"commonHeaders,omitempty"`
+	AccountContext *CreateTodoTaskHeadersAccountContext `json:"AccountContext,omitempty" xml:"AccountContext,omitempty" type:"Struct"`
+}
+
+func (s CreateTodoTaskHeaders) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateTodoTaskHeaders) GoString() string {
+	return s.String()
+}
+
+func (s *CreateTodoTaskHeaders) SetCommonHeaders(v map[string]*string) *CreateTodoTaskHeaders {
+	s.CommonHeaders = v
+	return s
+}
+
+func (s *CreateTodoTaskHeaders) SetAccountContext(v *CreateTodoTaskHeadersAccountContext) *CreateTodoTaskHeaders {
+	s.AccountContext = v
+	return s
+}
+
+type CreateTodoTaskHeadersAccountContext struct {
+	AccountId *string `json:"accountId,omitempty" xml:"accountId,omitempty"`
+}
+
+func (s CreateTodoTaskHeadersAccountContext) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateTodoTaskHeadersAccountContext) GoString() string {
+	return s.String()
+}
+
+func (s *CreateTodoTaskHeadersAccountContext) SetAccountId(v string) *CreateTodoTaskHeadersAccountContext {
+	s.AccountId = &v
+	return s
+}
+
+type CreateTodoTaskShrinkHeaders struct {
+	CommonHeaders        map[string]*string `json:"commonHeaders,omitempty" xml:"commonHeaders,omitempty"`
+	AccountContextShrink *string            `json:"AccountContext,omitempty" xml:"AccountContext,omitempty"`
+}
+
+func (s CreateTodoTaskShrinkHeaders) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateTodoTaskShrinkHeaders) GoString() string {
+	return s.String()
+}
+
+func (s *CreateTodoTaskShrinkHeaders) SetCommonHeaders(v map[string]*string) *CreateTodoTaskShrinkHeaders {
+	s.CommonHeaders = v
+	return s
+}
+
+func (s *CreateTodoTaskShrinkHeaders) SetAccountContextShrink(v string) *CreateTodoTaskShrinkHeaders {
+	s.AccountContextShrink = &v
+	return s
+}
+
+type CreateTodoTaskRequest struct {
+	TenantContext      *CreateTodoTaskRequestTenantContext      `json:"TenantContext,omitempty" xml:"TenantContext,omitempty" type:"Struct"`
+	ContentFieldList   []*CreateTodoTaskRequestContentFieldList `json:"contentFieldList,omitempty" xml:"contentFieldList,omitempty" type:"Repeated"`
+	CreatorId          *string                                  `json:"creatorId,omitempty" xml:"creatorId,omitempty"`
+	Description        *string                                  `json:"description,omitempty" xml:"description,omitempty"`
+	DetailUrl          *CreateTodoTaskRequestDetailUrl          `json:"detailUrl,omitempty" xml:"detailUrl,omitempty" type:"Struct"`
+	DueTime            *int64                                   `json:"dueTime,omitempty" xml:"dueTime,omitempty"`
+	ExecutorIds        []*string                                `json:"executorIds,omitempty" xml:"executorIds,omitempty" type:"Repeated"`
+	IsOnlyShowExecutor *bool                                    `json:"isOnlyShowExecutor,omitempty" xml:"isOnlyShowExecutor,omitempty"`
+	NotifyConfigs      *CreateTodoTaskRequestNotifyConfigs      `json:"notifyConfigs,omitempty" xml:"notifyConfigs,omitempty" type:"Struct"`
+	OperatorId         *string                                  `json:"operatorId,omitempty" xml:"operatorId,omitempty"`
+	ParticipantIds     []*string                                `json:"participantIds,omitempty" xml:"participantIds,omitempty" type:"Repeated"`
+	Priority           *int32                                   `json:"priority,omitempty" xml:"priority,omitempty"`
+	SourceId           *string                                  `json:"sourceId,omitempty" xml:"sourceId,omitempty"`
+	Subject            *string                                  `json:"subject,omitempty" xml:"subject,omitempty"`
+}
+
+func (s CreateTodoTaskRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateTodoTaskRequest) GoString() string {
+	return s.String()
+}
+
+func (s *CreateTodoTaskRequest) SetTenantContext(v *CreateTodoTaskRequestTenantContext) *CreateTodoTaskRequest {
+	s.TenantContext = v
+	return s
+}
+
+func (s *CreateTodoTaskRequest) SetContentFieldList(v []*CreateTodoTaskRequestContentFieldList) *CreateTodoTaskRequest {
+	s.ContentFieldList = v
+	return s
+}
+
+func (s *CreateTodoTaskRequest) SetCreatorId(v string) *CreateTodoTaskRequest {
+	s.CreatorId = &v
+	return s
+}
+
+func (s *CreateTodoTaskRequest) SetDescription(v string) *CreateTodoTaskRequest {
+	s.Description = &v
+	return s
+}
+
+func (s *CreateTodoTaskRequest) SetDetailUrl(v *CreateTodoTaskRequestDetailUrl) *CreateTodoTaskRequest {
+	s.DetailUrl = v
+	return s
+}
+
+func (s *CreateTodoTaskRequest) SetDueTime(v int64) *CreateTodoTaskRequest {
+	s.DueTime = &v
+	return s
+}
+
+func (s *CreateTodoTaskRequest) SetExecutorIds(v []*string) *CreateTodoTaskRequest {
+	s.ExecutorIds = v
+	return s
+}
+
+func (s *CreateTodoTaskRequest) SetIsOnlyShowExecutor(v bool) *CreateTodoTaskRequest {
+	s.IsOnlyShowExecutor = &v
+	return s
+}
+
+func (s *CreateTodoTaskRequest) SetNotifyConfigs(v *CreateTodoTaskRequestNotifyConfigs) *CreateTodoTaskRequest {
+	s.NotifyConfigs = v
+	return s
+}
+
+func (s *CreateTodoTaskRequest) SetOperatorId(v string) *CreateTodoTaskRequest {
+	s.OperatorId = &v
+	return s
+}
+
+func (s *CreateTodoTaskRequest) SetParticipantIds(v []*string) *CreateTodoTaskRequest {
+	s.ParticipantIds = v
+	return s
+}
+
+func (s *CreateTodoTaskRequest) SetPriority(v int32) *CreateTodoTaskRequest {
+	s.Priority = &v
+	return s
+}
+
+func (s *CreateTodoTaskRequest) SetSourceId(v string) *CreateTodoTaskRequest {
+	s.SourceId = &v
+	return s
+}
+
+func (s *CreateTodoTaskRequest) SetSubject(v string) *CreateTodoTaskRequest {
+	s.Subject = &v
+	return s
+}
+
+type CreateTodoTaskRequestTenantContext struct {
+	TenantId *string `json:"tenantId,omitempty" xml:"tenantId,omitempty"`
+}
+
+func (s CreateTodoTaskRequestTenantContext) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateTodoTaskRequestTenantContext) GoString() string {
+	return s.String()
+}
+
+func (s *CreateTodoTaskRequestTenantContext) SetTenantId(v string) *CreateTodoTaskRequestTenantContext {
+	s.TenantId = &v
+	return s
+}
+
+type CreateTodoTaskRequestContentFieldList struct {
+	// fieldKey
+	FieldKey *string `json:"fieldKey,omitempty" xml:"fieldKey,omitempty"`
+	// fieldValue
+	FieldValue *string `json:"fieldValue,omitempty" xml:"fieldValue,omitempty"`
+}
+
+func (s CreateTodoTaskRequestContentFieldList) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateTodoTaskRequestContentFieldList) GoString() string {
+	return s.String()
+}
+
+func (s *CreateTodoTaskRequestContentFieldList) SetFieldKey(v string) *CreateTodoTaskRequestContentFieldList {
+	s.FieldKey = &v
+	return s
+}
+
+func (s *CreateTodoTaskRequestContentFieldList) SetFieldValue(v string) *CreateTodoTaskRequestContentFieldList {
+	s.FieldValue = &v
+	return s
+}
+
+type CreateTodoTaskRequestDetailUrl struct {
+	AppUrl *string `json:"appUrl,omitempty" xml:"appUrl,omitempty"`
+	PcUrl  *string `json:"pcUrl,omitempty" xml:"pcUrl,omitempty"`
+}
+
+func (s CreateTodoTaskRequestDetailUrl) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateTodoTaskRequestDetailUrl) GoString() string {
+	return s.String()
+}
+
+func (s *CreateTodoTaskRequestDetailUrl) SetAppUrl(v string) *CreateTodoTaskRequestDetailUrl {
+	s.AppUrl = &v
+	return s
+}
+
+func (s *CreateTodoTaskRequestDetailUrl) SetPcUrl(v string) *CreateTodoTaskRequestDetailUrl {
+	s.PcUrl = &v
+	return s
+}
+
+type CreateTodoTaskRequestNotifyConfigs struct {
+	DingNotify *string `json:"dingNotify,omitempty" xml:"dingNotify,omitempty"`
+}
+
+func (s CreateTodoTaskRequestNotifyConfigs) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateTodoTaskRequestNotifyConfigs) GoString() string {
+	return s.String()
+}
+
+func (s *CreateTodoTaskRequestNotifyConfigs) SetDingNotify(v string) *CreateTodoTaskRequestNotifyConfigs {
+	s.DingNotify = &v
+	return s
+}
+
+type CreateTodoTaskShrinkRequest struct {
+	TenantContextShrink    *string `json:"TenantContext,omitempty" xml:"TenantContext,omitempty"`
+	ContentFieldListShrink *string `json:"contentFieldList,omitempty" xml:"contentFieldList,omitempty"`
+	CreatorId              *string `json:"creatorId,omitempty" xml:"creatorId,omitempty"`
+	Description            *string `json:"description,omitempty" xml:"description,omitempty"`
+	DetailUrlShrink        *string `json:"detailUrl,omitempty" xml:"detailUrl,omitempty"`
+	DueTime                *int64  `json:"dueTime,omitempty" xml:"dueTime,omitempty"`
+	ExecutorIdsShrink      *string `json:"executorIds,omitempty" xml:"executorIds,omitempty"`
+	IsOnlyShowExecutor     *bool   `json:"isOnlyShowExecutor,omitempty" xml:"isOnlyShowExecutor,omitempty"`
+	NotifyConfigsShrink    *string `json:"notifyConfigs,omitempty" xml:"notifyConfigs,omitempty"`
+	OperatorId             *string `json:"operatorId,omitempty" xml:"operatorId,omitempty"`
+	ParticipantIdsShrink   *string `json:"participantIds,omitempty" xml:"participantIds,omitempty"`
+	Priority               *int32  `json:"priority,omitempty" xml:"priority,omitempty"`
+	SourceId               *string `json:"sourceId,omitempty" xml:"sourceId,omitempty"`
+	Subject                *string `json:"subject,omitempty" xml:"subject,omitempty"`
+}
+
+func (s CreateTodoTaskShrinkRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateTodoTaskShrinkRequest) GoString() string {
+	return s.String()
+}
+
+func (s *CreateTodoTaskShrinkRequest) SetTenantContextShrink(v string) *CreateTodoTaskShrinkRequest {
+	s.TenantContextShrink = &v
+	return s
+}
+
+func (s *CreateTodoTaskShrinkRequest) SetContentFieldListShrink(v string) *CreateTodoTaskShrinkRequest {
+	s.ContentFieldListShrink = &v
+	return s
+}
+
+func (s *CreateTodoTaskShrinkRequest) SetCreatorId(v string) *CreateTodoTaskShrinkRequest {
+	s.CreatorId = &v
+	return s
+}
+
+func (s *CreateTodoTaskShrinkRequest) SetDescription(v string) *CreateTodoTaskShrinkRequest {
+	s.Description = &v
+	return s
+}
+
+func (s *CreateTodoTaskShrinkRequest) SetDetailUrlShrink(v string) *CreateTodoTaskShrinkRequest {
+	s.DetailUrlShrink = &v
+	return s
+}
+
+func (s *CreateTodoTaskShrinkRequest) SetDueTime(v int64) *CreateTodoTaskShrinkRequest {
+	s.DueTime = &v
+	return s
+}
+
+func (s *CreateTodoTaskShrinkRequest) SetExecutorIdsShrink(v string) *CreateTodoTaskShrinkRequest {
+	s.ExecutorIdsShrink = &v
+	return s
+}
+
+func (s *CreateTodoTaskShrinkRequest) SetIsOnlyShowExecutor(v bool) *CreateTodoTaskShrinkRequest {
+	s.IsOnlyShowExecutor = &v
+	return s
+}
+
+func (s *CreateTodoTaskShrinkRequest) SetNotifyConfigsShrink(v string) *CreateTodoTaskShrinkRequest {
+	s.NotifyConfigsShrink = &v
+	return s
+}
+
+func (s *CreateTodoTaskShrinkRequest) SetOperatorId(v string) *CreateTodoTaskShrinkRequest {
+	s.OperatorId = &v
+	return s
+}
+
+func (s *CreateTodoTaskShrinkRequest) SetParticipantIdsShrink(v string) *CreateTodoTaskShrinkRequest {
+	s.ParticipantIdsShrink = &v
+	return s
+}
+
+func (s *CreateTodoTaskShrinkRequest) SetPriority(v int32) *CreateTodoTaskShrinkRequest {
+	s.Priority = &v
+	return s
+}
+
+func (s *CreateTodoTaskShrinkRequest) SetSourceId(v string) *CreateTodoTaskShrinkRequest {
+	s.SourceId = &v
+	return s
+}
+
+func (s *CreateTodoTaskShrinkRequest) SetSubject(v string) *CreateTodoTaskShrinkRequest {
+	s.Subject = &v
+	return s
+}
+
+type CreateTodoTaskResponseBody struct {
+	BizTag             *string                                       `json:"bizTag,omitempty" xml:"bizTag,omitempty"`
+	ContentFieldList   []*CreateTodoTaskResponseBodyContentFieldList `json:"contentFieldList,omitempty" xml:"contentFieldList,omitempty" type:"Repeated"`
+	CreatedTime        *int64                                        `json:"createdTime,omitempty" xml:"createdTime,omitempty"`
+	CreatorId          *string                                       `json:"creatorId,omitempty" xml:"creatorId,omitempty"`
+	Description        *string                                       `json:"description,omitempty" xml:"description,omitempty"`
+	DetailUrl          *CreateTodoTaskResponseBodyDetailUrl          `json:"detailUrl,omitempty" xml:"detailUrl,omitempty" type:"Struct"`
+	Done               *bool                                         `json:"done,omitempty" xml:"done,omitempty"`
+	DueTime            *int64                                        `json:"dueTime,omitempty" xml:"dueTime,omitempty"`
+	ExecutorIds        []*string                                     `json:"executorIds,omitempty" xml:"executorIds,omitempty" type:"Repeated"`
+	FinishTime         *int64                                        `json:"finishTime,omitempty" xml:"finishTime,omitempty"`
+	Id                 *string                                       `json:"id,omitempty" xml:"id,omitempty"`
+	IsOnlyShowExecutor *bool                                         `json:"isOnlyShowExecutor,omitempty" xml:"isOnlyShowExecutor,omitempty"`
+	ModifiedTime       *int64                                        `json:"modifiedTime,omitempty" xml:"modifiedTime,omitempty"`
+	ModifierId         *string                                       `json:"modifierId,omitempty" xml:"modifierId,omitempty"`
+	NotifyConfigs      *CreateTodoTaskResponseBodyNotifyConfigs      `json:"notifyConfigs,omitempty" xml:"notifyConfigs,omitempty" type:"Struct"`
+	ParticipantIds     []*string                                     `json:"participantIds,omitempty" xml:"participantIds,omitempty" type:"Repeated"`
+	Priority           *int32                                        `json:"priority,omitempty" xml:"priority,omitempty"`
+	// requestId
+	RequestId *string `json:"requestId,omitempty" xml:"requestId,omitempty"`
+	Source    *string `json:"source,omitempty" xml:"source,omitempty"`
+	SourceId  *string `json:"sourceId,omitempty" xml:"sourceId,omitempty"`
+	StartTime *int64  `json:"startTime,omitempty" xml:"startTime,omitempty"`
+	Subject   *string `json:"subject,omitempty" xml:"subject,omitempty"`
+}
+
+func (s CreateTodoTaskResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateTodoTaskResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *CreateTodoTaskResponseBody) SetBizTag(v string) *CreateTodoTaskResponseBody {
+	s.BizTag = &v
+	return s
+}
+
+func (s *CreateTodoTaskResponseBody) SetContentFieldList(v []*CreateTodoTaskResponseBodyContentFieldList) *CreateTodoTaskResponseBody {
+	s.ContentFieldList = v
+	return s
+}
+
+func (s *CreateTodoTaskResponseBody) SetCreatedTime(v int64) *CreateTodoTaskResponseBody {
+	s.CreatedTime = &v
+	return s
+}
+
+func (s *CreateTodoTaskResponseBody) SetCreatorId(v string) *CreateTodoTaskResponseBody {
+	s.CreatorId = &v
+	return s
+}
+
+func (s *CreateTodoTaskResponseBody) SetDescription(v string) *CreateTodoTaskResponseBody {
+	s.Description = &v
+	return s
+}
+
+func (s *CreateTodoTaskResponseBody) SetDetailUrl(v *CreateTodoTaskResponseBodyDetailUrl) *CreateTodoTaskResponseBody {
+	s.DetailUrl = v
+	return s
+}
+
+func (s *CreateTodoTaskResponseBody) SetDone(v bool) *CreateTodoTaskResponseBody {
+	s.Done = &v
+	return s
+}
+
+func (s *CreateTodoTaskResponseBody) SetDueTime(v int64) *CreateTodoTaskResponseBody {
+	s.DueTime = &v
+	return s
+}
+
+func (s *CreateTodoTaskResponseBody) SetExecutorIds(v []*string) *CreateTodoTaskResponseBody {
+	s.ExecutorIds = v
+	return s
+}
+
+func (s *CreateTodoTaskResponseBody) SetFinishTime(v int64) *CreateTodoTaskResponseBody {
+	s.FinishTime = &v
+	return s
+}
+
+func (s *CreateTodoTaskResponseBody) SetId(v string) *CreateTodoTaskResponseBody {
+	s.Id = &v
+	return s
+}
+
+func (s *CreateTodoTaskResponseBody) SetIsOnlyShowExecutor(v bool) *CreateTodoTaskResponseBody {
+	s.IsOnlyShowExecutor = &v
+	return s
+}
+
+func (s *CreateTodoTaskResponseBody) SetModifiedTime(v int64) *CreateTodoTaskResponseBody {
+	s.ModifiedTime = &v
+	return s
+}
+
+func (s *CreateTodoTaskResponseBody) SetModifierId(v string) *CreateTodoTaskResponseBody {
+	s.ModifierId = &v
+	return s
+}
+
+func (s *CreateTodoTaskResponseBody) SetNotifyConfigs(v *CreateTodoTaskResponseBodyNotifyConfigs) *CreateTodoTaskResponseBody {
+	s.NotifyConfigs = v
+	return s
+}
+
+func (s *CreateTodoTaskResponseBody) SetParticipantIds(v []*string) *CreateTodoTaskResponseBody {
+	s.ParticipantIds = v
+	return s
+}
+
+func (s *CreateTodoTaskResponseBody) SetPriority(v int32) *CreateTodoTaskResponseBody {
+	s.Priority = &v
+	return s
+}
+
+func (s *CreateTodoTaskResponseBody) SetRequestId(v string) *CreateTodoTaskResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *CreateTodoTaskResponseBody) SetSource(v string) *CreateTodoTaskResponseBody {
+	s.Source = &v
+	return s
+}
+
+func (s *CreateTodoTaskResponseBody) SetSourceId(v string) *CreateTodoTaskResponseBody {
+	s.SourceId = &v
+	return s
+}
+
+func (s *CreateTodoTaskResponseBody) SetStartTime(v int64) *CreateTodoTaskResponseBody {
+	s.StartTime = &v
+	return s
+}
+
+func (s *CreateTodoTaskResponseBody) SetSubject(v string) *CreateTodoTaskResponseBody {
+	s.Subject = &v
+	return s
+}
+
+type CreateTodoTaskResponseBodyContentFieldList struct {
+	// fieldKey
+	FieldKey *string `json:"fieldKey,omitempty" xml:"fieldKey,omitempty"`
+	// fieldValue
+	FieldValue *string `json:"fieldValue,omitempty" xml:"fieldValue,omitempty"`
+}
+
+func (s CreateTodoTaskResponseBodyContentFieldList) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateTodoTaskResponseBodyContentFieldList) GoString() string {
+	return s.String()
+}
+
+func (s *CreateTodoTaskResponseBodyContentFieldList) SetFieldKey(v string) *CreateTodoTaskResponseBodyContentFieldList {
+	s.FieldKey = &v
+	return s
+}
+
+func (s *CreateTodoTaskResponseBodyContentFieldList) SetFieldValue(v string) *CreateTodoTaskResponseBodyContentFieldList {
+	s.FieldValue = &v
+	return s
+}
+
+type CreateTodoTaskResponseBodyDetailUrl struct {
+	AppUrl *string `json:"appUrl,omitempty" xml:"appUrl,omitempty"`
+	PcUrl  *string `json:"pcUrl,omitempty" xml:"pcUrl,omitempty"`
+}
+
+func (s CreateTodoTaskResponseBodyDetailUrl) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateTodoTaskResponseBodyDetailUrl) GoString() string {
+	return s.String()
+}
+
+func (s *CreateTodoTaskResponseBodyDetailUrl) SetAppUrl(v string) *CreateTodoTaskResponseBodyDetailUrl {
+	s.AppUrl = &v
+	return s
+}
+
+func (s *CreateTodoTaskResponseBodyDetailUrl) SetPcUrl(v string) *CreateTodoTaskResponseBodyDetailUrl {
+	s.PcUrl = &v
+	return s
+}
+
+type CreateTodoTaskResponseBodyNotifyConfigs struct {
+	DingNotify *string `json:"dingNotify,omitempty" xml:"dingNotify,omitempty"`
+}
+
+func (s CreateTodoTaskResponseBodyNotifyConfigs) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateTodoTaskResponseBodyNotifyConfigs) GoString() string {
+	return s.String()
+}
+
+func (s *CreateTodoTaskResponseBodyNotifyConfigs) SetDingNotify(v string) *CreateTodoTaskResponseBodyNotifyConfigs {
+	s.DingNotify = &v
+	return s
+}
+
+type CreateTodoTaskResponse struct {
+	Headers    map[string]*string          `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                      `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *CreateTodoTaskResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s CreateTodoTaskResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateTodoTaskResponse) GoString() string {
+	return s.String()
+}
+
+func (s *CreateTodoTaskResponse) SetHeaders(v map[string]*string) *CreateTodoTaskResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *CreateTodoTaskResponse) SetStatusCode(v int32) *CreateTodoTaskResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *CreateTodoTaskResponse) SetBody(v *CreateTodoTaskResponseBody) *CreateTodoTaskResponse {
+	s.Body = v
+	return s
+}
+
 type CreateWorkspaceHeaders struct {
 	CommonHeaders  map[string]*string                    `json:"commonHeaders,omitempty" xml:"commonHeaders,omitempty"`
 	AccountContext *CreateWorkspaceHeadersAccountContext `json:"AccountContext,omitempty" xml:"AccountContext,omitempty" type:"Struct"`
@@ -1122,6 +1695,197 @@ func (s *CreateWorkspaceDocResponse) SetStatusCode(v int32) *CreateWorkspaceDocR
 }
 
 func (s *CreateWorkspaceDocResponse) SetBody(v *CreateWorkspaceDocResponseBody) *CreateWorkspaceDocResponse {
+	s.Body = v
+	return s
+}
+
+type DeleteTodoTaskHeaders struct {
+	CommonHeaders  map[string]*string                   `json:"commonHeaders,omitempty" xml:"commonHeaders,omitempty"`
+	AccountContext *DeleteTodoTaskHeadersAccountContext `json:"AccountContext,omitempty" xml:"AccountContext,omitempty" type:"Struct"`
+}
+
+func (s DeleteTodoTaskHeaders) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DeleteTodoTaskHeaders) GoString() string {
+	return s.String()
+}
+
+func (s *DeleteTodoTaskHeaders) SetCommonHeaders(v map[string]*string) *DeleteTodoTaskHeaders {
+	s.CommonHeaders = v
+	return s
+}
+
+func (s *DeleteTodoTaskHeaders) SetAccountContext(v *DeleteTodoTaskHeadersAccountContext) *DeleteTodoTaskHeaders {
+	s.AccountContext = v
+	return s
+}
+
+type DeleteTodoTaskHeadersAccountContext struct {
+	AccountId *string `json:"accountId,omitempty" xml:"accountId,omitempty"`
+}
+
+func (s DeleteTodoTaskHeadersAccountContext) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DeleteTodoTaskHeadersAccountContext) GoString() string {
+	return s.String()
+}
+
+func (s *DeleteTodoTaskHeadersAccountContext) SetAccountId(v string) *DeleteTodoTaskHeadersAccountContext {
+	s.AccountId = &v
+	return s
+}
+
+type DeleteTodoTaskShrinkHeaders struct {
+	CommonHeaders        map[string]*string `json:"commonHeaders,omitempty" xml:"commonHeaders,omitempty"`
+	AccountContextShrink *string            `json:"AccountContext,omitempty" xml:"AccountContext,omitempty"`
+}
+
+func (s DeleteTodoTaskShrinkHeaders) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DeleteTodoTaskShrinkHeaders) GoString() string {
+	return s.String()
+}
+
+func (s *DeleteTodoTaskShrinkHeaders) SetCommonHeaders(v map[string]*string) *DeleteTodoTaskShrinkHeaders {
+	s.CommonHeaders = v
+	return s
+}
+
+func (s *DeleteTodoTaskShrinkHeaders) SetAccountContextShrink(v string) *DeleteTodoTaskShrinkHeaders {
+	s.AccountContextShrink = &v
+	return s
+}
+
+type DeleteTodoTaskRequest struct {
+	TenantContext *DeleteTodoTaskRequestTenantContext `json:"TenantContext,omitempty" xml:"TenantContext,omitempty" type:"Struct"`
+	OperatorId    *string                             `json:"operatorId,omitempty" xml:"operatorId,omitempty"`
+	TaskId        *string                             `json:"taskId,omitempty" xml:"taskId,omitempty"`
+}
+
+func (s DeleteTodoTaskRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DeleteTodoTaskRequest) GoString() string {
+	return s.String()
+}
+
+func (s *DeleteTodoTaskRequest) SetTenantContext(v *DeleteTodoTaskRequestTenantContext) *DeleteTodoTaskRequest {
+	s.TenantContext = v
+	return s
+}
+
+func (s *DeleteTodoTaskRequest) SetOperatorId(v string) *DeleteTodoTaskRequest {
+	s.OperatorId = &v
+	return s
+}
+
+func (s *DeleteTodoTaskRequest) SetTaskId(v string) *DeleteTodoTaskRequest {
+	s.TaskId = &v
+	return s
+}
+
+type DeleteTodoTaskRequestTenantContext struct {
+	TenantId *string `json:"tenantId,omitempty" xml:"tenantId,omitempty"`
+}
+
+func (s DeleteTodoTaskRequestTenantContext) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DeleteTodoTaskRequestTenantContext) GoString() string {
+	return s.String()
+}
+
+func (s *DeleteTodoTaskRequestTenantContext) SetTenantId(v string) *DeleteTodoTaskRequestTenantContext {
+	s.TenantId = &v
+	return s
+}
+
+type DeleteTodoTaskShrinkRequest struct {
+	TenantContextShrink *string `json:"TenantContext,omitempty" xml:"TenantContext,omitempty"`
+	OperatorId          *string `json:"operatorId,omitempty" xml:"operatorId,omitempty"`
+	TaskId              *string `json:"taskId,omitempty" xml:"taskId,omitempty"`
+}
+
+func (s DeleteTodoTaskShrinkRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DeleteTodoTaskShrinkRequest) GoString() string {
+	return s.String()
+}
+
+func (s *DeleteTodoTaskShrinkRequest) SetTenantContextShrink(v string) *DeleteTodoTaskShrinkRequest {
+	s.TenantContextShrink = &v
+	return s
+}
+
+func (s *DeleteTodoTaskShrinkRequest) SetOperatorId(v string) *DeleteTodoTaskShrinkRequest {
+	s.OperatorId = &v
+	return s
+}
+
+func (s *DeleteTodoTaskShrinkRequest) SetTaskId(v string) *DeleteTodoTaskShrinkRequest {
+	s.TaskId = &v
+	return s
+}
+
+type DeleteTodoTaskResponseBody struct {
+	// requestId
+	RequestId *string `json:"requestId,omitempty" xml:"requestId,omitempty"`
+	Result    *bool   `json:"result,omitempty" xml:"result,omitempty"`
+}
+
+func (s DeleteTodoTaskResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DeleteTodoTaskResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *DeleteTodoTaskResponseBody) SetRequestId(v string) *DeleteTodoTaskResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *DeleteTodoTaskResponseBody) SetResult(v bool) *DeleteTodoTaskResponseBody {
+	s.Result = &v
+	return s
+}
+
+type DeleteTodoTaskResponse struct {
+	Headers    map[string]*string          `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                      `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *DeleteTodoTaskResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s DeleteTodoTaskResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DeleteTodoTaskResponse) GoString() string {
+	return s.String()
+}
+
+func (s *DeleteTodoTaskResponse) SetHeaders(v map[string]*string) *DeleteTodoTaskResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *DeleteTodoTaskResponse) SetStatusCode(v int32) *DeleteTodoTaskResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *DeleteTodoTaskResponse) SetBody(v *DeleteTodoTaskResponseBody) *DeleteTodoTaskResponse {
 	s.Body = v
 	return s
 }
@@ -2260,6 +3024,780 @@ func (s *InsertRowsBeforeResponse) SetBody(v *InsertRowsBeforeResponseBody) *Ins
 	return s
 }
 
+type QueryOrgTodoTasksHeaders struct {
+	CommonHeaders  map[string]*string                      `json:"commonHeaders,omitempty" xml:"commonHeaders,omitempty"`
+	AccountContext *QueryOrgTodoTasksHeadersAccountContext `json:"AccountContext,omitempty" xml:"AccountContext,omitempty" type:"Struct"`
+}
+
+func (s QueryOrgTodoTasksHeaders) String() string {
+	return tea.Prettify(s)
+}
+
+func (s QueryOrgTodoTasksHeaders) GoString() string {
+	return s.String()
+}
+
+func (s *QueryOrgTodoTasksHeaders) SetCommonHeaders(v map[string]*string) *QueryOrgTodoTasksHeaders {
+	s.CommonHeaders = v
+	return s
+}
+
+func (s *QueryOrgTodoTasksHeaders) SetAccountContext(v *QueryOrgTodoTasksHeadersAccountContext) *QueryOrgTodoTasksHeaders {
+	s.AccountContext = v
+	return s
+}
+
+type QueryOrgTodoTasksHeadersAccountContext struct {
+	AccountId *string `json:"accountId,omitempty" xml:"accountId,omitempty"`
+}
+
+func (s QueryOrgTodoTasksHeadersAccountContext) String() string {
+	return tea.Prettify(s)
+}
+
+func (s QueryOrgTodoTasksHeadersAccountContext) GoString() string {
+	return s.String()
+}
+
+func (s *QueryOrgTodoTasksHeadersAccountContext) SetAccountId(v string) *QueryOrgTodoTasksHeadersAccountContext {
+	s.AccountId = &v
+	return s
+}
+
+type QueryOrgTodoTasksShrinkHeaders struct {
+	CommonHeaders        map[string]*string `json:"commonHeaders,omitempty" xml:"commonHeaders,omitempty"`
+	AccountContextShrink *string            `json:"AccountContext,omitempty" xml:"AccountContext,omitempty"`
+}
+
+func (s QueryOrgTodoTasksShrinkHeaders) String() string {
+	return tea.Prettify(s)
+}
+
+func (s QueryOrgTodoTasksShrinkHeaders) GoString() string {
+	return s.String()
+}
+
+func (s *QueryOrgTodoTasksShrinkHeaders) SetCommonHeaders(v map[string]*string) *QueryOrgTodoTasksShrinkHeaders {
+	s.CommonHeaders = v
+	return s
+}
+
+func (s *QueryOrgTodoTasksShrinkHeaders) SetAccountContextShrink(v string) *QueryOrgTodoTasksShrinkHeaders {
+	s.AccountContextShrink = &v
+	return s
+}
+
+type QueryOrgTodoTasksRequest struct {
+	TenantContext *QueryOrgTodoTasksRequestTenantContext `json:"TenantContext,omitempty" xml:"TenantContext,omitempty" type:"Struct"`
+	IsDone        *bool                                  `json:"isDone,omitempty" xml:"isDone,omitempty"`
+	NextToken     *string                                `json:"nextToken,omitempty" xml:"nextToken,omitempty"`
+}
+
+func (s QueryOrgTodoTasksRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s QueryOrgTodoTasksRequest) GoString() string {
+	return s.String()
+}
+
+func (s *QueryOrgTodoTasksRequest) SetTenantContext(v *QueryOrgTodoTasksRequestTenantContext) *QueryOrgTodoTasksRequest {
+	s.TenantContext = v
+	return s
+}
+
+func (s *QueryOrgTodoTasksRequest) SetIsDone(v bool) *QueryOrgTodoTasksRequest {
+	s.IsDone = &v
+	return s
+}
+
+func (s *QueryOrgTodoTasksRequest) SetNextToken(v string) *QueryOrgTodoTasksRequest {
+	s.NextToken = &v
+	return s
+}
+
+type QueryOrgTodoTasksRequestTenantContext struct {
+	TenantId *string `json:"tenantId,omitempty" xml:"tenantId,omitempty"`
+}
+
+func (s QueryOrgTodoTasksRequestTenantContext) String() string {
+	return tea.Prettify(s)
+}
+
+func (s QueryOrgTodoTasksRequestTenantContext) GoString() string {
+	return s.String()
+}
+
+func (s *QueryOrgTodoTasksRequestTenantContext) SetTenantId(v string) *QueryOrgTodoTasksRequestTenantContext {
+	s.TenantId = &v
+	return s
+}
+
+type QueryOrgTodoTasksShrinkRequest struct {
+	TenantContextShrink *string `json:"TenantContext,omitempty" xml:"TenantContext,omitempty"`
+	IsDone              *bool   `json:"isDone,omitempty" xml:"isDone,omitempty"`
+	NextToken           *string `json:"nextToken,omitempty" xml:"nextToken,omitempty"`
+}
+
+func (s QueryOrgTodoTasksShrinkRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s QueryOrgTodoTasksShrinkRequest) GoString() string {
+	return s.String()
+}
+
+func (s *QueryOrgTodoTasksShrinkRequest) SetTenantContextShrink(v string) *QueryOrgTodoTasksShrinkRequest {
+	s.TenantContextShrink = &v
+	return s
+}
+
+func (s *QueryOrgTodoTasksShrinkRequest) SetIsDone(v bool) *QueryOrgTodoTasksShrinkRequest {
+	s.IsDone = &v
+	return s
+}
+
+func (s *QueryOrgTodoTasksShrinkRequest) SetNextToken(v string) *QueryOrgTodoTasksShrinkRequest {
+	s.NextToken = &v
+	return s
+}
+
+type QueryOrgTodoTasksResponseBody struct {
+	NextToken *string `json:"nextToken,omitempty" xml:"nextToken,omitempty"`
+	// requestId
+	RequestId *string                                   `json:"requestId,omitempty" xml:"requestId,omitempty"`
+	TodoCards []*QueryOrgTodoTasksResponseBodyTodoCards `json:"todoCards,omitempty" xml:"todoCards,omitempty" type:"Repeated"`
+}
+
+func (s QueryOrgTodoTasksResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s QueryOrgTodoTasksResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *QueryOrgTodoTasksResponseBody) SetNextToken(v string) *QueryOrgTodoTasksResponseBody {
+	s.NextToken = &v
+	return s
+}
+
+func (s *QueryOrgTodoTasksResponseBody) SetRequestId(v string) *QueryOrgTodoTasksResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *QueryOrgTodoTasksResponseBody) SetTodoCards(v []*QueryOrgTodoTasksResponseBodyTodoCards) *QueryOrgTodoTasksResponseBody {
+	s.TodoCards = v
+	return s
+}
+
+type QueryOrgTodoTasksResponseBodyTodoCards struct {
+	BizTag       *string                                          `json:"bizTag,omitempty" xml:"bizTag,omitempty"`
+	CreatedTime  *int64                                           `json:"createdTime,omitempty" xml:"createdTime,omitempty"`
+	CreatorId    *string                                          `json:"creatorId,omitempty" xml:"creatorId,omitempty"`
+	DetailUrl    *QueryOrgTodoTasksResponseBodyTodoCardsDetailUrl `json:"detailUrl,omitempty" xml:"detailUrl,omitempty" type:"Struct"`
+	DueTime      *int64                                           `json:"dueTime,omitempty" xml:"dueTime,omitempty"`
+	IsDone       *bool                                            `json:"isDone,omitempty" xml:"isDone,omitempty"`
+	ModifiedTime *int64                                           `json:"modifiedTime,omitempty" xml:"modifiedTime,omitempty"`
+	Priority     *int32                                           `json:"priority,omitempty" xml:"priority,omitempty"`
+	SourceId     *string                                          `json:"sourceId,omitempty" xml:"sourceId,omitempty"`
+	Subject      *string                                          `json:"subject,omitempty" xml:"subject,omitempty"`
+	TaskId       *string                                          `json:"taskId,omitempty" xml:"taskId,omitempty"`
+}
+
+func (s QueryOrgTodoTasksResponseBodyTodoCards) String() string {
+	return tea.Prettify(s)
+}
+
+func (s QueryOrgTodoTasksResponseBodyTodoCards) GoString() string {
+	return s.String()
+}
+
+func (s *QueryOrgTodoTasksResponseBodyTodoCards) SetBizTag(v string) *QueryOrgTodoTasksResponseBodyTodoCards {
+	s.BizTag = &v
+	return s
+}
+
+func (s *QueryOrgTodoTasksResponseBodyTodoCards) SetCreatedTime(v int64) *QueryOrgTodoTasksResponseBodyTodoCards {
+	s.CreatedTime = &v
+	return s
+}
+
+func (s *QueryOrgTodoTasksResponseBodyTodoCards) SetCreatorId(v string) *QueryOrgTodoTasksResponseBodyTodoCards {
+	s.CreatorId = &v
+	return s
+}
+
+func (s *QueryOrgTodoTasksResponseBodyTodoCards) SetDetailUrl(v *QueryOrgTodoTasksResponseBodyTodoCardsDetailUrl) *QueryOrgTodoTasksResponseBodyTodoCards {
+	s.DetailUrl = v
+	return s
+}
+
+func (s *QueryOrgTodoTasksResponseBodyTodoCards) SetDueTime(v int64) *QueryOrgTodoTasksResponseBodyTodoCards {
+	s.DueTime = &v
+	return s
+}
+
+func (s *QueryOrgTodoTasksResponseBodyTodoCards) SetIsDone(v bool) *QueryOrgTodoTasksResponseBodyTodoCards {
+	s.IsDone = &v
+	return s
+}
+
+func (s *QueryOrgTodoTasksResponseBodyTodoCards) SetModifiedTime(v int64) *QueryOrgTodoTasksResponseBodyTodoCards {
+	s.ModifiedTime = &v
+	return s
+}
+
+func (s *QueryOrgTodoTasksResponseBodyTodoCards) SetPriority(v int32) *QueryOrgTodoTasksResponseBodyTodoCards {
+	s.Priority = &v
+	return s
+}
+
+func (s *QueryOrgTodoTasksResponseBodyTodoCards) SetSourceId(v string) *QueryOrgTodoTasksResponseBodyTodoCards {
+	s.SourceId = &v
+	return s
+}
+
+func (s *QueryOrgTodoTasksResponseBodyTodoCards) SetSubject(v string) *QueryOrgTodoTasksResponseBodyTodoCards {
+	s.Subject = &v
+	return s
+}
+
+func (s *QueryOrgTodoTasksResponseBodyTodoCards) SetTaskId(v string) *QueryOrgTodoTasksResponseBodyTodoCards {
+	s.TaskId = &v
+	return s
+}
+
+type QueryOrgTodoTasksResponseBodyTodoCardsDetailUrl struct {
+	AppUrl *string `json:"appUrl,omitempty" xml:"appUrl,omitempty"`
+	PcUrl  *string `json:"pcUrl,omitempty" xml:"pcUrl,omitempty"`
+}
+
+func (s QueryOrgTodoTasksResponseBodyTodoCardsDetailUrl) String() string {
+	return tea.Prettify(s)
+}
+
+func (s QueryOrgTodoTasksResponseBodyTodoCardsDetailUrl) GoString() string {
+	return s.String()
+}
+
+func (s *QueryOrgTodoTasksResponseBodyTodoCardsDetailUrl) SetAppUrl(v string) *QueryOrgTodoTasksResponseBodyTodoCardsDetailUrl {
+	s.AppUrl = &v
+	return s
+}
+
+func (s *QueryOrgTodoTasksResponseBodyTodoCardsDetailUrl) SetPcUrl(v string) *QueryOrgTodoTasksResponseBodyTodoCardsDetailUrl {
+	s.PcUrl = &v
+	return s
+}
+
+type QueryOrgTodoTasksResponse struct {
+	Headers    map[string]*string             `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                         `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *QueryOrgTodoTasksResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s QueryOrgTodoTasksResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s QueryOrgTodoTasksResponse) GoString() string {
+	return s.String()
+}
+
+func (s *QueryOrgTodoTasksResponse) SetHeaders(v map[string]*string) *QueryOrgTodoTasksResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *QueryOrgTodoTasksResponse) SetStatusCode(v int32) *QueryOrgTodoTasksResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *QueryOrgTodoTasksResponse) SetBody(v *QueryOrgTodoTasksResponseBody) *QueryOrgTodoTasksResponse {
+	s.Body = v
+	return s
+}
+
+type UpdateTodoTaskHeaders struct {
+	CommonHeaders  map[string]*string                   `json:"commonHeaders,omitempty" xml:"commonHeaders,omitempty"`
+	AccountContext *UpdateTodoTaskHeadersAccountContext `json:"AccountContext,omitempty" xml:"AccountContext,omitempty" type:"Struct"`
+}
+
+func (s UpdateTodoTaskHeaders) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UpdateTodoTaskHeaders) GoString() string {
+	return s.String()
+}
+
+func (s *UpdateTodoTaskHeaders) SetCommonHeaders(v map[string]*string) *UpdateTodoTaskHeaders {
+	s.CommonHeaders = v
+	return s
+}
+
+func (s *UpdateTodoTaskHeaders) SetAccountContext(v *UpdateTodoTaskHeadersAccountContext) *UpdateTodoTaskHeaders {
+	s.AccountContext = v
+	return s
+}
+
+type UpdateTodoTaskHeadersAccountContext struct {
+	AccountId *string `json:"accountId,omitempty" xml:"accountId,omitempty"`
+}
+
+func (s UpdateTodoTaskHeadersAccountContext) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UpdateTodoTaskHeadersAccountContext) GoString() string {
+	return s.String()
+}
+
+func (s *UpdateTodoTaskHeadersAccountContext) SetAccountId(v string) *UpdateTodoTaskHeadersAccountContext {
+	s.AccountId = &v
+	return s
+}
+
+type UpdateTodoTaskShrinkHeaders struct {
+	CommonHeaders        map[string]*string `json:"commonHeaders,omitempty" xml:"commonHeaders,omitempty"`
+	AccountContextShrink *string            `json:"AccountContext,omitempty" xml:"AccountContext,omitempty"`
+}
+
+func (s UpdateTodoTaskShrinkHeaders) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UpdateTodoTaskShrinkHeaders) GoString() string {
+	return s.String()
+}
+
+func (s *UpdateTodoTaskShrinkHeaders) SetCommonHeaders(v map[string]*string) *UpdateTodoTaskShrinkHeaders {
+	s.CommonHeaders = v
+	return s
+}
+
+func (s *UpdateTodoTaskShrinkHeaders) SetAccountContextShrink(v string) *UpdateTodoTaskShrinkHeaders {
+	s.AccountContextShrink = &v
+	return s
+}
+
+type UpdateTodoTaskRequest struct {
+	TenantContext  *UpdateTodoTaskRequestTenantContext `json:"TenantContext,omitempty" xml:"TenantContext,omitempty" type:"Struct"`
+	Description    *string                             `json:"description,omitempty" xml:"description,omitempty"`
+	Done           *bool                               `json:"done,omitempty" xml:"done,omitempty"`
+	DueTime        *int64                              `json:"dueTime,omitempty" xml:"dueTime,omitempty"`
+	ExecutorIds    []*string                           `json:"executorIds,omitempty" xml:"executorIds,omitempty" type:"Repeated"`
+	ParticipantIds []*string                           `json:"participantIds,omitempty" xml:"participantIds,omitempty" type:"Repeated"`
+	Subject        *string                             `json:"subject,omitempty" xml:"subject,omitempty"`
+	TaskId         *string                             `json:"taskId,omitempty" xml:"taskId,omitempty"`
+}
+
+func (s UpdateTodoTaskRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UpdateTodoTaskRequest) GoString() string {
+	return s.String()
+}
+
+func (s *UpdateTodoTaskRequest) SetTenantContext(v *UpdateTodoTaskRequestTenantContext) *UpdateTodoTaskRequest {
+	s.TenantContext = v
+	return s
+}
+
+func (s *UpdateTodoTaskRequest) SetDescription(v string) *UpdateTodoTaskRequest {
+	s.Description = &v
+	return s
+}
+
+func (s *UpdateTodoTaskRequest) SetDone(v bool) *UpdateTodoTaskRequest {
+	s.Done = &v
+	return s
+}
+
+func (s *UpdateTodoTaskRequest) SetDueTime(v int64) *UpdateTodoTaskRequest {
+	s.DueTime = &v
+	return s
+}
+
+func (s *UpdateTodoTaskRequest) SetExecutorIds(v []*string) *UpdateTodoTaskRequest {
+	s.ExecutorIds = v
+	return s
+}
+
+func (s *UpdateTodoTaskRequest) SetParticipantIds(v []*string) *UpdateTodoTaskRequest {
+	s.ParticipantIds = v
+	return s
+}
+
+func (s *UpdateTodoTaskRequest) SetSubject(v string) *UpdateTodoTaskRequest {
+	s.Subject = &v
+	return s
+}
+
+func (s *UpdateTodoTaskRequest) SetTaskId(v string) *UpdateTodoTaskRequest {
+	s.TaskId = &v
+	return s
+}
+
+type UpdateTodoTaskRequestTenantContext struct {
+	TenantId *string `json:"tenantId,omitempty" xml:"tenantId,omitempty"`
+}
+
+func (s UpdateTodoTaskRequestTenantContext) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UpdateTodoTaskRequestTenantContext) GoString() string {
+	return s.String()
+}
+
+func (s *UpdateTodoTaskRequestTenantContext) SetTenantId(v string) *UpdateTodoTaskRequestTenantContext {
+	s.TenantId = &v
+	return s
+}
+
+type UpdateTodoTaskShrinkRequest struct {
+	TenantContextShrink  *string `json:"TenantContext,omitempty" xml:"TenantContext,omitempty"`
+	Description          *string `json:"description,omitempty" xml:"description,omitempty"`
+	Done                 *bool   `json:"done,omitempty" xml:"done,omitempty"`
+	DueTime              *int64  `json:"dueTime,omitempty" xml:"dueTime,omitempty"`
+	ExecutorIdsShrink    *string `json:"executorIds,omitempty" xml:"executorIds,omitempty"`
+	ParticipantIdsShrink *string `json:"participantIds,omitempty" xml:"participantIds,omitempty"`
+	Subject              *string `json:"subject,omitempty" xml:"subject,omitempty"`
+	TaskId               *string `json:"taskId,omitempty" xml:"taskId,omitempty"`
+}
+
+func (s UpdateTodoTaskShrinkRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UpdateTodoTaskShrinkRequest) GoString() string {
+	return s.String()
+}
+
+func (s *UpdateTodoTaskShrinkRequest) SetTenantContextShrink(v string) *UpdateTodoTaskShrinkRequest {
+	s.TenantContextShrink = &v
+	return s
+}
+
+func (s *UpdateTodoTaskShrinkRequest) SetDescription(v string) *UpdateTodoTaskShrinkRequest {
+	s.Description = &v
+	return s
+}
+
+func (s *UpdateTodoTaskShrinkRequest) SetDone(v bool) *UpdateTodoTaskShrinkRequest {
+	s.Done = &v
+	return s
+}
+
+func (s *UpdateTodoTaskShrinkRequest) SetDueTime(v int64) *UpdateTodoTaskShrinkRequest {
+	s.DueTime = &v
+	return s
+}
+
+func (s *UpdateTodoTaskShrinkRequest) SetExecutorIdsShrink(v string) *UpdateTodoTaskShrinkRequest {
+	s.ExecutorIdsShrink = &v
+	return s
+}
+
+func (s *UpdateTodoTaskShrinkRequest) SetParticipantIdsShrink(v string) *UpdateTodoTaskShrinkRequest {
+	s.ParticipantIdsShrink = &v
+	return s
+}
+
+func (s *UpdateTodoTaskShrinkRequest) SetSubject(v string) *UpdateTodoTaskShrinkRequest {
+	s.Subject = &v
+	return s
+}
+
+func (s *UpdateTodoTaskShrinkRequest) SetTaskId(v string) *UpdateTodoTaskShrinkRequest {
+	s.TaskId = &v
+	return s
+}
+
+type UpdateTodoTaskResponseBody struct {
+	// requestId
+	RequestId *string `json:"requestId,omitempty" xml:"requestId,omitempty"`
+	Result    *bool   `json:"result,omitempty" xml:"result,omitempty"`
+}
+
+func (s UpdateTodoTaskResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UpdateTodoTaskResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *UpdateTodoTaskResponseBody) SetRequestId(v string) *UpdateTodoTaskResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *UpdateTodoTaskResponseBody) SetResult(v bool) *UpdateTodoTaskResponseBody {
+	s.Result = &v
+	return s
+}
+
+type UpdateTodoTaskResponse struct {
+	Headers    map[string]*string          `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                      `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *UpdateTodoTaskResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s UpdateTodoTaskResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UpdateTodoTaskResponse) GoString() string {
+	return s.String()
+}
+
+func (s *UpdateTodoTaskResponse) SetHeaders(v map[string]*string) *UpdateTodoTaskResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *UpdateTodoTaskResponse) SetStatusCode(v int32) *UpdateTodoTaskResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *UpdateTodoTaskResponse) SetBody(v *UpdateTodoTaskResponseBody) *UpdateTodoTaskResponse {
+	s.Body = v
+	return s
+}
+
+type UpdateTodoTaskExecutorStatusHeaders struct {
+	CommonHeaders  map[string]*string                                 `json:"commonHeaders,omitempty" xml:"commonHeaders,omitempty"`
+	AccountContext *UpdateTodoTaskExecutorStatusHeadersAccountContext `json:"AccountContext,omitempty" xml:"AccountContext,omitempty" type:"Struct"`
+}
+
+func (s UpdateTodoTaskExecutorStatusHeaders) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UpdateTodoTaskExecutorStatusHeaders) GoString() string {
+	return s.String()
+}
+
+func (s *UpdateTodoTaskExecutorStatusHeaders) SetCommonHeaders(v map[string]*string) *UpdateTodoTaskExecutorStatusHeaders {
+	s.CommonHeaders = v
+	return s
+}
+
+func (s *UpdateTodoTaskExecutorStatusHeaders) SetAccountContext(v *UpdateTodoTaskExecutorStatusHeadersAccountContext) *UpdateTodoTaskExecutorStatusHeaders {
+	s.AccountContext = v
+	return s
+}
+
+type UpdateTodoTaskExecutorStatusHeadersAccountContext struct {
+	AccountId *string `json:"accountId,omitempty" xml:"accountId,omitempty"`
+}
+
+func (s UpdateTodoTaskExecutorStatusHeadersAccountContext) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UpdateTodoTaskExecutorStatusHeadersAccountContext) GoString() string {
+	return s.String()
+}
+
+func (s *UpdateTodoTaskExecutorStatusHeadersAccountContext) SetAccountId(v string) *UpdateTodoTaskExecutorStatusHeadersAccountContext {
+	s.AccountId = &v
+	return s
+}
+
+type UpdateTodoTaskExecutorStatusShrinkHeaders struct {
+	CommonHeaders        map[string]*string `json:"commonHeaders,omitempty" xml:"commonHeaders,omitempty"`
+	AccountContextShrink *string            `json:"AccountContext,omitempty" xml:"AccountContext,omitempty"`
+}
+
+func (s UpdateTodoTaskExecutorStatusShrinkHeaders) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UpdateTodoTaskExecutorStatusShrinkHeaders) GoString() string {
+	return s.String()
+}
+
+func (s *UpdateTodoTaskExecutorStatusShrinkHeaders) SetCommonHeaders(v map[string]*string) *UpdateTodoTaskExecutorStatusShrinkHeaders {
+	s.CommonHeaders = v
+	return s
+}
+
+func (s *UpdateTodoTaskExecutorStatusShrinkHeaders) SetAccountContextShrink(v string) *UpdateTodoTaskExecutorStatusShrinkHeaders {
+	s.AccountContextShrink = &v
+	return s
+}
+
+type UpdateTodoTaskExecutorStatusRequest struct {
+	TenantContext      *UpdateTodoTaskExecutorStatusRequestTenantContext        `json:"TenantContext,omitempty" xml:"TenantContext,omitempty" type:"Struct"`
+	ExecutorStatusList []*UpdateTodoTaskExecutorStatusRequestExecutorStatusList `json:"executorStatusList,omitempty" xml:"executorStatusList,omitempty" type:"Repeated"`
+	OperatorId         *string                                                  `json:"operatorId,omitempty" xml:"operatorId,omitempty"`
+	TaskId             *string                                                  `json:"taskId,omitempty" xml:"taskId,omitempty"`
+}
+
+func (s UpdateTodoTaskExecutorStatusRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UpdateTodoTaskExecutorStatusRequest) GoString() string {
+	return s.String()
+}
+
+func (s *UpdateTodoTaskExecutorStatusRequest) SetTenantContext(v *UpdateTodoTaskExecutorStatusRequestTenantContext) *UpdateTodoTaskExecutorStatusRequest {
+	s.TenantContext = v
+	return s
+}
+
+func (s *UpdateTodoTaskExecutorStatusRequest) SetExecutorStatusList(v []*UpdateTodoTaskExecutorStatusRequestExecutorStatusList) *UpdateTodoTaskExecutorStatusRequest {
+	s.ExecutorStatusList = v
+	return s
+}
+
+func (s *UpdateTodoTaskExecutorStatusRequest) SetOperatorId(v string) *UpdateTodoTaskExecutorStatusRequest {
+	s.OperatorId = &v
+	return s
+}
+
+func (s *UpdateTodoTaskExecutorStatusRequest) SetTaskId(v string) *UpdateTodoTaskExecutorStatusRequest {
+	s.TaskId = &v
+	return s
+}
+
+type UpdateTodoTaskExecutorStatusRequestTenantContext struct {
+	TenantId *string `json:"tenantId,omitempty" xml:"tenantId,omitempty"`
+}
+
+func (s UpdateTodoTaskExecutorStatusRequestTenantContext) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UpdateTodoTaskExecutorStatusRequestTenantContext) GoString() string {
+	return s.String()
+}
+
+func (s *UpdateTodoTaskExecutorStatusRequestTenantContext) SetTenantId(v string) *UpdateTodoTaskExecutorStatusRequestTenantContext {
+	s.TenantId = &v
+	return s
+}
+
+type UpdateTodoTaskExecutorStatusRequestExecutorStatusList struct {
+	Id     *string `json:"id,omitempty" xml:"id,omitempty"`
+	IsDone *bool   `json:"isDone,omitempty" xml:"isDone,omitempty"`
+}
+
+func (s UpdateTodoTaskExecutorStatusRequestExecutorStatusList) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UpdateTodoTaskExecutorStatusRequestExecutorStatusList) GoString() string {
+	return s.String()
+}
+
+func (s *UpdateTodoTaskExecutorStatusRequestExecutorStatusList) SetId(v string) *UpdateTodoTaskExecutorStatusRequestExecutorStatusList {
+	s.Id = &v
+	return s
+}
+
+func (s *UpdateTodoTaskExecutorStatusRequestExecutorStatusList) SetIsDone(v bool) *UpdateTodoTaskExecutorStatusRequestExecutorStatusList {
+	s.IsDone = &v
+	return s
+}
+
+type UpdateTodoTaskExecutorStatusShrinkRequest struct {
+	TenantContextShrink      *string `json:"TenantContext,omitempty" xml:"TenantContext,omitempty"`
+	ExecutorStatusListShrink *string `json:"executorStatusList,omitempty" xml:"executorStatusList,omitempty"`
+	OperatorId               *string `json:"operatorId,omitempty" xml:"operatorId,omitempty"`
+	TaskId                   *string `json:"taskId,omitempty" xml:"taskId,omitempty"`
+}
+
+func (s UpdateTodoTaskExecutorStatusShrinkRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UpdateTodoTaskExecutorStatusShrinkRequest) GoString() string {
+	return s.String()
+}
+
+func (s *UpdateTodoTaskExecutorStatusShrinkRequest) SetTenantContextShrink(v string) *UpdateTodoTaskExecutorStatusShrinkRequest {
+	s.TenantContextShrink = &v
+	return s
+}
+
+func (s *UpdateTodoTaskExecutorStatusShrinkRequest) SetExecutorStatusListShrink(v string) *UpdateTodoTaskExecutorStatusShrinkRequest {
+	s.ExecutorStatusListShrink = &v
+	return s
+}
+
+func (s *UpdateTodoTaskExecutorStatusShrinkRequest) SetOperatorId(v string) *UpdateTodoTaskExecutorStatusShrinkRequest {
+	s.OperatorId = &v
+	return s
+}
+
+func (s *UpdateTodoTaskExecutorStatusShrinkRequest) SetTaskId(v string) *UpdateTodoTaskExecutorStatusShrinkRequest {
+	s.TaskId = &v
+	return s
+}
+
+type UpdateTodoTaskExecutorStatusResponseBody struct {
+	// requestId
+	RequestId *string `json:"requestId,omitempty" xml:"requestId,omitempty"`
+	Result    *bool   `json:"result,omitempty" xml:"result,omitempty"`
+}
+
+func (s UpdateTodoTaskExecutorStatusResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UpdateTodoTaskExecutorStatusResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *UpdateTodoTaskExecutorStatusResponseBody) SetRequestId(v string) *UpdateTodoTaskExecutorStatusResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *UpdateTodoTaskExecutorStatusResponseBody) SetResult(v bool) *UpdateTodoTaskExecutorStatusResponseBody {
+	s.Result = &v
+	return s
+}
+
+type UpdateTodoTaskExecutorStatusResponse struct {
+	Headers    map[string]*string                        `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                                    `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *UpdateTodoTaskExecutorStatusResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s UpdateTodoTaskExecutorStatusResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UpdateTodoTaskExecutorStatusResponse) GoString() string {
+	return s.String()
+}
+
+func (s *UpdateTodoTaskExecutorStatusResponse) SetHeaders(v map[string]*string) *UpdateTodoTaskExecutorStatusResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *UpdateTodoTaskExecutorStatusResponse) SetStatusCode(v int32) *UpdateTodoTaskExecutorStatusResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *UpdateTodoTaskExecutorStatusResponse) SetBody(v *UpdateTodoTaskExecutorStatusResponseBody) *UpdateTodoTaskExecutorStatusResponse {
+	s.Body = v
+	return s
+}
+
 type UpdateWorkspaceDocMembersHeaders struct {
 	CommonHeaders  map[string]*string                              `json:"commonHeaders,omitempty" xml:"commonHeaders,omitempty"`
 	AccountContext *UpdateWorkspaceDocMembersHeadersAccountContext `json:"AccountContext,omitempty" xml:"AccountContext,omitempty" type:"Struct"`
@@ -2984,6 +4522,147 @@ func (client *Client) CreateSheet(request *CreateSheetRequest) (_result *CreateS
 	return _result, _err
 }
 
+func (client *Client) CreateTodoTaskWithOptions(tmpReq *CreateTodoTaskRequest, tmpHeader *CreateTodoTaskHeaders, runtime *util.RuntimeOptions) (_result *CreateTodoTaskResponse, _err error) {
+	_err = util.ValidateModel(tmpReq)
+	if _err != nil {
+		return _result, _err
+	}
+	request := &CreateTodoTaskShrinkRequest{}
+	openapiutil.Convert(tmpReq, request)
+	headers := &CreateTodoTaskShrinkHeaders{}
+	openapiutil.Convert(tmpHeader, headers)
+	if !tea.BoolValue(util.IsUnset(tmpHeader.AccountContext)) {
+		headers.AccountContextShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpHeader.AccountContext, tea.String("AccountContext"), tea.String("json"))
+	}
+
+	if !tea.BoolValue(util.IsUnset(tmpReq.TenantContext)) {
+		request.TenantContextShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.TenantContext, tea.String("TenantContext"), tea.String("json"))
+	}
+
+	if !tea.BoolValue(util.IsUnset(tmpReq.ContentFieldList)) {
+		request.ContentFieldListShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.ContentFieldList, tea.String("contentFieldList"), tea.String("json"))
+	}
+
+	if !tea.BoolValue(util.IsUnset(tmpReq.DetailUrl)) {
+		request.DetailUrlShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.DetailUrl, tea.String("detailUrl"), tea.String("json"))
+	}
+
+	if !tea.BoolValue(util.IsUnset(tmpReq.ExecutorIds)) {
+		request.ExecutorIdsShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.ExecutorIds, tea.String("executorIds"), tea.String("json"))
+	}
+
+	if !tea.BoolValue(util.IsUnset(tmpReq.NotifyConfigs)) {
+		request.NotifyConfigsShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.NotifyConfigs, tea.String("notifyConfigs"), tea.String("json"))
+	}
+
+	if !tea.BoolValue(util.IsUnset(tmpReq.ParticipantIds)) {
+		request.ParticipantIdsShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.ParticipantIds, tea.String("participantIds"), tea.String("json"))
+	}
+
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.OperatorId)) {
+		query["operatorId"] = request.OperatorId
+	}
+
+	body := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.TenantContextShrink)) {
+		body["TenantContext"] = request.TenantContextShrink
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ContentFieldListShrink)) {
+		body["contentFieldList"] = request.ContentFieldListShrink
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.CreatorId)) {
+		body["creatorId"] = request.CreatorId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Description)) {
+		body["description"] = request.Description
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.DetailUrlShrink)) {
+		body["detailUrl"] = request.DetailUrlShrink
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.DueTime)) {
+		body["dueTime"] = request.DueTime
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ExecutorIdsShrink)) {
+		body["executorIds"] = request.ExecutorIdsShrink
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.IsOnlyShowExecutor)) {
+		body["isOnlyShowExecutor"] = request.IsOnlyShowExecutor
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.NotifyConfigsShrink)) {
+		body["notifyConfigs"] = request.NotifyConfigsShrink
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ParticipantIdsShrink)) {
+		body["participantIds"] = request.ParticipantIdsShrink
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Priority)) {
+		body["priority"] = request.Priority
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.SourceId)) {
+		body["sourceId"] = request.SourceId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Subject)) {
+		body["subject"] = request.Subject
+	}
+
+	realHeaders := make(map[string]*string)
+	if !tea.BoolValue(util.IsUnset(headers.CommonHeaders)) {
+		realHeaders = headers.CommonHeaders
+	}
+
+	if !tea.BoolValue(util.IsUnset(headers.AccountContextShrink)) {
+		realHeaders["AccountContext"] = util.ToJSONString(headers.AccountContextShrink)
+	}
+
+	req := &openapi.OpenApiRequest{
+		Headers: realHeaders,
+		Query:   openapiutil.Query(query),
+		Body:    openapiutil.ParseToMap(body),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("CreateTodoTask"),
+		Version:     tea.String("2023-04-26"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/dingtalk/v1/task/createTodoTask"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("ROA"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &CreateTodoTaskResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) CreateTodoTask(request *CreateTodoTaskRequest) (_result *CreateTodoTaskResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	headers := &CreateTodoTaskHeaders{}
+	_result = &CreateTodoTaskResponse{}
+	_body, _err := client.CreateTodoTaskWithOptions(request, headers, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
 func (client *Client) CreateWorkspaceWithOptions(tmpReq *CreateWorkspaceRequest, tmpHeader *CreateWorkspaceHeaders, runtime *util.RuntimeOptions) (_result *CreateWorkspaceResponse, _err error) {
 	_err = util.ValidateModel(tmpReq)
 	if _err != nil {
@@ -3143,6 +4822,81 @@ func (client *Client) CreateWorkspaceDoc(request *CreateWorkspaceDocRequest) (_r
 	headers := &CreateWorkspaceDocHeaders{}
 	_result = &CreateWorkspaceDocResponse{}
 	_body, _err := client.CreateWorkspaceDocWithOptions(request, headers, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) DeleteTodoTaskWithOptions(tmpReq *DeleteTodoTaskRequest, tmpHeader *DeleteTodoTaskHeaders, runtime *util.RuntimeOptions) (_result *DeleteTodoTaskResponse, _err error) {
+	_err = util.ValidateModel(tmpReq)
+	if _err != nil {
+		return _result, _err
+	}
+	request := &DeleteTodoTaskShrinkRequest{}
+	openapiutil.Convert(tmpReq, request)
+	headers := &DeleteTodoTaskShrinkHeaders{}
+	openapiutil.Convert(tmpHeader, headers)
+	if !tea.BoolValue(util.IsUnset(tmpHeader.AccountContext)) {
+		headers.AccountContextShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpHeader.AccountContext, tea.String("AccountContext"), tea.String("json"))
+	}
+
+	if !tea.BoolValue(util.IsUnset(tmpReq.TenantContext)) {
+		request.TenantContextShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.TenantContext, tea.String("TenantContext"), tea.String("json"))
+	}
+
+	body := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.TenantContextShrink)) {
+		body["TenantContext"] = request.TenantContextShrink
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.OperatorId)) {
+		body["operatorId"] = request.OperatorId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.TaskId)) {
+		body["taskId"] = request.TaskId
+	}
+
+	realHeaders := make(map[string]*string)
+	if !tea.BoolValue(util.IsUnset(headers.CommonHeaders)) {
+		realHeaders = headers.CommonHeaders
+	}
+
+	if !tea.BoolValue(util.IsUnset(headers.AccountContextShrink)) {
+		realHeaders["AccountContext"] = util.ToJSONString(headers.AccountContextShrink)
+	}
+
+	req := &openapi.OpenApiRequest{
+		Headers: realHeaders,
+		Body:    openapiutil.ParseToMap(body),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("DeleteTodoTask"),
+		Version:     tea.String("2023-04-26"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/dingtalk/v1/task/deleteTodoTask"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("ROA"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &DeleteTodoTaskResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) DeleteTodoTask(request *DeleteTodoTaskRequest) (_result *DeleteTodoTaskResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	headers := &DeleteTodoTaskHeaders{}
+	_result = &DeleteTodoTaskResponse{}
+	_body, _err := client.DeleteTodoTaskWithOptions(request, headers, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -3459,6 +5213,267 @@ func (client *Client) InsertRowsBefore(request *InsertRowsBeforeRequest) (_resul
 	headers := &InsertRowsBeforeHeaders{}
 	_result = &InsertRowsBeforeResponse{}
 	_body, _err := client.InsertRowsBeforeWithOptions(request, headers, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) QueryOrgTodoTasksWithOptions(tmpReq *QueryOrgTodoTasksRequest, tmpHeader *QueryOrgTodoTasksHeaders, runtime *util.RuntimeOptions) (_result *QueryOrgTodoTasksResponse, _err error) {
+	_err = util.ValidateModel(tmpReq)
+	if _err != nil {
+		return _result, _err
+	}
+	request := &QueryOrgTodoTasksShrinkRequest{}
+	openapiutil.Convert(tmpReq, request)
+	headers := &QueryOrgTodoTasksShrinkHeaders{}
+	openapiutil.Convert(tmpHeader, headers)
+	if !tea.BoolValue(util.IsUnset(tmpHeader.AccountContext)) {
+		headers.AccountContextShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpHeader.AccountContext, tea.String("AccountContext"), tea.String("json"))
+	}
+
+	if !tea.BoolValue(util.IsUnset(tmpReq.TenantContext)) {
+		request.TenantContextShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.TenantContext, tea.String("TenantContext"), tea.String("json"))
+	}
+
+	body := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.TenantContextShrink)) {
+		body["TenantContext"] = request.TenantContextShrink
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.IsDone)) {
+		body["isDone"] = request.IsDone
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.NextToken)) {
+		body["nextToken"] = request.NextToken
+	}
+
+	realHeaders := make(map[string]*string)
+	if !tea.BoolValue(util.IsUnset(headers.CommonHeaders)) {
+		realHeaders = headers.CommonHeaders
+	}
+
+	if !tea.BoolValue(util.IsUnset(headers.AccountContextShrink)) {
+		realHeaders["AccountContext"] = util.ToJSONString(headers.AccountContextShrink)
+	}
+
+	req := &openapi.OpenApiRequest{
+		Headers: realHeaders,
+		Body:    openapiutil.ParseToMap(body),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("QueryOrgTodoTasks"),
+		Version:     tea.String("2023-04-26"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/dingtalk/v1/task/queryOrgTodoTasks"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("ROA"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &QueryOrgTodoTasksResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) QueryOrgTodoTasks(request *QueryOrgTodoTasksRequest) (_result *QueryOrgTodoTasksResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	headers := &QueryOrgTodoTasksHeaders{}
+	_result = &QueryOrgTodoTasksResponse{}
+	_body, _err := client.QueryOrgTodoTasksWithOptions(request, headers, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) UpdateTodoTaskWithOptions(tmpReq *UpdateTodoTaskRequest, tmpHeader *UpdateTodoTaskHeaders, runtime *util.RuntimeOptions) (_result *UpdateTodoTaskResponse, _err error) {
+	_err = util.ValidateModel(tmpReq)
+	if _err != nil {
+		return _result, _err
+	}
+	request := &UpdateTodoTaskShrinkRequest{}
+	openapiutil.Convert(tmpReq, request)
+	headers := &UpdateTodoTaskShrinkHeaders{}
+	openapiutil.Convert(tmpHeader, headers)
+	if !tea.BoolValue(util.IsUnset(tmpHeader.AccountContext)) {
+		headers.AccountContextShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpHeader.AccountContext, tea.String("AccountContext"), tea.String("json"))
+	}
+
+	if !tea.BoolValue(util.IsUnset(tmpReq.TenantContext)) {
+		request.TenantContextShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.TenantContext, tea.String("TenantContext"), tea.String("json"))
+	}
+
+	if !tea.BoolValue(util.IsUnset(tmpReq.ExecutorIds)) {
+		request.ExecutorIdsShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.ExecutorIds, tea.String("executorIds"), tea.String("json"))
+	}
+
+	if !tea.BoolValue(util.IsUnset(tmpReq.ParticipantIds)) {
+		request.ParticipantIdsShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.ParticipantIds, tea.String("participantIds"), tea.String("json"))
+	}
+
+	body := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.TenantContextShrink)) {
+		body["TenantContext"] = request.TenantContextShrink
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Description)) {
+		body["description"] = request.Description
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Done)) {
+		body["done"] = request.Done
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.DueTime)) {
+		body["dueTime"] = request.DueTime
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ExecutorIdsShrink)) {
+		body["executorIds"] = request.ExecutorIdsShrink
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ParticipantIdsShrink)) {
+		body["participantIds"] = request.ParticipantIdsShrink
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Subject)) {
+		body["subject"] = request.Subject
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.TaskId)) {
+		body["taskId"] = request.TaskId
+	}
+
+	realHeaders := make(map[string]*string)
+	if !tea.BoolValue(util.IsUnset(headers.CommonHeaders)) {
+		realHeaders = headers.CommonHeaders
+	}
+
+	if !tea.BoolValue(util.IsUnset(headers.AccountContextShrink)) {
+		realHeaders["AccountContext"] = util.ToJSONString(headers.AccountContextShrink)
+	}
+
+	req := &openapi.OpenApiRequest{
+		Headers: realHeaders,
+		Body:    openapiutil.ParseToMap(body),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("UpdateTodoTask"),
+		Version:     tea.String("2023-04-26"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/dingtalk/v1/task/updateTodoTask"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("ROA"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &UpdateTodoTaskResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) UpdateTodoTask(request *UpdateTodoTaskRequest) (_result *UpdateTodoTaskResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	headers := &UpdateTodoTaskHeaders{}
+	_result = &UpdateTodoTaskResponse{}
+	_body, _err := client.UpdateTodoTaskWithOptions(request, headers, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) UpdateTodoTaskExecutorStatusWithOptions(tmpReq *UpdateTodoTaskExecutorStatusRequest, tmpHeader *UpdateTodoTaskExecutorStatusHeaders, runtime *util.RuntimeOptions) (_result *UpdateTodoTaskExecutorStatusResponse, _err error) {
+	_err = util.ValidateModel(tmpReq)
+	if _err != nil {
+		return _result, _err
+	}
+	request := &UpdateTodoTaskExecutorStatusShrinkRequest{}
+	openapiutil.Convert(tmpReq, request)
+	headers := &UpdateTodoTaskExecutorStatusShrinkHeaders{}
+	openapiutil.Convert(tmpHeader, headers)
+	if !tea.BoolValue(util.IsUnset(tmpHeader.AccountContext)) {
+		headers.AccountContextShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpHeader.AccountContext, tea.String("AccountContext"), tea.String("json"))
+	}
+
+	if !tea.BoolValue(util.IsUnset(tmpReq.TenantContext)) {
+		request.TenantContextShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.TenantContext, tea.String("TenantContext"), tea.String("json"))
+	}
+
+	if !tea.BoolValue(util.IsUnset(tmpReq.ExecutorStatusList)) {
+		request.ExecutorStatusListShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.ExecutorStatusList, tea.String("executorStatusList"), tea.String("json"))
+	}
+
+	body := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.TenantContextShrink)) {
+		body["TenantContext"] = request.TenantContextShrink
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ExecutorStatusListShrink)) {
+		body["executorStatusList"] = request.ExecutorStatusListShrink
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.OperatorId)) {
+		body["operatorId"] = request.OperatorId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.TaskId)) {
+		body["taskId"] = request.TaskId
+	}
+
+	realHeaders := make(map[string]*string)
+	if !tea.BoolValue(util.IsUnset(headers.CommonHeaders)) {
+		realHeaders = headers.CommonHeaders
+	}
+
+	if !tea.BoolValue(util.IsUnset(headers.AccountContextShrink)) {
+		realHeaders["AccountContext"] = util.ToJSONString(headers.AccountContextShrink)
+	}
+
+	req := &openapi.OpenApiRequest{
+		Headers: realHeaders,
+		Body:    openapiutil.ParseToMap(body),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("UpdateTodoTaskExecutorStatus"),
+		Version:     tea.String("2023-04-26"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/dingtalk/v1/task/updateTodoTaskExecutorStatus"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("ROA"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &UpdateTodoTaskExecutorStatusResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) UpdateTodoTaskExecutorStatus(request *UpdateTodoTaskExecutorStatusRequest) (_result *UpdateTodoTaskExecutorStatusResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	headers := &UpdateTodoTaskExecutorStatusHeaders{}
+	_result = &UpdateTodoTaskExecutorStatusResponse{}
+	_body, _err := client.UpdateTodoTaskExecutorStatusWithOptions(request, headers, runtime)
 	if _err != nil {
 		return _result, _err
 	}
