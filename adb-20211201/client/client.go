@@ -1817,6 +1817,7 @@ func (s *CreateAccountResponse) SetBody(v *CreateAccountResponseBody) *CreateAcc
 }
 
 type CreateDBClusterRequest struct {
+	BackupSetId *string `json:"BackupSetId,omitempty" xml:"BackupSetId,omitempty"`
 	// The reserved computing resources. Unit: ACUs. Valid values: 0 to 4096. The value must be in increments of 16 ACUs. Each ACU is equivalent to 1 core and 4 GB memory.
 	//
 	// >  You must specify a value with the unit for this parameter.
@@ -1850,8 +1851,11 @@ type CreateDBClusterRequest struct {
 	// The ID of the region in which to create the cluster.
 	//
 	// >  You can call the [DescribeRegions](~~454314~~) operation to query the most recent region list.
-	RegionId        *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	ResourceGroupId *string `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
+	RegionId          *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	ResourceGroupId   *string `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
+	RestoreToTime     *string `json:"RestoreToTime,omitempty" xml:"RestoreToTime,omitempty"`
+	RestoreType       *string `json:"RestoreType,omitempty" xml:"RestoreType,omitempty"`
+	SourceDbClusterId *string `json:"SourceDbClusterId,omitempty" xml:"SourceDbClusterId,omitempty"`
 	// The reserved storage resources. Unit: AnalyticDB Compute Units (ACUs). Valid values: 0 to 2064. The value must be in increments of 24 ACUs. Each ACU is equivalent to 1 core and 4 GB memory.
 	//
 	// >  You must specify a value with the unit for this parameter.
@@ -1880,6 +1884,11 @@ func (s CreateDBClusterRequest) String() string {
 
 func (s CreateDBClusterRequest) GoString() string {
 	return s.String()
+}
+
+func (s *CreateDBClusterRequest) SetBackupSetId(v string) *CreateDBClusterRequest {
+	s.BackupSetId = &v
+	return s
 }
 
 func (s *CreateDBClusterRequest) SetComputeResource(v string) *CreateDBClusterRequest {
@@ -1924,6 +1933,21 @@ func (s *CreateDBClusterRequest) SetRegionId(v string) *CreateDBClusterRequest {
 
 func (s *CreateDBClusterRequest) SetResourceGroupId(v string) *CreateDBClusterRequest {
 	s.ResourceGroupId = &v
+	return s
+}
+
+func (s *CreateDBClusterRequest) SetRestoreToTime(v string) *CreateDBClusterRequest {
+	s.RestoreToTime = &v
+	return s
+}
+
+func (s *CreateDBClusterRequest) SetRestoreType(v string) *CreateDBClusterRequest {
+	s.RestoreType = &v
+	return s
+}
+
+func (s *CreateDBClusterRequest) SetSourceDbClusterId(v string) *CreateDBClusterRequest {
+	s.SourceDbClusterId = &v
 	return s
 }
 
@@ -11214,9 +11238,11 @@ func (s *GetSparkAppInfoResponse) SetBody(v *GetSparkAppInfoResponseBody) *GetSp
 }
 
 type GetSparkAppLogRequest struct {
-	// The number of log entries to return. Valid values: 1 to 500. Default value: 300.
+	// The Spark application ID.
+	//
+	// > You can call the [ListSparkApps](~~~~) operation to query the Spark application ID.
 	AppId *string `json:"AppId,omitempty" xml:"AppId,omitempty"`
-	// The ID of the request.
+	// The number of log entries to return. Valid values: 1 to 500. Default value: 300.
 	LogLength *int64 `json:"LogLength,omitempty" xml:"LogLength,omitempty"`
 }
 
@@ -11239,9 +11265,9 @@ func (s *GetSparkAppLogRequest) SetLogLength(v int64) *GetSparkAppLogRequest {
 }
 
 type GetSparkAppLogResponseBody struct {
-	// The content of the log.
+	// The queried log.
 	Data *GetSparkAppLogResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
-	// Details of the logs.
+	// The request ID.
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -11264,10 +11290,12 @@ func (s *GetSparkAppLogResponseBody) SetRequestId(v string) *GetSparkAppLogRespo
 }
 
 type GetSparkAppLogResponseBodyData struct {
+	// The ID of the Data Lakehouse Edition (V3.0) cluster.
 	DBClusterId *string `json:"DBClusterId,omitempty" xml:"DBClusterId,omitempty"`
-	// The alert message returned for the operation, such as task execution failure or insufficient resources. Null is returned if no alert occurs.
+	// The content of the log.
 	LogContent *string `json:"LogContent,omitempty" xml:"LogContent,omitempty"`
-	Message    *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// The alert message returned for the request, such as task execution failure or insufficient resources. If no alert occurs, null is returned.
+	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
 }
 
 func (s GetSparkAppLogResponseBodyData) String() string {
@@ -16619,6 +16647,10 @@ func (client *Client) CreateDBClusterWithOptions(request *CreateDBClusterRequest
 		return _result, _err
 	}
 	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.BackupSetId)) {
+		query["BackupSetId"] = request.BackupSetId
+	}
+
 	if !tea.BoolValue(util.IsUnset(request.ComputeResource)) {
 		query["ComputeResource"] = request.ComputeResource
 	}
@@ -16653,6 +16685,18 @@ func (client *Client) CreateDBClusterWithOptions(request *CreateDBClusterRequest
 
 	if !tea.BoolValue(util.IsUnset(request.ResourceGroupId)) {
 		query["ResourceGroupId"] = request.ResourceGroupId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.RestoreToTime)) {
+		query["RestoreToTime"] = request.RestoreToTime
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.RestoreType)) {
+		query["RestoreType"] = request.RestoreType
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.SourceDbClusterId)) {
+		query["SourceDbClusterId"] = request.SourceDbClusterId
 	}
 
 	if !tea.BoolValue(util.IsUnset(request.StorageResource)) {
