@@ -219,6 +219,181 @@ func (s *AddressGroup) SetName(v string) *AddressGroup {
 	return s
 }
 
+type App struct {
+	AppId       *string   `json:"app_id,omitempty" xml:"app_id,omitempty"`
+	AppName     *string   `json:"app_name,omitempty" xml:"app_name,omitempty"`
+	AppSecret   *string   `json:"app_secret,omitempty" xml:"app_secret,omitempty"`
+	CreatedAt   *string   `json:"created_at,omitempty" xml:"created_at,omitempty"`
+	Description *string   `json:"description,omitempty" xml:"description,omitempty"`
+	Logo        *string   `json:"logo,omitempty" xml:"logo,omitempty"`
+	Provider    *string   `json:"provider,omitempty" xml:"provider,omitempty"`
+	RedirectUri *string   `json:"redirect_uri,omitempty" xml:"redirect_uri,omitempty"`
+	Scope       []*string `json:"scope,omitempty" xml:"scope,omitempty" type:"Repeated"`
+	Stage       *string   `json:"stage,omitempty" xml:"stage,omitempty"`
+	Type        *string   `json:"type,omitempty" xml:"type,omitempty"`
+	UpdatedAt   *string   `json:"updated_at,omitempty" xml:"updated_at,omitempty"`
+}
+
+func (s App) String() string {
+	return tea.Prettify(s)
+}
+
+func (s App) GoString() string {
+	return s.String()
+}
+
+func (s *App) SetAppId(v string) *App {
+	s.AppId = &v
+	return s
+}
+
+func (s *App) SetAppName(v string) *App {
+	s.AppName = &v
+	return s
+}
+
+func (s *App) SetAppSecret(v string) *App {
+	s.AppSecret = &v
+	return s
+}
+
+func (s *App) SetCreatedAt(v string) *App {
+	s.CreatedAt = &v
+	return s
+}
+
+func (s *App) SetDescription(v string) *App {
+	s.Description = &v
+	return s
+}
+
+func (s *App) SetLogo(v string) *App {
+	s.Logo = &v
+	return s
+}
+
+func (s *App) SetProvider(v string) *App {
+	s.Provider = &v
+	return s
+}
+
+func (s *App) SetRedirectUri(v string) *App {
+	s.RedirectUri = &v
+	return s
+}
+
+func (s *App) SetScope(v []*string) *App {
+	s.Scope = v
+	return s
+}
+
+func (s *App) SetStage(v string) *App {
+	s.Stage = &v
+	return s
+}
+
+func (s *App) SetType(v string) *App {
+	s.Type = &v
+	return s
+}
+
+func (s *App) SetUpdatedAt(v string) *App {
+	s.UpdatedAt = &v
+	return s
+}
+
+type AppAccessStrategy struct {
+	Effect          *string   `json:"effect,omitempty" xml:"effect,omitempty"`
+	ExceptAppIdList []*string `json:"except_app_id_list,omitempty" xml:"except_app_id_list,omitempty" type:"Repeated"`
+}
+
+func (s AppAccessStrategy) String() string {
+	return tea.Prettify(s)
+}
+
+func (s AppAccessStrategy) GoString() string {
+	return s.String()
+}
+
+func (s *AppAccessStrategy) SetEffect(v string) *AppAccessStrategy {
+	s.Effect = &v
+	return s
+}
+
+func (s *AppAccessStrategy) SetExceptAppIdList(v []*string) *AppAccessStrategy {
+	s.ExceptAppIdList = v
+	return s
+}
+
+type AudioPreviewPlayInfo struct {
+	Meta             *AudioPreviewPlayInfoMeta               `json:"meta,omitempty" xml:"meta,omitempty" type:"Struct"`
+	OfflineAudioList []*AudioPreviewPlayInfoOfflineAudioList `json:"offline_audio_list,omitempty" xml:"offline_audio_list,omitempty" type:"Repeated"`
+}
+
+func (s AudioPreviewPlayInfo) String() string {
+	return tea.Prettify(s)
+}
+
+func (s AudioPreviewPlayInfo) GoString() string {
+	return s.String()
+}
+
+func (s *AudioPreviewPlayInfo) SetMeta(v *AudioPreviewPlayInfoMeta) *AudioPreviewPlayInfo {
+	s.Meta = v
+	return s
+}
+
+func (s *AudioPreviewPlayInfo) SetOfflineAudioList(v []*AudioPreviewPlayInfoOfflineAudioList) *AudioPreviewPlayInfo {
+	s.OfflineAudioList = v
+	return s
+}
+
+type AudioPreviewPlayInfoMeta struct {
+	Duration *float64 `json:"duration,omitempty" xml:"duration,omitempty"`
+}
+
+func (s AudioPreviewPlayInfoMeta) String() string {
+	return tea.Prettify(s)
+}
+
+func (s AudioPreviewPlayInfoMeta) GoString() string {
+	return s.String()
+}
+
+func (s *AudioPreviewPlayInfoMeta) SetDuration(v float64) *AudioPreviewPlayInfoMeta {
+	s.Duration = &v
+	return s
+}
+
+type AudioPreviewPlayInfoOfflineAudioList struct {
+	Status     *string `json:"status,omitempty" xml:"status,omitempty"`
+	TemplateId *string `json:"template_id,omitempty" xml:"template_id,omitempty"`
+	Url        *string `json:"url,omitempty" xml:"url,omitempty"`
+}
+
+func (s AudioPreviewPlayInfoOfflineAudioList) String() string {
+	return tea.Prettify(s)
+}
+
+func (s AudioPreviewPlayInfoOfflineAudioList) GoString() string {
+	return s.String()
+}
+
+func (s *AudioPreviewPlayInfoOfflineAudioList) SetStatus(v string) *AudioPreviewPlayInfoOfflineAudioList {
+	s.Status = &v
+	return s
+}
+
+func (s *AudioPreviewPlayInfoOfflineAudioList) SetTemplateId(v string) *AudioPreviewPlayInfoOfflineAudioList {
+	s.TemplateId = &v
+	return s
+}
+
+func (s *AudioPreviewPlayInfoOfflineAudioList) SetUrl(v string) *AudioPreviewPlayInfoOfflineAudioList {
+	s.Url = &v
+	return s
+}
+
 type BenefitPkgDeliveryInfo struct {
 	Amount      *int64  `json:"amount,omitempty" xml:"amount,omitempty"`
 	CreatedAt   *string `json:"created_at,omitempty" xml:"created_at,omitempty"`
@@ -254,20 +429,132 @@ func (s *BenefitPkgDeliveryInfo) SetIsPermanent(v bool) *BenefitPkgDeliveryInfo 
 	return s
 }
 
+type CdnFileDownloadCallbackInfo struct {
+	Bucket   *string `json:"bucket,omitempty" xml:"bucket,omitempty"`
+	DomainId *string `json:"domain_id,omitempty" xml:"domain_id,omitempty"`
+	DriveId  *string `json:"drive_id,omitempty" xml:"drive_id,omitempty"`
+	Expire   *int64  `json:"expire,omitempty" xml:"expire,omitempty"`
+	FileId   *string `json:"file_id,omitempty" xml:"file_id,omitempty"`
+	Object   *string `json:"object,omitempty" xml:"object,omitempty"`
+	Token    *string `json:"token,omitempty" xml:"token,omitempty"`
+	UserId   *string `json:"user_id,omitempty" xml:"user_id,omitempty"`
+}
+
+func (s CdnFileDownloadCallbackInfo) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CdnFileDownloadCallbackInfo) GoString() string {
+	return s.String()
+}
+
+func (s *CdnFileDownloadCallbackInfo) SetBucket(v string) *CdnFileDownloadCallbackInfo {
+	s.Bucket = &v
+	return s
+}
+
+func (s *CdnFileDownloadCallbackInfo) SetDomainId(v string) *CdnFileDownloadCallbackInfo {
+	s.DomainId = &v
+	return s
+}
+
+func (s *CdnFileDownloadCallbackInfo) SetDriveId(v string) *CdnFileDownloadCallbackInfo {
+	s.DriveId = &v
+	return s
+}
+
+func (s *CdnFileDownloadCallbackInfo) SetExpire(v int64) *CdnFileDownloadCallbackInfo {
+	s.Expire = &v
+	return s
+}
+
+func (s *CdnFileDownloadCallbackInfo) SetFileId(v string) *CdnFileDownloadCallbackInfo {
+	s.FileId = &v
+	return s
+}
+
+func (s *CdnFileDownloadCallbackInfo) SetObject(v string) *CdnFileDownloadCallbackInfo {
+	s.Object = &v
+	return s
+}
+
+func (s *CdnFileDownloadCallbackInfo) SetToken(v string) *CdnFileDownloadCallbackInfo {
+	s.Token = &v
+	return s
+}
+
+func (s *CdnFileDownloadCallbackInfo) SetUserId(v string) *CdnFileDownloadCallbackInfo {
+	s.UserId = &v
+	return s
+}
+
+type Condition struct {
+	IntEquals       []*int64  `json:"int_equals,omitempty" xml:"int_equals,omitempty" type:"Repeated"`
+	IntNotEquals    []*int64  `json:"int_not_equals,omitempty" xml:"int_not_equals,omitempty" type:"Repeated"`
+	StringEquals    []*string `json:"string_equals,omitempty" xml:"string_equals,omitempty" type:"Repeated"`
+	StringNotEquals []*string `json:"string_not_equals,omitempty" xml:"string_not_equals,omitempty" type:"Repeated"`
+}
+
+func (s Condition) String() string {
+	return tea.Prettify(s)
+}
+
+func (s Condition) GoString() string {
+	return s.String()
+}
+
+func (s *Condition) SetIntEquals(v []*int64) *Condition {
+	s.IntEquals = v
+	return s
+}
+
+func (s *Condition) SetIntNotEquals(v []*int64) *Condition {
+	s.IntNotEquals = v
+	return s
+}
+
+func (s *Condition) SetStringEquals(v []*string) *Condition {
+	s.StringEquals = v
+	return s
+}
+
+func (s *Condition) SetStringNotEquals(v []*string) *Condition {
+	s.StringNotEquals = v
+	return s
+}
+
+type CsiCondition struct {
+	FileDataPunish *Condition `json:"file_data_punish,omitempty" xml:"file_data_punish,omitempty"`
+}
+
+func (s CsiCondition) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CsiCondition) GoString() string {
+	return s.String()
+}
+
+func (s *CsiCondition) SetFileDataPunish(v *Condition) *CsiCondition {
+	s.FileDataPunish = v
+	return s
+}
+
 type Domain struct {
-	CreatedAt       *string `json:"created_at,omitempty" xml:"created_at,omitempty"`
-	Description     *string `json:"description,omitempty" xml:"description,omitempty"`
-	DomainId        *string `json:"domain_id,omitempty" xml:"domain_id,omitempty"`
-	DomainName      *string `json:"domain_name,omitempty" xml:"domain_name,omitempty"`
-	InitDriveEnable *bool   `json:"init_drive_enable,omitempty" xml:"init_drive_enable,omitempty"`
-	InitDriveSize   *int64  `json:"init_drive_size,omitempty" xml:"init_drive_size,omitempty"`
-	ParentDomainId  *string `json:"parent_domain_id,omitempty" xml:"parent_domain_id,omitempty"`
-	SizeQuota       *int64  `json:"size_quota,omitempty" xml:"size_quota,omitempty"`
-	SizeQuotaUsed   *int64  `json:"size_quota_used,omitempty" xml:"size_quota_used,omitempty"`
-	Status          *int64  `json:"status,omitempty" xml:"status,omitempty"`
-	UpdatedAt       *string `json:"updated_at,omitempty" xml:"updated_at,omitempty"`
-	UsedSize        *int64  `json:"used_size,omitempty" xml:"used_size,omitempty"`
-	UserCountQuota  *int64  `json:"user_count_quota,omitempty" xml:"user_count_quota,omitempty"`
+	CreatedAt                  *string            `json:"created_at,omitempty" xml:"created_at,omitempty"`
+	Description                *string            `json:"description,omitempty" xml:"description,omitempty"`
+	DomainId                   *string            `json:"domain_id,omitempty" xml:"domain_id,omitempty"`
+	DomainName                 *string            `json:"domain_name,omitempty" xml:"domain_name,omitempty"`
+	InitDriveEnable            *bool              `json:"init_drive_enable,omitempty" xml:"init_drive_enable,omitempty"`
+	InitDriveSize              *int64             `json:"init_drive_size,omitempty" xml:"init_drive_size,omitempty"`
+	ParentDomainId             *string            `json:"parent_domain_id,omitempty" xml:"parent_domain_id,omitempty"`
+	PublishedAppAccessStrategy *AppAccessStrategy `json:"published_app_access_strategy,omitempty" xml:"published_app_access_strategy,omitempty"`
+	SizeQuota                  *int64             `json:"size_quota,omitempty" xml:"size_quota,omitempty"`
+	SizeQuotaUsed              *int64             `json:"size_quota_used,omitempty" xml:"size_quota_used,omitempty"`
+	Status                     *int64             `json:"status,omitempty" xml:"status,omitempty"`
+	UpdatedAt                  *string            `json:"updated_at,omitempty" xml:"updated_at,omitempty"`
+	UsedSize                   *int64             `json:"used_size,omitempty" xml:"used_size,omitempty"`
+	UserCountQuota             *int64             `json:"user_count_quota,omitempty" xml:"user_count_quota,omitempty"`
 }
 
 func (s Domain) String() string {
@@ -310,6 +597,11 @@ func (s *Domain) SetInitDriveSize(v int64) *Domain {
 
 func (s *Domain) SetParentDomainId(v string) *Domain {
 	s.ParentDomainId = &v
+	return s
+}
+
+func (s *Domain) SetPublishedAppAccessStrategy(v *AppAccessStrategy) *Domain {
+	s.PublishedAppAccessStrategy = v
 	return s
 }
 
@@ -569,36 +861,36 @@ func (s *FaceThumbnail) SetFaceThumbnail(v string) *FaceThumbnail {
 }
 
 type File struct {
-	Category           *string                `json:"category,omitempty" xml:"category,omitempty"`
-	ContentHash        *string                `json:"content_hash,omitempty" xml:"content_hash,omitempty"`
-	ContentHashName    *string                `json:"content_hash_name,omitempty" xml:"content_hash_name,omitempty"`
-	ContentType        *string                `json:"content_type,omitempty" xml:"content_type,omitempty"`
-	Crc64Hash          *string                `json:"crc64_hash,omitempty" xml:"crc64_hash,omitempty"`
-	CreatedAt          *string                `json:"created_at,omitempty" xml:"created_at,omitempty"`
-	Description        *string                `json:"description,omitempty" xml:"description,omitempty"`
-	DomainId           *string                `json:"domain_id,omitempty" xml:"domain_id,omitempty"`
-	DownloadUrl        *string                `json:"download_url,omitempty" xml:"download_url,omitempty"`
-	DriveId            *string                `json:"drive_id,omitempty" xml:"drive_id,omitempty"`
-	FileExtension      *string                `json:"file_extension,omitempty" xml:"file_extension,omitempty"`
-	FileId             *string                `json:"file_id,omitempty" xml:"file_id,omitempty"`
-	Hidden             *bool                  `json:"hidden,omitempty" xml:"hidden,omitempty"`
-	ImageMediaMetadata *ImageMediaMetadata    `json:"image_media_metadata,omitempty" xml:"image_media_metadata,omitempty"`
-	InvestigationInfo  *FileInvestigationInfo `json:"investigation_info,omitempty" xml:"investigation_info,omitempty" type:"Struct"`
-	Labels             []*string              `json:"labels,omitempty" xml:"labels,omitempty" type:"Repeated"`
-	LocalCreatedAt     *string                `json:"local_created_at,omitempty" xml:"local_created_at,omitempty"`
-	LocalModifiedAt    *string                `json:"local_modified_at,omitempty" xml:"local_modified_at,omitempty"`
-	Name               *string                `json:"name,omitempty" xml:"name,omitempty"`
-	ParentFileId       *string                `json:"parent_file_id,omitempty" xml:"parent_file_id,omitempty"`
-	RevisionId         *string                `json:"revision_id,omitempty" xml:"revision_id,omitempty"`
-	Size               *int64                 `json:"size,omitempty" xml:"size,omitempty"`
-	Starred            *bool                  `json:"starred,omitempty" xml:"starred,omitempty"`
-	Status             *string                `json:"status,omitempty" xml:"status,omitempty"`
-	Thumbnail          *string                `json:"thumbnail,omitempty" xml:"thumbnail,omitempty"`
-	ThumbnailUrls      map[string]*string     `json:"thumbnail_urls,omitempty" xml:"thumbnail_urls,omitempty"`
-	TrashedAt          *string                `json:"trashed_at,omitempty" xml:"trashed_at,omitempty"`
-	Type               *string                `json:"type,omitempty" xml:"type,omitempty"`
-	UpdatedAt          *string                `json:"updated_at,omitempty" xml:"updated_at,omitempty"`
-	UploadId           *string                `json:"upload_id,omitempty" xml:"upload_id,omitempty"`
+	Category          *string                `json:"category,omitempty" xml:"category,omitempty"`
+	ContentHash       *string                `json:"content_hash,omitempty" xml:"content_hash,omitempty"`
+	ContentHashName   *string                `json:"content_hash_name,omitempty" xml:"content_hash_name,omitempty"`
+	ContentType       *string                `json:"content_type,omitempty" xml:"content_type,omitempty"`
+	Crc64Hash         *string                `json:"crc64_hash,omitempty" xml:"crc64_hash,omitempty"`
+	CreatedAt         *string                `json:"created_at,omitempty" xml:"created_at,omitempty"`
+	Description       *string                `json:"description,omitempty" xml:"description,omitempty"`
+	DomainId          *string                `json:"domain_id,omitempty" xml:"domain_id,omitempty"`
+	DownloadUrl       *string                `json:"download_url,omitempty" xml:"download_url,omitempty"`
+	DriveId           *string                `json:"drive_id,omitempty" xml:"drive_id,omitempty"`
+	FileExtension     *string                `json:"file_extension,omitempty" xml:"file_extension,omitempty"`
+	FileId            *string                `json:"file_id,omitempty" xml:"file_id,omitempty"`
+	Hidden            *bool                  `json:"hidden,omitempty" xml:"hidden,omitempty"`
+	InvestigationInfo *FileInvestigationInfo `json:"investigation_info,omitempty" xml:"investigation_info,omitempty" type:"Struct"`
+	Labels            []*string              `json:"labels,omitempty" xml:"labels,omitempty" type:"Repeated"`
+	LocalCreatedAt    *string                `json:"local_created_at,omitempty" xml:"local_created_at,omitempty"`
+	LocalModifiedAt   *string                `json:"local_modified_at,omitempty" xml:"local_modified_at,omitempty"`
+	Name              *string                `json:"name,omitempty" xml:"name,omitempty"`
+	ParentFileId      *string                `json:"parent_file_id,omitempty" xml:"parent_file_id,omitempty"`
+	RevisionId        *string                `json:"revision_id,omitempty" xml:"revision_id,omitempty"`
+	Size              *int64                 `json:"size,omitempty" xml:"size,omitempty"`
+	Starred           *bool                  `json:"starred,omitempty" xml:"starred,omitempty"`
+	Status            *string                `json:"status,omitempty" xml:"status,omitempty"`
+	Thumbnail         *string                `json:"thumbnail,omitempty" xml:"thumbnail,omitempty"`
+	ThumbnailUrls     map[string]*string     `json:"thumbnail_urls,omitempty" xml:"thumbnail_urls,omitempty"`
+	TrashedAt         *string                `json:"trashed_at,omitempty" xml:"trashed_at,omitempty"`
+	Type              *string                `json:"type,omitempty" xml:"type,omitempty"`
+	UpdatedAt         *string                `json:"updated_at,omitempty" xml:"updated_at,omitempty"`
+	UploadId          *string                `json:"upload_id,omitempty" xml:"upload_id,omitempty"`
+	UserTags          map[string]*string     `json:"user_tags,omitempty" xml:"user_tags,omitempty"`
 }
 
 func (s File) String() string {
@@ -671,11 +963,6 @@ func (s *File) SetFileId(v string) *File {
 
 func (s *File) SetHidden(v bool) *File {
 	s.Hidden = &v
-	return s
-}
-
-func (s *File) SetImageMediaMetadata(v *ImageMediaMetadata) *File {
-	s.ImageMediaMetadata = v
 	return s
 }
 
@@ -759,6 +1046,11 @@ func (s *File) SetUploadId(v string) *File {
 	return s
 }
 
+func (s *File) SetUserTags(v map[string]*string) *File {
+	s.UserTags = v
+	return s
+}
+
 type FileInvestigationInfo struct {
 	Status     *int64  `json:"status,omitempty" xml:"status,omitempty"`
 	Suggestion *string `json:"suggestion,omitempty" xml:"suggestion,omitempty"`
@@ -779,6 +1071,53 @@ func (s *FileInvestigationInfo) SetStatus(v int64) *FileInvestigationInfo {
 
 func (s *FileInvestigationInfo) SetSuggestion(v string) *FileInvestigationInfo {
 	s.Suggestion = &v
+	return s
+}
+
+type FileDownloadCallbackInfo struct {
+	Bucket   *string `json:"bucket,omitempty" xml:"bucket,omitempty"`
+	DomainId *string `json:"domain_id,omitempty" xml:"domain_id,omitempty"`
+	DriveId  *string `json:"drive_id,omitempty" xml:"drive_id,omitempty"`
+	FileId   *string `json:"file_id,omitempty" xml:"file_id,omitempty"`
+	Object   *string `json:"object,omitempty" xml:"object,omitempty"`
+	UserId   *string `json:"user_id,omitempty" xml:"user_id,omitempty"`
+}
+
+func (s FileDownloadCallbackInfo) String() string {
+	return tea.Prettify(s)
+}
+
+func (s FileDownloadCallbackInfo) GoString() string {
+	return s.String()
+}
+
+func (s *FileDownloadCallbackInfo) SetBucket(v string) *FileDownloadCallbackInfo {
+	s.Bucket = &v
+	return s
+}
+
+func (s *FileDownloadCallbackInfo) SetDomainId(v string) *FileDownloadCallbackInfo {
+	s.DomainId = &v
+	return s
+}
+
+func (s *FileDownloadCallbackInfo) SetDriveId(v string) *FileDownloadCallbackInfo {
+	s.DriveId = &v
+	return s
+}
+
+func (s *FileDownloadCallbackInfo) SetFileId(v string) *FileDownloadCallbackInfo {
+	s.FileId = &v
+	return s
+}
+
+func (s *FileDownloadCallbackInfo) SetObject(v string) *FileDownloadCallbackInfo {
+	s.Object = &v
+	return s
+}
+
+func (s *FileDownloadCallbackInfo) SetUserId(v string) *FileDownloadCallbackInfo {
+	s.UserId = &v
 	return s
 }
 
@@ -879,6 +1218,111 @@ func (s *FileStreamInfo) SetProofVersion(v string) *FileStreamInfo {
 
 func (s *FileStreamInfo) SetSize(v int64) *FileStreamInfo {
 	s.Size = &v
+	return s
+}
+
+type GetOfficeEditUrlOption struct {
+	Copy     *bool `json:"copy,omitempty" xml:"copy,omitempty"`
+	Print    *bool `json:"print,omitempty" xml:"print,omitempty"`
+	Readonly *bool `json:"readonly,omitempty" xml:"readonly,omitempty"`
+}
+
+func (s GetOfficeEditUrlOption) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetOfficeEditUrlOption) GoString() string {
+	return s.String()
+}
+
+func (s *GetOfficeEditUrlOption) SetCopy(v bool) *GetOfficeEditUrlOption {
+	s.Copy = &v
+	return s
+}
+
+func (s *GetOfficeEditUrlOption) SetPrint(v bool) *GetOfficeEditUrlOption {
+	s.Print = &v
+	return s
+}
+
+func (s *GetOfficeEditUrlOption) SetReadonly(v bool) *GetOfficeEditUrlOption {
+	s.Readonly = &v
+	return s
+}
+
+type GetOfficeEditUrlWatermark struct {
+	Fillstyle  *string  `json:"fillstyle,omitempty" xml:"fillstyle,omitempty"`
+	Font       *string  `json:"font,omitempty" xml:"font,omitempty"`
+	Horizontal *int64   `json:"horizontal,omitempty" xml:"horizontal,omitempty"`
+	Rotate     *float64 `json:"rotate,omitempty" xml:"rotate,omitempty"`
+	Type       *int32   `json:"type,omitempty" xml:"type,omitempty"`
+	Value      *string  `json:"value,omitempty" xml:"value,omitempty"`
+	Vertical   *int64   `json:"vertical,omitempty" xml:"vertical,omitempty"`
+}
+
+func (s GetOfficeEditUrlWatermark) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetOfficeEditUrlWatermark) GoString() string {
+	return s.String()
+}
+
+func (s *GetOfficeEditUrlWatermark) SetFillstyle(v string) *GetOfficeEditUrlWatermark {
+	s.Fillstyle = &v
+	return s
+}
+
+func (s *GetOfficeEditUrlWatermark) SetFont(v string) *GetOfficeEditUrlWatermark {
+	s.Font = &v
+	return s
+}
+
+func (s *GetOfficeEditUrlWatermark) SetHorizontal(v int64) *GetOfficeEditUrlWatermark {
+	s.Horizontal = &v
+	return s
+}
+
+func (s *GetOfficeEditUrlWatermark) SetRotate(v float64) *GetOfficeEditUrlWatermark {
+	s.Rotate = &v
+	return s
+}
+
+func (s *GetOfficeEditUrlWatermark) SetType(v int32) *GetOfficeEditUrlWatermark {
+	s.Type = &v
+	return s
+}
+
+func (s *GetOfficeEditUrlWatermark) SetValue(v string) *GetOfficeEditUrlWatermark {
+	s.Value = &v
+	return s
+}
+
+func (s *GetOfficeEditUrlWatermark) SetVertical(v int64) *GetOfficeEditUrlWatermark {
+	s.Vertical = &v
+	return s
+}
+
+type GetOfficePreviewUrlOption struct {
+	Copy  *bool `json:"copy,omitempty" xml:"copy,omitempty"`
+	Print *bool `json:"print,omitempty" xml:"print,omitempty"`
+}
+
+func (s GetOfficePreviewUrlOption) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetOfficePreviewUrlOption) GoString() string {
+	return s.String()
+}
+
+func (s *GetOfficePreviewUrlOption) SetCopy(v bool) *GetOfficePreviewUrlOption {
+	s.Copy = &v
+	return s
+}
+
+func (s *GetOfficePreviewUrlOption) SetPrint(v bool) *GetOfficePreviewUrlOption {
+	s.Print = &v
 	return s
 }
 
@@ -1376,6 +1820,100 @@ func (s *JWTPayload) SetSubType(v string) *JWTPayload {
 	return s
 }
 
+type LocationDateCluster struct {
+	Address      *Address           `json:"address,omitempty" xml:"address,omitempty"`
+	ClusterId    *string            `json:"cluster_id,omitempty" xml:"cluster_id,omitempty"`
+	CreatedAt    *string            `json:"created_at,omitempty" xml:"created_at,omitempty"`
+	CustomLabels map[string]*string `json:"custom_labels,omitempty" xml:"custom_labels,omitempty"`
+	DriveId      *string            `json:"drive_id,omitempty" xml:"drive_id,omitempty"`
+	EndTime      *string            `json:"end_time,omitempty" xml:"end_time,omitempty"`
+	Level        *string            `json:"level,omitempty" xml:"level,omitempty"`
+	StartTime    *string            `json:"start_time,omitempty" xml:"start_time,omitempty"`
+	Title        *string            `json:"title,omitempty" xml:"title,omitempty"`
+	UpdatedAt    *string            `json:"updated_at,omitempty" xml:"updated_at,omitempty"`
+}
+
+func (s LocationDateCluster) String() string {
+	return tea.Prettify(s)
+}
+
+func (s LocationDateCluster) GoString() string {
+	return s.String()
+}
+
+func (s *LocationDateCluster) SetAddress(v *Address) *LocationDateCluster {
+	s.Address = v
+	return s
+}
+
+func (s *LocationDateCluster) SetClusterId(v string) *LocationDateCluster {
+	s.ClusterId = &v
+	return s
+}
+
+func (s *LocationDateCluster) SetCreatedAt(v string) *LocationDateCluster {
+	s.CreatedAt = &v
+	return s
+}
+
+func (s *LocationDateCluster) SetCustomLabels(v map[string]*string) *LocationDateCluster {
+	s.CustomLabels = v
+	return s
+}
+
+func (s *LocationDateCluster) SetDriveId(v string) *LocationDateCluster {
+	s.DriveId = &v
+	return s
+}
+
+func (s *LocationDateCluster) SetEndTime(v string) *LocationDateCluster {
+	s.EndTime = &v
+	return s
+}
+
+func (s *LocationDateCluster) SetLevel(v string) *LocationDateCluster {
+	s.Level = &v
+	return s
+}
+
+func (s *LocationDateCluster) SetStartTime(v string) *LocationDateCluster {
+	s.StartTime = &v
+	return s
+}
+
+func (s *LocationDateCluster) SetTitle(v string) *LocationDateCluster {
+	s.Title = &v
+	return s
+}
+
+func (s *LocationDateCluster) SetUpdatedAt(v string) *LocationDateCluster {
+	s.UpdatedAt = &v
+	return s
+}
+
+type NameCheckResult struct {
+	ExistFileId   *string `json:"exist_file_id,omitempty" xml:"exist_file_id,omitempty"`
+	ExistFileType *string `json:"exist_file_type,omitempty" xml:"exist_file_type,omitempty"`
+}
+
+func (s NameCheckResult) String() string {
+	return tea.Prettify(s)
+}
+
+func (s NameCheckResult) GoString() string {
+	return s.String()
+}
+
+func (s *NameCheckResult) SetExistFileId(v string) *NameCheckResult {
+	s.ExistFileId = &v
+	return s
+}
+
+func (s *NameCheckResult) SetExistFileType(v string) *NameCheckResult {
+	s.ExistFileType = &v
+	return s
+}
+
 type Revision struct {
 	ContentHash         *string `json:"content_hash,omitempty" xml:"content_hash,omitempty"`
 	ContentHashName     *string `json:"content_hash_name,omitempty" xml:"content_hash_name,omitempty"`
@@ -1662,6 +2200,59 @@ func (s *ShareLink) SetVideoPreviewCount(v int64) *ShareLink {
 	return s
 }
 
+type SimpleStreamInfo struct {
+	ContentHash     *string `json:"content_hash,omitempty" xml:"content_hash,omitempty"`
+	ContentHashName *string `json:"content_hash_name,omitempty" xml:"content_hash_name,omitempty"`
+	Crc64Hash       *string `json:"crc64_hash,omitempty" xml:"crc64_hash,omitempty"`
+	DownloadUrl     *string `json:"download_url,omitempty" xml:"download_url,omitempty"`
+	Size            *int64  `json:"size,omitempty" xml:"size,omitempty"`
+	Thumbnail       *string `json:"thumbnail,omitempty" xml:"thumbnail,omitempty"`
+	Url             *string `json:"url,omitempty" xml:"url,omitempty"`
+}
+
+func (s SimpleStreamInfo) String() string {
+	return tea.Prettify(s)
+}
+
+func (s SimpleStreamInfo) GoString() string {
+	return s.String()
+}
+
+func (s *SimpleStreamInfo) SetContentHash(v string) *SimpleStreamInfo {
+	s.ContentHash = &v
+	return s
+}
+
+func (s *SimpleStreamInfo) SetContentHashName(v string) *SimpleStreamInfo {
+	s.ContentHashName = &v
+	return s
+}
+
+func (s *SimpleStreamInfo) SetCrc64Hash(v string) *SimpleStreamInfo {
+	s.Crc64Hash = &v
+	return s
+}
+
+func (s *SimpleStreamInfo) SetDownloadUrl(v string) *SimpleStreamInfo {
+	s.DownloadUrl = &v
+	return s
+}
+
+func (s *SimpleStreamInfo) SetSize(v int64) *SimpleStreamInfo {
+	s.Size = &v
+	return s
+}
+
+func (s *SimpleStreamInfo) SetThumbnail(v string) *SimpleStreamInfo {
+	s.Thumbnail = &v
+	return s
+}
+
+func (s *SimpleStreamInfo) SetUrl(v string) *SimpleStreamInfo {
+	s.Url = &v
+	return s
+}
+
 type Story struct {
 	CoverFileId           *string                `json:"cover_file_id,omitempty" xml:"cover_file_id,omitempty"`
 	CoverFileThumbnailUrl *string                `json:"cover_file_thumbnail_url,omitempty" xml:"cover_file_thumbnail_url,omitempty"`
@@ -1751,12 +2342,52 @@ func (s *Story) SetUpdatedAt(v string) *Story {
 	return s
 }
 
+type StreamUploadInfo struct {
+	Location       *string           `json:"location,omitempty" xml:"location,omitempty"`
+	PartInfoList   []*UploadPartInfo `json:"part_info_list,omitempty" xml:"part_info_list,omitempty" type:"Repeated"`
+	PreRapidUpload *bool             `json:"pre_rapid_upload,omitempty" xml:"pre_rapid_upload,omitempty"`
+	RapidUpload    *bool             `json:"rapid_upload,omitempty" xml:"rapid_upload,omitempty"`
+	UploadId       *string           `json:"upload_id,omitempty" xml:"upload_id,omitempty"`
+}
+
+func (s StreamUploadInfo) String() string {
+	return tea.Prettify(s)
+}
+
+func (s StreamUploadInfo) GoString() string {
+	return s.String()
+}
+
+func (s *StreamUploadInfo) SetLocation(v string) *StreamUploadInfo {
+	s.Location = &v
+	return s
+}
+
+func (s *StreamUploadInfo) SetPartInfoList(v []*UploadPartInfo) *StreamUploadInfo {
+	s.PartInfoList = v
+	return s
+}
+
+func (s *StreamUploadInfo) SetPreRapidUpload(v bool) *StreamUploadInfo {
+	s.PreRapidUpload = &v
+	return s
+}
+
+func (s *StreamUploadInfo) SetRapidUpload(v bool) *StreamUploadInfo {
+	s.RapidUpload = &v
+	return s
+}
+
+func (s *StreamUploadInfo) SetUploadId(v string) *StreamUploadInfo {
+	s.UploadId = &v
+	return s
+}
+
 type SystemTag struct {
 	CentricScore *float32 `json:"centric_score,omitempty" xml:"centric_score,omitempty"`
 	Confidence   *float32 `json:"confidence,omitempty" xml:"confidence,omitempty"`
 	Name         *string  `json:"name,omitempty" xml:"name,omitempty"`
 	ParentName   *string  `json:"parent_name,omitempty" xml:"parent_name,omitempty"`
-	Source       *string  `json:"source,omitempty" xml:"source,omitempty"`
 	TagLevel     *int32   `json:"tag_level,omitempty" xml:"tag_level,omitempty"`
 }
 
@@ -1788,13 +2419,31 @@ func (s *SystemTag) SetParentName(v string) *SystemTag {
 	return s
 }
 
-func (s *SystemTag) SetSource(v string) *SystemTag {
-	s.Source = &v
+func (s *SystemTag) SetTagLevel(v int32) *SystemTag {
+	s.TagLevel = &v
 	return s
 }
 
-func (s *SystemTag) SetTagLevel(v int32) *SystemTag {
-	s.TagLevel = &v
+type TimeRange struct {
+	End   *string `json:"end,omitempty" xml:"end,omitempty"`
+	Start *string `json:"start,omitempty" xml:"start,omitempty"`
+}
+
+func (s TimeRange) String() string {
+	return tea.Prettify(s)
+}
+
+func (s TimeRange) GoString() string {
+	return s.String()
+}
+
+func (s *TimeRange) SetEnd(v string) *TimeRange {
+	s.End = &v
+	return s
+}
+
+func (s *TimeRange) SetStart(v string) *TimeRange {
+	s.Start = &v
 	return s
 }
 
@@ -1902,6 +2551,112 @@ func (s *Token) SetUserId(v string) *Token {
 
 func (s *Token) SetUserName(v string) *Token {
 	s.UserName = &v
+	return s
+}
+
+type UncompressedFileInfo struct {
+	DriveId   *string                 `json:"drive_id,omitempty" xml:"drive_id,omitempty"`
+	FileId    *string                 `json:"file_id,omitempty" xml:"file_id,omitempty"`
+	IsFolder  *bool                   `json:"is_folder,omitempty" xml:"is_folder,omitempty"`
+	Items     []*UncompressedFileInfo `json:"items,omitempty" xml:"items,omitempty" type:"Repeated"`
+	Name      *string                 `json:"name,omitempty" xml:"name,omitempty"`
+	Size      *int64                  `json:"size,omitempty" xml:"size,omitempty"`
+	UpdatedAt *int64                  `json:"updated_at,omitempty" xml:"updated_at,omitempty"`
+}
+
+func (s UncompressedFileInfo) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UncompressedFileInfo) GoString() string {
+	return s.String()
+}
+
+func (s *UncompressedFileInfo) SetDriveId(v string) *UncompressedFileInfo {
+	s.DriveId = &v
+	return s
+}
+
+func (s *UncompressedFileInfo) SetFileId(v string) *UncompressedFileInfo {
+	s.FileId = &v
+	return s
+}
+
+func (s *UncompressedFileInfo) SetIsFolder(v bool) *UncompressedFileInfo {
+	s.IsFolder = &v
+	return s
+}
+
+func (s *UncompressedFileInfo) SetItems(v []*UncompressedFileInfo) *UncompressedFileInfo {
+	s.Items = v
+	return s
+}
+
+func (s *UncompressedFileInfo) SetName(v string) *UncompressedFileInfo {
+	s.Name = &v
+	return s
+}
+
+func (s *UncompressedFileInfo) SetSize(v int64) *UncompressedFileInfo {
+	s.Size = &v
+	return s
+}
+
+func (s *UncompressedFileInfo) SetUpdatedAt(v int64) *UncompressedFileInfo {
+	s.UpdatedAt = &v
+	return s
+}
+
+type UploadFormInfo struct {
+	BucketName       *string `json:"bucket_name,omitempty" xml:"bucket_name,omitempty"`
+	ObjectKey        *string `json:"object_key,omitempty" xml:"object_key,omitempty"`
+	OssAccessKeyId   *string `json:"oss_access_key_id,omitempty" xml:"oss_access_key_id,omitempty"`
+	OssEndPoint      *string `json:"oss_end_point,omitempty" xml:"oss_end_point,omitempty"`
+	OssSecurityToken *string `json:"oss_security_token,omitempty" xml:"oss_security_token,omitempty"`
+	Policy           *string `json:"policy,omitempty" xml:"policy,omitempty"`
+	Signature        *string `json:"signature,omitempty" xml:"signature,omitempty"`
+}
+
+func (s UploadFormInfo) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UploadFormInfo) GoString() string {
+	return s.String()
+}
+
+func (s *UploadFormInfo) SetBucketName(v string) *UploadFormInfo {
+	s.BucketName = &v
+	return s
+}
+
+func (s *UploadFormInfo) SetObjectKey(v string) *UploadFormInfo {
+	s.ObjectKey = &v
+	return s
+}
+
+func (s *UploadFormInfo) SetOssAccessKeyId(v string) *UploadFormInfo {
+	s.OssAccessKeyId = &v
+	return s
+}
+
+func (s *UploadFormInfo) SetOssEndPoint(v string) *UploadFormInfo {
+	s.OssEndPoint = &v
+	return s
+}
+
+func (s *UploadFormInfo) SetOssSecurityToken(v string) *UploadFormInfo {
+	s.OssSecurityToken = &v
+	return s
+}
+
+func (s *UploadFormInfo) SetPolicy(v string) *UploadFormInfo {
+	s.Policy = &v
+	return s
+}
+
+func (s *UploadFormInfo) SetSignature(v string) *UploadFormInfo {
+	s.Signature = &v
 	return s
 }
 
@@ -2302,6 +3057,303 @@ func (s *VideoPreviewPlayMetaMeta) SetWidth(v int64) *VideoPreviewPlayMetaMeta {
 	return s
 }
 
+type View struct {
+	Category     *string                `json:"category,omitempty" xml:"category,omitempty"`
+	CreatedAt    *string                `json:"created_at,omitempty" xml:"created_at,omitempty"`
+	Description  *string                `json:"description,omitempty" xml:"description,omitempty"`
+	ExFieldsInfo map[string]interface{} `json:"ex_fields_info,omitempty" xml:"ex_fields_info,omitempty"`
+	FileCount    *int64                 `json:"file_count,omitempty" xml:"file_count,omitempty"`
+	Name         *string                `json:"name,omitempty" xml:"name,omitempty"`
+	Owner        *string                `json:"owner,omitempty" xml:"owner,omitempty"`
+	UpdatedAt    *string                `json:"updated_at,omitempty" xml:"updated_at,omitempty"`
+	ViewId       *string                `json:"view_id,omitempty" xml:"view_id,omitempty"`
+}
+
+func (s View) String() string {
+	return tea.Prettify(s)
+}
+
+func (s View) GoString() string {
+	return s.String()
+}
+
+func (s *View) SetCategory(v string) *View {
+	s.Category = &v
+	return s
+}
+
+func (s *View) SetCreatedAt(v string) *View {
+	s.CreatedAt = &v
+	return s
+}
+
+func (s *View) SetDescription(v string) *View {
+	s.Description = &v
+	return s
+}
+
+func (s *View) SetExFieldsInfo(v map[string]interface{}) *View {
+	s.ExFieldsInfo = v
+	return s
+}
+
+func (s *View) SetFileCount(v int64) *View {
+	s.FileCount = &v
+	return s
+}
+
+func (s *View) SetName(v string) *View {
+	s.Name = &v
+	return s
+}
+
+func (s *View) SetOwner(v string) *View {
+	s.Owner = &v
+	return s
+}
+
+func (s *View) SetUpdatedAt(v string) *View {
+	s.UpdatedAt = &v
+	return s
+}
+
+func (s *View) SetViewId(v string) *View {
+	s.ViewId = &v
+	return s
+}
+
+type ViewFile struct {
+	Category          *string                    `json:"category,omitempty" xml:"category,omitempty"`
+	ContentHash       *string                    `json:"content_hash,omitempty" xml:"content_hash,omitempty"`
+	ContentHashName   *string                    `json:"content_hash_name,omitempty" xml:"content_hash_name,omitempty"`
+	ContentType       *string                    `json:"content_type,omitempty" xml:"content_type,omitempty"`
+	Crc64Hash         *string                    `json:"crc64_hash,omitempty" xml:"crc64_hash,omitempty"`
+	CreatedAt         *string                    `json:"created_at,omitempty" xml:"created_at,omitempty"`
+	Description       *string                    `json:"description,omitempty" xml:"description,omitempty"`
+	DomainId          *string                    `json:"domain_id,omitempty" xml:"domain_id,omitempty"`
+	DownloadUrl       *string                    `json:"download_url,omitempty" xml:"download_url,omitempty"`
+	DriveId           *string                    `json:"drive_id,omitempty" xml:"drive_id,omitempty"`
+	Fields            map[string]interface{}     `json:"fields,omitempty" xml:"fields,omitempty"`
+	FileExtension     *string                    `json:"file_extension,omitempty" xml:"file_extension,omitempty"`
+	FileId            *string                    `json:"file_id,omitempty" xml:"file_id,omitempty"`
+	FileRevisionId    *string                    `json:"file_revision_id,omitempty" xml:"file_revision_id,omitempty"`
+	Hidden            *bool                      `json:"hidden,omitempty" xml:"hidden,omitempty"`
+	InvestigationInfo *ViewFileInvestigationInfo `json:"investigation_info,omitempty" xml:"investigation_info,omitempty" type:"Struct"`
+	JoinedAt          *int64                     `json:"joined_at,omitempty" xml:"joined_at,omitempty"`
+	Labels            []*string                  `json:"labels,omitempty" xml:"labels,omitempty" type:"Repeated"`
+	LocalCreatedAt    *string                    `json:"local_created_at,omitempty" xml:"local_created_at,omitempty"`
+	LocalModifiedAt   *string                    `json:"local_modified_at,omitempty" xml:"local_modified_at,omitempty"`
+	Name              *string                    `json:"name,omitempty" xml:"name,omitempty"`
+	ParentFileId      *string                    `json:"parent_file_id,omitempty" xml:"parent_file_id,omitempty"`
+	RevisionId        *string                    `json:"revision_id,omitempty" xml:"revision_id,omitempty"`
+	Size              *int64                     `json:"size,omitempty" xml:"size,omitempty"`
+	Starred           *bool                      `json:"starred,omitempty" xml:"starred,omitempty"`
+	Status            *string                    `json:"status,omitempty" xml:"status,omitempty"`
+	Thumbnail         *string                    `json:"thumbnail,omitempty" xml:"thumbnail,omitempty"`
+	ThumbnailUrls     map[string]*string         `json:"thumbnail_urls,omitempty" xml:"thumbnail_urls,omitempty"`
+	TrashedAt         *string                    `json:"trashed_at,omitempty" xml:"trashed_at,omitempty"`
+	Type              *string                    `json:"type,omitempty" xml:"type,omitempty"`
+	UpdatedAt         *string                    `json:"updated_at,omitempty" xml:"updated_at,omitempty"`
+	UploadId          *string                    `json:"upload_id,omitempty" xml:"upload_id,omitempty"`
+	ViewId            *string                    `json:"view_id,omitempty" xml:"view_id,omitempty"`
+}
+
+func (s ViewFile) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ViewFile) GoString() string {
+	return s.String()
+}
+
+func (s *ViewFile) SetCategory(v string) *ViewFile {
+	s.Category = &v
+	return s
+}
+
+func (s *ViewFile) SetContentHash(v string) *ViewFile {
+	s.ContentHash = &v
+	return s
+}
+
+func (s *ViewFile) SetContentHashName(v string) *ViewFile {
+	s.ContentHashName = &v
+	return s
+}
+
+func (s *ViewFile) SetContentType(v string) *ViewFile {
+	s.ContentType = &v
+	return s
+}
+
+func (s *ViewFile) SetCrc64Hash(v string) *ViewFile {
+	s.Crc64Hash = &v
+	return s
+}
+
+func (s *ViewFile) SetCreatedAt(v string) *ViewFile {
+	s.CreatedAt = &v
+	return s
+}
+
+func (s *ViewFile) SetDescription(v string) *ViewFile {
+	s.Description = &v
+	return s
+}
+
+func (s *ViewFile) SetDomainId(v string) *ViewFile {
+	s.DomainId = &v
+	return s
+}
+
+func (s *ViewFile) SetDownloadUrl(v string) *ViewFile {
+	s.DownloadUrl = &v
+	return s
+}
+
+func (s *ViewFile) SetDriveId(v string) *ViewFile {
+	s.DriveId = &v
+	return s
+}
+
+func (s *ViewFile) SetFields(v map[string]interface{}) *ViewFile {
+	s.Fields = v
+	return s
+}
+
+func (s *ViewFile) SetFileExtension(v string) *ViewFile {
+	s.FileExtension = &v
+	return s
+}
+
+func (s *ViewFile) SetFileId(v string) *ViewFile {
+	s.FileId = &v
+	return s
+}
+
+func (s *ViewFile) SetFileRevisionId(v string) *ViewFile {
+	s.FileRevisionId = &v
+	return s
+}
+
+func (s *ViewFile) SetHidden(v bool) *ViewFile {
+	s.Hidden = &v
+	return s
+}
+
+func (s *ViewFile) SetInvestigationInfo(v *ViewFileInvestigationInfo) *ViewFile {
+	s.InvestigationInfo = v
+	return s
+}
+
+func (s *ViewFile) SetJoinedAt(v int64) *ViewFile {
+	s.JoinedAt = &v
+	return s
+}
+
+func (s *ViewFile) SetLabels(v []*string) *ViewFile {
+	s.Labels = v
+	return s
+}
+
+func (s *ViewFile) SetLocalCreatedAt(v string) *ViewFile {
+	s.LocalCreatedAt = &v
+	return s
+}
+
+func (s *ViewFile) SetLocalModifiedAt(v string) *ViewFile {
+	s.LocalModifiedAt = &v
+	return s
+}
+
+func (s *ViewFile) SetName(v string) *ViewFile {
+	s.Name = &v
+	return s
+}
+
+func (s *ViewFile) SetParentFileId(v string) *ViewFile {
+	s.ParentFileId = &v
+	return s
+}
+
+func (s *ViewFile) SetRevisionId(v string) *ViewFile {
+	s.RevisionId = &v
+	return s
+}
+
+func (s *ViewFile) SetSize(v int64) *ViewFile {
+	s.Size = &v
+	return s
+}
+
+func (s *ViewFile) SetStarred(v bool) *ViewFile {
+	s.Starred = &v
+	return s
+}
+
+func (s *ViewFile) SetStatus(v string) *ViewFile {
+	s.Status = &v
+	return s
+}
+
+func (s *ViewFile) SetThumbnail(v string) *ViewFile {
+	s.Thumbnail = &v
+	return s
+}
+
+func (s *ViewFile) SetThumbnailUrls(v map[string]*string) *ViewFile {
+	s.ThumbnailUrls = v
+	return s
+}
+
+func (s *ViewFile) SetTrashedAt(v string) *ViewFile {
+	s.TrashedAt = &v
+	return s
+}
+
+func (s *ViewFile) SetType(v string) *ViewFile {
+	s.Type = &v
+	return s
+}
+
+func (s *ViewFile) SetUpdatedAt(v string) *ViewFile {
+	s.UpdatedAt = &v
+	return s
+}
+
+func (s *ViewFile) SetUploadId(v string) *ViewFile {
+	s.UploadId = &v
+	return s
+}
+
+func (s *ViewFile) SetViewId(v string) *ViewFile {
+	s.ViewId = &v
+	return s
+}
+
+type ViewFileInvestigationInfo struct {
+	Status     *int64  `json:"status,omitempty" xml:"status,omitempty"`
+	Suggestion *string `json:"suggestion,omitempty" xml:"suggestion,omitempty"`
+}
+
+func (s ViewFileInvestigationInfo) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ViewFileInvestigationInfo) GoString() string {
+	return s.String()
+}
+
+func (s *ViewFileInvestigationInfo) SetStatus(v int64) *ViewFileInvestigationInfo {
+	s.Status = &v
+	return s
+}
+
+func (s *ViewFileInvestigationInfo) SetSuggestion(v string) *ViewFileInvestigationInfo {
+	s.Suggestion = &v
+	return s
+}
+
 type AddGroupMemberRequest struct {
 	GroupId    *string `json:"group_id,omitempty" xml:"group_id,omitempty"`
 	MemberId   *string `json:"member_id,omitempty" xml:"member_id,omitempty"`
@@ -2455,6 +3507,64 @@ func (s *AddStoryFilesResponse) SetStatusCode(v int32) *AddStoryFilesResponse {
 
 func (s *AddStoryFilesResponse) SetBody(v *AddStoryFilesResponseBody) *AddStoryFilesResponse {
 	s.Body = v
+	return s
+}
+
+type AssignRoleRequest struct {
+	Identity           *Identity `json:"identity,omitempty" xml:"identity,omitempty"`
+	ManageResourceId   *string   `json:"manage_resource_id,omitempty" xml:"manage_resource_id,omitempty"`
+	ManageResourceType *string   `json:"manage_resource_type,omitempty" xml:"manage_resource_type,omitempty"`
+	RoleId             *string   `json:"role_id,omitempty" xml:"role_id,omitempty"`
+}
+
+func (s AssignRoleRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s AssignRoleRequest) GoString() string {
+	return s.String()
+}
+
+func (s *AssignRoleRequest) SetIdentity(v *Identity) *AssignRoleRequest {
+	s.Identity = v
+	return s
+}
+
+func (s *AssignRoleRequest) SetManageResourceId(v string) *AssignRoleRequest {
+	s.ManageResourceId = &v
+	return s
+}
+
+func (s *AssignRoleRequest) SetManageResourceType(v string) *AssignRoleRequest {
+	s.ManageResourceType = &v
+	return s
+}
+
+func (s *AssignRoleRequest) SetRoleId(v string) *AssignRoleRequest {
+	s.RoleId = &v
+	return s
+}
+
+type AssignRoleResponse struct {
+	Headers    map[string]*string `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32             `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+}
+
+func (s AssignRoleResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s AssignRoleResponse) GoString() string {
+	return s.String()
+}
+
+func (s *AssignRoleResponse) SetHeaders(v map[string]*string) *AssignRoleResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *AssignRoleResponse) SetStatusCode(v int32) *AssignRoleResponse {
+	s.StatusCode = &v
 	return s
 }
 
@@ -2723,6 +3833,64 @@ func (s *BatchResponse) SetStatusCode(v int32) *BatchResponse {
 
 func (s *BatchResponse) SetBody(v *BatchResponseBody) *BatchResponse {
 	s.Body = v
+	return s
+}
+
+type CancelAssignRoleRequest struct {
+	Identity           *Identity `json:"identity,omitempty" xml:"identity,omitempty"`
+	ManageResourceId   *string   `json:"manage_resource_id,omitempty" xml:"manage_resource_id,omitempty"`
+	ManageResourceType *string   `json:"manage_resource_type,omitempty" xml:"manage_resource_type,omitempty"`
+	RoleId             *string   `json:"role_id,omitempty" xml:"role_id,omitempty"`
+}
+
+func (s CancelAssignRoleRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CancelAssignRoleRequest) GoString() string {
+	return s.String()
+}
+
+func (s *CancelAssignRoleRequest) SetIdentity(v *Identity) *CancelAssignRoleRequest {
+	s.Identity = v
+	return s
+}
+
+func (s *CancelAssignRoleRequest) SetManageResourceId(v string) *CancelAssignRoleRequest {
+	s.ManageResourceId = &v
+	return s
+}
+
+func (s *CancelAssignRoleRequest) SetManageResourceType(v string) *CancelAssignRoleRequest {
+	s.ManageResourceType = &v
+	return s
+}
+
+func (s *CancelAssignRoleRequest) SetRoleId(v string) *CancelAssignRoleRequest {
+	s.RoleId = &v
+	return s
+}
+
+type CancelAssignRoleResponse struct {
+	Headers    map[string]*string `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32             `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+}
+
+func (s CancelAssignRoleResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CancelAssignRoleResponse) GoString() string {
+	return s.String()
+}
+
+func (s *CancelAssignRoleResponse) SetHeaders(v map[string]*string) *CancelAssignRoleResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *CancelAssignRoleResponse) SetStatusCode(v int32) *CancelAssignRoleResponse {
+	s.StatusCode = &v
 	return s
 }
 
@@ -3493,7 +4661,8 @@ func (s *CreateFileRequest) SetVideoMediaMetadata(v *VideoMediaMetadata) *Create
 }
 
 type CreateFileRequestPartInfoList struct {
-	PartNumber *int32 `json:"part_number,omitempty" xml:"part_number,omitempty"`
+	ContentMd5 *string `json:"content_md5,omitempty" xml:"content_md5,omitempty"`
+	PartNumber *int32  `json:"part_number,omitempty" xml:"part_number,omitempty"`
 }
 
 func (s CreateFileRequestPartInfoList) String() string {
@@ -3502,6 +4671,11 @@ func (s CreateFileRequestPartInfoList) String() string {
 
 func (s CreateFileRequestPartInfoList) GoString() string {
 	return s.String()
+}
+
+func (s *CreateFileRequestPartInfoList) SetContentMd5(v string) *CreateFileRequestPartInfoList {
+	s.ContentMd5 = &v
+	return s
 }
 
 func (s *CreateFileRequestPartInfoList) SetPartNumber(v int32) *CreateFileRequestPartInfoList {
@@ -3752,6 +4926,7 @@ type CreateShareLinkRequest struct {
 	DriveId         *string   `json:"drive_id,omitempty" xml:"drive_id,omitempty"`
 	Expiration      *string   `json:"expiration,omitempty" xml:"expiration,omitempty"`
 	FileIdList      []*string `json:"file_id_list,omitempty" xml:"file_id_list,omitempty" type:"Repeated"`
+	OfficeEditable  *bool     `json:"office_editable,omitempty" xml:"office_editable,omitempty"`
 	PreviewLimit    *int64    `json:"preview_limit,omitempty" xml:"preview_limit,omitempty"`
 	SaveLimit       *int64    `json:"save_limit,omitempty" xml:"save_limit,omitempty"`
 	ShareAllFiles   *bool     `json:"share_all_files,omitempty" xml:"share_all_files,omitempty"`
@@ -3805,6 +4980,11 @@ func (s *CreateShareLinkRequest) SetExpiration(v string) *CreateShareLinkRequest
 
 func (s *CreateShareLinkRequest) SetFileIdList(v []*string) *CreateShareLinkRequest {
 	s.FileIdList = v
+	return s
+}
+
+func (s *CreateShareLinkRequest) SetOfficeEditable(v bool) *CreateShareLinkRequest {
+	s.OfficeEditable = &v
 	return s
 }
 
@@ -5245,13 +6425,21 @@ func (s *GetAsyncTaskRequest) SetAsyncTaskId(v string) *GetAsyncTaskRequest {
 }
 
 type GetAsyncTaskResponseBody struct {
-	AsyncTaskId     *string `json:"async_task_id,omitempty" xml:"async_task_id,omitempty"`
-	ConsumedProcess *int64  `json:"consumed_process,omitempty" xml:"consumed_process,omitempty"`
-	ErrCode         *int64  `json:"err_code,omitempty" xml:"err_code,omitempty"`
-	Message         *string `json:"message,omitempty" xml:"message,omitempty"`
-	Status          *string `json:"status,omitempty" xml:"status,omitempty"`
-	TotalProcess    *int64  `json:"total_process,omitempty" xml:"total_process,omitempty"`
-	Url             *string `json:"url,omitempty" xml:"url,omitempty"`
+	AsyncTaskId        *string                 `json:"async_task_id,omitempty" xml:"async_task_id,omitempty"`
+	Category           *string                 `json:"category,omitempty" xml:"category,omitempty"`
+	ConsumedProcess    *int64                  `json:"consumed_process,omitempty" xml:"consumed_process,omitempty"`
+	CreatedAt          *string                 `json:"created_at,omitempty" xml:"created_at,omitempty"`
+	ErrCode            *int64                  `json:"err_code,omitempty" xml:"err_code,omitempty"`
+	ErrorCode          *string                 `json:"error_code,omitempty" xml:"error_code,omitempty"`
+	ErrorMessage       *string                 `json:"error_message,omitempty" xml:"error_message,omitempty"`
+	FinishedAt         *string                 `json:"finished_at,omitempty" xml:"finished_at,omitempty"`
+	Message            *string                 `json:"message,omitempty" xml:"message,omitempty"`
+	StartedAt          *string                 `json:"started_at,omitempty" xml:"started_at,omitempty"`
+	State              *string                 `json:"state,omitempty" xml:"state,omitempty"`
+	Status             *string                 `json:"status,omitempty" xml:"status,omitempty"`
+	TotalProcess       *int64                  `json:"total_process,omitempty" xml:"total_process,omitempty"`
+	UncompressFileList []*UncompressedFileInfo `json:"uncompress_file_list,omitempty" xml:"uncompress_file_list,omitempty" type:"Repeated"`
+	Url                *string                 `json:"url,omitempty" xml:"url,omitempty"`
 }
 
 func (s GetAsyncTaskResponseBody) String() string {
@@ -5267,8 +6455,18 @@ func (s *GetAsyncTaskResponseBody) SetAsyncTaskId(v string) *GetAsyncTaskRespons
 	return s
 }
 
+func (s *GetAsyncTaskResponseBody) SetCategory(v string) *GetAsyncTaskResponseBody {
+	s.Category = &v
+	return s
+}
+
 func (s *GetAsyncTaskResponseBody) SetConsumedProcess(v int64) *GetAsyncTaskResponseBody {
 	s.ConsumedProcess = &v
+	return s
+}
+
+func (s *GetAsyncTaskResponseBody) SetCreatedAt(v string) *GetAsyncTaskResponseBody {
+	s.CreatedAt = &v
 	return s
 }
 
@@ -5277,8 +6475,33 @@ func (s *GetAsyncTaskResponseBody) SetErrCode(v int64) *GetAsyncTaskResponseBody
 	return s
 }
 
+func (s *GetAsyncTaskResponseBody) SetErrorCode(v string) *GetAsyncTaskResponseBody {
+	s.ErrorCode = &v
+	return s
+}
+
+func (s *GetAsyncTaskResponseBody) SetErrorMessage(v string) *GetAsyncTaskResponseBody {
+	s.ErrorMessage = &v
+	return s
+}
+
+func (s *GetAsyncTaskResponseBody) SetFinishedAt(v string) *GetAsyncTaskResponseBody {
+	s.FinishedAt = &v
+	return s
+}
+
 func (s *GetAsyncTaskResponseBody) SetMessage(v string) *GetAsyncTaskResponseBody {
 	s.Message = &v
+	return s
+}
+
+func (s *GetAsyncTaskResponseBody) SetStartedAt(v string) *GetAsyncTaskResponseBody {
+	s.StartedAt = &v
+	return s
+}
+
+func (s *GetAsyncTaskResponseBody) SetState(v string) *GetAsyncTaskResponseBody {
+	s.State = &v
 	return s
 }
 
@@ -5289,6 +6512,11 @@ func (s *GetAsyncTaskResponseBody) SetStatus(v string) *GetAsyncTaskResponseBody
 
 func (s *GetAsyncTaskResponseBody) SetTotalProcess(v int64) *GetAsyncTaskResponseBody {
 	s.TotalProcess = &v
+	return s
+}
+
+func (s *GetAsyncTaskResponseBody) SetUncompressFileList(v []*UncompressedFileInfo) *GetAsyncTaskResponseBody {
+	s.UncompressFileList = v
 	return s
 }
 
@@ -6474,6 +7702,8 @@ func (s *GetUploadUrlRequest) SetUploadId(v string) *GetUploadUrlRequest {
 }
 
 type GetUploadUrlRequestPartInfoList struct {
+	ContentMd5      *string                                         `json:"content_md5,omitempty" xml:"content_md5,omitempty"`
+	ContentType     *string                                         `json:"content_type,omitempty" xml:"content_type,omitempty"`
 	ParallelSha1Ctx *GetUploadUrlRequestPartInfoListParallelSha1Ctx `json:"parallel_sha1_ctx,omitempty" xml:"parallel_sha1_ctx,omitempty" type:"Struct"`
 	PartNumber      *int32                                          `json:"part_number,omitempty" xml:"part_number,omitempty"`
 }
@@ -6484,6 +7714,16 @@ func (s GetUploadUrlRequestPartInfoList) String() string {
 
 func (s GetUploadUrlRequestPartInfoList) GoString() string {
 	return s.String()
+}
+
+func (s *GetUploadUrlRequestPartInfoList) SetContentMd5(v string) *GetUploadUrlRequestPartInfoList {
+	s.ContentMd5 = &v
+	return s
+}
+
+func (s *GetUploadUrlRequestPartInfoList) SetContentType(v string) *GetUploadUrlRequestPartInfoList {
+	s.ContentType = &v
+	return s
 }
 
 func (s *GetUploadUrlRequestPartInfoList) SetParallelSha1Ctx(v *GetUploadUrlRequestPartInfoListParallelSha1Ctx) *GetUploadUrlRequestPartInfoList {
@@ -6697,9 +7937,11 @@ func (s *GetVideoPreviewPlayInfoRequest) SetUrlExpireSec(v int64) *GetVideoPrevi
 }
 
 type GetVideoPreviewPlayInfoResponseBody struct {
+	Code                 *string               `json:"code,omitempty" xml:"code,omitempty"`
 	DomainId             *string               `json:"domain_id,omitempty" xml:"domain_id,omitempty"`
 	DriveId              *string               `json:"drive_id,omitempty" xml:"drive_id,omitempty"`
 	FileId               *string               `json:"file_id,omitempty" xml:"file_id,omitempty"`
+	Message              *string               `json:"message,omitempty" xml:"message,omitempty"`
 	ShareId              *string               `json:"share_id,omitempty" xml:"share_id,omitempty"`
 	VideoPreviewPlayInfo *VideoPreviewPlayInfo `json:"video_preview_play_info,omitempty" xml:"video_preview_play_info,omitempty"`
 }
@@ -6710,6 +7952,11 @@ func (s GetVideoPreviewPlayInfoResponseBody) String() string {
 
 func (s GetVideoPreviewPlayInfoResponseBody) GoString() string {
 	return s.String()
+}
+
+func (s *GetVideoPreviewPlayInfoResponseBody) SetCode(v string) *GetVideoPreviewPlayInfoResponseBody {
+	s.Code = &v
+	return s
 }
 
 func (s *GetVideoPreviewPlayInfoResponseBody) SetDomainId(v string) *GetVideoPreviewPlayInfoResponseBody {
@@ -6724,6 +7971,11 @@ func (s *GetVideoPreviewPlayInfoResponseBody) SetDriveId(v string) *GetVideoPrev
 
 func (s *GetVideoPreviewPlayInfoResponseBody) SetFileId(v string) *GetVideoPreviewPlayInfoResponseBody {
 	s.FileId = &v
+	return s
+}
+
+func (s *GetVideoPreviewPlayInfoResponseBody) SetMessage(v string) *GetVideoPreviewPlayInfoResponseBody {
+	s.Message = &v
 	return s
 }
 
@@ -7610,10 +8862,11 @@ func (s *ListDriveResponse) SetBody(v *ListDriveResponseBody) *ListDriveResponse
 }
 
 type ListFacegroupsRequest struct {
-	DriveId *string `json:"drive_id,omitempty" xml:"drive_id,omitempty"`
-	Limit   *int32  `json:"limit,omitempty" xml:"limit,omitempty"`
-	Marker  *string `json:"marker,omitempty" xml:"marker,omitempty"`
-	Remarks *string `json:"remarks,omitempty" xml:"remarks,omitempty"`
+	DriveId          *string `json:"drive_id,omitempty" xml:"drive_id,omitempty"`
+	Limit            *int32  `json:"limit,omitempty" xml:"limit,omitempty"`
+	Marker           *string `json:"marker,omitempty" xml:"marker,omitempty"`
+	Remarks          *string `json:"remarks,omitempty" xml:"remarks,omitempty"`
+	ReturnTotalCount *bool   `json:"return_total_count,omitempty" xml:"return_total_count,omitempty"`
 }
 
 func (s ListFacegroupsRequest) String() string {
@@ -7644,9 +8897,15 @@ func (s *ListFacegroupsRequest) SetRemarks(v string) *ListFacegroupsRequest {
 	return s
 }
 
+func (s *ListFacegroupsRequest) SetReturnTotalCount(v bool) *ListFacegroupsRequest {
+	s.ReturnTotalCount = &v
+	return s
+}
+
 type ListFacegroupsResponseBody struct {
 	Items      []*FaceGroup `json:"items,omitempty" xml:"items,omitempty" type:"Repeated"`
 	NextMarker *string      `json:"next_marker,omitempty" xml:"next_marker,omitempty"`
+	TotalCount *int64       `json:"total_count,omitempty" xml:"total_count,omitempty"`
 }
 
 func (s ListFacegroupsResponseBody) String() string {
@@ -7664,6 +8923,11 @@ func (s *ListFacegroupsResponseBody) SetItems(v []*FaceGroup) *ListFacegroupsRes
 
 func (s *ListFacegroupsResponseBody) SetNextMarker(v string) *ListFacegroupsResponseBody {
 	s.NextMarker = &v
+	return s
+}
+
+func (s *ListFacegroupsResponseBody) SetTotalCount(v int64) *ListFacegroupsResponseBody {
+	s.TotalCount = &v
 	return s
 }
 
@@ -8946,104 +10210,6 @@ func (s *MoveFileResponse) SetStatusCode(v int32) *MoveFileResponse {
 }
 
 func (s *MoveFileResponse) SetBody(v *MoveFileResponseBody) *MoveFileResponse {
-	s.Body = v
-	return s
-}
-
-type ParseKeywordsRequest struct {
-	Keywords *string `json:"keywords,omitempty" xml:"keywords,omitempty"`
-}
-
-func (s ParseKeywordsRequest) String() string {
-	return tea.Prettify(s)
-}
-
-func (s ParseKeywordsRequest) GoString() string {
-	return s.String()
-}
-
-func (s *ParseKeywordsRequest) SetKeywords(v string) *ParseKeywordsRequest {
-	s.Keywords = &v
-	return s
-}
-
-type ParseKeywordsResponseBody struct {
-	AddressLine *string                             `json:"address_line,omitempty" xml:"address_line,omitempty"`
-	Tags        []*SystemTag                        `json:"tags,omitempty" xml:"tags,omitempty" type:"Repeated"`
-	TimeRange   *ParseKeywordsResponseBodyTimeRange `json:"time_range,omitempty" xml:"time_range,omitempty" type:"Struct"`
-}
-
-func (s ParseKeywordsResponseBody) String() string {
-	return tea.Prettify(s)
-}
-
-func (s ParseKeywordsResponseBody) GoString() string {
-	return s.String()
-}
-
-func (s *ParseKeywordsResponseBody) SetAddressLine(v string) *ParseKeywordsResponseBody {
-	s.AddressLine = &v
-	return s
-}
-
-func (s *ParseKeywordsResponseBody) SetTags(v []*SystemTag) *ParseKeywordsResponseBody {
-	s.Tags = v
-	return s
-}
-
-func (s *ParseKeywordsResponseBody) SetTimeRange(v *ParseKeywordsResponseBodyTimeRange) *ParseKeywordsResponseBody {
-	s.TimeRange = v
-	return s
-}
-
-type ParseKeywordsResponseBodyTimeRange struct {
-	End   *string `json:"end,omitempty" xml:"end,omitempty"`
-	Start *string `json:"start,omitempty" xml:"start,omitempty"`
-}
-
-func (s ParseKeywordsResponseBodyTimeRange) String() string {
-	return tea.Prettify(s)
-}
-
-func (s ParseKeywordsResponseBodyTimeRange) GoString() string {
-	return s.String()
-}
-
-func (s *ParseKeywordsResponseBodyTimeRange) SetEnd(v string) *ParseKeywordsResponseBodyTimeRange {
-	s.End = &v
-	return s
-}
-
-func (s *ParseKeywordsResponseBodyTimeRange) SetStart(v string) *ParseKeywordsResponseBodyTimeRange {
-	s.Start = &v
-	return s
-}
-
-type ParseKeywordsResponse struct {
-	Headers    map[string]*string         `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                     `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *ParseKeywordsResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
-}
-
-func (s ParseKeywordsResponse) String() string {
-	return tea.Prettify(s)
-}
-
-func (s ParseKeywordsResponse) GoString() string {
-	return s.String()
-}
-
-func (s *ParseKeywordsResponse) SetHeaders(v map[string]*string) *ParseKeywordsResponse {
-	s.Headers = v
-	return s
-}
-
-func (s *ParseKeywordsResponse) SetStatusCode(v int32) *ParseKeywordsResponse {
-	s.StatusCode = &v
-	return s
-}
-
-func (s *ParseKeywordsResponse) SetBody(v *ParseKeywordsResponseBody) *ParseKeywordsResponse {
 	s.Body = v
 	return s
 }
@@ -10618,15 +11784,74 @@ func (s *TrashFileResponse) SetBody(v *TrashFileResponseBody) *TrashFileResponse
 	return s
 }
 
+type UnLinkAcountRequest struct {
+	Extra    *string `json:"extra,omitempty" xml:"extra,omitempty"`
+	Identity *string `json:"identity,omitempty" xml:"identity,omitempty"`
+	Type     *string `json:"type,omitempty" xml:"type,omitempty"`
+	UserId   *string `json:"user_id,omitempty" xml:"user_id,omitempty"`
+}
+
+func (s UnLinkAcountRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UnLinkAcountRequest) GoString() string {
+	return s.String()
+}
+
+func (s *UnLinkAcountRequest) SetExtra(v string) *UnLinkAcountRequest {
+	s.Extra = &v
+	return s
+}
+
+func (s *UnLinkAcountRequest) SetIdentity(v string) *UnLinkAcountRequest {
+	s.Identity = &v
+	return s
+}
+
+func (s *UnLinkAcountRequest) SetType(v string) *UnLinkAcountRequest {
+	s.Type = &v
+	return s
+}
+
+func (s *UnLinkAcountRequest) SetUserId(v string) *UnLinkAcountRequest {
+	s.UserId = &v
+	return s
+}
+
+type UnLinkAcountResponse struct {
+	Headers    map[string]*string `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32             `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+}
+
+func (s UnLinkAcountResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UnLinkAcountResponse) GoString() string {
+	return s.String()
+}
+
+func (s *UnLinkAcountResponse) SetHeaders(v map[string]*string) *UnLinkAcountResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *UnLinkAcountResponse) SetStatusCode(v int32) *UnLinkAcountResponse {
+	s.StatusCode = &v
+	return s
+}
+
 type UpdateDomainRequest struct {
 	Description *string `json:"description,omitempty" xml:"description,omitempty"`
 	// domain id
-	DomainId        *string `json:"domain_id,omitempty" xml:"domain_id,omitempty"`
-	DomainName      *string `json:"domain_name,omitempty" xml:"domain_name,omitempty"`
-	InitDriveEnable *bool   `json:"init_drive_enable,omitempty" xml:"init_drive_enable,omitempty"`
-	InitDriveSize   *int64  `json:"init_drive_size,omitempty" xml:"init_drive_size,omitempty"`
-	SizeQuota       *int64  `json:"size_quota,omitempty" xml:"size_quota,omitempty"`
-	UserCountQuota  *int64  `json:"user_count_quota,omitempty" xml:"user_count_quota,omitempty"`
+	DomainId                   *string            `json:"domain_id,omitempty" xml:"domain_id,omitempty"`
+	DomainName                 *string            `json:"domain_name,omitempty" xml:"domain_name,omitempty"`
+	InitDriveEnable            *bool              `json:"init_drive_enable,omitempty" xml:"init_drive_enable,omitempty"`
+	InitDriveSize              *int64             `json:"init_drive_size,omitempty" xml:"init_drive_size,omitempty"`
+	PublishedAppAccessStrategy *AppAccessStrategy `json:"published_app_access_strategy,omitempty" xml:"published_app_access_strategy,omitempty"`
+	SizeQuota                  *int64             `json:"size_quota,omitempty" xml:"size_quota,omitempty"`
+	UserCountQuota             *int64             `json:"user_count_quota,omitempty" xml:"user_count_quota,omitempty"`
 }
 
 func (s UpdateDomainRequest) String() string {
@@ -10659,6 +11884,11 @@ func (s *UpdateDomainRequest) SetInitDriveEnable(v bool) *UpdateDomainRequest {
 
 func (s *UpdateDomainRequest) SetInitDriveSize(v int64) *UpdateDomainRequest {
 	s.InitDriveSize = &v
+	return s
+}
+
+func (s *UpdateDomainRequest) SetPublishedAppAccessStrategy(v *AppAccessStrategy) *UpdateDomainRequest {
+	s.PublishedAppAccessStrategy = v
 	return s
 }
 
@@ -11560,13 +12790,11 @@ func (client *Client) Init(config *openapi.Config) (_err error) {
 	return nil
 }
 
-func (client *Client) AddGroupMemberWithOptions(domainId *string, request *AddGroupMemberRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *AddGroupMemberResponse, _err error) {
+func (client *Client) AddGroupMemberWithOptions(request *AddGroupMemberRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *AddGroupMemberResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
 		return _result, _err
 	}
-	hostMap := make(map[string]*string)
-	hostMap["domain_id"] = domainId
 	body := map[string]interface{}{}
 	if !tea.BoolValue(util.IsUnset(request.GroupId)) {
 		body["group_id"] = request.GroupId
@@ -11581,7 +12809,6 @@ func (client *Client) AddGroupMemberWithOptions(domainId *string, request *AddGr
 	}
 
 	req := &openapi.OpenApiRequest{
-		HostMap: hostMap,
 		Headers: headers,
 		Body:    openapiutil.ParseToMap(body),
 	}
@@ -11605,11 +12832,11 @@ func (client *Client) AddGroupMemberWithOptions(domainId *string, request *AddGr
 	return _result, _err
 }
 
-func (client *Client) AddGroupMember(domainId *string, request *AddGroupMemberRequest) (_result *AddGroupMemberResponse, _err error) {
+func (client *Client) AddGroupMember(request *AddGroupMemberRequest) (_result *AddGroupMemberResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
 	_result = &AddGroupMemberResponse{}
-	_body, _err := client.AddGroupMemberWithOptions(domainId, request, headers, runtime)
+	_body, _err := client.AddGroupMemberWithOptions(request, headers, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -11664,6 +12891,64 @@ func (client *Client) AddStoryFiles(request *AddStoryFilesRequest) (_result *Add
 	headers := make(map[string]*string)
 	_result = &AddStoryFilesResponse{}
 	_body, _err := client.AddStoryFilesWithOptions(request, headers, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) AssignRoleWithOptions(request *AssignRoleRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *AssignRoleResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	body := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.Identity)) {
+		body["identity"] = request.Identity
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ManageResourceId)) {
+		body["manage_resource_id"] = request.ManageResourceId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ManageResourceType)) {
+		body["manage_resource_type"] = request.ManageResourceType
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.RoleId)) {
+		body["role_id"] = request.RoleId
+	}
+
+	req := &openapi.OpenApiRequest{
+		Headers: headers,
+		Body:    openapiutil.ParseToMap(body),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("AssignRole"),
+		Version:     tea.String("2022-03-01"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/v2/role/assign"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("ROA"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &AssignRoleResponse{}
+	_body, _err := client.Execute(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) AssignRole(request *AssignRoleRequest) (_result *AssignRoleResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	headers := make(map[string]*string)
+	_result = &AssignRoleResponse{}
+	_body, _err := client.AssignRoleWithOptions(request, headers, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -11790,6 +13075,64 @@ func (client *Client) Batch(request *BatchRequest) (_result *BatchResponse, _err
 	headers := make(map[string]*string)
 	_result = &BatchResponse{}
 	_body, _err := client.BatchWithOptions(request, headers, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) CancelAssignRoleWithOptions(request *CancelAssignRoleRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *CancelAssignRoleResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	body := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.Identity)) {
+		body["identity"] = request.Identity
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ManageResourceId)) {
+		body["manage_resource_id"] = request.ManageResourceId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ManageResourceType)) {
+		body["manage_resource_type"] = request.ManageResourceType
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.RoleId)) {
+		body["role_id"] = request.RoleId
+	}
+
+	req := &openapi.OpenApiRequest{
+		Headers: headers,
+		Body:    openapiutil.ParseToMap(body),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("CancelAssignRole"),
+		Version:     tea.String("2022-03-01"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/v2/role/cancel_assign"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("ROA"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &CancelAssignRoleResponse{}
+	_body, _err := client.Execute(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) CancelAssignRole(request *CancelAssignRoleRequest) (_result *CancelAssignRoleResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	headers := make(map[string]*string)
+	_result = &CancelAssignRoleResponse{}
+	_body, _err := client.CancelAssignRoleWithOptions(request, headers, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -12505,6 +13848,10 @@ func (client *Client) CreateShareLinkWithOptions(request *CreateShareLinkRequest
 
 	if !tea.BoolValue(util.IsUnset(request.FileIdList)) {
 		body["file_id_list"] = request.FileIdList
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.OfficeEditable)) {
+		body["office_editable"] = request.OfficeEditable
 	}
 
 	if !tea.BoolValue(util.IsUnset(request.PreviewLimit)) {
@@ -13232,34 +14579,34 @@ func (client *Client) DownloadFileWithOptions(request *DownloadFileRequest, head
 	if _err != nil {
 		return _result, _err
 	}
-	body := map[string]interface{}{}
+	query := map[string]interface{}{}
 	if !tea.BoolValue(util.IsUnset(request.DriveId)) {
-		body["drive_id"] = request.DriveId
+		query["drive_id"] = request.DriveId
 	}
 
 	if !tea.BoolValue(util.IsUnset(request.FileId)) {
-		body["file_id"] = request.FileId
+		query["file_id"] = request.FileId
 	}
 
 	if !tea.BoolValue(util.IsUnset(request.ImageThumbnailProcess)) {
-		body["image_thumbnail_process"] = request.ImageThumbnailProcess
+		query["image_thumbnail_process"] = request.ImageThumbnailProcess
 	}
 
 	if !tea.BoolValue(util.IsUnset(request.OfficeThumbnailProcess)) {
-		body["office_thumbnail_process"] = request.OfficeThumbnailProcess
+		query["office_thumbnail_process"] = request.OfficeThumbnailProcess
 	}
 
 	if !tea.BoolValue(util.IsUnset(request.ShareId)) {
-		body["share_id"] = request.ShareId
+		query["share_id"] = request.ShareId
 	}
 
 	if !tea.BoolValue(util.IsUnset(request.VideoThumbnailProcess)) {
-		body["video_thumbnail_process"] = request.VideoThumbnailProcess
+		query["video_thumbnail_process"] = request.VideoThumbnailProcess
 	}
 
 	req := &openapi.OpenApiRequest{
 		Headers: headers,
-		Body:    openapiutil.ParseToMap(body),
+		Query:   openapiutil.Query(query),
 	}
 	params := &openapi.Params{
 		Action:      tea.String("DownloadFile"),
@@ -13270,7 +14617,7 @@ func (client *Client) DownloadFileWithOptions(request *DownloadFileRequest, head
 		AuthType:    tea.String("AK"),
 		Style:       tea.String("ROA"),
 		ReqBodyType: tea.String("formData"),
-		BodyType:    tea.String("json"),
+		BodyType:    tea.String("binary"),
 	}
 	_result = &DownloadFileResponse{}
 	_body, _err := client.Execute(params, req, runtime)
@@ -14879,13 +16226,11 @@ func (client *Client) ListAddressGroups(request *ListAddressGroupsRequest) (_res
 	return _result, _err
 }
 
-func (client *Client) ListAssignmentWithOptions(domainId *string, request *ListAssignmentRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *ListAssignmentResponse, _err error) {
+func (client *Client) ListAssignmentWithOptions(request *ListAssignmentRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *ListAssignmentResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
 		return _result, _err
 	}
-	hostMap := make(map[string]*string)
-	hostMap["domain_id"] = domainId
 	body := map[string]interface{}{}
 	if !tea.BoolValue(util.IsUnset(request.Limit)) {
 		body["limit"] = request.Limit
@@ -14904,7 +16249,6 @@ func (client *Client) ListAssignmentWithOptions(domainId *string, request *ListA
 	}
 
 	req := &openapi.OpenApiRequest{
-		HostMap: hostMap,
 		Headers: headers,
 		Body:    openapiutil.ParseToMap(body),
 	}
@@ -14928,11 +16272,11 @@ func (client *Client) ListAssignmentWithOptions(domainId *string, request *ListA
 	return _result, _err
 }
 
-func (client *Client) ListAssignment(domainId *string, request *ListAssignmentRequest) (_result *ListAssignmentResponse, _err error) {
+func (client *Client) ListAssignment(request *ListAssignmentRequest) (_result *ListAssignmentResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
 	_result = &ListAssignmentResponse{}
-	_body, _err := client.ListAssignmentWithOptions(domainId, request, headers, runtime)
+	_body, _err := client.ListAssignmentWithOptions(request, headers, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -15132,6 +16476,10 @@ func (client *Client) ListFacegroupsWithOptions(request *ListFacegroupsRequest, 
 		body["remarks"] = request.Remarks
 	}
 
+	if !tea.BoolValue(util.IsUnset(request.ReturnTotalCount)) {
+		body["return_total_count"] = request.ReturnTotalCount
+	}
+
 	req := &openapi.OpenApiRequest{
 		Headers: headers,
 		Body:    openapiutil.ParseToMap(body),
@@ -15308,13 +16656,11 @@ func (client *Client) ListGroup(request *ListGroupRequest) (_result *ListGroupRe
 	return _result, _err
 }
 
-func (client *Client) ListGroupMemberWithOptions(domainId *string, request *ListGroupMemberRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *ListGroupMemberResponse, _err error) {
+func (client *Client) ListGroupMemberWithOptions(request *ListGroupMemberRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *ListGroupMemberResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
 		return _result, _err
 	}
-	hostMap := make(map[string]*string)
-	hostMap["domain_id"] = domainId
 	body := map[string]interface{}{}
 	if !tea.BoolValue(util.IsUnset(request.GroupId)) {
 		body["group_id"] = request.GroupId
@@ -15333,7 +16679,6 @@ func (client *Client) ListGroupMemberWithOptions(domainId *string, request *List
 	}
 
 	req := &openapi.OpenApiRequest{
-		HostMap: hostMap,
 		Headers: headers,
 		Body:    openapiutil.ParseToMap(body),
 	}
@@ -15357,11 +16702,11 @@ func (client *Client) ListGroupMemberWithOptions(domainId *string, request *List
 	return _result, _err
 }
 
-func (client *Client) ListGroupMember(domainId *string, request *ListGroupMemberRequest) (_result *ListGroupMemberResponse, _err error) {
+func (client *Client) ListGroupMember(request *ListGroupMemberRequest) (_result *ListGroupMemberResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
 	_result = &ListGroupMemberResponse{}
-	_body, _err := client.ListGroupMemberWithOptions(domainId, request, headers, runtime)
+	_body, _err := client.ListGroupMemberWithOptions(request, headers, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -15473,13 +16818,11 @@ func (client *Client) ListMyDrives(request *ListMyDrivesRequest) (_result *ListM
 	return _result, _err
 }
 
-func (client *Client) ListMyGroupDriveWithOptions(domainId *string, request *ListMyGroupDriveRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *ListMyGroupDriveResponse, _err error) {
+func (client *Client) ListMyGroupDriveWithOptions(request *ListMyGroupDriveRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *ListMyGroupDriveResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
 		return _result, _err
 	}
-	hostMap := make(map[string]*string)
-	hostMap["domain_id"] = domainId
 	body := map[string]interface{}{}
 	if !tea.BoolValue(util.IsUnset(request.Limit)) {
 		body["limit"] = request.Limit
@@ -15490,7 +16833,6 @@ func (client *Client) ListMyGroupDriveWithOptions(domainId *string, request *Lis
 	}
 
 	req := &openapi.OpenApiRequest{
-		HostMap: hostMap,
 		Headers: headers,
 		Body:    openapiutil.ParseToMap(body),
 	}
@@ -15514,11 +16856,11 @@ func (client *Client) ListMyGroupDriveWithOptions(domainId *string, request *Lis
 	return _result, _err
 }
 
-func (client *Client) ListMyGroupDrive(domainId *string, request *ListMyGroupDriveRequest) (_result *ListMyGroupDriveResponse, _err error) {
+func (client *Client) ListMyGroupDrive(request *ListMyGroupDriveRequest) (_result *ListMyGroupDriveResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
 	_result = &ListMyGroupDriveResponse{}
-	_body, _err := client.ListMyGroupDriveWithOptions(domainId, request, headers, runtime)
+	_body, _err := client.ListMyGroupDriveWithOptions(request, headers, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -15990,52 +17332,6 @@ func (client *Client) MoveFile(request *MoveFileRequest) (_result *MoveFileRespo
 	return _result, _err
 }
 
-func (client *Client) ParseKeywordsWithOptions(request *ParseKeywordsRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *ParseKeywordsResponse, _err error) {
-	_err = util.ValidateModel(request)
-	if _err != nil {
-		return _result, _err
-	}
-	body := map[string]interface{}{}
-	if !tea.BoolValue(util.IsUnset(request.Keywords)) {
-		body["keywords"] = request.Keywords
-	}
-
-	req := &openapi.OpenApiRequest{
-		Headers: headers,
-		Body:    openapiutil.ParseToMap(body),
-	}
-	params := &openapi.Params{
-		Action:      tea.String("ParseKeywords"),
-		Version:     tea.String("2022-03-01"),
-		Protocol:    tea.String("HTTPS"),
-		Pathname:    tea.String("/v2/image/parse_keywords"),
-		Method:      tea.String("POST"),
-		AuthType:    tea.String("AK"),
-		Style:       tea.String("ROA"),
-		ReqBodyType: tea.String("json"),
-		BodyType:    tea.String("json"),
-	}
-	_result = &ParseKeywordsResponse{}
-	_body, _err := client.Execute(params, req, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
-}
-
-func (client *Client) ParseKeywords(request *ParseKeywordsRequest) (_result *ParseKeywordsResponse, _err error) {
-	runtime := &util.RuntimeOptions{}
-	headers := make(map[string]*string)
-	_result = &ParseKeywordsResponse{}
-	_body, _err := client.ParseKeywordsWithOptions(request, headers, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
-	return _result, _err
-}
-
 func (client *Client) RemoveFaceGroupFileWithOptions(request *RemoveFaceGroupFileRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *RemoveFaceGroupFileResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -16090,13 +17386,11 @@ func (client *Client) RemoveFaceGroupFile(request *RemoveFaceGroupFileRequest) (
 	return _result, _err
 }
 
-func (client *Client) RemoveGroupMemberWithOptions(domainId *string, request *RemoveGroupMemberRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *RemoveGroupMemberResponse, _err error) {
+func (client *Client) RemoveGroupMemberWithOptions(request *RemoveGroupMemberRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *RemoveGroupMemberResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
 		return _result, _err
 	}
-	hostMap := make(map[string]*string)
-	hostMap["domain_id"] = domainId
 	body := map[string]interface{}{}
 	if !tea.BoolValue(util.IsUnset(request.GroupId)) {
 		body["group_id"] = request.GroupId
@@ -16111,7 +17405,6 @@ func (client *Client) RemoveGroupMemberWithOptions(domainId *string, request *Re
 	}
 
 	req := &openapi.OpenApiRequest{
-		HostMap: hostMap,
 		Headers: headers,
 		Body:    openapiutil.ParseToMap(body),
 	}
@@ -16135,11 +17428,11 @@ func (client *Client) RemoveGroupMemberWithOptions(domainId *string, request *Re
 	return _result, _err
 }
 
-func (client *Client) RemoveGroupMember(domainId *string, request *RemoveGroupMemberRequest) (_result *RemoveGroupMemberResponse, _err error) {
+func (client *Client) RemoveGroupMember(request *RemoveGroupMemberRequest) (_result *RemoveGroupMemberResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
 	_result = &RemoveGroupMemberResponse{}
-	_body, _err := client.RemoveGroupMemberWithOptions(domainId, request, headers, runtime)
+	_body, _err := client.RemoveGroupMemberWithOptions(request, headers, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -17059,6 +18352,64 @@ func (client *Client) TrashFile(request *TrashFileRequest) (_result *TrashFileRe
 	return _result, _err
 }
 
+func (client *Client) UnLinkAcountWithOptions(request *UnLinkAcountRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *UnLinkAcountResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	body := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.Extra)) {
+		body["extra"] = request.Extra
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Identity)) {
+		body["identity"] = request.Identity
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Type)) {
+		body["type"] = request.Type
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.UserId)) {
+		body["user_id"] = request.UserId
+	}
+
+	req := &openapi.OpenApiRequest{
+		Headers: headers,
+		Body:    openapiutil.ParseToMap(body),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("UnLinkAcount"),
+		Version:     tea.String("2022-03-01"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/v2/account/unlink"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("ROA"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &UnLinkAcountResponse{}
+	_body, _err := client.Execute(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) UnLinkAcount(request *UnLinkAcountRequest) (_result *UnLinkAcountResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	headers := make(map[string]*string)
+	_result = &UnLinkAcountResponse{}
+	_body, _err := client.UnLinkAcountWithOptions(request, headers, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
 func (client *Client) UpdateDomainWithOptions(request *UpdateDomainRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *UpdateDomainResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -17083,6 +18434,10 @@ func (client *Client) UpdateDomainWithOptions(request *UpdateDomainRequest, head
 
 	if !tea.BoolValue(util.IsUnset(request.InitDriveSize)) {
 		body["init_drive_size"] = request.InitDriveSize
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.PublishedAppAccessStrategy)) {
+		body["published_app_access_strategy"] = request.PublishedAppAccessStrategy
 	}
 
 	if !tea.BoolValue(util.IsUnset(request.SizeQuota)) {
