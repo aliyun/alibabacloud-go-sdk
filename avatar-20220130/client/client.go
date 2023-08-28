@@ -990,6 +990,7 @@ type GetVideoTaskInfoResponseBodyDataTaskResult struct {
 	AlphaUrl      *string `json:"AlphaUrl,omitempty" xml:"AlphaUrl,omitempty"`
 	FailCode      *string `json:"FailCode,omitempty" xml:"FailCode,omitempty"`
 	FailReason    *string `json:"FailReason,omitempty" xml:"FailReason,omitempty"`
+	PreviewPic    *string `json:"PreviewPic,omitempty" xml:"PreviewPic,omitempty"`
 	SubtitlesUrl  *string `json:"SubtitlesUrl,omitempty" xml:"SubtitlesUrl,omitempty"`
 	VideoDuration *int32  `json:"VideoDuration,omitempty" xml:"VideoDuration,omitempty"`
 	VideoUrl      *string `json:"VideoUrl,omitempty" xml:"VideoUrl,omitempty"`
@@ -1017,6 +1018,11 @@ func (s *GetVideoTaskInfoResponseBodyDataTaskResult) SetFailCode(v string) *GetV
 
 func (s *GetVideoTaskInfoResponseBodyDataTaskResult) SetFailReason(v string) *GetVideoTaskInfoResponseBodyDataTaskResult {
 	s.FailReason = &v
+	return s
+}
+
+func (s *GetVideoTaskInfoResponseBodyDataTaskResult) SetPreviewPic(v string) *GetVideoTaskInfoResponseBodyDataTaskResult {
+	s.PreviewPic = &v
 	return s
 }
 
@@ -1250,10 +1256,12 @@ func (s *QueryAvatarResponseBody) SetSuccess(v bool) *QueryAvatarResponseBody {
 }
 
 type QueryAvatarResponseBodyData struct {
+	AllLocateImages      map[string]interface{}                           `json:"AllLocateImages,omitempty" xml:"AllLocateImages,omitempty"`
 	AvatarType           *string                                          `json:"AvatarType,omitempty" xml:"AvatarType,omitempty"`
 	Description          *string                                          `json:"Description,omitempty" xml:"Description,omitempty"`
 	Image                *string                                          `json:"Image,omitempty" xml:"Image,omitempty"`
 	MakeFailReason       *string                                          `json:"MakeFailReason,omitempty" xml:"MakeFailReason,omitempty"`
+	MakeStage            *string                                          `json:"MakeStage,omitempty" xml:"MakeStage,omitempty"`
 	MakeStatus           *string                                          `json:"MakeStatus,omitempty" xml:"MakeStatus,omitempty"`
 	ModelType            *string                                          `json:"ModelType,omitempty" xml:"ModelType,omitempty"`
 	Name                 *string                                          `json:"Name,omitempty" xml:"Name,omitempty"`
@@ -1267,6 +1275,11 @@ func (s QueryAvatarResponseBodyData) String() string {
 
 func (s QueryAvatarResponseBodyData) GoString() string {
 	return s.String()
+}
+
+func (s *QueryAvatarResponseBodyData) SetAllLocateImages(v map[string]interface{}) *QueryAvatarResponseBodyData {
+	s.AllLocateImages = v
+	return s
 }
 
 func (s *QueryAvatarResponseBodyData) SetAvatarType(v string) *QueryAvatarResponseBodyData {
@@ -1286,6 +1299,11 @@ func (s *QueryAvatarResponseBodyData) SetImage(v string) *QueryAvatarResponseBod
 
 func (s *QueryAvatarResponseBodyData) SetMakeFailReason(v string) *QueryAvatarResponseBodyData {
 	s.MakeFailReason = &v
+	return s
+}
+
+func (s *QueryAvatarResponseBodyData) SetMakeStage(v string) *QueryAvatarResponseBodyData {
+	s.MakeStage = &v
 	return s
 }
 
@@ -1547,6 +1565,7 @@ type QueryAvatarListResponseBodyDataList struct {
 	Description          *string                                                  `json:"Description,omitempty" xml:"Description,omitempty"`
 	Image                *string                                                  `json:"Image,omitempty" xml:"Image,omitempty"`
 	MakeFailReason       *string                                                  `json:"MakeFailReason,omitempty" xml:"MakeFailReason,omitempty"`
+	MakeStage            *string                                                  `json:"MakeStage,omitempty" xml:"MakeStage,omitempty"`
 	MakeStatus           *string                                                  `json:"MakeStatus,omitempty" xml:"MakeStatus,omitempty"`
 	ModelType            *string                                                  `json:"ModelType,omitempty" xml:"ModelType,omitempty"`
 	Name                 *string                                                  `json:"Name,omitempty" xml:"Name,omitempty"`
@@ -1584,6 +1603,11 @@ func (s *QueryAvatarListResponseBodyDataList) SetImage(v string) *QueryAvatarLis
 
 func (s *QueryAvatarListResponseBodyDataList) SetMakeFailReason(v string) *QueryAvatarListResponseBodyDataList {
 	s.MakeFailReason = &v
+	return s
+}
+
+func (s *QueryAvatarListResponseBodyDataList) SetMakeStage(v string) *QueryAvatarListResponseBodyDataList {
+	s.MakeStage = &v
 	return s
 }
 
@@ -2109,6 +2133,359 @@ func (s *QueryTimedResetOperateStatusResponse) SetStatusCode(v int32) *QueryTime
 }
 
 func (s *QueryTimedResetOperateStatusResponse) SetBody(v *QueryTimedResetOperateStatusResponseBody) *QueryTimedResetOperateStatusResponse {
+	s.Body = v
+	return s
+}
+
+type QueryVideoTaskInfoRequest struct {
+	App       *QueryVideoTaskInfoRequestApp `json:"App,omitempty" xml:"App,omitempty" type:"Struct"`
+	OrderById *string                       `json:"OrderById,omitempty" xml:"OrderById,omitempty"`
+	PageNo    *int32                        `json:"PageNo,omitempty" xml:"PageNo,omitempty"`
+	PageSize  *int32                        `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	Status    *int32                        `json:"Status,omitempty" xml:"Status,omitempty"`
+	TaskUuid  *string                       `json:"TaskUuid,omitempty" xml:"TaskUuid,omitempty"`
+	TenantId  *int64                        `json:"TenantId,omitempty" xml:"TenantId,omitempty"`
+	Title     *string                       `json:"Title,omitempty" xml:"Title,omitempty"`
+	Type      *int32                        `json:"Type,omitempty" xml:"Type,omitempty"`
+}
+
+func (s QueryVideoTaskInfoRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s QueryVideoTaskInfoRequest) GoString() string {
+	return s.String()
+}
+
+func (s *QueryVideoTaskInfoRequest) SetApp(v *QueryVideoTaskInfoRequestApp) *QueryVideoTaskInfoRequest {
+	s.App = v
+	return s
+}
+
+func (s *QueryVideoTaskInfoRequest) SetOrderById(v string) *QueryVideoTaskInfoRequest {
+	s.OrderById = &v
+	return s
+}
+
+func (s *QueryVideoTaskInfoRequest) SetPageNo(v int32) *QueryVideoTaskInfoRequest {
+	s.PageNo = &v
+	return s
+}
+
+func (s *QueryVideoTaskInfoRequest) SetPageSize(v int32) *QueryVideoTaskInfoRequest {
+	s.PageSize = &v
+	return s
+}
+
+func (s *QueryVideoTaskInfoRequest) SetStatus(v int32) *QueryVideoTaskInfoRequest {
+	s.Status = &v
+	return s
+}
+
+func (s *QueryVideoTaskInfoRequest) SetTaskUuid(v string) *QueryVideoTaskInfoRequest {
+	s.TaskUuid = &v
+	return s
+}
+
+func (s *QueryVideoTaskInfoRequest) SetTenantId(v int64) *QueryVideoTaskInfoRequest {
+	s.TenantId = &v
+	return s
+}
+
+func (s *QueryVideoTaskInfoRequest) SetTitle(v string) *QueryVideoTaskInfoRequest {
+	s.Title = &v
+	return s
+}
+
+func (s *QueryVideoTaskInfoRequest) SetType(v int32) *QueryVideoTaskInfoRequest {
+	s.Type = &v
+	return s
+}
+
+type QueryVideoTaskInfoRequestApp struct {
+	AppId *string `json:"AppId,omitempty" xml:"AppId,omitempty"`
+}
+
+func (s QueryVideoTaskInfoRequestApp) String() string {
+	return tea.Prettify(s)
+}
+
+func (s QueryVideoTaskInfoRequestApp) GoString() string {
+	return s.String()
+}
+
+func (s *QueryVideoTaskInfoRequestApp) SetAppId(v string) *QueryVideoTaskInfoRequestApp {
+	s.AppId = &v
+	return s
+}
+
+type QueryVideoTaskInfoShrinkRequest struct {
+	AppShrink *string `json:"App,omitempty" xml:"App,omitempty"`
+	OrderById *string `json:"OrderById,omitempty" xml:"OrderById,omitempty"`
+	PageNo    *int32  `json:"PageNo,omitempty" xml:"PageNo,omitempty"`
+	PageSize  *int32  `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	Status    *int32  `json:"Status,omitempty" xml:"Status,omitempty"`
+	TaskUuid  *string `json:"TaskUuid,omitempty" xml:"TaskUuid,omitempty"`
+	TenantId  *int64  `json:"TenantId,omitempty" xml:"TenantId,omitempty"`
+	Title     *string `json:"Title,omitempty" xml:"Title,omitempty"`
+	Type      *int32  `json:"Type,omitempty" xml:"Type,omitempty"`
+}
+
+func (s QueryVideoTaskInfoShrinkRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s QueryVideoTaskInfoShrinkRequest) GoString() string {
+	return s.String()
+}
+
+func (s *QueryVideoTaskInfoShrinkRequest) SetAppShrink(v string) *QueryVideoTaskInfoShrinkRequest {
+	s.AppShrink = &v
+	return s
+}
+
+func (s *QueryVideoTaskInfoShrinkRequest) SetOrderById(v string) *QueryVideoTaskInfoShrinkRequest {
+	s.OrderById = &v
+	return s
+}
+
+func (s *QueryVideoTaskInfoShrinkRequest) SetPageNo(v int32) *QueryVideoTaskInfoShrinkRequest {
+	s.PageNo = &v
+	return s
+}
+
+func (s *QueryVideoTaskInfoShrinkRequest) SetPageSize(v int32) *QueryVideoTaskInfoShrinkRequest {
+	s.PageSize = &v
+	return s
+}
+
+func (s *QueryVideoTaskInfoShrinkRequest) SetStatus(v int32) *QueryVideoTaskInfoShrinkRequest {
+	s.Status = &v
+	return s
+}
+
+func (s *QueryVideoTaskInfoShrinkRequest) SetTaskUuid(v string) *QueryVideoTaskInfoShrinkRequest {
+	s.TaskUuid = &v
+	return s
+}
+
+func (s *QueryVideoTaskInfoShrinkRequest) SetTenantId(v int64) *QueryVideoTaskInfoShrinkRequest {
+	s.TenantId = &v
+	return s
+}
+
+func (s *QueryVideoTaskInfoShrinkRequest) SetTitle(v string) *QueryVideoTaskInfoShrinkRequest {
+	s.Title = &v
+	return s
+}
+
+func (s *QueryVideoTaskInfoShrinkRequest) SetType(v int32) *QueryVideoTaskInfoShrinkRequest {
+	s.Type = &v
+	return s
+}
+
+type QueryVideoTaskInfoResponseBody struct {
+	Code    *string                             `json:"Code,omitempty" xml:"Code,omitempty"`
+	Data    *QueryVideoTaskInfoResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
+	Message *string                             `json:"Message,omitempty" xml:"Message,omitempty"`
+	// Id of the request
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	Success   *bool   `json:"Success,omitempty" xml:"Success,omitempty"`
+}
+
+func (s QueryVideoTaskInfoResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s QueryVideoTaskInfoResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *QueryVideoTaskInfoResponseBody) SetCode(v string) *QueryVideoTaskInfoResponseBody {
+	s.Code = &v
+	return s
+}
+
+func (s *QueryVideoTaskInfoResponseBody) SetData(v *QueryVideoTaskInfoResponseBodyData) *QueryVideoTaskInfoResponseBody {
+	s.Data = v
+	return s
+}
+
+func (s *QueryVideoTaskInfoResponseBody) SetMessage(v string) *QueryVideoTaskInfoResponseBody {
+	s.Message = &v
+	return s
+}
+
+func (s *QueryVideoTaskInfoResponseBody) SetRequestId(v string) *QueryVideoTaskInfoResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *QueryVideoTaskInfoResponseBody) SetSuccess(v bool) *QueryVideoTaskInfoResponseBody {
+	s.Success = &v
+	return s
+}
+
+type QueryVideoTaskInfoResponseBodyData struct {
+	List       []*QueryVideoTaskInfoResponseBodyDataList `json:"List,omitempty" xml:"List,omitempty" type:"Repeated"`
+	PageNo     *int32                                    `json:"PageNo,omitempty" xml:"PageNo,omitempty"`
+	PageSize   *int32                                    `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	TotalCount *int64                                    `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
+}
+
+func (s QueryVideoTaskInfoResponseBodyData) String() string {
+	return tea.Prettify(s)
+}
+
+func (s QueryVideoTaskInfoResponseBodyData) GoString() string {
+	return s.String()
+}
+
+func (s *QueryVideoTaskInfoResponseBodyData) SetList(v []*QueryVideoTaskInfoResponseBodyDataList) *QueryVideoTaskInfoResponseBodyData {
+	s.List = v
+	return s
+}
+
+func (s *QueryVideoTaskInfoResponseBodyData) SetPageNo(v int32) *QueryVideoTaskInfoResponseBodyData {
+	s.PageNo = &v
+	return s
+}
+
+func (s *QueryVideoTaskInfoResponseBodyData) SetPageSize(v int32) *QueryVideoTaskInfoResponseBodyData {
+	s.PageSize = &v
+	return s
+}
+
+func (s *QueryVideoTaskInfoResponseBodyData) SetTotalCount(v int64) *QueryVideoTaskInfoResponseBodyData {
+	s.TotalCount = &v
+	return s
+}
+
+type QueryVideoTaskInfoResponseBodyDataList struct {
+	Status     *int32                                            `json:"Status,omitempty" xml:"Status,omitempty"`
+	TaskResult *QueryVideoTaskInfoResponseBodyDataListTaskResult `json:"TaskResult,omitempty" xml:"TaskResult,omitempty" type:"Struct"`
+	TaskUuid   *string                                           `json:"TaskUuid,omitempty" xml:"TaskUuid,omitempty"`
+	Title      *string                                           `json:"Title,omitempty" xml:"Title,omitempty"`
+	Type       *int32                                            `json:"Type,omitempty" xml:"Type,omitempty"`
+}
+
+func (s QueryVideoTaskInfoResponseBodyDataList) String() string {
+	return tea.Prettify(s)
+}
+
+func (s QueryVideoTaskInfoResponseBodyDataList) GoString() string {
+	return s.String()
+}
+
+func (s *QueryVideoTaskInfoResponseBodyDataList) SetStatus(v int32) *QueryVideoTaskInfoResponseBodyDataList {
+	s.Status = &v
+	return s
+}
+
+func (s *QueryVideoTaskInfoResponseBodyDataList) SetTaskResult(v *QueryVideoTaskInfoResponseBodyDataListTaskResult) *QueryVideoTaskInfoResponseBodyDataList {
+	s.TaskResult = v
+	return s
+}
+
+func (s *QueryVideoTaskInfoResponseBodyDataList) SetTaskUuid(v string) *QueryVideoTaskInfoResponseBodyDataList {
+	s.TaskUuid = &v
+	return s
+}
+
+func (s *QueryVideoTaskInfoResponseBodyDataList) SetTitle(v string) *QueryVideoTaskInfoResponseBodyDataList {
+	s.Title = &v
+	return s
+}
+
+func (s *QueryVideoTaskInfoResponseBodyDataList) SetType(v int32) *QueryVideoTaskInfoResponseBodyDataList {
+	s.Type = &v
+	return s
+}
+
+type QueryVideoTaskInfoResponseBodyDataListTaskResult struct {
+	AlphaUrl         *string `json:"AlphaUrl,omitempty" xml:"AlphaUrl,omitempty"`
+	FailCode         *string `json:"FailCode,omitempty" xml:"FailCode,omitempty"`
+	FailReason       *string `json:"FailReason,omitempty" xml:"FailReason,omitempty"`
+	PreviewPic       *string `json:"PreviewPic,omitempty" xml:"PreviewPic,omitempty"`
+	SubtitlesUrl     *string `json:"SubtitlesUrl,omitempty" xml:"SubtitlesUrl,omitempty"`
+	VideoDuration    *int32  `json:"VideoDuration,omitempty" xml:"VideoDuration,omitempty"`
+	VideoUrl         *string `json:"VideoUrl,omitempty" xml:"VideoUrl,omitempty"`
+	WordSubtitlesUrl *string `json:"WordSubtitlesUrl,omitempty" xml:"WordSubtitlesUrl,omitempty"`
+}
+
+func (s QueryVideoTaskInfoResponseBodyDataListTaskResult) String() string {
+	return tea.Prettify(s)
+}
+
+func (s QueryVideoTaskInfoResponseBodyDataListTaskResult) GoString() string {
+	return s.String()
+}
+
+func (s *QueryVideoTaskInfoResponseBodyDataListTaskResult) SetAlphaUrl(v string) *QueryVideoTaskInfoResponseBodyDataListTaskResult {
+	s.AlphaUrl = &v
+	return s
+}
+
+func (s *QueryVideoTaskInfoResponseBodyDataListTaskResult) SetFailCode(v string) *QueryVideoTaskInfoResponseBodyDataListTaskResult {
+	s.FailCode = &v
+	return s
+}
+
+func (s *QueryVideoTaskInfoResponseBodyDataListTaskResult) SetFailReason(v string) *QueryVideoTaskInfoResponseBodyDataListTaskResult {
+	s.FailReason = &v
+	return s
+}
+
+func (s *QueryVideoTaskInfoResponseBodyDataListTaskResult) SetPreviewPic(v string) *QueryVideoTaskInfoResponseBodyDataListTaskResult {
+	s.PreviewPic = &v
+	return s
+}
+
+func (s *QueryVideoTaskInfoResponseBodyDataListTaskResult) SetSubtitlesUrl(v string) *QueryVideoTaskInfoResponseBodyDataListTaskResult {
+	s.SubtitlesUrl = &v
+	return s
+}
+
+func (s *QueryVideoTaskInfoResponseBodyDataListTaskResult) SetVideoDuration(v int32) *QueryVideoTaskInfoResponseBodyDataListTaskResult {
+	s.VideoDuration = &v
+	return s
+}
+
+func (s *QueryVideoTaskInfoResponseBodyDataListTaskResult) SetVideoUrl(v string) *QueryVideoTaskInfoResponseBodyDataListTaskResult {
+	s.VideoUrl = &v
+	return s
+}
+
+func (s *QueryVideoTaskInfoResponseBodyDataListTaskResult) SetWordSubtitlesUrl(v string) *QueryVideoTaskInfoResponseBodyDataListTaskResult {
+	s.WordSubtitlesUrl = &v
+	return s
+}
+
+type QueryVideoTaskInfoResponse struct {
+	Headers    map[string]*string              `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                          `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *QueryVideoTaskInfoResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s QueryVideoTaskInfoResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s QueryVideoTaskInfoResponse) GoString() string {
+	return s.String()
+}
+
+func (s *QueryVideoTaskInfoResponse) SetHeaders(v map[string]*string) *QueryVideoTaskInfoResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *QueryVideoTaskInfoResponse) SetStatusCode(v int32) *QueryVideoTaskInfoResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *QueryVideoTaskInfoResponse) SetBody(v *QueryVideoTaskInfoResponseBody) *QueryVideoTaskInfoResponse {
 	s.Body = v
 	return s
 }
@@ -5600,6 +5977,88 @@ func (client *Client) QueryTimedResetOperateStatus(request *QueryTimedResetOpera
 	runtime := &util.RuntimeOptions{}
 	_result = &QueryTimedResetOperateStatusResponse{}
 	_body, _err := client.QueryTimedResetOperateStatusWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) QueryVideoTaskInfoWithOptions(tmpReq *QueryVideoTaskInfoRequest, runtime *util.RuntimeOptions) (_result *QueryVideoTaskInfoResponse, _err error) {
+	_err = util.ValidateModel(tmpReq)
+	if _err != nil {
+		return _result, _err
+	}
+	request := &QueryVideoTaskInfoShrinkRequest{}
+	openapiutil.Convert(tmpReq, request)
+	if !tea.BoolValue(util.IsUnset(tmpReq.App)) {
+		request.AppShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.App, tea.String("App"), tea.String("json"))
+	}
+
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.AppShrink)) {
+		query["App"] = request.AppShrink
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.OrderById)) {
+		query["OrderById"] = request.OrderById
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.PageNo)) {
+		query["PageNo"] = request.PageNo
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.PageSize)) {
+		query["PageSize"] = request.PageSize
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Status)) {
+		query["Status"] = request.Status
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.TaskUuid)) {
+		query["TaskUuid"] = request.TaskUuid
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.TenantId)) {
+		query["TenantId"] = request.TenantId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Title)) {
+		query["Title"] = request.Title
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Type)) {
+		query["Type"] = request.Type
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("QueryVideoTaskInfo"),
+		Version:     tea.String("2022-01-30"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &QueryVideoTaskInfoResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) QueryVideoTaskInfo(request *QueryVideoTaskInfoRequest) (_result *QueryVideoTaskInfoResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &QueryVideoTaskInfoResponse{}
+	_body, _err := client.QueryVideoTaskInfoWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
