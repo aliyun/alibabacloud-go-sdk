@@ -1669,6 +1669,7 @@ type DescDomainResponseBody struct {
 	DomainName         *string `json:"DomainName,omitempty" xml:"DomainName,omitempty"`
 	DomainStatus       *string `json:"DomainStatus,omitempty" xml:"DomainStatus,omitempty"`
 	DomainType         *string `json:"DomainType,omitempty" xml:"DomainType,omitempty"`
+	HostRecord         *string `json:"HostRecord,omitempty" xml:"HostRecord,omitempty"`
 	IcpStatus          *string `json:"IcpStatus,omitempty" xml:"IcpStatus,omitempty"`
 	MxAuthStatus       *string `json:"MxAuthStatus,omitempty" xml:"MxAuthStatus,omitempty"`
 	MxRecord           *string `json:"MxRecord,omitempty" xml:"MxRecord,omitempty"`
@@ -1760,6 +1761,11 @@ func (s *DescDomainResponseBody) SetDomainStatus(v string) *DescDomainResponseBo
 
 func (s *DescDomainResponseBody) SetDomainType(v string) *DescDomainResponseBody {
 	s.DomainType = &v
+	return s
+}
+
+func (s *DescDomainResponseBody) SetHostRecord(v string) *DescDomainResponseBody {
+	s.HostRecord = &v
 	return s
 }
 
