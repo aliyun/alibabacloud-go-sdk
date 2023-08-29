@@ -14247,6 +14247,7 @@ func (s *PutEnableFwSwitchRequest) SetSourceIp(v string) *PutEnableFwSwitchReque
 }
 
 type PutEnableFwSwitchResponseBody struct {
+	AbnormalResourceStatusList []*PutEnableFwSwitchResponseBodyAbnormalResourceStatusList `json:"AbnormalResourceStatusList,omitempty" xml:"AbnormalResourceStatusList,omitempty" type:"Repeated"`
 	// The ID of the request.
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
@@ -14259,8 +14260,42 @@ func (s PutEnableFwSwitchResponseBody) GoString() string {
 	return s.String()
 }
 
+func (s *PutEnableFwSwitchResponseBody) SetAbnormalResourceStatusList(v []*PutEnableFwSwitchResponseBodyAbnormalResourceStatusList) *PutEnableFwSwitchResponseBody {
+	s.AbnormalResourceStatusList = v
+	return s
+}
+
 func (s *PutEnableFwSwitchResponseBody) SetRequestId(v string) *PutEnableFwSwitchResponseBody {
 	s.RequestId = &v
+	return s
+}
+
+type PutEnableFwSwitchResponseBodyAbnormalResourceStatusList struct {
+	Msg      *string `json:"Msg,omitempty" xml:"Msg,omitempty"`
+	Resource *string `json:"Resource,omitempty" xml:"Resource,omitempty"`
+	Status   *string `json:"Status,omitempty" xml:"Status,omitempty"`
+}
+
+func (s PutEnableFwSwitchResponseBodyAbnormalResourceStatusList) String() string {
+	return tea.Prettify(s)
+}
+
+func (s PutEnableFwSwitchResponseBodyAbnormalResourceStatusList) GoString() string {
+	return s.String()
+}
+
+func (s *PutEnableFwSwitchResponseBodyAbnormalResourceStatusList) SetMsg(v string) *PutEnableFwSwitchResponseBodyAbnormalResourceStatusList {
+	s.Msg = &v
+	return s
+}
+
+func (s *PutEnableFwSwitchResponseBodyAbnormalResourceStatusList) SetResource(v string) *PutEnableFwSwitchResponseBodyAbnormalResourceStatusList {
+	s.Resource = &v
+	return s
+}
+
+func (s *PutEnableFwSwitchResponseBodyAbnormalResourceStatusList) SetStatus(v string) *PutEnableFwSwitchResponseBodyAbnormalResourceStatusList {
+	s.Status = &v
 	return s
 }
 
