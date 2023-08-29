@@ -4624,7 +4624,10 @@ func (s *DescribeDataObjectColumnDetailV2Response) SetBody(v *DescribeDataObject
 type DescribeDataObjectsRequest struct {
 	CurrentPage       *int32  `json:"CurrentPage,omitempty" xml:"CurrentPage,omitempty"`
 	DomainId          *int64  `json:"DomainId,omitempty" xml:"DomainId,omitempty"`
+	FileType          *int64  `json:"FileType,omitempty" xml:"FileType,omitempty"`
+	InstanceId        *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
 	Lang              *string `json:"Lang,omitempty" xml:"Lang,omitempty"`
+	ModelIds          *string `json:"ModelIds,omitempty" xml:"ModelIds,omitempty"`
 	ModelTagIds       *string `json:"ModelTagIds,omitempty" xml:"ModelTagIds,omitempty"`
 	PageSize          *int32  `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
 	ParentCategoryIds *string `json:"ParentCategoryIds,omitempty" xml:"ParentCategoryIds,omitempty"`
@@ -4653,8 +4656,23 @@ func (s *DescribeDataObjectsRequest) SetDomainId(v int64) *DescribeDataObjectsRe
 	return s
 }
 
+func (s *DescribeDataObjectsRequest) SetFileType(v int64) *DescribeDataObjectsRequest {
+	s.FileType = &v
+	return s
+}
+
+func (s *DescribeDataObjectsRequest) SetInstanceId(v string) *DescribeDataObjectsRequest {
+	s.InstanceId = &v
+	return s
+}
+
 func (s *DescribeDataObjectsRequest) SetLang(v string) *DescribeDataObjectsRequest {
 	s.Lang = &v
+	return s
+}
+
+func (s *DescribeDataObjectsRequest) SetModelIds(v string) *DescribeDataObjectsRequest {
+	s.ModelIds = &v
 	return s
 }
 
@@ -4929,6 +4947,104 @@ func (s *DescribeDataObjectsResponse) SetStatusCode(v int32) *DescribeDataObject
 }
 
 func (s *DescribeDataObjectsResponse) SetBody(v *DescribeDataObjectsResponseBody) *DescribeDataObjectsResponse {
+	s.Body = v
+	return s
+}
+
+type DescribeDocTypesRequest struct {
+	Lang *string `json:"Lang,omitempty" xml:"Lang,omitempty"`
+}
+
+func (s DescribeDocTypesRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeDocTypesRequest) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeDocTypesRequest) SetLang(v string) *DescribeDocTypesRequest {
+	s.Lang = &v
+	return s
+}
+
+type DescribeDocTypesResponseBody struct {
+	DocTypeList []*DescribeDocTypesResponseBodyDocTypeList `json:"DocTypeList,omitempty" xml:"DocTypeList,omitempty" type:"Repeated"`
+	RequestId   *string                                    `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+}
+
+func (s DescribeDocTypesResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeDocTypesResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeDocTypesResponseBody) SetDocTypeList(v []*DescribeDocTypesResponseBodyDocTypeList) *DescribeDocTypesResponseBody {
+	s.DocTypeList = v
+	return s
+}
+
+func (s *DescribeDocTypesResponseBody) SetRequestId(v string) *DescribeDocTypesResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+type DescribeDocTypesResponseBodyDocTypeList struct {
+	Code *int64  `json:"Code,omitempty" xml:"Code,omitempty"`
+	Id   *int64  `json:"Id,omitempty" xml:"Id,omitempty"`
+	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+}
+
+func (s DescribeDocTypesResponseBodyDocTypeList) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeDocTypesResponseBodyDocTypeList) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeDocTypesResponseBodyDocTypeList) SetCode(v int64) *DescribeDocTypesResponseBodyDocTypeList {
+	s.Code = &v
+	return s
+}
+
+func (s *DescribeDocTypesResponseBodyDocTypeList) SetId(v int64) *DescribeDocTypesResponseBodyDocTypeList {
+	s.Id = &v
+	return s
+}
+
+func (s *DescribeDocTypesResponseBodyDocTypeList) SetName(v string) *DescribeDocTypesResponseBodyDocTypeList {
+	s.Name = &v
+	return s
+}
+
+type DescribeDocTypesResponse struct {
+	Headers    map[string]*string            `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                        `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *DescribeDocTypesResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s DescribeDocTypesResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeDocTypesResponse) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeDocTypesResponse) SetHeaders(v map[string]*string) *DescribeDocTypesResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *DescribeDocTypesResponse) SetStatusCode(v int32) *DescribeDocTypesResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *DescribeDocTypesResponse) SetBody(v *DescribeDocTypesResponseBody) *DescribeDocTypesResponse {
 	s.Body = v
 	return s
 }
@@ -7996,6 +8112,14 @@ type DescribeRulesRequest struct {
 	// *   **1**: enabled
 	// *   **0**: disabled
 	Status *int32 `json:"Status,omitempty" xml:"Status,omitempty"`
+	// The type of the data asset. Valid values:
+	//
+	// *   **0**: all data assets
+	// *   **1**: structured data asset
+	// *   **2**: unstructured data asset
+	//
+	// > If you set the parameter to 1 or 2, rules that support all data assets and rules that support the queried data asset type are returned.
+	SupportForm *int32 `json:"SupportForm,omitempty" xml:"SupportForm,omitempty"`
 	// The severity level of the alert. Valid values:
 	//
 	// *   **1**: low
@@ -8084,6 +8208,11 @@ func (s *DescribeRulesRequest) SetRuleType(v int32) *DescribeRulesRequest {
 
 func (s *DescribeRulesRequest) SetStatus(v int32) *DescribeRulesRequest {
 	s.Status = &v
+	return s
+}
+
+func (s *DescribeRulesRequest) SetSupportForm(v int32) *DescribeRulesRequest {
+	s.SupportForm = &v
 	return s
 }
 
@@ -8745,6 +8874,104 @@ func (s *DescribeTablesResponse) SetStatusCode(v int32) *DescribeTablesResponse 
 }
 
 func (s *DescribeTablesResponse) SetBody(v *DescribeTablesResponseBody) *DescribeTablesResponse {
+	s.Body = v
+	return s
+}
+
+type DescribeTemplateAllRulesRequest struct {
+	Lang       *string `json:"Lang,omitempty" xml:"Lang,omitempty"`
+	TemplateId *int64  `json:"TemplateId,omitempty" xml:"TemplateId,omitempty"`
+}
+
+func (s DescribeTemplateAllRulesRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeTemplateAllRulesRequest) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeTemplateAllRulesRequest) SetLang(v string) *DescribeTemplateAllRulesRequest {
+	s.Lang = &v
+	return s
+}
+
+func (s *DescribeTemplateAllRulesRequest) SetTemplateId(v int64) *DescribeTemplateAllRulesRequest {
+	s.TemplateId = &v
+	return s
+}
+
+type DescribeTemplateAllRulesResponseBody struct {
+	RequestId *string                                         `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	RuleList  []*DescribeTemplateAllRulesResponseBodyRuleList `json:"RuleList,omitempty" xml:"RuleList,omitempty" type:"Repeated"`
+}
+
+func (s DescribeTemplateAllRulesResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeTemplateAllRulesResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeTemplateAllRulesResponseBody) SetRequestId(v string) *DescribeTemplateAllRulesResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *DescribeTemplateAllRulesResponseBody) SetRuleList(v []*DescribeTemplateAllRulesResponseBodyRuleList) *DescribeTemplateAllRulesResponseBody {
+	s.RuleList = v
+	return s
+}
+
+type DescribeTemplateAllRulesResponseBodyRuleList struct {
+	Id   *int64  `json:"Id,omitempty" xml:"Id,omitempty"`
+	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+}
+
+func (s DescribeTemplateAllRulesResponseBodyRuleList) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeTemplateAllRulesResponseBodyRuleList) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeTemplateAllRulesResponseBodyRuleList) SetId(v int64) *DescribeTemplateAllRulesResponseBodyRuleList {
+	s.Id = &v
+	return s
+}
+
+func (s *DescribeTemplateAllRulesResponseBodyRuleList) SetName(v string) *DescribeTemplateAllRulesResponseBodyRuleList {
+	s.Name = &v
+	return s
+}
+
+type DescribeTemplateAllRulesResponse struct {
+	Headers    map[string]*string                    `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                                `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *DescribeTemplateAllRulesResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s DescribeTemplateAllRulesResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeTemplateAllRulesResponse) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeTemplateAllRulesResponse) SetHeaders(v map[string]*string) *DescribeTemplateAllRulesResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *DescribeTemplateAllRulesResponse) SetStatusCode(v int32) *DescribeTemplateAllRulesResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *DescribeTemplateAllRulesResponse) SetBody(v *DescribeTemplateAllRulesResponseBody) *DescribeTemplateAllRulesResponse {
 	s.Body = v
 	return s
 }
@@ -11756,8 +11983,20 @@ func (client *Client) DescribeDataObjectsWithOptions(request *DescribeDataObject
 		query["DomainId"] = request.DomainId
 	}
 
+	if !tea.BoolValue(util.IsUnset(request.FileType)) {
+		query["FileType"] = request.FileType
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.InstanceId)) {
+		query["InstanceId"] = request.InstanceId
+	}
+
 	if !tea.BoolValue(util.IsUnset(request.Lang)) {
 		query["Lang"] = request.Lang
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ModelIds)) {
+		query["ModelIds"] = request.ModelIds
 	}
 
 	if !tea.BoolValue(util.IsUnset(request.ModelTagIds)) {
@@ -11819,6 +12058,50 @@ func (client *Client) DescribeDataObjects(request *DescribeDataObjectsRequest) (
 	runtime := &util.RuntimeOptions{}
 	_result = &DescribeDataObjectsResponse{}
 	_body, _err := client.DescribeDataObjectsWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) DescribeDocTypesWithOptions(request *DescribeDocTypesRequest, runtime *util.RuntimeOptions) (_result *DescribeDocTypesResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.Lang)) {
+		query["Lang"] = request.Lang
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("DescribeDocTypes"),
+		Version:     tea.String("2019-01-03"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &DescribeDocTypesResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) DescribeDocTypes(request *DescribeDocTypesRequest) (_result *DescribeDocTypesResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &DescribeDocTypesResponse{}
+	_body, _err := client.DescribeDocTypesWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -12666,6 +12949,10 @@ func (client *Client) DescribeRulesWithOptions(request *DescribeRulesRequest, ru
 		query["Status"] = request.Status
 	}
 
+	if !tea.BoolValue(util.IsUnset(request.SupportForm)) {
+		query["SupportForm"] = request.SupportForm
+	}
+
 	if !tea.BoolValue(util.IsUnset(request.WarnLevel)) {
 		query["WarnLevel"] = request.WarnLevel
 	}
@@ -12802,6 +13089,54 @@ func (client *Client) DescribeTables(request *DescribeTablesRequest) (_result *D
 	runtime := &util.RuntimeOptions{}
 	_result = &DescribeTablesResponse{}
 	_body, _err := client.DescribeTablesWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) DescribeTemplateAllRulesWithOptions(request *DescribeTemplateAllRulesRequest, runtime *util.RuntimeOptions) (_result *DescribeTemplateAllRulesResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.Lang)) {
+		query["Lang"] = request.Lang
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.TemplateId)) {
+		query["TemplateId"] = request.TemplateId
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("DescribeTemplateAllRules"),
+		Version:     tea.String("2019-01-03"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &DescribeTemplateAllRulesResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) DescribeTemplateAllRules(request *DescribeTemplateAllRulesRequest) (_result *DescribeTemplateAllRulesResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &DescribeTemplateAllRulesResponse{}
+	_body, _err := client.DescribeTemplateAllRulesWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
