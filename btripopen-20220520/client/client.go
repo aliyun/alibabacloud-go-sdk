@@ -57066,11 +57066,6 @@ func (client *Client) ApplyAddWithOptions(tmpReq *ApplyAddRequest, headers *Appl
 		request.TravelerStandardShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.TravelerStandard, tea.String("traveler_standard"), tea.String("json"))
 	}
 
-	query := map[string]interface{}{}
-	if !tea.BoolValue(util.IsUnset(request.InternationalFlightCabins)) {
-		query["international_flight_cabins"] = request.InternationalFlightCabins
-	}
-
 	body := map[string]interface{}{}
 	if !tea.BoolValue(util.IsUnset(request.Budget)) {
 		body["budget"] = request.Budget
@@ -57114,6 +57109,10 @@ func (client *Client) ApplyAddWithOptions(tmpReq *ApplyAddRequest, headers *Appl
 
 	if !tea.BoolValue(util.IsUnset(request.HotelShareShrink)) {
 		body["hotel_share"] = request.HotelShareShrink
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.InternationalFlightCabins)) {
+		body["international_flight_cabins"] = request.InternationalFlightCabins
 	}
 
 	if !tea.BoolValue(util.IsUnset(request.ItineraryListShrink)) {
@@ -57211,7 +57210,6 @@ func (client *Client) ApplyAddWithOptions(tmpReq *ApplyAddRequest, headers *Appl
 
 	req := &openapi.OpenApiRequest{
 		Headers: realHeaders,
-		Query:   openapiutil.Query(query),
 		Body:    openapiutil.ParseToMap(body),
 	}
 	params := &openapi.Params{
