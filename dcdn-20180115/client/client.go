@@ -19,6 +19,7 @@ type AddDcdnDomainRequest struct {
 	//
 	// Wildcard domain names are supported. A wildcard domain name must start with a period (.), such as .example.com.
 	DomainName   *string `json:"DomainName,omitempty" xml:"DomainName,omitempty"`
+	FunctionType *string `json:"FunctionType,omitempty" xml:"FunctionType,omitempty"`
 	OwnerAccount *string `json:"OwnerAccount,omitempty" xml:"OwnerAccount,omitempty"`
 	OwnerId      *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
 	// The ID of the resource group. If you do not specify a value for this parameter, the system automatically assigns the ID of the default resource group.
@@ -56,6 +57,11 @@ func (s *AddDcdnDomainRequest) SetCheckUrl(v string) *AddDcdnDomainRequest {
 
 func (s *AddDcdnDomainRequest) SetDomainName(v string) *AddDcdnDomainRequest {
 	s.DomainName = &v
+	return s
+}
+
+func (s *AddDcdnDomainRequest) SetFunctionType(v string) *AddDcdnDomainRequest {
+	s.FunctionType = &v
 	return s
 }
 
@@ -1791,6 +1797,145 @@ func (s *BatchModifyDcdnWafRulesResponse) SetBody(v *BatchModifyDcdnWafRulesResp
 	return s
 }
 
+type BatchPutDcdnKvRequest struct {
+	KvList    []*BatchPutDcdnKvRequestKvList `json:"KvList,omitempty" xml:"KvList,omitempty" type:"Repeated"`
+	Namespace *string                        `json:"Namespace,omitempty" xml:"Namespace,omitempty"`
+}
+
+func (s BatchPutDcdnKvRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s BatchPutDcdnKvRequest) GoString() string {
+	return s.String()
+}
+
+func (s *BatchPutDcdnKvRequest) SetKvList(v []*BatchPutDcdnKvRequestKvList) *BatchPutDcdnKvRequest {
+	s.KvList = v
+	return s
+}
+
+func (s *BatchPutDcdnKvRequest) SetNamespace(v string) *BatchPutDcdnKvRequest {
+	s.Namespace = &v
+	return s
+}
+
+type BatchPutDcdnKvRequestKvList struct {
+	Expiration    *int64  `json:"Expiration,omitempty" xml:"Expiration,omitempty"`
+	ExpirationTtl *int64  `json:"ExpirationTtl,omitempty" xml:"ExpirationTtl,omitempty"`
+	Key           *string `json:"Key,omitempty" xml:"Key,omitempty"`
+	Value         *string `json:"Value,omitempty" xml:"Value,omitempty"`
+}
+
+func (s BatchPutDcdnKvRequestKvList) String() string {
+	return tea.Prettify(s)
+}
+
+func (s BatchPutDcdnKvRequestKvList) GoString() string {
+	return s.String()
+}
+
+func (s *BatchPutDcdnKvRequestKvList) SetExpiration(v int64) *BatchPutDcdnKvRequestKvList {
+	s.Expiration = &v
+	return s
+}
+
+func (s *BatchPutDcdnKvRequestKvList) SetExpirationTtl(v int64) *BatchPutDcdnKvRequestKvList {
+	s.ExpirationTtl = &v
+	return s
+}
+
+func (s *BatchPutDcdnKvRequestKvList) SetKey(v string) *BatchPutDcdnKvRequestKvList {
+	s.Key = &v
+	return s
+}
+
+func (s *BatchPutDcdnKvRequestKvList) SetValue(v string) *BatchPutDcdnKvRequestKvList {
+	s.Value = &v
+	return s
+}
+
+type BatchPutDcdnKvShrinkRequest struct {
+	KvListShrink *string `json:"KvList,omitempty" xml:"KvList,omitempty"`
+	Namespace    *string `json:"Namespace,omitempty" xml:"Namespace,omitempty"`
+}
+
+func (s BatchPutDcdnKvShrinkRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s BatchPutDcdnKvShrinkRequest) GoString() string {
+	return s.String()
+}
+
+func (s *BatchPutDcdnKvShrinkRequest) SetKvListShrink(v string) *BatchPutDcdnKvShrinkRequest {
+	s.KvListShrink = &v
+	return s
+}
+
+func (s *BatchPutDcdnKvShrinkRequest) SetNamespace(v string) *BatchPutDcdnKvShrinkRequest {
+	s.Namespace = &v
+	return s
+}
+
+type BatchPutDcdnKvResponseBody struct {
+	FailKeys    []*string `json:"FailKeys,omitempty" xml:"FailKeys,omitempty" type:"Repeated"`
+	RequestId   *string   `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	SuccessKeys []*string `json:"SuccessKeys,omitempty" xml:"SuccessKeys,omitempty" type:"Repeated"`
+}
+
+func (s BatchPutDcdnKvResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s BatchPutDcdnKvResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *BatchPutDcdnKvResponseBody) SetFailKeys(v []*string) *BatchPutDcdnKvResponseBody {
+	s.FailKeys = v
+	return s
+}
+
+func (s *BatchPutDcdnKvResponseBody) SetRequestId(v string) *BatchPutDcdnKvResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *BatchPutDcdnKvResponseBody) SetSuccessKeys(v []*string) *BatchPutDcdnKvResponseBody {
+	s.SuccessKeys = v
+	return s
+}
+
+type BatchPutDcdnKvResponse struct {
+	Headers    map[string]*string          `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                      `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *BatchPutDcdnKvResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s BatchPutDcdnKvResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s BatchPutDcdnKvResponse) GoString() string {
+	return s.String()
+}
+
+func (s *BatchPutDcdnKvResponse) SetHeaders(v map[string]*string) *BatchPutDcdnKvResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *BatchPutDcdnKvResponse) SetStatusCode(v int32) *BatchPutDcdnKvResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *BatchPutDcdnKvResponse) SetBody(v *BatchPutDcdnKvResponseBody) *BatchPutDcdnKvResponse {
+	s.Body = v
+	return s
+}
+
 type BatchSetDcdnDomainCertificateRequest struct {
 	// The name of the certificate.
 	CertName *string `json:"CertName,omitempty" xml:"CertName,omitempty"`
@@ -2208,7 +2353,7 @@ func (s *BatchSetDcdnWafDomainConfigsResponse) SetBody(v *BatchSetDcdnWafDomainC
 }
 
 type BatchStartDcdnDomainRequest struct {
-	// The accelerated domain name. Separate multiple accelerated domain names with commas (,).
+	// The accelerated domain name. You can specify multiple accelerated domain names and separate them with commas (,).
 	DomainNames   *string `json:"DomainNames,omitempty" xml:"DomainNames,omitempty"`
 	OwnerId       *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
 	SecurityToken *string `json:"SecurityToken,omitempty" xml:"SecurityToken,omitempty"`
@@ -2238,7 +2383,7 @@ func (s *BatchStartDcdnDomainRequest) SetSecurityToken(v string) *BatchStartDcdn
 }
 
 type BatchStartDcdnDomainResponseBody struct {
-	// The ID of the request.
+	// The request ID.
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -2315,7 +2460,7 @@ func (s *BatchStopDcdnDomainRequest) SetSecurityToken(v string) *BatchStopDcdnDo
 }
 
 type BatchStopDcdnDomainResponseBody struct {
-	// The ID of the request.
+	// The request ID.
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -3451,7 +3596,7 @@ func (s *DeleteDcdnDomainRequest) SetSecurityToken(v string) *DeleteDcdnDomainRe
 }
 
 type DeleteDcdnDomainResponseBody struct {
-	// The ID of the request.
+	// The request ID.
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -3534,7 +3679,7 @@ func (s *DeleteDcdnIpaDomainRequest) SetSecurityToken(v string) *DeleteDcdnIpaDo
 }
 
 type DeleteDcdnIpaDomainResponseBody struct {
-	// The ID of the request.
+	// The request ID.
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -3904,7 +4049,7 @@ func (s *DeleteDcdnSpecificConfigRequest) SetSecurityToken(v string) *DeleteDcdn
 }
 
 type DeleteDcdnSpecificConfigResponseBody struct {
-	// The ID of the request.
+	// The request ID.
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -4488,9 +4633,9 @@ func (s *DescribeDcdnAclFieldsRequest) SetLang(v string) *DescribeDcdnAclFieldsR
 }
 
 type DescribeDcdnAclFieldsResponseBody struct {
-	// Details about the rules.
+	// The details about the rules.
 	Content []*DescribeDcdnAclFieldsResponseBodyContent `json:"Content,omitempty" xml:"Content,omitempty" type:"Repeated"`
-	// The ID of the request.
+	// The request ID.
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -6209,6 +6354,10 @@ func (s *DescribeDcdnDomainBpsDataByLayerResponse) SetBody(v *DescribeDcdnDomain
 }
 
 type DescribeDcdnDomainByCertificateRequest struct {
+	// Specifies whether the domain name list to return match the SSL certificate.
+	//
+	// - **true**: The domain name list match the SSL certificate.
+	// - **false**: The domain name list do not match the SSL certificate.
 	Exact *bool `json:"Exact,omitempty" xml:"Exact,omitempty"`
 	// The public key of the certificate.
 	//
@@ -6406,31 +6555,31 @@ type DescribeDcdnDomainCcActivityLogRequest struct {
 	//
 	// The end time must be later than the start time.
 	EndTime *string `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
-	// The page number of the returned page. Default value: **1**.
+	// The page number of the page returned. Default value: **1**.
 	PageNumber *int64 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
 	// The number of entries to return on each page. Default value: **30**.
 	PageSize *int64 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	// The name of the rule.
+	// The name of the defense rule.
 	//
 	// *   default_normal in normal mode
 	// *   default_attack in emergency mode
 	// *   A custom rule name in custom mode. Example: test2.
 	//
-	// If you leave this parameter empty, all events that triggered rate limiting are queried.
+	// If you leave this parameter empty, events that triggered rate limiting based on all rules are queried.
 	RuleName *string `json:"RuleName,omitempty" xml:"RuleName,omitempty"`
 	// The beginning of the time range to query. Specify the time in the ISO 8601 standard in the yyyy-MM-ddTHH:mm:ssZ format. The time must be in UTC.
 	//
-	// The minimum data granularity is 5 minutes.
+	// The resolution of the queried data is 5 minutes.
 	//
 	// If you leave this parameter empty, the data collected over the last 24 hours is queried.
 	StartTime *string `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
-	// The object that triggered rate limiting.
+	// The trigger of rate limiting by which you want to query data.
 	//
 	// If you leave this parameter empty, all events that triggered rate limiting are queried.
 	TriggerObject *string `json:"TriggerObject,omitempty" xml:"TriggerObject,omitempty"`
 	// The value of the object that triggered rate limiting.
 	//
-	// If you leave this parameter empty, all events that triggered rate limiting are queried.
+	// If you leave this parameter empty, events that triggered rate limiting based on all rules are queried.
 	Value *string `json:"Value,omitempty" xml:"Value,omitempty"`
 }
 
@@ -6489,7 +6638,7 @@ type DescribeDcdnDomainCcActivityLogResponseBody struct {
 	PageIndex *int64 `json:"PageIndex,omitempty" xml:"PageIndex,omitempty"`
 	// The number of entries returned per page.
 	PageSize *int64 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	// The ID of the request.
+	// The request ID.
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	// The total number of entries returned.
 	Total *int64 `json:"Total,omitempty" xml:"Total,omitempty"`
@@ -6531,17 +6680,17 @@ func (s *DescribeDcdnDomainCcActivityLogResponseBody) SetTotal(v int64) *Describ
 type DescribeDcdnDomainCcActivityLogResponseBodyActivityLog struct {
 	// The action that was triggered.
 	Action *string `json:"Action,omitempty" xml:"Action,omitempty"`
-	// The accelerated domain name.
+	// The accelerated domain name whose ICP filing status you want to update.
 	DomainName *string `json:"DomainName,omitempty" xml:"DomainName,omitempty"`
 	// The name of the rule that was triggered.
 	RuleName *string `json:"RuleName,omitempty" xml:"RuleName,omitempty"`
-	// The timestamp of the returned data.
+	// The timestamp of the data returned.
 	TimeStamp *string `json:"TimeStamp,omitempty" xml:"TimeStamp,omitempty"`
-	// The object that triggered rate limiting.
+	// The object that triggered the blocking event.
 	TriggerObject *string `json:"TriggerObject,omitempty" xml:"TriggerObject,omitempty"`
 	// The period of time during which rate limiting remains effective.
 	Ttl *int64 `json:"Ttl,omitempty" xml:"Ttl,omitempty"`
-	// The value of the object that triggered rate limiting.
+	// The value of the trigger for rate limiting.
 	Value *string `json:"Value,omitempty" xml:"Value,omitempty"`
 }
 
@@ -6839,7 +6988,7 @@ func (s *DescribeDcdnDomainCnameRequest) SetDomainName(v string) *DescribeDcdnDo
 type DescribeDcdnDomainCnameResponseBody struct {
 	// The CNAME information.
 	CnameDatas *DescribeDcdnDomainCnameResponseBodyCnameDatas `json:"CnameDatas,omitempty" xml:"CnameDatas,omitempty" type:"Struct"`
-	// The ID of the request.
+	// The request ID.
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -7218,6 +7367,7 @@ type DescribeDcdnDomainDetailResponseBodyDomainDetail struct {
 	// *   **checking**
 	// *   **check_failed**
 	DomainStatus *string `json:"DomainStatus,omitempty" xml:"DomainStatus,omitempty"`
+	FunctionType *string `json:"FunctionType,omitempty" xml:"FunctionType,omitempty"`
 	// The time when the domain name was added.
 	GmtCreated *string `json:"GmtCreated,omitempty" xml:"GmtCreated,omitempty"`
 	// The time when the domain name was last modified.
@@ -7267,6 +7417,11 @@ func (s *DescribeDcdnDomainDetailResponseBodyDomainDetail) SetDomainName(v strin
 
 func (s *DescribeDcdnDomainDetailResponseBodyDomainDetail) SetDomainStatus(v string) *DescribeDcdnDomainDetailResponseBodyDomainDetail {
 	s.DomainStatus = &v
+	return s
+}
+
+func (s *DescribeDcdnDomainDetailResponseBodyDomainDetail) SetFunctionType(v string) *DescribeDcdnDomainDetailResponseBodyDomainDetail {
+	s.FunctionType = &v
 	return s
 }
 
@@ -9081,21 +9236,21 @@ func (s *DescribeDcdnDomainLogResponse) SetBody(v *DescribeDcdnDomainLogResponse
 type DescribeDcdnDomainMultiUsageDataRequest struct {
 	// If this parameter is not set, data of all your accelerated domain names is queried.
 	//
-	// You can specify one or more accelerated domain names. Separate domain names with commas (,).
+	// You can specify multiple domain names and separate them with commas (,).
 	DomainName *string `json:"DomainName,omitempty" xml:"DomainName,omitempty"`
 	// The end time must be later than the start time.
 	//
-	// *   Specify the time in the ISO 8601 standard in the yyyy-MM-ddTHH:mm:ssZ format.
-	// *   The time must be in UTC.
-	// *   You must set both the start time and the end time.
+	// *   Specify the time in the ISO 8601 standard in the yyyy-MM-ddTHH:mm:ssZ format. The time must be in UTC.
+	// *   The time follows the ISO 8601 standard in the YYYY-MM-DDThh:mm:ssZ format. The time is displayed in UTC.
+	// *   You need to set both the start time and the end time.
 	EndTime *string `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
 	// The beginning of the time range to query.
 	//
-	// *   Specify the time in the ISO 8601 standard in the yyyy-MM-ddTHH:mm:ssZ format.
-	// *   The time must be in UTC.
-	// *   The minimum data granularity is 5 minutes.
+	// *   Specify the time in the ISO 8601 standard in the yyyy-MM-ddTHH:mm:ssZ format. The time must be in UTC.
+	// *   The time follows the ISO 8601 standard in the YYYY-MM-DDThh:mm:ssZ format. The time is displayed in UTC.
+	// *   The resolution of the queried data is 5 minutes.
 	// *   If you do not set this parameter, data in the last 24 hours is queried.
-	// *   You must set both the start time and the end time.
+	// *   You need to set both the start time and the end time.
 	StartTime *string `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
 }
 
@@ -9123,13 +9278,13 @@ func (s *DescribeDcdnDomainMultiUsageDataRequest) SetStartTime(v string) *Descri
 }
 
 type DescribeDcdnDomainMultiUsageDataResponseBody struct {
-	// The end of the time range during which data was queried.
+	// The end of the time range that was queried.
 	EndTime *string `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
 	// The ID of the request.
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	// The information about requests collected every 5 minutes.
 	RequestPerInterval *DescribeDcdnDomainMultiUsageDataResponseBodyRequestPerInterval `json:"RequestPerInterval,omitempty" xml:"RequestPerInterval,omitempty" type:"Struct"`
-	// The start of the time range during which data was queried.
+	// The beginning of the time range that was queried.
 	StartTime *string `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
 	// The statistics of network traffic collected every 5 minutes.
 	TrafficPerInterval *DescribeDcdnDomainMultiUsageDataResponseBodyTrafficPerInterval `json:"TrafficPerInterval,omitempty" xml:"TrafficPerInterval,omitempty" type:"Struct"`
@@ -9190,7 +9345,7 @@ type DescribeDcdnDomainMultiUsageDataResponseBodyRequestPerIntervalRequestDataMo
 	Domain *string `json:"Domain,omitempty" xml:"Domain,omitempty"`
 	// The number of requests.
 	Request *int64 `json:"Request,omitempty" xml:"Request,omitempty"`
-	// The timestamp of the returned data.
+	// The timestamp of the data returned.
 	TimeStamp *string `json:"TimeStamp,omitempty" xml:"TimeStamp,omitempty"`
 	// The type of the requests. Valid values: StaticHttps, DynamicHttps, DynamicHttp, StaticQuic, and DynamicQuic.
 	Type *string `json:"Type,omitempty" xml:"Type,omitempty"`
@@ -9248,7 +9403,7 @@ type DescribeDcdnDomainMultiUsageDataResponseBodyTrafficPerIntervalTrafficDataMo
 	Bps *float32 `json:"Bps,omitempty" xml:"Bps,omitempty"`
 	// The domain name.
 	Domain *string `json:"Domain,omitempty" xml:"Domain,omitempty"`
-	// The timestamp of the returned data.
+	// The timestamp of the data returned.
 	TimeStamp *string `json:"TimeStamp,omitempty" xml:"TimeStamp,omitempty"`
 	// The type of the network traffic. Valid values: Simple, IPA, and WebSocket.
 	Type *string `json:"Type,omitempty" xml:"Type,omitempty"`
@@ -9793,7 +9948,7 @@ type DescribeDcdnDomainPvDataRequest struct {
 	DomainName *string `json:"DomainName,omitempty" xml:"DomainName,omitempty"`
 	// The end of the time range to query. Specify the time in the ISO 8601 standard in the yyyy-MM-ddTHH:mm:ssZ format. The time must be in UTC.
 	EndTime *string `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
-	// The beginning of the time range to query. Specify the time in the ISO 8601 standard in the yyyy-MM-ddTHH:mm:ssZ format. The time must be in UTC.
+	// The start of the time range to query. Specify the time in the ISO 8601 standard in the yyyy-MM-ddTHH:mm:ssZ format. The time must be in UTC.
 	StartTime *string `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
 }
 
@@ -9825,13 +9980,13 @@ type DescribeDcdnDomainPvDataResponseBody struct {
 	DataInterval *string `json:"DataInterval,omitempty" xml:"DataInterval,omitempty"`
 	// The accelerated domain name.
 	DomainName *string `json:"DomainName,omitempty" xml:"DomainName,omitempty"`
-	// The end of the time range during which data was queried.
+	// The end of the time range that was queried.
 	EndTime *string `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
 	// The number of PVs at each interval.
 	PvDataInterval *DescribeDcdnDomainPvDataResponseBodyPvDataInterval `json:"PvDataInterval,omitempty" xml:"PvDataInterval,omitempty" type:"Struct"`
-	// The ID of the request.
+	// The request ID.
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// The start of the time range during which data was queried.
+	// The beginning of the time range that was queried.
 	StartTime *string `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
 }
 
@@ -12462,18 +12617,18 @@ func (s *DescribeDcdnDomainStagingConfigResponse) SetBody(v *DescribeDcdnDomainS
 type DescribeDcdnDomainTopReferVisitRequest struct {
 	// The accelerated domain name. You can specify only one domain name.
 	DomainName *string `json:"DomainName,omitempty" xml:"DomainName,omitempty"`
-	// The method that is used to arrange the returned application information. Valid values:
+	// The sorting order. Valid values:
 	//
 	// *   **traf**: by network traffic
 	// *   **pv**: by the number of visits
 	//
 	// Default value: **pv**.
 	SortBy *string `json:"SortBy,omitempty" xml:"SortBy,omitempty"`
-	// The start of the time range to query. Specify the time in the ISO 8601 standard in the yyyy-MM-ddTHH:mm:ssZ format. The time must be in UTC.
+	// The beginning of the time range to query. Specify the time in the ISO 8601 standard in the yyyy-MM-ddTHH:mm:ssZ format. The time must be in UTC.
 	//
 	// To query the data on a specified day, use the yyyy-MM-ddT16:00:00Z format.
 	//
-	// If you leave this parameter empty, data collected in the last 24 hours is queried.
+	// If you do not set this parameter, data collected within the last 24 hours is queried.
 	StartTime *string `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
 }
 
@@ -12503,7 +12658,7 @@ func (s *DescribeDcdnDomainTopReferVisitRequest) SetStartTime(v string) *Describ
 type DescribeDcdnDomainTopReferVisitResponseBody struct {
 	// The accelerated domain name.
 	DomainName *string `json:"DomainName,omitempty" xml:"DomainName,omitempty"`
-	// The ID of the request.
+	// The request ID.
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	// The start of the time range during which data was queried.
 	StartTime *string `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
@@ -12557,13 +12712,13 @@ func (s *DescribeDcdnDomainTopReferVisitResponseBodyTopReferList) SetReferList(v
 }
 
 type DescribeDcdnDomainTopReferVisitResponseBodyTopReferListReferList struct {
-	// The amount of network traffic. Unit: bytes.
+	// The amount of network traffic. (Unit: bytes)
 	Flow *string `json:"Flow,omitempty" xml:"Flow,omitempty"`
 	// The proportion of network traffic consumed to access the URL.
 	FlowProportion *float32 `json:"FlowProportion,omitempty" xml:"FlowProportion,omitempty"`
 	// The complete referenced URL.
 	ReferDetail *string `json:"ReferDetail,omitempty" xml:"ReferDetail,omitempty"`
-	// The number of visits to the URL.
+	// The number of visits.
 	VisitData *string `json:"VisitData,omitempty" xml:"VisitData,omitempty"`
 	// The proportion of visits to the URL.
 	VisitProportion *float32 `json:"VisitProportion,omitempty" xml:"VisitProportion,omitempty"`
@@ -12634,7 +12789,7 @@ func (s *DescribeDcdnDomainTopReferVisitResponse) SetBody(v *DescribeDcdnDomainT
 type DescribeDcdnDomainTopUrlVisitRequest struct {
 	// The accelerated domain name. You can specify only one domain name in each request.
 	DomainName *string `json:"DomainName,omitempty" xml:"DomainName,omitempty"`
-	// The sorting method. Valid values:
+	// The sorting order. Valid values:
 	//
 	// *   **traf**: by network traffic
 	// *   **pv**: by the number of visits
@@ -12679,7 +12834,7 @@ type DescribeDcdnDomainTopUrlVisitResponseBody struct {
 	AllUrlList *DescribeDcdnDomainTopUrlVisitResponseBodyAllUrlList `json:"AllUrlList,omitempty" xml:"AllUrlList,omitempty" type:"Struct"`
 	// The accelerated domain name.
 	DomainName *string `json:"DomainName,omitempty" xml:"DomainName,omitempty"`
-	// The ID of the request.
+	// The request ID.
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	// The start of the time range during which data was queried.
 	StartTime *string `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
@@ -12759,15 +12914,15 @@ func (s *DescribeDcdnDomainTopUrlVisitResponseBodyAllUrlList) SetUrlList(v []*De
 }
 
 type DescribeDcdnDomainTopUrlVisitResponseBodyAllUrlListUrlList struct {
-	// The amount of network traffic. Unit: bytes.
+	// The amount of network traffic. (Unit: bytes)
 	Flow *string `json:"Flow,omitempty" xml:"Flow,omitempty"`
 	// The proportion of network traffic consumed to access the URL.
 	FlowProportion *float32 `json:"FlowProportion,omitempty" xml:"FlowProportion,omitempty"`
 	// The complete URL.
 	UrlDetail *string `json:"UrlDetail,omitempty" xml:"UrlDetail,omitempty"`
-	// The number of visits to the URL.
+	// The number of visits.
 	VisitData *string `json:"VisitData,omitempty" xml:"VisitData,omitempty"`
-	// The proportion of visits to the URL.
+	// The proportion of visits.
 	VisitProportion *float32 `json:"VisitProportion,omitempty" xml:"VisitProportion,omitempty"`
 }
 
@@ -12822,15 +12977,15 @@ func (s *DescribeDcdnDomainTopUrlVisitResponseBodyUrl200List) SetUrlList(v []*De
 }
 
 type DescribeDcdnDomainTopUrlVisitResponseBodyUrl200ListUrlList struct {
-	// The amount of network traffic. Unit: bytes.
+	// The amount of network traffic. (Unit: bytes)
 	Flow *string `json:"Flow,omitempty" xml:"Flow,omitempty"`
 	// The proportion of network traffic consumed to access the URL.
 	FlowProportion *float32 `json:"FlowProportion,omitempty" xml:"FlowProportion,omitempty"`
 	// The complete URL.
 	UrlDetail *string `json:"UrlDetail,omitempty" xml:"UrlDetail,omitempty"`
-	// The number of visits to the URL.
+	// The number of visits.
 	VisitData *string `json:"VisitData,omitempty" xml:"VisitData,omitempty"`
-	// The proportion of visits to the URL.
+	// The proportion of visits.
 	VisitProportion *float32 `json:"VisitProportion,omitempty" xml:"VisitProportion,omitempty"`
 }
 
@@ -12885,15 +13040,15 @@ func (s *DescribeDcdnDomainTopUrlVisitResponseBodyUrl300List) SetUrlList(v []*De
 }
 
 type DescribeDcdnDomainTopUrlVisitResponseBodyUrl300ListUrlList struct {
-	// The amount of network traffic. Unit: bytes.
+	// The amount of network traffic. (Unit: bytes)
 	Flow *string `json:"Flow,omitempty" xml:"Flow,omitempty"`
 	// The proportion of network traffic consumed to access the URL.
 	FlowProportion *float32 `json:"FlowProportion,omitempty" xml:"FlowProportion,omitempty"`
 	// The complete URL.
 	UrlDetail *string `json:"UrlDetail,omitempty" xml:"UrlDetail,omitempty"`
-	// The number of visits to the URL.
+	// The number of visits.
 	VisitData *string `json:"VisitData,omitempty" xml:"VisitData,omitempty"`
-	// The proportion of visits to the URL.
+	// The proportion of visits.
 	VisitProportion *float32 `json:"VisitProportion,omitempty" xml:"VisitProportion,omitempty"`
 }
 
@@ -12948,15 +13103,15 @@ func (s *DescribeDcdnDomainTopUrlVisitResponseBodyUrl400List) SetUrlList(v []*De
 }
 
 type DescribeDcdnDomainTopUrlVisitResponseBodyUrl400ListUrlList struct {
-	// The amount of network traffic. Unit: bytes.
+	// The amount of network traffic. (Unit: bytes)
 	Flow *string `json:"Flow,omitempty" xml:"Flow,omitempty"`
 	// The proportion of network traffic consumed to access the URL.
 	FlowProportion *float32 `json:"FlowProportion,omitempty" xml:"FlowProportion,omitempty"`
 	// The complete URL.
 	UrlDetail *string `json:"UrlDetail,omitempty" xml:"UrlDetail,omitempty"`
-	// The number of visits to the URL.
+	// The number of visits.
 	VisitData *string `json:"VisitData,omitempty" xml:"VisitData,omitempty"`
-	// The proportion of visits to the URL.
+	// The proportion of visits.
 	VisitProportion *float32 `json:"VisitProportion,omitempty" xml:"VisitProportion,omitempty"`
 }
 
@@ -13011,15 +13166,15 @@ func (s *DescribeDcdnDomainTopUrlVisitResponseBodyUrl500List) SetUrlList(v []*De
 }
 
 type DescribeDcdnDomainTopUrlVisitResponseBodyUrl500ListUrlList struct {
-	// The amount of network traffic. Unit: bytes.
+	// The amount of network traffic. (Unit: bytes)
 	Flow *string `json:"Flow,omitempty" xml:"Flow,omitempty"`
 	// The proportion of network traffic consumed to access the URL.
 	FlowProportion *float32 `json:"FlowProportion,omitempty" xml:"FlowProportion,omitempty"`
 	// The complete URL.
 	UrlDetail *string `json:"UrlDetail,omitempty" xml:"UrlDetail,omitempty"`
-	// The number of visits to the URL.
+	// The number of visits.
 	VisitData *string `json:"VisitData,omitempty" xml:"VisitData,omitempty"`
-	// The proportion of visits to the URL.
+	// The proportion of visits.
 	VisitProportion *float32 `json:"VisitProportion,omitempty" xml:"VisitProportion,omitempty"`
 }
 
@@ -13574,7 +13729,7 @@ type DescribeDcdnDomainUvDataRequest struct {
 	//
 	// The end time must be later than the start time.
 	EndTime *string `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
-	// The beginning of the time range to query. Specify the time in the ISO 8601 standard in the yyyy-MM-ddTHH:mm:ssZ format. The time must be in UTC.
+	// The start of the time range to query. Specify the time in the ISO 8601 standard in the yyyy-MM-ddTHH:mm:ssZ format. The time must be in UTC.
 	StartTime *string `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
 }
 
@@ -13606,11 +13761,11 @@ type DescribeDcdnDomainUvDataResponseBody struct {
 	DataInterval *string `json:"DataInterval,omitempty" xml:"DataInterval,omitempty"`
 	// The accelerated domain name.
 	DomainName *string `json:"DomainName,omitempty" xml:"DomainName,omitempty"`
-	// The end of the time range during which data was queried.
+	// The end of the time range that was queried.
 	EndTime *string `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
-	// The ID of the request.
+	// The request ID.
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// The start of the time range during which data was queried.
+	// The beginning of the time range that was queried.
 	StartTime *string `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
 	// The number of UVs at each interval.
 	UvDataInterval *DescribeDcdnDomainUvDataResponseBodyUvDataInterval `json:"UvDataInterval,omitempty" xml:"UvDataInterval,omitempty" type:"Struct"`
@@ -16264,9 +16419,9 @@ func (s *DescribeDcdnKvNamespaceRequest) SetNamespace(v string) *DescribeDcdnKvN
 }
 
 type DescribeDcdnKvNamespaceResponseBody struct {
-	// The available capacity of namespace.
+	// The available capacity of all namespaces in your account.
 	CapacityString *string `json:"CapacityString,omitempty" xml:"CapacityString,omitempty"`
-	// Used capacity of namespace.
+	// The used capacity of all namespaces in your account.
 	CapacityUsedString *string `json:"CapacityUsedString,omitempty" xml:"CapacityUsedString,omitempty"`
 	// The description of the namespace.
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
@@ -16786,7 +16941,7 @@ func (s *DescribeDcdnRefreshTaskByIdRequest) SetTaskId(v string) *DescribeDcdnRe
 }
 
 type DescribeDcdnRefreshTaskByIdResponseBody struct {
-	// The ID of the request.
+	// The request ID.
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	// A list of prefetch or refresh tasks.
 	Tasks []*DescribeDcdnRefreshTaskByIdResponseBodyTasks `json:"Tasks,omitempty" xml:"Tasks,omitempty" type:"Repeated"`
@@ -16836,7 +16991,7 @@ type DescribeDcdnRefreshTaskByIdResponseBodyTasks struct {
 	ObjectType *string `json:"ObjectType,omitempty" xml:"ObjectType,omitempty"`
 	// The progress of the task, in percentage.
 	Process *string `json:"Process,omitempty" xml:"Process,omitempty"`
-	// The status of the task. Valid values:
+	// The task status. Valid values:
 	//
 	// *   **Complete**: The task is complete.
 	// *   **Pending**: The task is pending.
@@ -16932,6 +17087,7 @@ type DescribeDcdnRefreshTasksRequest struct {
 	//
 	// *   **file**: URL-based refresh
 	// *   **directory**: directory-based refresh
+	// *   **regex**: regular expression-based refresh
 	// *   **preload**: URL-based prefetch
 	//
 	// If you set **DomainName** or **Status**, you must also set this parameter.
@@ -17024,7 +17180,7 @@ type DescribeDcdnRefreshTasksResponseBody struct {
 	PageSize *int64 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
 	// The ID of the request.
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// Details about tasks.
+	// The tasks.
 	Tasks *DescribeDcdnRefreshTasksResponseBodyTasks `json:"Tasks,omitempty" xml:"Tasks,omitempty" type:"Struct"`
 	// The number of tasks.
 	TotalCount *int64 `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
@@ -17095,17 +17251,18 @@ type DescribeDcdnRefreshTasksResponseBodyTasksTask struct {
 	//
 	// *   **file**: URL-based refresh
 	// *   **path**: directory-based refresh
+	// *   **regex**: regular expression-based refresh
 	// *   **preload**: URL-based prefetch
 	ObjectType *string `json:"ObjectType,omitempty" xml:"ObjectType,omitempty"`
 	// The progress of the task in percentage.
 	Process *string `json:"Process,omitempty" xml:"Process,omitempty"`
-	// The status of the task. Valid values:
+	// The status of the auxiliary media asset.
 	//
 	// *   **Complete**: The task is complete.
 	// *   **Refreshing**: The task is in progress.
 	// *   **Failed**: The task failed.
 	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
-	// The ID of the task.
+	// The task ID.
 	TaskId *string `json:"TaskId,omitempty" xml:"TaskId,omitempty"`
 }
 
@@ -18217,7 +18374,7 @@ func (s *DescribeDcdnSecFuncInfoResponse) SetBody(v *DescribeDcdnSecFuncInfoResp
 }
 
 type DescribeDcdnSecSpecInfoResponseBody struct {
-	// The ID of the request.
+	// The request ID.
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	// The code and configurations of the security rules.
 	SpecInfos []*DescribeDcdnSecSpecInfoResponseBodySpecInfos `json:"SpecInfos,omitempty" xml:"SpecInfos,omitempty" type:"Repeated"`
@@ -18360,33 +18517,33 @@ func (s *DescribeDcdnServiceRequest) SetSecurityToken(v string) *DescribeDcdnSer
 type DescribeDcdnServiceResponseBody struct {
 	// The time when the renewed secure DCDN takes effect. The time is displayed in UTC.
 	ChangingAffectTime *string `json:"ChangingAffectTime,omitempty" xml:"ChangingAffectTime,omitempty"`
-	// The new metering method for DCDN. Valid values:
+	// The new metering method for the renewed secure DCDN. Valid values:
 	//
-	// *   **PayByTraffic**: pay-by-data-transfer
-	// *   **PayByBandwidth**: pay-by-bandwidth
-	// *   **PayByBandwidth95**: pay-by-95th percentile bandwidth
-	// *   **PayByBandwidth_monthavg**: pay-by-monthly average bandwidth
-	// *   **PayByBandwidth_month4th**: pay-by-fourth peak bandwidth per month
-	// *   **PayByBandwidth_monthday95avg**: pay-by-monthly average 95th percentile bandwidth
-	// *   **PayByBandwidth_nighthalf95**: pay-by-95th percentile bandwidth (50% off during nighttime)
+	// *   **PayByTraffic**: pay by data transfer
+	// *   **PayByBandwidth**: pay by bandwidth
+	// *   **PayByBandwidth95**: pay by 95th percentile bandwidth
+	// *   **PayByBandwidth_monthavg**: pay by monthly average bandwidth
+	// *   **PayByBandwidth_month4th**: pay by fourth peak bandwidth per month
+	// *   **PayByBandwidth_monthday95avg**: pay by monthly average 95th percentile bandwidth
+	// *   **PayByBandwidth_nighthalf95**: pay by 95th percentile bandwidth (50% off during nighttime)
 	ChangingChargeType *string `json:"ChangingChargeType,omitempty" xml:"ChangingChargeType,omitempty"`
 	// The ID of the instance.
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
 	// The current metering method. Valid values:
 	//
-	// *   **PayByTraffic**: pay-by-data-transfer
-	// *   **PayByBandwidth**: pay-by-bandwidth
-	// *   **PayByBandwidth95**: pay-by-95th percentile bandwidth
-	// *   **PayByBandwidth_monthavg**: pay-by-monthly average bandwidth
-	// *   **PayByBandwidth_month4th**: pay-by-fourth peak bandwidth per month
-	// *   **PayByBandwidth_monthday95avg**: pay-by-monthly average 95th percentile bandwidth
-	// *   **PayByBandwidth_nighthalf95**: pay-by-95th percentile bandwidth (50% off during nighttime)
+	// *   **PayByTraffic**: pay by data transfer
+	// *   **PayByBandwidth**: pay by bandwidth
+	// *   **PayByBandwidth95**: pay by 95th percentile bandwidth
+	// *   **PayByBandwidth_monthavg**: pay by monthly average bandwidth
+	// *   **PayByBandwidth_month4th**: pay by fourth peak bandwidth per month
+	// *   **PayByBandwidth_monthday95avg**: pay by monthly average 95th percentile bandwidth
+	// *   **PayByBandwidth_nighthalf95**: pay by 95th percentile bandwidth (50% off during nighttime)
 	InternetChargeType *string `json:"InternetChargeType,omitempty" xml:"InternetChargeType,omitempty"`
 	// The time when the DCDN service was activated. The time follows the ISO 8601 standard.
 	OpeningTime *string `json:"OpeningTime,omitempty" xml:"OpeningTime,omitempty"`
-	// The lock status of secure DCDN.
+	// The lock status of DCDN.
 	OperationLocks *DescribeDcdnServiceResponseBodyOperationLocks `json:"OperationLocks,omitempty" xml:"OperationLocks,omitempty" type:"Struct"`
-	// The ID of the request.
+	// The request ID.
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	// The time when the changes of the WebSocket configuration take effect. The value is the same as that of the ChangingAffectTime parameter. This parameter can be displayed in the console only if the specified time is later than the current time.
 	WebsocketChangingTime *string `json:"WebsocketChangingTime,omitempty" xml:"WebsocketChangingTime,omitempty"`
@@ -18472,7 +18629,7 @@ func (s *DescribeDcdnServiceResponseBodyOperationLocks) SetLockReason(v []*Descr
 }
 
 type DescribeDcdnServiceResponseBodyOperationLocksLockReason struct {
-	// The reason why the instance is locked. For example, a value of financial indicates that an overdue payment exists.
+	// The reason why secure DCDN was locked. For example, a value of financial indicates that an overdue payment exists.
 	LockReason *string `json:"LockReason,omitempty" xml:"LockReason,omitempty"`
 }
 
@@ -18591,7 +18748,7 @@ func (s *DescribeDcdnStagingIpResponse) SetBody(v *DescribeDcdnStagingIpResponse
 type DescribeDcdnSubListResponseBody struct {
 	// The information about the custom report.
 	Content *string `json:"Content,omitempty" xml:"Content,omitempty"`
-	// The ID of the request.
+	// The request ID.
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -18810,7 +18967,7 @@ type DescribeDcdnTopDomainsByFlowRequest struct {
 	EndTime *string `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
 	// The maximum number of domain names to return. Valid values: **1** to **100**. Default value: **20**.
 	Limit *int64 `json:"Limit,omitempty" xml:"Limit,omitempty"`
-	// The beginning of the time range to query. Specify the time in the ISO 8601 standard in the yyyy-MM-ddTHH:mm:ssZ format. The time must be in UTC.
+	// The start of the time range to query. Specify the time in the ISO 8601 standard in the yyyy-MM-ddTHH:mm:ssZ format. The time must be in UTC.
 	StartTime *string `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
 }
 
@@ -18842,11 +18999,11 @@ type DescribeDcdnTopDomainsByFlowResponseBody struct {
 	DomainCount *int64 `json:"DomainCount,omitempty" xml:"DomainCount,omitempty"`
 	// The total number of accelerated domains that are in the **Enabled** state under your account.
 	DomainOnlineCount *int64 `json:"DomainOnlineCount,omitempty" xml:"DomainOnlineCount,omitempty"`
-	// The end of the time range during which data was queried.
+	// The end of the reporting period.
 	EndTime *string `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
-	// The ID of the request.
+	// The request ID.
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// The beginning of the time range during which data was queried.
+	// The beginning of the reporting period.
 	StartTime *string `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
 	// The top N domain names ranked by network traffic.
 	TopDomains *DescribeDcdnTopDomainsByFlowResponseBodyTopDomains `json:"TopDomains,omitempty" xml:"TopDomains,omitempty" type:"Struct"`
@@ -18916,9 +19073,9 @@ type DescribeDcdnTopDomainsByFlowResponseBodyTopDomainsTopDomain struct {
 	MaxBpsTime *string `json:"MaxBpsTime,omitempty" xml:"MaxBpsTime,omitempty"`
 	// The ranking of the accelerated domain name.
 	Rank *int64 `json:"Rank,omitempty" xml:"Rank,omitempty"`
-	// The number of visits to the URL.
+	// The number of visits.
 	TotalAccess *int64 `json:"TotalAccess,omitempty" xml:"TotalAccess,omitempty"`
-	// The total volume of traffic.
+	// The total amount of network traffic.
 	TotalTraffic *string `json:"TotalTraffic,omitempty" xml:"TotalTraffic,omitempty"`
 	// The proportion of network traffic consumed to access the URL.
 	TrafficPercent *string `json:"TrafficPercent,omitempty" xml:"TrafficPercent,omitempty"`
@@ -19230,7 +19387,7 @@ func (s *DescribeDcdnUserBillTypeRequest) SetStartTime(v string) *DescribeDcdnUs
 type DescribeDcdnUserBillTypeResponseBody struct {
 	// The information about the metering method.
 	BillTypeData *DescribeDcdnUserBillTypeResponseBodyBillTypeData `json:"BillTypeData,omitempty" xml:"BillTypeData,omitempty" type:"Struct"`
-	// The ID of the request.
+	// The request ID.
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -19284,7 +19441,7 @@ type DescribeDcdnUserBillTypeResponseBodyBillTypeDataBillTypeDataItem struct {
 	// *   **hour_count**: pay by request per hour
 	// *   **rtlog_count_day**: pay by the number of real-time logs per day
 	BillType *string `json:"BillType,omitempty" xml:"BillType,omitempty"`
-	// The billing cycle.
+	// The metering cycle.
 	BillingCycle *string `json:"BillingCycle,omitempty" xml:"BillingCycle,omitempty"`
 	// The dimension. Valid values:
 	//
@@ -19595,7 +19752,8 @@ type DescribeDcdnUserDomainsRequest struct {
 	ResourceGroupId *string `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
 	SecurityToken   *string `json:"SecurityToken,omitempty" xml:"SecurityToken,omitempty"`
 	// The list of tags.
-	Tag []*DescribeDcdnUserDomainsRequestTag `json:"Tag,omitempty" xml:"Tag,omitempty" type:"Repeated"`
+	Tag         []*DescribeDcdnUserDomainsRequestTag `json:"Tag,omitempty" xml:"Tag,omitempty" type:"Repeated"`
+	WebSiteType *string                              `json:"WebSiteType,omitempty" xml:"WebSiteType,omitempty"`
 }
 
 func (s DescribeDcdnUserDomainsRequest) String() string {
@@ -19668,6 +19826,11 @@ func (s *DescribeDcdnUserDomainsRequest) SetSecurityToken(v string) *DescribeDcd
 
 func (s *DescribeDcdnUserDomainsRequest) SetTag(v []*DescribeDcdnUserDomainsRequestTag) *DescribeDcdnUserDomainsRequest {
 	s.Tag = v
+	return s
+}
+
+func (s *DescribeDcdnUserDomainsRequest) SetWebSiteType(v string) *DescribeDcdnUserDomainsRequest {
+	s.WebSiteType = &v
 	return s
 }
 
@@ -19777,6 +19940,7 @@ type DescribeDcdnUserDomainsResponseBodyDomainsPageData struct {
 	// *   **checking**: reviewing
 	// *   **check_failed:** review failed
 	DomainStatus *string `json:"DomainStatus,omitempty" xml:"DomainStatus,omitempty"`
+	FunctionType *string `json:"FunctionType,omitempty" xml:"FunctionType,omitempty"`
 	// The time when the accelerated domain name was added to Dynamic Content Delivery Network (DCDN).
 	GmtCreated *string `json:"GmtCreated,omitempty" xml:"GmtCreated,omitempty"`
 	// The time when the accelerated domain name was modified.
@@ -19790,11 +19954,11 @@ type DescribeDcdnUserDomainsResponseBodyDomainsPageData struct {
 	SSLProtocol *string `json:"SSLProtocol,omitempty" xml:"SSLProtocol,omitempty"`
 	// Indicates whether the accelerated domain name was in a sandbox.
 	Sandbox *string `json:"Sandbox,omitempty" xml:"Sandbox,omitempty"`
-	// The moderation scenario. Valid values:
-	//
-	// *   **apiscene**: Api scene acceleration.
-	// *   **webservicescene**: Web scene acceleration.
-	// *   **staticscene**: Video and graphic scene acceleration.
+	// 场景。支持：
+	// - **apiscene**：API加速。
+	// - **webservicescene**：网站业务加速。
+	// - **staticscene**：视频、图文类加速。
+	// - **（空）**：没有场景。
 	Scene *string `json:"Scene,omitempty" xml:"Scene,omitempty"`
 	// The information about the origin server.
 	Sources *DescribeDcdnUserDomainsResponseBodyDomainsPageDataSources `json:"Sources,omitempty" xml:"Sources,omitempty" type:"Struct"`
@@ -19830,6 +19994,11 @@ func (s *DescribeDcdnUserDomainsResponseBodyDomainsPageData) SetDomainName(v str
 
 func (s *DescribeDcdnUserDomainsResponseBodyDomainsPageData) SetDomainStatus(v string) *DescribeDcdnUserDomainsResponseBodyDomainsPageData {
 	s.DomainStatus = &v
+	return s
+}
+
+func (s *DescribeDcdnUserDomainsResponseBodyDomainsPageData) SetFunctionType(v string) *DescribeDcdnUserDomainsResponseBodyDomainsPageData {
+	s.FunctionType = &v
 	return s
 }
 
@@ -19961,9 +20130,9 @@ func (s *DescribeDcdnUserDomainsResponse) SetBody(v *DescribeDcdnUserDomainsResp
 }
 
 type DescribeDcdnUserDomainsByFuncRequest struct {
-	// The accelerated domain name.
+	// The accelerated domain name whose ICP filing status you want to update.
 	DomainName *string `json:"DomainName,omitempty" xml:"DomainName,omitempty"`
-	// Specifies whether the feature that is specified by the FuncId parameter is enabled. Valid values:
+	// Specifies whether the feature that is specified by the FuncId parameter is enabled.
 	//
 	// *   **config**: enabled
 	// *   **unconfig**: not enabled
@@ -20019,7 +20188,7 @@ func (s *DescribeDcdnUserDomainsByFuncRequest) SetResourceGroupId(v string) *Des
 type DescribeDcdnUserDomainsByFuncResponseBody struct {
 	// The array that consists of multiple PageData parameters. The details about each accelerated domain name are included in a separate PageData parameter.
 	Domains *DescribeDcdnUserDomainsByFuncResponseBodyDomains `json:"Domains,omitempty" xml:"Domains,omitempty" type:"Struct"`
-	// The number of the returned page.
+	// The page number of the page returned.
 	PageNumber *int64 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
 	// The number of entries returned per page.
 	PageSize *int64 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
@@ -20103,12 +20272,12 @@ type DescribeDcdnUserDomainsByFuncResponseBodyDomainsPageData struct {
 	ResourceGroupId *string `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
 	// Indicates whether the accelerated domain name was in a sandbox.
 	Sandbox *string `json:"Sandbox,omitempty" xml:"Sandbox,omitempty"`
-	// The information about the origin server.
+	// The information about the origin servers.
 	Sources *DescribeDcdnUserDomainsByFuncResponseBodyDomainsPageDataSources `json:"Sources,omitempty" xml:"Sources,omitempty" type:"Struct"`
 	// Indicates whether HTTPS is enabled. Valid values:
 	//
-	// *   **on**
-	// *   **off**
+	// *   **on**: HTTPS is enabled.
+	// *   **off**: HTTPS is disabled.
 	SslProtocol *string `json:"SslProtocol,omitempty" xml:"SslProtocol,omitempty"`
 }
 
@@ -20188,7 +20357,7 @@ func (s *DescribeDcdnUserDomainsByFuncResponseBodyDomainsPageDataSources) SetSou
 }
 
 type DescribeDcdnUserDomainsByFuncResponseBodyDomainsPageDataSourcesSource struct {
-	// The address of the origin server.
+	// The origin server address.
 	Content *string `json:"Content,omitempty" xml:"Content,omitempty"`
 	// The port of the origin server.
 	Port *int32 `json:"Port,omitempty" xml:"Port,omitempty"`
@@ -20292,9 +20461,9 @@ type DescribeDcdnUserQuotaResponseBody struct {
 	BlockRemain *int32 `json:"BlockRemain,omitempty" xml:"BlockRemain,omitempty"`
 	// The maximum number of accelerated domains.
 	DomainQuota *int32 `json:"DomainQuota,omitempty" xml:"DomainQuota,omitempty"`
-	// The maximum number of URLs or directories with parameters ignored that can be refreshed on the current day.
+	// The maximum number of URLs or directories with parameters ignored that can be refreshed.
 	IgnoreParamsQuota *int32 `json:"IgnoreParamsQuota,omitempty" xml:"IgnoreParamsQuota,omitempty"`
-	// The number of remaining URLs or directories that can be refreshed with parameters ignored on the current day.
+	// The number of remaining URLs or directories with parameters ignored that can be refreshed.
 	IgnoreParamsRemain *int32 `json:"IgnoreParamsRemain,omitempty" xml:"IgnoreParamsRemain,omitempty"`
 	// The maximum number of URLs that can be prefetched.
 	PreloadQuota *int32 `json:"PreloadQuota,omitempty" xml:"PreloadQuota,omitempty"`
@@ -25521,6 +25690,75 @@ func (s *DescribeRoutineCodeRevisionResponse) SetBody(v *DescribeRoutineCodeRevi
 	return s
 }
 
+type DescribeRoutineRelatedDomainsRequest struct {
+	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+}
+
+func (s DescribeRoutineRelatedDomainsRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeRoutineRelatedDomainsRequest) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeRoutineRelatedDomainsRequest) SetName(v string) *DescribeRoutineRelatedDomainsRequest {
+	s.Name = &v
+	return s
+}
+
+type DescribeRoutineRelatedDomainsResponseBody struct {
+	Content   map[string]interface{} `json:"Content,omitempty" xml:"Content,omitempty"`
+	RequestId *string                `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+}
+
+func (s DescribeRoutineRelatedDomainsResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeRoutineRelatedDomainsResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeRoutineRelatedDomainsResponseBody) SetContent(v map[string]interface{}) *DescribeRoutineRelatedDomainsResponseBody {
+	s.Content = v
+	return s
+}
+
+func (s *DescribeRoutineRelatedDomainsResponseBody) SetRequestId(v string) *DescribeRoutineRelatedDomainsResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+type DescribeRoutineRelatedDomainsResponse struct {
+	Headers    map[string]*string                         `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                                     `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *DescribeRoutineRelatedDomainsResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s DescribeRoutineRelatedDomainsResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeRoutineRelatedDomainsResponse) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeRoutineRelatedDomainsResponse) SetHeaders(v map[string]*string) *DescribeRoutineRelatedDomainsResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *DescribeRoutineRelatedDomainsResponse) SetStatusCode(v int32) *DescribeRoutineRelatedDomainsResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *DescribeRoutineRelatedDomainsResponse) SetBody(v *DescribeRoutineRelatedDomainsResponseBody) *DescribeRoutineRelatedDomainsResponse {
+	s.Body = v
+	return s
+}
+
 type DescribeRoutineSpecResponseBody struct {
 	// The specification of the CPU time slice. Valid values: 5 ms, 50 ms, and 100 ms.
 	Content map[string]interface{} `json:"Content,omitempty" xml:"Content,omitempty"`
@@ -26582,7 +26820,7 @@ type ModifyDCdnDomainSchdmByPropertyRequest struct {
 	// The region where the acceleration service is deployed. Valid values:
 	//
 	// *   **domestic**: Chinese mainland
-	// *   **overseas**: outside the Chinese mainland
+	// *   **overseas**: global (excluding mainland China)
 	// *   **global**: global
 	Property *string `json:"Property,omitempty" xml:"Property,omitempty"`
 }
@@ -26606,7 +26844,7 @@ func (s *ModifyDCdnDomainSchdmByPropertyRequest) SetProperty(v string) *ModifyDC
 }
 
 type ModifyDCdnDomainSchdmByPropertyResponseBody struct {
-	// The ID of the request.
+	// The request ID.
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -26653,8 +26891,11 @@ func (s *ModifyDCdnDomainSchdmByPropertyResponse) SetBody(v *ModifyDCdnDomainSch
 }
 
 type ModifyDcdnWafGroupRequest struct {
-	Id    *int64  `json:"Id,omitempty" xml:"Id,omitempty"`
-	Name  *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// The ID of the custom WAF rule group.
+	Id *int64 `json:"Id,omitempty" xml:"Id,omitempty"`
+	// The name of the custom WAF rule group.
+	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// The incremental modification of the rules in the custom WAF rule group. The value is a string in the JSON format.
 	Rules *string `json:"Rules,omitempty" xml:"Rules,omitempty"`
 }
 
@@ -26682,6 +26923,7 @@ func (s *ModifyDcdnWafGroupRequest) SetRules(v string) *ModifyDcdnWafGroupReques
 }
 
 type ModifyDcdnWafGroupResponseBody struct {
+	// The request ID.
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -26818,15 +27060,15 @@ type ModifyDcdnWafPolicyDomainsRequest struct {
 	//
 	// > You can configure either **BindDomains** or **UnbindDomains**.
 	BindDomains *string `json:"BindDomains,omitempty" xml:"BindDomains,omitempty"`
-	// The change method. Valid values:
+	// The association method. Valid values:
 	//
-	// *   0: replace
-	// *   1: add
+	// *   0: replace.
+	// *   1: add.
 	// *   Default value: 0.
 	//
 	// >
 	//
-	// *   This parameter takes effect only when you specify **BindDomains**. If you have bound a domain name indicated by **BindDomains** to the default protection policy, the `Policy.DefaultAndCustom.BindToSameDomain` error is returned.
+	// *   This parameter takes effect only when you specify **BindDomains**. If you have associated a domain name indicated by **BindDomains** with the default protection policy, the `Policy.DefaultAndCustom.BindToSameDomain` error is returned.
 	//
 	// *   You can only replace accelerated domain names that are bound to the default protection policy.
 	Method *int32 `json:"Method,omitempty" xml:"Method,omitempty"`
@@ -27284,7 +27526,7 @@ type PublishRoutineCodeRevisionRequest struct {
 	//
 	// *   production: the name of the environment, including the environment name (SpecName) and the domain name whitelist (AllowedHosts).
 	//
-	// *   Preset_Canary_xx: You can add canary release environments based on your business requirements. This parameter is optional.
+	// *   presetCanary: You can add canary release environments based on your business requirements. This parameter is optional.
 	Envs map[string]interface{} `json:"Envs,omitempty" xml:"Envs,omitempty"`
 	// The name of the routine. The name must be unique among the routines that belong to the same Alibaba Cloud account.
 	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
@@ -27322,7 +27564,7 @@ type PublishRoutineCodeRevisionShrinkRequest struct {
 	//
 	// *   production: the name of the environment, including the environment name (SpecName) and the domain name whitelist (AllowedHosts).
 	//
-	// *   Preset_Canary_xx: You can add canary release environments based on your business requirements. This parameter is optional.
+	// *   presetCanary: You can add canary release environments based on your business requirements. This parameter is optional.
 	EnvsShrink *string `json:"Envs,omitempty" xml:"Envs,omitempty"`
 	// The name of the routine. The name must be unique among the routines that belong to the same Alibaba Cloud account.
 	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
@@ -28513,7 +28755,7 @@ func (s *SetRoutineSubdomainResponse) SetBody(v *SetRoutineSubdomainResponseBody
 }
 
 type StartDcdnDomainRequest struct {
-	// The name of the accelerated domain to be enabled. You can specify only one domain name.
+	// The accelerated domain name. You can specify only one domain name in each request.
 	DomainName    *string `json:"DomainName,omitempty" xml:"DomainName,omitempty"`
 	OwnerId       *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
 	SecurityToken *string `json:"SecurityToken,omitempty" xml:"SecurityToken,omitempty"`
@@ -28543,7 +28785,7 @@ func (s *StartDcdnDomainRequest) SetSecurityToken(v string) *StartDcdnDomainRequ
 }
 
 type StartDcdnDomainResponseBody struct {
-	// The ID of the request.
+	// The request ID.
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -28667,7 +28909,7 @@ func (s *StartDcdnIpaDomainResponse) SetBody(v *StartDcdnIpaDomainResponseBody) 
 }
 
 type StopDcdnDomainRequest struct {
-	// The name of the accelerated domain to be disabled. You can specify only one domain name.
+	// The accelerated domain name that you want to disable. You can specify only one domain name in each request.
 	DomainName    *string `json:"DomainName,omitempty" xml:"DomainName,omitempty"`
 	OwnerId       *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
 	SecurityToken *string `json:"SecurityToken,omitempty" xml:"SecurityToken,omitempty"`
@@ -28697,7 +28939,7 @@ func (s *StopDcdnDomainRequest) SetSecurityToken(v string) *StopDcdnDomainReques
 }
 
 type StopDcdnDomainResponseBody struct {
-	// The ID of the request.
+	// The request ID.
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -28774,7 +29016,7 @@ func (s *StopDcdnIpaDomainRequest) SetSecurityToken(v string) *StopDcdnIpaDomain
 }
 
 type StopDcdnIpaDomainResponseBody struct {
-	// The ID of the request.
+	// The request ID.
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -30020,6 +30262,10 @@ func (client *Client) AddDcdnDomainWithOptions(request *AddDcdnDomainRequest, ru
 		query["DomainName"] = request.DomainName
 	}
 
+	if !tea.BoolValue(util.IsUnset(request.FunctionType)) {
+		query["FunctionType"] = request.FunctionType
+	}
+
 	if !tea.BoolValue(util.IsUnset(request.OwnerAccount)) {
 		query["OwnerAccount"] = request.OwnerAccount
 	}
@@ -30205,10 +30451,9 @@ func (client *Client) AddDcdnIpaDomain(request *AddDcdnIpaDomainRequest) (_resul
  * **Prerequisites**:
  * *   The [DCDN service is activated](~~64926~~).
  * *   Internet content provider (ICP) filing is complete for the accelerated domain names.
- * >
- * *   If the content of the origin server is not stored on Alibaba Cloud, the content must be reviewed. After you submit the request, the review is complete by the end of the following business day.
- * *   You can specify up to 50 domain names in each request.
- * *   You can call this operation up to 30 times per second per account.
+ * > *   If the content of the origin server is not stored on Alibaba Cloud, the content must be reviewed. After you submit the request, the review is complete by the end of the following business day.
+ * >*   You can specify up to 50 domain names in each request.
+ * >*   You can call this operation up to 30 times per second per account.
  *
  * @param request BatchAddDcdnDomainRequest
  * @param runtime runtime options for this request RuntimeOptions
@@ -30283,10 +30528,9 @@ func (client *Client) BatchAddDcdnDomainWithOptions(request *BatchAddDcdnDomainR
  * **Prerequisites**:
  * *   The [DCDN service is activated](~~64926~~).
  * *   Internet content provider (ICP) filing is complete for the accelerated domain names.
- * >
- * *   If the content of the origin server is not stored on Alibaba Cloud, the content must be reviewed. After you submit the request, the review is complete by the end of the following business day.
- * *   You can specify up to 50 domain names in each request.
- * *   You can call this operation up to 30 times per second per account.
+ * > *   If the content of the origin server is not stored on Alibaba Cloud, the content must be reviewed. After you submit the request, the review is complete by the end of the following business day.
+ * >*   You can specify up to 50 domain names in each request.
+ * >*   You can call this operation up to 30 times per second per account.
  *
  * @param request BatchAddDcdnDomainRequest
  * @return BatchAddDcdnDomainResponse
@@ -30560,6 +30804,60 @@ func (client *Client) BatchModifyDcdnWafRules(request *BatchModifyDcdnWafRulesRe
 	return _result, _err
 }
 
+func (client *Client) BatchPutDcdnKvWithOptions(tmpReq *BatchPutDcdnKvRequest, runtime *util.RuntimeOptions) (_result *BatchPutDcdnKvResponse, _err error) {
+	_err = util.ValidateModel(tmpReq)
+	if _err != nil {
+		return _result, _err
+	}
+	request := &BatchPutDcdnKvShrinkRequest{}
+	openapiutil.Convert(tmpReq, request)
+	if !tea.BoolValue(util.IsUnset(tmpReq.KvList)) {
+		request.KvListShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.KvList, tea.String("KvList"), tea.String("json"))
+	}
+
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.KvListShrink)) {
+		query["KvList"] = request.KvListShrink
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Namespace)) {
+		query["Namespace"] = request.Namespace
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("BatchPutDcdnKv"),
+		Version:     tea.String("2018-01-15"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &BatchPutDcdnKvResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) BatchPutDcdnKv(request *BatchPutDcdnKvRequest) (_result *BatchPutDcdnKvResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &BatchPutDcdnKvResponse{}
+	_body, _err := client.BatchPutDcdnKvWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
 /**
  * > You can call this operation up to 10 times per second per account.
  *
@@ -30650,8 +30948,9 @@ func (client *Client) BatchSetDcdnDomainCertificate(request *BatchSetDcdnDomainC
 }
 
 /**
- * > * You can specify up to 50 domain names in each request. Separate multiple domain names with commas (,)
- * > * You can call this operation up to 30 times per second per account.
+ * >
+ * *   You can specify up to 50 domain names in each request.
+ * *   You can call this operation up to 30 times per second per account.
  *
  * @param request BatchSetDcdnDomainConfigsRequest
  * @param runtime runtime options for this request RuntimeOptions
@@ -30707,8 +31006,9 @@ func (client *Client) BatchSetDcdnDomainConfigsWithOptions(request *BatchSetDcdn
 }
 
 /**
- * > * You can specify up to 50 domain names in each request. Separate multiple domain names with commas (,)
- * > * You can call this operation up to 30 times per second per account.
+ * >
+ * *   You can specify up to 50 domain names in each request.
+ * *   You can call this operation up to 30 times per second per account.
  *
  * @param request BatchSetDcdnDomainConfigsRequest
  * @return BatchSetDcdnDomainConfigsResponse
@@ -30868,7 +31168,7 @@ func (client *Client) BatchSetDcdnWafDomainConfigs(request *BatchSetDcdnWafDomai
 
 /**
  * >
- * *   If an accelerated domain name is in invalid state or your account has an overdue payment, the accelerated domain name cannot be enabled.
+ * *   If an accelerated domain name is in an invalid state or your account has an overdue payment, the accelerated domain name cannot be enabled.
  * *   You can specify up to 50 domain names in each request.
  * *   You can call this operation up to 30 times per second per account.
  *
@@ -30919,7 +31219,7 @@ func (client *Client) BatchStartDcdnDomainWithOptions(request *BatchStartDcdnDom
 
 /**
  * >
- * *   If an accelerated domain name is in invalid state or your account has an overdue payment, the accelerated domain name cannot be enabled.
+ * *   If an accelerated domain name is in an invalid state or your account has an overdue payment, the accelerated domain name cannot be enabled.
  * *   You can specify up to 50 domain names in each request.
  * *   You can call this operation up to 30 times per second per account.
  *
@@ -30938,10 +31238,9 @@ func (client *Client) BatchStartDcdnDomain(request *BatchStartDcdnDomainRequest)
 }
 
 /**
- * >
- * *   After an accelerated domain name is disabled, Dynamic Content Delivery Network (DCDN) retains the domain name information. The system automatically reroutes all requests that are destined for the accelerated domain name to the origin.
- * *   You can specify up to 50 domain names in each request.
- * *   You can call this operation up to 30 times per second per account.
+ * > *   After an accelerated domain name is disabled, Dynamic Content Delivery Network (DCDN) retains the domain name information. The system automatically reroutes all requests that are destined for the accelerated domain name to the origin.
+ * >*   You can specify up to 50 domain names in each request.
+ * >*   You can call this operation up to 30 times per second per account.
  *
  * @param request BatchStopDcdnDomainRequest
  * @param runtime runtime options for this request RuntimeOptions
@@ -30989,10 +31288,9 @@ func (client *Client) BatchStopDcdnDomainWithOptions(request *BatchStopDcdnDomai
 }
 
 /**
- * >
- * *   After an accelerated domain name is disabled, Dynamic Content Delivery Network (DCDN) retains the domain name information. The system automatically reroutes all requests that are destined for the accelerated domain name to the origin.
- * *   You can specify up to 50 domain names in each request.
- * *   You can call this operation up to 30 times per second per account.
+ * > *   After an accelerated domain name is disabled, Dynamic Content Delivery Network (DCDN) retains the domain name information. The system automatically reroutes all requests that are destined for the accelerated domain name to the origin.
+ * >*   You can specify up to 50 domain names in each request.
+ * >*   You can call this operation up to 30 times per second per account.
  *
  * @param request BatchStopDcdnDomainRequest
  * @return BatchStopDcdnDomainResponse
@@ -31471,8 +31769,8 @@ func (client *Client) CreateDcdnWafPolicy(request *CreateDcdnWafPolicyRequest) (
 /**
  * >
  * *   The parameters must comply with the rules of EnvConf. The description of a routine cannot exceed 50 characters in length.
- * *   This operation creates a routine that contains only production and staging environments.
- * *   You can call this operation up to 100 times per second per account.
+ * *   You can only specify the production and staging environments when you call this operation.
+ * *   You can call this operation up to 100 times per second.
  *
  * @param tmpReq CreateRoutineRequest
  * @param runtime runtime options for this request RuntimeOptions
@@ -31528,8 +31826,8 @@ func (client *Client) CreateRoutineWithOptions(tmpReq *CreateRoutineRequest, run
 /**
  * >
  * *   The parameters must comply with the rules of EnvConf. The description of a routine cannot exceed 50 characters in length.
- * *   This operation creates a routine that contains only production and staging environments.
- * *   You can call this operation up to 100 times per second per account.
+ * *   You can only specify the production and staging environments when you call this operation.
+ * *   You can call this operation up to 100 times per second.
  *
  * @param request CreateRoutineRequest
  * @return CreateRoutineResponse
@@ -31664,9 +31962,9 @@ func (client *Client) DeleteDcdnDeliverTask(request *DeleteDcdnDeliverTaskReques
 }
 
 /**
- * > *   Before you delete your domain name, you must request the Domain Name System (DNS) provider to restore the A record of the domain name. Otherwise, the domain name may become inaccessible after you delete it.
+ * > *   Before you delete your domain name, you need to request the Domain Name System (DNS) provider to restore the A record of the domain name. Otherwise, the domain name may become inaccessible after you delete it.
  * > *   If you call the **DeleteDcdnDomain** operation, all the information about the accelerated domain name is deleted. If you want to disable an accelerated domain name, call the [StopDcdnDomain](~~130622~~) operation.
- * > *   The maximum number of times that each user can call this operation per second is 10.
+ * > *   You can call this operation up to 10 times per second per account.
  *
  * @param request DeleteDcdnDomainRequest
  * @param runtime runtime options for this request RuntimeOptions
@@ -31718,9 +32016,9 @@ func (client *Client) DeleteDcdnDomainWithOptions(request *DeleteDcdnDomainReque
 }
 
 /**
- * > *   Before you delete your domain name, you must request the Domain Name System (DNS) provider to restore the A record of the domain name. Otherwise, the domain name may become inaccessible after you delete it.
+ * > *   Before you delete your domain name, you need to request the Domain Name System (DNS) provider to restore the A record of the domain name. Otherwise, the domain name may become inaccessible after you delete it.
  * > *   If you call the **DeleteDcdnDomain** operation, all the information about the accelerated domain name is deleted. If you want to disable an accelerated domain name, call the [StopDcdnDomain](~~130622~~) operation.
- * > *   The maximum number of times that each user can call this operation per second is 10.
+ * > *   You can call this operation up to 10 times per second per account.
  *
  * @param request DeleteDcdnDomainRequest
  * @return DeleteDcdnDomainResponse
@@ -33204,6 +33502,21 @@ func (client *Client) DescribeDcdnDomainBpsData(request *DescribeDcdnDomainBpsDa
 	return _result, _err
 }
 
+/**
+ * * You can call this operation up to 20 times per second per account.
+ * * If you do not set **StartTime** or **EndTime**, the request returns the data collected in the last 24 hours. If you set both **StartTime** and **EndTime**, the request returns the data collected within the specified time range.
+ * **Time granularity**
+ * The time granularity supported by the Interval parameter, the maximum time period within which historical data is available, and the data delay vary with the time range to query, as described in the following table.
+ * |Time granularity|Maximum time range per query|Historical data available|Data delay|
+ * |---|---|---|---|
+ * |5 minutes|3 days|93 days|15 minutes|
+ * |1 hour|31 days|186 days|4 hours|
+ * |1 day|366 days|366 days|04:00 on the next day|
+ *
+ * @param request DescribeDcdnDomainBpsDataByLayerRequest
+ * @param runtime runtime options for this request RuntimeOptions
+ * @return DescribeDcdnDomainBpsDataByLayerResponse
+ */
 func (client *Client) DescribeDcdnDomainBpsDataByLayerWithOptions(request *DescribeDcdnDomainBpsDataByLayerRequest, runtime *util.RuntimeOptions) (_result *DescribeDcdnDomainBpsDataByLayerResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -33261,6 +33574,20 @@ func (client *Client) DescribeDcdnDomainBpsDataByLayerWithOptions(request *Descr
 	return _result, _err
 }
 
+/**
+ * * You can call this operation up to 20 times per second per account.
+ * * If you do not set **StartTime** or **EndTime**, the request returns the data collected in the last 24 hours. If you set both **StartTime** and **EndTime**, the request returns the data collected within the specified time range.
+ * **Time granularity**
+ * The time granularity supported by the Interval parameter, the maximum time period within which historical data is available, and the data delay vary with the time range to query, as described in the following table.
+ * |Time granularity|Maximum time range per query|Historical data available|Data delay|
+ * |---|---|---|---|
+ * |5 minutes|3 days|93 days|15 minutes|
+ * |1 hour|31 days|186 days|4 hours|
+ * |1 day|366 days|366 days|04:00 on the next day|
+ *
+ * @param request DescribeDcdnDomainBpsDataByLayerRequest
+ * @return DescribeDcdnDomainBpsDataByLayerResponse
+ */
 func (client *Client) DescribeDcdnDomainBpsDataByLayer(request *DescribeDcdnDomainBpsDataByLayerRequest) (_result *DescribeDcdnDomainBpsDataByLayerResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &DescribeDcdnDomainBpsDataByLayerResponse{}
@@ -33341,7 +33668,7 @@ func (client *Client) DescribeDcdnDomainByCertificate(request *DescribeDcdnDomai
  * >
  * *   If you do not configure the StartTime or EndTime parameter, data collected over the last 24 hours is queried. If you configure both the StartTime and EndTime parameters, data collected within the specified time range is queried.
  * *   You can query data collected over the last 30 days.
- * *   You can call this operation up to 50 times per second per user.
+ * *   You can call the RefreshObjectCaches operation up to 50 times per second per account.
  *
  * @param request DescribeDcdnDomainCcActivityLogRequest
  * @param runtime runtime options for this request RuntimeOptions
@@ -33412,7 +33739,7 @@ func (client *Client) DescribeDcdnDomainCcActivityLogWithOptions(request *Descri
  * >
  * *   If you do not configure the StartTime or EndTime parameter, data collected over the last 24 hours is queried. If you configure both the StartTime and EndTime parameters, data collected within the specified time range is queried.
  * *   You can query data collected over the last 30 days.
- * *   You can call this operation up to 50 times per second per user.
+ * *   You can call the RefreshObjectCaches operation up to 50 times per second per account.
  *
  * @param request DescribeDcdnDomainCcActivityLogRequest
  * @return DescribeDcdnDomainCcActivityLogResponse
@@ -34285,7 +34612,7 @@ func (client *Client) DescribeDcdnDomainIspData(request *DescribeDcdnDomainIspDa
 
 /**
  * >
- * *   If you specify neither the **StartTime** parameter nor the **EndTime** parameter, the data in the last 24 hours is returned. If you specify the **StartTime** and **EndTime** parameters, the data within the specified time range is returned.
+ * *   If you do not set the **StartTime** or **EndTime** parameter, the request returns the data collected in the last 24 hours. If you set both these parameters, the request returns the data collected within the specified time range.********
  * *   You can call this operation up to 100 times per second per account.
  *
  * @param request DescribeDcdnDomainLogRequest
@@ -34343,7 +34670,7 @@ func (client *Client) DescribeDcdnDomainLogWithOptions(request *DescribeDcdnDoma
 
 /**
  * >
- * *   If you specify neither the **StartTime** parameter nor the **EndTime** parameter, the data in the last 24 hours is returned. If you specify the **StartTime** and **EndTime** parameters, the data within the specified time range is returned.
+ * *   If you do not set the **StartTime** or **EndTime** parameter, the request returns the data collected in the last 24 hours. If you set both these parameters, the request returns the data collected within the specified time range.********
  * *   You can call this operation up to 100 times per second per account.
  *
  * @param request DescribeDcdnDomainLogRequest
@@ -34361,7 +34688,6 @@ func (client *Client) DescribeDcdnDomainLog(request *DescribeDcdnDomainLogReques
 }
 
 /**
- * When you call this operation, take note of the following rules:
  * *   If you do not set the StartTime or EndTime parameter, data within the last 10 minutes is queried. You can set both the StartTime and EndTime parameters to specify a time range.
  * *   You can specify one or more accelerated domain names. Separate domain names with commas (,).
  * *   You can query data within the last 90 days.
@@ -34413,7 +34739,6 @@ func (client *Client) DescribeDcdnDomainMultiUsageDataWithOptions(request *Descr
 }
 
 /**
- * When you call this operation, take note of the following rules:
  * *   If you do not set the StartTime or EndTime parameter, data within the last 10 minutes is queried. You can set both the StartTime and EndTime parameters to specify a time range.
  * *   You can specify one or more accelerated domain names. Separate domain names with commas (,).
  * *   You can query data within the last 90 days.
@@ -34521,7 +34846,8 @@ func (client *Client) DescribeDcdnDomainOriginBpsData(request *DescribeDcdnDomai
 /**
  * - You can call this operation up to 100 times per second per account.
  * - If you do not set the **StartTime** or **EndTime** parameters, the request returns the data collected in the last 24 hours. If you set both the **StartTime** and **EndTime** parameters, the request returns the data collected within the specified time range.
- * **Time granularity**The time granularity supported by the Interval parameter varies with the maximum time range per query. The following table describes the time period within which historical data is available and the data delay.
+ * **Time granularity**
+ * The time granularity supported by the Interval parameter varies with the maximum time range per query. The following table describes the time period within which historical data is available and the data delay.
  * | Time granularity | Maximum time range per query | Historical data available | Data delay |
  * | ---------------- | ---------------------------- | ------------------------- | ---------- |
  * | 5 minutes | 3 days | 93 days | 15 minutes |
@@ -34580,7 +34906,8 @@ func (client *Client) DescribeDcdnDomainOriginTrafficDataWithOptions(request *De
 /**
  * - You can call this operation up to 100 times per second per account.
  * - If you do not set the **StartTime** or **EndTime** parameters, the request returns the data collected in the last 24 hours. If you set both the **StartTime** and **EndTime** parameters, the request returns the data collected within the specified time range.
- * **Time granularity**The time granularity supported by the Interval parameter varies with the maximum time range per query. The following table describes the time period within which historical data is available and the data delay.
+ * **Time granularity**
+ * The time granularity supported by the Interval parameter varies with the maximum time range per query. The following table describes the time period within which historical data is available and the data delay.
  * | Time granularity | Maximum time range per query | Historical data available | Data delay |
  * | ---------------- | ---------------------------- | ------------------------- | ---------- |
  * | 5 minutes | 3 days | 93 days | 15 minutes |
@@ -35223,11 +35550,15 @@ func (client *Client) DescribeDcdnDomainRealTimeQpsData(request *DescribeDcdnDom
 }
 
 /**
- * #
- * *   You can call this operation up to 10 times per second per account.
- * *   The network traffic destined for different domain names may be redirected to the same origin server. Therefore, the byte hit ratios may be inaccurate. The accuracy of query results is based on the actual configurations.
- * *   If you do not set the **StartTime** or **EndTime** parameter, the request returns the data collected in the last hour. If you set both the **StartTime** and **EndTime** parameters, the request returns the data collected within the specified time range.
- * **Time granularity** The time granularity varies with the time range specified by the StartTime and EndTime parameters. The following table describes the time period within which historical data is available and the data delay. |Time granularity |Maximum time range per query |Historical data available|Data delay| |---------------|--------| |1 minute|1 hour|7 days|5 minutes| |5 minutes|3 days|93 days|15 minutes| |1 hour|31 days|186 days|4 hours|
+ * * You can call this operation up to 10 times per second per user.
+ * * The network traffic destined for different domain names may be redirected to the same origin server. Therefore, the byte hit ratios may be inaccurate. The accuracy of query results is based on the actual configurations.
+ * * If you do not set the **StartTime** or **EndTime** parameter, the request returns the data collected in the last hour. If you set both the **StartTime** and **EndTime** parameters, the request returns the data collected within the specified time range.
+ * **Time granularity** The time granularity varies with the time range specified by the StartTime and EndTime parameters. The following table describes the time period within which historical data is available and the data delay.
+ * |Time granularity|Maximum time range per query|Historical data available|Data delay|
+ * |---|---|---|---|
+ * |1 minute|1 hour|7 days|5 minutes|
+ * |5 minutes|3 days|93 days|15 minutes|
+ * |1 hour|31 days|186 days|4 hours|
  *
  * @param request DescribeDcdnDomainRealTimeReqHitRateDataRequest
  * @param runtime runtime options for this request RuntimeOptions
@@ -35263,11 +35594,15 @@ func (client *Client) DescribeDcdnDomainRealTimeReqHitRateDataWithOptions(reques
 }
 
 /**
- * #
- * *   You can call this operation up to 10 times per second per account.
- * *   The network traffic destined for different domain names may be redirected to the same origin server. Therefore, the byte hit ratios may be inaccurate. The accuracy of query results is based on the actual configurations.
- * *   If you do not set the **StartTime** or **EndTime** parameter, the request returns the data collected in the last hour. If you set both the **StartTime** and **EndTime** parameters, the request returns the data collected within the specified time range.
- * **Time granularity** The time granularity varies with the time range specified by the StartTime and EndTime parameters. The following table describes the time period within which historical data is available and the data delay. |Time granularity |Maximum time range per query |Historical data available|Data delay| |---------------|--------| |1 minute|1 hour|7 days|5 minutes| |5 minutes|3 days|93 days|15 minutes| |1 hour|31 days|186 days|4 hours|
+ * * You can call this operation up to 10 times per second per user.
+ * * The network traffic destined for different domain names may be redirected to the same origin server. Therefore, the byte hit ratios may be inaccurate. The accuracy of query results is based on the actual configurations.
+ * * If you do not set the **StartTime** or **EndTime** parameter, the request returns the data collected in the last hour. If you set both the **StartTime** and **EndTime** parameters, the request returns the data collected within the specified time range.
+ * **Time granularity** The time granularity varies with the time range specified by the StartTime and EndTime parameters. The following table describes the time period within which historical data is available and the data delay.
+ * |Time granularity|Maximum time range per query|Historical data available|Data delay|
+ * |---|---|---|---|
+ * |1 minute|1 hour|7 days|5 minutes|
+ * |5 minutes|3 days|93 days|15 minutes|
+ * |1 hour|31 days|186 days|4 hours|
  *
  * @param request DescribeDcdnDomainRealTimeReqHitRateDataRequest
  * @return DescribeDcdnDomainRealTimeReqHitRateDataResponse
@@ -35740,7 +36075,6 @@ func (client *Client) DescribeDcdnDomainStagingConfig(request *DescribeDcdnDomai
 }
 
 /**
- * **Before you call this operation, take note of the following rules:**
  * *   If you do not set the StartTime parameter, the data on the previous day is queried.
  * *   You can specify only one domain name.
  *
@@ -35790,7 +36124,6 @@ func (client *Client) DescribeDcdnDomainTopReferVisitWithOptions(request *Descri
 }
 
 /**
- * **Before you call this operation, take note of the following rules:**
  * *   If you do not set the StartTime parameter, the data on the previous day is queried.
  * *   You can specify only one domain name.
  *
@@ -36068,7 +36401,6 @@ func (client *Client) DescribeDcdnDomainUsageData(request *DescribeDcdnDomainUsa
 }
 
 /**
- * ****
  * *   If you do not set the StartTime or EndTime parameter, the request returns the data collected in the last 24 hours. If you set both these parameters, the request returns the data collected within the specified time range.
  * *   You can specify only one accelerated domain name or all the accelerated domain names that belong to your Alibaba Cloud account.
  *
@@ -36118,7 +36450,6 @@ func (client *Client) DescribeDcdnDomainUvDataWithOptions(request *DescribeDcdnD
 }
 
 /**
- * ****
  * *   If you do not set the StartTime or EndTime parameter, the request returns the data collected in the last 24 hours. If you set both these parameters, the request returns the data collected within the specified time range.
  * *   You can specify only one accelerated domain name or all the accelerated domain names that belong to your Alibaba Cloud account.
  *
@@ -37273,8 +37604,9 @@ func (client *Client) DescribeDcdnRealTimeDeliveryField(request *DescribeDcdnRea
 }
 
 /**
- * > * You can call the **RefreshDcdnObjectCaches** operation to refresh content and call the **PreloadDcdnObjectCaches** operation to prefetch content.
- * > *   You can call this operation up to 20 times per second per account.
+ * >
+ * *   You can call the **RefreshDcdnObjectCaches** operation to refresh content and call the **PreloadDcdnObjectCaches** operation to prefetch content.
+ * *   You can call this operation up to 20 times per second per account.
  *
  * @param request DescribeDcdnRefreshQuotaRequest
  * @param runtime runtime options for this request RuntimeOptions
@@ -37318,8 +37650,9 @@ func (client *Client) DescribeDcdnRefreshQuotaWithOptions(request *DescribeDcdnR
 }
 
 /**
- * > * You can call the **RefreshDcdnObjectCaches** operation to refresh content and call the **PreloadDcdnObjectCaches** operation to prefetch content.
- * > *   You can call this operation up to 20 times per second per account.
+ * >
+ * *   You can call the **RefreshDcdnObjectCaches** operation to refresh content and call the **PreloadDcdnObjectCaches** operation to prefetch content.
+ * *   You can call this operation up to 20 times per second per account.
  *
  * @param request DescribeDcdnRefreshQuotaRequest
  * @return DescribeDcdnRefreshQuotaResponse
@@ -38137,7 +38470,7 @@ func (client *Client) DescribeDcdnStagingIp() (_result *DescribeDcdnStagingIpRes
 /**
  * >
  * *   By default, this operation queries all custom operations reports. However, only one operations report can be displayed. Therefore, only one operations report is returned.
- * *   You can call this operation up to three times per second per account.
+ * *   You can call this API operation up to three times per second per account.
  *
  * @param request DescribeDcdnSubListRequest
  * @param runtime runtime options for this request RuntimeOptions
@@ -38168,7 +38501,7 @@ func (client *Client) DescribeDcdnSubListWithOptions(runtime *util.RuntimeOption
 /**
  * >
  * *   By default, this operation queries all custom operations reports. However, only one operations report can be displayed. Therefore, only one operations report is returned.
- * *   You can call this operation up to three times per second per account.
+ * *   You can call this API operation up to three times per second per account.
  *
  * @return DescribeDcdnSubListResponse
  */
@@ -38249,7 +38582,7 @@ func (client *Client) DescribeDcdnTagResources(request *DescribeDcdnTagResources
 }
 
 /**
- * \\*\\*Before you call this operation, pay attention to the following considerations:\\*\\* If you do not specify the StartTime and EndTime parameters, the data within the current month is queried by default. If you specify the StartTime and EndTime parameters, the data within the specified time range is queried.
+ * If you do not specify the StartTime and EndTime parameters, the data within the current month is queried. If you specify the StartTime and EndTime parameters, the data within the specified time range is queried.
  *
  * @param request DescribeDcdnTopDomainsByFlowRequest
  * @param runtime runtime options for this request RuntimeOptions
@@ -38297,7 +38630,7 @@ func (client *Client) DescribeDcdnTopDomainsByFlowWithOptions(request *DescribeD
 }
 
 /**
- * \\*\\*Before you call this operation, pay attention to the following considerations:\\*\\* If you do not specify the StartTime and EndTime parameters, the data within the current month is queried by default. If you specify the StartTime and EndTime parameters, the data within the specified time range is queried.
+ * If you do not specify the StartTime and EndTime parameters, the data within the current month is queried. If you specify the StartTime and EndTime parameters, the data within the specified time range is queried.
  *
  * @param request DescribeDcdnTopDomainsByFlowRequest
  * @return DescribeDcdnTopDomainsByFlowResponse
@@ -38587,6 +38920,10 @@ func (client *Client) DescribeDcdnUserDomainsWithOptions(request *DescribeDcdnUs
 
 	if !tea.BoolValue(util.IsUnset(request.Tag)) {
 		query["Tag"] = request.Tag
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.WebSiteType)) {
+		query["WebSiteType"] = request.WebSiteType
 	}
 
 	req := &openapi.OpenApiRequest{
@@ -40838,6 +41175,50 @@ func (client *Client) DescribeRoutineCodeRevision(request *DescribeRoutineCodeRe
 	return _result, _err
 }
 
+func (client *Client) DescribeRoutineRelatedDomainsWithOptions(request *DescribeRoutineRelatedDomainsRequest, runtime *util.RuntimeOptions) (_result *DescribeRoutineRelatedDomainsResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	body := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.Name)) {
+		body["Name"] = request.Name
+	}
+
+	req := &openapi.OpenApiRequest{
+		Body: openapiutil.ParseToMap(body),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("DescribeRoutineRelatedDomains"),
+		Version:     tea.String("2018-01-15"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &DescribeRoutineRelatedDomainsResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) DescribeRoutineRelatedDomains(request *DescribeRoutineRelatedDomainsRequest) (_result *DescribeRoutineRelatedDomainsResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &DescribeRoutineRelatedDomainsResponse{}
+	_body, _err := client.DescribeRoutineRelatedDomainsWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
 /**
  * > You can call this operation up to 100 times per second per account.
  *
@@ -41727,8 +42108,9 @@ func (client *Client) ModifyDcdnWafRule(request *ModifyDcdnWafRuleRequest) (_res
 }
 
 /**
- * > *   DCDN can be activated only once per Alibaba Cloud account. The Alibaba Cloud account must pass real-name verification.
- * >*   You can call this operation up to 5 times per second per account.
+ * >
+ * *   DCDN can be activated only once per Alibaba Cloud account. The Alibaba Cloud account must pass real-name verification.
+ * *   You can call this operation up to five times per second per user.
  *
  * @param request OpenDcdnServiceRequest
  * @param runtime runtime options for this request RuntimeOptions
@@ -41780,8 +42162,9 @@ func (client *Client) OpenDcdnServiceWithOptions(request *OpenDcdnServiceRequest
 }
 
 /**
- * > *   DCDN can be activated only once per Alibaba Cloud account. The Alibaba Cloud account must pass real-name verification.
- * >*   You can call this operation up to 5 times per second per account.
+ * >
+ * *   DCDN can be activated only once per Alibaba Cloud account. The Alibaba Cloud account must pass real-name verification.
+ * *   You can call this operation up to five times per second per user.
  *
  * @param request OpenDcdnServiceRequest
  * @return OpenDcdnServiceResponse
@@ -41798,14 +42181,13 @@ func (client *Client) OpenDcdnService(request *OpenDcdnServiceRequest) (_result 
 }
 
 /**
- * #
  * *   You can call the [RefreshDcdnObjectCaches](~~130620~~) operation to refresh content and call the [PreloadDcdnObjectCaches](~~130636~~) operation to prefetch content.
  * *   Dynamic Content Delivery Network (DCDN) supports POST requests in which parameters are sent as a form.
  * *   By default, each Alibaba Cloud account can submit up to 1,000 URLs per day. If the daily peak bandwidth value of your workloads exceeds 200 Mbit/s, you can [submit a ticket](https://account.alibabacloud.com/login/login.htm?oauth_callback=https%3A//ticket-intl.console.aliyun.com/%23/ticket/createIndex) to increase your daily quota. Alibaba Cloud reviews your application and then increases the quota accordingly.
- * *   You can specify at most 100 URLs in each prefetch request.
- * *   The prefetch queue of each Alibaba Cloud account can contain up to 50,000 URLs. DCDN executes prefetch tasks based on the time at which you submit the URLs.
+ * *   You can specify up to 100 URLs to prefetch.
+ * *   The prefetch queue of each Alibaba Cloud account can contain up to 100,000 URLs. DCDN executes prefetch tasks based on the time at which you submit the URLs.
  * *   You can call this operation up to 15 times per second per account.
- * # Usage notes
+ * ## Description
  * *   After a refresh task is submitted and completed, the POPs immediately start to retrieve resources from the origin server. Therefore, a large number of refresh tasks cause a large number of concurrent download tasks. This increases the number of requests that are redirected to the origin server. The back-to-origin routing process consumes more bandwidth resources and the origin server may be overwhelmed.
  * *   The time required for a prefetch task to complete is proportional to the size of the prefetched file. In actual practice, most prefetch tasks require 5 to 30 minutes to complete. A task with a smaller average file size requires less time.
  * *   To allow RAM users to perform this operation, you need to first grant them the required permissions. For more information, see [Authorize a RAM user to prefetch and refresh resources](~~445051~~).
@@ -41868,14 +42250,13 @@ func (client *Client) PreloadDcdnObjectCachesWithOptions(request *PreloadDcdnObj
 }
 
 /**
- * #
  * *   You can call the [RefreshDcdnObjectCaches](~~130620~~) operation to refresh content and call the [PreloadDcdnObjectCaches](~~130636~~) operation to prefetch content.
  * *   Dynamic Content Delivery Network (DCDN) supports POST requests in which parameters are sent as a form.
  * *   By default, each Alibaba Cloud account can submit up to 1,000 URLs per day. If the daily peak bandwidth value of your workloads exceeds 200 Mbit/s, you can [submit a ticket](https://account.alibabacloud.com/login/login.htm?oauth_callback=https%3A//ticket-intl.console.aliyun.com/%23/ticket/createIndex) to increase your daily quota. Alibaba Cloud reviews your application and then increases the quota accordingly.
- * *   You can specify at most 100 URLs in each prefetch request.
- * *   The prefetch queue of each Alibaba Cloud account can contain up to 50,000 URLs. DCDN executes prefetch tasks based on the time at which you submit the URLs.
+ * *   You can specify up to 100 URLs to prefetch.
+ * *   The prefetch queue of each Alibaba Cloud account can contain up to 100,000 URLs. DCDN executes prefetch tasks based on the time at which you submit the URLs.
  * *   You can call this operation up to 15 times per second per account.
- * # Usage notes
+ * ## Description
  * *   After a refresh task is submitted and completed, the POPs immediately start to retrieve resources from the origin server. Therefore, a large number of refresh tasks cause a large number of concurrent download tasks. This increases the number of requests that are redirected to the origin server. The back-to-origin routing process consumes more bandwidth resources and the origin server may be overwhelmed.
  * *   The time required for a prefetch task to complete is proportional to the size of the prefetched file. In actual practice, most prefetch tasks require 5 to 30 minutes to complete. A task with a smaller average file size requires less time.
  * *   To allow RAM users to perform this operation, you need to first grant them the required permissions. For more information, see [Authorize a RAM user to prefetch and refresh resources](~~445051~~).
@@ -42804,8 +43185,8 @@ func (client *Client) SetRoutineSubdomain(request *SetRoutineSubdomainRequest) (
 
 /**
  * >
- * *   If an accelerated domain is in an invalid state or your account has an overdue payment, the accelerated domain cannot be enabled.
- * *   The maximum number of times that each user can call this operation per second is 30.
+ * *   If an accelerated domain name is in invalid state or your account has an overdue payment, the accelerated domain name cannot be enabled.
+ * *   You can call this operation up to 30 times per second per account.
  *
  * @param request StartDcdnDomainRequest
  * @param runtime runtime options for this request RuntimeOptions
@@ -42854,8 +43235,8 @@ func (client *Client) StartDcdnDomainWithOptions(request *StartDcdnDomainRequest
 
 /**
  * >
- * *   If an accelerated domain is in an invalid state or your account has an overdue payment, the accelerated domain cannot be enabled.
- * *   The maximum number of times that each user can call this operation per second is 30.
+ * *   If an accelerated domain name is in invalid state or your account has an overdue payment, the accelerated domain name cannot be enabled.
+ * *   You can call this operation up to 30 times per second per account.
  *
  * @param request StartDcdnDomainRequest
  * @return StartDcdnDomainResponse
@@ -42940,8 +43321,8 @@ func (client *Client) StartDcdnIpaDomain(request *StartDcdnIpaDomainRequest) (_r
 
 /**
  * >
- * *   After the accelerated domain is disabled, Dynamic Route for CDN retains its information and reroutes all the requests that are destined for the accelerated domain to the origin.
- * *   The maximum number of times that each user can call this operation per second is 30.
+ * *   After an accelerated domain is disabled, Dynamic Content Delivery Network (DCDN) retains its information and routes all the requests that are destined for the accelerated domain to the origin server.
+ * *   You can call this operation up to 30 times per second per account.
  *
  * @param request StopDcdnDomainRequest
  * @param runtime runtime options for this request RuntimeOptions
@@ -42990,8 +43371,8 @@ func (client *Client) StopDcdnDomainWithOptions(request *StopDcdnDomainRequest, 
 
 /**
  * >
- * *   After the accelerated domain is disabled, Dynamic Route for CDN retains its information and reroutes all the requests that are destined for the accelerated domain to the origin.
- * *   The maximum number of times that each user can call this operation per second is 30.
+ * *   After an accelerated domain is disabled, Dynamic Content Delivery Network (DCDN) retains its information and routes all the requests that are destined for the accelerated domain to the origin server.
+ * *   You can call this operation up to 30 times per second per account.
  *
  * @param request StopDcdnDomainRequest
  * @return StopDcdnDomainResponse
