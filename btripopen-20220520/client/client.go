@@ -4205,14 +4205,15 @@ func (s *ApplyAddRequestExternalTravelerList) SetUserName(v string) *ApplyAddReq
 }
 
 type ApplyAddRequestExternalTravelerStandard struct {
-	BusinessDiscount       *int32                                               `json:"business_discount,omitempty" xml:"business_discount,omitempty"`
-	EconomyDiscount        *int32                                               `json:"economy_discount,omitempty" xml:"economy_discount,omitempty"`
-	FirstDiscount          *int32                                               `json:"first_discount,omitempty" xml:"first_discount,omitempty"`
-	FlightCabins           *string                                              `json:"flight_cabins,omitempty" xml:"flight_cabins,omitempty"`
-	HotelCitys             []*ApplyAddRequestExternalTravelerStandardHotelCitys `json:"hotel_citys,omitempty" xml:"hotel_citys,omitempty" type:"Repeated"`
-	PremiumEconomyDiscount *int32                                               `json:"premium_economy_discount,omitempty" xml:"premium_economy_discount,omitempty"`
-	ReserveType            *int32                                               `json:"reserve_type,omitempty" xml:"reserve_type,omitempty"`
-	TrainSeats             *string                                              `json:"train_seats,omitempty" xml:"train_seats,omitempty"`
+	BusinessDiscount          *int32                                               `json:"business_discount,omitempty" xml:"business_discount,omitempty"`
+	EconomyDiscount           *int32                                               `json:"economy_discount,omitempty" xml:"economy_discount,omitempty"`
+	FirstDiscount             *int32                                               `json:"first_discount,omitempty" xml:"first_discount,omitempty"`
+	FlightCabins              *string                                              `json:"flight_cabins,omitempty" xml:"flight_cabins,omitempty"`
+	HotelCitys                []*ApplyAddRequestExternalTravelerStandardHotelCitys `json:"hotel_citys,omitempty" xml:"hotel_citys,omitempty" type:"Repeated"`
+	InternationalFlightCabins *string                                              `json:"international_flight_cabins,omitempty" xml:"international_flight_cabins,omitempty"`
+	PremiumEconomyDiscount    *int32                                               `json:"premium_economy_discount,omitempty" xml:"premium_economy_discount,omitempty"`
+	ReserveType               *int32                                               `json:"reserve_type,omitempty" xml:"reserve_type,omitempty"`
+	TrainSeats                *string                                              `json:"train_seats,omitempty" xml:"train_seats,omitempty"`
 }
 
 func (s ApplyAddRequestExternalTravelerStandard) String() string {
@@ -4245,6 +4246,11 @@ func (s *ApplyAddRequestExternalTravelerStandard) SetFlightCabins(v string) *App
 
 func (s *ApplyAddRequestExternalTravelerStandard) SetHotelCitys(v []*ApplyAddRequestExternalTravelerStandardHotelCitys) *ApplyAddRequestExternalTravelerStandard {
 	s.HotelCitys = v
+	return s
+}
+
+func (s *ApplyAddRequestExternalTravelerStandard) SetInternationalFlightCabins(v string) *ApplyAddRequestExternalTravelerStandard {
+	s.InternationalFlightCabins = &v
 	return s
 }
 
@@ -4535,15 +4541,16 @@ func (s *ApplyAddRequestTravelerList) SetUserName(v string) *ApplyAddRequestTrav
 }
 
 type ApplyAddRequestTravelerStandard struct {
-	BusinessDiscount       *int32                                       `json:"business_discount,omitempty" xml:"business_discount,omitempty"`
-	EconomyDiscount        *int32                                       `json:"economy_discount,omitempty" xml:"economy_discount,omitempty"`
-	FirstDiscount          *int32                                       `json:"first_discount,omitempty" xml:"first_discount,omitempty"`
-	FlightCabins           *string                                      `json:"flight_cabins,omitempty" xml:"flight_cabins,omitempty"`
-	HotelCitys             []*ApplyAddRequestTravelerStandardHotelCitys `json:"hotel_citys,omitempty" xml:"hotel_citys,omitempty" type:"Repeated"`
-	PremiumEconomyDiscount *int32                                       `json:"premium_economy_discount,omitempty" xml:"premium_economy_discount,omitempty"`
-	ReserveType            *int32                                       `json:"reserve_type,omitempty" xml:"reserve_type,omitempty"`
-	TrainSeats             *string                                      `json:"train_seats,omitempty" xml:"train_seats,omitempty"`
-	UserId                 *string                                      `json:"user_id,omitempty" xml:"user_id,omitempty"`
+	BusinessDiscount          *int32                                       `json:"business_discount,omitempty" xml:"business_discount,omitempty"`
+	EconomyDiscount           *int32                                       `json:"economy_discount,omitempty" xml:"economy_discount,omitempty"`
+	FirstDiscount             *int32                                       `json:"first_discount,omitempty" xml:"first_discount,omitempty"`
+	FlightCabins              *string                                      `json:"flight_cabins,omitempty" xml:"flight_cabins,omitempty"`
+	HotelCitys                []*ApplyAddRequestTravelerStandardHotelCitys `json:"hotel_citys,omitempty" xml:"hotel_citys,omitempty" type:"Repeated"`
+	InternationalFlightCabins *string                                      `json:"international_flight_cabins,omitempty" xml:"international_flight_cabins,omitempty"`
+	PremiumEconomyDiscount    *int32                                       `json:"premium_economy_discount,omitempty" xml:"premium_economy_discount,omitempty"`
+	ReserveType               *int32                                       `json:"reserve_type,omitempty" xml:"reserve_type,omitempty"`
+	TrainSeats                *string                                      `json:"train_seats,omitempty" xml:"train_seats,omitempty"`
+	UserId                    *string                                      `json:"user_id,omitempty" xml:"user_id,omitempty"`
 }
 
 func (s ApplyAddRequestTravelerStandard) String() string {
@@ -4576,6 +4583,11 @@ func (s *ApplyAddRequestTravelerStandard) SetFlightCabins(v string) *ApplyAddReq
 
 func (s *ApplyAddRequestTravelerStandard) SetHotelCitys(v []*ApplyAddRequestTravelerStandardHotelCitys) *ApplyAddRequestTravelerStandard {
 	s.HotelCitys = v
+	return s
+}
+
+func (s *ApplyAddRequestTravelerStandard) SetInternationalFlightCabins(v string) *ApplyAddRequestTravelerStandard {
+	s.InternationalFlightCabins = &v
 	return s
 }
 
