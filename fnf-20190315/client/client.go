@@ -15,6 +15,7 @@ import (
 type CreateFlowRequest struct {
 	Definition              *string `json:"Definition,omitempty" xml:"Definition,omitempty"`
 	Description             *string `json:"Description,omitempty" xml:"Description,omitempty"`
+	ExecutionMode           *string `json:"ExecutionMode,omitempty" xml:"ExecutionMode,omitempty"`
 	ExternalStorageLocation *string `json:"ExternalStorageLocation,omitempty" xml:"ExternalStorageLocation,omitempty"`
 	Name                    *string `json:"Name,omitempty" xml:"Name,omitempty"`
 	RequestId               *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
@@ -37,6 +38,11 @@ func (s *CreateFlowRequest) SetDefinition(v string) *CreateFlowRequest {
 
 func (s *CreateFlowRequest) SetDescription(v string) *CreateFlowRequest {
 	s.Description = &v
+	return s
+}
+
+func (s *CreateFlowRequest) SetExecutionMode(v string) *CreateFlowRequest {
+	s.ExecutionMode = &v
 	return s
 }
 
@@ -69,6 +75,7 @@ type CreateFlowResponseBody struct {
 	CreatedTime      *string `json:"CreatedTime,omitempty" xml:"CreatedTime,omitempty"`
 	Definition       *string `json:"Definition,omitempty" xml:"Definition,omitempty"`
 	Description      *string `json:"Description,omitempty" xml:"Description,omitempty"`
+	ExecutionMode    *string `json:"ExecutionMode,omitempty" xml:"ExecutionMode,omitempty"`
 	Id               *string `json:"Id,omitempty" xml:"Id,omitempty"`
 	LastModifiedTime *string `json:"LastModifiedTime,omitempty" xml:"LastModifiedTime,omitempty"`
 	Name             *string `json:"Name,omitempty" xml:"Name,omitempty"`
@@ -97,6 +104,11 @@ func (s *CreateFlowResponseBody) SetDefinition(v string) *CreateFlowResponseBody
 
 func (s *CreateFlowResponseBody) SetDescription(v string) *CreateFlowResponseBody {
 	s.Description = &v
+	return s
+}
+
+func (s *CreateFlowResponseBody) SetExecutionMode(v string) *CreateFlowResponseBody {
+	s.ExecutionMode = &v
 	return s
 }
 
@@ -606,6 +618,7 @@ type DescribeFlowResponseBody struct {
 	CreatedTime      *string `json:"CreatedTime,omitempty" xml:"CreatedTime,omitempty"`
 	Definition       *string `json:"Definition,omitempty" xml:"Definition,omitempty"`
 	Description      *string `json:"Description,omitempty" xml:"Description,omitempty"`
+	ExecutionMode    *string `json:"ExecutionMode,omitempty" xml:"ExecutionMode,omitempty"`
 	Id               *string `json:"Id,omitempty" xml:"Id,omitempty"`
 	LastModifiedTime *string `json:"LastModifiedTime,omitempty" xml:"LastModifiedTime,omitempty"`
 	Name             *string `json:"Name,omitempty" xml:"Name,omitempty"`
@@ -634,6 +647,11 @@ func (s *DescribeFlowResponseBody) SetDefinition(v string) *DescribeFlowResponse
 
 func (s *DescribeFlowResponseBody) SetDescription(v string) *DescribeFlowResponseBody {
 	s.Description = &v
+	return s
+}
+
+func (s *DescribeFlowResponseBody) SetExecutionMode(v string) *DescribeFlowResponseBody {
+	s.ExecutionMode = &v
 	return s
 }
 
@@ -1203,6 +1221,7 @@ type ListFlowsResponseBodyFlows struct {
 	CreatedTime      *string `json:"CreatedTime,omitempty" xml:"CreatedTime,omitempty"`
 	Definition       *string `json:"Definition,omitempty" xml:"Definition,omitempty"`
 	Description      *string `json:"Description,omitempty" xml:"Description,omitempty"`
+	ExecutionMode    *string `json:"ExecutionMode,omitempty" xml:"ExecutionMode,omitempty"`
 	Id               *string `json:"Id,omitempty" xml:"Id,omitempty"`
 	LastModifiedTime *string `json:"LastModifiedTime,omitempty" xml:"LastModifiedTime,omitempty"`
 	Name             *string `json:"Name,omitempty" xml:"Name,omitempty"`
@@ -1230,6 +1249,11 @@ func (s *ListFlowsResponseBodyFlows) SetDefinition(v string) *ListFlowsResponseB
 
 func (s *ListFlowsResponseBodyFlows) SetDescription(v string) *ListFlowsResponseBodyFlows {
 	s.Description = &v
+	return s
+}
+
+func (s *ListFlowsResponseBodyFlows) SetExecutionMode(v string) *ListFlowsResponseBodyFlows {
+	s.ExecutionMode = &v
 	return s
 }
 
@@ -2241,6 +2265,10 @@ func (client *Client) CreateFlowWithOptions(request *CreateFlowRequest, runtime 
 
 	if !tea.BoolValue(util.IsUnset(request.Description)) {
 		body["Description"] = request.Description
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ExecutionMode)) {
+		body["ExecutionMode"] = request.ExecutionMode
 	}
 
 	if !tea.BoolValue(util.IsUnset(request.ExternalStorageLocation)) {
