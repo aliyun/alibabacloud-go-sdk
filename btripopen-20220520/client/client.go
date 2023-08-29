@@ -21506,17 +21506,18 @@ func (s *FlightModifyOrderDetailV2ResponseBodyModuleDestFlightInfoDTOSSegmentPos
 }
 
 type FlightModifyOrderDetailV2ResponseBodyModuleTravelerInfoDTOS struct {
-	BirthDate       *string   `json:"birth_date,omitempty" xml:"birth_date,omitempty"`
-	CertNo          *string   `json:"cert_no,omitempty" xml:"cert_no,omitempty"`
-	CertType        *int32    `json:"cert_type,omitempty" xml:"cert_type,omitempty"`
-	Gender          *int32    `json:"gender,omitempty" xml:"gender,omitempty"`
-	OriginTicketNos []*string `json:"origin_ticket_nos,omitempty" xml:"origin_ticket_nos,omitempty" type:"Repeated"`
-	PassengerId     *string   `json:"passenger_id,omitempty" xml:"passenger_id,omitempty"`
-	PassengerName   *string   `json:"passenger_name,omitempty" xml:"passenger_name,omitempty"`
-	PassengerType   *int32    `json:"passenger_type,omitempty" xml:"passenger_type,omitempty"`
-	Phone           *string   `json:"phone,omitempty" xml:"phone,omitempty"`
-	Pid             *int64    `json:"pid,omitempty" xml:"pid,omitempty"`
-	TicketNos       []*string `json:"ticket_nos,omitempty" xml:"ticket_nos,omitempty" type:"Repeated"`
+	BirthDate       *string                                                               `json:"birth_date,omitempty" xml:"birth_date,omitempty"`
+	CertNo          *string                                                               `json:"cert_no,omitempty" xml:"cert_no,omitempty"`
+	CertType        *int32                                                                `json:"cert_type,omitempty" xml:"cert_type,omitempty"`
+	ChangeFee       *FlightModifyOrderDetailV2ResponseBodyModuleTravelerInfoDTOSChangeFee `json:"change_fee,omitempty" xml:"change_fee,omitempty" type:"Struct"`
+	Gender          *int32                                                                `json:"gender,omitempty" xml:"gender,omitempty"`
+	OriginTicketNos []*string                                                             `json:"origin_ticket_nos,omitempty" xml:"origin_ticket_nos,omitempty" type:"Repeated"`
+	PassengerId     *string                                                               `json:"passenger_id,omitempty" xml:"passenger_id,omitempty"`
+	PassengerName   *string                                                               `json:"passenger_name,omitempty" xml:"passenger_name,omitempty"`
+	PassengerType   *int32                                                                `json:"passenger_type,omitempty" xml:"passenger_type,omitempty"`
+	Phone           *string                                                               `json:"phone,omitempty" xml:"phone,omitempty"`
+	Pid             *int64                                                                `json:"pid,omitempty" xml:"pid,omitempty"`
+	TicketNos       []*string                                                             `json:"ticket_nos,omitempty" xml:"ticket_nos,omitempty" type:"Repeated"`
 }
 
 func (s FlightModifyOrderDetailV2ResponseBodyModuleTravelerInfoDTOS) String() string {
@@ -21539,6 +21540,11 @@ func (s *FlightModifyOrderDetailV2ResponseBodyModuleTravelerInfoDTOS) SetCertNo(
 
 func (s *FlightModifyOrderDetailV2ResponseBodyModuleTravelerInfoDTOS) SetCertType(v int32) *FlightModifyOrderDetailV2ResponseBodyModuleTravelerInfoDTOS {
 	s.CertType = &v
+	return s
+}
+
+func (s *FlightModifyOrderDetailV2ResponseBodyModuleTravelerInfoDTOS) SetChangeFee(v *FlightModifyOrderDetailV2ResponseBodyModuleTravelerInfoDTOSChangeFee) *FlightModifyOrderDetailV2ResponseBodyModuleTravelerInfoDTOS {
+	s.ChangeFee = v
 	return s
 }
 
@@ -21579,6 +21585,35 @@ func (s *FlightModifyOrderDetailV2ResponseBodyModuleTravelerInfoDTOS) SetPid(v i
 
 func (s *FlightModifyOrderDetailV2ResponseBodyModuleTravelerInfoDTOS) SetTicketNos(v []*string) *FlightModifyOrderDetailV2ResponseBodyModuleTravelerInfoDTOS {
 	s.TicketNos = v
+	return s
+}
+
+type FlightModifyOrderDetailV2ResponseBodyModuleTravelerInfoDTOSChangeFee struct {
+	ChangeFee    *int64 `json:"change_fee,omitempty" xml:"change_fee,omitempty"`
+	ServiceFee   *int64 `json:"service_fee,omitempty" xml:"service_fee,omitempty"`
+	UpgradePrice *int64 `json:"upgrade_price,omitempty" xml:"upgrade_price,omitempty"`
+}
+
+func (s FlightModifyOrderDetailV2ResponseBodyModuleTravelerInfoDTOSChangeFee) String() string {
+	return tea.Prettify(s)
+}
+
+func (s FlightModifyOrderDetailV2ResponseBodyModuleTravelerInfoDTOSChangeFee) GoString() string {
+	return s.String()
+}
+
+func (s *FlightModifyOrderDetailV2ResponseBodyModuleTravelerInfoDTOSChangeFee) SetChangeFee(v int64) *FlightModifyOrderDetailV2ResponseBodyModuleTravelerInfoDTOSChangeFee {
+	s.ChangeFee = &v
+	return s
+}
+
+func (s *FlightModifyOrderDetailV2ResponseBodyModuleTravelerInfoDTOSChangeFee) SetServiceFee(v int64) *FlightModifyOrderDetailV2ResponseBodyModuleTravelerInfoDTOSChangeFee {
+	s.ServiceFee = &v
+	return s
+}
+
+func (s *FlightModifyOrderDetailV2ResponseBodyModuleTravelerInfoDTOSChangeFee) SetUpgradePrice(v int64) *FlightModifyOrderDetailV2ResponseBodyModuleTravelerInfoDTOSChangeFee {
+	s.UpgradePrice = &v
 	return s
 }
 
