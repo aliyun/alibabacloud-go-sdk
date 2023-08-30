@@ -80,11 +80,10 @@ func (s *Alias) SetVersionId(v string) *Alias {
 type AsyncConfig struct {
 	CreatedTime               *string            `json:"createdTime,omitempty" xml:"createdTime,omitempty"`
 	DestinationConfig         *DestinationConfig `json:"destinationConfig,omitempty" xml:"destinationConfig,omitempty"`
-	FunctionName              *string            `json:"functionName,omitempty" xml:"functionName,omitempty"`
+	FunctionArn               *string            `json:"functionArn,omitempty" xml:"functionArn,omitempty"`
 	LastModifiedTime          *string            `json:"lastModifiedTime,omitempty" xml:"lastModifiedTime,omitempty"`
 	MaxAsyncEventAgeInSeconds *int64             `json:"maxAsyncEventAgeInSeconds,omitempty" xml:"maxAsyncEventAgeInSeconds,omitempty"`
 	MaxAsyncRetryAttempts     *int64             `json:"maxAsyncRetryAttempts,omitempty" xml:"maxAsyncRetryAttempts,omitempty"`
-	Qualifier                 *string            `json:"qualifier,omitempty" xml:"qualifier,omitempty"`
 }
 
 func (s AsyncConfig) String() string {
@@ -105,8 +104,8 @@ func (s *AsyncConfig) SetDestinationConfig(v *DestinationConfig) *AsyncConfig {
 	return s
 }
 
-func (s *AsyncConfig) SetFunctionName(v string) *AsyncConfig {
-	s.FunctionName = &v
+func (s *AsyncConfig) SetFunctionArn(v string) *AsyncConfig {
+	s.FunctionArn = &v
 	return s
 }
 
@@ -125,8 +124,26 @@ func (s *AsyncConfig) SetMaxAsyncRetryAttempts(v int64) *AsyncConfig {
 	return s
 }
 
-func (s *AsyncConfig) SetQualifier(v string) *AsyncConfig {
-	s.Qualifier = &v
+type AuthConfig struct {
+	AuthInfo *string `json:"authInfo,omitempty" xml:"authInfo,omitempty"`
+	AuthType *string `json:"authType,omitempty" xml:"authType,omitempty"`
+}
+
+func (s AuthConfig) String() string {
+	return tea.Prettify(s)
+}
+
+func (s AuthConfig) GoString() string {
+	return s.String()
+}
+
+func (s *AuthConfig) SetAuthInfo(v string) *AuthConfig {
+	s.AuthInfo = &v
+	return s
+}
+
+func (s *AuthConfig) SetAuthType(v string) *AuthConfig {
+	s.AuthType = &v
 	return s
 }
 
@@ -218,6 +235,7 @@ func (s *CreateAliasInput) SetVersionId(v string) *CreateAliasInput {
 }
 
 type CreateCustomDomainInput struct {
+	AuthConfig  *AuthConfig  `json:"authConfig,omitempty" xml:"authConfig,omitempty"`
 	CertConfig  *CertConfig  `json:"certConfig,omitempty" xml:"certConfig,omitempty"`
 	DomainName  *string      `json:"domainName,omitempty" xml:"domainName,omitempty"`
 	Protocol    *string      `json:"protocol,omitempty" xml:"protocol,omitempty"`
@@ -232,6 +250,11 @@ func (s CreateCustomDomainInput) String() string {
 
 func (s CreateCustomDomainInput) GoString() string {
 	return s.String()
+}
+
+func (s *CreateCustomDomainInput) SetAuthConfig(v *AuthConfig) *CreateCustomDomainInput {
+	s.AuthConfig = v
+	return s
 }
 
 func (s *CreateCustomDomainInput) SetCertConfig(v *CertConfig) *CreateCustomDomainInput {
@@ -288,7 +311,6 @@ type CreateFunctionInput struct {
 	Runtime                 *string                  `json:"runtime,omitempty" xml:"runtime,omitempty"`
 	Timeout                 *int32                   `json:"timeout,omitempty" xml:"timeout,omitempty"`
 	TracingConfig           *TracingConfig           `json:"tracingConfig,omitempty" xml:"tracingConfig,omitempty"`
-	VpcBinding              *VPCBinding              `json:"vpcBinding,omitempty" xml:"vpcBinding,omitempty"`
 	VpcConfig               *VPCConfig               `json:"vpcConfig,omitempty" xml:"vpcConfig,omitempty"`
 }
 
@@ -415,11 +437,6 @@ func (s *CreateFunctionInput) SetTracingConfig(v *TracingConfig) *CreateFunction
 	return s
 }
 
-func (s *CreateFunctionInput) SetVpcBinding(v *VPCBinding) *CreateFunctionInput {
-	s.VpcBinding = v
-	return s
-}
-
 func (s *CreateFunctionInput) SetVpcConfig(v *VPCConfig) *CreateFunctionInput {
 	s.VpcConfig = v
 	return s
@@ -513,10 +530,27 @@ func (s *CreateTriggerInput) SetTriggerType(v string) *CreateTriggerInput {
 	return s
 }
 
+type CreateVpcBindingInput struct {
+	VpcId *string `json:"vpcId,omitempty" xml:"vpcId,omitempty"`
+}
+
+func (s CreateVpcBindingInput) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateVpcBindingInput) GoString() string {
+	return s.String()
+}
+
+func (s *CreateVpcBindingInput) SetVpcId(v string) *CreateVpcBindingInput {
+	s.VpcId = &v
+	return s
+}
+
 type CustomContainerConfig struct {
 	AccelerationInfo  *AccelerationInfo        `json:"accelerationInfo,omitempty" xml:"accelerationInfo,omitempty"`
 	AccelerationType  *string                  `json:"accelerationType,omitempty" xml:"accelerationType,omitempty"`
-	AcrInstanceID     *string                  `json:"acrInstanceID,omitempty" xml:"acrInstanceID,omitempty"`
+	AcrInstanceId     *string                  `json:"acrInstanceId,omitempty" xml:"acrInstanceId,omitempty"`
 	Command           []*string                `json:"command" xml:"command" type:"Repeated"`
 	Entrypoint        []*string                `json:"entrypoint" xml:"entrypoint" type:"Repeated"`
 	HealthCheckConfig *CustomHealthCheckConfig `json:"healthCheckConfig,omitempty" xml:"healthCheckConfig,omitempty"`
@@ -542,8 +576,8 @@ func (s *CustomContainerConfig) SetAccelerationType(v string) *CustomContainerCo
 	return s
 }
 
-func (s *CustomContainerConfig) SetAcrInstanceID(v string) *CustomContainerConfig {
-	s.AcrInstanceID = &v
+func (s *CustomContainerConfig) SetAcrInstanceId(v string) *CustomContainerConfig {
+	s.AcrInstanceId = &v
 	return s
 }
 
@@ -604,6 +638,7 @@ func (s *CustomDNS) SetSearches(v []*string) *CustomDNS {
 type CustomDomain struct {
 	AccountId        *string      `json:"accountId,omitempty" xml:"accountId,omitempty"`
 	ApiVersion       *string      `json:"apiVersion,omitempty" xml:"apiVersion,omitempty"`
+	AuthConfig       *AuthConfig  `json:"authConfig,omitempty" xml:"authConfig,omitempty"`
 	CertConfig       *CertConfig  `json:"certConfig,omitempty" xml:"certConfig,omitempty"`
 	CreatedTime      *string      `json:"createdTime,omitempty" xml:"createdTime,omitempty"`
 	DomainName       *string      `json:"domainName,omitempty" xml:"domainName,omitempty"`
@@ -630,6 +665,11 @@ func (s *CustomDomain) SetAccountId(v string) *CustomDomain {
 
 func (s *CustomDomain) SetApiVersion(v string) *CustomDomain {
 	s.ApiVersion = &v
+	return s
+}
+
+func (s *CustomDomain) SetAuthConfig(v *AuthConfig) *CustomDomain {
+	s.AuthConfig = v
 	return s
 }
 
@@ -847,9 +887,9 @@ func (s *EqualRule) SetReplacement(v string) *EqualRule {
 }
 
 type Error struct {
-	Code      *string `json:"code,omitempty" xml:"code,omitempty"`
-	Message   *string `json:"message,omitempty" xml:"message,omitempty"`
-	RequestId *string `json:"requestId,omitempty" xml:"requestId,omitempty"`
+	Code      *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	Message   *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
 func (s Error) String() string {
@@ -904,7 +944,6 @@ type Function struct {
 	Runtime                 *string                  `json:"runtime,omitempty" xml:"runtime,omitempty"`
 	Timeout                 *int32                   `json:"timeout,omitempty" xml:"timeout,omitempty"`
 	TracingConfig           *TracingConfig           `json:"tracingConfig,omitempty" xml:"tracingConfig,omitempty"`
-	VpcBinding              *VPCBinding              `json:"vpcBinding,omitempty" xml:"vpcBinding,omitempty"`
 	VpcConfig               *VPCConfig               `json:"vpcConfig,omitempty" xml:"vpcConfig,omitempty"`
 }
 
@@ -1056,11 +1095,6 @@ func (s *Function) SetTracingConfig(v *TracingConfig) *Function {
 	return s
 }
 
-func (s *Function) SetVpcBinding(v *VPCBinding) *Function {
-	s.VpcBinding = v
-	return s
-}
-
 func (s *Function) SetVpcConfig(v *VPCConfig) *Function {
 	s.VpcConfig = v
 	return s
@@ -1155,70 +1189,6 @@ func (s *HTTPTrigger) SetUrlInternet(v string) *HTTPTrigger {
 
 func (s *HTTPTrigger) SetUrlIntranet(v string) *HTTPTrigger {
 	s.UrlIntranet = &v
-	return s
-}
-
-type HealthCheckConfig struct {
-	FailureThreshold    *int32  `json:"failureThreshold,omitempty" xml:"failureThreshold,omitempty"`
-	HttpGetUrl          *string `json:"httpGetUrl,omitempty" xml:"httpGetUrl,omitempty"`
-	InitialDelaySeconds *int32  `json:"initialDelaySeconds,omitempty" xml:"initialDelaySeconds,omitempty"`
-	PeriodSeconds       *int32  `json:"periodSeconds,omitempty" xml:"periodSeconds,omitempty"`
-	SuccessThreshold    *int32  `json:"successThreshold,omitempty" xml:"successThreshold,omitempty"`
-	TimeoutSeconds      *int32  `json:"timeoutSeconds,omitempty" xml:"timeoutSeconds,omitempty"`
-}
-
-func (s HealthCheckConfig) String() string {
-	return tea.Prettify(s)
-}
-
-func (s HealthCheckConfig) GoString() string {
-	return s.String()
-}
-
-func (s *HealthCheckConfig) SetFailureThreshold(v int32) *HealthCheckConfig {
-	s.FailureThreshold = &v
-	return s
-}
-
-func (s *HealthCheckConfig) SetHttpGetUrl(v string) *HealthCheckConfig {
-	s.HttpGetUrl = &v
-	return s
-}
-
-func (s *HealthCheckConfig) SetInitialDelaySeconds(v int32) *HealthCheckConfig {
-	s.InitialDelaySeconds = &v
-	return s
-}
-
-func (s *HealthCheckConfig) SetPeriodSeconds(v int32) *HealthCheckConfig {
-	s.PeriodSeconds = &v
-	return s
-}
-
-func (s *HealthCheckConfig) SetSuccessThreshold(v int32) *HealthCheckConfig {
-	s.SuccessThreshold = &v
-	return s
-}
-
-func (s *HealthCheckConfig) SetTimeoutSeconds(v int32) *HealthCheckConfig {
-	s.TimeoutSeconds = &v
-	return s
-}
-
-type InnerRewriteConfig struct {
-	RegexRules []*RewriteRegexRule `json:"regexRules" xml:"regexRules" type:"Repeated"`
-}
-
-func (s InnerRewriteConfig) String() string {
-	return tea.Prettify(s)
-}
-
-func (s InnerRewriteConfig) GoString() string {
-	return s.String()
-}
-
-func (s *InnerRewriteConfig) SetRegexRules(v []*RewriteRegexRule) *InnerRewriteConfig {
-	s.RegexRules = v
 	return s
 }
 
@@ -1679,6 +1649,23 @@ func (s *ListVersionsOutput) SetVersions(v []*Version) *ListVersionsOutput {
 	return s
 }
 
+type ListVpcBindingsOutput struct {
+	VpcIds []*string `json:"vpcIds" xml:"vpcIds" type:"Repeated"`
+}
+
+func (s ListVpcBindingsOutput) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListVpcBindingsOutput) GoString() string {
+	return s.String()
+}
+
+func (s *ListVpcBindingsOutput) SetVpcIds(v []*string) *ListVpcBindingsOutput {
+	s.VpcIds = v
+	return s
+}
+
 type LogConfig struct {
 	EnableInstanceMetrics *bool   `json:"enableInstanceMetrics,omitempty" xml:"enableInstanceMetrics,omitempty"`
 	EnableRequestMetrics  *bool   `json:"enableRequestMetrics,omitempty" xml:"enableRequestMetrics,omitempty"`
@@ -1883,14 +1870,11 @@ func (s *OutputFuncCode) SetUrl(v string) *OutputFuncCode {
 }
 
 type PathConfig struct {
-	AccountId          *string             `json:"accountId,omitempty" xml:"accountId,omitempty"`
-	FunctionName       *string             `json:"functionName,omitempty" xml:"functionName,omitempty"`
-	InnerRewriteConfig *InnerRewriteConfig `json:"innerRewriteConfig,omitempty" xml:"innerRewriteConfig,omitempty"`
-	Methods            []*string           `json:"methods" xml:"methods" type:"Repeated"`
-	Path               *string             `json:"path,omitempty" xml:"path,omitempty"`
-	Qualifier          *string             `json:"qualifier,omitempty" xml:"qualifier,omitempty"`
-	RewriteConfig      *RewriteConfig      `json:"rewriteConfig,omitempty" xml:"rewriteConfig,omitempty"`
-	ServiceName        *string             `json:"serviceName,omitempty" xml:"serviceName,omitempty"`
+	FunctionName  *string        `json:"functionName,omitempty" xml:"functionName,omitempty"`
+	Methods       []*string      `json:"methods" xml:"methods" type:"Repeated"`
+	Path          *string        `json:"path,omitempty" xml:"path,omitempty"`
+	Qualifier     *string        `json:"qualifier,omitempty" xml:"qualifier,omitempty"`
+	RewriteConfig *RewriteConfig `json:"rewriteConfig,omitempty" xml:"rewriteConfig,omitempty"`
 }
 
 func (s PathConfig) String() string {
@@ -1901,18 +1885,8 @@ func (s PathConfig) GoString() string {
 	return s.String()
 }
 
-func (s *PathConfig) SetAccountId(v string) *PathConfig {
-	s.AccountId = &v
-	return s
-}
-
 func (s *PathConfig) SetFunctionName(v string) *PathConfig {
 	s.FunctionName = &v
-	return s
-}
-
-func (s *PathConfig) SetInnerRewriteConfig(v *InnerRewriteConfig) *PathConfig {
-	s.InnerRewriteConfig = v
 	return s
 }
 
@@ -1933,46 +1907,6 @@ func (s *PathConfig) SetQualifier(v string) *PathConfig {
 
 func (s *PathConfig) SetRewriteConfig(v *RewriteConfig) *PathConfig {
 	s.RewriteConfig = v
-	return s
-}
-
-func (s *PathConfig) SetServiceName(v string) *PathConfig {
-	s.ServiceName = &v
-	return s
-}
-
-type PolicyItem struct {
-	Key      *string `json:"key,omitempty" xml:"key,omitempty"`
-	Operator *string `json:"operator,omitempty" xml:"operator,omitempty"`
-	Type     *string `json:"type,omitempty" xml:"type,omitempty"`
-	Value    *string `json:"value,omitempty" xml:"value,omitempty"`
-}
-
-func (s PolicyItem) String() string {
-	return tea.Prettify(s)
-}
-
-func (s PolicyItem) GoString() string {
-	return s.String()
-}
-
-func (s *PolicyItem) SetKey(v string) *PolicyItem {
-	s.Key = &v
-	return s
-}
-
-func (s *PolicyItem) SetOperator(v string) *PolicyItem {
-	s.Operator = &v
-	return s
-}
-
-func (s *PolicyItem) SetType(v string) *PolicyItem {
-	s.Type = &v
-	return s
-}
-
-func (s *PolicyItem) SetValue(v string) *PolicyItem {
-	s.Value = &v
 	return s
 }
 
@@ -2202,29 +2136,6 @@ func (s *RewriteConfig) SetWildcardRules(v []*WildcardRule) *RewriteConfig {
 	return s
 }
 
-type RewriteRegexRule struct {
-	RegexStr    *string `json:"regexStr,omitempty" xml:"regexStr,omitempty"`
-	Replacement *string `json:"replacement,omitempty" xml:"replacement,omitempty"`
-}
-
-func (s RewriteRegexRule) String() string {
-	return tea.Prettify(s)
-}
-
-func (s RewriteRegexRule) GoString() string {
-	return s.String()
-}
-
-func (s *RewriteRegexRule) SetRegexStr(v string) *RewriteRegexRule {
-	s.RegexStr = &v
-	return s
-}
-
-func (s *RewriteRegexRule) SetReplacement(v string) *RewriteRegexRule {
-	s.Replacement = &v
-	return s
-}
-
 type RouteConfig struct {
 	Routes []*PathConfig `json:"routes" xml:"routes" type:"Repeated"`
 }
@@ -2239,29 +2150,6 @@ func (s RouteConfig) GoString() string {
 
 func (s *RouteConfig) SetRoutes(v []*PathConfig) *RouteConfig {
 	s.Routes = v
-	return s
-}
-
-type RoutePolicy struct {
-	Condition   *string       `json:"condition,omitempty" xml:"condition,omitempty"`
-	PolicyItems []*PolicyItem `json:"policyItems" xml:"policyItems" type:"Repeated"`
-}
-
-func (s RoutePolicy) String() string {
-	return tea.Prettify(s)
-}
-
-func (s RoutePolicy) GoString() string {
-	return s.String()
-}
-
-func (s *RoutePolicy) SetCondition(v string) *RoutePolicy {
-	s.Condition = &v
-	return s
-}
-
-func (s *RoutePolicy) SetPolicyItems(v []*PolicyItem) *RoutePolicy {
-	s.PolicyItems = v
 	return s
 }
 
@@ -2335,33 +2223,9 @@ func (s *TLSConfig) SetMinVersion(v string) *TLSConfig {
 	return s
 }
 
-type Tag struct {
-	Key   *string `json:"key,omitempty" xml:"key,omitempty"`
-	Value *string `json:"value,omitempty" xml:"value,omitempty"`
-}
-
-func (s Tag) String() string {
-	return tea.Prettify(s)
-}
-
-func (s Tag) GoString() string {
-	return s.String()
-}
-
-func (s *Tag) SetKey(v string) *Tag {
-	s.Key = &v
-	return s
-}
-
-func (s *Tag) SetValue(v string) *Tag {
-	s.Value = &v
-	return s
-}
-
 type TagResourceInput struct {
-	ResourceArn  *string            `json:"resourceArn,omitempty" xml:"resourceArn,omitempty"`
-	ResourceType *string            `json:"resourceType,omitempty" xml:"resourceType,omitempty"`
-	Tags         map[string]*string `json:"tags" xml:"tags"`
+	ResourceArn *string            `json:"resourceArn,omitempty" xml:"resourceArn,omitempty"`
+	Tags        map[string]*string `json:"tags" xml:"tags"`
 }
 
 func (s TagResourceInput) String() string {
@@ -2374,11 +2238,6 @@ func (s TagResourceInput) GoString() string {
 
 func (s *TagResourceInput) SetResourceArn(v string) *TagResourceInput {
 	s.ResourceArn = &v
-	return s
-}
-
-func (s *TagResourceInput) SetResourceType(v string) *TagResourceInput {
-	s.ResourceType = &v
 	return s
 }
 
@@ -2582,6 +2441,7 @@ func (s *UpdateAliasInput) SetVersionId(v string) *UpdateAliasInput {
 }
 
 type UpdateCustomDomainInput struct {
+	AuthConfig  *AuthConfig  `json:"authConfig,omitempty" xml:"authConfig,omitempty"`
 	CertConfig  *CertConfig  `json:"certConfig,omitempty" xml:"certConfig,omitempty"`
 	Protocol    *string      `json:"protocol,omitempty" xml:"protocol,omitempty"`
 	RouteConfig *RouteConfig `json:"routeConfig,omitempty" xml:"routeConfig,omitempty"`
@@ -2595,6 +2455,11 @@ func (s UpdateCustomDomainInput) String() string {
 
 func (s UpdateCustomDomainInput) GoString() string {
 	return s.String()
+}
+
+func (s *UpdateCustomDomainInput) SetAuthConfig(v *AuthConfig) *UpdateCustomDomainInput {
+	s.AuthConfig = v
+	return s
 }
 
 func (s *UpdateCustomDomainInput) SetCertConfig(v *CertConfig) *UpdateCustomDomainInput {
@@ -2645,7 +2510,6 @@ type UpdateFunctionInput struct {
 	Runtime                 *string                  `json:"runtime,omitempty" xml:"runtime,omitempty"`
 	Timeout                 *int32                   `json:"timeout,omitempty" xml:"timeout,omitempty"`
 	TracingConfig           *TracingConfig           `json:"tracingConfig,omitempty" xml:"tracingConfig,omitempty"`
-	VpcBinding              *VPCBinding              `json:"vpcBinding,omitempty" xml:"vpcBinding,omitempty"`
 	VpcConfig               *VPCConfig               `json:"vpcConfig,omitempty" xml:"vpcConfig,omitempty"`
 }
 
@@ -2767,11 +2631,6 @@ func (s *UpdateFunctionInput) SetTracingConfig(v *TracingConfig) *UpdateFunction
 	return s
 }
 
-func (s *UpdateFunctionInput) SetVpcBinding(v *VPCBinding) *UpdateFunctionInput {
-	s.VpcBinding = v
-	return s
-}
-
 func (s *UpdateFunctionInput) SetVpcConfig(v *VPCConfig) *UpdateFunctionInput {
 	s.VpcConfig = v
 	return s
@@ -2812,23 +2671,6 @@ func (s *UpdateTriggerInput) SetTriggerConfig(v string) *UpdateTriggerInput {
 	return s
 }
 
-type VPCBinding struct {
-	VpcIds []*string `json:"vpcIds" xml:"vpcIds" type:"Repeated"`
-}
-
-func (s VPCBinding) String() string {
-	return tea.Prettify(s)
-}
-
-func (s VPCBinding) GoString() string {
-	return s.String()
-}
-
-func (s *VPCBinding) SetVpcIds(v []*string) *VPCBinding {
-	s.VpcIds = v
-	return s
-}
-
 type VPCConfig struct {
 	SecurityGroupId *string   `json:"securityGroupId,omitempty" xml:"securityGroupId,omitempty"`
 	VSwitchIds      []*string `json:"vSwitchIds" xml:"vSwitchIds" type:"Repeated"`
@@ -2859,11 +2701,10 @@ func (s *VPCConfig) SetVpcId(v string) *VPCConfig {
 }
 
 type Version struct {
-	CreatedTime        *string `json:"createdTime,omitempty" xml:"createdTime,omitempty"`
-	Description        *string `json:"description,omitempty" xml:"description,omitempty"`
-	FunctionVersionArn *string `json:"functionVersionArn,omitempty" xml:"functionVersionArn,omitempty"`
-	LastModifiedTime   *string `json:"lastModifiedTime,omitempty" xml:"lastModifiedTime,omitempty"`
-	VersionId          *string `json:"versionId,omitempty" xml:"versionId,omitempty"`
+	CreatedTime      *string `json:"createdTime,omitempty" xml:"createdTime,omitempty"`
+	Description      *string `json:"description,omitempty" xml:"description,omitempty"`
+	LastModifiedTime *string `json:"lastModifiedTime,omitempty" xml:"lastModifiedTime,omitempty"`
+	VersionId        *string `json:"versionId,omitempty" xml:"versionId,omitempty"`
 }
 
 func (s Version) String() string {
@@ -2881,11 +2722,6 @@ func (s *Version) SetCreatedTime(v string) *Version {
 
 func (s *Version) SetDescription(v string) *Version {
 	s.Description = &v
-	return s
-}
-
-func (s *Version) SetFunctionVersionArn(v string) *Version {
-	s.FunctionVersionArn = &v
 	return s
 }
 
@@ -3169,6 +3005,46 @@ func (s *CreateTriggerResponse) SetBody(v *Trigger) *CreateTriggerResponse {
 	return s
 }
 
+type CreateVpcBindingRequest struct {
+	Body *CreateVpcBindingInput `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s CreateVpcBindingRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateVpcBindingRequest) GoString() string {
+	return s.String()
+}
+
+func (s *CreateVpcBindingRequest) SetBody(v *CreateVpcBindingInput) *CreateVpcBindingRequest {
+	s.Body = v
+	return s
+}
+
+type CreateVpcBindingResponse struct {
+	Headers    map[string]*string `json:"headers" xml:"headers" require:"true"`
+	StatusCode *int32             `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+}
+
+func (s CreateVpcBindingResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateVpcBindingResponse) GoString() string {
+	return s.String()
+}
+
+func (s *CreateVpcBindingResponse) SetHeaders(v map[string]*string) *CreateVpcBindingResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *CreateVpcBindingResponse) SetStatusCode(v int32) *CreateVpcBindingResponse {
+	s.StatusCode = &v
+	return s
+}
+
 type DeleteAliasResponse struct {
 	Headers    map[string]*string `json:"headers" xml:"headers" require:"true"`
 	StatusCode *int32             `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
@@ -3406,6 +3282,29 @@ func (s *DeleteTriggerResponse) SetHeaders(v map[string]*string) *DeleteTriggerR
 }
 
 func (s *DeleteTriggerResponse) SetStatusCode(v int32) *DeleteTriggerResponse {
+	s.StatusCode = &v
+	return s
+}
+
+type DeleteVpcBindingResponse struct {
+	Headers    map[string]*string `json:"headers" xml:"headers" require:"true"`
+	StatusCode *int32             `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+}
+
+func (s DeleteVpcBindingResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DeleteVpcBindingResponse) GoString() string {
+	return s.String()
+}
+
+func (s *DeleteVpcBindingResponse) SetHeaders(v map[string]*string) *DeleteVpcBindingResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *DeleteVpcBindingResponse) SetStatusCode(v int32) *DeleteVpcBindingResponse {
 	s.StatusCode = &v
 	return s
 }
@@ -4585,6 +4484,35 @@ func (s *ListTriggersResponse) SetBody(v *ListTriggersOutput) *ListTriggersRespo
 	return s
 }
 
+type ListVpcBindingsResponse struct {
+	Headers    map[string]*string     `json:"headers" xml:"headers" require:"true"`
+	StatusCode *int32                 `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *ListVpcBindingsOutput `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s ListVpcBindingsResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListVpcBindingsResponse) GoString() string {
+	return s.String()
+}
+
+func (s *ListVpcBindingsResponse) SetHeaders(v map[string]*string) *ListVpcBindingsResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *ListVpcBindingsResponse) SetStatusCode(v int32) *ListVpcBindingsResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *ListVpcBindingsResponse) SetBody(v *ListVpcBindingsOutput) *ListVpcBindingsResponse {
+	s.Body = v
+	return s
+}
+
 type PublishFunctionVersionRequest struct {
 	Body *PublishVersionInput `json:"body,omitempty" xml:"body,omitempty"`
 }
@@ -4841,7 +4769,6 @@ func (s *TagResourceRequest) SetBody(v *TagResourceInput) *TagResourceRequest {
 type TagResourceResponse struct {
 	Headers    map[string]*string `json:"headers" xml:"headers" require:"true"`
 	StatusCode *int32             `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *Tag               `json:"body,omitempty" xml:"body,omitempty" require:"true"`
 }
 
 func (s TagResourceResponse) String() string {
@@ -4859,11 +4786,6 @@ func (s *TagResourceResponse) SetHeaders(v map[string]*string) *TagResourceRespo
 
 func (s *TagResourceResponse) SetStatusCode(v int32) *TagResourceResponse {
 	s.StatusCode = &v
-	return s
-}
-
-func (s *TagResourceResponse) SetBody(v *Tag) *TagResourceResponse {
-	s.Body = v
 	return s
 }
 
@@ -5151,7 +5073,7 @@ func (client *Client) GetEndpoint(productId *string, regionId *string, endpointR
 }
 
 /**
- * create function version
+ * 创建函数别名
  *
  * @param request CreateAliasRequest
  * @param headers map
@@ -5188,7 +5110,7 @@ func (client *Client) CreateAliasWithOptions(functionName *string, request *Crea
 }
 
 /**
- * create function version
+ * 创建函数别名
  *
  * @param request CreateAliasRequest
  * @return CreateAliasResponse
@@ -5206,7 +5128,7 @@ func (client *Client) CreateAlias(functionName *string, request *CreateAliasRequ
 }
 
 /**
- * Create custom domain.
+ * 创建自定义域名
  *
  * @param request CreateCustomDomainRequest
  * @param headers map
@@ -5243,7 +5165,7 @@ func (client *Client) CreateCustomDomainWithOptions(request *CreateCustomDomainR
 }
 
 /**
- * Create custom domain.
+ * 创建自定义域名
  *
  * @param request CreateCustomDomainRequest
  * @return CreateCustomDomainResponse
@@ -5261,7 +5183,7 @@ func (client *Client) CreateCustomDomain(request *CreateCustomDomainRequest) (_r
 }
 
 /**
- * Create function
+ * 创建函数
  *
  * @param request CreateFunctionRequest
  * @param headers map
@@ -5298,7 +5220,7 @@ func (client *Client) CreateFunctionWithOptions(request *CreateFunctionRequest, 
 }
 
 /**
- * Create function
+ * 创建函数
  *
  * @param request CreateFunctionRequest
  * @return CreateFunctionResponse
@@ -5316,7 +5238,7 @@ func (client *Client) CreateFunction(request *CreateFunctionRequest) (_result *C
 }
 
 /**
- * Create layer version
+ * 创建层版本
  *
  * @param request CreateLayerVersionRequest
  * @param headers map
@@ -5353,7 +5275,7 @@ func (client *Client) CreateLayerVersionWithOptions(layerName *string, request *
 }
 
 /**
- * Create layer version
+ * 创建层版本
  *
  * @param request CreateLayerVersionRequest
  * @return CreateLayerVersionResponse
@@ -5371,7 +5293,7 @@ func (client *Client) CreateLayerVersion(layerName *string, request *CreateLayer
 }
 
 /**
- * Create trigger.
+ * 创建函数触发器
  *
  * @param request CreateTriggerRequest
  * @param headers map
@@ -5408,7 +5330,7 @@ func (client *Client) CreateTriggerWithOptions(functionName *string, request *Cr
 }
 
 /**
- * Create trigger.
+ * 创建函数触发器
  *
  * @param request CreateTriggerRequest
  * @return CreateTriggerResponse
@@ -5426,7 +5348,62 @@ func (client *Client) CreateTrigger(functionName *string, request *CreateTrigger
 }
 
 /**
- * Delete function alias
+ * 创建VPC绑定
+ *
+ * @param request CreateVpcBindingRequest
+ * @param headers map
+ * @param runtime runtime options for this request RuntimeOptions
+ * @return CreateVpcBindingResponse
+ */
+func (client *Client) CreateVpcBindingWithOptions(functionName *string, request *CreateVpcBindingRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *CreateVpcBindingResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	req := &openapi.OpenApiRequest{
+		Headers: headers,
+		Body:    openapiutil.ParseToMap(request.Body),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("CreateVpcBinding"),
+		Version:     tea.String("2023-03-30"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/2023-03-30/functions/" + tea.StringValue(openapiutil.GetEncodeParam(functionName)) + "/vpc-bindings"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("ROA"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("none"),
+	}
+	_result = &CreateVpcBindingResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+/**
+ * 创建VPC绑定
+ *
+ * @param request CreateVpcBindingRequest
+ * @return CreateVpcBindingResponse
+ */
+func (client *Client) CreateVpcBinding(functionName *string, request *CreateVpcBindingRequest) (_result *CreateVpcBindingResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	headers := make(map[string]*string)
+	_result = &CreateVpcBindingResponse{}
+	_body, _err := client.CreateVpcBindingWithOptions(functionName, request, headers, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+/**
+ * 删除函数别名
  *
  * @param headers map
  * @param runtime runtime options for this request RuntimeOptions
@@ -5457,7 +5434,7 @@ func (client *Client) DeleteAliasWithOptions(functionName *string, aliasName *st
 }
 
 /**
- * Delete function alias
+ * 删除函数别名
  *
  * @return DeleteAliasResponse
  */
@@ -5474,7 +5451,7 @@ func (client *Client) DeleteAlias(functionName *string, aliasName *string) (_res
 }
 
 /**
- * Delete function async invoke config
+ * 删除函数异步调用配置
  *
  * @param request DeleteAsyncInvokeConfigRequest
  * @param headers map
@@ -5516,7 +5493,7 @@ func (client *Client) DeleteAsyncInvokeConfigWithOptions(functionName *string, r
 }
 
 /**
- * Delete function async invoke config
+ * 删除函数异步调用配置
  *
  * @param request DeleteAsyncInvokeConfigRequest
  * @return DeleteAsyncInvokeConfigResponse
@@ -5534,7 +5511,7 @@ func (client *Client) DeleteAsyncInvokeConfig(functionName *string, request *Del
 }
 
 /**
- * deletes the concurrency config for a function
+ * 删除函数并发度配置
  *
  * @param headers map
  * @param runtime runtime options for this request RuntimeOptions
@@ -5565,7 +5542,7 @@ func (client *Client) DeleteConcurrencyConfigWithOptions(functionName *string, h
 }
 
 /**
- * deletes the concurrency config for a function
+ * 删除函数并发度配置
  *
  * @return DeleteConcurrencyConfigResponse
  */
@@ -5582,7 +5559,7 @@ func (client *Client) DeleteConcurrencyConfig(functionName *string) (_result *De
 }
 
 /**
- * Delete custom domain.
+ * 删除自定义域名
  *
  * @param headers map
  * @param runtime runtime options for this request RuntimeOptions
@@ -5613,7 +5590,7 @@ func (client *Client) DeleteCustomDomainWithOptions(domainName *string, headers 
 }
 
 /**
- * Delete custom domain.
+ * 删除自定义域名
  *
  * @return DeleteCustomDomainResponse
  */
@@ -5630,7 +5607,7 @@ func (client *Client) DeleteCustomDomain(domainName *string) (_result *DeleteCus
 }
 
 /**
- * Delete function
+ * 删除函数
  *
  * @param headers map
  * @param runtime runtime options for this request RuntimeOptions
@@ -5661,7 +5638,7 @@ func (client *Client) DeleteFunctionWithOptions(functionName *string, headers ma
 }
 
 /**
- * Delete function
+ * 删除函数
  *
  * @return DeleteFunctionResponse
  */
@@ -5678,13 +5655,13 @@ func (client *Client) DeleteFunction(functionName *string) (_result *DeleteFunct
 }
 
 /**
- * Delete function version
+ * 删除函数版本
  *
  * @param headers map
  * @param runtime runtime options for this request RuntimeOptions
  * @return DeleteFunctionVersionResponse
  */
-func (client *Client) DeleteFunctionVersionWithOptions(functionName *string, versionID *string, headers map[string]*string, runtime *util.RuntimeOptions) (_result *DeleteFunctionVersionResponse, _err error) {
+func (client *Client) DeleteFunctionVersionWithOptions(functionName *string, versionId *string, headers map[string]*string, runtime *util.RuntimeOptions) (_result *DeleteFunctionVersionResponse, _err error) {
 	req := &openapi.OpenApiRequest{
 		Headers: headers,
 	}
@@ -5692,7 +5669,7 @@ func (client *Client) DeleteFunctionVersionWithOptions(functionName *string, ver
 		Action:      tea.String("DeleteFunctionVersion"),
 		Version:     tea.String("2023-03-30"),
 		Protocol:    tea.String("HTTPS"),
-		Pathname:    tea.String("/2023-03-30/functions/" + tea.StringValue(openapiutil.GetEncodeParam(functionName)) + "/versions/" + tea.StringValue(openapiutil.GetEncodeParam(versionID))),
+		Pathname:    tea.String("/2023-03-30/functions/" + tea.StringValue(openapiutil.GetEncodeParam(functionName)) + "/versions/" + tea.StringValue(openapiutil.GetEncodeParam(versionId))),
 		Method:      tea.String("DELETE"),
 		AuthType:    tea.String("AK"),
 		Style:       tea.String("ROA"),
@@ -5709,15 +5686,15 @@ func (client *Client) DeleteFunctionVersionWithOptions(functionName *string, ver
 }
 
 /**
- * Delete function version
+ * 删除函数版本
  *
  * @return DeleteFunctionVersionResponse
  */
-func (client *Client) DeleteFunctionVersion(functionName *string, versionID *string) (_result *DeleteFunctionVersionResponse, _err error) {
+func (client *Client) DeleteFunctionVersion(functionName *string, versionId *string) (_result *DeleteFunctionVersionResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
 	_result = &DeleteFunctionVersionResponse{}
-	_body, _err := client.DeleteFunctionVersionWithOptions(functionName, versionID, headers, runtime)
+	_body, _err := client.DeleteFunctionVersionWithOptions(functionName, versionId, headers, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -5726,7 +5703,7 @@ func (client *Client) DeleteFunctionVersion(functionName *string, versionID *str
 }
 
 /**
- * Delete layer version
+ * 删除层版本
  *
  * @param headers map
  * @param runtime runtime options for this request RuntimeOptions
@@ -5757,7 +5734,7 @@ func (client *Client) DeleteLayerVersionWithOptions(layerName *string, version *
 }
 
 /**
- * Delete layer version
+ * 删除层版本
  *
  * @return DeleteLayerVersionResponse
  */
@@ -5774,7 +5751,7 @@ func (client *Client) DeleteLayerVersion(layerName *string, version *string) (_r
 }
 
 /**
- * Delete provision config.
+ * 删除函数预留配置
  *
  * @param request DeleteProvisionConfigRequest
  * @param headers map
@@ -5816,7 +5793,7 @@ func (client *Client) DeleteProvisionConfigWithOptions(functionName *string, req
 }
 
 /**
- * Delete provision config.
+ * 删除函数预留配置
  *
  * @param request DeleteProvisionConfigRequest
  * @return DeleteProvisionConfigResponse
@@ -5834,7 +5811,7 @@ func (client *Client) DeleteProvisionConfig(functionName *string, request *Delet
 }
 
 /**
- * Delete trigger.
+ * 删除函数触发器
  *
  * @param headers map
  * @param runtime runtime options for this request RuntimeOptions
@@ -5865,7 +5842,7 @@ func (client *Client) DeleteTriggerWithOptions(functionName *string, triggerName
 }
 
 /**
- * Delete trigger.
+ * 删除函数触发器
  *
  * @return DeleteTriggerResponse
  */
@@ -5882,7 +5859,55 @@ func (client *Client) DeleteTrigger(functionName *string, triggerName *string) (
 }
 
 /**
- * Get function alias
+ * 删除VPC绑定
+ *
+ * @param headers map
+ * @param runtime runtime options for this request RuntimeOptions
+ * @return DeleteVpcBindingResponse
+ */
+func (client *Client) DeleteVpcBindingWithOptions(functionName *string, vpcId *string, headers map[string]*string, runtime *util.RuntimeOptions) (_result *DeleteVpcBindingResponse, _err error) {
+	req := &openapi.OpenApiRequest{
+		Headers: headers,
+	}
+	params := &openapi.Params{
+		Action:      tea.String("DeleteVpcBinding"),
+		Version:     tea.String("2023-03-30"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/2023-03-30/functions/" + tea.StringValue(openapiutil.GetEncodeParam(functionName)) + "/vpc-bindings/" + tea.StringValue(openapiutil.GetEncodeParam(vpcId))),
+		Method:      tea.String("DELETE"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("ROA"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("none"),
+	}
+	_result = &DeleteVpcBindingResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+/**
+ * 删除VPC绑定
+ *
+ * @return DeleteVpcBindingResponse
+ */
+func (client *Client) DeleteVpcBinding(functionName *string, vpcId *string) (_result *DeleteVpcBindingResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	headers := make(map[string]*string)
+	_result = &DeleteVpcBindingResponse{}
+	_body, _err := client.DeleteVpcBindingWithOptions(functionName, vpcId, headers, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+/**
+ * 获取函数别名信息
  *
  * @param headers map
  * @param runtime runtime options for this request RuntimeOptions
@@ -5913,7 +5938,7 @@ func (client *Client) GetAliasWithOptions(functionName *string, aliasName *strin
 }
 
 /**
- * Get function alias
+ * 获取函数别名信息
  *
  * @return GetAliasResponse
  */
@@ -5930,7 +5955,7 @@ func (client *Client) GetAlias(functionName *string, aliasName *string) (_result
 }
 
 /**
- * Get function async invoke config
+ * 获取函数异步调用配置
  *
  * @param request GetAsyncInvokeConfigRequest
  * @param headers map
@@ -5972,7 +5997,7 @@ func (client *Client) GetAsyncInvokeConfigWithOptions(functionName *string, requ
 }
 
 /**
- * Get function async invoke config
+ * 获取函数异步调用配置
  *
  * @param request GetAsyncInvokeConfigRequest
  * @return GetAsyncInvokeConfigResponse
@@ -5990,7 +6015,7 @@ func (client *Client) GetAsyncInvokeConfig(functionName *string, request *GetAsy
 }
 
 /**
- * gets the concurrency config for a function
+ * 获取函数并发度配置
  *
  * @param headers map
  * @param runtime runtime options for this request RuntimeOptions
@@ -6021,7 +6046,7 @@ func (client *Client) GetConcurrencyConfigWithOptions(functionName *string, head
 }
 
 /**
- * gets the concurrency config for a function
+ * 获取函数并发度配置
  *
  * @return GetConcurrencyConfigResponse
  */
@@ -6038,7 +6063,7 @@ func (client *Client) GetConcurrencyConfig(functionName *string) (_result *GetCo
 }
 
 /**
- * Get custom domain.
+ * 获取自定义域名
  *
  * @param headers map
  * @param runtime runtime options for this request RuntimeOptions
@@ -6069,7 +6094,7 @@ func (client *Client) GetCustomDomainWithOptions(domainName *string, headers map
 }
 
 /**
- * Get custom domain.
+ * 获取自定义域名
  *
  * @return GetCustomDomainResponse
  */
@@ -6086,7 +6111,7 @@ func (client *Client) GetCustomDomain(domainName *string) (_result *GetCustomDom
 }
 
 /**
- * Get function info by function name
+ * 获取函数信息
  *
  * @param request GetFunctionRequest
  * @param headers map
@@ -6128,7 +6153,7 @@ func (client *Client) GetFunctionWithOptions(functionName *string, request *GetF
 }
 
 /**
- * Get function info by function name
+ * 获取函数信息
  *
  * @param request GetFunctionRequest
  * @return GetFunctionResponse
@@ -6146,7 +6171,7 @@ func (client *Client) GetFunction(functionName *string, request *GetFunctionRequ
 }
 
 /**
- * Get function code by function name
+ * 获取函数代码
  *
  * @param request GetFunctionCodeRequest
  * @param headers map
@@ -6188,7 +6213,7 @@ func (client *Client) GetFunctionCodeWithOptions(functionName *string, request *
 }
 
 /**
- * Get function code by function name
+ * 获取函数代码
  *
  * @param request GetFunctionCodeRequest
  * @return GetFunctionCodeResponse
@@ -6206,7 +6231,7 @@ func (client *Client) GetFunctionCode(functionName *string, request *GetFunction
 }
 
 /**
- * Get layer version.
+ * 获取层版本
  *
  * @param headers map
  * @param runtime runtime options for this request RuntimeOptions
@@ -6237,7 +6262,7 @@ func (client *Client) GetLayerVersionWithOptions(layerName *string, version *str
 }
 
 /**
- * Get layer version.
+ * 获取层版本
  *
  * @return GetLayerVersionResponse
  */
@@ -6254,7 +6279,7 @@ func (client *Client) GetLayerVersion(layerName *string, version *string) (_resu
 }
 
 /**
- * Get layer version by arn.
+ * 根据资源标识获取层版本
  *
  * @param headers map
  * @param runtime runtime options for this request RuntimeOptions
@@ -6285,7 +6310,7 @@ func (client *Client) GetLayerVersionByArnWithOptions(arn *string, headers map[s
 }
 
 /**
- * Get layer version by arn.
+ * 根据资源标识获取层版本
  *
  * @return GetLayerVersionByArnResponse
  */
@@ -6302,7 +6327,7 @@ func (client *Client) GetLayerVersionByArn(arn *string) (_result *GetLayerVersio
 }
 
 /**
- * Get provision config.
+ * 获取函数预留配置
  *
  * @param request GetProvisionConfigRequest
  * @param headers map
@@ -6344,7 +6369,7 @@ func (client *Client) GetProvisionConfigWithOptions(functionName *string, reques
 }
 
 /**
- * Get provision config.
+ * 获取函数预留配置
  *
  * @param request GetProvisionConfigRequest
  * @return GetProvisionConfigResponse
@@ -6362,7 +6387,7 @@ func (client *Client) GetProvisionConfig(functionName *string, request *GetProvi
 }
 
 /**
- * Get resource tag
+ * 获取资源标签
  *
  * @param request GetResourceTagsRequest
  * @param headers map
@@ -6404,7 +6429,7 @@ func (client *Client) GetResourceTagsWithOptions(request *GetResourceTagsRequest
 }
 
 /**
- * Get resource tag
+ * 获取资源标签
  *
  * @param request GetResourceTagsRequest
  * @return GetResourceTagsResponse
@@ -6422,7 +6447,7 @@ func (client *Client) GetResourceTags(request *GetResourceTagsRequest) (_result 
 }
 
 /**
- * Get trigger.
+ * 获取函数触发器
  *
  * @param headers map
  * @param runtime runtime options for this request RuntimeOptions
@@ -6453,7 +6478,7 @@ func (client *Client) GetTriggerWithOptions(functionName *string, triggerName *s
 }
 
 /**
- * Get trigger.
+ * 获取函数触发器
  *
  * @return GetTriggerResponse
  */
@@ -6470,7 +6495,7 @@ func (client *Client) GetTrigger(functionName *string, triggerName *string) (_re
 }
 
 /**
- * Invoke function
+ * 调用函数
  *
  * @param request InvokeFunctionRequest
  * @param headers InvokeFunctionHeaders
@@ -6560,7 +6585,7 @@ func (client *Client) InvokeFunctionWithOptions(functionName *string, request *I
 }
 
 /**
- * Invoke function
+ * 调用函数
  *
  * @param request InvokeFunctionRequest
  * @return InvokeFunctionResponse
@@ -6578,7 +6603,7 @@ func (client *Client) InvokeFunction(functionName *string, request *InvokeFuncti
 }
 
 /**
- * List function aliases
+ * 列出函数别名
  *
  * @param request ListAliasesRequest
  * @param headers map
@@ -6628,7 +6653,7 @@ func (client *Client) ListAliasesWithOptions(functionName *string, request *List
 }
 
 /**
- * List function aliases
+ * 列出函数别名
  *
  * @param request ListAliasesRequest
  * @return ListAliasesResponse
@@ -6646,7 +6671,7 @@ func (client *Client) ListAliases(functionName *string, request *ListAliasesRequ
 }
 
 /**
- * List all functions async invoke config
+ * 列出函数异步调用配置
  *
  * @param request ListAsyncInvokeConfigsRequest
  * @param headers map
@@ -6696,7 +6721,7 @@ func (client *Client) ListAsyncInvokeConfigsWithOptions(request *ListAsyncInvoke
 }
 
 /**
- * List all functions async invoke config
+ * 列出函数异步调用配置
  *
  * @param request ListAsyncInvokeConfigsRequest
  * @return ListAsyncInvokeConfigsResponse
@@ -6714,7 +6739,7 @@ func (client *Client) ListAsyncInvokeConfigs(request *ListAsyncInvokeConfigsRequ
 }
 
 /**
- * List all functions concurrency configs
+ * 列出函数并发度配置
  *
  * @param request ListConcurrencyConfigsRequest
  * @param headers map
@@ -6764,7 +6789,7 @@ func (client *Client) ListConcurrencyConfigsWithOptions(request *ListConcurrency
 }
 
 /**
- * List all functions concurrency configs
+ * 列出函数并发度配置
  *
  * @param request ListConcurrencyConfigsRequest
  * @return ListConcurrencyConfigsResponse
@@ -6782,7 +6807,7 @@ func (client *Client) ListConcurrencyConfigs(request *ListConcurrencyConfigsRequ
 }
 
 /**
- * List custom domains.
+ * 列出自定义域名
  *
  * @param request ListCustomDomainsRequest
  * @param headers map
@@ -6832,7 +6857,7 @@ func (client *Client) ListCustomDomainsWithOptions(request *ListCustomDomainsReq
 }
 
 /**
- * List custom domains.
+ * 列出自定义域名
  *
  * @param request ListCustomDomainsRequest
  * @return ListCustomDomainsResponse
@@ -6850,7 +6875,7 @@ func (client *Client) ListCustomDomains(request *ListCustomDomainsRequest) (_res
 }
 
 /**
- * List function versions
+ * 列出函数版本
  *
  * @param request ListFunctionVersionsRequest
  * @param headers map
@@ -6900,7 +6925,7 @@ func (client *Client) ListFunctionVersionsWithOptions(functionName *string, requ
 }
 
 /**
- * List function versions
+ * 列出函数版本
  *
  * @param request ListFunctionVersionsRequest
  * @return ListFunctionVersionsResponse
@@ -6918,7 +6943,7 @@ func (client *Client) ListFunctionVersions(functionName *string, request *ListFu
 }
 
 /**
- * Lists existing functions.
+ * 列出函数
  *
  * @param request ListFunctionsRequest
  * @param headers map
@@ -6968,7 +6993,7 @@ func (client *Client) ListFunctionsWithOptions(request *ListFunctionsRequest, he
 }
 
 /**
- * Lists existing functions.
+ * 列出函数
  *
  * @param request ListFunctionsRequest
  * @return ListFunctionsResponse
@@ -6986,7 +7011,7 @@ func (client *Client) ListFunctions(request *ListFunctionsRequest) (_result *Lis
 }
 
 /**
- * List instances for function.
+ * 列出函数实例
  *
  * @param request ListInstancesRequest
  * @param headers map
@@ -7032,7 +7057,7 @@ func (client *Client) ListInstancesWithOptions(functionName *string, request *Li
 }
 
 /**
- * List instances for function.
+ * 列出函数实例
  *
  * @param request ListInstancesRequest
  * @return ListInstancesResponse
@@ -7050,7 +7075,7 @@ func (client *Client) ListInstances(functionName *string, request *ListInstances
 }
 
 /**
- * List layer versions.
+ * 列出层版本
  *
  * @param request ListLayerVersionsRequest
  * @param headers map
@@ -7096,7 +7121,7 @@ func (client *Client) ListLayerVersionsWithOptions(layerName *string, request *L
 }
 
 /**
- * List layer versions.
+ * 列出层版本
  *
  * @param request ListLayerVersionsRequest
  * @return ListLayerVersionsResponse
@@ -7114,7 +7139,7 @@ func (client *Client) ListLayerVersions(layerName *string, request *ListLayerVer
 }
 
 /**
- * List layers .
+ * 列出层
  *
  * @param request ListLayersRequest
  * @param headers map
@@ -7172,7 +7197,7 @@ func (client *Client) ListLayersWithOptions(request *ListLayersRequest, headers 
 }
 
 /**
- * List layers .
+ * 列出层
  *
  * @param request ListLayersRequest
  * @return ListLayersResponse
@@ -7190,7 +7215,7 @@ func (client *Client) ListLayers(request *ListLayersRequest) (_result *ListLayer
 }
 
 /**
- * List provision configs.
+ * 列出函数预留配置
  *
  * @param request ListProvisionConfigsRequest
  * @param headers map
@@ -7240,7 +7265,7 @@ func (client *Client) ListProvisionConfigsWithOptions(request *ListProvisionConf
 }
 
 /**
- * List provision configs.
+ * 列出函数预留配置
  *
  * @param request ListProvisionConfigsRequest
  * @return ListProvisionConfigsResponse
@@ -7258,7 +7283,7 @@ func (client *Client) ListProvisionConfigs(request *ListProvisionConfigsRequest)
 }
 
 /**
- * List tagged resources
+ * 列出具有标签的资源
  *
  * @param request ListTaggedResourcesRequest
  * @param headers map
@@ -7304,7 +7329,7 @@ func (client *Client) ListTaggedResourcesWithOptions(request *ListTaggedResource
 }
 
 /**
- * List tagged resources
+ * 列出具有标签的资源
  *
  * @param request ListTaggedResourcesRequest
  * @return ListTaggedResourcesResponse
@@ -7322,7 +7347,7 @@ func (client *Client) ListTaggedResources(request *ListTaggedResourcesRequest) (
 }
 
 /**
- * List triggers.
+ * 列出函数触发器
  *
  * @param request ListTriggersRequest
  * @param headers map
@@ -7372,7 +7397,7 @@ func (client *Client) ListTriggersWithOptions(functionName *string, request *Lis
 }
 
 /**
- * List triggers.
+ * 列出函数触发器
  *
  * @param request ListTriggersRequest
  * @return ListTriggersResponse
@@ -7390,7 +7415,55 @@ func (client *Client) ListTriggers(functionName *string, request *ListTriggersRe
 }
 
 /**
- * publish new function version
+ * 列出VPC绑定配置
+ *
+ * @param headers map
+ * @param runtime runtime options for this request RuntimeOptions
+ * @return ListVpcBindingsResponse
+ */
+func (client *Client) ListVpcBindingsWithOptions(functionName *string, headers map[string]*string, runtime *util.RuntimeOptions) (_result *ListVpcBindingsResponse, _err error) {
+	req := &openapi.OpenApiRequest{
+		Headers: headers,
+	}
+	params := &openapi.Params{
+		Action:      tea.String("ListVpcBindings"),
+		Version:     tea.String("2023-03-30"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/2023-03-30/functions/" + tea.StringValue(openapiutil.GetEncodeParam(functionName)) + "/vpc-bindings"),
+		Method:      tea.String("GET"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("ROA"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &ListVpcBindingsResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+/**
+ * 列出VPC绑定配置
+ *
+ * @return ListVpcBindingsResponse
+ */
+func (client *Client) ListVpcBindings(functionName *string) (_result *ListVpcBindingsResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	headers := make(map[string]*string)
+	_result = &ListVpcBindingsResponse{}
+	_body, _err := client.ListVpcBindingsWithOptions(functionName, headers, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+/**
+ * 发布函数版本
  *
  * @param request PublishFunctionVersionRequest
  * @param headers map
@@ -7427,7 +7500,7 @@ func (client *Client) PublishFunctionVersionWithOptions(functionName *string, re
 }
 
 /**
- * publish new function version
+ * 发布函数版本
  *
  * @param request PublishFunctionVersionRequest
  * @return PublishFunctionVersionResponse
@@ -7445,7 +7518,7 @@ func (client *Client) PublishFunctionVersion(functionName *string, request *Publ
 }
 
 /**
- * Put function async invoke config.
+ * 设置函数异步调用配置
  *
  * @param request PutAsyncInvokeConfigRequest
  * @param headers map
@@ -7488,7 +7561,7 @@ func (client *Client) PutAsyncInvokeConfigWithOptions(functionName *string, requ
 }
 
 /**
- * Put function async invoke config.
+ * 设置函数异步调用配置
  *
  * @param request PutAsyncInvokeConfigRequest
  * @return PutAsyncInvokeConfigResponse
@@ -7506,7 +7579,7 @@ func (client *Client) PutAsyncInvokeConfig(functionName *string, request *PutAsy
 }
 
 /**
- * sets the concurrency config for a function
+ * 设置函数并发度配置
  *
  * @param request PutConcurrencyConfigRequest
  * @param headers map
@@ -7543,7 +7616,7 @@ func (client *Client) PutConcurrencyConfigWithOptions(functionName *string, requ
 }
 
 /**
- * sets the concurrency config for a function
+ * 设置函数并发度配置
  *
  * @param request PutConcurrencyConfigRequest
  * @return PutConcurrencyConfigResponse
@@ -7561,7 +7634,7 @@ func (client *Client) PutConcurrencyConfig(functionName *string, request *PutCon
 }
 
 /**
- * Update layer ACL.
+ * 设置层的访问权限
  *
  * @param request PutLayerACLRequest
  * @param headers map
@@ -7603,7 +7676,7 @@ func (client *Client) PutLayerACLWithOptions(layerName *string, request *PutLaye
 }
 
 /**
- * Update layer ACL.
+ * 设置层的访问权限
  *
  * @param request PutLayerACLRequest
  * @return PutLayerACLResponse
@@ -7621,7 +7694,7 @@ func (client *Client) PutLayerACL(layerName *string, request *PutLayerACLRequest
 }
 
 /**
- * Put provision config.
+ * 设置函数预留配置
  *
  * @param request PutProvisionConfigRequest
  * @param headers map
@@ -7664,7 +7737,7 @@ func (client *Client) PutProvisionConfigWithOptions(functionName *string, reques
 }
 
 /**
- * Put provision config.
+ * 设置函数预留配置
  *
  * @param request PutProvisionConfigRequest
  * @return PutProvisionConfigResponse
@@ -7682,7 +7755,7 @@ func (client *Client) PutProvisionConfig(functionName *string, request *PutProvi
 }
 
 /**
- * Tag resource
+ * 设置资源标签
  *
  * @param request TagResourceRequest
  * @param headers map
@@ -7707,7 +7780,7 @@ func (client *Client) TagResourceWithOptions(request *TagResourceRequest, header
 		AuthType:    tea.String("AK"),
 		Style:       tea.String("ROA"),
 		ReqBodyType: tea.String("json"),
-		BodyType:    tea.String("json"),
+		BodyType:    tea.String("none"),
 	}
 	_result = &TagResourceResponse{}
 	_body, _err := client.CallApi(params, req, runtime)
@@ -7719,7 +7792,7 @@ func (client *Client) TagResourceWithOptions(request *TagResourceRequest, header
 }
 
 /**
- * Tag resource
+ * 设置资源标签
  *
  * @param request TagResourceRequest
  * @return TagResourceResponse
@@ -7737,7 +7810,7 @@ func (client *Client) TagResource(request *TagResourceRequest) (_result *TagReso
 }
 
 /**
- * Untag resource tag, support resource type: function, service
+ * 删除资源标签
  *
  * @param request UntagResourceRequest
  * @param headers map
@@ -7787,7 +7860,7 @@ func (client *Client) UntagResourceWithOptions(request *UntagResourceRequest, he
 }
 
 /**
- * Untag resource tag, support resource type: function, service
+ * 删除资源标签
  *
  * @param request UntagResourceRequest
  * @return UntagResourceResponse
@@ -7805,7 +7878,7 @@ func (client *Client) UntagResource(request *UntagResourceRequest) (_result *Unt
 }
 
 /**
- * Update function alias
+ * 更新函数别名
  *
  * @param request UpdateAliasRequest
  * @param headers map
@@ -7842,7 +7915,7 @@ func (client *Client) UpdateAliasWithOptions(functionName *string, aliasName *st
 }
 
 /**
- * Update function alias
+ * 更新函数别名
  *
  * @param request UpdateAliasRequest
  * @return UpdateAliasResponse
@@ -7860,7 +7933,7 @@ func (client *Client) UpdateAlias(functionName *string, aliasName *string, reque
 }
 
 /**
- * Update custom domain.
+ * 更新自定义域名
  *
  * @param request UpdateCustomDomainRequest
  * @param headers map
@@ -7897,7 +7970,7 @@ func (client *Client) UpdateCustomDomainWithOptions(domainName *string, request 
 }
 
 /**
- * Update custom domain.
+ * 更新自定义域名
  *
  * @param request UpdateCustomDomainRequest
  * @return UpdateCustomDomainResponse
@@ -7915,7 +7988,7 @@ func (client *Client) UpdateCustomDomain(domainName *string, request *UpdateCust
 }
 
 /**
- * Update function
+ * 更新函数
  *
  * @param request UpdateFunctionRequest
  * @param headers map
@@ -7952,7 +8025,7 @@ func (client *Client) UpdateFunctionWithOptions(functionName *string, request *U
 }
 
 /**
- * Update function
+ * 更新函数
  *
  * @param request UpdateFunctionRequest
  * @return UpdateFunctionResponse
@@ -7970,7 +8043,7 @@ func (client *Client) UpdateFunction(functionName *string, request *UpdateFuncti
 }
 
 /**
- * Update trigger.
+ * 更新函数触发器
  *
  * @param request UpdateTriggerRequest
  * @param headers map
@@ -8007,7 +8080,7 @@ func (client *Client) UpdateTriggerWithOptions(functionName *string, triggerName
 }
 
 /**
- * Update trigger.
+ * 更新函数触发器
  *
  * @param request UpdateTriggerRequest
  * @return UpdateTriggerResponse
