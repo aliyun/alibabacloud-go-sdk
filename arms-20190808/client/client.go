@@ -11544,15 +11544,16 @@ func (s *DeleteTimingSyntheticTaskResponse) SetBody(v *DeleteTimingSyntheticTask
 
 type DeleteTraceAppRequest struct {
 	// The ID of the application that you want to delete. You can call the SearchTraceAppByName operation to query the application ID. For more information, see [SearchTraceAppByName](~~130676~~).
-	AppId        *string                            `json:"AppId,omitempty" xml:"AppId,omitempty"`
+	AppId *string `json:"AppId,omitempty" xml:"AppId,omitempty"`
+	// The reason(s) to delete application.
 	DeleteReason *DeleteTraceAppRequestDeleteReason `json:"DeleteReason,omitempty" xml:"DeleteReason,omitempty" type:"Struct"`
-	// The PID of the application that you want to delete. For more information about how to obtain the PID, see [Obtain the PID of an application](https://www.alibabacloud.com/help/zh/doc-detail/186100.htm?spm=a2cdw.13409063.0.0.7a72281f0bkTfx#title-imy-7gj-qhr).
+	// The PID of the application. For more information about how to query the PID, see [QueryMetricByPage](https://www.alibabacloud.com/help/zh/doc-detail/186100.htm?spm=a2cdw.13409063.0.0.7a72281f0bkTfx#title-imy-7gj-qhr).
 	Pid *string `json:"Pid,omitempty" xml:"Pid,omitempty"`
-	// The ID of the region.
+	// The ID of the region in which the application is located.
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 	// The type of the application that you want to delete. You can call the SearchTraceAppByName operation to query the application type. For more information, see [SearchTraceAppByName](~~130676~~). Valid values:
 	//
-	// *   `TRACE`: application monitoring
+	// *   `TRACE`: Application Monitoring
 	// *   `RETCODE`: frontend monitoring
 	Type *string `json:"Type,omitempty" xml:"Type,omitempty"`
 }
@@ -11591,8 +11592,10 @@ func (s *DeleteTraceAppRequest) SetType(v string) *DeleteTraceAppRequest {
 }
 
 type DeleteTraceAppRequestDeleteReason struct {
+	// Reasons Ids.
 	ReasonIds []*DeleteTraceAppRequestDeleteReasonReasonIds `json:"ReasonIds,omitempty" xml:"ReasonIds,omitempty" type:"Repeated"`
-	Remark    *string                                       `json:"Remark,omitempty" xml:"Remark,omitempty"`
+	// Additional remarks when none of the reasons for removal provided are met.
+	Remark *string `json:"Remark,omitempty" xml:"Remark,omitempty"`
 }
 
 func (s DeleteTraceAppRequestDeleteReason) String() string {
@@ -11614,7 +11617,9 @@ func (s *DeleteTraceAppRequestDeleteReason) SetRemark(v string) *DeleteTraceAppR
 }
 
 type DeleteTraceAppRequestDeleteReasonReasonIds struct {
-	Id   *int32  `json:"Id,omitempty" xml:"Id,omitempty"`
+	// The ID of the reason for deletion.
+	Id *int32 `json:"Id,omitempty" xml:"Id,omitempty"`
+	// A description of the reason for removal.
 	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
 }
 
@@ -11638,15 +11643,16 @@ func (s *DeleteTraceAppRequestDeleteReasonReasonIds) SetName(v string) *DeleteTr
 
 type DeleteTraceAppShrinkRequest struct {
 	// The ID of the application that you want to delete. You can call the SearchTraceAppByName operation to query the application ID. For more information, see [SearchTraceAppByName](~~130676~~).
-	AppId              *string `json:"AppId,omitempty" xml:"AppId,omitempty"`
+	AppId *string `json:"AppId,omitempty" xml:"AppId,omitempty"`
+	// The reason(s) to delete application.
 	DeleteReasonShrink *string `json:"DeleteReason,omitempty" xml:"DeleteReason,omitempty"`
-	// The PID of the application that you want to delete. For more information about how to obtain the PID, see [Obtain the PID of an application](https://www.alibabacloud.com/help/zh/doc-detail/186100.htm?spm=a2cdw.13409063.0.0.7a72281f0bkTfx#title-imy-7gj-qhr).
+	// The PID of the application. For more information about how to query the PID, see [QueryMetricByPage](https://www.alibabacloud.com/help/zh/doc-detail/186100.htm?spm=a2cdw.13409063.0.0.7a72281f0bkTfx#title-imy-7gj-qhr).
 	Pid *string `json:"Pid,omitempty" xml:"Pid,omitempty"`
-	// The ID of the region.
+	// The ID of the region in which the application is located.
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 	// The type of the application that you want to delete. You can call the SearchTraceAppByName operation to query the application type. For more information, see [SearchTraceAppByName](~~130676~~). Valid values:
 	//
-	// *   `TRACE`: application monitoring
+	// *   `TRACE`: Application Monitoring
 	// *   `RETCODE`: frontend monitoring
 	Type *string `json:"Type,omitempty" xml:"Type,omitempty"`
 }
@@ -11685,13 +11691,20 @@ func (s *DeleteTraceAppShrinkRequest) SetType(v string) *DeleteTraceAppShrinkReq
 }
 
 type DeleteTraceAppResponseBody struct {
+	// The status code. The status code 200 indicates that the request was successful.
 	Code *int64 `json:"Code,omitempty" xml:"Code,omitempty"`
 	// The response in JSON format, including the HTTP status code, error code, response message, and trace ID.
-	Data    *string `json:"Data,omitempty" xml:"Data,omitempty"`
+	Data *string `json:"Data,omitempty" xml:"Data,omitempty"`
+	// The returned message.
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
 	// The ID of the request.
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	Success   *bool   `json:"Success,omitempty" xml:"Success,omitempty"`
+	// Indicates whether the request was successful. Valid values:
+	//
+	// true: The request was successful.
+	//
+	// false: The request failed.
+	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
 }
 
 func (s DeleteTraceAppResponseBody) String() string {
@@ -21750,18 +21763,60 @@ func (s *ListAlertEventsResponse) SetBody(v *ListAlertEventsResponseBody) *ListA
 }
 
 type ListAlertsRequest struct {
-	AlertName       *string `json:"AlertName,omitempty" xml:"AlertName,omitempty"`
-	DispatchRuleId  *int64  `json:"DispatchRuleId,omitempty" xml:"DispatchRuleId,omitempty"`
-	EndTime         *string `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
+	// The name of the alert rule.
+	AlertName *string `json:"AlertName,omitempty" xml:"AlertName,omitempty"`
+	// The ID of the notification policy.
+	DispatchRuleId *int64 `json:"DispatchRuleId,omitempty" xml:"DispatchRuleId,omitempty"`
+	// The end time of the alert sending history that you want to query. Specify the time in the `YYYY-MM-DD HH:mm:ss` format.
+	EndTime *string `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
+	// The integration type.
+	//
+	// *   ARMS
+	// *   CLOUD_MONITOR
+	// *   MSE
+	// *   ARMS_CLOUD_DIALTEST
+	// *   PROMETHEUS
+	// *   LOG_SERVICE
+	// *   CUSTOM
+	// *   ARMS_PROMETHEUS
+	// *   ARMS_APP_MON
+	// *   ARMS_FRONT_MON
+	// *   ARMS_CUSTOM
+	// *   XTRACE
+	// *   GRAFANA
+	// *   ZABBIX
+	// *   SKYWALKING
+	// *   EVENT_BRIDGE
+	// *   NAGIOS
+	// *   OPENFALCON
+	// *   ARMS_INSIGHTS
 	IntegrationType *string `json:"IntegrationType,omitempty" xml:"IntegrationType,omitempty"`
-	Page            *int64  `json:"Page,omitempty" xml:"Page,omitempty"`
-	RegionId        *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	Severity        *string `json:"Severity,omitempty" xml:"Severity,omitempty"`
-	ShowActivities  *bool   `json:"ShowActivities,omitempty" xml:"ShowActivities,omitempty"`
-	ShowEvents      *bool   `json:"ShowEvents,omitempty" xml:"ShowEvents,omitempty"`
-	Size            *int64  `json:"Size,omitempty" xml:"Size,omitempty"`
-	StartTime       *string `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
-	State           *int64  `json:"State,omitempty" xml:"State,omitempty"`
+	// The number of the page to return.
+	Page *int64 `json:"Page,omitempty" xml:"Page,omitempty"`
+	// The ID of the region.
+	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	// The severity level of the alert. Valid values: P6, P5, P4, P3, P2, and P1. The preceding values are listed in ascending order of severity.
+	Severity *string `json:"Severity,omitempty" xml:"Severity,omitempty"`
+	// Specifies whether to query the activities that correspond to alerts. Valid values:
+	//
+	// *   `false` (default value): The activities are not queried.
+	// *   `true`: The activities in the last three days are queried.
+	ShowActivities *bool `json:"ShowActivities,omitempty" xml:"ShowActivities,omitempty"`
+	// Specifies whether to query the events that correspond to alerts. Valid values:
+	//
+	// *   `false` (default value): The events are not queried.
+	// *   `true`: The events are queried.
+	ShowEvents *bool `json:"ShowEvents,omitempty" xml:"ShowEvents,omitempty"`
+	// The number of alerts to return on each page.
+	Size *int64 `json:"Size,omitempty" xml:"Size,omitempty"`
+	// The start time of the alert sending history that you want to query. Specify the time in the `YYYY-MM-DD HH:mm:ss` format.
+	StartTime *string `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
+	// The status of the alert. Valid values:
+	//
+	// *   0: The alert is pending.
+	// *   1: The alert is being handled.
+	// *   2: The alert is handled.
+	State *int64 `json:"State,omitempty" xml:"State,omitempty"`
 }
 
 func (s ListAlertsRequest) String() string {
@@ -21833,8 +21888,10 @@ func (s *ListAlertsRequest) SetState(v int64) *ListAlertsRequest {
 }
 
 type ListAlertsResponseBody struct {
-	PageBean  *ListAlertsResponseBodyPageBean `json:"PageBean,omitempty" xml:"PageBean,omitempty" type:"Struct"`
-	RequestId *string                         `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The information about the array object.
+	PageBean *ListAlertsResponseBodyPageBean `json:"PageBean,omitempty" xml:"PageBean,omitempty" type:"Struct"`
+	// The request ID.
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
 func (s ListAlertsResponseBody) String() string {
@@ -21856,10 +21913,14 @@ func (s *ListAlertsResponseBody) SetRequestId(v string) *ListAlertsResponseBody 
 }
 
 type ListAlertsResponseBodyPageBean struct {
+	// The alerts for which the alert sending history is queried.
 	ListAlerts []*ListAlertsResponseBodyPageBeanListAlerts `json:"ListAlerts,omitempty" xml:"ListAlerts,omitempty" type:"Repeated"`
-	Page       *int64                                      `json:"Page,omitempty" xml:"Page,omitempty"`
-	Size       *int64                                      `json:"Size,omitempty" xml:"Size,omitempty"`
-	Total      *int64                                      `json:"Total,omitempty" xml:"Total,omitempty"`
+	// The page number of the returned page.
+	Page *int64 `json:"Page,omitempty" xml:"Page,omitempty"`
+	// The number of alerts returned per page.
+	Size *int64 `json:"Size,omitempty" xml:"Size,omitempty"`
+	// The total number of queried alerts.
+	Total *int64 `json:"Total,omitempty" xml:"Total,omitempty"`
 }
 
 func (s ListAlertsResponseBodyPageBean) String() string {
@@ -21891,16 +21952,30 @@ func (s *ListAlertsResponseBodyPageBean) SetTotal(v int64) *ListAlertsResponseBo
 }
 
 type ListAlertsResponseBodyPageBeanListAlerts struct {
-	Activities       []*ListAlertsResponseBodyPageBeanListAlertsActivities  `json:"Activities,omitempty" xml:"Activities,omitempty" type:"Repeated"`
-	AlertEvents      []*ListAlertsResponseBodyPageBeanListAlertsAlertEvents `json:"AlertEvents,omitempty" xml:"AlertEvents,omitempty" type:"Repeated"`
-	AlertId          *int64                                                 `json:"AlertId,omitempty" xml:"AlertId,omitempty"`
-	AlertName        *string                                                `json:"AlertName,omitempty" xml:"AlertName,omitempty"`
-	CreateTime       *string                                                `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
-	DispatchRuleId   *float32                                               `json:"DispatchRuleId,omitempty" xml:"DispatchRuleId,omitempty"`
-	DispatchRuleName *string                                                `json:"DispatchRuleName,omitempty" xml:"DispatchRuleName,omitempty"`
-	Severity         *string                                                `json:"Severity,omitempty" xml:"Severity,omitempty"`
-	Solution         *string                                                `json:"Solution,omitempty" xml:"Solution,omitempty"`
-	State            *int64                                                 `json:"State,omitempty" xml:"State,omitempty"`
+	// The list of activities.
+	Activities []*ListAlertsResponseBodyPageBeanListAlertsActivities `json:"Activities,omitempty" xml:"Activities,omitempty" type:"Repeated"`
+	// The list of events.
+	AlertEvents []*ListAlertsResponseBodyPageBeanListAlertsAlertEvents `json:"AlertEvents,omitempty" xml:"AlertEvents,omitempty" type:"Repeated"`
+	// The alert ID.
+	AlertId *int64 `json:"AlertId,omitempty" xml:"AlertId,omitempty"`
+	// The name of the alert rule.
+	AlertName *string `json:"AlertName,omitempty" xml:"AlertName,omitempty"`
+	// The time when the alert was created.
+	CreateTime *string `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
+	// The ID of the notification policy.
+	DispatchRuleId *float32 `json:"DispatchRuleId,omitempty" xml:"DispatchRuleId,omitempty"`
+	// The name of the notification policy.
+	DispatchRuleName *string `json:"DispatchRuleName,omitempty" xml:"DispatchRuleName,omitempty"`
+	// The severity level of the alert. Valid values: P6, P5, P4, P3, P2, and P1. The preceding values are listed in ascending order of severity.
+	Severity *string `json:"Severity,omitempty" xml:"Severity,omitempty"`
+	// The Alert solution.
+	Solution *string `json:"Solution,omitempty" xml:"Solution,omitempty"`
+	// The status of the alert. Valid values:
+	//
+	// *   0: The alert is pending.
+	// *   1: The alert is being handled.
+	// *   2: The alert is handled.
+	State *int64 `json:"State,omitempty" xml:"State,omitempty"`
 }
 
 func (s ListAlertsResponseBodyPageBeanListAlerts) String() string {
@@ -21962,11 +22037,22 @@ func (s *ListAlertsResponseBodyPageBeanListAlerts) SetState(v int64) *ListAlerts
 }
 
 type ListAlertsResponseBodyPageBeanListAlertsActivities struct {
-	Content     *string `json:"Content,omitempty" xml:"Content,omitempty"`
+	// The content of the alert notification.
+	Content *string `json:"Content,omitempty" xml:"Content,omitempty"`
+	// The description of the activity.
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
+	// The name of the handler.
 	HandlerName *string `json:"HandlerName,omitempty" xml:"HandlerName,omitempty"`
-	Time        *string `json:"Time,omitempty" xml:"Time,omitempty"`
-	Type        *int64  `json:"Type,omitempty" xml:"Type,omitempty"`
+	// The operation time of the activity.
+	Time *string `json:"Time,omitempty" xml:"Time,omitempty"`
+	// The type of the activity. Valid values:
+	//
+	// *   1: The alert is claimed.
+	// *   2: The alert is disclaimed.
+	// *   3: A comment is added for the alert.
+	// *   4: The alert is disabled.
+	// *   5: An alert notification is sent.
+	Type *int64 `json:"Type,omitempty" xml:"Type,omitempty"`
 }
 
 func (s ListAlertsResponseBodyPageBeanListAlertsActivities) String() string {
@@ -22003,18 +22089,59 @@ func (s *ListAlertsResponseBodyPageBeanListAlertsActivities) SetType(v int64) *L
 }
 
 type ListAlertsResponseBodyPageBeanListAlertsAlertEvents struct {
-	AlertName       *string `json:"AlertName,omitempty" xml:"AlertName,omitempty"`
-	Annotations     *string `json:"Annotations,omitempty" xml:"Annotations,omitempty"`
-	Description     *string `json:"Description,omitempty" xml:"Description,omitempty"`
-	EndTime         *string `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
-	GeneratorURL    *string `json:"GeneratorURL,omitempty" xml:"GeneratorURL,omitempty"`
+	// The name of the event.
+	AlertName *string `json:"AlertName,omitempty" xml:"AlertName,omitempty"`
+	// The annotations.
+	Annotations *string `json:"Annotations,omitempty" xml:"Annotations,omitempty"`
+	// The description of the event.
+	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
+	// The time when the event ended.
+	EndTime *string `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
+	// The URL of the event.
+	GeneratorURL *string `json:"GeneratorURL,omitempty" xml:"GeneratorURL,omitempty"`
+	// The name of the integration that corresponds to the alert event.
 	IntegrationName *string `json:"IntegrationName,omitempty" xml:"IntegrationName,omitempty"`
+	// The type of the integration that corresponds to the alert event. Valid values:
+	//
+	// *   ARMS
+	// *   CLOUD_MONITOR
+	// *   MSE
+	// *   ARMS_CLOUD_DIALTEST
+	// *   PROMETHEUS
+	// *   LOG_SERVICE
+	// *   CUSTOM
+	// *   ARMS_PROMETHEUS
+	// *   ARMS_APP_MON
+	// *   ARMS_FRONT_MON
+	// *   ARMS_CUSTOM
+	// *   XTRACE
+	// *   GRAFANA
+	// *   ZABBIX
+	// *   SKYWALKING
+	// *   EVENT_BRIDGE
+	// *   NAGIOS
+	// *   OPENFALCON
+	// *   ARMS_INSIGHTS
 	IntegrationType *string `json:"IntegrationType,omitempty" xml:"IntegrationType,omitempty"`
-	Labels          *string `json:"Labels,omitempty" xml:"Labels,omitempty"`
-	ReceiveTime     *string `json:"ReceiveTime,omitempty" xml:"ReceiveTime,omitempty"`
-	Severity        *string `json:"Severity,omitempty" xml:"Severity,omitempty"`
-	StartTime       *string `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
-	State           *string `json:"State,omitempty" xml:"State,omitempty"`
+	// The tags.
+	Labels *string `json:"Labels,omitempty" xml:"Labels,omitempty"`
+	// The time when the event was created.
+	ReceiveTime *string `json:"ReceiveTime,omitempty" xml:"ReceiveTime,omitempty"`
+	// The severity level of the event. Valid values:
+	//
+	// *   critical
+	// *   error
+	// *   warning
+	// *   info
+	Severity *string `json:"Severity,omitempty" xml:"Severity,omitempty"`
+	// The time when the event started.
+	StartTime *string `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
+	// The status of the event. Valid values:
+	//
+	// *   Active: The event is not cleared.
+	// *   Silenced: The event is silenced.
+	// *   Resolved: The event is cleared.
+	State *string `json:"State,omitempty" xml:"State,omitempty"`
 }
 
 func (s ListAlertsResponseBodyPageBeanListAlertsAlertEvents) String() string {
@@ -22574,7 +22701,8 @@ func (s *ListDashboardsRequest) SetTitle(v string) *ListDashboardsRequest {
 
 type ListDashboardsResponseBody struct {
 	// The information about the Grafana dashboard.
-	DashboardVos []*ListDashboardsResponseBodyDashboardVos `json:"DashboardVos,omitempty" xml:"DashboardVos,omitempty" type:"Repeated"`
+	DashboardVos            []*ListDashboardsResponseBodyDashboardVos `json:"DashboardVos,omitempty" xml:"DashboardVos,omitempty" type:"Repeated"`
+	PrometheusServiceOpened *string                                   `json:"PrometheusServiceOpened,omitempty" xml:"PrometheusServiceOpened,omitempty"`
 	// The request ID.
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
@@ -22589,6 +22717,11 @@ func (s ListDashboardsResponseBody) GoString() string {
 
 func (s *ListDashboardsResponseBody) SetDashboardVos(v []*ListDashboardsResponseBodyDashboardVos) *ListDashboardsResponseBody {
 	s.DashboardVos = v
+	return s
+}
+
+func (s *ListDashboardsResponseBody) SetPrometheusServiceOpened(v string) *ListDashboardsResponseBody {
+	s.PrometheusServiceOpened = &v
 	return s
 }
 
@@ -27812,6 +27945,111 @@ func (s *OpenXtraceDefaultSLRResponse) SetBody(v *OpenXtraceDefaultSLRResponseBo
 	return s
 }
 
+type QueryAppMetadataRequest struct {
+	MetaIds  *string `json:"MetaIds,omitempty" xml:"MetaIds,omitempty"`
+	MetaType *string `json:"MetaType,omitempty" xml:"MetaType,omitempty"`
+	Pid      *string `json:"Pid,omitempty" xml:"Pid,omitempty"`
+	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+}
+
+func (s QueryAppMetadataRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s QueryAppMetadataRequest) GoString() string {
+	return s.String()
+}
+
+func (s *QueryAppMetadataRequest) SetMetaIds(v string) *QueryAppMetadataRequest {
+	s.MetaIds = &v
+	return s
+}
+
+func (s *QueryAppMetadataRequest) SetMetaType(v string) *QueryAppMetadataRequest {
+	s.MetaType = &v
+	return s
+}
+
+func (s *QueryAppMetadataRequest) SetPid(v string) *QueryAppMetadataRequest {
+	s.Pid = &v
+	return s
+}
+
+func (s *QueryAppMetadataRequest) SetRegionId(v string) *QueryAppMetadataRequest {
+	s.RegionId = &v
+	return s
+}
+
+type QueryAppMetadataResponseBody struct {
+	Code           *int32                 `json:"Code,omitempty" xml:"Code,omitempty"`
+	Data           map[string]interface{} `json:"Data,omitempty" xml:"Data,omitempty"`
+	HttpStatusCode *int32                 `json:"HttpStatusCode,omitempty" xml:"HttpStatusCode,omitempty"`
+	RequestId      *string                `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	Success        *bool                  `json:"Success,omitempty" xml:"Success,omitempty"`
+}
+
+func (s QueryAppMetadataResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s QueryAppMetadataResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *QueryAppMetadataResponseBody) SetCode(v int32) *QueryAppMetadataResponseBody {
+	s.Code = &v
+	return s
+}
+
+func (s *QueryAppMetadataResponseBody) SetData(v map[string]interface{}) *QueryAppMetadataResponseBody {
+	s.Data = v
+	return s
+}
+
+func (s *QueryAppMetadataResponseBody) SetHttpStatusCode(v int32) *QueryAppMetadataResponseBody {
+	s.HttpStatusCode = &v
+	return s
+}
+
+func (s *QueryAppMetadataResponseBody) SetRequestId(v string) *QueryAppMetadataResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *QueryAppMetadataResponseBody) SetSuccess(v bool) *QueryAppMetadataResponseBody {
+	s.Success = &v
+	return s
+}
+
+type QueryAppMetadataResponse struct {
+	Headers    map[string]*string            `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                        `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *QueryAppMetadataResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s QueryAppMetadataResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s QueryAppMetadataResponse) GoString() string {
+	return s.String()
+}
+
+func (s *QueryAppMetadataResponse) SetHeaders(v map[string]*string) *QueryAppMetadataResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *QueryAppMetadataResponse) SetStatusCode(v int32) *QueryAppMetadataResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *QueryAppMetadataResponse) SetBody(v *QueryAppMetadataResponseBody) *QueryAppMetadataResponse {
+	s.Body = v
+	return s
+}
+
 type QueryMetricByPageRequest struct {
 	// The number of the page to return. Default value: `1`.
 	CurrentPage *int32 `json:"CurrentPage,omitempty" xml:"CurrentPage,omitempty"`
@@ -28544,7 +28782,11 @@ func (s *RemoveSourcesFromPrometheusGlobalViewResponse) SetBody(v *RemoveSources
 }
 
 type SaveTraceAppConfigRequest struct {
-	Pid      *string                              `json:"Pid,omitempty" xml:"Pid,omitempty"`
+	// The ID of the application.
+	//
+	// Log on to the **ARMS console**. In the left-side navigation pane, choose **Application Monitoring** > **Applications**. On the **Applications** page, click the name of an application. The URL in the address bar contains the process ID (PID) of the application. The PID is indicated in the pid=xxx format. The PID is usually percent encoded as xxx%40xxx. You must modify this value to remove the percent encoding. For example, if the PID in the URL is eb4zdose6v%409781be0f44d\*\*\*\*, you must replace %40 with an at sign (@) to obtain eb4zdose6v@9781be0f44d\*\*\*\*.
+	Pid *string `json:"Pid,omitempty" xml:"Pid,omitempty"`
+	// The settings of Application Monitoring.
 	Settings []*SaveTraceAppConfigRequestSettings `json:"Settings,omitempty" xml:"Settings,omitempty" type:"Repeated"`
 }
 
@@ -28567,7 +28809,29 @@ func (s *SaveTraceAppConfigRequest) SetSettings(v []*SaveTraceAppConfigRequestSe
 }
 
 type SaveTraceAppConfigRequestSettings struct {
-	Key   *string `json:"Key,omitempty" xml:"Key,omitempty"`
+	// The values of the settings that you want to modify. For information about the supported settings, see the following items:
+	//
+	// *   Trace sampling settings
+	// *   Main switch settings
+	// *   Threshold settings
+	// *   Advanced settings
+	// *   Thread settings
+	// *   Memory snapshot settings
+	// *   URL convergence settings
+	// *   Business log association settings
+	// *   Business monitoring settings
+	Key *string `json:"Key,omitempty" xml:"Key,omitempty"`
+	// The values of the settings that you want to modify. For information about the supported settings, see the following items:
+	//
+	// *   Trace sampling settings
+	// *   Main switch settings
+	// *   Threshold settings
+	// *   Advanced settings
+	// *   Thread settings
+	// *   Memory snapshot settings
+	// *   URL convergence settings
+	// *   Business log association settings
+	// *   Business monitoring settings
 	Value *string `json:"Value,omitempty" xml:"Value,omitempty"`
 }
 
@@ -28590,11 +28854,19 @@ func (s *SaveTraceAppConfigRequestSettings) SetValue(v string) *SaveTraceAppConf
 }
 
 type SaveTraceAppConfigResponseBody struct {
-	Code      *int64  `json:"Code,omitempty" xml:"Code,omitempty"`
-	Data      *string `json:"Data,omitempty" xml:"Data,omitempty"`
-	Message   *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// The status code. The status code 200 indicates that the request was successful. If another status code is returned, the request failed.
+	Code *int64 `json:"Code,omitempty" xml:"Code,omitempty"`
+	// Indicates whether the call was successful.
+	Data *string `json:"Data,omitempty" xml:"Data,omitempty"`
+	// The returned message.
+	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// The ID of the request.
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	Success   *bool   `json:"Success,omitempty" xml:"Success,omitempty"`
+	// Indicates whether the request was successful. Valid values:
+	//
+	// *   `true`
+	// *   `false`
+	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
 }
 
 func (s SaveTraceAppConfigResponseBody) String() string {
@@ -43784,6 +44056,46 @@ func (client *Client) OpenXtraceDefaultSLR(request *OpenXtraceDefaultSLRRequest)
 	runtime := &util.RuntimeOptions{}
 	_result = &OpenXtraceDefaultSLRResponse{}
 	_body, _err := client.OpenXtraceDefaultSLRWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) QueryAppMetadataWithOptions(request *QueryAppMetadataRequest, runtime *util.RuntimeOptions) (_result *QueryAppMetadataResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := openapiutil.Query(util.ToMap(request))
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("QueryAppMetadata"),
+		Version:     tea.String("2019-08-08"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("GET"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &QueryAppMetadataResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) QueryAppMetadata(request *QueryAppMetadataRequest) (_result *QueryAppMetadataResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &QueryAppMetadataResponse{}
+	_body, _err := client.QueryAppMetadataWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
