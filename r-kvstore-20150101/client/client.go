@@ -40,6 +40,7 @@ type AddShardingNodeRequest struct {
 	ShardCount *int32 `json:"ShardCount,omitempty" xml:"ShardCount,omitempty"`
 	// The source of the operation. This parameter is used only for internal maintenance. You do not need to specify this parameter.
 	SourceBiz *string `json:"SourceBiz,omitempty" xml:"SourceBiz,omitempty"`
+	VSwitchId *string `json:"VSwitchId,omitempty" xml:"VSwitchId,omitempty"`
 }
 
 func (s AddShardingNodeRequest) String() string {
@@ -107,6 +108,11 @@ func (s *AddShardingNodeRequest) SetShardCount(v int32) *AddShardingNodeRequest 
 
 func (s *AddShardingNodeRequest) SetSourceBiz(v string) *AddShardingNodeRequest {
 	s.SourceBiz = &v
+	return s
+}
+
+func (s *AddShardingNodeRequest) SetVSwitchId(v string) *AddShardingNodeRequest {
+	s.VSwitchId = &v
 	return s
 }
 
@@ -19756,6 +19762,10 @@ func (client *Client) AddShardingNodeWithOptions(request *AddShardingNodeRequest
 
 	if !tea.BoolValue(util.IsUnset(request.SourceBiz)) {
 		query["SourceBiz"] = request.SourceBiz
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.VSwitchId)) {
+		query["VSwitchId"] = request.VSwitchId
 	}
 
 	req := &openapi.OpenApiRequest{
