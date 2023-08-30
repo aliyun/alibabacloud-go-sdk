@@ -1320,6 +1320,7 @@ func (s *GetPrivateAccessApplicationResponseBody) SetRequestId(v string) *GetPri
 type GetPrivateAccessApplicationResponseBodyApplication struct {
 	Addresses     []*string                                                       `json:"Addresses,omitempty" xml:"Addresses,omitempty" type:"Repeated"`
 	ApplicationId *string                                                         `json:"ApplicationId,omitempty" xml:"ApplicationId,omitempty"`
+	ConnectorIds  []*string                                                       `json:"ConnectorIds,omitempty" xml:"ConnectorIds,omitempty" type:"Repeated"`
 	CreateTime    *string                                                         `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
 	Description   *string                                                         `json:"Description,omitempty" xml:"Description,omitempty"`
 	Name          *string                                                         `json:"Name,omitempty" xml:"Name,omitempty"`
@@ -1345,6 +1346,11 @@ func (s *GetPrivateAccessApplicationResponseBodyApplication) SetAddresses(v []*s
 
 func (s *GetPrivateAccessApplicationResponseBodyApplication) SetApplicationId(v string) *GetPrivateAccessApplicationResponseBodyApplication {
 	s.ApplicationId = &v
+	return s
+}
+
+func (s *GetPrivateAccessApplicationResponseBodyApplication) SetConnectorIds(v []*string) *GetPrivateAccessApplicationResponseBodyApplication {
+	s.ConnectorIds = v
 	return s
 }
 
@@ -2204,7 +2210,8 @@ func (s *ListConnectorsResponseBody) SetTotalNum(v int32) *ListConnectorsRespons
 }
 
 type ListConnectorsResponseBodyConnectors struct {
-	Applications []*ListConnectorsResponseBodyConnectorsApplications `json:"Applications,omitempty" xml:"Applications,omitempty" type:"Repeated"`
+	Applications     []*ListConnectorsResponseBodyConnectorsApplications     `json:"Applications,omitempty" xml:"Applications,omitempty" type:"Repeated"`
+	ConnectorClients []*ListConnectorsResponseBodyConnectorsConnectorClients `json:"ConnectorClients,omitempty" xml:"ConnectorClients,omitempty" type:"Repeated"`
 	// ConnectorID。
 	ConnectorId  *string                                          `json:"ConnectorId,omitempty" xml:"ConnectorId,omitempty"`
 	CreateTime   *string                                          `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
@@ -2225,6 +2232,11 @@ func (s ListConnectorsResponseBodyConnectors) GoString() string {
 
 func (s *ListConnectorsResponseBodyConnectors) SetApplications(v []*ListConnectorsResponseBodyConnectorsApplications) *ListConnectorsResponseBodyConnectors {
 	s.Applications = v
+	return s
+}
+
+func (s *ListConnectorsResponseBodyConnectors) SetConnectorClients(v []*ListConnectorsResponseBodyConnectorsConnectorClients) *ListConnectorsResponseBodyConnectors {
+	s.ConnectorClients = v
 	return s
 }
 
@@ -2283,6 +2295,41 @@ func (s *ListConnectorsResponseBodyConnectorsApplications) SetApplicationId(v st
 
 func (s *ListConnectorsResponseBodyConnectorsApplications) SetApplicationName(v string) *ListConnectorsResponseBodyConnectorsApplications {
 	s.ApplicationName = &v
+	return s
+}
+
+type ListConnectorsResponseBodyConnectorsConnectorClients struct {
+	ConnectionStatus *string `json:"ConnectionStatus,omitempty" xml:"ConnectionStatus,omitempty"`
+	DevTag           *string `json:"DevTag,omitempty" xml:"DevTag,omitempty"`
+	Hostname         *string `json:"Hostname,omitempty" xml:"Hostname,omitempty"`
+	PublicIp         *string `json:"PublicIp,omitempty" xml:"PublicIp,omitempty"`
+}
+
+func (s ListConnectorsResponseBodyConnectorsConnectorClients) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListConnectorsResponseBodyConnectorsConnectorClients) GoString() string {
+	return s.String()
+}
+
+func (s *ListConnectorsResponseBodyConnectorsConnectorClients) SetConnectionStatus(v string) *ListConnectorsResponseBodyConnectorsConnectorClients {
+	s.ConnectionStatus = &v
+	return s
+}
+
+func (s *ListConnectorsResponseBodyConnectorsConnectorClients) SetDevTag(v string) *ListConnectorsResponseBodyConnectorsConnectorClients {
+	s.DevTag = &v
+	return s
+}
+
+func (s *ListConnectorsResponseBodyConnectorsConnectorClients) SetHostname(v string) *ListConnectorsResponseBodyConnectorsConnectorClients {
+	s.Hostname = &v
+	return s
+}
+
+func (s *ListConnectorsResponseBodyConnectorsConnectorClients) SetPublicIp(v string) *ListConnectorsResponseBodyConnectorsConnectorClients {
+	s.PublicIp = &v
 	return s
 }
 
@@ -3138,6 +3185,7 @@ func (s *ListPolicesForUserGroupResponse) SetBody(v *ListPolicesForUserGroupResp
 type ListPrivateAccessApplicationsRequest struct {
 	Address        *string   `json:"Address,omitempty" xml:"Address,omitempty"`
 	ApplicationIds []*string `json:"ApplicationIds,omitempty" xml:"ApplicationIds,omitempty" type:"Repeated"`
+	ConnectorId    *string   `json:"ConnectorId,omitempty" xml:"ConnectorId,omitempty"`
 	CurrentPage    *int32    `json:"CurrentPage,omitempty" xml:"CurrentPage,omitempty"`
 	Name           *string   `json:"Name,omitempty" xml:"Name,omitempty"`
 	PageSize       *int32    `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
@@ -3161,6 +3209,11 @@ func (s *ListPrivateAccessApplicationsRequest) SetAddress(v string) *ListPrivate
 
 func (s *ListPrivateAccessApplicationsRequest) SetApplicationIds(v []*string) *ListPrivateAccessApplicationsRequest {
 	s.ApplicationIds = v
+	return s
+}
+
+func (s *ListPrivateAccessApplicationsRequest) SetConnectorId(v string) *ListPrivateAccessApplicationsRequest {
+	s.ConnectorId = &v
 	return s
 }
 
@@ -3226,6 +3279,7 @@ func (s *ListPrivateAccessApplicationsResponseBody) SetTotalNum(v int32) *ListPr
 type ListPrivateAccessApplicationsResponseBodyApplications struct {
 	Addresses     []*string                                                          `json:"Addresses,omitempty" xml:"Addresses,omitempty" type:"Repeated"`
 	ApplicationId *string                                                            `json:"ApplicationId,omitempty" xml:"ApplicationId,omitempty"`
+	ConnectorIds  []*string                                                          `json:"ConnectorIds,omitempty" xml:"ConnectorIds,omitempty" type:"Repeated"`
 	CreateTime    *string                                                            `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
 	Description   *string                                                            `json:"Description,omitempty" xml:"Description,omitempty"`
 	Name          *string                                                            `json:"Name,omitempty" xml:"Name,omitempty"`
@@ -3251,6 +3305,11 @@ func (s *ListPrivateAccessApplicationsResponseBodyApplications) SetAddresses(v [
 
 func (s *ListPrivateAccessApplicationsResponseBodyApplications) SetApplicationId(v string) *ListPrivateAccessApplicationsResponseBodyApplications {
 	s.ApplicationId = &v
+	return s
+}
+
+func (s *ListPrivateAccessApplicationsResponseBodyApplications) SetConnectorIds(v []*string) *ListPrivateAccessApplicationsResponseBodyApplications {
+	s.ConnectorIds = v
 	return s
 }
 
