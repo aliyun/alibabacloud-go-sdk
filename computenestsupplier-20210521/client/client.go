@@ -2143,6 +2143,7 @@ type GetServiceEstimateCostRequest struct {
 	ServiceId         *string                `json:"ServiceId,omitempty" xml:"ServiceId,omitempty"`
 	ServiceInstanceId *string                `json:"ServiceInstanceId,omitempty" xml:"ServiceInstanceId,omitempty"`
 	ServiceVersion    *string                `json:"ServiceVersion,omitempty" xml:"ServiceVersion,omitempty"`
+	SpecificationName *string                `json:"SpecificationName,omitempty" xml:"SpecificationName,omitempty"`
 	TemplateName      *string                `json:"TemplateName,omitempty" xml:"TemplateName,omitempty"`
 }
 
@@ -2184,6 +2185,11 @@ func (s *GetServiceEstimateCostRequest) SetServiceVersion(v string) *GetServiceE
 	return s
 }
 
+func (s *GetServiceEstimateCostRequest) SetSpecificationName(v string) *GetServiceEstimateCostRequest {
+	s.SpecificationName = &v
+	return s
+}
+
 func (s *GetServiceEstimateCostRequest) SetTemplateName(v string) *GetServiceEstimateCostRequest {
 	s.TemplateName = &v
 	return s
@@ -2196,6 +2202,7 @@ type GetServiceEstimateCostShrinkRequest struct {
 	ServiceId         *string `json:"ServiceId,omitempty" xml:"ServiceId,omitempty"`
 	ServiceInstanceId *string `json:"ServiceInstanceId,omitempty" xml:"ServiceInstanceId,omitempty"`
 	ServiceVersion    *string `json:"ServiceVersion,omitempty" xml:"ServiceVersion,omitempty"`
+	SpecificationName *string `json:"SpecificationName,omitempty" xml:"SpecificationName,omitempty"`
 	TemplateName      *string `json:"TemplateName,omitempty" xml:"TemplateName,omitempty"`
 }
 
@@ -2234,6 +2241,11 @@ func (s *GetServiceEstimateCostShrinkRequest) SetServiceInstanceId(v string) *Ge
 
 func (s *GetServiceEstimateCostShrinkRequest) SetServiceVersion(v string) *GetServiceEstimateCostShrinkRequest {
 	s.ServiceVersion = &v
+	return s
+}
+
+func (s *GetServiceEstimateCostShrinkRequest) SetSpecificationName(v string) *GetServiceEstimateCostShrinkRequest {
+	s.SpecificationName = &v
 	return s
 }
 
@@ -6360,6 +6372,10 @@ func (client *Client) GetServiceEstimateCostWithOptions(tmpReq *GetServiceEstima
 
 	if !tea.BoolValue(util.IsUnset(request.ServiceVersion)) {
 		query["ServiceVersion"] = request.ServiceVersion
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.SpecificationName)) {
+		query["SpecificationName"] = request.SpecificationName
 	}
 
 	if !tea.BoolValue(util.IsUnset(request.TemplateName)) {
