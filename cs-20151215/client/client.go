@@ -94,6 +94,131 @@ func (s *DataDisk) SetSize(v int64) *DataDisk {
 	return s
 }
 
+type KubeletConfig struct {
+	AllowedUnsafeSysctls    []*string              `json:"allowedUnsafeSysctls,omitempty" xml:"allowedUnsafeSysctls,omitempty" type:"Repeated"`
+	ContainerLogMaxFiles    *int64                 `json:"containerLogMaxFiles,omitempty" xml:"containerLogMaxFiles,omitempty"`
+	ContainerLogMaxSize     *string                `json:"containerLogMaxSize,omitempty" xml:"containerLogMaxSize,omitempty"`
+	CpuManagerPolicy        *string                `json:"cpuManagerPolicy,omitempty" xml:"cpuManagerPolicy,omitempty"`
+	EventBurst              *int64                 `json:"eventBurst,omitempty" xml:"eventBurst,omitempty"`
+	EventRecordQPS          *int64                 `json:"eventRecordQPS,omitempty" xml:"eventRecordQPS,omitempty"`
+	EvictionHard            map[string]interface{} `json:"evictionHard,omitempty" xml:"evictionHard,omitempty"`
+	EvictionSoft            map[string]interface{} `json:"evictionSoft,omitempty" xml:"evictionSoft,omitempty"`
+	EvictionSoftGracePeriod map[string]interface{} `json:"evictionSoftGracePeriod,omitempty" xml:"evictionSoftGracePeriod,omitempty"`
+	FeatureGates            map[string]interface{} `json:"featureGates,omitempty" xml:"featureGates,omitempty"`
+	KubeAPIBurst            *int64                 `json:"kubeAPIBurst,omitempty" xml:"kubeAPIBurst,omitempty"`
+	KubeAPIQPS              *int64                 `json:"kubeAPIQPS,omitempty" xml:"kubeAPIQPS,omitempty"`
+	KubeReserved            map[string]interface{} `json:"kubeReserved,omitempty" xml:"kubeReserved,omitempty"`
+	MaxPods                 *int64                 `json:"maxPods,omitempty" xml:"maxPods,omitempty"`
+	ReadOnlyPort            *int64                 `json:"readOnlyPort,omitempty" xml:"readOnlyPort,omitempty"`
+	RegistryBurst           *int64                 `json:"registryBurst,omitempty" xml:"registryBurst,omitempty"`
+	RegistryPullQPS         *int64                 `json:"registryPullQPS,omitempty" xml:"registryPullQPS,omitempty"`
+	SerializeImagePulls     *bool                  `json:"serializeImagePulls,omitempty" xml:"serializeImagePulls,omitempty"`
+	SystemReserved          map[string]interface{} `json:"systemReserved,omitempty" xml:"systemReserved,omitempty"`
+}
+
+func (s KubeletConfig) String() string {
+	return tea.Prettify(s)
+}
+
+func (s KubeletConfig) GoString() string {
+	return s.String()
+}
+
+func (s *KubeletConfig) SetAllowedUnsafeSysctls(v []*string) *KubeletConfig {
+	s.AllowedUnsafeSysctls = v
+	return s
+}
+
+func (s *KubeletConfig) SetContainerLogMaxFiles(v int64) *KubeletConfig {
+	s.ContainerLogMaxFiles = &v
+	return s
+}
+
+func (s *KubeletConfig) SetContainerLogMaxSize(v string) *KubeletConfig {
+	s.ContainerLogMaxSize = &v
+	return s
+}
+
+func (s *KubeletConfig) SetCpuManagerPolicy(v string) *KubeletConfig {
+	s.CpuManagerPolicy = &v
+	return s
+}
+
+func (s *KubeletConfig) SetEventBurst(v int64) *KubeletConfig {
+	s.EventBurst = &v
+	return s
+}
+
+func (s *KubeletConfig) SetEventRecordQPS(v int64) *KubeletConfig {
+	s.EventRecordQPS = &v
+	return s
+}
+
+func (s *KubeletConfig) SetEvictionHard(v map[string]interface{}) *KubeletConfig {
+	s.EvictionHard = v
+	return s
+}
+
+func (s *KubeletConfig) SetEvictionSoft(v map[string]interface{}) *KubeletConfig {
+	s.EvictionSoft = v
+	return s
+}
+
+func (s *KubeletConfig) SetEvictionSoftGracePeriod(v map[string]interface{}) *KubeletConfig {
+	s.EvictionSoftGracePeriod = v
+	return s
+}
+
+func (s *KubeletConfig) SetFeatureGates(v map[string]interface{}) *KubeletConfig {
+	s.FeatureGates = v
+	return s
+}
+
+func (s *KubeletConfig) SetKubeAPIBurst(v int64) *KubeletConfig {
+	s.KubeAPIBurst = &v
+	return s
+}
+
+func (s *KubeletConfig) SetKubeAPIQPS(v int64) *KubeletConfig {
+	s.KubeAPIQPS = &v
+	return s
+}
+
+func (s *KubeletConfig) SetKubeReserved(v map[string]interface{}) *KubeletConfig {
+	s.KubeReserved = v
+	return s
+}
+
+func (s *KubeletConfig) SetMaxPods(v int64) *KubeletConfig {
+	s.MaxPods = &v
+	return s
+}
+
+func (s *KubeletConfig) SetReadOnlyPort(v int64) *KubeletConfig {
+	s.ReadOnlyPort = &v
+	return s
+}
+
+func (s *KubeletConfig) SetRegistryBurst(v int64) *KubeletConfig {
+	s.RegistryBurst = &v
+	return s
+}
+
+func (s *KubeletConfig) SetRegistryPullQPS(v int64) *KubeletConfig {
+	s.RegistryPullQPS = &v
+	return s
+}
+
+func (s *KubeletConfig) SetSerializeImagePulls(v bool) *KubeletConfig {
+	s.SerializeImagePulls = &v
+	return s
+}
+
+func (s *KubeletConfig) SetSystemReserved(v map[string]interface{}) *KubeletConfig {
+	s.SystemReserved = v
+	return s
+}
+
 type MaintenanceWindow struct {
 	Duration        *string `json:"duration,omitempty" xml:"duration,omitempty"`
 	Enable          *bool   `json:"enable,omitempty" xml:"enable,omitempty"`
@@ -1474,6 +1599,7 @@ func (s *CreateAutoscalingConfigResponse) SetStatusCode(v int32) *CreateAutoscal
 }
 
 type CreateClusterRequest struct {
+	AccessControlList                []*string   `json:"access_control_list,omitempty" xml:"access_control_list,omitempty" type:"Repeated"`
 	Addons                           []*Addon    `json:"addons,omitempty" xml:"addons,omitempty" type:"Repeated"`
 	ApiAudiences                     *string     `json:"api_audiences,omitempty" xml:"api_audiences,omitempty"`
 	ChargeType                       *string     `json:"charge_type,omitempty" xml:"charge_type,omitempty"`
@@ -1584,6 +1710,11 @@ func (s CreateClusterRequest) String() string {
 
 func (s CreateClusterRequest) GoString() string {
 	return s.String()
+}
+
+func (s *CreateClusterRequest) SetAccessControlList(v []*string) *CreateClusterRequest {
+	s.AccessControlList = v
+	return s
 }
 
 func (s *CreateClusterRequest) SetAddons(v []*Addon) *CreateClusterRequest {
@@ -4900,7 +5031,8 @@ type DescribeClusterNodePoolDetailResponseBody struct {
 	// The configurations about the managed node pool feature.
 	Management *DescribeClusterNodePoolDetailResponseBodyManagement `json:"management,omitempty" xml:"management,omitempty" type:"Struct"`
 	// The maximum number of nodes that are supported by the edge node pool. The value of this parameter must be equal to or greater than 0. A value of 0 indicates that the number of nodes in the node pool is limited only by the quota of nodes in the cluster. In most cases, this parameter is set to a value larger than 0 for edge node pools. This parameter is set to 0 for node pools of the ess type or default edge node pools.
-	MaxNodes *int64 `json:"max_nodes,omitempty" xml:"max_nodes,omitempty"`
+	MaxNodes   *int64                                               `json:"max_nodes,omitempty" xml:"max_nodes,omitempty"`
+	NodeConfig *DescribeClusterNodePoolDetailResponseBodyNodeConfig `json:"node_config,omitempty" xml:"node_config,omitempty" type:"Struct"`
 	// The configurations of the node pool.
 	NodepoolInfo *DescribeClusterNodePoolDetailResponseBodyNodepoolInfo `json:"nodepool_info,omitempty" xml:"nodepool_info,omitempty" type:"Struct"`
 	// The configurations of the scaling group.
@@ -4945,6 +5077,11 @@ func (s *DescribeClusterNodePoolDetailResponseBody) SetManagement(v *DescribeClu
 
 func (s *DescribeClusterNodePoolDetailResponseBody) SetMaxNodes(v int64) *DescribeClusterNodePoolDetailResponseBody {
 	s.MaxNodes = &v
+	return s
+}
+
+func (s *DescribeClusterNodePoolDetailResponseBody) SetNodeConfig(v *DescribeClusterNodePoolDetailResponseBodyNodeConfig) *DescribeClusterNodePoolDetailResponseBody {
+	s.NodeConfig = v
 	return s
 }
 
@@ -5243,6 +5380,23 @@ func (s *DescribeClusterNodePoolDetailResponseBodyManagementUpgradeConfig) SetSu
 
 func (s *DescribeClusterNodePoolDetailResponseBodyManagementUpgradeConfig) SetSurgePercentage(v int64) *DescribeClusterNodePoolDetailResponseBodyManagementUpgradeConfig {
 	s.SurgePercentage = &v
+	return s
+}
+
+type DescribeClusterNodePoolDetailResponseBodyNodeConfig struct {
+	KubeletConfiguration *KubeletConfig `json:"kubelet_configuration,omitempty" xml:"kubelet_configuration,omitempty"`
+}
+
+func (s DescribeClusterNodePoolDetailResponseBodyNodeConfig) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeClusterNodePoolDetailResponseBodyNodeConfig) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeClusterNodePoolDetailResponseBodyNodeConfig) SetKubeletConfiguration(v *KubeletConfig) *DescribeClusterNodePoolDetailResponseBodyNodeConfig {
+	s.KubeletConfiguration = v
 	return s
 }
 
@@ -5821,6 +5975,7 @@ type DescribeClusterNodePoolsResponseBodyNodepools struct {
 	// The configurations of managed node pools. Managed node pools are available only in professional managed Kubernetes clusters.
 	Management *DescribeClusterNodePoolsResponseBodyNodepoolsManagement `json:"management,omitempty" xml:"management,omitempty" type:"Struct"`
 	MaxNodes   *int64                                                   `json:"max_nodes,omitempty" xml:"max_nodes,omitempty"`
+	NodeConfig *DescribeClusterNodePoolsResponseBodyNodepoolsNodeConfig `json:"node_config,omitempty" xml:"node_config,omitempty" type:"Struct"`
 	// The information about the node pool.
 	NodepoolInfo *DescribeClusterNodePoolsResponseBodyNodepoolsNodepoolInfo `json:"nodepool_info,omitempty" xml:"nodepool_info,omitempty" type:"Struct"`
 	// The configurations of the scaling group.
@@ -5866,6 +6021,11 @@ func (s *DescribeClusterNodePoolsResponseBodyNodepools) SetManagement(v *Describ
 
 func (s *DescribeClusterNodePoolsResponseBodyNodepools) SetMaxNodes(v int64) *DescribeClusterNodePoolsResponseBodyNodepools {
 	s.MaxNodes = &v
+	return s
+}
+
+func (s *DescribeClusterNodePoolsResponseBodyNodepools) SetNodeConfig(v *DescribeClusterNodePoolsResponseBodyNodepoolsNodeConfig) *DescribeClusterNodePoolsResponseBodyNodepools {
+	s.NodeConfig = v
 	return s
 }
 
@@ -6160,6 +6320,23 @@ func (s *DescribeClusterNodePoolsResponseBodyNodepoolsManagementUpgradeConfig) S
 
 func (s *DescribeClusterNodePoolsResponseBodyNodepoolsManagementUpgradeConfig) SetSurgePercentage(v int64) *DescribeClusterNodePoolsResponseBodyNodepoolsManagementUpgradeConfig {
 	s.SurgePercentage = &v
+	return s
+}
+
+type DescribeClusterNodePoolsResponseBodyNodepoolsNodeConfig struct {
+	KubeletConfiguration *KubeletConfig `json:"kubelet_configuration,omitempty" xml:"kubelet_configuration,omitempty"`
+}
+
+func (s DescribeClusterNodePoolsResponseBodyNodepoolsNodeConfig) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeClusterNodePoolsResponseBodyNodepoolsNodeConfig) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeClusterNodePoolsResponseBodyNodepoolsNodeConfig) SetKubeletConfiguration(v *KubeletConfig) *DescribeClusterNodePoolsResponseBodyNodepoolsNodeConfig {
+	s.KubeletConfiguration = v
 	return s
 }
 
@@ -11949,11 +12126,12 @@ func (s *MigrateClusterResponse) SetBody(v *MigrateClusterResponseBody) *Migrate
 }
 
 type ModifyClusterRequest struct {
+	AccessControlList          []*string          `json:"access_control_list,omitempty" xml:"access_control_list,omitempty" type:"Repeated"`
 	ApiServerEip               *bool              `json:"api_server_eip,omitempty" xml:"api_server_eip,omitempty"`
 	ApiServerEipId             *string            `json:"api_server_eip_id,omitempty" xml:"api_server_eip_id,omitempty"`
 	DeletionProtection         *bool              `json:"deletion_protection,omitempty" xml:"deletion_protection,omitempty"`
 	EnableRrsa                 *bool              `json:"enable_rrsa,omitempty" xml:"enable_rrsa,omitempty"`
-	IngressDomainRebinding     *string            `json:"ingress_domain_rebinding,omitempty" xml:"ingress_domain_rebinding,omitempty"`
+	IngressDomainRebinding     *bool              `json:"ingress_domain_rebinding,omitempty" xml:"ingress_domain_rebinding,omitempty"`
 	IngressLoadbalancerId      *string            `json:"ingress_loadbalancer_id,omitempty" xml:"ingress_loadbalancer_id,omitempty"`
 	InstanceDeletionProtection *bool              `json:"instance_deletion_protection,omitempty" xml:"instance_deletion_protection,omitempty"`
 	MaintenanceWindow          *MaintenanceWindow `json:"maintenance_window,omitempty" xml:"maintenance_window,omitempty"`
@@ -11966,6 +12144,11 @@ func (s ModifyClusterRequest) String() string {
 
 func (s ModifyClusterRequest) GoString() string {
 	return s.String()
+}
+
+func (s *ModifyClusterRequest) SetAccessControlList(v []*string) *ModifyClusterRequest {
+	s.AccessControlList = v
+	return s
 }
 
 func (s *ModifyClusterRequest) SetApiServerEip(v bool) *ModifyClusterRequest {
@@ -11988,7 +12171,7 @@ func (s *ModifyClusterRequest) SetEnableRrsa(v bool) *ModifyClusterRequest {
 	return s
 }
 
-func (s *ModifyClusterRequest) SetIngressDomainRebinding(v string) *ModifyClusterRequest {
+func (s *ModifyClusterRequest) SetIngressDomainRebinding(v bool) *ModifyClusterRequest {
 	s.IngressDomainRebinding = &v
 	return s
 }
@@ -12795,7 +12978,7 @@ func (s *ModifyClusterTagsResponse) SetStatusCode(v int32) *ModifyClusterTagsRes
 }
 
 type ModifyNodePoolNodeConfigRequest struct {
-	KubeletConfig *ModifyNodePoolNodeConfigRequestKubeletConfig `json:"kubelet_config,omitempty" xml:"kubelet_config,omitempty" type:"Struct"`
+	KubeletConfig *KubeletConfig                                `json:"kubelet_config,omitempty" xml:"kubelet_config,omitempty"`
 	RollingPolicy *ModifyNodePoolNodeConfigRequestRollingPolicy `json:"rolling_policy,omitempty" xml:"rolling_policy,omitempty" type:"Struct"`
 }
 
@@ -12807,102 +12990,13 @@ func (s ModifyNodePoolNodeConfigRequest) GoString() string {
 	return s.String()
 }
 
-func (s *ModifyNodePoolNodeConfigRequest) SetKubeletConfig(v *ModifyNodePoolNodeConfigRequestKubeletConfig) *ModifyNodePoolNodeConfigRequest {
+func (s *ModifyNodePoolNodeConfigRequest) SetKubeletConfig(v *KubeletConfig) *ModifyNodePoolNodeConfigRequest {
 	s.KubeletConfig = v
 	return s
 }
 
 func (s *ModifyNodePoolNodeConfigRequest) SetRollingPolicy(v *ModifyNodePoolNodeConfigRequestRollingPolicy) *ModifyNodePoolNodeConfigRequest {
 	s.RollingPolicy = v
-	return s
-}
-
-type ModifyNodePoolNodeConfigRequestKubeletConfig struct {
-	CpuManagerPolicy        *string                `json:"cpuManagerPolicy,omitempty" xml:"cpuManagerPolicy,omitempty"`
-	EventBurst              *int64                 `json:"eventBurst,omitempty" xml:"eventBurst,omitempty"`
-	EventRecordQPS          *int64                 `json:"eventRecordQPS,omitempty" xml:"eventRecordQPS,omitempty"`
-	EvictionHard            map[string]interface{} `json:"evictionHard,omitempty" xml:"evictionHard,omitempty"`
-	EvictionSoft            map[string]interface{} `json:"evictionSoft,omitempty" xml:"evictionSoft,omitempty"`
-	EvictionSoftGracePeriod map[string]interface{} `json:"evictionSoftGracePeriod,omitempty" xml:"evictionSoftGracePeriod,omitempty"`
-	KubeAPIBurst            *int64                 `json:"kubeAPIBurst,omitempty" xml:"kubeAPIBurst,omitempty"`
-	KubeAPIQPS              *int64                 `json:"kubeAPIQPS,omitempty" xml:"kubeAPIQPS,omitempty"`
-	KubeReserved            map[string]interface{} `json:"kubeReserved,omitempty" xml:"kubeReserved,omitempty"`
-	RegistryBurst           *int64                 `json:"registryBurst,omitempty" xml:"registryBurst,omitempty"`
-	RegistryPullQPS         *int64                 `json:"registryPullQPS,omitempty" xml:"registryPullQPS,omitempty"`
-	SerializeImagePulls     *bool                  `json:"serializeImagePulls,omitempty" xml:"serializeImagePulls,omitempty"`
-	SystemReserved          map[string]interface{} `json:"systemReserved,omitempty" xml:"systemReserved,omitempty"`
-}
-
-func (s ModifyNodePoolNodeConfigRequestKubeletConfig) String() string {
-	return tea.Prettify(s)
-}
-
-func (s ModifyNodePoolNodeConfigRequestKubeletConfig) GoString() string {
-	return s.String()
-}
-
-func (s *ModifyNodePoolNodeConfigRequestKubeletConfig) SetCpuManagerPolicy(v string) *ModifyNodePoolNodeConfigRequestKubeletConfig {
-	s.CpuManagerPolicy = &v
-	return s
-}
-
-func (s *ModifyNodePoolNodeConfigRequestKubeletConfig) SetEventBurst(v int64) *ModifyNodePoolNodeConfigRequestKubeletConfig {
-	s.EventBurst = &v
-	return s
-}
-
-func (s *ModifyNodePoolNodeConfigRequestKubeletConfig) SetEventRecordQPS(v int64) *ModifyNodePoolNodeConfigRequestKubeletConfig {
-	s.EventRecordQPS = &v
-	return s
-}
-
-func (s *ModifyNodePoolNodeConfigRequestKubeletConfig) SetEvictionHard(v map[string]interface{}) *ModifyNodePoolNodeConfigRequestKubeletConfig {
-	s.EvictionHard = v
-	return s
-}
-
-func (s *ModifyNodePoolNodeConfigRequestKubeletConfig) SetEvictionSoft(v map[string]interface{}) *ModifyNodePoolNodeConfigRequestKubeletConfig {
-	s.EvictionSoft = v
-	return s
-}
-
-func (s *ModifyNodePoolNodeConfigRequestKubeletConfig) SetEvictionSoftGracePeriod(v map[string]interface{}) *ModifyNodePoolNodeConfigRequestKubeletConfig {
-	s.EvictionSoftGracePeriod = v
-	return s
-}
-
-func (s *ModifyNodePoolNodeConfigRequestKubeletConfig) SetKubeAPIBurst(v int64) *ModifyNodePoolNodeConfigRequestKubeletConfig {
-	s.KubeAPIBurst = &v
-	return s
-}
-
-func (s *ModifyNodePoolNodeConfigRequestKubeletConfig) SetKubeAPIQPS(v int64) *ModifyNodePoolNodeConfigRequestKubeletConfig {
-	s.KubeAPIQPS = &v
-	return s
-}
-
-func (s *ModifyNodePoolNodeConfigRequestKubeletConfig) SetKubeReserved(v map[string]interface{}) *ModifyNodePoolNodeConfigRequestKubeletConfig {
-	s.KubeReserved = v
-	return s
-}
-
-func (s *ModifyNodePoolNodeConfigRequestKubeletConfig) SetRegistryBurst(v int64) *ModifyNodePoolNodeConfigRequestKubeletConfig {
-	s.RegistryBurst = &v
-	return s
-}
-
-func (s *ModifyNodePoolNodeConfigRequestKubeletConfig) SetRegistryPullQPS(v int64) *ModifyNodePoolNodeConfigRequestKubeletConfig {
-	s.RegistryPullQPS = &v
-	return s
-}
-
-func (s *ModifyNodePoolNodeConfigRequestKubeletConfig) SetSerializeImagePulls(v bool) *ModifyNodePoolNodeConfigRequestKubeletConfig {
-	s.SerializeImagePulls = &v
-	return s
-}
-
-func (s *ModifyNodePoolNodeConfigRequestKubeletConfig) SetSystemReserved(v map[string]interface{}) *ModifyNodePoolNodeConfigRequestKubeletConfig {
-	s.SystemReserved = v
 	return s
 }
 
@@ -15696,6 +15790,10 @@ func (client *Client) CreateClusterWithOptions(request *CreateClusterRequest, he
 		return _result, _err
 	}
 	body := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.AccessControlList)) {
+		body["access_control_list"] = request.AccessControlList
+	}
+
 	if !tea.BoolValue(util.IsUnset(request.Addons)) {
 		body["addons"] = request.Addons
 	}
@@ -19338,6 +19436,10 @@ func (client *Client) ModifyClusterWithOptions(ClusterId *string, request *Modif
 		return _result, _err
 	}
 	body := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.AccessControlList)) {
+		body["access_control_list"] = request.AccessControlList
+	}
+
 	if !tea.BoolValue(util.IsUnset(request.ApiServerEip)) {
 		body["api_server_eip"] = request.ApiServerEip
 	}
