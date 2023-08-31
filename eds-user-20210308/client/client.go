@@ -123,8 +123,9 @@ func (s *CheckUsedPropertyResponse) SetBody(v *CheckUsedPropertyResponseBody) *C
 }
 
 type CheckUsedPropertyValueRequest struct {
-	// CheckUsedPropertyValue
-	PropertyId      *int64 `json:"PropertyId,omitempty" xml:"PropertyId,omitempty"`
+	// The ID of the property.
+	PropertyId *int64 `json:"PropertyId,omitempty" xml:"PropertyId,omitempty"`
+	// The ID of the property value.
 	PropertyValueId *int64 `json:"PropertyValueId,omitempty" xml:"PropertyValueId,omitempty"`
 }
 
@@ -147,8 +148,10 @@ func (s *CheckUsedPropertyValueRequest) SetPropertyValueId(v int64) *CheckUsedPr
 }
 
 type CheckUsedPropertyValueResponseBody struct {
+	// The ID of the request.
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	UseCount  *int64  `json:"UseCount,omitempty" xml:"UseCount,omitempty"`
+	// The number of convenience users that are associated with the property value.
+	UseCount *int64 `json:"UseCount,omitempty" xml:"UseCount,omitempty"`
 }
 
 func (s CheckUsedPropertyValueResponseBody) String() string {
@@ -384,6 +387,7 @@ func (s *CreatePropertyResponse) SetBody(v *CreatePropertyResponseBody) *CreateP
 }
 
 type CreateUsersRequest struct {
+	AutoLockTime *string `json:"AutoLockTime,omitempty" xml:"AutoLockTime,omitempty"`
 	// The initial password. If this parameter is left empty, an email for password reset is sent to the specified email address.
 	Password *string `json:"Password,omitempty" xml:"Password,omitempty"`
 	// Details of the convenience users.
@@ -396,6 +400,11 @@ func (s CreateUsersRequest) String() string {
 
 func (s CreateUsersRequest) GoString() string {
 	return s.String()
+}
+
+func (s *CreateUsersRequest) SetAutoLockTime(v string) *CreateUsersRequest {
+	s.AutoLockTime = &v
+	return s
 }
 
 func (s *CreateUsersRequest) SetPassword(v string) *CreateUsersRequest {
@@ -1027,24 +1036,6 @@ type DescribeUsersResponseBodyUsers struct {
 	// The remarks on the user.
 	Remark *string `json:"Remark,omitempty" xml:"Remark,omitempty"`
 	// The status of the user.
-	//
-	// Valid values:
-	//
-	// *   0: The user status is normal.
-	//
-	//     <!-- -->
-	//
-	//     <!-- -->
-	//
-	//     <!-- -->
-	//
-	// *   9: The user is locked.
-	//
-	//     <!-- -->
-	//
-	//     <!-- -->
-	//
-	//     <!-- -->
 	Status *int64 `json:"Status,omitempty" xml:"Status,omitempty"`
 	// The user ID that is globally unique.
 	WyId *string `json:"WyId,omitempty" xml:"WyId,omitempty"`
@@ -2044,7 +2035,9 @@ func (s *ListPropertyValueResponse) SetBody(v *ListPropertyValueResponseBody) *L
 }
 
 type LockMfaDeviceRequest struct {
-	AdDomain     *string `json:"AdDomain,omitempty" xml:"AdDomain,omitempty"`
+	// The address of the Active Directory (AD) workspace.
+	AdDomain *string `json:"AdDomain,omitempty" xml:"AdDomain,omitempty"`
+	// The serial number of the virtual MFA device, which is a unique identifier.
 	SerialNumber *string `json:"SerialNumber,omitempty" xml:"SerialNumber,omitempty"`
 }
 
@@ -2067,6 +2060,7 @@ func (s *LockMfaDeviceRequest) SetSerialNumber(v string) *LockMfaDeviceRequest {
 }
 
 type LockMfaDeviceResponseBody struct {
+	// The ID of the request.
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -2704,44 +2698,6 @@ func (s *RemoveUsersResponse) SetBody(v *RemoveUsersResponseBody) *RemoveUsersRe
 
 type ResetUserPasswordRequest struct {
 	// The method to notify the user after the password is reset.
-	//
-	// Valid values:
-	//
-	// *   1
-	//
-	//     <!-- -->
-	//
-	//     :
-	//
-	//     <!-- -->
-	//
-	//     email
-	//
-	//     <!-- -->
-	//
-	// *   2
-	//
-	//     <!-- -->
-	//
-	//     :
-	//
-	//     <!-- -->
-	//
-	//     text message
-	//
-	//     <!-- -->
-	//
-	// *   3
-	//
-	//     <!-- -->
-	//
-	//     :
-	//
-	//     <!-- -->
-	//
-	//     both
-	//
-	//     <!-- -->
 	NotifyType *int32 `json:"NotifyType,omitempty" xml:"NotifyType,omitempty"`
 	// The names of the convenience users whose passwords you want to reset.
 	Users []*string `json:"Users,omitempty" xml:"Users,omitempty" type:"Repeated"`
@@ -3030,7 +2986,9 @@ func (s *SyncAllEduInfoResponse) SetBody(v *SyncAllEduInfoResponseBody) *SyncAll
 }
 
 type UnlockMfaDeviceRequest struct {
-	AdDomain     *string `json:"AdDomain,omitempty" xml:"AdDomain,omitempty"`
+	// The address of the Active Directory (AD) workspace.
+	AdDomain *string `json:"AdDomain,omitempty" xml:"AdDomain,omitempty"`
+	// The serial number of the virtual MFA device, which is a unique identifier.
 	SerialNumber *string `json:"SerialNumber,omitempty" xml:"SerialNumber,omitempty"`
 }
 
@@ -3053,6 +3011,7 @@ func (s *UnlockMfaDeviceRequest) SetSerialNumber(v string) *UnlockMfaDeviceReque
 }
 
 type UnlockMfaDeviceResponseBody struct {
+	// The ID of the request.
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -3099,7 +3058,8 @@ func (s *UnlockMfaDeviceResponse) SetBody(v *UnlockMfaDeviceResponseBody) *Unloc
 }
 
 type UnlockUsersRequest struct {
-	Users []*string `json:"Users,omitempty" xml:"Users,omitempty" type:"Repeated"`
+	AutoLockTime *string   `json:"AutoLockTime,omitempty" xml:"AutoLockTime,omitempty"`
+	Users        []*string `json:"Users,omitempty" xml:"Users,omitempty" type:"Repeated"`
 }
 
 func (s UnlockUsersRequest) String() string {
@@ -3108,6 +3068,11 @@ func (s UnlockUsersRequest) String() string {
 
 func (s UnlockUsersRequest) GoString() string {
 	return s.String()
+}
+
+func (s *UnlockUsersRequest) SetAutoLockTime(v string) *UnlockUsersRequest {
+	s.AutoLockTime = &v
+	return s
 }
 
 func (s *UnlockUsersRequest) SetUsers(v []*string) *UnlockUsersRequest {
@@ -3539,7 +3504,7 @@ func (client *Client) CheckUsedProperty(request *CheckUsedPropertyRequest) (_res
 }
 
 /**
- * The operation that you want to perform. Set the value to **CheckUsedPropertyValue**.
+ * Before you call the operation, you can call the [ListProperty](~~410890~~) operation to query the existing user properties and their IDs (PropertyId) and values (PropertyValueId).
  *
  * @param request CheckUsedPropertyValueRequest
  * @param runtime runtime options for this request RuntimeOptions
@@ -3583,7 +3548,7 @@ func (client *Client) CheckUsedPropertyValueWithOptions(request *CheckUsedProper
 }
 
 /**
- * The operation that you want to perform. Set the value to **CheckUsedPropertyValue**.
+ * Before you call the operation, you can call the [ListProperty](~~410890~~) operation to query the existing user properties and their IDs (PropertyId) and values (PropertyValueId).
  *
  * @param request CheckUsedPropertyValueRequest
  * @return CheckUsedPropertyValueResponse
@@ -3659,6 +3624,11 @@ func (client *Client) CreateUsersWithOptions(request *CreateUsersRequest, runtim
 	if _err != nil {
 		return _result, _err
 	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.AutoLockTime)) {
+		query["AutoLockTime"] = request.AutoLockTime
+	}
+
 	body := map[string]interface{}{}
 	if !tea.BoolValue(util.IsUnset(request.Password)) {
 		body["Password"] = request.Password
@@ -3669,7 +3639,8 @@ func (client *Client) CreateUsersWithOptions(request *CreateUsersRequest, runtim
 	}
 
 	req := &openapi.OpenApiRequest{
-		Body: openapiutil.ParseToMap(body),
+		Query: openapiutil.Query(query),
+		Body:  openapiutil.ParseToMap(body),
 	}
 	params := &openapi.Params{
 		Action:      tea.String("CreateUsers"),
@@ -4067,7 +4038,8 @@ func (client *Client) ListPropertyValue(request *ListPropertyValueRequest) (_res
 }
 
 /**
- * Locks a virtual MFA device that is bound to a convenience user.
+ * ## Description
+ * After a virtual MFA device is locked, the status of the virtual MFA device changes to LOCKED. The convenience user to which the MFA device is bound cannot log on to the cloud desktop that resides in the workspace with the MFA feature enabled because the convenience user will fail authentication based on the virtual MFA device. You can call the UnlockMfaDevice operation to unlock the virtual MFA device.
  *
  * @param request LockMfaDeviceRequest
  * @param runtime runtime options for this request RuntimeOptions
@@ -4111,7 +4083,8 @@ func (client *Client) LockMfaDeviceWithOptions(request *LockMfaDeviceRequest, ru
 }
 
 /**
- * Locks a virtual MFA device that is bound to a convenience user.
+ * ## Description
+ * After a virtual MFA device is locked, the status of the virtual MFA device changes to LOCKED. The convenience user to which the MFA device is bound cannot log on to the cloud desktop that resides in the workspace with the MFA feature enabled because the convenience user will fail authentication based on the virtual MFA device. You can call the UnlockMfaDevice operation to unlock the virtual MFA device.
  *
  * @param request LockMfaDeviceRequest
  * @return LockMfaDeviceResponse
@@ -4595,13 +4568,19 @@ func (client *Client) UnlockUsersWithOptions(request *UnlockUsersRequest, runtim
 	if _err != nil {
 		return _result, _err
 	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.AutoLockTime)) {
+		query["AutoLockTime"] = request.AutoLockTime
+	}
+
 	body := map[string]interface{}{}
 	if !tea.BoolValue(util.IsUnset(request.Users)) {
 		body["Users"] = request.Users
 	}
 
 	req := &openapi.OpenApiRequest{
-		Body: openapiutil.ParseToMap(body),
+		Query: openapiutil.Query(query),
+		Body:  openapiutil.ParseToMap(body),
 	}
 	params := &openapi.Params{
 		Action:      tea.String("UnlockUsers"),
