@@ -3000,6 +3000,286 @@ func (s *GetUploadCredentialsResponse) SetBody(v *GetUploadCredentialsResponseBo
 	return s
 }
 
+type ListAcrImageRepositoriesRequest struct {
+	ArtifactType *string `json:"ArtifactType,omitempty" xml:"ArtifactType,omitempty"`
+	MaxResults   *int32  `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
+	NextToken    *string `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
+	RepoName     *string `json:"RepoName,omitempty" xml:"RepoName,omitempty"`
+}
+
+func (s ListAcrImageRepositoriesRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListAcrImageRepositoriesRequest) GoString() string {
+	return s.String()
+}
+
+func (s *ListAcrImageRepositoriesRequest) SetArtifactType(v string) *ListAcrImageRepositoriesRequest {
+	s.ArtifactType = &v
+	return s
+}
+
+func (s *ListAcrImageRepositoriesRequest) SetMaxResults(v int32) *ListAcrImageRepositoriesRequest {
+	s.MaxResults = &v
+	return s
+}
+
+func (s *ListAcrImageRepositoriesRequest) SetNextToken(v string) *ListAcrImageRepositoriesRequest {
+	s.NextToken = &v
+	return s
+}
+
+func (s *ListAcrImageRepositoriesRequest) SetRepoName(v string) *ListAcrImageRepositoriesRequest {
+	s.RepoName = &v
+	return s
+}
+
+type ListAcrImageRepositoriesResponseBody struct {
+	MaxResults   *int32                                              `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
+	NextToken    *string                                             `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
+	Repositories []*ListAcrImageRepositoriesResponseBodyRepositories `json:"Repositories,omitempty" xml:"Repositories,omitempty" type:"Repeated"`
+	RequestId    *string                                             `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	TotalCount   *int32                                              `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
+}
+
+func (s ListAcrImageRepositoriesResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListAcrImageRepositoriesResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *ListAcrImageRepositoriesResponseBody) SetMaxResults(v int32) *ListAcrImageRepositoriesResponseBody {
+	s.MaxResults = &v
+	return s
+}
+
+func (s *ListAcrImageRepositoriesResponseBody) SetNextToken(v string) *ListAcrImageRepositoriesResponseBody {
+	s.NextToken = &v
+	return s
+}
+
+func (s *ListAcrImageRepositoriesResponseBody) SetRepositories(v []*ListAcrImageRepositoriesResponseBodyRepositories) *ListAcrImageRepositoriesResponseBody {
+	s.Repositories = v
+	return s
+}
+
+func (s *ListAcrImageRepositoriesResponseBody) SetRequestId(v string) *ListAcrImageRepositoriesResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *ListAcrImageRepositoriesResponseBody) SetTotalCount(v int32) *ListAcrImageRepositoriesResponseBody {
+	s.TotalCount = &v
+	return s
+}
+
+type ListAcrImageRepositoriesResponseBodyRepositories struct {
+	CreateTime   *string `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
+	ModifiedTime *string `json:"ModifiedTime,omitempty" xml:"ModifiedTime,omitempty"`
+	RepoId       *string `json:"RepoId,omitempty" xml:"RepoId,omitempty"`
+	RepoName     *string `json:"RepoName,omitempty" xml:"RepoName,omitempty"`
+}
+
+func (s ListAcrImageRepositoriesResponseBodyRepositories) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListAcrImageRepositoriesResponseBodyRepositories) GoString() string {
+	return s.String()
+}
+
+func (s *ListAcrImageRepositoriesResponseBodyRepositories) SetCreateTime(v string) *ListAcrImageRepositoriesResponseBodyRepositories {
+	s.CreateTime = &v
+	return s
+}
+
+func (s *ListAcrImageRepositoriesResponseBodyRepositories) SetModifiedTime(v string) *ListAcrImageRepositoriesResponseBodyRepositories {
+	s.ModifiedTime = &v
+	return s
+}
+
+func (s *ListAcrImageRepositoriesResponseBodyRepositories) SetRepoId(v string) *ListAcrImageRepositoriesResponseBodyRepositories {
+	s.RepoId = &v
+	return s
+}
+
+func (s *ListAcrImageRepositoriesResponseBodyRepositories) SetRepoName(v string) *ListAcrImageRepositoriesResponseBodyRepositories {
+	s.RepoName = &v
+	return s
+}
+
+type ListAcrImageRepositoriesResponse struct {
+	Headers    map[string]*string                    `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                                `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *ListAcrImageRepositoriesResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s ListAcrImageRepositoriesResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListAcrImageRepositoriesResponse) GoString() string {
+	return s.String()
+}
+
+func (s *ListAcrImageRepositoriesResponse) SetHeaders(v map[string]*string) *ListAcrImageRepositoriesResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *ListAcrImageRepositoriesResponse) SetStatusCode(v int32) *ListAcrImageRepositoriesResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *ListAcrImageRepositoriesResponse) SetBody(v *ListAcrImageRepositoriesResponseBody) *ListAcrImageRepositoriesResponse {
+	s.Body = v
+	return s
+}
+
+type ListAcrImageTagsRequest struct {
+	ArtifactType *string `json:"ArtifactType,omitempty" xml:"ArtifactType,omitempty"`
+	MaxResults   *int32  `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
+	NextToken    *string `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
+	RepoId       *string `json:"RepoId,omitempty" xml:"RepoId,omitempty"`
+}
+
+func (s ListAcrImageTagsRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListAcrImageTagsRequest) GoString() string {
+	return s.String()
+}
+
+func (s *ListAcrImageTagsRequest) SetArtifactType(v string) *ListAcrImageTagsRequest {
+	s.ArtifactType = &v
+	return s
+}
+
+func (s *ListAcrImageTagsRequest) SetMaxResults(v int32) *ListAcrImageTagsRequest {
+	s.MaxResults = &v
+	return s
+}
+
+func (s *ListAcrImageTagsRequest) SetNextToken(v string) *ListAcrImageTagsRequest {
+	s.NextToken = &v
+	return s
+}
+
+func (s *ListAcrImageTagsRequest) SetRepoId(v string) *ListAcrImageTagsRequest {
+	s.RepoId = &v
+	return s
+}
+
+type ListAcrImageTagsResponseBody struct {
+	Images     []*ListAcrImageTagsResponseBodyImages `json:"Images,omitempty" xml:"Images,omitempty" type:"Repeated"`
+	MaxResults *int32                                `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
+	NextToken  *string                               `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
+	RequestId  *string                               `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	TotalCount *int32                                `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
+}
+
+func (s ListAcrImageTagsResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListAcrImageTagsResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *ListAcrImageTagsResponseBody) SetImages(v []*ListAcrImageTagsResponseBodyImages) *ListAcrImageTagsResponseBody {
+	s.Images = v
+	return s
+}
+
+func (s *ListAcrImageTagsResponseBody) SetMaxResults(v int32) *ListAcrImageTagsResponseBody {
+	s.MaxResults = &v
+	return s
+}
+
+func (s *ListAcrImageTagsResponseBody) SetNextToken(v string) *ListAcrImageTagsResponseBody {
+	s.NextToken = &v
+	return s
+}
+
+func (s *ListAcrImageTagsResponseBody) SetRequestId(v string) *ListAcrImageTagsResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *ListAcrImageTagsResponseBody) SetTotalCount(v int32) *ListAcrImageTagsResponseBody {
+	s.TotalCount = &v
+	return s
+}
+
+type ListAcrImageTagsResponseBodyImages struct {
+	CreateTime   *string `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
+	ImageSize    *string `json:"ImageSize,omitempty" xml:"ImageSize,omitempty"`
+	ModifiedTime *string `json:"ModifiedTime,omitempty" xml:"ModifiedTime,omitempty"`
+	Tag          *string `json:"Tag,omitempty" xml:"Tag,omitempty"`
+}
+
+func (s ListAcrImageTagsResponseBodyImages) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListAcrImageTagsResponseBodyImages) GoString() string {
+	return s.String()
+}
+
+func (s *ListAcrImageTagsResponseBodyImages) SetCreateTime(v string) *ListAcrImageTagsResponseBodyImages {
+	s.CreateTime = &v
+	return s
+}
+
+func (s *ListAcrImageTagsResponseBodyImages) SetImageSize(v string) *ListAcrImageTagsResponseBodyImages {
+	s.ImageSize = &v
+	return s
+}
+
+func (s *ListAcrImageTagsResponseBodyImages) SetModifiedTime(v string) *ListAcrImageTagsResponseBodyImages {
+	s.ModifiedTime = &v
+	return s
+}
+
+func (s *ListAcrImageTagsResponseBodyImages) SetTag(v string) *ListAcrImageTagsResponseBodyImages {
+	s.Tag = &v
+	return s
+}
+
+type ListAcrImageTagsResponse struct {
+	Headers    map[string]*string            `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                        `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *ListAcrImageTagsResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s ListAcrImageTagsResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListAcrImageTagsResponse) GoString() string {
+	return s.String()
+}
+
+func (s *ListAcrImageTagsResponse) SetHeaders(v map[string]*string) *ListAcrImageTagsResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *ListAcrImageTagsResponse) SetStatusCode(v int32) *ListAcrImageTagsResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *ListAcrImageTagsResponse) SetBody(v *ListAcrImageTagsResponseBody) *ListAcrImageTagsResponse {
+	s.Body = v
+	return s
+}
+
 type ListArtifactVersionsRequest struct {
 	ArtifactId *string `json:"ArtifactId,omitempty" xml:"ArtifactId,omitempty"`
 	MaxResult  *int32  `json:"MaxResult,omitempty" xml:"MaxResult,omitempty"`
@@ -4624,6 +4904,87 @@ func (s *PushMeteringDataResponse) SetBody(v *PushMeteringDataResponseBody) *Pus
 	return s
 }
 
+type RegisterServiceRequest struct {
+	ClientToken *string `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
+	RegionId    *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	ServiceId   *string `json:"ServiceId,omitempty" xml:"ServiceId,omitempty"`
+}
+
+func (s RegisterServiceRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s RegisterServiceRequest) GoString() string {
+	return s.String()
+}
+
+func (s *RegisterServiceRequest) SetClientToken(v string) *RegisterServiceRequest {
+	s.ClientToken = &v
+	return s
+}
+
+func (s *RegisterServiceRequest) SetRegionId(v string) *RegisterServiceRequest {
+	s.RegionId = &v
+	return s
+}
+
+func (s *RegisterServiceRequest) SetServiceId(v string) *RegisterServiceRequest {
+	s.ServiceId = &v
+	return s
+}
+
+type RegisterServiceResponseBody struct {
+	RegistrationId *string `json:"RegistrationId,omitempty" xml:"RegistrationId,omitempty"`
+	RequestId      *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+}
+
+func (s RegisterServiceResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s RegisterServiceResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *RegisterServiceResponseBody) SetRegistrationId(v string) *RegisterServiceResponseBody {
+	s.RegistrationId = &v
+	return s
+}
+
+func (s *RegisterServiceResponseBody) SetRequestId(v string) *RegisterServiceResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+type RegisterServiceResponse struct {
+	Headers    map[string]*string           `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                       `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *RegisterServiceResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s RegisterServiceResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s RegisterServiceResponse) GoString() string {
+	return s.String()
+}
+
+func (s *RegisterServiceResponse) SetHeaders(v map[string]*string) *RegisterServiceResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *RegisterServiceResponse) SetStatusCode(v int32) *RegisterServiceResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *RegisterServiceResponse) SetBody(v *RegisterServiceResponseBody) *RegisterServiceResponse {
+	s.Body = v
+	return s
+}
+
 type ReleaseArtifactRequest struct {
 	ArtifactId *string `json:"ArtifactId,omitempty" xml:"ArtifactId,omitempty"`
 }
@@ -6131,6 +6492,118 @@ func (client *Client) GetUploadCredentials(request *GetUploadCredentialsRequest)
 	return _result, _err
 }
 
+func (client *Client) ListAcrImageRepositoriesWithOptions(request *ListAcrImageRepositoriesRequest, runtime *util.RuntimeOptions) (_result *ListAcrImageRepositoriesResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.ArtifactType)) {
+		query["ArtifactType"] = request.ArtifactType
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.MaxResults)) {
+		query["MaxResults"] = request.MaxResults
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.NextToken)) {
+		query["NextToken"] = request.NextToken
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.RepoName)) {
+		query["RepoName"] = request.RepoName
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("ListAcrImageRepositories"),
+		Version:     tea.String("2021-05-21"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &ListAcrImageRepositoriesResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) ListAcrImageRepositories(request *ListAcrImageRepositoriesRequest) (_result *ListAcrImageRepositoriesResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &ListAcrImageRepositoriesResponse{}
+	_body, _err := client.ListAcrImageRepositoriesWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) ListAcrImageTagsWithOptions(request *ListAcrImageTagsRequest, runtime *util.RuntimeOptions) (_result *ListAcrImageTagsResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.ArtifactType)) {
+		query["ArtifactType"] = request.ArtifactType
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.MaxResults)) {
+		query["MaxResults"] = request.MaxResults
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.NextToken)) {
+		query["NextToken"] = request.NextToken
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.RepoId)) {
+		query["RepoId"] = request.RepoId
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("ListAcrImageTags"),
+		Version:     tea.String("2021-05-21"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &ListAcrImageTagsResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) ListAcrImageTags(request *ListAcrImageTagsRequest) (_result *ListAcrImageTagsResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &ListAcrImageTagsResponse{}
+	_body, _err := client.ListAcrImageTagsWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
 func (client *Client) ListArtifactVersionsWithOptions(request *ListArtifactVersionsRequest, runtime *util.RuntimeOptions) (_result *ListArtifactVersionsResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -6516,6 +6989,58 @@ func (client *Client) PushMeteringData(request *PushMeteringDataRequest) (_resul
 	runtime := &util.RuntimeOptions{}
 	_result = &PushMeteringDataResponse{}
 	_body, _err := client.PushMeteringDataWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) RegisterServiceWithOptions(request *RegisterServiceRequest, runtime *util.RuntimeOptions) (_result *RegisterServiceResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.ClientToken)) {
+		query["ClientToken"] = request.ClientToken
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.RegionId)) {
+		query["RegionId"] = request.RegionId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ServiceId)) {
+		query["ServiceId"] = request.ServiceId
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("RegisterService"),
+		Version:     tea.String("2021-05-21"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &RegisterServiceResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) RegisterService(request *RegisterServiceRequest) (_result *RegisterServiceResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &RegisterServiceResponse{}
+	_body, _err := client.RegisterServiceWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
