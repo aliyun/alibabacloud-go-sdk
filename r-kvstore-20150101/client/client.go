@@ -4352,6 +4352,7 @@ type DescribeBackupPolicyResponseBody struct {
 	AccessDeniedDetail *DescribeBackupPolicyResponseBodyAccessDeniedDetail `json:"AccessDeniedDetail,omitempty" xml:"AccessDeniedDetail,omitempty" type:"Struct"`
 	// The retention period of the backup data. Unit: days.
 	BackupRetentionPeriod *string `json:"BackupRetentionPeriod,omitempty" xml:"BackupRetentionPeriod,omitempty"`
+	DbsInstance           *string `json:"DbsInstance,omitempty" xml:"DbsInstance,omitempty"`
 	// Indicates whether incremental data backup is enabled. Valid values:
 	//
 	// *   **1**: Incremental data backup is enabled.
@@ -4390,6 +4391,11 @@ func (s *DescribeBackupPolicyResponseBody) SetAccessDeniedDetail(v *DescribeBack
 
 func (s *DescribeBackupPolicyResponseBody) SetBackupRetentionPeriod(v string) *DescribeBackupPolicyResponseBody {
 	s.BackupRetentionPeriod = &v
+	return s
+}
+
+func (s *DescribeBackupPolicyResponseBody) SetDbsInstance(v string) *DescribeBackupPolicyResponseBody {
+	s.DbsInstance = &v
 	return s
 }
 
