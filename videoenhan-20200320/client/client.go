@@ -2315,6 +2315,7 @@ func (s *InterpolateVideoFrameResponse) SetBody(v *InterpolateVideoFrameResponse
 
 type MergeVideoFaceRequest struct {
 	AddWatermark *bool   `json:"AddWatermark,omitempty" xml:"AddWatermark,omitempty"`
+	Enhance      *bool   `json:"Enhance,omitempty" xml:"Enhance,omitempty"`
 	ReferenceURL *string `json:"ReferenceURL,omitempty" xml:"ReferenceURL,omitempty"`
 	VideoURL     *string `json:"VideoURL,omitempty" xml:"VideoURL,omitempty"`
 }
@@ -2332,6 +2333,11 @@ func (s *MergeVideoFaceRequest) SetAddWatermark(v bool) *MergeVideoFaceRequest {
 	return s
 }
 
+func (s *MergeVideoFaceRequest) SetEnhance(v bool) *MergeVideoFaceRequest {
+	s.Enhance = &v
+	return s
+}
+
 func (s *MergeVideoFaceRequest) SetReferenceURL(v string) *MergeVideoFaceRequest {
 	s.ReferenceURL = &v
 	return s
@@ -2344,6 +2350,7 @@ func (s *MergeVideoFaceRequest) SetVideoURL(v string) *MergeVideoFaceRequest {
 
 type MergeVideoFaceAdvanceRequest struct {
 	AddWatermark       *bool     `json:"AddWatermark,omitempty" xml:"AddWatermark,omitempty"`
+	Enhance            *bool     `json:"Enhance,omitempty" xml:"Enhance,omitempty"`
 	ReferenceURLObject io.Reader `json:"ReferenceURL,omitempty" xml:"ReferenceURL,omitempty"`
 	VideoURLObject     io.Reader `json:"VideoURL,omitempty" xml:"VideoURL,omitempty"`
 }
@@ -2358,6 +2365,11 @@ func (s MergeVideoFaceAdvanceRequest) GoString() string {
 
 func (s *MergeVideoFaceAdvanceRequest) SetAddWatermark(v bool) *MergeVideoFaceAdvanceRequest {
 	s.AddWatermark = &v
+	return s
+}
+
+func (s *MergeVideoFaceAdvanceRequest) SetEnhance(v bool) *MergeVideoFaceAdvanceRequest {
+	s.Enhance = &v
 	return s
 }
 
@@ -5445,6 +5457,10 @@ func (client *Client) MergeVideoFaceWithOptions(request *MergeVideoFaceRequest, 
 	body := map[string]interface{}{}
 	if !tea.BoolValue(util.IsUnset(request.AddWatermark)) {
 		body["AddWatermark"] = request.AddWatermark
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Enhance)) {
+		body["Enhance"] = request.Enhance
 	}
 
 	if !tea.BoolValue(util.IsUnset(request.ReferenceURL)) {
