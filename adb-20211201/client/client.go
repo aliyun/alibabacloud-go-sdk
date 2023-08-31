@@ -12,6 +12,41 @@ import (
 	"github.com/alibabacloud-go/tea/tea"
 )
 
+type Adb4MysqlSparkDiagnosisInfo struct {
+	DiagnosisCode      *string `json:"DiagnosisCode,omitempty" xml:"DiagnosisCode,omitempty"`
+	DiagnosisCodeLabel *string `json:"DiagnosisCodeLabel,omitempty" xml:"DiagnosisCodeLabel,omitempty"`
+	DiagnosisMsg       *string `json:"DiagnosisMsg,omitempty" xml:"DiagnosisMsg,omitempty"`
+	DiagnosisType      *string `json:"DiagnosisType,omitempty" xml:"DiagnosisType,omitempty"`
+}
+
+func (s Adb4MysqlSparkDiagnosisInfo) String() string {
+	return tea.Prettify(s)
+}
+
+func (s Adb4MysqlSparkDiagnosisInfo) GoString() string {
+	return s.String()
+}
+
+func (s *Adb4MysqlSparkDiagnosisInfo) SetDiagnosisCode(v string) *Adb4MysqlSparkDiagnosisInfo {
+	s.DiagnosisCode = &v
+	return s
+}
+
+func (s *Adb4MysqlSparkDiagnosisInfo) SetDiagnosisCodeLabel(v string) *Adb4MysqlSparkDiagnosisInfo {
+	s.DiagnosisCodeLabel = &v
+	return s
+}
+
+func (s *Adb4MysqlSparkDiagnosisInfo) SetDiagnosisMsg(v string) *Adb4MysqlSparkDiagnosisInfo {
+	s.DiagnosisMsg = &v
+	return s
+}
+
+func (s *Adb4MysqlSparkDiagnosisInfo) SetDiagnosisType(v string) *Adb4MysqlSparkDiagnosisInfo {
+	s.DiagnosisType = &v
+	return s
+}
+
 type ColDetailModel struct {
 	ColumnName    *string `json:"ColumnName,omitempty" xml:"ColumnName,omitempty"`
 	CreateTime    *string `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
@@ -10840,6 +10875,81 @@ func (s *EnableElasticPlanResponse) SetBody(v *EnableElasticPlanResponseBody) *E
 	return s
 }
 
+type ExistRunningSQLEngineRequest struct {
+	DBClusterId       *string `json:"DBClusterId,omitempty" xml:"DBClusterId,omitempty"`
+	ResourceGroupName *string `json:"ResourceGroupName,omitempty" xml:"ResourceGroupName,omitempty"`
+}
+
+func (s ExistRunningSQLEngineRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ExistRunningSQLEngineRequest) GoString() string {
+	return s.String()
+}
+
+func (s *ExistRunningSQLEngineRequest) SetDBClusterId(v string) *ExistRunningSQLEngineRequest {
+	s.DBClusterId = &v
+	return s
+}
+
+func (s *ExistRunningSQLEngineRequest) SetResourceGroupName(v string) *ExistRunningSQLEngineRequest {
+	s.ResourceGroupName = &v
+	return s
+}
+
+type ExistRunningSQLEngineResponseBody struct {
+	Data      *bool   `json:"Data,omitempty" xml:"Data,omitempty"`
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+}
+
+func (s ExistRunningSQLEngineResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ExistRunningSQLEngineResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *ExistRunningSQLEngineResponseBody) SetData(v bool) *ExistRunningSQLEngineResponseBody {
+	s.Data = &v
+	return s
+}
+
+func (s *ExistRunningSQLEngineResponseBody) SetRequestId(v string) *ExistRunningSQLEngineResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+type ExistRunningSQLEngineResponse struct {
+	Headers    map[string]*string                 `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                             `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *ExistRunningSQLEngineResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s ExistRunningSQLEngineResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ExistRunningSQLEngineResponse) GoString() string {
+	return s.String()
+}
+
+func (s *ExistRunningSQLEngineResponse) SetHeaders(v map[string]*string) *ExistRunningSQLEngineResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *ExistRunningSQLEngineResponse) SetStatusCode(v int32) *ExistRunningSQLEngineResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *ExistRunningSQLEngineResponse) SetBody(v *ExistRunningSQLEngineResponseBody) *ExistRunningSQLEngineResponse {
+	s.Body = v
+	return s
+}
+
 type GetDatabaseObjectsRequest struct {
 	// The cluster ID.
 	DBClusterId *string `json:"DBClusterId,omitempty" xml:"DBClusterId,omitempty"`
@@ -11153,7 +11263,7 @@ func (s *GetSparkAppAttemptLogResponse) SetBody(v *GetSparkAppAttemptLogResponse
 type GetSparkAppInfoRequest struct {
 	// The ID of the application.
 	//
-	// >  You can call the [ListSparkApps](/help/en/analyticdb-for-mysql/latest/listsparkapps) operation to query the Spark application ID.
+	// >  You can call the [ListSparkApps](~~612475~~) operation to query the Spark application ID.
 	AppId *string `json:"AppId,omitempty" xml:"AppId,omitempty"`
 }
 
@@ -11240,7 +11350,7 @@ func (s *GetSparkAppInfoResponse) SetBody(v *GetSparkAppInfoResponseBody) *GetSp
 type GetSparkAppLogRequest struct {
 	// The Spark application ID.
 	//
-	// > You can call the [ListSparkApps](~~~~) operation to query the Spark application ID.
+	// > You can call the [ListSparkApps](~~612475~~) operation to query the Spark application ID.
 	AppId *string `json:"AppId,omitempty" xml:"AppId,omitempty"`
 	// The number of log entries to return. Valid values: 1 to 500. Default value: 300.
 	LogLength *int64 `json:"LogLength,omitempty" xml:"LogLength,omitempty"`
@@ -15510,6 +15620,104 @@ func (s *ReleaseClusterPublicConnectionResponse) SetStatusCode(v int32) *Release
 }
 
 func (s *ReleaseClusterPublicConnectionResponse) SetBody(v *ReleaseClusterPublicConnectionResponseBody) *ReleaseClusterPublicConnectionResponse {
+	s.Body = v
+	return s
+}
+
+type RenameSparkTemplateFileRequest struct {
+	DBClusterId *string `json:"DBClusterId,omitempty" xml:"DBClusterId,omitempty"`
+	Id          *int64  `json:"Id,omitempty" xml:"Id,omitempty"`
+	Name        *string `json:"Name,omitempty" xml:"Name,omitempty"`
+}
+
+func (s RenameSparkTemplateFileRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s RenameSparkTemplateFileRequest) GoString() string {
+	return s.String()
+}
+
+func (s *RenameSparkTemplateFileRequest) SetDBClusterId(v string) *RenameSparkTemplateFileRequest {
+	s.DBClusterId = &v
+	return s
+}
+
+func (s *RenameSparkTemplateFileRequest) SetId(v int64) *RenameSparkTemplateFileRequest {
+	s.Id = &v
+	return s
+}
+
+func (s *RenameSparkTemplateFileRequest) SetName(v string) *RenameSparkTemplateFileRequest {
+	s.Name = &v
+	return s
+}
+
+type RenameSparkTemplateFileResponseBody struct {
+	Data      *RenameSparkTemplateFileResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
+	RequestId *string                                  `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+}
+
+func (s RenameSparkTemplateFileResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s RenameSparkTemplateFileResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *RenameSparkTemplateFileResponseBody) SetData(v *RenameSparkTemplateFileResponseBodyData) *RenameSparkTemplateFileResponseBody {
+	s.Data = v
+	return s
+}
+
+func (s *RenameSparkTemplateFileResponseBody) SetRequestId(v string) *RenameSparkTemplateFileResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+type RenameSparkTemplateFileResponseBodyData struct {
+	Succeeded *bool `json:"Succeeded,omitempty" xml:"Succeeded,omitempty"`
+}
+
+func (s RenameSparkTemplateFileResponseBodyData) String() string {
+	return tea.Prettify(s)
+}
+
+func (s RenameSparkTemplateFileResponseBodyData) GoString() string {
+	return s.String()
+}
+
+func (s *RenameSparkTemplateFileResponseBodyData) SetSucceeded(v bool) *RenameSparkTemplateFileResponseBodyData {
+	s.Succeeded = &v
+	return s
+}
+
+type RenameSparkTemplateFileResponse struct {
+	Headers    map[string]*string                   `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                               `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *RenameSparkTemplateFileResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s RenameSparkTemplateFileResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s RenameSparkTemplateFileResponse) GoString() string {
+	return s.String()
+}
+
+func (s *RenameSparkTemplateFileResponse) SetHeaders(v map[string]*string) *RenameSparkTemplateFileResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *RenameSparkTemplateFileResponse) SetStatusCode(v int32) *RenameSparkTemplateFileResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *RenameSparkTemplateFileResponse) SetBody(v *RenameSparkTemplateFileResponseBody) *RenameSparkTemplateFileResponse {
 	s.Body = v
 	return s
 }
@@ -19856,6 +20064,54 @@ func (client *Client) EnableElasticPlan(request *EnableElasticPlanRequest) (_res
 	return _result, _err
 }
 
+func (client *Client) ExistRunningSQLEngineWithOptions(request *ExistRunningSQLEngineRequest, runtime *util.RuntimeOptions) (_result *ExistRunningSQLEngineResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	body := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.DBClusterId)) {
+		body["DBClusterId"] = request.DBClusterId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ResourceGroupName)) {
+		body["ResourceGroupName"] = request.ResourceGroupName
+	}
+
+	req := &openapi.OpenApiRequest{
+		Body: openapiutil.ParseToMap(body),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("ExistRunningSQLEngine"),
+		Version:     tea.String("2021-12-01"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &ExistRunningSQLEngineResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) ExistRunningSQLEngine(request *ExistRunningSQLEngineRequest) (_result *ExistRunningSQLEngineResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &ExistRunningSQLEngineResponse{}
+	_body, _err := client.ExistRunningSQLEngineWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
 func (client *Client) GetDatabaseObjectsWithOptions(request *GetDatabaseObjectsRequest, runtime *util.RuntimeOptions) (_result *GetDatabaseObjectsResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -21945,6 +22201,58 @@ func (client *Client) ReleaseClusterPublicConnection(request *ReleaseClusterPubl
 	runtime := &util.RuntimeOptions{}
 	_result = &ReleaseClusterPublicConnectionResponse{}
 	_body, _err := client.ReleaseClusterPublicConnectionWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) RenameSparkTemplateFileWithOptions(request *RenameSparkTemplateFileRequest, runtime *util.RuntimeOptions) (_result *RenameSparkTemplateFileResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.DBClusterId)) {
+		query["DBClusterId"] = request.DBClusterId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Id)) {
+		query["Id"] = request.Id
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Name)) {
+		query["Name"] = request.Name
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("RenameSparkTemplateFile"),
+		Version:     tea.String("2021-12-01"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &RenameSparkTemplateFileResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) RenameSparkTemplateFile(request *RenameSparkTemplateFileRequest) (_result *RenameSparkTemplateFileResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &RenameSparkTemplateFileResponse{}
+	_body, _err := client.RenameSparkTemplateFileWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
