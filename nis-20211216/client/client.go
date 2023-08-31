@@ -13,6 +13,7 @@ import (
 )
 
 type CreateAndAnalyzeNetworkPathRequest struct {
+	AuditParam *string `json:"AuditParam,omitempty" xml:"AuditParam,omitempty"`
 	// The protocol type. Valid values:
 	//
 	// *   **tcp**: Transmission Control Protocol (TCP)
@@ -58,6 +59,11 @@ func (s CreateAndAnalyzeNetworkPathRequest) String() string {
 
 func (s CreateAndAnalyzeNetworkPathRequest) GoString() string {
 	return s.String()
+}
+
+func (s *CreateAndAnalyzeNetworkPathRequest) SetAuditParam(v string) *CreateAndAnalyzeNetworkPathRequest {
+	s.AuditParam = &v
+	return s
 }
 
 func (s *CreateAndAnalyzeNetworkPathRequest) SetProtocol(v string) *CreateAndAnalyzeNetworkPathRequest {
@@ -423,6 +429,7 @@ func (s *CreateNetworkPathResponse) SetBody(v *CreateNetworkPathResponseBody) *C
 }
 
 type CreateNetworkReachableAnalysisRequest struct {
+	AuditParam *string `json:"AuditParam,omitempty" xml:"AuditParam,omitempty"`
 	// The ID of the network path. You can call the **CreateNetworkPath** operation to obtain the ID of the network path.
 	NetworkPathId *string `json:"NetworkPathId,omitempty" xml:"NetworkPathId,omitempty"`
 	// The ID of the region for which you want to create a task for analyzing network reachability.
@@ -436,6 +443,11 @@ func (s CreateNetworkReachableAnalysisRequest) String() string {
 
 func (s CreateNetworkReachableAnalysisRequest) GoString() string {
 	return s.String()
+}
+
+func (s *CreateNetworkReachableAnalysisRequest) SetAuditParam(v string) *CreateNetworkReachableAnalysisRequest {
+	s.AuditParam = &v
+	return s
 }
 
 func (s *CreateNetworkReachableAnalysisRequest) SetNetworkPathId(v string) *CreateNetworkReachableAnalysisRequest {
@@ -725,27 +737,76 @@ func (s *DeleteNetworkReachableAnalysisResponse) SetBody(v *DeleteNetworkReachab
 }
 
 type GetInternetTupleRequest struct {
-	AccountIds      []*string `json:"AccountIds,omitempty" xml:"AccountIds,omitempty" type:"Repeated"`
-	BeginTime       *int64    `json:"BeginTime,omitempty" xml:"BeginTime,omitempty"`
-	CloudIp         *string   `json:"CloudIp,omitempty" xml:"CloudIp,omitempty"`
-	CloudIsp        *string   `json:"CloudIsp,omitempty" xml:"CloudIsp,omitempty"`
-	CloudPort       *string   `json:"CloudPort,omitempty" xml:"CloudPort,omitempty"`
-	Direction       *string   `json:"Direction,omitempty" xml:"Direction,omitempty"`
-	EndTime         *int64    `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
-	InstanceId      *string   `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	InstanceList    []*string `json:"InstanceList,omitempty" xml:"InstanceList,omitempty" type:"Repeated"`
-	OrderBy         *string   `json:"OrderBy,omitempty" xml:"OrderBy,omitempty"`
-	OtherCity       *string   `json:"OtherCity,omitempty" xml:"OtherCity,omitempty"`
-	OtherCountry    *string   `json:"OtherCountry,omitempty" xml:"OtherCountry,omitempty"`
-	OtherIp         *string   `json:"OtherIp,omitempty" xml:"OtherIp,omitempty"`
-	OtherIsp        *string   `json:"OtherIsp,omitempty" xml:"OtherIsp,omitempty"`
-	OtherPort       *string   `json:"OtherPort,omitempty" xml:"OtherPort,omitempty"`
-	Protocol        *string   `json:"Protocol,omitempty" xml:"Protocol,omitempty"`
-	RegionId        *string   `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	Sort            *string   `json:"Sort,omitempty" xml:"Sort,omitempty"`
-	TopN            *int32    `json:"TopN,omitempty" xml:"TopN,omitempty"`
-	TupleType       *int32    `json:"TupleType,omitempty" xml:"TupleType,omitempty"`
-	UseMultiAccount *bool     `json:"UseMultiAccount,omitempty" xml:"UseMultiAccount,omitempty"`
+	// The IDs of member accounts.
+	AccountIds []*string `json:"AccountIds,omitempty" xml:"AccountIds,omitempty" type:"Repeated"`
+	// The beginning of the time range to query. This value is a UNIX timestamp representing the number of milliseconds that have elapsed since January 1, 1970, 00:00:00 UTC.
+	BeginTime *int64 `json:"BeginTime,omitempty" xml:"BeginTime,omitempty"`
+	// The local IP address.
+	CloudIp *string `json:"CloudIp,omitempty" xml:"CloudIp,omitempty"`
+	// The local Internet service provider (ISP).
+	//
+	// > In most cases, the value is Alibaba or Alibaba Cloud.
+	CloudIsp *string `json:"CloudIsp,omitempty" xml:"CloudIsp,omitempty"`
+	// The local port.
+	//
+	// > This parameter is required only when you set **TupleType** to **5**.
+	CloudPort *string `json:"CloudPort,omitempty" xml:"CloudPort,omitempty"`
+	// The direction of the Internet traffic that you want to query. Valid values:
+	//
+	// - **in**: inbound
+	// - **out**: outbound
+	Direction *string `json:"Direction,omitempty" xml:"Direction,omitempty"`
+	// The end of the time range to query. This value is a UNIX timestamp representing the number of milliseconds that have elapsed since January 1, 1970, 00:00:00 UTC.
+	EndTime *int64 `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
+	// The ID of the Alibaba Cloud instance.
+	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	// The instance IDs for filtering.
+	InstanceList []*string `json:"InstanceList,omitempty" xml:"InstanceList,omitempty" type:"Repeated"`
+	// The metric for instance ranking. Default value: **ByteCount**. This value specifies that instances are ranked by traffic volume.
+	OrderBy *string `json:"OrderBy,omitempty" xml:"OrderBy,omitempty"`
+	// The remote city.
+	//
+	// > This parameter is required only if you set **TupleType** to **5**.
+	OtherCity *string `json:"OtherCity,omitempty" xml:"OtherCity,omitempty"`
+	// The remote country.
+	//
+	// > This parameter is required only if you set **TupleType** to **5**.
+	OtherCountry *string `json:"OtherCountry,omitempty" xml:"OtherCountry,omitempty"`
+	// The remote IP address.
+	//
+	// > This parameter is required only when you set **TupleType** to **2** or **5**.
+	OtherIp *string `json:"OtherIp,omitempty" xml:"OtherIp,omitempty"`
+	// The remote ISP.
+	//
+	// > This parameter is required if you want to view the information about the remote ISP.
+	OtherIsp *string `json:"OtherIsp,omitempty" xml:"OtherIsp,omitempty"`
+	// The remote port.
+	//
+	// > This parameter is required only when you set **TupleType** to **5**.
+	OtherPort *string `json:"OtherPort,omitempty" xml:"OtherPort,omitempty"`
+	// The protocol number.
+	//
+	// > All protocols are supported. This parameter is required only when you set **TupleType** to **5**.
+	Protocol *string `json:"Protocol,omitempty" xml:"Protocol,omitempty"`
+	// The ID of the region for which you want to query the Internet traffic.
+	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	// The order in which instances are ranked by Internet traffic. Valid values:
+	//
+	// - **desc**: the descending order
+	// - **asc**: the ascending order
+	Sort *string `json:"Sort,omitempty" xml:"Sort,omitempty"`
+	// Specifies top-N traffic data to display. Default value: **10**. This value specifies to display top-10 traffic data by default.
+	TopN *int32 `json:"TopN,omitempty" xml:"TopN,omitempty"`
+	// The type of the tuple. Valid values:
+	//
+	// - **1**: 1-tuple
+	// - **2**: 2-tuples
+	// - **5**: 5-tuples
+	TupleType *int32 `json:"TupleType,omitempty" xml:"TupleType,omitempty"`
+	// Specifies whether to enable the multi-account management feature. Default value: **false**. This value specifies that the multi-account management feature is disabled.
+	//
+	// > By default, the multi-account management feature is disabled. If you want to enable this feature, contact your customer business manager.
+	UseMultiAccount *bool `json:"UseMultiAccount,omitempty" xml:"UseMultiAccount,omitempty"`
 }
 
 func (s GetInternetTupleRequest) String() string {
@@ -862,27 +923,76 @@ func (s *GetInternetTupleRequest) SetUseMultiAccount(v bool) *GetInternetTupleRe
 }
 
 type GetInternetTupleShrinkRequest struct {
-	AccountIds         []*string `json:"AccountIds,omitempty" xml:"AccountIds,omitempty" type:"Repeated"`
-	BeginTime          *int64    `json:"BeginTime,omitempty" xml:"BeginTime,omitempty"`
-	CloudIp            *string   `json:"CloudIp,omitempty" xml:"CloudIp,omitempty"`
-	CloudIsp           *string   `json:"CloudIsp,omitempty" xml:"CloudIsp,omitempty"`
-	CloudPort          *string   `json:"CloudPort,omitempty" xml:"CloudPort,omitempty"`
-	Direction          *string   `json:"Direction,omitempty" xml:"Direction,omitempty"`
-	EndTime            *int64    `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
-	InstanceId         *string   `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	InstanceListShrink *string   `json:"InstanceList,omitempty" xml:"InstanceList,omitempty"`
-	OrderBy            *string   `json:"OrderBy,omitempty" xml:"OrderBy,omitempty"`
-	OtherCity          *string   `json:"OtherCity,omitempty" xml:"OtherCity,omitempty"`
-	OtherCountry       *string   `json:"OtherCountry,omitempty" xml:"OtherCountry,omitempty"`
-	OtherIp            *string   `json:"OtherIp,omitempty" xml:"OtherIp,omitempty"`
-	OtherIsp           *string   `json:"OtherIsp,omitempty" xml:"OtherIsp,omitempty"`
-	OtherPort          *string   `json:"OtherPort,omitempty" xml:"OtherPort,omitempty"`
-	Protocol           *string   `json:"Protocol,omitempty" xml:"Protocol,omitempty"`
-	RegionId           *string   `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	Sort               *string   `json:"Sort,omitempty" xml:"Sort,omitempty"`
-	TopN               *int32    `json:"TopN,omitempty" xml:"TopN,omitempty"`
-	TupleType          *int32    `json:"TupleType,omitempty" xml:"TupleType,omitempty"`
-	UseMultiAccount    *bool     `json:"UseMultiAccount,omitempty" xml:"UseMultiAccount,omitempty"`
+	// The IDs of member accounts.
+	AccountIds []*string `json:"AccountIds,omitempty" xml:"AccountIds,omitempty" type:"Repeated"`
+	// The beginning of the time range to query. This value is a UNIX timestamp representing the number of milliseconds that have elapsed since January 1, 1970, 00:00:00 UTC.
+	BeginTime *int64 `json:"BeginTime,omitempty" xml:"BeginTime,omitempty"`
+	// The local IP address.
+	CloudIp *string `json:"CloudIp,omitempty" xml:"CloudIp,omitempty"`
+	// The local Internet service provider (ISP).
+	//
+	// > In most cases, the value is Alibaba or Alibaba Cloud.
+	CloudIsp *string `json:"CloudIsp,omitempty" xml:"CloudIsp,omitempty"`
+	// The local port.
+	//
+	// > This parameter is required only when you set **TupleType** to **5**.
+	CloudPort *string `json:"CloudPort,omitempty" xml:"CloudPort,omitempty"`
+	// The direction of the Internet traffic that you want to query. Valid values:
+	//
+	// - **in**: inbound
+	// - **out**: outbound
+	Direction *string `json:"Direction,omitempty" xml:"Direction,omitempty"`
+	// The end of the time range to query. This value is a UNIX timestamp representing the number of milliseconds that have elapsed since January 1, 1970, 00:00:00 UTC.
+	EndTime *int64 `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
+	// The ID of the Alibaba Cloud instance.
+	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	// The instance IDs for filtering.
+	InstanceListShrink *string `json:"InstanceList,omitempty" xml:"InstanceList,omitempty"`
+	// The metric for instance ranking. Default value: **ByteCount**. This value specifies that instances are ranked by traffic volume.
+	OrderBy *string `json:"OrderBy,omitempty" xml:"OrderBy,omitempty"`
+	// The remote city.
+	//
+	// > This parameter is required only if you set **TupleType** to **5**.
+	OtherCity *string `json:"OtherCity,omitempty" xml:"OtherCity,omitempty"`
+	// The remote country.
+	//
+	// > This parameter is required only if you set **TupleType** to **5**.
+	OtherCountry *string `json:"OtherCountry,omitempty" xml:"OtherCountry,omitempty"`
+	// The remote IP address.
+	//
+	// > This parameter is required only when you set **TupleType** to **2** or **5**.
+	OtherIp *string `json:"OtherIp,omitempty" xml:"OtherIp,omitempty"`
+	// The remote ISP.
+	//
+	// > This parameter is required if you want to view the information about the remote ISP.
+	OtherIsp *string `json:"OtherIsp,omitempty" xml:"OtherIsp,omitempty"`
+	// The remote port.
+	//
+	// > This parameter is required only when you set **TupleType** to **5**.
+	OtherPort *string `json:"OtherPort,omitempty" xml:"OtherPort,omitempty"`
+	// The protocol number.
+	//
+	// > All protocols are supported. This parameter is required only when you set **TupleType** to **5**.
+	Protocol *string `json:"Protocol,omitempty" xml:"Protocol,omitempty"`
+	// The ID of the region for which you want to query the Internet traffic.
+	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	// The order in which instances are ranked by Internet traffic. Valid values:
+	//
+	// - **desc**: the descending order
+	// - **asc**: the ascending order
+	Sort *string `json:"Sort,omitempty" xml:"Sort,omitempty"`
+	// Specifies top-N traffic data to display. Default value: **10**. This value specifies to display top-10 traffic data by default.
+	TopN *int32 `json:"TopN,omitempty" xml:"TopN,omitempty"`
+	// The type of the tuple. Valid values:
+	//
+	// - **1**: 1-tuple
+	// - **2**: 2-tuples
+	// - **5**: 5-tuples
+	TupleType *int32 `json:"TupleType,omitempty" xml:"TupleType,omitempty"`
+	// Specifies whether to enable the multi-account management feature. Default value: **false**. This value specifies that the multi-account management feature is disabled.
+	//
+	// > By default, the multi-account management feature is disabled. If you want to enable this feature, contact your customer business manager.
+	UseMultiAccount *bool `json:"UseMultiAccount,omitempty" xml:"UseMultiAccount,omitempty"`
 }
 
 func (s GetInternetTupleShrinkRequest) String() string {
@@ -999,8 +1109,10 @@ func (s *GetInternetTupleShrinkRequest) SetUseMultiAccount(v bool) *GetInternetT
 }
 
 type GetInternetTupleResponseBody struct {
-	Data      []*GetInternetTupleResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Repeated"`
-	RequestId *string                             `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The ranking result of instances by Internet traffic.
+	Data []*GetInternetTupleResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Repeated"`
+	// The request ID.
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
 func (s GetInternetTupleResponseBody) String() string {
@@ -1022,38 +1134,75 @@ func (s *GetInternetTupleResponseBody) SetRequestId(v string) *GetInternetTupleR
 }
 
 type GetInternetTupleResponseBodyData struct {
-	AccessRegion     *string  `json:"AccessRegion,omitempty" xml:"AccessRegion,omitempty"`
-	BeginTime        *string  `json:"BeginTime,omitempty" xml:"BeginTime,omitempty"`
-	ByteCount        *float64 `json:"ByteCount,omitempty" xml:"ByteCount,omitempty"`
-	CloudCity        *string  `json:"CloudCity,omitempty" xml:"CloudCity,omitempty"`
-	CloudCountry     *string  `json:"CloudCountry,omitempty" xml:"CloudCountry,omitempty"`
-	CloudIp          *string  `json:"CloudIp,omitempty" xml:"CloudIp,omitempty"`
-	CloudIsp         *string  `json:"CloudIsp,omitempty" xml:"CloudIsp,omitempty"`
-	CloudPort        *string  `json:"CloudPort,omitempty" xml:"CloudPort,omitempty"`
-	CloudProduct     *string  `json:"CloudProduct,omitempty" xml:"CloudProduct,omitempty"`
-	CloudProvince    *string  `json:"CloudProvince,omitempty" xml:"CloudProvince,omitempty"`
-	Direction        *string  `json:"Direction,omitempty" xml:"Direction,omitempty"`
-	InByteCount      *float64 `json:"InByteCount,omitempty" xml:"InByteCount,omitempty"`
-	InOutOrderCount  *float64 `json:"InOutOrderCount,omitempty" xml:"InOutOrderCount,omitempty"`
-	InPacketCount    *float64 `json:"InPacketCount,omitempty" xml:"InPacketCount,omitempty"`
-	InRetranCount    *float64 `json:"InRetranCount,omitempty" xml:"InRetranCount,omitempty"`
-	InstanceId       *string  `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	OtherCity        *string  `json:"OtherCity,omitempty" xml:"OtherCity,omitempty"`
-	OtherCountry     *string  `json:"OtherCountry,omitempty" xml:"OtherCountry,omitempty"`
-	OtherIp          *string  `json:"OtherIp,omitempty" xml:"OtherIp,omitempty"`
-	OtherIsp         *string  `json:"OtherIsp,omitempty" xml:"OtherIsp,omitempty"`
-	OtherPort        *string  `json:"OtherPort,omitempty" xml:"OtherPort,omitempty"`
-	OtherProduct     *string  `json:"OtherProduct,omitempty" xml:"OtherProduct,omitempty"`
-	OtherProvince    *string  `json:"OtherProvince,omitempty" xml:"OtherProvince,omitempty"`
-	OutByteCount     *float64 `json:"OutByteCount,omitempty" xml:"OutByteCount,omitempty"`
-	OutOrderCount    *float64 `json:"OutOrderCount,omitempty" xml:"OutOrderCount,omitempty"`
+	// The access point of Alibaba Cloud.
+	//
+	// > This parameter is valid only when the value of **InstanceId** is the instance ID of an Anycast elastic IP address (EIP).
+	AccessRegion *string `json:"AccessRegion,omitempty" xml:"AccessRegion,omitempty"`
+	// The beginning of the time range that you queried. This value is a UNIX timestamp representing the number of milliseconds that have elapsed since January 1, 1970, 00:00:00 UTC.
+	BeginTime *string `json:"BeginTime,omitempty" xml:"BeginTime,omitempty"`
+	// The traffic volume. Unit: bytes.
+	ByteCount *float64 `json:"ByteCount,omitempty" xml:"ByteCount,omitempty"`
+	// The local city.
+	CloudCity *string `json:"CloudCity,omitempty" xml:"CloudCity,omitempty"`
+	// The local country or region.
+	CloudCountry *string `json:"CloudCountry,omitempty" xml:"CloudCountry,omitempty"`
+	// The local IP address.
+	CloudIp *string `json:"CloudIp,omitempty" xml:"CloudIp,omitempty"`
+	// The local ISP.
+	CloudIsp *string `json:"CloudIsp,omitempty" xml:"CloudIsp,omitempty"`
+	// The local port.
+	CloudPort *string `json:"CloudPort,omitempty" xml:"CloudPort,omitempty"`
+	// The product code of the instance to which the local IP address belongs.
+	CloudProduct *string `json:"CloudProduct,omitempty" xml:"CloudProduct,omitempty"`
+	// The local province.
+	CloudProvince *string `json:"CloudProvince,omitempty" xml:"CloudProvince,omitempty"`
+	// The direction of the Internet traffic. Valid values:
+	//
+	// - **in**: inbound
+	// - **out**: outbound
+	Direction *string `json:"Direction,omitempty" xml:"Direction,omitempty"`
+	// The inbound traffic volume. Unit: bytes.
+	InByteCount *float64 `json:"InByteCount,omitempty" xml:"InByteCount,omitempty"`
+	// The number of inbound disordered packets.
+	InOutOrderCount *float64 `json:"InOutOrderCount,omitempty" xml:"InOutOrderCount,omitempty"`
+	// The number of inbound packets.
+	InPacketCount *float64 `json:"InPacketCount,omitempty" xml:"InPacketCount,omitempty"`
+	// The number of inbound repeated packets.
+	InRetranCount *float64 `json:"InRetranCount,omitempty" xml:"InRetranCount,omitempty"`
+	// The instance ID to which the local IP address belongs.
+	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	// The remote city. In most cases, this parameter is empty if the value of **OtherCountry** is not China.
+	OtherCity *string `json:"OtherCity,omitempty" xml:"OtherCity,omitempty"`
+	// The remote country or region.
+	OtherCountry *string `json:"OtherCountry,omitempty" xml:"OtherCountry,omitempty"`
+	// The remote IP address.
+	OtherIp *string `json:"OtherIp,omitempty" xml:"OtherIp,omitempty"`
+	// The remote ISP.
+	OtherIsp *string `json:"OtherIsp,omitempty" xml:"OtherIsp,omitempty"`
+	// The remote port.
+	OtherPort *string `json:"OtherPort,omitempty" xml:"OtherPort,omitempty"`
+	// The product code of the instance to which the remote IP address belongs. If the IP address is not in the cloud, this parameter is empty.
+	OtherProduct *string `json:"OtherProduct,omitempty" xml:"OtherProduct,omitempty"`
+	// The remote province. In most cases, this parameter is empty if the value of **OtherCountry** is not China.
+	OtherProvince *string `json:"OtherProvince,omitempty" xml:"OtherProvince,omitempty"`
+	// The outbound traffic volume. Unit: bytes.
+	OutByteCount *float64 `json:"OutByteCount,omitempty" xml:"OutByteCount,omitempty"`
+	// The number of disordered packets.
+	OutOrderCount *float64 `json:"OutOrderCount,omitempty" xml:"OutOrderCount,omitempty"`
+	// The number of outbound disordered packets.
 	OutOutOrderCount *float64 `json:"OutOutOrderCount,omitempty" xml:"OutOutOrderCount,omitempty"`
-	OutPacketCount   *float64 `json:"OutPacketCount,omitempty" xml:"OutPacketCount,omitempty"`
-	OutRetranCount   *float64 `json:"OutRetranCount,omitempty" xml:"OutRetranCount,omitempty"`
-	PacketCount      *float64 `json:"PacketCount,omitempty" xml:"PacketCount,omitempty"`
-	Protocol         *string  `json:"Protocol,omitempty" xml:"Protocol,omitempty"`
-	RetranCount      *float64 `json:"RetranCount,omitempty" xml:"RetranCount,omitempty"`
-	Rtt              *float64 `json:"Rtt,omitempty" xml:"Rtt,omitempty"`
+	// The number of outbound packets.
+	OutPacketCount *float64 `json:"OutPacketCount,omitempty" xml:"OutPacketCount,omitempty"`
+	// The number of outbound repeated packets.
+	OutRetranCount *float64 `json:"OutRetranCount,omitempty" xml:"OutRetranCount,omitempty"`
+	// The number of packets.
+	PacketCount *float64 `json:"PacketCount,omitempty" xml:"PacketCount,omitempty"`
+	// The protocol number.
+	Protocol *string `json:"Protocol,omitempty" xml:"Protocol,omitempty"`
+	// The number of repeated packets.
+	RetranCount *float64 `json:"RetranCount,omitempty" xml:"RetranCount,omitempty"`
+	// The round-trip time (RTT). Unit: milliseconds.
+	Rtt *float64 `json:"Rtt,omitempty" xml:"Rtt,omitempty"`
 }
 
 func (s GetInternetTupleResponseBodyData) String() string {
@@ -1594,6 +1743,758 @@ func (s *GetNetworkReachableAnalysisResponse) SetBody(v *GetNetworkReachableAnal
 	return s
 }
 
+type GetTransitRouterFlowTopNRequest struct {
+	AccountIds        []*string `json:"AccountIds,omitempty" xml:"AccountIds,omitempty" type:"Repeated"`
+	BandwithPackageId *string   `json:"BandwithPackageId,omitempty" xml:"BandwithPackageId,omitempty"`
+	BeginTime         *int64    `json:"BeginTime,omitempty" xml:"BeginTime,omitempty"`
+	CenId             *string   `json:"CenId,omitempty" xml:"CenId,omitempty"`
+	Direction         *string   `json:"Direction,omitempty" xml:"Direction,omitempty"`
+	EndTime           *int64    `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
+	GroupBy           *string   `json:"GroupBy,omitempty" xml:"GroupBy,omitempty"`
+	OrderBy           *string   `json:"OrderBy,omitempty" xml:"OrderBy,omitempty"`
+	OtherIp           *string   `json:"OtherIp,omitempty" xml:"OtherIp,omitempty"`
+	OtherPort         *string   `json:"OtherPort,omitempty" xml:"OtherPort,omitempty"`
+	OtherRegion       *string   `json:"OtherRegion,omitempty" xml:"OtherRegion,omitempty"`
+	Protocol          *string   `json:"Protocol,omitempty" xml:"Protocol,omitempty"`
+	Sort              *string   `json:"Sort,omitempty" xml:"Sort,omitempty"`
+	ThisIp            *string   `json:"ThisIp,omitempty" xml:"ThisIp,omitempty"`
+	ThisPort          *string   `json:"ThisPort,omitempty" xml:"ThisPort,omitempty"`
+	ThisRegion        *string   `json:"ThisRegion,omitempty" xml:"ThisRegion,omitempty"`
+	TopN              *int32    `json:"TopN,omitempty" xml:"TopN,omitempty"`
+	UseMultiAccount   *bool     `json:"UseMultiAccount,omitempty" xml:"UseMultiAccount,omitempty"`
+}
+
+func (s GetTransitRouterFlowTopNRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetTransitRouterFlowTopNRequest) GoString() string {
+	return s.String()
+}
+
+func (s *GetTransitRouterFlowTopNRequest) SetAccountIds(v []*string) *GetTransitRouterFlowTopNRequest {
+	s.AccountIds = v
+	return s
+}
+
+func (s *GetTransitRouterFlowTopNRequest) SetBandwithPackageId(v string) *GetTransitRouterFlowTopNRequest {
+	s.BandwithPackageId = &v
+	return s
+}
+
+func (s *GetTransitRouterFlowTopNRequest) SetBeginTime(v int64) *GetTransitRouterFlowTopNRequest {
+	s.BeginTime = &v
+	return s
+}
+
+func (s *GetTransitRouterFlowTopNRequest) SetCenId(v string) *GetTransitRouterFlowTopNRequest {
+	s.CenId = &v
+	return s
+}
+
+func (s *GetTransitRouterFlowTopNRequest) SetDirection(v string) *GetTransitRouterFlowTopNRequest {
+	s.Direction = &v
+	return s
+}
+
+func (s *GetTransitRouterFlowTopNRequest) SetEndTime(v int64) *GetTransitRouterFlowTopNRequest {
+	s.EndTime = &v
+	return s
+}
+
+func (s *GetTransitRouterFlowTopNRequest) SetGroupBy(v string) *GetTransitRouterFlowTopNRequest {
+	s.GroupBy = &v
+	return s
+}
+
+func (s *GetTransitRouterFlowTopNRequest) SetOrderBy(v string) *GetTransitRouterFlowTopNRequest {
+	s.OrderBy = &v
+	return s
+}
+
+func (s *GetTransitRouterFlowTopNRequest) SetOtherIp(v string) *GetTransitRouterFlowTopNRequest {
+	s.OtherIp = &v
+	return s
+}
+
+func (s *GetTransitRouterFlowTopNRequest) SetOtherPort(v string) *GetTransitRouterFlowTopNRequest {
+	s.OtherPort = &v
+	return s
+}
+
+func (s *GetTransitRouterFlowTopNRequest) SetOtherRegion(v string) *GetTransitRouterFlowTopNRequest {
+	s.OtherRegion = &v
+	return s
+}
+
+func (s *GetTransitRouterFlowTopNRequest) SetProtocol(v string) *GetTransitRouterFlowTopNRequest {
+	s.Protocol = &v
+	return s
+}
+
+func (s *GetTransitRouterFlowTopNRequest) SetSort(v string) *GetTransitRouterFlowTopNRequest {
+	s.Sort = &v
+	return s
+}
+
+func (s *GetTransitRouterFlowTopNRequest) SetThisIp(v string) *GetTransitRouterFlowTopNRequest {
+	s.ThisIp = &v
+	return s
+}
+
+func (s *GetTransitRouterFlowTopNRequest) SetThisPort(v string) *GetTransitRouterFlowTopNRequest {
+	s.ThisPort = &v
+	return s
+}
+
+func (s *GetTransitRouterFlowTopNRequest) SetThisRegion(v string) *GetTransitRouterFlowTopNRequest {
+	s.ThisRegion = &v
+	return s
+}
+
+func (s *GetTransitRouterFlowTopNRequest) SetTopN(v int32) *GetTransitRouterFlowTopNRequest {
+	s.TopN = &v
+	return s
+}
+
+func (s *GetTransitRouterFlowTopNRequest) SetUseMultiAccount(v bool) *GetTransitRouterFlowTopNRequest {
+	s.UseMultiAccount = &v
+	return s
+}
+
+type GetTransitRouterFlowTopNShrinkRequest struct {
+	AccountIdsShrink  *string `json:"AccountIds,omitempty" xml:"AccountIds,omitempty"`
+	BandwithPackageId *string `json:"BandwithPackageId,omitempty" xml:"BandwithPackageId,omitempty"`
+	BeginTime         *int64  `json:"BeginTime,omitempty" xml:"BeginTime,omitempty"`
+	CenId             *string `json:"CenId,omitempty" xml:"CenId,omitempty"`
+	Direction         *string `json:"Direction,omitempty" xml:"Direction,omitempty"`
+	EndTime           *int64  `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
+	GroupBy           *string `json:"GroupBy,omitempty" xml:"GroupBy,omitempty"`
+	OrderBy           *string `json:"OrderBy,omitempty" xml:"OrderBy,omitempty"`
+	OtherIp           *string `json:"OtherIp,omitempty" xml:"OtherIp,omitempty"`
+	OtherPort         *string `json:"OtherPort,omitempty" xml:"OtherPort,omitempty"`
+	OtherRegion       *string `json:"OtherRegion,omitempty" xml:"OtherRegion,omitempty"`
+	Protocol          *string `json:"Protocol,omitempty" xml:"Protocol,omitempty"`
+	Sort              *string `json:"Sort,omitempty" xml:"Sort,omitempty"`
+	ThisIp            *string `json:"ThisIp,omitempty" xml:"ThisIp,omitempty"`
+	ThisPort          *string `json:"ThisPort,omitempty" xml:"ThisPort,omitempty"`
+	ThisRegion        *string `json:"ThisRegion,omitempty" xml:"ThisRegion,omitempty"`
+	TopN              *int32  `json:"TopN,omitempty" xml:"TopN,omitempty"`
+	UseMultiAccount   *bool   `json:"UseMultiAccount,omitempty" xml:"UseMultiAccount,omitempty"`
+}
+
+func (s GetTransitRouterFlowTopNShrinkRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetTransitRouterFlowTopNShrinkRequest) GoString() string {
+	return s.String()
+}
+
+func (s *GetTransitRouterFlowTopNShrinkRequest) SetAccountIdsShrink(v string) *GetTransitRouterFlowTopNShrinkRequest {
+	s.AccountIdsShrink = &v
+	return s
+}
+
+func (s *GetTransitRouterFlowTopNShrinkRequest) SetBandwithPackageId(v string) *GetTransitRouterFlowTopNShrinkRequest {
+	s.BandwithPackageId = &v
+	return s
+}
+
+func (s *GetTransitRouterFlowTopNShrinkRequest) SetBeginTime(v int64) *GetTransitRouterFlowTopNShrinkRequest {
+	s.BeginTime = &v
+	return s
+}
+
+func (s *GetTransitRouterFlowTopNShrinkRequest) SetCenId(v string) *GetTransitRouterFlowTopNShrinkRequest {
+	s.CenId = &v
+	return s
+}
+
+func (s *GetTransitRouterFlowTopNShrinkRequest) SetDirection(v string) *GetTransitRouterFlowTopNShrinkRequest {
+	s.Direction = &v
+	return s
+}
+
+func (s *GetTransitRouterFlowTopNShrinkRequest) SetEndTime(v int64) *GetTransitRouterFlowTopNShrinkRequest {
+	s.EndTime = &v
+	return s
+}
+
+func (s *GetTransitRouterFlowTopNShrinkRequest) SetGroupBy(v string) *GetTransitRouterFlowTopNShrinkRequest {
+	s.GroupBy = &v
+	return s
+}
+
+func (s *GetTransitRouterFlowTopNShrinkRequest) SetOrderBy(v string) *GetTransitRouterFlowTopNShrinkRequest {
+	s.OrderBy = &v
+	return s
+}
+
+func (s *GetTransitRouterFlowTopNShrinkRequest) SetOtherIp(v string) *GetTransitRouterFlowTopNShrinkRequest {
+	s.OtherIp = &v
+	return s
+}
+
+func (s *GetTransitRouterFlowTopNShrinkRequest) SetOtherPort(v string) *GetTransitRouterFlowTopNShrinkRequest {
+	s.OtherPort = &v
+	return s
+}
+
+func (s *GetTransitRouterFlowTopNShrinkRequest) SetOtherRegion(v string) *GetTransitRouterFlowTopNShrinkRequest {
+	s.OtherRegion = &v
+	return s
+}
+
+func (s *GetTransitRouterFlowTopNShrinkRequest) SetProtocol(v string) *GetTransitRouterFlowTopNShrinkRequest {
+	s.Protocol = &v
+	return s
+}
+
+func (s *GetTransitRouterFlowTopNShrinkRequest) SetSort(v string) *GetTransitRouterFlowTopNShrinkRequest {
+	s.Sort = &v
+	return s
+}
+
+func (s *GetTransitRouterFlowTopNShrinkRequest) SetThisIp(v string) *GetTransitRouterFlowTopNShrinkRequest {
+	s.ThisIp = &v
+	return s
+}
+
+func (s *GetTransitRouterFlowTopNShrinkRequest) SetThisPort(v string) *GetTransitRouterFlowTopNShrinkRequest {
+	s.ThisPort = &v
+	return s
+}
+
+func (s *GetTransitRouterFlowTopNShrinkRequest) SetThisRegion(v string) *GetTransitRouterFlowTopNShrinkRequest {
+	s.ThisRegion = &v
+	return s
+}
+
+func (s *GetTransitRouterFlowTopNShrinkRequest) SetTopN(v int32) *GetTransitRouterFlowTopNShrinkRequest {
+	s.TopN = &v
+	return s
+}
+
+func (s *GetTransitRouterFlowTopNShrinkRequest) SetUseMultiAccount(v bool) *GetTransitRouterFlowTopNShrinkRequest {
+	s.UseMultiAccount = &v
+	return s
+}
+
+type GetTransitRouterFlowTopNResponseBody struct {
+	RequestId             *string                                                      `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	TransitRouterFlowTopN []*GetTransitRouterFlowTopNResponseBodyTransitRouterFlowTopN `json:"TransitRouterFlowTopN,omitempty" xml:"TransitRouterFlowTopN,omitempty" type:"Repeated"`
+}
+
+func (s GetTransitRouterFlowTopNResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetTransitRouterFlowTopNResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *GetTransitRouterFlowTopNResponseBody) SetRequestId(v string) *GetTransitRouterFlowTopNResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *GetTransitRouterFlowTopNResponseBody) SetTransitRouterFlowTopN(v []*GetTransitRouterFlowTopNResponseBodyTransitRouterFlowTopN) *GetTransitRouterFlowTopNResponseBody {
+	s.TransitRouterFlowTopN = v
+	return s
+}
+
+type GetTransitRouterFlowTopNResponseBodyTransitRouterFlowTopN struct {
+	AccountId         *string  `json:"AccountId,omitempty" xml:"AccountId,omitempty"`
+	BandwithPackageId *string  `json:"BandwithPackageId,omitempty" xml:"BandwithPackageId,omitempty"`
+	Bytes             *float64 `json:"Bytes,omitempty" xml:"Bytes,omitempty"`
+	CenId             *string  `json:"CenId,omitempty" xml:"CenId,omitempty"`
+	EndTime           *string  `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
+	OtherIp           *string  `json:"OtherIp,omitempty" xml:"OtherIp,omitempty"`
+	OtherPort         *string  `json:"OtherPort,omitempty" xml:"OtherPort,omitempty"`
+	OtherRegion       *string  `json:"OtherRegion,omitempty" xml:"OtherRegion,omitempty"`
+	Packets           *float64 `json:"Packets,omitempty" xml:"Packets,omitempty"`
+	Protocol          *string  `json:"Protocol,omitempty" xml:"Protocol,omitempty"`
+	StartTime         *string  `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
+	ThisIp            *string  `json:"ThisIp,omitempty" xml:"ThisIp,omitempty"`
+	ThisPort          *string  `json:"ThisPort,omitempty" xml:"ThisPort,omitempty"`
+	ThisRegion        *string  `json:"ThisRegion,omitempty" xml:"ThisRegion,omitempty"`
+}
+
+func (s GetTransitRouterFlowTopNResponseBodyTransitRouterFlowTopN) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetTransitRouterFlowTopNResponseBodyTransitRouterFlowTopN) GoString() string {
+	return s.String()
+}
+
+func (s *GetTransitRouterFlowTopNResponseBodyTransitRouterFlowTopN) SetAccountId(v string) *GetTransitRouterFlowTopNResponseBodyTransitRouterFlowTopN {
+	s.AccountId = &v
+	return s
+}
+
+func (s *GetTransitRouterFlowTopNResponseBodyTransitRouterFlowTopN) SetBandwithPackageId(v string) *GetTransitRouterFlowTopNResponseBodyTransitRouterFlowTopN {
+	s.BandwithPackageId = &v
+	return s
+}
+
+func (s *GetTransitRouterFlowTopNResponseBodyTransitRouterFlowTopN) SetBytes(v float64) *GetTransitRouterFlowTopNResponseBodyTransitRouterFlowTopN {
+	s.Bytes = &v
+	return s
+}
+
+func (s *GetTransitRouterFlowTopNResponseBodyTransitRouterFlowTopN) SetCenId(v string) *GetTransitRouterFlowTopNResponseBodyTransitRouterFlowTopN {
+	s.CenId = &v
+	return s
+}
+
+func (s *GetTransitRouterFlowTopNResponseBodyTransitRouterFlowTopN) SetEndTime(v string) *GetTransitRouterFlowTopNResponseBodyTransitRouterFlowTopN {
+	s.EndTime = &v
+	return s
+}
+
+func (s *GetTransitRouterFlowTopNResponseBodyTransitRouterFlowTopN) SetOtherIp(v string) *GetTransitRouterFlowTopNResponseBodyTransitRouterFlowTopN {
+	s.OtherIp = &v
+	return s
+}
+
+func (s *GetTransitRouterFlowTopNResponseBodyTransitRouterFlowTopN) SetOtherPort(v string) *GetTransitRouterFlowTopNResponseBodyTransitRouterFlowTopN {
+	s.OtherPort = &v
+	return s
+}
+
+func (s *GetTransitRouterFlowTopNResponseBodyTransitRouterFlowTopN) SetOtherRegion(v string) *GetTransitRouterFlowTopNResponseBodyTransitRouterFlowTopN {
+	s.OtherRegion = &v
+	return s
+}
+
+func (s *GetTransitRouterFlowTopNResponseBodyTransitRouterFlowTopN) SetPackets(v float64) *GetTransitRouterFlowTopNResponseBodyTransitRouterFlowTopN {
+	s.Packets = &v
+	return s
+}
+
+func (s *GetTransitRouterFlowTopNResponseBodyTransitRouterFlowTopN) SetProtocol(v string) *GetTransitRouterFlowTopNResponseBodyTransitRouterFlowTopN {
+	s.Protocol = &v
+	return s
+}
+
+func (s *GetTransitRouterFlowTopNResponseBodyTransitRouterFlowTopN) SetStartTime(v string) *GetTransitRouterFlowTopNResponseBodyTransitRouterFlowTopN {
+	s.StartTime = &v
+	return s
+}
+
+func (s *GetTransitRouterFlowTopNResponseBodyTransitRouterFlowTopN) SetThisIp(v string) *GetTransitRouterFlowTopNResponseBodyTransitRouterFlowTopN {
+	s.ThisIp = &v
+	return s
+}
+
+func (s *GetTransitRouterFlowTopNResponseBodyTransitRouterFlowTopN) SetThisPort(v string) *GetTransitRouterFlowTopNResponseBodyTransitRouterFlowTopN {
+	s.ThisPort = &v
+	return s
+}
+
+func (s *GetTransitRouterFlowTopNResponseBodyTransitRouterFlowTopN) SetThisRegion(v string) *GetTransitRouterFlowTopNResponseBodyTransitRouterFlowTopN {
+	s.ThisRegion = &v
+	return s
+}
+
+type GetTransitRouterFlowTopNResponse struct {
+	Headers    map[string]*string                    `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                                `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *GetTransitRouterFlowTopNResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s GetTransitRouterFlowTopNResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetTransitRouterFlowTopNResponse) GoString() string {
+	return s.String()
+}
+
+func (s *GetTransitRouterFlowTopNResponse) SetHeaders(v map[string]*string) *GetTransitRouterFlowTopNResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *GetTransitRouterFlowTopNResponse) SetStatusCode(v int32) *GetTransitRouterFlowTopNResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *GetTransitRouterFlowTopNResponse) SetBody(v *GetTransitRouterFlowTopNResponseBody) *GetTransitRouterFlowTopNResponse {
+	s.Body = v
+	return s
+}
+
+type GetVbrFlowTopNRequest struct {
+	AccountIds            []*string `json:"AccountIds,omitempty" xml:"AccountIds,omitempty" type:"Repeated"`
+	AttachmentId          *string   `json:"AttachmentId,omitempty" xml:"AttachmentId,omitempty"`
+	BeginTime             *int64    `json:"BeginTime,omitempty" xml:"BeginTime,omitempty"`
+	CenId                 *string   `json:"CenId,omitempty" xml:"CenId,omitempty"`
+	CloudIp               *string   `json:"CloudIp,omitempty" xml:"CloudIp,omitempty"`
+	CloudPort             *string   `json:"CloudPort,omitempty" xml:"CloudPort,omitempty"`
+	Direction             *string   `json:"Direction,omitempty" xml:"Direction,omitempty"`
+	EndTime               *int64    `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
+	GroupBy               *string   `json:"GroupBy,omitempty" xml:"GroupBy,omitempty"`
+	OrderBy               *string   `json:"OrderBy,omitempty" xml:"OrderBy,omitempty"`
+	OtherIp               *string   `json:"OtherIp,omitempty" xml:"OtherIp,omitempty"`
+	OtherPort             *string   `json:"OtherPort,omitempty" xml:"OtherPort,omitempty"`
+	Protocol              *string   `json:"Protocol,omitempty" xml:"Protocol,omitempty"`
+	RegionId              *string   `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	Sort                  *string   `json:"Sort,omitempty" xml:"Sort,omitempty"`
+	TopN                  *int32    `json:"TopN,omitempty" xml:"TopN,omitempty"`
+	UseMultiAccount       *bool     `json:"UseMultiAccount,omitempty" xml:"UseMultiAccount,omitempty"`
+	VirtualBorderRouterId *string   `json:"VirtualBorderRouterId,omitempty" xml:"VirtualBorderRouterId,omitempty"`
+}
+
+func (s GetVbrFlowTopNRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetVbrFlowTopNRequest) GoString() string {
+	return s.String()
+}
+
+func (s *GetVbrFlowTopNRequest) SetAccountIds(v []*string) *GetVbrFlowTopNRequest {
+	s.AccountIds = v
+	return s
+}
+
+func (s *GetVbrFlowTopNRequest) SetAttachmentId(v string) *GetVbrFlowTopNRequest {
+	s.AttachmentId = &v
+	return s
+}
+
+func (s *GetVbrFlowTopNRequest) SetBeginTime(v int64) *GetVbrFlowTopNRequest {
+	s.BeginTime = &v
+	return s
+}
+
+func (s *GetVbrFlowTopNRequest) SetCenId(v string) *GetVbrFlowTopNRequest {
+	s.CenId = &v
+	return s
+}
+
+func (s *GetVbrFlowTopNRequest) SetCloudIp(v string) *GetVbrFlowTopNRequest {
+	s.CloudIp = &v
+	return s
+}
+
+func (s *GetVbrFlowTopNRequest) SetCloudPort(v string) *GetVbrFlowTopNRequest {
+	s.CloudPort = &v
+	return s
+}
+
+func (s *GetVbrFlowTopNRequest) SetDirection(v string) *GetVbrFlowTopNRequest {
+	s.Direction = &v
+	return s
+}
+
+func (s *GetVbrFlowTopNRequest) SetEndTime(v int64) *GetVbrFlowTopNRequest {
+	s.EndTime = &v
+	return s
+}
+
+func (s *GetVbrFlowTopNRequest) SetGroupBy(v string) *GetVbrFlowTopNRequest {
+	s.GroupBy = &v
+	return s
+}
+
+func (s *GetVbrFlowTopNRequest) SetOrderBy(v string) *GetVbrFlowTopNRequest {
+	s.OrderBy = &v
+	return s
+}
+
+func (s *GetVbrFlowTopNRequest) SetOtherIp(v string) *GetVbrFlowTopNRequest {
+	s.OtherIp = &v
+	return s
+}
+
+func (s *GetVbrFlowTopNRequest) SetOtherPort(v string) *GetVbrFlowTopNRequest {
+	s.OtherPort = &v
+	return s
+}
+
+func (s *GetVbrFlowTopNRequest) SetProtocol(v string) *GetVbrFlowTopNRequest {
+	s.Protocol = &v
+	return s
+}
+
+func (s *GetVbrFlowTopNRequest) SetRegionId(v string) *GetVbrFlowTopNRequest {
+	s.RegionId = &v
+	return s
+}
+
+func (s *GetVbrFlowTopNRequest) SetSort(v string) *GetVbrFlowTopNRequest {
+	s.Sort = &v
+	return s
+}
+
+func (s *GetVbrFlowTopNRequest) SetTopN(v int32) *GetVbrFlowTopNRequest {
+	s.TopN = &v
+	return s
+}
+
+func (s *GetVbrFlowTopNRequest) SetUseMultiAccount(v bool) *GetVbrFlowTopNRequest {
+	s.UseMultiAccount = &v
+	return s
+}
+
+func (s *GetVbrFlowTopNRequest) SetVirtualBorderRouterId(v string) *GetVbrFlowTopNRequest {
+	s.VirtualBorderRouterId = &v
+	return s
+}
+
+type GetVbrFlowTopNShrinkRequest struct {
+	AccountIdsShrink      *string `json:"AccountIds,omitempty" xml:"AccountIds,omitempty"`
+	AttachmentId          *string `json:"AttachmentId,omitempty" xml:"AttachmentId,omitempty"`
+	BeginTime             *int64  `json:"BeginTime,omitempty" xml:"BeginTime,omitempty"`
+	CenId                 *string `json:"CenId,omitempty" xml:"CenId,omitempty"`
+	CloudIp               *string `json:"CloudIp,omitempty" xml:"CloudIp,omitempty"`
+	CloudPort             *string `json:"CloudPort,omitempty" xml:"CloudPort,omitempty"`
+	Direction             *string `json:"Direction,omitempty" xml:"Direction,omitempty"`
+	EndTime               *int64  `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
+	GroupBy               *string `json:"GroupBy,omitempty" xml:"GroupBy,omitempty"`
+	OrderBy               *string `json:"OrderBy,omitempty" xml:"OrderBy,omitempty"`
+	OtherIp               *string `json:"OtherIp,omitempty" xml:"OtherIp,omitempty"`
+	OtherPort             *string `json:"OtherPort,omitempty" xml:"OtherPort,omitempty"`
+	Protocol              *string `json:"Protocol,omitempty" xml:"Protocol,omitempty"`
+	RegionId              *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	Sort                  *string `json:"Sort,omitempty" xml:"Sort,omitempty"`
+	TopN                  *int32  `json:"TopN,omitempty" xml:"TopN,omitempty"`
+	UseMultiAccount       *bool   `json:"UseMultiAccount,omitempty" xml:"UseMultiAccount,omitempty"`
+	VirtualBorderRouterId *string `json:"VirtualBorderRouterId,omitempty" xml:"VirtualBorderRouterId,omitempty"`
+}
+
+func (s GetVbrFlowTopNShrinkRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetVbrFlowTopNShrinkRequest) GoString() string {
+	return s.String()
+}
+
+func (s *GetVbrFlowTopNShrinkRequest) SetAccountIdsShrink(v string) *GetVbrFlowTopNShrinkRequest {
+	s.AccountIdsShrink = &v
+	return s
+}
+
+func (s *GetVbrFlowTopNShrinkRequest) SetAttachmentId(v string) *GetVbrFlowTopNShrinkRequest {
+	s.AttachmentId = &v
+	return s
+}
+
+func (s *GetVbrFlowTopNShrinkRequest) SetBeginTime(v int64) *GetVbrFlowTopNShrinkRequest {
+	s.BeginTime = &v
+	return s
+}
+
+func (s *GetVbrFlowTopNShrinkRequest) SetCenId(v string) *GetVbrFlowTopNShrinkRequest {
+	s.CenId = &v
+	return s
+}
+
+func (s *GetVbrFlowTopNShrinkRequest) SetCloudIp(v string) *GetVbrFlowTopNShrinkRequest {
+	s.CloudIp = &v
+	return s
+}
+
+func (s *GetVbrFlowTopNShrinkRequest) SetCloudPort(v string) *GetVbrFlowTopNShrinkRequest {
+	s.CloudPort = &v
+	return s
+}
+
+func (s *GetVbrFlowTopNShrinkRequest) SetDirection(v string) *GetVbrFlowTopNShrinkRequest {
+	s.Direction = &v
+	return s
+}
+
+func (s *GetVbrFlowTopNShrinkRequest) SetEndTime(v int64) *GetVbrFlowTopNShrinkRequest {
+	s.EndTime = &v
+	return s
+}
+
+func (s *GetVbrFlowTopNShrinkRequest) SetGroupBy(v string) *GetVbrFlowTopNShrinkRequest {
+	s.GroupBy = &v
+	return s
+}
+
+func (s *GetVbrFlowTopNShrinkRequest) SetOrderBy(v string) *GetVbrFlowTopNShrinkRequest {
+	s.OrderBy = &v
+	return s
+}
+
+func (s *GetVbrFlowTopNShrinkRequest) SetOtherIp(v string) *GetVbrFlowTopNShrinkRequest {
+	s.OtherIp = &v
+	return s
+}
+
+func (s *GetVbrFlowTopNShrinkRequest) SetOtherPort(v string) *GetVbrFlowTopNShrinkRequest {
+	s.OtherPort = &v
+	return s
+}
+
+func (s *GetVbrFlowTopNShrinkRequest) SetProtocol(v string) *GetVbrFlowTopNShrinkRequest {
+	s.Protocol = &v
+	return s
+}
+
+func (s *GetVbrFlowTopNShrinkRequest) SetRegionId(v string) *GetVbrFlowTopNShrinkRequest {
+	s.RegionId = &v
+	return s
+}
+
+func (s *GetVbrFlowTopNShrinkRequest) SetSort(v string) *GetVbrFlowTopNShrinkRequest {
+	s.Sort = &v
+	return s
+}
+
+func (s *GetVbrFlowTopNShrinkRequest) SetTopN(v int32) *GetVbrFlowTopNShrinkRequest {
+	s.TopN = &v
+	return s
+}
+
+func (s *GetVbrFlowTopNShrinkRequest) SetUseMultiAccount(v bool) *GetVbrFlowTopNShrinkRequest {
+	s.UseMultiAccount = &v
+	return s
+}
+
+func (s *GetVbrFlowTopNShrinkRequest) SetVirtualBorderRouterId(v string) *GetVbrFlowTopNShrinkRequest {
+	s.VirtualBorderRouterId = &v
+	return s
+}
+
+type GetVbrFlowTopNResponseBody struct {
+	RequestId                      *string                                                     `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	VirtualBorderRouterFlowlogTopN []*GetVbrFlowTopNResponseBodyVirtualBorderRouterFlowlogTopN `json:"VirtualBorderRouterFlowlogTopN,omitempty" xml:"VirtualBorderRouterFlowlogTopN,omitempty" type:"Repeated"`
+}
+
+func (s GetVbrFlowTopNResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetVbrFlowTopNResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *GetVbrFlowTopNResponseBody) SetRequestId(v string) *GetVbrFlowTopNResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *GetVbrFlowTopNResponseBody) SetVirtualBorderRouterFlowlogTopN(v []*GetVbrFlowTopNResponseBodyVirtualBorderRouterFlowlogTopN) *GetVbrFlowTopNResponseBody {
+	s.VirtualBorderRouterFlowlogTopN = v
+	return s
+}
+
+type GetVbrFlowTopNResponseBodyVirtualBorderRouterFlowlogTopN struct {
+	AccountId             *string  `json:"AccountId,omitempty" xml:"AccountId,omitempty"`
+	AttachmentId          *string  `json:"AttachmentId,omitempty" xml:"AttachmentId,omitempty"`
+	Bytes                 *float64 `json:"Bytes,omitempty" xml:"Bytes,omitempty"`
+	CloudIp               *string  `json:"CloudIp,omitempty" xml:"CloudIp,omitempty"`
+	CloudPort             *string  `json:"CloudPort,omitempty" xml:"CloudPort,omitempty"`
+	CloudRegion           *string  `json:"CloudRegion,omitempty" xml:"CloudRegion,omitempty"`
+	OtherIp               *string  `json:"OtherIp,omitempty" xml:"OtherIp,omitempty"`
+	OtherPort             *string  `json:"OtherPort,omitempty" xml:"OtherPort,omitempty"`
+	Packets               *float64 `json:"Packets,omitempty" xml:"Packets,omitempty"`
+	Protocol              *string  `json:"Protocol,omitempty" xml:"Protocol,omitempty"`
+	VirtualBorderRouterId *string  `json:"VirtualBorderRouterId,omitempty" xml:"VirtualBorderRouterId,omitempty"`
+}
+
+func (s GetVbrFlowTopNResponseBodyVirtualBorderRouterFlowlogTopN) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetVbrFlowTopNResponseBodyVirtualBorderRouterFlowlogTopN) GoString() string {
+	return s.String()
+}
+
+func (s *GetVbrFlowTopNResponseBodyVirtualBorderRouterFlowlogTopN) SetAccountId(v string) *GetVbrFlowTopNResponseBodyVirtualBorderRouterFlowlogTopN {
+	s.AccountId = &v
+	return s
+}
+
+func (s *GetVbrFlowTopNResponseBodyVirtualBorderRouterFlowlogTopN) SetAttachmentId(v string) *GetVbrFlowTopNResponseBodyVirtualBorderRouterFlowlogTopN {
+	s.AttachmentId = &v
+	return s
+}
+
+func (s *GetVbrFlowTopNResponseBodyVirtualBorderRouterFlowlogTopN) SetBytes(v float64) *GetVbrFlowTopNResponseBodyVirtualBorderRouterFlowlogTopN {
+	s.Bytes = &v
+	return s
+}
+
+func (s *GetVbrFlowTopNResponseBodyVirtualBorderRouterFlowlogTopN) SetCloudIp(v string) *GetVbrFlowTopNResponseBodyVirtualBorderRouterFlowlogTopN {
+	s.CloudIp = &v
+	return s
+}
+
+func (s *GetVbrFlowTopNResponseBodyVirtualBorderRouterFlowlogTopN) SetCloudPort(v string) *GetVbrFlowTopNResponseBodyVirtualBorderRouterFlowlogTopN {
+	s.CloudPort = &v
+	return s
+}
+
+func (s *GetVbrFlowTopNResponseBodyVirtualBorderRouterFlowlogTopN) SetCloudRegion(v string) *GetVbrFlowTopNResponseBodyVirtualBorderRouterFlowlogTopN {
+	s.CloudRegion = &v
+	return s
+}
+
+func (s *GetVbrFlowTopNResponseBodyVirtualBorderRouterFlowlogTopN) SetOtherIp(v string) *GetVbrFlowTopNResponseBodyVirtualBorderRouterFlowlogTopN {
+	s.OtherIp = &v
+	return s
+}
+
+func (s *GetVbrFlowTopNResponseBodyVirtualBorderRouterFlowlogTopN) SetOtherPort(v string) *GetVbrFlowTopNResponseBodyVirtualBorderRouterFlowlogTopN {
+	s.OtherPort = &v
+	return s
+}
+
+func (s *GetVbrFlowTopNResponseBodyVirtualBorderRouterFlowlogTopN) SetPackets(v float64) *GetVbrFlowTopNResponseBodyVirtualBorderRouterFlowlogTopN {
+	s.Packets = &v
+	return s
+}
+
+func (s *GetVbrFlowTopNResponseBodyVirtualBorderRouterFlowlogTopN) SetProtocol(v string) *GetVbrFlowTopNResponseBodyVirtualBorderRouterFlowlogTopN {
+	s.Protocol = &v
+	return s
+}
+
+func (s *GetVbrFlowTopNResponseBodyVirtualBorderRouterFlowlogTopN) SetVirtualBorderRouterId(v string) *GetVbrFlowTopNResponseBodyVirtualBorderRouterFlowlogTopN {
+	s.VirtualBorderRouterId = &v
+	return s
+}
+
+type GetVbrFlowTopNResponse struct {
+	Headers    map[string]*string          `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                      `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *GetVbrFlowTopNResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s GetVbrFlowTopNResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetVbrFlowTopNResponse) GoString() string {
+	return s.String()
+}
+
+func (s *GetVbrFlowTopNResponse) SetHeaders(v map[string]*string) *GetVbrFlowTopNResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *GetVbrFlowTopNResponse) SetStatusCode(v int32) *GetVbrFlowTopNResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *GetVbrFlowTopNResponse) SetBody(v *GetVbrFlowTopNResponseBody) *GetVbrFlowTopNResponse {
+	s.Body = v
+	return s
+}
+
 type Client struct {
 	openapi.Client
 }
@@ -1816,6 +2717,10 @@ func (client *Client) CreateNetworkReachableAnalysisWithOptions(request *CreateN
 		return _result, _err
 	}
 	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.AuditParam)) {
+		query["AuditParam"] = request.AuditParam
+	}
+
 	if !tea.BoolValue(util.IsUnset(request.NetworkPathId)) {
 		query["NetworkPathId"] = request.NetworkPathId
 	}
@@ -2234,6 +3139,242 @@ func (client *Client) GetNetworkReachableAnalysis(request *GetNetworkReachableAn
 	runtime := &util.RuntimeOptions{}
 	_result = &GetNetworkReachableAnalysisResponse{}
 	_body, _err := client.GetNetworkReachableAnalysisWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) GetTransitRouterFlowTopNWithOptions(tmpReq *GetTransitRouterFlowTopNRequest, runtime *util.RuntimeOptions) (_result *GetTransitRouterFlowTopNResponse, _err error) {
+	_err = util.ValidateModel(tmpReq)
+	if _err != nil {
+		return _result, _err
+	}
+	request := &GetTransitRouterFlowTopNShrinkRequest{}
+	openapiutil.Convert(tmpReq, request)
+	if !tea.BoolValue(util.IsUnset(tmpReq.AccountIds)) {
+		request.AccountIdsShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.AccountIds, tea.String("AccountIds"), tea.String("json"))
+	}
+
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.AccountIdsShrink)) {
+		query["AccountIds"] = request.AccountIdsShrink
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.BandwithPackageId)) {
+		query["BandwithPackageId"] = request.BandwithPackageId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.BeginTime)) {
+		query["BeginTime"] = request.BeginTime
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.CenId)) {
+		query["CenId"] = request.CenId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Direction)) {
+		query["Direction"] = request.Direction
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.EndTime)) {
+		query["EndTime"] = request.EndTime
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.GroupBy)) {
+		query["GroupBy"] = request.GroupBy
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.OrderBy)) {
+		query["OrderBy"] = request.OrderBy
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.OtherIp)) {
+		query["OtherIp"] = request.OtherIp
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.OtherPort)) {
+		query["OtherPort"] = request.OtherPort
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.OtherRegion)) {
+		query["OtherRegion"] = request.OtherRegion
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Protocol)) {
+		query["Protocol"] = request.Protocol
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Sort)) {
+		query["Sort"] = request.Sort
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ThisIp)) {
+		query["ThisIp"] = request.ThisIp
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ThisPort)) {
+		query["ThisPort"] = request.ThisPort
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ThisRegion)) {
+		query["ThisRegion"] = request.ThisRegion
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.TopN)) {
+		query["TopN"] = request.TopN
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.UseMultiAccount)) {
+		query["UseMultiAccount"] = request.UseMultiAccount
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("GetTransitRouterFlowTopN"),
+		Version:     tea.String("2021-12-16"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &GetTransitRouterFlowTopNResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) GetTransitRouterFlowTopN(request *GetTransitRouterFlowTopNRequest) (_result *GetTransitRouterFlowTopNResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &GetTransitRouterFlowTopNResponse{}
+	_body, _err := client.GetTransitRouterFlowTopNWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) GetVbrFlowTopNWithOptions(tmpReq *GetVbrFlowTopNRequest, runtime *util.RuntimeOptions) (_result *GetVbrFlowTopNResponse, _err error) {
+	_err = util.ValidateModel(tmpReq)
+	if _err != nil {
+		return _result, _err
+	}
+	request := &GetVbrFlowTopNShrinkRequest{}
+	openapiutil.Convert(tmpReq, request)
+	if !tea.BoolValue(util.IsUnset(tmpReq.AccountIds)) {
+		request.AccountIdsShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.AccountIds, tea.String("AccountIds"), tea.String("json"))
+	}
+
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.AccountIdsShrink)) {
+		query["AccountIds"] = request.AccountIdsShrink
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.AttachmentId)) {
+		query["AttachmentId"] = request.AttachmentId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.BeginTime)) {
+		query["BeginTime"] = request.BeginTime
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.CenId)) {
+		query["CenId"] = request.CenId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.CloudIp)) {
+		query["CloudIp"] = request.CloudIp
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.CloudPort)) {
+		query["CloudPort"] = request.CloudPort
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Direction)) {
+		query["Direction"] = request.Direction
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.EndTime)) {
+		query["EndTime"] = request.EndTime
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.GroupBy)) {
+		query["GroupBy"] = request.GroupBy
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.OrderBy)) {
+		query["OrderBy"] = request.OrderBy
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.OtherIp)) {
+		query["OtherIp"] = request.OtherIp
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.OtherPort)) {
+		query["OtherPort"] = request.OtherPort
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Protocol)) {
+		query["Protocol"] = request.Protocol
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.RegionId)) {
+		query["RegionId"] = request.RegionId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Sort)) {
+		query["Sort"] = request.Sort
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.TopN)) {
+		query["TopN"] = request.TopN
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.UseMultiAccount)) {
+		query["UseMultiAccount"] = request.UseMultiAccount
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.VirtualBorderRouterId)) {
+		query["VirtualBorderRouterId"] = request.VirtualBorderRouterId
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("GetVbrFlowTopN"),
+		Version:     tea.String("2021-12-16"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &GetVbrFlowTopNResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) GetVbrFlowTopN(request *GetVbrFlowTopNRequest) (_result *GetVbrFlowTopNResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &GetVbrFlowTopNResponse{}
+	_body, _err := client.GetVbrFlowTopNWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
