@@ -229,9 +229,9 @@ func (s *AddClusterIntoServiceMeshResponse) SetBody(v *AddClusterIntoServiceMesh
 }
 
 type AddVMIntoServiceMeshRequest struct {
-	// The ID of the VM.
+	// The ID of the ECS instance.
 	EcsId *string `json:"EcsId,omitempty" xml:"EcsId,omitempty"`
-	// The ID of the ASM instance.
+	// The ASM instance ID.
 	ServiceMeshId *string `json:"ServiceMeshId,omitempty" xml:"ServiceMeshId,omitempty"`
 }
 
@@ -254,7 +254,7 @@ func (s *AddVMIntoServiceMeshRequest) SetServiceMeshId(v string) *AddVMIntoServi
 }
 
 type AddVMIntoServiceMeshResponseBody struct {
-	// The ID of the request.
+	// The request ID.
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -668,13 +668,15 @@ func (s *CreateIstioGatewayRoutesRequest) SetStatus(v int32) *CreateIstioGateway
 }
 
 type CreateIstioGatewayRoutesRequestGatewayRoute struct {
+	// The requested domain names.
 	Domains []*string `json:"Domains,omitempty" xml:"Domains,omitempty" type:"Repeated"`
 	// The advanced settings for routing HTTP traffic.
 	HTTPAdvancedOptions *CreateIstioGatewayRoutesRequestGatewayRouteHTTPAdvancedOptions `json:"HTTPAdvancedOptions,omitempty" xml:"HTTPAdvancedOptions,omitempty" type:"Struct"`
 	// The matching rules for traffic routing.
 	MatchRequest *CreateIstioGatewayRoutesRequestGatewayRouteMatchRequest `json:"MatchRequest,omitempty" xml:"MatchRequest,omitempty" type:"Struct"`
-	// The name of the namespace.
-	Namespace  *string     `json:"Namespace,omitempty" xml:"Namespace,omitempty"`
+	// The namespace.
+	Namespace *string `json:"Namespace,omitempty" xml:"Namespace,omitempty"`
+	// A JSON string. This parameter corresponds to the three routing types in virtual services and provides configuration entries for advanced features. The value of this parameter overwrites the configurations in RouteName, RouteType, MatchRequest, and HTTPAdvancedOptions.
 	RawVSRoute interface{} `json:"RawVSRoute,omitempty" xml:"RawVSRoute,omitempty"`
 	// The endpoints of destination services for Layer 4 weighted routing.
 	RouteDestinations []*CreateIstioGatewayRoutesRequestGatewayRouteRouteDestinations `json:"RouteDestinations,omitempty" xml:"RouteDestinations,omitempty" type:"Repeated"`
@@ -737,7 +739,7 @@ type CreateIstioGatewayRoutesRequestGatewayRouteHTTPAdvancedOptions struct {
 	Delegate *CreateIstioGatewayRoutesRequestGatewayRouteHTTPAdvancedOptionsDelegate `json:"Delegate,omitempty" xml:"Delegate,omitempty" type:"Struct"`
 	// The configurations of fault injection.
 	Fault *CreateIstioGatewayRoutesRequestGatewayRouteHTTPAdvancedOptionsFault `json:"Fault,omitempty" xml:"Fault,omitempty" type:"Struct"`
-	// The HTTP redirect rule.
+	// The HTTP redirection rule.
 	HTTPRedirect *CreateIstioGatewayRoutesRequestGatewayRouteHTTPAdvancedOptionsHTTPRedirect `json:"HTTPRedirect,omitempty" xml:"HTTPRedirect,omitempty" type:"Struct"`
 	// The configurations for mirroring HTTP traffic to another destination in addition to forwarding requests to the specified destination.
 	Mirror *CreateIstioGatewayRoutesRequestGatewayRouteHTTPAdvancedOptionsMirror `json:"Mirror,omitempty" xml:"Mirror,omitempty" type:"Struct"`
@@ -1011,7 +1013,7 @@ func (s *CreateIstioGatewayRoutesRequestGatewayRouteHTTPAdvancedOptionsMirrorPer
 }
 
 type CreateIstioGatewayRoutesRequestGatewayRouteHTTPAdvancedOptionsRetries struct {
-	// The number of retries allowed for a request.
+	// The number of retries that are allowed for a request.
 	Attempts *int32 `json:"Attempts,omitempty" xml:"Attempts,omitempty"`
 	// The timeout period for each retry. Example: `5s`.
 	PerTryTimeout *string `json:"PerTryTimeout,omitempty" xml:"PerTryTimeout,omitempty"`
@@ -1253,7 +1255,8 @@ func (s *CreateIstioGatewayRoutesRequestGatewayRouteRouteDestinations) SetWeight
 
 type CreateIstioGatewayRoutesRequestGatewayRouteRouteDestinationsDestination struct {
 	// The name of the service defined in the service registry.
-	Host *string                                                                      `json:"Host,omitempty" xml:"Host,omitempty"`
+	Host *string `json:"Host,omitempty" xml:"Host,omitempty"`
+	// The port.
 	Port *CreateIstioGatewayRoutesRequestGatewayRouteRouteDestinationsDestinationPort `json:"Port,omitempty" xml:"Port,omitempty" type:"Struct"`
 	// The name of the service subset.
 	Subset *string `json:"Subset,omitempty" xml:"Subset,omitempty"`
@@ -1283,6 +1286,7 @@ func (s *CreateIstioGatewayRoutesRequestGatewayRouteRouteDestinationsDestination
 }
 
 type CreateIstioGatewayRoutesRequestGatewayRouteRouteDestinationsDestinationPort struct {
+	// The port number.
 	Number *int32 `json:"Number,omitempty" xml:"Number,omitempty"`
 }
 
@@ -1462,6 +1466,7 @@ type CreateServiceMeshRequest struct {
 	// Default value: `false`.
 	CRAggregationEnabled *bool `json:"CRAggregationEnabled,omitempty" xml:"CRAggregationEnabled,omitempty"`
 	// The billing method of the SLB instance. Valid values:
+	//
 	// *   `PayOnDemand`: pay-as-you-go.
 	// *   `PrePay`: subscription.
 	ChargeType *string `json:"ChargeType,omitempty" xml:"ChargeType,omitempty"`
@@ -1650,7 +1655,7 @@ type CreateServiceMeshRequest struct {
 	//
 	// Default value: `false`.
 	OpenAgentPolicy *bool `json:"OpenAgentPolicy,omitempty" xml:"OpenAgentPolicy,omitempty"`
-	// The subscription period of the SLB instance. Unit: month. This parameter is valid only if the ChargeType parameter is set to PrePay. For example, if the subscription period is one year, set this parameter to 12.
+	// The auto-renewal period of the SLB instance. This parameter is valid only if `ChargeType` is set to `PrePaid`. The value of this parameter indicates the purchased month of the SLB instance when the subscription billing method is used. For example, if the subscription period is one year, set this parameter to 12.
 	Period *int32 `json:"Period,omitempty" xml:"Period,omitempty"`
 	// The type of the SLB instance that is bound to Istio Pilot. Valid values: `slb.s1.small`, `slb.s2.small`, `slb.s2.medium`, `slb.s3.small`, `slb.s3.medium`, and `slb.s3.large`.
 	PilotLoadBalancerSpec *string `json:"PilotLoadBalancerSpec,omitempty" xml:"PilotLoadBalancerSpec,omitempty"`
@@ -5783,7 +5788,8 @@ func (s *DescribeNamespaceScopeSidecarConfigResponseBody) SetRequestId(v string)
 
 type DescribeNamespaceScopeSidecarConfigResponseBodyConfigPatches struct {
 	// The number of worker threads to run in the istio-proxy container.
-	Concurrency *int32 `json:"Concurrency,omitempty" xml:"Concurrency,omitempty"`
+	Concurrency    *int32 `json:"Concurrency,omitempty" xml:"Concurrency,omitempty"`
+	EnableCoreDump *bool  `json:"EnableCoreDump,omitempty" xml:"EnableCoreDump,omitempty"`
 	// The inbound ports to be excluded from redirection to the sidecar proxy in the ASM instance.
 	ExcludeInboundPorts *string `json:"ExcludeInboundPorts,omitempty" xml:"ExcludeInboundPorts,omitempty"`
 	// The outbound IP ranges in CIDR form to be excluded from redirection to the sidecar proxy in the ASM instance.
@@ -5815,9 +5821,13 @@ type DescribeNamespaceScopeSidecarConfigResponseBodyConfigPatches struct {
 	LifecycleStr *string `json:"LifecycleStr,omitempty" xml:"LifecycleStr,omitempty"`
 	// The log level. Valid values: `info`, `debug`, `trace`, and `error`.
 	LogLevel      *string            `json:"LogLevel,omitempty" xml:"LogLevel,omitempty"`
+	Privileged    *bool              `json:"Privileged,omitempty" xml:"Privileged,omitempty"`
 	ProxyMetadata map[string]*string `json:"ProxyMetadata,omitempty" xml:"ProxyMetadata,omitempty"`
 	// The custom Envoy statistics that are reported by the sidecar proxy.
 	ProxyStatsMatcher              *DescribeNamespaceScopeSidecarConfigResponseBodyConfigPatchesProxyStatsMatcher              `json:"ProxyStatsMatcher,omitempty" xml:"ProxyStatsMatcher,omitempty" type:"Struct"`
+	ReadinessFailureThreshold      *int32                                                                                      `json:"ReadinessFailureThreshold,omitempty" xml:"ReadinessFailureThreshold,omitempty"`
+	ReadinessInitialDelaySeconds   *int32                                                                                      `json:"ReadinessInitialDelaySeconds,omitempty" xml:"ReadinessInitialDelaySeconds,omitempty"`
+	ReadinessPeriodSeconds         *int32                                                                                      `json:"ReadinessPeriodSeconds,omitempty" xml:"ReadinessPeriodSeconds,omitempty"`
 	SidecarProxyAckSloResource     *DescribeNamespaceScopeSidecarConfigResponseBodyConfigPatchesSidecarProxyAckSloResource     `json:"SidecarProxyAckSloResource,omitempty" xml:"SidecarProxyAckSloResource,omitempty" type:"Struct"`
 	SidecarProxyInitAckSloResource *DescribeNamespaceScopeSidecarConfigResponseBodyConfigPatchesSidecarProxyInitAckSloResource `json:"SidecarProxyInitAckSloResource,omitempty" xml:"SidecarProxyInitAckSloResource,omitempty" type:"Struct"`
 	// The maximum size of resources that are available to the istio-init container in the pod into which the sidecar proxy is injected. The istio-init container is used in this topic.
@@ -5844,6 +5854,11 @@ func (s DescribeNamespaceScopeSidecarConfigResponseBodyConfigPatches) GoString()
 
 func (s *DescribeNamespaceScopeSidecarConfigResponseBodyConfigPatches) SetConcurrency(v int32) *DescribeNamespaceScopeSidecarConfigResponseBodyConfigPatches {
 	s.Concurrency = &v
+	return s
+}
+
+func (s *DescribeNamespaceScopeSidecarConfigResponseBodyConfigPatches) SetEnableCoreDump(v bool) *DescribeNamespaceScopeSidecarConfigResponseBodyConfigPatches {
+	s.EnableCoreDump = &v
 	return s
 }
 
@@ -5902,6 +5917,11 @@ func (s *DescribeNamespaceScopeSidecarConfigResponseBodyConfigPatches) SetLogLev
 	return s
 }
 
+func (s *DescribeNamespaceScopeSidecarConfigResponseBodyConfigPatches) SetPrivileged(v bool) *DescribeNamespaceScopeSidecarConfigResponseBodyConfigPatches {
+	s.Privileged = &v
+	return s
+}
+
 func (s *DescribeNamespaceScopeSidecarConfigResponseBodyConfigPatches) SetProxyMetadata(v map[string]*string) *DescribeNamespaceScopeSidecarConfigResponseBodyConfigPatches {
 	s.ProxyMetadata = v
 	return s
@@ -5909,6 +5929,21 @@ func (s *DescribeNamespaceScopeSidecarConfigResponseBodyConfigPatches) SetProxyM
 
 func (s *DescribeNamespaceScopeSidecarConfigResponseBodyConfigPatches) SetProxyStatsMatcher(v *DescribeNamespaceScopeSidecarConfigResponseBodyConfigPatchesProxyStatsMatcher) *DescribeNamespaceScopeSidecarConfigResponseBodyConfigPatches {
 	s.ProxyStatsMatcher = v
+	return s
+}
+
+func (s *DescribeNamespaceScopeSidecarConfigResponseBodyConfigPatches) SetReadinessFailureThreshold(v int32) *DescribeNamespaceScopeSidecarConfigResponseBodyConfigPatches {
+	s.ReadinessFailureThreshold = &v
+	return s
+}
+
+func (s *DescribeNamespaceScopeSidecarConfigResponseBodyConfigPatches) SetReadinessInitialDelaySeconds(v int32) *DescribeNamespaceScopeSidecarConfigResponseBodyConfigPatches {
+	s.ReadinessInitialDelaySeconds = &v
+	return s
+}
+
+func (s *DescribeNamespaceScopeSidecarConfigResponseBodyConfigPatches) SetReadinessPeriodSeconds(v int32) *DescribeNamespaceScopeSidecarConfigResponseBodyConfigPatches {
+	s.ReadinessPeriodSeconds = &v
 	return s
 }
 
@@ -6490,7 +6525,8 @@ type DescribeServiceMeshAdditionalStatusResponseBodyClusterStatus struct {
 	//
 	// *   `exist`
 	// *   `not exist`
-	AuditProjectStatus            *string                                                                                    `json:"AuditProjectStatus,omitempty" xml:"AuditProjectStatus,omitempty"`
+	AuditProjectStatus *string `json:"AuditProjectStatus,omitempty" xml:"AuditProjectStatus,omitempty"`
+	// The check results of the SLB instance that is created for exposing Istio Pilot and used during canary release.
 	CanaryPilotLoadBalancerStatus *DescribeServiceMeshAdditionalStatusResponseBodyClusterStatusCanaryPilotLoadBalancerStatus `json:"CanaryPilotLoadBalancerStatus,omitempty" xml:"CanaryPilotLoadBalancerStatus,omitempty" type:"Struct"`
 	// Indicates whether control plane logs exist. Valid values:
 	//
@@ -6503,7 +6539,14 @@ type DescribeServiceMeshAdditionalStatusResponseBodyClusterStatus struct {
 	LogtailStatusRecord map[string]interface{} `json:"LogtailStatusRecord,omitempty" xml:"LogtailStatusRecord,omitempty"`
 	// The check results of the SLB instance created for exposing Istio Pilot.
 	PilotLoadBalancerStatus *DescribeServiceMeshAdditionalStatusResponseBodyClusterStatusPilotLoadBalancerStatus `json:"PilotLoadBalancerStatus,omitempty" xml:"PilotLoadBalancerStatus,omitempty" type:"Struct"`
-	RAMApplicationStatus    *string                                                                              `json:"RAMApplicationStatus,omitempty" xml:"RAMApplicationStatus,omitempty"`
+	// The status of the RAM OAuth application that is integrated with Mesh Topology. Valid values:
+	//
+	// *   `exist`: The RAM OAuth application exists.
+	// *   `reused`: The RAM OAuth application is reused.
+	// *   `not_exist`: The RAM OAuth application does not exist.
+	// *   `failed`: The check fails.
+	// *   `time_out`: The check times out.
+	RAMApplicationStatus *string `json:"RAMApplicationStatus,omitempty" xml:"RAMApplicationStatus,omitempty"`
 	// Indicates whether the security group is reused. Valid values:
 	//
 	// *   `reused`: The security group is reused.
@@ -6587,7 +6630,7 @@ type DescribeServiceMeshAdditionalStatusResponseBodyClusterStatusApiServerLoadBa
 	// *   `true`
 	// *   `false`
 	Reused *bool `json:"Reused,omitempty" xml:"Reused,omitempty"`
-	// The check result of the number of the backend servers of the SLB instance created for exposing Istio Pilot. Valid values:
+	// The check result of the number of backend servers of the SLB instance created for exposing the API server. Valid values:
 	//
 	// *   `too_much`: An excessive number of backend servers are created.
 	// *   `num_exact`: A proper number of backend servers are created.
@@ -6637,11 +6680,27 @@ func (s *DescribeServiceMeshAdditionalStatusResponseBodyClusterStatusApiServerLo
 }
 
 type DescribeServiceMeshAdditionalStatusResponseBodyClusterStatusCanaryPilotLoadBalancerStatus struct {
-	Locked                    *bool   `json:"Locked,omitempty" xml:"Locked,omitempty"`
-	PayType                   *string `json:"PayType,omitempty" xml:"PayType,omitempty"`
-	Reused                    *bool   `json:"Reused,omitempty" xml:"Reused,omitempty"`
+	// Indicates whether the SLB instance is locked due to overdue payments. Valid values: `true` `false`
+	Locked  *bool   `json:"Locked,omitempty" xml:"Locked,omitempty"`
+	PayType *string `json:"PayType,omitempty" xml:"PayType,omitempty"`
+	// Indicates whether the SLB instance is reused. Valid values:
+	//
+	// *   `true`: The SLB instance is reused. Non-ASM listener configuration is detected in the listener configurations of the SLB instance.
+	// *   `false`: The SLB instance is not reused.
+	Reused *bool `json:"Reused,omitempty" xml:"Reused,omitempty"`
+	// The check result of the number of backend servers of the SLB instance created for exposing Istio Pilot. Valid values:
+	//
+	// *   `num_exact`: A proper number of backend servers are created.
+	// *   `too_much`: An excessive number of backend servers are created.
+	// *   `too_little`: The number of backend servers falls short.
 	SLBBackEndServerNumStatus *string `json:"SLBBackEndServerNumStatus,omitempty" xml:"SLBBackEndServerNumStatus,omitempty"`
-	SLBExistStatus            *string `json:"SLBExistStatus,omitempty" xml:"SLBExistStatus,omitempty"`
+	// The check result of the SLB instance. Valid values:
+	//
+	// *   `exist`: The SLB instance exists.
+	// *   `not_exist`: The SLB instance does not exist.
+	// *   `time_out`: The check times out.
+	// *   `failed`: The SLB instance has expired.
+	SLBExistStatus *string `json:"SLBExistStatus,omitempty" xml:"SLBExistStatus,omitempty"`
 }
 
 func (s DescribeServiceMeshAdditionalStatusResponseBodyClusterStatusCanaryPilotLoadBalancerStatus) String() string {
@@ -6693,7 +6752,7 @@ type DescribeServiceMeshAdditionalStatusResponseBodyClusterStatusPilotLoadBalanc
 	// *   `true`
 	// *   `false`
 	Reused *bool `json:"Reused,omitempty" xml:"Reused,omitempty"`
-	// The check result of the number of the backend servers of the SLB instance created for exposing Istio Pilot. Valid values:
+	// The check result of the number of backend servers of the SLB instance created for exposing Istio Pilot. Valid values:
 	//
 	// *   `too_much`: An excessive number of backend servers are created.
 	// *   `num_exact`: A proper number of backend servers are created.
@@ -7565,7 +7624,8 @@ type DescribeServiceMeshDetailResponseBodyServiceMeshSpecMeshConfigControlPlaneL
 	//
 	// *   `true`: The collection of control-plane logs is enabled.
 	// *   `false`: The collection of control-plane logs is disabled.
-	Enabled *bool `json:"Enabled,omitempty" xml:"Enabled,omitempty"`
+	Enabled *bool  `json:"Enabled,omitempty" xml:"Enabled,omitempty"`
+	LogTTL  *int32 `json:"LogTTL,omitempty" xml:"LogTTL,omitempty"`
 	// The name of the Log Service project that stores control-plane logs.
 	Project *string `json:"Project,omitempty" xml:"Project,omitempty"`
 }
@@ -7580,6 +7640,11 @@ func (s DescribeServiceMeshDetailResponseBodyServiceMeshSpecMeshConfigControlPla
 
 func (s *DescribeServiceMeshDetailResponseBodyServiceMeshSpecMeshConfigControlPlaneLogInfo) SetEnabled(v bool) *DescribeServiceMeshDetailResponseBodyServiceMeshSpecMeshConfigControlPlaneLogInfo {
 	s.Enabled = &v
+	return s
+}
+
+func (s *DescribeServiceMeshDetailResponseBodyServiceMeshSpecMeshConfigControlPlaneLogInfo) SetLogTTL(v int32) *DescribeServiceMeshDetailResponseBodyServiceMeshSpecMeshConfigControlPlaneLogInfo {
+	s.LogTTL = &v
 	return s
 }
 
@@ -7733,8 +7798,10 @@ func (s *DescribeServiceMeshDetailResponseBodyServiceMeshSpecMeshConfigExtraConf
 }
 
 type DescribeServiceMeshDetailResponseBodyServiceMeshSpecMeshConfigExtraConfigurationAccessLogExtraConf struct {
+	GatewayEnabled *bool `json:"GatewayEnabled,omitempty" xml:"GatewayEnabled,omitempty"`
 	// The retention period for the access logs of the ingress gateway. Unit: day. The logs are collected by using the Log Service. For example, a value of 30 indicates that the logs are retained for 30 days.
 	GatewayLifecycle *int32 `json:"GatewayLifecycle,omitempty" xml:"GatewayLifecycle,omitempty"`
+	SidecarEnabled   *bool  `json:"SidecarEnabled,omitempty" xml:"SidecarEnabled,omitempty"`
 	// The retention period for the access logs of sidecar proxies. Unit: day. The logs are collected by using the Log Service. For example, a value of 30 indicates that the logs are retained for 30 days.
 	SidecarLifecycle *int32 `json:"SidecarLifecycle,omitempty" xml:"SidecarLifecycle,omitempty"`
 }
@@ -7747,8 +7814,18 @@ func (s DescribeServiceMeshDetailResponseBodyServiceMeshSpecMeshConfigExtraConfi
 	return s.String()
 }
 
+func (s *DescribeServiceMeshDetailResponseBodyServiceMeshSpecMeshConfigExtraConfigurationAccessLogExtraConf) SetGatewayEnabled(v bool) *DescribeServiceMeshDetailResponseBodyServiceMeshSpecMeshConfigExtraConfigurationAccessLogExtraConf {
+	s.GatewayEnabled = &v
+	return s
+}
+
 func (s *DescribeServiceMeshDetailResponseBodyServiceMeshSpecMeshConfigExtraConfigurationAccessLogExtraConf) SetGatewayLifecycle(v int32) *DescribeServiceMeshDetailResponseBodyServiceMeshSpecMeshConfigExtraConfigurationAccessLogExtraConf {
 	s.GatewayLifecycle = &v
+	return s
+}
+
+func (s *DescribeServiceMeshDetailResponseBodyServiceMeshSpecMeshConfigExtraConfigurationAccessLogExtraConf) SetSidecarEnabled(v bool) *DescribeServiceMeshDetailResponseBodyServiceMeshSpecMeshConfigExtraConfigurationAccessLogExtraConf {
+	s.SidecarEnabled = &v
 	return s
 }
 
@@ -9501,7 +9578,7 @@ func (s *DescribeServiceMeshUpgradeStatusResponse) SetBody(v *DescribeServiceMes
 }
 
 type DescribeServiceMeshVMsRequest struct {
-	// The ID of the ASM instance.
+	// The ASM instance ID.
 	ServiceMeshId *string `json:"ServiceMeshId,omitempty" xml:"ServiceMeshId,omitempty"`
 }
 
@@ -9519,7 +9596,7 @@ func (s *DescribeServiceMeshVMsRequest) SetServiceMeshId(v string) *DescribeServ
 }
 
 type DescribeServiceMeshVMsResponseBody struct {
-	// The ID of the request.
+	// The request ID.
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	// The ECS instances that reside in the same VPC as the ASM instance.
 	VMs []*DescribeServiceMeshVMsResponseBodyVMs `json:"VMs,omitempty" xml:"VMs,omitempty" type:"Repeated"`
@@ -9546,17 +9623,17 @@ func (s *DescribeServiceMeshVMsResponseBody) SetVMs(v []*DescribeServiceMeshVMsR
 type DescribeServiceMeshVMsResponseBodyVMs struct {
 	// Indicates whether the ECS instance has labels.
 	HasTag *bool `json:"HasTag,omitempty" xml:"HasTag,omitempty"`
-	// The hostname of the ECS instance.
+	// The host name.
 	HostName *string `json:"HostName,omitempty" xml:"HostName,omitempty"`
 	// The ID of the ECS instance.
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
 	// The IP address of the ECS instance.
 	IpAddress *string `json:"IpAddress,omitempty" xml:"IpAddress,omitempty"`
-	// The ID of the region.
+	// The region ID.
 	Region *string `json:"Region,omitempty" xml:"Region,omitempty"`
 	// The security group to which the ECS instance belongs.
 	SecurityGroupIds *string `json:"SecurityGroupIds,omitempty" xml:"SecurityGroupIds,omitempty"`
-	// The ID of the ASM instance.
+	// The ASM instance ID.
 	ServiceMeshId *string `json:"ServiceMeshId,omitempty" xml:"ServiceMeshId,omitempty"`
 	// The state of the ECS instance.
 	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
@@ -10533,7 +10610,7 @@ func (s *DescribeUsersWithPermissionsResponse) SetBody(v *DescribeUsersWithPermi
 }
 
 type DescribeVMsInServiceMeshRequest struct {
-	// The ID of the ASM instance.
+	// The ASM instance ID.
 	ServiceMeshId *string `json:"ServiceMeshId,omitempty" xml:"ServiceMeshId,omitempty"`
 }
 
@@ -10551,7 +10628,7 @@ func (s *DescribeVMsInServiceMeshRequest) SetServiceMeshId(v string) *DescribeVM
 }
 
 type DescribeVMsInServiceMeshResponseBody struct {
-	// The ID of the request.
+	// The request ID.
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	// The VMs that are added to the ASM instance.
 	VMs []*DescribeVMsInServiceMeshResponseBodyVMs `json:"VMs,omitempty" xml:"VMs,omitempty" type:"Repeated"`
@@ -10576,19 +10653,19 @@ func (s *DescribeVMsInServiceMeshResponseBody) SetVMs(v []*DescribeVMsInServiceM
 }
 
 type DescribeVMsInServiceMeshResponseBodyVMs struct {
-	// Indicates whether the VM has labels.
+	// Indicates whether the ECS instance has labels.
 	HasTag *bool `json:"HasTag,omitempty" xml:"HasTag,omitempty"`
-	// The host name of the VM.
+	// The host name.
 	HostName *string `json:"HostName,omitempty" xml:"HostName,omitempty"`
-	// The ID of the VM.
+	// The ID of the ECS instance.
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	// The IP address of the VM.
+	// The IP address of the ECS instance.
 	IpAddress *string `json:"IpAddress,omitempty" xml:"IpAddress,omitempty"`
 	// The region ID.
 	Region *string `json:"Region,omitempty" xml:"Region,omitempty"`
-	// The security group to which the VM belongs.
+	// The security group to which the ECS instance belongs.
 	SecurityGroupIds *string `json:"SecurityGroupIds,omitempty" xml:"SecurityGroupIds,omitempty"`
-	// The status of the VM.
+	// The state of the ECS instance.
 	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
 }
 
@@ -12861,9 +12938,9 @@ func (s *RemoveClusterFromServiceMeshResponse) SetBody(v *RemoveClusterFromServi
 }
 
 type RemoveVMFromServiceMeshRequest struct {
-	// The ID of the VM.
+	// The ID of the ECS instance.
 	EcsId *string `json:"EcsId,omitempty" xml:"EcsId,omitempty"`
-	// The ID of the ASM instance.
+	// The ASM instance ID.
 	ServiceMeshId *string `json:"ServiceMeshId,omitempty" xml:"ServiceMeshId,omitempty"`
 }
 
@@ -12886,7 +12963,7 @@ func (s *RemoveVMFromServiceMeshRequest) SetServiceMeshId(v string) *RemoveVMFro
 }
 
 type RemoveVMFromServiceMeshResponseBody struct {
-	// The ID of the request.
+	// The request ID.
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -13438,6 +13515,87 @@ func (s *UpdateASMNamespaceFromGuestClusterResponse) SetStatusCode(v int32) *Upd
 }
 
 func (s *UpdateASMNamespaceFromGuestClusterResponse) SetBody(v *UpdateASMNamespaceFromGuestClusterResponseBody) *UpdateASMNamespaceFromGuestClusterResponse {
+	s.Body = v
+	return s
+}
+
+type UpdateControlPlaneLogConfigRequest struct {
+	Enabled       *bool   `json:"Enabled,omitempty" xml:"Enabled,omitempty"`
+	LogTTLInDay   *int32  `json:"LogTTLInDay,omitempty" xml:"LogTTLInDay,omitempty"`
+	Project       *string `json:"Project,omitempty" xml:"Project,omitempty"`
+	ServiceMeshId *string `json:"ServiceMeshId,omitempty" xml:"ServiceMeshId,omitempty"`
+}
+
+func (s UpdateControlPlaneLogConfigRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UpdateControlPlaneLogConfigRequest) GoString() string {
+	return s.String()
+}
+
+func (s *UpdateControlPlaneLogConfigRequest) SetEnabled(v bool) *UpdateControlPlaneLogConfigRequest {
+	s.Enabled = &v
+	return s
+}
+
+func (s *UpdateControlPlaneLogConfigRequest) SetLogTTLInDay(v int32) *UpdateControlPlaneLogConfigRequest {
+	s.LogTTLInDay = &v
+	return s
+}
+
+func (s *UpdateControlPlaneLogConfigRequest) SetProject(v string) *UpdateControlPlaneLogConfigRequest {
+	s.Project = &v
+	return s
+}
+
+func (s *UpdateControlPlaneLogConfigRequest) SetServiceMeshId(v string) *UpdateControlPlaneLogConfigRequest {
+	s.ServiceMeshId = &v
+	return s
+}
+
+type UpdateControlPlaneLogConfigResponseBody struct {
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+}
+
+func (s UpdateControlPlaneLogConfigResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UpdateControlPlaneLogConfigResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *UpdateControlPlaneLogConfigResponseBody) SetRequestId(v string) *UpdateControlPlaneLogConfigResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+type UpdateControlPlaneLogConfigResponse struct {
+	Headers    map[string]*string                       `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                                   `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *UpdateControlPlaneLogConfigResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s UpdateControlPlaneLogConfigResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UpdateControlPlaneLogConfigResponse) GoString() string {
+	return s.String()
+}
+
+func (s *UpdateControlPlaneLogConfigResponse) SetHeaders(v map[string]*string) *UpdateControlPlaneLogConfigResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *UpdateControlPlaneLogConfigResponse) SetStatusCode(v int32) *UpdateControlPlaneLogConfigResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *UpdateControlPlaneLogConfigResponse) SetBody(v *UpdateControlPlaneLogConfigResponseBody) *UpdateControlPlaneLogConfigResponse {
 	s.Body = v
 	return s
 }
@@ -14240,8 +14398,9 @@ type UpdateIstioInjectionConfigRequest struct {
 	// Specifies whether to enable Istio automatic sidecar injection.
 	EnableIstioInjection *bool `json:"EnableIstioInjection,omitempty" xml:"EnableIstioInjection,omitempty"`
 	// Specifies whether to enable automatic sidecar injection by using SidecarSet.
-	EnableSidecarSetInjection *bool   `json:"EnableSidecarSetInjection,omitempty" xml:"EnableSidecarSetInjection,omitempty"`
-	IstioRev                  *string `json:"IstioRev,omitempty" xml:"IstioRev,omitempty"`
+	EnableSidecarSetInjection *bool `json:"EnableSidecarSetInjection,omitempty" xml:"EnableSidecarSetInjection,omitempty"`
+	// Specifies the version to be injected into the namespace. This parameter is valid only when the ASM instance performs a canary release. When IstioRev is not empty, you must not specify EnableIstioInjection and EnableSidecarSetInjection.
+	IstioRev *string `json:"IstioRev,omitempty" xml:"IstioRev,omitempty"`
 	// The namespace for which you want to modify the sidecar injection setting.
 	Namespace *string `json:"Namespace,omitempty" xml:"Namespace,omitempty"`
 	// The ID of the ASM instance.
@@ -14566,7 +14725,8 @@ type UpdateMeshFeatureRequest struct {
 	// *   `/dev/stdout`: enables access logging. Access logs are written to /dev/stdout.
 	AccessLogFile *string `json:"AccessLogFile,omitempty" xml:"AccessLogFile,omitempty"`
 	// The custom format of access logs. To set this parameter, make sure that you have enabled access log collection. The value must be a JSON string. The following key names must be contained: authority_for, bytes_received, bytes_sent, downstream_local_address, downstream_remote_address, duration, istio_policy_status, method, path, protocol, requested_server_name, response_code, response_flags, route_name, start_time, trace_id, upstream_cluster, upstream_host, upstream_local_address, upstream_service_time, upstream_transport_failure_reason, user_agent, and x_forwarded_for.
-	AccessLogFormat *string `json:"AccessLogFormat,omitempty" xml:"AccessLogFormat,omitempty"`
+	AccessLogFormat         *string `json:"AccessLogFormat,omitempty" xml:"AccessLogFormat,omitempty"`
+	AccessLogGatewayEnabled *bool   `json:"AccessLogGatewayEnabled,omitempty" xml:"AccessLogGatewayEnabled,omitempty"`
 	// The retention period for the access logs of the sidecar proxy. Unit: day. The logs are collected by using Log Service. For example, `30` indicates 30 days.
 	AccessLogGatewayLifecycle *int32 `json:"AccessLogGatewayLifecycle,omitempty" xml:"AccessLogGatewayLifecycle,omitempty"`
 	// The custom project on which the Log Service collects logs.
@@ -14581,7 +14741,8 @@ type UpdateMeshFeatureRequest struct {
 	// The endpoint of gRPC ALS for Envoy.
 	AccessLogServiceHost *string `json:"AccessLogServiceHost,omitempty" xml:"AccessLogServiceHost,omitempty"`
 	// The port of gRPC ALS for Envoy.
-	AccessLogServicePort *int32 `json:"AccessLogServicePort,omitempty" xml:"AccessLogServicePort,omitempty"`
+	AccessLogServicePort    *int32 `json:"AccessLogServicePort,omitempty" xml:"AccessLogServicePort,omitempty"`
+	AccessLogSidecarEnabled *bool  `json:"AccessLogSidecarEnabled,omitempty" xml:"AccessLogSidecarEnabled,omitempty"`
 	// Specifies whether to enable automatic diagnostics for the ASM instance. If you enable this feature, the ASM instance is automatically diagnosed when you modify Istio resources in the ASM instance.
 	AccessLogSidecarLifecycle *int32 `json:"AccessLogSidecarLifecycle,omitempty" xml:"AccessLogSidecarLifecycle,omitempty"`
 	// The name of the Log Service project that is used for mesh audit.
@@ -14643,11 +14804,13 @@ type UpdateMeshFeatureRequest struct {
 	//
 	// Default value: `false`.
 	DNSProxyingEnabled *bool `json:"DNSProxyingEnabled,omitempty" xml:"DNSProxyingEnabled,omitempty"`
-	// Specifies the default scheduling configurations that ASM delivers to components on the data plane. You can configure nodeSelector and tolerations in the JSON format.
+	// Specifies the default scheduling configurations that ASM delivers to components on the data plane. You can configure `nodeSelector` and `tolerations` in the JSON format.
 	//
+	// >
 	//
-	// >* Modifying the value of this parameter is a high-risk operation. The modification will cause all components on the data plane of ASM to restart. Exercise caution before modifying the value of this parameter.
-	// >* The configurations specified by this parameter do not apply to the ASM gateway. You can configure scheduling on the ASM gateway.
+	// *   Modifying the value of this parameter is a high-risk operation. The modification will cause all components on the data plane of ASM to restart. Exercise caution before modifying the value of this parameter.
+	//
+	// *   The configurations specified by this parameter do not apply to the ASM gateway. You can configure gateway-specific scheduling on the ASM gateway.
 	DefaultComponentsScheduleConfig *string `json:"DefaultComponentsScheduleConfig,omitempty" xml:"DefaultComponentsScheduleConfig,omitempty"`
 	// The label selectors used to specify the namespaces of the clusters on the data plane for selective service discovery.
 	DiscoverySelectors *string `json:"DiscoverySelectors,omitempty" xml:"DiscoverySelectors,omitempty"`
@@ -14736,11 +14899,11 @@ type UpdateMeshFeatureRequest struct {
 	//
 	// Default value: `false`.
 	KialiEnabled *bool `json:"KialiEnabled,omitempty" xml:"KialiEnabled,omitempty"`
-	// 当开启网格拓扑且为访问网格拓扑创建CLB时，通过此参数使用Annotation配置不同集群中网格拓扑服务的CLB。
+	// Specifies Classic Load Balancer (CLB) instances by using annotations when the Mesh Topology feature is enabled. These CLB instances are used to access the Mesh Topology feature in different clusters.
 	//
-	// 参数格式为JSON编码的字符串，JSON对象中的键为数据面集群的集群ID，值为数据面集群中网格拓扑服务的Annotation内容。
+	// This parameter is a JSON-encoded string. The key in the JSON object is the ID of a cluster on the data plane, and the value is the annotation content of the Mesh Topology service in the cluster.
 	//
-	// 有关如何通过注解配置CLB，参考 [通过Annotation配置传统型负载均衡CLB](https://help.aliyun.com/document_detail/86531.html)。
+	// For more information about how to configure CLB instances by using annotations, see [Add annotations to the YAML file of a Service to configure CLB instances](https://www.alibabacloud.com/help/container-service-for-kubernetes/latest/use-annotations-to-configure-load-balancing-1).
 	KialiServiceAnnotations *string `json:"KialiServiceAnnotations,omitempty" xml:"KialiServiceAnnotations,omitempty"`
 	// The lifecycle of the sidecar proxy.
 	Lifecycle *string `json:"Lifecycle,omitempty" xml:"Lifecycle,omitempty"`
@@ -14981,6 +15144,11 @@ func (s *UpdateMeshFeatureRequest) SetAccessLogFormat(v string) *UpdateMeshFeatu
 	return s
 }
 
+func (s *UpdateMeshFeatureRequest) SetAccessLogGatewayEnabled(v bool) *UpdateMeshFeatureRequest {
+	s.AccessLogGatewayEnabled = &v
+	return s
+}
+
 func (s *UpdateMeshFeatureRequest) SetAccessLogGatewayLifecycle(v int32) *UpdateMeshFeatureRequest {
 	s.AccessLogGatewayLifecycle = &v
 	return s
@@ -15003,6 +15171,11 @@ func (s *UpdateMeshFeatureRequest) SetAccessLogServiceHost(v string) *UpdateMesh
 
 func (s *UpdateMeshFeatureRequest) SetAccessLogServicePort(v int32) *UpdateMeshFeatureRequest {
 	s.AccessLogServicePort = &v
+	return s
+}
+
+func (s *UpdateMeshFeatureRequest) SetAccessLogSidecarEnabled(v bool) *UpdateMeshFeatureRequest {
+	s.AccessLogSidecarEnabled = &v
 	return s
 }
 
@@ -15500,7 +15673,8 @@ func (s *UpdateMeshFeatureResponse) SetBody(v *UpdateMeshFeatureResponseBody) *U
 
 type UpdateNamespaceScopeSidecarConfigRequest struct {
 	// The number of worker threads to run in Istio Proxy.
-	Concurrency *int32 `json:"Concurrency,omitempty" xml:"Concurrency,omitempty"`
+	Concurrency    *int32 `json:"Concurrency,omitempty" xml:"Concurrency,omitempty"`
+	EnableCoreDump *bool  `json:"EnableCoreDump,omitempty" xml:"EnableCoreDump,omitempty"`
 	// The range of IP addresses that are allowed to access external services. (`global.proxy.excludelPRanges`)
 	ExcludeIPRanges *string `json:"ExcludeIPRanges,omitempty" xml:"ExcludeIPRanges,omitempty"`
 	// The port that the inbound traffic of the sidecar proxy does not pass through.
@@ -15538,6 +15712,7 @@ type UpdateNamespaceScopeSidecarConfigRequest struct {
 	PostStart *string `json:"PostStart,omitempty" xml:"PostStart,omitempty"`
 	// The pre-close parameters of Istio Proxy.
 	PreStop                              *string `json:"PreStop,omitempty" xml:"PreStop,omitempty"`
+	Privileged                           *bool   `json:"Privileged,omitempty" xml:"Privileged,omitempty"`
 	ProxyInitAckSloCPUResourceLimit      *string `json:"ProxyInitAckSloCPUResourceLimit,omitempty" xml:"ProxyInitAckSloCPUResourceLimit,omitempty"`
 	ProxyInitAckSloCPUResourceRequest    *string `json:"ProxyInitAckSloCPUResourceRequest,omitempty" xml:"ProxyInitAckSloCPUResourceRequest,omitempty"`
 	ProxyInitAckSloMemoryResourceLimit   *string `json:"ProxyInitAckSloMemoryResourceLimit,omitempty" xml:"ProxyInitAckSloMemoryResourceLimit,omitempty"`
@@ -15550,9 +15725,13 @@ type UpdateNamespaceScopeSidecarConfigRequest struct {
 	ProxyInitMemoryResourceLimit *string `json:"ProxyInitMemoryResourceLimit,omitempty" xml:"ProxyInitMemoryResourceLimit,omitempty"`
 	// The minimum size of memory that is requested by the sidecar proxy init container.
 	ProxyInitMemoryResourceRequest *string `json:"ProxyInitMemoryResourceRequest,omitempty" xml:"ProxyInitMemoryResourceRequest,omitempty"`
-	ProxyMetadata                  *string `json:"ProxyMetadata,omitempty" xml:"ProxyMetadata,omitempty"`
+	// The environment variables that are added to a sidecar proxy. The environment variables are represented as JSON objects. The keys and values in the JSON objects represent the keys and values added to the environment variables of the sidecar proxy.
+	ProxyMetadata *string `json:"ProxyMetadata,omitempty" xml:"ProxyMetadata,omitempty"`
 	// The monitoring metrics for data collected by Envoy proxies. The value is in the JSON format.
-	ProxyStatsMatcher *string `json:"ProxyStatsMatcher,omitempty" xml:"ProxyStatsMatcher,omitempty"`
+	ProxyStatsMatcher            *string `json:"ProxyStatsMatcher,omitempty" xml:"ProxyStatsMatcher,omitempty"`
+	ReadinessFailureThreshold    *int32  `json:"ReadinessFailureThreshold,omitempty" xml:"ReadinessFailureThreshold,omitempty"`
+	ReadinessInitialDelaySeconds *int32  `json:"ReadinessInitialDelaySeconds,omitempty" xml:"ReadinessInitialDelaySeconds,omitempty"`
+	ReadinessPeriodSeconds       *int32  `json:"ReadinessPeriodSeconds,omitempty" xml:"ReadinessPeriodSeconds,omitempty"`
 	// The ID of the ASM instance.
 	ServiceMeshId                           *string `json:"ServiceMeshId,omitempty" xml:"ServiceMeshId,omitempty"`
 	SidecarProxyAckSloCPUResourceLimit      *string `json:"SidecarProxyAckSloCPUResourceLimit,omitempty" xml:"SidecarProxyAckSloCPUResourceLimit,omitempty"`
@@ -15591,6 +15770,11 @@ func (s UpdateNamespaceScopeSidecarConfigRequest) GoString() string {
 
 func (s *UpdateNamespaceScopeSidecarConfigRequest) SetConcurrency(v int32) *UpdateNamespaceScopeSidecarConfigRequest {
 	s.Concurrency = &v
+	return s
+}
+
+func (s *UpdateNamespaceScopeSidecarConfigRequest) SetEnableCoreDump(v bool) *UpdateNamespaceScopeSidecarConfigRequest {
+	s.EnableCoreDump = &v
 	return s
 }
 
@@ -15664,6 +15848,11 @@ func (s *UpdateNamespaceScopeSidecarConfigRequest) SetPreStop(v string) *UpdateN
 	return s
 }
 
+func (s *UpdateNamespaceScopeSidecarConfigRequest) SetPrivileged(v bool) *UpdateNamespaceScopeSidecarConfigRequest {
+	s.Privileged = &v
+	return s
+}
+
 func (s *UpdateNamespaceScopeSidecarConfigRequest) SetProxyInitAckSloCPUResourceLimit(v string) *UpdateNamespaceScopeSidecarConfigRequest {
 	s.ProxyInitAckSloCPUResourceLimit = &v
 	return s
@@ -15711,6 +15900,21 @@ func (s *UpdateNamespaceScopeSidecarConfigRequest) SetProxyMetadata(v string) *U
 
 func (s *UpdateNamespaceScopeSidecarConfigRequest) SetProxyStatsMatcher(v string) *UpdateNamespaceScopeSidecarConfigRequest {
 	s.ProxyStatsMatcher = &v
+	return s
+}
+
+func (s *UpdateNamespaceScopeSidecarConfigRequest) SetReadinessFailureThreshold(v int32) *UpdateNamespaceScopeSidecarConfigRequest {
+	s.ReadinessFailureThreshold = &v
+	return s
+}
+
+func (s *UpdateNamespaceScopeSidecarConfigRequest) SetReadinessInitialDelaySeconds(v int32) *UpdateNamespaceScopeSidecarConfigRequest {
+	s.ReadinessInitialDelaySeconds = &v
+	return s
+}
+
+func (s *UpdateNamespaceScopeSidecarConfigRequest) SetReadinessPeriodSeconds(v int32) *UpdateNamespaceScopeSidecarConfigRequest {
+	s.ReadinessPeriodSeconds = &v
 	return s
 }
 
@@ -20329,6 +20533,62 @@ func (client *Client) UpdateASMNamespaceFromGuestCluster(request *UpdateASMNames
 	return _result, _err
 }
 
+func (client *Client) UpdateControlPlaneLogConfigWithOptions(request *UpdateControlPlaneLogConfigRequest, runtime *util.RuntimeOptions) (_result *UpdateControlPlaneLogConfigResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	body := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.Enabled)) {
+		body["Enabled"] = request.Enabled
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.LogTTLInDay)) {
+		body["LogTTLInDay"] = request.LogTTLInDay
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Project)) {
+		body["Project"] = request.Project
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ServiceMeshId)) {
+		body["ServiceMeshId"] = request.ServiceMeshId
+	}
+
+	req := &openapi.OpenApiRequest{
+		Body: openapiutil.ParseToMap(body),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("UpdateControlPlaneLogConfig"),
+		Version:     tea.String("2020-01-11"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &UpdateControlPlaneLogConfigResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) UpdateControlPlaneLogConfig(request *UpdateControlPlaneLogConfigRequest) (_result *UpdateControlPlaneLogConfigResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &UpdateControlPlaneLogConfigResponse{}
+	_body, _err := client.UpdateControlPlaneLogConfigWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
 func (client *Client) UpdateIstioGatewayRoutesWithOptions(tmpReq *UpdateIstioGatewayRoutesRequest, runtime *util.RuntimeOptions) (_result *UpdateIstioGatewayRoutesResponse, _err error) {
 	_err = util.ValidateModel(tmpReq)
 	if _err != nil {
@@ -20602,6 +20862,15 @@ func (client *Client) UpdateMeshFeatureWithOptions(request *UpdateMeshFeatureReq
 	if _err != nil {
 		return _result, _err
 	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.AccessLogGatewayEnabled)) {
+		query["AccessLogGatewayEnabled"] = request.AccessLogGatewayEnabled
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.AccessLogSidecarEnabled)) {
+		query["AccessLogSidecarEnabled"] = request.AccessLogSidecarEnabled
+	}
+
 	body := map[string]interface{}{}
 	if !tea.BoolValue(util.IsUnset(request.AccessLogEnabled)) {
 		body["AccessLogEnabled"] = request.AccessLogEnabled
@@ -20992,7 +21261,8 @@ func (client *Client) UpdateMeshFeatureWithOptions(request *UpdateMeshFeatureReq
 	}
 
 	req := &openapi.OpenApiRequest{
-		Body: openapiutil.ParseToMap(body),
+		Query: openapiutil.Query(query),
+		Body:  openapiutil.ParseToMap(body),
 	}
 	params := &openapi.Params{
 		Action:      tea.String("UpdateMeshFeature"),
@@ -21033,6 +21303,10 @@ func (client *Client) UpdateNamespaceScopeSidecarConfigWithOptions(request *Upda
 	body := map[string]interface{}{}
 	if !tea.BoolValue(util.IsUnset(request.Concurrency)) {
 		body["Concurrency"] = request.Concurrency
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.EnableCoreDump)) {
+		body["EnableCoreDump"] = request.EnableCoreDump
 	}
 
 	if !tea.BoolValue(util.IsUnset(request.ExcludeIPRanges)) {
@@ -21091,6 +21365,10 @@ func (client *Client) UpdateNamespaceScopeSidecarConfigWithOptions(request *Upda
 		body["PreStop"] = request.PreStop
 	}
 
+	if !tea.BoolValue(util.IsUnset(request.Privileged)) {
+		body["Privileged"] = request.Privileged
+	}
+
 	if !tea.BoolValue(util.IsUnset(request.ProxyInitAckSloCPUResourceLimit)) {
 		body["ProxyInitAckSloCPUResourceLimit"] = request.ProxyInitAckSloCPUResourceLimit
 	}
@@ -21129,6 +21407,18 @@ func (client *Client) UpdateNamespaceScopeSidecarConfigWithOptions(request *Upda
 
 	if !tea.BoolValue(util.IsUnset(request.ProxyStatsMatcher)) {
 		body["ProxyStatsMatcher"] = request.ProxyStatsMatcher
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ReadinessFailureThreshold)) {
+		body["ReadinessFailureThreshold"] = request.ReadinessFailureThreshold
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ReadinessInitialDelaySeconds)) {
+		body["ReadinessInitialDelaySeconds"] = request.ReadinessInitialDelaySeconds
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ReadinessPeriodSeconds)) {
+		body["ReadinessPeriodSeconds"] = request.ReadinessPeriodSeconds
 	}
 
 	if !tea.BoolValue(util.IsUnset(request.ServiceMeshId)) {
