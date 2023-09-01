@@ -1566,14 +1566,15 @@ func (s *DeleteEaisEiResponse) SetBody(v *DeleteEaisEiResponseBody) *DeleteEaisE
 }
 
 type DescribeEaisRequest struct {
-	ElasticAcceleratedInstanceIds *string `json:"ElasticAcceleratedInstanceIds,omitempty" xml:"ElasticAcceleratedInstanceIds,omitempty"`
-	InstanceName                  *string `json:"InstanceName,omitempty" xml:"InstanceName,omitempty"`
-	InstanceType                  *string `json:"InstanceType,omitempty" xml:"InstanceType,omitempty"`
-	PageNumber                    *int32  `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
-	PageSize                      *int32  `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	RegionId                      *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	ResourceGroupId               *string `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
-	Status                        *string `json:"Status,omitempty" xml:"Status,omitempty"`
+	ElasticAcceleratedInstanceIds *string                   `json:"ElasticAcceleratedInstanceIds,omitempty" xml:"ElasticAcceleratedInstanceIds,omitempty"`
+	InstanceName                  *string                   `json:"InstanceName,omitempty" xml:"InstanceName,omitempty"`
+	InstanceType                  *string                   `json:"InstanceType,omitempty" xml:"InstanceType,omitempty"`
+	PageNumber                    *int32                    `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
+	PageSize                      *int32                    `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	RegionId                      *string                   `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	ResourceGroupId               *string                   `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
+	Status                        *string                   `json:"Status,omitempty" xml:"Status,omitempty"`
+	Tag                           []*DescribeEaisRequestTag `json:"Tag,omitempty" xml:"Tag,omitempty" type:"Repeated"`
 }
 
 func (s DescribeEaisRequest) String() string {
@@ -1621,6 +1622,34 @@ func (s *DescribeEaisRequest) SetResourceGroupId(v string) *DescribeEaisRequest 
 
 func (s *DescribeEaisRequest) SetStatus(v string) *DescribeEaisRequest {
 	s.Status = &v
+	return s
+}
+
+func (s *DescribeEaisRequest) SetTag(v []*DescribeEaisRequestTag) *DescribeEaisRequest {
+	s.Tag = v
+	return s
+}
+
+type DescribeEaisRequestTag struct {
+	Key   *string `json:"Key,omitempty" xml:"Key,omitempty"`
+	Value *string `json:"Value,omitempty" xml:"Value,omitempty"`
+}
+
+func (s DescribeEaisRequestTag) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeEaisRequestTag) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeEaisRequestTag) SetKey(v string) *DescribeEaisRequestTag {
+	s.Key = &v
+	return s
+}
+
+func (s *DescribeEaisRequestTag) SetValue(v string) *DescribeEaisRequestTag {
+	s.Value = &v
 	return s
 }
 
@@ -3341,6 +3370,10 @@ func (client *Client) DescribeEaisWithOptions(request *DescribeEaisRequest, runt
 
 	if !tea.BoolValue(util.IsUnset(request.Status)) {
 		query["Status"] = request.Status
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Tag)) {
+		query["Tag"] = request.Tag
 	}
 
 	req := &openapi.OpenApiRequest{
