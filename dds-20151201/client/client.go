@@ -3876,6 +3876,7 @@ type DescribeAvailableResourceRequest struct {
 	ResourceOwnerAccount *string `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
 	ResourceOwnerId      *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
 	SecurityToken        *string `json:"SecurityToken,omitempty" xml:"SecurityToken,omitempty"`
+	StorageType          *string `json:"StorageType,omitempty" xml:"StorageType,omitempty"`
 	// The ID of the zone. You can call the [DescribeRegions](~~61933~~) operation to query the available zones.
 	ZoneId *string `json:"ZoneId,omitempty" xml:"ZoneId,omitempty"`
 }
@@ -3930,6 +3931,11 @@ func (s *DescribeAvailableResourceRequest) SetResourceOwnerId(v int64) *Describe
 
 func (s *DescribeAvailableResourceRequest) SetSecurityToken(v string) *DescribeAvailableResourceRequest {
 	s.SecurityToken = &v
+	return s
+}
+
+func (s *DescribeAvailableResourceRequest) SetStorageType(v string) *DescribeAvailableResourceRequest {
+	s.StorageType = &v
 	return s
 }
 
@@ -10577,6 +10583,7 @@ func (s *DescribeRegionsResponseBodyRegions) SetDdsRegion(v []*DescribeRegionsRe
 }
 
 type DescribeRegionsResponseBodyRegionsDdsRegion struct {
+	EndPoint *string `json:"EndPoint,omitempty" xml:"EndPoint,omitempty"`
 	// The ID of the region.
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 	// The name of the region.
@@ -10593,6 +10600,11 @@ func (s DescribeRegionsResponseBodyRegionsDdsRegion) String() string {
 
 func (s DescribeRegionsResponseBodyRegionsDdsRegion) GoString() string {
 	return s.String()
+}
+
+func (s *DescribeRegionsResponseBodyRegionsDdsRegion) SetEndPoint(v string) *DescribeRegionsResponseBodyRegionsDdsRegion {
+	s.EndPoint = &v
+	return s
 }
 
 func (s *DescribeRegionsResponseBodyRegionsDdsRegion) SetRegionId(v string) *DescribeRegionsResponseBodyRegionsDdsRegion {
@@ -20674,6 +20686,10 @@ func (client *Client) DescribeAvailableResourceWithOptions(request *DescribeAvai
 
 	if !tea.BoolValue(util.IsUnset(request.SecurityToken)) {
 		query["SecurityToken"] = request.SecurityToken
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.StorageType)) {
+		query["StorageType"] = request.StorageType
 	}
 
 	if !tea.BoolValue(util.IsUnset(request.ZoneId)) {
