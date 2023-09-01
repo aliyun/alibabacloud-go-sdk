@@ -2891,6 +2891,7 @@ func (s *CreateClusterNodePoolRequestTeeConfig) SetTeeEnable(v bool) *CreateClus
 type CreateClusterNodePoolResponseBody struct {
 	// The ID of the node pool that is created.
 	NodepoolId *string `json:"nodepool_id,omitempty" xml:"nodepool_id,omitempty"`
+	TaskId     *string `json:"task_id,omitempty" xml:"task_id,omitempty"`
 }
 
 func (s CreateClusterNodePoolResponseBody) String() string {
@@ -2903,6 +2904,11 @@ func (s CreateClusterNodePoolResponseBody) GoString() string {
 
 func (s *CreateClusterNodePoolResponseBody) SetNodepoolId(v string) *CreateClusterNodePoolResponseBody {
 	s.NodepoolId = &v
+	return s
+}
+
+func (s *CreateClusterNodePoolResponseBody) SetTaskId(v string) *CreateClusterNodePoolResponseBody {
+	s.TaskId = &v
 	return s
 }
 
@@ -14676,7 +14682,8 @@ func (s *UnInstallClusterAddonsRequest) SetAddons(v []*UnInstallClusterAddonsReq
 }
 
 type UnInstallClusterAddonsRequestAddons struct {
-	Name *string `json:"name,omitempty" xml:"name,omitempty"`
+	CleanupCloudResources *bool   `json:"cleanup_cloud_resources,omitempty" xml:"cleanup_cloud_resources,omitempty"`
+	Name                  *string `json:"name,omitempty" xml:"name,omitempty"`
 }
 
 func (s UnInstallClusterAddonsRequestAddons) String() string {
@@ -14685,6 +14692,11 @@ func (s UnInstallClusterAddonsRequestAddons) String() string {
 
 func (s UnInstallClusterAddonsRequestAddons) GoString() string {
 	return s.String()
+}
+
+func (s *UnInstallClusterAddonsRequestAddons) SetCleanupCloudResources(v bool) *UnInstallClusterAddonsRequestAddons {
+	s.CleanupCloudResources = &v
+	return s
 }
 
 func (s *UnInstallClusterAddonsRequestAddons) SetName(v string) *UnInstallClusterAddonsRequestAddons {
