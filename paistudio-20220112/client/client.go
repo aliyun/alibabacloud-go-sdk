@@ -13,18 +13,21 @@ import (
 )
 
 type AlgorithmSpec struct {
-	CodeDir                     *AlgorithmSpecCodeDir         `json:"CodeDir,omitempty" xml:"CodeDir,omitempty" type:"Struct"`
-	Command                     []*string                     `json:"Command,omitempty" xml:"Command,omitempty" type:"Repeated"`
-	ComputeResource             *AlgorithmSpecComputeResource `json:"ComputeResource,omitempty" xml:"ComputeResource,omitempty" type:"Struct"`
-	Customization               *AlgorithmSpecCustomization   `json:"Customization,omitempty" xml:"Customization,omitempty" type:"Struct"`
-	HyperParameters             []*HyperParameterDefinition   `json:"HyperParameters,omitempty" xml:"HyperParameters,omitempty" type:"Repeated"`
-	Image                       *string                       `json:"Image,omitempty" xml:"Image,omitempty"`
-	InputChannels               []*Channel                    `json:"InputChannels,omitempty" xml:"InputChannels,omitempty" type:"Repeated"`
-	JobType                     *string                       `json:"JobType,omitempty" xml:"JobType,omitempty"`
-	MetricDefinitions           []*MetricDefinition           `json:"MetricDefinitions,omitempty" xml:"MetricDefinitions,omitempty" type:"Repeated"`
-	OutputChannels              []*Channel                    `json:"OutputChannels,omitempty" xml:"OutputChannels,omitempty" type:"Repeated"`
-	SupportedInstanceTypes      []*string                     `json:"SupportedInstanceTypes,omitempty" xml:"SupportedInstanceTypes,omitempty" type:"Repeated"`
-	SupportsDistributedTraining *bool                         `json:"SupportsDistributedTraining,omitempty" xml:"SupportsDistributedTraining,omitempty"`
+	CodeDir              *Location                         `json:"CodeDir,omitempty" xml:"CodeDir,omitempty"`
+	Command              []*string                         `json:"Command,omitempty" xml:"Command,omitempty" type:"Repeated"`
+	ComputeResource      *AlgorithmSpecComputeResource     `json:"ComputeResource,omitempty" xml:"ComputeResource,omitempty" type:"Struct"`
+	Customization        *AlgorithmSpecCustomization       `json:"Customization,omitempty" xml:"Customization,omitempty" type:"Struct"`
+	HyperParameters      []*HyperParameterDefinition       `json:"HyperParameters,omitempty" xml:"HyperParameters,omitempty" type:"Repeated"`
+	Image                *string                           `json:"Image,omitempty" xml:"Image,omitempty"`
+	InputChannels        []*Channel                        `json:"InputChannels,omitempty" xml:"InputChannels,omitempty" type:"Repeated"`
+	JobType              *string                           `json:"JobType,omitempty" xml:"JobType,omitempty"`
+	MetricDefinitions    []*MetricDefinition               `json:"MetricDefinitions,omitempty" xml:"MetricDefinitions,omitempty" type:"Repeated"`
+	OutputChannels       []*Channel                        `json:"OutputChannels,omitempty" xml:"OutputChannels,omitempty" type:"Repeated"`
+	ProgressDefinitions  *AlgorithmSpecProgressDefinitions `json:"ProgressDefinitions,omitempty" xml:"ProgressDefinitions,omitempty" type:"Struct"`
+	ResourceRequirements []*ConditionExpression            `json:"ResourceRequirements,omitempty" xml:"ResourceRequirements,omitempty" type:"Repeated"`
+	// Deprecated
+	SupportedInstanceTypes      []*string `json:"SupportedInstanceTypes,omitempty" xml:"SupportedInstanceTypes,omitempty" type:"Repeated"`
+	SupportsDistributedTraining *bool     `json:"SupportsDistributedTraining,omitempty" xml:"SupportsDistributedTraining,omitempty"`
 }
 
 func (s AlgorithmSpec) String() string {
@@ -35,7 +38,7 @@ func (s AlgorithmSpec) GoString() string {
 	return s.String()
 }
 
-func (s *AlgorithmSpec) SetCodeDir(v *AlgorithmSpecCodeDir) *AlgorithmSpec {
+func (s *AlgorithmSpec) SetCodeDir(v *Location) *AlgorithmSpec {
 	s.CodeDir = v
 	return s
 }
@@ -85,6 +88,16 @@ func (s *AlgorithmSpec) SetOutputChannels(v []*Channel) *AlgorithmSpec {
 	return s
 }
 
+func (s *AlgorithmSpec) SetProgressDefinitions(v *AlgorithmSpecProgressDefinitions) *AlgorithmSpec {
+	s.ProgressDefinitions = v
+	return s
+}
+
+func (s *AlgorithmSpec) SetResourceRequirements(v []*ConditionExpression) *AlgorithmSpec {
+	s.ResourceRequirements = v
+	return s
+}
+
 func (s *AlgorithmSpec) SetSupportedInstanceTypes(v []*string) *AlgorithmSpec {
 	s.SupportedInstanceTypes = v
 	return s
@@ -92,29 +105,6 @@ func (s *AlgorithmSpec) SetSupportedInstanceTypes(v []*string) *AlgorithmSpec {
 
 func (s *AlgorithmSpec) SetSupportsDistributedTraining(v bool) *AlgorithmSpec {
 	s.SupportsDistributedTraining = &v
-	return s
-}
-
-type AlgorithmSpecCodeDir struct {
-	LocationType  *string                `json:"LocationType,omitempty" xml:"LocationType,omitempty"`
-	LocationValue map[string]interface{} `json:"LocationValue,omitempty" xml:"LocationValue,omitempty"`
-}
-
-func (s AlgorithmSpecCodeDir) String() string {
-	return tea.Prettify(s)
-}
-
-func (s AlgorithmSpecCodeDir) GoString() string {
-	return s.String()
-}
-
-func (s *AlgorithmSpecCodeDir) SetLocationType(v string) *AlgorithmSpecCodeDir {
-	s.LocationType = &v
-	return s
-}
-
-func (s *AlgorithmSpecCodeDir) SetLocationValue(v map[string]interface{}) *AlgorithmSpecCodeDir {
-	s.LocationValue = v
 	return s
 }
 
@@ -175,12 +165,81 @@ func (s *AlgorithmSpecCustomization) SetCodeDir(v bool) *AlgorithmSpecCustomizat
 	return s
 }
 
+type AlgorithmSpecProgressDefinitions struct {
+	OverallProgress *AlgorithmSpecProgressDefinitionsOverallProgress `json:"OverallProgress,omitempty" xml:"OverallProgress,omitempty" type:"Struct"`
+	RemainingTime   *AlgorithmSpecProgressDefinitionsRemainingTime   `json:"RemainingTime,omitempty" xml:"RemainingTime,omitempty" type:"Struct"`
+}
+
+func (s AlgorithmSpecProgressDefinitions) String() string {
+	return tea.Prettify(s)
+}
+
+func (s AlgorithmSpecProgressDefinitions) GoString() string {
+	return s.String()
+}
+
+func (s *AlgorithmSpecProgressDefinitions) SetOverallProgress(v *AlgorithmSpecProgressDefinitionsOverallProgress) *AlgorithmSpecProgressDefinitions {
+	s.OverallProgress = v
+	return s
+}
+
+func (s *AlgorithmSpecProgressDefinitions) SetRemainingTime(v *AlgorithmSpecProgressDefinitionsRemainingTime) *AlgorithmSpecProgressDefinitions {
+	s.RemainingTime = v
+	return s
+}
+
+type AlgorithmSpecProgressDefinitionsOverallProgress struct {
+	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
+	Regex       *string `json:"Regex,omitempty" xml:"Regex,omitempty"`
+}
+
+func (s AlgorithmSpecProgressDefinitionsOverallProgress) String() string {
+	return tea.Prettify(s)
+}
+
+func (s AlgorithmSpecProgressDefinitionsOverallProgress) GoString() string {
+	return s.String()
+}
+
+func (s *AlgorithmSpecProgressDefinitionsOverallProgress) SetDescription(v string) *AlgorithmSpecProgressDefinitionsOverallProgress {
+	s.Description = &v
+	return s
+}
+
+func (s *AlgorithmSpecProgressDefinitionsOverallProgress) SetRegex(v string) *AlgorithmSpecProgressDefinitionsOverallProgress {
+	s.Regex = &v
+	return s
+}
+
+type AlgorithmSpecProgressDefinitionsRemainingTime struct {
+	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
+	Regex       *string `json:"Regex,omitempty" xml:"Regex,omitempty"`
+}
+
+func (s AlgorithmSpecProgressDefinitionsRemainingTime) String() string {
+	return tea.Prettify(s)
+}
+
+func (s AlgorithmSpecProgressDefinitionsRemainingTime) GoString() string {
+	return s.String()
+}
+
+func (s *AlgorithmSpecProgressDefinitionsRemainingTime) SetDescription(v string) *AlgorithmSpecProgressDefinitionsRemainingTime {
+	s.Description = &v
+	return s
+}
+
+func (s *AlgorithmSpecProgressDefinitionsRemainingTime) SetRegex(v string) *AlgorithmSpecProgressDefinitionsRemainingTime {
+	s.Regex = &v
+	return s
+}
+
 type Channel struct {
-	Description           *string            `json:"Description,omitempty" xml:"Description,omitempty"`
-	Name                  *string            `json:"Name,omitempty" xml:"Name,omitempty"`
-	Properties            []*ChannelProperty `json:"Properties,omitempty" xml:"Properties,omitempty" type:"Repeated"`
-	Required              *bool              `json:"Required,omitempty" xml:"Required,omitempty"`
-	SupportedChannelTypes []*string          `json:"SupportedChannelTypes,omitempty" xml:"SupportedChannelTypes,omitempty" type:"Repeated"`
+	Description           *string                `json:"Description,omitempty" xml:"Description,omitempty"`
+	Name                  *string                `json:"Name,omitempty" xml:"Name,omitempty"`
+	Properties            map[string]interface{} `json:"Properties,omitempty" xml:"Properties,omitempty"`
+	Required              *bool                  `json:"Required,omitempty" xml:"Required,omitempty"`
+	SupportedChannelTypes []*string              `json:"SupportedChannelTypes,omitempty" xml:"SupportedChannelTypes,omitempty" type:"Repeated"`
 }
 
 func (s Channel) String() string {
@@ -201,7 +260,7 @@ func (s *Channel) SetName(v string) *Channel {
 	return s
 }
 
-func (s *Channel) SetProperties(v []*ChannelProperty) *Channel {
+func (s *Channel) SetProperties(v map[string]interface{}) *Channel {
 	s.Properties = v
 	return s
 }
@@ -239,6 +298,100 @@ func (s *ChannelProperty) SetValue(v string) *ChannelProperty {
 	return s
 }
 
+type ComponentSpec struct {
+	CodeDir              *Location                   `json:"CodeDir,omitempty" xml:"CodeDir,omitempty"`
+	Command              *string                     `json:"Command,omitempty" xml:"Command,omitempty"`
+	HyperParameters      []*HyperParameterDefinition `json:"HyperParameters,omitempty" xml:"HyperParameters,omitempty" type:"Repeated"`
+	Image                *string                     `json:"Image,omitempty" xml:"Image,omitempty"`
+	InputChannels        []*Channel                  `json:"InputChannels,omitempty" xml:"InputChannels,omitempty" type:"Repeated"`
+	JobType              *string                     `json:"JobType,omitempty" xml:"JobType,omitempty"`
+	MetricDefinitions    []*MetricDefinition         `json:"MetricDefinitions,omitempty" xml:"MetricDefinitions,omitempty" type:"Repeated"`
+	OutputChannels       []*Channel                  `json:"OutputChannels,omitempty" xml:"OutputChannels,omitempty" type:"Repeated"`
+	ResourceRequirements []*ConditionExpression      `json:"ResourceRequirements,omitempty" xml:"ResourceRequirements,omitempty" type:"Repeated"`
+}
+
+func (s ComponentSpec) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ComponentSpec) GoString() string {
+	return s.String()
+}
+
+func (s *ComponentSpec) SetCodeDir(v *Location) *ComponentSpec {
+	s.CodeDir = v
+	return s
+}
+
+func (s *ComponentSpec) SetCommand(v string) *ComponentSpec {
+	s.Command = &v
+	return s
+}
+
+func (s *ComponentSpec) SetHyperParameters(v []*HyperParameterDefinition) *ComponentSpec {
+	s.HyperParameters = v
+	return s
+}
+
+func (s *ComponentSpec) SetImage(v string) *ComponentSpec {
+	s.Image = &v
+	return s
+}
+
+func (s *ComponentSpec) SetInputChannels(v []*Channel) *ComponentSpec {
+	s.InputChannels = v
+	return s
+}
+
+func (s *ComponentSpec) SetJobType(v string) *ComponentSpec {
+	s.JobType = &v
+	return s
+}
+
+func (s *ComponentSpec) SetMetricDefinitions(v []*MetricDefinition) *ComponentSpec {
+	s.MetricDefinitions = v
+	return s
+}
+
+func (s *ComponentSpec) SetOutputChannels(v []*Channel) *ComponentSpec {
+	s.OutputChannels = v
+	return s
+}
+
+func (s *ComponentSpec) SetResourceRequirements(v []*ConditionExpression) *ComponentSpec {
+	s.ResourceRequirements = v
+	return s
+}
+
+type ConditionExpression struct {
+	Key      *string   `json:"Key,omitempty" xml:"Key,omitempty"`
+	Operator *string   `json:"Operator,omitempty" xml:"Operator,omitempty"`
+	Values   []*string `json:"Values,omitempty" xml:"Values,omitempty" type:"Repeated"`
+}
+
+func (s ConditionExpression) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ConditionExpression) GoString() string {
+	return s.String()
+}
+
+func (s *ConditionExpression) SetKey(v string) *ConditionExpression {
+	s.Key = &v
+	return s
+}
+
+func (s *ConditionExpression) SetOperator(v string) *ConditionExpression {
+	s.Operator = &v
+	return s
+}
+
+func (s *ConditionExpression) SetValues(v []*string) *ConditionExpression {
+	s.Values = v
+	return s
+}
+
 type GPUInfo struct {
 	Count *int64  `json:"count,omitempty" xml:"count,omitempty"`
 	Type  *string `json:"type,omitempty" xml:"type,omitempty"`
@@ -263,11 +416,13 @@ func (s *GPUInfo) SetType(v string) *GPUInfo {
 }
 
 type HyperParameterDefinition struct {
-	DefaultValue *string `json:"DefaultValue,omitempty" xml:"DefaultValue,omitempty"`
-	Description  *string `json:"Description,omitempty" xml:"Description,omitempty"`
-	Name         *string `json:"Name,omitempty" xml:"Name,omitempty"`
-	Required     *bool   `json:"Required,omitempty" xml:"Required,omitempty"`
-	Type         *string `json:"Type,omitempty" xml:"Type,omitempty"`
+	DefaultValue *string              `json:"DefaultValue,omitempty" xml:"DefaultValue,omitempty"`
+	Description  *string              `json:"Description,omitempty" xml:"Description,omitempty"`
+	DisplayName  *string              `json:"DisplayName,omitempty" xml:"DisplayName,omitempty"`
+	Name         *string              `json:"Name,omitempty" xml:"Name,omitempty"`
+	Range        *HyperParameterRange `json:"Range,omitempty" xml:"Range,omitempty"`
+	Required     *bool                `json:"Required,omitempty" xml:"Required,omitempty"`
+	Type         *string              `json:"Type,omitempty" xml:"Type,omitempty"`
 }
 
 func (s HyperParameterDefinition) String() string {
@@ -288,8 +443,18 @@ func (s *HyperParameterDefinition) SetDescription(v string) *HyperParameterDefin
 	return s
 }
 
+func (s *HyperParameterDefinition) SetDisplayName(v string) *HyperParameterDefinition {
+	s.DisplayName = &v
+	return s
+}
+
 func (s *HyperParameterDefinition) SetName(v string) *HyperParameterDefinition {
 	s.Name = &v
+	return s
+}
+
+func (s *HyperParameterDefinition) SetRange(v *HyperParameterRange) *HyperParameterDefinition {
+	s.Range = v
 	return s
 }
 
@@ -300,6 +465,65 @@ func (s *HyperParameterDefinition) SetRequired(v bool) *HyperParameterDefinition
 
 func (s *HyperParameterDefinition) SetType(v string) *HyperParameterDefinition {
 	s.Type = &v
+	return s
+}
+
+type HyperParameterRange struct {
+	Enum             []*string `json:"Enum,omitempty" xml:"Enum,omitempty" type:"Repeated"`
+	ExclusiveMaximum *bool     `json:"ExclusiveMaximum,omitempty" xml:"ExclusiveMaximum,omitempty"`
+	ExclusiveMinimum *bool     `json:"ExclusiveMinimum,omitempty" xml:"ExclusiveMinimum,omitempty"`
+	MaxLength        *int64    `json:"MaxLength,omitempty" xml:"MaxLength,omitempty"`
+	Maximum          *string   `json:"Maximum,omitempty" xml:"Maximum,omitempty"`
+	MinLength        *int64    `json:"MinLength,omitempty" xml:"MinLength,omitempty"`
+	Minimum          *string   `json:"Minimum,omitempty" xml:"Minimum,omitempty"`
+	Pattern          *string   `json:"Pattern,omitempty" xml:"Pattern,omitempty"`
+}
+
+func (s HyperParameterRange) String() string {
+	return tea.Prettify(s)
+}
+
+func (s HyperParameterRange) GoString() string {
+	return s.String()
+}
+
+func (s *HyperParameterRange) SetEnum(v []*string) *HyperParameterRange {
+	s.Enum = v
+	return s
+}
+
+func (s *HyperParameterRange) SetExclusiveMaximum(v bool) *HyperParameterRange {
+	s.ExclusiveMaximum = &v
+	return s
+}
+
+func (s *HyperParameterRange) SetExclusiveMinimum(v bool) *HyperParameterRange {
+	s.ExclusiveMinimum = &v
+	return s
+}
+
+func (s *HyperParameterRange) SetMaxLength(v int64) *HyperParameterRange {
+	s.MaxLength = &v
+	return s
+}
+
+func (s *HyperParameterRange) SetMaximum(v string) *HyperParameterRange {
+	s.Maximum = &v
+	return s
+}
+
+func (s *HyperParameterRange) SetMinLength(v int64) *HyperParameterRange {
+	s.MinLength = &v
+	return s
+}
+
+func (s *HyperParameterRange) SetMinimum(v string) *HyperParameterRange {
+	s.Minimum = &v
+	return s
+}
+
+func (s *HyperParameterRange) SetPattern(v string) *HyperParameterRange {
+	s.Pattern = &v
 	return s
 }
 
@@ -422,22 +646,70 @@ func (s *JobViewMetric) SetUserId(v string) *JobViewMetric {
 	return s
 }
 
+type Label struct {
+	Key   *string `json:"Key,omitempty" xml:"Key,omitempty"`
+	Value *string `json:"Value,omitempty" xml:"Value,omitempty"`
+}
+
+func (s Label) String() string {
+	return tea.Prettify(s)
+}
+
+func (s Label) GoString() string {
+	return s.String()
+}
+
+func (s *Label) SetKey(v string) *Label {
+	s.Key = &v
+	return s
+}
+
+func (s *Label) SetValue(v string) *Label {
+	s.Value = &v
+	return s
+}
+
+type Location struct {
+	LocationType  *string                `json:"LocationType,omitempty" xml:"LocationType,omitempty"`
+	LocationValue map[string]interface{} `json:"LocationValue,omitempty" xml:"LocationValue,omitempty"`
+}
+
+func (s Location) String() string {
+	return tea.Prettify(s)
+}
+
+func (s Location) GoString() string {
+	return s.String()
+}
+
+func (s *Location) SetLocationType(v string) *Location {
+	s.LocationType = &v
+	return s
+}
+
+func (s *Location) SetLocationValue(v map[string]interface{}) *Location {
+	s.LocationValue = v
+	return s
+}
+
 type MachineGroup struct {
-	CreatorID           *string `json:"CreatorID,omitempty" xml:"CreatorID,omitempty"`
-	EcsCount            *int64  `json:"EcsCount,omitempty" xml:"EcsCount,omitempty"`
-	EcsSpec             *string `json:"EcsSpec,omitempty" xml:"EcsSpec,omitempty"`
-	GmtCreatedTime      *string `json:"GmtCreatedTime,omitempty" xml:"GmtCreatedTime,omitempty"`
-	GmtExpiredTime      *string `json:"GmtExpiredTime,omitempty" xml:"GmtExpiredTime,omitempty"`
-	GmtModifiedTime     *string `json:"GmtModifiedTime,omitempty" xml:"GmtModifiedTime,omitempty"`
-	GmtStartedTime      *string `json:"GmtStartedTime,omitempty" xml:"GmtStartedTime,omitempty"`
-	MachineGroupID      *string `json:"MachineGroupID,omitempty" xml:"MachineGroupID,omitempty"`
-	PaymentDuration     *string `json:"PaymentDuration,omitempty" xml:"PaymentDuration,omitempty"`
-	PaymentDurationUnit *string `json:"PaymentDurationUnit,omitempty" xml:"PaymentDurationUnit,omitempty"`
-	PaymentType         *string `json:"PaymentType,omitempty" xml:"PaymentType,omitempty"`
-	ReasonCode          *string `json:"ReasonCode,omitempty" xml:"ReasonCode,omitempty"`
-	ReasonMessage       *string `json:"ReasonMessage,omitempty" xml:"ReasonMessage,omitempty"`
-	ResourceGroupID     *string `json:"ResourceGroupID,omitempty" xml:"ResourceGroupID,omitempty"`
-	Status              *string `json:"Status,omitempty" xml:"Status,omitempty"`
+	CreatorID           *string   `json:"CreatorID,omitempty" xml:"CreatorID,omitempty"`
+	DefaultDriver       *string   `json:"DefaultDriver,omitempty" xml:"DefaultDriver,omitempty"`
+	EcsCount            *int64    `json:"EcsCount,omitempty" xml:"EcsCount,omitempty"`
+	EcsSpec             *string   `json:"EcsSpec,omitempty" xml:"EcsSpec,omitempty"`
+	GmtCreatedTime      *string   `json:"GmtCreatedTime,omitempty" xml:"GmtCreatedTime,omitempty"`
+	GmtExpiredTime      *string   `json:"GmtExpiredTime,omitempty" xml:"GmtExpiredTime,omitempty"`
+	GmtModifiedTime     *string   `json:"GmtModifiedTime,omitempty" xml:"GmtModifiedTime,omitempty"`
+	GmtStartedTime      *string   `json:"GmtStartedTime,omitempty" xml:"GmtStartedTime,omitempty"`
+	MachineGroupID      *string   `json:"MachineGroupID,omitempty" xml:"MachineGroupID,omitempty"`
+	PaymentDuration     *string   `json:"PaymentDuration,omitempty" xml:"PaymentDuration,omitempty"`
+	PaymentDurationUnit *string   `json:"PaymentDurationUnit,omitempty" xml:"PaymentDurationUnit,omitempty"`
+	PaymentType         *string   `json:"PaymentType,omitempty" xml:"PaymentType,omitempty"`
+	ReasonCode          *string   `json:"ReasonCode,omitempty" xml:"ReasonCode,omitempty"`
+	ReasonMessage       *string   `json:"ReasonMessage,omitempty" xml:"ReasonMessage,omitempty"`
+	ResourceGroupID     *string   `json:"ResourceGroupID,omitempty" xml:"ResourceGroupID,omitempty"`
+	Status              *string   `json:"Status,omitempty" xml:"Status,omitempty"`
+	SupportedDrivers    []*string `json:"SupportedDrivers,omitempty" xml:"SupportedDrivers,omitempty" type:"Repeated"`
 }
 
 func (s MachineGroup) String() string {
@@ -450,6 +722,11 @@ func (s MachineGroup) GoString() string {
 
 func (s *MachineGroup) SetCreatorID(v string) *MachineGroup {
 	s.CreatorID = &v
+	return s
+}
+
+func (s *MachineGroup) SetDefaultDriver(v string) *MachineGroup {
+	s.DefaultDriver = &v
 	return s
 }
 
@@ -520,6 +797,11 @@ func (s *MachineGroup) SetResourceGroupID(v string) *MachineGroup {
 
 func (s *MachineGroup) SetStatus(v string) *MachineGroup {
 	s.Status = &v
+	return s
+}
+
+func (s *MachineGroup) SetSupportedDrivers(v []*string) *MachineGroup {
+	s.SupportedDrivers = v
 	return s
 }
 
@@ -747,11 +1029,35 @@ func (s *NodeViewMetric) SetUserNumber(v string) *NodeViewMetric {
 	return s
 }
 
+type Permission struct {
+	IsEnabled    *bool   `json:"IsEnabled,omitempty" xml:"IsEnabled,omitempty"`
+	ResourceType *string `json:"ResourceType,omitempty" xml:"ResourceType,omitempty"`
+}
+
+func (s Permission) String() string {
+	return tea.Prettify(s)
+}
+
+func (s Permission) GoString() string {
+	return s.String()
+}
+
+func (s *Permission) SetIsEnabled(v bool) *Permission {
+	s.IsEnabled = &v
+	return s
+}
+
+func (s *Permission) SetResourceType(v string) *Permission {
+	s.ResourceType = &v
+	return s
+}
+
 type ResourceGroup struct {
 	CreatorID       *string  `json:"CreatorID,omitempty" xml:"CreatorID,omitempty"`
 	GmtCreatedTime  *string  `json:"GmtCreatedTime,omitempty" xml:"GmtCreatedTime,omitempty"`
 	GmtModifiedTime *string  `json:"GmtModifiedTime,omitempty" xml:"GmtModifiedTime,omitempty"`
 	Name            *string  `json:"Name,omitempty" xml:"Name,omitempty"`
+	NodeCount       *int32   `json:"NodeCount,omitempty" xml:"NodeCount,omitempty"`
 	ResourceGroupID *string  `json:"ResourceGroupID,omitempty" xml:"ResourceGroupID,omitempty"`
 	UserVpc         *UserVpc `json:"UserVpc,omitempty" xml:"UserVpc,omitempty"`
 	WorkspaceID     *string  `json:"WorkspaceID,omitempty" xml:"WorkspaceID,omitempty"`
@@ -782,6 +1088,11 @@ func (s *ResourceGroup) SetGmtModifiedTime(v string) *ResourceGroup {
 
 func (s *ResourceGroup) SetName(v string) *ResourceGroup {
 	s.Name = &v
+	return s
+}
+
+func (s *ResourceGroup) SetNodeCount(v int32) *ResourceGroup {
+	s.NodeCount = &v
 	return s
 }
 
@@ -979,6 +1290,7 @@ func (s *UserViewMetric) SetUserId(v string) *UserViewMetric {
 }
 
 type UserVpc struct {
+	DefaultRoute    *string   `json:"DefaultRoute,omitempty" xml:"DefaultRoute,omitempty"`
 	ExtendedCIDRs   []*string `json:"ExtendedCIDRs,omitempty" xml:"ExtendedCIDRs,omitempty" type:"Repeated"`
 	RoleArn         *string   `json:"RoleArn,omitempty" xml:"RoleArn,omitempty"`
 	SecurityGroupId *string   `json:"SecurityGroupId,omitempty" xml:"SecurityGroupId,omitempty"`
@@ -992,6 +1304,11 @@ func (s UserVpc) String() string {
 
 func (s UserVpc) GoString() string {
 	return s.String()
+}
+
+func (s *UserVpc) SetDefaultRoute(v string) *UserVpc {
+	s.DefaultRoute = &v
+	return s
 }
 
 func (s *UserVpc) SetExtendedCIDRs(v []*string) *UserVpc {
@@ -1022,6 +1339,7 @@ func (s *UserVpc) SetVpcId(v string) *UserVpc {
 type CreateAlgorithmRequest struct {
 	AlgorithmDescription *string `json:"AlgorithmDescription,omitempty" xml:"AlgorithmDescription,omitempty"`
 	AlgorithmName        *string `json:"AlgorithmName,omitempty" xml:"AlgorithmName,omitempty"`
+	DisplayName          *string `json:"DisplayName,omitempty" xml:"DisplayName,omitempty"`
 	WorkspaceId          *string `json:"WorkspaceId,omitempty" xml:"WorkspaceId,omitempty"`
 }
 
@@ -1040,6 +1358,11 @@ func (s *CreateAlgorithmRequest) SetAlgorithmDescription(v string) *CreateAlgori
 
 func (s *CreateAlgorithmRequest) SetAlgorithmName(v string) *CreateAlgorithmRequest {
 	s.AlgorithmName = &v
+	return s
+}
+
+func (s *CreateAlgorithmRequest) SetDisplayName(v string) *CreateAlgorithmRequest {
+	s.DisplayName = &v
 	return s
 }
 
@@ -1187,9 +1510,11 @@ func (s *CreateAlgorithmVersionResponse) SetBody(v *CreateAlgorithmVersionRespon
 }
 
 type CreateResourceGroupRequest struct {
-	Description *string  `json:"Description,omitempty" xml:"Description,omitempty"`
-	Name        *string  `json:"Name,omitempty" xml:"Name,omitempty"`
-	UserVpc     *UserVpc `json:"UserVpc,omitempty" xml:"UserVpc,omitempty"`
+	ComputingResourceProvider *string  `json:"ComputingResourceProvider,omitempty" xml:"ComputingResourceProvider,omitempty"`
+	Description               *string  `json:"Description,omitempty" xml:"Description,omitempty"`
+	Name                      *string  `json:"Name,omitempty" xml:"Name,omitempty"`
+	ResourceType              *string  `json:"ResourceType,omitempty" xml:"ResourceType,omitempty"`
+	UserVpc                   *UserVpc `json:"UserVpc,omitempty" xml:"UserVpc,omitempty"`
 }
 
 func (s CreateResourceGroupRequest) String() string {
@@ -1200,6 +1525,11 @@ func (s CreateResourceGroupRequest) GoString() string {
 	return s.String()
 }
 
+func (s *CreateResourceGroupRequest) SetComputingResourceProvider(v string) *CreateResourceGroupRequest {
+	s.ComputingResourceProvider = &v
+	return s
+}
+
 func (s *CreateResourceGroupRequest) SetDescription(v string) *CreateResourceGroupRequest {
 	s.Description = &v
 	return s
@@ -1207,6 +1537,11 @@ func (s *CreateResourceGroupRequest) SetDescription(v string) *CreateResourceGro
 
 func (s *CreateResourceGroupRequest) SetName(v string) *CreateResourceGroupRequest {
 	s.Name = &v
+	return s
+}
+
+func (s *CreateResourceGroupRequest) SetResourceType(v string) *CreateResourceGroupRequest {
+	s.ResourceType = &v
 	return s
 }
 
@@ -1272,15 +1607,17 @@ type CreateTrainingJobRequest struct {
 	AlgorithmProvider      *string                                    `json:"AlgorithmProvider,omitempty" xml:"AlgorithmProvider,omitempty"`
 	AlgorithmSpec          *AlgorithmSpec                             `json:"AlgorithmSpec,omitempty" xml:"AlgorithmSpec,omitempty"`
 	AlgorithmVersion       *string                                    `json:"AlgorithmVersion,omitempty" xml:"AlgorithmVersion,omitempty"`
-	CodeDir                *CreateTrainingJobRequestCodeDir           `json:"CodeDir,omitempty" xml:"CodeDir,omitempty" type:"Struct"`
+	CodeDir                *Location                                  `json:"CodeDir,omitempty" xml:"CodeDir,omitempty"`
 	ComputeResource        *CreateTrainingJobRequestComputeResource   `json:"ComputeResource,omitempty" xml:"ComputeResource,omitempty" type:"Struct"`
 	HyperParameters        []*CreateTrainingJobRequestHyperParameters `json:"HyperParameters,omitempty" xml:"HyperParameters,omitempty" type:"Repeated"`
 	InputChannels          []*CreateTrainingJobRequestInputChannels   `json:"InputChannels,omitempty" xml:"InputChannels,omitempty" type:"Repeated"`
 	Labels                 []*CreateTrainingJobRequestLabels          `json:"Labels,omitempty" xml:"Labels,omitempty" type:"Repeated"`
 	OutputChannels         []*CreateTrainingJobRequestOutputChannels  `json:"OutputChannels,omitempty" xml:"OutputChannels,omitempty" type:"Repeated"`
+	RoleArn                *string                                    `json:"RoleArn,omitempty" xml:"RoleArn,omitempty"`
 	Scheduler              *CreateTrainingJobRequestScheduler         `json:"Scheduler,omitempty" xml:"Scheduler,omitempty" type:"Struct"`
 	TrainingJobDescription *string                                    `json:"TrainingJobDescription,omitempty" xml:"TrainingJobDescription,omitempty"`
 	TrainingJobName        *string                                    `json:"TrainingJobName,omitempty" xml:"TrainingJobName,omitempty"`
+	UserVpc                *CreateTrainingJobRequestUserVpc           `json:"UserVpc,omitempty" xml:"UserVpc,omitempty" type:"Struct"`
 	WorkspaceId            *string                                    `json:"WorkspaceId,omitempty" xml:"WorkspaceId,omitempty"`
 }
 
@@ -1312,7 +1649,7 @@ func (s *CreateTrainingJobRequest) SetAlgorithmVersion(v string) *CreateTraining
 	return s
 }
 
-func (s *CreateTrainingJobRequest) SetCodeDir(v *CreateTrainingJobRequestCodeDir) *CreateTrainingJobRequest {
+func (s *CreateTrainingJobRequest) SetCodeDir(v *Location) *CreateTrainingJobRequest {
 	s.CodeDir = v
 	return s
 }
@@ -1342,6 +1679,11 @@ func (s *CreateTrainingJobRequest) SetOutputChannels(v []*CreateTrainingJobReque
 	return s
 }
 
+func (s *CreateTrainingJobRequest) SetRoleArn(v string) *CreateTrainingJobRequest {
+	s.RoleArn = &v
+	return s
+}
+
 func (s *CreateTrainingJobRequest) SetScheduler(v *CreateTrainingJobRequestScheduler) *CreateTrainingJobRequest {
 	s.Scheduler = v
 	return s
@@ -1357,37 +1699,22 @@ func (s *CreateTrainingJobRequest) SetTrainingJobName(v string) *CreateTrainingJ
 	return s
 }
 
+func (s *CreateTrainingJobRequest) SetUserVpc(v *CreateTrainingJobRequestUserVpc) *CreateTrainingJobRequest {
+	s.UserVpc = v
+	return s
+}
+
 func (s *CreateTrainingJobRequest) SetWorkspaceId(v string) *CreateTrainingJobRequest {
 	s.WorkspaceId = &v
 	return s
 }
 
-type CreateTrainingJobRequestCodeDir struct {
-	LocationType  *string                `json:"LocationType,omitempty" xml:"LocationType,omitempty"`
-	LocationValue map[string]interface{} `json:"LocationValue,omitempty" xml:"LocationValue,omitempty"`
-}
-
-func (s CreateTrainingJobRequestCodeDir) String() string {
-	return tea.Prettify(s)
-}
-
-func (s CreateTrainingJobRequestCodeDir) GoString() string {
-	return s.String()
-}
-
-func (s *CreateTrainingJobRequestCodeDir) SetLocationType(v string) *CreateTrainingJobRequestCodeDir {
-	s.LocationType = &v
-	return s
-}
-
-func (s *CreateTrainingJobRequestCodeDir) SetLocationValue(v map[string]interface{}) *CreateTrainingJobRequestCodeDir {
-	s.LocationValue = v
-	return s
-}
-
 type CreateTrainingJobRequestComputeResource struct {
-	EcsCount *int64  `json:"EcsCount,omitempty" xml:"EcsCount,omitempty"`
-	EcsSpec  *string `json:"EcsSpec,omitempty" xml:"EcsSpec,omitempty"`
+	EcsCount        *int64                                               `json:"EcsCount,omitempty" xml:"EcsCount,omitempty"`
+	EcsSpec         *string                                              `json:"EcsSpec,omitempty" xml:"EcsSpec,omitempty"`
+	InstanceCount   *int64                                               `json:"InstanceCount,omitempty" xml:"InstanceCount,omitempty"`
+	InstanceSpec    *CreateTrainingJobRequestComputeResourceInstanceSpec `json:"InstanceSpec,omitempty" xml:"InstanceSpec,omitempty" type:"Struct"`
+	ResourceGroupId *string                                              `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
 }
 
 func (s CreateTrainingJobRequestComputeResource) String() string {
@@ -1405,6 +1732,62 @@ func (s *CreateTrainingJobRequestComputeResource) SetEcsCount(v int64) *CreateTr
 
 func (s *CreateTrainingJobRequestComputeResource) SetEcsSpec(v string) *CreateTrainingJobRequestComputeResource {
 	s.EcsSpec = &v
+	return s
+}
+
+func (s *CreateTrainingJobRequestComputeResource) SetInstanceCount(v int64) *CreateTrainingJobRequestComputeResource {
+	s.InstanceCount = &v
+	return s
+}
+
+func (s *CreateTrainingJobRequestComputeResource) SetInstanceSpec(v *CreateTrainingJobRequestComputeResourceInstanceSpec) *CreateTrainingJobRequestComputeResource {
+	s.InstanceSpec = v
+	return s
+}
+
+func (s *CreateTrainingJobRequestComputeResource) SetResourceGroupId(v string) *CreateTrainingJobRequestComputeResource {
+	s.ResourceGroupId = &v
+	return s
+}
+
+type CreateTrainingJobRequestComputeResourceInstanceSpec struct {
+	CPU          *string `json:"CPU,omitempty" xml:"CPU,omitempty"`
+	GPU          *string `json:"GPU,omitempty" xml:"GPU,omitempty"`
+	GPUType      *string `json:"GPUType,omitempty" xml:"GPUType,omitempty"`
+	Memory       *string `json:"Memory,omitempty" xml:"Memory,omitempty"`
+	SharedMemory *string `json:"SharedMemory,omitempty" xml:"SharedMemory,omitempty"`
+}
+
+func (s CreateTrainingJobRequestComputeResourceInstanceSpec) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateTrainingJobRequestComputeResourceInstanceSpec) GoString() string {
+	return s.String()
+}
+
+func (s *CreateTrainingJobRequestComputeResourceInstanceSpec) SetCPU(v string) *CreateTrainingJobRequestComputeResourceInstanceSpec {
+	s.CPU = &v
+	return s
+}
+
+func (s *CreateTrainingJobRequestComputeResourceInstanceSpec) SetGPU(v string) *CreateTrainingJobRequestComputeResourceInstanceSpec {
+	s.GPU = &v
+	return s
+}
+
+func (s *CreateTrainingJobRequestComputeResourceInstanceSpec) SetGPUType(v string) *CreateTrainingJobRequestComputeResourceInstanceSpec {
+	s.GPUType = &v
+	return s
+}
+
+func (s *CreateTrainingJobRequestComputeResourceInstanceSpec) SetMemory(v string) *CreateTrainingJobRequestComputeResourceInstanceSpec {
+	s.Memory = &v
+	return s
+}
+
+func (s *CreateTrainingJobRequestComputeResourceInstanceSpec) SetSharedMemory(v string) *CreateTrainingJobRequestComputeResourceInstanceSpec {
+	s.SharedMemory = &v
 	return s
 }
 
@@ -1526,6 +1909,41 @@ func (s CreateTrainingJobRequestScheduler) GoString() string {
 
 func (s *CreateTrainingJobRequestScheduler) SetMaxRunningTimeInSeconds(v int64) *CreateTrainingJobRequestScheduler {
 	s.MaxRunningTimeInSeconds = &v
+	return s
+}
+
+type CreateTrainingJobRequestUserVpc struct {
+	ExtendedCIDRs   []*string `json:"ExtendedCIDRs,omitempty" xml:"ExtendedCIDRs,omitempty" type:"Repeated"`
+	SecurityGroupId *string   `json:"SecurityGroupId,omitempty" xml:"SecurityGroupId,omitempty"`
+	SwitchId        *string   `json:"SwitchId,omitempty" xml:"SwitchId,omitempty"`
+	VpcId           *string   `json:"VpcId,omitempty" xml:"VpcId,omitempty"`
+}
+
+func (s CreateTrainingJobRequestUserVpc) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateTrainingJobRequestUserVpc) GoString() string {
+	return s.String()
+}
+
+func (s *CreateTrainingJobRequestUserVpc) SetExtendedCIDRs(v []*string) *CreateTrainingJobRequestUserVpc {
+	s.ExtendedCIDRs = v
+	return s
+}
+
+func (s *CreateTrainingJobRequestUserVpc) SetSecurityGroupId(v string) *CreateTrainingJobRequestUserVpc {
+	s.SecurityGroupId = &v
+	return s
+}
+
+func (s *CreateTrainingJobRequestUserVpc) SetSwitchId(v string) *CreateTrainingJobRequestUserVpc {
+	s.SwitchId = &v
+	return s
+}
+
+func (s *CreateTrainingJobRequestUserVpc) SetVpcId(v string) *CreateTrainingJobRequestUserVpc {
+	s.VpcId = &v
 	return s
 }
 
@@ -1742,6 +2160,7 @@ type GetAlgorithmResponseBody struct {
 	AlgorithmId          *string `json:"AlgorithmId,omitempty" xml:"AlgorithmId,omitempty"`
 	AlgorithmName        *string `json:"AlgorithmName,omitempty" xml:"AlgorithmName,omitempty"`
 	AlgorithmProvider    *string `json:"AlgorithmProvider,omitempty" xml:"AlgorithmProvider,omitempty"`
+	DisplayName          *string `json:"DisplayName,omitempty" xml:"DisplayName,omitempty"`
 	GmtCreateTime        *string `json:"GmtCreateTime,omitempty" xml:"GmtCreateTime,omitempty"`
 	GmtModifiedTime      *string `json:"GmtModifiedTime,omitempty" xml:"GmtModifiedTime,omitempty"`
 	RequestId            *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
@@ -1775,6 +2194,11 @@ func (s *GetAlgorithmResponseBody) SetAlgorithmName(v string) *GetAlgorithmRespo
 
 func (s *GetAlgorithmResponseBody) SetAlgorithmProvider(v string) *GetAlgorithmResponseBody {
 	s.AlgorithmProvider = &v
+	return s
+}
+
+func (s *GetAlgorithmResponseBody) SetDisplayName(v string) *GetAlgorithmResponseBody {
+	s.DisplayName = &v
 	return s
 }
 
@@ -1932,21 +2356,23 @@ func (s *GetAlgorithmVersionResponse) SetBody(v *GetAlgorithmVersionResponseBody
 }
 
 type GetMachineGroupResponseBody struct {
-	Count          *int64  `json:"Count,omitempty" xml:"Count,omitempty"`
-	Duration       *string `json:"Duration,omitempty" xml:"Duration,omitempty"`
-	EcsType        *string `json:"EcsType,omitempty" xml:"EcsType,omitempty"`
-	GmtCreated     *string `json:"GmtCreated,omitempty" xml:"GmtCreated,omitempty"`
-	GmtExpired     *string `json:"GmtExpired,omitempty" xml:"GmtExpired,omitempty"`
-	GmtModified    *string `json:"GmtModified,omitempty" xml:"GmtModified,omitempty"`
-	GmtStarted     *string `json:"GmtStarted,omitempty" xml:"GmtStarted,omitempty"`
-	MachineGroupID *string `json:"MachineGroupID,omitempty" xml:"MachineGroupID,omitempty"`
-	OrderID        *string `json:"OrderID,omitempty" xml:"OrderID,omitempty"`
-	PAIResourceID  *string `json:"PAIResourceID,omitempty" xml:"PAIResourceID,omitempty"`
-	PayType        *string `json:"PayType,omitempty" xml:"PayType,omitempty"`
-	PricingCycle   *string `json:"PricingCycle,omitempty" xml:"PricingCycle,omitempty"`
-	RegionID       *string `json:"RegionID,omitempty" xml:"RegionID,omitempty"`
-	RequestId      *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	Status         *string `json:"Status,omitempty" xml:"Status,omitempty"`
+	Count            *int64    `json:"Count,omitempty" xml:"Count,omitempty"`
+	DefaultDriver    *string   `json:"DefaultDriver,omitempty" xml:"DefaultDriver,omitempty"`
+	Duration         *string   `json:"Duration,omitempty" xml:"Duration,omitempty"`
+	EcsType          *string   `json:"EcsType,omitempty" xml:"EcsType,omitempty"`
+	GmtCreated       *string   `json:"GmtCreated,omitempty" xml:"GmtCreated,omitempty"`
+	GmtExpired       *string   `json:"GmtExpired,omitempty" xml:"GmtExpired,omitempty"`
+	GmtModified      *string   `json:"GmtModified,omitempty" xml:"GmtModified,omitempty"`
+	GmtStarted       *string   `json:"GmtStarted,omitempty" xml:"GmtStarted,omitempty"`
+	MachineGroupID   *string   `json:"MachineGroupID,omitempty" xml:"MachineGroupID,omitempty"`
+	OrderID          *string   `json:"OrderID,omitempty" xml:"OrderID,omitempty"`
+	PAIResourceID    *string   `json:"PAIResourceID,omitempty" xml:"PAIResourceID,omitempty"`
+	PayType          *string   `json:"PayType,omitempty" xml:"PayType,omitempty"`
+	PricingCycle     *string   `json:"PricingCycle,omitempty" xml:"PricingCycle,omitempty"`
+	RegionID         *string   `json:"RegionID,omitempty" xml:"RegionID,omitempty"`
+	RequestId        *string   `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	Status           *string   `json:"Status,omitempty" xml:"Status,omitempty"`
+	SupportedDrivers []*string `json:"SupportedDrivers,omitempty" xml:"SupportedDrivers,omitempty" type:"Repeated"`
 }
 
 func (s GetMachineGroupResponseBody) String() string {
@@ -1959,6 +2385,11 @@ func (s GetMachineGroupResponseBody) GoString() string {
 
 func (s *GetMachineGroupResponseBody) SetCount(v int64) *GetMachineGroupResponseBody {
 	s.Count = &v
+	return s
+}
+
+func (s *GetMachineGroupResponseBody) SetDefaultDriver(v string) *GetMachineGroupResponseBody {
+	s.DefaultDriver = &v
 	return s
 }
 
@@ -2029,6 +2460,11 @@ func (s *GetMachineGroupResponseBody) SetRequestId(v string) *GetMachineGroupRes
 
 func (s *GetMachineGroupResponseBody) SetStatus(v string) *GetMachineGroupResponseBody {
 	s.Status = &v
+	return s
+}
+
+func (s *GetMachineGroupResponseBody) SetSupportedDrivers(v []*string) *GetMachineGroupResponseBody {
+	s.SupportedDrivers = v
 	return s
 }
 
@@ -2160,15 +2596,36 @@ func (s *GetNodeMetricsResponse) SetBody(v *GetNodeMetricsResponseBody) *GetNode
 	return s
 }
 
+type GetResourceGroupRequest struct {
+	IsAIWorkspaceDataEnabled *bool `json:"IsAIWorkspaceDataEnabled,omitempty" xml:"IsAIWorkspaceDataEnabled,omitempty"`
+}
+
+func (s GetResourceGroupRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetResourceGroupRequest) GoString() string {
+	return s.String()
+}
+
+func (s *GetResourceGroupRequest) SetIsAIWorkspaceDataEnabled(v bool) *GetResourceGroupRequest {
+	s.IsAIWorkspaceDataEnabled = &v
+	return s
+}
+
 type GetResourceGroupResponseBody struct {
-	CreatorID       *string  `json:"CreatorID,omitempty" xml:"CreatorID,omitempty"`
-	GmtCreatedTime  *string  `json:"GmtCreatedTime,omitempty" xml:"GmtCreatedTime,omitempty"`
-	GmtModifiedTime *string  `json:"GmtModifiedTime,omitempty" xml:"GmtModifiedTime,omitempty"`
-	Name            *string  `json:"Name,omitempty" xml:"Name,omitempty"`
-	RequestId       *string  `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	Status          *string  `json:"Status,omitempty" xml:"Status,omitempty"`
-	UserVpc         *UserVpc `json:"UserVpc,omitempty" xml:"UserVpc,omitempty"`
-	WorkspaceID     *string  `json:"WorkspaceID,omitempty" xml:"WorkspaceID,omitempty"`
+	ClusterID                 *string  `json:"ClusterID,omitempty" xml:"ClusterID,omitempty"`
+	ComputingResourceProvider *string  `json:"ComputingResourceProvider,omitempty" xml:"ComputingResourceProvider,omitempty"`
+	CreatorID                 *string  `json:"CreatorID,omitempty" xml:"CreatorID,omitempty"`
+	GmtCreatedTime            *string  `json:"GmtCreatedTime,omitempty" xml:"GmtCreatedTime,omitempty"`
+	GmtModifiedTime           *string  `json:"GmtModifiedTime,omitempty" xml:"GmtModifiedTime,omitempty"`
+	Name                      *string  `json:"Name,omitempty" xml:"Name,omitempty"`
+	RequestId                 *string  `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	ResourceType              *string  `json:"ResourceType,omitempty" xml:"ResourceType,omitempty"`
+	Status                    *string  `json:"Status,omitempty" xml:"Status,omitempty"`
+	SupportRDMA               *bool    `json:"SupportRDMA,omitempty" xml:"SupportRDMA,omitempty"`
+	UserVpc                   *UserVpc `json:"UserVpc,omitempty" xml:"UserVpc,omitempty"`
+	WorkspaceID               *string  `json:"WorkspaceID,omitempty" xml:"WorkspaceID,omitempty"`
 }
 
 func (s GetResourceGroupResponseBody) String() string {
@@ -2177,6 +2634,16 @@ func (s GetResourceGroupResponseBody) String() string {
 
 func (s GetResourceGroupResponseBody) GoString() string {
 	return s.String()
+}
+
+func (s *GetResourceGroupResponseBody) SetClusterID(v string) *GetResourceGroupResponseBody {
+	s.ClusterID = &v
+	return s
+}
+
+func (s *GetResourceGroupResponseBody) SetComputingResourceProvider(v string) *GetResourceGroupResponseBody {
+	s.ComputingResourceProvider = &v
+	return s
 }
 
 func (s *GetResourceGroupResponseBody) SetCreatorID(v string) *GetResourceGroupResponseBody {
@@ -2204,8 +2671,18 @@ func (s *GetResourceGroupResponseBody) SetRequestId(v string) *GetResourceGroupR
 	return s
 }
 
+func (s *GetResourceGroupResponseBody) SetResourceType(v string) *GetResourceGroupResponseBody {
+	s.ResourceType = &v
+	return s
+}
+
 func (s *GetResourceGroupResponseBody) SetStatus(v string) *GetResourceGroupResponseBody {
 	s.Status = &v
+	return s
+}
+
+func (s *GetResourceGroupResponseBody) SetSupportRDMA(v bool) *GetResourceGroupResponseBody {
+	s.SupportRDMA = &v
 	return s
 }
 
@@ -2249,23 +2726,25 @@ func (s *GetResourceGroupResponse) SetBody(v *GetResourceGroupResponseBody) *Get
 }
 
 type GetResourceGroupMachineGroupResponseBody struct {
-	Cpu                 *string `json:"Cpu,omitempty" xml:"Cpu,omitempty"`
-	EcsCount            *int64  `json:"EcsCount,omitempty" xml:"EcsCount,omitempty"`
-	EcsSpec             *string `json:"EcsSpec,omitempty" xml:"EcsSpec,omitempty"`
-	GmtCreatedTime      *string `json:"GmtCreatedTime,omitempty" xml:"GmtCreatedTime,omitempty"`
-	GmtExpiredTime      *string `json:"GmtExpiredTime,omitempty" xml:"GmtExpiredTime,omitempty"`
-	GmtModifiedTime     *string `json:"GmtModifiedTime,omitempty" xml:"GmtModifiedTime,omitempty"`
-	GmtStartedTime      *string `json:"GmtStartedTime,omitempty" xml:"GmtStartedTime,omitempty"`
-	Gpu                 *string `json:"Gpu,omitempty" xml:"Gpu,omitempty"`
-	GpuType             *string `json:"GpuType,omitempty" xml:"GpuType,omitempty"`
-	MachineGroupID      *string `json:"MachineGroupID,omitempty" xml:"MachineGroupID,omitempty"`
-	Memory              *string `json:"Memory,omitempty" xml:"Memory,omitempty"`
-	PaymentDuration     *string `json:"PaymentDuration,omitempty" xml:"PaymentDuration,omitempty"`
-	PaymentDurationUnit *string `json:"PaymentDurationUnit,omitempty" xml:"PaymentDurationUnit,omitempty"`
-	PaymentType         *string `json:"PaymentType,omitempty" xml:"PaymentType,omitempty"`
-	RequestId           *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	ResourceGroupID     *string `json:"ResourceGroupID,omitempty" xml:"ResourceGroupID,omitempty"`
-	Status              *string `json:"Status,omitempty" xml:"Status,omitempty"`
+	Cpu                 *string   `json:"Cpu,omitempty" xml:"Cpu,omitempty"`
+	DefaultDriver       *string   `json:"DefaultDriver,omitempty" xml:"DefaultDriver,omitempty"`
+	EcsCount            *int64    `json:"EcsCount,omitempty" xml:"EcsCount,omitempty"`
+	EcsSpec             *string   `json:"EcsSpec,omitempty" xml:"EcsSpec,omitempty"`
+	GmtCreatedTime      *string   `json:"GmtCreatedTime,omitempty" xml:"GmtCreatedTime,omitempty"`
+	GmtExpiredTime      *string   `json:"GmtExpiredTime,omitempty" xml:"GmtExpiredTime,omitempty"`
+	GmtModifiedTime     *string   `json:"GmtModifiedTime,omitempty" xml:"GmtModifiedTime,omitempty"`
+	GmtStartedTime      *string   `json:"GmtStartedTime,omitempty" xml:"GmtStartedTime,omitempty"`
+	Gpu                 *string   `json:"Gpu,omitempty" xml:"Gpu,omitempty"`
+	GpuType             *string   `json:"GpuType,omitempty" xml:"GpuType,omitempty"`
+	MachineGroupID      *string   `json:"MachineGroupID,omitempty" xml:"MachineGroupID,omitempty"`
+	Memory              *string   `json:"Memory,omitempty" xml:"Memory,omitempty"`
+	PaymentDuration     *string   `json:"PaymentDuration,omitempty" xml:"PaymentDuration,omitempty"`
+	PaymentDurationUnit *string   `json:"PaymentDurationUnit,omitempty" xml:"PaymentDurationUnit,omitempty"`
+	PaymentType         *string   `json:"PaymentType,omitempty" xml:"PaymentType,omitempty"`
+	RequestId           *string   `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	ResourceGroupID     *string   `json:"ResourceGroupID,omitempty" xml:"ResourceGroupID,omitempty"`
+	Status              *string   `json:"Status,omitempty" xml:"Status,omitempty"`
+	SupportedDrivers    []*string `json:"SupportedDrivers,omitempty" xml:"SupportedDrivers,omitempty" type:"Repeated"`
 }
 
 func (s GetResourceGroupMachineGroupResponseBody) String() string {
@@ -2278,6 +2757,11 @@ func (s GetResourceGroupMachineGroupResponseBody) GoString() string {
 
 func (s *GetResourceGroupMachineGroupResponseBody) SetCpu(v string) *GetResourceGroupMachineGroupResponseBody {
 	s.Cpu = &v
+	return s
+}
+
+func (s *GetResourceGroupMachineGroupResponseBody) SetDefaultDriver(v string) *GetResourceGroupMachineGroupResponseBody {
+	s.DefaultDriver = &v
 	return s
 }
 
@@ -2358,6 +2842,11 @@ func (s *GetResourceGroupMachineGroupResponseBody) SetResourceGroupID(v string) 
 
 func (s *GetResourceGroupMachineGroupResponseBody) SetStatus(v string) *GetResourceGroupMachineGroupResponseBody {
 	s.Status = &v
+	return s
+}
+
+func (s *GetResourceGroupMachineGroupResponseBody) SetSupportedDrivers(v []*string) *GetResourceGroupMachineGroupResponseBody {
+	s.SupportedDrivers = v
 	return s
 }
 
@@ -2562,6 +3051,7 @@ type GetTrainingJobResponseBody struct {
 	AlgorithmId            *string                                        `json:"AlgorithmId,omitempty" xml:"AlgorithmId,omitempty"`
 	AlgorithmName          *string                                        `json:"AlgorithmName,omitempty" xml:"AlgorithmName,omitempty"`
 	AlgorithmProvider      *string                                        `json:"AlgorithmProvider,omitempty" xml:"AlgorithmProvider,omitempty"`
+	AlgorithmSpec          *AlgorithmSpec                                 `json:"AlgorithmSpec,omitempty" xml:"AlgorithmSpec,omitempty"`
 	AlgorithmVersion       *string                                        `json:"AlgorithmVersion,omitempty" xml:"AlgorithmVersion,omitempty"`
 	ComputeResource        *GetTrainingJobResponseBodyComputeResource     `json:"ComputeResource,omitempty" xml:"ComputeResource,omitempty" type:"Struct"`
 	GmtCreateTime          *string                                        `json:"GmtCreateTime,omitempty" xml:"GmtCreateTime,omitempty"`
@@ -2569,12 +3059,15 @@ type GetTrainingJobResponseBody struct {
 	HyperParameters        []*GetTrainingJobResponseBodyHyperParameters   `json:"HyperParameters,omitempty" xml:"HyperParameters,omitempty" type:"Repeated"`
 	InputChannels          []*GetTrainingJobResponseBodyInputChannels     `json:"InputChannels,omitempty" xml:"InputChannels,omitempty" type:"Repeated"`
 	Instances              []*GetTrainingJobResponseBodyInstances         `json:"Instances,omitempty" xml:"Instances,omitempty" type:"Repeated"`
+	IsTempAlgo             *bool                                          `json:"IsTempAlgo,omitempty" xml:"IsTempAlgo,omitempty"`
 	Labels                 []*GetTrainingJobResponseBodyLabels            `json:"Labels,omitempty" xml:"Labels,omitempty" type:"Repeated"`
 	LatestMetrics          []*GetTrainingJobResponseBodyLatestMetrics     `json:"LatestMetrics,omitempty" xml:"LatestMetrics,omitempty" type:"Repeated"`
+	LatestProgress         *GetTrainingJobResponseBodyLatestProgress      `json:"LatestProgress,omitempty" xml:"LatestProgress,omitempty" type:"Struct"`
 	OutputChannels         []*GetTrainingJobResponseBodyOutputChannels    `json:"OutputChannels,omitempty" xml:"OutputChannels,omitempty" type:"Repeated"`
 	ReasonCode             *string                                        `json:"ReasonCode,omitempty" xml:"ReasonCode,omitempty"`
 	ReasonMessage          *string                                        `json:"ReasonMessage,omitempty" xml:"ReasonMessage,omitempty"`
 	RequestId              *string                                        `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	RoleArn                *string                                        `json:"RoleArn,omitempty" xml:"RoleArn,omitempty"`
 	Scheduler              *GetTrainingJobResponseBodyScheduler           `json:"Scheduler,omitempty" xml:"Scheduler,omitempty" type:"Struct"`
 	Status                 *string                                        `json:"Status,omitempty" xml:"Status,omitempty"`
 	StatusTransitions      []*GetTrainingJobResponseBodyStatusTransitions `json:"StatusTransitions,omitempty" xml:"StatusTransitions,omitempty" type:"Repeated"`
@@ -2583,6 +3076,7 @@ type GetTrainingJobResponseBody struct {
 	TrainingJobName        *string                                        `json:"TrainingJobName,omitempty" xml:"TrainingJobName,omitempty"`
 	TrainingJobUrl         *string                                        `json:"TrainingJobUrl,omitempty" xml:"TrainingJobUrl,omitempty"`
 	UserId                 *string                                        `json:"UserId,omitempty" xml:"UserId,omitempty"`
+	UserVpc                *GetTrainingJobResponseBodyUserVpc             `json:"UserVpc,omitempty" xml:"UserVpc,omitempty" type:"Struct"`
 	WorkspaceId            *string                                        `json:"WorkspaceId,omitempty" xml:"WorkspaceId,omitempty"`
 }
 
@@ -2606,6 +3100,11 @@ func (s *GetTrainingJobResponseBody) SetAlgorithmName(v string) *GetTrainingJobR
 
 func (s *GetTrainingJobResponseBody) SetAlgorithmProvider(v string) *GetTrainingJobResponseBody {
 	s.AlgorithmProvider = &v
+	return s
+}
+
+func (s *GetTrainingJobResponseBody) SetAlgorithmSpec(v *AlgorithmSpec) *GetTrainingJobResponseBody {
+	s.AlgorithmSpec = v
 	return s
 }
 
@@ -2644,6 +3143,11 @@ func (s *GetTrainingJobResponseBody) SetInstances(v []*GetTrainingJobResponseBod
 	return s
 }
 
+func (s *GetTrainingJobResponseBody) SetIsTempAlgo(v bool) *GetTrainingJobResponseBody {
+	s.IsTempAlgo = &v
+	return s
+}
+
 func (s *GetTrainingJobResponseBody) SetLabels(v []*GetTrainingJobResponseBodyLabels) *GetTrainingJobResponseBody {
 	s.Labels = v
 	return s
@@ -2651,6 +3155,11 @@ func (s *GetTrainingJobResponseBody) SetLabels(v []*GetTrainingJobResponseBodyLa
 
 func (s *GetTrainingJobResponseBody) SetLatestMetrics(v []*GetTrainingJobResponseBodyLatestMetrics) *GetTrainingJobResponseBody {
 	s.LatestMetrics = v
+	return s
+}
+
+func (s *GetTrainingJobResponseBody) SetLatestProgress(v *GetTrainingJobResponseBodyLatestProgress) *GetTrainingJobResponseBody {
+	s.LatestProgress = v
 	return s
 }
 
@@ -2671,6 +3180,11 @@ func (s *GetTrainingJobResponseBody) SetReasonMessage(v string) *GetTrainingJobR
 
 func (s *GetTrainingJobResponseBody) SetRequestId(v string) *GetTrainingJobResponseBody {
 	s.RequestId = &v
+	return s
+}
+
+func (s *GetTrainingJobResponseBody) SetRoleArn(v string) *GetTrainingJobResponseBody {
+	s.RoleArn = &v
 	return s
 }
 
@@ -2711,6 +3225,11 @@ func (s *GetTrainingJobResponseBody) SetTrainingJobUrl(v string) *GetTrainingJob
 
 func (s *GetTrainingJobResponseBody) SetUserId(v string) *GetTrainingJobResponseBody {
 	s.UserId = &v
+	return s
+}
+
+func (s *GetTrainingJobResponseBody) SetUserVpc(v *GetTrainingJobResponseBodyUserVpc) *GetTrainingJobResponseBody {
+	s.UserVpc = v
 	return s
 }
 
@@ -2875,6 +3394,75 @@ func (s *GetTrainingJobResponseBodyLatestMetrics) SetValue(v float64) *GetTraini
 	return s
 }
 
+type GetTrainingJobResponseBodyLatestProgress struct {
+	OverallProgress *GetTrainingJobResponseBodyLatestProgressOverallProgress `json:"OverallProgress,omitempty" xml:"OverallProgress,omitempty" type:"Struct"`
+	RemainingTime   *GetTrainingJobResponseBodyLatestProgressRemainingTime   `json:"RemainingTime,omitempty" xml:"RemainingTime,omitempty" type:"Struct"`
+}
+
+func (s GetTrainingJobResponseBodyLatestProgress) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetTrainingJobResponseBodyLatestProgress) GoString() string {
+	return s.String()
+}
+
+func (s *GetTrainingJobResponseBodyLatestProgress) SetOverallProgress(v *GetTrainingJobResponseBodyLatestProgressOverallProgress) *GetTrainingJobResponseBodyLatestProgress {
+	s.OverallProgress = v
+	return s
+}
+
+func (s *GetTrainingJobResponseBodyLatestProgress) SetRemainingTime(v *GetTrainingJobResponseBodyLatestProgressRemainingTime) *GetTrainingJobResponseBodyLatestProgress {
+	s.RemainingTime = v
+	return s
+}
+
+type GetTrainingJobResponseBodyLatestProgressOverallProgress struct {
+	Timestamp *string  `json:"Timestamp,omitempty" xml:"Timestamp,omitempty"`
+	Value     *float32 `json:"Value,omitempty" xml:"Value,omitempty"`
+}
+
+func (s GetTrainingJobResponseBodyLatestProgressOverallProgress) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetTrainingJobResponseBodyLatestProgressOverallProgress) GoString() string {
+	return s.String()
+}
+
+func (s *GetTrainingJobResponseBodyLatestProgressOverallProgress) SetTimestamp(v string) *GetTrainingJobResponseBodyLatestProgressOverallProgress {
+	s.Timestamp = &v
+	return s
+}
+
+func (s *GetTrainingJobResponseBodyLatestProgressOverallProgress) SetValue(v float32) *GetTrainingJobResponseBodyLatestProgressOverallProgress {
+	s.Value = &v
+	return s
+}
+
+type GetTrainingJobResponseBodyLatestProgressRemainingTime struct {
+	Timestamp *string `json:"Timestamp,omitempty" xml:"Timestamp,omitempty"`
+	Value     *int64  `json:"Value,omitempty" xml:"Value,omitempty"`
+}
+
+func (s GetTrainingJobResponseBodyLatestProgressRemainingTime) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetTrainingJobResponseBodyLatestProgressRemainingTime) GoString() string {
+	return s.String()
+}
+
+func (s *GetTrainingJobResponseBodyLatestProgressRemainingTime) SetTimestamp(v string) *GetTrainingJobResponseBodyLatestProgressRemainingTime {
+	s.Timestamp = &v
+	return s
+}
+
+func (s *GetTrainingJobResponseBodyLatestProgressRemainingTime) SetValue(v int64) *GetTrainingJobResponseBodyLatestProgressRemainingTime {
+	s.Value = &v
+	return s
+}
+
 type GetTrainingJobResponseBodyOutputChannels struct {
 	DatasetId *string `json:"DatasetId,omitempty" xml:"DatasetId,omitempty"`
 	Name      *string `json:"Name,omitempty" xml:"Name,omitempty"`
@@ -2959,6 +3547,41 @@ func (s *GetTrainingJobResponseBodyStatusTransitions) SetStartTime(v string) *Ge
 
 func (s *GetTrainingJobResponseBodyStatusTransitions) SetStatus(v string) *GetTrainingJobResponseBodyStatusTransitions {
 	s.Status = &v
+	return s
+}
+
+type GetTrainingJobResponseBodyUserVpc struct {
+	ExtendedCIDRs   []*string `json:"ExtendedCIDRs,omitempty" xml:"ExtendedCIDRs,omitempty" type:"Repeated"`
+	SecurityGroupId *string   `json:"SecurityGroupId,omitempty" xml:"SecurityGroupId,omitempty"`
+	SwitchId        *string   `json:"SwitchId,omitempty" xml:"SwitchId,omitempty"`
+	VpcId           *string   `json:"VpcId,omitempty" xml:"VpcId,omitempty"`
+}
+
+func (s GetTrainingJobResponseBodyUserVpc) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetTrainingJobResponseBodyUserVpc) GoString() string {
+	return s.String()
+}
+
+func (s *GetTrainingJobResponseBodyUserVpc) SetExtendedCIDRs(v []*string) *GetTrainingJobResponseBodyUserVpc {
+	s.ExtendedCIDRs = v
+	return s
+}
+
+func (s *GetTrainingJobResponseBodyUserVpc) SetSecurityGroupId(v string) *GetTrainingJobResponseBodyUserVpc {
+	s.SecurityGroupId = &v
+	return s
+}
+
+func (s *GetTrainingJobResponseBodyUserVpc) SetSwitchId(v string) *GetTrainingJobResponseBodyUserVpc {
+	s.SwitchId = &v
+	return s
+}
+
+func (s *GetTrainingJobResponseBodyUserVpc) SetVpcId(v string) *GetTrainingJobResponseBodyUserVpc {
+	s.VpcId = &v
 	return s
 }
 
@@ -3329,6 +3952,7 @@ type ListAlgorithmsResponseBodyAlgorithms struct {
 	AlgorithmId          *string `json:"AlgorithmId,omitempty" xml:"AlgorithmId,omitempty"`
 	AlgorithmName        *string `json:"AlgorithmName,omitempty" xml:"AlgorithmName,omitempty"`
 	AlgorithmProvider    *string `json:"AlgorithmProvider,omitempty" xml:"AlgorithmProvider,omitempty"`
+	DisplayName          *string `json:"DisplayName,omitempty" xml:"DisplayName,omitempty"`
 	GmtCreateTime        *string `json:"GmtCreateTime,omitempty" xml:"GmtCreateTime,omitempty"`
 	GmtModifiedTime      *string `json:"GmtModifiedTime,omitempty" xml:"GmtModifiedTime,omitempty"`
 	UserId               *string `json:"UserId,omitempty" xml:"UserId,omitempty"`
@@ -3360,6 +3984,11 @@ func (s *ListAlgorithmsResponseBodyAlgorithms) SetAlgorithmName(v string) *ListA
 
 func (s *ListAlgorithmsResponseBodyAlgorithms) SetAlgorithmProvider(v string) *ListAlgorithmsResponseBodyAlgorithms {
 	s.AlgorithmProvider = &v
+	return s
+}
+
+func (s *ListAlgorithmsResponseBodyAlgorithms) SetDisplayName(v string) *ListAlgorithmsResponseBodyAlgorithms {
+	s.DisplayName = &v
 	return s
 }
 
@@ -3548,13 +4177,15 @@ func (s *ListResourceGroupMachineGroupsResponse) SetBody(v *ListResourceGroupMac
 }
 
 type ListResourceGroupsRequest struct {
-	Name       *string `json:"Name,omitempty" xml:"Name,omitempty"`
-	Order      *string `json:"Order,omitempty" xml:"Order,omitempty"`
-	PageNumber *int64  `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
-	PageSize   *int64  `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	ShowAll    *bool   `json:"ShowAll,omitempty" xml:"ShowAll,omitempty"`
-	SortBy     *string `json:"SortBy,omitempty" xml:"SortBy,omitempty"`
-	Status     *string `json:"Status,omitempty" xml:"Status,omitempty"`
+	ComputingResourceProvider *string `json:"ComputingResourceProvider,omitempty" xml:"ComputingResourceProvider,omitempty"`
+	Name                      *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	Order                     *string `json:"Order,omitempty" xml:"Order,omitempty"`
+	PageNumber                *int64  `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
+	PageSize                  *int64  `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	ResourceType              *string `json:"ResourceType,omitempty" xml:"ResourceType,omitempty"`
+	ShowAll                   *bool   `json:"ShowAll,omitempty" xml:"ShowAll,omitempty"`
+	SortBy                    *string `json:"SortBy,omitempty" xml:"SortBy,omitempty"`
+	Status                    *string `json:"Status,omitempty" xml:"Status,omitempty"`
 }
 
 func (s ListResourceGroupsRequest) String() string {
@@ -3563,6 +4194,11 @@ func (s ListResourceGroupsRequest) String() string {
 
 func (s ListResourceGroupsRequest) GoString() string {
 	return s.String()
+}
+
+func (s *ListResourceGroupsRequest) SetComputingResourceProvider(v string) *ListResourceGroupsRequest {
+	s.ComputingResourceProvider = &v
+	return s
 }
 
 func (s *ListResourceGroupsRequest) SetName(v string) *ListResourceGroupsRequest {
@@ -3582,6 +4218,11 @@ func (s *ListResourceGroupsRequest) SetPageNumber(v int64) *ListResourceGroupsRe
 
 func (s *ListResourceGroupsRequest) SetPageSize(v int64) *ListResourceGroupsRequest {
 	s.PageSize = &v
+	return s
+}
+
+func (s *ListResourceGroupsRequest) SetResourceType(v string) *ListResourceGroupsRequest {
+	s.ResourceType = &v
 	return s
 }
 
@@ -4113,10 +4754,12 @@ type ListTrainingJobsResponseBodyTrainingJobs struct {
 	GmtModifiedTime        *string                                                      `json:"GmtModifiedTime,omitempty" xml:"GmtModifiedTime,omitempty"`
 	HyperParameters        []*ListTrainingJobsResponseBodyTrainingJobsHyperParameters   `json:"HyperParameters,omitempty" xml:"HyperParameters,omitempty" type:"Repeated"`
 	InputChannels          []*ListTrainingJobsResponseBodyTrainingJobsInputChannels     `json:"InputChannels,omitempty" xml:"InputChannels,omitempty" type:"Repeated"`
+	IsTempAlgo             *bool                                                        `json:"IsTempAlgo,omitempty" xml:"IsTempAlgo,omitempty"`
 	Labels                 []*ListTrainingJobsResponseBodyTrainingJobsLabels            `json:"Labels,omitempty" xml:"Labels,omitempty" type:"Repeated"`
 	OutputChannels         []*ListTrainingJobsResponseBodyTrainingJobsOutputChannels    `json:"OutputChannels,omitempty" xml:"OutputChannels,omitempty" type:"Repeated"`
 	ReasonCode             *string                                                      `json:"ReasonCode,omitempty" xml:"ReasonCode,omitempty"`
 	ReasonMessage          *string                                                      `json:"ReasonMessage,omitempty" xml:"ReasonMessage,omitempty"`
+	RoleArn                *string                                                      `json:"RoleArn,omitempty" xml:"RoleArn,omitempty"`
 	Scheduler              *ListTrainingJobsResponseBodyTrainingJobsScheduler           `json:"Scheduler,omitempty" xml:"Scheduler,omitempty" type:"Struct"`
 	Status                 *string                                                      `json:"Status,omitempty" xml:"Status,omitempty"`
 	StatusTransitions      []*ListTrainingJobsResponseBodyTrainingJobsStatusTransitions `json:"StatusTransitions,omitempty" xml:"StatusTransitions,omitempty" type:"Repeated"`
@@ -4124,6 +4767,7 @@ type ListTrainingJobsResponseBodyTrainingJobs struct {
 	TrainingJobId          *string                                                      `json:"TrainingJobId,omitempty" xml:"TrainingJobId,omitempty"`
 	TrainingJobName        *string                                                      `json:"TrainingJobName,omitempty" xml:"TrainingJobName,omitempty"`
 	UserId                 *string                                                      `json:"UserId,omitempty" xml:"UserId,omitempty"`
+	UserVpc                *ListTrainingJobsResponseBodyTrainingJobsUserVpc             `json:"UserVpc,omitempty" xml:"UserVpc,omitempty" type:"Struct"`
 	WorkspaceId            *string                                                      `json:"WorkspaceId,omitempty" xml:"WorkspaceId,omitempty"`
 }
 
@@ -4175,6 +4819,11 @@ func (s *ListTrainingJobsResponseBodyTrainingJobs) SetInputChannels(v []*ListTra
 	return s
 }
 
+func (s *ListTrainingJobsResponseBodyTrainingJobs) SetIsTempAlgo(v bool) *ListTrainingJobsResponseBodyTrainingJobs {
+	s.IsTempAlgo = &v
+	return s
+}
+
 func (s *ListTrainingJobsResponseBodyTrainingJobs) SetLabels(v []*ListTrainingJobsResponseBodyTrainingJobsLabels) *ListTrainingJobsResponseBodyTrainingJobs {
 	s.Labels = v
 	return s
@@ -4192,6 +4841,11 @@ func (s *ListTrainingJobsResponseBodyTrainingJobs) SetReasonCode(v string) *List
 
 func (s *ListTrainingJobsResponseBodyTrainingJobs) SetReasonMessage(v string) *ListTrainingJobsResponseBodyTrainingJobs {
 	s.ReasonMessage = &v
+	return s
+}
+
+func (s *ListTrainingJobsResponseBodyTrainingJobs) SetRoleArn(v string) *ListTrainingJobsResponseBodyTrainingJobs {
+	s.RoleArn = &v
 	return s
 }
 
@@ -4227,6 +4881,11 @@ func (s *ListTrainingJobsResponseBodyTrainingJobs) SetTrainingJobName(v string) 
 
 func (s *ListTrainingJobsResponseBodyTrainingJobs) SetUserId(v string) *ListTrainingJobsResponseBodyTrainingJobs {
 	s.UserId = &v
+	return s
+}
+
+func (s *ListTrainingJobsResponseBodyTrainingJobs) SetUserVpc(v *ListTrainingJobsResponseBodyTrainingJobsUserVpc) *ListTrainingJobsResponseBodyTrainingJobs {
+	s.UserVpc = v
 	return s
 }
 
@@ -4420,6 +5079,41 @@ func (s *ListTrainingJobsResponseBodyTrainingJobsStatusTransitions) SetStatus(v 
 	return s
 }
 
+type ListTrainingJobsResponseBodyTrainingJobsUserVpc struct {
+	ExtendedCIDRs   []*string `json:"ExtendedCIDRs,omitempty" xml:"ExtendedCIDRs,omitempty" type:"Repeated"`
+	SecurityGroupId *string   `json:"SecurityGroupId,omitempty" xml:"SecurityGroupId,omitempty"`
+	SwitchId        *string   `json:"SwitchId,omitempty" xml:"SwitchId,omitempty"`
+	VpcId           *string   `json:"VpcId,omitempty" xml:"VpcId,omitempty"`
+}
+
+func (s ListTrainingJobsResponseBodyTrainingJobsUserVpc) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListTrainingJobsResponseBodyTrainingJobsUserVpc) GoString() string {
+	return s.String()
+}
+
+func (s *ListTrainingJobsResponseBodyTrainingJobsUserVpc) SetExtendedCIDRs(v []*string) *ListTrainingJobsResponseBodyTrainingJobsUserVpc {
+	s.ExtendedCIDRs = v
+	return s
+}
+
+func (s *ListTrainingJobsResponseBodyTrainingJobsUserVpc) SetSecurityGroupId(v string) *ListTrainingJobsResponseBodyTrainingJobsUserVpc {
+	s.SecurityGroupId = &v
+	return s
+}
+
+func (s *ListTrainingJobsResponseBodyTrainingJobsUserVpc) SetSwitchId(v string) *ListTrainingJobsResponseBodyTrainingJobsUserVpc {
+	s.SwitchId = &v
+	return s
+}
+
+func (s *ListTrainingJobsResponseBodyTrainingJobsUserVpc) SetVpcId(v string) *ListTrainingJobsResponseBodyTrainingJobsUserVpc {
+	s.VpcId = &v
+	return s
+}
+
 type ListTrainingJobsResponse struct {
 	Headers    map[string]*string            `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
 	StatusCode *int32                        `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
@@ -4497,6 +5191,7 @@ func (s *StopTrainingJobResponse) SetBody(v *StopTrainingJobResponseBody) *StopT
 
 type UpdateAlgorithmRequest struct {
 	AlgorithmDescription *string `json:"AlgorithmDescription,omitempty" xml:"AlgorithmDescription,omitempty"`
+	DisplayName          *string `json:"DisplayName,omitempty" xml:"DisplayName,omitempty"`
 }
 
 func (s UpdateAlgorithmRequest) String() string {
@@ -4509,6 +5204,11 @@ func (s UpdateAlgorithmRequest) GoString() string {
 
 func (s *UpdateAlgorithmRequest) SetAlgorithmDescription(v string) *UpdateAlgorithmRequest {
 	s.AlgorithmDescription = &v
+	return s
+}
+
+func (s *UpdateAlgorithmRequest) SetDisplayName(v string) *UpdateAlgorithmRequest {
+	s.DisplayName = &v
 	return s
 }
 
@@ -4890,6 +5590,10 @@ func (client *Client) CreateAlgorithmWithOptions(request *CreateAlgorithmRequest
 		body["AlgorithmName"] = request.AlgorithmName
 	}
 
+	if !tea.BoolValue(util.IsUnset(request.DisplayName)) {
+		body["DisplayName"] = request.DisplayName
+	}
+
 	if !tea.BoolValue(util.IsUnset(request.WorkspaceId)) {
 		body["WorkspaceId"] = request.WorkspaceId
 	}
@@ -4988,12 +5692,20 @@ func (client *Client) CreateResourceGroupWithOptions(request *CreateResourceGrou
 		return _result, _err
 	}
 	body := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.ComputingResourceProvider)) {
+		body["ComputingResourceProvider"] = request.ComputingResourceProvider
+	}
+
 	if !tea.BoolValue(util.IsUnset(request.Description)) {
 		body["Description"] = request.Description
 	}
 
 	if !tea.BoolValue(util.IsUnset(request.Name)) {
 		body["Name"] = request.Name
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ResourceType)) {
+		body["ResourceType"] = request.ResourceType
 	}
 
 	if !tea.BoolValue(util.IsUnset(request.UserVpc)) {
@@ -5082,6 +5794,10 @@ func (client *Client) CreateTrainingJobWithOptions(request *CreateTrainingJobReq
 		body["OutputChannels"] = request.OutputChannels
 	}
 
+	if !tea.BoolValue(util.IsUnset(request.RoleArn)) {
+		body["RoleArn"] = request.RoleArn
+	}
+
 	if !tea.BoolValue(util.IsUnset(request.Scheduler)) {
 		body["Scheduler"] = request.Scheduler
 	}
@@ -5092,6 +5808,10 @@ func (client *Client) CreateTrainingJobWithOptions(request *CreateTrainingJobReq
 
 	if !tea.BoolValue(util.IsUnset(request.TrainingJobName)) {
 		body["TrainingJobName"] = request.TrainingJobName
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.UserVpc)) {
+		body["UserVpc"] = request.UserVpc
 	}
 
 	if !tea.BoolValue(util.IsUnset(request.WorkspaceId)) {
@@ -5412,9 +6132,19 @@ func (client *Client) GetNodeMetrics(ResourceGroupID *string, MetricType *string
 	return _result, _err
 }
 
-func (client *Client) GetResourceGroupWithOptions(ResourceGroupID *string, headers map[string]*string, runtime *util.RuntimeOptions) (_result *GetResourceGroupResponse, _err error) {
+func (client *Client) GetResourceGroupWithOptions(ResourceGroupID *string, request *GetResourceGroupRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *GetResourceGroupResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.IsAIWorkspaceDataEnabled)) {
+		query["IsAIWorkspaceDataEnabled"] = request.IsAIWorkspaceDataEnabled
+	}
+
 	req := &openapi.OpenApiRequest{
 		Headers: headers,
+		Query:   openapiutil.Query(query),
 	}
 	params := &openapi.Params{
 		Action:      tea.String("GetResourceGroup"),
@@ -5436,11 +6166,11 @@ func (client *Client) GetResourceGroupWithOptions(ResourceGroupID *string, heade
 	return _result, _err
 }
 
-func (client *Client) GetResourceGroup(ResourceGroupID *string) (_result *GetResourceGroupResponse, _err error) {
+func (client *Client) GetResourceGroup(ResourceGroupID *string, request *GetResourceGroupRequest) (_result *GetResourceGroupResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
 	_result = &GetResourceGroupResponse{}
-	_body, _err := client.GetResourceGroupWithOptions(ResourceGroupID, headers, runtime)
+	_body, _err := client.GetResourceGroupWithOptions(ResourceGroupID, request, headers, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -5894,6 +6624,10 @@ func (client *Client) ListResourceGroupsWithOptions(request *ListResourceGroupsR
 		return _result, _err
 	}
 	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.ComputingResourceProvider)) {
+		query["ComputingResourceProvider"] = request.ComputingResourceProvider
+	}
+
 	if !tea.BoolValue(util.IsUnset(request.Name)) {
 		query["Name"] = request.Name
 	}
@@ -5908,6 +6642,10 @@ func (client *Client) ListResourceGroupsWithOptions(request *ListResourceGroupsR
 
 	if !tea.BoolValue(util.IsUnset(request.PageSize)) {
 		query["PageSize"] = request.PageSize
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ResourceType)) {
+		query["ResourceType"] = request.ResourceType
 	}
 
 	if !tea.BoolValue(util.IsUnset(request.ShowAll)) {
@@ -6234,6 +6972,10 @@ func (client *Client) UpdateAlgorithmWithOptions(AlgorithmId *string, request *U
 	body := map[string]interface{}{}
 	if !tea.BoolValue(util.IsUnset(request.AlgorithmDescription)) {
 		body["AlgorithmDescription"] = request.AlgorithmDescription
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.DisplayName)) {
+		body["DisplayName"] = request.DisplayName
 	}
 
 	req := &openapi.OpenApiRequest{
