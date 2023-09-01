@@ -219,6 +219,64 @@ func (s *AddressGroup) SetName(v string) *AddressGroup {
 	return s
 }
 
+type Aggregation struct {
+	Field     []byte               `json:"field,omitempty" xml:"field,omitempty"`
+	Groups    []*AggregationsGroup `json:"groups,omitempty" xml:"groups,omitempty" type:"Repeated"`
+	Operation []byte               `json:"operation,omitempty" xml:"operation,omitempty"`
+	Value     *float64             `json:"value,omitempty" xml:"value,omitempty"`
+}
+
+func (s Aggregation) String() string {
+	return tea.Prettify(s)
+}
+
+func (s Aggregation) GoString() string {
+	return s.String()
+}
+
+func (s *Aggregation) SetField(v []byte) *Aggregation {
+	s.Field = v
+	return s
+}
+
+func (s *Aggregation) SetGroups(v []*AggregationsGroup) *Aggregation {
+	s.Groups = v
+	return s
+}
+
+func (s *Aggregation) SetOperation(v []byte) *Aggregation {
+	s.Operation = v
+	return s
+}
+
+func (s *Aggregation) SetValue(v float64) *Aggregation {
+	s.Value = &v
+	return s
+}
+
+type AggregationsGroup struct {
+	Count *int64 `json:"count,omitempty" xml:"count,omitempty"`
+	Value []byte `json:"value,omitempty" xml:"value,omitempty"`
+}
+
+func (s AggregationsGroup) String() string {
+	return tea.Prettify(s)
+}
+
+func (s AggregationsGroup) GoString() string {
+	return s.String()
+}
+
+func (s *AggregationsGroup) SetCount(v int64) *AggregationsGroup {
+	s.Count = &v
+	return s
+}
+
+func (s *AggregationsGroup) SetValue(v []byte) *AggregationsGroup {
+	s.Value = v
+	return s
+}
+
 type App struct {
 	AppId       *string   `json:"app_id,omitempty" xml:"app_id,omitempty"`
 	AppName     *string   `json:"app_name,omitempty" xml:"app_name,omitempty"`
@@ -429,6 +487,35 @@ func (s *BenefitPkgDeliveryInfo) SetIsPermanent(v bool) *BenefitPkgDeliveryInfo 
 	return s
 }
 
+type CNameStatus struct {
+	BingdingState *string `json:"bingding_state,omitempty" xml:"bingding_state,omitempty"`
+	LegalState    *string `json:"legal_state,omitempty" xml:"legal_state,omitempty"`
+	Remark        *string `json:"remark,omitempty" xml:"remark,omitempty"`
+}
+
+func (s CNameStatus) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CNameStatus) GoString() string {
+	return s.String()
+}
+
+func (s *CNameStatus) SetBingdingState(v string) *CNameStatus {
+	s.BingdingState = &v
+	return s
+}
+
+func (s *CNameStatus) SetLegalState(v string) *CNameStatus {
+	s.LegalState = &v
+	return s
+}
+
+func (s *CNameStatus) SetRemark(v string) *CNameStatus {
+	s.Remark = &v
+	return s
+}
+
 type CdnFileDownloadCallbackInfo struct {
 	Bucket   *string `json:"bucket,omitempty" xml:"bucket,omitempty"`
 	DomainId *string `json:"domain_id,omitempty" xml:"domain_id,omitempty"`
@@ -488,6 +575,35 @@ func (s *CdnFileDownloadCallbackInfo) SetUserId(v string) *CdnFileDownloadCallba
 	return s
 }
 
+type CertInfo struct {
+	CertBody       *string `json:"cert_body,omitempty" xml:"cert_body,omitempty"`
+	CertName       *string `json:"cert_name,omitempty" xml:"cert_name,omitempty"`
+	CertPrivatekey *string `json:"cert_privatekey,omitempty" xml:"cert_privatekey,omitempty"`
+}
+
+func (s CertInfo) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CertInfo) GoString() string {
+	return s.String()
+}
+
+func (s *CertInfo) SetCertBody(v string) *CertInfo {
+	s.CertBody = &v
+	return s
+}
+
+func (s *CertInfo) SetCertName(v string) *CertInfo {
+	s.CertName = &v
+	return s
+}
+
+func (s *CertInfo) SetCertPrivatekey(v string) *CertInfo {
+	s.CertPrivatekey = &v
+	return s
+}
+
 type Condition struct {
 	IntEquals       []*int64  `json:"int_equals,omitempty" xml:"int_equals,omitempty" type:"Repeated"`
 	IntNotEquals    []*int64  `json:"int_not_equals,omitempty" xml:"int_not_equals,omitempty" type:"Repeated"`
@@ -537,6 +653,29 @@ func (s CsiCondition) GoString() string {
 
 func (s *CsiCondition) SetFileDataPunish(v *Condition) *CsiCondition {
 	s.FileDataPunish = v
+	return s
+}
+
+type DataCName struct {
+	DataCname *string `json:"data_cname,omitempty" xml:"data_cname,omitempty"`
+	Location  *string `json:"location,omitempty" xml:"location,omitempty"`
+}
+
+func (s DataCName) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DataCName) GoString() string {
+	return s.String()
+}
+
+func (s *DataCName) SetDataCname(v string) *DataCName {
+	s.DataCname = &v
+	return s
+}
+
+func (s *DataCName) SetLocation(v string) *DataCName {
+	s.Location = &v
 	return s
 }
 
@@ -1914,11 +2053,116 @@ func (s *NameCheckResult) SetExistFileType(v string) *NameCheckResult {
 	return s
 }
 
+type PermissionCondition struct {
+	IpEquals      *PermissionConditionIpEquals      `json:"ip_equals,omitempty" xml:"ip_equals,omitempty" type:"Struct"`
+	IpNotEquals   *PermissionConditionIpNotEquals   `json:"ip_not_equals,omitempty" xml:"ip_not_equals,omitempty" type:"Struct"`
+	StringLike    *PermissionConditionStringLike    `json:"string_like,omitempty" xml:"string_like,omitempty" type:"Struct"`
+	StringNotLike *PermissionConditionStringNotLike `json:"string_not_like,omitempty" xml:"string_not_like,omitempty" type:"Struct"`
+}
+
+func (s PermissionCondition) String() string {
+	return tea.Prettify(s)
+}
+
+func (s PermissionCondition) GoString() string {
+	return s.String()
+}
+
+func (s *PermissionCondition) SetIpEquals(v *PermissionConditionIpEquals) *PermissionCondition {
+	s.IpEquals = v
+	return s
+}
+
+func (s *PermissionCondition) SetIpNotEquals(v *PermissionConditionIpNotEquals) *PermissionCondition {
+	s.IpNotEquals = v
+	return s
+}
+
+func (s *PermissionCondition) SetStringLike(v *PermissionConditionStringLike) *PermissionCondition {
+	s.StringLike = v
+	return s
+}
+
+func (s *PermissionCondition) SetStringNotLike(v *PermissionConditionStringNotLike) *PermissionCondition {
+	s.StringNotLike = v
+	return s
+}
+
+type PermissionConditionIpEquals struct {
+	ClientIp []*string `json:"client_ip,omitempty" xml:"client_ip,omitempty" type:"Repeated"`
+}
+
+func (s PermissionConditionIpEquals) String() string {
+	return tea.Prettify(s)
+}
+
+func (s PermissionConditionIpEquals) GoString() string {
+	return s.String()
+}
+
+func (s *PermissionConditionIpEquals) SetClientIp(v []*string) *PermissionConditionIpEquals {
+	s.ClientIp = v
+	return s
+}
+
+type PermissionConditionIpNotEquals struct {
+	ClientIp []*string `json:"client_ip,omitempty" xml:"client_ip,omitempty" type:"Repeated"`
+}
+
+func (s PermissionConditionIpNotEquals) String() string {
+	return tea.Prettify(s)
+}
+
+func (s PermissionConditionIpNotEquals) GoString() string {
+	return s.String()
+}
+
+func (s *PermissionConditionIpNotEquals) SetClientIp(v []*string) *PermissionConditionIpNotEquals {
+	s.ClientIp = v
+	return s
+}
+
+type PermissionConditionStringLike struct {
+	VpcId []*string `json:"vpc_id,omitempty" xml:"vpc_id,omitempty" type:"Repeated"`
+}
+
+func (s PermissionConditionStringLike) String() string {
+	return tea.Prettify(s)
+}
+
+func (s PermissionConditionStringLike) GoString() string {
+	return s.String()
+}
+
+func (s *PermissionConditionStringLike) SetVpcId(v []*string) *PermissionConditionStringLike {
+	s.VpcId = v
+	return s
+}
+
+type PermissionConditionStringNotLike struct {
+	VpcId []*string `json:"vpc_id,omitempty" xml:"vpc_id,omitempty" type:"Repeated"`
+}
+
+func (s PermissionConditionStringNotLike) String() string {
+	return tea.Prettify(s)
+}
+
+func (s PermissionConditionStringNotLike) GoString() string {
+	return s.String()
+}
+
+func (s *PermissionConditionStringNotLike) SetVpcId(v []*string) *PermissionConditionStringNotLike {
+	s.VpcId = v
+	return s
+}
+
 type Revision struct {
 	ContentHash         *string `json:"content_hash,omitempty" xml:"content_hash,omitempty"`
 	ContentHashName     *string `json:"content_hash_name,omitempty" xml:"content_hash_name,omitempty"`
 	Crc64Hash           *string `json:"crc64_hash,omitempty" xml:"crc64_hash,omitempty"`
 	CreatedAt           *string `json:"created_at,omitempty" xml:"created_at,omitempty"`
+	CreatorId           *string `json:"creator_id,omitempty" xml:"creator_id,omitempty"`
+	CreatorName         *string `json:"creator_name,omitempty" xml:"creator_name,omitempty"`
 	DomainId            *string `json:"domain_id,omitempty" xml:"domain_id,omitempty"`
 	DownloadUrl         *string `json:"download_url,omitempty" xml:"download_url,omitempty"`
 	DriveId             *string `json:"drive_id,omitempty" xml:"drive_id,omitempty"`
@@ -1961,6 +2205,16 @@ func (s *Revision) SetCrc64Hash(v string) *Revision {
 
 func (s *Revision) SetCreatedAt(v string) *Revision {
 	s.CreatedAt = &v
+	return s
+}
+
+func (s *Revision) SetCreatorId(v string) *Revision {
+	s.CreatorId = &v
+	return s
+}
+
+func (s *Revision) SetCreatorName(v string) *Revision {
+	s.CreatorName = &v
 	return s
 }
 
@@ -2197,6 +2451,41 @@ func (s *ShareLink) SetUpdatedAt(v string) *ShareLink {
 
 func (s *ShareLink) SetVideoPreviewCount(v int64) *ShareLink {
 	s.VideoPreviewCount = &v
+	return s
+}
+
+type SimpleQuery struct {
+	Field      []byte         `json:"field,omitempty" xml:"field,omitempty"`
+	Operation  []byte         `json:"operation,omitempty" xml:"operation,omitempty"`
+	SubQueries []*SimpleQuery `json:"sub_queries,omitempty" xml:"sub_queries,omitempty" type:"Repeated"`
+	Value      []byte         `json:"value,omitempty" xml:"value,omitempty"`
+}
+
+func (s SimpleQuery) String() string {
+	return tea.Prettify(s)
+}
+
+func (s SimpleQuery) GoString() string {
+	return s.String()
+}
+
+func (s *SimpleQuery) SetField(v []byte) *SimpleQuery {
+	s.Field = v
+	return s
+}
+
+func (s *SimpleQuery) SetOperation(v []byte) *SimpleQuery {
+	s.Operation = v
+	return s
+}
+
+func (s *SimpleQuery) SetSubQueries(v []*SimpleQuery) *SimpleQuery {
+	s.SubQueries = v
+	return s
+}
+
+func (s *SimpleQuery) SetValue(v []byte) *SimpleQuery {
+	s.Value = v
 	return s
 }
 
