@@ -283,9 +283,12 @@ type Model struct {
 	ModelDoc         *string       `json:"ModelDoc,omitempty" xml:"ModelDoc,omitempty"`
 	ModelId          *string       `json:"ModelId,omitempty" xml:"ModelId,omitempty"`
 	ModelName        *string       `json:"ModelName,omitempty" xml:"ModelName,omitempty"`
+	OrderNumber      *int64        `json:"OrderNumber,omitempty" xml:"OrderNumber,omitempty"`
 	Origin           *string       `json:"Origin,omitempty" xml:"Origin,omitempty"`
 	OwnerId          *string       `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
 	Provider         *string       `json:"Provider,omitempty" xml:"Provider,omitempty"`
+	SourceId         *string       `json:"SourceId,omitempty" xml:"SourceId,omitempty"`
+	SourceType       *string       `json:"SourceType,omitempty" xml:"SourceType,omitempty"`
 	Task             *string       `json:"Task,omitempty" xml:"Task,omitempty"`
 	UserId           *string       `json:"UserId,omitempty" xml:"UserId,omitempty"`
 	WorkspaceId      *string       `json:"WorkspaceId,omitempty" xml:"WorkspaceId,omitempty"`
@@ -349,6 +352,11 @@ func (s *Model) SetModelName(v string) *Model {
 	return s
 }
 
+func (s *Model) SetOrderNumber(v int64) *Model {
+	s.OrderNumber = &v
+	return s
+}
+
 func (s *Model) SetOrigin(v string) *Model {
 	s.Origin = &v
 	return s
@@ -361,6 +369,16 @@ func (s *Model) SetOwnerId(v string) *Model {
 
 func (s *Model) SetProvider(v string) *Model {
 	s.Provider = &v
+	return s
+}
+
+func (s *Model) SetSourceId(v string) *Model {
+	s.SourceId = &v
+	return s
+}
+
+func (s *Model) SetSourceType(v string) *Model {
+	s.SourceType = &v
 	return s
 }
 
@@ -492,29 +510,97 @@ func (s *ModelVersion) SetVersionName(v string) *ModelVersion {
 	return s
 }
 
-type ResourcesExecutorValue struct {
-	OwnerId *string `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
+type ServiceTemplate struct {
+	GmtCreateTime              *string                `json:"GmtCreateTime,omitempty" xml:"GmtCreateTime,omitempty"`
+	GmtModifiedTime            *string                `json:"GmtModifiedTime,omitempty" xml:"GmtModifiedTime,omitempty"`
+	InferenceSpec              map[string]interface{} `json:"InferenceSpec,omitempty" xml:"InferenceSpec,omitempty"`
+	Labels                     []*Label               `json:"Labels,omitempty" xml:"Labels,omitempty" type:"Repeated"`
+	OrderNumber                *int64                 `json:"OrderNumber,omitempty" xml:"OrderNumber,omitempty"`
+	OwnerId                    *string                `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
+	Provider                   *string                `json:"Provider,omitempty" xml:"Provider,omitempty"`
+	ServiceTemplateDescription *string                `json:"ServiceTemplateDescription,omitempty" xml:"ServiceTemplateDescription,omitempty"`
+	ServiceTemplateDoc         *string                `json:"ServiceTemplateDoc,omitempty" xml:"ServiceTemplateDoc,omitempty"`
+	ServiceTemplateId          *string                `json:"ServiceTemplateId,omitempty" xml:"ServiceTemplateId,omitempty"`
+	ServiceTemplateName        *string                `json:"ServiceTemplateName,omitempty" xml:"ServiceTemplateName,omitempty"`
+	UserId                     *string                `json:"UserId,omitempty" xml:"UserId,omitempty"`
 }
 
-func (s ResourcesExecutorValue) String() string {
+func (s ServiceTemplate) String() string {
 	return tea.Prettify(s)
 }
 
-func (s ResourcesExecutorValue) GoString() string {
+func (s ServiceTemplate) GoString() string {
 	return s.String()
 }
 
-func (s *ResourcesExecutorValue) SetOwnerId(v string) *ResourcesExecutorValue {
+func (s *ServiceTemplate) SetGmtCreateTime(v string) *ServiceTemplate {
+	s.GmtCreateTime = &v
+	return s
+}
+
+func (s *ServiceTemplate) SetGmtModifiedTime(v string) *ServiceTemplate {
+	s.GmtModifiedTime = &v
+	return s
+}
+
+func (s *ServiceTemplate) SetInferenceSpec(v map[string]interface{}) *ServiceTemplate {
+	s.InferenceSpec = v
+	return s
+}
+
+func (s *ServiceTemplate) SetLabels(v []*Label) *ServiceTemplate {
+	s.Labels = v
+	return s
+}
+
+func (s *ServiceTemplate) SetOrderNumber(v int64) *ServiceTemplate {
+	s.OrderNumber = &v
+	return s
+}
+
+func (s *ServiceTemplate) SetOwnerId(v string) *ServiceTemplate {
 	s.OwnerId = &v
+	return s
+}
+
+func (s *ServiceTemplate) SetProvider(v string) *ServiceTemplate {
+	s.Provider = &v
+	return s
+}
+
+func (s *ServiceTemplate) SetServiceTemplateDescription(v string) *ServiceTemplate {
+	s.ServiceTemplateDescription = &v
+	return s
+}
+
+func (s *ServiceTemplate) SetServiceTemplateDoc(v string) *ServiceTemplate {
+	s.ServiceTemplateDoc = &v
+	return s
+}
+
+func (s *ServiceTemplate) SetServiceTemplateId(v string) *ServiceTemplate {
+	s.ServiceTemplateId = &v
+	return s
+}
+
+func (s *ServiceTemplate) SetServiceTemplateName(v string) *ServiceTemplate {
+	s.ServiceTemplateName = &v
+	return s
+}
+
+func (s *ServiceTemplate) SetUserId(v string) *ServiceTemplate {
+	s.UserId = &v
 	return s
 }
 
 type AddImageRequest struct {
 	Accessibility *string                  `json:"Accessibility,omitempty" xml:"Accessibility,omitempty"`
 	Description   *string                  `json:"Description,omitempty" xml:"Description,omitempty"`
+	ImageId       *string                  `json:"ImageId,omitempty" xml:"ImageId,omitempty"`
 	ImageUri      *string                  `json:"ImageUri,omitempty" xml:"ImageUri,omitempty"`
 	Labels        []*AddImageRequestLabels `json:"Labels,omitempty" xml:"Labels,omitempty" type:"Repeated"`
 	Name          *string                  `json:"Name,omitempty" xml:"Name,omitempty"`
+	Size          *int32                   `json:"Size,omitempty" xml:"Size,omitempty"`
 	WorkspaceId   *string                  `json:"WorkspaceId,omitempty" xml:"WorkspaceId,omitempty"`
 }
 
@@ -536,6 +622,11 @@ func (s *AddImageRequest) SetDescription(v string) *AddImageRequest {
 	return s
 }
 
+func (s *AddImageRequest) SetImageId(v string) *AddImageRequest {
+	s.ImageId = &v
+	return s
+}
+
 func (s *AddImageRequest) SetImageUri(v string) *AddImageRequest {
 	s.ImageUri = &v
 	return s
@@ -548,6 +639,11 @@ func (s *AddImageRequest) SetLabels(v []*AddImageRequestLabels) *AddImageRequest
 
 func (s *AddImageRequest) SetName(v string) *AddImageRequest {
 	s.Name = &v
+	return s
+}
+
+func (s *AddImageRequest) SetSize(v int32) *AddImageRequest {
+	s.Size = &v
 	return s
 }
 
@@ -1218,7 +1314,10 @@ type CreateModelRequest struct {
 	ModelDescription *string  `json:"ModelDescription,omitempty" xml:"ModelDescription,omitempty"`
 	ModelDoc         *string  `json:"ModelDoc,omitempty" xml:"ModelDoc,omitempty"`
 	ModelName        *string  `json:"ModelName,omitempty" xml:"ModelName,omitempty"`
+	OrderNumber      *int64   `json:"OrderNumber,omitempty" xml:"OrderNumber,omitempty"`
 	Origin           *string  `json:"Origin,omitempty" xml:"Origin,omitempty"`
+	SourceId         *string  `json:"SourceId,omitempty" xml:"SourceId,omitempty"`
+	SourceType       *string  `json:"SourceType,omitempty" xml:"SourceType,omitempty"`
 	Task             *string  `json:"Task,omitempty" xml:"Task,omitempty"`
 	WorkspaceId      *string  `json:"WorkspaceId,omitempty" xml:"WorkspaceId,omitempty"`
 }
@@ -1261,8 +1360,23 @@ func (s *CreateModelRequest) SetModelName(v string) *CreateModelRequest {
 	return s
 }
 
+func (s *CreateModelRequest) SetOrderNumber(v int64) *CreateModelRequest {
+	s.OrderNumber = &v
+	return s
+}
+
 func (s *CreateModelRequest) SetOrigin(v string) *CreateModelRequest {
 	s.Origin = &v
+	return s
+}
+
+func (s *CreateModelRequest) SetSourceId(v string) *CreateModelRequest {
+	s.SourceId = &v
+	return s
+}
+
+func (s *CreateModelRequest) SetSourceType(v string) *CreateModelRequest {
+	s.SourceType = &v
 	return s
 }
 
@@ -3098,6 +3212,7 @@ type GetImageResponseBody struct {
 	Name            *string                       `json:"Name,omitempty" xml:"Name,omitempty"`
 	ParentUserId    *string                       `json:"ParentUserId,omitempty" xml:"ParentUserId,omitempty"`
 	RequestId       *string                       `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	Size            *int32                        `json:"Size,omitempty" xml:"Size,omitempty"`
 	UserId          *string                       `json:"UserId,omitempty" xml:"UserId,omitempty"`
 	WorkspaceId     *string                       `json:"WorkspaceId,omitempty" xml:"WorkspaceId,omitempty"`
 }
@@ -3152,6 +3267,11 @@ func (s *GetImageResponseBody) SetParentUserId(v string) *GetImageResponseBody {
 
 func (s *GetImageResponseBody) SetRequestId(v string) *GetImageResponseBody {
 	s.RequestId = &v
+	return s
+}
+
+func (s *GetImageResponseBody) SetSize(v int32) *GetImageResponseBody {
+	s.Size = &v
 	return s
 }
 
@@ -3704,6 +3824,118 @@ func (s *GetPermissionResponse) SetBody(v *GetPermissionResponseBody) *GetPermis
 	return s
 }
 
+type GetServiceTemplateResponseBody struct {
+	GmtCreateTime              *string                `json:"GmtCreateTime,omitempty" xml:"GmtCreateTime,omitempty"`
+	GmtModifiedTime            *string                `json:"GmtModifiedTime,omitempty" xml:"GmtModifiedTime,omitempty"`
+	InferenceSpec              map[string]interface{} `json:"InferenceSpec,omitempty" xml:"InferenceSpec,omitempty"`
+	Labels                     []*Label               `json:"Labels,omitempty" xml:"Labels,omitempty" type:"Repeated"`
+	OwnerId                    *string                `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
+	Provider                   *string                `json:"Provider,omitempty" xml:"Provider,omitempty"`
+	RequestId                  *string                `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	ServiceTemplateDescription *string                `json:"ServiceTemplateDescription,omitempty" xml:"ServiceTemplateDescription,omitempty"`
+	ServiceTemplateDoc         *string                `json:"ServiceTemplateDoc,omitempty" xml:"ServiceTemplateDoc,omitempty"`
+	ServiceTemplateId          *string                `json:"ServiceTemplateId,omitempty" xml:"ServiceTemplateId,omitempty"`
+	ServiceTemplateName        *string                `json:"ServiceTemplateName,omitempty" xml:"ServiceTemplateName,omitempty"`
+	UserId                     *string                `json:"UserId,omitempty" xml:"UserId,omitempty"`
+}
+
+func (s GetServiceTemplateResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetServiceTemplateResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *GetServiceTemplateResponseBody) SetGmtCreateTime(v string) *GetServiceTemplateResponseBody {
+	s.GmtCreateTime = &v
+	return s
+}
+
+func (s *GetServiceTemplateResponseBody) SetGmtModifiedTime(v string) *GetServiceTemplateResponseBody {
+	s.GmtModifiedTime = &v
+	return s
+}
+
+func (s *GetServiceTemplateResponseBody) SetInferenceSpec(v map[string]interface{}) *GetServiceTemplateResponseBody {
+	s.InferenceSpec = v
+	return s
+}
+
+func (s *GetServiceTemplateResponseBody) SetLabels(v []*Label) *GetServiceTemplateResponseBody {
+	s.Labels = v
+	return s
+}
+
+func (s *GetServiceTemplateResponseBody) SetOwnerId(v string) *GetServiceTemplateResponseBody {
+	s.OwnerId = &v
+	return s
+}
+
+func (s *GetServiceTemplateResponseBody) SetProvider(v string) *GetServiceTemplateResponseBody {
+	s.Provider = &v
+	return s
+}
+
+func (s *GetServiceTemplateResponseBody) SetRequestId(v string) *GetServiceTemplateResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *GetServiceTemplateResponseBody) SetServiceTemplateDescription(v string) *GetServiceTemplateResponseBody {
+	s.ServiceTemplateDescription = &v
+	return s
+}
+
+func (s *GetServiceTemplateResponseBody) SetServiceTemplateDoc(v string) *GetServiceTemplateResponseBody {
+	s.ServiceTemplateDoc = &v
+	return s
+}
+
+func (s *GetServiceTemplateResponseBody) SetServiceTemplateId(v string) *GetServiceTemplateResponseBody {
+	s.ServiceTemplateId = &v
+	return s
+}
+
+func (s *GetServiceTemplateResponseBody) SetServiceTemplateName(v string) *GetServiceTemplateResponseBody {
+	s.ServiceTemplateName = &v
+	return s
+}
+
+func (s *GetServiceTemplateResponseBody) SetUserId(v string) *GetServiceTemplateResponseBody {
+	s.UserId = &v
+	return s
+}
+
+type GetServiceTemplateResponse struct {
+	Headers    map[string]*string              `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                          `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *GetServiceTemplateResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s GetServiceTemplateResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetServiceTemplateResponse) GoString() string {
+	return s.String()
+}
+
+func (s *GetServiceTemplateResponse) SetHeaders(v map[string]*string) *GetServiceTemplateResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *GetServiceTemplateResponse) SetStatusCode(v int32) *GetServiceTemplateResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *GetServiceTemplateResponse) SetBody(v *GetServiceTemplateResponseBody) *GetServiceTemplateResponse {
+	s.Body = v
+	return s
+}
+
 type GetWorkspaceRequest struct {
 	Verbose *bool `json:"Verbose,omitempty" xml:"Verbose,omitempty"`
 }
@@ -4243,17 +4475,18 @@ func (s *ListImageLabelsResponse) SetBody(v *ListImageLabelsResponseBody) *ListI
 }
 
 type ListImagesRequest struct {
-	Labels       *string `json:"Labels,omitempty" xml:"Labels,omitempty"`
-	Name         *string `json:"Name,omitempty" xml:"Name,omitempty"`
-	Order        *string `json:"Order,omitempty" xml:"Order,omitempty"`
-	PageNumber   *int32  `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
-	PageSize     *int32  `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	ParentUserId *string `json:"ParentUserId,omitempty" xml:"ParentUserId,omitempty"`
-	Query        *string `json:"Query,omitempty" xml:"Query,omitempty"`
-	SortBy       *string `json:"SortBy,omitempty" xml:"SortBy,omitempty"`
-	UserId       *string `json:"UserId,omitempty" xml:"UserId,omitempty"`
-	Verbose      *bool   `json:"Verbose,omitempty" xml:"Verbose,omitempty"`
-	WorkspaceId  *string `json:"WorkspaceId,omitempty" xml:"WorkspaceId,omitempty"`
+	Accessibility *string `json:"Accessibility,omitempty" xml:"Accessibility,omitempty"`
+	Labels        *string `json:"Labels,omitempty" xml:"Labels,omitempty"`
+	Name          *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	Order         *string `json:"Order,omitempty" xml:"Order,omitempty"`
+	PageNumber    *int32  `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
+	PageSize      *int32  `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	ParentUserId  *string `json:"ParentUserId,omitempty" xml:"ParentUserId,omitempty"`
+	Query         *string `json:"Query,omitempty" xml:"Query,omitempty"`
+	SortBy        *string `json:"SortBy,omitempty" xml:"SortBy,omitempty"`
+	UserId        *string `json:"UserId,omitempty" xml:"UserId,omitempty"`
+	Verbose       *bool   `json:"Verbose,omitempty" xml:"Verbose,omitempty"`
+	WorkspaceId   *string `json:"WorkspaceId,omitempty" xml:"WorkspaceId,omitempty"`
 }
 
 func (s ListImagesRequest) String() string {
@@ -4262,6 +4495,11 @@ func (s ListImagesRequest) String() string {
 
 func (s ListImagesRequest) GoString() string {
 	return s.String()
+}
+
+func (s *ListImagesRequest) SetAccessibility(v string) *ListImagesRequest {
+	s.Accessibility = &v
+	return s
 }
 
 func (s *ListImagesRequest) SetLabels(v string) *ListImagesRequest {
@@ -4358,6 +4596,7 @@ type ListImagesResponseBodyImages struct {
 	Labels          []*ListImagesResponseBodyImagesLabels `json:"Labels,omitempty" xml:"Labels,omitempty" type:"Repeated"`
 	Name            *string                               `json:"Name,omitempty" xml:"Name,omitempty"`
 	ParentUserId    *string                               `json:"ParentUserId,omitempty" xml:"ParentUserId,omitempty"`
+	Size            *int32                                `json:"Size,omitempty" xml:"Size,omitempty"`
 	UserId          *string                               `json:"UserId,omitempty" xml:"UserId,omitempty"`
 	WorkspaceId     *string                               `json:"WorkspaceId,omitempty" xml:"WorkspaceId,omitempty"`
 }
@@ -4412,6 +4651,11 @@ func (s *ListImagesResponseBodyImages) SetName(v string) *ListImagesResponseBody
 
 func (s *ListImagesResponseBodyImages) SetParentUserId(v string) *ListImagesResponseBodyImages {
 	s.ParentUserId = &v
+	return s
+}
+
+func (s *ListImagesResponseBodyImages) SetSize(v int32) *ListImagesResponseBodyImages {
+	s.Size = &v
 	return s
 }
 
@@ -4763,6 +5007,8 @@ type ListModelsRequest struct {
 	Provider    *string `json:"Provider,omitempty" xml:"Provider,omitempty"`
 	Query       *string `json:"Query,omitempty" xml:"Query,omitempty"`
 	SortBy      *string `json:"SortBy,omitempty" xml:"SortBy,omitempty"`
+	SouceType   *string `json:"SouceType,omitempty" xml:"SouceType,omitempty"`
+	SourceId    *string `json:"SourceId,omitempty" xml:"SourceId,omitempty"`
 	Task        *string `json:"Task,omitempty" xml:"Task,omitempty"`
 	WorkspaceId *string `json:"WorkspaceId,omitempty" xml:"WorkspaceId,omitempty"`
 }
@@ -4822,6 +5068,16 @@ func (s *ListModelsRequest) SetQuery(v string) *ListModelsRequest {
 
 func (s *ListModelsRequest) SetSortBy(v string) *ListModelsRequest {
 	s.SortBy = &v
+	return s
+}
+
+func (s *ListModelsRequest) SetSouceType(v string) *ListModelsRequest {
+	s.SouceType = &v
+	return s
+}
+
+func (s *ListModelsRequest) SetSourceId(v string) *ListModelsRequest {
+	s.SourceId = &v
 	return s
 }
 
@@ -5408,7 +5664,7 @@ func (s *ListResourcesResponseBody) SetTotalCount(v int64) *ListResourcesRespons
 type ListResourcesResponseBodyResources struct {
 	Encryption    *ListResourcesResponseBodyResourcesEncryption `json:"Encryption,omitempty" xml:"Encryption,omitempty" type:"Struct"`
 	EnvType       *string                                       `json:"EnvType,omitempty" xml:"EnvType,omitempty"`
-	Executor      map[string]*ResourcesExecutorValue            `json:"Executor,omitempty" xml:"Executor,omitempty"`
+	Executor      *ListResourcesResponseBodyResourcesExecutor   `json:"Executor,omitempty" xml:"Executor,omitempty" type:"Struct"`
 	GmtCreateTime *string                                       `json:"GmtCreateTime,omitempty" xml:"GmtCreateTime,omitempty"`
 	GroupName     *string                                       `json:"GroupName,omitempty" xml:"GroupName,omitempty"`
 	Id            *string                                       `json:"Id,omitempty" xml:"Id,omitempty"`
@@ -5439,7 +5695,7 @@ func (s *ListResourcesResponseBodyResources) SetEnvType(v string) *ListResources
 	return s
 }
 
-func (s *ListResourcesResponseBodyResources) SetExecutor(v map[string]*ResourcesExecutorValue) *ListResourcesResponseBodyResources {
+func (s *ListResourcesResponseBodyResources) SetExecutor(v *ListResourcesResponseBodyResourcesExecutor) *ListResourcesResponseBodyResources {
 	s.Executor = v
 	return s
 }
@@ -5520,6 +5776,23 @@ func (s *ListResourcesResponseBodyResourcesEncryption) SetEnabled(v bool) *ListR
 
 func (s *ListResourcesResponseBodyResourcesEncryption) SetKey(v string) *ListResourcesResponseBodyResourcesEncryption {
 	s.Key = &v
+	return s
+}
+
+type ListResourcesResponseBodyResourcesExecutor struct {
+	OwnerId *string `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
+}
+
+func (s ListResourcesResponseBodyResourcesExecutor) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListResourcesResponseBodyResourcesExecutor) GoString() string {
+	return s.String()
+}
+
+func (s *ListResourcesResponseBodyResourcesExecutor) SetOwnerId(v string) *ListResourcesResponseBodyResourcesExecutor {
+	s.OwnerId = &v
 	return s
 }
 
@@ -5631,6 +5904,140 @@ func (s *ListResourcesResponse) SetStatusCode(v int32) *ListResourcesResponse {
 
 func (s *ListResourcesResponse) SetBody(v *ListResourcesResponseBody) *ListResourcesResponse {
 	s.Body = v
+	return s
+}
+
+type ListServiceTemplatesRequest struct {
+	Label               *string `json:"Label,omitempty" xml:"Label,omitempty"`
+	Order               *string `json:"Order,omitempty" xml:"Order,omitempty"`
+	PageNumber          *int32  `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
+	PageSize            *int32  `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	Provider            *string `json:"Provider,omitempty" xml:"Provider,omitempty"`
+	Query               *string `json:"Query,omitempty" xml:"Query,omitempty"`
+	ServiceTemplateName *string `json:"ServiceTemplateName,omitempty" xml:"ServiceTemplateName,omitempty"`
+	SortBy              *string `json:"SortBy,omitempty" xml:"SortBy,omitempty"`
+}
+
+func (s ListServiceTemplatesRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListServiceTemplatesRequest) GoString() string {
+	return s.String()
+}
+
+func (s *ListServiceTemplatesRequest) SetLabel(v string) *ListServiceTemplatesRequest {
+	s.Label = &v
+	return s
+}
+
+func (s *ListServiceTemplatesRequest) SetOrder(v string) *ListServiceTemplatesRequest {
+	s.Order = &v
+	return s
+}
+
+func (s *ListServiceTemplatesRequest) SetPageNumber(v int32) *ListServiceTemplatesRequest {
+	s.PageNumber = &v
+	return s
+}
+
+func (s *ListServiceTemplatesRequest) SetPageSize(v int32) *ListServiceTemplatesRequest {
+	s.PageSize = &v
+	return s
+}
+
+func (s *ListServiceTemplatesRequest) SetProvider(v string) *ListServiceTemplatesRequest {
+	s.Provider = &v
+	return s
+}
+
+func (s *ListServiceTemplatesRequest) SetQuery(v string) *ListServiceTemplatesRequest {
+	s.Query = &v
+	return s
+}
+
+func (s *ListServiceTemplatesRequest) SetServiceTemplateName(v string) *ListServiceTemplatesRequest {
+	s.ServiceTemplateName = &v
+	return s
+}
+
+func (s *ListServiceTemplatesRequest) SetSortBy(v string) *ListServiceTemplatesRequest {
+	s.SortBy = &v
+	return s
+}
+
+type ListServiceTemplatesResponseBody struct {
+	RequestId        *string            `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	ServiceTemplates []*ServiceTemplate `json:"ServiceTemplates,omitempty" xml:"ServiceTemplates,omitempty" type:"Repeated"`
+	TotalCount       *int64             `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
+}
+
+func (s ListServiceTemplatesResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListServiceTemplatesResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *ListServiceTemplatesResponseBody) SetRequestId(v string) *ListServiceTemplatesResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *ListServiceTemplatesResponseBody) SetServiceTemplates(v []*ServiceTemplate) *ListServiceTemplatesResponseBody {
+	s.ServiceTemplates = v
+	return s
+}
+
+func (s *ListServiceTemplatesResponseBody) SetTotalCount(v int64) *ListServiceTemplatesResponseBody {
+	s.TotalCount = &v
+	return s
+}
+
+type ListServiceTemplatesResponse struct {
+	Headers    map[string]*string                `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                            `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *ListServiceTemplatesResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s ListServiceTemplatesResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListServiceTemplatesResponse) GoString() string {
+	return s.String()
+}
+
+func (s *ListServiceTemplatesResponse) SetHeaders(v map[string]*string) *ListServiceTemplatesResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *ListServiceTemplatesResponse) SetStatusCode(v int32) *ListServiceTemplatesResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *ListServiceTemplatesResponse) SetBody(v *ListServiceTemplatesResponseBody) *ListServiceTemplatesResponse {
+	s.Body = v
+	return s
+}
+
+type ListWorkspaceUsersRequest struct {
+	UserName *string `json:"UserName,omitempty" xml:"UserName,omitempty"`
+}
+
+func (s ListWorkspaceUsersRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListWorkspaceUsersRequest) GoString() string {
+	return s.String()
+}
+
+func (s *ListWorkspaceUsersRequest) SetUserName(v string) *ListWorkspaceUsersRequest {
+	s.UserName = &v
 	return s
 }
 
@@ -6365,7 +6772,10 @@ type UpdateModelRequest struct {
 	ModelDescription *string `json:"ModelDescription,omitempty" xml:"ModelDescription,omitempty"`
 	ModelDoc         *string `json:"ModelDoc,omitempty" xml:"ModelDoc,omitempty"`
 	ModelName        *string `json:"ModelName,omitempty" xml:"ModelName,omitempty"`
+	OrderNumber      *int64  `json:"OrderNumber,omitempty" xml:"OrderNumber,omitempty"`
 	Origin           *string `json:"Origin,omitempty" xml:"Origin,omitempty"`
+	SourceId         *string `json:"SourceId,omitempty" xml:"SourceId,omitempty"`
+	SourceType       *string `json:"SourceType,omitempty" xml:"SourceType,omitempty"`
 	Task             *string `json:"Task,omitempty" xml:"Task,omitempty"`
 }
 
@@ -6402,8 +6812,23 @@ func (s *UpdateModelRequest) SetModelName(v string) *UpdateModelRequest {
 	return s
 }
 
+func (s *UpdateModelRequest) SetOrderNumber(v int64) *UpdateModelRequest {
+	s.OrderNumber = &v
+	return s
+}
+
 func (s *UpdateModelRequest) SetOrigin(v string) *UpdateModelRequest {
 	s.Origin = &v
+	return s
+}
+
+func (s *UpdateModelRequest) SetSourceId(v string) *UpdateModelRequest {
+	s.SourceId = &v
+	return s
+}
+
+func (s *UpdateModelRequest) SetSourceType(v string) *UpdateModelRequest {
+	s.SourceType = &v
 	return s
 }
 
@@ -6774,6 +7199,10 @@ func (client *Client) AddImageWithOptions(request *AddImageRequest, headers map[
 		body["Description"] = request.Description
 	}
 
+	if !tea.BoolValue(util.IsUnset(request.ImageId)) {
+		body["ImageId"] = request.ImageId
+	}
+
 	if !tea.BoolValue(util.IsUnset(request.ImageUri)) {
 		body["ImageUri"] = request.ImageUri
 	}
@@ -6784,6 +7213,10 @@ func (client *Client) AddImageWithOptions(request *AddImageRequest, headers map[
 
 	if !tea.BoolValue(util.IsUnset(request.Name)) {
 		body["Name"] = request.Name
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Size)) {
+		body["Size"] = request.Size
 	}
 
 	if !tea.BoolValue(util.IsUnset(request.WorkspaceId)) {
@@ -7202,8 +7635,20 @@ func (client *Client) CreateModelWithOptions(request *CreateModelRequest, header
 		body["ModelName"] = request.ModelName
 	}
 
+	if !tea.BoolValue(util.IsUnset(request.OrderNumber)) {
+		body["OrderNumber"] = request.OrderNumber
+	}
+
 	if !tea.BoolValue(util.IsUnset(request.Origin)) {
 		body["Origin"] = request.Origin
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.SourceId)) {
+		body["SourceId"] = request.SourceId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.SourceType)) {
+		body["SourceType"] = request.SourceType
 	}
 
 	if !tea.BoolValue(util.IsUnset(request.Task)) {
@@ -8348,6 +8793,42 @@ func (client *Client) GetPermission(WorkspaceId *string, PermissionCode *string,
 	return _result, _err
 }
 
+func (client *Client) GetServiceTemplateWithOptions(ServiceTemplateId *string, headers map[string]*string, runtime *util.RuntimeOptions) (_result *GetServiceTemplateResponse, _err error) {
+	req := &openapi.OpenApiRequest{
+		Headers: headers,
+	}
+	params := &openapi.Params{
+		Action:      tea.String("GetServiceTemplate"),
+		Version:     tea.String("2021-02-04"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/api/v1/servicetemplates/" + tea.StringValue(openapiutil.GetEncodeParam(ServiceTemplateId))),
+		Method:      tea.String("GET"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("ROA"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &GetServiceTemplateResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) GetServiceTemplate(ServiceTemplateId *string) (_result *GetServiceTemplateResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	headers := make(map[string]*string)
+	_result = &GetServiceTemplateResponse{}
+	_body, _err := client.GetServiceTemplateWithOptions(ServiceTemplateId, headers, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
 func (client *Client) GetWorkspaceWithOptions(WorkspaceId *string, request *GetWorkspaceRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *GetWorkspaceResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -8614,6 +9095,10 @@ func (client *Client) ListImagesWithOptions(request *ListImagesRequest, headers 
 		return _result, _err
 	}
 	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.Accessibility)) {
+		query["Accessibility"] = request.Accessibility
+	}
+
 	if !tea.BoolValue(util.IsUnset(request.Labels)) {
 		query["Labels"] = request.Labels
 	}
@@ -8884,6 +9369,14 @@ func (client *Client) ListModelsWithOptions(request *ListModelsRequest, headers 
 		query["SortBy"] = request.SortBy
 	}
 
+	if !tea.BoolValue(util.IsUnset(request.SouceType)) {
+		query["SouceType"] = request.SouceType
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.SourceId)) {
+		query["SourceId"] = request.SourceId
+	}
+
 	if !tea.BoolValue(util.IsUnset(request.Task)) {
 		query["Task"] = request.Task
 	}
@@ -9142,9 +9635,93 @@ func (client *Client) ListResources(request *ListResourcesRequest) (_result *Lis
 	return _result, _err
 }
 
-func (client *Client) ListWorkspaceUsersWithOptions(WorkspaceId *string, headers map[string]*string, runtime *util.RuntimeOptions) (_result *ListWorkspaceUsersResponse, _err error) {
+func (client *Client) ListServiceTemplatesWithOptions(request *ListServiceTemplatesRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *ListServiceTemplatesResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.Label)) {
+		query["Label"] = request.Label
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Order)) {
+		query["Order"] = request.Order
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.PageNumber)) {
+		query["PageNumber"] = request.PageNumber
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.PageSize)) {
+		query["PageSize"] = request.PageSize
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Provider)) {
+		query["Provider"] = request.Provider
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Query)) {
+		query["Query"] = request.Query
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ServiceTemplateName)) {
+		query["ServiceTemplateName"] = request.ServiceTemplateName
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.SortBy)) {
+		query["SortBy"] = request.SortBy
+	}
+
 	req := &openapi.OpenApiRequest{
 		Headers: headers,
+		Query:   openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("ListServiceTemplates"),
+		Version:     tea.String("2021-02-04"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/api/v1/servicetemplates"),
+		Method:      tea.String("GET"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("ROA"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &ListServiceTemplatesResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) ListServiceTemplates(request *ListServiceTemplatesRequest) (_result *ListServiceTemplatesResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	headers := make(map[string]*string)
+	_result = &ListServiceTemplatesResponse{}
+	_body, _err := client.ListServiceTemplatesWithOptions(request, headers, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) ListWorkspaceUsersWithOptions(WorkspaceId *string, request *ListWorkspaceUsersRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *ListWorkspaceUsersResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.UserName)) {
+		query["UserName"] = request.UserName
+	}
+
+	req := &openapi.OpenApiRequest{
+		Headers: headers,
+		Query:   openapiutil.Query(query),
 	}
 	params := &openapi.Params{
 		Action:      tea.String("ListWorkspaceUsers"),
@@ -9166,11 +9743,11 @@ func (client *Client) ListWorkspaceUsersWithOptions(WorkspaceId *string, headers
 	return _result, _err
 }
 
-func (client *Client) ListWorkspaceUsers(WorkspaceId *string) (_result *ListWorkspaceUsersResponse, _err error) {
+func (client *Client) ListWorkspaceUsers(WorkspaceId *string, request *ListWorkspaceUsersRequest) (_result *ListWorkspaceUsersResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
 	_result = &ListWorkspaceUsersResponse{}
-	_body, _err := client.ListWorkspaceUsersWithOptions(WorkspaceId, headers, runtime)
+	_body, _err := client.ListWorkspaceUsersWithOptions(WorkspaceId, request, headers, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -9606,8 +10183,20 @@ func (client *Client) UpdateModelWithOptions(ModelId *string, request *UpdateMod
 		body["ModelName"] = request.ModelName
 	}
 
+	if !tea.BoolValue(util.IsUnset(request.OrderNumber)) {
+		body["OrderNumber"] = request.OrderNumber
+	}
+
 	if !tea.BoolValue(util.IsUnset(request.Origin)) {
 		body["Origin"] = request.Origin
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.SourceId)) {
+		body["SourceId"] = request.SourceId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.SourceType)) {
+		body["SourceType"] = request.SourceType
 	}
 
 	if !tea.BoolValue(util.IsUnset(request.Task)) {
