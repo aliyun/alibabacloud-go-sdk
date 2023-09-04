@@ -677,6 +677,7 @@ type CreateEscalationPlanRequest struct {
 	EscalationPlanName         *string                                                  `json:"escalationPlanName,omitempty" xml:"escalationPlanName,omitempty"`
 	EscalationPlanRules        []*CreateEscalationPlanRequestEscalationPlanRules        `json:"escalationPlanRules,omitempty" xml:"escalationPlanRules,omitempty" type:"Repeated"`
 	EscalationPlanScopeObjects []*CreateEscalationPlanRequestEscalationPlanScopeObjects `json:"escalationPlanScopeObjects,omitempty" xml:"escalationPlanScopeObjects,omitempty" type:"Repeated"`
+	IsGlobal                   *bool                                                    `json:"isGlobal,omitempty" xml:"isGlobal,omitempty"`
 }
 
 func (s CreateEscalationPlanRequest) String() string {
@@ -709,6 +710,11 @@ func (s *CreateEscalationPlanRequest) SetEscalationPlanRules(v []*CreateEscalati
 
 func (s *CreateEscalationPlanRequest) SetEscalationPlanScopeObjects(v []*CreateEscalationPlanRequestEscalationPlanScopeObjects) *CreateEscalationPlanRequest {
 	s.EscalationPlanScopeObjects = v
+	return s
+}
+
+func (s *CreateEscalationPlanRequest) SetIsGlobal(v bool) *CreateEscalationPlanRequest {
+	s.IsGlobal = &v
 	return s
 }
 
@@ -769,6 +775,7 @@ type CreateEscalationPlanRequestEscalationPlanRulesEscalationPlanStrategies stru
 	EscalationPlanType *string   `json:"escalationPlanType,omitempty" xml:"escalationPlanType,omitempty"`
 	NoticeChannels     []*string `json:"noticeChannels,omitempty" xml:"noticeChannels,omitempty" type:"Repeated"`
 	NoticeObjects      []*int64  `json:"noticeObjects,omitempty" xml:"noticeObjects,omitempty" type:"Repeated"`
+	NoticeRoleList     []*int64  `json:"noticeRoleList,omitempty" xml:"noticeRoleList,omitempty" type:"Repeated"`
 	NoticeTime         *string   `json:"noticeTime,omitempty" xml:"noticeTime,omitempty"`
 	ServiceGroupIds    []*int64  `json:"serviceGroupIds,omitempty" xml:"serviceGroupIds,omitempty" type:"Repeated"`
 }
@@ -798,6 +805,11 @@ func (s *CreateEscalationPlanRequestEscalationPlanRulesEscalationPlanStrategies)
 
 func (s *CreateEscalationPlanRequestEscalationPlanRulesEscalationPlanStrategies) SetNoticeObjects(v []*int64) *CreateEscalationPlanRequestEscalationPlanRulesEscalationPlanStrategies {
 	s.NoticeObjects = v
+	return s
+}
+
+func (s *CreateEscalationPlanRequestEscalationPlanRulesEscalationPlanStrategies) SetNoticeRoleList(v []*int64) *CreateEscalationPlanRequestEscalationPlanRulesEscalationPlanStrategies {
+	s.NoticeRoleList = v
 	return s
 }
 
@@ -2365,9 +2377,11 @@ func (s *CreateRouteRuleResponse) SetBody(v *CreateRouteRuleResponseBody) *Creat
 }
 
 type CreateServiceRequest struct {
-	ClientToken        *string `json:"clientToken,omitempty" xml:"clientToken,omitempty"`
-	ServiceDescription *string `json:"serviceDescription,omitempty" xml:"serviceDescription,omitempty"`
-	ServiceName        *string `json:"serviceName,omitempty" xml:"serviceName,omitempty"`
+	ClientToken        *string  `json:"clientToken,omitempty" xml:"clientToken,omitempty"`
+	EscalationPlanId   *int64   `json:"escalationPlanId,omitempty" xml:"escalationPlanId,omitempty"`
+	ServiceDescription *string  `json:"serviceDescription,omitempty" xml:"serviceDescription,omitempty"`
+	ServiceGroupIdList []*int64 `json:"serviceGroupIdList,omitempty" xml:"serviceGroupIdList,omitempty" type:"Repeated"`
+	ServiceName        *string  `json:"serviceName,omitempty" xml:"serviceName,omitempty"`
 }
 
 func (s CreateServiceRequest) String() string {
@@ -2383,8 +2397,18 @@ func (s *CreateServiceRequest) SetClientToken(v string) *CreateServiceRequest {
 	return s
 }
 
+func (s *CreateServiceRequest) SetEscalationPlanId(v int64) *CreateServiceRequest {
+	s.EscalationPlanId = &v
+	return s
+}
+
 func (s *CreateServiceRequest) SetServiceDescription(v string) *CreateServiceRequest {
 	s.ServiceDescription = &v
+	return s
+}
+
+func (s *CreateServiceRequest) SetServiceGroupIdList(v []*int64) *CreateServiceRequest {
+	s.ServiceGroupIdList = v
 	return s
 }
 
@@ -3344,11 +3368,12 @@ func (s *CreateTenantApplicationResponse) SetBody(v *CreateTenantApplicationResp
 }
 
 type CreateUserRequest struct {
-	ClientToken *string `json:"clientToken,omitempty" xml:"clientToken,omitempty"`
-	Email       *string `json:"email,omitempty" xml:"email,omitempty"`
-	Phone       *string `json:"phone,omitempty" xml:"phone,omitempty"`
-	RamId       *int64  `json:"ramId,omitempty" xml:"ramId,omitempty"`
-	Username    *string `json:"username,omitempty" xml:"username,omitempty"`
+	ClientToken *string  `json:"clientToken,omitempty" xml:"clientToken,omitempty"`
+	Email       *string  `json:"email,omitempty" xml:"email,omitempty"`
+	Phone       *string  `json:"phone,omitempty" xml:"phone,omitempty"`
+	RamId       *int64   `json:"ramId,omitempty" xml:"ramId,omitempty"`
+	RoleIdList  []*int64 `json:"roleIdList,omitempty" xml:"roleIdList,omitempty" type:"Repeated"`
+	Username    *string  `json:"username,omitempty" xml:"username,omitempty"`
 }
 
 func (s CreateUserRequest) String() string {
@@ -3376,6 +3401,11 @@ func (s *CreateUserRequest) SetPhone(v string) *CreateUserRequest {
 
 func (s *CreateUserRequest) SetRamId(v int64) *CreateUserRequest {
 	s.RamId = &v
+	return s
+}
+
+func (s *CreateUserRequest) SetRoleIdList(v []*int64) *CreateUserRequest {
+	s.RoleIdList = v
 	return s
 }
 
@@ -6018,6 +6048,7 @@ type GetEscalationPlanResponseBodyData struct {
 	EscalationPlanName         *string                                                        `json:"escalationPlanName,omitempty" xml:"escalationPlanName,omitempty"`
 	EscalationPlanRules        []*GetEscalationPlanResponseBodyDataEscalationPlanRules        `json:"escalationPlanRules,omitempty" xml:"escalationPlanRules,omitempty" type:"Repeated"`
 	EscalationPlanScopeObjects []*GetEscalationPlanResponseBodyDataEscalationPlanScopeObjects `json:"escalationPlanScopeObjects,omitempty" xml:"escalationPlanScopeObjects,omitempty" type:"Repeated"`
+	IsGlobal                   *bool                                                          `json:"isGlobal,omitempty" xml:"isGlobal,omitempty"`
 }
 
 func (s GetEscalationPlanResponseBodyData) String() string {
@@ -6055,6 +6086,11 @@ func (s *GetEscalationPlanResponseBodyData) SetEscalationPlanRules(v []*GetEscal
 
 func (s *GetEscalationPlanResponseBodyData) SetEscalationPlanScopeObjects(v []*GetEscalationPlanResponseBodyDataEscalationPlanScopeObjects) *GetEscalationPlanResponseBodyData {
 	s.EscalationPlanScopeObjects = v
+	return s
+}
+
+func (s *GetEscalationPlanResponseBodyData) SetIsGlobal(v bool) *GetEscalationPlanResponseBodyData {
+	s.IsGlobal = &v
 	return s
 }
 
@@ -6111,12 +6147,15 @@ func (s *GetEscalationPlanResponseBodyDataEscalationPlanRulesEscalationPlanCondi
 }
 
 type GetEscalationPlanResponseBodyDataEscalationPlanRulesEscalationPlanStrategies struct {
-	EnableWebhook      *bool                                                                                           `json:"enableWebhook,omitempty" xml:"enableWebhook,omitempty"`
-	EscalationPlanType *string                                                                                         `json:"escalationPlanType,omitempty" xml:"escalationPlanType,omitempty"`
-	NoticeChannels     *string                                                                                         `json:"noticeChannels,omitempty" xml:"noticeChannels,omitempty"`
-	NoticeObjectList   []*GetEscalationPlanResponseBodyDataEscalationPlanRulesEscalationPlanStrategiesNoticeObjectList `json:"noticeObjectList,omitempty" xml:"noticeObjectList,omitempty" type:"Repeated"`
-	NoticeTime         *int64                                                                                          `json:"noticeTime,omitempty" xml:"noticeTime,omitempty"`
-	ServiceGroups      []*GetEscalationPlanResponseBodyDataEscalationPlanRulesEscalationPlanStrategiesServiceGroups    `json:"serviceGroups,omitempty" xml:"serviceGroups,omitempty" type:"Repeated"`
+	EnableWebhook        *bool                                                                                               `json:"enableWebhook,omitempty" xml:"enableWebhook,omitempty"`
+	EscalationPlanType   *string                                                                                             `json:"escalationPlanType,omitempty" xml:"escalationPlanType,omitempty"`
+	NoticeChannels       *string                                                                                             `json:"noticeChannels,omitempty" xml:"noticeChannels,omitempty"`
+	NoticeObjectList     []*GetEscalationPlanResponseBodyDataEscalationPlanRulesEscalationPlanStrategiesNoticeObjectList     `json:"noticeObjectList,omitempty" xml:"noticeObjectList,omitempty" type:"Repeated"`
+	NoticeObjects        []*int64                                                                                            `json:"noticeObjects,omitempty" xml:"noticeObjects,omitempty" type:"Repeated"`
+	NoticeRoleList       []*int64                                                                                            `json:"noticeRoleList,omitempty" xml:"noticeRoleList,omitempty" type:"Repeated"`
+	NoticeRoleObjectList []*GetEscalationPlanResponseBodyDataEscalationPlanRulesEscalationPlanStrategiesNoticeRoleObjectList `json:"noticeRoleObjectList,omitempty" xml:"noticeRoleObjectList,omitempty" type:"Repeated"`
+	NoticeTime           *int64                                                                                              `json:"noticeTime,omitempty" xml:"noticeTime,omitempty"`
+	ServiceGroups        []*GetEscalationPlanResponseBodyDataEscalationPlanRulesEscalationPlanStrategiesServiceGroups        `json:"serviceGroups,omitempty" xml:"serviceGroups,omitempty" type:"Repeated"`
 }
 
 func (s GetEscalationPlanResponseBodyDataEscalationPlanRulesEscalationPlanStrategies) String() string {
@@ -6144,6 +6183,21 @@ func (s *GetEscalationPlanResponseBodyDataEscalationPlanRulesEscalationPlanStrat
 
 func (s *GetEscalationPlanResponseBodyDataEscalationPlanRulesEscalationPlanStrategies) SetNoticeObjectList(v []*GetEscalationPlanResponseBodyDataEscalationPlanRulesEscalationPlanStrategiesNoticeObjectList) *GetEscalationPlanResponseBodyDataEscalationPlanRulesEscalationPlanStrategies {
 	s.NoticeObjectList = v
+	return s
+}
+
+func (s *GetEscalationPlanResponseBodyDataEscalationPlanRulesEscalationPlanStrategies) SetNoticeObjects(v []*int64) *GetEscalationPlanResponseBodyDataEscalationPlanRulesEscalationPlanStrategies {
+	s.NoticeObjects = v
+	return s
+}
+
+func (s *GetEscalationPlanResponseBodyDataEscalationPlanRulesEscalationPlanStrategies) SetNoticeRoleList(v []*int64) *GetEscalationPlanResponseBodyDataEscalationPlanRulesEscalationPlanStrategies {
+	s.NoticeRoleList = v
+	return s
+}
+
+func (s *GetEscalationPlanResponseBodyDataEscalationPlanRulesEscalationPlanStrategies) SetNoticeRoleObjectList(v []*GetEscalationPlanResponseBodyDataEscalationPlanRulesEscalationPlanStrategiesNoticeRoleObjectList) *GetEscalationPlanResponseBodyDataEscalationPlanRulesEscalationPlanStrategies {
+	s.NoticeRoleObjectList = v
 	return s
 }
 
@@ -6177,6 +6231,29 @@ func (s *GetEscalationPlanResponseBodyDataEscalationPlanRulesEscalationPlanStrat
 
 func (s *GetEscalationPlanResponseBodyDataEscalationPlanRulesEscalationPlanStrategiesNoticeObjectList) SetNoticeObjectName(v string) *GetEscalationPlanResponseBodyDataEscalationPlanRulesEscalationPlanStrategiesNoticeObjectList {
 	s.NoticeObjectName = &v
+	return s
+}
+
+type GetEscalationPlanResponseBodyDataEscalationPlanRulesEscalationPlanStrategiesNoticeRoleObjectList struct {
+	Id   *int64  `json:"id,omitempty" xml:"id,omitempty"`
+	Name *string `json:"name,omitempty" xml:"name,omitempty"`
+}
+
+func (s GetEscalationPlanResponseBodyDataEscalationPlanRulesEscalationPlanStrategiesNoticeRoleObjectList) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetEscalationPlanResponseBodyDataEscalationPlanRulesEscalationPlanStrategiesNoticeRoleObjectList) GoString() string {
+	return s.String()
+}
+
+func (s *GetEscalationPlanResponseBodyDataEscalationPlanRulesEscalationPlanStrategiesNoticeRoleObjectList) SetId(v int64) *GetEscalationPlanResponseBodyDataEscalationPlanRulesEscalationPlanStrategiesNoticeRoleObjectList {
+	s.Id = &v
+	return s
+}
+
+func (s *GetEscalationPlanResponseBodyDataEscalationPlanRulesEscalationPlanStrategiesNoticeRoleObjectList) SetName(v string) *GetEscalationPlanResponseBodyDataEscalationPlanRulesEscalationPlanStrategiesNoticeRoleObjectList {
+	s.Name = &v
 	return s
 }
 
@@ -9511,10 +9588,12 @@ func (s *GetServiceResponseBody) SetRequestId(v string) *GetServiceResponseBody 
 }
 
 type GetServiceResponseBodyData struct {
-	ServiceDescription *string `json:"serviceDescription,omitempty" xml:"serviceDescription,omitempty"`
-	ServiceId          *int64  `json:"serviceId,omitempty" xml:"serviceId,omitempty"`
-	ServiceName        *string `json:"serviceName,omitempty" xml:"serviceName,omitempty"`
-	UpdateTime         *string `json:"updateTime,omitempty" xml:"updateTime,omitempty"`
+	EscalationPlanId   *int64   `json:"escalationPlanId,omitempty" xml:"escalationPlanId,omitempty"`
+	ServiceDescription *string  `json:"serviceDescription,omitempty" xml:"serviceDescription,omitempty"`
+	ServiceGroupIdList []*int64 `json:"serviceGroupIdList,omitempty" xml:"serviceGroupIdList,omitempty" type:"Repeated"`
+	ServiceId          *int64   `json:"serviceId,omitempty" xml:"serviceId,omitempty"`
+	ServiceName        *string  `json:"serviceName,omitempty" xml:"serviceName,omitempty"`
+	UpdateTime         *string  `json:"updateTime,omitempty" xml:"updateTime,omitempty"`
 }
 
 func (s GetServiceResponseBodyData) String() string {
@@ -9525,8 +9604,18 @@ func (s GetServiceResponseBodyData) GoString() string {
 	return s.String()
 }
 
+func (s *GetServiceResponseBodyData) SetEscalationPlanId(v int64) *GetServiceResponseBodyData {
+	s.EscalationPlanId = &v
+	return s
+}
+
 func (s *GetServiceResponseBodyData) SetServiceDescription(v string) *GetServiceResponseBodyData {
 	s.ServiceDescription = &v
+	return s
+}
+
+func (s *GetServiceResponseBodyData) SetServiceGroupIdList(v []*int64) *GetServiceResponseBodyData {
+	s.ServiceGroupIdList = v
 	return s
 }
 
@@ -9686,10 +9775,11 @@ func (s *GetServiceGroupResponseBodyData) SetWebhookType(v string) *GetServiceGr
 }
 
 type GetServiceGroupResponseBodyDataUsers struct {
-	Phone          *string `json:"phone,omitempty" xml:"phone,omitempty"`
-	ServiceGroupId *int64  `json:"serviceGroupId,omitempty" xml:"serviceGroupId,omitempty"`
-	UserId         *int64  `json:"userId,omitempty" xml:"userId,omitempty"`
-	UserName       *string `json:"userName,omitempty" xml:"userName,omitempty"`
+	Phone          *string   `json:"phone,omitempty" xml:"phone,omitempty"`
+	RoleNameList   []*string `json:"roleNameList,omitempty" xml:"roleNameList,omitempty" type:"Repeated"`
+	ServiceGroupId *int64    `json:"serviceGroupId,omitempty" xml:"serviceGroupId,omitempty"`
+	UserId         *int64    `json:"userId,omitempty" xml:"userId,omitempty"`
+	UserName       *string   `json:"userName,omitempty" xml:"userName,omitempty"`
 }
 
 func (s GetServiceGroupResponseBodyDataUsers) String() string {
@@ -9702,6 +9792,11 @@ func (s GetServiceGroupResponseBodyDataUsers) GoString() string {
 
 func (s *GetServiceGroupResponseBodyDataUsers) SetPhone(v string) *GetServiceGroupResponseBodyDataUsers {
 	s.Phone = &v
+	return s
+}
+
+func (s *GetServiceGroupResponseBodyDataUsers) SetRoleNameList(v []*string) *GetServiceGroupResponseBodyDataUsers {
+	s.RoleNameList = v
 	return s
 }
 
@@ -11604,6 +11699,8 @@ type GetUserResponseBodyData struct {
 	Phone          *string `json:"phone,omitempty" xml:"phone,omitempty"`
 	// ramId
 	RamId         *string                                 `json:"ramId,omitempty" xml:"ramId,omitempty"`
+	RoleIdList    []*int64                                `json:"roleIdList,omitempty" xml:"roleIdList,omitempty" type:"Repeated"`
+	RoleNameList  []*string                               `json:"roleNameList,omitempty" xml:"roleNameList,omitempty" type:"Repeated"`
 	ServiceGroups []*GetUserResponseBodyDataServiceGroups `json:"serviceGroups,omitempty" xml:"serviceGroups,omitempty" type:"Repeated"`
 	UserId        *int64                                  `json:"userId,omitempty" xml:"userId,omitempty"`
 	Username      *string                                 `json:"username,omitempty" xml:"username,omitempty"`
@@ -11649,6 +11746,16 @@ func (s *GetUserResponseBodyData) SetPhone(v string) *GetUserResponseBodyData {
 
 func (s *GetUserResponseBodyData) SetRamId(v string) *GetUserResponseBodyData {
 	s.RamId = &v
+	return s
+}
+
+func (s *GetUserResponseBodyData) SetRoleIdList(v []*int64) *GetUserResponseBodyData {
+	s.RoleIdList = v
+	return s
+}
+
+func (s *GetUserResponseBodyData) SetRoleNameList(v []*string) *GetUserResponseBodyData {
+	s.RoleNameList = v
 	return s
 }
 
@@ -13016,9 +13123,11 @@ func (s *ListEscalationPlanServicesResponse) SetBody(v *ListEscalationPlanServic
 type ListEscalationPlansRequest struct {
 	ClientToken        *string `json:"clientToken,omitempty" xml:"clientToken,omitempty"`
 	EscalationPlanName *string `json:"escalationPlanName,omitempty" xml:"escalationPlanName,omitempty"`
+	IsGlobal           *bool   `json:"isGlobal,omitempty" xml:"isGlobal,omitempty"`
 	PageNumber         *int64  `json:"pageNumber,omitempty" xml:"pageNumber,omitempty"`
 	PageSize           *int64  `json:"pageSize,omitempty" xml:"pageSize,omitempty"`
 	ServiceName        *string `json:"serviceName,omitempty" xml:"serviceName,omitempty"`
+	Status             *string `json:"status,omitempty" xml:"status,omitempty"`
 }
 
 func (s ListEscalationPlansRequest) String() string {
@@ -13039,6 +13148,11 @@ func (s *ListEscalationPlansRequest) SetEscalationPlanName(v string) *ListEscala
 	return s
 }
 
+func (s *ListEscalationPlansRequest) SetIsGlobal(v bool) *ListEscalationPlansRequest {
+	s.IsGlobal = &v
+	return s
+}
+
 func (s *ListEscalationPlansRequest) SetPageNumber(v int64) *ListEscalationPlansRequest {
 	s.PageNumber = &v
 	return s
@@ -13051,6 +13165,11 @@ func (s *ListEscalationPlansRequest) SetPageSize(v int64) *ListEscalationPlansRe
 
 func (s *ListEscalationPlansRequest) SetServiceName(v string) *ListEscalationPlansRequest {
 	s.ServiceName = &v
+	return s
+}
+
+func (s *ListEscalationPlansRequest) SetStatus(v string) *ListEscalationPlansRequest {
+	s.Status = &v
 	return s
 }
 
@@ -13101,6 +13220,7 @@ type ListEscalationPlansResponseBodyData struct {
 	EscalationPlanId           *int64                                                           `json:"escalationPlanId,omitempty" xml:"escalationPlanId,omitempty"`
 	EscalationPlanName         *string                                                          `json:"escalationPlanName,omitempty" xml:"escalationPlanName,omitempty"`
 	EscalationPlanScopeObjects []*ListEscalationPlansResponseBodyDataEscalationPlanScopeObjects `json:"escalationPlanScopeObjects,omitempty" xml:"escalationPlanScopeObjects,omitempty" type:"Repeated"`
+	IsGlobal                   *bool                                                            `json:"isGlobal,omitempty" xml:"isGlobal,omitempty"`
 	ModifyTime                 *string                                                          `json:"modifyTime,omitempty" xml:"modifyTime,omitempty"`
 	Status                     *string                                                          `json:"status,omitempty" xml:"status,omitempty"`
 }
@@ -13125,6 +13245,11 @@ func (s *ListEscalationPlansResponseBodyData) SetEscalationPlanName(v string) *L
 
 func (s *ListEscalationPlansResponseBodyData) SetEscalationPlanScopeObjects(v []*ListEscalationPlansResponseBodyDataEscalationPlanScopeObjects) *ListEscalationPlansResponseBodyData {
 	s.EscalationPlanScopeObjects = v
+	return s
+}
+
+func (s *ListEscalationPlansResponseBodyData) SetIsGlobal(v bool) *ListEscalationPlansResponseBodyData {
+	s.IsGlobal = &v
 	return s
 }
 
@@ -13496,9 +13621,10 @@ func (s *ListIncidentDetailEscalationPlansResponseBodyDataConvergenceEscalationP
 }
 
 type ListIncidentDetailEscalationPlansResponseBodyDataConvergenceEscalationPlanNoticeObjectList struct {
-	NoticeObjectId    *int64  `json:"noticeObjectId,omitempty" xml:"noticeObjectId,omitempty"`
-	NoticeObjectName  *string `json:"noticeObjectName,omitempty" xml:"noticeObjectName,omitempty"`
-	NoticeObjectPhone *string `json:"noticeObjectPhone,omitempty" xml:"noticeObjectPhone,omitempty"`
+	NoticeObjectId    *int64    `json:"noticeObjectId,omitempty" xml:"noticeObjectId,omitempty"`
+	NoticeObjectName  *string   `json:"noticeObjectName,omitempty" xml:"noticeObjectName,omitempty"`
+	NoticeObjectPhone *string   `json:"noticeObjectPhone,omitempty" xml:"noticeObjectPhone,omitempty"`
+	RoleNameList      []*string `json:"roleNameList,omitempty" xml:"roleNameList,omitempty" type:"Repeated"`
 }
 
 func (s ListIncidentDetailEscalationPlansResponseBodyDataConvergenceEscalationPlanNoticeObjectList) String() string {
@@ -13521,6 +13647,11 @@ func (s *ListIncidentDetailEscalationPlansResponseBodyDataConvergenceEscalationP
 
 func (s *ListIncidentDetailEscalationPlansResponseBodyDataConvergenceEscalationPlanNoticeObjectList) SetNoticeObjectPhone(v string) *ListIncidentDetailEscalationPlansResponseBodyDataConvergenceEscalationPlanNoticeObjectList {
 	s.NoticeObjectPhone = &v
+	return s
+}
+
+func (s *ListIncidentDetailEscalationPlansResponseBodyDataConvergenceEscalationPlanNoticeObjectList) SetRoleNameList(v []*string) *ListIncidentDetailEscalationPlansResponseBodyDataConvergenceEscalationPlanNoticeObjectList {
+	s.RoleNameList = v
 	return s
 }
 
@@ -13548,13 +13679,15 @@ func (s *ListIncidentDetailEscalationPlansResponseBodyDataConvergenceEscalationP
 }
 
 type ListIncidentDetailEscalationPlansResponseBodyDataNuAcknowledgeEscalationPlan struct {
-	EscalationPlanType *string                                                                                         `json:"escalationPlanType,omitempty" xml:"escalationPlanType,omitempty"`
-	NoticeChannels     []*string                                                                                       `json:"noticeChannels,omitempty" xml:"noticeChannels,omitempty" type:"Repeated"`
-	NoticeObjectList   []*ListIncidentDetailEscalationPlansResponseBodyDataNuAcknowledgeEscalationPlanNoticeObjectList `json:"noticeObjectList,omitempty" xml:"noticeObjectList,omitempty" type:"Repeated"`
-	NoticeTime         *int64                                                                                          `json:"noticeTime,omitempty" xml:"noticeTime,omitempty"`
-	ServiceGroupList   []*ListIncidentDetailEscalationPlansResponseBodyDataNuAcknowledgeEscalationPlanServiceGroupList `json:"serviceGroupList,omitempty" xml:"serviceGroupList,omitempty" type:"Repeated"`
-	StartTime          *int64                                                                                          `json:"startTime,omitempty" xml:"startTime,omitempty"`
-	Status             *string                                                                                         `json:"status,omitempty" xml:"status,omitempty"`
+	EscalationPlanType   *string                                                                                             `json:"escalationPlanType,omitempty" xml:"escalationPlanType,omitempty"`
+	NoticeChannels       []*string                                                                                           `json:"noticeChannels,omitempty" xml:"noticeChannels,omitempty" type:"Repeated"`
+	NoticeObjectList     []*ListIncidentDetailEscalationPlansResponseBodyDataNuAcknowledgeEscalationPlanNoticeObjectList     `json:"noticeObjectList,omitempty" xml:"noticeObjectList,omitempty" type:"Repeated"`
+	NoticeRoleList       []*int64                                                                                            `json:"noticeRoleList,omitempty" xml:"noticeRoleList,omitempty" type:"Repeated"`
+	NoticeRoleObjectList []*ListIncidentDetailEscalationPlansResponseBodyDataNuAcknowledgeEscalationPlanNoticeRoleObjectList `json:"noticeRoleObjectList,omitempty" xml:"noticeRoleObjectList,omitempty" type:"Repeated"`
+	NoticeTime           *int64                                                                                              `json:"noticeTime,omitempty" xml:"noticeTime,omitempty"`
+	ServiceGroupList     []*ListIncidentDetailEscalationPlansResponseBodyDataNuAcknowledgeEscalationPlanServiceGroupList     `json:"serviceGroupList,omitempty" xml:"serviceGroupList,omitempty" type:"Repeated"`
+	StartTime            *int64                                                                                              `json:"startTime,omitempty" xml:"startTime,omitempty"`
+	Status               *string                                                                                             `json:"status,omitempty" xml:"status,omitempty"`
 }
 
 func (s ListIncidentDetailEscalationPlansResponseBodyDataNuAcknowledgeEscalationPlan) String() string {
@@ -13580,6 +13713,16 @@ func (s *ListIncidentDetailEscalationPlansResponseBodyDataNuAcknowledgeEscalatio
 	return s
 }
 
+func (s *ListIncidentDetailEscalationPlansResponseBodyDataNuAcknowledgeEscalationPlan) SetNoticeRoleList(v []*int64) *ListIncidentDetailEscalationPlansResponseBodyDataNuAcknowledgeEscalationPlan {
+	s.NoticeRoleList = v
+	return s
+}
+
+func (s *ListIncidentDetailEscalationPlansResponseBodyDataNuAcknowledgeEscalationPlan) SetNoticeRoleObjectList(v []*ListIncidentDetailEscalationPlansResponseBodyDataNuAcknowledgeEscalationPlanNoticeRoleObjectList) *ListIncidentDetailEscalationPlansResponseBodyDataNuAcknowledgeEscalationPlan {
+	s.NoticeRoleObjectList = v
+	return s
+}
+
 func (s *ListIncidentDetailEscalationPlansResponseBodyDataNuAcknowledgeEscalationPlan) SetNoticeTime(v int64) *ListIncidentDetailEscalationPlansResponseBodyDataNuAcknowledgeEscalationPlan {
 	s.NoticeTime = &v
 	return s
@@ -13601,9 +13744,10 @@ func (s *ListIncidentDetailEscalationPlansResponseBodyDataNuAcknowledgeEscalatio
 }
 
 type ListIncidentDetailEscalationPlansResponseBodyDataNuAcknowledgeEscalationPlanNoticeObjectList struct {
-	NoticeObjectId    *int64  `json:"noticeObjectId,omitempty" xml:"noticeObjectId,omitempty"`
-	NoticeObjectName  *string `json:"noticeObjectName,omitempty" xml:"noticeObjectName,omitempty"`
-	NoticeObjectPhone *string `json:"noticeObjectPhone,omitempty" xml:"noticeObjectPhone,omitempty"`
+	NoticeObjectId    *int64    `json:"noticeObjectId,omitempty" xml:"noticeObjectId,omitempty"`
+	NoticeObjectName  *string   `json:"noticeObjectName,omitempty" xml:"noticeObjectName,omitempty"`
+	NoticeObjectPhone *string   `json:"noticeObjectPhone,omitempty" xml:"noticeObjectPhone,omitempty"`
+	RoleNameList      []*string `json:"roleNameList,omitempty" xml:"roleNameList,omitempty" type:"Repeated"`
 }
 
 func (s ListIncidentDetailEscalationPlansResponseBodyDataNuAcknowledgeEscalationPlanNoticeObjectList) String() string {
@@ -13626,6 +13770,34 @@ func (s *ListIncidentDetailEscalationPlansResponseBodyDataNuAcknowledgeEscalatio
 
 func (s *ListIncidentDetailEscalationPlansResponseBodyDataNuAcknowledgeEscalationPlanNoticeObjectList) SetNoticeObjectPhone(v string) *ListIncidentDetailEscalationPlansResponseBodyDataNuAcknowledgeEscalationPlanNoticeObjectList {
 	s.NoticeObjectPhone = &v
+	return s
+}
+
+func (s *ListIncidentDetailEscalationPlansResponseBodyDataNuAcknowledgeEscalationPlanNoticeObjectList) SetRoleNameList(v []*string) *ListIncidentDetailEscalationPlansResponseBodyDataNuAcknowledgeEscalationPlanNoticeObjectList {
+	s.RoleNameList = v
+	return s
+}
+
+type ListIncidentDetailEscalationPlansResponseBodyDataNuAcknowledgeEscalationPlanNoticeRoleObjectList struct {
+	Id   *int64  `json:"id,omitempty" xml:"id,omitempty"`
+	Name *string `json:"name,omitempty" xml:"name,omitempty"`
+}
+
+func (s ListIncidentDetailEscalationPlansResponseBodyDataNuAcknowledgeEscalationPlanNoticeRoleObjectList) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListIncidentDetailEscalationPlansResponseBodyDataNuAcknowledgeEscalationPlanNoticeRoleObjectList) GoString() string {
+	return s.String()
+}
+
+func (s *ListIncidentDetailEscalationPlansResponseBodyDataNuAcknowledgeEscalationPlanNoticeRoleObjectList) SetId(v int64) *ListIncidentDetailEscalationPlansResponseBodyDataNuAcknowledgeEscalationPlanNoticeRoleObjectList {
+	s.Id = &v
+	return s
+}
+
+func (s *ListIncidentDetailEscalationPlansResponseBodyDataNuAcknowledgeEscalationPlanNoticeRoleObjectList) SetName(v string) *ListIncidentDetailEscalationPlansResponseBodyDataNuAcknowledgeEscalationPlanNoticeRoleObjectList {
+	s.Name = &v
 	return s
 }
 
@@ -13653,13 +13825,15 @@ func (s *ListIncidentDetailEscalationPlansResponseBodyDataNuAcknowledgeEscalatio
 }
 
 type ListIncidentDetailEscalationPlansResponseBodyDataUnFinishEscalationPlan struct {
-	EscalationPlanType *string                                                                                    `json:"escalationPlanType,omitempty" xml:"escalationPlanType,omitempty"`
-	NoticeChannels     []*string                                                                                  `json:"noticeChannels,omitempty" xml:"noticeChannels,omitempty" type:"Repeated"`
-	NoticeObjectList   []*ListIncidentDetailEscalationPlansResponseBodyDataUnFinishEscalationPlanNoticeObjectList `json:"noticeObjectList,omitempty" xml:"noticeObjectList,omitempty" type:"Repeated"`
-	NoticeTime         *int32                                                                                     `json:"noticeTime,omitempty" xml:"noticeTime,omitempty"`
-	ServiceGroupList   []*ListIncidentDetailEscalationPlansResponseBodyDataUnFinishEscalationPlanServiceGroupList `json:"serviceGroupList,omitempty" xml:"serviceGroupList,omitempty" type:"Repeated"`
-	StartTime          *int64                                                                                     `json:"startTime,omitempty" xml:"startTime,omitempty"`
-	Status             *string                                                                                    `json:"status,omitempty" xml:"status,omitempty"`
+	EscalationPlanType   *string                                                                                        `json:"escalationPlanType,omitempty" xml:"escalationPlanType,omitempty"`
+	NoticeChannels       []*string                                                                                      `json:"noticeChannels,omitempty" xml:"noticeChannels,omitempty" type:"Repeated"`
+	NoticeObjectList     []*ListIncidentDetailEscalationPlansResponseBodyDataUnFinishEscalationPlanNoticeObjectList     `json:"noticeObjectList,omitempty" xml:"noticeObjectList,omitempty" type:"Repeated"`
+	NoticeRoleList       []*int64                                                                                       `json:"noticeRoleList,omitempty" xml:"noticeRoleList,omitempty" type:"Repeated"`
+	NoticeRoleObjectList []*ListIncidentDetailEscalationPlansResponseBodyDataUnFinishEscalationPlanNoticeRoleObjectList `json:"noticeRoleObjectList,omitempty" xml:"noticeRoleObjectList,omitempty" type:"Repeated"`
+	NoticeTime           *int32                                                                                         `json:"noticeTime,omitempty" xml:"noticeTime,omitempty"`
+	ServiceGroupList     []*ListIncidentDetailEscalationPlansResponseBodyDataUnFinishEscalationPlanServiceGroupList     `json:"serviceGroupList,omitempty" xml:"serviceGroupList,omitempty" type:"Repeated"`
+	StartTime            *int64                                                                                         `json:"startTime,omitempty" xml:"startTime,omitempty"`
+	Status               *string                                                                                        `json:"status,omitempty" xml:"status,omitempty"`
 }
 
 func (s ListIncidentDetailEscalationPlansResponseBodyDataUnFinishEscalationPlan) String() string {
@@ -13685,6 +13859,16 @@ func (s *ListIncidentDetailEscalationPlansResponseBodyDataUnFinishEscalationPlan
 	return s
 }
 
+func (s *ListIncidentDetailEscalationPlansResponseBodyDataUnFinishEscalationPlan) SetNoticeRoleList(v []*int64) *ListIncidentDetailEscalationPlansResponseBodyDataUnFinishEscalationPlan {
+	s.NoticeRoleList = v
+	return s
+}
+
+func (s *ListIncidentDetailEscalationPlansResponseBodyDataUnFinishEscalationPlan) SetNoticeRoleObjectList(v []*ListIncidentDetailEscalationPlansResponseBodyDataUnFinishEscalationPlanNoticeRoleObjectList) *ListIncidentDetailEscalationPlansResponseBodyDataUnFinishEscalationPlan {
+	s.NoticeRoleObjectList = v
+	return s
+}
+
 func (s *ListIncidentDetailEscalationPlansResponseBodyDataUnFinishEscalationPlan) SetNoticeTime(v int32) *ListIncidentDetailEscalationPlansResponseBodyDataUnFinishEscalationPlan {
 	s.NoticeTime = &v
 	return s
@@ -13706,9 +13890,10 @@ func (s *ListIncidentDetailEscalationPlansResponseBodyDataUnFinishEscalationPlan
 }
 
 type ListIncidentDetailEscalationPlansResponseBodyDataUnFinishEscalationPlanNoticeObjectList struct {
-	NoticeObjectId    *int64  `json:"noticeObjectId,omitempty" xml:"noticeObjectId,omitempty"`
-	NoticeObjectName  *string `json:"noticeObjectName,omitempty" xml:"noticeObjectName,omitempty"`
-	NoticeObjectPhone *string `json:"noticeObjectPhone,omitempty" xml:"noticeObjectPhone,omitempty"`
+	NoticeObjectId    *int64    `json:"noticeObjectId,omitempty" xml:"noticeObjectId,omitempty"`
+	NoticeObjectName  *string   `json:"noticeObjectName,omitempty" xml:"noticeObjectName,omitempty"`
+	NoticeObjectPhone *string   `json:"noticeObjectPhone,omitempty" xml:"noticeObjectPhone,omitempty"`
+	RoleNameList      []*string `json:"roleNameList,omitempty" xml:"roleNameList,omitempty" type:"Repeated"`
 }
 
 func (s ListIncidentDetailEscalationPlansResponseBodyDataUnFinishEscalationPlanNoticeObjectList) String() string {
@@ -13731,6 +13916,34 @@ func (s *ListIncidentDetailEscalationPlansResponseBodyDataUnFinishEscalationPlan
 
 func (s *ListIncidentDetailEscalationPlansResponseBodyDataUnFinishEscalationPlanNoticeObjectList) SetNoticeObjectPhone(v string) *ListIncidentDetailEscalationPlansResponseBodyDataUnFinishEscalationPlanNoticeObjectList {
 	s.NoticeObjectPhone = &v
+	return s
+}
+
+func (s *ListIncidentDetailEscalationPlansResponseBodyDataUnFinishEscalationPlanNoticeObjectList) SetRoleNameList(v []*string) *ListIncidentDetailEscalationPlansResponseBodyDataUnFinishEscalationPlanNoticeObjectList {
+	s.RoleNameList = v
+	return s
+}
+
+type ListIncidentDetailEscalationPlansResponseBodyDataUnFinishEscalationPlanNoticeRoleObjectList struct {
+	Id   *int64  `json:"id,omitempty" xml:"id,omitempty"`
+	Name *string `json:"name,omitempty" xml:"name,omitempty"`
+}
+
+func (s ListIncidentDetailEscalationPlansResponseBodyDataUnFinishEscalationPlanNoticeRoleObjectList) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListIncidentDetailEscalationPlansResponseBodyDataUnFinishEscalationPlanNoticeRoleObjectList) GoString() string {
+	return s.String()
+}
+
+func (s *ListIncidentDetailEscalationPlansResponseBodyDataUnFinishEscalationPlanNoticeRoleObjectList) SetId(v int64) *ListIncidentDetailEscalationPlansResponseBodyDataUnFinishEscalationPlanNoticeRoleObjectList {
+	s.Id = &v
+	return s
+}
+
+func (s *ListIncidentDetailEscalationPlansResponseBodyDataUnFinishEscalationPlanNoticeRoleObjectList) SetName(v string) *ListIncidentDetailEscalationPlansResponseBodyDataUnFinishEscalationPlanNoticeRoleObjectList {
+	s.Name = &v
 	return s
 }
 
@@ -14731,6 +14944,7 @@ type ListIntegrationConfigsResponseBodyData struct {
 	MonitorSourceId        *int64  `json:"monitorSourceId,omitempty" xml:"monitorSourceId,omitempty"`
 	MonitorSourceName      *string `json:"monitorSourceName,omitempty" xml:"monitorSourceName,omitempty"`
 	MonitorSourceShortName *string `json:"monitorSourceShortName,omitempty" xml:"monitorSourceShortName,omitempty"`
+	MonitorSourceType      *int32  `json:"monitorSourceType,omitempty" xml:"monitorSourceType,omitempty"`
 	Status                 *string `json:"status,omitempty" xml:"status,omitempty"`
 }
 
@@ -14764,6 +14978,11 @@ func (s *ListIntegrationConfigsResponseBodyData) SetMonitorSourceName(v string) 
 
 func (s *ListIntegrationConfigsResponseBodyData) SetMonitorSourceShortName(v string) *ListIntegrationConfigsResponseBodyData {
 	s.MonitorSourceShortName = &v
+	return s
+}
+
+func (s *ListIntegrationConfigsResponseBodyData) SetMonitorSourceType(v int32) *ListIntegrationConfigsResponseBodyData {
+	s.MonitorSourceType = &v
 	return s
 }
 
@@ -16423,6 +16642,7 @@ type ListServiceGroupsRequest struct {
 	PageSize              *int64  `json:"pageSize,omitempty" xml:"pageSize,omitempty"`
 	QueryName             *string `json:"queryName,omitempty" xml:"queryName,omitempty"`
 	QueryType             *string `json:"queryType,omitempty" xml:"queryType,omitempty"`
+	ServiceId             *int64  `json:"serviceId,omitempty" xml:"serviceId,omitempty"`
 	UserId                *int64  `json:"userId,omitempty" xml:"userId,omitempty"`
 }
 
@@ -16466,6 +16686,11 @@ func (s *ListServiceGroupsRequest) SetQueryName(v string) *ListServiceGroupsRequ
 
 func (s *ListServiceGroupsRequest) SetQueryType(v string) *ListServiceGroupsRequest {
 	s.QueryType = &v
+	return s
+}
+
+func (s *ListServiceGroupsRequest) SetServiceId(v int64) *ListServiceGroupsRequest {
+	s.ServiceId = &v
 	return s
 }
 
@@ -16816,11 +17041,14 @@ func (s *ListServicesResponseBody) SetTotalCount(v int64) *ListServicesResponseB
 }
 
 type ListServicesResponseBodyData struct {
-	IsValid            *int32  `json:"isValid,omitempty" xml:"isValid,omitempty"`
-	ServiceDescription *string `json:"serviceDescription,omitempty" xml:"serviceDescription,omitempty"`
-	ServiceId          *int64  `json:"serviceId,omitempty" xml:"serviceId,omitempty"`
-	ServiceName        *string `json:"serviceName,omitempty" xml:"serviceName,omitempty"`
-	UpdateTime         *string `json:"updateTime,omitempty" xml:"updateTime,omitempty"`
+	EscalationPlanId   *int64   `json:"escalationPlanId,omitempty" xml:"escalationPlanId,omitempty"`
+	EscalationPlanName *string  `json:"escalationPlanName,omitempty" xml:"escalationPlanName,omitempty"`
+	IsValid            *int32   `json:"isValid,omitempty" xml:"isValid,omitempty"`
+	ServiceDescription *string  `json:"serviceDescription,omitempty" xml:"serviceDescription,omitempty"`
+	ServiceGroupIdList []*int64 `json:"serviceGroupIdList,omitempty" xml:"serviceGroupIdList,omitempty" type:"Repeated"`
+	ServiceId          *int64   `json:"serviceId,omitempty" xml:"serviceId,omitempty"`
+	ServiceName        *string  `json:"serviceName,omitempty" xml:"serviceName,omitempty"`
+	UpdateTime         *string  `json:"updateTime,omitempty" xml:"updateTime,omitempty"`
 }
 
 func (s ListServicesResponseBodyData) String() string {
@@ -16831,6 +17059,16 @@ func (s ListServicesResponseBodyData) GoString() string {
 	return s.String()
 }
 
+func (s *ListServicesResponseBodyData) SetEscalationPlanId(v int64) *ListServicesResponseBodyData {
+	s.EscalationPlanId = &v
+	return s
+}
+
+func (s *ListServicesResponseBodyData) SetEscalationPlanName(v string) *ListServicesResponseBodyData {
+	s.EscalationPlanName = &v
+	return s
+}
+
 func (s *ListServicesResponseBodyData) SetIsValid(v int32) *ListServicesResponseBodyData {
 	s.IsValid = &v
 	return s
@@ -16838,6 +17076,11 @@ func (s *ListServicesResponseBodyData) SetIsValid(v int32) *ListServicesResponse
 
 func (s *ListServicesResponseBodyData) SetServiceDescription(v string) *ListServicesResponseBodyData {
 	s.ServiceDescription = &v
+	return s
+}
+
+func (s *ListServicesResponseBodyData) SetServiceGroupIdList(v []*int64) *ListServicesResponseBodyData {
+	s.ServiceGroupIdList = v
 	return s
 }
 
@@ -17995,18 +18238,20 @@ func (s *ListUsersResponseBody) SetTotalCount(v int64) *ListUsersResponseBody {
 }
 
 type ListUsersResponseBodyData struct {
-	AccountType    *int64  `json:"accountType,omitempty" xml:"accountType,omitempty"`
-	AppAccount     *string `json:"appAccount,omitempty" xml:"appAccount,omitempty"`
-	Email          *string `json:"email,omitempty" xml:"email,omitempty"`
-	IsEditableUser *int64  `json:"isEditableUser,omitempty" xml:"isEditableUser,omitempty"`
-	IsOperation    *int32  `json:"isOperation,omitempty" xml:"isOperation,omitempty"`
-	IsRam          *int32  `json:"isRam,omitempty" xml:"isRam,omitempty"`
-	IsRelated      *string `json:"isRelated,omitempty" xml:"isRelated,omitempty"`
-	Phone          *string `json:"phone,omitempty" xml:"phone,omitempty"`
-	RamId          *int64  `json:"ramId,omitempty" xml:"ramId,omitempty"`
-	SynergyChannel *string `json:"synergyChannel,omitempty" xml:"synergyChannel,omitempty"`
-	UserId         *int64  `json:"userId,omitempty" xml:"userId,omitempty"`
-	Username       *string `json:"username,omitempty" xml:"username,omitempty"`
+	AccountType    *int64    `json:"accountType,omitempty" xml:"accountType,omitempty"`
+	AppAccount     *string   `json:"appAccount,omitempty" xml:"appAccount,omitempty"`
+	Email          *string   `json:"email,omitempty" xml:"email,omitempty"`
+	IsEditableUser *int64    `json:"isEditableUser,omitempty" xml:"isEditableUser,omitempty"`
+	IsOperation    *int32    `json:"isOperation,omitempty" xml:"isOperation,omitempty"`
+	IsRam          *int32    `json:"isRam,omitempty" xml:"isRam,omitempty"`
+	IsRelated      *string   `json:"isRelated,omitempty" xml:"isRelated,omitempty"`
+	Phone          *string   `json:"phone,omitempty" xml:"phone,omitempty"`
+	RamId          *int64    `json:"ramId,omitempty" xml:"ramId,omitempty"`
+	RoleIdList     []*int64  `json:"roleIdList,omitempty" xml:"roleIdList,omitempty" type:"Repeated"`
+	RoleNameList   []*string `json:"roleNameList,omitempty" xml:"roleNameList,omitempty" type:"Repeated"`
+	SynergyChannel *string   `json:"synergyChannel,omitempty" xml:"synergyChannel,omitempty"`
+	UserId         *int64    `json:"userId,omitempty" xml:"userId,omitempty"`
+	Username       *string   `json:"username,omitempty" xml:"username,omitempty"`
 }
 
 func (s ListUsersResponseBodyData) String() string {
@@ -18059,6 +18304,16 @@ func (s *ListUsersResponseBodyData) SetPhone(v string) *ListUsersResponseBodyDat
 
 func (s *ListUsersResponseBodyData) SetRamId(v int64) *ListUsersResponseBodyData {
 	s.RamId = &v
+	return s
+}
+
+func (s *ListUsersResponseBodyData) SetRoleIdList(v []*int64) *ListUsersResponseBodyData {
+	s.RoleIdList = v
+	return s
+}
+
+func (s *ListUsersResponseBodyData) SetRoleNameList(v []*string) *ListUsersResponseBodyData {
+	s.RoleNameList = v
 	return s
 }
 
@@ -18761,6 +19016,7 @@ type UpdateEscalationPlanRequest struct {
 	EscalationPlanName         *string                                                  `json:"escalationPlanName,omitempty" xml:"escalationPlanName,omitempty"`
 	EscalationPlanRules        []*UpdateEscalationPlanRequestEscalationPlanRules        `json:"escalationPlanRules,omitempty" xml:"escalationPlanRules,omitempty" type:"Repeated"`
 	EscalationPlanScopeObjects []*UpdateEscalationPlanRequestEscalationPlanScopeObjects `json:"escalationPlanScopeObjects,omitempty" xml:"escalationPlanScopeObjects,omitempty" type:"Repeated"`
+	IsGlobal                   *bool                                                    `json:"isGlobal,omitempty" xml:"isGlobal,omitempty"`
 }
 
 func (s UpdateEscalationPlanRequest) String() string {
@@ -18798,6 +19054,11 @@ func (s *UpdateEscalationPlanRequest) SetEscalationPlanRules(v []*UpdateEscalati
 
 func (s *UpdateEscalationPlanRequest) SetEscalationPlanScopeObjects(v []*UpdateEscalationPlanRequestEscalationPlanScopeObjects) *UpdateEscalationPlanRequest {
 	s.EscalationPlanScopeObjects = v
+	return s
+}
+
+func (s *UpdateEscalationPlanRequest) SetIsGlobal(v bool) *UpdateEscalationPlanRequest {
+	s.IsGlobal = &v
 	return s
 }
 
@@ -18866,6 +19127,7 @@ type UpdateEscalationPlanRequestEscalationPlanRulesEscalationPlanStrategies stru
 	EscalationPlanType *string   `json:"escalationPlanType,omitempty" xml:"escalationPlanType,omitempty"`
 	NoticeChannels     []*string `json:"noticeChannels,omitempty" xml:"noticeChannels,omitempty" type:"Repeated"`
 	NoticeObjects      []*int64  `json:"noticeObjects,omitempty" xml:"noticeObjects,omitempty" type:"Repeated"`
+	NoticeRoleList     []*int64  `json:"noticeRoleList,omitempty" xml:"noticeRoleList,omitempty" type:"Repeated"`
 	NoticeTime         *int64    `json:"noticeTime,omitempty" xml:"noticeTime,omitempty"`
 	ServiceGroupIds    []*int64  `json:"serviceGroupIds,omitempty" xml:"serviceGroupIds,omitempty" type:"Repeated"`
 }
@@ -18895,6 +19157,11 @@ func (s *UpdateEscalationPlanRequestEscalationPlanRulesEscalationPlanStrategies)
 
 func (s *UpdateEscalationPlanRequestEscalationPlanRulesEscalationPlanStrategies) SetNoticeObjects(v []*int64) *UpdateEscalationPlanRequestEscalationPlanRulesEscalationPlanStrategies {
 	s.NoticeObjects = v
+	return s
+}
+
+func (s *UpdateEscalationPlanRequestEscalationPlanRulesEscalationPlanStrategies) SetNoticeRoleList(v []*int64) *UpdateEscalationPlanRequestEscalationPlanRulesEscalationPlanStrategies {
+	s.NoticeRoleList = v
 	return s
 }
 
@@ -20212,10 +20479,12 @@ func (s *UpdateRouteRuleResponse) SetBody(v *UpdateRouteRuleResponseBody) *Updat
 }
 
 type UpdateServiceRequest struct {
-	ClientToken        *string `json:"clientToken,omitempty" xml:"clientToken,omitempty"`
-	ServiceDescription *string `json:"serviceDescription,omitempty" xml:"serviceDescription,omitempty"`
-	ServiceId          *int64  `json:"serviceId,omitempty" xml:"serviceId,omitempty"`
-	ServiceName        *string `json:"serviceName,omitempty" xml:"serviceName,omitempty"`
+	ClientToken        *string  `json:"clientToken,omitempty" xml:"clientToken,omitempty"`
+	EscalationPlanId   *int64   `json:"escalationPlanId,omitempty" xml:"escalationPlanId,omitempty"`
+	ServiceDescription *string  `json:"serviceDescription,omitempty" xml:"serviceDescription,omitempty"`
+	ServiceGroupIdList []*int64 `json:"serviceGroupIdList,omitempty" xml:"serviceGroupIdList,omitempty" type:"Repeated"`
+	ServiceId          *int64   `json:"serviceId,omitempty" xml:"serviceId,omitempty"`
+	ServiceName        *string  `json:"serviceName,omitempty" xml:"serviceName,omitempty"`
 }
 
 func (s UpdateServiceRequest) String() string {
@@ -20231,8 +20500,18 @@ func (s *UpdateServiceRequest) SetClientToken(v string) *UpdateServiceRequest {
 	return s
 }
 
+func (s *UpdateServiceRequest) SetEscalationPlanId(v int64) *UpdateServiceRequest {
+	s.EscalationPlanId = &v
+	return s
+}
+
 func (s *UpdateServiceRequest) SetServiceDescription(v string) *UpdateServiceRequest {
 	s.ServiceDescription = &v
+	return s
+}
+
+func (s *UpdateServiceRequest) SetServiceGroupIdList(v []*int64) *UpdateServiceRequest {
+	s.ServiceGroupIdList = v
 	return s
 }
 
@@ -21197,12 +21476,13 @@ func (s *UpdateSubscriptionResponse) SetBody(v *UpdateSubscriptionResponseBody) 
 }
 
 type UpdateUserRequest struct {
-	ClientToken *string `json:"clientToken,omitempty" xml:"clientToken,omitempty"`
-	Email       *string `json:"email,omitempty" xml:"email,omitempty"`
-	Phone       *string `json:"phone,omitempty" xml:"phone,omitempty"`
-	RamId       *int64  `json:"ramId,omitempty" xml:"ramId,omitempty"`
-	UserId      *int64  `json:"userId,omitempty" xml:"userId,omitempty"`
-	Username    *string `json:"username,omitempty" xml:"username,omitempty"`
+	ClientToken *string  `json:"clientToken,omitempty" xml:"clientToken,omitempty"`
+	Email       *string  `json:"email,omitempty" xml:"email,omitempty"`
+	Phone       *string  `json:"phone,omitempty" xml:"phone,omitempty"`
+	RamId       *int64   `json:"ramId,omitempty" xml:"ramId,omitempty"`
+	RoleIdList  []*int64 `json:"roleIdList,omitempty" xml:"roleIdList,omitempty" type:"Repeated"`
+	UserId      *int64   `json:"userId,omitempty" xml:"userId,omitempty"`
+	Username    *string  `json:"username,omitempty" xml:"username,omitempty"`
 }
 
 func (s UpdateUserRequest) String() string {
@@ -21230,6 +21510,11 @@ func (s *UpdateUserRequest) SetPhone(v string) *UpdateUserRequest {
 
 func (s *UpdateUserRequest) SetRamId(v int64) *UpdateUserRequest {
 	s.RamId = &v
+	return s
+}
+
+func (s *UpdateUserRequest) SetRoleIdList(v []*int64) *UpdateUserRequest {
+	s.RoleIdList = v
 	return s
 }
 
@@ -21888,6 +22173,10 @@ func (client *Client) CreateEscalationPlanWithOptions(request *CreateEscalationP
 
 	if !tea.BoolValue(util.IsUnset(request.EscalationPlanScopeObjects)) {
 		body["escalationPlanScopeObjects"] = request.EscalationPlanScopeObjects
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.IsGlobal)) {
+		body["isGlobal"] = request.IsGlobal
 	}
 
 	req := &openapi.OpenApiRequest{
@@ -22718,8 +23007,16 @@ func (client *Client) CreateServiceWithOptions(request *CreateServiceRequest, he
 		body["clientToken"] = request.ClientToken
 	}
 
+	if !tea.BoolValue(util.IsUnset(request.EscalationPlanId)) {
+		body["escalationPlanId"] = request.EscalationPlanId
+	}
+
 	if !tea.BoolValue(util.IsUnset(request.ServiceDescription)) {
 		body["serviceDescription"] = request.ServiceDescription
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ServiceGroupIdList)) {
+		body["serviceGroupIdList"] = request.ServiceGroupIdList
 	}
 
 	if !tea.BoolValue(util.IsUnset(request.ServiceName)) {
@@ -23054,6 +23351,10 @@ func (client *Client) CreateUserWithOptions(request *CreateUserRequest, headers 
 
 	if !tea.BoolValue(util.IsUnset(request.RamId)) {
 		body["ramId"] = request.RamId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.RoleIdList)) {
+		body["roleIdList"] = request.RoleIdList
 	}
 
 	if !tea.BoolValue(util.IsUnset(request.Username)) {
@@ -26582,6 +26883,10 @@ func (client *Client) ListEscalationPlansWithOptions(request *ListEscalationPlan
 		body["escalationPlanName"] = request.EscalationPlanName
 	}
 
+	if !tea.BoolValue(util.IsUnset(request.IsGlobal)) {
+		body["isGlobal"] = request.IsGlobal
+	}
+
 	if !tea.BoolValue(util.IsUnset(request.PageNumber)) {
 		body["pageNumber"] = request.PageNumber
 	}
@@ -26592,6 +26897,10 @@ func (client *Client) ListEscalationPlansWithOptions(request *ListEscalationPlan
 
 	if !tea.BoolValue(util.IsUnset(request.ServiceName)) {
 		body["serviceName"] = request.ServiceName
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Status)) {
+		body["status"] = request.Status
 	}
 
 	req := &openapi.OpenApiRequest{
@@ -27694,6 +28003,10 @@ func (client *Client) ListServiceGroupsWithOptions(request *ListServiceGroupsReq
 		body["queryType"] = request.QueryType
 	}
 
+	if !tea.BoolValue(util.IsUnset(request.ServiceId)) {
+		body["serviceId"] = request.ServiceId
+	}
+
 	if !tea.BoolValue(util.IsUnset(request.UserId)) {
 		body["userId"] = request.UserId
 	}
@@ -28739,6 +29052,10 @@ func (client *Client) UpdateEscalationPlanWithOptions(request *UpdateEscalationP
 		body["escalationPlanScopeObjects"] = request.EscalationPlanScopeObjects
 	}
 
+	if !tea.BoolValue(util.IsUnset(request.IsGlobal)) {
+		body["isGlobal"] = request.IsGlobal
+	}
+
 	req := &openapi.OpenApiRequest{
 		Headers: headers,
 		Body:    openapiutil.ParseToMap(body),
@@ -29549,8 +29866,16 @@ func (client *Client) UpdateServiceWithOptions(request *UpdateServiceRequest, he
 		body["clientToken"] = request.ClientToken
 	}
 
+	if !tea.BoolValue(util.IsUnset(request.EscalationPlanId)) {
+		body["escalationPlanId"] = request.EscalationPlanId
+	}
+
 	if !tea.BoolValue(util.IsUnset(request.ServiceDescription)) {
 		body["serviceDescription"] = request.ServiceDescription
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ServiceGroupIdList)) {
+		body["serviceGroupIdList"] = request.ServiceGroupIdList
 	}
 
 	if !tea.BoolValue(util.IsUnset(request.ServiceId)) {
@@ -29901,6 +30226,10 @@ func (client *Client) UpdateUserWithOptions(request *UpdateUserRequest, headers 
 
 	if !tea.BoolValue(util.IsUnset(request.RamId)) {
 		body["ramId"] = request.RamId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.RoleIdList)) {
+		body["roleIdList"] = request.RoleIdList
 	}
 
 	if !tea.BoolValue(util.IsUnset(request.UserId)) {
