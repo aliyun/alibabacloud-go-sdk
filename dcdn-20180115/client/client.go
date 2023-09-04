@@ -28335,6 +28335,7 @@ type SetDcdnDomainSSLCertificateRequest struct {
 	CertType *string `json:"CertType,omitempty" xml:"CertType,omitempty"`
 	// The domain name that is secured by the SSL certificate.
 	DomainName *string `json:"DomainName,omitempty" xml:"DomainName,omitempty"`
+	Env        *string `json:"Env,omitempty" xml:"Env,omitempty"`
 	OwnerId    *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
 	// The private key. Specify the private key only if you want to enable the SSL certificate.
 	SSLPri *string `json:"SSLPri,omitempty" xml:"SSLPri,omitempty"`
@@ -28378,6 +28379,11 @@ func (s *SetDcdnDomainSSLCertificateRequest) SetCertType(v string) *SetDcdnDomai
 
 func (s *SetDcdnDomainSSLCertificateRequest) SetDomainName(v string) *SetDcdnDomainSSLCertificateRequest {
 	s.DomainName = &v
+	return s
+}
+
+func (s *SetDcdnDomainSSLCertificateRequest) SetEnv(v string) *SetDcdnDomainSSLCertificateRequest {
+	s.Env = &v
 	return s
 }
 
@@ -42970,6 +42976,10 @@ func (client *Client) SetDcdnDomainSSLCertificateWithOptions(request *SetDcdnDom
 
 	if !tea.BoolValue(util.IsUnset(request.DomainName)) {
 		query["DomainName"] = request.DomainName
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Env)) {
+		query["Env"] = request.Env
 	}
 
 	if !tea.BoolValue(util.IsUnset(request.OwnerId)) {
