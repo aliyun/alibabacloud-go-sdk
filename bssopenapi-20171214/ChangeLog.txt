@@ -1,3 +1,6 @@
+2023-09-04 Version: v3.1.0
+- Generated golang 2017-12-14 for BssOpenApi.
+
 2023-05-19 Version: v3.0.4
 - DescribeInstanceAmortizedCostByAmortizationPeriodDate
 
