@@ -743,28 +743,28 @@ func (s *BatchSetCdnDomainConfigResponse) SetBody(v *BatchSetCdnDomainConfigResp
 type BatchSetCdnDomainServerCertificateRequest struct {
 	// The name of the certificate.
 	CertName *string `json:"CertName,omitempty" xml:"CertName,omitempty"`
-	// The type of the certificate. Valid values:
+	// The type of the SSL certificate. Valid values:
 	//
 	// *   **upload**: a user-uploaded SSL certificate.
-	// *   **cas**: a certificate that is acquired through Certificate Management Service.
+	// *   **cas**: a certificate that is issued by SSL Certificates Service.
 	CertType *string `json:"CertType,omitempty" xml:"CertType,omitempty"`
 	// The accelerated domain name to which the SSL certificate belongs. The type of request supported by the accelerated domain name must be HTTPS. You can specify multiple accelerated domain names and separate them with commas (,).
 	//
-	// >You can configure up to 10 domain names at a time.
+	// >  You can manage the SSL certificates of up to 50 accelerated domain names in each call.
 	DomainName *string `json:"DomainName,omitempty" xml:"DomainName,omitempty"`
 	// Specifies whether to check the certificate name for duplicates. If you set the value to 1, the system does not perform the check and overwrites the information about the existing certificate that uses the same name.
 	ForceSet *string `json:"ForceSet,omitempty" xml:"ForceSet,omitempty"`
 	OwnerId  *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
-	// The ID of the region.
+	// The region.
 	Region *string `json:"Region,omitempty" xml:"Region,omitempty"`
-	// The private key. Specify the private key only if you want to enable the SSL certificate.
+	// The private key. Specify the private key only if you enable the SSL certificate.
 	SSLPri *string `json:"SSLPri,omitempty" xml:"SSLPri,omitempty"`
-	// Specifies whether to enable the SSL certificate. Default value: off. Valid values:
+	// Specifies whether to enable the SSL certificate. Valid values:
 	//
-	// *   **on** ：enables the SSL certificate.
-	// *   **off**：disables the SSL certificate
+	// *   **on**: enables the SSL certificate.
+	// *   **off**: disables the SSL certificate. This is the default value.
 	SSLProtocol *string `json:"SSLProtocol,omitempty" xml:"SSLProtocol,omitempty"`
-	// The content of the SSL certificate. Specify the content of the SSL certificate only if you want to enable the SSL certificate.
+	// The content of the SSL certificate. Specify the content of the certificate only if you want to enable the SSL certificate.
 	SSLPub        *string `json:"SSLPub,omitempty" xml:"SSLPub,omitempty"`
 	SecurityToken *string `json:"SecurityToken,omitempty" xml:"SecurityToken,omitempty"`
 }
@@ -3123,6 +3123,14 @@ func (s *DescribeCdnCertificateListResponse) SetBody(v *DescribeCdnCertificateLi
 }
 
 type DescribeCdnConditionIPBInfoRequest struct {
+	// The configuration ID. Valid values:
+	//
+	// *   condition_region_config_cn
+	// *   condition_region_config_en
+	// *   condition_isp_config_cn
+	// *   condition_isp_config_en
+	// *   condition_country_config_cn
+	// *   condition_country_config_en
 	DataId *string `json:"DataId,omitempty" xml:"DataId,omitempty"`
 }
 
@@ -3140,8 +3148,10 @@ func (s *DescribeCdnConditionIPBInfoRequest) SetDataId(v string) *DescribeCdnCon
 }
 
 type DescribeCdnConditionIPBInfoResponseBody struct {
-	Datas     []*DescribeCdnConditionIPBInfoResponseBodyDatas `json:"Datas,omitempty" xml:"Datas,omitempty" type:"Repeated"`
-	RequestId *string                                         `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The data that is returned.
+	Datas []*DescribeCdnConditionIPBInfoResponseBodyDatas `json:"Datas,omitempty" xml:"Datas,omitempty" type:"Repeated"`
+	// The request ID.
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
 func (s DescribeCdnConditionIPBInfoResponseBody) String() string {
@@ -3163,6 +3173,7 @@ func (s *DescribeCdnConditionIPBInfoResponseBody) SetRequestId(v string) *Descri
 }
 
 type DescribeCdnConditionIPBInfoResponseBodyDatas struct {
+	// The configuration value.
 	Value *string `json:"Value,omitempty" xml:"Value,omitempty"`
 }
 
@@ -3423,15 +3434,19 @@ func (s *DescribeCdnDeliverListResponse) SetBody(v *DescribeCdnDeliverListRespon
 }
 
 type DescribeCdnDomainByCertificateRequest struct {
+	// Specifies whether the domain name list to return match the SSL certificate.
+	//
+	// *   true: The domain name list match the SSL certificate.
+	// *   false: The domain name list do not match the SSL certificate.
 	Exact *bool `json:"Exact,omitempty" xml:"Exact,omitempty"`
-	// The public key of the SSL certificate. You must encode the public key in Base64 before you invoke the encodeURIComponent function to encode a URI component.
+	// The public key of the SSL certificate. You must encode the public key in Base64 and then call the encodeURIComponent function to encode the public key again.
 	//
-	// A public key in the Privacy Enhanced Mail (PEM) format is supported.
+	// The public key must be in the PEM format.
 	SSLPub *string `json:"SSLPub,omitempty" xml:"SSLPub,omitempty"`
-	// Specifies whether to return only domain names with HTTPS enabled or disabled.
+	// Specifies whether the domain name list to return contains only domain names with HTTPS enabled or disabled.
 	//
-	// *   true: returns only domain names with HTTPS enabled.
-	// *   false: returns only domain names with HTTPS disabled.
+	// *   true: The domain name list contains only domain names with HTTPS enabled.
+	// *   false: The domain name list contains only domain names with HTTPS disabled.
 	SSLStatus *bool `json:"SSLStatus,omitempty" xml:"SSLStatus,omitempty"`
 }
 
@@ -3459,7 +3474,7 @@ func (s *DescribeCdnDomainByCertificateRequest) SetSSLStatus(v bool) *DescribeCd
 }
 
 type DescribeCdnDomainByCertificateResponseBody struct {
-	// The certificate information.
+	// The information about the certificate.
 	CertInfos *DescribeCdnDomainByCertificateResponseBodyCertInfos `json:"CertInfos,omitempty" xml:"CertInfos,omitempty" type:"Struct"`
 	// The ID of the request.
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
@@ -3503,23 +3518,23 @@ func (s *DescribeCdnDomainByCertificateResponseBodyCertInfos) SetCertInfo(v []*D
 type DescribeCdnDomainByCertificateResponseBodyCertInfosCertInfo struct {
 	// Indicates whether the SSL certificate is obsolete. Valid values:
 	//
-	// *   **yes**
-	// *   **no**
+	// *   **yes**: The SSL certificate is obsolete.
+	// *   **no**: The SSL certificate is working as expected.
 	CertCaIsLegacy *string `json:"CertCaIsLegacy,omitempty" xml:"CertCaIsLegacy,omitempty"`
 	// The expiration time of the certificate.
 	CertExpireTime *string `json:"CertExpireTime,omitempty" xml:"CertExpireTime,omitempty"`
 	// Indicates whether the SSL certificate is expired. Valid values:
 	//
-	// *   **yes**
-	// *   **no**
+	// *   **yes**: The SSL certificate is expired.
+	// *   **no**: The SSL certificate is not expired.
 	CertExpired *string `json:"CertExpired,omitempty" xml:"CertExpired,omitempty"`
-	// The effective time of the certificate.
+	// The time when the certificate became effective.
 	CertStartTime *string `json:"CertStartTime,omitempty" xml:"CertStartTime,omitempty"`
 	// The name of the SSL certificate owner.
 	CertSubjectCommonName *string `json:"CertSubjectCommonName,omitempty" xml:"CertSubjectCommonName,omitempty"`
 	// The type of the certificate. Valid values: **RSA**, **DSA**, and **ECDSA**.
 	CertType *string `json:"CertType,omitempty" xml:"CertType,omitempty"`
-	// The list of domain names. If a value is returned, the value matches the SSL certificate. Multiple domain names are separated by commas (,).
+	// If a value is returned, the value matches the SSL certificate. Multiple domain names are separated by commas (,).
 	DomainList *string `json:"DomainList,omitempty" xml:"DomainList,omitempty"`
 	// The domain names (DNS fields) that match the SSL certificate. Multiple domain names are separated by commas (,).
 	DomainNames *string `json:"DomainNames,omitempty" xml:"DomainNames,omitempty"`
@@ -8690,7 +8705,7 @@ type DescribeDomainCertificateInfoResponseBodyCertInfosCertInfo struct {
 	CertType *string `json:"CertType,omitempty" xml:"CertType,omitempty"`
 	// The time at which the certificate was updated.
 	CertUpdateTime *string `json:"CertUpdateTime,omitempty" xml:"CertUpdateTime,omitempty"`
-	// The CANME status of the domain name.
+	// The CNAME status of the domain name.
 	//
 	// *   **ok**: The domain name points to the CNAME assigned by Alibaba Cloud CDN.
 	// *   **cname_error**: An error occurred and the domain name cannot point to the CNAME.
@@ -10121,9 +10136,9 @@ type DescribeDomainMax95BpsDataRequest struct {
 	// *   **day**: queries the 95th percentile bandwidth data by day.
 	// *   **month**: queries the 95th percentile bandwidth data by month.
 	Cycle *string `json:"Cycle,omitempty" xml:"Cycle,omitempty"`
-	// The accelerated domain name. If you do not specify this parameter, data of all accelerated domain names under your account is queried.
+	// The accelerated domain name. If you do not specify a domain name, data of all domain names is queried.
 	//
-	// > You cannot specify multiple domain names at a time.
+	// > You cannot specify multiple domain names in a DescribeDomainMax95BpsData request.
 	DomainName *string `json:"DomainName,omitempty" xml:"DomainName,omitempty"`
 	// The end of the time range to query.
 	//
@@ -10175,6 +10190,7 @@ func (s *DescribeDomainMax95BpsDataRequest) SetTimePoint(v string) *DescribeDoma
 }
 
 type DescribeDomainMax95BpsDataResponseBody struct {
+	// Details of the 95th percentile bandwidth.
 	DetailData *DescribeDomainMax95BpsDataResponseBodyDetailData `json:"DetailData,omitempty" xml:"DetailData,omitempty" type:"Struct"`
 	// The accelerated domain name.
 	DomainName *string `json:"DomainName,omitempty" xml:"DomainName,omitempty"`
@@ -10258,10 +10274,14 @@ func (s *DescribeDomainMax95BpsDataResponseBodyDetailData) SetMax95Detail(v []*D
 }
 
 type DescribeDomainMax95BpsDataResponseBodyDetailDataMax95Detail struct {
-	Area             *string  `json:"Area,omitempty" xml:"Area,omitempty"`
-	Max95Bps         *float32 `json:"Max95Bps,omitempty" xml:"Max95Bps,omitempty"`
-	Max95BpsPeakTime *string  `json:"Max95BpsPeakTime,omitempty" xml:"Max95BpsPeakTime,omitempty"`
-	TimeStamp        *string  `json:"TimeStamp,omitempty" xml:"TimeStamp,omitempty"`
+	// Region of the 95th percentile bandwidth.
+	Area *string `json:"Area,omitempty" xml:"Area,omitempty"`
+	// The 95th percentile bandwidth.
+	Max95Bps *float32 `json:"Max95Bps,omitempty" xml:"Max95Bps,omitempty"`
+	// Time of the 95th percentile bandwidth.
+	Max95BpsPeakTime *string `json:"Max95BpsPeakTime,omitempty" xml:"Max95BpsPeakTime,omitempty"`
+	// The timestamp of the returned data.
+	TimeStamp *string `json:"TimeStamp,omitempty" xml:"TimeStamp,omitempty"`
 }
 
 func (s DescribeDomainMax95BpsDataResponseBodyDetailDataMax95Detail) String() string {
@@ -20170,8 +20190,8 @@ func (s *DescribeUserUsageDetailDataExportTaskResponse) SetBody(v *DescribeUserU
 type DescribeUserVipsByDomainRequest struct {
 	// Specifies whether to query the virtual IP addresses of only healthy CDN POPs. Valid values:
 	//
-	// *   **on**：healthy CDN edge nodes.
-	// *   **off**：all CDN edge nodes.
+	// *   **on**: healthy CDN edge nodes.
+	// *   **off**: all CDN edge nodes.
 	Available *string `json:"Available,omitempty" xml:"Available,omitempty"`
 	// The accelerated domain name. You can specify only one domain name.
 	DomainName *string `json:"DomainName,omitempty" xml:"DomainName,omitempty"`
@@ -20933,12 +20953,18 @@ func (s *ListRealtimeLogDeliveryInfosResponse) SetBody(v *ListRealtimeLogDeliver
 }
 
 type ListTagResourcesRequest struct {
-	NextToken    *string                       `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
-	ResourceId   []*string                     `json:"ResourceId,omitempty" xml:"ResourceId,omitempty" type:"Repeated"`
-	ResourceType *string                       `json:"ResourceType,omitempty" xml:"ResourceType,omitempty"`
-	Tag          []*ListTagResourcesRequestTag `json:"Tag,omitempty" xml:"Tag,omitempty" type:"Repeated"`
-	TagOwnerBid  *string                       `json:"TagOwnerBid,omitempty" xml:"TagOwnerBid,omitempty"`
-	TagOwnerUid  *string                       `json:"TagOwnerUid,omitempty" xml:"TagOwnerUid,omitempty"`
+	// The pagination token that is used in the next request to retrieve a new page of results.
+	NextToken *string `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
+	// The ID of the resource.
+	ResourceId []*string `json:"ResourceId,omitempty" xml:"ResourceId,omitempty" type:"Repeated"`
+	// The type of the resource. Set the value to **DOMAIN**.
+	ResourceType *string `json:"ResourceType,omitempty" xml:"ResourceType,omitempty"`
+	// The key-value pair of a tag.
+	Tag []*ListTagResourcesRequestTag `json:"Tag,omitempty" xml:"Tag,omitempty" type:"Repeated"`
+	// The business ID of the tag owner.
+	TagOwnerBid *string `json:"TagOwnerBid,omitempty" xml:"TagOwnerBid,omitempty"`
+	// The ID of the Alibaba Cloud account to which the tag belongs.
+	TagOwnerUid *string `json:"TagOwnerUid,omitempty" xml:"TagOwnerUid,omitempty"`
 }
 
 func (s ListTagResourcesRequest) String() string {
@@ -20980,7 +21006,9 @@ func (s *ListTagResourcesRequest) SetTagOwnerUid(v string) *ListTagResourcesRequ
 }
 
 type ListTagResourcesRequestTag struct {
-	Key   *string `json:"Key,omitempty" xml:"Key,omitempty"`
+	// The key of the tag.
+	Key *string `json:"Key,omitempty" xml:"Key,omitempty"`
+	// The value of the tag.
 	Value *string `json:"Value,omitempty" xml:"Value,omitempty"`
 }
 
@@ -21003,8 +21031,11 @@ func (s *ListTagResourcesRequestTag) SetValue(v string) *ListTagResourcesRequest
 }
 
 type ListTagResourcesResponseBody struct {
-	NextToken    *string                                   `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
-	RequestId    *string                                   `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The pagination token that is used in the next request to retrieve a new page of results.
+	NextToken *string `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
+	// The request ID.
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The returned correspondence between the resource and tags.
 	TagResources *ListTagResourcesResponseBodyTagResources `json:"TagResources,omitempty" xml:"TagResources,omitempty" type:"Struct"`
 }
 
@@ -21049,10 +21080,14 @@ func (s *ListTagResourcesResponseBodyTagResources) SetTagResource(v []*ListTagRe
 }
 
 type ListTagResourcesResponseBodyTagResourcesTagResource struct {
-	ResourceId   *string `json:"ResourceId,omitempty" xml:"ResourceId,omitempty"`
+	// The ID of the resource.
+	ResourceId *string `json:"ResourceId,omitempty" xml:"ResourceId,omitempty"`
+	// The type of the resource. Set the value to **DOMAIN**.
 	ResourceType *string `json:"ResourceType,omitempty" xml:"ResourceType,omitempty"`
-	TagKey       *string `json:"TagKey,omitempty" xml:"TagKey,omitempty"`
-	TagValue     *string `json:"TagValue,omitempty" xml:"TagValue,omitempty"`
+	// The key of the tag.
+	TagKey *string `json:"TagKey,omitempty" xml:"TagKey,omitempty"`
+	// The value of the tag.
+	TagValue *string `json:"TagValue,omitempty" xml:"TagValue,omitempty"`
 }
 
 func (s ListTagResourcesResponseBodyTagResourcesTagResource) String() string {
@@ -21286,6 +21321,7 @@ func (s *ModifyCdnDomainResponse) SetBody(v *ModifyCdnDomainResponseBody) *Modif
 }
 
 type ModifyCdnDomainOwnerRequest struct {
+	// The accelerated domain name.
 	DomainName    *string `json:"DomainName,omitempty" xml:"DomainName,omitempty"`
 	OwnerAccount  *string `json:"OwnerAccount,omitempty" xml:"OwnerAccount,omitempty"`
 	OwnerId       *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
@@ -21321,8 +21357,10 @@ func (s *ModifyCdnDomainOwnerRequest) SetSecurityToken(v string) *ModifyCdnDomai
 }
 
 type ModifyCdnDomainOwnerResponseBody struct {
-	Content   map[string]interface{} `json:"Content,omitempty" xml:"Content,omitempty"`
-	RequestId *string                `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// Procedure
+	Content map[string]interface{} `json:"Content,omitempty" xml:"Content,omitempty"`
+	// The request ID.
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
 func (s ModifyCdnDomainOwnerResponseBody) String() string {
@@ -22149,6 +22187,7 @@ type SetCdnDomainSSLCertificateRequest struct {
 	CertType *string `json:"CertType,omitempty" xml:"CertType,omitempty"`
 	// The accelerated domain name for which you want to configure the SSL certificate. The type of request supported by the domain name must be HTTPS. You can specify only one domain name in each request.
 	DomainName *string `json:"DomainName,omitempty" xml:"DomainName,omitempty"`
+	Env        *string `json:"Env,omitempty" xml:"Env,omitempty"`
 	OwnerId    *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
 	// The private key. Specify the private key only if you want to enable the SSL certificate.
 	SSLPri *string `json:"SSLPri,omitempty" xml:"SSLPri,omitempty"`
@@ -22192,6 +22231,11 @@ func (s *SetCdnDomainSSLCertificateRequest) SetCertType(v string) *SetCdnDomainS
 
 func (s *SetCdnDomainSSLCertificateRequest) SetDomainName(v string) *SetCdnDomainSSLCertificateRequest {
 	s.DomainName = &v
+	return s
+}
+
+func (s *SetCdnDomainSSLCertificateRequest) SetEnv(v string) *SetCdnDomainSSLCertificateRequest {
+	s.Env = &v
 	return s
 }
 
@@ -22425,8 +22469,8 @@ type SetDomainServerCertificateRequest struct {
 	ServerCertificate *string `json:"ServerCertificate,omitempty" xml:"ServerCertificate,omitempty"`
 	// Specifies whether to enable the SSL certificate. Default value: off. Valid values:
 	//
-	// *   **on** ：enables the SSL certificate.
-	// *   **off**：disables the SSL certificate.
+	// *   **on** : enables the SSL certificate.
+	// *   **off**: disables the SSL certificate.
 	ServerCertificateStatus *string `json:"ServerCertificateStatus,omitempty" xml:"ServerCertificateStatus,omitempty"`
 }
 
@@ -23929,8 +23973,9 @@ func (client *Client) BatchSetCdnDomainConfig(request *BatchSetCdnDomainConfigRe
 }
 
 /**
- * *   You can call this operation up to 10 times per second per account.
- * *   You can specify up to 10 domain names in each request. Separate multiple domain names with commas (,)
+ * > *   You can call this operation up to 10 times per second per account.
+ * >*   You can specify up to 10 domain names in each request. Separate multiple domain names with commas (,)
+ * >*   If the service type of a domain name is live streaming, the service may be unavailable after you configure the certificate for the domain name. Therefore, you cannot use this operation to configure the certificate for a domain name that is used for live streaming.
  *
  * @param request BatchSetCdnDomainServerCertificateRequest
  * @param runtime runtime options for this request RuntimeOptions
@@ -24006,8 +24051,9 @@ func (client *Client) BatchSetCdnDomainServerCertificateWithOptions(request *Bat
 }
 
 /**
- * *   You can call this operation up to 10 times per second per account.
- * *   You can specify up to 10 domain names in each request. Separate multiple domain names with commas (,)
+ * > *   You can call this operation up to 10 times per second per account.
+ * >*   You can specify up to 10 domain names in each request. Separate multiple domain names with commas (,)
+ * >*   If the service type of a domain name is live streaming, the service may be unavailable after you configure the certificate for the domain name. Therefore, you cannot use this operation to configure the certificate for a domain name that is used for live streaming.
  *
  * @param request BatchSetCdnDomainServerCertificateRequest
  * @return BatchSetCdnDomainServerCertificateResponse
@@ -25705,7 +25751,7 @@ func (client *Client) DescribeCdnDeliverList(request *DescribeCdnDeliverListRequ
 }
 
 /**
- * > You can call this operation up to 100 times per second per account.
+ * >  You can call this operation up to 100 times per second per account.
  *
  * @param request DescribeCdnDomainByCertificateRequest
  * @param runtime runtime options for this request RuntimeOptions
@@ -25753,7 +25799,7 @@ func (client *Client) DescribeCdnDomainByCertificateWithOptions(request *Describ
 }
 
 /**
- * > You can call this operation up to 100 times per second per account.
+ * >  You can call this operation up to 100 times per second per account.
  *
  * @param request DescribeCdnDomainByCertificateRequest
  * @return DescribeCdnDomainByCertificateResponse
@@ -28300,11 +28346,16 @@ func (client *Client) DescribeDomainISPData(request *DescribeDomainISPDataReques
 }
 
 /**
- * *   The unit of the bandwidth is bit/s.
- * *   The time granularity of the queried data is 5 minutes.
- * *   You can query data in the last 90 days.
- * *   You can specify the StartTime and EndTime parameters, or the TimePoint and Cycle parameters to query the 95th percentile bandwidth data. If you specify the StartTime and EndTime parameters and the time range that is specified by these parameters is less than or equal to 24 hours, the 95th percentile bandwidth data on the day of the start time is returned. If the time range that is specified by these parameters is more than 24 hours, the 95th percentile bandwidth data in the month of the start time is returned. If you specify the TimePoint and Cycle parameters, the 95th percentile bandwidth data of the cycle is returned. If you do not specify parameters as previously mentioned, the 95th percentile bandwidth data in the last 24 hours is returned.
- * *   You can call this operation up to 100 times per second per account.
+ * **You can use one of the following methods to query data:**
+ * *   If you specify the StartTime and EndTime parameters and the time range that is specified by these parameters is less than or equal to 24 hours, the 95th percentile bandwidth data on the day of the start time is returned. If the time range that is specified by these parameters is more than 24 hours, the 95th percentile bandwidth data in the month of the start time is returned.
+ * *   If you specify the TimePoint and Cycle parameters, the 95th percentile bandwidth data of the cycle is returned.
+ * *   If you specify the StartTime, EndTime, and Cycle parameters, the 95th percentile bandwidth data of the cycle is returned.
+ * If you do not use one of the methods, the 95th percentile bandwidth data of the previous 24 hours is returned by default.
+ * * Maximum time range to query: 90 days
+ * * Minimum data granularity to query: 1 day
+ * * Historical data available: 90 days
+ * - You can call this operation up to 100 times per second per account.
+ * - The unit of the bandwidth data returned is bit/s.
  *
  * @param request DescribeDomainMax95BpsDataRequest
  * @param runtime runtime options for this request RuntimeOptions
@@ -28360,11 +28411,16 @@ func (client *Client) DescribeDomainMax95BpsDataWithOptions(request *DescribeDom
 }
 
 /**
- * *   The unit of the bandwidth is bit/s.
- * *   The time granularity of the queried data is 5 minutes.
- * *   You can query data in the last 90 days.
- * *   You can specify the StartTime and EndTime parameters, or the TimePoint and Cycle parameters to query the 95th percentile bandwidth data. If you specify the StartTime and EndTime parameters and the time range that is specified by these parameters is less than or equal to 24 hours, the 95th percentile bandwidth data on the day of the start time is returned. If the time range that is specified by these parameters is more than 24 hours, the 95th percentile bandwidth data in the month of the start time is returned. If you specify the TimePoint and Cycle parameters, the 95th percentile bandwidth data of the cycle is returned. If you do not specify parameters as previously mentioned, the 95th percentile bandwidth data in the last 24 hours is returned.
- * *   You can call this operation up to 100 times per second per account.
+ * **You can use one of the following methods to query data:**
+ * *   If you specify the StartTime and EndTime parameters and the time range that is specified by these parameters is less than or equal to 24 hours, the 95th percentile bandwidth data on the day of the start time is returned. If the time range that is specified by these parameters is more than 24 hours, the 95th percentile bandwidth data in the month of the start time is returned.
+ * *   If you specify the TimePoint and Cycle parameters, the 95th percentile bandwidth data of the cycle is returned.
+ * *   If you specify the StartTime, EndTime, and Cycle parameters, the 95th percentile bandwidth data of the cycle is returned.
+ * If you do not use one of the methods, the 95th percentile bandwidth data of the previous 24 hours is returned by default.
+ * * Maximum time range to query: 90 days
+ * * Minimum data granularity to query: 1 day
+ * * Historical data available: 90 days
+ * - You can call this operation up to 100 times per second per account.
+ * - The unit of the bandwidth data returned is bit/s.
  *
  * @param request DescribeDomainMax95BpsDataRequest
  * @return DescribeDomainMax95BpsDataResponse
@@ -32735,6 +32791,15 @@ func (client *Client) ModifyCdnDomain(request *ModifyCdnDomainRequest) (_result 
 	return _result, _err
 }
 
+/**
+ * This operation is used in the following scenario:
+ * *   You have multiple Alibaba Cloud accounts and want to transfer domain names from Account A to Account B.
+ * *   You are prompted that a domain name has been added when you add the domain name to Alibaba Cloud CDN. You do not know which account does the domain name belong to, and you want to transfer the domain name to your current account.
+ *
+ * @param request ModifyCdnDomainOwnerRequest
+ * @param runtime runtime options for this request RuntimeOptions
+ * @return ModifyCdnDomainOwnerResponse
+ */
 func (client *Client) ModifyCdnDomainOwnerWithOptions(request *ModifyCdnDomainOwnerRequest, runtime *util.RuntimeOptions) (_result *ModifyCdnDomainOwnerResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -32780,6 +32845,14 @@ func (client *Client) ModifyCdnDomainOwnerWithOptions(request *ModifyCdnDomainOw
 	return _result, _err
 }
 
+/**
+ * This operation is used in the following scenario:
+ * *   You have multiple Alibaba Cloud accounts and want to transfer domain names from Account A to Account B.
+ * *   You are prompted that a domain name has been added when you add the domain name to Alibaba Cloud CDN. You do not know which account does the domain name belong to, and you want to transfer the domain name to your current account.
+ *
+ * @param request ModifyCdnDomainOwnerRequest
+ * @return ModifyCdnDomainOwnerResponse
+ */
 func (client *Client) ModifyCdnDomainOwner(request *ModifyCdnDomainOwnerRequest) (_result *ModifyCdnDomainOwnerResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &ModifyCdnDomainOwnerResponse{}
@@ -33442,6 +33515,10 @@ func (client *Client) SetCdnDomainSSLCertificateWithOptions(request *SetCdnDomai
 
 	if !tea.BoolValue(util.IsUnset(request.DomainName)) {
 		query["DomainName"] = request.DomainName
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Env)) {
+		query["Env"] = request.Env
 	}
 
 	if !tea.BoolValue(util.IsUnset(request.OwnerId)) {
