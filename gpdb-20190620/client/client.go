@@ -13,8 +13,10 @@ import (
 )
 
 type DescribeDBInstanceForDmsRequest struct {
-	Host *string `json:"Host,omitempty" xml:"Host,omitempty"`
-	Port *int64  `json:"Port,omitempty" xml:"Port,omitempty"`
+	DBInstanceId *string `json:"DBInstanceId,omitempty" xml:"DBInstanceId,omitempty"`
+	Host         *string `json:"Host,omitempty" xml:"Host,omitempty"`
+	OwnerId      *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
+	Port         *int64  `json:"Port,omitempty" xml:"Port,omitempty"`
 }
 
 func (s DescribeDBInstanceForDmsRequest) String() string {
@@ -25,8 +27,18 @@ func (s DescribeDBInstanceForDmsRequest) GoString() string {
 	return s.String()
 }
 
+func (s *DescribeDBInstanceForDmsRequest) SetDBInstanceId(v string) *DescribeDBInstanceForDmsRequest {
+	s.DBInstanceId = &v
+	return s
+}
+
 func (s *DescribeDBInstanceForDmsRequest) SetHost(v string) *DescribeDBInstanceForDmsRequest {
 	s.Host = &v
+	return s
+}
+
+func (s *DescribeDBInstanceForDmsRequest) SetOwnerId(v int64) *DescribeDBInstanceForDmsRequest {
+	s.OwnerId = &v
 	return s
 }
 
@@ -214,6 +226,7 @@ func (s *DescribeDBInstanceForDmsResponse) SetBody(v *DescribeDBInstanceForDmsRe
 
 type DescribeDBInstanceSecurityIpsRequest struct {
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	OwnerId    *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
 }
 
 func (s DescribeDBInstanceSecurityIpsRequest) String() string {
@@ -226,6 +239,11 @@ func (s DescribeDBInstanceSecurityIpsRequest) GoString() string {
 
 func (s *DescribeDBInstanceSecurityIpsRequest) SetInstanceId(v string) *DescribeDBInstanceSecurityIpsRequest {
 	s.InstanceId = &v
+	return s
+}
+
+func (s *DescribeDBInstanceSecurityIpsRequest) SetOwnerId(v int64) *DescribeDBInstanceSecurityIpsRequest {
+	s.OwnerId = &v
 	return s
 }
 
@@ -335,7 +353,8 @@ func (s *DescribeDBInstanceSecurityIpsResponse) SetBody(v *DescribeDBInstanceSec
 }
 
 type DescribeDBInstancesForDmsRequest struct {
-	AliUid *int64 `json:"AliUid,omitempty" xml:"AliUid,omitempty"`
+	AliUid  *int64 `json:"AliUid,omitempty" xml:"AliUid,omitempty"`
+	OwnerId *int64 `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
 }
 
 func (s DescribeDBInstancesForDmsRequest) String() string {
@@ -348,6 +367,11 @@ func (s DescribeDBInstancesForDmsRequest) GoString() string {
 
 func (s *DescribeDBInstancesForDmsRequest) SetAliUid(v int64) *DescribeDBInstancesForDmsRequest {
 	s.AliUid = &v
+	return s
+}
+
+func (s *DescribeDBInstancesForDmsRequest) SetOwnerId(v int64) *DescribeDBInstancesForDmsRequest {
+	s.OwnerId = &v
 	return s
 }
 
@@ -405,7 +429,8 @@ func (s *DescribeDBInstancesForDmsResponseBody) SetSuccess(v bool) *DescribeDBIn
 }
 
 type DescribeDBInstancesForDmsResponseBodyInstances struct {
-	AliUid              *string `json:"AliUid,omitempty" xml:"AliUid,omitempty"`
+	AliUid *string `json:"AliUid,omitempty" xml:"AliUid,omitempty"`
+	// BID。
 	Bid                 *string `json:"Bid,omitempty" xml:"Bid,omitempty"`
 	ConnectionString    *string `json:"ConnectionString,omitempty" xml:"ConnectionString,omitempty"`
 	DbInstanceName      *string `json:"DbInstanceName,omitempty" xml:"DbInstanceName,omitempty"`
@@ -532,6 +557,7 @@ type ModifyDBInstanceSecurityIpsRequest struct {
 	AliUid     *int64  `json:"AliUid,omitempty" xml:"AliUid,omitempty"`
 	GroupName  *string `json:"GroupName,omitempty" xml:"GroupName,omitempty"`
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	OwnerId    *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
 	WhileList  *string `json:"WhileList,omitempty" xml:"WhileList,omitempty"`
 }
 
@@ -555,6 +581,11 @@ func (s *ModifyDBInstanceSecurityIpsRequest) SetGroupName(v string) *ModifyDBIns
 
 func (s *ModifyDBInstanceSecurityIpsRequest) SetInstanceId(v string) *ModifyDBInstanceSecurityIpsRequest {
 	s.InstanceId = &v
+	return s
+}
+
+func (s *ModifyDBInstanceSecurityIpsRequest) SetOwnerId(v int64) *ModifyDBInstanceSecurityIpsRequest {
+	s.OwnerId = &v
 	return s
 }
 
@@ -701,8 +732,16 @@ func (client *Client) DescribeDBInstanceForDmsWithOptions(request *DescribeDBIns
 		return _result, _err
 	}
 	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.DBInstanceId)) {
+		query["DBInstanceId"] = request.DBInstanceId
+	}
+
 	if !tea.BoolValue(util.IsUnset(request.Host)) {
 		query["Host"] = request.Host
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.OwnerId)) {
+		query["OwnerId"] = request.OwnerId
 	}
 
 	if !tea.BoolValue(util.IsUnset(request.Port)) {
@@ -753,6 +792,10 @@ func (client *Client) DescribeDBInstanceSecurityIpsWithOptions(request *Describe
 		query["InstanceId"] = request.InstanceId
 	}
 
+	if !tea.BoolValue(util.IsUnset(request.OwnerId)) {
+		query["OwnerId"] = request.OwnerId
+	}
+
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
 	}
@@ -795,6 +838,10 @@ func (client *Client) DescribeDBInstancesForDmsWithOptions(request *DescribeDBIn
 	query := map[string]interface{}{}
 	if !tea.BoolValue(util.IsUnset(request.AliUid)) {
 		query["AliUid"] = request.AliUid
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.OwnerId)) {
+		query["OwnerId"] = request.OwnerId
 	}
 
 	req := &openapi.OpenApiRequest{
@@ -847,6 +894,10 @@ func (client *Client) ModifyDBInstanceSecurityIpsWithOptions(request *ModifyDBIn
 
 	if !tea.BoolValue(util.IsUnset(request.InstanceId)) {
 		query["InstanceId"] = request.InstanceId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.OwnerId)) {
+		query["OwnerId"] = request.OwnerId
 	}
 
 	if !tea.BoolValue(util.IsUnset(request.WhileList)) {
