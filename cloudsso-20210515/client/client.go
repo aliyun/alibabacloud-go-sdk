@@ -13,7 +13,11 @@ import (
 )
 
 type AddExternalSAMLIdPCertificateRequest struct {
-	DirectoryId     *string `json:"DirectoryId,omitempty" xml:"DirectoryId,omitempty"`
+	// The ID of the directory.
+	DirectoryId *string `json:"DirectoryId,omitempty" xml:"DirectoryId,omitempty"`
+	// The X.509 certificate in the PEM format.
+	//
+	// The certificate is provided by the SAML IdP.
 	X509Certificate *string `json:"X509Certificate,omitempty" xml:"X509Certificate,omitempty"`
 }
 
@@ -36,8 +40,10 @@ func (s *AddExternalSAMLIdPCertificateRequest) SetX509Certificate(v string) *Add
 }
 
 type AddExternalSAMLIdPCertificateResponseBody struct {
+	// The ID of the SAML signing certificate.
 	CertificateId *string `json:"CertificateId,omitempty" xml:"CertificateId,omitempty"`
-	RequestId     *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The ID of the request.
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
 func (s AddExternalSAMLIdPCertificateResponseBody) String() string {
@@ -88,11 +94,26 @@ func (s *AddExternalSAMLIdPCertificateResponse) SetBody(v *AddExternalSAMLIdPCer
 }
 
 type AddPermissionPolicyToAccessConfigurationRequest struct {
+	// The ID of the access configuration.
 	AccessConfigurationId *string `json:"AccessConfigurationId,omitempty" xml:"AccessConfigurationId,omitempty"`
-	DirectoryId           *string `json:"DirectoryId,omitempty" xml:"DirectoryId,omitempty"`
-	InlinePolicyDocument  *string `json:"InlinePolicyDocument,omitempty" xml:"InlinePolicyDocument,omitempty"`
-	PermissionPolicyName  *string `json:"PermissionPolicyName,omitempty" xml:"PermissionPolicyName,omitempty"`
-	PermissionPolicyType  *string `json:"PermissionPolicyType,omitempty" xml:"PermissionPolicyType,omitempty"`
+	// The ID of the directory.
+	DirectoryId *string `json:"DirectoryId,omitempty" xml:"DirectoryId,omitempty"`
+	// The configurations of the inline policy.
+	//
+	// The value can be up to 4,096 characters in length.
+	//
+	// If you set `PermissionPolicyType` to `Inline`, you must specify this parameter. For more information about the syntax and structure of RAM policies, see [Policy syntax and structure](~~93739~~).
+	InlinePolicyDocument *string `json:"InlinePolicyDocument,omitempty" xml:"InlinePolicyDocument,omitempty"`
+	// The name of the policy.
+	//
+	// *   If you set `PermissionPolicyType` to `System`, you must set this parameter to the name of the system policy. You can obtain the name of the system policy from RAM.
+	// *   If you set `PermissionPolicyType` to `Inline`, you must set this parameter to the name of the inline policy. A custom value is supported.
+	PermissionPolicyName *string `json:"PermissionPolicyName,omitempty" xml:"PermissionPolicyName,omitempty"`
+	// The type of the policy. Valid values:
+	//
+	// *   System: system policy. Resource Access Management (RAM) system policies are reused.
+	// *   Inline: inline policy. Inline policies are created based on the RAM policy syntax and structure.
+	PermissionPolicyType *string `json:"PermissionPolicyType,omitempty" xml:"PermissionPolicyType,omitempty"`
 }
 
 func (s AddPermissionPolicyToAccessConfigurationRequest) String() string {
@@ -129,6 +150,7 @@ func (s *AddPermissionPolicyToAccessConfigurationRequest) SetPermissionPolicyTyp
 }
 
 type AddPermissionPolicyToAccessConfigurationResponseBody struct {
+	// The ID of the request.
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -175,9 +197,12 @@ func (s *AddPermissionPolicyToAccessConfigurationResponse) SetBody(v *AddPermiss
 }
 
 type AddUserToGroupRequest struct {
+	// The ID of the directory.
 	DirectoryId *string `json:"DirectoryId,omitempty" xml:"DirectoryId,omitempty"`
-	GroupId     *string `json:"GroupId,omitempty" xml:"GroupId,omitempty"`
-	UserId      *string `json:"UserId,omitempty" xml:"UserId,omitempty"`
+	// The ID of the group.
+	GroupId *string `json:"GroupId,omitempty" xml:"GroupId,omitempty"`
+	// The ID of the user.
+	UserId *string `json:"UserId,omitempty" xml:"UserId,omitempty"`
 }
 
 func (s AddUserToGroupRequest) String() string {
@@ -204,6 +229,7 @@ func (s *AddUserToGroupRequest) SetUserId(v string) *AddUserToGroupRequest {
 }
 
 type AddUserToGroupResponseBody struct {
+	// The ID of the request.
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -250,6 +276,7 @@ func (s *AddUserToGroupResponse) SetBody(v *AddUserToGroupResponseBody) *AddUser
 }
 
 type ClearExternalSAMLIdentityProviderRequest struct {
+	// The ID of the directory.
 	DirectoryId *string `json:"DirectoryId,omitempty" xml:"DirectoryId,omitempty"`
 }
 
@@ -267,6 +294,7 @@ func (s *ClearExternalSAMLIdentityProviderRequest) SetDirectoryId(v string) *Cle
 }
 
 type ClearExternalSAMLIdentityProviderResponseBody struct {
+	// The ID of the request.
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -313,12 +341,24 @@ func (s *ClearExternalSAMLIdentityProviderResponse) SetBody(v *ClearExternalSAML
 }
 
 type CreateAccessAssignmentRequest struct {
+	// The ID of the access configuration.
 	AccessConfigurationId *string `json:"AccessConfigurationId,omitempty" xml:"AccessConfigurationId,omitempty"`
-	DirectoryId           *string `json:"DirectoryId,omitempty" xml:"DirectoryId,omitempty"`
-	PrincipalId           *string `json:"PrincipalId,omitempty" xml:"PrincipalId,omitempty"`
-	PrincipalType         *string `json:"PrincipalType,omitempty" xml:"PrincipalType,omitempty"`
-	TargetId              *string `json:"TargetId,omitempty" xml:"TargetId,omitempty"`
-	TargetType            *string `json:"TargetType,omitempty" xml:"TargetType,omitempty"`
+	// The ID of the directory.
+	DirectoryId *string `json:"DirectoryId,omitempty" xml:"DirectoryId,omitempty"`
+	// The ID of the CloudSSO identity.
+	//
+	// *   If you set `PrincipalType` to `User`, set `PrincipalId` to the ID of the CloudSSO user.
+	// *   If you set `PrincipalType` to `Group`, set `PrincipalId` to the ID of the CloudSSO group.
+	PrincipalId *string `json:"PrincipalId,omitempty" xml:"PrincipalId,omitempty"`
+	// The type of the CloudSSO identity. Valid values:
+	//
+	// *   User
+	// *   Group
+	PrincipalType *string `json:"PrincipalType,omitempty" xml:"PrincipalType,omitempty"`
+	// The ID of the task object.
+	TargetId *string `json:"TargetId,omitempty" xml:"TargetId,omitempty"`
+	// The type of the task object. Set the value to RD-Account, which indicates an account in your resource directory.
+	TargetType *string `json:"TargetType,omitempty" xml:"TargetType,omitempty"`
 }
 
 func (s CreateAccessAssignmentRequest) String() string {
@@ -360,8 +400,10 @@ func (s *CreateAccessAssignmentRequest) SetTargetType(v string) *CreateAccessAss
 }
 
 type CreateAccessAssignmentResponseBody struct {
-	RequestId *string                                 `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	Task      *CreateAccessAssignmentResponseBodyTask `json:"Task,omitempty" xml:"Task,omitempty" type:"Struct"`
+	// The ID of the request.
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The information about the task.
+	Task *CreateAccessAssignmentResponseBodyTask `json:"Task,omitempty" xml:"Task,omitempty" type:"Struct"`
 }
 
 func (s CreateAccessAssignmentResponseBody) String() string {
@@ -383,19 +425,39 @@ func (s *CreateAccessAssignmentResponseBody) SetTask(v *CreateAccessAssignmentRe
 }
 
 type CreateAccessAssignmentResponseBodyTask struct {
-	AccessConfigurationId   *string `json:"AccessConfigurationId,omitempty" xml:"AccessConfigurationId,omitempty"`
+	// The ID of the access configuration.
+	AccessConfigurationId *string `json:"AccessConfigurationId,omitempty" xml:"AccessConfigurationId,omitempty"`
+	// The name of the access configuration.
 	AccessConfigurationName *string `json:"AccessConfigurationName,omitempty" xml:"AccessConfigurationName,omitempty"`
-	PrincipalId             *string `json:"PrincipalId,omitempty" xml:"PrincipalId,omitempty"`
-	PrincipalName           *string `json:"PrincipalName,omitempty" xml:"PrincipalName,omitempty"`
-	PrincipalType           *string `json:"PrincipalType,omitempty" xml:"PrincipalType,omitempty"`
-	Status                  *string `json:"Status,omitempty" xml:"Status,omitempty"`
-	TargetId                *string `json:"TargetId,omitempty" xml:"TargetId,omitempty"`
-	TargetName              *string `json:"TargetName,omitempty" xml:"TargetName,omitempty"`
-	TargetPath              *string `json:"TargetPath,omitempty" xml:"TargetPath,omitempty"`
-	TargetPathName          *string `json:"TargetPathName,omitempty" xml:"TargetPathName,omitempty"`
-	TargetType              *string `json:"TargetType,omitempty" xml:"TargetType,omitempty"`
-	TaskId                  *string `json:"TaskId,omitempty" xml:"TaskId,omitempty"`
-	TaskType                *string `json:"TaskType,omitempty" xml:"TaskType,omitempty"`
+	// The ID of the CloudSSO identity.
+	PrincipalId *string `json:"PrincipalId,omitempty" xml:"PrincipalId,omitempty"`
+	// The name of the CloudSSO identity.
+	PrincipalName *string `json:"PrincipalName,omitempty" xml:"PrincipalName,omitempty"`
+	// The type of the CloudSSO identity. Valid values:
+	//
+	// *   User
+	// *   Group
+	PrincipalType *string `json:"PrincipalType,omitempty" xml:"PrincipalType,omitempty"`
+	// The status of the task. Valid values:
+	//
+	// *   InProgress: The task is running.
+	// *   Success: The task is successful.
+	// *   Failed: The task failed.
+	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
+	// The ID of the task object.
+	TargetId *string `json:"TargetId,omitempty" xml:"TargetId,omitempty"`
+	// The name of the task object.
+	TargetName *string `json:"TargetName,omitempty" xml:"TargetName,omitempty"`
+	// The path ID of the task object in your resource directory.
+	TargetPath *string `json:"TargetPath,omitempty" xml:"TargetPath,omitempty"`
+	// The path name of the task object in your resource directory.
+	TargetPathName *string `json:"TargetPathName,omitempty" xml:"TargetPathName,omitempty"`
+	// The type of the task object. The value is fixed as RD-Account, which indicates an account in your resource directory.
+	TargetType *string `json:"TargetType,omitempty" xml:"TargetType,omitempty"`
+	// The ID of the task.
+	TaskId *string `json:"TaskId,omitempty" xml:"TaskId,omitempty"`
+	// The type of the task. The value is fixed as CreateAccessAssignment, which indicates that access permissions on an account in your resource directory are assigned.
+	TaskType *string `json:"TaskType,omitempty" xml:"TaskType,omitempty"`
 }
 
 func (s CreateAccessAssignmentResponseBodyTask) String() string {
@@ -501,11 +563,30 @@ func (s *CreateAccessAssignmentResponse) SetBody(v *CreateAccessAssignmentRespon
 }
 
 type CreateAccessConfigurationRequest struct {
+	// The name of the access configuration.
+	//
+	// The name can contain letters, digits, and hyphens (-).
+	//
+	// The name can be up to 32 characters in length.
 	AccessConfigurationName *string `json:"AccessConfigurationName,omitempty" xml:"AccessConfigurationName,omitempty"`
-	Description             *string `json:"Description,omitempty" xml:"Description,omitempty"`
-	DirectoryId             *string `json:"DirectoryId,omitempty" xml:"DirectoryId,omitempty"`
-	RelayState              *string `json:"RelayState,omitempty" xml:"RelayState,omitempty"`
-	SessionDuration         *int32  `json:"SessionDuration,omitempty" xml:"SessionDuration,omitempty"`
+	// The description of the access configuration.
+	//
+	// The description can be up to 1,024 characters in length.
+	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
+	// The ID of the directory.
+	DirectoryId *string `json:"DirectoryId,omitempty" xml:"DirectoryId,omitempty"`
+	// The initial web page that is displayed after a CloudSSO user accesses an account in your resource directory by using the access configuration.
+	//
+	// The web page must be a page of the Alibaba Cloud Management Console. By default, this parameter is empty, which indicates that the initial web page is the homepage of the Alibaba Cloud Management Console.
+	RelayState *string `json:"RelayState,omitempty" xml:"RelayState,omitempty"`
+	// The duration of a session in which a CloudSSO user accesses an account in your resource directory by using the access configuration.
+	//
+	// Unit: seconds.
+	//
+	// Valid values: 900 to 43200. The value 900 indicates 15 minutes. The value 43200 indicates 12 hours.
+	//
+	// Default value: 3600. The value indicates 1 hour.
+	SessionDuration *int32 `json:"SessionDuration,omitempty" xml:"SessionDuration,omitempty"`
 }
 
 func (s CreateAccessConfigurationRequest) String() string {
@@ -542,8 +623,10 @@ func (s *CreateAccessConfigurationRequest) SetSessionDuration(v int32) *CreateAc
 }
 
 type CreateAccessConfigurationResponseBody struct {
+	// The information about the access configuration.
 	AccessConfiguration *CreateAccessConfigurationResponseBodyAccessConfiguration `json:"AccessConfiguration,omitempty" xml:"AccessConfiguration,omitempty" type:"Struct"`
-	RequestId           *string                                                   `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The ID of the request.
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
 func (s CreateAccessConfigurationResponseBody) String() string {
@@ -565,14 +648,24 @@ func (s *CreateAccessConfigurationResponseBody) SetRequestId(v string) *CreateAc
 }
 
 type CreateAccessConfigurationResponseBodyAccessConfiguration struct {
-	AccessConfigurationId   *string   `json:"AccessConfigurationId,omitempty" xml:"AccessConfigurationId,omitempty"`
-	AccessConfigurationName *string   `json:"AccessConfigurationName,omitempty" xml:"AccessConfigurationName,omitempty"`
-	CreateTime              *string   `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
-	Description             *string   `json:"Description,omitempty" xml:"Description,omitempty"`
-	RelayState              *string   `json:"RelayState,omitempty" xml:"RelayState,omitempty"`
-	SessionDuration         *int32    `json:"SessionDuration,omitempty" xml:"SessionDuration,omitempty"`
-	StatusNotifications     []*string `json:"StatusNotifications,omitempty" xml:"StatusNotifications,omitempty" type:"Repeated"`
-	UpdateTime              *string   `json:"UpdateTime,omitempty" xml:"UpdateTime,omitempty"`
+	// The ID of the access configuration.
+	AccessConfigurationId *string `json:"AccessConfigurationId,omitempty" xml:"AccessConfigurationId,omitempty"`
+	// The name of the access configuration.
+	AccessConfigurationName *string `json:"AccessConfigurationName,omitempty" xml:"AccessConfigurationName,omitempty"`
+	// The time when the access configuration was created.
+	CreateTime *string `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
+	// The description of the access configuration.
+	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
+	// The initial web page that is displayed after a CloudSSO user accesses an account in your resource directory by using the access configuration.
+	RelayState *string `json:"RelayState,omitempty" xml:"RelayState,omitempty"`
+	// The duration of a session in which a CloudSSO user accesses an account in your resource directory by using the access configuration.
+	//
+	// Unit: seconds.
+	SessionDuration *int32 `json:"SessionDuration,omitempty" xml:"SessionDuration,omitempty"`
+	// The status notification.
+	StatusNotifications []*string `json:"StatusNotifications,omitempty" xml:"StatusNotifications,omitempty" type:"Repeated"`
+	// The time when the information about the access configuration was modified.
+	UpdateTime *string `json:"UpdateTime,omitempty" xml:"UpdateTime,omitempty"`
 }
 
 func (s CreateAccessConfigurationResponseBodyAccessConfiguration) String() string {
@@ -653,6 +746,13 @@ func (s *CreateAccessConfigurationResponse) SetBody(v *CreateAccessConfiguration
 }
 
 type CreateDirectoryRequest struct {
+	// The name of the directory. The name must be globally unique.
+	//
+	// The name can contain lowercase letters, digits, and hyphens (-). The name cannot start or end with a hyphen (-) and cannot contain two consecutive hyphens (-). The name cannot start with d-.
+	//
+	// The name must be 2 to 64 characters in length.
+	//
+	// >  If you do not specify this parameter, the value of this parameter is automatically generated by the system.
 	DirectoryName *string `json:"DirectoryName,omitempty" xml:"DirectoryName,omitempty"`
 }
 
@@ -670,8 +770,10 @@ func (s *CreateDirectoryRequest) SetDirectoryName(v string) *CreateDirectoryRequ
 }
 
 type CreateDirectoryResponseBody struct {
+	// The information about the directory.
 	Directory *CreateDirectoryResponseBodyDirectory `json:"Directory,omitempty" xml:"Directory,omitempty" type:"Struct"`
-	RequestId *string                               `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The ID of the request.
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
 func (s CreateDirectoryResponseBody) String() string {
@@ -693,11 +795,16 @@ func (s *CreateDirectoryResponseBody) SetRequestId(v string) *CreateDirectoryRes
 }
 
 type CreateDirectoryResponseBodyDirectory struct {
-	CreateTime    *string `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
-	DirectoryId   *string `json:"DirectoryId,omitempty" xml:"DirectoryId,omitempty"`
+	// The time when the directory was created. The time is displayed in UTC.
+	CreateTime *string `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
+	// The ID of the directory.
+	DirectoryId *string `json:"DirectoryId,omitempty" xml:"DirectoryId,omitempty"`
+	// The name of the directory.
 	DirectoryName *string `json:"DirectoryName,omitempty" xml:"DirectoryName,omitempty"`
-	Region        *string `json:"Region,omitempty" xml:"Region,omitempty"`
-	UpdateTime    *string `json:"UpdateTime,omitempty" xml:"UpdateTime,omitempty"`
+	// The region ID of the directory.
+	Region *string `json:"Region,omitempty" xml:"Region,omitempty"`
+	// The time when the directory was modified. The time is displayed in UTC.
+	UpdateTime *string `json:"UpdateTime,omitempty" xml:"UpdateTime,omitempty"`
 }
 
 func (s CreateDirectoryResponseBodyDirectory) String() string {
@@ -763,9 +870,18 @@ func (s *CreateDirectoryResponse) SetBody(v *CreateDirectoryResponseBody) *Creat
 }
 
 type CreateGroupRequest struct {
+	// The description of the group.
+	//
+	// The description can be up to 1,024 characters in length.
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
+	// The ID of the directory.
 	DirectoryId *string `json:"DirectoryId,omitempty" xml:"DirectoryId,omitempty"`
-	GroupName   *string `json:"GroupName,omitempty" xml:"GroupName,omitempty"`
+	// The name of the group.
+	//
+	// The name can contain letters, digits, underscores (\_), hyphens (-), and periods (.).
+	//
+	// The name can be up to 128 characters in length.
+	GroupName *string `json:"GroupName,omitempty" xml:"GroupName,omitempty"`
 }
 
 func (s CreateGroupRequest) String() string {
@@ -792,8 +908,10 @@ func (s *CreateGroupRequest) SetGroupName(v string) *CreateGroupRequest {
 }
 
 type CreateGroupResponseBody struct {
-	Group     *CreateGroupResponseBodyGroup `json:"Group,omitempty" xml:"Group,omitempty" type:"Struct"`
-	RequestId *string                       `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The information about the group.
+	Group *CreateGroupResponseBodyGroup `json:"Group,omitempty" xml:"Group,omitempty" type:"Struct"`
+	// The ID of the request.
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
 func (s CreateGroupResponseBody) String() string {
@@ -815,12 +933,18 @@ func (s *CreateGroupResponseBody) SetRequestId(v string) *CreateGroupResponseBod
 }
 
 type CreateGroupResponseBodyGroup struct {
-	CreateTime    *string `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
-	Description   *string `json:"Description,omitempty" xml:"Description,omitempty"`
-	GroupId       *string `json:"GroupId,omitempty" xml:"GroupId,omitempty"`
-	GroupName     *string `json:"GroupName,omitempty" xml:"GroupName,omitempty"`
+	// The time when the group was created.
+	CreateTime *string `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
+	// The description of the group.
+	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
+	// The ID of the group.
+	GroupId *string `json:"GroupId,omitempty" xml:"GroupId,omitempty"`
+	// The name of the group.
+	GroupName *string `json:"GroupName,omitempty" xml:"GroupName,omitempty"`
+	// The type of the group. The value is fixed as Manual, which indicates that the group is manually created.
 	ProvisionType *string `json:"ProvisionType,omitempty" xml:"ProvisionType,omitempty"`
-	UpdateTime    *string `json:"UpdateTime,omitempty" xml:"UpdateTime,omitempty"`
+	// The time when the information about the group was modified.
+	UpdateTime *string `json:"UpdateTime,omitempty" xml:"UpdateTime,omitempty"`
 }
 
 func (s CreateGroupResponseBodyGroup) String() string {
@@ -891,6 +1015,7 @@ func (s *CreateGroupResponse) SetBody(v *CreateGroupResponseBody) *CreateGroupRe
 }
 
 type CreateSCIMServerCredentialRequest struct {
+	// The ID of the directory.
 	DirectoryId *string `json:"DirectoryId,omitempty" xml:"DirectoryId,omitempty"`
 }
 
@@ -908,7 +1033,9 @@ func (s *CreateSCIMServerCredentialRequest) SetDirectoryId(v string) *CreateSCIM
 }
 
 type CreateSCIMServerCredentialResponseBody struct {
-	RequestId            *string                                                     `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The ID of the request.
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The information about the SCIM credential.
 	SCIMServerCredential *CreateSCIMServerCredentialResponseBodySCIMServerCredential `json:"SCIMServerCredential,omitempty" xml:"SCIMServerCredential,omitempty" type:"Struct"`
 }
 
@@ -931,13 +1058,22 @@ func (s *CreateSCIMServerCredentialResponseBody) SetSCIMServerCredential(v *Crea
 }
 
 type CreateSCIMServerCredentialResponseBodySCIMServerCredential struct {
-	CreateTime       *string `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
-	CredentialId     *string `json:"CredentialId,omitempty" xml:"CredentialId,omitempty"`
+	// The time when the SCIM credential was created.
+	CreateTime *string `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
+	// The ID of the SCIM credential.
+	CredentialId *string `json:"CredentialId,omitempty" xml:"CredentialId,omitempty"`
+	// The SCIM credential.
+	//
+	// >  The SCIM credential is returned only when it is created. After the SCIM credential is created, you cannot query it. Keep the SCIM 
 	CredentialSecret *string `json:"CredentialSecret,omitempty" xml:"CredentialSecret,omitempty"`
-	CredentialType   *string `json:"CredentialType,omitempty" xml:"CredentialType,omitempty"`
-	DirectoryId      *string `json:"DirectoryId,omitempty" xml:"DirectoryId,omitempty"`
-	ExpireTime       *string `json:"ExpireTime,omitempty" xml:"ExpireTime,omitempty"`
-	Status           *string `json:"Status,omitempty" xml:"Status,omitempty"`
+	// The type of the SCIM credential.
+	CredentialType *string `json:"CredentialType,omitempty" xml:"CredentialType,omitempty"`
+	// The ID of the directory.
+	DirectoryId *string `json:"DirectoryId,omitempty" xml:"DirectoryId,omitempty"`
+	// The time when the SCIM credential expires.
+	ExpireTime *string `json:"ExpireTime,omitempty" xml:"ExpireTime,omitempty"`
+	// The status of the SCIM credential. The value is fixed as Enabled, which indicates that the SCIM credential is enabled.
+	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
 }
 
 func (s CreateSCIMServerCredentialResponseBodySCIMServerCredential) String() string {
@@ -1013,14 +1149,39 @@ func (s *CreateSCIMServerCredentialResponse) SetBody(v *CreateSCIMServerCredenti
 }
 
 type CreateUserRequest struct {
+	// The description of the user.
+	//
+	// The description can be up to 1,024 characters in length.
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
+	// The ID of the directory.
 	DirectoryId *string `json:"DirectoryId,omitempty" xml:"DirectoryId,omitempty"`
+	// The display name of the user.
+	//
+	// The name can be up to 256 characters in length.
 	DisplayName *string `json:"DisplayName,omitempty" xml:"DisplayName,omitempty"`
-	Email       *string `json:"Email,omitempty" xml:"Email,omitempty"`
-	FirstName   *string `json:"FirstName,omitempty" xml:"FirstName,omitempty"`
-	LastName    *string `json:"LastName,omitempty" xml:"LastName,omitempty"`
-	Status      *string `json:"Status,omitempty" xml:"Status,omitempty"`
-	UserName    *string `json:"UserName,omitempty" xml:"UserName,omitempty"`
+	// The email address of the user. The email address must be unique within the directory.
+	//
+	// The email address can be up to 128 characters in length.
+	Email *string `json:"Email,omitempty" xml:"Email,omitempty"`
+	// The first name of the user.
+	//
+	// The name can be up to 64 characters in length.
+	FirstName *string `json:"FirstName,omitempty" xml:"FirstName,omitempty"`
+	// The last name of the user.
+	//
+	// The name can be up to 64 characters in length.
+	LastName *string `json:"LastName,omitempty" xml:"LastName,omitempty"`
+	// The status of the user. Valid values:
+	//
+	// *   Enabled: The logon of the user is enabled. This is the default value.
+	// *   Disabled: The logon of the user is disabled.
+	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
+	// The name of the user. The name must be unique within the directory. The name cannot be changed.
+	//
+	// The name can contain numbers, letters, and the following special characters: `@_-.`
+	//
+	// The name can be up to 64 characters in length.
+	UserName *string `json:"UserName,omitempty" xml:"UserName,omitempty"`
 }
 
 func (s CreateUserRequest) String() string {
@@ -1072,8 +1233,10 @@ func (s *CreateUserRequest) SetUserName(v string) *CreateUserRequest {
 }
 
 type CreateUserResponseBody struct {
-	RequestId *string                     `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	User      *CreateUserResponseBodyUser `json:"User,omitempty" xml:"User,omitempty" type:"Struct"`
+	// The ID of the request.
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The information about the user.
+	User *CreateUserResponseBodyUser `json:"User,omitempty" xml:"User,omitempty" type:"Struct"`
 }
 
 func (s CreateUserResponseBody) String() string {
@@ -1095,17 +1258,34 @@ func (s *CreateUserResponseBody) SetUser(v *CreateUserResponseBodyUser) *CreateU
 }
 
 type CreateUserResponseBodyUser struct {
-	CreateTime    *string `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
-	Description   *string `json:"Description,omitempty" xml:"Description,omitempty"`
-	DisplayName   *string `json:"DisplayName,omitempty" xml:"DisplayName,omitempty"`
-	Email         *string `json:"Email,omitempty" xml:"Email,omitempty"`
-	FirstName     *string `json:"FirstName,omitempty" xml:"FirstName,omitempty"`
-	LastName      *string `json:"LastName,omitempty" xml:"LastName,omitempty"`
+	// The time when the user was created.
+	CreateTime *string `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
+	// The description of the user.
+	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
+	// The display name of the user.
+	DisplayName *string `json:"DisplayName,omitempty" xml:"DisplayName,omitempty"`
+	// The email address of the user.
+	Email *string `json:"Email,omitempty" xml:"Email,omitempty"`
+	// The first name of the user.
+	FirstName *string `json:"FirstName,omitempty" xml:"FirstName,omitempty"`
+	// The last name of the user.
+	LastName *string `json:"LastName,omitempty" xml:"LastName,omitempty"`
+	// The type of the user. Valid values:
+	//
+	// *   Manual: The user is manually created.
+	// *   Synchronized: The user is synchronized from an external identity provider (IdP).
 	ProvisionType *string `json:"ProvisionType,omitempty" xml:"ProvisionType,omitempty"`
-	Status        *string `json:"Status,omitempty" xml:"Status,omitempty"`
-	UpdateTime    *string `json:"UpdateTime,omitempty" xml:"UpdateTime,omitempty"`
-	UserId        *string `json:"UserId,omitempty" xml:"UserId,omitempty"`
-	UserName      *string `json:"UserName,omitempty" xml:"UserName,omitempty"`
+	// The status of the user. Valid values:
+	//
+	// *   Enabled: The logon of the user is enabled.
+	// *   Disabled: The logon of the user is disabled.
+	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
+	// The time when the user was modified.
+	UpdateTime *string `json:"UpdateTime,omitempty" xml:"UpdateTime,omitempty"`
+	// The ID of the user.
+	UserId *string `json:"UserId,omitempty" xml:"UserId,omitempty"`
+	// The name of the user.
+	UserName *string `json:"UserName,omitempty" xml:"UserName,omitempty"`
 }
 
 func (s CreateUserResponseBodyUser) String() string {
@@ -1201,13 +1381,29 @@ func (s *CreateUserResponse) SetBody(v *CreateUserResponseBody) *CreateUserRespo
 }
 
 type DeleteAccessAssignmentRequest struct {
+	// The ID of the access configuration.
 	AccessConfigurationId *string `json:"AccessConfigurationId,omitempty" xml:"AccessConfigurationId,omitempty"`
-	DeprovisionStrategy   *string `json:"DeprovisionStrategy,omitempty" xml:"DeprovisionStrategy,omitempty"`
-	DirectoryId           *string `json:"DirectoryId,omitempty" xml:"DirectoryId,omitempty"`
-	PrincipalId           *string `json:"PrincipalId,omitempty" xml:"PrincipalId,omitempty"`
-	PrincipalType         *string `json:"PrincipalType,omitempty" xml:"PrincipalType,omitempty"`
-	TargetId              *string `json:"TargetId,omitempty" xml:"TargetId,omitempty"`
-	TargetType            *string `json:"TargetType,omitempty" xml:"TargetType,omitempty"`
+	// Specifies whether to de-provision the access configuration when you remove the access permissions from the CloudSSO identity. The access configuration is used to assign the access permissions, and the identity is the only one that uses the access configuration and is associated with the account. Valid values:
+	//
+	// *   DeprovisionForLastAccessAssignmentOnAccount: de-provisions the access configuration.
+	// *   None: does not de-provision the access configuration. This is the default value.
+	DeprovisionStrategy *string `json:"DeprovisionStrategy,omitempty" xml:"DeprovisionStrategy,omitempty"`
+	// The ID of the directory.
+	DirectoryId *string `json:"DirectoryId,omitempty" xml:"DirectoryId,omitempty"`
+	// The ID of the CloudSSO identity.
+	//
+	// *   If you set `PrincipalType` to `User`, set `PrincipalId` to the ID of the CloudSSO user.
+	// *   If you set `PrincipalType` to `Group`, set `PrincipalId` to the ID of the CloudSSO group.
+	PrincipalId *string `json:"PrincipalId,omitempty" xml:"PrincipalId,omitempty"`
+	// The type of the CloudSSO identity. Valid values:
+	//
+	// *   User
+	// *   Group
+	PrincipalType *string `json:"PrincipalType,omitempty" xml:"PrincipalType,omitempty"`
+	// The ID of the task object.
+	TargetId *string `json:"TargetId,omitempty" xml:"TargetId,omitempty"`
+	// The type of the task object. The value is fixed as RD-Account, which indicates the accounts in the resource directory.
+	TargetType *string `json:"TargetType,omitempty" xml:"TargetType,omitempty"`
 }
 
 func (s DeleteAccessAssignmentRequest) String() string {
@@ -1254,8 +1450,10 @@ func (s *DeleteAccessAssignmentRequest) SetTargetType(v string) *DeleteAccessAss
 }
 
 type DeleteAccessAssignmentResponseBody struct {
-	RequestId *string                                 `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	Task      *DeleteAccessAssignmentResponseBodyTask `json:"Task,omitempty" xml:"Task,omitempty" type:"Struct"`
+	// The ID of the request.
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The information about the task.
+	Task *DeleteAccessAssignmentResponseBodyTask `json:"Task,omitempty" xml:"Task,omitempty" type:"Struct"`
 }
 
 func (s DeleteAccessAssignmentResponseBody) String() string {
@@ -1277,19 +1475,39 @@ func (s *DeleteAccessAssignmentResponseBody) SetTask(v *DeleteAccessAssignmentRe
 }
 
 type DeleteAccessAssignmentResponseBodyTask struct {
-	AccessConfigurationId   *string `json:"AccessConfigurationId,omitempty" xml:"AccessConfigurationId,omitempty"`
+	// The ID of the access configuration.
+	AccessConfigurationId *string `json:"AccessConfigurationId,omitempty" xml:"AccessConfigurationId,omitempty"`
+	// The name of the access configuration.
 	AccessConfigurationName *string `json:"AccessConfigurationName,omitempty" xml:"AccessConfigurationName,omitempty"`
-	PrincipalId             *string `json:"PrincipalId,omitempty" xml:"PrincipalId,omitempty"`
-	PrincipalName           *string `json:"PrincipalName,omitempty" xml:"PrincipalName,omitempty"`
-	PrincipalType           *string `json:"PrincipalType,omitempty" xml:"PrincipalType,omitempty"`
-	Status                  *string `json:"Status,omitempty" xml:"Status,omitempty"`
-	TargetId                *string `json:"TargetId,omitempty" xml:"TargetId,omitempty"`
-	TargetName              *string `json:"TargetName,omitempty" xml:"TargetName,omitempty"`
-	TargetPath              *string `json:"TargetPath,omitempty" xml:"TargetPath,omitempty"`
-	TargetPathName          *string `json:"TargetPathName,omitempty" xml:"TargetPathName,omitempty"`
-	TargetType              *string `json:"TargetType,omitempty" xml:"TargetType,omitempty"`
-	TaskId                  *string `json:"TaskId,omitempty" xml:"TaskId,omitempty"`
-	TaskType                *string `json:"TaskType,omitempty" xml:"TaskType,omitempty"`
+	// The ID of the CloudSSO identity.
+	PrincipalId *string `json:"PrincipalId,omitempty" xml:"PrincipalId,omitempty"`
+	// The name of the CloudSSO identity.
+	PrincipalName *string `json:"PrincipalName,omitempty" xml:"PrincipalName,omitempty"`
+	// The type of the CloudSSO identity. Valid values:
+	//
+	// *   User
+	// *   Group
+	PrincipalType *string `json:"PrincipalType,omitempty" xml:"PrincipalType,omitempty"`
+	// The status of the task. Valid values:
+	//
+	// *   InProgress: The task is running.
+	// *   Success: The task is successful.
+	// *   Failed: The task failed.
+	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
+	// The ID of the task object.
+	TargetId *string `json:"TargetId,omitempty" xml:"TargetId,omitempty"`
+	// The name of the task object.
+	TargetName *string `json:"TargetName,omitempty" xml:"TargetName,omitempty"`
+	// The path ID of the task object in the resource directory.
+	TargetPath *string `json:"TargetPath,omitempty" xml:"TargetPath,omitempty"`
+	// The path name of the task object in the resource directory.
+	TargetPathName *string `json:"TargetPathName,omitempty" xml:"TargetPathName,omitempty"`
+	// The type of the task object. The value is fixed as RD-Account, which indicates the accounts in the resource directory.
+	TargetType *string `json:"TargetType,omitempty" xml:"TargetType,omitempty"`
+	// The ID of the task.
+	TaskId *string `json:"TaskId,omitempty" xml:"TaskId,omitempty"`
+	// The type of the task. The value is fixed as DeleteAccessAssignment, which indicates that access permissions on an account in your resource directory are removed.
+	TaskType *string `json:"TaskType,omitempty" xml:"TaskType,omitempty"`
 }
 
 func (s DeleteAccessAssignmentResponseBodyTask) String() string {
@@ -1395,9 +1613,15 @@ func (s *DeleteAccessAssignmentResponse) SetBody(v *DeleteAccessAssignmentRespon
 }
 
 type DeleteAccessConfigurationRequest struct {
-	AccessConfigurationId         *string `json:"AccessConfigurationId,omitempty" xml:"AccessConfigurationId,omitempty"`
-	DirectoryId                   *string `json:"DirectoryId,omitempty" xml:"DirectoryId,omitempty"`
-	ForceRemovePermissionPolicies *bool   `json:"ForceRemovePermissionPolicies,omitempty" xml:"ForceRemovePermissionPolicies,omitempty"`
+	// The ID of the access configuration.
+	AccessConfigurationId *string `json:"AccessConfigurationId,omitempty" xml:"AccessConfigurationId,omitempty"`
+	// The ID of the directory.
+	DirectoryId *string `json:"DirectoryId,omitempty" xml:"DirectoryId,omitempty"`
+	// Specifies whether to forcibly remove system policies and inline policies. Valid values:
+	//
+	// *   true: When you delete the access configuration, the associated system policies and inline policies are forcibly removed.
+	// *   false: When you delete the access configuration, the associated system policies and inline policies are not forcibly removed. This is the default value. If these policies exist in the access configuration, the deletion fails. Before you delete the access configuration, you must remove the system policies and inline policies. For more information, see [RemovePermissionPolicyFromAccessConfiguration](~~336904~~).
+	ForceRemovePermissionPolicies *bool `json:"ForceRemovePermissionPolicies,omitempty" xml:"ForceRemovePermissionPolicies,omitempty"`
 }
 
 func (s DeleteAccessConfigurationRequest) String() string {
@@ -1424,6 +1648,7 @@ func (s *DeleteAccessConfigurationRequest) SetForceRemovePermissionPolicies(v bo
 }
 
 type DeleteAccessConfigurationResponseBody struct {
+	// The ID of the request.
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -1470,6 +1695,7 @@ func (s *DeleteAccessConfigurationResponse) SetBody(v *DeleteAccessConfiguration
 }
 
 type DeleteDirectoryRequest struct {
+	// The ID of the directory.
 	DirectoryId *string `json:"DirectoryId,omitempty" xml:"DirectoryId,omitempty"`
 }
 
@@ -1487,6 +1713,7 @@ func (s *DeleteDirectoryRequest) SetDirectoryId(v string) *DeleteDirectoryReques
 }
 
 type DeleteDirectoryResponseBody struct {
+	// The ID of the request.
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -1533,8 +1760,10 @@ func (s *DeleteDirectoryResponse) SetBody(v *DeleteDirectoryResponseBody) *Delet
 }
 
 type DeleteGroupRequest struct {
+	// The ID of the directory.
 	DirectoryId *string `json:"DirectoryId,omitempty" xml:"DirectoryId,omitempty"`
-	GroupId     *string `json:"GroupId,omitempty" xml:"GroupId,omitempty"`
+	// The ID of the group.
+	GroupId *string `json:"GroupId,omitempty" xml:"GroupId,omitempty"`
 }
 
 func (s DeleteGroupRequest) String() string {
@@ -1556,6 +1785,7 @@ func (s *DeleteGroupRequest) SetGroupId(v string) *DeleteGroupRequest {
 }
 
 type DeleteGroupResponseBody struct {
+	// The ID of the request.
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -1602,9 +1832,14 @@ func (s *DeleteGroupResponse) SetBody(v *DeleteGroupResponseBody) *DeleteGroupRe
 }
 
 type DeleteMFADeviceForUserRequest struct {
+	// The ID of the directory.
 	DirectoryId *string `json:"DirectoryId,omitempty" xml:"DirectoryId,omitempty"`
+	// The ID of the MFA device.
+	//
+	// You can call the [ListMFADevicesForUser](~~333531~~) operation to query the IDs of MFA devices.
 	MFADeviceId *string `json:"MFADeviceId,omitempty" xml:"MFADeviceId,omitempty"`
-	UserId      *string `json:"UserId,omitempty" xml:"UserId,omitempty"`
+	// The ID of the user.
+	UserId *string `json:"UserId,omitempty" xml:"UserId,omitempty"`
 }
 
 func (s DeleteMFADeviceForUserRequest) String() string {
@@ -1631,6 +1866,7 @@ func (s *DeleteMFADeviceForUserRequest) SetUserId(v string) *DeleteMFADeviceForU
 }
 
 type DeleteMFADeviceForUserResponseBody struct {
+	// The ID of the request.
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -1677,8 +1913,10 @@ func (s *DeleteMFADeviceForUserResponse) SetBody(v *DeleteMFADeviceForUserRespon
 }
 
 type DeleteSCIMServerCredentialRequest struct {
+	// The ID of the SCIM credential.
 	CredentialId *string `json:"CredentialId,omitempty" xml:"CredentialId,omitempty"`
-	DirectoryId  *string `json:"DirectoryId,omitempty" xml:"DirectoryId,omitempty"`
+	// The ID of the directory.
+	DirectoryId *string `json:"DirectoryId,omitempty" xml:"DirectoryId,omitempty"`
 }
 
 func (s DeleteSCIMServerCredentialRequest) String() string {
@@ -1700,6 +1938,7 @@ func (s *DeleteSCIMServerCredentialRequest) SetDirectoryId(v string) *DeleteSCIM
 }
 
 type DeleteSCIMServerCredentialResponseBody struct {
+	// The ID of the request.
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -1746,8 +1985,10 @@ func (s *DeleteSCIMServerCredentialResponse) SetBody(v *DeleteSCIMServerCredenti
 }
 
 type DeleteUserRequest struct {
+	// The ID of the directory.
 	DirectoryId *string `json:"DirectoryId,omitempty" xml:"DirectoryId,omitempty"`
-	UserId      *string `json:"UserId,omitempty" xml:"UserId,omitempty"`
+	// The ID of the user.
+	UserId *string `json:"UserId,omitempty" xml:"UserId,omitempty"`
 }
 
 func (s DeleteUserRequest) String() string {
@@ -1769,6 +2010,7 @@ func (s *DeleteUserRequest) SetUserId(v string) *DeleteUserRequest {
 }
 
 type DeleteUserResponseBody struct {
+	// The ID of the request.
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -1815,10 +2057,14 @@ func (s *DeleteUserResponse) SetBody(v *DeleteUserResponseBody) *DeleteUserRespo
 }
 
 type DeprovisionAccessConfigurationRequest struct {
+	// The ID of the access configuration.
 	AccessConfigurationId *string `json:"AccessConfigurationId,omitempty" xml:"AccessConfigurationId,omitempty"`
-	DirectoryId           *string `json:"DirectoryId,omitempty" xml:"DirectoryId,omitempty"`
-	TargetId              *string `json:"TargetId,omitempty" xml:"TargetId,omitempty"`
-	TargetType            *string `json:"TargetType,omitempty" xml:"TargetType,omitempty"`
+	// The ID of the directory.
+	DirectoryId *string `json:"DirectoryId,omitempty" xml:"DirectoryId,omitempty"`
+	// The ID of the task object.
+	TargetId *string `json:"TargetId,omitempty" xml:"TargetId,omitempty"`
+	// The type of the task object. Set the value to RD-Account, which indicates an account in your resource directory.
+	TargetType *string `json:"TargetType,omitempty" xml:"TargetType,omitempty"`
 }
 
 func (s DeprovisionAccessConfigurationRequest) String() string {
@@ -1850,8 +2096,10 @@ func (s *DeprovisionAccessConfigurationRequest) SetTargetType(v string) *Deprovi
 }
 
 type DeprovisionAccessConfigurationResponseBody struct {
-	RequestId *string                                            `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	Tasks     []*DeprovisionAccessConfigurationResponseBodyTasks `json:"Tasks,omitempty" xml:"Tasks,omitempty" type:"Repeated"`
+	// The ID of the request.
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The information about the task.
+	Tasks []*DeprovisionAccessConfigurationResponseBodyTasks `json:"Tasks,omitempty" xml:"Tasks,omitempty" type:"Repeated"`
 }
 
 func (s DeprovisionAccessConfigurationResponseBody) String() string {
@@ -1873,16 +2121,30 @@ func (s *DeprovisionAccessConfigurationResponseBody) SetTasks(v []*DeprovisionAc
 }
 
 type DeprovisionAccessConfigurationResponseBodyTasks struct {
-	AccessConfigurationId   *string `json:"AccessConfigurationId,omitempty" xml:"AccessConfigurationId,omitempty"`
+	// The ID of the access configuration.
+	AccessConfigurationId *string `json:"AccessConfigurationId,omitempty" xml:"AccessConfigurationId,omitempty"`
+	// The name of the access configuration.
 	AccessConfigurationName *string `json:"AccessConfigurationName,omitempty" xml:"AccessConfigurationName,omitempty"`
-	Status                  *string `json:"Status,omitempty" xml:"Status,omitempty"`
-	TargetId                *string `json:"TargetId,omitempty" xml:"TargetId,omitempty"`
-	TargetName              *string `json:"TargetName,omitempty" xml:"TargetName,omitempty"`
-	TargetPath              *string `json:"TargetPath,omitempty" xml:"TargetPath,omitempty"`
-	TargetPathName          *string `json:"TargetPathName,omitempty" xml:"TargetPathName,omitempty"`
-	TargetType              *string `json:"TargetType,omitempty" xml:"TargetType,omitempty"`
-	TaskId                  *string `json:"TaskId,omitempty" xml:"TaskId,omitempty"`
-	TaskType                *string `json:"TaskType,omitempty" xml:"TaskType,omitempty"`
+	// The status of the task. Valid values:
+	//
+	// *   InProgress: The task is running.
+	// *   Success: The task is successful.
+	// *   Failed: The task failed.
+	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
+	// The ID of the task object.
+	TargetId *string `json:"TargetId,omitempty" xml:"TargetId,omitempty"`
+	// The name of the task object.
+	TargetName *string `json:"TargetName,omitempty" xml:"TargetName,omitempty"`
+	// The path ID of the task object in your resource directory.
+	TargetPath *string `json:"TargetPath,omitempty" xml:"TargetPath,omitempty"`
+	// The path name of the task object in your resource directory.
+	TargetPathName *string `json:"TargetPathName,omitempty" xml:"TargetPathName,omitempty"`
+	// The type of the task object. The value is fixed as RD-Account, which indicates an accounts in your resource directory.
+	TargetType *string `json:"TargetType,omitempty" xml:"TargetType,omitempty"`
+	// The ID of the task.
+	TaskId *string `json:"TaskId,omitempty" xml:"TaskId,omitempty"`
+	// The type of the task. The value is fixed as DeprovisionAccessConfiguration, which indicates that the access configuration is de-provisioned.
+	TaskType *string `json:"TaskType,omitempty" xml:"TaskType,omitempty"`
 }
 
 func (s DeprovisionAccessConfigurationResponseBodyTasks) String() string {
@@ -1973,6 +2235,7 @@ func (s *DeprovisionAccessConfigurationResponse) SetBody(v *DeprovisionAccessCon
 }
 
 type DisableServiceResponseBody struct {
+	// The ID of the request.
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -2019,6 +2282,7 @@ func (s *DisableServiceResponse) SetBody(v *DisableServiceResponseBody) *Disable
 }
 
 type EnableServiceResponseBody struct {
+	// The ID of the request.
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -2065,8 +2329,10 @@ func (s *EnableServiceResponse) SetBody(v *EnableServiceResponseBody) *EnableSer
 }
 
 type GetAccessConfigurationRequest struct {
+	// The ID of the access configuration.
 	AccessConfigurationId *string `json:"AccessConfigurationId,omitempty" xml:"AccessConfigurationId,omitempty"`
-	DirectoryId           *string `json:"DirectoryId,omitempty" xml:"DirectoryId,omitempty"`
+	// The ID of the directory.
+	DirectoryId *string `json:"DirectoryId,omitempty" xml:"DirectoryId,omitempty"`
 }
 
 func (s GetAccessConfigurationRequest) String() string {
@@ -2088,8 +2354,10 @@ func (s *GetAccessConfigurationRequest) SetDirectoryId(v string) *GetAccessConfi
 }
 
 type GetAccessConfigurationResponseBody struct {
+	// The information about the access configuration.
 	AccessConfiguration *GetAccessConfigurationResponseBodyAccessConfiguration `json:"AccessConfiguration,omitempty" xml:"AccessConfiguration,omitempty" type:"Struct"`
-	RequestId           *string                                                `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The ID of the request.
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
 func (s GetAccessConfigurationResponseBody) String() string {
@@ -2111,14 +2379,24 @@ func (s *GetAccessConfigurationResponseBody) SetRequestId(v string) *GetAccessCo
 }
 
 type GetAccessConfigurationResponseBodyAccessConfiguration struct {
-	AccessConfigurationId   *string   `json:"AccessConfigurationId,omitempty" xml:"AccessConfigurationId,omitempty"`
-	AccessConfigurationName *string   `json:"AccessConfigurationName,omitempty" xml:"AccessConfigurationName,omitempty"`
-	CreateTime              *string   `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
-	Description             *string   `json:"Description,omitempty" xml:"Description,omitempty"`
-	RelayState              *string   `json:"RelayState,omitempty" xml:"RelayState,omitempty"`
-	SessionDuration         *int32    `json:"SessionDuration,omitempty" xml:"SessionDuration,omitempty"`
-	StatusNotifications     []*string `json:"StatusNotifications,omitempty" xml:"StatusNotifications,omitempty" type:"Repeated"`
-	UpdateTime              *string   `json:"UpdateTime,omitempty" xml:"UpdateTime,omitempty"`
+	// The ID of the access configuration.
+	AccessConfigurationId *string `json:"AccessConfigurationId,omitempty" xml:"AccessConfigurationId,omitempty"`
+	// The name of the access configuration.
+	AccessConfigurationName *string `json:"AccessConfigurationName,omitempty" xml:"AccessConfigurationName,omitempty"`
+	// The time when the access configuration was created.
+	CreateTime *string `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
+	// The description of the access configuration.
+	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
+	// The initial web page that is displayed after a CloudSSO user accesses an account in your resource directory by using the access configuration.
+	RelayState *string `json:"RelayState,omitempty" xml:"RelayState,omitempty"`
+	// The duration of a session in which a CloudSSO user accesses an account in your resource directory by using the access configuration.
+	//
+	// Unit: seconds.
+	SessionDuration *int32 `json:"SessionDuration,omitempty" xml:"SessionDuration,omitempty"`
+	// The status notification.
+	StatusNotifications []*string `json:"StatusNotifications,omitempty" xml:"StatusNotifications,omitempty" type:"Repeated"`
+	// The time when the information about the access configuration was modified.
+	UpdateTime *string `json:"UpdateTime,omitempty" xml:"UpdateTime,omitempty"`
 }
 
 func (s GetAccessConfigurationResponseBodyAccessConfiguration) String() string {
@@ -2199,6 +2477,7 @@ func (s *GetAccessConfigurationResponse) SetBody(v *GetAccessConfigurationRespon
 }
 
 type GetDirectoryRequest struct {
+	// The ID of the directory.
 	DirectoryId *string `json:"DirectoryId,omitempty" xml:"DirectoryId,omitempty"`
 }
 
@@ -2216,8 +2495,10 @@ func (s *GetDirectoryRequest) SetDirectoryId(v string) *GetDirectoryRequest {
 }
 
 type GetDirectoryResponseBody struct {
+	// The information about the directory.
 	Directory *GetDirectoryResponseBodyDirectory `json:"Directory,omitempty" xml:"Directory,omitempty" type:"Struct"`
-	RequestId *string                            `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The ID of the request.
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
 func (s GetDirectoryResponseBody) String() string {
@@ -2239,11 +2520,16 @@ func (s *GetDirectoryResponseBody) SetRequestId(v string) *GetDirectoryResponseB
 }
 
 type GetDirectoryResponseBodyDirectory struct {
-	CreateTime    *string `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
-	DirectoryId   *string `json:"DirectoryId,omitempty" xml:"DirectoryId,omitempty"`
+	// The time when the directory was created.
+	CreateTime *string `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
+	// The ID of the directory.
+	DirectoryId *string `json:"DirectoryId,omitempty" xml:"DirectoryId,omitempty"`
+	// The name of the directory.
 	DirectoryName *string `json:"DirectoryName,omitempty" xml:"DirectoryName,omitempty"`
-	Region        *string `json:"Region,omitempty" xml:"Region,omitempty"`
-	UpdateTime    *string `json:"UpdateTime,omitempty" xml:"UpdateTime,omitempty"`
+	// The region ID of the directory.
+	Region *string `json:"Region,omitempty" xml:"Region,omitempty"`
+	// The time when the directory was modified.
+	UpdateTime *string `json:"UpdateTime,omitempty" xml:"UpdateTime,omitempty"`
 }
 
 func (s GetDirectoryResponseBodyDirectory) String() string {
@@ -2309,6 +2595,7 @@ func (s *GetDirectoryResponse) SetBody(v *GetDirectoryResponseBody) *GetDirector
 }
 
 type GetDirectorySAMLServiceProviderInfoRequest struct {
+	// The ID of the directory.
 	DirectoryId *string `json:"DirectoryId,omitempty" xml:"DirectoryId,omitempty"`
 }
 
@@ -2326,7 +2613,9 @@ func (s *GetDirectorySAMLServiceProviderInfoRequest) SetDirectoryId(v string) *G
 }
 
 type GetDirectorySAMLServiceProviderInfoResponseBody struct {
-	RequestId           *string                                                             `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The ID of the request.
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The information about the SP.
 	SAMLServiceProvider *GetDirectorySAMLServiceProviderInfoResponseBodySAMLServiceProvider `json:"SAMLServiceProvider,omitempty" xml:"SAMLServiceProvider,omitempty" type:"Struct"`
 }
 
@@ -2349,10 +2638,14 @@ func (s *GetDirectorySAMLServiceProviderInfoResponseBody) SetSAMLServiceProvider
 }
 
 type GetDirectorySAMLServiceProviderInfoResponseBodySAMLServiceProvider struct {
-	AcsUrl                  *string `json:"AcsUrl,omitempty" xml:"AcsUrl,omitempty"`
-	DirectoryId             *string `json:"DirectoryId,omitempty" xml:"DirectoryId,omitempty"`
+	// The Assertion Consumer Service (ACS) URL of the SP.
+	AcsUrl *string `json:"AcsUrl,omitempty" xml:"AcsUrl,omitempty"`
+	// The ID of the directory.
+	DirectoryId *string `json:"DirectoryId,omitempty" xml:"DirectoryId,omitempty"`
+	// The metadata file of the SP. The value of this parameter is Base64-encoded.
 	EncodedMetadataDocument *string `json:"EncodedMetadataDocument,omitempty" xml:"EncodedMetadataDocument,omitempty"`
-	EntityId                *string `json:"EntityId,omitempty" xml:"EntityId,omitempty"`
+	// The entity ID of the SP.
+	EntityId *string `json:"EntityId,omitempty" xml:"EntityId,omitempty"`
 }
 
 func (s GetDirectorySAMLServiceProviderInfoResponseBodySAMLServiceProvider) String() string {
@@ -2413,6 +2706,7 @@ func (s *GetDirectorySAMLServiceProviderInfoResponse) SetBody(v *GetDirectorySAM
 }
 
 type GetDirectoryStatisticsRequest struct {
+	// The ID of the directory.
 	DirectoryId *string `json:"DirectoryId,omitempty" xml:"DirectoryId,omitempty"`
 }
 
@@ -2430,8 +2724,10 @@ func (s *GetDirectoryStatisticsRequest) SetDirectoryId(v string) *GetDirectorySt
 }
 
 type GetDirectoryStatisticsResponseBody struct {
+	// The statistics of the directory.
 	DirectoryStatistics *GetDirectoryStatisticsResponseBodyDirectoryStatistics `json:"DirectoryStatistics,omitempty" xml:"DirectoryStatistics,omitempty" type:"Struct"`
-	RequestId           *string                                                `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The ID of the request.
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
 func (s GetDirectoryStatisticsResponseBody) String() string {
@@ -2453,20 +2749,41 @@ func (s *GetDirectoryStatisticsResponseBody) SetRequestId(v string) *GetDirector
 }
 
 type GetDirectoryStatisticsResponseBodyDirectoryStatistics struct {
-	AccessAssignmentCount     *int32  `json:"AccessAssignmentCount,omitempty" xml:"AccessAssignmentCount,omitempty"`
-	AccessConfigurationCount  *int32  `json:"AccessConfigurationCount,omitempty" xml:"AccessConfigurationCount,omitempty"`
-	AccessConfigurationQuota  *int32  `json:"AccessConfigurationQuota,omitempty" xml:"AccessConfigurationQuota,omitempty"`
-	DirectoryId               *string `json:"DirectoryId,omitempty" xml:"DirectoryId,omitempty"`
-	DirectoryName             *string `json:"DirectoryName,omitempty" xml:"DirectoryName,omitempty"`
-	GroupCount                *int32  `json:"GroupCount,omitempty" xml:"GroupCount,omitempty"`
-	GroupQuota                *int32  `json:"GroupQuota,omitempty" xml:"GroupQuota,omitempty"`
-	InProgressTaskCount       *int32  `json:"InProgressTaskCount,omitempty" xml:"InProgressTaskCount,omitempty"`
-	Region                    *string `json:"Region,omitempty" xml:"Region,omitempty"`
-	SCIMServerCredentialCount *int32  `json:"SCIMServerCredentialCount,omitempty" xml:"SCIMServerCredentialCount,omitempty"`
-	SCIMSyncEnabled           *bool   `json:"SCIMSyncEnabled,omitempty" xml:"SCIMSyncEnabled,omitempty"`
-	SSOEnabled                *bool   `json:"SSOEnabled,omitempty" xml:"SSOEnabled,omitempty"`
-	UserCount                 *int32  `json:"UserCount,omitempty" xml:"UserCount,omitempty"`
-	UserQuota                 *int32  `json:"UserQuota,omitempty" xml:"UserQuota,omitempty"`
+	// The number of access permissions that are assigned.
+	AccessAssignmentCount *int32 `json:"AccessAssignmentCount,omitempty" xml:"AccessAssignmentCount,omitempty"`
+	// The number of access configurations.
+	AccessConfigurationCount *int32 `json:"AccessConfigurationCount,omitempty" xml:"AccessConfigurationCount,omitempty"`
+	// The quota for access configurations.
+	AccessConfigurationQuota *int32 `json:"AccessConfigurationQuota,omitempty" xml:"AccessConfigurationQuota,omitempty"`
+	// The ID of the directory.
+	DirectoryId *string `json:"DirectoryId,omitempty" xml:"DirectoryId,omitempty"`
+	// The name of the directory.
+	DirectoryName *string `json:"DirectoryName,omitempty" xml:"DirectoryName,omitempty"`
+	// The number of groups.
+	GroupCount *int32 `json:"GroupCount,omitempty" xml:"GroupCount,omitempty"`
+	// The quota for groups.
+	GroupQuota *int32 `json:"GroupQuota,omitempty" xml:"GroupQuota,omitempty"`
+	// The number of tasks that are being performed.
+	InProgressTaskCount *int32 `json:"InProgressTaskCount,omitempty" xml:"InProgressTaskCount,omitempty"`
+	// The region ID of the directory.
+	Region *string `json:"Region,omitempty" xml:"Region,omitempty"`
+	// The number of SCIM credentials.
+	SCIMServerCredentialCount *int32 `json:"SCIMServerCredentialCount,omitempty" xml:"SCIMServerCredentialCount,omitempty"`
+	// Indicates whether SCIM synchronization is enabled. Valid values:
+	//
+	// *   true: SCIM synchronization is enabled.
+	// *   false: SCIM synchronization is disabled.
+	SCIMSyncEnabled *bool `json:"SCIMSyncEnabled,omitempty" xml:"SCIMSyncEnabled,omitempty"`
+	// Indicates whether SSO logon is enabled. Valid values:
+	//
+	// *   true: SSO logon is enabled.
+	// *   false: SSO logon is disabled.
+	SSOEnabled                              *bool  `json:"SSOEnabled,omitempty" xml:"SSOEnabled,omitempty"`
+	SystemPolicyPerAccessConfigurationQuota *int32 `json:"SystemPolicyPerAccessConfigurationQuota,omitempty" xml:"SystemPolicyPerAccessConfigurationQuota,omitempty"`
+	// The number of users.
+	UserCount *int32 `json:"UserCount,omitempty" xml:"UserCount,omitempty"`
+	// The quota for users.
+	UserQuota *int32 `json:"UserQuota,omitempty" xml:"UserQuota,omitempty"`
 }
 
 func (s GetDirectoryStatisticsResponseBodyDirectoryStatistics) String() string {
@@ -2537,6 +2854,11 @@ func (s *GetDirectoryStatisticsResponseBodyDirectoryStatistics) SetSSOEnabled(v 
 	return s
 }
 
+func (s *GetDirectoryStatisticsResponseBodyDirectoryStatistics) SetSystemPolicyPerAccessConfigurationQuota(v int32) *GetDirectoryStatisticsResponseBodyDirectoryStatistics {
+	s.SystemPolicyPerAccessConfigurationQuota = &v
+	return s
+}
+
 func (s *GetDirectoryStatisticsResponseBodyDirectoryStatistics) SetUserCount(v int32) *GetDirectoryStatisticsResponseBodyDirectoryStatistics {
 	s.UserCount = &v
 	return s
@@ -2577,6 +2899,7 @@ func (s *GetDirectoryStatisticsResponse) SetBody(v *GetDirectoryStatisticsRespon
 }
 
 type GetExternalSAMLIdentityProviderRequest struct {
+	// The ID of the directory.
 	DirectoryId *string `json:"DirectoryId,omitempty" xml:"DirectoryId,omitempty"`
 }
 
@@ -2594,7 +2917,9 @@ func (s *GetExternalSAMLIdentityProviderRequest) SetDirectoryId(v string) *GetEx
 }
 
 type GetExternalSAMLIdentityProviderResponseBody struct {
-	RequestId                         *string                                                                       `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The ID of the request.
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The configurations of the IdP.
 	SAMLIdentityProviderConfiguration *GetExternalSAMLIdentityProviderResponseBodySAMLIdentityProviderConfiguration `json:"SAMLIdentityProviderConfiguration,omitempty" xml:"SAMLIdentityProviderConfiguration,omitempty" type:"Struct"`
 }
 
@@ -2617,15 +2942,30 @@ func (s *GetExternalSAMLIdentityProviderResponseBody) SetSAMLIdentityProviderCon
 }
 
 type GetExternalSAMLIdentityProviderResponseBodySAMLIdentityProviderConfiguration struct {
-	CertificateIds          []*string `json:"CertificateIds,omitempty" xml:"CertificateIds,omitempty" type:"Repeated"`
-	CreateTime              *string   `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
-	DirectoryId             *string   `json:"DirectoryId,omitempty" xml:"DirectoryId,omitempty"`
-	EncodedMetadataDocument *string   `json:"EncodedMetadataDocument,omitempty" xml:"EncodedMetadataDocument,omitempty"`
-	EntityId                *string   `json:"EntityId,omitempty" xml:"EntityId,omitempty"`
-	LoginUrl                *string   `json:"LoginUrl,omitempty" xml:"LoginUrl,omitempty"`
-	SSOStatus               *string   `json:"SSOStatus,omitempty" xml:"SSOStatus,omitempty"`
-	UpdateTime              *string   `json:"UpdateTime,omitempty" xml:"UpdateTime,omitempty"`
-	WantRequestSigned       *bool     `json:"WantRequestSigned,omitempty" xml:"WantRequestSigned,omitempty"`
+	// The ID of the SAML signing certificate.
+	CertificateIds []*string `json:"CertificateIds,omitempty" xml:"CertificateIds,omitempty" type:"Repeated"`
+	// The time when the IdP was configured for the first time.
+	CreateTime *string `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
+	// The ID of the directory.
+	DirectoryId *string `json:"DirectoryId,omitempty" xml:"DirectoryId,omitempty"`
+	// The metadata file of the IdP. The value of this parameter is Base64-encoded.
+	EncodedMetadataDocument *string `json:"EncodedMetadataDocument,omitempty" xml:"EncodedMetadataDocument,omitempty"`
+	// The entity ID of the IdP.
+	EntityId *string `json:"EntityId,omitempty" xml:"EntityId,omitempty"`
+	// The logon URL of the IdP.
+	LoginUrl *string `json:"LoginUrl,omitempty" xml:"LoginUrl,omitempty"`
+	// The status of SSO logon. Valid values:
+	//
+	// *   Enabled
+	// *   Disabled
+	SSOStatus *string `json:"SSOStatus,omitempty" xml:"SSOStatus,omitempty"`
+	// The time when the IdP configurations were last modified.
+	UpdateTime *string `json:"UpdateTime,omitempty" xml:"UpdateTime,omitempty"`
+	// Indicates whether CloudSSO needs to sign SAML requests. The requests are sent when users log on to the CloudSSO user portal to initiate SAML-based SSO. Valid values:
+	//
+	// *   true: yes
+	// *   false: no (default)
+	WantRequestSigned *bool `json:"WantRequestSigned,omitempty" xml:"WantRequestSigned,omitempty"`
 }
 
 func (s GetExternalSAMLIdentityProviderResponseBodySAMLIdentityProviderConfiguration) String() string {
@@ -2711,8 +3051,10 @@ func (s *GetExternalSAMLIdentityProviderResponse) SetBody(v *GetExternalSAMLIden
 }
 
 type GetGroupRequest struct {
+	// The ID of the directory.
 	DirectoryId *string `json:"DirectoryId,omitempty" xml:"DirectoryId,omitempty"`
-	GroupId     *string `json:"GroupId,omitempty" xml:"GroupId,omitempty"`
+	// The ID of the group.
+	GroupId *string `json:"GroupId,omitempty" xml:"GroupId,omitempty"`
 }
 
 func (s GetGroupRequest) String() string {
@@ -2734,8 +3076,10 @@ func (s *GetGroupRequest) SetGroupId(v string) *GetGroupRequest {
 }
 
 type GetGroupResponseBody struct {
-	Group     *GetGroupResponseBodyGroup `json:"Group,omitempty" xml:"Group,omitempty" type:"Struct"`
-	RequestId *string                    `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The information about the group.
+	Group *GetGroupResponseBodyGroup `json:"Group,omitempty" xml:"Group,omitempty" type:"Struct"`
+	// The ID of the request.
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
 func (s GetGroupResponseBody) String() string {
@@ -2757,12 +3101,21 @@ func (s *GetGroupResponseBody) SetRequestId(v string) *GetGroupResponseBody {
 }
 
 type GetGroupResponseBodyGroup struct {
-	CreateTime    *string `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
-	Description   *string `json:"Description,omitempty" xml:"Description,omitempty"`
-	GroupId       *string `json:"GroupId,omitempty" xml:"GroupId,omitempty"`
-	GroupName     *string `json:"GroupName,omitempty" xml:"GroupName,omitempty"`
+	// The time when the group was created.
+	CreateTime *string `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
+	// The description of the group.
+	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
+	// The ID of the group.
+	GroupId *string `json:"GroupId,omitempty" xml:"GroupId,omitempty"`
+	// The name of the group.
+	GroupName *string `json:"GroupName,omitempty" xml:"GroupName,omitempty"`
+	// The type of the group. Valid values:
+	//
+	// *   Manual: The group is manually created.
+	// *   Synchronized: The group is synchronized from an external identity provider (IdP).
 	ProvisionType *string `json:"ProvisionType,omitempty" xml:"ProvisionType,omitempty"`
-	UpdateTime    *string `json:"UpdateTime,omitempty" xml:"UpdateTime,omitempty"`
+	// The time when the information about the group was modified.
+	UpdateTime *string `json:"UpdateTime,omitempty" xml:"UpdateTime,omitempty"`
 }
 
 func (s GetGroupResponseBodyGroup) String() string {
@@ -2832,7 +3185,115 @@ func (s *GetGroupResponse) SetBody(v *GetGroupResponseBody) *GetGroupResponse {
 	return s
 }
 
+type GetMFAAuthenticationSettingInfoRequest struct {
+	// The ID of the directory.
+	DirectoryId *string `json:"DirectoryId,omitempty" xml:"DirectoryId,omitempty"`
+}
+
+func (s GetMFAAuthenticationSettingInfoRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetMFAAuthenticationSettingInfoRequest) GoString() string {
+	return s.String()
+}
+
+func (s *GetMFAAuthenticationSettingInfoRequest) SetDirectoryId(v string) *GetMFAAuthenticationSettingInfoRequest {
+	s.DirectoryId = &v
+	return s
+}
+
+type GetMFAAuthenticationSettingInfoResponseBody struct {
+	// The MFA setting of all users.
+	MFAAuthenticationSettingInfo *GetMFAAuthenticationSettingInfoResponseBodyMFAAuthenticationSettingInfo `json:"MFAAuthenticationSettingInfo,omitempty" xml:"MFAAuthenticationSettingInfo,omitempty" type:"Struct"`
+	// The ID of the request.
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+}
+
+func (s GetMFAAuthenticationSettingInfoResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetMFAAuthenticationSettingInfoResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *GetMFAAuthenticationSettingInfoResponseBody) SetMFAAuthenticationSettingInfo(v *GetMFAAuthenticationSettingInfoResponseBodyMFAAuthenticationSettingInfo) *GetMFAAuthenticationSettingInfoResponseBody {
+	s.MFAAuthenticationSettingInfo = v
+	return s
+}
+
+func (s *GetMFAAuthenticationSettingInfoResponseBody) SetRequestId(v string) *GetMFAAuthenticationSettingInfoResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+type GetMFAAuthenticationSettingInfoResponseBodyMFAAuthenticationSettingInfo struct {
+	// The MFA policy of all users. Valid values:
+	//
+	// *   Enabled: MFA is enabled for all users.
+	// *   Byuser: User-specific settings are applied. For more information about how to configure MFA for a single user, see [UpdateUserMFAAuthenticationSettings](~~450135~~).
+	// *   Disabled: MFA is disabled for all users.
+	// *   OnlyRiskyLogin: MFA is required only for unusual logons.
+	MfaAuthenticationAdvanceSettings *string `json:"MfaAuthenticationAdvanceSettings,omitempty" xml:"MfaAuthenticationAdvanceSettings,omitempty"`
+	// The MFA policy for unusual logons. Valid values:
+	//
+	// *   Autonomous: MFA is prompted for users who initiated unusual logons. However, the users are allowed to skip MFA. If an MFA device is bound to a user who initiated an unusual logon, the user must pass MFA.
+	// *   EnforceVerify: MFA is required. If no MFA devices are bound to a user who initiated an unusual logon, the user must bind an MFA device. If an MFA device is already bound to a user who initiated an unusual logon, the user must pass MFA.
+	//
+	// > This parameter is displayed only when Byuser or OnlyRiskyLogin is returned for the MfaAuthenticationAdvanceSettings parameter.
+	OperationForRiskLogin *string `json:"OperationForRiskLogin,omitempty" xml:"OperationForRiskLogin,omitempty"`
+}
+
+func (s GetMFAAuthenticationSettingInfoResponseBodyMFAAuthenticationSettingInfo) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetMFAAuthenticationSettingInfoResponseBodyMFAAuthenticationSettingInfo) GoString() string {
+	return s.String()
+}
+
+func (s *GetMFAAuthenticationSettingInfoResponseBodyMFAAuthenticationSettingInfo) SetMfaAuthenticationAdvanceSettings(v string) *GetMFAAuthenticationSettingInfoResponseBodyMFAAuthenticationSettingInfo {
+	s.MfaAuthenticationAdvanceSettings = &v
+	return s
+}
+
+func (s *GetMFAAuthenticationSettingInfoResponseBodyMFAAuthenticationSettingInfo) SetOperationForRiskLogin(v string) *GetMFAAuthenticationSettingInfoResponseBodyMFAAuthenticationSettingInfo {
+	s.OperationForRiskLogin = &v
+	return s
+}
+
+type GetMFAAuthenticationSettingInfoResponse struct {
+	Headers    map[string]*string                           `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                                       `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *GetMFAAuthenticationSettingInfoResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s GetMFAAuthenticationSettingInfoResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetMFAAuthenticationSettingInfoResponse) GoString() string {
+	return s.String()
+}
+
+func (s *GetMFAAuthenticationSettingInfoResponse) SetHeaders(v map[string]*string) *GetMFAAuthenticationSettingInfoResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *GetMFAAuthenticationSettingInfoResponse) SetStatusCode(v int32) *GetMFAAuthenticationSettingInfoResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *GetMFAAuthenticationSettingInfoResponse) SetBody(v *GetMFAAuthenticationSettingInfoResponseBody) *GetMFAAuthenticationSettingInfoResponse {
+	s.Body = v
+	return s
+}
+
 type GetMFAAuthenticationSettingsRequest struct {
+	// The ID of the directory.
 	DirectoryId *string `json:"DirectoryId,omitempty" xml:"DirectoryId,omitempty"`
 }
 
@@ -2850,8 +3311,14 @@ func (s *GetMFAAuthenticationSettingsRequest) SetDirectoryId(v string) *GetMFAAu
 }
 
 type GetMFAAuthenticationSettingsResponseBody struct {
+	// Indicates whether MFA is enabled for all users. Valid values:
+	//
+	// *   Enabled: MFA is enabled for all users.
+	// *   Byuser: User-specific settings are applied.
+	// *   Disabled: MFA is disabled for all users.
 	MFAAuthenticationAdvanceSettings *string `json:"MFAAuthenticationAdvanceSettings,omitempty" xml:"MFAAuthenticationAdvanceSettings,omitempty"`
-	RequestId                        *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The ID of the request.
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
 func (s GetMFAAuthenticationSettingsResponseBody) String() string {
@@ -2902,6 +3369,7 @@ func (s *GetMFAAuthenticationSettingsResponse) SetBody(v *GetMFAAuthenticationSe
 }
 
 type GetMFAAuthenticationStatusRequest struct {
+	// The ID of the directory.
 	DirectoryId *string `json:"DirectoryId,omitempty" xml:"DirectoryId,omitempty"`
 }
 
@@ -2919,8 +3387,13 @@ func (s *GetMFAAuthenticationStatusRequest) SetDirectoryId(v string) *GetMFAAuth
 }
 
 type GetMFAAuthenticationStatusResponseBody struct {
+	// The status of MFA. Valid values:
+	//
+	// *   Enabled
+	// *   Disabled
 	MFAAuthenticationStatus *string `json:"MFAAuthenticationStatus,omitempty" xml:"MFAAuthenticationStatus,omitempty"`
-	RequestId               *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The ID of the request.
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
 func (s GetMFAAuthenticationStatusResponseBody) String() string {
@@ -2971,6 +3444,7 @@ func (s *GetMFAAuthenticationStatusResponse) SetBody(v *GetMFAAuthenticationStat
 }
 
 type GetSCIMSynchronizationStatusRequest struct {
+	// The ID of the directory.
 	DirectoryId *string `json:"DirectoryId,omitempty" xml:"DirectoryId,omitempty"`
 }
 
@@ -2988,7 +3462,12 @@ func (s *GetSCIMSynchronizationStatusRequest) SetDirectoryId(v string) *GetSCIMS
 }
 
 type GetSCIMSynchronizationStatusResponseBody struct {
-	RequestId                 *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The ID of the request.
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The status of SCIM synchronization. Valid values:
+	//
+	// *   Enabled
+	// *   Disabled
 	SCIMSynchronizationStatus *string `json:"SCIMSynchronizationStatus,omitempty" xml:"SCIMSynchronizationStatus,omitempty"`
 }
 
@@ -3040,7 +3519,9 @@ func (s *GetSCIMSynchronizationStatusResponse) SetBody(v *GetSCIMSynchronization
 }
 
 type GetServiceStatusResponseBody struct {
-	RequestId     *string                                    `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The ID of the request.
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The status information of CloudSSO.
 	ServiceStatus *GetServiceStatusResponseBodyServiceStatus `json:"ServiceStatus,omitempty" xml:"ServiceStatus,omitempty" type:"Struct"`
 }
 
@@ -3063,10 +3544,22 @@ func (s *GetServiceStatusResponseBody) SetServiceStatus(v *GetServiceStatusRespo
 }
 
 type GetServiceStatusResponseBodyServiceStatus struct {
-	AccountId               *string   `json:"AccountId,omitempty" xml:"AccountId,omitempty"`
-	PrerequisiteCheckResult *string   `json:"PrerequisiteCheckResult,omitempty" xml:"PrerequisiteCheckResult,omitempty"`
-	RegionsInUse            []*string `json:"RegionsInUse,omitempty" xml:"RegionsInUse,omitempty" type:"Repeated"`
-	Status                  *string   `json:"Status,omitempty" xml:"Status,omitempty"`
+	// The ID of your Alibaba Cloud account.
+	AccountId *string `json:"AccountId,omitempty" xml:"AccountId,omitempty"`
+	// Indicates whether you have permissions to enable CloudSSO. Valid values:
+	//
+	// *   Success: You have permissions to enable CloudSSO.
+	// *   Failed: You do not have permissions to enable CloudSSO.
+	//
+	// >  The value of this parameter is returned only if the value of `Status` is `Disabled`.
+	PrerequisiteCheckResult *string `json:"PrerequisiteCheckResult,omitempty" xml:"PrerequisiteCheckResult,omitempty"`
+	// The ID of the region.
+	RegionsInUse []*string `json:"RegionsInUse,omitempty" xml:"RegionsInUse,omitempty" type:"Repeated"`
+	// Indicates whether CloudSSO is enabled. Valid values:
+	//
+	// *   Enabled
+	// *   Disabled
+	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
 }
 
 func (s GetServiceStatusResponseBodyServiceStatus) String() string {
@@ -3127,8 +3620,10 @@ func (s *GetServiceStatusResponse) SetBody(v *GetServiceStatusResponseBody) *Get
 }
 
 type GetTaskRequest struct {
+	// The ID of the directory.
 	DirectoryId *string `json:"DirectoryId,omitempty" xml:"DirectoryId,omitempty"`
-	TaskId      *string `json:"TaskId,omitempty" xml:"TaskId,omitempty"`
+	// The ID of the task.
+	TaskId *string `json:"TaskId,omitempty" xml:"TaskId,omitempty"`
 }
 
 func (s GetTaskRequest) String() string {
@@ -3150,8 +3645,10 @@ func (s *GetTaskRequest) SetTaskId(v string) *GetTaskRequest {
 }
 
 type GetTaskResponseBody struct {
-	RequestId *string                  `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	Task      *GetTaskResponseBodyTask `json:"Task,omitempty" xml:"Task,omitempty" type:"Struct"`
+	// The ID of the request.
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The information about the task.
+	Task *GetTaskResponseBodyTask `json:"Task,omitempty" xml:"Task,omitempty" type:"Struct"`
 }
 
 func (s GetTaskResponseBody) String() string {
@@ -3173,22 +3670,52 @@ func (s *GetTaskResponseBody) SetTask(v *GetTaskResponseBodyTask) *GetTaskRespon
 }
 
 type GetTaskResponseBodyTask struct {
-	AccessConfigurationId   *string `json:"AccessConfigurationId,omitempty" xml:"AccessConfigurationId,omitempty"`
+	// The ID of the access configuration.
+	AccessConfigurationId *string `json:"AccessConfigurationId,omitempty" xml:"AccessConfigurationId,omitempty"`
+	// The name of the access configuration.
 	AccessConfigurationName *string `json:"AccessConfigurationName,omitempty" xml:"AccessConfigurationName,omitempty"`
-	EndTime                 *string `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
-	FailureReason           *string `json:"FailureReason,omitempty" xml:"FailureReason,omitempty"`
-	PrincipalId             *string `json:"PrincipalId,omitempty" xml:"PrincipalId,omitempty"`
-	PrincipalName           *string `json:"PrincipalName,omitempty" xml:"PrincipalName,omitempty"`
-	PrincipalType           *string `json:"PrincipalType,omitempty" xml:"PrincipalType,omitempty"`
-	StartTime               *string `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
-	Status                  *string `json:"Status,omitempty" xml:"Status,omitempty"`
-	TargetId                *string `json:"TargetId,omitempty" xml:"TargetId,omitempty"`
-	TargetName              *string `json:"TargetName,omitempty" xml:"TargetName,omitempty"`
-	TargetPath              *string `json:"TargetPath,omitempty" xml:"TargetPath,omitempty"`
-	TargetPathName          *string `json:"TargetPathName,omitempty" xml:"TargetPathName,omitempty"`
-	TargetType              *string `json:"TargetType,omitempty" xml:"TargetType,omitempty"`
-	TaskId                  *string `json:"TaskId,omitempty" xml:"TaskId,omitempty"`
-	TaskType                *string `json:"TaskType,omitempty" xml:"TaskType,omitempty"`
+	// The time when the task ended.
+	EndTime *string `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
+	// The cause of the task failure.
+	//
+	// >  This parameter is returned only when the value of `Status` is `Failed`.
+	FailureReason *string `json:"FailureReason,omitempty" xml:"FailureReason,omitempty"`
+	// The ID of the CloudSSO identity.
+	PrincipalId *string `json:"PrincipalId,omitempty" xml:"PrincipalId,omitempty"`
+	// The name of the CloudSSO identity.
+	PrincipalName *string `json:"PrincipalName,omitempty" xml:"PrincipalName,omitempty"`
+	// The type of the CloudSSO identity. Valid values:
+	//
+	// *   User
+	// *   Group
+	PrincipalType *string `json:"PrincipalType,omitempty" xml:"PrincipalType,omitempty"`
+	// The time when the task started.
+	StartTime *string `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
+	// The status of the task. Valid values:
+	//
+	// *   InProgress: The task is running.
+	// *   Success: The task is successful.
+	// *   Failed: The task failed.
+	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
+	// The ID of the task object.
+	TargetId *string `json:"TargetId,omitempty" xml:"TargetId,omitempty"`
+	// The name of the task object.
+	TargetName *string `json:"TargetName,omitempty" xml:"TargetName,omitempty"`
+	// The path ID of the task object in the resource directory.
+	TargetPath *string `json:"TargetPath,omitempty" xml:"TargetPath,omitempty"`
+	// The path name of the task object in the resource directory.
+	TargetPathName *string `json:"TargetPathName,omitempty" xml:"TargetPathName,omitempty"`
+	// The type of the task object. The value is fixed as RD-Account, which indicates the accounts in the resource directory.
+	TargetType *string `json:"TargetType,omitempty" xml:"TargetType,omitempty"`
+	// The ID of the task.
+	TaskId *string `json:"TaskId,omitempty" xml:"TaskId,omitempty"`
+	// The type of the task. Valid values:
+	//
+	// *   ProvisionAccessConfiguration: An access configuration is provisioned.
+	// *   DeprovisionAccessConfiguration: An access configuration is de-provisioned.
+	// *   CreateAccessAssignment: Access permissions on an account in the resource directory are assigned.
+	// *   DeleteAccessAssignment: Access permissions on an account in the resource directory are removed.
+	TaskType *string `json:"TaskType,omitempty" xml:"TaskType,omitempty"`
 }
 
 func (s GetTaskResponseBodyTask) String() string {
@@ -3309,8 +3836,10 @@ func (s *GetTaskResponse) SetBody(v *GetTaskResponseBody) *GetTaskResponse {
 }
 
 type GetTaskStatusRequest struct {
+	// The ID of the directory.
 	DirectoryId *string `json:"DirectoryId,omitempty" xml:"DirectoryId,omitempty"`
-	TaskId      *string `json:"TaskId,omitempty" xml:"TaskId,omitempty"`
+	// The ID of the task.
+	TaskId *string `json:"TaskId,omitempty" xml:"TaskId,omitempty"`
 }
 
 func (s GetTaskStatusRequest) String() string {
@@ -3332,7 +3861,9 @@ func (s *GetTaskStatusRequest) SetTaskId(v string) *GetTaskStatusRequest {
 }
 
 type GetTaskStatusResponseBody struct {
-	RequestId  *string                              `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The ID of the request.
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The status information of the task.
 	TaskStatus *GetTaskStatusResponseBodyTaskStatus `json:"TaskStatus,omitempty" xml:"TaskStatus,omitempty" type:"Struct"`
 }
 
@@ -3355,12 +3886,29 @@ func (s *GetTaskStatusResponseBody) SetTaskStatus(v *GetTaskStatusResponseBodyTa
 }
 
 type GetTaskStatusResponseBodyTaskStatus struct {
-	EndTime       *string `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
+	// The time when the task ended.
+	EndTime *string `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
+	// The cause of the task failure.
+	//
+	// >  This parameter is returned only when the value of `Status` is `Failed`.
 	FailureReason *string `json:"FailureReason,omitempty" xml:"FailureReason,omitempty"`
-	StartTime     *string `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
-	Status        *string `json:"Status,omitempty" xml:"Status,omitempty"`
-	TaskId        *string `json:"TaskId,omitempty" xml:"TaskId,omitempty"`
-	TaskType      *string `json:"TaskType,omitempty" xml:"TaskType,omitempty"`
+	// The time when the task started.
+	StartTime *string `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
+	// The status of the task. Valid values:
+	//
+	// *   InProgress: The task is running.
+	// *   Success: The task is successful.
+	// *   Failed: The task failed.
+	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
+	// The ID of the task.
+	TaskId *string `json:"TaskId,omitempty" xml:"TaskId,omitempty"`
+	// The type of the task. Valid values:
+	//
+	// *   ProvisionAccessConfiguration: An access configuration is provisioned.
+	// *   DeprovisionAccessConfiguration: An access configuration is de-provisioned.
+	// *   CreateAccessAssignment: Access permissions on an account in the resource directory are assigned.
+	// *   DeleteAccessAssignment: Access permissions on an account in the resource directory are removed.
+	TaskType *string `json:"TaskType,omitempty" xml:"TaskType,omitempty"`
 }
 
 func (s GetTaskStatusResponseBodyTaskStatus) String() string {
@@ -3431,8 +3979,10 @@ func (s *GetTaskStatusResponse) SetBody(v *GetTaskStatusResponseBody) *GetTaskSt
 }
 
 type GetUserRequest struct {
+	// The ID of the directory.
 	DirectoryId *string `json:"DirectoryId,omitempty" xml:"DirectoryId,omitempty"`
-	UserId      *string `json:"UserId,omitempty" xml:"UserId,omitempty"`
+	// The ID of the user.
+	UserId *string `json:"UserId,omitempty" xml:"UserId,omitempty"`
 }
 
 func (s GetUserRequest) String() string {
@@ -3454,8 +4004,10 @@ func (s *GetUserRequest) SetUserId(v string) *GetUserRequest {
 }
 
 type GetUserResponseBody struct {
-	RequestId *string                  `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	User      *GetUserResponseBodyUser `json:"User,omitempty" xml:"User,omitempty" type:"Struct"`
+	// The ID of the request.
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The information about the user.
+	User *GetUserResponseBodyUser `json:"User,omitempty" xml:"User,omitempty" type:"Struct"`
 }
 
 func (s GetUserResponseBody) String() string {
@@ -3477,17 +4029,34 @@ func (s *GetUserResponseBody) SetUser(v *GetUserResponseBodyUser) *GetUserRespon
 }
 
 type GetUserResponseBodyUser struct {
-	CreateTime    *string `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
-	Description   *string `json:"Description,omitempty" xml:"Description,omitempty"`
-	DisplayName   *string `json:"DisplayName,omitempty" xml:"DisplayName,omitempty"`
-	Email         *string `json:"Email,omitempty" xml:"Email,omitempty"`
-	FirstName     *string `json:"FirstName,omitempty" xml:"FirstName,omitempty"`
-	LastName      *string `json:"LastName,omitempty" xml:"LastName,omitempty"`
+	// The time when the user was created.
+	CreateTime *string `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
+	// The description of the user.
+	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
+	// The display name of the user.
+	DisplayName *string `json:"DisplayName,omitempty" xml:"DisplayName,omitempty"`
+	// The email address of the user.
+	Email *string `json:"Email,omitempty" xml:"Email,omitempty"`
+	// The first name of the user.
+	FirstName *string `json:"FirstName,omitempty" xml:"FirstName,omitempty"`
+	// The last name of the user.
+	LastName *string `json:"LastName,omitempty" xml:"LastName,omitempty"`
+	// The type of the user. Valid values:
+	//
+	// *   Manual: The user is manually created.
+	// *   Synchronized: The user is synchronized from an external identity provider (IdP).
 	ProvisionType *string `json:"ProvisionType,omitempty" xml:"ProvisionType,omitempty"`
-	Status        *string `json:"Status,omitempty" xml:"Status,omitempty"`
-	UpdateTime    *string `json:"UpdateTime,omitempty" xml:"UpdateTime,omitempty"`
-	UserId        *string `json:"UserId,omitempty" xml:"UserId,omitempty"`
-	UserName      *string `json:"UserName,omitempty" xml:"UserName,omitempty"`
+	// The status of the user. Valid values:
+	//
+	// *   Enabled: The logon of the user is enabled.
+	// *   Disabled: The logon of the user is disabled.
+	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
+	// The time when the information about the user was modified.
+	UpdateTime *string `json:"UpdateTime,omitempty" xml:"UpdateTime,omitempty"`
+	// The ID of the user.
+	UserId *string `json:"UserId,omitempty" xml:"UserId,omitempty"`
+	// The name of the user.
+	UserName *string `json:"UserName,omitempty" xml:"UserName,omitempty"`
 }
 
 func (s GetUserResponseBodyUser) String() string {
@@ -3583,8 +4152,10 @@ func (s *GetUserResponse) SetBody(v *GetUserResponseBody) *GetUserResponse {
 }
 
 type GetUserMFAAuthenticationSettingsRequest struct {
+	// The ID of the directory.
 	DirectoryId *string `json:"DirectoryId,omitempty" xml:"DirectoryId,omitempty"`
-	UserId      *string `json:"UserId,omitempty" xml:"UserId,omitempty"`
+	// The ID of the user.
+	UserId *string `json:"UserId,omitempty" xml:"UserId,omitempty"`
 }
 
 func (s GetUserMFAAuthenticationSettingsRequest) String() string {
@@ -3606,7 +4177,12 @@ func (s *GetUserMFAAuthenticationSettingsRequest) SetUserId(v string) *GetUserMF
 }
 
 type GetUserMFAAuthenticationSettingsResponseBody struct {
-	RequestId                     *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The ID of the request.
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// Indicates whether MFA is enabled for the user. Valid values:
+	//
+	// *   Enabled: MFA is enabled for the user.
+	// *   Disabled: MFA is disabled for the user.
 	UserMFAAuthenticationSettings *string `json:"UserMFAAuthenticationSettings,omitempty" xml:"UserMFAAuthenticationSettings,omitempty"`
 }
 
@@ -3658,14 +4234,44 @@ func (s *GetUserMFAAuthenticationSettingsResponse) SetBody(v *GetUserMFAAuthenti
 }
 
 type ListAccessAssignmentsRequest struct {
+	// The ID of the access configuration. The ID can be used to filter access permissions.
 	AccessConfigurationId *string `json:"AccessConfigurationId,omitempty" xml:"AccessConfigurationId,omitempty"`
-	DirectoryId           *string `json:"DirectoryId,omitempty" xml:"DirectoryId,omitempty"`
-	MaxResults            *int32  `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
-	NextToken             *string `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
-	PrincipalId           *string `json:"PrincipalId,omitempty" xml:"PrincipalId,omitempty"`
-	PrincipalType         *string `json:"PrincipalType,omitempty" xml:"PrincipalType,omitempty"`
-	TargetId              *string `json:"TargetId,omitempty" xml:"TargetId,omitempty"`
-	TargetType            *string `json:"TargetType,omitempty" xml:"TargetType,omitempty"`
+	// The ID of the directory.
+	DirectoryId *string `json:"DirectoryId,omitempty" xml:"DirectoryId,omitempty"`
+	// The number of entries to return on each page.
+	//
+	// Valid values: 1 to 20.
+	//
+	// Default value: 10.
+	MaxResults *int32 `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
+	// The token to return for the next page. If this is your first time to call this operation, you do not need to specify `NextToken`.
+	//
+	// When you call this operation for the first time, if the total number of entries to return exceeds the value of `MaxResults`, the entries are truncated. Only the entries that match the value of `MaxResults` are returned, and the excess entries are not returned. In this case, the value of the response parameter `IsTruncated` is `true`, and `NextToken` is returned. In the next call, you can use the value of `NextToken` and maintain the settings of the other request parameters to query the excess entries. You can repeat the call until the value of `IsTruncated` becomes `false`. This way, all entries are returned.
+	NextToken *string `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
+	// The ID of the CloudSSO identity. The ID can be used to filter access permissions.
+	//
+	// *   If you set `PrincipalType` to User, set `PrincipalId` to the ID of the Cloud SSO user.
+	// *   If you set `PrincipalType` to Group, set `PrincipalId` to the ID of the CloudSSO group.
+	//
+	// >  You can use the ID to filter access permissions only if you specify both `PrincipalId` and `PrincipalType`.
+	PrincipalId *string `json:"PrincipalId,omitempty" xml:"PrincipalId,omitempty"`
+	// The type of the CloudSSO identity. The type can be used to filter access permissions. Valid values:
+	//
+	// *   User
+	// *   Group
+	//
+	// >  You can use the type to filter access permissions only if you specify both `PrincipalId` and `PrincipalType`.
+	PrincipalType *string `json:"PrincipalType,omitempty" xml:"PrincipalType,omitempty"`
+	// The ID of the task object. The ID can be used to filter access permissions.
+	//
+	// >  You can use the ID to filter access permissions only if you specify both `TargetId` and `TargetType`.
+	TargetId *string `json:"TargetId,omitempty" xml:"TargetId,omitempty"`
+	// The type of the task object. The type can be used to filter access permissions.
+	//
+	// Set the value to RD-Account, which indicates an account in your resource directory.
+	//
+	// >  You can use the type to filter access permissions only if you specify both `TargetId` and `TargetType`.
+	TargetType *string `json:"TargetType,omitempty" xml:"TargetType,omitempty"`
 }
 
 func (s ListAccessAssignmentsRequest) String() string {
@@ -3717,12 +4323,23 @@ func (s *ListAccessAssignmentsRequest) SetTargetType(v string) *ListAccessAssign
 }
 
 type ListAccessAssignmentsResponseBody struct {
+	// The access permissions that are assigned.
 	AccessAssignments []*ListAccessAssignmentsResponseBodyAccessAssignments `json:"AccessAssignments,omitempty" xml:"AccessAssignments,omitempty" type:"Repeated"`
-	IsTruncated       *bool                                                 `json:"IsTruncated,omitempty" xml:"IsTruncated,omitempty"`
-	MaxResults        *int32                                                `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
-	NextToken         *string                                               `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
-	RequestId         *string                                               `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	TotalCounts       *int32                                                `json:"TotalCounts,omitempty" xml:"TotalCounts,omitempty"`
+	// Indicates whether the queried entries are truncated. Valid values:
+	//
+	// *   true: The queried entries are truncated.
+	// *   false: The queried entries are not truncated.
+	IsTruncated *bool `json:"IsTruncated,omitempty" xml:"IsTruncated,omitempty"`
+	// The number of entries returned per page.
+	MaxResults *int32 `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
+	// The token that is returned for the next page.
+	//
+	// >  This parameter is returned only when the value of `IsTruncated` is `true`.
+	NextToken *string `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
+	// The ID of the request.
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The total number of entries returned.
+	TotalCounts *int32 `json:"TotalCounts,omitempty" xml:"TotalCounts,omitempty"`
 }
 
 func (s ListAccessAssignmentsResponseBody) String() string {
@@ -3764,17 +4381,33 @@ func (s *ListAccessAssignmentsResponseBody) SetTotalCounts(v int32) *ListAccessA
 }
 
 type ListAccessAssignmentsResponseBodyAccessAssignments struct {
-	AccessConfigurationId   *string `json:"AccessConfigurationId,omitempty" xml:"AccessConfigurationId,omitempty"`
+	// The ID of the access configuration.
+	AccessConfigurationId *string `json:"AccessConfigurationId,omitempty" xml:"AccessConfigurationId,omitempty"`
+	// The name of the access configuration.
 	AccessConfigurationName *string `json:"AccessConfigurationName,omitempty" xml:"AccessConfigurationName,omitempty"`
-	CreateTime              *string `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
-	PrincipalId             *string `json:"PrincipalId,omitempty" xml:"PrincipalId,omitempty"`
-	PrincipalName           *string `json:"PrincipalName,omitempty" xml:"PrincipalName,omitempty"`
-	PrincipalType           *string `json:"PrincipalType,omitempty" xml:"PrincipalType,omitempty"`
-	TargetId                *string `json:"TargetId,omitempty" xml:"TargetId,omitempty"`
-	TargetName              *string `json:"TargetName,omitempty" xml:"TargetName,omitempty"`
-	TargetPath              *string `json:"TargetPath,omitempty" xml:"TargetPath,omitempty"`
-	TargetPathName          *string `json:"TargetPathName,omitempty" xml:"TargetPathName,omitempty"`
-	TargetType              *string `json:"TargetType,omitempty" xml:"TargetType,omitempty"`
+	// The time when the access permissions were assigned.
+	CreateTime *string `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
+	// The ID of the CloudSSO identity.
+	PrincipalId *string `json:"PrincipalId,omitempty" xml:"PrincipalId,omitempty"`
+	// The name of the CloudSSO identity.
+	PrincipalName *string `json:"PrincipalName,omitempty" xml:"PrincipalName,omitempty"`
+	// The type of the CloudSSO identity. Valid values:
+	//
+	// *   User
+	// *   Group
+	PrincipalType *string `json:"PrincipalType,omitempty" xml:"PrincipalType,omitempty"`
+	// The ID of the task object.
+	TargetId *string `json:"TargetId,omitempty" xml:"TargetId,omitempty"`
+	// The name of the task object.
+	TargetName *string `json:"TargetName,omitempty" xml:"TargetName,omitempty"`
+	// The path ID of the task object in your resource directory.
+	TargetPath *string `json:"TargetPath,omitempty" xml:"TargetPath,omitempty"`
+	// The path name of the task object in your resource directory.
+	TargetPathName *string `json:"TargetPathName,omitempty" xml:"TargetPathName,omitempty"`
+	// The type of the task object.
+	//
+	// The value is fixed as RD-Account, which indicates an account in your resource directory.
+	TargetType *string `json:"TargetType,omitempty" xml:"TargetType,omitempty"`
 }
 
 func (s ListAccessAssignmentsResponseBodyAccessAssignments) String() string {
@@ -3870,13 +4503,36 @@ func (s *ListAccessAssignmentsResponse) SetBody(v *ListAccessAssignmentsResponse
 }
 
 type ListAccessConfigurationProvisioningsRequest struct {
+	// The ID of the access configuration. The ID can be used to filter accounts.
 	AccessConfigurationId *string `json:"AccessConfigurationId,omitempty" xml:"AccessConfigurationId,omitempty"`
-	DirectoryId           *string `json:"DirectoryId,omitempty" xml:"DirectoryId,omitempty"`
-	MaxResults            *int32  `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
-	NextToken             *string `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
-	ProvisioningStatus    *string `json:"ProvisioningStatus,omitempty" xml:"ProvisioningStatus,omitempty"`
-	TargetId              *string `json:"TargetId,omitempty" xml:"TargetId,omitempty"`
-	TargetType            *string `json:"TargetType,omitempty" xml:"TargetType,omitempty"`
+	// The ID of the directory.
+	DirectoryId *string `json:"DirectoryId,omitempty" xml:"DirectoryId,omitempty"`
+	// The number of entries to return on each page.
+	//
+	// Valid values: 1 to 20.
+	//
+	// Default value: 10.
+	MaxResults *int32 `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
+	// The token to return for the next page. If this is your first time to call this operation, you do not need to specify `NextToken`.
+	//
+	// When you call this operation for the first time, if the total number of entries to return exceeds the value of `MaxResults`, the entries are truncated. Only the entries that match the value of `MaxResults` are returned, and the excess entries are not returned. In this case, the value of the response parameter `IsTruncated` is `true`, and `NextToken` is returned. In the next call, you can use the value of `NextToken` and maintain the settings of the other request parameters to query the excess entries. You can repeat the call until the value of `IsTruncated` becomes `false`. This way, all entries are returned.
+	NextToken *string `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
+	// The status of the access configuration. The value can be used to filter accounts. Valid values:
+	//
+	// *   Provisioned: The access configuration is provisioned.
+	// *   ReprovisionRequired: The access configuration needs to be re-provisioned.
+	// *   DeprovisionFailed: The access configuration failed to be provisioned.
+	ProvisioningStatus *string `json:"ProvisioningStatus,omitempty" xml:"ProvisioningStatus,omitempty"`
+	// The ID of the task object. The ID can be used to filter accounts.
+	//
+	// >  You can use the ID to filter accounts only if you specify both `TargetId` and `TargetType`.
+	TargetId *string `json:"TargetId,omitempty" xml:"TargetId,omitempty"`
+	// The type of the task object. The type can be used to filter accounts.
+	//
+	// Set the value to RD-Account, which indicates an account in your resource directory.
+	//
+	// >  You can use the type to filter accounts only if you specify both `TargetId` and `TargetType`.
+	TargetType *string `json:"TargetType,omitempty" xml:"TargetType,omitempty"`
 }
 
 func (s ListAccessConfigurationProvisioningsRequest) String() string {
@@ -3923,12 +4579,23 @@ func (s *ListAccessConfigurationProvisioningsRequest) SetTargetType(v string) *L
 }
 
 type ListAccessConfigurationProvisioningsResponseBody struct {
+	// The accounts for which the access configuration is provisioned.
 	AccessConfigurationProvisionings []*ListAccessConfigurationProvisioningsResponseBodyAccessConfigurationProvisionings `json:"AccessConfigurationProvisionings,omitempty" xml:"AccessConfigurationProvisionings,omitempty" type:"Repeated"`
-	IsTruncated                      *bool                                                                               `json:"IsTruncated,omitempty" xml:"IsTruncated,omitempty"`
-	MaxResults                       *int32                                                                              `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
-	NextToken                        *string                                                                             `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
-	RequestId                        *string                                                                             `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	TotalCounts                      *int32                                                                              `json:"TotalCounts,omitempty" xml:"TotalCounts,omitempty"`
+	// Indicates whether the queried entries are truncated. Valid values:
+	//
+	// *   true: The queried entries are truncated.
+	// *   false: The queried entries are not truncated.
+	IsTruncated *bool `json:"IsTruncated,omitempty" xml:"IsTruncated,omitempty"`
+	// The number of entries returned per page.
+	MaxResults *int32 `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
+	// The token that is returned for the next page.
+	//
+	// >  This parameter is returned only when the value of `IsTruncated` is `true`.
+	NextToken *string `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
+	// The ID of the request.
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The total number of entries returned.
+	TotalCounts *int32 `json:"TotalCounts,omitempty" xml:"TotalCounts,omitempty"`
 }
 
 func (s ListAccessConfigurationProvisioningsResponseBody) String() string {
@@ -3970,19 +4637,40 @@ func (s *ListAccessConfigurationProvisioningsResponseBody) SetTotalCounts(v int3
 }
 
 type ListAccessConfigurationProvisioningsResponseBodyAccessConfigurationProvisionings struct {
-	AccessConfigurationId   *string   `json:"AccessConfigurationId,omitempty" xml:"AccessConfigurationId,omitempty"`
-	AccessConfigurationName *string   `json:"AccessConfigurationName,omitempty" xml:"AccessConfigurationName,omitempty"`
-	CreateTime              *string   `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
-	RAMPolicyNames          []*string `json:"RAMPolicyNames,omitempty" xml:"RAMPolicyNames,omitempty" type:"Repeated"`
-	RAMRoleName             *string   `json:"RAMRoleName,omitempty" xml:"RAMRoleName,omitempty"`
-	SAMLProviderName        *string   `json:"SAMLProviderName,omitempty" xml:"SAMLProviderName,omitempty"`
-	Status                  *string   `json:"Status,omitempty" xml:"Status,omitempty"`
-	TargetId                *string   `json:"TargetId,omitempty" xml:"TargetId,omitempty"`
-	TargetName              *string   `json:"TargetName,omitempty" xml:"TargetName,omitempty"`
-	TargetPath              *string   `json:"TargetPath,omitempty" xml:"TargetPath,omitempty"`
-	TargetPathName          *string   `json:"TargetPathName,omitempty" xml:"TargetPathName,omitempty"`
-	TargetType              *string   `json:"TargetType,omitempty" xml:"TargetType,omitempty"`
-	UpdateTime              *string   `json:"UpdateTime,omitempty" xml:"UpdateTime,omitempty"`
+	// The ID of the access configuration.
+	AccessConfigurationId *string `json:"AccessConfigurationId,omitempty" xml:"AccessConfigurationId,omitempty"`
+	// The name of the access configuration.
+	AccessConfigurationName *string `json:"AccessConfigurationName,omitempty" xml:"AccessConfigurationName,omitempty"`
+	// The first time when the access configuration was provisioned.
+	CreateTime *string `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
+	// The name of the custom policy that is created for an account in your resource directory.
+	RAMPolicyNames []*string `json:"RAMPolicyNames,omitempty" xml:"RAMPolicyNames,omitempty" type:"Repeated"`
+	// The name of the RAM role that is created for an account in your resource directory.
+	RAMRoleName *string `json:"RAMRoleName,omitempty" xml:"RAMRoleName,omitempty"`
+	// The name of the Security Assertion Markup Language (SAML) identity provider (IdP) that is created within an account in your resource directory.
+	SAMLProviderName *string `json:"SAMLProviderName,omitempty" xml:"SAMLProviderName,omitempty"`
+	// The status of the access configuration. Valid values:
+	//
+	// *   Provisioned: The access configuration is provisioned.
+	// *   ReprovisionRequired: The access configuration needs to be re-provisioned.
+	// *   DeprovisionFailed: The access configuration failed to be provisioned.
+	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
+	// The ID of the task object.
+	//
+	// If the value of TargetType is `RD-Account`, the value of this parameter is the UID of an account in your resource directory.
+	TargetId *string `json:"TargetId,omitempty" xml:"TargetId,omitempty"`
+	// The name of the task object.
+	TargetName *string `json:"TargetName,omitempty" xml:"TargetName,omitempty"`
+	// The path ID of the task object in your resource directory.
+	TargetPath *string `json:"TargetPath,omitempty" xml:"TargetPath,omitempty"`
+	// The path name of the task object in your resource directory.
+	TargetPathName *string `json:"TargetPathName,omitempty" xml:"TargetPathName,omitempty"`
+	// The type of the task object.
+	//
+	// The value is fixed as RD-Account, which indicates an account in your resource directory.
+	TargetType *string `json:"TargetType,omitempty" xml:"TargetType,omitempty"`
+	// The last time when the access configuration was provisioned.
+	UpdateTime *string `json:"UpdateTime,omitempty" xml:"UpdateTime,omitempty"`
 }
 
 func (s ListAccessConfigurationProvisioningsResponseBodyAccessConfigurationProvisionings) String() string {
@@ -4088,10 +4776,27 @@ func (s *ListAccessConfigurationProvisioningsResponse) SetBody(v *ListAccessConf
 }
 
 type ListAccessConfigurationsRequest struct {
-	DirectoryId         *string `json:"DirectoryId,omitempty" xml:"DirectoryId,omitempty"`
-	Filter              *string `json:"Filter,omitempty" xml:"Filter,omitempty"`
-	MaxResults          *int32  `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
-	NextToken           *string `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
+	// The ID of the directory.
+	DirectoryId *string `json:"DirectoryId,omitempty" xml:"DirectoryId,omitempty"`
+	// The filter condition.
+	//
+	// Specify the value in the \<Attribute> \<Operator> \<Value> format. The value is not case sensitive. You can set \<Attribute> only to AccessConfigurationName and \<Operator> only to eq or sw. The value eq indicates Equals. The value sw indicates Starts With.
+	//
+	// For example, if you set Filter to AccessConfigurationName sw test, the operation queries all access configurations whose names start with test. If you set Filter to AccessConfigurationName eq TestAccessConfiguration, the operation queries the access configuration whose name is TestAccessConfiguration.
+	Filter *string `json:"Filter,omitempty" xml:"Filter,omitempty"`
+	// The number of entries to return on each page.
+	//
+	// Valid values: 1 to 100.
+	//
+	// Default value: 10.
+	MaxResults *int32 `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
+	// The token to return for the next page. If this is your first time to call this operation, you do not need to specify the `NextToken` parameter.
+	//
+	// When you call this operation for the first time, if the total number of entries to return exceeds the value of `MaxResults`, the entries are truncated. Only the entries that match the value of `MaxResults` are returned, and the excess entries are not returned. In this case, the value of the response parameter `IsTruncated` is `true`, and `NextToken` is returned. In the next call, you can use the value of `NextToken` and maintain the settings of the other request parameters to query the excess entries. You can repeat the call until the value of `IsTruncated` becomes `false`. This way, all entries are returned.
+	NextToken *string `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
+	// The status notification. The status notification can be used to filter access configurations.
+	//
+	// Set the value to ReprovisionRequired, which indicates that the operation queries all access configurations that need to be re-provisioned.
 	StatusNotifications *string `json:"StatusNotifications,omitempty" xml:"StatusNotifications,omitempty"`
 }
 
@@ -4129,12 +4834,23 @@ func (s *ListAccessConfigurationsRequest) SetStatusNotifications(v string) *List
 }
 
 type ListAccessConfigurationsResponseBody struct {
+	// The access configurations.
 	AccessConfigurations []*ListAccessConfigurationsResponseBodyAccessConfigurations `json:"AccessConfigurations,omitempty" xml:"AccessConfigurations,omitempty" type:"Repeated"`
-	IsTruncated          *bool                                                       `json:"IsTruncated,omitempty" xml:"IsTruncated,omitempty"`
-	MaxResults           *int32                                                      `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
-	NextToken            *string                                                     `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
-	RequestId            *string                                                     `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	TotalCounts          *int32                                                      `json:"TotalCounts,omitempty" xml:"TotalCounts,omitempty"`
+	// Indicates whether the queried entries are truncated. Valid values:
+	//
+	// *   true: The queried entries are truncated.
+	// *   false: The queried entries are not truncated.
+	IsTruncated *bool `json:"IsTruncated,omitempty" xml:"IsTruncated,omitempty"`
+	// The number of entries returned per page.
+	MaxResults *int32 `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
+	// The token that is returned for the next page.
+	//
+	// >  This parameter is returned only when the `IsTruncated` parameter is set to `true`.
+	NextToken *string `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
+	// The ID of the request.
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The total number of entries returned.
+	TotalCounts *int32 `json:"TotalCounts,omitempty" xml:"TotalCounts,omitempty"`
 }
 
 func (s ListAccessConfigurationsResponseBody) String() string {
@@ -4176,14 +4892,24 @@ func (s *ListAccessConfigurationsResponseBody) SetTotalCounts(v int32) *ListAcce
 }
 
 type ListAccessConfigurationsResponseBodyAccessConfigurations struct {
-	AccessConfigurationId   *string   `json:"AccessConfigurationId,omitempty" xml:"AccessConfigurationId,omitempty"`
-	AccessConfigurationName *string   `json:"AccessConfigurationName,omitempty" xml:"AccessConfigurationName,omitempty"`
-	CreateTime              *string   `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
-	Description             *string   `json:"Description,omitempty" xml:"Description,omitempty"`
-	RelayState              *string   `json:"RelayState,omitempty" xml:"RelayState,omitempty"`
-	SessionDuration         *int32    `json:"SessionDuration,omitempty" xml:"SessionDuration,omitempty"`
-	StatusNotifications     []*string `json:"StatusNotifications,omitempty" xml:"StatusNotifications,omitempty" type:"Repeated"`
-	UpdateTime              *string   `json:"UpdateTime,omitempty" xml:"UpdateTime,omitempty"`
+	// The ID of the access configuration.
+	AccessConfigurationId *string `json:"AccessConfigurationId,omitempty" xml:"AccessConfigurationId,omitempty"`
+	// The name of the access configuration.
+	AccessConfigurationName *string `json:"AccessConfigurationName,omitempty" xml:"AccessConfigurationName,omitempty"`
+	// The time when the access configuration was created.
+	CreateTime *string `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
+	// The description of the access configuration.
+	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
+	// The initial web page that is displayed after a CloudSSO user accesses an account in your resource directory by using the access configuration.
+	RelayState *string `json:"RelayState,omitempty" xml:"RelayState,omitempty"`
+	// The duration of a session in which a CloudSSO user accesses an account in your resource directory by using the access configuration.
+	//
+	// Unit: seconds.
+	SessionDuration *int32 `json:"SessionDuration,omitempty" xml:"SessionDuration,omitempty"`
+	// The status notification.
+	StatusNotifications []*string `json:"StatusNotifications,omitempty" xml:"StatusNotifications,omitempty" type:"Repeated"`
+	// The time when the information about the access configuration was modified.
+	UpdateTime *string `json:"UpdateTime,omitempty" xml:"UpdateTime,omitempty"`
 }
 
 func (s ListAccessConfigurationsResponseBodyAccessConfigurations) String() string {
@@ -4264,9 +4990,12 @@ func (s *ListAccessConfigurationsResponse) SetBody(v *ListAccessConfigurationsRe
 }
 
 type ListDirectoriesResponseBody struct {
+	// The directories.
 	Directories []*ListDirectoriesResponseBodyDirectories `json:"Directories,omitempty" xml:"Directories,omitempty" type:"Repeated"`
-	RequestId   *string                                   `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	TotalCounts *int32                                    `json:"TotalCounts,omitempty" xml:"TotalCounts,omitempty"`
+	// The ID of the request.
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The number of directories.
+	TotalCounts *int32 `json:"TotalCounts,omitempty" xml:"TotalCounts,omitempty"`
 }
 
 func (s ListDirectoriesResponseBody) String() string {
@@ -4293,11 +5022,16 @@ func (s *ListDirectoriesResponseBody) SetTotalCounts(v int32) *ListDirectoriesRe
 }
 
 type ListDirectoriesResponseBodyDirectories struct {
-	CreateTime    *string `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
-	DirectoryId   *string `json:"DirectoryId,omitempty" xml:"DirectoryId,omitempty"`
+	// The time when the directory was created.
+	CreateTime *string `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
+	// The ID of the directory.
+	DirectoryId *string `json:"DirectoryId,omitempty" xml:"DirectoryId,omitempty"`
+	// The name of the directory.
 	DirectoryName *string `json:"DirectoryName,omitempty" xml:"DirectoryName,omitempty"`
-	Region        *string `json:"Region,omitempty" xml:"Region,omitempty"`
-	UpdateTime    *string `json:"UpdateTime,omitempty" xml:"UpdateTime,omitempty"`
+	// The region ID of the directory.
+	Region *string `json:"Region,omitempty" xml:"Region,omitempty"`
+	// The time when the directory was modified.
+	UpdateTime *string `json:"UpdateTime,omitempty" xml:"UpdateTime,omitempty"`
 }
 
 func (s ListDirectoriesResponseBodyDirectories) String() string {
@@ -4363,6 +5097,7 @@ func (s *ListDirectoriesResponse) SetBody(v *ListDirectoriesResponseBody) *ListD
 }
 
 type ListExternalSAMLIdPCertificatesRequest struct {
+	// The ID of the directory.
 	DirectoryId *string `json:"DirectoryId,omitempty" xml:"DirectoryId,omitempty"`
 }
 
@@ -4380,9 +5115,12 @@ func (s *ListExternalSAMLIdPCertificatesRequest) SetDirectoryId(v string) *ListE
 }
 
 type ListExternalSAMLIdPCertificatesResponseBody struct {
-	RequestId           *string                                                           `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The ID of the request.
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The SAML signing certificates.
 	SAMLIdPCertificates []*ListExternalSAMLIdPCertificatesResponseBodySAMLIdPCertificates `json:"SAMLIdPCertificates,omitempty" xml:"SAMLIdPCertificates,omitempty" type:"Repeated"`
-	TotalCounts         *int32                                                            `json:"TotalCounts,omitempty" xml:"TotalCounts,omitempty"`
+	// The total number of entries returned.
+	TotalCounts *int32 `json:"TotalCounts,omitempty" xml:"TotalCounts,omitempty"`
 }
 
 func (s ListExternalSAMLIdPCertificatesResponseBody) String() string {
@@ -4409,16 +5147,26 @@ func (s *ListExternalSAMLIdPCertificatesResponseBody) SetTotalCounts(v int32) *L
 }
 
 type ListExternalSAMLIdPCertificatesResponseBodySAMLIdPCertificates struct {
-	CertificateId      *string `json:"CertificateId,omitempty" xml:"CertificateId,omitempty"`
-	Issuer             *string `json:"Issuer,omitempty" xml:"Issuer,omitempty"`
-	NotAfter           *string `json:"NotAfter,omitempty" xml:"NotAfter,omitempty"`
-	NotBefore          *string `json:"NotBefore,omitempty" xml:"NotBefore,omitempty"`
-	PublicKey          *string `json:"PublicKey,omitempty" xml:"PublicKey,omitempty"`
-	SerialNumber       *string `json:"SerialNumber,omitempty" xml:"SerialNumber,omitempty"`
+	// The ID of the certificate.
+	CertificateId *string `json:"CertificateId,omitempty" xml:"CertificateId,omitempty"`
+	// The issuer of the certificate.
+	Issuer *string `json:"Issuer,omitempty" xml:"Issuer,omitempty"`
+	// The time when the certificate expires.
+	NotAfter *string `json:"NotAfter,omitempty" xml:"NotAfter,omitempty"`
+	// The time when the certificate was created.
+	NotBefore *string `json:"NotBefore,omitempty" xml:"NotBefore,omitempty"`
+	// The public key of the certificate. The value of this paremeter is in the PEM format and is Base64-encoded.
+	PublicKey *string `json:"PublicKey,omitempty" xml:"PublicKey,omitempty"`
+	// The serial number of the certificate.
+	SerialNumber *string `json:"SerialNumber,omitempty" xml:"SerialNumber,omitempty"`
+	// The signature algorithm of the certificate.
 	SignatureAlgorithm *string `json:"SignatureAlgorithm,omitempty" xml:"SignatureAlgorithm,omitempty"`
-	Subject            *string `json:"Subject,omitempty" xml:"Subject,omitempty"`
-	Version            *int32  `json:"Version,omitempty" xml:"Version,omitempty"`
-	X509Certificate    *string `json:"X509Certificate,omitempty" xml:"X509Certificate,omitempty"`
+	// The subject of the certificate.
+	Subject *string `json:"Subject,omitempty" xml:"Subject,omitempty"`
+	// The version of the certificate.
+	Version *int32 `json:"Version,omitempty" xml:"Version,omitempty"`
+	// The X.509 certificate in the PEM format.
+	X509Certificate *string `json:"X509Certificate,omitempty" xml:"X509Certificate,omitempty"`
 }
 
 func (s ListExternalSAMLIdPCertificatesResponseBodySAMLIdPCertificates) String() string {
@@ -4509,10 +5257,20 @@ func (s *ListExternalSAMLIdPCertificatesResponse) SetBody(v *ListExternalSAMLIdP
 }
 
 type ListGroupMembersRequest struct {
+	// The ID of the directory.
 	DirectoryId *string `json:"DirectoryId,omitempty" xml:"DirectoryId,omitempty"`
-	GroupId     *string `json:"GroupId,omitempty" xml:"GroupId,omitempty"`
-	MaxResults  *int32  `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
-	NextToken   *string `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
+	// The ID of the group.
+	GroupId *string `json:"GroupId,omitempty" xml:"GroupId,omitempty"`
+	// The number of entries to return on each page.
+	//
+	// Valid values: 1 to 100.
+	//
+	// Default value: 10.
+	MaxResults *int32 `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
+	// The token to return for the next page. If this is your first time to call this operation, you do not need to specify `NextToken` .
+	//
+	// When you call this operation for the first time, if the total number of entries to return exceeds the value of `MaxResults`, the entries are truncated. Only the entries that match the value of `MaxResults` are returned, and the excess entries are not returned. In this case, the value of the response parameter `IsTruncated` is `true`, and `NextToken` is returned. In the next call, you can use the value of `NextToken` and maintain the settings of the other request parameters to query the excess entries. You can repeat the call until the value of `IsTruncated` becomes `false`. This way, all entries are returned.
+	NextToken *string `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
 }
 
 func (s ListGroupMembersRequest) String() string {
@@ -4544,12 +5302,23 @@ func (s *ListGroupMembersRequest) SetNextToken(v string) *ListGroupMembersReques
 }
 
 type ListGroupMembersResponseBody struct {
+	// The users in the group.
 	GroupMembers []*ListGroupMembersResponseBodyGroupMembers `json:"GroupMembers,omitempty" xml:"GroupMembers,omitempty" type:"Repeated"`
-	IsTruncated  *bool                                       `json:"IsTruncated,omitempty" xml:"IsTruncated,omitempty"`
-	MaxResults   *int32                                      `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
-	NextToken    *string                                     `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
-	RequestId    *string                                     `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	TotalCounts  *int32                                      `json:"TotalCounts,omitempty" xml:"TotalCounts,omitempty"`
+	// Indicates whether the queried entries are truncated. Valid values:
+	//
+	// *   true: The queried entries are truncated.
+	// *   false: The queried entries are not truncated.
+	IsTruncated *bool `json:"IsTruncated,omitempty" xml:"IsTruncated,omitempty"`
+	// The number of entries returned per page.
+	MaxResults *int32 `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
+	// The token that is returned for the next page.
+	//
+	// >  This parameter is returned only when the value of `IsTruncated` is `true`.
+	NextToken *string `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
+	// The ID of the request.
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The total number of entries returned.
+	TotalCounts *int32 `json:"TotalCounts,omitempty" xml:"TotalCounts,omitempty"`
 }
 
 func (s ListGroupMembersResponseBody) String() string {
@@ -4591,15 +5360,30 @@ func (s *ListGroupMembersResponseBody) SetTotalCounts(v int32) *ListGroupMembers
 }
 
 type ListGroupMembersResponseBodyGroupMembers struct {
-	Description   *string `json:"Description,omitempty" xml:"Description,omitempty"`
-	DisplayName   *string `json:"DisplayName,omitempty" xml:"DisplayName,omitempty"`
-	Email         *string `json:"Email,omitempty" xml:"Email,omitempty"`
-	GroupId       *string `json:"GroupId,omitempty" xml:"GroupId,omitempty"`
-	JoinTime      *string `json:"JoinTime,omitempty" xml:"JoinTime,omitempty"`
+	// The description of the user.
+	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
+	// The display name of the user.
+	DisplayName *string `json:"DisplayName,omitempty" xml:"DisplayName,omitempty"`
+	// The email address of the user.
+	Email *string `json:"Email,omitempty" xml:"Email,omitempty"`
+	// The ID of the group.
+	GroupId *string `json:"GroupId,omitempty" xml:"GroupId,omitempty"`
+	// The time when the user was added to the user group.
+	JoinTime *string `json:"JoinTime,omitempty" xml:"JoinTime,omitempty"`
+	// The type of the user. Valid values:
+	//
+	// *   Manual: The user is manually created.
+	// *   Synchronized: The user is synchronized from an external identity provider (IdP).
 	ProvisionType *string `json:"ProvisionType,omitempty" xml:"ProvisionType,omitempty"`
-	Status        *string `json:"Status,omitempty" xml:"Status,omitempty"`
-	UserId        *string `json:"UserId,omitempty" xml:"UserId,omitempty"`
-	UserName      *string `json:"UserName,omitempty" xml:"UserName,omitempty"`
+	// The status of the user. Valid values:
+	//
+	// *   Enabled: The logon of the user is enabled.
+	// *   Disabled: The logon of the user is disabled.
+	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
+	// The ID of the user.
+	UserId *string `json:"UserId,omitempty" xml:"UserId,omitempty"`
+	// The name of the user.
+	UserName *string `json:"UserName,omitempty" xml:"UserName,omitempty"`
 }
 
 func (s ListGroupMembersResponseBodyGroupMembers) String() string {
@@ -4685,10 +5469,28 @@ func (s *ListGroupMembersResponse) SetBody(v *ListGroupMembersResponseBody) *Lis
 }
 
 type ListGroupsRequest struct {
-	DirectoryId   *string `json:"DirectoryId,omitempty" xml:"DirectoryId,omitempty"`
-	Filter        *string `json:"Filter,omitempty" xml:"Filter,omitempty"`
-	MaxResults    *int32  `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
-	NextToken     *string `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
+	// The ID of the directory.
+	DirectoryId *string `json:"DirectoryId,omitempty" xml:"DirectoryId,omitempty"`
+	// The filter condition.
+	//
+	// Specify the value in the \<Attribute> \<Operator> \<Value> format. The value is not case sensitive. You can set \<Attribute> only to `GroupName` and \<Operator> only to `eq` or `sw`. The value eq indicates Equals. The value sw indicates Starts With.
+	//
+	// For example, if you set Filter to GroupName sw test, the operation queries the groups whose names start with test. If you set Filter to GroupName eq testgroup, the operation queries the group whose name is testgroup.
+	Filter *string `json:"Filter,omitempty" xml:"Filter,omitempty"`
+	// The number of entries to return on each page.
+	//
+	// Valid values: 1 to 100.
+	//
+	// Default value: 10.
+	MaxResults *int32 `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
+	// The token to return for the next page. If this is your first time to call this operation, you do not need to specify `NextToken`.
+	//
+	// When you call this operation for the first time, if the total number of entries to return exceeds the value of `MaxResults`, the entries are truncated. Only the entries that match the value of `MaxResults` are returned, and the excess entries are not returned. In this case, the value of the response parameter `IsTruncated` is `true`, and `NextToken` is returned. In the next call, you can use the value of `NextToken` and maintain the settings of the other request parameters to query the excess entries. You can repeat the call until the value of `IsTruncated` becomes `false`. This way, all entries are returned.
+	NextToken *string `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
+	// The type of the group. The type can be used to filter groups. Valid values:
+	//
+	// *   Manual: The group is manually created.
+	// *   Synchronized: The group is synchronized from an external identity provider (IdP).
 	ProvisionType *string `json:"ProvisionType,omitempty" xml:"ProvisionType,omitempty"`
 }
 
@@ -4726,12 +5528,23 @@ func (s *ListGroupsRequest) SetProvisionType(v string) *ListGroupsRequest {
 }
 
 type ListGroupsResponseBody struct {
-	Groups      []*ListGroupsResponseBodyGroups `json:"Groups,omitempty" xml:"Groups,omitempty" type:"Repeated"`
-	IsTruncated *bool                           `json:"IsTruncated,omitempty" xml:"IsTruncated,omitempty"`
-	MaxResults  *int32                          `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
-	NextToken   *string                         `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
-	RequestId   *string                         `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	TotalCounts *int32                          `json:"TotalCounts,omitempty" xml:"TotalCounts,omitempty"`
+	// The groups.
+	Groups []*ListGroupsResponseBodyGroups `json:"Groups,omitempty" xml:"Groups,omitempty" type:"Repeated"`
+	// Indicates whether the queried entries are truncated. Valid values:
+	//
+	// *   true: The queried entries are truncated.
+	// *   false: The queried entries are not truncated.
+	IsTruncated *bool `json:"IsTruncated,omitempty" xml:"IsTruncated,omitempty"`
+	// The number of entries returned per page.
+	MaxResults *int32 `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
+	// The token that is returned for the next page.
+	//
+	// >  This parameter is returned only when the `IsTruncated` parameter is set to `true`.
+	NextToken *string `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
+	// The ID of the request.
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The total number of entries returned.
+	TotalCounts *int32 `json:"TotalCounts,omitempty" xml:"TotalCounts,omitempty"`
 }
 
 func (s ListGroupsResponseBody) String() string {
@@ -4773,12 +5586,21 @@ func (s *ListGroupsResponseBody) SetTotalCounts(v int32) *ListGroupsResponseBody
 }
 
 type ListGroupsResponseBodyGroups struct {
-	CreateTime    *string `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
-	Description   *string `json:"Description,omitempty" xml:"Description,omitempty"`
-	GroupId       *string `json:"GroupId,omitempty" xml:"GroupId,omitempty"`
-	GroupName     *string `json:"GroupName,omitempty" xml:"GroupName,omitempty"`
+	// The time when the group was created.
+	CreateTime *string `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
+	// The description of the group.
+	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
+	// The ID of the group.
+	GroupId *string `json:"GroupId,omitempty" xml:"GroupId,omitempty"`
+	// The name of the group.
+	GroupName *string `json:"GroupName,omitempty" xml:"GroupName,omitempty"`
+	// The type of the group. Valid values:
+	//
+	// *   Manual: The group is manually created.
+	// *   Synchronized: The group is synchronized from an external IdP.
 	ProvisionType *string `json:"ProvisionType,omitempty" xml:"ProvisionType,omitempty"`
-	UpdateTime    *string `json:"UpdateTime,omitempty" xml:"UpdateTime,omitempty"`
+	// The time when the information about the group was modified.
+	UpdateTime *string `json:"UpdateTime,omitempty" xml:"UpdateTime,omitempty"`
 }
 
 func (s ListGroupsResponseBodyGroups) String() string {
@@ -4849,10 +5671,20 @@ func (s *ListGroupsResponse) SetBody(v *ListGroupsResponseBody) *ListGroupsRespo
 }
 
 type ListJoinedGroupsForUserRequest struct {
+	// The ID of the directory.
 	DirectoryId *string `json:"DirectoryId,omitempty" xml:"DirectoryId,omitempty"`
-	MaxResults  *int32  `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
-	NextToken   *string `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
-	UserId      *string `json:"UserId,omitempty" xml:"UserId,omitempty"`
+	// The number of entries to return on each page.
+	//
+	// Valid values: 1 to 100.
+	//
+	// Default value: 10.
+	MaxResults *int32 `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
+	// The token to return for the next page. If this is your first time to call this operation, you do not need to specify `NextToken` .
+	//
+	// When you call this operation for the first time, if the total number of entries to return exceeds the value of `MaxResults`, the entries are truncated. Only the entries that match the value of `MaxResults` are returned, and the excess entries are not returned. In this case, the value of the response parameter `IsTruncated` is `true`, and `NextToken` is returned. In the next call, you can use the value of `NextToken` and maintain the settings of the other request parameters to query the excess entries. You can repeat the call until the value of `IsTruncated` becomes `false`. This way, all entries are returned.
+	NextToken *string `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
+	// The ID of the user.
+	UserId *string `json:"UserId,omitempty" xml:"UserId,omitempty"`
 }
 
 func (s ListJoinedGroupsForUserRequest) String() string {
@@ -4884,12 +5716,23 @@ func (s *ListJoinedGroupsForUserRequest) SetUserId(v string) *ListJoinedGroupsFo
 }
 
 type ListJoinedGroupsForUserResponseBody struct {
-	IsTruncated  *bool                                              `json:"IsTruncated,omitempty" xml:"IsTruncated,omitempty"`
+	// Indicates whether the queried entries are truncated. Valid values:
+	//
+	// *   true: The queried entries are truncated.
+	// *   false: The queried entries are not truncated.
+	IsTruncated *bool `json:"IsTruncated,omitempty" xml:"IsTruncated,omitempty"`
+	// The groups to which the user is added.
 	JoinedGroups []*ListJoinedGroupsForUserResponseBodyJoinedGroups `json:"JoinedGroups,omitempty" xml:"JoinedGroups,omitempty" type:"Repeated"`
-	MaxResults   *int32                                             `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
-	NextToken    *string                                            `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
-	RequestId    *string                                            `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	TotalCounts  *int32                                             `json:"TotalCounts,omitempty" xml:"TotalCounts,omitempty"`
+	// The number of entries returned per page.
+	MaxResults *int32 `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
+	// The token that is returned for the next page.
+	//
+	// >  This parameter is returned only when the value of `IsTruncated` is `true`.
+	NextToken *string `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
+	// The ID of the request.
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The total number of entries returned.
+	TotalCounts *int32 `json:"TotalCounts,omitempty" xml:"TotalCounts,omitempty"`
 }
 
 func (s ListJoinedGroupsForUserResponseBody) String() string {
@@ -4931,12 +5774,21 @@ func (s *ListJoinedGroupsForUserResponseBody) SetTotalCounts(v int32) *ListJoine
 }
 
 type ListJoinedGroupsForUserResponseBodyJoinedGroups struct {
-	Description   *string `json:"Description,omitempty" xml:"Description,omitempty"`
-	GroupId       *string `json:"GroupId,omitempty" xml:"GroupId,omitempty"`
-	GroupName     *string `json:"GroupName,omitempty" xml:"GroupName,omitempty"`
-	JoinTime      *string `json:"JoinTime,omitempty" xml:"JoinTime,omitempty"`
+	// The description of the group.
+	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
+	// The ID of the group.
+	GroupId *string `json:"GroupId,omitempty" xml:"GroupId,omitempty"`
+	// The name of the group.
+	GroupName *string `json:"GroupName,omitempty" xml:"GroupName,omitempty"`
+	// The time when the user was added to the user group.
+	JoinTime *string `json:"JoinTime,omitempty" xml:"JoinTime,omitempty"`
+	// The type of the group. Valid values:
+	//
+	// *   Manual: The group is manually created.
+	// *   Synchronized: The user is synchronized from an external identity provider (IdP).
 	ProvisionType *string `json:"ProvisionType,omitempty" xml:"ProvisionType,omitempty"`
-	UserId        *string `json:"UserId,omitempty" xml:"UserId,omitempty"`
+	// The ID of the user.
+	UserId *string `json:"UserId,omitempty" xml:"UserId,omitempty"`
 }
 
 func (s ListJoinedGroupsForUserResponseBodyJoinedGroups) String() string {
@@ -5007,8 +5859,10 @@ func (s *ListJoinedGroupsForUserResponse) SetBody(v *ListJoinedGroupsForUserResp
 }
 
 type ListMFADevicesForUserRequest struct {
+	// The ID of the directory.
 	DirectoryId *string `json:"DirectoryId,omitempty" xml:"DirectoryId,omitempty"`
-	UserId      *string `json:"UserId,omitempty" xml:"UserId,omitempty"`
+	// The ID of the user.
+	UserId *string `json:"UserId,omitempty" xml:"UserId,omitempty"`
 }
 
 func (s ListMFADevicesForUserRequest) String() string {
@@ -5030,9 +5884,12 @@ func (s *ListMFADevicesForUserRequest) SetUserId(v string) *ListMFADevicesForUse
 }
 
 type ListMFADevicesForUserResponseBody struct {
-	MFADevices  []*ListMFADevicesForUserResponseBodyMFADevices `json:"MFADevices,omitempty" xml:"MFADevices,omitempty" type:"Repeated"`
-	RequestId   *string                                        `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	TotalCounts *int32                                         `json:"TotalCounts,omitempty" xml:"TotalCounts,omitempty"`
+	// The MFA devices.
+	MFADevices []*ListMFADevicesForUserResponseBodyMFADevices `json:"MFADevices,omitempty" xml:"MFADevices,omitempty" type:"Repeated"`
+	// The ID of the request.
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The total number of MFA devices.
+	TotalCounts *int32 `json:"TotalCounts,omitempty" xml:"TotalCounts,omitempty"`
 }
 
 func (s ListMFADevicesForUserResponseBody) String() string {
@@ -5059,11 +5916,16 @@ func (s *ListMFADevicesForUserResponseBody) SetTotalCounts(v int32) *ListMFADevi
 }
 
 type ListMFADevicesForUserResponseBodyMFADevices struct {
-	DeviceId      *string `json:"DeviceId,omitempty" xml:"DeviceId,omitempty"`
-	DeviceName    *string `json:"DeviceName,omitempty" xml:"DeviceName,omitempty"`
-	DeviceType    *string `json:"DeviceType,omitempty" xml:"DeviceType,omitempty"`
+	// The ID of the MFA device.
+	DeviceId *string `json:"DeviceId,omitempty" xml:"DeviceId,omitempty"`
+	// The name of the MFA device.
+	DeviceName *string `json:"DeviceName,omitempty" xml:"DeviceName,omitempty"`
+	// The type of the MFA device. The value is fixed as TOTP, which indicates a virtual MFA device. Virtual MFA devices are based on the Time-based One-time Password (TOTP) algorithm.
+	DeviceType *string `json:"DeviceType,omitempty" xml:"DeviceType,omitempty"`
+	// The time when the MFA device was enabled.
 	EffectiveTime *string `json:"EffectiveTime,omitempty" xml:"EffectiveTime,omitempty"`
-	UserId        *string `json:"UserId,omitempty" xml:"UserId,omitempty"`
+	// The ID of the user.
+	UserId *string `json:"UserId,omitempty" xml:"UserId,omitempty"`
 }
 
 func (s ListMFADevicesForUserResponseBodyMFADevices) String() string {
@@ -5129,9 +5991,17 @@ func (s *ListMFADevicesForUserResponse) SetBody(v *ListMFADevicesForUserResponse
 }
 
 type ListPermissionPoliciesInAccessConfigurationRequest struct {
+	// The ID of the access configuration.
 	AccessConfigurationId *string `json:"AccessConfigurationId,omitempty" xml:"AccessConfigurationId,omitempty"`
-	DirectoryId           *string `json:"DirectoryId,omitempty" xml:"DirectoryId,omitempty"`
-	PermissionPolicyType  *string `json:"PermissionPolicyType,omitempty" xml:"PermissionPolicyType,omitempty"`
+	// The ID of the directory.
+	DirectoryId *string `json:"DirectoryId,omitempty" xml:"DirectoryId,omitempty"`
+	// The type of the policy. The type can be used to filter policies. Valid values:
+	//
+	// *   System: system policy
+	// *   Inline: inline policy
+	//
+	// If you do not specify this parameter, all types of policies are queried.
+	PermissionPolicyType *string `json:"PermissionPolicyType,omitempty" xml:"PermissionPolicyType,omitempty"`
 }
 
 func (s ListPermissionPoliciesInAccessConfigurationRequest) String() string {
@@ -5158,9 +6028,12 @@ func (s *ListPermissionPoliciesInAccessConfigurationRequest) SetPermissionPolicy
 }
 
 type ListPermissionPoliciesInAccessConfigurationResponseBody struct {
+	// The policies.
 	PermissionPolicies []*ListPermissionPoliciesInAccessConfigurationResponseBodyPermissionPolicies `json:"PermissionPolicies,omitempty" xml:"PermissionPolicies,omitempty" type:"Repeated"`
-	RequestId          *string                                                                      `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	TotalCounts        *int32                                                                       `json:"TotalCounts,omitempty" xml:"TotalCounts,omitempty"`
+	// The ID of the request.
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The total number of policies.
+	TotalCounts *int32 `json:"TotalCounts,omitempty" xml:"TotalCounts,omitempty"`
 }
 
 func (s ListPermissionPoliciesInAccessConfigurationResponseBody) String() string {
@@ -5187,10 +6060,16 @@ func (s *ListPermissionPoliciesInAccessConfigurationResponseBody) SetTotalCounts
 }
 
 type ListPermissionPoliciesInAccessConfigurationResponseBodyPermissionPolicies struct {
-	AddTime                  *string `json:"AddTime,omitempty" xml:"AddTime,omitempty"`
+	// The time when the policy was created for the access configuration.
+	AddTime *string `json:"AddTime,omitempty" xml:"AddTime,omitempty"`
+	// The configurations of the inline policy.
+	//
+	// >  This parameter is returned only when the value of the PermissionPolicyType parameter is Inline.
 	PermissionPolicyDocument *string `json:"PermissionPolicyDocument,omitempty" xml:"PermissionPolicyDocument,omitempty"`
-	PermissionPolicyName     *string `json:"PermissionPolicyName,omitempty" xml:"PermissionPolicyName,omitempty"`
-	PermissionPolicyType     *string `json:"PermissionPolicyType,omitempty" xml:"PermissionPolicyType,omitempty"`
+	// The name of the policy.
+	PermissionPolicyName *string `json:"PermissionPolicyName,omitempty" xml:"PermissionPolicyName,omitempty"`
+	// The type of the policy.
+	PermissionPolicyType *string `json:"PermissionPolicyType,omitempty" xml:"PermissionPolicyType,omitempty"`
 }
 
 func (s ListPermissionPoliciesInAccessConfigurationResponseBodyPermissionPolicies) String() string {
@@ -5251,6 +6130,7 @@ func (s *ListPermissionPoliciesInAccessConfigurationResponse) SetBody(v *ListPer
 }
 
 type ListSCIMServerCredentialsRequest struct {
+	// The ID of the directory.
 	DirectoryId *string `json:"DirectoryId,omitempty" xml:"DirectoryId,omitempty"`
 }
 
@@ -5268,9 +6148,12 @@ func (s *ListSCIMServerCredentialsRequest) SetDirectoryId(v string) *ListSCIMSer
 }
 
 type ListSCIMServerCredentialsResponseBody struct {
-	RequestId             *string                                                       `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The ID of the request.
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The SCIM credentials.
 	SCIMServerCredentials []*ListSCIMServerCredentialsResponseBodySCIMServerCredentials `json:"SCIMServerCredentials,omitempty" xml:"SCIMServerCredentials,omitempty" type:"Repeated"`
-	TotalCounts           *int32                                                        `json:"TotalCounts,omitempty" xml:"TotalCounts,omitempty"`
+	// The total number of entries returned.
+	TotalCounts *int32 `json:"TotalCounts,omitempty" xml:"TotalCounts,omitempty"`
 }
 
 func (s ListSCIMServerCredentialsResponseBody) String() string {
@@ -5297,12 +6180,21 @@ func (s *ListSCIMServerCredentialsResponseBody) SetTotalCounts(v int32) *ListSCI
 }
 
 type ListSCIMServerCredentialsResponseBodySCIMServerCredentials struct {
-	CreateTime     *string `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
-	CredentialId   *string `json:"CredentialId,omitempty" xml:"CredentialId,omitempty"`
+	// The time when the SCIM credential was created.
+	CreateTime *string `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
+	// The ID of the SCIM credential.
+	CredentialId *string `json:"CredentialId,omitempty" xml:"CredentialId,omitempty"`
+	// The type of the SCIM credential.
 	CredentialType *string `json:"CredentialType,omitempty" xml:"CredentialType,omitempty"`
-	DirectoryId    *string `json:"DirectoryId,omitempty" xml:"DirectoryId,omitempty"`
-	ExpireTime     *string `json:"ExpireTime,omitempty" xml:"ExpireTime,omitempty"`
-	Status         *string `json:"Status,omitempty" xml:"Status,omitempty"`
+	// The ID of the directory.
+	DirectoryId *string `json:"DirectoryId,omitempty" xml:"DirectoryId,omitempty"`
+	// The time when the SCIM credential expires.
+	ExpireTime *string `json:"ExpireTime,omitempty" xml:"ExpireTime,omitempty"`
+	// The status of the SCIM credential. Valid values:
+	//
+	// *   Enabled: The SCIM credential is enabled.
+	// *   Disabled: The SCIM credential is disabled.
+	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
 }
 
 func (s ListSCIMServerCredentialsResponseBodySCIMServerCredentials) String() string {
@@ -5373,17 +6265,65 @@ func (s *ListSCIMServerCredentialsResponse) SetBody(v *ListSCIMServerCredentials
 }
 
 type ListTasksRequest struct {
+	// The ID of the access configuration. The ID can be used to filter asynchronous tasks.
 	AccessConfigurationId *string `json:"AccessConfigurationId,omitempty" xml:"AccessConfigurationId,omitempty"`
-	DirectoryId           *string `json:"DirectoryId,omitempty" xml:"DirectoryId,omitempty"`
-	Filter                *string `json:"Filter,omitempty" xml:"Filter,omitempty"`
-	MaxResults            *int32  `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
-	NextToken             *string `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
-	PrincipalId           *string `json:"PrincipalId,omitempty" xml:"PrincipalId,omitempty"`
-	PrincipalType         *string `json:"PrincipalType,omitempty" xml:"PrincipalType,omitempty"`
-	Status                *string `json:"Status,omitempty" xml:"Status,omitempty"`
-	TargetId              *string `json:"TargetId,omitempty" xml:"TargetId,omitempty"`
-	TargetType            *string `json:"TargetType,omitempty" xml:"TargetType,omitempty"`
-	TaskType              *string `json:"TaskType,omitempty" xml:"TaskType,omitempty"`
+	// The ID of the directory.
+	DirectoryId *string `json:"DirectoryId,omitempty" xml:"DirectoryId,omitempty"`
+	// The filter condition.
+	//
+	// Specify the value in the \<Attribute> \<Operator> \<Value> format. The value is not case sensitive. You can set Attribute only to StartTime and Operator only to ge. You must set Value in the YYYY-MM-DDTHH:mm:SSZ format and enter a value that is no more than 7 days from the current time. The value ge indicates Greater Than or Equals.
+	//
+	// For example, if you set Filter to StartTime ge 2021-03-15T01:12:23Z, the operation queries the tasks from 2021-03-15T01:12:23 GMT.
+	//
+	// >  If you do not specify this parameter, the operation queries the tasks within the previous 24 hours by default.
+	Filter *string `json:"Filter,omitempty" xml:"Filter,omitempty"`
+	// The number of entries to return on each page.
+	//
+	// Valid values: 1 to 20.
+	//
+	// Default value: 10.
+	MaxResults *int32 `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
+	// The token to return for the next page. If this is your first time to call this operation, you do not need to specify `NextToken`.
+	//
+	// When you call this operation for the first time, if the total number of entries to return exceeds the value of `MaxResults`, the entries are truncated. Only the entries that match the value of `MaxResults` are returned, and the excess entries are not returned. In this case, the value of the response parameter `IsTruncated` is `true`, and `NextToken` is returned. In the next call, you can use the value of `NextToken` and maintain the settings of the other request parameters to query the excess entries. You can repeat the call until the value of `IsTruncated` becomes `false`. This way, all entries are returned.
+	NextToken *string `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
+	// The ID of the CloudSSO identity. The ID can be used to filter asynchronous tasks.
+	//
+	// *   If you set `PrincipalType` to `User`, set `PrincipalId` to the ID of the CloudSSO user.
+	// *   If you set `PrincipalType` to `Group`, set `PrincipalId` to the ID of the CloudSSO group.
+	//
+	// >  You can use the ID to filter asynchronous tasks only if you specify both `PrincipalId` and `PrincipalType`.
+	PrincipalId *string `json:"PrincipalId,omitempty" xml:"PrincipalId,omitempty"`
+	// The type of the CloudSSO identity. The type can be used to filter asynchronous tasks. Valid values:
+	//
+	// *   User
+	// *   Group
+	//
+	// >  You can use the type to filter asynchronous tasks only if you specify both `PrincipalId` and `PrincipalType`.
+	PrincipalType *string `json:"PrincipalType,omitempty" xml:"PrincipalType,omitempty"`
+	// The ID of the task. The ID can be used to filter asynchronous tasks. Valid values:
+	//
+	// *   InProgress: The task is running.
+	// *   Success: The task is successful.
+	// *   Failed: The task failed.
+	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
+	// The ID of the task object. The ID can be used to filter asynchronous tasks.
+	//
+	// >  You can use the ID to filter asynchronous tasks only if you specify both `TargetId` and `TargetType`.
+	TargetId *string `json:"TargetId,omitempty" xml:"TargetId,omitempty"`
+	// The type of the task object. The type can be used to filter asynchronous tasks.
+	//
+	// Set the value to RD-Account, which indicates an account in your resource directory.
+	//
+	// >  You can use the type to filter asynchronous tasks only if you specify both `TargetId` and `TargetType`.
+	TargetType *string `json:"TargetType,omitempty" xml:"TargetType,omitempty"`
+	// The type of the task. The type can be used to filter asynchronous tasks. Valid values:
+	//
+	// *   ProvisionAccessConfiguration: An access configuration is provisioned.
+	// *   DeprovisionAccessConfiguration: An access configuration is de-provisioned.
+	// *   CreateAccessAssignment: Access permissions on an account in your resource directory are assigned.
+	// *   DeleteAccessAssignment: Access permissions on an account in your resource directory are removed.
+	TaskType *string `json:"TaskType,omitempty" xml:"TaskType,omitempty"`
 }
 
 func (s ListTasksRequest) String() string {
@@ -5450,12 +6390,23 @@ func (s *ListTasksRequest) SetTaskType(v string) *ListTasksRequest {
 }
 
 type ListTasksResponseBody struct {
-	IsTruncated *bool                         `json:"IsTruncated,omitempty" xml:"IsTruncated,omitempty"`
-	MaxResults  *int32                        `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
-	NextToken   *string                       `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
-	RequestId   *string                       `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	Tasks       []*ListTasksResponseBodyTasks `json:"Tasks,omitempty" xml:"Tasks,omitempty" type:"Repeated"`
-	TotalCounts *int32                        `json:"TotalCounts,omitempty" xml:"TotalCounts,omitempty"`
+	// Indicates whether the queried entries are truncated. Valid values:
+	//
+	// *   true: The queried entries are truncated.
+	// *   false: The queried entries are not truncated.
+	IsTruncated *bool `json:"IsTruncated,omitempty" xml:"IsTruncated,omitempty"`
+	// The number of entries returned per page.
+	MaxResults *int32 `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
+	// The token that is returned for the next page.
+	//
+	// >  This parameter is returned only when the value of `IsTruncated` is `true`.
+	NextToken *string `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
+	// The ID of the request.
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The tasks.
+	Tasks []*ListTasksResponseBodyTasks `json:"Tasks,omitempty" xml:"Tasks,omitempty" type:"Repeated"`
+	// The total number of entries returned.
+	TotalCounts *int32 `json:"TotalCounts,omitempty" xml:"TotalCounts,omitempty"`
 }
 
 func (s ListTasksResponseBody) String() string {
@@ -5497,22 +6448,54 @@ func (s *ListTasksResponseBody) SetTotalCounts(v int32) *ListTasksResponseBody {
 }
 
 type ListTasksResponseBodyTasks struct {
-	AccessConfigurationId   *string `json:"AccessConfigurationId,omitempty" xml:"AccessConfigurationId,omitempty"`
+	// The ID of the access configuration.
+	AccessConfigurationId *string `json:"AccessConfigurationId,omitempty" xml:"AccessConfigurationId,omitempty"`
+	// The name of the access configuration.
 	AccessConfigurationName *string `json:"AccessConfigurationName,omitempty" xml:"AccessConfigurationName,omitempty"`
-	EndTime                 *string `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
-	FailureReason           *string `json:"FailureReason,omitempty" xml:"FailureReason,omitempty"`
-	PrincipalId             *string `json:"PrincipalId,omitempty" xml:"PrincipalId,omitempty"`
-	PrincipalName           *string `json:"PrincipalName,omitempty" xml:"PrincipalName,omitempty"`
-	PrincipalType           *string `json:"PrincipalType,omitempty" xml:"PrincipalType,omitempty"`
-	StartTime               *string `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
-	Status                  *string `json:"Status,omitempty" xml:"Status,omitempty"`
-	TargetId                *string `json:"TargetId,omitempty" xml:"TargetId,omitempty"`
-	TargetName              *string `json:"TargetName,omitempty" xml:"TargetName,omitempty"`
-	TargetPath              *string `json:"TargetPath,omitempty" xml:"TargetPath,omitempty"`
-	TargetPathName          *string `json:"TargetPathName,omitempty" xml:"TargetPathName,omitempty"`
-	TargetType              *string `json:"TargetType,omitempty" xml:"TargetType,omitempty"`
-	TaskId                  *string `json:"TaskId,omitempty" xml:"TaskId,omitempty"`
-	TaskType                *string `json:"TaskType,omitempty" xml:"TaskType,omitempty"`
+	// The time when the task ended.
+	EndTime *string `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
+	// The cause of the task failure.
+	//
+	// >  This parameter is returned only when the value of `Status` is `Failed`.
+	FailureReason *string `json:"FailureReason,omitempty" xml:"FailureReason,omitempty"`
+	// The ID of the CloudSSO identity.
+	PrincipalId *string `json:"PrincipalId,omitempty" xml:"PrincipalId,omitempty"`
+	// The name of the CloudSSO identity.
+	PrincipalName *string `json:"PrincipalName,omitempty" xml:"PrincipalName,omitempty"`
+	// The type of the CloudSSO identity. Valid values:
+	//
+	// *   User
+	// *   Group
+	PrincipalType *string `json:"PrincipalType,omitempty" xml:"PrincipalType,omitempty"`
+	// The time when the task started.
+	StartTime *string `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
+	// The status of the task. Valid values:
+	//
+	// *   InProgress: The task is running.
+	// *   Success: The task is successful.
+	// *   Failed: The task failed.
+	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
+	// The ID of the task object.
+	TargetId *string `json:"TargetId,omitempty" xml:"TargetId,omitempty"`
+	// The name of the task object.
+	TargetName *string `json:"TargetName,omitempty" xml:"TargetName,omitempty"`
+	// The path ID of the task object in your resource directory.
+	TargetPath *string `json:"TargetPath,omitempty" xml:"TargetPath,omitempty"`
+	// The path name of the task object in your resource directory.
+	TargetPathName *string `json:"TargetPathName,omitempty" xml:"TargetPathName,omitempty"`
+	// The type of the task object.
+	//
+	// The value is fixed as RD-Account, which indicates an account in your resource directory.
+	TargetType *string `json:"TargetType,omitempty" xml:"TargetType,omitempty"`
+	// The ID of the task.
+	TaskId *string `json:"TaskId,omitempty" xml:"TaskId,omitempty"`
+	// The type of the task. Valid values:
+	//
+	// *   ProvisionAccessConfiguration: An access configuration is provisioned.
+	// *   DeprovisionAccessConfiguration: An access configuration is de-provisioned.
+	// *   CreateAccessAssignment: Access permissions on an account in your resource directory are assigned.
+	// *   DeleteAccessAssignment: Access permissions on an account in your resource directory are removed.
+	TaskType *string `json:"TaskType,omitempty" xml:"TaskType,omitempty"`
 }
 
 func (s ListTasksResponseBodyTasks) String() string {
@@ -5633,12 +6616,34 @@ func (s *ListTasksResponse) SetBody(v *ListTasksResponseBody) *ListTasksResponse
 }
 
 type ListUsersRequest struct {
-	DirectoryId   *string `json:"DirectoryId,omitempty" xml:"DirectoryId,omitempty"`
-	Filter        *string `json:"Filter,omitempty" xml:"Filter,omitempty"`
-	MaxResults    *int32  `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
-	NextToken     *string `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
+	// The ID of the directory.
+	DirectoryId *string `json:"DirectoryId,omitempty" xml:"DirectoryId,omitempty"`
+	// The filter condition.
+	//
+	// Specify the value in the `<Attribute> <Operator> <Value>` format. The value is not case-sensitive. You can set `<Attribute>` only to `UserName` and `Operator` only to `eq` or `sw`. The value eq indicates Equals, and the value sw indicates Starts With.
+	//
+	// For example, if you set Filter to UserName sw test, the operation queries the users whose names start with test. If you set Filter to UserName eq testuser, the operation queries the user whose name is `testuser`.
+	Filter *string `json:"Filter,omitempty" xml:"Filter,omitempty"`
+	// The number of entries to return on each page.
+	//
+	// Valid values: 1 to 100.
+	//
+	// Default value: 10.
+	MaxResults *int32 `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
+	// The token to return for the next page. If this is your first time to call this operation, you do not need to specify `NextToken` .
+	//
+	// When you call this operation for the first time, if the total number of entries to return exceeds the value of `MaxResults`, the entries are truncated. Only the entries that match the value of `MaxResults` are returned, and the excess entries are not returned. In this case, the value of the response parameter `IsTruncated` is `true`, and `NextToken` is returned. In the next call, you can use the value of `NextToken` and maintain the settings of the other request parameters to query the excess entries. You can repeat the call until the value of `IsTruncated` becomes `false`. This way, all entries are returned.
+	NextToken *string `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
+	// The type of the user. The type can be used to filter users. Valid values:
+	//
+	// *   Manual: The user is manually created.
+	// *   Synchronized: The user is synchronized from an external IdP.
 	ProvisionType *string `json:"ProvisionType,omitempty" xml:"ProvisionType,omitempty"`
-	Status        *string `json:"Status,omitempty" xml:"Status,omitempty"`
+	// The status of the user. The status can be used to filter users. Valid values:
+	//
+	// *   Enabled: The logon of the user is enabled.
+	// *   Disabled: The logon of the user is disabled.
+	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
 }
 
 func (s ListUsersRequest) String() string {
@@ -5680,12 +6685,23 @@ func (s *ListUsersRequest) SetStatus(v string) *ListUsersRequest {
 }
 
 type ListUsersResponseBody struct {
-	IsTruncated *bool                         `json:"IsTruncated,omitempty" xml:"IsTruncated,omitempty"`
-	MaxResults  *int32                        `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
-	NextToken   *string                       `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
-	RequestId   *string                       `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	TotalCounts *int32                        `json:"TotalCounts,omitempty" xml:"TotalCounts,omitempty"`
-	Users       []*ListUsersResponseBodyUsers `json:"Users,omitempty" xml:"Users,omitempty" type:"Repeated"`
+	// Indicates whether the queried entries are truncated. Valid values:
+	//
+	// *   true: The queried entries are truncated.
+	// *   false: The queried entries are not truncated.
+	IsTruncated *bool `json:"IsTruncated,omitempty" xml:"IsTruncated,omitempty"`
+	// The number of entries returned per page.
+	MaxResults *int32 `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
+	// The token that is returned for the next page.
+	//
+	// >  This parameter is returned only when the value of `IsTruncated` is `true`.
+	NextToken *string `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
+	// The ID of the request.
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The total number of entries returned.
+	TotalCounts *int32 `json:"TotalCounts,omitempty" xml:"TotalCounts,omitempty"`
+	// The users.
+	Users []*ListUsersResponseBodyUsers `json:"Users,omitempty" xml:"Users,omitempty" type:"Repeated"`
 }
 
 func (s ListUsersResponseBody) String() string {
@@ -5727,17 +6743,34 @@ func (s *ListUsersResponseBody) SetUsers(v []*ListUsersResponseBodyUsers) *ListU
 }
 
 type ListUsersResponseBodyUsers struct {
-	CreateTime    *string `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
-	Description   *string `json:"Description,omitempty" xml:"Description,omitempty"`
-	DisplayName   *string `json:"DisplayName,omitempty" xml:"DisplayName,omitempty"`
-	Email         *string `json:"Email,omitempty" xml:"Email,omitempty"`
-	FirstName     *string `json:"FirstName,omitempty" xml:"FirstName,omitempty"`
-	LastName      *string `json:"LastName,omitempty" xml:"LastName,omitempty"`
+	// The time when the user was created.
+	CreateTime *string `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
+	// The description of the user.
+	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
+	// The display name of the user.
+	DisplayName *string `json:"DisplayName,omitempty" xml:"DisplayName,omitempty"`
+	// The email address of the user.
+	Email *string `json:"Email,omitempty" xml:"Email,omitempty"`
+	// The first name of the user.
+	FirstName *string `json:"FirstName,omitempty" xml:"FirstName,omitempty"`
+	// The last name of the user.
+	LastName *string `json:"LastName,omitempty" xml:"LastName,omitempty"`
+	// The type of the user. Valid values:
+	//
+	// *   Manual: The user is manually created.
+	// *   Synchronized: The user is synchronized from an external IdP.
 	ProvisionType *string `json:"ProvisionType,omitempty" xml:"ProvisionType,omitempty"`
-	Status        *string `json:"Status,omitempty" xml:"Status,omitempty"`
-	UpdateTime    *string `json:"UpdateTime,omitempty" xml:"UpdateTime,omitempty"`
-	UserId        *string `json:"UserId,omitempty" xml:"UserId,omitempty"`
-	UserName      *string `json:"UserName,omitempty" xml:"UserName,omitempty"`
+	// The status of the user. Valid values:
+	//
+	// *   Enabled: The logon of the user is enabled.
+	// *   Disabled: The logon of the user is disabled.
+	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
+	// The time when the information about the user was modified.
+	UpdateTime *string `json:"UpdateTime,omitempty" xml:"UpdateTime,omitempty"`
+	// The ID of the user.
+	UserId *string `json:"UserId,omitempty" xml:"UserId,omitempty"`
+	// The name of the user.
+	UserName *string `json:"UserName,omitempty" xml:"UserName,omitempty"`
 }
 
 func (s ListUsersResponseBodyUsers) String() string {
@@ -5833,10 +6866,14 @@ func (s *ListUsersResponse) SetBody(v *ListUsersResponseBody) *ListUsersResponse
 }
 
 type ProvisionAccessConfigurationRequest struct {
+	// The ID of the access configuration.
 	AccessConfigurationId *string `json:"AccessConfigurationId,omitempty" xml:"AccessConfigurationId,omitempty"`
-	DirectoryId           *string `json:"DirectoryId,omitempty" xml:"DirectoryId,omitempty"`
-	TargetId              *string `json:"TargetId,omitempty" xml:"TargetId,omitempty"`
-	TargetType            *string `json:"TargetType,omitempty" xml:"TargetType,omitempty"`
+	// The ID of the directory.
+	DirectoryId *string `json:"DirectoryId,omitempty" xml:"DirectoryId,omitempty"`
+	// The ID of the task object.
+	TargetId *string `json:"TargetId,omitempty" xml:"TargetId,omitempty"`
+	// The type of the task object. Set the value to RD-Account, which indicates an account in your resource directory.
+	TargetType *string `json:"TargetType,omitempty" xml:"TargetType,omitempty"`
 }
 
 func (s ProvisionAccessConfigurationRequest) String() string {
@@ -5868,8 +6905,10 @@ func (s *ProvisionAccessConfigurationRequest) SetTargetType(v string) *Provision
 }
 
 type ProvisionAccessConfigurationResponseBody struct {
-	RequestId *string                                          `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	Tasks     []*ProvisionAccessConfigurationResponseBodyTasks `json:"Tasks,omitempty" xml:"Tasks,omitempty" type:"Repeated"`
+	// The ID of the request.
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The information about the task.
+	Tasks []*ProvisionAccessConfigurationResponseBodyTasks `json:"Tasks,omitempty" xml:"Tasks,omitempty" type:"Repeated"`
 }
 
 func (s ProvisionAccessConfigurationResponseBody) String() string {
@@ -5891,16 +6930,30 @@ func (s *ProvisionAccessConfigurationResponseBody) SetTasks(v []*ProvisionAccess
 }
 
 type ProvisionAccessConfigurationResponseBodyTasks struct {
-	AccessConfigurationId   *string `json:"AccessConfigurationId,omitempty" xml:"AccessConfigurationId,omitempty"`
+	// The ID of the access configuration.
+	AccessConfigurationId *string `json:"AccessConfigurationId,omitempty" xml:"AccessConfigurationId,omitempty"`
+	// The name of the access configuration.
 	AccessConfigurationName *string `json:"AccessConfigurationName,omitempty" xml:"AccessConfigurationName,omitempty"`
-	Status                  *string `json:"Status,omitempty" xml:"Status,omitempty"`
-	TargetId                *string `json:"TargetId,omitempty" xml:"TargetId,omitempty"`
-	TargetName              *string `json:"TargetName,omitempty" xml:"TargetName,omitempty"`
-	TargetPath              *string `json:"TargetPath,omitempty" xml:"TargetPath,omitempty"`
-	TargetPathName          *string `json:"TargetPathName,omitempty" xml:"TargetPathName,omitempty"`
-	TargetType              *string `json:"TargetType,omitempty" xml:"TargetType,omitempty"`
-	TaskId                  *string `json:"TaskId,omitempty" xml:"TaskId,omitempty"`
-	TaskType                *string `json:"TaskType,omitempty" xml:"TaskType,omitempty"`
+	// The status of the task. Valid values:
+	//
+	// *   InProgress: The task is running.
+	// *   Success: The task is successful.
+	// *   Failed: The task failed.
+	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
+	// The ID of the task object.
+	TargetId *string `json:"TargetId,omitempty" xml:"TargetId,omitempty"`
+	// The name of the task object.
+	TargetName *string `json:"TargetName,omitempty" xml:"TargetName,omitempty"`
+	// The path ID of the task object in your resource directory.
+	TargetPath *string `json:"TargetPath,omitempty" xml:"TargetPath,omitempty"`
+	// The path name of the task object in your resource directory.
+	TargetPathName *string `json:"TargetPathName,omitempty" xml:"TargetPathName,omitempty"`
+	// The type of the task object. The value is fixed as RD-Account, which indicates an account your resource directory.
+	TargetType *string `json:"TargetType,omitempty" xml:"TargetType,omitempty"`
+	// The ID of the task.
+	TaskId *string `json:"TaskId,omitempty" xml:"TaskId,omitempty"`
+	// The type of the task. The value is fixed as ProvisionAccessConfiguration, which indicates that an access configuration is provisioned.
+	TaskType *string `json:"TaskType,omitempty" xml:"TaskType,omitempty"`
 }
 
 func (s ProvisionAccessConfigurationResponseBodyTasks) String() string {
@@ -5991,8 +7044,12 @@ func (s *ProvisionAccessConfigurationResponse) SetBody(v *ProvisionAccessConfigu
 }
 
 type RemoveExternalSAMLIdPCertificateRequest struct {
+	// The ID of the certificate.
+	//
+	// You can call the [ListExternalSAMLIdPCertificates](~~341629~~) operation to query the IDs of certificates.
 	CertificateId *string `json:"CertificateId,omitempty" xml:"CertificateId,omitempty"`
-	DirectoryId   *string `json:"DirectoryId,omitempty" xml:"DirectoryId,omitempty"`
+	// The ID of the directory.
+	DirectoryId *string `json:"DirectoryId,omitempty" xml:"DirectoryId,omitempty"`
 }
 
 func (s RemoveExternalSAMLIdPCertificateRequest) String() string {
@@ -6014,6 +7071,7 @@ func (s *RemoveExternalSAMLIdPCertificateRequest) SetDirectoryId(v string) *Remo
 }
 
 type RemoveExternalSAMLIdPCertificateResponseBody struct {
+	// The ID of the request.
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -6060,10 +7118,17 @@ func (s *RemoveExternalSAMLIdPCertificateResponse) SetBody(v *RemoveExternalSAML
 }
 
 type RemovePermissionPolicyFromAccessConfigurationRequest struct {
+	// The ID of the access configuration.
 	AccessConfigurationId *string `json:"AccessConfigurationId,omitempty" xml:"AccessConfigurationId,omitempty"`
-	DirectoryId           *string `json:"DirectoryId,omitempty" xml:"DirectoryId,omitempty"`
-	PermissionPolicyName  *string `json:"PermissionPolicyName,omitempty" xml:"PermissionPolicyName,omitempty"`
-	PermissionPolicyType  *string `json:"PermissionPolicyType,omitempty" xml:"PermissionPolicyType,omitempty"`
+	// The ID of the directory.
+	DirectoryId *string `json:"DirectoryId,omitempty" xml:"DirectoryId,omitempty"`
+	// The name of the policy.
+	PermissionPolicyName *string `json:"PermissionPolicyName,omitempty" xml:"PermissionPolicyName,omitempty"`
+	// The type of the policy. Valid values:
+	//
+	// *   System: system policy
+	// *   Inline: inline policy
+	PermissionPolicyType *string `json:"PermissionPolicyType,omitempty" xml:"PermissionPolicyType,omitempty"`
 }
 
 func (s RemovePermissionPolicyFromAccessConfigurationRequest) String() string {
@@ -6095,6 +7160,7 @@ func (s *RemovePermissionPolicyFromAccessConfigurationRequest) SetPermissionPoli
 }
 
 type RemovePermissionPolicyFromAccessConfigurationResponseBody struct {
+	// The ID of the request.
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -6141,9 +7207,12 @@ func (s *RemovePermissionPolicyFromAccessConfigurationResponse) SetBody(v *Remov
 }
 
 type RemoveUserFromGroupRequest struct {
+	// The ID of the directory.
 	DirectoryId *string `json:"DirectoryId,omitempty" xml:"DirectoryId,omitempty"`
-	GroupId     *string `json:"GroupId,omitempty" xml:"GroupId,omitempty"`
-	UserId      *string `json:"UserId,omitempty" xml:"UserId,omitempty"`
+	// The ID of the group.
+	GroupId *string `json:"GroupId,omitempty" xml:"GroupId,omitempty"`
+	// The ID of the user.
+	UserId *string `json:"UserId,omitempty" xml:"UserId,omitempty"`
 }
 
 func (s RemoveUserFromGroupRequest) String() string {
@@ -6170,6 +7239,7 @@ func (s *RemoveUserFromGroupRequest) SetUserId(v string) *RemoveUserFromGroupReq
 }
 
 type RemoveUserFromGroupResponseBody struct {
+	// The ID of the request.
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -6216,11 +7286,28 @@ func (s *RemoveUserFromGroupResponse) SetBody(v *RemoveUserFromGroupResponseBody
 }
 
 type ResetUserPasswordRequest struct {
-	DirectoryId                      *string `json:"DirectoryId,omitempty" xml:"DirectoryId,omitempty"`
-	GenerateRandomPassword           *bool   `json:"GenerateRandomPassword,omitempty" xml:"GenerateRandomPassword,omitempty"`
-	Password                         *string `json:"Password,omitempty" xml:"Password,omitempty"`
-	RequirePasswordResetForNextLogin *bool   `json:"RequirePasswordResetForNextLogin,omitempty" xml:"RequirePasswordResetForNextLogin,omitempty"`
-	UserId                           *string `json:"UserId,omitempty" xml:"UserId,omitempty"`
+	// The ID of the directory.
+	DirectoryId *string `json:"DirectoryId,omitempty" xml:"DirectoryId,omitempty"`
+	// Specifies whether to enable the system to automatically generate a new password. Valid values:
+	//
+	// *   True: The new password is automatically generated by the system.
+	// *   False: The new password must be manually specified. This is the default value.
+	GenerateRandomPassword *bool `json:"GenerateRandomPassword,omitempty" xml:"GenerateRandomPassword,omitempty"`
+	// The new password.
+	//
+	// The password must contain the following types of characters: uppercase letters, lowercase letters, digits, and special characters.
+	//
+	// The password must be 8 to 32 characters in length.
+	//
+	// >  If you set `GenerateRandomPassword` to `False`, you must specify `Password` .
+	Password *string `json:"Password,omitempty" xml:"Password,omitempty"`
+	// Specifies whether password reset is required upon the next logon. Valid values:
+	//
+	// *   True: Password reset is required upon the next logon.
+	// *   False: Password reset is not required upon the next logon. This is the default value.
+	RequirePasswordResetForNextLogin *bool `json:"RequirePasswordResetForNextLogin,omitempty" xml:"RequirePasswordResetForNextLogin,omitempty"`
+	// The ID of the user.
+	UserId *string `json:"UserId,omitempty" xml:"UserId,omitempty"`
 }
 
 func (s ResetUserPasswordRequest) String() string {
@@ -6257,8 +7344,12 @@ func (s *ResetUserPasswordRequest) SetUserId(v string) *ResetUserPasswordRequest
 }
 
 type ResetUserPasswordResponseBody struct {
+	// The new password.
+	//
+	// >  This parameter is returned only when the new password is automatically generated by the system.
 	NewPassword *string `json:"NewPassword,omitempty" xml:"NewPassword,omitempty"`
-	RequestId   *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The ID of the request.
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
 func (s ResetUserPasswordResponseBody) String() string {
@@ -6309,13 +7400,28 @@ func (s *ResetUserPasswordResponse) SetBody(v *ResetUserPasswordResponseBody) *R
 }
 
 type SetExternalSAMLIdentityProviderRequest struct {
-	DirectoryId             *string `json:"DirectoryId,omitempty" xml:"DirectoryId,omitempty"`
+	// The ID of the directory.
+	DirectoryId *string `json:"DirectoryId,omitempty" xml:"DirectoryId,omitempty"`
+	// The metadata file of the IdP. The value of this parameter is Base64-encoded.
+	//
+	// The file is provided by the IdP that supports SAML 2.0.
 	EncodedMetadataDocument *string `json:"EncodedMetadataDocument,omitempty" xml:"EncodedMetadataDocument,omitempty"`
-	EntityId                *string `json:"EntityId,omitempty" xml:"EntityId,omitempty"`
-	LoginUrl                *string `json:"LoginUrl,omitempty" xml:"LoginUrl,omitempty"`
-	SSOStatus               *string `json:"SSOStatus,omitempty" xml:"SSOStatus,omitempty"`
-	WantRequestSigned       *bool   `json:"WantRequestSigned,omitempty" xml:"WantRequestSigned,omitempty"`
-	X509Certificate         *string `json:"X509Certificate,omitempty" xml:"X509Certificate,omitempty"`
+	// The entity ID of the IdP.
+	EntityId *string `json:"EntityId,omitempty" xml:"EntityId,omitempty"`
+	// The logon URL of the IdP.
+	LoginUrl *string `json:"LoginUrl,omitempty" xml:"LoginUrl,omitempty"`
+	// The status of SSO logon. Valid values:
+	//
+	// *   Enabled
+	// *   Disabled (default)
+	SSOStatus *string `json:"SSOStatus,omitempty" xml:"SSOStatus,omitempty"`
+	// Specifies whether CloudSSO needs to sign SAML requests. The requests are sent when users log on to the CloudSSO user portal to initiate SAML-based SSO. Valid values:
+	//
+	// *   true: yes
+	// *   false: no (default)
+	WantRequestSigned *bool `json:"WantRequestSigned,omitempty" xml:"WantRequestSigned,omitempty"`
+	// The X.509 certificate in the PEM format. If you specify this parameter, all existing certificates are replaced.
+	X509Certificate *string `json:"X509Certificate,omitempty" xml:"X509Certificate,omitempty"`
 }
 
 func (s SetExternalSAMLIdentityProviderRequest) String() string {
@@ -6362,7 +7468,9 @@ func (s *SetExternalSAMLIdentityProviderRequest) SetX509Certificate(v string) *S
 }
 
 type SetExternalSAMLIdentityProviderResponseBody struct {
-	RequestId                         *string                                                                       `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The ID of the request.
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The configurations of the IdP.
 	SAMLIdentityProviderConfiguration *SetExternalSAMLIdentityProviderResponseBodySAMLIdentityProviderConfiguration `json:"SAMLIdentityProviderConfiguration,omitempty" xml:"SAMLIdentityProviderConfiguration,omitempty" type:"Struct"`
 }
 
@@ -6385,15 +7493,30 @@ func (s *SetExternalSAMLIdentityProviderResponseBody) SetSAMLIdentityProviderCon
 }
 
 type SetExternalSAMLIdentityProviderResponseBodySAMLIdentityProviderConfiguration struct {
-	CertificateIds          []*string `json:"CertificateIds,omitempty" xml:"CertificateIds,omitempty" type:"Repeated"`
-	CreateTime              *string   `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
-	DirectoryId             *string   `json:"DirectoryId,omitempty" xml:"DirectoryId,omitempty"`
-	EncodedMetadataDocument *string   `json:"EncodedMetadataDocument,omitempty" xml:"EncodedMetadataDocument,omitempty"`
-	EntityId                *string   `json:"EntityId,omitempty" xml:"EntityId,omitempty"`
-	LoginUrl                *string   `json:"LoginUrl,omitempty" xml:"LoginUrl,omitempty"`
-	SSOStatus               *string   `json:"SSOStatus,omitempty" xml:"SSOStatus,omitempty"`
-	UpdateTime              *string   `json:"UpdateTime,omitempty" xml:"UpdateTime,omitempty"`
-	WantRequestSigned       *bool     `json:"WantRequestSigned,omitempty" xml:"WantRequestSigned,omitempty"`
+	// The ID of the SAML signing certificate.
+	CertificateIds []*string `json:"CertificateIds,omitempty" xml:"CertificateIds,omitempty" type:"Repeated"`
+	// The time when the IdP was configured for the first time.
+	CreateTime *string `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
+	// The ID of the directory.
+	DirectoryId *string `json:"DirectoryId,omitempty" xml:"DirectoryId,omitempty"`
+	// The metadata file of the IdP. The value of this parameter is Base64-encoded.
+	EncodedMetadataDocument *string `json:"EncodedMetadataDocument,omitempty" xml:"EncodedMetadataDocument,omitempty"`
+	// The entity ID of the IdP.
+	EntityId *string `json:"EntityId,omitempty" xml:"EntityId,omitempty"`
+	// The logon URL of the IdP.
+	LoginUrl *string `json:"LoginUrl,omitempty" xml:"LoginUrl,omitempty"`
+	// The status of SSO logon. Valid values:
+	//
+	// *   Enabled
+	// *   Disabled
+	SSOStatus *string `json:"SSOStatus,omitempty" xml:"SSOStatus,omitempty"`
+	// The time when the IdP configurations were last modified.
+	UpdateTime *string `json:"UpdateTime,omitempty" xml:"UpdateTime,omitempty"`
+	// Indicates whether CloudSSO needs to sign SAML requests. The requests are sent when users log on to the CloudSSO user portal to initiate SAML-based SSO. Valid values:
+	//
+	// *   true: yes
+	// *   false: no (default)
+	WantRequestSigned *bool `json:"WantRequestSigned,omitempty" xml:"WantRequestSigned,omitempty"`
 }
 
 func (s SetExternalSAMLIdentityProviderResponseBodySAMLIdentityProviderConfiguration) String() string {
@@ -6479,7 +7602,12 @@ func (s *SetExternalSAMLIdentityProviderResponse) SetBody(v *SetExternalSAMLIden
 }
 
 type SetMFAAuthenticationStatusRequest struct {
-	DirectoryId             *string `json:"DirectoryId,omitempty" xml:"DirectoryId,omitempty"`
+	// The ID of the directory.
+	DirectoryId *string `json:"DirectoryId,omitempty" xml:"DirectoryId,omitempty"`
+	// The status of MFA. Valid values:
+	//
+	// *   Enabled
+	// *   Disabled
 	MFAAuthenticationStatus *string `json:"MFAAuthenticationStatus,omitempty" xml:"MFAAuthenticationStatus,omitempty"`
 }
 
@@ -6502,6 +7630,7 @@ func (s *SetMFAAuthenticationStatusRequest) SetMFAAuthenticationStatus(v string)
 }
 
 type SetMFAAuthenticationStatusResponseBody struct {
+	// The ID of the request.
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -6548,7 +7677,12 @@ func (s *SetMFAAuthenticationStatusResponse) SetBody(v *SetMFAAuthenticationStat
 }
 
 type SetSCIMSynchronizationStatusRequest struct {
-	DirectoryId               *string `json:"DirectoryId,omitempty" xml:"DirectoryId,omitempty"`
+	// The ID of the directory.
+	DirectoryId *string `json:"DirectoryId,omitempty" xml:"DirectoryId,omitempty"`
+	// The status of SCIM synchronization. Valid values:
+	//
+	// *   Enabled
+	// *   Disabled
 	SCIMSynchronizationStatus *string `json:"SCIMSynchronizationStatus,omitempty" xml:"SCIMSynchronizationStatus,omitempty"`
 }
 
@@ -6571,6 +7705,7 @@ func (s *SetSCIMSynchronizationStatusRequest) SetSCIMSynchronizationStatus(v str
 }
 
 type SetSCIMSynchronizationStatusResponseBody struct {
+	// The ID of the request.
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -6617,11 +7752,24 @@ func (s *SetSCIMSynchronizationStatusResponse) SetBody(v *SetSCIMSynchronization
 }
 
 type UpdateAccessConfigurationRequest struct {
+	// The ID of the access configuration.
 	AccessConfigurationId *string `json:"AccessConfigurationId,omitempty" xml:"AccessConfigurationId,omitempty"`
-	DirectoryId           *string `json:"DirectoryId,omitempty" xml:"DirectoryId,omitempty"`
-	NewDescription        *string `json:"NewDescription,omitempty" xml:"NewDescription,omitempty"`
-	NewRelayState         *string `json:"NewRelayState,omitempty" xml:"NewRelayState,omitempty"`
-	NewSessionDuration    *int32  `json:"NewSessionDuration,omitempty" xml:"NewSessionDuration,omitempty"`
+	// The ID of the directory.
+	DirectoryId *string `json:"DirectoryId,omitempty" xml:"DirectoryId,omitempty"`
+	// The new description of the access configuration.
+	//
+	// The description can be up to 1,024 characters in length.
+	NewDescription *string `json:"NewDescription,omitempty" xml:"NewDescription,omitempty"`
+	// The new initial web page that is displayed after a CloudSSO user accesses an account in your resource directory by using the access configuration.
+	//
+	// The web page must be a page of the Alibaba Cloud Management Console.
+	NewRelayState *string `json:"NewRelayState,omitempty" xml:"NewRelayState,omitempty"`
+	// The new duration of a session in which a CloudSSO user accesses an account in your resource directory by using the access configuration.
+	//
+	// Unit: seconds.
+	//
+	// Valid values: 900 to 43200. The value 900 indicates 15 minutes. The value 43200 indicates 12 hours.
+	NewSessionDuration *int32 `json:"NewSessionDuration,omitempty" xml:"NewSessionDuration,omitempty"`
 }
 
 func (s UpdateAccessConfigurationRequest) String() string {
@@ -6658,8 +7806,10 @@ func (s *UpdateAccessConfigurationRequest) SetNewSessionDuration(v int32) *Updat
 }
 
 type UpdateAccessConfigurationResponseBody struct {
+	// The information about the access configuration.
 	AccessConfiguration *UpdateAccessConfigurationResponseBodyAccessConfiguration `json:"AccessConfiguration,omitempty" xml:"AccessConfiguration,omitempty" type:"Struct"`
-	RequestId           *string                                                   `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The ID of the request.
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
 func (s UpdateAccessConfigurationResponseBody) String() string {
@@ -6681,14 +7831,24 @@ func (s *UpdateAccessConfigurationResponseBody) SetRequestId(v string) *UpdateAc
 }
 
 type UpdateAccessConfigurationResponseBodyAccessConfiguration struct {
-	AccessConfigurationId   *string   `json:"AccessConfigurationId,omitempty" xml:"AccessConfigurationId,omitempty"`
-	AccessConfigurationName *string   `json:"AccessConfigurationName,omitempty" xml:"AccessConfigurationName,omitempty"`
-	CreateTime              *string   `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
-	Description             *string   `json:"Description,omitempty" xml:"Description,omitempty"`
-	RelayState              *string   `json:"RelayState,omitempty" xml:"RelayState,omitempty"`
-	SessionDuration         *int32    `json:"SessionDuration,omitempty" xml:"SessionDuration,omitempty"`
-	StatusNotifications     []*string `json:"StatusNotifications,omitempty" xml:"StatusNotifications,omitempty" type:"Repeated"`
-	UpdateTime              *string   `json:"UpdateTime,omitempty" xml:"UpdateTime,omitempty"`
+	// The ID of the access configuration.
+	AccessConfigurationId *string `json:"AccessConfigurationId,omitempty" xml:"AccessConfigurationId,omitempty"`
+	// The name of the access configuration.
+	AccessConfigurationName *string `json:"AccessConfigurationName,omitempty" xml:"AccessConfigurationName,omitempty"`
+	// The time when the access configuration was created.
+	CreateTime *string `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
+	// The description of the access configuration.
+	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
+	// The initial web page that is displayed after a CloudSSO user accesses an account in your resource directory by using the access configuration.
+	RelayState *string `json:"RelayState,omitempty" xml:"RelayState,omitempty"`
+	// The duration of a session in which a CloudSSO user accesses an account in your resource directory by using the access configuration.
+	//
+	// Unit: seconds.
+	SessionDuration *int32 `json:"SessionDuration,omitempty" xml:"SessionDuration,omitempty"`
+	// The status notification.
+	StatusNotifications []*string `json:"StatusNotifications,omitempty" xml:"StatusNotifications,omitempty" type:"Repeated"`
+	// The time when the information about the access configuration was modified.
+	UpdateTime *string `json:"UpdateTime,omitempty" xml:"UpdateTime,omitempty"`
 }
 
 func (s UpdateAccessConfigurationResponseBodyAccessConfiguration) String() string {
@@ -6769,7 +7929,13 @@ func (s *UpdateAccessConfigurationResponse) SetBody(v *UpdateAccessConfiguration
 }
 
 type UpdateDirectoryRequest struct {
-	DirectoryId      *string `json:"DirectoryId,omitempty" xml:"DirectoryId,omitempty"`
+	// The ID of the directory.
+	DirectoryId *string `json:"DirectoryId,omitempty" xml:"DirectoryId,omitempty"`
+	// The new name of the directory. The name must be globally unique.
+	//
+	// The name can contain lowercase letters, digits, and hyphens (-). The name cannot start or end with a hyphen (-) and cannot have two consecutive hyphens (-). If you want to start the new name of the directory starts with `d-`, you must set this parameter to the ID of the directory.
+	//
+	// The name must be 2 to 64 characters in length.
 	NewDirectoryName *string `json:"NewDirectoryName,omitempty" xml:"NewDirectoryName,omitempty"`
 }
 
@@ -6792,8 +7958,10 @@ func (s *UpdateDirectoryRequest) SetNewDirectoryName(v string) *UpdateDirectoryR
 }
 
 type UpdateDirectoryResponseBody struct {
+	// The information about the directory.
 	Directory *UpdateDirectoryResponseBodyDirectory `json:"Directory,omitempty" xml:"Directory,omitempty" type:"Struct"`
-	RequestId *string                               `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The ID of the request.
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
 func (s UpdateDirectoryResponseBody) String() string {
@@ -6815,11 +7983,16 @@ func (s *UpdateDirectoryResponseBody) SetRequestId(v string) *UpdateDirectoryRes
 }
 
 type UpdateDirectoryResponseBodyDirectory struct {
-	CreateTime    *string `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
-	DirectoryId   *string `json:"DirectoryId,omitempty" xml:"DirectoryId,omitempty"`
+	// The time when the directory was created.
+	CreateTime *string `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
+	// The ID of the directory.
+	DirectoryId *string `json:"DirectoryId,omitempty" xml:"DirectoryId,omitempty"`
+	// The name of the directory.
 	DirectoryName *string `json:"DirectoryName,omitempty" xml:"DirectoryName,omitempty"`
-	Region        *string `json:"Region,omitempty" xml:"Region,omitempty"`
-	UpdateTime    *string `json:"UpdateTime,omitempty" xml:"UpdateTime,omitempty"`
+	// The region ID of the directory.
+	Region *string `json:"Region,omitempty" xml:"Region,omitempty"`
+	// The time when the directory was modified.
+	UpdateTime *string `json:"UpdateTime,omitempty" xml:"UpdateTime,omitempty"`
 }
 
 func (s UpdateDirectoryResponseBodyDirectory) String() string {
@@ -6885,10 +8058,14 @@ func (s *UpdateDirectoryResponse) SetBody(v *UpdateDirectoryResponseBody) *Updat
 }
 
 type UpdateGroupRequest struct {
-	DirectoryId    *string `json:"DirectoryId,omitempty" xml:"DirectoryId,omitempty"`
-	GroupId        *string `json:"GroupId,omitempty" xml:"GroupId,omitempty"`
+	// The ID of the directory.
+	DirectoryId *string `json:"DirectoryId,omitempty" xml:"DirectoryId,omitempty"`
+	// The ID of the group.
+	GroupId *string `json:"GroupId,omitempty" xml:"GroupId,omitempty"`
+	// The new description of the group.
 	NewDescription *string `json:"NewDescription,omitempty" xml:"NewDescription,omitempty"`
-	NewGroupName   *string `json:"NewGroupName,omitempty" xml:"NewGroupName,omitempty"`
+	// The new name of the group.
+	NewGroupName *string `json:"NewGroupName,omitempty" xml:"NewGroupName,omitempty"`
 }
 
 func (s UpdateGroupRequest) String() string {
@@ -6920,8 +8097,10 @@ func (s *UpdateGroupRequest) SetNewGroupName(v string) *UpdateGroupRequest {
 }
 
 type UpdateGroupResponseBody struct {
-	Group     *UpdateGroupResponseBodyGroup `json:"Group,omitempty" xml:"Group,omitempty" type:"Struct"`
-	RequestId *string                       `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The information about the group.
+	Group *UpdateGroupResponseBodyGroup `json:"Group,omitempty" xml:"Group,omitempty" type:"Struct"`
+	// The ID of the request.
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
 func (s UpdateGroupResponseBody) String() string {
@@ -6943,12 +8122,21 @@ func (s *UpdateGroupResponseBody) SetRequestId(v string) *UpdateGroupResponseBod
 }
 
 type UpdateGroupResponseBodyGroup struct {
-	CreateTime    *string `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
-	Description   *string `json:"Description,omitempty" xml:"Description,omitempty"`
-	GroupId       *string `json:"GroupId,omitempty" xml:"GroupId,omitempty"`
-	GroupName     *string `json:"GroupName,omitempty" xml:"GroupName,omitempty"`
+	// The time when the group was created.
+	CreateTime *string `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
+	// The description of the group.
+	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
+	// The ID of the group.
+	GroupId *string `json:"GroupId,omitempty" xml:"GroupId,omitempty"`
+	// The name of the group.
+	GroupName *string `json:"GroupName,omitempty" xml:"GroupName,omitempty"`
+	// The type of the group. Valid values:
+	//
+	// *   Manual: The group is manually created.
+	// *   Synchronized: The user is synchronized from an external identity provider (IdP).
 	ProvisionType *string `json:"ProvisionType,omitempty" xml:"ProvisionType,omitempty"`
-	UpdateTime    *string `json:"UpdateTime,omitempty" xml:"UpdateTime,omitempty"`
+	// The time when the information about the group was modified.
+	UpdateTime *string `json:"UpdateTime,omitempty" xml:"UpdateTime,omitempty"`
 }
 
 func (s UpdateGroupResponseBodyGroup) String() string {
@@ -7019,9 +8207,17 @@ func (s *UpdateGroupResponse) SetBody(v *UpdateGroupResponseBody) *UpdateGroupRe
 }
 
 type UpdateInlinePolicyForAccessConfigurationRequest struct {
-	AccessConfigurationId   *string `json:"AccessConfigurationId,omitempty" xml:"AccessConfigurationId,omitempty"`
-	DirectoryId             *string `json:"DirectoryId,omitempty" xml:"DirectoryId,omitempty"`
-	InlinePolicyName        *string `json:"InlinePolicyName,omitempty" xml:"InlinePolicyName,omitempty"`
+	// The ID of the access configuration.
+	AccessConfigurationId *string `json:"AccessConfigurationId,omitempty" xml:"AccessConfigurationId,omitempty"`
+	// The ID of the directory.
+	DirectoryId *string `json:"DirectoryId,omitempty" xml:"DirectoryId,omitempty"`
+	// The name of the inline policy.
+	InlinePolicyName *string `json:"InlinePolicyName,omitempty" xml:"InlinePolicyName,omitempty"`
+	// The new configurations of the inline policy.
+	//
+	// The value can be up to 4,096 characters in length.
+	//
+	// For more information about the syntax and structure of RAM policies, see [Policy syntax and structure](~~93739~~).
 	NewInlinePolicyDocument *string `json:"NewInlinePolicyDocument,omitempty" xml:"NewInlinePolicyDocument,omitempty"`
 }
 
@@ -7054,6 +8250,7 @@ func (s *UpdateInlinePolicyForAccessConfigurationRequest) SetNewInlinePolicyDocu
 }
 
 type UpdateInlinePolicyForAccessConfigurationResponseBody struct {
+	// The ID of the request.
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -7100,9 +8297,21 @@ func (s *UpdateInlinePolicyForAccessConfigurationResponse) SetBody(v *UpdateInli
 }
 
 type UpdateMFAAuthenticationSettingsRequest struct {
-	DirectoryId               *string `json:"DirectoryId,omitempty" xml:"DirectoryId,omitempty"`
+	// The ID of the directory.
+	DirectoryId *string `json:"DirectoryId,omitempty" xml:"DirectoryId,omitempty"`
+	// Specifies whether to enable MFA for all users. Valid value:
+	//
+	// - Enabled: enables MFA for all users.
+	// - Byuser: uses user-specific settings. For more information about how to configure MFA for a single user, see [UpdateUserMFAAuthenticationSettings](~~450135~~).
+	// - Disabled: disables MFA for all users.
+	// - OnlyRiskyLogin: MFA is required only for unusual logons.
 	MFAAuthenticationSettings *string `json:"MFAAuthenticationSettings,omitempty" xml:"MFAAuthenticationSettings,omitempty"`
-	OperationForRiskLogin     *string `json:"OperationForRiskLogin,omitempty" xml:"OperationForRiskLogin,omitempty"`
+	// Specifies whether MFA is required for users who initiated unusual logons. Valid value:
+	//
+	// - Autonomous: MFA is prompted for users who initiated unusual logons. However, the users are allowed to skip MFA. If an MFA device is bound to a user who initiated an unusual logon, the user must pass MFA.
+	//
+	// - EnforceVerify: MFA is required. If no MFA devices are bound to a user who initiated an unusual logon, the user must bind an MFA device. If an MFA device is already bound to a user who initiated an unusual logon, the user must pass MFA.
+	OperationForRiskLogin *string `json:"OperationForRiskLogin,omitempty" xml:"OperationForRiskLogin,omitempty"`
 }
 
 func (s UpdateMFAAuthenticationSettingsRequest) String() string {
@@ -7129,6 +8338,7 @@ func (s *UpdateMFAAuthenticationSettingsRequest) SetOperationForRiskLogin(v stri
 }
 
 type UpdateMFAAuthenticationSettingsResponseBody struct {
+	// The ID of the request.
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -7175,9 +8385,15 @@ func (s *UpdateMFAAuthenticationSettingsResponse) SetBody(v *UpdateMFAAuthentica
 }
 
 type UpdateSCIMServerCredentialStatusRequest struct {
+	// The ID of the SCIM credential.
 	CredentialId *string `json:"CredentialId,omitempty" xml:"CredentialId,omitempty"`
-	DirectoryId  *string `json:"DirectoryId,omitempty" xml:"DirectoryId,omitempty"`
-	NewStatus    *string `json:"NewStatus,omitempty" xml:"NewStatus,omitempty"`
+	// The ID of the directory.
+	DirectoryId *string `json:"DirectoryId,omitempty" xml:"DirectoryId,omitempty"`
+	// The new status of the SCIM credential. Valid values:
+	//
+	// *   Enabled: The SCIM credential is enabled.
+	// *   Disabled: The SCIM credential is disabled.
+	NewStatus *string `json:"NewStatus,omitempty" xml:"NewStatus,omitempty"`
 }
 
 func (s UpdateSCIMServerCredentialStatusRequest) String() string {
@@ -7204,7 +8420,9 @@ func (s *UpdateSCIMServerCredentialStatusRequest) SetNewStatus(v string) *Update
 }
 
 type UpdateSCIMServerCredentialStatusResponseBody struct {
-	RequestId            *string                                                           `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The ID of the request.
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The information about the SCIM credential.
 	SCIMServerCredential *UpdateSCIMServerCredentialStatusResponseBodySCIMServerCredential `json:"SCIMServerCredential,omitempty" xml:"SCIMServerCredential,omitempty" type:"Struct"`
 }
 
@@ -7227,12 +8445,21 @@ func (s *UpdateSCIMServerCredentialStatusResponseBody) SetSCIMServerCredential(v
 }
 
 type UpdateSCIMServerCredentialStatusResponseBodySCIMServerCredential struct {
-	CreateTime     *string `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
-	CredentialId   *string `json:"CredentialId,omitempty" xml:"CredentialId,omitempty"`
+	// The time when the SCIM credential was created.
+	CreateTime *string `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
+	// The ID of the SCIM credential.
+	CredentialId *string `json:"CredentialId,omitempty" xml:"CredentialId,omitempty"`
+	// The type of the SCIM credential.
 	CredentialType *string `json:"CredentialType,omitempty" xml:"CredentialType,omitempty"`
-	DirectoryId    *string `json:"DirectoryId,omitempty" xml:"DirectoryId,omitempty"`
-	ExpireTime     *string `json:"ExpireTime,omitempty" xml:"ExpireTime,omitempty"`
-	Status         *string `json:"Status,omitempty" xml:"Status,omitempty"`
+	// The ID of the directory.
+	DirectoryId *string `json:"DirectoryId,omitempty" xml:"DirectoryId,omitempty"`
+	// The time when the SCIM credential expires.
+	ExpireTime *string `json:"ExpireTime,omitempty" xml:"ExpireTime,omitempty"`
+	// The status of the SCIM credential. Valid values:
+	//
+	// *   Enabled: The SCIM credential is enabled.
+	// *   Disabled: The SCIM credential is disabled.
+	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
 }
 
 func (s UpdateSCIMServerCredentialStatusResponseBodySCIMServerCredential) String() string {
@@ -7303,13 +8530,20 @@ func (s *UpdateSCIMServerCredentialStatusResponse) SetBody(v *UpdateSCIMServerCr
 }
 
 type UpdateUserRequest struct {
-	DirectoryId    *string `json:"DirectoryId,omitempty" xml:"DirectoryId,omitempty"`
+	// The ID of the directory.
+	DirectoryId *string `json:"DirectoryId,omitempty" xml:"DirectoryId,omitempty"`
+	// The new description of the user.
 	NewDescription *string `json:"NewDescription,omitempty" xml:"NewDescription,omitempty"`
+	// The new display name of the user.
 	NewDisplayName *string `json:"NewDisplayName,omitempty" xml:"NewDisplayName,omitempty"`
-	NewEmail       *string `json:"NewEmail,omitempty" xml:"NewEmail,omitempty"`
-	NewFirstName   *string `json:"NewFirstName,omitempty" xml:"NewFirstName,omitempty"`
-	NewLastName    *string `json:"NewLastName,omitempty" xml:"NewLastName,omitempty"`
-	UserId         *string `json:"UserId,omitempty" xml:"UserId,omitempty"`
+	// The new email address of the user.
+	NewEmail *string `json:"NewEmail,omitempty" xml:"NewEmail,omitempty"`
+	// The new first name of the user.
+	NewFirstName *string `json:"NewFirstName,omitempty" xml:"NewFirstName,omitempty"`
+	// The new last name of the user.
+	NewLastName *string `json:"NewLastName,omitempty" xml:"NewLastName,omitempty"`
+	// The ID of the user.
+	UserId *string `json:"UserId,omitempty" xml:"UserId,omitempty"`
 }
 
 func (s UpdateUserRequest) String() string {
@@ -7356,8 +8590,10 @@ func (s *UpdateUserRequest) SetUserId(v string) *UpdateUserRequest {
 }
 
 type UpdateUserResponseBody struct {
-	RequestId *string                     `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	User      *UpdateUserResponseBodyUser `json:"User,omitempty" xml:"User,omitempty" type:"Struct"`
+	// The ID of the request.
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The information about the user.
+	User *UpdateUserResponseBodyUser `json:"User,omitempty" xml:"User,omitempty" type:"Struct"`
 }
 
 func (s UpdateUserResponseBody) String() string {
@@ -7379,17 +8615,34 @@ func (s *UpdateUserResponseBody) SetUser(v *UpdateUserResponseBodyUser) *UpdateU
 }
 
 type UpdateUserResponseBodyUser struct {
-	CreateTime    *string `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
-	Description   *string `json:"Description,omitempty" xml:"Description,omitempty"`
-	DisplayName   *string `json:"DisplayName,omitempty" xml:"DisplayName,omitempty"`
-	Email         *string `json:"Email,omitempty" xml:"Email,omitempty"`
-	FirstName     *string `json:"FirstName,omitempty" xml:"FirstName,omitempty"`
-	LastName      *string `json:"LastName,omitempty" xml:"LastName,omitempty"`
+	// The time when the user was created.
+	CreateTime *string `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
+	// The description of the user.
+	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
+	// The display name of the user.
+	DisplayName *string `json:"DisplayName,omitempty" xml:"DisplayName,omitempty"`
+	// The email address of the user.
+	Email *string `json:"Email,omitempty" xml:"Email,omitempty"`
+	// The first name of the user.
+	FirstName *string `json:"FirstName,omitempty" xml:"FirstName,omitempty"`
+	// The last name of the user.
+	LastName *string `json:"LastName,omitempty" xml:"LastName,omitempty"`
+	// The type of the user. Valid values:
+	//
+	// *   Manual: The user is manually created.
+	// *   Synchronized: The user is synchronized from an external identity provider (IdP).
 	ProvisionType *string `json:"ProvisionType,omitempty" xml:"ProvisionType,omitempty"`
-	Status        *string `json:"Status,omitempty" xml:"Status,omitempty"`
-	UpdateTime    *string `json:"UpdateTime,omitempty" xml:"UpdateTime,omitempty"`
-	UserId        *string `json:"UserId,omitempty" xml:"UserId,omitempty"`
-	UserName      *string `json:"UserName,omitempty" xml:"UserName,omitempty"`
+	// The status of the user. Valid values:
+	//
+	// *   Enabled: The logon of the user is enabled.
+	// *   Disabled: The logon of the user is disabled.
+	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
+	// The time when the information about the user was modified.
+	UpdateTime *string `json:"UpdateTime,omitempty" xml:"UpdateTime,omitempty"`
+	// The ID of the user.
+	UserId *string `json:"UserId,omitempty" xml:"UserId,omitempty"`
+	// The name of the user.
+	UserName *string `json:"UserName,omitempty" xml:"UserName,omitempty"`
 }
 
 func (s UpdateUserResponseBodyUser) String() string {
@@ -7485,8 +8738,14 @@ func (s *UpdateUserResponse) SetBody(v *UpdateUserResponseBody) *UpdateUserRespo
 }
 
 type UpdateUserMFAAuthenticationSettingsRequest struct {
-	DirectoryId                   *string `json:"DirectoryId,omitempty" xml:"DirectoryId,omitempty"`
-	UserId                        *string `json:"UserId,omitempty" xml:"UserId,omitempty"`
+	// The ID of the directory.
+	DirectoryId *string `json:"DirectoryId,omitempty" xml:"DirectoryId,omitempty"`
+	// The ID of the user.
+	UserId *string `json:"UserId,omitempty" xml:"UserId,omitempty"`
+	// Specifies whether to enable MFA for the user. Valid values:
+	//
+	// *   Enabled: enables MFA for the user.
+	// *   Disabled: disables MFA for the user.
 	UserMFAAuthenticationSettings *string `json:"UserMFAAuthenticationSettings,omitempty" xml:"UserMFAAuthenticationSettings,omitempty"`
 }
 
@@ -7514,6 +8773,7 @@ func (s *UpdateUserMFAAuthenticationSettingsRequest) SetUserMFAAuthenticationSet
 }
 
 type UpdateUserMFAAuthenticationSettingsResponseBody struct {
+	// The ID of the request.
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -7560,9 +8820,15 @@ func (s *UpdateUserMFAAuthenticationSettingsResponse) SetBody(v *UpdateUserMFAAu
 }
 
 type UpdateUserStatusRequest struct {
+	// The ID of the directory.
 	DirectoryId *string `json:"DirectoryId,omitempty" xml:"DirectoryId,omitempty"`
-	NewStatus   *string `json:"NewStatus,omitempty" xml:"NewStatus,omitempty"`
-	UserId      *string `json:"UserId,omitempty" xml:"UserId,omitempty"`
+	// The new status of the user. Valid values:
+	//
+	// *   Enabled: The logon of the user is enabled.
+	// *   Disabled: The logon of the user is disabled.
+	NewStatus *string `json:"NewStatus,omitempty" xml:"NewStatus,omitempty"`
+	// The ID of the user.
+	UserId *string `json:"UserId,omitempty" xml:"UserId,omitempty"`
 }
 
 func (s UpdateUserStatusRequest) String() string {
@@ -7589,6 +8855,7 @@ func (s *UpdateUserStatusRequest) SetUserId(v string) *UpdateUserStatusRequest {
 }
 
 type UpdateUserStatusResponseBody struct {
+	// The ID of the request.
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -7681,6 +8948,16 @@ func (client *Client) GetEndpoint(productId *string, regionId *string, endpointR
 	return _result, _err
 }
 
+/**
+ * You can add up to two SAML signing certificates.
+ * This topic provides an example on how to add a SAML signing certificate to the directory `d-00fc2p61****`.
+ * ## Limits
+ * You can call this operation up to 100 times per second per account. This operation is globally limited to 100 times per second across all accounts. If the number of the calls per second exceeds a limit, throttling is triggered. As a result, your business may be affected. We recommend that you take note of the limits when you call this operation.
+ *
+ * @param request AddExternalSAMLIdPCertificateRequest
+ * @param runtime runtime options for this request RuntimeOptions
+ * @return AddExternalSAMLIdPCertificateResponse
+ */
 func (client *Client) AddExternalSAMLIdPCertificateWithOptions(request *AddExternalSAMLIdPCertificateRequest, runtime *util.RuntimeOptions) (_result *AddExternalSAMLIdPCertificateResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -7718,6 +8995,15 @@ func (client *Client) AddExternalSAMLIdPCertificateWithOptions(request *AddExter
 	return _result, _err
 }
 
+/**
+ * You can add up to two SAML signing certificates.
+ * This topic provides an example on how to add a SAML signing certificate to the directory `d-00fc2p61****`.
+ * ## Limits
+ * You can call this operation up to 100 times per second per account. This operation is globally limited to 100 times per second across all accounts. If the number of the calls per second exceeds a limit, throttling is triggered. As a result, your business may be affected. We recommend that you take note of the limits when you call this operation.
+ *
+ * @param request AddExternalSAMLIdPCertificateRequest
+ * @return AddExternalSAMLIdPCertificateResponse
+ */
 func (client *Client) AddExternalSAMLIdPCertificate(request *AddExternalSAMLIdPCertificateRequest) (_result *AddExternalSAMLIdPCertificateResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &AddExternalSAMLIdPCertificateResponse{}
@@ -7729,6 +9015,15 @@ func (client *Client) AddExternalSAMLIdPCertificate(request *AddExternalSAMLIdPC
 	return _result, _err
 }
 
+/**
+ * This topic provides an example on how to add the system policy `AliyunECSFullAccess` to the access configuration `ac-00jhtfl8thteu6uj****`.
+ * ## Limits
+ * You can call this operation up to 100 times per second per account. This operation is globally limited to 100 times per second across all accounts. If the number of the calls per second exceeds a limit, throttling is triggered. As a result, your business may be affected. We recommend that you take note of the limits when you call this operation.
+ *
+ * @param request AddPermissionPolicyToAccessConfigurationRequest
+ * @param runtime runtime options for this request RuntimeOptions
+ * @return AddPermissionPolicyToAccessConfigurationResponse
+ */
 func (client *Client) AddPermissionPolicyToAccessConfigurationWithOptions(request *AddPermissionPolicyToAccessConfigurationRequest, runtime *util.RuntimeOptions) (_result *AddPermissionPolicyToAccessConfigurationResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -7778,6 +9073,14 @@ func (client *Client) AddPermissionPolicyToAccessConfigurationWithOptions(reques
 	return _result, _err
 }
 
+/**
+ * This topic provides an example on how to add the system policy `AliyunECSFullAccess` to the access configuration `ac-00jhtfl8thteu6uj****`.
+ * ## Limits
+ * You can call this operation up to 100 times per second per account. This operation is globally limited to 100 times per second across all accounts. If the number of the calls per second exceeds a limit, throttling is triggered. As a result, your business may be affected. We recommend that you take note of the limits when you call this operation.
+ *
+ * @param request AddPermissionPolicyToAccessConfigurationRequest
+ * @return AddPermissionPolicyToAccessConfigurationResponse
+ */
 func (client *Client) AddPermissionPolicyToAccessConfiguration(request *AddPermissionPolicyToAccessConfigurationRequest) (_result *AddPermissionPolicyToAccessConfigurationResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &AddPermissionPolicyToAccessConfigurationResponse{}
@@ -7789,6 +9092,16 @@ func (client *Client) AddPermissionPolicyToAccessConfiguration(request *AddPermi
 	return _result, _err
 }
 
+/**
+ * If System for Cross-domain Identity Management (SCIM) synchronization is enabled, you cannot add a user to a group that is synchronized by using SCIM.
+ * This topic provides an example of how to add the user `u-00q8wbq42wiltcrk****` to the group `g-00jqzghi2n3o5hkh****`.
+ * ## Limits
+ * You can call this operation up to 100 times per second per account. This operation is globally limited to 100 times per second across all accounts. If the number of the calls per second exceeds a limit, throttling is triggered. As a result, your business may be affected. We recommend that you take note of the limits when you call this operation.
+ *
+ * @param request AddUserToGroupRequest
+ * @param runtime runtime options for this request RuntimeOptions
+ * @return AddUserToGroupResponse
+ */
 func (client *Client) AddUserToGroupWithOptions(request *AddUserToGroupRequest, runtime *util.RuntimeOptions) (_result *AddUserToGroupResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -7830,6 +9143,15 @@ func (client *Client) AddUserToGroupWithOptions(request *AddUserToGroupRequest, 
 	return _result, _err
 }
 
+/**
+ * If System for Cross-domain Identity Management (SCIM) synchronization is enabled, you cannot add a user to a group that is synchronized by using SCIM.
+ * This topic provides an example of how to add the user `u-00q8wbq42wiltcrk****` to the group `g-00jqzghi2n3o5hkh****`.
+ * ## Limits
+ * You can call this operation up to 100 times per second per account. This operation is globally limited to 100 times per second across all accounts. If the number of the calls per second exceeds a limit, throttling is triggered. As a result, your business may be affected. We recommend that you take note of the limits when you call this operation.
+ *
+ * @param request AddUserToGroupRequest
+ * @return AddUserToGroupResponse
+ */
 func (client *Client) AddUserToGroup(request *AddUserToGroupRequest) (_result *AddUserToGroupResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &AddUserToGroupResponse{}
@@ -7841,6 +9163,16 @@ func (client *Client) AddUserToGroup(request *AddUserToGroupRequest) (_result *A
 	return _result, _err
 }
 
+/**
+ * If single sign-on (SSO) logon is disabled, you can clear the configurations of a SAML IdP. If SSO logon is enabled, you cannot clear the configurations.
+ * This topic provides an example on how to clear the configurations of the SAML IdP within the directory `d-00fc2p61****`.
+ * ## Limits
+ * You can call this operation up to 100 times per second per account. This operation is globally limited to 100 times per second across all accounts. If the number of the calls per second exceeds a limit, throttling is triggered. As a result, your business may be affected. We recommend that you take note of the limits when you call this operation.
+ *
+ * @param request ClearExternalSAMLIdentityProviderRequest
+ * @param runtime runtime options for this request RuntimeOptions
+ * @return ClearExternalSAMLIdentityProviderResponse
+ */
 func (client *Client) ClearExternalSAMLIdentityProviderWithOptions(request *ClearExternalSAMLIdentityProviderRequest, runtime *util.RuntimeOptions) (_result *ClearExternalSAMLIdentityProviderResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -7874,6 +9206,15 @@ func (client *Client) ClearExternalSAMLIdentityProviderWithOptions(request *Clea
 	return _result, _err
 }
 
+/**
+ * If single sign-on (SSO) logon is disabled, you can clear the configurations of a SAML IdP. If SSO logon is enabled, you cannot clear the configurations.
+ * This topic provides an example on how to clear the configurations of the SAML IdP within the directory `d-00fc2p61****`.
+ * ## Limits
+ * You can call this operation up to 100 times per second per account. This operation is globally limited to 100 times per second across all accounts. If the number of the calls per second exceeds a limit, throttling is triggered. As a result, your business may be affected. We recommend that you take note of the limits when you call this operation.
+ *
+ * @param request ClearExternalSAMLIdentityProviderRequest
+ * @return ClearExternalSAMLIdentityProviderResponse
+ */
 func (client *Client) ClearExternalSAMLIdentityProvider(request *ClearExternalSAMLIdentityProviderRequest) (_result *ClearExternalSAMLIdentityProviderResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &ClearExternalSAMLIdentityProviderResponse{}
@@ -7885,6 +9226,17 @@ func (client *Client) ClearExternalSAMLIdentityProvider(request *ClearExternalSA
 	return _result, _err
 }
 
+/**
+ * When you call this operation, an asynchronous task is created. You can call the [GetTask](~~340670~~) operation to query the progress of task execution by using the value of the `TaskId` response parameter.
+ * For more information about how to assign permissions on an account in your resource directory, see [Overview of multi-account authorization](~~266726~~).
+ * This topic provides an example on how to assign access permissions on the account `114240524784****` in your resource directory to the CloudSSO user `u-00q8wbq42wiltcrk****` by using the access configuration `ac-00jhtfl8thteu6uj****`. After the call is successful, the CloudSSO user can access resources within the account in the resource directory.
+ * ## Limits
+ * You can call this operation up to 20 times per second per account. This operation is globally limited to 100 times per second across all accounts. If the number of the calls per second exceeds a limit, throttling is triggered. As a result, your business may be affected. We recommend that you take note of the limits when you call this operation.
+ *
+ * @param request CreateAccessAssignmentRequest
+ * @param runtime runtime options for this request RuntimeOptions
+ * @return CreateAccessAssignmentResponse
+ */
 func (client *Client) CreateAccessAssignmentWithOptions(request *CreateAccessAssignmentRequest, runtime *util.RuntimeOptions) (_result *CreateAccessAssignmentResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -7938,6 +9290,16 @@ func (client *Client) CreateAccessAssignmentWithOptions(request *CreateAccessAss
 	return _result, _err
 }
 
+/**
+ * When you call this operation, an asynchronous task is created. You can call the [GetTask](~~340670~~) operation to query the progress of task execution by using the value of the `TaskId` response parameter.
+ * For more information about how to assign permissions on an account in your resource directory, see [Overview of multi-account authorization](~~266726~~).
+ * This topic provides an example on how to assign access permissions on the account `114240524784****` in your resource directory to the CloudSSO user `u-00q8wbq42wiltcrk****` by using the access configuration `ac-00jhtfl8thteu6uj****`. After the call is successful, the CloudSSO user can access resources within the account in the resource directory.
+ * ## Limits
+ * You can call this operation up to 20 times per second per account. This operation is globally limited to 100 times per second across all accounts. If the number of the calls per second exceeds a limit, throttling is triggered. As a result, your business may be affected. We recommend that you take note of the limits when you call this operation.
+ *
+ * @param request CreateAccessAssignmentRequest
+ * @return CreateAccessAssignmentResponse
+ */
 func (client *Client) CreateAccessAssignment(request *CreateAccessAssignmentRequest) (_result *CreateAccessAssignmentResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &CreateAccessAssignmentResponse{}
@@ -7949,6 +9311,16 @@ func (client *Client) CreateAccessAssignment(request *CreateAccessAssignmentRequ
 	return _result, _err
 }
 
+/**
+ * For more information about access configurations, see [Overview of access configurations](~~266737~~).
+ * This topic provides an example on how to create an access configuration named `ECS-Admin`.
+ * ## Limits
+ * You can call this operation up to 100 times per second per account. This operation is globally limited to 100 times per second across all accounts. If the number of the calls per second exceeds a limit, throttling is triggered. As a result, your business may be affected. We recommend that you take note of the limits when you call this operation.
+ *
+ * @param request CreateAccessConfigurationRequest
+ * @param runtime runtime options for this request RuntimeOptions
+ * @return CreateAccessConfigurationResponse
+ */
 func (client *Client) CreateAccessConfigurationWithOptions(request *CreateAccessConfigurationRequest, runtime *util.RuntimeOptions) (_result *CreateAccessConfigurationResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -7998,6 +9370,15 @@ func (client *Client) CreateAccessConfigurationWithOptions(request *CreateAccess
 	return _result, _err
 }
 
+/**
+ * For more information about access configurations, see [Overview of access configurations](~~266737~~).
+ * This topic provides an example on how to create an access configuration named `ECS-Admin`.
+ * ## Limits
+ * You can call this operation up to 100 times per second per account. This operation is globally limited to 100 times per second across all accounts. If the number of the calls per second exceeds a limit, throttling is triggered. As a result, your business may be affected. We recommend that you take note of the limits when you call this operation.
+ *
+ * @param request CreateAccessConfigurationRequest
+ * @return CreateAccessConfigurationResponse
+ */
 func (client *Client) CreateAccessConfiguration(request *CreateAccessConfigurationRequest) (_result *CreateAccessConfigurationResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &CreateAccessConfigurationResponse{}
@@ -8009,6 +9390,20 @@ func (client *Client) CreateAccessConfiguration(request *CreateAccessConfigurati
 	return _result, _err
 }
 
+/**
+ * A directory is a CloudSSO instance. Before you can use CloudSSO, you must create a directory. The directory is used to manage all CloudSSO resources.
+ * To create a directory, you must select a region. Alibaba Cloud stores data in the directory only in the region that you select. However, you can deploy Alibaba Cloud resources including Elastic Compute Service (ECS) instances and ApsaraDB RDS instances in other regions. You can also use your cloud account for logons and access the Alibaba Cloud resources in other regions. You can select a region to create a directory based on your security compliance requirements and the geographic location of specific users. If you do not have strict security compliance requirements, we recommend that you select a region that is the closest to the geographical location of the specific users. This way, access to cloud resources is accelerated. You can create the CloudSSO directory in the China (Shanghai), China (Hong Kong), US (Silicon Valley), or Germany (Frankfurt) region.
+ * This topic provides an example on how to create a directory named `example` in the China (Shanghai) region.
+ * ## Limits
+ * - You can create only one directory for a management account.
+ * - If you want to change the region of a directory, you must delete the directory and then create a directory in a different region.
+ * ## Limits
+ * You can call this operation up to 100 times per second per account. This operation is globally limited to 100 times per second across all accounts. If the number of the calls per second exceeds a limit, throttling is triggered. As a result, your business may be affected. We recommend that you take note of the limits when you call this operation.
+ *
+ * @param request CreateDirectoryRequest
+ * @param runtime runtime options for this request RuntimeOptions
+ * @return CreateDirectoryResponse
+ */
 func (client *Client) CreateDirectoryWithOptions(request *CreateDirectoryRequest, runtime *util.RuntimeOptions) (_result *CreateDirectoryResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -8042,6 +9437,19 @@ func (client *Client) CreateDirectoryWithOptions(request *CreateDirectoryRequest
 	return _result, _err
 }
 
+/**
+ * A directory is a CloudSSO instance. Before you can use CloudSSO, you must create a directory. The directory is used to manage all CloudSSO resources.
+ * To create a directory, you must select a region. Alibaba Cloud stores data in the directory only in the region that you select. However, you can deploy Alibaba Cloud resources including Elastic Compute Service (ECS) instances and ApsaraDB RDS instances in other regions. You can also use your cloud account for logons and access the Alibaba Cloud resources in other regions. You can select a region to create a directory based on your security compliance requirements and the geographic location of specific users. If you do not have strict security compliance requirements, we recommend that you select a region that is the closest to the geographical location of the specific users. This way, access to cloud resources is accelerated. You can create the CloudSSO directory in the China (Shanghai), China (Hong Kong), US (Silicon Valley), or Germany (Frankfurt) region.
+ * This topic provides an example on how to create a directory named `example` in the China (Shanghai) region.
+ * ## Limits
+ * - You can create only one directory for a management account.
+ * - If you want to change the region of a directory, you must delete the directory and then create a directory in a different region.
+ * ## Limits
+ * You can call this operation up to 100 times per second per account. This operation is globally limited to 100 times per second across all accounts. If the number of the calls per second exceeds a limit, throttling is triggered. As a result, your business may be affected. We recommend that you take note of the limits when you call this operation.
+ *
+ * @param request CreateDirectoryRequest
+ * @return CreateDirectoryResponse
+ */
 func (client *Client) CreateDirectory(request *CreateDirectoryRequest) (_result *CreateDirectoryResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &CreateDirectoryResponse{}
@@ -8053,6 +9461,15 @@ func (client *Client) CreateDirectory(request *CreateDirectoryRequest) (_result 
 	return _result, _err
 }
 
+/**
+ * This topic provides an example on how to create a group named `TestGroup`.
+ * ## Limits
+ * You can call this operation up to 100 times per second per account. This operation is globally limited to 100 times per second across all accounts. If the number of the calls per second exceeds a limit, throttling is triggered. As a result, your business may be affected. We recommend that you take note of the limits when you call this operation.
+ *
+ * @param request CreateGroupRequest
+ * @param runtime runtime options for this request RuntimeOptions
+ * @return CreateGroupResponse
+ */
 func (client *Client) CreateGroupWithOptions(request *CreateGroupRequest, runtime *util.RuntimeOptions) (_result *CreateGroupResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -8094,6 +9511,14 @@ func (client *Client) CreateGroupWithOptions(request *CreateGroupRequest, runtim
 	return _result, _err
 }
 
+/**
+ * This topic provides an example on how to create a group named `TestGroup`.
+ * ## Limits
+ * You can call this operation up to 100 times per second per account. This operation is globally limited to 100 times per second across all accounts. If the number of the calls per second exceeds a limit, throttling is triggered. As a result, your business may be affected. We recommend that you take note of the limits when you call this operation.
+ *
+ * @param request CreateGroupRequest
+ * @return CreateGroupResponse
+ */
 func (client *Client) CreateGroup(request *CreateGroupRequest) (_result *CreateGroupResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &CreateGroupResponse{}
@@ -8105,6 +9530,16 @@ func (client *Client) CreateGroup(request *CreateGroupRequest) (_result *CreateG
 	return _result, _err
 }
 
+/**
+ * SCIM credentials are required for SCIM synchronization. You can create up to two SCIM credentials.
+ * This topic provides an example on how to create a SCIM credential within the directory `d-00fc2p61****`.
+ * ## Limits
+ * You can call this operation up to 100 times per second per account. This operation is globally limited to 100 times per second across all accounts. If the number of the calls per second exceeds a limit, throttling is triggered. As a result, your business may be affected. We recommend that you take note of the limits when you call this operation.
+ *
+ * @param request CreateSCIMServerCredentialRequest
+ * @param runtime runtime options for this request RuntimeOptions
+ * @return CreateSCIMServerCredentialResponse
+ */
 func (client *Client) CreateSCIMServerCredentialWithOptions(request *CreateSCIMServerCredentialRequest, runtime *util.RuntimeOptions) (_result *CreateSCIMServerCredentialResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -8138,6 +9573,15 @@ func (client *Client) CreateSCIMServerCredentialWithOptions(request *CreateSCIMS
 	return _result, _err
 }
 
+/**
+ * SCIM credentials are required for SCIM synchronization. You can create up to two SCIM credentials.
+ * This topic provides an example on how to create a SCIM credential within the directory `d-00fc2p61****`.
+ * ## Limits
+ * You can call this operation up to 100 times per second per account. This operation is globally limited to 100 times per second across all accounts. If the number of the calls per second exceeds a limit, throttling is triggered. As a result, your business may be affected. We recommend that you take note of the limits when you call this operation.
+ *
+ * @param request CreateSCIMServerCredentialRequest
+ * @return CreateSCIMServerCredentialResponse
+ */
 func (client *Client) CreateSCIMServerCredential(request *CreateSCIMServerCredentialRequest) (_result *CreateSCIMServerCredentialResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &CreateSCIMServerCredentialResponse{}
@@ -8149,6 +9593,15 @@ func (client *Client) CreateSCIMServerCredential(request *CreateSCIMServerCreden
 	return _result, _err
 }
 
+/**
+ * This topic provides an example on how to create a user named `Alice`.
+ * ## Limits
+ * You can call this operation up to 100 times per second per account. This operation is globally limited to 100 times per second across all accounts. If the number of the calls per second exceeds a limit, throttling is triggered. As a result, your business may be affected. We recommend that you take note of the limits when you call this operation.
+ *
+ * @param request CreateUserRequest
+ * @param runtime runtime options for this request RuntimeOptions
+ * @return CreateUserResponse
+ */
 func (client *Client) CreateUserWithOptions(request *CreateUserRequest, runtime *util.RuntimeOptions) (_result *CreateUserResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -8210,6 +9663,14 @@ func (client *Client) CreateUserWithOptions(request *CreateUserRequest, runtime 
 	return _result, _err
 }
 
+/**
+ * This topic provides an example on how to create a user named `Alice`.
+ * ## Limits
+ * You can call this operation up to 100 times per second per account. This operation is globally limited to 100 times per second across all accounts. If the number of the calls per second exceeds a limit, throttling is triggered. As a result, your business may be affected. We recommend that you take note of the limits when you call this operation.
+ *
+ * @param request CreateUserRequest
+ * @return CreateUserResponse
+ */
 func (client *Client) CreateUser(request *CreateUserRequest) (_result *CreateUserResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &CreateUserResponse{}
@@ -8221,6 +9682,16 @@ func (client *Client) CreateUser(request *CreateUserRequest) (_result *CreateUse
 	return _result, _err
 }
 
+/**
+ * When you call this operation, an asynchronous task is created. You can call the [GetTask](~~340670~~) operation to query the progress of the task based on the value of the `TaskId` response parameter.
+ * This topic provides an example on how to remove the access permissions on the account `114240524784****` in the resource directory from the CloudSSO user `u-00q8wbq42wiltcrk****`. The access permissions are assigned by using the access configuration `ac-00jhtfl8thteu6uj****`.
+ * ## Limits
+ * You can call this operation up to 20 times per second per account. This operation is globally limited to 100 times per second across all accounts. If the number of the calls per second exceeds a limit, throttling is triggered. As a result, your business may be affected. We recommend that you take note of the limits when you call this operation.
+ *
+ * @param request DeleteAccessAssignmentRequest
+ * @param runtime runtime options for this request RuntimeOptions
+ * @return DeleteAccessAssignmentResponse
+ */
 func (client *Client) DeleteAccessAssignmentWithOptions(request *DeleteAccessAssignmentRequest, runtime *util.RuntimeOptions) (_result *DeleteAccessAssignmentResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -8278,6 +9749,15 @@ func (client *Client) DeleteAccessAssignmentWithOptions(request *DeleteAccessAss
 	return _result, _err
 }
 
+/**
+ * When you call this operation, an asynchronous task is created. You can call the [GetTask](~~340670~~) operation to query the progress of the task based on the value of the `TaskId` response parameter.
+ * This topic provides an example on how to remove the access permissions on the account `114240524784****` in the resource directory from the CloudSSO user `u-00q8wbq42wiltcrk****`. The access permissions are assigned by using the access configuration `ac-00jhtfl8thteu6uj****`.
+ * ## Limits
+ * You can call this operation up to 20 times per second per account. This operation is globally limited to 100 times per second across all accounts. If the number of the calls per second exceeds a limit, throttling is triggered. As a result, your business may be affected. We recommend that you take note of the limits when you call this operation.
+ *
+ * @param request DeleteAccessAssignmentRequest
+ * @return DeleteAccessAssignmentResponse
+ */
 func (client *Client) DeleteAccessAssignment(request *DeleteAccessAssignmentRequest) (_result *DeleteAccessAssignmentResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &DeleteAccessAssignmentResponse{}
@@ -8289,6 +9769,17 @@ func (client *Client) DeleteAccessAssignment(request *DeleteAccessAssignmentRequ
 	return _result, _err
 }
 
+/**
+ * This topic provides an example on how to delete the access configuration whose ID is `ac-001j9mcm3k7335bc****`.
+ * ## Prerequisites
+ * The access configuration that you want to delete is de-provisioned from the accounts in your resource directory. For more information, see [DeprovisionAccessConfiguration](~~338352~~).
+ * ## Limits
+ * You can call this operation up to 100 times per second per account. This operation is globally limited to 100 times per second across all accounts. If the number of the calls per second exceeds a limit, throttling is triggered. As a result, your business may be affected. We recommend that you take note of the limits when you call this operation.
+ *
+ * @param request DeleteAccessConfigurationRequest
+ * @param runtime runtime options for this request RuntimeOptions
+ * @return DeleteAccessConfigurationResponse
+ */
 func (client *Client) DeleteAccessConfigurationWithOptions(request *DeleteAccessConfigurationRequest, runtime *util.RuntimeOptions) (_result *DeleteAccessConfigurationResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -8330,6 +9821,16 @@ func (client *Client) DeleteAccessConfigurationWithOptions(request *DeleteAccess
 	return _result, _err
 }
 
+/**
+ * This topic provides an example on how to delete the access configuration whose ID is `ac-001j9mcm3k7335bc****`.
+ * ## Prerequisites
+ * The access configuration that you want to delete is de-provisioned from the accounts in your resource directory. For more information, see [DeprovisionAccessConfiguration](~~338352~~).
+ * ## Limits
+ * You can call this operation up to 100 times per second per account. This operation is globally limited to 100 times per second across all accounts. If the number of the calls per second exceeds a limit, throttling is triggered. As a result, your business may be affected. We recommend that you take note of the limits when you call this operation.
+ *
+ * @param request DeleteAccessConfigurationRequest
+ * @return DeleteAccessConfigurationResponse
+ */
 func (client *Client) DeleteAccessConfiguration(request *DeleteAccessConfigurationRequest) (_result *DeleteAccessConfigurationResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &DeleteAccessConfigurationResponse{}
@@ -8341,6 +9842,23 @@ func (client *Client) DeleteAccessConfiguration(request *DeleteAccessConfigurati
 	return _result, _err
 }
 
+/**
+ * This topic provides an example on how to delete a directory whose ID is `d-00fc2p61****`.
+ * ## Prerequisites
+ * No resources are contained in the directory that you want to delete.
+ * *   Access permissions on the accounts in your resource directory are removed from all users and groups. For more information, see [DeleteAccessAssignment](~~338350~~).
+ * *   Users are deleted. For more information, see [DeleteUser](~~341671~~).
+ * *   Groups are deleted. For more information, see [DeleteGroup](~~341821~~).
+ * *   Access configurations are deleted. For more information, see [DeleteAccessConfiguration](~~336907~~).
+ * *   System for Cross-domain Identity Management (SCIM) credentials are deleted. For more information, see [DeleteSCIMServerCredential](~~341842~~).
+ * *   SSO logon configurations are deleted. For more information, see [ClearExternalSAMLIdentityProvider](~~341573~~).
+ * ## Limits
+ * You can call this operation up to 100 times per second per account. This operation is globally limited to 100 times per second across all accounts. If the number of the calls per second exceeds a limit, throttling is triggered. As a result, your business may be affected. We recommend that you take note of the limits when you call this operation.
+ *
+ * @param request DeleteDirectoryRequest
+ * @param runtime runtime options for this request RuntimeOptions
+ * @return DeleteDirectoryResponse
+ */
 func (client *Client) DeleteDirectoryWithOptions(request *DeleteDirectoryRequest, runtime *util.RuntimeOptions) (_result *DeleteDirectoryResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -8374,6 +9892,22 @@ func (client *Client) DeleteDirectoryWithOptions(request *DeleteDirectoryRequest
 	return _result, _err
 }
 
+/**
+ * This topic provides an example on how to delete a directory whose ID is `d-00fc2p61****`.
+ * ## Prerequisites
+ * No resources are contained in the directory that you want to delete.
+ * *   Access permissions on the accounts in your resource directory are removed from all users and groups. For more information, see [DeleteAccessAssignment](~~338350~~).
+ * *   Users are deleted. For more information, see [DeleteUser](~~341671~~).
+ * *   Groups are deleted. For more information, see [DeleteGroup](~~341821~~).
+ * *   Access configurations are deleted. For more information, see [DeleteAccessConfiguration](~~336907~~).
+ * *   System for Cross-domain Identity Management (SCIM) credentials are deleted. For more information, see [DeleteSCIMServerCredential](~~341842~~).
+ * *   SSO logon configurations are deleted. For more information, see [ClearExternalSAMLIdentityProvider](~~341573~~).
+ * ## Limits
+ * You can call this operation up to 100 times per second per account. This operation is globally limited to 100 times per second across all accounts. If the number of the calls per second exceeds a limit, throttling is triggered. As a result, your business may be affected. We recommend that you take note of the limits when you call this operation.
+ *
+ * @param request DeleteDirectoryRequest
+ * @return DeleteDirectoryResponse
+ */
 func (client *Client) DeleteDirectory(request *DeleteDirectoryRequest) (_result *DeleteDirectoryResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &DeleteDirectoryResponse{}
@@ -8385,6 +9919,19 @@ func (client *Client) DeleteDirectory(request *DeleteDirectoryRequest) (_result 
 	return _result, _err
 }
 
+/**
+ * If System for Cross-domain Identity Management (SCIM) synchronization is enabled, you cannot delete a group that is synchronized by using SCIM.
+ * ## Prerequisites
+ * The group that you want to delete is not associated with the following resources. If the group is associated with the resources, the deletion fails.
+ * *   Users: You must remove users from the group. For more information, see [RemoveUserFromGroup](~~335116~~).
+ * *   Access permissions: You must remove the access permissions on the accounts in your resource directory from the group. For more information, see [DeleteAccessAssignment](~~338350~~).
+ * ## Limits
+ * You can call this operation up to 100 times per second per account. This operation is globally limited to 100 times per second across all accounts. If the number of the calls per second exceeds a limit, throttling is triggered. As a result, your business may be affected. We recommend that you take note of the limits when you call this operation.
+ *
+ * @param request DeleteGroupRequest
+ * @param runtime runtime options for this request RuntimeOptions
+ * @return DeleteGroupResponse
+ */
 func (client *Client) DeleteGroupWithOptions(request *DeleteGroupRequest, runtime *util.RuntimeOptions) (_result *DeleteGroupResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -8422,6 +9969,18 @@ func (client *Client) DeleteGroupWithOptions(request *DeleteGroupRequest, runtim
 	return _result, _err
 }
 
+/**
+ * If System for Cross-domain Identity Management (SCIM) synchronization is enabled, you cannot delete a group that is synchronized by using SCIM.
+ * ## Prerequisites
+ * The group that you want to delete is not associated with the following resources. If the group is associated with the resources, the deletion fails.
+ * *   Users: You must remove users from the group. For more information, see [RemoveUserFromGroup](~~335116~~).
+ * *   Access permissions: You must remove the access permissions on the accounts in your resource directory from the group. For more information, see [DeleteAccessAssignment](~~338350~~).
+ * ## Limits
+ * You can call this operation up to 100 times per second per account. This operation is globally limited to 100 times per second across all accounts. If the number of the calls per second exceeds a limit, throttling is triggered. As a result, your business may be affected. We recommend that you take note of the limits when you call this operation.
+ *
+ * @param request DeleteGroupRequest
+ * @return DeleteGroupResponse
+ */
 func (client *Client) DeleteGroup(request *DeleteGroupRequest) (_result *DeleteGroupResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &DeleteGroupResponse{}
@@ -8433,6 +9992,15 @@ func (client *Client) DeleteGroup(request *DeleteGroupRequest) (_result *DeleteG
 	return _result, _err
 }
 
+/**
+ * This topic provides an example on how to unbind the MFA device `mfa-00ujhet8pycljj7j****` from the user `u-00q8wbq42wiltcrk****`.
+ * ## Limits
+ * You can call this operation up to 100 times per second per account. This operation is globally limited to 100 times per second across all accounts. If the number of the calls per second exceeds a limit, throttling is triggered. As a result, your business may be affected. We recommend that you take note of the limits when you call this operation.
+ *
+ * @param request DeleteMFADeviceForUserRequest
+ * @param runtime runtime options for this request RuntimeOptions
+ * @return DeleteMFADeviceForUserResponse
+ */
 func (client *Client) DeleteMFADeviceForUserWithOptions(request *DeleteMFADeviceForUserRequest, runtime *util.RuntimeOptions) (_result *DeleteMFADeviceForUserResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -8474,6 +10042,14 @@ func (client *Client) DeleteMFADeviceForUserWithOptions(request *DeleteMFADevice
 	return _result, _err
 }
 
+/**
+ * This topic provides an example on how to unbind the MFA device `mfa-00ujhet8pycljj7j****` from the user `u-00q8wbq42wiltcrk****`.
+ * ## Limits
+ * You can call this operation up to 100 times per second per account. This operation is globally limited to 100 times per second across all accounts. If the number of the calls per second exceeds a limit, throttling is triggered. As a result, your business may be affected. We recommend that you take note of the limits when you call this operation.
+ *
+ * @param request DeleteMFADeviceForUserRequest
+ * @return DeleteMFADeviceForUserResponse
+ */
 func (client *Client) DeleteMFADeviceForUser(request *DeleteMFADeviceForUserRequest) (_result *DeleteMFADeviceForUserResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &DeleteMFADeviceForUserResponse{}
@@ -8485,6 +10061,16 @@ func (client *Client) DeleteMFADeviceForUser(request *DeleteMFADeviceForUserRequ
 	return _result, _err
 }
 
+/**
+ * After a SCIM credential is deleted, the synchronization task that uses the SCIM credential fails.
+ * This topic provides an example on how to delete the SCIM credential whose ID is `scimcred-004whl0kvfwcypbi****`.
+ * ## Limits
+ * You can call this operation up to 100 times per second per account. This operation is globally limited to 100 times per second across all accounts. If the number of the calls per second exceeds a limit, throttling is triggered. As a result, your business may be affected. We recommend that you take note of the limits when you call this operation.
+ *
+ * @param request DeleteSCIMServerCredentialRequest
+ * @param runtime runtime options for this request RuntimeOptions
+ * @return DeleteSCIMServerCredentialResponse
+ */
 func (client *Client) DeleteSCIMServerCredentialWithOptions(request *DeleteSCIMServerCredentialRequest, runtime *util.RuntimeOptions) (_result *DeleteSCIMServerCredentialResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -8522,6 +10108,15 @@ func (client *Client) DeleteSCIMServerCredentialWithOptions(request *DeleteSCIMS
 	return _result, _err
 }
 
+/**
+ * After a SCIM credential is deleted, the synchronization task that uses the SCIM credential fails.
+ * This topic provides an example on how to delete the SCIM credential whose ID is `scimcred-004whl0kvfwcypbi****`.
+ * ## Limits
+ * You can call this operation up to 100 times per second per account. This operation is globally limited to 100 times per second across all accounts. If the number of the calls per second exceeds a limit, throttling is triggered. As a result, your business may be affected. We recommend that you take note of the limits when you call this operation.
+ *
+ * @param request DeleteSCIMServerCredentialRequest
+ * @return DeleteSCIMServerCredentialResponse
+ */
 func (client *Client) DeleteSCIMServerCredential(request *DeleteSCIMServerCredentialRequest) (_result *DeleteSCIMServerCredentialResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &DeleteSCIMServerCredentialResponse{}
@@ -8533,6 +10128,20 @@ func (client *Client) DeleteSCIMServerCredential(request *DeleteSCIMServerCreden
 	return _result, _err
 }
 
+/**
+ * If System for Cross-domain Identity Management (SCIM) synchronization is enabled, you cannot delete a user that is synchronized by using SCIM.
+ * ## Prerequisites
+ * The user that you want to delete is not associated with the following resources. If the user is associated with the resources, the deletion fails.
+ * *   Multi-factor authentication (MFA) devices: You must unbind the MFA devices from the user. For more information, see [DeleteMFADeviceForUser](~~341675~~).
+ * *   Access permissions: You must remove the access permissions on the accounts in your resource directory from the user. For more information, see [DeleteAccessAssignment](~~338350~~).
+ * *   Groups: You must remove the user from groups. For more information, see [RemoveUserFromGroup](~~335116~~).
+ * ## Limits
+ * You can call this operation up to 100 times per second per account. This operation is globally limited to 100 times per second across all accounts. If the number of the calls per second exceeds a limit, throttling is triggered. As a result, your business may be affected. We recommend that you take note of the limits when you call this operation.
+ *
+ * @param request DeleteUserRequest
+ * @param runtime runtime options for this request RuntimeOptions
+ * @return DeleteUserResponse
+ */
 func (client *Client) DeleteUserWithOptions(request *DeleteUserRequest, runtime *util.RuntimeOptions) (_result *DeleteUserResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -8570,6 +10179,19 @@ func (client *Client) DeleteUserWithOptions(request *DeleteUserRequest, runtime 
 	return _result, _err
 }
 
+/**
+ * If System for Cross-domain Identity Management (SCIM) synchronization is enabled, you cannot delete a user that is synchronized by using SCIM.
+ * ## Prerequisites
+ * The user that you want to delete is not associated with the following resources. If the user is associated with the resources, the deletion fails.
+ * *   Multi-factor authentication (MFA) devices: You must unbind the MFA devices from the user. For more information, see [DeleteMFADeviceForUser](~~341675~~).
+ * *   Access permissions: You must remove the access permissions on the accounts in your resource directory from the user. For more information, see [DeleteAccessAssignment](~~338350~~).
+ * *   Groups: You must remove the user from groups. For more information, see [RemoveUserFromGroup](~~335116~~).
+ * ## Limits
+ * You can call this operation up to 100 times per second per account. This operation is globally limited to 100 times per second across all accounts. If the number of the calls per second exceeds a limit, throttling is triggered. As a result, your business may be affected. We recommend that you take note of the limits when you call this operation.
+ *
+ * @param request DeleteUserRequest
+ * @return DeleteUserResponse
+ */
 func (client *Client) DeleteUser(request *DeleteUserRequest) (_result *DeleteUserResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &DeleteUserResponse{}
@@ -8581,6 +10203,16 @@ func (client *Client) DeleteUser(request *DeleteUserRequest) (_result *DeleteUse
 	return _result, _err
 }
 
+/**
+ * When you call this operation, an asynchronous task is automatically created. You can call the [GetTask](~~340670~~) operation to query the progress of the task based on the value of the `TaskId` response parameter.
+ * This topic provides an example on how to de-provision the access configuration `ac-00jhtfl8thteu6uj****` from the account `114240524784****` in your resource directory.
+ * ## Limits
+ * You can call this operation up to 20 times per second per account. This operation is globally limited to 100 times per second across all accounts. If the number of the calls per second exceeds a limit, throttling is triggered. As a result, your business may be affected. We recommend that you take note of the limits when you call this operation.
+ *
+ * @param request DeprovisionAccessConfigurationRequest
+ * @param runtime runtime options for this request RuntimeOptions
+ * @return DeprovisionAccessConfigurationResponse
+ */
 func (client *Client) DeprovisionAccessConfigurationWithOptions(request *DeprovisionAccessConfigurationRequest, runtime *util.RuntimeOptions) (_result *DeprovisionAccessConfigurationResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -8626,6 +10258,15 @@ func (client *Client) DeprovisionAccessConfigurationWithOptions(request *Deprovi
 	return _result, _err
 }
 
+/**
+ * When you call this operation, an asynchronous task is automatically created. You can call the [GetTask](~~340670~~) operation to query the progress of the task based on the value of the `TaskId` response parameter.
+ * This topic provides an example on how to de-provision the access configuration `ac-00jhtfl8thteu6uj****` from the account `114240524784****` in your resource directory.
+ * ## Limits
+ * You can call this operation up to 20 times per second per account. This operation is globally limited to 100 times per second across all accounts. If the number of the calls per second exceeds a limit, throttling is triggered. As a result, your business may be affected. We recommend that you take note of the limits when you call this operation.
+ *
+ * @param request DeprovisionAccessConfigurationRequest
+ * @return DeprovisionAccessConfigurationResponse
+ */
 func (client *Client) DeprovisionAccessConfiguration(request *DeprovisionAccessConfigurationRequest) (_result *DeprovisionAccessConfigurationResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &DeprovisionAccessConfigurationResponse{}
@@ -8637,6 +10278,15 @@ func (client *Client) DeprovisionAccessConfiguration(request *DeprovisionAccessC
 	return _result, _err
 }
 
+/**
+ * If your CloudSSO has no directory, you can disable CloudSSO based on your business requirements. After you disable CloudSSO, you can enable it at any time.
+ * ## Limits
+ * You can call this operation up to 100 times per second per account. This operation is globally limited to 100 times per second across all accounts. If the number of the calls per second exceeds a limit, throttling is triggered. As a result, your business may be affected. We recommend that you take note of the limits when you call this operation.
+ *
+ * @param request DisableServiceRequest
+ * @param runtime runtime options for this request RuntimeOptions
+ * @return DisableServiceResponse
+ */
 func (client *Client) DisableServiceWithOptions(runtime *util.RuntimeOptions) (_result *DisableServiceResponse, _err error) {
 	req := &openapi.OpenApiRequest{}
 	params := &openapi.Params{
@@ -8659,6 +10309,13 @@ func (client *Client) DisableServiceWithOptions(runtime *util.RuntimeOptions) (_
 	return _result, _err
 }
 
+/**
+ * If your CloudSSO has no directory, you can disable CloudSSO based on your business requirements. After you disable CloudSSO, you can enable it at any time.
+ * ## Limits
+ * You can call this operation up to 100 times per second per account. This operation is globally limited to 100 times per second across all accounts. If the number of the calls per second exceeds a limit, throttling is triggered. As a result, your business may be affected. We recommend that you take note of the limits when you call this operation.
+ *
+ * @return DisableServiceResponse
+ */
 func (client *Client) DisableService() (_result *DisableServiceResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &DisableServiceResponse{}
@@ -8670,6 +10327,16 @@ func (client *Client) DisableService() (_result *DisableServiceResponse, _err er
 	return _result, _err
 }
 
+/**
+ * You can call this operation only if your account belongs to the management account that is used to enable a resource directory and has permissions to enable CloudSSO. For more information, see [Enable CloudSSO](~~262819~~).
+ * If you call this operation, you agree to the [Alibaba Cloud International Website Product Terms of Service](https://www.alibabacloud.com/help/doc-detail/42416.htm).
+ * ## Limits
+ * You can call this operation up to 100 times per second per account. This operation is globally limited to 100 times per second across all accounts. If the number of the calls per second exceeds a limit, throttling is triggered. As a result, your business may be affected. We recommend that you take note of the limits when you call this operation.
+ *
+ * @param request EnableServiceRequest
+ * @param runtime runtime options for this request RuntimeOptions
+ * @return EnableServiceResponse
+ */
 func (client *Client) EnableServiceWithOptions(runtime *util.RuntimeOptions) (_result *EnableServiceResponse, _err error) {
 	req := &openapi.OpenApiRequest{}
 	params := &openapi.Params{
@@ -8692,6 +10359,14 @@ func (client *Client) EnableServiceWithOptions(runtime *util.RuntimeOptions) (_r
 	return _result, _err
 }
 
+/**
+ * You can call this operation only if your account belongs to the management account that is used to enable a resource directory and has permissions to enable CloudSSO. For more information, see [Enable CloudSSO](~~262819~~).
+ * If you call this operation, you agree to the [Alibaba Cloud International Website Product Terms of Service](https://www.alibabacloud.com/help/doc-detail/42416.htm).
+ * ## Limits
+ * You can call this operation up to 100 times per second per account. This operation is globally limited to 100 times per second across all accounts. If the number of the calls per second exceeds a limit, throttling is triggered. As a result, your business may be affected. We recommend that you take note of the limits when you call this operation.
+ *
+ * @return EnableServiceResponse
+ */
 func (client *Client) EnableService() (_result *EnableServiceResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &EnableServiceResponse{}
@@ -8703,6 +10378,14 @@ func (client *Client) EnableService() (_result *EnableServiceResponse, _err erro
 	return _result, _err
 }
 
+/**
+ * ## Usage notes
+ * This topic provides an example on how to query the information about the access configuration whose ID is `ac-00ccule7tadaijxc****`.
+ *
+ * @param request GetAccessConfigurationRequest
+ * @param runtime runtime options for this request RuntimeOptions
+ * @return GetAccessConfigurationResponse
+ */
 func (client *Client) GetAccessConfigurationWithOptions(request *GetAccessConfigurationRequest, runtime *util.RuntimeOptions) (_result *GetAccessConfigurationResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -8740,6 +10423,13 @@ func (client *Client) GetAccessConfigurationWithOptions(request *GetAccessConfig
 	return _result, _err
 }
 
+/**
+ * ## Usage notes
+ * This topic provides an example on how to query the information about the access configuration whose ID is `ac-00ccule7tadaijxc****`.
+ *
+ * @param request GetAccessConfigurationRequest
+ * @return GetAccessConfigurationResponse
+ */
 func (client *Client) GetAccessConfiguration(request *GetAccessConfigurationRequest) (_result *GetAccessConfigurationResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &GetAccessConfigurationResponse{}
@@ -8751,6 +10441,15 @@ func (client *Client) GetAccessConfiguration(request *GetAccessConfigurationRequ
 	return _result, _err
 }
 
+/**
+ * This topic provides an example on how to query information about the directory whose ID is `d-00fc2p61****`.
+ * ## Limits
+ * You can call this operation up to 100 times per second per account. This operation is globally limited to 100 times per second across all accounts. If the number of the calls per second exceeds a limit, throttling is triggered. As a result, your business may be affected. We recommend that you take note of the limits when you call this operation.
+ *
+ * @param request GetDirectoryRequest
+ * @param runtime runtime options for this request RuntimeOptions
+ * @return GetDirectoryResponse
+ */
 func (client *Client) GetDirectoryWithOptions(request *GetDirectoryRequest, runtime *util.RuntimeOptions) (_result *GetDirectoryResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -8784,6 +10483,14 @@ func (client *Client) GetDirectoryWithOptions(request *GetDirectoryRequest, runt
 	return _result, _err
 }
 
+/**
+ * This topic provides an example on how to query information about the directory whose ID is `d-00fc2p61****`.
+ * ## Limits
+ * You can call this operation up to 100 times per second per account. This operation is globally limited to 100 times per second across all accounts. If the number of the calls per second exceeds a limit, throttling is triggered. As a result, your business may be affected. We recommend that you take note of the limits when you call this operation.
+ *
+ * @param request GetDirectoryRequest
+ * @return GetDirectoryResponse
+ */
 func (client *Client) GetDirectory(request *GetDirectoryRequest) (_result *GetDirectoryResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &GetDirectoryResponse{}
@@ -8795,6 +10502,16 @@ func (client *Client) GetDirectory(request *GetDirectoryRequest) (_result *GetDi
 	return _result, _err
 }
 
+/**
+ * During SAML 2.0-based single sign-on (SSO) logon, CloudSSO is an SP, and the identity management system of an enterprise is an identity provider (IdP).
+ * This topic provides an example on how to query the information about the SP within the directory `d-00fc2p61****`.
+ * ## Limits
+ * You can call this operation up to 100 times per second per account. This operation is globally limited to 100 times per second across all accounts. If the number of the calls per second exceeds a limit, throttling is triggered. As a result, your business may be affected. We recommend that you take note of the limits when you call this operation.
+ *
+ * @param request GetDirectorySAMLServiceProviderInfoRequest
+ * @param runtime runtime options for this request RuntimeOptions
+ * @return GetDirectorySAMLServiceProviderInfoResponse
+ */
 func (client *Client) GetDirectorySAMLServiceProviderInfoWithOptions(request *GetDirectorySAMLServiceProviderInfoRequest, runtime *util.RuntimeOptions) (_result *GetDirectorySAMLServiceProviderInfoResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -8828,6 +10545,15 @@ func (client *Client) GetDirectorySAMLServiceProviderInfoWithOptions(request *Ge
 	return _result, _err
 }
 
+/**
+ * During SAML 2.0-based single sign-on (SSO) logon, CloudSSO is an SP, and the identity management system of an enterprise is an identity provider (IdP).
+ * This topic provides an example on how to query the information about the SP within the directory `d-00fc2p61****`.
+ * ## Limits
+ * You can call this operation up to 100 times per second per account. This operation is globally limited to 100 times per second across all accounts. If the number of the calls per second exceeds a limit, throttling is triggered. As a result, your business may be affected. We recommend that you take note of the limits when you call this operation.
+ *
+ * @param request GetDirectorySAMLServiceProviderInfoRequest
+ * @return GetDirectorySAMLServiceProviderInfoResponse
+ */
 func (client *Client) GetDirectorySAMLServiceProviderInfo(request *GetDirectorySAMLServiceProviderInfoRequest) (_result *GetDirectorySAMLServiceProviderInfoResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &GetDirectorySAMLServiceProviderInfoResponse{}
@@ -8839,6 +10565,15 @@ func (client *Client) GetDirectorySAMLServiceProviderInfo(request *GetDirectoryS
 	return _result, _err
 }
 
+/**
+ * This topic provides an example on how to query the statistics of a directory whose ID is `d-00fc2p61****`. The statistics include the number of users, quota for users, number of groups, quota for groups, number of access configurations, quota for access configurations, number of access permissions that are assigned, number of System for Cross-domain Identity Management (SCIM) credentials, number of asynchronous tasks, status of single sign-on (SSO) logon, and status of SCIM synchronization.
+ * ## Limits
+ * You can call this operation up to 100 times per second per account. This operation is globally limited to 100 times per second across all accounts. If the number of the calls per second exceeds a limit, throttling is triggered. As a result, your business may be affected. We recommend that you take note of the limits when you call this operation.
+ *
+ * @param request GetDirectoryStatisticsRequest
+ * @param runtime runtime options for this request RuntimeOptions
+ * @return GetDirectoryStatisticsResponse
+ */
 func (client *Client) GetDirectoryStatisticsWithOptions(request *GetDirectoryStatisticsRequest, runtime *util.RuntimeOptions) (_result *GetDirectoryStatisticsResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -8872,6 +10607,14 @@ func (client *Client) GetDirectoryStatisticsWithOptions(request *GetDirectorySta
 	return _result, _err
 }
 
+/**
+ * This topic provides an example on how to query the statistics of a directory whose ID is `d-00fc2p61****`. The statistics include the number of users, quota for users, number of groups, quota for groups, number of access configurations, quota for access configurations, number of access permissions that are assigned, number of System for Cross-domain Identity Management (SCIM) credentials, number of asynchronous tasks, status of single sign-on (SSO) logon, and status of SCIM synchronization.
+ * ## Limits
+ * You can call this operation up to 100 times per second per account. This operation is globally limited to 100 times per second across all accounts. If the number of the calls per second exceeds a limit, throttling is triggered. As a result, your business may be affected. We recommend that you take note of the limits when you call this operation.
+ *
+ * @param request GetDirectoryStatisticsRequest
+ * @return GetDirectoryStatisticsResponse
+ */
 func (client *Client) GetDirectoryStatistics(request *GetDirectoryStatisticsRequest) (_result *GetDirectoryStatisticsResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &GetDirectoryStatisticsResponse{}
@@ -8883,6 +10626,15 @@ func (client *Client) GetDirectoryStatistics(request *GetDirectoryStatisticsRequ
 	return _result, _err
 }
 
+/**
+ * This topic provides an example on how to query the configurations of the SAML IdP within the directory `d-00fc2p61****`.
+ * ## Limits
+ * You can call this operation up to 100 times per second per account. This operation is globally limited to 100 times per second across all accounts. If the number of the calls per second exceeds a limit, throttling is triggered. As a result, your business may be affected. We recommend that you take note of the limits when you call this operation.
+ *
+ * @param request GetExternalSAMLIdentityProviderRequest
+ * @param runtime runtime options for this request RuntimeOptions
+ * @return GetExternalSAMLIdentityProviderResponse
+ */
 func (client *Client) GetExternalSAMLIdentityProviderWithOptions(request *GetExternalSAMLIdentityProviderRequest, runtime *util.RuntimeOptions) (_result *GetExternalSAMLIdentityProviderResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -8916,6 +10668,14 @@ func (client *Client) GetExternalSAMLIdentityProviderWithOptions(request *GetExt
 	return _result, _err
 }
 
+/**
+ * This topic provides an example on how to query the configurations of the SAML IdP within the directory `d-00fc2p61****`.
+ * ## Limits
+ * You can call this operation up to 100 times per second per account. This operation is globally limited to 100 times per second across all accounts. If the number of the calls per second exceeds a limit, throttling is triggered. As a result, your business may be affected. We recommend that you take note of the limits when you call this operation.
+ *
+ * @param request GetExternalSAMLIdentityProviderRequest
+ * @return GetExternalSAMLIdentityProviderResponse
+ */
 func (client *Client) GetExternalSAMLIdentityProvider(request *GetExternalSAMLIdentityProviderRequest) (_result *GetExternalSAMLIdentityProviderResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &GetExternalSAMLIdentityProviderResponse{}
@@ -8927,6 +10687,15 @@ func (client *Client) GetExternalSAMLIdentityProvider(request *GetExternalSAMLId
 	return _result, _err
 }
 
+/**
+ * This topic provides an example on how to query the information about the group `g-00jqzghi2n3o5hkh****` in the directory `d-00fc2p61****`.
+ * ## Limits
+ * You can call this operation up to 100 times per second per account. This operation is globally limited to 100 times per second across all accounts. If the number of the calls per second exceeds a limit, throttling is triggered. As a result, your business may be affected. We recommend that you take note of the limits when you call this operation.
+ *
+ * @param request GetGroupRequest
+ * @param runtime runtime options for this request RuntimeOptions
+ * @return GetGroupResponse
+ */
 func (client *Client) GetGroupWithOptions(request *GetGroupRequest, runtime *util.RuntimeOptions) (_result *GetGroupResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -8964,6 +10733,14 @@ func (client *Client) GetGroupWithOptions(request *GetGroupRequest, runtime *uti
 	return _result, _err
 }
 
+/**
+ * This topic provides an example on how to query the information about the group `g-00jqzghi2n3o5hkh****` in the directory `d-00fc2p61****`.
+ * ## Limits
+ * You can call this operation up to 100 times per second per account. This operation is globally limited to 100 times per second across all accounts. If the number of the calls per second exceeds a limit, throttling is triggered. As a result, your business may be affected. We recommend that you take note of the limits when you call this operation.
+ *
+ * @param request GetGroupRequest
+ * @return GetGroupResponse
+ */
 func (client *Client) GetGroup(request *GetGroupRequest) (_result *GetGroupResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &GetGroupResponse{}
@@ -8975,6 +10752,73 @@ func (client *Client) GetGroup(request *GetGroupRequest) (_result *GetGroupRespo
 	return _result, _err
 }
 
+/**
+ * If you enable username-password logon for CloudSSO users, you can also configure MFA for the users.
+ * This topic provides an example on how to query the MFA setting of all CloudSSO users that belong to the directory named `00q8wbq42wiltcrk****`.
+ *
+ * @param request GetMFAAuthenticationSettingInfoRequest
+ * @param runtime runtime options for this request RuntimeOptions
+ * @return GetMFAAuthenticationSettingInfoResponse
+ */
+func (client *Client) GetMFAAuthenticationSettingInfoWithOptions(request *GetMFAAuthenticationSettingInfoRequest, runtime *util.RuntimeOptions) (_result *GetMFAAuthenticationSettingInfoResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.DirectoryId)) {
+		query["DirectoryId"] = request.DirectoryId
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("GetMFAAuthenticationSettingInfo"),
+		Version:     tea.String("2021-05-15"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &GetMFAAuthenticationSettingInfoResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+/**
+ * If you enable username-password logon for CloudSSO users, you can also configure MFA for the users.
+ * This topic provides an example on how to query the MFA setting of all CloudSSO users that belong to the directory named `00q8wbq42wiltcrk****`.
+ *
+ * @param request GetMFAAuthenticationSettingInfoRequest
+ * @return GetMFAAuthenticationSettingInfoResponse
+ */
+func (client *Client) GetMFAAuthenticationSettingInfo(request *GetMFAAuthenticationSettingInfoRequest) (_result *GetMFAAuthenticationSettingInfoResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &GetMFAAuthenticationSettingInfoResponse{}
+	_body, _err := client.GetMFAAuthenticationSettingInfoWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+/**
+ * > This operation is no longer maintained and updated. You can call the [GetMFAAuthenticationSettingInfo](~~611286~~) operation to query more detailed information.
+ * This topic provides an example on how to query the MFA setting of the users that belong to the directory named `d-00fc2p61****`. The returned result shows that MFA is enabled for all the users.
+ *
+ * @param request GetMFAAuthenticationSettingsRequest
+ * @param runtime runtime options for this request RuntimeOptions
+ * @return GetMFAAuthenticationSettingsResponse
+ */
 func (client *Client) GetMFAAuthenticationSettingsWithOptions(request *GetMFAAuthenticationSettingsRequest, runtime *util.RuntimeOptions) (_result *GetMFAAuthenticationSettingsResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -9008,6 +10852,13 @@ func (client *Client) GetMFAAuthenticationSettingsWithOptions(request *GetMFAAut
 	return _result, _err
 }
 
+/**
+ * > This operation is no longer maintained and updated. You can call the [GetMFAAuthenticationSettingInfo](~~611286~~) operation to query more detailed information.
+ * This topic provides an example on how to query the MFA setting of the users that belong to the directory named `d-00fc2p61****`. The returned result shows that MFA is enabled for all the users.
+ *
+ * @param request GetMFAAuthenticationSettingsRequest
+ * @return GetMFAAuthenticationSettingsResponse
+ */
 func (client *Client) GetMFAAuthenticationSettings(request *GetMFAAuthenticationSettingsRequest) (_result *GetMFAAuthenticationSettingsResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &GetMFAAuthenticationSettingsResponse{}
@@ -9019,6 +10870,15 @@ func (client *Client) GetMFAAuthenticationSettings(request *GetMFAAuthentication
 	return _result, _err
 }
 
+/**
+ * This topic provides an example on how to check whether MFA is enabled for users in the directory whose ID is `00fc2p61****`. The returned result shows that MFA is in the Enabled state.
+ * ## Limits
+ * You can call this operation up to 100 times per second per account. This operation is globally limited to 100 times per second across all accounts. If the number of the calls per second exceeds a limit, throttling is triggered. As a result, your business may be affected. We recommend that you take note of the limits when you call this operation.
+ *
+ * @param request GetMFAAuthenticationStatusRequest
+ * @param runtime runtime options for this request RuntimeOptions
+ * @return GetMFAAuthenticationStatusResponse
+ */
 func (client *Client) GetMFAAuthenticationStatusWithOptions(request *GetMFAAuthenticationStatusRequest, runtime *util.RuntimeOptions) (_result *GetMFAAuthenticationStatusResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -9052,6 +10912,14 @@ func (client *Client) GetMFAAuthenticationStatusWithOptions(request *GetMFAAuthe
 	return _result, _err
 }
 
+/**
+ * This topic provides an example on how to check whether MFA is enabled for users in the directory whose ID is `00fc2p61****`. The returned result shows that MFA is in the Enabled state.
+ * ## Limits
+ * You can call this operation up to 100 times per second per account. This operation is globally limited to 100 times per second across all accounts. If the number of the calls per second exceeds a limit, throttling is triggered. As a result, your business may be affected. We recommend that you take note of the limits when you call this operation.
+ *
+ * @param request GetMFAAuthenticationStatusRequest
+ * @return GetMFAAuthenticationStatusResponse
+ */
 func (client *Client) GetMFAAuthenticationStatus(request *GetMFAAuthenticationStatusRequest) (_result *GetMFAAuthenticationStatusResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &GetMFAAuthenticationStatusResponse{}
@@ -9063,6 +10931,15 @@ func (client *Client) GetMFAAuthenticationStatus(request *GetMFAAuthenticationSt
 	return _result, _err
 }
 
+/**
+ * This topic provides an example on how to query the status of SCIM synchronization within the directory `d-00fc2p61****`. The returned result shows that SCIM synchronization is in the Enabled state.
+ * ## Limits
+ * You can call this operation up to 100 times per second per account. This operation is globally limited to 100 times per second across all accounts. If the number of the calls per second exceeds a limit, throttling is triggered. As a result, your business may be affected. We recommend that you take note of the limits when you call this operation.
+ *
+ * @param request GetSCIMSynchronizationStatusRequest
+ * @param runtime runtime options for this request RuntimeOptions
+ * @return GetSCIMSynchronizationStatusResponse
+ */
 func (client *Client) GetSCIMSynchronizationStatusWithOptions(request *GetSCIMSynchronizationStatusRequest, runtime *util.RuntimeOptions) (_result *GetSCIMSynchronizationStatusResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -9096,6 +10973,14 @@ func (client *Client) GetSCIMSynchronizationStatusWithOptions(request *GetSCIMSy
 	return _result, _err
 }
 
+/**
+ * This topic provides an example on how to query the status of SCIM synchronization within the directory `d-00fc2p61****`. The returned result shows that SCIM synchronization is in the Enabled state.
+ * ## Limits
+ * You can call this operation up to 100 times per second per account. This operation is globally limited to 100 times per second across all accounts. If the number of the calls per second exceeds a limit, throttling is triggered. As a result, your business may be affected. We recommend that you take note of the limits when you call this operation.
+ *
+ * @param request GetSCIMSynchronizationStatusRequest
+ * @return GetSCIMSynchronizationStatusResponse
+ */
 func (client *Client) GetSCIMSynchronizationStatus(request *GetSCIMSynchronizationStatusRequest) (_result *GetSCIMSynchronizationStatusResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &GetSCIMSynchronizationStatusResponse{}
@@ -9107,6 +10992,14 @@ func (client *Client) GetSCIMSynchronizationStatus(request *GetSCIMSynchronizati
 	return _result, _err
 }
 
+/**
+ * ## Limits
+ * You can call this operation up to 100 times per second per account. This operation is globally limited to 100 times per second across all accounts. If the number of the calls per second exceeds a limit, throttling is triggered. As a result, your business may be affected. We recommend that you take note of the limits when you call this operation.
+ *
+ * @param request GetServiceStatusRequest
+ * @param runtime runtime options for this request RuntimeOptions
+ * @return GetServiceStatusResponse
+ */
 func (client *Client) GetServiceStatusWithOptions(runtime *util.RuntimeOptions) (_result *GetServiceStatusResponse, _err error) {
 	req := &openapi.OpenApiRequest{}
 	params := &openapi.Params{
@@ -9129,6 +11022,12 @@ func (client *Client) GetServiceStatusWithOptions(runtime *util.RuntimeOptions) 
 	return _result, _err
 }
 
+/**
+ * ## Limits
+ * You can call this operation up to 100 times per second per account. This operation is globally limited to 100 times per second across all accounts. If the number of the calls per second exceeds a limit, throttling is triggered. As a result, your business may be affected. We recommend that you take note of the limits when you call this operation.
+ *
+ * @return GetServiceStatusResponse
+ */
 func (client *Client) GetServiceStatus() (_result *GetServiceStatusResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &GetServiceStatusResponse{}
@@ -9140,6 +11039,15 @@ func (client *Client) GetServiceStatus() (_result *GetServiceStatusResponse, _er
 	return _result, _err
 }
 
+/**
+ * This topic provides an example on how to query the information about the task whose ID is `t-shfqw1u1edszvxw5****`.
+ * ## Limits
+ * You can call this operation up to 20 times per second per account. This operation is globally limited to 100 times per second across all accounts. If the number of the calls per second exceeds a limit, throttling is triggered. As a result, your business may be affected. We recommend that you take note of the limits when you call this operation.
+ *
+ * @param request GetTaskRequest
+ * @param runtime runtime options for this request RuntimeOptions
+ * @return GetTaskResponse
+ */
 func (client *Client) GetTaskWithOptions(request *GetTaskRequest, runtime *util.RuntimeOptions) (_result *GetTaskResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -9177,6 +11085,14 @@ func (client *Client) GetTaskWithOptions(request *GetTaskRequest, runtime *util.
 	return _result, _err
 }
 
+/**
+ * This topic provides an example on how to query the information about the task whose ID is `t-shfqw1u1edszvxw5****`.
+ * ## Limits
+ * You can call this operation up to 20 times per second per account. This operation is globally limited to 100 times per second across all accounts. If the number of the calls per second exceeds a limit, throttling is triggered. As a result, your business may be affected. We recommend that you take note of the limits when you call this operation.
+ *
+ * @param request GetTaskRequest
+ * @return GetTaskResponse
+ */
 func (client *Client) GetTask(request *GetTaskRequest) (_result *GetTaskResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &GetTaskResponse{}
@@ -9188,6 +11104,16 @@ func (client *Client) GetTask(request *GetTaskRequest) (_result *GetTaskResponse
 	return _result, _err
 }
 
+/**
+ * You can call the GetTaskStatus operation to query the status of an asynchronous task. If you want to query more information about an asynchronous task, you can call the [GetTask](~~340670~~) operation.
+ * This topic provides an example on how to query the information about the task whose ID is `t-shfqw1u1edszvxw5****`.
+ * ## Limits
+ * You can call this operation up to 100 times per second per account. This operation is globally limited to 100 times per second across all accounts. If the number of the calls per second exceeds a limit, throttling is triggered. As a result, your business may be affected. We recommend that you take note of the limits when you call this operation.
+ *
+ * @param request GetTaskStatusRequest
+ * @param runtime runtime options for this request RuntimeOptions
+ * @return GetTaskStatusResponse
+ */
 func (client *Client) GetTaskStatusWithOptions(request *GetTaskStatusRequest, runtime *util.RuntimeOptions) (_result *GetTaskStatusResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -9225,6 +11151,15 @@ func (client *Client) GetTaskStatusWithOptions(request *GetTaskStatusRequest, ru
 	return _result, _err
 }
 
+/**
+ * You can call the GetTaskStatus operation to query the status of an asynchronous task. If you want to query more information about an asynchronous task, you can call the [GetTask](~~340670~~) operation.
+ * This topic provides an example on how to query the information about the task whose ID is `t-shfqw1u1edszvxw5****`.
+ * ## Limits
+ * You can call this operation up to 100 times per second per account. This operation is globally limited to 100 times per second across all accounts. If the number of the calls per second exceeds a limit, throttling is triggered. As a result, your business may be affected. We recommend that you take note of the limits when you call this operation.
+ *
+ * @param request GetTaskStatusRequest
+ * @return GetTaskStatusResponse
+ */
 func (client *Client) GetTaskStatus(request *GetTaskStatusRequest) (_result *GetTaskStatusResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &GetTaskStatusResponse{}
@@ -9236,6 +11171,15 @@ func (client *Client) GetTaskStatus(request *GetTaskStatusRequest) (_result *Get
 	return _result, _err
 }
 
+/**
+ * This topic provides an example on how to query information about the user whose ID is `u-00q8wbq42wiltcrk****` in the `d-00fc2p61****` directory.
+ * ## Limits
+ * You can call this operation up to 100 times per second per account. This operation is globally limited to 100 times per second across all accounts. If the number of the calls per second exceeds a limit, throttling is triggered. As a result, your business may be affected. We recommend that you take note of the limits when you call this operation.
+ *
+ * @param request GetUserRequest
+ * @param runtime runtime options for this request RuntimeOptions
+ * @return GetUserResponse
+ */
 func (client *Client) GetUserWithOptions(request *GetUserRequest, runtime *util.RuntimeOptions) (_result *GetUserResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -9273,6 +11217,14 @@ func (client *Client) GetUserWithOptions(request *GetUserRequest, runtime *util.
 	return _result, _err
 }
 
+/**
+ * This topic provides an example on how to query information about the user whose ID is `u-00q8wbq42wiltcrk****` in the `d-00fc2p61****` directory.
+ * ## Limits
+ * You can call this operation up to 100 times per second per account. This operation is globally limited to 100 times per second across all accounts. If the number of the calls per second exceeds a limit, throttling is triggered. As a result, your business may be affected. We recommend that you take note of the limits when you call this operation.
+ *
+ * @param request GetUserRequest
+ * @return GetUserResponse
+ */
 func (client *Client) GetUser(request *GetUserRequest) (_result *GetUserResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &GetUserResponse{}
@@ -9284,6 +11236,13 @@ func (client *Client) GetUser(request *GetUserRequest) (_result *GetUserResponse
 	return _result, _err
 }
 
+/**
+ * This topic provides an example on how to query the MFA setting of the user named `u-00q8wbq42wiltcrk****`. The returned result shows that MFA is enabled for the user.
+ *
+ * @param request GetUserMFAAuthenticationSettingsRequest
+ * @param runtime runtime options for this request RuntimeOptions
+ * @return GetUserMFAAuthenticationSettingsResponse
+ */
 func (client *Client) GetUserMFAAuthenticationSettingsWithOptions(request *GetUserMFAAuthenticationSettingsRequest, runtime *util.RuntimeOptions) (_result *GetUserMFAAuthenticationSettingsResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -9321,6 +11280,12 @@ func (client *Client) GetUserMFAAuthenticationSettingsWithOptions(request *GetUs
 	return _result, _err
 }
 
+/**
+ * This topic provides an example on how to query the MFA setting of the user named `u-00q8wbq42wiltcrk****`. The returned result shows that MFA is enabled for the user.
+ *
+ * @param request GetUserMFAAuthenticationSettingsRequest
+ * @return GetUserMFAAuthenticationSettingsResponse
+ */
 func (client *Client) GetUserMFAAuthenticationSettings(request *GetUserMFAAuthenticationSettingsRequest) (_result *GetUserMFAAuthenticationSettingsResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &GetUserMFAAuthenticationSettingsResponse{}
@@ -9332,6 +11297,15 @@ func (client *Client) GetUserMFAAuthenticationSettings(request *GetUserMFAAuthen
 	return _result, _err
 }
 
+/**
+ * This topic provides an example on how to query the assigned access permissions on the account `114240524784****` in your resource directory. The returned result shows that access permissions on the account in your resource directory is assigned to one user.
+ * ## Limits
+ * You can call this operation up to 20 times per second per account. This operation is globally limited to 100 times per second across all accounts. If the number of the calls per second exceeds a limit, throttling is triggered. As a result, your business may be affected. We recommend that you take note of the limits when you call this operation.
+ *
+ * @param request ListAccessAssignmentsRequest
+ * @param runtime runtime options for this request RuntimeOptions
+ * @return ListAccessAssignmentsResponse
+ */
 func (client *Client) ListAccessAssignmentsWithOptions(request *ListAccessAssignmentsRequest, runtime *util.RuntimeOptions) (_result *ListAccessAssignmentsResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -9393,6 +11367,14 @@ func (client *Client) ListAccessAssignmentsWithOptions(request *ListAccessAssign
 	return _result, _err
 }
 
+/**
+ * This topic provides an example on how to query the assigned access permissions on the account `114240524784****` in your resource directory. The returned result shows that access permissions on the account in your resource directory is assigned to one user.
+ * ## Limits
+ * You can call this operation up to 20 times per second per account. This operation is globally limited to 100 times per second across all accounts. If the number of the calls per second exceeds a limit, throttling is triggered. As a result, your business may be affected. We recommend that you take note of the limits when you call this operation.
+ *
+ * @param request ListAccessAssignmentsRequest
+ * @return ListAccessAssignmentsResponse
+ */
 func (client *Client) ListAccessAssignments(request *ListAccessAssignmentsRequest) (_result *ListAccessAssignmentsResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &ListAccessAssignmentsResponse{}
@@ -9404,6 +11386,14 @@ func (client *Client) ListAccessAssignments(request *ListAccessAssignmentsReques
 	return _result, _err
 }
 
+/**
+ * ## Usage notes
+ * This topic provides an example on how to query the accounts for which the access permission `ac-00ccule7tadaijxc****` is provisioned. The returned result shows that the access configuration is provisioned for two accounts in your resource directory.
+ *
+ * @param request ListAccessConfigurationProvisioningsRequest
+ * @param runtime runtime options for this request RuntimeOptions
+ * @return ListAccessConfigurationProvisioningsResponse
+ */
 func (client *Client) ListAccessConfigurationProvisioningsWithOptions(request *ListAccessConfigurationProvisioningsRequest, runtime *util.RuntimeOptions) (_result *ListAccessConfigurationProvisioningsResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -9461,6 +11451,13 @@ func (client *Client) ListAccessConfigurationProvisioningsWithOptions(request *L
 	return _result, _err
 }
 
+/**
+ * ## Usage notes
+ * This topic provides an example on how to query the accounts for which the access permission `ac-00ccule7tadaijxc****` is provisioned. The returned result shows that the access configuration is provisioned for two accounts in your resource directory.
+ *
+ * @param request ListAccessConfigurationProvisioningsRequest
+ * @return ListAccessConfigurationProvisioningsResponse
+ */
 func (client *Client) ListAccessConfigurationProvisionings(request *ListAccessConfigurationProvisioningsRequest) (_result *ListAccessConfigurationProvisioningsResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &ListAccessConfigurationProvisioningsResponse{}
@@ -9472,6 +11469,14 @@ func (client *Client) ListAccessConfigurationProvisionings(request *ListAccessCo
 	return _result, _err
 }
 
+/**
+ * ## Usage notes
+ * This topic provides an example on how to query the access configurations within the directory `d-00fc2p61****`. The returned result shows that the directory contains the `VPC-Admin` and `ECS-Admin` access configurations.
+ *
+ * @param request ListAccessConfigurationsRequest
+ * @param runtime runtime options for this request RuntimeOptions
+ * @return ListAccessConfigurationsResponse
+ */
 func (client *Client) ListAccessConfigurationsWithOptions(request *ListAccessConfigurationsRequest, runtime *util.RuntimeOptions) (_result *ListAccessConfigurationsResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -9521,6 +11526,13 @@ func (client *Client) ListAccessConfigurationsWithOptions(request *ListAccessCon
 	return _result, _err
 }
 
+/**
+ * ## Usage notes
+ * This topic provides an example on how to query the access configurations within the directory `d-00fc2p61****`. The returned result shows that the directory contains the `VPC-Admin` and `ECS-Admin` access configurations.
+ *
+ * @param request ListAccessConfigurationsRequest
+ * @return ListAccessConfigurationsResponse
+ */
 func (client *Client) ListAccessConfigurations(request *ListAccessConfigurationsRequest) (_result *ListAccessConfigurationsResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &ListAccessConfigurationsResponse{}
@@ -9532,6 +11544,15 @@ func (client *Client) ListAccessConfigurations(request *ListAccessConfigurations
 	return _result, _err
 }
 
+/**
+ * This topic provides an example on how to query the directories within your Alibaba Cloud account. The returned result shows that only one directory with the ID `d-00fc2p61****` is created within your Alibaba Cloud account.
+ * ## Limits
+ * You can call this operation up to 100 times per second per account. This operation is globally limited to 100 times per second across all accounts. If the number of the calls per second exceeds a limit, throttling is triggered. As a result, your business may be affected. We recommend that you take note of the limits when you call this operation.
+ *
+ * @param request ListDirectoriesRequest
+ * @param runtime runtime options for this request RuntimeOptions
+ * @return ListDirectoriesResponse
+ */
 func (client *Client) ListDirectoriesWithOptions(runtime *util.RuntimeOptions) (_result *ListDirectoriesResponse, _err error) {
 	req := &openapi.OpenApiRequest{}
 	params := &openapi.Params{
@@ -9554,6 +11575,13 @@ func (client *Client) ListDirectoriesWithOptions(runtime *util.RuntimeOptions) (
 	return _result, _err
 }
 
+/**
+ * This topic provides an example on how to query the directories within your Alibaba Cloud account. The returned result shows that only one directory with the ID `d-00fc2p61****` is created within your Alibaba Cloud account.
+ * ## Limits
+ * You can call this operation up to 100 times per second per account. This operation is globally limited to 100 times per second across all accounts. If the number of the calls per second exceeds a limit, throttling is triggered. As a result, your business may be affected. We recommend that you take note of the limits when you call this operation.
+ *
+ * @return ListDirectoriesResponse
+ */
 func (client *Client) ListDirectories() (_result *ListDirectoriesResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &ListDirectoriesResponse{}
@@ -9565,6 +11593,15 @@ func (client *Client) ListDirectories() (_result *ListDirectoriesResponse, _err 
 	return _result, _err
 }
 
+/**
+ * This topic provides an example on how to query the SAML signing certificates within the directory `d-00fc2p61****`. The returned result shows that the directory contains one SAML signing certificate.
+ * ## Limits
+ * You can call this operation up to 100 times per second per account. This operation is globally limited to 100 times per second across all accounts. If the number of the calls per second exceeds a limit, throttling is triggered. As a result, your business may be affected. We recommend that you take note of the limits when you call this operation.
+ *
+ * @param request ListExternalSAMLIdPCertificatesRequest
+ * @param runtime runtime options for this request RuntimeOptions
+ * @return ListExternalSAMLIdPCertificatesResponse
+ */
 func (client *Client) ListExternalSAMLIdPCertificatesWithOptions(request *ListExternalSAMLIdPCertificatesRequest, runtime *util.RuntimeOptions) (_result *ListExternalSAMLIdPCertificatesResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -9598,6 +11635,14 @@ func (client *Client) ListExternalSAMLIdPCertificatesWithOptions(request *ListEx
 	return _result, _err
 }
 
+/**
+ * This topic provides an example on how to query the SAML signing certificates within the directory `d-00fc2p61****`. The returned result shows that the directory contains one SAML signing certificate.
+ * ## Limits
+ * You can call this operation up to 100 times per second per account. This operation is globally limited to 100 times per second across all accounts. If the number of the calls per second exceeds a limit, throttling is triggered. As a result, your business may be affected. We recommend that you take note of the limits when you call this operation.
+ *
+ * @param request ListExternalSAMLIdPCertificatesRequest
+ * @return ListExternalSAMLIdPCertificatesResponse
+ */
 func (client *Client) ListExternalSAMLIdPCertificates(request *ListExternalSAMLIdPCertificatesRequest) (_result *ListExternalSAMLIdPCertificatesResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &ListExternalSAMLIdPCertificatesResponse{}
@@ -9609,6 +11654,15 @@ func (client *Client) ListExternalSAMLIdPCertificates(request *ListExternalSAMLI
 	return _result, _err
 }
 
+/**
+ * This topic provides an example on how to query the users in the group `g-00jqzghi2n3o5hkh****`. The returned result shows that the group contains the user `Alice` and the user `user1`.
+ * ## Limits
+ * You can call this operation up to 100 times per second per account. This operation is globally limited to 100 times per second across all accounts. If the number of the calls per second exceeds a limit, throttling is triggered. As a result, your business may be affected. We recommend that you take note of the limits when you call this operation.
+ *
+ * @param request ListGroupMembersRequest
+ * @param runtime runtime options for this request RuntimeOptions
+ * @return ListGroupMembersResponse
+ */
 func (client *Client) ListGroupMembersWithOptions(request *ListGroupMembersRequest, runtime *util.RuntimeOptions) (_result *ListGroupMembersResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -9654,6 +11708,14 @@ func (client *Client) ListGroupMembersWithOptions(request *ListGroupMembersReque
 	return _result, _err
 }
 
+/**
+ * This topic provides an example on how to query the users in the group `g-00jqzghi2n3o5hkh****`. The returned result shows that the group contains the user `Alice` and the user `user1`.
+ * ## Limits
+ * You can call this operation up to 100 times per second per account. This operation is globally limited to 100 times per second across all accounts. If the number of the calls per second exceeds a limit, throttling is triggered. As a result, your business may be affected. We recommend that you take note of the limits when you call this operation.
+ *
+ * @param request ListGroupMembersRequest
+ * @return ListGroupMembersResponse
+ */
 func (client *Client) ListGroupMembers(request *ListGroupMembersRequest) (_result *ListGroupMembersResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &ListGroupMembersResponse{}
@@ -9665,6 +11727,15 @@ func (client *Client) ListGroupMembers(request *ListGroupMembersRequest) (_resul
 	return _result, _err
 }
 
+/**
+ * This topic provides an example on how to query the groups in the directory `d-00fc2p61****`. The returned result shows that the directory contains three groups. The groups `group1` and `group2` are synchronized from an external identity provider (IdP). The group `TestGroup` is manually created in CloudSSO.
+ * ## Limits
+ * You can call this operation up to 100 times per second per account. This operation is globally limited to 100 times per second across all accounts. If the number of the calls per second exceeds a limit, throttling is triggered. As a result, your business may be affected. We recommend that you take note of the limits when you call this operation.
+ *
+ * @param request ListGroupsRequest
+ * @param runtime runtime options for this request RuntimeOptions
+ * @return ListGroupsResponse
+ */
 func (client *Client) ListGroupsWithOptions(request *ListGroupsRequest, runtime *util.RuntimeOptions) (_result *ListGroupsResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -9714,6 +11785,14 @@ func (client *Client) ListGroupsWithOptions(request *ListGroupsRequest, runtime 
 	return _result, _err
 }
 
+/**
+ * This topic provides an example on how to query the groups in the directory `d-00fc2p61****`. The returned result shows that the directory contains three groups. The groups `group1` and `group2` are synchronized from an external identity provider (IdP). The group `TestGroup` is manually created in CloudSSO.
+ * ## Limits
+ * You can call this operation up to 100 times per second per account. This operation is globally limited to 100 times per second across all accounts. If the number of the calls per second exceeds a limit, throttling is triggered. As a result, your business may be affected. We recommend that you take note of the limits when you call this operation.
+ *
+ * @param request ListGroupsRequest
+ * @return ListGroupsResponse
+ */
 func (client *Client) ListGroups(request *ListGroupsRequest) (_result *ListGroupsResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &ListGroupsResponse{}
@@ -9725,6 +11804,15 @@ func (client *Client) ListGroups(request *ListGroupsRequest) (_result *ListGroup
 	return _result, _err
 }
 
+/**
+ * This topic provides an example on how to query the groups to which the user `u-00q8wbq42wiltcrk****` is added. The returned result shows that the user is added to both the `TestGroup` and the `group1` groups.
+ * ## Limits
+ * You can call this operation up to 100 times per second per account. This operation is globally limited to 100 times per second across all accounts. If the number of the calls per second exceeds a limit, throttling is triggered. As a result, your business may be affected. We recommend that you take note of the limits when you call this operation.
+ *
+ * @param request ListJoinedGroupsForUserRequest
+ * @param runtime runtime options for this request RuntimeOptions
+ * @return ListJoinedGroupsForUserResponse
+ */
 func (client *Client) ListJoinedGroupsForUserWithOptions(request *ListJoinedGroupsForUserRequest, runtime *util.RuntimeOptions) (_result *ListJoinedGroupsForUserResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -9770,6 +11858,14 @@ func (client *Client) ListJoinedGroupsForUserWithOptions(request *ListJoinedGrou
 	return _result, _err
 }
 
+/**
+ * This topic provides an example on how to query the groups to which the user `u-00q8wbq42wiltcrk****` is added. The returned result shows that the user is added to both the `TestGroup` and the `group1` groups.
+ * ## Limits
+ * You can call this operation up to 100 times per second per account. This operation is globally limited to 100 times per second across all accounts. If the number of the calls per second exceeds a limit, throttling is triggered. As a result, your business may be affected. We recommend that you take note of the limits when you call this operation.
+ *
+ * @param request ListJoinedGroupsForUserRequest
+ * @return ListJoinedGroupsForUserResponse
+ */
 func (client *Client) ListJoinedGroupsForUser(request *ListJoinedGroupsForUserRequest) (_result *ListJoinedGroupsForUserResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &ListJoinedGroupsForUserResponse{}
@@ -9781,6 +11877,15 @@ func (client *Client) ListJoinedGroupsForUser(request *ListJoinedGroupsForUserRe
 	return _result, _err
 }
 
+/**
+ * This topic provides an example on how to query the MFA devices that are bound to the user `u-00q8wbq42wiltcrk****`. The returned result shows that the MFA device named `Alice-MFA1` is bound to the user.
+ * ## Limits
+ * You can call this operation up to 100 times per second per account. This operation is globally limited to 100 times per second across all accounts. If the number of the calls per second exceeds a limit, throttling is triggered. As a result, your business may be affected. We recommend that you take note of the limits when you call this operation.
+ *
+ * @param request ListMFADevicesForUserRequest
+ * @param runtime runtime options for this request RuntimeOptions
+ * @return ListMFADevicesForUserResponse
+ */
 func (client *Client) ListMFADevicesForUserWithOptions(request *ListMFADevicesForUserRequest, runtime *util.RuntimeOptions) (_result *ListMFADevicesForUserResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -9818,6 +11923,14 @@ func (client *Client) ListMFADevicesForUserWithOptions(request *ListMFADevicesFo
 	return _result, _err
 }
 
+/**
+ * This topic provides an example on how to query the MFA devices that are bound to the user `u-00q8wbq42wiltcrk****`. The returned result shows that the MFA device named `Alice-MFA1` is bound to the user.
+ * ## Limits
+ * You can call this operation up to 100 times per second per account. This operation is globally limited to 100 times per second across all accounts. If the number of the calls per second exceeds a limit, throttling is triggered. As a result, your business may be affected. We recommend that you take note of the limits when you call this operation.
+ *
+ * @param request ListMFADevicesForUserRequest
+ * @return ListMFADevicesForUserResponse
+ */
 func (client *Client) ListMFADevicesForUser(request *ListMFADevicesForUserRequest) (_result *ListMFADevicesForUserResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &ListMFADevicesForUserResponse{}
@@ -9829,6 +11942,15 @@ func (client *Client) ListMFADevicesForUser(request *ListMFADevicesForUserReques
 	return _result, _err
 }
 
+/**
+ * This topic provides an example on how to query the policies that are created for the access configuration `ac-00jhtfl8thteu6uj****`. The returned result shows that the access configuration contains one system policy and one inline policy.
+ * ## Limits
+ * You can call this operation up to 100 times per second per account. This operation is globally limited to 100 times per second across all accounts. If the number of the calls per second exceeds a limit, throttling is triggered. As a result, your business may be affected. We recommend that you take note of the limits when you call this operation.
+ *
+ * @param request ListPermissionPoliciesInAccessConfigurationRequest
+ * @param runtime runtime options for this request RuntimeOptions
+ * @return ListPermissionPoliciesInAccessConfigurationResponse
+ */
 func (client *Client) ListPermissionPoliciesInAccessConfigurationWithOptions(request *ListPermissionPoliciesInAccessConfigurationRequest, runtime *util.RuntimeOptions) (_result *ListPermissionPoliciesInAccessConfigurationResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -9870,6 +11992,14 @@ func (client *Client) ListPermissionPoliciesInAccessConfigurationWithOptions(req
 	return _result, _err
 }
 
+/**
+ * This topic provides an example on how to query the policies that are created for the access configuration `ac-00jhtfl8thteu6uj****`. The returned result shows that the access configuration contains one system policy and one inline policy.
+ * ## Limits
+ * You can call this operation up to 100 times per second per account. This operation is globally limited to 100 times per second across all accounts. If the number of the calls per second exceeds a limit, throttling is triggered. As a result, your business may be affected. We recommend that you take note of the limits when you call this operation.
+ *
+ * @param request ListPermissionPoliciesInAccessConfigurationRequest
+ * @return ListPermissionPoliciesInAccessConfigurationResponse
+ */
 func (client *Client) ListPermissionPoliciesInAccessConfiguration(request *ListPermissionPoliciesInAccessConfigurationRequest) (_result *ListPermissionPoliciesInAccessConfigurationResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &ListPermissionPoliciesInAccessConfigurationResponse{}
@@ -9881,6 +12011,15 @@ func (client *Client) ListPermissionPoliciesInAccessConfiguration(request *ListP
 	return _result, _err
 }
 
+/**
+ * This topic provides an example on how to query the SCIM credentials within the `d-00fc2p61****` directory.
+ * ## Limits
+ * You can call this operation up to 100 times per second per account. This operation is globally limited to 100 times per second across all accounts. If the number of the calls per second exceeds a limit, throttling is triggered. As a result, your business may be affected. We recommend that you take note of the limits when you call this operation.
+ *
+ * @param request ListSCIMServerCredentialsRequest
+ * @param runtime runtime options for this request RuntimeOptions
+ * @return ListSCIMServerCredentialsResponse
+ */
 func (client *Client) ListSCIMServerCredentialsWithOptions(request *ListSCIMServerCredentialsRequest, runtime *util.RuntimeOptions) (_result *ListSCIMServerCredentialsResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -9914,6 +12053,14 @@ func (client *Client) ListSCIMServerCredentialsWithOptions(request *ListSCIMServ
 	return _result, _err
 }
 
+/**
+ * This topic provides an example on how to query the SCIM credentials within the `d-00fc2p61****` directory.
+ * ## Limits
+ * You can call this operation up to 100 times per second per account. This operation is globally limited to 100 times per second across all accounts. If the number of the calls per second exceeds a limit, throttling is triggered. As a result, your business may be affected. We recommend that you take note of the limits when you call this operation.
+ *
+ * @param request ListSCIMServerCredentialsRequest
+ * @return ListSCIMServerCredentialsResponse
+ */
 func (client *Client) ListSCIMServerCredentials(request *ListSCIMServerCredentialsRequest) (_result *ListSCIMServerCredentialsResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &ListSCIMServerCredentialsResponse{}
@@ -9925,6 +12072,16 @@ func (client *Client) ListSCIMServerCredentials(request *ListSCIMServerCredentia
 	return _result, _err
 }
 
+/**
+ * By default, this operation queries the tasks within the previous 24 hours. This operation allows you to query the tasks within a maximum of 7 days. You can specify the start time of the query by using `Filter`.
+ * This topic provides an example on how to query the tasks within the previous 24 hours.
+ * ## Limits
+ * You can call this operation up to 20 times per second per account. This operation is globally limited to 100 times per second across all accounts. If the number of the calls per second exceeds a limit, throttling is triggered. As a result, your business may be affected. We recommend that you take note of the limits when you call this operation.
+ *
+ * @param request ListTasksRequest
+ * @param runtime runtime options for this request RuntimeOptions
+ * @return ListTasksResponse
+ */
 func (client *Client) ListTasksWithOptions(request *ListTasksRequest, runtime *util.RuntimeOptions) (_result *ListTasksResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -9998,6 +12155,15 @@ func (client *Client) ListTasksWithOptions(request *ListTasksRequest, runtime *u
 	return _result, _err
 }
 
+/**
+ * By default, this operation queries the tasks within the previous 24 hours. This operation allows you to query the tasks within a maximum of 7 days. You can specify the start time of the query by using `Filter`.
+ * This topic provides an example on how to query the tasks within the previous 24 hours.
+ * ## Limits
+ * You can call this operation up to 20 times per second per account. This operation is globally limited to 100 times per second across all accounts. If the number of the calls per second exceeds a limit, throttling is triggered. As a result, your business may be affected. We recommend that you take note of the limits when you call this operation.
+ *
+ * @param request ListTasksRequest
+ * @return ListTasksResponse
+ */
 func (client *Client) ListTasks(request *ListTasksRequest) (_result *ListTasksResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &ListTasksResponse{}
@@ -10009,6 +12175,15 @@ func (client *Client) ListTasks(request *ListTasksRequest) (_result *ListTasksRe
 	return _result, _err
 }
 
+/**
+ * This topic provides an example on how to query users in the `d-00fc2p61****` directory. The returned result shows that the directory contains two users. The user `AliceLee` is synchronized from an external identity provider (IdP). The user `user1` is manually created within CloudSSO.
+ * ## Limits
+ * You can call this operation up to 100 times per second per account. This operation is globally limited to 100 times per second across all accounts. If the number of the calls per second exceeds a limit, throttling is triggered. As a result, your business may be affected. We recommend that you take note of the limits when you call this operation.
+ *
+ * @param request ListUsersRequest
+ * @param runtime runtime options for this request RuntimeOptions
+ * @return ListUsersResponse
+ */
 func (client *Client) ListUsersWithOptions(request *ListUsersRequest, runtime *util.RuntimeOptions) (_result *ListUsersResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -10062,6 +12237,14 @@ func (client *Client) ListUsersWithOptions(request *ListUsersRequest, runtime *u
 	return _result, _err
 }
 
+/**
+ * This topic provides an example on how to query users in the `d-00fc2p61****` directory. The returned result shows that the directory contains two users. The user `AliceLee` is synchronized from an external identity provider (IdP). The user `user1` is manually created within CloudSSO.
+ * ## Limits
+ * You can call this operation up to 100 times per second per account. This operation is globally limited to 100 times per second across all accounts. If the number of the calls per second exceeds a limit, throttling is triggered. As a result, your business may be affected. We recommend that you take note of the limits when you call this operation.
+ *
+ * @param request ListUsersRequest
+ * @return ListUsersResponse
+ */
 func (client *Client) ListUsers(request *ListUsersRequest) (_result *ListUsersResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &ListUsersResponse{}
@@ -10073,6 +12256,16 @@ func (client *Client) ListUsers(request *ListUsersRequest) (_result *ListUsersRe
 	return _result, _err
 }
 
+/**
+ * When you call this operation, an asynchronous task is automatically created. You can call the [GetTask](~~340670~~) operation to query the progress of the task based on the value of the `TaskId` response parameter.
+ * This topic provides an example on how to provision the access configuration `ac-00jhtfl8thteu6uj****` for the account `114240524784****` in your resource directory.
+ * ## Limits
+ * You can call this operation up to 20 times per second per account. This operation is globally limited to 100 times per second across all accounts. If the number of the calls per second exceeds a limit, throttling is triggered. As a result, your business may be affected. We recommend that you take note of the limits when you call this operation.
+ *
+ * @param request ProvisionAccessConfigurationRequest
+ * @param runtime runtime options for this request RuntimeOptions
+ * @return ProvisionAccessConfigurationResponse
+ */
 func (client *Client) ProvisionAccessConfigurationWithOptions(request *ProvisionAccessConfigurationRequest, runtime *util.RuntimeOptions) (_result *ProvisionAccessConfigurationResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -10118,6 +12311,15 @@ func (client *Client) ProvisionAccessConfigurationWithOptions(request *Provision
 	return _result, _err
 }
 
+/**
+ * When you call this operation, an asynchronous task is automatically created. You can call the [GetTask](~~340670~~) operation to query the progress of the task based on the value of the `TaskId` response parameter.
+ * This topic provides an example on how to provision the access configuration `ac-00jhtfl8thteu6uj****` for the account `114240524784****` in your resource directory.
+ * ## Limits
+ * You can call this operation up to 20 times per second per account. This operation is globally limited to 100 times per second across all accounts. If the number of the calls per second exceeds a limit, throttling is triggered. As a result, your business may be affected. We recommend that you take note of the limits when you call this operation.
+ *
+ * @param request ProvisionAccessConfigurationRequest
+ * @return ProvisionAccessConfigurationResponse
+ */
 func (client *Client) ProvisionAccessConfiguration(request *ProvisionAccessConfigurationRequest) (_result *ProvisionAccessConfigurationResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &ProvisionAccessConfigurationResponse{}
@@ -10129,6 +12331,15 @@ func (client *Client) ProvisionAccessConfiguration(request *ProvisionAccessConfi
 	return _result, _err
 }
 
+/**
+ * This topic provides an example on how to remove the SAML signing certificate whose ID is `idp-c-00dt9gnl7fmjaw9c****`.
+ * ## Limits
+ * You can call this operation up to 100 times per second per account. This operation is globally limited to 100 times per second across all accounts. If the number of the calls per second exceeds a limit, throttling is triggered. As a result, your business may be affected. We recommend that you take note of the limits when you call this operation.
+ *
+ * @param request RemoveExternalSAMLIdPCertificateRequest
+ * @param runtime runtime options for this request RuntimeOptions
+ * @return RemoveExternalSAMLIdPCertificateResponse
+ */
 func (client *Client) RemoveExternalSAMLIdPCertificateWithOptions(request *RemoveExternalSAMLIdPCertificateRequest, runtime *util.RuntimeOptions) (_result *RemoveExternalSAMLIdPCertificateResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -10166,6 +12377,14 @@ func (client *Client) RemoveExternalSAMLIdPCertificateWithOptions(request *Remov
 	return _result, _err
 }
 
+/**
+ * This topic provides an example on how to remove the SAML signing certificate whose ID is `idp-c-00dt9gnl7fmjaw9c****`.
+ * ## Limits
+ * You can call this operation up to 100 times per second per account. This operation is globally limited to 100 times per second across all accounts. If the number of the calls per second exceeds a limit, throttling is triggered. As a result, your business may be affected. We recommend that you take note of the limits when you call this operation.
+ *
+ * @param request RemoveExternalSAMLIdPCertificateRequest
+ * @return RemoveExternalSAMLIdPCertificateResponse
+ */
 func (client *Client) RemoveExternalSAMLIdPCertificate(request *RemoveExternalSAMLIdPCertificateRequest) (_result *RemoveExternalSAMLIdPCertificateResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &RemoveExternalSAMLIdPCertificateResponse{}
@@ -10177,6 +12396,16 @@ func (client *Client) RemoveExternalSAMLIdPCertificate(request *RemoveExternalSA
 	return _result, _err
 }
 
+/**
+ * After you remove an inline policy from an access configuration, the policy cannot be restored.
+ * This topic provides an example on how to remove the system policy `AliyunECSFullAccess` from the access configuration `ac-00jhtfl8thteu6uj****`.
+ * ## Limits
+ * You can call this operation up to 100 times per second per account. This operation is globally limited to 100 times per second across all accounts. If the number of the calls per second exceeds a limit, throttling is triggered. As a result, your business may be affected. We recommend that you take note of the limits when you call this operation.
+ *
+ * @param request RemovePermissionPolicyFromAccessConfigurationRequest
+ * @param runtime runtime options for this request RuntimeOptions
+ * @return RemovePermissionPolicyFromAccessConfigurationResponse
+ */
 func (client *Client) RemovePermissionPolicyFromAccessConfigurationWithOptions(request *RemovePermissionPolicyFromAccessConfigurationRequest, runtime *util.RuntimeOptions) (_result *RemovePermissionPolicyFromAccessConfigurationResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -10222,6 +12451,15 @@ func (client *Client) RemovePermissionPolicyFromAccessConfigurationWithOptions(r
 	return _result, _err
 }
 
+/**
+ * After you remove an inline policy from an access configuration, the policy cannot be restored.
+ * This topic provides an example on how to remove the system policy `AliyunECSFullAccess` from the access configuration `ac-00jhtfl8thteu6uj****`.
+ * ## Limits
+ * You can call this operation up to 100 times per second per account. This operation is globally limited to 100 times per second across all accounts. If the number of the calls per second exceeds a limit, throttling is triggered. As a result, your business may be affected. We recommend that you take note of the limits when you call this operation.
+ *
+ * @param request RemovePermissionPolicyFromAccessConfigurationRequest
+ * @return RemovePermissionPolicyFromAccessConfigurationResponse
+ */
 func (client *Client) RemovePermissionPolicyFromAccessConfiguration(request *RemovePermissionPolicyFromAccessConfigurationRequest) (_result *RemovePermissionPolicyFromAccessConfigurationResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &RemovePermissionPolicyFromAccessConfigurationResponse{}
@@ -10233,6 +12471,16 @@ func (client *Client) RemovePermissionPolicyFromAccessConfiguration(request *Rem
 	return _result, _err
 }
 
+/**
+ * If System for Cross-domain Identity Management (SCIM) synchronization is enabled, you cannot remove a user from a group that is synchronized by using SCIM.
+ * This topic provides an example on how to remove the user `u-00q8wbq42wiltcrk****` from the group `g-00jqzghi2n3o5hkh****`.
+ * ## Limits
+ * You can call this operation up to 100 times per second per account. This operation is globally limited to 100 times per second across all accounts. If the number of the calls per second exceeds a limit, throttling is triggered. As a result, your business may be affected. We recommend that you take note of the limits when you call this operation.
+ *
+ * @param request RemoveUserFromGroupRequest
+ * @param runtime runtime options for this request RuntimeOptions
+ * @return RemoveUserFromGroupResponse
+ */
 func (client *Client) RemoveUserFromGroupWithOptions(request *RemoveUserFromGroupRequest, runtime *util.RuntimeOptions) (_result *RemoveUserFromGroupResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -10274,6 +12522,15 @@ func (client *Client) RemoveUserFromGroupWithOptions(request *RemoveUserFromGrou
 	return _result, _err
 }
 
+/**
+ * If System for Cross-domain Identity Management (SCIM) synchronization is enabled, you cannot remove a user from a group that is synchronized by using SCIM.
+ * This topic provides an example on how to remove the user `u-00q8wbq42wiltcrk****` from the group `g-00jqzghi2n3o5hkh****`.
+ * ## Limits
+ * You can call this operation up to 100 times per second per account. This operation is globally limited to 100 times per second across all accounts. If the number of the calls per second exceeds a limit, throttling is triggered. As a result, your business may be affected. We recommend that you take note of the limits when you call this operation.
+ *
+ * @param request RemoveUserFromGroupRequest
+ * @return RemoveUserFromGroupResponse
+ */
 func (client *Client) RemoveUserFromGroup(request *RemoveUserFromGroupRequest) (_result *RemoveUserFromGroupResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &RemoveUserFromGroupResponse{}
@@ -10285,6 +12542,17 @@ func (client *Client) RemoveUserFromGroup(request *RemoveUserFromGroupRequest) (
 	return _result, _err
 }
 
+/**
+ * If you forget your password or your password expires or is at risk, you must contact a CloudSSO administrator to reset your password.
+ * >  After you enable SSO logon, your password cannot be reset.
+ * This topic provides an example on how to reset the password of the user `u-00q8wbq42wiltcrk****`. The new password is automatically generated by the system.
+ * ## Limits
+ * You can call this operation up to 100 times per second per account. This operation is globally limited to 100 times per second across all accounts. If the number of the calls per second exceeds a limit, throttling is triggered. As a result, your business may be affected. We recommend that you take note of the limits when you call this operation.
+ *
+ * @param request ResetUserPasswordRequest
+ * @param runtime runtime options for this request RuntimeOptions
+ * @return ResetUserPasswordResponse
+ */
 func (client *Client) ResetUserPasswordWithOptions(request *ResetUserPasswordRequest, runtime *util.RuntimeOptions) (_result *ResetUserPasswordResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -10334,6 +12602,16 @@ func (client *Client) ResetUserPasswordWithOptions(request *ResetUserPasswordReq
 	return _result, _err
 }
 
+/**
+ * If you forget your password or your password expires or is at risk, you must contact a CloudSSO administrator to reset your password.
+ * >  After you enable SSO logon, your password cannot be reset.
+ * This topic provides an example on how to reset the password of the user `u-00q8wbq42wiltcrk****`. The new password is automatically generated by the system.
+ * ## Limits
+ * You can call this operation up to 100 times per second per account. This operation is globally limited to 100 times per second across all accounts. If the number of the calls per second exceeds a limit, throttling is triggered. As a result, your business may be affected. We recommend that you take note of the limits when you call this operation.
+ *
+ * @param request ResetUserPasswordRequest
+ * @return ResetUserPasswordResponse
+ */
 func (client *Client) ResetUserPassword(request *ResetUserPasswordRequest) (_result *ResetUserPasswordResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &ResetUserPasswordResponse{}
@@ -10345,6 +12623,22 @@ func (client *Client) ResetUserPassword(request *ResetUserPasswordRequest) (_res
 	return _result, _err
 }
 
+/**
+ * ## Usage notes
+ * During SAML 2.0-based single sign-on (SSO) logon, CloudSSO is an SP, and the identity management system of an enterprise is an IdP.
+ * You can use one of the following methods to configure a SAML IdP. You can obtain the required metadata file or parameter values from your IdP.
+ * *   Use the metadata file. You can specify the `EncodedMetadataDocument` parameter to upload the metadata file.
+ * *   Manually configure the IdP. You can manually specifythe following parameters for your IdP: `EntityId`, `LoginUrl`, `WantRequestSigned`, and `X509Certificate`.
+ * If you have configured a SAML IdP, the existing configurations are replaced after you call this operation.
+ * *   If the IdP is configured by using the metadata file, all existing configurations are replaced with new configurations.
+ * *   If the IdP is manually configured, the original parameter values that are different from the new parameter values are replaced.
+ * >  If SSO logon is enabled, new configurations immediately take effect. Take note of the impacts on the production environment.
+ * This topic provides an example on how to configure an IdP by using the metadata file within the directory `d-00fc2p61****`.
+ *
+ * @param request SetExternalSAMLIdentityProviderRequest
+ * @param runtime runtime options for this request RuntimeOptions
+ * @return SetExternalSAMLIdentityProviderResponse
+ */
 func (client *Client) SetExternalSAMLIdentityProviderWithOptions(request *SetExternalSAMLIdentityProviderRequest, runtime *util.RuntimeOptions) (_result *SetExternalSAMLIdentityProviderResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -10402,6 +12696,21 @@ func (client *Client) SetExternalSAMLIdentityProviderWithOptions(request *SetExt
 	return _result, _err
 }
 
+/**
+ * ## Usage notes
+ * During SAML 2.0-based single sign-on (SSO) logon, CloudSSO is an SP, and the identity management system of an enterprise is an IdP.
+ * You can use one of the following methods to configure a SAML IdP. You can obtain the required metadata file or parameter values from your IdP.
+ * *   Use the metadata file. You can specify the `EncodedMetadataDocument` parameter to upload the metadata file.
+ * *   Manually configure the IdP. You can manually specifythe following parameters for your IdP: `EntityId`, `LoginUrl`, `WantRequestSigned`, and `X509Certificate`.
+ * If you have configured a SAML IdP, the existing configurations are replaced after you call this operation.
+ * *   If the IdP is configured by using the metadata file, all existing configurations are replaced with new configurations.
+ * *   If the IdP is manually configured, the original parameter values that are different from the new parameter values are replaced.
+ * >  If SSO logon is enabled, new configurations immediately take effect. Take note of the impacts on the production environment.
+ * This topic provides an example on how to configure an IdP by using the metadata file within the directory `d-00fc2p61****`.
+ *
+ * @param request SetExternalSAMLIdentityProviderRequest
+ * @return SetExternalSAMLIdentityProviderResponse
+ */
 func (client *Client) SetExternalSAMLIdentityProvider(request *SetExternalSAMLIdentityProviderRequest) (_result *SetExternalSAMLIdentityProviderResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &SetExternalSAMLIdentityProviderResponse{}
@@ -10413,6 +12722,16 @@ func (client *Client) SetExternalSAMLIdentityProvider(request *SetExternalSAMLId
 	return _result, _err
 }
 
+/**
+ * If a CloudSSO administrator enables username-password logon for users, CloudSSO automatically enables MFA to improve security. The administrator can call this operation to enable or disable MFA based on the business requirements.
+ * This topic provides an example on how to enable MFA for users.
+ * ## Limits
+ * You can call this operation up to 100 times per second per account. This operation is globally limited to 100 times per second across all accounts. If the number of the calls per second exceeds a limit, throttling is triggered. As a result, your business may be affected. We recommend that you take note of the limits when you call this operation.
+ *
+ * @param request SetMFAAuthenticationStatusRequest
+ * @param runtime runtime options for this request RuntimeOptions
+ * @return SetMFAAuthenticationStatusResponse
+ */
 func (client *Client) SetMFAAuthenticationStatusWithOptions(request *SetMFAAuthenticationStatusRequest, runtime *util.RuntimeOptions) (_result *SetMFAAuthenticationStatusResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -10450,6 +12769,15 @@ func (client *Client) SetMFAAuthenticationStatusWithOptions(request *SetMFAAuthe
 	return _result, _err
 }
 
+/**
+ * If a CloudSSO administrator enables username-password logon for users, CloudSSO automatically enables MFA to improve security. The administrator can call this operation to enable or disable MFA based on the business requirements.
+ * This topic provides an example on how to enable MFA for users.
+ * ## Limits
+ * You can call this operation up to 100 times per second per account. This operation is globally limited to 100 times per second across all accounts. If the number of the calls per second exceeds a limit, throttling is triggered. As a result, your business may be affected. We recommend that you take note of the limits when you call this operation.
+ *
+ * @param request SetMFAAuthenticationStatusRequest
+ * @return SetMFAAuthenticationStatusResponse
+ */
 func (client *Client) SetMFAAuthenticationStatus(request *SetMFAAuthenticationStatusRequest) (_result *SetMFAAuthenticationStatusResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &SetMFAAuthenticationStatusResponse{}
@@ -10461,6 +12789,18 @@ func (client *Client) SetMFAAuthenticationStatus(request *SetMFAAuthenticationSt
 	return _result, _err
 }
 
+/**
+ * You can synchronize users or groups from an external identity provider (IdP) that supports SCIM 2.0 to CloudSSO only after SCIM synchronization is enabled. If you disable SCIM synchronization, you can no longer synchronize users or groups to CloudSSO. The following list describes the impacts after SCIM synchronization is enabled or disabled:
+ * *   After you enable SCIM synchronization, you cannot modify or delete the users or groups that are synchronized to CloudSSO by using SCIM. In addition, you cannot add users to or remove users from the groups. However, you can change the passwords of the users and enable or disable the logon of the users.
+ * *   After you disable SCIM synchronization, you can modify and delete the users and groups that are synchronized to CloudSSO by using SCIM. You can also add users to or remove users from the groups.
+ * This topic provides an example on how to enable SCIM synchronization within the directory `d-00fc2p61****`.
+ * ## Limits
+ * You can call this operation up to 100 times per second per account. This operation is globally limited to 100 times per second across all accounts. If the number of the calls per second exceeds a limit, throttling is triggered. As a result, your business may be affected. We recommend that you take note of the limits when you call this operation.
+ *
+ * @param request SetSCIMSynchronizationStatusRequest
+ * @param runtime runtime options for this request RuntimeOptions
+ * @return SetSCIMSynchronizationStatusResponse
+ */
 func (client *Client) SetSCIMSynchronizationStatusWithOptions(request *SetSCIMSynchronizationStatusRequest, runtime *util.RuntimeOptions) (_result *SetSCIMSynchronizationStatusResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -10498,6 +12838,17 @@ func (client *Client) SetSCIMSynchronizationStatusWithOptions(request *SetSCIMSy
 	return _result, _err
 }
 
+/**
+ * You can synchronize users or groups from an external identity provider (IdP) that supports SCIM 2.0 to CloudSSO only after SCIM synchronization is enabled. If you disable SCIM synchronization, you can no longer synchronize users or groups to CloudSSO. The following list describes the impacts after SCIM synchronization is enabled or disabled:
+ * *   After you enable SCIM synchronization, you cannot modify or delete the users or groups that are synchronized to CloudSSO by using SCIM. In addition, you cannot add users to or remove users from the groups. However, you can change the passwords of the users and enable or disable the logon of the users.
+ * *   After you disable SCIM synchronization, you can modify and delete the users and groups that are synchronized to CloudSSO by using SCIM. You can also add users to or remove users from the groups.
+ * This topic provides an example on how to enable SCIM synchronization within the directory `d-00fc2p61****`.
+ * ## Limits
+ * You can call this operation up to 100 times per second per account. This operation is globally limited to 100 times per second across all accounts. If the number of the calls per second exceeds a limit, throttling is triggered. As a result, your business may be affected. We recommend that you take note of the limits when you call this operation.
+ *
+ * @param request SetSCIMSynchronizationStatusRequest
+ * @return SetSCIMSynchronizationStatusResponse
+ */
 func (client *Client) SetSCIMSynchronizationStatus(request *SetSCIMSynchronizationStatusRequest) (_result *SetSCIMSynchronizationStatusResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &SetSCIMSynchronizationStatusResponse{}
@@ -10509,6 +12860,16 @@ func (client *Client) SetSCIMSynchronizationStatus(request *SetSCIMSynchronizati
 	return _result, _err
 }
 
+/**
+ * You can modify the `Description`, `SessionDuration`, and `RelayState` parameters for an access configuration.
+ * This topic provides an example on how to change the initial web page in the access configuration `ac-00jhtfl8thteu6uj****` to `https://cloudsso.console.aliyun.com`.
+ * ## Limits
+ * You can call this operation up to 100 times per second per account. This operation is globally limited to 100 times per second across all accounts. If the number of the calls per second exceeds a limit, throttling is triggered. As a result, your business may be affected. We recommend that you take note of the limits when you call this operation.
+ *
+ * @param request UpdateAccessConfigurationRequest
+ * @param runtime runtime options for this request RuntimeOptions
+ * @return UpdateAccessConfigurationResponse
+ */
 func (client *Client) UpdateAccessConfigurationWithOptions(request *UpdateAccessConfigurationRequest, runtime *util.RuntimeOptions) (_result *UpdateAccessConfigurationResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -10558,6 +12919,15 @@ func (client *Client) UpdateAccessConfigurationWithOptions(request *UpdateAccess
 	return _result, _err
 }
 
+/**
+ * You can modify the `Description`, `SessionDuration`, and `RelayState` parameters for an access configuration.
+ * This topic provides an example on how to change the initial web page in the access configuration `ac-00jhtfl8thteu6uj****` to `https://cloudsso.console.aliyun.com`.
+ * ## Limits
+ * You can call this operation up to 100 times per second per account. This operation is globally limited to 100 times per second across all accounts. If the number of the calls per second exceeds a limit, throttling is triggered. As a result, your business may be affected. We recommend that you take note of the limits when you call this operation.
+ *
+ * @param request UpdateAccessConfigurationRequest
+ * @return UpdateAccessConfigurationResponse
+ */
 func (client *Client) UpdateAccessConfiguration(request *UpdateAccessConfigurationRequest) (_result *UpdateAccessConfigurationResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &UpdateAccessConfigurationResponse{}
@@ -10569,6 +12939,16 @@ func (client *Client) UpdateAccessConfiguration(request *UpdateAccessConfigurati
 	return _result, _err
 }
 
+/**
+ * After you change the name of a directory, the URL that is used to log on to the Cloud SSO user portal is changed. You must notify the Cloud SSO users of the correct URL.
+ * This topic provides an example on how to change the name of a directory to `new-example`.
+ * ## Limits
+ * You can call this operation up to 100 times per second per account. This operation is globally limited to 100 times per second across all accounts. If the number of the calls per second exceeds a limit, throttling is triggered. As a result, your business may be affected. We recommend that you take note of the limits when you call this operation.
+ *
+ * @param request UpdateDirectoryRequest
+ * @param runtime runtime options for this request RuntimeOptions
+ * @return UpdateDirectoryResponse
+ */
 func (client *Client) UpdateDirectoryWithOptions(request *UpdateDirectoryRequest, runtime *util.RuntimeOptions) (_result *UpdateDirectoryResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -10606,6 +12986,15 @@ func (client *Client) UpdateDirectoryWithOptions(request *UpdateDirectoryRequest
 	return _result, _err
 }
 
+/**
+ * After you change the name of a directory, the URL that is used to log on to the Cloud SSO user portal is changed. You must notify the Cloud SSO users of the correct URL.
+ * This topic provides an example on how to change the name of a directory to `new-example`.
+ * ## Limits
+ * You can call this operation up to 100 times per second per account. This operation is globally limited to 100 times per second across all accounts. If the number of the calls per second exceeds a limit, throttling is triggered. As a result, your business may be affected. We recommend that you take note of the limits when you call this operation.
+ *
+ * @param request UpdateDirectoryRequest
+ * @return UpdateDirectoryResponse
+ */
 func (client *Client) UpdateDirectory(request *UpdateDirectoryRequest) (_result *UpdateDirectoryResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &UpdateDirectoryResponse{}
@@ -10617,6 +13006,17 @@ func (client *Client) UpdateDirectory(request *UpdateDirectoryRequest) (_result 
 	return _result, _err
 }
 
+/**
+ * You can modify `GroupName` and `Description` for a group.
+ * >  If System for Cross-domain Identity Management (SCIM) synchronization is enabled, you cannot modify the information about a group that is synchronized by using SCIM.
+ * This topic provides an example on how to change the name of the group `g-00jqzghi2n3o5hkh****` to `NewTestGroup`.
+ * ## Limits
+ * You can call this operation up to 100 times per second per account. This operation is globally limited to 100 times per second across all accounts. If the number of the calls per second exceeds a limit, throttling is triggered. As a result, your business may be affected. We recommend that you take note of the limits when you call this operation.
+ *
+ * @param request UpdateGroupRequest
+ * @param runtime runtime options for this request RuntimeOptions
+ * @return UpdateGroupResponse
+ */
 func (client *Client) UpdateGroupWithOptions(request *UpdateGroupRequest, runtime *util.RuntimeOptions) (_result *UpdateGroupResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -10662,6 +13062,16 @@ func (client *Client) UpdateGroupWithOptions(request *UpdateGroupRequest, runtim
 	return _result, _err
 }
 
+/**
+ * You can modify `GroupName` and `Description` for a group.
+ * >  If System for Cross-domain Identity Management (SCIM) synchronization is enabled, you cannot modify the information about a group that is synchronized by using SCIM.
+ * This topic provides an example on how to change the name of the group `g-00jqzghi2n3o5hkh****` to `NewTestGroup`.
+ * ## Limits
+ * You can call this operation up to 100 times per second per account. This operation is globally limited to 100 times per second across all accounts. If the number of the calls per second exceeds a limit, throttling is triggered. As a result, your business may be affected. We recommend that you take note of the limits when you call this operation.
+ *
+ * @param request UpdateGroupRequest
+ * @return UpdateGroupResponse
+ */
 func (client *Client) UpdateGroup(request *UpdateGroupRequest) (_result *UpdateGroupResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &UpdateGroupResponse{}
@@ -10673,6 +13083,15 @@ func (client *Client) UpdateGroup(request *UpdateGroupRequest) (_result *UpdateG
 	return _result, _err
 }
 
+/**
+ * This topic provides an example on how to modify an inline policy that is created for the access configuration `ac-00jhtfl8thteu6uj****`.
+ * ## Limits
+ * You can call this operation up to 100 times per second per account. This operation is globally limited to 100 times per second across all accounts. If the number of the calls per second exceeds a limit, throttling is triggered. As a result, your business may be affected. We recommend that you take note of the limits when you call this operation.
+ *
+ * @param request UpdateInlinePolicyForAccessConfigurationRequest
+ * @param runtime runtime options for this request RuntimeOptions
+ * @return UpdateInlinePolicyForAccessConfigurationResponse
+ */
 func (client *Client) UpdateInlinePolicyForAccessConfigurationWithOptions(request *UpdateInlinePolicyForAccessConfigurationRequest, runtime *util.RuntimeOptions) (_result *UpdateInlinePolicyForAccessConfigurationResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -10718,6 +13137,14 @@ func (client *Client) UpdateInlinePolicyForAccessConfigurationWithOptions(reques
 	return _result, _err
 }
 
+/**
+ * This topic provides an example on how to modify an inline policy that is created for the access configuration `ac-00jhtfl8thteu6uj****`.
+ * ## Limits
+ * You can call this operation up to 100 times per second per account. This operation is globally limited to 100 times per second across all accounts. If the number of the calls per second exceeds a limit, throttling is triggered. As a result, your business may be affected. We recommend that you take note of the limits when you call this operation.
+ *
+ * @param request UpdateInlinePolicyForAccessConfigurationRequest
+ * @return UpdateInlinePolicyForAccessConfigurationResponse
+ */
 func (client *Client) UpdateInlinePolicyForAccessConfiguration(request *UpdateInlinePolicyForAccessConfigurationRequest) (_result *UpdateInlinePolicyForAccessConfigurationResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &UpdateInlinePolicyForAccessConfigurationResponse{}
@@ -10729,6 +13156,14 @@ func (client *Client) UpdateInlinePolicyForAccessConfiguration(request *UpdateIn
 	return _result, _err
 }
 
+/**
+ * If you enable username-password logon for CloudSSO users, you can also configure MFA for the users.
+ * This topic provides an example on how to enable MFA for all CloudSSO users that belong to the directory named `d-00fc2p61****`.
+ *
+ * @param request UpdateMFAAuthenticationSettingsRequest
+ * @param runtime runtime options for this request RuntimeOptions
+ * @return UpdateMFAAuthenticationSettingsResponse
+ */
 func (client *Client) UpdateMFAAuthenticationSettingsWithOptions(request *UpdateMFAAuthenticationSettingsRequest, runtime *util.RuntimeOptions) (_result *UpdateMFAAuthenticationSettingsResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -10770,6 +13205,13 @@ func (client *Client) UpdateMFAAuthenticationSettingsWithOptions(request *Update
 	return _result, _err
 }
 
+/**
+ * If you enable username-password logon for CloudSSO users, you can also configure MFA for the users.
+ * This topic provides an example on how to enable MFA for all CloudSSO users that belong to the directory named `d-00fc2p61****`.
+ *
+ * @param request UpdateMFAAuthenticationSettingsRequest
+ * @return UpdateMFAAuthenticationSettingsResponse
+ */
 func (client *Client) UpdateMFAAuthenticationSettings(request *UpdateMFAAuthenticationSettingsRequest) (_result *UpdateMFAAuthenticationSettingsResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &UpdateMFAAuthenticationSettingsResponse{}
@@ -10781,6 +13223,15 @@ func (client *Client) UpdateMFAAuthenticationSettings(request *UpdateMFAAuthenti
 	return _result, _err
 }
 
+/**
+ * This topic provides an example on how to disable the SCIM credential whose ID is `scimcred-004whl0kvfwcypbi****`. After the SCIM credential is disabled, the synchronization task that uses the SCIM credential fails. You can call this operation again to enable the SCIM credential.
+ * ## Limits
+ * You can call this operation up to 100 times per second per account. This operation is globally limited to 100 times per second across all accounts. If the number of the calls per second exceeds a limit, throttling is triggered. As a result, your business may be affected. We recommend that you take note of the limits when you call this operation.
+ *
+ * @param request UpdateSCIMServerCredentialStatusRequest
+ * @param runtime runtime options for this request RuntimeOptions
+ * @return UpdateSCIMServerCredentialStatusResponse
+ */
 func (client *Client) UpdateSCIMServerCredentialStatusWithOptions(request *UpdateSCIMServerCredentialStatusRequest, runtime *util.RuntimeOptions) (_result *UpdateSCIMServerCredentialStatusResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -10822,6 +13273,14 @@ func (client *Client) UpdateSCIMServerCredentialStatusWithOptions(request *Updat
 	return _result, _err
 }
 
+/**
+ * This topic provides an example on how to disable the SCIM credential whose ID is `scimcred-004whl0kvfwcypbi****`. After the SCIM credential is disabled, the synchronization task that uses the SCIM credential fails. You can call this operation again to enable the SCIM credential.
+ * ## Limits
+ * You can call this operation up to 100 times per second per account. This operation is globally limited to 100 times per second across all accounts. If the number of the calls per second exceeds a limit, throttling is triggered. As a result, your business may be affected. We recommend that you take note of the limits when you call this operation.
+ *
+ * @param request UpdateSCIMServerCredentialStatusRequest
+ * @return UpdateSCIMServerCredentialStatusResponse
+ */
 func (client *Client) UpdateSCIMServerCredentialStatus(request *UpdateSCIMServerCredentialStatusRequest) (_result *UpdateSCIMServerCredentialStatusResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &UpdateSCIMServerCredentialStatusResponse{}
@@ -10833,6 +13292,17 @@ func (client *Client) UpdateSCIMServerCredentialStatus(request *UpdateSCIMServer
 	return _result, _err
 }
 
+/**
+ * You can modify `FirstName`, `LastName`, `DisplayName`, `Email`, and `Description` for a user. You cannot modify `UserName` for a user.
+ * >  If System for Cross-domain Identity Management (SCIM) synchronization is enabled, you cannot modify the information about a user that is synchronized by using SCIM.
+ * This topic provides an example on how to change the email address of the user whose ID is `u-00q8wbq42wiltcrk****` to `AliceLee@example.com`.
+ * ## Limits
+ * You can call this operation up to 100 times per second per account. This operation is globally limited to 100 times per second across all accounts. If the number of the calls per second exceeds a limit, throttling is triggered. As a result, your business may be affected. We recommend that you take note of the limits when you call this operation.
+ *
+ * @param request UpdateUserRequest
+ * @param runtime runtime options for this request RuntimeOptions
+ * @return UpdateUserResponse
+ */
 func (client *Client) UpdateUserWithOptions(request *UpdateUserRequest, runtime *util.RuntimeOptions) (_result *UpdateUserResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -10890,6 +13360,16 @@ func (client *Client) UpdateUserWithOptions(request *UpdateUserRequest, runtime 
 	return _result, _err
 }
 
+/**
+ * You can modify `FirstName`, `LastName`, `DisplayName`, `Email`, and `Description` for a user. You cannot modify `UserName` for a user.
+ * >  If System for Cross-domain Identity Management (SCIM) synchronization is enabled, you cannot modify the information about a user that is synchronized by using SCIM.
+ * This topic provides an example on how to change the email address of the user whose ID is `u-00q8wbq42wiltcrk****` to `AliceLee@example.com`.
+ * ## Limits
+ * You can call this operation up to 100 times per second per account. This operation is globally limited to 100 times per second across all accounts. If the number of the calls per second exceeds a limit, throttling is triggered. As a result, your business may be affected. We recommend that you take note of the limits when you call this operation.
+ *
+ * @param request UpdateUserRequest
+ * @return UpdateUserResponse
+ */
 func (client *Client) UpdateUser(request *UpdateUserRequest) (_result *UpdateUserResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &UpdateUserResponse{}
@@ -10901,6 +13381,15 @@ func (client *Client) UpdateUser(request *UpdateUserRequest) (_result *UpdateUse
 	return _result, _err
 }
 
+/**
+ * If you call the [UpdateMFAAuthenticationSettings](~~450134~~) operation to set the MFAAuthenticationSettings parameter to `Byuser`, user-specific settings are applied. Then, you must call the UpdateUserMFAAuthenticationSettings operation to configure MFA for each user.
+ * By default, the MFAAuthenticationSettings parameter is set to `Enabled` for a new user.
+ * This topic provides an example on how to enable MFA for the user named `u-00q8wbq42wiltcrk****`.
+ *
+ * @param request UpdateUserMFAAuthenticationSettingsRequest
+ * @param runtime runtime options for this request RuntimeOptions
+ * @return UpdateUserMFAAuthenticationSettingsResponse
+ */
 func (client *Client) UpdateUserMFAAuthenticationSettingsWithOptions(request *UpdateUserMFAAuthenticationSettingsRequest, runtime *util.RuntimeOptions) (_result *UpdateUserMFAAuthenticationSettingsResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -10942,6 +13431,14 @@ func (client *Client) UpdateUserMFAAuthenticationSettingsWithOptions(request *Up
 	return _result, _err
 }
 
+/**
+ * If you call the [UpdateMFAAuthenticationSettings](~~450134~~) operation to set the MFAAuthenticationSettings parameter to `Byuser`, user-specific settings are applied. Then, you must call the UpdateUserMFAAuthenticationSettings operation to configure MFA for each user.
+ * By default, the MFAAuthenticationSettings parameter is set to `Enabled` for a new user.
+ * This topic provides an example on how to enable MFA for the user named `u-00q8wbq42wiltcrk****`.
+ *
+ * @param request UpdateUserMFAAuthenticationSettingsRequest
+ * @return UpdateUserMFAAuthenticationSettingsResponse
+ */
 func (client *Client) UpdateUserMFAAuthenticationSettings(request *UpdateUserMFAAuthenticationSettingsRequest) (_result *UpdateUserMFAAuthenticationSettingsResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &UpdateUserMFAAuthenticationSettingsResponse{}
@@ -10953,6 +13450,15 @@ func (client *Client) UpdateUserMFAAuthenticationSettings(request *UpdateUserMFA
 	return _result, _err
 }
 
+/**
+ * This topic provides an example on how to change the status of the user whose ID is `u-00q8wbq42wiltcrk****` to Disabled. Users in the Disabled state cannot log on to the CloudSSO user portal.
+ * ## Limits
+ * You can call this operation up to 100 times per second per account. This operation is globally limited to 100 times per second across all accounts. If the number of the calls per second exceeds a limit, throttling is triggered. As a result, your business may be affected. We recommend that you take note of the limits when you call this operation.
+ *
+ * @param request UpdateUserStatusRequest
+ * @param runtime runtime options for this request RuntimeOptions
+ * @return UpdateUserStatusResponse
+ */
 func (client *Client) UpdateUserStatusWithOptions(request *UpdateUserStatusRequest, runtime *util.RuntimeOptions) (_result *UpdateUserStatusResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -10994,6 +13500,14 @@ func (client *Client) UpdateUserStatusWithOptions(request *UpdateUserStatusReque
 	return _result, _err
 }
 
+/**
+ * This topic provides an example on how to change the status of the user whose ID is `u-00q8wbq42wiltcrk****` to Disabled. Users in the Disabled state cannot log on to the CloudSSO user portal.
+ * ## Limits
+ * You can call this operation up to 100 times per second per account. This operation is globally limited to 100 times per second across all accounts. If the number of the calls per second exceeds a limit, throttling is triggered. As a result, your business may be affected. We recommend that you take note of the limits when you call this operation.
+ *
+ * @param request UpdateUserStatusRequest
+ * @return UpdateUserStatusResponse
+ */
 func (client *Client) UpdateUserStatus(request *UpdateUserStatusRequest) (_result *UpdateUserStatusResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &UpdateUserStatusResponse{}
