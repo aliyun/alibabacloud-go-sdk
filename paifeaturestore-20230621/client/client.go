@@ -3802,6 +3802,7 @@ func (s *ListFeatureViewRelationshipsResponse) SetBody(v *ListFeatureViewRelatio
 type ListFeatureViewsRequest struct {
 	FeatureName    *string   `json:"FeatureName,omitempty" xml:"FeatureName,omitempty"`
 	FeatureViewIds []*string `json:"FeatureViewIds,omitempty" xml:"FeatureViewIds,omitempty" type:"Repeated"`
+	Name           *string   `json:"Name,omitempty" xml:"Name,omitempty"`
 	Order          *string   `json:"Order,omitempty" xml:"Order,omitempty"`
 	Owner          *string   `json:"Owner,omitempty" xml:"Owner,omitempty"`
 	PageNumber     *int32    `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
@@ -3827,6 +3828,11 @@ func (s *ListFeatureViewsRequest) SetFeatureName(v string) *ListFeatureViewsRequ
 
 func (s *ListFeatureViewsRequest) SetFeatureViewIds(v []*string) *ListFeatureViewsRequest {
 	s.FeatureViewIds = v
+	return s
+}
+
+func (s *ListFeatureViewsRequest) SetName(v string) *ListFeatureViewsRequest {
+	s.Name = &v
 	return s
 }
 
@@ -3873,6 +3879,7 @@ func (s *ListFeatureViewsRequest) SetType(v string) *ListFeatureViewsRequest {
 type ListFeatureViewsShrinkRequest struct {
 	FeatureName          *string `json:"FeatureName,omitempty" xml:"FeatureName,omitempty"`
 	FeatureViewIdsShrink *string `json:"FeatureViewIds,omitempty" xml:"FeatureViewIds,omitempty"`
+	Name                 *string `json:"Name,omitempty" xml:"Name,omitempty"`
 	Order                *string `json:"Order,omitempty" xml:"Order,omitempty"`
 	Owner                *string `json:"Owner,omitempty" xml:"Owner,omitempty"`
 	PageNumber           *int32  `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
@@ -3898,6 +3905,11 @@ func (s *ListFeatureViewsShrinkRequest) SetFeatureName(v string) *ListFeatureVie
 
 func (s *ListFeatureViewsShrinkRequest) SetFeatureViewIdsShrink(v string) *ListFeatureViewsShrinkRequest {
 	s.FeatureViewIdsShrink = &v
+	return s
+}
+
+func (s *ListFeatureViewsShrinkRequest) SetName(v string) *ListFeatureViewsShrinkRequest {
+	s.Name = &v
 	return s
 }
 
@@ -7840,6 +7852,10 @@ func (client *Client) ListFeatureViewsWithOptions(InstanceId *string, tmpReq *Li
 
 	if !tea.BoolValue(util.IsUnset(request.FeatureViewIdsShrink)) {
 		query["FeatureViewIds"] = request.FeatureViewIdsShrink
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Name)) {
+		query["Name"] = request.Name
 	}
 
 	if !tea.BoolValue(util.IsUnset(request.Order)) {
