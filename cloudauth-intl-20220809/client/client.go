@@ -1539,6 +1539,195 @@ func (s *DocOcrResponse) SetBody(v *DocOcrResponseBody) *DocOcrResponse {
 	return s
 }
 
+type EkycVerifyRequest struct {
+	Authorize          *string `json:"Authorize,omitempty" xml:"Authorize,omitempty"`
+	Crop               *string `json:"Crop,omitempty" xml:"Crop,omitempty"`
+	DocName            *string `json:"DocName,omitempty" xml:"DocName,omitempty"`
+	DocNo              *string `json:"DocNo,omitempty" xml:"DocNo,omitempty"`
+	DocType            *string `json:"DocType,omitempty" xml:"DocType,omitempty"`
+	FacePictureBase64  *string `json:"FacePictureBase64,omitempty" xml:"FacePictureBase64,omitempty"`
+	FacePictureUrl     *string `json:"FacePictureUrl,omitempty" xml:"FacePictureUrl,omitempty"`
+	IdOcrPictureBase64 *string `json:"IdOcrPictureBase64,omitempty" xml:"IdOcrPictureBase64,omitempty"`
+	IdOcrPictureUrl    *string `json:"IdOcrPictureUrl,omitempty" xml:"IdOcrPictureUrl,omitempty"`
+	MerchantBizId      *string `json:"MerchantBizId,omitempty" xml:"MerchantBizId,omitempty"`
+	MerchantUserId     *string `json:"MerchantUserId,omitempty" xml:"MerchantUserId,omitempty"`
+	ProductCode        *string `json:"ProductCode,omitempty" xml:"ProductCode,omitempty"`
+}
+
+func (s EkycVerifyRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s EkycVerifyRequest) GoString() string {
+	return s.String()
+}
+
+func (s *EkycVerifyRequest) SetAuthorize(v string) *EkycVerifyRequest {
+	s.Authorize = &v
+	return s
+}
+
+func (s *EkycVerifyRequest) SetCrop(v string) *EkycVerifyRequest {
+	s.Crop = &v
+	return s
+}
+
+func (s *EkycVerifyRequest) SetDocName(v string) *EkycVerifyRequest {
+	s.DocName = &v
+	return s
+}
+
+func (s *EkycVerifyRequest) SetDocNo(v string) *EkycVerifyRequest {
+	s.DocNo = &v
+	return s
+}
+
+func (s *EkycVerifyRequest) SetDocType(v string) *EkycVerifyRequest {
+	s.DocType = &v
+	return s
+}
+
+func (s *EkycVerifyRequest) SetFacePictureBase64(v string) *EkycVerifyRequest {
+	s.FacePictureBase64 = &v
+	return s
+}
+
+func (s *EkycVerifyRequest) SetFacePictureUrl(v string) *EkycVerifyRequest {
+	s.FacePictureUrl = &v
+	return s
+}
+
+func (s *EkycVerifyRequest) SetIdOcrPictureBase64(v string) *EkycVerifyRequest {
+	s.IdOcrPictureBase64 = &v
+	return s
+}
+
+func (s *EkycVerifyRequest) SetIdOcrPictureUrl(v string) *EkycVerifyRequest {
+	s.IdOcrPictureUrl = &v
+	return s
+}
+
+func (s *EkycVerifyRequest) SetMerchantBizId(v string) *EkycVerifyRequest {
+	s.MerchantBizId = &v
+	return s
+}
+
+func (s *EkycVerifyRequest) SetMerchantUserId(v string) *EkycVerifyRequest {
+	s.MerchantUserId = &v
+	return s
+}
+
+func (s *EkycVerifyRequest) SetProductCode(v string) *EkycVerifyRequest {
+	s.ProductCode = &v
+	return s
+}
+
+type EkycVerifyResponseBody struct {
+	Code    *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// Id of the request
+	RequestId *string                       `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	Result    *EkycVerifyResponseBodyResult `json:"Result,omitempty" xml:"Result,omitempty" type:"Struct"`
+}
+
+func (s EkycVerifyResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s EkycVerifyResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *EkycVerifyResponseBody) SetCode(v string) *EkycVerifyResponseBody {
+	s.Code = &v
+	return s
+}
+
+func (s *EkycVerifyResponseBody) SetMessage(v string) *EkycVerifyResponseBody {
+	s.Message = &v
+	return s
+}
+
+func (s *EkycVerifyResponseBody) SetRequestId(v string) *EkycVerifyResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *EkycVerifyResponseBody) SetResult(v *EkycVerifyResponseBodyResult) *EkycVerifyResponseBody {
+	s.Result = v
+	return s
+}
+
+type EkycVerifyResponseBodyResult struct {
+	ExtFaceInfo   *string `json:"ExtFaceInfo,omitempty" xml:"ExtFaceInfo,omitempty"`
+	ExtIdInfo     *string `json:"ExtIdInfo,omitempty" xml:"ExtIdInfo,omitempty"`
+	Passed        *string `json:"Passed,omitempty" xml:"Passed,omitempty"`
+	SubCode       *string `json:"SubCode,omitempty" xml:"SubCode,omitempty"`
+	TransactionId *string `json:"TransactionId,omitempty" xml:"TransactionId,omitempty"`
+}
+
+func (s EkycVerifyResponseBodyResult) String() string {
+	return tea.Prettify(s)
+}
+
+func (s EkycVerifyResponseBodyResult) GoString() string {
+	return s.String()
+}
+
+func (s *EkycVerifyResponseBodyResult) SetExtFaceInfo(v string) *EkycVerifyResponseBodyResult {
+	s.ExtFaceInfo = &v
+	return s
+}
+
+func (s *EkycVerifyResponseBodyResult) SetExtIdInfo(v string) *EkycVerifyResponseBodyResult {
+	s.ExtIdInfo = &v
+	return s
+}
+
+func (s *EkycVerifyResponseBodyResult) SetPassed(v string) *EkycVerifyResponseBodyResult {
+	s.Passed = &v
+	return s
+}
+
+func (s *EkycVerifyResponseBodyResult) SetSubCode(v string) *EkycVerifyResponseBodyResult {
+	s.SubCode = &v
+	return s
+}
+
+func (s *EkycVerifyResponseBodyResult) SetTransactionId(v string) *EkycVerifyResponseBodyResult {
+	s.TransactionId = &v
+	return s
+}
+
+type EkycVerifyResponse struct {
+	Headers    map[string]*string      `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                  `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *EkycVerifyResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s EkycVerifyResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s EkycVerifyResponse) GoString() string {
+	return s.String()
+}
+
+func (s *EkycVerifyResponse) SetHeaders(v map[string]*string) *EkycVerifyResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *EkycVerifyResponse) SetStatusCode(v int32) *EkycVerifyResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *EkycVerifyResponse) SetBody(v *EkycVerifyResponseBody) *EkycVerifyResponse {
+	s.Body = v
+	return s
+}
+
 type FaceCompareRequest struct {
 	MerchantBizId        *string `json:"MerchantBizId,omitempty" xml:"MerchantBizId,omitempty"`
 	SourceFacePicture    *string `json:"SourceFacePicture,omitempty" xml:"SourceFacePicture,omitempty"`
@@ -1979,6 +2168,7 @@ type InitializeRequest struct {
 	Pages         *string `json:"Pages,omitempty" xml:"Pages,omitempty"`
 	ProductCode   *string `json:"ProductCode,omitempty" xml:"ProductCode,omitempty"`
 	ProductConfig *string `json:"ProductConfig,omitempty" xml:"ProductConfig,omitempty"`
+	ProductFlow   *string `json:"ProductFlow,omitempty" xml:"ProductFlow,omitempty"`
 	ReturnUrl     *string `json:"ReturnUrl,omitempty" xml:"ReturnUrl,omitempty"`
 	SceneCode     *string `json:"SceneCode,omitempty" xml:"SceneCode,omitempty"`
 	ServiceLevel  *string `json:"ServiceLevel,omitempty" xml:"ServiceLevel,omitempty"`
@@ -2074,6 +2264,11 @@ func (s *InitializeRequest) SetProductCode(v string) *InitializeRequest {
 
 func (s *InitializeRequest) SetProductConfig(v string) *InitializeRequest {
 	s.ProductConfig = &v
+	return s
+}
+
+func (s *InitializeRequest) SetProductFlow(v string) *InitializeRequest {
+	s.ProductFlow = &v
 	return s
 }
 
@@ -2840,6 +3035,94 @@ func (client *Client) DocOcr(request *DocOcrRequest) (_result *DocOcrResponse, _
 	return _result, _err
 }
 
+func (client *Client) EkycVerifyWithOptions(request *EkycVerifyRequest, runtime *util.RuntimeOptions) (_result *EkycVerifyResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.Authorize)) {
+		query["Authorize"] = request.Authorize
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Crop)) {
+		query["Crop"] = request.Crop
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.DocName)) {
+		query["DocName"] = request.DocName
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.DocNo)) {
+		query["DocNo"] = request.DocNo
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.DocType)) {
+		query["DocType"] = request.DocType
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.FacePictureBase64)) {
+		query["FacePictureBase64"] = request.FacePictureBase64
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.FacePictureUrl)) {
+		query["FacePictureUrl"] = request.FacePictureUrl
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.IdOcrPictureBase64)) {
+		query["IdOcrPictureBase64"] = request.IdOcrPictureBase64
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.IdOcrPictureUrl)) {
+		query["IdOcrPictureUrl"] = request.IdOcrPictureUrl
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.MerchantBizId)) {
+		query["MerchantBizId"] = request.MerchantBizId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.MerchantUserId)) {
+		query["MerchantUserId"] = request.MerchantUserId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ProductCode)) {
+		query["ProductCode"] = request.ProductCode
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("EkycVerify"),
+		Version:     tea.String("2022-08-09"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &EkycVerifyResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) EkycVerify(request *EkycVerifyRequest) (_result *EkycVerifyResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &EkycVerifyResponse{}
+	_body, _err := client.EkycVerifyWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
 func (client *Client) FaceCompareWithOptions(request *FaceCompareRequest, runtime *util.RuntimeOptions) (_result *FaceCompareResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -3100,6 +3383,10 @@ func (client *Client) InitializeWithOptions(request *InitializeRequest, runtime 
 
 	if !tea.BoolValue(util.IsUnset(request.ProductConfig)) {
 		query["ProductConfig"] = request.ProductConfig
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ProductFlow)) {
+		query["ProductFlow"] = request.ProductFlow
 	}
 
 	if !tea.BoolValue(util.IsUnset(request.ReturnUrl)) {
