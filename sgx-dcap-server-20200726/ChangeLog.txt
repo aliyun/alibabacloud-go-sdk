@@ -1,0 +1,3 @@
+2023-09-05 Version: v1.0.0
+- Generated golang 2020-07-26 for sgx-dcap-server.
+
