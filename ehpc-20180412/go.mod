@@ -1,4 +1,4 @@
-module github.com/alibabacloud-go/ehpc-20180412/v3
+module github.com/alibabacloud-go/ehpc-20180412/v4
 
 go 1.15
 
