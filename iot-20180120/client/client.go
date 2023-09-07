@@ -28669,6 +28669,7 @@ type InvokeThingServiceRequest struct {
 	//
 	// >If you configure this parameter, you must specify a value for the **DeviceName** parameter.
 	ProductKey *string `json:"ProductKey,omitempty" xml:"ProductKey,omitempty"`
+	Qos        *int32  `json:"Qos,omitempty" xml:"Qos,omitempty"`
 }
 
 func (s InvokeThingServiceRequest) String() string {
@@ -28706,6 +28707,11 @@ func (s *InvokeThingServiceRequest) SetIotInstanceId(v string) *InvokeThingServi
 
 func (s *InvokeThingServiceRequest) SetProductKey(v string) *InvokeThingServiceRequest {
 	s.ProductKey = &v
+	return s
+}
+
+func (s *InvokeThingServiceRequest) SetQos(v int32) *InvokeThingServiceRequest {
+	s.Qos = &v
 	return s
 }
 
@@ -35824,6 +35830,7 @@ type PubRequest struct {
 	// The response topic in the request/response communication mode when you use MQTT 5.0. For more information, see [MQTT 5.0](~~30540~~).
 	ResponseTopic *string `json:"ResponseTopic,omitempty" xml:"ResponseTopic,omitempty"`
 	Retained      *bool   `json:"Retained,omitempty" xml:"Retained,omitempty"`
+	TopicAlias    *int32  `json:"TopicAlias,omitempty" xml:"TopicAlias,omitempty"`
 	// The custom topic for the device that receives the message.
 	//
 	// *   Topic format: `/${productKey}/${deviceName}/user/${TopicShortName}`.
@@ -35896,6 +35903,11 @@ func (s *PubRequest) SetResponseTopic(v string) *PubRequest {
 
 func (s *PubRequest) SetRetained(v bool) *PubRequest {
 	s.Retained = &v
+	return s
+}
+
+func (s *PubRequest) SetTopicAlias(v int32) *PubRequest {
+	s.TopicAlias = &v
 	return s
 }
 
@@ -58326,8 +58338,7 @@ type RRpcRequest struct {
 	// For more information, see [Overview](~~356505~~).
 	IotInstanceId *string `json:"IotInstanceId,omitempty" xml:"IotInstanceId,omitempty"`
 	// The ProductKey of the product to which the device belongs.
-	ProductKey *string `json:"ProductKey,omitempty" xml:"ProductKey,omitempty"`
-	// The string that is obtained by performing Base64 encoding on the message. Example: `dGhpcyBpcyBhbiBleGFtcGxl`.
+	ProductKey        *string `json:"ProductKey,omitempty" xml:"ProductKey,omitempty"`
 	RequestBase64Byte *string `json:"RequestBase64Byte,omitempty" xml:"RequestBase64Byte,omitempty"`
 	// The timeout period of a response. Unit: milliseconds. Valid values: 1000 to 8000.
 	Timeout *int32 `json:"Timeout,omitempty" xml:"Timeout,omitempty"`
@@ -60831,6 +60842,7 @@ type SetDevicePropertyRequest struct {
 	//
 	// > If you configure this parameter, you must also specify a value for the **DeviceName** parameter.
 	ProductKey *string `json:"ProductKey,omitempty" xml:"ProductKey,omitempty"`
+	Qos        *int32  `json:"Qos,omitempty" xml:"Qos,omitempty"`
 }
 
 func (s SetDevicePropertyRequest) String() string {
@@ -60863,6 +60875,11 @@ func (s *SetDevicePropertyRequest) SetItems(v string) *SetDevicePropertyRequest 
 
 func (s *SetDevicePropertyRequest) SetProductKey(v string) *SetDevicePropertyRequest {
 	s.ProductKey = &v
+	return s
+}
+
+func (s *SetDevicePropertyRequest) SetQos(v int32) *SetDevicePropertyRequest {
+	s.Qos = &v
 	return s
 }
 
@@ -80867,6 +80884,10 @@ func (client *Client) InvokeThingServiceWithOptions(request *InvokeThingServiceR
 		query["ProductKey"] = request.ProductKey
 	}
 
+	if !tea.BoolValue(util.IsUnset(request.Qos)) {
+		query["Qos"] = request.Qos
+	}
+
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
 	}
@@ -83282,6 +83303,10 @@ func (client *Client) PubWithOptions(request *PubRequest, runtime *util.RuntimeO
 
 	if !tea.BoolValue(util.IsUnset(request.Retained)) {
 		query["Retained"] = request.Retained
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.TopicAlias)) {
+		query["TopicAlias"] = request.TopicAlias
 	}
 
 	if !tea.BoolValue(util.IsUnset(request.TopicFullName)) {
@@ -90755,10 +90780,6 @@ func (client *Client) RRpcWithOptions(request *RRpcRequest, runtime *util.Runtim
 		query["ProductKey"] = request.ProductKey
 	}
 
-	if !tea.BoolValue(util.IsUnset(request.RequestBase64Byte)) {
-		query["RequestBase64Byte"] = request.RequestBase64Byte
-	}
-
 	if !tea.BoolValue(util.IsUnset(request.Timeout)) {
 		query["Timeout"] = request.Timeout
 	}
@@ -90767,8 +90788,14 @@ func (client *Client) RRpcWithOptions(request *RRpcRequest, runtime *util.Runtim
 		query["Topic"] = request.Topic
 	}
 
+	body := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.RequestBase64Byte)) {
+		body["RequestBase64Byte"] = request.RequestBase64Byte
+	}
+
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
+		Body:  openapiutil.ParseToMap(body),
 	}
 	params := &openapi.Params{
 		Action:      tea.String("RRpc"),
@@ -92069,6 +92096,10 @@ func (client *Client) SetDevicePropertyWithOptions(request *SetDevicePropertyReq
 
 	if !tea.BoolValue(util.IsUnset(request.ProductKey)) {
 		query["ProductKey"] = request.ProductKey
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Qos)) {
+		query["Qos"] = request.Qos
 	}
 
 	req := &openapi.OpenApiRequest{
