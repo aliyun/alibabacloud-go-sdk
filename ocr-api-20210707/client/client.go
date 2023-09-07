@@ -13,6 +13,239 @@ import (
 	"io"
 )
 
+type DataSubImagesFigureInfoValue struct {
+	FigureCount   *int32                                       `json:"FigureCount,omitempty" xml:"FigureCount,omitempty"`
+	FigureDetails []*DataSubImagesFigureInfoValueFigureDetails `json:"FigureDetails,omitempty" xml:"FigureDetails,omitempty" type:"Repeated"`
+}
+
+func (s DataSubImagesFigureInfoValue) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DataSubImagesFigureInfoValue) GoString() string {
+	return s.String()
+}
+
+func (s *DataSubImagesFigureInfoValue) SetFigureCount(v int32) *DataSubImagesFigureInfoValue {
+	s.FigureCount = &v
+	return s
+}
+
+func (s *DataSubImagesFigureInfoValue) SetFigureDetails(v []*DataSubImagesFigureInfoValueFigureDetails) *DataSubImagesFigureInfoValue {
+	s.FigureDetails = v
+	return s
+}
+
+type DataSubImagesFigureInfoValueFigureDetails struct {
+	Type         *string                                                  `json:"Type,omitempty" xml:"Type,omitempty"`
+	Data         interface{}                                              `json:"Data,omitempty" xml:"Data,omitempty"`
+	FigurePoints []*DataSubImagesFigureInfoValueFigureDetailsFigurePoints `json:"FigurePoints,omitempty" xml:"FigurePoints,omitempty" type:"Repeated"`
+	FigureRect   *DataSubImagesFigureInfoValueFigureDetailsFigureRect     `json:"FigureRect,omitempty" xml:"FigureRect,omitempty" type:"Struct"`
+	FigureAngle  *int32                                                   `json:"FigureAngle,omitempty" xml:"FigureAngle,omitempty"`
+}
+
+func (s DataSubImagesFigureInfoValueFigureDetails) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DataSubImagesFigureInfoValueFigureDetails) GoString() string {
+	return s.String()
+}
+
+func (s *DataSubImagesFigureInfoValueFigureDetails) SetType(v string) *DataSubImagesFigureInfoValueFigureDetails {
+	s.Type = &v
+	return s
+}
+
+func (s *DataSubImagesFigureInfoValueFigureDetails) SetData(v interface{}) *DataSubImagesFigureInfoValueFigureDetails {
+	s.Data = v
+	return s
+}
+
+func (s *DataSubImagesFigureInfoValueFigureDetails) SetFigurePoints(v []*DataSubImagesFigureInfoValueFigureDetailsFigurePoints) *DataSubImagesFigureInfoValueFigureDetails {
+	s.FigurePoints = v
+	return s
+}
+
+func (s *DataSubImagesFigureInfoValueFigureDetails) SetFigureRect(v *DataSubImagesFigureInfoValueFigureDetailsFigureRect) *DataSubImagesFigureInfoValueFigureDetails {
+	s.FigureRect = v
+	return s
+}
+
+func (s *DataSubImagesFigureInfoValueFigureDetails) SetFigureAngle(v int32) *DataSubImagesFigureInfoValueFigureDetails {
+	s.FigureAngle = &v
+	return s
+}
+
+type DataSubImagesFigureInfoValueFigureDetailsFigurePoints struct {
+	X *int32 `json:"X,omitempty" xml:"X,omitempty"`
+	Y *int32 `json:"Y,omitempty" xml:"Y,omitempty"`
+}
+
+func (s DataSubImagesFigureInfoValueFigureDetailsFigurePoints) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DataSubImagesFigureInfoValueFigureDetailsFigurePoints) GoString() string {
+	return s.String()
+}
+
+func (s *DataSubImagesFigureInfoValueFigureDetailsFigurePoints) SetX(v int32) *DataSubImagesFigureInfoValueFigureDetailsFigurePoints {
+	s.X = &v
+	return s
+}
+
+func (s *DataSubImagesFigureInfoValueFigureDetailsFigurePoints) SetY(v int32) *DataSubImagesFigureInfoValueFigureDetailsFigurePoints {
+	s.Y = &v
+	return s
+}
+
+type DataSubImagesFigureInfoValueFigureDetailsFigureRect struct {
+	CenterX *int32 `json:"CenterX,omitempty" xml:"CenterX,omitempty"`
+	CenterY *int32 `json:"CenterY,omitempty" xml:"CenterY,omitempty"`
+	Width   *int32 `json:"Width,omitempty" xml:"Width,omitempty"`
+	Height  *int32 `json:"Height,omitempty" xml:"Height,omitempty"`
+}
+
+func (s DataSubImagesFigureInfoValueFigureDetailsFigureRect) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DataSubImagesFigureInfoValueFigureDetailsFigureRect) GoString() string {
+	return s.String()
+}
+
+func (s *DataSubImagesFigureInfoValueFigureDetailsFigureRect) SetCenterX(v int32) *DataSubImagesFigureInfoValueFigureDetailsFigureRect {
+	s.CenterX = &v
+	return s
+}
+
+func (s *DataSubImagesFigureInfoValueFigureDetailsFigureRect) SetCenterY(v int32) *DataSubImagesFigureInfoValueFigureDetailsFigureRect {
+	s.CenterY = &v
+	return s
+}
+
+func (s *DataSubImagesFigureInfoValueFigureDetailsFigureRect) SetWidth(v int32) *DataSubImagesFigureInfoValueFigureDetailsFigureRect {
+	s.Width = &v
+	return s
+}
+
+func (s *DataSubImagesFigureInfoValueFigureDetailsFigureRect) SetHeight(v int32) *DataSubImagesFigureInfoValueFigureDetailsFigureRect {
+	s.Height = &v
+	return s
+}
+
+type DataSubImagesKvInfoKvDetailsValue struct {
+	KeyName         *string                                         `json:"KeyName,omitempty" xml:"KeyName,omitempty"`
+	KeyConfidence   *int32                                          `json:"KeyConfidence,omitempty" xml:"KeyConfidence,omitempty"`
+	Value           *string                                         `json:"Value,omitempty" xml:"Value,omitempty"`
+	ValueConfidence *int32                                          `json:"ValueConfidence,omitempty" xml:"ValueConfidence,omitempty"`
+	ValuePoints     []*DataSubImagesKvInfoKvDetailsValueValuePoints `json:"ValuePoints,omitempty" xml:"ValuePoints,omitempty" type:"Repeated"`
+	ValueRect       *DataSubImagesKvInfoKvDetailsValueValueRect     `json:"ValueRect,omitempty" xml:"ValueRect,omitempty" type:"Struct"`
+	ValueAngle      *int32                                          `json:"ValueAngle,omitempty" xml:"ValueAngle,omitempty"`
+}
+
+func (s DataSubImagesKvInfoKvDetailsValue) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DataSubImagesKvInfoKvDetailsValue) GoString() string {
+	return s.String()
+}
+
+func (s *DataSubImagesKvInfoKvDetailsValue) SetKeyName(v string) *DataSubImagesKvInfoKvDetailsValue {
+	s.KeyName = &v
+	return s
+}
+
+func (s *DataSubImagesKvInfoKvDetailsValue) SetKeyConfidence(v int32) *DataSubImagesKvInfoKvDetailsValue {
+	s.KeyConfidence = &v
+	return s
+}
+
+func (s *DataSubImagesKvInfoKvDetailsValue) SetValue(v string) *DataSubImagesKvInfoKvDetailsValue {
+	s.Value = &v
+	return s
+}
+
+func (s *DataSubImagesKvInfoKvDetailsValue) SetValueConfidence(v int32) *DataSubImagesKvInfoKvDetailsValue {
+	s.ValueConfidence = &v
+	return s
+}
+
+func (s *DataSubImagesKvInfoKvDetailsValue) SetValuePoints(v []*DataSubImagesKvInfoKvDetailsValueValuePoints) *DataSubImagesKvInfoKvDetailsValue {
+	s.ValuePoints = v
+	return s
+}
+
+func (s *DataSubImagesKvInfoKvDetailsValue) SetValueRect(v *DataSubImagesKvInfoKvDetailsValueValueRect) *DataSubImagesKvInfoKvDetailsValue {
+	s.ValueRect = v
+	return s
+}
+
+func (s *DataSubImagesKvInfoKvDetailsValue) SetValueAngle(v int32) *DataSubImagesKvInfoKvDetailsValue {
+	s.ValueAngle = &v
+	return s
+}
+
+type DataSubImagesKvInfoKvDetailsValueValuePoints struct {
+	X *int32 `json:"X,omitempty" xml:"X,omitempty"`
+	Y *int32 `json:"Y,omitempty" xml:"Y,omitempty"`
+}
+
+func (s DataSubImagesKvInfoKvDetailsValueValuePoints) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DataSubImagesKvInfoKvDetailsValueValuePoints) GoString() string {
+	return s.String()
+}
+
+func (s *DataSubImagesKvInfoKvDetailsValueValuePoints) SetX(v int32) *DataSubImagesKvInfoKvDetailsValueValuePoints {
+	s.X = &v
+	return s
+}
+
+func (s *DataSubImagesKvInfoKvDetailsValueValuePoints) SetY(v int32) *DataSubImagesKvInfoKvDetailsValueValuePoints {
+	s.Y = &v
+	return s
+}
+
+type DataSubImagesKvInfoKvDetailsValueValueRect struct {
+	CenterX *int32 `json:"CenterX,omitempty" xml:"CenterX,omitempty"`
+	CenterY *int32 `json:"CenterY,omitempty" xml:"CenterY,omitempty"`
+	Width   *int32 `json:"Width,omitempty" xml:"Width,omitempty"`
+	Height  *int32 `json:"Height,omitempty" xml:"Height,omitempty"`
+}
+
+func (s DataSubImagesKvInfoKvDetailsValueValueRect) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DataSubImagesKvInfoKvDetailsValueValueRect) GoString() string {
+	return s.String()
+}
+
+func (s *DataSubImagesKvInfoKvDetailsValueValueRect) SetCenterX(v int32) *DataSubImagesKvInfoKvDetailsValueValueRect {
+	s.CenterX = &v
+	return s
+}
+
+func (s *DataSubImagesKvInfoKvDetailsValueValueRect) SetCenterY(v int32) *DataSubImagesKvInfoKvDetailsValueValueRect {
+	s.CenterY = &v
+	return s
+}
+
+func (s *DataSubImagesKvInfoKvDetailsValueValueRect) SetWidth(v int32) *DataSubImagesKvInfoKvDetailsValueValueRect {
+	s.Width = &v
+	return s
+}
+
+func (s *DataSubImagesKvInfoKvDetailsValueValueRect) SetHeight(v int32) *DataSubImagesKvInfoKvDetailsValueValueRect {
+	s.Height = &v
+	return s
+}
+
 type RecognizeAdvancedRequest struct {
 	NeedRotate     *bool     `json:"NeedRotate,omitempty" xml:"NeedRotate,omitempty"`
 	NeedSortPage   *bool     `json:"NeedSortPage,omitempty" xml:"NeedSortPage,omitempty"`
@@ -231,6 +464,3550 @@ func (s *RecognizeAirItineraryResponse) SetStatusCode(v int32) *RecognizeAirItin
 }
 
 func (s *RecognizeAirItineraryResponse) SetBody(v *RecognizeAirItineraryResponseBody) *RecognizeAirItineraryResponse {
+	s.Body = v
+	return s
+}
+
+type RecognizeAllTextRequest struct {
+	AdvancedConfig            *RecognizeAllTextRequestAdvancedConfig            `json:"AdvancedConfig,omitempty" xml:"AdvancedConfig,omitempty" type:"Struct"`
+	IdCardConfig              *RecognizeAllTextRequestIdCardConfig              `json:"IdCardConfig,omitempty" xml:"IdCardConfig,omitempty" type:"Struct"`
+	InternationalIdCardConfig *RecognizeAllTextRequestInternationalIdCardConfig `json:"InternationalIdCardConfig,omitempty" xml:"InternationalIdCardConfig,omitempty" type:"Struct"`
+	MultiLanConfig            *RecognizeAllTextRequestMultiLanConfig            `json:"MultiLanConfig,omitempty" xml:"MultiLanConfig,omitempty" type:"Struct"`
+	OutputBarCode             *bool                                             `json:"OutputBarCode,omitempty" xml:"OutputBarCode,omitempty"`
+	OutputCoordinate          []byte                                            `json:"OutputCoordinate,omitempty" xml:"OutputCoordinate,omitempty"`
+	OutputFigure              *bool                                             `json:"OutputFigure,omitempty" xml:"OutputFigure,omitempty"`
+	OutputKVExcel             *bool                                             `json:"OutputKVExcel,omitempty" xml:"OutputKVExcel,omitempty"`
+	OutputOricoord            *bool                                             `json:"OutputOricoord,omitempty" xml:"OutputOricoord,omitempty"`
+	OutputQrcode              *bool                                             `json:"OutputQrcode,omitempty" xml:"OutputQrcode,omitempty"`
+	OutputStamp               *bool                                             `json:"OutputStamp,omitempty" xml:"OutputStamp,omitempty"`
+	PageNo                    *int32                                            `json:"PageNo,omitempty" xml:"PageNo,omitempty"`
+	Type                      *string                                           `json:"Type,omitempty" xml:"Type,omitempty"`
+	Url                       *string                                           `json:"Url,omitempty" xml:"Url,omitempty"`
+	Body                      io.Reader                                         `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s RecognizeAllTextRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s RecognizeAllTextRequest) GoString() string {
+	return s.String()
+}
+
+func (s *RecognizeAllTextRequest) SetAdvancedConfig(v *RecognizeAllTextRequestAdvancedConfig) *RecognizeAllTextRequest {
+	s.AdvancedConfig = v
+	return s
+}
+
+func (s *RecognizeAllTextRequest) SetIdCardConfig(v *RecognizeAllTextRequestIdCardConfig) *RecognizeAllTextRequest {
+	s.IdCardConfig = v
+	return s
+}
+
+func (s *RecognizeAllTextRequest) SetInternationalIdCardConfig(v *RecognizeAllTextRequestInternationalIdCardConfig) *RecognizeAllTextRequest {
+	s.InternationalIdCardConfig = v
+	return s
+}
+
+func (s *RecognizeAllTextRequest) SetMultiLanConfig(v *RecognizeAllTextRequestMultiLanConfig) *RecognizeAllTextRequest {
+	s.MultiLanConfig = v
+	return s
+}
+
+func (s *RecognizeAllTextRequest) SetOutputBarCode(v bool) *RecognizeAllTextRequest {
+	s.OutputBarCode = &v
+	return s
+}
+
+func (s *RecognizeAllTextRequest) SetOutputCoordinate(v []byte) *RecognizeAllTextRequest {
+	s.OutputCoordinate = v
+	return s
+}
+
+func (s *RecognizeAllTextRequest) SetOutputFigure(v bool) *RecognizeAllTextRequest {
+	s.OutputFigure = &v
+	return s
+}
+
+func (s *RecognizeAllTextRequest) SetOutputKVExcel(v bool) *RecognizeAllTextRequest {
+	s.OutputKVExcel = &v
+	return s
+}
+
+func (s *RecognizeAllTextRequest) SetOutputOricoord(v bool) *RecognizeAllTextRequest {
+	s.OutputOricoord = &v
+	return s
+}
+
+func (s *RecognizeAllTextRequest) SetOutputQrcode(v bool) *RecognizeAllTextRequest {
+	s.OutputQrcode = &v
+	return s
+}
+
+func (s *RecognizeAllTextRequest) SetOutputStamp(v bool) *RecognizeAllTextRequest {
+	s.OutputStamp = &v
+	return s
+}
+
+func (s *RecognizeAllTextRequest) SetPageNo(v int32) *RecognizeAllTextRequest {
+	s.PageNo = &v
+	return s
+}
+
+func (s *RecognizeAllTextRequest) SetType(v string) *RecognizeAllTextRequest {
+	s.Type = &v
+	return s
+}
+
+func (s *RecognizeAllTextRequest) SetUrl(v string) *RecognizeAllTextRequest {
+	s.Url = &v
+	return s
+}
+
+func (s *RecognizeAllTextRequest) SetBody(v io.Reader) *RecognizeAllTextRequest {
+	s.Body = v
+	return s
+}
+
+type RecognizeAllTextRequestAdvancedConfig struct {
+	IsHandWritingTable *bool `json:"IsHandWritingTable,omitempty" xml:"IsHandWritingTable,omitempty"`
+	IsLineLessTable    *bool `json:"IsLineLessTable,omitempty" xml:"IsLineLessTable,omitempty"`
+	OutputCharInfo     *bool `json:"OutputCharInfo,omitempty" xml:"OutputCharInfo,omitempty"`
+	OutputParagraph    *bool `json:"OutputParagraph,omitempty" xml:"OutputParagraph,omitempty"`
+	OutputRow          *bool `json:"OutputRow,omitempty" xml:"OutputRow,omitempty"`
+	OutputTable        *bool `json:"OutputTable,omitempty" xml:"OutputTable,omitempty"`
+	OutputTableExcel   *bool `json:"OutputTableExcel,omitempty" xml:"OutputTableExcel,omitempty"`
+	OutputTableHtml    *bool `json:"OutputTableHtml,omitempty" xml:"OutputTableHtml,omitempty"`
+}
+
+func (s RecognizeAllTextRequestAdvancedConfig) String() string {
+	return tea.Prettify(s)
+}
+
+func (s RecognizeAllTextRequestAdvancedConfig) GoString() string {
+	return s.String()
+}
+
+func (s *RecognizeAllTextRequestAdvancedConfig) SetIsHandWritingTable(v bool) *RecognizeAllTextRequestAdvancedConfig {
+	s.IsHandWritingTable = &v
+	return s
+}
+
+func (s *RecognizeAllTextRequestAdvancedConfig) SetIsLineLessTable(v bool) *RecognizeAllTextRequestAdvancedConfig {
+	s.IsLineLessTable = &v
+	return s
+}
+
+func (s *RecognizeAllTextRequestAdvancedConfig) SetOutputCharInfo(v bool) *RecognizeAllTextRequestAdvancedConfig {
+	s.OutputCharInfo = &v
+	return s
+}
+
+func (s *RecognizeAllTextRequestAdvancedConfig) SetOutputParagraph(v bool) *RecognizeAllTextRequestAdvancedConfig {
+	s.OutputParagraph = &v
+	return s
+}
+
+func (s *RecognizeAllTextRequestAdvancedConfig) SetOutputRow(v bool) *RecognizeAllTextRequestAdvancedConfig {
+	s.OutputRow = &v
+	return s
+}
+
+func (s *RecognizeAllTextRequestAdvancedConfig) SetOutputTable(v bool) *RecognizeAllTextRequestAdvancedConfig {
+	s.OutputTable = &v
+	return s
+}
+
+func (s *RecognizeAllTextRequestAdvancedConfig) SetOutputTableExcel(v bool) *RecognizeAllTextRequestAdvancedConfig {
+	s.OutputTableExcel = &v
+	return s
+}
+
+func (s *RecognizeAllTextRequestAdvancedConfig) SetOutputTableHtml(v bool) *RecognizeAllTextRequestAdvancedConfig {
+	s.OutputTableHtml = &v
+	return s
+}
+
+type RecognizeAllTextRequestIdCardConfig struct {
+	OutputIdCardQuality *bool `json:"OutputIdCardQuality,omitempty" xml:"OutputIdCardQuality,omitempty"`
+}
+
+func (s RecognizeAllTextRequestIdCardConfig) String() string {
+	return tea.Prettify(s)
+}
+
+func (s RecognizeAllTextRequestIdCardConfig) GoString() string {
+	return s.String()
+}
+
+func (s *RecognizeAllTextRequestIdCardConfig) SetOutputIdCardQuality(v bool) *RecognizeAllTextRequestIdCardConfig {
+	s.OutputIdCardQuality = &v
+	return s
+}
+
+type RecognizeAllTextRequestInternationalIdCardConfig struct {
+	Country *string `json:"Country,omitempty" xml:"Country,omitempty"`
+}
+
+func (s RecognizeAllTextRequestInternationalIdCardConfig) String() string {
+	return tea.Prettify(s)
+}
+
+func (s RecognizeAllTextRequestInternationalIdCardConfig) GoString() string {
+	return s.String()
+}
+
+func (s *RecognizeAllTextRequestInternationalIdCardConfig) SetCountry(v string) *RecognizeAllTextRequestInternationalIdCardConfig {
+	s.Country = &v
+	return s
+}
+
+type RecognizeAllTextRequestMultiLanConfig struct {
+	Languages *string `json:"Languages,omitempty" xml:"Languages,omitempty"`
+}
+
+func (s RecognizeAllTextRequestMultiLanConfig) String() string {
+	return tea.Prettify(s)
+}
+
+func (s RecognizeAllTextRequestMultiLanConfig) GoString() string {
+	return s.String()
+}
+
+func (s *RecognizeAllTextRequestMultiLanConfig) SetLanguages(v string) *RecognizeAllTextRequestMultiLanConfig {
+	s.Languages = &v
+	return s
+}
+
+type RecognizeAllTextShrinkRequest struct {
+	AdvancedConfigShrink            *string   `json:"AdvancedConfig,omitempty" xml:"AdvancedConfig,omitempty"`
+	IdCardConfigShrink              *string   `json:"IdCardConfig,omitempty" xml:"IdCardConfig,omitempty"`
+	InternationalIdCardConfigShrink *string   `json:"InternationalIdCardConfig,omitempty" xml:"InternationalIdCardConfig,omitempty"`
+	MultiLanConfigShrink            *string   `json:"MultiLanConfig,omitempty" xml:"MultiLanConfig,omitempty"`
+	OutputBarCode                   *bool     `json:"OutputBarCode,omitempty" xml:"OutputBarCode,omitempty"`
+	OutputCoordinate                []byte    `json:"OutputCoordinate,omitempty" xml:"OutputCoordinate,omitempty"`
+	OutputFigure                    *bool     `json:"OutputFigure,omitempty" xml:"OutputFigure,omitempty"`
+	OutputKVExcel                   *bool     `json:"OutputKVExcel,omitempty" xml:"OutputKVExcel,omitempty"`
+	OutputOricoord                  *bool     `json:"OutputOricoord,omitempty" xml:"OutputOricoord,omitempty"`
+	OutputQrcode                    *bool     `json:"OutputQrcode,omitempty" xml:"OutputQrcode,omitempty"`
+	OutputStamp                     *bool     `json:"OutputStamp,omitempty" xml:"OutputStamp,omitempty"`
+	PageNo                          *int32    `json:"PageNo,omitempty" xml:"PageNo,omitempty"`
+	Type                            *string   `json:"Type,omitempty" xml:"Type,omitempty"`
+	Url                             *string   `json:"Url,omitempty" xml:"Url,omitempty"`
+	Body                            io.Reader `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s RecognizeAllTextShrinkRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s RecognizeAllTextShrinkRequest) GoString() string {
+	return s.String()
+}
+
+func (s *RecognizeAllTextShrinkRequest) SetAdvancedConfigShrink(v string) *RecognizeAllTextShrinkRequest {
+	s.AdvancedConfigShrink = &v
+	return s
+}
+
+func (s *RecognizeAllTextShrinkRequest) SetIdCardConfigShrink(v string) *RecognizeAllTextShrinkRequest {
+	s.IdCardConfigShrink = &v
+	return s
+}
+
+func (s *RecognizeAllTextShrinkRequest) SetInternationalIdCardConfigShrink(v string) *RecognizeAllTextShrinkRequest {
+	s.InternationalIdCardConfigShrink = &v
+	return s
+}
+
+func (s *RecognizeAllTextShrinkRequest) SetMultiLanConfigShrink(v string) *RecognizeAllTextShrinkRequest {
+	s.MultiLanConfigShrink = &v
+	return s
+}
+
+func (s *RecognizeAllTextShrinkRequest) SetOutputBarCode(v bool) *RecognizeAllTextShrinkRequest {
+	s.OutputBarCode = &v
+	return s
+}
+
+func (s *RecognizeAllTextShrinkRequest) SetOutputCoordinate(v []byte) *RecognizeAllTextShrinkRequest {
+	s.OutputCoordinate = v
+	return s
+}
+
+func (s *RecognizeAllTextShrinkRequest) SetOutputFigure(v bool) *RecognizeAllTextShrinkRequest {
+	s.OutputFigure = &v
+	return s
+}
+
+func (s *RecognizeAllTextShrinkRequest) SetOutputKVExcel(v bool) *RecognizeAllTextShrinkRequest {
+	s.OutputKVExcel = &v
+	return s
+}
+
+func (s *RecognizeAllTextShrinkRequest) SetOutputOricoord(v bool) *RecognizeAllTextShrinkRequest {
+	s.OutputOricoord = &v
+	return s
+}
+
+func (s *RecognizeAllTextShrinkRequest) SetOutputQrcode(v bool) *RecognizeAllTextShrinkRequest {
+	s.OutputQrcode = &v
+	return s
+}
+
+func (s *RecognizeAllTextShrinkRequest) SetOutputStamp(v bool) *RecognizeAllTextShrinkRequest {
+	s.OutputStamp = &v
+	return s
+}
+
+func (s *RecognizeAllTextShrinkRequest) SetPageNo(v int32) *RecognizeAllTextShrinkRequest {
+	s.PageNo = &v
+	return s
+}
+
+func (s *RecognizeAllTextShrinkRequest) SetType(v string) *RecognizeAllTextShrinkRequest {
+	s.Type = &v
+	return s
+}
+
+func (s *RecognizeAllTextShrinkRequest) SetUrl(v string) *RecognizeAllTextShrinkRequest {
+	s.Url = &v
+	return s
+}
+
+func (s *RecognizeAllTextShrinkRequest) SetBody(v io.Reader) *RecognizeAllTextShrinkRequest {
+	s.Body = v
+	return s
+}
+
+type RecognizeAllTextResponseBody struct {
+	Code      *string                           `json:"Code,omitempty" xml:"Code,omitempty"`
+	Data      *RecognizeAllTextResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
+	Message   *string                           `json:"Message,omitempty" xml:"Message,omitempty"`
+	RequestId *string                           `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+}
+
+func (s RecognizeAllTextResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s RecognizeAllTextResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *RecognizeAllTextResponseBody) SetCode(v string) *RecognizeAllTextResponseBody {
+	s.Code = &v
+	return s
+}
+
+func (s *RecognizeAllTextResponseBody) SetData(v *RecognizeAllTextResponseBodyData) *RecognizeAllTextResponseBody {
+	s.Data = v
+	return s
+}
+
+func (s *RecognizeAllTextResponseBody) SetMessage(v string) *RecognizeAllTextResponseBody {
+	s.Message = &v
+	return s
+}
+
+func (s *RecognizeAllTextResponseBody) SetRequestId(v string) *RecognizeAllTextResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+type RecognizeAllTextResponseBodyData struct {
+	AlgoServer    []*string                                    `json:"AlgoServer,omitempty" xml:"AlgoServer,omitempty" type:"Repeated"`
+	AlgoVersion   *string                                      `json:"AlgoVersion,omitempty" xml:"AlgoVersion,omitempty"`
+	Content       *string                                      `json:"Content,omitempty" xml:"Content,omitempty"`
+	DebugInfo     interface{}                                  `json:"DebugInfo,omitempty" xml:"DebugInfo,omitempty"`
+	Height        *int32                                       `json:"Height,omitempty" xml:"Height,omitempty"`
+	IsMixedMode   *bool                                        `json:"IsMixedMode,omitempty" xml:"IsMixedMode,omitempty"`
+	KvExcelUrl    *string                                      `json:"KvExcelUrl,omitempty" xml:"KvExcelUrl,omitempty"`
+	PageNo        *int32                                       `json:"PageNo,omitempty" xml:"PageNo,omitempty"`
+	SubImageCount *int32                                       `json:"SubImageCount,omitempty" xml:"SubImageCount,omitempty"`
+	SubImages     []*RecognizeAllTextResponseBodyDataSubImages `json:"SubImages,omitempty" xml:"SubImages,omitempty" type:"Repeated"`
+	Width         *int32                                       `json:"Width,omitempty" xml:"Width,omitempty"`
+	XmlResult     *string                                      `json:"XmlResult,omitempty" xml:"XmlResult,omitempty"`
+}
+
+func (s RecognizeAllTextResponseBodyData) String() string {
+	return tea.Prettify(s)
+}
+
+func (s RecognizeAllTextResponseBodyData) GoString() string {
+	return s.String()
+}
+
+func (s *RecognizeAllTextResponseBodyData) SetAlgoServer(v []*string) *RecognizeAllTextResponseBodyData {
+	s.AlgoServer = v
+	return s
+}
+
+func (s *RecognizeAllTextResponseBodyData) SetAlgoVersion(v string) *RecognizeAllTextResponseBodyData {
+	s.AlgoVersion = &v
+	return s
+}
+
+func (s *RecognizeAllTextResponseBodyData) SetContent(v string) *RecognizeAllTextResponseBodyData {
+	s.Content = &v
+	return s
+}
+
+func (s *RecognizeAllTextResponseBodyData) SetDebugInfo(v interface{}) *RecognizeAllTextResponseBodyData {
+	s.DebugInfo = v
+	return s
+}
+
+func (s *RecognizeAllTextResponseBodyData) SetHeight(v int32) *RecognizeAllTextResponseBodyData {
+	s.Height = &v
+	return s
+}
+
+func (s *RecognizeAllTextResponseBodyData) SetIsMixedMode(v bool) *RecognizeAllTextResponseBodyData {
+	s.IsMixedMode = &v
+	return s
+}
+
+func (s *RecognizeAllTextResponseBodyData) SetKvExcelUrl(v string) *RecognizeAllTextResponseBodyData {
+	s.KvExcelUrl = &v
+	return s
+}
+
+func (s *RecognizeAllTextResponseBodyData) SetPageNo(v int32) *RecognizeAllTextResponseBodyData {
+	s.PageNo = &v
+	return s
+}
+
+func (s *RecognizeAllTextResponseBodyData) SetSubImageCount(v int32) *RecognizeAllTextResponseBodyData {
+	s.SubImageCount = &v
+	return s
+}
+
+func (s *RecognizeAllTextResponseBodyData) SetSubImages(v []*RecognizeAllTextResponseBodyDataSubImages) *RecognizeAllTextResponseBodyData {
+	s.SubImages = v
+	return s
+}
+
+func (s *RecognizeAllTextResponseBodyData) SetWidth(v int32) *RecognizeAllTextResponseBodyData {
+	s.Width = &v
+	return s
+}
+
+func (s *RecognizeAllTextResponseBodyData) SetXmlResult(v string) *RecognizeAllTextResponseBodyData {
+	s.XmlResult = &v
+	return s
+}
+
+type RecognizeAllTextResponseBodyDataSubImages struct {
+	Angle           *int32                                                      `json:"Angle,omitempty" xml:"Angle,omitempty"`
+	BarCodeInfo     *RecognizeAllTextResponseBodyDataSubImagesBarCodeInfo       `json:"BarCodeInfo,omitempty" xml:"BarCodeInfo,omitempty" type:"Struct"`
+	BlockInfo       *RecognizeAllTextResponseBodyDataSubImagesBlockInfo         `json:"BlockInfo,omitempty" xml:"BlockInfo,omitempty" type:"Struct"`
+	DocLayouts      []*RecognizeAllTextResponseBodyDataSubImagesDocLayouts      `json:"DocLayouts,omitempty" xml:"DocLayouts,omitempty" type:"Repeated"`
+	DocSpecialTexts []*RecognizeAllTextResponseBodyDataSubImagesDocSpecialTexts `json:"DocSpecialTexts,omitempty" xml:"DocSpecialTexts,omitempty" type:"Repeated"`
+	DocSubField     []*RecognizeAllTextResponseBodyDataSubImagesDocSubField     `json:"DocSubField,omitempty" xml:"DocSubField,omitempty" type:"Repeated"`
+	FigureInfo      map[string]*DataSubImagesFigureInfoValue                    `json:"FigureInfo,omitempty" xml:"FigureInfo,omitempty"`
+	KvInfo          *RecognizeAllTextResponseBodyDataSubImagesKvInfo            `json:"KvInfo,omitempty" xml:"KvInfo,omitempty" type:"Struct"`
+	MathInfos       []*RecognizeAllTextResponseBodyDataSubImagesMathInfos       `json:"MathInfos,omitempty" xml:"MathInfos,omitempty" type:"Repeated"`
+	NewStyleData    *RecognizeAllTextResponseBodyDataSubImagesNewStyleData      `json:"NewStyleData,omitempty" xml:"NewStyleData,omitempty" type:"Struct"`
+	PageId          *int32                                                      `json:"PageId,omitempty" xml:"PageId,omitempty"`
+	PageInfos       []*RecognizeAllTextResponseBodyDataSubImagesPageInfos       `json:"PageInfos,omitempty" xml:"PageInfos,omitempty" type:"Repeated"`
+	PageTitle       *string                                                     `json:"PageTitle,omitempty" xml:"PageTitle,omitempty"`
+	ParagraphInfo   *RecognizeAllTextResponseBodyDataSubImagesParagraphInfo     `json:"ParagraphInfo,omitempty" xml:"ParagraphInfo,omitempty" type:"Struct"`
+	PartInfos       []*RecognizeAllTextResponseBodyDataSubImagesPartInfos       `json:"PartInfos,omitempty" xml:"PartInfos,omitempty" type:"Repeated"`
+	QrCodeInfo      *RecognizeAllTextResponseBodyDataSubImagesQrCodeInfo        `json:"QrCodeInfo,omitempty" xml:"QrCodeInfo,omitempty" type:"Struct"`
+	QualityInfo     *RecognizeAllTextResponseBodyDataSubImagesQualityInfo       `json:"QualityInfo,omitempty" xml:"QualityInfo,omitempty" type:"Struct"`
+	RowInfo         *RecognizeAllTextResponseBodyDataSubImagesRowInfo           `json:"RowInfo,omitempty" xml:"RowInfo,omitempty" type:"Struct"`
+	StampInfo       *RecognizeAllTextResponseBodyDataSubImagesStampInfo         `json:"StampInfo,omitempty" xml:"StampInfo,omitempty" type:"Struct"`
+	SubImageId      *int32                                                      `json:"SubImageId,omitempty" xml:"SubImageId,omitempty"`
+	SubImagePoints  []*RecognizeAllTextResponseBodyDataSubImagesSubImagePoints  `json:"SubImagePoints,omitempty" xml:"SubImagePoints,omitempty" type:"Repeated"`
+	SubImageRect    *RecognizeAllTextResponseBodyDataSubImagesSubImageRect      `json:"SubImageRect,omitempty" xml:"SubImageRect,omitempty" type:"Struct"`
+	TableInfo       *RecognizeAllTextResponseBodyDataSubImagesTableInfo         `json:"TableInfo,omitempty" xml:"TableInfo,omitempty" type:"Struct"`
+	Type            *string                                                     `json:"Type,omitempty" xml:"Type,omitempty"`
+}
+
+func (s RecognizeAllTextResponseBodyDataSubImages) String() string {
+	return tea.Prettify(s)
+}
+
+func (s RecognizeAllTextResponseBodyDataSubImages) GoString() string {
+	return s.String()
+}
+
+func (s *RecognizeAllTextResponseBodyDataSubImages) SetAngle(v int32) *RecognizeAllTextResponseBodyDataSubImages {
+	s.Angle = &v
+	return s
+}
+
+func (s *RecognizeAllTextResponseBodyDataSubImages) SetBarCodeInfo(v *RecognizeAllTextResponseBodyDataSubImagesBarCodeInfo) *RecognizeAllTextResponseBodyDataSubImages {
+	s.BarCodeInfo = v
+	return s
+}
+
+func (s *RecognizeAllTextResponseBodyDataSubImages) SetBlockInfo(v *RecognizeAllTextResponseBodyDataSubImagesBlockInfo) *RecognizeAllTextResponseBodyDataSubImages {
+	s.BlockInfo = v
+	return s
+}
+
+func (s *RecognizeAllTextResponseBodyDataSubImages) SetDocLayouts(v []*RecognizeAllTextResponseBodyDataSubImagesDocLayouts) *RecognizeAllTextResponseBodyDataSubImages {
+	s.DocLayouts = v
+	return s
+}
+
+func (s *RecognizeAllTextResponseBodyDataSubImages) SetDocSpecialTexts(v []*RecognizeAllTextResponseBodyDataSubImagesDocSpecialTexts) *RecognizeAllTextResponseBodyDataSubImages {
+	s.DocSpecialTexts = v
+	return s
+}
+
+func (s *RecognizeAllTextResponseBodyDataSubImages) SetDocSubField(v []*RecognizeAllTextResponseBodyDataSubImagesDocSubField) *RecognizeAllTextResponseBodyDataSubImages {
+	s.DocSubField = v
+	return s
+}
+
+func (s *RecognizeAllTextResponseBodyDataSubImages) SetFigureInfo(v map[string]*DataSubImagesFigureInfoValue) *RecognizeAllTextResponseBodyDataSubImages {
+	s.FigureInfo = v
+	return s
+}
+
+func (s *RecognizeAllTextResponseBodyDataSubImages) SetKvInfo(v *RecognizeAllTextResponseBodyDataSubImagesKvInfo) *RecognizeAllTextResponseBodyDataSubImages {
+	s.KvInfo = v
+	return s
+}
+
+func (s *RecognizeAllTextResponseBodyDataSubImages) SetMathInfos(v []*RecognizeAllTextResponseBodyDataSubImagesMathInfos) *RecognizeAllTextResponseBodyDataSubImages {
+	s.MathInfos = v
+	return s
+}
+
+func (s *RecognizeAllTextResponseBodyDataSubImages) SetNewStyleData(v *RecognizeAllTextResponseBodyDataSubImagesNewStyleData) *RecognizeAllTextResponseBodyDataSubImages {
+	s.NewStyleData = v
+	return s
+}
+
+func (s *RecognizeAllTextResponseBodyDataSubImages) SetPageId(v int32) *RecognizeAllTextResponseBodyDataSubImages {
+	s.PageId = &v
+	return s
+}
+
+func (s *RecognizeAllTextResponseBodyDataSubImages) SetPageInfos(v []*RecognizeAllTextResponseBodyDataSubImagesPageInfos) *RecognizeAllTextResponseBodyDataSubImages {
+	s.PageInfos = v
+	return s
+}
+
+func (s *RecognizeAllTextResponseBodyDataSubImages) SetPageTitle(v string) *RecognizeAllTextResponseBodyDataSubImages {
+	s.PageTitle = &v
+	return s
+}
+
+func (s *RecognizeAllTextResponseBodyDataSubImages) SetParagraphInfo(v *RecognizeAllTextResponseBodyDataSubImagesParagraphInfo) *RecognizeAllTextResponseBodyDataSubImages {
+	s.ParagraphInfo = v
+	return s
+}
+
+func (s *RecognizeAllTextResponseBodyDataSubImages) SetPartInfos(v []*RecognizeAllTextResponseBodyDataSubImagesPartInfos) *RecognizeAllTextResponseBodyDataSubImages {
+	s.PartInfos = v
+	return s
+}
+
+func (s *RecognizeAllTextResponseBodyDataSubImages) SetQrCodeInfo(v *RecognizeAllTextResponseBodyDataSubImagesQrCodeInfo) *RecognizeAllTextResponseBodyDataSubImages {
+	s.QrCodeInfo = v
+	return s
+}
+
+func (s *RecognizeAllTextResponseBodyDataSubImages) SetQualityInfo(v *RecognizeAllTextResponseBodyDataSubImagesQualityInfo) *RecognizeAllTextResponseBodyDataSubImages {
+	s.QualityInfo = v
+	return s
+}
+
+func (s *RecognizeAllTextResponseBodyDataSubImages) SetRowInfo(v *RecognizeAllTextResponseBodyDataSubImagesRowInfo) *RecognizeAllTextResponseBodyDataSubImages {
+	s.RowInfo = v
+	return s
+}
+
+func (s *RecognizeAllTextResponseBodyDataSubImages) SetStampInfo(v *RecognizeAllTextResponseBodyDataSubImagesStampInfo) *RecognizeAllTextResponseBodyDataSubImages {
+	s.StampInfo = v
+	return s
+}
+
+func (s *RecognizeAllTextResponseBodyDataSubImages) SetSubImageId(v int32) *RecognizeAllTextResponseBodyDataSubImages {
+	s.SubImageId = &v
+	return s
+}
+
+func (s *RecognizeAllTextResponseBodyDataSubImages) SetSubImagePoints(v []*RecognizeAllTextResponseBodyDataSubImagesSubImagePoints) *RecognizeAllTextResponseBodyDataSubImages {
+	s.SubImagePoints = v
+	return s
+}
+
+func (s *RecognizeAllTextResponseBodyDataSubImages) SetSubImageRect(v *RecognizeAllTextResponseBodyDataSubImagesSubImageRect) *RecognizeAllTextResponseBodyDataSubImages {
+	s.SubImageRect = v
+	return s
+}
+
+func (s *RecognizeAllTextResponseBodyDataSubImages) SetTableInfo(v *RecognizeAllTextResponseBodyDataSubImagesTableInfo) *RecognizeAllTextResponseBodyDataSubImages {
+	s.TableInfo = v
+	return s
+}
+
+func (s *RecognizeAllTextResponseBodyDataSubImages) SetType(v string) *RecognizeAllTextResponseBodyDataSubImages {
+	s.Type = &v
+	return s
+}
+
+type RecognizeAllTextResponseBodyDataSubImagesBarCodeInfo struct {
+	BarCodeCount   *int32                                                                `json:"BarCodeCount,omitempty" xml:"BarCodeCount,omitempty"`
+	BarCodeDetails []*RecognizeAllTextResponseBodyDataSubImagesBarCodeInfoBarCodeDetails `json:"BarCodeDetails,omitempty" xml:"BarCodeDetails,omitempty" type:"Repeated"`
+}
+
+func (s RecognizeAllTextResponseBodyDataSubImagesBarCodeInfo) String() string {
+	return tea.Prettify(s)
+}
+
+func (s RecognizeAllTextResponseBodyDataSubImagesBarCodeInfo) GoString() string {
+	return s.String()
+}
+
+func (s *RecognizeAllTextResponseBodyDataSubImagesBarCodeInfo) SetBarCodeCount(v int32) *RecognizeAllTextResponseBodyDataSubImagesBarCodeInfo {
+	s.BarCodeCount = &v
+	return s
+}
+
+func (s *RecognizeAllTextResponseBodyDataSubImagesBarCodeInfo) SetBarCodeDetails(v []*RecognizeAllTextResponseBodyDataSubImagesBarCodeInfoBarCodeDetails) *RecognizeAllTextResponseBodyDataSubImagesBarCodeInfo {
+	s.BarCodeDetails = v
+	return s
+}
+
+type RecognizeAllTextResponseBodyDataSubImagesBarCodeInfoBarCodeDetails struct {
+	BarCodeAngle  *int32                                                                             `json:"BarCodeAngle,omitempty" xml:"BarCodeAngle,omitempty"`
+	BarCodePoints []*RecognizeAllTextResponseBodyDataSubImagesBarCodeInfoBarCodeDetailsBarCodePoints `json:"BarCodePoints,omitempty" xml:"BarCodePoints,omitempty" type:"Repeated"`
+	BarCodeRect   *RecognizeAllTextResponseBodyDataSubImagesBarCodeInfoBarCodeDetailsBarCodeRect     `json:"BarCodeRect,omitempty" xml:"BarCodeRect,omitempty" type:"Struct"`
+	Data          []byte                                                                             `json:"Data,omitempty" xml:"Data,omitempty"`
+	Type          *string                                                                            `json:"Type,omitempty" xml:"Type,omitempty"`
+}
+
+func (s RecognizeAllTextResponseBodyDataSubImagesBarCodeInfoBarCodeDetails) String() string {
+	return tea.Prettify(s)
+}
+
+func (s RecognizeAllTextResponseBodyDataSubImagesBarCodeInfoBarCodeDetails) GoString() string {
+	return s.String()
+}
+
+func (s *RecognizeAllTextResponseBodyDataSubImagesBarCodeInfoBarCodeDetails) SetBarCodeAngle(v int32) *RecognizeAllTextResponseBodyDataSubImagesBarCodeInfoBarCodeDetails {
+	s.BarCodeAngle = &v
+	return s
+}
+
+func (s *RecognizeAllTextResponseBodyDataSubImagesBarCodeInfoBarCodeDetails) SetBarCodePoints(v []*RecognizeAllTextResponseBodyDataSubImagesBarCodeInfoBarCodeDetailsBarCodePoints) *RecognizeAllTextResponseBodyDataSubImagesBarCodeInfoBarCodeDetails {
+	s.BarCodePoints = v
+	return s
+}
+
+func (s *RecognizeAllTextResponseBodyDataSubImagesBarCodeInfoBarCodeDetails) SetBarCodeRect(v *RecognizeAllTextResponseBodyDataSubImagesBarCodeInfoBarCodeDetailsBarCodeRect) *RecognizeAllTextResponseBodyDataSubImagesBarCodeInfoBarCodeDetails {
+	s.BarCodeRect = v
+	return s
+}
+
+func (s *RecognizeAllTextResponseBodyDataSubImagesBarCodeInfoBarCodeDetails) SetData(v []byte) *RecognizeAllTextResponseBodyDataSubImagesBarCodeInfoBarCodeDetails {
+	s.Data = v
+	return s
+}
+
+func (s *RecognizeAllTextResponseBodyDataSubImagesBarCodeInfoBarCodeDetails) SetType(v string) *RecognizeAllTextResponseBodyDataSubImagesBarCodeInfoBarCodeDetails {
+	s.Type = &v
+	return s
+}
+
+type RecognizeAllTextResponseBodyDataSubImagesBarCodeInfoBarCodeDetailsBarCodePoints struct {
+	X *int32 `json:"X,omitempty" xml:"X,omitempty"`
+	Y *int32 `json:"Y,omitempty" xml:"Y,omitempty"`
+}
+
+func (s RecognizeAllTextResponseBodyDataSubImagesBarCodeInfoBarCodeDetailsBarCodePoints) String() string {
+	return tea.Prettify(s)
+}
+
+func (s RecognizeAllTextResponseBodyDataSubImagesBarCodeInfoBarCodeDetailsBarCodePoints) GoString() string {
+	return s.String()
+}
+
+func (s *RecognizeAllTextResponseBodyDataSubImagesBarCodeInfoBarCodeDetailsBarCodePoints) SetX(v int32) *RecognizeAllTextResponseBodyDataSubImagesBarCodeInfoBarCodeDetailsBarCodePoints {
+	s.X = &v
+	return s
+}
+
+func (s *RecognizeAllTextResponseBodyDataSubImagesBarCodeInfoBarCodeDetailsBarCodePoints) SetY(v int32) *RecognizeAllTextResponseBodyDataSubImagesBarCodeInfoBarCodeDetailsBarCodePoints {
+	s.Y = &v
+	return s
+}
+
+type RecognizeAllTextResponseBodyDataSubImagesBarCodeInfoBarCodeDetailsBarCodeRect struct {
+	CenterX *int32 `json:"CenterX,omitempty" xml:"CenterX,omitempty"`
+	CenterY *int32 `json:"CenterY,omitempty" xml:"CenterY,omitempty"`
+	Height  *int32 `json:"Height,omitempty" xml:"Height,omitempty"`
+	Width   *int32 `json:"Width,omitempty" xml:"Width,omitempty"`
+}
+
+func (s RecognizeAllTextResponseBodyDataSubImagesBarCodeInfoBarCodeDetailsBarCodeRect) String() string {
+	return tea.Prettify(s)
+}
+
+func (s RecognizeAllTextResponseBodyDataSubImagesBarCodeInfoBarCodeDetailsBarCodeRect) GoString() string {
+	return s.String()
+}
+
+func (s *RecognizeAllTextResponseBodyDataSubImagesBarCodeInfoBarCodeDetailsBarCodeRect) SetCenterX(v int32) *RecognizeAllTextResponseBodyDataSubImagesBarCodeInfoBarCodeDetailsBarCodeRect {
+	s.CenterX = &v
+	return s
+}
+
+func (s *RecognizeAllTextResponseBodyDataSubImagesBarCodeInfoBarCodeDetailsBarCodeRect) SetCenterY(v int32) *RecognizeAllTextResponseBodyDataSubImagesBarCodeInfoBarCodeDetailsBarCodeRect {
+	s.CenterY = &v
+	return s
+}
+
+func (s *RecognizeAllTextResponseBodyDataSubImagesBarCodeInfoBarCodeDetailsBarCodeRect) SetHeight(v int32) *RecognizeAllTextResponseBodyDataSubImagesBarCodeInfoBarCodeDetailsBarCodeRect {
+	s.Height = &v
+	return s
+}
+
+func (s *RecognizeAllTextResponseBodyDataSubImagesBarCodeInfoBarCodeDetailsBarCodeRect) SetWidth(v int32) *RecognizeAllTextResponseBodyDataSubImagesBarCodeInfoBarCodeDetailsBarCodeRect {
+	s.Width = &v
+	return s
+}
+
+type RecognizeAllTextResponseBodyDataSubImagesBlockInfo struct {
+	BlockCount   *int32                                                            `json:"BlockCount,omitempty" xml:"BlockCount,omitempty"`
+	BlockDetails []*RecognizeAllTextResponseBodyDataSubImagesBlockInfoBlockDetails `json:"BlockDetails,omitempty" xml:"BlockDetails,omitempty" type:"Repeated"`
+}
+
+func (s RecognizeAllTextResponseBodyDataSubImagesBlockInfo) String() string {
+	return tea.Prettify(s)
+}
+
+func (s RecognizeAllTextResponseBodyDataSubImagesBlockInfo) GoString() string {
+	return s.String()
+}
+
+func (s *RecognizeAllTextResponseBodyDataSubImagesBlockInfo) SetBlockCount(v int32) *RecognizeAllTextResponseBodyDataSubImagesBlockInfo {
+	s.BlockCount = &v
+	return s
+}
+
+func (s *RecognizeAllTextResponseBodyDataSubImagesBlockInfo) SetBlockDetails(v []*RecognizeAllTextResponseBodyDataSubImagesBlockInfoBlockDetails) *RecognizeAllTextResponseBodyDataSubImagesBlockInfo {
+	s.BlockDetails = v
+	return s
+}
+
+type RecognizeAllTextResponseBodyDataSubImagesBlockInfoBlockDetails struct {
+	BlockAngle      *int32                                                                       `json:"BlockAngle,omitempty" xml:"BlockAngle,omitempty"`
+	BlockConfidence *int32                                                                       `json:"BlockConfidence,omitempty" xml:"BlockConfidence,omitempty"`
+	BlockContent    *string                                                                      `json:"BlockContent,omitempty" xml:"BlockContent,omitempty"`
+	BlockId         *int32                                                                       `json:"BlockId,omitempty" xml:"BlockId,omitempty"`
+	BlockPoints     []*RecognizeAllTextResponseBodyDataSubImagesBlockInfoBlockDetailsBlockPoints `json:"BlockPoints,omitempty" xml:"BlockPoints,omitempty" type:"Repeated"`
+	BlockRect       *RecognizeAllTextResponseBodyDataSubImagesBlockInfoBlockDetailsBlockRect     `json:"BlockRect,omitempty" xml:"BlockRect,omitempty" type:"Struct"`
+	CharInfos       []*RecognizeAllTextResponseBodyDataSubImagesBlockInfoBlockDetailsCharInfos   `json:"CharInfos,omitempty" xml:"CharInfos,omitempty" type:"Repeated"`
+}
+
+func (s RecognizeAllTextResponseBodyDataSubImagesBlockInfoBlockDetails) String() string {
+	return tea.Prettify(s)
+}
+
+func (s RecognizeAllTextResponseBodyDataSubImagesBlockInfoBlockDetails) GoString() string {
+	return s.String()
+}
+
+func (s *RecognizeAllTextResponseBodyDataSubImagesBlockInfoBlockDetails) SetBlockAngle(v int32) *RecognizeAllTextResponseBodyDataSubImagesBlockInfoBlockDetails {
+	s.BlockAngle = &v
+	return s
+}
+
+func (s *RecognizeAllTextResponseBodyDataSubImagesBlockInfoBlockDetails) SetBlockConfidence(v int32) *RecognizeAllTextResponseBodyDataSubImagesBlockInfoBlockDetails {
+	s.BlockConfidence = &v
+	return s
+}
+
+func (s *RecognizeAllTextResponseBodyDataSubImagesBlockInfoBlockDetails) SetBlockContent(v string) *RecognizeAllTextResponseBodyDataSubImagesBlockInfoBlockDetails {
+	s.BlockContent = &v
+	return s
+}
+
+func (s *RecognizeAllTextResponseBodyDataSubImagesBlockInfoBlockDetails) SetBlockId(v int32) *RecognizeAllTextResponseBodyDataSubImagesBlockInfoBlockDetails {
+	s.BlockId = &v
+	return s
+}
+
+func (s *RecognizeAllTextResponseBodyDataSubImagesBlockInfoBlockDetails) SetBlockPoints(v []*RecognizeAllTextResponseBodyDataSubImagesBlockInfoBlockDetailsBlockPoints) *RecognizeAllTextResponseBodyDataSubImagesBlockInfoBlockDetails {
+	s.BlockPoints = v
+	return s
+}
+
+func (s *RecognizeAllTextResponseBodyDataSubImagesBlockInfoBlockDetails) SetBlockRect(v *RecognizeAllTextResponseBodyDataSubImagesBlockInfoBlockDetailsBlockRect) *RecognizeAllTextResponseBodyDataSubImagesBlockInfoBlockDetails {
+	s.BlockRect = v
+	return s
+}
+
+func (s *RecognizeAllTextResponseBodyDataSubImagesBlockInfoBlockDetails) SetCharInfos(v []*RecognizeAllTextResponseBodyDataSubImagesBlockInfoBlockDetailsCharInfos) *RecognizeAllTextResponseBodyDataSubImagesBlockInfoBlockDetails {
+	s.CharInfos = v
+	return s
+}
+
+type RecognizeAllTextResponseBodyDataSubImagesBlockInfoBlockDetailsBlockPoints struct {
+	X *int32 `json:"X,omitempty" xml:"X,omitempty"`
+	Y *int32 `json:"Y,omitempty" xml:"Y,omitempty"`
+}
+
+func (s RecognizeAllTextResponseBodyDataSubImagesBlockInfoBlockDetailsBlockPoints) String() string {
+	return tea.Prettify(s)
+}
+
+func (s RecognizeAllTextResponseBodyDataSubImagesBlockInfoBlockDetailsBlockPoints) GoString() string {
+	return s.String()
+}
+
+func (s *RecognizeAllTextResponseBodyDataSubImagesBlockInfoBlockDetailsBlockPoints) SetX(v int32) *RecognizeAllTextResponseBodyDataSubImagesBlockInfoBlockDetailsBlockPoints {
+	s.X = &v
+	return s
+}
+
+func (s *RecognizeAllTextResponseBodyDataSubImagesBlockInfoBlockDetailsBlockPoints) SetY(v int32) *RecognizeAllTextResponseBodyDataSubImagesBlockInfoBlockDetailsBlockPoints {
+	s.Y = &v
+	return s
+}
+
+type RecognizeAllTextResponseBodyDataSubImagesBlockInfoBlockDetailsBlockRect struct {
+	CenterX *int32 `json:"CenterX,omitempty" xml:"CenterX,omitempty"`
+	CenterY *int32 `json:"CenterY,omitempty" xml:"CenterY,omitempty"`
+	Height  *int32 `json:"Height,omitempty" xml:"Height,omitempty"`
+	Width   *int32 `json:"Width,omitempty" xml:"Width,omitempty"`
+}
+
+func (s RecognizeAllTextResponseBodyDataSubImagesBlockInfoBlockDetailsBlockRect) String() string {
+	return tea.Prettify(s)
+}
+
+func (s RecognizeAllTextResponseBodyDataSubImagesBlockInfoBlockDetailsBlockRect) GoString() string {
+	return s.String()
+}
+
+func (s *RecognizeAllTextResponseBodyDataSubImagesBlockInfoBlockDetailsBlockRect) SetCenterX(v int32) *RecognizeAllTextResponseBodyDataSubImagesBlockInfoBlockDetailsBlockRect {
+	s.CenterX = &v
+	return s
+}
+
+func (s *RecognizeAllTextResponseBodyDataSubImagesBlockInfoBlockDetailsBlockRect) SetCenterY(v int32) *RecognizeAllTextResponseBodyDataSubImagesBlockInfoBlockDetailsBlockRect {
+	s.CenterY = &v
+	return s
+}
+
+func (s *RecognizeAllTextResponseBodyDataSubImagesBlockInfoBlockDetailsBlockRect) SetHeight(v int32) *RecognizeAllTextResponseBodyDataSubImagesBlockInfoBlockDetailsBlockRect {
+	s.Height = &v
+	return s
+}
+
+func (s *RecognizeAllTextResponseBodyDataSubImagesBlockInfoBlockDetailsBlockRect) SetWidth(v int32) *RecognizeAllTextResponseBodyDataSubImagesBlockInfoBlockDetailsBlockRect {
+	s.Width = &v
+	return s
+}
+
+type RecognizeAllTextResponseBodyDataSubImagesBlockInfoBlockDetailsCharInfos struct {
+	CharConfidence *int32                                                                               `json:"CharConfidence,omitempty" xml:"CharConfidence,omitempty"`
+	CharContent    *string                                                                              `json:"CharContent,omitempty" xml:"CharContent,omitempty"`
+	CharId         *int32                                                                               `json:"CharId,omitempty" xml:"CharId,omitempty"`
+	CharPoints     []*RecognizeAllTextResponseBodyDataSubImagesBlockInfoBlockDetailsCharInfosCharPoints `json:"CharPoints,omitempty" xml:"CharPoints,omitempty" type:"Repeated"`
+	CharRect       *RecognizeAllTextResponseBodyDataSubImagesBlockInfoBlockDetailsCharInfosCharRect     `json:"CharRect,omitempty" xml:"CharRect,omitempty" type:"Struct"`
+}
+
+func (s RecognizeAllTextResponseBodyDataSubImagesBlockInfoBlockDetailsCharInfos) String() string {
+	return tea.Prettify(s)
+}
+
+func (s RecognizeAllTextResponseBodyDataSubImagesBlockInfoBlockDetailsCharInfos) GoString() string {
+	return s.String()
+}
+
+func (s *RecognizeAllTextResponseBodyDataSubImagesBlockInfoBlockDetailsCharInfos) SetCharConfidence(v int32) *RecognizeAllTextResponseBodyDataSubImagesBlockInfoBlockDetailsCharInfos {
+	s.CharConfidence = &v
+	return s
+}
+
+func (s *RecognizeAllTextResponseBodyDataSubImagesBlockInfoBlockDetailsCharInfos) SetCharContent(v string) *RecognizeAllTextResponseBodyDataSubImagesBlockInfoBlockDetailsCharInfos {
+	s.CharContent = &v
+	return s
+}
+
+func (s *RecognizeAllTextResponseBodyDataSubImagesBlockInfoBlockDetailsCharInfos) SetCharId(v int32) *RecognizeAllTextResponseBodyDataSubImagesBlockInfoBlockDetailsCharInfos {
+	s.CharId = &v
+	return s
+}
+
+func (s *RecognizeAllTextResponseBodyDataSubImagesBlockInfoBlockDetailsCharInfos) SetCharPoints(v []*RecognizeAllTextResponseBodyDataSubImagesBlockInfoBlockDetailsCharInfosCharPoints) *RecognizeAllTextResponseBodyDataSubImagesBlockInfoBlockDetailsCharInfos {
+	s.CharPoints = v
+	return s
+}
+
+func (s *RecognizeAllTextResponseBodyDataSubImagesBlockInfoBlockDetailsCharInfos) SetCharRect(v *RecognizeAllTextResponseBodyDataSubImagesBlockInfoBlockDetailsCharInfosCharRect) *RecognizeAllTextResponseBodyDataSubImagesBlockInfoBlockDetailsCharInfos {
+	s.CharRect = v
+	return s
+}
+
+type RecognizeAllTextResponseBodyDataSubImagesBlockInfoBlockDetailsCharInfosCharPoints struct {
+	X *int32 `json:"X,omitempty" xml:"X,omitempty"`
+	Y *int32 `json:"Y,omitempty" xml:"Y,omitempty"`
+}
+
+func (s RecognizeAllTextResponseBodyDataSubImagesBlockInfoBlockDetailsCharInfosCharPoints) String() string {
+	return tea.Prettify(s)
+}
+
+func (s RecognizeAllTextResponseBodyDataSubImagesBlockInfoBlockDetailsCharInfosCharPoints) GoString() string {
+	return s.String()
+}
+
+func (s *RecognizeAllTextResponseBodyDataSubImagesBlockInfoBlockDetailsCharInfosCharPoints) SetX(v int32) *RecognizeAllTextResponseBodyDataSubImagesBlockInfoBlockDetailsCharInfosCharPoints {
+	s.X = &v
+	return s
+}
+
+func (s *RecognizeAllTextResponseBodyDataSubImagesBlockInfoBlockDetailsCharInfosCharPoints) SetY(v int32) *RecognizeAllTextResponseBodyDataSubImagesBlockInfoBlockDetailsCharInfosCharPoints {
+	s.Y = &v
+	return s
+}
+
+type RecognizeAllTextResponseBodyDataSubImagesBlockInfoBlockDetailsCharInfosCharRect struct {
+	CenterX *int32 `json:"CenterX,omitempty" xml:"CenterX,omitempty"`
+	CenterY *int32 `json:"CenterY,omitempty" xml:"CenterY,omitempty"`
+	Height  *int32 `json:"Height,omitempty" xml:"Height,omitempty"`
+	Width   *int32 `json:"Width,omitempty" xml:"Width,omitempty"`
+}
+
+func (s RecognizeAllTextResponseBodyDataSubImagesBlockInfoBlockDetailsCharInfosCharRect) String() string {
+	return tea.Prettify(s)
+}
+
+func (s RecognizeAllTextResponseBodyDataSubImagesBlockInfoBlockDetailsCharInfosCharRect) GoString() string {
+	return s.String()
+}
+
+func (s *RecognizeAllTextResponseBodyDataSubImagesBlockInfoBlockDetailsCharInfosCharRect) SetCenterX(v int32) *RecognizeAllTextResponseBodyDataSubImagesBlockInfoBlockDetailsCharInfosCharRect {
+	s.CenterX = &v
+	return s
+}
+
+func (s *RecognizeAllTextResponseBodyDataSubImagesBlockInfoBlockDetailsCharInfosCharRect) SetCenterY(v int32) *RecognizeAllTextResponseBodyDataSubImagesBlockInfoBlockDetailsCharInfosCharRect {
+	s.CenterY = &v
+	return s
+}
+
+func (s *RecognizeAllTextResponseBodyDataSubImagesBlockInfoBlockDetailsCharInfosCharRect) SetHeight(v int32) *RecognizeAllTextResponseBodyDataSubImagesBlockInfoBlockDetailsCharInfosCharRect {
+	s.Height = &v
+	return s
+}
+
+func (s *RecognizeAllTextResponseBodyDataSubImagesBlockInfoBlockDetailsCharInfosCharRect) SetWidth(v int32) *RecognizeAllTextResponseBodyDataSubImagesBlockInfoBlockDetailsCharInfosCharRect {
+	s.Width = &v
+	return s
+}
+
+type RecognizeAllTextResponseBodyDataSubImagesDocLayouts struct {
+	LayoutPoints []*RecognizeAllTextResponseBodyDataSubImagesDocLayoutsLayoutPoints `json:"LayoutPoints,omitempty" xml:"LayoutPoints,omitempty" type:"Repeated"`
+	LayoutRect   *RecognizeAllTextResponseBodyDataSubImagesDocLayoutsLayoutRect     `json:"LayoutRect,omitempty" xml:"LayoutRect,omitempty" type:"Struct"`
+	LayoutType   *string                                                            `json:"LayoutType,omitempty" xml:"LayoutType,omitempty"`
+}
+
+func (s RecognizeAllTextResponseBodyDataSubImagesDocLayouts) String() string {
+	return tea.Prettify(s)
+}
+
+func (s RecognizeAllTextResponseBodyDataSubImagesDocLayouts) GoString() string {
+	return s.String()
+}
+
+func (s *RecognizeAllTextResponseBodyDataSubImagesDocLayouts) SetLayoutPoints(v []*RecognizeAllTextResponseBodyDataSubImagesDocLayoutsLayoutPoints) *RecognizeAllTextResponseBodyDataSubImagesDocLayouts {
+	s.LayoutPoints = v
+	return s
+}
+
+func (s *RecognizeAllTextResponseBodyDataSubImagesDocLayouts) SetLayoutRect(v *RecognizeAllTextResponseBodyDataSubImagesDocLayoutsLayoutRect) *RecognizeAllTextResponseBodyDataSubImagesDocLayouts {
+	s.LayoutRect = v
+	return s
+}
+
+func (s *RecognizeAllTextResponseBodyDataSubImagesDocLayouts) SetLayoutType(v string) *RecognizeAllTextResponseBodyDataSubImagesDocLayouts {
+	s.LayoutType = &v
+	return s
+}
+
+type RecognizeAllTextResponseBodyDataSubImagesDocLayoutsLayoutPoints struct {
+	X *int32 `json:"X,omitempty" xml:"X,omitempty"`
+	Y *int32 `json:"Y,omitempty" xml:"Y,omitempty"`
+}
+
+func (s RecognizeAllTextResponseBodyDataSubImagesDocLayoutsLayoutPoints) String() string {
+	return tea.Prettify(s)
+}
+
+func (s RecognizeAllTextResponseBodyDataSubImagesDocLayoutsLayoutPoints) GoString() string {
+	return s.String()
+}
+
+func (s *RecognizeAllTextResponseBodyDataSubImagesDocLayoutsLayoutPoints) SetX(v int32) *RecognizeAllTextResponseBodyDataSubImagesDocLayoutsLayoutPoints {
+	s.X = &v
+	return s
+}
+
+func (s *RecognizeAllTextResponseBodyDataSubImagesDocLayoutsLayoutPoints) SetY(v int32) *RecognizeAllTextResponseBodyDataSubImagesDocLayoutsLayoutPoints {
+	s.Y = &v
+	return s
+}
+
+type RecognizeAllTextResponseBodyDataSubImagesDocLayoutsLayoutRect struct {
+	CenterX *int32 `json:"CenterX,omitempty" xml:"CenterX,omitempty"`
+	CenterY *int32 `json:"CenterY,omitempty" xml:"CenterY,omitempty"`
+	Height  *int32 `json:"Height,omitempty" xml:"Height,omitempty"`
+	Width   *int32 `json:"Width,omitempty" xml:"Width,omitempty"`
+}
+
+func (s RecognizeAllTextResponseBodyDataSubImagesDocLayoutsLayoutRect) String() string {
+	return tea.Prettify(s)
+}
+
+func (s RecognizeAllTextResponseBodyDataSubImagesDocLayoutsLayoutRect) GoString() string {
+	return s.String()
+}
+
+func (s *RecognizeAllTextResponseBodyDataSubImagesDocLayoutsLayoutRect) SetCenterX(v int32) *RecognizeAllTextResponseBodyDataSubImagesDocLayoutsLayoutRect {
+	s.CenterX = &v
+	return s
+}
+
+func (s *RecognizeAllTextResponseBodyDataSubImagesDocLayoutsLayoutRect) SetCenterY(v int32) *RecognizeAllTextResponseBodyDataSubImagesDocLayoutsLayoutRect {
+	s.CenterY = &v
+	return s
+}
+
+func (s *RecognizeAllTextResponseBodyDataSubImagesDocLayoutsLayoutRect) SetHeight(v int32) *RecognizeAllTextResponseBodyDataSubImagesDocLayoutsLayoutRect {
+	s.Height = &v
+	return s
+}
+
+func (s *RecognizeAllTextResponseBodyDataSubImagesDocLayoutsLayoutRect) SetWidth(v int32) *RecognizeAllTextResponseBodyDataSubImagesDocLayoutsLayoutRect {
+	s.Width = &v
+	return s
+}
+
+type RecognizeAllTextResponseBodyDataSubImagesDocSpecialTexts struct {
+	SpecialTextPos  []*RecognizeAllTextResponseBodyDataSubImagesDocSpecialTextsSpecialTextPos `json:"SpecialTextPos,omitempty" xml:"SpecialTextPos,omitempty" type:"Repeated"`
+	SpecialTextRect *RecognizeAllTextResponseBodyDataSubImagesDocSpecialTextsSpecialTextRect  `json:"SpecialTextRect,omitempty" xml:"SpecialTextRect,omitempty" type:"Struct"`
+	SpecialTextType *string                                                                   `json:"SpecialTextType,omitempty" xml:"SpecialTextType,omitempty"`
+}
+
+func (s RecognizeAllTextResponseBodyDataSubImagesDocSpecialTexts) String() string {
+	return tea.Prettify(s)
+}
+
+func (s RecognizeAllTextResponseBodyDataSubImagesDocSpecialTexts) GoString() string {
+	return s.String()
+}
+
+func (s *RecognizeAllTextResponseBodyDataSubImagesDocSpecialTexts) SetSpecialTextPos(v []*RecognizeAllTextResponseBodyDataSubImagesDocSpecialTextsSpecialTextPos) *RecognizeAllTextResponseBodyDataSubImagesDocSpecialTexts {
+	s.SpecialTextPos = v
+	return s
+}
+
+func (s *RecognizeAllTextResponseBodyDataSubImagesDocSpecialTexts) SetSpecialTextRect(v *RecognizeAllTextResponseBodyDataSubImagesDocSpecialTextsSpecialTextRect) *RecognizeAllTextResponseBodyDataSubImagesDocSpecialTexts {
+	s.SpecialTextRect = v
+	return s
+}
+
+func (s *RecognizeAllTextResponseBodyDataSubImagesDocSpecialTexts) SetSpecialTextType(v string) *RecognizeAllTextResponseBodyDataSubImagesDocSpecialTexts {
+	s.SpecialTextType = &v
+	return s
+}
+
+type RecognizeAllTextResponseBodyDataSubImagesDocSpecialTextsSpecialTextPos struct {
+	X *int32 `json:"X,omitempty" xml:"X,omitempty"`
+	Y *int32 `json:"Y,omitempty" xml:"Y,omitempty"`
+}
+
+func (s RecognizeAllTextResponseBodyDataSubImagesDocSpecialTextsSpecialTextPos) String() string {
+	return tea.Prettify(s)
+}
+
+func (s RecognizeAllTextResponseBodyDataSubImagesDocSpecialTextsSpecialTextPos) GoString() string {
+	return s.String()
+}
+
+func (s *RecognizeAllTextResponseBodyDataSubImagesDocSpecialTextsSpecialTextPos) SetX(v int32) *RecognizeAllTextResponseBodyDataSubImagesDocSpecialTextsSpecialTextPos {
+	s.X = &v
+	return s
+}
+
+func (s *RecognizeAllTextResponseBodyDataSubImagesDocSpecialTextsSpecialTextPos) SetY(v int32) *RecognizeAllTextResponseBodyDataSubImagesDocSpecialTextsSpecialTextPos {
+	s.Y = &v
+	return s
+}
+
+type RecognizeAllTextResponseBodyDataSubImagesDocSpecialTextsSpecialTextRect struct {
+	CenterX *int32 `json:"CenterX,omitempty" xml:"CenterX,omitempty"`
+	CenterY *int32 `json:"CenterY,omitempty" xml:"CenterY,omitempty"`
+	Height  *int32 `json:"Height,omitempty" xml:"Height,omitempty"`
+	Width   *int32 `json:"Width,omitempty" xml:"Width,omitempty"`
+}
+
+func (s RecognizeAllTextResponseBodyDataSubImagesDocSpecialTextsSpecialTextRect) String() string {
+	return tea.Prettify(s)
+}
+
+func (s RecognizeAllTextResponseBodyDataSubImagesDocSpecialTextsSpecialTextRect) GoString() string {
+	return s.String()
+}
+
+func (s *RecognizeAllTextResponseBodyDataSubImagesDocSpecialTextsSpecialTextRect) SetCenterX(v int32) *RecognizeAllTextResponseBodyDataSubImagesDocSpecialTextsSpecialTextRect {
+	s.CenterX = &v
+	return s
+}
+
+func (s *RecognizeAllTextResponseBodyDataSubImagesDocSpecialTextsSpecialTextRect) SetCenterY(v int32) *RecognizeAllTextResponseBodyDataSubImagesDocSpecialTextsSpecialTextRect {
+	s.CenterY = &v
+	return s
+}
+
+func (s *RecognizeAllTextResponseBodyDataSubImagesDocSpecialTextsSpecialTextRect) SetHeight(v int32) *RecognizeAllTextResponseBodyDataSubImagesDocSpecialTextsSpecialTextRect {
+	s.Height = &v
+	return s
+}
+
+func (s *RecognizeAllTextResponseBodyDataSubImagesDocSpecialTextsSpecialTextRect) SetWidth(v int32) *RecognizeAllTextResponseBodyDataSubImagesDocSpecialTextsSpecialTextRect {
+	s.Width = &v
+	return s
+}
+
+type RecognizeAllTextResponseBodyDataSubImagesDocSubField struct {
+	SubFieldPos  []*RecognizeAllTextResponseBodyDataSubImagesDocSubFieldSubFieldPos `json:"SubFieldPos,omitempty" xml:"SubFieldPos,omitempty" type:"Repeated"`
+	SubFieldRect *RecognizeAllTextResponseBodyDataSubImagesDocSubFieldSubFieldRect  `json:"SubFieldRect,omitempty" xml:"SubFieldRect,omitempty" type:"Struct"`
+	SubFieldType *string                                                            `json:"SubFieldType,omitempty" xml:"SubFieldType,omitempty"`
+}
+
+func (s RecognizeAllTextResponseBodyDataSubImagesDocSubField) String() string {
+	return tea.Prettify(s)
+}
+
+func (s RecognizeAllTextResponseBodyDataSubImagesDocSubField) GoString() string {
+	return s.String()
+}
+
+func (s *RecognizeAllTextResponseBodyDataSubImagesDocSubField) SetSubFieldPos(v []*RecognizeAllTextResponseBodyDataSubImagesDocSubFieldSubFieldPos) *RecognizeAllTextResponseBodyDataSubImagesDocSubField {
+	s.SubFieldPos = v
+	return s
+}
+
+func (s *RecognizeAllTextResponseBodyDataSubImagesDocSubField) SetSubFieldRect(v *RecognizeAllTextResponseBodyDataSubImagesDocSubFieldSubFieldRect) *RecognizeAllTextResponseBodyDataSubImagesDocSubField {
+	s.SubFieldRect = v
+	return s
+}
+
+func (s *RecognizeAllTextResponseBodyDataSubImagesDocSubField) SetSubFieldType(v string) *RecognizeAllTextResponseBodyDataSubImagesDocSubField {
+	s.SubFieldType = &v
+	return s
+}
+
+type RecognizeAllTextResponseBodyDataSubImagesDocSubFieldSubFieldPos struct {
+	X *int32 `json:"X,omitempty" xml:"X,omitempty"`
+	Y *int32 `json:"Y,omitempty" xml:"Y,omitempty"`
+}
+
+func (s RecognizeAllTextResponseBodyDataSubImagesDocSubFieldSubFieldPos) String() string {
+	return tea.Prettify(s)
+}
+
+func (s RecognizeAllTextResponseBodyDataSubImagesDocSubFieldSubFieldPos) GoString() string {
+	return s.String()
+}
+
+func (s *RecognizeAllTextResponseBodyDataSubImagesDocSubFieldSubFieldPos) SetX(v int32) *RecognizeAllTextResponseBodyDataSubImagesDocSubFieldSubFieldPos {
+	s.X = &v
+	return s
+}
+
+func (s *RecognizeAllTextResponseBodyDataSubImagesDocSubFieldSubFieldPos) SetY(v int32) *RecognizeAllTextResponseBodyDataSubImagesDocSubFieldSubFieldPos {
+	s.Y = &v
+	return s
+}
+
+type RecognizeAllTextResponseBodyDataSubImagesDocSubFieldSubFieldRect struct {
+	CenterX *int32 `json:"CenterX,omitempty" xml:"CenterX,omitempty"`
+	CenterY *int32 `json:"CenterY,omitempty" xml:"CenterY,omitempty"`
+	Height  *int32 `json:"Height,omitempty" xml:"Height,omitempty"`
+	Width   *int32 `json:"Width,omitempty" xml:"Width,omitempty"`
+}
+
+func (s RecognizeAllTextResponseBodyDataSubImagesDocSubFieldSubFieldRect) String() string {
+	return tea.Prettify(s)
+}
+
+func (s RecognizeAllTextResponseBodyDataSubImagesDocSubFieldSubFieldRect) GoString() string {
+	return s.String()
+}
+
+func (s *RecognizeAllTextResponseBodyDataSubImagesDocSubFieldSubFieldRect) SetCenterX(v int32) *RecognizeAllTextResponseBodyDataSubImagesDocSubFieldSubFieldRect {
+	s.CenterX = &v
+	return s
+}
+
+func (s *RecognizeAllTextResponseBodyDataSubImagesDocSubFieldSubFieldRect) SetCenterY(v int32) *RecognizeAllTextResponseBodyDataSubImagesDocSubFieldSubFieldRect {
+	s.CenterY = &v
+	return s
+}
+
+func (s *RecognizeAllTextResponseBodyDataSubImagesDocSubFieldSubFieldRect) SetHeight(v int32) *RecognizeAllTextResponseBodyDataSubImagesDocSubFieldSubFieldRect {
+	s.Height = &v
+	return s
+}
+
+func (s *RecognizeAllTextResponseBodyDataSubImagesDocSubFieldSubFieldRect) SetWidth(v int32) *RecognizeAllTextResponseBodyDataSubImagesDocSubFieldSubFieldRect {
+	s.Width = &v
+	return s
+}
+
+type RecognizeAllTextResponseBodyDataSubImagesKvInfo struct {
+	Data      interface{}                                   `json:"Data,omitempty" xml:"Data,omitempty"`
+	KvCount   *int32                                        `json:"KvCount,omitempty" xml:"KvCount,omitempty"`
+	KvDetails map[string]*DataSubImagesKvInfoKvDetailsValue `json:"KvDetails,omitempty" xml:"KvDetails,omitempty"`
+}
+
+func (s RecognizeAllTextResponseBodyDataSubImagesKvInfo) String() string {
+	return tea.Prettify(s)
+}
+
+func (s RecognizeAllTextResponseBodyDataSubImagesKvInfo) GoString() string {
+	return s.String()
+}
+
+func (s *RecognizeAllTextResponseBodyDataSubImagesKvInfo) SetData(v interface{}) *RecognizeAllTextResponseBodyDataSubImagesKvInfo {
+	s.Data = v
+	return s
+}
+
+func (s *RecognizeAllTextResponseBodyDataSubImagesKvInfo) SetKvCount(v int32) *RecognizeAllTextResponseBodyDataSubImagesKvInfo {
+	s.KvCount = &v
+	return s
+}
+
+func (s *RecognizeAllTextResponseBodyDataSubImagesKvInfo) SetKvDetails(v map[string]*DataSubImagesKvInfoKvDetailsValue) *RecognizeAllTextResponseBodyDataSubImagesKvInfo {
+	s.KvDetails = v
+	return s
+}
+
+type RecognizeAllTextResponseBodyDataSubImagesMathInfos struct {
+	MathInfoPoints []*RecognizeAllTextResponseBodyDataSubImagesMathInfosMathInfoPoints `json:"MathInfoPoints,omitempty" xml:"MathInfoPoints,omitempty" type:"Repeated"`
+	MathInfoRect   *RecognizeAllTextResponseBodyDataSubImagesMathInfosMathInfoRect     `json:"MathInfoRect,omitempty" xml:"MathInfoRect,omitempty" type:"Struct"`
+	Result         *string                                                             `json:"Result,omitempty" xml:"Result,omitempty"`
+	Title          *string                                                             `json:"Title,omitempty" xml:"Title,omitempty"`
+}
+
+func (s RecognizeAllTextResponseBodyDataSubImagesMathInfos) String() string {
+	return tea.Prettify(s)
+}
+
+func (s RecognizeAllTextResponseBodyDataSubImagesMathInfos) GoString() string {
+	return s.String()
+}
+
+func (s *RecognizeAllTextResponseBodyDataSubImagesMathInfos) SetMathInfoPoints(v []*RecognizeAllTextResponseBodyDataSubImagesMathInfosMathInfoPoints) *RecognizeAllTextResponseBodyDataSubImagesMathInfos {
+	s.MathInfoPoints = v
+	return s
+}
+
+func (s *RecognizeAllTextResponseBodyDataSubImagesMathInfos) SetMathInfoRect(v *RecognizeAllTextResponseBodyDataSubImagesMathInfosMathInfoRect) *RecognizeAllTextResponseBodyDataSubImagesMathInfos {
+	s.MathInfoRect = v
+	return s
+}
+
+func (s *RecognizeAllTextResponseBodyDataSubImagesMathInfos) SetResult(v string) *RecognizeAllTextResponseBodyDataSubImagesMathInfos {
+	s.Result = &v
+	return s
+}
+
+func (s *RecognizeAllTextResponseBodyDataSubImagesMathInfos) SetTitle(v string) *RecognizeAllTextResponseBodyDataSubImagesMathInfos {
+	s.Title = &v
+	return s
+}
+
+type RecognizeAllTextResponseBodyDataSubImagesMathInfosMathInfoPoints struct {
+	X *int32 `json:"X,omitempty" xml:"X,omitempty"`
+	Y *int32 `json:"Y,omitempty" xml:"Y,omitempty"`
+}
+
+func (s RecognizeAllTextResponseBodyDataSubImagesMathInfosMathInfoPoints) String() string {
+	return tea.Prettify(s)
+}
+
+func (s RecognizeAllTextResponseBodyDataSubImagesMathInfosMathInfoPoints) GoString() string {
+	return s.String()
+}
+
+func (s *RecognizeAllTextResponseBodyDataSubImagesMathInfosMathInfoPoints) SetX(v int32) *RecognizeAllTextResponseBodyDataSubImagesMathInfosMathInfoPoints {
+	s.X = &v
+	return s
+}
+
+func (s *RecognizeAllTextResponseBodyDataSubImagesMathInfosMathInfoPoints) SetY(v int32) *RecognizeAllTextResponseBodyDataSubImagesMathInfosMathInfoPoints {
+	s.Y = &v
+	return s
+}
+
+type RecognizeAllTextResponseBodyDataSubImagesMathInfosMathInfoRect struct {
+	CenterX *int32 `json:"CenterX,omitempty" xml:"CenterX,omitempty"`
+	CenterY *int32 `json:"CenterY,omitempty" xml:"CenterY,omitempty"`
+	Height  *int32 `json:"Height,omitempty" xml:"Height,omitempty"`
+	Width   *int32 `json:"Width,omitempty" xml:"Width,omitempty"`
+}
+
+func (s RecognizeAllTextResponseBodyDataSubImagesMathInfosMathInfoRect) String() string {
+	return tea.Prettify(s)
+}
+
+func (s RecognizeAllTextResponseBodyDataSubImagesMathInfosMathInfoRect) GoString() string {
+	return s.String()
+}
+
+func (s *RecognizeAllTextResponseBodyDataSubImagesMathInfosMathInfoRect) SetCenterX(v int32) *RecognizeAllTextResponseBodyDataSubImagesMathInfosMathInfoRect {
+	s.CenterX = &v
+	return s
+}
+
+func (s *RecognizeAllTextResponseBodyDataSubImagesMathInfosMathInfoRect) SetCenterY(v int32) *RecognizeAllTextResponseBodyDataSubImagesMathInfosMathInfoRect {
+	s.CenterY = &v
+	return s
+}
+
+func (s *RecognizeAllTextResponseBodyDataSubImagesMathInfosMathInfoRect) SetHeight(v int32) *RecognizeAllTextResponseBodyDataSubImagesMathInfosMathInfoRect {
+	s.Height = &v
+	return s
+}
+
+func (s *RecognizeAllTextResponseBodyDataSubImagesMathInfosMathInfoRect) SetWidth(v int32) *RecognizeAllTextResponseBodyDataSubImagesMathInfosMathInfoRect {
+	s.Width = &v
+	return s
+}
+
+type RecognizeAllTextResponseBodyDataSubImagesNewStyleData struct {
+	DocInfo     *RecognizeAllTextResponseBodyDataSubImagesNewStyleDataDocInfo       `json:"DocInfo,omitempty" xml:"DocInfo,omitempty" type:"Struct"`
+	LayoutInfos []*RecognizeAllTextResponseBodyDataSubImagesNewStyleDataLayoutInfos `json:"LayoutInfos,omitempty" xml:"LayoutInfos,omitempty" type:"Repeated"`
+	Styles      []*RecognizeAllTextResponseBodyDataSubImagesNewStyleDataStyles      `json:"Styles,omitempty" xml:"Styles,omitempty" type:"Repeated"`
+}
+
+func (s RecognizeAllTextResponseBodyDataSubImagesNewStyleData) String() string {
+	return tea.Prettify(s)
+}
+
+func (s RecognizeAllTextResponseBodyDataSubImagesNewStyleData) GoString() string {
+	return s.String()
+}
+
+func (s *RecognizeAllTextResponseBodyDataSubImagesNewStyleData) SetDocInfo(v *RecognizeAllTextResponseBodyDataSubImagesNewStyleDataDocInfo) *RecognizeAllTextResponseBodyDataSubImagesNewStyleData {
+	s.DocInfo = v
+	return s
+}
+
+func (s *RecognizeAllTextResponseBodyDataSubImagesNewStyleData) SetLayoutInfos(v []*RecognizeAllTextResponseBodyDataSubImagesNewStyleDataLayoutInfos) *RecognizeAllTextResponseBodyDataSubImagesNewStyleData {
+	s.LayoutInfos = v
+	return s
+}
+
+func (s *RecognizeAllTextResponseBodyDataSubImagesNewStyleData) SetStyles(v []*RecognizeAllTextResponseBodyDataSubImagesNewStyleDataStyles) *RecognizeAllTextResponseBodyDataSubImagesNewStyleData {
+	s.Styles = v
+	return s
+}
+
+type RecognizeAllTextResponseBodyDataSubImagesNewStyleDataDocInfo struct {
+	Pages []*RecognizeAllTextResponseBodyDataSubImagesNewStyleDataDocInfoPages `json:"Pages,omitempty" xml:"Pages,omitempty" type:"Repeated"`
+}
+
+func (s RecognizeAllTextResponseBodyDataSubImagesNewStyleDataDocInfo) String() string {
+	return tea.Prettify(s)
+}
+
+func (s RecognizeAllTextResponseBodyDataSubImagesNewStyleDataDocInfo) GoString() string {
+	return s.String()
+}
+
+func (s *RecognizeAllTextResponseBodyDataSubImagesNewStyleDataDocInfo) SetPages(v []*RecognizeAllTextResponseBodyDataSubImagesNewStyleDataDocInfoPages) *RecognizeAllTextResponseBodyDataSubImagesNewStyleDataDocInfo {
+	s.Pages = v
+	return s
+}
+
+type RecognizeAllTextResponseBodyDataSubImagesNewStyleDataDocInfoPages struct {
+	ImageWidth    *int32 `json:"ImageWidth,omitempty" xml:"ImageWidth,omitempty"`
+	InageHeight   *int32 `json:"InageHeight,omitempty" xml:"InageHeight,omitempty"`
+	PageIdAllDocs *int32 `json:"PageIdAllDocs,omitempty" xml:"PageIdAllDocs,omitempty"`
+	PageIdCurDoc  *int32 `json:"PageIdCurDoc,omitempty" xml:"PageIdCurDoc,omitempty"`
+}
+
+func (s RecognizeAllTextResponseBodyDataSubImagesNewStyleDataDocInfoPages) String() string {
+	return tea.Prettify(s)
+}
+
+func (s RecognizeAllTextResponseBodyDataSubImagesNewStyleDataDocInfoPages) GoString() string {
+	return s.String()
+}
+
+func (s *RecognizeAllTextResponseBodyDataSubImagesNewStyleDataDocInfoPages) SetImageWidth(v int32) *RecognizeAllTextResponseBodyDataSubImagesNewStyleDataDocInfoPages {
+	s.ImageWidth = &v
+	return s
+}
+
+func (s *RecognizeAllTextResponseBodyDataSubImagesNewStyleDataDocInfoPages) SetInageHeight(v int32) *RecognizeAllTextResponseBodyDataSubImagesNewStyleDataDocInfoPages {
+	s.InageHeight = &v
+	return s
+}
+
+func (s *RecognizeAllTextResponseBodyDataSubImagesNewStyleDataDocInfoPages) SetPageIdAllDocs(v int32) *RecognizeAllTextResponseBodyDataSubImagesNewStyleDataDocInfoPages {
+	s.PageIdAllDocs = &v
+	return s
+}
+
+func (s *RecognizeAllTextResponseBodyDataSubImagesNewStyleDataDocInfoPages) SetPageIdCurDoc(v int32) *RecognizeAllTextResponseBodyDataSubImagesNewStyleDataDocInfoPages {
+	s.PageIdCurDoc = &v
+	return s
+}
+
+type RecognizeAllTextResponseBodyDataSubImagesNewStyleDataLayoutInfos struct {
+	Alignment    *string                                                                         `json:"Alignment,omitempty" xml:"Alignment,omitempty"`
+	Index        *int32                                                                          `json:"Index,omitempty" xml:"Index,omitempty"`
+	LayoutPoints []*RecognizeAllTextResponseBodyDataSubImagesNewStyleDataLayoutInfosLayoutPoints `json:"LayoutPoints,omitempty" xml:"LayoutPoints,omitempty" type:"Repeated"`
+	LayoutRect   *RecognizeAllTextResponseBodyDataSubImagesNewStyleDataLayoutInfosLayoutRect     `json:"LayoutRect,omitempty" xml:"LayoutRect,omitempty" type:"Struct"`
+	PageNum      []*int32                                                                        `json:"PageNum,omitempty" xml:"PageNum,omitempty" type:"Repeated"`
+	Source       *string                                                                         `json:"Source,omitempty" xml:"Source,omitempty"`
+	SubType      *string                                                                         `json:"SubType,omitempty" xml:"SubType,omitempty"`
+	Text         *string                                                                         `json:"Text,omitempty" xml:"Text,omitempty"`
+	Type         *string                                                                         `json:"Type,omitempty" xml:"Type,omitempty"`
+	UniqueID     *string                                                                         `json:"UniqueID,omitempty" xml:"UniqueID,omitempty"`
+}
+
+func (s RecognizeAllTextResponseBodyDataSubImagesNewStyleDataLayoutInfos) String() string {
+	return tea.Prettify(s)
+}
+
+func (s RecognizeAllTextResponseBodyDataSubImagesNewStyleDataLayoutInfos) GoString() string {
+	return s.String()
+}
+
+func (s *RecognizeAllTextResponseBodyDataSubImagesNewStyleDataLayoutInfos) SetAlignment(v string) *RecognizeAllTextResponseBodyDataSubImagesNewStyleDataLayoutInfos {
+	s.Alignment = &v
+	return s
+}
+
+func (s *RecognizeAllTextResponseBodyDataSubImagesNewStyleDataLayoutInfos) SetIndex(v int32) *RecognizeAllTextResponseBodyDataSubImagesNewStyleDataLayoutInfos {
+	s.Index = &v
+	return s
+}
+
+func (s *RecognizeAllTextResponseBodyDataSubImagesNewStyleDataLayoutInfos) SetLayoutPoints(v []*RecognizeAllTextResponseBodyDataSubImagesNewStyleDataLayoutInfosLayoutPoints) *RecognizeAllTextResponseBodyDataSubImagesNewStyleDataLayoutInfos {
+	s.LayoutPoints = v
+	return s
+}
+
+func (s *RecognizeAllTextResponseBodyDataSubImagesNewStyleDataLayoutInfos) SetLayoutRect(v *RecognizeAllTextResponseBodyDataSubImagesNewStyleDataLayoutInfosLayoutRect) *RecognizeAllTextResponseBodyDataSubImagesNewStyleDataLayoutInfos {
+	s.LayoutRect = v
+	return s
+}
+
+func (s *RecognizeAllTextResponseBodyDataSubImagesNewStyleDataLayoutInfos) SetPageNum(v []*int32) *RecognizeAllTextResponseBodyDataSubImagesNewStyleDataLayoutInfos {
+	s.PageNum = v
+	return s
+}
+
+func (s *RecognizeAllTextResponseBodyDataSubImagesNewStyleDataLayoutInfos) SetSource(v string) *RecognizeAllTextResponseBodyDataSubImagesNewStyleDataLayoutInfos {
+	s.Source = &v
+	return s
+}
+
+func (s *RecognizeAllTextResponseBodyDataSubImagesNewStyleDataLayoutInfos) SetSubType(v string) *RecognizeAllTextResponseBodyDataSubImagesNewStyleDataLayoutInfos {
+	s.SubType = &v
+	return s
+}
+
+func (s *RecognizeAllTextResponseBodyDataSubImagesNewStyleDataLayoutInfos) SetText(v string) *RecognizeAllTextResponseBodyDataSubImagesNewStyleDataLayoutInfos {
+	s.Text = &v
+	return s
+}
+
+func (s *RecognizeAllTextResponseBodyDataSubImagesNewStyleDataLayoutInfos) SetType(v string) *RecognizeAllTextResponseBodyDataSubImagesNewStyleDataLayoutInfos {
+	s.Type = &v
+	return s
+}
+
+func (s *RecognizeAllTextResponseBodyDataSubImagesNewStyleDataLayoutInfos) SetUniqueID(v string) *RecognizeAllTextResponseBodyDataSubImagesNewStyleDataLayoutInfos {
+	s.UniqueID = &v
+	return s
+}
+
+type RecognizeAllTextResponseBodyDataSubImagesNewStyleDataLayoutInfosLayoutPoints struct {
+	X *int32 `json:"X,omitempty" xml:"X,omitempty"`
+	Y *int32 `json:"Y,omitempty" xml:"Y,omitempty"`
+}
+
+func (s RecognizeAllTextResponseBodyDataSubImagesNewStyleDataLayoutInfosLayoutPoints) String() string {
+	return tea.Prettify(s)
+}
+
+func (s RecognizeAllTextResponseBodyDataSubImagesNewStyleDataLayoutInfosLayoutPoints) GoString() string {
+	return s.String()
+}
+
+func (s *RecognizeAllTextResponseBodyDataSubImagesNewStyleDataLayoutInfosLayoutPoints) SetX(v int32) *RecognizeAllTextResponseBodyDataSubImagesNewStyleDataLayoutInfosLayoutPoints {
+	s.X = &v
+	return s
+}
+
+func (s *RecognizeAllTextResponseBodyDataSubImagesNewStyleDataLayoutInfosLayoutPoints) SetY(v int32) *RecognizeAllTextResponseBodyDataSubImagesNewStyleDataLayoutInfosLayoutPoints {
+	s.Y = &v
+	return s
+}
+
+type RecognizeAllTextResponseBodyDataSubImagesNewStyleDataLayoutInfosLayoutRect struct {
+	CenterX *int32 `json:"CenterX,omitempty" xml:"CenterX,omitempty"`
+	CenterY *int32 `json:"CenterY,omitempty" xml:"CenterY,omitempty"`
+	Height  *int32 `json:"Height,omitempty" xml:"Height,omitempty"`
+	Width   *int32 `json:"Width,omitempty" xml:"Width,omitempty"`
+}
+
+func (s RecognizeAllTextResponseBodyDataSubImagesNewStyleDataLayoutInfosLayoutRect) String() string {
+	return tea.Prettify(s)
+}
+
+func (s RecognizeAllTextResponseBodyDataSubImagesNewStyleDataLayoutInfosLayoutRect) GoString() string {
+	return s.String()
+}
+
+func (s *RecognizeAllTextResponseBodyDataSubImagesNewStyleDataLayoutInfosLayoutRect) SetCenterX(v int32) *RecognizeAllTextResponseBodyDataSubImagesNewStyleDataLayoutInfosLayoutRect {
+	s.CenterX = &v
+	return s
+}
+
+func (s *RecognizeAllTextResponseBodyDataSubImagesNewStyleDataLayoutInfosLayoutRect) SetCenterY(v int32) *RecognizeAllTextResponseBodyDataSubImagesNewStyleDataLayoutInfosLayoutRect {
+	s.CenterY = &v
+	return s
+}
+
+func (s *RecognizeAllTextResponseBodyDataSubImagesNewStyleDataLayoutInfosLayoutRect) SetHeight(v int32) *RecognizeAllTextResponseBodyDataSubImagesNewStyleDataLayoutInfosLayoutRect {
+	s.Height = &v
+	return s
+}
+
+func (s *RecognizeAllTextResponseBodyDataSubImagesNewStyleDataLayoutInfosLayoutRect) SetWidth(v int32) *RecognizeAllTextResponseBodyDataSubImagesNewStyleDataLayoutInfosLayoutRect {
+	s.Width = &v
+	return s
+}
+
+type RecognizeAllTextResponseBodyDataSubImagesNewStyleDataStyles struct {
+	Bold       *bool    `json:"Bold,omitempty" xml:"Bold,omitempty"`
+	CharScale  *float32 `json:"CharScale,omitempty" xml:"CharScale,omitempty"`
+	Color      *string  `json:"Color,omitempty" xml:"Color,omitempty"`
+	DeleteLine *bool    `json:"DeleteLine,omitempty" xml:"DeleteLine,omitempty"`
+	FontName   *string  `json:"FontName,omitempty" xml:"FontName,omitempty"`
+	FontSize   *int32   `json:"FontSize,omitempty" xml:"FontSize,omitempty"`
+	Italic     *bool    `json:"Italic,omitempty" xml:"Italic,omitempty"`
+	StyleId    *int32   `json:"StyleId,omitempty" xml:"StyleId,omitempty"`
+	Underline  *bool    `json:"Underline,omitempty" xml:"Underline,omitempty"`
+}
+
+func (s RecognizeAllTextResponseBodyDataSubImagesNewStyleDataStyles) String() string {
+	return tea.Prettify(s)
+}
+
+func (s RecognizeAllTextResponseBodyDataSubImagesNewStyleDataStyles) GoString() string {
+	return s.String()
+}
+
+func (s *RecognizeAllTextResponseBodyDataSubImagesNewStyleDataStyles) SetBold(v bool) *RecognizeAllTextResponseBodyDataSubImagesNewStyleDataStyles {
+	s.Bold = &v
+	return s
+}
+
+func (s *RecognizeAllTextResponseBodyDataSubImagesNewStyleDataStyles) SetCharScale(v float32) *RecognizeAllTextResponseBodyDataSubImagesNewStyleDataStyles {
+	s.CharScale = &v
+	return s
+}
+
+func (s *RecognizeAllTextResponseBodyDataSubImagesNewStyleDataStyles) SetColor(v string) *RecognizeAllTextResponseBodyDataSubImagesNewStyleDataStyles {
+	s.Color = &v
+	return s
+}
+
+func (s *RecognizeAllTextResponseBodyDataSubImagesNewStyleDataStyles) SetDeleteLine(v bool) *RecognizeAllTextResponseBodyDataSubImagesNewStyleDataStyles {
+	s.DeleteLine = &v
+	return s
+}
+
+func (s *RecognizeAllTextResponseBodyDataSubImagesNewStyleDataStyles) SetFontName(v string) *RecognizeAllTextResponseBodyDataSubImagesNewStyleDataStyles {
+	s.FontName = &v
+	return s
+}
+
+func (s *RecognizeAllTextResponseBodyDataSubImagesNewStyleDataStyles) SetFontSize(v int32) *RecognizeAllTextResponseBodyDataSubImagesNewStyleDataStyles {
+	s.FontSize = &v
+	return s
+}
+
+func (s *RecognizeAllTextResponseBodyDataSubImagesNewStyleDataStyles) SetItalic(v bool) *RecognizeAllTextResponseBodyDataSubImagesNewStyleDataStyles {
+	s.Italic = &v
+	return s
+}
+
+func (s *RecognizeAllTextResponseBodyDataSubImagesNewStyleDataStyles) SetStyleId(v int32) *RecognizeAllTextResponseBodyDataSubImagesNewStyleDataStyles {
+	s.StyleId = &v
+	return s
+}
+
+func (s *RecognizeAllTextResponseBodyDataSubImagesNewStyleDataStyles) SetUnderline(v bool) *RecognizeAllTextResponseBodyDataSubImagesNewStyleDataStyles {
+	s.Underline = &v
+	return s
+}
+
+type RecognizeAllTextResponseBodyDataSubImagesPageInfos struct {
+	Angle        *int32                                                            `json:"Angle,omitempty" xml:"Angle,omitempty"`
+	DocIndex     *int32                                                            `json:"DocIndex,omitempty" xml:"DocIndex,omitempty"`
+	Height       *int32                                                            `json:"Height,omitempty" xml:"Height,omitempty"`
+	PageId       *int32                                                            `json:"PageId,omitempty" xml:"PageId,omitempty"`
+	SubjectInfos []*RecognizeAllTextResponseBodyDataSubImagesPageInfosSubjectInfos `json:"SubjectInfos,omitempty" xml:"SubjectInfos,omitempty" type:"Repeated"`
+	Width        *int32                                                            `json:"Width,omitempty" xml:"Width,omitempty"`
+}
+
+func (s RecognizeAllTextResponseBodyDataSubImagesPageInfos) String() string {
+	return tea.Prettify(s)
+}
+
+func (s RecognizeAllTextResponseBodyDataSubImagesPageInfos) GoString() string {
+	return s.String()
+}
+
+func (s *RecognizeAllTextResponseBodyDataSubImagesPageInfos) SetAngle(v int32) *RecognizeAllTextResponseBodyDataSubImagesPageInfos {
+	s.Angle = &v
+	return s
+}
+
+func (s *RecognizeAllTextResponseBodyDataSubImagesPageInfos) SetDocIndex(v int32) *RecognizeAllTextResponseBodyDataSubImagesPageInfos {
+	s.DocIndex = &v
+	return s
+}
+
+func (s *RecognizeAllTextResponseBodyDataSubImagesPageInfos) SetHeight(v int32) *RecognizeAllTextResponseBodyDataSubImagesPageInfos {
+	s.Height = &v
+	return s
+}
+
+func (s *RecognizeAllTextResponseBodyDataSubImagesPageInfos) SetPageId(v int32) *RecognizeAllTextResponseBodyDataSubImagesPageInfos {
+	s.PageId = &v
+	return s
+}
+
+func (s *RecognizeAllTextResponseBodyDataSubImagesPageInfos) SetSubjectInfos(v []*RecognizeAllTextResponseBodyDataSubImagesPageInfosSubjectInfos) *RecognizeAllTextResponseBodyDataSubImagesPageInfos {
+	s.SubjectInfos = v
+	return s
+}
+
+func (s *RecognizeAllTextResponseBodyDataSubImagesPageInfos) SetWidth(v int32) *RecognizeAllTextResponseBodyDataSubImagesPageInfos {
+	s.Width = &v
+	return s
+}
+
+type RecognizeAllTextResponseBodyDataSubImagesPageInfosSubjectInfos struct {
+	BlockInfo    *RecognizeAllTextResponseBodyDataSubImagesPageInfosSubjectInfosBlockInfo      `json:"BlockInfo,omitempty" xml:"BlockInfo,omitempty" type:"Struct"`
+	Content      *string                                                                       `json:"Content,omitempty" xml:"Content,omitempty"`
+	ContentInfos []*RecognizeAllTextResponseBodyDataSubImagesPageInfosSubjectInfosContentInfos `json:"ContentInfos,omitempty" xml:"ContentInfos,omitempty" type:"Repeated"`
+	Ids          []*int32                                                                      `json:"Ids,omitempty" xml:"Ids,omitempty" type:"Repeated"`
+	IsMultiPage  *bool                                                                         `json:"IsMultiPage,omitempty" xml:"IsMultiPage,omitempty"`
+}
+
+func (s RecognizeAllTextResponseBodyDataSubImagesPageInfosSubjectInfos) String() string {
+	return tea.Prettify(s)
+}
+
+func (s RecognizeAllTextResponseBodyDataSubImagesPageInfosSubjectInfos) GoString() string {
+	return s.String()
+}
+
+func (s *RecognizeAllTextResponseBodyDataSubImagesPageInfosSubjectInfos) SetBlockInfo(v *RecognizeAllTextResponseBodyDataSubImagesPageInfosSubjectInfosBlockInfo) *RecognizeAllTextResponseBodyDataSubImagesPageInfosSubjectInfos {
+	s.BlockInfo = v
+	return s
+}
+
+func (s *RecognizeAllTextResponseBodyDataSubImagesPageInfosSubjectInfos) SetContent(v string) *RecognizeAllTextResponseBodyDataSubImagesPageInfosSubjectInfos {
+	s.Content = &v
+	return s
+}
+
+func (s *RecognizeAllTextResponseBodyDataSubImagesPageInfosSubjectInfos) SetContentInfos(v []*RecognizeAllTextResponseBodyDataSubImagesPageInfosSubjectInfosContentInfos) *RecognizeAllTextResponseBodyDataSubImagesPageInfosSubjectInfos {
+	s.ContentInfos = v
+	return s
+}
+
+func (s *RecognizeAllTextResponseBodyDataSubImagesPageInfosSubjectInfos) SetIds(v []*int32) *RecognizeAllTextResponseBodyDataSubImagesPageInfosSubjectInfos {
+	s.Ids = v
+	return s
+}
+
+func (s *RecognizeAllTextResponseBodyDataSubImagesPageInfosSubjectInfos) SetIsMultiPage(v bool) *RecognizeAllTextResponseBodyDataSubImagesPageInfosSubjectInfos {
+	s.IsMultiPage = &v
+	return s
+}
+
+type RecognizeAllTextResponseBodyDataSubImagesPageInfosSubjectInfosBlockInfo struct {
+	BlockCount   *int32                                                                                 `json:"BlockCount,omitempty" xml:"BlockCount,omitempty"`
+	BlockDetails []*RecognizeAllTextResponseBodyDataSubImagesPageInfosSubjectInfosBlockInfoBlockDetails `json:"BlockDetails,omitempty" xml:"BlockDetails,omitempty" type:"Repeated"`
+}
+
+func (s RecognizeAllTextResponseBodyDataSubImagesPageInfosSubjectInfosBlockInfo) String() string {
+	return tea.Prettify(s)
+}
+
+func (s RecognizeAllTextResponseBodyDataSubImagesPageInfosSubjectInfosBlockInfo) GoString() string {
+	return s.String()
+}
+
+func (s *RecognizeAllTextResponseBodyDataSubImagesPageInfosSubjectInfosBlockInfo) SetBlockCount(v int32) *RecognizeAllTextResponseBodyDataSubImagesPageInfosSubjectInfosBlockInfo {
+	s.BlockCount = &v
+	return s
+}
+
+func (s *RecognizeAllTextResponseBodyDataSubImagesPageInfosSubjectInfosBlockInfo) SetBlockDetails(v []*RecognizeAllTextResponseBodyDataSubImagesPageInfosSubjectInfosBlockInfoBlockDetails) *RecognizeAllTextResponseBodyDataSubImagesPageInfosSubjectInfosBlockInfo {
+	s.BlockDetails = v
+	return s
+}
+
+type RecognizeAllTextResponseBodyDataSubImagesPageInfosSubjectInfosBlockInfoBlockDetails struct {
+	Angle       *int32                                                                                            `json:"Angle,omitempty" xml:"Angle,omitempty"`
+	BlockId     *int32                                                                                            `json:"BlockId,omitempty" xml:"BlockId,omitempty"`
+	BlockPoints []*RecognizeAllTextResponseBodyDataSubImagesPageInfosSubjectInfosBlockInfoBlockDetailsBlockPoints `json:"BlockPoints,omitempty" xml:"BlockPoints,omitempty" type:"Repeated"`
+	BlockRect   *RecognizeAllTextResponseBodyDataSubImagesPageInfosSubjectInfosBlockInfoBlockDetailsBlockRect     `json:"BlockRect,omitempty" xml:"BlockRect,omitempty" type:"Struct"`
+	CharInfo    []*RecognizeAllTextResponseBodyDataSubImagesPageInfosSubjectInfosBlockInfoBlockDetailsCharInfo    `json:"CharInfo,omitempty" xml:"CharInfo,omitempty" type:"Repeated"`
+	Confidence  *int32                                                                                            `json:"Confidence,omitempty" xml:"Confidence,omitempty"`
+	Content     *string                                                                                           `json:"Content,omitempty" xml:"Content,omitempty"`
+}
+
+func (s RecognizeAllTextResponseBodyDataSubImagesPageInfosSubjectInfosBlockInfoBlockDetails) String() string {
+	return tea.Prettify(s)
+}
+
+func (s RecognizeAllTextResponseBodyDataSubImagesPageInfosSubjectInfosBlockInfoBlockDetails) GoString() string {
+	return s.String()
+}
+
+func (s *RecognizeAllTextResponseBodyDataSubImagesPageInfosSubjectInfosBlockInfoBlockDetails) SetAngle(v int32) *RecognizeAllTextResponseBodyDataSubImagesPageInfosSubjectInfosBlockInfoBlockDetails {
+	s.Angle = &v
+	return s
+}
+
+func (s *RecognizeAllTextResponseBodyDataSubImagesPageInfosSubjectInfosBlockInfoBlockDetails) SetBlockId(v int32) *RecognizeAllTextResponseBodyDataSubImagesPageInfosSubjectInfosBlockInfoBlockDetails {
+	s.BlockId = &v
+	return s
+}
+
+func (s *RecognizeAllTextResponseBodyDataSubImagesPageInfosSubjectInfosBlockInfoBlockDetails) SetBlockPoints(v []*RecognizeAllTextResponseBodyDataSubImagesPageInfosSubjectInfosBlockInfoBlockDetailsBlockPoints) *RecognizeAllTextResponseBodyDataSubImagesPageInfosSubjectInfosBlockInfoBlockDetails {
+	s.BlockPoints = v
+	return s
+}
+
+func (s *RecognizeAllTextResponseBodyDataSubImagesPageInfosSubjectInfosBlockInfoBlockDetails) SetBlockRect(v *RecognizeAllTextResponseBodyDataSubImagesPageInfosSubjectInfosBlockInfoBlockDetailsBlockRect) *RecognizeAllTextResponseBodyDataSubImagesPageInfosSubjectInfosBlockInfoBlockDetails {
+	s.BlockRect = v
+	return s
+}
+
+func (s *RecognizeAllTextResponseBodyDataSubImagesPageInfosSubjectInfosBlockInfoBlockDetails) SetCharInfo(v []*RecognizeAllTextResponseBodyDataSubImagesPageInfosSubjectInfosBlockInfoBlockDetailsCharInfo) *RecognizeAllTextResponseBodyDataSubImagesPageInfosSubjectInfosBlockInfoBlockDetails {
+	s.CharInfo = v
+	return s
+}
+
+func (s *RecognizeAllTextResponseBodyDataSubImagesPageInfosSubjectInfosBlockInfoBlockDetails) SetConfidence(v int32) *RecognizeAllTextResponseBodyDataSubImagesPageInfosSubjectInfosBlockInfoBlockDetails {
+	s.Confidence = &v
+	return s
+}
+
+func (s *RecognizeAllTextResponseBodyDataSubImagesPageInfosSubjectInfosBlockInfoBlockDetails) SetContent(v string) *RecognizeAllTextResponseBodyDataSubImagesPageInfosSubjectInfosBlockInfoBlockDetails {
+	s.Content = &v
+	return s
+}
+
+type RecognizeAllTextResponseBodyDataSubImagesPageInfosSubjectInfosBlockInfoBlockDetailsBlockPoints struct {
+	X *int32 `json:"X,omitempty" xml:"X,omitempty"`
+	Y *int32 `json:"Y,omitempty" xml:"Y,omitempty"`
+}
+
+func (s RecognizeAllTextResponseBodyDataSubImagesPageInfosSubjectInfosBlockInfoBlockDetailsBlockPoints) String() string {
+	return tea.Prettify(s)
+}
+
+func (s RecognizeAllTextResponseBodyDataSubImagesPageInfosSubjectInfosBlockInfoBlockDetailsBlockPoints) GoString() string {
+	return s.String()
+}
+
+func (s *RecognizeAllTextResponseBodyDataSubImagesPageInfosSubjectInfosBlockInfoBlockDetailsBlockPoints) SetX(v int32) *RecognizeAllTextResponseBodyDataSubImagesPageInfosSubjectInfosBlockInfoBlockDetailsBlockPoints {
+	s.X = &v
+	return s
+}
+
+func (s *RecognizeAllTextResponseBodyDataSubImagesPageInfosSubjectInfosBlockInfoBlockDetailsBlockPoints) SetY(v int32) *RecognizeAllTextResponseBodyDataSubImagesPageInfosSubjectInfosBlockInfoBlockDetailsBlockPoints {
+	s.Y = &v
+	return s
+}
+
+type RecognizeAllTextResponseBodyDataSubImagesPageInfosSubjectInfosBlockInfoBlockDetailsBlockRect struct {
+	CenterX *int32 `json:"CenterX,omitempty" xml:"CenterX,omitempty"`
+	CenterY *int32 `json:"CenterY,omitempty" xml:"CenterY,omitempty"`
+	Height  *int32 `json:"Height,omitempty" xml:"Height,omitempty"`
+	Width   *int32 `json:"Width,omitempty" xml:"Width,omitempty"`
+}
+
+func (s RecognizeAllTextResponseBodyDataSubImagesPageInfosSubjectInfosBlockInfoBlockDetailsBlockRect) String() string {
+	return tea.Prettify(s)
+}
+
+func (s RecognizeAllTextResponseBodyDataSubImagesPageInfosSubjectInfosBlockInfoBlockDetailsBlockRect) GoString() string {
+	return s.String()
+}
+
+func (s *RecognizeAllTextResponseBodyDataSubImagesPageInfosSubjectInfosBlockInfoBlockDetailsBlockRect) SetCenterX(v int32) *RecognizeAllTextResponseBodyDataSubImagesPageInfosSubjectInfosBlockInfoBlockDetailsBlockRect {
+	s.CenterX = &v
+	return s
+}
+
+func (s *RecognizeAllTextResponseBodyDataSubImagesPageInfosSubjectInfosBlockInfoBlockDetailsBlockRect) SetCenterY(v int32) *RecognizeAllTextResponseBodyDataSubImagesPageInfosSubjectInfosBlockInfoBlockDetailsBlockRect {
+	s.CenterY = &v
+	return s
+}
+
+func (s *RecognizeAllTextResponseBodyDataSubImagesPageInfosSubjectInfosBlockInfoBlockDetailsBlockRect) SetHeight(v int32) *RecognizeAllTextResponseBodyDataSubImagesPageInfosSubjectInfosBlockInfoBlockDetailsBlockRect {
+	s.Height = &v
+	return s
+}
+
+func (s *RecognizeAllTextResponseBodyDataSubImagesPageInfosSubjectInfosBlockInfoBlockDetailsBlockRect) SetWidth(v int32) *RecognizeAllTextResponseBodyDataSubImagesPageInfosSubjectInfosBlockInfoBlockDetailsBlockRect {
+	s.Width = &v
+	return s
+}
+
+type RecognizeAllTextResponseBodyDataSubImagesPageInfosSubjectInfosBlockInfoBlockDetailsCharInfo struct {
+	CharId     *int32                                                                                                   `json:"CharId,omitempty" xml:"CharId,omitempty"`
+	CharPoints []*RecognizeAllTextResponseBodyDataSubImagesPageInfosSubjectInfosBlockInfoBlockDetailsCharInfoCharPoints `json:"CharPoints,omitempty" xml:"CharPoints,omitempty" type:"Repeated"`
+	CharRect   *RecognizeAllTextResponseBodyDataSubImagesPageInfosSubjectInfosBlockInfoBlockDetailsCharInfoCharRect     `json:"CharRect,omitempty" xml:"CharRect,omitempty" type:"Struct"`
+	Confidence *int32                                                                                                   `json:"Confidence,omitempty" xml:"Confidence,omitempty"`
+	Content    *string                                                                                                  `json:"Content,omitempty" xml:"Content,omitempty"`
+}
+
+func (s RecognizeAllTextResponseBodyDataSubImagesPageInfosSubjectInfosBlockInfoBlockDetailsCharInfo) String() string {
+	return tea.Prettify(s)
+}
+
+func (s RecognizeAllTextResponseBodyDataSubImagesPageInfosSubjectInfosBlockInfoBlockDetailsCharInfo) GoString() string {
+	return s.String()
+}
+
+func (s *RecognizeAllTextResponseBodyDataSubImagesPageInfosSubjectInfosBlockInfoBlockDetailsCharInfo) SetCharId(v int32) *RecognizeAllTextResponseBodyDataSubImagesPageInfosSubjectInfosBlockInfoBlockDetailsCharInfo {
+	s.CharId = &v
+	return s
+}
+
+func (s *RecognizeAllTextResponseBodyDataSubImagesPageInfosSubjectInfosBlockInfoBlockDetailsCharInfo) SetCharPoints(v []*RecognizeAllTextResponseBodyDataSubImagesPageInfosSubjectInfosBlockInfoBlockDetailsCharInfoCharPoints) *RecognizeAllTextResponseBodyDataSubImagesPageInfosSubjectInfosBlockInfoBlockDetailsCharInfo {
+	s.CharPoints = v
+	return s
+}
+
+func (s *RecognizeAllTextResponseBodyDataSubImagesPageInfosSubjectInfosBlockInfoBlockDetailsCharInfo) SetCharRect(v *RecognizeAllTextResponseBodyDataSubImagesPageInfosSubjectInfosBlockInfoBlockDetailsCharInfoCharRect) *RecognizeAllTextResponseBodyDataSubImagesPageInfosSubjectInfosBlockInfoBlockDetailsCharInfo {
+	s.CharRect = v
+	return s
+}
+
+func (s *RecognizeAllTextResponseBodyDataSubImagesPageInfosSubjectInfosBlockInfoBlockDetailsCharInfo) SetConfidence(v int32) *RecognizeAllTextResponseBodyDataSubImagesPageInfosSubjectInfosBlockInfoBlockDetailsCharInfo {
+	s.Confidence = &v
+	return s
+}
+
+func (s *RecognizeAllTextResponseBodyDataSubImagesPageInfosSubjectInfosBlockInfoBlockDetailsCharInfo) SetContent(v string) *RecognizeAllTextResponseBodyDataSubImagesPageInfosSubjectInfosBlockInfoBlockDetailsCharInfo {
+	s.Content = &v
+	return s
+}
+
+type RecognizeAllTextResponseBodyDataSubImagesPageInfosSubjectInfosBlockInfoBlockDetailsCharInfoCharPoints struct {
+	X *int32 `json:"X,omitempty" xml:"X,omitempty"`
+	Y *int32 `json:"Y,omitempty" xml:"Y,omitempty"`
+}
+
+func (s RecognizeAllTextResponseBodyDataSubImagesPageInfosSubjectInfosBlockInfoBlockDetailsCharInfoCharPoints) String() string {
+	return tea.Prettify(s)
+}
+
+func (s RecognizeAllTextResponseBodyDataSubImagesPageInfosSubjectInfosBlockInfoBlockDetailsCharInfoCharPoints) GoString() string {
+	return s.String()
+}
+
+func (s *RecognizeAllTextResponseBodyDataSubImagesPageInfosSubjectInfosBlockInfoBlockDetailsCharInfoCharPoints) SetX(v int32) *RecognizeAllTextResponseBodyDataSubImagesPageInfosSubjectInfosBlockInfoBlockDetailsCharInfoCharPoints {
+	s.X = &v
+	return s
+}
+
+func (s *RecognizeAllTextResponseBodyDataSubImagesPageInfosSubjectInfosBlockInfoBlockDetailsCharInfoCharPoints) SetY(v int32) *RecognizeAllTextResponseBodyDataSubImagesPageInfosSubjectInfosBlockInfoBlockDetailsCharInfoCharPoints {
+	s.Y = &v
+	return s
+}
+
+type RecognizeAllTextResponseBodyDataSubImagesPageInfosSubjectInfosBlockInfoBlockDetailsCharInfoCharRect struct {
+	CenterX *int32 `json:"CenterX,omitempty" xml:"CenterX,omitempty"`
+	CenterY *int32 `json:"CenterY,omitempty" xml:"CenterY,omitempty"`
+	Height  *int32 `json:"Height,omitempty" xml:"Height,omitempty"`
+	Width   *int32 `json:"Width,omitempty" xml:"Width,omitempty"`
+}
+
+func (s RecognizeAllTextResponseBodyDataSubImagesPageInfosSubjectInfosBlockInfoBlockDetailsCharInfoCharRect) String() string {
+	return tea.Prettify(s)
+}
+
+func (s RecognizeAllTextResponseBodyDataSubImagesPageInfosSubjectInfosBlockInfoBlockDetailsCharInfoCharRect) GoString() string {
+	return s.String()
+}
+
+func (s *RecognizeAllTextResponseBodyDataSubImagesPageInfosSubjectInfosBlockInfoBlockDetailsCharInfoCharRect) SetCenterX(v int32) *RecognizeAllTextResponseBodyDataSubImagesPageInfosSubjectInfosBlockInfoBlockDetailsCharInfoCharRect {
+	s.CenterX = &v
+	return s
+}
+
+func (s *RecognizeAllTextResponseBodyDataSubImagesPageInfosSubjectInfosBlockInfoBlockDetailsCharInfoCharRect) SetCenterY(v int32) *RecognizeAllTextResponseBodyDataSubImagesPageInfosSubjectInfosBlockInfoBlockDetailsCharInfoCharRect {
+	s.CenterY = &v
+	return s
+}
+
+func (s *RecognizeAllTextResponseBodyDataSubImagesPageInfosSubjectInfosBlockInfoBlockDetailsCharInfoCharRect) SetHeight(v int32) *RecognizeAllTextResponseBodyDataSubImagesPageInfosSubjectInfosBlockInfoBlockDetailsCharInfoCharRect {
+	s.Height = &v
+	return s
+}
+
+func (s *RecognizeAllTextResponseBodyDataSubImagesPageInfosSubjectInfosBlockInfoBlockDetailsCharInfoCharRect) SetWidth(v int32) *RecognizeAllTextResponseBodyDataSubImagesPageInfosSubjectInfosBlockInfoBlockDetailsCharInfoCharRect {
+	s.Width = &v
+	return s
+}
+
+type RecognizeAllTextResponseBodyDataSubImagesPageInfosSubjectInfosContentInfos struct {
+	ContentPoints []*RecognizeAllTextResponseBodyDataSubImagesPageInfosSubjectInfosContentInfosContentPoints `json:"ContentPoints,omitempty" xml:"ContentPoints,omitempty" type:"Repeated"`
+	ContentRect   *RecognizeAllTextResponseBodyDataSubImagesPageInfosSubjectInfosContentInfosContentRect     `json:"ContentRect,omitempty" xml:"ContentRect,omitempty" type:"Struct"`
+	DocIndex      *int32                                                                                     `json:"DocIndex,omitempty" xml:"DocIndex,omitempty"`
+}
+
+func (s RecognizeAllTextResponseBodyDataSubImagesPageInfosSubjectInfosContentInfos) String() string {
+	return tea.Prettify(s)
+}
+
+func (s RecognizeAllTextResponseBodyDataSubImagesPageInfosSubjectInfosContentInfos) GoString() string {
+	return s.String()
+}
+
+func (s *RecognizeAllTextResponseBodyDataSubImagesPageInfosSubjectInfosContentInfos) SetContentPoints(v []*RecognizeAllTextResponseBodyDataSubImagesPageInfosSubjectInfosContentInfosContentPoints) *RecognizeAllTextResponseBodyDataSubImagesPageInfosSubjectInfosContentInfos {
+	s.ContentPoints = v
+	return s
+}
+
+func (s *RecognizeAllTextResponseBodyDataSubImagesPageInfosSubjectInfosContentInfos) SetContentRect(v *RecognizeAllTextResponseBodyDataSubImagesPageInfosSubjectInfosContentInfosContentRect) *RecognizeAllTextResponseBodyDataSubImagesPageInfosSubjectInfosContentInfos {
+	s.ContentRect = v
+	return s
+}
+
+func (s *RecognizeAllTextResponseBodyDataSubImagesPageInfosSubjectInfosContentInfos) SetDocIndex(v int32) *RecognizeAllTextResponseBodyDataSubImagesPageInfosSubjectInfosContentInfos {
+	s.DocIndex = &v
+	return s
+}
+
+type RecognizeAllTextResponseBodyDataSubImagesPageInfosSubjectInfosContentInfosContentPoints struct {
+	X *int32 `json:"X,omitempty" xml:"X,omitempty"`
+	Y *int32 `json:"Y,omitempty" xml:"Y,omitempty"`
+}
+
+func (s RecognizeAllTextResponseBodyDataSubImagesPageInfosSubjectInfosContentInfosContentPoints) String() string {
+	return tea.Prettify(s)
+}
+
+func (s RecognizeAllTextResponseBodyDataSubImagesPageInfosSubjectInfosContentInfosContentPoints) GoString() string {
+	return s.String()
+}
+
+func (s *RecognizeAllTextResponseBodyDataSubImagesPageInfosSubjectInfosContentInfosContentPoints) SetX(v int32) *RecognizeAllTextResponseBodyDataSubImagesPageInfosSubjectInfosContentInfosContentPoints {
+	s.X = &v
+	return s
+}
+
+func (s *RecognizeAllTextResponseBodyDataSubImagesPageInfosSubjectInfosContentInfosContentPoints) SetY(v int32) *RecognizeAllTextResponseBodyDataSubImagesPageInfosSubjectInfosContentInfosContentPoints {
+	s.Y = &v
+	return s
+}
+
+type RecognizeAllTextResponseBodyDataSubImagesPageInfosSubjectInfosContentInfosContentRect struct {
+	CenterX *int32 `json:"CenterX,omitempty" xml:"CenterX,omitempty"`
+	CenterY *int32 `json:"CenterY,omitempty" xml:"CenterY,omitempty"`
+	Height  *int32 `json:"Height,omitempty" xml:"Height,omitempty"`
+	Width   *int32 `json:"Width,omitempty" xml:"Width,omitempty"`
+}
+
+func (s RecognizeAllTextResponseBodyDataSubImagesPageInfosSubjectInfosContentInfosContentRect) String() string {
+	return tea.Prettify(s)
+}
+
+func (s RecognizeAllTextResponseBodyDataSubImagesPageInfosSubjectInfosContentInfosContentRect) GoString() string {
+	return s.String()
+}
+
+func (s *RecognizeAllTextResponseBodyDataSubImagesPageInfosSubjectInfosContentInfosContentRect) SetCenterX(v int32) *RecognizeAllTextResponseBodyDataSubImagesPageInfosSubjectInfosContentInfosContentRect {
+	s.CenterX = &v
+	return s
+}
+
+func (s *RecognizeAllTextResponseBodyDataSubImagesPageInfosSubjectInfosContentInfosContentRect) SetCenterY(v int32) *RecognizeAllTextResponseBodyDataSubImagesPageInfosSubjectInfosContentInfosContentRect {
+	s.CenterY = &v
+	return s
+}
+
+func (s *RecognizeAllTextResponseBodyDataSubImagesPageInfosSubjectInfosContentInfosContentRect) SetHeight(v int32) *RecognizeAllTextResponseBodyDataSubImagesPageInfosSubjectInfosContentInfosContentRect {
+	s.Height = &v
+	return s
+}
+
+func (s *RecognizeAllTextResponseBodyDataSubImagesPageInfosSubjectInfosContentInfosContentRect) SetWidth(v int32) *RecognizeAllTextResponseBodyDataSubImagesPageInfosSubjectInfosContentInfosContentRect {
+	s.Width = &v
+	return s
+}
+
+type RecognizeAllTextResponseBodyDataSubImagesParagraphInfo struct {
+	ParagraphCount   *int32                                                                    `json:"ParagraphCount,omitempty" xml:"ParagraphCount,omitempty"`
+	ParagraphDetails []*RecognizeAllTextResponseBodyDataSubImagesParagraphInfoParagraphDetails `json:"ParagraphDetails,omitempty" xml:"ParagraphDetails,omitempty" type:"Repeated"`
+}
+
+func (s RecognizeAllTextResponseBodyDataSubImagesParagraphInfo) String() string {
+	return tea.Prettify(s)
+}
+
+func (s RecognizeAllTextResponseBodyDataSubImagesParagraphInfo) GoString() string {
+	return s.String()
+}
+
+func (s *RecognizeAllTextResponseBodyDataSubImagesParagraphInfo) SetParagraphCount(v int32) *RecognizeAllTextResponseBodyDataSubImagesParagraphInfo {
+	s.ParagraphCount = &v
+	return s
+}
+
+func (s *RecognizeAllTextResponseBodyDataSubImagesParagraphInfo) SetParagraphDetails(v []*RecognizeAllTextResponseBodyDataSubImagesParagraphInfoParagraphDetails) *RecognizeAllTextResponseBodyDataSubImagesParagraphInfo {
+	s.ParagraphDetails = v
+	return s
+}
+
+type RecognizeAllTextResponseBodyDataSubImagesParagraphInfoParagraphDetails struct {
+	BlockList        []*int32 `json:"BlockList,omitempty" xml:"BlockList,omitempty" type:"Repeated"`
+	ParagraphContent *string  `json:"ParagraphContent,omitempty" xml:"ParagraphContent,omitempty"`
+	ParagraphId      *int32   `json:"ParagraphId,omitempty" xml:"ParagraphId,omitempty"`
+}
+
+func (s RecognizeAllTextResponseBodyDataSubImagesParagraphInfoParagraphDetails) String() string {
+	return tea.Prettify(s)
+}
+
+func (s RecognizeAllTextResponseBodyDataSubImagesParagraphInfoParagraphDetails) GoString() string {
+	return s.String()
+}
+
+func (s *RecognizeAllTextResponseBodyDataSubImagesParagraphInfoParagraphDetails) SetBlockList(v []*int32) *RecognizeAllTextResponseBodyDataSubImagesParagraphInfoParagraphDetails {
+	s.BlockList = v
+	return s
+}
+
+func (s *RecognizeAllTextResponseBodyDataSubImagesParagraphInfoParagraphDetails) SetParagraphContent(v string) *RecognizeAllTextResponseBodyDataSubImagesParagraphInfoParagraphDetails {
+	s.ParagraphContent = &v
+	return s
+}
+
+func (s *RecognizeAllTextResponseBodyDataSubImagesParagraphInfoParagraphDetails) SetParagraphId(v int32) *RecognizeAllTextResponseBodyDataSubImagesParagraphInfoParagraphDetails {
+	s.ParagraphId = &v
+	return s
+}
+
+type RecognizeAllTextResponseBodyDataSubImagesPartInfos struct {
+	PartInfoPointsList [][]*RecognizeAllTextResponseBodyDataSubImagesPartInfosPartInfoPointsList `json:"PartInfoPointsList,omitempty" xml:"PartInfoPointsList,omitempty" type:"Repeated"`
+	PartInfoRectList   []*RecognizeAllTextResponseBodyDataSubImagesPartInfosPartInfoRectList     `json:"PartInfoRectList,omitempty" xml:"PartInfoRectList,omitempty" type:"Repeated"`
+	PartTitle          *string                                                                   `json:"PartTitle,omitempty" xml:"PartTitle,omitempty"`
+	SubjectList        []*RecognizeAllTextResponseBodyDataSubImagesPartInfosSubjectList          `json:"SubjectList,omitempty" xml:"SubjectList,omitempty" type:"Repeated"`
+}
+
+func (s RecognizeAllTextResponseBodyDataSubImagesPartInfos) String() string {
+	return tea.Prettify(s)
+}
+
+func (s RecognizeAllTextResponseBodyDataSubImagesPartInfos) GoString() string {
+	return s.String()
+}
+
+func (s *RecognizeAllTextResponseBodyDataSubImagesPartInfos) SetPartInfoPointsList(v [][]*RecognizeAllTextResponseBodyDataSubImagesPartInfosPartInfoPointsList) *RecognizeAllTextResponseBodyDataSubImagesPartInfos {
+	s.PartInfoPointsList = v
+	return s
+}
+
+func (s *RecognizeAllTextResponseBodyDataSubImagesPartInfos) SetPartInfoRectList(v []*RecognizeAllTextResponseBodyDataSubImagesPartInfosPartInfoRectList) *RecognizeAllTextResponseBodyDataSubImagesPartInfos {
+	s.PartInfoRectList = v
+	return s
+}
+
+func (s *RecognizeAllTextResponseBodyDataSubImagesPartInfos) SetPartTitle(v string) *RecognizeAllTextResponseBodyDataSubImagesPartInfos {
+	s.PartTitle = &v
+	return s
+}
+
+func (s *RecognizeAllTextResponseBodyDataSubImagesPartInfos) SetSubjectList(v []*RecognizeAllTextResponseBodyDataSubImagesPartInfosSubjectList) *RecognizeAllTextResponseBodyDataSubImagesPartInfos {
+	s.SubjectList = v
+	return s
+}
+
+type RecognizeAllTextResponseBodyDataSubImagesPartInfosPartInfoPointsList struct {
+	X *int32 `json:"X,omitempty" xml:"X,omitempty"`
+	Y *int32 `json:"Y,omitempty" xml:"Y,omitempty"`
+}
+
+func (s RecognizeAllTextResponseBodyDataSubImagesPartInfosPartInfoPointsList) String() string {
+	return tea.Prettify(s)
+}
+
+func (s RecognizeAllTextResponseBodyDataSubImagesPartInfosPartInfoPointsList) GoString() string {
+	return s.String()
+}
+
+func (s *RecognizeAllTextResponseBodyDataSubImagesPartInfosPartInfoPointsList) SetX(v int32) *RecognizeAllTextResponseBodyDataSubImagesPartInfosPartInfoPointsList {
+	s.X = &v
+	return s
+}
+
+func (s *RecognizeAllTextResponseBodyDataSubImagesPartInfosPartInfoPointsList) SetY(v int32) *RecognizeAllTextResponseBodyDataSubImagesPartInfosPartInfoPointsList {
+	s.Y = &v
+	return s
+}
+
+type RecognizeAllTextResponseBodyDataSubImagesPartInfosPartInfoRectList struct {
+	CenterX *int32 `json:"CenterX,omitempty" xml:"CenterX,omitempty"`
+	CenterY *int32 `json:"CenterY,omitempty" xml:"CenterY,omitempty"`
+	Height  *int32 `json:"Height,omitempty" xml:"Height,omitempty"`
+	Width   *int32 `json:"Width,omitempty" xml:"Width,omitempty"`
+}
+
+func (s RecognizeAllTextResponseBodyDataSubImagesPartInfosPartInfoRectList) String() string {
+	return tea.Prettify(s)
+}
+
+func (s RecognizeAllTextResponseBodyDataSubImagesPartInfosPartInfoRectList) GoString() string {
+	return s.String()
+}
+
+func (s *RecognizeAllTextResponseBodyDataSubImagesPartInfosPartInfoRectList) SetCenterX(v int32) *RecognizeAllTextResponseBodyDataSubImagesPartInfosPartInfoRectList {
+	s.CenterX = &v
+	return s
+}
+
+func (s *RecognizeAllTextResponseBodyDataSubImagesPartInfosPartInfoRectList) SetCenterY(v int32) *RecognizeAllTextResponseBodyDataSubImagesPartInfosPartInfoRectList {
+	s.CenterY = &v
+	return s
+}
+
+func (s *RecognizeAllTextResponseBodyDataSubImagesPartInfosPartInfoRectList) SetHeight(v int32) *RecognizeAllTextResponseBodyDataSubImagesPartInfosPartInfoRectList {
+	s.Height = &v
+	return s
+}
+
+func (s *RecognizeAllTextResponseBodyDataSubImagesPartInfosPartInfoRectList) SetWidth(v int32) *RecognizeAllTextResponseBodyDataSubImagesPartInfosPartInfoRectList {
+	s.Width = &v
+	return s
+}
+
+type RecognizeAllTextResponseBodyDataSubImagesPartInfosSubjectList struct {
+	AnswerPointsList  [][]*RecognizeAllTextResponseBodyDataSubImagesPartInfosSubjectListAnswerPointsList  `json:"AnswerPointsList,omitempty" xml:"AnswerPointsList,omitempty" type:"Repeated"`
+	AnswerRectList    []*RecognizeAllTextResponseBodyDataSubImagesPartInfosSubjectListAnswerRectList      `json:"AnswerRectList,omitempty" xml:"AnswerRectList,omitempty" type:"Repeated"`
+	Confidence        *int32                                                                              `json:"Confidence,omitempty" xml:"Confidence,omitempty"`
+	Elements          []*RecognizeAllTextResponseBodyDataSubImagesPartInfosSubjectListElements            `json:"Elements,omitempty" xml:"Elements,omitempty" type:"Repeated"`
+	FigurePointsList  [][]*RecognizeAllTextResponseBodyDataSubImagesPartInfosSubjectListFigurePointsList  `json:"FigurePointsList,omitempty" xml:"FigurePointsList,omitempty" type:"Repeated"`
+	FigureRectList    []*RecognizeAllTextResponseBodyDataSubImagesPartInfosSubjectListFigureRectList      `json:"FigureRectList,omitempty" xml:"FigureRectList,omitempty" type:"Repeated"`
+	Index             *int32                                                                              `json:"Index,omitempty" xml:"Index,omitempty"`
+	NumChoices        *int32                                                                              `json:"NumChoices,omitempty" xml:"NumChoices,omitempty"`
+	SubjectPointsList [][]*RecognizeAllTextResponseBodyDataSubImagesPartInfosSubjectListSubjectPointsList `json:"SubjectPointsList,omitempty" xml:"SubjectPointsList,omitempty" type:"Repeated"`
+	SubjectRectList   []*RecognizeAllTextResponseBodyDataSubImagesPartInfosSubjectListSubjectRectList     `json:"SubjectRectList,omitempty" xml:"SubjectRectList,omitempty" type:"Repeated"`
+	SubjectType       *int32                                                                              `json:"SubjectType,omitempty" xml:"SubjectType,omitempty"`
+	TablePointsList   [][]*RecognizeAllTextResponseBodyDataSubImagesPartInfosSubjectListTablePointsList   `json:"TablePointsList,omitempty" xml:"TablePointsList,omitempty" type:"Repeated"`
+	TableRectList     []*RecognizeAllTextResponseBodyDataSubImagesPartInfosSubjectListTableRectList       `json:"TableRectList,omitempty" xml:"TableRectList,omitempty" type:"Repeated"`
+	Text              *string                                                                             `json:"Text,omitempty" xml:"Text,omitempty"`
+}
+
+func (s RecognizeAllTextResponseBodyDataSubImagesPartInfosSubjectList) String() string {
+	return tea.Prettify(s)
+}
+
+func (s RecognizeAllTextResponseBodyDataSubImagesPartInfosSubjectList) GoString() string {
+	return s.String()
+}
+
+func (s *RecognizeAllTextResponseBodyDataSubImagesPartInfosSubjectList) SetAnswerPointsList(v [][]*RecognizeAllTextResponseBodyDataSubImagesPartInfosSubjectListAnswerPointsList) *RecognizeAllTextResponseBodyDataSubImagesPartInfosSubjectList {
+	s.AnswerPointsList = v
+	return s
+}
+
+func (s *RecognizeAllTextResponseBodyDataSubImagesPartInfosSubjectList) SetAnswerRectList(v []*RecognizeAllTextResponseBodyDataSubImagesPartInfosSubjectListAnswerRectList) *RecognizeAllTextResponseBodyDataSubImagesPartInfosSubjectList {
+	s.AnswerRectList = v
+	return s
+}
+
+func (s *RecognizeAllTextResponseBodyDataSubImagesPartInfosSubjectList) SetConfidence(v int32) *RecognizeAllTextResponseBodyDataSubImagesPartInfosSubjectList {
+	s.Confidence = &v
+	return s
+}
+
+func (s *RecognizeAllTextResponseBodyDataSubImagesPartInfosSubjectList) SetElements(v []*RecognizeAllTextResponseBodyDataSubImagesPartInfosSubjectListElements) *RecognizeAllTextResponseBodyDataSubImagesPartInfosSubjectList {
+	s.Elements = v
+	return s
+}
+
+func (s *RecognizeAllTextResponseBodyDataSubImagesPartInfosSubjectList) SetFigurePointsList(v [][]*RecognizeAllTextResponseBodyDataSubImagesPartInfosSubjectListFigurePointsList) *RecognizeAllTextResponseBodyDataSubImagesPartInfosSubjectList {
+	s.FigurePointsList = v
+	return s
+}
+
+func (s *RecognizeAllTextResponseBodyDataSubImagesPartInfosSubjectList) SetFigureRectList(v []*RecognizeAllTextResponseBodyDataSubImagesPartInfosSubjectListFigureRectList) *RecognizeAllTextResponseBodyDataSubImagesPartInfosSubjectList {
+	s.FigureRectList = v
+	return s
+}
+
+func (s *RecognizeAllTextResponseBodyDataSubImagesPartInfosSubjectList) SetIndex(v int32) *RecognizeAllTextResponseBodyDataSubImagesPartInfosSubjectList {
+	s.Index = &v
+	return s
+}
+
+func (s *RecognizeAllTextResponseBodyDataSubImagesPartInfosSubjectList) SetNumChoices(v int32) *RecognizeAllTextResponseBodyDataSubImagesPartInfosSubjectList {
+	s.NumChoices = &v
+	return s
+}
+
+func (s *RecognizeAllTextResponseBodyDataSubImagesPartInfosSubjectList) SetSubjectPointsList(v [][]*RecognizeAllTextResponseBodyDataSubImagesPartInfosSubjectListSubjectPointsList) *RecognizeAllTextResponseBodyDataSubImagesPartInfosSubjectList {
+	s.SubjectPointsList = v
+	return s
+}
+
+func (s *RecognizeAllTextResponseBodyDataSubImagesPartInfosSubjectList) SetSubjectRectList(v []*RecognizeAllTextResponseBodyDataSubImagesPartInfosSubjectListSubjectRectList) *RecognizeAllTextResponseBodyDataSubImagesPartInfosSubjectList {
+	s.SubjectRectList = v
+	return s
+}
+
+func (s *RecognizeAllTextResponseBodyDataSubImagesPartInfosSubjectList) SetSubjectType(v int32) *RecognizeAllTextResponseBodyDataSubImagesPartInfosSubjectList {
+	s.SubjectType = &v
+	return s
+}
+
+func (s *RecognizeAllTextResponseBodyDataSubImagesPartInfosSubjectList) SetTablePointsList(v [][]*RecognizeAllTextResponseBodyDataSubImagesPartInfosSubjectListTablePointsList) *RecognizeAllTextResponseBodyDataSubImagesPartInfosSubjectList {
+	s.TablePointsList = v
+	return s
+}
+
+func (s *RecognizeAllTextResponseBodyDataSubImagesPartInfosSubjectList) SetTableRectList(v []*RecognizeAllTextResponseBodyDataSubImagesPartInfosSubjectListTableRectList) *RecognizeAllTextResponseBodyDataSubImagesPartInfosSubjectList {
+	s.TableRectList = v
+	return s
+}
+
+func (s *RecognizeAllTextResponseBodyDataSubImagesPartInfosSubjectList) SetText(v string) *RecognizeAllTextResponseBodyDataSubImagesPartInfosSubjectList {
+	s.Text = &v
+	return s
+}
+
+type RecognizeAllTextResponseBodyDataSubImagesPartInfosSubjectListAnswerPointsList struct {
+	X *int32 `json:"X,omitempty" xml:"X,omitempty"`
+	Y *int32 `json:"Y,omitempty" xml:"Y,omitempty"`
+}
+
+func (s RecognizeAllTextResponseBodyDataSubImagesPartInfosSubjectListAnswerPointsList) String() string {
+	return tea.Prettify(s)
+}
+
+func (s RecognizeAllTextResponseBodyDataSubImagesPartInfosSubjectListAnswerPointsList) GoString() string {
+	return s.String()
+}
+
+func (s *RecognizeAllTextResponseBodyDataSubImagesPartInfosSubjectListAnswerPointsList) SetX(v int32) *RecognizeAllTextResponseBodyDataSubImagesPartInfosSubjectListAnswerPointsList {
+	s.X = &v
+	return s
+}
+
+func (s *RecognizeAllTextResponseBodyDataSubImagesPartInfosSubjectListAnswerPointsList) SetY(v int32) *RecognizeAllTextResponseBodyDataSubImagesPartInfosSubjectListAnswerPointsList {
+	s.Y = &v
+	return s
+}
+
+type RecognizeAllTextResponseBodyDataSubImagesPartInfosSubjectListAnswerRectList struct {
+	CenterX *int32 `json:"CenterX,omitempty" xml:"CenterX,omitempty"`
+	CenterY *int32 `json:"CenterY,omitempty" xml:"CenterY,omitempty"`
+	Height  *int32 `json:"Height,omitempty" xml:"Height,omitempty"`
+	Width   *int32 `json:"Width,omitempty" xml:"Width,omitempty"`
+}
+
+func (s RecognizeAllTextResponseBodyDataSubImagesPartInfosSubjectListAnswerRectList) String() string {
+	return tea.Prettify(s)
+}
+
+func (s RecognizeAllTextResponseBodyDataSubImagesPartInfosSubjectListAnswerRectList) GoString() string {
+	return s.String()
+}
+
+func (s *RecognizeAllTextResponseBodyDataSubImagesPartInfosSubjectListAnswerRectList) SetCenterX(v int32) *RecognizeAllTextResponseBodyDataSubImagesPartInfosSubjectListAnswerRectList {
+	s.CenterX = &v
+	return s
+}
+
+func (s *RecognizeAllTextResponseBodyDataSubImagesPartInfosSubjectListAnswerRectList) SetCenterY(v int32) *RecognizeAllTextResponseBodyDataSubImagesPartInfosSubjectListAnswerRectList {
+	s.CenterY = &v
+	return s
+}
+
+func (s *RecognizeAllTextResponseBodyDataSubImagesPartInfosSubjectListAnswerRectList) SetHeight(v int32) *RecognizeAllTextResponseBodyDataSubImagesPartInfosSubjectListAnswerRectList {
+	s.Height = &v
+	return s
+}
+
+func (s *RecognizeAllTextResponseBodyDataSubImagesPartInfosSubjectListAnswerRectList) SetWidth(v int32) *RecognizeAllTextResponseBodyDataSubImagesPartInfosSubjectListAnswerRectList {
+	s.Width = &v
+	return s
+}
+
+type RecognizeAllTextResponseBodyDataSubImagesPartInfosSubjectListElements struct {
+	Contents          []*RecognizeAllTextResponseBodyDataSubImagesPartInfosSubjectListElementsContents            `json:"Contents,omitempty" xml:"Contents,omitempty" type:"Repeated"`
+	ElementPointsList [][]*RecognizeAllTextResponseBodyDataSubImagesPartInfosSubjectListElementsElementPointsList `json:"ElementPointsList,omitempty" xml:"ElementPointsList,omitempty" type:"Repeated"`
+	ElementRectList   []*RecognizeAllTextResponseBodyDataSubImagesPartInfosSubjectListElementsElementRectList     `json:"ElementRectList,omitempty" xml:"ElementRectList,omitempty" type:"Repeated"`
+	ElementType       *int32                                                                                      `json:"ElementType,omitempty" xml:"ElementType,omitempty"`
+	Text              *string                                                                                     `json:"Text,omitempty" xml:"Text,omitempty"`
+}
+
+func (s RecognizeAllTextResponseBodyDataSubImagesPartInfosSubjectListElements) String() string {
+	return tea.Prettify(s)
+}
+
+func (s RecognizeAllTextResponseBodyDataSubImagesPartInfosSubjectListElements) GoString() string {
+	return s.String()
+}
+
+func (s *RecognizeAllTextResponseBodyDataSubImagesPartInfosSubjectListElements) SetContents(v []*RecognizeAllTextResponseBodyDataSubImagesPartInfosSubjectListElementsContents) *RecognizeAllTextResponseBodyDataSubImagesPartInfosSubjectListElements {
+	s.Contents = v
+	return s
+}
+
+func (s *RecognizeAllTextResponseBodyDataSubImagesPartInfosSubjectListElements) SetElementPointsList(v [][]*RecognizeAllTextResponseBodyDataSubImagesPartInfosSubjectListElementsElementPointsList) *RecognizeAllTextResponseBodyDataSubImagesPartInfosSubjectListElements {
+	s.ElementPointsList = v
+	return s
+}
+
+func (s *RecognizeAllTextResponseBodyDataSubImagesPartInfosSubjectListElements) SetElementRectList(v []*RecognizeAllTextResponseBodyDataSubImagesPartInfosSubjectListElementsElementRectList) *RecognizeAllTextResponseBodyDataSubImagesPartInfosSubjectListElements {
+	s.ElementRectList = v
+	return s
+}
+
+func (s *RecognizeAllTextResponseBodyDataSubImagesPartInfosSubjectListElements) SetElementType(v int32) *RecognizeAllTextResponseBodyDataSubImagesPartInfosSubjectListElements {
+	s.ElementType = &v
+	return s
+}
+
+func (s *RecognizeAllTextResponseBodyDataSubImagesPartInfosSubjectListElements) SetText(v string) *RecognizeAllTextResponseBodyDataSubImagesPartInfosSubjectListElements {
+	s.Text = &v
+	return s
+}
+
+type RecognizeAllTextResponseBodyDataSubImagesPartInfosSubjectListElementsContents struct {
+	Confidence    *int32                                                                                        `json:"Confidence,omitempty" xml:"Confidence,omitempty"`
+	ContentPoints []*RecognizeAllTextResponseBodyDataSubImagesPartInfosSubjectListElementsContentsContentPoints `json:"ContentPoints,omitempty" xml:"ContentPoints,omitempty" type:"Repeated"`
+	ContentRect   *RecognizeAllTextResponseBodyDataSubImagesPartInfosSubjectListElementsContentsContentRect     `json:"ContentRect,omitempty" xml:"ContentRect,omitempty" type:"Struct"`
+	ContentType   *int32                                                                                        `json:"ContentType,omitempty" xml:"ContentType,omitempty"`
+	Option        *string                                                                                       `json:"Option,omitempty" xml:"Option,omitempty"`
+	Text          *string                                                                                       `json:"Text,omitempty" xml:"Text,omitempty"`
+}
+
+func (s RecognizeAllTextResponseBodyDataSubImagesPartInfosSubjectListElementsContents) String() string {
+	return tea.Prettify(s)
+}
+
+func (s RecognizeAllTextResponseBodyDataSubImagesPartInfosSubjectListElementsContents) GoString() string {
+	return s.String()
+}
+
+func (s *RecognizeAllTextResponseBodyDataSubImagesPartInfosSubjectListElementsContents) SetConfidence(v int32) *RecognizeAllTextResponseBodyDataSubImagesPartInfosSubjectListElementsContents {
+	s.Confidence = &v
+	return s
+}
+
+func (s *RecognizeAllTextResponseBodyDataSubImagesPartInfosSubjectListElementsContents) SetContentPoints(v []*RecognizeAllTextResponseBodyDataSubImagesPartInfosSubjectListElementsContentsContentPoints) *RecognizeAllTextResponseBodyDataSubImagesPartInfosSubjectListElementsContents {
+	s.ContentPoints = v
+	return s
+}
+
+func (s *RecognizeAllTextResponseBodyDataSubImagesPartInfosSubjectListElementsContents) SetContentRect(v *RecognizeAllTextResponseBodyDataSubImagesPartInfosSubjectListElementsContentsContentRect) *RecognizeAllTextResponseBodyDataSubImagesPartInfosSubjectListElementsContents {
+	s.ContentRect = v
+	return s
+}
+
+func (s *RecognizeAllTextResponseBodyDataSubImagesPartInfosSubjectListElementsContents) SetContentType(v int32) *RecognizeAllTextResponseBodyDataSubImagesPartInfosSubjectListElementsContents {
+	s.ContentType = &v
+	return s
+}
+
+func (s *RecognizeAllTextResponseBodyDataSubImagesPartInfosSubjectListElementsContents) SetOption(v string) *RecognizeAllTextResponseBodyDataSubImagesPartInfosSubjectListElementsContents {
+	s.Option = &v
+	return s
+}
+
+func (s *RecognizeAllTextResponseBodyDataSubImagesPartInfosSubjectListElementsContents) SetText(v string) *RecognizeAllTextResponseBodyDataSubImagesPartInfosSubjectListElementsContents {
+	s.Text = &v
+	return s
+}
+
+type RecognizeAllTextResponseBodyDataSubImagesPartInfosSubjectListElementsContentsContentPoints struct {
+	X *int32 `json:"X,omitempty" xml:"X,omitempty"`
+	Y *int32 `json:"Y,omitempty" xml:"Y,omitempty"`
+}
+
+func (s RecognizeAllTextResponseBodyDataSubImagesPartInfosSubjectListElementsContentsContentPoints) String() string {
+	return tea.Prettify(s)
+}
+
+func (s RecognizeAllTextResponseBodyDataSubImagesPartInfosSubjectListElementsContentsContentPoints) GoString() string {
+	return s.String()
+}
+
+func (s *RecognizeAllTextResponseBodyDataSubImagesPartInfosSubjectListElementsContentsContentPoints) SetX(v int32) *RecognizeAllTextResponseBodyDataSubImagesPartInfosSubjectListElementsContentsContentPoints {
+	s.X = &v
+	return s
+}
+
+func (s *RecognizeAllTextResponseBodyDataSubImagesPartInfosSubjectListElementsContentsContentPoints) SetY(v int32) *RecognizeAllTextResponseBodyDataSubImagesPartInfosSubjectListElementsContentsContentPoints {
+	s.Y = &v
+	return s
+}
+
+type RecognizeAllTextResponseBodyDataSubImagesPartInfosSubjectListElementsContentsContentRect struct {
+	CenterX *int32 `json:"CenterX,omitempty" xml:"CenterX,omitempty"`
+	CenterY *int32 `json:"CenterY,omitempty" xml:"CenterY,omitempty"`
+	Height  *int32 `json:"Height,omitempty" xml:"Height,omitempty"`
+	Width   *int32 `json:"Width,omitempty" xml:"Width,omitempty"`
+}
+
+func (s RecognizeAllTextResponseBodyDataSubImagesPartInfosSubjectListElementsContentsContentRect) String() string {
+	return tea.Prettify(s)
+}
+
+func (s RecognizeAllTextResponseBodyDataSubImagesPartInfosSubjectListElementsContentsContentRect) GoString() string {
+	return s.String()
+}
+
+func (s *RecognizeAllTextResponseBodyDataSubImagesPartInfosSubjectListElementsContentsContentRect) SetCenterX(v int32) *RecognizeAllTextResponseBodyDataSubImagesPartInfosSubjectListElementsContentsContentRect {
+	s.CenterX = &v
+	return s
+}
+
+func (s *RecognizeAllTextResponseBodyDataSubImagesPartInfosSubjectListElementsContentsContentRect) SetCenterY(v int32) *RecognizeAllTextResponseBodyDataSubImagesPartInfosSubjectListElementsContentsContentRect {
+	s.CenterY = &v
+	return s
+}
+
+func (s *RecognizeAllTextResponseBodyDataSubImagesPartInfosSubjectListElementsContentsContentRect) SetHeight(v int32) *RecognizeAllTextResponseBodyDataSubImagesPartInfosSubjectListElementsContentsContentRect {
+	s.Height = &v
+	return s
+}
+
+func (s *RecognizeAllTextResponseBodyDataSubImagesPartInfosSubjectListElementsContentsContentRect) SetWidth(v int32) *RecognizeAllTextResponseBodyDataSubImagesPartInfosSubjectListElementsContentsContentRect {
+	s.Width = &v
+	return s
+}
+
+type RecognizeAllTextResponseBodyDataSubImagesPartInfosSubjectListElementsElementPointsList struct {
+	X *int32 `json:"X,omitempty" xml:"X,omitempty"`
+	Y *int32 `json:"Y,omitempty" xml:"Y,omitempty"`
+}
+
+func (s RecognizeAllTextResponseBodyDataSubImagesPartInfosSubjectListElementsElementPointsList) String() string {
+	return tea.Prettify(s)
+}
+
+func (s RecognizeAllTextResponseBodyDataSubImagesPartInfosSubjectListElementsElementPointsList) GoString() string {
+	return s.String()
+}
+
+func (s *RecognizeAllTextResponseBodyDataSubImagesPartInfosSubjectListElementsElementPointsList) SetX(v int32) *RecognizeAllTextResponseBodyDataSubImagesPartInfosSubjectListElementsElementPointsList {
+	s.X = &v
+	return s
+}
+
+func (s *RecognizeAllTextResponseBodyDataSubImagesPartInfosSubjectListElementsElementPointsList) SetY(v int32) *RecognizeAllTextResponseBodyDataSubImagesPartInfosSubjectListElementsElementPointsList {
+	s.Y = &v
+	return s
+}
+
+type RecognizeAllTextResponseBodyDataSubImagesPartInfosSubjectListElementsElementRectList struct {
+	CenterX *int32 `json:"CenterX,omitempty" xml:"CenterX,omitempty"`
+	CenterY *int32 `json:"CenterY,omitempty" xml:"CenterY,omitempty"`
+	Height  *int32 `json:"Height,omitempty" xml:"Height,omitempty"`
+	Width   *int32 `json:"Width,omitempty" xml:"Width,omitempty"`
+}
+
+func (s RecognizeAllTextResponseBodyDataSubImagesPartInfosSubjectListElementsElementRectList) String() string {
+	return tea.Prettify(s)
+}
+
+func (s RecognizeAllTextResponseBodyDataSubImagesPartInfosSubjectListElementsElementRectList) GoString() string {
+	return s.String()
+}
+
+func (s *RecognizeAllTextResponseBodyDataSubImagesPartInfosSubjectListElementsElementRectList) SetCenterX(v int32) *RecognizeAllTextResponseBodyDataSubImagesPartInfosSubjectListElementsElementRectList {
+	s.CenterX = &v
+	return s
+}
+
+func (s *RecognizeAllTextResponseBodyDataSubImagesPartInfosSubjectListElementsElementRectList) SetCenterY(v int32) *RecognizeAllTextResponseBodyDataSubImagesPartInfosSubjectListElementsElementRectList {
+	s.CenterY = &v
+	return s
+}
+
+func (s *RecognizeAllTextResponseBodyDataSubImagesPartInfosSubjectListElementsElementRectList) SetHeight(v int32) *RecognizeAllTextResponseBodyDataSubImagesPartInfosSubjectListElementsElementRectList {
+	s.Height = &v
+	return s
+}
+
+func (s *RecognizeAllTextResponseBodyDataSubImagesPartInfosSubjectListElementsElementRectList) SetWidth(v int32) *RecognizeAllTextResponseBodyDataSubImagesPartInfosSubjectListElementsElementRectList {
+	s.Width = &v
+	return s
+}
+
+type RecognizeAllTextResponseBodyDataSubImagesPartInfosSubjectListFigurePointsList struct {
+	X *int32 `json:"X,omitempty" xml:"X,omitempty"`
+	Y *int32 `json:"Y,omitempty" xml:"Y,omitempty"`
+}
+
+func (s RecognizeAllTextResponseBodyDataSubImagesPartInfosSubjectListFigurePointsList) String() string {
+	return tea.Prettify(s)
+}
+
+func (s RecognizeAllTextResponseBodyDataSubImagesPartInfosSubjectListFigurePointsList) GoString() string {
+	return s.String()
+}
+
+func (s *RecognizeAllTextResponseBodyDataSubImagesPartInfosSubjectListFigurePointsList) SetX(v int32) *RecognizeAllTextResponseBodyDataSubImagesPartInfosSubjectListFigurePointsList {
+	s.X = &v
+	return s
+}
+
+func (s *RecognizeAllTextResponseBodyDataSubImagesPartInfosSubjectListFigurePointsList) SetY(v int32) *RecognizeAllTextResponseBodyDataSubImagesPartInfosSubjectListFigurePointsList {
+	s.Y = &v
+	return s
+}
+
+type RecognizeAllTextResponseBodyDataSubImagesPartInfosSubjectListFigureRectList struct {
+	CenterX *int32 `json:"CenterX,omitempty" xml:"CenterX,omitempty"`
+	CenterY *int32 `json:"CenterY,omitempty" xml:"CenterY,omitempty"`
+	Height  *int32 `json:"Height,omitempty" xml:"Height,omitempty"`
+	Width   *int32 `json:"Width,omitempty" xml:"Width,omitempty"`
+}
+
+func (s RecognizeAllTextResponseBodyDataSubImagesPartInfosSubjectListFigureRectList) String() string {
+	return tea.Prettify(s)
+}
+
+func (s RecognizeAllTextResponseBodyDataSubImagesPartInfosSubjectListFigureRectList) GoString() string {
+	return s.String()
+}
+
+func (s *RecognizeAllTextResponseBodyDataSubImagesPartInfosSubjectListFigureRectList) SetCenterX(v int32) *RecognizeAllTextResponseBodyDataSubImagesPartInfosSubjectListFigureRectList {
+	s.CenterX = &v
+	return s
+}
+
+func (s *RecognizeAllTextResponseBodyDataSubImagesPartInfosSubjectListFigureRectList) SetCenterY(v int32) *RecognizeAllTextResponseBodyDataSubImagesPartInfosSubjectListFigureRectList {
+	s.CenterY = &v
+	return s
+}
+
+func (s *RecognizeAllTextResponseBodyDataSubImagesPartInfosSubjectListFigureRectList) SetHeight(v int32) *RecognizeAllTextResponseBodyDataSubImagesPartInfosSubjectListFigureRectList {
+	s.Height = &v
+	return s
+}
+
+func (s *RecognizeAllTextResponseBodyDataSubImagesPartInfosSubjectListFigureRectList) SetWidth(v int32) *RecognizeAllTextResponseBodyDataSubImagesPartInfosSubjectListFigureRectList {
+	s.Width = &v
+	return s
+}
+
+type RecognizeAllTextResponseBodyDataSubImagesPartInfosSubjectListSubjectPointsList struct {
+	X *int32 `json:"X,omitempty" xml:"X,omitempty"`
+	Y *int32 `json:"Y,omitempty" xml:"Y,omitempty"`
+}
+
+func (s RecognizeAllTextResponseBodyDataSubImagesPartInfosSubjectListSubjectPointsList) String() string {
+	return tea.Prettify(s)
+}
+
+func (s RecognizeAllTextResponseBodyDataSubImagesPartInfosSubjectListSubjectPointsList) GoString() string {
+	return s.String()
+}
+
+func (s *RecognizeAllTextResponseBodyDataSubImagesPartInfosSubjectListSubjectPointsList) SetX(v int32) *RecognizeAllTextResponseBodyDataSubImagesPartInfosSubjectListSubjectPointsList {
+	s.X = &v
+	return s
+}
+
+func (s *RecognizeAllTextResponseBodyDataSubImagesPartInfosSubjectListSubjectPointsList) SetY(v int32) *RecognizeAllTextResponseBodyDataSubImagesPartInfosSubjectListSubjectPointsList {
+	s.Y = &v
+	return s
+}
+
+type RecognizeAllTextResponseBodyDataSubImagesPartInfosSubjectListSubjectRectList struct {
+	CenterX *string `json:"CenterX,omitempty" xml:"CenterX,omitempty"`
+	CenterY *string `json:"CenterY,omitempty" xml:"CenterY,omitempty"`
+	Height  *string `json:"Height,omitempty" xml:"Height,omitempty"`
+	Width   *string `json:"Width,omitempty" xml:"Width,omitempty"`
+}
+
+func (s RecognizeAllTextResponseBodyDataSubImagesPartInfosSubjectListSubjectRectList) String() string {
+	return tea.Prettify(s)
+}
+
+func (s RecognizeAllTextResponseBodyDataSubImagesPartInfosSubjectListSubjectRectList) GoString() string {
+	return s.String()
+}
+
+func (s *RecognizeAllTextResponseBodyDataSubImagesPartInfosSubjectListSubjectRectList) SetCenterX(v string) *RecognizeAllTextResponseBodyDataSubImagesPartInfosSubjectListSubjectRectList {
+	s.CenterX = &v
+	return s
+}
+
+func (s *RecognizeAllTextResponseBodyDataSubImagesPartInfosSubjectListSubjectRectList) SetCenterY(v string) *RecognizeAllTextResponseBodyDataSubImagesPartInfosSubjectListSubjectRectList {
+	s.CenterY = &v
+	return s
+}
+
+func (s *RecognizeAllTextResponseBodyDataSubImagesPartInfosSubjectListSubjectRectList) SetHeight(v string) *RecognizeAllTextResponseBodyDataSubImagesPartInfosSubjectListSubjectRectList {
+	s.Height = &v
+	return s
+}
+
+func (s *RecognizeAllTextResponseBodyDataSubImagesPartInfosSubjectListSubjectRectList) SetWidth(v string) *RecognizeAllTextResponseBodyDataSubImagesPartInfosSubjectListSubjectRectList {
+	s.Width = &v
+	return s
+}
+
+type RecognizeAllTextResponseBodyDataSubImagesPartInfosSubjectListTablePointsList struct {
+	X *int32 `json:"X,omitempty" xml:"X,omitempty"`
+	Y *int32 `json:"Y,omitempty" xml:"Y,omitempty"`
+}
+
+func (s RecognizeAllTextResponseBodyDataSubImagesPartInfosSubjectListTablePointsList) String() string {
+	return tea.Prettify(s)
+}
+
+func (s RecognizeAllTextResponseBodyDataSubImagesPartInfosSubjectListTablePointsList) GoString() string {
+	return s.String()
+}
+
+func (s *RecognizeAllTextResponseBodyDataSubImagesPartInfosSubjectListTablePointsList) SetX(v int32) *RecognizeAllTextResponseBodyDataSubImagesPartInfosSubjectListTablePointsList {
+	s.X = &v
+	return s
+}
+
+func (s *RecognizeAllTextResponseBodyDataSubImagesPartInfosSubjectListTablePointsList) SetY(v int32) *RecognizeAllTextResponseBodyDataSubImagesPartInfosSubjectListTablePointsList {
+	s.Y = &v
+	return s
+}
+
+type RecognizeAllTextResponseBodyDataSubImagesPartInfosSubjectListTableRectList struct {
+	CenterX *int32 `json:"CenterX,omitempty" xml:"CenterX,omitempty"`
+	CenterY *int32 `json:"CenterY,omitempty" xml:"CenterY,omitempty"`
+	Height  *int32 `json:"Height,omitempty" xml:"Height,omitempty"`
+	Width   *int32 `json:"Width,omitempty" xml:"Width,omitempty"`
+}
+
+func (s RecognizeAllTextResponseBodyDataSubImagesPartInfosSubjectListTableRectList) String() string {
+	return tea.Prettify(s)
+}
+
+func (s RecognizeAllTextResponseBodyDataSubImagesPartInfosSubjectListTableRectList) GoString() string {
+	return s.String()
+}
+
+func (s *RecognizeAllTextResponseBodyDataSubImagesPartInfosSubjectListTableRectList) SetCenterX(v int32) *RecognizeAllTextResponseBodyDataSubImagesPartInfosSubjectListTableRectList {
+	s.CenterX = &v
+	return s
+}
+
+func (s *RecognizeAllTextResponseBodyDataSubImagesPartInfosSubjectListTableRectList) SetCenterY(v int32) *RecognizeAllTextResponseBodyDataSubImagesPartInfosSubjectListTableRectList {
+	s.CenterY = &v
+	return s
+}
+
+func (s *RecognizeAllTextResponseBodyDataSubImagesPartInfosSubjectListTableRectList) SetHeight(v int32) *RecognizeAllTextResponseBodyDataSubImagesPartInfosSubjectListTableRectList {
+	s.Height = &v
+	return s
+}
+
+func (s *RecognizeAllTextResponseBodyDataSubImagesPartInfosSubjectListTableRectList) SetWidth(v int32) *RecognizeAllTextResponseBodyDataSubImagesPartInfosSubjectListTableRectList {
+	s.Width = &v
+	return s
+}
+
+type RecognizeAllTextResponseBodyDataSubImagesQrCodeInfo struct {
+	QrCodeCount   *int32                                                              `json:"QrCodeCount,omitempty" xml:"QrCodeCount,omitempty"`
+	QrCodeDetails []*RecognizeAllTextResponseBodyDataSubImagesQrCodeInfoQrCodeDetails `json:"QrCodeDetails,omitempty" xml:"QrCodeDetails,omitempty" type:"Repeated"`
+}
+
+func (s RecognizeAllTextResponseBodyDataSubImagesQrCodeInfo) String() string {
+	return tea.Prettify(s)
+}
+
+func (s RecognizeAllTextResponseBodyDataSubImagesQrCodeInfo) GoString() string {
+	return s.String()
+}
+
+func (s *RecognizeAllTextResponseBodyDataSubImagesQrCodeInfo) SetQrCodeCount(v int32) *RecognizeAllTextResponseBodyDataSubImagesQrCodeInfo {
+	s.QrCodeCount = &v
+	return s
+}
+
+func (s *RecognizeAllTextResponseBodyDataSubImagesQrCodeInfo) SetQrCodeDetails(v []*RecognizeAllTextResponseBodyDataSubImagesQrCodeInfoQrCodeDetails) *RecognizeAllTextResponseBodyDataSubImagesQrCodeInfo {
+	s.QrCodeDetails = v
+	return s
+}
+
+type RecognizeAllTextResponseBodyDataSubImagesQrCodeInfoQrCodeDetails struct {
+	Angle        *int32                                                                          `json:"Angle,omitempty" xml:"Angle,omitempty"`
+	Data         []byte                                                                          `json:"Data,omitempty" xml:"Data,omitempty"`
+	QrCodePoints []*RecognizeAllTextResponseBodyDataSubImagesQrCodeInfoQrCodeDetailsQrCodePoints `json:"QrCodePoints,omitempty" xml:"QrCodePoints,omitempty" type:"Repeated"`
+	QrCodeRect   *RecognizeAllTextResponseBodyDataSubImagesQrCodeInfoQrCodeDetailsQrCodeRect     `json:"QrCodeRect,omitempty" xml:"QrCodeRect,omitempty" type:"Struct"`
+	Type         *string                                                                         `json:"Type,omitempty" xml:"Type,omitempty"`
+}
+
+func (s RecognizeAllTextResponseBodyDataSubImagesQrCodeInfoQrCodeDetails) String() string {
+	return tea.Prettify(s)
+}
+
+func (s RecognizeAllTextResponseBodyDataSubImagesQrCodeInfoQrCodeDetails) GoString() string {
+	return s.String()
+}
+
+func (s *RecognizeAllTextResponseBodyDataSubImagesQrCodeInfoQrCodeDetails) SetAngle(v int32) *RecognizeAllTextResponseBodyDataSubImagesQrCodeInfoQrCodeDetails {
+	s.Angle = &v
+	return s
+}
+
+func (s *RecognizeAllTextResponseBodyDataSubImagesQrCodeInfoQrCodeDetails) SetData(v []byte) *RecognizeAllTextResponseBodyDataSubImagesQrCodeInfoQrCodeDetails {
+	s.Data = v
+	return s
+}
+
+func (s *RecognizeAllTextResponseBodyDataSubImagesQrCodeInfoQrCodeDetails) SetQrCodePoints(v []*RecognizeAllTextResponseBodyDataSubImagesQrCodeInfoQrCodeDetailsQrCodePoints) *RecognizeAllTextResponseBodyDataSubImagesQrCodeInfoQrCodeDetails {
+	s.QrCodePoints = v
+	return s
+}
+
+func (s *RecognizeAllTextResponseBodyDataSubImagesQrCodeInfoQrCodeDetails) SetQrCodeRect(v *RecognizeAllTextResponseBodyDataSubImagesQrCodeInfoQrCodeDetailsQrCodeRect) *RecognizeAllTextResponseBodyDataSubImagesQrCodeInfoQrCodeDetails {
+	s.QrCodeRect = v
+	return s
+}
+
+func (s *RecognizeAllTextResponseBodyDataSubImagesQrCodeInfoQrCodeDetails) SetType(v string) *RecognizeAllTextResponseBodyDataSubImagesQrCodeInfoQrCodeDetails {
+	s.Type = &v
+	return s
+}
+
+type RecognizeAllTextResponseBodyDataSubImagesQrCodeInfoQrCodeDetailsQrCodePoints struct {
+	X *int32 `json:"X,omitempty" xml:"X,omitempty"`
+	Y *int32 `json:"Y,omitempty" xml:"Y,omitempty"`
+}
+
+func (s RecognizeAllTextResponseBodyDataSubImagesQrCodeInfoQrCodeDetailsQrCodePoints) String() string {
+	return tea.Prettify(s)
+}
+
+func (s RecognizeAllTextResponseBodyDataSubImagesQrCodeInfoQrCodeDetailsQrCodePoints) GoString() string {
+	return s.String()
+}
+
+func (s *RecognizeAllTextResponseBodyDataSubImagesQrCodeInfoQrCodeDetailsQrCodePoints) SetX(v int32) *RecognizeAllTextResponseBodyDataSubImagesQrCodeInfoQrCodeDetailsQrCodePoints {
+	s.X = &v
+	return s
+}
+
+func (s *RecognizeAllTextResponseBodyDataSubImagesQrCodeInfoQrCodeDetailsQrCodePoints) SetY(v int32) *RecognizeAllTextResponseBodyDataSubImagesQrCodeInfoQrCodeDetailsQrCodePoints {
+	s.Y = &v
+	return s
+}
+
+type RecognizeAllTextResponseBodyDataSubImagesQrCodeInfoQrCodeDetailsQrCodeRect struct {
+	CenterX *int32 `json:"CenterX,omitempty" xml:"CenterX,omitempty"`
+	CenterY *int32 `json:"CenterY,omitempty" xml:"CenterY,omitempty"`
+	Height  *int32 `json:"Height,omitempty" xml:"Height,omitempty"`
+	Width   *int32 `json:"Width,omitempty" xml:"Width,omitempty"`
+}
+
+func (s RecognizeAllTextResponseBodyDataSubImagesQrCodeInfoQrCodeDetailsQrCodeRect) String() string {
+	return tea.Prettify(s)
+}
+
+func (s RecognizeAllTextResponseBodyDataSubImagesQrCodeInfoQrCodeDetailsQrCodeRect) GoString() string {
+	return s.String()
+}
+
+func (s *RecognizeAllTextResponseBodyDataSubImagesQrCodeInfoQrCodeDetailsQrCodeRect) SetCenterX(v int32) *RecognizeAllTextResponseBodyDataSubImagesQrCodeInfoQrCodeDetailsQrCodeRect {
+	s.CenterX = &v
+	return s
+}
+
+func (s *RecognizeAllTextResponseBodyDataSubImagesQrCodeInfoQrCodeDetailsQrCodeRect) SetCenterY(v int32) *RecognizeAllTextResponseBodyDataSubImagesQrCodeInfoQrCodeDetailsQrCodeRect {
+	s.CenterY = &v
+	return s
+}
+
+func (s *RecognizeAllTextResponseBodyDataSubImagesQrCodeInfoQrCodeDetailsQrCodeRect) SetHeight(v int32) *RecognizeAllTextResponseBodyDataSubImagesQrCodeInfoQrCodeDetailsQrCodeRect {
+	s.Height = &v
+	return s
+}
+
+func (s *RecognizeAllTextResponseBodyDataSubImagesQrCodeInfoQrCodeDetailsQrCodeRect) SetWidth(v int32) *RecognizeAllTextResponseBodyDataSubImagesQrCodeInfoQrCodeDetailsQrCodeRect {
+	s.Width = &v
+	return s
+}
+
+type RecognizeAllTextResponseBodyDataSubImagesQualityInfo struct {
+	CompletenessScore *float32 `json:"CompletenessScore,omitempty" xml:"CompletenessScore,omitempty"`
+	IsCopy            *bool    `json:"IsCopy,omitempty" xml:"IsCopy,omitempty"`
+	IsReshoot         *bool    `json:"IsReshoot,omitempty" xml:"IsReshoot,omitempty"`
+	QualityScore      *float32 `json:"QualityScore,omitempty" xml:"QualityScore,omitempty"`
+	TamperScore       *float32 `json:"TamperScore,omitempty" xml:"TamperScore,omitempty"`
+}
+
+func (s RecognizeAllTextResponseBodyDataSubImagesQualityInfo) String() string {
+	return tea.Prettify(s)
+}
+
+func (s RecognizeAllTextResponseBodyDataSubImagesQualityInfo) GoString() string {
+	return s.String()
+}
+
+func (s *RecognizeAllTextResponseBodyDataSubImagesQualityInfo) SetCompletenessScore(v float32) *RecognizeAllTextResponseBodyDataSubImagesQualityInfo {
+	s.CompletenessScore = &v
+	return s
+}
+
+func (s *RecognizeAllTextResponseBodyDataSubImagesQualityInfo) SetIsCopy(v bool) *RecognizeAllTextResponseBodyDataSubImagesQualityInfo {
+	s.IsCopy = &v
+	return s
+}
+
+func (s *RecognizeAllTextResponseBodyDataSubImagesQualityInfo) SetIsReshoot(v bool) *RecognizeAllTextResponseBodyDataSubImagesQualityInfo {
+	s.IsReshoot = &v
+	return s
+}
+
+func (s *RecognizeAllTextResponseBodyDataSubImagesQualityInfo) SetQualityScore(v float32) *RecognizeAllTextResponseBodyDataSubImagesQualityInfo {
+	s.QualityScore = &v
+	return s
+}
+
+func (s *RecognizeAllTextResponseBodyDataSubImagesQualityInfo) SetTamperScore(v float32) *RecognizeAllTextResponseBodyDataSubImagesQualityInfo {
+	s.TamperScore = &v
+	return s
+}
+
+type RecognizeAllTextResponseBodyDataSubImagesRowInfo struct {
+	RowCount   *int32                                                        `json:"RowCount,omitempty" xml:"RowCount,omitempty"`
+	RowDetails []*RecognizeAllTextResponseBodyDataSubImagesRowInfoRowDetails `json:"RowDetails,omitempty" xml:"RowDetails,omitempty" type:"Repeated"`
+}
+
+func (s RecognizeAllTextResponseBodyDataSubImagesRowInfo) String() string {
+	return tea.Prettify(s)
+}
+
+func (s RecognizeAllTextResponseBodyDataSubImagesRowInfo) GoString() string {
+	return s.String()
+}
+
+func (s *RecognizeAllTextResponseBodyDataSubImagesRowInfo) SetRowCount(v int32) *RecognizeAllTextResponseBodyDataSubImagesRowInfo {
+	s.RowCount = &v
+	return s
+}
+
+func (s *RecognizeAllTextResponseBodyDataSubImagesRowInfo) SetRowDetails(v []*RecognizeAllTextResponseBodyDataSubImagesRowInfoRowDetails) *RecognizeAllTextResponseBodyDataSubImagesRowInfo {
+	s.RowDetails = v
+	return s
+}
+
+type RecognizeAllTextResponseBodyDataSubImagesRowInfoRowDetails struct {
+	BlockList  []*int32 `json:"BlockList,omitempty" xml:"BlockList,omitempty" type:"Repeated"`
+	RowContent *string  `json:"RowContent,omitempty" xml:"RowContent,omitempty"`
+	RowId      *int32   `json:"RowId,omitempty" xml:"RowId,omitempty"`
+}
+
+func (s RecognizeAllTextResponseBodyDataSubImagesRowInfoRowDetails) String() string {
+	return tea.Prettify(s)
+}
+
+func (s RecognizeAllTextResponseBodyDataSubImagesRowInfoRowDetails) GoString() string {
+	return s.String()
+}
+
+func (s *RecognizeAllTextResponseBodyDataSubImagesRowInfoRowDetails) SetBlockList(v []*int32) *RecognizeAllTextResponseBodyDataSubImagesRowInfoRowDetails {
+	s.BlockList = v
+	return s
+}
+
+func (s *RecognizeAllTextResponseBodyDataSubImagesRowInfoRowDetails) SetRowContent(v string) *RecognizeAllTextResponseBodyDataSubImagesRowInfoRowDetails {
+	s.RowContent = &v
+	return s
+}
+
+func (s *RecognizeAllTextResponseBodyDataSubImagesRowInfoRowDetails) SetRowId(v int32) *RecognizeAllTextResponseBodyDataSubImagesRowInfoRowDetails {
+	s.RowId = &v
+	return s
+}
+
+type RecognizeAllTextResponseBodyDataSubImagesStampInfo struct {
+	StampCount   *int32                                                            `json:"StampCount,omitempty" xml:"StampCount,omitempty"`
+	StampDetails []*RecognizeAllTextResponseBodyDataSubImagesStampInfoStampDetails `json:"StampDetails,omitempty" xml:"StampDetails,omitempty" type:"Repeated"`
+}
+
+func (s RecognizeAllTextResponseBodyDataSubImagesStampInfo) String() string {
+	return tea.Prettify(s)
+}
+
+func (s RecognizeAllTextResponseBodyDataSubImagesStampInfo) GoString() string {
+	return s.String()
+}
+
+func (s *RecognizeAllTextResponseBodyDataSubImagesStampInfo) SetStampCount(v int32) *RecognizeAllTextResponseBodyDataSubImagesStampInfo {
+	s.StampCount = &v
+	return s
+}
+
+func (s *RecognizeAllTextResponseBodyDataSubImagesStampInfo) SetStampDetails(v []*RecognizeAllTextResponseBodyDataSubImagesStampInfoStampDetails) *RecognizeAllTextResponseBodyDataSubImagesStampInfo {
+	s.StampDetails = v
+	return s
+}
+
+type RecognizeAllTextResponseBodyDataSubImagesStampInfoStampDetails struct {
+	Data        *RecognizeAllTextResponseBodyDataSubImagesStampInfoStampDetailsData          `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
+	StampAngle  *int32                                                                       `json:"StampAngle,omitempty" xml:"StampAngle,omitempty"`
+	StampPoints []*RecognizeAllTextResponseBodyDataSubImagesStampInfoStampDetailsStampPoints `json:"StampPoints,omitempty" xml:"StampPoints,omitempty" type:"Repeated"`
+	StampRect   *RecognizeAllTextResponseBodyDataSubImagesStampInfoStampDetailsStampRect     `json:"StampRect,omitempty" xml:"StampRect,omitempty" type:"Struct"`
+}
+
+func (s RecognizeAllTextResponseBodyDataSubImagesStampInfoStampDetails) String() string {
+	return tea.Prettify(s)
+}
+
+func (s RecognizeAllTextResponseBodyDataSubImagesStampInfoStampDetails) GoString() string {
+	return s.String()
+}
+
+func (s *RecognizeAllTextResponseBodyDataSubImagesStampInfoStampDetails) SetData(v *RecognizeAllTextResponseBodyDataSubImagesStampInfoStampDetailsData) *RecognizeAllTextResponseBodyDataSubImagesStampInfoStampDetails {
+	s.Data = v
+	return s
+}
+
+func (s *RecognizeAllTextResponseBodyDataSubImagesStampInfoStampDetails) SetStampAngle(v int32) *RecognizeAllTextResponseBodyDataSubImagesStampInfoStampDetails {
+	s.StampAngle = &v
+	return s
+}
+
+func (s *RecognizeAllTextResponseBodyDataSubImagesStampInfoStampDetails) SetStampPoints(v []*RecognizeAllTextResponseBodyDataSubImagesStampInfoStampDetailsStampPoints) *RecognizeAllTextResponseBodyDataSubImagesStampInfoStampDetails {
+	s.StampPoints = v
+	return s
+}
+
+func (s *RecognizeAllTextResponseBodyDataSubImagesStampInfoStampDetails) SetStampRect(v *RecognizeAllTextResponseBodyDataSubImagesStampInfoStampDetailsStampRect) *RecognizeAllTextResponseBodyDataSubImagesStampInfoStampDetails {
+	s.StampRect = v
+	return s
+}
+
+type RecognizeAllTextResponseBodyDataSubImagesStampInfoStampDetailsData struct {
+	AntiFakeCode        *string `json:"AntiFakeCode,omitempty" xml:"AntiFakeCode,omitempty"`
+	CompanyId           *string `json:"CompanyId,omitempty" xml:"CompanyId,omitempty"`
+	OrganizationName    *string `json:"OrganizationName,omitempty" xml:"OrganizationName,omitempty"`
+	OrganizationNameEng *string `json:"OrganizationNameEng,omitempty" xml:"OrganizationNameEng,omitempty"`
+	OtherText           *string `json:"OtherText,omitempty" xml:"OtherText,omitempty"`
+	TaxpayerId          *string `json:"TaxpayerId,omitempty" xml:"TaxpayerId,omitempty"`
+	TopText             *string `json:"TopText,omitempty" xml:"TopText,omitempty"`
+}
+
+func (s RecognizeAllTextResponseBodyDataSubImagesStampInfoStampDetailsData) String() string {
+	return tea.Prettify(s)
+}
+
+func (s RecognizeAllTextResponseBodyDataSubImagesStampInfoStampDetailsData) GoString() string {
+	return s.String()
+}
+
+func (s *RecognizeAllTextResponseBodyDataSubImagesStampInfoStampDetailsData) SetAntiFakeCode(v string) *RecognizeAllTextResponseBodyDataSubImagesStampInfoStampDetailsData {
+	s.AntiFakeCode = &v
+	return s
+}
+
+func (s *RecognizeAllTextResponseBodyDataSubImagesStampInfoStampDetailsData) SetCompanyId(v string) *RecognizeAllTextResponseBodyDataSubImagesStampInfoStampDetailsData {
+	s.CompanyId = &v
+	return s
+}
+
+func (s *RecognizeAllTextResponseBodyDataSubImagesStampInfoStampDetailsData) SetOrganizationName(v string) *RecognizeAllTextResponseBodyDataSubImagesStampInfoStampDetailsData {
+	s.OrganizationName = &v
+	return s
+}
+
+func (s *RecognizeAllTextResponseBodyDataSubImagesStampInfoStampDetailsData) SetOrganizationNameEng(v string) *RecognizeAllTextResponseBodyDataSubImagesStampInfoStampDetailsData {
+	s.OrganizationNameEng = &v
+	return s
+}
+
+func (s *RecognizeAllTextResponseBodyDataSubImagesStampInfoStampDetailsData) SetOtherText(v string) *RecognizeAllTextResponseBodyDataSubImagesStampInfoStampDetailsData {
+	s.OtherText = &v
+	return s
+}
+
+func (s *RecognizeAllTextResponseBodyDataSubImagesStampInfoStampDetailsData) SetTaxpayerId(v string) *RecognizeAllTextResponseBodyDataSubImagesStampInfoStampDetailsData {
+	s.TaxpayerId = &v
+	return s
+}
+
+func (s *RecognizeAllTextResponseBodyDataSubImagesStampInfoStampDetailsData) SetTopText(v string) *RecognizeAllTextResponseBodyDataSubImagesStampInfoStampDetailsData {
+	s.TopText = &v
+	return s
+}
+
+type RecognizeAllTextResponseBodyDataSubImagesStampInfoStampDetailsStampPoints struct {
+	X *int32 `json:"X,omitempty" xml:"X,omitempty"`
+	Y *int32 `json:"Y,omitempty" xml:"Y,omitempty"`
+}
+
+func (s RecognizeAllTextResponseBodyDataSubImagesStampInfoStampDetailsStampPoints) String() string {
+	return tea.Prettify(s)
+}
+
+func (s RecognizeAllTextResponseBodyDataSubImagesStampInfoStampDetailsStampPoints) GoString() string {
+	return s.String()
+}
+
+func (s *RecognizeAllTextResponseBodyDataSubImagesStampInfoStampDetailsStampPoints) SetX(v int32) *RecognizeAllTextResponseBodyDataSubImagesStampInfoStampDetailsStampPoints {
+	s.X = &v
+	return s
+}
+
+func (s *RecognizeAllTextResponseBodyDataSubImagesStampInfoStampDetailsStampPoints) SetY(v int32) *RecognizeAllTextResponseBodyDataSubImagesStampInfoStampDetailsStampPoints {
+	s.Y = &v
+	return s
+}
+
+type RecognizeAllTextResponseBodyDataSubImagesStampInfoStampDetailsStampRect struct {
+	CenterX *int32 `json:"CenterX,omitempty" xml:"CenterX,omitempty"`
+	CenterY *int32 `json:"CenterY,omitempty" xml:"CenterY,omitempty"`
+	Height  *int32 `json:"Height,omitempty" xml:"Height,omitempty"`
+	Width   *int32 `json:"Width,omitempty" xml:"Width,omitempty"`
+}
+
+func (s RecognizeAllTextResponseBodyDataSubImagesStampInfoStampDetailsStampRect) String() string {
+	return tea.Prettify(s)
+}
+
+func (s RecognizeAllTextResponseBodyDataSubImagesStampInfoStampDetailsStampRect) GoString() string {
+	return s.String()
+}
+
+func (s *RecognizeAllTextResponseBodyDataSubImagesStampInfoStampDetailsStampRect) SetCenterX(v int32) *RecognizeAllTextResponseBodyDataSubImagesStampInfoStampDetailsStampRect {
+	s.CenterX = &v
+	return s
+}
+
+func (s *RecognizeAllTextResponseBodyDataSubImagesStampInfoStampDetailsStampRect) SetCenterY(v int32) *RecognizeAllTextResponseBodyDataSubImagesStampInfoStampDetailsStampRect {
+	s.CenterY = &v
+	return s
+}
+
+func (s *RecognizeAllTextResponseBodyDataSubImagesStampInfoStampDetailsStampRect) SetHeight(v int32) *RecognizeAllTextResponseBodyDataSubImagesStampInfoStampDetailsStampRect {
+	s.Height = &v
+	return s
+}
+
+func (s *RecognizeAllTextResponseBodyDataSubImagesStampInfoStampDetailsStampRect) SetWidth(v int32) *RecognizeAllTextResponseBodyDataSubImagesStampInfoStampDetailsStampRect {
+	s.Width = &v
+	return s
+}
+
+type RecognizeAllTextResponseBodyDataSubImagesSubImagePoints struct {
+	X *int32 `json:"X,omitempty" xml:"X,omitempty"`
+	Y *int32 `json:"Y,omitempty" xml:"Y,omitempty"`
+}
+
+func (s RecognizeAllTextResponseBodyDataSubImagesSubImagePoints) String() string {
+	return tea.Prettify(s)
+}
+
+func (s RecognizeAllTextResponseBodyDataSubImagesSubImagePoints) GoString() string {
+	return s.String()
+}
+
+func (s *RecognizeAllTextResponseBodyDataSubImagesSubImagePoints) SetX(v int32) *RecognizeAllTextResponseBodyDataSubImagesSubImagePoints {
+	s.X = &v
+	return s
+}
+
+func (s *RecognizeAllTextResponseBodyDataSubImagesSubImagePoints) SetY(v int32) *RecognizeAllTextResponseBodyDataSubImagesSubImagePoints {
+	s.Y = &v
+	return s
+}
+
+type RecognizeAllTextResponseBodyDataSubImagesSubImageRect struct {
+	CenterX *int32 `json:"CenterX,omitempty" xml:"CenterX,omitempty"`
+	CenterY *int32 `json:"CenterY,omitempty" xml:"CenterY,omitempty"`
+	Height  *int32 `json:"Height,omitempty" xml:"Height,omitempty"`
+	Width   *int32 `json:"Width,omitempty" xml:"Width,omitempty"`
+}
+
+func (s RecognizeAllTextResponseBodyDataSubImagesSubImageRect) String() string {
+	return tea.Prettify(s)
+}
+
+func (s RecognizeAllTextResponseBodyDataSubImagesSubImageRect) GoString() string {
+	return s.String()
+}
+
+func (s *RecognizeAllTextResponseBodyDataSubImagesSubImageRect) SetCenterX(v int32) *RecognizeAllTextResponseBodyDataSubImagesSubImageRect {
+	s.CenterX = &v
+	return s
+}
+
+func (s *RecognizeAllTextResponseBodyDataSubImagesSubImageRect) SetCenterY(v int32) *RecognizeAllTextResponseBodyDataSubImagesSubImageRect {
+	s.CenterY = &v
+	return s
+}
+
+func (s *RecognizeAllTextResponseBodyDataSubImagesSubImageRect) SetHeight(v int32) *RecognizeAllTextResponseBodyDataSubImagesSubImageRect {
+	s.Height = &v
+	return s
+}
+
+func (s *RecognizeAllTextResponseBodyDataSubImagesSubImageRect) SetWidth(v int32) *RecognizeAllTextResponseBodyDataSubImagesSubImageRect {
+	s.Width = &v
+	return s
+}
+
+type RecognizeAllTextResponseBodyDataSubImagesTableInfo struct {
+	TableCount   *int32                                                            `json:"TableCount,omitempty" xml:"TableCount,omitempty"`
+	TableDetails []*RecognizeAllTextResponseBodyDataSubImagesTableInfoTableDetails `json:"TableDetails,omitempty" xml:"TableDetails,omitempty" type:"Repeated"`
+	TableExcel   *string                                                           `json:"TableExcel,omitempty" xml:"TableExcel,omitempty"`
+	TableHtml    *string                                                           `json:"TableHtml,omitempty" xml:"TableHtml,omitempty"`
+}
+
+func (s RecognizeAllTextResponseBodyDataSubImagesTableInfo) String() string {
+	return tea.Prettify(s)
+}
+
+func (s RecognizeAllTextResponseBodyDataSubImagesTableInfo) GoString() string {
+	return s.String()
+}
+
+func (s *RecognizeAllTextResponseBodyDataSubImagesTableInfo) SetTableCount(v int32) *RecognizeAllTextResponseBodyDataSubImagesTableInfo {
+	s.TableCount = &v
+	return s
+}
+
+func (s *RecognizeAllTextResponseBodyDataSubImagesTableInfo) SetTableDetails(v []*RecognizeAllTextResponseBodyDataSubImagesTableInfoTableDetails) *RecognizeAllTextResponseBodyDataSubImagesTableInfo {
+	s.TableDetails = v
+	return s
+}
+
+func (s *RecognizeAllTextResponseBodyDataSubImagesTableInfo) SetTableExcel(v string) *RecognizeAllTextResponseBodyDataSubImagesTableInfo {
+	s.TableExcel = &v
+	return s
+}
+
+func (s *RecognizeAllTextResponseBodyDataSubImagesTableInfo) SetTableHtml(v string) *RecognizeAllTextResponseBodyDataSubImagesTableInfo {
+	s.TableHtml = &v
+	return s
+}
+
+type RecognizeAllTextResponseBodyDataSubImagesTableInfoTableDetails struct {
+	CellCount   *int32                                                                       `json:"CellCount,omitempty" xml:"CellCount,omitempty"`
+	CellDetails []*RecognizeAllTextResponseBodyDataSubImagesTableInfoTableDetailsCellDetails `json:"CellDetails,omitempty" xml:"CellDetails,omitempty" type:"Repeated"`
+	ColumnCount *int32                                                                       `json:"ColumnCount,omitempty" xml:"ColumnCount,omitempty"`
+	Footer      *RecognizeAllTextResponseBodyDataSubImagesTableInfoTableDetailsFooter        `json:"Footer,omitempty" xml:"Footer,omitempty" type:"Struct"`
+	Header      *RecognizeAllTextResponseBodyDataSubImagesTableInfoTableDetailsHeader        `json:"Header,omitempty" xml:"Header,omitempty" type:"Struct"`
+	RowCount    *int32                                                                       `json:"RowCount,omitempty" xml:"RowCount,omitempty"`
+	TableId     *int32                                                                       `json:"TableId,omitempty" xml:"TableId,omitempty"`
+	TablePoints []*RecognizeAllTextResponseBodyDataSubImagesTableInfoTableDetailsTablePoints `json:"TablePoints,omitempty" xml:"TablePoints,omitempty" type:"Repeated"`
+	TableRect   *RecognizeAllTextResponseBodyDataSubImagesTableInfoTableDetailsTableRect     `json:"TableRect,omitempty" xml:"TableRect,omitempty" type:"Struct"`
+}
+
+func (s RecognizeAllTextResponseBodyDataSubImagesTableInfoTableDetails) String() string {
+	return tea.Prettify(s)
+}
+
+func (s RecognizeAllTextResponseBodyDataSubImagesTableInfoTableDetails) GoString() string {
+	return s.String()
+}
+
+func (s *RecognizeAllTextResponseBodyDataSubImagesTableInfoTableDetails) SetCellCount(v int32) *RecognizeAllTextResponseBodyDataSubImagesTableInfoTableDetails {
+	s.CellCount = &v
+	return s
+}
+
+func (s *RecognizeAllTextResponseBodyDataSubImagesTableInfoTableDetails) SetCellDetails(v []*RecognizeAllTextResponseBodyDataSubImagesTableInfoTableDetailsCellDetails) *RecognizeAllTextResponseBodyDataSubImagesTableInfoTableDetails {
+	s.CellDetails = v
+	return s
+}
+
+func (s *RecognizeAllTextResponseBodyDataSubImagesTableInfoTableDetails) SetColumnCount(v int32) *RecognizeAllTextResponseBodyDataSubImagesTableInfoTableDetails {
+	s.ColumnCount = &v
+	return s
+}
+
+func (s *RecognizeAllTextResponseBodyDataSubImagesTableInfoTableDetails) SetFooter(v *RecognizeAllTextResponseBodyDataSubImagesTableInfoTableDetailsFooter) *RecognizeAllTextResponseBodyDataSubImagesTableInfoTableDetails {
+	s.Footer = v
+	return s
+}
+
+func (s *RecognizeAllTextResponseBodyDataSubImagesTableInfoTableDetails) SetHeader(v *RecognizeAllTextResponseBodyDataSubImagesTableInfoTableDetailsHeader) *RecognizeAllTextResponseBodyDataSubImagesTableInfoTableDetails {
+	s.Header = v
+	return s
+}
+
+func (s *RecognizeAllTextResponseBodyDataSubImagesTableInfoTableDetails) SetRowCount(v int32) *RecognizeAllTextResponseBodyDataSubImagesTableInfoTableDetails {
+	s.RowCount = &v
+	return s
+}
+
+func (s *RecognizeAllTextResponseBodyDataSubImagesTableInfoTableDetails) SetTableId(v int32) *RecognizeAllTextResponseBodyDataSubImagesTableInfoTableDetails {
+	s.TableId = &v
+	return s
+}
+
+func (s *RecognizeAllTextResponseBodyDataSubImagesTableInfoTableDetails) SetTablePoints(v []*RecognizeAllTextResponseBodyDataSubImagesTableInfoTableDetailsTablePoints) *RecognizeAllTextResponseBodyDataSubImagesTableInfoTableDetails {
+	s.TablePoints = v
+	return s
+}
+
+func (s *RecognizeAllTextResponseBodyDataSubImagesTableInfoTableDetails) SetTableRect(v *RecognizeAllTextResponseBodyDataSubImagesTableInfoTableDetailsTableRect) *RecognizeAllTextResponseBodyDataSubImagesTableInfoTableDetails {
+	s.TableRect = v
+	return s
+}
+
+type RecognizeAllTextResponseBodyDataSubImagesTableInfoTableDetailsCellDetails struct {
+	BlockList   []*int32                                                                               `json:"BlockList,omitempty" xml:"BlockList,omitempty" type:"Repeated"`
+	CellAngle   *int32                                                                                 `json:"CellAngle,omitempty" xml:"CellAngle,omitempty"`
+	CellContent *string                                                                                `json:"CellContent,omitempty" xml:"CellContent,omitempty"`
+	CellId      *int32                                                                                 `json:"CellId,omitempty" xml:"CellId,omitempty"`
+	CellPoints  []*RecognizeAllTextResponseBodyDataSubImagesTableInfoTableDetailsCellDetailsCellPoints `json:"CellPoints,omitempty" xml:"CellPoints,omitempty" type:"Repeated"`
+	CellRect    *RecognizeAllTextResponseBodyDataSubImagesTableInfoTableDetailsCellDetailsCellRect     `json:"CellRect,omitempty" xml:"CellRect,omitempty" type:"Struct"`
+	ColumnEnd   *int32                                                                                 `json:"ColumnEnd,omitempty" xml:"ColumnEnd,omitempty"`
+	ColumnStart *int32                                                                                 `json:"ColumnStart,omitempty" xml:"ColumnStart,omitempty"`
+	RowEnd      *int32                                                                                 `json:"RowEnd,omitempty" xml:"RowEnd,omitempty"`
+	RowStart    *int32                                                                                 `json:"RowStart,omitempty" xml:"RowStart,omitempty"`
+}
+
+func (s RecognizeAllTextResponseBodyDataSubImagesTableInfoTableDetailsCellDetails) String() string {
+	return tea.Prettify(s)
+}
+
+func (s RecognizeAllTextResponseBodyDataSubImagesTableInfoTableDetailsCellDetails) GoString() string {
+	return s.String()
+}
+
+func (s *RecognizeAllTextResponseBodyDataSubImagesTableInfoTableDetailsCellDetails) SetBlockList(v []*int32) *RecognizeAllTextResponseBodyDataSubImagesTableInfoTableDetailsCellDetails {
+	s.BlockList = v
+	return s
+}
+
+func (s *RecognizeAllTextResponseBodyDataSubImagesTableInfoTableDetailsCellDetails) SetCellAngle(v int32) *RecognizeAllTextResponseBodyDataSubImagesTableInfoTableDetailsCellDetails {
+	s.CellAngle = &v
+	return s
+}
+
+func (s *RecognizeAllTextResponseBodyDataSubImagesTableInfoTableDetailsCellDetails) SetCellContent(v string) *RecognizeAllTextResponseBodyDataSubImagesTableInfoTableDetailsCellDetails {
+	s.CellContent = &v
+	return s
+}
+
+func (s *RecognizeAllTextResponseBodyDataSubImagesTableInfoTableDetailsCellDetails) SetCellId(v int32) *RecognizeAllTextResponseBodyDataSubImagesTableInfoTableDetailsCellDetails {
+	s.CellId = &v
+	return s
+}
+
+func (s *RecognizeAllTextResponseBodyDataSubImagesTableInfoTableDetailsCellDetails) SetCellPoints(v []*RecognizeAllTextResponseBodyDataSubImagesTableInfoTableDetailsCellDetailsCellPoints) *RecognizeAllTextResponseBodyDataSubImagesTableInfoTableDetailsCellDetails {
+	s.CellPoints = v
+	return s
+}
+
+func (s *RecognizeAllTextResponseBodyDataSubImagesTableInfoTableDetailsCellDetails) SetCellRect(v *RecognizeAllTextResponseBodyDataSubImagesTableInfoTableDetailsCellDetailsCellRect) *RecognizeAllTextResponseBodyDataSubImagesTableInfoTableDetailsCellDetails {
+	s.CellRect = v
+	return s
+}
+
+func (s *RecognizeAllTextResponseBodyDataSubImagesTableInfoTableDetailsCellDetails) SetColumnEnd(v int32) *RecognizeAllTextResponseBodyDataSubImagesTableInfoTableDetailsCellDetails {
+	s.ColumnEnd = &v
+	return s
+}
+
+func (s *RecognizeAllTextResponseBodyDataSubImagesTableInfoTableDetailsCellDetails) SetColumnStart(v int32) *RecognizeAllTextResponseBodyDataSubImagesTableInfoTableDetailsCellDetails {
+	s.ColumnStart = &v
+	return s
+}
+
+func (s *RecognizeAllTextResponseBodyDataSubImagesTableInfoTableDetailsCellDetails) SetRowEnd(v int32) *RecognizeAllTextResponseBodyDataSubImagesTableInfoTableDetailsCellDetails {
+	s.RowEnd = &v
+	return s
+}
+
+func (s *RecognizeAllTextResponseBodyDataSubImagesTableInfoTableDetailsCellDetails) SetRowStart(v int32) *RecognizeAllTextResponseBodyDataSubImagesTableInfoTableDetailsCellDetails {
+	s.RowStart = &v
+	return s
+}
+
+type RecognizeAllTextResponseBodyDataSubImagesTableInfoTableDetailsCellDetailsCellPoints struct {
+	X *int32 `json:"X,omitempty" xml:"X,omitempty"`
+	Y *int32 `json:"Y,omitempty" xml:"Y,omitempty"`
+}
+
+func (s RecognizeAllTextResponseBodyDataSubImagesTableInfoTableDetailsCellDetailsCellPoints) String() string {
+	return tea.Prettify(s)
+}
+
+func (s RecognizeAllTextResponseBodyDataSubImagesTableInfoTableDetailsCellDetailsCellPoints) GoString() string {
+	return s.String()
+}
+
+func (s *RecognizeAllTextResponseBodyDataSubImagesTableInfoTableDetailsCellDetailsCellPoints) SetX(v int32) *RecognizeAllTextResponseBodyDataSubImagesTableInfoTableDetailsCellDetailsCellPoints {
+	s.X = &v
+	return s
+}
+
+func (s *RecognizeAllTextResponseBodyDataSubImagesTableInfoTableDetailsCellDetailsCellPoints) SetY(v int32) *RecognizeAllTextResponseBodyDataSubImagesTableInfoTableDetailsCellDetailsCellPoints {
+	s.Y = &v
+	return s
+}
+
+type RecognizeAllTextResponseBodyDataSubImagesTableInfoTableDetailsCellDetailsCellRect struct {
+	CenterX *int32 `json:"CenterX,omitempty" xml:"CenterX,omitempty"`
+	CenterY *int32 `json:"CenterY,omitempty" xml:"CenterY,omitempty"`
+	Height  *int32 `json:"Height,omitempty" xml:"Height,omitempty"`
+	Width   *int32 `json:"Width,omitempty" xml:"Width,omitempty"`
+}
+
+func (s RecognizeAllTextResponseBodyDataSubImagesTableInfoTableDetailsCellDetailsCellRect) String() string {
+	return tea.Prettify(s)
+}
+
+func (s RecognizeAllTextResponseBodyDataSubImagesTableInfoTableDetailsCellDetailsCellRect) GoString() string {
+	return s.String()
+}
+
+func (s *RecognizeAllTextResponseBodyDataSubImagesTableInfoTableDetailsCellDetailsCellRect) SetCenterX(v int32) *RecognizeAllTextResponseBodyDataSubImagesTableInfoTableDetailsCellDetailsCellRect {
+	s.CenterX = &v
+	return s
+}
+
+func (s *RecognizeAllTextResponseBodyDataSubImagesTableInfoTableDetailsCellDetailsCellRect) SetCenterY(v int32) *RecognizeAllTextResponseBodyDataSubImagesTableInfoTableDetailsCellDetailsCellRect {
+	s.CenterY = &v
+	return s
+}
+
+func (s *RecognizeAllTextResponseBodyDataSubImagesTableInfoTableDetailsCellDetailsCellRect) SetHeight(v int32) *RecognizeAllTextResponseBodyDataSubImagesTableInfoTableDetailsCellDetailsCellRect {
+	s.Height = &v
+	return s
+}
+
+func (s *RecognizeAllTextResponseBodyDataSubImagesTableInfoTableDetailsCellDetailsCellRect) SetWidth(v int32) *RecognizeAllTextResponseBodyDataSubImagesTableInfoTableDetailsCellDetailsCellRect {
+	s.Width = &v
+	return s
+}
+
+type RecognizeAllTextResponseBodyDataSubImagesTableInfoTableDetailsFooter struct {
+	BlockId  *int32                                                                        `json:"BlockId,omitempty" xml:"BlockId,omitempty"`
+	Contents []*string                                                                     `json:"Contents,omitempty" xml:"Contents,omitempty" type:"Repeated"`
+	Points   []*RecognizeAllTextResponseBodyDataSubImagesTableInfoTableDetailsFooterPoints `json:"Points,omitempty" xml:"Points,omitempty" type:"Repeated"`
+}
+
+func (s RecognizeAllTextResponseBodyDataSubImagesTableInfoTableDetailsFooter) String() string {
+	return tea.Prettify(s)
+}
+
+func (s RecognizeAllTextResponseBodyDataSubImagesTableInfoTableDetailsFooter) GoString() string {
+	return s.String()
+}
+
+func (s *RecognizeAllTextResponseBodyDataSubImagesTableInfoTableDetailsFooter) SetBlockId(v int32) *RecognizeAllTextResponseBodyDataSubImagesTableInfoTableDetailsFooter {
+	s.BlockId = &v
+	return s
+}
+
+func (s *RecognizeAllTextResponseBodyDataSubImagesTableInfoTableDetailsFooter) SetContents(v []*string) *RecognizeAllTextResponseBodyDataSubImagesTableInfoTableDetailsFooter {
+	s.Contents = v
+	return s
+}
+
+func (s *RecognizeAllTextResponseBodyDataSubImagesTableInfoTableDetailsFooter) SetPoints(v []*RecognizeAllTextResponseBodyDataSubImagesTableInfoTableDetailsFooterPoints) *RecognizeAllTextResponseBodyDataSubImagesTableInfoTableDetailsFooter {
+	s.Points = v
+	return s
+}
+
+type RecognizeAllTextResponseBodyDataSubImagesTableInfoTableDetailsFooterPoints struct {
+	X *int32 `json:"X,omitempty" xml:"X,omitempty"`
+	Y *int32 `json:"Y,omitempty" xml:"Y,omitempty"`
+}
+
+func (s RecognizeAllTextResponseBodyDataSubImagesTableInfoTableDetailsFooterPoints) String() string {
+	return tea.Prettify(s)
+}
+
+func (s RecognizeAllTextResponseBodyDataSubImagesTableInfoTableDetailsFooterPoints) GoString() string {
+	return s.String()
+}
+
+func (s *RecognizeAllTextResponseBodyDataSubImagesTableInfoTableDetailsFooterPoints) SetX(v int32) *RecognizeAllTextResponseBodyDataSubImagesTableInfoTableDetailsFooterPoints {
+	s.X = &v
+	return s
+}
+
+func (s *RecognizeAllTextResponseBodyDataSubImagesTableInfoTableDetailsFooterPoints) SetY(v int32) *RecognizeAllTextResponseBodyDataSubImagesTableInfoTableDetailsFooterPoints {
+	s.Y = &v
+	return s
+}
+
+type RecognizeAllTextResponseBodyDataSubImagesTableInfoTableDetailsHeader struct {
+	BlockId  *int32                                                                        `json:"BlockId,omitempty" xml:"BlockId,omitempty"`
+	Contents []*string                                                                     `json:"Contents,omitempty" xml:"Contents,omitempty" type:"Repeated"`
+	Points   []*RecognizeAllTextResponseBodyDataSubImagesTableInfoTableDetailsHeaderPoints `json:"Points,omitempty" xml:"Points,omitempty" type:"Repeated"`
+}
+
+func (s RecognizeAllTextResponseBodyDataSubImagesTableInfoTableDetailsHeader) String() string {
+	return tea.Prettify(s)
+}
+
+func (s RecognizeAllTextResponseBodyDataSubImagesTableInfoTableDetailsHeader) GoString() string {
+	return s.String()
+}
+
+func (s *RecognizeAllTextResponseBodyDataSubImagesTableInfoTableDetailsHeader) SetBlockId(v int32) *RecognizeAllTextResponseBodyDataSubImagesTableInfoTableDetailsHeader {
+	s.BlockId = &v
+	return s
+}
+
+func (s *RecognizeAllTextResponseBodyDataSubImagesTableInfoTableDetailsHeader) SetContents(v []*string) *RecognizeAllTextResponseBodyDataSubImagesTableInfoTableDetailsHeader {
+	s.Contents = v
+	return s
+}
+
+func (s *RecognizeAllTextResponseBodyDataSubImagesTableInfoTableDetailsHeader) SetPoints(v []*RecognizeAllTextResponseBodyDataSubImagesTableInfoTableDetailsHeaderPoints) *RecognizeAllTextResponseBodyDataSubImagesTableInfoTableDetailsHeader {
+	s.Points = v
+	return s
+}
+
+type RecognizeAllTextResponseBodyDataSubImagesTableInfoTableDetailsHeaderPoints struct {
+	X *int32 `json:"X,omitempty" xml:"X,omitempty"`
+	Y *int32 `json:"Y,omitempty" xml:"Y,omitempty"`
+}
+
+func (s RecognizeAllTextResponseBodyDataSubImagesTableInfoTableDetailsHeaderPoints) String() string {
+	return tea.Prettify(s)
+}
+
+func (s RecognizeAllTextResponseBodyDataSubImagesTableInfoTableDetailsHeaderPoints) GoString() string {
+	return s.String()
+}
+
+func (s *RecognizeAllTextResponseBodyDataSubImagesTableInfoTableDetailsHeaderPoints) SetX(v int32) *RecognizeAllTextResponseBodyDataSubImagesTableInfoTableDetailsHeaderPoints {
+	s.X = &v
+	return s
+}
+
+func (s *RecognizeAllTextResponseBodyDataSubImagesTableInfoTableDetailsHeaderPoints) SetY(v int32) *RecognizeAllTextResponseBodyDataSubImagesTableInfoTableDetailsHeaderPoints {
+	s.Y = &v
+	return s
+}
+
+type RecognizeAllTextResponseBodyDataSubImagesTableInfoTableDetailsTablePoints struct {
+	X *int32 `json:"X,omitempty" xml:"X,omitempty"`
+	Y *int32 `json:"Y,omitempty" xml:"Y,omitempty"`
+}
+
+func (s RecognizeAllTextResponseBodyDataSubImagesTableInfoTableDetailsTablePoints) String() string {
+	return tea.Prettify(s)
+}
+
+func (s RecognizeAllTextResponseBodyDataSubImagesTableInfoTableDetailsTablePoints) GoString() string {
+	return s.String()
+}
+
+func (s *RecognizeAllTextResponseBodyDataSubImagesTableInfoTableDetailsTablePoints) SetX(v int32) *RecognizeAllTextResponseBodyDataSubImagesTableInfoTableDetailsTablePoints {
+	s.X = &v
+	return s
+}
+
+func (s *RecognizeAllTextResponseBodyDataSubImagesTableInfoTableDetailsTablePoints) SetY(v int32) *RecognizeAllTextResponseBodyDataSubImagesTableInfoTableDetailsTablePoints {
+	s.Y = &v
+	return s
+}
+
+type RecognizeAllTextResponseBodyDataSubImagesTableInfoTableDetailsTableRect struct {
+	CenterX *int32 `json:"CenterX,omitempty" xml:"CenterX,omitempty"`
+	CenterY *int32 `json:"CenterY,omitempty" xml:"CenterY,omitempty"`
+	Height  *int32 `json:"Height,omitempty" xml:"Height,omitempty"`
+	Width   *int32 `json:"Width,omitempty" xml:"Width,omitempty"`
+}
+
+func (s RecognizeAllTextResponseBodyDataSubImagesTableInfoTableDetailsTableRect) String() string {
+	return tea.Prettify(s)
+}
+
+func (s RecognizeAllTextResponseBodyDataSubImagesTableInfoTableDetailsTableRect) GoString() string {
+	return s.String()
+}
+
+func (s *RecognizeAllTextResponseBodyDataSubImagesTableInfoTableDetailsTableRect) SetCenterX(v int32) *RecognizeAllTextResponseBodyDataSubImagesTableInfoTableDetailsTableRect {
+	s.CenterX = &v
+	return s
+}
+
+func (s *RecognizeAllTextResponseBodyDataSubImagesTableInfoTableDetailsTableRect) SetCenterY(v int32) *RecognizeAllTextResponseBodyDataSubImagesTableInfoTableDetailsTableRect {
+	s.CenterY = &v
+	return s
+}
+
+func (s *RecognizeAllTextResponseBodyDataSubImagesTableInfoTableDetailsTableRect) SetHeight(v int32) *RecognizeAllTextResponseBodyDataSubImagesTableInfoTableDetailsTableRect {
+	s.Height = &v
+	return s
+}
+
+func (s *RecognizeAllTextResponseBodyDataSubImagesTableInfoTableDetailsTableRect) SetWidth(v int32) *RecognizeAllTextResponseBodyDataSubImagesTableInfoTableDetailsTableRect {
+	s.Width = &v
+	return s
+}
+
+type RecognizeAllTextResponse struct {
+	Headers    map[string]*string            `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                        `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *RecognizeAllTextResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s RecognizeAllTextResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s RecognizeAllTextResponse) GoString() string {
+	return s.String()
+}
+
+func (s *RecognizeAllTextResponse) SetHeaders(v map[string]*string) *RecognizeAllTextResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *RecognizeAllTextResponse) SetStatusCode(v int32) *RecognizeAllTextResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *RecognizeAllTextResponse) SetBody(v *RecognizeAllTextResponseBody) *RecognizeAllTextResponse {
 	s.Body = v
 	return s
 }
@@ -6989,6 +10766,122 @@ func (client *Client) RecognizeAirItinerary(request *RecognizeAirItineraryReques
 	runtime := &util.RuntimeOptions{}
 	_result = &RecognizeAirItineraryResponse{}
 	_body, _err := client.RecognizeAirItineraryWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) RecognizeAllTextWithOptions(tmpReq *RecognizeAllTextRequest, runtime *util.RuntimeOptions) (_result *RecognizeAllTextResponse, _err error) {
+	_err = util.ValidateModel(tmpReq)
+	if _err != nil {
+		return _result, _err
+	}
+	request := &RecognizeAllTextShrinkRequest{}
+	openapiutil.Convert(tmpReq, request)
+	if !tea.BoolValue(util.IsUnset(tmpReq.AdvancedConfig)) {
+		request.AdvancedConfigShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.AdvancedConfig, tea.String("AdvancedConfig"), tea.String("json"))
+	}
+
+	if !tea.BoolValue(util.IsUnset(tmpReq.IdCardConfig)) {
+		request.IdCardConfigShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.IdCardConfig, tea.String("IdCardConfig"), tea.String("json"))
+	}
+
+	if !tea.BoolValue(util.IsUnset(tmpReq.InternationalIdCardConfig)) {
+		request.InternationalIdCardConfigShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.InternationalIdCardConfig, tea.String("InternationalIdCardConfig"), tea.String("json"))
+	}
+
+	if !tea.BoolValue(util.IsUnset(tmpReq.MultiLanConfig)) {
+		request.MultiLanConfigShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.MultiLanConfig, tea.String("MultiLanConfig"), tea.String("json"))
+	}
+
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.AdvancedConfigShrink)) {
+		query["AdvancedConfig"] = request.AdvancedConfigShrink
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.IdCardConfigShrink)) {
+		query["IdCardConfig"] = request.IdCardConfigShrink
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.InternationalIdCardConfigShrink)) {
+		query["InternationalIdCardConfig"] = request.InternationalIdCardConfigShrink
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.MultiLanConfigShrink)) {
+		query["MultiLanConfig"] = request.MultiLanConfigShrink
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.OutputBarCode)) {
+		query["OutputBarCode"] = request.OutputBarCode
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.OutputCoordinate)) {
+		query["OutputCoordinate"] = request.OutputCoordinate
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.OutputFigure)) {
+		query["OutputFigure"] = request.OutputFigure
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.OutputKVExcel)) {
+		query["OutputKVExcel"] = request.OutputKVExcel
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.OutputOricoord)) {
+		query["OutputOricoord"] = request.OutputOricoord
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.OutputQrcode)) {
+		query["OutputQrcode"] = request.OutputQrcode
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.OutputStamp)) {
+		query["OutputStamp"] = request.OutputStamp
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.PageNo)) {
+		query["PageNo"] = request.PageNo
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Type)) {
+		query["Type"] = request.Type
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Url)) {
+		query["Url"] = request.Url
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query:  openapiutil.Query(query),
+		Body:   request.Body,
+		Stream: tmpReq.Body,
+	}
+	params := &openapi.Params{
+		Action:      tea.String("RecognizeAllText"),
+		Version:     tea.String("2021-07-07"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &RecognizeAllTextResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) RecognizeAllText(request *RecognizeAllTextRequest) (_result *RecognizeAllTextResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &RecognizeAllTextResponse{}
+	_body, _err := client.RecognizeAllTextWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
