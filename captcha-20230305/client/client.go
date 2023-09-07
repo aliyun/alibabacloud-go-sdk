@@ -117,6 +117,111 @@ func (s *VerifyCaptchaResponse) SetBody(v *VerifyCaptchaResponseBody) *VerifyCap
 	return s
 }
 
+type VerifyIntelligentCaptchaRequest struct {
+	CaptchaVerifyParam *string `json:"CaptchaVerifyParam,omitempty" xml:"CaptchaVerifyParam,omitempty"`
+}
+
+func (s VerifyIntelligentCaptchaRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s VerifyIntelligentCaptchaRequest) GoString() string {
+	return s.String()
+}
+
+func (s *VerifyIntelligentCaptchaRequest) SetCaptchaVerifyParam(v string) *VerifyIntelligentCaptchaRequest {
+	s.CaptchaVerifyParam = &v
+	return s
+}
+
+type VerifyIntelligentCaptchaResponseBody struct {
+	Code    *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// Id of the request
+	RequestId *string                                     `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	Result    *VerifyIntelligentCaptchaResponseBodyResult `json:"Result,omitempty" xml:"Result,omitempty" type:"Struct"`
+	Success   *bool                                       `json:"Success,omitempty" xml:"Success,omitempty"`
+}
+
+func (s VerifyIntelligentCaptchaResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s VerifyIntelligentCaptchaResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *VerifyIntelligentCaptchaResponseBody) SetCode(v string) *VerifyIntelligentCaptchaResponseBody {
+	s.Code = &v
+	return s
+}
+
+func (s *VerifyIntelligentCaptchaResponseBody) SetMessage(v string) *VerifyIntelligentCaptchaResponseBody {
+	s.Message = &v
+	return s
+}
+
+func (s *VerifyIntelligentCaptchaResponseBody) SetRequestId(v string) *VerifyIntelligentCaptchaResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *VerifyIntelligentCaptchaResponseBody) SetResult(v *VerifyIntelligentCaptchaResponseBodyResult) *VerifyIntelligentCaptchaResponseBody {
+	s.Result = v
+	return s
+}
+
+func (s *VerifyIntelligentCaptchaResponseBody) SetSuccess(v bool) *VerifyIntelligentCaptchaResponseBody {
+	s.Success = &v
+	return s
+}
+
+type VerifyIntelligentCaptchaResponseBodyResult struct {
+	VerifyResult *bool `json:"VerifyResult,omitempty" xml:"VerifyResult,omitempty"`
+}
+
+func (s VerifyIntelligentCaptchaResponseBodyResult) String() string {
+	return tea.Prettify(s)
+}
+
+func (s VerifyIntelligentCaptchaResponseBodyResult) GoString() string {
+	return s.String()
+}
+
+func (s *VerifyIntelligentCaptchaResponseBodyResult) SetVerifyResult(v bool) *VerifyIntelligentCaptchaResponseBodyResult {
+	s.VerifyResult = &v
+	return s
+}
+
+type VerifyIntelligentCaptchaResponse struct {
+	Headers    map[string]*string                    `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                                `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *VerifyIntelligentCaptchaResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s VerifyIntelligentCaptchaResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s VerifyIntelligentCaptchaResponse) GoString() string {
+	return s.String()
+}
+
+func (s *VerifyIntelligentCaptchaResponse) SetHeaders(v map[string]*string) *VerifyIntelligentCaptchaResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *VerifyIntelligentCaptchaResponse) SetStatusCode(v int32) *VerifyIntelligentCaptchaResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *VerifyIntelligentCaptchaResponse) SetBody(v *VerifyIntelligentCaptchaResponseBody) *VerifyIntelligentCaptchaResponse {
+	s.Body = v
+	return s
+}
+
 type Client struct {
 	openapi.Client
 }
@@ -201,6 +306,50 @@ func (client *Client) VerifyCaptcha(request *VerifyCaptchaRequest) (_result *Ver
 	runtime := &util.RuntimeOptions{}
 	_result = &VerifyCaptchaResponse{}
 	_body, _err := client.VerifyCaptchaWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) VerifyIntelligentCaptchaWithOptions(request *VerifyIntelligentCaptchaRequest, runtime *util.RuntimeOptions) (_result *VerifyIntelligentCaptchaResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	body := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.CaptchaVerifyParam)) {
+		body["CaptchaVerifyParam"] = request.CaptchaVerifyParam
+	}
+
+	req := &openapi.OpenApiRequest{
+		Body: openapiutil.ParseToMap(body),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("VerifyIntelligentCaptcha"),
+		Version:     tea.String("2023-03-05"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &VerifyIntelligentCaptchaResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) VerifyIntelligentCaptcha(request *VerifyIntelligentCaptchaRequest) (_result *VerifyIntelligentCaptchaResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &VerifyIntelligentCaptchaResponse{}
+	_body, _err := client.VerifyIntelligentCaptchaWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
