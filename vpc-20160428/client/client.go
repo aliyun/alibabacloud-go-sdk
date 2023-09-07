@@ -4635,14 +4635,17 @@ type CompletePhysicalConnectionLOARequest struct {
 	//
 	// >  If you do not set this parameter, the system automatically uses **RequestId** as **ClientToken**. **RequestId** of each API request may be different.
 	ClientToken *string `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
+	FinishWork  *bool   `json:"FinishWork,omitempty" xml:"FinishWork,omitempty"`
 	// The ID of the Express Connect circuit.
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
 	// The circuit code provided by the connectivity provider.
 	LineCode *string `json:"LineCode,omitempty" xml:"LineCode,omitempty"`
 	// The label of the cable in the data center.
-	LineLabel    *string `json:"LineLabel,omitempty" xml:"LineLabel,omitempty"`
-	OwnerAccount *string `json:"OwnerAccount,omitempty" xml:"OwnerAccount,omitempty"`
-	OwnerId      *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
+	LineLabel           *string `json:"LineLabel,omitempty" xml:"LineLabel,omitempty"`
+	LineSPContactInfo   *string `json:"LineSPContactInfo,omitempty" xml:"LineSPContactInfo,omitempty"`
+	LineServiceProvider *string `json:"LineServiceProvider,omitempty" xml:"LineServiceProvider,omitempty"`
+	OwnerAccount        *string `json:"OwnerAccount,omitempty" xml:"OwnerAccount,omitempty"`
+	OwnerId             *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
 	// The region ID of the Express Connect circuit.
 	//
 	// You can call the [DescribeRegions](~~36063~~) operation to query the most recent region list.
@@ -4664,6 +4667,11 @@ func (s *CompletePhysicalConnectionLOARequest) SetClientToken(v string) *Complet
 	return s
 }
 
+func (s *CompletePhysicalConnectionLOARequest) SetFinishWork(v bool) *CompletePhysicalConnectionLOARequest {
+	s.FinishWork = &v
+	return s
+}
+
 func (s *CompletePhysicalConnectionLOARequest) SetInstanceId(v string) *CompletePhysicalConnectionLOARequest {
 	s.InstanceId = &v
 	return s
@@ -4676,6 +4684,16 @@ func (s *CompletePhysicalConnectionLOARequest) SetLineCode(v string) *CompletePh
 
 func (s *CompletePhysicalConnectionLOARequest) SetLineLabel(v string) *CompletePhysicalConnectionLOARequest {
 	s.LineLabel = &v
+	return s
+}
+
+func (s *CompletePhysicalConnectionLOARequest) SetLineSPContactInfo(v string) *CompletePhysicalConnectionLOARequest {
+	s.LineSPContactInfo = &v
+	return s
+}
+
+func (s *CompletePhysicalConnectionLOARequest) SetLineServiceProvider(v string) *CompletePhysicalConnectionLOARequest {
+	s.LineServiceProvider = &v
 	return s
 }
 
@@ -32920,7 +32938,9 @@ type DescribePhysicalConnectionLOAResponseBodyPhysicalConnectionLOAType struct {
 	// The circuit code provided by the connectivity provider.
 	LineCode *string `json:"LineCode,omitempty" xml:"LineCode,omitempty"`
 	// The label of the cable in the data center.
-	LineLabel *string `json:"LineLabel,omitempty" xml:"LineLabel,omitempty"`
+	LineLabel           *string `json:"LineLabel,omitempty" xml:"LineLabel,omitempty"`
+	LineSPContactInfo   *string `json:"LineSPContactInfo,omitempty" xml:"LineSPContactInfo,omitempty"`
+	LineServiceProvider *string `json:"LineServiceProvider,omitempty" xml:"LineServiceProvider,omitempty"`
 	// The type of the Express Connect circuit. Valid values:
 	//
 	// *   **MSTP**
@@ -32981,6 +33001,16 @@ func (s *DescribePhysicalConnectionLOAResponseBodyPhysicalConnectionLOAType) Set
 
 func (s *DescribePhysicalConnectionLOAResponseBodyPhysicalConnectionLOAType) SetLineLabel(v string) *DescribePhysicalConnectionLOAResponseBodyPhysicalConnectionLOAType {
 	s.LineLabel = &v
+	return s
+}
+
+func (s *DescribePhysicalConnectionLOAResponseBodyPhysicalConnectionLOAType) SetLineSPContactInfo(v string) *DescribePhysicalConnectionLOAResponseBodyPhysicalConnectionLOAType {
+	s.LineSPContactInfo = &v
+	return s
+}
+
+func (s *DescribePhysicalConnectionLOAResponseBodyPhysicalConnectionLOAType) SetLineServiceProvider(v string) *DescribePhysicalConnectionLOAResponseBodyPhysicalConnectionLOAType {
+	s.LineServiceProvider = &v
 	return s
 }
 
@@ -76508,6 +76538,10 @@ func (client *Client) CompletePhysicalConnectionLOAWithOptions(request *Complete
 		query["ClientToken"] = request.ClientToken
 	}
 
+	if !tea.BoolValue(util.IsUnset(request.FinishWork)) {
+		query["FinishWork"] = request.FinishWork
+	}
+
 	if !tea.BoolValue(util.IsUnset(request.InstanceId)) {
 		query["InstanceId"] = request.InstanceId
 	}
@@ -76518,6 +76552,14 @@ func (client *Client) CompletePhysicalConnectionLOAWithOptions(request *Complete
 
 	if !tea.BoolValue(util.IsUnset(request.LineLabel)) {
 		query["LineLabel"] = request.LineLabel
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.LineSPContactInfo)) {
+		query["LineSPContactInfo"] = request.LineSPContactInfo
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.LineServiceProvider)) {
+		query["LineServiceProvider"] = request.LineServiceProvider
 	}
 
 	if !tea.BoolValue(util.IsUnset(request.OwnerAccount)) {
@@ -81336,7 +81378,7 @@ func (client *Client) CreateVbrHa(request *CreateVbrHaRequest) (_result *CreateV
 
 /**
  * *   You cannot create a destination-based route whose destination CIDR block is 0.0.0.0/0.
- * *   When you create a destination-based route for an IPsec-VPN connection, do not create a route that meets the following conditions: The destination CIDR block is 100.64.0.0/10 or one of its subnets. The next hop is the IPsec-VPN connection. Such a route results in one of the following errors: The status of the IPsec-VPN connection cannot be displayed in the console. The negotiations of the IPsec-VPN connection fail.
+ * *   Do not add a route whose destination CIDR block is 100.64.0.0/10, a subset of 100.64.0.0/10, or a CIDR block that contains 100.64.0.0/10. If such a route is added, the status of the IPsec-VPN connection cannot be displayed in the console or IPsec negotiations fail.
  * *   **CreateVcoRouteEntry** is an asynchronous operation. After you send a request, the system returns a request ID and runs the task in the background. You can call the [DescribeVpnConnection](~~53046~~) operation to query the status of a route based on the status of the associated IPsec-VPN connection.
  *     *   If the IPsec-VPN connection is in the **updating** state, the route is being created.
  *     *   If the IPsec-VPN connection is in the **attached** state, the route is created.
@@ -81421,7 +81463,7 @@ func (client *Client) CreateVcoRouteEntryWithOptions(request *CreateVcoRouteEntr
 
 /**
  * *   You cannot create a destination-based route whose destination CIDR block is 0.0.0.0/0.
- * *   When you create a destination-based route for an IPsec-VPN connection, do not create a route that meets the following conditions: The destination CIDR block is 100.64.0.0/10 or one of its subnets. The next hop is the IPsec-VPN connection. Such a route results in one of the following errors: The status of the IPsec-VPN connection cannot be displayed in the console. The negotiations of the IPsec-VPN connection fail.
+ * *   Do not add a route whose destination CIDR block is 100.64.0.0/10, a subset of 100.64.0.0/10, or a CIDR block that contains 100.64.0.0/10. If such a route is added, the status of the IPsec-VPN connection cannot be displayed in the console or IPsec negotiations fail.
  * *   **CreateVcoRouteEntry** is an asynchronous operation. After you send a request, the system returns a request ID and runs the task in the background. You can call the [DescribeVpnConnection](~~53046~~) operation to query the status of a route based on the status of the associated IPsec-VPN connection.
  *     *   If the IPsec-VPN connection is in the **updating** state, the route is being created.
  *     *   If the IPsec-VPN connection is in the **attached** state, the route is created.
