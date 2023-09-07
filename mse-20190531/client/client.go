@@ -380,6 +380,366 @@ func (s *TrafficPolicyTlsSetting) SetTlsMode(v string) *TrafficPolicyTlsSetting 
 	return s
 }
 
+type RulesValue struct {
+	Status      *int32           `json:"Status,omitempty" xml:"Status,omitempty"`
+	Rate        *int32           `json:"Rate,omitempty" xml:"Rate,omitempty"`
+	Enable      *bool            `json:"Enable,omitempty" xml:"Enable,omitempty"`
+	Tag         *string          `json:"Tag,omitempty" xml:"Tag,omitempty"`
+	Name        *string          `json:"Name,omitempty" xml:"Name,omitempty"`
+	Id          *int64           `json:"Id,omitempty" xml:"Id,omitempty"`
+	InstanceNum *int32           `json:"InstanceNum,omitempty" xml:"InstanceNum,omitempty"`
+	Rules       *RulesValueRules `json:"Rules,omitempty" xml:"Rules,omitempty" type:"Struct"`
+}
+
+func (s RulesValue) String() string {
+	return tea.Prettify(s)
+}
+
+func (s RulesValue) GoString() string {
+	return s.String()
+}
+
+func (s *RulesValue) SetStatus(v int32) *RulesValue {
+	s.Status = &v
+	return s
+}
+
+func (s *RulesValue) SetRate(v int32) *RulesValue {
+	s.Rate = &v
+	return s
+}
+
+func (s *RulesValue) SetEnable(v bool) *RulesValue {
+	s.Enable = &v
+	return s
+}
+
+func (s *RulesValue) SetTag(v string) *RulesValue {
+	s.Tag = &v
+	return s
+}
+
+func (s *RulesValue) SetName(v string) *RulesValue {
+	s.Name = &v
+	return s
+}
+
+func (s *RulesValue) SetId(v int64) *RulesValue {
+	s.Id = &v
+	return s
+}
+
+func (s *RulesValue) SetInstanceNum(v int32) *RulesValue {
+	s.InstanceNum = &v
+	return s
+}
+
+func (s *RulesValue) SetRules(v *RulesValueRules) *RulesValue {
+	s.Rules = v
+	return s
+}
+
+type RulesValueRules struct {
+	Springcloud []*RulesValueRulesSpringcloud `json:"springcloud,omitempty" xml:"springcloud,omitempty" type:"Repeated"`
+	Dubbo       []*RulesValueRulesDubbo       `json:"dubbo,omitempty" xml:"dubbo,omitempty" type:"Repeated"`
+}
+
+func (s RulesValueRules) String() string {
+	return tea.Prettify(s)
+}
+
+func (s RulesValueRules) GoString() string {
+	return s.String()
+}
+
+func (s *RulesValueRules) SetSpringcloud(v []*RulesValueRulesSpringcloud) *RulesValueRules {
+	s.Springcloud = v
+	return s
+}
+
+func (s *RulesValueRules) SetDubbo(v []*RulesValueRulesDubbo) *RulesValueRules {
+	s.Dubbo = v
+	return s
+}
+
+type RulesValueRulesSpringcloud struct {
+	Condition     *string                                `json:"condition,omitempty" xml:"condition,omitempty"`
+	RestItems     []*RulesValueRulesSpringcloudRestItems `json:"restItems,omitempty" xml:"restItems,omitempty" type:"Repeated"`
+	TriggerPolicy *string                                `json:"triggerPolicy,omitempty" xml:"triggerPolicy,omitempty"`
+	Enable        *bool                                  `json:"enable,omitempty" xml:"enable,omitempty"`
+	AppId         *string                                `json:"appId,omitempty" xml:"appId,omitempty"`
+	Priority      *int32                                 `json:"priority,omitempty" xml:"priority,omitempty"`
+	Tags          []*string                              `json:"tags,omitempty" xml:"tags,omitempty" type:"Repeated"`
+	Paths         []*string                              `json:"paths,omitempty" xml:"paths,omitempty" type:"Repeated"`
+	Path          *string                                `json:"path,omitempty" xml:"path,omitempty"`
+}
+
+func (s RulesValueRulesSpringcloud) String() string {
+	return tea.Prettify(s)
+}
+
+func (s RulesValueRulesSpringcloud) GoString() string {
+	return s.String()
+}
+
+func (s *RulesValueRulesSpringcloud) SetCondition(v string) *RulesValueRulesSpringcloud {
+	s.Condition = &v
+	return s
+}
+
+func (s *RulesValueRulesSpringcloud) SetRestItems(v []*RulesValueRulesSpringcloudRestItems) *RulesValueRulesSpringcloud {
+	s.RestItems = v
+	return s
+}
+
+func (s *RulesValueRulesSpringcloud) SetTriggerPolicy(v string) *RulesValueRulesSpringcloud {
+	s.TriggerPolicy = &v
+	return s
+}
+
+func (s *RulesValueRulesSpringcloud) SetEnable(v bool) *RulesValueRulesSpringcloud {
+	s.Enable = &v
+	return s
+}
+
+func (s *RulesValueRulesSpringcloud) SetAppId(v string) *RulesValueRulesSpringcloud {
+	s.AppId = &v
+	return s
+}
+
+func (s *RulesValueRulesSpringcloud) SetPriority(v int32) *RulesValueRulesSpringcloud {
+	s.Priority = &v
+	return s
+}
+
+func (s *RulesValueRulesSpringcloud) SetTags(v []*string) *RulesValueRulesSpringcloud {
+	s.Tags = v
+	return s
+}
+
+func (s *RulesValueRulesSpringcloud) SetPaths(v []*string) *RulesValueRulesSpringcloud {
+	s.Paths = v
+	return s
+}
+
+func (s *RulesValueRulesSpringcloud) SetPath(v string) *RulesValueRulesSpringcloud {
+	s.Path = &v
+	return s
+}
+
+type RulesValueRulesSpringcloudRestItems struct {
+	Datum     *string     `json:"datum,omitempty" xml:"datum,omitempty"`
+	Operator  *string     `json:"operator,omitempty" xml:"operator,omitempty"`
+	NameList  []*string   `json:"nameList,omitempty" xml:"nameList,omitempty" type:"Repeated"`
+	Cond      *string     `json:"cond,omitempty" xml:"cond,omitempty"`
+	Divisor   *int32      `json:"divisor,omitempty" xml:"divisor,omitempty"`
+	Remainder *int32      `json:"remainder,omitempty" xml:"remainder,omitempty"`
+	Rate      *int32      `json:"rate,omitempty" xml:"rate,omitempty"`
+	Type      *string     `json:"type,omitempty" xml:"type,omitempty"`
+	Name      *string     `json:"name,omitempty" xml:"name,omitempty"`
+	Value     interface{} `json:"value,omitempty" xml:"value,omitempty"`
+}
+
+func (s RulesValueRulesSpringcloudRestItems) String() string {
+	return tea.Prettify(s)
+}
+
+func (s RulesValueRulesSpringcloudRestItems) GoString() string {
+	return s.String()
+}
+
+func (s *RulesValueRulesSpringcloudRestItems) SetDatum(v string) *RulesValueRulesSpringcloudRestItems {
+	s.Datum = &v
+	return s
+}
+
+func (s *RulesValueRulesSpringcloudRestItems) SetOperator(v string) *RulesValueRulesSpringcloudRestItems {
+	s.Operator = &v
+	return s
+}
+
+func (s *RulesValueRulesSpringcloudRestItems) SetNameList(v []*string) *RulesValueRulesSpringcloudRestItems {
+	s.NameList = v
+	return s
+}
+
+func (s *RulesValueRulesSpringcloudRestItems) SetCond(v string) *RulesValueRulesSpringcloudRestItems {
+	s.Cond = &v
+	return s
+}
+
+func (s *RulesValueRulesSpringcloudRestItems) SetDivisor(v int32) *RulesValueRulesSpringcloudRestItems {
+	s.Divisor = &v
+	return s
+}
+
+func (s *RulesValueRulesSpringcloudRestItems) SetRemainder(v int32) *RulesValueRulesSpringcloudRestItems {
+	s.Remainder = &v
+	return s
+}
+
+func (s *RulesValueRulesSpringcloudRestItems) SetRate(v int32) *RulesValueRulesSpringcloudRestItems {
+	s.Rate = &v
+	return s
+}
+
+func (s *RulesValueRulesSpringcloudRestItems) SetType(v string) *RulesValueRulesSpringcloudRestItems {
+	s.Type = &v
+	return s
+}
+
+func (s *RulesValueRulesSpringcloudRestItems) SetName(v string) *RulesValueRulesSpringcloudRestItems {
+	s.Name = &v
+	return s
+}
+
+func (s *RulesValueRulesSpringcloudRestItems) SetValue(v interface{}) *RulesValueRulesSpringcloudRestItems {
+	s.Value = v
+	return s
+}
+
+type RulesValueRulesDubbo struct {
+	AppId         *string                              `json:"appId,omitempty" xml:"appId,omitempty"`
+	Tags          []*string                            `json:"tags,omitempty" xml:"tags,omitempty" type:"Repeated"`
+	TriggerPolicy *string                              `json:"triggerPolicy,omitempty" xml:"triggerPolicy,omitempty"`
+	ServiceName   *string                              `json:"serviceName,omitempty" xml:"serviceName,omitempty"`
+	Group         *string                              `json:"group,omitempty" xml:"group,omitempty"`
+	Version       *string                              `json:"version,omitempty" xml:"version,omitempty"`
+	MethodName    *string                              `json:"methodName,omitempty" xml:"methodName,omitempty"`
+	ParamTypes    []*string                            `json:"paramTypes,omitempty" xml:"paramTypes,omitempty" type:"Repeated"`
+	Condition     *string                              `json:"condition,omitempty" xml:"condition,omitempty"`
+	ArgumentItems []*RulesValueRulesDubboArgumentItems `json:"argumentItems,omitempty" xml:"argumentItems,omitempty" type:"Repeated"`
+}
+
+func (s RulesValueRulesDubbo) String() string {
+	return tea.Prettify(s)
+}
+
+func (s RulesValueRulesDubbo) GoString() string {
+	return s.String()
+}
+
+func (s *RulesValueRulesDubbo) SetAppId(v string) *RulesValueRulesDubbo {
+	s.AppId = &v
+	return s
+}
+
+func (s *RulesValueRulesDubbo) SetTags(v []*string) *RulesValueRulesDubbo {
+	s.Tags = v
+	return s
+}
+
+func (s *RulesValueRulesDubbo) SetTriggerPolicy(v string) *RulesValueRulesDubbo {
+	s.TriggerPolicy = &v
+	return s
+}
+
+func (s *RulesValueRulesDubbo) SetServiceName(v string) *RulesValueRulesDubbo {
+	s.ServiceName = &v
+	return s
+}
+
+func (s *RulesValueRulesDubbo) SetGroup(v string) *RulesValueRulesDubbo {
+	s.Group = &v
+	return s
+}
+
+func (s *RulesValueRulesDubbo) SetVersion(v string) *RulesValueRulesDubbo {
+	s.Version = &v
+	return s
+}
+
+func (s *RulesValueRulesDubbo) SetMethodName(v string) *RulesValueRulesDubbo {
+	s.MethodName = &v
+	return s
+}
+
+func (s *RulesValueRulesDubbo) SetParamTypes(v []*string) *RulesValueRulesDubbo {
+	s.ParamTypes = v
+	return s
+}
+
+func (s *RulesValueRulesDubbo) SetCondition(v string) *RulesValueRulesDubbo {
+	s.Condition = &v
+	return s
+}
+
+func (s *RulesValueRulesDubbo) SetArgumentItems(v []*RulesValueRulesDubboArgumentItems) *RulesValueRulesDubbo {
+	s.ArgumentItems = v
+	return s
+}
+
+type RulesValueRulesDubboArgumentItems struct {
+	Operator  *string     `json:"operator,omitempty" xml:"operator,omitempty"`
+	NameList  []*string   `json:"nameList,omitempty" xml:"nameList,omitempty" type:"Repeated"`
+	Datum     *string     `json:"datum,omitempty" xml:"datum,omitempty"`
+	Cond      *string     `json:"cond,omitempty" xml:"cond,omitempty"`
+	Divisor   *int32      `json:"divisor,omitempty" xml:"divisor,omitempty"`
+	Remainder *int32      `json:"remainder,omitempty" xml:"remainder,omitempty"`
+	Rate      *int32      `json:"rate,omitempty" xml:"rate,omitempty"`
+	Index     *int32      `json:"index,omitempty" xml:"index,omitempty"`
+	Expr      *string     `json:"expr,omitempty" xml:"expr,omitempty"`
+	Value     interface{} `json:"value,omitempty" xml:"value,omitempty"`
+}
+
+func (s RulesValueRulesDubboArgumentItems) String() string {
+	return tea.Prettify(s)
+}
+
+func (s RulesValueRulesDubboArgumentItems) GoString() string {
+	return s.String()
+}
+
+func (s *RulesValueRulesDubboArgumentItems) SetOperator(v string) *RulesValueRulesDubboArgumentItems {
+	s.Operator = &v
+	return s
+}
+
+func (s *RulesValueRulesDubboArgumentItems) SetNameList(v []*string) *RulesValueRulesDubboArgumentItems {
+	s.NameList = v
+	return s
+}
+
+func (s *RulesValueRulesDubboArgumentItems) SetDatum(v string) *RulesValueRulesDubboArgumentItems {
+	s.Datum = &v
+	return s
+}
+
+func (s *RulesValueRulesDubboArgumentItems) SetCond(v string) *RulesValueRulesDubboArgumentItems {
+	s.Cond = &v
+	return s
+}
+
+func (s *RulesValueRulesDubboArgumentItems) SetDivisor(v int32) *RulesValueRulesDubboArgumentItems {
+	s.Divisor = &v
+	return s
+}
+
+func (s *RulesValueRulesDubboArgumentItems) SetRemainder(v int32) *RulesValueRulesDubboArgumentItems {
+	s.Remainder = &v
+	return s
+}
+
+func (s *RulesValueRulesDubboArgumentItems) SetRate(v int32) *RulesValueRulesDubboArgumentItems {
+	s.Rate = &v
+	return s
+}
+
+func (s *RulesValueRulesDubboArgumentItems) SetIndex(v int32) *RulesValueRulesDubboArgumentItems {
+	s.Index = &v
+	return s
+}
+
+func (s *RulesValueRulesDubboArgumentItems) SetExpr(v string) *RulesValueRulesDubboArgumentItems {
+	s.Expr = &v
+	return s
+}
+
+func (s *RulesValueRulesDubboArgumentItems) SetValue(v interface{}) *RulesValueRulesDubboArgumentItems {
+	s.Value = v
+	return s
+}
+
 type DataValue struct {
 	UserId    *string `json:"UserId,omitempty" xml:"UserId,omitempty"`
 	RegionId  *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
@@ -4524,7 +4884,7 @@ type ApplyTagPoliciesRequest struct {
 	// The region ID.
 	Region *string `json:"Region,omitempty" xml:"Region,omitempty"`
 	// The details of the routing rule.
-	Rules *string `json:"Rules,omitempty" xml:"Rules,omitempty"`
+	Rules map[string]*RulesValue `json:"Rules,omitempty" xml:"Rules,omitempty"`
 }
 
 func (s ApplyTagPoliciesRequest) String() string {
@@ -4570,8 +4930,77 @@ func (s *ApplyTagPoliciesRequest) SetRegion(v string) *ApplyTagPoliciesRequest {
 	return s
 }
 
-func (s *ApplyTagPoliciesRequest) SetRules(v string) *ApplyTagPoliciesRequest {
-	s.Rules = &v
+func (s *ApplyTagPoliciesRequest) SetRules(v map[string]*RulesValue) *ApplyTagPoliciesRequest {
+	s.Rules = v
+	return s
+}
+
+type ApplyTagPoliciesShrinkRequest struct {
+	// The language of the response. Valid values:
+	//
+	// *   zh: Chinese
+	// *   en: English
+	AcceptLanguage *string `json:"AcceptLanguage,omitempty" xml:"AcceptLanguage,omitempty"`
+	// Deprecated
+	// The ID of the application.
+	AppId   *string `json:"AppId,omitempty" xml:"AppId,omitempty"`
+	AppName *string `json:"AppName,omitempty" xml:"AppName,omitempty"`
+	// Specifies whether to enable the routing rule.
+	Enable    *bool   `json:"Enable,omitempty" xml:"Enable,omitempty"`
+	Namespace *string `json:"Namespace,omitempty" xml:"Namespace,omitempty"`
+	// Optional. The ID of the namespace.
+	NamespaceId *string `json:"NamespaceId,omitempty" xml:"NamespaceId,omitempty"`
+	// The region ID.
+	Region *string `json:"Region,omitempty" xml:"Region,omitempty"`
+	// The details of the routing rule.
+	RulesShrink *string `json:"Rules,omitempty" xml:"Rules,omitempty"`
+}
+
+func (s ApplyTagPoliciesShrinkRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ApplyTagPoliciesShrinkRequest) GoString() string {
+	return s.String()
+}
+
+func (s *ApplyTagPoliciesShrinkRequest) SetAcceptLanguage(v string) *ApplyTagPoliciesShrinkRequest {
+	s.AcceptLanguage = &v
+	return s
+}
+
+func (s *ApplyTagPoliciesShrinkRequest) SetAppId(v string) *ApplyTagPoliciesShrinkRequest {
+	s.AppId = &v
+	return s
+}
+
+func (s *ApplyTagPoliciesShrinkRequest) SetAppName(v string) *ApplyTagPoliciesShrinkRequest {
+	s.AppName = &v
+	return s
+}
+
+func (s *ApplyTagPoliciesShrinkRequest) SetEnable(v bool) *ApplyTagPoliciesShrinkRequest {
+	s.Enable = &v
+	return s
+}
+
+func (s *ApplyTagPoliciesShrinkRequest) SetNamespace(v string) *ApplyTagPoliciesShrinkRequest {
+	s.Namespace = &v
+	return s
+}
+
+func (s *ApplyTagPoliciesShrinkRequest) SetNamespaceId(v string) *ApplyTagPoliciesShrinkRequest {
+	s.NamespaceId = &v
+	return s
+}
+
+func (s *ApplyTagPoliciesShrinkRequest) SetRegion(v string) *ApplyTagPoliciesShrinkRequest {
+	s.Region = &v
+	return s
+}
+
+func (s *ApplyTagPoliciesShrinkRequest) SetRulesShrink(v string) *ApplyTagPoliciesShrinkRequest {
+	s.RulesShrink = &v
 	return s
 }
 
@@ -12865,8 +13294,7 @@ func (s *GetApplicationListRequest) SetSwitchEnable(v bool) *GetApplicationListR
 
 type GetApplicationListResponseBody struct {
 	// The data structure.
-	Data      *GetApplicationListResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
-	ErrorCode *string                             `json:"ErrorCode,omitempty" xml:"ErrorCode,omitempty"`
+	Data *GetApplicationListResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
 	// The message returned.
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
 	// The ID of the request.
@@ -12888,11 +13316,6 @@ func (s GetApplicationListResponseBody) GoString() string {
 
 func (s *GetApplicationListResponseBody) SetData(v *GetApplicationListResponseBodyData) *GetApplicationListResponseBody {
 	s.Data = v
-	return s
-}
-
-func (s *GetApplicationListResponseBody) SetErrorCode(v string) *GetApplicationListResponseBody {
-	s.ErrorCode = &v
 	return s
 }
 
@@ -12967,8 +13390,7 @@ type GetApplicationListResponseBodyDataResult struct {
 	// The source of the application.
 	Source *string `json:"Source,omitempty" xml:"Source,omitempty"`
 	// The status.
-	Status   *int64 `json:"Status,omitempty" xml:"Status,omitempty"`
-	TagCount *int64 `json:"TagCount,omitempty" xml:"TagCount,omitempty"`
+	Status *int64 `json:"Status,omitempty" xml:"Status,omitempty"`
 	// The ID of the user.
 	UserId *string `json:"UserId,omitempty" xml:"UserId,omitempty"`
 }
@@ -13023,11 +13445,6 @@ func (s *GetApplicationListResponseBodyDataResult) SetSource(v string) *GetAppli
 
 func (s *GetApplicationListResponseBodyDataResult) SetStatus(v int64) *GetApplicationListResponseBodyDataResult {
 	s.Status = &v
-	return s
-}
-
-func (s *GetApplicationListResponseBodyDataResult) SetTagCount(v int64) *GetApplicationListResponseBodyDataResult {
-	s.TagCount = &v
 	return s
 }
 
@@ -16695,8 +17112,7 @@ func (s *GetGovernanceKubernetesClusterResponseBodyData) SetUpdateTime(v string)
 }
 
 type GetGovernanceKubernetesClusterResponseBodyDataNamespaces struct {
-	Labels       map[string]*string `json:"Labels,omitempty" xml:"Labels,omitempty"`
-	MseNamespace *string            `json:"MseNamespace,omitempty" xml:"MseNamespace,omitempty"`
+	MseNamespace *string `json:"MseNamespace,omitempty" xml:"MseNamespace,omitempty"`
 	// The name.
 	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
 }
@@ -16707,11 +17123,6 @@ func (s GetGovernanceKubernetesClusterResponseBodyDataNamespaces) String() strin
 
 func (s GetGovernanceKubernetesClusterResponseBodyDataNamespaces) GoString() string {
 	return s.String()
-}
-
-func (s *GetGovernanceKubernetesClusterResponseBodyDataNamespaces) SetLabels(v map[string]*string) *GetGovernanceKubernetesClusterResponseBodyDataNamespaces {
-	s.Labels = v
-	return s
 }
 
 func (s *GetGovernanceKubernetesClusterResponseBodyDataNamespaces) SetMseNamespace(v string) *GetGovernanceKubernetesClusterResponseBodyDataNamespaces {
@@ -22389,15 +22800,11 @@ func (s *ListApplicationsWithTagRulesResponseBodyDataResult) SetRouteStatus(v in
 }
 
 type ListApplicationsWithTagRulesResponseBodyDataResultRouteRules struct {
-	// Indicates whether the field is a primary key.
-	CarryData *bool `json:"CarryData,omitempty" xml:"CarryData,omitempty"`
 	// Indicates whether the alert rule is enabled. Valid value:
 	//
 	// *   `true`: enabled.
 	// *   `false`: disabled.
 	Enable *bool `json:"Enable,omitempty" xml:"Enable,omitempty"`
-	// The modification time.
-	GmtModified *string `json:"GmtModified,omitempty" xml:"GmtModified,omitempty"`
 	// The ID of the rule.
 	Id *int64 `json:"Id,omitempty" xml:"Id,omitempty"`
 	// The number of instances.
@@ -22406,10 +22813,8 @@ type ListApplicationsWithTagRulesResponseBodyDataResultRouteRules struct {
 	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
 	// The rate.
 	Rate *int32 `json:"Rate,omitempty" xml:"Rate,omitempty"`
-	// Indicates whether the routing rule is deleted.
-	Remove *bool `json:"Remove,omitempty" xml:"Remove,omitempty"`
 	// The details of the routing rule.
-	Rules *string `json:"Rules,omitempty" xml:"Rules,omitempty"`
+	Rules *ListApplicationsWithTagRulesResponseBodyDataResultRouteRulesRules `json:"Rules,omitempty" xml:"Rules,omitempty" type:"Struct"`
 	// The status.
 	Status *int32 `json:"Status,omitempty" xml:"Status,omitempty"`
 	// The tag.
@@ -22424,18 +22829,8 @@ func (s ListApplicationsWithTagRulesResponseBodyDataResultRouteRules) GoString()
 	return s.String()
 }
 
-func (s *ListApplicationsWithTagRulesResponseBodyDataResultRouteRules) SetCarryData(v bool) *ListApplicationsWithTagRulesResponseBodyDataResultRouteRules {
-	s.CarryData = &v
-	return s
-}
-
 func (s *ListApplicationsWithTagRulesResponseBodyDataResultRouteRules) SetEnable(v bool) *ListApplicationsWithTagRulesResponseBodyDataResultRouteRules {
 	s.Enable = &v
-	return s
-}
-
-func (s *ListApplicationsWithTagRulesResponseBodyDataResultRouteRules) SetGmtModified(v string) *ListApplicationsWithTagRulesResponseBodyDataResultRouteRules {
-	s.GmtModified = &v
 	return s
 }
 
@@ -22459,13 +22854,8 @@ func (s *ListApplicationsWithTagRulesResponseBodyDataResultRouteRules) SetRate(v
 	return s
 }
 
-func (s *ListApplicationsWithTagRulesResponseBodyDataResultRouteRules) SetRemove(v bool) *ListApplicationsWithTagRulesResponseBodyDataResultRouteRules {
-	s.Remove = &v
-	return s
-}
-
-func (s *ListApplicationsWithTagRulesResponseBodyDataResultRouteRules) SetRules(v string) *ListApplicationsWithTagRulesResponseBodyDataResultRouteRules {
-	s.Rules = &v
+func (s *ListApplicationsWithTagRulesResponseBodyDataResultRouteRules) SetRules(v *ListApplicationsWithTagRulesResponseBodyDataResultRouteRulesRules) *ListApplicationsWithTagRulesResponseBodyDataResultRouteRules {
+	s.Rules = v
 	return s
 }
 
@@ -22476,6 +22866,307 @@ func (s *ListApplicationsWithTagRulesResponseBodyDataResultRouteRules) SetStatus
 
 func (s *ListApplicationsWithTagRulesResponseBodyDataResultRouteRules) SetTag(v string) *ListApplicationsWithTagRulesResponseBodyDataResultRouteRules {
 	s.Tag = &v
+	return s
+}
+
+type ListApplicationsWithTagRulesResponseBodyDataResultRouteRulesRules struct {
+	Dubbo       []*ListApplicationsWithTagRulesResponseBodyDataResultRouteRulesRulesDubbo       `json:"dubbo,omitempty" xml:"dubbo,omitempty" type:"Repeated"`
+	Springcloud []*ListApplicationsWithTagRulesResponseBodyDataResultRouteRulesRulesSpringcloud `json:"springcloud,omitempty" xml:"springcloud,omitempty" type:"Repeated"`
+}
+
+func (s ListApplicationsWithTagRulesResponseBodyDataResultRouteRulesRules) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListApplicationsWithTagRulesResponseBodyDataResultRouteRulesRules) GoString() string {
+	return s.String()
+}
+
+func (s *ListApplicationsWithTagRulesResponseBodyDataResultRouteRulesRules) SetDubbo(v []*ListApplicationsWithTagRulesResponseBodyDataResultRouteRulesRulesDubbo) *ListApplicationsWithTagRulesResponseBodyDataResultRouteRulesRules {
+	s.Dubbo = v
+	return s
+}
+
+func (s *ListApplicationsWithTagRulesResponseBodyDataResultRouteRulesRules) SetSpringcloud(v []*ListApplicationsWithTagRulesResponseBodyDataResultRouteRulesRulesSpringcloud) *ListApplicationsWithTagRulesResponseBodyDataResultRouteRulesRules {
+	s.Springcloud = v
+	return s
+}
+
+type ListApplicationsWithTagRulesResponseBodyDataResultRouteRulesRulesDubbo struct {
+	AppId         *string                                                                                `json:"appId,omitempty" xml:"appId,omitempty"`
+	ArgumentItems []*ListApplicationsWithTagRulesResponseBodyDataResultRouteRulesRulesDubboArgumentItems `json:"argumentItems,omitempty" xml:"argumentItems,omitempty" type:"Repeated"`
+	Condition     *string                                                                                `json:"condition,omitempty" xml:"condition,omitempty"`
+	Group         *string                                                                                `json:"group,omitempty" xml:"group,omitempty"`
+	MethodName    *string                                                                                `json:"methodName,omitempty" xml:"methodName,omitempty"`
+	ParamTypes    []*string                                                                              `json:"paramTypes,omitempty" xml:"paramTypes,omitempty" type:"Repeated"`
+	ServiceName   *string                                                                                `json:"serviceName,omitempty" xml:"serviceName,omitempty"`
+	Tags          []*string                                                                              `json:"tags,omitempty" xml:"tags,omitempty" type:"Repeated"`
+	TriggerPolicy *string                                                                                `json:"triggerPolicy,omitempty" xml:"triggerPolicy,omitempty"`
+	Version       *string                                                                                `json:"version,omitempty" xml:"version,omitempty"`
+}
+
+func (s ListApplicationsWithTagRulesResponseBodyDataResultRouteRulesRulesDubbo) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListApplicationsWithTagRulesResponseBodyDataResultRouteRulesRulesDubbo) GoString() string {
+	return s.String()
+}
+
+func (s *ListApplicationsWithTagRulesResponseBodyDataResultRouteRulesRulesDubbo) SetAppId(v string) *ListApplicationsWithTagRulesResponseBodyDataResultRouteRulesRulesDubbo {
+	s.AppId = &v
+	return s
+}
+
+func (s *ListApplicationsWithTagRulesResponseBodyDataResultRouteRulesRulesDubbo) SetArgumentItems(v []*ListApplicationsWithTagRulesResponseBodyDataResultRouteRulesRulesDubboArgumentItems) *ListApplicationsWithTagRulesResponseBodyDataResultRouteRulesRulesDubbo {
+	s.ArgumentItems = v
+	return s
+}
+
+func (s *ListApplicationsWithTagRulesResponseBodyDataResultRouteRulesRulesDubbo) SetCondition(v string) *ListApplicationsWithTagRulesResponseBodyDataResultRouteRulesRulesDubbo {
+	s.Condition = &v
+	return s
+}
+
+func (s *ListApplicationsWithTagRulesResponseBodyDataResultRouteRulesRulesDubbo) SetGroup(v string) *ListApplicationsWithTagRulesResponseBodyDataResultRouteRulesRulesDubbo {
+	s.Group = &v
+	return s
+}
+
+func (s *ListApplicationsWithTagRulesResponseBodyDataResultRouteRulesRulesDubbo) SetMethodName(v string) *ListApplicationsWithTagRulesResponseBodyDataResultRouteRulesRulesDubbo {
+	s.MethodName = &v
+	return s
+}
+
+func (s *ListApplicationsWithTagRulesResponseBodyDataResultRouteRulesRulesDubbo) SetParamTypes(v []*string) *ListApplicationsWithTagRulesResponseBodyDataResultRouteRulesRulesDubbo {
+	s.ParamTypes = v
+	return s
+}
+
+func (s *ListApplicationsWithTagRulesResponseBodyDataResultRouteRulesRulesDubbo) SetServiceName(v string) *ListApplicationsWithTagRulesResponseBodyDataResultRouteRulesRulesDubbo {
+	s.ServiceName = &v
+	return s
+}
+
+func (s *ListApplicationsWithTagRulesResponseBodyDataResultRouteRulesRulesDubbo) SetTags(v []*string) *ListApplicationsWithTagRulesResponseBodyDataResultRouteRulesRulesDubbo {
+	s.Tags = v
+	return s
+}
+
+func (s *ListApplicationsWithTagRulesResponseBodyDataResultRouteRulesRulesDubbo) SetTriggerPolicy(v string) *ListApplicationsWithTagRulesResponseBodyDataResultRouteRulesRulesDubbo {
+	s.TriggerPolicy = &v
+	return s
+}
+
+func (s *ListApplicationsWithTagRulesResponseBodyDataResultRouteRulesRulesDubbo) SetVersion(v string) *ListApplicationsWithTagRulesResponseBodyDataResultRouteRulesRulesDubbo {
+	s.Version = &v
+	return s
+}
+
+type ListApplicationsWithTagRulesResponseBodyDataResultRouteRulesRulesDubboArgumentItems struct {
+	Cond      *string   `json:"cond,omitempty" xml:"cond,omitempty"`
+	Datum     *string   `json:"datum,omitempty" xml:"datum,omitempty"`
+	Divisor   *int32    `json:"divisor,omitempty" xml:"divisor,omitempty"`
+	Expr      *string   `json:"expr,omitempty" xml:"expr,omitempty"`
+	Index     *int32    `json:"index,omitempty" xml:"index,omitempty"`
+	NameList  []*string `json:"nameList,omitempty" xml:"nameList,omitempty" type:"Repeated"`
+	Operator  *string   `json:"operator,omitempty" xml:"operator,omitempty"`
+	Rate      *int32    `json:"rate,omitempty" xml:"rate,omitempty"`
+	Remainder *int32    `json:"remainder,omitempty" xml:"remainder,omitempty"`
+	Value     *string   `json:"value,omitempty" xml:"value,omitempty"`
+}
+
+func (s ListApplicationsWithTagRulesResponseBodyDataResultRouteRulesRulesDubboArgumentItems) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListApplicationsWithTagRulesResponseBodyDataResultRouteRulesRulesDubboArgumentItems) GoString() string {
+	return s.String()
+}
+
+func (s *ListApplicationsWithTagRulesResponseBodyDataResultRouteRulesRulesDubboArgumentItems) SetCond(v string) *ListApplicationsWithTagRulesResponseBodyDataResultRouteRulesRulesDubboArgumentItems {
+	s.Cond = &v
+	return s
+}
+
+func (s *ListApplicationsWithTagRulesResponseBodyDataResultRouteRulesRulesDubboArgumentItems) SetDatum(v string) *ListApplicationsWithTagRulesResponseBodyDataResultRouteRulesRulesDubboArgumentItems {
+	s.Datum = &v
+	return s
+}
+
+func (s *ListApplicationsWithTagRulesResponseBodyDataResultRouteRulesRulesDubboArgumentItems) SetDivisor(v int32) *ListApplicationsWithTagRulesResponseBodyDataResultRouteRulesRulesDubboArgumentItems {
+	s.Divisor = &v
+	return s
+}
+
+func (s *ListApplicationsWithTagRulesResponseBodyDataResultRouteRulesRulesDubboArgumentItems) SetExpr(v string) *ListApplicationsWithTagRulesResponseBodyDataResultRouteRulesRulesDubboArgumentItems {
+	s.Expr = &v
+	return s
+}
+
+func (s *ListApplicationsWithTagRulesResponseBodyDataResultRouteRulesRulesDubboArgumentItems) SetIndex(v int32) *ListApplicationsWithTagRulesResponseBodyDataResultRouteRulesRulesDubboArgumentItems {
+	s.Index = &v
+	return s
+}
+
+func (s *ListApplicationsWithTagRulesResponseBodyDataResultRouteRulesRulesDubboArgumentItems) SetNameList(v []*string) *ListApplicationsWithTagRulesResponseBodyDataResultRouteRulesRulesDubboArgumentItems {
+	s.NameList = v
+	return s
+}
+
+func (s *ListApplicationsWithTagRulesResponseBodyDataResultRouteRulesRulesDubboArgumentItems) SetOperator(v string) *ListApplicationsWithTagRulesResponseBodyDataResultRouteRulesRulesDubboArgumentItems {
+	s.Operator = &v
+	return s
+}
+
+func (s *ListApplicationsWithTagRulesResponseBodyDataResultRouteRulesRulesDubboArgumentItems) SetRate(v int32) *ListApplicationsWithTagRulesResponseBodyDataResultRouteRulesRulesDubboArgumentItems {
+	s.Rate = &v
+	return s
+}
+
+func (s *ListApplicationsWithTagRulesResponseBodyDataResultRouteRulesRulesDubboArgumentItems) SetRemainder(v int32) *ListApplicationsWithTagRulesResponseBodyDataResultRouteRulesRulesDubboArgumentItems {
+	s.Remainder = &v
+	return s
+}
+
+func (s *ListApplicationsWithTagRulesResponseBodyDataResultRouteRulesRulesDubboArgumentItems) SetValue(v string) *ListApplicationsWithTagRulesResponseBodyDataResultRouteRulesRulesDubboArgumentItems {
+	s.Value = &v
+	return s
+}
+
+type ListApplicationsWithTagRulesResponseBodyDataResultRouteRulesRulesSpringcloud struct {
+	AppId         *string                                                                                  `json:"appId,omitempty" xml:"appId,omitempty"`
+	Condition     *string                                                                                  `json:"condition,omitempty" xml:"condition,omitempty"`
+	Enable        *bool                                                                                    `json:"enable,omitempty" xml:"enable,omitempty"`
+	Path          *string                                                                                  `json:"path,omitempty" xml:"path,omitempty"`
+	Paths         []*string                                                                                `json:"paths,omitempty" xml:"paths,omitempty" type:"Repeated"`
+	Priority      *int32                                                                                   `json:"priority,omitempty" xml:"priority,omitempty"`
+	RestItems     []*ListApplicationsWithTagRulesResponseBodyDataResultRouteRulesRulesSpringcloudRestItems `json:"restItems,omitempty" xml:"restItems,omitempty" type:"Repeated"`
+	Tags          []*string                                                                                `json:"tags,omitempty" xml:"tags,omitempty" type:"Repeated"`
+	TriggerPolicy *string                                                                                  `json:"triggerPolicy,omitempty" xml:"triggerPolicy,omitempty"`
+}
+
+func (s ListApplicationsWithTagRulesResponseBodyDataResultRouteRulesRulesSpringcloud) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListApplicationsWithTagRulesResponseBodyDataResultRouteRulesRulesSpringcloud) GoString() string {
+	return s.String()
+}
+
+func (s *ListApplicationsWithTagRulesResponseBodyDataResultRouteRulesRulesSpringcloud) SetAppId(v string) *ListApplicationsWithTagRulesResponseBodyDataResultRouteRulesRulesSpringcloud {
+	s.AppId = &v
+	return s
+}
+
+func (s *ListApplicationsWithTagRulesResponseBodyDataResultRouteRulesRulesSpringcloud) SetCondition(v string) *ListApplicationsWithTagRulesResponseBodyDataResultRouteRulesRulesSpringcloud {
+	s.Condition = &v
+	return s
+}
+
+func (s *ListApplicationsWithTagRulesResponseBodyDataResultRouteRulesRulesSpringcloud) SetEnable(v bool) *ListApplicationsWithTagRulesResponseBodyDataResultRouteRulesRulesSpringcloud {
+	s.Enable = &v
+	return s
+}
+
+func (s *ListApplicationsWithTagRulesResponseBodyDataResultRouteRulesRulesSpringcloud) SetPath(v string) *ListApplicationsWithTagRulesResponseBodyDataResultRouteRulesRulesSpringcloud {
+	s.Path = &v
+	return s
+}
+
+func (s *ListApplicationsWithTagRulesResponseBodyDataResultRouteRulesRulesSpringcloud) SetPaths(v []*string) *ListApplicationsWithTagRulesResponseBodyDataResultRouteRulesRulesSpringcloud {
+	s.Paths = v
+	return s
+}
+
+func (s *ListApplicationsWithTagRulesResponseBodyDataResultRouteRulesRulesSpringcloud) SetPriority(v int32) *ListApplicationsWithTagRulesResponseBodyDataResultRouteRulesRulesSpringcloud {
+	s.Priority = &v
+	return s
+}
+
+func (s *ListApplicationsWithTagRulesResponseBodyDataResultRouteRulesRulesSpringcloud) SetRestItems(v []*ListApplicationsWithTagRulesResponseBodyDataResultRouteRulesRulesSpringcloudRestItems) *ListApplicationsWithTagRulesResponseBodyDataResultRouteRulesRulesSpringcloud {
+	s.RestItems = v
+	return s
+}
+
+func (s *ListApplicationsWithTagRulesResponseBodyDataResultRouteRulesRulesSpringcloud) SetTags(v []*string) *ListApplicationsWithTagRulesResponseBodyDataResultRouteRulesRulesSpringcloud {
+	s.Tags = v
+	return s
+}
+
+func (s *ListApplicationsWithTagRulesResponseBodyDataResultRouteRulesRulesSpringcloud) SetTriggerPolicy(v string) *ListApplicationsWithTagRulesResponseBodyDataResultRouteRulesRulesSpringcloud {
+	s.TriggerPolicy = &v
+	return s
+}
+
+type ListApplicationsWithTagRulesResponseBodyDataResultRouteRulesRulesSpringcloudRestItems struct {
+	Cond      *string   `json:"cond,omitempty" xml:"cond,omitempty"`
+	Datum     *string   `json:"datum,omitempty" xml:"datum,omitempty"`
+	Divisor   *int32    `json:"divisor,omitempty" xml:"divisor,omitempty"`
+	Name      *string   `json:"name,omitempty" xml:"name,omitempty"`
+	NameList  []*string `json:"nameList,omitempty" xml:"nameList,omitempty" type:"Repeated"`
+	Operator  *string   `json:"operator,omitempty" xml:"operator,omitempty"`
+	Rate      *int32    `json:"rate,omitempty" xml:"rate,omitempty"`
+	Remainder *int32    `json:"remainder,omitempty" xml:"remainder,omitempty"`
+	Type      *string   `json:"type,omitempty" xml:"type,omitempty"`
+	Value     *string   `json:"value,omitempty" xml:"value,omitempty"`
+}
+
+func (s ListApplicationsWithTagRulesResponseBodyDataResultRouteRulesRulesSpringcloudRestItems) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListApplicationsWithTagRulesResponseBodyDataResultRouteRulesRulesSpringcloudRestItems) GoString() string {
+	return s.String()
+}
+
+func (s *ListApplicationsWithTagRulesResponseBodyDataResultRouteRulesRulesSpringcloudRestItems) SetCond(v string) *ListApplicationsWithTagRulesResponseBodyDataResultRouteRulesRulesSpringcloudRestItems {
+	s.Cond = &v
+	return s
+}
+
+func (s *ListApplicationsWithTagRulesResponseBodyDataResultRouteRulesRulesSpringcloudRestItems) SetDatum(v string) *ListApplicationsWithTagRulesResponseBodyDataResultRouteRulesRulesSpringcloudRestItems {
+	s.Datum = &v
+	return s
+}
+
+func (s *ListApplicationsWithTagRulesResponseBodyDataResultRouteRulesRulesSpringcloudRestItems) SetDivisor(v int32) *ListApplicationsWithTagRulesResponseBodyDataResultRouteRulesRulesSpringcloudRestItems {
+	s.Divisor = &v
+	return s
+}
+
+func (s *ListApplicationsWithTagRulesResponseBodyDataResultRouteRulesRulesSpringcloudRestItems) SetName(v string) *ListApplicationsWithTagRulesResponseBodyDataResultRouteRulesRulesSpringcloudRestItems {
+	s.Name = &v
+	return s
+}
+
+func (s *ListApplicationsWithTagRulesResponseBodyDataResultRouteRulesRulesSpringcloudRestItems) SetNameList(v []*string) *ListApplicationsWithTagRulesResponseBodyDataResultRouteRulesRulesSpringcloudRestItems {
+	s.NameList = v
+	return s
+}
+
+func (s *ListApplicationsWithTagRulesResponseBodyDataResultRouteRulesRulesSpringcloudRestItems) SetOperator(v string) *ListApplicationsWithTagRulesResponseBodyDataResultRouteRulesRulesSpringcloudRestItems {
+	s.Operator = &v
+	return s
+}
+
+func (s *ListApplicationsWithTagRulesResponseBodyDataResultRouteRulesRulesSpringcloudRestItems) SetRate(v int32) *ListApplicationsWithTagRulesResponseBodyDataResultRouteRulesRulesSpringcloudRestItems {
+	s.Rate = &v
+	return s
+}
+
+func (s *ListApplicationsWithTagRulesResponseBodyDataResultRouteRulesRulesSpringcloudRestItems) SetRemainder(v int32) *ListApplicationsWithTagRulesResponseBodyDataResultRouteRulesRulesSpringcloudRestItems {
+	s.Remainder = &v
+	return s
+}
+
+func (s *ListApplicationsWithTagRulesResponseBodyDataResultRouteRulesRulesSpringcloudRestItems) SetType(v string) *ListApplicationsWithTagRulesResponseBodyDataResultRouteRulesRulesSpringcloudRestItems {
+	s.Type = &v
+	return s
+}
+
+func (s *ListApplicationsWithTagRulesResponseBodyDataResultRouteRulesRulesSpringcloudRestItems) SetValue(v string) *ListApplicationsWithTagRulesResponseBodyDataResultRouteRulesRulesSpringcloudRestItems {
+	s.Value = &v
 	return s
 }
 
@@ -48461,11 +49152,17 @@ func (client *Client) ApplyGatewayRoute(request *ApplyGatewayRouteRequest) (_res
 	return _result, _err
 }
 
-func (client *Client) ApplyTagPoliciesWithOptions(request *ApplyTagPoliciesRequest, runtime *util.RuntimeOptions) (_result *ApplyTagPoliciesResponse, _err error) {
-	_err = util.ValidateModel(request)
+func (client *Client) ApplyTagPoliciesWithOptions(tmpReq *ApplyTagPoliciesRequest, runtime *util.RuntimeOptions) (_result *ApplyTagPoliciesResponse, _err error) {
+	_err = util.ValidateModel(tmpReq)
 	if _err != nil {
 		return _result, _err
 	}
+	request := &ApplyTagPoliciesShrinkRequest{}
+	openapiutil.Convert(tmpReq, request)
+	if !tea.BoolValue(util.IsUnset(tmpReq.Rules)) {
+		request.RulesShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.Rules, tea.String("Rules"), tea.String("json"))
+	}
+
 	query := map[string]interface{}{}
 	if !tea.BoolValue(util.IsUnset(request.AcceptLanguage)) {
 		query["AcceptLanguage"] = request.AcceptLanguage
@@ -48495,8 +49192,8 @@ func (client *Client) ApplyTagPoliciesWithOptions(request *ApplyTagPoliciesReque
 		query["Region"] = request.Region
 	}
 
-	if !tea.BoolValue(util.IsUnset(request.Rules)) {
-		query["Rules"] = request.Rules
+	if !tea.BoolValue(util.IsUnset(request.RulesShrink)) {
+		query["Rules"] = request.RulesShrink
 	}
 
 	req := &openapi.OpenApiRequest{
