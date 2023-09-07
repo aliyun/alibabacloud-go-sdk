@@ -1,3 +1,6 @@
+2023-09-07 Version: v2.0.3
+- Generated golang 2020-03-20 for cddc.
+
 2023-08-12 Version: v2.0.2
 - Generated golang 2020-03-20 for cddc.
 
