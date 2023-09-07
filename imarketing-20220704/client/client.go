@@ -913,6 +913,162 @@ func (s *DeleteCreativeInfoResponse) SetBody(v *DeleteCreativeInfoResponseBody) 
 	return s
 }
 
+type GetAdvertisingForE2ResponseBody struct {
+	// errorCode
+	ErrorCode *string `json:"ErrorCode,omitempty" xml:"ErrorCode,omitempty"`
+	// errorMsg
+	ErrorMsg *string `json:"ErrorMsg,omitempty" xml:"ErrorMsg,omitempty"`
+	// header
+	Header    *GetAdvertisingForE2ResponseBodyHeader `json:"Header,omitempty" xml:"Header,omitempty" type:"Struct"`
+	RequestId *string                                `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	Result    *GetAdvertisingForE2ResponseBodyResult `json:"Result,omitempty" xml:"Result,omitempty" type:"Struct"`
+	// success
+	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
+}
+
+func (s GetAdvertisingForE2ResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetAdvertisingForE2ResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *GetAdvertisingForE2ResponseBody) SetErrorCode(v string) *GetAdvertisingForE2ResponseBody {
+	s.ErrorCode = &v
+	return s
+}
+
+func (s *GetAdvertisingForE2ResponseBody) SetErrorMsg(v string) *GetAdvertisingForE2ResponseBody {
+	s.ErrorMsg = &v
+	return s
+}
+
+func (s *GetAdvertisingForE2ResponseBody) SetHeader(v *GetAdvertisingForE2ResponseBodyHeader) *GetAdvertisingForE2ResponseBody {
+	s.Header = v
+	return s
+}
+
+func (s *GetAdvertisingForE2ResponseBody) SetRequestId(v string) *GetAdvertisingForE2ResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *GetAdvertisingForE2ResponseBody) SetResult(v *GetAdvertisingForE2ResponseBodyResult) *GetAdvertisingForE2ResponseBody {
+	s.Result = v
+	return s
+}
+
+func (s *GetAdvertisingForE2ResponseBody) SetSuccess(v bool) *GetAdvertisingForE2ResponseBody {
+	s.Success = &v
+	return s
+}
+
+type GetAdvertisingForE2ResponseBodyHeader struct {
+	// costTime
+	CostTime *int64 `json:"CostTime,omitempty" xml:"CostTime,omitempty"`
+	// innerErrorCode
+	InnerErrorCode *string `json:"InnerErrorCode,omitempty" xml:"InnerErrorCode,omitempty"`
+	// innerErrorMsg
+	InnerErrorMsg *string `json:"InnerErrorMsg,omitempty" xml:"InnerErrorMsg,omitempty"`
+	// rpcId
+	RpcId *string `json:"RpcId,omitempty" xml:"RpcId,omitempty"`
+	// traceId
+	TraceId *string `json:"TraceId,omitempty" xml:"TraceId,omitempty"`
+	// version
+	Version *string `json:"Version,omitempty" xml:"Version,omitempty"`
+}
+
+func (s GetAdvertisingForE2ResponseBodyHeader) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetAdvertisingForE2ResponseBodyHeader) GoString() string {
+	return s.String()
+}
+
+func (s *GetAdvertisingForE2ResponseBodyHeader) SetCostTime(v int64) *GetAdvertisingForE2ResponseBodyHeader {
+	s.CostTime = &v
+	return s
+}
+
+func (s *GetAdvertisingForE2ResponseBodyHeader) SetInnerErrorCode(v string) *GetAdvertisingForE2ResponseBodyHeader {
+	s.InnerErrorCode = &v
+	return s
+}
+
+func (s *GetAdvertisingForE2ResponseBodyHeader) SetInnerErrorMsg(v string) *GetAdvertisingForE2ResponseBodyHeader {
+	s.InnerErrorMsg = &v
+	return s
+}
+
+func (s *GetAdvertisingForE2ResponseBodyHeader) SetRpcId(v string) *GetAdvertisingForE2ResponseBodyHeader {
+	s.RpcId = &v
+	return s
+}
+
+func (s *GetAdvertisingForE2ResponseBodyHeader) SetTraceId(v string) *GetAdvertisingForE2ResponseBodyHeader {
+	s.TraceId = &v
+	return s
+}
+
+func (s *GetAdvertisingForE2ResponseBodyHeader) SetVersion(v string) *GetAdvertisingForE2ResponseBodyHeader {
+	s.Version = &v
+	return s
+}
+
+type GetAdvertisingForE2ResponseBodyResult struct {
+	ImgUrl    *string `json:"ImgUrl,omitempty" xml:"ImgUrl,omitempty"`
+	TargetUrl *string `json:"TargetUrl,omitempty" xml:"TargetUrl,omitempty"`
+}
+
+func (s GetAdvertisingForE2ResponseBodyResult) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetAdvertisingForE2ResponseBodyResult) GoString() string {
+	return s.String()
+}
+
+func (s *GetAdvertisingForE2ResponseBodyResult) SetImgUrl(v string) *GetAdvertisingForE2ResponseBodyResult {
+	s.ImgUrl = &v
+	return s
+}
+
+func (s *GetAdvertisingForE2ResponseBodyResult) SetTargetUrl(v string) *GetAdvertisingForE2ResponseBodyResult {
+	s.TargetUrl = &v
+	return s
+}
+
+type GetAdvertisingForE2Response struct {
+	Headers    map[string]*string               `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                           `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *GetAdvertisingForE2ResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s GetAdvertisingForE2Response) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetAdvertisingForE2Response) GoString() string {
+	return s.String()
+}
+
+func (s *GetAdvertisingForE2Response) SetHeaders(v map[string]*string) *GetAdvertisingForE2Response {
+	s.Headers = v
+	return s
+}
+
+func (s *GetAdvertisingForE2Response) SetStatusCode(v int32) *GetAdvertisingForE2Response {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *GetAdvertisingForE2Response) SetBody(v *GetAdvertisingForE2ResponseBody) *GetAdvertisingForE2Response {
+	s.Body = v
+	return s
+}
+
 type GetBrandPageRequest struct {
 	AccountNo *string `json:"AccountNo,omitempty" xml:"AccountNo,omitempty"`
 	MainId    *int64  `json:"MainId,omitempty" xml:"MainId,omitempty"`
@@ -6062,6 +6218,39 @@ func (client *Client) DeleteCreativeInfo(request *DeleteCreativeInfoRequest) (_r
 	runtime := &util.RuntimeOptions{}
 	_result = &DeleteCreativeInfoResponse{}
 	_body, _err := client.DeleteCreativeInfoWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) GetAdvertisingForE2WithOptions(runtime *util.RuntimeOptions) (_result *GetAdvertisingForE2Response, _err error) {
+	req := &openapi.OpenApiRequest{}
+	params := &openapi.Params{
+		Action:      tea.String("GetAdvertisingForE2"),
+		Version:     tea.String("2022-07-04"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &GetAdvertisingForE2Response{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) GetAdvertisingForE2() (_result *GetAdvertisingForE2Response, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &GetAdvertisingForE2Response{}
+	_body, _err := client.GetAdvertisingForE2WithOptions(runtime)
 	if _err != nil {
 		return _result, _err
 	}
