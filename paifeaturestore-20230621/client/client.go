@@ -14,6 +14,8 @@ import (
 
 type FeatureViewConfigValue struct {
 	Partitions map[string]map[string]interface{} `json:"Partitions,omitempty" xml:"Partitions,omitempty"`
+	EventTime  *string                           `json:"EventTime,omitempty" xml:"EventTime,omitempty"`
+	Equal      *bool                             `json:"Equal,omitempty" xml:"Equal,omitempty"`
 }
 
 func (s FeatureViewConfigValue) String() string {
@@ -26,6 +28,16 @@ func (s FeatureViewConfigValue) GoString() string {
 
 func (s *FeatureViewConfigValue) SetPartitions(v map[string]map[string]interface{}) *FeatureViewConfigValue {
 	s.Partitions = v
+	return s
+}
+
+func (s *FeatureViewConfigValue) SetEventTime(v string) *FeatureViewConfigValue {
+	s.EventTime = &v
+	return s
+}
+
+func (s *FeatureViewConfigValue) SetEqual(v bool) *FeatureViewConfigValue {
+	s.Equal = &v
 	return s
 }
 
