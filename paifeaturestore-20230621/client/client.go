@@ -4492,8 +4492,8 @@ type ListModelFeaturesRequest struct {
 	Name            *string   `json:"Name,omitempty" xml:"Name,omitempty"`
 	Order           *string   `json:"Order,omitempty" xml:"Order,omitempty"`
 	Owner           *string   `json:"Owner,omitempty" xml:"Owner,omitempty"`
-	PageNumber      *string   `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
-	PageSize        *string   `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	PageNumber      *int32    `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
+	PageSize        *int32    `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
 	ProjectId       *string   `json:"ProjectId,omitempty" xml:"ProjectId,omitempty"`
 	SortBy          *string   `json:"SortBy,omitempty" xml:"SortBy,omitempty"`
 }
@@ -4526,12 +4526,12 @@ func (s *ListModelFeaturesRequest) SetOwner(v string) *ListModelFeaturesRequest 
 	return s
 }
 
-func (s *ListModelFeaturesRequest) SetPageNumber(v string) *ListModelFeaturesRequest {
+func (s *ListModelFeaturesRequest) SetPageNumber(v int32) *ListModelFeaturesRequest {
 	s.PageNumber = &v
 	return s
 }
 
-func (s *ListModelFeaturesRequest) SetPageSize(v string) *ListModelFeaturesRequest {
+func (s *ListModelFeaturesRequest) SetPageSize(v int32) *ListModelFeaturesRequest {
 	s.PageSize = &v
 	return s
 }
@@ -4551,8 +4551,8 @@ type ListModelFeaturesShrinkRequest struct {
 	Name                  *string `json:"Name,omitempty" xml:"Name,omitempty"`
 	Order                 *string `json:"Order,omitempty" xml:"Order,omitempty"`
 	Owner                 *string `json:"Owner,omitempty" xml:"Owner,omitempty"`
-	PageNumber            *string `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
-	PageSize              *string `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	PageNumber            *int32  `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
+	PageSize              *int32  `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
 	ProjectId             *string `json:"ProjectId,omitempty" xml:"ProjectId,omitempty"`
 	SortBy                *string `json:"SortBy,omitempty" xml:"SortBy,omitempty"`
 }
@@ -4585,12 +4585,12 @@ func (s *ListModelFeaturesShrinkRequest) SetOwner(v string) *ListModelFeaturesSh
 	return s
 }
 
-func (s *ListModelFeaturesShrinkRequest) SetPageNumber(v string) *ListModelFeaturesShrinkRequest {
+func (s *ListModelFeaturesShrinkRequest) SetPageNumber(v int32) *ListModelFeaturesShrinkRequest {
 	s.PageNumber = &v
 	return s
 }
 
-func (s *ListModelFeaturesShrinkRequest) SetPageSize(v string) *ListModelFeaturesShrinkRequest {
+func (s *ListModelFeaturesShrinkRequest) SetPageSize(v int32) *ListModelFeaturesShrinkRequest {
 	s.PageSize = &v
 	return s
 }
@@ -5596,6 +5596,7 @@ func (s *PublishFeatureViewTableRequest) SetPartitions(v map[string]map[string]i
 
 type PublishFeatureViewTableResponseBody struct {
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	TaskId    *string `json:"TaskId,omitempty" xml:"TaskId,omitempty"`
 }
 
 func (s PublishFeatureViewTableResponseBody) String() string {
@@ -5608,6 +5609,11 @@ func (s PublishFeatureViewTableResponseBody) GoString() string {
 
 func (s *PublishFeatureViewTableResponseBody) SetRequestId(v string) *PublishFeatureViewTableResponseBody {
 	s.RequestId = &v
+	return s
+}
+
+func (s *PublishFeatureViewTableResponseBody) SetTaskId(v string) *PublishFeatureViewTableResponseBody {
+	s.TaskId = &v
 	return s
 }
 
@@ -6052,6 +6058,7 @@ func (s *WriteFeatureViewTableRequestUrlDatasource) SetPath(v string) *WriteFeat
 
 type WriteFeatureViewTableResponseBody struct {
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	TaskId    *string `json:"TaskId,omitempty" xml:"TaskId,omitempty"`
 }
 
 func (s WriteFeatureViewTableResponseBody) String() string {
@@ -6064,6 +6071,11 @@ func (s WriteFeatureViewTableResponseBody) GoString() string {
 
 func (s *WriteFeatureViewTableResponseBody) SetRequestId(v string) *WriteFeatureViewTableResponseBody {
 	s.RequestId = &v
+	return s
+}
+
+func (s *WriteFeatureViewTableResponseBody) SetTaskId(v string) *WriteFeatureViewTableResponseBody {
+	s.TaskId = &v
 	return s
 }
 
