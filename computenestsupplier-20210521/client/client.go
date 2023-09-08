@@ -146,7 +146,9 @@ type CreateArtifactRequest struct {
 	ArtifactType     *string                                `json:"ArtifactType,omitempty" xml:"ArtifactType,omitempty"`
 	Description      *string                                `json:"Description,omitempty" xml:"Description,omitempty"`
 	Name             *string                                `json:"Name,omitempty" xml:"Name,omitempty"`
+	ResourceGroupId  *string                                `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
 	SupportRegionIds []*string                              `json:"SupportRegionIds,omitempty" xml:"SupportRegionIds,omitempty" type:"Repeated"`
+	Tag              []*CreateArtifactRequestTag            `json:"Tag,omitempty" xml:"Tag,omitempty" type:"Repeated"`
 	VersionName      *string                                `json:"VersionName,omitempty" xml:"VersionName,omitempty"`
 }
 
@@ -183,8 +185,18 @@ func (s *CreateArtifactRequest) SetName(v string) *CreateArtifactRequest {
 	return s
 }
 
+func (s *CreateArtifactRequest) SetResourceGroupId(v string) *CreateArtifactRequest {
+	s.ResourceGroupId = &v
+	return s
+}
+
 func (s *CreateArtifactRequest) SetSupportRegionIds(v []*string) *CreateArtifactRequest {
 	s.SupportRegionIds = v
+	return s
+}
+
+func (s *CreateArtifactRequest) SetTag(v []*CreateArtifactRequestTag) *CreateArtifactRequest {
+	s.Tag = v
 	return s
 }
 
@@ -264,14 +276,39 @@ func (s *CreateArtifactRequestArtifactProperty) SetUrl(v string) *CreateArtifact
 	return s
 }
 
+type CreateArtifactRequestTag struct {
+	Key   *string `json:"Key,omitempty" xml:"Key,omitempty"`
+	Value *string `json:"Value,omitempty" xml:"Value,omitempty"`
+}
+
+func (s CreateArtifactRequestTag) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateArtifactRequestTag) GoString() string {
+	return s.String()
+}
+
+func (s *CreateArtifactRequestTag) SetKey(v string) *CreateArtifactRequestTag {
+	s.Key = &v
+	return s
+}
+
+func (s *CreateArtifactRequestTag) SetValue(v string) *CreateArtifactRequestTag {
+	s.Value = &v
+	return s
+}
+
 type CreateArtifactShrinkRequest struct {
-	ArtifactId             *string   `json:"ArtifactId,omitempty" xml:"ArtifactId,omitempty"`
-	ArtifactPropertyShrink *string   `json:"ArtifactProperty,omitempty" xml:"ArtifactProperty,omitempty"`
-	ArtifactType           *string   `json:"ArtifactType,omitempty" xml:"ArtifactType,omitempty"`
-	Description            *string   `json:"Description,omitempty" xml:"Description,omitempty"`
-	Name                   *string   `json:"Name,omitempty" xml:"Name,omitempty"`
-	SupportRegionIds       []*string `json:"SupportRegionIds,omitempty" xml:"SupportRegionIds,omitempty" type:"Repeated"`
-	VersionName            *string   `json:"VersionName,omitempty" xml:"VersionName,omitempty"`
+	ArtifactId             *string                           `json:"ArtifactId,omitempty" xml:"ArtifactId,omitempty"`
+	ArtifactPropertyShrink *string                           `json:"ArtifactProperty,omitempty" xml:"ArtifactProperty,omitempty"`
+	ArtifactType           *string                           `json:"ArtifactType,omitempty" xml:"ArtifactType,omitempty"`
+	Description            *string                           `json:"Description,omitempty" xml:"Description,omitempty"`
+	Name                   *string                           `json:"Name,omitempty" xml:"Name,omitempty"`
+	ResourceGroupId        *string                           `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
+	SupportRegionIds       []*string                         `json:"SupportRegionIds,omitempty" xml:"SupportRegionIds,omitempty" type:"Repeated"`
+	Tag                    []*CreateArtifactShrinkRequestTag `json:"Tag,omitempty" xml:"Tag,omitempty" type:"Repeated"`
+	VersionName            *string                           `json:"VersionName,omitempty" xml:"VersionName,omitempty"`
 }
 
 func (s CreateArtifactShrinkRequest) String() string {
@@ -307,13 +344,46 @@ func (s *CreateArtifactShrinkRequest) SetName(v string) *CreateArtifactShrinkReq
 	return s
 }
 
+func (s *CreateArtifactShrinkRequest) SetResourceGroupId(v string) *CreateArtifactShrinkRequest {
+	s.ResourceGroupId = &v
+	return s
+}
+
 func (s *CreateArtifactShrinkRequest) SetSupportRegionIds(v []*string) *CreateArtifactShrinkRequest {
 	s.SupportRegionIds = v
 	return s
 }
 
+func (s *CreateArtifactShrinkRequest) SetTag(v []*CreateArtifactShrinkRequestTag) *CreateArtifactShrinkRequest {
+	s.Tag = v
+	return s
+}
+
 func (s *CreateArtifactShrinkRequest) SetVersionName(v string) *CreateArtifactShrinkRequest {
 	s.VersionName = &v
+	return s
+}
+
+type CreateArtifactShrinkRequestTag struct {
+	Key   *string `json:"Key,omitempty" xml:"Key,omitempty"`
+	Value *string `json:"Value,omitempty" xml:"Value,omitempty"`
+}
+
+func (s CreateArtifactShrinkRequestTag) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateArtifactShrinkRequestTag) GoString() string {
+	return s.String()
+}
+
+func (s *CreateArtifactShrinkRequestTag) SetKey(v string) *CreateArtifactShrinkRequestTag {
+	s.Key = &v
+	return s
+}
+
+func (s *CreateArtifactShrinkRequestTag) SetValue(v string) *CreateArtifactShrinkRequestTag {
+	s.Value = &v
 	return s
 }
 
@@ -1312,19 +1382,21 @@ func (s *GetArtifactRequest) SetArtifactVersion(v string) *GetArtifactRequest {
 }
 
 type GetArtifactResponseBody struct {
-	ArtifactId       *string `json:"ArtifactId,omitempty" xml:"ArtifactId,omitempty"`
-	ArtifactProperty *string `json:"ArtifactProperty,omitempty" xml:"ArtifactProperty,omitempty"`
-	ArtifactType     *string `json:"ArtifactType,omitempty" xml:"ArtifactType,omitempty"`
-	ArtifactVersion  *string `json:"ArtifactVersion,omitempty" xml:"ArtifactVersion,omitempty"`
-	Description      *string `json:"Description,omitempty" xml:"Description,omitempty"`
-	GmtModified      *string `json:"GmtModified,omitempty" xml:"GmtModified,omitempty"`
-	MaxVersion       *int64  `json:"MaxVersion,omitempty" xml:"MaxVersion,omitempty"`
-	Name             *string `json:"Name,omitempty" xml:"Name,omitempty"`
-	Progress         *string `json:"Progress,omitempty" xml:"Progress,omitempty"`
-	RequestId        *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	Status           *string `json:"Status,omitempty" xml:"Status,omitempty"`
-	SupportRegionIds *string `json:"SupportRegionIds,omitempty" xml:"SupportRegionIds,omitempty"`
-	VersionName      *string `json:"VersionName,omitempty" xml:"VersionName,omitempty"`
+	ArtifactId       *string                        `json:"ArtifactId,omitempty" xml:"ArtifactId,omitempty"`
+	ArtifactProperty *string                        `json:"ArtifactProperty,omitempty" xml:"ArtifactProperty,omitempty"`
+	ArtifactType     *string                        `json:"ArtifactType,omitempty" xml:"ArtifactType,omitempty"`
+	ArtifactVersion  *string                        `json:"ArtifactVersion,omitempty" xml:"ArtifactVersion,omitempty"`
+	Description      *string                        `json:"Description,omitempty" xml:"Description,omitempty"`
+	GmtModified      *string                        `json:"GmtModified,omitempty" xml:"GmtModified,omitempty"`
+	MaxVersion       *int64                         `json:"MaxVersion,omitempty" xml:"MaxVersion,omitempty"`
+	Name             *string                        `json:"Name,omitempty" xml:"Name,omitempty"`
+	Progress         *string                        `json:"Progress,omitempty" xml:"Progress,omitempty"`
+	RequestId        *string                        `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	ResourceGroupId  *string                        `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
+	Status           *string                        `json:"Status,omitempty" xml:"Status,omitempty"`
+	SupportRegionIds *string                        `json:"SupportRegionIds,omitempty" xml:"SupportRegionIds,omitempty"`
+	Tags             []*GetArtifactResponseBodyTags `json:"Tags,omitempty" xml:"Tags,omitempty" type:"Repeated"`
+	VersionName      *string                        `json:"VersionName,omitempty" xml:"VersionName,omitempty"`
 }
 
 func (s GetArtifactResponseBody) String() string {
@@ -1385,6 +1457,11 @@ func (s *GetArtifactResponseBody) SetRequestId(v string) *GetArtifactResponseBod
 	return s
 }
 
+func (s *GetArtifactResponseBody) SetResourceGroupId(v string) *GetArtifactResponseBody {
+	s.ResourceGroupId = &v
+	return s
+}
+
 func (s *GetArtifactResponseBody) SetStatus(v string) *GetArtifactResponseBody {
 	s.Status = &v
 	return s
@@ -1395,8 +1472,36 @@ func (s *GetArtifactResponseBody) SetSupportRegionIds(v string) *GetArtifactResp
 	return s
 }
 
+func (s *GetArtifactResponseBody) SetTags(v []*GetArtifactResponseBodyTags) *GetArtifactResponseBody {
+	s.Tags = v
+	return s
+}
+
 func (s *GetArtifactResponseBody) SetVersionName(v string) *GetArtifactResponseBody {
 	s.VersionName = &v
+	return s
+}
+
+type GetArtifactResponseBodyTags struct {
+	Key   *string `json:"Key,omitempty" xml:"Key,omitempty"`
+	Value *string `json:"Value,omitempty" xml:"Value,omitempty"`
+}
+
+func (s GetArtifactResponseBodyTags) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetArtifactResponseBodyTags) GoString() string {
+	return s.String()
+}
+
+func (s *GetArtifactResponseBodyTags) SetKey(v string) *GetArtifactResponseBodyTags {
+	s.Key = &v
+	return s
+}
+
+func (s *GetArtifactResponseBodyTags) SetValue(v string) *GetArtifactResponseBodyTags {
+	s.Value = &v
 	return s
 }
 
@@ -3481,9 +3586,11 @@ func (s *ListArtifactVersionsResponse) SetBody(v *ListArtifactVersionsResponseBo
 }
 
 type ListArtifactsRequest struct {
-	Filter     []*ListArtifactsRequestFilter `json:"Filter,omitempty" xml:"Filter,omitempty" type:"Repeated"`
-	MaxResults *int32                        `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
-	NextToken  *string                       `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
+	Filter          []*ListArtifactsRequestFilter `json:"Filter,omitempty" xml:"Filter,omitempty" type:"Repeated"`
+	MaxResults      *int32                        `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
+	NextToken       *string                       `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
+	ResourceGroupId *string                       `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
+	Tag             []*ListArtifactsRequestTag    `json:"Tag,omitempty" xml:"Tag,omitempty" type:"Repeated"`
 }
 
 func (s ListArtifactsRequest) String() string {
@@ -3509,6 +3616,16 @@ func (s *ListArtifactsRequest) SetNextToken(v string) *ListArtifactsRequest {
 	return s
 }
 
+func (s *ListArtifactsRequest) SetResourceGroupId(v string) *ListArtifactsRequest {
+	s.ResourceGroupId = &v
+	return s
+}
+
+func (s *ListArtifactsRequest) SetTag(v []*ListArtifactsRequestTag) *ListArtifactsRequest {
+	s.Tag = v
+	return s
+}
+
 type ListArtifactsRequestFilter struct {
 	Name   *string   `json:"Name,omitempty" xml:"Name,omitempty"`
 	Values []*string `json:"Values,omitempty" xml:"Values,omitempty" type:"Repeated"`
@@ -3529,6 +3646,29 @@ func (s *ListArtifactsRequestFilter) SetName(v string) *ListArtifactsRequestFilt
 
 func (s *ListArtifactsRequestFilter) SetValues(v []*string) *ListArtifactsRequestFilter {
 	s.Values = v
+	return s
+}
+
+type ListArtifactsRequestTag struct {
+	Key   *string `json:"Key,omitempty" xml:"Key,omitempty"`
+	Value *string `json:"Value,omitempty" xml:"Value,omitempty"`
+}
+
+func (s ListArtifactsRequestTag) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListArtifactsRequestTag) GoString() string {
+	return s.String()
+}
+
+func (s *ListArtifactsRequestTag) SetKey(v string) *ListArtifactsRequestTag {
+	s.Key = &v
+	return s
+}
+
+func (s *ListArtifactsRequestTag) SetValue(v string) *ListArtifactsRequestTag {
+	s.Value = &v
 	return s
 }
 
@@ -3574,13 +3714,15 @@ func (s *ListArtifactsResponseBody) SetTotalCount(v int32) *ListArtifactsRespons
 }
 
 type ListArtifactsResponseBodyArtifacts struct {
-	ArtifactId   *string `json:"ArtifactId,omitempty" xml:"ArtifactId,omitempty"`
-	ArtifactType *string `json:"ArtifactType,omitempty" xml:"ArtifactType,omitempty"`
-	Description  *string `json:"Description,omitempty" xml:"Description,omitempty"`
-	GmtModified  *string `json:"GmtModified,omitempty" xml:"GmtModified,omitempty"`
-	MaxVersion   *string `json:"MaxVersion,omitempty" xml:"MaxVersion,omitempty"`
-	Name         *string `json:"Name,omitempty" xml:"Name,omitempty"`
-	Status       *string `json:"Status,omitempty" xml:"Status,omitempty"`
+	ArtifactId      *string                                   `json:"ArtifactId,omitempty" xml:"ArtifactId,omitempty"`
+	ArtifactType    *string                                   `json:"ArtifactType,omitempty" xml:"ArtifactType,omitempty"`
+	Description     *string                                   `json:"Description,omitempty" xml:"Description,omitempty"`
+	GmtModified     *string                                   `json:"GmtModified,omitempty" xml:"GmtModified,omitempty"`
+	MaxVersion      *string                                   `json:"MaxVersion,omitempty" xml:"MaxVersion,omitempty"`
+	Name            *string                                   `json:"Name,omitempty" xml:"Name,omitempty"`
+	ResourceGroupId *string                                   `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
+	Status          *string                                   `json:"Status,omitempty" xml:"Status,omitempty"`
+	Tags            []*ListArtifactsResponseBodyArtifactsTags `json:"Tags,omitempty" xml:"Tags,omitempty" type:"Repeated"`
 }
 
 func (s ListArtifactsResponseBodyArtifacts) String() string {
@@ -3621,8 +3763,41 @@ func (s *ListArtifactsResponseBodyArtifacts) SetName(v string) *ListArtifactsRes
 	return s
 }
 
+func (s *ListArtifactsResponseBodyArtifacts) SetResourceGroupId(v string) *ListArtifactsResponseBodyArtifacts {
+	s.ResourceGroupId = &v
+	return s
+}
+
 func (s *ListArtifactsResponseBodyArtifacts) SetStatus(v string) *ListArtifactsResponseBodyArtifacts {
 	s.Status = &v
+	return s
+}
+
+func (s *ListArtifactsResponseBodyArtifacts) SetTags(v []*ListArtifactsResponseBodyArtifactsTags) *ListArtifactsResponseBodyArtifacts {
+	s.Tags = v
+	return s
+}
+
+type ListArtifactsResponseBodyArtifactsTags struct {
+	Key   *string `json:"Key,omitempty" xml:"Key,omitempty"`
+	Value *string `json:"Value,omitempty" xml:"Value,omitempty"`
+}
+
+func (s ListArtifactsResponseBodyArtifactsTags) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListArtifactsResponseBodyArtifactsTags) GoString() string {
+	return s.String()
+}
+
+func (s *ListArtifactsResponseBodyArtifactsTags) SetKey(v string) *ListArtifactsResponseBodyArtifactsTags {
+	s.Key = &v
+	return s
+}
+
+func (s *ListArtifactsResponseBodyArtifactsTags) SetValue(v string) *ListArtifactsResponseBodyArtifactsTags {
+	s.Value = &v
 	return s
 }
 
@@ -5694,8 +5869,16 @@ func (client *Client) CreateArtifactWithOptions(tmpReq *CreateArtifactRequest, r
 		query["Name"] = request.Name
 	}
 
+	if !tea.BoolValue(util.IsUnset(request.ResourceGroupId)) {
+		query["ResourceGroupId"] = request.ResourceGroupId
+	}
+
 	if !tea.BoolValue(util.IsUnset(request.SupportRegionIds)) {
 		query["SupportRegionIds"] = request.SupportRegionIds
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Tag)) {
+		query["Tag"] = request.Tag
 	}
 
 	if !tea.BoolValue(util.IsUnset(request.VersionName)) {
@@ -6688,6 +6871,14 @@ func (client *Client) ListArtifactsWithOptions(request *ListArtifactsRequest, ru
 
 	if !tea.BoolValue(util.IsUnset(request.NextToken)) {
 		query["NextToken"] = request.NextToken
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ResourceGroupId)) {
+		query["ResourceGroupId"] = request.ResourceGroupId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Tag)) {
+		query["Tag"] = request.Tag
 	}
 
 	req := &openapi.OpenApiRequest{
