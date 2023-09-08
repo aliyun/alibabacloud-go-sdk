@@ -4333,17 +4333,37 @@ func (s *CreateTransitRouterRouteEntryResponse) SetBody(v *CreateTransitRouterRo
 }
 
 type CreateTransitRouterRouteTableRequest struct {
-	ClientToken                        *string                                                `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
-	DryRun                             *bool                                                  `json:"DryRun,omitempty" xml:"DryRun,omitempty"`
-	OwnerAccount                       *string                                                `json:"OwnerAccount,omitempty" xml:"OwnerAccount,omitempty"`
-	OwnerId                            *int64                                                 `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
-	ResourceOwnerAccount               *string                                                `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
-	ResourceOwnerId                    *int64                                                 `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
-	RouteTableOptions                  *CreateTransitRouterRouteTableRequestRouteTableOptions `json:"RouteTableOptions,omitempty" xml:"RouteTableOptions,omitempty" type:"Struct"`
-	Tag                                []*CreateTransitRouterRouteTableRequestTag             `json:"Tag,omitempty" xml:"Tag,omitempty" type:"Repeated"`
-	TransitRouterId                    *string                                                `json:"TransitRouterId,omitempty" xml:"TransitRouterId,omitempty"`
-	TransitRouterRouteTableDescription *string                                                `json:"TransitRouterRouteTableDescription,omitempty" xml:"TransitRouterRouteTableDescription,omitempty"`
-	TransitRouterRouteTableName        *string                                                `json:"TransitRouterRouteTableName,omitempty" xml:"TransitRouterRouteTableName,omitempty"`
+	// The client token that is used to ensure the idempotence of the request.
+	//
+	// You can use the client to generate the value, but you must make sure that it is unique among different requests. ClientToken can contain only ASCII characters.
+	//
+	// >  If you do not set this parameter, **ClientToken** is set to the value of **RequestId**. The value of **RequestId** may be different for each API request.
+	ClientToken *string `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
+	// Specifies whether to precheck the request. Check items include permissions and the status of the specified cloud resources. Valid values:
+	//
+	// *   **false** (default): sends the request. If the request passes the precheck, the custom route table is created.
+	// *   **true**: prechecks the request but does not create the custom route table. If you use this value, the system checks the required parameters and the request syntax. If the request fails to pass the precheck, an error message is returned. If the request passes the check, the system returns the ID of the request.
+	DryRun               *bool   `json:"DryRun,omitempty" xml:"DryRun,omitempty"`
+	OwnerAccount         *string `json:"OwnerAccount,omitempty" xml:"OwnerAccount,omitempty"`
+	OwnerId              *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
+	ResourceOwnerAccount *string `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
+	ResourceOwnerId      *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
+	// The features of the route table.
+	RouteTableOptions *CreateTransitRouterRouteTableRequestRouteTableOptions `json:"RouteTableOptions,omitempty" xml:"RouteTableOptions,omitempty" type:"Struct"`
+	// The tags.
+	//
+	// You can specify at most 20 tags in each call.
+	Tag []*CreateTransitRouterRouteTableRequestTag `json:"Tag,omitempty" xml:"Tag,omitempty" type:"Repeated"`
+	// The ID of the Enterprise Edition transit router.
+	TransitRouterId *string `json:"TransitRouterId,omitempty" xml:"TransitRouterId,omitempty"`
+	// The description of the custom route table.
+	//
+	// The description must be 2 to 256 characters in length, and can contain letters, digits, and the following special characters: , . ; / @ \_ -. You can also leave the description empty.
+	TransitRouterRouteTableDescription *string `json:"TransitRouterRouteTableDescription,omitempty" xml:"TransitRouterRouteTableDescription,omitempty"`
+	// The name of the custom route table.
+	//
+	// The name must be 1 to 128 characters in length, and can contain letters, digits, and the following special characters: , . ; / @ \_ -. You can also leave the name empty.
+	TransitRouterRouteTableName *string `json:"TransitRouterRouteTableName,omitempty" xml:"TransitRouterRouteTableName,omitempty"`
 }
 
 func (s CreateTransitRouterRouteTableRequest) String() string {
@@ -4410,6 +4430,10 @@ func (s *CreateTransitRouterRouteTableRequest) SetTransitRouterRouteTableName(v 
 }
 
 type CreateTransitRouterRouteTableRequestRouteTableOptions struct {
+	// Specifies whether to enable multi-region equal-cost multi-path (ECMP) routing. Valid values:
+	//
+	// *   **disable**(default) If multi-region ECMP routing is disabled, routes that are learned from different regions but have the same prefix and attributes select the transit router with the smallest region ID as the next hop. Region IDs are sorted in alphabetic order. The network latency and bandwidth consumption also vary based on the region. Proceed with caution.
+	// *   **enable** If multi-region ECMP routing is enabled, routes that are learned from different regions but have the same prefix and attributes form an ECMP route. The network latency and bandwidth consumption also vary based on the region. Proceed with caution.
 	MultiRegionECMP *string `json:"MultiRegionECMP,omitempty" xml:"MultiRegionECMP,omitempty"`
 }
 
@@ -4427,7 +4451,17 @@ func (s *CreateTransitRouterRouteTableRequestRouteTableOptions) SetMultiRegionEC
 }
 
 type CreateTransitRouterRouteTableRequestTag struct {
-	Key   *string `json:"Key,omitempty" xml:"Key,omitempty"`
+	// The tag key.
+	//
+	// The tag key cannot be an empty string. The tag key can be up to 64 characters in length and cannot start with `acs:` or `aliyun`. It cannot contain `http://` or `https://`.
+	//
+	// You can specify at most 20 tag keys.
+	Key *string `json:"Key,omitempty" xml:"Key,omitempty"`
+	// The tag value.
+	//
+	// The tag value can be 0 to 128 characters in length, and cannot start with `aliyun` or `acs:`. It cannot contain `http://` or `https://`.
+	//
+	// Each tag key must have a unique tag value. You can specify at most 20 tag values in each call.
 	Value *string `json:"Value,omitempty" xml:"Value,omitempty"`
 }
 
@@ -4450,7 +4484,9 @@ func (s *CreateTransitRouterRouteTableRequestTag) SetValue(v string) *CreateTran
 }
 
 type CreateTransitRouterRouteTableResponseBody struct {
-	RequestId                 *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The ID of the request.
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The ID of the custom route table.
 	TransitRouterRouteTableId *string `json:"TransitRouterRouteTableId,omitempty" xml:"TransitRouterRouteTableId,omitempty"`
 }
 
@@ -4721,10 +4757,10 @@ func (s *CreateTransitRouterVbrAttachmentResponse) SetBody(v *CreateTransitRoute
 }
 
 type CreateTransitRouterVpcAttachmentRequest struct {
-	// 是否使企业版转发路由器自动发布路由到VPC实例。
+	// Specifies whether to enable the Enterprise Edition transit router to automatically advertise routes to VPCs. Valid values:
 	//
-	// - **false**（默认值）：否。
-	// - **true**：是。
+	// *   **false:** (default)
+	// *   **true**
 	AutoPublishRouteEnabled *bool `json:"AutoPublishRouteEnabled,omitempty" xml:"AutoPublishRouteEnabled,omitempty"`
 	// The ID of the Cloud Enterprise Network (CEN) instance.
 	CenId *string `json:"CenId,omitempty" xml:"CenId,omitempty"`
@@ -8023,14 +8059,24 @@ func (s *DeregisterTransitRouterMulticastGroupSourcesResponse) SetBody(v *Deregi
 }
 
 type DescribeCenAttachedChildInstanceAttributeRequest struct {
-	CenId                 *string `json:"CenId,omitempty" xml:"CenId,omitempty"`
-	ChildInstanceId       *string `json:"ChildInstanceId,omitempty" xml:"ChildInstanceId,omitempty"`
+	// The ID of the CEN instance.
+	CenId *string `json:"CenId,omitempty" xml:"CenId,omitempty"`
+	// The ID of the network instance that is attached to the CEN instance.
+	ChildInstanceId *string `json:"ChildInstanceId,omitempty" xml:"ChildInstanceId,omitempty"`
+	// The region ID of the network instance.
+	//
+	// You can call the [DescribeRegions](~~36063~~) operation to query the most recent region list.
 	ChildInstanceRegionId *string `json:"ChildInstanceRegionId,omitempty" xml:"ChildInstanceRegionId,omitempty"`
-	ChildInstanceType     *string `json:"ChildInstanceType,omitempty" xml:"ChildInstanceType,omitempty"`
-	OwnerAccount          *string `json:"OwnerAccount,omitempty" xml:"OwnerAccount,omitempty"`
-	OwnerId               *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
-	ResourceOwnerAccount  *string `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
-	ResourceOwnerId       *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
+	// The type of the network instance. Valid values:
+	//
+	// *   **VPC**: virtual private cloud (VPC)
+	// *   **VBR**: virtual border router (VBR)
+	// *   **CCN**: Cloud Connect Network (CCN) instance
+	ChildInstanceType    *string `json:"ChildInstanceType,omitempty" xml:"ChildInstanceType,omitempty"`
+	OwnerAccount         *string `json:"OwnerAccount,omitempty" xml:"OwnerAccount,omitempty"`
+	OwnerId              *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
+	ResourceOwnerAccount *string `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
+	ResourceOwnerId      *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
 }
 
 func (s DescribeCenAttachedChildInstanceAttributeRequest) String() string {
@@ -8082,16 +8128,36 @@ func (s *DescribeCenAttachedChildInstanceAttributeRequest) SetResourceOwnerId(v 
 }
 
 type DescribeCenAttachedChildInstanceAttributeResponseBody struct {
-	CenId                   *string                                                                       `json:"CenId,omitempty" xml:"CenId,omitempty"`
-	ChildInstanceAttachTime *string                                                                       `json:"ChildInstanceAttachTime,omitempty" xml:"ChildInstanceAttachTime,omitempty"`
+	// The ID of the CEN instance.
+	CenId *string `json:"CenId,omitempty" xml:"CenId,omitempty"`
+	// The time when the network instance was attached to the CEN instance.
+	//
+	// The time follows the ISO 8601 standard in the yyyy-MM-ddThh:mmZ format. The time is displayed in UTC.
+	ChildInstanceAttachTime *string `json:"ChildInstanceAttachTime,omitempty" xml:"ChildInstanceAttachTime,omitempty"`
+	// The details about the network instance.
 	ChildInstanceAttributes *DescribeCenAttachedChildInstanceAttributeResponseBodyChildInstanceAttributes `json:"ChildInstanceAttributes,omitempty" xml:"ChildInstanceAttributes,omitempty" type:"Struct"`
-	ChildInstanceId         *string                                                                       `json:"ChildInstanceId,omitempty" xml:"ChildInstanceId,omitempty"`
-	ChildInstanceName       *string                                                                       `json:"ChildInstanceName,omitempty" xml:"ChildInstanceName,omitempty"`
-	ChildInstanceOwnerId    *int64                                                                        `json:"ChildInstanceOwnerId,omitempty" xml:"ChildInstanceOwnerId,omitempty"`
-	ChildInstanceRegionId   *string                                                                       `json:"ChildInstanceRegionId,omitempty" xml:"ChildInstanceRegionId,omitempty"`
-	ChildInstanceType       *string                                                                       `json:"ChildInstanceType,omitempty" xml:"ChildInstanceType,omitempty"`
-	RequestId               *string                                                                       `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	Status                  *string                                                                       `json:"Status,omitempty" xml:"Status,omitempty"`
+	// The ID of the network instance.
+	ChildInstanceId *string `json:"ChildInstanceId,omitempty" xml:"ChildInstanceId,omitempty"`
+	// The name of the network instance.
+	ChildInstanceName *string `json:"ChildInstanceName,omitempty" xml:"ChildInstanceName,omitempty"`
+	// The ID of the Alibaba Cloud account to which the network instance belongs.
+	ChildInstanceOwnerId *int64 `json:"ChildInstanceOwnerId,omitempty" xml:"ChildInstanceOwnerId,omitempty"`
+	// The region ID of the network instance.
+	ChildInstanceRegionId *string `json:"ChildInstanceRegionId,omitempty" xml:"ChildInstanceRegionId,omitempty"`
+	// The type of the network instance. Valid values:
+	//
+	// *   **VPC**: VPC
+	// *   **VBR**: VBR
+	// *   **CCN**: CCN instance
+	ChildInstanceType *string `json:"ChildInstanceType,omitempty" xml:"ChildInstanceType,omitempty"`
+	// The ID of the request.
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// Indicates whether the network instance is attached to the CEN instance.
+	//
+	// *   **Attaching**: The network instance is being attached to the CEN instance.
+	// *   **Attached**: The network instance is attached to the CEN instance.
+	// *   **Detaching**: The network instance is being detached from the CEN instance.
+	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
 }
 
 func (s DescribeCenAttachedChildInstanceAttributeResponseBody) String() string {
@@ -8153,9 +8219,13 @@ func (s *DescribeCenAttachedChildInstanceAttributeResponseBody) SetStatus(v stri
 }
 
 type DescribeCenAttachedChildInstanceAttributeResponseBodyChildInstanceAttributes struct {
-	CidrBlock           *string                                                                                          `json:"CidrBlock,omitempty" xml:"CidrBlock,omitempty"`
-	Ipv6CidrBlock       *string                                                                                          `json:"Ipv6CidrBlock,omitempty" xml:"Ipv6CidrBlock,omitempty"`
-	Ipv6CidrBlocks      *DescribeCenAttachedChildInstanceAttributeResponseBodyChildInstanceAttributesIpv6CidrBlocks      `json:"Ipv6CidrBlocks,omitempty" xml:"Ipv6CidrBlocks,omitempty" type:"Struct"`
+	// The IPv4 CIDR block of the VPC.
+	CidrBlock *string `json:"CidrBlock,omitempty" xml:"CidrBlock,omitempty"`
+	// The IPv6 CIDR block of the VPC.
+	Ipv6CidrBlock *string `json:"Ipv6CidrBlock,omitempty" xml:"Ipv6CidrBlock,omitempty"`
+	// The information about the IPv6 CIDR blocks of the VPC.
+	Ipv6CidrBlocks *DescribeCenAttachedChildInstanceAttributeResponseBodyChildInstanceAttributesIpv6CidrBlocks `json:"Ipv6CidrBlocks,omitempty" xml:"Ipv6CidrBlocks,omitempty" type:"Struct"`
+	// The secondary IPv4 CIDR block of the VPC.
 	SecondaryCidrBlocks *DescribeCenAttachedChildInstanceAttributeResponseBodyChildInstanceAttributesSecondaryCidrBlocks `json:"SecondaryCidrBlocks,omitempty" xml:"SecondaryCidrBlocks,omitempty" type:"Struct"`
 }
 
@@ -8205,8 +8275,17 @@ func (s *DescribeCenAttachedChildInstanceAttributeResponseBodyChildInstanceAttri
 }
 
 type DescribeCenAttachedChildInstanceAttributeResponseBodyChildInstanceAttributesIpv6CidrBlocksIpv6CidrBlock struct {
+	// The IPv6 CIDR block of the VPC.
 	Ipv6CidrBlock *string `json:"Ipv6CidrBlock,omitempty" xml:"Ipv6CidrBlock,omitempty"`
-	Ipv6Isp       *string `json:"Ipv6Isp,omitempty" xml:"Ipv6Isp,omitempty"`
+	// The type of the IPv6 CIDR block. Valid values:
+	//
+	// * **BGP** (default): Alibaba Cloud Border Gateway Protocol (BGP) IPv6
+	// * **ChinaMobile:** China Mobile (single line)
+	// * **ChinaUnicom:** China Unicom (single line)
+	// * **ChinaTelecom:** China Telecom (single line)
+	//
+	// > If your Alibaba Cloud account has the required permissions to activate single-ISP bandwidth, you can set Ipv6Isp to ChinaTelecom, ChinaUnicom, or ChinaMobile.
+	Ipv6Isp *string `json:"Ipv6Isp,omitempty" xml:"Ipv6Isp,omitempty"`
 }
 
 func (s DescribeCenAttachedChildInstanceAttributeResponseBodyChildInstanceAttributesIpv6CidrBlocksIpv6CidrBlock) String() string {
@@ -9816,19 +9895,20 @@ func (s *DescribeCenGeographicSpansResponse) SetBody(v *DescribeCenGeographicSpa
 }
 
 type DescribeCenInterRegionBandwidthLimitsRequest struct {
-	// The operation that you want to perform. Set the value to **DescribeCenInterRegionBandwidthLimits**.
+	// The ID of the Cloud Enterprise Network (CEN) instance.
 	CenId        *string `json:"CenId,omitempty" xml:"CenId,omitempty"`
 	OwnerAccount *string `json:"OwnerAccount,omitempty" xml:"OwnerAccount,omitempty"`
 	OwnerId      *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
-	// The connected areas.
+	// The number of the page to return. Default value: **1**.
 	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
-	// The ID of the local region.
-	//
-	// You can call the [DescribeChildInstanceRegions](~~132080~~) operation to query the most recent region list.
+	// The number of entries to return on each page. Default value: **10**. Valid values: **1** to **50**.
 	PageSize             *int32  `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
 	ResourceOwnerAccount *string `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
 	ResourceOwnerId      *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
-	TrRegionId           *string `json:"TrRegionId,omitempty" xml:"TrRegionId,omitempty"`
+	// The region ID of the transit router.
+	//
+	// You can call the [DescribeChildInstanceRegions](~~132080~~) operation to query the most recent region list.
+	TrRegionId *string `json:"TrRegionId,omitempty" xml:"TrRegionId,omitempty"`
 }
 
 func (s DescribeCenInterRegionBandwidthLimitsRequest) String() string {
@@ -9880,15 +9960,15 @@ func (s *DescribeCenInterRegionBandwidthLimitsRequest) SetTrRegionId(v string) *
 }
 
 type DescribeCenInterRegionBandwidthLimitsResponseBody struct {
-	// The ID of the peer region.
+	// A list of inter-region connections.
 	CenInterRegionBandwidthLimits *DescribeCenInterRegionBandwidthLimitsResponseBodyCenInterRegionBandwidthLimits `json:"CenInterRegionBandwidthLimits,omitempty" xml:"CenInterRegionBandwidthLimits,omitempty" type:"Struct"`
-	// The ID of the CEN instance.
+	// The page number of the returned page.
 	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
-	// The number of the page to return. Default value: **1**.
+	// The number of entries returned per page.
 	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	// The bandwidth limit of the cross-region connection. Unit: Mbit/s.
+	// The request ID.
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// The list of cross-region connections.
+	// The total number of entries returned.
 	TotalCount *int32 `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
 }
 
@@ -9943,13 +10023,24 @@ func (s *DescribeCenInterRegionBandwidthLimitsResponseBodyCenInterRegionBandwidt
 }
 
 type DescribeCenInterRegionBandwidthLimitsResponseBodyCenInterRegionBandwidthLimitsCenInterRegionBandwidthLimit struct {
-	BandwidthLimit     *int64  `json:"BandwidthLimit,omitempty" xml:"BandwidthLimit,omitempty"`
+	// The maximum bandwidth of the inter-region connection. Unit: Mbit/s.
+	BandwidthLimit *int64 `json:"BandwidthLimit,omitempty" xml:"BandwidthLimit,omitempty"`
+	// The ID of the bandwidth plan.
 	BandwidthPackageId *string `json:"BandwidthPackageId,omitempty" xml:"BandwidthPackageId,omitempty"`
-	CenId              *string `json:"CenId,omitempty" xml:"CenId,omitempty"`
-	GeographicSpanId   *string `json:"GeographicSpanId,omitempty" xml:"GeographicSpanId,omitempty"`
-	LocalRegionId      *string `json:"LocalRegionId,omitempty" xml:"LocalRegionId,omitempty"`
-	OppositeRegionId   *string `json:"OppositeRegionId,omitempty" xml:"OppositeRegionId,omitempty"`
-	// Queries the bandwidth limits of cross-region connections.
+	// The CEN instance ID.
+	CenId *string `json:"CenId,omitempty" xml:"CenId,omitempty"`
+	// The IDs of the local and peer regions.
+	GeographicSpanId *string `json:"GeographicSpanId,omitempty" xml:"GeographicSpanId,omitempty"`
+	// The ID of the local region.
+	//
+	// You can call the [DescribeChildInstanceRegions](~~132080~~) operation to query the most recent region list.
+	LocalRegionId *string `json:"LocalRegionId,omitempty" xml:"LocalRegionId,omitempty"`
+	// The ID of the peer region.
+	OppositeRegionId *string `json:"OppositeRegionId,omitempty" xml:"OppositeRegionId,omitempty"`
+	// The bandwidth status of the inter-region connection. Valid values:
+	//
+	// *   **Active**
+	// *   **Modifying**
 	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
 }
 
@@ -11930,8 +12021,9 @@ func (s *DescribeCensResponse) SetBody(v *DescribeCensResponseBody) *DescribeCen
 }
 
 type DescribeChildInstanceRegionsRequest struct {
-	OwnerAccount *string `json:"OwnerAccount,omitempty" xml:"OwnerAccount,omitempty"`
-	OwnerId      *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
+	AcceptLanguage *string `json:"AcceptLanguage,omitempty" xml:"AcceptLanguage,omitempty"`
+	OwnerAccount   *string `json:"OwnerAccount,omitempty" xml:"OwnerAccount,omitempty"`
+	OwnerId        *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
 	// The type of the network instance. Valid values:
 	//
 	// *   **VPC**: virtual private cloud (VPC)
@@ -11948,6 +12040,11 @@ func (s DescribeChildInstanceRegionsRequest) String() string {
 
 func (s DescribeChildInstanceRegionsRequest) GoString() string {
 	return s.String()
+}
+
+func (s *DescribeChildInstanceRegionsRequest) SetAcceptLanguage(v string) *DescribeChildInstanceRegionsRequest {
+	s.AcceptLanguage = &v
+	return s
 }
 
 func (s *DescribeChildInstanceRegionsRequest) SetOwnerAccount(v string) *DescribeChildInstanceRegionsRequest {
@@ -15966,18 +16063,31 @@ func (s *ListCenInterRegionTrafficQosQueuesResponse) SetBody(v *ListCenInterRegi
 }
 
 type ListGrantVSwitchEnisRequest struct {
-	CenId                *string   `json:"CenId,omitempty" xml:"CenId,omitempty"`
-	MaxResults           *int64    `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
-	NetworkInterfaceId   []*string `json:"NetworkInterfaceId,omitempty" xml:"NetworkInterfaceId,omitempty" type:"Repeated"`
-	NetworkInterfaceName *string   `json:"NetworkInterfaceName,omitempty" xml:"NetworkInterfaceName,omitempty"`
-	NextToken            *string   `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
-	OwnerAccount         *string   `json:"OwnerAccount,omitempty" xml:"OwnerAccount,omitempty"`
-	OwnerId              *int64    `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
-	PrimaryIpAddress     *string   `json:"PrimaryIpAddress,omitempty" xml:"PrimaryIpAddress,omitempty"`
-	ResourceOwnerAccount *string   `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
-	ResourceOwnerId      *int64    `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
-	VSwitchId            *string   `json:"VSwitchId,omitempty" xml:"VSwitchId,omitempty"`
-	VpcId                *string   `json:"VpcId,omitempty" xml:"VpcId,omitempty"`
+	// The ID of the CEN instance to which the VPC is attached.
+	CenId *string `json:"CenId,omitempty" xml:"CenId,omitempty"`
+	// The number of entries to return on each page. Valid values: 10 to 500.
+	//
+	// Default value:
+	//
+	// *   If you do not specify a value, the default value is 20.
+	// *   If this parameter is set to a value greater than 500, the default value is 500.
+	MaxResults *int64 `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
+	// The ID of ENI N. Valid values of N: 1 to 100.
+	NetworkInterfaceId []*string `json:"NetworkInterfaceId,omitempty" xml:"NetworkInterfaceId,omitempty" type:"Repeated"`
+	// The name of the ENI.
+	NetworkInterfaceName *string `json:"NetworkInterfaceName,omitempty" xml:"NetworkInterfaceName,omitempty"`
+	// The pagination token that is used in the next request to retrieve a new page of results. You do not need to specify this parameter for the first request. You must specify the token that is obtained from the previous query as the value of NextToken.
+	NextToken    *string `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
+	OwnerAccount *string `json:"OwnerAccount,omitempty" xml:"OwnerAccount,omitempty"`
+	OwnerId      *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
+	// The primary private IPv4 address of the ENI.
+	PrimaryIpAddress     *string `json:"PrimaryIpAddress,omitempty" xml:"PrimaryIpAddress,omitempty"`
+	ResourceOwnerAccount *string `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
+	ResourceOwnerId      *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
+	// The ID of a vSwitch in the VPC. You can specify only one vSwitch in each call.
+	VSwitchId *string `json:"VSwitchId,omitempty" xml:"VSwitchId,omitempty"`
+	// The ID of the VPC.
+	VpcId *string `json:"VpcId,omitempty" xml:"VpcId,omitempty"`
 }
 
 func (s ListGrantVSwitchEnisRequest) String() string {
@@ -16049,11 +16159,18 @@ func (s *ListGrantVSwitchEnisRequest) SetVpcId(v string) *ListGrantVSwitchEnisRe
 }
 
 type ListGrantVSwitchEnisResponseBody struct {
+	// The information about the ENI.
 	GrantVSwitchEnis []*ListGrantVSwitchEnisResponseBodyGrantVSwitchEnis `json:"GrantVSwitchEnis,omitempty" xml:"GrantVSwitchEnis,omitempty" type:"Repeated"`
-	MaxResults       *int64                                              `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
-	NextToken        *string                                             `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
-	RequestId        *string                                             `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	TotalCount       *string                                             `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
+	// The total number of entries returned.
+	MaxResults *int64 `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
+	// The returned value of NextToken is a pagination token, which can be used in the next request to retrieve a new page of results.
+	NextToken *string `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
+	// The ID of the request.
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The total number of entries returned.
+	//
+	// > If MaxResults and NextToken are sued to query results by page, ignore this parameter.
+	TotalCount *string `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
 }
 
 func (s ListGrantVSwitchEnisResponseBody) String() string {
@@ -16090,13 +16207,25 @@ func (s *ListGrantVSwitchEnisResponseBody) SetTotalCount(v string) *ListGrantVSw
 }
 
 type ListGrantVSwitchEnisResponseBodyGrantVSwitchEnis struct {
-	Description          *string `json:"Description,omitempty" xml:"Description,omitempty"`
-	NetworkInterfaceId   *string `json:"NetworkInterfaceId,omitempty" xml:"NetworkInterfaceId,omitempty"`
+	// The ENI description.
+	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
+	// The ENI ID.
+	NetworkInterfaceId *string `json:"NetworkInterfaceId,omitempty" xml:"NetworkInterfaceId,omitempty"`
+	// The ENI name.
 	NetworkInterfaceName *string `json:"NetworkInterfaceName,omitempty" xml:"NetworkInterfaceName,omitempty"`
-	PrimaryIpAddress     *string `json:"PrimaryIpAddress,omitempty" xml:"PrimaryIpAddress,omitempty"`
-	TransitRouterFlag    *bool   `json:"TransitRouterFlag,omitempty" xml:"TransitRouterFlag,omitempty"`
-	VSwitchId            *string `json:"VSwitchId,omitempty" xml:"VSwitchId,omitempty"`
-	VpcId                *string `json:"VpcId,omitempty" xml:"VpcId,omitempty"`
+	// The primary private IPv4 address of the ENI.
+	PrimaryIpAddress *string `json:"PrimaryIpAddress,omitempty" xml:"PrimaryIpAddress,omitempty"`
+	// Indicates whether the ENI is created by a transit router. Valid values:
+	//
+	// *   **true**
+	// *   **false**
+	//
+	// ENIs that are created by transit routers cannot be used as multicast sources or members.
+	TransitRouterFlag *bool `json:"TransitRouterFlag,omitempty" xml:"TransitRouterFlag,omitempty"`
+	// The vSwitch ID.
+	VSwitchId *string `json:"VSwitchId,omitempty" xml:"VSwitchId,omitempty"`
+	// The VPC ID.
+	VpcId *string `json:"VpcId,omitempty" xml:"VpcId,omitempty"`
 }
 
 func (s ListGrantVSwitchEnisResponseBodyGrantVSwitchEnis) String() string {
@@ -16172,16 +16301,29 @@ func (s *ListGrantVSwitchEnisResponse) SetBody(v *ListGrantVSwitchEnisResponseBo
 }
 
 type ListGrantVSwitchesToCenRequest struct {
-	CenId                *string `json:"CenId,omitempty" xml:"CenId,omitempty"`
-	OwnerAccount         *string `json:"OwnerAccount,omitempty" xml:"OwnerAccount,omitempty"`
-	OwnerId              *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
-	PageNumber           *int32  `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
-	PageSize             *int32  `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	// The ID of the CEN instance.
+	CenId        *string `json:"CenId,omitempty" xml:"CenId,omitempty"`
+	OwnerAccount *string `json:"OwnerAccount,omitempty" xml:"OwnerAccount,omitempty"`
+	OwnerId      *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
+	// The page number of the page to return. Default value: **1**.
+	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
+	// The number of entries to return on each page. Valid values: **1** to **50**. Default value: **10**.
+	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	// The region ID of the VPC.
+	//
+	// You can call the [DescribeChildInstanceRegions](~~132080~~) operation to query the most recent region list.
 	RegionId             *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 	ResourceOwnerAccount *string `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
 	ResourceOwnerId      *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
-	VpcId                *string `json:"VpcId,omitempty" xml:"VpcId,omitempty"`
-	ZoneId               *string `json:"ZoneId,omitempty" xml:"ZoneId,omitempty"`
+	// The ID of the VPC.
+	VpcId *string `json:"VpcId,omitempty" xml:"VpcId,omitempty"`
+	// The ID of the zone.
+	//
+	// *   If you specify a zone ID, the system queries the information about the vSwitches in the specified zone.
+	// *   If you do not specify a zone ID, the system queries the information about the vSwitches in all zones.
+	//
+	// You can call the [DescribeZones](~~36064~~) operation to query the most recent zone list.
+	ZoneId *string `json:"ZoneId,omitempty" xml:"ZoneId,omitempty"`
 }
 
 func (s ListGrantVSwitchesToCenRequest) String() string {
@@ -16243,11 +16385,16 @@ func (s *ListGrantVSwitchesToCenRequest) SetZoneId(v string) *ListGrantVSwitches
 }
 
 type ListGrantVSwitchesToCenResponseBody struct {
-	PageNumber *int32                                          `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
-	PageSize   *int32                                          `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	RequestId  *string                                         `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	TotalCount *int32                                          `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
-	VSwitches  []*ListGrantVSwitchesToCenResponseBodyVSwitches `json:"VSwitches,omitempty" xml:"VSwitches,omitempty" type:"Repeated"`
+	// The page number of the returned page.
+	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
+	// The number of entries returned per page.
+	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	// The ID of the request.
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The total number of entries returned.
+	TotalCount *int32 `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
+	// The list of vSwitches.
+	VSwitches []*ListGrantVSwitchesToCenResponseBodyVSwitches `json:"VSwitches,omitempty" xml:"VSwitches,omitempty" type:"Repeated"`
 }
 
 func (s ListGrantVSwitchesToCenResponseBody) String() string {
@@ -16284,10 +16431,14 @@ func (s *ListGrantVSwitchesToCenResponseBody) SetVSwitches(v []*ListGrantVSwitch
 }
 
 type ListGrantVSwitchesToCenResponseBodyVSwitches struct {
-	VSwitchId   *string `json:"VSwitchId,omitempty" xml:"VSwitchId,omitempty"`
+	// The ID of the vSwitch.
+	VSwitchId *string `json:"VSwitchId,omitempty" xml:"VSwitchId,omitempty"`
+	// The name of the vSwitch.
 	VSwitchName *string `json:"VSwitchName,omitempty" xml:"VSwitchName,omitempty"`
-	VpcId       *string `json:"VpcId,omitempty" xml:"VpcId,omitempty"`
-	ZoneId      *string `json:"ZoneId,omitempty" xml:"ZoneId,omitempty"`
+	// The ID of the VPC to which the vSwitch belongs.
+	VpcId *string `json:"VpcId,omitempty" xml:"VpcId,omitempty"`
+	// The ID of the zone to which the vSwitch belongs.
+	ZoneId *string `json:"ZoneId,omitempty" xml:"ZoneId,omitempty"`
 }
 
 func (s ListGrantVSwitchesToCenResponseBodyVSwitches) String() string {
@@ -20065,7 +20216,7 @@ func (s *ListTransitRouterRouteTablePropagationsResponse) SetBody(v *ListTransit
 }
 
 type ListTransitRouterRouteTablesRequest struct {
-	// The number of entries to return on each page. Valid values: **1** to **100**. Default value: **20**.
+	// The number of entries per page. Valid values: **1** to **100**. Default value: **20**.
 	MaxResults *int32 `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
 	// The token that determines the start point of the query. Valid values:
 	//
@@ -20288,13 +20439,14 @@ type ListTransitRouterRouteTablesResponseBodyTransitRouterRouteTables struct {
 	//
 	// The time follows the ISO8601 standard in the YYYY-MM-DDThh:mmZ format. The time is displayed in UTC.
 	CreateTime *string `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
-	// The ID of the region where the Enterprise Edition transit router is deployed.
+	// The region ID of the Enterprise Edition transit router.
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 	// The features of the route table.
 	RouteTableOptions *ListTransitRouterRouteTablesResponseBodyTransitRouterRouteTablesRouteTableOptions `json:"RouteTableOptions,omitempty" xml:"RouteTableOptions,omitempty" type:"Struct"`
-	// A list of tags.
-	Tags            []*ListTransitRouterRouteTablesResponseBodyTransitRouterRouteTablesTags `json:"Tags,omitempty" xml:"Tags,omitempty" type:"Repeated"`
-	TransitRouterId *string                                                                 `json:"TransitRouterId,omitempty" xml:"TransitRouterId,omitempty"`
+	// The tags.
+	Tags []*ListTransitRouterRouteTablesResponseBodyTransitRouterRouteTablesTags `json:"Tags,omitempty" xml:"Tags,omitempty" type:"Repeated"`
+	// The transit router ID.
+	TransitRouterId *string `json:"TransitRouterId,omitempty" xml:"TransitRouterId,omitempty"`
 	// The description of the route table.
 	TransitRouterRouteTableDescription *string `json:"TransitRouterRouteTableDescription,omitempty" xml:"TransitRouterRouteTableDescription,omitempty"`
 	// The ID of the route table.
@@ -20303,14 +20455,14 @@ type ListTransitRouterRouteTablesResponseBodyTransitRouterRouteTables struct {
 	TransitRouterRouteTableName *string `json:"TransitRouterRouteTableName,omitempty" xml:"TransitRouterRouteTableName,omitempty"`
 	// The status of the route table. Valid values:
 	//
-	// *   **Creating**: The route table is being created.
-	// *   **Deleting**: The route table is being deleted.
-	// *   **Active**: The route table is available.
+	// *   **Creating**
+	// *   **Deleting**
+	// *   **Active**
 	TransitRouterRouteTableStatus *string `json:"TransitRouterRouteTableStatus,omitempty" xml:"TransitRouterRouteTableStatus,omitempty"`
-	// The type of the route table. Valid value:
+	// The type of the route table. Valid values:
 	//
-	// *   **Custom**: a custom route table
-	// *   **System**: the default route table
+	// *   **Custom**
+	// *   **System**
 	TransitRouterRouteTableType *string `json:"TransitRouterRouteTableType,omitempty" xml:"TransitRouterRouteTableType,omitempty"`
 }
 
@@ -20375,8 +20527,8 @@ func (s *ListTransitRouterRouteTablesResponseBodyTransitRouterRouteTables) SetTr
 type ListTransitRouterRouteTablesResponseBodyTransitRouterRouteTablesRouteTableOptions struct {
 	// Indicates whether ECMP routing is enabled. Valid values:
 	//
-	// *   **disable**: ECMP routing is disabled. If ECMP routing is disabled, routes that are learned from different regions but have the same prefix and attributes select the transit router with the smallest region ID as the next hop. Region IDs are sorted in alphabetic order. The network latency and bandwidth consumption also vary based on the region. Proceed with caution.
-	// *   **enable**: ECMP routing is enabled. If ECMP routing is enabled, routes that are learned from different regions but have the same prefix and attributes form an ECMP route. The network latency and bandwidth consumption also vary based on the region. Proceed with caution.
+	// *   **disable** If ECMP routing is disabled, routes that are learned from different regions but have the same prefix and attributes select the transit router with the smallest region ID as the next hop. Region IDs are sorted in alphabetic order. The network latency and bandwidth consumption also vary based on the region. Proceed with caution.
+	// *   **enable** If ECMP routing is enabled, routes that are learned from different regions but have the same prefix and attributes form an ECMP route. The network latency and bandwidth consumption also vary based on the region. Proceed with caution.
 	MultiRegionECMP *string `json:"MultiRegionECMP,omitempty" xml:"MultiRegionECMP,omitempty"`
 }
 
@@ -21390,8 +21542,9 @@ type ListTransitRouterVpnAttachmentsResponseBodyTransitRouterAttachments struct 
 	//
 	// *   **true**: yes
 	// *   **false**: no
-	AutoPublishRouteEnabled *bool   `json:"AutoPublishRouteEnabled,omitempty" xml:"AutoPublishRouteEnabled,omitempty"`
-	CenId                   *string `json:"CenId,omitempty" xml:"CenId,omitempty"`
+	AutoPublishRouteEnabled *bool `json:"AutoPublishRouteEnabled,omitempty" xml:"AutoPublishRouteEnabled,omitempty"`
+	// The ID of the CEN instance.
+	CenId *string `json:"CenId,omitempty" xml:"CenId,omitempty"`
 	// The billing method of the VPN attachment.
 	//
 	// The value is POSTPAY, which is the default value and specifies the pay-as-you-go billing method.
@@ -29383,7 +29536,10 @@ func (client *Client) CreateTransitRouterRouteEntry(request *CreateTransitRouter
 }
 
 /**
- * The ID of the request.
+ * *   Only Enterprise Edition transit routers support custom route tables. For more information about the regions and zones that support Enterprise Edition transit routers, see [What is CEN?](~~181681~~)
+ * *   **CreateTransitRouterRouteTable** is an asynchronous operation. After you send a request, the route table ID is returned but the operation is still being performed in the system background. You can call **ListTransitRouterRouteTables** to query the status of a route table.
+ *     *   If a route table is in the **Creating** state, the route table is being created. In this case, you can query the route table but cannot perform other operations.
+ *     *   If a route table is in the **Active** state, the route table is created.
  *
  * @param request CreateTransitRouterRouteTableRequest
  * @param runtime runtime options for this request RuntimeOptions
@@ -29463,7 +29619,10 @@ func (client *Client) CreateTransitRouterRouteTableWithOptions(request *CreateTr
 }
 
 /**
- * The ID of the request.
+ * *   Only Enterprise Edition transit routers support custom route tables. For more information about the regions and zones that support Enterprise Edition transit routers, see [What is CEN?](~~181681~~)
+ * *   **CreateTransitRouterRouteTable** is an asynchronous operation. After you send a request, the route table ID is returned but the operation is still being performed in the system background. You can call **ListTransitRouterRouteTables** to query the status of a route table.
+ *     *   If a route table is in the **Creating** state, the route table is being created. In this case, you can query the route table but cannot perform other operations.
+ *     *   If a route table is in the **Active** state, the route table is created.
  *
  * @param request CreateTransitRouterRouteTableRequest
  * @return CreateTransitRouterRouteTableResponse
@@ -29971,12 +30130,14 @@ func (client *Client) DeactiveFlowLog(request *DeactiveFlowLogRequest) (_result 
  * - If a CEN instance cannot be found, the CEN instance is deleted.
  * ## Prerequisites
  * The CEN instance that you want to delete is not associated with a bandwidth plan, and the transit router associated with the CEN instance does not have a network instance connection or a custom route table.
- * - For more information about how to detach a network instance, see the following topics:   - [DeleteTransitRouterVpcAttachment](https://www.alibabacloud.com/help/en/cloud-enterprise-network/latest/deletetransitroutervpcattachment)
- *   - [DeleteTransitRouterVbrAttachment](https://www.alibabacloud.com/help/en/cloud-enterprise-network/latest/deletetransitroutervbrattachment)
- *   - [DeleteTransitRouterVpnAttachment](https://www.alibabacloud.com/help/en/cloud-enterprise-network/latest/deletetransitroutervpnattachment)
- *   - [DeleteTransitRouterPeerAttachment](https://www.alibabacloud.com/help/en/cloud-enterprise-network/latest/deletetransitrouterpeerattachment)>  For more information about how to detach network instances from a Basic Edition transit router, see [DetachCenChildInstance](https://www.alibabacloud.com/help/en/cloud-enterprise-network/latest/api-doc-cbn-2017-09-12-api-doc-detachcenchildinstance).
- * - For more information about how to delete a custom route table, see [DeleteTransitRouterRouteTable](https://www.alibabacloud.com/help/en/cloud-enterprise-network/latest/deletetransitrouterroutetable).
- * - For more information about how to disassociate a bandwidth plan from a CEN instance, see [UnassociateCenBandwidthPackage](https://www.alibabacloud.com/help/en/cloud-enterprise-network/latest/api-doc-cbn-2017-09-12-api-doc-unassociatecenbandwidthpackage).
+ * - For more information about how to detach a network instance, see the following topics:
+ *   - [DeleteTransitRouterVpcAttachment](~~468238~~)
+ *   - [DeleteTransitRouterVbrAttachment](~~468244~~)
+ *   - [DeleteTransitRouterVpnAttachment](~~468251~~)
+ *   - [DeleteTransitRouterPeerAttachment](~~468271~~)
+ *   >  For more information about how to detach network instances from a Basic Edition transit router, see [DetachCenChildInstance](~~468685~~).
+ * - For more information about how to delete a custom route table, see [DeleteTransitRouterRouteTable](~~468285~~).
+ * - For more information about how to disassociate a bandwidth plan from a CEN instance, see [UnassociateCenBandwidthPackage](~~468506~~).
  *
  * @param request DeleteCenRequest
  * @param runtime runtime options for this request RuntimeOptions
@@ -30037,12 +30198,14 @@ func (client *Client) DeleteCenWithOptions(request *DeleteCenRequest, runtime *u
  * - If a CEN instance cannot be found, the CEN instance is deleted.
  * ## Prerequisites
  * The CEN instance that you want to delete is not associated with a bandwidth plan, and the transit router associated with the CEN instance does not have a network instance connection or a custom route table.
- * - For more information about how to detach a network instance, see the following topics:   - [DeleteTransitRouterVpcAttachment](https://www.alibabacloud.com/help/en/cloud-enterprise-network/latest/deletetransitroutervpcattachment)
- *   - [DeleteTransitRouterVbrAttachment](https://www.alibabacloud.com/help/en/cloud-enterprise-network/latest/deletetransitroutervbrattachment)
- *   - [DeleteTransitRouterVpnAttachment](https://www.alibabacloud.com/help/en/cloud-enterprise-network/latest/deletetransitroutervpnattachment)
- *   - [DeleteTransitRouterPeerAttachment](https://www.alibabacloud.com/help/en/cloud-enterprise-network/latest/deletetransitrouterpeerattachment)>  For more information about how to detach network instances from a Basic Edition transit router, see [DetachCenChildInstance](https://www.alibabacloud.com/help/en/cloud-enterprise-network/latest/api-doc-cbn-2017-09-12-api-doc-detachcenchildinstance).
- * - For more information about how to delete a custom route table, see [DeleteTransitRouterRouteTable](https://www.alibabacloud.com/help/en/cloud-enterprise-network/latest/deletetransitrouterroutetable).
- * - For more information about how to disassociate a bandwidth plan from a CEN instance, see [UnassociateCenBandwidthPackage](https://www.alibabacloud.com/help/en/cloud-enterprise-network/latest/api-doc-cbn-2017-09-12-api-doc-unassociatecenbandwidthpackage).
+ * - For more information about how to detach a network instance, see the following topics:
+ *   - [DeleteTransitRouterVpcAttachment](~~468238~~)
+ *   - [DeleteTransitRouterVbrAttachment](~~468244~~)
+ *   - [DeleteTransitRouterVpnAttachment](~~468251~~)
+ *   - [DeleteTransitRouterPeerAttachment](~~468271~~)
+ *   >  For more information about how to detach network instances from a Basic Edition transit router, see [DetachCenChildInstance](~~468685~~).
+ * - For more information about how to delete a custom route table, see [DeleteTransitRouterRouteTable](~~468285~~).
+ * - For more information about how to disassociate a bandwidth plan from a CEN instance, see [UnassociateCenBandwidthPackage](~~468506~~).
  *
  * @param request DeleteCenRequest
  * @return DeleteCenResponse
@@ -32985,6 +33148,10 @@ func (client *Client) DescribeChildInstanceRegionsWithOptions(request *DescribeC
 		return _result, _err
 	}
 	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.AcceptLanguage)) {
+		query["AcceptLanguage"] = request.AcceptLanguage
+	}
+
 	if !tea.BoolValue(util.IsUnset(request.OwnerAccount)) {
 		query["OwnerAccount"] = request.OwnerAccount
 	}
@@ -34769,10 +34936,7 @@ func (client *Client) ListCenInterRegionTrafficQosQueues(request *ListCenInterRe
 }
 
 /**
- * Indicates whether the ENI is created by a transit router. Valid values:
- * *   **true**: yes
- * *   **false**: no
- * ENIs that are created by transit routers cannot be used as multicast sources or members.
+ * Before you call `ListGrantVSwitchEnis`, make sure that the VPC is attached to a Cloud Enterprise Network (CEN) instance. For more information, see [CreateTransitRouterVpcAttachment](~~468237~~).
  *
  * @param request ListGrantVSwitchEnisRequest
  * @param runtime runtime options for this request RuntimeOptions
@@ -34856,10 +35020,7 @@ func (client *Client) ListGrantVSwitchEnisWithOptions(request *ListGrantVSwitchE
 }
 
 /**
- * Indicates whether the ENI is created by a transit router. Valid values:
- * *   **true**: yes
- * *   **false**: no
- * ENIs that are created by transit routers cannot be used as multicast sources or members.
+ * Before you call `ListGrantVSwitchEnis`, make sure that the VPC is attached to a Cloud Enterprise Network (CEN) instance. For more information, see [CreateTransitRouterVpcAttachment](~~468237~~).
  *
  * @param request ListGrantVSwitchEnisRequest
  * @return ListGrantVSwitchEnisResponse
@@ -34876,7 +35037,11 @@ func (client *Client) ListGrantVSwitchEnis(request *ListGrantVSwitchEnisRequest)
 }
 
 /**
- * The ID of the VPC to which the vSwitch belongs.
+ * Before you call the `ListGrantVSwitchesToCen` operation, make sure that the following requirements are met:
+ * *   The permissions on the VPC are granted to the CEN instance. For more information, see [GrantInstanceToCen](~~126224~~).
+ * *   The VPC is attached to the CEN instance.
+ *     *   For more information about how to connect an Enterprise Edition transit router to a VPC, see [CreateTransitRouterVpcAttachment](~~261358~~).
+ *     *   For more information about how to connect a Basic Edition transit router to a VPC, see [AttachCenChildInstance](~~65902~~).
  *
  * @param request ListGrantVSwitchesToCenRequest
  * @param runtime runtime options for this request RuntimeOptions
@@ -34952,7 +35117,11 @@ func (client *Client) ListGrantVSwitchesToCenWithOptions(request *ListGrantVSwit
 }
 
 /**
- * The ID of the VPC to which the vSwitch belongs.
+ * Before you call the `ListGrantVSwitchesToCen` operation, make sure that the following requirements are met:
+ * *   The permissions on the VPC are granted to the CEN instance. For more information, see [GrantInstanceToCen](~~126224~~).
+ * *   The VPC is attached to the CEN instance.
+ *     *   For more information about how to connect an Enterprise Edition transit router to a VPC, see [CreateTransitRouterVpcAttachment](~~261358~~).
+ *     *   For more information about how to connect a Basic Edition transit router to a VPC, see [AttachCenChildInstance](~~65902~~).
  *
  * @param request ListGrantVSwitchesToCenRequest
  * @return ListGrantVSwitchesToCenResponse
@@ -38401,7 +38570,7 @@ func (client *Client) ResolveAndRouteServiceInCen(request *ResolveAndRouteServic
  * Before you call `RevokeInstanceFromTransitRouter`, you must detach the network instances from the transit router.
  * - For more information about how to detach VPCs from an Enterprise Edition transit router, see [DeleteTransitRouterVpcAttachment](https://www.alibabacloud.com/help/en/cloud-enterprise-network/latest/deletetransitroutervpcattachment).
  * - For more information about how to detach VBRs from an Enterprise Edition transit router, see [DeleteTransitRouterVbrAttachment](https://www.alibabacloud.com/help/en/cloud-enterprise-network/latest/deletetransitroutervbrattachment).
- * - For more information about how to detach network instances from a Basic Edition transit router, see [DetachCenChildInstance](https://www.alibabacloud.com/help/en/cloud-enterprise-network/latest/api-doc-cbn-2017-09-12-api-doc-detachcenchildinstance).
+ * - For more information about how to detach network instances from a Basic Edition transit router, see [DetachCenChildInstance](~~468685~~).
  *
  * @param request RevokeInstanceFromTransitRouterRequest
  * @param runtime runtime options for this request RuntimeOptions
@@ -38480,7 +38649,7 @@ func (client *Client) RevokeInstanceFromTransitRouterWithOptions(request *Revoke
  * Before you call `RevokeInstanceFromTransitRouter`, you must detach the network instances from the transit router.
  * - For more information about how to detach VPCs from an Enterprise Edition transit router, see [DeleteTransitRouterVpcAttachment](https://www.alibabacloud.com/help/en/cloud-enterprise-network/latest/deletetransitroutervpcattachment).
  * - For more information about how to detach VBRs from an Enterprise Edition transit router, see [DeleteTransitRouterVbrAttachment](https://www.alibabacloud.com/help/en/cloud-enterprise-network/latest/deletetransitroutervbrattachment).
- * - For more information about how to detach network instances from a Basic Edition transit router, see [DetachCenChildInstance](https://www.alibabacloud.com/help/en/cloud-enterprise-network/latest/api-doc-cbn-2017-09-12-api-doc-detachcenchildinstance).
+ * - For more information about how to detach network instances from a Basic Edition transit router, see [DetachCenChildInstance](~~468685~~).
  *
  * @param request RevokeInstanceFromTransitRouterRequest
  * @return RevokeInstanceFromTransitRouterResponse
