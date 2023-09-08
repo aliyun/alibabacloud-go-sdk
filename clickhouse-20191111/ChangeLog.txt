@@ -1,3 +1,6 @@
+2023-09-08 Version: v3.2.0
+- Generated golang 2019-11-11 for clickhouse.
+
 2022-04-06 Version: v3.1.4
 - Clickhouse add restore.
 
