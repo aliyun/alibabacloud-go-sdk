@@ -1022,6 +1022,93 @@ func (s *CertificatePublicKeyVerifyResponse) SetBody(v *CertificatePublicKeyVeri
 	return s
 }
 
+type ConnectKmsInstanceRequest struct {
+	KMProvider    *string `json:"KMProvider,omitempty" xml:"KMProvider,omitempty"`
+	KmsInstanceId *string `json:"KmsInstanceId,omitempty" xml:"KmsInstanceId,omitempty"`
+	VSwitchIds    *string `json:"VSwitchIds,omitempty" xml:"VSwitchIds,omitempty"`
+	VpcId         *string `json:"VpcId,omitempty" xml:"VpcId,omitempty"`
+	ZoneIds       *string `json:"ZoneIds,omitempty" xml:"ZoneIds,omitempty"`
+}
+
+func (s ConnectKmsInstanceRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ConnectKmsInstanceRequest) GoString() string {
+	return s.String()
+}
+
+func (s *ConnectKmsInstanceRequest) SetKMProvider(v string) *ConnectKmsInstanceRequest {
+	s.KMProvider = &v
+	return s
+}
+
+func (s *ConnectKmsInstanceRequest) SetKmsInstanceId(v string) *ConnectKmsInstanceRequest {
+	s.KmsInstanceId = &v
+	return s
+}
+
+func (s *ConnectKmsInstanceRequest) SetVSwitchIds(v string) *ConnectKmsInstanceRequest {
+	s.VSwitchIds = &v
+	return s
+}
+
+func (s *ConnectKmsInstanceRequest) SetVpcId(v string) *ConnectKmsInstanceRequest {
+	s.VpcId = &v
+	return s
+}
+
+func (s *ConnectKmsInstanceRequest) SetZoneIds(v string) *ConnectKmsInstanceRequest {
+	s.ZoneIds = &v
+	return s
+}
+
+type ConnectKmsInstanceResponseBody struct {
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+}
+
+func (s ConnectKmsInstanceResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ConnectKmsInstanceResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *ConnectKmsInstanceResponseBody) SetRequestId(v string) *ConnectKmsInstanceResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+type ConnectKmsInstanceResponse struct {
+	Headers    map[string]*string              `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                          `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *ConnectKmsInstanceResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s ConnectKmsInstanceResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ConnectKmsInstanceResponse) GoString() string {
+	return s.String()
+}
+
+func (s *ConnectKmsInstanceResponse) SetHeaders(v map[string]*string) *ConnectKmsInstanceResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *ConnectKmsInstanceResponse) SetStatusCode(v int32) *ConnectKmsInstanceResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *ConnectKmsInstanceResponse) SetBody(v *ConnectKmsInstanceResponseBody) *ConnectKmsInstanceResponse {
+	s.Body = v
+	return s
+}
+
 type CreateAliasRequest struct {
 	// The alias of the CMK.
 	//
@@ -1092,6 +1179,117 @@ func (s *CreateAliasResponse) SetStatusCode(v int32) *CreateAliasResponse {
 }
 
 func (s *CreateAliasResponse) SetBody(v *CreateAliasResponseBody) *CreateAliasResponse {
+	s.Body = v
+	return s
+}
+
+type CreateApplicationAccessPointRequest struct {
+	AuthenticationMethod *string `json:"AuthenticationMethod,omitempty" xml:"AuthenticationMethod,omitempty"`
+	Description          *string `json:"Description,omitempty" xml:"Description,omitempty"`
+	Name                 *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	Policies             *string `json:"Policies,omitempty" xml:"Policies,omitempty"`
+}
+
+func (s CreateApplicationAccessPointRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateApplicationAccessPointRequest) GoString() string {
+	return s.String()
+}
+
+func (s *CreateApplicationAccessPointRequest) SetAuthenticationMethod(v string) *CreateApplicationAccessPointRequest {
+	s.AuthenticationMethod = &v
+	return s
+}
+
+func (s *CreateApplicationAccessPointRequest) SetDescription(v string) *CreateApplicationAccessPointRequest {
+	s.Description = &v
+	return s
+}
+
+func (s *CreateApplicationAccessPointRequest) SetName(v string) *CreateApplicationAccessPointRequest {
+	s.Name = &v
+	return s
+}
+
+func (s *CreateApplicationAccessPointRequest) SetPolicies(v string) *CreateApplicationAccessPointRequest {
+	s.Policies = &v
+	return s
+}
+
+type CreateApplicationAccessPointResponseBody struct {
+	Arn                  *string `json:"Arn,omitempty" xml:"Arn,omitempty"`
+	AuthenticationMethod *string `json:"AuthenticationMethod,omitempty" xml:"AuthenticationMethod,omitempty"`
+	Description          *string `json:"Description,omitempty" xml:"Description,omitempty"`
+	Name                 *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	Policies             *string `json:"Policies,omitempty" xml:"Policies,omitempty"`
+	RequestId            *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+}
+
+func (s CreateApplicationAccessPointResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateApplicationAccessPointResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *CreateApplicationAccessPointResponseBody) SetArn(v string) *CreateApplicationAccessPointResponseBody {
+	s.Arn = &v
+	return s
+}
+
+func (s *CreateApplicationAccessPointResponseBody) SetAuthenticationMethod(v string) *CreateApplicationAccessPointResponseBody {
+	s.AuthenticationMethod = &v
+	return s
+}
+
+func (s *CreateApplicationAccessPointResponseBody) SetDescription(v string) *CreateApplicationAccessPointResponseBody {
+	s.Description = &v
+	return s
+}
+
+func (s *CreateApplicationAccessPointResponseBody) SetName(v string) *CreateApplicationAccessPointResponseBody {
+	s.Name = &v
+	return s
+}
+
+func (s *CreateApplicationAccessPointResponseBody) SetPolicies(v string) *CreateApplicationAccessPointResponseBody {
+	s.Policies = &v
+	return s
+}
+
+func (s *CreateApplicationAccessPointResponseBody) SetRequestId(v string) *CreateApplicationAccessPointResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+type CreateApplicationAccessPointResponse struct {
+	Headers    map[string]*string                        `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                                    `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *CreateApplicationAccessPointResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s CreateApplicationAccessPointResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateApplicationAccessPointResponse) GoString() string {
+	return s.String()
+}
+
+func (s *CreateApplicationAccessPointResponse) SetHeaders(v map[string]*string) *CreateApplicationAccessPointResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *CreateApplicationAccessPointResponse) SetStatusCode(v int32) *CreateApplicationAccessPointResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *CreateApplicationAccessPointResponse) SetBody(v *CreateApplicationAccessPointResponseBody) *CreateApplicationAccessPointResponse {
 	s.Body = v
 	return s
 }
@@ -1282,6 +1480,117 @@ func (s *CreateCertificateResponse) SetStatusCode(v int32) *CreateCertificateRes
 }
 
 func (s *CreateCertificateResponse) SetBody(v *CreateCertificateResponseBody) *CreateCertificateResponse {
+	s.Body = v
+	return s
+}
+
+type CreateClientKeyRequest struct {
+	AapName   *string `json:"AapName,omitempty" xml:"AapName,omitempty"`
+	NotAfter  *string `json:"NotAfter,omitempty" xml:"NotAfter,omitempty"`
+	NotBefore *string `json:"NotBefore,omitempty" xml:"NotBefore,omitempty"`
+	Password  *string `json:"Password,omitempty" xml:"Password,omitempty"`
+}
+
+func (s CreateClientKeyRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateClientKeyRequest) GoString() string {
+	return s.String()
+}
+
+func (s *CreateClientKeyRequest) SetAapName(v string) *CreateClientKeyRequest {
+	s.AapName = &v
+	return s
+}
+
+func (s *CreateClientKeyRequest) SetNotAfter(v string) *CreateClientKeyRequest {
+	s.NotAfter = &v
+	return s
+}
+
+func (s *CreateClientKeyRequest) SetNotBefore(v string) *CreateClientKeyRequest {
+	s.NotBefore = &v
+	return s
+}
+
+func (s *CreateClientKeyRequest) SetPassword(v string) *CreateClientKeyRequest {
+	s.Password = &v
+	return s
+}
+
+type CreateClientKeyResponseBody struct {
+	ClientKeyId    *string `json:"ClientKeyId,omitempty" xml:"ClientKeyId,omitempty"`
+	KeyAlgorithm   *string `json:"KeyAlgorithm,omitempty" xml:"KeyAlgorithm,omitempty"`
+	NotAfter       *string `json:"NotAfter,omitempty" xml:"NotAfter,omitempty"`
+	NotBefore      *string `json:"NotBefore,omitempty" xml:"NotBefore,omitempty"`
+	PrivateKeyData *string `json:"PrivateKeyData,omitempty" xml:"PrivateKeyData,omitempty"`
+	RequestId      *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+}
+
+func (s CreateClientKeyResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateClientKeyResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *CreateClientKeyResponseBody) SetClientKeyId(v string) *CreateClientKeyResponseBody {
+	s.ClientKeyId = &v
+	return s
+}
+
+func (s *CreateClientKeyResponseBody) SetKeyAlgorithm(v string) *CreateClientKeyResponseBody {
+	s.KeyAlgorithm = &v
+	return s
+}
+
+func (s *CreateClientKeyResponseBody) SetNotAfter(v string) *CreateClientKeyResponseBody {
+	s.NotAfter = &v
+	return s
+}
+
+func (s *CreateClientKeyResponseBody) SetNotBefore(v string) *CreateClientKeyResponseBody {
+	s.NotBefore = &v
+	return s
+}
+
+func (s *CreateClientKeyResponseBody) SetPrivateKeyData(v string) *CreateClientKeyResponseBody {
+	s.PrivateKeyData = &v
+	return s
+}
+
+func (s *CreateClientKeyResponseBody) SetRequestId(v string) *CreateClientKeyResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+type CreateClientKeyResponse struct {
+	Headers    map[string]*string           `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                       `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *CreateClientKeyResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s CreateClientKeyResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateClientKeyResponse) GoString() string {
+	return s.String()
+}
+
+func (s *CreateClientKeyResponse) SetHeaders(v map[string]*string) *CreateClientKeyResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *CreateClientKeyResponse) SetStatusCode(v int32) *CreateClientKeyResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *CreateClientKeyResponse) SetBody(v *CreateClientKeyResponseBody) *CreateClientKeyResponse {
 	s.Body = v
 	return s
 }
@@ -1717,6 +2026,252 @@ func (s *CreateKeyVersionResponse) SetStatusCode(v int32) *CreateKeyVersionRespo
 }
 
 func (s *CreateKeyVersionResponse) SetBody(v *CreateKeyVersionResponseBody) *CreateKeyVersionResponse {
+	s.Body = v
+	return s
+}
+
+type CreateNetworkRuleRequest struct {
+	Description     *string `json:"Description,omitempty" xml:"Description,omitempty"`
+	Name            *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	SourcePrivateIp *string `json:"SourcePrivateIp,omitempty" xml:"SourcePrivateIp,omitempty"`
+	Type            *string `json:"Type,omitempty" xml:"Type,omitempty"`
+}
+
+func (s CreateNetworkRuleRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateNetworkRuleRequest) GoString() string {
+	return s.String()
+}
+
+func (s *CreateNetworkRuleRequest) SetDescription(v string) *CreateNetworkRuleRequest {
+	s.Description = &v
+	return s
+}
+
+func (s *CreateNetworkRuleRequest) SetName(v string) *CreateNetworkRuleRequest {
+	s.Name = &v
+	return s
+}
+
+func (s *CreateNetworkRuleRequest) SetSourcePrivateIp(v string) *CreateNetworkRuleRequest {
+	s.SourcePrivateIp = &v
+	return s
+}
+
+func (s *CreateNetworkRuleRequest) SetType(v string) *CreateNetworkRuleRequest {
+	s.Type = &v
+	return s
+}
+
+type CreateNetworkRuleResponseBody struct {
+	Arn             *string `json:"Arn,omitempty" xml:"Arn,omitempty"`
+	Description     *string `json:"Description,omitempty" xml:"Description,omitempty"`
+	Name            *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	RequestId       *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	SourcePrivateIp *string `json:"SourcePrivateIp,omitempty" xml:"SourcePrivateIp,omitempty"`
+	Type            *string `json:"Type,omitempty" xml:"Type,omitempty"`
+}
+
+func (s CreateNetworkRuleResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateNetworkRuleResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *CreateNetworkRuleResponseBody) SetArn(v string) *CreateNetworkRuleResponseBody {
+	s.Arn = &v
+	return s
+}
+
+func (s *CreateNetworkRuleResponseBody) SetDescription(v string) *CreateNetworkRuleResponseBody {
+	s.Description = &v
+	return s
+}
+
+func (s *CreateNetworkRuleResponseBody) SetName(v string) *CreateNetworkRuleResponseBody {
+	s.Name = &v
+	return s
+}
+
+func (s *CreateNetworkRuleResponseBody) SetRequestId(v string) *CreateNetworkRuleResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *CreateNetworkRuleResponseBody) SetSourcePrivateIp(v string) *CreateNetworkRuleResponseBody {
+	s.SourcePrivateIp = &v
+	return s
+}
+
+func (s *CreateNetworkRuleResponseBody) SetType(v string) *CreateNetworkRuleResponseBody {
+	s.Type = &v
+	return s
+}
+
+type CreateNetworkRuleResponse struct {
+	Headers    map[string]*string             `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                         `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *CreateNetworkRuleResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s CreateNetworkRuleResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateNetworkRuleResponse) GoString() string {
+	return s.String()
+}
+
+func (s *CreateNetworkRuleResponse) SetHeaders(v map[string]*string) *CreateNetworkRuleResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *CreateNetworkRuleResponse) SetStatusCode(v int32) *CreateNetworkRuleResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *CreateNetworkRuleResponse) SetBody(v *CreateNetworkRuleResponseBody) *CreateNetworkRuleResponse {
+	s.Body = v
+	return s
+}
+
+type CreatePolicyRequest struct {
+	AccessControlRules *string `json:"AccessControlRules,omitempty" xml:"AccessControlRules,omitempty"`
+	Description        *string `json:"Description,omitempty" xml:"Description,omitempty"`
+	KmsInstance        *string `json:"KmsInstance,omitempty" xml:"KmsInstance,omitempty"`
+	Name               *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	Permissions        *string `json:"Permissions,omitempty" xml:"Permissions,omitempty"`
+	Resources          *string `json:"Resources,omitempty" xml:"Resources,omitempty"`
+}
+
+func (s CreatePolicyRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreatePolicyRequest) GoString() string {
+	return s.String()
+}
+
+func (s *CreatePolicyRequest) SetAccessControlRules(v string) *CreatePolicyRequest {
+	s.AccessControlRules = &v
+	return s
+}
+
+func (s *CreatePolicyRequest) SetDescription(v string) *CreatePolicyRequest {
+	s.Description = &v
+	return s
+}
+
+func (s *CreatePolicyRequest) SetKmsInstance(v string) *CreatePolicyRequest {
+	s.KmsInstance = &v
+	return s
+}
+
+func (s *CreatePolicyRequest) SetName(v string) *CreatePolicyRequest {
+	s.Name = &v
+	return s
+}
+
+func (s *CreatePolicyRequest) SetPermissions(v string) *CreatePolicyRequest {
+	s.Permissions = &v
+	return s
+}
+
+func (s *CreatePolicyRequest) SetResources(v string) *CreatePolicyRequest {
+	s.Resources = &v
+	return s
+}
+
+type CreatePolicyResponseBody struct {
+	AccessControlRules *string `json:"AccessControlRules,omitempty" xml:"AccessControlRules,omitempty"`
+	Arn                *string `json:"Arn,omitempty" xml:"Arn,omitempty"`
+	Description        *string `json:"Description,omitempty" xml:"Description,omitempty"`
+	KmsInstance        *string `json:"KmsInstance,omitempty" xml:"KmsInstance,omitempty"`
+	Name               *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	Permissions        *string `json:"Permissions,omitempty" xml:"Permissions,omitempty"`
+	RequestId          *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	Resources          *string `json:"Resources,omitempty" xml:"Resources,omitempty"`
+}
+
+func (s CreatePolicyResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreatePolicyResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *CreatePolicyResponseBody) SetAccessControlRules(v string) *CreatePolicyResponseBody {
+	s.AccessControlRules = &v
+	return s
+}
+
+func (s *CreatePolicyResponseBody) SetArn(v string) *CreatePolicyResponseBody {
+	s.Arn = &v
+	return s
+}
+
+func (s *CreatePolicyResponseBody) SetDescription(v string) *CreatePolicyResponseBody {
+	s.Description = &v
+	return s
+}
+
+func (s *CreatePolicyResponseBody) SetKmsInstance(v string) *CreatePolicyResponseBody {
+	s.KmsInstance = &v
+	return s
+}
+
+func (s *CreatePolicyResponseBody) SetName(v string) *CreatePolicyResponseBody {
+	s.Name = &v
+	return s
+}
+
+func (s *CreatePolicyResponseBody) SetPermissions(v string) *CreatePolicyResponseBody {
+	s.Permissions = &v
+	return s
+}
+
+func (s *CreatePolicyResponseBody) SetRequestId(v string) *CreatePolicyResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *CreatePolicyResponseBody) SetResources(v string) *CreatePolicyResponseBody {
+	s.Resources = &v
+	return s
+}
+
+type CreatePolicyResponse struct {
+	Headers    map[string]*string        `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                    `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *CreatePolicyResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s CreatePolicyResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreatePolicyResponse) GoString() string {
+	return s.String()
+}
+
+func (s *CreatePolicyResponse) SetHeaders(v map[string]*string) *CreatePolicyResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *CreatePolicyResponse) SetStatusCode(v int32) *CreatePolicyResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *CreatePolicyResponse) SetBody(v *CreatePolicyResponseBody) *CreatePolicyResponse {
 	s.Body = v
 	return s
 }
@@ -2367,6 +2922,69 @@ func (s *DeleteAliasResponse) SetBody(v *DeleteAliasResponseBody) *DeleteAliasRe
 	return s
 }
 
+type DeleteApplicationAccessPointRequest struct {
+	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+}
+
+func (s DeleteApplicationAccessPointRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DeleteApplicationAccessPointRequest) GoString() string {
+	return s.String()
+}
+
+func (s *DeleteApplicationAccessPointRequest) SetName(v string) *DeleteApplicationAccessPointRequest {
+	s.Name = &v
+	return s
+}
+
+type DeleteApplicationAccessPointResponseBody struct {
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+}
+
+func (s DeleteApplicationAccessPointResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DeleteApplicationAccessPointResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *DeleteApplicationAccessPointResponseBody) SetRequestId(v string) *DeleteApplicationAccessPointResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+type DeleteApplicationAccessPointResponse struct {
+	Headers    map[string]*string                        `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                                    `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *DeleteApplicationAccessPointResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s DeleteApplicationAccessPointResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DeleteApplicationAccessPointResponse) GoString() string {
+	return s.String()
+}
+
+func (s *DeleteApplicationAccessPointResponse) SetHeaders(v map[string]*string) *DeleteApplicationAccessPointResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *DeleteApplicationAccessPointResponse) SetStatusCode(v int32) *DeleteApplicationAccessPointResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *DeleteApplicationAccessPointResponse) SetBody(v *DeleteApplicationAccessPointResponseBody) *DeleteApplicationAccessPointResponse {
+	s.Body = v
+	return s
+}
+
 type DeleteCertificateRequest struct {
 	// The ID of the certificate. It is the globally unique identifier (GUID) of the certificate in Alibaba Cloud Certificate Manager.
 	CertificateId *string `json:"CertificateId,omitempty" xml:"CertificateId,omitempty"`
@@ -2432,6 +3050,69 @@ func (s *DeleteCertificateResponse) SetBody(v *DeleteCertificateResponseBody) *D
 	return s
 }
 
+type DeleteClientKeyRequest struct {
+	ClientKeyId *string `json:"ClientKeyId,omitempty" xml:"ClientKeyId,omitempty"`
+}
+
+func (s DeleteClientKeyRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DeleteClientKeyRequest) GoString() string {
+	return s.String()
+}
+
+func (s *DeleteClientKeyRequest) SetClientKeyId(v string) *DeleteClientKeyRequest {
+	s.ClientKeyId = &v
+	return s
+}
+
+type DeleteClientKeyResponseBody struct {
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+}
+
+func (s DeleteClientKeyResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DeleteClientKeyResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *DeleteClientKeyResponseBody) SetRequestId(v string) *DeleteClientKeyResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+type DeleteClientKeyResponse struct {
+	Headers    map[string]*string           `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                       `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *DeleteClientKeyResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s DeleteClientKeyResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DeleteClientKeyResponse) GoString() string {
+	return s.String()
+}
+
+func (s *DeleteClientKeyResponse) SetHeaders(v map[string]*string) *DeleteClientKeyResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *DeleteClientKeyResponse) SetStatusCode(v int32) *DeleteClientKeyResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *DeleteClientKeyResponse) SetBody(v *DeleteClientKeyResponseBody) *DeleteClientKeyResponse {
+	s.Body = v
+	return s
+}
+
 type DeleteKeyMaterialRequest struct {
 	// The globally unique ID of the CMK.
 	KeyId *string `json:"KeyId,omitempty" xml:"KeyId,omitempty"`
@@ -2493,6 +3174,132 @@ func (s *DeleteKeyMaterialResponse) SetStatusCode(v int32) *DeleteKeyMaterialRes
 }
 
 func (s *DeleteKeyMaterialResponse) SetBody(v *DeleteKeyMaterialResponseBody) *DeleteKeyMaterialResponse {
+	s.Body = v
+	return s
+}
+
+type DeleteNetworkRuleRequest struct {
+	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+}
+
+func (s DeleteNetworkRuleRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DeleteNetworkRuleRequest) GoString() string {
+	return s.String()
+}
+
+func (s *DeleteNetworkRuleRequest) SetName(v string) *DeleteNetworkRuleRequest {
+	s.Name = &v
+	return s
+}
+
+type DeleteNetworkRuleResponseBody struct {
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+}
+
+func (s DeleteNetworkRuleResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DeleteNetworkRuleResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *DeleteNetworkRuleResponseBody) SetRequestId(v string) *DeleteNetworkRuleResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+type DeleteNetworkRuleResponse struct {
+	Headers    map[string]*string             `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                         `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *DeleteNetworkRuleResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s DeleteNetworkRuleResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DeleteNetworkRuleResponse) GoString() string {
+	return s.String()
+}
+
+func (s *DeleteNetworkRuleResponse) SetHeaders(v map[string]*string) *DeleteNetworkRuleResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *DeleteNetworkRuleResponse) SetStatusCode(v int32) *DeleteNetworkRuleResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *DeleteNetworkRuleResponse) SetBody(v *DeleteNetworkRuleResponseBody) *DeleteNetworkRuleResponse {
+	s.Body = v
+	return s
+}
+
+type DeletePolicyRequest struct {
+	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+}
+
+func (s DeletePolicyRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DeletePolicyRequest) GoString() string {
+	return s.String()
+}
+
+func (s *DeletePolicyRequest) SetName(v string) *DeletePolicyRequest {
+	s.Name = &v
+	return s
+}
+
+type DeletePolicyResponseBody struct {
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+}
+
+func (s DeletePolicyResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DeletePolicyResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *DeletePolicyResponseBody) SetRequestId(v string) *DeletePolicyResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+type DeletePolicyResponse struct {
+	Headers    map[string]*string        `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                    `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *DeletePolicyResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s DeletePolicyResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DeletePolicyResponse) GoString() string {
+	return s.String()
+}
+
+func (s *DeletePolicyResponse) SetHeaders(v map[string]*string) *DeletePolicyResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *DeletePolicyResponse) SetStatusCode(v int32) *DeletePolicyResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *DeletePolicyResponse) SetBody(v *DeletePolicyResponseBody) *DeletePolicyResponse {
 	s.Body = v
 	return s
 }
@@ -2655,6 +3462,99 @@ func (s *DescribeAccountKmsStatusResponse) SetStatusCode(v int32) *DescribeAccou
 }
 
 func (s *DescribeAccountKmsStatusResponse) SetBody(v *DescribeAccountKmsStatusResponseBody) *DescribeAccountKmsStatusResponse {
+	s.Body = v
+	return s
+}
+
+type DescribeApplicationAccessPointRequest struct {
+	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+}
+
+func (s DescribeApplicationAccessPointRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeApplicationAccessPointRequest) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeApplicationAccessPointRequest) SetName(v string) *DescribeApplicationAccessPointRequest {
+	s.Name = &v
+	return s
+}
+
+type DescribeApplicationAccessPointResponseBody struct {
+	Arn                  *string `json:"Arn,omitempty" xml:"Arn,omitempty"`
+	AuthenticationMethod *string `json:"AuthenticationMethod,omitempty" xml:"AuthenticationMethod,omitempty"`
+	Description          *string `json:"Description,omitempty" xml:"Description,omitempty"`
+	Name                 *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	Policies             *string `json:"Policies,omitempty" xml:"Policies,omitempty"`
+	RequestId            *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+}
+
+func (s DescribeApplicationAccessPointResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeApplicationAccessPointResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeApplicationAccessPointResponseBody) SetArn(v string) *DescribeApplicationAccessPointResponseBody {
+	s.Arn = &v
+	return s
+}
+
+func (s *DescribeApplicationAccessPointResponseBody) SetAuthenticationMethod(v string) *DescribeApplicationAccessPointResponseBody {
+	s.AuthenticationMethod = &v
+	return s
+}
+
+func (s *DescribeApplicationAccessPointResponseBody) SetDescription(v string) *DescribeApplicationAccessPointResponseBody {
+	s.Description = &v
+	return s
+}
+
+func (s *DescribeApplicationAccessPointResponseBody) SetName(v string) *DescribeApplicationAccessPointResponseBody {
+	s.Name = &v
+	return s
+}
+
+func (s *DescribeApplicationAccessPointResponseBody) SetPolicies(v string) *DescribeApplicationAccessPointResponseBody {
+	s.Policies = &v
+	return s
+}
+
+func (s *DescribeApplicationAccessPointResponseBody) SetRequestId(v string) *DescribeApplicationAccessPointResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+type DescribeApplicationAccessPointResponse struct {
+	Headers    map[string]*string                          `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                                      `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *DescribeApplicationAccessPointResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s DescribeApplicationAccessPointResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeApplicationAccessPointResponse) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeApplicationAccessPointResponse) SetHeaders(v map[string]*string) *DescribeApplicationAccessPointResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *DescribeApplicationAccessPointResponse) SetStatusCode(v int32) *DescribeApplicationAccessPointResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *DescribeApplicationAccessPointResponse) SetBody(v *DescribeApplicationAccessPointResponseBody) *DescribeApplicationAccessPointResponse {
 	s.Body = v
 	return s
 }
@@ -3220,6 +4120,198 @@ func (s *DescribeKeyVersionResponse) SetStatusCode(v int32) *DescribeKeyVersionR
 }
 
 func (s *DescribeKeyVersionResponse) SetBody(v *DescribeKeyVersionResponseBody) *DescribeKeyVersionResponse {
+	s.Body = v
+	return s
+}
+
+type DescribeNetworkRuleRequest struct {
+	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+}
+
+func (s DescribeNetworkRuleRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeNetworkRuleRequest) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeNetworkRuleRequest) SetName(v string) *DescribeNetworkRuleRequest {
+	s.Name = &v
+	return s
+}
+
+type DescribeNetworkRuleResponseBody struct {
+	Arn             *string `json:"Arn,omitempty" xml:"Arn,omitempty"`
+	Description     *string `json:"Description,omitempty" xml:"Description,omitempty"`
+	RequestId       *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	SourcePrivateIp *string `json:"SourcePrivateIp,omitempty" xml:"SourcePrivateIp,omitempty"`
+	Type            *string `json:"Type,omitempty" xml:"Type,omitempty"`
+}
+
+func (s DescribeNetworkRuleResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeNetworkRuleResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeNetworkRuleResponseBody) SetArn(v string) *DescribeNetworkRuleResponseBody {
+	s.Arn = &v
+	return s
+}
+
+func (s *DescribeNetworkRuleResponseBody) SetDescription(v string) *DescribeNetworkRuleResponseBody {
+	s.Description = &v
+	return s
+}
+
+func (s *DescribeNetworkRuleResponseBody) SetRequestId(v string) *DescribeNetworkRuleResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *DescribeNetworkRuleResponseBody) SetSourcePrivateIp(v string) *DescribeNetworkRuleResponseBody {
+	s.SourcePrivateIp = &v
+	return s
+}
+
+func (s *DescribeNetworkRuleResponseBody) SetType(v string) *DescribeNetworkRuleResponseBody {
+	s.Type = &v
+	return s
+}
+
+type DescribeNetworkRuleResponse struct {
+	Headers    map[string]*string               `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                           `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *DescribeNetworkRuleResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s DescribeNetworkRuleResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeNetworkRuleResponse) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeNetworkRuleResponse) SetHeaders(v map[string]*string) *DescribeNetworkRuleResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *DescribeNetworkRuleResponse) SetStatusCode(v int32) *DescribeNetworkRuleResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *DescribeNetworkRuleResponse) SetBody(v *DescribeNetworkRuleResponseBody) *DescribeNetworkRuleResponse {
+	s.Body = v
+	return s
+}
+
+type DescribePolicyRequest struct {
+	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+}
+
+func (s DescribePolicyRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribePolicyRequest) GoString() string {
+	return s.String()
+}
+
+func (s *DescribePolicyRequest) SetName(v string) *DescribePolicyRequest {
+	s.Name = &v
+	return s
+}
+
+type DescribePolicyResponseBody struct {
+	AccessControlRules *string   `json:"AccessControlRules,omitempty" xml:"AccessControlRules,omitempty"`
+	Arn                *string   `json:"Arn,omitempty" xml:"Arn,omitempty"`
+	Description        *string   `json:"Description,omitempty" xml:"Description,omitempty"`
+	KmsInstance        *string   `json:"KmsInstance,omitempty" xml:"KmsInstance,omitempty"`
+	Name               *string   `json:"Name,omitempty" xml:"Name,omitempty"`
+	Permissions        []*string `json:"Permissions,omitempty" xml:"Permissions,omitempty" type:"Repeated"`
+	RequestId          *string   `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	Resources          []*string `json:"Resources,omitempty" xml:"Resources,omitempty" type:"Repeated"`
+}
+
+func (s DescribePolicyResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribePolicyResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *DescribePolicyResponseBody) SetAccessControlRules(v string) *DescribePolicyResponseBody {
+	s.AccessControlRules = &v
+	return s
+}
+
+func (s *DescribePolicyResponseBody) SetArn(v string) *DescribePolicyResponseBody {
+	s.Arn = &v
+	return s
+}
+
+func (s *DescribePolicyResponseBody) SetDescription(v string) *DescribePolicyResponseBody {
+	s.Description = &v
+	return s
+}
+
+func (s *DescribePolicyResponseBody) SetKmsInstance(v string) *DescribePolicyResponseBody {
+	s.KmsInstance = &v
+	return s
+}
+
+func (s *DescribePolicyResponseBody) SetName(v string) *DescribePolicyResponseBody {
+	s.Name = &v
+	return s
+}
+
+func (s *DescribePolicyResponseBody) SetPermissions(v []*string) *DescribePolicyResponseBody {
+	s.Permissions = v
+	return s
+}
+
+func (s *DescribePolicyResponseBody) SetRequestId(v string) *DescribePolicyResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *DescribePolicyResponseBody) SetResources(v []*string) *DescribePolicyResponseBody {
+	s.Resources = v
+	return s
+}
+
+type DescribePolicyResponse struct {
+	Headers    map[string]*string          `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                      `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *DescribePolicyResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s DescribePolicyResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribePolicyResponse) GoString() string {
+	return s.String()
+}
+
+func (s *DescribePolicyResponse) SetHeaders(v map[string]*string) *DescribePolicyResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *DescribePolicyResponse) SetStatusCode(v int32) *DescribePolicyResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *DescribePolicyResponse) SetBody(v *DescribePolicyResponseBody) *DescribePolicyResponse {
 	s.Body = v
 	return s
 }
@@ -4687,6 +5779,339 @@ func (s *GetCertificateResponse) SetBody(v *GetCertificateResponseBody) *GetCert
 	return s
 }
 
+type GetClientKeyRequest struct {
+	ClientKeyId *string `json:"ClientKeyId,omitempty" xml:"ClientKeyId,omitempty"`
+}
+
+func (s GetClientKeyRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetClientKeyRequest) GoString() string {
+	return s.String()
+}
+
+func (s *GetClientKeyRequest) SetClientKeyId(v string) *GetClientKeyRequest {
+	s.ClientKeyId = &v
+	return s
+}
+
+type GetClientKeyResponseBody struct {
+	AapName       *string `json:"AapName,omitempty" xml:"AapName,omitempty"`
+	ClientKeyId   *string `json:"ClientKeyId,omitempty" xml:"ClientKeyId,omitempty"`
+	CreateTime    *string `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
+	KeyAlgorithm  *string `json:"KeyAlgorithm,omitempty" xml:"KeyAlgorithm,omitempty"`
+	KeyOrigin     *string `json:"KeyOrigin,omitempty" xml:"KeyOrigin,omitempty"`
+	NotAfter      *string `json:"NotAfter,omitempty" xml:"NotAfter,omitempty"`
+	NotBefore     *string `json:"NotBefore,omitempty" xml:"NotBefore,omitempty"`
+	PublicKeyData *string `json:"PublicKeyData,omitempty" xml:"PublicKeyData,omitempty"`
+	RequestId     *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+}
+
+func (s GetClientKeyResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetClientKeyResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *GetClientKeyResponseBody) SetAapName(v string) *GetClientKeyResponseBody {
+	s.AapName = &v
+	return s
+}
+
+func (s *GetClientKeyResponseBody) SetClientKeyId(v string) *GetClientKeyResponseBody {
+	s.ClientKeyId = &v
+	return s
+}
+
+func (s *GetClientKeyResponseBody) SetCreateTime(v string) *GetClientKeyResponseBody {
+	s.CreateTime = &v
+	return s
+}
+
+func (s *GetClientKeyResponseBody) SetKeyAlgorithm(v string) *GetClientKeyResponseBody {
+	s.KeyAlgorithm = &v
+	return s
+}
+
+func (s *GetClientKeyResponseBody) SetKeyOrigin(v string) *GetClientKeyResponseBody {
+	s.KeyOrigin = &v
+	return s
+}
+
+func (s *GetClientKeyResponseBody) SetNotAfter(v string) *GetClientKeyResponseBody {
+	s.NotAfter = &v
+	return s
+}
+
+func (s *GetClientKeyResponseBody) SetNotBefore(v string) *GetClientKeyResponseBody {
+	s.NotBefore = &v
+	return s
+}
+
+func (s *GetClientKeyResponseBody) SetPublicKeyData(v string) *GetClientKeyResponseBody {
+	s.PublicKeyData = &v
+	return s
+}
+
+func (s *GetClientKeyResponseBody) SetRequestId(v string) *GetClientKeyResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+type GetClientKeyResponse struct {
+	Headers    map[string]*string        `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                    `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *GetClientKeyResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s GetClientKeyResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetClientKeyResponse) GoString() string {
+	return s.String()
+}
+
+func (s *GetClientKeyResponse) SetHeaders(v map[string]*string) *GetClientKeyResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *GetClientKeyResponse) SetStatusCode(v int32) *GetClientKeyResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *GetClientKeyResponse) SetBody(v *GetClientKeyResponseBody) *GetClientKeyResponse {
+	s.Body = v
+	return s
+}
+
+type GetKmsInstanceRequest struct {
+	KmsInstanceId *string `json:"KmsInstanceId,omitempty" xml:"KmsInstanceId,omitempty"`
+}
+
+func (s GetKmsInstanceRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetKmsInstanceRequest) GoString() string {
+	return s.String()
+}
+
+func (s *GetKmsInstanceRequest) SetKmsInstanceId(v string) *GetKmsInstanceRequest {
+	s.KmsInstanceId = &v
+	return s
+}
+
+type GetKmsInstanceResponseBody struct {
+	KmsInstance *GetKmsInstanceResponseBodyKmsInstance `json:"KmsInstance,omitempty" xml:"KmsInstance,omitempty" type:"Struct"`
+	RequestId   *string                                `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+}
+
+func (s GetKmsInstanceResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetKmsInstanceResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *GetKmsInstanceResponseBody) SetKmsInstance(v *GetKmsInstanceResponseBodyKmsInstance) *GetKmsInstanceResponseBody {
+	s.KmsInstance = v
+	return s
+}
+
+func (s *GetKmsInstanceResponseBody) SetRequestId(v string) *GetKmsInstanceResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+type GetKmsInstanceResponseBodyKmsInstance struct {
+	BindVpcs              *GetKmsInstanceResponseBodyKmsInstanceBindVpcs `json:"BindVpcs,omitempty" xml:"BindVpcs,omitempty" type:"Struct"`
+	CaCertificateChainPem *string                                        `json:"CaCertificateChainPem,omitempty" xml:"CaCertificateChainPem,omitempty"`
+	CreateTime            *string                                        `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
+	EndDate               *string                                        `json:"EndDate,omitempty" xml:"EndDate,omitempty"`
+	InstanceId            *string                                        `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	InstanceName          *string                                        `json:"InstanceName,omitempty" xml:"InstanceName,omitempty"`
+	KeyNum                *int64                                         `json:"KeyNum,omitempty" xml:"KeyNum,omitempty"`
+	SecretNum             *string                                        `json:"SecretNum,omitempty" xml:"SecretNum,omitempty"`
+	Spec                  *int64                                         `json:"Spec,omitempty" xml:"Spec,omitempty"`
+	StartDate             *string                                        `json:"StartDate,omitempty" xml:"StartDate,omitempty"`
+	Status                *string                                        `json:"Status,omitempty" xml:"Status,omitempty"`
+	VpcId                 *string                                        `json:"VpcId,omitempty" xml:"VpcId,omitempty"`
+	VpcNum                *int64                                         `json:"VpcNum,omitempty" xml:"VpcNum,omitempty"`
+	VswitchIds            *string                                        `json:"VswitchIds,omitempty" xml:"VswitchIds,omitempty"`
+	ZoneIds               *string                                        `json:"ZoneIds,omitempty" xml:"ZoneIds,omitempty"`
+}
+
+func (s GetKmsInstanceResponseBodyKmsInstance) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetKmsInstanceResponseBodyKmsInstance) GoString() string {
+	return s.String()
+}
+
+func (s *GetKmsInstanceResponseBodyKmsInstance) SetBindVpcs(v *GetKmsInstanceResponseBodyKmsInstanceBindVpcs) *GetKmsInstanceResponseBodyKmsInstance {
+	s.BindVpcs = v
+	return s
+}
+
+func (s *GetKmsInstanceResponseBodyKmsInstance) SetCaCertificateChainPem(v string) *GetKmsInstanceResponseBodyKmsInstance {
+	s.CaCertificateChainPem = &v
+	return s
+}
+
+func (s *GetKmsInstanceResponseBodyKmsInstance) SetCreateTime(v string) *GetKmsInstanceResponseBodyKmsInstance {
+	s.CreateTime = &v
+	return s
+}
+
+func (s *GetKmsInstanceResponseBodyKmsInstance) SetEndDate(v string) *GetKmsInstanceResponseBodyKmsInstance {
+	s.EndDate = &v
+	return s
+}
+
+func (s *GetKmsInstanceResponseBodyKmsInstance) SetInstanceId(v string) *GetKmsInstanceResponseBodyKmsInstance {
+	s.InstanceId = &v
+	return s
+}
+
+func (s *GetKmsInstanceResponseBodyKmsInstance) SetInstanceName(v string) *GetKmsInstanceResponseBodyKmsInstance {
+	s.InstanceName = &v
+	return s
+}
+
+func (s *GetKmsInstanceResponseBodyKmsInstance) SetKeyNum(v int64) *GetKmsInstanceResponseBodyKmsInstance {
+	s.KeyNum = &v
+	return s
+}
+
+func (s *GetKmsInstanceResponseBodyKmsInstance) SetSecretNum(v string) *GetKmsInstanceResponseBodyKmsInstance {
+	s.SecretNum = &v
+	return s
+}
+
+func (s *GetKmsInstanceResponseBodyKmsInstance) SetSpec(v int64) *GetKmsInstanceResponseBodyKmsInstance {
+	s.Spec = &v
+	return s
+}
+
+func (s *GetKmsInstanceResponseBodyKmsInstance) SetStartDate(v string) *GetKmsInstanceResponseBodyKmsInstance {
+	s.StartDate = &v
+	return s
+}
+
+func (s *GetKmsInstanceResponseBodyKmsInstance) SetStatus(v string) *GetKmsInstanceResponseBodyKmsInstance {
+	s.Status = &v
+	return s
+}
+
+func (s *GetKmsInstanceResponseBodyKmsInstance) SetVpcId(v string) *GetKmsInstanceResponseBodyKmsInstance {
+	s.VpcId = &v
+	return s
+}
+
+func (s *GetKmsInstanceResponseBodyKmsInstance) SetVpcNum(v int64) *GetKmsInstanceResponseBodyKmsInstance {
+	s.VpcNum = &v
+	return s
+}
+
+func (s *GetKmsInstanceResponseBodyKmsInstance) SetVswitchIds(v string) *GetKmsInstanceResponseBodyKmsInstance {
+	s.VswitchIds = &v
+	return s
+}
+
+func (s *GetKmsInstanceResponseBodyKmsInstance) SetZoneIds(v string) *GetKmsInstanceResponseBodyKmsInstance {
+	s.ZoneIds = &v
+	return s
+}
+
+type GetKmsInstanceResponseBodyKmsInstanceBindVpcs struct {
+	BindVpc []*GetKmsInstanceResponseBodyKmsInstanceBindVpcsBindVpc `json:"BindVpc,omitempty" xml:"BindVpc,omitempty" type:"Repeated"`
+}
+
+func (s GetKmsInstanceResponseBodyKmsInstanceBindVpcs) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetKmsInstanceResponseBodyKmsInstanceBindVpcs) GoString() string {
+	return s.String()
+}
+
+func (s *GetKmsInstanceResponseBodyKmsInstanceBindVpcs) SetBindVpc(v []*GetKmsInstanceResponseBodyKmsInstanceBindVpcsBindVpc) *GetKmsInstanceResponseBodyKmsInstanceBindVpcs {
+	s.BindVpc = v
+	return s
+}
+
+type GetKmsInstanceResponseBodyKmsInstanceBindVpcsBindVpc struct {
+	RegionId   *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	VSwitchId  *string `json:"VSwitchId,omitempty" xml:"VSwitchId,omitempty"`
+	VpcId      *string `json:"VpcId,omitempty" xml:"VpcId,omitempty"`
+	VpcOwnerId *string `json:"VpcOwnerId,omitempty" xml:"VpcOwnerId,omitempty"`
+}
+
+func (s GetKmsInstanceResponseBodyKmsInstanceBindVpcsBindVpc) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetKmsInstanceResponseBodyKmsInstanceBindVpcsBindVpc) GoString() string {
+	return s.String()
+}
+
+func (s *GetKmsInstanceResponseBodyKmsInstanceBindVpcsBindVpc) SetRegionId(v string) *GetKmsInstanceResponseBodyKmsInstanceBindVpcsBindVpc {
+	s.RegionId = &v
+	return s
+}
+
+func (s *GetKmsInstanceResponseBodyKmsInstanceBindVpcsBindVpc) SetVSwitchId(v string) *GetKmsInstanceResponseBodyKmsInstanceBindVpcsBindVpc {
+	s.VSwitchId = &v
+	return s
+}
+
+func (s *GetKmsInstanceResponseBodyKmsInstanceBindVpcsBindVpc) SetVpcId(v string) *GetKmsInstanceResponseBodyKmsInstanceBindVpcsBindVpc {
+	s.VpcId = &v
+	return s
+}
+
+func (s *GetKmsInstanceResponseBodyKmsInstanceBindVpcsBindVpc) SetVpcOwnerId(v string) *GetKmsInstanceResponseBodyKmsInstanceBindVpcsBindVpc {
+	s.VpcOwnerId = &v
+	return s
+}
+
+type GetKmsInstanceResponse struct {
+	Headers    map[string]*string          `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                      `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *GetKmsInstanceResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s GetKmsInstanceResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetKmsInstanceResponse) GoString() string {
+	return s.String()
+}
+
+func (s *GetKmsInstanceResponse) SetHeaders(v map[string]*string) *GetKmsInstanceResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *GetKmsInstanceResponse) SetStatusCode(v int32) *GetKmsInstanceResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *GetKmsInstanceResponse) SetBody(v *GetKmsInstanceResponseBody) *GetKmsInstanceResponse {
+	s.Body = v
+	return s
+}
+
 type GetParametersForImportRequest struct {
 	// The globally unique ID of the CMK.
 	//
@@ -5690,6 +7115,267 @@ func (s *ListAliasesByKeyIdResponse) SetBody(v *ListAliasesByKeyIdResponseBody) 
 	return s
 }
 
+type ListApplicationAccessPointsRequest struct {
+	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
+	PageSize   *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+}
+
+func (s ListApplicationAccessPointsRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListApplicationAccessPointsRequest) GoString() string {
+	return s.String()
+}
+
+func (s *ListApplicationAccessPointsRequest) SetPageNumber(v int32) *ListApplicationAccessPointsRequest {
+	s.PageNumber = &v
+	return s
+}
+
+func (s *ListApplicationAccessPointsRequest) SetPageSize(v int32) *ListApplicationAccessPointsRequest {
+	s.PageSize = &v
+	return s
+}
+
+type ListApplicationAccessPointsResponseBody struct {
+	ApplicationAccessPoints *ListApplicationAccessPointsResponseBodyApplicationAccessPoints `json:"ApplicationAccessPoints,omitempty" xml:"ApplicationAccessPoints,omitempty" type:"Struct"`
+	PageNumber              *int32                                                          `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
+	PageSize                *int32                                                          `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	RequestId               *string                                                         `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	TotalCount              *int32                                                          `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
+}
+
+func (s ListApplicationAccessPointsResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListApplicationAccessPointsResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *ListApplicationAccessPointsResponseBody) SetApplicationAccessPoints(v *ListApplicationAccessPointsResponseBodyApplicationAccessPoints) *ListApplicationAccessPointsResponseBody {
+	s.ApplicationAccessPoints = v
+	return s
+}
+
+func (s *ListApplicationAccessPointsResponseBody) SetPageNumber(v int32) *ListApplicationAccessPointsResponseBody {
+	s.PageNumber = &v
+	return s
+}
+
+func (s *ListApplicationAccessPointsResponseBody) SetPageSize(v int32) *ListApplicationAccessPointsResponseBody {
+	s.PageSize = &v
+	return s
+}
+
+func (s *ListApplicationAccessPointsResponseBody) SetRequestId(v string) *ListApplicationAccessPointsResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *ListApplicationAccessPointsResponseBody) SetTotalCount(v int32) *ListApplicationAccessPointsResponseBody {
+	s.TotalCount = &v
+	return s
+}
+
+type ListApplicationAccessPointsResponseBodyApplicationAccessPoints struct {
+	ApplicationAccessPoint []*ListApplicationAccessPointsResponseBodyApplicationAccessPointsApplicationAccessPoint `json:"ApplicationAccessPoint,omitempty" xml:"ApplicationAccessPoint,omitempty" type:"Repeated"`
+}
+
+func (s ListApplicationAccessPointsResponseBodyApplicationAccessPoints) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListApplicationAccessPointsResponseBodyApplicationAccessPoints) GoString() string {
+	return s.String()
+}
+
+func (s *ListApplicationAccessPointsResponseBodyApplicationAccessPoints) SetApplicationAccessPoint(v []*ListApplicationAccessPointsResponseBodyApplicationAccessPointsApplicationAccessPoint) *ListApplicationAccessPointsResponseBodyApplicationAccessPoints {
+	s.ApplicationAccessPoint = v
+	return s
+}
+
+type ListApplicationAccessPointsResponseBodyApplicationAccessPointsApplicationAccessPoint struct {
+	AuthenticationMethod *string `json:"AuthenticationMethod,omitempty" xml:"AuthenticationMethod,omitempty"`
+	Name                 *string `json:"Name,omitempty" xml:"Name,omitempty"`
+}
+
+func (s ListApplicationAccessPointsResponseBodyApplicationAccessPointsApplicationAccessPoint) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListApplicationAccessPointsResponseBodyApplicationAccessPointsApplicationAccessPoint) GoString() string {
+	return s.String()
+}
+
+func (s *ListApplicationAccessPointsResponseBodyApplicationAccessPointsApplicationAccessPoint) SetAuthenticationMethod(v string) *ListApplicationAccessPointsResponseBodyApplicationAccessPointsApplicationAccessPoint {
+	s.AuthenticationMethod = &v
+	return s
+}
+
+func (s *ListApplicationAccessPointsResponseBodyApplicationAccessPointsApplicationAccessPoint) SetName(v string) *ListApplicationAccessPointsResponseBodyApplicationAccessPointsApplicationAccessPoint {
+	s.Name = &v
+	return s
+}
+
+type ListApplicationAccessPointsResponse struct {
+	Headers    map[string]*string                       `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                                   `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *ListApplicationAccessPointsResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s ListApplicationAccessPointsResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListApplicationAccessPointsResponse) GoString() string {
+	return s.String()
+}
+
+func (s *ListApplicationAccessPointsResponse) SetHeaders(v map[string]*string) *ListApplicationAccessPointsResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *ListApplicationAccessPointsResponse) SetStatusCode(v int32) *ListApplicationAccessPointsResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *ListApplicationAccessPointsResponse) SetBody(v *ListApplicationAccessPointsResponseBody) *ListApplicationAccessPointsResponse {
+	s.Body = v
+	return s
+}
+
+type ListClientKeysRequest struct {
+	AapName *string `json:"AapName,omitempty" xml:"AapName,omitempty"`
+}
+
+func (s ListClientKeysRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListClientKeysRequest) GoString() string {
+	return s.String()
+}
+
+func (s *ListClientKeysRequest) SetAapName(v string) *ListClientKeysRequest {
+	s.AapName = &v
+	return s
+}
+
+type ListClientKeysResponseBody struct {
+	ClientKeys []*ListClientKeysResponseBodyClientKeys `json:"ClientKeys,omitempty" xml:"ClientKeys,omitempty" type:"Repeated"`
+	RequestId  *string                                 `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+}
+
+func (s ListClientKeysResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListClientKeysResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *ListClientKeysResponseBody) SetClientKeys(v []*ListClientKeysResponseBodyClientKeys) *ListClientKeysResponseBody {
+	s.ClientKeys = v
+	return s
+}
+
+func (s *ListClientKeysResponseBody) SetRequestId(v string) *ListClientKeysResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+type ListClientKeysResponseBodyClientKeys struct {
+	AapName       *string `json:"AapName,omitempty" xml:"AapName,omitempty"`
+	ClientKeyId   *string `json:"ClientKeyId,omitempty" xml:"ClientKeyId,omitempty"`
+	CreateTime    *string `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
+	KeyAlgorithm  *string `json:"KeyAlgorithm,omitempty" xml:"KeyAlgorithm,omitempty"`
+	KeyOrigin     *string `json:"KeyOrigin,omitempty" xml:"KeyOrigin,omitempty"`
+	NotAfter      *string `json:"NotAfter,omitempty" xml:"NotAfter,omitempty"`
+	NotBefore     *string `json:"NotBefore,omitempty" xml:"NotBefore,omitempty"`
+	PublicKeyData *string `json:"PublicKeyData,omitempty" xml:"PublicKeyData,omitempty"`
+}
+
+func (s ListClientKeysResponseBodyClientKeys) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListClientKeysResponseBodyClientKeys) GoString() string {
+	return s.String()
+}
+
+func (s *ListClientKeysResponseBodyClientKeys) SetAapName(v string) *ListClientKeysResponseBodyClientKeys {
+	s.AapName = &v
+	return s
+}
+
+func (s *ListClientKeysResponseBodyClientKeys) SetClientKeyId(v string) *ListClientKeysResponseBodyClientKeys {
+	s.ClientKeyId = &v
+	return s
+}
+
+func (s *ListClientKeysResponseBodyClientKeys) SetCreateTime(v string) *ListClientKeysResponseBodyClientKeys {
+	s.CreateTime = &v
+	return s
+}
+
+func (s *ListClientKeysResponseBodyClientKeys) SetKeyAlgorithm(v string) *ListClientKeysResponseBodyClientKeys {
+	s.KeyAlgorithm = &v
+	return s
+}
+
+func (s *ListClientKeysResponseBodyClientKeys) SetKeyOrigin(v string) *ListClientKeysResponseBodyClientKeys {
+	s.KeyOrigin = &v
+	return s
+}
+
+func (s *ListClientKeysResponseBodyClientKeys) SetNotAfter(v string) *ListClientKeysResponseBodyClientKeys {
+	s.NotAfter = &v
+	return s
+}
+
+func (s *ListClientKeysResponseBodyClientKeys) SetNotBefore(v string) *ListClientKeysResponseBodyClientKeys {
+	s.NotBefore = &v
+	return s
+}
+
+func (s *ListClientKeysResponseBodyClientKeys) SetPublicKeyData(v string) *ListClientKeysResponseBodyClientKeys {
+	s.PublicKeyData = &v
+	return s
+}
+
+type ListClientKeysResponse struct {
+	Headers    map[string]*string          `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                      `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *ListClientKeysResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s ListClientKeysResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListClientKeysResponse) GoString() string {
+	return s.String()
+}
+
+func (s *ListClientKeysResponse) SetHeaders(v map[string]*string) *ListClientKeysResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *ListClientKeysResponse) SetStatusCode(v int32) *ListClientKeysResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *ListClientKeysResponse) SetBody(v *ListClientKeysResponseBody) *ListClientKeysResponse {
+	s.Body = v
+	return s
+}
+
 type ListKeyVersionsRequest struct {
 	// The globally unique ID of the CMK. You can also set this parameter to an alias that is bound to the CMK. For more information, see [Use aliases](~~68522~~).
 	KeyId *string `json:"KeyId,omitempty" xml:"KeyId,omitempty"`
@@ -5998,6 +7684,399 @@ func (s *ListKeysResponse) SetStatusCode(v int32) *ListKeysResponse {
 }
 
 func (s *ListKeysResponse) SetBody(v *ListKeysResponseBody) *ListKeysResponse {
+	s.Body = v
+	return s
+}
+
+type ListKmsInstancesRequest struct {
+	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
+	PageSize   *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+}
+
+func (s ListKmsInstancesRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListKmsInstancesRequest) GoString() string {
+	return s.String()
+}
+
+func (s *ListKmsInstancesRequest) SetPageNumber(v int32) *ListKmsInstancesRequest {
+	s.PageNumber = &v
+	return s
+}
+
+func (s *ListKmsInstancesRequest) SetPageSize(v int32) *ListKmsInstancesRequest {
+	s.PageSize = &v
+	return s
+}
+
+type ListKmsInstancesResponseBody struct {
+	KmsInstances *ListKmsInstancesResponseBodyKmsInstances `json:"KmsInstances,omitempty" xml:"KmsInstances,omitempty" type:"Struct"`
+	PageNumber   *int64                                    `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
+	PageSize     *int64                                    `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	RequestId    *string                                   `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	TotalCount   *int64                                    `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
+}
+
+func (s ListKmsInstancesResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListKmsInstancesResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *ListKmsInstancesResponseBody) SetKmsInstances(v *ListKmsInstancesResponseBodyKmsInstances) *ListKmsInstancesResponseBody {
+	s.KmsInstances = v
+	return s
+}
+
+func (s *ListKmsInstancesResponseBody) SetPageNumber(v int64) *ListKmsInstancesResponseBody {
+	s.PageNumber = &v
+	return s
+}
+
+func (s *ListKmsInstancesResponseBody) SetPageSize(v int64) *ListKmsInstancesResponseBody {
+	s.PageSize = &v
+	return s
+}
+
+func (s *ListKmsInstancesResponseBody) SetRequestId(v string) *ListKmsInstancesResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *ListKmsInstancesResponseBody) SetTotalCount(v int64) *ListKmsInstancesResponseBody {
+	s.TotalCount = &v
+	return s
+}
+
+type ListKmsInstancesResponseBodyKmsInstances struct {
+	KmsInstance []*ListKmsInstancesResponseBodyKmsInstancesKmsInstance `json:"KmsInstance,omitempty" xml:"KmsInstance,omitempty" type:"Repeated"`
+}
+
+func (s ListKmsInstancesResponseBodyKmsInstances) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListKmsInstancesResponseBodyKmsInstances) GoString() string {
+	return s.String()
+}
+
+func (s *ListKmsInstancesResponseBodyKmsInstances) SetKmsInstance(v []*ListKmsInstancesResponseBodyKmsInstancesKmsInstance) *ListKmsInstancesResponseBodyKmsInstances {
+	s.KmsInstance = v
+	return s
+}
+
+type ListKmsInstancesResponseBodyKmsInstancesKmsInstance struct {
+	KmsInstanceArn *string `json:"KmsInstanceArn,omitempty" xml:"KmsInstanceArn,omitempty"`
+	KmsInstanceId  *string `json:"KmsInstanceId,omitempty" xml:"KmsInstanceId,omitempty"`
+}
+
+func (s ListKmsInstancesResponseBodyKmsInstancesKmsInstance) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListKmsInstancesResponseBodyKmsInstancesKmsInstance) GoString() string {
+	return s.String()
+}
+
+func (s *ListKmsInstancesResponseBodyKmsInstancesKmsInstance) SetKmsInstanceArn(v string) *ListKmsInstancesResponseBodyKmsInstancesKmsInstance {
+	s.KmsInstanceArn = &v
+	return s
+}
+
+func (s *ListKmsInstancesResponseBodyKmsInstancesKmsInstance) SetKmsInstanceId(v string) *ListKmsInstancesResponseBodyKmsInstancesKmsInstance {
+	s.KmsInstanceId = &v
+	return s
+}
+
+type ListKmsInstancesResponse struct {
+	Headers    map[string]*string            `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                        `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *ListKmsInstancesResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s ListKmsInstancesResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListKmsInstancesResponse) GoString() string {
+	return s.String()
+}
+
+func (s *ListKmsInstancesResponse) SetHeaders(v map[string]*string) *ListKmsInstancesResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *ListKmsInstancesResponse) SetStatusCode(v int32) *ListKmsInstancesResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *ListKmsInstancesResponse) SetBody(v *ListKmsInstancesResponseBody) *ListKmsInstancesResponse {
+	s.Body = v
+	return s
+}
+
+type ListNetworkRulesRequest struct {
+	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
+	PageSize   *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+}
+
+func (s ListNetworkRulesRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListNetworkRulesRequest) GoString() string {
+	return s.String()
+}
+
+func (s *ListNetworkRulesRequest) SetPageNumber(v int32) *ListNetworkRulesRequest {
+	s.PageNumber = &v
+	return s
+}
+
+func (s *ListNetworkRulesRequest) SetPageSize(v int32) *ListNetworkRulesRequest {
+	s.PageSize = &v
+	return s
+}
+
+type ListNetworkRulesResponseBody struct {
+	NetworkRules *ListNetworkRulesResponseBodyNetworkRules `json:"NetworkRules,omitempty" xml:"NetworkRules,omitempty" type:"Struct"`
+	PageNumber   *int32                                    `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
+	PageSize     *int32                                    `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	RequestId    *string                                   `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	TotalCount   *int32                                    `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
+}
+
+func (s ListNetworkRulesResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListNetworkRulesResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *ListNetworkRulesResponseBody) SetNetworkRules(v *ListNetworkRulesResponseBodyNetworkRules) *ListNetworkRulesResponseBody {
+	s.NetworkRules = v
+	return s
+}
+
+func (s *ListNetworkRulesResponseBody) SetPageNumber(v int32) *ListNetworkRulesResponseBody {
+	s.PageNumber = &v
+	return s
+}
+
+func (s *ListNetworkRulesResponseBody) SetPageSize(v int32) *ListNetworkRulesResponseBody {
+	s.PageSize = &v
+	return s
+}
+
+func (s *ListNetworkRulesResponseBody) SetRequestId(v string) *ListNetworkRulesResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *ListNetworkRulesResponseBody) SetTotalCount(v int32) *ListNetworkRulesResponseBody {
+	s.TotalCount = &v
+	return s
+}
+
+type ListNetworkRulesResponseBodyNetworkRules struct {
+	NetworkRule []*ListNetworkRulesResponseBodyNetworkRulesNetworkRule `json:"NetworkRule,omitempty" xml:"NetworkRule,omitempty" type:"Repeated"`
+}
+
+func (s ListNetworkRulesResponseBodyNetworkRules) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListNetworkRulesResponseBodyNetworkRules) GoString() string {
+	return s.String()
+}
+
+func (s *ListNetworkRulesResponseBodyNetworkRules) SetNetworkRule(v []*ListNetworkRulesResponseBodyNetworkRulesNetworkRule) *ListNetworkRulesResponseBodyNetworkRules {
+	s.NetworkRule = v
+	return s
+}
+
+type ListNetworkRulesResponseBodyNetworkRulesNetworkRule struct {
+	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	Type *string `json:"Type,omitempty" xml:"Type,omitempty"`
+}
+
+func (s ListNetworkRulesResponseBodyNetworkRulesNetworkRule) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListNetworkRulesResponseBodyNetworkRulesNetworkRule) GoString() string {
+	return s.String()
+}
+
+func (s *ListNetworkRulesResponseBodyNetworkRulesNetworkRule) SetName(v string) *ListNetworkRulesResponseBodyNetworkRulesNetworkRule {
+	s.Name = &v
+	return s
+}
+
+func (s *ListNetworkRulesResponseBodyNetworkRulesNetworkRule) SetType(v string) *ListNetworkRulesResponseBodyNetworkRulesNetworkRule {
+	s.Type = &v
+	return s
+}
+
+type ListNetworkRulesResponse struct {
+	Headers    map[string]*string            `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                        `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *ListNetworkRulesResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s ListNetworkRulesResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListNetworkRulesResponse) GoString() string {
+	return s.String()
+}
+
+func (s *ListNetworkRulesResponse) SetHeaders(v map[string]*string) *ListNetworkRulesResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *ListNetworkRulesResponse) SetStatusCode(v int32) *ListNetworkRulesResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *ListNetworkRulesResponse) SetBody(v *ListNetworkRulesResponseBody) *ListNetworkRulesResponse {
+	s.Body = v
+	return s
+}
+
+type ListPoliciesRequest struct {
+	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
+	PageSize   *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+}
+
+func (s ListPoliciesRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListPoliciesRequest) GoString() string {
+	return s.String()
+}
+
+func (s *ListPoliciesRequest) SetPageNumber(v int32) *ListPoliciesRequest {
+	s.PageNumber = &v
+	return s
+}
+
+func (s *ListPoliciesRequest) SetPageSize(v int32) *ListPoliciesRequest {
+	s.PageSize = &v
+	return s
+}
+
+type ListPoliciesResponseBody struct {
+	PageNumber *int32                            `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
+	PageSize   *int32                            `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	Policies   *ListPoliciesResponseBodyPolicies `json:"Policies,omitempty" xml:"Policies,omitempty" type:"Struct"`
+	RequestId  *string                           `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	TotalCount *int32                            `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
+}
+
+func (s ListPoliciesResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListPoliciesResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *ListPoliciesResponseBody) SetPageNumber(v int32) *ListPoliciesResponseBody {
+	s.PageNumber = &v
+	return s
+}
+
+func (s *ListPoliciesResponseBody) SetPageSize(v int32) *ListPoliciesResponseBody {
+	s.PageSize = &v
+	return s
+}
+
+func (s *ListPoliciesResponseBody) SetPolicies(v *ListPoliciesResponseBodyPolicies) *ListPoliciesResponseBody {
+	s.Policies = v
+	return s
+}
+
+func (s *ListPoliciesResponseBody) SetRequestId(v string) *ListPoliciesResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *ListPoliciesResponseBody) SetTotalCount(v int32) *ListPoliciesResponseBody {
+	s.TotalCount = &v
+	return s
+}
+
+type ListPoliciesResponseBodyPolicies struct {
+	Policy []*ListPoliciesResponseBodyPoliciesPolicy `json:"Policy,omitempty" xml:"Policy,omitempty" type:"Repeated"`
+}
+
+func (s ListPoliciesResponseBodyPolicies) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListPoliciesResponseBodyPolicies) GoString() string {
+	return s.String()
+}
+
+func (s *ListPoliciesResponseBodyPolicies) SetPolicy(v []*ListPoliciesResponseBodyPoliciesPolicy) *ListPoliciesResponseBodyPolicies {
+	s.Policy = v
+	return s
+}
+
+type ListPoliciesResponseBodyPoliciesPolicy struct {
+	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+}
+
+func (s ListPoliciesResponseBodyPoliciesPolicy) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListPoliciesResponseBodyPoliciesPolicy) GoString() string {
+	return s.String()
+}
+
+func (s *ListPoliciesResponseBodyPoliciesPolicy) SetName(v string) *ListPoliciesResponseBodyPoliciesPolicy {
+	s.Name = &v
+	return s
+}
+
+type ListPoliciesResponse struct {
+	Headers    map[string]*string        `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                    `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *ListPoliciesResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s ListPoliciesResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListPoliciesResponse) GoString() string {
+	return s.String()
+}
+
+func (s *ListPoliciesResponse) SetHeaders(v map[string]*string) *ListPoliciesResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *ListPoliciesResponse) SetStatusCode(v int32) *ListPoliciesResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *ListPoliciesResponse) SetBody(v *ListPoliciesResponseBody) *ListPoliciesResponse {
 	s.Body = v
 	return s
 }
@@ -7940,6 +10019,81 @@ func (s *UpdateAliasResponse) SetBody(v *UpdateAliasResponseBody) *UpdateAliasRe
 	return s
 }
 
+type UpdateApplicationAccessPointRequest struct {
+	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
+	Name        *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	Policies    *string `json:"Policies,omitempty" xml:"Policies,omitempty"`
+}
+
+func (s UpdateApplicationAccessPointRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UpdateApplicationAccessPointRequest) GoString() string {
+	return s.String()
+}
+
+func (s *UpdateApplicationAccessPointRequest) SetDescription(v string) *UpdateApplicationAccessPointRequest {
+	s.Description = &v
+	return s
+}
+
+func (s *UpdateApplicationAccessPointRequest) SetName(v string) *UpdateApplicationAccessPointRequest {
+	s.Name = &v
+	return s
+}
+
+func (s *UpdateApplicationAccessPointRequest) SetPolicies(v string) *UpdateApplicationAccessPointRequest {
+	s.Policies = &v
+	return s
+}
+
+type UpdateApplicationAccessPointResponseBody struct {
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+}
+
+func (s UpdateApplicationAccessPointResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UpdateApplicationAccessPointResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *UpdateApplicationAccessPointResponseBody) SetRequestId(v string) *UpdateApplicationAccessPointResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+type UpdateApplicationAccessPointResponse struct {
+	Headers    map[string]*string                        `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                                    `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *UpdateApplicationAccessPointResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s UpdateApplicationAccessPointResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UpdateApplicationAccessPointResponse) GoString() string {
+	return s.String()
+}
+
+func (s *UpdateApplicationAccessPointResponse) SetHeaders(v map[string]*string) *UpdateApplicationAccessPointResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *UpdateApplicationAccessPointResponse) SetStatusCode(v int32) *UpdateApplicationAccessPointResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *UpdateApplicationAccessPointResponse) SetBody(v *UpdateApplicationAccessPointResponseBody) *UpdateApplicationAccessPointResponse {
+	s.Body = v
+	return s
+}
+
 type UpdateCertificateStatusRequest struct {
 	// The ID of the certificate. The ID must be globally unique in Certificates Manager.
 	CertificateId *string `json:"CertificateId,omitempty" xml:"CertificateId,omitempty"`
@@ -8088,6 +10242,237 @@ func (s *UpdateKeyDescriptionResponse) SetStatusCode(v int32) *UpdateKeyDescript
 }
 
 func (s *UpdateKeyDescriptionResponse) SetBody(v *UpdateKeyDescriptionResponseBody) *UpdateKeyDescriptionResponse {
+	s.Body = v
+	return s
+}
+
+type UpdateKmsInstanceBindVpcRequest struct {
+	BindVpcs      *string `json:"BindVpcs,omitempty" xml:"BindVpcs,omitempty"`
+	KmsInstanceId *string `json:"KmsInstanceId,omitempty" xml:"KmsInstanceId,omitempty"`
+}
+
+func (s UpdateKmsInstanceBindVpcRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UpdateKmsInstanceBindVpcRequest) GoString() string {
+	return s.String()
+}
+
+func (s *UpdateKmsInstanceBindVpcRequest) SetBindVpcs(v string) *UpdateKmsInstanceBindVpcRequest {
+	s.BindVpcs = &v
+	return s
+}
+
+func (s *UpdateKmsInstanceBindVpcRequest) SetKmsInstanceId(v string) *UpdateKmsInstanceBindVpcRequest {
+	s.KmsInstanceId = &v
+	return s
+}
+
+type UpdateKmsInstanceBindVpcResponseBody struct {
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+}
+
+func (s UpdateKmsInstanceBindVpcResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UpdateKmsInstanceBindVpcResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *UpdateKmsInstanceBindVpcResponseBody) SetRequestId(v string) *UpdateKmsInstanceBindVpcResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+type UpdateKmsInstanceBindVpcResponse struct {
+	Headers    map[string]*string                    `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                                `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *UpdateKmsInstanceBindVpcResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s UpdateKmsInstanceBindVpcResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UpdateKmsInstanceBindVpcResponse) GoString() string {
+	return s.String()
+}
+
+func (s *UpdateKmsInstanceBindVpcResponse) SetHeaders(v map[string]*string) *UpdateKmsInstanceBindVpcResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *UpdateKmsInstanceBindVpcResponse) SetStatusCode(v int32) *UpdateKmsInstanceBindVpcResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *UpdateKmsInstanceBindVpcResponse) SetBody(v *UpdateKmsInstanceBindVpcResponseBody) *UpdateKmsInstanceBindVpcResponse {
+	s.Body = v
+	return s
+}
+
+type UpdateNetworkRuleRequest struct {
+	Description     *string `json:"Description,omitempty" xml:"Description,omitempty"`
+	Name            *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	SourcePrivateIp *string `json:"SourcePrivateIp,omitempty" xml:"SourcePrivateIp,omitempty"`
+}
+
+func (s UpdateNetworkRuleRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UpdateNetworkRuleRequest) GoString() string {
+	return s.String()
+}
+
+func (s *UpdateNetworkRuleRequest) SetDescription(v string) *UpdateNetworkRuleRequest {
+	s.Description = &v
+	return s
+}
+
+func (s *UpdateNetworkRuleRequest) SetName(v string) *UpdateNetworkRuleRequest {
+	s.Name = &v
+	return s
+}
+
+func (s *UpdateNetworkRuleRequest) SetSourcePrivateIp(v string) *UpdateNetworkRuleRequest {
+	s.SourcePrivateIp = &v
+	return s
+}
+
+type UpdateNetworkRuleResponseBody struct {
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+}
+
+func (s UpdateNetworkRuleResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UpdateNetworkRuleResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *UpdateNetworkRuleResponseBody) SetRequestId(v string) *UpdateNetworkRuleResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+type UpdateNetworkRuleResponse struct {
+	Headers    map[string]*string             `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                         `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *UpdateNetworkRuleResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s UpdateNetworkRuleResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UpdateNetworkRuleResponse) GoString() string {
+	return s.String()
+}
+
+func (s *UpdateNetworkRuleResponse) SetHeaders(v map[string]*string) *UpdateNetworkRuleResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *UpdateNetworkRuleResponse) SetStatusCode(v int32) *UpdateNetworkRuleResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *UpdateNetworkRuleResponse) SetBody(v *UpdateNetworkRuleResponseBody) *UpdateNetworkRuleResponse {
+	s.Body = v
+	return s
+}
+
+type UpdatePolicyRequest struct {
+	AccessControlRules *string `json:"AccessControlRules,omitempty" xml:"AccessControlRules,omitempty"`
+	Description        *string `json:"Description,omitempty" xml:"Description,omitempty"`
+	Name               *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	Permissions        *string `json:"Permissions,omitempty" xml:"Permissions,omitempty"`
+	Resources          *string `json:"Resources,omitempty" xml:"Resources,omitempty"`
+}
+
+func (s UpdatePolicyRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UpdatePolicyRequest) GoString() string {
+	return s.String()
+}
+
+func (s *UpdatePolicyRequest) SetAccessControlRules(v string) *UpdatePolicyRequest {
+	s.AccessControlRules = &v
+	return s
+}
+
+func (s *UpdatePolicyRequest) SetDescription(v string) *UpdatePolicyRequest {
+	s.Description = &v
+	return s
+}
+
+func (s *UpdatePolicyRequest) SetName(v string) *UpdatePolicyRequest {
+	s.Name = &v
+	return s
+}
+
+func (s *UpdatePolicyRequest) SetPermissions(v string) *UpdatePolicyRequest {
+	s.Permissions = &v
+	return s
+}
+
+func (s *UpdatePolicyRequest) SetResources(v string) *UpdatePolicyRequest {
+	s.Resources = &v
+	return s
+}
+
+type UpdatePolicyResponseBody struct {
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+}
+
+func (s UpdatePolicyResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UpdatePolicyResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *UpdatePolicyResponseBody) SetRequestId(v string) *UpdatePolicyResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+type UpdatePolicyResponse struct {
+	Headers    map[string]*string        `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                    `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *UpdatePolicyResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s UpdatePolicyResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UpdatePolicyResponse) GoString() string {
+	return s.String()
+}
+
+func (s *UpdatePolicyResponse) SetHeaders(v map[string]*string) *UpdatePolicyResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *UpdatePolicyResponse) SetStatusCode(v int32) *UpdatePolicyResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *UpdatePolicyResponse) SetBody(v *UpdatePolicyResponseBody) *UpdatePolicyResponse {
 	s.Body = v
 	return s
 }
@@ -9374,6 +11759,66 @@ func (client *Client) CertificatePublicKeyVerify(request *CertificatePublicKeyVe
 	return _result, _err
 }
 
+func (client *Client) ConnectKmsInstanceWithOptions(request *ConnectKmsInstanceRequest, runtime *util.RuntimeOptions) (_result *ConnectKmsInstanceResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.KMProvider)) {
+		query["KMProvider"] = request.KMProvider
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.KmsInstanceId)) {
+		query["KmsInstanceId"] = request.KmsInstanceId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.VSwitchIds)) {
+		query["VSwitchIds"] = request.VSwitchIds
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.VpcId)) {
+		query["VpcId"] = request.VpcId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ZoneIds)) {
+		query["ZoneIds"] = request.ZoneIds
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("ConnectKmsInstance"),
+		Version:     tea.String("2016-01-20"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &ConnectKmsInstanceResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) ConnectKmsInstance(request *ConnectKmsInstanceRequest) (_result *ConnectKmsInstanceResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &ConnectKmsInstanceResponse{}
+	_body, _err := client.ConnectKmsInstanceWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
 /**
  * *   Each alias can be bound to only one CMK at a time.
  * *   The aliases of CMKs in the same region must be unique.
@@ -9432,6 +11877,62 @@ func (client *Client) CreateAlias(request *CreateAliasRequest) (_result *CreateA
 	runtime := &util.RuntimeOptions{}
 	_result = &CreateAliasResponse{}
 	_body, _err := client.CreateAliasWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) CreateApplicationAccessPointWithOptions(request *CreateApplicationAccessPointRequest, runtime *util.RuntimeOptions) (_result *CreateApplicationAccessPointResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.AuthenticationMethod)) {
+		query["AuthenticationMethod"] = request.AuthenticationMethod
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Description)) {
+		query["Description"] = request.Description
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Name)) {
+		query["Name"] = request.Name
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Policies)) {
+		query["Policies"] = request.Policies
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("CreateApplicationAccessPoint"),
+		Version:     tea.String("2016-01-20"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &CreateApplicationAccessPointResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) CreateApplicationAccessPoint(request *CreateApplicationAccessPointRequest) (_result *CreateApplicationAccessPointResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &CreateApplicationAccessPointResponse{}
+	_body, _err := client.CreateApplicationAccessPointWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -9509,6 +12010,62 @@ func (client *Client) CreateCertificate(request *CreateCertificateRequest) (_res
 	runtime := &util.RuntimeOptions{}
 	_result = &CreateCertificateResponse{}
 	_body, _err := client.CreateCertificateWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) CreateClientKeyWithOptions(request *CreateClientKeyRequest, runtime *util.RuntimeOptions) (_result *CreateClientKeyResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.AapName)) {
+		query["AapName"] = request.AapName
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.NotAfter)) {
+		query["NotAfter"] = request.NotAfter
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.NotBefore)) {
+		query["NotBefore"] = request.NotBefore
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Password)) {
+		query["Password"] = request.Password
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("CreateClientKey"),
+		Version:     tea.String("2016-01-20"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &CreateClientKeyResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) CreateClientKey(request *CreateClientKeyRequest) (_result *CreateClientKeyResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &CreateClientKeyResponse{}
+	_body, _err := client.CreateClientKeyWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -9663,6 +12220,126 @@ func (client *Client) CreateKeyVersion(request *CreateKeyVersionRequest) (_resul
 	runtime := &util.RuntimeOptions{}
 	_result = &CreateKeyVersionResponse{}
 	_body, _err := client.CreateKeyVersionWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) CreateNetworkRuleWithOptions(request *CreateNetworkRuleRequest, runtime *util.RuntimeOptions) (_result *CreateNetworkRuleResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.Description)) {
+		query["Description"] = request.Description
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Name)) {
+		query["Name"] = request.Name
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.SourcePrivateIp)) {
+		query["SourcePrivateIp"] = request.SourcePrivateIp
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Type)) {
+		query["Type"] = request.Type
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("CreateNetworkRule"),
+		Version:     tea.String("2016-01-20"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &CreateNetworkRuleResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) CreateNetworkRule(request *CreateNetworkRuleRequest) (_result *CreateNetworkRuleResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &CreateNetworkRuleResponse{}
+	_body, _err := client.CreateNetworkRuleWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) CreatePolicyWithOptions(request *CreatePolicyRequest, runtime *util.RuntimeOptions) (_result *CreatePolicyResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.AccessControlRules)) {
+		query["AccessControlRules"] = request.AccessControlRules
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Description)) {
+		query["Description"] = request.Description
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.KmsInstance)) {
+		query["KmsInstance"] = request.KmsInstance
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Name)) {
+		query["Name"] = request.Name
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Permissions)) {
+		query["Permissions"] = request.Permissions
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Resources)) {
+		query["Resources"] = request.Resources
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("CreatePolicy"),
+		Version:     tea.String("2016-01-20"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &CreatePolicyResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) CreatePolicy(request *CreatePolicyRequest) (_result *CreatePolicyResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &CreatePolicyResponse{}
+	_body, _err := client.CreatePolicyWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -9883,6 +12560,50 @@ func (client *Client) DeleteAlias(request *DeleteAliasRequest) (_result *DeleteA
 	return _result, _err
 }
 
+func (client *Client) DeleteApplicationAccessPointWithOptions(request *DeleteApplicationAccessPointRequest, runtime *util.RuntimeOptions) (_result *DeleteApplicationAccessPointResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.Name)) {
+		query["Name"] = request.Name
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("DeleteApplicationAccessPoint"),
+		Version:     tea.String("2016-01-20"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &DeleteApplicationAccessPointResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) DeleteApplicationAccessPoint(request *DeleteApplicationAccessPointRequest) (_result *DeleteApplicationAccessPointResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &DeleteApplicationAccessPointResponse{}
+	_body, _err := client.DeleteApplicationAccessPointWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
 /**
  * After the certificate and its private key and certificate chain are deleted, they cannot be restored. Proceed with caution.
  * In this example, the certificate whose ID is `9a28de48-8d8b-484d-a766-dec4****` and its private key and certificate chain are deleted.
@@ -9935,6 +12656,50 @@ func (client *Client) DeleteCertificate(request *DeleteCertificateRequest) (_res
 	runtime := &util.RuntimeOptions{}
 	_result = &DeleteCertificateResponse{}
 	_body, _err := client.DeleteCertificateWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) DeleteClientKeyWithOptions(request *DeleteClientKeyRequest, runtime *util.RuntimeOptions) (_result *DeleteClientKeyResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.ClientKeyId)) {
+		query["ClientKeyId"] = request.ClientKeyId
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("DeleteClientKey"),
+		Version:     tea.String("2016-01-20"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &DeleteClientKeyResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) DeleteClientKey(request *DeleteClientKeyRequest) (_result *DeleteClientKeyResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &DeleteClientKeyResponse{}
+	_body, _err := client.DeleteClientKeyWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -9996,6 +12761,94 @@ func (client *Client) DeleteKeyMaterial(request *DeleteKeyMaterialRequest) (_res
 	runtime := &util.RuntimeOptions{}
 	_result = &DeleteKeyMaterialResponse{}
 	_body, _err := client.DeleteKeyMaterialWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) DeleteNetworkRuleWithOptions(request *DeleteNetworkRuleRequest, runtime *util.RuntimeOptions) (_result *DeleteNetworkRuleResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.Name)) {
+		query["Name"] = request.Name
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("DeleteNetworkRule"),
+		Version:     tea.String("2016-01-20"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &DeleteNetworkRuleResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) DeleteNetworkRule(request *DeleteNetworkRuleRequest) (_result *DeleteNetworkRuleResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &DeleteNetworkRuleResponse{}
+	_body, _err := client.DeleteNetworkRuleWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) DeletePolicyWithOptions(request *DeletePolicyRequest, runtime *util.RuntimeOptions) (_result *DeletePolicyResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.Name)) {
+		query["Name"] = request.Name
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("DeletePolicy"),
+		Version:     tea.String("2016-01-20"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &DeletePolicyResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) DeletePolicy(request *DeletePolicyRequest) (_result *DeletePolicyResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &DeletePolicyResponse{}
+	_body, _err := client.DeletePolicyWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -10096,6 +12949,50 @@ func (client *Client) DescribeAccountKmsStatus() (_result *DescribeAccountKmsSta
 	runtime := &util.RuntimeOptions{}
 	_result = &DescribeAccountKmsStatusResponse{}
 	_body, _err := client.DescribeAccountKmsStatusWithOptions(runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) DescribeApplicationAccessPointWithOptions(request *DescribeApplicationAccessPointRequest, runtime *util.RuntimeOptions) (_result *DescribeApplicationAccessPointResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.Name)) {
+		query["Name"] = request.Name
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("DescribeApplicationAccessPoint"),
+		Version:     tea.String("2016-01-20"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &DescribeApplicationAccessPointResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) DescribeApplicationAccessPoint(request *DescribeApplicationAccessPointRequest) (_result *DescribeApplicationAccessPointResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &DescribeApplicationAccessPointResponse{}
+	_body, _err := client.DescribeApplicationAccessPointWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -10271,6 +13168,94 @@ func (client *Client) DescribeKeyVersion(request *DescribeKeyVersionRequest) (_r
 	runtime := &util.RuntimeOptions{}
 	_result = &DescribeKeyVersionResponse{}
 	_body, _err := client.DescribeKeyVersionWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) DescribeNetworkRuleWithOptions(request *DescribeNetworkRuleRequest, runtime *util.RuntimeOptions) (_result *DescribeNetworkRuleResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.Name)) {
+		query["Name"] = request.Name
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("DescribeNetworkRule"),
+		Version:     tea.String("2016-01-20"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &DescribeNetworkRuleResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) DescribeNetworkRule(request *DescribeNetworkRuleRequest) (_result *DescribeNetworkRuleResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &DescribeNetworkRuleResponse{}
+	_body, _err := client.DescribeNetworkRuleWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) DescribePolicyWithOptions(request *DescribePolicyRequest, runtime *util.RuntimeOptions) (_result *DescribePolicyResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.Name)) {
+		query["Name"] = request.Name
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("DescribePolicy"),
+		Version:     tea.String("2016-01-20"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &DescribePolicyResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) DescribePolicy(request *DescribePolicyRequest) (_result *DescribePolicyResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &DescribePolicyResponse{}
+	_body, _err := client.DescribePolicyWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -10959,6 +13944,90 @@ func (client *Client) GetCertificate(request *GetCertificateRequest) (_result *G
 	return _result, _err
 }
 
+func (client *Client) GetClientKeyWithOptions(request *GetClientKeyRequest, runtime *util.RuntimeOptions) (_result *GetClientKeyResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := openapiutil.Query(util.ToMap(request))
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("GetClientKey"),
+		Version:     tea.String("2016-01-20"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("GET"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &GetClientKeyResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) GetClientKey(request *GetClientKeyRequest) (_result *GetClientKeyResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &GetClientKeyResponse{}
+	_body, _err := client.GetClientKeyWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) GetKmsInstanceWithOptions(request *GetKmsInstanceRequest, runtime *util.RuntimeOptions) (_result *GetKmsInstanceResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.KmsInstanceId)) {
+		query["KmsInstanceId"] = request.KmsInstanceId
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("GetKmsInstance"),
+		Version:     tea.String("2016-01-20"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &GetKmsInstanceResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) GetKmsInstance(request *GetKmsInstanceRequest) (_result *GetKmsInstanceResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &GetKmsInstanceResponse{}
+	_body, _err := client.GetKmsInstanceWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
 /**
  * The returned parameters can be used to call the [ImportKeyMaterial](https://www.alibabacloud.com/help/en/key-management-service/latest/importkeymaterial) operation.
  * - You can import key material only for CMKs whose Origin parameter is set to EXTERNAL.
@@ -11420,6 +14489,94 @@ func (client *Client) ListAliasesByKeyId(request *ListAliasesByKeyIdRequest) (_r
 	return _result, _err
 }
 
+func (client *Client) ListApplicationAccessPointsWithOptions(request *ListApplicationAccessPointsRequest, runtime *util.RuntimeOptions) (_result *ListApplicationAccessPointsResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.PageNumber)) {
+		query["PageNumber"] = request.PageNumber
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.PageSize)) {
+		query["PageSize"] = request.PageSize
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("ListApplicationAccessPoints"),
+		Version:     tea.String("2016-01-20"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &ListApplicationAccessPointsResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) ListApplicationAccessPoints(request *ListApplicationAccessPointsRequest) (_result *ListApplicationAccessPointsResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &ListApplicationAccessPointsResponse{}
+	_body, _err := client.ListApplicationAccessPointsWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) ListClientKeysWithOptions(request *ListClientKeysRequest, runtime *util.RuntimeOptions) (_result *ListClientKeysResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := openapiutil.Query(util.ToMap(request))
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("ListClientKeys"),
+		Version:     tea.String("2016-01-20"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("GET"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &ListClientKeysResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) ListClientKeys(request *ListClientKeysRequest) (_result *ListClientKeysResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &ListClientKeysResponse{}
+	_body, _err := client.ListClientKeysWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
 func (client *Client) ListKeyVersionsWithOptions(request *ListKeyVersionsRequest, runtime *util.RuntimeOptions) (_result *ListKeyVersionsResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -11517,6 +14674,150 @@ func (client *Client) ListKeys(request *ListKeysRequest) (_result *ListKeysRespo
 	runtime := &util.RuntimeOptions{}
 	_result = &ListKeysResponse{}
 	_body, _err := client.ListKeysWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) ListKmsInstancesWithOptions(request *ListKmsInstancesRequest, runtime *util.RuntimeOptions) (_result *ListKmsInstancesResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.PageNumber)) {
+		query["PageNumber"] = request.PageNumber
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.PageSize)) {
+		query["PageSize"] = request.PageSize
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("ListKmsInstances"),
+		Version:     tea.String("2016-01-20"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &ListKmsInstancesResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) ListKmsInstances(request *ListKmsInstancesRequest) (_result *ListKmsInstancesResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &ListKmsInstancesResponse{}
+	_body, _err := client.ListKmsInstancesWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) ListNetworkRulesWithOptions(request *ListNetworkRulesRequest, runtime *util.RuntimeOptions) (_result *ListNetworkRulesResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.PageNumber)) {
+		query["PageNumber"] = request.PageNumber
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.PageSize)) {
+		query["PageSize"] = request.PageSize
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("ListNetworkRules"),
+		Version:     tea.String("2016-01-20"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &ListNetworkRulesResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) ListNetworkRules(request *ListNetworkRulesRequest) (_result *ListNetworkRulesResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &ListNetworkRulesResponse{}
+	_body, _err := client.ListNetworkRulesWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) ListPoliciesWithOptions(request *ListPoliciesRequest, runtime *util.RuntimeOptions) (_result *ListPoliciesResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.PageNumber)) {
+		query["PageNumber"] = request.PageNumber
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.PageSize)) {
+		query["PageSize"] = request.PageSize
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("ListPolicies"),
+		Version:     tea.String("2016-01-20"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &ListPoliciesResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) ListPolicies(request *ListPoliciesRequest) (_result *ListPoliciesResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &ListPoliciesResponse{}
+	_body, _err := client.ListPoliciesWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -12592,6 +15893,58 @@ func (client *Client) UpdateAlias(request *UpdateAliasRequest) (_result *UpdateA
 	return _result, _err
 }
 
+func (client *Client) UpdateApplicationAccessPointWithOptions(request *UpdateApplicationAccessPointRequest, runtime *util.RuntimeOptions) (_result *UpdateApplicationAccessPointResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.Description)) {
+		query["Description"] = request.Description
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Name)) {
+		query["Name"] = request.Name
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Policies)) {
+		query["Policies"] = request.Policies
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("UpdateApplicationAccessPoint"),
+		Version:     tea.String("2016-01-20"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &UpdateApplicationAccessPointResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) UpdateApplicationAccessPoint(request *UpdateApplicationAccessPointRequest) (_result *UpdateApplicationAccessPointResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &UpdateApplicationAccessPointResponse{}
+	_body, _err := client.UpdateApplicationAccessPointWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
 /**
  * In this example, the status of the certificate whose ID is `9a28de48-8d8b-484d-a766-dec4****` is updated to INACTIVE.
  *
@@ -12707,6 +16060,158 @@ func (client *Client) UpdateKeyDescription(request *UpdateKeyDescriptionRequest)
 	runtime := &util.RuntimeOptions{}
 	_result = &UpdateKeyDescriptionResponse{}
 	_body, _err := client.UpdateKeyDescriptionWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) UpdateKmsInstanceBindVpcWithOptions(request *UpdateKmsInstanceBindVpcRequest, runtime *util.RuntimeOptions) (_result *UpdateKmsInstanceBindVpcResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := openapiutil.Query(util.ToMap(request))
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("UpdateKmsInstanceBindVpc"),
+		Version:     tea.String("2016-01-20"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("GET"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &UpdateKmsInstanceBindVpcResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) UpdateKmsInstanceBindVpc(request *UpdateKmsInstanceBindVpcRequest) (_result *UpdateKmsInstanceBindVpcResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &UpdateKmsInstanceBindVpcResponse{}
+	_body, _err := client.UpdateKmsInstanceBindVpcWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) UpdateNetworkRuleWithOptions(request *UpdateNetworkRuleRequest, runtime *util.RuntimeOptions) (_result *UpdateNetworkRuleResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.Description)) {
+		query["Description"] = request.Description
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Name)) {
+		query["Name"] = request.Name
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.SourcePrivateIp)) {
+		query["SourcePrivateIp"] = request.SourcePrivateIp
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("UpdateNetworkRule"),
+		Version:     tea.String("2016-01-20"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &UpdateNetworkRuleResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) UpdateNetworkRule(request *UpdateNetworkRuleRequest) (_result *UpdateNetworkRuleResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &UpdateNetworkRuleResponse{}
+	_body, _err := client.UpdateNetworkRuleWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) UpdatePolicyWithOptions(request *UpdatePolicyRequest, runtime *util.RuntimeOptions) (_result *UpdatePolicyResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.AccessControlRules)) {
+		query["AccessControlRules"] = request.AccessControlRules
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Description)) {
+		query["Description"] = request.Description
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Name)) {
+		query["Name"] = request.Name
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Permissions)) {
+		query["Permissions"] = request.Permissions
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Resources)) {
+		query["Resources"] = request.Resources
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("UpdatePolicy"),
+		Version:     tea.String("2016-01-20"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &UpdatePolicyResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) UpdatePolicy(request *UpdatePolicyRequest) (_result *UpdatePolicyResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &UpdatePolicyResponse{}
+	_body, _err := client.UpdatePolicyWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
