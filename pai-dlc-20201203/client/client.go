@@ -2276,6 +2276,7 @@ func (s *CreateJobRequestDataSources) SetMountPath(v string) *CreateJobRequestDa
 }
 
 type CreateJobRequestUserVpc struct {
+	DefaultRoute    *string   `json:"DefaultRoute,omitempty" xml:"DefaultRoute,omitempty"`
 	ExtendedCIDRs   []*string `json:"ExtendedCIDRs,omitempty" xml:"ExtendedCIDRs,omitempty" type:"Repeated"`
 	SecurityGroupId *string   `json:"SecurityGroupId,omitempty" xml:"SecurityGroupId,omitempty"`
 	SwitchId        *string   `json:"SwitchId,omitempty" xml:"SwitchId,omitempty"`
@@ -2288,6 +2289,11 @@ func (s CreateJobRequestUserVpc) String() string {
 
 func (s CreateJobRequestUserVpc) GoString() string {
 	return s.String()
+}
+
+func (s *CreateJobRequestUserVpc) SetDefaultRoute(v string) *CreateJobRequestUserVpc {
+	s.DefaultRoute = &v
+	return s
 }
 
 func (s *CreateJobRequestUserVpc) SetExtendedCIDRs(v []*string) *CreateJobRequestUserVpc {
