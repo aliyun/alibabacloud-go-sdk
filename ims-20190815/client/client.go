@@ -80,8 +80,9 @@ type AddClientIdToOIDCProviderResponseBodyOIDCProvider struct {
 	// The timestamp when the OIDC IdP was created.
 	GmtCreate *string `json:"GmtCreate,omitempty" xml:"GmtCreate,omitempty"`
 	// The timestamp when the OIDC IdP was modified.
-	GmtModified       *string `json:"GmtModified,omitempty" xml:"GmtModified,omitempty"`
-	IssuanceLimitTime *int64  `json:"IssuanceLimitTime,omitempty" xml:"IssuanceLimitTime,omitempty"`
+	GmtModified *string `json:"GmtModified,omitempty" xml:"GmtModified,omitempty"`
+	// The earliest time when an external IdP can issue an ID token. If the value of the iat field in the ID token is later than the current time, the request is rejected. Unit: hours. Valid values: 1 to 168.
+	IssuanceLimitTime *int64 `json:"IssuanceLimitTime,omitempty" xml:"IssuanceLimitTime,omitempty"`
 	// The URL of the issuer.
 	IssuerUrl *string `json:"IssuerUrl,omitempty" xml:"IssuerUrl,omitempty"`
 	// The name of the OIDC IdP.
@@ -250,8 +251,9 @@ type AddFingerprintToOIDCProviderResponseBodyOIDCProvider struct {
 	// The timestamp when the OIDC IdP was created.
 	GmtCreate *string `json:"GmtCreate,omitempty" xml:"GmtCreate,omitempty"`
 	// The timestamp when the OIDC IdP was modified.
-	GmtModified       *string `json:"GmtModified,omitempty" xml:"GmtModified,omitempty"`
-	IssuanceLimitTime *int64  `json:"IssuanceLimitTime,omitempty" xml:"IssuanceLimitTime,omitempty"`
+	GmtModified *string `json:"GmtModified,omitempty" xml:"GmtModified,omitempty"`
+	// The earliest time when an external IdP can issue an ID token. If the value of the iat field in the ID token is later than the current time, the request is rejected. Unit: hours. Valid values: 1 to 168.
+	IssuanceLimitTime *int64 `json:"IssuanceLimitTime,omitempty" xml:"IssuanceLimitTime,omitempty"`
 	// The URL of the issuer.
 	IssuerUrl *string `json:"IssuerUrl,omitempty" xml:"IssuerUrl,omitempty"`
 	// The name of the OIDC IdP.
@@ -1478,9 +1480,10 @@ type CreateOIDCProviderRequest struct {
 	// The fingerprint can contain letters and digits.
 	//
 	// The fingerprint can be up to 40 characters in length.
-	Fingerprints      *string `json:"Fingerprints,omitempty" xml:"Fingerprints,omitempty"`
-	IssuanceLimitTime *int64  `json:"IssuanceLimitTime,omitempty" xml:"IssuanceLimitTime,omitempty"`
-	// The URL of the issuer, which is provided by the external IdP Okta. The URL of the issuer must be unique within an Alibaba Cloud account.
+	Fingerprints *string `json:"Fingerprints,omitempty" xml:"Fingerprints,omitempty"`
+	// The earliest time when an external IdP can issue an ID token. If the value of the iat field in the ID token is later than the current time, the request is rejected. Unit: hours. Valid values: 1 to 168.
+	IssuanceLimitTime *int64 `json:"IssuanceLimitTime,omitempty" xml:"IssuanceLimitTime,omitempty"`
+	// The URL of the issuer, which is provided by the external IdP. The URL of the issuer must be unique within an Alibaba Cloud account.
 	//
 	// The URL of the issuer must start with `https` and be in the valid URL format. The URL cannot contain query parameters that follow a question mark (`?`) or logon information that is identified by at signs (`@`). The URL cannot be a fragment URL that contains number signs (`#`).
 	//
@@ -1571,9 +1574,10 @@ type CreateOIDCProviderResponseBodyOIDCProvider struct {
 	// The timestamp when the OIDC IdP was created.
 	GmtCreate *string `json:"GmtCreate,omitempty" xml:"GmtCreate,omitempty"`
 	// The timestamp when the OIDC IdP was modified.
-	GmtModified       *string `json:"GmtModified,omitempty" xml:"GmtModified,omitempty"`
-	IssuanceLimitTime *int64  `json:"IssuanceLimitTime,omitempty" xml:"IssuanceLimitTime,omitempty"`
-	// The URL of the issuer.
+	GmtModified *string `json:"GmtModified,omitempty" xml:"GmtModified,omitempty"`
+	// The earliest time when an external IdP can issue an ID token. If the value of the iat field in the ID token is later than the current time, the request is rejected. Unit: hours. Valid values: 1 to 168.
+	IssuanceLimitTime *int64 `json:"IssuanceLimitTime,omitempty" xml:"IssuanceLimitTime,omitempty"`
+	// The URL of the issuer,
 	IssuerUrl *string `json:"IssuerUrl,omitempty" xml:"IssuerUrl,omitempty"`
 	// The name of the OIDC IdP.
 	OIDCProviderName *string `json:"OIDCProviderName,omitempty" xml:"OIDCProviderName,omitempty"`
@@ -2995,7 +2999,7 @@ func (s *GetAccessKeyLastUsedResponseBody) SetRequestId(v string) *GetAccessKeyL
 type GetAccessKeyLastUsedResponseBodyAccessKeyLastUsed struct {
 	// The time when the AccessKey pair was used for the last time.
 	LastUsedDate *string `json:"LastUsedDate,omitempty" xml:"LastUsedDate,omitempty"`
-	// The Alibaba Cloud service that was last accessed.
+	// The Alibaba Cloud service that was last accessed by using the AccessKey pair.
 	ServiceName *string `json:"ServiceName,omitempty" xml:"ServiceName,omitempty"`
 }
 
@@ -3503,7 +3507,7 @@ func (s *GetAppSecretRequest) SetAppSecretId(v string) *GetAppSecretRequest {
 type GetAppSecretResponseBody struct {
 	// The details of the application secret.
 	AppSecret *GetAppSecretResponseBodyAppSecret `json:"AppSecret,omitempty" xml:"AppSecret,omitempty" type:"Struct"`
-	// The ID of the request.
+	// The request ID.
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -3612,7 +3616,7 @@ func (s *GetApplicationRequest) SetAppId(v string) *GetApplicationRequest {
 }
 
 type GetApplicationResponseBody struct {
-	// The information about the application.
+	// The configuration information about the application.
 	Application *GetApplicationResponseBodyApplication `json:"Application,omitempty" xml:"Application,omitempty" type:"Struct"`
 	// The ID of the request.
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
@@ -3743,7 +3747,7 @@ func (s *GetApplicationResponseBodyApplication) SetUpdateDate(v string) *GetAppl
 }
 
 type GetApplicationResponseBodyApplicationDelegatedScope struct {
-	// An array consisting of the information about the permissions that are granted on the application.
+	// The information about the permissions that are granted on the application.
 	PredefinedScopes *GetApplicationResponseBodyApplicationDelegatedScopePredefinedScopes `json:"PredefinedScopes,omitempty" xml:"PredefinedScopes,omitempty" type:"Struct"`
 }
 
@@ -3848,6 +3852,29 @@ func (s *GetApplicationResponse) SetBody(v *GetApplicationResponseBody) *GetAppl
 	return s
 }
 
+type GetCredentialReportRequest struct {
+	MaxItems  *string `json:"MaxItems,omitempty" xml:"MaxItems,omitempty"`
+	NextToken *string `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
+}
+
+func (s GetCredentialReportRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetCredentialReportRequest) GoString() string {
+	return s.String()
+}
+
+func (s *GetCredentialReportRequest) SetMaxItems(v string) *GetCredentialReportRequest {
+	s.MaxItems = &v
+	return s
+}
+
+func (s *GetCredentialReportRequest) SetNextToken(v string) *GetCredentialReportRequest {
+	s.NextToken = &v
+	return s
+}
+
 type GetCredentialReportResponseBody struct {
 	// The content of the user 
 	//
@@ -3855,7 +3882,9 @@ type GetCredentialReportResponseBody struct {
 	Content *string `json:"Content,omitempty" xml:"Content,omitempty"`
 	// The time when the user credential report was generated.
 	GeneratedTime *string `json:"GeneratedTime,omitempty" xml:"GeneratedTime,omitempty"`
-	// The ID of the request.
+	IsTruncated   *string `json:"IsTruncated,omitempty" xml:"IsTruncated,omitempty"`
+	NextToken     *string `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
+	// The request ID.
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -3874,6 +3903,16 @@ func (s *GetCredentialReportResponseBody) SetContent(v string) *GetCredentialRep
 
 func (s *GetCredentialReportResponseBody) SetGeneratedTime(v string) *GetCredentialReportResponseBody {
 	s.GeneratedTime = &v
+	return s
+}
+
+func (s *GetCredentialReportResponseBody) SetIsTruncated(v string) *GetCredentialReportResponseBody {
+	s.IsTruncated = &v
+	return s
+}
+
+func (s *GetCredentialReportResponseBody) SetNextToken(v string) *GetCredentialReportResponseBody {
+	s.NextToken = &v
 	return s
 }
 
@@ -3914,7 +3953,7 @@ func (s *GetCredentialReportResponse) SetBody(v *GetCredentialReportResponseBody
 type GetDefaultDomainResponseBody struct {
 	// The default domain name.
 	DefaultDomainName *string `json:"DefaultDomainName,omitempty" xml:"DefaultDomainName,omitempty"`
-	// The ID of the request.
+	// The request ID.
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -3984,9 +4023,9 @@ func (s *GetGroupRequest) SetGroupName(v string) *GetGroupRequest {
 }
 
 type GetGroupResponseBody struct {
-	// The information of the RAM user group.
+	// The information about the RAM user group.
 	Group *GetGroupResponseBodyGroup `json:"Group,omitempty" xml:"Group,omitempty" type:"Struct"`
-	// The ID of the request.
+	// The request ID.
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -4111,7 +4150,7 @@ func (s *GetLoginProfileRequest) SetUserPrincipalName(v string) *GetLoginProfile
 type GetLoginProfileResponseBody struct {
 	// The logon information.
 	LoginProfile *GetLoginProfileResponseBodyLoginProfile `json:"LoginProfile,omitempty" xml:"LoginProfile,omitempty" type:"Struct"`
-	// The ID of the request.
+	// The request ID.
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -4272,8 +4311,9 @@ type GetOIDCProviderResponseBodyOIDCProvider struct {
 	// The timestamp when the OIDC IdP was created.
 	GmtCreate *string `json:"GmtCreate,omitempty" xml:"GmtCreate,omitempty"`
 	// The timestamp when the OIDC IdP was modified.
-	GmtModified       *string `json:"GmtModified,omitempty" xml:"GmtModified,omitempty"`
-	IssuanceLimitTime *int64  `json:"IssuanceLimitTime,omitempty" xml:"IssuanceLimitTime,omitempty"`
+	GmtModified *string `json:"GmtModified,omitempty" xml:"GmtModified,omitempty"`
+	// The earliest time when an external IdP can issue an ID token. If the value of the iat field in the ID token is later than the current time, the request is rejected. Unit: hours. Valid values: 1 to 168.
+	IssuanceLimitTime *int64 `json:"IssuanceLimitTime,omitempty" xml:"IssuanceLimitTime,omitempty"`
 	// The URL of the issuer.
 	IssuerUrl *string `json:"IssuerUrl,omitempty" xml:"IssuerUrl,omitempty"`
 	// The name of the OIDC IdP.
@@ -4377,7 +4417,7 @@ func (s *GetOIDCProviderResponse) SetBody(v *GetOIDCProviderResponseBody) *GetOI
 type GetPasswordPolicyResponseBody struct {
 	// The details of the password policy.
 	PasswordPolicy *GetPasswordPolicyResponseBodyPasswordPolicy `json:"PasswordPolicy,omitempty" xml:"PasswordPolicy,omitempty" type:"Struct"`
-	// The ID of the request.
+	// The request ID.
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -4408,7 +4448,7 @@ type GetPasswordPolicyResponseBodyPasswordPolicy struct {
 	MaxPasswordAge *int32 `json:"MaxPasswordAge,omitempty" xml:"MaxPasswordAge,omitempty"`
 	// The minimum number of unique characters in the password.
 	MinimumPasswordDifferentCharacter *int32 `json:"MinimumPasswordDifferentCharacter,omitempty" xml:"MinimumPasswordDifferentCharacter,omitempty"`
-	// The minimum number of characters in the password.
+	// The minimum required number of characters in a password.
 	MinimumPasswordLength *int32 `json:"MinimumPasswordLength,omitempty" xml:"MinimumPasswordLength,omitempty"`
 	// Indicates whether to exclude the username from the password.
 	PasswordNotContainUserName *bool `json:"PasswordNotContainUserName,omitempty" xml:"PasswordNotContainUserName,omitempty"`
@@ -4535,9 +4575,9 @@ func (s *GetSAMLProviderRequest) SetSAMLProviderName(v string) *GetSAMLProviderR
 }
 
 type GetSAMLProviderResponseBody struct {
-	// The ID of the request.
+	// The request ID.
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// The information of the IdP.
+	// The information about the IdP.
 	SAMLProvider *GetSAMLProviderResponseBodySAMLProvider `json:"SAMLProvider,omitempty" xml:"SAMLProvider,omitempty" type:"Struct"`
 }
 
@@ -4642,7 +4682,7 @@ func (s *GetSAMLProviderResponse) SetBody(v *GetSAMLProviderResponseBody) *GetSA
 }
 
 type GetSecurityPreferenceResponseBody struct {
-	// The ID of the request.
+	// The request ID.
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	// The details of security preferences.
 	SecurityPreference *GetSecurityPreferenceResponseBodySecurityPreference `json:"SecurityPreference,omitempty" xml:"SecurityPreference,omitempty" type:"Struct"`
@@ -4713,10 +4753,10 @@ func (s *GetSecurityPreferenceResponseBodySecurityPreference) SetVerificationPre
 }
 
 type GetSecurityPreferenceResponseBodySecurityPreferenceAccessKeyPreference struct {
-	// Specifies whether RAM users can manage their AccessKey pairs. Valid values:
+	// Indicates whether RAM users can manage their AccessKey pairs. Valid values:
 	//
-	// *   true: yes
-	// *   false: no
+	// *   true
+	// *   false
 	AllowUserToManageAccessKeys *bool `json:"AllowUserToManageAccessKeys,omitempty" xml:"AllowUserToManageAccessKeys,omitempty"`
 }
 
@@ -4734,30 +4774,30 @@ func (s *GetSecurityPreferenceResponseBodySecurityPreferenceAccessKeyPreference)
 }
 
 type GetSecurityPreferenceResponseBodySecurityPreferenceLoginProfilePreference struct {
-	// Specifies whether RAM users can change their passwords. Valid values:
+	// Indicates whether RAM users can change their passwords. Valid values:
 	//
-	// *   true: yes
-	// *   false: no
+	// *   true
+	// *   false
 	AllowUserToChangePassword *bool `json:"AllowUserToChangePassword,omitempty" xml:"AllowUserToChangePassword,omitempty"`
-	// Specifies whether to remember the multi-factor authentication (MFA) devices for seven days. Valid values:
+	// Indicates whether RAM users can remember the multi-factor authentication (MFA) devices for seven days. Valid values:
 	//
-	// *   true: yes
-	// *   false: no
+	// *   true
+	// *   false
 	EnableSaveMFATicket *bool `json:"EnableSaveMFATicket,omitempty" xml:"EnableSaveMFATicket,omitempty"`
 	// The subnet mask.
 	LoginNetworkMasks *string `json:"LoginNetworkMasks,omitempty" xml:"LoginNetworkMasks,omitempty"`
 	// The validity period of the logon session of RAM users. Unit: hours.
 	LoginSessionDuration *int32 `json:"LoginSessionDuration,omitempty" xml:"LoginSessionDuration,omitempty"`
-	// Specifies whether MFA is required for all RAM users when they log on to the Alibaba Cloud Management Console. This parameter is used to replace the EnforceMFAForLogin parameter. The EnforceMFAForLogin parameter is still valid. However, we recommend that you use the MFAOperationForLogin parameter. Valid values:
+	// Indicates whether MFA is required for all RAM users when they log on to the Alibaba Cloud Management Console. Valid values:
 	//
-	// *   mandatory: MFA is required for all RAM users. If you use the EnforceMFAForLogin parameter, set the value to true.
-	// *   independent: User-specific settings are applied. This is the default value. If you use the EnforceMFAForLogin parameter, set the value to false.
+	// *   mandatory: MFA is required for all RAM users. If you use EnforceMFAForLogin, set the value to true.
+	// *   independent (default): User-specific settings are applied. If you use EnforceMFAForLogin, set the value to false.
 	// *   adaptive: MFA is required only for RAM users who initiated unusual logons.
 	MFAOperationForLogin *string `json:"MFAOperationForLogin,omitempty" xml:"MFAOperationForLogin,omitempty"`
-	// Specifies whether to enable MFA for RAM users who initiated unusual logons. Valid values:
+	// Indicates whether to enable MFA for RAM users who initiated unusual logons. Valid values:
 	//
-	// *   autonomous: yes. MFA is prompted for RAM users who initiated unusual logons. However, the RAM users are allowed to skip MFA. This is the default value.
-	// *   enforceVerify: no.
+	// *   autonomous (default): yes. MFA is prompted for RAM users who initiated unusual logons. However, the RAM users are allowed to skip MFA.
+	// *   enforceVerify: MFA is prompted for RAM users who initiated unusual logons and the RAM users cannot skip MFA.
 	OperationForRiskLogin *string `json:"OperationForRiskLogin,omitempty" xml:"OperationForRiskLogin,omitempty"`
 }
 
@@ -4802,8 +4842,8 @@ func (s *GetSecurityPreferenceResponseBodySecurityPreferenceLoginProfilePreferen
 type GetSecurityPreferenceResponseBodySecurityPreferenceMFAPreference struct {
 	// Indicates whether RAM users can manage their MFA devices. Valid values:
 	//
-	// *   true: yes
-	// *   false: no
+	// *   true
+	// *   false
 	AllowUserToManageMFADevices *bool `json:"AllowUserToManageMFADevices,omitempty" xml:"AllowUserToManageMFADevices,omitempty"`
 }
 
@@ -4821,10 +4861,10 @@ func (s *GetSecurityPreferenceResponseBodySecurityPreferenceMFAPreference) SetAl
 }
 
 type GetSecurityPreferenceResponseBodySecurityPreferencePersonalInfoPreference struct {
-	// Specifies whether RAM users can manage their personal DingTalk accounts, such as binding and unbinding of the accounts. Valid values:
+	// Indicates whether RAM users can manage their personal DingTalk accounts, such as binding and unbinding of the accounts. Valid values:
 	//
-	// *   true: yes
-	// *   false: no
+	// *   true
+	// *   false
 	AllowUserToManagePersonalDingTalk *bool `json:"AllowUserToManagePersonalDingTalk,omitempty" xml:"AllowUserToManagePersonalDingTalk,omitempty"`
 }
 
@@ -4842,7 +4882,7 @@ func (s *GetSecurityPreferenceResponseBodySecurityPreferencePersonalInfoPreferen
 }
 
 type GetSecurityPreferenceResponseBodySecurityPreferenceVerificationPreference struct {
-	// The MFA method.
+	// The MFA methods.
 	VerificationTypes []*string `json:"VerificationTypes,omitempty" xml:"VerificationTypes,omitempty" type:"Repeated"`
 }
 
@@ -4891,19 +4931,19 @@ func (s *GetSecurityPreferenceResponse) SetBody(v *GetSecurityPreferenceResponse
 type GetUserRequest struct {
 	// The AccessKey ID of the RAM user.
 	//
-	// >  You must specify only one of the following parameters: `UserPrincipalName`, `UserId`, and `UserAccessKeyId`.
+	// > You must specify only one of the following parameters: `UserPrincipalName`, `UserId`, and `UserAccessKeyId`.
 	UserAccessKeyId *string `json:"UserAccessKeyId,omitempty" xml:"UserAccessKeyId,omitempty"`
 	// The ID of the RAM user.
 	//
-	// >  You must specify only one of the following parameters: `UserPrincipalName`, `UserId`, and `UserAccessKeyId`.
+	// > You must specify only one of the following parameters: `UserPrincipalName`, `UserId`, and `UserAccessKeyId`.
 	UserId *string `json:"UserId,omitempty" xml:"UserId,omitempty"`
 	// The logon name of the RAM user.
 	//
 	// The name is in the format of `<username>@<AccountAlias>.onaliyun.com`. `<username>` indicates the name of the RAM user. `<AccountAlias>.onaliyun.com` indicates the default domain name.
 	//
-	// The value of `UserPrincipalName` must be 1 to 128 characters in length and can contain letters, digits, periods (.), hyphens (-), and underscores (\_). The value of `<AccountAlias>.onaliyun.com` must be 1 to 64 characters in length.
+	// The value of `UserPrincipalName` must be `1 to 128` characters in length and can contain letters, digits, periods (.), hyphens (-), and underscores (\_). The value of `<username>` must be `1 to 64` characters in length.
 	//
-	// >  You must specify only one of the following parameters: `UserPrincipalName`, `UserId`, and `UserAccessKeyId`.
+	// > You must specify only one of the following parameters: `UserPrincipalName`, `UserId`, and `UserAccessKeyId`.
 	UserPrincipalName *string `json:"UserPrincipalName,omitempty" xml:"UserPrincipalName,omitempty"`
 }
 
@@ -4931,7 +4971,7 @@ func (s *GetUserRequest) SetUserPrincipalName(v string) *GetUserRequest {
 }
 
 type GetUserResponseBody struct {
-	// The ID of the request.
+	// The request ID.
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	// The information about the RAM user.
 	User *GetUserResponseBodyUser `json:"User,omitempty" xml:"User,omitempty" type:"Struct"`
@@ -4964,21 +5004,21 @@ type GetUserResponseBodyUser struct {
 	DisplayName *string `json:"DisplayName,omitempty" xml:"DisplayName,omitempty"`
 	// The email address of the RAM user.
 	//
-	// >  This parameter is valid only on the China site (aliyun.com).
+	// > This parameter is valid only on the China site (aliyun.com).
 	Email *string `json:"Email,omitempty" xml:"Email,omitempty"`
 	// The last time when the RAM user logged on to the Alibaba Cloud Management Console.
 	LastLoginDate *string `json:"LastLoginDate,omitempty" xml:"LastLoginDate,omitempty"`
 	// The mobile phone number of the RAM user.
 	//
-	// >  This parameter is valid only on the China site (aliyun.com).
+	// > This parameter is valid only on the China site (aliyun.com).
 	MobilePhone *string `json:"MobilePhone,omitempty" xml:"MobilePhone,omitempty"`
-	// The source of the RAM user. Valid values:
+	// The source of the RAM user. Valid value:
 	//
 	// *   Manual: The RAM user is manually created in the RAM console.
 	// *   SCIM: The RAM user is mapped by using System for Cross-domain Identity Management (SCIM).
 	// *   CloudSSO: The RAM user is mapped from a CloudSSO user.
 	ProvisionType *string `json:"ProvisionType,omitempty" xml:"ProvisionType,omitempty"`
-	// An array that consists of tags.
+	// The tags.
 	Tags *GetUserResponseBodyUserTags `json:"Tags,omitempty" xml:"Tags,omitempty" type:"Struct"`
 	// The time when the information about the RAM user was updated.
 	UpdateDate *string `json:"UpdateDate,omitempty" xml:"UpdateDate,omitempty"`
@@ -6167,7 +6207,7 @@ type ListOIDCProvidersResponseBody struct {
 	IsTruncated *bool `json:"IsTruncated,omitempty" xml:"IsTruncated,omitempty"`
 	// The `marker`. This parameter is returned only if the value of `IsTruncated` is `true`. If the parameter is returned, you can call this operation again and set this parameter to obtain the truncated part.``
 	Marker *string `json:"Marker,omitempty" xml:"Marker,omitempty"`
-	// The timestamp when the OIDC IdP was modified.
+	// The information about the OIDC IdP.
 	OIDCProviders *ListOIDCProvidersResponseBodyOIDCProviders `json:"OIDCProviders,omitempty" xml:"OIDCProviders,omitempty" type:"Struct"`
 	// The request ID.
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
@@ -6221,7 +6261,7 @@ func (s *ListOIDCProvidersResponseBodyOIDCProviders) SetOIDCProvider(v []*ListOI
 type ListOIDCProvidersResponseBodyOIDCProvidersOIDCProvider struct {
 	// The Alibaba Cloud Resource Name (ARN) of the OIDC IdP.
 	Arn *string `json:"Arn,omitempty" xml:"Arn,omitempty"`
-	// The ID of the client. If multiple client IDs are returned, the client IDs are separated by commas (,).
+	// The ID of the client, If you want to specify multiple client IDs, separate the client IDs with commas (,).
 	ClientIds *string `json:"ClientIds,omitempty" xml:"ClientIds,omitempty"`
 	// The time when the OIDC IdP was created. The time is displayed in UTC.
 	CreateDate *string `json:"CreateDate,omitempty" xml:"CreateDate,omitempty"`
@@ -6232,8 +6272,9 @@ type ListOIDCProvidersResponseBodyOIDCProvidersOIDCProvider struct {
 	// The timestamp when the OIDC IdP was created.
 	GmtCreate *string `json:"GmtCreate,omitempty" xml:"GmtCreate,omitempty"`
 	// The timestamp when the OIDC IdP was modified.
-	GmtModified       *string `json:"GmtModified,omitempty" xml:"GmtModified,omitempty"`
-	IssuanceLimitTime *int64  `json:"IssuanceLimitTime,omitempty" xml:"IssuanceLimitTime,omitempty"`
+	GmtModified *string `json:"GmtModified,omitempty" xml:"GmtModified,omitempty"`
+	// The earliest time when an external IdP can issue an ID token. If the value of the iat field in the ID token is later than the current time, the request is rejected. Unit: hours. Valid values: 1 to 168.
+	IssuanceLimitTime *int64 `json:"IssuanceLimitTime,omitempty" xml:"IssuanceLimitTime,omitempty"`
 	// The URL of the issuer.
 	IssuerUrl *string `json:"IssuerUrl,omitempty" xml:"IssuerUrl,omitempty"`
 	// The name of the OIDC IdP.
@@ -7718,8 +7759,9 @@ type RemoveClientIdFromOIDCProviderResponseBodyOIDCProvider struct {
 	// The timestamp when the OIDC IdP was created.
 	GmtCreate *string `json:"GmtCreate,omitempty" xml:"GmtCreate,omitempty"`
 	// The timestamp when the OIDC IdP was modified.
-	GmtModified       *string `json:"GmtModified,omitempty" xml:"GmtModified,omitempty"`
-	IssuanceLimitTime *int64  `json:"IssuanceLimitTime,omitempty" xml:"IssuanceLimitTime,omitempty"`
+	GmtModified *string `json:"GmtModified,omitempty" xml:"GmtModified,omitempty"`
+	// The earliest time when an external IdP can issue an ID token. If the value of the iat field in the ID token is later than the current time, the request is rejected. Unit: hours. Valid values: 1 to 168.
+	IssuanceLimitTime *int64 `json:"IssuanceLimitTime,omitempty" xml:"IssuanceLimitTime,omitempty"`
 	// The URL of the issuer.
 	IssuerUrl *string `json:"IssuerUrl,omitempty" xml:"IssuerUrl,omitempty"`
 	// The name of the OIDC IdP.
@@ -7884,8 +7926,9 @@ type RemoveFingerprintFromOIDCProviderResponseBodyOIDCProvider struct {
 	// The timestamp when the OIDC IdP was created.
 	GmtCreate *string `json:"GmtCreate,omitempty" xml:"GmtCreate,omitempty"`
 	// The timestamp when the OIDC IdP was modified.
-	GmtModified       *string `json:"GmtModified,omitempty" xml:"GmtModified,omitempty"`
-	IssuanceLimitTime *int64  `json:"IssuanceLimitTime,omitempty" xml:"IssuanceLimitTime,omitempty"`
+	GmtModified *string `json:"GmtModified,omitempty" xml:"GmtModified,omitempty"`
+	// The earliest time when an external IdP can issue an ID token. If the value of the iat field in the ID token is later than the current time, the request is rejected. Unit: hours. Valid values: 1 to 168.
+	IssuanceLimitTime *int64 `json:"IssuanceLimitTime,omitempty" xml:"IssuanceLimitTime,omitempty"`
 	// The URL of the issuer.
 	IssuerUrl *string `json:"IssuerUrl,omitempty" xml:"IssuerUrl,omitempty"`
 	// The name of the OIDC IdP.
@@ -10027,8 +10070,9 @@ type UpdateOIDCProviderRequest struct {
 	// The client ID can be up to 64 characters in length.
 	//
 	// > If you specify this parameter, all the client IDs of the OIDC IdP are replaced. If you need to only add or remove a client ID, call the AddClientIdToOIDCProvider or RemoveClientIdFromOIDCProvider operation. For more information, see [AddClientIdToOIDCProvider](~~332057~~) or [RemoveClientIdFromOIDCProvider](~~332058~~).
-	ClientIds         *string `json:"ClientIds,omitempty" xml:"ClientIds,omitempty"`
-	IssuanceLimitTime *int64  `json:"IssuanceLimitTime,omitempty" xml:"IssuanceLimitTime,omitempty"`
+	ClientIds *string `json:"ClientIds,omitempty" xml:"ClientIds,omitempty"`
+	// The earliest time when an external IdP can issue an ID token. If the value of the iat field in the ID token is later than the current time, the request is rejected. Unit: hours. Valid values: 1 to 168.
+	IssuanceLimitTime *int64 `json:"IssuanceLimitTime,omitempty" xml:"IssuanceLimitTime,omitempty"`
 	// The description of the OIDC IdP.
 	//
 	// The description can be up to 256 characters in length.
@@ -10104,8 +10148,9 @@ type UpdateOIDCProviderResponseBodyOIDCProvider struct {
 	// The timestamp when the OIDC IdP was created.
 	GmtCreate *string `json:"GmtCreate,omitempty" xml:"GmtCreate,omitempty"`
 	// The timestamp when the OIDC IdP was modified.
-	GmtModified       *string `json:"GmtModified,omitempty" xml:"GmtModified,omitempty"`
-	IssuanceLimitTime *int64  `json:"IssuanceLimitTime,omitempty" xml:"IssuanceLimitTime,omitempty"`
+	GmtModified *string `json:"GmtModified,omitempty" xml:"GmtModified,omitempty"`
+	// The earliest time when an external IdP can issue an ID token. If the value of the iat field in the ID token is later than the current time, the request is rejected. Unit: hours. Valid values: 1 to 168.
+	IssuanceLimitTime *int64 `json:"IssuanceLimitTime,omitempty" xml:"IssuanceLimitTime,omitempty"`
 	// The URL of the issuer.
 	IssuerUrl *string `json:"IssuerUrl,omitempty" xml:"IssuerUrl,omitempty"`
 	// The name of the OIDC IdP.
@@ -11178,14 +11223,14 @@ func (client *Client) CreateLoginProfile(request *CreateLoginProfileRequest) (_r
 }
 
 /**
- * ### Prerequisites
+ * ### [](#)Prerequisite
  * Before you call this operation, make sure that the information such as the URL of the issuer, the fingerprints of HTTPS certificates, and the client IDs are obtained from an external IdP, such as Google G Suite or Okta.
- * ### Limits
+ * ### [](#)Limits
  * *   You can create a maximum of 100 OIDC IdPs in an Alibaba Cloud account.
  * *   You can add a maximum of 20 client IDs to an OIDC IdP.
  * *   You can add a maximum of five fingerprints to an OIDC IdP.
- * ###
- * ``
+ * ### [](#)
+ * This topic provides an example on how to create an IdP named `TestOIDCProvider` to configure a trust relationship between the external IdP and Alibaba Cloud.
  *
  * @param request CreateOIDCProviderRequest
  * @param runtime runtime options for this request RuntimeOptions
@@ -11245,14 +11290,14 @@ func (client *Client) CreateOIDCProviderWithOptions(request *CreateOIDCProviderR
 }
 
 /**
- * ### Prerequisites
+ * ### [](#)Prerequisite
  * Before you call this operation, make sure that the information such as the URL of the issuer, the fingerprints of HTTPS certificates, and the client IDs are obtained from an external IdP, such as Google G Suite or Okta.
- * ### Limits
+ * ### [](#)Limits
  * *   You can create a maximum of 100 OIDC IdPs in an Alibaba Cloud account.
  * *   You can add a maximum of 20 client IDs to an OIDC IdP.
  * *   You can add a maximum of five fingerprints to an OIDC IdP.
- * ###
- * ``
+ * ### [](#)
+ * This topic provides an example on how to create an IdP named `TestOIDCProvider` to configure a trust relationship between the external IdP and Alibaba Cloud.
  *
  * @param request CreateOIDCProviderRequest
  * @return CreateOIDCProviderResponse
@@ -12206,8 +12251,23 @@ func (client *Client) GetApplication(request *GetApplicationRequest) (_result *G
 	return _result, _err
 }
 
-func (client *Client) GetCredentialReportWithOptions(runtime *util.RuntimeOptions) (_result *GetCredentialReportResponse, _err error) {
-	req := &openapi.OpenApiRequest{}
+func (client *Client) GetCredentialReportWithOptions(request *GetCredentialReportRequest, runtime *util.RuntimeOptions) (_result *GetCredentialReportResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.MaxItems)) {
+		query["MaxItems"] = request.MaxItems
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.NextToken)) {
+		query["NextToken"] = request.NextToken
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
 	params := &openapi.Params{
 		Action:      tea.String("GetCredentialReport"),
 		Version:     tea.String("2019-08-15"),
@@ -12228,10 +12288,10 @@ func (client *Client) GetCredentialReportWithOptions(runtime *util.RuntimeOption
 	return _result, _err
 }
 
-func (client *Client) GetCredentialReport() (_result *GetCredentialReportResponse, _err error) {
+func (client *Client) GetCredentialReport(request *GetCredentialReportRequest) (_result *GetCredentialReportResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &GetCredentialReportResponse{}
-	_body, _err := client.GetCredentialReportWithOptions(runtime)
+	_body, _err := client.GetCredentialReportWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
