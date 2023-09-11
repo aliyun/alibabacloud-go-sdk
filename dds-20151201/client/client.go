@@ -14890,7 +14890,8 @@ type ModifyDBInstanceNetworkTypeRequest struct {
 	// The ID of the virtual private cloud (VPC).
 	//
 	// >  This parameter is required when the **NetworkType** parameter is set to **VPC**.
-	VpcId  *string `json:"VpcId,omitempty" xml:"VpcId,omitempty"`
+	VpcId *string `json:"VpcId,omitempty" xml:"VpcId,omitempty"`
+	// The zone ID of the instance. You can call the [DescribeRegions](~~468365~~) operation to query the most recent zone list.
 	ZoneId *string `json:"ZoneId,omitempty" xml:"ZoneId,omitempty"`
 }
 
