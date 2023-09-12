@@ -1154,13 +1154,14 @@ func (s *GetUserHeaders) SetAuthorization(v string) *GetUserHeaders {
 }
 
 type GetUserResponseBody struct {
-	AccountExpireTime           *int64                                    `json:"accountExpireTime,omitempty" xml:"accountExpireTime,omitempty"`
-	CreateTime                  *int64                                    `json:"createTime,omitempty" xml:"createTime,omitempty"`
-	CustomFields                []*GetUserResponseBodyCustomFields        `json:"customFields,omitempty" xml:"customFields,omitempty" type:"Repeated"`
-	Description                 *string                                   `json:"description,omitempty" xml:"description,omitempty"`
-	DisplayName                 *string                                   `json:"displayName,omitempty" xml:"displayName,omitempty"`
-	Email                       *string                                   `json:"email,omitempty" xml:"email,omitempty"`
-	EmailVerified               *bool                                     `json:"emailVerified,omitempty" xml:"emailVerified,omitempty"`
+	AccountExpireTime *int64                             `json:"accountExpireTime,omitempty" xml:"accountExpireTime,omitempty"`
+	CreateTime        *int64                             `json:"createTime,omitempty" xml:"createTime,omitempty"`
+	CustomFields      []*GetUserResponseBodyCustomFields `json:"customFields,omitempty" xml:"customFields,omitempty" type:"Repeated"`
+	Description       *string                            `json:"description,omitempty" xml:"description,omitempty"`
+	DisplayName       *string                            `json:"displayName,omitempty" xml:"displayName,omitempty"`
+	Email             *string                            `json:"email,omitempty" xml:"email,omitempty"`
+	EmailVerified     *bool                              `json:"emailVerified,omitempty" xml:"emailVerified,omitempty"`
+	// 账户所属组列表。
 	Groups                      []*GetUserResponseBodyGroups              `json:"groups,omitempty" xml:"groups,omitempty" type:"Repeated"`
 	InstanceId                  *string                                   `json:"instanceId,omitempty" xml:"instanceId,omitempty"`
 	LockExpireTime              *int64                                    `json:"lockExpireTime,omitempty" xml:"lockExpireTime,omitempty"`
@@ -1332,9 +1333,12 @@ func (s *GetUserResponseBodyCustomFields) SetFieldValue(v string) *GetUserRespon
 }
 
 type GetUserResponseBodyGroups struct {
+	// 组描述。
 	Description *string `json:"description,omitempty" xml:"description,omitempty"`
-	GroupId     *string `json:"groupId,omitempty" xml:"groupId,omitempty"`
-	GroupName   *string `json:"groupName,omitempty" xml:"groupName,omitempty"`
+	// 组ID。
+	GroupId *string `json:"groupId,omitempty" xml:"groupId,omitempty"`
+	// 组名称。
+	GroupName *string `json:"groupName,omitempty" xml:"groupName,omitempty"`
 }
 
 func (s GetUserResponseBodyGroups) String() string {
@@ -1776,7 +1780,8 @@ func (s *GetUserIdByUsernameResponse) SetBody(v *GetUserIdByUsernameResponseBody
 
 type GetUserInfoHeaders struct {
 	CommonHeaders map[string]*string `json:"commonHeaders,omitempty" xml:"commonHeaders,omitempty"`
-	Authorization *string            `json:"Authorization,omitempty" xml:"Authorization,omitempty"`
+	// The authentication information. Format: Bearer ${access_token}. Example: Bearer ATxxxx.
+	Authorization *string `json:"Authorization,omitempty" xml:"Authorization,omitempty"`
 }
 
 func (s GetUserInfoHeaders) String() string {
