@@ -351,6 +351,7 @@ func (s *AllocateInstancePublicConnectionRequest) SetSecurityToken(v string) *Al
 }
 
 type AllocateInstancePublicConnectionResponseBody struct {
+	// The ID of the request.
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -2007,7 +2008,8 @@ type CreateTairInstanceRequest struct {
 	//
 	// > This parameter is required only if you set the **ChargeType** parameter to **PrePaid**.
 	Period *int32 `json:"Period,omitempty" xml:"Period,omitempty"`
-	Port   *int32 `json:"Port,omitempty" xml:"Port,omitempty"`
+	// The port number of the instance. Valid values: **1024** to **65535**. Default value: **6379**.
+	Port *int32 `json:"Port,omitempty" xml:"Port,omitempty"`
 	// The private IP address of the instance.
 	//
 	// > The IP address must be within the CIDR block of the vSwitch to which you want the instance to connect. You can call the [DescribeVSwitches](~~35748~~) operation of the VPC API to query the CIDR block information.
@@ -2954,6 +2956,10 @@ func (s *DescribeAccountsResponseBodyAccountsAccountDatabasePrivileges) SetDatab
 }
 
 type DescribeAccountsResponseBodyAccountsAccountDatabasePrivilegesDatabasePrivilege struct {
+	// The permissions of the account. Valid values:
+	//
+	// *   **RoleReadOnly**: The account has read-only permissions.
+	// *   **RoleReadWrite**: The account has read and write permissions.
 	AccountPrivilege *string `json:"AccountPrivilege,omitempty" xml:"AccountPrivilege,omitempty"`
 }
 
@@ -5925,7 +5931,8 @@ type DescribeDBInstanceNetInfoResponseBodyNetInfoItemsInstanceNetInfo struct {
 	DirectConnection *int32 `json:"DirectConnection,omitempty" xml:"DirectConnection,omitempty"`
 	// The expiration time of the classic network address of an ApsaraDB for Redis instance. Unit: seconds.
 	ExpiredTime *string `json:"ExpiredTime,omitempty" xml:"ExpiredTime,omitempty"`
-	IPAddress   *string `json:"IPAddress,omitempty" xml:"IPAddress,omitempty"`
+	// The IP address of the instance in the classic network.
+	IPAddress *string `json:"IPAddress,omitempty" xml:"IPAddress,omitempty"`
 	// The network type of the IP address. Valid values:
 	//
 	// *   **Public**: Internet.
@@ -12860,6 +12867,10 @@ func (s *DescribeSecurityGroupConfigurationResponseBodyItems) SetEcsSecurityGrou
 }
 
 type DescribeSecurityGroupConfigurationResponseBodyItemsEcsSecurityGroupRelation struct {
+	// The network type of the ECS security group. Valid values:
+	//
+	// *   **vpc**
+	// *   **classic**
 	NetType *string `json:"NetType,omitempty" xml:"NetType,omitempty"`
 	// Queries the security groups that are included in the whitelist of an ApsaraDB for Redis instance.
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
@@ -13012,8 +13023,10 @@ func (s *DescribeSecurityIpsResponseBodySecurityIpGroups) SetSecurityIpGroup(v [
 type DescribeSecurityIpsResponseBodySecurityIpGroupsSecurityIpGroup struct {
 	// The operation that you want to perform. Set the value to **DescribeSecurityIps**.
 	SecurityIpGroupAttribute *string `json:"SecurityIpGroupAttribute,omitempty" xml:"SecurityIpGroupAttribute,omitempty"`
-	SecurityIpGroupName      *string `json:"SecurityIpGroupName,omitempty" xml:"SecurityIpGroupName,omitempty"`
-	SecurityIpList           *string `json:"SecurityIpList,omitempty" xml:"SecurityIpList,omitempty"`
+	// The name of the security group.
+	SecurityIpGroupName *string `json:"SecurityIpGroupName,omitempty" xml:"SecurityIpGroupName,omitempty"`
+	// The IP addresses in the whitelist.
+	SecurityIpList *string `json:"SecurityIpList,omitempty" xml:"SecurityIpList,omitempty"`
 }
 
 func (s DescribeSecurityIpsResponseBodySecurityIpGroupsSecurityIpGroup) String() string {
@@ -14072,7 +14085,8 @@ type FlushExpireKeysResponseBody struct {
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
 	// The operation that you want to perform. Set the value to **FlushExpireKeys**.
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	TaskId    *string `json:"TaskId,omitempty" xml:"TaskId,omitempty"`
+	// The ID of the task.
+	TaskId *string `json:"TaskId,omitempty" xml:"TaskId,omitempty"`
 }
 
 func (s FlushExpireKeysResponseBody) String() string {
@@ -14128,6 +14142,7 @@ func (s *FlushExpireKeysResponse) SetBody(v *FlushExpireKeysResponseBody) *Flush
 }
 
 type FlushInstanceRequest struct {
+	// The ID of the instance.
 	InstanceId           *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
 	OwnerAccount         *string `json:"OwnerAccount,omitempty" xml:"OwnerAccount,omitempty"`
 	OwnerId              *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
@@ -14175,6 +14190,7 @@ func (s *FlushInstanceRequest) SetSecurityToken(v string) *FlushInstanceRequest 
 }
 
 type FlushInstanceResponseBody struct {
+	// The ID of the request.
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -14324,7 +14340,11 @@ func (s *FlushInstanceForDBResponse) SetBody(v *FlushInstanceForDBResponseBody) 
 
 type GrantAccountPrivilegeRequest struct {
 	// GrantAccountPrivilege
-	AccountName      *string `json:"AccountName,omitempty" xml:"AccountName,omitempty"`
+	AccountName *string `json:"AccountName,omitempty" xml:"AccountName,omitempty"`
+	// The permissions of the account. Valid values:
+	//
+	// *   **RoleReadOnly**: The account has read-only permissions.
+	// *   **RoleReadWrite**: The account has read and write permissions.
 	AccountPrivilege *string `json:"AccountPrivilege,omitempty" xml:"AccountPrivilege,omitempty"`
 	// Modifies the permissions of an account for an ApsaraDB for Redis instance.
 	InstanceId           *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
@@ -14384,6 +14404,7 @@ func (s *GrantAccountPrivilegeRequest) SetSecurityToken(v string) *GrantAccountP
 }
 
 type GrantAccountPrivilegeResponseBody struct {
+	// The ID of the request.
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -14478,6 +14499,7 @@ func (s *InitializeKvstorePermissionRequest) SetSecurityToken(v string) *Initial
 }
 
 type InitializeKvstorePermissionResponseBody struct {
+	// The ID of the request.
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -14735,6 +14757,123 @@ func (s *ListTagResourcesResponse) SetStatusCode(v int32) *ListTagResourcesRespo
 }
 
 func (s *ListTagResourcesResponse) SetBody(v *ListTagResourcesResponseBody) *ListTagResourcesResponse {
+	s.Body = v
+	return s
+}
+
+type LockDBInstanceWriteRequest struct {
+	DBInstanceId         *string `json:"DBInstanceId,omitempty" xml:"DBInstanceId,omitempty"`
+	LockReason           *string `json:"LockReason,omitempty" xml:"LockReason,omitempty"`
+	OwnerAccount         *string `json:"OwnerAccount,omitempty" xml:"OwnerAccount,omitempty"`
+	OwnerId              *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
+	ResourceOwnerAccount *string `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
+	ResourceOwnerId      *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
+	SecurityToken        *string `json:"SecurityToken,omitempty" xml:"SecurityToken,omitempty"`
+}
+
+func (s LockDBInstanceWriteRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s LockDBInstanceWriteRequest) GoString() string {
+	return s.String()
+}
+
+func (s *LockDBInstanceWriteRequest) SetDBInstanceId(v string) *LockDBInstanceWriteRequest {
+	s.DBInstanceId = &v
+	return s
+}
+
+func (s *LockDBInstanceWriteRequest) SetLockReason(v string) *LockDBInstanceWriteRequest {
+	s.LockReason = &v
+	return s
+}
+
+func (s *LockDBInstanceWriteRequest) SetOwnerAccount(v string) *LockDBInstanceWriteRequest {
+	s.OwnerAccount = &v
+	return s
+}
+
+func (s *LockDBInstanceWriteRequest) SetOwnerId(v int64) *LockDBInstanceWriteRequest {
+	s.OwnerId = &v
+	return s
+}
+
+func (s *LockDBInstanceWriteRequest) SetResourceOwnerAccount(v string) *LockDBInstanceWriteRequest {
+	s.ResourceOwnerAccount = &v
+	return s
+}
+
+func (s *LockDBInstanceWriteRequest) SetResourceOwnerId(v int64) *LockDBInstanceWriteRequest {
+	s.ResourceOwnerId = &v
+	return s
+}
+
+func (s *LockDBInstanceWriteRequest) SetSecurityToken(v string) *LockDBInstanceWriteRequest {
+	s.SecurityToken = &v
+	return s
+}
+
+type LockDBInstanceWriteResponseBody struct {
+	DBInstanceName *string `json:"DBInstanceName,omitempty" xml:"DBInstanceName,omitempty"`
+	LockReason     *string `json:"LockReason,omitempty" xml:"LockReason,omitempty"`
+	RequestId      *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	TaskId         *int64  `json:"TaskId,omitempty" xml:"TaskId,omitempty"`
+}
+
+func (s LockDBInstanceWriteResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s LockDBInstanceWriteResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *LockDBInstanceWriteResponseBody) SetDBInstanceName(v string) *LockDBInstanceWriteResponseBody {
+	s.DBInstanceName = &v
+	return s
+}
+
+func (s *LockDBInstanceWriteResponseBody) SetLockReason(v string) *LockDBInstanceWriteResponseBody {
+	s.LockReason = &v
+	return s
+}
+
+func (s *LockDBInstanceWriteResponseBody) SetRequestId(v string) *LockDBInstanceWriteResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *LockDBInstanceWriteResponseBody) SetTaskId(v int64) *LockDBInstanceWriteResponseBody {
+	s.TaskId = &v
+	return s
+}
+
+type LockDBInstanceWriteResponse struct {
+	Headers    map[string]*string               `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                           `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *LockDBInstanceWriteResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s LockDBInstanceWriteResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s LockDBInstanceWriteResponse) GoString() string {
+	return s.String()
+}
+
+func (s *LockDBInstanceWriteResponse) SetHeaders(v map[string]*string) *LockDBInstanceWriteResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *LockDBInstanceWriteResponse) SetStatusCode(v int32) *LockDBInstanceWriteResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *LockDBInstanceWriteResponse) SetBody(v *LockDBInstanceWriteResponseBody) *LockDBInstanceWriteResponse {
 	s.Body = v
 	return s
 }
@@ -16632,7 +16771,8 @@ type ModifyInstanceSSLResponseBody struct {
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
 	// The operation that you want to perform. Set the value to **ModifyInstanceSSL**.
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	TaskId    *string `json:"TaskId,omitempty" xml:"TaskId,omitempty"`
+	// The ID of the task.
+	TaskId *string `json:"TaskId,omitempty" xml:"TaskId,omitempty"`
 }
 
 func (s ModifyInstanceSSLResponseBody) String() string {
@@ -16704,7 +16844,10 @@ type ModifyInstanceSpecRequest struct {
 	// *   **Immediately**: The configurations are immediately changed.
 	// *   **MaintainTime**: The configurations are changed within the maintenance window. You can call the [ModifyInstanceMaintainTime](~~61000~~) operation to change the maintenance window.
 	EffectiveTime *string `json:"EffectiveTime,omitempty" xml:"EffectiveTime,omitempty"`
-	ForceTrans    *bool   `json:"ForceTrans,omitempty" xml:"ForceTrans,omitempty"`
+	// 是否开启强制传输，取值：
+	// - **false**（默认）：在变配前，系统会检查实例当前的内核小版本，若内核版本过低则会报错，您需要升级内核小版本后重试。
+	// - **true**：跳过检查项，直接执行变配操作。
+	ForceTrans *bool `json:"ForceTrans,omitempty" xml:"ForceTrans,omitempty"`
 	// Specifies whether to forcefully change the configurations of the instance. Default value: true. Valid values:
 	//
 	// *   **false**: The system does not forcefully change the configurations.
@@ -17761,6 +17904,7 @@ func (s *ReleaseInstancePublicConnectionRequest) SetSecurityToken(v string) *Rel
 }
 
 type ReleaseInstancePublicConnectionResponseBody struct {
+	// The ID of the request.
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -17807,6 +17951,7 @@ func (s *ReleaseInstancePublicConnectionResponse) SetBody(v *ReleaseInstancePubl
 }
 
 type RemoveSubInstanceRequest struct {
+	// 分布式实例中的子实例ID，可调用[DescribeGlobalDistributeCache](~~188699~~)接口获取。
 	InstanceId           *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
 	OwnerAccount         *string `json:"OwnerAccount,omitempty" xml:"OwnerAccount,omitempty"`
 	OwnerId              *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
@@ -17854,6 +17999,7 @@ func (s *RemoveSubInstanceRequest) SetSecurityToken(v string) *RemoveSubInstance
 }
 
 type RemoveSubInstanceResponseBody struct {
+	// The ID of the request.
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -18269,6 +18415,7 @@ func (s *ResetAccountPasswordRequest) SetSecurityToken(v string) *ResetAccountPa
 }
 
 type ResetAccountPasswordResponseBody struct {
+	// The ID of the request.
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -19489,6 +19636,111 @@ func (s *TransformToPrePaidResponse) SetStatusCode(v int32) *TransformToPrePaidR
 }
 
 func (s *TransformToPrePaidResponse) SetBody(v *TransformToPrePaidResponseBody) *TransformToPrePaidResponse {
+	s.Body = v
+	return s
+}
+
+type UnlockDBInstanceWriteRequest struct {
+	DBInstanceId         *string `json:"DBInstanceId,omitempty" xml:"DBInstanceId,omitempty"`
+	OwnerAccount         *string `json:"OwnerAccount,omitempty" xml:"OwnerAccount,omitempty"`
+	OwnerId              *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
+	ResourceOwnerAccount *string `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
+	ResourceOwnerId      *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
+	SecurityToken        *string `json:"SecurityToken,omitempty" xml:"SecurityToken,omitempty"`
+}
+
+func (s UnlockDBInstanceWriteRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UnlockDBInstanceWriteRequest) GoString() string {
+	return s.String()
+}
+
+func (s *UnlockDBInstanceWriteRequest) SetDBInstanceId(v string) *UnlockDBInstanceWriteRequest {
+	s.DBInstanceId = &v
+	return s
+}
+
+func (s *UnlockDBInstanceWriteRequest) SetOwnerAccount(v string) *UnlockDBInstanceWriteRequest {
+	s.OwnerAccount = &v
+	return s
+}
+
+func (s *UnlockDBInstanceWriteRequest) SetOwnerId(v int64) *UnlockDBInstanceWriteRequest {
+	s.OwnerId = &v
+	return s
+}
+
+func (s *UnlockDBInstanceWriteRequest) SetResourceOwnerAccount(v string) *UnlockDBInstanceWriteRequest {
+	s.ResourceOwnerAccount = &v
+	return s
+}
+
+func (s *UnlockDBInstanceWriteRequest) SetResourceOwnerId(v int64) *UnlockDBInstanceWriteRequest {
+	s.ResourceOwnerId = &v
+	return s
+}
+
+func (s *UnlockDBInstanceWriteRequest) SetSecurityToken(v string) *UnlockDBInstanceWriteRequest {
+	s.SecurityToken = &v
+	return s
+}
+
+type UnlockDBInstanceWriteResponseBody struct {
+	DBInstanceName *string `json:"DBInstanceName,omitempty" xml:"DBInstanceName,omitempty"`
+	RequestId      *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	TaskId         *int64  `json:"TaskId,omitempty" xml:"TaskId,omitempty"`
+}
+
+func (s UnlockDBInstanceWriteResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UnlockDBInstanceWriteResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *UnlockDBInstanceWriteResponseBody) SetDBInstanceName(v string) *UnlockDBInstanceWriteResponseBody {
+	s.DBInstanceName = &v
+	return s
+}
+
+func (s *UnlockDBInstanceWriteResponseBody) SetRequestId(v string) *UnlockDBInstanceWriteResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *UnlockDBInstanceWriteResponseBody) SetTaskId(v int64) *UnlockDBInstanceWriteResponseBody {
+	s.TaskId = &v
+	return s
+}
+
+type UnlockDBInstanceWriteResponse struct {
+	Headers    map[string]*string                 `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                             `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *UnlockDBInstanceWriteResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s UnlockDBInstanceWriteResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UnlockDBInstanceWriteResponse) GoString() string {
+	return s.String()
+}
+
+func (s *UnlockDBInstanceWriteResponse) SetHeaders(v map[string]*string) *UnlockDBInstanceWriteResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *UnlockDBInstanceWriteResponse) SetStatusCode(v int32) *UnlockDBInstanceWriteResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *UnlockDBInstanceWriteResponse) SetBody(v *UnlockDBInstanceWriteResponseBody) *UnlockDBInstanceWriteResponse {
 	s.Body = v
 	return s
 }
@@ -20858,9 +21110,8 @@ func (client *Client) CreateInstances(request *CreateInstancesRequest) (_result 
 /**
  * For more information about instance selection, see [Select an ApsaraDB for Redis instance](~~223808~~).
  * Before you call this operation, make sure that you are familiar with the billing methods and [pricing](~~54532~~) of ApsaraDB for Redis.
- * >
- * *   For more information about how to create an ApsaraDB for Redis Enhanced Edition (Tair) instance that uses cloud disks in the ApsaraDB for Redis console, see [Create an ApsaraDB for Redis instance](~~443863~~).
- * *   To create an instance of another edition or series such as a Community Edition instance or Tair [DRAM-based instance](~~126164~~) that uses local disks, call [CreateInstance](~~60873~~).
+ * > *   For more information about how to create an ApsaraDB for Redis Enhanced Edition (Tair) instance that uses cloud disks in the ApsaraDB for Redis console, see [Create an ApsaraDB for Redis instance](~~443863~~).
+ * >*   To create an instance of another edition or series such as a Community Edition instance or Tair [DRAM-based instance](~~126164~~) that uses local disks, call [CreateInstance](~~60873~~).
  *
  * @param request CreateTairInstanceRequest
  * @param runtime runtime options for this request RuntimeOptions
@@ -21054,9 +21305,8 @@ func (client *Client) CreateTairInstanceWithOptions(request *CreateTairInstanceR
 /**
  * For more information about instance selection, see [Select an ApsaraDB for Redis instance](~~223808~~).
  * Before you call this operation, make sure that you are familiar with the billing methods and [pricing](~~54532~~) of ApsaraDB for Redis.
- * >
- * *   For more information about how to create an ApsaraDB for Redis Enhanced Edition (Tair) instance that uses cloud disks in the ApsaraDB for Redis console, see [Create an ApsaraDB for Redis instance](~~443863~~).
- * *   To create an instance of another edition or series such as a Community Edition instance or Tair [DRAM-based instance](~~126164~~) that uses local disks, call [CreateInstance](~~60873~~).
+ * > *   For more information about how to create an ApsaraDB for Redis Enhanced Edition (Tair) instance that uses cloud disks in the ApsaraDB for Redis console, see [Create an ApsaraDB for Redis instance](~~443863~~).
+ * >*   To create an instance of another edition or series such as a Community Edition instance or Tair [DRAM-based instance](~~126164~~) that uses local disks, call [CreateInstance](~~60873~~).
  *
  * @param request CreateTairInstanceRequest
  * @return CreateTairInstanceResponse
@@ -25642,6 +25892,74 @@ func (client *Client) ListTagResources(request *ListTagResourcesRequest) (_resul
 	return _result, _err
 }
 
+func (client *Client) LockDBInstanceWriteWithOptions(request *LockDBInstanceWriteRequest, runtime *util.RuntimeOptions) (_result *LockDBInstanceWriteResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.DBInstanceId)) {
+		query["DBInstanceId"] = request.DBInstanceId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.LockReason)) {
+		query["LockReason"] = request.LockReason
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.OwnerAccount)) {
+		query["OwnerAccount"] = request.OwnerAccount
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.OwnerId)) {
+		query["OwnerId"] = request.OwnerId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ResourceOwnerAccount)) {
+		query["ResourceOwnerAccount"] = request.ResourceOwnerAccount
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ResourceOwnerId)) {
+		query["ResourceOwnerId"] = request.ResourceOwnerId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.SecurityToken)) {
+		query["SecurityToken"] = request.SecurityToken
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("LockDBInstanceWrite"),
+		Version:     tea.String("2015-01-01"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &LockDBInstanceWriteResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) LockDBInstanceWrite(request *LockDBInstanceWriteRequest) (_result *LockDBInstanceWriteResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &LockDBInstanceWriteResponse{}
+	_body, _err := client.LockDBInstanceWriteWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
 /**
  * The ID of the request.
  *
@@ -28944,6 +29262,70 @@ func (client *Client) TransformToPrePaid(request *TransformToPrePaidRequest) (_r
 	runtime := &util.RuntimeOptions{}
 	_result = &TransformToPrePaidResponse{}
 	_body, _err := client.TransformToPrePaidWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) UnlockDBInstanceWriteWithOptions(request *UnlockDBInstanceWriteRequest, runtime *util.RuntimeOptions) (_result *UnlockDBInstanceWriteResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.DBInstanceId)) {
+		query["DBInstanceId"] = request.DBInstanceId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.OwnerAccount)) {
+		query["OwnerAccount"] = request.OwnerAccount
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.OwnerId)) {
+		query["OwnerId"] = request.OwnerId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ResourceOwnerAccount)) {
+		query["ResourceOwnerAccount"] = request.ResourceOwnerAccount
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ResourceOwnerId)) {
+		query["ResourceOwnerId"] = request.ResourceOwnerId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.SecurityToken)) {
+		query["SecurityToken"] = request.SecurityToken
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("UnlockDBInstanceWrite"),
+		Version:     tea.String("2015-01-01"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &UnlockDBInstanceWriteResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) UnlockDBInstanceWrite(request *UnlockDBInstanceWriteRequest) (_result *UnlockDBInstanceWriteResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &UnlockDBInstanceWriteResponse{}
+	_body, _err := client.UnlockDBInstanceWriteWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}

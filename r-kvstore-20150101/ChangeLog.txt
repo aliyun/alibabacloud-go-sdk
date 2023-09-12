@@ -1,3 +1,6 @@
+2023-09-12 Version: v3.2.0
+- Generated golang 2015-01-01 for R-kvstore.
+
 2023-09-05 Version: v3.1.4
 - Generated golang 2015-01-01 for R-kvstore.
 
