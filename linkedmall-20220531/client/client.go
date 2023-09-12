@@ -74,8 +74,10 @@ func (s *ApplyCreateDistributionOrderRequest) SetTenantId(v string) *ApplyCreate
 type ApplyCreateDistributionOrderRequestItemInfoLists struct {
 	DistributionMallId *string `json:"DistributionMallId,omitempty" xml:"DistributionMallId,omitempty"`
 	LmItemId           *string `json:"LmItemId,omitempty" xml:"LmItemId,omitempty"`
+	Price              *int64  `json:"Price,omitempty" xml:"Price,omitempty"`
 	Quantity           *int32  `json:"Quantity,omitempty" xml:"Quantity,omitempty"`
-	SkuId              *string `json:"SkuId,omitempty" xml:"SkuId,omitempty"`
+	// SKU
+	SkuId *string `json:"SkuId,omitempty" xml:"SkuId,omitempty"`
 }
 
 func (s ApplyCreateDistributionOrderRequestItemInfoLists) String() string {
@@ -93,6 +95,11 @@ func (s *ApplyCreateDistributionOrderRequestItemInfoLists) SetDistributionMallId
 
 func (s *ApplyCreateDistributionOrderRequestItemInfoLists) SetLmItemId(v string) *ApplyCreateDistributionOrderRequestItemInfoLists {
 	s.LmItemId = &v
+	return s
+}
+
+func (s *ApplyCreateDistributionOrderRequestItemInfoLists) SetPrice(v int64) *ApplyCreateDistributionOrderRequestItemInfoLists {
+	s.Price = &v
 	return s
 }
 
@@ -5487,6 +5494,7 @@ func (s *QueryItemGuideRetailPriceResponse) SetBody(v *QueryItemGuideRetailPrice
 type QueryLogistics4DistributionRequest struct {
 	DistributorId           *string `json:"DistributorId,omitempty" xml:"DistributorId,omitempty"`
 	MainDistributionOrderId *string `json:"MainDistributionOrderId,omitempty" xml:"MainDistributionOrderId,omitempty"`
+	RequestId               *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	TenantId                *string `json:"TenantId,omitempty" xml:"TenantId,omitempty"`
 }
 
@@ -5505,6 +5513,11 @@ func (s *QueryLogistics4DistributionRequest) SetDistributorId(v string) *QueryLo
 
 func (s *QueryLogistics4DistributionRequest) SetMainDistributionOrderId(v string) *QueryLogistics4DistributionRequest {
 	s.MainDistributionOrderId = &v
+	return s
+}
+
+func (s *QueryLogistics4DistributionRequest) SetRequestId(v string) *QueryLogistics4DistributionRequest {
+	s.RequestId = &v
 	return s
 }
 
@@ -5648,6 +5661,7 @@ type QueryLogistics4DistributionResponseBodyModelGoods struct {
 	GoodName *string `json:"GoodName,omitempty" xml:"GoodName,omitempty"`
 	ItemId   *string `json:"ItemId,omitempty" xml:"ItemId,omitempty"`
 	Quantity *int32  `json:"Quantity,omitempty" xml:"Quantity,omitempty"`
+	SkuId    *string `json:"SkuId,omitempty" xml:"SkuId,omitempty"`
 }
 
 func (s QueryLogistics4DistributionResponseBodyModelGoods) String() string {
@@ -5670,6 +5684,11 @@ func (s *QueryLogistics4DistributionResponseBodyModelGoods) SetItemId(v string) 
 
 func (s *QueryLogistics4DistributionResponseBodyModelGoods) SetQuantity(v int32) *QueryLogistics4DistributionResponseBodyModelGoods {
 	s.Quantity = &v
+	return s
+}
+
+func (s *QueryLogistics4DistributionResponseBodyModelGoods) SetSkuId(v string) *QueryLogistics4DistributionResponseBodyModelGoods {
+	s.SkuId = &v
 	return s
 }
 
@@ -9789,6 +9808,10 @@ func (client *Client) QueryLogistics4DistributionWithOptions(request *QueryLogis
 
 	if !tea.BoolValue(util.IsUnset(request.MainDistributionOrderId)) {
 		body["MainDistributionOrderId"] = request.MainDistributionOrderId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.RequestId)) {
+		body["RequestId"] = request.RequestId
 	}
 
 	if !tea.BoolValue(util.IsUnset(request.TenantId)) {
