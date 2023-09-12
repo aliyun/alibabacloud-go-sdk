@@ -6904,7 +6904,8 @@ type DescribeDBClusterAttributeResponseBody struct {
 	//
 	// *   SearchNode: search node.
 	// *   DLNode: AI node
-	AiType *string `json:"AiType,omitempty" xml:"AiType,omitempty"`
+	AiType       *string `json:"AiType,omitempty" xml:"AiType,omitempty"`
+	Architecture *string `json:"Architecture,omitempty" xml:"Architecture,omitempty"`
 	// Maximum blktags in file system.
 	BlktagTotal *int64 `json:"BlktagTotal,omitempty" xml:"BlktagTotal,omitempty"`
 	// The current blktag usage.
@@ -6968,7 +6969,8 @@ type DescribeDBClusterAttributeResponseBody struct {
 	// > This parameter is returned only for subscription (**Prepaid**) clusters.
 	Expired *string `json:"Expired,omitempty" xml:"Expired,omitempty"`
 	// Indicates whether to replenish resources for the primary database after a cross-zone switchover. Valid values: true false
-	HasCompleteStandbyRes *bool `json:"HasCompleteStandbyRes,omitempty" xml:"HasCompleteStandbyRes,omitempty"`
+	HasCompleteStandbyRes *bool   `json:"HasCompleteStandbyRes,omitempty" xml:"HasCompleteStandbyRes,omitempty"`
+	HotStandbyCluster     *string `json:"HotStandbyCluster,omitempty" xml:"HotStandbyCluster,omitempty"`
 	// Maximum inodes in file system.
 	InodeTotal *int64 `json:"InodeTotal,omitempty" xml:"InodeTotal,omitempty"`
 	// The current inode usage.
@@ -7081,6 +7083,11 @@ func (s *DescribeDBClusterAttributeResponseBody) SetAiType(v string) *DescribeDB
 	return s
 }
 
+func (s *DescribeDBClusterAttributeResponseBody) SetArchitecture(v string) *DescribeDBClusterAttributeResponseBody {
+	s.Architecture = &v
+	return s
+}
+
 func (s *DescribeDBClusterAttributeResponseBody) SetBlktagTotal(v int64) *DescribeDBClusterAttributeResponseBody {
 	s.BlktagTotal = &v
 	return s
@@ -7183,6 +7190,11 @@ func (s *DescribeDBClusterAttributeResponseBody) SetExpired(v string) *DescribeD
 
 func (s *DescribeDBClusterAttributeResponseBody) SetHasCompleteStandbyRes(v bool) *DescribeDBClusterAttributeResponseBody {
 	s.HasCompleteStandbyRes = &v
+	return s
+}
+
+func (s *DescribeDBClusterAttributeResponseBody) SetHotStandbyCluster(v string) *DescribeDBClusterAttributeResponseBody {
+	s.HotStandbyCluster = &v
 	return s
 }
 
@@ -21455,6 +21467,7 @@ type ModifyDBNodeClassRequest struct {
 	DBClusterId *string `json:"DBClusterId,omitempty" xml:"DBClusterId,omitempty"`
 	// The specifications of all nodes. For more information, see [Specifications of computing nodes](~~102542~~).
 	DBNodeTargetClass *string `json:"DBNodeTargetClass,omitempty" xml:"DBNodeTargetClass,omitempty"`
+	DBNodeType        *string `json:"DBNodeType,omitempty" xml:"DBNodeType,omitempty"`
 	// The type of the configuration change. Valid values:
 	//
 	// *   **Upgrade**
@@ -21502,6 +21515,11 @@ func (s *ModifyDBNodeClassRequest) SetDBClusterId(v string) *ModifyDBNodeClassRe
 
 func (s *ModifyDBNodeClassRequest) SetDBNodeTargetClass(v string) *ModifyDBNodeClassRequest {
 	s.DBNodeTargetClass = &v
+	return s
+}
+
+func (s *ModifyDBNodeClassRequest) SetDBNodeType(v string) *ModifyDBNodeClassRequest {
+	s.DBNodeType = &v
 	return s
 }
 
@@ -33946,6 +33964,10 @@ func (client *Client) ModifyDBNodeClassWithOptions(request *ModifyDBNodeClassReq
 
 	if !tea.BoolValue(util.IsUnset(request.DBNodeTargetClass)) {
 		query["DBNodeTargetClass"] = request.DBNodeTargetClass
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.DBNodeType)) {
+		query["DBNodeType"] = request.DBNodeType
 	}
 
 	if !tea.BoolValue(util.IsUnset(request.ModifyType)) {
