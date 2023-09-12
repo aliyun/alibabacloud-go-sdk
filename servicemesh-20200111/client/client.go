@@ -2278,11 +2278,14 @@ type CreateSwimLaneGroupRequest struct {
 	// The name of the ingress gateway.
 	IngressGatewayName *string `json:"IngressGatewayName,omitempty" xml:"IngressGatewayName,omitempty"`
 	// The type of the gateway for ingress traffic. Only ASM ingress gateways are supported.
-	IngressType *string `json:"IngressType,omitempty" xml:"IngressType,omitempty"`
+	IngressType  *string `json:"IngressType,omitempty" xml:"IngressType,omitempty"`
+	IsPermissive *bool   `json:"IsPermissive,omitempty" xml:"IsPermissive,omitempty"`
+	RouteHeader  *string `json:"RouteHeader,omitempty" xml:"RouteHeader,omitempty"`
 	// The ID of the Alibaba Cloud Service Mesh (ASM) instance.
 	ServiceMeshId *string `json:"ServiceMeshId,omitempty" xml:"ServiceMeshId,omitempty"`
 	// A list of services associated with the lane group. The value is a JSON array. The format of a service is `$Cluster name/$Cluster ID/$Namespace/$Service name`.
 	ServicesList *string `json:"ServicesList,omitempty" xml:"ServicesList,omitempty"`
+	TraceHeader  *string `json:"TraceHeader,omitempty" xml:"TraceHeader,omitempty"`
 }
 
 func (s CreateSwimLaneGroupRequest) String() string {
@@ -2308,6 +2311,16 @@ func (s *CreateSwimLaneGroupRequest) SetIngressType(v string) *CreateSwimLaneGro
 	return s
 }
 
+func (s *CreateSwimLaneGroupRequest) SetIsPermissive(v bool) *CreateSwimLaneGroupRequest {
+	s.IsPermissive = &v
+	return s
+}
+
+func (s *CreateSwimLaneGroupRequest) SetRouteHeader(v string) *CreateSwimLaneGroupRequest {
+	s.RouteHeader = &v
+	return s
+}
+
 func (s *CreateSwimLaneGroupRequest) SetServiceMeshId(v string) *CreateSwimLaneGroupRequest {
 	s.ServiceMeshId = &v
 	return s
@@ -2315,6 +2328,11 @@ func (s *CreateSwimLaneGroupRequest) SetServiceMeshId(v string) *CreateSwimLaneG
 
 func (s *CreateSwimLaneGroupRequest) SetServicesList(v string) *CreateSwimLaneGroupRequest {
 	s.ServicesList = &v
+	return s
+}
+
+func (s *CreateSwimLaneGroupRequest) SetTraceHeader(v string) *CreateSwimLaneGroupRequest {
+	s.TraceHeader = &v
 	return s
 }
 
@@ -11932,14 +11950,19 @@ func (s *GetSwimLaneGroupListResponseBody) SetSwimLaneGroupList(v []*GetSwimLane
 }
 
 type GetSwimLaneGroupListResponseBodySwimLaneGroupList struct {
+	FallbackTarget *string `json:"FallbackTarget,omitempty" xml:"FallbackTarget,omitempty"`
 	// The name of the lane group.
 	GroupName *string `json:"GroupName,omitempty" xml:"GroupName,omitempty"`
 	// The name of the ingress gateway.
 	IngressGatewayName *string `json:"IngressGatewayName,omitempty" xml:"IngressGatewayName,omitempty"`
 	// The ingress type. Traffic routing rules can be configured only in an ingress gateway.
-	IngressType *string `json:"IngressType,omitempty" xml:"IngressType,omitempty"`
+	IngressType  *string `json:"IngressType,omitempty" xml:"IngressType,omitempty"`
+	IsPermissive *bool   `json:"IsPermissive,omitempty" xml:"IsPermissive,omitempty"`
+	RouteHeader  *string `json:"RouteHeader,omitempty" xml:"RouteHeader,omitempty"`
 	// A list of services associated with the lane group.
-	ServiceList *string `json:"ServiceList,omitempty" xml:"ServiceList,omitempty"`
+	ServiceList    *string `json:"ServiceList,omitempty" xml:"ServiceList,omitempty"`
+	SwimLaneLabels *string `json:"SwimLaneLabels,omitempty" xml:"SwimLaneLabels,omitempty"`
+	TraceHeader    *string `json:"TraceHeader,omitempty" xml:"TraceHeader,omitempty"`
 }
 
 func (s GetSwimLaneGroupListResponseBodySwimLaneGroupList) String() string {
@@ -11948,6 +11971,11 @@ func (s GetSwimLaneGroupListResponseBodySwimLaneGroupList) String() string {
 
 func (s GetSwimLaneGroupListResponseBodySwimLaneGroupList) GoString() string {
 	return s.String()
+}
+
+func (s *GetSwimLaneGroupListResponseBodySwimLaneGroupList) SetFallbackTarget(v string) *GetSwimLaneGroupListResponseBodySwimLaneGroupList {
+	s.FallbackTarget = &v
+	return s
 }
 
 func (s *GetSwimLaneGroupListResponseBodySwimLaneGroupList) SetGroupName(v string) *GetSwimLaneGroupListResponseBodySwimLaneGroupList {
@@ -11965,8 +11993,28 @@ func (s *GetSwimLaneGroupListResponseBodySwimLaneGroupList) SetIngressType(v str
 	return s
 }
 
+func (s *GetSwimLaneGroupListResponseBodySwimLaneGroupList) SetIsPermissive(v bool) *GetSwimLaneGroupListResponseBodySwimLaneGroupList {
+	s.IsPermissive = &v
+	return s
+}
+
+func (s *GetSwimLaneGroupListResponseBodySwimLaneGroupList) SetRouteHeader(v string) *GetSwimLaneGroupListResponseBodySwimLaneGroupList {
+	s.RouteHeader = &v
+	return s
+}
+
 func (s *GetSwimLaneGroupListResponseBodySwimLaneGroupList) SetServiceList(v string) *GetSwimLaneGroupListResponseBodySwimLaneGroupList {
 	s.ServiceList = &v
+	return s
+}
+
+func (s *GetSwimLaneGroupListResponseBodySwimLaneGroupList) SetSwimLaneLabels(v string) *GetSwimLaneGroupListResponseBodySwimLaneGroupList {
+	s.SwimLaneLabels = &v
+	return s
+}
+
+func (s *GetSwimLaneGroupListResponseBodySwimLaneGroupList) SetTraceHeader(v string) *GetSwimLaneGroupListResponseBodySwimLaneGroupList {
+	s.TraceHeader = &v
 	return s
 }
 
@@ -16121,6 +16169,7 @@ func (s *UpdateSwimLaneResponse) SetBody(v *UpdateSwimLaneResponseBody) *UpdateS
 }
 
 type UpdateSwimLaneGroupRequest struct {
+	FallbackTarget *string `json:"FallbackTarget,omitempty" xml:"FallbackTarget,omitempty"`
 	// The name of the lane group.
 	GroupName *string `json:"GroupName,omitempty" xml:"GroupName,omitempty"`
 	// The ID of the ASM instance.
@@ -16135,6 +16184,11 @@ func (s UpdateSwimLaneGroupRequest) String() string {
 
 func (s UpdateSwimLaneGroupRequest) GoString() string {
 	return s.String()
+}
+
+func (s *UpdateSwimLaneGroupRequest) SetFallbackTarget(v string) *UpdateSwimLaneGroupRequest {
+	s.FallbackTarget = &v
+	return s
 }
 
 func (s *UpdateSwimLaneGroupRequest) SetGroupName(v string) *UpdateSwimLaneGroupRequest {
@@ -17221,12 +17275,24 @@ func (client *Client) CreateSwimLaneGroupWithOptions(request *CreateSwimLaneGrou
 		body["IngressType"] = request.IngressType
 	}
 
+	if !tea.BoolValue(util.IsUnset(request.IsPermissive)) {
+		body["IsPermissive"] = request.IsPermissive
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.RouteHeader)) {
+		body["RouteHeader"] = request.RouteHeader
+	}
+
 	if !tea.BoolValue(util.IsUnset(request.ServiceMeshId)) {
 		body["ServiceMeshId"] = request.ServiceMeshId
 	}
 
 	if !tea.BoolValue(util.IsUnset(request.ServicesList)) {
 		body["ServicesList"] = request.ServicesList
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.TraceHeader)) {
+		body["TraceHeader"] = request.TraceHeader
 	}
 
 	req := &openapi.OpenApiRequest{
@@ -21569,6 +21635,10 @@ func (client *Client) UpdateSwimLaneGroupWithOptions(request *UpdateSwimLaneGrou
 		return _result, _err
 	}
 	body := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.FallbackTarget)) {
+		body["FallbackTarget"] = request.FallbackTarget
+	}
+
 	if !tea.BoolValue(util.IsUnset(request.GroupName)) {
 		body["GroupName"] = request.GroupName
 	}
