@@ -1379,6 +1379,145 @@ func (s *SubmitExportDeclarationSheetExtractJobResponse) SetBody(v *SubmitExport
 	return s
 }
 
+type SubmitGeneralContractExtractJobRequest struct {
+	FileName          *string `json:"FileName,omitempty" xml:"FileName,omitempty"`
+	FileNameExtension *string `json:"FileNameExtension,omitempty" xml:"FileNameExtension,omitempty"`
+	FileUrl           *string `json:"FileUrl,omitempty" xml:"FileUrl,omitempty"`
+}
+
+func (s SubmitGeneralContractExtractJobRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s SubmitGeneralContractExtractJobRequest) GoString() string {
+	return s.String()
+}
+
+func (s *SubmitGeneralContractExtractJobRequest) SetFileName(v string) *SubmitGeneralContractExtractJobRequest {
+	s.FileName = &v
+	return s
+}
+
+func (s *SubmitGeneralContractExtractJobRequest) SetFileNameExtension(v string) *SubmitGeneralContractExtractJobRequest {
+	s.FileNameExtension = &v
+	return s
+}
+
+func (s *SubmitGeneralContractExtractJobRequest) SetFileUrl(v string) *SubmitGeneralContractExtractJobRequest {
+	s.FileUrl = &v
+	return s
+}
+
+type SubmitGeneralContractExtractJobAdvanceRequest struct {
+	FileName          *string   `json:"FileName,omitempty" xml:"FileName,omitempty"`
+	FileNameExtension *string   `json:"FileNameExtension,omitempty" xml:"FileNameExtension,omitempty"`
+	FileUrlObject     io.Reader `json:"FileUrl,omitempty" xml:"FileUrl,omitempty"`
+}
+
+func (s SubmitGeneralContractExtractJobAdvanceRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s SubmitGeneralContractExtractJobAdvanceRequest) GoString() string {
+	return s.String()
+}
+
+func (s *SubmitGeneralContractExtractJobAdvanceRequest) SetFileName(v string) *SubmitGeneralContractExtractJobAdvanceRequest {
+	s.FileName = &v
+	return s
+}
+
+func (s *SubmitGeneralContractExtractJobAdvanceRequest) SetFileNameExtension(v string) *SubmitGeneralContractExtractJobAdvanceRequest {
+	s.FileNameExtension = &v
+	return s
+}
+
+func (s *SubmitGeneralContractExtractJobAdvanceRequest) SetFileUrlObject(v io.Reader) *SubmitGeneralContractExtractJobAdvanceRequest {
+	s.FileUrlObject = v
+	return s
+}
+
+type SubmitGeneralContractExtractJobResponseBody struct {
+	Code      *string                                          `json:"Code,omitempty" xml:"Code,omitempty"`
+	Data      *SubmitGeneralContractExtractJobResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
+	Message   *string                                          `json:"Message,omitempty" xml:"Message,omitempty"`
+	RequestId *string                                          `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+}
+
+func (s SubmitGeneralContractExtractJobResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s SubmitGeneralContractExtractJobResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *SubmitGeneralContractExtractJobResponseBody) SetCode(v string) *SubmitGeneralContractExtractJobResponseBody {
+	s.Code = &v
+	return s
+}
+
+func (s *SubmitGeneralContractExtractJobResponseBody) SetData(v *SubmitGeneralContractExtractJobResponseBodyData) *SubmitGeneralContractExtractJobResponseBody {
+	s.Data = v
+	return s
+}
+
+func (s *SubmitGeneralContractExtractJobResponseBody) SetMessage(v string) *SubmitGeneralContractExtractJobResponseBody {
+	s.Message = &v
+	return s
+}
+
+func (s *SubmitGeneralContractExtractJobResponseBody) SetRequestId(v string) *SubmitGeneralContractExtractJobResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+type SubmitGeneralContractExtractJobResponseBodyData struct {
+	Id *string `json:"Id,omitempty" xml:"Id,omitempty"`
+}
+
+func (s SubmitGeneralContractExtractJobResponseBodyData) String() string {
+	return tea.Prettify(s)
+}
+
+func (s SubmitGeneralContractExtractJobResponseBodyData) GoString() string {
+	return s.String()
+}
+
+func (s *SubmitGeneralContractExtractJobResponseBodyData) SetId(v string) *SubmitGeneralContractExtractJobResponseBodyData {
+	s.Id = &v
+	return s
+}
+
+type SubmitGeneralContractExtractJobResponse struct {
+	Headers    map[string]*string                           `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                                       `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *SubmitGeneralContractExtractJobResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s SubmitGeneralContractExtractJobResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s SubmitGeneralContractExtractJobResponse) GoString() string {
+	return s.String()
+}
+
+func (s *SubmitGeneralContractExtractJobResponse) SetHeaders(v map[string]*string) *SubmitGeneralContractExtractJobResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *SubmitGeneralContractExtractJobResponse) SetStatusCode(v int32) *SubmitGeneralContractExtractJobResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *SubmitGeneralContractExtractJobResponse) SetBody(v *SubmitGeneralContractExtractJobResponseBody) *SubmitGeneralContractExtractJobResponse {
+	s.Body = v
+	return s
+}
+
 type SubmitImportDeclarationSheetExtractJobRequest struct {
 	FileName          *string `json:"FileName,omitempty" xml:"FileName,omitempty"`
 	FileNameExtension *string `json:"FileNameExtension,omitempty" xml:"FileNameExtension,omitempty"`
@@ -3686,6 +3825,164 @@ func (client *Client) SubmitExportDeclarationSheetExtractJobAdvance(request *Sub
 	}
 
 	_result = submitExportDeclarationSheetExtractJobResp
+	return _result, _err
+}
+
+func (client *Client) SubmitGeneralContractExtractJobWithOptions(request *SubmitGeneralContractExtractJobRequest, runtime *util.RuntimeOptions) (_result *SubmitGeneralContractExtractJobResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.FileName)) {
+		query["FileName"] = request.FileName
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.FileNameExtension)) {
+		query["FileNameExtension"] = request.FileNameExtension
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.FileUrl)) {
+		query["FileUrl"] = request.FileUrl
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("SubmitGeneralContractExtractJob"),
+		Version:     tea.String("2022-07-29"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &SubmitGeneralContractExtractJobResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) SubmitGeneralContractExtractJob(request *SubmitGeneralContractExtractJobRequest) (_result *SubmitGeneralContractExtractJobResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &SubmitGeneralContractExtractJobResponse{}
+	_body, _err := client.SubmitGeneralContractExtractJobWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) SubmitGeneralContractExtractJobAdvance(request *SubmitGeneralContractExtractJobAdvanceRequest, runtime *util.RuntimeOptions) (_result *SubmitGeneralContractExtractJobResponse, _err error) {
+	// Step 0: init client
+	accessKeyId, _err := client.Credential.GetAccessKeyId()
+	if _err != nil {
+		return _result, _err
+	}
+
+	accessKeySecret, _err := client.Credential.GetAccessKeySecret()
+	if _err != nil {
+		return _result, _err
+	}
+
+	securityToken, _err := client.Credential.GetSecurityToken()
+	if _err != nil {
+		return _result, _err
+	}
+
+	credentialType := client.Credential.GetType()
+	openPlatformEndpoint := client.OpenPlatformEndpoint
+	if tea.BoolValue(util.IsUnset(openPlatformEndpoint)) {
+		openPlatformEndpoint = tea.String("openplatform.aliyuncs.com")
+	}
+
+	if tea.BoolValue(util.IsUnset(credentialType)) {
+		credentialType = tea.String("access_key")
+	}
+
+	authConfig := &openapi.Config{
+		AccessKeyId:     accessKeyId,
+		AccessKeySecret: accessKeySecret,
+		SecurityToken:   securityToken,
+		Type:            credentialType,
+		Endpoint:        openPlatformEndpoint,
+		Protocol:        client.Protocol,
+		RegionId:        client.RegionId,
+	}
+	authClient, _err := openplatform.NewClient(authConfig)
+	if _err != nil {
+		return _result, _err
+	}
+
+	authRequest := &openplatform.AuthorizeFileUploadRequest{
+		Product:  tea.String("docmind-api"),
+		RegionId: client.RegionId,
+	}
+	authResponse := &openplatform.AuthorizeFileUploadResponse{}
+	ossConfig := &oss.Config{
+		AccessKeySecret: accessKeySecret,
+		Type:            tea.String("access_key"),
+		Protocol:        client.Protocol,
+		RegionId:        client.RegionId,
+	}
+	var ossClient *oss.Client
+	fileObj := &fileform.FileField{}
+	ossHeader := &oss.PostObjectRequestHeader{}
+	uploadRequest := &oss.PostObjectRequest{}
+	ossRuntime := &ossutil.RuntimeOptions{}
+	openapiutil.Convert(runtime, ossRuntime)
+	submitGeneralContractExtractJobReq := &SubmitGeneralContractExtractJobRequest{}
+	openapiutil.Convert(request, submitGeneralContractExtractJobReq)
+	if !tea.BoolValue(util.IsUnset(request.FileUrlObject)) {
+		authResponse, _err = authClient.AuthorizeFileUploadWithOptions(authRequest, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+
+		ossConfig.AccessKeyId = authResponse.Body.AccessKeyId
+		ossConfig.Endpoint = openapiutil.GetEndpoint(authResponse.Body.Endpoint, authResponse.Body.UseAccelerate, client.EndpointType)
+		ossClient, _err = oss.NewClient(ossConfig)
+		if _err != nil {
+			return _result, _err
+		}
+
+		fileObj = &fileform.FileField{
+			Filename:    authResponse.Body.ObjectKey,
+			Content:     request.FileUrlObject,
+			ContentType: tea.String(""),
+		}
+		ossHeader = &oss.PostObjectRequestHeader{
+			AccessKeyId:         authResponse.Body.AccessKeyId,
+			Policy:              authResponse.Body.EncodedPolicy,
+			Signature:           authResponse.Body.Signature,
+			Key:                 authResponse.Body.ObjectKey,
+			File:                fileObj,
+			SuccessActionStatus: tea.String("201"),
+		}
+		uploadRequest = &oss.PostObjectRequest{
+			BucketName: authResponse.Body.Bucket,
+			Header:     ossHeader,
+		}
+		_, _err = ossClient.PostObject(uploadRequest, ossRuntime)
+		if _err != nil {
+			return _result, _err
+		}
+		submitGeneralContractExtractJobReq.FileUrl = tea.String("http://" + tea.StringValue(authResponse.Body.Bucket) + "." + tea.StringValue(authResponse.Body.Endpoint) + "/" + tea.StringValue(authResponse.Body.ObjectKey))
+	}
+
+	submitGeneralContractExtractJobResp, _err := client.SubmitGeneralContractExtractJobWithOptions(submitGeneralContractExtractJobReq, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+
+	_result = submitGeneralContractExtractJobResp
 	return _result, _err
 }
 
