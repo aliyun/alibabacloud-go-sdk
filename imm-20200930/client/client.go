@@ -106,6 +106,71 @@ func (s *AddressForStory) SetTownship(v string) *AddressForStory {
 	return s
 }
 
+type AlgorithmDefinition struct {
+	AlgorithmDefinitionId *string                `json:"AlgorithmDefinitionId,omitempty" xml:"AlgorithmDefinitionId,omitempty"`
+	CreateTime            *string                `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
+	CustomLabels          []map[string]*string   `json:"CustomLabels,omitempty" xml:"CustomLabels,omitempty" type:"Repeated"`
+	Description           *string                `json:"Description,omitempty" xml:"Description,omitempty"`
+	Name                  *string                `json:"Name,omitempty" xml:"Name,omitempty"`
+	OwnerId               *string                `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
+	ProjectName           *string                `json:"ProjectName,omitempty" xml:"ProjectName,omitempty"`
+	TrainingSpecification *TrainingSpecification `json:"TrainingSpecification,omitempty" xml:"TrainingSpecification,omitempty"`
+	UpdateTime            *string                `json:"UpdateTime,omitempty" xml:"UpdateTime,omitempty"`
+}
+
+func (s AlgorithmDefinition) String() string {
+	return tea.Prettify(s)
+}
+
+func (s AlgorithmDefinition) GoString() string {
+	return s.String()
+}
+
+func (s *AlgorithmDefinition) SetAlgorithmDefinitionId(v string) *AlgorithmDefinition {
+	s.AlgorithmDefinitionId = &v
+	return s
+}
+
+func (s *AlgorithmDefinition) SetCreateTime(v string) *AlgorithmDefinition {
+	s.CreateTime = &v
+	return s
+}
+
+func (s *AlgorithmDefinition) SetCustomLabels(v []map[string]*string) *AlgorithmDefinition {
+	s.CustomLabels = v
+	return s
+}
+
+func (s *AlgorithmDefinition) SetDescription(v string) *AlgorithmDefinition {
+	s.Description = &v
+	return s
+}
+
+func (s *AlgorithmDefinition) SetName(v string) *AlgorithmDefinition {
+	s.Name = &v
+	return s
+}
+
+func (s *AlgorithmDefinition) SetOwnerId(v string) *AlgorithmDefinition {
+	s.OwnerId = &v
+	return s
+}
+
+func (s *AlgorithmDefinition) SetProjectName(v string) *AlgorithmDefinition {
+	s.ProjectName = &v
+	return s
+}
+
+func (s *AlgorithmDefinition) SetTrainingSpecification(v *TrainingSpecification) *AlgorithmDefinition {
+	s.TrainingSpecification = v
+	return s
+}
+
+func (s *AlgorithmDefinition) SetUpdateTime(v string) *AlgorithmDefinition {
+	s.UpdateTime = &v
+	return s
+}
+
 type AssumeRoleChain struct {
 	Chain  []*AssumeRoleChainNode `json:"Chain,omitempty" xml:"Chain,omitempty" type:"Repeated"`
 	Policy *string                `json:"Policy,omitempty" xml:"Policy,omitempty"`
@@ -635,6 +700,29 @@ func (s *CroppingSuggestion) SetBoundary(v *Boundary) *CroppingSuggestion {
 
 func (s *CroppingSuggestion) SetConfidence(v float32) *CroppingSuggestion {
 	s.Confidence = &v
+	return s
+}
+
+type CustomParams struct {
+	Name       *string     `json:"Name,omitempty" xml:"Name,omitempty"`
+	Properties []*Property `json:"Properties,omitempty" xml:"Properties,omitempty" type:"Repeated"`
+}
+
+func (s CustomParams) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CustomParams) GoString() string {
+	return s.String()
+}
+
+func (s *CustomParams) SetName(v string) *CustomParams {
+	s.Name = &v
+	return s
+}
+
+func (s *CustomParams) SetProperties(v []*Property) *CustomParams {
+	s.Properties = v
 	return s
 }
 
@@ -1274,8 +1362,6 @@ type File struct {
 	CustomId                              *string                `json:"CustomId,omitempty" xml:"CustomId,omitempty"`
 	CustomLabels                          map[string]interface{} `json:"CustomLabels,omitempty" xml:"CustomLabels,omitempty"`
 	DatasetName                           *string                `json:"DatasetName,omitempty" xml:"DatasetName,omitempty"`
-	DocumentContent                       *string                `json:"DocumentContent,omitempty" xml:"DocumentContent,omitempty"`
-	DocumentLanguage                      *string                `json:"DocumentLanguage,omitempty" xml:"DocumentLanguage,omitempty"`
 	Duration                              *float64               `json:"Duration,omitempty" xml:"Duration,omitempty"`
 	ETag                                  *string                `json:"ETag,omitempty" xml:"ETag,omitempty"`
 	EXIF                                  *string                `json:"EXIF,omitempty" xml:"EXIF,omitempty"`
@@ -1444,16 +1530,6 @@ func (s *File) SetCustomLabels(v map[string]interface{}) *File {
 
 func (s *File) SetDatasetName(v string) *File {
 	s.DatasetName = &v
-	return s
-}
-
-func (s *File) SetDocumentContent(v string) *File {
-	s.DocumentContent = &v
-	return s
-}
-
-func (s *File) SetDocumentLanguage(v string) *File {
-	s.DocumentLanguage = &v
 	return s
 }
 
@@ -1763,6 +1839,65 @@ func (s *HeadPose) SetRoll(v float32) *HeadPose {
 
 func (s *HeadPose) SetYaw(v float32) *HeadPose {
 	s.Yaw = &v
+	return s
+}
+
+type Hyperparameters struct {
+	BackupInterval    *int64        `json:"BackupInterval,omitempty" xml:"BackupInterval,omitempty"`
+	BatchSize         *int64        `json:"BatchSize,omitempty" xml:"BatchSize,omitempty"`
+	DataLoaderWorkers *int64        `json:"DataLoaderWorkers,omitempty" xml:"DataLoaderWorkers,omitempty"`
+	Evaluator         *CustomParams `json:"Evaluator,omitempty" xml:"Evaluator,omitempty"`
+	InputSize         []*int64      `json:"InputSize,omitempty" xml:"InputSize,omitempty" type:"Repeated"`
+	MaxEpoch          *int64        `json:"MaxEpoch,omitempty" xml:"MaxEpoch,omitempty"`
+	Optimization      *Optimization `json:"Optimization,omitempty" xml:"Optimization,omitempty"`
+	Schedule          *Schedule     `json:"Schedule,omitempty" xml:"Schedule,omitempty"`
+}
+
+func (s Hyperparameters) String() string {
+	return tea.Prettify(s)
+}
+
+func (s Hyperparameters) GoString() string {
+	return s.String()
+}
+
+func (s *Hyperparameters) SetBackupInterval(v int64) *Hyperparameters {
+	s.BackupInterval = &v
+	return s
+}
+
+func (s *Hyperparameters) SetBatchSize(v int64) *Hyperparameters {
+	s.BatchSize = &v
+	return s
+}
+
+func (s *Hyperparameters) SetDataLoaderWorkers(v int64) *Hyperparameters {
+	s.DataLoaderWorkers = &v
+	return s
+}
+
+func (s *Hyperparameters) SetEvaluator(v *CustomParams) *Hyperparameters {
+	s.Evaluator = v
+	return s
+}
+
+func (s *Hyperparameters) SetInputSize(v []*int64) *Hyperparameters {
+	s.InputSize = v
+	return s
+}
+
+func (s *Hyperparameters) SetMaxEpoch(v int64) *Hyperparameters {
+	s.MaxEpoch = &v
+	return s
+}
+
+func (s *Hyperparameters) SetOptimization(v *Optimization) *Hyperparameters {
+	s.Optimization = v
+	return s
+}
+
+func (s *Hyperparameters) SetSchedule(v *Schedule) *Hyperparameters {
+	s.Schedule = v
 	return s
 }
 
@@ -2180,9 +2315,62 @@ func (s *MNS) SetTopicName(v string) *MNS {
 	return s
 }
 
+type MetaData struct {
+	Identifier *string `json:"Identifier,omitempty" xml:"Identifier,omitempty"`
+	Provider   *string `json:"Provider,omitempty" xml:"Provider,omitempty"`
+	Version    *string `json:"Version,omitempty" xml:"Version,omitempty"`
+}
+
+func (s MetaData) String() string {
+	return tea.Prettify(s)
+}
+
+func (s MetaData) GoString() string {
+	return s.String()
+}
+
+func (s *MetaData) SetIdentifier(v string) *MetaData {
+	s.Identifier = &v
+	return s
+}
+
+func (s *MetaData) SetProvider(v string) *MetaData {
+	s.Provider = &v
+	return s
+}
+
+func (s *MetaData) SetVersion(v string) *MetaData {
+	s.Version = &v
+	return s
+}
+
+type ModelSpecification struct {
+	MetaData *MetaData `json:"MetaData,omitempty" xml:"MetaData,omitempty"`
+	Spec     *Spec     `json:"Spec,omitempty" xml:"Spec,omitempty"`
+}
+
+func (s ModelSpecification) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ModelSpecification) GoString() string {
+	return s.String()
+}
+
+func (s *ModelSpecification) SetMetaData(v *MetaData) *ModelSpecification {
+	s.MetaData = v
+	return s
+}
+
+func (s *ModelSpecification) SetSpec(v *Spec) *ModelSpecification {
+	s.Spec = v
+	return s
+}
+
 type Notification struct {
-	MNS      *MNS      `json:"MNS,omitempty" xml:"MNS,omitempty"`
-	RocketMQ *RocketMQ `json:"RocketMQ,omitempty" xml:"RocketMQ,omitempty"`
+	ExtendedMessageURI *string   `json:"ExtendedMessageURI,omitempty" xml:"ExtendedMessageURI,omitempty"`
+	MNS                *MNS      `json:"MNS,omitempty" xml:"MNS,omitempty"`
+	RocketMQ           *RocketMQ `json:"RocketMQ,omitempty" xml:"RocketMQ,omitempty"`
 }
 
 func (s Notification) String() string {
@@ -2191,6 +2379,11 @@ func (s Notification) String() string {
 
 func (s Notification) GoString() string {
 	return s.String()
+}
+
+func (s *Notification) SetExtendedMessageURI(v string) *Notification {
+	s.ExtendedMessageURI = &v
+	return s
 }
 
 func (s *Notification) SetMNS(v *MNS) *Notification {
@@ -2270,6 +2463,29 @@ func (s *OctreeOption) SetOctreeResolution(v float64) *OctreeOption {
 
 func (s *OctreeOption) SetPointResolution(v float64) *OctreeOption {
 	s.PointResolution = &v
+	return s
+}
+
+type Optimization struct {
+	LearningRate *float32 `json:"LearningRate,omitempty" xml:"LearningRate,omitempty"`
+	Optimizer    *string  `json:"Optimizer,omitempty" xml:"Optimizer,omitempty"`
+}
+
+func (s Optimization) String() string {
+	return tea.Prettify(s)
+}
+
+func (s Optimization) GoString() string {
+	return s.String()
+}
+
+func (s *Optimization) SetLearningRate(v float32) *Optimization {
+	s.LearningRate = &v
+	return s
+}
+
+func (s *Optimization) SetOptimizer(v string) *Optimization {
+	s.Optimizer = &v
 	return s
 }
 
@@ -2409,6 +2625,41 @@ func (s *Project) SetUpdateTime(v string) *Project {
 	return s
 }
 
+type Property struct {
+	ItemsType *string `json:"ItemsType,omitempty" xml:"ItemsType,omitempty"`
+	Name      *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	Value     *string `json:"Value,omitempty" xml:"Value,omitempty"`
+	ValueType *string `json:"ValueType,omitempty" xml:"ValueType,omitempty"`
+}
+
+func (s Property) String() string {
+	return tea.Prettify(s)
+}
+
+func (s Property) GoString() string {
+	return s.String()
+}
+
+func (s *Property) SetItemsType(v string) *Property {
+	s.ItemsType = &v
+	return s
+}
+
+func (s *Property) SetName(v string) *Property {
+	s.Name = &v
+	return s
+}
+
+func (s *Property) SetValue(v string) *Property {
+	s.Value = &v
+	return s
+}
+
+func (s *Property) SetValueType(v string) *Property {
+	s.ValueType = &v
+	return s
+}
+
 type RegionType struct {
 	LocalName *string `json:"LocalName,omitempty" xml:"LocalName,omitempty"`
 	RegionId  *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
@@ -2429,6 +2680,53 @@ func (s *RegionType) SetLocalName(v string) *RegionType {
 
 func (s *RegionType) SetRegionId(v string) *RegionType {
 	s.RegionId = &v
+	return s
+}
+
+type Resource struct {
+	CPU         *int64  `json:"CPU,omitempty" xml:"CPU,omitempty"`
+	ECSInstance *string `json:"ECSInstance,omitempty" xml:"ECSInstance,omitempty"`
+	GPUModel    *string `json:"GPUModel,omitempty" xml:"GPUModel,omitempty"`
+	GPUNum      *int64  `json:"GPUNum,omitempty" xml:"GPUNum,omitempty"`
+	Name        *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	RAM         *int64  `json:"RAM,omitempty" xml:"RAM,omitempty"`
+}
+
+func (s Resource) String() string {
+	return tea.Prettify(s)
+}
+
+func (s Resource) GoString() string {
+	return s.String()
+}
+
+func (s *Resource) SetCPU(v int64) *Resource {
+	s.CPU = &v
+	return s
+}
+
+func (s *Resource) SetECSInstance(v string) *Resource {
+	s.ECSInstance = &v
+	return s
+}
+
+func (s *Resource) SetGPUModel(v string) *Resource {
+	s.GPUModel = &v
+	return s
+}
+
+func (s *Resource) SetGPUNum(v int64) *Resource {
+	s.GPUNum = &v
+	return s
+}
+
+func (s *Resource) SetName(v string) *Resource {
+	s.Name = &v
+	return s
+}
+
+func (s *Resource) SetRAM(v int64) *Resource {
+	s.RAM = &v
 	return s
 }
 
@@ -2475,6 +2773,58 @@ func (s *Row) SetCustomLabels(v []*KeyValuePair) *Row {
 
 func (s *Row) SetURI(v string) *Row {
 	s.URI = &v
+	return s
+}
+
+type Runtime struct {
+	Hyperparameters *Hyperparameters `json:"Hyperparameters,omitempty" xml:"Hyperparameters,omitempty"`
+	Resource        *Resource        `json:"Resource,omitempty" xml:"Resource,omitempty"`
+}
+
+func (s Runtime) String() string {
+	return tea.Prettify(s)
+}
+
+func (s Runtime) GoString() string {
+	return s.String()
+}
+
+func (s *Runtime) SetHyperparameters(v *Hyperparameters) *Runtime {
+	s.Hyperparameters = v
+	return s
+}
+
+func (s *Runtime) SetResource(v *Resource) *Runtime {
+	s.Resource = v
+	return s
+}
+
+type Schedule struct {
+	Gamma       *float32 `json:"Gamma,omitempty" xml:"Gamma,omitempty"`
+	LRScheduler *string  `json:"LRScheduler,omitempty" xml:"LRScheduler,omitempty"`
+	StepSize    *int64   `json:"StepSize,omitempty" xml:"StepSize,omitempty"`
+}
+
+func (s Schedule) String() string {
+	return tea.Prettify(s)
+}
+
+func (s Schedule) GoString() string {
+	return s.String()
+}
+
+func (s *Schedule) SetGamma(v float32) *Schedule {
+	s.Gamma = &v
+	return s
+}
+
+func (s *Schedule) SetLRScheduler(v string) *Schedule {
+	s.LRScheduler = &v
+	return s
+}
+
+func (s *Schedule) SetStepSize(v int64) *Schedule {
+	s.StepSize = &v
 	return s
 }
 
@@ -2574,6 +2924,71 @@ func (s *SimpleQuery) SetSubQueries(v []*SimpleQuery) *SimpleQuery {
 
 func (s *SimpleQuery) SetValue(v string) *SimpleQuery {
 	s.Value = &v
+	return s
+}
+
+type Spec struct {
+	Backbone       *CustomParams `json:"Backbone,omitempty" xml:"Backbone,omitempty"`
+	ClassNum       *int64        `json:"ClassNum,omitempty" xml:"ClassNum,omitempty"`
+	Head           *CustomParams `json:"Head,omitempty" xml:"Head,omitempty"`
+	InputChannel   *int64        `json:"InputChannel,omitempty" xml:"InputChannel,omitempty"`
+	Loss           *CustomParams `json:"Loss,omitempty" xml:"Loss,omitempty"`
+	Name           *string       `json:"Name,omitempty" xml:"Name,omitempty"`
+	Neck           *CustomParams `json:"Neck,omitempty" xml:"Neck,omitempty"`
+	NumLandmarks   *int64        `json:"NumLandmarks,omitempty" xml:"NumLandmarks,omitempty"`
+	PretrainedPath *string       `json:"PretrainedPath,omitempty" xml:"PretrainedPath,omitempty"`
+}
+
+func (s Spec) String() string {
+	return tea.Prettify(s)
+}
+
+func (s Spec) GoString() string {
+	return s.String()
+}
+
+func (s *Spec) SetBackbone(v *CustomParams) *Spec {
+	s.Backbone = v
+	return s
+}
+
+func (s *Spec) SetClassNum(v int64) *Spec {
+	s.ClassNum = &v
+	return s
+}
+
+func (s *Spec) SetHead(v *CustomParams) *Spec {
+	s.Head = v
+	return s
+}
+
+func (s *Spec) SetInputChannel(v int64) *Spec {
+	s.InputChannel = &v
+	return s
+}
+
+func (s *Spec) SetLoss(v *CustomParams) *Spec {
+	s.Loss = v
+	return s
+}
+
+func (s *Spec) SetName(v string) *Spec {
+	s.Name = &v
+	return s
+}
+
+func (s *Spec) SetNeck(v *CustomParams) *Spec {
+	s.Neck = v
+	return s
+}
+
+func (s *Spec) SetNumLandmarks(v int64) *Spec {
+	s.NumLandmarks = &v
+	return s
+}
+
+func (s *Spec) SetPretrainedPath(v string) *Spec {
+	s.PretrainedPath = &v
 	return s
 }
 
@@ -3600,6 +4015,71 @@ func (s *TimeRange) SetEnd(v string) *TimeRange {
 
 func (s *TimeRange) SetStart(v string) *TimeRange {
 	s.Start = &v
+	return s
+}
+
+type TrainingSpecification struct {
+	DatasetName         *string             `json:"DatasetName,omitempty" xml:"DatasetName,omitempty"`
+	Endpoint            *string             `json:"Endpoint,omitempty" xml:"Endpoint,omitempty"`
+	ModelSpecification  *ModelSpecification `json:"ModelSpecification,omitempty" xml:"ModelSpecification,omitempty"`
+	Runtime             *Runtime            `json:"Runtime,omitempty" xml:"Runtime,omitempty"`
+	SourceURI           *string             `json:"SourceURI,omitempty" xml:"SourceURI,omitempty"`
+	TargetURI           *string             `json:"TargetURI,omitempty" xml:"TargetURI,omitempty"`
+	Transforms          []*CustomParams     `json:"Transforms,omitempty" xml:"Transforms,omitempty" type:"Repeated"`
+	ValidationSourceURI *string             `json:"ValidationSourceURI,omitempty" xml:"ValidationSourceURI,omitempty"`
+	ValidationSplit     *float32            `json:"ValidationSplit,omitempty" xml:"ValidationSplit,omitempty"`
+}
+
+func (s TrainingSpecification) String() string {
+	return tea.Prettify(s)
+}
+
+func (s TrainingSpecification) GoString() string {
+	return s.String()
+}
+
+func (s *TrainingSpecification) SetDatasetName(v string) *TrainingSpecification {
+	s.DatasetName = &v
+	return s
+}
+
+func (s *TrainingSpecification) SetEndpoint(v string) *TrainingSpecification {
+	s.Endpoint = &v
+	return s
+}
+
+func (s *TrainingSpecification) SetModelSpecification(v *ModelSpecification) *TrainingSpecification {
+	s.ModelSpecification = v
+	return s
+}
+
+func (s *TrainingSpecification) SetRuntime(v *Runtime) *TrainingSpecification {
+	s.Runtime = v
+	return s
+}
+
+func (s *TrainingSpecification) SetSourceURI(v string) *TrainingSpecification {
+	s.SourceURI = &v
+	return s
+}
+
+func (s *TrainingSpecification) SetTargetURI(v string) *TrainingSpecification {
+	s.TargetURI = &v
+	return s
+}
+
+func (s *TrainingSpecification) SetTransforms(v []*CustomParams) *TrainingSpecification {
+	s.Transforms = v
+	return s
+}
+
+func (s *TrainingSpecification) SetValidationSourceURI(v string) *TrainingSpecification {
+	s.ValidationSourceURI = &v
+	return s
+}
+
+func (s *TrainingSpecification) SetValidationSplit(v float32) *TrainingSpecification {
+	s.ValidationSplit = &v
 	return s
 }
 
@@ -5147,7 +5627,6 @@ type CreateArchiveFileInspectionTaskRequest struct {
 	Password         *string           `json:"Password,omitempty" xml:"Password,omitempty"`
 	ProjectName      *string           `json:"ProjectName,omitempty" xml:"ProjectName,omitempty"`
 	SourceURI        *string           `json:"SourceURI,omitempty" xml:"SourceURI,omitempty"`
-	TargetURI        *string           `json:"TargetURI,omitempty" xml:"TargetURI,omitempty"`
 	UserData         *string           `json:"UserData,omitempty" xml:"UserData,omitempty"`
 }
 
@@ -5184,11 +5663,6 @@ func (s *CreateArchiveFileInspectionTaskRequest) SetSourceURI(v string) *CreateA
 	return s
 }
 
-func (s *CreateArchiveFileInspectionTaskRequest) SetTargetURI(v string) *CreateArchiveFileInspectionTaskRequest {
-	s.TargetURI = &v
-	return s
-}
-
 func (s *CreateArchiveFileInspectionTaskRequest) SetUserData(v string) *CreateArchiveFileInspectionTaskRequest {
 	s.UserData = &v
 	return s
@@ -5200,7 +5674,6 @@ type CreateArchiveFileInspectionTaskShrinkRequest struct {
 	Password               *string `json:"Password,omitempty" xml:"Password,omitempty"`
 	ProjectName            *string `json:"ProjectName,omitempty" xml:"ProjectName,omitempty"`
 	SourceURI              *string `json:"SourceURI,omitempty" xml:"SourceURI,omitempty"`
-	TargetURI              *string `json:"TargetURI,omitempty" xml:"TargetURI,omitempty"`
 	UserData               *string `json:"UserData,omitempty" xml:"UserData,omitempty"`
 }
 
@@ -5234,11 +5707,6 @@ func (s *CreateArchiveFileInspectionTaskShrinkRequest) SetProjectName(v string) 
 
 func (s *CreateArchiveFileInspectionTaskShrinkRequest) SetSourceURI(v string) *CreateArchiveFileInspectionTaskShrinkRequest {
 	s.SourceURI = &v
-	return s
-}
-
-func (s *CreateArchiveFileInspectionTaskShrinkRequest) SetTargetURI(v string) *CreateArchiveFileInspectionTaskShrinkRequest {
-	s.TargetURI = &v
 	return s
 }
 
@@ -5376,8 +5844,7 @@ func (s *CreateBatchRequestActions) SetParameters(v []*string) *CreateBatchReque
 }
 
 type CreateBatchRequestNotification struct {
-	Endpoint *string `json:"Endpoint,omitempty" xml:"Endpoint,omitempty"`
-	Topic    *string `json:"Topic,omitempty" xml:"Topic,omitempty"`
+	MNS *MNS `json:"MNS,omitempty" xml:"MNS,omitempty"`
 }
 
 func (s CreateBatchRequestNotification) String() string {
@@ -5388,13 +5855,8 @@ func (s CreateBatchRequestNotification) GoString() string {
 	return s.String()
 }
 
-func (s *CreateBatchRequestNotification) SetEndpoint(v string) *CreateBatchRequestNotification {
-	s.Endpoint = &v
-	return s
-}
-
-func (s *CreateBatchRequestNotification) SetTopic(v string) *CreateBatchRequestNotification {
-	s.Topic = &v
+func (s *CreateBatchRequestNotification) SetMNS(v *MNS) *CreateBatchRequestNotification {
+	s.MNS = v
 	return s
 }
 
@@ -6125,11 +6587,10 @@ func (s *CreateDatasetResponse) SetBody(v *CreateDatasetResponseBody) *CreateDat
 
 type CreateFacesSearchingTaskRequest struct {
 	DatasetName  *string                                   `json:"DatasetName,omitempty" xml:"DatasetName,omitempty"`
-	MaxResult    *string                                   `json:"MaxResult,omitempty" xml:"MaxResult,omitempty"`
+	MaxResult    *int64                                    `json:"MaxResult,omitempty" xml:"MaxResult,omitempty"`
 	Notification *Notification                             `json:"Notification,omitempty" xml:"Notification,omitempty"`
 	ProjectName  *string                                   `json:"ProjectName,omitempty" xml:"ProjectName,omitempty"`
 	Sources      []*CreateFacesSearchingTaskRequestSources `json:"Sources,omitempty" xml:"Sources,omitempty" type:"Repeated"`
-	TopK         *int64                                    `json:"TopK,omitempty" xml:"TopK,omitempty"`
 	UserData     *string                                   `json:"UserData,omitempty" xml:"UserData,omitempty"`
 }
 
@@ -6146,7 +6607,7 @@ func (s *CreateFacesSearchingTaskRequest) SetDatasetName(v string) *CreateFacesS
 	return s
 }
 
-func (s *CreateFacesSearchingTaskRequest) SetMaxResult(v string) *CreateFacesSearchingTaskRequest {
+func (s *CreateFacesSearchingTaskRequest) SetMaxResult(v int64) *CreateFacesSearchingTaskRequest {
 	s.MaxResult = &v
 	return s
 }
@@ -6163,11 +6624,6 @@ func (s *CreateFacesSearchingTaskRequest) SetProjectName(v string) *CreateFacesS
 
 func (s *CreateFacesSearchingTaskRequest) SetSources(v []*CreateFacesSearchingTaskRequestSources) *CreateFacesSearchingTaskRequest {
 	s.Sources = v
-	return s
-}
-
-func (s *CreateFacesSearchingTaskRequest) SetTopK(v int64) *CreateFacesSearchingTaskRequest {
-	s.TopK = &v
 	return s
 }
 
@@ -6195,11 +6651,10 @@ func (s *CreateFacesSearchingTaskRequestSources) SetURI(v string) *CreateFacesSe
 
 type CreateFacesSearchingTaskShrinkRequest struct {
 	DatasetName        *string `json:"DatasetName,omitempty" xml:"DatasetName,omitempty"`
-	MaxResult          *string `json:"MaxResult,omitempty" xml:"MaxResult,omitempty"`
+	MaxResult          *int64  `json:"MaxResult,omitempty" xml:"MaxResult,omitempty"`
 	NotificationShrink *string `json:"Notification,omitempty" xml:"Notification,omitempty"`
 	ProjectName        *string `json:"ProjectName,omitempty" xml:"ProjectName,omitempty"`
 	SourcesShrink      *string `json:"Sources,omitempty" xml:"Sources,omitempty"`
-	TopK               *int64  `json:"TopK,omitempty" xml:"TopK,omitempty"`
 	UserData           *string `json:"UserData,omitempty" xml:"UserData,omitempty"`
 }
 
@@ -6216,7 +6671,7 @@ func (s *CreateFacesSearchingTaskShrinkRequest) SetDatasetName(v string) *Create
 	return s
 }
 
-func (s *CreateFacesSearchingTaskShrinkRequest) SetMaxResult(v string) *CreateFacesSearchingTaskShrinkRequest {
+func (s *CreateFacesSearchingTaskShrinkRequest) SetMaxResult(v int64) *CreateFacesSearchingTaskShrinkRequest {
 	s.MaxResult = &v
 	return s
 }
@@ -6233,11 +6688,6 @@ func (s *CreateFacesSearchingTaskShrinkRequest) SetProjectName(v string) *Create
 
 func (s *CreateFacesSearchingTaskShrinkRequest) SetSourcesShrink(v string) *CreateFacesSearchingTaskShrinkRequest {
 	s.SourcesShrink = &v
-	return s
-}
-
-func (s *CreateFacesSearchingTaskShrinkRequest) SetTopK(v int64) *CreateFacesSearchingTaskShrinkRequest {
-	s.TopK = &v
 	return s
 }
 
@@ -6624,7 +7074,6 @@ type CreateFileCompressionTaskRequest struct {
 	CompressedFormat  *string                                    `json:"CompressedFormat,omitempty" xml:"CompressedFormat,omitempty"`
 	CredentialConfig  *CredentialConfig                          `json:"CredentialConfig,omitempty" xml:"CredentialConfig,omitempty"`
 	Notification      *Notification                              `json:"Notification,omitempty" xml:"Notification,omitempty"`
-	Password          *string                                    `json:"Password,omitempty" xml:"Password,omitempty"`
 	ProjectName       *string                                    `json:"ProjectName,omitempty" xml:"ProjectName,omitempty"`
 	SourceManifestURI *string                                    `json:"SourceManifestURI,omitempty" xml:"SourceManifestURI,omitempty"`
 	Sources           []*CreateFileCompressionTaskRequestSources `json:"Sources,omitempty" xml:"Sources,omitempty" type:"Repeated"`
@@ -6652,11 +7101,6 @@ func (s *CreateFileCompressionTaskRequest) SetCredentialConfig(v *CredentialConf
 
 func (s *CreateFileCompressionTaskRequest) SetNotification(v *Notification) *CreateFileCompressionTaskRequest {
 	s.Notification = v
-	return s
-}
-
-func (s *CreateFileCompressionTaskRequest) SetPassword(v string) *CreateFileCompressionTaskRequest {
-	s.Password = &v
 	return s
 }
 
@@ -6712,7 +7156,6 @@ type CreateFileCompressionTaskShrinkRequest struct {
 	CompressedFormat       *string `json:"CompressedFormat,omitempty" xml:"CompressedFormat,omitempty"`
 	CredentialConfigShrink *string `json:"CredentialConfig,omitempty" xml:"CredentialConfig,omitempty"`
 	NotificationShrink     *string `json:"Notification,omitempty" xml:"Notification,omitempty"`
-	Password               *string `json:"Password,omitempty" xml:"Password,omitempty"`
 	ProjectName            *string `json:"ProjectName,omitempty" xml:"ProjectName,omitempty"`
 	SourceManifestURI      *string `json:"SourceManifestURI,omitempty" xml:"SourceManifestURI,omitempty"`
 	SourcesShrink          *string `json:"Sources,omitempty" xml:"Sources,omitempty"`
@@ -6740,11 +7183,6 @@ func (s *CreateFileCompressionTaskShrinkRequest) SetCredentialConfigShrink(v str
 
 func (s *CreateFileCompressionTaskShrinkRequest) SetNotificationShrink(v string) *CreateFileCompressionTaskShrinkRequest {
 	s.NotificationShrink = &v
-	return s
-}
-
-func (s *CreateFileCompressionTaskShrinkRequest) SetPassword(v string) *CreateFileCompressionTaskShrinkRequest {
-	s.Password = &v
 	return s
 }
 
@@ -6832,14 +7270,14 @@ func (s *CreateFileCompressionTaskResponse) SetBody(v *CreateFileCompressionTask
 }
 
 type CreateFileUncompressionTaskRequest struct {
-	CredentialConfig *CredentialConfig                         `json:"CredentialConfig,omitempty" xml:"CredentialConfig,omitempty"`
-	Notification     *Notification                             `json:"Notification,omitempty" xml:"Notification,omitempty"`
-	Password         *string                                   `json:"Password,omitempty" xml:"Password,omitempty"`
-	ProjectName      *string                                   `json:"ProjectName,omitempty" xml:"ProjectName,omitempty"`
-	SelectedFiles    []*string                                 `json:"SelectedFiles,omitempty" xml:"SelectedFiles,omitempty" type:"Repeated"`
-	SourceURI        *string                                   `json:"SourceURI,omitempty" xml:"SourceURI,omitempty"`
-	Target           *CreateFileUncompressionTaskRequestTarget `json:"Target,omitempty" xml:"Target,omitempty" type:"Struct"`
-	UserData         *string                                   `json:"UserData,omitempty" xml:"UserData,omitempty"`
+	CredentialConfig *CredentialConfig `json:"CredentialConfig,omitempty" xml:"CredentialConfig,omitempty"`
+	Notification     *Notification     `json:"Notification,omitempty" xml:"Notification,omitempty"`
+	Password         *string           `json:"Password,omitempty" xml:"Password,omitempty"`
+	ProjectName      *string           `json:"ProjectName,omitempty" xml:"ProjectName,omitempty"`
+	SelectedFiles    []*string         `json:"SelectedFiles,omitempty" xml:"SelectedFiles,omitempty" type:"Repeated"`
+	SourceURI        *string           `json:"SourceURI,omitempty" xml:"SourceURI,omitempty"`
+	TargetURI        *string           `json:"TargetURI,omitempty" xml:"TargetURI,omitempty"`
+	UserData         *string           `json:"UserData,omitempty" xml:"UserData,omitempty"`
 }
 
 func (s CreateFileUncompressionTaskRequest) String() string {
@@ -6880,36 +7318,13 @@ func (s *CreateFileUncompressionTaskRequest) SetSourceURI(v string) *CreateFileU
 	return s
 }
 
-func (s *CreateFileUncompressionTaskRequest) SetTarget(v *CreateFileUncompressionTaskRequestTarget) *CreateFileUncompressionTaskRequest {
-	s.Target = v
+func (s *CreateFileUncompressionTaskRequest) SetTargetURI(v string) *CreateFileUncompressionTaskRequest {
+	s.TargetURI = &v
 	return s
 }
 
 func (s *CreateFileUncompressionTaskRequest) SetUserData(v string) *CreateFileUncompressionTaskRequest {
 	s.UserData = &v
-	return s
-}
-
-type CreateFileUncompressionTaskRequestTarget struct {
-	ManifestURI *string `json:"ManifestURI,omitempty" xml:"ManifestURI,omitempty"`
-	URI         *string `json:"URI,omitempty" xml:"URI,omitempty"`
-}
-
-func (s CreateFileUncompressionTaskRequestTarget) String() string {
-	return tea.Prettify(s)
-}
-
-func (s CreateFileUncompressionTaskRequestTarget) GoString() string {
-	return s.String()
-}
-
-func (s *CreateFileUncompressionTaskRequestTarget) SetManifestURI(v string) *CreateFileUncompressionTaskRequestTarget {
-	s.ManifestURI = &v
-	return s
-}
-
-func (s *CreateFileUncompressionTaskRequestTarget) SetURI(v string) *CreateFileUncompressionTaskRequestTarget {
-	s.URI = &v
 	return s
 }
 
@@ -6920,7 +7335,7 @@ type CreateFileUncompressionTaskShrinkRequest struct {
 	ProjectName            *string `json:"ProjectName,omitempty" xml:"ProjectName,omitempty"`
 	SelectedFilesShrink    *string `json:"SelectedFiles,omitempty" xml:"SelectedFiles,omitempty"`
 	SourceURI              *string `json:"SourceURI,omitempty" xml:"SourceURI,omitempty"`
-	TargetShrink           *string `json:"Target,omitempty" xml:"Target,omitempty"`
+	TargetURI              *string `json:"TargetURI,omitempty" xml:"TargetURI,omitempty"`
 	UserData               *string `json:"UserData,omitempty" xml:"UserData,omitempty"`
 }
 
@@ -6962,8 +7377,8 @@ func (s *CreateFileUncompressionTaskShrinkRequest) SetSourceURI(v string) *Creat
 	return s
 }
 
-func (s *CreateFileUncompressionTaskShrinkRequest) SetTargetShrink(v string) *CreateFileUncompressionTaskShrinkRequest {
-	s.TargetShrink = &v
+func (s *CreateFileUncompressionTaskShrinkRequest) SetTargetURI(v string) *CreateFileUncompressionTaskShrinkRequest {
+	s.TargetURI = &v
 	return s
 }
 
@@ -7037,7 +7452,6 @@ type CreateImageModerationTaskRequest struct {
 	// 消息通知配置，支持使用MNS、RocketMQ接收异步消息通知。
 	Notification *Notification          `json:"Notification,omitempty" xml:"Notification,omitempty"`
 	ProjectName  *string                `json:"ProjectName,omitempty" xml:"ProjectName,omitempty"`
-	Reviewer     *string                `json:"Reviewer,omitempty" xml:"Reviewer,omitempty"`
 	Scenes       []*string              `json:"Scenes,omitempty" xml:"Scenes,omitempty" type:"Repeated"`
 	SourceURI    *string                `json:"SourceURI,omitempty" xml:"SourceURI,omitempty"`
 	Tags         map[string]interface{} `json:"Tags,omitempty" xml:"Tags,omitempty"`
@@ -7077,11 +7491,6 @@ func (s *CreateImageModerationTaskRequest) SetProjectName(v string) *CreateImage
 	return s
 }
 
-func (s *CreateImageModerationTaskRequest) SetReviewer(v string) *CreateImageModerationTaskRequest {
-	s.Reviewer = &v
-	return s
-}
-
 func (s *CreateImageModerationTaskRequest) SetScenes(v []*string) *CreateImageModerationTaskRequest {
 	s.Scenes = v
 	return s
@@ -7109,7 +7518,6 @@ type CreateImageModerationTaskShrinkRequest struct {
 	// 消息通知配置，支持使用MNS、RocketMQ接收异步消息通知。
 	NotificationShrink *string `json:"Notification,omitempty" xml:"Notification,omitempty"`
 	ProjectName        *string `json:"ProjectName,omitempty" xml:"ProjectName,omitempty"`
-	Reviewer           *string `json:"Reviewer,omitempty" xml:"Reviewer,omitempty"`
 	ScenesShrink       *string `json:"Scenes,omitempty" xml:"Scenes,omitempty"`
 	SourceURI          *string `json:"SourceURI,omitempty" xml:"SourceURI,omitempty"`
 	TagsShrink         *string `json:"Tags,omitempty" xml:"Tags,omitempty"`
@@ -7146,11 +7554,6 @@ func (s *CreateImageModerationTaskShrinkRequest) SetNotificationShrink(v string)
 
 func (s *CreateImageModerationTaskShrinkRequest) SetProjectName(v string) *CreateImageModerationTaskShrinkRequest {
 	s.ProjectName = &v
-	return s
-}
-
-func (s *CreateImageModerationTaskShrinkRequest) SetReviewer(v string) *CreateImageModerationTaskShrinkRequest {
-	s.Reviewer = &v
 	return s
 }
 
@@ -7233,22 +7636,21 @@ func (s *CreateImageModerationTaskResponse) SetBody(v *CreateImageModerationTask
 }
 
 type CreateImageSplicingTaskRequest struct {
-	Align            *int64            `json:"Align,omitempty" xml:"Align,omitempty"`
-	BackgroundColor  *string           `json:"BackgroundColor,omitempty" xml:"BackgroundColor,omitempty"`
-	CredentialConfig *CredentialConfig `json:"CredentialConfig,omitempty" xml:"CredentialConfig,omitempty"`
-	Direction        *string           `json:"Direction,omitempty" xml:"Direction,omitempty"`
-	ImageFormat      *string           `json:"ImageFormat,omitempty" xml:"ImageFormat,omitempty"`
-	Margin           *int64            `json:"Margin,omitempty" xml:"Margin,omitempty"`
-	// 消息通知配置，支持使用MNS、RocketMQ接收异步消息通知。
-	Notification *Notification                            `json:"Notification,omitempty" xml:"Notification,omitempty"`
-	Padding      *int64                                   `json:"Padding,omitempty" xml:"Padding,omitempty"`
-	ProjectName  *string                                  `json:"ProjectName,omitempty" xml:"ProjectName,omitempty"`
-	Quality      *int64                                   `json:"Quality,omitempty" xml:"Quality,omitempty"`
-	ScaleType    *string                                  `json:"ScaleType,omitempty" xml:"ScaleType,omitempty"`
-	Sources      []*CreateImageSplicingTaskRequestSources `json:"Sources,omitempty" xml:"Sources,omitempty" type:"Repeated"`
-	Tags         map[string]interface{}                   `json:"Tags,omitempty" xml:"Tags,omitempty"`
-	TargetURI    *string                                  `json:"TargetURI,omitempty" xml:"TargetURI,omitempty"`
-	UserData     *string                                  `json:"UserData,omitempty" xml:"UserData,omitempty"`
+	Align            *int64                                   `json:"Align,omitempty" xml:"Align,omitempty"`
+	BackgroundColor  *string                                  `json:"BackgroundColor,omitempty" xml:"BackgroundColor,omitempty"`
+	CredentialConfig *CredentialConfig                        `json:"CredentialConfig,omitempty" xml:"CredentialConfig,omitempty"`
+	Direction        *string                                  `json:"Direction,omitempty" xml:"Direction,omitempty"`
+	ImageFormat      *string                                  `json:"ImageFormat,omitempty" xml:"ImageFormat,omitempty"`
+	Margin           *int64                                   `json:"Margin,omitempty" xml:"Margin,omitempty"`
+	Notification     *Notification                            `json:"Notification,omitempty" xml:"Notification,omitempty"`
+	Padding          *int64                                   `json:"Padding,omitempty" xml:"Padding,omitempty"`
+	ProjectName      *string                                  `json:"ProjectName,omitempty" xml:"ProjectName,omitempty"`
+	Quality          *int64                                   `json:"Quality,omitempty" xml:"Quality,omitempty"`
+	ScaleType        *string                                  `json:"ScaleType,omitempty" xml:"ScaleType,omitempty"`
+	Sources          []*CreateImageSplicingTaskRequestSources `json:"Sources,omitempty" xml:"Sources,omitempty" type:"Repeated"`
+	Tags             map[string]interface{}                   `json:"Tags,omitempty" xml:"Tags,omitempty"`
+	TargetURI        *string                                  `json:"TargetURI,omitempty" xml:"TargetURI,omitempty"`
+	UserData         *string                                  `json:"UserData,omitempty" xml:"UserData,omitempty"`
 }
 
 func (s CreateImageSplicingTaskRequest) String() string {
@@ -7364,16 +7766,15 @@ type CreateImageSplicingTaskShrinkRequest struct {
 	Direction              *string `json:"Direction,omitempty" xml:"Direction,omitempty"`
 	ImageFormat            *string `json:"ImageFormat,omitempty" xml:"ImageFormat,omitempty"`
 	Margin                 *int64  `json:"Margin,omitempty" xml:"Margin,omitempty"`
-	// 消息通知配置，支持使用MNS、RocketMQ接收异步消息通知。
-	NotificationShrink *string `json:"Notification,omitempty" xml:"Notification,omitempty"`
-	Padding            *int64  `json:"Padding,omitempty" xml:"Padding,omitempty"`
-	ProjectName        *string `json:"ProjectName,omitempty" xml:"ProjectName,omitempty"`
-	Quality            *int64  `json:"Quality,omitempty" xml:"Quality,omitempty"`
-	ScaleType          *string `json:"ScaleType,omitempty" xml:"ScaleType,omitempty"`
-	SourcesShrink      *string `json:"Sources,omitempty" xml:"Sources,omitempty"`
-	TagsShrink         *string `json:"Tags,omitempty" xml:"Tags,omitempty"`
-	TargetURI          *string `json:"TargetURI,omitempty" xml:"TargetURI,omitempty"`
-	UserData           *string `json:"UserData,omitempty" xml:"UserData,omitempty"`
+	NotificationShrink     *string `json:"Notification,omitempty" xml:"Notification,omitempty"`
+	Padding                *int64  `json:"Padding,omitempty" xml:"Padding,omitempty"`
+	ProjectName            *string `json:"ProjectName,omitempty" xml:"ProjectName,omitempty"`
+	Quality                *int64  `json:"Quality,omitempty" xml:"Quality,omitempty"`
+	ScaleType              *string `json:"ScaleType,omitempty" xml:"ScaleType,omitempty"`
+	SourcesShrink          *string `json:"Sources,omitempty" xml:"Sources,omitempty"`
+	TagsShrink             *string `json:"Tags,omitempty" xml:"Tags,omitempty"`
+	TargetURI              *string `json:"TargetURI,omitempty" xml:"TargetURI,omitempty"`
+	UserData               *string `json:"UserData,omitempty" xml:"UserData,omitempty"`
 }
 
 func (s CreateImageSplicingTaskShrinkRequest) String() string {
@@ -7518,14 +7919,13 @@ func (s *CreateImageSplicingTaskResponse) SetBody(v *CreateImageSplicingTaskResp
 }
 
 type CreateImageToPDFTaskRequest struct {
-	CredentialConfig *CredentialConfig `json:"CredentialConfig,omitempty" xml:"CredentialConfig,omitempty"`
-	// 消息通知配置，支持使用MNS、RocketMQ接收异步消息通知。
-	Notification *Notification                         `json:"Notification,omitempty" xml:"Notification,omitempty"`
-	ProjectName  *string                               `json:"ProjectName,omitempty" xml:"ProjectName,omitempty"`
-	Sources      []*CreateImageToPDFTaskRequestSources `json:"Sources,omitempty" xml:"Sources,omitempty" type:"Repeated"`
-	Tags         map[string]interface{}                `json:"Tags,omitempty" xml:"Tags,omitempty"`
-	TargetURI    *string                               `json:"TargetURI,omitempty" xml:"TargetURI,omitempty"`
-	UserData     *string                               `json:"UserData,omitempty" xml:"UserData,omitempty"`
+	CredentialConfig *CredentialConfig                     `json:"CredentialConfig,omitempty" xml:"CredentialConfig,omitempty"`
+	Notification     *Notification                         `json:"Notification,omitempty" xml:"Notification,omitempty"`
+	ProjectName      *string                               `json:"ProjectName,omitempty" xml:"ProjectName,omitempty"`
+	Sources          []*CreateImageToPDFTaskRequestSources `json:"Sources,omitempty" xml:"Sources,omitempty" type:"Repeated"`
+	Tags             map[string]interface{}                `json:"Tags,omitempty" xml:"Tags,omitempty"`
+	TargetURI        *string                               `json:"TargetURI,omitempty" xml:"TargetURI,omitempty"`
+	UserData         *string                               `json:"UserData,omitempty" xml:"UserData,omitempty"`
 }
 
 func (s CreateImageToPDFTaskRequest) String() string {
@@ -7596,13 +7996,12 @@ func (s *CreateImageToPDFTaskRequestSources) SetURI(v string) *CreateImageToPDFT
 
 type CreateImageToPDFTaskShrinkRequest struct {
 	CredentialConfigShrink *string `json:"CredentialConfig,omitempty" xml:"CredentialConfig,omitempty"`
-	// 消息通知配置，支持使用MNS、RocketMQ接收异步消息通知。
-	NotificationShrink *string `json:"Notification,omitempty" xml:"Notification,omitempty"`
-	ProjectName        *string `json:"ProjectName,omitempty" xml:"ProjectName,omitempty"`
-	SourcesShrink      *string `json:"Sources,omitempty" xml:"Sources,omitempty"`
-	TagsShrink         *string `json:"Tags,omitempty" xml:"Tags,omitempty"`
-	TargetURI          *string `json:"TargetURI,omitempty" xml:"TargetURI,omitempty"`
-	UserData           *string `json:"UserData,omitempty" xml:"UserData,omitempty"`
+	NotificationShrink     *string `json:"Notification,omitempty" xml:"Notification,omitempty"`
+	ProjectName            *string `json:"ProjectName,omitempty" xml:"ProjectName,omitempty"`
+	SourcesShrink          *string `json:"Sources,omitempty" xml:"Sources,omitempty"`
+	TagsShrink             *string `json:"Tags,omitempty" xml:"Tags,omitempty"`
+	TargetURI              *string `json:"TargetURI,omitempty" xml:"TargetURI,omitempty"`
+	UserData               *string `json:"UserData,omitempty" xml:"UserData,omitempty"`
 }
 
 func (s CreateImageToPDFTaskShrinkRequest) String() string {
@@ -9324,8 +9723,7 @@ func (s *CreateTriggerRequestActions) SetParameters(v []*string) *CreateTriggerR
 }
 
 type CreateTriggerRequestNotification struct {
-	Endpoint *string `json:"Endpoint,omitempty" xml:"Endpoint,omitempty"`
-	Topic    *string `json:"Topic,omitempty" xml:"Topic,omitempty"`
+	MNS *MNS `json:"MNS,omitempty" xml:"MNS,omitempty"`
 }
 
 func (s CreateTriggerRequestNotification) String() string {
@@ -9336,13 +9734,8 @@ func (s CreateTriggerRequestNotification) GoString() string {
 	return s.String()
 }
 
-func (s *CreateTriggerRequestNotification) SetEndpoint(v string) *CreateTriggerRequestNotification {
-	s.Endpoint = &v
-	return s
-}
-
-func (s *CreateTriggerRequestNotification) SetTopic(v string) *CreateTriggerRequestNotification {
-	s.Topic = &v
+func (s *CreateTriggerRequestNotification) SetMNS(v *MNS) *CreateTriggerRequestNotification {
+	s.MNS = v
 	return s
 }
 
@@ -9606,7 +9999,6 @@ type CreateVideoModerationTaskRequest struct {
 	// 消息通知配置，支持使用MNS、RocketMQ接收异步消息通知。
 	Notification *Notification          `json:"Notification,omitempty" xml:"Notification,omitempty"`
 	ProjectName  *string                `json:"ProjectName,omitempty" xml:"ProjectName,omitempty"`
-	Reviewer     *string                `json:"Reviewer,omitempty" xml:"Reviewer,omitempty"`
 	Scenes       []*string              `json:"Scenes,omitempty" xml:"Scenes,omitempty" type:"Repeated"`
 	SourceURI    *string                `json:"SourceURI,omitempty" xml:"SourceURI,omitempty"`
 	Tags         map[string]interface{} `json:"Tags,omitempty" xml:"Tags,omitempty"`
@@ -9646,11 +10038,6 @@ func (s *CreateVideoModerationTaskRequest) SetProjectName(v string) *CreateVideo
 	return s
 }
 
-func (s *CreateVideoModerationTaskRequest) SetReviewer(v string) *CreateVideoModerationTaskRequest {
-	s.Reviewer = &v
-	return s
-}
-
 func (s *CreateVideoModerationTaskRequest) SetScenes(v []*string) *CreateVideoModerationTaskRequest {
 	s.Scenes = v
 	return s
@@ -9678,7 +10065,6 @@ type CreateVideoModerationTaskShrinkRequest struct {
 	// 消息通知配置，支持使用MNS、RocketMQ接收异步消息通知。
 	NotificationShrink *string `json:"Notification,omitempty" xml:"Notification,omitempty"`
 	ProjectName        *string `json:"ProjectName,omitempty" xml:"ProjectName,omitempty"`
-	Reviewer           *string `json:"Reviewer,omitempty" xml:"Reviewer,omitempty"`
 	ScenesShrink       *string `json:"Scenes,omitempty" xml:"Scenes,omitempty"`
 	SourceURI          *string `json:"SourceURI,omitempty" xml:"SourceURI,omitempty"`
 	TagsShrink         *string `json:"Tags,omitempty" xml:"Tags,omitempty"`
@@ -9715,11 +10101,6 @@ func (s *CreateVideoModerationTaskShrinkRequest) SetNotificationShrink(v string)
 
 func (s *CreateVideoModerationTaskShrinkRequest) SetProjectName(v string) *CreateVideoModerationTaskShrinkRequest {
 	s.ProjectName = &v
-	return s
-}
-
-func (s *CreateVideoModerationTaskShrinkRequest) SetReviewer(v string) *CreateVideoModerationTaskShrinkRequest {
-	s.Reviewer = &v
 	return s
 }
 
@@ -9871,7 +10252,6 @@ func (s *DeleteBatchResponse) SetBody(v *DeleteBatchResponseBody) *DeleteBatchRe
 }
 
 type DeleteBindingRequest struct {
-	Cleanup     *bool   `json:"Cleanup,omitempty" xml:"Cleanup,omitempty"`
 	DatasetName *string `json:"DatasetName,omitempty" xml:"DatasetName,omitempty"`
 	ProjectName *string `json:"ProjectName,omitempty" xml:"ProjectName,omitempty"`
 	URI         *string `json:"URI,omitempty" xml:"URI,omitempty"`
@@ -9883,11 +10263,6 @@ func (s DeleteBindingRequest) String() string {
 
 func (s DeleteBindingRequest) GoString() string {
 	return s.String()
-}
-
-func (s *DeleteBindingRequest) SetCleanup(v bool) *DeleteBindingRequest {
-	s.Cleanup = &v
-	return s
 }
 
 func (s *DeleteBindingRequest) SetDatasetName(v string) *DeleteBindingRequest {
@@ -11747,6 +12122,7 @@ type FuzzyQueryResponseBody struct {
 	Files     []*File `json:"Files,omitempty" xml:"Files,omitempty" type:"Repeated"`
 	NextToken *string `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	TotalHits *int64  `json:"TotalHits,omitempty" xml:"TotalHits,omitempty"`
 }
 
 func (s FuzzyQueryResponseBody) String() string {
@@ -11769,6 +12145,11 @@ func (s *FuzzyQueryResponseBody) SetNextToken(v string) *FuzzyQueryResponseBody 
 
 func (s *FuzzyQueryResponseBody) SetRequestId(v string) *FuzzyQueryResponseBody {
 	s.RequestId = &v
+	return s
+}
+
+func (s *FuzzyQueryResponseBody) SetTotalHits(v int64) *FuzzyQueryResponseBody {
+	s.TotalHits = &v
 	return s
 }
 
@@ -11797,497 +12178,6 @@ func (s *FuzzyQueryResponse) SetStatusCode(v int32) *FuzzyQueryResponse {
 }
 
 func (s *FuzzyQueryResponse) SetBody(v *FuzzyQueryResponseBody) *FuzzyQueryResponse {
-	s.Body = v
-	return s
-}
-
-type GenerateDRMLicenseRequest struct {
-	KeyId            *string `json:"KeyId,omitempty" xml:"KeyId,omitempty"`
-	NotifyEndpoint   *string `json:"NotifyEndpoint,omitempty" xml:"NotifyEndpoint,omitempty"`
-	NotifyTopicName  *string `json:"NotifyTopicName,omitempty" xml:"NotifyTopicName,omitempty"`
-	ProjectName      *string `json:"ProjectName,omitempty" xml:"ProjectName,omitempty"`
-	ProtectionSystem *string `json:"ProtectionSystem,omitempty" xml:"ProtectionSystem,omitempty"`
-}
-
-func (s GenerateDRMLicenseRequest) String() string {
-	return tea.Prettify(s)
-}
-
-func (s GenerateDRMLicenseRequest) GoString() string {
-	return s.String()
-}
-
-func (s *GenerateDRMLicenseRequest) SetKeyId(v string) *GenerateDRMLicenseRequest {
-	s.KeyId = &v
-	return s
-}
-
-func (s *GenerateDRMLicenseRequest) SetNotifyEndpoint(v string) *GenerateDRMLicenseRequest {
-	s.NotifyEndpoint = &v
-	return s
-}
-
-func (s *GenerateDRMLicenseRequest) SetNotifyTopicName(v string) *GenerateDRMLicenseRequest {
-	s.NotifyTopicName = &v
-	return s
-}
-
-func (s *GenerateDRMLicenseRequest) SetProjectName(v string) *GenerateDRMLicenseRequest {
-	s.ProjectName = &v
-	return s
-}
-
-func (s *GenerateDRMLicenseRequest) SetProtectionSystem(v string) *GenerateDRMLicenseRequest {
-	s.ProtectionSystem = &v
-	return s
-}
-
-type GenerateDRMLicenseResponseBody struct {
-	DeviceInfo *string `json:"DeviceInfo,omitempty" xml:"DeviceInfo,omitempty"`
-	License    *string `json:"License,omitempty" xml:"License,omitempty"`
-	RequestId  *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	States     *int64  `json:"States,omitempty" xml:"States,omitempty"`
-}
-
-func (s GenerateDRMLicenseResponseBody) String() string {
-	return tea.Prettify(s)
-}
-
-func (s GenerateDRMLicenseResponseBody) GoString() string {
-	return s.String()
-}
-
-func (s *GenerateDRMLicenseResponseBody) SetDeviceInfo(v string) *GenerateDRMLicenseResponseBody {
-	s.DeviceInfo = &v
-	return s
-}
-
-func (s *GenerateDRMLicenseResponseBody) SetLicense(v string) *GenerateDRMLicenseResponseBody {
-	s.License = &v
-	return s
-}
-
-func (s *GenerateDRMLicenseResponseBody) SetRequestId(v string) *GenerateDRMLicenseResponseBody {
-	s.RequestId = &v
-	return s
-}
-
-func (s *GenerateDRMLicenseResponseBody) SetStates(v int64) *GenerateDRMLicenseResponseBody {
-	s.States = &v
-	return s
-}
-
-type GenerateDRMLicenseResponse struct {
-	Headers    map[string]*string              `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                          `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *GenerateDRMLicenseResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
-}
-
-func (s GenerateDRMLicenseResponse) String() string {
-	return tea.Prettify(s)
-}
-
-func (s GenerateDRMLicenseResponse) GoString() string {
-	return s.String()
-}
-
-func (s *GenerateDRMLicenseResponse) SetHeaders(v map[string]*string) *GenerateDRMLicenseResponse {
-	s.Headers = v
-	return s
-}
-
-func (s *GenerateDRMLicenseResponse) SetStatusCode(v int32) *GenerateDRMLicenseResponse {
-	s.StatusCode = &v
-	return s
-}
-
-func (s *GenerateDRMLicenseResponse) SetBody(v *GenerateDRMLicenseResponseBody) *GenerateDRMLicenseResponse {
-	s.Body = v
-	return s
-}
-
-type GenerateVideoPlaylistRequest struct {
-	CredentialConfig *CredentialConfig                              `json:"CredentialConfig,omitempty" xml:"CredentialConfig,omitempty"`
-	MasterURI        *string                                        `json:"MasterURI,omitempty" xml:"MasterURI,omitempty"`
-	ProjectName      *string                                        `json:"ProjectName,omitempty" xml:"ProjectName,omitempty"`
-	SourceDuration   *float32                                       `json:"SourceDuration,omitempty" xml:"SourceDuration,omitempty"`
-	SourceStartTime  *float32                                       `json:"SourceStartTime,omitempty" xml:"SourceStartTime,omitempty"`
-	SourceSubtitles  []*GenerateVideoPlaylistRequestSourceSubtitles `json:"SourceSubtitles,omitempty" xml:"SourceSubtitles,omitempty" type:"Repeated"`
-	SourceURI        *string                                        `json:"SourceURI,omitempty" xml:"SourceURI,omitempty"`
-	Tags             map[string]interface{}                         `json:"Tags,omitempty" xml:"Tags,omitempty"`
-	Targets          []*GenerateVideoPlaylistRequestTargets         `json:"Targets,omitempty" xml:"Targets,omitempty" type:"Repeated"`
-}
-
-func (s GenerateVideoPlaylistRequest) String() string {
-	return tea.Prettify(s)
-}
-
-func (s GenerateVideoPlaylistRequest) GoString() string {
-	return s.String()
-}
-
-func (s *GenerateVideoPlaylistRequest) SetCredentialConfig(v *CredentialConfig) *GenerateVideoPlaylistRequest {
-	s.CredentialConfig = v
-	return s
-}
-
-func (s *GenerateVideoPlaylistRequest) SetMasterURI(v string) *GenerateVideoPlaylistRequest {
-	s.MasterURI = &v
-	return s
-}
-
-func (s *GenerateVideoPlaylistRequest) SetProjectName(v string) *GenerateVideoPlaylistRequest {
-	s.ProjectName = &v
-	return s
-}
-
-func (s *GenerateVideoPlaylistRequest) SetSourceDuration(v float32) *GenerateVideoPlaylistRequest {
-	s.SourceDuration = &v
-	return s
-}
-
-func (s *GenerateVideoPlaylistRequest) SetSourceStartTime(v float32) *GenerateVideoPlaylistRequest {
-	s.SourceStartTime = &v
-	return s
-}
-
-func (s *GenerateVideoPlaylistRequest) SetSourceSubtitles(v []*GenerateVideoPlaylistRequestSourceSubtitles) *GenerateVideoPlaylistRequest {
-	s.SourceSubtitles = v
-	return s
-}
-
-func (s *GenerateVideoPlaylistRequest) SetSourceURI(v string) *GenerateVideoPlaylistRequest {
-	s.SourceURI = &v
-	return s
-}
-
-func (s *GenerateVideoPlaylistRequest) SetTags(v map[string]interface{}) *GenerateVideoPlaylistRequest {
-	s.Tags = v
-	return s
-}
-
-func (s *GenerateVideoPlaylistRequest) SetTargets(v []*GenerateVideoPlaylistRequestTargets) *GenerateVideoPlaylistRequest {
-	s.Targets = v
-	return s
-}
-
-type GenerateVideoPlaylistRequestSourceSubtitles struct {
-	Language *string `json:"Language,omitempty" xml:"Language,omitempty"`
-	URI      *string `json:"URI,omitempty" xml:"URI,omitempty"`
-}
-
-func (s GenerateVideoPlaylistRequestSourceSubtitles) String() string {
-	return tea.Prettify(s)
-}
-
-func (s GenerateVideoPlaylistRequestSourceSubtitles) GoString() string {
-	return s.String()
-}
-
-func (s *GenerateVideoPlaylistRequestSourceSubtitles) SetLanguage(v string) *GenerateVideoPlaylistRequestSourceSubtitles {
-	s.Language = &v
-	return s
-}
-
-func (s *GenerateVideoPlaylistRequestSourceSubtitles) SetURI(v string) *GenerateVideoPlaylistRequestSourceSubtitles {
-	s.URI = &v
-	return s
-}
-
-type GenerateVideoPlaylistRequestTargets struct {
-	Audio            *TargetAudio    `json:"Audio,omitempty" xml:"Audio,omitempty"`
-	Duration         *float32        `json:"Duration,omitempty" xml:"Duration,omitempty"`
-	InitialSegments  []*float32      `json:"InitialSegments,omitempty" xml:"InitialSegments,omitempty" type:"Repeated"`
-	InitialTranscode *float32        `json:"InitialTranscode,omitempty" xml:"InitialTranscode,omitempty"`
-	Speed            *float32        `json:"Speed,omitempty" xml:"Speed,omitempty"`
-	Subtitle         *TargetSubtitle `json:"Subtitle,omitempty" xml:"Subtitle,omitempty"`
-	TranscodeAhead   *int32          `json:"TranscodeAhead,omitempty" xml:"TranscodeAhead,omitempty"`
-	URI              *string         `json:"URI,omitempty" xml:"URI,omitempty"`
-	Video            *TargetVideo    `json:"Video,omitempty" xml:"Video,omitempty"`
-}
-
-func (s GenerateVideoPlaylistRequestTargets) String() string {
-	return tea.Prettify(s)
-}
-
-func (s GenerateVideoPlaylistRequestTargets) GoString() string {
-	return s.String()
-}
-
-func (s *GenerateVideoPlaylistRequestTargets) SetAudio(v *TargetAudio) *GenerateVideoPlaylistRequestTargets {
-	s.Audio = v
-	return s
-}
-
-func (s *GenerateVideoPlaylistRequestTargets) SetDuration(v float32) *GenerateVideoPlaylistRequestTargets {
-	s.Duration = &v
-	return s
-}
-
-func (s *GenerateVideoPlaylistRequestTargets) SetInitialSegments(v []*float32) *GenerateVideoPlaylistRequestTargets {
-	s.InitialSegments = v
-	return s
-}
-
-func (s *GenerateVideoPlaylistRequestTargets) SetInitialTranscode(v float32) *GenerateVideoPlaylistRequestTargets {
-	s.InitialTranscode = &v
-	return s
-}
-
-func (s *GenerateVideoPlaylistRequestTargets) SetSpeed(v float32) *GenerateVideoPlaylistRequestTargets {
-	s.Speed = &v
-	return s
-}
-
-func (s *GenerateVideoPlaylistRequestTargets) SetSubtitle(v *TargetSubtitle) *GenerateVideoPlaylistRequestTargets {
-	s.Subtitle = v
-	return s
-}
-
-func (s *GenerateVideoPlaylistRequestTargets) SetTranscodeAhead(v int32) *GenerateVideoPlaylistRequestTargets {
-	s.TranscodeAhead = &v
-	return s
-}
-
-func (s *GenerateVideoPlaylistRequestTargets) SetURI(v string) *GenerateVideoPlaylistRequestTargets {
-	s.URI = &v
-	return s
-}
-
-func (s *GenerateVideoPlaylistRequestTargets) SetVideo(v *TargetVideo) *GenerateVideoPlaylistRequestTargets {
-	s.Video = v
-	return s
-}
-
-type GenerateVideoPlaylistShrinkRequest struct {
-	CredentialConfigShrink *string  `json:"CredentialConfig,omitempty" xml:"CredentialConfig,omitempty"`
-	MasterURI              *string  `json:"MasterURI,omitempty" xml:"MasterURI,omitempty"`
-	ProjectName            *string  `json:"ProjectName,omitempty" xml:"ProjectName,omitempty"`
-	SourceDuration         *float32 `json:"SourceDuration,omitempty" xml:"SourceDuration,omitempty"`
-	SourceStartTime        *float32 `json:"SourceStartTime,omitempty" xml:"SourceStartTime,omitempty"`
-	SourceSubtitlesShrink  *string  `json:"SourceSubtitles,omitempty" xml:"SourceSubtitles,omitempty"`
-	SourceURI              *string  `json:"SourceURI,omitempty" xml:"SourceURI,omitempty"`
-	TagsShrink             *string  `json:"Tags,omitempty" xml:"Tags,omitempty"`
-	TargetsShrink          *string  `json:"Targets,omitempty" xml:"Targets,omitempty"`
-}
-
-func (s GenerateVideoPlaylistShrinkRequest) String() string {
-	return tea.Prettify(s)
-}
-
-func (s GenerateVideoPlaylistShrinkRequest) GoString() string {
-	return s.String()
-}
-
-func (s *GenerateVideoPlaylistShrinkRequest) SetCredentialConfigShrink(v string) *GenerateVideoPlaylistShrinkRequest {
-	s.CredentialConfigShrink = &v
-	return s
-}
-
-func (s *GenerateVideoPlaylistShrinkRequest) SetMasterURI(v string) *GenerateVideoPlaylistShrinkRequest {
-	s.MasterURI = &v
-	return s
-}
-
-func (s *GenerateVideoPlaylistShrinkRequest) SetProjectName(v string) *GenerateVideoPlaylistShrinkRequest {
-	s.ProjectName = &v
-	return s
-}
-
-func (s *GenerateVideoPlaylistShrinkRequest) SetSourceDuration(v float32) *GenerateVideoPlaylistShrinkRequest {
-	s.SourceDuration = &v
-	return s
-}
-
-func (s *GenerateVideoPlaylistShrinkRequest) SetSourceStartTime(v float32) *GenerateVideoPlaylistShrinkRequest {
-	s.SourceStartTime = &v
-	return s
-}
-
-func (s *GenerateVideoPlaylistShrinkRequest) SetSourceSubtitlesShrink(v string) *GenerateVideoPlaylistShrinkRequest {
-	s.SourceSubtitlesShrink = &v
-	return s
-}
-
-func (s *GenerateVideoPlaylistShrinkRequest) SetSourceURI(v string) *GenerateVideoPlaylistShrinkRequest {
-	s.SourceURI = &v
-	return s
-}
-
-func (s *GenerateVideoPlaylistShrinkRequest) SetTagsShrink(v string) *GenerateVideoPlaylistShrinkRequest {
-	s.TagsShrink = &v
-	return s
-}
-
-func (s *GenerateVideoPlaylistShrinkRequest) SetTargetsShrink(v string) *GenerateVideoPlaylistShrinkRequest {
-	s.TargetsShrink = &v
-	return s
-}
-
-type GenerateVideoPlaylistResponseBody struct {
-	// 转码文件列表。
-	AudioPlaylist []*GenerateVideoPlaylistResponseBodyAudioPlaylist `json:"AudioPlaylist,omitempty" xml:"AudioPlaylist,omitempty" type:"Repeated"`
-	RequestId     *string                                           `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// 转码文件列表。
-	SubtitlePlaylist []*GenerateVideoPlaylistResponseBodySubtitlePlaylist `json:"SubtitlePlaylist,omitempty" xml:"SubtitlePlaylist,omitempty" type:"Repeated"`
-	Token            *string                                              `json:"Token,omitempty" xml:"Token,omitempty"`
-	URI              *string                                              `json:"URI,omitempty" xml:"URI,omitempty"`
-	// 转码文件列表。
-	VideoPlaylist []*GenerateVideoPlaylistResponseBodyVideoPlaylist `json:"VideoPlaylist,omitempty" xml:"VideoPlaylist,omitempty" type:"Repeated"`
-}
-
-func (s GenerateVideoPlaylistResponseBody) String() string {
-	return tea.Prettify(s)
-}
-
-func (s GenerateVideoPlaylistResponseBody) GoString() string {
-	return s.String()
-}
-
-func (s *GenerateVideoPlaylistResponseBody) SetAudioPlaylist(v []*GenerateVideoPlaylistResponseBodyAudioPlaylist) *GenerateVideoPlaylistResponseBody {
-	s.AudioPlaylist = v
-	return s
-}
-
-func (s *GenerateVideoPlaylistResponseBody) SetRequestId(v string) *GenerateVideoPlaylistResponseBody {
-	s.RequestId = &v
-	return s
-}
-
-func (s *GenerateVideoPlaylistResponseBody) SetSubtitlePlaylist(v []*GenerateVideoPlaylistResponseBodySubtitlePlaylist) *GenerateVideoPlaylistResponseBody {
-	s.SubtitlePlaylist = v
-	return s
-}
-
-func (s *GenerateVideoPlaylistResponseBody) SetToken(v string) *GenerateVideoPlaylistResponseBody {
-	s.Token = &v
-	return s
-}
-
-func (s *GenerateVideoPlaylistResponseBody) SetURI(v string) *GenerateVideoPlaylistResponseBody {
-	s.URI = &v
-	return s
-}
-
-func (s *GenerateVideoPlaylistResponseBody) SetVideoPlaylist(v []*GenerateVideoPlaylistResponseBodyVideoPlaylist) *GenerateVideoPlaylistResponseBody {
-	s.VideoPlaylist = v
-	return s
-}
-
-type GenerateVideoPlaylistResponseBodyAudioPlaylist struct {
-	// 转码生成的Token。用于LiveTranscoding访问的参数。
-	Token *string `json:"Token,omitempty" xml:"Token,omitempty"`
-	// 输出m3u8的OSS地址。地址规则为 Target.URI + ".m3u8“， 其中Target.URI为输入参数中视频转码输出地址前缀。
-	URI *string `json:"URI,omitempty" xml:"URI,omitempty"`
-}
-
-func (s GenerateVideoPlaylistResponseBodyAudioPlaylist) String() string {
-	return tea.Prettify(s)
-}
-
-func (s GenerateVideoPlaylistResponseBodyAudioPlaylist) GoString() string {
-	return s.String()
-}
-
-func (s *GenerateVideoPlaylistResponseBodyAudioPlaylist) SetToken(v string) *GenerateVideoPlaylistResponseBodyAudioPlaylist {
-	s.Token = &v
-	return s
-}
-
-func (s *GenerateVideoPlaylistResponseBodyAudioPlaylist) SetURI(v string) *GenerateVideoPlaylistResponseBodyAudioPlaylist {
-	s.URI = &v
-	return s
-}
-
-type GenerateVideoPlaylistResponseBodySubtitlePlaylist struct {
-	// 字幕流编号，从0开始。
-	Index *int32 `json:"Index,omitempty" xml:"Index,omitempty"`
-	// 视频源中字幕流的语言。
-	Language *string `json:"Language,omitempty" xml:"Language,omitempty"`
-	// 转码生成的Token。用于LiveTranscoding访问的参数。
-	Token *string `json:"Token,omitempty" xml:"Token,omitempty"`
-	// 输出m3u8的OSS地址。地址规则为 Target.URI + “_” + Index + ".m3u8“， 其中Target.URI为输入参数中视频转码输出地址前缀。
-	URI *string `json:"URI,omitempty" xml:"URI,omitempty"`
-}
-
-func (s GenerateVideoPlaylistResponseBodySubtitlePlaylist) String() string {
-	return tea.Prettify(s)
-}
-
-func (s GenerateVideoPlaylistResponseBodySubtitlePlaylist) GoString() string {
-	return s.String()
-}
-
-func (s *GenerateVideoPlaylistResponseBodySubtitlePlaylist) SetIndex(v int32) *GenerateVideoPlaylistResponseBodySubtitlePlaylist {
-	s.Index = &v
-	return s
-}
-
-func (s *GenerateVideoPlaylistResponseBodySubtitlePlaylist) SetLanguage(v string) *GenerateVideoPlaylistResponseBodySubtitlePlaylist {
-	s.Language = &v
-	return s
-}
-
-func (s *GenerateVideoPlaylistResponseBodySubtitlePlaylist) SetToken(v string) *GenerateVideoPlaylistResponseBodySubtitlePlaylist {
-	s.Token = &v
-	return s
-}
-
-func (s *GenerateVideoPlaylistResponseBodySubtitlePlaylist) SetURI(v string) *GenerateVideoPlaylistResponseBodySubtitlePlaylist {
-	s.URI = &v
-	return s
-}
-
-type GenerateVideoPlaylistResponseBodyVideoPlaylist struct {
-	// 转码生成的Token。用于LiveTranscoding访问的参数。
-	Token *string `json:"Token,omitempty" xml:"Token,omitempty"`
-	// 输出m3u8的OSS地址。地址规则为 Target.URI + ".m3u8“， 其中Target.URI为输入参数中视频转码输出地址前缀。
-	URI *string `json:"URI,omitempty" xml:"URI,omitempty"`
-}
-
-func (s GenerateVideoPlaylistResponseBodyVideoPlaylist) String() string {
-	return tea.Prettify(s)
-}
-
-func (s GenerateVideoPlaylistResponseBodyVideoPlaylist) GoString() string {
-	return s.String()
-}
-
-func (s *GenerateVideoPlaylistResponseBodyVideoPlaylist) SetToken(v string) *GenerateVideoPlaylistResponseBodyVideoPlaylist {
-	s.Token = &v
-	return s
-}
-
-func (s *GenerateVideoPlaylistResponseBodyVideoPlaylist) SetURI(v string) *GenerateVideoPlaylistResponseBodyVideoPlaylist {
-	s.URI = &v
-	return s
-}
-
-type GenerateVideoPlaylistResponse struct {
-	Headers    map[string]*string                 `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                             `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *GenerateVideoPlaylistResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
-}
-
-func (s GenerateVideoPlaylistResponse) String() string {
-	return tea.Prettify(s)
-}
-
-func (s GenerateVideoPlaylistResponse) GoString() string {
-	return s.String()
-}
-
-func (s *GenerateVideoPlaylistResponse) SetHeaders(v map[string]*string) *GenerateVideoPlaylistResponse {
-	s.Headers = v
-	return s
-}
-
-func (s *GenerateVideoPlaylistResponse) SetStatusCode(v int32) *GenerateVideoPlaylistResponse {
-	s.StatusCode = &v
-	return s
-}
-
-func (s *GenerateVideoPlaylistResponse) SetBody(v *GenerateVideoPlaylistResponseBody) *GenerateVideoPlaylistResponse {
 	s.Body = v
 	return s
 }
@@ -12736,111 +12626,6 @@ func (s *GetBindingResponse) SetStatusCode(v int32) *GetBindingResponse {
 }
 
 func (s *GetBindingResponse) SetBody(v *GetBindingResponseBody) *GetBindingResponse {
-	s.Body = v
-	return s
-}
-
-type GetDRMLicenseRequest struct {
-	KeyId            *string `json:"KeyId,omitempty" xml:"KeyId,omitempty"`
-	NotifyEndpoint   *string `json:"NotifyEndpoint,omitempty" xml:"NotifyEndpoint,omitempty"`
-	NotifyTopicName  *string `json:"NotifyTopicName,omitempty" xml:"NotifyTopicName,omitempty"`
-	ProjectName      *string `json:"ProjectName,omitempty" xml:"ProjectName,omitempty"`
-	ProtectionSystem *string `json:"ProtectionSystem,omitempty" xml:"ProtectionSystem,omitempty"`
-}
-
-func (s GetDRMLicenseRequest) String() string {
-	return tea.Prettify(s)
-}
-
-func (s GetDRMLicenseRequest) GoString() string {
-	return s.String()
-}
-
-func (s *GetDRMLicenseRequest) SetKeyId(v string) *GetDRMLicenseRequest {
-	s.KeyId = &v
-	return s
-}
-
-func (s *GetDRMLicenseRequest) SetNotifyEndpoint(v string) *GetDRMLicenseRequest {
-	s.NotifyEndpoint = &v
-	return s
-}
-
-func (s *GetDRMLicenseRequest) SetNotifyTopicName(v string) *GetDRMLicenseRequest {
-	s.NotifyTopicName = &v
-	return s
-}
-
-func (s *GetDRMLicenseRequest) SetProjectName(v string) *GetDRMLicenseRequest {
-	s.ProjectName = &v
-	return s
-}
-
-func (s *GetDRMLicenseRequest) SetProtectionSystem(v string) *GetDRMLicenseRequest {
-	s.ProtectionSystem = &v
-	return s
-}
-
-type GetDRMLicenseResponseBody struct {
-	DeviceInfo *string `json:"DeviceInfo,omitempty" xml:"DeviceInfo,omitempty"`
-	License    *string `json:"License,omitempty" xml:"License,omitempty"`
-	RequestId  *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	States     *int64  `json:"States,omitempty" xml:"States,omitempty"`
-}
-
-func (s GetDRMLicenseResponseBody) String() string {
-	return tea.Prettify(s)
-}
-
-func (s GetDRMLicenseResponseBody) GoString() string {
-	return s.String()
-}
-
-func (s *GetDRMLicenseResponseBody) SetDeviceInfo(v string) *GetDRMLicenseResponseBody {
-	s.DeviceInfo = &v
-	return s
-}
-
-func (s *GetDRMLicenseResponseBody) SetLicense(v string) *GetDRMLicenseResponseBody {
-	s.License = &v
-	return s
-}
-
-func (s *GetDRMLicenseResponseBody) SetRequestId(v string) *GetDRMLicenseResponseBody {
-	s.RequestId = &v
-	return s
-}
-
-func (s *GetDRMLicenseResponseBody) SetStates(v int64) *GetDRMLicenseResponseBody {
-	s.States = &v
-	return s
-}
-
-type GetDRMLicenseResponse struct {
-	Headers    map[string]*string         `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                     `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *GetDRMLicenseResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
-}
-
-func (s GetDRMLicenseResponse) String() string {
-	return tea.Prettify(s)
-}
-
-func (s GetDRMLicenseResponse) GoString() string {
-	return s.String()
-}
-
-func (s *GetDRMLicenseResponse) SetHeaders(v map[string]*string) *GetDRMLicenseResponse {
-	s.Headers = v
-	return s
-}
-
-func (s *GetDRMLicenseResponse) SetStatusCode(v int32) *GetDRMLicenseResponse {
-	s.StatusCode = &v
-	return s
-}
-
-func (s *GetDRMLicenseResponse) SetBody(v *GetDRMLicenseResponseBody) *GetDRMLicenseResponse {
 	s.Body = v
 	return s
 }
@@ -15054,116 +14839,6 @@ func (s *ListTriggersResponse) SetBody(v *ListTriggersResponseBody) *ListTrigger
 	return s
 }
 
-type LiveTranscodingRequest struct {
-	CredentialConfig *CredentialConfig `json:"CredentialConfig,omitempty" xml:"CredentialConfig,omitempty"`
-	ProjectName      *string           `json:"ProjectName,omitempty" xml:"ProjectName,omitempty"`
-	SourceURI        *string           `json:"SourceURI,omitempty" xml:"SourceURI,omitempty"`
-}
-
-func (s LiveTranscodingRequest) String() string {
-	return tea.Prettify(s)
-}
-
-func (s LiveTranscodingRequest) GoString() string {
-	return s.String()
-}
-
-func (s *LiveTranscodingRequest) SetCredentialConfig(v *CredentialConfig) *LiveTranscodingRequest {
-	s.CredentialConfig = v
-	return s
-}
-
-func (s *LiveTranscodingRequest) SetProjectName(v string) *LiveTranscodingRequest {
-	s.ProjectName = &v
-	return s
-}
-
-func (s *LiveTranscodingRequest) SetSourceURI(v string) *LiveTranscodingRequest {
-	s.SourceURI = &v
-	return s
-}
-
-type LiveTranscodingShrinkRequest struct {
-	CredentialConfigShrink *string `json:"CredentialConfig,omitempty" xml:"CredentialConfig,omitempty"`
-	ProjectName            *string `json:"ProjectName,omitempty" xml:"ProjectName,omitempty"`
-	SourceURI              *string `json:"SourceURI,omitempty" xml:"SourceURI,omitempty"`
-}
-
-func (s LiveTranscodingShrinkRequest) String() string {
-	return tea.Prettify(s)
-}
-
-func (s LiveTranscodingShrinkRequest) GoString() string {
-	return s.String()
-}
-
-func (s *LiveTranscodingShrinkRequest) SetCredentialConfigShrink(v string) *LiveTranscodingShrinkRequest {
-	s.CredentialConfigShrink = &v
-	return s
-}
-
-func (s *LiveTranscodingShrinkRequest) SetProjectName(v string) *LiveTranscodingShrinkRequest {
-	s.ProjectName = &v
-	return s
-}
-
-func (s *LiveTranscodingShrinkRequest) SetSourceURI(v string) *LiveTranscodingShrinkRequest {
-	s.SourceURI = &v
-	return s
-}
-
-type LiveTranscodingResponseBody struct {
-	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	URI       *string `json:"URI,omitempty" xml:"URI,omitempty"`
-}
-
-func (s LiveTranscodingResponseBody) String() string {
-	return tea.Prettify(s)
-}
-
-func (s LiveTranscodingResponseBody) GoString() string {
-	return s.String()
-}
-
-func (s *LiveTranscodingResponseBody) SetRequestId(v string) *LiveTranscodingResponseBody {
-	s.RequestId = &v
-	return s
-}
-
-func (s *LiveTranscodingResponseBody) SetURI(v string) *LiveTranscodingResponseBody {
-	s.URI = &v
-	return s
-}
-
-type LiveTranscodingResponse struct {
-	Headers    map[string]*string           `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                       `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *LiveTranscodingResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
-}
-
-func (s LiveTranscodingResponse) String() string {
-	return tea.Prettify(s)
-}
-
-func (s LiveTranscodingResponse) GoString() string {
-	return s.String()
-}
-
-func (s *LiveTranscodingResponse) SetHeaders(v map[string]*string) *LiveTranscodingResponse {
-	s.Headers = v
-	return s
-}
-
-func (s *LiveTranscodingResponse) SetStatusCode(v int32) *LiveTranscodingResponse {
-	s.StatusCode = &v
-	return s
-}
-
-func (s *LiveTranscodingResponse) SetBody(v *LiveTranscodingResponseBody) *LiveTranscodingResponse {
-	s.Body = v
-	return s
-}
-
 type QueryFigureClustersRequest struct {
 	CreateTimeRange *TimeRange `json:"CreateTimeRange,omitempty" xml:"CreateTimeRange,omitempty"`
 	CustomLabels    *string    `json:"CustomLabels,omitempty" xml:"CustomLabels,omitempty"`
@@ -16355,81 +16030,6 @@ func (s *ResumeBatchResponse) SetBody(v *ResumeBatchResponseBody) *ResumeBatchRe
 	return s
 }
 
-type ResumeBindingRequest struct {
-	DatasetName *string `json:"DatasetName,omitempty" xml:"DatasetName,omitempty"`
-	ProjectName *string `json:"ProjectName,omitempty" xml:"ProjectName,omitempty"`
-	URI         *string `json:"URI,omitempty" xml:"URI,omitempty"`
-}
-
-func (s ResumeBindingRequest) String() string {
-	return tea.Prettify(s)
-}
-
-func (s ResumeBindingRequest) GoString() string {
-	return s.String()
-}
-
-func (s *ResumeBindingRequest) SetDatasetName(v string) *ResumeBindingRequest {
-	s.DatasetName = &v
-	return s
-}
-
-func (s *ResumeBindingRequest) SetProjectName(v string) *ResumeBindingRequest {
-	s.ProjectName = &v
-	return s
-}
-
-func (s *ResumeBindingRequest) SetURI(v string) *ResumeBindingRequest {
-	s.URI = &v
-	return s
-}
-
-type ResumeBindingResponseBody struct {
-	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-}
-
-func (s ResumeBindingResponseBody) String() string {
-	return tea.Prettify(s)
-}
-
-func (s ResumeBindingResponseBody) GoString() string {
-	return s.String()
-}
-
-func (s *ResumeBindingResponseBody) SetRequestId(v string) *ResumeBindingResponseBody {
-	s.RequestId = &v
-	return s
-}
-
-type ResumeBindingResponse struct {
-	Headers    map[string]*string         `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                     `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *ResumeBindingResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
-}
-
-func (s ResumeBindingResponse) String() string {
-	return tea.Prettify(s)
-}
-
-func (s ResumeBindingResponse) GoString() string {
-	return s.String()
-}
-
-func (s *ResumeBindingResponse) SetHeaders(v map[string]*string) *ResumeBindingResponse {
-	s.Headers = v
-	return s
-}
-
-func (s *ResumeBindingResponse) SetStatusCode(v int32) *ResumeBindingResponse {
-	s.StatusCode = &v
-	return s
-}
-
-func (s *ResumeBindingResponse) SetBody(v *ResumeBindingResponseBody) *ResumeBindingResponse {
-	s.Body = v
-	return s
-}
-
 type ResumeTriggerRequest struct {
 	Id          *string `json:"Id,omitempty" xml:"Id,omitempty"`
 	ProjectName *string `json:"ProjectName,omitempty" xml:"ProjectName,omitempty"`
@@ -16695,6 +16295,7 @@ type SemanticQueryResponseBody struct {
 	Files     []*File `json:"Files,omitempty" xml:"Files,omitempty" type:"Repeated"`
 	NextToken *string `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	TotalHits *int64  `json:"TotalHits,omitempty" xml:"TotalHits,omitempty"`
 }
 
 func (s SemanticQueryResponseBody) String() string {
@@ -16717,6 +16318,11 @@ func (s *SemanticQueryResponseBody) SetNextToken(v string) *SemanticQueryRespons
 
 func (s *SemanticQueryResponseBody) SetRequestId(v string) *SemanticQueryResponseBody {
 	s.RequestId = &v
+	return s
+}
+
+func (s *SemanticQueryResponseBody) SetTotalHits(v int64) *SemanticQueryResponseBody {
+	s.TotalHits = &v
 	return s
 }
 
@@ -16907,6 +16513,7 @@ type SimpleQueryResponseBody struct {
 	Files        []*File                                `json:"Files,omitempty" xml:"Files,omitempty" type:"Repeated"`
 	NextToken    *string                                `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
 	RequestId    *string                                `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	TotalHits    *int64                                 `json:"TotalHits,omitempty" xml:"TotalHits,omitempty"`
 }
 
 func (s SimpleQueryResponseBody) String() string {
@@ -16934,6 +16541,11 @@ func (s *SimpleQueryResponseBody) SetNextToken(v string) *SimpleQueryResponseBod
 
 func (s *SimpleQueryResponseBody) SetRequestId(v string) *SimpleQueryResponseBody {
 	s.RequestId = &v
+	return s
+}
+
+func (s *SimpleQueryResponseBody) SetTotalHits(v int64) *SimpleQueryResponseBody {
+	s.TotalHits = &v
 	return s
 }
 
@@ -17020,87 +16632,6 @@ func (s *SimpleQueryResponse) SetStatusCode(v int32) *SimpleQueryResponse {
 }
 
 func (s *SimpleQueryResponse) SetBody(v *SimpleQueryResponseBody) *SimpleQueryResponse {
-	s.Body = v
-	return s
-}
-
-type StopBindingRequest struct {
-	DatasetName *string `json:"DatasetName,omitempty" xml:"DatasetName,omitempty"`
-	ProjectName *string `json:"ProjectName,omitempty" xml:"ProjectName,omitempty"`
-	Reason      *string `json:"Reason,omitempty" xml:"Reason,omitempty"`
-	URI         *string `json:"URI,omitempty" xml:"URI,omitempty"`
-}
-
-func (s StopBindingRequest) String() string {
-	return tea.Prettify(s)
-}
-
-func (s StopBindingRequest) GoString() string {
-	return s.String()
-}
-
-func (s *StopBindingRequest) SetDatasetName(v string) *StopBindingRequest {
-	s.DatasetName = &v
-	return s
-}
-
-func (s *StopBindingRequest) SetProjectName(v string) *StopBindingRequest {
-	s.ProjectName = &v
-	return s
-}
-
-func (s *StopBindingRequest) SetReason(v string) *StopBindingRequest {
-	s.Reason = &v
-	return s
-}
-
-func (s *StopBindingRequest) SetURI(v string) *StopBindingRequest {
-	s.URI = &v
-	return s
-}
-
-type StopBindingResponseBody struct {
-	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-}
-
-func (s StopBindingResponseBody) String() string {
-	return tea.Prettify(s)
-}
-
-func (s StopBindingResponseBody) GoString() string {
-	return s.String()
-}
-
-func (s *StopBindingResponseBody) SetRequestId(v string) *StopBindingResponseBody {
-	s.RequestId = &v
-	return s
-}
-
-type StopBindingResponse struct {
-	Headers    map[string]*string       `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                   `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *StopBindingResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
-}
-
-func (s StopBindingResponse) String() string {
-	return tea.Prettify(s)
-}
-
-func (s StopBindingResponse) GoString() string {
-	return s.String()
-}
-
-func (s *StopBindingResponse) SetHeaders(v map[string]*string) *StopBindingResponse {
-	s.Headers = v
-	return s
-}
-
-func (s *StopBindingResponse) SetStatusCode(v int32) *StopBindingResponse {
-	s.StatusCode = &v
-	return s
-}
-
-func (s *StopBindingResponse) SetBody(v *StopBindingResponseBody) *StopBindingResponse {
 	s.Body = v
 	return s
 }
@@ -17244,12 +16775,11 @@ func (s *SuspendTriggerResponse) SetBody(v *SuspendTriggerResponseBody) *Suspend
 }
 
 type UpdateBatchRequest struct {
-	Actions      []*UpdateBatchRequestActions    `json:"Actions,omitempty" xml:"Actions,omitempty" type:"Repeated"`
-	Id           *string                         `json:"Id,omitempty" xml:"Id,omitempty"`
-	Input        *Input                          `json:"Input,omitempty" xml:"Input,omitempty"`
-	Notification *UpdateBatchRequestNotification `json:"Notification,omitempty" xml:"Notification,omitempty" type:"Struct"`
-	ProjectName  *string                         `json:"ProjectName,omitempty" xml:"ProjectName,omitempty"`
-	Tags         map[string]interface{}          `json:"Tags,omitempty" xml:"Tags,omitempty"`
+	Actions     []*UpdateBatchRequestActions `json:"Actions,omitempty" xml:"Actions,omitempty" type:"Repeated"`
+	Id          *string                      `json:"Id,omitempty" xml:"Id,omitempty"`
+	Input       *Input                       `json:"Input,omitempty" xml:"Input,omitempty"`
+	ProjectName *string                      `json:"ProjectName,omitempty" xml:"ProjectName,omitempty"`
+	Tags        map[string]interface{}       `json:"Tags,omitempty" xml:"Tags,omitempty"`
 }
 
 func (s UpdateBatchRequest) String() string {
@@ -17272,11 +16802,6 @@ func (s *UpdateBatchRequest) SetId(v string) *UpdateBatchRequest {
 
 func (s *UpdateBatchRequest) SetInput(v *Input) *UpdateBatchRequest {
 	s.Input = v
-	return s
-}
-
-func (s *UpdateBatchRequest) SetNotification(v *UpdateBatchRequestNotification) *UpdateBatchRequest {
-	s.Notification = v
 	return s
 }
 
@@ -17313,36 +16838,12 @@ func (s *UpdateBatchRequestActions) SetParameters(v []*string) *UpdateBatchReque
 	return s
 }
 
-type UpdateBatchRequestNotification struct {
-	Endpoint *string `json:"Endpoint,omitempty" xml:"Endpoint,omitempty"`
-	Topic    *string `json:"Topic,omitempty" xml:"Topic,omitempty"`
-}
-
-func (s UpdateBatchRequestNotification) String() string {
-	return tea.Prettify(s)
-}
-
-func (s UpdateBatchRequestNotification) GoString() string {
-	return s.String()
-}
-
-func (s *UpdateBatchRequestNotification) SetEndpoint(v string) *UpdateBatchRequestNotification {
-	s.Endpoint = &v
-	return s
-}
-
-func (s *UpdateBatchRequestNotification) SetTopic(v string) *UpdateBatchRequestNotification {
-	s.Topic = &v
-	return s
-}
-
 type UpdateBatchShrinkRequest struct {
-	ActionsShrink      *string `json:"Actions,omitempty" xml:"Actions,omitempty"`
-	Id                 *string `json:"Id,omitempty" xml:"Id,omitempty"`
-	InputShrink        *string `json:"Input,omitempty" xml:"Input,omitempty"`
-	NotificationShrink *string `json:"Notification,omitempty" xml:"Notification,omitempty"`
-	ProjectName        *string `json:"ProjectName,omitempty" xml:"ProjectName,omitempty"`
-	TagsShrink         *string `json:"Tags,omitempty" xml:"Tags,omitempty"`
+	ActionsShrink *string `json:"Actions,omitempty" xml:"Actions,omitempty"`
+	Id            *string `json:"Id,omitempty" xml:"Id,omitempty"`
+	InputShrink   *string `json:"Input,omitempty" xml:"Input,omitempty"`
+	ProjectName   *string `json:"ProjectName,omitempty" xml:"ProjectName,omitempty"`
+	TagsShrink    *string `json:"Tags,omitempty" xml:"Tags,omitempty"`
 }
 
 func (s UpdateBatchShrinkRequest) String() string {
@@ -17365,11 +16866,6 @@ func (s *UpdateBatchShrinkRequest) SetId(v string) *UpdateBatchShrinkRequest {
 
 func (s *UpdateBatchShrinkRequest) SetInputShrink(v string) *UpdateBatchShrinkRequest {
 	s.InputShrink = &v
-	return s
-}
-
-func (s *UpdateBatchShrinkRequest) SetNotificationShrink(v string) *UpdateBatchShrinkRequest {
-	s.NotificationShrink = &v
 	return s
 }
 
@@ -18187,12 +17683,11 @@ func (s *UpdateStoryResponse) SetBody(v *UpdateStoryResponseBody) *UpdateStoryRe
 }
 
 type UpdateTriggerRequest struct {
-	Actions      []*UpdateTriggerRequestActions    `json:"Actions,omitempty" xml:"Actions,omitempty" type:"Repeated"`
-	Id           *string                           `json:"Id,omitempty" xml:"Id,omitempty"`
-	Input        *Input                            `json:"Input,omitempty" xml:"Input,omitempty"`
-	Notification *UpdateTriggerRequestNotification `json:"Notification,omitempty" xml:"Notification,omitempty" type:"Struct"`
-	ProjectName  *string                           `json:"ProjectName,omitempty" xml:"ProjectName,omitempty"`
-	Tags         map[string]interface{}            `json:"Tags,omitempty" xml:"Tags,omitempty"`
+	Actions     []*UpdateTriggerRequestActions `json:"Actions,omitempty" xml:"Actions,omitempty" type:"Repeated"`
+	Id          *string                        `json:"Id,omitempty" xml:"Id,omitempty"`
+	Input       *Input                         `json:"Input,omitempty" xml:"Input,omitempty"`
+	ProjectName *string                        `json:"ProjectName,omitempty" xml:"ProjectName,omitempty"`
+	Tags        map[string]interface{}         `json:"Tags,omitempty" xml:"Tags,omitempty"`
 }
 
 func (s UpdateTriggerRequest) String() string {
@@ -18215,11 +17710,6 @@ func (s *UpdateTriggerRequest) SetId(v string) *UpdateTriggerRequest {
 
 func (s *UpdateTriggerRequest) SetInput(v *Input) *UpdateTriggerRequest {
 	s.Input = v
-	return s
-}
-
-func (s *UpdateTriggerRequest) SetNotification(v *UpdateTriggerRequestNotification) *UpdateTriggerRequest {
-	s.Notification = v
 	return s
 }
 
@@ -18256,36 +17746,12 @@ func (s *UpdateTriggerRequestActions) SetParameters(v []*string) *UpdateTriggerR
 	return s
 }
 
-type UpdateTriggerRequestNotification struct {
-	Endpoint *string `json:"Endpoint,omitempty" xml:"Endpoint,omitempty"`
-	Topic    *string `json:"Topic,omitempty" xml:"Topic,omitempty"`
-}
-
-func (s UpdateTriggerRequestNotification) String() string {
-	return tea.Prettify(s)
-}
-
-func (s UpdateTriggerRequestNotification) GoString() string {
-	return s.String()
-}
-
-func (s *UpdateTriggerRequestNotification) SetEndpoint(v string) *UpdateTriggerRequestNotification {
-	s.Endpoint = &v
-	return s
-}
-
-func (s *UpdateTriggerRequestNotification) SetTopic(v string) *UpdateTriggerRequestNotification {
-	s.Topic = &v
-	return s
-}
-
 type UpdateTriggerShrinkRequest struct {
-	ActionsShrink      *string `json:"Actions,omitempty" xml:"Actions,omitempty"`
-	Id                 *string `json:"Id,omitempty" xml:"Id,omitempty"`
-	InputShrink        *string `json:"Input,omitempty" xml:"Input,omitempty"`
-	NotificationShrink *string `json:"Notification,omitempty" xml:"Notification,omitempty"`
-	ProjectName        *string `json:"ProjectName,omitempty" xml:"ProjectName,omitempty"`
-	TagsShrink         *string `json:"Tags,omitempty" xml:"Tags,omitempty"`
+	ActionsShrink *string `json:"Actions,omitempty" xml:"Actions,omitempty"`
+	Id            *string `json:"Id,omitempty" xml:"Id,omitempty"`
+	InputShrink   *string `json:"Input,omitempty" xml:"Input,omitempty"`
+	ProjectName   *string `json:"ProjectName,omitempty" xml:"ProjectName,omitempty"`
+	TagsShrink    *string `json:"Tags,omitempty" xml:"Tags,omitempty"`
 }
 
 func (s UpdateTriggerShrinkRequest) String() string {
@@ -18308,11 +17774,6 @@ func (s *UpdateTriggerShrinkRequest) SetId(v string) *UpdateTriggerShrinkRequest
 
 func (s *UpdateTriggerShrinkRequest) SetInputShrink(v string) *UpdateTriggerShrinkRequest {
 	s.InputShrink = &v
-	return s
-}
-
-func (s *UpdateTriggerShrinkRequest) SetNotificationShrink(v string) *UpdateTriggerShrinkRequest {
-	s.NotificationShrink = &v
 	return s
 }
 
@@ -19006,10 +18467,6 @@ func (client *Client) CreateArchiveFileInspectionTaskWithOptions(tmpReq *CreateA
 		query["SourceURI"] = request.SourceURI
 	}
 
-	if !tea.BoolValue(util.IsUnset(request.TargetURI)) {
-		query["TargetURI"] = request.TargetURI
-	}
-
 	if !tea.BoolValue(util.IsUnset(request.UserData)) {
 		query["UserData"] = request.UserData
 	}
@@ -19494,10 +18951,6 @@ func (client *Client) CreateFacesSearchingTaskWithOptions(tmpReq *CreateFacesSea
 		query["Sources"] = request.SourcesShrink
 	}
 
-	if !tea.BoolValue(util.IsUnset(request.TopK)) {
-		query["TopK"] = request.TopK
-	}
-
 	if !tea.BoolValue(util.IsUnset(request.UserData)) {
 		query["UserData"] = request.UserData
 	}
@@ -19724,10 +19177,6 @@ func (client *Client) CreateFileCompressionTaskWithOptions(tmpReq *CreateFileCom
 		query["Notification"] = request.NotificationShrink
 	}
 
-	if !tea.BoolValue(util.IsUnset(request.Password)) {
-		query["Password"] = request.Password
-	}
-
 	if !tea.BoolValue(util.IsUnset(request.ProjectName)) {
 		query["ProjectName"] = request.ProjectName
 	}
@@ -19801,10 +19250,6 @@ func (client *Client) CreateFileUncompressionTaskWithOptions(tmpReq *CreateFileU
 		request.SelectedFilesShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.SelectedFiles, tea.String("SelectedFiles"), tea.String("json"))
 	}
 
-	if !tea.BoolValue(util.IsUnset(tmpReq.Target)) {
-		request.TargetShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.Target, tea.String("Target"), tea.String("json"))
-	}
-
 	query := map[string]interface{}{}
 	if !tea.BoolValue(util.IsUnset(request.CredentialConfigShrink)) {
 		query["CredentialConfig"] = request.CredentialConfigShrink
@@ -19830,8 +19275,8 @@ func (client *Client) CreateFileUncompressionTaskWithOptions(tmpReq *CreateFileU
 		query["SourceURI"] = request.SourceURI
 	}
 
-	if !tea.BoolValue(util.IsUnset(request.TargetShrink)) {
-		query["Target"] = request.TargetShrink
+	if !tea.BoolValue(util.IsUnset(request.TargetURI)) {
+		query["TargetURI"] = request.TargetURI
 	}
 
 	if !tea.BoolValue(util.IsUnset(request.UserData)) {
@@ -19914,10 +19359,6 @@ func (client *Client) CreateImageModerationTaskWithOptions(tmpReq *CreateImageMo
 
 	if !tea.BoolValue(util.IsUnset(request.ProjectName)) {
 		query["ProjectName"] = request.ProjectName
-	}
-
-	if !tea.BoolValue(util.IsUnset(request.Reviewer)) {
-		query["Reviewer"] = request.Reviewer
 	}
 
 	if !tea.BoolValue(util.IsUnset(request.ScenesShrink)) {
@@ -21018,10 +20459,6 @@ func (client *Client) CreateVideoModerationTaskWithOptions(tmpReq *CreateVideoMo
 		query["ProjectName"] = request.ProjectName
 	}
 
-	if !tea.BoolValue(util.IsUnset(request.Reviewer)) {
-		query["Reviewer"] = request.Reviewer
-	}
-
 	if !tea.BoolValue(util.IsUnset(request.ScenesShrink)) {
 		query["Scenes"] = request.ScenesShrink
 	}
@@ -21126,10 +20563,6 @@ func (client *Client) DeleteBindingWithOptions(request *DeleteBindingRequest, ru
 		return _result, _err
 	}
 	query := map[string]interface{}{}
-	if !tea.BoolValue(util.IsUnset(request.Cleanup)) {
-		query["Cleanup"] = request.Cleanup
-	}
-
 	if !tea.BoolValue(util.IsUnset(request.DatasetName)) {
 		query["DatasetName"] = request.DatasetName
 	}
@@ -22168,160 +21601,6 @@ func (client *Client) FuzzyQuery(request *FuzzyQueryRequest) (_result *FuzzyQuer
 	return _result, _err
 }
 
-func (client *Client) GenerateDRMLicenseWithOptions(request *GenerateDRMLicenseRequest, runtime *util.RuntimeOptions) (_result *GenerateDRMLicenseResponse, _err error) {
-	_err = util.ValidateModel(request)
-	if _err != nil {
-		return _result, _err
-	}
-	query := map[string]interface{}{}
-	if !tea.BoolValue(util.IsUnset(request.KeyId)) {
-		query["KeyId"] = request.KeyId
-	}
-
-	if !tea.BoolValue(util.IsUnset(request.NotifyEndpoint)) {
-		query["NotifyEndpoint"] = request.NotifyEndpoint
-	}
-
-	if !tea.BoolValue(util.IsUnset(request.NotifyTopicName)) {
-		query["NotifyTopicName"] = request.NotifyTopicName
-	}
-
-	if !tea.BoolValue(util.IsUnset(request.ProjectName)) {
-		query["ProjectName"] = request.ProjectName
-	}
-
-	if !tea.BoolValue(util.IsUnset(request.ProtectionSystem)) {
-		query["ProtectionSystem"] = request.ProtectionSystem
-	}
-
-	req := &openapi.OpenApiRequest{
-		Query: openapiutil.Query(query),
-	}
-	params := &openapi.Params{
-		Action:      tea.String("GenerateDRMLicense"),
-		Version:     tea.String("2020-09-30"),
-		Protocol:    tea.String("HTTPS"),
-		Pathname:    tea.String("/"),
-		Method:      tea.String("POST"),
-		AuthType:    tea.String("AK"),
-		Style:       tea.String("RPC"),
-		ReqBodyType: tea.String("formData"),
-		BodyType:    tea.String("json"),
-	}
-	_result = &GenerateDRMLicenseResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
-}
-
-func (client *Client) GenerateDRMLicense(request *GenerateDRMLicenseRequest) (_result *GenerateDRMLicenseResponse, _err error) {
-	runtime := &util.RuntimeOptions{}
-	_result = &GenerateDRMLicenseResponse{}
-	_body, _err := client.GenerateDRMLicenseWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
-	return _result, _err
-}
-
-func (client *Client) GenerateVideoPlaylistWithOptions(tmpReq *GenerateVideoPlaylistRequest, runtime *util.RuntimeOptions) (_result *GenerateVideoPlaylistResponse, _err error) {
-	_err = util.ValidateModel(tmpReq)
-	if _err != nil {
-		return _result, _err
-	}
-	request := &GenerateVideoPlaylistShrinkRequest{}
-	openapiutil.Convert(tmpReq, request)
-	if !tea.BoolValue(util.IsUnset(tmpReq.CredentialConfig)) {
-		request.CredentialConfigShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.CredentialConfig, tea.String("CredentialConfig"), tea.String("json"))
-	}
-
-	if !tea.BoolValue(util.IsUnset(tmpReq.SourceSubtitles)) {
-		request.SourceSubtitlesShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.SourceSubtitles, tea.String("SourceSubtitles"), tea.String("json"))
-	}
-
-	if !tea.BoolValue(util.IsUnset(tmpReq.Tags)) {
-		request.TagsShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.Tags, tea.String("Tags"), tea.String("json"))
-	}
-
-	if !tea.BoolValue(util.IsUnset(tmpReq.Targets)) {
-		request.TargetsShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.Targets, tea.String("Targets"), tea.String("json"))
-	}
-
-	query := map[string]interface{}{}
-	if !tea.BoolValue(util.IsUnset(request.CredentialConfigShrink)) {
-		query["CredentialConfig"] = request.CredentialConfigShrink
-	}
-
-	if !tea.BoolValue(util.IsUnset(request.MasterURI)) {
-		query["MasterURI"] = request.MasterURI
-	}
-
-	if !tea.BoolValue(util.IsUnset(request.ProjectName)) {
-		query["ProjectName"] = request.ProjectName
-	}
-
-	if !tea.BoolValue(util.IsUnset(request.SourceDuration)) {
-		query["SourceDuration"] = request.SourceDuration
-	}
-
-	if !tea.BoolValue(util.IsUnset(request.SourceStartTime)) {
-		query["SourceStartTime"] = request.SourceStartTime
-	}
-
-	if !tea.BoolValue(util.IsUnset(request.SourceSubtitlesShrink)) {
-		query["SourceSubtitles"] = request.SourceSubtitlesShrink
-	}
-
-	if !tea.BoolValue(util.IsUnset(request.SourceURI)) {
-		query["SourceURI"] = request.SourceURI
-	}
-
-	if !tea.BoolValue(util.IsUnset(request.TagsShrink)) {
-		query["Tags"] = request.TagsShrink
-	}
-
-	if !tea.BoolValue(util.IsUnset(request.TargetsShrink)) {
-		query["Targets"] = request.TargetsShrink
-	}
-
-	req := &openapi.OpenApiRequest{
-		Query: openapiutil.Query(query),
-	}
-	params := &openapi.Params{
-		Action:      tea.String("GenerateVideoPlaylist"),
-		Version:     tea.String("2020-09-30"),
-		Protocol:    tea.String("HTTPS"),
-		Pathname:    tea.String("/"),
-		Method:      tea.String("POST"),
-		AuthType:    tea.String("AK"),
-		Style:       tea.String("RPC"),
-		ReqBodyType: tea.String("formData"),
-		BodyType:    tea.String("json"),
-	}
-	_result = &GenerateVideoPlaylistResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
-}
-
-func (client *Client) GenerateVideoPlaylist(request *GenerateVideoPlaylistRequest) (_result *GenerateVideoPlaylistResponse, _err error) {
-	runtime := &util.RuntimeOptions{}
-	_result = &GenerateVideoPlaylistResponse{}
-	_body, _err := client.GenerateVideoPlaylistWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
-	return _result, _err
-}
-
 func (client *Client) GenerateWebofficeTokenWithOptions(tmpReq *GenerateWebofficeTokenRequest, runtime *util.RuntimeOptions) (_result *GenerateWebofficeTokenResponse, _err error) {
 	_err = util.ValidateModel(tmpReq)
 	if _err != nil {
@@ -22541,81 +21820,6 @@ func (client *Client) GetBinding(request *GetBindingRequest) (_result *GetBindin
 	runtime := &util.RuntimeOptions{}
 	_result = &GetBindingResponse{}
 	_body, _err := client.GetBindingWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
-	return _result, _err
-}
-
-/**
- * @deprecated
- *
- * @param request GetDRMLicenseRequest
- * @param runtime runtime options for this request RuntimeOptions
- * @return GetDRMLicenseResponse
- */
-// Deprecated
-func (client *Client) GetDRMLicenseWithOptions(request *GetDRMLicenseRequest, runtime *util.RuntimeOptions) (_result *GetDRMLicenseResponse, _err error) {
-	_err = util.ValidateModel(request)
-	if _err != nil {
-		return _result, _err
-	}
-	query := map[string]interface{}{}
-	if !tea.BoolValue(util.IsUnset(request.KeyId)) {
-		query["KeyId"] = request.KeyId
-	}
-
-	if !tea.BoolValue(util.IsUnset(request.NotifyEndpoint)) {
-		query["NotifyEndpoint"] = request.NotifyEndpoint
-	}
-
-	if !tea.BoolValue(util.IsUnset(request.NotifyTopicName)) {
-		query["NotifyTopicName"] = request.NotifyTopicName
-	}
-
-	if !tea.BoolValue(util.IsUnset(request.ProjectName)) {
-		query["ProjectName"] = request.ProjectName
-	}
-
-	if !tea.BoolValue(util.IsUnset(request.ProtectionSystem)) {
-		query["ProtectionSystem"] = request.ProtectionSystem
-	}
-
-	req := &openapi.OpenApiRequest{
-		Query: openapiutil.Query(query),
-	}
-	params := &openapi.Params{
-		Action:      tea.String("GetDRMLicense"),
-		Version:     tea.String("2020-09-30"),
-		Protocol:    tea.String("HTTPS"),
-		Pathname:    tea.String("/"),
-		Method:      tea.String("POST"),
-		AuthType:    tea.String("AK"),
-		Style:       tea.String("RPC"),
-		ReqBodyType: tea.String("formData"),
-		BodyType:    tea.String("json"),
-	}
-	_result = &GetDRMLicenseResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
-}
-
-/**
- * @deprecated
- *
- * @param request GetDRMLicenseRequest
- * @return GetDRMLicenseResponse
- */
-// Deprecated
-func (client *Client) GetDRMLicense(request *GetDRMLicenseRequest) (_result *GetDRMLicenseResponse, _err error) {
-	runtime := &util.RuntimeOptions{}
-	_result = &GetDRMLicenseResponse{}
-	_body, _err := client.GetDRMLicenseWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -23691,64 +22895,6 @@ func (client *Client) ListTriggers(request *ListTriggersRequest) (_result *ListT
 	return _result, _err
 }
 
-func (client *Client) LiveTranscodingWithOptions(tmpReq *LiveTranscodingRequest, runtime *util.RuntimeOptions) (_result *LiveTranscodingResponse, _err error) {
-	_err = util.ValidateModel(tmpReq)
-	if _err != nil {
-		return _result, _err
-	}
-	request := &LiveTranscodingShrinkRequest{}
-	openapiutil.Convert(tmpReq, request)
-	if !tea.BoolValue(util.IsUnset(tmpReq.CredentialConfig)) {
-		request.CredentialConfigShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.CredentialConfig, tea.String("CredentialConfig"), tea.String("json"))
-	}
-
-	query := map[string]interface{}{}
-	if !tea.BoolValue(util.IsUnset(request.CredentialConfigShrink)) {
-		query["CredentialConfig"] = request.CredentialConfigShrink
-	}
-
-	if !tea.BoolValue(util.IsUnset(request.ProjectName)) {
-		query["ProjectName"] = request.ProjectName
-	}
-
-	if !tea.BoolValue(util.IsUnset(request.SourceURI)) {
-		query["SourceURI"] = request.SourceURI
-	}
-
-	req := &openapi.OpenApiRequest{
-		Query: openapiutil.Query(query),
-	}
-	params := &openapi.Params{
-		Action:      tea.String("LiveTranscoding"),
-		Version:     tea.String("2020-09-30"),
-		Protocol:    tea.String("HTTPS"),
-		Pathname:    tea.String("/"),
-		Method:      tea.String("POST"),
-		AuthType:    tea.String("AK"),
-		Style:       tea.String("RPC"),
-		ReqBodyType: tea.String("formData"),
-		BodyType:    tea.String("json"),
-	}
-	_result = &LiveTranscodingResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
-}
-
-func (client *Client) LiveTranscoding(request *LiveTranscodingRequest) (_result *LiveTranscodingResponse, _err error) {
-	runtime := &util.RuntimeOptions{}
-	_result = &LiveTranscodingResponse{}
-	_body, _err := client.LiveTranscodingWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
-	return _result, _err
-}
-
 func (client *Client) QueryFigureClustersWithOptions(tmpReq *QueryFigureClustersRequest, runtime *util.RuntimeOptions) (_result *QueryFigureClustersResponse, _err error) {
 	_err = util.ValidateModel(tmpReq)
 	if _err != nil {
@@ -24327,73 +23473,6 @@ func (client *Client) ResumeBatch(request *ResumeBatchRequest) (_result *ResumeB
 	return _result, _err
 }
 
-/**
- * @deprecated
- *
- * @param request ResumeBindingRequest
- * @param runtime runtime options for this request RuntimeOptions
- * @return ResumeBindingResponse
- */
-// Deprecated
-func (client *Client) ResumeBindingWithOptions(request *ResumeBindingRequest, runtime *util.RuntimeOptions) (_result *ResumeBindingResponse, _err error) {
-	_err = util.ValidateModel(request)
-	if _err != nil {
-		return _result, _err
-	}
-	query := map[string]interface{}{}
-	if !tea.BoolValue(util.IsUnset(request.DatasetName)) {
-		query["DatasetName"] = request.DatasetName
-	}
-
-	if !tea.BoolValue(util.IsUnset(request.ProjectName)) {
-		query["ProjectName"] = request.ProjectName
-	}
-
-	if !tea.BoolValue(util.IsUnset(request.URI)) {
-		query["URI"] = request.URI
-	}
-
-	req := &openapi.OpenApiRequest{
-		Query: openapiutil.Query(query),
-	}
-	params := &openapi.Params{
-		Action:      tea.String("ResumeBinding"),
-		Version:     tea.String("2020-09-30"),
-		Protocol:    tea.String("HTTPS"),
-		Pathname:    tea.String("/"),
-		Method:      tea.String("POST"),
-		AuthType:    tea.String("AK"),
-		Style:       tea.String("RPC"),
-		ReqBodyType: tea.String("formData"),
-		BodyType:    tea.String("json"),
-	}
-	_result = &ResumeBindingResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
-}
-
-/**
- * @deprecated
- *
- * @param request ResumeBindingRequest
- * @return ResumeBindingResponse
- */
-// Deprecated
-func (client *Client) ResumeBinding(request *ResumeBindingRequest) (_result *ResumeBindingResponse, _err error) {
-	runtime := &util.RuntimeOptions{}
-	_result = &ResumeBindingResponse{}
-	_body, _err := client.ResumeBindingWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
-	return _result, _err
-}
-
 func (client *Client) ResumeTriggerWithOptions(request *ResumeTriggerRequest, runtime *util.RuntimeOptions) (_result *ResumeTriggerResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -24654,77 +23733,6 @@ func (client *Client) SimpleQuery(request *SimpleQueryRequest) (_result *SimpleQ
 	return _result, _err
 }
 
-/**
- * @deprecated
- *
- * @param request StopBindingRequest
- * @param runtime runtime options for this request RuntimeOptions
- * @return StopBindingResponse
- */
-// Deprecated
-func (client *Client) StopBindingWithOptions(request *StopBindingRequest, runtime *util.RuntimeOptions) (_result *StopBindingResponse, _err error) {
-	_err = util.ValidateModel(request)
-	if _err != nil {
-		return _result, _err
-	}
-	query := map[string]interface{}{}
-	if !tea.BoolValue(util.IsUnset(request.DatasetName)) {
-		query["DatasetName"] = request.DatasetName
-	}
-
-	if !tea.BoolValue(util.IsUnset(request.ProjectName)) {
-		query["ProjectName"] = request.ProjectName
-	}
-
-	if !tea.BoolValue(util.IsUnset(request.Reason)) {
-		query["Reason"] = request.Reason
-	}
-
-	if !tea.BoolValue(util.IsUnset(request.URI)) {
-		query["URI"] = request.URI
-	}
-
-	req := &openapi.OpenApiRequest{
-		Query: openapiutil.Query(query),
-	}
-	params := &openapi.Params{
-		Action:      tea.String("StopBinding"),
-		Version:     tea.String("2020-09-30"),
-		Protocol:    tea.String("HTTPS"),
-		Pathname:    tea.String("/"),
-		Method:      tea.String("POST"),
-		AuthType:    tea.String("AK"),
-		Style:       tea.String("RPC"),
-		ReqBodyType: tea.String("formData"),
-		BodyType:    tea.String("json"),
-	}
-	_result = &StopBindingResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
-}
-
-/**
- * @deprecated
- *
- * @param request StopBindingRequest
- * @return StopBindingResponse
- */
-// Deprecated
-func (client *Client) StopBinding(request *StopBindingRequest) (_result *StopBindingResponse, _err error) {
-	runtime := &util.RuntimeOptions{}
-	_result = &StopBindingResponse{}
-	_body, _err := client.StopBindingWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
-	return _result, _err
-}
-
 func (client *Client) SuspendBatchWithOptions(request *SuspendBatchRequest, runtime *util.RuntimeOptions) (_result *SuspendBatchResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -24836,10 +23844,6 @@ func (client *Client) UpdateBatchWithOptions(tmpReq *UpdateBatchRequest, runtime
 		request.InputShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.Input, tea.String("Input"), tea.String("json"))
 	}
 
-	if !tea.BoolValue(util.IsUnset(tmpReq.Notification)) {
-		request.NotificationShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.Notification, tea.String("Notification"), tea.String("json"))
-	}
-
 	if !tea.BoolValue(util.IsUnset(tmpReq.Tags)) {
 		request.TagsShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.Tags, tea.String("Tags"), tea.String("json"))
 	}
@@ -24855,10 +23859,6 @@ func (client *Client) UpdateBatchWithOptions(tmpReq *UpdateBatchRequest, runtime
 
 	if !tea.BoolValue(util.IsUnset(request.InputShrink)) {
 		body["Input"] = request.InputShrink
-	}
-
-	if !tea.BoolValue(util.IsUnset(request.NotificationShrink)) {
-		body["Notification"] = request.NotificationShrink
 	}
 
 	if !tea.BoolValue(util.IsUnset(request.ProjectName)) {
@@ -25338,10 +24338,6 @@ func (client *Client) UpdateTriggerWithOptions(tmpReq *UpdateTriggerRequest, run
 		request.InputShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.Input, tea.String("Input"), tea.String("json"))
 	}
 
-	if !tea.BoolValue(util.IsUnset(tmpReq.Notification)) {
-		request.NotificationShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.Notification, tea.String("Notification"), tea.String("json"))
-	}
-
 	if !tea.BoolValue(util.IsUnset(tmpReq.Tags)) {
 		request.TagsShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.Tags, tea.String("Tags"), tea.String("json"))
 	}
@@ -25357,10 +24353,6 @@ func (client *Client) UpdateTriggerWithOptions(tmpReq *UpdateTriggerRequest, run
 
 	if !tea.BoolValue(util.IsUnset(request.InputShrink)) {
 		body["Input"] = request.InputShrink
-	}
-
-	if !tea.BoolValue(util.IsUnset(request.NotificationShrink)) {
-		body["Notification"] = request.NotificationShrink
 	}
 
 	if !tea.BoolValue(util.IsUnset(request.ProjectName)) {
