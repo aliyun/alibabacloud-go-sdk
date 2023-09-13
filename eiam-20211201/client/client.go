@@ -638,6 +638,185 @@ func (s *CreateApplicationClientSecretResponse) SetBody(v *CreateApplicationClie
 	return s
 }
 
+type CreateDomainRequest struct {
+	// 域名。最大长度限制255，格式由数字、字母、横线（-）点（.）组成;
+	Domain *string `json:"Domain,omitempty" xml:"Domain,omitempty"`
+	// 备案信息参数。
+	Filing *CreateDomainRequestFiling `json:"Filing,omitempty" xml:"Filing,omitempty" type:"Struct"`
+	// IDaaS EIAM实例的ID。
+	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+}
+
+func (s CreateDomainRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateDomainRequest) GoString() string {
+	return s.String()
+}
+
+func (s *CreateDomainRequest) SetDomain(v string) *CreateDomainRequest {
+	s.Domain = &v
+	return s
+}
+
+func (s *CreateDomainRequest) SetFiling(v *CreateDomainRequestFiling) *CreateDomainRequest {
+	s.Filing = v
+	return s
+}
+
+func (s *CreateDomainRequest) SetInstanceId(v string) *CreateDomainRequest {
+	s.InstanceId = &v
+	return s
+}
+
+type CreateDomainRequestFiling struct {
+	// 域名关联的备案号，长度最大限制64。
+	IcpNumber *string `json:"IcpNumber,omitempty" xml:"IcpNumber,omitempty"`
+}
+
+func (s CreateDomainRequestFiling) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateDomainRequestFiling) GoString() string {
+	return s.String()
+}
+
+func (s *CreateDomainRequestFiling) SetIcpNumber(v string) *CreateDomainRequestFiling {
+	s.IcpNumber = &v
+	return s
+}
+
+type CreateDomainResponseBody struct {
+	DomainId  *string `json:"DomainId,omitempty" xml:"DomainId,omitempty"`
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+}
+
+func (s CreateDomainResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateDomainResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *CreateDomainResponseBody) SetDomainId(v string) *CreateDomainResponseBody {
+	s.DomainId = &v
+	return s
+}
+
+func (s *CreateDomainResponseBody) SetRequestId(v string) *CreateDomainResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+type CreateDomainResponse struct {
+	Headers    map[string]*string        `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                    `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *CreateDomainResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s CreateDomainResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateDomainResponse) GoString() string {
+	return s.String()
+}
+
+func (s *CreateDomainResponse) SetHeaders(v map[string]*string) *CreateDomainResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *CreateDomainResponse) SetStatusCode(v int32) *CreateDomainResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *CreateDomainResponse) SetBody(v *CreateDomainResponseBody) *CreateDomainResponse {
+	s.Body = v
+	return s
+}
+
+type CreateDomainProxyTokenRequest struct {
+	// 域名ID。
+	DomainId *string `json:"DomainId,omitempty" xml:"DomainId,omitempty"`
+	// IDaaS EIAM实例的ID。
+	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+}
+
+func (s CreateDomainProxyTokenRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateDomainProxyTokenRequest) GoString() string {
+	return s.String()
+}
+
+func (s *CreateDomainProxyTokenRequest) SetDomainId(v string) *CreateDomainProxyTokenRequest {
+	s.DomainId = &v
+	return s
+}
+
+func (s *CreateDomainProxyTokenRequest) SetInstanceId(v string) *CreateDomainProxyTokenRequest {
+	s.InstanceId = &v
+	return s
+}
+
+type CreateDomainProxyTokenResponseBody struct {
+	DomainProxyTokenId *string `json:"DomainProxyTokenId,omitempty" xml:"DomainProxyTokenId,omitempty"`
+	RequestId          *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+}
+
+func (s CreateDomainProxyTokenResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateDomainProxyTokenResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *CreateDomainProxyTokenResponseBody) SetDomainProxyTokenId(v string) *CreateDomainProxyTokenResponseBody {
+	s.DomainProxyTokenId = &v
+	return s
+}
+
+func (s *CreateDomainProxyTokenResponseBody) SetRequestId(v string) *CreateDomainProxyTokenResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+type CreateDomainProxyTokenResponse struct {
+	Headers    map[string]*string                  `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                              `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *CreateDomainProxyTokenResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s CreateDomainProxyTokenResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateDomainProxyTokenResponse) GoString() string {
+	return s.String()
+}
+
+func (s *CreateDomainProxyTokenResponse) SetHeaders(v map[string]*string) *CreateDomainProxyTokenResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *CreateDomainProxyTokenResponse) SetStatusCode(v int32) *CreateDomainProxyTokenResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *CreateDomainProxyTokenResponse) SetBody(v *CreateDomainProxyTokenResponseBody) *CreateDomainProxyTokenResponse {
+	s.Body = v
+	return s
+}
+
 type CreateGroupRequest struct {
 	// The description of the group. The value can be up to 256 characters in length.
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
@@ -1401,6 +1580,155 @@ func (s *DeleteApplicationClientSecretResponse) SetBody(v *DeleteApplicationClie
 	return s
 }
 
+type DeleteDomainRequest struct {
+	// 域名ID。
+	DomainId *string `json:"DomainId,omitempty" xml:"DomainId,omitempty"`
+	// IDaaS EIAM实例的ID。
+	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+}
+
+func (s DeleteDomainRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DeleteDomainRequest) GoString() string {
+	return s.String()
+}
+
+func (s *DeleteDomainRequest) SetDomainId(v string) *DeleteDomainRequest {
+	s.DomainId = &v
+	return s
+}
+
+func (s *DeleteDomainRequest) SetInstanceId(v string) *DeleteDomainRequest {
+	s.InstanceId = &v
+	return s
+}
+
+type DeleteDomainResponseBody struct {
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+}
+
+func (s DeleteDomainResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DeleteDomainResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *DeleteDomainResponseBody) SetRequestId(v string) *DeleteDomainResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+type DeleteDomainResponse struct {
+	Headers    map[string]*string        `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                    `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *DeleteDomainResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s DeleteDomainResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DeleteDomainResponse) GoString() string {
+	return s.String()
+}
+
+func (s *DeleteDomainResponse) SetHeaders(v map[string]*string) *DeleteDomainResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *DeleteDomainResponse) SetStatusCode(v int32) *DeleteDomainResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *DeleteDomainResponse) SetBody(v *DeleteDomainResponseBody) *DeleteDomainResponse {
+	s.Body = v
+	return s
+}
+
+type DeleteDomainProxyTokenRequest struct {
+	// 域名ID。
+	DomainId *string `json:"DomainId,omitempty" xml:"DomainId,omitempty"`
+	// 域名代理Token ID。
+	DomainProxyTokenId *string `json:"DomainProxyTokenId,omitempty" xml:"DomainProxyTokenId,omitempty"`
+	// IDaaS EIAM实例的ID。
+	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+}
+
+func (s DeleteDomainProxyTokenRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DeleteDomainProxyTokenRequest) GoString() string {
+	return s.String()
+}
+
+func (s *DeleteDomainProxyTokenRequest) SetDomainId(v string) *DeleteDomainProxyTokenRequest {
+	s.DomainId = &v
+	return s
+}
+
+func (s *DeleteDomainProxyTokenRequest) SetDomainProxyTokenId(v string) *DeleteDomainProxyTokenRequest {
+	s.DomainProxyTokenId = &v
+	return s
+}
+
+func (s *DeleteDomainProxyTokenRequest) SetInstanceId(v string) *DeleteDomainProxyTokenRequest {
+	s.InstanceId = &v
+	return s
+}
+
+type DeleteDomainProxyTokenResponseBody struct {
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+}
+
+func (s DeleteDomainProxyTokenResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DeleteDomainProxyTokenResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *DeleteDomainProxyTokenResponseBody) SetRequestId(v string) *DeleteDomainProxyTokenResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+type DeleteDomainProxyTokenResponse struct {
+	Headers    map[string]*string                  `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                              `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *DeleteDomainProxyTokenResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s DeleteDomainProxyTokenResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DeleteDomainProxyTokenResponse) GoString() string {
+	return s.String()
+}
+
+func (s *DeleteDomainProxyTokenResponse) SetHeaders(v map[string]*string) *DeleteDomainProxyTokenResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *DeleteDomainProxyTokenResponse) SetStatusCode(v int32) *DeleteDomainProxyTokenResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *DeleteDomainProxyTokenResponse) SetBody(v *DeleteDomainProxyTokenResponseBody) *DeleteDomainProxyTokenResponse {
+	s.Body = v
+	return s
+}
+
 type DeleteGroupRequest struct {
 	// The group ID.
 	GroupId *string `json:"GroupId,omitempty" xml:"GroupId,omitempty"`
@@ -2119,6 +2447,148 @@ func (s *DisableApplicationSsoResponse) SetBody(v *DisableApplicationSsoResponse
 	return s
 }
 
+type DisableDomainProxyTokenRequest struct {
+	// 域名ID。
+	DomainId *string `json:"DomainId,omitempty" xml:"DomainId,omitempty"`
+	// 域名代理Token ID。
+	DomainProxyTokenId *string `json:"DomainProxyTokenId,omitempty" xml:"DomainProxyTokenId,omitempty"`
+	// IDaaS EIAM实例的ID。
+	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+}
+
+func (s DisableDomainProxyTokenRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DisableDomainProxyTokenRequest) GoString() string {
+	return s.String()
+}
+
+func (s *DisableDomainProxyTokenRequest) SetDomainId(v string) *DisableDomainProxyTokenRequest {
+	s.DomainId = &v
+	return s
+}
+
+func (s *DisableDomainProxyTokenRequest) SetDomainProxyTokenId(v string) *DisableDomainProxyTokenRequest {
+	s.DomainProxyTokenId = &v
+	return s
+}
+
+func (s *DisableDomainProxyTokenRequest) SetInstanceId(v string) *DisableDomainProxyTokenRequest {
+	s.InstanceId = &v
+	return s
+}
+
+type DisableDomainProxyTokenResponseBody struct {
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+}
+
+func (s DisableDomainProxyTokenResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DisableDomainProxyTokenResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *DisableDomainProxyTokenResponseBody) SetRequestId(v string) *DisableDomainProxyTokenResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+type DisableDomainProxyTokenResponse struct {
+	Headers    map[string]*string                   `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                               `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *DisableDomainProxyTokenResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s DisableDomainProxyTokenResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DisableDomainProxyTokenResponse) GoString() string {
+	return s.String()
+}
+
+func (s *DisableDomainProxyTokenResponse) SetHeaders(v map[string]*string) *DisableDomainProxyTokenResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *DisableDomainProxyTokenResponse) SetStatusCode(v int32) *DisableDomainProxyTokenResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *DisableDomainProxyTokenResponse) SetBody(v *DisableDomainProxyTokenResponseBody) *DisableDomainProxyTokenResponse {
+	s.Body = v
+	return s
+}
+
+type DisableInitDomainAutoRedirectRequest struct {
+	// IDaaS EIAM实例的ID。
+	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+}
+
+func (s DisableInitDomainAutoRedirectRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DisableInitDomainAutoRedirectRequest) GoString() string {
+	return s.String()
+}
+
+func (s *DisableInitDomainAutoRedirectRequest) SetInstanceId(v string) *DisableInitDomainAutoRedirectRequest {
+	s.InstanceId = &v
+	return s
+}
+
+type DisableInitDomainAutoRedirectResponseBody struct {
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+}
+
+func (s DisableInitDomainAutoRedirectResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DisableInitDomainAutoRedirectResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *DisableInitDomainAutoRedirectResponseBody) SetRequestId(v string) *DisableInitDomainAutoRedirectResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+type DisableInitDomainAutoRedirectResponse struct {
+	Headers    map[string]*string                         `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                                     `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *DisableInitDomainAutoRedirectResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s DisableInitDomainAutoRedirectResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DisableInitDomainAutoRedirectResponse) GoString() string {
+	return s.String()
+}
+
+func (s *DisableInitDomainAutoRedirectResponse) SetHeaders(v map[string]*string) *DisableInitDomainAutoRedirectResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *DisableInitDomainAutoRedirectResponse) SetStatusCode(v int32) *DisableInitDomainAutoRedirectResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *DisableInitDomainAutoRedirectResponse) SetBody(v *DisableInitDomainAutoRedirectResponseBody) *DisableInitDomainAutoRedirectResponse {
+	s.Body = v
+	return s
+}
+
 type DisableUserRequest struct {
 	// The instance ID.
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
@@ -2553,6 +3023,148 @@ func (s *EnableApplicationSsoResponse) SetStatusCode(v int32) *EnableApplication
 }
 
 func (s *EnableApplicationSsoResponse) SetBody(v *EnableApplicationSsoResponseBody) *EnableApplicationSsoResponse {
+	s.Body = v
+	return s
+}
+
+type EnableDomainProxyTokenRequest struct {
+	// 域名ID。
+	DomainId *string `json:"DomainId,omitempty" xml:"DomainId,omitempty"`
+	// 域名代理Token ID。
+	DomainProxyTokenId *string `json:"DomainProxyTokenId,omitempty" xml:"DomainProxyTokenId,omitempty"`
+	// IDaaS EIAM实例的ID。
+	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+}
+
+func (s EnableDomainProxyTokenRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s EnableDomainProxyTokenRequest) GoString() string {
+	return s.String()
+}
+
+func (s *EnableDomainProxyTokenRequest) SetDomainId(v string) *EnableDomainProxyTokenRequest {
+	s.DomainId = &v
+	return s
+}
+
+func (s *EnableDomainProxyTokenRequest) SetDomainProxyTokenId(v string) *EnableDomainProxyTokenRequest {
+	s.DomainProxyTokenId = &v
+	return s
+}
+
+func (s *EnableDomainProxyTokenRequest) SetInstanceId(v string) *EnableDomainProxyTokenRequest {
+	s.InstanceId = &v
+	return s
+}
+
+type EnableDomainProxyTokenResponseBody struct {
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+}
+
+func (s EnableDomainProxyTokenResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s EnableDomainProxyTokenResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *EnableDomainProxyTokenResponseBody) SetRequestId(v string) *EnableDomainProxyTokenResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+type EnableDomainProxyTokenResponse struct {
+	Headers    map[string]*string                  `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                              `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *EnableDomainProxyTokenResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s EnableDomainProxyTokenResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s EnableDomainProxyTokenResponse) GoString() string {
+	return s.String()
+}
+
+func (s *EnableDomainProxyTokenResponse) SetHeaders(v map[string]*string) *EnableDomainProxyTokenResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *EnableDomainProxyTokenResponse) SetStatusCode(v int32) *EnableDomainProxyTokenResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *EnableDomainProxyTokenResponse) SetBody(v *EnableDomainProxyTokenResponseBody) *EnableDomainProxyTokenResponse {
+	s.Body = v
+	return s
+}
+
+type EnableInitDomainAutoRedirectRequest struct {
+	// IDaaS EIAM实例的ID。
+	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+}
+
+func (s EnableInitDomainAutoRedirectRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s EnableInitDomainAutoRedirectRequest) GoString() string {
+	return s.String()
+}
+
+func (s *EnableInitDomainAutoRedirectRequest) SetInstanceId(v string) *EnableInitDomainAutoRedirectRequest {
+	s.InstanceId = &v
+	return s
+}
+
+type EnableInitDomainAutoRedirectResponseBody struct {
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+}
+
+func (s EnableInitDomainAutoRedirectResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s EnableInitDomainAutoRedirectResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *EnableInitDomainAutoRedirectResponseBody) SetRequestId(v string) *EnableInitDomainAutoRedirectResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+type EnableInitDomainAutoRedirectResponse struct {
+	Headers    map[string]*string                        `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                                    `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *EnableInitDomainAutoRedirectResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s EnableInitDomainAutoRedirectResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s EnableInitDomainAutoRedirectResponse) GoString() string {
+	return s.String()
+}
+
+func (s *EnableInitDomainAutoRedirectResponse) SetHeaders(v map[string]*string) *EnableInitDomainAutoRedirectResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *EnableInitDomainAutoRedirectResponse) SetStatusCode(v int32) *EnableInitDomainAutoRedirectResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *EnableInitDomainAutoRedirectResponse) SetBody(v *EnableInitDomainAutoRedirectResponseBody) *EnableInitDomainAutoRedirectResponse {
 	s.Body = v
 	return s
 }
@@ -3855,6 +4467,284 @@ func (s *GetApplicationSsoConfigResponse) SetBody(v *GetApplicationSsoConfigResp
 	return s
 }
 
+type GetDomainRequest struct {
+	// 域名ID。
+	DomainId *string `json:"DomainId,omitempty" xml:"DomainId,omitempty"`
+	// IDaaS EIAM实例的ID。
+	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+}
+
+func (s GetDomainRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetDomainRequest) GoString() string {
+	return s.String()
+}
+
+func (s *GetDomainRequest) SetDomainId(v string) *GetDomainRequest {
+	s.DomainId = &v
+	return s
+}
+
+func (s *GetDomainRequest) SetInstanceId(v string) *GetDomainRequest {
+	s.InstanceId = &v
+	return s
+}
+
+type GetDomainResponseBody struct {
+	Domain    *GetDomainResponseBodyDomain `json:"Domain,omitempty" xml:"Domain,omitempty" type:"Struct"`
+	RequestId *string                      `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+}
+
+func (s GetDomainResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetDomainResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *GetDomainResponseBody) SetDomain(v *GetDomainResponseBodyDomain) *GetDomainResponseBody {
+	s.Domain = v
+	return s
+}
+
+func (s *GetDomainResponseBody) SetRequestId(v string) *GetDomainResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+type GetDomainResponseBodyDomain struct {
+	// 域名创建时间，Unix时间戳格式，单位为毫秒。
+	CreateTime *int64 `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
+	// 是否默认域名。true表示实例默认域名，false表示非默认域名
+	DefaultDomain *bool `json:"DefaultDomain,omitempty" xml:"DefaultDomain,omitempty"`
+	// 域名。
+	Domain *string `json:"Domain,omitempty" xml:"Domain,omitempty"`
+	// 域名ID。
+	DomainId *string `json:"DomainId,omitempty" xml:"DomainId,omitempty"`
+	// 域名类型。枚举取值:system_init(系统初始化)、user_custom(用户自定义)。
+	DomainType *string `json:"DomainType,omitempty" xml:"DomainType,omitempty"`
+	// 域名备案信息。
+	Filing *GetDomainResponseBodyDomainFiling `json:"Filing,omitempty" xml:"Filing,omitempty" type:"Struct"`
+	// 实例ID。
+	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	// 域名锁定状态。枚举取值:unlock(正常)、lockByLicense(因License限制不可用)。
+	LockMode *string `json:"LockMode,omitempty" xml:"LockMode,omitempty"`
+	// 域名最近更新时间，Unix时间戳格式，单位为毫秒。
+	UpdateTime *int64 `json:"UpdateTime,omitempty" xml:"UpdateTime,omitempty"`
+}
+
+func (s GetDomainResponseBodyDomain) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetDomainResponseBodyDomain) GoString() string {
+	return s.String()
+}
+
+func (s *GetDomainResponseBodyDomain) SetCreateTime(v int64) *GetDomainResponseBodyDomain {
+	s.CreateTime = &v
+	return s
+}
+
+func (s *GetDomainResponseBodyDomain) SetDefaultDomain(v bool) *GetDomainResponseBodyDomain {
+	s.DefaultDomain = &v
+	return s
+}
+
+func (s *GetDomainResponseBodyDomain) SetDomain(v string) *GetDomainResponseBodyDomain {
+	s.Domain = &v
+	return s
+}
+
+func (s *GetDomainResponseBodyDomain) SetDomainId(v string) *GetDomainResponseBodyDomain {
+	s.DomainId = &v
+	return s
+}
+
+func (s *GetDomainResponseBodyDomain) SetDomainType(v string) *GetDomainResponseBodyDomain {
+	s.DomainType = &v
+	return s
+}
+
+func (s *GetDomainResponseBodyDomain) SetFiling(v *GetDomainResponseBodyDomainFiling) *GetDomainResponseBodyDomain {
+	s.Filing = v
+	return s
+}
+
+func (s *GetDomainResponseBodyDomain) SetInstanceId(v string) *GetDomainResponseBodyDomain {
+	s.InstanceId = &v
+	return s
+}
+
+func (s *GetDomainResponseBodyDomain) SetLockMode(v string) *GetDomainResponseBodyDomain {
+	s.LockMode = &v
+	return s
+}
+
+func (s *GetDomainResponseBodyDomain) SetUpdateTime(v int64) *GetDomainResponseBodyDomain {
+	s.UpdateTime = &v
+	return s
+}
+
+type GetDomainResponseBodyDomainFiling struct {
+	// 域名关联的备案号, 长度最大限制64。
+	IcpNumber *string `json:"IcpNumber,omitempty" xml:"IcpNumber,omitempty"`
+}
+
+func (s GetDomainResponseBodyDomainFiling) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetDomainResponseBodyDomainFiling) GoString() string {
+	return s.String()
+}
+
+func (s *GetDomainResponseBodyDomainFiling) SetIcpNumber(v string) *GetDomainResponseBodyDomainFiling {
+	s.IcpNumber = &v
+	return s
+}
+
+type GetDomainResponse struct {
+	Headers    map[string]*string     `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                 `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *GetDomainResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s GetDomainResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetDomainResponse) GoString() string {
+	return s.String()
+}
+
+func (s *GetDomainResponse) SetHeaders(v map[string]*string) *GetDomainResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *GetDomainResponse) SetStatusCode(v int32) *GetDomainResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *GetDomainResponse) SetBody(v *GetDomainResponseBody) *GetDomainResponse {
+	s.Body = v
+	return s
+}
+
+type GetDomainDnsChallengeRequest struct {
+	// 域名。
+	Domain *string `json:"Domain,omitempty" xml:"Domain,omitempty"`
+	// IDaaS EIAM实例的ID。
+	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+}
+
+func (s GetDomainDnsChallengeRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetDomainDnsChallengeRequest) GoString() string {
+	return s.String()
+}
+
+func (s *GetDomainDnsChallengeRequest) SetDomain(v string) *GetDomainDnsChallengeRequest {
+	s.Domain = &v
+	return s
+}
+
+func (s *GetDomainDnsChallengeRequest) SetInstanceId(v string) *GetDomainDnsChallengeRequest {
+	s.InstanceId = &v
+	return s
+}
+
+type GetDomainDnsChallengeResponseBody struct {
+	DomainDnsChallenge *GetDomainDnsChallengeResponseBodyDomainDnsChallenge `json:"DomainDnsChallenge,omitempty" xml:"DomainDnsChallenge,omitempty" type:"Struct"`
+	RequestId          *string                                              `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+}
+
+func (s GetDomainDnsChallengeResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetDomainDnsChallengeResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *GetDomainDnsChallengeResponseBody) SetDomainDnsChallenge(v *GetDomainDnsChallengeResponseBodyDomainDnsChallenge) *GetDomainDnsChallengeResponseBody {
+	s.DomainDnsChallenge = v
+	return s
+}
+
+func (s *GetDomainDnsChallengeResponseBody) SetRequestId(v string) *GetDomainDnsChallengeResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+type GetDomainDnsChallengeResponseBodyDomainDnsChallenge struct {
+	// DNS challenge名称。
+	DnsChallengeName *string `json:"DnsChallengeName,omitempty" xml:"DnsChallengeName,omitempty"`
+	// DNS challenge值。
+	DnsChallengeValue *string `json:"DnsChallengeValue,omitempty" xml:"DnsChallengeValue,omitempty"`
+	// DNS记录类型。
+	DnsType *string `json:"DnsType,omitempty" xml:"DnsType,omitempty"`
+}
+
+func (s GetDomainDnsChallengeResponseBodyDomainDnsChallenge) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetDomainDnsChallengeResponseBodyDomainDnsChallenge) GoString() string {
+	return s.String()
+}
+
+func (s *GetDomainDnsChallengeResponseBodyDomainDnsChallenge) SetDnsChallengeName(v string) *GetDomainDnsChallengeResponseBodyDomainDnsChallenge {
+	s.DnsChallengeName = &v
+	return s
+}
+
+func (s *GetDomainDnsChallengeResponseBodyDomainDnsChallenge) SetDnsChallengeValue(v string) *GetDomainDnsChallengeResponseBodyDomainDnsChallenge {
+	s.DnsChallengeValue = &v
+	return s
+}
+
+func (s *GetDomainDnsChallengeResponseBodyDomainDnsChallenge) SetDnsType(v string) *GetDomainDnsChallengeResponseBodyDomainDnsChallenge {
+	s.DnsType = &v
+	return s
+}
+
+type GetDomainDnsChallengeResponse struct {
+	Headers    map[string]*string                 `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                             `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *GetDomainDnsChallengeResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s GetDomainDnsChallengeResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetDomainDnsChallengeResponse) GoString() string {
+	return s.String()
+}
+
+func (s *GetDomainDnsChallengeResponse) SetHeaders(v map[string]*string) *GetDomainDnsChallengeResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *GetDomainDnsChallengeResponse) SetStatusCode(v int32) *GetDomainDnsChallengeResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *GetDomainDnsChallengeResponse) SetBody(v *GetDomainDnsChallengeResponseBody) *GetDomainDnsChallengeResponse {
+	s.Body = v
+	return s
+}
+
 type GetForgetPasswordConfigurationRequest struct {
 	// The instance ID.
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
@@ -4178,6 +5068,8 @@ type GetInstanceResponseBodyInstance struct {
 	DefaultEndpoint *GetInstanceResponseBodyInstanceDefaultEndpoint `json:"DefaultEndpoint,omitempty" xml:"DefaultEndpoint,omitempty" type:"Struct"`
 	// The description of the instance.
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
+	// The default domain of the instance.
+	DomainConfig *GetInstanceResponseBodyInstanceDomainConfig `json:"DomainConfig,omitempty" xml:"DomainConfig,omitempty" type:"Struct"`
 	// The outbound public CIDR blocks of the instance. For example, when you synchronize Active Directory (AD) accounts, the IDaaS EIAM instance accesses your AD service by using the outbound public CIDR blocks.
 	EgressAddresses []*string `json:"EgressAddresses,omitempty" xml:"EgressAddresses,omitempty" type:"Repeated"`
 	// The instance ID.
@@ -4209,6 +5101,11 @@ func (s *GetInstanceResponseBodyInstance) SetDefaultEndpoint(v *GetInstanceRespo
 
 func (s *GetInstanceResponseBodyInstance) SetDescription(v string) *GetInstanceResponseBodyInstance {
 	s.Description = &v
+	return s
+}
+
+func (s *GetInstanceResponseBodyInstance) SetDomainConfig(v *GetInstanceResponseBodyInstanceDomainConfig) *GetInstanceResponseBodyInstance {
+	s.DomainConfig = v
 	return s
 }
 
@@ -4252,6 +5149,41 @@ func (s *GetInstanceResponseBodyInstanceDefaultEndpoint) SetEndpoint(v string) *
 
 func (s *GetInstanceResponseBodyInstanceDefaultEndpoint) SetStatus(v string) *GetInstanceResponseBodyInstanceDefaultEndpoint {
 	s.Status = &v
+	return s
+}
+
+type GetInstanceResponseBodyInstanceDomainConfig struct {
+	// The default domain of the instance.
+	DefaultDomain *string `json:"DefaultDomain,omitempty" xml:"DefaultDomain,omitempty"`
+	// The init domain of the instance.
+	InitDomain *string `json:"InitDomain,omitempty" xml:"InitDomain,omitempty"`
+	// Valid values:
+	//
+	// *   true
+	// *   false
+	InitDomainAutoRedirectStatus *string `json:"InitDomainAutoRedirectStatus,omitempty" xml:"InitDomainAutoRedirectStatus,omitempty"`
+}
+
+func (s GetInstanceResponseBodyInstanceDomainConfig) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetInstanceResponseBodyInstanceDomainConfig) GoString() string {
+	return s.String()
+}
+
+func (s *GetInstanceResponseBodyInstanceDomainConfig) SetDefaultDomain(v string) *GetInstanceResponseBodyInstanceDomainConfig {
+	s.DefaultDomain = &v
+	return s
+}
+
+func (s *GetInstanceResponseBodyInstanceDomainConfig) SetInitDomain(v string) *GetInstanceResponseBodyInstanceDomainConfig {
+	s.InitDomain = &v
+	return s
+}
+
+func (s *GetInstanceResponseBodyInstanceDomainConfig) SetInitDomainAutoRedirectStatus(v string) *GetInstanceResponseBodyInstanceDomainConfig {
+	s.InitDomainAutoRedirectStatus = &v
 	return s
 }
 
@@ -6293,6 +7225,312 @@ func (s *ListApplicationsForUserResponse) SetStatusCode(v int32) *ListApplicatio
 }
 
 func (s *ListApplicationsForUserResponse) SetBody(v *ListApplicationsForUserResponseBody) *ListApplicationsForUserResponse {
+	s.Body = v
+	return s
+}
+
+type ListDomainProxyTokensRequest struct {
+	// 域名ID。
+	DomainId *string `json:"DomainId,omitempty" xml:"DomainId,omitempty"`
+	// IDaaS EIAM实例的ID。
+	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+}
+
+func (s ListDomainProxyTokensRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListDomainProxyTokensRequest) GoString() string {
+	return s.String()
+}
+
+func (s *ListDomainProxyTokensRequest) SetDomainId(v string) *ListDomainProxyTokensRequest {
+	s.DomainId = &v
+	return s
+}
+
+func (s *ListDomainProxyTokensRequest) SetInstanceId(v string) *ListDomainProxyTokensRequest {
+	s.InstanceId = &v
+	return s
+}
+
+type ListDomainProxyTokensResponseBody struct {
+	DomainProxyTokens []*ListDomainProxyTokensResponseBodyDomainProxyTokens `json:"DomainProxyTokens,omitempty" xml:"DomainProxyTokens,omitempty" type:"Repeated"`
+	RequestId         *string                                               `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+}
+
+func (s ListDomainProxyTokensResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListDomainProxyTokensResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *ListDomainProxyTokensResponseBody) SetDomainProxyTokens(v []*ListDomainProxyTokensResponseBodyDomainProxyTokens) *ListDomainProxyTokensResponseBody {
+	s.DomainProxyTokens = v
+	return s
+}
+
+func (s *ListDomainProxyTokensResponseBody) SetRequestId(v string) *ListDomainProxyTokensResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+type ListDomainProxyTokensResponseBodyDomainProxyTokens struct {
+	// 域名代理Token创建时间，Unix时间戳格式，单位为毫秒。
+	CreateTime *int64 `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
+	// 域名ID。
+	DomainId *string `json:"DomainId,omitempty" xml:"DomainId,omitempty"`
+	// 域名代理Token。
+	DomainProxyToken *string `json:"DomainProxyToken,omitempty" xml:"DomainProxyToken,omitempty"`
+	// 域名代理Token ID。
+	DomainProxyTokenId *string `json:"DomainProxyTokenId,omitempty" xml:"DomainProxyTokenId,omitempty"`
+	// 实例ID。
+	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	// 域名代理Token最近使用时间，Unix时间戳格式，单位为毫秒。
+	LastUsedTime *int64 `json:"LastUsedTime,omitempty" xml:"LastUsedTime,omitempty"`
+	// token状态，枚举类型：(enabled）启用,（disabled）禁用。
+	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
+	// 域名代理Token最近更新时间，Unix时间戳格式，单位为毫秒。
+	UpdateTime *int64 `json:"UpdateTime,omitempty" xml:"UpdateTime,omitempty"`
+}
+
+func (s ListDomainProxyTokensResponseBodyDomainProxyTokens) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListDomainProxyTokensResponseBodyDomainProxyTokens) GoString() string {
+	return s.String()
+}
+
+func (s *ListDomainProxyTokensResponseBodyDomainProxyTokens) SetCreateTime(v int64) *ListDomainProxyTokensResponseBodyDomainProxyTokens {
+	s.CreateTime = &v
+	return s
+}
+
+func (s *ListDomainProxyTokensResponseBodyDomainProxyTokens) SetDomainId(v string) *ListDomainProxyTokensResponseBodyDomainProxyTokens {
+	s.DomainId = &v
+	return s
+}
+
+func (s *ListDomainProxyTokensResponseBodyDomainProxyTokens) SetDomainProxyToken(v string) *ListDomainProxyTokensResponseBodyDomainProxyTokens {
+	s.DomainProxyToken = &v
+	return s
+}
+
+func (s *ListDomainProxyTokensResponseBodyDomainProxyTokens) SetDomainProxyTokenId(v string) *ListDomainProxyTokensResponseBodyDomainProxyTokens {
+	s.DomainProxyTokenId = &v
+	return s
+}
+
+func (s *ListDomainProxyTokensResponseBodyDomainProxyTokens) SetInstanceId(v string) *ListDomainProxyTokensResponseBodyDomainProxyTokens {
+	s.InstanceId = &v
+	return s
+}
+
+func (s *ListDomainProxyTokensResponseBodyDomainProxyTokens) SetLastUsedTime(v int64) *ListDomainProxyTokensResponseBodyDomainProxyTokens {
+	s.LastUsedTime = &v
+	return s
+}
+
+func (s *ListDomainProxyTokensResponseBodyDomainProxyTokens) SetStatus(v string) *ListDomainProxyTokensResponseBodyDomainProxyTokens {
+	s.Status = &v
+	return s
+}
+
+func (s *ListDomainProxyTokensResponseBodyDomainProxyTokens) SetUpdateTime(v int64) *ListDomainProxyTokensResponseBodyDomainProxyTokens {
+	s.UpdateTime = &v
+	return s
+}
+
+type ListDomainProxyTokensResponse struct {
+	Headers    map[string]*string                 `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                             `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *ListDomainProxyTokensResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s ListDomainProxyTokensResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListDomainProxyTokensResponse) GoString() string {
+	return s.String()
+}
+
+func (s *ListDomainProxyTokensResponse) SetHeaders(v map[string]*string) *ListDomainProxyTokensResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *ListDomainProxyTokensResponse) SetStatusCode(v int32) *ListDomainProxyTokensResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *ListDomainProxyTokensResponse) SetBody(v *ListDomainProxyTokensResponseBody) *ListDomainProxyTokensResponse {
+	s.Body = v
+	return s
+}
+
+type ListDomainsRequest struct {
+	// IDaaS EIAM实例的ID。
+	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+}
+
+func (s ListDomainsRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListDomainsRequest) GoString() string {
+	return s.String()
+}
+
+func (s *ListDomainsRequest) SetInstanceId(v string) *ListDomainsRequest {
+	s.InstanceId = &v
+	return s
+}
+
+type ListDomainsResponseBody struct {
+	Domains   []*ListDomainsResponseBodyDomains `json:"Domains,omitempty" xml:"Domains,omitempty" type:"Repeated"`
+	RequestId *string                           `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+}
+
+func (s ListDomainsResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListDomainsResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *ListDomainsResponseBody) SetDomains(v []*ListDomainsResponseBodyDomains) *ListDomainsResponseBody {
+	s.Domains = v
+	return s
+}
+
+func (s *ListDomainsResponseBody) SetRequestId(v string) *ListDomainsResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+type ListDomainsResponseBodyDomains struct {
+	// 域名创建时间，Unix时间戳格式，单位为毫秒。
+	CreateTime *int64 `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
+	// 是否默认域名。true表示实例默认域名，false表示非默认域名
+	DefaultDomain *bool `json:"DefaultDomain,omitempty" xml:"DefaultDomain,omitempty"`
+	// 域名。
+	Domain *string `json:"Domain,omitempty" xml:"Domain,omitempty"`
+	// 域名ID。
+	DomainId *string `json:"DomainId,omitempty" xml:"DomainId,omitempty"`
+	// 域名类型。枚举取值:system_init(系统初始化)、user_custom(用户自定义)。
+	DomainType *string `json:"DomainType,omitempty" xml:"DomainType,omitempty"`
+	// 域名备案信息。
+	Filing *ListDomainsResponseBodyDomainsFiling `json:"Filing,omitempty" xml:"Filing,omitempty" type:"Struct"`
+	// 实例ID。
+	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	// 域名锁定状态。枚举取值:unlock(正常)、lockByLicense(因License限制不可用)。
+	LockMode *string `json:"LockMode,omitempty" xml:"LockMode,omitempty"`
+	// 域名最近更新时间，Unix时间戳格式，单位为毫秒。
+	UpdateTime *int64 `json:"UpdateTime,omitempty" xml:"UpdateTime,omitempty"`
+}
+
+func (s ListDomainsResponseBodyDomains) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListDomainsResponseBodyDomains) GoString() string {
+	return s.String()
+}
+
+func (s *ListDomainsResponseBodyDomains) SetCreateTime(v int64) *ListDomainsResponseBodyDomains {
+	s.CreateTime = &v
+	return s
+}
+
+func (s *ListDomainsResponseBodyDomains) SetDefaultDomain(v bool) *ListDomainsResponseBodyDomains {
+	s.DefaultDomain = &v
+	return s
+}
+
+func (s *ListDomainsResponseBodyDomains) SetDomain(v string) *ListDomainsResponseBodyDomains {
+	s.Domain = &v
+	return s
+}
+
+func (s *ListDomainsResponseBodyDomains) SetDomainId(v string) *ListDomainsResponseBodyDomains {
+	s.DomainId = &v
+	return s
+}
+
+func (s *ListDomainsResponseBodyDomains) SetDomainType(v string) *ListDomainsResponseBodyDomains {
+	s.DomainType = &v
+	return s
+}
+
+func (s *ListDomainsResponseBodyDomains) SetFiling(v *ListDomainsResponseBodyDomainsFiling) *ListDomainsResponseBodyDomains {
+	s.Filing = v
+	return s
+}
+
+func (s *ListDomainsResponseBodyDomains) SetInstanceId(v string) *ListDomainsResponseBodyDomains {
+	s.InstanceId = &v
+	return s
+}
+
+func (s *ListDomainsResponseBodyDomains) SetLockMode(v string) *ListDomainsResponseBodyDomains {
+	s.LockMode = &v
+	return s
+}
+
+func (s *ListDomainsResponseBodyDomains) SetUpdateTime(v int64) *ListDomainsResponseBodyDomains {
+	s.UpdateTime = &v
+	return s
+}
+
+type ListDomainsResponseBodyDomainsFiling struct {
+	// 域名关联的备案号, 长度最大限制64。
+	IcpNumber *string `json:"IcpNumber,omitempty" xml:"IcpNumber,omitempty"`
+}
+
+func (s ListDomainsResponseBodyDomainsFiling) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListDomainsResponseBodyDomainsFiling) GoString() string {
+	return s.String()
+}
+
+func (s *ListDomainsResponseBodyDomainsFiling) SetIcpNumber(v string) *ListDomainsResponseBodyDomainsFiling {
+	s.IcpNumber = &v
+	return s
+}
+
+type ListDomainsResponse struct {
+	Headers    map[string]*string       `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                   `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *ListDomainsResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s ListDomainsResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListDomainsResponse) GoString() string {
+	return s.String()
+}
+
+func (s *ListDomainsResponse) SetHeaders(v map[string]*string) *ListDomainsResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *ListDomainsResponse) SetStatusCode(v int32) *ListDomainsResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *ListDomainsResponse) SetBody(v *ListDomainsResponseBody) *ListDomainsResponse {
 	s.Body = v
 	return s
 }
@@ -8733,6 +9971,157 @@ func (s *ObtainApplicationClientSecretResponse) SetBody(v *ObtainApplicationClie
 	return s
 }
 
+type ObtainDomainProxyTokenRequest struct {
+	// 域名ID。
+	DomainId *string `json:"DomainId,omitempty" xml:"DomainId,omitempty"`
+	// 域名代理Token ID。
+	DomainProxyTokenId *string `json:"DomainProxyTokenId,omitempty" xml:"DomainProxyTokenId,omitempty"`
+	// IDaaS EIAM实例的ID。
+	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+}
+
+func (s ObtainDomainProxyTokenRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ObtainDomainProxyTokenRequest) GoString() string {
+	return s.String()
+}
+
+func (s *ObtainDomainProxyTokenRequest) SetDomainId(v string) *ObtainDomainProxyTokenRequest {
+	s.DomainId = &v
+	return s
+}
+
+func (s *ObtainDomainProxyTokenRequest) SetDomainProxyTokenId(v string) *ObtainDomainProxyTokenRequest {
+	s.DomainProxyTokenId = &v
+	return s
+}
+
+func (s *ObtainDomainProxyTokenRequest) SetInstanceId(v string) *ObtainDomainProxyTokenRequest {
+	s.InstanceId = &v
+	return s
+}
+
+type ObtainDomainProxyTokenResponseBody struct {
+	DomainProxyToken *ObtainDomainProxyTokenResponseBodyDomainProxyToken `json:"DomainProxyToken,omitempty" xml:"DomainProxyToken,omitempty" type:"Struct"`
+	RequestId        *string                                             `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+}
+
+func (s ObtainDomainProxyTokenResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ObtainDomainProxyTokenResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *ObtainDomainProxyTokenResponseBody) SetDomainProxyToken(v *ObtainDomainProxyTokenResponseBodyDomainProxyToken) *ObtainDomainProxyTokenResponseBody {
+	s.DomainProxyToken = v
+	return s
+}
+
+func (s *ObtainDomainProxyTokenResponseBody) SetRequestId(v string) *ObtainDomainProxyTokenResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+type ObtainDomainProxyTokenResponseBodyDomainProxyToken struct {
+	// 域名代理Token创建时间，Unix时间戳格式，单位为毫秒。
+	CreateTime *int64 `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
+	// 域名ID。
+	DomainId *string `json:"DomainId,omitempty" xml:"DomainId,omitempty"`
+	// 域名代理Token。
+	DomainProxyToken *string `json:"DomainProxyToken,omitempty" xml:"DomainProxyToken,omitempty"`
+	// 域名代理Token ID。
+	DomainProxyTokenId *string `json:"DomainProxyTokenId,omitempty" xml:"DomainProxyTokenId,omitempty"`
+	// 实例ID。
+	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	// 域名代理Token最近使用时间，Unix时间戳格式，单位为毫秒。
+	LastUsedTime *int64 `json:"LastUsedTime,omitempty" xml:"LastUsedTime,omitempty"`
+	// token状态，枚举类型：(enabled）启用,（disabled）禁用。
+	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
+	// 域名代理Token最近更新时间，Unix时间戳格式，单位为毫秒。
+	UpdateTime *int64 `json:"UpdateTime,omitempty" xml:"UpdateTime,omitempty"`
+}
+
+func (s ObtainDomainProxyTokenResponseBodyDomainProxyToken) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ObtainDomainProxyTokenResponseBodyDomainProxyToken) GoString() string {
+	return s.String()
+}
+
+func (s *ObtainDomainProxyTokenResponseBodyDomainProxyToken) SetCreateTime(v int64) *ObtainDomainProxyTokenResponseBodyDomainProxyToken {
+	s.CreateTime = &v
+	return s
+}
+
+func (s *ObtainDomainProxyTokenResponseBodyDomainProxyToken) SetDomainId(v string) *ObtainDomainProxyTokenResponseBodyDomainProxyToken {
+	s.DomainId = &v
+	return s
+}
+
+func (s *ObtainDomainProxyTokenResponseBodyDomainProxyToken) SetDomainProxyToken(v string) *ObtainDomainProxyTokenResponseBodyDomainProxyToken {
+	s.DomainProxyToken = &v
+	return s
+}
+
+func (s *ObtainDomainProxyTokenResponseBodyDomainProxyToken) SetDomainProxyTokenId(v string) *ObtainDomainProxyTokenResponseBodyDomainProxyToken {
+	s.DomainProxyTokenId = &v
+	return s
+}
+
+func (s *ObtainDomainProxyTokenResponseBodyDomainProxyToken) SetInstanceId(v string) *ObtainDomainProxyTokenResponseBodyDomainProxyToken {
+	s.InstanceId = &v
+	return s
+}
+
+func (s *ObtainDomainProxyTokenResponseBodyDomainProxyToken) SetLastUsedTime(v int64) *ObtainDomainProxyTokenResponseBodyDomainProxyToken {
+	s.LastUsedTime = &v
+	return s
+}
+
+func (s *ObtainDomainProxyTokenResponseBodyDomainProxyToken) SetStatus(v string) *ObtainDomainProxyTokenResponseBodyDomainProxyToken {
+	s.Status = &v
+	return s
+}
+
+func (s *ObtainDomainProxyTokenResponseBodyDomainProxyToken) SetUpdateTime(v int64) *ObtainDomainProxyTokenResponseBodyDomainProxyToken {
+	s.UpdateTime = &v
+	return s
+}
+
+type ObtainDomainProxyTokenResponse struct {
+	Headers    map[string]*string                  `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                              `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *ObtainDomainProxyTokenResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s ObtainDomainProxyTokenResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ObtainDomainProxyTokenResponse) GoString() string {
+	return s.String()
+}
+
+func (s *ObtainDomainProxyTokenResponse) SetHeaders(v map[string]*string) *ObtainDomainProxyTokenResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *ObtainDomainProxyTokenResponse) SetStatusCode(v int32) *ObtainDomainProxyTokenResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *ObtainDomainProxyTokenResponse) SetBody(v *ObtainDomainProxyTokenResponseBody) *ObtainDomainProxyTokenResponse {
+	s.Body = v
+	return s
+}
+
 type RemoveUserFromOrganizationalUnitsRequest struct {
 	// The instance ID.
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
@@ -9912,6 +11301,77 @@ func (s *SetApplicationSsoConfigResponse) SetStatusCode(v int32) *SetApplication
 }
 
 func (s *SetApplicationSsoConfigResponse) SetBody(v *SetApplicationSsoConfigResponseBody) *SetApplicationSsoConfigResponse {
+	s.Body = v
+	return s
+}
+
+type SetDefaultDomainRequest struct {
+	// 域名ID。
+	DomainId *string `json:"DomainId,omitempty" xml:"DomainId,omitempty"`
+	// IDaaS EIAM实例的ID。
+	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+}
+
+func (s SetDefaultDomainRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s SetDefaultDomainRequest) GoString() string {
+	return s.String()
+}
+
+func (s *SetDefaultDomainRequest) SetDomainId(v string) *SetDefaultDomainRequest {
+	s.DomainId = &v
+	return s
+}
+
+func (s *SetDefaultDomainRequest) SetInstanceId(v string) *SetDefaultDomainRequest {
+	s.InstanceId = &v
+	return s
+}
+
+type SetDefaultDomainResponseBody struct {
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+}
+
+func (s SetDefaultDomainResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s SetDefaultDomainResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *SetDefaultDomainResponseBody) SetRequestId(v string) *SetDefaultDomainResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+type SetDefaultDomainResponse struct {
+	Headers    map[string]*string            `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                        `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *SetDefaultDomainResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s SetDefaultDomainResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s SetDefaultDomainResponse) GoString() string {
+	return s.String()
+}
+
+func (s *SetDefaultDomainResponse) SetHeaders(v map[string]*string) *SetDefaultDomainResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *SetDefaultDomainResponse) SetStatusCode(v int32) *SetDefaultDomainResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *SetDefaultDomainResponse) SetBody(v *SetDefaultDomainResponseBody) *SetDefaultDomainResponse {
 	s.Body = v
 	return s
 }
@@ -12047,6 +13507,106 @@ func (client *Client) CreateApplicationClientSecret(request *CreateApplicationCl
 	return _result, _err
 }
 
+func (client *Client) CreateDomainWithOptions(request *CreateDomainRequest, runtime *util.RuntimeOptions) (_result *CreateDomainResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.Domain)) {
+		query["Domain"] = request.Domain
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Filing)) {
+		query["Filing"] = request.Filing
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.InstanceId)) {
+		query["InstanceId"] = request.InstanceId
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("CreateDomain"),
+		Version:     tea.String("2021-12-01"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &CreateDomainResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) CreateDomain(request *CreateDomainRequest) (_result *CreateDomainResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &CreateDomainResponse{}
+	_body, _err := client.CreateDomainWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) CreateDomainProxyTokenWithOptions(request *CreateDomainProxyTokenRequest, runtime *util.RuntimeOptions) (_result *CreateDomainProxyTokenResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.DomainId)) {
+		query["DomainId"] = request.DomainId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.InstanceId)) {
+		query["InstanceId"] = request.InstanceId
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("CreateDomainProxyToken"),
+		Version:     tea.String("2021-12-01"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &CreateDomainProxyTokenResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) CreateDomainProxyToken(request *CreateDomainProxyTokenRequest) (_result *CreateDomainProxyTokenResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &CreateDomainProxyTokenResponse{}
+	_body, _err := client.CreateDomainProxyTokenWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
 func (client *Client) CreateGroupWithOptions(request *CreateGroupRequest, runtime *util.RuntimeOptions) (_result *CreateGroupResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -12477,6 +14037,106 @@ func (client *Client) DeleteApplicationClientSecret(request *DeleteApplicationCl
 	runtime := &util.RuntimeOptions{}
 	_result = &DeleteApplicationClientSecretResponse{}
 	_body, _err := client.DeleteApplicationClientSecretWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) DeleteDomainWithOptions(request *DeleteDomainRequest, runtime *util.RuntimeOptions) (_result *DeleteDomainResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.DomainId)) {
+		query["DomainId"] = request.DomainId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.InstanceId)) {
+		query["InstanceId"] = request.InstanceId
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("DeleteDomain"),
+		Version:     tea.String("2021-12-01"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &DeleteDomainResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) DeleteDomain(request *DeleteDomainRequest) (_result *DeleteDomainResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &DeleteDomainResponse{}
+	_body, _err := client.DeleteDomainWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) DeleteDomainProxyTokenWithOptions(request *DeleteDomainProxyTokenRequest, runtime *util.RuntimeOptions) (_result *DeleteDomainProxyTokenResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.DomainId)) {
+		query["DomainId"] = request.DomainId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.DomainProxyTokenId)) {
+		query["DomainProxyTokenId"] = request.DomainProxyTokenId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.InstanceId)) {
+		query["InstanceId"] = request.InstanceId
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("DeleteDomainProxyToken"),
+		Version:     tea.String("2021-12-01"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &DeleteDomainProxyTokenResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) DeleteDomainProxyToken(request *DeleteDomainProxyTokenRequest) (_result *DeleteDomainProxyTokenResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &DeleteDomainProxyTokenResponse{}
+	_body, _err := client.DeleteDomainProxyTokenWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -12990,6 +14650,102 @@ func (client *Client) DisableApplicationSso(request *DisableApplicationSsoReques
 	return _result, _err
 }
 
+func (client *Client) DisableDomainProxyTokenWithOptions(request *DisableDomainProxyTokenRequest, runtime *util.RuntimeOptions) (_result *DisableDomainProxyTokenResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.DomainId)) {
+		query["DomainId"] = request.DomainId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.DomainProxyTokenId)) {
+		query["DomainProxyTokenId"] = request.DomainProxyTokenId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.InstanceId)) {
+		query["InstanceId"] = request.InstanceId
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("DisableDomainProxyToken"),
+		Version:     tea.String("2021-12-01"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &DisableDomainProxyTokenResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) DisableDomainProxyToken(request *DisableDomainProxyTokenRequest) (_result *DisableDomainProxyTokenResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &DisableDomainProxyTokenResponse{}
+	_body, _err := client.DisableDomainProxyTokenWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) DisableInitDomainAutoRedirectWithOptions(request *DisableInitDomainAutoRedirectRequest, runtime *util.RuntimeOptions) (_result *DisableInitDomainAutoRedirectResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.InstanceId)) {
+		query["InstanceId"] = request.InstanceId
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("DisableInitDomainAutoRedirect"),
+		Version:     tea.String("2021-12-01"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &DisableInitDomainAutoRedirectResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) DisableInitDomainAutoRedirect(request *DisableInitDomainAutoRedirectRequest) (_result *DisableInitDomainAutoRedirectResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &DisableInitDomainAutoRedirectResponse{}
+	_body, _err := client.DisableInitDomainAutoRedirectWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
 func (client *Client) DisableUserWithOptions(request *DisableUserRequest, runtime *util.RuntimeOptions) (_result *DisableUserResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -13282,6 +15038,102 @@ func (client *Client) EnableApplicationSso(request *EnableApplicationSsoRequest)
 	return _result, _err
 }
 
+func (client *Client) EnableDomainProxyTokenWithOptions(request *EnableDomainProxyTokenRequest, runtime *util.RuntimeOptions) (_result *EnableDomainProxyTokenResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.DomainId)) {
+		query["DomainId"] = request.DomainId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.DomainProxyTokenId)) {
+		query["DomainProxyTokenId"] = request.DomainProxyTokenId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.InstanceId)) {
+		query["InstanceId"] = request.InstanceId
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("EnableDomainProxyToken"),
+		Version:     tea.String("2021-12-01"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &EnableDomainProxyTokenResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) EnableDomainProxyToken(request *EnableDomainProxyTokenRequest) (_result *EnableDomainProxyTokenResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &EnableDomainProxyTokenResponse{}
+	_body, _err := client.EnableDomainProxyTokenWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) EnableInitDomainAutoRedirectWithOptions(request *EnableInitDomainAutoRedirectRequest, runtime *util.RuntimeOptions) (_result *EnableInitDomainAutoRedirectResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.InstanceId)) {
+		query["InstanceId"] = request.InstanceId
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("EnableInitDomainAutoRedirect"),
+		Version:     tea.String("2021-12-01"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &EnableInitDomainAutoRedirectResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) EnableInitDomainAutoRedirect(request *EnableInitDomainAutoRedirectRequest) (_result *EnableInitDomainAutoRedirectResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &EnableInitDomainAutoRedirectResponse{}
+	_body, _err := client.EnableInitDomainAutoRedirectWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
 func (client *Client) EnableUserWithOptions(request *EnableUserRequest, runtime *util.RuntimeOptions) (_result *EnableUserResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -13563,6 +15415,102 @@ func (client *Client) GetApplicationSsoConfig(request *GetApplicationSsoConfigRe
 	runtime := &util.RuntimeOptions{}
 	_result = &GetApplicationSsoConfigResponse{}
 	_body, _err := client.GetApplicationSsoConfigWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) GetDomainWithOptions(request *GetDomainRequest, runtime *util.RuntimeOptions) (_result *GetDomainResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.DomainId)) {
+		query["DomainId"] = request.DomainId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.InstanceId)) {
+		query["InstanceId"] = request.InstanceId
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("GetDomain"),
+		Version:     tea.String("2021-12-01"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &GetDomainResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) GetDomain(request *GetDomainRequest) (_result *GetDomainResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &GetDomainResponse{}
+	_body, _err := client.GetDomainWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) GetDomainDnsChallengeWithOptions(request *GetDomainDnsChallengeRequest, runtime *util.RuntimeOptions) (_result *GetDomainDnsChallengeResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.Domain)) {
+		query["Domain"] = request.Domain
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.InstanceId)) {
+		query["InstanceId"] = request.InstanceId
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("GetDomainDnsChallenge"),
+		Version:     tea.String("2021-12-01"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &GetDomainDnsChallengeResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) GetDomainDnsChallenge(request *GetDomainDnsChallengeRequest) (_result *GetDomainDnsChallengeResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &GetDomainDnsChallengeResponse{}
+	_body, _err := client.GetDomainDnsChallengeWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -14316,6 +16264,98 @@ func (client *Client) ListApplicationsForUser(request *ListApplicationsForUserRe
 	runtime := &util.RuntimeOptions{}
 	_result = &ListApplicationsForUserResponse{}
 	_body, _err := client.ListApplicationsForUserWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) ListDomainProxyTokensWithOptions(request *ListDomainProxyTokensRequest, runtime *util.RuntimeOptions) (_result *ListDomainProxyTokensResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.DomainId)) {
+		query["DomainId"] = request.DomainId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.InstanceId)) {
+		query["InstanceId"] = request.InstanceId
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("ListDomainProxyTokens"),
+		Version:     tea.String("2021-12-01"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &ListDomainProxyTokensResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) ListDomainProxyTokens(request *ListDomainProxyTokensRequest) (_result *ListDomainProxyTokensResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &ListDomainProxyTokensResponse{}
+	_body, _err := client.ListDomainProxyTokensWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) ListDomainsWithOptions(request *ListDomainsRequest, runtime *util.RuntimeOptions) (_result *ListDomainsResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.InstanceId)) {
+		query["InstanceId"] = request.InstanceId
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("ListDomains"),
+		Version:     tea.String("2021-12-01"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &ListDomainsResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) ListDomains(request *ListDomainsRequest) (_result *ListDomainsResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &ListDomainsResponse{}
+	_body, _err := client.ListDomainsWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -15233,6 +17273,58 @@ func (client *Client) ObtainApplicationClientSecret(request *ObtainApplicationCl
 	return _result, _err
 }
 
+func (client *Client) ObtainDomainProxyTokenWithOptions(request *ObtainDomainProxyTokenRequest, runtime *util.RuntimeOptions) (_result *ObtainDomainProxyTokenResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.DomainId)) {
+		query["DomainId"] = request.DomainId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.DomainProxyTokenId)) {
+		query["DomainProxyTokenId"] = request.DomainProxyTokenId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.InstanceId)) {
+		query["InstanceId"] = request.InstanceId
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("ObtainDomainProxyToken"),
+		Version:     tea.String("2021-12-01"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &ObtainDomainProxyTokenResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) ObtainDomainProxyToken(request *ObtainDomainProxyTokenRequest) (_result *ObtainDomainProxyTokenResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &ObtainDomainProxyTokenResponse{}
+	_body, _err := client.ObtainDomainProxyTokenWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
 func (client *Client) RemoveUserFromOrganizationalUnitsWithOptions(request *RemoveUserFromOrganizationalUnitsRequest, runtime *util.RuntimeOptions) (_result *RemoveUserFromOrganizationalUnitsResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -15731,6 +17823,54 @@ func (client *Client) SetApplicationSsoConfig(request *SetApplicationSsoConfigRe
 	runtime := &util.RuntimeOptions{}
 	_result = &SetApplicationSsoConfigResponse{}
 	_body, _err := client.SetApplicationSsoConfigWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) SetDefaultDomainWithOptions(request *SetDefaultDomainRequest, runtime *util.RuntimeOptions) (_result *SetDefaultDomainResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.DomainId)) {
+		query["DomainId"] = request.DomainId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.InstanceId)) {
+		query["InstanceId"] = request.InstanceId
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("SetDefaultDomain"),
+		Version:     tea.String("2021-12-01"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &SetDefaultDomainResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) SetDefaultDomain(request *SetDefaultDomainRequest) (_result *SetDefaultDomainResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &SetDefaultDomainResponse{}
+	_body, _err := client.SetDefaultDomainWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
