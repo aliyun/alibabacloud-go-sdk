@@ -1589,6 +1589,69 @@ func (s *AllocateClusterPublicConnectionResponse) SetBody(v *AllocateClusterPubl
 	return s
 }
 
+type AttachUserENIRequest struct {
+	DBClusterId *string `json:"DBClusterId,omitempty" xml:"DBClusterId,omitempty"`
+}
+
+func (s AttachUserENIRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s AttachUserENIRequest) GoString() string {
+	return s.String()
+}
+
+func (s *AttachUserENIRequest) SetDBClusterId(v string) *AttachUserENIRequest {
+	s.DBClusterId = &v
+	return s
+}
+
+type AttachUserENIResponseBody struct {
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+}
+
+func (s AttachUserENIResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s AttachUserENIResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *AttachUserENIResponseBody) SetRequestId(v string) *AttachUserENIResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+type AttachUserENIResponse struct {
+	Headers    map[string]*string         `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                     `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *AttachUserENIResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s AttachUserENIResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s AttachUserENIResponse) GoString() string {
+	return s.String()
+}
+
+func (s *AttachUserENIResponse) SetHeaders(v map[string]*string) *AttachUserENIResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *AttachUserENIResponse) SetStatusCode(v int32) *AttachUserENIResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *AttachUserENIResponse) SetBody(v *AttachUserENIResponseBody) *AttachUserENIResponse {
+	s.Body = v
+	return s
+}
+
 type BindAccountRequest struct {
 	// The standard account of the cluster.
 	AccountName *string `json:"AccountName,omitempty" xml:"AccountName,omitempty"`
@@ -1668,6 +1731,82 @@ func (s *BindAccountResponse) SetBody(v *BindAccountResponseBody) *BindAccountRe
 	return s
 }
 
+type BindDBResourceGroupWithUserRequest struct {
+	DBClusterId *string `json:"DBClusterId,omitempty" xml:"DBClusterId,omitempty"`
+	GroupName   *string `json:"GroupName,omitempty" xml:"GroupName,omitempty"`
+	GroupUser   *string `json:"GroupUser,omitempty" xml:"GroupUser,omitempty"`
+}
+
+func (s BindDBResourceGroupWithUserRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s BindDBResourceGroupWithUserRequest) GoString() string {
+	return s.String()
+}
+
+func (s *BindDBResourceGroupWithUserRequest) SetDBClusterId(v string) *BindDBResourceGroupWithUserRequest {
+	s.DBClusterId = &v
+	return s
+}
+
+func (s *BindDBResourceGroupWithUserRequest) SetGroupName(v string) *BindDBResourceGroupWithUserRequest {
+	s.GroupName = &v
+	return s
+}
+
+func (s *BindDBResourceGroupWithUserRequest) SetGroupUser(v string) *BindDBResourceGroupWithUserRequest {
+	s.GroupUser = &v
+	return s
+}
+
+type BindDBResourceGroupWithUserResponseBody struct {
+	// Id of the request
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+}
+
+func (s BindDBResourceGroupWithUserResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s BindDBResourceGroupWithUserResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *BindDBResourceGroupWithUserResponseBody) SetRequestId(v string) *BindDBResourceGroupWithUserResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+type BindDBResourceGroupWithUserResponse struct {
+	Headers    map[string]*string                       `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                                   `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *BindDBResourceGroupWithUserResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s BindDBResourceGroupWithUserResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s BindDBResourceGroupWithUserResponse) GoString() string {
+	return s.String()
+}
+
+func (s *BindDBResourceGroupWithUserResponse) SetHeaders(v map[string]*string) *BindDBResourceGroupWithUserResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *BindDBResourceGroupWithUserResponse) SetStatusCode(v int32) *BindDBResourceGroupWithUserResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *BindDBResourceGroupWithUserResponse) SetBody(v *BindDBResourceGroupWithUserResponseBody) *BindDBResourceGroupWithUserResponse {
+	s.Body = v
+	return s
+}
+
 type CheckBindRamUserRequest struct {
 	DBClusterId *string `json:"DBClusterId,omitempty" xml:"DBClusterId,omitempty"`
 	RegionId    *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
@@ -1739,6 +1878,75 @@ func (s *CheckBindRamUserResponse) SetStatusCode(v int32) *CheckBindRamUserRespo
 }
 
 func (s *CheckBindRamUserResponse) SetBody(v *CheckBindRamUserResponseBody) *CheckBindRamUserResponse {
+	s.Body = v
+	return s
+}
+
+type CheckSampleDataSetRequest struct {
+	DBClusterId *string `json:"DBClusterId,omitempty" xml:"DBClusterId,omitempty"`
+}
+
+func (s CheckSampleDataSetRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CheckSampleDataSetRequest) GoString() string {
+	return s.String()
+}
+
+func (s *CheckSampleDataSetRequest) SetDBClusterId(v string) *CheckSampleDataSetRequest {
+	s.DBClusterId = &v
+	return s
+}
+
+type CheckSampleDataSetResponseBody struct {
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	Status    *string `json:"Status,omitempty" xml:"Status,omitempty"`
+}
+
+func (s CheckSampleDataSetResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CheckSampleDataSetResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *CheckSampleDataSetResponseBody) SetRequestId(v string) *CheckSampleDataSetResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *CheckSampleDataSetResponseBody) SetStatus(v string) *CheckSampleDataSetResponseBody {
+	s.Status = &v
+	return s
+}
+
+type CheckSampleDataSetResponse struct {
+	Headers    map[string]*string              `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                          `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *CheckSampleDataSetResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s CheckSampleDataSetResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CheckSampleDataSetResponse) GoString() string {
+	return s.String()
+}
+
+func (s *CheckSampleDataSetResponse) SetHeaders(v map[string]*string) *CheckSampleDataSetResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *CheckSampleDataSetResponse) SetStatusCode(v int32) *CheckSampleDataSetResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *CheckSampleDataSetResponse) SetBody(v *CheckSampleDataSetResponseBody) *CheckSampleDataSetResponse {
 	s.Body = v
 	return s
 }
@@ -6672,6 +6880,75 @@ func (s *DescribeDBClusterPerformanceResponse) SetBody(v *DescribeDBClusterPerfo
 	return s
 }
 
+type DescribeDBClusterStatusRequest struct {
+	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+}
+
+func (s DescribeDBClusterStatusRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeDBClusterStatusRequest) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeDBClusterStatusRequest) SetRegionId(v string) *DescribeDBClusterStatusRequest {
+	s.RegionId = &v
+	return s
+}
+
+type DescribeDBClusterStatusResponseBody struct {
+	RequestId *string   `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	Status    []*string `json:"Status,omitempty" xml:"Status,omitempty" type:"Repeated"`
+}
+
+func (s DescribeDBClusterStatusResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeDBClusterStatusResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeDBClusterStatusResponseBody) SetRequestId(v string) *DescribeDBClusterStatusResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *DescribeDBClusterStatusResponseBody) SetStatus(v []*string) *DescribeDBClusterStatusResponseBody {
+	s.Status = v
+	return s
+}
+
+type DescribeDBClusterStatusResponse struct {
+	Headers    map[string]*string                   `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                               `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *DescribeDBClusterStatusResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s DescribeDBClusterStatusResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeDBClusterStatusResponse) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeDBClusterStatusResponse) SetHeaders(v map[string]*string) *DescribeDBClusterStatusResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *DescribeDBClusterStatusResponse) SetStatusCode(v int32) *DescribeDBClusterStatusResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *DescribeDBClusterStatusResponse) SetBody(v *DescribeDBClusterStatusResponseBody) *DescribeDBClusterStatusResponse {
+	s.Body = v
+	return s
+}
+
 type DescribeDBClustersRequest struct {
 	// The description of the cluster.
 	//
@@ -9401,15 +9678,63 @@ func (s *DescribeRegionsResponse) SetBody(v *DescribeRegionsResponseBody) *Descr
 }
 
 type DescribeSQLPatternsRequest struct {
+	// The ID of the AnalyticDB for MySQL Data Lakehouse Edition (V3.0) cluster.
+	//
+	// > You can call the [DescribeDBClusters](~~129857~~) operation to query the information about all AnalyticDB for MySQL Data Lakehouse Edition (V3.0) clusters within a region, including cluster IDs.
 	DBClusterId *string `json:"DBClusterId,omitempty" xml:"DBClusterId,omitempty"`
-	EndTime     *string `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
-	Keyword     *string `json:"Keyword,omitempty" xml:"Keyword,omitempty"`
-	Lang        *string `json:"Lang,omitempty" xml:"Lang,omitempty"`
-	Order       *string `json:"Order,omitempty" xml:"Order,omitempty"`
-	PageNumber  *int32  `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
-	PageSize    *int32  `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	RegionId    *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	StartTime   *string `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
+	// The end of the time range to query. Specify the time in the ISO 8601 standard in the *yyyy-MM-ddTHH:mm:ssZ* format. The time must be in UTC.
+	//
+	// > The end time must be later than the start time.
+	EndTime *string `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
+	// The keyword that is used for the query.
+	Keyword *string `json:"Keyword,omitempty" xml:"Keyword,omitempty"`
+	// The language. Valid values:
+	//
+	// *   **zh** (default): simplified Chinese.
+	// *   **en**: English.
+	// *   **ja**: Japanese.
+	// *   **zh-tw**: traditional Chinese.
+	Lang *string `json:"Lang,omitempty" xml:"Lang,omitempty"`
+	// The order by which to sort query results. Specify the parameter value in the JSON string format. Example: `[{"Field":"AverageQueryTime","Type":"Asc"}]`. Parameters:
+	//
+	// *   `Field` specifies the field by which to sort the query results. Valid values:
+	//
+	//     *   `PatternCreationTime`: the earliest commit time of the SQL pattern within the time range to query.
+	//     *   `AverageQueryTime`: the average total amount of time consumed by the SQL pattern within the time range to query.
+	//     *   `MaxQueryTime`: the maximum total amount of time consumed by the SQL pattern within the time range to query.
+	//     *   `AverageExecutionTime`: the average execution duration of the SQL pattern within the time range to query.
+	//     *   `MaxExecutionTime`: the maximum execution duration of the SQL pattern within the time range to query.
+	//     *   `AveragePeakMemory`: the average peak memory usage of the SQL pattern within the time range to query.
+	//     *   `MaxPeakMemory`: the maximum peak memory usage of the SQL pattern within the time range to query.
+	//     *   `AverageScanSize`: the average amount of data scanned based on the SQL pattern within the time range to query.
+	//     *   `MaxScanSize`: the maximum amount of data scanned based on the SQL pattern within the time range to query.
+	//     *   `QueryCount`: the number of queries performed in association with the SQL pattern within the time range to query.
+	//     *   `FailedCount`: the number of failed queries performed in association with the SQL pattern within the time range to query.
+	//
+	// *   `Type` specifies the sorting order. Valid values (case-insensitive):
+	//
+	//     *   `Asc`: ascending order.
+	//     *   `Desc`: descending order.
+	Order *string `json:"Order,omitempty" xml:"Order,omitempty"`
+	// The page number. Pages start from page 1. Default value: 1.
+	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
+	// The number of entries per page. Valid values:
+	//
+	// *   **10** (default)
+	// *   **30**
+	// *   **50**
+	// *   **100**
+	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	// The region ID of the cluster.
+	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	// The beginning of the time range to query. Specify the time in the ISO 8601 standard in the *yyyy-MM-ddTHH:mm:ssZ* format. The time must be in UTC.
+	//
+	// >
+	//
+	// *   Only data within the last 14 days can be queried.
+	//
+	// *   The maximum time range that can be specified is 24 hours.
+	StartTime *string `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
 }
 
 func (s DescribeSQLPatternsRequest) String() string {
@@ -9466,11 +9791,21 @@ func (s *DescribeSQLPatternsRequest) SetStartTime(v string) *DescribeSQLPatterns
 }
 
 type DescribeSQLPatternsResponseBody struct {
-	PageNumber     *int32                                           `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
-	PageSize       *int32                                           `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	// The page number.
+	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
+	// The number of entries per page.
+	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	// Indicates whether the execution of the SQL pattern can be blocked. Valid values:
+	//
+	// *   **true**
+	// *   **false**
+	//
+	// > Only SELECT and INSERT statements can be blocked.
 	PatternDetails []*DescribeSQLPatternsResponseBodyPatternDetails `json:"PatternDetails,omitempty" xml:"PatternDetails,omitempty" type:"Repeated"`
-	RequestId      *string                                          `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	TotalCount     *int32                                           `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
+	// The request ID.
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The total number of entries returned.
+	TotalCount *int32 `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
 }
 
 func (s DescribeSQLPatternsResponseBody) String() string {
@@ -10043,14 +10378,66 @@ func (s *DescribeSparkCodeWebUiResponse) SetBody(v *DescribeSparkCodeWebUiRespon
 }
 
 type DescribeSqlPatternRequest struct {
+	// The ID of the AnalyticDB for MySQL Data Lakehouse Edition (V3.0) cluster.
+	//
+	// > You can call the [DescribeDBClusters](~~454250~~) operation to query the IDs of all AnalyticDB for MySQL Data Lakehouse Edition (V3.0) clusters within a region.
 	DBClusterId *string `json:"DBClusterId,omitempty" xml:"DBClusterId,omitempty"`
-	Order       *string `json:"Order,omitempty" xml:"Order,omitempty"`
-	PageNumber  *int32  `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
-	PageSize    *int32  `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	RegionId    *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	SqlPattern  *string `json:"SqlPattern,omitempty" xml:"SqlPattern,omitempty"`
-	StartTime   *string `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
-	Type        *string `json:"Type,omitempty" xml:"Type,omitempty"`
+	// The order by which to sort query results. Specify the parameter value in the JSON string format. Example: `[{"Field":"Pattern","Type":"Asc"}]`. Parameters:
+	//
+	// *   `Field` specifies the field by which to sort the query results. Valid values:
+	//
+	//     *   `Pattern`: the SQL pattern.
+	//     *   `AccessIP`: the IP address of the client.
+	//     *   `User`: the username.
+	//     *   `QueryCount`: the number of queries performed in association with the SQL pattern within the time range to query.
+	//     *   `AvgPeakMemory`: the average peak memory usage of the SQL pattern within the time range to query. Unit: KB.
+	//     *   `MaxPeakMemory`: the maximum peak memory usage of the SQL pattern within the time range to query. Unit: KB.
+	//     *   `AvgCpuTime`: the average execution duration of the SQL pattern within the time range to query. Unit: milliseconds.
+	//     *   `MaxCpuTime`: the maximum execution duration of the SQL pattern within the time range to query. Unit: milliseconds.
+	//     *   `AvgStageCount`: the average number of stages.
+	//     *   `MaxStageCount`: the maximum number of stages.
+	//     *   `AvgTaskCount`: the average number of tasks.
+	//     *   `MaxTaskCount`: the maximum number of tasks.
+	//     *   `AvgScanSize`: the average amount of data scanned based on the SQL pattern within the time range to query. Unit: KB.
+	//     *   `MaxScanSize`: the maximum amount of data scanned based on the SQL pattern within the time range to query. Unit: KB.
+	//
+	// *   `Type` specifies the sorting order. Valid values:
+	//
+	//     *   `Asc`: ascending order.
+	//     *   `Desc`: descending order.
+	//
+	// >
+	//
+	// *   If you do not specify this parameter, query results are sorted in ascending order of `Pattern`.
+	//
+	// *   If you want to sort query results by `AccessIP`, you must set the `Type` parameter to `accessip`. If you want to sort query results by `User`, you must leave the `Type` parameter empty or set it to `user`.
+	Order *string `json:"Order,omitempty" xml:"Order,omitempty"`
+	// The page number. Pages start from page 1. Default value: 1.
+	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
+	// The number of entries per page. Valid values:
+	//
+	// *   **10** (default)
+	// *   **30**
+	// *   **50**
+	// *   **100**
+	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	// The region ID of the cluster.
+	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	// The keyword that is used for the query.
+	//
+	// > If you do not specify this parameter, all SQL patterns of the AnalyticDB for MySQL cluster within the time period specified by `StartTime` are returned.
+	SqlPattern *string `json:"SqlPattern,omitempty" xml:"SqlPattern,omitempty"`
+	// The beginning of the time range to query. Specify the time in the ISO 8601 standard in the yyyy-MM-dd format. The time must be in UTC.
+	//
+	// > Only data within the last 30 days can be queried.
+	StartTime *string `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
+	// The dimension by which to aggregate the SQL patterns. Valid values:
+	//
+	// *   `user`: aggregates the SQL patterns by user.
+	// *   `accessip`: aggregates the SQL patterns by client IP address.
+	//
+	// > If you do not specify this parameter, the SQL patterns are aggregated by `user`.
+	Type *string `json:"Type,omitempty" xml:"Type,omitempty"`
 }
 
 func (s DescribeSqlPatternRequest) String() string {
@@ -10102,11 +10489,16 @@ func (s *DescribeSqlPatternRequest) SetType(v string) *DescribeSqlPatternRequest
 }
 
 type DescribeSqlPatternResponseBody struct {
-	Items      []*DescribeSqlPatternResponseBodyItems `json:"Items,omitempty" xml:"Items,omitempty" type:"Repeated"`
-	PageNumber *int32                                 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
-	PageSize   *int32                                 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	RequestId  *string                                `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	TotalCount *int32                                 `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
+	// The average number of tasks.
+	Items []*DescribeSqlPatternResponseBodyItems `json:"Items,omitempty" xml:"Items,omitempty" type:"Repeated"`
+	// The page number.
+	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
+	// The number of entries per page.
+	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	// The request ID.
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The total number of entries returned.
+	TotalCount *int32 `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
 }
 
 func (s DescribeSqlPatternResponseBody) String() string {
@@ -10566,6 +10958,156 @@ func (s *DescribeTablesResponse) SetStatusCode(v int32) *DescribeTablesResponse 
 }
 
 func (s *DescribeTablesResponse) SetBody(v *DescribeTablesResponseBody) *DescribeTablesResponse {
+	s.Body = v
+	return s
+}
+
+type DescribeUserQuotaRequest struct {
+	DBClusterId *string `json:"DBClusterId,omitempty" xml:"DBClusterId,omitempty"`
+}
+
+func (s DescribeUserQuotaRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeUserQuotaRequest) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeUserQuotaRequest) SetDBClusterId(v string) *DescribeUserQuotaRequest {
+	s.DBClusterId = &v
+	return s
+}
+
+type DescribeUserQuotaResponseBody struct {
+	ElasticACU          *string `json:"ElasticACU,omitempty" xml:"ElasticACU,omitempty"`
+	RequestId           *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	ReserverdCompteACU  *string `json:"ReserverdCompteACU,omitempty" xml:"ReserverdCompteACU,omitempty"`
+	ReserverdStorageACU *string `json:"ReserverdStorageACU,omitempty" xml:"ReserverdStorageACU,omitempty"`
+	ResourceGroupCount  *string `json:"ResourceGroupCount,omitempty" xml:"ResourceGroupCount,omitempty"`
+}
+
+func (s DescribeUserQuotaResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeUserQuotaResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeUserQuotaResponseBody) SetElasticACU(v string) *DescribeUserQuotaResponseBody {
+	s.ElasticACU = &v
+	return s
+}
+
+func (s *DescribeUserQuotaResponseBody) SetRequestId(v string) *DescribeUserQuotaResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *DescribeUserQuotaResponseBody) SetReserverdCompteACU(v string) *DescribeUserQuotaResponseBody {
+	s.ReserverdCompteACU = &v
+	return s
+}
+
+func (s *DescribeUserQuotaResponseBody) SetReserverdStorageACU(v string) *DescribeUserQuotaResponseBody {
+	s.ReserverdStorageACU = &v
+	return s
+}
+
+func (s *DescribeUserQuotaResponseBody) SetResourceGroupCount(v string) *DescribeUserQuotaResponseBody {
+	s.ResourceGroupCount = &v
+	return s
+}
+
+type DescribeUserQuotaResponse struct {
+	Headers    map[string]*string             `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                         `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *DescribeUserQuotaResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s DescribeUserQuotaResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeUserQuotaResponse) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeUserQuotaResponse) SetHeaders(v map[string]*string) *DescribeUserQuotaResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *DescribeUserQuotaResponse) SetStatusCode(v int32) *DescribeUserQuotaResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *DescribeUserQuotaResponse) SetBody(v *DescribeUserQuotaResponseBody) *DescribeUserQuotaResponse {
+	s.Body = v
+	return s
+}
+
+type DetachUserENIRequest struct {
+	DBClusterId *string `json:"DBClusterId,omitempty" xml:"DBClusterId,omitempty"`
+}
+
+func (s DetachUserENIRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DetachUserENIRequest) GoString() string {
+	return s.String()
+}
+
+func (s *DetachUserENIRequest) SetDBClusterId(v string) *DetachUserENIRequest {
+	s.DBClusterId = &v
+	return s
+}
+
+type DetachUserENIResponseBody struct {
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+}
+
+func (s DetachUserENIResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DetachUserENIResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *DetachUserENIResponseBody) SetRequestId(v string) *DetachUserENIResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+type DetachUserENIResponse struct {
+	Headers    map[string]*string         `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                     `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *DetachUserENIResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s DetachUserENIResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DetachUserENIResponse) GoString() string {
+	return s.String()
+}
+
+func (s *DetachUserENIResponse) SetHeaders(v map[string]*string) *DetachUserENIResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *DetachUserENIResponse) SetStatusCode(v int32) *DetachUserENIResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *DetachUserENIResponse) SetBody(v *DetachUserENIResponseBody) *DetachUserENIResponse {
 	s.Body = v
 	return s
 }
@@ -11200,6 +11742,7 @@ func (s *GetSparkAppAttemptLogResponseBody) SetRequestId(v string) *GetSparkAppA
 }
 
 type GetSparkAppAttemptLogResponseBodyData struct {
+	AppId *string `json:"AppId,omitempty" xml:"AppId,omitempty"`
 	// The ID of the Data Lakehouse Edition (V3.0) cluster.
 	DBClusterId *string `json:"DBClusterId,omitempty" xml:"DBClusterId,omitempty"`
 	// The content of the log.
@@ -11214,6 +11757,11 @@ func (s GetSparkAppAttemptLogResponseBodyData) String() string {
 
 func (s GetSparkAppAttemptLogResponseBodyData) GoString() string {
 	return s.String()
+}
+
+func (s *GetSparkAppAttemptLogResponseBodyData) SetAppId(v string) *GetSparkAppAttemptLogResponseBodyData {
+	s.AppId = &v
+	return s
 }
 
 func (s *GetSparkAppAttemptLogResponseBodyData) SetDBClusterId(v string) *GetSparkAppAttemptLogResponseBodyData {
@@ -16430,6 +16978,82 @@ func (s *UnbindAccountResponse) SetBody(v *UnbindAccountResponseBody) *UnbindAcc
 	return s
 }
 
+type UnbindDBResourceGroupWithUserRequest struct {
+	DBClusterId *string `json:"DBClusterId,omitempty" xml:"DBClusterId,omitempty"`
+	GroupName   *string `json:"GroupName,omitempty" xml:"GroupName,omitempty"`
+	GroupUser   *string `json:"GroupUser,omitempty" xml:"GroupUser,omitempty"`
+}
+
+func (s UnbindDBResourceGroupWithUserRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UnbindDBResourceGroupWithUserRequest) GoString() string {
+	return s.String()
+}
+
+func (s *UnbindDBResourceGroupWithUserRequest) SetDBClusterId(v string) *UnbindDBResourceGroupWithUserRequest {
+	s.DBClusterId = &v
+	return s
+}
+
+func (s *UnbindDBResourceGroupWithUserRequest) SetGroupName(v string) *UnbindDBResourceGroupWithUserRequest {
+	s.GroupName = &v
+	return s
+}
+
+func (s *UnbindDBResourceGroupWithUserRequest) SetGroupUser(v string) *UnbindDBResourceGroupWithUserRequest {
+	s.GroupUser = &v
+	return s
+}
+
+type UnbindDBResourceGroupWithUserResponseBody struct {
+	// Id of the request
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+}
+
+func (s UnbindDBResourceGroupWithUserResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UnbindDBResourceGroupWithUserResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *UnbindDBResourceGroupWithUserResponseBody) SetRequestId(v string) *UnbindDBResourceGroupWithUserResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+type UnbindDBResourceGroupWithUserResponse struct {
+	Headers    map[string]*string                         `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                                     `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *UnbindDBResourceGroupWithUserResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s UnbindDBResourceGroupWithUserResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UnbindDBResourceGroupWithUserResponse) GoString() string {
+	return s.String()
+}
+
+func (s *UnbindDBResourceGroupWithUserResponse) SetHeaders(v map[string]*string) *UnbindDBResourceGroupWithUserResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *UnbindDBResourceGroupWithUserResponse) SetStatusCode(v int32) *UnbindDBResourceGroupWithUserResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *UnbindDBResourceGroupWithUserResponse) SetBody(v *UnbindDBResourceGroupWithUserResponseBody) *UnbindDBResourceGroupWithUserResponse {
+	s.Body = v
+	return s
+}
+
 type UpdateSparkTemplateFileRequest struct {
 	// The template data to be updated.
 	//
@@ -16689,6 +17313,50 @@ func (client *Client) AllocateClusterPublicConnection(request *AllocateClusterPu
 	return _result, _err
 }
 
+func (client *Client) AttachUserENIWithOptions(request *AttachUserENIRequest, runtime *util.RuntimeOptions) (_result *AttachUserENIResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.DBClusterId)) {
+		query["DBClusterId"] = request.DBClusterId
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("AttachUserENI"),
+		Version:     tea.String("2021-12-01"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &AttachUserENIResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) AttachUserENI(request *AttachUserENIRequest) (_result *AttachUserENIResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &AttachUserENIResponse{}
+	_body, _err := client.AttachUserENIWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
 func (client *Client) BindAccountWithOptions(request *BindAccountRequest, runtime *util.RuntimeOptions) (_result *BindAccountResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -16741,6 +17409,58 @@ func (client *Client) BindAccount(request *BindAccountRequest) (_result *BindAcc
 	return _result, _err
 }
 
+func (client *Client) BindDBResourceGroupWithUserWithOptions(request *BindDBResourceGroupWithUserRequest, runtime *util.RuntimeOptions) (_result *BindDBResourceGroupWithUserResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.DBClusterId)) {
+		query["DBClusterId"] = request.DBClusterId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.GroupName)) {
+		query["GroupName"] = request.GroupName
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.GroupUser)) {
+		query["GroupUser"] = request.GroupUser
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("BindDBResourceGroupWithUser"),
+		Version:     tea.String("2021-12-01"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &BindDBResourceGroupWithUserResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) BindDBResourceGroupWithUser(request *BindDBResourceGroupWithUserRequest) (_result *BindDBResourceGroupWithUserResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &BindDBResourceGroupWithUserResponse{}
+	_body, _err := client.BindDBResourceGroupWithUserWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
 func (client *Client) CheckBindRamUserWithOptions(request *CheckBindRamUserRequest, runtime *util.RuntimeOptions) (_result *CheckBindRamUserResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -16782,6 +17502,50 @@ func (client *Client) CheckBindRamUser(request *CheckBindRamUserRequest) (_resul
 	runtime := &util.RuntimeOptions{}
 	_result = &CheckBindRamUserResponse{}
 	_body, _err := client.CheckBindRamUserWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) CheckSampleDataSetWithOptions(request *CheckSampleDataSetRequest, runtime *util.RuntimeOptions) (_result *CheckSampleDataSetResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.DBClusterId)) {
+		query["DBClusterId"] = request.DBClusterId
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("CheckSampleDataSet"),
+		Version:     tea.String("2021-12-01"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &CheckSampleDataSetResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) CheckSampleDataSet(request *CheckSampleDataSetRequest) (_result *CheckSampleDataSetResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &CheckSampleDataSetResponse{}
+	_body, _err := client.CheckSampleDataSetWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -18600,6 +19364,50 @@ func (client *Client) DescribeDBClusterPerformance(request *DescribeDBClusterPer
 	return _result, _err
 }
 
+func (client *Client) DescribeDBClusterStatusWithOptions(request *DescribeDBClusterStatusRequest, runtime *util.RuntimeOptions) (_result *DescribeDBClusterStatusResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.RegionId)) {
+		query["RegionId"] = request.RegionId
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("DescribeDBClusterStatus"),
+		Version:     tea.String("2021-12-01"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &DescribeDBClusterStatusResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) DescribeDBClusterStatus(request *DescribeDBClusterStatusRequest) (_result *DescribeDBClusterStatusResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &DescribeDBClusterStatusResponse{}
+	_body, _err := client.DescribeDBClusterStatusWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
 func (client *Client) DescribeDBClustersWithOptions(request *DescribeDBClustersRequest, runtime *util.RuntimeOptions) (_result *DescribeDBClustersResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -19861,6 +20669,90 @@ func (client *Client) DescribeTables(request *DescribeTablesRequest) (_result *D
 	runtime := &util.RuntimeOptions{}
 	_result = &DescribeTablesResponse{}
 	_body, _err := client.DescribeTablesWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) DescribeUserQuotaWithOptions(request *DescribeUserQuotaRequest, runtime *util.RuntimeOptions) (_result *DescribeUserQuotaResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := openapiutil.Query(util.ToMap(request))
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("DescribeUserQuota"),
+		Version:     tea.String("2021-12-01"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("GET"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &DescribeUserQuotaResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) DescribeUserQuota(request *DescribeUserQuotaRequest) (_result *DescribeUserQuotaResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &DescribeUserQuotaResponse{}
+	_body, _err := client.DescribeUserQuotaWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) DetachUserENIWithOptions(request *DetachUserENIRequest, runtime *util.RuntimeOptions) (_result *DetachUserENIResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.DBClusterId)) {
+		query["DBClusterId"] = request.DBClusterId
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("DetachUserENI"),
+		Version:     tea.String("2021-12-01"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &DetachUserENIResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) DetachUserENI(request *DetachUserENIRequest) (_result *DetachUserENIResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &DetachUserENIResponse{}
+	_body, _err := client.DetachUserENIWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -22593,6 +23485,58 @@ func (client *Client) UnbindAccount(request *UnbindAccountRequest) (_result *Unb
 	runtime := &util.RuntimeOptions{}
 	_result = &UnbindAccountResponse{}
 	_body, _err := client.UnbindAccountWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) UnbindDBResourceGroupWithUserWithOptions(request *UnbindDBResourceGroupWithUserRequest, runtime *util.RuntimeOptions) (_result *UnbindDBResourceGroupWithUserResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.DBClusterId)) {
+		query["DBClusterId"] = request.DBClusterId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.GroupName)) {
+		query["GroupName"] = request.GroupName
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.GroupUser)) {
+		query["GroupUser"] = request.GroupUser
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("UnbindDBResourceGroupWithUser"),
+		Version:     tea.String("2021-12-01"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &UnbindDBResourceGroupWithUserResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) UnbindDBResourceGroupWithUser(request *UnbindDBResourceGroupWithUserRequest) (_result *UnbindDBResourceGroupWithUserResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &UnbindDBResourceGroupWithUserResponse{}
+	_body, _err := client.UnbindDBResourceGroupWithUserWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
