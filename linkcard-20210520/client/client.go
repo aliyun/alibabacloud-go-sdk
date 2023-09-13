@@ -5042,6 +5042,190 @@ func (s *ResumeSingleCardResponse) SetBody(v *ResumeSingleCardResponseBody) *Res
 	return s
 }
 
+type SendMessageRequest struct {
+	// Linkcard
+	ApiProduct           *string   `json:"ApiProduct,omitempty" xml:"ApiProduct,omitempty"`
+	MessageSendTime      *int64    `json:"MessageSendTime,omitempty" xml:"MessageSendTime,omitempty"`
+	MessageTemplateId    *int64    `json:"MessageTemplateId,omitempty" xml:"MessageTemplateId,omitempty"`
+	MessageVariableParam *string   `json:"MessageVariableParam,omitempty" xml:"MessageVariableParam,omitempty"`
+	Msisdns              []*string `json:"Msisdns,omitempty" xml:"Msisdns,omitempty" type:"Repeated"`
+	TaskName             *string   `json:"TaskName,omitempty" xml:"TaskName,omitempty"`
+}
+
+func (s SendMessageRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s SendMessageRequest) GoString() string {
+	return s.String()
+}
+
+func (s *SendMessageRequest) SetApiProduct(v string) *SendMessageRequest {
+	s.ApiProduct = &v
+	return s
+}
+
+func (s *SendMessageRequest) SetMessageSendTime(v int64) *SendMessageRequest {
+	s.MessageSendTime = &v
+	return s
+}
+
+func (s *SendMessageRequest) SetMessageTemplateId(v int64) *SendMessageRequest {
+	s.MessageTemplateId = &v
+	return s
+}
+
+func (s *SendMessageRequest) SetMessageVariableParam(v string) *SendMessageRequest {
+	s.MessageVariableParam = &v
+	return s
+}
+
+func (s *SendMessageRequest) SetMsisdns(v []*string) *SendMessageRequest {
+	s.Msisdns = v
+	return s
+}
+
+func (s *SendMessageRequest) SetTaskName(v string) *SendMessageRequest {
+	s.TaskName = &v
+	return s
+}
+
+type SendMessageShrinkRequest struct {
+	// Linkcard
+	ApiProduct           *string `json:"ApiProduct,omitempty" xml:"ApiProduct,omitempty"`
+	MessageSendTime      *int64  `json:"MessageSendTime,omitempty" xml:"MessageSendTime,omitempty"`
+	MessageTemplateId    *int64  `json:"MessageTemplateId,omitempty" xml:"MessageTemplateId,omitempty"`
+	MessageVariableParam *string `json:"MessageVariableParam,omitempty" xml:"MessageVariableParam,omitempty"`
+	MsisdnsShrink        *string `json:"Msisdns,omitempty" xml:"Msisdns,omitempty"`
+	TaskName             *string `json:"TaskName,omitempty" xml:"TaskName,omitempty"`
+}
+
+func (s SendMessageShrinkRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s SendMessageShrinkRequest) GoString() string {
+	return s.String()
+}
+
+func (s *SendMessageShrinkRequest) SetApiProduct(v string) *SendMessageShrinkRequest {
+	s.ApiProduct = &v
+	return s
+}
+
+func (s *SendMessageShrinkRequest) SetMessageSendTime(v int64) *SendMessageShrinkRequest {
+	s.MessageSendTime = &v
+	return s
+}
+
+func (s *SendMessageShrinkRequest) SetMessageTemplateId(v int64) *SendMessageShrinkRequest {
+	s.MessageTemplateId = &v
+	return s
+}
+
+func (s *SendMessageShrinkRequest) SetMessageVariableParam(v string) *SendMessageShrinkRequest {
+	s.MessageVariableParam = &v
+	return s
+}
+
+func (s *SendMessageShrinkRequest) SetMsisdnsShrink(v string) *SendMessageShrinkRequest {
+	s.MsisdnsShrink = &v
+	return s
+}
+
+func (s *SendMessageShrinkRequest) SetTaskName(v string) *SendMessageShrinkRequest {
+	s.TaskName = &v
+	return s
+}
+
+type SendMessageResponseBody struct {
+	Code             *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	Data             *int64  `json:"Data,omitempty" xml:"Data,omitempty"`
+	DynamicCode      *string `json:"DynamicCode,omitempty" xml:"DynamicCode,omitempty"`
+	DynamicMessage   *string `json:"DynamicMessage,omitempty" xml:"DynamicMessage,omitempty"`
+	ErrorMessage     *string `json:"ErrorMessage,omitempty" xml:"ErrorMessage,omitempty"`
+	LocalizedMessage *string `json:"LocalizedMessage,omitempty" xml:"LocalizedMessage,omitempty"`
+	RequestId        *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	Success          *bool   `json:"Success,omitempty" xml:"Success,omitempty"`
+}
+
+func (s SendMessageResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s SendMessageResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *SendMessageResponseBody) SetCode(v string) *SendMessageResponseBody {
+	s.Code = &v
+	return s
+}
+
+func (s *SendMessageResponseBody) SetData(v int64) *SendMessageResponseBody {
+	s.Data = &v
+	return s
+}
+
+func (s *SendMessageResponseBody) SetDynamicCode(v string) *SendMessageResponseBody {
+	s.DynamicCode = &v
+	return s
+}
+
+func (s *SendMessageResponseBody) SetDynamicMessage(v string) *SendMessageResponseBody {
+	s.DynamicMessage = &v
+	return s
+}
+
+func (s *SendMessageResponseBody) SetErrorMessage(v string) *SendMessageResponseBody {
+	s.ErrorMessage = &v
+	return s
+}
+
+func (s *SendMessageResponseBody) SetLocalizedMessage(v string) *SendMessageResponseBody {
+	s.LocalizedMessage = &v
+	return s
+}
+
+func (s *SendMessageResponseBody) SetRequestId(v string) *SendMessageResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *SendMessageResponseBody) SetSuccess(v bool) *SendMessageResponseBody {
+	s.Success = &v
+	return s
+}
+
+type SendMessageResponse struct {
+	Headers    map[string]*string       `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                   `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *SendMessageResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s SendMessageResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s SendMessageResponse) GoString() string {
+	return s.String()
+}
+
+func (s *SendMessageResponse) SetHeaders(v map[string]*string) *SendMessageResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *SendMessageResponse) SetStatusCode(v int32) *SendMessageResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *SendMessageResponse) SetBody(v *SendMessageResponseBody) *SendMessageResponse {
+	s.Body = v
+	return s
+}
+
 type SetCardStopRuleRequest struct {
 	AutoRestore *bool   `json:"AutoRestore,omitempty" xml:"AutoRestore,omitempty"`
 	FlowLimit   *int64  `json:"FlowLimit,omitempty" xml:"FlowLimit,omitempty"`
@@ -6977,6 +7161,76 @@ func (client *Client) ResumeSingleCard(request *ResumeSingleCardRequest) (_resul
 	runtime := &util.RuntimeOptions{}
 	_result = &ResumeSingleCardResponse{}
 	_body, _err := client.ResumeSingleCardWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) SendMessageWithOptions(tmpReq *SendMessageRequest, runtime *util.RuntimeOptions) (_result *SendMessageResponse, _err error) {
+	_err = util.ValidateModel(tmpReq)
+	if _err != nil {
+		return _result, _err
+	}
+	request := &SendMessageShrinkRequest{}
+	openapiutil.Convert(tmpReq, request)
+	if !tea.BoolValue(util.IsUnset(tmpReq.Msisdns)) {
+		request.MsisdnsShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.Msisdns, tea.String("Msisdns"), tea.String("json"))
+	}
+
+	body := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.ApiProduct)) {
+		body["ApiProduct"] = request.ApiProduct
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.MessageSendTime)) {
+		body["MessageSendTime"] = request.MessageSendTime
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.MessageTemplateId)) {
+		body["MessageTemplateId"] = request.MessageTemplateId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.MessageVariableParam)) {
+		body["MessageVariableParam"] = request.MessageVariableParam
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.MsisdnsShrink)) {
+		body["Msisdns"] = request.MsisdnsShrink
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.TaskName)) {
+		body["TaskName"] = request.TaskName
+	}
+
+	req := &openapi.OpenApiRequest{
+		Body: openapiutil.ParseToMap(body),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("SendMessage"),
+		Version:     tea.String("2021-05-20"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &SendMessageResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) SendMessage(request *SendMessageRequest) (_result *SendMessageResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &SendMessageResponse{}
+	_body, _err := client.SendMessageWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
