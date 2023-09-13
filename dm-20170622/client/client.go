@@ -1350,22 +1350,23 @@ func (s *DescAccountSummaryRequest) SetResourceOwnerId(v int64) *DescAccountSumm
 }
 
 type DescAccountSummaryResponseBody struct {
-	DailyQuota    *int32  `json:"DailyQuota,omitempty" xml:"DailyQuota,omitempty"`
-	DayuStatus    *int32  `json:"DayuStatus,omitempty" xml:"DayuStatus,omitempty"`
-	Domains       *int32  `json:"Domains,omitempty" xml:"Domains,omitempty"`
-	EnableTimes   *int32  `json:"EnableTimes,omitempty" xml:"EnableTimes,omitempty"`
-	MailAddresses *int32  `json:"MailAddresses,omitempty" xml:"MailAddresses,omitempty"`
-	MaxQuotaLevel *int32  `json:"MaxQuotaLevel,omitempty" xml:"MaxQuotaLevel,omitempty"`
-	MonthQuota    *int32  `json:"MonthQuota,omitempty" xml:"MonthQuota,omitempty"`
-	QuotaLevel    *int32  `json:"QuotaLevel,omitempty" xml:"QuotaLevel,omitempty"`
-	Receivers     *int32  `json:"Receivers,omitempty" xml:"Receivers,omitempty"`
-	RequestId     *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	SmsRecord     *int32  `json:"SmsRecord,omitempty" xml:"SmsRecord,omitempty"`
-	SmsSign       *int32  `json:"SmsSign,omitempty" xml:"SmsSign,omitempty"`
-	SmsTemplates  *int32  `json:"SmsTemplates,omitempty" xml:"SmsTemplates,omitempty"`
-	Tags          *int32  `json:"Tags,omitempty" xml:"Tags,omitempty"`
-	Templates     *int32  `json:"Templates,omitempty" xml:"Templates,omitempty"`
-	UserStatus    *int32  `json:"UserStatus,omitempty" xml:"UserStatus,omitempty"`
+	DailyQuota      *int32  `json:"DailyQuota,omitempty" xml:"DailyQuota,omitempty"`
+	DayuStatus      *int32  `json:"DayuStatus,omitempty" xml:"DayuStatus,omitempty"`
+	Domains         *int32  `json:"Domains,omitempty" xml:"Domains,omitempty"`
+	EnableTimes     *int32  `json:"EnableTimes,omitempty" xml:"EnableTimes,omitempty"`
+	MailAddresses   *int32  `json:"MailAddresses,omitempty" xml:"MailAddresses,omitempty"`
+	MaxQuotaLevel   *int32  `json:"MaxQuotaLevel,omitempty" xml:"MaxQuotaLevel,omitempty"`
+	MonthQuota      *int32  `json:"MonthQuota,omitempty" xml:"MonthQuota,omitempty"`
+	QuotaLevel      *int32  `json:"QuotaLevel,omitempty" xml:"QuotaLevel,omitempty"`
+	Receivers       *int32  `json:"Receivers,omitempty" xml:"Receivers,omitempty"`
+	RemainFreeQuota *int32  `json:"RemainFreeQuota,omitempty" xml:"RemainFreeQuota,omitempty"`
+	RequestId       *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	SmsRecord       *int32  `json:"SmsRecord,omitempty" xml:"SmsRecord,omitempty"`
+	SmsSign         *int32  `json:"SmsSign,omitempty" xml:"SmsSign,omitempty"`
+	SmsTemplates    *int32  `json:"SmsTemplates,omitempty" xml:"SmsTemplates,omitempty"`
+	Tags            *int32  `json:"Tags,omitempty" xml:"Tags,omitempty"`
+	Templates       *int32  `json:"Templates,omitempty" xml:"Templates,omitempty"`
+	UserStatus      *int32  `json:"UserStatus,omitempty" xml:"UserStatus,omitempty"`
 }
 
 func (s DescAccountSummaryResponseBody) String() string {
@@ -1418,6 +1419,11 @@ func (s *DescAccountSummaryResponseBody) SetQuotaLevel(v int32) *DescAccountSumm
 
 func (s *DescAccountSummaryResponseBody) SetReceivers(v int32) *DescAccountSummaryResponseBody {
 	s.Receivers = &v
+	return s
+}
+
+func (s *DescAccountSummaryResponseBody) SetRemainFreeQuota(v int32) *DescAccountSummaryResponseBody {
+	s.RemainFreeQuota = &v
 	return s
 }
 
@@ -1526,6 +1532,9 @@ type DescDomainResponseBody struct {
 	CnameRecord        *string `json:"CnameRecord,omitempty" xml:"CnameRecord,omitempty"`
 	CreateTime         *string `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
 	DefaultDomain      *string `json:"DefaultDomain,omitempty" xml:"DefaultDomain,omitempty"`
+	DkimAuthStatus     *string `json:"DkimAuthStatus,omitempty" xml:"DkimAuthStatus,omitempty"`
+	DkimPublicKey      *string `json:"DkimPublicKey,omitempty" xml:"DkimPublicKey,omitempty"`
+	DkimRR             *string `json:"DkimRR,omitempty" xml:"DkimRR,omitempty"`
 	DnsMx              *string `json:"DnsMx,omitempty" xml:"DnsMx,omitempty"`
 	DnsSpf             *string `json:"DnsSpf,omitempty" xml:"DnsSpf,omitempty"`
 	DnsTxt             *string `json:"DnsTxt,omitempty" xml:"DnsTxt,omitempty"`
@@ -1533,12 +1542,14 @@ type DescDomainResponseBody struct {
 	DomainName         *string `json:"DomainName,omitempty" xml:"DomainName,omitempty"`
 	DomainStatus       *string `json:"DomainStatus,omitempty" xml:"DomainStatus,omitempty"`
 	DomainType         *string `json:"DomainType,omitempty" xml:"DomainType,omitempty"`
+	HostRecord         *string `json:"HostRecord,omitempty" xml:"HostRecord,omitempty"`
 	IcpStatus          *string `json:"IcpStatus,omitempty" xml:"IcpStatus,omitempty"`
 	MxAuthStatus       *string `json:"MxAuthStatus,omitempty" xml:"MxAuthStatus,omitempty"`
 	MxRecord           *string `json:"MxRecord,omitempty" xml:"MxRecord,omitempty"`
 	RequestId          *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	SpfAuthStatus      *string `json:"SpfAuthStatus,omitempty" xml:"SpfAuthStatus,omitempty"`
 	SpfRecord          *string `json:"SpfRecord,omitempty" xml:"SpfRecord,omitempty"`
+	SpfRecordV2        *string `json:"SpfRecordV2,omitempty" xml:"SpfRecordV2,omitempty"`
 	TlDomainName       *string `json:"TlDomainName,omitempty" xml:"TlDomainName,omitempty"`
 	TracefRecord       *string `json:"TracefRecord,omitempty" xml:"TracefRecord,omitempty"`
 }
@@ -1573,6 +1584,21 @@ func (s *DescDomainResponseBody) SetCreateTime(v string) *DescDomainResponseBody
 
 func (s *DescDomainResponseBody) SetDefaultDomain(v string) *DescDomainResponseBody {
 	s.DefaultDomain = &v
+	return s
+}
+
+func (s *DescDomainResponseBody) SetDkimAuthStatus(v string) *DescDomainResponseBody {
+	s.DkimAuthStatus = &v
+	return s
+}
+
+func (s *DescDomainResponseBody) SetDkimPublicKey(v string) *DescDomainResponseBody {
+	s.DkimPublicKey = &v
+	return s
+}
+
+func (s *DescDomainResponseBody) SetDkimRR(v string) *DescDomainResponseBody {
+	s.DkimRR = &v
 	return s
 }
 
@@ -1611,6 +1637,11 @@ func (s *DescDomainResponseBody) SetDomainType(v string) *DescDomainResponseBody
 	return s
 }
 
+func (s *DescDomainResponseBody) SetHostRecord(v string) *DescDomainResponseBody {
+	s.HostRecord = &v
+	return s
+}
+
 func (s *DescDomainResponseBody) SetIcpStatus(v string) *DescDomainResponseBody {
 	s.IcpStatus = &v
 	return s
@@ -1638,6 +1669,11 @@ func (s *DescDomainResponseBody) SetSpfAuthStatus(v string) *DescDomainResponseB
 
 func (s *DescDomainResponseBody) SetSpfRecord(v string) *DescDomainResponseBody {
 	s.SpfRecord = &v
+	return s
+}
+
+func (s *DescDomainResponseBody) SetSpfRecordV2(v string) *DescDomainResponseBody {
+	s.SpfRecordV2 = &v
 	return s
 }
 
@@ -2249,16 +2285,16 @@ func (s *GetTrackListResponseBodyData) SetStat(v []*GetTrackListResponseBodyData
 }
 
 type GetTrackListResponseBodyDataStat struct {
-	CreateTime           *string `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
-	RcptClickCount       *string `json:"RcptClickCount,omitempty" xml:"RcptClickCount,omitempty"`
+	CreateTime           *int64  `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
+	RcptClickCount       *int64  `json:"RcptClickCount,omitempty" xml:"RcptClickCount,omitempty"`
 	RcptClickRate        *string `json:"RcptClickRate,omitempty" xml:"RcptClickRate,omitempty"`
-	RcptOpenCount        *string `json:"RcptOpenCount,omitempty" xml:"RcptOpenCount,omitempty"`
+	RcptOpenCount        *int64  `json:"RcptOpenCount,omitempty" xml:"RcptOpenCount,omitempty"`
 	RcptOpenRate         *string `json:"RcptOpenRate,omitempty" xml:"RcptOpenRate,omitempty"`
-	RcptUniqueClickCount *string `json:"RcptUniqueClickCount,omitempty" xml:"RcptUniqueClickCount,omitempty"`
+	RcptUniqueClickCount *int64  `json:"RcptUniqueClickCount,omitempty" xml:"RcptUniqueClickCount,omitempty"`
 	RcptUniqueClickRate  *string `json:"RcptUniqueClickRate,omitempty" xml:"RcptUniqueClickRate,omitempty"`
-	RcptUniqueOpenCount  *string `json:"RcptUniqueOpenCount,omitempty" xml:"RcptUniqueOpenCount,omitempty"`
+	RcptUniqueOpenCount  *int64  `json:"RcptUniqueOpenCount,omitempty" xml:"RcptUniqueOpenCount,omitempty"`
 	RcptUniqueOpenRate   *string `json:"RcptUniqueOpenRate,omitempty" xml:"RcptUniqueOpenRate,omitempty"`
-	TotalNumber          *string `json:"TotalNumber,omitempty" xml:"TotalNumber,omitempty"`
+	TotalNumber          *int64  `json:"TotalNumber,omitempty" xml:"TotalNumber,omitempty"`
 }
 
 func (s GetTrackListResponseBodyDataStat) String() string {
@@ -2269,12 +2305,12 @@ func (s GetTrackListResponseBodyDataStat) GoString() string {
 	return s.String()
 }
 
-func (s *GetTrackListResponseBodyDataStat) SetCreateTime(v string) *GetTrackListResponseBodyDataStat {
+func (s *GetTrackListResponseBodyDataStat) SetCreateTime(v int64) *GetTrackListResponseBodyDataStat {
 	s.CreateTime = &v
 	return s
 }
 
-func (s *GetTrackListResponseBodyDataStat) SetRcptClickCount(v string) *GetTrackListResponseBodyDataStat {
+func (s *GetTrackListResponseBodyDataStat) SetRcptClickCount(v int64) *GetTrackListResponseBodyDataStat {
 	s.RcptClickCount = &v
 	return s
 }
@@ -2284,7 +2320,7 @@ func (s *GetTrackListResponseBodyDataStat) SetRcptClickRate(v string) *GetTrackL
 	return s
 }
 
-func (s *GetTrackListResponseBodyDataStat) SetRcptOpenCount(v string) *GetTrackListResponseBodyDataStat {
+func (s *GetTrackListResponseBodyDataStat) SetRcptOpenCount(v int64) *GetTrackListResponseBodyDataStat {
 	s.RcptOpenCount = &v
 	return s
 }
@@ -2294,7 +2330,7 @@ func (s *GetTrackListResponseBodyDataStat) SetRcptOpenRate(v string) *GetTrackLi
 	return s
 }
 
-func (s *GetTrackListResponseBodyDataStat) SetRcptUniqueClickCount(v string) *GetTrackListResponseBodyDataStat {
+func (s *GetTrackListResponseBodyDataStat) SetRcptUniqueClickCount(v int64) *GetTrackListResponseBodyDataStat {
 	s.RcptUniqueClickCount = &v
 	return s
 }
@@ -2304,7 +2340,7 @@ func (s *GetTrackListResponseBodyDataStat) SetRcptUniqueClickRate(v string) *Get
 	return s
 }
 
-func (s *GetTrackListResponseBodyDataStat) SetRcptUniqueOpenCount(v string) *GetTrackListResponseBodyDataStat {
+func (s *GetTrackListResponseBodyDataStat) SetRcptUniqueOpenCount(v int64) *GetTrackListResponseBodyDataStat {
 	s.RcptUniqueOpenCount = &v
 	return s
 }
@@ -2314,7 +2350,7 @@ func (s *GetTrackListResponseBodyDataStat) SetRcptUniqueOpenRate(v string) *GetT
 	return s
 }
 
-func (s *GetTrackListResponseBodyDataStat) SetTotalNumber(v string) *GetTrackListResponseBodyDataStat {
+func (s *GetTrackListResponseBodyDataStat) SetTotalNumber(v int64) *GetTrackListResponseBodyDataStat {
 	s.TotalNumber = &v
 	return s
 }
@@ -6143,6 +6179,14 @@ func (client *Client) GetAccountList(request *GetAccountListRequest) (_result *G
 	return _result, _err
 }
 
+/**
+ * @deprecated
+ *
+ * @param request GetMailAddressMsgCallBackUrlRequest
+ * @param runtime runtime options for this request RuntimeOptions
+ * @return GetMailAddressMsgCallBackUrlResponse
+ */
+// Deprecated
 func (client *Client) GetMailAddressMsgCallBackUrlWithOptions(request *GetMailAddressMsgCallBackUrlRequest, runtime *util.RuntimeOptions) (_result *GetMailAddressMsgCallBackUrlResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -6188,6 +6232,13 @@ func (client *Client) GetMailAddressMsgCallBackUrlWithOptions(request *GetMailAd
 	return _result, _err
 }
 
+/**
+ * @deprecated
+ *
+ * @param request GetMailAddressMsgCallBackUrlRequest
+ * @return GetMailAddressMsgCallBackUrlResponse
+ */
+// Deprecated
 func (client *Client) GetMailAddressMsgCallBackUrl(request *GetMailAddressMsgCallBackUrlRequest) (_result *GetMailAddressMsgCallBackUrlResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &GetMailAddressMsgCallBackUrlResponse{}
