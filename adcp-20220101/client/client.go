@@ -3152,7 +3152,7 @@ func (s *DescribePolicyInstancesStatusResponse) SetBody(v *DescribePolicyInstanc
 }
 
 type DescribeRegionsRequest struct {
-	// The ID of the request.
+	// The language. Valid values: zh and en.
 	Language *string `json:"Language,omitempty" xml:"Language,omitempty"`
 }
 
@@ -3170,9 +3170,9 @@ func (s *DescribeRegionsRequest) SetLanguage(v string) *DescribeRegionsRequest {
 }
 
 type DescribeRegionsResponseBody struct {
-	// Example 1
+	// A list of available regions that are returned.
 	Regions []*DescribeRegionsResponseBodyRegions `json:"Regions,omitempty" xml:"Regions,omitempty" type:"Repeated"`
-	// The name of the region.
+	// The ID of the request.
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -3195,8 +3195,9 @@ func (s *DescribeRegionsResponseBody) SetRequestId(v string) *DescribeRegionsRes
 }
 
 type DescribeRegionsResponseBodyRegions struct {
+	// The name of the region.
 	LocalName *string `json:"LocalName,omitempty" xml:"LocalName,omitempty"`
-	// You can call the DescribeRegions operation to query available regions.
+	// The ID of the region.
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 }
 
@@ -3468,11 +3469,43 @@ func (s *DetachClusterFromHubResponse) SetBody(v *DetachClusterFromHubResponseBo
 
 type GrantUserPermissionRequest struct {
 	ClusterId *string `json:"ClusterId,omitempty" xml:"ClusterId,omitempty"`
+	// The entity to which the permissions are granted. A value of `true` indicates that the permissions are granted to a RAM user. A value of `false` indicates that the permissions are granted to a RAM role.
 	IsRamRole *bool   `json:"IsRamRole,omitempty" xml:"IsRamRole,omitempty"`
 	Namespace *string `json:"Namespace,omitempty" xml:"Namespace,omitempty"`
-	RoleName  *string `json:"RoleName,omitempty" xml:"RoleName,omitempty"`
-	RoleType  *string `json:"RoleType,omitempty" xml:"RoleType,omitempty"`
-	UserId    *string `json:"UserId,omitempty" xml:"UserId,omitempty"`
+	// The predefined role that you want to assign. Valid values:
+	//
+	// *   admin: the administrator role.
+	// *   dev: the developer role.
+	//
+	// Enumerated values:
+	//
+	// *   arms-admin
+	//
+	//     <!-- -->
+	//
+	//     <!-- -->
+	//
+	//     <!-- -->
+	//
+	// *   dev
+	//
+	//     <!-- -->
+	//
+	//     <!-- -->
+	//
+	//     <!-- -->
+	//
+	// *   admin
+	//
+	//     <!-- -->
+	//
+	//     <!-- -->
+	//
+	//     <!-- -->
+	RoleName *string `json:"RoleName,omitempty" xml:"RoleName,omitempty"`
+	RoleType *string `json:"RoleType,omitempty" xml:"RoleType,omitempty"`
+	// The ID of the RAM user or RAM role.
+	UserId *string `json:"UserId,omitempty" xml:"UserId,omitempty"`
 }
 
 func (s GrantUserPermissionRequest) String() string {
@@ -3698,6 +3731,7 @@ type UpdateHubClusterFeatureRequest struct {
 	ApiServerEipId    *string `json:"ApiServerEipId,omitempty" xml:"ApiServerEipId,omitempty"`
 	ArgoCDEnabled     *bool   `json:"ArgoCDEnabled,omitempty" xml:"ArgoCDEnabled,omitempty"`
 	ArgoCDHAEnabled   *bool   `json:"ArgoCDHAEnabled,omitempty" xml:"ArgoCDHAEnabled,omitempty"`
+	ArgoEventsEnabled *bool   `json:"ArgoEventsEnabled,omitempty" xml:"ArgoEventsEnabled,omitempty"`
 	ArgoServerEnabled *bool   `json:"ArgoServerEnabled,omitempty" xml:"ArgoServerEnabled,omitempty"`
 	// Specifies whether to enable the audit logging feature. Valid values:
 	//
@@ -3755,6 +3789,11 @@ func (s *UpdateHubClusterFeatureRequest) SetArgoCDEnabled(v bool) *UpdateHubClus
 
 func (s *UpdateHubClusterFeatureRequest) SetArgoCDHAEnabled(v bool) *UpdateHubClusterFeatureRequest {
 	s.ArgoCDHAEnabled = &v
+	return s
+}
+
+func (s *UpdateHubClusterFeatureRequest) SetArgoEventsEnabled(v bool) *UpdateHubClusterFeatureRequest {
+	s.ArgoEventsEnabled = &v
 	return s
 }
 
@@ -3824,6 +3863,7 @@ type UpdateHubClusterFeatureShrinkRequest struct {
 	ApiServerEipId    *string `json:"ApiServerEipId,omitempty" xml:"ApiServerEipId,omitempty"`
 	ArgoCDEnabled     *bool   `json:"ArgoCDEnabled,omitempty" xml:"ArgoCDEnabled,omitempty"`
 	ArgoCDHAEnabled   *bool   `json:"ArgoCDHAEnabled,omitempty" xml:"ArgoCDHAEnabled,omitempty"`
+	ArgoEventsEnabled *bool   `json:"ArgoEventsEnabled,omitempty" xml:"ArgoEventsEnabled,omitempty"`
 	ArgoServerEnabled *bool   `json:"ArgoServerEnabled,omitempty" xml:"ArgoServerEnabled,omitempty"`
 	// Specifies whether to enable the audit logging feature. Valid values:
 	//
@@ -3881,6 +3921,11 @@ func (s *UpdateHubClusterFeatureShrinkRequest) SetArgoCDEnabled(v bool) *UpdateH
 
 func (s *UpdateHubClusterFeatureShrinkRequest) SetArgoCDHAEnabled(v bool) *UpdateHubClusterFeatureShrinkRequest {
 	s.ArgoCDHAEnabled = &v
+	return s
+}
+
+func (s *UpdateHubClusterFeatureShrinkRequest) SetArgoEventsEnabled(v bool) *UpdateHubClusterFeatureShrinkRequest {
+	s.ArgoEventsEnabled = &v
 	return s
 }
 
@@ -5258,6 +5303,10 @@ func (client *Client) UpdateHubClusterFeatureWithOptions(tmpReq *UpdateHubCluste
 
 	if !tea.BoolValue(util.IsUnset(request.ArgoCDHAEnabled)) {
 		query["ArgoCDHAEnabled"] = request.ArgoCDHAEnabled
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ArgoEventsEnabled)) {
+		query["ArgoEventsEnabled"] = request.ArgoEventsEnabled
 	}
 
 	if !tea.BoolValue(util.IsUnset(request.ArgoServerEnabled)) {
