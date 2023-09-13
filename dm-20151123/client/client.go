@@ -1483,22 +1483,23 @@ func (s *DescAccountSummaryRequest) SetResourceOwnerId(v int64) *DescAccountSumm
 }
 
 type DescAccountSummaryResponseBody struct {
-	DailyQuota    *int32  `json:"DailyQuota,omitempty" xml:"DailyQuota,omitempty"`
-	DayuStatus    *int32  `json:"DayuStatus,omitempty" xml:"DayuStatus,omitempty"`
-	Domains       *int32  `json:"Domains,omitempty" xml:"Domains,omitempty"`
-	EnableTimes   *int32  `json:"EnableTimes,omitempty" xml:"EnableTimes,omitempty"`
-	MailAddresses *int32  `json:"MailAddresses,omitempty" xml:"MailAddresses,omitempty"`
-	MaxQuotaLevel *int32  `json:"MaxQuotaLevel,omitempty" xml:"MaxQuotaLevel,omitempty"`
-	MonthQuota    *int32  `json:"MonthQuota,omitempty" xml:"MonthQuota,omitempty"`
-	QuotaLevel    *int32  `json:"QuotaLevel,omitempty" xml:"QuotaLevel,omitempty"`
-	Receivers     *int32  `json:"Receivers,omitempty" xml:"Receivers,omitempty"`
-	RequestId     *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	SmsRecord     *int32  `json:"SmsRecord,omitempty" xml:"SmsRecord,omitempty"`
-	SmsSign       *int32  `json:"SmsSign,omitempty" xml:"SmsSign,omitempty"`
-	SmsTemplates  *int32  `json:"SmsTemplates,omitempty" xml:"SmsTemplates,omitempty"`
-	Tags          *int32  `json:"Tags,omitempty" xml:"Tags,omitempty"`
-	Templates     *int32  `json:"Templates,omitempty" xml:"Templates,omitempty"`
-	UserStatus    *int32  `json:"UserStatus,omitempty" xml:"UserStatus,omitempty"`
+	DailyQuota      *int32  `json:"DailyQuota,omitempty" xml:"DailyQuota,omitempty"`
+	DayuStatus      *int32  `json:"DayuStatus,omitempty" xml:"DayuStatus,omitempty"`
+	Domains         *int32  `json:"Domains,omitempty" xml:"Domains,omitempty"`
+	EnableTimes     *int32  `json:"EnableTimes,omitempty" xml:"EnableTimes,omitempty"`
+	MailAddresses   *int32  `json:"MailAddresses,omitempty" xml:"MailAddresses,omitempty"`
+	MaxQuotaLevel   *int32  `json:"MaxQuotaLevel,omitempty" xml:"MaxQuotaLevel,omitempty"`
+	MonthQuota      *int32  `json:"MonthQuota,omitempty" xml:"MonthQuota,omitempty"`
+	QuotaLevel      *int32  `json:"QuotaLevel,omitempty" xml:"QuotaLevel,omitempty"`
+	Receivers       *int32  `json:"Receivers,omitempty" xml:"Receivers,omitempty"`
+	RemainFreeQuota *int32  `json:"RemainFreeQuota,omitempty" xml:"RemainFreeQuota,omitempty"`
+	RequestId       *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	SmsRecord       *int32  `json:"SmsRecord,omitempty" xml:"SmsRecord,omitempty"`
+	SmsSign         *int32  `json:"SmsSign,omitempty" xml:"SmsSign,omitempty"`
+	SmsTemplates    *int32  `json:"SmsTemplates,omitempty" xml:"SmsTemplates,omitempty"`
+	Tags            *int32  `json:"Tags,omitempty" xml:"Tags,omitempty"`
+	Templates       *int32  `json:"Templates,omitempty" xml:"Templates,omitempty"`
+	UserStatus      *int32  `json:"UserStatus,omitempty" xml:"UserStatus,omitempty"`
 }
 
 func (s DescAccountSummaryResponseBody) String() string {
@@ -1551,6 +1552,11 @@ func (s *DescAccountSummaryResponseBody) SetQuotaLevel(v int32) *DescAccountSumm
 
 func (s *DescAccountSummaryResponseBody) SetReceivers(v int32) *DescAccountSummaryResponseBody {
 	s.Receivers = &v
+	return s
+}
+
+func (s *DescAccountSummaryResponseBody) SetRemainFreeQuota(v int32) *DescAccountSummaryResponseBody {
+	s.RemainFreeQuota = &v
 	return s
 }
 
