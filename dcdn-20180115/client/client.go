@@ -4228,6 +4228,69 @@ func (s *DeleteDcdnSubTaskResponse) SetBody(v *DeleteDcdnSubTaskResponseBody) *D
 	return s
 }
 
+type DeleteDcdnUserConfigRequest struct {
+	FunctionName *string `json:"FunctionName,omitempty" xml:"FunctionName,omitempty"`
+}
+
+func (s DeleteDcdnUserConfigRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DeleteDcdnUserConfigRequest) GoString() string {
+	return s.String()
+}
+
+func (s *DeleteDcdnUserConfigRequest) SetFunctionName(v string) *DeleteDcdnUserConfigRequest {
+	s.FunctionName = &v
+	return s
+}
+
+type DeleteDcdnUserConfigResponseBody struct {
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+}
+
+func (s DeleteDcdnUserConfigResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DeleteDcdnUserConfigResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *DeleteDcdnUserConfigResponseBody) SetRequestId(v string) *DeleteDcdnUserConfigResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+type DeleteDcdnUserConfigResponse struct {
+	Headers    map[string]*string                `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                            `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *DeleteDcdnUserConfigResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s DeleteDcdnUserConfigResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DeleteDcdnUserConfigResponse) GoString() string {
+	return s.String()
+}
+
+func (s *DeleteDcdnUserConfigResponse) SetHeaders(v map[string]*string) *DeleteDcdnUserConfigResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *DeleteDcdnUserConfigResponse) SetStatusCode(v int32) *DeleteDcdnUserConfigResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *DeleteDcdnUserConfigResponse) SetBody(v *DeleteDcdnUserConfigResponseBody) *DeleteDcdnUserConfigResponse {
+	s.Body = v
+	return s
+}
+
 type DeleteDcdnWafGroupRequest struct {
 	Id *int64 `json:"Id,omitempty" xml:"Id,omitempty"`
 }
@@ -5580,6 +5643,7 @@ type DescribeDcdnDdosSpecInfoResponseBody struct {
 	BandwidthLimit *string                                          `json:"BandwidthLimit,omitempty" xml:"BandwidthLimit,omitempty"`
 	Edition        *string                                          `json:"Edition,omitempty" xml:"Edition,omitempty"`
 	Enable         *string                                          `json:"Enable,omitempty" xml:"Enable,omitempty"`
+	IsSpecialPort  *string                                          `json:"IsSpecialPort,omitempty" xml:"IsSpecialPort,omitempty"`
 	ProtectedArea  *string                                          `json:"ProtectedArea,omitempty" xml:"ProtectedArea,omitempty"`
 	QpsLimit       *string                                          `json:"QpsLimit,omitempty" xml:"QpsLimit,omitempty"`
 	RequestId      *string                                          `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
@@ -5606,6 +5670,11 @@ func (s *DescribeDcdnDdosSpecInfoResponseBody) SetEdition(v string) *DescribeDcd
 
 func (s *DescribeDcdnDdosSpecInfoResponseBody) SetEnable(v string) *DescribeDcdnDdosSpecInfoResponseBody {
 	s.Enable = &v
+	return s
+}
+
+func (s *DescribeDcdnDdosSpecInfoResponseBody) SetIsSpecialPort(v string) *DescribeDcdnDdosSpecInfoResponseBody {
+	s.IsSpecialPort = &v
 	return s
 }
 
@@ -32578,6 +32647,50 @@ func (client *Client) DeleteDcdnSubTask() (_result *DeleteDcdnSubTaskResponse, _
 	runtime := &util.RuntimeOptions{}
 	_result = &DeleteDcdnSubTaskResponse{}
 	_body, _err := client.DeleteDcdnSubTaskWithOptions(runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) DeleteDcdnUserConfigWithOptions(request *DeleteDcdnUserConfigRequest, runtime *util.RuntimeOptions) (_result *DeleteDcdnUserConfigResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.FunctionName)) {
+		query["FunctionName"] = request.FunctionName
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("DeleteDcdnUserConfig"),
+		Version:     tea.String("2018-01-15"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &DeleteDcdnUserConfigResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) DeleteDcdnUserConfig(request *DeleteDcdnUserConfigRequest) (_result *DeleteDcdnUserConfigResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &DeleteDcdnUserConfigResponse{}
+	_body, _err := client.DeleteDcdnUserConfigWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
