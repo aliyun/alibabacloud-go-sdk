@@ -12318,7 +12318,8 @@ type ExportNacosConfigRequest struct {
 	//
 	// *   Multiple export methods are supported.
 	// *   If you want to export a single configuration, you must leave the Ids parameter empty and specify the DataID and Group parameters.
-	DataId  *string `json:"DataId,omitempty" xml:"DataId,omitempty"`
+	DataId *string `json:"DataId,omitempty" xml:"DataId,omitempty"`
+	// The configuration group name and the ID of the data that you want to export. Separate multiple configurations with comma (,).
 	DataIds *string `json:"DataIds,omitempty" xml:"DataIds,omitempty"`
 	// The name of the configuration group.
 	Group *string `json:"Group,omitempty" xml:"Group,omitempty"`
@@ -13197,6 +13198,193 @@ func (s *GetAppMessageQueueRouteResponse) SetStatusCode(v int32) *GetAppMessageQ
 }
 
 func (s *GetAppMessageQueueRouteResponse) SetBody(v *GetAppMessageQueueRouteResponseBody) *GetAppMessageQueueRouteResponse {
+	s.Body = v
+	return s
+}
+
+type GetApplicationInstanceListRequest struct {
+	AcceptLanguage *string `json:"AcceptLanguage,omitempty" xml:"AcceptLanguage,omitempty"`
+	// Deprecated
+	AppId      *string `json:"AppId,omitempty" xml:"AppId,omitempty"`
+	AppName    *string `json:"AppName,omitempty" xml:"AppName,omitempty"`
+	Namespace  *string `json:"Namespace,omitempty" xml:"Namespace,omitempty"`
+	PageNumber *string `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
+	PageSize   *string `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	Region     *string `json:"Region,omitempty" xml:"Region,omitempty"`
+	Tag        *string `json:"Tag,omitempty" xml:"Tag,omitempty"`
+}
+
+func (s GetApplicationInstanceListRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetApplicationInstanceListRequest) GoString() string {
+	return s.String()
+}
+
+func (s *GetApplicationInstanceListRequest) SetAcceptLanguage(v string) *GetApplicationInstanceListRequest {
+	s.AcceptLanguage = &v
+	return s
+}
+
+func (s *GetApplicationInstanceListRequest) SetAppId(v string) *GetApplicationInstanceListRequest {
+	s.AppId = &v
+	return s
+}
+
+func (s *GetApplicationInstanceListRequest) SetAppName(v string) *GetApplicationInstanceListRequest {
+	s.AppName = &v
+	return s
+}
+
+func (s *GetApplicationInstanceListRequest) SetNamespace(v string) *GetApplicationInstanceListRequest {
+	s.Namespace = &v
+	return s
+}
+
+func (s *GetApplicationInstanceListRequest) SetPageNumber(v string) *GetApplicationInstanceListRequest {
+	s.PageNumber = &v
+	return s
+}
+
+func (s *GetApplicationInstanceListRequest) SetPageSize(v string) *GetApplicationInstanceListRequest {
+	s.PageSize = &v
+	return s
+}
+
+func (s *GetApplicationInstanceListRequest) SetRegion(v string) *GetApplicationInstanceListRequest {
+	s.Region = &v
+	return s
+}
+
+func (s *GetApplicationInstanceListRequest) SetTag(v string) *GetApplicationInstanceListRequest {
+	s.Tag = &v
+	return s
+}
+
+type GetApplicationInstanceListResponseBody struct {
+	Data *GetApplicationInstanceListResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
+}
+
+func (s GetApplicationInstanceListResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetApplicationInstanceListResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *GetApplicationInstanceListResponseBody) SetData(v *GetApplicationInstanceListResponseBodyData) *GetApplicationInstanceListResponseBody {
+	s.Data = v
+	return s
+}
+
+type GetApplicationInstanceListResponseBodyData struct {
+	PageNumber *int32                                              `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
+	PageSize   *int32                                              `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	Result     []*GetApplicationInstanceListResponseBodyDataResult `json:"Result,omitempty" xml:"Result,omitempty" type:"Repeated"`
+	TotalSize  *int32                                              `json:"TotalSize,omitempty" xml:"TotalSize,omitempty"`
+}
+
+func (s GetApplicationInstanceListResponseBodyData) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetApplicationInstanceListResponseBodyData) GoString() string {
+	return s.String()
+}
+
+func (s *GetApplicationInstanceListResponseBodyData) SetPageNumber(v int32) *GetApplicationInstanceListResponseBodyData {
+	s.PageNumber = &v
+	return s
+}
+
+func (s *GetApplicationInstanceListResponseBodyData) SetPageSize(v int32) *GetApplicationInstanceListResponseBodyData {
+	s.PageSize = &v
+	return s
+}
+
+func (s *GetApplicationInstanceListResponseBodyData) SetResult(v []*GetApplicationInstanceListResponseBodyDataResult) *GetApplicationInstanceListResponseBodyData {
+	s.Result = v
+	return s
+}
+
+func (s *GetApplicationInstanceListResponseBodyData) SetTotalSize(v int32) *GetApplicationInstanceListResponseBodyData {
+	s.TotalSize = &v
+	return s
+}
+
+type GetApplicationInstanceListResponseBodyDataResult struct {
+	Ip   *string                                                 `json:"Ip,omitempty" xml:"Ip,omitempty"`
+	Port *string                                                 `json:"Port,omitempty" xml:"Port,omitempty"`
+	Tags []*GetApplicationInstanceListResponseBodyDataResultTags `json:"Tags,omitempty" xml:"Tags,omitempty" type:"Repeated"`
+}
+
+func (s GetApplicationInstanceListResponseBodyDataResult) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetApplicationInstanceListResponseBodyDataResult) GoString() string {
+	return s.String()
+}
+
+func (s *GetApplicationInstanceListResponseBodyDataResult) SetIp(v string) *GetApplicationInstanceListResponseBodyDataResult {
+	s.Ip = &v
+	return s
+}
+
+func (s *GetApplicationInstanceListResponseBodyDataResult) SetPort(v string) *GetApplicationInstanceListResponseBodyDataResult {
+	s.Port = &v
+	return s
+}
+
+func (s *GetApplicationInstanceListResponseBodyDataResult) SetTags(v []*GetApplicationInstanceListResponseBodyDataResultTags) *GetApplicationInstanceListResponseBodyDataResult {
+	s.Tags = v
+	return s
+}
+
+type GetApplicationInstanceListResponseBodyDataResultTags struct {
+	Tag *string `json:"Tag,omitempty" xml:"Tag,omitempty"`
+}
+
+func (s GetApplicationInstanceListResponseBodyDataResultTags) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetApplicationInstanceListResponseBodyDataResultTags) GoString() string {
+	return s.String()
+}
+
+func (s *GetApplicationInstanceListResponseBodyDataResultTags) SetTag(v string) *GetApplicationInstanceListResponseBodyDataResultTags {
+	s.Tag = &v
+	return s
+}
+
+type GetApplicationInstanceListResponse struct {
+	Headers    map[string]*string                      `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                                  `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *GetApplicationInstanceListResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s GetApplicationInstanceListResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetApplicationInstanceListResponse) GoString() string {
+	return s.String()
+}
+
+func (s *GetApplicationInstanceListResponse) SetHeaders(v map[string]*string) *GetApplicationInstanceListResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *GetApplicationInstanceListResponse) SetStatusCode(v int32) *GetApplicationInstanceListResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *GetApplicationInstanceListResponse) SetBody(v *GetApplicationInstanceListResponseBody) *GetApplicationInstanceListResponse {
 	s.Body = v
 	return s
 }
@@ -19618,6 +19806,7 @@ func (s *GetServiceListResponse) SetBody(v *GetServiceListResponseBody) *GetServ
 type GetServiceListPageRequest struct {
 	AcceptLanguage *string `json:"AcceptLanguage,omitempty" xml:"AcceptLanguage,omitempty"`
 	AppId          *string `json:"AppId,omitempty" xml:"AppId,omitempty"`
+	AppName        *string `json:"AppName,omitempty" xml:"AppName,omitempty"`
 	Ip             *string `json:"Ip,omitempty" xml:"Ip,omitempty"`
 	Namespace      *string `json:"Namespace,omitempty" xml:"Namespace,omitempty"`
 	PageNumber     *int32  `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
@@ -19642,6 +19831,11 @@ func (s *GetServiceListPageRequest) SetAcceptLanguage(v string) *GetServiceListP
 
 func (s *GetServiceListPageRequest) SetAppId(v string) *GetServiceListPageRequest {
 	s.AppId = &v
+	return s
+}
+
+func (s *GetServiceListPageRequest) SetAppName(v string) *GetServiceListPageRequest {
+	s.AppName = &v
 	return s
 }
 
@@ -20119,6 +20313,7 @@ type GetServiceMethodPageRequest struct {
 	Ip               *string `json:"Ip,omitempty" xml:"Ip,omitempty"`
 	MethodController *string `json:"MethodController,omitempty" xml:"MethodController,omitempty"`
 	Name             *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	Namespace        *string `json:"Namespace,omitempty" xml:"Namespace,omitempty"`
 	PageNumber       *int32  `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
 	PageSize         *int32  `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
 	Path             *string `json:"Path,omitempty" xml:"Path,omitempty"`
@@ -20164,6 +20359,11 @@ func (s *GetServiceMethodPageRequest) SetMethodController(v string) *GetServiceM
 
 func (s *GetServiceMethodPageRequest) SetName(v string) *GetServiceMethodPageRequest {
 	s.Name = &v
+	return s
+}
+
+func (s *GetServiceMethodPageRequest) SetNamespace(v string) *GetServiceMethodPageRequest {
+	s.Namespace = &v
 	return s
 }
 
@@ -52066,6 +52266,78 @@ func (client *Client) GetAppMessageQueueRoute(request *GetAppMessageQueueRouteRe
 	return _result, _err
 }
 
+func (client *Client) GetApplicationInstanceListWithOptions(request *GetApplicationInstanceListRequest, runtime *util.RuntimeOptions) (_result *GetApplicationInstanceListResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.AcceptLanguage)) {
+		query["AcceptLanguage"] = request.AcceptLanguage
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.AppId)) {
+		query["AppId"] = request.AppId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.AppName)) {
+		query["AppName"] = request.AppName
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Namespace)) {
+		query["Namespace"] = request.Namespace
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.PageNumber)) {
+		query["PageNumber"] = request.PageNumber
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.PageSize)) {
+		query["PageSize"] = request.PageSize
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Region)) {
+		query["Region"] = request.Region
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Tag)) {
+		query["Tag"] = request.Tag
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("GetApplicationInstanceList"),
+		Version:     tea.String("2019-05-31"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &GetApplicationInstanceListResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) GetApplicationInstanceList(request *GetApplicationInstanceListRequest) (_result *GetApplicationInstanceListResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &GetApplicationInstanceListResponse{}
+	_body, _err := client.GetApplicationInstanceListWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
 func (client *Client) GetApplicationListWithOptions(request *GetApplicationListRequest, runtime *util.RuntimeOptions) (_result *GetApplicationListResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -53468,6 +53740,10 @@ func (client *Client) GetServiceListPageWithOptions(request *GetServiceListPageR
 		query["AppId"] = request.AppId
 	}
 
+	if !tea.BoolValue(util.IsUnset(request.AppName)) {
+		query["AppName"] = request.AppName
+	}
+
 	if !tea.BoolValue(util.IsUnset(request.Ip)) {
 		query["Ip"] = request.Ip
 	}
@@ -53646,6 +53922,10 @@ func (client *Client) GetServiceMethodPageWithOptions(request *GetServiceMethodP
 
 	if !tea.BoolValue(util.IsUnset(request.Name)) {
 		query["Name"] = request.Name
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Namespace)) {
+		query["Namespace"] = request.Namespace
 	}
 
 	if !tea.BoolValue(util.IsUnset(request.PageNumber)) {
