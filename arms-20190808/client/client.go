@@ -3984,7 +3984,8 @@ type CreateOrUpdateAlertRuleRequest struct {
 	// *   If you specify this parameter, the specified alert rule is modified.
 	AlertId *int64 `json:"AlertId,omitempty" xml:"AlertId,omitempty"`
 	// The name of the alert rule.
-	AlertName *string `json:"AlertName,omitempty" xml:"AlertName,omitempty"`
+	AlertName     *string `json:"AlertName,omitempty" xml:"AlertName,omitempty"`
+	AlertPiplines *string `json:"AlertPiplines,omitempty" xml:"AlertPiplines,omitempty"`
 	// The content of the Application Monitoring or Browser Monitoring alert rule. The following code provides an example of the **AlertRuleContent** parameter. For more information about the meaning of each field, see the supplementary description.
 	//
 	// ```json
@@ -4031,7 +4032,8 @@ type CreateOrUpdateAlertRuleRequest struct {
 	// *   `false`: disables the automatic backup feature.
 	AutoAddNewApplication *bool `json:"AutoAddNewApplication,omitempty" xml:"AutoAddNewApplication,omitempty"`
 	// The ID of the monitored cluster.
-	ClusterId *string `json:"ClusterId,omitempty" xml:"ClusterId,omitempty"`
+	ClusterId  *string `json:"ClusterId,omitempty" xml:"ClusterId,omitempty"`
+	DataConfig *string `json:"DataConfig,omitempty" xml:"DataConfig,omitempty"`
 	// The duration of the Prometheus alert rule. Unit: minutes.
 	Duration *int64 `json:"Duration,omitempty" xml:"Duration,omitempty"`
 	// The filter conditions of the Application Monitoring or Browser Monitoring alert rule. The following code shows the format of matching rules:
@@ -4069,6 +4071,7 @@ type CreateOrUpdateAlertRuleRequest struct {
 	MetricsKey *string `json:"MetricsKey,omitempty" xml:"MetricsKey,omitempty"`
 	// The metric type of the Application Monitoring or Browser Monitoring alert rule. For more information, see the following table.
 	MetricsType *string `json:"MetricsType,omitempty" xml:"MetricsType,omitempty"`
+	Notice      *string `json:"Notice,omitempty" xml:"Notice,omitempty"`
 	// The notification policy.
 	//
 	// *   If you set this parameter to null, no notification policy is specified. After you create an alert rule, you can create a notification policy and specify match rules and match conditions. For example, you can specify the name of the alert rule as the match condition. When the alert rule is triggered, an alert event is generated and an alert notification is sent to the contacts or contact groups that are specified in the notification policy.
@@ -4111,6 +4114,11 @@ func (s *CreateOrUpdateAlertRuleRequest) SetAlertName(v string) *CreateOrUpdateA
 	return s
 }
 
+func (s *CreateOrUpdateAlertRuleRequest) SetAlertPiplines(v string) *CreateOrUpdateAlertRuleRequest {
+	s.AlertPiplines = &v
+	return s
+}
+
 func (s *CreateOrUpdateAlertRuleRequest) SetAlertRuleContent(v string) *CreateOrUpdateAlertRuleRequest {
 	s.AlertRuleContent = &v
 	return s
@@ -4138,6 +4146,11 @@ func (s *CreateOrUpdateAlertRuleRequest) SetAutoAddNewApplication(v bool) *Creat
 
 func (s *CreateOrUpdateAlertRuleRequest) SetClusterId(v string) *CreateOrUpdateAlertRuleRequest {
 	s.ClusterId = &v
+	return s
+}
+
+func (s *CreateOrUpdateAlertRuleRequest) SetDataConfig(v string) *CreateOrUpdateAlertRuleRequest {
+	s.DataConfig = &v
 	return s
 }
 
@@ -4178,6 +4191,11 @@ func (s *CreateOrUpdateAlertRuleRequest) SetMetricsKey(v string) *CreateOrUpdate
 
 func (s *CreateOrUpdateAlertRuleRequest) SetMetricsType(v string) *CreateOrUpdateAlertRuleRequest {
 	s.MetricsType = &v
+	return s
+}
+
+func (s *CreateOrUpdateAlertRuleRequest) SetNotice(v string) *CreateOrUpdateAlertRuleRequest {
+	s.Notice = &v
 	return s
 }
 
@@ -7267,7 +7285,7 @@ func (s *CreateRetcodeAppResponseBody) SetSuccess(v bool) *CreateRetcodeAppRespo
 type CreateRetcodeAppResponseBodyRetcodeAppDataBean struct {
 	// The application ID.
 	AppId *int64 `json:"AppId,omitempty" xml:"AppId,omitempty"`
-	// PID。
+	// PID.
 	Pid *string `json:"Pid,omitempty" xml:"Pid,omitempty"`
 	// The ID of the resource group.
 	//
@@ -37777,6 +37795,10 @@ func (client *Client) CreateOrUpdateAlertRuleWithOptions(request *CreateOrUpdate
 		body["AlertName"] = request.AlertName
 	}
 
+	if !tea.BoolValue(util.IsUnset(request.AlertPiplines)) {
+		body["AlertPiplines"] = request.AlertPiplines
+	}
+
 	if !tea.BoolValue(util.IsUnset(request.AlertRuleContent)) {
 		body["AlertRuleContent"] = request.AlertRuleContent
 	}
@@ -37799,6 +37821,10 @@ func (client *Client) CreateOrUpdateAlertRuleWithOptions(request *CreateOrUpdate
 
 	if !tea.BoolValue(util.IsUnset(request.ClusterId)) {
 		body["ClusterId"] = request.ClusterId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.DataConfig)) {
+		body["DataConfig"] = request.DataConfig
 	}
 
 	if !tea.BoolValue(util.IsUnset(request.Duration)) {
@@ -37831,6 +37857,10 @@ func (client *Client) CreateOrUpdateAlertRuleWithOptions(request *CreateOrUpdate
 
 	if !tea.BoolValue(util.IsUnset(request.MetricsType)) {
 		body["MetricsType"] = request.MetricsType
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Notice)) {
+		body["Notice"] = request.Notice
 	}
 
 	if !tea.BoolValue(util.IsUnset(request.NotifyStrategy)) {
