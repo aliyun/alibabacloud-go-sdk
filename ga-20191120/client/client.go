@@ -1766,10 +1766,10 @@ type CreateBandwidthPackageRequest struct {
 	//
 	// You can set this parameter only if you call this operation on the international site (alibabacloud.com).
 	CbnGeographicRegionIdB *string `json:"CbnGeographicRegionIdB,omitempty" xml:"CbnGeographicRegionIdB,omitempty"`
-	// The billing method. Valid values:
+	// The billing method of the bandwidth plan. Valid values:
 	//
-	// *   **PREPAY** (default): subscription
-	// *   **POSTPAY**: pay-as-you-go By default, the pay-as-you-go billing method is unavailable. If you want to use the billing method, contact your account manager.
+	// *   **PREPAY** (default): subscription.
+	// *   **POSTPAY**: pay-as-you-go. By default, the pay-as-you-go billing method is unavailable. If you want to use the billing method, contact your account manager.
 	ChargeType *string `json:"ChargeType,omitempty" xml:"ChargeType,omitempty"`
 	// The client token that is used to ensure the idempotence of the request.
 	//
@@ -1802,8 +1802,9 @@ type CreateBandwidthPackageRequest struct {
 	// The ID of the region where the GA instance is deployed. **cn-hangzhou** is returned.
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 	// The ID of the resource group.
-	ResourceGroupId *string                             `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
-	Tag             []*CreateBandwidthPackageRequestTag `json:"Tag,omitempty" xml:"Tag,omitempty" type:"Repeated"`
+	ResourceGroupId *string `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
+	// The tags to add to the bandwidth plan.
+	Tag []*CreateBandwidthPackageRequestTag `json:"Tag,omitempty" xml:"Tag,omitempty" type:"Repeated"`
 	// The type of the bandwidth plan. Valid values:
 	//
 	// *   **Basic**: a basic bandwidth plan
@@ -1917,7 +1918,17 @@ func (s *CreateBandwidthPackageRequest) SetType(v string) *CreateBandwidthPackag
 }
 
 type CreateBandwidthPackageRequestTag struct {
-	Key   *string `json:"Key,omitempty" xml:"Key,omitempty"`
+	// The tag key.
+	//
+	// The tag keys cannot be an empty string. The tag key can be up to 64 characters in length, and cannot start with `acs:` or `aliyun`. It cannot contain `http://` or `https://`.
+	//
+	// You can specify at most 20 tag keys.
+	Key *string `json:"Key,omitempty" xml:"Key,omitempty"`
+	// The tag value.
+	//
+	// Each tag key corresponds to a tag value. Valid values of **N**: **1** to **20**.
+	//
+	// The value cannot exceed 128 characters in length, and cannot start with `aliyun` or `acs:`. It cannot contain `http://` or `https://`.
 	Value *string `json:"Value,omitempty" xml:"Value,omitempty"`
 }
 
@@ -4278,7 +4289,7 @@ type CreateEndpointGroupRequest struct {
 	//
 	// The description cannot exceed 256 characters in length and cannot contain `http://` or `https://`.
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
-	// The configurations of the endpoint.
+	// The configurations of endpoints in the endpoint group.
 	EndpointConfigurations []*CreateEndpointGroupRequestEndpointConfigurations `json:"EndpointConfigurations,omitempty" xml:"EndpointConfigurations,omitempty" type:"Repeated"`
 	// The ID of the region in which to create the endpoint group.
 	EndpointGroupRegion *string `json:"EndpointGroupRegion,omitempty" xml:"EndpointGroupRegion,omitempty"`
@@ -4440,40 +4451,40 @@ func (s *CreateEndpointGroupRequest) SetTrafficPercentage(v int32) *CreateEndpoi
 }
 
 type CreateEndpointGroupRequestEndpointConfigurations struct {
-	// Specifies whether to preserve client IP addresses by using the TCP Option Address (TOA) module. Default value: false. Valid values:
+	// Specifies whether to use the TCP Option Address (TOA) module to preserve client IP addresses. Valid values:
 	//
-	// *   **true**: preserves client IP addresses by using the TOA module.
-	// *   **false**: does not preserve client IP addresses by using the TOA module.
+	// *   **true**
+	// *   **false** (default)
 	EnableClientIPPreservation *bool `json:"EnableClientIPPreservation,omitempty" xml:"EnableClientIPPreservation,omitempty"`
-	// Specifies whether to preserve client IP addresses by using the ProxyProtocol module. Default value: false. Valid values:
+	// Specifies whether to use the proxy protocol to preserve client IP addresses. Valid values:
 	//
-	// *   **true**: preserves client IP addresses by using the ProxyProtocol module.
-	// *   **false**: does not preserve client IP addresses by using the ProxyProtocol module.
+	// *   **true**
+	// *   **false** (default)
 	EnableProxyProtocol *bool `json:"EnableProxyProtocol,omitempty" xml:"EnableProxyProtocol,omitempty"`
-	// The IP address, domain name or instance id according to the type of the endpoint.
-	Endpoint *string `json:"Endpoint,omitempty" xml:"Endpoint,omitempty"`
+	// Enter the IP address, domain name, or instance ID based on the value of the Type parameter.
+	Endpoint   *string `json:"Endpoint,omitempty" xml:"Endpoint,omitempty"`
+	SubAddress *string `json:"SubAddress,omitempty" xml:"SubAddress,omitempty"`
 	// The type of the endpoint. Valid values:
 	//
-	// *   **Domain**: a custom domain name
-	// *   **Ip**: a custom IP address
-	// *   **PublicIp**: a public IP address provided by Alibaba Cloud
-	// *   **ECS**: an Elastic Compute Service (ECS) instance
-	// *   **SLB**: a Server Load Balancer (SLB) instance
-	// *   **ALB**: an Application Load Balancer (ALB) instance
-	// *   **OSS**: an Object Storage Service (OSS) bucket
+	// *   **Domain:** a custom domain name.
+	// *   **Ip:** a custom IP address.
+	// *   **PublicIp:** a public IP address provided by Alibaba Cloud.
+	// *   **ECS:** an Elastic Compute Service (ECS) instance.
+	// *   **SLB:** a Server Load Balancer (SLB) instance.
+	// *   **ALB:** an Application Load Balancer (ALB) instance.
+	// *   **OSS:** an Object Storage Service (OSS) bucket.
 	//
-	// >
-	// *   If you set this parameter to **ECS** or **SLB** and the service-linked role AliyunServiceRoleForGaVpcEndpoint does not exist, the system automatically creates the service-linked role.
-	// *   If you set this parameter to **ALB** and the service-linked role AliyunServiceRoleForGaAlb does not exist, the system automatically creates the service-linked role.
-	// *   If you set this parameter to **OSS** and the service-linked role AliyunServiceRoleForGaOss does not exist, the system automatically creates the service-linked role.
+	// > *   If you set this parameter to **ECS** or **SLB** and the service-linked role AliyunServiceRoleForGaVpcEndpoint does not exist, the system automatically creates the service-linked role.
+	// >*   If you set this parameter to **ALB** and the service-linked role AliyunServiceRoleForGaAlb does not exist, the system automatically creates the service-linked role.
+	// >*   If you set this parameter to **OSS** and the service-linked role AliyunServiceRoleForGaOss does not exist, the system automatically creates the service-linked role.
 	//
-	//     For more information, see [Service-linked roles](~~178360~~).
+	// For more information, see [Service linked roles](~~178360~~).
 	Type *string `json:"Type,omitempty" xml:"Type,omitempty"`
 	// The weight of the endpoint.
 	//
 	// Valid values: **0** to **255**.
 	//
-	// >  If the weight of an endpoint is set to 0, GA stops distributing network traffic to the endpoint. Proceed with caution.
+	// >  If you set the weight of an endpoint to 0, the GA instance stops distributing traffic to the endpoint.
 	Weight *int32 `json:"Weight,omitempty" xml:"Weight,omitempty"`
 }
 
@@ -4497,6 +4508,11 @@ func (s *CreateEndpointGroupRequestEndpointConfigurations) SetEnableProxyProtoco
 
 func (s *CreateEndpointGroupRequestEndpointConfigurations) SetEndpoint(v string) *CreateEndpointGroupRequestEndpointConfigurations {
 	s.Endpoint = &v
+	return s
+}
+
+func (s *CreateEndpointGroupRequestEndpointConfigurations) SetSubAddress(v string) *CreateEndpointGroupRequestEndpointConfigurations {
+	s.SubAddress = &v
 	return s
 }
 
@@ -4877,7 +4893,8 @@ type CreateEndpointGroupsRequestEndpointGroupConfigurationsEndpointConfiguration
 	// You can specify up to 100 endpoint IP addresses or domain names in an endpoint group.
 	//
 	// >  This parameter is required.
-	Endpoint *string `json:"Endpoint,omitempty" xml:"Endpoint,omitempty"`
+	Endpoint   *string `json:"Endpoint,omitempty" xml:"Endpoint,omitempty"`
+	SubAddress *string `json:"SubAddress,omitempty" xml:"SubAddress,omitempty"`
 	// The type of the endpoint. Valid values:
 	//
 	// *   **Domain**: a custom domain name
@@ -4921,6 +4938,11 @@ func (s CreateEndpointGroupsRequestEndpointGroupConfigurationsEndpointConfigurat
 
 func (s *CreateEndpointGroupsRequestEndpointGroupConfigurationsEndpointConfigurations) SetEndpoint(v string) *CreateEndpointGroupsRequestEndpointGroupConfigurationsEndpointConfigurations {
 	s.Endpoint = &v
+	return s
+}
+
+func (s *CreateEndpointGroupsRequestEndpointGroupConfigurationsEndpointConfigurations) SetSubAddress(v string) *CreateEndpointGroupsRequestEndpointGroupConfigurationsEndpointConfigurations {
+	s.SubAddress = &v
 	return s
 }
 
@@ -10805,11 +10827,11 @@ func (s *DescribeCommodityPriceResponse) SetBody(v *DescribeCommodityPriceRespon
 }
 
 type DescribeCustomRoutingEndPointTrafficPolicyRequest struct {
-	// The ID of the endpoint to which the traffic destination belongs.
-	EndpointId *string `json:"EndpointId,omitempty" xml:"EndpointId,omitempty"`
 	// The ID of the traffic policy to be queried.
-	PolicyId *string `json:"PolicyId,omitempty" xml:"PolicyId,omitempty"`
+	EndpointId *string `json:"EndpointId,omitempty" xml:"EndpointId,omitempty"`
 	// The ID of the region where the Global Accelerator (GA) instance is deployed. Set the value to **cn-hangzhou**.
+	PolicyId *string `json:"PolicyId,omitempty" xml:"PolicyId,omitempty"`
+	// The operation that you want to perform. Set the value to **DescribeCustomRoutingEndPointTrafficPolicy**.
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 }
 
@@ -10837,32 +10859,32 @@ func (s *DescribeCustomRoutingEndPointTrafficPolicyRequest) SetRegionId(v string
 }
 
 type DescribeCustomRoutingEndPointTrafficPolicyResponseBody struct {
-	// The ID of the GA instance to which the endpoint belongs.
-	AcceleratorId *string `json:"AcceleratorId,omitempty" xml:"AcceleratorId,omitempty"`
-	// The IP address of the traffic policy.
-	Address *string `json:"Address,omitempty" xml:"Address,omitempty"`
-	// The name of the vSwitch to which the traffic policy belongs.
-	Endpoint *string `json:"Endpoint,omitempty" xml:"Endpoint,omitempty"`
-	// The ID of the endpoint group to which the endpoint belongs.
-	EndpointGroupId *string `json:"EndpointGroupId,omitempty" xml:"EndpointGroupId,omitempty"`
-	// The ID of the endpoint to which the traffic policy belongs.
-	EndpointId *string `json:"EndpointId,omitempty" xml:"EndpointId,omitempty"`
-	// The ID of the listener to which the endpoint belongs.
-	ListenerId *string `json:"ListenerId,omitempty" xml:"ListenerId,omitempty"`
-	// The ID of the traffic policy.
-	PolicyId *string `json:"PolicyId,omitempty" xml:"PolicyId,omitempty"`
-	// The port range of the traffic policy.
-	PortRanges []*DescribeCustomRoutingEndPointTrafficPolicyResponseBodyPortRanges `json:"PortRanges,omitempty" xml:"PortRanges,omitempty" type:"Repeated"`
 	// The ID of the request.
+	AcceleratorId *string `json:"AcceleratorId,omitempty" xml:"AcceleratorId,omitempty"`
+	// The ID of the traffic policy.
+	Address *string `json:"Address,omitempty" xml:"Address,omitempty"`
+	// The ID of the endpoint to which the traffic policy belongs.
+	Endpoint *string `json:"Endpoint,omitempty" xml:"Endpoint,omitempty"`
+	// The ID of the listener to which the endpoint belongs.
+	EndpointGroupId *string `json:"EndpointGroupId,omitempty" xml:"EndpointGroupId,omitempty"`
+	// The ID of the endpoint group to which the endpoint belongs.
+	EndpointId *string `json:"EndpointId,omitempty" xml:"EndpointId,omitempty"`
+	// The ID of the GA instance to which the endpoint belongs.
+	ListenerId *string `json:"ListenerId,omitempty" xml:"ListenerId,omitempty"`
+	// The name of the vSwitch to which the traffic policy belongs.
+	PolicyId *string `json:"PolicyId,omitempty" xml:"PolicyId,omitempty"`
+	// The IP address of the traffic policy.
+	PortRanges []*DescribeCustomRoutingEndPointTrafficPolicyResponseBodyPortRanges `json:"PortRanges,omitempty" xml:"PortRanges,omitempty" type:"Repeated"`
+	// The ID of the endpoint to which the traffic destination belongs.
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	// The service ID to which the managed instance belongs.
-	// > Valid only when the **ServiceManaged** parameter is **True**.。
+	//
+	// >  Valid only when the ServiceManaged parameter is True.
 	ServiceId *string `json:"ServiceId,omitempty" xml:"ServiceId,omitempty"`
-	// Is it a managed instance. Value：
+	// Is it a managed instance. Valid values:
 	//
-	// - **true**
-	//
-	// - **false**
+	// - true
+	// - false
 	ServiceManaged *bool `json:"ServiceManaged,omitempty" xml:"ServiceManaged,omitempty"`
 	// A list of action policies that users can execute on this managed instance.
 	ServiceManagedInfos []*DescribeCustomRoutingEndPointTrafficPolicyResponseBodyServiceManagedInfos `json:"ServiceManagedInfos,omitempty" xml:"ServiceManagedInfos,omitempty" type:"Repeated"`
@@ -10949,9 +10971,9 @@ func (s *DescribeCustomRoutingEndPointTrafficPolicyResponseBody) SetState(v stri
 }
 
 type DescribeCustomRoutingEndPointTrafficPolicyResponseBodyPortRanges struct {
-	// The first port of the port range.
+	// The port range of the traffic destination.
 	FromPort *int32 `json:"FromPort,omitempty" xml:"FromPort,omitempty"`
-	// The last port of the port range.
+	// The first port of the port range.
 	ToPort *int32 `json:"ToPort,omitempty" xml:"ToPort,omitempty"`
 }
 
@@ -10974,35 +10996,31 @@ func (s *DescribeCustomRoutingEndPointTrafficPolicyResponseBodyPortRanges) SetTo
 }
 
 type DescribeCustomRoutingEndPointTrafficPolicyResponseBodyServiceManagedInfos struct {
-	// Managed policy action name，Value：
-	// - **Create**
-	// - **Update**
-	// - **Delete**
-	// - **Associate**
-	// - **UserUnmanaged**
-	// - **CreateChild**
+	// Managed policy action name, Valid values:
+	// - Create
+	// - Update
+	// - Delete
+	// - Associate
+	// - UserUnmanaged
+	// - CreateChild
 	Action *string `json:"Action,omitempty" xml:"Action,omitempty"`
-	// Sub resource type，Value：
+	// Sub resource type, Valid values:
 	//
-	// - **Listener**
+	// - Listener
+	// - IpSet
+	// - EndpointGroup
+	// - ForwardingRule
+	// - Endpoint
+	// - EndpointGroupDestination
+	// - EndpointPolicy
 	//
-	// - **IpSet**
-	//
-	// - **EndpointGroup**
-	//
-	// - **ForwardingRule**
-	//
-	// - **Endpoint**
-	//
-	// - **EndpointGroupDestination**
-	//
-	// - **EndpointPolicy**
-	//
-	// > Only valid when the **Action** parameter is **CreateChild**.
+	// >Only valid when the Action parameter is CreateChild.
 	ChildType *string `json:"ChildType,omitempty" xml:"ChildType,omitempty"`
-	// Is the managed policy action managed，Value：
-	// - **true**：The managed policy action is managed, and users do not have permission to perform the operation specified in the Action on the managed instance。
-	// - **false**：The managed policy action is not managed, and users have permission to perform the operation specified in the Action on the managed instance.
+	// Is the managed policy action managed, Valid values:
+	//
+	// - true: The managed policy action is managed, and users do not have permission to perform the operation specified in the Action on the managed instance.
+	//
+	// - false: The managed policy action is not managed, and users have permission to perform the operation specified in the Action on the managed instance.
 	IsManaged *bool `json:"IsManaged,omitempty" xml:"IsManaged,omitempty"`
 }
 
@@ -11105,16 +11123,16 @@ type DescribeCustomRoutingEndpointResponseBody struct {
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	// The service ID to which the managed instance belongs.
 	//
-	// >  Valid only when the ServiceManaged parameter is True.。
+	// >  Valid only when the ServiceManaged parameter is True.
 	ServiceId *string `json:"ServiceId,omitempty" xml:"ServiceId,omitempty"`
-	// Is it a managed instance. Value：
+	// Is it a managed instance. Valid values:
 	//
 	// - true
 	// - false
 	ServiceManaged *bool `json:"ServiceManaged,omitempty" xml:"ServiceManaged,omitempty"`
 	// A list of action policies that users can execute on this managed instance.
 	ServiceManagedInfos []*DescribeCustomRoutingEndpointResponseBodyServiceManagedInfos `json:"ServiceManagedInfos,omitempty" xml:"ServiceManagedInfos,omitempty" type:"Repeated"`
-	// The status of the endpoint .
+	// The status of the endpoint.
 	State *string `json:"State,omitempty" xml:"State,omitempty"`
 	// The access policy of traffic for the specified endpoint. Valid values:
 	//
@@ -11197,7 +11215,7 @@ func (s *DescribeCustomRoutingEndpointResponseBody) SetType(v string) *DescribeC
 }
 
 type DescribeCustomRoutingEndpointResponseBodyServiceManagedInfos struct {
-	// Managed policy action name，Value：
+	// Managed policy action name, Valid values:
 	//
 	// - Create
 	// - Update
@@ -11206,7 +11224,7 @@ type DescribeCustomRoutingEndpointResponseBodyServiceManagedInfos struct {
 	// - UserUnmanaged
 	// - CreateChild
 	Action *string `json:"Action,omitempty" xml:"Action,omitempty"`
-	// Sub resource type，Value：
+	// Sub resource type, Valid values:
 	//
 	// - Listener
 	// - IpSet
@@ -11218,11 +11236,11 @@ type DescribeCustomRoutingEndpointResponseBodyServiceManagedInfos struct {
 	//
 	// >Only valid when the Action parameter is CreateChild.
 	ChildType *string `json:"ChildType,omitempty" xml:"ChildType,omitempty"`
-	// Is the managed policy action managed，Value：
+	// Is the managed policy action managed, Valid values:
 	//
-	// - true：The managed policy action is managed, and users do not have permission to perform the operation specified in the Action on the managed instance。
+	// - true: The managed policy action is managed, and users do not have permission to perform the operation specified in the Action on the managed instance.
 	//
-	// - false：The managed policy action is not managed, and users have permission to perform the operation specified in the Action on the managed instance.
+	// - false: The managed policy action is not managed, and users have permission to perform the operation specified in the Action on the managed instance.
 	IsManaged *bool `json:"IsManaged,omitempty" xml:"IsManaged,omitempty"`
 }
 
@@ -11281,7 +11299,7 @@ func (s *DescribeCustomRoutingEndpointResponse) SetBody(v *DescribeCustomRouting
 type DescribeCustomRoutingEndpointGroupRequest struct {
 	// The ID of the endpoint group.
 	EndpointGroupId *string `json:"EndpointGroupId,omitempty" xml:"EndpointGroupId,omitempty"`
-	// The ID of the region where the Global Accelerator (GA) instance is deployed. Set the value to **cn-hangzhou**.
+	// The region ID of the GA instance. Set the value to **cn-hangzhou**.
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 }
 
@@ -11304,38 +11322,49 @@ func (s *DescribeCustomRoutingEndpointGroupRequest) SetRegionId(v string) *Descr
 }
 
 type DescribeCustomRoutingEndpointGroupResponseBody struct {
-	// The ID of the GA instance.
+	// The GA instance ID.
 	AcceleratorId *string `json:"AcceleratorId,omitempty" xml:"AcceleratorId,omitempty"`
-	// The status of the logs.
+	// Indicates the status of the binding between the Log Service project and the endpoint group. Valid values:
 	//
-	// *   **on**: associated
-	// *   **off**: not associated
-	// *   **binding**: being associated
-	// *   **unbinding**: being disassociated
+	// *   **on:** The endpoint group is bound to the Log Service project.
+	// *   **off:** The endpoint group is not bound to the Log Service project.
+	// *   **binding:** The endpoint group is being bound to the Log Service project.
+	// *   **unbinding:** The endpoint group is being unbound from the Log Service project.
 	AccessLogSwitch *string `json:"AccessLogSwitch,omitempty" xml:"AccessLogSwitch,omitempty"`
 	// The description of the endpoint group.
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
-	// Indicates whether access logging is enabled.
+	// Indicates whether the access log feature is enabled. Valid values:
 	//
-	// *   **true**: enabled
-	// *   **false**: disabled
+	// *   **true**
+	// *   **false**
 	EnableAccessLog *bool `json:"EnableAccessLog,omitempty" xml:"EnableAccessLog,omitempty"`
-	// The ID of the endpoint group.
+	// The endpoint group ID.
 	EndpointGroupId *string `json:"EndpointGroupId,omitempty" xml:"EndpointGroupId,omitempty"`
-	// The list of endpoint group IP addresses.
+	// The endpoint group IP addresses.
 	EndpointGroupIpList []*string `json:"EndpointGroupIpList,omitempty" xml:"EndpointGroupIpList,omitempty" type:"Repeated"`
-	// The ID of the region where the endpoint group is created.
+	// The region ID of the endpoint group.
 	EndpointGroupRegion *string `json:"EndpointGroupRegion,omitempty" xml:"EndpointGroupRegion,omitempty"`
-	// The endpoint group IP addresses to be confirmed after the GA instance is upgraded.
+	// The endpoint group IP addresses that need to be confirmed after the GA instance is upgraded.
 	EndpointGroupUnconfirmedIpList []*string `json:"EndpointGroupUnconfirmedIpList,omitempty" xml:"EndpointGroupUnconfirmedIpList,omitempty" type:"Repeated"`
-	// The ID of the custom routing listener.
+	// The custom routing listener ID.
 	ListenerId *string `json:"ListenerId,omitempty" xml:"ListenerId,omitempty"`
 	// The name of the endpoint group.
 	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
-	// The ID of the request.
-	RequestId           *string                                                              `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	ServiceId           *string                                                              `json:"ServiceId,omitempty" xml:"ServiceId,omitempty"`
-	ServiceManaged      *bool                                                                `json:"ServiceManaged,omitempty" xml:"ServiceManaged,omitempty"`
+	// The request ID.
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// 托管实例所属的服务方ID。
+	// > 仅在**ServiceManaged**参数为**True**时有效。
+	ServiceId *string `json:"ServiceId,omitempty" xml:"ServiceId,omitempty"`
+	// 是否为托管实例。取值：
+	//
+	// - **true**：是托管实例。
+	//
+	// - **false**：不是托管实例。
+	ServiceManaged *bool `json:"ServiceManaged,omitempty" xml:"ServiceManaged,omitempty"`
+	// 用户在此托管实例下可执行的动作策略列表。
+	//
+	// > 仅在**ServiceManaged**参数为**True**时有效。
+	// > - 当实例处于托管状态时，用户对实例的操作会受到限制，某些操作行为会被禁止。
 	ServiceManagedInfos []*DescribeCustomRoutingEndpointGroupResponseBodyServiceManagedInfos `json:"ServiceManagedInfos,omitempty" xml:"ServiceManagedInfos,omitempty" type:"Repeated"`
 	// The name of the Logstore.
 	SlsLogStoreName *string `json:"SlsLogStoreName,omitempty" xml:"SlsLogStoreName,omitempty"`
@@ -11343,12 +11372,12 @@ type DescribeCustomRoutingEndpointGroupResponseBody struct {
 	SlsProjectName *string `json:"SlsProjectName,omitempty" xml:"SlsProjectName,omitempty"`
 	// The region of the logs that are created in Log Service.
 	SlsRegion *string `json:"SlsRegion,omitempty" xml:"SlsRegion,omitempty"`
-	// The status of the endpoint group.
+	// The status of the endpoint group. Valid values:
 	//
-	// *   **init**: being initialized
-	// *   **active**: running as expected
-	// *   **updating**: being updated
-	// *   **deleting**: being deleted
+	// *   **init:** The endpoint group is being initialized.
+	// *   **active:** The endpoint group is running normally.
+	// *   **updating:** The endpoint group is being updated.
+	// *   **deleting:** The ACL is being deleted.
 	State *string `json:"State,omitempty" xml:"State,omitempty"`
 }
 
@@ -11451,9 +11480,28 @@ func (s *DescribeCustomRoutingEndpointGroupResponseBody) SetState(v string) *Des
 }
 
 type DescribeCustomRoutingEndpointGroupResponseBodyServiceManagedInfos struct {
-	Action    *string `json:"Action,omitempty" xml:"Action,omitempty"`
+	// 托管策略动作名称，取值：
+	// - **Create**：创建实例。
+	// - **Update**：更新当前实例。
+	// - **Delete**：删除当前实例。
+	// - **Associate**：引用/被引用当前实例。
+	// - **UserUnmanaged**：用户解托管实例。
+	// - **CreateChild**：在当前实例下创建子资源。
+	Action *string `json:"Action,omitempty" xml:"Action,omitempty"`
+	// 子资源类型，取值：
+	// - **Listener**：监听资源。
+	// - **IpSet**：加速地域资源。
+	// - **EndpointGroup**：终端节点组资源。
+	// - **ForwardingRule**：转发策略资源。
+	// - **Endpoint**：终端节点资源。
+	// - **EndpointGroupDestination**：自定义路由监听下的终端节点组协议映射资源。
+	// - **EndpointPolicy**：自定义路由监听下的终端节点通行策略资源。
+	// > 仅在**Action**参数为**CreateChild**时有效
 	ChildType *string `json:"ChildType,omitempty" xml:"ChildType,omitempty"`
-	IsManaged *bool   `json:"IsManaged,omitempty" xml:"IsManaged,omitempty"`
+	// 托管策略动作是否被托管，取值：
+	// - **true**：托管策略动作被托管，用户无权在托管实例下执行Action指定的操作。
+	// - **false**：托管策略动作未被托管，用户可在托管实例下执行Action指定的操作。
+	IsManaged *bool `json:"IsManaged,omitempty" xml:"IsManaged,omitempty"`
 }
 
 func (s DescribeCustomRoutingEndpointGroupResponseBodyServiceManagedInfos) String() string {
@@ -11510,9 +11558,10 @@ func (s *DescribeCustomRoutingEndpointGroupResponse) SetBody(v *DescribeCustomRo
 
 type DescribeCustomRoutingEndpointGroupDestinationsRequest struct {
 	// The ID of the endpoint group mapping configuration.
-	DestinationId   *string `json:"DestinationId,omitempty" xml:"DestinationId,omitempty"`
+	DestinationId *string `json:"DestinationId,omitempty" xml:"DestinationId,omitempty"`
+	// The ID of the endpoint group.
 	EndpointGroupId *string `json:"EndpointGroupId,omitempty" xml:"EndpointGroupId,omitempty"`
-	// The ID of the region where the Global Accelerator (GA) instance is deployed. Set the value to **cn-hangzhou**.
+	// The ID of the region where the GA instance is deployed. Set the value to **cn-hangzhou**.
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 }
 
@@ -11540,7 +11589,7 @@ func (s *DescribeCustomRoutingEndpointGroupDestinationsRequest) SetRegionId(v st
 }
 
 type DescribeCustomRoutingEndpointGroupDestinationsResponseBody struct {
-	// The ID of the GA instance.
+	// The ID of the Global Accelerator (GA) instance.
 	AcceleratorId *string `json:"AcceleratorId,omitempty" xml:"AcceleratorId,omitempty"`
 	// The ID of the endpoint group mapping configuration.
 	DestinationId *string `json:"DestinationId,omitempty" xml:"DestinationId,omitempty"`
@@ -11552,16 +11601,30 @@ type DescribeCustomRoutingEndpointGroupDestinationsResponseBody struct {
 	ListenerId *string `json:"ListenerId,omitempty" xml:"ListenerId,omitempty"`
 	// The backend service protocol of the endpoint group.
 	//
-	// *   **tcp**: TCP
-	// *   **udp**: UDP
-	// *   **tcp,udp**: TCP and UDP
+	// *   **TCP**: TCP
+	// *   **UDP**: UDP
+	// *   **TCP,UDP**: TCP and UDP
 	Protocols []*string `json:"Protocols,omitempty" xml:"Protocols,omitempty" type:"Repeated"`
 	// The ID of the request.
-	RequestId           *string                                                                          `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	ServiceId           *string                                                                          `json:"ServiceId,omitempty" xml:"ServiceId,omitempty"`
-	ServiceManaged      *bool                                                                            `json:"ServiceManaged,omitempty" xml:"ServiceManaged,omitempty"`
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The service ID to which the managed instance belongs.
+	//
+	// >  Valid only when the ServiceManaged parameter is True.
+	ServiceId *string `json:"ServiceId,omitempty" xml:"ServiceId,omitempty"`
+	// Is it a managed instance. Valid values:
+	//
+	// - true
+	// - false
+	ServiceManaged *bool `json:"ServiceManaged,omitempty" xml:"ServiceManaged,omitempty"`
+	// A list of action policies that users can execute on this managed instance.
 	ServiceManagedInfos []*DescribeCustomRoutingEndpointGroupDestinationsResponseBodyServiceManagedInfos `json:"ServiceManagedInfos,omitempty" xml:"ServiceManagedInfos,omitempty" type:"Repeated"`
-	State               *string                                                                          `json:"State,omitempty" xml:"State,omitempty"`
+	// The status of the endpoint group mapping configuration.
+	//
+	// *   **init**: being initialized.
+	// *   **active**: normal.
+	// *   **updating**: being updated.
+	// *   **deleting**: being deleted.
+	State *string `json:"State,omitempty" xml:"State,omitempty"`
 	// The end port of the backend service port range of the endpoint group.
 	ToPort *int32 `json:"ToPort,omitempty" xml:"ToPort,omitempty"`
 }
@@ -11635,9 +11698,33 @@ func (s *DescribeCustomRoutingEndpointGroupDestinationsResponseBody) SetToPort(v
 }
 
 type DescribeCustomRoutingEndpointGroupDestinationsResponseBodyServiceManagedInfos struct {
-	Action    *string `json:"Action,omitempty" xml:"Action,omitempty"`
+	// Managed policy action name, Valid values:
+	//
+	// - Create
+	// - Update
+	// - Delete
+	// - Associate
+	// - UserUnmanaged
+	// - CreateChild
+	Action *string `json:"Action,omitempty" xml:"Action,omitempty"`
+	// Sub resource type, Valid values:
+	//
+	// - Listener
+	// - IpSet
+	// - EndpointGroup
+	// - ForwardingRule
+	// - Endpoint
+	// - EndpointGroupDestination
+	// - EndpointPolicy
+	//
+	// >Only valid when the Action parameter is CreateChild.
 	ChildType *string `json:"ChildType,omitempty" xml:"ChildType,omitempty"`
-	IsManaged *bool   `json:"IsManaged,omitempty" xml:"IsManaged,omitempty"`
+	// Is the managed policy action managed, Valid values:
+	//
+	// - true: The managed policy action is managed, and users do not have permission to perform the operation specified in the Action on the managed instance.
+	//
+	// - false: The managed policy action is not managed, and users have permission to perform the operation specified in the Action on the managed instance.
+	IsManaged *bool `json:"IsManaged,omitempty" xml:"IsManaged,omitempty"`
 }
 
 func (s DescribeCustomRoutingEndpointGroupDestinationsResponseBodyServiceManagedInfos) String() string {
@@ -11781,19 +11868,19 @@ type DescribeEndpointGroupResponseBody struct {
 	PortOverrides []*DescribeEndpointGroupResponseBodyPortOverrides `json:"PortOverrides,omitempty" xml:"PortOverrides,omitempty" type:"Repeated"`
 	// The ID of the request.
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// 托管实例所属的服务方ID。
-	// > 仅在**ServiceManaged**参数为**True**时有效。
+	// The service ID to which the managed instance belongs.
+	//
+	// >  Valid only when the ServiceManaged parameter is True.
 	ServiceId *string `json:"ServiceId,omitempty" xml:"ServiceId,omitempty"`
-	// 是否为托管实例。取值：
+	// Is it a managed instance. Value:
 	//
-	// - **true**：是托管实例。
-	//
-	// - **false**：不是托管实例。
+	// - true
+	// - false
 	ServiceManaged *bool `json:"ServiceManaged,omitempty" xml:"ServiceManaged,omitempty"`
-	// 用户在此托管实例下可执行的动作策略列表。
+	// A list of action policies that users can execute on this managed instance.
 	//
-	// > 仅在**ServiceManaged**参数为**True**时有效。
-	// > - 当实例处于托管状态时，用户对实例的操作会受到限制，某些操作行为会被禁止。
+	// > Valid only when the ServiceManaged parameter is True.
+	// >* When an instance is hosted, user operations on the instance are restricted and some operations are prohibited.
 	ServiceManagedInfos []*DescribeEndpointGroupResponseBodyServiceManagedInfos `json:"ServiceManagedInfos,omitempty" xml:"ServiceManagedInfos,omitempty" type:"Repeated"`
 	// The name of the Logstore.
 	SlsLogStoreName *string `json:"SlsLogStoreName,omitempty" xml:"SlsLogStoreName,omitempty"`
@@ -11996,6 +12083,7 @@ type DescribeEndpointGroupResponseBodyEndpointConfigurations struct {
 	// *   **tcp:** TCP.
 	// *   **icmp:** ICMP.
 	ProbeProtocol *string `json:"ProbeProtocol,omitempty" xml:"ProbeProtocol,omitempty"`
+	SubAddress    *string `json:"SubAddress,omitempty" xml:"SubAddress,omitempty"`
 	// The type of the endpoint. Valid values:
 	//
 	// *   **Domain:** a custom domain name.
@@ -12043,6 +12131,11 @@ func (s *DescribeEndpointGroupResponseBodyEndpointConfigurations) SetProbeProtoc
 	return s
 }
 
+func (s *DescribeEndpointGroupResponseBodyEndpointConfigurations) SetSubAddress(v string) *DescribeEndpointGroupResponseBodyEndpointConfigurations {
+	s.SubAddress = &v
+	return s
+}
+
 func (s *DescribeEndpointGroupResponseBodyEndpointConfigurations) SetType(v string) *DescribeEndpointGroupResponseBodyEndpointConfigurations {
 	s.Type = &v
 	return s
@@ -12079,35 +12172,32 @@ func (s *DescribeEndpointGroupResponseBodyPortOverrides) SetListenerPort(v int32
 }
 
 type DescribeEndpointGroupResponseBodyServiceManagedInfos struct {
-	// 托管策略动作名称，取值：
-	// - **Create**：创建实例。
-	// - **Update**：更新当前实例。
-	// - **Delete**：删除当前实例。
-	// - **Associate**：引用/被引用当前实例。
-	// - **UserUnmanaged**：用户解托管实例。
-	// - **CreateChild**：在当前实例下创建子资源。
+	// Managed policy action name, Valid values:
+	//
+	// - Create
+	// - Update
+	// - Delete
+	// - Associate
+	// - UserUnmanaged
+	// - CreateChild
 	Action *string `json:"Action,omitempty" xml:"Action,omitempty"`
-	// 子资源类型，取值：
+	// Sub resource type, Valid values:
 	//
-	// - **Listener**：监听资源。
+	// - Listener
+	// - IpSet
+	// - EndpointGroup
+	// - ForwardingRule
+	// - Endpoint
+	// - EndpointGroupDestination
+	// - EndpointPolicy
 	//
-	// - **IpSet**：加速地域资源。
-	//
-	// - **EndpointGroup**：终端节点组资源。
-	//
-	// - **ForwardingRule**：转发策略资源。
-	//
-	// - **Endpoint**：终端节点资源。
-	//
-	// - **EndpointGroupDestination**：自定义路由监听下的终端节点组协议映射资源。
-	//
-	// - **EndpointPolicy**：自定义路由监听下的终端节点通行策略资源。
-	//
-	// > 仅在**Action**参数为**CreateChild**时有效。
+	// >Only valid when the Action parameter is CreateChild.
 	ChildType *string `json:"ChildType,omitempty" xml:"ChildType,omitempty"`
-	// 托管策略动作是否被托管，取值：
-	// - **true**：托管策略动作被托管，用户无权在托管实例下执行Action指定的操作。
-	// - **false**：托管策略动作未被托管，用户可在托管实例下执行Action指定的操作。
+	// Is the managed policy action managed, Valid values:
+	//
+	// - true: The managed policy action is managed, and users do not have permission to perform the operation specified in the Action on the managed instance.
+	//
+	// - false: The managed policy action is not managed, and users have permission to perform the operation specified in the Action on the managed instance.
 	IsManaged *bool `json:"IsManaged,omitempty" xml:"IsManaged,omitempty"`
 }
 
@@ -12191,7 +12281,7 @@ func (s *DescribeEndpointGroupResponse) SetBody(v *DescribeEndpointGroupResponse
 type DescribeIpSetRequest struct {
 	// The ID of the acceleration region.
 	//
-	// You can call the [ListIpSets](~~153247~~) operation to query the IDs of acceleration regions of a specified GA instance.
+	// You can call the [ListIpSets](~~153247~~) operation to query IDs of acceleration regions of a specified GA instance.
 	IpSetId *string `json:"IpSetId,omitempty" xml:"IpSetId,omitempty"`
 	// The ID of the region where the Global Accelerator (GA) instance is deployed. Set the value to **cn-hangzhou**.
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
@@ -12231,10 +12321,10 @@ type DescribeIpSetResponseBody struct {
 	// *   **IPv4**
 	// *   **IPv6**
 	IpVersion *string `json:"IpVersion,omitempty" xml:"IpVersion,omitempty"`
-	// The line type of the elastic IP address (EIP) in the acceleration region.
+	// The line type of the elastic IP address (EIP) in the acceleration region. Valid values:
 	//
 	// *   **BGP**: BGP (Multi-ISP) lines.
-	// *   **BGP_PRO**: BGP (Multi-ISP) Pro lines
+	// *   **BGP_PRO**: BGP (Multi-ISP) Pro lines.
 	//
 	// If you are allowed to use single-ISP bandwidth, one of the following values is returned:
 	//
@@ -12245,19 +12335,27 @@ type DescribeIpSetResponseBody struct {
 	// *   **ChinaUnicom_L2**: China Unicom (single ISP)\_L2.
 	// *   **ChinaMobile_L2**: China Mobile (single ISP)\_L2.
 	//
-	// >  The supported single-ISP line types vary based on the acceleration region.
+	// >  The supported single-ISP type varies with the acceleration region.
 	IspType *string `json:"IspType,omitempty" xml:"IspType,omitempty"`
 	// The ID of the request.
-	RequestId           *string                                         `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	ServiceId           *string                                         `json:"ServiceId,omitempty" xml:"ServiceId,omitempty"`
-	ServiceManaged      *bool                                           `json:"ServiceManaged,omitempty" xml:"ServiceManaged,omitempty"`
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The service ID to which the managed instance belongs.
+	//
+	// >  Valid only when the ServiceManaged parameter is True.
+	ServiceId *string `json:"ServiceId,omitempty" xml:"ServiceId,omitempty"`
+	// Is it a managed instance. Valid values:
+	//
+	// - true
+	// - false
+	ServiceManaged *bool `json:"ServiceManaged,omitempty" xml:"ServiceManaged,omitempty"`
+	// A list of action policies that users can execute on this managed instance.
 	ServiceManagedInfos []*DescribeIpSetResponseBodyServiceManagedInfos `json:"ServiceManagedInfos,omitempty" xml:"ServiceManagedInfos,omitempty" type:"Repeated"`
 	// The status of the acceleration region. Valid values:
 	//
 	// *   **init**: The acceleration region is being initialized.
 	// *   **active**: The acceleration region is in the running state.
 	// *   **updating**: The acceleration region is being configured.
-	// *   **deleting:** The VPN gateway is being deleted.
+	// *   **deleting**: The GA instance is being deleted.
 	State *string `json:"State,omitempty" xml:"State,omitempty"`
 }
 
@@ -12330,9 +12428,33 @@ func (s *DescribeIpSetResponseBody) SetState(v string) *DescribeIpSetResponseBod
 }
 
 type DescribeIpSetResponseBodyServiceManagedInfos struct {
-	Action    *string `json:"Action,omitempty" xml:"Action,omitempty"`
+	// Managed policy action name, Valid values:
+	//
+	// - Create
+	// - Update
+	// - Delete
+	// - Associate
+	// - UserUnmanaged
+	// - CreateChild
+	Action *string `json:"Action,omitempty" xml:"Action,omitempty"`
+	// Sub resource type, Valid values:
+	//
+	// - Listener
+	// - IpSet
+	// - EndpointGroup
+	// - ForwardingRule
+	// - Endpoint
+	// - EndpointGroupDestination
+	// - EndpointPolicy
+	//
+	// >Only valid when the Action parameter is CreateChild.
 	ChildType *string `json:"ChildType,omitempty" xml:"ChildType,omitempty"`
-	IsManaged *bool   `json:"IsManaged,omitempty" xml:"IsManaged,omitempty"`
+	// Is the managed policy action managed, Valid values:
+	//
+	// - true: The managed policy action is managed, and users do not have permission to perform the operation specified in the Action on the managed instance.
+	//
+	// - false: The managed policy action is not managed, and users have permission to perform the operation specified in the Action on the managed instance.
+	IsManaged *bool `json:"IsManaged,omitempty" xml:"IsManaged,omitempty"`
 }
 
 func (s DescribeIpSetResponseBodyServiceManagedInfos) String() string {
@@ -12485,9 +12607,17 @@ type DescribeListenerResponseBody struct {
 	//     *   Supported cipher suites: TLS_AES\_128\_GCM_SHA256, TLS_AES\_256\_GCM_SHA384, TLS_CHACHA20\_POLY1305\_SHA256, TLS_AES\_128\_CCM_SHA256, TLS_AES\_128\_CCM\_8\_SHA256, ECDHE-ECDSA-AES128-GCM-SHA256, ECDHE-ECDSA-AES256-GCM-SHA384, ECDHE-ECDSA-AES128-SHA256, ECDHE-ECDSA-AES256-SHA384, ECDHE-RSA-AES128-GCM-SHA256, ECDHE-RSA-AES256-GCM-SHA384, ECDHE-RSA-AES128-SHA256, ECDHE-RSA-AES256-SHA384, ECDHE-ECDSA-AES128-SHA, ECDHE-ECDSA-AES256-SHA, ECDHE-RSA-AES128-SHA, and ECDHE-RSA-AES256-SHA
 	//
 	// >  This parameter is returned only for HTTPS listeners.
-	SecurityPolicyId    *string                                            `json:"SecurityPolicyId,omitempty" xml:"SecurityPolicyId,omitempty"`
-	ServiceId           *string                                            `json:"ServiceId,omitempty" xml:"ServiceId,omitempty"`
-	ServiceManaged      *bool                                              `json:"ServiceManaged,omitempty" xml:"ServiceManaged,omitempty"`
+	SecurityPolicyId *string `json:"SecurityPolicyId,omitempty" xml:"SecurityPolicyId,omitempty"`
+	// The service ID to which the managed instance belongs.
+	//
+	// >  Valid only when the ServiceManaged parameter is True.
+	ServiceId *string `json:"ServiceId,omitempty" xml:"ServiceId,omitempty"`
+	// Is it a managed instance. Valid values:
+	//
+	// - true
+	// - false
+	ServiceManaged *bool `json:"ServiceManaged,omitempty" xml:"ServiceManaged,omitempty"`
+	// A list of action policies that users can execute on this managed instance.
 	ServiceManagedInfos []*DescribeListenerResponseBodyServiceManagedInfos `json:"ServiceManagedInfos,omitempty" xml:"ServiceManagedInfos,omitempty" type:"Repeated"`
 	// The state of the listener. Valid values:
 	//
@@ -12726,9 +12856,31 @@ func (s *DescribeListenerResponseBodyRelatedAcls) SetStatus(v string) *DescribeL
 }
 
 type DescribeListenerResponseBodyServiceManagedInfos struct {
-	Action    *string `json:"Action,omitempty" xml:"Action,omitempty"`
+	// Managed policy action name, Valid values:
+	//
+	// - Create
+	// - Update
+	// - Delete
+	// - Associate
+	// - UserUnmanaged
+	// - CreateChild
+	Action *string `json:"Action,omitempty" xml:"Action,omitempty"`
+	// Sub resource type, Valid values:
+	//
+	// - Listener
+	// - IpSet
+	// - EndpointGroup
+	// - ForwardingRule
+	// - Endpoint
+	// - EndpointGroupDestination
+	// - EndpointPolicy
+	//
+	// >Only valid when the Action parameter is CreateChild.
 	ChildType *string `json:"ChildType,omitempty" xml:"ChildType,omitempty"`
-	IsManaged *bool   `json:"IsManaged,omitempty" xml:"IsManaged,omitempty"`
+	// Is the managed policy action managed, Valid values:
+	// - **true**: The managed policy action is managed, and users do not have permission to perform the operation specified in the Action on the managed instance.
+	// - **false**: The managed policy action is not managed, and users have permission to perform the operation specified in the Action on the managed instance.
+	IsManaged *bool `json:"IsManaged,omitempty" xml:"IsManaged,omitempty"`
 }
 
 func (s DescribeListenerResponseBodyServiceManagedInfos) String() string {
@@ -12854,6 +13006,141 @@ func (s *DescribeListenerResponse) SetBody(v *DescribeListenerResponseBody) *Des
 	return s
 }
 
+type DescribeLogStoreOfEndpointGroupRequest struct {
+	// The ID of the GA instance.
+	AcceleratorId *string `json:"AcceleratorId,omitempty" xml:"AcceleratorId,omitempty"`
+	// The ID of the endpoint group.
+	EndpointGroupId *string `json:"EndpointGroupId,omitempty" xml:"EndpointGroupId,omitempty"`
+	// The ID of the listener.
+	ListenerId *string `json:"ListenerId,omitempty" xml:"ListenerId,omitempty"`
+	// The region where the GA instance is deployed. Set the value to **cn-hangzhou**.
+	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+}
+
+func (s DescribeLogStoreOfEndpointGroupRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeLogStoreOfEndpointGroupRequest) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeLogStoreOfEndpointGroupRequest) SetAcceleratorId(v string) *DescribeLogStoreOfEndpointGroupRequest {
+	s.AcceleratorId = &v
+	return s
+}
+
+func (s *DescribeLogStoreOfEndpointGroupRequest) SetEndpointGroupId(v string) *DescribeLogStoreOfEndpointGroupRequest {
+	s.EndpointGroupId = &v
+	return s
+}
+
+func (s *DescribeLogStoreOfEndpointGroupRequest) SetListenerId(v string) *DescribeLogStoreOfEndpointGroupRequest {
+	s.ListenerId = &v
+	return s
+}
+
+func (s *DescribeLogStoreOfEndpointGroupRequest) SetRegionId(v string) *DescribeLogStoreOfEndpointGroupRequest {
+	s.RegionId = &v
+	return s
+}
+
+type DescribeLogStoreOfEndpointGroupResponseBody struct {
+	// The ID of the GA instance.
+	AcceleratorId *string `json:"AcceleratorId,omitempty" xml:"AcceleratorId,omitempty"`
+	// The ID of the endpoint group.
+	EndpointGroupId *string `json:"EndpointGroupId,omitempty" xml:"EndpointGroupId,omitempty"`
+	// The ID of the listener.
+	ListenerId *string `json:"ListenerId,omitempty" xml:"ListenerId,omitempty"`
+	// Id of the request
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The name of the Logstore.
+	SlsLogStoreName *string `json:"SlsLogStoreName,omitempty" xml:"SlsLogStoreName,omitempty"`
+	// The name of the Log Service project.
+	SlsProjectName *string `json:"SlsProjectName,omitempty" xml:"SlsProjectName,omitempty"`
+	// The region ID of the Log Service project.
+	SlsRegionId *string `json:"SlsRegionId,omitempty" xml:"SlsRegionId,omitempty"`
+	// The status of the log.
+	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
+}
+
+func (s DescribeLogStoreOfEndpointGroupResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeLogStoreOfEndpointGroupResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeLogStoreOfEndpointGroupResponseBody) SetAcceleratorId(v string) *DescribeLogStoreOfEndpointGroupResponseBody {
+	s.AcceleratorId = &v
+	return s
+}
+
+func (s *DescribeLogStoreOfEndpointGroupResponseBody) SetEndpointGroupId(v string) *DescribeLogStoreOfEndpointGroupResponseBody {
+	s.EndpointGroupId = &v
+	return s
+}
+
+func (s *DescribeLogStoreOfEndpointGroupResponseBody) SetListenerId(v string) *DescribeLogStoreOfEndpointGroupResponseBody {
+	s.ListenerId = &v
+	return s
+}
+
+func (s *DescribeLogStoreOfEndpointGroupResponseBody) SetRequestId(v string) *DescribeLogStoreOfEndpointGroupResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *DescribeLogStoreOfEndpointGroupResponseBody) SetSlsLogStoreName(v string) *DescribeLogStoreOfEndpointGroupResponseBody {
+	s.SlsLogStoreName = &v
+	return s
+}
+
+func (s *DescribeLogStoreOfEndpointGroupResponseBody) SetSlsProjectName(v string) *DescribeLogStoreOfEndpointGroupResponseBody {
+	s.SlsProjectName = &v
+	return s
+}
+
+func (s *DescribeLogStoreOfEndpointGroupResponseBody) SetSlsRegionId(v string) *DescribeLogStoreOfEndpointGroupResponseBody {
+	s.SlsRegionId = &v
+	return s
+}
+
+func (s *DescribeLogStoreOfEndpointGroupResponseBody) SetStatus(v string) *DescribeLogStoreOfEndpointGroupResponseBody {
+	s.Status = &v
+	return s
+}
+
+type DescribeLogStoreOfEndpointGroupResponse struct {
+	Headers    map[string]*string                           `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                                       `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *DescribeLogStoreOfEndpointGroupResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s DescribeLogStoreOfEndpointGroupResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeLogStoreOfEndpointGroupResponse) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeLogStoreOfEndpointGroupResponse) SetHeaders(v map[string]*string) *DescribeLogStoreOfEndpointGroupResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *DescribeLogStoreOfEndpointGroupResponse) SetStatusCode(v int32) *DescribeLogStoreOfEndpointGroupResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *DescribeLogStoreOfEndpointGroupResponse) SetBody(v *DescribeLogStoreOfEndpointGroupResponseBody) *DescribeLogStoreOfEndpointGroupResponse {
+	s.Body = v
+	return s
+}
+
 type DescribeRegionsRequest struct {
 	// The ID of the region to query.
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
@@ -12873,9 +13160,9 @@ func (s *DescribeRegionsRequest) SetRegionId(v string) *DescribeRegionsRequest {
 }
 
 type DescribeRegionsResponseBody struct {
-	// The list of available regions.
+	// The available regions.
 	Regions []*DescribeRegionsResponseBodyRegions `json:"Regions,omitempty" xml:"Regions,omitempty" type:"Repeated"`
-	// The ID of the request.
+	// The request ID.
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -12898,9 +13185,9 @@ func (s *DescribeRegionsResponseBody) SetRequestId(v string) *DescribeRegionsRes
 }
 
 type DescribeRegionsResponseBodyRegions struct {
-	// The name of the region.
+	// The region name.
 	LocalName *string `json:"LocalName,omitempty" xml:"LocalName,omitempty"`
-	// The ID of the region.
+	// The region ID.
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 }
 
@@ -13038,7 +13325,8 @@ type DetachLogStoreFromEndpointGroupRequest struct {
 	// You can use the client to generate the value, but you must make sure that it is unique among different requests. The client token can contain only ASCII characters.
 	//
 	// >  If you do not set this parameter, **ClientToken** is set to the value of **RequestId**. The value of **RequestId** for each API request may be different.
-	ClientToken      *string   `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
+	ClientToken *string `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
+	// The IDs of endpoint groups.
 	EndpointGroupIds []*string `json:"EndpointGroupIds,omitempty" xml:"EndpointGroupIds,omitempty" type:"Repeated"`
 	// The ID of the listener.
 	ListenerId *string `json:"ListenerId,omitempty" xml:"ListenerId,omitempty"`
@@ -13293,6 +13581,7 @@ func (s *DisableApplicationMonitorResponse) SetBody(v *DisableApplicationMonitor
 }
 
 type DissociateAclsFromListenerRequest struct {
+	// The ID of the ACL. You can disassociate up to two ACLs from a listener.
 	AclIds []*string `json:"AclIds,omitempty" xml:"AclIds,omitempty" type:"Repeated"`
 	// The client token that is used to ensure the idempotence of the request.
 	//
@@ -13345,7 +13634,7 @@ func (s *DissociateAclsFromListenerRequest) SetRegionId(v string) *DissociateAcl
 }
 
 type DissociateAclsFromListenerResponseBody struct {
-	// The ID of the ACL.
+	// The IDs of the ACL.
 	AclIds []*string `json:"AclIds,omitempty" xml:"AclIds,omitempty" type:"Repeated"`
 	// The ID of the listener.
 	ListenerId *string `json:"ListenerId,omitempty" xml:"ListenerId,omitempty"`
@@ -13413,8 +13702,11 @@ type DissociateAdditionalCertificatesFromListenerRequest struct {
 	// You can use the client to generate the value, but you must make sure that it is unique among all requests. ClientToken can contain only ASCII characters.
 	//
 	// >  If you do not set this parameter, **ClientToken** is set to the value of **RequestId**. The value of **RequestId** may be different for each API request.
-	ClientToken *string   `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
-	Domains     []*string `json:"Domains,omitempty" xml:"Domains,omitempty" type:"Repeated"`
+	ClientToken *string `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
+	// The domain name associated with the additional certificate.
+	//
+	// You can specify up to 10 domain names in each request.
+	Domains []*string `json:"Domains,omitempty" xml:"Domains,omitempty" type:"Repeated"`
 	// The ID of the listener.
 	ListenerId *string `json:"ListenerId,omitempty" xml:"ListenerId,omitempty"`
 	// The ID of the region where the GA instance is deployed. Set the value to **cn-hangzhou**.
@@ -13585,9 +13877,9 @@ func (s *EnableApplicationMonitorResponse) SetBody(v *EnableApplicationMonitorRe
 }
 
 type GetAclRequest struct {
-	// The ID of the request.
+	// The ID of the region where the Global Accelerator (GA) instance is deployed. Set the value to **cn-hangzhou**.
 	AclId *string `json:"AclId,omitempty" xml:"AclId,omitempty"`
-	// The ID of the network ACL.
+	// The operation that you want to perform. Set the value to **GetAcl**.
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 }
 
@@ -13610,16 +13902,6 @@ func (s *GetAclRequest) SetRegionId(v string) *GetAclRequest {
 }
 
 type GetAclResponseBody struct {
-	// The network ACL entry.
-	AclEntries []*GetAclResponseBodyAclEntries `json:"AclEntries,omitempty" xml:"AclEntries,omitempty" type:"Repeated"`
-	// The IP version of the network ACL. Valid values:
-	//
-	// *   **IPv4**
-	// *   **IPv6**
-	AclId   *string `json:"AclId,omitempty" xml:"AclId,omitempty"`
-	AclName *string `json:"AclName,omitempty" xml:"AclName,omitempty"`
-	// The list of network ACL entries that are returned. A maximum of 20 network ACL entries can be returned.
-	AclStatus *string `json:"AclStatus,omitempty" xml:"AclStatus,omitempty"`
 	// The state of the network ACL. Valid values:
 	//
 	// *   **init**: The network ACL is being initialized.
@@ -13627,13 +13909,26 @@ type GetAclResponseBody struct {
 	// *   **configuring**: The network ACL is being configured.
 	// *   **updating**: The network ACL is being updated.
 	// *   **deleting**: The network ACL is being deleted.
+	AclEntries []*GetAclResponseBodyAclEntries `json:"AclEntries,omitempty" xml:"AclEntries,omitempty" type:"Repeated"`
+	// The ID of the request.
+	AclId *string `json:"AclId,omitempty" xml:"AclId,omitempty"`
+	// The ID of the GA instance.
+	AclName *string `json:"AclName,omitempty" xml:"AclName,omitempty"`
+	// The IP version of the network ACL. Valid values:
+	//
+	// *   **IPv4**
+	// *   **IPv6**
+	AclStatus *string `json:"AclStatus,omitempty" xml:"AclStatus,omitempty"`
+	// The ID of the network ACL.
 	AddressIPVersion *string `json:"AddressIPVersion,omitempty" xml:"AddressIPVersion,omitempty"`
-	// The ID of the listener.
+	// The description of the network ACL entry.
 	RelatedListeners []*GetAclResponseBodyRelatedListeners `json:"RelatedListeners,omitempty" xml:"RelatedListeners,omitempty" type:"Repeated"`
 	// The ID of the network ACL.
-	RequestId       *string                   `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	ResourceGroupId *string                   `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
-	Tags            []*GetAclResponseBodyTags `json:"Tags,omitempty" xml:"Tags,omitempty" type:"Repeated"`
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The name of the network ACL.
+	ResourceGroupId *string `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
+	// The ID of the resource group.
+	Tags []*GetAclResponseBodyTags `json:"Tags,omitempty" xml:"Tags,omitempty" type:"Repeated"`
 }
 
 func (s GetAclResponseBody) String() string {
@@ -13690,9 +13985,9 @@ func (s *GetAclResponseBody) SetTags(v []*GetAclResponseBodyTags) *GetAclRespons
 }
 
 type GetAclResponseBodyAclEntries struct {
-	// The description of the network ACL entry.
+	// The list of network ACL entries that are returned. A maximum of 20 network ACL entries can be returned.
 	Entry *string `json:"Entry,omitempty" xml:"Entry,omitempty"`
-	// The listeners that are associated with the network ACL.
+	// The network ACL entry.
 	EntryDescription *string `json:"EntryDescription,omitempty" xml:"EntryDescription,omitempty"`
 }
 
@@ -13715,14 +14010,14 @@ func (s *GetAclResponseBodyAclEntries) SetEntryDescription(v string) *GetAclResp
 }
 
 type GetAclResponseBodyRelatedListeners struct {
-	// The name of the network ACL.
-	AcceleratorId *string `json:"AcceleratorId,omitempty" xml:"AcceleratorId,omitempty"`
-	// The ID of the GA instance.
-	AclType *string `json:"AclType,omitempty" xml:"AclType,omitempty"`
 	// The type of the network ACL.
 	//
 	// *   **White**: a whitelist. Only requests from the IP addresses or CIDR blocks in the ACL are forwarded. Whitelists apply to scenarios in which you want to allow only specified IP addresses to access an application. Your service may be adversely affected if the whitelist is not properly configured. After you configure a whitelist for a listener, only requests from the IP addresses that are added to the whitelist are forwarded by the listener. If the whitelist is enabled but no IP addresses are added to the network ACL, the listener does not forward requests.
 	// *   **Black**: a blacklist. All requests from the IP addresses or CIDR blocks in the ACL are blocked. Blacklists apply to scenarios in which you want to deny access from specific IP addresses to an application. If the blacklist is enabled but no IP addresses are added to the network ACL, the listener forwards all requests.
+	AcceleratorId *string `json:"AcceleratorId,omitempty" xml:"AcceleratorId,omitempty"`
+	// The ID of the listener.
+	AclType *string `json:"AclType,omitempty" xml:"AclType,omitempty"`
+	// The listeners that are associated with the network ACL.
 	ListenerId *string `json:"ListenerId,omitempty" xml:"ListenerId,omitempty"`
 }
 
@@ -13750,7 +14045,9 @@ func (s *GetAclResponseBodyRelatedListeners) SetListenerId(v string) *GetAclResp
 }
 
 type GetAclResponseBodyTags struct {
-	Key   *string `json:"Key,omitempty" xml:"Key,omitempty"`
+	// The tags of the ACL.
+	Key *string `json:"Key,omitempty" xml:"Key,omitempty"`
+	// The tag key
 	Value *string `json:"Value,omitempty" xml:"Value,omitempty"`
 }
 
@@ -14908,7 +15205,22 @@ type GetBasicIpSetResponseBody struct {
 	IpSetId *string `json:"IpSetId,omitempty" xml:"IpSetId,omitempty"`
 	// The version of the accelerated IP address. Only **IPv4** is returned. This indicates that an IPv4 address is used.
 	IpVersion *string `json:"IpVersion,omitempty" xml:"IpVersion,omitempty"`
-	IspType   *string `json:"IspType,omitempty" xml:"IspType,omitempty"`
+	// The line type of the elastic IP address (EIP) in the acceleration region. Valid values:
+	//
+	// *   **BGP** (default)
+	// *   **BGP_PRO** If the acceleration region is China (Hong Kong) and a basic bandwidth plan whose bandwidth type is Premium is associated with the GA instance, the default value of IspType is BGP_PRO.
+	//
+	// If you are allowed to use single-ISP bandwidth, you can also specify one of the following values:
+	//
+	// *   **ChinaTelecom**: China Telecom (single ISP)
+	// *   **ChinaUnicom**: China Unicom (single ISP)
+	// *   **ChinaMobile**: China Mobile (single ISP)
+	// *   **ChinaTelecom_L2**: China Telecom \_L2 (single ISP)
+	// *   **ChinaUnicom_L2**: China Unicom \_L2 (single ISP)
+	// *   **ChinaMobile_L2**: China Mobile \_L2 (single ISP)
+	//
+	// > Different acceleration regions support different single-ISP BGP lines.
+	IspType *string `json:"IspType,omitempty" xml:"IspType,omitempty"`
 	// The ID of the request.
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	// The status of the acceleration region of the basic GA instance. Valid values:
@@ -15518,7 +15830,7 @@ func (s *GetSpareIpResponse) SetBody(v *GetSpareIpResponseBody) *GetSpareIpRespo
 }
 
 type ListAccelerateAreasRequest struct {
-	// The region ID of the Global Accelerator instance. Set the value to **cn-hangzhou**.
+	// The region ID of the Global Accelerator (GA) instance. Set the value to **cn-hangzhou**.
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 }
 
@@ -15536,9 +15848,9 @@ func (s *ListAccelerateAreasRequest) SetRegionId(v string) *ListAccelerateAreasR
 }
 
 type ListAccelerateAreasResponseBody struct {
-	// The acceleration areas.
+	// The information about the areas.
 	Areas []*ListAccelerateAreasResponseBodyAreas `json:"Areas,omitempty" xml:"Areas,omitempty" type:"Repeated"`
-	// The ID of the request.
+	// The request ID.
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -15561,11 +15873,11 @@ func (s *ListAccelerateAreasResponseBody) SetRequestId(v string) *ListAccelerate
 }
 
 type ListAccelerateAreasResponseBodyAreas struct {
-	// The ID of the acceleration area.
+	// The area ID.
 	AreaId *string `json:"AreaId,omitempty" xml:"AreaId,omitempty"`
-	// The name of the acceleration area.
+	// The area name.
 	LocalName *string `json:"LocalName,omitempty" xml:"LocalName,omitempty"`
-	// The list of regions.
+	// The regions in the acceleration area.
 	RegionList []*ListAccelerateAreasResponseBodyAreasRegionList `json:"RegionList,omitempty" xml:"RegionList,omitempty" type:"Repeated"`
 }
 
@@ -15593,9 +15905,9 @@ func (s *ListAccelerateAreasResponseBodyAreas) SetRegionList(v []*ListAccelerate
 }
 
 type ListAccelerateAreasResponseBodyAreasRegionList struct {
-	// The name of the region.
+	// The region name.
 	LocalName *string `json:"LocalName,omitempty" xml:"LocalName,omitempty"`
-	// The ID of the region.
+	// The region ID.
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 }
 
@@ -17042,13 +17354,33 @@ func (s *ListAvailableAccelerateAreasResponseBodyAreas) SetRegionList(v []*ListA
 }
 
 type ListAvailableAccelerateAreasResponseBodyAreasRegionList struct {
-	ChinaMainland *bool     `json:"ChinaMainland,omitempty" xml:"ChinaMainland,omitempty"`
-	IspTypeList   []*string `json:"IspTypeList,omitempty" xml:"IspTypeList,omitempty" type:"Repeated"`
+	// Whether China Mainland.
+	ChinaMainland *bool `json:"ChinaMainland,omitempty" xml:"ChinaMainland,omitempty"`
+	// The line types of EIPs in the acceleration region.
+	//
+	// *   **BGP**: BGP (Multi-ISP) lines
+	// *   **BGP_PRO**: BGP (Multi-ISP) Pro lines
+	//
+	// If you have the permissions to use single-ISP bandwidth, one of the following values may be returned:
+	//
+	// *   **ChinaTelecom**: China Telecom (single ISP)
+	// *   **ChinaUnicom**: China Unicom (single ISP)
+	// *   **ChinaMobile**: China Mobile (single ISP)
+	// *   **ChinaTelecom_L2**: China Telecom_L2 (single ISP)
+	// *   **ChinaUnicom_L2**: China Unicom_L2 (single ISP)
+	// *   **ChinaMobile_L2**: China Mobile_L2 (single ISP)
+	//
+	// > Different acceleration regions support different single-ISP BGP lines.
+	IspTypeList []*string `json:"IspTypeList,omitempty" xml:"IspTypeList,omitempty" type:"Repeated"`
 	// The name of the acceleration region.
 	LocalName *string `json:"LocalName,omitempty" xml:"LocalName,omitempty"`
 	// The ID of the acceleration region.
-	RegionId    *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	SupportIpv6 *bool   `json:"SupportIpv6,omitempty" xml:"SupportIpv6,omitempty"`
+	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	// Ipv6 supported, Valid values:
+	//
+	// - true
+	// - false
+	SupportIpv6 *bool `json:"SupportIpv6,omitempty" xml:"SupportIpv6,omitempty"`
 }
 
 func (s ListAvailableAccelerateAreasResponseBodyAreasRegionList) String() string {
@@ -17164,6 +17496,7 @@ func (s *ListAvailableBusiRegionsResponseBody) SetRequestId(v string) *ListAvail
 }
 
 type ListAvailableBusiRegionsResponseBodyRegions struct {
+	// Whether China Mainland.
 	ChinaMainland *bool `json:"ChinaMainland,omitempty" xml:"ChinaMainland,omitempty"`
 	// The name of the region.
 	LocalName *string `json:"LocalName,omitempty" xml:"LocalName,omitempty"`
@@ -17705,7 +18038,8 @@ type ListBandwidthackagesResponseBodyBandwidthPackages struct {
 	// The name of the GA instance.
 	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
 	// The ID of the request.
-	RegionId        *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	// The ID of the resource group.
 	ResourceGroupId *string `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
 	// The state of the bandwidth plan. Valid values:
 	//
@@ -17717,8 +18051,9 @@ type ListBandwidthackagesResponseBodyBandwidthPackages struct {
 	// *   **updating**: The bandwidth plan is being updated.
 	// *   **finacialLocked**: The bandwidth plan is locked due to overdue payments.
 	// *   **Locked**: The bandwidth plan is locked.
-	State *string                                                  `json:"State,omitempty" xml:"State,omitempty"`
-	Tags  []*ListBandwidthackagesResponseBodyBandwidthPackagesTags `json:"Tags,omitempty" xml:"Tags,omitempty" type:"Repeated"`
+	State *string `json:"State,omitempty" xml:"State,omitempty"`
+	// The tags of the bandwidth plans.
+	Tags []*ListBandwidthackagesResponseBodyBandwidthPackagesTags `json:"Tags,omitempty" xml:"Tags,omitempty" type:"Repeated"`
 }
 
 func (s ListBandwidthackagesResponseBodyBandwidthPackages) String() string {
@@ -17790,7 +18125,9 @@ func (s *ListBandwidthackagesResponseBodyBandwidthPackages) SetTags(v []*ListBan
 }
 
 type ListBandwidthackagesResponseBodyBandwidthPackagesTags struct {
-	Key   *string `json:"Key,omitempty" xml:"Key,omitempty"`
+	// The tag key of the bandwidth plan.
+	Key *string `json:"Key,omitempty" xml:"Key,omitempty"`
+	// The tag value of the bandwidth plan.
 	Value *string `json:"Value,omitempty" xml:"Value,omitempty"`
 }
 
@@ -18296,27 +18633,25 @@ func (s *ListBasicAccelerateIpsResponse) SetBody(v *ListBasicAccelerateIpsRespon
 type ListBasicAcceleratorsRequest struct {
 	// The ID of the basic GA instance.
 	AcceleratorId *string `json:"AcceleratorId,omitempty" xml:"AcceleratorId,omitempty"`
-	// The page number. Default value: **1**.
+	// The number of the page to return. Default value: **1**.
 	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
-	// The number of entries per page. Maximum value: **50**. Default value: **10**.
+	// The number of entries to return on each page. Maximum value: **50**. Default value: **10**.
 	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
 	// The ID of the region to which the basic GA instance belongs. Set the value to **cn-hangzhou**.
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 	// The ID of the resource group to which the basic GA instance belongs.
 	ResourceGroupId *string `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
-	// The status of the basic GA instance. Valid values:
+	// The state of the basic GA instance. Valid values:
 	//
-	// *   **init**: The GA instance is being initialized.
-	// *   **active**: The GA instance is available.
-	// *   **configuring**: The GA instance is being configured.
-	// *   **binding**: The GA instance is being associated.
-	// *   **unbinding**: The GA instance is being disassociated.
-	// *   **deleting**: The GA instance is being deleted.
-	// *   **finacialLocked**: The GA instance is locked due to overdue payments.
+	// *   **init**: The basic GA instance is being initialized.
+	// *   **active**: The basic GA instance is available.
+	// *   **configuring**: The basic GA instance is being configured.
+	// *   **binding**: The basic GA instance is being associated.
+	// *   **unbinding**: The basic GA instance is being disassociated.
+	// *   **deleting**: The basic GA instance is being deleted.
+	// *   **finacialLocked**: The basic GA instance is locked due to overdue payments.
 	State *string `json:"State,omitempty" xml:"State,omitempty"`
-	// The tags of the basic GA instance.
-	//
-	// You can specify up to 20 tags.
+	// The tags of the GA instance.
 	Tag []*ListBasicAcceleratorsRequestTag `json:"Tag,omitempty" xml:"Tag,omitempty" type:"Repeated"`
 }
 
@@ -18364,13 +18699,13 @@ func (s *ListBasicAcceleratorsRequest) SetTag(v []*ListBasicAcceleratorsRequestT
 }
 
 type ListBasicAcceleratorsRequestTag struct {
-	// The tag key of the basic GA instance. The tag key cannot be an empty string.
+	// The key of tag N of the basic GA instance. The tag key cannot be an empty string.
 	//
 	// The tag key can be up to 64 characters in length and cannot contain `http://` or `https://`. It cannot start with `aliyun` or `acs:`.
 	//
 	// You can specify up to 20 tag keys.
 	Key *string `json:"Key,omitempty" xml:"Key,omitempty"`
-	// The tag value of the basic GA instance. The tag value cannot be an empty string.
+	// The value of tag N of the basic GA instance. The tag value can be an empty string.
 	//
 	// The tag value can be up to 128 characters in length and cannot contain `http://` or `https://`. It cannot start with `aliyun` or `acs:`.
 	//
@@ -18397,7 +18732,7 @@ func (s *ListBasicAcceleratorsRequestTag) SetValue(v string) *ListBasicAccelerat
 }
 
 type ListBasicAcceleratorsResponseBody struct {
-	// The basic GA instances.
+	// The information about basic GA instances.
 	Accelerators []*ListBasicAcceleratorsResponseBodyAccelerators `json:"Accelerators,omitempty" xml:"Accelerators,omitempty" type:"Repeated"`
 	// The page number of the returned page.
 	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
@@ -18451,20 +18786,24 @@ type ListBasicAcceleratorsResponseBodyAccelerators struct {
 	// *   **CDT**: billed through Cloud Data Transfer (CDT) and based on data transfer.
 	// *   **CDT95**: billed through CDT and based on the 95th percentile bandwidth. This bandwidth billing method is available only for users that are included in the whitelist.
 	BandwidthBillingType *string `json:"BandwidthBillingType,omitempty" xml:"BandwidthBillingType,omitempty"`
-	// The details about the basic bandwidth plan that is associated with the basic GA instance.
+	// Details about the basic bandwidth plan that is associated with the basic GA instance.
 	BasicBandwidthPackage *ListBasicAcceleratorsResponseBodyAcceleratorsBasicBandwidthPackage `json:"BasicBandwidthPackage,omitempty" xml:"BasicBandwidthPackage,omitempty" type:"Struct"`
-	// The ID of the endpoint group.
+	// The ID of the endpoint group that is associated with the basic GA instance.
 	BasicEndpointGroupId *string `json:"BasicEndpointGroupId,omitempty" xml:"BasicEndpointGroupId,omitempty"`
-	// The ID of the acceleration region.
+	// The ID of the acceleration region where the basic GA instance is deployed.
 	BasicIpSetId *string `json:"BasicIpSetId,omitempty" xml:"BasicIpSetId,omitempty"`
 	// The timestamp that indicates when the basic GA instance was created.
 	//
 	// The time follows the UNIX time format. It is the number of seconds that have elapsed since the epoch time January 1, 1970, 00:00:00 UTC.
-	CreateTime        *int64 `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
-	CrossBorderStatus *bool  `json:"CrossBorderStatus,omitempty" xml:"CrossBorderStatus,omitempty"`
-	// The details about the cross-region acceleration bandwidth plan that is associated with the GA instance.
+	CreateTime *int64 `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
+	// Indicates whether cross-border acceleration is enabled for the GA instance. Valid values:
 	//
-	// This array is returned only for GA instances that are created on the international site (alibabacloud.com).
+	// *   **true**
+	// *   **false**
+	CrossBorderStatus *bool `json:"CrossBorderStatus,omitempty" xml:"CrossBorderStatus,omitempty"`
+	// Details about the cross-region acceleration bandwidth plan that is associated with the GA instance.
+	//
+	// This parameter is returned only when you call this operation on the International site (alibabacloud.com).
 	CrossDomainBandwidthPackage *ListBasicAcceleratorsResponseBodyAcceleratorsCrossDomainBandwidthPackage `json:"CrossDomainBandwidthPackage,omitempty" xml:"CrossDomainBandwidthPackage,omitempty" type:"Struct"`
 	// The description of the basic GA instance.
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
@@ -18480,19 +18819,19 @@ type ListBasicAcceleratorsResponseBodyAccelerators struct {
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 	// The ID of the resource group to which the basic GA instance belongs.
 	ResourceGroupId *string `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
-	// The status of the basic GA instance.
+	// The state of the basic GA instance.
 	//
-	// *   **init**: The GA instance is being initialized.
-	// *   **active**: The GA instance is available.
-	// *   **configuring**: The GA instance is being configured.
-	// *   **binding**: The GA instance is being associated.
+	// *   **init**: The basic GA instance is being initialized.
+	// *   **active**: The basic GA instance is available.
+	// *   **configuring**: The basic GA instance is being configured.
+	// *   **binding**: The basic GA instance is being associated.
 	// *   **unbinding**: The GA instance is being disassociated.
-	// *   **deleting**: The GA instance is being deleted.
-	// *   **finacialLocked**: The GA instance is locked due to overdue payments.
+	// *   **deleting**: The basic GA instance is being deleted.
+	// *   **finacialLocked**: The basic GA instance is locked due to overdue payments.
 	State *string `json:"State,omitempty" xml:"State,omitempty"`
 	// The tags of the basic GA instance.
 	Tags []*ListBasicAcceleratorsResponseBodyAcceleratorsTags `json:"Tags,omitempty" xml:"Tags,omitempty" type:"Repeated"`
-	// An invalid parameter.
+	// This parameter is invalid.
 	Type *string `json:"Type,omitempty" xml:"Type,omitempty"`
 }
 
@@ -19220,35 +19559,35 @@ func (s *ListCommonAreasResponse) SetBody(v *ListCommonAreasResponseBody) *ListC
 }
 
 type ListCustomRoutingEndpointGroupDestinationsRequest struct {
-	// The GA instance ID.
+	// The ID of the GA instance.
 	AcceleratorId *string `json:"AcceleratorId,omitempty" xml:"AcceleratorId,omitempty"`
-	// The endpoint group ID.
+	// The ID of the endpoint group.
 	EndpointGroupId *string `json:"EndpointGroupId,omitempty" xml:"EndpointGroupId,omitempty"`
 	// The start port of the backend service port range of the endpoint group.
 	//
-	// Valid values: **1** to **65499**. The value of **FromPort** must be smaller than or equal to the value of **ToPort**.
+	// Valid values: **1** to **65499**. The **FromPort** value must be smaller than or equal to the **ToPort** value.
 	FromPort *int32 `json:"FromPort,omitempty" xml:"FromPort,omitempty"`
-	// The listener ID.
+	// The ID of the listener.
 	ListenerId *string `json:"ListenerId,omitempty" xml:"ListenerId,omitempty"`
-	// The page number. Default value: **1**.
+	// The number of the page to return. Default value: **1**.
 	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
-	// The number of entries per page. Maximum value: **50**. Default value: **10**.
+	// The number of entries to return on each page. Maximum value: **50**. Default value: **10**.
 	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
 	// The backend service protocols of the endpoint group. Valid values:
 	//
-	// *   **TCP:** TCP.
-	// *   **UDP:** UDP.
-	// *   **TCP,UDP:** TCP and UDP.
+	// - **TCP**: TCP.
+	// - **UDP**: UDP.
+	// - **TCP,UDP**: TCP and UDP.
 	//
 	// If this parameter is empty, all types of protocols are queried.
 	//
 	// You can specify up to 10 protocols.
 	Protocols []*string `json:"Protocols,omitempty" xml:"Protocols,omitempty" type:"Repeated"`
-	// The region ID of the GA instance. Set the value to **cn-hangzhou**.
+	// The ID of the region where the GA instance is deployed. Set the value to **cn-hangzhou**.
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 	// The end port of the backend service port range of the endpoint group.
 	//
-	// Valid values: **1** to **65499**. The value of **FromPort** must be smaller than or equal to the value of **ToPort**.
+	// Valid values: **1** to **65499**. The **FromPort** value must be smaller than or equal to the **ToPort** value.
 	ToPort *int32 `json:"ToPort,omitempty" xml:"ToPort,omitempty"`
 }
 
@@ -19308,11 +19647,11 @@ func (s *ListCustomRoutingEndpointGroupDestinationsRequest) SetToPort(v int32) *
 type ListCustomRoutingEndpointGroupDestinationsResponseBody struct {
 	// The details about the endpoint group mapping configurations.
 	Destinations []*ListCustomRoutingEndpointGroupDestinationsResponseBodyDestinations `json:"Destinations,omitempty" xml:"Destinations,omitempty" type:"Repeated"`
-	// The page number.
+	// The number of the returned page.
 	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
-	// The number of entries per page.
+	// The number of entries returned per page.
 	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	// The request ID.
+	// The ID of the request.
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	// The total number of entries returned.
 	TotalCount *int32 `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
@@ -19352,34 +19691,33 @@ func (s *ListCustomRoutingEndpointGroupDestinationsResponseBody) SetTotalCount(v
 }
 
 type ListCustomRoutingEndpointGroupDestinationsResponseBodyDestinations struct {
-	// The GA instance ID.
+	// The ID of the GA instance.
 	AcceleratorId *string `json:"AcceleratorId,omitempty" xml:"AcceleratorId,omitempty"`
 	// The ID of the endpoint group mapping configuration.
 	DestinationId *string `json:"DestinationId,omitempty" xml:"DestinationId,omitempty"`
-	// The endpoint group ID.
+	// The ID of the endpoint group.
 	EndpointGroupId *string `json:"EndpointGroupId,omitempty" xml:"EndpointGroupId,omitempty"`
 	// The start port of the backend service port range of the endpoint group.
 	FromPort *int32 `json:"FromPort,omitempty" xml:"FromPort,omitempty"`
-	// The listener ID.
+	// The ID of the listener.
 	ListenerId *string `json:"ListenerId,omitempty" xml:"ListenerId,omitempty"`
-	// The backend service protocols of the endpoint group. Valid values:
+	// The backend service protocol of the endpoint group.
 	//
-	// *   **TCP:** TCP.
-	// *   **UDP:** UDP.
-	// *   **TCP,UDP:** TCP and UDP.
+	// *   **TCP**: TCP
+	// *   **UDP**: UDP
+	// *   **TCP,UDP**: TCP and UDP
 	Protocols []*string `json:"Protocols,omitempty" xml:"Protocols,omitempty" type:"Repeated"`
-	// 托管实例所属的服务方ID。
-	// > 仅在**ServiceManaged**参数为**True**时有效。
+	// The service ID to which the managed instance belongs.
+	//
+	// >  Valid only when the ServiceManaged parameter is True.
 	ServiceId *string `json:"ServiceId,omitempty" xml:"ServiceId,omitempty"`
-	// 是否为托管实例。取值：
+	// Is it a managed instance. Valid values:
 	//
-	// - true：是托管资实例。
+	// - **true**
 	//
-	// - false：不是托管实例。
+	// - **false**
 	ServiceManaged *bool `json:"ServiceManaged,omitempty" xml:"ServiceManaged,omitempty"`
-	// 用户在此托管实例下可执行的动作策略列表。
-	// > 仅在**ServiceManaged**参数为**True**时有效。
-	// > - 当实例处于托管状态时，用户对实例的操作会受到限制，某些操作行为会被禁止。
+	// A list of action policies that users can execute on this managed instance.
 	ServiceManagedInfos []*ListCustomRoutingEndpointGroupDestinationsResponseBodyDestinationsServiceManagedInfos `json:"ServiceManagedInfos,omitempty" xml:"ServiceManagedInfos,omitempty" type:"Repeated"`
 	// The end port of the backend service port range of the endpoint group.
 	ToPort *int32 `json:"ToPort,omitempty" xml:"ToPort,omitempty"`
@@ -19444,20 +19782,32 @@ func (s *ListCustomRoutingEndpointGroupDestinationsResponseBodyDestinations) Set
 }
 
 type ListCustomRoutingEndpointGroupDestinationsResponseBodyDestinationsServiceManagedInfos struct {
+	// Managed policy action name, Valid values:
+	//
+	// Create
+	// Update
+	// Delete
+	// Associate
+	// UserUnmanaged
+	// CreateChild
 	Action *string `json:"Action,omitempty" xml:"Action,omitempty"`
-	// 子资源类型，取值：
-	// - **Listener**：监听资源。
-	// - **IpSet**：加速地域资源。
-	// - **EndpointGroup**：终端节点组资源。
-	// - **ForwardingRule**：转发策略资源。
-	// - **Endpoint**：终端节点资源。
-	// - **EndpointGroupDestination**：自定义路由监听下的终端节点组协议映射资源。
-	// - **EndpointPolicy**：自定义路由监听下的终端节点通行策略资源。
-	// > 仅在**Action**参数为**CreateChild**时有效
+	// Sub resource type, Valid values:
+	//
+	// Listener
+	// IpSet
+	// EndpointGroup
+	// ForwardingRule
+	// Endpoint
+	// EndpointGroupDestination
+	// EndpointPolicy
+	//
+	// > Only valid when the Action parameter is CreateChild.
 	ChildType *string `json:"ChildType,omitempty" xml:"ChildType,omitempty"`
-	// 托管策略动作是否被托管，取值：
-	// - **true**：托管策略动作被托管，用户无权在托管实例下执行Action指定的操作。
-	// - **false**：托管策略动作未被托管，用户可在托管实例下执行Action指定的操作。
+	// Is the managed policy action managed, Valid values:
+	//
+	// - **true**: The managed policy action is managed, and users do not have permission to perform the operation specified in the Action on the managed instance.
+	//
+	// - **false**: The managed policy action is not managed, and users have permission to perform the operation specified in the Action on the managed instance.
 	IsManaged *bool `json:"IsManaged,omitempty" xml:"IsManaged,omitempty"`
 }
 
@@ -19520,9 +19870,9 @@ type ListCustomRoutingEndpointGroupsRequest struct {
 	EndpointGroupId *string `json:"EndpointGroupId,omitempty" xml:"EndpointGroupId,omitempty"`
 	// The ID of the custom routing listener.
 	ListenerId *string `json:"ListenerId,omitempty" xml:"ListenerId,omitempty"`
-	// The page number. Default value: **1**.
+	// The number of the page to return. Default value: **1**.
 	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
-	// The number of entries per page. Maximum value: **50**. Default value: **10**.
+	// The number of entries to return on each page. Maximum value: **50**. Default value: **10**.
 	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
 	// The ID of the region where the Global Accelerator (GA) instance is deployed. Set the value to **cn-hangzhou**.
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
@@ -19571,11 +19921,11 @@ type ListCustomRoutingEndpointGroupsResponseBody struct {
 	EndpointGroups []*ListCustomRoutingEndpointGroupsResponseBodyEndpointGroups `json:"EndpointGroups,omitempty" xml:"EndpointGroups,omitempty" type:"Repeated"`
 	// The page number of the returned page.
 	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
-	// The number of entries returned per page.
+	// The number of entries returned on each page.
 	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
 	// The ID of the request.
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// The total number of entries returned.
+	// The number of entries returned.
 	TotalCount *int32 `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
 }
 
@@ -19619,25 +19969,33 @@ type ListCustomRoutingEndpointGroupsResponseBodyEndpointGroups struct {
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
 	// The ID of the endpoint group.
 	EndpointGroupId *string `json:"EndpointGroupId,omitempty" xml:"EndpointGroupId,omitempty"`
-	// A list of endpoint group IP addresses.
+	// The list of endpoint group IP addresses.
 	EndpointGroupIpList []*string `json:"EndpointGroupIpList,omitempty" xml:"EndpointGroupIpList,omitempty" type:"Repeated"`
-	// The ID of the region where the endpoint group is deployed.
+	// The ID of the region where the endpoint group is created.
 	EndpointGroupRegion *string `json:"EndpointGroupRegion,omitempty" xml:"EndpointGroupRegion,omitempty"`
 	// The endpoint group IP addresses to be confirmed after the GA instance is upgraded.
 	EndpointGroupUnconfirmedIpList []*string `json:"EndpointGroupUnconfirmedIpList,omitempty" xml:"EndpointGroupUnconfirmedIpList,omitempty" type:"Repeated"`
 	// The ID of the custom routing listener.
 	ListenerId *string `json:"ListenerId,omitempty" xml:"ListenerId,omitempty"`
 	// The name of the endpoint group.
-	Name                *string                                                                         `json:"Name,omitempty" xml:"Name,omitempty"`
-	ServiceId           *string                                                                         `json:"ServiceId,omitempty" xml:"ServiceId,omitempty"`
-	ServiceManaged      *bool                                                                           `json:"ServiceManaged,omitempty" xml:"ServiceManaged,omitempty"`
-	ServiceManagedInfos []*ListCustomRoutingEndpointGroupsResponseBodyEndpointGroupsServiceManagedInfos `json:"ServiceManagedInfos,omitempty" xml:"ServiceManagedInfos,omitempty" type:"Repeated"`
-	// The status of the endpoint group. Valid values:
+	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// The service ID to which the managed instance belongs.
 	//
-	// *   **init**: The endpoint group is being initialized.
-	// *   **active**: The endpoint group is running as expected.
-	// *   **updating**: The endpoint group is being updated.
-	// *   **deleting**: The endpoint group is being deleted.
+	// >  Valid only when the ServiceManaged parameter is True.
+	ServiceId *string `json:"ServiceId,omitempty" xml:"ServiceId,omitempty"`
+	// Is it a managed instance. Valid values:
+	//
+	// - true
+	// - false
+	ServiceManaged *bool `json:"ServiceManaged,omitempty" xml:"ServiceManaged,omitempty"`
+	// A list of action policies that users can execute on this managed instance.
+	ServiceManagedInfos []*ListCustomRoutingEndpointGroupsResponseBodyEndpointGroupsServiceManagedInfos `json:"ServiceManagedInfos,omitempty" xml:"ServiceManagedInfos,omitempty" type:"Repeated"`
+	// The status of the endpoint group.
+	//
+	// *   **init**: being initialized
+	// *   **active**: running as expected
+	// *   **updating**: being updated
+	// *   **deleting**: being deleted
 	State *string `json:"State,omitempty" xml:"State,omitempty"`
 }
 
@@ -19710,9 +20068,32 @@ func (s *ListCustomRoutingEndpointGroupsResponseBodyEndpointGroups) SetState(v s
 }
 
 type ListCustomRoutingEndpointGroupsResponseBodyEndpointGroupsServiceManagedInfos struct {
-	Action    *string `json:"Action,omitempty" xml:"Action,omitempty"`
+	// Managed policy action name, Valid values:
+	// - Create
+	// - Update
+	// - Delete
+	// - Associate
+	// - UserUnmanaged
+	// - CreateChild
+	Action *string `json:"Action,omitempty" xml:"Action,omitempty"`
+	// Sub resource type, Valid values:
+	//
+	// - Listener
+	// - IpSet
+	// - EndpointGroup
+	// - ForwardingRule
+	// - Endpoint
+	// - EndpointGroupDestination
+	// - EndpointPolicy
+	//
+	// >Only valid when the Action parameter is CreateChild.
 	ChildType *string `json:"ChildType,omitempty" xml:"ChildType,omitempty"`
-	IsManaged *bool   `json:"IsManaged,omitempty" xml:"IsManaged,omitempty"`
+	// Is the managed policy action managed, Valid values:
+	//
+	// - true: The managed policy action is managed, and users do not have permission to perform the operation specified in the Action on the managed instance.
+	//
+	// - false: The managed policy action is not managed, and users have permission to perform the operation specified in the Action on the managed instance.
+	IsManaged *bool `json:"IsManaged,omitempty" xml:"IsManaged,omitempty"`
 }
 
 func (s ListCustomRoutingEndpointGroupsResponseBodyEndpointGroupsServiceManagedInfos) String() string {
@@ -21115,8 +21496,10 @@ func (s *ListDomainsResponse) SetBody(v *ListDomainsResponseBody) *ListDomainsRe
 }
 
 type ListEndpointGroupIpAddressCidrBlocksRequest struct {
+	// The region ID of the endpoint group.
 	EndpointGroupRegion *string `json:"EndpointGroupRegion,omitempty" xml:"EndpointGroupRegion,omitempty"`
-	RegionId            *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	// The region ID of the GA instance. Set the value to **cn-hangzhou**.
+	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 }
 
 func (s ListEndpointGroupIpAddressCidrBlocksRequest) String() string {
@@ -21138,11 +21521,16 @@ func (s *ListEndpointGroupIpAddressCidrBlocksRequest) SetRegionId(v string) *Lis
 }
 
 type ListEndpointGroupIpAddressCidrBlocksResponseBody struct {
-	EndpointGroupRegion *string   `json:"EndpointGroupRegion,omitempty" xml:"EndpointGroupRegion,omitempty"`
+	// The region ID of the endpoint group.
+	EndpointGroupRegion *string `json:"EndpointGroupRegion,omitempty" xml:"EndpointGroupRegion,omitempty"`
+	// The CIDR blocks.
 	IpAddressCidrBlocks []*string `json:"IpAddressCidrBlocks,omitempty" xml:"IpAddressCidrBlocks,omitempty" type:"Repeated"`
-	RequestId           *string   `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	ResourceGroupId     *string   `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
-	State               *string   `json:"State,omitempty" xml:"State,omitempty"`
+	// The request ID.
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The ID of the resource group to which the endpoint group belongs.
+	ResourceGroupId *string `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
+	// The status of the endpoint group.
+	State *string `json:"State,omitempty" xml:"State,omitempty"`
 }
 
 func (s ListEndpointGroupIpAddressCidrBlocksResponseBody) String() string {
@@ -21210,26 +21598,26 @@ func (s *ListEndpointGroupIpAddressCidrBlocksResponse) SetBody(v *ListEndpointGr
 type ListEndpointGroupsRequest struct {
 	// The ID of the GA instance.
 	AcceleratorId *string `json:"AcceleratorId,omitempty" xml:"AcceleratorId,omitempty"`
-	// The total number of entries returned.
-	AccessLogSwitch *string `json:"AccessLogSwitch,omitempty" xml:"AccessLogSwitch,omitempty"`
-	// The protocol that is used to monitor latency. Valid values:
+	// Specifies whether the access logging feature is enabled. Default value: off. Valid values:
 	//
-	// *   **icmp**: ICMP
-	// *   **tcp**: TCP
+	// *   **on**: The access logging feature is enabled.
+	// *   **off**: The access logging feature is disabled.
+	AccessLogSwitch *string `json:"AccessLogSwitch,omitempty" xml:"AccessLogSwitch,omitempty"`
+	// The ID of the endpoint group.
 	EndpointGroupId *string `json:"EndpointGroupId,omitempty" xml:"EndpointGroupId,omitempty"`
 	// The type of the endpoint group. Valid values:
 	//
-	// *   **default**
-	// *   **virtual**
+	// *   **default**: a default endpoint group
+	// *   **virtual**: a virtual endpoint group
 	// *   If you leave this parameter empty, all default and virtual endpoint groups are queried.
 	EndpointGroupType *string `json:"EndpointGroupType,omitempty" xml:"EndpointGroupType,omitempty"`
-	// The number of entries returned per page.
+	// The ID of the listener.
 	ListenerId *string `json:"ListenerId,omitempty" xml:"ListenerId,omitempty"`
-	// The page number. Default value: **1**.
+	// The number of the page to return. Default value: **1**.
 	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
-	// The number of entries per page. Maximum value: **50**. Default value: **10**.
+	// The number of entries to return on each page. Maximum value: **50**. Default value: **10**.
 	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	// The endpoint port.
+	// The ID of the region where the Global Accelerator (GA) instance is deployed. Set the value to **cn-hangzhou**.
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 	// The name of the endpoint group.
 	Tag []*ListEndpointGroupsRequestTag `json:"Tag,omitempty" xml:"Tag,omitempty" type:"Repeated"`
@@ -21289,13 +21677,17 @@ func (s *ListEndpointGroupsRequest) SetTag(v []*ListEndpointGroupsRequestTag) *L
 }
 
 type ListEndpointGroupsRequestTag struct {
-	// The ID of the listener.
-	Key *string `json:"Key,omitempty" xml:"Key,omitempty"`
-	// The type of the endpoint group. Valid values:
+	// The tag key of the Endpoint Group. The tag key cannot be an empty string.
 	//
-	// *   **default**: a default endpoint group
-	// *   **virtual**: a virtual endpoint group
-	// *   If you leave this parameter empty, all default and virtual endpoint groups are queried.
+	// The tag key can be up to 64 characters in length and cannot contain `http://` or `https://`. It cannot start with `aliyun` or `acs:`.
+	//
+	// You can specify up to 20 tag keys.
+	Key *string `json:"Key,omitempty" xml:"Key,omitempty"`
+	// The tag value of the Endpoint Group. The tag value can be an empty string.
+	//
+	// The tag value can be up to 128 characters in length and cannot contain `http://` or `https://`. It cannot start with `aliyun` or `acs:`.
+	//
+	// You can specify up to 20 tag values.
 	Value *string `json:"Value,omitempty" xml:"Value,omitempty"`
 }
 
@@ -21318,18 +21710,15 @@ func (s *ListEndpointGroupsRequestTag) SetValue(v string) *ListEndpointGroupsReq
 }
 
 type ListEndpointGroupsResponseBody struct {
-	// The ID of the endpoint group.
+	// The configurations of the endpoint group.
 	EndpointGroups []*ListEndpointGroupsResponseBodyEndpointGroups `json:"EndpointGroups,omitempty" xml:"EndpointGroups,omitempty" type:"Repeated"`
-	// Indicates whether the client IP address preservation feature is enabled. Valid values:
-	//
-	// *   **true**: The client IP address preservation feature is enabled.
-	// *   **false**: The client IP address preservation feature is disabled.
+	// The page number of the returned page.
 	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
-	// The number of consecutive failed health checks that must occur before an endpoint is considered unhealthy.
+	// The number of entries returned per page.
 	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	// The weight of the endpoint.
+	// The ID of the request.
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// The ID of the endpoint.
+	// The total number of entries returned.
 	TotalCount *int32 `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
 }
 
@@ -21367,56 +21756,79 @@ func (s *ListEndpointGroupsResponseBody) SetTotalCount(v int32) *ListEndpointGro
 }
 
 type ListEndpointGroupsResponseBodyEndpointGroups struct {
-	AcceleratorId          *string                                                               `json:"AcceleratorId,omitempty" xml:"AcceleratorId,omitempty"`
-	Description            *string                                                               `json:"Description,omitempty" xml:"Description,omitempty"`
+	// The ID of the GA instance.
+	AcceleratorId *string `json:"AcceleratorId,omitempty" xml:"AcceleratorId,omitempty"`
+	// The description of the endpoint group.
+	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
+	// The configurations of the endpoint.
 	EndpointConfigurations []*ListEndpointGroupsResponseBodyEndpointGroupsEndpointConfigurations `json:"EndpointConfigurations,omitempty" xml:"EndpointConfigurations,omitempty" type:"Repeated"`
 	// The ID of an endpoint group.
 	EndpointGroupId *string `json:"EndpointGroupId,omitempty" xml:"EndpointGroupId,omitempty"`
-	// The mappings between ports.
+	// The list of endpoint group IP addresses.
 	EndpointGroupIpList []*string `json:"EndpointGroupIpList,omitempty" xml:"EndpointGroupIpList,omitempty" type:"Repeated"`
+	// The ID of the region where the endpoint group is deployed.
+	EndpointGroupRegion *string `json:"EndpointGroupRegion,omitempty" xml:"EndpointGroupRegion,omitempty"`
+	// The type of the endpoint group. Valid values:
+	//
+	// *   **default**: a default endpoint group
+	// *   **virtual**: a virtual endpoint group
+	EndpointGroupType *string `json:"EndpointGroupType,omitempty" xml:"EndpointGroupType,omitempty"`
+	// The endpoint group IP addresses to be confirmed after the GA instance is upgraded.
+	EndpointGroupUnconfirmedIpList []*string `json:"EndpointGroupUnconfirmedIpList,omitempty" xml:"EndpointGroupUnconfirmedIpList,omitempty" type:"Repeated"`
+	// The protocol that is used by the backend service. Valid values:
+	//
+	// *   **HTTP**: HTTP
+	// *   **HTTPS**: HTTPS
+	EndpointRequestProtocol *string `json:"EndpointRequestProtocol,omitempty" xml:"EndpointRequestProtocol,omitempty"`
+	// The ID of the forwarding rule that is associated with the endpoint group.
+	ForwardingRuleIds []*string `json:"ForwardingRuleIds,omitempty" xml:"ForwardingRuleIds,omitempty" type:"Repeated"`
 	// Indicates whether the health check feature is enabled. Valid values:
 	//
 	// *   **true**: The health check feature is enabled.
 	// *   **false**: The health check feature is disabled.
-	EndpointGroupRegion *string `json:"EndpointGroupRegion,omitempty" xml:"EndpointGroupRegion,omitempty"`
-	EndpointGroupType   *string `json:"EndpointGroupType,omitempty" xml:"EndpointGroupType,omitempty"`
+	HealthCheckEnabled *bool `json:"HealthCheckEnabled,omitempty" xml:"HealthCheckEnabled,omitempty"`
 	// The interval at which health checks are performed. Unit: seconds.
-	EndpointGroupUnconfirmedIpList []*string `json:"EndpointGroupUnconfirmedIpList,omitempty" xml:"EndpointGroupUnconfirmedIpList,omitempty" type:"Repeated"`
-	EndpointRequestProtocol        *string   `json:"EndpointRequestProtocol,omitempty" xml:"EndpointRequestProtocol,omitempty"`
-	ForwardingRuleIds              []*string `json:"ForwardingRuleIds,omitempty" xml:"ForwardingRuleIds,omitempty" type:"Repeated"`
-	HealthCheckEnabled             *bool     `json:"HealthCheckEnabled,omitempty" xml:"HealthCheckEnabled,omitempty"`
-	HealthCheckIntervalSeconds     *int32    `json:"HealthCheckIntervalSeconds,omitempty" xml:"HealthCheckIntervalSeconds,omitempty"`
-	// The ID of the request.
-	HealthCheckPath     *string                                                      `json:"HealthCheckPath,omitempty" xml:"HealthCheckPath,omitempty"`
-	HealthCheckPort     *int32                                                       `json:"HealthCheckPort,omitempty" xml:"HealthCheckPort,omitempty"`
-	HealthCheckProtocol *string                                                      `json:"HealthCheckProtocol,omitempty" xml:"HealthCheckProtocol,omitempty"`
-	ListenerId          *string                                                      `json:"ListenerId,omitempty" xml:"ListenerId,omitempty"`
-	Name                *string                                                      `json:"Name,omitempty" xml:"Name,omitempty"`
-	PortOverrides       []*ListEndpointGroupsResponseBodyEndpointGroupsPortOverrides `json:"PortOverrides,omitempty" xml:"PortOverrides,omitempty" type:"Repeated"`
-	// 托管实例所属的服务方ID。
-	//
-	// > 仅在**ServiceManaged**参数为**True**时有效。
-	ServiceId *string `json:"ServiceId,omitempty" xml:"ServiceId,omitempty"`
-	// 是否为托管实例。取值：
-	//
-	// - **true**：是托管资实例。
-	//
-	// - **false**：不是托管实例。
-	ServiceManaged *bool `json:"ServiceManaged,omitempty" xml:"ServiceManaged,omitempty"`
-	// 用户在此托管实例下可执行的动作策略列表。
-	//
-	// > 仅在**ServiceManaged**参数为**True**时有效。
-	// > - 当实例处于托管状态时，用户对实例的操作会受到限制，某些操作行为会被禁止。
-	ServiceManagedInfos []*ListEndpointGroupsResponseBodyEndpointGroupsServiceManagedInfos `json:"ServiceManagedInfos,omitempty" xml:"ServiceManagedInfos,omitempty" type:"Repeated"`
+	HealthCheckIntervalSeconds *int32 `json:"HealthCheckIntervalSeconds,omitempty" xml:"HealthCheckIntervalSeconds,omitempty"`
+	// The path to which health check requests are sent.
+	HealthCheckPath *string `json:"HealthCheckPath,omitempty" xml:"HealthCheckPath,omitempty"`
+	// The port that is used for health checks.
+	HealthCheckPort *int32 `json:"HealthCheckPort,omitempty" xml:"HealthCheckPort,omitempty"`
 	// The protocol over which health check requests are sent. Valid values:
 	//
 	// *   **tcp**: TCP
 	// *   **http**: HTTP
 	// *   **https**: HTTPS
-	State             *string                                             `json:"State,omitempty" xml:"State,omitempty"`
-	Tags              []*ListEndpointGroupsResponseBodyEndpointGroupsTags `json:"Tags,omitempty" xml:"Tags,omitempty" type:"Repeated"`
-	ThresholdCount    *int32                                              `json:"ThresholdCount,omitempty" xml:"ThresholdCount,omitempty"`
-	TrafficPercentage *int32                                              `json:"TrafficPercentage,omitempty" xml:"TrafficPercentage,omitempty"`
+	HealthCheckProtocol *string `json:"HealthCheckProtocol,omitempty" xml:"HealthCheckProtocol,omitempty"`
+	// The ID of the listener.
+	ListenerId *string `json:"ListenerId,omitempty" xml:"ListenerId,omitempty"`
+	// The name of the endpoint group.
+	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// The mappings between ports.
+	PortOverrides []*ListEndpointGroupsResponseBodyEndpointGroupsPortOverrides `json:"PortOverrides,omitempty" xml:"PortOverrides,omitempty" type:"Repeated"`
+	// The service ID to which the managed instance belongs.
+	//
+	// >  Valid only when the ServiceManaged parameter is True.
+	ServiceId *string `json:"ServiceId,omitempty" xml:"ServiceId,omitempty"`
+	// Is it a managed instance. Valid values:
+	//
+	// - true
+	// - false
+	ServiceManaged *bool `json:"ServiceManaged,omitempty" xml:"ServiceManaged,omitempty"`
+	// A list of action policies that users can execute on this managed instance.
+	ServiceManagedInfos []*ListEndpointGroupsResponseBodyEndpointGroupsServiceManagedInfos `json:"ServiceManagedInfos,omitempty" xml:"ServiceManagedInfos,omitempty" type:"Repeated"`
+	// The state of the endpoint group. Valid values:
+	//
+	// *   **init**: The endpoint group is being initialized.
+	// *   **active**: The endpoint group is running normally.
+	// *   **updating**:The endpoint group is being updated.
+	// *   **deleteing**: The endpoint group is being deleted.
+	State *string `json:"State,omitempty" xml:"State,omitempty"`
+	// The tags of the endpoint groups.
+	Tags []*ListEndpointGroupsResponseBodyEndpointGroupsTags `json:"Tags,omitempty" xml:"Tags,omitempty" type:"Repeated"`
+	// The number of consecutive failed health checks that must occur before an endpoint is considered unhealthy.
+	ThresholdCount *int32 `json:"ThresholdCount,omitempty" xml:"ThresholdCount,omitempty"`
+	// The weight of the endpoint group when the listener is associated with multiple endpoint groups.
+	TrafficPercentage *int32 `json:"TrafficPercentage,omitempty" xml:"TrafficPercentage,omitempty"`
 }
 
 func (s ListEndpointGroupsResponseBodyEndpointGroups) String() string {
@@ -21553,13 +21965,35 @@ func (s *ListEndpointGroupsResponseBodyEndpointGroups) SetTrafficPercentage(v in
 }
 
 type ListEndpointGroupsResponseBodyEndpointGroupsEndpointConfigurations struct {
-	EnableClientIPPreservation *bool   `json:"EnableClientIPPreservation,omitempty" xml:"EnableClientIPPreservation,omitempty"`
-	Endpoint                   *string `json:"Endpoint,omitempty" xml:"Endpoint,omitempty"`
-	EndpointId                 *string `json:"EndpointId,omitempty" xml:"EndpointId,omitempty"`
-	ProbePort                  *int32  `json:"ProbePort,omitempty" xml:"ProbePort,omitempty"`
-	ProbeProtocol              *string `json:"ProbeProtocol,omitempty" xml:"ProbeProtocol,omitempty"`
-	Type                       *string `json:"Type,omitempty" xml:"Type,omitempty"`
-	Weight                     *int32  `json:"Weight,omitempty" xml:"Weight,omitempty"`
+	// Indicates whether the client IP address preservation feature is enabled. Valid values:
+	//
+	// *   **true**: The client IP address preservation feature is enabled.
+	// *   **false**: The client IP address preservation feature is disabled.
+	EnableClientIPPreservation *bool `json:"EnableClientIPPreservation,omitempty" xml:"EnableClientIPPreservation,omitempty"`
+	// The IP address or domain name of the endpoint.
+	Endpoint *string `json:"Endpoint,omitempty" xml:"Endpoint,omitempty"`
+	// The ID of the endpoint.
+	EndpointId *string `json:"EndpointId,omitempty" xml:"EndpointId,omitempty"`
+	// The port that is used to monitor latency.
+	ProbePort *int32 `json:"ProbePort,omitempty" xml:"ProbePort,omitempty"`
+	// The protocol that is used to monitor latency. Valid values:
+	//
+	// *   **icmp**: ICMP
+	// *   **tcp**: TCP
+	ProbeProtocol *string `json:"ProbeProtocol,omitempty" xml:"ProbeProtocol,omitempty"`
+	SubAddress    *string `json:"SubAddress,omitempty" xml:"SubAddress,omitempty"`
+	// The type of the endpoint. Valid values:
+	//
+	// *   **Domain**: a custom domain name
+	// *   **Ip**: a custom IP address
+	// *   **PublicIp**: a public IP address provided by Alibaba Cloud
+	// *   **ECS**: an Elastic Compute Service (ECS) instance
+	// *   **SLB**: a Server Load Balancer (SLB) instance
+	// *   **ALB**: an Application Load Balancer (ALB) instance
+	// *   **OSS**: an Object Storage Service (OSS) bucket
+	Type *string `json:"Type,omitempty" xml:"Type,omitempty"`
+	// The weight of the endpoint.
+	Weight *int32 `json:"Weight,omitempty" xml:"Weight,omitempty"`
 }
 
 func (s ListEndpointGroupsResponseBodyEndpointGroupsEndpointConfigurations) String() string {
@@ -21595,6 +22029,11 @@ func (s *ListEndpointGroupsResponseBodyEndpointGroupsEndpointConfigurations) Set
 	return s
 }
 
+func (s *ListEndpointGroupsResponseBodyEndpointGroupsEndpointConfigurations) SetSubAddress(v string) *ListEndpointGroupsResponseBodyEndpointGroupsEndpointConfigurations {
+	s.SubAddress = &v
+	return s
+}
+
 func (s *ListEndpointGroupsResponseBodyEndpointGroupsEndpointConfigurations) SetType(v string) *ListEndpointGroupsResponseBodyEndpointGroupsEndpointConfigurations {
 	s.Type = &v
 	return s
@@ -21606,7 +22045,9 @@ func (s *ListEndpointGroupsResponseBodyEndpointGroupsEndpointConfigurations) Set
 }
 
 type ListEndpointGroupsResponseBodyEndpointGroupsPortOverrides struct {
+	// The endpoint port.
 	EndpointPort *int32 `json:"EndpointPort,omitempty" xml:"EndpointPort,omitempty"`
+	// The listener port.
 	ListenerPort *int32 `json:"ListenerPort,omitempty" xml:"ListenerPort,omitempty"`
 }
 
@@ -21629,27 +22070,30 @@ func (s *ListEndpointGroupsResponseBodyEndpointGroupsPortOverrides) SetListenerP
 }
 
 type ListEndpointGroupsResponseBodyEndpointGroupsServiceManagedInfos struct {
-	// 托管策略动作名称，取值：
-	// - **Create**：创建实例。
-	// - **Update**：更新当前实例。
-	// - **Delete**：删除当前实例。
-	// - **Associate**：引用/被引用当前实例。
-	// - **UserUnmanaged**：用户解托管实例。
-	// - **CreateChild**：在当前实例下创建子资源。
+	// Managed policy action name, Valid values:
+	// - Create
+	// - Update
+	// - Delete
+	// - Associate
+	// - UserUnmanaged
+	// - CreateChild
 	Action *string `json:"Action,omitempty" xml:"Action,omitempty"`
-	// 子资源类型，取值：
-	// - **Listener**：监听资源。
-	// - **IpSet**：加速地域资源。
-	// - **EndpointGroup**：终端节点组资源。
-	// - **ForwardingRule**：转发策略资源。
-	// - **Endpoint**：终端节点资源。
-	// - **EndpointGroupDestination**：自定义路由监听下的终端节点组协议映射资源。
-	// - **EndpointPolicy**：自定义路由监听下的终端节点通行策略资源。
-	// > 仅在**Action**参数为**CreateChild**时有效
+	// Sub resource type, Valid values:
+	//
+	// - Listener
+	// - IpSet
+	// - EndpointGroup
+	// - ForwardingRule
+	// - Endpoint
+	// - EndpointGroupDestination
+	// - EndpointPolicy
+	// >Only valid when the Action parameter is CreateChild.
 	ChildType *string `json:"ChildType,omitempty" xml:"ChildType,omitempty"`
-	// 托管策略动作是否被托管，取值：
-	// - **true**：托管策略动作被托管，用户无权在托管实例下执行Action指定的操作。
-	// - **false**：托管策略动作未被托管，用户可在托管实例下执行Action指定的操作。
+	// Is the managed policy action managed, Valid values:
+	//
+	// - true: The managed policy action is managed, and users do not have permission to perform the operation specified in the Action on the managed instance.
+	//
+	// - false: The managed policy action is not managed, and users have permission to perform the operation specified in the Action on the managed instance.
 	IsManaged *bool `json:"IsManaged,omitempty" xml:"IsManaged,omitempty"`
 }
 
@@ -21677,7 +22121,9 @@ func (s *ListEndpointGroupsResponseBodyEndpointGroupsServiceManagedInfos) SetIsM
 }
 
 type ListEndpointGroupsResponseBodyEndpointGroupsTags struct {
-	Key   *string `json:"Key,omitempty" xml:"Key,omitempty"`
+	// The tag key.
+	Key *string `json:"Key,omitempty" xml:"Key,omitempty"`
+	// The tag value.
 	Value *string `json:"Value,omitempty" xml:"Value,omitempty"`
 }
 
@@ -21733,9 +22179,9 @@ type ListForwardingRulesRequest struct {
 	AcceleratorId *string `json:"AcceleratorId,omitempty" xml:"AcceleratorId,omitempty"`
 	// The client token that is used to ensure the idempotence of the request.
 	//
-	// You can use the client to generate the value, but you must make sure that the value is unique among different requests. The client token can contain only ASCII characters.
+	// You can use the client to generate the value, but you must ensure that it is unique among all requests. The ClientToken value contain only ASCII characters.
 	//
-	// >  If you do not set this parameter, **ClientToken** is set to the value of **RequestId**. The value of **RequestId** for each API request may be different.
+	// >  If you do not set this parameter, the system sets **ClientToken** to the value of **RequestId**. The value of **RequestId** may be different for each API request.
 	ClientToken *string `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
 	// The ID of the forwarding rule.
 	ForwardingRuleId *string `json:"ForwardingRuleId,omitempty" xml:"ForwardingRuleId,omitempty"`
@@ -21746,9 +22192,9 @@ type ListForwardingRulesRequest struct {
 	// The token that is used for the next query. Valid values:
 	//
 	// *   If this is your first query or no subsequent query is to be sent, ignore this parameter.
-	// *   If a subsequent query is to be sent, set the value to the value of **NextToken** that is returned from the last call.
+	// *   If a next query is to be sent, set the value to the value of **NextToken** that is returned from the last call.
 	NextToken *string `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
-	// The ID of the region where the GA instance is deployed. Set the value to **cn-hangzhou**.
+	// The ID of the region where the Global Accelerator (GA) instance is deployed. Set the value to **cn-hangzhou**.
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 }
 
@@ -21803,11 +22249,11 @@ type ListForwardingRulesResponseBody struct {
 	// The token that is used for the next query. Valid values:
 	//
 	// *   If **NextToken** is not returned, it indicates that no additional results exist.
-	// *   If **NextToken** is returned, the value is the token that is used for the next query.
+	// *   If **NextToken** is returned, the value indicates the token that is used for the next query.
 	NextToken *string `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
 	// The ID of the request.
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// The total number of entries returned.
+	// The number of entries returned.
 	TotalCount *int32 `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
 }
 
@@ -21868,9 +22314,17 @@ type ListForwardingRulesResponseBodyForwardingRules struct {
 	// The forwarding action.
 	RuleActions []*ListForwardingRulesResponseBodyForwardingRulesRuleActions `json:"RuleActions,omitempty" xml:"RuleActions,omitempty" type:"Repeated"`
 	// The forwarding conditions.
-	RuleConditions      []*ListForwardingRulesResponseBodyForwardingRulesRuleConditions      `json:"RuleConditions,omitempty" xml:"RuleConditions,omitempty" type:"Repeated"`
-	ServiceId           *string                                                              `json:"ServiceId,omitempty" xml:"ServiceId,omitempty"`
-	ServiceManaged      *bool                                                                `json:"ServiceManaged,omitempty" xml:"ServiceManaged,omitempty"`
+	RuleConditions []*ListForwardingRulesResponseBodyForwardingRulesRuleConditions `json:"RuleConditions,omitempty" xml:"RuleConditions,omitempty" type:"Repeated"`
+	// The service ID to which the managed instance belongs.
+	//
+	// >  Valid only when the ServiceManaged parameter is True.
+	ServiceId *string `json:"ServiceId,omitempty" xml:"ServiceId,omitempty"`
+	// Is it a managed instance. Valid values:
+	//
+	// - true
+	// - false
+	ServiceManaged *bool `json:"ServiceManaged,omitempty" xml:"ServiceManaged,omitempty"`
+	// A list of action policies that users can execute on this managed instance.
 	ServiceManagedInfos []*ListForwardingRulesResponseBodyForwardingRulesServiceManagedInfos `json:"ServiceManagedInfos,omitempty" xml:"ServiceManagedInfos,omitempty" type:"Repeated"`
 }
 
@@ -21938,60 +22392,62 @@ func (s *ListForwardingRulesResponseBodyForwardingRules) SetServiceManagedInfos(
 }
 
 type ListForwardingRulesResponseBodyForwardingRulesRuleActions struct {
-	// The configuration of the forwarding action.
+	// The forwarding configurations.
 	//
-	// >  For GA instances created after July 12, 2022, all forwarding condition types and forwarding action types are supported. We recommend that you call **RuleActionType** and **RuleActionValue** to query forwarding actions.
+	// >  We recommend that you do not use this parameter. We recommend that you use the **RuleActionType** and **RuleActionValue** parameters to configure forwarding actions.
 	ForwardGroupConfig *ListForwardingRulesResponseBodyForwardingRulesRuleActionsForwardGroupConfig `json:"ForwardGroupConfig,omitempty" xml:"ForwardGroupConfig,omitempty" type:"Struct"`
 	// The forwarding priority.
 	//
-	// >  This parameter does not take effect.
+	// >  This parameter does not take effect. Ignore this parameter.
 	Order *int32 `json:"Order,omitempty" xml:"Order,omitempty"`
 	// The type of the forwarding action. Valid values:
 	//
 	// *   **ForwardGroup**: forwards a request.
-	// *   **Redirect:** redirects a request.
+	// *   **Redirect**: redirects a request.
 	// *   **FixResponse**: returns a fixed response.
-	// *   **Rewrite:** rewrites a request.
+	// *   **Rewrite**: rewrites a request.
 	// *   **AddHeader**: adds a header to a request.
-	// *   **RemoveHeaderConfig**: deletes the header of a request.
+	// *   **RemoveHeader**: deletes the header of a request.
 	RuleActionType *string `json:"RuleActionType,omitempty" xml:"RuleActionType,omitempty"`
 	// The value of the forwarding action type.
 	//
-	// Different JSON strings are returned based on the **RuleActionType** parameter.
+	// You must specify different JSON strings based on the **RuleActionType** parameter.
 	//
-	// *   If **RuleActionType** is set to **ForwardGroup**, the information about a virtual endpoint group is returned. Configuration information:
+	// A forwarding rule can contain only one forwarding action whose type is **ForwardGroup**, **Redirect**, or **FixResponse**. You must specify a forwarding action whose type is **Rewrite**, **AddHeader**, or **RemoveHeader** before a forwarding action whose type is **ForwardGroup**.
 	//
-	//     *   `type`: the type of the resource that is returned. The value is `endpointgroup`.
-	//     *   `value`: the ID of the virtual endpoint group that is returned.
+	// *   If **RuleActionType** is set to **ForwardGroup**, this parameter specifies the information of a virtual endpoint group. You can forward requests to only one virtual endpoint group. Example: `{"type":"endpointgroup", "value":"epg-bp1enpdcrqhl78g6r****"}`.
 	//
-	// *   If **RuleActionType** is set to **Redirect**, the redirect configuration is returned. Configuration information:
+	//     *   `type`: set this parameter to `endpointgroup`.
+	//     *   `value`: set this parameter to the ID of a virtual endpoint group.
 	//
-	//     *   `protocol`: the protocol of requests after the requests are redirected.
-	//     *   `domain`: the domain name to which requests are redirected.
-	//     *   `port`: the port to which requests are redirected.
-	//     *   `path`: the path to which requests are redirected.
-	//     *   `query`: the query string to which requests are redirected.
-	//     *   `code`: the redirect code.
+	// *   If **RuleActionType** is set to **Redirect**, this parameter specifies redirecting configurations. You cannot leave all of the following parameters empty or configure all of these parameters to use the default values for a forwarding action whose type is **Redirect**: `protocol`, `domain`, `port`, `path`, and `query`. Example: `{"protocol":"HTTP", "domain":"www.example.com", "port":"80", "path":"/a","query":"value1", "code":"301" }`.
 	//
-	// *   If **RuleActionType** is set to **FixResponse**, the information about the fixed response that you configured is returned. Configuration information:
+	//     *   `protocol`: the protocol of requests after the requests are redirected. Valid values: `${protocol}` (default), `HTTP`, and `HTTPS`.
+	//     *   `domain`: the domain name to which requests are redirected. Default value: `${host}`. You can also enter a domain name. The domain name must be 3 to 128 characters in length, and can contain only letters, digits, and the following special characters: `. - ? = ~ _ - + / ^ * ! $ &  ( ) [ ]`.
+	//     *   `port`: the port to which requests are redirected. Default value: `${port}`. You can enter a port number that ranges from 1 to 63335.
+	//     *   `path`: the path to which requests are redirected. Default value: `${path}`. The path must be 1 to 128 characters in length. To use a regular expression, the path can contain letters, digits, and the following special characters: `. - _ / = ? ~ ^ * $ : ( ) [ ] + `. The path must start with a tilde (~). If you do not want to use a regular expression, the path can contain letters, digits, and the following special characters: `. - _ / = ? :`. The path must start with a forward slash (/).
+	//     *   `query`: the query string of the requests to be redirected. Default value: `${query}`. You can also specify a query string. The query string must be 1 to 128 characters in length, and can contain printable characters whose ASCII values are `greater than or equal to 32 and smaller than 127`. The query string cannot contain uppercase letters, space characters, or the following special characters: `[ ] { } < > #  &`.
+	//     *   `code`: the redirecting code. Valid values: `301`, `302`, `303`, `307`, and `308`.
 	//
-	//     *   `code`: the HTTP status code that is returned.
-	//     *   `type`: the type of the response content that is returned.
-	//     *   `content`: the response content that is returned.
+	// *   If **RuleActionType** is set to **FixResponse**, this parameter specifies a fixed response. Example: `{"code":"200", "type":"text/plain", "content":"dssacav" }`.
 	//
-	// *   If **RuleActionType** is set to **AddHeader**, the information about the HTTP header that is added is returned. Configuration information:
+	//     *   `code`: the HTTP status code to return. The response status code must be one of the following numeric strings: `2xx`, `4xx`, and `5xx`. The letter `x` indicates a number from 0 to 9.
+	//     *   `type`: the type of the response content. Valid values: **text/plain**, **text/css**, **text/html**, **application/javascript**, and **application/json**.
+	//     *   `content`: the response content. The response content cannot exceed 1,000 characters in length and does not support Chinese characters.
 	//
-	//     *   `name`: the name of the HTTP header that is returned.
-	//     *   `type`: the content type of the HTTP header that is returned.
-	//     *   `value`: the content of the HTTP header that is returned.
+	// *   If **RuleActionType** is set to **AddHeader**, this parameter specifies an HTTP header to be added. If a forwarding rule contains a forwarding action whose type is **AddHeader**, you must specify another forwarding action whose type is **ForwardGroup**. Example: `[{"name":"header1","type":"userdefined", "value":"value"}]`.
 	//
-	// *   If **RuleActionType** is set to **RemoveHeader**, the information about the HTTP header that is deleted is returned.
+	//     *   `name`: the name of the HTTP header. The name must be 1 to 40 characters in length, and can contain letters, digits, hyphens (-), and underscores (\_). The name of the HTTP header specified by **AddHeader** must be unique and cannot be the same as the name of the HTTP header specified by **RemoveHeader**.
+	//     *   `type`: the content type of the HTTP header. Valid values: `user-defined`, `ref`, and `system-defined`.
+	//     *   `value`: the content of the HTTP header. You cannot leave this parameter empty. If you set `type` to `user-defined`, the content must be 1 to 128 characters in length, and can contain printable characters whose ASCII values are `greater than or equal to 32 and smaller than 127`. The content can contain letters, digits, hyphens (-), and underscores (\_). The content cannot start or end with a space character. If you set `type` to `ref`, the content must be 1 to 128 characters in length, and can contain letters, digits, hyphens (-), and underscores (\_). The content cannot start or end with a space character. If you set `type` to `system-defined`, only `ClientSrcIp` is supported.
 	//
-	// *   If **RuleActionType** is set to **Rewrite**, the rewrite configuration is returned. Configuration information:
+	// *   If **RuleActionType** is set to **RemoveHeader**, this parameter specifies an HTTP header to be removed. If a forwarding rule contains a forwarding action whose type is **RemoveHeader**, you must specify another forwarding action whose type is **ForwardGroup**. The header must be 1 to 40 characters in length, and can contain letters, digits, hyphens (-), and underscores (\_). Example: `["header1"]`.
 	//
-	//     *   `domain`: the domain name to which requests are redirected.
-	//     *   `path`: the path to which requests are redirected.
-	//     *   `query`: the query string to which requests are redirected.
+	// *   If **RuleActionType** is set to **Rewrite**, this parameter specifies the rewriting configuration. If a forwarding rule contains a forwarding action whose type is **Rewrite**, you must specify another forwarding action whose type is **ForwardGroup**. Example: `{"domain":"value1", "path":"value2", "query":"value3"}`.
+	//
+	//     *   `domain`: the domain name to which requests are redirected. Default value: `${host}`. You can also enter a domain name. The domain name must be 3 to 128 characters in length, and can contain only lowercase letters, digits, and the following special characters: `. - ? = ~ _ - + / ^ * ! $ &  ( ) [ ]`.
+	//     *   `path`: the path to which requests are redirected. Default value: `${path}`. The path must be 1 to 128 characters in length. To use a regular expression, the path can contain letters, digits, and the following special characters: `. - _ / = ? ~ ^ * $ : ( ) [ ] + `. The path must start with a tilde (~). If you do not want to use a regular expression, the path can contain letters, digits, and the following special characters: `. - _ / = ? :`. The path must start with a forward slash (/).
+	//     *   `query`: the query string of the requests to be redirected. Default value: `${query}`. You can also specify a query string. The query string must be 1 to 128 characters in length, and can contain printable characters whose ASCII values are `greater than or equal to 32 and smaller than 127`. The query string cannot contain uppercase letters, space characters, or the following special characters: `[ ] { } < > #  &`.
 	RuleActionValue *string `json:"RuleActionValue,omitempty" xml:"RuleActionValue,omitempty"`
 }
 
@@ -22066,11 +22522,11 @@ func (s *ListForwardingRulesResponseBodyForwardingRulesRuleActionsForwardGroupCo
 type ListForwardingRulesResponseBodyForwardingRulesRuleConditions struct {
 	// The configuration of the domain name.
 	//
-	// >  For GA instances created after July 12, 2022, all forwarding condition types and forwarding action types are supported. We recommend that you use **RuleConditionType** and **RuleConditionValue** to query forwarding conditions.
+	// >  GA instances created after July 12, 2022 support all forwarding condition types and action types. We recommend that you query forwarding conditions by calling the **RuleConditionType** and **RuleConditionValue** operations.
 	HostConfig *ListForwardingRulesResponseBodyForwardingRulesRuleConditionsHostConfig `json:"HostConfig,omitempty" xml:"HostConfig,omitempty" type:"Struct"`
 	// The configuration of the path.
 	//
-	// >  For GA instances created after July 12, 2022, all forwarding condition types and forwarding action types are supported. We recommend that you use **RuleConditionType** and **RuleConditionValue** to query forwarding conditions.
+	// >  GA instances created after July 12, 2022 support all forwarding condition types and action types. We recommend that you query forwarding conditions by calling the **RuleConditionType** and **RuleConditionValue** operations.
 	PathConfig *ListForwardingRulesResponseBodyForwardingRulesRuleConditionsPathConfig `json:"PathConfig,omitempty" xml:"PathConfig,omitempty" type:"Struct"`
 	// The type of the forwarding condition.
 	//
@@ -22129,7 +22585,7 @@ type ListForwardingRulesResponseBodyForwardingRulesRuleConditionsHostConfig stru
 	//
 	// The domain name must be 3 to 128 characters in length, and can contain letters, digits, hyphens (-), and periods (.). Supported wildcard characters are asterisks (\*) and question marks (?).
 	//
-	// >  For GA instances created after July 12, 2022, all forwarding condition types and forwarding action types are supported. We recommend that you use **RuleConditionType** and **RuleConditionValue** to query forwarding conditions.
+	// >  GA instances created after July 12, 2022 support all forwarding condition types and action types. We recommend that you query forwarding conditions by calling the **RuleConditionType** and **RuleConditionValue** operations.
 	Values []*string `json:"Values,omitempty" xml:"Values,omitempty" type:"Repeated"`
 }
 
@@ -22151,7 +22607,7 @@ type ListForwardingRulesResponseBodyForwardingRulesRuleConditionsPathConfig stru
 	//
 	// The path must be 1 to 128 characters in length and must start with a forward slash (/). The path can contain only letters, digits, and the following special characters: $ - \_ . + / & ~ @ : \". Supported wildcard characters are asterisks (\*) and question marks (?).
 	//
-	// >  For GA instances created after July 12, 2022, all forwarding condition types and forwarding action types are supported. We recommend that you use **RuleConditionType** and **RuleConditionValue** to query forwarding conditions.
+	// >  GA instances created after July 12, 2022 support all forwarding condition types and action types. We recommend that you query forwarding conditions by calling the **RuleConditionType** and **RuleConditionValue** operations.
 	Values []*string `json:"Values,omitempty" xml:"Values,omitempty" type:"Repeated"`
 }
 
@@ -22169,9 +22625,32 @@ func (s *ListForwardingRulesResponseBodyForwardingRulesRuleConditionsPathConfig)
 }
 
 type ListForwardingRulesResponseBodyForwardingRulesServiceManagedInfos struct {
-	Action    *string `json:"Action,omitempty" xml:"Action,omitempty"`
+	// Managed policy action name, Valid values:
+	// - Create
+	// - Update
+	// - Delete
+	// - Associate
+	// - UserUnmanaged
+	// - CreateChild
+	Action *string `json:"Action,omitempty" xml:"Action,omitempty"`
+	// Sub resource type, Valid values:
+	//
+	// - Listener
+	// - IpSet
+	// - EndpointGroup
+	// - ForwardingRule
+	// - Endpoint
+	// - EndpointGroupDestination
+	// - EndpointPolicy
+	//
+	// >Only valid when the Action parameter is CreateChild.
 	ChildType *string `json:"ChildType,omitempty" xml:"ChildType,omitempty"`
-	IsManaged *bool   `json:"IsManaged,omitempty" xml:"IsManaged,omitempty"`
+	// Is the managed policy action managed, Valid values:
+	//
+	// - true: The managed policy action is managed, and users do not have permission to perform the operation specified in the Action on the managed instance.
+	//
+	// - false: The managed policy action is not managed, and users have permission to perform the operation specified in the Action on the managed instance.
+	IsManaged *bool `json:"IsManaged,omitempty" xml:"IsManaged,omitempty"`
 }
 
 func (s ListForwardingRulesResponseBodyForwardingRulesServiceManagedInfos) String() string {
@@ -22937,9 +23416,17 @@ type ListListenersResponseBodyListeners struct {
 	//     *   Supported cipher suites: TLS_AES\_128\_GCM_SHA256, TLS_AES\_256\_GCM_SHA384, TLS_CHACHA20\_POLY1305\_SHA256, TLS_AES\_128\_CCM_SHA256, TLS_AES\_128\_CCM\_8\_SHA256, ECDHE-ECDSA-AES128-GCM-SHA256, ECDHE-ECDSA-AES256-GCM-SHA384, ECDHE-ECDSA-AES128-SHA256, ECDHE-ECDSA-AES256-SHA384, ECDHE-RSA-AES128-GCM-SHA256, ECDHE-RSA-AES256-GCM-SHA384, ECDHE-RSA-AES128-SHA256, ECDHE-RSA-AES256-SHA384, ECDHE-ECDSA-AES128-SHA, ECDHE-ECDSA-AES256-SHA, ECDHE-RSA-AES128-SHA, and ECDHE-RSA-AES256-SHA
 	//
 	// >  This parameter is returned only for HTTPS listeners.
-	SecurityPolicyId    *string                                                  `json:"SecurityPolicyId,omitempty" xml:"SecurityPolicyId,omitempty"`
-	ServiceId           *string                                                  `json:"ServiceId,omitempty" xml:"ServiceId,omitempty"`
-	ServiceManaged      *bool                                                    `json:"ServiceManaged,omitempty" xml:"ServiceManaged,omitempty"`
+	SecurityPolicyId *string `json:"SecurityPolicyId,omitempty" xml:"SecurityPolicyId,omitempty"`
+	// The service ID to which the managed instance belongs.
+	//
+	// >  Valid only when the ServiceManaged parameter is True.
+	ServiceId *string `json:"ServiceId,omitempty" xml:"ServiceId,omitempty"`
+	// Is it a managed instance. Valid values:
+	//
+	// - true
+	// - false
+	ServiceManaged *bool `json:"ServiceManaged,omitempty" xml:"ServiceManaged,omitempty"`
+	// A list of action policies that users can execute on this managed instance.
 	ServiceManagedInfos []*ListListenersResponseBodyListenersServiceManagedInfos `json:"ServiceManagedInfos,omitempty" xml:"ServiceManagedInfos,omitempty" type:"Repeated"`
 	// The state of the listener. Valid values:
 	//
@@ -23133,9 +23620,32 @@ func (s *ListListenersResponseBodyListenersPortRanges) SetToPort(v int32) *ListL
 }
 
 type ListListenersResponseBodyListenersServiceManagedInfos struct {
-	Action    *string `json:"Action,omitempty" xml:"Action,omitempty"`
+	// Managed policy action name, Valid values:
+	// - Create
+	// - Update
+	// - Delete
+	// - Associate
+	// - UserUnmanaged
+	// - CreateChild
+	Action *string `json:"Action,omitempty" xml:"Action,omitempty"`
+	// Sub resource type, Valid values:
+	//
+	// - Listener
+	// - IpSet
+	// - EndpointGroup
+	// - ForwardingRule
+	// - Endpoint
+	// - EndpointGroupDestination
+	// - EndpointPolicy
+	//
+	// >Only valid when the Action parameter is CreateChild.
 	ChildType *string `json:"ChildType,omitempty" xml:"ChildType,omitempty"`
-	IsManaged *bool   `json:"IsManaged,omitempty" xml:"IsManaged,omitempty"`
+	// Is the managed policy action managed, Valid values:
+	//
+	// - true: The managed policy action is managed, and users do not have permission to perform the operation specified in the Action on the managed instance.
+	//
+	// - false: The managed policy action is not managed, and users have permission to perform the operation specified in the Action on the managed instance.
+	IsManaged *bool `json:"IsManaged,omitempty" xml:"IsManaged,omitempty"`
 }
 
 func (s ListListenersResponseBodyListenersServiceManagedInfos) String() string {
@@ -23791,8 +24301,12 @@ func (s *ListTagResourcesResponse) SetBody(v *ListTagResourcesResponseBody) *Lis
 }
 
 type OpenAcceleratorServiceRequest struct {
+	// The client token that is used to ensure the idempotence of the request. You can use the client to generate the token, but you must make sure that the token is unique among different requests. The token can contain only ASCII characters.
+	//
+	// > If you do not specify this parameter, the system automatically uses the **request ID** as the **client token**. The **request ID** may be different for each request.
 	ClientToken *string `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
-	RegionId    *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	// The region where the GA instance is deployed. Set the value to **cn-hangzhou**.
+	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 }
 
 func (s OpenAcceleratorServiceRequest) String() string {
@@ -23814,11 +24328,19 @@ func (s *OpenAcceleratorServiceRequest) SetRegionId(v string) *OpenAcceleratorSe
 }
 
 type OpenAcceleratorServiceResponseBody struct {
-	Code      *string `json:"Code,omitempty" xml:"Code,omitempty"`
-	Message   *string `json:"Message,omitempty" xml:"Message,omitempty"`
-	OrderId   *int64  `json:"OrderId,omitempty" xml:"OrderId,omitempty"`
+	// The response code.
+	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	// The returned message.
+	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// The ID of the order.
+	OrderId *int64 `json:"OrderId,omitempty" xml:"OrderId,omitempty"`
+	// The ID of the request.
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	Success   *string `json:"Success,omitempty" xml:"Success,omitempty"`
+	// Indicates whether the request was successful. Valid values:
+	//
+	// *   **true:** The call was successful.
+	// *   **false:** The call failed.
+	Success *string `json:"Success,omitempty" xml:"Success,omitempty"`
 }
 
 func (s OpenAcceleratorServiceResponseBody) String() string {
@@ -23884,6 +24406,7 @@ func (s *OpenAcceleratorServiceResponse) SetBody(v *OpenAcceleratorServiceRespon
 }
 
 type QueryCrossBorderApprovalStatusRequest struct {
+	// The region ID of the GA instance. Set the value to **cn-hangzhou**.
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 }
 
@@ -23901,8 +24424,15 @@ func (s *QueryCrossBorderApprovalStatusRequest) SetRegionId(v string) *QueryCros
 }
 
 type QueryCrossBorderApprovalStatusResponseBody struct {
+	// Cross border permissions of Alibaba Cloud account (main account).
+	//
+	// -  UNAPPLIED : No cross-border permission application has been submitted or application records cannot be found.
+	// -  APPLIED : Cross-border permission review in progress.
+	// -  REJECTED : Cross-border permission review failed.
+	// -  PASSED : Cross-border permission review passed.
 	ApprovalStatus *string `json:"ApprovalStatus,omitempty" xml:"ApprovalStatus,omitempty"`
-	RequestId      *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The ID of the request.
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
 func (s QueryCrossBorderApprovalStatusResponseBody) String() string {
@@ -24891,10 +25421,21 @@ func (s *UpdateAcceleratorCrossBorderModeResponse) SetBody(v *UpdateAcceleratorC
 }
 
 type UpdateAcceleratorCrossBorderStatusRequest struct {
-	AcceleratorId     *string `json:"AcceleratorId,omitempty" xml:"AcceleratorId,omitempty"`
-	ClientToken       *string `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
-	CrossBorderStatus *bool   `json:"CrossBorderStatus,omitempty" xml:"CrossBorderStatus,omitempty"`
-	RegionId          *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	// The ID of the GA instance.
+	AcceleratorId *string `json:"AcceleratorId,omitempty" xml:"AcceleratorId,omitempty"`
+	// The client token that is used to ensure the idempotence of the request.
+	//
+	// You can use the client to generate the token, but you must make sure that the token is unique among different requests. The token can contain only ASCII characters.
+	//
+	// > If you do not specify this parameter, the system automatically uses the **request ID** as the **client token**. The **request ID** may be different for each request.
+	ClientToken *string `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
+	// Specifies whether to enable the cross-border acceleration feature for the GA instance. Valid values:
+	//
+	// - **true**
+	// - **false**
+	CrossBorderStatus *bool `json:"CrossBorderStatus,omitempty" xml:"CrossBorderStatus,omitempty"`
+	// The region ID of the GA instance. Set the value to cn-hangzhou.
+	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 }
 
 func (s UpdateAcceleratorCrossBorderStatusRequest) String() string {
@@ -24926,6 +25467,7 @@ func (s *UpdateAcceleratorCrossBorderStatusRequest) SetRegionId(v string) *Updat
 }
 
 type UpdateAcceleratorCrossBorderStatusResponseBody struct {
+	// The ID of the request.
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -24972,22 +25514,22 @@ func (s *UpdateAcceleratorCrossBorderStatusResponse) SetBody(v *UpdateAccelerato
 }
 
 type UpdateAclAttributeRequest struct {
-	// The ID of the network ACL.
+	// The ACL ID.
 	AclId *string `json:"AclId,omitempty" xml:"AclId,omitempty"`
-	// The name of the network ACL.
+	// The ACL name.
 	AclName *string `json:"AclName,omitempty" xml:"AclName,omitempty"`
 	// The client token that is used to ensure the idempotence of the request.
 	//
-	// You can use the client to generate the value, but you must make sure that it is unique among different requests. ClientToken can contain only ASCII characters.
+	// You can use the client to generate the token, but you must make sure that the token is unique among different requests. The token can contain only ASCII characters.
 	//
-	// >  If you do not set this parameter, the system automatically uses **RequestId** as **ClientToken**. **RequestId** of each API request may be different.
+	// > If you do not specify this parameter, the system automatically uses the **request ID** as the **client token**. The **request ID** may be different for each request.
 	ClientToken *string `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
-	// Specifies whether to only precheck this request. Valid values:
+	// Specifies whether to perform only a dry run, without performing the actual request. Valid values:
 	//
-	// *   **true**: prechecks the request without modifying the attributes of the network ACL. The system prechecks the required parameters, request syntax, and limits. If the request fails to pass the precheck, an error message is returned. If the request passes the precheck, the `DryRunOperation` error code is returned.
-	// *   **false** (default): sends the request. If the request passes the precheck, a 2xx HTTP status code is returned and the operation is performed.
+	// *   **true:** performs only a dry run. The system checks the request for potential issues, including missing parameter values, incorrect request syntax, and service limits. If the request fails the dry run, an error message is returned. If the request passes the dry run, the `DryRunOperation` error code is returned.
+	// *   **false**(default): performs a dry run and performs the actual request. If the request passes the dry run, a 2xx HTTP status code is returned and the operation is performed.
 	DryRun *bool `json:"DryRun,omitempty" xml:"DryRun,omitempty"`
-	// The ID of the region where the Global Accelerator (GA) instance is deployed. Set the value to **cn-hangzhou**.
+	// The region ID of the Global Accelerator (GA) instance. Set the value to **cn-hangzhou**.
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 }
 
@@ -25025,9 +25567,9 @@ func (s *UpdateAclAttributeRequest) SetRegionId(v string) *UpdateAclAttributeReq
 }
 
 type UpdateAclAttributeResponseBody struct {
-	// The ID of the network ACL.
+	// The ACL ID.
 	AclId *string `json:"AclId,omitempty" xml:"AclId,omitempty"`
-	// The ID of the request.
+	// The request ID.
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -26514,7 +27056,8 @@ type UpdateCustomRoutingEndpointsRequest struct {
 	// You can use the client to generate the value, but you must make sure that it is unique among different requests. The client token can contain only ASCII characters.
 	//
 	// >  If you do not set this parameter, **ClientToken** is set to the value of **RequestId**. The value of **RequestId** may be different for each API request.
-	ClientToken            *string                                                      `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
+	ClientToken *string `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
+	// The configurations of the endpoint.
 	EndpointConfigurations []*UpdateCustomRoutingEndpointsRequestEndpointConfigurations `json:"EndpointConfigurations,omitempty" xml:"EndpointConfigurations,omitempty" type:"Repeated"`
 	// The ID of the endpoint group to which the endpoints that you want to modify belong.
 	EndpointGroupId *string `json:"EndpointGroupId,omitempty" xml:"EndpointGroupId,omitempty"`
@@ -26554,7 +27097,8 @@ type UpdateCustomRoutingEndpointsRequestEndpointConfigurations struct {
 	// The ID of the endpoint.
 	//
 	// You can specify up to 20 endpoint IDs.
-	EndpointId           *string                                                                          `json:"EndpointId,omitempty" xml:"EndpointId,omitempty"`
+	EndpointId *string `json:"EndpointId,omitempty" xml:"EndpointId,omitempty"`
+	// The configurations of the policy.
 	PolicyConfigurations []*UpdateCustomRoutingEndpointsRequestEndpointConfigurationsPolicyConfigurations `json:"PolicyConfigurations,omitempty" xml:"PolicyConfigurations,omitempty" type:"Repeated"`
 	// The access policy of traffic for the specified endpoint. Default value: DenyAll. Valid values:
 	//
@@ -26599,7 +27143,14 @@ type UpdateCustomRoutingEndpointsRequestEndpointConfigurationsPolicyConfiguratio
 	// This parameter takes effect only when **TrafficToEndpointPolicy** is set to **AllowCustom**.
 	//
 	// You can specify up to 20 destination IP addresses for each endpoint.
-	Address    *string                                                                                    `json:"Address,omitempty" xml:"Address,omitempty"`
+	Address *string `json:"Address,omitempty" xml:"Address,omitempty"`
+	// The port range of the destination to which traffic is forwarded. The value of this parameter must fall within the port range of the endpoint group.
+	//
+	// If you leave this parameter empty, traffic is forwarded to all destination ports.
+	//
+	// This parameter takes effect only when **TrafficToEndpointPolicy** is set to **AllowCustom**.
+	//
+	// You can specify port ranges for up to 20 destinations for each endpoint and specify up to 20 port ranges for each destination.
 	PortRanges []*UpdateCustomRoutingEndpointsRequestEndpointConfigurationsPolicyConfigurationsPortRanges `json:"PortRanges,omitempty" xml:"PortRanges,omitempty" type:"Repeated"`
 }
 
@@ -26883,37 +27434,36 @@ func (s *UpdateDomainStateResponse) SetBody(v *UpdateDomainStateResponseBody) *U
 type UpdateEndpointGroupRequest struct {
 	// The client token that is used to ensure the idempotence of the request.
 	//
-	// You can use the client to generate the value, but you must make sure that it is unique among different requests. The client token can contain only ASCII characters.
+	// You can use the client to generate the value, but you must make sure that it is unique among all requests. ClientToken can contain only ASCII characters.
 	//
-	// > If you do not specify this parameter, the system automatically uses the value of **RequestId** as the value of **ClientToken**. The value of **RequestId** for each API request may be different.
+	// >  If you do not set this parameter, **ClientToken** is set to the value of **RequestId**. The value of **RequestId** may be different for each API request.
 	ClientToken *string `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
 	// The description of the endpoint group.
 	//
-	// The description can be up to 256 characters in length and cannot contain `http://` or `https://`.
+	// The description cannot exceed 256 characters in length and cannot contain `http://` or `https://`.
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
-	// The configurations of the endpoint.
+	// The information about the endpoints.
+	//
+	// You can specify information for up to 20 endpoints.
 	EndpointConfigurations []*UpdateEndpointGroupRequestEndpointConfigurations `json:"EndpointConfigurations,omitempty" xml:"EndpointConfigurations,omitempty" type:"Repeated"`
 	// The ID of the endpoint group.
 	EndpointGroupId *string `json:"EndpointGroupId,omitempty" xml:"EndpointGroupId,omitempty"`
-	// The ID of the region where the endpoint group is deployed.
+	// The ID of the region where the endpoint group is created.
 	EndpointGroupRegion *string `json:"EndpointGroupRegion,omitempty" xml:"EndpointGroupRegion,omitempty"`
 	// The protocol that is used by the backend service. Valid values:
 	//
 	// *   **HTTP**
 	// *   **HTTPS**
 	//
-	// >
-	//
-	// *   You can set this parameter only when the listener that is associated with the endpoint group uses the HTTP or HTTPS protocol.
-	//
-	// *   For an HTTP listener, the backend service protocol must be HTTP.
+	// > *   You can set this parameter only when the listener that is associated with the endpoint group uses the HTTP or HTTPS protocol.
+	// > *   For an HTTP listener, the backend service protocol must be HTTP.
 	EndpointRequestProtocol *string `json:"EndpointRequestProtocol,omitempty" xml:"EndpointRequestProtocol,omitempty"`
-	// Specifies whether to enable the health check feature. Valid values:
+	// Specifies whether to enable the health check feature. Default value: true. Valid values:
 	//
-	// *   **true:** enables the health check feature. This is the default value.
-	// *   **false:** disables the health check feature.
+	// *   **true**: enables the health check feature.
+	// *   **false**: disables the health check feature.
 	HealthCheckEnabled *bool `json:"HealthCheckEnabled,omitempty" xml:"HealthCheckEnabled,omitempty"`
-	// The interval between consecutive health checks. Unit: seconds. Valid values: **1** to **50**.
+	// The interval between two consecutive health checks. Unit: seconds. Valid values: **1** to **50**.
 	HealthCheckIntervalSeconds *int32 `json:"HealthCheckIntervalSeconds,omitempty" xml:"HealthCheckIntervalSeconds,omitempty"`
 	// The path to which health check requests are sent.
 	HealthCheckPath *string `json:"HealthCheckPath,omitempty" xml:"HealthCheckPath,omitempty"`
@@ -27032,33 +27582,30 @@ func (s *UpdateEndpointGroupRequest) SetTrafficPercentage(v int32) *UpdateEndpoi
 type UpdateEndpointGroupRequestEndpointConfigurations struct {
 	// Specifies whether to reserve client IP addresses. Default value: false. Valid values:
 	//
-	// *   **true:** reserves client IP addresses.
-	// *   **false:** does not preserve client IP addresses.
+	// *   **true**: reserves client IP addresses.
+	// *   **false**: does not reserve client IP addresses.
 	EnableClientIPPreservation *bool `json:"EnableClientIPPreservation,omitempty" xml:"EnableClientIPPreservation,omitempty"`
-	// Specifies whether to preserve the IP addresses of clients that access the endpoint by using the ProxyProtocol module. Valid values:
+	// Specifies whether to preserve client IP addresses by using the ProxyProtocol module. Default value: false. Valid values:
 	//
-	// *   **true**
-	// *   **false** (default)
+	// *   **true**: preserves client IP addresses by using the ProxyProtocol module.
+	// *   **false**: does not preserve client IP addresses by using the ProxyProtocol module.
 	EnableProxyProtocol *bool `json:"EnableProxyProtocol,omitempty" xml:"EnableProxyProtocol,omitempty"`
-	// The IP address, domain name or instance id according to the type of the endpoint.
-	Endpoint *string `json:"Endpoint,omitempty" xml:"Endpoint,omitempty"`
+	// The IP address or domain name of the endpoint.
+	Endpoint   *string `json:"Endpoint,omitempty" xml:"Endpoint,omitempty"`
+	SubAddress *string `json:"SubAddress,omitempty" xml:"SubAddress,omitempty"`
 	// The type of the endpoint. Valid values:
 	//
-	// *   **Domain:** a custom domain name
-	// *   **Ip:** a custom IP address
-	// *   **PublicIp:** a public IP address provided by Alibaba Cloud
-	// *   **ECS:** an ECS instance
-	// *   **SLB:** a Server Load Balancer (SLB) instance
-	// *   **ALB:** an Application Load Balancer (ALB) instance
-	// *   **OSS:** an Object Storage Service (OSS) bucket
+	// *   **Domain**: a custom domain name
+	// *   **Ip**: a custom IP address
+	// *   **PublicIp**: a public IP address provided by Alibaba Cloud
+	// *   **ECS**: an Elastic Compute Service (ECS) instance
+	// *   **SLB**: a Server Load Balancer (SLB) instance
+	// *   **ALB**: an Application Load Balancer (ALB) instance
+	// *   **OSS**: an Object Storage Service (OSS) bucket
 	//
-	// >
-	//
-	// *   If you set this parameter to **ECS** or **SLB** and the service-linked role AliyunServiceRoleForGaVpcEndpoint does not exist, the system creates the service-linked role.
-	//
-	// *   If you set this parameter to **ALB** and the service-linked role AliyunServiceRoleForGaAlb does not exist, the system automatically creates the service-linked role.
-	//
-	// *   If you set this parameter to **OSS** and the service-linked role AliyunServiceRoleForGaOss does not exist, the system automatically creates the service-linked role.
+	// > *   If you set this parameter to **ECS** or **SLB** and the service-linked role AliyunServiceRoleForGaVpcEndpoint does not exist, the system automatically creates the service-linked role.
+	// > *   If you set this parameter to **ALB** and the service-linked role AliyunServiceRoleForGaAlb does not exist, the system automatically creates the service-linked role.
+	// > *   If you set this parameter to **OSS** and the service-linked role AliyunServiceRoleForGaOss does not exist, the system automatically creates the service-linked role.
 	//
 	// For more information, see [Service-linked roles](~~178360~~).
 	Type *string `json:"Type,omitempty" xml:"Type,omitempty"`
@@ -27066,7 +27613,7 @@ type UpdateEndpointGroupRequestEndpointConfigurations struct {
 	//
 	// Valid values: **0** to **255**.
 	//
-	// > If you set the weight of an endpoint to 0, GA does not route network traffic to the endpoint. Make sure that you are aware of the impact on your business before you set the endpoint weight to 0.
+	// >  If the weight of an endpoint is set to 0, GA stops distributing network traffic to the endpoint. Proceed with caution.
 	Weight *int32 `json:"Weight,omitempty" xml:"Weight,omitempty"`
 }
 
@@ -27093,6 +27640,11 @@ func (s *UpdateEndpointGroupRequestEndpointConfigurations) SetEndpoint(v string)
 	return s
 }
 
+func (s *UpdateEndpointGroupRequestEndpointConfigurations) SetSubAddress(v string) *UpdateEndpointGroupRequestEndpointConfigurations {
+	s.SubAddress = &v
+	return s
+}
+
 func (s *UpdateEndpointGroupRequestEndpointConfigurations) SetType(v string) *UpdateEndpointGroupRequestEndpointConfigurations {
 	s.Type = &v
 	return s
@@ -27108,11 +27660,8 @@ type UpdateEndpointGroupRequestPortOverrides struct {
 	EndpointPort *int32 `json:"EndpointPort,omitempty" xml:"EndpointPort,omitempty"`
 	// The listener port that is mapped to the endpoint port.
 	//
-	// >
-	//
-	// *   Only HTTP and HTTPS listeners support port mappings.
-	//
-	// *   The listener port in a port mapping must be the one used by the current listener.
+	// > *   Only HTTP and HTTPS listeners support port mappings.
+	// > *   The listener port in a port mapping must be the one used by the current listener.
 	ListenerPort *int32 `json:"ListenerPort,omitempty" xml:"ListenerPort,omitempty"`
 }
 
@@ -27281,18 +27830,18 @@ func (s *UpdateEndpointGroupAttributeResponse) SetBody(v *UpdateEndpointGroupAtt
 type UpdateEndpointGroupsRequest struct {
 	// The client token that is used to ensure the idempotence of the request.
 	//
-	// You can use the client to generate the value, but you must make sure that it is unique among different requests. The client token can contain only ASCII characters.
+	// You can use the client to generate the token, but you must make sure that the token is unique among different requests. The token can contain only ASCII characters.
 	//
-	// >  If you do not set this parameter, **ClientToken** is set to the value of **RequestId**. The value of **RequestId** may be different for each API request.
+	// > If you do not specify this parameter, the system automatically uses the **request ID** as the **client token**. The **request ID** may be different for each request.
 	ClientToken *string `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
-	// Specifies whether to only precheck the request. Default value: false. Valid values:
+	// Specifies whether to perform only a dry run, without performing the actual request. Valid values:
 	//
-	// *   **true**: prechecks the request without performing the operation. The system checks the required parameters, request syntax, and limits. If the request fails the precheck, an error message is returned. If the request passes the precheck, the `DryRunOperation` error code is returned.
-	// *   **false**: sends the request. If the request passes the precheck, a 2xx HTTP status code is returned and the operation is performed.
+	// *   **true:** performs only a dry run. The system checks the request for potential issues, including missing parameter values, incorrect request syntax, and service limits. If the request fails the dry run, an error message is returned. If the request passes the dry run, the `DryRunOperation` error code is returned.
+	// *   **false** (default): performs a dry run and performs the actual request. If the request passes the dry run, a 2xx HTTP status code is returned and the operation is performed.
 	DryRun *bool `json:"DryRun,omitempty" xml:"DryRun,omitempty"`
-	// Terminal node group configuration information.
+	// The configurations of the endpoint group.
 	EndpointGroupConfigurations []*UpdateEndpointGroupsRequestEndpointGroupConfigurations `json:"EndpointGroupConfigurations,omitempty" xml:"EndpointGroupConfigurations,omitempty" type:"Repeated"`
-	// The ID of the listener.
+	// The listener ID.
 	ListenerId *string `json:"ListenerId,omitempty" xml:"ListenerId,omitempty"`
 	// The region ID of the GA instance. Set the value to **cn-hangzhou**.
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
@@ -27334,21 +27883,21 @@ func (s *UpdateEndpointGroupsRequest) SetRegionId(v string) *UpdateEndpointGroup
 type UpdateEndpointGroupsRequestEndpointGroupConfigurations struct {
 	// Specifies whether to use the proxy protocol to preserve client IP addresses. Valid values:
 	//
-	// *   **true**: uses the proxy protocol to preserve client IP addresses.
-	// *   **false**: does not use the proxy protocol to preserve client IP addresses.
+	// *   **true**
+	// *   **false**
 	EnableClientIPPreservationProxyProtocol *bool `json:"EnableClientIPPreservationProxyProtocol,omitempty" xml:"EnableClientIPPreservationProxyProtocol,omitempty"`
 	// Specifies whether to preserve client IP addresses by using the TCP Option Address (TOA) module. Valid values:
 	//
-	// *   **true**: preserves client IP addresses by using the TOA module.
-	// *   **false**: does not preserve client IP addresses by using the TOA module.
+	// *   **true**
+	// *   **false**
 	EnableClientIPPreservationToa *bool `json:"EnableClientIPPreservationToa,omitempty" xml:"EnableClientIPPreservationToa,omitempty"`
-	// Terminal node configuration information.
+	// The configurations of endpoints in the endpoint group.
 	EndpointConfigurations []*UpdateEndpointGroupsRequestEndpointGroupConfigurationsEndpointConfigurations `json:"EndpointConfigurations,omitempty" xml:"EndpointConfigurations,omitempty" type:"Repeated"`
 	// The description of the endpoint group.
 	//
-	// The description cannot exceed 256 characters in length and cannot contain `http://` or `https://`.
+	// The description can be up to 256 characters in length and cannot contain `http://` or `https://`.
 	EndpointGroupDescription *string `json:"EndpointGroupDescription,omitempty" xml:"EndpointGroupDescription,omitempty"`
-	// The ID of the endpoint.
+	// The endpoint ID.
 	EndpointGroupId *string `json:"EndpointGroupId,omitempty" xml:"EndpointGroupId,omitempty"`
 	// The name of the endpoint group.
 	//
@@ -27356,17 +27905,19 @@ type UpdateEndpointGroupsRequestEndpointGroupConfigurations struct {
 	EndpointGroupName *string `json:"EndpointGroupName,omitempty" xml:"EndpointGroupName,omitempty"`
 	// The protocol that is used by the backend service. Valid values:
 	//
-	// *   **HTTP**: HTTP
-	// *   **HTTPS**: HTTPS
+	// *   **HTTP**
+	// *   **HTTPS**
 	//
 	// >
-	// *   You can set this property only if the listener that is associated with the endpoint group uses the HTTP or HTTPS protocol.
+	//
+	// *   You can set this parameter only when the listener that is associated with the endpoint group uses the HTTP or HTTPS protocol.
+	//
 	// *   For an HTTP listener, the backend service protocol must be HTTP.
 	EndpointRequestProtocol *string `json:"EndpointRequestProtocol,omitempty" xml:"EndpointRequestProtocol,omitempty"`
-	// Specifies whether to enable the health check feature. Default value: false. Valid values:
+	// Specifies whether to enable the health check feature. Valid values:
 	//
-	// *   **true**: enables the health check feature.
-	// *   **false**: disables the health check feature.
+	// *   **true**
+	// *   **false** (default)
 	HealthCheckEnabled *bool `json:"HealthCheckEnabled,omitempty" xml:"HealthCheckEnabled,omitempty"`
 	// The interval at which health checks are performed. Unit: seconds. Valid values: **1** to **50**.
 	HealthCheckIntervalSeconds *int64 `json:"HealthCheckIntervalSeconds,omitempty" xml:"HealthCheckIntervalSeconds,omitempty"`
@@ -27376,13 +27927,13 @@ type UpdateEndpointGroupsRequestEndpointGroupConfigurations struct {
 	//
 	// Valid values: **1** to **65535**.
 	HealthCheckPort *int64 `json:"HealthCheckPort,omitempty" xml:"HealthCheckPort,omitempty"`
-	// The protocol over which health check requests are sent.
+	// The protocol over which health check requests are sent. Valid values:
 	//
-	// *   **tcp**: TCP
-	// *   **http**: HTTP
-	// *   **https**: HTTPS
+	// *   **tcp:** TCP
+	// *   **http:** HTTP
+	// *   **https:** HTTPS
 	HealthCheckProtocol *string `json:"HealthCheckProtocol,omitempty" xml:"HealthCheckProtocol,omitempty"`
-	// The mappings between ports.
+	// The port mapping.
 	PortOverrides []*UpdateEndpointGroupsRequestEndpointGroupConfigurationsPortOverrides `json:"PortOverrides,omitempty" xml:"PortOverrides,omitempty" type:"Repeated"`
 	// The number of consecutive health check failures that must occur before a healthy endpoint group is considered unhealthy, or the number of consecutive health check successes that must occur before an unhealthy endpoint group is considered healthy.
 	//
@@ -27478,30 +28029,33 @@ func (s *UpdateEndpointGroupsRequestEndpointGroupConfigurations) SetTrafficPerce
 }
 
 type UpdateEndpointGroupsRequestEndpointGroupConfigurationsEndpointConfigurations struct {
-	// The IP address, domain name or instance id according to the type of the endpoint.
-	Endpoint *string `json:"Endpoint,omitempty" xml:"Endpoint,omitempty"`
-	// The type of the endpoint. Valid values:
+	// The IP address or domain name of the endpoint.
+	Endpoint   *string `json:"Endpoint,omitempty" xml:"Endpoint,omitempty"`
+	SubAddress *string `json:"SubAddress,omitempty" xml:"SubAddress,omitempty"`
+	// The type of the endpoint.
 	//
-	// *   **Domain**: a custom domain name
-	// *   **Ip**: a custom IP address
-	// *   **PublicIp**: a public IP address provided by Alibaba Cloud
-	// *   **ECS**: an Elastic Compute Service (ECS) instance
-	// *   **SLB**: a Server Load Balancer (SLB) instance
-	// *   **ALB**: an Application Load Balancer (ALB) instance
-	// *   **OSS**: an Object Storage Service (OSS) bucket
+	// *   **Domain:** a custom domain name.
+	// *   **Ip:** a custom IP address.
+	// *   **PublicIp:** a public IP address provided by Alibaba Cloud.
+	// *   **ECS:** an Elastic Compute Service (ECS) instance.
+	// *   **SLB:** a Server Load Balancer (SLB) instance.
+	// *   **ALB:** an Application Load Balancer (ALB) instance.
+	// *   **OSS:** an Object Storage Service (OSS) bucket.
 	//
 	// >
-	// *   If you set this parameter to **ECS** or **SLB** and the service-linked role AliyunServiceRoleForGaVpcEndpoint does not exist, the system creates the service-linked role.
+	//
+	// *   If you set this parameter to **ECS** or **SLB** and the service-linked role AliyunServiceRoleForGaVpcEndpoint does not exist, the system automatically creates the service-linked role.
+	//
 	// *   If you set this parameter to **ALB** and the service-linked role AliyunServiceRoleForGaAlb does not exist, the system creates the service-linked role.
 	// *   If you set this parameter to **OSS** and the service-linked role AliyunServiceRoleForGaOss does not exist, the system creates the service-linked role.
 	//
-	//     For more information, see [Service-linked roles](~~178360~~).
+	// For more information, see [Service-linked roles](~~178360~~).
 	Type *string `json:"Type,omitempty" xml:"Type,omitempty"`
 	// The weight of the endpoint.
 	//
 	// Valid values: **0** to **255**.
 	//
-	// >  If the weight of an endpoint is set to 0, GA stops distributing network traffic to the endpoint. Proceed with caution.
+	// > If you set the weight of an endpoint to 0, GA does not route network traffic to the endpoint. Make sure that you are aware of the impact on your business before you set the endpoint weight to 0.
 	Weight *int64 `json:"Weight,omitempty" xml:"Weight,omitempty"`
 }
 
@@ -27515,6 +28069,11 @@ func (s UpdateEndpointGroupsRequestEndpointGroupConfigurationsEndpointConfigurat
 
 func (s *UpdateEndpointGroupsRequestEndpointGroupConfigurationsEndpointConfigurations) SetEndpoint(v string) *UpdateEndpointGroupsRequestEndpointGroupConfigurationsEndpointConfigurations {
 	s.Endpoint = &v
+	return s
+}
+
+func (s *UpdateEndpointGroupsRequestEndpointGroupConfigurationsEndpointConfigurations) SetSubAddress(v string) *UpdateEndpointGroupsRequestEndpointGroupConfigurationsEndpointConfigurations {
+	s.SubAddress = &v
 	return s
 }
 
@@ -27533,12 +28092,14 @@ type UpdateEndpointGroupsRequestEndpointGroupConfigurationsPortOverrides struct 
 	//
 	// Valid values: **1** to **65499**.
 	EndpointPort *int64 `json:"EndpointPort,omitempty" xml:"EndpointPort,omitempty"`
-	// The listening port.
+	// The listener port of the instance.
 	//
 	// Valid values: **1** to **65499**.
 	//
 	// >
-	// *   Only HTTP and HTTPS listeners support port mapping.
+	//
+	// *   Only HTTP and HTTPS listeners support port mappings.
+	//
 	// *   The listener port in a port mapping must be the one used by the current listener.
 	ListenerPort *int64 `json:"ListenerPort,omitempty" xml:"ListenerPort,omitempty"`
 }
@@ -27564,7 +28125,7 @@ func (s *UpdateEndpointGroupsRequestEndpointGroupConfigurationsPortOverrides) Se
 type UpdateEndpointGroupsResponseBody struct {
 	// The IDs of the endpoint groups.
 	EndpointGroupIds []*string `json:"EndpointGroupIds,omitempty" xml:"EndpointGroupIds,omitempty" type:"Repeated"`
-	// The ID of the request.
+	// The request ID.
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -28277,7 +28838,7 @@ type UpdateListenerRequest struct {
 	//
 	// > This parameter will be deprecated in the API operations that are used to configure listeners. We recommend that you set this parameter when you call API operations to configure endpoint groups. For more information about the **ProxyProtocol** parameter, see [CreateEndpointGroup](~~153259~~) and [UpdateEndpointGroup](~~153262~~).
 	ProxyProtocol *string `json:"ProxyProtocol,omitempty" xml:"ProxyProtocol,omitempty"`
-	// The ID of the region where the GA instance is deployed. Set the value to **cn-hangzhou**.
+	// The region ID of the GA instance. Set the value to **cn-hangzhou**.
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 	// The ID of the security policy. Valid values:
 	//
@@ -28590,11 +29151,26 @@ func (s *UpdateListenerResponse) SetBody(v *UpdateListenerResponseBody) *UpdateL
 }
 
 type UpdateServiceManagedControlRequest struct {
-	ClientToken    *string `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
-	RegionId       *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	ResourceId     *string `json:"ResourceId,omitempty" xml:"ResourceId,omitempty"`
-	ResourceType   *string `json:"ResourceType,omitempty" xml:"ResourceType,omitempty"`
-	ServiceManaged *bool   `json:"ServiceManaged,omitempty" xml:"ServiceManaged,omitempty"`
+	// The client token that is used to ensure the idempotence of the request.
+	//
+	// You can use the client to generate the token, but you must make sure that the token is unique among different requests. The token can contain only ASCII characters.
+	//
+	// >  If you do not specify this parameter, the system automatically uses the **request ID** as the **client token**. The **request ID** may be different for each request.
+	ClientToken *string `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
+	// The region ID of the GA instance. Set the value to cn-hangzhou.
+	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	// The ID of the resource whose control mode you want to change.
+	ResourceId *string `json:"ResourceId,omitempty" xml:"ResourceId,omitempty"`
+	// The type of the resource whose control mode you want to change. Valid value:
+	//
+	// *   **Accelerator**: standard GA instance.
+	ResourceType *string `json:"ResourceType,omitempty" xml:"ResourceType,omitempty"`
+	// Specifies the control mode of the resource. Valid value:
+	//
+	// *   false: changes the control mode of the resource from managed mode to unmanaged mode.
+	//
+	// >  You can change the control mode only from managed mode to unmanaged mode.
+	ServiceManaged *bool `json:"ServiceManaged,omitempty" xml:"ServiceManaged,omitempty"`
 }
 
 func (s UpdateServiceManagedControlRequest) String() string {
@@ -33856,6 +34432,14 @@ func (client *Client) DescribeEndpointGroup(request *DescribeEndpointGroupReques
 	return _result, _err
 }
 
+/**
+ * ## Debugging
+ * [OpenAPI Explorer automatically calculates the signature value. For your convenience, we recommend that you call this operation in OpenAPI Explorer. OpenAPI Explorer dynamically generates the sample code of the operation for different SDKs.](https://api.aliyun.com/#product=Ga\\&api=DescribeIpSet\\&type=RPC\\&version=2019-11-20)
+ *
+ * @param request DescribeIpSetRequest
+ * @param runtime runtime options for this request RuntimeOptions
+ * @return DescribeIpSetResponse
+ */
 func (client *Client) DescribeIpSetWithOptions(request *DescribeIpSetRequest, runtime *util.RuntimeOptions) (_result *DescribeIpSetResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -33893,6 +34477,13 @@ func (client *Client) DescribeIpSetWithOptions(request *DescribeIpSetRequest, ru
 	return _result, _err
 }
 
+/**
+ * ## Debugging
+ * [OpenAPI Explorer automatically calculates the signature value. For your convenience, we recommend that you call this operation in OpenAPI Explorer. OpenAPI Explorer dynamically generates the sample code of the operation for different SDKs.](https://api.aliyun.com/#product=Ga\\&api=DescribeIpSet\\&type=RPC\\&version=2019-11-20)
+ *
+ * @param request DescribeIpSetRequest
+ * @return DescribeIpSetResponse
+ */
 func (client *Client) DescribeIpSet(request *DescribeIpSetRequest) (_result *DescribeIpSetResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &DescribeIpSetResponse{}
@@ -33958,6 +34549,62 @@ func (client *Client) DescribeListener(request *DescribeListenerRequest) (_resul
 	runtime := &util.RuntimeOptions{}
 	_result = &DescribeListenerResponse{}
 	_body, _err := client.DescribeListenerWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) DescribeLogStoreOfEndpointGroupWithOptions(request *DescribeLogStoreOfEndpointGroupRequest, runtime *util.RuntimeOptions) (_result *DescribeLogStoreOfEndpointGroupResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.AcceleratorId)) {
+		query["AcceleratorId"] = request.AcceleratorId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.EndpointGroupId)) {
+		query["EndpointGroupId"] = request.EndpointGroupId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ListenerId)) {
+		query["ListenerId"] = request.ListenerId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.RegionId)) {
+		query["RegionId"] = request.RegionId
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("DescribeLogStoreOfEndpointGroup"),
+		Version:     tea.String("2019-11-20"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &DescribeLogStoreOfEndpointGroupResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) DescribeLogStoreOfEndpointGroup(request *DescribeLogStoreOfEndpointGroupRequest) (_result *DescribeLogStoreOfEndpointGroupResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &DescribeLogStoreOfEndpointGroupResponse{}
+	_body, _err := client.DescribeLogStoreOfEndpointGroupWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -34077,6 +34724,7 @@ func (client *Client) DetachDdosFromAccelerator(request *DetachDdosFromAccelerat
 }
 
 /**
+ * ## Description
  * *   **DetachLogStoreFromEndpointGroup** is an asynchronous operation. After you send a request, the system returns a request ID, but the operation is still being performed in the system background. You can call the [DescribeEndpointGroup](~~153260~~) operation to query the state of an endpoint group.
  *     *   If the endpoint group is in the **updating** state, the Log Service Logstore is being disassociated from the endpoint group. In this case, you can perform only query operations.
  *     <!---->
@@ -34137,6 +34785,7 @@ func (client *Client) DetachLogStoreFromEndpointGroupWithOptions(request *Detach
 }
 
 /**
+ * ## Description
  * *   **DetachLogStoreFromEndpointGroup** is an asynchronous operation. After you send a request, the system returns a request ID, but the operation is still being performed in the system background. You can call the [DescribeEndpointGroup](~~153260~~) operation to query the state of an endpoint group.
  *     *   If the endpoint group is in the **updating** state, the Log Service Logstore is being disassociated from the endpoint group. In this case, you can perform only query operations.
  *     <!---->
@@ -34262,6 +34911,7 @@ func (client *Client) DisableApplicationMonitor(request *DisableApplicationMonit
 }
 
 /**
+ * ## Description
  * *   **DissociateAclsFromListener** is an asynchronous operation. After you send a request, the system returns a request ID, but the operation is still being performed in the system background. You can call the [DescribeListener](~~153254~~) operation to query the state of a listener:
  *     *   If the listener is in the **updating** state, ACLs are being disassociated from the listener. In this case, you can perform only query operations.
  *     *   If the listener is in the **active** state, ACLs are disassociated from the listener.
@@ -34321,6 +34971,7 @@ func (client *Client) DissociateAclsFromListenerWithOptions(request *DissociateA
 }
 
 /**
+ * ## Description
  * *   **DissociateAclsFromListener** is an asynchronous operation. After you send a request, the system returns a request ID, but the operation is still being performed in the system background. You can call the [DescribeListener](~~153254~~) operation to query the state of a listener:
  *     *   If the listener is in the **updating** state, ACLs are being disassociated from the listener. In this case, you can perform only query operations.
  *     *   If the listener is in the **active** state, ACLs are disassociated from the listener.
@@ -34341,6 +34992,7 @@ func (client *Client) DissociateAclsFromListener(request *DissociateAclsFromList
 }
 
 /**
+ * ## Description
  * *   **DissociateAdditionalCertificatesFromListener** is an asynchronous operation. After you send a request, the system returns a request ID, but this operation is still being performed in the system background. You can call the [DescribeListener](~~153254~~) operation to query the state of an HTTPS listener.
  *     *   If the listener is in the **updating** state, it indicates that the additional certificate is being dissociated from the listener. In this case, you can perform only query operations.
  *     *   If the listener is in the **active** state, it indicates that the additional certificate is dissociated from the listener.
@@ -34400,6 +35052,7 @@ func (client *Client) DissociateAdditionalCertificatesFromListenerWithOptions(re
 }
 
 /**
+ * ## Description
  * *   **DissociateAdditionalCertificatesFromListener** is an asynchronous operation. After you send a request, the system returns a request ID, but this operation is still being performed in the system background. You can call the [DescribeListener](~~153254~~) operation to query the state of an HTTPS listener.
  *     *   If the listener is in the **updating** state, it indicates that the additional certificate is being dissociated from the listener. In this case, you can perform only query operations.
  *     *   If the listener is in the **active** state, it indicates that the additional certificate is dissociated from the listener.
@@ -36084,6 +36737,14 @@ func (client *Client) ListCustomRoutingEndpointGroupDestinations(request *ListCu
 	return _result, _err
 }
 
+/**
+ * ## Debugging
+ * [OpenAPI Explorer automatically calculates the signature value. For your convenience, we recommend that you call this operation in OpenAPI Explorer. OpenAPI Explorer dynamically generates the sample code for different SDKs.](https://api.aliyun.com/#product=Ga\\&api=ListCustomRoutingEndpointGroups\\&type=RPC\\&version=2019-11-20)
+ *
+ * @param request ListCustomRoutingEndpointGroupsRequest
+ * @param runtime runtime options for this request RuntimeOptions
+ * @return ListCustomRoutingEndpointGroupsResponse
+ */
 func (client *Client) ListCustomRoutingEndpointGroupsWithOptions(request *ListCustomRoutingEndpointGroupsRequest, runtime *util.RuntimeOptions) (_result *ListCustomRoutingEndpointGroupsResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -36137,6 +36798,13 @@ func (client *Client) ListCustomRoutingEndpointGroupsWithOptions(request *ListCu
 	return _result, _err
 }
 
+/**
+ * ## Debugging
+ * [OpenAPI Explorer automatically calculates the signature value. For your convenience, we recommend that you call this operation in OpenAPI Explorer. OpenAPI Explorer dynamically generates the sample code for different SDKs.](https://api.aliyun.com/#product=Ga\\&api=ListCustomRoutingEndpointGroups\\&type=RPC\\&version=2019-11-20)
+ *
+ * @param request ListCustomRoutingEndpointGroupsRequest
+ * @return ListCustomRoutingEndpointGroupsResponse
+ */
 func (client *Client) ListCustomRoutingEndpointGroups(request *ListCustomRoutingEndpointGroupsRequest) (_result *ListCustomRoutingEndpointGroupsResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &ListCustomRoutingEndpointGroupsResponse{}
@@ -36533,6 +37201,14 @@ func (client *Client) ListEndpointGroupIpAddressCidrBlocks(request *ListEndpoint
 	return _result, _err
 }
 
+/**
+ * ## Debugging
+ * [OpenAPI Explorer automatically calculates the signature value. For your convenience, we recommend that you call this operation in OpenAPI Explorer. OpenAPI Explorer dynamically generates the sample code of the operation for different SDKs.](https://api.aliyun.com/#product=Ga\\&api=ListEndpointGroups\\&type=RPC\\&version=2019-11-20)
+ *
+ * @param request ListEndpointGroupsRequest
+ * @param runtime runtime options for this request RuntimeOptions
+ * @return ListEndpointGroupsResponse
+ */
 func (client *Client) ListEndpointGroupsWithOptions(request *ListEndpointGroupsRequest, runtime *util.RuntimeOptions) (_result *ListEndpointGroupsResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -36598,6 +37274,13 @@ func (client *Client) ListEndpointGroupsWithOptions(request *ListEndpointGroupsR
 	return _result, _err
 }
 
+/**
+ * ## Debugging
+ * [OpenAPI Explorer automatically calculates the signature value. For your convenience, we recommend that you call this operation in OpenAPI Explorer. OpenAPI Explorer dynamically generates the sample code of the operation for different SDKs.](https://api.aliyun.com/#product=Ga\\&api=ListEndpointGroups\\&type=RPC\\&version=2019-11-20)
+ *
+ * @param request ListEndpointGroupsRequest
+ * @return ListEndpointGroupsResponse
+ */
 func (client *Client) ListEndpointGroups(request *ListEndpointGroupsRequest) (_result *ListEndpointGroupsResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &ListEndpointGroupsResponse{}
@@ -36610,7 +37293,7 @@ func (client *Client) ListEndpointGroups(request *ListEndpointGroupsRequest) (_r
 }
 
 /**
- * >  You can call this operation to query only custom forwarding rules. You cannot call this operation to query the default forwarding rule.
+ * >  This operation is used to query only custom forwarding rules, not the default forwarding rule.
  *
  * @param request ListForwardingRulesRequest
  * @param runtime runtime options for this request RuntimeOptions
@@ -36674,7 +37357,7 @@ func (client *Client) ListForwardingRulesWithOptions(request *ListForwardingRule
 }
 
 /**
- * >  You can call this operation to query only custom forwarding rules. You cannot call this operation to query the default forwarding rule.
+ * >  This operation is used to query only custom forwarding rules, not the default forwarding rule.
  *
  * @param request ListForwardingRulesRequest
  * @return ListForwardingRulesResponse
@@ -37840,6 +38523,18 @@ func (client *Client) UpdateAcceleratorCrossBorderMode(request *UpdateAccelerato
 	return _result, _err
 }
 
+/**
+ * You can use this operation to enable or disable the cross-border data transmission feature for a GA instance. Before you enable the cross-border data transmission feature, make sure that the following requirements are met:
+ * - **Basic GA instances**:
+ * Cloud Data Transfer (CDT) is activated. When you call the CreateBasicAccelerator operation to create a basic GA instance, set BandwidthBillingType to CDT. Then, the system automatically activates CDT. The data transfer fees are managed by CDT.
+ * If you want to enable the cross-border data transmission feature, make sure that the current account has completed enterprise real-name registration. For more information, see Real-name registration FAQs.
+ * - **Standard GA instances**:
+ * CDT is activated. When you call the CreateAccelerator operation to create a standard GA instance, set BandwidthBillingType to CDT. Then, the system automatically activates CDT. The data transfer fees are managed by CDT.
+ *
+ * @param request UpdateAcceleratorCrossBorderStatusRequest
+ * @param runtime runtime options for this request RuntimeOptions
+ * @return UpdateAcceleratorCrossBorderStatusResponse
+ */
 func (client *Client) UpdateAcceleratorCrossBorderStatusWithOptions(request *UpdateAcceleratorCrossBorderStatusRequest, runtime *util.RuntimeOptions) (_result *UpdateAcceleratorCrossBorderStatusResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -37885,6 +38580,17 @@ func (client *Client) UpdateAcceleratorCrossBorderStatusWithOptions(request *Upd
 	return _result, _err
 }
 
+/**
+ * You can use this operation to enable or disable the cross-border data transmission feature for a GA instance. Before you enable the cross-border data transmission feature, make sure that the following requirements are met:
+ * - **Basic GA instances**:
+ * Cloud Data Transfer (CDT) is activated. When you call the CreateBasicAccelerator operation to create a basic GA instance, set BandwidthBillingType to CDT. Then, the system automatically activates CDT. The data transfer fees are managed by CDT.
+ * If you want to enable the cross-border data transmission feature, make sure that the current account has completed enterprise real-name registration. For more information, see Real-name registration FAQs.
+ * - **Standard GA instances**:
+ * CDT is activated. When you call the CreateAccelerator operation to create a standard GA instance, set BandwidthBillingType to CDT. Then, the system automatically activates CDT. The data transfer fees are managed by CDT.
+ *
+ * @param request UpdateAcceleratorCrossBorderStatusRequest
+ * @return UpdateAcceleratorCrossBorderStatusResponse
+ */
 func (client *Client) UpdateAcceleratorCrossBorderStatus(request *UpdateAcceleratorCrossBorderStatusRequest) (_result *UpdateAcceleratorCrossBorderStatusResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &UpdateAcceleratorCrossBorderStatusResponse{}
@@ -38833,6 +39539,7 @@ func (client *Client) UpdateCustomRoutingEndpointTrafficPolicies(request *Update
 }
 
 /**
+ * ## Description
  * *   **UpdateCustomRoutingEndpoints** is an asynchronous operation. After you send a request, the system returns a request ID, but the operation is still being performed in the system background. You can call the [DescribeCustomRoutingEndpointGroup](~~449373~~) operation to query the state of the endpoint groups associated with a custom routing listener to check whether the endpoints in the endpoint groups are modified.
  *     *   If an endpoint group is in the **updating** state, the endpoints in the endpoint group are being modified. In this case, you can perform only query operations.
  *     *   If an endpoint group is in the **active** state, the endpoints in the endpoint group are modified.
@@ -38888,6 +39595,7 @@ func (client *Client) UpdateCustomRoutingEndpointsWithOptions(request *UpdateCus
 }
 
 /**
+ * ## Description
  * *   **UpdateCustomRoutingEndpoints** is an asynchronous operation. After you send a request, the system returns a request ID, but the operation is still being performed in the system background. You can call the [DescribeCustomRoutingEndpointGroup](~~449373~~) operation to query the state of the endpoint groups associated with a custom routing listener to check whether the endpoints in the endpoint groups are modified.
  *     *   If an endpoint group is in the **updating** state, the endpoints in the endpoint group are being modified. In this case, you can perform only query operations.
  *     *   If an endpoint group is in the **active** state, the endpoints in the endpoint group are modified.
@@ -39039,9 +39747,9 @@ func (client *Client) UpdateDomainState(request *UpdateDomainStateRequest) (_res
 
 /**
  * *   **UpdateEndpointGroup** is an asynchronous operation. After you send a request, the system returns a request ID, but the operation is still being performed in the system background. You can call the [DescribeEndpointGroup](~~153260~~) operation to query the state of an endpoint group.
- *     *   If the endpoint group is in the **updating** state, the configurations of the endpoint group are being modified. In this case, you can perform only query operations.
- *     *   If the endpoint group is in the **active** state, the configurations of the endpoint group are modified.
- * *   The **UpdateEndpointGroup** operation cannot be repeatedly called for the same GA instance within a specific period of time.
+ *     *   If the endpoint group is in the **updating** state, it indicates that the configurations of the endpoint group are being modified. In this case, you can perform only query operations.
+ *     *   If the endpoint group is in the **active** state, it indicates that the configurations of the endpoint group are modified.
+ * *   The **UpdateEndpointGroup** operation cannot be repeatedly called for the same Global Accelerator (GA) instance within a specific period of time.
  *
  * @param request UpdateEndpointGroupRequest
  * @param runtime runtime options for this request RuntimeOptions
@@ -39142,9 +39850,9 @@ func (client *Client) UpdateEndpointGroupWithOptions(request *UpdateEndpointGrou
 
 /**
  * *   **UpdateEndpointGroup** is an asynchronous operation. After you send a request, the system returns a request ID, but the operation is still being performed in the system background. You can call the [DescribeEndpointGroup](~~153260~~) operation to query the state of an endpoint group.
- *     *   If the endpoint group is in the **updating** state, the configurations of the endpoint group are being modified. In this case, you can perform only query operations.
- *     *   If the endpoint group is in the **active** state, the configurations of the endpoint group are modified.
- * *   The **UpdateEndpointGroup** operation cannot be repeatedly called for the same GA instance within a specific period of time.
+ *     *   If the endpoint group is in the **updating** state, it indicates that the configurations of the endpoint group are being modified. In this case, you can perform only query operations.
+ *     *   If the endpoint group is in the **active** state, it indicates that the configurations of the endpoint group are modified.
+ * *   The **UpdateEndpointGroup** operation cannot be repeatedly called for the same Global Accelerator (GA) instance within a specific period of time.
  *
  * @param request UpdateEndpointGroupRequest
  * @return UpdateEndpointGroupResponse
@@ -39221,10 +39929,11 @@ func (client *Client) UpdateEndpointGroupAttribute(request *UpdateEndpointGroupA
 }
 
 /**
- * *   **UpdateEndpointGroups** is an asynchronous operation. After you send a request, the system returns a request ID, but the operation is still being performed in the system background. You can call the [DescribeEndpointGroup](~~153260~~) or [ListEndpointGroups](~~153261~~) operation to query the state of an endpoint group.
- *     *   If the endpoint group is in the **updating** state, the configuration of the endpoint group is being modified. In this case, you can perform only query operations.
- *     *   If the endpoint group is in the **active**, the configuration of the endpoint group is modified.
- * *   The **UpdateEndpointGroups** operation cannot be repeatedly called for the same Global Accelerator (GA) instance within a specific period of time.
+ * ### Description
+ * *   **UpdateEndpointGroups** is an asynchronous operation. After a request is sent, the system returns a request ID and runs the task in the background. You can call the [DescribeEndpointGroup](~~153260~~) or [ListEndpointGroups](~~153261~~) operation to query the status of an endpoint group.
+ *     *   If the endpoint group is in the **updating** state, it indicates that the configuration of the endpoint group is being modified. In this case, you can perform only query operations.
+ *     *   If the endpoint group is in the **active** state, it indicates that the configuration of the endpoint group is modified.
+ * *   The **UpdateEndpointGroups** operation holds an exclusive lock on the Global Accelerator (GA) instance. While the operation is in progress, you cannot call the same operation in the same Alibaba Cloud account.
  *
  * @param request UpdateEndpointGroupsRequest
  * @param runtime runtime options for this request RuntimeOptions
@@ -39280,10 +39989,11 @@ func (client *Client) UpdateEndpointGroupsWithOptions(request *UpdateEndpointGro
 }
 
 /**
- * *   **UpdateEndpointGroups** is an asynchronous operation. After you send a request, the system returns a request ID, but the operation is still being performed in the system background. You can call the [DescribeEndpointGroup](~~153260~~) or [ListEndpointGroups](~~153261~~) operation to query the state of an endpoint group.
- *     *   If the endpoint group is in the **updating** state, the configuration of the endpoint group is being modified. In this case, you can perform only query operations.
- *     *   If the endpoint group is in the **active**, the configuration of the endpoint group is modified.
- * *   The **UpdateEndpointGroups** operation cannot be repeatedly called for the same Global Accelerator (GA) instance within a specific period of time.
+ * ### Description
+ * *   **UpdateEndpointGroups** is an asynchronous operation. After a request is sent, the system returns a request ID and runs the task in the background. You can call the [DescribeEndpointGroup](~~153260~~) or [ListEndpointGroups](~~153261~~) operation to query the status of an endpoint group.
+ *     *   If the endpoint group is in the **updating** state, it indicates that the configuration of the endpoint group is being modified. In this case, you can perform only query operations.
+ *     *   If the endpoint group is in the **active** state, it indicates that the configuration of the endpoint group is modified.
+ * *   The **UpdateEndpointGroups** operation holds an exclusive lock on the Global Accelerator (GA) instance. While the operation is in progress, you cannot call the same operation in the same Alibaba Cloud account.
  *
  * @param request UpdateEndpointGroupsRequest
  * @return UpdateEndpointGroupsResponse
@@ -39635,6 +40345,17 @@ func (client *Client) UpdateListener(request *UpdateListenerRequest) (_result *U
 	return _result, _err
 }
 
+/**
+ * *   This operation is applicable only to **managed** Global Accelerator (GA) instances.
+ * *   After you change the control mode of a GA instance from managed mode to unmanaged mode, you cannot change the mode of the instance to managed mode.
+ * *   After you change the control mode of a GA instance from managed mode to unmanaged mode, you can obtain all operation permissions on the instance.
+ *     **
+ *     **Warning** If you change or delete a configuration of a GA instance whose control mode is changed from managed mode to unmanaged mode, the cloud services that depend on the instance may not work as expected. Proceed with caution.
+ *
+ * @param request UpdateServiceManagedControlRequest
+ * @param runtime runtime options for this request RuntimeOptions
+ * @return UpdateServiceManagedControlResponse
+ */
 func (client *Client) UpdateServiceManagedControlWithOptions(request *UpdateServiceManagedControlRequest, runtime *util.RuntimeOptions) (_result *UpdateServiceManagedControlResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -39684,6 +40405,16 @@ func (client *Client) UpdateServiceManagedControlWithOptions(request *UpdateServ
 	return _result, _err
 }
 
+/**
+ * *   This operation is applicable only to **managed** Global Accelerator (GA) instances.
+ * *   After you change the control mode of a GA instance from managed mode to unmanaged mode, you cannot change the mode of the instance to managed mode.
+ * *   After you change the control mode of a GA instance from managed mode to unmanaged mode, you can obtain all operation permissions on the instance.
+ *     **
+ *     **Warning** If you change or delete a configuration of a GA instance whose control mode is changed from managed mode to unmanaged mode, the cloud services that depend on the instance may not work as expected. Proceed with caution.
+ *
+ * @param request UpdateServiceManagedControlRequest
+ * @return UpdateServiceManagedControlResponse
+ */
 func (client *Client) UpdateServiceManagedControl(request *UpdateServiceManagedControlRequest) (_result *UpdateServiceManagedControlResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &UpdateServiceManagedControlResponse{}
