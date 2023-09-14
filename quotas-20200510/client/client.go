@@ -13,36 +13,14 @@ import (
 )
 
 type CreateQuotaAlarmRequest struct {
-	// The name of the quota alert.
-	AlarmName *string `json:"AlarmName,omitempty" xml:"AlarmName,omitempty"`
-	// The abbreviation of the cloud service name.
-	//
-	// >  For more information, see [Alibaba Cloud services that support Quota Center](~~182368~~).
-	ProductCode *string `json:"ProductCode,omitempty" xml:"ProductCode,omitempty"`
-	// The ID of the quota.
-	QuotaActionCode *string                                   `json:"QuotaActionCode,omitempty" xml:"QuotaActionCode,omitempty"`
-	QuotaDimensions []*CreateQuotaAlarmRequestQuotaDimensions `json:"QuotaDimensions,omitempty" xml:"QuotaDimensions,omitempty" type:"Repeated"`
-	// The numeric value of the alert threshold. The value must meet the following requirements:
-	//
-	// *   If the `ThresholdType` parameter is set to `used` and the used quota is greater than or equal to a specified value, you receive an alert. The alert threshold must be greater than the current used quota.
-	// *   If the `ThresholdType` parameter is set to `usable` and the available quota is less than or equal to a specified value, you received an alert. The alert threshold must be less than the current available quota.
-	//
-	// >  You must set one of the Threshold and ThresholdPercent parameters.
-	Threshold *float32 `json:"Threshold,omitempty" xml:"Threshold,omitempty"`
-	// The percentage of the alert threshold. Valid values:
-	//
-	// *   If the `ThresholdType` parameter is set to `used` and the percentage of the used quota in the total quota is greater than or equal to a specified value, you receive an alert. Value range: (50%, 100%].
-	// *   If the `ThresholdType` parameter is set to `usable` and the percentage of the available quota in the total quota is less than or equal to a specified value, you receive an alert. Value range: (0%, 50%].
-	//
-	// >  You must set one of the Threshold and ThresholdPercent parameters.
-	ThresholdPercent *float32 `json:"ThresholdPercent,omitempty" xml:"ThresholdPercent,omitempty"`
-	// The type of the quota alert. Valid values:
-	//
-	// *   used: The alert is created for the used quota.
-	// *   usable: The alert is created for the available quota.
-	ThresholdType *string `json:"ThresholdType,omitempty" xml:"ThresholdType,omitempty"`
-	// The webhook URL. Quota Center sends the alert notification to a specified URL by using an HTTP POST request.
-	WebHook *string `json:"WebHook,omitempty" xml:"WebHook,omitempty"`
+	AlarmName        *string                                   `json:"AlarmName,omitempty" xml:"AlarmName,omitempty"`
+	ProductCode      *string                                   `json:"ProductCode,omitempty" xml:"ProductCode,omitempty"`
+	QuotaActionCode  *string                                   `json:"QuotaActionCode,omitempty" xml:"QuotaActionCode,omitempty"`
+	QuotaDimensions  []*CreateQuotaAlarmRequestQuotaDimensions `json:"QuotaDimensions,omitempty" xml:"QuotaDimensions,omitempty" type:"Repeated"`
+	Threshold        *float32                                  `json:"Threshold,omitempty" xml:"Threshold,omitempty"`
+	ThresholdPercent *float32                                  `json:"ThresholdPercent,omitempty" xml:"ThresholdPercent,omitempty"`
+	ThresholdType    *string                                   `json:"ThresholdType,omitempty" xml:"ThresholdType,omitempty"`
+	WebHook          *string                                   `json:"WebHook,omitempty" xml:"WebHook,omitempty"`
 }
 
 func (s CreateQuotaAlarmRequest) String() string {
@@ -94,17 +72,7 @@ func (s *CreateQuotaAlarmRequest) SetWebHook(v string) *CreateQuotaAlarmRequest 
 }
 
 type CreateQuotaAlarmRequestQuotaDimensions struct {
-	// The dimension keys.
-	//
-	// The value range of N changes based on the number of dimensions that are supported by the related cloud service.
-	//
-	// >  If you set the ProductCode parameter to ecs, ecs-spec, actiontrail, or ess, this parameter is required.
-	Key *string `json:"Key,omitempty" xml:"Key,omitempty"`
-	// The dimension values.
-	//
-	// The value range of N changes based on the number of dimensions that are supported by the related cloud service.
-	//
-	// >  If you set the ProductCode parameter to ecs, ecs-spec, actiontrail, or ess, this parameter is required.
+	Key   *string `json:"Key,omitempty" xml:"Key,omitempty"`
 	Value *string `json:"Value,omitempty" xml:"Value,omitempty"`
 }
 
@@ -127,9 +95,7 @@ func (s *CreateQuotaAlarmRequestQuotaDimensions) SetValue(v string) *CreateQuota
 }
 
 type CreateQuotaAlarmResponseBody struct {
-	// The ID of the alert.
-	AlarmId *string `json:"AlarmId,omitempty" xml:"AlarmId,omitempty"`
-	// The ID of the request.
+	AlarmId   *string `json:"AlarmId,omitempty" xml:"AlarmId,omitempty"`
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -209,8 +175,8 @@ type CreateQuotaApplicationRequest struct {
 	ExpireTime *string `json:"ExpireTime,omitempty" xml:"ExpireTime,omitempty"`
 	// Specifies whether to send a notification about the application result. Valid values:
 	//
-	// *   0 (default value): no
-	// *   3: yes
+	// *   0 (default value): sends a notification about the application result.
+	// *   3: A notification about the application result is sent.
 	NoticeType *int32 `json:"NoticeType,omitempty" xml:"NoticeType,omitempty"`
 	// The abbreviation of the Alibaba Cloud service name.
 	//
@@ -220,7 +186,7 @@ type CreateQuotaApplicationRequest struct {
 	QuotaActionCode *string `json:"QuotaActionCode,omitempty" xml:"QuotaActionCode,omitempty"`
 	// The type of the quota.
 	//
-	// *   CommonQuota: general quota
+	// *   CommonQuota (default value): general quota
 	// *   FlowControl: API rate limit
 	// *   WhiteListLabel: whitelist quota
 	QuotaCategory *string `json:"QuotaCategory,omitempty" xml:"QuotaCategory,omitempty"`
@@ -294,13 +260,13 @@ func (s *CreateQuotaApplicationRequest) SetReason(v string) *CreateQuotaApplicat
 }
 
 type CreateQuotaApplicationRequestDimensions struct {
-	// The dimension keys.
+	// The key of the dimension.
 	//
 	// The value range of N varies based on the number of dimensions that are supported by the related Alibaba Cloud service.
 	//
 	// > This parameter is required if you set the ProductCode parameter to ecs, ecs-spec, actiontrail, or ess.
 	Key *string `json:"Key,omitempty" xml:"Key,omitempty"`
-	// The dimension values.
+	// The value of the dimension.
 	//
 	// The value range of N varies based on the number of dimensions that are supported by the related Alibaba Cloud service.
 	//
@@ -337,7 +303,7 @@ type CreateQuotaApplicationResponseBody struct {
 	AuditReason *string `json:"AuditReason,omitempty" xml:"AuditReason,omitempty"`
 	// The requested value of the quota.
 	DesireValue *int32 `json:"DesireValue,omitempty" xml:"DesireValue,omitempty"`
-	// The quota dimensions.
+	// The quota dimension.
 	Dimension map[string]interface{} `json:"Dimension,omitempty" xml:"Dimension,omitempty"`
 	// The time when the new quota value takes effect.
 	EffectiveTime *string `json:"EffectiveTime,omitempty" xml:"EffectiveTime,omitempty"`
@@ -500,6 +466,164 @@ func (s *CreateQuotaApplicationResponse) SetBody(v *CreateQuotaApplicationRespon
 	return s
 }
 
+type CreateQuotaApplicationsForTemplateRequest struct {
+	AliyunUids      []*string                                              `json:"AliyunUids,omitempty" xml:"AliyunUids,omitempty" type:"Repeated"`
+	DesireValue     *float64                                               `json:"DesireValue,omitempty" xml:"DesireValue,omitempty"`
+	Dimensions      []*CreateQuotaApplicationsForTemplateRequestDimensions `json:"Dimensions,omitempty" xml:"Dimensions,omitempty" type:"Repeated"`
+	EffectiveTime   *string                                                `json:"EffectiveTime,omitempty" xml:"EffectiveTime,omitempty"`
+	EnvLanguage     *string                                                `json:"EnvLanguage,omitempty" xml:"EnvLanguage,omitempty"`
+	ExpireTime      *string                                                `json:"ExpireTime,omitempty" xml:"ExpireTime,omitempty"`
+	NoticeType      *int32                                                 `json:"NoticeType,omitempty" xml:"NoticeType,omitempty"`
+	ProductCode     *string                                                `json:"ProductCode,omitempty" xml:"ProductCode,omitempty"`
+	QuotaActionCode *string                                                `json:"QuotaActionCode,omitempty" xml:"QuotaActionCode,omitempty"`
+	QuotaCategory   *string                                                `json:"QuotaCategory,omitempty" xml:"QuotaCategory,omitempty"`
+	Reason          *string                                                `json:"Reason,omitempty" xml:"Reason,omitempty"`
+}
+
+func (s CreateQuotaApplicationsForTemplateRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateQuotaApplicationsForTemplateRequest) GoString() string {
+	return s.String()
+}
+
+func (s *CreateQuotaApplicationsForTemplateRequest) SetAliyunUids(v []*string) *CreateQuotaApplicationsForTemplateRequest {
+	s.AliyunUids = v
+	return s
+}
+
+func (s *CreateQuotaApplicationsForTemplateRequest) SetDesireValue(v float64) *CreateQuotaApplicationsForTemplateRequest {
+	s.DesireValue = &v
+	return s
+}
+
+func (s *CreateQuotaApplicationsForTemplateRequest) SetDimensions(v []*CreateQuotaApplicationsForTemplateRequestDimensions) *CreateQuotaApplicationsForTemplateRequest {
+	s.Dimensions = v
+	return s
+}
+
+func (s *CreateQuotaApplicationsForTemplateRequest) SetEffectiveTime(v string) *CreateQuotaApplicationsForTemplateRequest {
+	s.EffectiveTime = &v
+	return s
+}
+
+func (s *CreateQuotaApplicationsForTemplateRequest) SetEnvLanguage(v string) *CreateQuotaApplicationsForTemplateRequest {
+	s.EnvLanguage = &v
+	return s
+}
+
+func (s *CreateQuotaApplicationsForTemplateRequest) SetExpireTime(v string) *CreateQuotaApplicationsForTemplateRequest {
+	s.ExpireTime = &v
+	return s
+}
+
+func (s *CreateQuotaApplicationsForTemplateRequest) SetNoticeType(v int32) *CreateQuotaApplicationsForTemplateRequest {
+	s.NoticeType = &v
+	return s
+}
+
+func (s *CreateQuotaApplicationsForTemplateRequest) SetProductCode(v string) *CreateQuotaApplicationsForTemplateRequest {
+	s.ProductCode = &v
+	return s
+}
+
+func (s *CreateQuotaApplicationsForTemplateRequest) SetQuotaActionCode(v string) *CreateQuotaApplicationsForTemplateRequest {
+	s.QuotaActionCode = &v
+	return s
+}
+
+func (s *CreateQuotaApplicationsForTemplateRequest) SetQuotaCategory(v string) *CreateQuotaApplicationsForTemplateRequest {
+	s.QuotaCategory = &v
+	return s
+}
+
+func (s *CreateQuotaApplicationsForTemplateRequest) SetReason(v string) *CreateQuotaApplicationsForTemplateRequest {
+	s.Reason = &v
+	return s
+}
+
+type CreateQuotaApplicationsForTemplateRequestDimensions struct {
+	Key   *string `json:"Key,omitempty" xml:"Key,omitempty"`
+	Value *string `json:"Value,omitempty" xml:"Value,omitempty"`
+}
+
+func (s CreateQuotaApplicationsForTemplateRequestDimensions) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateQuotaApplicationsForTemplateRequestDimensions) GoString() string {
+	return s.String()
+}
+
+func (s *CreateQuotaApplicationsForTemplateRequestDimensions) SetKey(v string) *CreateQuotaApplicationsForTemplateRequestDimensions {
+	s.Key = &v
+	return s
+}
+
+func (s *CreateQuotaApplicationsForTemplateRequestDimensions) SetValue(v string) *CreateQuotaApplicationsForTemplateRequestDimensions {
+	s.Value = &v
+	return s
+}
+
+type CreateQuotaApplicationsForTemplateResponseBody struct {
+	AliyunUids              []*string `json:"AliyunUids,omitempty" xml:"AliyunUids,omitempty" type:"Repeated"`
+	BatchQuotaApplicationId *string   `json:"BatchQuotaApplicationId,omitempty" xml:"BatchQuotaApplicationId,omitempty"`
+	RequestId               *string   `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+}
+
+func (s CreateQuotaApplicationsForTemplateResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateQuotaApplicationsForTemplateResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *CreateQuotaApplicationsForTemplateResponseBody) SetAliyunUids(v []*string) *CreateQuotaApplicationsForTemplateResponseBody {
+	s.AliyunUids = v
+	return s
+}
+
+func (s *CreateQuotaApplicationsForTemplateResponseBody) SetBatchQuotaApplicationId(v string) *CreateQuotaApplicationsForTemplateResponseBody {
+	s.BatchQuotaApplicationId = &v
+	return s
+}
+
+func (s *CreateQuotaApplicationsForTemplateResponseBody) SetRequestId(v string) *CreateQuotaApplicationsForTemplateResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+type CreateQuotaApplicationsForTemplateResponse struct {
+	Headers    map[string]*string                              `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                                          `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *CreateQuotaApplicationsForTemplateResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s CreateQuotaApplicationsForTemplateResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateQuotaApplicationsForTemplateResponse) GoString() string {
+	return s.String()
+}
+
+func (s *CreateQuotaApplicationsForTemplateResponse) SetHeaders(v map[string]*string) *CreateQuotaApplicationsForTemplateResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *CreateQuotaApplicationsForTemplateResponse) SetStatusCode(v int32) *CreateQuotaApplicationsForTemplateResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *CreateQuotaApplicationsForTemplateResponse) SetBody(v *CreateQuotaApplicationsForTemplateResponseBody) *CreateQuotaApplicationsForTemplateResponse {
+	s.Body = v
+	return s
+}
+
 type CreateTemplateQuotaItemRequest struct {
 	// The requested value of the quota.
 	DesireValue *float32 `json:"DesireValue,omitempty" xml:"DesireValue,omitempty"`
@@ -507,7 +631,7 @@ type CreateTemplateQuotaItemRequest struct {
 	Dimensions []*CreateTemplateQuotaItemRequestDimensions `json:"Dimensions,omitempty" xml:"Dimensions,omitempty" type:"Repeated"`
 	// The start time of the validity period of the quota. Specify the value in UTC. This parameter is valid only if you set the QuotaCategory parameter to WhiteListLabel.
 	//
-	// > If you do not specify this parameter, the quota takes effect immediately.
+	// > If you leave this parameter empty, the quota takes effect immediately.
 	EffectiveTime *string `json:"EffectiveTime,omitempty" xml:"EffectiveTime,omitempty"`
 	// The language of the quota alert notification. Valid values:
 	//
@@ -516,7 +640,7 @@ type CreateTemplateQuotaItemRequest struct {
 	EnvLanguage *string `json:"EnvLanguage,omitempty" xml:"EnvLanguage,omitempty"`
 	// The end time of the validity period of the quota. Specify the value in UTC. This parameter is valid only if you set the QuotaCategory parameter to WhiteListLabel.
 	//
-	// > If the value of this parameter is empty, no end time is specified.
+	// > If you leave this parameter empty, no end time is specified.
 	ExpireTime *string `json:"ExpireTime,omitempty" xml:"ExpireTime,omitempty"`
 	// Specifies whether to send a notification about the application result. Valid values:
 	//
@@ -529,10 +653,11 @@ type CreateTemplateQuotaItemRequest struct {
 	ProductCode *string `json:"ProductCode,omitempty" xml:"ProductCode,omitempty"`
 	// The ID of the quota.
 	QuotaActionCode *string `json:"QuotaActionCode,omitempty" xml:"QuotaActionCode,omitempty"`
-	// The type of the quota. Valid values:
+	// The quota type. Valid values:
 	//
 	// *   CommonQuota: general quota
-	// *   WhiteListLabel: whitelist quota
+	// *   WhiteListLabel: privilege
+	// *   FlowControl: API rate limit
 	QuotaCategory *string `json:"QuotaCategory,omitempty" xml:"QuotaCategory,omitempty"`
 }
 
@@ -590,13 +715,13 @@ func (s *CreateTemplateQuotaItemRequest) SetQuotaCategory(v string) *CreateTempl
 }
 
 type CreateTemplateQuotaItemRequestDimensions struct {
-	// The dimension keys.
+	// The key of the dimension.
 	//
 	// The value range of N varies based on the number of dimensions that are supported by the related Alibaba Cloud service.
 	//
 	// > This parameter is required if you set the ProductCode parameter to ecs, ecs-spec, actiontrail, or ess.
 	Key *string `json:"Key,omitempty" xml:"Key,omitempty"`
-	// The dimension values.
+	// The value of the dimension.
 	//
 	// The value range of N varies based on the number of dimensions that are supported by the related Alibaba Cloud service.
 	//
@@ -814,11 +939,11 @@ func (s *DeleteTemplateQuotaItemResponse) SetBody(v *DeleteTemplateQuotaItemResp
 }
 
 type GetProductQuotaRequest struct {
-	// The details of dimensions.
+	// The quota dimensions.
 	Dimensions []*GetProductQuotaRequestDimensions `json:"Dimensions,omitempty" xml:"Dimensions,omitempty" type:"Repeated"`
-	// The abbreviation of the cloud service name.
+	// The abbreviation of the Alibaba Cloud service name.
 	//
-	// >  For more information, see [Alibaba Cloud services that support Quota Center](~~182368~~).
+	// > For more information, see [Alibaba Cloud services that support Quota Center](~~182368~~).
 	ProductCode *string `json:"ProductCode,omitempty" xml:"ProductCode,omitempty"`
 	// The ID of the quota.
 	QuotaActionCode *string `json:"QuotaActionCode,omitempty" xml:"QuotaActionCode,omitempty"`
@@ -848,17 +973,21 @@ func (s *GetProductQuotaRequest) SetQuotaActionCode(v string) *GetProductQuotaRe
 }
 
 type GetProductQuotaRequestDimensions struct {
-	// The dimension keys.
+	// The key of the dimension.
 	//
 	// >
-	// *   The value range of N varies based on the number of dimensions that are supported by the related cloud service.
-	// *   If you call the operation to query the details about a quota that belongs to a cloud service that supports dimensions, you must configure this parameter. You must configure the `Dimensions.N.Key` and `Dimensions.N.Value` parameters at the same time. The following cloud services support dimensions: Elastic Compute Service (ECS) whose service code is ecs, Enterprise Distributed Application Service (EDAS) whose service code is edas, ECS Quotas by Instance Type whose service code is ecs-spec, and Auto Scaling (ESS) whose service code is ess.
+	//
+	// *   The value range of N varies based on the number of dimensions that are supported by the related Alibaba Cloud service.
+	//
+	// *   If you call the operation to query the details of a quota that belongs to a cloud service that supports dimensions, you must configure this parameter. You must configure the `Dimensions.N.Key` and `Dimensions.N.Value` parameters at the same time. The following cloud services support dimensions: ECS whose service code is ecs, Enterprise Distributed Application Service (EDAS) whose service code is edas, ECS Quotas by Instance Type whose service code is ecs-spec, and Auto Scaling (ESS) whose service code is ess.
 	Key *string `json:"Key,omitempty" xml:"Key,omitempty"`
-	// The dimension values.
+	// The value of the dimension.
 	//
 	// >
-	// *   The value range of N varies based on the number of dimensions that are supported by the related cloud service.
-	// *   If you call the operation to query the details about a quota that belongs to a cloud service that supports dimensions, you must configure this parameter. You must configure the `Dimensions.N.Key` and `Dimensions.N.Value` parameters at the same time. The following cloud services support dimensions: Elastic Compute Service (ECS) whose service code is ecs, Enterprise Distributed Application Service (EDAS) whose service code is edas, ECS Quotas by Instance Type whose service code is ecs-spec, and Auto Scaling (ESS) whose service code is ess.
+	//
+	// *   The value range of N varies based on the number of dimensions that are supported by the related Alibaba Cloud service.
+	//
+	// *   If you call the operation to query the details of a quota that belongs to a cloud service that supports dimensions, you must configure this parameter. You must configure the `Dimensions.N.Key` and `Dimensions.N.Value` parameters at the same time. The following cloud services support dimensions: ECS whose service code is ecs, EDAS whose service code is edas, ECS Quotas by Instance Type whose service code is ecs-spec, and ESS whose service code is ess.
 	Value *string `json:"Value,omitempty" xml:"Value,omitempty"`
 }
 
@@ -881,7 +1010,7 @@ func (s *GetProductQuotaRequestDimensions) SetValue(v string) *GetProductQuotaRe
 }
 
 type GetProductQuotaResponseBody struct {
-	// The details about the quota.
+	// The details of the quotas.
 	Quota *GetProductQuotaResponseBodyQuota `json:"Quota,omitempty" xml:"Quota,omitempty" type:"Struct"`
 	// The ID of the request.
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
@@ -911,22 +1040,25 @@ type GetProductQuotaResponseBodyQuota struct {
 	// *   true
 	// *   false
 	Adjustable *bool `json:"Adjustable,omitempty" xml:"Adjustable,omitempty"`
-	// The range of the quota value, for example, `[802,10000]`.
+	// The range of the quota value.
 	ApplicableRange []*float32 `json:"ApplicableRange,omitempty" xml:"ApplicableRange,omitempty" type:"Repeated"`
 	// The type of the adjustable value. Valid values:
 	//
 	// *   continuous
 	// *   discontinuous
-	ApplicableType *string `json:"ApplicableType,omitempty" xml:"ApplicableType,omitempty"`
+	ApplicableType  *string `json:"ApplicableType,omitempty" xml:"ApplicableType,omitempty"`
+	ApplyReasonTips *string `json:"ApplyReasonTips,omitempty" xml:"ApplyReasonTips,omitempty"`
 	// Indicates whether the system shows the used value of the quota. Valid values:
 	//
 	// *   true
 	// *   false
 	Consumable *bool `json:"Consumable,omitempty" xml:"Consumable,omitempty"`
-	// The quota dimensions. Format: `{"regionId":"Region"}`.
-	Dimensions    map[string]interface{} `json:"Dimensions,omitempty" xml:"Dimensions,omitempty"`
-	EffectiveTime *string                `json:"EffectiveTime,omitempty" xml:"EffectiveTime,omitempty"`
-	ExpireTime    *string                `json:"ExpireTime,omitempty" xml:"ExpireTime,omitempty"`
+	// The quota dimension. Format: `{"regionId":"Region"}`.
+	Dimensions map[string]interface{} `json:"Dimensions,omitempty" xml:"Dimensions,omitempty"`
+	// The start time of the validity period of the quota. Specify the value in UTC.
+	EffectiveTime *string `json:"EffectiveTime,omitempty" xml:"EffectiveTime,omitempty"`
+	// The end time of the validity period of the quota. Specify the value in UTC.
+	ExpireTime *string `json:"ExpireTime,omitempty" xml:"ExpireTime,omitempty"`
 	// The calculation cycle of the quota.
 	Period *GetProductQuotaResponseBodyQuotaPeriod `json:"Period,omitempty" xml:"Period,omitempty" type:"Struct"`
 	// The abbreviation of the Alibaba Cloud service name.
@@ -934,27 +1066,31 @@ type GetProductQuotaResponseBodyQuota struct {
 	// The ID of the quota.
 	QuotaActionCode *string `json:"QuotaActionCode,omitempty" xml:"QuotaActionCode,omitempty"`
 	// The Alibaba Cloud Resource Name (ARN) of the quota.
-	QuotaArn      *string `json:"QuotaArn,omitempty" xml:"QuotaArn,omitempty"`
+	QuotaArn *string `json:"QuotaArn,omitempty" xml:"QuotaArn,omitempty"`
+	// The type of the quota. Valid values:
+	//
+	// *   CommonQuota: general quota
+	// *   FlowControl: API rate limit
+	// *   WhiteListLabel: whitelist quota
 	QuotaCategory *string `json:"QuotaCategory,omitempty" xml:"QuotaCategory,omitempty"`
 	// The description of the quota.
 	QuotaDescription *string `json:"QuotaDescription,omitempty" xml:"QuotaDescription,omitempty"`
-	// The details about the quota.
+	// The details of the quotas.
 	QuotaItems []*GetProductQuotaResponseBodyQuotaQuotaItems `json:"QuotaItems,omitempty" xml:"QuotaItems,omitempty" type:"Repeated"`
 	// The name of the quota.
 	QuotaName *string `json:"QuotaName,omitempty" xml:"QuotaName,omitempty"`
 	// The type of the quota. Valid values:
 	//
-	// - privilege
-	// - normal (default value)
+	// *   privilege
+	// *   normal (default value)
 	QuotaType *string `json:"QuotaType,omitempty" xml:"QuotaType,omitempty"`
-	// The unit of the quota.
+	// The unit of the new quota value.
 	//
-	// >  The unit of each quota is unique. For example, the quota whose ID is `q_cbdch3` represents the maximum number of Container Service for Kubernetes (ACK) clusters. The unit of this quota is clusters. The quota whose ID is `q_security-groups` represents the maximum number of security groups. The unit of this quota is security groups.
+	// **
+	//
+	// **The unit of each quota is unique.** For example, the quota whose ID is `q_cbdch3` represents the maximum number of Container Service for Kubernetes (ACK) clusters. The unit of this quota is clusters. The quota whose ID is `q_security-groups` represents the maximum number of security groups. The unit of this quota is security groups.
 	QuotaUnit *string `json:"QuotaUnit,omitempty" xml:"QuotaUnit,omitempty"`
-	// The range of the quota value that can be requested for the current quota item. When you configure a quota template, you can use the range as a reference.
-	//
-	// - If the value of the ApplicableType parameter is continuous and the value of the ApplicableRange parameter is [802,1000], the quota value ranges from 802 to 1,000.
-	// - If the value of the ApplicableType parameter is discontinuous and the value of the ApplicableRange parameter is [10,20,50,100], the quota value is 10, 20, 50, or 100.
+	// The range of the quota value.
 	SupportedRange []*float32 `json:"SupportedRange,omitempty" xml:"SupportedRange,omitempty" type:"Repeated"`
 	// The value of the quota.
 	TotalQuota *float32 `json:"TotalQuota,omitempty" xml:"TotalQuota,omitempty"`
@@ -989,6 +1125,11 @@ func (s *GetProductQuotaResponseBodyQuota) SetApplicableRange(v []*float32) *Get
 
 func (s *GetProductQuotaResponseBodyQuota) SetApplicableType(v string) *GetProductQuotaResponseBodyQuota {
 	s.ApplicableType = &v
+	return s
+}
+
+func (s *GetProductQuotaResponseBodyQuota) SetApplyReasonTips(v string) *GetProductQuotaResponseBodyQuota {
+	s.ApplyReasonTips = &v
 	return s
 }
 
@@ -1116,9 +1257,11 @@ func (s *GetProductQuotaResponseBodyQuotaPeriod) SetPeriodValue(v int32) *GetPro
 type GetProductQuotaResponseBodyQuotaQuotaItems struct {
 	// The value of the quota.
 	Quota *string `json:"Quota,omitempty" xml:"Quota,omitempty"`
-	// The unit of the quota.
+	// The unit of the new quota value.
 	//
-	// >  The unit of each quota is unique. For example, the quota whose ID is `q_cbdch3` represents the maximum number of Container Service for Kubernetes (ACK) clusters. The unit of this quota is clusters. The quota whose ID is `q_security-groups` represents the maximum number of security groups. The unit of this quota is Number of security groups.
+	// **
+	//
+	// **The unit of each quota is unique.** For example, the quota whose ID is `q_cbdch3` represents the maximum number of ACK clusters. The unit of this quota is clusters. The quota whose ID is `q_security-groups` represents the maximum number of security groups. The unit of this quota is security groups.
 	QuotaUnit *string `json:"QuotaUnit,omitempty" xml:"QuotaUnit,omitempty"`
 	// The category of the quota. Valid values:
 	//
@@ -1187,13 +1330,13 @@ func (s *GetProductQuotaResponse) SetBody(v *GetProductQuotaResponseBody) *GetPr
 }
 
 type GetProductQuotaDimensionRequest struct {
-	// The dimension details that are supported by the cloud service.
+	// The information about quota dimensions.
 	DependentDimensions []*GetProductQuotaDimensionRequestDependentDimensions `json:"DependentDimensions,omitempty" xml:"DependentDimensions,omitempty" type:"Repeated"`
-	// The dimension key.
+	// The key of the quota dimension.
 	DimensionKey *string `json:"DimensionKey,omitempty" xml:"DimensionKey,omitempty"`
-	// The abbreviation of the cloud service name.
+	// The abbreviation of the Alibaba Cloud service name.
 	//
-	// >  For more information, see [Alibaba Cloud services that support Quota Center](~~182368~~).
+	// > For more information, see [Alibaba Cloud services that support Quota Center](~~182368~~).
 	ProductCode *string `json:"ProductCode,omitempty" xml:"ProductCode,omitempty"`
 }
 
@@ -1221,13 +1364,13 @@ func (s *GetProductQuotaDimensionRequest) SetProductCode(v string) *GetProductQu
 }
 
 type GetProductQuotaDimensionRequestDependentDimensions struct {
-	// The dimension keys that are supported by the cloud service.
+	// The key of the quota dimension on which the quota dimension that you want to query is dependent.
 	//
-	// >  The value range of N varies based on the number of dimensions that are supported by the related cloud service.
+	// > The value range of N varies based on the number of quota dimensions that are supported by the specified Alibaba Cloud service.
 	Key *string `json:"Key,omitempty" xml:"Key,omitempty"`
-	// The dimension values that are supported by the cloud service.
+	// The value of the quota dimension on which the quota dimension that you want to query is dependent.
 	//
-	// >  The value range of N varies based on the number of dimensions that are supported by the related cloud service.
+	// > The value range of N varies based on the number of quota dimensions that are supported by the specified Alibaba Cloud service.
 	Value *string `json:"Value,omitempty" xml:"Value,omitempty"`
 }
 
@@ -1250,7 +1393,7 @@ func (s *GetProductQuotaDimensionRequestDependentDimensions) SetValue(v string) 
 }
 
 type GetProductQuotaDimensionResponseBody struct {
-	// The details about the quota dimension.
+	// The details of the quota dimension.
 	QuotaDimension *GetProductQuotaDimensionResponseBodyQuotaDimension `json:"QuotaDimension,omitempty" xml:"QuotaDimension,omitempty" type:"Struct"`
 	// The ID of the request.
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
@@ -1275,20 +1418,20 @@ func (s *GetProductQuotaDimensionResponseBody) SetRequestId(v string) *GetProduc
 }
 
 type GetProductQuotaDimensionResponseBodyQuotaDimension struct {
-	// The quota dimensions that are supported by the cloud service.
+	// The quota dimensions on which the quota dimension that you want to query is dependent.
 	DependentDimensions []*string `json:"DependentDimensions,omitempty" xml:"DependentDimensions,omitempty" type:"Repeated"`
-	// The dimension key. Valid values:
+	// The key of the quota dimension. Valid values:
 	//
-	// *   regionId: region ID
-	// *   zoneId: zone ID
-	// *   chargeType: billing method
-	// *   networkType: network type
+	// *   regionId: the region ID.
+	// *   zoneId: the zone ID.
+	// *   chargeType: the billing method.
+	// *   networkType: the network type.
 	DimensionKey *string `json:"DimensionKey,omitempty" xml:"DimensionKey,omitempty"`
-	// The details about the dimension value.
+	// The details of the quota dimension value.
 	DimensionValueDetail []*GetProductQuotaDimensionResponseBodyQuotaDimensionDimensionValueDetail `json:"DimensionValueDetail,omitempty" xml:"DimensionValueDetail,omitempty" type:"Repeated"`
-	// The dimension values.
+	// The values of the quota dimension.
 	DimensionValues []*string `json:"DimensionValues,omitempty" xml:"DimensionValues,omitempty" type:"Repeated"`
-	// The name of the dimension.
+	// The name of the quota dimension.
 	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
 }
 
@@ -1326,9 +1469,9 @@ func (s *GetProductQuotaDimensionResponseBodyQuotaDimension) SetName(v string) *
 }
 
 type GetProductQuotaDimensionResponseBodyQuotaDimensionDimensionValueDetail struct {
-	// The name of the dimension value.
+	// The name of the quota dimension value.
 	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
-	// The dimension value.
+	// The quota dimension value.
 	Value *string `json:"Value,omitempty" xml:"Value,omitempty"`
 }
 
@@ -1380,9 +1523,7 @@ func (s *GetProductQuotaDimensionResponse) SetBody(v *GetProductQuotaDimensionRe
 }
 
 type GetQuotaAlarmRequest struct {
-	// The ID of the quota alert.
-	//
-	// For more information about how to query the ID of a quota alert, see [ListQuotaAlarms](~~184348~~).
+	// The ID of the request.
 	AlarmId *string `json:"AlarmId,omitempty" xml:"AlarmId,omitempty"`
 }
 
@@ -1400,9 +1541,9 @@ func (s *GetQuotaAlarmRequest) SetAlarmId(v string) *GetQuotaAlarmRequest {
 }
 
 type GetQuotaAlarmResponseBody struct {
-	// The details of the quota alert.
+	// The percentage of the alert threshold.
 	QuotaAlarm *GetQuotaAlarmResponseBodyQuotaAlarm `json:"QuotaAlarm,omitempty" xml:"QuotaAlarm,omitempty" type:"Struct"`
-	// The ID of the request.
+	// The details of the quota alert.
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -1425,38 +1566,34 @@ func (s *GetQuotaAlarmResponseBody) SetRequestId(v string) *GetQuotaAlarmRespons
 }
 
 type GetQuotaAlarmResponseBodyQuotaAlarm struct {
-	// The ID of the quota alert.
-	AlarmId *string `json:"AlarmId,omitempty" xml:"AlarmId,omitempty"`
-	// The name of the quota alert.
-	AlarmName *string `json:"AlarmName,omitempty" xml:"AlarmName,omitempty"`
-	// The time when the quota alert was created.
-	CreateTime *string `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
-	// The notification methods of the quota alert. Valid values:
-	//
-	// *   sms: SMS messages
-	// *   email: emails
-	NotifyChannels []*string `json:"NotifyChannels,omitempty" xml:"NotifyChannels,omitempty" type:"Repeated"`
-	// The alert contact.
-	NotifyTarget *string `json:"NotifyTarget,omitempty" xml:"NotifyTarget,omitempty"`
-	// The abbreviation of the cloud service name.
-	ProductCode *string `json:"ProductCode,omitempty" xml:"ProductCode,omitempty"`
-	// The ID of the quota.
-	QuotaActionCode *string `json:"QuotaActionCode,omitempty" xml:"QuotaActionCode,omitempty"`
-	// The quota dimension.
-	QuotaDimension map[string]interface{} `json:"QuotaDimension,omitempty" xml:"QuotaDimension,omitempty"`
-	// The used quota.
-	QuotaUsage *float32 `json:"QuotaUsage,omitempty" xml:"QuotaUsage,omitempty"`
-	// The quota value.
-	QuotaValue *float32 `json:"QuotaValue,omitempty" xml:"QuotaValue,omitempty"`
 	// The numeric value of the alert threshold.
+	AlarmId *string `json:"AlarmId,omitempty" xml:"AlarmId,omitempty"`
+	// security_groups
+	AlarmName *string `json:"AlarmName,omitempty" xml:"AlarmName,omitempty"`
+	// The ID of the quota.
+	CreateTime     *string   `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
+	NotifyChannels []*string `json:"NotifyChannels,omitempty" xml:"NotifyChannels,omitempty" type:"Repeated"`
+	// The used quota.
+	NotifyTarget *string `json:"NotifyTarget,omitempty" xml:"NotifyTarget,omitempty"`
+	ProductCode  *string `json:"ProductCode,omitempty" xml:"ProductCode,omitempty"`
+	// The name of the quota alert.
+	QuotaActionCode *string `json:"QuotaActionCode,omitempty" xml:"QuotaActionCode,omitempty"`
+	// The time when the quota alert was created.
+	QuotaDimension map[string]interface{} `json:"QuotaDimension,omitempty" xml:"QuotaDimension,omitempty"`
+	// The value of the quota.
+	QuotaUsage *float32 `json:"QuotaUsage,omitempty" xml:"QuotaUsage,omitempty"`
+	// The ID of the quota alert.
+	QuotaValue *float32 `json:"QuotaValue,omitempty" xml:"QuotaValue,omitempty"`
+	// The abbreviation of the Alibaba Cloud service name.
 	Threshold *float32 `json:"Threshold,omitempty" xml:"Threshold,omitempty"`
-	// The percentage of the alert threshold.
-	ThresholdPercent *float32 `json:"ThresholdPercent,omitempty" xml:"ThresholdPercent,omitempty"`
 	// The type of the quota alert. Valid values:
 	//
 	// *   used: The alert is created for the used quota.
 	// *   usable: The alert is created for the available quota.
+	ThresholdPercent *float32 `json:"ThresholdPercent,omitempty" xml:"ThresholdPercent,omitempty"`
+	// The quota dimension.
 	ThresholdType *string `json:"ThresholdType,omitempty" xml:"ThresholdType,omitempty"`
+	Webhook       *string `json:"Webhook,omitempty" xml:"Webhook,omitempty"`
 }
 
 func (s GetQuotaAlarmResponseBodyQuotaAlarm) String() string {
@@ -1529,6 +1666,11 @@ func (s *GetQuotaAlarmResponseBodyQuotaAlarm) SetThresholdPercent(v float32) *Ge
 
 func (s *GetQuotaAlarmResponseBodyQuotaAlarm) SetThresholdType(v string) *GetQuotaAlarmResponseBodyQuotaAlarm {
 	s.ThresholdType = &v
+	return s
+}
+
+func (s *GetQuotaAlarmResponseBodyQuotaAlarm) SetWebhook(v string) *GetQuotaAlarmResponseBodyQuotaAlarm {
+	s.Webhook = &v
 	return s
 }
 
@@ -1613,23 +1755,23 @@ type GetQuotaApplicationResponseBodyQuotaApplication struct {
 	ApproveValue *float32 `json:"ApproveValue,omitempty" xml:"ApproveValue,omitempty"`
 	// The result of the application.
 	AuditReason *string `json:"AuditReason,omitempty" xml:"AuditReason,omitempty"`
-	// The quota for which you apply.
+	// The expected value of the quota.
 	DesireValue *int32 `json:"DesireValue,omitempty" xml:"DesireValue,omitempty"`
-	// The quota dimensions.
+	// The dimension.
 	//
 	// Format: `{"regionId":"Region"}`.
 	Dimension map[string]interface{} `json:"Dimension,omitempty" xml:"Dimension,omitempty"`
-	// The time when the quota took effect.
+	// The time when the new quota value takes effect.
 	EffectiveTime *string `json:"EffectiveTime,omitempty" xml:"EffectiveTime,omitempty"`
-	// The time when the quota expired.
+	// The time when the new quota expires.
 	ExpireTime *string `json:"ExpireTime,omitempty" xml:"ExpireTime,omitempty"`
-	// The notification method. Valid values:
+	// The method of that is used to send alert notifications. Valid values:
 	//
 	// *   0: Quota Center does not send a notification.
 	// *   1: Quota Center sends an email notification.
 	// *   2: Quota Center sends an SMS notification.
 	NoticeType *int64 `json:"NoticeType,omitempty" xml:"NoticeType,omitempty"`
-	// The abbreviation of the cloud service name.
+	// The abbreviation of the Alibaba Cloud service name.
 	ProductCode *string `json:"ProductCode,omitempty" xml:"ProductCode,omitempty"`
 	// The ID of the quota.
 	QuotaActionCode *string `json:"QuotaActionCode,omitempty" xml:"QuotaActionCode,omitempty"`
@@ -1639,7 +1781,7 @@ type GetQuotaApplicationResponseBodyQuotaApplication struct {
 	QuotaDescription *string `json:"QuotaDescription,omitempty" xml:"QuotaDescription,omitempty"`
 	// The name of the quota.
 	QuotaName *string `json:"QuotaName,omitempty" xml:"QuotaName,omitempty"`
-	// The unit of the quota.
+	// The unit of the new quota value.
 	QuotaUnit *string `json:"QuotaUnit,omitempty" xml:"QuotaUnit,omitempty"`
 	// The reason for the application.
 	Reason *string `json:"Reason,omitempty" xml:"Reason,omitempty"`
@@ -1647,7 +1789,7 @@ type GetQuotaApplicationResponseBodyQuotaApplication struct {
 	//
 	// *   Disagree: The application is rejected.
 	// *   Agree: The application is approved.
-	// *   Process: The application is pending approval.
+	// *   Process: The application is being reviewed.
 	// *   Cancel: The application is closed.
 	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
 }
@@ -1820,10 +1962,10 @@ func (s *GetQuotaTemplateServiceStatusResponseBody) SetTemplateServiceStatus(v *
 type GetQuotaTemplateServiceStatusResponseBodyTemplateServiceStatus struct {
 	// The ID of the resource directory.
 	ResourceDirectoryId *string `json:"ResourceDirectoryId,omitempty" xml:"ResourceDirectoryId,omitempty"`
-	// The status of the quota template. Valid values:
+	// The state of the quota template. Valid values:
 	//
-	// *   \-1: disabled
-	// *   1: enabled
+	// *   \-1: The quota template is disabled.
+	// *   1: The quota template is enabled.
 	ServiceStatus *int32 `json:"ServiceStatus,omitempty" xml:"ServiceStatus,omitempty"`
 }
 
@@ -1877,19 +2019,19 @@ func (s *GetQuotaTemplateServiceStatusResponse) SetBody(v *GetQuotaTemplateServi
 type ListAlarmHistoriesRequest struct {
 	// The end of the time range to query.
 	EndTime *int64 `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
-	// The keyword that is used to execute the query.
+	// The keyword that is used for the query.
 	Keyword *string `json:"Keyword,omitempty" xml:"Keyword,omitempty"`
-	// The maximum number of records to be returned for the query.
+	// The maximum number of records that can be returned for the query.
 	//
 	// Valid values: 1 to 200. Default value: 30.
 	MaxResults *int32 `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
-	// The token that is used to mark the location where the query is started. An empty value indicates that the query is executed from the start.
+	// The token that marks the position from which you want to start the query. If you leave this parameter empty, the query starts from the beginning.
 	NextToken *string `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
-	// The abbreviation of the cloud service name.
+	// The abbreviation of the Alibaba Cloud service name.
 	//
-	// >  For more information about the Alibaba Cloud services that support Quota Center, see [Alibaba Cloud services that support Quota Center](~~182368~~).
+	// > For more information, see [Alibaba Cloud services that support Quota Center](~~182368~~).
 	ProductCode *string `json:"ProductCode,omitempty" xml:"ProductCode,omitempty"`
-	// The start of the time range to query.
+	// The beginning of the time range to query.
 	StartTime *int64 `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
 }
 
@@ -1934,13 +2076,13 @@ func (s *ListAlarmHistoriesRequest) SetStartTime(v int64) *ListAlarmHistoriesReq
 type ListAlarmHistoriesResponseBody struct {
 	// The details of the alert records.
 	AlarmHistories []*ListAlarmHistoriesResponseBodyAlarmHistories `json:"AlarmHistories,omitempty" xml:"AlarmHistories,omitempty" type:"Repeated"`
-	// The maximum number of records returned for the query.
+	// The maximum number of records that are returned for the query.
 	MaxResults *int32 `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
-	// The token that is used to mark the location where the query is ended. An empty value indicates that all the data is queried.
+	// The token that marks the position at which the query ends. An empty value indicates that all data is returned.
 	NextToken *string `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
 	// The ID of the request.
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// The total number of records returned for the query.
+	// The total number of records that are returned for the query.
 	TotalCount *int32 `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
 }
 
@@ -1981,15 +2123,11 @@ type ListAlarmHistoriesResponseBodyAlarmHistories struct {
 	// The name of the quota alert.
 	AlarmName *string `json:"AlarmName,omitempty" xml:"AlarmName,omitempty"`
 	// The time when the quota alert was created.
-	CreateTime *string `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
-	// The notification methods of the quota alert. Valid values:
-	//
-	// *   sms: short messages
-	// *   email: emails
+	CreateTime     *string   `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
 	NotifyChannels []*string `json:"NotifyChannels,omitempty" xml:"NotifyChannels,omitempty" type:"Repeated"`
 	// The alert contact.
 	NotifyTarget *string `json:"NotifyTarget,omitempty" xml:"NotifyTarget,omitempty"`
-	// The abbreviation of the cloud service name.
+	// The abbreviation of the Alibaba Cloud service name.
 	ProductCode *string `json:"ProductCode,omitempty" xml:"ProductCode,omitempty"`
 	// The ID of the quota.
 	QuotaActionCode *string `json:"QuotaActionCode,omitempty" xml:"QuotaActionCode,omitempty"`
@@ -2084,11 +2222,11 @@ func (s *ListAlarmHistoriesResponse) SetBody(v *ListAlarmHistoriesResponseBody) 
 }
 
 type ListDependentQuotasRequest struct {
-	// The abbreviation of the cloud service name.
+	// The abbreviation of the Alibaba Cloud service name.
 	//
-	// >  For more information about the Alibaba Cloud services that support Quota Center, see [Alibaba Cloud services that support Quota Center](~~182368~~).
+	// > For more information, see [Alibaba Cloud services that support Quota Center](~~182368~~).
 	ProductCode *string `json:"ProductCode,omitempty" xml:"ProductCode,omitempty"`
-	// The ID of the quota.
+	// The quota ID.
 	QuotaActionCode *string `json:"QuotaActionCode,omitempty" xml:"QuotaActionCode,omitempty"`
 }
 
@@ -2111,9 +2249,9 @@ func (s *ListDependentQuotasRequest) SetQuotaActionCode(v string) *ListDependent
 }
 
 type ListDependentQuotasResponseBody struct {
-	// The list of quotas on which the specified quota depends.
+	// The quotas on which the specified quota depends.
 	Quotas []*ListDependentQuotasResponseBodyQuotas `json:"Quotas,omitempty" xml:"Quotas,omitempty" type:"Repeated"`
-	// The ID of the request.
+	// The request ID.
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -2136,11 +2274,11 @@ func (s *ListDependentQuotasResponseBody) SetRequestId(v string) *ListDependentQ
 }
 
 type ListDependentQuotasResponseBodyQuotas struct {
-	// The dimensions of a quota on which the specified quota depends.
+	// The dimensions of the quotas on which the specified quota depends.
 	Dimensions []*ListDependentQuotasResponseBodyQuotasDimensions `json:"Dimensions,omitempty" xml:"Dimensions,omitempty" type:"Repeated"`
-	// The abbreviation of the cloud service name.
+	// The abbreviation of the Alibaba Cloud service name.
 	ProductCode *string `json:"ProductCode,omitempty" xml:"ProductCode,omitempty"`
-	// The ID of the quota.
+	// The quota ID.
 	QuotaActionCode *string `json:"QuotaActionCode,omitempty" xml:"QuotaActionCode,omitempty"`
 	// The relationship percentage between the specified quota and the quotas on which the specified quota depends.
 	Scale *float32 `json:"Scale,omitempty" xml:"Scale,omitempty"`
@@ -2175,11 +2313,9 @@ func (s *ListDependentQuotasResponseBodyQuotas) SetScale(v float32) *ListDepende
 }
 
 type ListDependentQuotasResponseBodyQuotasDimensions struct {
-	// The dimension of a quota on which the specified quota depends.
 	DependentDimension []*string `json:"DependentDimension,omitempty" xml:"DependentDimension,omitempty" type:"Repeated"`
-	// The dimension key.
-	DimensionKey *string `json:"DimensionKey,omitempty" xml:"DimensionKey,omitempty"`
-	// The dimension values.
+	// The key of the quota dimension.
+	DimensionKey    *string   `json:"DimensionKey,omitempty" xml:"DimensionKey,omitempty"`
 	DimensionValues []*string `json:"DimensionValues,omitempty" xml:"DimensionValues,omitempty" type:"Repeated"`
 }
 
@@ -2236,15 +2372,13 @@ func (s *ListDependentQuotasResponse) SetBody(v *ListDependentQuotasResponseBody
 }
 
 type ListProductDimensionGroupsRequest struct {
-	// The maximum number of records that can be returned for the query.
-	//
-	// Valid values: 1 to 200. Default value: 30.
+	// The maximum number of records that can be returned for the query. Valid values: 1 to 200. Default value: 30.
 	MaxResults *int32 `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
 	// The token that marks the position from which you want to start the query. If you leave this parameter empty, the query starts from the beginning.
 	NextToken *string `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
 	// The service code.
 	//
-	// >  For more information, see [Alibaba Cloud services that support Quota Center](~~182368~~).
+	// > For more information, see [Alibaba Cloud services that support Quota Center](~~182368~~).
 	ProductCode *string `json:"ProductCode,omitempty" xml:"ProductCode,omitempty"`
 }
 
@@ -2274,7 +2408,7 @@ func (s *ListProductDimensionGroupsRequest) SetProductCode(v string) *ListProduc
 type ListProductDimensionGroupsResponseBody struct {
 	// The dimension groups.
 	DimensionGroups []*ListProductDimensionGroupsResponseBodyDimensionGroups `json:"DimensionGroups,omitempty" xml:"DimensionGroups,omitempty" type:"Repeated"`
-	// The number of entries returned per page.
+	// The maximum number of records that are returned for the query.
 	MaxResults *int32 `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
 	// The token that marks the position at which the query ends. An empty value indicates that all data is returned.
 	NextToken *string `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
@@ -2318,7 +2452,7 @@ func (s *ListProductDimensionGroupsResponseBody) SetTotalCount(v int32) *ListPro
 }
 
 type ListProductDimensionGroupsResponseBodyDimensionGroups struct {
-	// The keys of the dimension group.
+	// The key of the dimension group.
 	DimensionKeys []*string `json:"DimensionKeys,omitempty" xml:"DimensionKeys,omitempty" type:"Repeated"`
 	// The code of the dimension group.
 	GroupCode *string `json:"GroupCode,omitempty" xml:"GroupCode,omitempty"`
@@ -2386,20 +2520,20 @@ func (s *ListProductDimensionGroupsResponse) SetBody(v *ListProductDimensionGrou
 }
 
 type ListProductQuotaDimensionsRequest struct {
-	// The maximum number of records that you want to return for the query.
+	// The maximum number of records that can be returned for the query.
 	//
 	// Valid values: 1 to 200. Default value: 30.
 	MaxResults *int32 `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
-	// The token that marks the position where you want to start the query. An empty value indicates that the query starts from the beginning.
+	// The token that marks the position from which you want to start the query. If you leave this parameter empty, the query starts from the beginning.
 	NextToken *string `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
-	// The abbreviation of the cloud service name.
+	// The abbreviation of the Alibaba Cloud service name.
 	//
-	// >  For more information, see [Alibaba Cloud services that support Quota Center](~~182368~~).
+	// > For more information, see [Alibaba Cloud services that support Quota Center](~~182368~~).
 	ProductCode *string `json:"ProductCode,omitempty" xml:"ProductCode,omitempty"`
 	// The type of the quota. Valid values:
 	//
-	// *   FlowControl: API rate limit
-	// *   CommonQuota: general quota
+	// *   FlowControl: API rate limit.
+	// *   CommonQuota: general quota. This is the default value.
 	QuotaCategory *string `json:"QuotaCategory,omitempty" xml:"QuotaCategory,omitempty"`
 }
 
@@ -2432,15 +2566,15 @@ func (s *ListProductQuotaDimensionsRequest) SetQuotaCategory(v string) *ListProd
 }
 
 type ListProductQuotaDimensionsResponseBody struct {
-	// The number of records returned for the query.
+	// The maximum number of records that are returned for the query.
 	MaxResults *int32 `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
-	// The token that marks the position where the query ends. An empty value indicates that all the data is returned.
+	// The token that marks the position at which the query ends. An empty value indicates that all data is returned.
 	NextToken *string `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
-	// The quota dimensions.
+	// The information about quota dimensions.
 	QuotaDimensions []*ListProductQuotaDimensionsResponseBodyQuotaDimensions `json:"QuotaDimensions,omitempty" xml:"QuotaDimensions,omitempty" type:"Repeated"`
 	// The ID of the request.
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// The total number of records returned for the query.
+	// The total number of records that are returned for the query.
 	TotalCount *int32 `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
 }
 
@@ -2478,19 +2612,17 @@ func (s *ListProductQuotaDimensionsResponseBody) SetTotalCount(v int32) *ListPro
 }
 
 type ListProductQuotaDimensionsResponseBodyQuotaDimensions struct {
-	// The quota dimensions that are supported by the cloud service.
 	DependentDimensions []*string `json:"DependentDimensions,omitempty" xml:"DependentDimensions,omitempty" type:"Repeated"`
-	// The dimension key. Valid values:
+	// The key of the quota dimension. Valid values:
 	//
-	// *   RegionId: the region ID
-	// *   zoneId: the zone ID
-	// *   chargeType: the billing method
-	// *   networkType: the network type
+	// *   regionId: the region ID.
+	// *   zoneId: the zone ID.
+	// *   chargeType: the billing method.
+	// *   networkType: the network type.
 	DimensionKey *string `json:"DimensionKey,omitempty" xml:"DimensionKey,omitempty"`
-	// The details about the dimension value.
+	// The details of the quota dimension value.
 	DimensionValueDetail []*ListProductQuotaDimensionsResponseBodyQuotaDimensionsDimensionValueDetail `json:"DimensionValueDetail,omitempty" xml:"DimensionValueDetail,omitempty" type:"Repeated"`
-	// The list of the dimension values.
-	DimensionValues []*string `json:"DimensionValues,omitempty" xml:"DimensionValues,omitempty" type:"Repeated"`
+	DimensionValues      []*string                                                                    `json:"DimensionValues,omitempty" xml:"DimensionValues,omitempty" type:"Repeated"`
 	// The name of the quota dimension.
 	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
 	// Indicates whether the quota dimension is required when you query quota dimensions. Valid values:
@@ -2539,9 +2671,9 @@ func (s *ListProductQuotaDimensionsResponseBodyQuotaDimensions) SetRequisite(v b
 }
 
 type ListProductQuotaDimensionsResponseBodyQuotaDimensionsDimensionValueDetail struct {
-	// The name of the dimension value.
+	// The name of the quota dimension value.
 	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
-	// The dimension value.
+	// The quota dimension value.
 	Value *string `json:"Value,omitempty" xml:"Value,omitempty"`
 }
 
@@ -2613,7 +2745,7 @@ type ListProductQuotasRequest struct {
 	QuotaActionCode *string `json:"QuotaActionCode,omitempty" xml:"QuotaActionCode,omitempty"`
 	// The type of the quota. Valid values:
 	//
-	// *   CommonQuota: general quota
+	// *   CommonQuota (default value): general quota
 	// *   FlowControl: API rate limit
 	// *   WhiteListLabel: whitelist quota
 	QuotaCategory *string `json:"QuotaCategory,omitempty" xml:"QuotaCategory,omitempty"`
@@ -2769,23 +2901,24 @@ type ListProductQuotasResponseBodyQuotas struct {
 	// *   true: The quota is adjustable.
 	// *   false: The quota is not adjustable.
 	Adjustable *bool `json:"Adjustable,omitempty" xml:"Adjustable,omitempty"`
-	// None.
+	// None
 	ApplicableRange []*float32 `json:"ApplicableRange,omitempty" xml:"ApplicableRange,omitempty" type:"Repeated"`
 	// The type of the adjustable value. Valid values:
 	//
 	// *   continuous
 	// *   discontinuous
-	ApplicableType *string `json:"ApplicableType,omitempty" xml:"ApplicableType,omitempty"`
+	ApplicableType  *string `json:"ApplicableType,omitempty" xml:"ApplicableType,omitempty"`
+	ApplyReasonTips *string `json:"ApplyReasonTips,omitempty" xml:"ApplyReasonTips,omitempty"`
 	// Indicates whether the system shows the used value of the quota. Valid values:
 	//
 	// *   true: The system shows the used value of the quota.
 	// *   false: The system does not show the used value of the quota.
 	Consumable *bool `json:"Consumable,omitempty" xml:"Consumable,omitempty"`
-	// The quota dimensions. Format: `{"regionId":"Region"}`.
+	// The quota dimension. Format: `{"regionId":"Region"}`.
 	Dimensions map[string]interface{} `json:"Dimensions,omitempty" xml:"Dimensions,omitempty"`
-	// The start time of the validity period of the quota. The value is displayed in UTC.
+	// The start time of the validity period of the quota. Specify the value in UTC.
 	EffectiveTime *string `json:"EffectiveTime,omitempty" xml:"EffectiveTime,omitempty"`
-	// The end time of the validity period of the quota. The value is displayed in UTC.
+	// The end time of the validity period of the quota. Specify the value in UTC.
 	ExpireTime *string `json:"ExpireTime,omitempty" xml:"ExpireTime,omitempty"`
 	// The calculation cycle of the quota.
 	Period *ListProductQuotasResponseBodyQuotasPeriod `json:"Period,omitempty" xml:"Period,omitempty" type:"Struct"`
@@ -2818,7 +2951,7 @@ type ListProductQuotasResponseBodyQuotas struct {
 	//
 	// **The unit of each quota is unique.** For example, the quota whose ID is `q_cbdch3` represents the maximum number of Container Service for Kubernetes (ACK) clusters. The unit of this quota is clusters. The quota whose ID is `q_security-groups` represents the maximum number of security groups. The unit of this quota is security groups.
 	QuotaUnit *string `json:"QuotaUnit,omitempty" xml:"QuotaUnit,omitempty"`
-	// None.
+	// None
 	SupportedRange []*float32 `json:"SupportedRange,omitempty" xml:"SupportedRange,omitempty" type:"Repeated"`
 	// The value of the quota.
 	TotalQuota *float32 `json:"TotalQuota,omitempty" xml:"TotalQuota,omitempty"`
@@ -2852,6 +2985,11 @@ func (s *ListProductQuotasResponseBodyQuotas) SetApplicableRange(v []*float32) *
 
 func (s *ListProductQuotasResponseBodyQuotas) SetApplicableType(v string) *ListProductQuotasResponseBodyQuotas {
 	s.ApplicableType = &v
+	return s
+}
+
+func (s *ListProductQuotasResponseBodyQuotas) SetApplyReasonTips(v string) *ListProductQuotasResponseBodyQuotas {
+	s.ApplyReasonTips = &v
 	return s
 }
 
@@ -2983,7 +3121,7 @@ type ListProductQuotasResponseBodyQuotasQuotaItems struct {
 	//
 	// **
 	//
-	// **The unit of each quota is unique.** For example, the quota whose ID is `q_cbdch3` represents the maximum number of Container Service for Kubernetes (ACK) clusters. The unit of this quota is clusters. The quota whose ID is `q_security-groups` represents the maximum number of security groups. The unit of this quota is security groups.
+	// **The unit of each quota is unique.** For example, the quota whose ID is `q_cbdch3` represents the maximum number of ACK clusters. The unit of this quota is clusters. The quota whose ID is `q_security-groups` represents the maximum number of security groups. The unit of this quota is security groups.
 	QuotaUnit *string `json:"QuotaUnit,omitempty" xml:"QuotaUnit,omitempty"`
 	// The category of the quota. Valid values:
 	//
@@ -3052,11 +3190,11 @@ func (s *ListProductQuotasResponse) SetBody(v *ListProductQuotasResponseBody) *L
 }
 
 type ListProductsRequest struct {
-	// The maximum number of records to be returned for the query.
+	// The maximum number of records that can be returned for the query.
 	//
 	// Valid values: 1 to 200. Default value: 30.
 	MaxResults *int32 `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
-	// The token that is used to mark the location where the query is started. An empty value indicates that the query is executed from the start.
+	// The token that marks the position from which you want to start the query. If you leave this parameter empty, the query starts from the beginning.
 	NextToken *string `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
 }
 
@@ -3079,15 +3217,15 @@ func (s *ListProductsRequest) SetNextToken(v string) *ListProductsRequest {
 }
 
 type ListProductsResponseBody struct {
-	// The maximum number of records returned for the query.
+	// The maximum number of records that are returned for the query.
 	MaxResults *int32 `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
-	// The token that is used to mark the location where the query is ended. An empty value indicates that all the data is queried.
+	// The token that marks the position at which the query ends. An empty value indicates that all data is returned.
 	NextToken *string `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
-	// The information of the cloud service.
+	// The information of the Alibaba Cloud service.
 	ProductInfo []*ListProductsResponseBodyProductInfo `json:"ProductInfo,omitempty" xml:"ProductInfo,omitempty" type:"Repeated"`
 	// The ID of the request.
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// The total number of records returned for the query.
+	// The total number of records that are returned for the query.
 	TotalCount *int32 `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
 }
 
@@ -3125,33 +3263,37 @@ func (s *ListProductsResponseBody) SetTotalCount(v int32) *ListProductsResponseB
 }
 
 type ListProductsResponseBodyProductInfo struct {
-	// Indicates whether the cloud service supports general quotas. Valid values:
+	// Indicates whether the Alibaba Cloud service supports general quotas. Valid values:
 	//
-	// *   support: The cloud service supports general quotas.
-	// *   unsupport: The cloud service does not support general quotas.
+	// *   support: The Alibaba Cloud service supports general quotas.
+	// *   unsupport: The Alibaba Cloud service does not support general quotas.
 	CommonQuotaSupport *string `json:"CommonQuotaSupport,omitempty" xml:"CommonQuotaSupport,omitempty"`
-	// Indicates whether the cloud service supports dynamic quota adjustment. Valid values:
+	// Indicates whether the Alibaba Cloud service supports dynamic quota adjustment. Valid values:
 	//
 	// *   true
 	// *   false
 	Dynamic *bool `json:"Dynamic,omitempty" xml:"Dynamic,omitempty"`
-	// Indicates whether the cloud service supports API rate limits. Valid values:
+	// Indicates whether the Alibaba Cloud service supports API rate limits. Valid values:
 	//
-	// *   support: The cloud service supports API rate limits.
-	// *   unsupport: The cloud service does not support API rate limits.
+	// *   support: The Alibaba Cloud service supports API rate limits.
+	// *   unsupport: The Alibaba Cloud service does not support API rate limits.
 	FlowControlSupport *string `json:"FlowControlSupport,omitempty" xml:"FlowControlSupport,omitempty"`
-	// The abbreviation of the cloud service name.
+	// The abbreviation of the Alibaba Cloud service name.
 	ProductCode *string `json:"ProductCode,omitempty" xml:"ProductCode,omitempty"`
-	// The name of the cloud service.
+	// The name of the Alibaba Cloud service.
 	ProductName *string `json:"ProductName,omitempty" xml:"ProductName,omitempty"`
-	// The name of the cloud service.
+	// The English name of the Alibaba Cloud service.
 	ProductNameEn *string `json:"ProductNameEn,omitempty" xml:"ProductNameEn,omitempty"`
 	// The ID of the service category.
 	SecondCategoryId *int64 `json:"SecondCategoryId,omitempty" xml:"SecondCategoryId,omitempty"`
 	// The name of the service category.
 	SecondCategoryName *string `json:"SecondCategoryName,omitempty" xml:"SecondCategoryName,omitempty"`
-	// The name of the service category.
-	SecondCategoryNameEn       *string `json:"SecondCategoryNameEn,omitempty" xml:"SecondCategoryNameEn,omitempty"`
+	// The English name of the service category.
+	SecondCategoryNameEn *string `json:"SecondCategoryNameEn,omitempty" xml:"SecondCategoryNameEn,omitempty"`
+	// Indicates whether the Alibaba Cloud service supports whitelist quotas. Valid values:
+	//
+	// *   support: The Alibaba Cloud service supports whitelist quotas.
+	// *   unsupport: The Alibaba Cloud service does not support whitelist quotas.
 	WhiteListLabelQuotaSupport *string `json:"WhiteListLabelQuotaSupport,omitempty" xml:"WhiteListLabelQuotaSupport,omitempty"`
 }
 
@@ -3243,22 +3385,25 @@ func (s *ListProductsResponse) SetBody(v *ListProductsResponseBody) *ListProduct
 }
 
 type ListQuotaAlarmsRequest struct {
-	// The name of the quota alert.
+	// The name of the alert.
 	AlarmName *string `json:"AlarmName,omitempty" xml:"AlarmName,omitempty"`
-	// The maximum number of records that you want to return for the query.
+	// The maximum number of records that can be returned for the query.
 	//
 	// Valid values: 1 to 200. Default value: 30.
 	MaxResults *int32 `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
 	// The token that marks the position from which you want to start the query.
 	//
-	// >  An empty value indicates that the query starts from the beginning.
+	// > An empty value indicates that the query starts from the beginning.
 	NextToken *string `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
-	// The abbreviation of the cloud service name.
+	// The abbreviation of the Alibaba Cloud service name.
 	//
-	// >  For more information, see [Alibaba Cloud services that support Quota Center](~~182368~~).
+	// > For more information, see [Alibaba Cloud services that support Quota Center](~~182368~~).
 	ProductCode *string `json:"ProductCode,omitempty" xml:"ProductCode,omitempty"`
 	// The ID of the quota.
-	QuotaActionCode *string                                  `json:"QuotaActionCode,omitempty" xml:"QuotaActionCode,omitempty"`
+	//
+	// > The `ProductCode` parameter is required if you specify this parameter.
+	QuotaActionCode *string `json:"QuotaActionCode,omitempty" xml:"QuotaActionCode,omitempty"`
+	// The quota dimensions.
 	QuotaDimensions []*ListQuotaAlarmsRequestQuotaDimensions `json:"QuotaDimensions,omitempty" xml:"QuotaDimensions,omitempty" type:"Repeated"`
 }
 
@@ -3301,13 +3446,13 @@ func (s *ListQuotaAlarmsRequest) SetQuotaDimensions(v []*ListQuotaAlarmsRequestQ
 }
 
 type ListQuotaAlarmsRequestQuotaDimensions struct {
-	// The dimension keys.
+	// The key of the dimension.
 	//
-	// >  The value range of N varies based on the number of dimensions that are supported by the related cloud service.
+	// > The value range of N varies based on the number of dimensions that are supported by the related Alibaba Cloud service.
 	Key *string `json:"Key,omitempty" xml:"Key,omitempty"`
-	// The dimension values.
+	// The value of the dimension.
 	//
-	// >  The value range of N varies based on the number of dimensions that are supported by the related cloud service.
+	// > The value range of N varies based on the number of dimensions that are supported by the related Alibaba Cloud service.
 	Value *string `json:"Value,omitempty" xml:"Value,omitempty"`
 }
 
@@ -3334,7 +3479,7 @@ type ListQuotaAlarmsResponseBody struct {
 	MaxResults *int32 `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
 	// The token that marks the position at which the query ends.
 	//
-	// >  If an empty value is returned, all data is queried.
+	// > An empty value indicates that all data is returned.
 	NextToken *string `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
 	// The details about the quota alert.
 	QuotaAlarms []*ListQuotaAlarmsResponseBodyQuotaAlarms `json:"QuotaAlarms,omitempty" xml:"QuotaAlarms,omitempty" type:"Repeated"`
@@ -3378,9 +3523,9 @@ func (s *ListQuotaAlarmsResponseBody) SetTotalCount(v int32) *ListQuotaAlarmsRes
 }
 
 type ListQuotaAlarmsResponseBodyQuotaAlarms struct {
-	// The ID of the quota alert.
+	// The ID of the alert.
 	AlarmId *string `json:"AlarmId,omitempty" xml:"AlarmId,omitempty"`
-	// The name of the quota alert.
+	// The name of the alert event.
 	AlarmName *string `json:"AlarmName,omitempty" xml:"AlarmName,omitempty"`
 	// The time when the quota alert was created.
 	CreateTime *string `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
@@ -3388,15 +3533,11 @@ type ListQuotaAlarmsResponseBodyQuotaAlarms struct {
 	//
 	// *   false
 	// *   true
-	ExceedThreshold *bool `json:"ExceedThreshold,omitempty" xml:"ExceedThreshold,omitempty"`
-	// The notification method. Valid values:
-	//
-	// *   sms: SMS messages
-	// *   email: emails
-	NotifyChannels []*string `json:"NotifyChannels,omitempty" xml:"NotifyChannels,omitempty" type:"Repeated"`
-	// The alert contact. Valid value: accountContact.
+	ExceedThreshold *bool     `json:"ExceedThreshold,omitempty" xml:"ExceedThreshold,omitempty"`
+	NotifyChannels  []*string `json:"NotifyChannels,omitempty" xml:"NotifyChannels,omitempty" type:"Repeated"`
+	// The alert contact. The value is accountContact.
 	NotifyTarget *string `json:"NotifyTarget,omitempty" xml:"NotifyTarget,omitempty"`
-	// The abbreviation of the cloud service name.
+	// The abbreviation of the Alibaba Cloud service name.
 	ProductCode *string `json:"ProductCode,omitempty" xml:"ProductCode,omitempty"`
 	// The ID of the quota.
 	QuotaActionCode *string `json:"QuotaActionCode,omitempty" xml:"QuotaActionCode,omitempty"`
@@ -3540,7 +3681,7 @@ type ListQuotaApplicationTemplatesRequest struct {
 	MaxResults *int32 `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
 	// The token that marks the position from which you want to start the query.
 	//
-	// > An empty value indicates that the query starts from the beginning.
+	// > If you leave this parameter empty, the query starts from the beginning.
 	NextToken *string `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
 	// The abbreviation of the Alibaba Cloud service name.
 	//
@@ -3548,9 +3689,11 @@ type ListQuotaApplicationTemplatesRequest struct {
 	ProductCode *string `json:"ProductCode,omitempty" xml:"ProductCode,omitempty"`
 	// The ID of the quota.
 	QuotaActionCode *string `json:"QuotaActionCode,omitempty" xml:"QuotaActionCode,omitempty"`
-	// 配额种类。取值：
-	// - CommonQuota：通用配额。
-	// - WhiteListLabel：权益配额。
+	// The type of the quota. Valid values:
+	//
+	// *   CommonQuota: general quota
+	// *   WhiteListLabel: privilege
+	// *   FlowControl: API rate limit
 	QuotaCategory *string `json:"QuotaCategory,omitempty" xml:"QuotaCategory,omitempty"`
 }
 
@@ -3627,17 +3770,17 @@ func (s *ListQuotaApplicationTemplatesRequestDimensions) SetValue(v string) *Lis
 }
 
 type ListQuotaApplicationTemplatesResponseBody struct {
-	// The maximum number of records that are returned for the query.
+	// The maximum number of records returned for the query.
 	MaxResults *int32 `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
 	// The token that marks the position at which the query ends.
 	//
 	// > An empty value indicates that all data is returned.
 	NextToken *string `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
-	// The quota templates that are returned.
+	// The returned quota templates.
 	QuotaApplicationTemplates []*ListQuotaApplicationTemplatesResponseBodyQuotaApplicationTemplates `json:"QuotaApplicationTemplates,omitempty" xml:"QuotaApplicationTemplates,omitempty" type:"Repeated"`
-	// The ID of the request.
+	// The request ID.
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// The total number of records that are returned for the query.
+	// The total number of records returned for the query.
 	TotalCount *int32 `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
 }
 
@@ -3675,7 +3818,7 @@ func (s *ListQuotaApplicationTemplatesResponseBody) SetTotalCount(v int32) *List
 }
 
 type ListQuotaApplicationTemplatesResponseBodyQuotaApplicationTemplates struct {
-	// None
+	// N/A
 	ApplicableRange []*float32 `json:"ApplicableRange,omitempty" xml:"ApplicableRange,omitempty" type:"Repeated"`
 	// The type of the adjustable value. Valid values:
 	//
@@ -3688,14 +3831,14 @@ type ListQuotaApplicationTemplatesResponseBodyQuotaApplicationTemplates struct {
 	//
 	// Format: {"regionId":"Region"}.
 	Dimensions map[string]interface{} `json:"Dimensions,omitempty" xml:"Dimensions,omitempty"`
-	// 配额生效的UTC时间。
+	// The start time of the validity period of the quota. The value is displayed in UTC.
 	EffectiveTime *string `json:"EffectiveTime,omitempty" xml:"EffectiveTime,omitempty"`
 	// The language of the quota alert notification. Valid values:
 	//
 	// *   zh: Chinese
 	// *   en: English
 	EnvLanguage *string `json:"EnvLanguage,omitempty" xml:"EnvLanguage,omitempty"`
-	// 配额失效的UTC时间。
+	// The end time of the validity period of the quota. The value is displayed in UTC.
 	ExpireTime *string `json:"ExpireTime,omitempty" xml:"ExpireTime,omitempty"`
 	// The ID of the quota template.
 	Id *string `json:"Id,omitempty" xml:"Id,omitempty"`
@@ -3704,13 +3847,16 @@ type ListQuotaApplicationTemplatesResponseBodyQuotaApplicationTemplates struct {
 	// *   0: no
 	// *   3: yes
 	NoticeType *int32 `json:"NoticeType,omitempty" xml:"NoticeType,omitempty"`
+	// The calculation cycle of the quota.
+	Period *ListQuotaApplicationTemplatesResponseBodyQuotaApplicationTemplatesPeriod `json:"Period,omitempty" xml:"Period,omitempty" type:"Struct"`
 	// The abbreviation of the Alibaba Cloud service name.
 	ProductCode *string `json:"ProductCode,omitempty" xml:"ProductCode,omitempty"`
 	// The ID of the quota.
 	QuotaActionCode *string `json:"QuotaActionCode,omitempty" xml:"QuotaActionCode,omitempty"`
-	// 配额类型。
-	// - CommonQuota：通用配额。
-	// - WhiteListLabel：权益配额。
+	// The type of the quota.
+	//
+	// *   CommonQuota: general quota
+	// *   WhiteListLabel: privilege
 	QuotaCategory *string `json:"QuotaCategory,omitempty" xml:"QuotaCategory,omitempty"`
 	// The description of the quota.
 	QuotaDescription *string `json:"QuotaDescription,omitempty" xml:"QuotaDescription,omitempty"`
@@ -3771,6 +3917,11 @@ func (s *ListQuotaApplicationTemplatesResponseBodyQuotaApplicationTemplates) Set
 	return s
 }
 
+func (s *ListQuotaApplicationTemplatesResponseBodyQuotaApplicationTemplates) SetPeriod(v *ListQuotaApplicationTemplatesResponseBodyQuotaApplicationTemplatesPeriod) *ListQuotaApplicationTemplatesResponseBodyQuotaApplicationTemplates {
+	s.Period = v
+	return s
+}
+
 func (s *ListQuotaApplicationTemplatesResponseBodyQuotaApplicationTemplates) SetProductCode(v string) *ListQuotaApplicationTemplatesResponseBodyQuotaApplicationTemplates {
 	s.ProductCode = &v
 	return s
@@ -3793,6 +3944,37 @@ func (s *ListQuotaApplicationTemplatesResponseBodyQuotaApplicationTemplates) Set
 
 func (s *ListQuotaApplicationTemplatesResponseBodyQuotaApplicationTemplates) SetQuotaName(v string) *ListQuotaApplicationTemplatesResponseBodyQuotaApplicationTemplates {
 	s.QuotaName = &v
+	return s
+}
+
+type ListQuotaApplicationTemplatesResponseBodyQuotaApplicationTemplatesPeriod struct {
+	// The unit of the calculation cycle. Valid values:
+	//
+	// *   second
+	// *   minute
+	// *   hour
+	// *   day
+	// *   week
+	PeriodUnit *string `json:"PeriodUnit,omitempty" xml:"PeriodUnit,omitempty"`
+	// The value of the calculation cycle.
+	PeriodValue *int32 `json:"PeriodValue,omitempty" xml:"PeriodValue,omitempty"`
+}
+
+func (s ListQuotaApplicationTemplatesResponseBodyQuotaApplicationTemplatesPeriod) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListQuotaApplicationTemplatesResponseBodyQuotaApplicationTemplatesPeriod) GoString() string {
+	return s.String()
+}
+
+func (s *ListQuotaApplicationTemplatesResponseBodyQuotaApplicationTemplatesPeriod) SetPeriodUnit(v string) *ListQuotaApplicationTemplatesResponseBodyQuotaApplicationTemplatesPeriod {
+	s.PeriodUnit = &v
+	return s
+}
+
+func (s *ListQuotaApplicationTemplatesResponseBodyQuotaApplicationTemplatesPeriod) SetPeriodValue(v int32) *ListQuotaApplicationTemplatesResponseBodyQuotaApplicationTemplatesPeriod {
+	s.PeriodValue = &v
 	return s
 }
 
@@ -3826,32 +4008,34 @@ func (s *ListQuotaApplicationTemplatesResponse) SetBody(v *ListQuotaApplicationT
 }
 
 type ListQuotaApplicationsRequest struct {
+	// The quota dimensions.
 	Dimensions []*ListQuotaApplicationsRequestDimensions `json:"Dimensions,omitempty" xml:"Dimensions,omitempty" type:"Repeated"`
 	// The keyword that you want to use to search for the application.
 	KeyWord *string `json:"KeyWord,omitempty" xml:"KeyWord,omitempty"`
-	// The maximum number of records that you want to return for the query.
+	// The maximum number of records that can be returned for the query.
 	//
 	// Valid values: 1 to 200. Default value: 30.
 	MaxResults *int32 `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
-	// The token that marks the position from which you want to start the query. An empty value indicates that the query starts from the beginning.
+	// The token that marks the position from which you want to start the query. If you leave this parameter empty, the query starts from the beginning.
 	NextToken *string `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
-	// The abbreviation of the cloud service name.
+	// The abbreviation of the Alibaba Cloud service name.
 	//
-	// >  For more information, see [Alibaba Cloud services that support Quota Center](~~182368~~).
+	// > For more information, see [Alibaba Cloud services that support Quota Center](~~182368~~).
 	ProductCode *string `json:"ProductCode,omitempty" xml:"ProductCode,omitempty"`
 	// The ID of the quota.
 	QuotaActionCode *string `json:"QuotaActionCode,omitempty" xml:"QuotaActionCode,omitempty"`
 	// The type of the quota. Valid values:
 	//
-	// *   FlowControl: API rate limit
 	// *   CommonQuota: general quota
+	// *   FlowControl: API rate limit
+	// *   WhiteListLabel: whitelist quota
 	QuotaCategory *string `json:"QuotaCategory,omitempty" xml:"QuotaCategory,omitempty"`
 	// The status of the application. Valid values:
 	//
-	// *   Disagree: The application is rejected.
-	// *   Agree: The application is approved.
-	// *   Process: The application is pending approval.
-	// *   Cancel: The application is closed.
+	// *   Disagree: rejects the application.
+	// *   Agree: approves the application.
+	// *   Process: reviews the application.
+	// *   Cancel: cancels the application.
 	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
 }
 
@@ -3904,13 +4088,13 @@ func (s *ListQuotaApplicationsRequest) SetStatus(v string) *ListQuotaApplication
 }
 
 type ListQuotaApplicationsRequestDimensions struct {
-	// The dimension keys.
+	// The key of the dimension.
 	//
-	// >  The value range of N varies based on the number of dimensions that are supported by the related cloud service.
+	// > The value range of N varies based on the number of dimensions that are supported by the related Alibaba Cloud service.
 	Key *string `json:"Key,omitempty" xml:"Key,omitempty"`
-	// The dimension values.
+	// The value of the dimension.
 	//
-	// >  The value range of N varies based on the number of dimensions that are supported by the related cloud service.
+	// > The value range of N varies based on the number of dimensions that are supported by the related Alibaba Cloud service.
 	Value *string `json:"Value,omitempty" xml:"Value,omitempty"`
 }
 
@@ -3933,11 +4117,11 @@ func (s *ListQuotaApplicationsRequestDimensions) SetValue(v string) *ListQuotaAp
 }
 
 type ListQuotaApplicationsResponseBody struct {
-	// The number of records that are returned for the query.
+	// The maximum number of records that are returned for the query.
 	MaxResults *int32 `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
 	// The token that marks the position at which the query ends. An empty value indicates that all data is returned.
 	NextToken *string `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
-	// The details about the applications.
+	// The details of the applications.
 	QuotaApplications []*ListQuotaApplicationsResponseBodyQuotaApplications `json:"QuotaApplications,omitempty" xml:"QuotaApplications,omitempty" type:"Repeated"`
 	// The ID of the request.
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
@@ -3991,7 +4175,7 @@ type ListQuotaApplicationsResponseBodyQuotaApplications struct {
 	Comment *string `json:"Comment,omitempty" xml:"Comment,omitempty"`
 	// The quota value that is approved.
 	DesireValue *float32 `json:"DesireValue,omitempty" xml:"DesireValue,omitempty"`
-	// The quota dimension of the application.
+	// The dimension of the application.
 	Dimension map[string]interface{} `json:"Dimension,omitempty" xml:"Dimension,omitempty"`
 	// The time when the application took effect.
 	EffectiveTime *string `json:"EffectiveTime,omitempty" xml:"EffectiveTime,omitempty"`
@@ -3999,12 +4183,12 @@ type ListQuotaApplicationsResponseBodyQuotaApplications struct {
 	ExpireTime *string `json:"ExpireTime,omitempty" xml:"ExpireTime,omitempty"`
 	// Indicates whether Quota Center sends a notification about the application result. Valid values:
 	//
-	// *   0: Quota Center sends a notification.
-	// *   3: Quota Center does not send a notification.
+	// *   0: A notification about the application result is not sent.
+	// *   3: A notification about the application result is sent.
 	NoticeType *int32 `json:"NoticeType,omitempty" xml:"NoticeType,omitempty"`
 	// The calculation cycle of the quota.
 	Period *ListQuotaApplicationsResponseBodyQuotaApplicationsPeriod `json:"Period,omitempty" xml:"Period,omitempty" type:"Struct"`
-	// The abbreviation of the cloud service name.
+	// The abbreviation of the Alibaba Cloud service name.
 	ProductCode *string `json:"ProductCode,omitempty" xml:"ProductCode,omitempty"`
 	// The ID of the quota.
 	QuotaActionCode *string `json:"QuotaActionCode,omitempty" xml:"QuotaActionCode,omitempty"`
@@ -4014,7 +4198,7 @@ type ListQuotaApplicationsResponseBodyQuotaApplications struct {
 	QuotaDescription *string `json:"QuotaDescription,omitempty" xml:"QuotaDescription,omitempty"`
 	// The name of the quota.
 	QuotaName *string `json:"QuotaName,omitempty" xml:"QuotaName,omitempty"`
-	// The unit of the quota.
+	// The unit of the new quota value.
 	QuotaUnit *string `json:"QuotaUnit,omitempty" xml:"QuotaUnit,omitempty"`
 	// The reason for the application.
 	Reason *string `json:"Reason,omitempty" xml:"Reason,omitempty"`
@@ -4022,8 +4206,8 @@ type ListQuotaApplicationsResponseBodyQuotaApplications struct {
 	//
 	// *   Disagree: The application is rejected.
 	// *   Agree: The application is approved.
-	// *   Process: The application is pending approval.
-	// *   Cancel: The application is closed.
+	// *   Process: The application is being reviewed.
+	// *   Cancel: The application is canceled.
 	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
 }
 
@@ -4131,7 +4315,7 @@ func (s *ListQuotaApplicationsResponseBodyQuotaApplications) SetStatus(v string)
 }
 
 type ListQuotaApplicationsResponseBodyQuotaApplicationsPeriod struct {
-	// The unit of the calculation cycle of the quota. Valid values:
+	// The unit of the calculation cycle. Valid values:
 	//
 	// *   second
 	// *   minute
@@ -4139,7 +4323,7 @@ type ListQuotaApplicationsResponseBodyQuotaApplicationsPeriod struct {
 	// *   day
 	// *   week
 	PeriodUnit *string `json:"PeriodUnit,omitempty" xml:"PeriodUnit,omitempty"`
-	// The value of the calculation cycle of the quota.
+	// The value of the calculation cycle.
 	PeriodValue *int64 `json:"PeriodValue,omitempty" xml:"PeriodValue,omitempty"`
 }
 
@@ -4190,11 +4374,529 @@ func (s *ListQuotaApplicationsResponse) SetBody(v *ListQuotaApplicationsResponse
 	return s
 }
 
+type ListQuotaApplicationsDetailForTemplateRequest struct {
+	AliyunUid               *string `json:"AliyunUid,omitempty" xml:"AliyunUid,omitempty"`
+	BatchQuotaApplicationId *string `json:"BatchQuotaApplicationId,omitempty" xml:"BatchQuotaApplicationId,omitempty"`
+	MaxResults              *int32  `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
+	NextToken               *string `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
+	ProductCode             *string `json:"ProductCode,omitempty" xml:"ProductCode,omitempty"`
+	QuotaActionCode         *string `json:"QuotaActionCode,omitempty" xml:"QuotaActionCode,omitempty"`
+	QuotaCategory           *string `json:"QuotaCategory,omitempty" xml:"QuotaCategory,omitempty"`
+	Status                  *string `json:"Status,omitempty" xml:"Status,omitempty"`
+}
+
+func (s ListQuotaApplicationsDetailForTemplateRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListQuotaApplicationsDetailForTemplateRequest) GoString() string {
+	return s.String()
+}
+
+func (s *ListQuotaApplicationsDetailForTemplateRequest) SetAliyunUid(v string) *ListQuotaApplicationsDetailForTemplateRequest {
+	s.AliyunUid = &v
+	return s
+}
+
+func (s *ListQuotaApplicationsDetailForTemplateRequest) SetBatchQuotaApplicationId(v string) *ListQuotaApplicationsDetailForTemplateRequest {
+	s.BatchQuotaApplicationId = &v
+	return s
+}
+
+func (s *ListQuotaApplicationsDetailForTemplateRequest) SetMaxResults(v int32) *ListQuotaApplicationsDetailForTemplateRequest {
+	s.MaxResults = &v
+	return s
+}
+
+func (s *ListQuotaApplicationsDetailForTemplateRequest) SetNextToken(v string) *ListQuotaApplicationsDetailForTemplateRequest {
+	s.NextToken = &v
+	return s
+}
+
+func (s *ListQuotaApplicationsDetailForTemplateRequest) SetProductCode(v string) *ListQuotaApplicationsDetailForTemplateRequest {
+	s.ProductCode = &v
+	return s
+}
+
+func (s *ListQuotaApplicationsDetailForTemplateRequest) SetQuotaActionCode(v string) *ListQuotaApplicationsDetailForTemplateRequest {
+	s.QuotaActionCode = &v
+	return s
+}
+
+func (s *ListQuotaApplicationsDetailForTemplateRequest) SetQuotaCategory(v string) *ListQuotaApplicationsDetailForTemplateRequest {
+	s.QuotaCategory = &v
+	return s
+}
+
+func (s *ListQuotaApplicationsDetailForTemplateRequest) SetStatus(v string) *ListQuotaApplicationsDetailForTemplateRequest {
+	s.Status = &v
+	return s
+}
+
+type ListQuotaApplicationsDetailForTemplateResponseBody struct {
+	MaxResults        *int32                                                                 `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
+	NextToken         *string                                                                `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
+	QuotaApplications []*ListQuotaApplicationsDetailForTemplateResponseBodyQuotaApplications `json:"QuotaApplications,omitempty" xml:"QuotaApplications,omitempty" type:"Repeated"`
+	RequestId         *string                                                                `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	TotalCount        *int32                                                                 `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
+}
+
+func (s ListQuotaApplicationsDetailForTemplateResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListQuotaApplicationsDetailForTemplateResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *ListQuotaApplicationsDetailForTemplateResponseBody) SetMaxResults(v int32) *ListQuotaApplicationsDetailForTemplateResponseBody {
+	s.MaxResults = &v
+	return s
+}
+
+func (s *ListQuotaApplicationsDetailForTemplateResponseBody) SetNextToken(v string) *ListQuotaApplicationsDetailForTemplateResponseBody {
+	s.NextToken = &v
+	return s
+}
+
+func (s *ListQuotaApplicationsDetailForTemplateResponseBody) SetQuotaApplications(v []*ListQuotaApplicationsDetailForTemplateResponseBodyQuotaApplications) *ListQuotaApplicationsDetailForTemplateResponseBody {
+	s.QuotaApplications = v
+	return s
+}
+
+func (s *ListQuotaApplicationsDetailForTemplateResponseBody) SetRequestId(v string) *ListQuotaApplicationsDetailForTemplateResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *ListQuotaApplicationsDetailForTemplateResponseBody) SetTotalCount(v int32) *ListQuotaApplicationsDetailForTemplateResponseBody {
+	s.TotalCount = &v
+	return s
+}
+
+type ListQuotaApplicationsDetailForTemplateResponseBodyQuotaApplications struct {
+	AliyunUid               *string                                                                    `json:"AliyunUid,omitempty" xml:"AliyunUid,omitempty"`
+	ApplicationId           *string                                                                    `json:"ApplicationId,omitempty" xml:"ApplicationId,omitempty"`
+	ApplyTime               *string                                                                    `json:"ApplyTime,omitempty" xml:"ApplyTime,omitempty"`
+	ApproveValue            *float64                                                                   `json:"ApproveValue,omitempty" xml:"ApproveValue,omitempty"`
+	AuditReason             *string                                                                    `json:"AuditReason,omitempty" xml:"AuditReason,omitempty"`
+	BatchQuotaApplicationId *string                                                                    `json:"BatchQuotaApplicationId,omitempty" xml:"BatchQuotaApplicationId,omitempty"`
+	DesireValue             *float64                                                                   `json:"DesireValue,omitempty" xml:"DesireValue,omitempty"`
+	EffectiveTime           *string                                                                    `json:"EffectiveTime,omitempty" xml:"EffectiveTime,omitempty"`
+	EnvLanguage             *string                                                                    `json:"EnvLanguage,omitempty" xml:"EnvLanguage,omitempty"`
+	ExpireTime              *string                                                                    `json:"ExpireTime,omitempty" xml:"ExpireTime,omitempty"`
+	NoticeType              *int32                                                                     `json:"NoticeType,omitempty" xml:"NoticeType,omitempty"`
+	Period                  *ListQuotaApplicationsDetailForTemplateResponseBodyQuotaApplicationsPeriod `json:"Period,omitempty" xml:"Period,omitempty" type:"Struct"`
+	ProductCode             *string                                                                    `json:"ProductCode,omitempty" xml:"ProductCode,omitempty"`
+	QuotaActionCode         *string                                                                    `json:"QuotaActionCode,omitempty" xml:"QuotaActionCode,omitempty"`
+	QuotaArn                *string                                                                    `json:"QuotaArn,omitempty" xml:"QuotaArn,omitempty"`
+	QuotaCategory           *string                                                                    `json:"QuotaCategory,omitempty" xml:"QuotaCategory,omitempty"`
+	QuotaDescription        *string                                                                    `json:"QuotaDescription,omitempty" xml:"QuotaDescription,omitempty"`
+	QuotaDimension          map[string]*string                                                         `json:"QuotaDimension,omitempty" xml:"QuotaDimension,omitempty"`
+	QuotaName               *string                                                                    `json:"QuotaName,omitempty" xml:"QuotaName,omitempty"`
+	QuotaUnit               *string                                                                    `json:"QuotaUnit,omitempty" xml:"QuotaUnit,omitempty"`
+	Reason                  *string                                                                    `json:"Reason,omitempty" xml:"Reason,omitempty"`
+	Status                  *string                                                                    `json:"Status,omitempty" xml:"Status,omitempty"`
+}
+
+func (s ListQuotaApplicationsDetailForTemplateResponseBodyQuotaApplications) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListQuotaApplicationsDetailForTemplateResponseBodyQuotaApplications) GoString() string {
+	return s.String()
+}
+
+func (s *ListQuotaApplicationsDetailForTemplateResponseBodyQuotaApplications) SetAliyunUid(v string) *ListQuotaApplicationsDetailForTemplateResponseBodyQuotaApplications {
+	s.AliyunUid = &v
+	return s
+}
+
+func (s *ListQuotaApplicationsDetailForTemplateResponseBodyQuotaApplications) SetApplicationId(v string) *ListQuotaApplicationsDetailForTemplateResponseBodyQuotaApplications {
+	s.ApplicationId = &v
+	return s
+}
+
+func (s *ListQuotaApplicationsDetailForTemplateResponseBodyQuotaApplications) SetApplyTime(v string) *ListQuotaApplicationsDetailForTemplateResponseBodyQuotaApplications {
+	s.ApplyTime = &v
+	return s
+}
+
+func (s *ListQuotaApplicationsDetailForTemplateResponseBodyQuotaApplications) SetApproveValue(v float64) *ListQuotaApplicationsDetailForTemplateResponseBodyQuotaApplications {
+	s.ApproveValue = &v
+	return s
+}
+
+func (s *ListQuotaApplicationsDetailForTemplateResponseBodyQuotaApplications) SetAuditReason(v string) *ListQuotaApplicationsDetailForTemplateResponseBodyQuotaApplications {
+	s.AuditReason = &v
+	return s
+}
+
+func (s *ListQuotaApplicationsDetailForTemplateResponseBodyQuotaApplications) SetBatchQuotaApplicationId(v string) *ListQuotaApplicationsDetailForTemplateResponseBodyQuotaApplications {
+	s.BatchQuotaApplicationId = &v
+	return s
+}
+
+func (s *ListQuotaApplicationsDetailForTemplateResponseBodyQuotaApplications) SetDesireValue(v float64) *ListQuotaApplicationsDetailForTemplateResponseBodyQuotaApplications {
+	s.DesireValue = &v
+	return s
+}
+
+func (s *ListQuotaApplicationsDetailForTemplateResponseBodyQuotaApplications) SetEffectiveTime(v string) *ListQuotaApplicationsDetailForTemplateResponseBodyQuotaApplications {
+	s.EffectiveTime = &v
+	return s
+}
+
+func (s *ListQuotaApplicationsDetailForTemplateResponseBodyQuotaApplications) SetEnvLanguage(v string) *ListQuotaApplicationsDetailForTemplateResponseBodyQuotaApplications {
+	s.EnvLanguage = &v
+	return s
+}
+
+func (s *ListQuotaApplicationsDetailForTemplateResponseBodyQuotaApplications) SetExpireTime(v string) *ListQuotaApplicationsDetailForTemplateResponseBodyQuotaApplications {
+	s.ExpireTime = &v
+	return s
+}
+
+func (s *ListQuotaApplicationsDetailForTemplateResponseBodyQuotaApplications) SetNoticeType(v int32) *ListQuotaApplicationsDetailForTemplateResponseBodyQuotaApplications {
+	s.NoticeType = &v
+	return s
+}
+
+func (s *ListQuotaApplicationsDetailForTemplateResponseBodyQuotaApplications) SetPeriod(v *ListQuotaApplicationsDetailForTemplateResponseBodyQuotaApplicationsPeriod) *ListQuotaApplicationsDetailForTemplateResponseBodyQuotaApplications {
+	s.Period = v
+	return s
+}
+
+func (s *ListQuotaApplicationsDetailForTemplateResponseBodyQuotaApplications) SetProductCode(v string) *ListQuotaApplicationsDetailForTemplateResponseBodyQuotaApplications {
+	s.ProductCode = &v
+	return s
+}
+
+func (s *ListQuotaApplicationsDetailForTemplateResponseBodyQuotaApplications) SetQuotaActionCode(v string) *ListQuotaApplicationsDetailForTemplateResponseBodyQuotaApplications {
+	s.QuotaActionCode = &v
+	return s
+}
+
+func (s *ListQuotaApplicationsDetailForTemplateResponseBodyQuotaApplications) SetQuotaArn(v string) *ListQuotaApplicationsDetailForTemplateResponseBodyQuotaApplications {
+	s.QuotaArn = &v
+	return s
+}
+
+func (s *ListQuotaApplicationsDetailForTemplateResponseBodyQuotaApplications) SetQuotaCategory(v string) *ListQuotaApplicationsDetailForTemplateResponseBodyQuotaApplications {
+	s.QuotaCategory = &v
+	return s
+}
+
+func (s *ListQuotaApplicationsDetailForTemplateResponseBodyQuotaApplications) SetQuotaDescription(v string) *ListQuotaApplicationsDetailForTemplateResponseBodyQuotaApplications {
+	s.QuotaDescription = &v
+	return s
+}
+
+func (s *ListQuotaApplicationsDetailForTemplateResponseBodyQuotaApplications) SetQuotaDimension(v map[string]*string) *ListQuotaApplicationsDetailForTemplateResponseBodyQuotaApplications {
+	s.QuotaDimension = v
+	return s
+}
+
+func (s *ListQuotaApplicationsDetailForTemplateResponseBodyQuotaApplications) SetQuotaName(v string) *ListQuotaApplicationsDetailForTemplateResponseBodyQuotaApplications {
+	s.QuotaName = &v
+	return s
+}
+
+func (s *ListQuotaApplicationsDetailForTemplateResponseBodyQuotaApplications) SetQuotaUnit(v string) *ListQuotaApplicationsDetailForTemplateResponseBodyQuotaApplications {
+	s.QuotaUnit = &v
+	return s
+}
+
+func (s *ListQuotaApplicationsDetailForTemplateResponseBodyQuotaApplications) SetReason(v string) *ListQuotaApplicationsDetailForTemplateResponseBodyQuotaApplications {
+	s.Reason = &v
+	return s
+}
+
+func (s *ListQuotaApplicationsDetailForTemplateResponseBodyQuotaApplications) SetStatus(v string) *ListQuotaApplicationsDetailForTemplateResponseBodyQuotaApplications {
+	s.Status = &v
+	return s
+}
+
+type ListQuotaApplicationsDetailForTemplateResponseBodyQuotaApplicationsPeriod struct {
+	PeriodUnit  *string `json:"PeriodUnit,omitempty" xml:"PeriodUnit,omitempty"`
+	PeriodValue *int32  `json:"PeriodValue,omitempty" xml:"PeriodValue,omitempty"`
+}
+
+func (s ListQuotaApplicationsDetailForTemplateResponseBodyQuotaApplicationsPeriod) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListQuotaApplicationsDetailForTemplateResponseBodyQuotaApplicationsPeriod) GoString() string {
+	return s.String()
+}
+
+func (s *ListQuotaApplicationsDetailForTemplateResponseBodyQuotaApplicationsPeriod) SetPeriodUnit(v string) *ListQuotaApplicationsDetailForTemplateResponseBodyQuotaApplicationsPeriod {
+	s.PeriodUnit = &v
+	return s
+}
+
+func (s *ListQuotaApplicationsDetailForTemplateResponseBodyQuotaApplicationsPeriod) SetPeriodValue(v int32) *ListQuotaApplicationsDetailForTemplateResponseBodyQuotaApplicationsPeriod {
+	s.PeriodValue = &v
+	return s
+}
+
+type ListQuotaApplicationsDetailForTemplateResponse struct {
+	Headers    map[string]*string                                  `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                                              `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *ListQuotaApplicationsDetailForTemplateResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s ListQuotaApplicationsDetailForTemplateResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListQuotaApplicationsDetailForTemplateResponse) GoString() string {
+	return s.String()
+}
+
+func (s *ListQuotaApplicationsDetailForTemplateResponse) SetHeaders(v map[string]*string) *ListQuotaApplicationsDetailForTemplateResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *ListQuotaApplicationsDetailForTemplateResponse) SetStatusCode(v int32) *ListQuotaApplicationsDetailForTemplateResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *ListQuotaApplicationsDetailForTemplateResponse) SetBody(v *ListQuotaApplicationsDetailForTemplateResponseBody) *ListQuotaApplicationsDetailForTemplateResponse {
+	s.Body = v
+	return s
+}
+
+type ListQuotaApplicationsForTemplateRequest struct {
+	ApplyEndTime            *string `json:"ApplyEndTime,omitempty" xml:"ApplyEndTime,omitempty"`
+	ApplyStartTime          *string `json:"ApplyStartTime,omitempty" xml:"ApplyStartTime,omitempty"`
+	BatchQuotaApplicationId *string `json:"BatchQuotaApplicationId,omitempty" xml:"BatchQuotaApplicationId,omitempty"`
+	MaxResults              *int32  `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
+	NextToken               *string `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
+	ProductCode             *string `json:"ProductCode,omitempty" xml:"ProductCode,omitempty"`
+	QuotaActionCode         *string `json:"QuotaActionCode,omitempty" xml:"QuotaActionCode,omitempty"`
+	QuotaCategory           *string `json:"QuotaCategory,omitempty" xml:"QuotaCategory,omitempty"`
+}
+
+func (s ListQuotaApplicationsForTemplateRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListQuotaApplicationsForTemplateRequest) GoString() string {
+	return s.String()
+}
+
+func (s *ListQuotaApplicationsForTemplateRequest) SetApplyEndTime(v string) *ListQuotaApplicationsForTemplateRequest {
+	s.ApplyEndTime = &v
+	return s
+}
+
+func (s *ListQuotaApplicationsForTemplateRequest) SetApplyStartTime(v string) *ListQuotaApplicationsForTemplateRequest {
+	s.ApplyStartTime = &v
+	return s
+}
+
+func (s *ListQuotaApplicationsForTemplateRequest) SetBatchQuotaApplicationId(v string) *ListQuotaApplicationsForTemplateRequest {
+	s.BatchQuotaApplicationId = &v
+	return s
+}
+
+func (s *ListQuotaApplicationsForTemplateRequest) SetMaxResults(v int32) *ListQuotaApplicationsForTemplateRequest {
+	s.MaxResults = &v
+	return s
+}
+
+func (s *ListQuotaApplicationsForTemplateRequest) SetNextToken(v string) *ListQuotaApplicationsForTemplateRequest {
+	s.NextToken = &v
+	return s
+}
+
+func (s *ListQuotaApplicationsForTemplateRequest) SetProductCode(v string) *ListQuotaApplicationsForTemplateRequest {
+	s.ProductCode = &v
+	return s
+}
+
+func (s *ListQuotaApplicationsForTemplateRequest) SetQuotaActionCode(v string) *ListQuotaApplicationsForTemplateRequest {
+	s.QuotaActionCode = &v
+	return s
+}
+
+func (s *ListQuotaApplicationsForTemplateRequest) SetQuotaCategory(v string) *ListQuotaApplicationsForTemplateRequest {
+	s.QuotaCategory = &v
+	return s
+}
+
+type ListQuotaApplicationsForTemplateResponseBody struct {
+	MaxResults             *int32                                                                `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
+	NextToken              *string                                                               `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
+	QuotaBatchApplications []*ListQuotaApplicationsForTemplateResponseBodyQuotaBatchApplications `json:"QuotaBatchApplications,omitempty" xml:"QuotaBatchApplications,omitempty" type:"Repeated"`
+	RequestId              *string                                                               `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	TotalCount             *int32                                                                `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
+}
+
+func (s ListQuotaApplicationsForTemplateResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListQuotaApplicationsForTemplateResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *ListQuotaApplicationsForTemplateResponseBody) SetMaxResults(v int32) *ListQuotaApplicationsForTemplateResponseBody {
+	s.MaxResults = &v
+	return s
+}
+
+func (s *ListQuotaApplicationsForTemplateResponseBody) SetNextToken(v string) *ListQuotaApplicationsForTemplateResponseBody {
+	s.NextToken = &v
+	return s
+}
+
+func (s *ListQuotaApplicationsForTemplateResponseBody) SetQuotaBatchApplications(v []*ListQuotaApplicationsForTemplateResponseBodyQuotaBatchApplications) *ListQuotaApplicationsForTemplateResponseBody {
+	s.QuotaBatchApplications = v
+	return s
+}
+
+func (s *ListQuotaApplicationsForTemplateResponseBody) SetRequestId(v string) *ListQuotaApplicationsForTemplateResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *ListQuotaApplicationsForTemplateResponseBody) SetTotalCount(v int32) *ListQuotaApplicationsForTemplateResponseBody {
+	s.TotalCount = &v
+	return s
+}
+
+type ListQuotaApplicationsForTemplateResponseBodyQuotaBatchApplications struct {
+	ApplyTime               *string                                                                             `json:"ApplyTime,omitempty" xml:"ApplyTime,omitempty"`
+	AuditStatusVos          []*ListQuotaApplicationsForTemplateResponseBodyQuotaBatchApplicationsAuditStatusVos `json:"AuditStatusVos,omitempty" xml:"AuditStatusVos,omitempty" type:"Repeated"`
+	BatchQuotaApplicationId *string                                                                             `json:"BatchQuotaApplicationId,omitempty" xml:"BatchQuotaApplicationId,omitempty"`
+	DesireValue             *float64                                                                            `json:"DesireValue,omitempty" xml:"DesireValue,omitempty"`
+	Dimensions              map[string]interface{}                                                              `json:"Dimensions,omitempty" xml:"Dimensions,omitempty"`
+	EffectiveTime           *string                                                                             `json:"EffectiveTime,omitempty" xml:"EffectiveTime,omitempty"`
+	ExpireTime              *string                                                                             `json:"ExpireTime,omitempty" xml:"ExpireTime,omitempty"`
+	ProductCode             *string                                                                             `json:"ProductCode,omitempty" xml:"ProductCode,omitempty"`
+	QuotaActionCode         *string                                                                             `json:"QuotaActionCode,omitempty" xml:"QuotaActionCode,omitempty"`
+	QuotaCategory           *string                                                                             `json:"QuotaCategory,omitempty" xml:"QuotaCategory,omitempty"`
+}
+
+func (s ListQuotaApplicationsForTemplateResponseBodyQuotaBatchApplications) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListQuotaApplicationsForTemplateResponseBodyQuotaBatchApplications) GoString() string {
+	return s.String()
+}
+
+func (s *ListQuotaApplicationsForTemplateResponseBodyQuotaBatchApplications) SetApplyTime(v string) *ListQuotaApplicationsForTemplateResponseBodyQuotaBatchApplications {
+	s.ApplyTime = &v
+	return s
+}
+
+func (s *ListQuotaApplicationsForTemplateResponseBodyQuotaBatchApplications) SetAuditStatusVos(v []*ListQuotaApplicationsForTemplateResponseBodyQuotaBatchApplicationsAuditStatusVos) *ListQuotaApplicationsForTemplateResponseBodyQuotaBatchApplications {
+	s.AuditStatusVos = v
+	return s
+}
+
+func (s *ListQuotaApplicationsForTemplateResponseBodyQuotaBatchApplications) SetBatchQuotaApplicationId(v string) *ListQuotaApplicationsForTemplateResponseBodyQuotaBatchApplications {
+	s.BatchQuotaApplicationId = &v
+	return s
+}
+
+func (s *ListQuotaApplicationsForTemplateResponseBodyQuotaBatchApplications) SetDesireValue(v float64) *ListQuotaApplicationsForTemplateResponseBodyQuotaBatchApplications {
+	s.DesireValue = &v
+	return s
+}
+
+func (s *ListQuotaApplicationsForTemplateResponseBodyQuotaBatchApplications) SetDimensions(v map[string]interface{}) *ListQuotaApplicationsForTemplateResponseBodyQuotaBatchApplications {
+	s.Dimensions = v
+	return s
+}
+
+func (s *ListQuotaApplicationsForTemplateResponseBodyQuotaBatchApplications) SetEffectiveTime(v string) *ListQuotaApplicationsForTemplateResponseBodyQuotaBatchApplications {
+	s.EffectiveTime = &v
+	return s
+}
+
+func (s *ListQuotaApplicationsForTemplateResponseBodyQuotaBatchApplications) SetExpireTime(v string) *ListQuotaApplicationsForTemplateResponseBodyQuotaBatchApplications {
+	s.ExpireTime = &v
+	return s
+}
+
+func (s *ListQuotaApplicationsForTemplateResponseBodyQuotaBatchApplications) SetProductCode(v string) *ListQuotaApplicationsForTemplateResponseBodyQuotaBatchApplications {
+	s.ProductCode = &v
+	return s
+}
+
+func (s *ListQuotaApplicationsForTemplateResponseBodyQuotaBatchApplications) SetQuotaActionCode(v string) *ListQuotaApplicationsForTemplateResponseBodyQuotaBatchApplications {
+	s.QuotaActionCode = &v
+	return s
+}
+
+func (s *ListQuotaApplicationsForTemplateResponseBodyQuotaBatchApplications) SetQuotaCategory(v string) *ListQuotaApplicationsForTemplateResponseBodyQuotaBatchApplications {
+	s.QuotaCategory = &v
+	return s
+}
+
+type ListQuotaApplicationsForTemplateResponseBodyQuotaBatchApplicationsAuditStatusVos struct {
+	Count  *int32  `json:"Count,omitempty" xml:"Count,omitempty"`
+	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
+}
+
+func (s ListQuotaApplicationsForTemplateResponseBodyQuotaBatchApplicationsAuditStatusVos) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListQuotaApplicationsForTemplateResponseBodyQuotaBatchApplicationsAuditStatusVos) GoString() string {
+	return s.String()
+}
+
+func (s *ListQuotaApplicationsForTemplateResponseBodyQuotaBatchApplicationsAuditStatusVos) SetCount(v int32) *ListQuotaApplicationsForTemplateResponseBodyQuotaBatchApplicationsAuditStatusVos {
+	s.Count = &v
+	return s
+}
+
+func (s *ListQuotaApplicationsForTemplateResponseBodyQuotaBatchApplicationsAuditStatusVos) SetStatus(v string) *ListQuotaApplicationsForTemplateResponseBodyQuotaBatchApplicationsAuditStatusVos {
+	s.Status = &v
+	return s
+}
+
+type ListQuotaApplicationsForTemplateResponse struct {
+	Headers    map[string]*string                            `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                                        `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *ListQuotaApplicationsForTemplateResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s ListQuotaApplicationsForTemplateResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListQuotaApplicationsForTemplateResponse) GoString() string {
+	return s.String()
+}
+
+func (s *ListQuotaApplicationsForTemplateResponse) SetHeaders(v map[string]*string) *ListQuotaApplicationsForTemplateResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *ListQuotaApplicationsForTemplateResponse) SetStatusCode(v int32) *ListQuotaApplicationsForTemplateResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *ListQuotaApplicationsForTemplateResponse) SetBody(v *ListQuotaApplicationsForTemplateResponseBody) *ListQuotaApplicationsForTemplateResponse {
+	s.Body = v
+	return s
+}
+
 type ModifyQuotaTemplateServiceStatusRequest struct {
-	// The status of the quota template. Valid values:
+	// The state of the quota template. Valid values:
 	//
-	// *   \-1: disabled
-	// *   1: enabled
+	// *   \-1: The quota template is disabled.
+	// *   1: The quota template is enabled.
 	ServiceStatus *int32 `json:"ServiceStatus,omitempty" xml:"ServiceStatus,omitempty"`
 }
 
@@ -4239,10 +4941,10 @@ func (s *ModifyQuotaTemplateServiceStatusResponseBody) SetTemplateServiceStatus(
 type ModifyQuotaTemplateServiceStatusResponseBodyTemplateServiceStatus struct {
 	// The ID of the resource directory.
 	ResourceDirectoryId *string `json:"ResourceDirectoryId,omitempty" xml:"ResourceDirectoryId,omitempty"`
-	// The status of the quota template. Valid values:
+	// The state of the quota template. Valid values:
 	//
-	// *   \-1: disabled
-	// *   1: enabled
+	// *   \-1: The quota template is disabled.
+	// *   1: The quota template is enabled.
 	ServiceStatus *int32 `json:"ServiceStatus,omitempty" xml:"ServiceStatus,omitempty"`
 }
 
@@ -4294,41 +4996,16 @@ func (s *ModifyQuotaTemplateServiceStatusResponse) SetBody(v *ModifyQuotaTemplat
 }
 
 type ModifyTemplateQuotaItemRequest struct {
-	// The requested value of the quota.
-	DesireValue *float32 `json:"DesireValue,omitempty" xml:"DesireValue,omitempty"`
-	// The quota dimensions.
-	Dimensions []*ModifyTemplateQuotaItemRequestDimensions `json:"Dimensions,omitempty" xml:"Dimensions,omitempty" type:"Repeated"`
-	// The start time of the validity period of the quota. Specify the value in UTC. This parameter is valid only if you set the QuotaCategory parameter to WhiteListLabel.
-	//
-	// > If you do not specify this parameter, the quota takes effect immediately.
-	EffectiveTime *string `json:"EffectiveTime,omitempty" xml:"EffectiveTime,omitempty"`
-	// The language of the quota alert notification. Valid values:
-	//
-	// *   zh (default value): Chinese
-	// *   en: English
-	EnvLanguage *string `json:"EnvLanguage,omitempty" xml:"EnvLanguage,omitempty"`
-	// The end time of the validity period of the quota. Specify the value in UTC. This parameter is valid only if you set the QuotaCategory parameter to WhiteListLabel.
-	//
-	// > If the value of this parameter is empty, no end time is specified.
-	ExpireTime *string `json:"ExpireTime,omitempty" xml:"ExpireTime,omitempty"`
-	// The ID of the quota template. For more information about how to obtain the ID of a quota template, see [ListQuotaApplicationTemplates](~~450403~~).
-	Id *string `json:"Id,omitempty" xml:"Id,omitempty"`
-	// Specifies whether to send a notification about the application result. Valid values:
-	//
-	// *   0 (default value): no
-	// *   3: yes
-	NoticeType *int64 `json:"NoticeType,omitempty" xml:"NoticeType,omitempty"`
-	// The abbreviation of the Alibaba Cloud service name.
-	//
-	// > For more information, see [Alibaba Cloud services that support Quota Center](~~182368~~).
-	ProductCode *string `json:"ProductCode,omitempty" xml:"ProductCode,omitempty"`
-	// The ID of the quota.
-	QuotaActionCode *string `json:"QuotaActionCode,omitempty" xml:"QuotaActionCode,omitempty"`
-	// The type of the quota. Valid values:
-	//
-	// *   CommonQuota: general quota
-	// *   WhiteListLabel: whitelist quota
-	QuotaCategory *string `json:"QuotaCategory,omitempty" xml:"QuotaCategory,omitempty"`
+	DesireValue     *float32                                    `json:"DesireValue,omitempty" xml:"DesireValue,omitempty"`
+	Dimensions      []*ModifyTemplateQuotaItemRequestDimensions `json:"Dimensions,omitempty" xml:"Dimensions,omitempty" type:"Repeated"`
+	EffectiveTime   *string                                     `json:"EffectiveTime,omitempty" xml:"EffectiveTime,omitempty"`
+	EnvLanguage     *string                                     `json:"EnvLanguage,omitempty" xml:"EnvLanguage,omitempty"`
+	ExpireTime      *string                                     `json:"ExpireTime,omitempty" xml:"ExpireTime,omitempty"`
+	Id              *string                                     `json:"Id,omitempty" xml:"Id,omitempty"`
+	NoticeType      *int64                                      `json:"NoticeType,omitempty" xml:"NoticeType,omitempty"`
+	ProductCode     *string                                     `json:"ProductCode,omitempty" xml:"ProductCode,omitempty"`
+	QuotaActionCode *string                                     `json:"QuotaActionCode,omitempty" xml:"QuotaActionCode,omitempty"`
+	QuotaCategory   *string                                     `json:"QuotaCategory,omitempty" xml:"QuotaCategory,omitempty"`
 }
 
 func (s ModifyTemplateQuotaItemRequest) String() string {
@@ -4390,17 +5067,7 @@ func (s *ModifyTemplateQuotaItemRequest) SetQuotaCategory(v string) *ModifyTempl
 }
 
 type ModifyTemplateQuotaItemRequestDimensions struct {
-	// The dimension keys.
-	//
-	// The value range of N varies based on the number of dimensions that are supported by the related Alibaba Cloud service.
-	//
-	// > This parameter is required if you set the ProductCode parameter to ecs, ecs-spec, actiontrail, or ess.
-	Key *string `json:"Key,omitempty" xml:"Key,omitempty"`
-	// The dimension values.
-	//
-	// The value range of N varies based on the number of dimensions that are supported by the related Alibaba Cloud service.
-	//
-	// > This parameter is required if you set the ProductCode parameter to ecs, ecs-spec, actiontrail, or ess.
+	Key   *string `json:"Key,omitempty" xml:"Key,omitempty"`
 	Value *string `json:"Value,omitempty" xml:"Value,omitempty"`
 }
 
@@ -4423,9 +5090,7 @@ func (s *ModifyTemplateQuotaItemRequestDimensions) SetValue(v string) *ModifyTem
 }
 
 type ModifyTemplateQuotaItemResponseBody struct {
-	// The ID of the quota template.
-	Id *string `json:"Id,omitempty" xml:"Id,omitempty"`
-	// The ID of the request.
+	Id        *string `json:"Id,omitempty" xml:"Id,omitempty"`
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -4483,24 +5148,24 @@ type UpdateQuotaAlarmRequest struct {
 	AlarmName *string `json:"AlarmName,omitempty" xml:"AlarmName,omitempty"`
 	// The numeric value of the alert threshold. Valid values:
 	//
-	// *   If the `ThresholdType` parameter is set to `used` and the used quota is greater than or equal to a specified value, you receive alert notifications. The alert threshold must be greater than the current used quota.
-	// *   If the `ThresholdType` parameter is set to `usable` and the available quota is less than or equal to a specified value, you receive alert notifications. The alert threshold must be less than the current available quota.
+	// *   If you set the `ThresholdType` parameter to `used`, you will receive an alert notification when the used quota is greater than or equal to the preset alert threshold. The alert threshold must be greater than the current used quota.
+	// *   If you set the `ThresholdType` parameter to `usable`, you will receive an alert notification when the available quota is less than or equal to the preset alert threshold. The alert threshold must be less than the current available quota.
 	//
-	// >  You must set one of the Threshold and ThresholdPercent parameters.
+	// > You must set one of the Threshold and ThresholdPercent parameters.
 	Threshold *float32 `json:"Threshold,omitempty" xml:"Threshold,omitempty"`
 	// The percentage of the alert threshold. Valid values:
 	//
-	// *   If the `ThresholdType` parameter is set to `used` and the percentage of the used quota in the total quota is greater than or equal to a specified value, you receive alert notifications. Value range: (50%, 100%].
-	// *   If the `ThresholdType` parameter is set to `usable` and the percentage of the available quota in the total quota is less than or equal to a specified value, you receive alert notifications. Value range: (0%, 50%].
+	// *   If you set the `ThresholdType` parameter to `used`, you will receive an alert notification when the used quota is greater than or equal to the preset percentage of the alert threshold. Value range: (50%, 100%].
+	// *   If you set the `ThresholdType` parameter to `usable`, you will receive an alert notification when the available quota is less than or equal to the preset percentage of the alert threshold. Value range: (0%, 50%].
 	//
-	// >  You must set one of the Threshold and ThresholdPercent parameters.
+	// > You must set one of the Threshold and ThresholdPercent parameters.
 	ThresholdPercent *float32 `json:"ThresholdPercent,omitempty" xml:"ThresholdPercent,omitempty"`
 	// The type of the quota alert. Valid values:
 	//
 	// *   used: The alert is created for the used quota.
 	// *   usable: The alert is created for the available quota.
 	ThresholdType *string `json:"ThresholdType,omitempty" xml:"ThresholdType,omitempty"`
-	// The webhook URL. Quota Center sends the alert notification to a specified URL by using an HTTP POST request.
+	// The webhook URL. Quota Center sends alert notifications to the specified URL by using HTTP POST requests.
 	WebHook *string `json:"WebHook,omitempty" xml:"WebHook,omitempty"`
 }
 
@@ -4637,7 +5302,7 @@ func (client *Client) GetEndpoint(productId *string, regionId *string, endpointR
 }
 
 /**
- * In this example, the operation is called to create a quota alert for a quota whose ID is `q_hvnoqv`. This quota represents the maximum number of rules that can be created by a user. The quota belongs to Cloud Config whose service code is `config`.
+ * The ID of the alert.
  *
  * @param request CreateQuotaAlarmRequest
  * @param runtime runtime options for this request RuntimeOptions
@@ -4705,7 +5370,7 @@ func (client *Client) CreateQuotaAlarmWithOptions(request *CreateQuotaAlarmReque
 }
 
 /**
- * In this example, the operation is called to create a quota alert for a quota whose ID is `q_hvnoqv`. This quota represents the maximum number of rules that can be created by a user. The quota belongs to Cloud Config whose service code is `config`.
+ * The ID of the alert.
  *
  * @param request CreateQuotaAlarmRequest
  * @return CreateQuotaAlarmResponse
@@ -4722,7 +5387,7 @@ func (client *Client) CreateQuotaAlarm(request *CreateQuotaAlarmRequest) (_resul
 }
 
 /**
- * In this example, the operation is called to submit an application to increase the value of a quota whose ID is `q_security-groups` and whose name is Maximum Number of Security Groups. This quota belongs to Elastic Compute Service (ECS). The requested value of the quota is `804`, the application reason is `Scale Out`, and the region of the quota is `cn-hangzhou`.
+ * In this example, the operation is called to submit an application to increase the value of a quota whose ID is `q_security-groups` and whose name is Maximum Number of Security Groups. The quota belongs to Elastic Compute Service (ECS). The expected value of the quota is `804`, the application reason is `Scale Out`, and the ID of the region to which the quota belongs is `cn-hangzhou`.
  *
  * @param request CreateQuotaApplicationRequest
  * @param runtime runtime options for this request RuntimeOptions
@@ -4802,7 +5467,7 @@ func (client *Client) CreateQuotaApplicationWithOptions(request *CreateQuotaAppl
 }
 
 /**
- * In this example, the operation is called to submit an application to increase the value of a quota whose ID is `q_security-groups` and whose name is Maximum Number of Security Groups. This quota belongs to Elastic Compute Service (ECS). The requested value of the quota is `804`, the application reason is `Scale Out`, and the region of the quota is `cn-hangzhou`.
+ * In this example, the operation is called to submit an application to increase the value of a quota whose ID is `q_security-groups` and whose name is Maximum Number of Security Groups. The quota belongs to Elastic Compute Service (ECS). The expected value of the quota is `804`, the application reason is `Scale Out`, and the ID of the region to which the quota belongs is `cn-hangzhou`.
  *
  * @param request CreateQuotaApplicationRequest
  * @return CreateQuotaApplicationResponse
@@ -4811,6 +5476,90 @@ func (client *Client) CreateQuotaApplication(request *CreateQuotaApplicationRequ
 	runtime := &util.RuntimeOptions{}
 	_result = &CreateQuotaApplicationResponse{}
 	_body, _err := client.CreateQuotaApplicationWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) CreateQuotaApplicationsForTemplateWithOptions(request *CreateQuotaApplicationsForTemplateRequest, runtime *util.RuntimeOptions) (_result *CreateQuotaApplicationsForTemplateResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	body := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.AliyunUids)) {
+		body["AliyunUids"] = request.AliyunUids
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.DesireValue)) {
+		body["DesireValue"] = request.DesireValue
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Dimensions)) {
+		body["Dimensions"] = request.Dimensions
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.EffectiveTime)) {
+		body["EffectiveTime"] = request.EffectiveTime
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.EnvLanguage)) {
+		body["EnvLanguage"] = request.EnvLanguage
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ExpireTime)) {
+		body["ExpireTime"] = request.ExpireTime
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.NoticeType)) {
+		body["NoticeType"] = request.NoticeType
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ProductCode)) {
+		body["ProductCode"] = request.ProductCode
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.QuotaActionCode)) {
+		body["QuotaActionCode"] = request.QuotaActionCode
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.QuotaCategory)) {
+		body["QuotaCategory"] = request.QuotaCategory
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Reason)) {
+		body["Reason"] = request.Reason
+	}
+
+	req := &openapi.OpenApiRequest{
+		Body: openapiutil.ParseToMap(body),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("CreateQuotaApplicationsForTemplate"),
+		Version:     tea.String("2020-05-10"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &CreateQuotaApplicationsForTemplateResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) CreateQuotaApplicationsForTemplate(request *CreateQuotaApplicationsForTemplateRequest) (_result *CreateQuotaApplicationsForTemplateResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &CreateQuotaApplicationsForTemplateResponse{}
+	_body, _err := client.CreateQuotaApplicationsForTemplateWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -4996,7 +5745,7 @@ func (client *Client) DeleteTemplateQuotaItem(request *DeleteTemplateQuotaItemRe
 }
 
 /**
- * In this example, the operation is called to query the details about a quota whose ID is `q_security-groups` and whose name is Maximum Number of Security Groups. This quota belongs to Elastic Compute Service (ECS). The query result shows the details about the quota. The details include the name, ID, description, quota value, used quota, unit, and dimension of the quota. In this example, the quota name is `Maximum Number of Security Groups`. The quota ID is `q_security-groups`. The description is `The maximum number of security groups that can be created for the current account`. The quota value is `801`. The used quota is `26`. The quota unit is `security groups`. The quota dimension is `{"regionId":"cn-hangzhou"}`.
+ * In this example, the operation is called to query the details of a quota whose ID is `q_security-groups` and whose name is Maximum Number of Security Groups. This quota belongs to Elastic Compute Service (ECS). The query result shows the details of the quota. The details include the name, ID, description, quota value, used quota, unit, and dimension of the quota. In this example, the quota name is `Maximum Number of Security Groups`. The quota ID is `q_security-groups`. The description is `The maximum number of security groups that can be created for the current account`. The quota value is `801`. The used quota is `26`. The quota unit is `Number of security groups`. The quota dimension is `{"regionId":"cn-hangzhou"}`.
  *
  * @param request GetProductQuotaRequest
  * @param runtime runtime options for this request RuntimeOptions
@@ -5044,7 +5793,7 @@ func (client *Client) GetProductQuotaWithOptions(request *GetProductQuotaRequest
 }
 
 /**
- * In this example, the operation is called to query the details about a quota whose ID is `q_security-groups` and whose name is Maximum Number of Security Groups. This quota belongs to Elastic Compute Service (ECS). The query result shows the details about the quota. The details include the name, ID, description, quota value, used quota, unit, and dimension of the quota. In this example, the quota name is `Maximum Number of Security Groups`. The quota ID is `q_security-groups`. The description is `The maximum number of security groups that can be created for the current account`. The quota value is `801`. The used quota is `26`. The quota unit is `security groups`. The quota dimension is `{"regionId":"cn-hangzhou"}`.
+ * In this example, the operation is called to query the details of a quota whose ID is `q_security-groups` and whose name is Maximum Number of Security Groups. This quota belongs to Elastic Compute Service (ECS). The query result shows the details of the quota. The details include the name, ID, description, quota value, used quota, unit, and dimension of the quota. In this example, the quota name is `Maximum Number of Security Groups`. The quota ID is `q_security-groups`. The description is `The maximum number of security groups that can be created for the current account`. The quota value is `801`. The used quota is `26`. The quota unit is `Number of security groups`. The quota dimension is `{"regionId":"cn-hangzhou"}`.
  *
  * @param request GetProductQuotaRequest
  * @return GetProductQuotaResponse
@@ -5061,7 +5810,7 @@ func (client *Client) GetProductQuota(request *GetProductQuotaRequest) (_result 
 }
 
 /**
- * In this example, the operation is called to query the details about a quota dimension whose key is `regionId`. The quota dimension belongs to ECS Quotas by Instance Type whose service code is ecs-spec. The following query result is returned:
+ * In this example, the operation is called to query the details of a quota dimension whose key is `regionId`. The quota dimension belongs to Elastic Compute Service (ECS) Quotas by Instance Type whose service code is ecs-spec. The following query results are returned:
  * *   The values of the quota dimension include `cn-shenzhen`, `cn-beijing`, and `cn-hangzhou`.
  * *   The name of the quota dimension is `region`.
  *
@@ -5111,7 +5860,7 @@ func (client *Client) GetProductQuotaDimensionWithOptions(request *GetProductQuo
 }
 
 /**
- * In this example, the operation is called to query the details about a quota dimension whose key is `regionId`. The quota dimension belongs to ECS Quotas by Instance Type whose service code is ecs-spec. The following query result is returned:
+ * In this example, the operation is called to query the details of a quota dimension whose key is `regionId`. The quota dimension belongs to Elastic Compute Service (ECS) Quotas by Instance Type whose service code is ecs-spec. The following query results are returned:
  * *   The values of the quota dimension include `cn-shenzhen`, `cn-beijing`, and `cn-hangzhou`.
  * *   The name of the quota dimension is `region`.
  *
@@ -5130,7 +5879,7 @@ func (client *Client) GetProductQuotaDimension(request *GetProductQuotaDimension
 }
 
 /**
- * In this example, the operation is called to query the details of a quota alert whose ID is `78d7e436-4b25-4897-84b5-d7b656bb****`. The details of the alert are returned. The query result includes the alert ID, alert name, alert contact, and the time when the quota alert was created.
+ * For more information about common request parameters, see [Common parameters](~~171299~~).
  *
  * @param request GetQuotaAlarmRequest
  * @param runtime runtime options for this request RuntimeOptions
@@ -5170,7 +5919,7 @@ func (client *Client) GetQuotaAlarmWithOptions(request *GetQuotaAlarmRequest, ru
 }
 
 /**
- * In this example, the operation is called to query the details of a quota alert whose ID is `78d7e436-4b25-4897-84b5-d7b656bb****`. The details of the alert are returned. The query result includes the alert ID, alert name, alert contact, and the time when the quota alert was created.
+ * For more information about common request parameters, see [Common parameters](~~171299~~).
  *
  * @param request GetQuotaAlarmRequest
  * @return GetQuotaAlarmResponse
@@ -5352,10 +6101,10 @@ func (client *Client) ListAlarmHistories(request *ListAlarmHistoriesRequest) (_r
 }
 
 /**
- * In this example, the operation is called to query the list of quotas. A quota whose ID is `q_i5uzm3` depends on these quotas. The name of the quota is Maximum Number of Nodes. This quota belongs to Container Service for Kubernetes (ACK). The query result indicates that the specified quota depends on the following three quotas:
- * *   An Elastic Compute Service (ECS) quota whose ID is `q_elastic-network-interfaces`. This quota is the maximum number of ENIs (Secondary ENIs) that can be owned by the current account. The regions of the quota dimension include `cn-shenzhen`, `cn-beijing`, `cn-hangzhou`.
+ * In this example, the operation is called to query the quotas on which a Container Service for Kubernetes (ACK) quota whose ID is `q_i5uzm3` depends. This quota is the maximum number of nodes that can be created in an ACK cluster. The query result indicates that the specified quota depends on the following three quotas:
+ * *   An Elastic Compute Service (ECS) quota whose ID is `q_elastic-network-interfaces`. This quota is the maximum number of ENIs (Secondary ENIs) that can be owned by an Alibaba Cloud account. The quota is available in the following regions: `cn-shenzhen`, `cn-beijing`, and `cn-hangzhou`.
  * *   A Server Load Balancer (SLB) quota whose ID is `q_fh20b0`. This quota is the number of servers that can be attached to the backend of an SLB instance.
- * *   An SLB quota whose ID is `q_3mmbsp`. This quota is the number of SLB instances that can be owned by a user.
+ * *   An SLB quota whose ID is `q_3mmbsp`. This quota is the number of SLB instances that can be owned by an Alibaba Cloud account.
  *
  * @param request ListDependentQuotasRequest
  * @param runtime runtime options for this request RuntimeOptions
@@ -5399,10 +6148,10 @@ func (client *Client) ListDependentQuotasWithOptions(request *ListDependentQuota
 }
 
 /**
- * In this example, the operation is called to query the list of quotas. A quota whose ID is `q_i5uzm3` depends on these quotas. The name of the quota is Maximum Number of Nodes. This quota belongs to Container Service for Kubernetes (ACK). The query result indicates that the specified quota depends on the following three quotas:
- * *   An Elastic Compute Service (ECS) quota whose ID is `q_elastic-network-interfaces`. This quota is the maximum number of ENIs (Secondary ENIs) that can be owned by the current account. The regions of the quota dimension include `cn-shenzhen`, `cn-beijing`, `cn-hangzhou`.
+ * In this example, the operation is called to query the quotas on which a Container Service for Kubernetes (ACK) quota whose ID is `q_i5uzm3` depends. This quota is the maximum number of nodes that can be created in an ACK cluster. The query result indicates that the specified quota depends on the following three quotas:
+ * *   An Elastic Compute Service (ECS) quota whose ID is `q_elastic-network-interfaces`. This quota is the maximum number of ENIs (Secondary ENIs) that can be owned by an Alibaba Cloud account. The quota is available in the following regions: `cn-shenzhen`, `cn-beijing`, and `cn-hangzhou`.
  * *   A Server Load Balancer (SLB) quota whose ID is `q_fh20b0`. This quota is the number of servers that can be attached to the backend of an SLB instance.
- * *   An SLB quota whose ID is `q_3mmbsp`. This quota is the number of SLB instances that can be owned by a user.
+ * *   An SLB quota whose ID is `q_3mmbsp`. This quota is the number of SLB instances that can be owned by an Alibaba Cloud account.
  *
  * @param request ListDependentQuotasRequest
  * @return ListDependentQuotasResponse
@@ -5484,7 +6233,7 @@ func (client *Client) ListProductDimensionGroups(request *ListProductDimensionGr
 }
 
 /**
- * In this example, the operation is called to query the quota dimensions that are supported by Elastic Compute Service (ECS). The query result shows all the quota dimensions that are supported by ECS.
+ * In this example, the operation is called to query the quota dimensions that are supported by Elastic Compute Service (ECS). The query results show all the quota dimensions that are supported by ECS.
  *
  * @param request ListProductQuotaDimensionsRequest
  * @param runtime runtime options for this request RuntimeOptions
@@ -5536,7 +6285,7 @@ func (client *Client) ListProductQuotaDimensionsWithOptions(request *ListProduct
 }
 
 /**
- * In this example, the operation is called to query the quota dimensions that are supported by Elastic Compute Service (ECS). The query result shows all the quota dimensions that are supported by ECS.
+ * In this example, the operation is called to query the quota dimensions that are supported by Elastic Compute Service (ECS). The query results show all the quota dimensions that are supported by ECS.
  *
  * @param request ListProductQuotaDimensionsRequest
  * @return ListProductQuotaDimensionsResponse
@@ -5553,7 +6302,7 @@ func (client *Client) ListProductQuotaDimensions(request *ListProductQuotaDimens
 }
 
 /**
- * In this example, the operation is called to query the quotas whose instance type is `ecs.g5.2xlarge`. The quotas belong to ECS Quotas by Instance Type. The query result includes the name, ID, unit, dimensions, and cycle of each quota.
+ * In this example, the operation is called to query the quotas whose instance type is `ecs.g5.2xlarge`. The quotas belong to Elastic Compute Service (ECS) Quotas by Instance Type. The query result includes the name, ID, unit, dimensions, and cycle of each quota.
  *
  * @param request ListProductQuotasRequest
  * @param runtime runtime options for this request RuntimeOptions
@@ -5629,7 +6378,7 @@ func (client *Client) ListProductQuotasWithOptions(request *ListProductQuotasReq
 }
 
 /**
- * In this example, the operation is called to query the quotas whose instance type is `ecs.g5.2xlarge`. The quotas belong to ECS Quotas by Instance Type. The query result includes the name, ID, unit, dimensions, and cycle of each quota.
+ * In this example, the operation is called to query the quotas whose instance type is `ecs.g5.2xlarge`. The quotas belong to Elastic Compute Service (ECS) Quotas by Instance Type. The query result includes the name, ID, unit, dimensions, and cycle of each quota.
  *
  * @param request ListProductQuotasRequest
  * @return ListProductQuotasResponse
@@ -5828,7 +6577,7 @@ func (client *Client) ListQuotaApplicationTemplates(request *ListQuotaApplicatio
 }
 
 /**
- * In this example, the operation is called to query the details about an application that is submitted to increase a quota whose ID is `q_i5uzm3` and whose name is Maximum Number of Nodes. This quota belongs to Container Service for Kubernetes (ACK). The query result shows the details about the application. The details include the application ID, application time, requested quota, and application result. In this example, the application ID is `b926571d-cc09-4711-b547-58a615f0****`. The application time is `2021-01-15T09:13:53Z`. The expected quota value is `101`. The application result is `Agree`.
+ * In this example, the operation is called to query the details of an application that is submitted to increase a quota whose ID is `q_i5uzm3` and whose name is Maximum Number of Nodes. This quota belongs to Container Service for Kubernetes (ACK). The query result shows the details of the application. The details include the application ID, application time, requested quota, and application result. In this example, the application ID is `b926571d-cc09-4711-b547-58a615f0****`. The application time is `2021-01-15T09:13:53Z`. The expected quota value is `101`. The application result is `Agree`.
  *
  * @param request ListQuotaApplicationsRequest
  * @param runtime runtime options for this request RuntimeOptions
@@ -5896,7 +6645,7 @@ func (client *Client) ListQuotaApplicationsWithOptions(request *ListQuotaApplica
 }
 
 /**
- * In this example, the operation is called to query the details about an application that is submitted to increase a quota whose ID is `q_i5uzm3` and whose name is Maximum Number of Nodes. This quota belongs to Container Service for Kubernetes (ACK). The query result shows the details about the application. The details include the application ID, application time, requested quota, and application result. In this example, the application ID is `b926571d-cc09-4711-b547-58a615f0****`. The application time is `2021-01-15T09:13:53Z`. The expected quota value is `101`. The application result is `Agree`.
+ * In this example, the operation is called to query the details of an application that is submitted to increase a quota whose ID is `q_i5uzm3` and whose name is Maximum Number of Nodes. This quota belongs to Container Service for Kubernetes (ACK). The query result shows the details of the application. The details include the application ID, application time, requested quota, and application result. In this example, the application ID is `b926571d-cc09-4711-b547-58a615f0****`. The application time is `2021-01-15T09:13:53Z`. The expected quota value is `101`. The application result is `Agree`.
  *
  * @param request ListQuotaApplicationsRequest
  * @return ListQuotaApplicationsResponse
@@ -5912,8 +6661,152 @@ func (client *Client) ListQuotaApplications(request *ListQuotaApplicationsReques
 	return _result, _err
 }
 
+func (client *Client) ListQuotaApplicationsDetailForTemplateWithOptions(request *ListQuotaApplicationsDetailForTemplateRequest, runtime *util.RuntimeOptions) (_result *ListQuotaApplicationsDetailForTemplateResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	body := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.AliyunUid)) {
+		body["AliyunUid"] = request.AliyunUid
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.BatchQuotaApplicationId)) {
+		body["BatchQuotaApplicationId"] = request.BatchQuotaApplicationId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.MaxResults)) {
+		body["MaxResults"] = request.MaxResults
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.NextToken)) {
+		body["NextToken"] = request.NextToken
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ProductCode)) {
+		body["ProductCode"] = request.ProductCode
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.QuotaActionCode)) {
+		body["QuotaActionCode"] = request.QuotaActionCode
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.QuotaCategory)) {
+		body["QuotaCategory"] = request.QuotaCategory
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Status)) {
+		body["Status"] = request.Status
+	}
+
+	req := &openapi.OpenApiRequest{
+		Body: openapiutil.ParseToMap(body),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("ListQuotaApplicationsDetailForTemplate"),
+		Version:     tea.String("2020-05-10"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &ListQuotaApplicationsDetailForTemplateResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) ListQuotaApplicationsDetailForTemplate(request *ListQuotaApplicationsDetailForTemplateRequest) (_result *ListQuotaApplicationsDetailForTemplateResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &ListQuotaApplicationsDetailForTemplateResponse{}
+	_body, _err := client.ListQuotaApplicationsDetailForTemplateWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) ListQuotaApplicationsForTemplateWithOptions(request *ListQuotaApplicationsForTemplateRequest, runtime *util.RuntimeOptions) (_result *ListQuotaApplicationsForTemplateResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	body := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.ApplyEndTime)) {
+		body["ApplyEndTime"] = request.ApplyEndTime
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ApplyStartTime)) {
+		body["ApplyStartTime"] = request.ApplyStartTime
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.BatchQuotaApplicationId)) {
+		body["BatchQuotaApplicationId"] = request.BatchQuotaApplicationId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.MaxResults)) {
+		body["MaxResults"] = request.MaxResults
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.NextToken)) {
+		body["NextToken"] = request.NextToken
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ProductCode)) {
+		body["ProductCode"] = request.ProductCode
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.QuotaActionCode)) {
+		body["QuotaActionCode"] = request.QuotaActionCode
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.QuotaCategory)) {
+		body["QuotaCategory"] = request.QuotaCategory
+	}
+
+	req := &openapi.OpenApiRequest{
+		Body: openapiutil.ParseToMap(body),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("ListQuotaApplicationsForTemplate"),
+		Version:     tea.String("2020-05-10"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &ListQuotaApplicationsForTemplateResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) ListQuotaApplicationsForTemplate(request *ListQuotaApplicationsForTemplateRequest) (_result *ListQuotaApplicationsForTemplateResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &ListQuotaApplicationsForTemplateResponse{}
+	_body, _err := client.ListQuotaApplicationsForTemplateWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
 /**
- * By default, the status of a quota template is enabled.
+ * By default, the quota template is enabled.
  *
  * @param request ModifyQuotaTemplateServiceStatusRequest
  * @param runtime runtime options for this request RuntimeOptions
@@ -5953,7 +6846,7 @@ func (client *Client) ModifyQuotaTemplateServiceStatusWithOptions(request *Modif
 }
 
 /**
- * By default, the status of a quota template is enabled.
+ * By default, the quota template is enabled.
  *
  * @param request ModifyQuotaTemplateServiceStatusRequest
  * @return ModifyQuotaTemplateServiceStatusResponse
@@ -6052,7 +6945,7 @@ func (client *Client) ModifyTemplateQuotaItem(request *ModifyTemplateQuotaItemRe
 }
 
 /**
- * In this example, the operation is called to modify the information about a quota alert whose ID is `a2efa7fc-832f-47bb-8054-39e28012****` and name is `rules`. The alert threshold is changed from `150` to `160`.
+ * In this example, the operation is called to modify the information about a quota alert whose ID is `a2efa7fc-832f-47bb-8054-39e28012****` and whose name is `rules`. The alert threshold is changed from `150` to `160`.
  *
  * @param request UpdateQuotaAlarmRequest
  * @param runtime runtime options for this request RuntimeOptions
@@ -6112,7 +7005,7 @@ func (client *Client) UpdateQuotaAlarmWithOptions(request *UpdateQuotaAlarmReque
 }
 
 /**
- * In this example, the operation is called to modify the information about a quota alert whose ID is `a2efa7fc-832f-47bb-8054-39e28012****` and name is `rules`. The alert threshold is changed from `150` to `160`.
+ * In this example, the operation is called to modify the information about a quota alert whose ID is `a2efa7fc-832f-47bb-8054-39e28012****` and whose name is `rules`. The alert threshold is changed from `150` to `160`.
  *
  * @param request UpdateQuotaAlarmRequest
  * @return UpdateQuotaAlarmResponse
