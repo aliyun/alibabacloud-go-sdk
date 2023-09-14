@@ -1,4 +1,4 @@
-module github.com/alibabacloud-go/paifeaturestore-20230621/v2
+module github.com/alibabacloud-go/paifeaturestore-20230621/v3
 
 go 1.15
 

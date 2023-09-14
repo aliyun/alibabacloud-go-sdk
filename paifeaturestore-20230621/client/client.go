@@ -13,9 +13,9 @@ import (
 )
 
 type FeatureViewConfigValue struct {
-	Partitions map[string]map[string]interface{} `json:"Partitions,omitempty" xml:"Partitions,omitempty"`
-	EventTime  *string                           `json:"EventTime,omitempty" xml:"EventTime,omitempty"`
-	Equal      *bool                             `json:"Equal,omitempty" xml:"Equal,omitempty"`
+	Partitions map[string]*FeatureViewConfigValuePartitionsValue `json:"Partitions,omitempty" xml:"Partitions,omitempty"`
+	EventTime  *string                                           `json:"EventTime,omitempty" xml:"EventTime,omitempty"`
+	Equal      *bool                                             `json:"Equal,omitempty" xml:"Equal,omitempty"`
 }
 
 func (s FeatureViewConfigValue) String() string {
@@ -26,7 +26,7 @@ func (s FeatureViewConfigValue) GoString() string {
 	return s.String()
 }
 
-func (s *FeatureViewConfigValue) SetPartitions(v map[string]map[string]interface{}) *FeatureViewConfigValue {
+func (s *FeatureViewConfigValue) SetPartitions(v map[string]*FeatureViewConfigValuePartitionsValue) *FeatureViewConfigValue {
 	s.Partitions = v
 	return s
 }
@@ -38,6 +38,41 @@ func (s *FeatureViewConfigValue) SetEventTime(v string) *FeatureViewConfigValue 
 
 func (s *FeatureViewConfigValue) SetEqual(v bool) *FeatureViewConfigValue {
 	s.Equal = &v
+	return s
+}
+
+type FeatureViewConfigValuePartitionsValue struct {
+	Value      *string   `json:"Value,omitempty" xml:"Value,omitempty"`
+	Values     []*string `json:"Values,omitempty" xml:"Values,omitempty" type:"Repeated"`
+	StartValue *string   `json:"StartValue,omitempty" xml:"StartValue,omitempty"`
+	EndValue   *string   `json:"EndValue,omitempty" xml:"EndValue,omitempty"`
+}
+
+func (s FeatureViewConfigValuePartitionsValue) String() string {
+	return tea.Prettify(s)
+}
+
+func (s FeatureViewConfigValuePartitionsValue) GoString() string {
+	return s.String()
+}
+
+func (s *FeatureViewConfigValuePartitionsValue) SetValue(v string) *FeatureViewConfigValuePartitionsValue {
+	s.Value = &v
+	return s
+}
+
+func (s *FeatureViewConfigValuePartitionsValue) SetValues(v []*string) *FeatureViewConfigValuePartitionsValue {
+	s.Values = v
+	return s
+}
+
+func (s *FeatureViewConfigValuePartitionsValue) SetStartValue(v string) *FeatureViewConfigValuePartitionsValue {
+	s.StartValue = &v
+	return s
+}
+
+func (s *FeatureViewConfigValuePartitionsValue) SetEndValue(v string) *FeatureViewConfigValuePartitionsValue {
+	s.EndValue = &v
 	return s
 }
 
@@ -1357,6 +1392,7 @@ func (s *ExportModelFeatureTrainingSetTableRequestTrainingSetConfig) SetPartitio
 
 type ExportModelFeatureTrainingSetTableResponseBody struct {
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	TaskId    *string `json:"TaskId,omitempty" xml:"TaskId,omitempty"`
 }
 
 func (s ExportModelFeatureTrainingSetTableResponseBody) String() string {
@@ -1369,6 +1405,11 @@ func (s ExportModelFeatureTrainingSetTableResponseBody) GoString() string {
 
 func (s *ExportModelFeatureTrainingSetTableResponseBody) SetRequestId(v string) *ExportModelFeatureTrainingSetTableResponseBody {
 	s.RequestId = &v
+	return s
+}
+
+func (s *ExportModelFeatureTrainingSetTableResponseBody) SetTaskId(v string) *ExportModelFeatureTrainingSetTableResponseBody {
+	s.TaskId = &v
 	return s
 }
 
