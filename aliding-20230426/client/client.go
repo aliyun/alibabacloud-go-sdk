@@ -7756,12 +7756,13 @@ type GetEventResponseBody struct {
 	Recurrence         *GetEventResponseBodyRecurrence         `json:"recurrence,omitempty" xml:"recurrence,omitempty" type:"Struct"`
 	Reminders          []*GetEventResponseBodyReminders        `json:"reminders,omitempty" xml:"reminders,omitempty" type:"Repeated"`
 	// requestId
-	RequestId      *string                    `json:"requestId,omitempty" xml:"requestId,omitempty"`
-	SeriesMasterId *string                    `json:"seriesMasterId,omitempty" xml:"seriesMasterId,omitempty"`
-	Start          *GetEventResponseBodyStart `json:"start,omitempty" xml:"start,omitempty" type:"Struct"`
-	Status         *string                    `json:"status,omitempty" xml:"status,omitempty"`
-	Summary        *string                    `json:"summary,omitempty" xml:"summary,omitempty"`
-	UpdateTime     *string                    `json:"updateTime,omitempty" xml:"updateTime,omitempty"`
+	RequestId           *string                                  `json:"requestId,omitempty" xml:"requestId,omitempty"`
+	RichTextDescription *GetEventResponseBodyRichTextDescription `json:"richTextDescription,omitempty" xml:"richTextDescription,omitempty" type:"Struct"`
+	SeriesMasterId      *string                                  `json:"seriesMasterId,omitempty" xml:"seriesMasterId,omitempty"`
+	Start               *GetEventResponseBodyStart               `json:"start,omitempty" xml:"start,omitempty" type:"Struct"`
+	Status              *string                                  `json:"status,omitempty" xml:"status,omitempty"`
+	Summary             *string                                  `json:"summary,omitempty" xml:"summary,omitempty"`
+	UpdateTime          *string                                  `json:"updateTime,omitempty" xml:"updateTime,omitempty"`
 }
 
 func (s GetEventResponseBody) String() string {
@@ -7849,6 +7850,11 @@ func (s *GetEventResponseBody) SetReminders(v []*GetEventResponseBodyReminders) 
 
 func (s *GetEventResponseBody) SetRequestId(v string) *GetEventResponseBody {
 	s.RequestId = &v
+	return s
+}
+
+func (s *GetEventResponseBody) SetRichTextDescription(v *GetEventResponseBodyRichTextDescription) *GetEventResponseBody {
+	s.RichTextDescription = v
 	return s
 }
 
@@ -8257,6 +8263,23 @@ func (s *GetEventResponseBodyReminders) SetMethod(v string) *GetEventResponseBod
 
 func (s *GetEventResponseBodyReminders) SetMinutes(v string) *GetEventResponseBodyReminders {
 	s.Minutes = &v
+	return s
+}
+
+type GetEventResponseBodyRichTextDescription struct {
+	Text *string `json:"Text,omitempty" xml:"Text,omitempty"`
+}
+
+func (s GetEventResponseBodyRichTextDescription) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetEventResponseBodyRichTextDescription) GoString() string {
+	return s.String()
+}
+
+func (s *GetEventResponseBodyRichTextDescription) SetText(v string) *GetEventResponseBodyRichTextDescription {
+	s.Text = &v
 	return s
 }
 
@@ -13657,26 +13680,27 @@ func (s *ListEventsResponseBody) SetSyncToken(v string) *ListEventsResponseBody 
 }
 
 type ListEventsResponseBodyEvents struct {
-	Attendees          []*ListEventsResponseBodyEventsAttendees        `json:"Attendees,omitempty" xml:"Attendees,omitempty" type:"Repeated"`
-	Categories         []*ListEventsResponseBodyEventsCategories       `json:"Categories,omitempty" xml:"Categories,omitempty" type:"Repeated"`
-	CreateTime         *string                                         `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
-	Description        *string                                         `json:"Description,omitempty" xml:"Description,omitempty"`
-	End                *ListEventsResponseBodyEventsEnd                `json:"End,omitempty" xml:"End,omitempty" type:"Struct"`
-	ExtendedProperties *ListEventsResponseBodyEventsExtendedProperties `json:"ExtendedProperties,omitempty" xml:"ExtendedProperties,omitempty" type:"Struct"`
-	Id                 *string                                         `json:"Id,omitempty" xml:"Id,omitempty"`
-	IsAllDay           *bool                                           `json:"IsAllDay,omitempty" xml:"IsAllDay,omitempty"`
-	Location           *ListEventsResponseBodyEventsLocation           `json:"Location,omitempty" xml:"Location,omitempty" type:"Struct"`
-	MeetingRooms       []*ListEventsResponseBodyEventsMeetingRooms     `json:"MeetingRooms,omitempty" xml:"MeetingRooms,omitempty" type:"Repeated"`
-	OnlineMeetingInfo  *ListEventsResponseBodyEventsOnlineMeetingInfo  `json:"OnlineMeetingInfo,omitempty" xml:"OnlineMeetingInfo,omitempty" type:"Struct"`
-	Organizer          *ListEventsResponseBodyEventsOrganizer          `json:"Organizer,omitempty" xml:"Organizer,omitempty" type:"Struct"`
-	OriginStart        *ListEventsResponseBodyEventsOriginStart        `json:"OriginStart,omitempty" xml:"OriginStart,omitempty" type:"Struct"`
-	Recurrence         *ListEventsResponseBodyEventsRecurrence         `json:"Recurrence,omitempty" xml:"Recurrence,omitempty" type:"Struct"`
-	Reminders          []*ListEventsResponseBodyEventsReminders        `json:"Reminders,omitempty" xml:"Reminders,omitempty" type:"Repeated"`
-	SeriesMasterId     *string                                         `json:"SeriesMasterId,omitempty" xml:"SeriesMasterId,omitempty"`
-	Start              *ListEventsResponseBodyEventsStart              `json:"Start,omitempty" xml:"Start,omitempty" type:"Struct"`
-	Status             *string                                         `json:"Status,omitempty" xml:"Status,omitempty"`
-	Summary            *string                                         `json:"Summary,omitempty" xml:"Summary,omitempty"`
-	UpdateTime         *string                                         `json:"UpdateTime,omitempty" xml:"UpdateTime,omitempty"`
+	Attendees           []*ListEventsResponseBodyEventsAttendees         `json:"Attendees,omitempty" xml:"Attendees,omitempty" type:"Repeated"`
+	Categories          []*ListEventsResponseBodyEventsCategories        `json:"Categories,omitempty" xml:"Categories,omitempty" type:"Repeated"`
+	CreateTime          *string                                          `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
+	Description         *string                                          `json:"Description,omitempty" xml:"Description,omitempty"`
+	End                 *ListEventsResponseBodyEventsEnd                 `json:"End,omitempty" xml:"End,omitempty" type:"Struct"`
+	ExtendedProperties  *ListEventsResponseBodyEventsExtendedProperties  `json:"ExtendedProperties,omitempty" xml:"ExtendedProperties,omitempty" type:"Struct"`
+	Id                  *string                                          `json:"Id,omitempty" xml:"Id,omitempty"`
+	IsAllDay            *bool                                            `json:"IsAllDay,omitempty" xml:"IsAllDay,omitempty"`
+	Location            *ListEventsResponseBodyEventsLocation            `json:"Location,omitempty" xml:"Location,omitempty" type:"Struct"`
+	MeetingRooms        []*ListEventsResponseBodyEventsMeetingRooms      `json:"MeetingRooms,omitempty" xml:"MeetingRooms,omitempty" type:"Repeated"`
+	OnlineMeetingInfo   *ListEventsResponseBodyEventsOnlineMeetingInfo   `json:"OnlineMeetingInfo,omitempty" xml:"OnlineMeetingInfo,omitempty" type:"Struct"`
+	Organizer           *ListEventsResponseBodyEventsOrganizer           `json:"Organizer,omitempty" xml:"Organizer,omitempty" type:"Struct"`
+	OriginStart         *ListEventsResponseBodyEventsOriginStart         `json:"OriginStart,omitempty" xml:"OriginStart,omitempty" type:"Struct"`
+	Recurrence          *ListEventsResponseBodyEventsRecurrence          `json:"Recurrence,omitempty" xml:"Recurrence,omitempty" type:"Struct"`
+	Reminders           []*ListEventsResponseBodyEventsReminders         `json:"Reminders,omitempty" xml:"Reminders,omitempty" type:"Repeated"`
+	RichTextDescription *ListEventsResponseBodyEventsRichTextDescription `json:"RichTextDescription,omitempty" xml:"RichTextDescription,omitempty" type:"Struct"`
+	SeriesMasterId      *string                                          `json:"SeriesMasterId,omitempty" xml:"SeriesMasterId,omitempty"`
+	Start               *ListEventsResponseBodyEventsStart               `json:"Start,omitempty" xml:"Start,omitempty" type:"Struct"`
+	Status              *string                                          `json:"Status,omitempty" xml:"Status,omitempty"`
+	Summary             *string                                          `json:"Summary,omitempty" xml:"Summary,omitempty"`
+	UpdateTime          *string                                          `json:"UpdateTime,omitempty" xml:"UpdateTime,omitempty"`
 }
 
 func (s ListEventsResponseBodyEvents) String() string {
@@ -13759,6 +13783,11 @@ func (s *ListEventsResponseBodyEvents) SetRecurrence(v *ListEventsResponseBodyEv
 
 func (s *ListEventsResponseBodyEvents) SetReminders(v []*ListEventsResponseBodyEventsReminders) *ListEventsResponseBodyEvents {
 	s.Reminders = v
+	return s
+}
+
+func (s *ListEventsResponseBodyEvents) SetRichTextDescription(v *ListEventsResponseBodyEventsRichTextDescription) *ListEventsResponseBodyEvents {
+	s.RichTextDescription = v
 	return s
 }
 
@@ -14154,6 +14183,23 @@ func (s *ListEventsResponseBodyEventsReminders) SetMethod(v string) *ListEventsR
 
 func (s *ListEventsResponseBodyEventsReminders) SetMinutes(v string) *ListEventsResponseBodyEventsReminders {
 	s.Minutes = &v
+	return s
+}
+
+type ListEventsResponseBodyEventsRichTextDescription struct {
+	Text *string `json:"Text,omitempty" xml:"Text,omitempty"`
+}
+
+func (s ListEventsResponseBodyEventsRichTextDescription) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListEventsResponseBodyEventsRichTextDescription) GoString() string {
+	return s.String()
+}
+
+func (s *ListEventsResponseBodyEventsRichTextDescription) SetText(v string) *ListEventsResponseBodyEventsRichTextDescription {
+	s.Text = &v
 	return s
 }
 
