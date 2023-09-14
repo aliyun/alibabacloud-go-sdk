@@ -187,140 +187,24 @@ func (s *AddAddressBookResponse) SetBody(v *AddAddressBookResponseBody) *AddAddr
 }
 
 type AddControlPolicyRequest struct {
-	// The action that Cloud Firewall performs on the traffic. Valid values:
-	//
-	// *   **accept**: allows the traffic.
-	// *   **drop**: denies the traffic.
-	// *   **log**: monitors the traffic.
-	AclAction *string `json:"AclAction,omitempty" xml:"AclAction,omitempty"`
-	// The application type supported by the access control policy. Valid values:
-	//
-	// *   **FTP**
-	// *   **HTTP**
-	// *   **HTTPS**
-	// *   **Memcache**
-	// *   **MongoDB**
-	// *   **MQTT**
-	// *   **MySQL**
-	// *   **RDP**
-	// *   **Redis**
-	// *   **SMTP**
-	// *   **SMTPS**
-	// *   **SSH**
-	// *   **SSL_No_Cert**
-	// *   **SSL**
-	// *   **VNC**
-	// *   **ANY**
-	//
-	// > The value of this parameter is based on the value of Proto. If Proto is set to TCP, you can set ApplicationName to any valid value. If Proto is set to UDP, ICMP, or ANY, you can set ApplicationName only to ANY. You must specify at least one of the ApplicationNameList and ApplicationName parameters.
-	ApplicationName *string `json:"ApplicationName,omitempty" xml:"ApplicationName,omitempty"`
-	// The application types supported by the access control policy.
+	AclAction           *string   `json:"AclAction,omitempty" xml:"AclAction,omitempty"`
+	ApplicationName     *string   `json:"ApplicationName,omitempty" xml:"ApplicationName,omitempty"`
 	ApplicationNameList []*string `json:"ApplicationNameList,omitempty" xml:"ApplicationNameList,omitempty" type:"Repeated"`
-	// The description of the access control policy.
-	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
-	// The destination port in the access control policy. Valid values:
-	//
-	// *   If Proto is set to ICMP, DestPort is automatically left empty.
-	//
-	// > If Proto is set to ICMP, access control does not take effect on the destination port.
-	//
-	// *   If Proto is set to TCP, UDP, or ANY and DestPortType is set to group, DestPort is empty.
-	//
-	// > If DestPortType is set to group, you do not need to specify the destination port number. All ports on which the access control policy takes effect are included in the destination port address book.
-	//
-	// *   If Proto is set to TCP, UDP, or ANY and DestPortType is set to port, the value of DestPort is the destination port number.
-	DestPort *string `json:"DestPort,omitempty" xml:"DestPort,omitempty"`
-	// The name of the destination port address book in the access control policy.
-	//
-	// > If DestPortType is set to group, you must specify the name of the destination port address book.
-	DestPortGroup *string `json:"DestPortGroup,omitempty" xml:"DestPortGroup,omitempty"`
-	// The type of the destination port in the access control policy.
-	//
-	// Valid values:
-	//
-	// *   **port**: port
-	// *   **group**: port address book
-	DestPortType *string `json:"DestPortType,omitempty" xml:"DestPortType,omitempty"`
-	// The destination address in the access control policy.
-	//
-	// Valid values:
-	//
-	// *   If DestinationType is set to net, the value of this parameter is a CIDR block.
-	//
-	//     Example: 1.2.XX.XX/24
-	//
-	// *   If DestinationType is set to group, the value of this parameter is an address book name.
-	//
-	//     Example: db_group
-	//
-	// *   If DestinationType is set to domain, the value of this parameter is a domain name.
-	//
-	//     Example: \*.aliyuncs.com
-	//
-	// *   If DestinationType is set to location, the value of this parameter is a location.
-	//
-	//     Example: \["BJ11", "ZB"]
-	Destination *string `json:"Destination,omitempty" xml:"Destination,omitempty"`
-	// The type of the destination address in the access control policy. Valid values:
-	//
-	// *   **net**: CIDR block
-	// *   **group**: address book
-	// *   **domain**: domain name
-	// *   **location**: location
-	DestinationType *string `json:"DestinationType,omitempty" xml:"DestinationType,omitempty"`
-	// The direction of the traffic to which the access control policy applies. Valid values:
-	//
-	// *   **in**: inbound traffic
-	// *   **out**: outbound traffic
-	Direction *string `json:"Direction,omitempty" xml:"Direction,omitempty"`
-	// The IP version supported by the access control policy.
-	//
-	// Valid values:
-	//
-	// *   **4**: IPv4
-	// *   **6**: IPv6
-	IpVersion *string `json:"IpVersion,omitempty" xml:"IpVersion,omitempty"`
-	// The language of the content within the request and response. Valid values:
-	//
-	// *   **zh**: Chinese (default)
-	// *   **en**: English
-	Lang *string `json:"Lang,omitempty" xml:"Lang,omitempty"`
-	// The priority of the access control policy. The priority value starts from 1. A smaller priority value indicates a higher priority.
-	NewOrder *string `json:"NewOrder,omitempty" xml:"NewOrder,omitempty"`
-	// The protocol type supported by the access control policy. Valid values:
-	//
-	// *   **ANY**
-	// *   **TCP**
-	// *   **UDP**
-	// *   **ICMP**
-	Proto *string `json:"Proto,omitempty" xml:"Proto,omitempty"`
-	// Specifies whether to enable the access control policy. By default, an access control policy is enabled after the policy is created. Valid values:
-	//
-	// *   **true**: enables the access control policy.
-	// *   **false**: disables the access control policy.
-	Release *string `json:"Release,omitempty" xml:"Release,omitempty"`
-	// The source address in the access control policy. Valid values:
-	//
-	// *   If SourceType is set to net, the value of this parameter is a CIDR block.
-	//
-	//     Example: 1.1.XX.XX/24
-	//
-	// *   If SourceType is set to group, the value of this parameter is an address book name.
-	//
-	//     Example: db_group
-	//
-	// *   If SourceType is set to location, the value of this parameter is a location.
-	//
-	//     Example: \["BJ11", "ZB"]
-	Source *string `json:"Source,omitempty" xml:"Source,omitempty"`
+	Description         *string   `json:"Description,omitempty" xml:"Description,omitempty"`
+	DestPort            *string   `json:"DestPort,omitempty" xml:"DestPort,omitempty"`
+	DestPortGroup       *string   `json:"DestPortGroup,omitempty" xml:"DestPortGroup,omitempty"`
+	DestPortType        *string   `json:"DestPortType,omitempty" xml:"DestPortType,omitempty"`
+	Destination         *string   `json:"Destination,omitempty" xml:"Destination,omitempty"`
+	DestinationType     *string   `json:"DestinationType,omitempty" xml:"DestinationType,omitempty"`
+	Direction           *string   `json:"Direction,omitempty" xml:"Direction,omitempty"`
+	IpVersion           *string   `json:"IpVersion,omitempty" xml:"IpVersion,omitempty"`
+	Lang                *string   `json:"Lang,omitempty" xml:"Lang,omitempty"`
+	NewOrder            *string   `json:"NewOrder,omitempty" xml:"NewOrder,omitempty"`
+	Proto               *string   `json:"Proto,omitempty" xml:"Proto,omitempty"`
+	Release             *string   `json:"Release,omitempty" xml:"Release,omitempty"`
+	Source              *string   `json:"Source,omitempty" xml:"Source,omitempty"`
 	// Deprecated
-	// The source IP address of the request.
-	SourceIp *string `json:"SourceIp,omitempty" xml:"SourceIp,omitempty"`
-	// The type of the source address in the access control policy. Valid values:
-	//
-	// *   **net**: CIDR block
-	// *   **group**: address book
-	// *   **location**: location
+	SourceIp   *string `json:"SourceIp,omitempty" xml:"SourceIp,omitempty"`
 	SourceType *string `json:"SourceType,omitempty" xml:"SourceType,omitempty"`
 }
 
@@ -423,9 +307,7 @@ func (s *AddControlPolicyRequest) SetSourceType(v string) *AddControlPolicyReque
 }
 
 type AddControlPolicyResponseBody struct {
-	// The ID of the access control policy that is created on the Internet firewall.
-	AclUuid *string `json:"AclUuid,omitempty" xml:"AclUuid,omitempty"`
-	// The ID of the request.
+	AclUuid   *string `json:"AclUuid,omitempty" xml:"AclUuid,omitempty"`
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -667,24 +549,125 @@ func (s *BatchCopyVpcFirewallControlPolicyResponse) SetBody(v *BatchCopyVpcFirew
 }
 
 type CreateNatFirewallControlPolicyRequest struct {
-	AclAction           *string   `json:"AclAction,omitempty" xml:"AclAction,omitempty"`
+	// The action that Cloud Firewall performs on the traffic.
+	//
+	// Valid values:
+	//
+	// *   **accept**: allows the traffic.
+	// *   **drop**: denies the traffic.
+	// *   **log**: monitors the traffic.
+	AclAction *string `json:"AclAction,omitempty" xml:"AclAction,omitempty"`
+	// The application types supported by the access control policy.
 	ApplicationNameList []*string `json:"ApplicationNameList,omitempty" xml:"ApplicationNameList,omitempty" type:"Repeated"`
-	Description         *string   `json:"Description,omitempty" xml:"Description,omitempty"`
-	DestPort            *string   `json:"DestPort,omitempty" xml:"DestPort,omitempty"`
-	DestPortGroup       *string   `json:"DestPortGroup,omitempty" xml:"DestPortGroup,omitempty"`
-	DestPortType        *string   `json:"DestPortType,omitempty" xml:"DestPortType,omitempty"`
-	Destination         *string   `json:"Destination,omitempty" xml:"Destination,omitempty"`
-	DestinationType     *string   `json:"DestinationType,omitempty" xml:"DestinationType,omitempty"`
-	Direction           *string   `json:"Direction,omitempty" xml:"Direction,omitempty"`
-	DomainResolveType   *int32    `json:"DomainResolveType,omitempty" xml:"DomainResolveType,omitempty"`
-	IpVersion           *string   `json:"IpVersion,omitempty" xml:"IpVersion,omitempty"`
-	Lang                *string   `json:"Lang,omitempty" xml:"Lang,omitempty"`
-	NatGatewayId        *string   `json:"NatGatewayId,omitempty" xml:"NatGatewayId,omitempty"`
-	NewOrder            *string   `json:"NewOrder,omitempty" xml:"NewOrder,omitempty"`
-	Proto               *string   `json:"Proto,omitempty" xml:"Proto,omitempty"`
-	Release             *string   `json:"Release,omitempty" xml:"Release,omitempty"`
-	Source              *string   `json:"Source,omitempty" xml:"Source,omitempty"`
-	SourceType          *string   `json:"SourceType,omitempty" xml:"SourceType,omitempty"`
+	// The description of the access control policy.
+	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
+	// The destination port in the access control policy. Valid values:
+	//
+	// *   If Proto is set to ICMP, DestPort is automatically left empty.
+	//
+	// > If Proto is set to ICMP, access control does not take effect on the destination port.
+	//
+	// *   If Proto is set to TCP, UDP, or ANY and DestPortType is set to group, DestPort is empty.
+	//
+	// > If DestPortType is set to group, you do not need to specify the destination port number. All ports on which the access control policy takes effect are included in the destination port address book.
+	//
+	// *   If Proto is set to TCP, UDP, or ANY and DestPortType is set to port, the value of DestPort is the destination port number.
+	DestPort *string `json:"DestPort,omitempty" xml:"DestPort,omitempty"`
+	// The name of the destination port address book in the access control policy.
+	//
+	// > If DestPortType is set to group, you must specify the name of the destination port address book.
+	DestPortGroup *string `json:"DestPortGroup,omitempty" xml:"DestPortGroup,omitempty"`
+	// The type of the destination port in the access control policy. Valid values:
+	//
+	// *   **port**: port
+	// *   **group**: port address book
+	DestPortType *string `json:"DestPortType,omitempty" xml:"DestPortType,omitempty"`
+	// The destination address in the access control policy.
+	//
+	// Valid values:
+	//
+	// *   If DestinationType is set to net, the value of this parameter is a CIDR block.
+	//
+	//     Example: 1.2.XX.XX/24
+	//
+	// *   If DestinationType is set to group, the value of this parameter is an address book.
+	//
+	//     Example: db_group
+	//
+	// *   If DestinationType is set to domain, the value of this parameter is a domain name.
+	//
+	//     Example: \*.aliyuncs.com
+	//
+	// *   If DestinationType is set to location, the value of this parameter is a location.
+	//
+	//     Example: \["BJ11", "ZB"]
+	Destination *string `json:"Destination,omitempty" xml:"Destination,omitempty"`
+	// The type of the destination address in the access control policy.
+	//
+	// Valid values:
+	//
+	// *   **net**: CIDR block
+	// *   **group**: address book
+	// *   **domain**: domain name
+	DestinationType *string `json:"DestinationType,omitempty" xml:"DestinationType,omitempty"`
+	// The direction of the traffic to which the access control policy applies. Valid values:
+	//
+	// *   **out**: outbound traffic
+	Direction *string `json:"Direction,omitempty" xml:"Direction,omitempty"`
+	// The domain name resolution method of the access control policy. By default, an access control policy is enabled after it is created. Valid values:
+	//
+	// *   **0**: Fully qualified domain name (FQDN)-based resolution
+	// *   **1**: Domain Name System (DNS)-based dynamic resolution
+	// *   **2**: FQDN and DNS-based dynamic resolution
+	DomainResolveType *int32 `json:"DomainResolveType,omitempty" xml:"DomainResolveType,omitempty"`
+	// The IP version supported by the access control policy. Valid values:
+	//
+	// *   **4**: IPv4 (default)
+	IpVersion *string `json:"IpVersion,omitempty" xml:"IpVersion,omitempty"`
+	// The language of the content within the response.
+	//
+	// Valid values:
+	//
+	// *   **zh**: Chinese (default)
+	// *   **en**: English
+	Lang *string `json:"Lang,omitempty" xml:"Lang,omitempty"`
+	// The ID of the NAT gateway.
+	NatGatewayId *string `json:"NatGatewayId,omitempty" xml:"NatGatewayId,omitempty"`
+	// The new priority of the access control policy.
+	NewOrder *string `json:"NewOrder,omitempty" xml:"NewOrder,omitempty"`
+	// The protocol type in the access control policy.
+	//
+	// Valid values:
+	//
+	// *   ANY: all types of protocols
+	// *   TCP
+	// *   UDP
+	// *   ICMP
+	Proto *string `json:"Proto,omitempty" xml:"Proto,omitempty"`
+	// Specifies whether to enable the access control policy. By default, an access control policy is enabled after it is created. Valid values:
+	//
+	// *   **true**
+	// *   **false**
+	Release *string `json:"Release,omitempty" xml:"Release,omitempty"`
+	// The source address in the access control policy.
+	//
+	// Valid values:
+	//
+	// *   If **SourceType** is set to `net`, the value of Source is a CIDR block.
+	//
+	//     Example: 10.2.4.0/24
+	//
+	// *   If **SourceType** is set to `group`, the value of this parameter must be an address book name.
+	//
+	//     Example: db_group
+	Source *string `json:"Source,omitempty" xml:"Source,omitempty"`
+	// The type of the source address in the access control policy.
+	//
+	// Valid values:
+	//
+	// *   **net**: source CIDR block
+	// *   **group**: source address book
+	SourceType *string `json:"SourceType,omitempty" xml:"SourceType,omitempty"`
 }
 
 func (s CreateNatFirewallControlPolicyRequest) String() string {
@@ -786,7 +769,11 @@ func (s *CreateNatFirewallControlPolicyRequest) SetSourceType(v string) *CreateN
 }
 
 type CreateNatFirewallControlPolicyResponseBody struct {
-	AclUuid   *string `json:"AclUuid,omitempty" xml:"AclUuid,omitempty"`
+	// The UUID of the access control policy.
+	//
+	// > If you want to modify an access control policy, you must provide the UUID of the policy. You can call the DescribeNatFirewallControlPolicy operation to query the UUIDs of access control policies.
+	AclUuid *string `json:"AclUuid,omitempty" xml:"AclUuid,omitempty"`
+	// The request ID.
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -838,19 +825,38 @@ func (s *CreateNatFirewallControlPolicyResponse) SetBody(v *CreateNatFirewallCon
 }
 
 type CreateTrFirewallV2Request struct {
-	CenId                  *string `json:"CenId,omitempty" xml:"CenId,omitempty"`
-	FirewallDescription    *string `json:"FirewallDescription,omitempty" xml:"FirewallDescription,omitempty"`
-	FirewallName           *string `json:"FirewallName,omitempty" xml:"FirewallName,omitempty"`
-	FirewallSubnetCidr     *string `json:"FirewallSubnetCidr,omitempty" xml:"FirewallSubnetCidr,omitempty"`
-	FirewallVpcCidr        *string `json:"FirewallVpcCidr,omitempty" xml:"FirewallVpcCidr,omitempty"`
-	FirewallVpcId          *string `json:"FirewallVpcId,omitempty" xml:"FirewallVpcId,omitempty"`
-	FirewallVswitchId      *string `json:"FirewallVswitchId,omitempty" xml:"FirewallVswitchId,omitempty"`
-	Lang                   *string `json:"Lang,omitempty" xml:"Lang,omitempty"`
-	RegionNo               *string `json:"RegionNo,omitempty" xml:"RegionNo,omitempty"`
-	RouteMode              *string `json:"RouteMode,omitempty" xml:"RouteMode,omitempty"`
+	// The ID of the Cloud Enterprise Network (CEN) instance.
+	CenId *string `json:"CenId,omitempty" xml:"CenId,omitempty"`
+	// The description of the firewall.
+	FirewallDescription *string `json:"FirewallDescription,omitempty" xml:"FirewallDescription,omitempty"`
+	// The name of the firewall.
+	FirewallName *string `json:"FirewallName,omitempty" xml:"FirewallName,omitempty"`
+	// The subnet CIDR block of the VPC in which the ENI of the firewall is stored in automatic mode.
+	FirewallSubnetCidr *string `json:"FirewallSubnetCidr,omitempty" xml:"FirewallSubnetCidr,omitempty"`
+	// The CIDR block that is allocated to the VPC created for the VPC firewall in automatic mode.
+	FirewallVpcCidr *string `json:"FirewallVpcCidr,omitempty" xml:"FirewallVpcCidr,omitempty"`
+	// The ID of the VPC in which the ENI associated with the VPC firewall is created in manual mode.
+	FirewallVpcId *string `json:"FirewallVpcId,omitempty" xml:"FirewallVpcId,omitempty"`
+	// The ID of the vSwitch that is used to create the ENI in manual mode.
+	FirewallVswitchId *string `json:"FirewallVswitchId,omitempty" xml:"FirewallVswitchId,omitempty"`
+	// The language of the content within the response. Valid values:
+	//
+	// *   **zh**: Chinese (default)
+	// *   **en**: English
+	Lang *string `json:"Lang,omitempty" xml:"Lang,omitempty"`
+	// The region ID of the route router.
+	RegionNo *string `json:"RegionNo,omitempty" xml:"RegionNo,omitempty"`
+	// The routing mode of the VPC firewall. Valid values:
+	//
+	// *   **managed**: automatic mode
+	// *   **manual**: manual mode
+	RouteMode *string `json:"RouteMode,omitempty" xml:"RouteMode,omitempty"`
+	// The primary subnet CIDR block that the VPC uses to connect to the transit router in automatic mode.
 	TrAttachmentMasterCidr *string `json:"TrAttachmentMasterCidr,omitempty" xml:"TrAttachmentMasterCidr,omitempty"`
-	TrAttachmentSlaveCidr  *string `json:"TrAttachmentSlaveCidr,omitempty" xml:"TrAttachmentSlaveCidr,omitempty"`
-	TransitRouterId        *string `json:"TransitRouterId,omitempty" xml:"TransitRouterId,omitempty"`
+	// The secondary subnet CIDR block that the VPC uses to connect to the transit router in automatic mode.
+	TrAttachmentSlaveCidr *string `json:"TrAttachmentSlaveCidr,omitempty" xml:"TrAttachmentSlaveCidr,omitempty"`
+	// The ID of the transit router.
+	TransitRouterId *string `json:"TransitRouterId,omitempty" xml:"TransitRouterId,omitempty"`
 }
 
 func (s CreateTrFirewallV2Request) String() string {
@@ -927,8 +933,10 @@ func (s *CreateTrFirewallV2Request) SetTransitRouterId(v string) *CreateTrFirewa
 }
 
 type CreateTrFirewallV2ResponseBody struct {
+	// The instance ID of the VPC firewall.
 	FirewallId *string `json:"FirewallId,omitempty" xml:"FirewallId,omitempty"`
-	RequestId  *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The request ID.
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
 func (s CreateTrFirewallV2ResponseBody) String() string {
@@ -1503,7 +1511,8 @@ type CreateVpcFirewallControlPolicyRequest struct {
 	// - **Memcache**
 	// - **SSL**
 	// - **ANY**: all types of applications
-	ApplicationName *string `json:"ApplicationName,omitempty" xml:"ApplicationName,omitempty"`
+	ApplicationName     *string   `json:"ApplicationName,omitempty" xml:"ApplicationName,omitempty"`
+	ApplicationNameList []*string `json:"ApplicationNameList,omitempty" xml:"ApplicationNameList,omitempty" type:"Repeated"`
 	// The description of the access control policy.
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
 	// The destination port in the access control policy.
@@ -1588,6 +1597,11 @@ func (s *CreateVpcFirewallControlPolicyRequest) SetAclAction(v string) *CreateVp
 
 func (s *CreateVpcFirewallControlPolicyRequest) SetApplicationName(v string) *CreateVpcFirewallControlPolicyRequest {
 	s.ApplicationName = &v
+	return s
+}
+
+func (s *CreateVpcFirewallControlPolicyRequest) SetApplicationNameList(v []*string) *CreateVpcFirewallControlPolicyRequest {
+	s.ApplicationNameList = v
 	return s
 }
 
@@ -2040,9 +2054,22 @@ func (s *DeleteInstanceMembersResponse) SetBody(v *DeleteInstanceMembersResponse
 }
 
 type DeleteNatFirewallControlPolicyRequest struct {
-	AclUuid      *string `json:"AclUuid,omitempty" xml:"AclUuid,omitempty"`
-	Direction    *string `json:"Direction,omitempty" xml:"Direction,omitempty"`
-	Lang         *string `json:"Lang,omitempty" xml:"Lang,omitempty"`
+	// The UUID of the access control policy.
+	//
+	// To delete an access control policy, you must provide the ID of the policy. You can call the DescribeNatFirewallControlPolicy operation to query the UUIDs of access control policies.
+	AclUuid *string `json:"AclUuid,omitempty" xml:"AclUuid,omitempty"`
+	// The direction of the traffic to which the access control policy applies.
+	//
+	// Valid values:
+	//
+	// *   **out**: outbound traffic
+	Direction *string `json:"Direction,omitempty" xml:"Direction,omitempty"`
+	// The language of the content within the response. Valid values:
+	//
+	// *   **zh**: Chinese (default)
+	// *   **en**: English
+	Lang *string `json:"Lang,omitempty" xml:"Lang,omitempty"`
+	// The ID of the NAT gateway.
 	NatGatewayId *string `json:"NatGatewayId,omitempty" xml:"NatGatewayId,omitempty"`
 }
 
@@ -2075,6 +2102,7 @@ func (s *DeleteNatFirewallControlPolicyRequest) SetNatGatewayId(v string) *Delet
 }
 
 type DeleteNatFirewallControlPolicyResponseBody struct {
+	// The request ID.
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -3730,14 +3758,12 @@ func (s *DescribeDefaultIPSConfigResponse) SetBody(v *DescribeDefaultIPSConfigRe
 type DescribeDomainResolveRequest struct {
 	// The domain name whose DNS record you want to query.
 	Domain *string `json:"Domain,omitempty" xml:"Domain,omitempty"`
-	// The IP version of the asset that is protected by Cloud Firewall.
-	//
-	// Valid values:
+	// The IP version of the asset that is protected by Cloud Firewall. Valid values:
 	//
 	// *   **4**: IPv4 (default)
 	// *   **6**: IPv6
 	IpVersion *string `json:"IpVersion,omitempty" xml:"IpVersion,omitempty"`
-	// The natural language of the response.
+	// The language of the content within the response.
 	//
 	// Valid values:
 	//
@@ -3778,7 +3804,7 @@ func (s *DescribeDomainResolveRequest) SetSourceIp(v string) *DescribeDomainReso
 }
 
 type DescribeDomainResolveResponseBody struct {
-	// The ID of the request.
+	// The request ID.
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	// The details about the DNS record of the domain name.
 	ResolveResult *DescribeDomainResolveResponseBodyResolveResult `json:"ResolveResult,omitempty" xml:"ResolveResult,omitempty" type:"Struct"`
@@ -3857,17 +3883,15 @@ func (s *DescribeDomainResolveResponse) SetBody(v *DescribeDomainResolveResponse
 }
 
 type DescribeInstanceMembersRequest struct {
-	// The number of the page to return.
-	//
-	// Pages start from page 1. Default value: **1**.
+	// The page number. Default value: **1**.
 	CurrentPage *string `json:"CurrentPage,omitempty" xml:"CurrentPage,omitempty"`
-	// The remarks of the member in Cloud Firewall. The length is 1 ~ 256 characters.
+	// The remarks of the member. The remarks must be 1 to 256 characters in length.
 	MemberDesc *string `json:"MemberDesc,omitempty" xml:"MemberDesc,omitempty"`
-	// The name of the member in Cloud Firewall.
+	// The name of the member.
 	MemberDisplayName *string `json:"MemberDisplayName,omitempty" xml:"MemberDisplayName,omitempty"`
-	// The unique identifier (UID) of the member in Cloud Firewall.
+	// The UID of the member.
 	MemberUid *string `json:"MemberUid,omitempty" xml:"MemberUid,omitempty"`
-	// The number of entries to return on each page.
+	// The number of entries per page.
 	//
 	// Default value: **20**.
 	PageSize *string `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
@@ -3907,11 +3931,11 @@ func (s *DescribeInstanceMembersRequest) SetPageSize(v string) *DescribeInstance
 }
 
 type DescribeInstanceMembersResponseBody struct {
-	// The information about the member in Cloud Firewall.
+	// The information about the member.
 	Members []*DescribeInstanceMembersResponseBodyMembers `json:"Members,omitempty" xml:"Members,omitempty" type:"Repeated"`
 	// The pagination information.
 	PageInfo *DescribeInstanceMembersResponseBodyPageInfo `json:"PageInfo,omitempty" xml:"PageInfo,omitempty" type:"Struct"`
-	// The ID of the request.
+	// The request ID.
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -3939,24 +3963,20 @@ func (s *DescribeInstanceMembersResponseBody) SetRequestId(v string) *DescribeIn
 }
 
 type DescribeInstanceMembersResponseBodyMembers struct {
-	// The time when the member was added to Cloud Firewall.
-	//
-	// >  The value is a UNIX timestamp. Unit: seconds.
+	// The time when the member was added to Cloud Firewall. The value is a timestamp. Unit: seconds.
 	CreateTime *int32 `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
-	// The remarks of the member in Cloud Firewall.
+	// The remarks of the member.
 	MemberDesc *string `json:"MemberDesc,omitempty" xml:"MemberDesc,omitempty"`
-	// The name of the member in Cloud Firewall.
+	// The name of the member.
 	MemberDisplayName *string `json:"MemberDisplayName,omitempty" xml:"MemberDisplayName,omitempty"`
-	// The status of the member in Cloud Firewall. Valid values:
+	// The status of the member. Valid values:
 	//
 	// *   **normal**
 	// *   **deleting**
 	MemberStatus *string `json:"MemberStatus,omitempty" xml:"MemberStatus,omitempty"`
-	// The UID of the member in Cloud Firewall.
+	// The UID of the member.
 	MemberUid *int64 `json:"MemberUid,omitempty" xml:"MemberUid,omitempty"`
-	// The time when the member in Cloud Firewall was last modified.
-	//
-	// >  The value is a UNIX timestamp. Unit: seconds.
+	// The time when the member was last modified. The value is a timestamp. Unit: seconds.
 	ModifyTime *int32 `json:"ModifyTime,omitempty" xml:"ModifyTime,omitempty"`
 }
 
@@ -3999,11 +4019,11 @@ func (s *DescribeInstanceMembersResponseBodyMembers) SetModifyTime(v int32) *Des
 }
 
 type DescribeInstanceMembersResponseBodyPageInfo struct {
-	// The page number of the current page.
+	// The page number.
 	CurrentPage *int32 `json:"CurrentPage,omitempty" xml:"CurrentPage,omitempty"`
-	// The number of entries returned per page.
+	// The number of entries per page.
 	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	// The total number of the members in Cloud Firewall.
+	// The total number of the members.
 	TotalCount *int32 `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
 }
 
@@ -4055,6 +4075,283 @@ func (s *DescribeInstanceMembersResponse) SetStatusCode(v int32) *DescribeInstan
 }
 
 func (s *DescribeInstanceMembersResponse) SetBody(v *DescribeInstanceMembersResponseBody) *DescribeInstanceMembersResponse {
+	s.Body = v
+	return s
+}
+
+type DescribeInternetOpenIpRequest struct {
+	AssetsInstanceId   *string `json:"AssetsInstanceId,omitempty" xml:"AssetsInstanceId,omitempty"`
+	AssetsInstanceName *string `json:"AssetsInstanceName,omitempty" xml:"AssetsInstanceName,omitempty"`
+	AssetsType         *string `json:"AssetsType,omitempty" xml:"AssetsType,omitempty"`
+	CurrentPage        *string `json:"CurrentPage,omitempty" xml:"CurrentPage,omitempty"`
+	EndTime            *string `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
+	Lang               *string `json:"Lang,omitempty" xml:"Lang,omitempty"`
+	PageSize           *string `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	Port               *string `json:"Port,omitempty" xml:"Port,omitempty"`
+	PublicIp           *string `json:"PublicIp,omitempty" xml:"PublicIp,omitempty"`
+	RegionNo           *string `json:"RegionNo,omitempty" xml:"RegionNo,omitempty"`
+	RiskLevel          *string `json:"RiskLevel,omitempty" xml:"RiskLevel,omitempty"`
+	ServiceName        *string `json:"ServiceName,omitempty" xml:"ServiceName,omitempty"`
+	StartTime          *string `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
+}
+
+func (s DescribeInternetOpenIpRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeInternetOpenIpRequest) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeInternetOpenIpRequest) SetAssetsInstanceId(v string) *DescribeInternetOpenIpRequest {
+	s.AssetsInstanceId = &v
+	return s
+}
+
+func (s *DescribeInternetOpenIpRequest) SetAssetsInstanceName(v string) *DescribeInternetOpenIpRequest {
+	s.AssetsInstanceName = &v
+	return s
+}
+
+func (s *DescribeInternetOpenIpRequest) SetAssetsType(v string) *DescribeInternetOpenIpRequest {
+	s.AssetsType = &v
+	return s
+}
+
+func (s *DescribeInternetOpenIpRequest) SetCurrentPage(v string) *DescribeInternetOpenIpRequest {
+	s.CurrentPage = &v
+	return s
+}
+
+func (s *DescribeInternetOpenIpRequest) SetEndTime(v string) *DescribeInternetOpenIpRequest {
+	s.EndTime = &v
+	return s
+}
+
+func (s *DescribeInternetOpenIpRequest) SetLang(v string) *DescribeInternetOpenIpRequest {
+	s.Lang = &v
+	return s
+}
+
+func (s *DescribeInternetOpenIpRequest) SetPageSize(v string) *DescribeInternetOpenIpRequest {
+	s.PageSize = &v
+	return s
+}
+
+func (s *DescribeInternetOpenIpRequest) SetPort(v string) *DescribeInternetOpenIpRequest {
+	s.Port = &v
+	return s
+}
+
+func (s *DescribeInternetOpenIpRequest) SetPublicIp(v string) *DescribeInternetOpenIpRequest {
+	s.PublicIp = &v
+	return s
+}
+
+func (s *DescribeInternetOpenIpRequest) SetRegionNo(v string) *DescribeInternetOpenIpRequest {
+	s.RegionNo = &v
+	return s
+}
+
+func (s *DescribeInternetOpenIpRequest) SetRiskLevel(v string) *DescribeInternetOpenIpRequest {
+	s.RiskLevel = &v
+	return s
+}
+
+func (s *DescribeInternetOpenIpRequest) SetServiceName(v string) *DescribeInternetOpenIpRequest {
+	s.ServiceName = &v
+	return s
+}
+
+func (s *DescribeInternetOpenIpRequest) SetStartTime(v string) *DescribeInternetOpenIpRequest {
+	s.StartTime = &v
+	return s
+}
+
+type DescribeInternetOpenIpResponseBody struct {
+	DataList  []*DescribeInternetOpenIpResponseBodyDataList `json:"DataList,omitempty" xml:"DataList,omitempty" type:"Repeated"`
+	PageInfo  *DescribeInternetOpenIpResponseBodyPageInfo   `json:"PageInfo,omitempty" xml:"PageInfo,omitempty" type:"Struct"`
+	RequestId *string                                       `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+}
+
+func (s DescribeInternetOpenIpResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeInternetOpenIpResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeInternetOpenIpResponseBody) SetDataList(v []*DescribeInternetOpenIpResponseBodyDataList) *DescribeInternetOpenIpResponseBody {
+	s.DataList = v
+	return s
+}
+
+func (s *DescribeInternetOpenIpResponseBody) SetPageInfo(v *DescribeInternetOpenIpResponseBodyPageInfo) *DescribeInternetOpenIpResponseBody {
+	s.PageInfo = v
+	return s
+}
+
+func (s *DescribeInternetOpenIpResponseBody) SetRequestId(v string) *DescribeInternetOpenIpResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+type DescribeInternetOpenIpResponseBodyDataList struct {
+	AclRecommendDetail  *string   `json:"AclRecommendDetail,omitempty" xml:"AclRecommendDetail,omitempty"`
+	AssetsInstanceId    *string   `json:"AssetsInstanceId,omitempty" xml:"AssetsInstanceId,omitempty"`
+	AssetsName          *string   `json:"AssetsName,omitempty" xml:"AssetsName,omitempty"`
+	AssetsType          *string   `json:"AssetsType,omitempty" xml:"AssetsType,omitempty"`
+	DetailNum           *int32    `json:"DetailNum,omitempty" xml:"DetailNum,omitempty"`
+	HasAclRecommend     *bool     `json:"HasAclRecommend,omitempty" xml:"HasAclRecommend,omitempty"`
+	PortList            []*string `json:"PortList,omitempty" xml:"PortList,omitempty" type:"Repeated"`
+	PublicIp            *string   `json:"PublicIp,omitempty" xml:"PublicIp,omitempty"`
+	RegionNo            *string   `json:"RegionNo,omitempty" xml:"RegionNo,omitempty"`
+	RiskLevel           *int32    `json:"RiskLevel,omitempty" xml:"RiskLevel,omitempty"`
+	RiskReason          *string   `json:"RiskReason,omitempty" xml:"RiskReason,omitempty"`
+	ServiceNameList     []*string `json:"ServiceNameList,omitempty" xml:"ServiceNameList,omitempty" type:"Repeated"`
+	TrafficPercent1Day  *string   `json:"TrafficPercent1Day,omitempty" xml:"TrafficPercent1Day,omitempty"`
+	TrafficPercent30Day *string   `json:"TrafficPercent30Day,omitempty" xml:"TrafficPercent30Day,omitempty"`
+	TrafficPercent7Day  *string   `json:"TrafficPercent7Day,omitempty" xml:"TrafficPercent7Day,omitempty"`
+}
+
+func (s DescribeInternetOpenIpResponseBodyDataList) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeInternetOpenIpResponseBodyDataList) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeInternetOpenIpResponseBodyDataList) SetAclRecommendDetail(v string) *DescribeInternetOpenIpResponseBodyDataList {
+	s.AclRecommendDetail = &v
+	return s
+}
+
+func (s *DescribeInternetOpenIpResponseBodyDataList) SetAssetsInstanceId(v string) *DescribeInternetOpenIpResponseBodyDataList {
+	s.AssetsInstanceId = &v
+	return s
+}
+
+func (s *DescribeInternetOpenIpResponseBodyDataList) SetAssetsName(v string) *DescribeInternetOpenIpResponseBodyDataList {
+	s.AssetsName = &v
+	return s
+}
+
+func (s *DescribeInternetOpenIpResponseBodyDataList) SetAssetsType(v string) *DescribeInternetOpenIpResponseBodyDataList {
+	s.AssetsType = &v
+	return s
+}
+
+func (s *DescribeInternetOpenIpResponseBodyDataList) SetDetailNum(v int32) *DescribeInternetOpenIpResponseBodyDataList {
+	s.DetailNum = &v
+	return s
+}
+
+func (s *DescribeInternetOpenIpResponseBodyDataList) SetHasAclRecommend(v bool) *DescribeInternetOpenIpResponseBodyDataList {
+	s.HasAclRecommend = &v
+	return s
+}
+
+func (s *DescribeInternetOpenIpResponseBodyDataList) SetPortList(v []*string) *DescribeInternetOpenIpResponseBodyDataList {
+	s.PortList = v
+	return s
+}
+
+func (s *DescribeInternetOpenIpResponseBodyDataList) SetPublicIp(v string) *DescribeInternetOpenIpResponseBodyDataList {
+	s.PublicIp = &v
+	return s
+}
+
+func (s *DescribeInternetOpenIpResponseBodyDataList) SetRegionNo(v string) *DescribeInternetOpenIpResponseBodyDataList {
+	s.RegionNo = &v
+	return s
+}
+
+func (s *DescribeInternetOpenIpResponseBodyDataList) SetRiskLevel(v int32) *DescribeInternetOpenIpResponseBodyDataList {
+	s.RiskLevel = &v
+	return s
+}
+
+func (s *DescribeInternetOpenIpResponseBodyDataList) SetRiskReason(v string) *DescribeInternetOpenIpResponseBodyDataList {
+	s.RiskReason = &v
+	return s
+}
+
+func (s *DescribeInternetOpenIpResponseBodyDataList) SetServiceNameList(v []*string) *DescribeInternetOpenIpResponseBodyDataList {
+	s.ServiceNameList = v
+	return s
+}
+
+func (s *DescribeInternetOpenIpResponseBodyDataList) SetTrafficPercent1Day(v string) *DescribeInternetOpenIpResponseBodyDataList {
+	s.TrafficPercent1Day = &v
+	return s
+}
+
+func (s *DescribeInternetOpenIpResponseBodyDataList) SetTrafficPercent30Day(v string) *DescribeInternetOpenIpResponseBodyDataList {
+	s.TrafficPercent30Day = &v
+	return s
+}
+
+func (s *DescribeInternetOpenIpResponseBodyDataList) SetTrafficPercent7Day(v string) *DescribeInternetOpenIpResponseBodyDataList {
+	s.TrafficPercent7Day = &v
+	return s
+}
+
+type DescribeInternetOpenIpResponseBodyPageInfo struct {
+	CurrentPage *int32 `json:"CurrentPage,omitempty" xml:"CurrentPage,omitempty"`
+	PageSize    *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	TotalCount  *int32 `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
+}
+
+func (s DescribeInternetOpenIpResponseBodyPageInfo) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeInternetOpenIpResponseBodyPageInfo) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeInternetOpenIpResponseBodyPageInfo) SetCurrentPage(v int32) *DescribeInternetOpenIpResponseBodyPageInfo {
+	s.CurrentPage = &v
+	return s
+}
+
+func (s *DescribeInternetOpenIpResponseBodyPageInfo) SetPageSize(v int32) *DescribeInternetOpenIpResponseBodyPageInfo {
+	s.PageSize = &v
+	return s
+}
+
+func (s *DescribeInternetOpenIpResponseBodyPageInfo) SetTotalCount(v int32) *DescribeInternetOpenIpResponseBodyPageInfo {
+	s.TotalCount = &v
+	return s
+}
+
+type DescribeInternetOpenIpResponse struct {
+	Headers    map[string]*string                  `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                              `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *DescribeInternetOpenIpResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s DescribeInternetOpenIpResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeInternetOpenIpResponse) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeInternetOpenIpResponse) SetHeaders(v map[string]*string) *DescribeInternetOpenIpResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *DescribeInternetOpenIpResponse) SetStatusCode(v int32) *DescribeInternetOpenIpResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *DescribeInternetOpenIpResponse) SetBody(v *DescribeInternetOpenIpResponseBody) *DescribeInternetOpenIpResponse {
 	s.Body = v
 	return s
 }
@@ -4729,18 +5026,66 @@ func (s *DescribeInvadeEventListResponse) SetBody(v *DescribeInvadeEventListResp
 }
 
 type DescribeNatFirewallControlPolicyRequest struct {
-	AclAction    *string `json:"AclAction,omitempty" xml:"AclAction,omitempty"`
-	AclUuid      *string `json:"AclUuid,omitempty" xml:"AclUuid,omitempty"`
-	CurrentPage  *string `json:"CurrentPage,omitempty" xml:"CurrentPage,omitempty"`
-	Description  *string `json:"Description,omitempty" xml:"Description,omitempty"`
-	Destination  *string `json:"Destination,omitempty" xml:"Destination,omitempty"`
-	Direction    *string `json:"Direction,omitempty" xml:"Direction,omitempty"`
-	Lang         *string `json:"Lang,omitempty" xml:"Lang,omitempty"`
+	// The action that Cloud Firewall performs on the traffic.
+	//
+	// Valid values:
+	//
+	// *   **accept**: allows the traffic.
+	// *   **drop**: denies the traffic.
+	// *   **log**: monitors the traffic.
+	AclAction *string `json:"AclAction,omitempty" xml:"AclAction,omitempty"`
+	// The UUID of the access control policy.
+	AclUuid *string `json:"AclUuid,omitempty" xml:"AclUuid,omitempty"`
+	// The page number.
+	CurrentPage *string `json:"CurrentPage,omitempty" xml:"CurrentPage,omitempty"`
+	// The description of the access control policy. Fuzzy match is supported.
+	//
+	// > If you do not specify this parameter, the descriptions of all policies are queried.
+	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
+	// The destination address in the access control policy. Fuzzy match is supported. The value of this parameter varies based on the value of the DestinationType parameter.
+	//
+	// *   If DestinationType is set to `net`, the value of Destination must be a CIDR block. Example: 10.0.3.0/24.
+	// *   If DestinationType is set to `domain`, the value of Destination must be a domain name. Example: aliyun.
+	// *   If DestinationType is set to `group`, the value of Destination must be the name of an address book. Example: db_group.
+	// *   If DestinationType is set to `location`, the value of Destination is a location. For more information about location codes, see [AddControlPolicy](~~474128~~). Example: \["BJ11", "ZB"].
+	//
+	// > If you do not specify this parameter, all types of destination addresses are queried.
+	Destination *string `json:"Destination,omitempty" xml:"Destination,omitempty"`
+	// The direction of the traffic to which the access control policy applies. Valid values:
+	//
+	// *   **out**: outbound traffic
+	Direction *string `json:"Direction,omitempty" xml:"Direction,omitempty"`
+	// The language of the content within the response. Valid values:
+	//
+	// *   **zh**: Chinese (default)
+	// *   **en**: English
+	Lang *string `json:"Lang,omitempty" xml:"Lang,omitempty"`
+	// The ID of the NAT gateway.
 	NatGatewayId *string `json:"NatGatewayId,omitempty" xml:"NatGatewayId,omitempty"`
-	PageSize     *string `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	Proto        *string `json:"Proto,omitempty" xml:"Proto,omitempty"`
-	Release      *string `json:"Release,omitempty" xml:"Release,omitempty"`
-	Source       *string `json:"Source,omitempty" xml:"Source,omitempty"`
+	// The number of entries per page. Default value: 10.
+	PageSize *string `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	// The type of the protocol in the access control policy. Valid values:
+	//
+	// *   **TCP**
+	// *   **UDP**
+	// *   **ICMP**
+	// *   **ANY**: all types of protocols
+	//
+	// > If you do not specify this parameter, access control policies of all protocol types are queried.
+	Proto *string `json:"Proto,omitempty" xml:"Proto,omitempty"`
+	// Specifies whether the access control policy is enabled. By default, an access control policy is enabled after it is created. Valid values:
+	//
+	// *   **true**
+	// *   **false**
+	Release *string `json:"Release,omitempty" xml:"Release,omitempty"`
+	// The source address in the access control policy. Fuzzy match is supported. The value of this parameter varies based on the value of the SourceType parameter.
+	//
+	// *   If SourceType is set to `net`, the value of Source must be a CIDR block. Example: 192.0.XX.XX/24.
+	// *   If SourceType is set to `group`, the value of Source must be the name of an address book. Example: db_group. If the db_group address book does not contain addresses, all source addresses are queried.
+	// *   If SourceType is set to `location`, the value of Source must be a location. Example: beijing.
+	//
+	// > If you do not specify this parameter, all types of source addresses are queried.
+	Source *string `json:"Source,omitempty" xml:"Source,omitempty"`
 }
 
 func (s DescribeNatFirewallControlPolicyRequest) String() string {
@@ -4812,9 +5157,12 @@ func (s *DescribeNatFirewallControlPolicyRequest) SetSource(v string) *DescribeN
 }
 
 type DescribeNatFirewallControlPolicyResponseBody struct {
-	Policys    []*DescribeNatFirewallControlPolicyResponseBodyPolicys `json:"Policys,omitempty" xml:"Policys,omitempty" type:"Repeated"`
-	RequestId  *string                                                `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	TotalCount *string                                                `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
+	// The information about the access control policies.
+	Policys []*DescribeNatFirewallControlPolicyResponseBodyPolicys `json:"Policys,omitempty" xml:"Policys,omitempty" type:"Repeated"`
+	// The request ID.
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The total number of entries returned.
+	TotalCount *string `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
 }
 
 func (s DescribeNatFirewallControlPolicyResponseBody) String() string {
@@ -4841,34 +5189,104 @@ func (s *DescribeNatFirewallControlPolicyResponseBody) SetTotalCount(v string) *
 }
 
 type DescribeNatFirewallControlPolicyResponseBodyPolicys struct {
-	AclAction             *string   `json:"AclAction,omitempty" xml:"AclAction,omitempty"`
-	AclUuid               *string   `json:"AclUuid,omitempty" xml:"AclUuid,omitempty"`
-	ApplicationNameList   []*string `json:"ApplicationNameList,omitempty" xml:"ApplicationNameList,omitempty" type:"Repeated"`
-	CreateTime            *int64    `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
-	Description           *string   `json:"Description,omitempty" xml:"Description,omitempty"`
-	DestPort              *string   `json:"DestPort,omitempty" xml:"DestPort,omitempty"`
-	DestPortGroup         *string   `json:"DestPortGroup,omitempty" xml:"DestPortGroup,omitempty"`
-	DestPortGroupPorts    []*string `json:"DestPortGroupPorts,omitempty" xml:"DestPortGroupPorts,omitempty" type:"Repeated"`
-	DestPortType          *string   `json:"DestPortType,omitempty" xml:"DestPortType,omitempty"`
-	Destination           *string   `json:"Destination,omitempty" xml:"Destination,omitempty"`
+	// The action that Cloud Firewall performs on the traffic. Valid values:
+	//
+	// *   **accept**: allows the traffic.
+	// *   **drop**: denies the traffic.
+	// *   **log**: monitors the traffic.
+	AclAction *string `json:"AclAction,omitempty" xml:"AclAction,omitempty"`
+	// The UUID of the access control policy.
+	AclUuid *string `json:"AclUuid,omitempty" xml:"AclUuid,omitempty"`
+	// The application names.
+	ApplicationNameList []*string `json:"ApplicationNameList,omitempty" xml:"ApplicationNameList,omitempty" type:"Repeated"`
+	// The time at which the access control policy was created.
+	CreateTime *int64 `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
+	// The description of the access control policy.
+	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
+	// The destination port in the access control policy.
+	DestPort *string `json:"DestPort,omitempty" xml:"DestPort,omitempty"`
+	// The name of the destination port address book in the access control policy.
+	DestPortGroup *string `json:"DestPortGroup,omitempty" xml:"DestPortGroup,omitempty"`
+	// The ports in the destination port address book.
+	DestPortGroupPorts []*string `json:"DestPortGroupPorts,omitempty" xml:"DestPortGroupPorts,omitempty" type:"Repeated"`
+	// The type of the destination port in the access control policy. Valid values:
+	//
+	// *   **port**: port
+	// *   **group**: port address book
+	DestPortType *string `json:"DestPortType,omitempty" xml:"DestPortType,omitempty"`
+	// The destination address in the access control policy. The value of this parameter varies based on the value of the DestinationType parameter. Valid values:
+	//
+	// *   If **DestinationType** is set to **net**, the value of Destination is a CIDR block. Example: 192.0.XX.XX/24.
+	// *   If **DestinationType** is set to **domain**, the value of Destination is a domain name. Example: aliyuncs.com.
+	// *   If **DestinationType** is set to **group**, the value of Destination is the name of an address book. Example: db_group.
+	// *   If **DestinationType** is set to **location**, the value of Destination is a location. For more information about location codes, see [AddControlPolicy](~~138867~~). Example: \["BJ11", "ZB"].
+	Destination *string `json:"Destination,omitempty" xml:"Destination,omitempty"`
+	// The CIDR blocks in the destination address book.
 	DestinationGroupCidrs []*string `json:"DestinationGroupCidrs,omitempty" xml:"DestinationGroupCidrs,omitempty" type:"Repeated"`
-	DestinationGroupType  *string   `json:"DestinationGroupType,omitempty" xml:"DestinationGroupType,omitempty"`
-	DestinationType       *string   `json:"DestinationType,omitempty" xml:"DestinationType,omitempty"`
-	DnsResult             *string   `json:"DnsResult,omitempty" xml:"DnsResult,omitempty"`
-	DnsResultTime         *int64    `json:"DnsResultTime,omitempty" xml:"DnsResultTime,omitempty"`
-	DomainResolveType     *int32    `json:"DomainResolveType,omitempty" xml:"DomainResolveType,omitempty"`
-	HitLastTime           *int64    `json:"HitLastTime,omitempty" xml:"HitLastTime,omitempty"`
-	HitTimes              *int32    `json:"HitTimes,omitempty" xml:"HitTimes,omitempty"`
-	ModifyTime            *int64    `json:"ModifyTime,omitempty" xml:"ModifyTime,omitempty"`
-	NatGatewayId          *string   `json:"NatGatewayId,omitempty" xml:"NatGatewayId,omitempty"`
-	Order                 *int32    `json:"Order,omitempty" xml:"Order,omitempty"`
-	Proto                 *string   `json:"Proto,omitempty" xml:"Proto,omitempty"`
-	Release               *string   `json:"Release,omitempty" xml:"Release,omitempty"`
-	Source                *string   `json:"Source,omitempty" xml:"Source,omitempty"`
-	SourceGroupCidrs      []*string `json:"SourceGroupCidrs,omitempty" xml:"SourceGroupCidrs,omitempty" type:"Repeated"`
-	SourceGroupType       *string   `json:"SourceGroupType,omitempty" xml:"SourceGroupType,omitempty"`
-	SourceType            *string   `json:"SourceType,omitempty" xml:"SourceType,omitempty"`
-	SpreadCnt             *string   `json:"SpreadCnt,omitempty" xml:"SpreadCnt,omitempty"`
+	// The type of the destination address book in the access control policy. Valid values:
+	//
+	// *   **ip**: an address book that includes one or more CIDR blocks
+	// *   **domain**: an address book that includes one or more domain names
+	DestinationGroupType *string `json:"DestinationGroupType,omitempty" xml:"DestinationGroupType,omitempty"`
+	// The type of the destination address in the access control policy. Valid values:
+	//
+	// *   **net**: CIDR block
+	// *   **group**: address book
+	// *   **domain**: domain name
+	// *   **location**
+	DestinationType *string `json:"DestinationType,omitempty" xml:"DestinationType,omitempty"`
+	// The DNS resolution result.
+	DnsResult *string `json:"DnsResult,omitempty" xml:"DnsResult,omitempty"`
+	// The time of the DNS resolution result. The value is a timestamp. Unit: seconds.
+	DnsResultTime *int64 `json:"DnsResultTime,omitempty" xml:"DnsResultTime,omitempty"`
+	// The domain name resolution method of the access control policy. By default, an access control policy is enabled after it is created. Valid values:
+	//
+	// *   **1**: Fully qualified domain name (FQDN)-based
+	// *   **2**: Domain Name System (DNS)-based
+	// *   **3**: FQDN and DNS-based
+	DomainResolveType *int32 `json:"DomainResolveType,omitempty" xml:"DomainResolveType,omitempty"`
+	// The times when the access control policy was last hit. The value is a timestamp. Unit: seconds.
+	HitLastTime *int64 `json:"HitLastTime,omitempty" xml:"HitLastTime,omitempty"`
+	// The number of hits for the access control policy.
+	HitTimes *int32 `json:"HitTimes,omitempty" xml:"HitTimes,omitempty"`
+	// The time at which the access control policy was modified.
+	ModifyTime *int64 `json:"ModifyTime,omitempty" xml:"ModifyTime,omitempty"`
+	// The ID of the NAT gateway.
+	NatGatewayId *string `json:"NatGatewayId,omitempty" xml:"NatGatewayId,omitempty"`
+	// The priority of the access control policy.
+	//
+	// The priority value starts from 1. A smaller priority value indicates a higher priority.
+	Order *int32 `json:"Order,omitempty" xml:"Order,omitempty"`
+	// The type of the protocol in the access control policy. Valid values:
+	//
+	// *   **ANY**
+	// *   **TCP**
+	// *   **UDP**
+	// *   **ICMP**
+	Proto *string `json:"Proto,omitempty" xml:"Proto,omitempty"`
+	// Indicates whether the access control policy is enabled. By default, an access control policy is enabled after it is created. Valid values:
+	//
+	// *   **true**
+	// *   **false**
+	Release *string `json:"Release,omitempty" xml:"Release,omitempty"`
+	// The source address in the access control policy. Valid values:
+	//
+	// *   If **SourceType** is set to `net`, the value of Source is a CIDR block. Example: 192.0.XX.XX/24.
+	// *   If **SourceType** is set to `group`, the value of Source is the name of an address book. Example: db_group.
+	// *   If **SourceType** is set to `location`, the value of Source is a location. For more information about location codes, see [AddControlPolicy](~~138867~~). Example: \["BJ11", "ZB"].
+	Source *string `json:"Source,omitempty" xml:"Source,omitempty"`
+	// The CIDR blocks in the source address book.
+	SourceGroupCidrs []*string `json:"SourceGroupCidrs,omitempty" xml:"SourceGroupCidrs,omitempty" type:"Repeated"`
+	// The type of the source address book in the access control policy. The value is fixed as **ip**. The value indicates an address book that includes one or more CIDR blocks.
+	SourceGroupType *string `json:"SourceGroupType,omitempty" xml:"SourceGroupType,omitempty"`
+	// The type of the source address book in the access control policy. Valid values:
+	//
+	// *   **net**: CIDR block
+	// *   **group**: address book
+	// *   **location**: location
+	SourceType *string `json:"SourceType,omitempty" xml:"SourceType,omitempty"`
+	// The total quota consumed by the returned access control policies, which is the sum of the quota consumed by each policy. The quota that is consumed by an access control policy is calculated based on the following formula: Quota that is consumed by an access control policy = Number of source CIDR blocks × Number of destination CIDR blocks, regions, or resolved domain names × *Number of applications* × Number of ports.
+	SpreadCnt *string `json:"SpreadCnt,omitempty" xml:"SpreadCnt,omitempty"`
 }
 
 func (s DescribeNatFirewallControlPolicyResponseBodyPolicys) String() string {
@@ -5049,9 +5467,22 @@ func (s *DescribeNatFirewallControlPolicyResponse) SetBody(v *DescribeNatFirewal
 }
 
 type DescribeNatFirewallPolicyPriorUsedRequest struct {
-	Direction    *string `json:"Direction,omitempty" xml:"Direction,omitempty"`
-	IpVersion    *string `json:"IpVersion,omitempty" xml:"IpVersion,omitempty"`
-	Lang         *string `json:"Lang,omitempty" xml:"Lang,omitempty"`
+	// The direction of the traffic to which the access control policy applies.
+	//
+	// Valid values:
+	//
+	// *   **out**: outbound traffic
+	Direction *string `json:"Direction,omitempty" xml:"Direction,omitempty"`
+	// The IP version supported by the access control policy. Valid values:
+	//
+	// *   **4**: IPv4 (default)
+	IpVersion *string `json:"IpVersion,omitempty" xml:"IpVersion,omitempty"`
+	// The language of the content within the request and response. Valid values:
+	//
+	// *   **zh**: Chinese (default)
+	// *   **en**: English
+	Lang *string `json:"Lang,omitempty" xml:"Lang,omitempty"`
+	// The ID of the NAT gateway.
 	NatGatewayId *string `json:"NatGatewayId,omitempty" xml:"NatGatewayId,omitempty"`
 }
 
@@ -5084,9 +5515,12 @@ func (s *DescribeNatFirewallPolicyPriorUsedRequest) SetNatGatewayId(v string) *D
 }
 
 type DescribeNatFirewallPolicyPriorUsedResponseBody struct {
-	End       *int32  `json:"End,omitempty" xml:"End,omitempty"`
+	// The lowest priority for the access control policy.
+	End *int32 `json:"End,omitempty" xml:"End,omitempty"`
+	// The request ID.
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	Start     *int32  `json:"Start,omitempty" xml:"Start,omitempty"`
+	// The highest priority for the access control policy.
+	Start *int32 `json:"Start,omitempty" xml:"Start,omitempty"`
 }
 
 func (s DescribeNatFirewallPolicyPriorUsedResponseBody) String() string {
@@ -7545,8 +7979,13 @@ func (s *DescribeTrFirewallV2RoutePolicyListResponse) SetBody(v *DescribeTrFirew
 }
 
 type DescribeTrFirewallsV2DetailRequest struct {
+	// The instance ID of the VPC firewall.
 	FirewallId *string `json:"FirewallId,omitempty" xml:"FirewallId,omitempty"`
-	Lang       *string `json:"Lang,omitempty" xml:"Lang,omitempty"`
+	// The language of the content within the response. Valid values:
+	//
+	// *   **zh**: Chinese (default)
+	// *   **en**: English
+	Lang *string `json:"Lang,omitempty" xml:"Lang,omitempty"`
 }
 
 func (s DescribeTrFirewallsV2DetailRequest) String() string {
@@ -7568,23 +8007,53 @@ func (s *DescribeTrFirewallsV2DetailRequest) SetLang(v string) *DescribeTrFirewa
 }
 
 type DescribeTrFirewallsV2DetailResponseBody struct {
-	CenId                  *string `json:"CenId,omitempty" xml:"CenId,omitempty"`
-	FirewallDescription    *string `json:"FirewallDescription,omitempty" xml:"FirewallDescription,omitempty"`
-	FirewallEniId          *string `json:"FirewallEniId,omitempty" xml:"FirewallEniId,omitempty"`
-	FirewallEniVpcId       *string `json:"FirewallEniVpcId,omitempty" xml:"FirewallEniVpcId,omitempty"`
-	FirewallEniVswitchId   *string `json:"FirewallEniVswitchId,omitempty" xml:"FirewallEniVswitchId,omitempty"`
-	FirewallId             *string `json:"FirewallId,omitempty" xml:"FirewallId,omitempty"`
-	FirewallName           *string `json:"FirewallName,omitempty" xml:"FirewallName,omitempty"`
-	FirewallStatus         *string `json:"FirewallStatus,omitempty" xml:"FirewallStatus,omitempty"`
-	FirewallSubnetCidr     *string `json:"FirewallSubnetCidr,omitempty" xml:"FirewallSubnetCidr,omitempty"`
-	FirewallSwitchStatus   *string `json:"FirewallSwitchStatus,omitempty" xml:"FirewallSwitchStatus,omitempty"`
-	FirewallVpcCidr        *string `json:"FirewallVpcCidr,omitempty" xml:"FirewallVpcCidr,omitempty"`
-	RegionNo               *string `json:"RegionNo,omitempty" xml:"RegionNo,omitempty"`
-	RequestId              *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The ID of the Cloud Enterprise Network (CEN) instance.
+	CenId *string `json:"CenId,omitempty" xml:"CenId,omitempty"`
+	// The description of the VPC firewall.
+	FirewallDescription *string `json:"FirewallDescription,omitempty" xml:"FirewallDescription,omitempty"`
+	// The ID of the Elastic Network Interface (ENI) with which the VPC firewall is associated.
+	FirewallEniId *string `json:"FirewallEniId,omitempty" xml:"FirewallEniId,omitempty"`
+	// The ID of the VPC to which the ENI is attached.
+	FirewallEniVpcId *string `json:"FirewallEniVpcId,omitempty" xml:"FirewallEniVpcId,omitempty"`
+	// The ID of the vSwitch with which the ENI is associated.
+	FirewallEniVswitchId *string `json:"FirewallEniVswitchId,omitempty" xml:"FirewallEniVswitchId,omitempty"`
+	// The instance ID of the VPC firewall.
+	FirewallId *string `json:"FirewallId,omitempty" xml:"FirewallId,omitempty"`
+	// The name of the VPC firewall.
+	FirewallName *string `json:"FirewallName,omitempty" xml:"FirewallName,omitempty"`
+	// The status of the VPC firewall. Valid values:
+	//
+	// *   Creating
+	// *   Deleting
+	// *   Ready
+	FirewallStatus     *string `json:"FirewallStatus,omitempty" xml:"FirewallStatus,omitempty"`
+	FirewallSubnetCidr *string `json:"FirewallSubnetCidr,omitempty" xml:"FirewallSubnetCidr,omitempty"`
+	// The status of the VPC firewall. Valid values:
+	//
+	// *   **opened**: The VPC firewall is enabled.
+	// *   **closed**: The VPC firewall is disabled.
+	// *   **notconfigured**: The VPC firewall is not created.
+	// *   **configured**: The VPC firewall is created but is not enabled.
+	// *   **creating**: The VPC firewall is being created.
+	// *   **opening**: The VPC firewall is being enabled.
+	// *   **deleting**: The VPC firewall is being deleted.
+	//
+	// > If you do not specify this parameter, VPC firewalls in all states are queried.
+	FirewallSwitchStatus *string `json:"FirewallSwitchStatus,omitempty" xml:"FirewallSwitchStatus,omitempty"`
+	FirewallVpcCidr      *string `json:"FirewallVpcCidr,omitempty" xml:"FirewallVpcCidr,omitempty"`
+	// The region ID of the transit router.
+	RegionNo *string `json:"RegionNo,omitempty" xml:"RegionNo,omitempty"`
+	// The request ID.
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The routing mode of the VPC firewall. Valid values:
+	//
+	// *   **managed**: automatic mode
+	// *   **manual**: manual mode
 	RouteMode              *string `json:"RouteMode,omitempty" xml:"RouteMode,omitempty"`
 	TrAttachmentMasterCidr *string `json:"TrAttachmentMasterCidr,omitempty" xml:"TrAttachmentMasterCidr,omitempty"`
 	TrAttachmentSlaveCidr  *string `json:"TrAttachmentSlaveCidr,omitempty" xml:"TrAttachmentSlaveCidr,omitempty"`
-	TransitRouterId        *string `json:"TransitRouterId,omitempty" xml:"TransitRouterId,omitempty"`
+	// The ID of the transit router.
+	TransitRouterId *string `json:"TransitRouterId,omitempty" xml:"TransitRouterId,omitempty"`
 }
 
 func (s DescribeTrFirewallsV2DetailResponseBody) String() string {
@@ -8581,6 +9050,7 @@ type DescribeVpcFirewallAclGroupListResponseBodyAclGroupList struct {
 	// *   If the VPC firewall is used to protect a CEN instance, the value of this parameter is the name of the CEN instance.
 	// *   If the VPC firewall is used to protect an Express Connect circuit, the value of this parameter is the name of the VPC firewall instance.
 	AclGroupName *string `json:"AclGroupName,omitempty" xml:"AclGroupName,omitempty"`
+	AclRuleCount *int32  `json:"AclRuleCount,omitempty" xml:"AclRuleCount,omitempty"`
 	// The UID of the member that is managed by your Alibaba Cloud account.
 	MemberUid *string `json:"MemberUid,omitempty" xml:"MemberUid,omitempty"`
 }
@@ -8600,6 +9070,11 @@ func (s *DescribeVpcFirewallAclGroupListResponseBodyAclGroupList) SetAclGroupId(
 
 func (s *DescribeVpcFirewallAclGroupListResponseBodyAclGroupList) SetAclGroupName(v string) *DescribeVpcFirewallAclGroupListResponseBodyAclGroupList {
 	s.AclGroupName = &v
+	return s
+}
+
+func (s *DescribeVpcFirewallAclGroupListResponseBodyAclGroupList) SetAclRuleCount(v int32) *DescribeVpcFirewallAclGroupListResponseBodyAclGroupList {
+	s.AclRuleCount = &v
 	return s
 }
 
@@ -9730,7 +10205,8 @@ type DescribeVpcFirewallControlPolicyResponseBodyPolicys struct {
 	// *   **Memcache**
 	// *   **SSL**
 	// *   **ANY**: all application types
-	ApplicationName *string `json:"ApplicationName,omitempty" xml:"ApplicationName,omitempty"`
+	ApplicationName     *string   `json:"ApplicationName,omitempty" xml:"ApplicationName,omitempty"`
+	ApplicationNameList []*string `json:"ApplicationNameList,omitempty" xml:"ApplicationNameList,omitempty" type:"Repeated"`
 	// The description of the access control policy.
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
 	// The destination port in the access control policy.
@@ -9763,10 +10239,12 @@ type DescribeVpcFirewallControlPolicyResponseBodyPolicys struct {
 	// *   **group**: address book
 	// *   **domain**: domain name
 	DestinationType *string `json:"DestinationType,omitempty" xml:"DestinationType,omitempty"`
+	HitLastTime     *int64  `json:"HitLastTime,omitempty" xml:"HitLastTime,omitempty"`
 	// The number of hits for the access control policy.
-	HitTimes *int32 `json:"HitTimes,omitempty" xml:"HitTimes,omitempty"`
+	HitTimes *int64 `json:"HitTimes,omitempty" xml:"HitTimes,omitempty"`
 	// The UID of the member that is managed by your Alibaba Cloud account.
-	MemberUid *string `json:"MemberUid,omitempty" xml:"MemberUid,omitempty"`
+	MemberUid  *string `json:"MemberUid,omitempty" xml:"MemberUid,omitempty"`
+	ModifyTime *int64  `json:"ModifyTime,omitempty" xml:"ModifyTime,omitempty"`
 	// The priority of the access control policy.
 	//
 	// The priority value starts from 1. A smaller priority value indicates a higher priority.
@@ -9827,6 +10305,11 @@ func (s *DescribeVpcFirewallControlPolicyResponseBodyPolicys) SetApplicationName
 	return s
 }
 
+func (s *DescribeVpcFirewallControlPolicyResponseBodyPolicys) SetApplicationNameList(v []*string) *DescribeVpcFirewallControlPolicyResponseBodyPolicys {
+	s.ApplicationNameList = v
+	return s
+}
+
 func (s *DescribeVpcFirewallControlPolicyResponseBodyPolicys) SetDescription(v string) *DescribeVpcFirewallControlPolicyResponseBodyPolicys {
 	s.Description = &v
 	return s
@@ -9872,13 +10355,23 @@ func (s *DescribeVpcFirewallControlPolicyResponseBodyPolicys) SetDestinationType
 	return s
 }
 
-func (s *DescribeVpcFirewallControlPolicyResponseBodyPolicys) SetHitTimes(v int32) *DescribeVpcFirewallControlPolicyResponseBodyPolicys {
+func (s *DescribeVpcFirewallControlPolicyResponseBodyPolicys) SetHitLastTime(v int64) *DescribeVpcFirewallControlPolicyResponseBodyPolicys {
+	s.HitLastTime = &v
+	return s
+}
+
+func (s *DescribeVpcFirewallControlPolicyResponseBodyPolicys) SetHitTimes(v int64) *DescribeVpcFirewallControlPolicyResponseBodyPolicys {
 	s.HitTimes = &v
 	return s
 }
 
 func (s *DescribeVpcFirewallControlPolicyResponseBodyPolicys) SetMemberUid(v string) *DescribeVpcFirewallControlPolicyResponseBodyPolicys {
 	s.MemberUid = &v
+	return s
+}
+
+func (s *DescribeVpcFirewallControlPolicyResponseBodyPolicys) SetModifyTime(v int64) *DescribeVpcFirewallControlPolicyResponseBodyPolicys {
+	s.ModifyTime = &v
 	return s
 }
 
@@ -12362,22 +12855,93 @@ func (s *ModifyInstanceMemberAttributesResponse) SetBody(v *ModifyInstanceMember
 }
 
 type ModifyNatFirewallControlPolicyRequest struct {
-	AclAction           *string   `json:"AclAction,omitempty" xml:"AclAction,omitempty"`
-	AclUuid             *string   `json:"AclUuid,omitempty" xml:"AclUuid,omitempty"`
+	// The action that Cloud Firewall performs on the traffic. Valid values:
+	//
+	// *   **accept**: allows the traffic.
+	// *   **drop**: denies the traffic.
+	// *   **log**: monitors the traffic.
+	AclAction *string `json:"AclAction,omitempty" xml:"AclAction,omitempty"`
+	// The UUID of the access control policy.
+	//
+	// To modify the configurations of an access control policy, you must provide the UUID of the policy. You can call the DescribeNatFirewallControlPolicy operation to query the UUIDs of access control policies.
+	AclUuid *string `json:"AclUuid,omitempty" xml:"AclUuid,omitempty"`
+	// The name of the application.
 	ApplicationNameList []*string `json:"ApplicationNameList,omitempty" xml:"ApplicationNameList,omitempty" type:"Repeated"`
-	Description         *string   `json:"Description,omitempty" xml:"Description,omitempty"`
-	DestPort            *string   `json:"DestPort,omitempty" xml:"DestPort,omitempty"`
-	DestPortGroup       *string   `json:"DestPortGroup,omitempty" xml:"DestPortGroup,omitempty"`
-	DestPortType        *string   `json:"DestPortType,omitempty" xml:"DestPortType,omitempty"`
-	Destination         *string   `json:"Destination,omitempty" xml:"Destination,omitempty"`
-	DestinationType     *string   `json:"DestinationType,omitempty" xml:"DestinationType,omitempty"`
-	DomainResolveType   *string   `json:"DomainResolveType,omitempty" xml:"DomainResolveType,omitempty"`
-	Lang                *string   `json:"Lang,omitempty" xml:"Lang,omitempty"`
-	NatGatewayId        *string   `json:"NatGatewayId,omitempty" xml:"NatGatewayId,omitempty"`
-	Proto               *string   `json:"Proto,omitempty" xml:"Proto,omitempty"`
-	Release             *string   `json:"Release,omitempty" xml:"Release,omitempty"`
-	Source              *string   `json:"Source,omitempty" xml:"Source,omitempty"`
-	SourceType          *string   `json:"SourceType,omitempty" xml:"SourceType,omitempty"`
+	// The description of the access control policy. Fuzzy match is supported.
+	//
+	// > If you do not specify this parameter, the descriptions of all policies are queried.
+	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
+	// The destination port in the access control policy.
+	//
+	// > If **DestPortType** is set to `port`, you must specify this parameter.
+	DestPort *string `json:"DestPort,omitempty" xml:"DestPort,omitempty"`
+	// The name of the destination port address book in the access control policy.
+	DestPortGroup *string `json:"DestPortGroup,omitempty" xml:"DestPortGroup,omitempty"`
+	// The type of the destination port in the access control policy. Valid values:
+	//
+	// *   **port**: port
+	// *   **group**: port address book
+	DestPortType *string `json:"DestPortType,omitempty" xml:"DestPortType,omitempty"`
+	// The destination address in the access control policy.
+	//
+	// *   If **DestinationType** is set to net, the value of **Destination** is a CIDR block. Example: 1.2.3.4/24
+	// *   If **DestinationType** is set to group, the value of **Destination** is an address book. Example: db_group
+	// *   If **DestinationType** is set to domain, the value of **Destination** is a domain name. Example: \*.aliyuncs.com
+	// *   If **DestinationType** is set to location, the value of **Destination** is a location. For more information about the location codes, see the "AddControlPolicy" topic. Example: \["BJ11", "ZB"]
+	Destination *string `json:"Destination,omitempty" xml:"Destination,omitempty"`
+	// The type of the destination address in the access control policy. Valid values:
+	//
+	// *   **net**: CIDR block
+	// *   **group**: address book
+	// *   **domain**: domain name
+	// *   **location**
+	DestinationType *string `json:"DestinationType,omitempty" xml:"DestinationType,omitempty"`
+	// The domain name resolution method of the access control policy. By default, an access control policy is enabled after it is created. Valid values:
+	//
+	// *   **0**: Fully qualified domain name (FQDN)-based resolution
+	// *   **1**: Domain Name System (DNS)-based dynamic resolution
+	// *   **2**: FQDN and DNS-based dynamic resolution
+	DomainResolveType *string `json:"DomainResolveType,omitempty" xml:"DomainResolveType,omitempty"`
+	// The language of the content within the request and the response. Valid values:
+	//
+	// *   **zh**: Chinese (default)
+	// *   **en**: English
+	Lang *string `json:"Lang,omitempty" xml:"Lang,omitempty"`
+	// The ID of the NAT gateway.
+	NatGatewayId *string `json:"NatGatewayId,omitempty" xml:"NatGatewayId,omitempty"`
+	// The protocol type supported by the access control policy. Valid values:
+	//
+	// *   **ANY**
+	// *   **TCP**
+	// *   **UDP**
+	// *   **ICMP**
+	//
+	// > The value **ANY** indicates all types of protocols.
+	Proto *string `json:"Proto,omitempty" xml:"Proto,omitempty"`
+	// The status of the access control policy. Valid values:
+	//
+	// *   true: enabled
+	// *   false: disabled
+	Release *string `json:"Release,omitempty" xml:"Release,omitempty"`
+	// The source address in the access control policy.
+	//
+	// Valid values:
+	//
+	// *   If **SourceType** is set to `net`, the value of Source is a CIDR block.
+	//
+	//     Example: 10.2.4.0/24
+	//
+	// *   If **SourceType** is set to `group`, the value of this parameter is an address book.
+	//
+	//     Example: db_group
+	Source *string `json:"Source,omitempty" xml:"Source,omitempty"`
+	// The type of the source address in the access control policy.
+	//
+	// Valid values:
+	//
+	// *   **net**: CIDR block
+	// *   **group**: address book
+	SourceType *string `json:"SourceType,omitempty" xml:"SourceType,omitempty"`
 }
 
 func (s ModifyNatFirewallControlPolicyRequest) String() string {
@@ -12469,6 +13033,7 @@ func (s *ModifyNatFirewallControlPolicyRequest) SetSourceType(v string) *ModifyN
 }
 
 type ModifyNatFirewallControlPolicyResponseBody struct {
+	// The request ID.
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -12515,10 +13080,21 @@ func (s *ModifyNatFirewallControlPolicyResponse) SetBody(v *ModifyNatFirewallCon
 }
 
 type ModifyNatFirewallControlPolicyPositionRequest struct {
-	AclUuid      *string `json:"AclUuid,omitempty" xml:"AclUuid,omitempty"`
-	Lang         *string `json:"Lang,omitempty" xml:"Lang,omitempty"`
+	// The UUID of the access control policy.
+	AclUuid *string `json:"AclUuid,omitempty" xml:"AclUuid,omitempty"`
+	// The language of the content within the response. Valid values:
+	//
+	// *   **zh**: Chinese (default)
+	// *   **en**: English
+	Lang *string `json:"Lang,omitempty" xml:"Lang,omitempty"`
+	// The ID of the NAT gateway.
 	NatGatewayId *string `json:"NatGatewayId,omitempty" xml:"NatGatewayId,omitempty"`
-	NewOrder     *int32  `json:"NewOrder,omitempty" xml:"NewOrder,omitempty"`
+	// The new priority of the IPv4 access control policy. You must specify a numeric value for this parameter. The value 1 indicates the highest priority. A larger value indicates a lower priority.
+	//
+	// > Make sure that the value of this parameter is within the priority range of existing IPv4 access control policies. Otherwise, an error occurs when you call this operation.
+	//
+	// Before you call this operation, we recommend that you call the DescribeNatFirewallPolicyPriorUsed operation to query the priority range of the IPv4 access control policies in the specified traffic direction.
+	NewOrder *int32 `json:"NewOrder,omitempty" xml:"NewOrder,omitempty"`
 }
 
 func (s ModifyNatFirewallControlPolicyPositionRequest) String() string {
@@ -12550,6 +13126,7 @@ func (s *ModifyNatFirewallControlPolicyPositionRequest) SetNewOrder(v int32) *Mo
 }
 
 type ModifyNatFirewallControlPolicyPositionResponseBody struct {
+	// The request ID.
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -13368,7 +13945,8 @@ type ModifyVpcFirewallControlPolicyRequest struct {
 	// *   Memcache
 	// *   SSL
 	// *   ANY: all application types
-	ApplicationName *string `json:"ApplicationName,omitempty" xml:"ApplicationName,omitempty"`
+	ApplicationName     *string   `json:"ApplicationName,omitempty" xml:"ApplicationName,omitempty"`
+	ApplicationNameList []*string `json:"ApplicationNameList,omitempty" xml:"ApplicationNameList,omitempty" type:"Repeated"`
 	// The description of the access control policy.
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
 	// The destination port in the access control policy.
@@ -13474,6 +14052,11 @@ func (s *ModifyVpcFirewallControlPolicyRequest) SetAclUuid(v string) *ModifyVpcF
 
 func (s *ModifyVpcFirewallControlPolicyRequest) SetApplicationName(v string) *ModifyVpcFirewallControlPolicyRequest {
 	s.ApplicationName = &v
+	return s
+}
+
+func (s *ModifyVpcFirewallControlPolicyRequest) SetApplicationNameList(v []*string) *ModifyVpcFirewallControlPolicyRequest {
+	s.ApplicationNameList = v
 	return s
 }
 
@@ -13585,28 +14168,34 @@ func (s *ModifyVpcFirewallControlPolicyResponse) SetBody(v *ModifyVpcFirewallCon
 }
 
 type ModifyVpcFirewallControlPolicyPositionRequest struct {
+	// The UUID of the access control policy.
+	//
+	// If you want to modify the configurations of an access control policy, you must provide the UUID of the policy. You can call the [DescribeVpcFirewallControlPolicy](~~159758~~) operation to query the UUID.
 	AclUuid *string `json:"AclUuid,omitempty" xml:"AclUuid,omitempty"`
-	// The natural language of the request and response.
+	// The language of the content within the request and the response.
 	//
 	// Valid values:
 	//
-	// - **zh**: Chinese (default)
-	// - **en**: English
+	// *   **zh**: Chinese (default)
+	// *   **en**: English
 	Lang *string `json:"Lang,omitempty" xml:"Lang,omitempty"`
 	// The new priority of the access control policy.
 	NewOrder *string `json:"NewOrder,omitempty" xml:"NewOrder,omitempty"`
 	// The original priority of the access control policy.
+	//
+	// > This parameter is not recommended. We recommend that you use the AclUuid parameter to specify the policy that you want to modify.
 	OldOrder *string `json:"OldOrder,omitempty" xml:"OldOrder,omitempty"`
-	// The ID of the policy group to which the access control policy belongs. You can call the DescribeVpcFirewallAclGroupList operation to query the ID.
+	// The ID of the group to which the access control policy belongs. You can call the [DescribeVpcFirewallAclGroupList](~~159760~~) operation to query the ID.
 	//
 	// Valid values:
 	//
-	// - If the VPC firewall is used to protect a Cloud Enterprise Network (CEN) instance, the value of this parameter is the ID of the CEN instance.
+	// *   If the VPC firewall is used to protect a CEN instance, the value of this parameter must be the ID of the CEN instance.
 	//
-	// Example: cen-ervw0g12b5jbw****
-	// - If the VPC firewall is used to protect an Express Connect circuit, the value of this parameter is the instance ID of the VPC firewall.
+	//     Example: cen-ervw0g12b5jbw\*\*\*\*
 	//
-	// Example: vfw-a42bbb7b887148c9****
+	// *   If the VPC firewall is used to protect an Express Connect circuit, the value of this parameter must be the instance ID of the VPC firewall.
+	//
+	//     Example: vfw-a42bbb7b887148c9\*\*\*\*
 	VpcFirewallId *string `json:"VpcFirewallId,omitempty" xml:"VpcFirewallId,omitempty"`
 }
 
@@ -13644,7 +14233,7 @@ func (s *ModifyVpcFirewallControlPolicyPositionRequest) SetVpcFirewallId(v strin
 }
 
 type ModifyVpcFirewallControlPolicyPositionResponseBody struct {
-	// The ID of the request.
+	// The request ID.
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -14549,15 +15138,6 @@ func (client *Client) AddAddressBook(request *AddAddressBookRequest) (_result *A
 	return _result, _err
 }
 
-/**
- * You can call the AddControlPolicy operation to create an access control policy to allow, block, or monitor traffic that reaches Cloud Firewall.
- * ## Limits
- * You can call this operation up to 10 times per second per account. If the number of the calls per second exceeds the limit, throttling is triggered. As a result, your business may be affected. We recommend that you take note of the limit when you call this operation.
- *
- * @param request AddControlPolicyRequest
- * @param runtime runtime options for this request RuntimeOptions
- * @return AddControlPolicyResponse
- */
 func (client *Client) AddControlPolicyWithOptions(request *AddControlPolicyRequest, runtime *util.RuntimeOptions) (_result *AddControlPolicyResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -14659,14 +15239,6 @@ func (client *Client) AddControlPolicyWithOptions(request *AddControlPolicyReque
 	return _result, _err
 }
 
-/**
- * You can call the AddControlPolicy operation to create an access control policy to allow, block, or monitor traffic that reaches Cloud Firewall.
- * ## Limits
- * You can call this operation up to 10 times per second per account. If the number of the calls per second exceeds the limit, throttling is triggered. As a result, your business may be affected. We recommend that you take note of the limit when you call this operation.
- *
- * @param request AddControlPolicyRequest
- * @return AddControlPolicyResponse
- */
 func (client *Client) AddControlPolicy(request *AddControlPolicyRequest) (_result *AddControlPolicyResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &AddControlPolicyResponse{}
@@ -14818,6 +15390,13 @@ func (client *Client) BatchCopyVpcFirewallControlPolicy(request *BatchCopyVpcFir
 	return _result, _err
 }
 
+/**
+ * You can use this operation to create an access control policy to allow, deny, or monitor traffic that passes through a NAT firewall.
+ *
+ * @param request CreateNatFirewallControlPolicyRequest
+ * @param runtime runtime options for this request RuntimeOptions
+ * @return CreateNatFirewallControlPolicyResponse
+ */
 func (client *Client) CreateNatFirewallControlPolicyWithOptions(request *CreateNatFirewallControlPolicyRequest, runtime *util.RuntimeOptions) (_result *CreateNatFirewallControlPolicyResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -14919,6 +15498,12 @@ func (client *Client) CreateNatFirewallControlPolicyWithOptions(request *CreateN
 	return _result, _err
 }
 
+/**
+ * You can use this operation to create an access control policy to allow, deny, or monitor traffic that passes through a NAT firewall.
+ *
+ * @param request CreateNatFirewallControlPolicyRequest
+ * @return CreateNatFirewallControlPolicyResponse
+ */
 func (client *Client) CreateNatFirewallControlPolicy(request *CreateNatFirewallControlPolicyRequest) (_result *CreateNatFirewallControlPolicyResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &CreateNatFirewallControlPolicyResponse{}
@@ -15321,6 +15906,10 @@ func (client *Client) CreateVpcFirewallControlPolicyWithOptions(request *CreateV
 		query["ApplicationName"] = request.ApplicationName
 	}
 
+	if !tea.BoolValue(util.IsUnset(request.ApplicationNameList)) {
+		query["ApplicationNameList"] = request.ApplicationNameList
+	}
+
 	if !tea.BoolValue(util.IsUnset(request.Description)) {
 		query["Description"] = request.Description
 	}
@@ -15674,6 +16263,13 @@ func (client *Client) DeleteInstanceMembers(request *DeleteInstanceMembersReques
 	return _result, _err
 }
 
+/**
+ * You can use this operation to delete an outbound access control policy that is created for a NAT firewall.
+ *
+ * @param request DeleteNatFirewallControlPolicyRequest
+ * @param runtime runtime options for this request RuntimeOptions
+ * @return DeleteNatFirewallControlPolicyResponse
+ */
 func (client *Client) DeleteNatFirewallControlPolicyWithOptions(request *DeleteNatFirewallControlPolicyRequest, runtime *util.RuntimeOptions) (_result *DeleteNatFirewallControlPolicyResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -15719,6 +16315,12 @@ func (client *Client) DeleteNatFirewallControlPolicyWithOptions(request *DeleteN
 	return _result, _err
 }
 
+/**
+ * You can use this operation to delete an outbound access control policy that is created for a NAT firewall.
+ *
+ * @param request DeleteNatFirewallControlPolicyRequest
+ * @return DeleteNatFirewallControlPolicyResponse
+ */
 func (client *Client) DeleteNatFirewallControlPolicy(request *DeleteNatFirewallControlPolicyRequest) (_result *DeleteNatFirewallControlPolicyResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &DeleteNatFirewallControlPolicyResponse{}
@@ -16333,7 +16935,7 @@ func (client *Client) DescribeDefaultIPSConfig(request *DescribeDefaultIPSConfig
 }
 
 /**
- * You can call the DescribeDomainResolve operation to query the DNS record of a domain name. This operation can retrieve DNS records only from Alibaba Cloud DNS. Before you can call this operation, make sure that your domain name is hosted on Alibaba Cloud DNS.
+ * You can use this operation to query the DNS record of a domain name. This operation can retrieve DNS records only from Alibaba Cloud DNS. Before you can call this operation, make sure that your domain name is hosted on Alibaba Cloud DNS.
  * ## Limits
  * You can call this operation up to 10 times per second per account. If the number of the calls per second exceeds the limit, throttling is triggered. As a result, your business may be affected. We recommend that you take note of the limit when you call this operation.
  *
@@ -16391,7 +16993,7 @@ func (client *Client) DescribeDomainResolveWithOptions(request *DescribeDomainRe
 }
 
 /**
- * You can call the DescribeDomainResolve operation to query the DNS record of a domain name. This operation can retrieve DNS records only from Alibaba Cloud DNS. Before you can call this operation, make sure that your domain name is hosted on Alibaba Cloud DNS.
+ * You can use this operation to query the DNS record of a domain name. This operation can retrieve DNS records only from Alibaba Cloud DNS. Before you can call this operation, make sure that your domain name is hosted on Alibaba Cloud DNS.
  * ## Limits
  * You can call this operation up to 10 times per second per account. If the number of the calls per second exceeds the limit, throttling is triggered. As a result, your business may be affected. We recommend that you take note of the limit when you call this operation.
  *
@@ -16410,7 +17012,7 @@ func (client *Client) DescribeDomainResolve(request *DescribeDomainResolveReques
 }
 
 /**
- * You can call the DescribeInstanceMembers operation to query the information about members in Cloud Firewall.
+ * You can use this operation to query the information about members in Cloud Firewall.
  * ## Limits
  * You can call this operation up to 10 times per second per account. If the number of the calls per second exceeds the limit, throttling is triggered. As a result, your business may be affected. We recommend that you take note of the limit when you call this operation.
  *
@@ -16468,7 +17070,7 @@ func (client *Client) DescribeInstanceMembersWithOptions(request *DescribeInstan
 }
 
 /**
- * You can call the DescribeInstanceMembers operation to query the information about members in Cloud Firewall.
+ * You can use this operation to query the information about members in Cloud Firewall.
  * ## Limits
  * You can call this operation up to 10 times per second per account. If the number of the calls per second exceeds the limit, throttling is triggered. As a result, your business may be affected. We recommend that you take note of the limit when you call this operation.
  *
@@ -16479,6 +17081,98 @@ func (client *Client) DescribeInstanceMembers(request *DescribeInstanceMembersRe
 	runtime := &util.RuntimeOptions{}
 	_result = &DescribeInstanceMembersResponse{}
 	_body, _err := client.DescribeInstanceMembersWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) DescribeInternetOpenIpWithOptions(request *DescribeInternetOpenIpRequest, runtime *util.RuntimeOptions) (_result *DescribeInternetOpenIpResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.AssetsInstanceId)) {
+		query["AssetsInstanceId"] = request.AssetsInstanceId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.AssetsInstanceName)) {
+		query["AssetsInstanceName"] = request.AssetsInstanceName
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.AssetsType)) {
+		query["AssetsType"] = request.AssetsType
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.CurrentPage)) {
+		query["CurrentPage"] = request.CurrentPage
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.EndTime)) {
+		query["EndTime"] = request.EndTime
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Lang)) {
+		query["Lang"] = request.Lang
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.PageSize)) {
+		query["PageSize"] = request.PageSize
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Port)) {
+		query["Port"] = request.Port
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.PublicIp)) {
+		query["PublicIp"] = request.PublicIp
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.RegionNo)) {
+		query["RegionNo"] = request.RegionNo
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.RiskLevel)) {
+		query["RiskLevel"] = request.RiskLevel
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ServiceName)) {
+		query["ServiceName"] = request.ServiceName
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.StartTime)) {
+		query["StartTime"] = request.StartTime
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("DescribeInternetOpenIp"),
+		Version:     tea.String("2017-12-07"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &DescribeInternetOpenIpResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) DescribeInternetOpenIp(request *DescribeInternetOpenIpRequest) (_result *DescribeInternetOpenIpResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &DescribeInternetOpenIpResponse{}
+	_body, _err := client.DescribeInternetOpenIpWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -16670,6 +17364,13 @@ func (client *Client) DescribeInvadeEventList(request *DescribeInvadeEventListRe
 	return _result, _err
 }
 
+/**
+ * You can use this operation to query the information about all access control policies that are created for NAT firewalls by page.
+ *
+ * @param request DescribeNatFirewallControlPolicyRequest
+ * @param runtime runtime options for this request RuntimeOptions
+ * @return DescribeNatFirewallControlPolicyResponse
+ */
 func (client *Client) DescribeNatFirewallControlPolicyWithOptions(request *DescribeNatFirewallControlPolicyRequest, runtime *util.RuntimeOptions) (_result *DescribeNatFirewallControlPolicyResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -16747,6 +17448,12 @@ func (client *Client) DescribeNatFirewallControlPolicyWithOptions(request *Descr
 	return _result, _err
 }
 
+/**
+ * You can use this operation to query the information about all access control policies that are created for NAT firewalls by page.
+ *
+ * @param request DescribeNatFirewallControlPolicyRequest
+ * @return DescribeNatFirewallControlPolicyResponse
+ */
 func (client *Client) DescribeNatFirewallControlPolicy(request *DescribeNatFirewallControlPolicyRequest) (_result *DescribeNatFirewallControlPolicyResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &DescribeNatFirewallControlPolicyResponse{}
@@ -16758,6 +17465,13 @@ func (client *Client) DescribeNatFirewallControlPolicy(request *DescribeNatFirew
 	return _result, _err
 }
 
+/**
+ * You can use this operation to query the priority range of access control policies that are created for a NAT firewall.
+ *
+ * @param request DescribeNatFirewallPolicyPriorUsedRequest
+ * @param runtime runtime options for this request RuntimeOptions
+ * @return DescribeNatFirewallPolicyPriorUsedResponse
+ */
 func (client *Client) DescribeNatFirewallPolicyPriorUsedWithOptions(request *DescribeNatFirewallPolicyPriorUsedRequest, runtime *util.RuntimeOptions) (_result *DescribeNatFirewallPolicyPriorUsedResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -16803,6 +17517,12 @@ func (client *Client) DescribeNatFirewallPolicyPriorUsedWithOptions(request *Des
 	return _result, _err
 }
 
+/**
+ * You can use this operation to query the priority range of access control policies that are created for a NAT firewall.
+ *
+ * @param request DescribeNatFirewallPolicyPriorUsedRequest
+ * @return DescribeNatFirewallPolicyPriorUsedResponse
+ */
 func (client *Client) DescribeNatFirewallPolicyPriorUsed(request *DescribeNatFirewallPolicyPriorUsedRequest) (_result *DescribeNatFirewallPolicyPriorUsedResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &DescribeNatFirewallPolicyPriorUsedResponse{}
@@ -19043,6 +19763,13 @@ func (client *Client) ModifyInstanceMemberAttributes(request *ModifyInstanceMemb
 	return _result, _err
 }
 
+/**
+ * You can use this operation to modify the configurations of an access control policy. The policy is used to allow, deny, or monitor traffic that reaches a NAT firewall.
+ *
+ * @param request ModifyNatFirewallControlPolicyRequest
+ * @param runtime runtime options for this request RuntimeOptions
+ * @return ModifyNatFirewallControlPolicyResponse
+ */
 func (client *Client) ModifyNatFirewallControlPolicyWithOptions(request *ModifyNatFirewallControlPolicyRequest, runtime *util.RuntimeOptions) (_result *ModifyNatFirewallControlPolicyResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -19136,6 +19863,12 @@ func (client *Client) ModifyNatFirewallControlPolicyWithOptions(request *ModifyN
 	return _result, _err
 }
 
+/**
+ * You can use this operation to modify the configurations of an access control policy. The policy is used to allow, deny, or monitor traffic that reaches a NAT firewall.
+ *
+ * @param request ModifyNatFirewallControlPolicyRequest
+ * @return ModifyNatFirewallControlPolicyResponse
+ */
 func (client *Client) ModifyNatFirewallControlPolicy(request *ModifyNatFirewallControlPolicyRequest) (_result *ModifyNatFirewallControlPolicyResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &ModifyNatFirewallControlPolicyResponse{}
@@ -19722,6 +20455,10 @@ func (client *Client) ModifyVpcFirewallControlPolicyWithOptions(request *ModifyV
 		query["ApplicationName"] = request.ApplicationName
 	}
 
+	if !tea.BoolValue(util.IsUnset(request.ApplicationNameList)) {
+		query["ApplicationNameList"] = request.ApplicationNameList
+	}
+
 	if !tea.BoolValue(util.IsUnset(request.Description)) {
 		query["Description"] = request.Description
 	}
@@ -19813,7 +20550,7 @@ func (client *Client) ModifyVpcFirewallControlPolicy(request *ModifyVpcFirewallC
 }
 
 /**
- * You can call the ModifyVpcFirewallControlPolicyPosition operation to modify the priority of an access control policy that is created for a VPC firewall in a specific policy group.
+ * You can use this operation to modify the priority of an access control policy that is created for a VPC firewall in a specific policy group.
  * ## Limits
  * You can call this operation up to 10 times per second per account. If the number of the calls per second exceeds the limit, throttling is triggered. As a result, your business may be affected. We recommend that you take note of the limit when you call this operation.
  *
@@ -19871,7 +20608,7 @@ func (client *Client) ModifyVpcFirewallControlPolicyPositionWithOptions(request 
 }
 
 /**
- * You can call the ModifyVpcFirewallControlPolicyPosition operation to modify the priority of an access control policy that is created for a VPC firewall in a specific policy group.
+ * You can use this operation to modify the priority of an access control policy that is created for a VPC firewall in a specific policy group.
  * ## Limits
  * You can call this operation up to 10 times per second per account. If the number of the calls per second exceeds the limit, throttling is triggered. As a result, your business may be affected. We recommend that you take note of the limit when you call this operation.
  *
