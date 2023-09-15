@@ -159,10 +159,10 @@ func (s *LogContent) SetValue(v string) *LogContent {
 }
 
 type LogGroup struct {
-	LogTags *LogTag  `json:"LogTags,omitempty" xml:"LogTags,omitempty"`
-	Logs    *LogItem `json:"Logs,omitempty" xml:"Logs,omitempty"`
-	Source  *string  `json:"Source,omitempty" xml:"Source,omitempty"`
-	Topic   *string  `json:"Topic,omitempty" xml:"Topic,omitempty"`
+	LogTags []*LogTag  `json:"LogTags,omitempty" xml:"LogTags,omitempty" type:"Repeated"`
+	Logs    []*LogItem `json:"Logs,omitempty" xml:"Logs,omitempty" type:"Repeated"`
+	Source  *string    `json:"Source,omitempty" xml:"Source,omitempty"`
+	Topic   *string    `json:"Topic,omitempty" xml:"Topic,omitempty"`
 }
 
 func (s LogGroup) String() string {
@@ -173,12 +173,12 @@ func (s LogGroup) GoString() string {
 	return s.String()
 }
 
-func (s *LogGroup) SetLogTags(v *LogTag) *LogGroup {
+func (s *LogGroup) SetLogTags(v []*LogTag) *LogGroup {
 	s.LogTags = v
 	return s
 }
 
-func (s *LogGroup) SetLogs(v *LogItem) *LogGroup {
+func (s *LogGroup) SetLogs(v []*LogItem) *LogGroup {
 	s.Logs = v
 	return s
 }
@@ -195,7 +195,7 @@ func (s *LogGroup) SetTopic(v string) *LogGroup {
 
 type LogItem struct {
 	Contents []*LogContent `json:"Contents,omitempty" xml:"Contents,omitempty" type:"Repeated"`
-	Time     *int64        `json:"Time,omitempty" xml:"Time,omitempty"`
+	Time     *int32        `json:"Time,omitempty" xml:"Time,omitempty"`
 }
 
 func (s LogItem) String() string {
@@ -211,7 +211,7 @@ func (s *LogItem) SetContents(v []*LogContent) *LogItem {
 	return s
 }
 
-func (s *LogItem) SetTime(v int64) *LogItem {
+func (s *LogItem) SetTime(v int32) *LogItem {
 	s.Time = &v
 	return s
 }
@@ -392,6 +392,364 @@ func (s *LogtailPipelineConfig) SetProcessors(v []map[string]interface{}) *Logta
 	return s
 }
 
+type MLDataParam struct {
+	AnnotationdataId *string                                 `json:"annotationdataId,omitempty" xml:"annotationdataId,omitempty"`
+	Annotations      map[string]*MLDataParamAnnotationsValue `json:"annotations,omitempty" xml:"annotations,omitempty"`
+	Config           map[string]*string                      `json:"config,omitempty" xml:"config,omitempty"`
+	CreateTime       *int64                                  `json:"createTime,omitempty" xml:"createTime,omitempty"`
+	DataHash         *string                                 `json:"dataHash,omitempty" xml:"dataHash,omitempty"`
+	DatasetId        *string                                 `json:"datasetId,omitempty" xml:"datasetId,omitempty"`
+	LastModifyTime   *int64                                  `json:"lastModifyTime,omitempty" xml:"lastModifyTime,omitempty"`
+	Predictions      map[string]*MLDataParamPredictionsValue `json:"predictions,omitempty" xml:"predictions,omitempty"`
+	Value            *string                                 `json:"value,omitempty" xml:"value,omitempty"`
+	ValueType        *string                                 `json:"valueType,omitempty" xml:"valueType,omitempty"`
+}
+
+func (s MLDataParam) String() string {
+	return tea.Prettify(s)
+}
+
+func (s MLDataParam) GoString() string {
+	return s.String()
+}
+
+func (s *MLDataParam) SetAnnotationdataId(v string) *MLDataParam {
+	s.AnnotationdataId = &v
+	return s
+}
+
+func (s *MLDataParam) SetAnnotations(v map[string]*MLDataParamAnnotationsValue) *MLDataParam {
+	s.Annotations = v
+	return s
+}
+
+func (s *MLDataParam) SetConfig(v map[string]*string) *MLDataParam {
+	s.Config = v
+	return s
+}
+
+func (s *MLDataParam) SetCreateTime(v int64) *MLDataParam {
+	s.CreateTime = &v
+	return s
+}
+
+func (s *MLDataParam) SetDataHash(v string) *MLDataParam {
+	s.DataHash = &v
+	return s
+}
+
+func (s *MLDataParam) SetDatasetId(v string) *MLDataParam {
+	s.DatasetId = &v
+	return s
+}
+
+func (s *MLDataParam) SetLastModifyTime(v int64) *MLDataParam {
+	s.LastModifyTime = &v
+	return s
+}
+
+func (s *MLDataParam) SetPredictions(v map[string]*MLDataParamPredictionsValue) *MLDataParam {
+	s.Predictions = v
+	return s
+}
+
+func (s *MLDataParam) SetValue(v string) *MLDataParam {
+	s.Value = &v
+	return s
+}
+
+func (s *MLDataParam) SetValueType(v string) *MLDataParam {
+	s.ValueType = &v
+	return s
+}
+
+type MLDataSetParam struct {
+	CreateBy       *string `json:"createBy,omitempty" xml:"createBy,omitempty"`
+	CreateTime     *int64  `json:"createTime,omitempty" xml:"createTime,omitempty"`
+	DataType       *string `json:"dataType,omitempty" xml:"dataType,omitempty"`
+	DatasetId      *string `json:"datasetId,omitempty" xml:"datasetId,omitempty"`
+	Description    *string `json:"description,omitempty" xml:"description,omitempty"`
+	LabelId        *string `json:"labelId,omitempty" xml:"labelId,omitempty"`
+	LastModifyTime *int64  `json:"lastModifyTime,omitempty" xml:"lastModifyTime,omitempty"`
+	Name           *string `json:"name,omitempty" xml:"name,omitempty"`
+	SettingType    *string `json:"settingType,omitempty" xml:"settingType,omitempty"`
+}
+
+func (s MLDataSetParam) String() string {
+	return tea.Prettify(s)
+}
+
+func (s MLDataSetParam) GoString() string {
+	return s.String()
+}
+
+func (s *MLDataSetParam) SetCreateBy(v string) *MLDataSetParam {
+	s.CreateBy = &v
+	return s
+}
+
+func (s *MLDataSetParam) SetCreateTime(v int64) *MLDataSetParam {
+	s.CreateTime = &v
+	return s
+}
+
+func (s *MLDataSetParam) SetDataType(v string) *MLDataSetParam {
+	s.DataType = &v
+	return s
+}
+
+func (s *MLDataSetParam) SetDatasetId(v string) *MLDataSetParam {
+	s.DatasetId = &v
+	return s
+}
+
+func (s *MLDataSetParam) SetDescription(v string) *MLDataSetParam {
+	s.Description = &v
+	return s
+}
+
+func (s *MLDataSetParam) SetLabelId(v string) *MLDataSetParam {
+	s.LabelId = &v
+	return s
+}
+
+func (s *MLDataSetParam) SetLastModifyTime(v int64) *MLDataSetParam {
+	s.LastModifyTime = &v
+	return s
+}
+
+func (s *MLDataSetParam) SetName(v string) *MLDataSetParam {
+	s.Name = &v
+	return s
+}
+
+func (s *MLDataSetParam) SetSettingType(v string) *MLDataSetParam {
+	s.SettingType = &v
+	return s
+}
+
+type MLLabelParam struct {
+	CreateTime     *int64                  `json:"createTime,omitempty" xml:"createTime,omitempty"`
+	Description    *string                 `json:"description,omitempty" xml:"description,omitempty"`
+	LabelId        *string                 `json:"labelId,omitempty" xml:"labelId,omitempty"`
+	LastModifyTime *int64                  `json:"lastModifyTime,omitempty" xml:"lastModifyTime,omitempty"`
+	Name           *string                 `json:"name,omitempty" xml:"name,omitempty"`
+	Settings       []*MLLabelParamSettings `json:"settings,omitempty" xml:"settings,omitempty" type:"Repeated"`
+	Type           *string                 `json:"type,omitempty" xml:"type,omitempty"`
+}
+
+func (s MLLabelParam) String() string {
+	return tea.Prettify(s)
+}
+
+func (s MLLabelParam) GoString() string {
+	return s.String()
+}
+
+func (s *MLLabelParam) SetCreateTime(v int64) *MLLabelParam {
+	s.CreateTime = &v
+	return s
+}
+
+func (s *MLLabelParam) SetDescription(v string) *MLLabelParam {
+	s.Description = &v
+	return s
+}
+
+func (s *MLLabelParam) SetLabelId(v string) *MLLabelParam {
+	s.LabelId = &v
+	return s
+}
+
+func (s *MLLabelParam) SetLastModifyTime(v int64) *MLLabelParam {
+	s.LastModifyTime = &v
+	return s
+}
+
+func (s *MLLabelParam) SetName(v string) *MLLabelParam {
+	s.Name = &v
+	return s
+}
+
+func (s *MLLabelParam) SetSettings(v []*MLLabelParamSettings) *MLLabelParam {
+	s.Settings = v
+	return s
+}
+
+func (s *MLLabelParam) SetType(v string) *MLLabelParam {
+	s.Type = &v
+	return s
+}
+
+type MLLabelParamSettings struct {
+	Config  *string `json:"config,omitempty" xml:"config,omitempty"`
+	Mode    *string `json:"mode,omitempty" xml:"mode,omitempty"`
+	Type    *string `json:"type,omitempty" xml:"type,omitempty"`
+	Version *string `json:"version,omitempty" xml:"version,omitempty"`
+}
+
+func (s MLLabelParamSettings) String() string {
+	return tea.Prettify(s)
+}
+
+func (s MLLabelParamSettings) GoString() string {
+	return s.String()
+}
+
+func (s *MLLabelParamSettings) SetConfig(v string) *MLLabelParamSettings {
+	s.Config = &v
+	return s
+}
+
+func (s *MLLabelParamSettings) SetMode(v string) *MLLabelParamSettings {
+	s.Mode = &v
+	return s
+}
+
+func (s *MLLabelParamSettings) SetType(v string) *MLLabelParamSettings {
+	s.Type = &v
+	return s
+}
+
+func (s *MLLabelParamSettings) SetVersion(v string) *MLLabelParamSettings {
+	s.Version = &v
+	return s
+}
+
+type MLServiceAnalysisParam struct {
+	Input     []map[string]*string `json:"input,omitempty" xml:"input,omitempty" type:"Repeated"`
+	Parameter map[string]*string   `json:"parameter,omitempty" xml:"parameter,omitempty"`
+}
+
+func (s MLServiceAnalysisParam) String() string {
+	return tea.Prettify(s)
+}
+
+func (s MLServiceAnalysisParam) GoString() string {
+	return s.String()
+}
+
+func (s *MLServiceAnalysisParam) SetInput(v []map[string]*string) *MLServiceAnalysisParam {
+	s.Input = v
+	return s
+}
+
+func (s *MLServiceAnalysisParam) SetParameter(v map[string]*string) *MLServiceAnalysisParam {
+	s.Parameter = v
+	return s
+}
+
+type MLServiceParam struct {
+	Description     *string                 `json:"description,omitempty" xml:"description,omitempty"`
+	Model           *MLServiceParamModel    `json:"model,omitempty" xml:"model,omitempty" type:"Struct"`
+	Name            *string                 `json:"name,omitempty" xml:"name,omitempty"`
+	Resource        *MLServiceParamResource `json:"resource,omitempty" xml:"resource,omitempty" type:"Struct"`
+	ServiceType     *string                 `json:"serviceType,omitempty" xml:"serviceType,omitempty"`
+	Status          *string                 `json:"status,omitempty" xml:"status,omitempty"`
+	UpdateTimestamp *int64                  `json:"updateTimestamp,omitempty" xml:"updateTimestamp,omitempty"`
+}
+
+func (s MLServiceParam) String() string {
+	return tea.Prettify(s)
+}
+
+func (s MLServiceParam) GoString() string {
+	return s.String()
+}
+
+func (s *MLServiceParam) SetDescription(v string) *MLServiceParam {
+	s.Description = &v
+	return s
+}
+
+func (s *MLServiceParam) SetModel(v *MLServiceParamModel) *MLServiceParam {
+	s.Model = v
+	return s
+}
+
+func (s *MLServiceParam) SetName(v string) *MLServiceParam {
+	s.Name = &v
+	return s
+}
+
+func (s *MLServiceParam) SetResource(v *MLServiceParamResource) *MLServiceParam {
+	s.Resource = v
+	return s
+}
+
+func (s *MLServiceParam) SetServiceType(v string) *MLServiceParam {
+	s.ServiceType = &v
+	return s
+}
+
+func (s *MLServiceParam) SetStatus(v string) *MLServiceParam {
+	s.Status = &v
+	return s
+}
+
+func (s *MLServiceParam) SetUpdateTimestamp(v int64) *MLServiceParam {
+	s.UpdateTimestamp = &v
+	return s
+}
+
+type MLServiceParamModel struct {
+	ModelResourceId   *string `json:"modelResourceId,omitempty" xml:"modelResourceId,omitempty"`
+	ModelResourceType *string `json:"modelResourceType,omitempty" xml:"modelResourceType,omitempty"`
+}
+
+func (s MLServiceParamModel) String() string {
+	return tea.Prettify(s)
+}
+
+func (s MLServiceParamModel) GoString() string {
+	return s.String()
+}
+
+func (s *MLServiceParamModel) SetModelResourceId(v string) *MLServiceParamModel {
+	s.ModelResourceId = &v
+	return s
+}
+
+func (s *MLServiceParamModel) SetModelResourceType(v string) *MLServiceParamModel {
+	s.ModelResourceType = &v
+	return s
+}
+
+type MLServiceParamResource struct {
+	CpuLimit    *int32 `json:"cpuLimit,omitempty" xml:"cpuLimit,omitempty"`
+	Gpu         *int32 `json:"gpu,omitempty" xml:"gpu,omitempty"`
+	MemoryLimit *int32 `json:"memoryLimit,omitempty" xml:"memoryLimit,omitempty"`
+	Replica     *int32 `json:"replica,omitempty" xml:"replica,omitempty"`
+}
+
+func (s MLServiceParamResource) String() string {
+	return tea.Prettify(s)
+}
+
+func (s MLServiceParamResource) GoString() string {
+	return s.String()
+}
+
+func (s *MLServiceParamResource) SetCpuLimit(v int32) *MLServiceParamResource {
+	s.CpuLimit = &v
+	return s
+}
+
+func (s *MLServiceParamResource) SetGpu(v int32) *MLServiceParamResource {
+	s.Gpu = &v
+	return s
+}
+
+func (s *MLServiceParamResource) SetMemoryLimit(v int32) *MLServiceParamResource {
+	s.MemoryLimit = &v
+	return s
+}
+
+func (s *MLServiceParamResource) SetReplica(v int32) *MLServiceParamResource {
+	s.Replica = &v
+	return s
+}
+
 type SavedSearch struct {
 	DisplayName     *string `json:"displayName,omitempty" xml:"displayName,omitempty"`
 	Logstore        *string `json:"logstore,omitempty" xml:"logstore,omitempty"`
@@ -430,6 +788,101 @@ func (s *SavedSearch) SetSearchQuery(v string) *SavedSearch {
 
 func (s *SavedSearch) SetTopic(v string) *SavedSearch {
 	s.Topic = &v
+	return s
+}
+
+type Ticket struct {
+	CallerUid           *int64  `json:"callerUid,omitempty" xml:"callerUid,omitempty"`
+	CreateDate          *string `json:"createDate,omitempty" xml:"createDate,omitempty"`
+	ExpirationTime      *int64  `json:"expirationTime,omitempty" xml:"expirationTime,omitempty"`
+	ExpireDate          *string `json:"expireDate,omitempty" xml:"expireDate,omitempty"`
+	Extra               *string `json:"extra,omitempty" xml:"extra,omitempty"`
+	Name                *string `json:"name,omitempty" xml:"name,omitempty"`
+	Number              *int32  `json:"number,omitempty" xml:"number,omitempty"`
+	Policy              *string `json:"policy,omitempty" xml:"policy,omitempty"`
+	Ticket              *string `json:"ticket,omitempty" xml:"ticket,omitempty"`
+	TicketId            *string `json:"ticketId,omitempty" xml:"ticketId,omitempty"`
+	UnlimitedExpiration *bool   `json:"unlimitedExpiration,omitempty" xml:"unlimitedExpiration,omitempty"`
+	UnlimitedNumber     *bool   `json:"unlimitedNumber,omitempty" xml:"unlimitedNumber,omitempty"`
+	UsedNumber          *int32  `json:"usedNumber,omitempty" xml:"usedNumber,omitempty"`
+	Valid               *bool   `json:"valid,omitempty" xml:"valid,omitempty"`
+}
+
+func (s Ticket) String() string {
+	return tea.Prettify(s)
+}
+
+func (s Ticket) GoString() string {
+	return s.String()
+}
+
+func (s *Ticket) SetCallerUid(v int64) *Ticket {
+	s.CallerUid = &v
+	return s
+}
+
+func (s *Ticket) SetCreateDate(v string) *Ticket {
+	s.CreateDate = &v
+	return s
+}
+
+func (s *Ticket) SetExpirationTime(v int64) *Ticket {
+	s.ExpirationTime = &v
+	return s
+}
+
+func (s *Ticket) SetExpireDate(v string) *Ticket {
+	s.ExpireDate = &v
+	return s
+}
+
+func (s *Ticket) SetExtra(v string) *Ticket {
+	s.Extra = &v
+	return s
+}
+
+func (s *Ticket) SetName(v string) *Ticket {
+	s.Name = &v
+	return s
+}
+
+func (s *Ticket) SetNumber(v int32) *Ticket {
+	s.Number = &v
+	return s
+}
+
+func (s *Ticket) SetPolicy(v string) *Ticket {
+	s.Policy = &v
+	return s
+}
+
+func (s *Ticket) SetTicket(v string) *Ticket {
+	s.Ticket = &v
+	return s
+}
+
+func (s *Ticket) SetTicketId(v string) *Ticket {
+	s.TicketId = &v
+	return s
+}
+
+func (s *Ticket) SetUnlimitedExpiration(v bool) *Ticket {
+	s.UnlimitedExpiration = &v
+	return s
+}
+
+func (s *Ticket) SetUnlimitedNumber(v bool) *Ticket {
+	s.UnlimitedNumber = &v
+	return s
+}
+
+func (s *Ticket) SetUsedNumber(v int32) *Ticket {
+	s.UsedNumber = &v
+	return s
+}
+
+func (s *Ticket) SetValid(v bool) *Ticket {
+	s.Valid = &v
 	return s
 }
 
@@ -1218,6 +1671,64 @@ func (s *Shard) SetStatus(v string) *Shard {
 	return s
 }
 
+type MLDataParamAnnotationsValue struct {
+	AnnotatedBy *string   `json:"annotatedBy,omitempty" xml:"annotatedBy,omitempty"`
+	UpdateTime  *int64    `json:"updateTime,omitempty" xml:"updateTime,omitempty"`
+	Results     []*string `json:"results,omitempty" xml:"results,omitempty" type:"Repeated"`
+}
+
+func (s MLDataParamAnnotationsValue) String() string {
+	return tea.Prettify(s)
+}
+
+func (s MLDataParamAnnotationsValue) GoString() string {
+	return s.String()
+}
+
+func (s *MLDataParamAnnotationsValue) SetAnnotatedBy(v string) *MLDataParamAnnotationsValue {
+	s.AnnotatedBy = &v
+	return s
+}
+
+func (s *MLDataParamAnnotationsValue) SetUpdateTime(v int64) *MLDataParamAnnotationsValue {
+	s.UpdateTime = &v
+	return s
+}
+
+func (s *MLDataParamAnnotationsValue) SetResults(v []*string) *MLDataParamAnnotationsValue {
+	s.Results = v
+	return s
+}
+
+type MLDataParamPredictionsValue struct {
+	AnnotatedBy *string   `json:"annotatedBy,omitempty" xml:"annotatedBy,omitempty"`
+	UpdateTime  *int64    `json:"updateTime,omitempty" xml:"updateTime,omitempty"`
+	Results     []*string `json:"results,omitempty" xml:"results,omitempty" type:"Repeated"`
+}
+
+func (s MLDataParamPredictionsValue) String() string {
+	return tea.Prettify(s)
+}
+
+func (s MLDataParamPredictionsValue) GoString() string {
+	return s.String()
+}
+
+func (s *MLDataParamPredictionsValue) SetAnnotatedBy(v string) *MLDataParamPredictionsValue {
+	s.AnnotatedBy = &v
+	return s
+}
+
+func (s *MLDataParamPredictionsValue) SetUpdateTime(v int64) *MLDataParamPredictionsValue {
+	s.UpdateTime = &v
+	return s
+}
+
+func (s *MLDataParamPredictionsValue) SetResults(v []*string) *MLDataParamPredictionsValue {
+	s.Results = v
+	return s
+}
+
 type IndexKeysValue struct {
 	Chn           *bool     `json:"chn,omitempty" xml:"chn,omitempty"`
 	CaseSensitive *bool     `json:"caseSensitive,omitempty" xml:"caseSensitive,omitempty"`
@@ -1893,6 +2404,82 @@ func (s *CreateLoggingResponse) SetHeaders(v map[string]*string) *CreateLoggingR
 }
 
 func (s *CreateLoggingResponse) SetStatusCode(v int32) *CreateLoggingResponse {
+	s.StatusCode = &v
+	return s
+}
+
+type CreateLogtailPipelineConfigRequest struct {
+	Aggregators []map[string]interface{} `json:"aggregators,omitempty" xml:"aggregators,omitempty" type:"Repeated"`
+	ConfigName  *string                  `json:"configName,omitempty" xml:"configName,omitempty"`
+	Flushers    []map[string]interface{} `json:"flushers,omitempty" xml:"flushers,omitempty" type:"Repeated"`
+	Global      map[string]interface{}   `json:"global,omitempty" xml:"global,omitempty"`
+	Inputs      []map[string]interface{} `json:"inputs,omitempty" xml:"inputs,omitempty" type:"Repeated"`
+	LogSample   *string                  `json:"logSample,omitempty" xml:"logSample,omitempty"`
+	Processors  []map[string]interface{} `json:"processors,omitempty" xml:"processors,omitempty" type:"Repeated"`
+}
+
+func (s CreateLogtailPipelineConfigRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateLogtailPipelineConfigRequest) GoString() string {
+	return s.String()
+}
+
+func (s *CreateLogtailPipelineConfigRequest) SetAggregators(v []map[string]interface{}) *CreateLogtailPipelineConfigRequest {
+	s.Aggregators = v
+	return s
+}
+
+func (s *CreateLogtailPipelineConfigRequest) SetConfigName(v string) *CreateLogtailPipelineConfigRequest {
+	s.ConfigName = &v
+	return s
+}
+
+func (s *CreateLogtailPipelineConfigRequest) SetFlushers(v []map[string]interface{}) *CreateLogtailPipelineConfigRequest {
+	s.Flushers = v
+	return s
+}
+
+func (s *CreateLogtailPipelineConfigRequest) SetGlobal(v map[string]interface{}) *CreateLogtailPipelineConfigRequest {
+	s.Global = v
+	return s
+}
+
+func (s *CreateLogtailPipelineConfigRequest) SetInputs(v []map[string]interface{}) *CreateLogtailPipelineConfigRequest {
+	s.Inputs = v
+	return s
+}
+
+func (s *CreateLogtailPipelineConfigRequest) SetLogSample(v string) *CreateLogtailPipelineConfigRequest {
+	s.LogSample = &v
+	return s
+}
+
+func (s *CreateLogtailPipelineConfigRequest) SetProcessors(v []map[string]interface{}) *CreateLogtailPipelineConfigRequest {
+	s.Processors = v
+	return s
+}
+
+type CreateLogtailPipelineConfigResponse struct {
+	Headers    map[string]*string `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32             `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+}
+
+func (s CreateLogtailPipelineConfigResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateLogtailPipelineConfigResponse) GoString() string {
+	return s.String()
+}
+
+func (s *CreateLogtailPipelineConfigResponse) SetHeaders(v map[string]*string) *CreateLogtailPipelineConfigResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *CreateLogtailPipelineConfigResponse) SetStatusCode(v int32) *CreateLogtailPipelineConfigResponse {
 	s.StatusCode = &v
 	return s
 }
@@ -2782,6 +3369,29 @@ func (s *DeleteLoggingResponse) SetHeaders(v map[string]*string) *DeleteLoggingR
 }
 
 func (s *DeleteLoggingResponse) SetStatusCode(v int32) *DeleteLoggingResponse {
+	s.StatusCode = &v
+	return s
+}
+
+type DeleteLogtailPipelineConfigResponse struct {
+	Headers    map[string]*string `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32             `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+}
+
+func (s DeleteLogtailPipelineConfigResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DeleteLogtailPipelineConfigResponse) GoString() string {
+	return s.String()
+}
+
+func (s *DeleteLogtailPipelineConfigResponse) SetHeaders(v map[string]*string) *DeleteLogtailPipelineConfigResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *DeleteLogtailPipelineConfigResponse) SetStatusCode(v int32) *DeleteLogtailPipelineConfigResponse {
 	s.StatusCode = &v
 	return s
 }
@@ -4033,6 +4643,35 @@ func (s *GetLogsV2Response) SetBody(v *GetLogsV2ResponseBody) *GetLogsV2Response
 	return s
 }
 
+type GetLogtailPipelineConfigResponse struct {
+	Headers    map[string]*string     `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                 `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *LogtailPipelineConfig `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s GetLogtailPipelineConfigResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetLogtailPipelineConfigResponse) GoString() string {
+	return s.String()
+}
+
+func (s *GetLogtailPipelineConfigResponse) SetHeaders(v map[string]*string) *GetLogtailPipelineConfigResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *GetLogtailPipelineConfigResponse) SetStatusCode(v int32) *GetLogtailPipelineConfigResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *GetLogtailPipelineConfigResponse) SetBody(v *LogtailPipelineConfig) *GetLogtailPipelineConfigResponse {
+	s.Body = v
+	return s
+}
+
 type GetMachineGroupResponse struct {
 	Headers    map[string]*string `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
 	StatusCode *int32             `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
@@ -4883,6 +5522,99 @@ func (s *ListLogStoresResponse) SetStatusCode(v int32) *ListLogStoresResponse {
 }
 
 func (s *ListLogStoresResponse) SetBody(v *ListLogStoresResponseBody) *ListLogStoresResponse {
+	s.Body = v
+	return s
+}
+
+type ListLogtailPipelineConfigRequest struct {
+	ConfigName *string `json:"configName,omitempty" xml:"configName,omitempty"`
+	Logstore   *string `json:"logstore,omitempty" xml:"logstore,omitempty"`
+	Offset     *int64  `json:"offset,omitempty" xml:"offset,omitempty"`
+	Size       *int64  `json:"size,omitempty" xml:"size,omitempty"`
+}
+
+func (s ListLogtailPipelineConfigRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListLogtailPipelineConfigRequest) GoString() string {
+	return s.String()
+}
+
+func (s *ListLogtailPipelineConfigRequest) SetConfigName(v string) *ListLogtailPipelineConfigRequest {
+	s.ConfigName = &v
+	return s
+}
+
+func (s *ListLogtailPipelineConfigRequest) SetLogstore(v string) *ListLogtailPipelineConfigRequest {
+	s.Logstore = &v
+	return s
+}
+
+func (s *ListLogtailPipelineConfigRequest) SetOffset(v int64) *ListLogtailPipelineConfigRequest {
+	s.Offset = &v
+	return s
+}
+
+func (s *ListLogtailPipelineConfigRequest) SetSize(v int64) *ListLogtailPipelineConfigRequest {
+	s.Size = &v
+	return s
+}
+
+type ListLogtailPipelineConfigResponseBody struct {
+	Configs []*string `json:"configs,omitempty" xml:"configs,omitempty" type:"Repeated"`
+	Count   *int32    `json:"count,omitempty" xml:"count,omitempty"`
+	Total   *int32    `json:"total,omitempty" xml:"total,omitempty"`
+}
+
+func (s ListLogtailPipelineConfigResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListLogtailPipelineConfigResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *ListLogtailPipelineConfigResponseBody) SetConfigs(v []*string) *ListLogtailPipelineConfigResponseBody {
+	s.Configs = v
+	return s
+}
+
+func (s *ListLogtailPipelineConfigResponseBody) SetCount(v int32) *ListLogtailPipelineConfigResponseBody {
+	s.Count = &v
+	return s
+}
+
+func (s *ListLogtailPipelineConfigResponseBody) SetTotal(v int32) *ListLogtailPipelineConfigResponseBody {
+	s.Total = &v
+	return s
+}
+
+type ListLogtailPipelineConfigResponse struct {
+	Headers    map[string]*string                     `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                                 `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *ListLogtailPipelineConfigResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s ListLogtailPipelineConfigResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListLogtailPipelineConfigResponse) GoString() string {
+	return s.String()
+}
+
+func (s *ListLogtailPipelineConfigResponse) SetHeaders(v map[string]*string) *ListLogtailPipelineConfigResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *ListLogtailPipelineConfigResponse) SetStatusCode(v int32) *ListLogtailPipelineConfigResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *ListLogtailPipelineConfigResponse) SetBody(v *ListLogtailPipelineConfigResponseBody) *ListLogtailPipelineConfigResponse {
 	s.Body = v
 	return s
 }
@@ -6272,6 +7004,82 @@ func (s *UpdateLoggingResponse) SetStatusCode(v int32) *UpdateLoggingResponse {
 	return s
 }
 
+type UpdateLogtailPipelineConfigRequest struct {
+	Aggregators []map[string]interface{} `json:"aggregators,omitempty" xml:"aggregators,omitempty" type:"Repeated"`
+	ConfigName  *string                  `json:"configName,omitempty" xml:"configName,omitempty"`
+	Flushers    []map[string]interface{} `json:"flushers,omitempty" xml:"flushers,omitempty" type:"Repeated"`
+	Global      map[string]interface{}   `json:"global,omitempty" xml:"global,omitempty"`
+	Inputs      []map[string]interface{} `json:"inputs,omitempty" xml:"inputs,omitempty" type:"Repeated"`
+	LogSample   *string                  `json:"logSample,omitempty" xml:"logSample,omitempty"`
+	Processors  []map[string]interface{} `json:"processors,omitempty" xml:"processors,omitempty" type:"Repeated"`
+}
+
+func (s UpdateLogtailPipelineConfigRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UpdateLogtailPipelineConfigRequest) GoString() string {
+	return s.String()
+}
+
+func (s *UpdateLogtailPipelineConfigRequest) SetAggregators(v []map[string]interface{}) *UpdateLogtailPipelineConfigRequest {
+	s.Aggregators = v
+	return s
+}
+
+func (s *UpdateLogtailPipelineConfigRequest) SetConfigName(v string) *UpdateLogtailPipelineConfigRequest {
+	s.ConfigName = &v
+	return s
+}
+
+func (s *UpdateLogtailPipelineConfigRequest) SetFlushers(v []map[string]interface{}) *UpdateLogtailPipelineConfigRequest {
+	s.Flushers = v
+	return s
+}
+
+func (s *UpdateLogtailPipelineConfigRequest) SetGlobal(v map[string]interface{}) *UpdateLogtailPipelineConfigRequest {
+	s.Global = v
+	return s
+}
+
+func (s *UpdateLogtailPipelineConfigRequest) SetInputs(v []map[string]interface{}) *UpdateLogtailPipelineConfigRequest {
+	s.Inputs = v
+	return s
+}
+
+func (s *UpdateLogtailPipelineConfigRequest) SetLogSample(v string) *UpdateLogtailPipelineConfigRequest {
+	s.LogSample = &v
+	return s
+}
+
+func (s *UpdateLogtailPipelineConfigRequest) SetProcessors(v []map[string]interface{}) *UpdateLogtailPipelineConfigRequest {
+	s.Processors = v
+	return s
+}
+
+type UpdateLogtailPipelineConfigResponse struct {
+	Headers    map[string]*string `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32             `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+}
+
+func (s UpdateLogtailPipelineConfigResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UpdateLogtailPipelineConfigResponse) GoString() string {
+	return s.String()
+}
+
+func (s *UpdateLogtailPipelineConfigResponse) SetHeaders(v map[string]*string) *UpdateLogtailPipelineConfigResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *UpdateLogtailPipelineConfigResponse) SetStatusCode(v int32) *UpdateLogtailPipelineConfigResponse {
+	s.StatusCode = &v
+	return s
+}
+
 type UpdateMachineGroupRequest struct {
 	GroupAttribute      *UpdateMachineGroupRequestGroupAttribute `json:"groupAttribute,omitempty" xml:"groupAttribute,omitempty" type:"Struct"`
 	GroupName           *string                                  `json:"groupName,omitempty" xml:"groupName,omitempty"`
@@ -7585,6 +8393,79 @@ func (client *Client) CreateLogging(project *string, request *CreateLoggingReque
 	return _result, _err
 }
 
+func (client *Client) CreateLogtailPipelineConfigWithOptions(project *string, request *CreateLogtailPipelineConfigRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *CreateLogtailPipelineConfigResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	hostMap := make(map[string]*string)
+	hostMap["project"] = project
+	body := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.Aggregators)) {
+		body["aggregators"] = request.Aggregators
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ConfigName)) {
+		body["configName"] = request.ConfigName
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Flushers)) {
+		body["flushers"] = request.Flushers
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Global)) {
+		body["global"] = request.Global
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Inputs)) {
+		body["inputs"] = request.Inputs
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.LogSample)) {
+		body["logSample"] = request.LogSample
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Processors)) {
+		body["processors"] = request.Processors
+	}
+
+	req := &openapi.OpenApiRequest{
+		HostMap: hostMap,
+		Headers: headers,
+		Body:    openapiutil.ParseToMap(body),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("CreateLogtailPipelineConfig"),
+		Version:     tea.String("2020-12-30"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/pipelineconfigs"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("ROA"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("none"),
+	}
+	_result = &CreateLogtailPipelineConfigResponse{}
+	_body, _err := client.Execute(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) CreateLogtailPipelineConfig(project *string, request *CreateLogtailPipelineConfigRequest) (_result *CreateLogtailPipelineConfigResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	headers := make(map[string]*string)
+	_result = &CreateLogtailPipelineConfigResponse{}
+	_body, _err := client.CreateLogtailPipelineConfigWithOptions(project, request, headers, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
 func (client *Client) CreateMachineGroupWithOptions(project *string, request *CreateMachineGroupRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *CreateMachineGroupResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -8306,6 +9187,45 @@ func (client *Client) DeleteLogging(project *string) (_result *DeleteLoggingResp
 	headers := make(map[string]*string)
 	_result = &DeleteLoggingResponse{}
 	_body, _err := client.DeleteLoggingWithOptions(project, headers, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) DeleteLogtailPipelineConfigWithOptions(project *string, configName *string, headers map[string]*string, runtime *util.RuntimeOptions) (_result *DeleteLogtailPipelineConfigResponse, _err error) {
+	hostMap := make(map[string]*string)
+	hostMap["project"] = project
+	req := &openapi.OpenApiRequest{
+		HostMap: hostMap,
+		Headers: headers,
+	}
+	params := &openapi.Params{
+		Action:      tea.String("DeleteLogtailPipelineConfig"),
+		Version:     tea.String("2020-12-30"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/pipelineconfigs/" + tea.StringValue(configName)),
+		Method:      tea.String("DELETE"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("ROA"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("none"),
+	}
+	_result = &DeleteLogtailPipelineConfigResponse{}
+	_body, _err := client.Execute(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) DeleteLogtailPipelineConfig(project *string, configName *string) (_result *DeleteLogtailPipelineConfigResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	headers := make(map[string]*string)
+	_result = &DeleteLogtailPipelineConfigResponse{}
+	_body, _err := client.DeleteLogtailPipelineConfigWithOptions(project, configName, headers, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -9268,6 +10188,45 @@ func (client *Client) GetLogsV2(project *string, logstore *string, request *GetL
 	return _result, _err
 }
 
+func (client *Client) GetLogtailPipelineConfigWithOptions(project *string, configName *string, headers map[string]*string, runtime *util.RuntimeOptions) (_result *GetLogtailPipelineConfigResponse, _err error) {
+	hostMap := make(map[string]*string)
+	hostMap["project"] = project
+	req := &openapi.OpenApiRequest{
+		HostMap: hostMap,
+		Headers: headers,
+	}
+	params := &openapi.Params{
+		Action:      tea.String("GetLogtailPipelineConfig"),
+		Version:     tea.String("2020-12-30"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/pipelineconfigs/" + tea.StringValue(configName)),
+		Method:      tea.String("GET"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("ROA"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &GetLogtailPipelineConfigResponse{}
+	_body, _err := client.Execute(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) GetLogtailPipelineConfig(project *string, configName *string) (_result *GetLogtailPipelineConfigResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	headers := make(map[string]*string)
+	_result = &GetLogtailPipelineConfigResponse{}
+	_body, _err := client.GetLogtailPipelineConfigWithOptions(project, configName, headers, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
 func (client *Client) GetMachineGroupWithOptions(project *string, machineGroup *string, headers map[string]*string, runtime *util.RuntimeOptions) (_result *GetMachineGroupResponse, _err error) {
 	hostMap := make(map[string]*string)
 	hostMap["project"] = project
@@ -9867,6 +10826,67 @@ func (client *Client) ListLogStores(project *string, request *ListLogStoresReque
 	headers := make(map[string]*string)
 	_result = &ListLogStoresResponse{}
 	_body, _err := client.ListLogStoresWithOptions(project, request, headers, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) ListLogtailPipelineConfigWithOptions(project *string, request *ListLogtailPipelineConfigRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *ListLogtailPipelineConfigResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	hostMap := make(map[string]*string)
+	hostMap["project"] = project
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.ConfigName)) {
+		query["configName"] = request.ConfigName
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Logstore)) {
+		query["logstore"] = request.Logstore
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Offset)) {
+		query["offset"] = request.Offset
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Size)) {
+		query["size"] = request.Size
+	}
+
+	req := &openapi.OpenApiRequest{
+		HostMap: hostMap,
+		Headers: headers,
+		Query:   openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("ListLogtailPipelineConfig"),
+		Version:     tea.String("2020-12-30"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/pipelineconfigs"),
+		Method:      tea.String("GET"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("ROA"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &ListLogtailPipelineConfigResponse{}
+	_body, _err := client.Execute(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) ListLogtailPipelineConfig(project *string, request *ListLogtailPipelineConfigRequest) (_result *ListLogtailPipelineConfigResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	headers := make(map[string]*string)
+	_result = &ListLogtailPipelineConfigResponse{}
+	_body, _err := client.ListLogtailPipelineConfigWithOptions(project, request, headers, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -10969,6 +11989,79 @@ func (client *Client) UpdateLogging(project *string, request *UpdateLoggingReque
 	headers := make(map[string]*string)
 	_result = &UpdateLoggingResponse{}
 	_body, _err := client.UpdateLoggingWithOptions(project, request, headers, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) UpdateLogtailPipelineConfigWithOptions(project *string, configName *string, request *UpdateLogtailPipelineConfigRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *UpdateLogtailPipelineConfigResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	hostMap := make(map[string]*string)
+	hostMap["project"] = project
+	body := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.Aggregators)) {
+		body["aggregators"] = request.Aggregators
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ConfigName)) {
+		body["configName"] = request.ConfigName
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Flushers)) {
+		body["flushers"] = request.Flushers
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Global)) {
+		body["global"] = request.Global
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Inputs)) {
+		body["inputs"] = request.Inputs
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.LogSample)) {
+		body["logSample"] = request.LogSample
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Processors)) {
+		body["processors"] = request.Processors
+	}
+
+	req := &openapi.OpenApiRequest{
+		HostMap: hostMap,
+		Headers: headers,
+		Body:    openapiutil.ParseToMap(body),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("UpdateLogtailPipelineConfig"),
+		Version:     tea.String("2020-12-30"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/pipelineconfigs/" + tea.StringValue(configName)),
+		Method:      tea.String("PUT"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("ROA"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("none"),
+	}
+	_result = &UpdateLogtailPipelineConfigResponse{}
+	_body, _err := client.Execute(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) UpdateLogtailPipelineConfig(project *string, configName *string, request *UpdateLogtailPipelineConfigRequest) (_result *UpdateLogtailPipelineConfigResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	headers := make(map[string]*string)
+	_result = &UpdateLogtailPipelineConfigResponse{}
+	_body, _err := client.UpdateLogtailPipelineConfigWithOptions(project, configName, request, headers, runtime)
 	if _err != nil {
 		return _result, _err
 	}
