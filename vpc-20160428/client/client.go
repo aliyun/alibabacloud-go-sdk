@@ -809,24 +809,24 @@ func (s *AddIPv6TranslatorAclListEntryResponse) SetBody(v *AddIPv6TranslatorAclL
 type AddPublicIpAddressPoolCidrBlockRequest struct {
 	// The CIDR block.
 	//
-	// >  You cannot set the **CidrBlock** and **CidrMask** parameters at the same time.
+	// >  You can specify only one of **CidrBlock** and **CidrMask**.
 	CidrBlock *string `json:"CidrBlock,omitempty" xml:"CidrBlock,omitempty"`
-	// The subnet mask of the CIDR block.
+	// The subnet mask of the CIDR block. After you enter the subnet mask, the system automatically allocates IP addresses.
 	//
-	// After you enter the subnet mask, the system automatically allocates IP addresses.
+	// Valid values: **24** to **28**.
 	//
-	// Valid values: **24** to **30**.
-	//
-	// >  You cannot set the **CidrBlock** and **CidrMask** parameters at the same time. Set one of them.
+	// >  You can specify only one of **CidrBlock** and **CidrMask**.
 	CidrMask *int32 `json:"CidrMask,omitempty" xml:"CidrMask,omitempty"`
 	// The client token that is used to ensure the idempotence of the request.
 	//
-	// You can use the client to generate the value, but you must make sure that it is unique among all requests. The token can contain only ASCII characters.
-	ClientToken *string `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
-	// Specifies whether to perform a dry run. Valid values:
+	// You can use the client to generate the token, but you must make sure that the token is unique among different requests. The token can contain only ASCII characters.
 	//
-	// *   **true**: performs a dry run. The system checks the required parameters, request syntax, and limits. If the request fails the dry run, an error message is returned. If the request passes the dry run, the `DryRunOperation` error code is returned.
-	// *   **false** (default): performs a dry run and sends the request. If the request passes the dry run, a 2xx HTTP status code is returned and the operation is performed.
+	// >  If you do not specify this parameter, the system automatically uses the **request ID** as the **client token**. The **request ID** may be different for each request.
+	ClientToken *string `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
+	// Specifies whether to perform a dry run, without performing the actual request. Valid values:
+	//
+	// *   **true**: performs only a dry run. The system checks the request for potential issues, including missing parameter values, incorrect request syntax, and service limits. If the request fails the dry run, an error message is returned. If the request passes the dry run, the `DryRunOperation` error code is returned.
+	// *   **false** (default): performs a dry run and performs the actual request. If the request passes the dry run, a 2xx HTTP status code is returned and the operation is performed.
 	DryRun       *bool   `json:"DryRun,omitempty" xml:"DryRun,omitempty"`
 	OwnerAccount *string `json:"OwnerAccount,omitempty" xml:"OwnerAccount,omitempty"`
 	OwnerId      *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
@@ -897,7 +897,7 @@ func (s *AddPublicIpAddressPoolCidrBlockRequest) SetResourceOwnerId(v int64) *Ad
 }
 
 type AddPublicIpAddressPoolCidrBlockResponseBody struct {
-	// The ID of the request.
+	// The request ID.
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -4098,13 +4098,13 @@ func (s *AttachVbrToVpconnResponse) SetBody(v *AttachVbrToVpconnResponseBody) *A
 }
 
 type CancelCommonBandwidthPackageIpBandwidthRequest struct {
-	// The ID of the EIP bandwidth plan.
+	// The ID of the Internet Shared Bandwidth instance.
 	BandwidthPackageId *string `json:"BandwidthPackageId,omitempty" xml:"BandwidthPackageId,omitempty"`
-	// The ID of the EIP that is associated with the EIP bandwidth plan.
+	// The ID of the EIP that is associated with the Internet Shared Bandwidth instance.
 	EipId        *string `json:"EipId,omitempty" xml:"EipId,omitempty"`
 	OwnerAccount *string `json:"OwnerAccount,omitempty" xml:"OwnerAccount,omitempty"`
 	OwnerId      *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
-	// The region ID of the EIP bandwidth plan. You can call the [DescribeRegions](~~36063~~) operation to query the most recent region list.
+	// The region ID of the Internet Shared Bandwidth instance. You can call the [DescribeRegions](~~36063~~) operation to query the most recent region list.
 	RegionId             *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 	ResourceOwnerAccount *string `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
 	ResourceOwnerId      *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
@@ -4154,7 +4154,7 @@ func (s *CancelCommonBandwidthPackageIpBandwidthRequest) SetResourceOwnerId(v in
 }
 
 type CancelCommonBandwidthPackageIpBandwidthResponseBody struct {
-	// The ID of the request.
+	// The request ID.
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -17283,16 +17283,16 @@ func (s *DeleteBgpPeerResponse) SetBody(v *DeleteBgpPeerResponseBody) *DeleteBgp
 }
 
 type DeleteCommonBandwidthPackageRequest struct {
-	// The ID of the EIP bandwidth plan.
+	// The ID of the Internet Shared Bandwidth instance.
 	BandwidthPackageId *string `json:"BandwidthPackageId,omitempty" xml:"BandwidthPackageId,omitempty"`
-	// Specifies whether to forcibly delete the EIP bandwidth plan. Valid values:
+	// Specifies whether to forcefully delete the Internet Shared Bandwidth instance. Valid values:
 	//
-	// *   **false** (default): deletes the EIP bandwidth plan only when no EIPs are associated with the EIP bandwidth plan.
-	// *   **true**: disassociates all EIPs from the EIP bandwidth plan and deletes the EIP bandwidth plan.
+	// *   **false** (default): deletes the Internet Shared Bandwidth instance only when no EIPs are associated with the Internet Shared Bandwidth instance.
+	// *   **true**: disassociates all EIPs from the Internet Shared Bandwidth instance and deletes the Internet Shared Bandwidth instance.
 	Force        *string `json:"Force,omitempty" xml:"Force,omitempty"`
 	OwnerAccount *string `json:"OwnerAccount,omitempty" xml:"OwnerAccount,omitempty"`
 	OwnerId      *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
-	// The ID of the region where the EIP bandwidth plan is created.
+	// The ID of the region where the Internet Shared Bandwidth instance is created.
 	//
 	// You can call the [DescribeRegions](~~36063~~) operation to query the most recent region list.
 	RegionId             *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
@@ -17344,7 +17344,7 @@ func (s *DeleteCommonBandwidthPackageRequest) SetResourceOwnerId(v int64) *Delet
 }
 
 type DeleteCommonBandwidthPackageResponseBody struct {
-	// The ID of the request.
+	// The request ID.
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -19713,12 +19713,12 @@ type DeletePublicIpAddressPoolCidrBlockRequest struct {
 	CidrBlock *string `json:"CidrBlock,omitempty" xml:"CidrBlock,omitempty"`
 	// The client token that is used to ensure the idempotence of the request.
 	//
-	// You can use the client to generate the value, but you must make sure that it is unique among different requests. The client token can contain only ASCII characters.
+	// You can use the client to generate the token, but you must make sure that the token is unique among different requests. The token can contain only ASCII characters.
 	ClientToken *string `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
-	// Specifies whether to perform a dry run. Valid values:
+	// Specifies whether to perform a dry run, without performing the actual request. Valid values:
 	//
-	// *   **true**: performs a dry run. The system checks the required parameters, request syntax, and limits. If the request fails the dry run, an error message is returned. If the request passes the dry run, the `DryRunOperation` error code is returned.
-	// *   **false** (default): performs a dry run and sends the request. If the request passes the dry run, a 2xx HTTP status code is returned and the operation is performed.
+	// *   **true**: performs only a dry run. The system checks the request for potential issues, including missing parameter values, incorrect request syntax, and service limits. If the request fails the dry run, an error message is returned. If the request passes the dry run, the `DryRunOperation` error code is returned.
+	// *   **false** (default): performs a dry run and performs the actual request. If the request passes the dry run, a 2xx HTTP status code is returned and the operation is performed.
 	DryRun       *bool   `json:"DryRun,omitempty" xml:"DryRun,omitempty"`
 	OwnerAccount *string `json:"OwnerAccount,omitempty" xml:"OwnerAccount,omitempty"`
 	OwnerId      *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
@@ -19784,7 +19784,7 @@ func (s *DeletePublicIpAddressPoolCidrBlockRequest) SetResourceOwnerId(v int64) 
 }
 
 type DeletePublicIpAddressPoolCidrBlockResponseBody struct {
-	// The ID of the request.
+	// The request ID.
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -21184,6 +21184,99 @@ func (s *DeleteVSwitchResponse) SetStatusCode(v int32) *DeleteVSwitchResponse {
 }
 
 func (s *DeleteVSwitchResponse) SetBody(v *DeleteVSwitchResponseBody) *DeleteVSwitchResponse {
+	s.Body = v
+	return s
+}
+
+type DeleteVSwitchCidrReservationRequest struct {
+	OwnerAccount             *string `json:"OwnerAccount,omitempty" xml:"OwnerAccount,omitempty"`
+	OwnerId                  *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
+	RegionId                 *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	ResourceOwnerAccount     *string `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
+	ResourceOwnerId          *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
+	VSwitchCidrReservationId *string `json:"VSwitchCidrReservationId,omitempty" xml:"VSwitchCidrReservationId,omitempty"`
+}
+
+func (s DeleteVSwitchCidrReservationRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DeleteVSwitchCidrReservationRequest) GoString() string {
+	return s.String()
+}
+
+func (s *DeleteVSwitchCidrReservationRequest) SetOwnerAccount(v string) *DeleteVSwitchCidrReservationRequest {
+	s.OwnerAccount = &v
+	return s
+}
+
+func (s *DeleteVSwitchCidrReservationRequest) SetOwnerId(v int64) *DeleteVSwitchCidrReservationRequest {
+	s.OwnerId = &v
+	return s
+}
+
+func (s *DeleteVSwitchCidrReservationRequest) SetRegionId(v string) *DeleteVSwitchCidrReservationRequest {
+	s.RegionId = &v
+	return s
+}
+
+func (s *DeleteVSwitchCidrReservationRequest) SetResourceOwnerAccount(v string) *DeleteVSwitchCidrReservationRequest {
+	s.ResourceOwnerAccount = &v
+	return s
+}
+
+func (s *DeleteVSwitchCidrReservationRequest) SetResourceOwnerId(v int64) *DeleteVSwitchCidrReservationRequest {
+	s.ResourceOwnerId = &v
+	return s
+}
+
+func (s *DeleteVSwitchCidrReservationRequest) SetVSwitchCidrReservationId(v string) *DeleteVSwitchCidrReservationRequest {
+	s.VSwitchCidrReservationId = &v
+	return s
+}
+
+type DeleteVSwitchCidrReservationResponseBody struct {
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+}
+
+func (s DeleteVSwitchCidrReservationResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DeleteVSwitchCidrReservationResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *DeleteVSwitchCidrReservationResponseBody) SetRequestId(v string) *DeleteVSwitchCidrReservationResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+type DeleteVSwitchCidrReservationResponse struct {
+	Headers    map[string]*string                        `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                                    `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *DeleteVSwitchCidrReservationResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s DeleteVSwitchCidrReservationResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DeleteVSwitchCidrReservationResponse) GoString() string {
+	return s.String()
+}
+
+func (s *DeleteVSwitchCidrReservationResponse) SetHeaders(v map[string]*string) *DeleteVSwitchCidrReservationResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *DeleteVSwitchCidrReservationResponse) SetStatusCode(v int32) *DeleteVSwitchCidrReservationResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *DeleteVSwitchCidrReservationResponse) SetBody(v *DeleteVSwitchCidrReservationResponseBody) *DeleteVSwitchCidrReservationResponse {
 	s.Body = v
 	return s
 }
@@ -25968,7 +26061,7 @@ type DescribeEipGatewayInfoResponseBody struct {
 	EipInfos *DescribeEipGatewayInfoResponseBodyEipInfos `json:"EipInfos,omitempty" xml:"EipInfos,omitempty" type:"Struct"`
 	// The result of the operation.
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
-	// The ID of the request.
+	// The request ID.
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -61496,9 +61589,11 @@ type ModifyRouteEntryRequest struct {
 	// The description of the route entry.
 	//
 	// The description must be 1 to 256 characters in length, and cannot start with `http://` or `https://`.
-	Description  *string `json:"Description,omitempty" xml:"Description,omitempty"`
-	OwnerAccount *string `json:"OwnerAccount,omitempty" xml:"OwnerAccount,omitempty"`
-	OwnerId      *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
+	Description    *string `json:"Description,omitempty" xml:"Description,omitempty"`
+	NewNextHopId   *string `json:"NewNextHopId,omitempty" xml:"NewNextHopId,omitempty"`
+	NewNextHopType *string `json:"NewNextHopType,omitempty" xml:"NewNextHopType,omitempty"`
+	OwnerAccount   *string `json:"OwnerAccount,omitempty" xml:"OwnerAccount,omitempty"`
+	OwnerId        *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
 	// The ID of the region to which the route belongs.
 	//
 	// You can call the [DescribeRegions](~~36063~~) operation to query the most recent region list.
@@ -61523,6 +61618,16 @@ func (s ModifyRouteEntryRequest) GoString() string {
 
 func (s *ModifyRouteEntryRequest) SetDescription(v string) *ModifyRouteEntryRequest {
 	s.Description = &v
+	return s
+}
+
+func (s *ModifyRouteEntryRequest) SetNewNextHopId(v string) *ModifyRouteEntryRequest {
+	s.NewNextHopId = &v
+	return s
+}
+
+func (s *ModifyRouteEntryRequest) SetNewNextHopType(v string) *ModifyRouteEntryRequest {
+	s.NewNextHopType = &v
 	return s
 }
 
@@ -66278,7 +66383,7 @@ type ModifyVpnGatewayAttributeResponseBody struct {
 	// *   **Normal:** The VPN gateway is running as expected.
 	// *   **FinancialLocked:** The VPN gateway is locked due to overdue payments.
 	BusinessStatus *string `json:"BusinessStatus,omitempty" xml:"BusinessStatus,omitempty"`
-	// The timestamp generated when the VPN gateway was created. Unit: milliseconds.
+	// The timestamp is generated when the VPN gateway was created. Unit: milliseconds.
 	//
 	// This value is a UNIX timestamp representing the number of milliseconds that have elapsed since the epoch time January 1, 1970, 00:00:00 UTC.
 	CreateTime *int64 `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
@@ -67971,9 +68076,9 @@ func (s *ReleaseEipAddressResponse) SetBody(v *ReleaseEipAddressResponseBody) *R
 type ReleaseEipSegmentAddressRequest struct {
 	// The client token that is used to ensure the idempotence of the request.
 	//
-	// You can use the client to generate the value, but you must make sure that it is unique among different requests. The client token can contain only ASCII characters.
+	// You can use the client to generate the token, but you must make sure that the token is unique among different requests. The token can contain only ASCII characters.
 	//
-	// >  If you do not set this parameter, the system uses **RequestId** as **ClientToken**. The value of **RequestId** for each API request may be different.
+	// >  If you do not specify this parameter, the system automatically uses the **request ID** as the **client token**. The **request ID** may be different for each request.
 	ClientToken  *string `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
 	OwnerAccount *string `json:"OwnerAccount,omitempty" xml:"OwnerAccount,omitempty"`
 	OwnerId      *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
@@ -67981,7 +68086,7 @@ type ReleaseEipSegmentAddressRequest struct {
 	RegionId             *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 	ResourceOwnerAccount *string `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
 	ResourceOwnerId      *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
-	// The ID of the group to which the contiguous EIPs to be released belongs.
+	// The ID of the contiguous EIP group to be released.
 	//
 	// The system releases all EIPs in the group.
 	SegmentInstanceId *string `json:"SegmentInstanceId,omitempty" xml:"SegmentInstanceId,omitempty"`
@@ -68031,7 +68136,7 @@ func (s *ReleaseEipSegmentAddressRequest) SetSegmentInstanceId(v string) *Releas
 }
 
 type ReleaseEipSegmentAddressResponseBody struct {
-	// The ID of the request.
+	// The request ID.
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -69281,13 +69386,13 @@ type SetHighDefinitionMonitorLogStatusRequest struct {
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
 	// The type of the instance. Set the value to **EIP**.
 	InstanceType *string `json:"InstanceType,omitempty" xml:"InstanceType,omitempty"`
-	// The name of the project of Log Service.
+	// The name of the Simple Log Service (SLS) project.
 	LogProject *string `json:"LogProject,omitempty" xml:"LogProject,omitempty"`
-	// The name of the Logstore of Log Service.
+	// The name of the Logstore.
 	LogStore     *string `json:"LogStore,omitempty" xml:"LogStore,omitempty"`
 	OwnerAccount *string `json:"OwnerAccount,omitempty" xml:"OwnerAccount,omitempty"`
 	OwnerId      *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
-	// The ID of the region where the instance is deployed.
+	// The region ID of the instance.
 	//
 	// You can call the [DescribeRegions](~~36063~~) operation to query the most recent region list.
 	RegionId             *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
@@ -69295,8 +69400,8 @@ type SetHighDefinitionMonitorLogStatusRequest struct {
 	ResourceOwnerId      *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
 	// The status of fine-grained monitoring. Valid values:
 	//
-	// *   **ON**: enables fine-grained monitoring.
-	// *   **OFF**: disables fine-grained monitoring.
+	// *   **ON**
+	// *   **OFF**
 	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
 }
 
@@ -69359,12 +69464,12 @@ func (s *SetHighDefinitionMonitorLogStatusRequest) SetStatus(v string) *SetHighD
 }
 
 type SetHighDefinitionMonitorLogStatusResponseBody struct {
-	// The ID of the request.
+	// The request ID.
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	// Indicates whether the operation is performed. Valid values:
 	//
-	// *   **true**: yes
-	// *   **false**: no
+	// *   **true**
+	// *   **false**
 	Success *string `json:"Success,omitempty" xml:"Success,omitempty"`
 }
 
@@ -70062,12 +70167,12 @@ type UnassociateEipAddressRequest struct {
 	//
 	// You can use the client to generate the token, but you must make sure that the token is unique among different requests. The token can contain only ASCII characters.
 	//
-	// >  If you do not set this parameter, the system uses **RequestId** as **ClientToken**. **RequestId** might be different for each API request.
+	// >  If you do not specify this parameter, the system automatically uses the **request ID** as the **client token**. The **request ID** may be different for each request.
 	ClientToken *string `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
 	// Specifies whether to disassociate the EIP from a NAT gateway if a DNAT or SNAT entry is added to the NAT gateway. Valid values:
 	//
-	// *   **false** (default): does not disassociate the EIP from a NAT gateway if a DNAT or SNAT entry is added to the NAT gateway.
-	// *   **true**: disassociates the EIP from a NAT gateway if a DNAT or SNAT entry is added to the NAT gateway.
+	// *   **false** (default)
+	// *   **true**
 	Force *bool `json:"Force,omitempty" xml:"Force,omitempty"`
 	// The ID of the instance from which you want to disassociate the EIP.
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
@@ -70083,9 +70188,7 @@ type UnassociateEipAddressRequest struct {
 	OwnerId      *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
 	// The private IP address of the ECS instance or the secondary ENI from which you want to disassociate the EIP.
 	PrivateIpAddress *string `json:"PrivateIpAddress,omitempty" xml:"PrivateIpAddress,omitempty"`
-	// The ID of the region to which the EIP belongs.
-	//
-	// You can call the [DescribeRegions](~~36063~~) operation to query the most recent region list.
+	// The ID of the region to which the EIP belongs. You can call the [DescribeRegions](~~36063~~) operation to query the most recent region list.
 	RegionId             *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 	ResourceOwnerAccount *string `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
 	ResourceOwnerId      *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
@@ -70155,7 +70258,7 @@ func (s *UnassociateEipAddressRequest) SetResourceOwnerId(v int64) *UnassociateE
 }
 
 type UnassociateEipAddressResponseBody struct {
-	// The ID of the request.
+	// The request ID.
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -74025,7 +74128,7 @@ func (client *Client) AddIPv6TranslatorAclListEntry(request *AddIPv6TranslatorAc
  * Before you call this operation, take note of the following limits:
  * *   The CIDR block and the IP address pool must belong to the same region.
  * *   The CIDR block and the IP address pool must use the same line type.
- * *   The **AddPublicIpAddressPoolCidrBlock** operation is asynchronous. After you send the request, the system returns a request ID. However, the operation is still being performed in the system background. You can call the [ListPublicIpAddressPoolCidrBlocks](~~429436~~) operation to query the status of a CIDR block in an IP address pool:
+ * *   **AddPublicIpAddressPoolCidrBlock** is an asynchronous operation. After a request is sent, the system returns a request ID and runs the task in the background. You can call the [ListPublicIpAddressPoolCidrBlocks](~~429436~~) operation to query the status of the task.
  *     *   If the CIDR block is in the **Modifying** state, the CIDR block is being added. In this state, you can only query the CIDR block and cannot perform other operations.
  *     *   If the CIDR block is in the **Created** state, the CIDR block is added.
  * *   You cannot repeatedly call the **AddPublicIpAddressPoolCidrBlock** operation to add a CIDR block to an IP address pool within the specified period of time.
@@ -74107,7 +74210,7 @@ func (client *Client) AddPublicIpAddressPoolCidrBlockWithOptions(request *AddPub
  * Before you call this operation, take note of the following limits:
  * *   The CIDR block and the IP address pool must belong to the same region.
  * *   The CIDR block and the IP address pool must use the same line type.
- * *   The **AddPublicIpAddressPoolCidrBlock** operation is asynchronous. After you send the request, the system returns a request ID. However, the operation is still being performed in the system background. You can call the [ListPublicIpAddressPoolCidrBlocks](~~429436~~) operation to query the status of a CIDR block in an IP address pool:
+ * *   **AddPublicIpAddressPoolCidrBlock** is an asynchronous operation. After a request is sent, the system returns a request ID and runs the task in the background. You can call the [ListPublicIpAddressPoolCidrBlocks](~~429436~~) operation to query the status of the task.
  *     *   If the CIDR block is in the **Modifying** state, the CIDR block is being added. In this state, you can only query the CIDR block and cannot perform other operations.
  *     *   If the CIDR block is in the **Created** state, the CIDR block is added.
  * *   You cannot repeatedly call the **AddPublicIpAddressPoolCidrBlock** operation to add a CIDR block to an IP address pool within the specified period of time.
@@ -76158,8 +76261,9 @@ func (client *Client) AttachVbrToVpconn(request *AttachVbrToVpconnRequest) (_res
 }
 
 /**
- * *   After this operation is performed, the maximum bandwidth of the EIP equals that of the EIP bandwidth plan.
- * *   You cannot repeatedly call the **CancelCommonBandwidthPackageIpBandwidth** operation to remove the maximum bandwidth configured for an EIP within the specified period of time.
+ * Before you call this operation, take note of the following items:
+ * *   After this operation is performed, the maximum bandwidth of the EIP equals that of the Internet Shared Bandwidth instance.
+ * *   You cannot repeatedly call the **CancelCommonBandwidthPackageIpBandwidth** operation within a specific time period.
  *
  * @param request CancelCommonBandwidthPackageIpBandwidthRequest
  * @param runtime runtime options for this request RuntimeOptions
@@ -76223,8 +76327,9 @@ func (client *Client) CancelCommonBandwidthPackageIpBandwidthWithOptions(request
 }
 
 /**
- * *   After this operation is performed, the maximum bandwidth of the EIP equals that of the EIP bandwidth plan.
- * *   You cannot repeatedly call the **CancelCommonBandwidthPackageIpBandwidth** operation to remove the maximum bandwidth configured for an EIP within the specified period of time.
+ * Before you call this operation, take note of the following items:
+ * *   After this operation is performed, the maximum bandwidth of the EIP equals that of the Internet Shared Bandwidth instance.
+ * *   You cannot repeatedly call the **CancelCommonBandwidthPackageIpBandwidth** operation within a specific time period.
  *
  * @param request CancelCommonBandwidthPackageIpBandwidthRequest
  * @return CancelCommonBandwidthPackageIpBandwidthResponse
@@ -83187,7 +83292,7 @@ func (client *Client) DeleteBgpPeer(request *DeleteBgpPeerRequest) (_result *Del
 }
 
 /**
- * You cannot repeatedly call the **DeleteCommonBandwidthPackage** operation to delete an EIP bandwidth plan within the specified period of time.
+ * You cannot repeatedly call the **DeleteCommonBandwidthPackage** operation to delete an Internet Shared Bandwidth instance within the specified period of time.
  *
  * @param request DeleteCommonBandwidthPackageRequest
  * @param runtime runtime options for this request RuntimeOptions
@@ -83251,7 +83356,7 @@ func (client *Client) DeleteCommonBandwidthPackageWithOptions(request *DeleteCom
 }
 
 /**
- * You cannot repeatedly call the **DeleteCommonBandwidthPackage** operation to delete an EIP bandwidth plan within the specified period of time.
+ * You cannot repeatedly call the **DeleteCommonBandwidthPackage** operation to delete an Internet Shared Bandwidth instance within the specified period of time.
  *
  * @param request DeleteCommonBandwidthPackageRequest
  * @return DeleteCommonBandwidthPackageResponse
@@ -85089,12 +85194,12 @@ func (client *Client) DeletePublicIpAddressPool(request *DeletePublicIpAddressPo
 }
 
 /**
- * *   The **DeletePublicIpAddressPoolCidrBlock** operation is asynchronous. After you send the request, the system returns a request ID. However, the operation is still being performed in the system background. You can call the [ListPublicIpAddressPoolCidrBlocks](~~429436~~) operation to query the status of a CIDR block in an IP address pool:
+ * Before you call this operation, take note of the following items:
+ * *   Before you delete a CIDR block, make sure that it is not being used.
+ * *   **DeletePublicIpAddressPoolCidrBlock** is an asynchronous operation. After a request is sent, the system returns a request ID and runs the task in the background. You can call the [ListPublicIpAddressPoolCidrBlocks](~~429436~~) operation to query the status of the task.
  *     *   If the CIDR block is in the **Deleting** state, the CIDR block is being deleted. In this state, you can only query the CIDR block and cannot perform other operations.
  *     *   If you cannot query the CIDR block, the CIDR block is deleted.
  * *   You cannot repeatedly call the **DeletePublicIpAddressPoolCidrBlock** operation to delete a CIDR block within the specified period of time.
- * ## Prerequisites
- * Before you delete a CIDR block, make sure that it is not being used.
  *
  * @param request DeletePublicIpAddressPoolCidrBlockRequest
  * @param runtime runtime options for this request RuntimeOptions
@@ -85166,12 +85271,12 @@ func (client *Client) DeletePublicIpAddressPoolCidrBlockWithOptions(request *Del
 }
 
 /**
- * *   The **DeletePublicIpAddressPoolCidrBlock** operation is asynchronous. After you send the request, the system returns a request ID. However, the operation is still being performed in the system background. You can call the [ListPublicIpAddressPoolCidrBlocks](~~429436~~) operation to query the status of a CIDR block in an IP address pool:
+ * Before you call this operation, take note of the following items:
+ * *   Before you delete a CIDR block, make sure that it is not being used.
+ * *   **DeletePublicIpAddressPoolCidrBlock** is an asynchronous operation. After a request is sent, the system returns a request ID and runs the task in the background. You can call the [ListPublicIpAddressPoolCidrBlocks](~~429436~~) operation to query the status of the task.
  *     *   If the CIDR block is in the **Deleting** state, the CIDR block is being deleted. In this state, you can only query the CIDR block and cannot perform other operations.
  *     *   If you cannot query the CIDR block, the CIDR block is deleted.
  * *   You cannot repeatedly call the **DeletePublicIpAddressPoolCidrBlock** operation to delete a CIDR block within the specified period of time.
- * ## Prerequisites
- * Before you delete a CIDR block, make sure that it is not being used.
  *
  * @param request DeletePublicIpAddressPoolCidrBlockRequest
  * @return DeletePublicIpAddressPoolCidrBlockResponse
@@ -86185,6 +86290,70 @@ func (client *Client) DeleteVSwitch(request *DeleteVSwitchRequest) (_result *Del
 	runtime := &util.RuntimeOptions{}
 	_result = &DeleteVSwitchResponse{}
 	_body, _err := client.DeleteVSwitchWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) DeleteVSwitchCidrReservationWithOptions(request *DeleteVSwitchCidrReservationRequest, runtime *util.RuntimeOptions) (_result *DeleteVSwitchCidrReservationResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.OwnerAccount)) {
+		query["OwnerAccount"] = request.OwnerAccount
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.OwnerId)) {
+		query["OwnerId"] = request.OwnerId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.RegionId)) {
+		query["RegionId"] = request.RegionId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ResourceOwnerAccount)) {
+		query["ResourceOwnerAccount"] = request.ResourceOwnerAccount
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ResourceOwnerId)) {
+		query["ResourceOwnerId"] = request.ResourceOwnerId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.VSwitchCidrReservationId)) {
+		query["VSwitchCidrReservationId"] = request.VSwitchCidrReservationId
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("DeleteVSwitchCidrReservation"),
+		Version:     tea.String("2016-04-28"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &DeleteVSwitchCidrReservationResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) DeleteVSwitchCidrReservation(request *DeleteVSwitchCidrReservationRequest) (_result *DeleteVSwitchCidrReservationResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &DeleteVSwitchCidrReservationResponse{}
+	_body, _err := client.DeleteVSwitchCidrReservationWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -99379,6 +99548,14 @@ func (client *Client) ModifyRouteEntryWithOptions(request *ModifyRouteEntryReque
 		query["Description"] = request.Description
 	}
 
+	if !tea.BoolValue(util.IsUnset(request.NewNextHopId)) {
+		query["NewNextHopId"] = request.NewNextHopId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.NewNextHopType)) {
+		query["NewNextHopType"] = request.NewNextHopType
+	}
+
 	if !tea.BoolValue(util.IsUnset(request.OwnerAccount)) {
 		query["OwnerAccount"] = request.OwnerAccount
 	}
@@ -102238,7 +102415,7 @@ func (client *Client) ReleaseEipAddress(request *ReleaseEipAddressRequest) (_res
 
 /**
  * *   After you call the **ReleaseEipSegmentAddress** operation, all EIPs in the specified group are released.
- * *   The **ReleaseEipSegmentAddress** operation is asynchronous. After you send the request, the system returns a request ID. However, the operation is still being performed in the system background. You can call the [DescribeEipSegment](~~156063~~) operation to query the status of a group of contiguous EIPs:
+ * *   **ReleaseEipSegmentAddress** is an asynchronous operation. After a request is sent, the system returns a request ID and runs the task in the background. You can call the [DescribeEipSegment](~~156063~~) operation to query the status of the task.
  *     *   If the group is in the **Releasing** state, EIPs in the group are being released. In this state, you can only query the group and cannot perform other operations.
  *     *   If you cannot query the group of contiguous EIPs, the contiguous EIPs are released.
  * *   You cannot repeatedly call the **ReleaseEipSegmentAddress** operation to release a group of contiguous EIPs within the specified period of time.
@@ -102306,7 +102483,7 @@ func (client *Client) ReleaseEipSegmentAddressWithOptions(request *ReleaseEipSeg
 
 /**
  * *   After you call the **ReleaseEipSegmentAddress** operation, all EIPs in the specified group are released.
- * *   The **ReleaseEipSegmentAddress** operation is asynchronous. After you send the request, the system returns a request ID. However, the operation is still being performed in the system background. You can call the [DescribeEipSegment](~~156063~~) operation to query the status of a group of contiguous EIPs:
+ * *   **ReleaseEipSegmentAddress** is an asynchronous operation. After a request is sent, the system returns a request ID and runs the task in the background. You can call the [DescribeEipSegment](~~156063~~) operation to query the status of the task.
  *     *   If the group is in the **Releasing** state, EIPs in the group are being released. In this state, you can only query the group and cannot perform other operations.
  *     *   If you cannot query the group of contiguous EIPs, the contiguous EIPs are released.
  * *   You cannot repeatedly call the **ReleaseEipSegmentAddress** operation to release a group of contiguous EIPs within the specified period of time.
@@ -103631,10 +103808,10 @@ func (client *Client) UnTagResources(request *UnTagResourcesRequest) (_result *U
 }
 
 /**
- * *   **UnassociateEipAddress** is an asynchronous operation. After you send a request, the system returns a request ID and runs the task in the background. You can call the [DescribeEipAddresses](~~120193~~) operation to query the status of an EIP:
+ * *   **UnassociateEipAddress** is an asynchronous operation. After a request is sent, the system returns a request ID and runs the task in the background. You can call the [DescribeEipAddresses](~~120193~~) operation to query the status of the task.
  *     *   If the EIP is in the **Unassociating** state, the EIP is being disassociated. In this state, you can only query the EIP and cannot perform other operations.
  *     *   If the EIP is in the **Available** state, the EIP is disassociated.
- * *   You cannot repeatedly call the **UnassociateEipAddress** operation to disassociate an EIP within the specified period of time.
+ * *   You cannot repeatedly call the **UnassociateEipAddress** operation within the specified period of time.
  *
  * @param request UnassociateEipAddressRequest
  * @param runtime runtime options for this request RuntimeOptions
@@ -103714,10 +103891,10 @@ func (client *Client) UnassociateEipAddressWithOptions(request *UnassociateEipAd
 }
 
 /**
- * *   **UnassociateEipAddress** is an asynchronous operation. After you send a request, the system returns a request ID and runs the task in the background. You can call the [DescribeEipAddresses](~~120193~~) operation to query the status of an EIP:
+ * *   **UnassociateEipAddress** is an asynchronous operation. After a request is sent, the system returns a request ID and runs the task in the background. You can call the [DescribeEipAddresses](~~120193~~) operation to query the status of the task.
  *     *   If the EIP is in the **Unassociating** state, the EIP is being disassociated. In this state, you can only query the EIP and cannot perform other operations.
  *     *   If the EIP is in the **Available** state, the EIP is disassociated.
- * *   You cannot repeatedly call the **UnassociateEipAddress** operation to disassociate an EIP within the specified period of time.
+ * *   You cannot repeatedly call the **UnassociateEipAddress** operation within the specified period of time.
  *
  * @param request UnassociateEipAddressRequest
  * @return UnassociateEipAddressResponse
