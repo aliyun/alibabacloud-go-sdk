@@ -3453,8 +3453,14 @@ func (s *AddressGetHeaders) SetXAcsBtripSoCorpToken(v string) *AddressGetHeaders
 
 type AddressGetRequest struct {
 	ActionType        *int32  `json:"action_type,omitempty" xml:"action_type,omitempty"`
+	ArrCityCode       *string `json:"arr_city_code,omitempty" xml:"arr_city_code,omitempty"`
+	ArrCityName       *string `json:"arr_city_name,omitempty" xml:"arr_city_name,omitempty"`
 	CarScenesCode     *string `json:"car_scenes_code,omitempty" xml:"car_scenes_code,omitempty"`
+	DepCityCode       *string `json:"dep_city_code,omitempty" xml:"dep_city_code,omitempty"`
+	DepCityName       *string `json:"dep_city_name,omitempty" xml:"dep_city_name,omitempty"`
+	DepDate           *string `json:"dep_date,omitempty" xml:"dep_date,omitempty"`
 	ItineraryId       *string `json:"itinerary_id,omitempty" xml:"itinerary_id,omitempty"`
+	OrderId           *string `json:"order_Id,omitempty" xml:"order_Id,omitempty"`
 	Phone             *string `json:"phone,omitempty" xml:"phone,omitempty"`
 	SubCorpId         *string `json:"sub_corp_id,omitempty" xml:"sub_corp_id,omitempty"`
 	TaobaoCallbackUrl *string `json:"taobao_callback_url,omitempty" xml:"taobao_callback_url,omitempty"`
@@ -3475,13 +3481,43 @@ func (s *AddressGetRequest) SetActionType(v int32) *AddressGetRequest {
 	return s
 }
 
+func (s *AddressGetRequest) SetArrCityCode(v string) *AddressGetRequest {
+	s.ArrCityCode = &v
+	return s
+}
+
+func (s *AddressGetRequest) SetArrCityName(v string) *AddressGetRequest {
+	s.ArrCityName = &v
+	return s
+}
+
 func (s *AddressGetRequest) SetCarScenesCode(v string) *AddressGetRequest {
 	s.CarScenesCode = &v
 	return s
 }
 
+func (s *AddressGetRequest) SetDepCityCode(v string) *AddressGetRequest {
+	s.DepCityCode = &v
+	return s
+}
+
+func (s *AddressGetRequest) SetDepCityName(v string) *AddressGetRequest {
+	s.DepCityName = &v
+	return s
+}
+
+func (s *AddressGetRequest) SetDepDate(v string) *AddressGetRequest {
+	s.DepDate = &v
+	return s
+}
+
 func (s *AddressGetRequest) SetItineraryId(v string) *AddressGetRequest {
 	s.ItineraryId = &v
+	return s
+}
+
+func (s *AddressGetRequest) SetOrderId(v string) *AddressGetRequest {
+	s.OrderId = &v
 	return s
 }
 
@@ -14013,6 +14049,7 @@ type FlightBillSettlementQueryResponseBodyModuleDataList struct {
 	ProjectCode            *string  `json:"project_code,omitempty" xml:"project_code,omitempty"`
 	ProjectName            *string  `json:"project_name,omitempty" xml:"project_name,omitempty"`
 	RefundFee              *float64 `json:"refund_fee,omitempty" xml:"refund_fee,omitempty"`
+	RefundResult           *string  `json:"refund_result,omitempty" xml:"refund_result,omitempty"`
 	RefundUpgradeCost      *float64 `json:"refund_upgrade_cost,omitempty" xml:"refund_upgrade_cost,omitempty"`
 	Remark                 *string  `json:"remark,omitempty" xml:"remark,omitempty"`
 	RepeatRefund           *string  `json:"repeat_refund,omitempty" xml:"repeat_refund,omitempty"`
@@ -14349,6 +14386,11 @@ func (s *FlightBillSettlementQueryResponseBodyModuleDataList) SetProjectName(v s
 
 func (s *FlightBillSettlementQueryResponseBodyModuleDataList) SetRefundFee(v float64) *FlightBillSettlementQueryResponseBodyModuleDataList {
 	s.RefundFee = &v
+	return s
+}
+
+func (s *FlightBillSettlementQueryResponseBodyModuleDataList) SetRefundResult(v string) *FlightBillSettlementQueryResponseBodyModuleDataList {
+	s.RefundResult = &v
 	return s
 }
 
@@ -15837,18 +15879,19 @@ func (s *FlightExceedApplyQueryResponseBody) SetTraceId(v string) *FlightExceedA
 }
 
 type FlightExceedApplyQueryResponseBodyModule struct {
-	ApplyId              *int64                                                        `json:"apply_id,omitempty" xml:"apply_id,omitempty"`
-	ApplyIntentionInfoDo *FlightExceedApplyQueryResponseBodyModuleApplyIntentionInfoDo `json:"apply_intention_info_do,omitempty" xml:"apply_intention_info_do,omitempty" type:"Struct"`
-	BtripCause           *string                                                       `json:"btrip_cause,omitempty" xml:"btrip_cause,omitempty"`
-	CorpId               *string                                                       `json:"corp_id,omitempty" xml:"corp_id,omitempty"`
-	ExceedReason         *string                                                       `json:"exceed_reason,omitempty" xml:"exceed_reason,omitempty"`
-	ExceedType           *int32                                                        `json:"exceed_type,omitempty" xml:"exceed_type,omitempty"`
-	OriginStandard       *string                                                       `json:"origin_standard,omitempty" xml:"origin_standard,omitempty"`
-	Status               *int32                                                        `json:"status,omitempty" xml:"status,omitempty"`
-	SubmitTime           *string                                                       `json:"submit_time,omitempty" xml:"submit_time,omitempty"`
-	ThirdpartApplyId     *string                                                       `json:"thirdpart_apply_id,omitempty" xml:"thirdpart_apply_id,omitempty"`
-	ThirdpartCorpId      *string                                                       `json:"thirdpart_corp_id,omitempty" xml:"thirdpart_corp_id,omitempty"`
-	UserId               *string                                                       `json:"user_id,omitempty" xml:"user_id,omitempty"`
+	ApplyId               *int64                                                         `json:"apply_id,omitempty" xml:"apply_id,omitempty"`
+	ApplyIntentionInfoDo  *FlightExceedApplyQueryResponseBodyModuleApplyIntentionInfoDo  `json:"apply_intention_info_do,omitempty" xml:"apply_intention_info_do,omitempty" type:"Struct"`
+	ApplyRecommendFlights *FlightExceedApplyQueryResponseBodyModuleApplyRecommendFlights `json:"apply_recommend_flights,omitempty" xml:"apply_recommend_flights,omitempty" type:"Struct"`
+	BtripCause            *string                                                        `json:"btrip_cause,omitempty" xml:"btrip_cause,omitempty"`
+	CorpId                *string                                                        `json:"corp_id,omitempty" xml:"corp_id,omitempty"`
+	ExceedReason          *string                                                        `json:"exceed_reason,omitempty" xml:"exceed_reason,omitempty"`
+	ExceedType            *int32                                                         `json:"exceed_type,omitempty" xml:"exceed_type,omitempty"`
+	OriginStandard        *string                                                        `json:"origin_standard,omitempty" xml:"origin_standard,omitempty"`
+	Status                *int32                                                         `json:"status,omitempty" xml:"status,omitempty"`
+	SubmitTime            *string                                                        `json:"submit_time,omitempty" xml:"submit_time,omitempty"`
+	ThirdpartApplyId      *string                                                        `json:"thirdpart_apply_id,omitempty" xml:"thirdpart_apply_id,omitempty"`
+	ThirdpartCorpId       *string                                                        `json:"thirdpart_corp_id,omitempty" xml:"thirdpart_corp_id,omitempty"`
+	UserId                *string                                                        `json:"user_id,omitempty" xml:"user_id,omitempty"`
 }
 
 func (s FlightExceedApplyQueryResponseBodyModule) String() string {
@@ -15866,6 +15909,11 @@ func (s *FlightExceedApplyQueryResponseBodyModule) SetApplyId(v int64) *FlightEx
 
 func (s *FlightExceedApplyQueryResponseBodyModule) SetApplyIntentionInfoDo(v *FlightExceedApplyQueryResponseBodyModuleApplyIntentionInfoDo) *FlightExceedApplyQueryResponseBodyModule {
 	s.ApplyIntentionInfoDo = v
+	return s
+}
+
+func (s *FlightExceedApplyQueryResponseBodyModule) SetApplyRecommendFlights(v *FlightExceedApplyQueryResponseBodyModuleApplyRecommendFlights) *FlightExceedApplyQueryResponseBodyModule {
+	s.ApplyRecommendFlights = v
 	return s
 }
 
@@ -15920,19 +15968,21 @@ func (s *FlightExceedApplyQueryResponseBodyModule) SetUserId(v string) *FlightEx
 }
 
 type FlightExceedApplyQueryResponseBodyModuleApplyIntentionInfoDo struct {
-	ArrCity       *string `json:"arr_city,omitempty" xml:"arr_city,omitempty"`
-	ArrCityName   *string `json:"arr_city_name,omitempty" xml:"arr_city_name,omitempty"`
-	ArrTime       *string `json:"arr_time,omitempty" xml:"arr_time,omitempty"`
-	Cabin         *string `json:"cabin,omitempty" xml:"cabin,omitempty"`
-	CabinClass    *int32  `json:"cabin_class,omitempty" xml:"cabin_class,omitempty"`
-	CabinClassStr *string `json:"cabin_class_str,omitempty" xml:"cabin_class_str,omitempty"`
-	DepCity       *string `json:"dep_city,omitempty" xml:"dep_city,omitempty"`
-	DepCityName   *string `json:"dep_city_name,omitempty" xml:"dep_city_name,omitempty"`
-	DepTime       *string `json:"dep_time,omitempty" xml:"dep_time,omitempty"`
-	Discount      *string `json:"discount,omitempty" xml:"discount,omitempty"`
-	FlightNo      *string `json:"flight_no,omitempty" xml:"flight_no,omitempty"`
-	Price         *int64  `json:"price,omitempty" xml:"price,omitempty"`
-	Type          *int32  `json:"type,omitempty" xml:"type,omitempty"`
+	ArrAirportName *string `json:"arr_airport_name,omitempty" xml:"arr_airport_name,omitempty"`
+	ArrCity        *string `json:"arr_city,omitempty" xml:"arr_city,omitempty"`
+	ArrCityName    *string `json:"arr_city_name,omitempty" xml:"arr_city_name,omitempty"`
+	ArrTime        *string `json:"arr_time,omitempty" xml:"arr_time,omitempty"`
+	Cabin          *string `json:"cabin,omitempty" xml:"cabin,omitempty"`
+	CabinClass     *int32  `json:"cabin_class,omitempty" xml:"cabin_class,omitempty"`
+	CabinClassStr  *string `json:"cabin_class_str,omitempty" xml:"cabin_class_str,omitempty"`
+	DepAirportName *string `json:"dep_airport_name,omitempty" xml:"dep_airport_name,omitempty"`
+	DepCity        *string `json:"dep_city,omitempty" xml:"dep_city,omitempty"`
+	DepCityName    *string `json:"dep_city_name,omitempty" xml:"dep_city_name,omitempty"`
+	DepTime        *string `json:"dep_time,omitempty" xml:"dep_time,omitempty"`
+	Discount       *string `json:"discount,omitempty" xml:"discount,omitempty"`
+	FlightNo       *string `json:"flight_no,omitempty" xml:"flight_no,omitempty"`
+	Price          *int64  `json:"price,omitempty" xml:"price,omitempty"`
+	Type           *int32  `json:"type,omitempty" xml:"type,omitempty"`
 }
 
 func (s FlightExceedApplyQueryResponseBodyModuleApplyIntentionInfoDo) String() string {
@@ -15941,6 +15991,11 @@ func (s FlightExceedApplyQueryResponseBodyModuleApplyIntentionInfoDo) String() s
 
 func (s FlightExceedApplyQueryResponseBodyModuleApplyIntentionInfoDo) GoString() string {
 	return s.String()
+}
+
+func (s *FlightExceedApplyQueryResponseBodyModuleApplyIntentionInfoDo) SetArrAirportName(v string) *FlightExceedApplyQueryResponseBodyModuleApplyIntentionInfoDo {
+	s.ArrAirportName = &v
+	return s
 }
 
 func (s *FlightExceedApplyQueryResponseBodyModuleApplyIntentionInfoDo) SetArrCity(v string) *FlightExceedApplyQueryResponseBodyModuleApplyIntentionInfoDo {
@@ -15970,6 +16025,11 @@ func (s *FlightExceedApplyQueryResponseBodyModuleApplyIntentionInfoDo) SetCabinC
 
 func (s *FlightExceedApplyQueryResponseBodyModuleApplyIntentionInfoDo) SetCabinClassStr(v string) *FlightExceedApplyQueryResponseBodyModuleApplyIntentionInfoDo {
 	s.CabinClassStr = &v
+	return s
+}
+
+func (s *FlightExceedApplyQueryResponseBodyModuleApplyIntentionInfoDo) SetDepAirportName(v string) *FlightExceedApplyQueryResponseBodyModuleApplyIntentionInfoDo {
+	s.DepAirportName = &v
 	return s
 }
 
@@ -16005,6 +16065,95 @@ func (s *FlightExceedApplyQueryResponseBodyModuleApplyIntentionInfoDo) SetPrice(
 
 func (s *FlightExceedApplyQueryResponseBodyModuleApplyIntentionInfoDo) SetType(v int32) *FlightExceedApplyQueryResponseBodyModuleApplyIntentionInfoDo {
 	s.Type = &v
+	return s
+}
+
+type FlightExceedApplyQueryResponseBodyModuleApplyRecommendFlights struct {
+	ArrAirportName      *string `json:"arr_airport_name,omitempty" xml:"arr_airport_name,omitempty"`
+	ArrCityName         *string `json:"arr_city_name,omitempty" xml:"arr_city_name,omitempty"`
+	ArrTime             *string `json:"arr_time,omitempty" xml:"arr_time,omitempty"`
+	Cabin               *string `json:"cabin,omitempty" xml:"cabin,omitempty"`
+	CabinClass          *int32  `json:"cabin_class,omitempty" xml:"cabin_class,omitempty"`
+	CabinClassStr       *string `json:"cabin_class_str,omitempty" xml:"cabin_class_str,omitempty"`
+	DepAirportName      *string `json:"dep_airport_name,omitempty" xml:"dep_airport_name,omitempty"`
+	DepCityName         *string `json:"dep_city_name,omitempty" xml:"dep_city_name,omitempty"`
+	DepTime             *string `json:"dep_time,omitempty" xml:"dep_time,omitempty"`
+	Discount            *string `json:"discount,omitempty" xml:"discount,omitempty"`
+	FlightNo            *string `json:"flight_no,omitempty" xml:"flight_no,omitempty"`
+	Price               *int64  `json:"price,omitempty" xml:"price,omitempty"`
+	TransferAirportName *string `json:"transfer_airport_name,omitempty" xml:"transfer_airport_name,omitempty"`
+}
+
+func (s FlightExceedApplyQueryResponseBodyModuleApplyRecommendFlights) String() string {
+	return tea.Prettify(s)
+}
+
+func (s FlightExceedApplyQueryResponseBodyModuleApplyRecommendFlights) GoString() string {
+	return s.String()
+}
+
+func (s *FlightExceedApplyQueryResponseBodyModuleApplyRecommendFlights) SetArrAirportName(v string) *FlightExceedApplyQueryResponseBodyModuleApplyRecommendFlights {
+	s.ArrAirportName = &v
+	return s
+}
+
+func (s *FlightExceedApplyQueryResponseBodyModuleApplyRecommendFlights) SetArrCityName(v string) *FlightExceedApplyQueryResponseBodyModuleApplyRecommendFlights {
+	s.ArrCityName = &v
+	return s
+}
+
+func (s *FlightExceedApplyQueryResponseBodyModuleApplyRecommendFlights) SetArrTime(v string) *FlightExceedApplyQueryResponseBodyModuleApplyRecommendFlights {
+	s.ArrTime = &v
+	return s
+}
+
+func (s *FlightExceedApplyQueryResponseBodyModuleApplyRecommendFlights) SetCabin(v string) *FlightExceedApplyQueryResponseBodyModuleApplyRecommendFlights {
+	s.Cabin = &v
+	return s
+}
+
+func (s *FlightExceedApplyQueryResponseBodyModuleApplyRecommendFlights) SetCabinClass(v int32) *FlightExceedApplyQueryResponseBodyModuleApplyRecommendFlights {
+	s.CabinClass = &v
+	return s
+}
+
+func (s *FlightExceedApplyQueryResponseBodyModuleApplyRecommendFlights) SetCabinClassStr(v string) *FlightExceedApplyQueryResponseBodyModuleApplyRecommendFlights {
+	s.CabinClassStr = &v
+	return s
+}
+
+func (s *FlightExceedApplyQueryResponseBodyModuleApplyRecommendFlights) SetDepAirportName(v string) *FlightExceedApplyQueryResponseBodyModuleApplyRecommendFlights {
+	s.DepAirportName = &v
+	return s
+}
+
+func (s *FlightExceedApplyQueryResponseBodyModuleApplyRecommendFlights) SetDepCityName(v string) *FlightExceedApplyQueryResponseBodyModuleApplyRecommendFlights {
+	s.DepCityName = &v
+	return s
+}
+
+func (s *FlightExceedApplyQueryResponseBodyModuleApplyRecommendFlights) SetDepTime(v string) *FlightExceedApplyQueryResponseBodyModuleApplyRecommendFlights {
+	s.DepTime = &v
+	return s
+}
+
+func (s *FlightExceedApplyQueryResponseBodyModuleApplyRecommendFlights) SetDiscount(v string) *FlightExceedApplyQueryResponseBodyModuleApplyRecommendFlights {
+	s.Discount = &v
+	return s
+}
+
+func (s *FlightExceedApplyQueryResponseBodyModuleApplyRecommendFlights) SetFlightNo(v string) *FlightExceedApplyQueryResponseBodyModuleApplyRecommendFlights {
+	s.FlightNo = &v
+	return s
+}
+
+func (s *FlightExceedApplyQueryResponseBodyModuleApplyRecommendFlights) SetPrice(v int64) *FlightExceedApplyQueryResponseBodyModuleApplyRecommendFlights {
+	s.Price = &v
+	return s
+}
+
+func (s *FlightExceedApplyQueryResponseBodyModuleApplyRecommendFlights) SetTransferAirportName(v string) *FlightExceedApplyQueryResponseBodyModuleApplyRecommendFlights {
+	s.TransferAirportName = &v
 	return s
 }
 
@@ -24606,12 +24755,13 @@ type FlightOrderDetailV2ResponseBodyModulePassengerListTickets struct {
 	JourneyTitle     *string `json:"journey_title,omitempty" xml:"journey_title,omitempty"`
 	OpenTicketStatus *string `json:"open_ticket_status,omitempty" xml:"open_ticket_status,omitempty"`
 	// pcc/office
-	Pcc              *string `json:"pcc,omitempty" xml:"pcc,omitempty"`
-	TicketAuthMemo   *string `json:"ticket_auth_memo,omitempty" xml:"ticket_auth_memo,omitempty"`
-	TicketAuthStatus *int32  `json:"ticket_auth_status,omitempty" xml:"ticket_auth_status,omitempty"`
-	TicketNo         *string `json:"ticket_no,omitempty" xml:"ticket_no,omitempty"`
-	TicketPrice      *int64  `json:"ticket_price,omitempty" xml:"ticket_price,omitempty"`
-	TicketStatus     *string `json:"ticket_status,omitempty" xml:"ticket_status,omitempty"`
+	Pcc                   *string                                                                           `json:"pcc,omitempty" xml:"pcc,omitempty"`
+	SegmentOpenTicketList []*FlightOrderDetailV2ResponseBodyModulePassengerListTicketsSegmentOpenTicketList `json:"segment_open_ticket_list,omitempty" xml:"segment_open_ticket_list,omitempty" type:"Repeated"`
+	TicketAuthMemo        *string                                                                           `json:"ticket_auth_memo,omitempty" xml:"ticket_auth_memo,omitempty"`
+	TicketAuthStatus      *int32                                                                            `json:"ticket_auth_status,omitempty" xml:"ticket_auth_status,omitempty"`
+	TicketNo              *string                                                                           `json:"ticket_no,omitempty" xml:"ticket_no,omitempty"`
+	TicketPrice           *int64                                                                            `json:"ticket_price,omitempty" xml:"ticket_price,omitempty"`
+	TicketStatus          *string                                                                           `json:"ticket_status,omitempty" xml:"ticket_status,omitempty"`
 }
 
 func (s FlightOrderDetailV2ResponseBodyModulePassengerListTickets) String() string {
@@ -24642,6 +24792,11 @@ func (s *FlightOrderDetailV2ResponseBodyModulePassengerListTickets) SetPcc(v str
 	return s
 }
 
+func (s *FlightOrderDetailV2ResponseBodyModulePassengerListTickets) SetSegmentOpenTicketList(v []*FlightOrderDetailV2ResponseBodyModulePassengerListTicketsSegmentOpenTicketList) *FlightOrderDetailV2ResponseBodyModulePassengerListTickets {
+	s.SegmentOpenTicketList = v
+	return s
+}
+
 func (s *FlightOrderDetailV2ResponseBodyModulePassengerListTickets) SetTicketAuthMemo(v string) *FlightOrderDetailV2ResponseBodyModulePassengerListTickets {
 	s.TicketAuthMemo = &v
 	return s
@@ -24664,6 +24819,35 @@ func (s *FlightOrderDetailV2ResponseBodyModulePassengerListTickets) SetTicketPri
 
 func (s *FlightOrderDetailV2ResponseBodyModulePassengerListTickets) SetTicketStatus(v string) *FlightOrderDetailV2ResponseBodyModulePassengerListTickets {
 	s.TicketStatus = &v
+	return s
+}
+
+type FlightOrderDetailV2ResponseBodyModulePassengerListTicketsSegmentOpenTicketList struct {
+	JourneyIndex     *int32 `json:"journey_index,omitempty" xml:"journey_index,omitempty"`
+	OpenTicketStatus *int32 `json:"open_ticket_status,omitempty" xml:"open_ticket_status,omitempty"`
+	SegmentIndex     *int32 `json:"segment_index,omitempty" xml:"segment_index,omitempty"`
+}
+
+func (s FlightOrderDetailV2ResponseBodyModulePassengerListTicketsSegmentOpenTicketList) String() string {
+	return tea.Prettify(s)
+}
+
+func (s FlightOrderDetailV2ResponseBodyModulePassengerListTicketsSegmentOpenTicketList) GoString() string {
+	return s.String()
+}
+
+func (s *FlightOrderDetailV2ResponseBodyModulePassengerListTicketsSegmentOpenTicketList) SetJourneyIndex(v int32) *FlightOrderDetailV2ResponseBodyModulePassengerListTicketsSegmentOpenTicketList {
+	s.JourneyIndex = &v
+	return s
+}
+
+func (s *FlightOrderDetailV2ResponseBodyModulePassengerListTicketsSegmentOpenTicketList) SetOpenTicketStatus(v int32) *FlightOrderDetailV2ResponseBodyModulePassengerListTicketsSegmentOpenTicketList {
+	s.OpenTicketStatus = &v
+	return s
+}
+
+func (s *FlightOrderDetailV2ResponseBodyModulePassengerListTicketsSegmentOpenTicketList) SetSegmentIndex(v int32) *FlightOrderDetailV2ResponseBodyModulePassengerListTicketsSegmentOpenTicketList {
+	s.SegmentIndex = &v
 	return s
 }
 
@@ -37402,10 +37586,12 @@ type HotelBillSettlementQueryResponseBodyModuleDataList struct {
 	DepartmentId       *string  `json:"department_id,omitempty" xml:"department_id,omitempty"`
 	FeeType            *string  `json:"fee_type,omitempty" xml:"fee_type,omitempty"`
 	Fees               *float64 `json:"fees,omitempty" xml:"fees,omitempty"`
+	Fines              *float64 `json:"fines,omitempty" xml:"fines,omitempty"`
 	FuPointFee         *float64 `json:"fu_point_fee,omitempty" xml:"fu_point_fee,omitempty"`
 	HotelName          *string  `json:"hotel_name,omitempty" xml:"hotel_name,omitempty"`
 	Index              *string  `json:"index,omitempty" xml:"index,omitempty"`
 	InvoiceTitle       *string  `json:"invoice_title,omitempty" xml:"invoice_title,omitempty"`
+	IsEarlyDeparture   *string  `json:"is_early_departure,omitempty" xml:"is_early_departure,omitempty"`
 	IsNegotiation      *string  `json:"is_negotiation,omitempty" xml:"is_negotiation,omitempty"`
 	IsShareStr         *string  `json:"is_share_str,omitempty" xml:"is_share_str,omitempty"`
 	Nights             *int32   `json:"nights,omitempty" xml:"nights,omitempty"`
@@ -37584,6 +37770,11 @@ func (s *HotelBillSettlementQueryResponseBodyModuleDataList) SetFees(v float64) 
 	return s
 }
 
+func (s *HotelBillSettlementQueryResponseBodyModuleDataList) SetFines(v float64) *HotelBillSettlementQueryResponseBodyModuleDataList {
+	s.Fines = &v
+	return s
+}
+
 func (s *HotelBillSettlementQueryResponseBodyModuleDataList) SetFuPointFee(v float64) *HotelBillSettlementQueryResponseBodyModuleDataList {
 	s.FuPointFee = &v
 	return s
@@ -37601,6 +37792,11 @@ func (s *HotelBillSettlementQueryResponseBodyModuleDataList) SetIndex(v string) 
 
 func (s *HotelBillSettlementQueryResponseBodyModuleDataList) SetInvoiceTitle(v string) *HotelBillSettlementQueryResponseBodyModuleDataList {
 	s.InvoiceTitle = &v
+	return s
+}
+
+func (s *HotelBillSettlementQueryResponseBodyModuleDataList) SetIsEarlyDeparture(v string) *HotelBillSettlementQueryResponseBodyModuleDataList {
+	s.IsEarlyDeparture = &v
 	return s
 }
 
@@ -56889,12 +57085,36 @@ func (client *Client) AddressGetWithOptions(request *AddressGetRequest, headers 
 		query["action_type"] = request.ActionType
 	}
 
+	if !tea.BoolValue(util.IsUnset(request.ArrCityCode)) {
+		query["arr_city_code"] = request.ArrCityCode
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ArrCityName)) {
+		query["arr_city_name"] = request.ArrCityName
+	}
+
 	if !tea.BoolValue(util.IsUnset(request.CarScenesCode)) {
 		query["car_scenes_code"] = request.CarScenesCode
 	}
 
+	if !tea.BoolValue(util.IsUnset(request.DepCityCode)) {
+		query["dep_city_code"] = request.DepCityCode
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.DepCityName)) {
+		query["dep_city_name"] = request.DepCityName
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.DepDate)) {
+		query["dep_date"] = request.DepDate
+	}
+
 	if !tea.BoolValue(util.IsUnset(request.ItineraryId)) {
 		query["itinerary_id"] = request.ItineraryId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.OrderId)) {
+		query["order_Id"] = request.OrderId
 	}
 
 	if !tea.BoolValue(util.IsUnset(request.Phone)) {
