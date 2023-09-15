@@ -1566,6 +1566,7 @@ func (s *DeleteEaisEiResponse) SetBody(v *DeleteEaisEiResponseBody) *DeleteEaisE
 }
 
 type DescribeEaisRequest struct {
+	ClientInstanceId              *string                   `json:"ClientInstanceId,omitempty" xml:"ClientInstanceId,omitempty"`
 	ElasticAcceleratedInstanceIds *string                   `json:"ElasticAcceleratedInstanceIds,omitempty" xml:"ElasticAcceleratedInstanceIds,omitempty"`
 	InstanceName                  *string                   `json:"InstanceName,omitempty" xml:"InstanceName,omitempty"`
 	InstanceType                  *string                   `json:"InstanceType,omitempty" xml:"InstanceType,omitempty"`
@@ -1583,6 +1584,11 @@ func (s DescribeEaisRequest) String() string {
 
 func (s DescribeEaisRequest) GoString() string {
 	return s.String()
+}
+
+func (s *DescribeEaisRequest) SetClientInstanceId(v string) *DescribeEaisRequest {
+	s.ClientInstanceId = &v
+	return s
 }
 
 func (s *DescribeEaisRequest) SetElasticAcceleratedInstanceIds(v string) *DescribeEaisRequest {
@@ -3340,6 +3346,10 @@ func (client *Client) DescribeEaisWithOptions(request *DescribeEaisRequest, runt
 		return _result, _err
 	}
 	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.ClientInstanceId)) {
+		query["ClientInstanceId"] = request.ClientInstanceId
+	}
+
 	if !tea.BoolValue(util.IsUnset(request.ElasticAcceleratedInstanceIds)) {
 		query["ElasticAcceleratedInstanceIds"] = request.ElasticAcceleratedInstanceIds
 	}
