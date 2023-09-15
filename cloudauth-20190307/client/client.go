@@ -2148,6 +2148,116 @@ func (s *DetectFaceAttributesResponse) SetBody(v *DetectFaceAttributesResponseBo
 	return s
 }
 
+type Id2MetaVerifyRequest struct {
+	IdentifyNum *string `json:"IdentifyNum,omitempty" xml:"IdentifyNum,omitempty"`
+	ParamType   *string `json:"ParamType,omitempty" xml:"ParamType,omitempty"`
+	UserName    *string `json:"UserName,omitempty" xml:"UserName,omitempty"`
+}
+
+func (s Id2MetaVerifyRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s Id2MetaVerifyRequest) GoString() string {
+	return s.String()
+}
+
+func (s *Id2MetaVerifyRequest) SetIdentifyNum(v string) *Id2MetaVerifyRequest {
+	s.IdentifyNum = &v
+	return s
+}
+
+func (s *Id2MetaVerifyRequest) SetParamType(v string) *Id2MetaVerifyRequest {
+	s.ParamType = &v
+	return s
+}
+
+func (s *Id2MetaVerifyRequest) SetUserName(v string) *Id2MetaVerifyRequest {
+	s.UserName = &v
+	return s
+}
+
+type Id2MetaVerifyResponseBody struct {
+	Code         *string                                `json:"Code,omitempty" xml:"Code,omitempty"`
+	Message      *string                                `json:"Message,omitempty" xml:"Message,omitempty"`
+	RequestId    *string                                `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	ResultObject *Id2MetaVerifyResponseBodyResultObject `json:"ResultObject,omitempty" xml:"ResultObject,omitempty" type:"Struct"`
+}
+
+func (s Id2MetaVerifyResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s Id2MetaVerifyResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *Id2MetaVerifyResponseBody) SetCode(v string) *Id2MetaVerifyResponseBody {
+	s.Code = &v
+	return s
+}
+
+func (s *Id2MetaVerifyResponseBody) SetMessage(v string) *Id2MetaVerifyResponseBody {
+	s.Message = &v
+	return s
+}
+
+func (s *Id2MetaVerifyResponseBody) SetRequestId(v string) *Id2MetaVerifyResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *Id2MetaVerifyResponseBody) SetResultObject(v *Id2MetaVerifyResponseBodyResultObject) *Id2MetaVerifyResponseBody {
+	s.ResultObject = v
+	return s
+}
+
+type Id2MetaVerifyResponseBodyResultObject struct {
+	BizCode *string `json:"BizCode,omitempty" xml:"BizCode,omitempty"`
+}
+
+func (s Id2MetaVerifyResponseBodyResultObject) String() string {
+	return tea.Prettify(s)
+}
+
+func (s Id2MetaVerifyResponseBodyResultObject) GoString() string {
+	return s.String()
+}
+
+func (s *Id2MetaVerifyResponseBodyResultObject) SetBizCode(v string) *Id2MetaVerifyResponseBodyResultObject {
+	s.BizCode = &v
+	return s
+}
+
+type Id2MetaVerifyResponse struct {
+	Headers    map[string]*string         `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                     `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *Id2MetaVerifyResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s Id2MetaVerifyResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s Id2MetaVerifyResponse) GoString() string {
+	return s.String()
+}
+
+func (s *Id2MetaVerifyResponse) SetHeaders(v map[string]*string) *Id2MetaVerifyResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *Id2MetaVerifyResponse) SetStatusCode(v int32) *Id2MetaVerifyResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *Id2MetaVerifyResponse) SetBody(v *Id2MetaVerifyResponseBody) *Id2MetaVerifyResponse {
+	s.Body = v
+	return s
+}
+
 type InitFaceVerifyRequest struct {
 	AuthId                     *string `json:"AuthId,omitempty" xml:"AuthId,omitempty"`
 	Birthday                   *string `json:"Birthday,omitempty" xml:"Birthday,omitempty"`
@@ -2622,6 +2732,256 @@ func (s *LivenessFaceVerifyResponse) SetStatusCode(v int32) *LivenessFaceVerifyR
 }
 
 func (s *LivenessFaceVerifyResponse) SetBody(v *LivenessFaceVerifyResponseBody) *LivenessFaceVerifyResponse {
+	s.Body = v
+	return s
+}
+
+type Mobile3MetaDetailVerifyRequest struct {
+	IdentifyNum *string `json:"IdentifyNum,omitempty" xml:"IdentifyNum,omitempty"`
+	Mobile      *string `json:"Mobile,omitempty" xml:"Mobile,omitempty"`
+	ParamType   *string `json:"ParamType,omitempty" xml:"ParamType,omitempty"`
+	UserName    *string `json:"UserName,omitempty" xml:"UserName,omitempty"`
+}
+
+func (s Mobile3MetaDetailVerifyRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s Mobile3MetaDetailVerifyRequest) GoString() string {
+	return s.String()
+}
+
+func (s *Mobile3MetaDetailVerifyRequest) SetIdentifyNum(v string) *Mobile3MetaDetailVerifyRequest {
+	s.IdentifyNum = &v
+	return s
+}
+
+func (s *Mobile3MetaDetailVerifyRequest) SetMobile(v string) *Mobile3MetaDetailVerifyRequest {
+	s.Mobile = &v
+	return s
+}
+
+func (s *Mobile3MetaDetailVerifyRequest) SetParamType(v string) *Mobile3MetaDetailVerifyRequest {
+	s.ParamType = &v
+	return s
+}
+
+func (s *Mobile3MetaDetailVerifyRequest) SetUserName(v string) *Mobile3MetaDetailVerifyRequest {
+	s.UserName = &v
+	return s
+}
+
+type Mobile3MetaDetailVerifyResponseBody struct {
+	Code         *string                                          `json:"Code,omitempty" xml:"Code,omitempty"`
+	Message      *string                                          `json:"Message,omitempty" xml:"Message,omitempty"`
+	RequestId    *string                                          `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	ResultObject *Mobile3MetaDetailVerifyResponseBodyResultObject `json:"ResultObject,omitempty" xml:"ResultObject,omitempty" type:"Struct"`
+}
+
+func (s Mobile3MetaDetailVerifyResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s Mobile3MetaDetailVerifyResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *Mobile3MetaDetailVerifyResponseBody) SetCode(v string) *Mobile3MetaDetailVerifyResponseBody {
+	s.Code = &v
+	return s
+}
+
+func (s *Mobile3MetaDetailVerifyResponseBody) SetMessage(v string) *Mobile3MetaDetailVerifyResponseBody {
+	s.Message = &v
+	return s
+}
+
+func (s *Mobile3MetaDetailVerifyResponseBody) SetRequestId(v string) *Mobile3MetaDetailVerifyResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *Mobile3MetaDetailVerifyResponseBody) SetResultObject(v *Mobile3MetaDetailVerifyResponseBodyResultObject) *Mobile3MetaDetailVerifyResponseBody {
+	s.ResultObject = v
+	return s
+}
+
+type Mobile3MetaDetailVerifyResponseBodyResultObject struct {
+	BizCode *string `json:"BizCode,omitempty" xml:"BizCode,omitempty"`
+	IspName *string `json:"IspName,omitempty" xml:"IspName,omitempty"`
+	SubCode *string `json:"SubCode,omitempty" xml:"SubCode,omitempty"`
+}
+
+func (s Mobile3MetaDetailVerifyResponseBodyResultObject) String() string {
+	return tea.Prettify(s)
+}
+
+func (s Mobile3MetaDetailVerifyResponseBodyResultObject) GoString() string {
+	return s.String()
+}
+
+func (s *Mobile3MetaDetailVerifyResponseBodyResultObject) SetBizCode(v string) *Mobile3MetaDetailVerifyResponseBodyResultObject {
+	s.BizCode = &v
+	return s
+}
+
+func (s *Mobile3MetaDetailVerifyResponseBodyResultObject) SetIspName(v string) *Mobile3MetaDetailVerifyResponseBodyResultObject {
+	s.IspName = &v
+	return s
+}
+
+func (s *Mobile3MetaDetailVerifyResponseBodyResultObject) SetSubCode(v string) *Mobile3MetaDetailVerifyResponseBodyResultObject {
+	s.SubCode = &v
+	return s
+}
+
+type Mobile3MetaDetailVerifyResponse struct {
+	Headers    map[string]*string                   `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                               `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *Mobile3MetaDetailVerifyResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s Mobile3MetaDetailVerifyResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s Mobile3MetaDetailVerifyResponse) GoString() string {
+	return s.String()
+}
+
+func (s *Mobile3MetaDetailVerifyResponse) SetHeaders(v map[string]*string) *Mobile3MetaDetailVerifyResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *Mobile3MetaDetailVerifyResponse) SetStatusCode(v int32) *Mobile3MetaDetailVerifyResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *Mobile3MetaDetailVerifyResponse) SetBody(v *Mobile3MetaDetailVerifyResponseBody) *Mobile3MetaDetailVerifyResponse {
+	s.Body = v
+	return s
+}
+
+type Mobile3MetaSimpleVerifyRequest struct {
+	IdentifyNum *string `json:"IdentifyNum,omitempty" xml:"IdentifyNum,omitempty"`
+	Mobile      *string `json:"Mobile,omitempty" xml:"Mobile,omitempty"`
+	ParamType   *string `json:"ParamType,omitempty" xml:"ParamType,omitempty"`
+	UserName    *string `json:"UserName,omitempty" xml:"UserName,omitempty"`
+}
+
+func (s Mobile3MetaSimpleVerifyRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s Mobile3MetaSimpleVerifyRequest) GoString() string {
+	return s.String()
+}
+
+func (s *Mobile3MetaSimpleVerifyRequest) SetIdentifyNum(v string) *Mobile3MetaSimpleVerifyRequest {
+	s.IdentifyNum = &v
+	return s
+}
+
+func (s *Mobile3MetaSimpleVerifyRequest) SetMobile(v string) *Mobile3MetaSimpleVerifyRequest {
+	s.Mobile = &v
+	return s
+}
+
+func (s *Mobile3MetaSimpleVerifyRequest) SetParamType(v string) *Mobile3MetaSimpleVerifyRequest {
+	s.ParamType = &v
+	return s
+}
+
+func (s *Mobile3MetaSimpleVerifyRequest) SetUserName(v string) *Mobile3MetaSimpleVerifyRequest {
+	s.UserName = &v
+	return s
+}
+
+type Mobile3MetaSimpleVerifyResponseBody struct {
+	Code         *string                                          `json:"Code,omitempty" xml:"Code,omitempty"`
+	Message      *string                                          `json:"Message,omitempty" xml:"Message,omitempty"`
+	RequestId    *string                                          `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	ResultObject *Mobile3MetaSimpleVerifyResponseBodyResultObject `json:"ResultObject,omitempty" xml:"ResultObject,omitempty" type:"Struct"`
+}
+
+func (s Mobile3MetaSimpleVerifyResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s Mobile3MetaSimpleVerifyResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *Mobile3MetaSimpleVerifyResponseBody) SetCode(v string) *Mobile3MetaSimpleVerifyResponseBody {
+	s.Code = &v
+	return s
+}
+
+func (s *Mobile3MetaSimpleVerifyResponseBody) SetMessage(v string) *Mobile3MetaSimpleVerifyResponseBody {
+	s.Message = &v
+	return s
+}
+
+func (s *Mobile3MetaSimpleVerifyResponseBody) SetRequestId(v string) *Mobile3MetaSimpleVerifyResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *Mobile3MetaSimpleVerifyResponseBody) SetResultObject(v *Mobile3MetaSimpleVerifyResponseBodyResultObject) *Mobile3MetaSimpleVerifyResponseBody {
+	s.ResultObject = v
+	return s
+}
+
+type Mobile3MetaSimpleVerifyResponseBodyResultObject struct {
+	BizCode *string `json:"BizCode,omitempty" xml:"BizCode,omitempty"`
+	IspName *string `json:"IspName,omitempty" xml:"IspName,omitempty"`
+}
+
+func (s Mobile3MetaSimpleVerifyResponseBodyResultObject) String() string {
+	return tea.Prettify(s)
+}
+
+func (s Mobile3MetaSimpleVerifyResponseBodyResultObject) GoString() string {
+	return s.String()
+}
+
+func (s *Mobile3MetaSimpleVerifyResponseBodyResultObject) SetBizCode(v string) *Mobile3MetaSimpleVerifyResponseBodyResultObject {
+	s.BizCode = &v
+	return s
+}
+
+func (s *Mobile3MetaSimpleVerifyResponseBodyResultObject) SetIspName(v string) *Mobile3MetaSimpleVerifyResponseBodyResultObject {
+	s.IspName = &v
+	return s
+}
+
+type Mobile3MetaSimpleVerifyResponse struct {
+	Headers    map[string]*string                   `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                               `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *Mobile3MetaSimpleVerifyResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s Mobile3MetaSimpleVerifyResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s Mobile3MetaSimpleVerifyResponse) GoString() string {
+	return s.String()
+}
+
+func (s *Mobile3MetaSimpleVerifyResponse) SetHeaders(v map[string]*string) *Mobile3MetaSimpleVerifyResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *Mobile3MetaSimpleVerifyResponse) SetStatusCode(v int32) *Mobile3MetaSimpleVerifyResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *Mobile3MetaSimpleVerifyResponse) SetBody(v *Mobile3MetaSimpleVerifyResponseBody) *Mobile3MetaSimpleVerifyResponse {
 	s.Body = v
 	return s
 }
@@ -3938,6 +4298,58 @@ func (client *Client) DetectFaceAttributes(request *DetectFaceAttributesRequest)
 	return _result, _err
 }
 
+func (client *Client) Id2MetaVerifyWithOptions(request *Id2MetaVerifyRequest, runtime *util.RuntimeOptions) (_result *Id2MetaVerifyResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.IdentifyNum)) {
+		query["IdentifyNum"] = request.IdentifyNum
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ParamType)) {
+		query["ParamType"] = request.ParamType
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.UserName)) {
+		query["UserName"] = request.UserName
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("Id2MetaVerify"),
+		Version:     tea.String("2019-03-07"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &Id2MetaVerifyResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) Id2MetaVerify(request *Id2MetaVerifyRequest) (_result *Id2MetaVerifyResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &Id2MetaVerifyResponse{}
+	_body, _err := client.Id2MetaVerifyWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
 func (client *Client) InitFaceVerifyWithOptions(request *InitFaceVerifyRequest, runtime *util.RuntimeOptions) (_result *InitFaceVerifyResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -4195,6 +4607,118 @@ func (client *Client) LivenessFaceVerify(request *LivenessFaceVerifyRequest) (_r
 	runtime := &util.RuntimeOptions{}
 	_result = &LivenessFaceVerifyResponse{}
 	_body, _err := client.LivenessFaceVerifyWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) Mobile3MetaDetailVerifyWithOptions(request *Mobile3MetaDetailVerifyRequest, runtime *util.RuntimeOptions) (_result *Mobile3MetaDetailVerifyResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.IdentifyNum)) {
+		query["IdentifyNum"] = request.IdentifyNum
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Mobile)) {
+		query["Mobile"] = request.Mobile
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ParamType)) {
+		query["ParamType"] = request.ParamType
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.UserName)) {
+		query["UserName"] = request.UserName
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("Mobile3MetaDetailVerify"),
+		Version:     tea.String("2019-03-07"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &Mobile3MetaDetailVerifyResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) Mobile3MetaDetailVerify(request *Mobile3MetaDetailVerifyRequest) (_result *Mobile3MetaDetailVerifyResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &Mobile3MetaDetailVerifyResponse{}
+	_body, _err := client.Mobile3MetaDetailVerifyWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) Mobile3MetaSimpleVerifyWithOptions(request *Mobile3MetaSimpleVerifyRequest, runtime *util.RuntimeOptions) (_result *Mobile3MetaSimpleVerifyResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.IdentifyNum)) {
+		query["IdentifyNum"] = request.IdentifyNum
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Mobile)) {
+		query["Mobile"] = request.Mobile
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ParamType)) {
+		query["ParamType"] = request.ParamType
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.UserName)) {
+		query["UserName"] = request.UserName
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("Mobile3MetaSimpleVerify"),
+		Version:     tea.String("2019-03-07"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &Mobile3MetaSimpleVerifyResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) Mobile3MetaSimpleVerify(request *Mobile3MetaSimpleVerifyRequest) (_result *Mobile3MetaSimpleVerifyResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &Mobile3MetaSimpleVerifyResponse{}
+	_body, _err := client.Mobile3MetaSimpleVerifyWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
