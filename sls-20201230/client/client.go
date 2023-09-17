@@ -1672,9 +1672,9 @@ func (s *Shard) SetStatus(v string) *Shard {
 }
 
 type MLDataParamAnnotationsValue struct {
-	AnnotatedBy *string   `json:"annotatedBy,omitempty" xml:"annotatedBy,omitempty"`
-	UpdateTime  *int64    `json:"updateTime,omitempty" xml:"updateTime,omitempty"`
-	Results     []*string `json:"results,omitempty" xml:"results,omitempty" type:"Repeated"`
+	AnnotatedBy *string              `json:"annotatedBy,omitempty" xml:"annotatedBy,omitempty"`
+	UpdateTime  *int64               `json:"updateTime,omitempty" xml:"updateTime,omitempty"`
+	Results     []map[string]*string `json:"results,omitempty" xml:"results,omitempty" type:"Repeated"`
 }
 
 func (s MLDataParamAnnotationsValue) String() string {
@@ -1695,15 +1695,15 @@ func (s *MLDataParamAnnotationsValue) SetUpdateTime(v int64) *MLDataParamAnnotat
 	return s
 }
 
-func (s *MLDataParamAnnotationsValue) SetResults(v []*string) *MLDataParamAnnotationsValue {
+func (s *MLDataParamAnnotationsValue) SetResults(v []map[string]*string) *MLDataParamAnnotationsValue {
 	s.Results = v
 	return s
 }
 
 type MLDataParamPredictionsValue struct {
-	AnnotatedBy *string   `json:"annotatedBy,omitempty" xml:"annotatedBy,omitempty"`
-	UpdateTime  *int64    `json:"updateTime,omitempty" xml:"updateTime,omitempty"`
-	Results     []*string `json:"results,omitempty" xml:"results,omitempty" type:"Repeated"`
+	AnnotatedBy *string              `json:"annotatedBy,omitempty" xml:"annotatedBy,omitempty"`
+	UpdateTime  *int64               `json:"updateTime,omitempty" xml:"updateTime,omitempty"`
+	Results     []map[string]*string `json:"results,omitempty" xml:"results,omitempty" type:"Repeated"`
 }
 
 func (s MLDataParamPredictionsValue) String() string {
@@ -1724,7 +1724,7 @@ func (s *MLDataParamPredictionsValue) SetUpdateTime(v int64) *MLDataParamPredict
 	return s
 }
 
-func (s *MLDataParamPredictionsValue) SetResults(v []*string) *MLDataParamPredictionsValue {
+func (s *MLDataParamPredictionsValue) SetResults(v []map[string]*string) *MLDataParamPredictionsValue {
 	s.Results = v
 	return s
 }
@@ -1947,6 +1947,92 @@ func (s *ConsumerGroupHeartBeatResponse) SetStatusCode(v int32) *ConsumerGroupHe
 
 func (s *ConsumerGroupHeartBeatResponse) SetBody(v []*int32) *ConsumerGroupHeartBeatResponse {
 	s.Body = v
+	return s
+}
+
+type CreateAnnotationDataSetRequest struct {
+	Body      *MLDataSetParam `json:"body,omitempty" xml:"body,omitempty"`
+	DatasetId *string         `json:"datasetId,omitempty" xml:"datasetId,omitempty"`
+}
+
+func (s CreateAnnotationDataSetRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateAnnotationDataSetRequest) GoString() string {
+	return s.String()
+}
+
+func (s *CreateAnnotationDataSetRequest) SetBody(v *MLDataSetParam) *CreateAnnotationDataSetRequest {
+	s.Body = v
+	return s
+}
+
+func (s *CreateAnnotationDataSetRequest) SetDatasetId(v string) *CreateAnnotationDataSetRequest {
+	s.DatasetId = &v
+	return s
+}
+
+type CreateAnnotationDataSetResponse struct {
+	Headers    map[string]*string `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32             `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+}
+
+func (s CreateAnnotationDataSetResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateAnnotationDataSetResponse) GoString() string {
+	return s.String()
+}
+
+func (s *CreateAnnotationDataSetResponse) SetHeaders(v map[string]*string) *CreateAnnotationDataSetResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *CreateAnnotationDataSetResponse) SetStatusCode(v int32) *CreateAnnotationDataSetResponse {
+	s.StatusCode = &v
+	return s
+}
+
+type CreateAnnotationLabelRequest struct {
+	Body *MLLabelParam `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s CreateAnnotationLabelRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateAnnotationLabelRequest) GoString() string {
+	return s.String()
+}
+
+func (s *CreateAnnotationLabelRequest) SetBody(v *MLLabelParam) *CreateAnnotationLabelRequest {
+	s.Body = v
+	return s
+}
+
+type CreateAnnotationLabelResponse struct {
+	Headers    map[string]*string `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32             `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+}
+
+func (s CreateAnnotationLabelResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateAnnotationLabelResponse) GoString() string {
+	return s.String()
+}
+
+func (s *CreateAnnotationLabelResponse) SetHeaders(v map[string]*string) *CreateAnnotationLabelResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *CreateAnnotationLabelResponse) SetStatusCode(v int32) *CreateAnnotationLabelResponse {
+	s.StatusCode = &v
 	return s
 }
 
@@ -3189,6 +3275,75 @@ func (s *CreateSavedSearchResponse) SetStatusCode(v int32) *CreateSavedSearchRes
 	return s
 }
 
+type DeleteAnnotationDataResponse struct {
+	Headers    map[string]*string `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32             `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+}
+
+func (s DeleteAnnotationDataResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DeleteAnnotationDataResponse) GoString() string {
+	return s.String()
+}
+
+func (s *DeleteAnnotationDataResponse) SetHeaders(v map[string]*string) *DeleteAnnotationDataResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *DeleteAnnotationDataResponse) SetStatusCode(v int32) *DeleteAnnotationDataResponse {
+	s.StatusCode = &v
+	return s
+}
+
+type DeleteAnnotationDataSetResponse struct {
+	Headers    map[string]*string `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32             `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+}
+
+func (s DeleteAnnotationDataSetResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DeleteAnnotationDataSetResponse) GoString() string {
+	return s.String()
+}
+
+func (s *DeleteAnnotationDataSetResponse) SetHeaders(v map[string]*string) *DeleteAnnotationDataSetResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *DeleteAnnotationDataSetResponse) SetStatusCode(v int32) *DeleteAnnotationDataSetResponse {
+	s.StatusCode = &v
+	return s
+}
+
+type DeleteAnnotationLabelResponse struct {
+	Headers    map[string]*string `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32             `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+}
+
+func (s DeleteAnnotationLabelResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DeleteAnnotationLabelResponse) GoString() string {
+	return s.String()
+}
+
+func (s *DeleteAnnotationLabelResponse) SetHeaders(v map[string]*string) *DeleteAnnotationLabelResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *DeleteAnnotationLabelResponse) SetStatusCode(v int32) *DeleteAnnotationLabelResponse {
+	s.StatusCode = &v
+	return s
+}
+
 type DeleteConfigResponse struct {
 	Headers    map[string]*string `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
 	StatusCode *int32             `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
@@ -3508,6 +3663,93 @@ func (s *DeleteShipperResponse) SetHeaders(v map[string]*string) *DeleteShipperR
 
 func (s *DeleteShipperResponse) SetStatusCode(v int32) *DeleteShipperResponse {
 	s.StatusCode = &v
+	return s
+}
+
+type GetAnnotationDataResponse struct {
+	Headers    map[string]*string `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32             `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *MLDataParam       `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s GetAnnotationDataResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetAnnotationDataResponse) GoString() string {
+	return s.String()
+}
+
+func (s *GetAnnotationDataResponse) SetHeaders(v map[string]*string) *GetAnnotationDataResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *GetAnnotationDataResponse) SetStatusCode(v int32) *GetAnnotationDataResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *GetAnnotationDataResponse) SetBody(v *MLDataParam) *GetAnnotationDataResponse {
+	s.Body = v
+	return s
+}
+
+type GetAnnotationDataSetResponse struct {
+	Headers    map[string]*string `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32             `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *MLDataSetParam    `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s GetAnnotationDataSetResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetAnnotationDataSetResponse) GoString() string {
+	return s.String()
+}
+
+func (s *GetAnnotationDataSetResponse) SetHeaders(v map[string]*string) *GetAnnotationDataSetResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *GetAnnotationDataSetResponse) SetStatusCode(v int32) *GetAnnotationDataSetResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *GetAnnotationDataSetResponse) SetBody(v *MLDataSetParam) *GetAnnotationDataSetResponse {
+	s.Body = v
+	return s
+}
+
+type GetAnnotationLabelResponse struct {
+	Headers    map[string]*string `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32             `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *MLLabelParam      `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s GetAnnotationLabelResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetAnnotationLabelResponse) GoString() string {
+	return s.String()
+}
+
+func (s *GetAnnotationLabelResponse) SetHeaders(v map[string]*string) *GetAnnotationLabelResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *GetAnnotationLabelResponse) SetStatusCode(v int32) *GetAnnotationLabelResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *GetAnnotationLabelResponse) SetBody(v *MLLabelParam) *GetAnnotationLabelResponse {
+	s.Body = v
 	return s
 }
 
@@ -5033,6 +5275,231 @@ func (s *GetShipperStatusResponse) SetBody(v *GetShipperStatusResponseBody) *Get
 	return s
 }
 
+type ListAnnotationDataRequest struct {
+	Offset *int32 `json:"offset,omitempty" xml:"offset,omitempty"`
+	Size   *int32 `json:"size,omitempty" xml:"size,omitempty"`
+}
+
+func (s ListAnnotationDataRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListAnnotationDataRequest) GoString() string {
+	return s.String()
+}
+
+func (s *ListAnnotationDataRequest) SetOffset(v int32) *ListAnnotationDataRequest {
+	s.Offset = &v
+	return s
+}
+
+func (s *ListAnnotationDataRequest) SetSize(v int32) *ListAnnotationDataRequest {
+	s.Size = &v
+	return s
+}
+
+type ListAnnotationDataResponseBody struct {
+	Data  []*MLDataParam `json:"data,omitempty" xml:"data,omitempty" type:"Repeated"`
+	Total *int32         `json:"total,omitempty" xml:"total,omitempty"`
+}
+
+func (s ListAnnotationDataResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListAnnotationDataResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *ListAnnotationDataResponseBody) SetData(v []*MLDataParam) *ListAnnotationDataResponseBody {
+	s.Data = v
+	return s
+}
+
+func (s *ListAnnotationDataResponseBody) SetTotal(v int32) *ListAnnotationDataResponseBody {
+	s.Total = &v
+	return s
+}
+
+type ListAnnotationDataResponse struct {
+	Headers    map[string]*string              `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                          `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *ListAnnotationDataResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s ListAnnotationDataResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListAnnotationDataResponse) GoString() string {
+	return s.String()
+}
+
+func (s *ListAnnotationDataResponse) SetHeaders(v map[string]*string) *ListAnnotationDataResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *ListAnnotationDataResponse) SetStatusCode(v int32) *ListAnnotationDataResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *ListAnnotationDataResponse) SetBody(v *ListAnnotationDataResponseBody) *ListAnnotationDataResponse {
+	s.Body = v
+	return s
+}
+
+type ListAnnotationDataSetsRequest struct {
+	Offset *int32 `json:"offset,omitempty" xml:"offset,omitempty"`
+	Size   *int32 `json:"size,omitempty" xml:"size,omitempty"`
+}
+
+func (s ListAnnotationDataSetsRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListAnnotationDataSetsRequest) GoString() string {
+	return s.String()
+}
+
+func (s *ListAnnotationDataSetsRequest) SetOffset(v int32) *ListAnnotationDataSetsRequest {
+	s.Offset = &v
+	return s
+}
+
+func (s *ListAnnotationDataSetsRequest) SetSize(v int32) *ListAnnotationDataSetsRequest {
+	s.Size = &v
+	return s
+}
+
+type ListAnnotationDataSetsResponseBody struct {
+	Data  []*MLDataSetParam `json:"data,omitempty" xml:"data,omitempty" type:"Repeated"`
+	Total *int32            `json:"total,omitempty" xml:"total,omitempty"`
+}
+
+func (s ListAnnotationDataSetsResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListAnnotationDataSetsResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *ListAnnotationDataSetsResponseBody) SetData(v []*MLDataSetParam) *ListAnnotationDataSetsResponseBody {
+	s.Data = v
+	return s
+}
+
+func (s *ListAnnotationDataSetsResponseBody) SetTotal(v int32) *ListAnnotationDataSetsResponseBody {
+	s.Total = &v
+	return s
+}
+
+type ListAnnotationDataSetsResponse struct {
+	Headers    map[string]*string                  `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                              `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *ListAnnotationDataSetsResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s ListAnnotationDataSetsResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListAnnotationDataSetsResponse) GoString() string {
+	return s.String()
+}
+
+func (s *ListAnnotationDataSetsResponse) SetHeaders(v map[string]*string) *ListAnnotationDataSetsResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *ListAnnotationDataSetsResponse) SetStatusCode(v int32) *ListAnnotationDataSetsResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *ListAnnotationDataSetsResponse) SetBody(v *ListAnnotationDataSetsResponseBody) *ListAnnotationDataSetsResponse {
+	s.Body = v
+	return s
+}
+
+type ListAnnotationLabelsRequest struct {
+	Offset *int32 `json:"offset,omitempty" xml:"offset,omitempty"`
+	Size   *int32 `json:"size,omitempty" xml:"size,omitempty"`
+}
+
+func (s ListAnnotationLabelsRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListAnnotationLabelsRequest) GoString() string {
+	return s.String()
+}
+
+func (s *ListAnnotationLabelsRequest) SetOffset(v int32) *ListAnnotationLabelsRequest {
+	s.Offset = &v
+	return s
+}
+
+func (s *ListAnnotationLabelsRequest) SetSize(v int32) *ListAnnotationLabelsRequest {
+	s.Size = &v
+	return s
+}
+
+type ListAnnotationLabelsResponseBody struct {
+	Data  []*MLLabelParam `json:"data,omitempty" xml:"data,omitempty" type:"Repeated"`
+	Total *int32          `json:"total,omitempty" xml:"total,omitempty"`
+}
+
+func (s ListAnnotationLabelsResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListAnnotationLabelsResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *ListAnnotationLabelsResponseBody) SetData(v []*MLLabelParam) *ListAnnotationLabelsResponseBody {
+	s.Data = v
+	return s
+}
+
+func (s *ListAnnotationLabelsResponseBody) SetTotal(v int32) *ListAnnotationLabelsResponseBody {
+	s.Total = &v
+	return s
+}
+
+type ListAnnotationLabelsResponse struct {
+	Headers    map[string]*string                `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                            `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *ListAnnotationLabelsResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s ListAnnotationLabelsResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListAnnotationLabelsResponse) GoString() string {
+	return s.String()
+}
+
+func (s *ListAnnotationLabelsResponse) SetHeaders(v map[string]*string) *ListAnnotationLabelsResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *ListAnnotationLabelsResponse) SetStatusCode(v int32) *ListAnnotationLabelsResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *ListAnnotationLabelsResponse) SetBody(v *ListAnnotationLabelsResponseBody) *ListAnnotationLabelsResponse {
+	s.Body = v
+	return s
+}
+
 type ListConfigRequest struct {
 	ConfigName   *string `json:"configName,omitempty" xml:"configName,omitempty"`
 	LogstoreName *string `json:"logstoreName,omitempty" xml:"logstoreName,omitempty"`
@@ -6262,6 +6729,58 @@ func (s *PullDataResponse) SetStatusCode(v int32) *PullDataResponse {
 	return s
 }
 
+type PutAnnotationDataRequest struct {
+	AnnotationdataId *string              `json:"annotationdataId,omitempty" xml:"annotationdataId,omitempty"`
+	MlDataParam      *MLDataParam         `json:"mlDataParam,omitempty" xml:"mlDataParam,omitempty"`
+	RawLog           []map[string]*string `json:"rawLog,omitempty" xml:"rawLog,omitempty" type:"Repeated"`
+}
+
+func (s PutAnnotationDataRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s PutAnnotationDataRequest) GoString() string {
+	return s.String()
+}
+
+func (s *PutAnnotationDataRequest) SetAnnotationdataId(v string) *PutAnnotationDataRequest {
+	s.AnnotationdataId = &v
+	return s
+}
+
+func (s *PutAnnotationDataRequest) SetMlDataParam(v *MLDataParam) *PutAnnotationDataRequest {
+	s.MlDataParam = v
+	return s
+}
+
+func (s *PutAnnotationDataRequest) SetRawLog(v []map[string]*string) *PutAnnotationDataRequest {
+	s.RawLog = v
+	return s
+}
+
+type PutAnnotationDataResponse struct {
+	Headers    map[string]*string `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32             `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+}
+
+func (s PutAnnotationDataResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s PutAnnotationDataResponse) GoString() string {
+	return s.String()
+}
+
+func (s *PutAnnotationDataResponse) SetHeaders(v map[string]*string) *PutAnnotationDataResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *PutAnnotationDataResponse) SetStatusCode(v int32) *PutAnnotationDataResponse {
+	s.StatusCode = &v
+	return s
+}
+
 type PutProjectPolicyRequest struct {
 	Body *string `json:"body,omitempty" xml:"body,omitempty"`
 }
@@ -6357,6 +6876,81 @@ func (s *PutWebtrackingResponse) SetHeaders(v map[string]*string) *PutWebtrackin
 
 func (s *PutWebtrackingResponse) SetStatusCode(v int32) *PutWebtrackingResponse {
 	s.StatusCode = &v
+	return s
+}
+
+type QueryMLServiceResultsRequest struct {
+	AllowBuiltin *bool                   `json:"allowBuiltin,omitempty" xml:"allowBuiltin,omitempty"`
+	Body         *MLServiceAnalysisParam `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s QueryMLServiceResultsRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s QueryMLServiceResultsRequest) GoString() string {
+	return s.String()
+}
+
+func (s *QueryMLServiceResultsRequest) SetAllowBuiltin(v bool) *QueryMLServiceResultsRequest {
+	s.AllowBuiltin = &v
+	return s
+}
+
+func (s *QueryMLServiceResultsRequest) SetBody(v *MLServiceAnalysisParam) *QueryMLServiceResultsRequest {
+	s.Body = v
+	return s
+}
+
+type QueryMLServiceResultsResponseBody struct {
+	Data   []map[string]*string `json:"data,omitempty" xml:"data,omitempty" type:"Repeated"`
+	Status map[string]*string   `json:"status,omitempty" xml:"status,omitempty"`
+}
+
+func (s QueryMLServiceResultsResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s QueryMLServiceResultsResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *QueryMLServiceResultsResponseBody) SetData(v []map[string]*string) *QueryMLServiceResultsResponseBody {
+	s.Data = v
+	return s
+}
+
+func (s *QueryMLServiceResultsResponseBody) SetStatus(v map[string]*string) *QueryMLServiceResultsResponseBody {
+	s.Status = v
+	return s
+}
+
+type QueryMLServiceResultsResponse struct {
+	Headers    map[string]*string                 `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                             `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *QueryMLServiceResultsResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s QueryMLServiceResultsResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s QueryMLServiceResultsResponse) GoString() string {
+	return s.String()
+}
+
+func (s *QueryMLServiceResultsResponse) SetHeaders(v map[string]*string) *QueryMLServiceResultsResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *QueryMLServiceResultsResponse) SetStatusCode(v int32) *QueryMLServiceResultsResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *QueryMLServiceResultsResponse) SetBody(v *QueryMLServiceResultsResponseBody) *QueryMLServiceResultsResponse {
+	s.Body = v
 	return s
 }
 
@@ -6564,6 +7158,86 @@ func (s *UntagResourcesResponse) SetHeaders(v map[string]*string) *UntagResource
 }
 
 func (s *UntagResourcesResponse) SetStatusCode(v int32) *UntagResourcesResponse {
+	s.StatusCode = &v
+	return s
+}
+
+type UpdateAnnotationDataSetRequest struct {
+	Body *MLDataSetParam `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s UpdateAnnotationDataSetRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UpdateAnnotationDataSetRequest) GoString() string {
+	return s.String()
+}
+
+func (s *UpdateAnnotationDataSetRequest) SetBody(v *MLDataSetParam) *UpdateAnnotationDataSetRequest {
+	s.Body = v
+	return s
+}
+
+type UpdateAnnotationDataSetResponse struct {
+	Headers    map[string]*string `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32             `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+}
+
+func (s UpdateAnnotationDataSetResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UpdateAnnotationDataSetResponse) GoString() string {
+	return s.String()
+}
+
+func (s *UpdateAnnotationDataSetResponse) SetHeaders(v map[string]*string) *UpdateAnnotationDataSetResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *UpdateAnnotationDataSetResponse) SetStatusCode(v int32) *UpdateAnnotationDataSetResponse {
+	s.StatusCode = &v
+	return s
+}
+
+type UpdateAnnotationLabelRequest struct {
+	Body *MLLabelParam `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s UpdateAnnotationLabelRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UpdateAnnotationLabelRequest) GoString() string {
+	return s.String()
+}
+
+func (s *UpdateAnnotationLabelRequest) SetBody(v *MLLabelParam) *UpdateAnnotationLabelRequest {
+	s.Body = v
+	return s
+}
+
+type UpdateAnnotationLabelResponse struct {
+	Headers    map[string]*string `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32             `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+}
+
+func (s UpdateAnnotationLabelResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UpdateAnnotationLabelResponse) GoString() string {
+	return s.String()
+}
+
+func (s *UpdateAnnotationLabelResponse) SetHeaders(v map[string]*string) *UpdateAnnotationLabelResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *UpdateAnnotationLabelResponse) SetStatusCode(v int32) *UpdateAnnotationLabelResponse {
 	s.StatusCode = &v
 	return s
 }
@@ -7984,6 +8658,94 @@ func (client *Client) ConsumerGroupHeartBeat(project *string, logstore *string, 
 	return _result, _err
 }
 
+func (client *Client) CreateAnnotationDataSetWithOptions(request *CreateAnnotationDataSetRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *CreateAnnotationDataSetResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.DatasetId)) {
+		query["datasetId"] = request.DatasetId
+	}
+
+	req := &openapi.OpenApiRequest{
+		Headers: headers,
+		Query:   openapiutil.Query(query),
+		Body:    openapiutil.ParseToMap(request.Body),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("CreateAnnotationDataSet"),
+		Version:     tea.String("2020-12-30"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/ml/annotationdataset"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("ROA"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("none"),
+	}
+	_result = &CreateAnnotationDataSetResponse{}
+	_body, _err := client.Execute(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) CreateAnnotationDataSet(request *CreateAnnotationDataSetRequest) (_result *CreateAnnotationDataSetResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	headers := make(map[string]*string)
+	_result = &CreateAnnotationDataSetResponse{}
+	_body, _err := client.CreateAnnotationDataSetWithOptions(request, headers, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) CreateAnnotationLabelWithOptions(request *CreateAnnotationLabelRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *CreateAnnotationLabelResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	req := &openapi.OpenApiRequest{
+		Headers: headers,
+		Body:    openapiutil.ParseToMap(request.Body),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("CreateAnnotationLabel"),
+		Version:     tea.String("2020-12-30"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/ml/annotationlabel"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("ROA"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("none"),
+	}
+	_result = &CreateAnnotationLabelResponse{}
+	_body, _err := client.Execute(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) CreateAnnotationLabel(request *CreateAnnotationLabelRequest) (_result *CreateAnnotationLabelResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	headers := make(map[string]*string)
+	_result = &CreateAnnotationLabelResponse{}
+	_body, _err := client.CreateAnnotationLabelWithOptions(request, headers, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
 func (client *Client) CreateConfigWithOptions(project *string, request *CreateConfigRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *CreateConfigResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -8882,6 +9644,114 @@ func (client *Client) CreateSavedSearch(project *string, request *CreateSavedSea
 	return _result, _err
 }
 
+func (client *Client) DeleteAnnotationDataWithOptions(datasetId *string, annotationdataId *string, headers map[string]*string, runtime *util.RuntimeOptions) (_result *DeleteAnnotationDataResponse, _err error) {
+	req := &openapi.OpenApiRequest{
+		Headers: headers,
+	}
+	params := &openapi.Params{
+		Action:      tea.String("DeleteAnnotationData"),
+		Version:     tea.String("2020-12-30"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/ml/annotationdataset/" + tea.StringValue(datasetId) + "/annotationdata/" + tea.StringValue(annotationdataId)),
+		Method:      tea.String("DELETE"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("ROA"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("none"),
+	}
+	_result = &DeleteAnnotationDataResponse{}
+	_body, _err := client.Execute(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) DeleteAnnotationData(datasetId *string, annotationdataId *string) (_result *DeleteAnnotationDataResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	headers := make(map[string]*string)
+	_result = &DeleteAnnotationDataResponse{}
+	_body, _err := client.DeleteAnnotationDataWithOptions(datasetId, annotationdataId, headers, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) DeleteAnnotationDataSetWithOptions(datasetId *string, headers map[string]*string, runtime *util.RuntimeOptions) (_result *DeleteAnnotationDataSetResponse, _err error) {
+	req := &openapi.OpenApiRequest{
+		Headers: headers,
+	}
+	params := &openapi.Params{
+		Action:      tea.String("DeleteAnnotationDataSet"),
+		Version:     tea.String("2020-12-30"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/ml/annotationdataset/" + tea.StringValue(datasetId)),
+		Method:      tea.String("DELETE"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("ROA"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("none"),
+	}
+	_result = &DeleteAnnotationDataSetResponse{}
+	_body, _err := client.Execute(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) DeleteAnnotationDataSet(datasetId *string) (_result *DeleteAnnotationDataSetResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	headers := make(map[string]*string)
+	_result = &DeleteAnnotationDataSetResponse{}
+	_body, _err := client.DeleteAnnotationDataSetWithOptions(datasetId, headers, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) DeleteAnnotationLabelWithOptions(labelId *string, headers map[string]*string, runtime *util.RuntimeOptions) (_result *DeleteAnnotationLabelResponse, _err error) {
+	req := &openapi.OpenApiRequest{
+		Headers: headers,
+	}
+	params := &openapi.Params{
+		Action:      tea.String("DeleteAnnotationLabel"),
+		Version:     tea.String("2020-12-30"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/ml/annotationlabel/" + tea.StringValue(labelId)),
+		Method:      tea.String("DELETE"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("ROA"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("none"),
+	}
+	_result = &DeleteAnnotationLabelResponse{}
+	_body, _err := client.Execute(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) DeleteAnnotationLabel(labelId *string) (_result *DeleteAnnotationLabelResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	headers := make(map[string]*string)
+	_result = &DeleteAnnotationLabelResponse{}
+	_body, _err := client.DeleteAnnotationLabelWithOptions(labelId, headers, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
 func (client *Client) DeleteConfigWithOptions(project *string, configName *string, headers map[string]*string, runtime *util.RuntimeOptions) (_result *DeleteConfigResponse, _err error) {
 	hostMap := make(map[string]*string)
 	hostMap["project"] = project
@@ -9421,6 +10291,114 @@ func (client *Client) DeleteShipper(project *string, logstore *string, shipperNa
 	headers := make(map[string]*string)
 	_result = &DeleteShipperResponse{}
 	_body, _err := client.DeleteShipperWithOptions(project, logstore, shipperName, headers, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) GetAnnotationDataWithOptions(datasetId *string, annotationdataId *string, headers map[string]*string, runtime *util.RuntimeOptions) (_result *GetAnnotationDataResponse, _err error) {
+	req := &openapi.OpenApiRequest{
+		Headers: headers,
+	}
+	params := &openapi.Params{
+		Action:      tea.String("GetAnnotationData"),
+		Version:     tea.String("2020-12-30"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/ml/annotationdataset/" + tea.StringValue(datasetId) + "/annotationdata/" + tea.StringValue(annotationdataId)),
+		Method:      tea.String("GET"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("ROA"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &GetAnnotationDataResponse{}
+	_body, _err := client.Execute(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) GetAnnotationData(datasetId *string, annotationdataId *string) (_result *GetAnnotationDataResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	headers := make(map[string]*string)
+	_result = &GetAnnotationDataResponse{}
+	_body, _err := client.GetAnnotationDataWithOptions(datasetId, annotationdataId, headers, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) GetAnnotationDataSetWithOptions(datasetId *string, headers map[string]*string, runtime *util.RuntimeOptions) (_result *GetAnnotationDataSetResponse, _err error) {
+	req := &openapi.OpenApiRequest{
+		Headers: headers,
+	}
+	params := &openapi.Params{
+		Action:      tea.String("GetAnnotationDataSet"),
+		Version:     tea.String("2020-12-30"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/ml/annotationdataset/" + tea.StringValue(datasetId)),
+		Method:      tea.String("GET"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("ROA"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &GetAnnotationDataSetResponse{}
+	_body, _err := client.Execute(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) GetAnnotationDataSet(datasetId *string) (_result *GetAnnotationDataSetResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	headers := make(map[string]*string)
+	_result = &GetAnnotationDataSetResponse{}
+	_body, _err := client.GetAnnotationDataSetWithOptions(datasetId, headers, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) GetAnnotationLabelWithOptions(labelId *string, headers map[string]*string, runtime *util.RuntimeOptions) (_result *GetAnnotationLabelResponse, _err error) {
+	req := &openapi.OpenApiRequest{
+		Headers: headers,
+	}
+	params := &openapi.Params{
+		Action:      tea.String("GetAnnotationLabel"),
+		Version:     tea.String("2020-12-30"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/ml/annotationlabel/" + tea.StringValue(labelId)),
+		Method:      tea.String("GET"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("ROA"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &GetAnnotationLabelResponse{}
+	_body, _err := client.Execute(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) GetAnnotationLabel(labelId *string) (_result *GetAnnotationLabelResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	headers := make(map[string]*string)
+	_result = &GetAnnotationLabelResponse{}
+	_body, _err := client.GetAnnotationLabelWithOptions(labelId, headers, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -10501,6 +11479,156 @@ func (client *Client) GetShipperStatus(project *string, logstore *string, shippe
 	return _result, _err
 }
 
+func (client *Client) ListAnnotationDataWithOptions(datasetId *string, request *ListAnnotationDataRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *ListAnnotationDataResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.Offset)) {
+		query["offset"] = request.Offset
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Size)) {
+		query["size"] = request.Size
+	}
+
+	req := &openapi.OpenApiRequest{
+		Headers: headers,
+		Query:   openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("ListAnnotationData"),
+		Version:     tea.String("2020-12-30"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/ml/annotationdataset/" + tea.StringValue(datasetId) + "/annotationdata"),
+		Method:      tea.String("GET"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("ROA"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &ListAnnotationDataResponse{}
+	_body, _err := client.Execute(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) ListAnnotationData(datasetId *string, request *ListAnnotationDataRequest) (_result *ListAnnotationDataResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	headers := make(map[string]*string)
+	_result = &ListAnnotationDataResponse{}
+	_body, _err := client.ListAnnotationDataWithOptions(datasetId, request, headers, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) ListAnnotationDataSetsWithOptions(request *ListAnnotationDataSetsRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *ListAnnotationDataSetsResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.Offset)) {
+		query["offset"] = request.Offset
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Size)) {
+		query["size"] = request.Size
+	}
+
+	req := &openapi.OpenApiRequest{
+		Headers: headers,
+		Query:   openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("ListAnnotationDataSets"),
+		Version:     tea.String("2020-12-30"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/ml/annotationdataset"),
+		Method:      tea.String("GET"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("ROA"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &ListAnnotationDataSetsResponse{}
+	_body, _err := client.Execute(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) ListAnnotationDataSets(request *ListAnnotationDataSetsRequest) (_result *ListAnnotationDataSetsResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	headers := make(map[string]*string)
+	_result = &ListAnnotationDataSetsResponse{}
+	_body, _err := client.ListAnnotationDataSetsWithOptions(request, headers, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) ListAnnotationLabelsWithOptions(request *ListAnnotationLabelsRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *ListAnnotationLabelsResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.Offset)) {
+		query["offset"] = request.Offset
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Size)) {
+		query["size"] = request.Size
+	}
+
+	req := &openapi.OpenApiRequest{
+		Headers: headers,
+		Query:   openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("ListAnnotationLabels"),
+		Version:     tea.String("2020-12-30"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/ml/annotationlabel"),
+		Method:      tea.String("GET"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("ROA"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &ListAnnotationLabelsResponse{}
+	_body, _err := client.Execute(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) ListAnnotationLabels(request *ListAnnotationLabelsRequest) (_result *ListAnnotationLabelsResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	headers := make(map[string]*string)
+	_result = &ListAnnotationLabelsResponse{}
+	_body, _err := client.ListAnnotationLabelsWithOptions(request, headers, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
 func (client *Client) ListConfigWithOptions(project *string, request *ListConfigRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *ListConfigResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -11310,6 +12438,62 @@ func (client *Client) PullData(project *string, logstore *string, shard *string,
 	return _result, _err
 }
 
+func (client *Client) PutAnnotationDataWithOptions(datasetId *string, request *PutAnnotationDataRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *PutAnnotationDataResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.AnnotationdataId)) {
+		query["annotationdataId"] = request.AnnotationdataId
+	}
+
+	body := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.MlDataParam)) {
+		body["mlDataParam"] = request.MlDataParam
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.RawLog)) {
+		body["rawLog"] = request.RawLog
+	}
+
+	req := &openapi.OpenApiRequest{
+		Headers: headers,
+		Query:   openapiutil.Query(query),
+		Body:    openapiutil.ParseToMap(body),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("PutAnnotationData"),
+		Version:     tea.String("2020-12-30"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/ml/annotationdataset/" + tea.StringValue(datasetId) + "/annotationdata"),
+		Method:      tea.String("PUT"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("ROA"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("none"),
+	}
+	_result = &PutAnnotationDataResponse{}
+	_body, _err := client.Execute(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) PutAnnotationData(datasetId *string, request *PutAnnotationDataRequest) (_result *PutAnnotationDataResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	headers := make(map[string]*string)
+	_result = &PutAnnotationDataResponse{}
+	_body, _err := client.PutAnnotationDataWithOptions(datasetId, request, headers, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
 func (client *Client) PutProjectPolicyWithOptions(project *string, request *PutProjectPolicyRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *PutProjectPolicyResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -11408,6 +12592,53 @@ func (client *Client) PutWebtracking(project *string, logstoreName *string, requ
 	headers := make(map[string]*string)
 	_result = &PutWebtrackingResponse{}
 	_body, _err := client.PutWebtrackingWithOptions(project, logstoreName, request, headers, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) QueryMLServiceResultsWithOptions(serviceName *string, request *QueryMLServiceResultsRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *QueryMLServiceResultsResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.AllowBuiltin)) {
+		query["allowBuiltin"] = request.AllowBuiltin
+	}
+
+	req := &openapi.OpenApiRequest{
+		Headers: headers,
+		Query:   openapiutil.Query(query),
+		Body:    openapiutil.ParseToMap(request.Body),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("QueryMLServiceResults"),
+		Version:     tea.String("2020-12-30"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/ml/service/" + tea.StringValue(serviceName) + "/analysis"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("ROA"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &QueryMLServiceResultsResponse{}
+	_body, _err := client.Execute(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) QueryMLServiceResults(serviceName *string, request *QueryMLServiceResultsRequest) (_result *QueryMLServiceResultsResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	headers := make(map[string]*string)
+	_result = &QueryMLServiceResultsResponse{}
+	_body, _err := client.QueryMLServiceResultsWithOptions(serviceName, request, headers, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -11612,6 +12843,88 @@ func (client *Client) UntagResources(request *UntagResourcesRequest) (_result *U
 	headers := make(map[string]*string)
 	_result = &UntagResourcesResponse{}
 	_body, _err := client.UntagResourcesWithOptions(request, headers, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) UpdateAnnotationDataSetWithOptions(datasetId *string, request *UpdateAnnotationDataSetRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *UpdateAnnotationDataSetResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	req := &openapi.OpenApiRequest{
+		Headers: headers,
+		Body:    openapiutil.ParseToMap(request.Body),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("UpdateAnnotationDataSet"),
+		Version:     tea.String("2020-12-30"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/ml/annotationdataset/" + tea.StringValue(datasetId)),
+		Method:      tea.String("PUT"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("ROA"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("none"),
+	}
+	_result = &UpdateAnnotationDataSetResponse{}
+	_body, _err := client.Execute(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) UpdateAnnotationDataSet(datasetId *string, request *UpdateAnnotationDataSetRequest) (_result *UpdateAnnotationDataSetResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	headers := make(map[string]*string)
+	_result = &UpdateAnnotationDataSetResponse{}
+	_body, _err := client.UpdateAnnotationDataSetWithOptions(datasetId, request, headers, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) UpdateAnnotationLabelWithOptions(request *UpdateAnnotationLabelRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *UpdateAnnotationLabelResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	req := &openapi.OpenApiRequest{
+		Headers: headers,
+		Body:    openapiutil.ParseToMap(request.Body),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("UpdateAnnotationLabel"),
+		Version:     tea.String("2020-12-30"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/ml/annotationlabel"),
+		Method:      tea.String("PUT"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("ROA"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("none"),
+	}
+	_result = &UpdateAnnotationLabelResponse{}
+	_body, _err := client.Execute(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) UpdateAnnotationLabel(request *UpdateAnnotationLabelRequest) (_result *UpdateAnnotationLabelResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	headers := make(map[string]*string)
+	_result = &UpdateAnnotationLabelResponse{}
+	_body, _err := client.UpdateAnnotationLabelWithOptions(request, headers, runtime)
 	if _err != nil {
 		return _result, _err
 	}
