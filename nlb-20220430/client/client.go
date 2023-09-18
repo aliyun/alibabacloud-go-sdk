@@ -1440,7 +1440,8 @@ type CreateServerGroupRequest struct {
 	// *   **TCP** (default)
 	// *   **UDP**
 	// *   **TCPSSL**
-	Protocol *string `json:"Protocol,omitempty" xml:"Protocol,omitempty"`
+	Protocol    *string `json:"Protocol,omitempty" xml:"Protocol,omitempty"`
+	QuicVersion *string `json:"QuicVersion,omitempty" xml:"QuicVersion,omitempty"`
 	// The region ID of the NLB instance.
 	//
 	// You can call the [DescribeRegions](~~443657~~) operation to query the most recent region list.
@@ -1522,6 +1523,11 @@ func (s *CreateServerGroupRequest) SetPreserveClientIpEnabled(v bool) *CreateSer
 
 func (s *CreateServerGroupRequest) SetProtocol(v string) *CreateServerGroupRequest {
 	s.Protocol = &v
+	return s
+}
+
+func (s *CreateServerGroupRequest) SetQuicVersion(v string) *CreateServerGroupRequest {
+	s.QuicVersion = &v
 	return s
 }
 
@@ -6038,7 +6044,8 @@ type ListServerGroupsResponseBodyServerGroups struct {
 	// > This parameter is set to **true** by default when **AddressIPVersion** is set to **ipv4**. This parameter is set to **false** when **AddressIPVersion** is set to **ipv6**. **true** will be supported by later versions.
 	PreserveClientIpEnabled *bool `json:"PreserveClientIpEnabled,omitempty" xml:"PreserveClientIpEnabled,omitempty"`
 	// The protocol used to forward requests to the backend servers. Valid values: **TCP**, **UDP**, and **TCPSSL**.
-	Protocol *string `json:"Protocol,omitempty" xml:"Protocol,omitempty"`
+	Protocol    *string `json:"Protocol,omitempty" xml:"Protocol,omitempty"`
+	QuicVersion *string `json:"QuicVersion,omitempty" xml:"QuicVersion,omitempty"`
 	// The region ID of the NLB instance.
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 	// The NLB instances.
@@ -6121,6 +6128,11 @@ func (s *ListServerGroupsResponseBodyServerGroups) SetPreserveClientIpEnabled(v 
 
 func (s *ListServerGroupsResponseBodyServerGroups) SetProtocol(v string) *ListServerGroupsResponseBodyServerGroups {
 	s.Protocol = &v
+	return s
+}
+
+func (s *ListServerGroupsResponseBodyServerGroups) SetQuicVersion(v string) *ListServerGroupsResponseBodyServerGroups {
+	s.QuicVersion = &v
 	return s
 }
 
@@ -8828,7 +8840,8 @@ type UpdateServerGroupAttributeRequest struct {
 	//
 	// *   **true**
 	// *   **false**
-	PreserveClientIpEnabled *bool `json:"PreserveClientIpEnabled,omitempty" xml:"PreserveClientIpEnabled,omitempty"`
+	PreserveClientIpEnabled *bool   `json:"PreserveClientIpEnabled,omitempty" xml:"PreserveClientIpEnabled,omitempty"`
+	QuicVersion             *string `json:"QuicVersion,omitempty" xml:"QuicVersion,omitempty"`
 	// The region ID of the NLB instance.
 	//
 	// You can call the [DescribeRegions](~~443657~~) operation to obtain the region ID.
@@ -8884,6 +8897,11 @@ func (s *UpdateServerGroupAttributeRequest) SetHealthCheckConfig(v *UpdateServer
 
 func (s *UpdateServerGroupAttributeRequest) SetPreserveClientIpEnabled(v bool) *UpdateServerGroupAttributeRequest {
 	s.PreserveClientIpEnabled = &v
+	return s
+}
+
+func (s *UpdateServerGroupAttributeRequest) SetQuicVersion(v string) *UpdateServerGroupAttributeRequest {
+	s.QuicVersion = &v
 	return s
 }
 
@@ -9938,6 +9956,10 @@ func (client *Client) CreateServerGroupWithOptions(request *CreateServerGroupReq
 
 	if !tea.BoolValue(util.IsUnset(request.Protocol)) {
 		body["Protocol"] = request.Protocol
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.QuicVersion)) {
+		body["QuicVersion"] = request.QuicVersion
 	}
 
 	if !tea.BoolValue(util.IsUnset(request.RegionId)) {
@@ -12491,6 +12513,10 @@ func (client *Client) UpdateServerGroupAttributeWithOptions(request *UpdateServe
 
 	if !tea.BoolValue(util.IsUnset(request.PreserveClientIpEnabled)) {
 		body["PreserveClientIpEnabled"] = request.PreserveClientIpEnabled
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.QuicVersion)) {
+		body["QuicVersion"] = request.QuicVersion
 	}
 
 	if !tea.BoolValue(util.IsUnset(request.RegionId)) {
