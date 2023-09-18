@@ -2998,6 +2998,7 @@ func (s *DescribeDatabaseInstancesResponse) SetBody(v *DescribeDatabaseInstances
 }
 
 type DescribeDatabaseSlowLogRecordsRequest struct {
+	AcsProduct *string `json:"AcsProduct,omitempty" xml:"AcsProduct,omitempty"`
 	// The ID of the Simple Database Service instance.
 	DatabaseInstanceId *string `json:"DatabaseInstanceId,omitempty" xml:"DatabaseInstanceId,omitempty"`
 	// The end of the time range to query. The end time must be later than the start time. The interval between the start time and the end time must be less than 7 days.
@@ -3032,6 +3033,11 @@ func (s DescribeDatabaseSlowLogRecordsRequest) String() string {
 
 func (s DescribeDatabaseSlowLogRecordsRequest) GoString() string {
 	return s.String()
+}
+
+func (s *DescribeDatabaseSlowLogRecordsRequest) SetAcsProduct(v string) *DescribeDatabaseSlowLogRecordsRequest {
+	s.AcsProduct = &v
+	return s
 }
 
 func (s *DescribeDatabaseSlowLogRecordsRequest) SetDatabaseInstanceId(v string) *DescribeDatabaseSlowLogRecordsRequest {
@@ -6302,6 +6308,7 @@ func (s *ListInstancesResponse) SetBody(v *ListInstancesResponseBody) *ListInsta
 }
 
 type ListInstancesTrafficPackagesRequest struct {
+	AcsProduct *string `json:"AcsProduct,omitempty" xml:"AcsProduct,omitempty"`
 	// The IDs of the simple application servers. The value can be a JSON array that consists of up to 100 simple application server IDs. Separate multiple server IDs with commas (,).
 	InstanceIds *string `json:"InstanceIds,omitempty" xml:"InstanceIds,omitempty"`
 	// The region ID of the simple application servers. You can call the [ListRegions](~~189315~~) operation to query the most recent region list.
@@ -6314,6 +6321,11 @@ func (s ListInstancesTrafficPackagesRequest) String() string {
 
 func (s ListInstancesTrafficPackagesRequest) GoString() string {
 	return s.String()
+}
+
+func (s *ListInstancesTrafficPackagesRequest) SetAcsProduct(v string) *ListInstancesTrafficPackagesRequest {
+	s.AcsProduct = &v
+	return s
 }
 
 func (s *ListInstancesTrafficPackagesRequest) SetInstanceIds(v string) *ListInstancesTrafficPackagesRequest {
@@ -6676,6 +6688,7 @@ func (s *ListRegionsResponse) SetBody(v *ListRegionsResponseBody) *ListRegionsRe
 }
 
 type ListSnapshotsRequest struct {
+	AcsProduct *string `json:"AcsProduct,omitempty" xml:"AcsProduct,omitempty"`
 	// The disk ID.
 	DiskId *string `json:"DiskId,omitempty" xml:"DiskId,omitempty"`
 	// The ID of the simple application server.
@@ -6705,6 +6718,11 @@ func (s ListSnapshotsRequest) String() string {
 
 func (s ListSnapshotsRequest) GoString() string {
 	return s.String()
+}
+
+func (s *ListSnapshotsRequest) SetAcsProduct(v string) *ListSnapshotsRequest {
+	s.AcsProduct = &v
+	return s
 }
 
 func (s *ListSnapshotsRequest) SetDiskId(v string) *ListSnapshotsRequest {
@@ -11205,6 +11223,10 @@ func (client *Client) DescribeDatabaseSlowLogRecordsWithOptions(request *Describ
 		return _result, _err
 	}
 	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.AcsProduct)) {
+		query["AcsProduct"] = request.AcsProduct
+	}
+
 	if !tea.BoolValue(util.IsUnset(request.DatabaseInstanceId)) {
 		query["DatabaseInstanceId"] = request.DatabaseInstanceId
 	}
@@ -12536,6 +12558,10 @@ func (client *Client) ListInstancesTrafficPackagesWithOptions(request *ListInsta
 		return _result, _err
 	}
 	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.AcsProduct)) {
+		query["AcsProduct"] = request.AcsProduct
+	}
+
 	if !tea.BoolValue(util.IsUnset(request.InstanceIds)) {
 		query["InstanceIds"] = request.InstanceIds
 	}
@@ -12716,6 +12742,10 @@ func (client *Client) ListSnapshotsWithOptions(request *ListSnapshotsRequest, ru
 		return _result, _err
 	}
 	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.AcsProduct)) {
+		query["AcsProduct"] = request.AcsProduct
+	}
+
 	if !tea.BoolValue(util.IsUnset(request.DiskId)) {
 		query["DiskId"] = request.DiskId
 	}
