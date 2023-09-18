@@ -170,8 +170,8 @@ func (s *ConfirmDisburseResult) SetResult(v string) *ConfirmDisburseResult {
 }
 
 type CooperationShop struct {
-	CooperationCompanyId *string `json:"CooperationCompanyId,omitempty" xml:"CooperationCompanyId,omitempty"`
-	CooperationShopId    *string `json:"CooperationShopId,omitempty" xml:"CooperationShopId,omitempty"`
+	CooperationCompanyId *string `json:"cooperationCompanyId,omitempty" xml:"cooperationCompanyId,omitempty"`
+	CooperationShopId    *string `json:"cooperationShopId,omitempty" xml:"cooperationShopId,omitempty"`
 	ShopId               *string `json:"shopId,omitempty" xml:"shopId,omitempty"`
 }
 
