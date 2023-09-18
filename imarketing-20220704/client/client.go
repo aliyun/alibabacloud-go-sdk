@@ -2518,6 +2518,7 @@ func (s *ListAdvertisingRequest) SetUser(v *ListAdvertisingRequestUser) *ListAdv
 }
 
 type ListAdvertisingRequestApp struct {
+	Appid   *string                `json:"Appid,omitempty" xml:"Appid,omitempty"`
 	Ext     map[string]interface{} `json:"Ext,omitempty" xml:"Ext,omitempty"`
 	Mediaid *string                `json:"Mediaid,omitempty" xml:"Mediaid,omitempty"`
 	Sn      *string                `json:"Sn,omitempty" xml:"Sn,omitempty"`
@@ -2529,6 +2530,11 @@ func (s ListAdvertisingRequestApp) String() string {
 
 func (s ListAdvertisingRequestApp) GoString() string {
 	return s.String()
+}
+
+func (s *ListAdvertisingRequestApp) SetAppid(v string) *ListAdvertisingRequestApp {
+	s.Appid = &v
+	return s
 }
 
 func (s *ListAdvertisingRequestApp) SetExt(v map[string]interface{}) *ListAdvertisingRequestApp {
@@ -3855,6 +3861,157 @@ func (s *QueryAuditResultResponse) SetStatusCode(v int32) *QueryAuditResultRespo
 }
 
 func (s *QueryAuditResultResponse) SetBody(v *QueryAuditResultResponseBody) *QueryAuditResultResponse {
+	s.Body = v
+	return s
+}
+
+type QueryBenefitGrantResultRequest struct {
+	CloducodeFlowNo *string `json:"CloducodeFlowNo,omitempty" xml:"CloducodeFlowNo,omitempty"`
+	OuterCustomerId *string `json:"OuterCustomerId,omitempty" xml:"OuterCustomerId,omitempty"`
+}
+
+func (s QueryBenefitGrantResultRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s QueryBenefitGrantResultRequest) GoString() string {
+	return s.String()
+}
+
+func (s *QueryBenefitGrantResultRequest) SetCloducodeFlowNo(v string) *QueryBenefitGrantResultRequest {
+	s.CloducodeFlowNo = &v
+	return s
+}
+
+func (s *QueryBenefitGrantResultRequest) SetOuterCustomerId(v string) *QueryBenefitGrantResultRequest {
+	s.OuterCustomerId = &v
+	return s
+}
+
+type QueryBenefitGrantResultResponseBody struct {
+	// Id of the request
+	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	// 123
+	Debug     *bool                                     `json:"Debug,omitempty" xml:"Debug,omitempty"`
+	Message   *string                                   `json:"Message,omitempty" xml:"Message,omitempty"`
+	Model     *QueryBenefitGrantResultResponseBodyModel `json:"Model,omitempty" xml:"Model,omitempty" type:"Struct"`
+	RequestId *string                                   `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	Success   *bool                                     `json:"Success,omitempty" xml:"Success,omitempty"`
+}
+
+func (s QueryBenefitGrantResultResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s QueryBenefitGrantResultResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *QueryBenefitGrantResultResponseBody) SetCode(v string) *QueryBenefitGrantResultResponseBody {
+	s.Code = &v
+	return s
+}
+
+func (s *QueryBenefitGrantResultResponseBody) SetDebug(v bool) *QueryBenefitGrantResultResponseBody {
+	s.Debug = &v
+	return s
+}
+
+func (s *QueryBenefitGrantResultResponseBody) SetMessage(v string) *QueryBenefitGrantResultResponseBody {
+	s.Message = &v
+	return s
+}
+
+func (s *QueryBenefitGrantResultResponseBody) SetModel(v *QueryBenefitGrantResultResponseBodyModel) *QueryBenefitGrantResultResponseBody {
+	s.Model = v
+	return s
+}
+
+func (s *QueryBenefitGrantResultResponseBody) SetRequestId(v string) *QueryBenefitGrantResultResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *QueryBenefitGrantResultResponseBody) SetSuccess(v bool) *QueryBenefitGrantResultResponseBody {
+	s.Success = &v
+	return s
+}
+
+type QueryBenefitGrantResultResponseBodyModel struct {
+	Amount *int64 `json:"Amount,omitempty" xml:"Amount,omitempty"`
+	// 12345
+	CloudcodeFlowNo *string `json:"CloudcodeFlowNo,omitempty" xml:"CloudcodeFlowNo,omitempty"`
+	// 12345
+	OuterCustomerId *string `json:"OuterCustomerId,omitempty" xml:"OuterCustomerId,omitempty"`
+	// 12345
+	OuterFlowNo *string `json:"OuterFlowNo,omitempty" xml:"OuterFlowNo,omitempty"`
+	Remark      *string `json:"Remark,omitempty" xml:"Remark,omitempty"`
+	Status      *int32  `json:"Status,omitempty" xml:"Status,omitempty"`
+}
+
+func (s QueryBenefitGrantResultResponseBodyModel) String() string {
+	return tea.Prettify(s)
+}
+
+func (s QueryBenefitGrantResultResponseBodyModel) GoString() string {
+	return s.String()
+}
+
+func (s *QueryBenefitGrantResultResponseBodyModel) SetAmount(v int64) *QueryBenefitGrantResultResponseBodyModel {
+	s.Amount = &v
+	return s
+}
+
+func (s *QueryBenefitGrantResultResponseBodyModel) SetCloudcodeFlowNo(v string) *QueryBenefitGrantResultResponseBodyModel {
+	s.CloudcodeFlowNo = &v
+	return s
+}
+
+func (s *QueryBenefitGrantResultResponseBodyModel) SetOuterCustomerId(v string) *QueryBenefitGrantResultResponseBodyModel {
+	s.OuterCustomerId = &v
+	return s
+}
+
+func (s *QueryBenefitGrantResultResponseBodyModel) SetOuterFlowNo(v string) *QueryBenefitGrantResultResponseBodyModel {
+	s.OuterFlowNo = &v
+	return s
+}
+
+func (s *QueryBenefitGrantResultResponseBodyModel) SetRemark(v string) *QueryBenefitGrantResultResponseBodyModel {
+	s.Remark = &v
+	return s
+}
+
+func (s *QueryBenefitGrantResultResponseBodyModel) SetStatus(v int32) *QueryBenefitGrantResultResponseBodyModel {
+	s.Status = &v
+	return s
+}
+
+type QueryBenefitGrantResultResponse struct {
+	Headers    map[string]*string                   `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                               `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *QueryBenefitGrantResultResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s QueryBenefitGrantResultResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s QueryBenefitGrantResultResponse) GoString() string {
+	return s.String()
+}
+
+func (s *QueryBenefitGrantResultResponse) SetHeaders(v map[string]*string) *QueryBenefitGrantResultResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *QueryBenefitGrantResultResponse) SetStatusCode(v int32) *QueryBenefitGrantResultResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *QueryBenefitGrantResultResponse) SetBody(v *QueryBenefitGrantResultResponseBody) *QueryBenefitGrantResultResponse {
 	s.Body = v
 	return s
 }
@@ -6863,6 +7020,54 @@ func (client *Client) QueryAuditResult(request *QueryAuditResultRequest) (_resul
 	runtime := &util.RuntimeOptions{}
 	_result = &QueryAuditResultResponse{}
 	_body, _err := client.QueryAuditResultWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) QueryBenefitGrantResultWithOptions(request *QueryBenefitGrantResultRequest, runtime *util.RuntimeOptions) (_result *QueryBenefitGrantResultResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	body := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.CloducodeFlowNo)) {
+		body["CloducodeFlowNo"] = request.CloducodeFlowNo
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.OuterCustomerId)) {
+		body["OuterCustomerId"] = request.OuterCustomerId
+	}
+
+	req := &openapi.OpenApiRequest{
+		Body: openapiutil.ParseToMap(body),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("QueryBenefitGrantResult"),
+		Version:     tea.String("2022-07-04"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &QueryBenefitGrantResultResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) QueryBenefitGrantResult(request *QueryBenefitGrantResultRequest) (_result *QueryBenefitGrantResultResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &QueryBenefitGrantResultResponse{}
+	_body, _err := client.QueryBenefitGrantResultWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
