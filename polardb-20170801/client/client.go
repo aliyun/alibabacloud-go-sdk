@@ -2487,11 +2487,8 @@ type CreateDatabaseRequest struct {
 	CharacterSetName *string `json:"CharacterSetName,omitempty" xml:"CharacterSetName,omitempty"`
 	// The language that indicates the collation of the databases that are created.
 	//
-	// >
-	//
-	// *   The language must be compatible with the character set that is specified by **CharacterSetName**.
-	//
-	// *   This parameter is required for PolarDB for PostgreSQL (Compatible with Oracle) clusters or PolarDB for PostgreSQL clusters. This parameter is not supported by PolarDB for MySQL clusters.
+	// > *   The language must be compatible with the character set that is specified by **CharacterSetName**.
+	// >*   This parameter is required for PolarDB for PostgreSQL (Compatible with Oracle) clusters or PolarDB for PostgreSQL clusters. This parameter is not supported by PolarDB for MySQL clusters.
 	//
 	// To view the valid values for this parameter, perform the following steps: Log on to the PolarDB console and click the ID of a cluster. In the left-side navigation pane, choose **Settings and Management** > **Databases**. Then, click **Create Database**.
 	Collate *string `json:"Collate,omitempty" xml:"Collate,omitempty"`
@@ -14226,6 +14223,7 @@ type DescribeMetaListRequest struct {
 	//
 	//     Default value: **30**.
 	PageSize             *int32  `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	RegionCode           *string `json:"RegionCode,omitempty" xml:"RegionCode,omitempty"`
 	ResourceOwnerAccount *string `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
 	ResourceOwnerId      *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
 	// The point in time for the restoration. Specify the time in the YYYY-MM-DDThh:mmZ format. The time must be in UTC.
@@ -14275,6 +14273,11 @@ func (s *DescribeMetaListRequest) SetPageNumber(v int32) *DescribeMetaListReques
 
 func (s *DescribeMetaListRequest) SetPageSize(v int32) *DescribeMetaListRequest {
 	s.PageSize = &v
+	return s
+}
+
+func (s *DescribeMetaListRequest) SetRegionCode(v string) *DescribeMetaListRequest {
+	s.RegionCode = &v
 	return s
 }
 
@@ -30516,6 +30519,10 @@ func (client *Client) DescribeMetaListWithOptions(request *DescribeMetaListReque
 
 	if !tea.BoolValue(util.IsUnset(request.PageSize)) {
 		query["PageSize"] = request.PageSize
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.RegionCode)) {
+		query["RegionCode"] = request.RegionCode
 	}
 
 	if !tea.BoolValue(util.IsUnset(request.ResourceOwnerAccount)) {
