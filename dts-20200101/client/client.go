@@ -7835,15 +7835,16 @@ type DescribeDataCheckTableDetailsRequest struct {
 	CheckType *int32 `json:"CheckType,omitempty" xml:"CheckType,omitempty"`
 	// The ID of the data migration or data synchronization task. You can call the [DescribeDtsJobs](~~209702~~) operation to query the task ID.
 	DtsJobId *string `json:"DtsJobId,omitempty" xml:"DtsJobId,omitempty"`
-	// The page number. Pages start from page 1. Default value: **1**.
+	// The number of the page to return. The value must be an integer that is greater than **0**. Default value: **1**.
 	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
-	// The number of entries per page.
-	PageSize   *int32  `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	// The number of entries to return on each page.
+	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	// The name of the schema whose data is verified in the source database.
 	SchemaName *string `json:"SchemaName,omitempty" xml:"SchemaName,omitempty"`
-	// The status of data verification results. Valid values:
+	// The status of the data verification result. Valid values:
 	//
-	// *   **-1** (default): all states.
-	// *   **6**: inconsistent data detected in tables.
+	// *   **-1** (default): All status.
+	// *   **6**: Inconsistent data detected in the table.
 	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
 	// The name of the table whose data is verified in the source database.
 	TableName *string `json:"TableName,omitempty" xml:"TableName,omitempty"`
@@ -7895,11 +7896,11 @@ func (s *DescribeDataCheckTableDetailsRequest) SetTableName(v string) *DescribeD
 type DescribeDataCheckTableDetailsResponseBody struct {
 	// The number of tables that contain inconsistent data.
 	DiffTableCount *int64 `json:"DiffTableCount,omitempty" xml:"DiffTableCount,omitempty"`
-	// The dynamic error code. This parameter will be removed in the future.
+	// The dynamic error code. This parameter will be discontinued in the future.
 	DynamicCode *string `json:"DynamicCode,omitempty" xml:"DynamicCode,omitempty"`
-	// The dynamic part in the error message. This parameter is used to replace the **%s** variable in the value of **ErrMessage**.
+	// The dynamic part in the error message. This parameter is used to replace the \*\*%s\*\* variable in the **ErrMessage** parameter.
 	//
-	// >  For example, if the return value of **ErrMessage** is **The Value of Input Parameter %s is not valid** and the return value of **DynamicMessage** is **Type**, the specified value of **Type** is invalid.
+	// > For example, if the returned value of the **ErrMessage** parameter is **The Value of Input Parameter %s is not valid** and the return value of the **DynamicMessage** parameter is **Type**, the specified **Type** parameter is invalid.
 	DynamicMessage *string `json:"DynamicMessage,omitempty" xml:"DynamicMessage,omitempty"`
 	// The error code returned if the request failed.
 	ErrCode *string `json:"ErrCode,omitempty" xml:"ErrCode,omitempty"`
@@ -7907,15 +7908,15 @@ type DescribeDataCheckTableDetailsResponseBody struct {
 	ErrMessage *string `json:"ErrMessage,omitempty" xml:"ErrMessage,omitempty"`
 	// The total number of data rows that were verified.
 	FinishedCount *int64 `json:"FinishedCount,omitempty" xml:"FinishedCount,omitempty"`
-	// The HTTP status code.
+	// The HTTP status code returned.
 	HttpStatusCode *int32 `json:"HttpStatusCode,omitempty" xml:"HttpStatusCode,omitempty"`
-	// The page number.
+	// The page number of the returned page.
 	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
 	// The request ID.
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	// Indicates whether the request was successful.
 	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
-	// The details of data verification results.
+	// The details of the data verification result.
 	TableDetails []*DescribeDataCheckTableDetailsResponseBodyTableDetails `json:"TableDetails,omitempty" xml:"TableDetails,omitempty" type:"Repeated"`
 	// The total number of tables on which data verification was performed.
 	TotalCount *int64 `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
@@ -7994,21 +7995,26 @@ type DescribeDataCheckTableDetailsResponseBodyTableDetails struct {
 	BootTime *string `json:"BootTime,omitempty" xml:"BootTime,omitempty"`
 	// The number of data rows that contain inconsistent data.
 	DiffCount *int64 `json:"DiffCount,omitempty" xml:"DiffCount,omitempty"`
-	// The error code returned if the request failed.
+	// 任务运行出错时，返回报错信息的错误编码。
+	//
+	// - **1**：无主键表数量超过限制。
+	// - **2**：差异数据超过300行。
+	// - **3**：待查询的表不存在。
+	// - **4**：查询数据的SQL语法错误。
 	ErrorCode *int32 `json:"ErrorCode,omitempty" xml:"ErrorCode,omitempty"`
 	// The number of data rows that were verified.
 	FinishCount *int64 `json:"FinishCount,omitempty" xml:"FinishCount,omitempty"`
-	// The auto-increment primary key that is used to identify the data in a verification result.
+	// The auto-increment primary key that is used to identify a data record in a verification result.
 	Id *int64 `json:"Id,omitempty" xml:"Id,omitempty"`
 	// The name of the source database.
 	SourceDbName *string `json:"SourceDbName,omitempty" xml:"SourceDbName,omitempty"`
 	// The name of the source table.
 	SourceTbName *string `json:"SourceTbName,omitempty" xml:"SourceTbName,omitempty"`
-	// The state of the data verification task. Valid values:
+	// The status of the data verification result. Valid values:
 	//
 	// *   **0**: The data verification task was complete.
-	// *   **2**: The data verification task was being initialized.
-	// *   **3**: The data verification task was in progress.
+	// *   **2**: The data verification task was initialized.
+	// *   **3**: The data verification task was running.
 	// *   **5**: The data verification task failed.
 	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
 	// The name of the destination database.
@@ -28308,6 +28314,87 @@ func (s *ModifyDtsJobResponse) SetBody(v *ModifyDtsJobResponseBody) *ModifyDtsJo
 	return s
 }
 
+type ModifyDtsJobConfigRequest struct {
+	DtsJobId   *string `json:"DtsJobId,omitempty" xml:"DtsJobId,omitempty"`
+	OwnerId    *string `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
+	Parameters *string `json:"Parameters,omitempty" xml:"Parameters,omitempty"`
+	RegionId   *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+}
+
+func (s ModifyDtsJobConfigRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ModifyDtsJobConfigRequest) GoString() string {
+	return s.String()
+}
+
+func (s *ModifyDtsJobConfigRequest) SetDtsJobId(v string) *ModifyDtsJobConfigRequest {
+	s.DtsJobId = &v
+	return s
+}
+
+func (s *ModifyDtsJobConfigRequest) SetOwnerId(v string) *ModifyDtsJobConfigRequest {
+	s.OwnerId = &v
+	return s
+}
+
+func (s *ModifyDtsJobConfigRequest) SetParameters(v string) *ModifyDtsJobConfigRequest {
+	s.Parameters = &v
+	return s
+}
+
+func (s *ModifyDtsJobConfigRequest) SetRegionId(v string) *ModifyDtsJobConfigRequest {
+	s.RegionId = &v
+	return s
+}
+
+type ModifyDtsJobConfigResponseBody struct {
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+}
+
+func (s ModifyDtsJobConfigResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ModifyDtsJobConfigResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *ModifyDtsJobConfigResponseBody) SetRequestId(v string) *ModifyDtsJobConfigResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+type ModifyDtsJobConfigResponse struct {
+	Headers    map[string]*string              `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                          `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *ModifyDtsJobConfigResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s ModifyDtsJobConfigResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ModifyDtsJobConfigResponse) GoString() string {
+	return s.String()
+}
+
+func (s *ModifyDtsJobConfigResponse) SetHeaders(v map[string]*string) *ModifyDtsJobConfigResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *ModifyDtsJobConfigResponse) SetStatusCode(v int32) *ModifyDtsJobConfigResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *ModifyDtsJobConfigResponse) SetBody(v *ModifyDtsJobConfigResponseBody) *ModifyDtsJobConfigResponse {
+	s.Body = v
+	return s
+}
+
 type ModifyDtsJobDedicatedClusterRequest struct {
 	DedicatedClusterId *string `json:"DedicatedClusterId,omitempty" xml:"DedicatedClusterId,omitempty"`
 	DtsJobIds          *string `json:"DtsJobIds,omitempty" xml:"DtsJobIds,omitempty"`
@@ -39115,6 +39202,62 @@ func (client *Client) ModifyDtsJobAdvance(request *ModifyDtsJobAdvanceRequest, r
 	}
 
 	_result = modifyDtsJobResp
+	return _result, _err
+}
+
+func (client *Client) ModifyDtsJobConfigWithOptions(request *ModifyDtsJobConfigRequest, runtime *util.RuntimeOptions) (_result *ModifyDtsJobConfigResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.DtsJobId)) {
+		query["DtsJobId"] = request.DtsJobId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.OwnerId)) {
+		query["OwnerId"] = request.OwnerId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Parameters)) {
+		query["Parameters"] = request.Parameters
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.RegionId)) {
+		query["RegionId"] = request.RegionId
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("ModifyDtsJobConfig"),
+		Version:     tea.String("2020-01-01"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &ModifyDtsJobConfigResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) ModifyDtsJobConfig(request *ModifyDtsJobConfigRequest) (_result *ModifyDtsJobConfigResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &ModifyDtsJobConfigResponse{}
+	_body, _err := client.ModifyDtsJobConfigWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
 	return _result, _err
 }
 
