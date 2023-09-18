@@ -169,6 +169,35 @@ func (s *ConfirmDisburseResult) SetResult(v string) *ConfirmDisburseResult {
 	return s
 }
 
+type CooperationShop struct {
+	CooperationCompanyId *string `json:"CooperationCompanyId,omitempty" xml:"CooperationCompanyId,omitempty"`
+	CooperationShopId    *string `json:"CooperationShopId,omitempty" xml:"CooperationShopId,omitempty"`
+	ShopId               *string `json:"shopId,omitempty" xml:"shopId,omitempty"`
+}
+
+func (s CooperationShop) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CooperationShop) GoString() string {
+	return s.String()
+}
+
+func (s *CooperationShop) SetCooperationCompanyId(v string) *CooperationShop {
+	s.CooperationCompanyId = &v
+	return s
+}
+
+func (s *CooperationShop) SetCooperationShopId(v string) *CooperationShop {
+	s.CooperationShopId = &v
+	return s
+}
+
+func (s *CooperationShop) SetShopId(v string) *CooperationShop {
+	s.ShopId = &v
+	return s
+}
+
 type DeliveryInfo struct {
 	DisplayName *string `json:"displayName,omitempty" xml:"displayName,omitempty"`
 	Id          *string `json:"id,omitempty" xml:"id,omitempty"`
@@ -789,17 +818,17 @@ func (s *MoneyCurrency) SetSymbol(v string) *MoneyCurrency {
 }
 
 type OrderLineResult struct {
-	LogisticsStatus *string         `json:"logisticsStatus,omitempty" xml:"logisticsStatus,omitempty"`
-	Number          *string         `json:"number,omitempty" xml:"number,omitempty"`
-	OrderId         *string         `json:"orderId,omitempty" xml:"orderId,omitempty"`
-	OrderLineId     *string         `json:"orderLineId,omitempty" xml:"orderLineId,omitempty"`
-	OrderLineStatus *string         `json:"orderLineStatus,omitempty" xml:"orderLineStatus,omitempty"`
-	ProductId       *string         `json:"productId,omitempty" xml:"productId,omitempty"`
-	ProductPic      *string         `json:"productPic,omitempty" xml:"productPic,omitempty"`
-	ProductPrice    []*ProductPrice `json:"productPrice,omitempty" xml:"productPrice,omitempty" type:"Repeated"`
-	ProductTitle    *string         `json:"productTitle,omitempty" xml:"productTitle,omitempty"`
-	SkuId           *string         `json:"skuId,omitempty" xml:"skuId,omitempty"`
-	SkuTitle        *string         `json:"skuTitle,omitempty" xml:"skuTitle,omitempty"`
+	LogisticsStatus *string `json:"logisticsStatus,omitempty" xml:"logisticsStatus,omitempty"`
+	Number          *string `json:"number,omitempty" xml:"number,omitempty"`
+	OrderId         *string `json:"orderId,omitempty" xml:"orderId,omitempty"`
+	OrderLineId     *string `json:"orderLineId,omitempty" xml:"orderLineId,omitempty"`
+	OrderLineStatus *string `json:"orderLineStatus,omitempty" xml:"orderLineStatus,omitempty"`
+	PayFee          *int64  `json:"payFee,omitempty" xml:"payFee,omitempty"`
+	ProductId       *string `json:"productId,omitempty" xml:"productId,omitempty"`
+	ProductPic      *string `json:"productPic,omitempty" xml:"productPic,omitempty"`
+	ProductTitle    *string `json:"productTitle,omitempty" xml:"productTitle,omitempty"`
+	SkuId           *string `json:"skuId,omitempty" xml:"skuId,omitempty"`
+	SkuTitle        *string `json:"skuTitle,omitempty" xml:"skuTitle,omitempty"`
 }
 
 func (s OrderLineResult) String() string {
@@ -835,6 +864,11 @@ func (s *OrderLineResult) SetOrderLineStatus(v string) *OrderLineResult {
 	return s
 }
 
+func (s *OrderLineResult) SetPayFee(v int64) *OrderLineResult {
+	s.PayFee = &v
+	return s
+}
+
 func (s *OrderLineResult) SetProductId(v string) *OrderLineResult {
 	s.ProductId = &v
 	return s
@@ -842,11 +876,6 @@ func (s *OrderLineResult) SetProductId(v string) *OrderLineResult {
 
 func (s *OrderLineResult) SetProductPic(v string) *OrderLineResult {
 	s.ProductPic = &v
-	return s
-}
-
-func (s *OrderLineResult) SetProductPrice(v []*ProductPrice) *OrderLineResult {
-	s.ProductPrice = v
 	return s
 }
 
@@ -937,8 +966,8 @@ type OrderProductResult struct {
 	ProductId     *string                `json:"productId,omitempty" xml:"productId,omitempty"`
 	ProductPicUrl *string                `json:"productPicUrl,omitempty" xml:"productPicUrl,omitempty"`
 	ProductTitle  *string                `json:"productTitle,omitempty" xml:"productTitle,omitempty"`
+	PurchaserId   *string                `json:"purchaserId,omitempty" xml:"purchaserId,omitempty"`
 	Quantity      *int32                 `json:"quantity,omitempty" xml:"quantity,omitempty"`
-	ShopId        *string                `json:"shopId,omitempty" xml:"shopId,omitempty"`
 	SkuId         *string                `json:"skuId,omitempty" xml:"skuId,omitempty"`
 	SkuTitle      *string                `json:"skuTitle,omitempty" xml:"skuTitle,omitempty"`
 }
@@ -986,13 +1015,13 @@ func (s *OrderProductResult) SetProductTitle(v string) *OrderProductResult {
 	return s
 }
 
-func (s *OrderProductResult) SetQuantity(v int32) *OrderProductResult {
-	s.Quantity = &v
+func (s *OrderProductResult) SetPurchaserId(v string) *OrderProductResult {
+	s.PurchaserId = &v
 	return s
 }
 
-func (s *OrderProductResult) SetShopId(v string) *OrderProductResult {
-	s.ShopId = &v
+func (s *OrderProductResult) SetQuantity(v int32) *OrderProductResult {
+	s.Quantity = &v
 	return s
 }
 
@@ -1007,10 +1036,10 @@ func (s *OrderProductResult) SetSkuTitle(v string) *OrderProductResult {
 }
 
 type OrderRenderProductDTO struct {
-	ProductId *string `json:"productId,omitempty" xml:"productId,omitempty"`
-	Quantity  *int32  `json:"quantity,omitempty" xml:"quantity,omitempty"`
-	ShopId    *string `json:"shopId,omitempty" xml:"shopId,omitempty"`
-	SkuId     *string `json:"skuId,omitempty" xml:"skuId,omitempty"`
+	ProductId   *string `json:"productId,omitempty" xml:"productId,omitempty"`
+	PurchaserId *string `json:"purchaserId,omitempty" xml:"purchaserId,omitempty"`
+	Quantity    *int32  `json:"quantity,omitempty" xml:"quantity,omitempty"`
+	SkuId       *string `json:"skuId,omitempty" xml:"skuId,omitempty"`
 }
 
 func (s OrderRenderProductDTO) String() string {
@@ -1026,13 +1055,13 @@ func (s *OrderRenderProductDTO) SetProductId(v string) *OrderRenderProductDTO {
 	return s
 }
 
-func (s *OrderRenderProductDTO) SetQuantity(v int32) *OrderRenderProductDTO {
-	s.Quantity = &v
+func (s *OrderRenderProductDTO) SetPurchaserId(v string) *OrderRenderProductDTO {
+	s.PurchaserId = &v
 	return s
 }
 
-func (s *OrderRenderProductDTO) SetShopId(v string) *OrderRenderProductDTO {
-	s.ShopId = &v
+func (s *OrderRenderProductDTO) SetQuantity(v int32) *OrderRenderProductDTO {
+	s.Quantity = &v
 	return s
 }
 
@@ -1086,7 +1115,7 @@ type OrderResult struct {
 	CreateDate      *string            `json:"createDate,omitempty" xml:"createDate,omitempty"`
 	DistributorId   *string            `json:"distributorId,omitempty" xml:"distributorId,omitempty"`
 	LogisticsStatus *string            `json:"logisticsStatus,omitempty" xml:"logisticsStatus,omitempty"`
-	OrderAmount     *string            `json:"orderAmount,omitempty" xml:"orderAmount,omitempty"`
+	OrderAmount     *int64             `json:"orderAmount,omitempty" xml:"orderAmount,omitempty"`
 	OrderId         *string            `json:"orderId,omitempty" xml:"orderId,omitempty"`
 	OrderLineList   []*OrderLineResult `json:"orderLineList,omitempty" xml:"orderLineList,omitempty" type:"Repeated"`
 	OrderStatus     *string            `json:"orderStatus,omitempty" xml:"orderStatus,omitempty"`
@@ -1116,7 +1145,7 @@ func (s *OrderResult) SetLogisticsStatus(v string) *OrderResult {
 	return s
 }
 
-func (s *OrderResult) SetOrderAmount(v string) *OrderResult {
+func (s *OrderResult) SetOrderAmount(v int64) *OrderResult {
 	s.OrderAmount = &v
 	return s
 }
@@ -1279,11 +1308,11 @@ func (s *Product) SetTitle(v string) *Product {
 }
 
 type ProductDTO struct {
-	Price     *int64  `json:"price,omitempty" xml:"price,omitempty"`
-	ProductId *string `json:"productId,omitempty" xml:"productId,omitempty"`
-	Quantity  *int32  `json:"quantity,omitempty" xml:"quantity,omitempty"`
-	ShopId    *string `json:"shopId,omitempty" xml:"shopId,omitempty"`
-	SkuId     *string `json:"skuId,omitempty" xml:"skuId,omitempty"`
+	Price       *int64  `json:"price,omitempty" xml:"price,omitempty"`
+	ProductId   *string `json:"productId,omitempty" xml:"productId,omitempty"`
+	PurchaserId *string `json:"purchaserId,omitempty" xml:"purchaserId,omitempty"`
+	Quantity    *int32  `json:"quantity,omitempty" xml:"quantity,omitempty"`
+	SkuId       *string `json:"skuId,omitempty" xml:"skuId,omitempty"`
 }
 
 func (s ProductDTO) String() string {
@@ -1304,13 +1333,13 @@ func (s *ProductDTO) SetProductId(v string) *ProductDTO {
 	return s
 }
 
-func (s *ProductDTO) SetQuantity(v int32) *ProductDTO {
-	s.Quantity = &v
+func (s *ProductDTO) SetPurchaserId(v string) *ProductDTO {
+	s.PurchaserId = &v
 	return s
 }
 
-func (s *ProductDTO) SetShopId(v string) *ProductDTO {
-	s.ShopId = &v
+func (s *ProductDTO) SetQuantity(v int32) *ProductDTO {
+	s.Quantity = &v
 	return s
 }
 
@@ -1495,9 +1524,9 @@ func (s *ProductSaleInfo) SetTitle(v string) *ProductSaleInfo {
 }
 
 type ProductSaleInfoListQuery struct {
-	DistributorShopId *string   `json:"distributorShopId,omitempty" xml:"distributorShopId,omitempty"`
-	DivisionCode      *string   `json:"divisionCode,omitempty" xml:"divisionCode,omitempty"`
-	ProductIds        []*string `json:"productIds,omitempty" xml:"productIds,omitempty" type:"Repeated"`
+	DivisionCode *string   `json:"divisionCode,omitempty" xml:"divisionCode,omitempty"`
+	ProductIds   []*string `json:"productIds,omitempty" xml:"productIds,omitempty" type:"Repeated"`
+	PurchaserId  *string   `json:"purchaserId,omitempty" xml:"purchaserId,omitempty"`
 }
 
 func (s ProductSaleInfoListQuery) String() string {
@@ -1508,11 +1537,6 @@ func (s ProductSaleInfoListQuery) GoString() string {
 	return s.String()
 }
 
-func (s *ProductSaleInfoListQuery) SetDistributorShopId(v string) *ProductSaleInfoListQuery {
-	s.DistributorShopId = &v
-	return s
-}
-
 func (s *ProductSaleInfoListQuery) SetDivisionCode(v string) *ProductSaleInfoListQuery {
 	s.DivisionCode = &v
 	return s
@@ -1520,6 +1544,11 @@ func (s *ProductSaleInfoListQuery) SetDivisionCode(v string) *ProductSaleInfoLis
 
 func (s *ProductSaleInfoListQuery) SetProductIds(v []*string) *ProductSaleInfoListQuery {
 	s.ProductIds = v
+	return s
+}
+
+func (s *ProductSaleInfoListQuery) SetPurchaserId(v string) *ProductSaleInfoListQuery {
+	s.PurchaserId = &v
 	return s
 }
 
@@ -1887,7 +1916,6 @@ func (s *RefundOrderCmd) SetOrderLineId(v string) *RefundOrderCmd {
 type RefundOrderResult struct {
 	DisputeId     *string `json:"disputeId,omitempty" xml:"disputeId,omitempty"`
 	DisputeStatus *int32  `json:"disputeStatus,omitempty" xml:"disputeStatus,omitempty"`
-	DisputeType   *int32  `json:"disputeType,omitempty" xml:"disputeType,omitempty"`
 	OrderLineId   *string `json:"orderLineId,omitempty" xml:"orderLineId,omitempty"`
 	RequestId     *string `json:"requestId,omitempty" xml:"requestId,omitempty"`
 }
@@ -1907,11 +1935,6 @@ func (s *RefundOrderResult) SetDisputeId(v string) *RefundOrderResult {
 
 func (s *RefundOrderResult) SetDisputeStatus(v int32) *RefundOrderResult {
 	s.DisputeStatus = &v
-	return s
-}
-
-func (s *RefundOrderResult) SetDisputeType(v int32) *RefundOrderResult {
-	s.DisputeType = &v
 	return s
 }
 
@@ -1991,7 +2014,6 @@ func (s *RefundRenderCmd) SetOrderLineId(v string) *RefundRenderCmd {
 
 type RefundRenderResult struct {
 	BizClaimType     *int32                    `json:"bizClaimType,omitempty" xml:"bizClaimType,omitempty"`
-	MainOrderRefund  *bool                     `json:"mainOrderRefund,omitempty" xml:"mainOrderRefund,omitempty"`
 	MaxRefundFeeData *DistributionMaxRefundFee `json:"maxRefundFeeData,omitempty" xml:"maxRefundFeeData,omitempty"`
 	OrderLineId      *string                   `json:"orderLineId,omitempty" xml:"orderLineId,omitempty"`
 	RefundReasonList []*RefundReason           `json:"refundReasonList,omitempty" xml:"refundReasonList,omitempty" type:"Repeated"`
@@ -2008,11 +2030,6 @@ func (s RefundRenderResult) GoString() string {
 
 func (s *RefundRenderResult) SetBizClaimType(v int32) *RefundRenderResult {
 	s.BizClaimType = &v
-	return s
-}
-
-func (s *RefundRenderResult) SetMainOrderRefund(v bool) *RefundRenderResult {
-	s.MainOrderRefund = &v
 	return s
 }
 
@@ -2045,7 +2062,6 @@ type RefundResult struct {
 	DisputeEndTime               *string        `json:"disputeEndTime,omitempty" xml:"disputeEndTime,omitempty"`
 	DisputeId                    *string        `json:"disputeId,omitempty" xml:"disputeId,omitempty"`
 	DisputeStatus                *int32         `json:"disputeStatus,omitempty" xml:"disputeStatus,omitempty"`
-	DisputeType                  *int32         `json:"disputeType,omitempty" xml:"disputeType,omitempty"`
 	OrderId                      *string        `json:"orderId,omitempty" xml:"orderId,omitempty"`
 	OrderLineId                  *string        `json:"orderLineId,omitempty" xml:"orderLineId,omitempty"`
 	OrderLogisticsStatus         *int32         `json:"orderLogisticsStatus,omitempty" xml:"orderLogisticsStatus,omitempty"`
@@ -2106,11 +2122,6 @@ func (s *RefundResult) SetDisputeId(v string) *RefundResult {
 
 func (s *RefundResult) SetDisputeStatus(v int32) *RefundResult {
 	s.DisputeStatus = &v
-	return s
-}
-
-func (s *RefundResult) SetDisputeType(v int32) *RefundResult {
-	s.DisputeType = &v
 	return s
 }
 
@@ -2180,14 +2191,16 @@ func (s *RefundResult) SetSellerRefuseReason(v string) *RefundResult {
 }
 
 type Shop struct {
-	ChannelSupplierId *string `json:"channelSupplierId,omitempty" xml:"channelSupplierId,omitempty"`
-	DistributorId     *string `json:"distributorId,omitempty" xml:"distributorId,omitempty"`
-	EndDate           *string `json:"endDate,omitempty" xml:"endDate,omitempty"`
-	ShopId            *string `json:"shopId,omitempty" xml:"shopId,omitempty"`
-	ShopName          *string `json:"shopName,omitempty" xml:"shopName,omitempty"`
-	ShopType          *string `json:"shopType,omitempty" xml:"shopType,omitempty"`
-	StartDate         *string `json:"startDate,omitempty" xml:"startDate,omitempty"`
-	Status            *string `json:"status,omitempty" xml:"status,omitempty"`
+	CooperationShops []*CooperationShop `json:"cooperationShops,omitempty" xml:"cooperationShops,omitempty" type:"Repeated"`
+	DistributorId    *string            `json:"distributorId,omitempty" xml:"distributorId,omitempty"`
+	EndDate          *string            `json:"endDate,omitempty" xml:"endDate,omitempty"`
+	PurchaserId      *string            `json:"purchaserId,omitempty" xml:"purchaserId,omitempty"`
+	RequestId        *string            `json:"requestId,omitempty" xml:"requestId,omitempty"`
+	ShopId           *string            `json:"shopId,omitempty" xml:"shopId,omitempty"`
+	ShopName         *string            `json:"shopName,omitempty" xml:"shopName,omitempty"`
+	ShopType         *string            `json:"shopType,omitempty" xml:"shopType,omitempty"`
+	StartDate        *string            `json:"startDate,omitempty" xml:"startDate,omitempty"`
+	Status           *string            `json:"status,omitempty" xml:"status,omitempty"`
 }
 
 func (s Shop) String() string {
@@ -2198,8 +2211,8 @@ func (s Shop) GoString() string {
 	return s.String()
 }
 
-func (s *Shop) SetChannelSupplierId(v string) *Shop {
-	s.ChannelSupplierId = &v
+func (s *Shop) SetCooperationShops(v []*CooperationShop) *Shop {
+	s.CooperationShops = v
 	return s
 }
 
@@ -2210,6 +2223,16 @@ func (s *Shop) SetDistributorId(v string) *Shop {
 
 func (s *Shop) SetEndDate(v string) *Shop {
 	s.EndDate = &v
+	return s
+}
+
+func (s *Shop) SetPurchaserId(v string) *Shop {
+	s.PurchaserId = &v
+	return s
+}
+
+func (s *Shop) SetRequestId(v string) *Shop {
+	s.RequestId = &v
 	return s
 }
 
@@ -2239,13 +2262,14 @@ func (s *Shop) SetStatus(v string) *Shop {
 }
 
 type ShopPageDataResult struct {
-	ChannelSupplierId *string `json:"channelSupplierId,omitempty" xml:"channelSupplierId,omitempty"`
-	EndDate           *string `json:"endDate,omitempty" xml:"endDate,omitempty"`
-	ShopId            *string `json:"shopId,omitempty" xml:"shopId,omitempty"`
-	ShopName          *string `json:"shopName,omitempty" xml:"shopName,omitempty"`
-	ShopType          *string `json:"shopType,omitempty" xml:"shopType,omitempty"`
-	StartDate         *string `json:"startDate,omitempty" xml:"startDate,omitempty"`
-	Status            *string `json:"status,omitempty" xml:"status,omitempty"`
+	CooperationShops []*CooperationShop `json:"cooperationShops,omitempty" xml:"cooperationShops,omitempty" type:"Repeated"`
+	EndDate          *string            `json:"endDate,omitempty" xml:"endDate,omitempty"`
+	PurchaserId      *string            `json:"purchaserId,omitempty" xml:"purchaserId,omitempty"`
+	ShopId           *string            `json:"shopId,omitempty" xml:"shopId,omitempty"`
+	ShopName         *string            `json:"shopName,omitempty" xml:"shopName,omitempty"`
+	ShopType         *string            `json:"shopType,omitempty" xml:"shopType,omitempty"`
+	StartDate        *string            `json:"startDate,omitempty" xml:"startDate,omitempty"`
+	Status           *string            `json:"status,omitempty" xml:"status,omitempty"`
 }
 
 func (s ShopPageDataResult) String() string {
@@ -2256,13 +2280,18 @@ func (s ShopPageDataResult) GoString() string {
 	return s.String()
 }
 
-func (s *ShopPageDataResult) SetChannelSupplierId(v string) *ShopPageDataResult {
-	s.ChannelSupplierId = &v
+func (s *ShopPageDataResult) SetCooperationShops(v []*CooperationShop) *ShopPageDataResult {
+	s.CooperationShops = v
 	return s
 }
 
 func (s *ShopPageDataResult) SetEndDate(v string) *ShopPageDataResult {
 	s.EndDate = &v
+	return s
+}
+
+func (s *ShopPageDataResult) SetPurchaserId(v string) *ShopPageDataResult {
+	s.PurchaserId = &v
 	return s
 }
 
@@ -2522,9 +2551,9 @@ func (s *SkuSaleInfo) SetTitle(v string) *SkuSaleInfo {
 }
 
 type SkuSaleInfoListQuery struct {
-	DistributorShopId *string          `json:"distributorShopId,omitempty" xml:"distributorShopId,omitempty"`
-	DivisionCode      *string          `json:"divisionCode,omitempty" xml:"divisionCode,omitempty"`
-	SkuQueryParams    []*SkuQueryParam `json:"skuQueryParams,omitempty" xml:"skuQueryParams,omitempty" type:"Repeated"`
+	DivisionCode   *string          `json:"divisionCode,omitempty" xml:"divisionCode,omitempty"`
+	PurchaserId    *string          `json:"purchaserId,omitempty" xml:"purchaserId,omitempty"`
+	SkuQueryParams []*SkuQueryParam `json:"skuQueryParams,omitempty" xml:"skuQueryParams,omitempty" type:"Repeated"`
 }
 
 func (s SkuSaleInfoListQuery) String() string {
@@ -2535,13 +2564,13 @@ func (s SkuSaleInfoListQuery) GoString() string {
 	return s.String()
 }
 
-func (s *SkuSaleInfoListQuery) SetDistributorShopId(v string) *SkuSaleInfoListQuery {
-	s.DistributorShopId = &v
+func (s *SkuSaleInfoListQuery) SetDivisionCode(v string) *SkuSaleInfoListQuery {
+	s.DivisionCode = &v
 	return s
 }
 
-func (s *SkuSaleInfoListQuery) SetDivisionCode(v string) *SkuSaleInfoListQuery {
-	s.DivisionCode = &v
+func (s *SkuSaleInfoListQuery) SetPurchaserId(v string) *SkuSaleInfoListQuery {
+	s.PurchaserId = &v
 	return s
 }
 
@@ -2850,110 +2879,6 @@ func (s *GetOrderResponse) SetBody(v *OrderResult) *GetOrderResponse {
 	return s
 }
 
-type GetProductRequest struct {
-	DistributorShopId *string `json:"distributorShopId,omitempty" xml:"distributorShopId,omitempty"`
-	DivisionCode      *string `json:"divisionCode,omitempty" xml:"divisionCode,omitempty"`
-}
-
-func (s GetProductRequest) String() string {
-	return tea.Prettify(s)
-}
-
-func (s GetProductRequest) GoString() string {
-	return s.String()
-}
-
-func (s *GetProductRequest) SetDistributorShopId(v string) *GetProductRequest {
-	s.DistributorShopId = &v
-	return s
-}
-
-func (s *GetProductRequest) SetDivisionCode(v string) *GetProductRequest {
-	s.DivisionCode = &v
-	return s
-}
-
-type GetProductResponse struct {
-	Headers    map[string]*string `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32             `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *Product           `json:"body,omitempty" xml:"body,omitempty" require:"true"`
-}
-
-func (s GetProductResponse) String() string {
-	return tea.Prettify(s)
-}
-
-func (s GetProductResponse) GoString() string {
-	return s.String()
-}
-
-func (s *GetProductResponse) SetHeaders(v map[string]*string) *GetProductResponse {
-	s.Headers = v
-	return s
-}
-
-func (s *GetProductResponse) SetStatusCode(v int32) *GetProductResponse {
-	s.StatusCode = &v
-	return s
-}
-
-func (s *GetProductResponse) SetBody(v *Product) *GetProductResponse {
-	s.Body = v
-	return s
-}
-
-type GetProductSaleInfoRequest struct {
-	DistributorShopId *string `json:"distributorShopId,omitempty" xml:"distributorShopId,omitempty"`
-	DivisionCode      *string `json:"divisionCode,omitempty" xml:"divisionCode,omitempty"`
-}
-
-func (s GetProductSaleInfoRequest) String() string {
-	return tea.Prettify(s)
-}
-
-func (s GetProductSaleInfoRequest) GoString() string {
-	return s.String()
-}
-
-func (s *GetProductSaleInfoRequest) SetDistributorShopId(v string) *GetProductSaleInfoRequest {
-	s.DistributorShopId = &v
-	return s
-}
-
-func (s *GetProductSaleInfoRequest) SetDivisionCode(v string) *GetProductSaleInfoRequest {
-	s.DivisionCode = &v
-	return s
-}
-
-type GetProductSaleInfoResponse struct {
-	Headers    map[string]*string `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32             `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *ProductSaleInfo   `json:"body,omitempty" xml:"body,omitempty" require:"true"`
-}
-
-func (s GetProductSaleInfoResponse) String() string {
-	return tea.Prettify(s)
-}
-
-func (s GetProductSaleInfoResponse) GoString() string {
-	return s.String()
-}
-
-func (s *GetProductSaleInfoResponse) SetHeaders(v map[string]*string) *GetProductSaleInfoResponse {
-	s.Headers = v
-	return s
-}
-
-func (s *GetProductSaleInfoResponse) SetStatusCode(v int32) *GetProductSaleInfoResponse {
-	s.StatusCode = &v
-	return s
-}
-
-func (s *GetProductSaleInfoResponse) SetBody(v *ProductSaleInfo) *GetProductSaleInfoResponse {
-	s.Body = v
-	return s
-}
-
 type GetPurchaseOrderStatusResponse struct {
 	Headers    map[string]*string         `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
 	StatusCode *int32                     `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
@@ -2979,6 +2904,35 @@ func (s *GetPurchaseOrderStatusResponse) SetStatusCode(v int32) *GetPurchaseOrde
 }
 
 func (s *GetPurchaseOrderStatusResponse) SetBody(v *PurchaseOrderStatusResult) *GetPurchaseOrderStatusResponse {
+	s.Body = v
+	return s
+}
+
+type GetPurchaserShopResponse struct {
+	Headers    map[string]*string `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32             `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *Shop              `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s GetPurchaserShopResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetPurchaserShopResponse) GoString() string {
+	return s.String()
+}
+
+func (s *GetPurchaserShopResponse) SetHeaders(v map[string]*string) *GetPurchaserShopResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *GetPurchaserShopResponse) SetStatusCode(v int32) *GetPurchaserShopResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *GetPurchaserShopResponse) SetBody(v *Shop) *GetPurchaserShopResponse {
 	s.Body = v
 	return s
 }
@@ -3012,31 +2966,106 @@ func (s *GetRefundOrderResponse) SetBody(v *RefundResult) *GetRefundOrderRespons
 	return s
 }
 
-type GetShopResponse struct {
-	Headers    map[string]*string `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32             `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *Shop              `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+type GetSelectionProductRequest struct {
+	DivisionCode *string `json:"divisionCode,omitempty" xml:"divisionCode,omitempty"`
+	PurchaserId  *string `json:"purchaserId,omitempty" xml:"purchaserId,omitempty"`
 }
 
-func (s GetShopResponse) String() string {
+func (s GetSelectionProductRequest) String() string {
 	return tea.Prettify(s)
 }
 
-func (s GetShopResponse) GoString() string {
+func (s GetSelectionProductRequest) GoString() string {
 	return s.String()
 }
 
-func (s *GetShopResponse) SetHeaders(v map[string]*string) *GetShopResponse {
+func (s *GetSelectionProductRequest) SetDivisionCode(v string) *GetSelectionProductRequest {
+	s.DivisionCode = &v
+	return s
+}
+
+func (s *GetSelectionProductRequest) SetPurchaserId(v string) *GetSelectionProductRequest {
+	s.PurchaserId = &v
+	return s
+}
+
+type GetSelectionProductResponse struct {
+	Headers    map[string]*string `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32             `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *Product           `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s GetSelectionProductResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetSelectionProductResponse) GoString() string {
+	return s.String()
+}
+
+func (s *GetSelectionProductResponse) SetHeaders(v map[string]*string) *GetSelectionProductResponse {
 	s.Headers = v
 	return s
 }
 
-func (s *GetShopResponse) SetStatusCode(v int32) *GetShopResponse {
+func (s *GetSelectionProductResponse) SetStatusCode(v int32) *GetSelectionProductResponse {
 	s.StatusCode = &v
 	return s
 }
 
-func (s *GetShopResponse) SetBody(v *Shop) *GetShopResponse {
+func (s *GetSelectionProductResponse) SetBody(v *Product) *GetSelectionProductResponse {
+	s.Body = v
+	return s
+}
+
+type GetSelectionProductSaleInfoRequest struct {
+	DivisionCode *string `json:"divisionCode,omitempty" xml:"divisionCode,omitempty"`
+	PurchaserId  *string `json:"purchaserId,omitempty" xml:"purchaserId,omitempty"`
+}
+
+func (s GetSelectionProductSaleInfoRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetSelectionProductSaleInfoRequest) GoString() string {
+	return s.String()
+}
+
+func (s *GetSelectionProductSaleInfoRequest) SetDivisionCode(v string) *GetSelectionProductSaleInfoRequest {
+	s.DivisionCode = &v
+	return s
+}
+
+func (s *GetSelectionProductSaleInfoRequest) SetPurchaserId(v string) *GetSelectionProductSaleInfoRequest {
+	s.PurchaserId = &v
+	return s
+}
+
+type GetSelectionProductSaleInfoResponse struct {
+	Headers    map[string]*string `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32             `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *ProductSaleInfo   `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s GetSelectionProductSaleInfoResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetSelectionProductSaleInfoResponse) GoString() string {
+	return s.String()
+}
+
+func (s *GetSelectionProductSaleInfoResponse) SetHeaders(v map[string]*string) *GetSelectionProductSaleInfoResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *GetSelectionProductSaleInfoResponse) SetStatusCode(v int32) *GetSelectionProductSaleInfoResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *GetSelectionProductSaleInfoResponse) SetBody(v *ProductSaleInfo) *GetSelectionProductSaleInfoResponse {
 	s.Body = v
 	return s
 }
@@ -3070,280 +3099,204 @@ func (s *ListLogisticsOrdersResponse) SetBody(v *LogisticsOrderListResult) *List
 	return s
 }
 
-type ListProductGeneralBillsRequest struct {
-	Body *GeneralBillPageQuery `json:"body,omitempty" xml:"body,omitempty"`
+type ListPurchaserShopsRequest struct {
+	PageNumber *int32 `json:"pageNumber,omitempty" xml:"pageNumber,omitempty"`
+	PageSize   *int32 `json:"pageSize,omitempty" xml:"pageSize,omitempty"`
 }
 
-func (s ListProductGeneralBillsRequest) String() string {
+func (s ListPurchaserShopsRequest) String() string {
 	return tea.Prettify(s)
 }
 
-func (s ListProductGeneralBillsRequest) GoString() string {
+func (s ListPurchaserShopsRequest) GoString() string {
 	return s.String()
 }
 
-func (s *ListProductGeneralBillsRequest) SetBody(v *GeneralBillPageQuery) *ListProductGeneralBillsRequest {
-	s.Body = v
-	return s
-}
-
-type ListProductGeneralBillsResponse struct {
-	Headers    map[string]*string     `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                 `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *GeneralBillPageResult `json:"body,omitempty" xml:"body,omitempty" require:"true"`
-}
-
-func (s ListProductGeneralBillsResponse) String() string {
-	return tea.Prettify(s)
-}
-
-func (s ListProductGeneralBillsResponse) GoString() string {
-	return s.String()
-}
-
-func (s *ListProductGeneralBillsResponse) SetHeaders(v map[string]*string) *ListProductGeneralBillsResponse {
-	s.Headers = v
-	return s
-}
-
-func (s *ListProductGeneralBillsResponse) SetStatusCode(v int32) *ListProductGeneralBillsResponse {
-	s.StatusCode = &v
-	return s
-}
-
-func (s *ListProductGeneralBillsResponse) SetBody(v *GeneralBillPageResult) *ListProductGeneralBillsResponse {
-	s.Body = v
-	return s
-}
-
-type ListProductSaleInfosRequest struct {
-	Body *ProductSaleInfoListQuery `json:"body,omitempty" xml:"body,omitempty"`
-}
-
-func (s ListProductSaleInfosRequest) String() string {
-	return tea.Prettify(s)
-}
-
-func (s ListProductSaleInfosRequest) GoString() string {
-	return s.String()
-}
-
-func (s *ListProductSaleInfosRequest) SetBody(v *ProductSaleInfoListQuery) *ListProductSaleInfosRequest {
-	s.Body = v
-	return s
-}
-
-type ListProductSaleInfosResponse struct {
-	Headers    map[string]*string         `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                     `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *ProductSaleInfoListResult `json:"body,omitempty" xml:"body,omitempty" require:"true"`
-}
-
-func (s ListProductSaleInfosResponse) String() string {
-	return tea.Prettify(s)
-}
-
-func (s ListProductSaleInfosResponse) GoString() string {
-	return s.String()
-}
-
-func (s *ListProductSaleInfosResponse) SetHeaders(v map[string]*string) *ListProductSaleInfosResponse {
-	s.Headers = v
-	return s
-}
-
-func (s *ListProductSaleInfosResponse) SetStatusCode(v int32) *ListProductSaleInfosResponse {
-	s.StatusCode = &v
-	return s
-}
-
-func (s *ListProductSaleInfosResponse) SetBody(v *ProductSaleInfoListResult) *ListProductSaleInfosResponse {
-	s.Body = v
-	return s
-}
-
-type ListProductsRequest struct {
-	DistributorShopId *string `json:"distributorShopId,omitempty" xml:"distributorShopId,omitempty"`
-	PageNumber        *int32  `json:"pageNumber,omitempty" xml:"pageNumber,omitempty"`
-	PageSize          *int32  `json:"pageSize,omitempty" xml:"pageSize,omitempty"`
-}
-
-func (s ListProductsRequest) String() string {
-	return tea.Prettify(s)
-}
-
-func (s ListProductsRequest) GoString() string {
-	return s.String()
-}
-
-func (s *ListProductsRequest) SetDistributorShopId(v string) *ListProductsRequest {
-	s.DistributorShopId = &v
-	return s
-}
-
-func (s *ListProductsRequest) SetPageNumber(v int32) *ListProductsRequest {
+func (s *ListPurchaserShopsRequest) SetPageNumber(v int32) *ListPurchaserShopsRequest {
 	s.PageNumber = &v
 	return s
 }
 
-func (s *ListProductsRequest) SetPageSize(v int32) *ListProductsRequest {
+func (s *ListPurchaserShopsRequest) SetPageSize(v int32) *ListPurchaserShopsRequest {
 	s.PageSize = &v
 	return s
 }
 
-type ListProductsResponse struct {
-	Headers    map[string]*string `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32             `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *ProductPageResult `json:"body,omitempty" xml:"body,omitempty" require:"true"`
-}
-
-func (s ListProductsResponse) String() string {
-	return tea.Prettify(s)
-}
-
-func (s ListProductsResponse) GoString() string {
-	return s.String()
-}
-
-func (s *ListProductsResponse) SetHeaders(v map[string]*string) *ListProductsResponse {
-	s.Headers = v
-	return s
-}
-
-func (s *ListProductsResponse) SetStatusCode(v int32) *ListProductsResponse {
-	s.StatusCode = &v
-	return s
-}
-
-func (s *ListProductsResponse) SetBody(v *ProductPageResult) *ListProductsResponse {
-	s.Body = v
-	return s
-}
-
-type ListShopsRequest struct {
-	ChannelSupplierId *string `json:"channelSupplierId,omitempty" xml:"channelSupplierId,omitempty"`
-	EndDate           *string `json:"endDate,omitempty" xml:"endDate,omitempty"`
-	PageNumber        *int32  `json:"pageNumber,omitempty" xml:"pageNumber,omitempty"`
-	PageSize          *int32  `json:"pageSize,omitempty" xml:"pageSize,omitempty"`
-	ShopId            *string `json:"shopId,omitempty" xml:"shopId,omitempty"`
-	ShopName          *string `json:"shopName,omitempty" xml:"shopName,omitempty"`
-	StartDate         *string `json:"startDate,omitempty" xml:"startDate,omitempty"`
-}
-
-func (s ListShopsRequest) String() string {
-	return tea.Prettify(s)
-}
-
-func (s ListShopsRequest) GoString() string {
-	return s.String()
-}
-
-func (s *ListShopsRequest) SetChannelSupplierId(v string) *ListShopsRequest {
-	s.ChannelSupplierId = &v
-	return s
-}
-
-func (s *ListShopsRequest) SetEndDate(v string) *ListShopsRequest {
-	s.EndDate = &v
-	return s
-}
-
-func (s *ListShopsRequest) SetPageNumber(v int32) *ListShopsRequest {
-	s.PageNumber = &v
-	return s
-}
-
-func (s *ListShopsRequest) SetPageSize(v int32) *ListShopsRequest {
-	s.PageSize = &v
-	return s
-}
-
-func (s *ListShopsRequest) SetShopId(v string) *ListShopsRequest {
-	s.ShopId = &v
-	return s
-}
-
-func (s *ListShopsRequest) SetShopName(v string) *ListShopsRequest {
-	s.ShopName = &v
-	return s
-}
-
-func (s *ListShopsRequest) SetStartDate(v string) *ListShopsRequest {
-	s.StartDate = &v
-	return s
-}
-
-type ListShopsResponse struct {
+type ListPurchaserShopsResponse struct {
 	Headers    map[string]*string `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
 	StatusCode *int32             `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
 	Body       *ShopPageResult    `json:"body,omitempty" xml:"body,omitempty" require:"true"`
 }
 
-func (s ListShopsResponse) String() string {
+func (s ListPurchaserShopsResponse) String() string {
 	return tea.Prettify(s)
 }
 
-func (s ListShopsResponse) GoString() string {
+func (s ListPurchaserShopsResponse) GoString() string {
 	return s.String()
 }
 
-func (s *ListShopsResponse) SetHeaders(v map[string]*string) *ListShopsResponse {
+func (s *ListPurchaserShopsResponse) SetHeaders(v map[string]*string) *ListPurchaserShopsResponse {
 	s.Headers = v
 	return s
 }
 
-func (s *ListShopsResponse) SetStatusCode(v int32) *ListShopsResponse {
+func (s *ListPurchaserShopsResponse) SetStatusCode(v int32) *ListPurchaserShopsResponse {
 	s.StatusCode = &v
 	return s
 }
 
-func (s *ListShopsResponse) SetBody(v *ShopPageResult) *ListShopsResponse {
+func (s *ListPurchaserShopsResponse) SetBody(v *ShopPageResult) *ListPurchaserShopsResponse {
 	s.Body = v
 	return s
 }
 
-type ListSkuSaleInfosRequest struct {
-	Body *SkuSaleInfoListQuery `json:"body,omitempty" xml:"body,omitempty"`
+type ListSelectionProductSaleInfosRequest struct {
+	Body *ProductSaleInfoListQuery `json:"body,omitempty" xml:"body,omitempty"`
 }
 
-func (s ListSkuSaleInfosRequest) String() string {
+func (s ListSelectionProductSaleInfosRequest) String() string {
 	return tea.Prettify(s)
 }
 
-func (s ListSkuSaleInfosRequest) GoString() string {
+func (s ListSelectionProductSaleInfosRequest) GoString() string {
 	return s.String()
 }
 
-func (s *ListSkuSaleInfosRequest) SetBody(v *SkuSaleInfoListQuery) *ListSkuSaleInfosRequest {
+func (s *ListSelectionProductSaleInfosRequest) SetBody(v *ProductSaleInfoListQuery) *ListSelectionProductSaleInfosRequest {
 	s.Body = v
 	return s
 }
 
-type ListSkuSaleInfosResponse struct {
+type ListSelectionProductSaleInfosResponse struct {
+	Headers    map[string]*string         `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                     `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *ProductSaleInfoListResult `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s ListSelectionProductSaleInfosResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListSelectionProductSaleInfosResponse) GoString() string {
+	return s.String()
+}
+
+func (s *ListSelectionProductSaleInfosResponse) SetHeaders(v map[string]*string) *ListSelectionProductSaleInfosResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *ListSelectionProductSaleInfosResponse) SetStatusCode(v int32) *ListSelectionProductSaleInfosResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *ListSelectionProductSaleInfosResponse) SetBody(v *ProductSaleInfoListResult) *ListSelectionProductSaleInfosResponse {
+	s.Body = v
+	return s
+}
+
+type ListSelectionProductsRequest struct {
+	PageNumber  *int32  `json:"pageNumber,omitempty" xml:"pageNumber,omitempty"`
+	PageSize    *int32  `json:"pageSize,omitempty" xml:"pageSize,omitempty"`
+	PurchaserId *string `json:"purchaserId,omitempty" xml:"purchaserId,omitempty"`
+}
+
+func (s ListSelectionProductsRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListSelectionProductsRequest) GoString() string {
+	return s.String()
+}
+
+func (s *ListSelectionProductsRequest) SetPageNumber(v int32) *ListSelectionProductsRequest {
+	s.PageNumber = &v
+	return s
+}
+
+func (s *ListSelectionProductsRequest) SetPageSize(v int32) *ListSelectionProductsRequest {
+	s.PageSize = &v
+	return s
+}
+
+func (s *ListSelectionProductsRequest) SetPurchaserId(v string) *ListSelectionProductsRequest {
+	s.PurchaserId = &v
+	return s
+}
+
+type ListSelectionProductsResponse struct {
+	Headers    map[string]*string `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32             `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *ProductPageResult `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s ListSelectionProductsResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListSelectionProductsResponse) GoString() string {
+	return s.String()
+}
+
+func (s *ListSelectionProductsResponse) SetHeaders(v map[string]*string) *ListSelectionProductsResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *ListSelectionProductsResponse) SetStatusCode(v int32) *ListSelectionProductsResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *ListSelectionProductsResponse) SetBody(v *ProductPageResult) *ListSelectionProductsResponse {
+	s.Body = v
+	return s
+}
+
+type ListSelectionSkuSaleInfosRequest struct {
+	Body *SkuSaleInfoListQuery `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s ListSelectionSkuSaleInfosRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListSelectionSkuSaleInfosRequest) GoString() string {
+	return s.String()
+}
+
+func (s *ListSelectionSkuSaleInfosRequest) SetBody(v *SkuSaleInfoListQuery) *ListSelectionSkuSaleInfosRequest {
+	s.Body = v
+	return s
+}
+
+type ListSelectionSkuSaleInfosResponse struct {
 	Headers    map[string]*string     `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
 	StatusCode *int32                 `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
 	Body       *SkuSaleInfoListResult `json:"body,omitempty" xml:"body,omitempty" require:"true"`
 }
 
-func (s ListSkuSaleInfosResponse) String() string {
+func (s ListSelectionSkuSaleInfosResponse) String() string {
 	return tea.Prettify(s)
 }
 
-func (s ListSkuSaleInfosResponse) GoString() string {
+func (s ListSelectionSkuSaleInfosResponse) GoString() string {
 	return s.String()
 }
 
-func (s *ListSkuSaleInfosResponse) SetHeaders(v map[string]*string) *ListSkuSaleInfosResponse {
+func (s *ListSelectionSkuSaleInfosResponse) SetHeaders(v map[string]*string) *ListSelectionSkuSaleInfosResponse {
 	s.Headers = v
 	return s
 }
 
-func (s *ListSkuSaleInfosResponse) SetStatusCode(v int32) *ListSkuSaleInfosResponse {
+func (s *ListSelectionSkuSaleInfosResponse) SetStatusCode(v int32) *ListSelectionSkuSaleInfosResponse {
 	s.StatusCode = &v
 	return s
 }
 
-func (s *ListSkuSaleInfosResponse) SetBody(v *SkuSaleInfoListResult) *ListSkuSaleInfosResponse {
+func (s *ListSelectionSkuSaleInfosResponse) SetBody(v *SkuSaleInfoListResult) *ListSelectionSkuSaleInfosResponse {
 	s.Body = v
 	return s
 }
@@ -3643,7 +3596,7 @@ func (client *Client) CancelRefundOrderWithOptions(disputeId *string, headers ma
 		Action:      tea.String("CancelRefundOrder"),
 		Version:     tea.String("2023-09-30"),
 		Protocol:    tea.String("HTTPS"),
-		Pathname:    tea.String("/opensaas-s2b/opensaas-s2b-biz-trade/v1/refunds/" + tea.StringValue(openapiutil.GetEncodeParam(disputeId)) + "/commands/cancel"),
+		Pathname:    tea.String("/opensaas-s2b/opensaas-s2b-biz-trade/v2/refunds/" + tea.StringValue(openapiutil.GetEncodeParam(disputeId)) + "/commands/cancel"),
 		Method:      tea.String("POST"),
 		AuthType:    tea.String("AK"),
 		Style:       tea.String("ROA"),
@@ -3684,7 +3637,7 @@ func (client *Client) ConfirmDisburseWithOptions(request *ConfirmDisburseRequest
 		Action:      tea.String("ConfirmDisburse"),
 		Version:     tea.String("2023-09-30"),
 		Protocol:    tea.String("HTTPS"),
-		Pathname:    tea.String("/opensaas-s2b/opensaas-s2b-biz-trade/v1/orders/commands/confirmDisburse"),
+		Pathname:    tea.String("/opensaas-s2b/opensaas-s2b-biz-trade/v2/orders/commands/confirmDisburse"),
 		Method:      tea.String("POST"),
 		AuthType:    tea.String("AK"),
 		Style:       tea.String("ROA"),
@@ -3725,7 +3678,7 @@ func (client *Client) CreateGoodsShippingNoticeWithOptions(request *CreateGoodsS
 		Action:      tea.String("CreateGoodsShippingNotice"),
 		Version:     tea.String("2023-09-30"),
 		Protocol:    tea.String("HTTPS"),
-		Pathname:    tea.String("/opensaas-s2b/opensaas-s2b-biz-trade/v1/refunds/command/createGoodsShippingNotice"),
+		Pathname:    tea.String("/opensaas-s2b/opensaas-s2b-biz-trade/v2/refunds/command/createGoodsShippingNotice"),
 		Method:      tea.String("POST"),
 		AuthType:    tea.String("AK"),
 		Style:       tea.String("ROA"),
@@ -3766,7 +3719,7 @@ func (client *Client) CreatePurchaseOrderWithOptions(request *CreatePurchaseOrde
 		Action:      tea.String("CreatePurchaseOrder"),
 		Version:     tea.String("2023-09-30"),
 		Protocol:    tea.String("HTTPS"),
-		Pathname:    tea.String("/opensaas-s2b/opensaas-s2b-biz-trade/v1/purchaseOrders"),
+		Pathname:    tea.String("/opensaas-s2b/opensaas-s2b-biz-trade/v2/purchaseOrders"),
 		Method:      tea.String("POST"),
 		AuthType:    tea.String("AK"),
 		Style:       tea.String("ROA"),
@@ -3807,7 +3760,7 @@ func (client *Client) CreateRefundOrderWithOptions(request *CreateRefundOrderReq
 		Action:      tea.String("CreateRefundOrder"),
 		Version:     tea.String("2023-09-30"),
 		Protocol:    tea.String("HTTPS"),
-		Pathname:    tea.String("/opensaas-s2b/opensaas-s2b-biz-trade/v1/refunds"),
+		Pathname:    tea.String("/opensaas-s2b/opensaas-s2b-biz-trade/v2/refunds"),
 		Method:      tea.String("POST"),
 		AuthType:    tea.String("AK"),
 		Style:       tea.String("ROA"),
@@ -3843,7 +3796,7 @@ func (client *Client) GetOrderWithOptions(orderId *string, headers map[string]*s
 		Action:      tea.String("GetOrder"),
 		Version:     tea.String("2023-09-30"),
 		Protocol:    tea.String("HTTPS"),
-		Pathname:    tea.String("/opensaas-s2b/opensaas-s2b-biz-trade/v1/orders/" + tea.StringValue(openapiutil.GetEncodeParam(orderId))),
+		Pathname:    tea.String("/opensaas-s2b/opensaas-s2b-biz-trade/v2/orders/" + tea.StringValue(openapiutil.GetEncodeParam(orderId))),
 		Method:      tea.String("GET"),
 		AuthType:    tea.String("AK"),
 		Style:       tea.String("ROA"),
@@ -3871,106 +3824,6 @@ func (client *Client) GetOrder(orderId *string) (_result *GetOrderResponse, _err
 	return _result, _err
 }
 
-func (client *Client) GetProductWithOptions(productId *string, request *GetProductRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *GetProductResponse, _err error) {
-	_err = util.ValidateModel(request)
-	if _err != nil {
-		return _result, _err
-	}
-	query := map[string]interface{}{}
-	if !tea.BoolValue(util.IsUnset(request.DistributorShopId)) {
-		query["distributorShopId"] = request.DistributorShopId
-	}
-
-	if !tea.BoolValue(util.IsUnset(request.DivisionCode)) {
-		query["divisionCode"] = request.DivisionCode
-	}
-
-	req := &openapi.OpenApiRequest{
-		Headers: headers,
-		Query:   openapiutil.Query(query),
-	}
-	params := &openapi.Params{
-		Action:      tea.String("GetProduct"),
-		Version:     tea.String("2023-09-30"),
-		Protocol:    tea.String("HTTPS"),
-		Pathname:    tea.String("/opensaas-s2b/opensaas-s2b-biz-trade/v1/products/" + tea.StringValue(openapiutil.GetEncodeParam(productId))),
-		Method:      tea.String("GET"),
-		AuthType:    tea.String("AK"),
-		Style:       tea.String("ROA"),
-		ReqBodyType: tea.String("json"),
-		BodyType:    tea.String("json"),
-	}
-	_result = &GetProductResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
-}
-
-func (client *Client) GetProduct(productId *string, request *GetProductRequest) (_result *GetProductResponse, _err error) {
-	runtime := &util.RuntimeOptions{}
-	headers := make(map[string]*string)
-	_result = &GetProductResponse{}
-	_body, _err := client.GetProductWithOptions(productId, request, headers, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
-	return _result, _err
-}
-
-func (client *Client) GetProductSaleInfoWithOptions(productId *string, request *GetProductSaleInfoRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *GetProductSaleInfoResponse, _err error) {
-	_err = util.ValidateModel(request)
-	if _err != nil {
-		return _result, _err
-	}
-	query := map[string]interface{}{}
-	if !tea.BoolValue(util.IsUnset(request.DistributorShopId)) {
-		query["distributorShopId"] = request.DistributorShopId
-	}
-
-	if !tea.BoolValue(util.IsUnset(request.DivisionCode)) {
-		query["divisionCode"] = request.DivisionCode
-	}
-
-	req := &openapi.OpenApiRequest{
-		Headers: headers,
-		Query:   openapiutil.Query(query),
-	}
-	params := &openapi.Params{
-		Action:      tea.String("GetProductSaleInfo"),
-		Version:     tea.String("2023-09-30"),
-		Protocol:    tea.String("HTTPS"),
-		Pathname:    tea.String("/opensaas-s2b/opensaas-s2b-biz-trade/v1/products/" + tea.StringValue(openapiutil.GetEncodeParam(productId)) + "/saleInfo"),
-		Method:      tea.String("GET"),
-		AuthType:    tea.String("AK"),
-		Style:       tea.String("ROA"),
-		ReqBodyType: tea.String("json"),
-		BodyType:    tea.String("json"),
-	}
-	_result = &GetProductSaleInfoResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
-}
-
-func (client *Client) GetProductSaleInfo(productId *string, request *GetProductSaleInfoRequest) (_result *GetProductSaleInfoResponse, _err error) {
-	runtime := &util.RuntimeOptions{}
-	headers := make(map[string]*string)
-	_result = &GetProductSaleInfoResponse{}
-	_body, _err := client.GetProductSaleInfoWithOptions(productId, request, headers, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
-	return _result, _err
-}
-
 func (client *Client) GetPurchaseOrderStatusWithOptions(purchaseOrderId *string, headers map[string]*string, runtime *util.RuntimeOptions) (_result *GetPurchaseOrderStatusResponse, _err error) {
 	req := &openapi.OpenApiRequest{
 		Headers: headers,
@@ -3979,7 +3832,7 @@ func (client *Client) GetPurchaseOrderStatusWithOptions(purchaseOrderId *string,
 		Action:      tea.String("GetPurchaseOrderStatus"),
 		Version:     tea.String("2023-09-30"),
 		Protocol:    tea.String("HTTPS"),
-		Pathname:    tea.String("/opensaas-s2b/opensaas-s2b-biz-trade/v1/purchaseOrders/" + tea.StringValue(openapiutil.GetEncodeParam(purchaseOrderId)) + "/status"),
+		Pathname:    tea.String("/opensaas-s2b/opensaas-s2b-biz-trade/v2/purchaseOrders/" + tea.StringValue(openapiutil.GetEncodeParam(purchaseOrderId)) + "/status"),
 		Method:      tea.String("GET"),
 		AuthType:    tea.String("AK"),
 		Style:       tea.String("ROA"),
@@ -4007,6 +3860,42 @@ func (client *Client) GetPurchaseOrderStatus(purchaseOrderId *string) (_result *
 	return _result, _err
 }
 
+func (client *Client) GetPurchaserShopWithOptions(purchaserId *string, headers map[string]*string, runtime *util.RuntimeOptions) (_result *GetPurchaserShopResponse, _err error) {
+	req := &openapi.OpenApiRequest{
+		Headers: headers,
+	}
+	params := &openapi.Params{
+		Action:      tea.String("GetPurchaserShop"),
+		Version:     tea.String("2023-09-30"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/opensaas-s2b/opensaas-s2b-biz-trade/v2/purchaserShops/" + tea.StringValue(openapiutil.GetEncodeParam(purchaserId))),
+		Method:      tea.String("GET"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("ROA"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &GetPurchaserShopResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) GetPurchaserShop(purchaserId *string) (_result *GetPurchaserShopResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	headers := make(map[string]*string)
+	_result = &GetPurchaserShopResponse{}
+	_body, _err := client.GetPurchaserShopWithOptions(purchaserId, headers, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
 func (client *Client) GetRefundOrderWithOptions(disputeId *string, headers map[string]*string, runtime *util.RuntimeOptions) (_result *GetRefundOrderResponse, _err error) {
 	req := &openapi.OpenApiRequest{
 		Headers: headers,
@@ -4015,7 +3904,7 @@ func (client *Client) GetRefundOrderWithOptions(disputeId *string, headers map[s
 		Action:      tea.String("GetRefundOrder"),
 		Version:     tea.String("2023-09-30"),
 		Protocol:    tea.String("HTTPS"),
-		Pathname:    tea.String("/opensaas-s2b/opensaas-s2b-biz-trade/v1/refunds/" + tea.StringValue(openapiutil.GetEncodeParam(disputeId))),
+		Pathname:    tea.String("/opensaas-s2b/opensaas-s2b-biz-trade/v2/refunds/" + tea.StringValue(openapiutil.GetEncodeParam(disputeId))),
 		Method:      tea.String("GET"),
 		AuthType:    tea.String("AK"),
 		Style:       tea.String("ROA"),
@@ -4043,22 +3932,36 @@ func (client *Client) GetRefundOrder(disputeId *string) (_result *GetRefundOrder
 	return _result, _err
 }
 
-func (client *Client) GetShopWithOptions(shopId *string, headers map[string]*string, runtime *util.RuntimeOptions) (_result *GetShopResponse, _err error) {
+func (client *Client) GetSelectionProductWithOptions(productId *string, request *GetSelectionProductRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *GetSelectionProductResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.DivisionCode)) {
+		query["divisionCode"] = request.DivisionCode
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.PurchaserId)) {
+		query["purchaserId"] = request.PurchaserId
+	}
+
 	req := &openapi.OpenApiRequest{
 		Headers: headers,
+		Query:   openapiutil.Query(query),
 	}
 	params := &openapi.Params{
-		Action:      tea.String("GetShop"),
+		Action:      tea.String("GetSelectionProduct"),
 		Version:     tea.String("2023-09-30"),
 		Protocol:    tea.String("HTTPS"),
-		Pathname:    tea.String("/opensaas-s2b/opensaas-s2b-biz-trade/v1/shops/" + tea.StringValue(openapiutil.GetEncodeParam(shopId))),
+		Pathname:    tea.String("/opensaas-s2b/opensaas-s2b-biz-trade/v2/selectionPool/products/" + tea.StringValue(openapiutil.GetEncodeParam(productId))),
 		Method:      tea.String("GET"),
 		AuthType:    tea.String("AK"),
 		Style:       tea.String("ROA"),
 		ReqBodyType: tea.String("json"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &GetShopResponse{}
+	_result = &GetSelectionProductResponse{}
 	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
@@ -4067,11 +3970,61 @@ func (client *Client) GetShopWithOptions(shopId *string, headers map[string]*str
 	return _result, _err
 }
 
-func (client *Client) GetShop(shopId *string) (_result *GetShopResponse, _err error) {
+func (client *Client) GetSelectionProduct(productId *string, request *GetSelectionProductRequest) (_result *GetSelectionProductResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
-	_result = &GetShopResponse{}
-	_body, _err := client.GetShopWithOptions(shopId, headers, runtime)
+	_result = &GetSelectionProductResponse{}
+	_body, _err := client.GetSelectionProductWithOptions(productId, request, headers, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) GetSelectionProductSaleInfoWithOptions(productId *string, request *GetSelectionProductSaleInfoRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *GetSelectionProductSaleInfoResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.DivisionCode)) {
+		query["divisionCode"] = request.DivisionCode
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.PurchaserId)) {
+		query["purchaserId"] = request.PurchaserId
+	}
+
+	req := &openapi.OpenApiRequest{
+		Headers: headers,
+		Query:   openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("GetSelectionProductSaleInfo"),
+		Version:     tea.String("2023-09-30"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/opensaas-s2b/opensaas-s2b-biz-trade/v2/selectionPool/products/" + tea.StringValue(openapiutil.GetEncodeParam(productId)) + "/saleInfo"),
+		Method:      tea.String("GET"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("ROA"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &GetSelectionProductSaleInfoResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) GetSelectionProductSaleInfo(productId *string, request *GetSelectionProductSaleInfoRequest) (_result *GetSelectionProductSaleInfoResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	headers := make(map[string]*string)
+	_result = &GetSelectionProductSaleInfoResponse{}
+	_body, _err := client.GetSelectionProductSaleInfoWithOptions(productId, request, headers, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -4087,7 +4040,7 @@ func (client *Client) ListLogisticsOrdersWithOptions(orderId *string, headers ma
 		Action:      tea.String("ListLogisticsOrders"),
 		Version:     tea.String("2023-09-30"),
 		Protocol:    tea.String("HTTPS"),
-		Pathname:    tea.String("/opensaas-s2b/opensaas-s2b-biz-trade/v1/orders/" + tea.StringValue(openapiutil.GetEncodeParam(orderId)) + "/logisticsOrders"),
+		Pathname:    tea.String("/opensaas-s2b/opensaas-s2b-biz-trade/v2/orders/" + tea.StringValue(openapiutil.GetEncodeParam(orderId)) + "/logisticsOrders"),
 		Method:      tea.String("GET"),
 		AuthType:    tea.String("AK"),
 		Style:       tea.String("ROA"),
@@ -4115,98 +4068,12 @@ func (client *Client) ListLogisticsOrders(orderId *string) (_result *ListLogisti
 	return _result, _err
 }
 
-func (client *Client) ListProductGeneralBillsWithOptions(request *ListProductGeneralBillsRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *ListProductGeneralBillsResponse, _err error) {
-	_err = util.ValidateModel(request)
-	if _err != nil {
-		return _result, _err
-	}
-	req := &openapi.OpenApiRequest{
-		Headers: headers,
-		Body:    openapiutil.ParseToMap(request.Body),
-	}
-	params := &openapi.Params{
-		Action:      tea.String("ListProductGeneralBills"),
-		Version:     tea.String("2023-09-30"),
-		Protocol:    tea.String("HTTPS"),
-		Pathname:    tea.String("/opensaas-s2b/opensaas-s2b-biz-trade/v1/productGeneralBills"),
-		Method:      tea.String("GET"),
-		AuthType:    tea.String("AK"),
-		Style:       tea.String("ROA"),
-		ReqBodyType: tea.String("json"),
-		BodyType:    tea.String("json"),
-	}
-	_result = &ListProductGeneralBillsResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
-}
-
-func (client *Client) ListProductGeneralBills(request *ListProductGeneralBillsRequest) (_result *ListProductGeneralBillsResponse, _err error) {
-	runtime := &util.RuntimeOptions{}
-	headers := make(map[string]*string)
-	_result = &ListProductGeneralBillsResponse{}
-	_body, _err := client.ListProductGeneralBillsWithOptions(request, headers, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
-	return _result, _err
-}
-
-func (client *Client) ListProductSaleInfosWithOptions(request *ListProductSaleInfosRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *ListProductSaleInfosResponse, _err error) {
-	_err = util.ValidateModel(request)
-	if _err != nil {
-		return _result, _err
-	}
-	req := &openapi.OpenApiRequest{
-		Headers: headers,
-		Body:    openapiutil.ParseToMap(request.Body),
-	}
-	params := &openapi.Params{
-		Action:      tea.String("ListProductSaleInfos"),
-		Version:     tea.String("2023-09-30"),
-		Protocol:    tea.String("HTTPS"),
-		Pathname:    tea.String("/opensaas-s2b/opensaas-s2b-biz-trade/v1/products/saleInfo/commands/list"),
-		Method:      tea.String("POST"),
-		AuthType:    tea.String("AK"),
-		Style:       tea.String("ROA"),
-		ReqBodyType: tea.String("json"),
-		BodyType:    tea.String("json"),
-	}
-	_result = &ListProductSaleInfosResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
-}
-
-func (client *Client) ListProductSaleInfos(request *ListProductSaleInfosRequest) (_result *ListProductSaleInfosResponse, _err error) {
-	runtime := &util.RuntimeOptions{}
-	headers := make(map[string]*string)
-	_result = &ListProductSaleInfosResponse{}
-	_body, _err := client.ListProductSaleInfosWithOptions(request, headers, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
-	return _result, _err
-}
-
-func (client *Client) ListProductsWithOptions(request *ListProductsRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *ListProductsResponse, _err error) {
+func (client *Client) ListPurchaserShopsWithOptions(request *ListPurchaserShopsRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *ListPurchaserShopsResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
 		return _result, _err
 	}
 	query := map[string]interface{}{}
-	if !tea.BoolValue(util.IsUnset(request.DistributorShopId)) {
-		query["distributorShopId"] = request.DistributorShopId
-	}
-
 	if !tea.BoolValue(util.IsUnset(request.PageNumber)) {
 		query["pageNumber"] = request.PageNumber
 	}
@@ -4220,17 +4087,17 @@ func (client *Client) ListProductsWithOptions(request *ListProductsRequest, head
 		Query:   openapiutil.Query(query),
 	}
 	params := &openapi.Params{
-		Action:      tea.String("ListProducts"),
+		Action:      tea.String("ListPurchaserShops"),
 		Version:     tea.String("2023-09-30"),
 		Protocol:    tea.String("HTTPS"),
-		Pathname:    tea.String("/opensaas-s2b/opensaas-s2b-biz-trade/v1/products"),
+		Pathname:    tea.String("/opensaas-s2b/opensaas-s2b-biz-trade/v2/purchaserShops"),
 		Method:      tea.String("GET"),
 		AuthType:    tea.String("AK"),
 		Style:       tea.String("ROA"),
 		ReqBodyType: tea.String("json"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &ListProductsResponse{}
+	_result = &ListPurchaserShopsResponse{}
 	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
@@ -4239,11 +4106,11 @@ func (client *Client) ListProductsWithOptions(request *ListProductsRequest, head
 	return _result, _err
 }
 
-func (client *Client) ListProducts(request *ListProductsRequest) (_result *ListProductsResponse, _err error) {
+func (client *Client) ListPurchaserShops(request *ListPurchaserShopsRequest) (_result *ListPurchaserShopsResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
-	_result = &ListProductsResponse{}
-	_body, _err := client.ListProductsWithOptions(request, headers, runtime)
+	_result = &ListPurchaserShopsResponse{}
+	_body, _err := client.ListPurchaserShopsWithOptions(request, headers, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -4251,77 +4118,7 @@ func (client *Client) ListProducts(request *ListProductsRequest) (_result *ListP
 	return _result, _err
 }
 
-func (client *Client) ListShopsWithOptions(request *ListShopsRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *ListShopsResponse, _err error) {
-	_err = util.ValidateModel(request)
-	if _err != nil {
-		return _result, _err
-	}
-	query := map[string]interface{}{}
-	if !tea.BoolValue(util.IsUnset(request.ChannelSupplierId)) {
-		query["channelSupplierId"] = request.ChannelSupplierId
-	}
-
-	if !tea.BoolValue(util.IsUnset(request.EndDate)) {
-		query["endDate"] = request.EndDate
-	}
-
-	if !tea.BoolValue(util.IsUnset(request.PageNumber)) {
-		query["pageNumber"] = request.PageNumber
-	}
-
-	if !tea.BoolValue(util.IsUnset(request.PageSize)) {
-		query["pageSize"] = request.PageSize
-	}
-
-	if !tea.BoolValue(util.IsUnset(request.ShopId)) {
-		query["shopId"] = request.ShopId
-	}
-
-	if !tea.BoolValue(util.IsUnset(request.ShopName)) {
-		query["shopName"] = request.ShopName
-	}
-
-	if !tea.BoolValue(util.IsUnset(request.StartDate)) {
-		query["startDate"] = request.StartDate
-	}
-
-	req := &openapi.OpenApiRequest{
-		Headers: headers,
-		Query:   openapiutil.Query(query),
-	}
-	params := &openapi.Params{
-		Action:      tea.String("ListShops"),
-		Version:     tea.String("2023-09-30"),
-		Protocol:    tea.String("HTTPS"),
-		Pathname:    tea.String("/opensaas-s2b/opensaas-s2b-biz-trade/v1/shops"),
-		Method:      tea.String("GET"),
-		AuthType:    tea.String("AK"),
-		Style:       tea.String("ROA"),
-		ReqBodyType: tea.String("json"),
-		BodyType:    tea.String("json"),
-	}
-	_result = &ListShopsResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
-}
-
-func (client *Client) ListShops(request *ListShopsRequest) (_result *ListShopsResponse, _err error) {
-	runtime := &util.RuntimeOptions{}
-	headers := make(map[string]*string)
-	_result = &ListShopsResponse{}
-	_body, _err := client.ListShopsWithOptions(request, headers, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
-	return _result, _err
-}
-
-func (client *Client) ListSkuSaleInfosWithOptions(request *ListSkuSaleInfosRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *ListSkuSaleInfosResponse, _err error) {
+func (client *Client) ListSelectionProductSaleInfosWithOptions(request *ListSelectionProductSaleInfosRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *ListSelectionProductSaleInfosResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
 		return _result, _err
@@ -4331,17 +4128,17 @@ func (client *Client) ListSkuSaleInfosWithOptions(request *ListSkuSaleInfosReque
 		Body:    openapiutil.ParseToMap(request.Body),
 	}
 	params := &openapi.Params{
-		Action:      tea.String("ListSkuSaleInfos"),
+		Action:      tea.String("ListSelectionProductSaleInfos"),
 		Version:     tea.String("2023-09-30"),
 		Protocol:    tea.String("HTTPS"),
-		Pathname:    tea.String("/opensaas-s2b/opensaas-s2b-biz-trade/v1/skus/saleInfo/commands/list"),
+		Pathname:    tea.String("/opensaas-s2b/opensaas-s2b-biz-trade/v2/selectionPool/products/saleInfo/commands/list"),
 		Method:      tea.String("POST"),
 		AuthType:    tea.String("AK"),
 		Style:       tea.String("ROA"),
 		ReqBodyType: tea.String("json"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &ListSkuSaleInfosResponse{}
+	_result = &ListSelectionProductSaleInfosResponse{}
 	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
@@ -4350,11 +4147,106 @@ func (client *Client) ListSkuSaleInfosWithOptions(request *ListSkuSaleInfosReque
 	return _result, _err
 }
 
-func (client *Client) ListSkuSaleInfos(request *ListSkuSaleInfosRequest) (_result *ListSkuSaleInfosResponse, _err error) {
+func (client *Client) ListSelectionProductSaleInfos(request *ListSelectionProductSaleInfosRequest) (_result *ListSelectionProductSaleInfosResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
-	_result = &ListSkuSaleInfosResponse{}
-	_body, _err := client.ListSkuSaleInfosWithOptions(request, headers, runtime)
+	_result = &ListSelectionProductSaleInfosResponse{}
+	_body, _err := client.ListSelectionProductSaleInfosWithOptions(request, headers, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) ListSelectionProductsWithOptions(request *ListSelectionProductsRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *ListSelectionProductsResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.PageNumber)) {
+		query["pageNumber"] = request.PageNumber
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.PageSize)) {
+		query["pageSize"] = request.PageSize
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.PurchaserId)) {
+		query["purchaserId"] = request.PurchaserId
+	}
+
+	req := &openapi.OpenApiRequest{
+		Headers: headers,
+		Query:   openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("ListSelectionProducts"),
+		Version:     tea.String("2023-09-30"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/opensaas-s2b/opensaas-s2b-biz-trade/v2/selectionPool/products"),
+		Method:      tea.String("GET"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("ROA"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &ListSelectionProductsResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) ListSelectionProducts(request *ListSelectionProductsRequest) (_result *ListSelectionProductsResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	headers := make(map[string]*string)
+	_result = &ListSelectionProductsResponse{}
+	_body, _err := client.ListSelectionProductsWithOptions(request, headers, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) ListSelectionSkuSaleInfosWithOptions(request *ListSelectionSkuSaleInfosRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *ListSelectionSkuSaleInfosResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	req := &openapi.OpenApiRequest{
+		Headers: headers,
+		Body:    openapiutil.ParseToMap(request.Body),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("ListSelectionSkuSaleInfos"),
+		Version:     tea.String("2023-09-30"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/opensaas-s2b/opensaas-s2b-biz-trade/v2/selectionPool/skus/saleInfo/commands/list"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("ROA"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &ListSelectionSkuSaleInfosResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) ListSelectionSkuSaleInfos(request *ListSelectionSkuSaleInfosRequest) (_result *ListSelectionSkuSaleInfosResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	headers := make(map[string]*string)
+	_result = &ListSelectionSkuSaleInfosResponse{}
+	_body, _err := client.ListSelectionSkuSaleInfosWithOptions(request, headers, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -4375,7 +4267,7 @@ func (client *Client) QueryChildDivisionCodeWithOptions(request *QueryChildDivis
 		Action:      tea.String("QueryChildDivisionCode"),
 		Version:     tea.String("2023-09-30"),
 		Protocol:    tea.String("HTTPS"),
-		Pathname:    tea.String("/opensaas-s2b/opensaas-s2b-biz-trade/v1/division/commands/queryChildDivisionCode"),
+		Pathname:    tea.String("/opensaas-s2b/opensaas-s2b-biz-trade/v2/division/commands/queryChildDivisionCode"),
 		Method:      tea.String("POST"),
 		AuthType:    tea.String("AK"),
 		Style:       tea.String("ROA"),
@@ -4416,7 +4308,7 @@ func (client *Client) QueryOrdersWithOptions(request *QueryOrdersRequest, header
 		Action:      tea.String("QueryOrders"),
 		Version:     tea.String("2023-09-30"),
 		Protocol:    tea.String("HTTPS"),
-		Pathname:    tea.String("/opensaas-s2b/opensaas-s2b-biz-trade/v1/orders/commands/query"),
+		Pathname:    tea.String("/opensaas-s2b/opensaas-s2b-biz-trade/v2/orders/commands/query"),
 		Method:      tea.String("POST"),
 		AuthType:    tea.String("AK"),
 		Style:       tea.String("ROA"),
@@ -4457,7 +4349,7 @@ func (client *Client) RenderPurchaseOrderWithOptions(request *RenderPurchaseOrde
 		Action:      tea.String("RenderPurchaseOrder"),
 		Version:     tea.String("2023-09-30"),
 		Protocol:    tea.String("HTTPS"),
-		Pathname:    tea.String("/opensaas-s2b/opensaas-s2b-biz-trade/v1/purchaseOrders/commands/render"),
+		Pathname:    tea.String("/opensaas-s2b/opensaas-s2b-biz-trade/v2/purchaseOrders/commands/render"),
 		Method:      tea.String("POST"),
 		AuthType:    tea.String("AK"),
 		Style:       tea.String("ROA"),
@@ -4498,7 +4390,7 @@ func (client *Client) RenderRefundOrderWithOptions(request *RenderRefundOrderReq
 		Action:      tea.String("RenderRefundOrder"),
 		Version:     tea.String("2023-09-30"),
 		Protocol:    tea.String("HTTPS"),
-		Pathname:    tea.String("/opensaas-s2b/opensaas-s2b-biz-trade/v1/refunds/commands/render"),
+		Pathname:    tea.String("/opensaas-s2b/opensaas-s2b-biz-trade/v2/refunds/commands/render"),
 		Method:      tea.String("POST"),
 		AuthType:    tea.String("AK"),
 		Style:       tea.String("ROA"),
