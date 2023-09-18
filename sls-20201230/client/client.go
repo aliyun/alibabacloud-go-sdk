@@ -5994,10 +5994,10 @@ func (s *ListLogStoresResponse) SetBody(v *ListLogStoresResponseBody) *ListLogSt
 }
 
 type ListLogtailPipelineConfigRequest struct {
-	ConfigName *string `json:"configName,omitempty" xml:"configName,omitempty"`
-	Logstore   *string `json:"logstore,omitempty" xml:"logstore,omitempty"`
-	Offset     *int64  `json:"offset,omitempty" xml:"offset,omitempty"`
-	Size       *int64  `json:"size,omitempty" xml:"size,omitempty"`
+	ConfigName   *string `json:"configName,omitempty" xml:"configName,omitempty"`
+	LogstoreName *string `json:"logstoreName,omitempty" xml:"logstoreName,omitempty"`
+	Offset       *int64  `json:"offset,omitempty" xml:"offset,omitempty"`
+	Size         *int64  `json:"size,omitempty" xml:"size,omitempty"`
 }
 
 func (s ListLogtailPipelineConfigRequest) String() string {
@@ -6013,8 +6013,8 @@ func (s *ListLogtailPipelineConfigRequest) SetConfigName(v string) *ListLogtailP
 	return s
 }
 
-func (s *ListLogtailPipelineConfigRequest) SetLogstore(v string) *ListLogtailPipelineConfigRequest {
-	s.Logstore = &v
+func (s *ListLogtailPipelineConfigRequest) SetLogstoreName(v string) *ListLogtailPipelineConfigRequest {
+	s.LogstoreName = &v
 	return s
 }
 
@@ -11973,8 +11973,8 @@ func (client *Client) ListLogtailPipelineConfigWithOptions(project *string, requ
 		query["configName"] = request.ConfigName
 	}
 
-	if !tea.BoolValue(util.IsUnset(request.Logstore)) {
-		query["logstore"] = request.Logstore
+	if !tea.BoolValue(util.IsUnset(request.LogstoreName)) {
+		query["logstoreName"] = request.LogstoreName
 	}
 
 	if !tea.BoolValue(util.IsUnset(request.Offset)) {
