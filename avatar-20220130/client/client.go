@@ -186,6 +186,227 @@ func (s *CancelVideoTaskResponse) SetBody(v *CancelVideoTaskResponseBody) *Cance
 	return s
 }
 
+type ClientAuthRequest struct {
+	AppId      *string `json:"AppId,omitempty" xml:"AppId,omitempty"`
+	DeviceId   *string `json:"DeviceId,omitempty" xml:"DeviceId,omitempty"`
+	DeviceInfo *string `json:"DeviceInfo,omitempty" xml:"DeviceInfo,omitempty"`
+	DeviceType *string `json:"DeviceType,omitempty" xml:"DeviceType,omitempty"`
+	License    *string `json:"License,omitempty" xml:"License,omitempty"`
+	TenantId   *int64  `json:"TenantId,omitempty" xml:"TenantId,omitempty"`
+}
+
+func (s ClientAuthRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ClientAuthRequest) GoString() string {
+	return s.String()
+}
+
+func (s *ClientAuthRequest) SetAppId(v string) *ClientAuthRequest {
+	s.AppId = &v
+	return s
+}
+
+func (s *ClientAuthRequest) SetDeviceId(v string) *ClientAuthRequest {
+	s.DeviceId = &v
+	return s
+}
+
+func (s *ClientAuthRequest) SetDeviceInfo(v string) *ClientAuthRequest {
+	s.DeviceInfo = &v
+	return s
+}
+
+func (s *ClientAuthRequest) SetDeviceType(v string) *ClientAuthRequest {
+	s.DeviceType = &v
+	return s
+}
+
+func (s *ClientAuthRequest) SetLicense(v string) *ClientAuthRequest {
+	s.License = &v
+	return s
+}
+
+func (s *ClientAuthRequest) SetTenantId(v int64) *ClientAuthRequest {
+	s.TenantId = &v
+	return s
+}
+
+type ClientAuthResponseBody struct {
+	Code      *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	Message   *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	Success   *bool   `json:"Success,omitempty" xml:"Success,omitempty"`
+}
+
+func (s ClientAuthResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ClientAuthResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *ClientAuthResponseBody) SetCode(v string) *ClientAuthResponseBody {
+	s.Code = &v
+	return s
+}
+
+func (s *ClientAuthResponseBody) SetMessage(v string) *ClientAuthResponseBody {
+	s.Message = &v
+	return s
+}
+
+func (s *ClientAuthResponseBody) SetRequestId(v string) *ClientAuthResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *ClientAuthResponseBody) SetSuccess(v bool) *ClientAuthResponseBody {
+	s.Success = &v
+	return s
+}
+
+type ClientAuthResponse struct {
+	Headers    map[string]*string      `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                  `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *ClientAuthResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s ClientAuthResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ClientAuthResponse) GoString() string {
+	return s.String()
+}
+
+func (s *ClientAuthResponse) SetHeaders(v map[string]*string) *ClientAuthResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *ClientAuthResponse) SetStatusCode(v int32) *ClientAuthResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *ClientAuthResponse) SetBody(v *ClientAuthResponseBody) *ClientAuthResponse {
+	s.Body = v
+	return s
+}
+
+type ClientStartRequest struct {
+	AppId    *string `json:"AppId,omitempty" xml:"AppId,omitempty"`
+	TenantId *int64  `json:"TenantId,omitempty" xml:"TenantId,omitempty"`
+}
+
+func (s ClientStartRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ClientStartRequest) GoString() string {
+	return s.String()
+}
+
+func (s *ClientStartRequest) SetAppId(v string) *ClientStartRequest {
+	s.AppId = &v
+	return s
+}
+
+func (s *ClientStartRequest) SetTenantId(v int64) *ClientStartRequest {
+	s.TenantId = &v
+	return s
+}
+
+type ClientStartResponseBody struct {
+	Code      *string                      `json:"Code,omitempty" xml:"Code,omitempty"`
+	Data      *ClientStartResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
+	Message   *string                      `json:"Message,omitempty" xml:"Message,omitempty"`
+	RequestId *string                      `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	Success   *bool                        `json:"Success,omitempty" xml:"Success,omitempty"`
+}
+
+func (s ClientStartResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ClientStartResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *ClientStartResponseBody) SetCode(v string) *ClientStartResponseBody {
+	s.Code = &v
+	return s
+}
+
+func (s *ClientStartResponseBody) SetData(v *ClientStartResponseBodyData) *ClientStartResponseBody {
+	s.Data = v
+	return s
+}
+
+func (s *ClientStartResponseBody) SetMessage(v string) *ClientStartResponseBody {
+	s.Message = &v
+	return s
+}
+
+func (s *ClientStartResponseBody) SetRequestId(v string) *ClientStartResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *ClientStartResponseBody) SetSuccess(v bool) *ClientStartResponseBody {
+	s.Success = &v
+	return s
+}
+
+type ClientStartResponseBodyData struct {
+	ImToken *string `json:"ImToken,omitempty" xml:"ImToken,omitempty"`
+}
+
+func (s ClientStartResponseBodyData) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ClientStartResponseBodyData) GoString() string {
+	return s.String()
+}
+
+func (s *ClientStartResponseBodyData) SetImToken(v string) *ClientStartResponseBodyData {
+	s.ImToken = &v
+	return s
+}
+
+type ClientStartResponse struct {
+	Headers    map[string]*string       `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                   `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *ClientStartResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s ClientStartResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ClientStartResponse) GoString() string {
+	return s.String()
+}
+
+func (s *ClientStartResponse) SetHeaders(v map[string]*string) *ClientStartResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *ClientStartResponse) SetStatusCode(v int32) *ClientStartResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *ClientStartResponse) SetBody(v *ClientStartResponseBody) *ClientStartResponse {
+	s.Body = v
+	return s
+}
+
 type CloseTimedResetOperateRequest struct {
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
 	TenantId   *int64  `json:"TenantId,omitempty" xml:"TenantId,omitempty"`
@@ -2486,6 +2707,122 @@ func (s *QueryVideoTaskInfoResponse) SetStatusCode(v int32) *QueryVideoTaskInfoR
 }
 
 func (s *QueryVideoTaskInfoResponse) SetBody(v *QueryVideoTaskInfoResponseBody) *QueryVideoTaskInfoResponse {
+	s.Body = v
+	return s
+}
+
+type Render3dAvatarRequest struct {
+	AppId    *string `json:"AppId,omitempty" xml:"AppId,omitempty"`
+	Code     *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	TenantId *int64  `json:"TenantId,omitempty" xml:"TenantId,omitempty"`
+}
+
+func (s Render3dAvatarRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s Render3dAvatarRequest) GoString() string {
+	return s.String()
+}
+
+func (s *Render3dAvatarRequest) SetAppId(v string) *Render3dAvatarRequest {
+	s.AppId = &v
+	return s
+}
+
+func (s *Render3dAvatarRequest) SetCode(v string) *Render3dAvatarRequest {
+	s.Code = &v
+	return s
+}
+
+func (s *Render3dAvatarRequest) SetTenantId(v int64) *Render3dAvatarRequest {
+	s.TenantId = &v
+	return s
+}
+
+type Render3dAvatarResponseBody struct {
+	Code      *string                         `json:"Code,omitempty" xml:"Code,omitempty"`
+	Data      *Render3dAvatarResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
+	Message   *string                         `json:"Message,omitempty" xml:"Message,omitempty"`
+	RequestId *string                         `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	Success   *bool                           `json:"Success,omitempty" xml:"Success,omitempty"`
+}
+
+func (s Render3dAvatarResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s Render3dAvatarResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *Render3dAvatarResponseBody) SetCode(v string) *Render3dAvatarResponseBody {
+	s.Code = &v
+	return s
+}
+
+func (s *Render3dAvatarResponseBody) SetData(v *Render3dAvatarResponseBodyData) *Render3dAvatarResponseBody {
+	s.Data = v
+	return s
+}
+
+func (s *Render3dAvatarResponseBody) SetMessage(v string) *Render3dAvatarResponseBody {
+	s.Message = &v
+	return s
+}
+
+func (s *Render3dAvatarResponseBody) SetRequestId(v string) *Render3dAvatarResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *Render3dAvatarResponseBody) SetSuccess(v bool) *Render3dAvatarResponseBody {
+	s.Success = &v
+	return s
+}
+
+type Render3dAvatarResponseBodyData struct {
+	RenderData *string `json:"RenderData,omitempty" xml:"RenderData,omitempty"`
+}
+
+func (s Render3dAvatarResponseBodyData) String() string {
+	return tea.Prettify(s)
+}
+
+func (s Render3dAvatarResponseBodyData) GoString() string {
+	return s.String()
+}
+
+func (s *Render3dAvatarResponseBodyData) SetRenderData(v string) *Render3dAvatarResponseBodyData {
+	s.RenderData = &v
+	return s
+}
+
+type Render3dAvatarResponse struct {
+	Headers    map[string]*string          `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                      `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *Render3dAvatarResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s Render3dAvatarResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s Render3dAvatarResponse) GoString() string {
+	return s.String()
+}
+
+func (s *Render3dAvatarResponse) SetHeaders(v map[string]*string) *Render3dAvatarResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *Render3dAvatarResponse) SetStatusCode(v int32) *Render3dAvatarResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *Render3dAvatarResponse) SetBody(v *Render3dAvatarResponseBody) *Render3dAvatarResponse {
 	s.Body = v
 	return s
 }
@@ -5414,6 +5751,118 @@ func (client *Client) CancelVideoTask(request *CancelVideoTaskRequest) (_result 
 	return _result, _err
 }
 
+func (client *Client) ClientAuthWithOptions(request *ClientAuthRequest, runtime *util.RuntimeOptions) (_result *ClientAuthResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.AppId)) {
+		query["AppId"] = request.AppId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.DeviceId)) {
+		query["DeviceId"] = request.DeviceId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.DeviceInfo)) {
+		query["DeviceInfo"] = request.DeviceInfo
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.DeviceType)) {
+		query["DeviceType"] = request.DeviceType
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.License)) {
+		query["License"] = request.License
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.TenantId)) {
+		query["TenantId"] = request.TenantId
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("ClientAuth"),
+		Version:     tea.String("2022-01-30"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &ClientAuthResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) ClientAuth(request *ClientAuthRequest) (_result *ClientAuthResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &ClientAuthResponse{}
+	_body, _err := client.ClientAuthWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) ClientStartWithOptions(request *ClientStartRequest, runtime *util.RuntimeOptions) (_result *ClientStartResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.AppId)) {
+		query["AppId"] = request.AppId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.TenantId)) {
+		query["TenantId"] = request.TenantId
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("ClientStart"),
+		Version:     tea.String("2022-01-30"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &ClientStartResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) ClientStart(request *ClientStartRequest) (_result *ClientStartResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &ClientStartResponse{}
+	_body, _err := client.ClientStartWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
 func (client *Client) CloseTimedResetOperateWithOptions(request *CloseTimedResetOperateRequest, runtime *util.RuntimeOptions) (_result *CloseTimedResetOperateResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -6059,6 +6508,58 @@ func (client *Client) QueryVideoTaskInfo(request *QueryVideoTaskInfoRequest) (_r
 	runtime := &util.RuntimeOptions{}
 	_result = &QueryVideoTaskInfoResponse{}
 	_body, _err := client.QueryVideoTaskInfoWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) Render3dAvatarWithOptions(request *Render3dAvatarRequest, runtime *util.RuntimeOptions) (_result *Render3dAvatarResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.AppId)) {
+		query["AppId"] = request.AppId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Code)) {
+		query["Code"] = request.Code
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.TenantId)) {
+		query["TenantId"] = request.TenantId
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("Render3dAvatar"),
+		Version:     tea.String("2022-01-30"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &Render3dAvatarResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) Render3dAvatar(request *Render3dAvatarRequest) (_result *Render3dAvatarResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &Render3dAvatarResponse{}
+	_body, _err := client.Render3dAvatarWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
