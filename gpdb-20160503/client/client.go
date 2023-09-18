@@ -475,15 +475,18 @@ func (s *CreateCollectionResponse) SetBody(v *CreateCollectionResponseBody) *Cre
 }
 
 type CreateDBInstanceRequest struct {
+	// The ID of the backup set.
+	//
+	// >  You can call the [DescribeDataBackups](~~210093~~) operation to query the IDs of all backup sets in the instance.
 	BackupId *string `json:"BackupId,omitempty" xml:"BackupId,omitempty"`
 	// The client token that is used to ensure the idempotence of the request. For more information, see [Ensure idempotence](~~327176~~).
 	ClientToken *string `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
 	// Specifies whether to load a sample dataset after the instance is created. Valid values:
 	//
-	// - **true**
-	// - **false**
+	// *   **true**
+	// *   **false**
 	//
-	// If you do not specify this parameter, no sample dataset is loaded.
+	// >  If you do not specify this parameter, no sample dataset is loaded.
 	CreateSampleData *bool `json:"CreateSampleData,omitempty" xml:"CreateSampleData,omitempty"`
 	// The edition of the instance. Valid values:
 	//
@@ -532,11 +535,13 @@ type CreateDBInstanceRequest struct {
 	//
 	// > This parameter must be specified only when you create an instance in automatic Serverless mode.
 	IdleTime *int32 `json:"IdleTime,omitempty" xml:"IdleTime,omitempty"`
-	// The network type of the instance. Set the value to VPC.
+	// The network type of the instance. Set the value to **VPC**.
 	//
 	// >
-	// - Only the Virtual Private Cloud (VPC) type is supported.
-	// - If you do not specify this parameter, VPC is used.
+	//
+	// *   Only the Virtual Private Cloud (VPC) type is supported in Alibaba Cloud public cloud.
+	//
+	// *   If you do not specify this parameter, VPC is used.
 	InstanceNetworkType *string `json:"InstanceNetworkType,omitempty" xml:"InstanceNetworkType,omitempty"`
 	// The specifications of compute nodes.
 	//
@@ -560,7 +565,16 @@ type CreateDBInstanceRequest struct {
 	//
 	// > This parameter must be specified when you create an instance in elastic storage mode or Serverless mode.
 	InstanceSpec *string `json:"InstanceSpec,omitempty" xml:"InstanceSpec,omitempty"`
-	MasterCU     *int32  `json:"MasterCU,omitempty" xml:"MasterCU,omitempty"`
+	// The amount of coordinator node resources. Valid values:
+	//
+	// *   2 CU
+	// *   4 CU
+	// *   8 CU
+	// *   16 CU
+	// *   32 CU
+	//
+	// >  You are charged for coordinator node resources of more than 8 CUs.
+	MasterCU *int32 `json:"MasterCU,omitempty" xml:"MasterCU,omitempty"`
 	// The number of coordinator nodes. Valid values: 1 and 2.
 	//
 	// > If you do not specify this parameter, 1 is used.
@@ -583,7 +597,7 @@ type CreateDBInstanceRequest struct {
 	// - **Year**
 	// > This parameter must be specified when PayType is set to Prepaid.
 	Period *string `json:"Period,omitempty" xml:"Period,omitempty"`
-	// The private IP address of the instance.
+	// This parameter is no longer used.
 	PrivateIpAddress *string `json:"PrivateIpAddress,omitempty" xml:"PrivateIpAddress,omitempty"`
 	// The ID of the region. You can call the [DescribeRegions](~~86912~~) operation to query the most recent region list.
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
@@ -627,11 +641,14 @@ type CreateDBInstanceRequest struct {
 	// The threshold of computing resources. Unit: AnalyticDB compute unit (ACU). Valid values: 8 to 32. The value must be in increments of 8 ACUs. Default value: 32.
 	//
 	// > This parameter must be specified only when you create an instance in automatic Serverless mode.
-	ServerlessResource *int32  `json:"ServerlessResource,omitempty" xml:"ServerlessResource,omitempty"`
-	SrcDbInstanceName  *string `json:"SrcDbInstanceName,omitempty" xml:"SrcDbInstanceName,omitempty"`
-	// The storage capacity of the instance. Unit: GB. Valid values: 50 to 4000.
+	ServerlessResource *int32 `json:"ServerlessResource,omitempty" xml:"ServerlessResource,omitempty"`
+	// The ID of the source instance.
 	//
-	// > This parameter must be specified when you create an instance in elastic storage mode.
+	// >  You can call the [DescribeDBInstances](~~86911~~) operation to query the information about all AnalyticDB for PostgreSQL instances within a region, including instance IDs.
+	SrcDbInstanceName *string `json:"SrcDbInstanceName,omitempty" xml:"SrcDbInstanceName,omitempty"`
+	// The storage capacity of the instance. Unit: GB. Valid values: 50 to 6000.
+	//
+	// >  This parameter must be specified when you create an instance in elastic storage mode.
 	StorageSize *int64 `json:"StorageSize,omitempty" xml:"StorageSize,omitempty"`
 	// This parameter is no longer used.
 	StorageType *string `json:"StorageType,omitempty" xml:"StorageType,omitempty"`
@@ -646,23 +663,29 @@ type CreateDBInstanceRequest struct {
 	// The VPC ID of the instance.
 	//
 	// >
-	// - This parameter must be specified.
-	// - The region where the VPC resides must be the same as the region that is specified by RegionId.
+	//
+	// *   **This parameter** must be specified.
+	//
+	// *   The region where the **VPC** resides must be the same as the region that is specified by **RegionId**.
 	VPCId *string `json:"VPCId,omitempty" xml:"VPCId,omitempty"`
 	// The vSwitch ID of the instance.
 	//
 	// >
-	// - This parameter must be specified.
-	// - The zone where the vSwitch resides must be the same as the zone that is specified by ZoneId.
-	VSwitchId *string `json:"VSwitchId,omitempty" xml:"VSwitchId,omitempty"`
-	// Specifies whether to enable vector engine optimization. Valid values:
 	//
-	// - **enabled**
-	// - **disabled** (default)
+	// *   **This parameter** must be specified.
+	//
+	// *   The zone where the **vSwitch** resides must be the same as the zone that is specified by **ZoneId**.
+	VSwitchId *string `json:"VSwitchId,omitempty" xml:"VSwitchId,omitempty"`
+	// Specifies whether to enable vector search engine optimization. Valid values:
+	//
+	// *   **enabled**
+	// *   **disabled** (default)
 	//
 	// >
-	// - We recommend that you do not enable vector engine optimization in mainstream analysis and real-time data warehousing scenarios.
-	// - We recommend that you enable vector engine optimization in AI Generated Content (AIGC) and vector retrieval scenarios that require the vector analysis engine.
+	//
+	// *   We recommend that you **do not enable** vector search engine optimization in mainstream analysis, data warehousing, and real-time data warehousing scenarios.
+	//
+	// *   We recommend that you **enable** vector search engine optimization in AI-generated content (AIGC) and vector retrieval scenarios that require the vector analysis engine.
 	VectorConfigurationStatus *string `json:"VectorConfigurationStatus,omitempty" xml:"VectorConfigurationStatus,omitempty"`
 	// The zone ID of the read-only instance. You can call the [DescribeRegions](~~86912~~) operation to query the most recent zone list.
 	ZoneId *string `json:"ZoneId,omitempty" xml:"ZoneId,omitempty"`
@@ -2416,7 +2439,7 @@ type DescribeAvailableResourcesRequest struct {
 	Region *string `json:"Region,omitempty" xml:"Region,omitempty"`
 	// The zone ID.
 	//
-	// > You can call the [DescribeRegions](~~86912~~)operation to query the most recent zone list.
+	// > You can call the [DescribeRegions](~~86912~~) operation to query the most recent zone list.
 	ZoneId *string `json:"ZoneId,omitempty" xml:"ZoneId,omitempty"`
 }
 
@@ -3416,7 +3439,7 @@ func (s *DescribeDBInstanceAttributeResponseBodyItems) SetDBInstanceAttribute(v 
 type DescribeDBInstanceAttributeResponseBodyItemsDBInstanceAttribute struct {
 	// The service availability of the instance. Unit: %.
 	//
-	// > This parameter is returned only for instances in reserved storage mode.
+	// >  This parameter is returned only for instances in reserved storage mode.
 	AvailabilityValue *string `json:"AvailabilityValue,omitempty" xml:"AvailabilityValue,omitempty"`
 	// The access mode of the instance. Valid values:
 	//
@@ -3432,7 +3455,7 @@ type DescribeDBInstanceAttributeResponseBodyItemsDBInstanceAttribute struct {
 	CpuCores *int32 `json:"CpuCores,omitempty" xml:"CpuCores,omitempty"`
 	// The number of CPU cores per node.
 	//
-	// > This parameter is returned only for instances in reserved storage mode.
+	// >  This parameter is returned only for instances in reserved storage mode.
 	CpuCoresPerNode *int32 `json:"CpuCoresPerNode,omitempty" xml:"CpuCoresPerNode,omitempty"`
 	// The time when the instance was created.
 	CreationTime *string `json:"CreationTime,omitempty" xml:"CreationTime,omitempty"`
@@ -3443,7 +3466,7 @@ type DescribeDBInstanceAttributeResponseBodyItemsDBInstanceAttribute struct {
 	DBInstanceCategory *string `json:"DBInstanceCategory,omitempty" xml:"DBInstanceCategory,omitempty"`
 	// The instance type of the instance.
 	//
-	// > This parameter is returned only for instances in reserved storage mode.
+	// >  This parameter is returned only for instances in reserved storage mode.
 	DBInstanceClass *string `json:"DBInstanceClass,omitempty" xml:"DBInstanceClass,omitempty"`
 	// The instance family of the instance. Valid values:
 	//
@@ -3458,17 +3481,17 @@ type DescribeDBInstanceAttributeResponseBodyItemsDBInstanceAttribute struct {
 	DBInstanceDescription *string `json:"DBInstanceDescription,omitempty" xml:"DBInstanceDescription,omitempty"`
 	// The maximum disk throughput of the compute group. Unit: Mbit/s.
 	//
-	// > This parameter is returned only for instances in reserved storage mode.
+	// >  This parameter is returned only for instances in reserved storage mode.
 	DBInstanceDiskMBPS *int64 `json:"DBInstanceDiskMBPS,omitempty" xml:"DBInstanceDiskMBPS,omitempty"`
 	// The number of compute groups.
 	//
-	// > This parameter is returned only for instances in reserved storage mode.
+	// >  This parameter is returned only for instances in reserved storage mode.
 	DBInstanceGroupCount *string `json:"DBInstanceGroupCount,omitempty" xml:"DBInstanceGroupCount,omitempty"`
 	// The instance ID.
 	DBInstanceId *string `json:"DBInstanceId,omitempty" xml:"DBInstanceId,omitempty"`
 	// The memory capacity per compute node.
 	//
-	// > The unit of this parameter is MB for instances in reserved storage mode and GB for instances in Serverless or elastic storage mode.
+	// >  The unit of this parameter is MB for instances in reserved storage mode and GB for instances in Serverless mode or elastic storage mode.
 	DBInstanceMemory *int64 `json:"DBInstanceMemory,omitempty" xml:"DBInstanceMemory,omitempty"`
 	// The resource type of the instance. Valid values:
 	//
@@ -3488,13 +3511,13 @@ type DescribeDBInstanceAttributeResponseBodyItemsDBInstanceAttribute struct {
 	DBInstanceStorage *int64 `json:"DBInstanceStorage,omitempty" xml:"DBInstanceStorage,omitempty"`
 	// The encryption key.
 	//
-	// > This parameter is returned only for instances that have disk encryption enabled.
+	// >  This parameter is returned only for instances that have disk encryption enabled.
 	EncryptionKey *string `json:"EncryptionKey,omitempty" xml:"EncryptionKey,omitempty"`
 	// The encryption type. Valid values:
 	//
 	// *   **CloudDisk**: disk encryption.
 	//
-	// > This parameter is returned only for instances that have disk encryption enabled.
+	// >  This parameter is returned only for instances that have disk encryption enabled.
 	EncryptionType *string `json:"EncryptionType,omitempty" xml:"EncryptionType,omitempty"`
 	// The database engine of the instance.
 	Engine *string `json:"Engine,omitempty" xml:"Engine,omitempty"`
@@ -3502,18 +3525,18 @@ type DescribeDBInstanceAttributeResponseBodyItemsDBInstanceAttribute struct {
 	EngineVersion *string `json:"EngineVersion,omitempty" xml:"EngineVersion,omitempty"`
 	// The expiration time of the instance. The time is displayed in UTC.
 	//
-	// > The expiration time of a pay-as-you-go instance is `2999-09-08T16:00:00Z`.
+	// >  The expiration time of a pay-as-you-go instance is `2999-09-08T16:00:00Z`.
 	ExpireTime *string `json:"ExpireTime,omitempty" xml:"ExpireTime,omitempty"`
 	// The disk type of the compute group. Valid values:
 	//
 	// *   **0**: SSD.
 	// *   **1**: HDD.
 	//
-	// > This parameter is returned only for instances in reserved storage mode.
+	// >  This parameter is returned only for instances in reserved storage mode.
 	HostType *string `json:"HostType,omitempty" xml:"HostType,omitempty"`
 	// The wait period for the instance that has no traffic to become idle. Unit: seconds.
 	//
-	// > This parameter is returned only for instances in Serverless automatic scheduling mode.
+	// >  This parameter is returned only for instances in Serverless automatic scheduling mode.
 	IdleTime *int32 `json:"IdleTime,omitempty" xml:"IdleTime,omitempty"`
 	// The network type of the instance. Valid values:
 	//
@@ -3534,24 +3557,25 @@ type DescribeDBInstanceAttributeResponseBodyItemsDBInstanceAttribute struct {
 	MaintainEndTime *string `json:"MaintainEndTime,omitempty" xml:"MaintainEndTime,omitempty"`
 	// The start time of the maintenance window of the instance.
 	MaintainStartTime *string `json:"MaintainStartTime,omitempty" xml:"MaintainStartTime,omitempty"`
-	MasterCU          *int32  `json:"MasterCU,omitempty" xml:"MasterCU,omitempty"`
+	// The amount of coordinator node resources.
+	MasterCU *int32 `json:"MasterCU,omitempty" xml:"MasterCU,omitempty"`
 	// The number of coordinator nodes.
 	MasterNodeNum *int32 `json:"MasterNodeNum,omitempty" xml:"MasterNodeNum,omitempty"`
 	// The maximum number of concurrent connections to the instance.
 	//
-	// > This parameter is returned only for instances in reserved storage mode.
+	// >  This parameter is returned only for instances in reserved storage mode.
 	MaxConnections *int32 `json:"MaxConnections,omitempty" xml:"MaxConnections,omitempty"`
 	// The memory capacity per node. The unit of this parameter can be one of the valid values of **MemoryUnit**.
 	//
-	// > This parameter is returned only for instances in reserved storage mode.
+	// >  This parameter is returned only for instances in reserved storage mode.
 	MemoryPerNode *int32 `json:"MemoryPerNode,omitempty" xml:"MemoryPerNode,omitempty"`
 	// The memory capacity per compute node.
 	//
-	// > The unit of this parameter is MB for instances in reserved storage mode and GB for instances in Serverless or elastic storage mode.
+	// >  The unit of this parameter is MB for instances in reserved storage mode and GB for instances in Serverless mode or elastic storage mode.
 	MemorySize *int64 `json:"MemorySize,omitempty" xml:"MemorySize,omitempty"`
 	// The unit of the memory capacity.
 	//
-	// > This parameter is returned only for instances in reserved storage mode.
+	// >  This parameter is returned only for instances in reserved storage mode.
 	MemoryUnit *string `json:"MemoryUnit,omitempty" xml:"MemoryUnit,omitempty"`
 	// The minor version of the instance.
 	MinorVersion *string `json:"MinorVersion,omitempty" xml:"MinorVersion,omitempty"`
@@ -3576,28 +3600,28 @@ type DescribeDBInstanceAttributeResponseBodyItemsDBInstanceAttribute struct {
 	SegDiskPerformanceLevel *string `json:"SegDiskPerformanceLevel,omitempty" xml:"SegDiskPerformanceLevel,omitempty"`
 	// The number of compute nodes.
 	//
-	// > This parameter is returned only for instances in Serverless or elastic storage mode.
+	// >  This parameter is returned only for instances in elastic storage mode or Serverless manual scheduling mode.
 	SegNodeNum *int32 `json:"SegNodeNum,omitempty" xml:"SegNodeNum,omitempty"`
 	// The number of compute groups.
 	//
-	// > This parameter is returned only for instances in reserved storage mode.
+	// >  This parameter is returned only for instances in reserved storage mode.
 	SegmentCounts *int32 `json:"SegmentCounts,omitempty" xml:"SegmentCounts,omitempty"`
 	// The type of the Serverless mode. Valid values:
 	//
 	// *   **Manual**: manual scheduling.
 	// *   **Auto**: automatic scheduling.
 	//
-	// > This parameter is returned only for instances in Serverless mode.
+	// >  This parameter is returned only for instances in Serverless mode.
 	ServerlessMode *string `json:"ServerlessMode,omitempty" xml:"ServerlessMode,omitempty"`
 	// The threshold of computing resources. Unit: AnalyticDB compute units (ACUs).
 	//
-	// > This parameter is returned only for instances in Serverless automatic scheduling mode.
+	// >  This parameter is returned only for instances in Serverless automatic scheduling mode.
 	ServerlessResource *int32 `json:"ServerlessResource,omitempty" xml:"ServerlessResource,omitempty"`
 	// The time when the instance started to run.
 	StartTime *string `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
 	// The storage capacity per node. The unit of this parameter can be one of the valid values of **StorageUnit**.
 	//
-	// > This parameter is returned only for instances in reserved storage mode.
+	// >  This parameter is returned only for instances in reserved storage mode.
 	StoragePerNode *int32 `json:"StoragePerNode,omitempty" xml:"StoragePerNode,omitempty"`
 	// The storage capacity of the instance. Unit: GB.
 	StorageSize *int64 `json:"StorageSize,omitempty" xml:"StorageSize,omitempty"`
@@ -3606,7 +3630,7 @@ type DescribeDBInstanceAttributeResponseBodyItemsDBInstanceAttribute struct {
 	// *   **cloud_essd**: enhanced SSD (ESSD).
 	// *   **cloud_efficiency**: ultra disk.
 	//
-	// > This parameter is returned only for instances in elastic storage mode.
+	// >  This parameter is returned only for instances in elastic storage mode.
 	StorageType *string `json:"StorageType,omitempty" xml:"StorageType,omitempty"`
 	// The unit of the storage capacity. Valid values:
 	//
@@ -3614,9 +3638,9 @@ type DescribeDBInstanceAttributeResponseBodyItemsDBInstanceAttribute struct {
 	// *   **TB SSD**
 	// *   **GB HDD**
 	//
-	// > This parameter is returned only for instances in Serverless or reserved storage mode.
+	// >  This parameter is returned only for instances in reserved storage mode or Serverless mode.
 	StorageUnit *string `json:"StorageUnit,omitempty" xml:"StorageUnit,omitempty"`
-	// Indicates whether the instance supports backup and restoration. Valid values:
+	// Indicates whether the instance supports backup and restoration.
 	//
 	// *   **true**
 	// *   **false**
@@ -3625,7 +3649,7 @@ type DescribeDBInstanceAttributeResponseBodyItemsDBInstanceAttribute struct {
 	Tags *DescribeDBInstanceAttributeResponseBodyItemsDBInstanceAttributeTags `json:"Tags,omitempty" xml:"Tags,omitempty" type:"Struct"`
 	// The vSwitch ID of the instance.
 	VSwitchId *string `json:"VSwitchId,omitempty" xml:"VSwitchId,omitempty"`
-	// Indicates whether vector engine optimization is enabled. Valid values:
+	// Indicates whether vector search engine optimization is enabled. Valid values:
 	//
 	// *   **enabled**
 	// *   **disabled**
