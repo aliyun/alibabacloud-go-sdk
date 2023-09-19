@@ -2138,35 +2138,29 @@ func (s *CreateSecretParameterResponse) SetBody(v *CreateSecretParameterResponse
 }
 
 type CreateStateConfigurationRequest struct {
-	// The description of the desired-state configuration.
+	// The client token that is used to ensure the idempotence of the request.
 	ClientToken *string `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
-	// 收集Inventory数据
+	// The configuration mode. Valid values: ApplyOnce: The configuration is applied only once. After a configuration is updated, the new configuration is applied. ApplyAndMonitor: The configuration is applied only once. After the configuration is applied, the system only checks whether the configuration is migrated in the future. ApplyAndAutoCorrect: The configuration is always applied.
 	ConfigureMode *string `json:"ConfigureMode,omitempty" xml:"ConfigureMode,omitempty"`
-	// The configuration mode.
-	//
-	// ApplyOnce: The configuration is applied only once. After a configuration is updated, the new configuration is applied.
-	//
-	// ApplyAndMonitor: The configuration is applied only once. After the configuration is applied, the system only checks whether the configuration is migrated in the future.
-	//
-	// ApplyAndAutoCorrect: The configuration is always applied.
+	// The description of the desired-state configuration.
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
-	// The ID of resource group.
+	// The parameters.
 	Parameters *string `json:"Parameters,omitempty" xml:"Parameters,omitempty"`
-	// The ID of the template.
+	// The region ID.
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	// The type of the schedule. Valid value: rate.
+	// The resource group ID.
 	ResourceGroupId *string `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
-	// The description.
-	ScheduleExpression *string `json:"ScheduleExpression,omitempty" xml:"ScheduleExpression,omitempty"`
-	// The schedule expression.
-	ScheduleType *string `json:"ScheduleType,omitempty" xml:"ScheduleType,omitempty"`
-	// The name of the template. The name must be 1 to 200 characters in length, and can contain letters, digits, hyphens (-), and underscores (\_).
-	Tags map[string]interface{} `json:"Tags,omitempty" xml:"Tags,omitempty"`
 	// The schedule expression. The interval between two schedules must be a minimum of 30 minutes.
+	ScheduleExpression *string `json:"ScheduleExpression,omitempty" xml:"ScheduleExpression,omitempty"`
+	// The schedule type. Set the value to rate.
+	ScheduleType *string `json:"ScheduleType,omitempty" xml:"ScheduleType,omitempty"`
+	// The tags to be added to the configuration.
+	Tags map[string]interface{} `json:"Tags,omitempty" xml:"Tags,omitempty"`
+	// The resources to be queried.
 	Targets *string `json:"Targets,omitempty" xml:"Targets,omitempty"`
-	// The version of the template.
+	// The name of the template. The name must be 1 to 200 characters in length and can contain letters, digits, hyphens (-), and underscores (\_).
 	TemplateName *string `json:"TemplateName,omitempty" xml:"TemplateName,omitempty"`
-	// The required resources.
+	// The version number of the template. If you do not specify this parameter, the latest version of the template is used.
 	TemplateVersion *string `json:"TemplateVersion,omitempty" xml:"TemplateVersion,omitempty"`
 }
 
@@ -2239,35 +2233,29 @@ func (s *CreateStateConfigurationRequest) SetTemplateVersion(v string) *CreateSt
 }
 
 type CreateStateConfigurationShrinkRequest struct {
-	// The description of the desired-state configuration.
+	// The client token that is used to ensure the idempotence of the request.
 	ClientToken *string `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
-	// 收集Inventory数据
+	// The configuration mode. Valid values: ApplyOnce: The configuration is applied only once. After a configuration is updated, the new configuration is applied. ApplyAndMonitor: The configuration is applied only once. After the configuration is applied, the system only checks whether the configuration is migrated in the future. ApplyAndAutoCorrect: The configuration is always applied.
 	ConfigureMode *string `json:"ConfigureMode,omitempty" xml:"ConfigureMode,omitempty"`
-	// The configuration mode.
-	//
-	// ApplyOnce: The configuration is applied only once. After a configuration is updated, the new configuration is applied.
-	//
-	// ApplyAndMonitor: The configuration is applied only once. After the configuration is applied, the system only checks whether the configuration is migrated in the future.
-	//
-	// ApplyAndAutoCorrect: The configuration is always applied.
+	// The description of the desired-state configuration.
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
-	// The ID of resource group.
+	// The parameters.
 	Parameters *string `json:"Parameters,omitempty" xml:"Parameters,omitempty"`
-	// The ID of the template.
+	// The region ID.
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	// The type of the schedule. Valid value: rate.
+	// The resource group ID.
 	ResourceGroupId *string `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
-	// The description.
-	ScheduleExpression *string `json:"ScheduleExpression,omitempty" xml:"ScheduleExpression,omitempty"`
-	// The schedule expression.
-	ScheduleType *string `json:"ScheduleType,omitempty" xml:"ScheduleType,omitempty"`
-	// The name of the template. The name must be 1 to 200 characters in length, and can contain letters, digits, hyphens (-), and underscores (\_).
-	TagsShrink *string `json:"Tags,omitempty" xml:"Tags,omitempty"`
 	// The schedule expression. The interval between two schedules must be a minimum of 30 minutes.
+	ScheduleExpression *string `json:"ScheduleExpression,omitempty" xml:"ScheduleExpression,omitempty"`
+	// The schedule type. Set the value to rate.
+	ScheduleType *string `json:"ScheduleType,omitempty" xml:"ScheduleType,omitempty"`
+	// The tags to be added to the configuration.
+	TagsShrink *string `json:"Tags,omitempty" xml:"Tags,omitempty"`
+	// The resources to be queried.
 	Targets *string `json:"Targets,omitempty" xml:"Targets,omitempty"`
-	// The version of the template.
+	// The name of the template. The name must be 1 to 200 characters in length and can contain letters, digits, hyphens (-), and underscores (\_).
 	TemplateName *string `json:"TemplateName,omitempty" xml:"TemplateName,omitempty"`
-	// The required resources.
+	// The version number of the template. If you do not specify this parameter, the latest version of the template is used.
 	TemplateVersion *string `json:"TemplateVersion,omitempty" xml:"TemplateVersion,omitempty"`
 }
 
@@ -2340,9 +2328,9 @@ func (s *CreateStateConfigurationShrinkRequest) SetTemplateVersion(v string) *Cr
 }
 
 type CreateStateConfigurationResponseBody struct {
-	// The configuration mode.
+	// The request ID.
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// The tag.
+	// The information about the desired-state configuration.
 	StateConfiguration *CreateStateConfigurationResponseBodyStateConfiguration `json:"StateConfiguration,omitempty" xml:"StateConfiguration,omitempty" type:"Struct"`
 }
 
@@ -2365,29 +2353,31 @@ func (s *CreateStateConfigurationResponseBody) SetStateConfiguration(v *CreateSt
 }
 
 type CreateStateConfigurationResponseBodyStateConfiguration struct {
-	// The parameters.
+	// The configuration mode. Valid values:
 	ConfigureMode *string `json:"ConfigureMode,omitempty" xml:"ConfigureMode,omitempty"`
-	// The desired-state configuration.
+	// The time when the desired-state configuration was created.
 	CreateTime *string `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
-	// WB502027
+	// The description.
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
-	// CreateStateConfiguration
-	Parameters      map[string]interface{} `json:"Parameters,omitempty" xml:"Parameters,omitempty"`
-	ResourceGroupId *string                `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
-	// The version number. If you do not specify this parameter, the system uses the latest version.
+	// The parameters.
+	Parameters map[string]interface{} `json:"Parameters,omitempty" xml:"Parameters,omitempty"`
+	// The resource group ID.
+	ResourceGroupId *string `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
+	// The schedule expression.
 	ScheduleExpression *string `json:"ScheduleExpression,omitempty" xml:"ScheduleExpression,omitempty"`
-	// Creates a desired-state configuration.
+	// The schedule type.
 	ScheduleType *string `json:"ScheduleType,omitempty" xml:"ScheduleType,omitempty"`
-	// 收集Inventory数据
+	// The ID of the desired-state configuration.
 	StateConfigurationId *string `json:"StateConfigurationId,omitempty" xml:"StateConfigurationId,omitempty"`
-	// The required resources.
+	// The tags added to the configuration.
 	Tags map[string]interface{} `json:"Tags,omitempty" xml:"Tags,omitempty"`
-	// 1 hour 或 30 minutes
-	Targets    *string `json:"Targets,omitempty" xml:"Targets,omitempty"`
+	// The queried resources.
+	Targets *string `json:"Targets,omitempty" xml:"Targets,omitempty"`
+	// The template ID.
 	TemplateId *string `json:"TemplateId,omitempty" xml:"TemplateId,omitempty"`
 	// The name of the template.
 	TemplateName *string `json:"TemplateName,omitempty" xml:"TemplateName,omitempty"`
-	// The ID of the request.
+	// The name of the template version.
 	TemplateVersion *string `json:"TemplateVersion,omitempty" xml:"TemplateVersion,omitempty"`
 }
 
@@ -2931,9 +2921,11 @@ func (s *DeleteApplicationGroupResponse) SetBody(v *DeleteApplicationGroupRespon
 }
 
 type DeleteExecutionsRequest struct {
-	// The ID of the request.
+	// The execution IDs.
+	//
+	// You can specify multiple execution IDs in a JSON array in the format of `["xxxxxxxxx", "yyyyyyyyy", ... "zzzzzzzzz"]`. You can specify up to 100 execution IDs at a time. Separate multiple IDs with commas (,).
 	ExecutionIds *string `json:"ExecutionIds,omitempty" xml:"ExecutionIds,omitempty"`
-	// A JSON array that consists of multiple instance IDs. The format of the JSON array is [“xxxxxxxxx”, “yyyyyyyyy”, … “zzzzzzzzz”]. Separate multiple instance IDs with commas (,). A maximum of 100 instance IDs can be specified at a time.
+	// The region ID.
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 }
 
@@ -2956,7 +2948,7 @@ func (s *DeleteExecutionsRequest) SetRegionId(v string) *DeleteExecutionsRequest
 }
 
 type DeleteExecutionsResponseBody struct {
-	// Deletes multiple executions.
+	// The request ID.
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -3077,7 +3069,7 @@ func (s *DeleteParameterResponse) SetBody(v *DeleteParameterResponseBody) *Delet
 type DeletePatchBaselineRequest struct {
 	// The name of the patch baseline.
 	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
-	// The ID of the region.
+	// The region ID.
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 }
 
@@ -3100,7 +3092,7 @@ func (s *DeletePatchBaselineRequest) SetRegionId(v string) *DeletePatchBaselineR
 }
 
 type DeletePatchBaselineResponseBody struct {
-	// The ID of the request.
+	// The request ID.
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -3147,9 +3139,9 @@ func (s *DeletePatchBaselineResponse) SetBody(v *DeletePatchBaselineResponseBody
 }
 
 type DeleteSecretParameterRequest struct {
-	// The name of the encryption parameter. The name can be up to 180 characters in length and can contain only letters, digits, hyphens (-), and underscores (\_). It cannot start with ALIYUN, ACS, ALIBABA, ALICLOUD, or OOS.
+	// The name of the encryption parameter. The name must be 1 to 180 characters in length and can contain letters, digits, hyphens (-), and underscores (\_). It cannot start with ALIYUN, ACS, ALIBABA, ALICLOUD, or OOS.
 	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
-	// The ID of the region.
+	// The region ID.
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 }
 
@@ -3172,7 +3164,7 @@ func (s *DeleteSecretParameterRequest) SetRegionId(v string) *DeleteSecretParame
 }
 
 type DeleteSecretParameterResponseBody struct {
-	// The ID of the request.
+	// The request ID.
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -3219,13 +3211,11 @@ func (s *DeleteSecretParameterResponse) SetBody(v *DeleteSecretParameterResponse
 }
 
 type DeleteStateConfigurationsRequest struct {
-	// Deletes desired-state configurations in batches
+	// The client token that is used to ensure the idempotence of the request.
 	ClientToken *string `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
-	// The ID of the request.
+	// The region ID.
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	// ## Debugging
-	//
-	// [OpenAPI Explorer automatically calculates the signature value. For your convenience, we recommend that you call this operation in OpenAPI Explorer. OpenAPI Explorer dynamically generates the sample code of the operation for different SDKs.](https://api.aliyun.com/#product=oos\&api=DeleteStateConfigurations\&type=RPC\&version=2019-06-01)
+	// The IDs of desired-state configurations.
 	StateConfigurationIds *string `json:"StateConfigurationIds,omitempty" xml:"StateConfigurationIds,omitempty"`
 }
 
@@ -3253,7 +3243,7 @@ func (s *DeleteStateConfigurationsRequest) SetStateConfigurationIds(v string) *D
 }
 
 type DeleteStateConfigurationsResponseBody struct {
-	// Deletes desired-state configurations in batches.
+	// The request ID.
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -3300,11 +3290,11 @@ func (s *DeleteStateConfigurationsResponse) SetBody(v *DeleteStateConfigurations
 }
 
 type DeleteTemplateRequest struct {
-	// You can call this operation to delete a template.
-	AutoDeleteExecutions *bool `json:"AutoDeleteExecutions,omitempty" xml:"AutoDeleteExecutions,omitempty"`
 	// Specifies whether to delete the related executions when a template is deleted.
+	AutoDeleteExecutions *bool `json:"AutoDeleteExecutions,omitempty" xml:"AutoDeleteExecutions,omitempty"`
+	// The region ID.
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	// The ID of the request.
+	// The name of the template. The name can be 1 to 200 characters in length and can contain letters, digits, hyphens (-), and underscores (\_). It cannot start with ALIYUN, ACS, ALIBABA, or ALICLOUD.
 	TemplateName *string `json:"TemplateName,omitempty" xml:"TemplateName,omitempty"`
 }
 
@@ -3332,7 +3322,7 @@ func (s *DeleteTemplateRequest) SetTemplateName(v string) *DeleteTemplateRequest
 }
 
 type DeleteTemplateResponseBody struct {
-	// You can call this operation to delete a template.
+	// The request ID.
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -3379,11 +3369,11 @@ func (s *DeleteTemplateResponse) SetBody(v *DeleteTemplateResponseBody) *DeleteT
 }
 
 type DeleteTemplatesRequest struct {
-	// The ID of the request.
-	AutoDeleteExecutions *bool `json:"AutoDeleteExecutions,omitempty" xml:"AutoDeleteExecutions,omitempty"`
-	// The name list of templates to be deleted.
-	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 	// Specifies whether to delete the related executions when a template is deleted.
+	AutoDeleteExecutions *bool `json:"AutoDeleteExecutions,omitempty" xml:"AutoDeleteExecutions,omitempty"`
+	// The region ID.
+	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	// The names of the templates to be deleted.
 	TemplateNames *string `json:"TemplateNames,omitempty" xml:"TemplateNames,omitempty"`
 }
 
@@ -3411,7 +3401,7 @@ func (s *DeleteTemplatesRequest) SetTemplateNames(v string) *DeleteTemplatesRequ
 }
 
 type DeleteTemplatesResponseBody struct {
-	// Deletes multiple templates.
+	// The request ID.
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -3567,8 +3557,10 @@ func (s *DescribeRegionsRequest) SetRegionId(v string) *DescribeRegionsRequest {
 }
 
 type DescribeRegionsResponseBody struct {
-	Regions   []*DescribeRegionsResponseBodyRegions `json:"Regions,omitempty" xml:"Regions,omitempty" type:"Repeated"`
-	RequestId *string                               `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The details of the regions.
+	Regions []*DescribeRegionsResponseBodyRegions `json:"Regions,omitempty" xml:"Regions,omitempty" type:"Repeated"`
+	// The request ID.
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
 func (s DescribeRegionsResponseBody) String() string {
@@ -3590,9 +3582,12 @@ func (s *DescribeRegionsResponseBody) SetRequestId(v string) *DescribeRegionsRes
 }
 
 type DescribeRegionsResponseBodyRegions struct {
-	LocalName      *string `json:"LocalName,omitempty" xml:"LocalName,omitempty"`
+	// The name of the region.
+	LocalName *string `json:"LocalName,omitempty" xml:"LocalName,omitempty"`
+	// The endpoint of the region.
 	RegionEndpoint *string `json:"RegionEndpoint,omitempty" xml:"RegionEndpoint,omitempty"`
-	RegionId       *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	// The region ID.
+	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 }
 
 func (s DescribeRegionsResponseBodyRegions) String() string {
@@ -4297,20 +4292,18 @@ func (s *GetExecutionTemplateResponse) SetBody(v *GetExecutionTemplateResponseBo
 }
 
 type GetInventorySchemaRequest struct {
-	// Specifies whether only to return a combination of specified properties.
+	// Specifies whether to return only properties that support the aggregate feature in the configuration list. Valid values:
 	//
-	// Valid values:
-	//
-	// *   true: only returns a combination of specified properties
-	// *   false: returns all properties of the component
+	// *   true: only returns properties that support the aggregate feature in the configuration list.
+	// *   false: returns all properties in the configuration list.
 	Aggregator *bool `json:"Aggregator,omitempty" xml:"Aggregator,omitempty"`
-	// The number of entries to return on each page. Valid values: 1 to 100. Default value: 50.
+	// The number of entries per page. Valid values: 1 to 100. Default value: 50.
 	MaxResults *int32 `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
-	// The token that is used to retrieve the next page of results.
+	// A pagination token. It can be used in the next request to retrieve a new page of results.
 	NextToken *string `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
-	// The ID of the region.
+	// The region ID.
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	// The name of the component. Valid values:
+	// The configuration list type name. Valid values:
 	//
 	// *   ACS:InstanceInformation
 	// *   ACS:Application
@@ -4357,13 +4350,13 @@ func (s *GetInventorySchemaRequest) SetTypeName(v string) *GetInventorySchemaReq
 }
 
 type GetInventorySchemaResponseBody struct {
-	// Max results.
+	// The number of entries per page.
 	MaxResults *string `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
-	// The token that is used to retrieve the next page of results.
+	// The pagination token that was used in the next request to retrieve a new page of results.
 	NextToken *string `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
-	// The ID of the request.
+	// The request ID.
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// The detailed configurations of the component.
+	// The detailed configurations of the configuration list.
 	Schemas []*GetInventorySchemaResponseBodySchemas `json:"Schemas,omitempty" xml:"Schemas,omitempty" type:"Repeated"`
 }
 
@@ -4396,11 +4389,11 @@ func (s *GetInventorySchemaResponseBody) SetSchemas(v []*GetInventorySchemaRespo
 }
 
 type GetInventorySchemaResponseBodySchemas struct {
-	// The properties of component.
+	// The properties of the configuration list.
 	Attributes []*GetInventorySchemaResponseBodySchemasAttributes `json:"Attributes,omitempty" xml:"Attributes,omitempty" type:"Repeated"`
-	// The name of the component.
+	// The name of the configuration list.
 	TypeName *string `json:"TypeName,omitempty" xml:"TypeName,omitempty"`
-	// The version of the component.
+	// The version of the configuration list.
 	Version *string `json:"Version,omitempty" xml:"Version,omitempty"`
 }
 
@@ -4676,13 +4669,13 @@ func (s *GetOpsItemResponse) SetBody(v *GetOpsItemResponseBody) *GetOpsItemRespo
 }
 
 type GetParameterRequest struct {
-	// The operation that you want to perform. Set the value to GetParameter.
+	// The name of the common parameter. The name can be up to 200 characters in length and can contain letters, digits, hyphens (-), and underscores (\_).
 	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
-	// The time when the common parameter was updated.
+	// The version number of the common parameter. Valid values: 1 to 100.
 	ParameterVersion *int32 `json:"ParameterVersion,omitempty" xml:"ParameterVersion,omitempty"`
-	// The name of the common parameter.
+	// The region ID.
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	// The user who created the common parameter.
+	// The resource group ID.
 	ResourceGroupId *string `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
 }
 
@@ -4715,9 +4708,9 @@ func (s *GetParameterRequest) SetResourceGroupId(v string) *GetParameterRequest 
 }
 
 type GetParameterResponseBody struct {
-	// The description of the common parameter.
+	// The information about the common parameter.
 	Parameter *GetParameterResponseBodyParameter `json:"Parameter,omitempty" xml:"Parameter,omitempty" type:"Struct"`
-	// The user who updated the common parameter.
+	// The request ID.
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -4740,24 +4733,33 @@ func (s *GetParameterResponseBody) SetRequestId(v string) *GetParameterResponseB
 }
 
 type GetParameterResponseBodyParameter struct {
-	Constraints      *string `json:"Constraints,omitempty" xml:"Constraints,omitempty"`
-	CreatedBy        *string `json:"CreatedBy,omitempty" xml:"CreatedBy,omitempty"`
-	CreatedDate      *string `json:"CreatedDate,omitempty" xml:"CreatedDate,omitempty"`
-	Description      *string `json:"Description,omitempty" xml:"Description,omitempty"`
-	Id               *string `json:"Id,omitempty" xml:"Id,omitempty"`
-	Name             *string `json:"Name,omitempty" xml:"Name,omitempty"`
-	ParameterVersion *int32  `json:"ParameterVersion,omitempty" xml:"ParameterVersion,omitempty"`
-	ResourceGroupId  *string `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
-	ShareType        *string `json:"ShareType,omitempty" xml:"ShareType,omitempty"`
-	// The ID of the request.
+	// The constraints of the common parameter.
+	Constraints *string `json:"Constraints,omitempty" xml:"Constraints,omitempty"`
+	// The user who created the common parameter.
+	CreatedBy *string `json:"CreatedBy,omitempty" xml:"CreatedBy,omitempty"`
+	// The time when the common parameter was created.
+	CreatedDate *string `json:"CreatedDate,omitempty" xml:"CreatedDate,omitempty"`
+	// The description of the common parameter.
+	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
+	// The ID of the common parameter.
+	Id *string `json:"Id,omitempty" xml:"Id,omitempty"`
+	// The name of the common parameter.
+	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// The version number of the common parameter.
+	ParameterVersion *int32 `json:"ParameterVersion,omitempty" xml:"ParameterVersion,omitempty"`
+	// The resource group ID.
+	ResourceGroupId *string `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
+	// The share type of the common parameter.
+	ShareType *string `json:"ShareType,omitempty" xml:"ShareType,omitempty"`
+	// The tags added to the common parameter.
 	Tags map[string]interface{} `json:"Tags,omitempty" xml:"Tags,omitempty"`
-	// The region ID of the resource.
+	// The data type of the common parameter.
 	Type *string `json:"Type,omitempty" xml:"Type,omitempty"`
-	// The value of the common parameter.
+	// The user who updated the common parameter.
 	UpdatedBy *string `json:"UpdatedBy,omitempty" xml:"UpdatedBy,omitempty"`
-	// The information of the common parameter.
+	// The time when the common parameter was updated.
 	UpdatedDate *string `json:"UpdatedDate,omitempty" xml:"UpdatedDate,omitempty"`
-	// Queries a common parameter and its value.
+	// The value of the common parameter.
 	Value *string `json:"Value,omitempty" xml:"Value,omitempty"`
 }
 
@@ -5086,8 +5088,9 @@ func (s *GetParametersByPathRequest) SetRegionId(v string) *GetParametersByPathR
 }
 
 type GetParametersByPathResponseBody struct {
-	MaxResults *int32                                       `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
-	NextToken  *string                                      `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
+	MaxResults *int32  `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
+	NextToken  *string `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
+	// The information about the common parameters.
 	Parameters []*GetParametersByPathResponseBodyParameters `json:"Parameters,omitempty" xml:"Parameters,omitempty" type:"Repeated"`
 	RequestId  *string                                      `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	TotalCount *int32                                       `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
@@ -5127,19 +5130,32 @@ func (s *GetParametersByPathResponseBody) SetTotalCount(v int32) *GetParametersB
 }
 
 type GetParametersByPathResponseBodyParameters struct {
-	Constraints      *string                `json:"Constraints,omitempty" xml:"Constraints,omitempty"`
-	CreatedBy        *string                `json:"CreatedBy,omitempty" xml:"CreatedBy,omitempty"`
-	CreatedDate      *string                `json:"CreatedDate,omitempty" xml:"CreatedDate,omitempty"`
-	Description      *string                `json:"Description,omitempty" xml:"Description,omitempty"`
-	Id               *string                `json:"Id,omitempty" xml:"Id,omitempty"`
-	Name             *string                `json:"Name,omitempty" xml:"Name,omitempty"`
-	ParameterVersion *int32                 `json:"ParameterVersion,omitempty" xml:"ParameterVersion,omitempty"`
-	ShareType        *string                `json:"ShareType,omitempty" xml:"ShareType,omitempty"`
-	Tags             map[string]interface{} `json:"Tags,omitempty" xml:"Tags,omitempty"`
-	Type             *string                `json:"Type,omitempty" xml:"Type,omitempty"`
-	UpdatedBy        *string                `json:"UpdatedBy,omitempty" xml:"UpdatedBy,omitempty"`
-	UpdatedDate      *string                `json:"UpdatedDate,omitempty" xml:"UpdatedDate,omitempty"`
-	Value            *string                `json:"Value,omitempty" xml:"Value,omitempty"`
+	// The constraints of the common parameter.
+	Constraints *string `json:"Constraints,omitempty" xml:"Constraints,omitempty"`
+	// The user who created the common parameter.
+	CreatedBy *string `json:"CreatedBy,omitempty" xml:"CreatedBy,omitempty"`
+	// The time when the common parameter was created.
+	CreatedDate *string `json:"CreatedDate,omitempty" xml:"CreatedDate,omitempty"`
+	// The description of the common parameter.
+	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
+	// The ID of the common parameter.
+	Id *string `json:"Id,omitempty" xml:"Id,omitempty"`
+	// The name of the common parameter.
+	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// The version number of the common parameter.
+	ParameterVersion *int32 `json:"ParameterVersion,omitempty" xml:"ParameterVersion,omitempty"`
+	// The share type of the common parameter.
+	ShareType *string `json:"ShareType,omitempty" xml:"ShareType,omitempty"`
+	// The tags added to the common parameters.
+	Tags map[string]interface{} `json:"Tags,omitempty" xml:"Tags,omitempty"`
+	// The type of the common parameter.
+	Type *string `json:"Type,omitempty" xml:"Type,omitempty"`
+	// The user who updated the common parameter.
+	UpdatedBy *string `json:"UpdatedBy,omitempty" xml:"UpdatedBy,omitempty"`
+	// The time when the common parameter was last updated.
+	UpdatedDate *string `json:"UpdatedDate,omitempty" xml:"UpdatedDate,omitempty"`
+	// The value of the common parameter.
+	Value *string `json:"Value,omitempty" xml:"Value,omitempty"`
 }
 
 func (s GetParametersByPathResponseBodyParameters) String() string {
@@ -5898,25 +5914,23 @@ func (s *GetSecretParametersResponse) SetBody(v *GetSecretParametersResponseBody
 }
 
 type GetSecretParametersByPathRequest struct {
-	// The number of entries to return on each page. Valid values: 1 to 10. Default value: 10.
+	// The number of entries per page. Valid values: 1 to 10. Default value: 10.
 	MaxResults *int32 `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
-	// The token that is used to retrieve the next page of results.
+	// A pagination token. It can be used in the next request to retrieve a new page of results.
 	NextToken *string `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
 	// The path of the encryption parameter. The path must be 1 to 200 characters in length. For example, if the name of an encryption parameter is /secretParameter/mySecretParameter, the path of the encryption parameter is /secretParameter.
 	Path *string `json:"Path,omitempty" xml:"Path,omitempty"`
-	// Specifies whether to recursively query encryption parameters from all levels of directories in the specified path. Valid values: true and false. For example, if you want to query the /secretParameter/mySecretParameter and /secretParameter/secretParameter 1/mySecretParameter parameters, the valid values specify the parameters to return.
+	// Specifies whether to recursively query encryption parameters from all levels of directories in the specified path. Valid values: true and false. For example, if you want to query the /secretParameter/mySecretParameter and /secretParameter/secretParameter 1/mySecretParameter parameters, the valid values specify the parameters to be returned.
 	//
-	// *   true: Returns both of the /secretParameter/mySecretParameter and /secretParameter/secretParameter1/mySecretParameter parameters.
-	// *   false: Returns only the /parameter/myparameter parameter.
+	// *   true: returns both of the /secretParameter/mySecretParameter and /secretParameter/secretParameter1/mySecretParameter parameters.
+	// *   false: returns only the /secretParameter/mySecretParameter parameter.
 	Recursive *bool `json:"Recursive,omitempty" xml:"Recursive,omitempty"`
-	// The ID of the region.
+	// The region ID.
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	// Specifies whether to decrypt the parameter value.
-	//
-	// Valid values:
+	// Specifies whether to decrypt the parameter value. Default value: false. Valid values:
 	//
 	// *   true
-	// *   false (Default)
+	// *   false
 	WithDecryption *bool `json:"WithDecryption,omitempty" xml:"WithDecryption,omitempty"`
 }
 
@@ -5959,13 +5973,13 @@ func (s *GetSecretParametersByPathRequest) SetWithDecryption(v bool) *GetSecretP
 }
 
 type GetSecretParametersByPathResponseBody struct {
-	// The number of entries returned per page.
+	// The number of entries per page.
 	MaxResults *int32 `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
-	// The token that is used to retrieve the next page of results.
+	// A pagination token. It can be used in the next request to retrieve a new page of results.
 	NextToken *string `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
-	// The information of the encryption parameter.
+	// The information about the encryption parameters.
 	Parameters []*GetSecretParametersByPathResponseBodyParameters `json:"Parameters,omitempty" xml:"Parameters,omitempty" type:"Repeated"`
-	// The ID of the request.
+	// The request ID.
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	// The total number of returned entries.
 	TotalCount *int32 `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
@@ -6015,7 +6029,7 @@ type GetSecretParametersByPathResponseBodyParameters struct {
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
 	// The ID of the encryption parameter.
 	Id *string `json:"Id,omitempty" xml:"Id,omitempty"`
-	// The AccessKey ID.
+	// The ID of the key.
 	KeyId *string `json:"KeyId,omitempty" xml:"KeyId,omitempty"`
 	// The name of the encryption parameter.
 	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
@@ -6861,6 +6875,32 @@ func (s *ListApplicationGroupsResponse) SetBody(v *ListApplicationGroupsResponse
 
 type ListApplicationsRequest struct {
 	// The type of the application.
+	//
+	// Valid values:
+	//
+	// *   ComputeNest
+	//
+	//     <!-- -->
+	//
+	//     <!-- -->
+	//
+	//     <!-- -->
+	//
+	// *   Custom
+	//
+	//     <!-- -->
+	//
+	//     <!-- -->
+	//
+	//     <!-- -->
+	//
+	// *   DingTalk
+	//
+	//     <!-- -->
+	//
+	//     <!-- -->
+	//
+	//     <!-- -->
 	ApplicationType *string `json:"ApplicationType,omitempty" xml:"ApplicationType,omitempty"`
 	// The number of entries to return on each page. Valid values: 10 to 100. Default value: 50.
 	MaxResults *int32 `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
@@ -6921,6 +6961,32 @@ func (s *ListApplicationsRequest) SetTags(v map[string]interface{}) *ListApplica
 
 type ListApplicationsShrinkRequest struct {
 	// The type of the application.
+	//
+	// Valid values:
+	//
+	// *   ComputeNest
+	//
+	//     <!-- -->
+	//
+	//     <!-- -->
+	//
+	//     <!-- -->
+	//
+	// *   Custom
+	//
+	//     <!-- -->
+	//
+	//     <!-- -->
+	//
+	//     <!-- -->
+	//
+	// *   DingTalk
+	//
+	//     <!-- -->
+	//
+	//     <!-- -->
+	//
+	//     <!-- -->
 	ApplicationType *string `json:"ApplicationType,omitempty" xml:"ApplicationType,omitempty"`
 	// The number of entries to return on each page. Valid values: 10 to 100. Default value: 50.
 	MaxResults *int32 `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
@@ -6980,7 +7046,7 @@ func (s *ListApplicationsShrinkRequest) SetTagsShrink(v string) *ListApplication
 }
 
 type ListApplicationsResponseBody struct {
-	// The applications.
+	// The details of the application.
 	Applications []*ListApplicationsResponseBodyApplications `json:"Applications,omitempty" xml:"Applications,omitempty" type:"Repeated"`
 	// The number of entries returned per page.
 	MaxResults *int32 `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
@@ -7027,9 +7093,9 @@ type ListApplicationsResponseBodyApplications struct {
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
 	// The name of the application.
 	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
-	// The ID of the resource group.
+	// The resource group ID.
 	ResourceGroupId *string `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
-	// A tag of the resource.
+	// The tags added to the application.
 	Tags map[string]interface{} `json:"Tags,omitempty" xml:"Tags,omitempty"`
 	// The time when the application was updated.
 	UpdateDate *string `json:"UpdateDate,omitempty" xml:"UpdateDate,omitempty"`
@@ -7161,15 +7227,15 @@ func (s *ListExecutionLogsRequest) SetTaskExecutionId(v string) *ListExecutionLo
 }
 
 type ListExecutionLogsResponseBody struct {
-	// The execution logs.
+	// The logs of the execution.
 	ExecutionLogs []*ListExecutionLogsResponseBodyExecutionLogs `json:"ExecutionLogs,omitempty" xml:"ExecutionLogs,omitempty" type:"Repeated"`
 	// Indicates whether the log is truncated.
 	IsTruncated *bool `json:"IsTruncated,omitempty" xml:"IsTruncated,omitempty"`
-	// The number of entries returned per page.
+	// The number of entries per page.
 	MaxResults *int32 `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
-	// The token that is used to retrieve the next page of results.
+	// A pagination token. It can be used in the next request to retrieve a new page of results.
 	NextToken *string `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
-	// The ID of the request.
+	// The request ID.
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -7207,11 +7273,11 @@ func (s *ListExecutionLogsResponseBody) SetRequestId(v string) *ListExecutionLog
 }
 
 type ListExecutionLogsResponseBodyExecutionLogs struct {
-	// The type of the log.
+	// The log type.
 	LogType *string `json:"LogType,omitempty" xml:"LogType,omitempty"`
 	// The details of the task execution.
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
-	// The execution ID of the task.
+	// The task execution ID.
 	TaskExecutionId *string `json:"TaskExecutionId,omitempty" xml:"TaskExecutionId,omitempty"`
 	// The timestamp when the task was run.
 	Timestamp *string `json:"Timestamp,omitempty" xml:"Timestamp,omitempty"`
@@ -7393,12 +7459,11 @@ func (s *ListExecutionRiskyTasksResponse) SetBody(v *ListExecutionRiskyTasksResp
 }
 
 type ListExecutionsRequest struct {
-	// 执行的模板类型列表。可分为Other、TimerTrigger、EventTrigger、AlarmTrigger。此参数和Categories参数只能同时传入一个，推荐使用Categories。
+	// The types of the execution template. Valid values: Other, TimerTrigger, EventTrigger, and AlarmTrigger. You can specify only one of the Categories and Category parameters. We recommend that you specify Categories.
 	Categories *string `json:"Categories,omitempty" xml:"Categories,omitempty"`
 	// The type of the execution template. Valid values: Other, TimerTrigger, EventTrigger, and AlarmTrigger.
 	Category *string `json:"Category,omitempty" xml:"Category,omitempty"`
-	// 执行的深度，可分为RootDepth、FirstChildDepth
-	// RootDepth只返回主执行，FirstChildDepth只返回第一层的子执行。此参数和IncludeChildExecution参数只能同时传入一个，推荐使用Depth。
+	// The depth of execution. Valid values: RootDepth and FirstChildDepth. If you set this parameter to RootDepth, only the parent execution is returned. If you set this parameter to FirstChildDepth, only the child executions at the first level are returned. You can specify only one of the Depth and IncludeChildExecution parameters. We recommend that you specify Depth.
 	Depth       *string `json:"Depth,omitempty" xml:"Depth,omitempty"`
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
 	// The earliest end time. The executions that stop running at or later than the specified time are queried.
@@ -7589,12 +7654,11 @@ func (s *ListExecutionsRequest) SetTemplateName(v string) *ListExecutionsRequest
 }
 
 type ListExecutionsShrinkRequest struct {
-	// 执行的模板类型列表。可分为Other、TimerTrigger、EventTrigger、AlarmTrigger。此参数和Categories参数只能同时传入一个，推荐使用Categories。
+	// The types of the execution template. Valid values: Other, TimerTrigger, EventTrigger, and AlarmTrigger. You can specify only one of the Categories and Category parameters. We recommend that you specify Categories.
 	Categories *string `json:"Categories,omitempty" xml:"Categories,omitempty"`
 	// The type of the execution template. Valid values: Other, TimerTrigger, EventTrigger, and AlarmTrigger.
 	Category *string `json:"Category,omitempty" xml:"Category,omitempty"`
-	// 执行的深度，可分为RootDepth、FirstChildDepth
-	// RootDepth只返回主执行，FirstChildDepth只返回第一层的子执行。此参数和IncludeChildExecution参数只能同时传入一个，推荐使用Depth。
+	// The depth of execution. Valid values: RootDepth and FirstChildDepth. If you set this parameter to RootDepth, only the parent execution is returned. If you set this parameter to FirstChildDepth, only the child executions at the first level are returned. You can specify only one of the Depth and IncludeChildExecution parameters. We recommend that you specify Depth.
 	Depth       *string `json:"Depth,omitempty" xml:"Depth,omitempty"`
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
 	// The earliest end time. The executions that stop running at or later than the specified time are queried.
@@ -8505,7 +8569,7 @@ type ListInventoryEntriesRequest struct {
 	Filter []*ListInventoryEntriesRequestFilter `json:"Filter,omitempty" xml:"Filter,omitempty" type:"Repeated"`
 	// The ID of the instance.
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	// The number of entries to return on each page. Valid values: 1 to 100. Default value: 50.
+	// The number of entries per page. Valid values: 1 to 100. Default value: 50.
 	MaxResults *int32 `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
 	// The pagination token that is used in the next request to retrieve a new page of results. You do not need to specify this parameter for the first request.
 	NextToken *string `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
@@ -8996,15 +9060,15 @@ func (s *ListOpsItemsResponse) SetBody(v *ListOpsItemsResponseBody) *ListOpsItem
 }
 
 type ListParameterVersionsRequest struct {
-	// The share type of the common parameter.
+	// The number of entries per page. Valid values: 10 to 100. Default value: 50.
 	MaxResults *int32 `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
-	// The pagination token.
+	// The name of the common parameter.
 	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
-	// The data type of the common parameter.
+	// A pagination token. It can be used in the next request to retrieve a new page of results.
 	NextToken *string `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
-	// The number of entries to return on each page. Valid values: 10 to 100. Default value: 50.
+	// The region ID.
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	// The pagination token.
+	// The share type of the common parameter.
 	ShareType *string `json:"ShareType,omitempty" xml:"ShareType,omitempty"`
 }
 
@@ -9042,27 +9106,27 @@ func (s *ListParameterVersionsRequest) SetShareType(v string) *ListParameterVers
 }
 
 type ListParameterVersionsResponseBody struct {
-	// The name of the common parameter.
-	CreatedBy *string `json:"CreatedBy,omitempty" xml:"CreatedBy,omitempty"`
-	// The total number of entries returned.
-	CreatedDate *string `json:"CreatedDate,omitempty" xml:"CreatedDate,omitempty"`
 	// The user who created the common parameter.
-	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
-	// The version number of the common parameter.
-	Id *string `json:"Id,omitempty" xml:"Id,omitempty"`
+	CreatedBy *string `json:"CreatedBy,omitempty" xml:"CreatedBy,omitempty"`
 	// The time when the common parameter was created.
-	MaxResults *int32 `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
-	// The ID of the common parameter.
-	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	CreatedDate *string `json:"CreatedDate,omitempty" xml:"CreatedDate,omitempty"`
 	// The description of the common parameter.
+	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
+	// The ID of the common parameter.
+	Id *string `json:"Id,omitempty" xml:"Id,omitempty"`
+	// The number of entries per page.
+	MaxResults *int32 `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
+	// The name of the common parameter.
+	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// The pagination token that was used in the next request to retrieve a new page of results.
 	NextToken *string `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
-	// The value of the common parameter.
+	// The information about the version of the common parameter.
 	ParameterVersions []*ListParameterVersionsResponseBodyParameterVersions `json:"ParameterVersions,omitempty" xml:"ParameterVersions,omitempty" type:"Repeated"`
-	// The number of entries returned per page.
+	// The request ID.
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// The version information of the common parameter.
+	// The total number of entries returned.
 	TotalCount *int32 `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
-	// The ID of the request.
+	// The data type of the common parameter.
 	Type *string `json:"Type,omitempty" xml:"Type,omitempty"`
 }
 
@@ -9130,15 +9194,13 @@ func (s *ListParameterVersionsResponseBody) SetType(v string) *ListParameterVers
 }
 
 type ListParameterVersionsResponseBodyParameterVersions struct {
-	// The time when the common parameter was updated.
+	// The version number of the common parameter.
 	ParameterVersion *int32 `json:"ParameterVersion,omitempty" xml:"ParameterVersion,omitempty"`
-	// Queries versions of a common parameter.
-	UpdatedBy *string `json:"UpdatedBy,omitempty" xml:"UpdatedBy,omitempty"`
-	// ## Debugging
-	//
-	// [OpenAPI Explorer automatically calculates the signature value. For your convenience, we recommend that you call this operation in OpenAPI Explorer. OpenAPI Explorer dynamically generates the sample code of the operation for different SDKs.](https://api.aliyun.com/#product=oos\&api=ListParameterVersions\&type=RPC\&version=2019-06-01)
-	UpdatedDate *string `json:"UpdatedDate,omitempty" xml:"UpdatedDate,omitempty"`
 	// The user who updated the common parameter.
+	UpdatedBy *string `json:"UpdatedBy,omitempty" xml:"UpdatedBy,omitempty"`
+	// The time when the common parameter was last updated.
+	UpdatedDate *string `json:"UpdatedDate,omitempty" xml:"UpdatedDate,omitempty"`
+	// The value of the common parameter.
 	Value *string `json:"Value,omitempty" xml:"Value,omitempty"`
 }
 
@@ -9519,31 +9581,39 @@ func (s *ListParametersResponse) SetBody(v *ListParametersResponseBody) *ListPar
 }
 
 type ListPatchBaselinesRequest struct {
-	ApprovedPatches                  []*string `json:"ApprovedPatches,omitempty" xml:"ApprovedPatches,omitempty" type:"Repeated"`
-	ApprovedPatchesEnableNonSecurity *bool     `json:"ApprovedPatchesEnableNonSecurity,omitempty" xml:"ApprovedPatchesEnableNonSecurity,omitempty"`
-	// The token that is used to retrieve the next page of results.
+	// The approved patches.
+	ApprovedPatches []*string `json:"ApprovedPatches,omitempty" xml:"ApprovedPatches,omitempty" type:"Repeated"`
+	// Whether the approved patch includes updates other than security.
+	ApprovedPatchesEnableNonSecurity *bool `json:"ApprovedPatchesEnableNonSecurity,omitempty" xml:"ApprovedPatchesEnableNonSecurity,omitempty"`
+	// The number of entries returned per page.
 	MaxResults *int32 `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
-	// The share type of the patch baseline.
+	// The name of the patch baseline.
 	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
-	// The ID of the request.
+	// The token that is used to retrieve the next page of results.
 	NextToken *string `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
-	// The number of entries to return on each page.
-	OperationSystem *string `json:"OperationSystem,omitempty" xml:"OperationSystem,omitempty"`
 	// The type of the operating system. Valid values:
 	//
-	// *   AliyunLinux
 	// *   Windows
 	// *   Ubuntu
-	// *   Centos
+	// *   CentOS
 	// *   Debian
+	// *   AliyunLinux
 	// *   RedhatEnterpriseLinux
 	// *   Anolis
+	// *   AlmaLinux
+	OperationSystem *string `json:"OperationSystem,omitempty" xml:"OperationSystem,omitempty"`
+	// The ID of the region.
 	RegionId        *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	ResourceGroupld *string `json:"ResourceGroupld,omitempty" xml:"ResourceGroupld,omitempty"`
-	// The token that is used to retrieve the next page of results.
-	ShareType *string                          `json:"ShareType,omitempty" xml:"ShareType,omitempty"`
-	Sources   []*string                        `json:"Sources,omitempty" xml:"Sources,omitempty" type:"Repeated"`
-	Tags      []*ListPatchBaselinesRequestTags `json:"Tags,omitempty" xml:"Tags,omitempty" type:"Repeated"`
+	ResourceGroupId *string `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
+	// The share type of the template. Valid values:
+	//
+	// *   **Public**
+	// *   **Private**
+	ShareType *string `json:"ShareType,omitempty" xml:"ShareType,omitempty"`
+	// The list of patch source configurations.
+	Sources []*string `json:"Sources,omitempty" xml:"Sources,omitempty" type:"Repeated"`
+	// The tags.
+	Tags []*ListPatchBaselinesRequestTags `json:"Tags,omitempty" xml:"Tags,omitempty" type:"Repeated"`
 }
 
 func (s ListPatchBaselinesRequest) String() string {
@@ -9589,8 +9659,8 @@ func (s *ListPatchBaselinesRequest) SetRegionId(v string) *ListPatchBaselinesReq
 	return s
 }
 
-func (s *ListPatchBaselinesRequest) SetResourceGroupld(v string) *ListPatchBaselinesRequest {
-	s.ResourceGroupld = &v
+func (s *ListPatchBaselinesRequest) SetResourceGroupId(v string) *ListPatchBaselinesRequest {
+	s.ResourceGroupId = &v
 	return s
 }
 
@@ -9610,7 +9680,9 @@ func (s *ListPatchBaselinesRequest) SetTags(v []*ListPatchBaselinesRequestTags) 
 }
 
 type ListPatchBaselinesRequestTags struct {
-	Key   *string `json:"Key,omitempty" xml:"Key,omitempty"`
+	// The tag key.
+	Key *string `json:"Key,omitempty" xml:"Key,omitempty"`
+	// The tag value.
 	Value *string `json:"Value,omitempty" xml:"Value,omitempty"`
 }
 
@@ -9633,31 +9705,39 @@ func (s *ListPatchBaselinesRequestTags) SetValue(v string) *ListPatchBaselinesRe
 }
 
 type ListPatchBaselinesShrinkRequest struct {
-	ApprovedPatchesShrink            *string `json:"ApprovedPatches,omitempty" xml:"ApprovedPatches,omitempty"`
-	ApprovedPatchesEnableNonSecurity *bool   `json:"ApprovedPatchesEnableNonSecurity,omitempty" xml:"ApprovedPatchesEnableNonSecurity,omitempty"`
-	// The token that is used to retrieve the next page of results.
+	// The approved patches.
+	ApprovedPatchesShrink *string `json:"ApprovedPatches,omitempty" xml:"ApprovedPatches,omitempty"`
+	// Whether the approved patch includes updates other than security.
+	ApprovedPatchesEnableNonSecurity *bool `json:"ApprovedPatchesEnableNonSecurity,omitempty" xml:"ApprovedPatchesEnableNonSecurity,omitempty"`
+	// The number of entries returned per page.
 	MaxResults *int32 `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
-	// The share type of the patch baseline.
+	// The name of the patch baseline.
 	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
-	// The ID of the request.
+	// The token that is used to retrieve the next page of results.
 	NextToken *string `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
-	// The number of entries to return on each page.
-	OperationSystem *string `json:"OperationSystem,omitempty" xml:"OperationSystem,omitempty"`
 	// The type of the operating system. Valid values:
 	//
-	// *   AliyunLinux
 	// *   Windows
 	// *   Ubuntu
-	// *   Centos
+	// *   CentOS
 	// *   Debian
+	// *   AliyunLinux
 	// *   RedhatEnterpriseLinux
 	// *   Anolis
+	// *   AlmaLinux
+	OperationSystem *string `json:"OperationSystem,omitempty" xml:"OperationSystem,omitempty"`
+	// The ID of the region.
 	RegionId        *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	ResourceGroupld *string `json:"ResourceGroupld,omitempty" xml:"ResourceGroupld,omitempty"`
-	// The token that is used to retrieve the next page of results.
-	ShareType     *string `json:"ShareType,omitempty" xml:"ShareType,omitempty"`
+	ResourceGroupId *string `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
+	// The share type of the template. Valid values:
+	//
+	// *   **Public**
+	// *   **Private**
+	ShareType *string `json:"ShareType,omitempty" xml:"ShareType,omitempty"`
+	// The list of patch source configurations.
 	SourcesShrink *string `json:"Sources,omitempty" xml:"Sources,omitempty"`
-	TagsShrink    *string `json:"Tags,omitempty" xml:"Tags,omitempty"`
+	// The tags.
+	TagsShrink *string `json:"Tags,omitempty" xml:"Tags,omitempty"`
 }
 
 func (s ListPatchBaselinesShrinkRequest) String() string {
@@ -9703,8 +9783,8 @@ func (s *ListPatchBaselinesShrinkRequest) SetRegionId(v string) *ListPatchBaseli
 	return s
 }
 
-func (s *ListPatchBaselinesShrinkRequest) SetResourceGroupld(v string) *ListPatchBaselinesShrinkRequest {
-	s.ResourceGroupld = &v
+func (s *ListPatchBaselinesShrinkRequest) SetResourceGroupId(v string) *ListPatchBaselinesShrinkRequest {
+	s.ResourceGroupId = &v
 	return s
 }
 
@@ -9763,8 +9843,10 @@ func (s *ListPatchBaselinesResponseBody) SetRequestId(v string) *ListPatchBaseli
 }
 
 type ListPatchBaselinesResponseBodyPatchBaselines struct {
-	ApprovedPatches                  []*string `json:"ApprovedPatches,omitempty" xml:"ApprovedPatches,omitempty" type:"Repeated"`
-	ApprovedPatchesEnableNonSecurity *bool     `json:"ApprovedPatchesEnableNonSecurity,omitempty" xml:"ApprovedPatchesEnableNonSecurity,omitempty"`
+	// 批准补丁的列表。
+	ApprovedPatches []*string `json:"ApprovedPatches,omitempty" xml:"ApprovedPatches,omitempty" type:"Repeated"`
+	// 批准补丁是否包括除安全性之外的更新
+	ApprovedPatchesEnableNonSecurity *bool `json:"ApprovedPatchesEnableNonSecurity,omitempty" xml:"ApprovedPatchesEnableNonSecurity,omitempty"`
 	// The name of the patch baseline.
 	CreatedBy *string `json:"CreatedBy,omitempty" xml:"CreatedBy,omitempty"`
 	// The ID of the patch baseline.
@@ -9779,11 +9861,13 @@ type ListPatchBaselinesResponseBodyPatchBaselines struct {
 	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
 	// The description of the patch baseline.
 	OperationSystem *string `json:"OperationSystem,omitempty" xml:"OperationSystem,omitempty"`
-	ResourceGroupld *string `json:"ResourceGroupld,omitempty" xml:"ResourceGroupld,omitempty"`
+	ResourceGroupId *string `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
 	// Queries the details of patch baselines.
-	ShareType *string                                             `json:"ShareType,omitempty" xml:"ShareType,omitempty"`
-	Sources   []*string                                           `json:"Sources,omitempty" xml:"Sources,omitempty" type:"Repeated"`
-	Tags      []*ListPatchBaselinesResponseBodyPatchBaselinesTags `json:"Tags,omitempty" xml:"Tags,omitempty" type:"Repeated"`
+	ShareType *string `json:"ShareType,omitempty" xml:"ShareType,omitempty"`
+	// 补丁源配置列表。
+	Sources []*string `json:"Sources,omitempty" xml:"Sources,omitempty" type:"Repeated"`
+	// 标签。
+	Tags []*ListPatchBaselinesResponseBodyPatchBaselinesTags `json:"Tags,omitempty" xml:"Tags,omitempty" type:"Repeated"`
 	// The time when the patch baseline was created.
 	UpdatedBy *string `json:"UpdatedBy,omitempty" xml:"UpdatedBy,omitempty"`
 	// The creator of the patch baseline.
@@ -9843,8 +9927,8 @@ func (s *ListPatchBaselinesResponseBodyPatchBaselines) SetOperationSystem(v stri
 	return s
 }
 
-func (s *ListPatchBaselinesResponseBodyPatchBaselines) SetResourceGroupld(v string) *ListPatchBaselinesResponseBodyPatchBaselines {
-	s.ResourceGroupld = &v
+func (s *ListPatchBaselinesResponseBodyPatchBaselines) SetResourceGroupId(v string) *ListPatchBaselinesResponseBodyPatchBaselines {
+	s.ResourceGroupId = &v
 	return s
 }
 
@@ -9874,7 +9958,9 @@ func (s *ListPatchBaselinesResponseBodyPatchBaselines) SetUpdatedDate(v string) 
 }
 
 type ListPatchBaselinesResponseBodyPatchBaselinesTags struct {
-	TagKey   *string `json:"TagKey,omitempty" xml:"TagKey,omitempty"`
+	// 标签键。
+	TagKey *string `json:"TagKey,omitempty" xml:"TagKey,omitempty"`
+	// 标签值。
 	TagValue *string `json:"TagValue,omitempty" xml:"TagValue,omitempty"`
 }
 
@@ -10079,7 +10165,7 @@ func (s *ListResourceExecutionStatusResponse) SetBody(v *ListResourceExecutionSt
 }
 
 type ListSecretParameterVersionsRequest struct {
-	// The number of entries to return on each page. Valid values: 10 to 100. Default value: 50.
+	// The number of entries per page. Valid values: 10 to 100. Default value: 50.
 	MaxResults *int32 `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
 	// The name of the encryption parameter.
 	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
@@ -10288,7 +10374,7 @@ func (s *ListSecretParameterVersionsResponse) SetBody(v *ListSecretParameterVers
 }
 
 type ListSecretParametersRequest struct {
-	// The number of entries to return on each page. Valid values: 10 to 100. Default value: 50.
+	// The number of entries per page. Valid values: 10 to 100. Default value: 50.
 	MaxResults *int32 `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
 	// The name of the parameter. **You can enter a keyword to query parameter names in fuzzy match mode.
 	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
@@ -10375,7 +10461,7 @@ func (s *ListSecretParametersRequest) SetTags(v map[string]interface{}) *ListSec
 }
 
 type ListSecretParametersShrinkRequest struct {
-	// The number of entries to return on each page. Valid values: 10 to 100. Default value: 50.
+	// The number of entries per page. Valid values: 10 to 100. Default value: 50.
 	MaxResults *int32 `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
 	// The name of the parameter. **You can enter a keyword to query parameter names in fuzzy match mode.
 	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
@@ -10632,21 +10718,21 @@ func (s *ListSecretParametersResponse) SetBody(v *ListSecretParametersResponseBo
 }
 
 type ListStateConfigurationsRequest struct {
-	// The maximum number of entries to return on each page.
+	// The maximum number of entries per page.
 	MaxResults *int32 `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
-	// The token of the next page.
+	// A pagination token. It can be used in the next request to retrieve a new page of results.
 	NextToken *string `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
-	// The ID of the region.
+	// The region ID.
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	// The ID of the resource group.
+	// The resource group ID.
 	ResourceGroupId *string `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
-	// The ID of each desired-state configuration.
+	// The ID of the desired-state configuration.
 	StateConfigurationIds *string `json:"StateConfigurationIds,omitempty" xml:"StateConfigurationIds,omitempty"`
-	// The tag.
+	// The tags to be added to the configuration.
 	Tags map[string]interface{} `json:"Tags,omitempty" xml:"Tags,omitempty"`
-	// The name of the template. The name must be 1 to 200 characters in length, and can contain letters, digits, hyphens (-), and underscores (\_).
+	// The name of the template. The name must be 1 to 200 characters in length and can contain letters, digits, hyphens (-), and underscores (\_).
 	TemplateName *string `json:"TemplateName,omitempty" xml:"TemplateName,omitempty"`
-	// The version number. If you do not specify this parameter, the system uses the latest version.
+	// The version number of the template. If you do not specify this parameter, the latest version of the template is used.
 	TemplateVersion *string `json:"TemplateVersion,omitempty" xml:"TemplateVersion,omitempty"`
 }
 
@@ -10699,21 +10785,21 @@ func (s *ListStateConfigurationsRequest) SetTemplateVersion(v string) *ListState
 }
 
 type ListStateConfigurationsShrinkRequest struct {
-	// The maximum number of entries to return on each page.
+	// The maximum number of entries per page.
 	MaxResults *int32 `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
-	// The token of the next page.
+	// A pagination token. It can be used in the next request to retrieve a new page of results.
 	NextToken *string `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
-	// The ID of the region.
+	// The region ID.
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	// The ID of the resource group.
+	// The resource group ID.
 	ResourceGroupId *string `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
-	// The ID of each desired-state configuration.
+	// The ID of the desired-state configuration.
 	StateConfigurationIds *string `json:"StateConfigurationIds,omitempty" xml:"StateConfigurationIds,omitempty"`
-	// The tag.
+	// The tags to be added to the configuration.
 	TagsShrink *string `json:"Tags,omitempty" xml:"Tags,omitempty"`
-	// The name of the template. The name must be 1 to 200 characters in length, and can contain letters, digits, hyphens (-), and underscores (\_).
+	// The name of the template. The name must be 1 to 200 characters in length and can contain letters, digits, hyphens (-), and underscores (\_).
 	TemplateName *string `json:"TemplateName,omitempty" xml:"TemplateName,omitempty"`
-	// The version number. If you do not specify this parameter, the system uses the latest version.
+	// The version number of the template. If you do not specify this parameter, the latest version of the template is used.
 	TemplateVersion *string `json:"TemplateVersion,omitempty" xml:"TemplateVersion,omitempty"`
 }
 
@@ -10766,11 +10852,11 @@ func (s *ListStateConfigurationsShrinkRequest) SetTemplateVersion(v string) *Lis
 }
 
 type ListStateConfigurationsResponseBody struct {
-	// The token that is used to retrieve the next page of results.
+	// The pagination token that was used in the next request to retrieve a new page of results.
 	NextToken *string `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
-	// The ID of the request.
+	// The request ID.
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// The desired-state configurations.
+	// The information about the desired-state configurations.
 	StateConfigurations []*ListStateConfigurationsResponseBodyStateConfigurations `json:"StateConfigurations,omitempty" xml:"StateConfigurations,omitempty" type:"Repeated"`
 }
 
@@ -10798,15 +10884,15 @@ func (s *ListStateConfigurationsResponseBody) SetStateConfigurations(v []*ListSt
 }
 
 type ListStateConfigurationsResponseBodyStateConfigurations struct {
-	// The configuration mode.
+	// The configuration mode. Valid values:
 	ConfigureMode *string `json:"ConfigureMode,omitempty" xml:"ConfigureMode,omitempty"`
-	// The creation time.
+	// The time when the desired-state configuration was created.
 	CreateTime *string `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
 	// The description.
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
 	// The parameters.
 	Parameters *string `json:"Parameters,omitempty" xml:"Parameters,omitempty"`
-	// The ID of the resource group.
+	// The resource group ID.
 	ResourceGroupId *string `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
 	// The schedule expression.
 	ScheduleExpression *string `json:"ScheduleExpression,omitempty" xml:"ScheduleExpression,omitempty"`
@@ -10814,17 +10900,17 @@ type ListStateConfigurationsResponseBodyStateConfigurations struct {
 	ScheduleType *string `json:"ScheduleType,omitempty" xml:"ScheduleType,omitempty"`
 	// The ID of the desired-state configuration.
 	StateConfigurationId *string `json:"StateConfigurationId,omitempty" xml:"StateConfigurationId,omitempty"`
-	// The tag of the auxiliary media asset.
+	// The tags added to the configuration.
 	Tags map[string]interface{} `json:"Tags,omitempty" xml:"Tags,omitempty"`
-	// The target EMR resource.
+	// The queried resources.
 	Targets *string `json:"Targets,omitempty" xml:"Targets,omitempty"`
-	// The ID of the cluster template.
+	// The template ID.
 	TemplateId *string `json:"TemplateId,omitempty" xml:"TemplateId,omitempty"`
 	// The name of the template.
 	TemplateName *string `json:"TemplateName,omitempty" xml:"TemplateName,omitempty"`
 	// The version of the template.
 	TemplateVersion *string `json:"TemplateVersion,omitempty" xml:"TemplateVersion,omitempty"`
-	// The time when the configuration is updated.
+	// The time when the configuration was updated.
 	UpdateTime *string `json:"UpdateTime,omitempty" xml:"UpdateTime,omitempty"`
 }
 
@@ -11708,11 +11794,11 @@ func (s *ListTaskExecutionsResponse) SetBody(v *ListTaskExecutionsResponseBody) 
 }
 
 type ListTemplateVersionsRequest struct {
-	// The maximum number of results on each page. Valid values: 10 to 100
+	// The number of entries per page. Valid values: 10 to 100
 	MaxResults *int32 `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
-	// The token that is used to retrieve the next page of results.
+	// A pagination token. It can be used in the next request to retrieve a new page of results.
 	NextToken *string `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
-	// The ID of the region.
+	// The region ID.
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 	// The type of the template. Valid values: Private and Public.
 	ShareType *string `json:"ShareType,omitempty" xml:"ShareType,omitempty"`
@@ -11754,11 +11840,11 @@ func (s *ListTemplateVersionsRequest) SetTemplateName(v string) *ListTemplateVer
 }
 
 type ListTemplateVersionsResponseBody struct {
-	// The maximum number of results on each page.
+	// The number of entries per page.
 	MaxResults *int32 `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
-	// The token that is used to retrieve the next page of results.
+	// A pagination token. It can be used in the next request to retrieve a new page of results.
 	NextToken *string `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
-	// The ID of the request.
+	// The request ID.
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	// The versions of the template.
 	TemplateVersions []*ListTemplateVersionsResponseBodyTemplateVersions `json:"TemplateVersions,omitempty" xml:"TemplateVersions,omitempty" type:"Repeated"`
@@ -12683,7 +12769,7 @@ type SearchInventoryRequest struct {
 	Aggregator []*string `json:"Aggregator,omitempty" xml:"Aggregator,omitempty" type:"Repeated"`
 	// The filter rules for the component.
 	Filter []*SearchInventoryRequestFilter `json:"Filter,omitempty" xml:"Filter,omitempty" type:"Repeated"`
-	// The number of entries to return on each page. Valid values: 1 to 100. Default value: 50.
+	// The number of entries per page. Valid values: 1 to 100. Default value: 50.
 	MaxResults *int32 `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
 	// The token that is used to retrieve the next page of results.
 	NextToken *string `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
@@ -13487,13 +13573,26 @@ func (s *StartExecutionResponse) SetBody(v *StartExecutionResponseBody) *StartEx
 }
 
 type TagResourcesRequest struct {
-	// The ID of the request.
+	// The region ID.
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	// The operation that you want to perform. Set the value to TagResources.
+	// The IDs of the resources for which you want to modify the resource group. The number of resource IDs is 1 to 50.
+	//
+	// *   If you set ResourceType to template, specify ResourceIds in the \["TemplateName1","TemplateName2"] format.
+	// *   If you set ResourceType to parameter, specify ResourceIds in the \["Name1","Name2"] format.
+	// *   If you set ResourceType to secretparameter, specify ResourceIds in the \["Name1","Name2"] format.
+	// *   If you set ResourceType to stateconfiguration, specify ResourceIds in the \["StateConfigurationId 1","StateConfigurationId 2"] format.
+	// *   If you set ResourceType to application, specify ResourceIds in the \["Name1","Name2"] format.
 	ResourceIds map[string]interface{} `json:"ResourceIds,omitempty" xml:"ResourceIds,omitempty"`
-	// The IDs of resources. The number of resource IDs ranges from 1 to 50.
-	ResourceType *string                `json:"ResourceType,omitempty" xml:"ResourceType,omitempty"`
-	Tags         map[string]interface{} `json:"Tags,omitempty" xml:"Tags,omitempty"`
+	// The type of the resource for which you want to modify the resource group. Valid values:
+	//
+	// *   template: template.
+	// *   parameter: parameter.
+	// *   secretparameter: encryption parameter.
+	// *   stateconfiguration: desired-state configuration.
+	// *   application: application.
+	ResourceType *string `json:"ResourceType,omitempty" xml:"ResourceType,omitempty"`
+	// The tag keys and values. The number of key-value pairs ranges from 1 to 20.
+	Tags map[string]interface{} `json:"Tags,omitempty" xml:"Tags,omitempty"`
 }
 
 func (s TagResourcesRequest) String() string {
@@ -13525,13 +13624,26 @@ func (s *TagResourcesRequest) SetTags(v map[string]interface{}) *TagResourcesReq
 }
 
 type TagResourcesShrinkRequest struct {
-	// The ID of the request.
+	// The region ID.
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	// The operation that you want to perform. Set the value to TagResources.
+	// The IDs of the resources for which you want to modify the resource group. The number of resource IDs is 1 to 50.
+	//
+	// *   If you set ResourceType to template, specify ResourceIds in the \["TemplateName1","TemplateName2"] format.
+	// *   If you set ResourceType to parameter, specify ResourceIds in the \["Name1","Name2"] format.
+	// *   If you set ResourceType to secretparameter, specify ResourceIds in the \["Name1","Name2"] format.
+	// *   If you set ResourceType to stateconfiguration, specify ResourceIds in the \["StateConfigurationId 1","StateConfigurationId 2"] format.
+	// *   If you set ResourceType to application, specify ResourceIds in the \["Name1","Name2"] format.
 	ResourceIdsShrink *string `json:"ResourceIds,omitempty" xml:"ResourceIds,omitempty"`
-	// The IDs of resources. The number of resource IDs ranges from 1 to 50.
+	// The type of the resource for which you want to modify the resource group. Valid values:
+	//
+	// *   template: template.
+	// *   parameter: parameter.
+	// *   secretparameter: encryption parameter.
+	// *   stateconfiguration: desired-state configuration.
+	// *   application: application.
 	ResourceType *string `json:"ResourceType,omitempty" xml:"ResourceType,omitempty"`
-	TagsShrink   *string `json:"Tags,omitempty" xml:"Tags,omitempty"`
+	// The tag keys and values. The number of key-value pairs ranges from 1 to 20.
+	TagsShrink *string `json:"Tags,omitempty" xml:"Tags,omitempty"`
 }
 
 func (s TagResourcesShrinkRequest) String() string {
@@ -13563,6 +13675,7 @@ func (s *TagResourcesShrinkRequest) SetTagsShrink(v string) *TagResourcesShrinkR
 }
 
 type TagResourcesResponseBody struct {
+	// The request ID.
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -13609,14 +13722,19 @@ func (s *TagResourcesResponse) SetBody(v *TagResourcesResponseBody) *TagResource
 }
 
 type TriggerExecutionRequest struct {
-	ClientToken *string `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
 	// The client token that is used to ensure the idempotence of the request.
-	Content *string `json:"Content,omitempty" xml:"Content,omitempty"`
-	// The ID of the request.
-	ExecutionId *string `json:"ExecutionId,omitempty" xml:"ExecutionId,omitempty"`
+	ClientToken *string `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
 	// The message body to be sent to the trigger task.
+	Content *string `json:"Content,omitempty" xml:"Content,omitempty"`
+	// The ID of the event-, alert-, or timer-triggered execution.
+	ExecutionId *string `json:"ExecutionId,omitempty" xml:"ExecutionId,omitempty"`
+	// The region ID.
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	// The operation that you want to perform. Set the value to TriggerExecution.
+	// The type of the trigger. Valid values:
+	//
+	// *   Event
+	// *   Alarm
+	// *   Timer
 	Type *string `json:"Type,omitempty" xml:"Type,omitempty"`
 }
 
@@ -13654,6 +13772,7 @@ func (s *TriggerExecutionRequest) SetType(v string) *TriggerExecutionRequest {
 }
 
 type TriggerExecutionResponseBody struct {
+	// The request ID.
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -13700,13 +13819,28 @@ func (s *TriggerExecutionResponse) SetBody(v *TriggerExecutionResponseBody) *Tri
 }
 
 type UntagResourcesRequest struct {
+	// Specifies whether to remove all tags. This parameter takes effect only if TagKeys is left empty. Valid values: true and false. Default value: false. TagKeys is required if this parameter is set to false.
 	All *bool `json:"All,omitempty" xml:"All,omitempty"`
-	// Specifies whether to delete all tags. This parameter takes effect only when the TagKeys parameter is not specified. Valid values: true and false. Default value: false. The TagKeys parameter is required when this parameter is set to false.
+	// The region ID.
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	// You can call this operation to delete tags that are attached to one or more resources.
-	ResourceIds  map[string]interface{} `json:"ResourceIds,omitempty" xml:"ResourceIds,omitempty"`
-	ResourceType *string                `json:"ResourceType,omitempty" xml:"ResourceType,omitempty"`
-	TagKeys      map[string]interface{} `json:"TagKeys,omitempty" xml:"TagKeys,omitempty"`
+	// The IDs of the resources for which you want to modify the resource group. The number of resource IDs is 1 to 50.
+	//
+	// *   If you set ResourceType to template, specify ResourceIds in the \["TemplateName1","TemplateName2"] format.
+	// *   If you set ResourceType to parameter, specify ResourceIds in the \["Name1","Name2"] format.
+	// *   If you set ResourceType to secretparameter, specify ResourceIds in the \["Name1","Name2"] format.
+	// *   If you set ResourceType to stateconfiguration, specify ResourceIds in the \["StateConfigurationId 1","StateConfigurationId 2"] format.
+	// *   If you set ResourceType to application, specify ResourceIds in the \["Name1","Name2"] format.
+	ResourceIds map[string]interface{} `json:"ResourceIds,omitempty" xml:"ResourceIds,omitempty"`
+	// The type of the resource for which you want to modify the resource group. Valid values:
+	//
+	// *   template: template.
+	// *   parameter: parameter.
+	// *   secretparameter: encryption parameter.
+	// *   stateconfiguration: desired-state configuration.
+	// *   application: application.
+	ResourceType *string `json:"ResourceType,omitempty" xml:"ResourceType,omitempty"`
+	// The tag keys. The number of keys ranges from 1 to 20.
+	TagKeys map[string]interface{} `json:"TagKeys,omitempty" xml:"TagKeys,omitempty"`
 }
 
 func (s UntagResourcesRequest) String() string {
@@ -13743,13 +13877,28 @@ func (s *UntagResourcesRequest) SetTagKeys(v map[string]interface{}) *UntagResou
 }
 
 type UntagResourcesShrinkRequest struct {
+	// Specifies whether to remove all tags. This parameter takes effect only if TagKeys is left empty. Valid values: true and false. Default value: false. TagKeys is required if this parameter is set to false.
 	All *bool `json:"All,omitempty" xml:"All,omitempty"`
-	// Specifies whether to delete all tags. This parameter takes effect only when the TagKeys parameter is not specified. Valid values: true and false. Default value: false. The TagKeys parameter is required when this parameter is set to false.
+	// The region ID.
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	// You can call this operation to delete tags that are attached to one or more resources.
+	// The IDs of the resources for which you want to modify the resource group. The number of resource IDs is 1 to 50.
+	//
+	// *   If you set ResourceType to template, specify ResourceIds in the \["TemplateName1","TemplateName2"] format.
+	// *   If you set ResourceType to parameter, specify ResourceIds in the \["Name1","Name2"] format.
+	// *   If you set ResourceType to secretparameter, specify ResourceIds in the \["Name1","Name2"] format.
+	// *   If you set ResourceType to stateconfiguration, specify ResourceIds in the \["StateConfigurationId 1","StateConfigurationId 2"] format.
+	// *   If you set ResourceType to application, specify ResourceIds in the \["Name1","Name2"] format.
 	ResourceIdsShrink *string `json:"ResourceIds,omitempty" xml:"ResourceIds,omitempty"`
-	ResourceType      *string `json:"ResourceType,omitempty" xml:"ResourceType,omitempty"`
-	TagKeysShrink     *string `json:"TagKeys,omitempty" xml:"TagKeys,omitempty"`
+	// The type of the resource for which you want to modify the resource group. Valid values:
+	//
+	// *   template: template.
+	// *   parameter: parameter.
+	// *   secretparameter: encryption parameter.
+	// *   stateconfiguration: desired-state configuration.
+	// *   application: application.
+	ResourceType *string `json:"ResourceType,omitempty" xml:"ResourceType,omitempty"`
+	// The tag keys. The number of keys ranges from 1 to 20.
+	TagKeysShrink *string `json:"TagKeys,omitempty" xml:"TagKeys,omitempty"`
 }
 
 func (s UntagResourcesShrinkRequest) String() string {
@@ -13786,6 +13935,7 @@ func (s *UntagResourcesShrinkRequest) SetTagKeysShrink(v string) *UntagResources
 }
 
 type UntagResourcesResponseBody struct {
+	// The request ID.
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -14232,14 +14382,16 @@ func (s *UpdateApplicationGroupResponse) SetBody(v *UpdateApplicationGroupRespon
 type UpdateExecutionRequest struct {
 	// The description of the execution.
 	ClientToken *string `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
-	// 执行的描述。
+	// The description of the execution.
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
 	// The ID of the execution.
 	ExecutionId *string `json:"ExecutionId,omitempty" xml:"ExecutionId,omitempty"`
-	// A JSON string consisting of a collection of parameters. Default value: {}.
+	// The information about the parameters.
 	Parameters *string `json:"Parameters,omitempty" xml:"Parameters,omitempty"`
 	// The ID of the region.
-	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	RegionId        *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	ResourceGroupId *string `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
+	Tags            *string `json:"Tags,omitempty" xml:"Tags,omitempty"`
 }
 
 func (s UpdateExecutionRequest) String() string {
@@ -14272,6 +14424,16 @@ func (s *UpdateExecutionRequest) SetParameters(v string) *UpdateExecutionRequest
 
 func (s *UpdateExecutionRequest) SetRegionId(v string) *UpdateExecutionRequest {
 	s.RegionId = &v
+	return s
+}
+
+func (s *UpdateExecutionRequest) SetResourceGroupId(v string) *UpdateExecutionRequest {
+	s.ResourceGroupId = &v
+	return s
+}
+
+func (s *UpdateExecutionRequest) SetTags(v string) *UpdateExecutionRequest {
+	s.Tags = &v
 	return s
 }
 
@@ -14690,17 +14852,17 @@ func (s *UpdateOpsItemResponse) SetBody(v *UpdateOpsItemResponseBody) *UpdateOps
 }
 
 type UpdateParameterRequest struct {
-	// The ID of the common parameter.
+	// The description of the common parameter. The description must be 1 to 200 characters in length.
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
-	// The data type of the common parameter.
+	// The name of the common parameter. The name must be 1 to 200 characters in length, and can contain letters, digits, hyphens (-), and underscores (\_). It cannot start with ALIYUN, ACS, ALIBABA, ALICLOUD, or OOS.
 	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
-	// The version number of the common parameter.
+	// The region ID.
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	// The operation that you want to perform. Set the value to UpdateParameter.
+	// The resource group ID.
 	ResourceGroupId *string `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
-	// The name of the common parameter.
+	// The tags to be added to common parameter.
 	Tags *string `json:"Tags,omitempty" xml:"Tags,omitempty"`
-	// The value of the common parameter. The value must be 1 to 4096 characters in length.
+	// The value of the common parameter. The value must be 1 to 4,096 characters in length.
 	Value *string `json:"Value,omitempty" xml:"Value,omitempty"`
 }
 
@@ -14743,9 +14905,9 @@ func (s *UpdateParameterRequest) SetValue(v string) *UpdateParameterRequest {
 }
 
 type UpdateParameterResponseBody struct {
-	// The user who created the common parameter.
+	// The information about the common parameter.
 	Parameter *UpdateParameterResponseBodyParameter `json:"Parameter,omitempty" xml:"Parameter,omitempty" type:"Struct"`
-	// The time when the common parameter was updated.
+	// The request ID.
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -14768,25 +14930,31 @@ func (s *UpdateParameterResponseBody) SetRequestId(v string) *UpdateParameterRes
 }
 
 type UpdateParameterResponseBodyParameter struct {
-	// The ID of the request.
+	// The constraints of the common parameter.
 	Constraints *string `json:"Constraints,omitempty" xml:"Constraints,omitempty"`
-	CreatedBy   *string `json:"CreatedBy,omitempty" xml:"CreatedBy,omitempty"`
+	// The user who created the common parameter.
+	CreatedBy *string `json:"CreatedBy,omitempty" xml:"CreatedBy,omitempty"`
+	// The time when the common parameter was created.
 	CreatedDate *string `json:"CreatedDate,omitempty" xml:"CreatedDate,omitempty"`
-	// The description of the common parameter. The description must be 1 to 200 characters in length.
-	Description      *string `json:"Description,omitempty" xml:"Description,omitempty"`
-	Id               *string `json:"Id,omitempty" xml:"Id,omitempty"`
-	Name             *string `json:"Name,omitempty" xml:"Name,omitempty"`
-	ParameterVersion *int32  `json:"ParameterVersion,omitempty" xml:"ParameterVersion,omitempty"`
-	// Updates a common parameter.
-	ResourceGroupId *string `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
-	ShareType       *string `json:"ShareType,omitempty" xml:"ShareType,omitempty"`
-	// The information of the common parameter.
-	Tags *string `json:"Tags,omitempty" xml:"Tags,omitempty"`
-	// The user who updated the common parameter.
-	Type *string `json:"Type,omitempty" xml:"Type,omitempty"`
-	// The region ID of the resource.
-	UpdatedBy *string `json:"UpdatedBy,omitempty" xml:"UpdatedBy,omitempty"`
 	// The description of the common parameter.
+	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
+	// The parameter ID.
+	Id *string `json:"Id,omitempty" xml:"Id,omitempty"`
+	// The name of the common parameter.
+	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// The version number of the common parameter.
+	ParameterVersion *int32 `json:"ParameterVersion,omitempty" xml:"ParameterVersion,omitempty"`
+	// The resource group ID.
+	ResourceGroupId *string `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
+	// The share type of the common parameter.
+	ShareType *string `json:"ShareType,omitempty" xml:"ShareType,omitempty"`
+	// The tag added to the common parameter.
+	Tags *string `json:"Tags,omitempty" xml:"Tags,omitempty"`
+	// The data type of the common parameter.
+	Type *string `json:"Type,omitempty" xml:"Type,omitempty"`
+	// The user who updated the common parameter.
+	UpdatedBy *string `json:"UpdatedBy,omitempty" xml:"UpdatedBy,omitempty"`
+	// The time when the common parameter was updated.
 	UpdatedDate *string `json:"UpdatedDate,omitempty" xml:"UpdatedDate,omitempty"`
 }
 
@@ -15561,27 +15729,27 @@ func (s *UpdateSecretParameterResponse) SetBody(v *UpdateSecretParameterResponse
 }
 
 type UpdateStateConfigurationRequest struct {
-	// The schedule type.
+	// The client token that is used to ensure the idempotence of the request.
 	ClientToken *string `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
-	// The description of the desired-state configuration.
+	// The configuration mode. Valid values: ApplyOnce: The configuration is applied only once. After a configuration is updated, the new configuration is applied. ApplyAndMonitor: The configuration is applied only once. After the configuration is applied, the system only checks whether the configuration is migrated in the future. ApplyAndAutoCorrect: The configuration is always applied.
 	ConfigureMode *string `json:"ConfigureMode,omitempty" xml:"ConfigureMode,omitempty"`
-	// The schedule expression.
+	// The description.
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
-	// The ID of the region.
-	Parameters map[string]interface{} `json:"Parameters,omitempty" xml:"Parameters,omitempty"`
-	// The configuration mode.
-	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 	// The parameters.
+	Parameters map[string]interface{} `json:"Parameters,omitempty" xml:"Parameters,omitempty"`
+	// The region ID.
+	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	// The resource group ID.
 	ResourceGroupId *string `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
-	// The name of the template.
+	// The schedule expression.
 	ScheduleExpression *string `json:"ScheduleExpression,omitempty" xml:"ScheduleExpression,omitempty"`
-	// The ID of the resource group.
+	// The schedule type.
 	ScheduleType *string `json:"ScheduleType,omitempty" xml:"ScheduleType,omitempty"`
 	// The ID of the desired-state configuration.
 	StateConfigurationId *string `json:"StateConfigurationId,omitempty" xml:"StateConfigurationId,omitempty"`
-	// The tag.
+	// The tags to be added to the configuration.
 	Tags map[string]interface{} `json:"Tags,omitempty" xml:"Tags,omitempty"`
-	// The required resources.
+	// The resources to be queried.
 	Targets *string `json:"Targets,omitempty" xml:"Targets,omitempty"`
 }
 
@@ -15649,27 +15817,27 @@ func (s *UpdateStateConfigurationRequest) SetTargets(v string) *UpdateStateConfi
 }
 
 type UpdateStateConfigurationShrinkRequest struct {
-	// The schedule type.
+	// The client token that is used to ensure the idempotence of the request.
 	ClientToken *string `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
-	// The description of the desired-state configuration.
+	// The configuration mode. Valid values: ApplyOnce: The configuration is applied only once. After a configuration is updated, the new configuration is applied. ApplyAndMonitor: The configuration is applied only once. After the configuration is applied, the system only checks whether the configuration is migrated in the future. ApplyAndAutoCorrect: The configuration is always applied.
 	ConfigureMode *string `json:"ConfigureMode,omitempty" xml:"ConfigureMode,omitempty"`
-	// The schedule expression.
+	// The description.
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
-	// The ID of the region.
-	ParametersShrink *string `json:"Parameters,omitempty" xml:"Parameters,omitempty"`
-	// The configuration mode.
-	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 	// The parameters.
+	ParametersShrink *string `json:"Parameters,omitempty" xml:"Parameters,omitempty"`
+	// The region ID.
+	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	// The resource group ID.
 	ResourceGroupId *string `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
-	// The name of the template.
+	// The schedule expression.
 	ScheduleExpression *string `json:"ScheduleExpression,omitempty" xml:"ScheduleExpression,omitempty"`
-	// The ID of the resource group.
+	// The schedule type.
 	ScheduleType *string `json:"ScheduleType,omitempty" xml:"ScheduleType,omitempty"`
 	// The ID of the desired-state configuration.
 	StateConfigurationId *string `json:"StateConfigurationId,omitempty" xml:"StateConfigurationId,omitempty"`
-	// The tag.
+	// The tags to be added to the configuration.
 	TagsShrink *string `json:"Tags,omitempty" xml:"Tags,omitempty"`
-	// The required resources.
+	// The resources to be queried.
 	Targets *string `json:"Targets,omitempty" xml:"Targets,omitempty"`
 }
 
@@ -15737,9 +15905,9 @@ func (s *UpdateStateConfigurationShrinkRequest) SetTargets(v string) *UpdateStat
 }
 
 type UpdateStateConfigurationResponseBody struct {
-	// The idempotency token.
+	// The request ID.
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// The description.
+	// The details of the configuration.
 	StateConfiguration []*UpdateStateConfigurationResponseBodyStateConfiguration `json:"StateConfiguration,omitempty" xml:"StateConfiguration,omitempty" type:"Repeated"`
 }
 
@@ -15762,31 +15930,33 @@ func (s *UpdateStateConfigurationResponseBody) SetStateConfiguration(v []*Update
 }
 
 type UpdateStateConfigurationResponseBodyStateConfiguration struct {
-	// The configuration mode. ApplyOnce: The configuration is applied only once. After a configuration is updated, the new configuration is applied. ApplyAndMonitor: The configuration is applied only once. After the configuration is applied, the system only checks whether the configuration is migrated in the future. ApplyAndAutoCorrect: The configuration is always applied.
+	// The configuration mode. Valid values:
 	ConfigureMode *string `json:"ConfigureMode,omitempty" xml:"ConfigureMode,omitempty"`
-	// The parameters.
+	// The time when the configuration was created.
 	CreateTime *string `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
-	// Updates a desired-state configuration.
+	// The description of the desired-state configuration.
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
-	// The ID of the request.
-	Parameters      *string `json:"Parameters,omitempty" xml:"Parameters,omitempty"`
+	// The parameters.
+	Parameters *string `json:"Parameters,omitempty" xml:"Parameters,omitempty"`
+	// The resource group ID.
 	ResourceGroupId *string `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
-	// The configuration list.
+	// The CRON expression.
 	ScheduleExpression *string `json:"ScheduleExpression,omitempty" xml:"ScheduleExpression,omitempty"`
-	// The update time.
+	// The schedule type.
 	ScheduleType *string `json:"ScheduleType,omitempty" xml:"ScheduleType,omitempty"`
-	// The schedule expression.
-	StateConfigurationId *string `json:"StateConfigurationId,omitempty" xml:"StateConfigurationId,omitempty"`
-	// The ID of the resource group.
-	Tags map[string]interface{} `json:"Tags,omitempty" xml:"Tags,omitempty"`
-	// The required resources.
-	Targets    *string `json:"Targets,omitempty" xml:"Targets,omitempty"`
-	TemplateId *string `json:"TemplateId,omitempty" xml:"TemplateId,omitempty"`
 	// The ID of the desired-state configuration.
+	StateConfigurationId *string `json:"StateConfigurationId,omitempty" xml:"StateConfigurationId,omitempty"`
+	// The tags added to the configuration.
+	Tags map[string]interface{} `json:"Tags,omitempty" xml:"Tags,omitempty"`
+	// The queried resources.
+	Targets *string `json:"Targets,omitempty" xml:"Targets,omitempty"`
+	// The template ID.
+	TemplateId *string `json:"TemplateId,omitempty" xml:"TemplateId,omitempty"`
+	// The name of the template.
 	TemplateName *string `json:"TemplateName,omitempty" xml:"TemplateName,omitempty"`
-	// The ID of the template.
+	// The name of the template version.
 	TemplateVersion *string `json:"TemplateVersion,omitempty" xml:"TemplateVersion,omitempty"`
-	// The version of the template.
+	// The time when the configuration was updated.
 	UpdateTime *string `json:"UpdateTime,omitempty" xml:"UpdateTime,omitempty"`
 }
 
@@ -19497,8 +19667,8 @@ func (client *Client) ListPatchBaselinesWithOptions(tmpReq *ListPatchBaselinesRe
 		query["RegionId"] = request.RegionId
 	}
 
-	if !tea.BoolValue(util.IsUnset(request.ResourceGroupld)) {
-		query["ResourceGroupld"] = request.ResourceGroupld
+	if !tea.BoolValue(util.IsUnset(request.ResourceGroupId)) {
+		query["ResourceGroupId"] = request.ResourceGroupId
 	}
 
 	if !tea.BoolValue(util.IsUnset(request.ShareType)) {
@@ -21031,6 +21201,14 @@ func (client *Client) UpdateExecutionWithOptions(request *UpdateExecutionRequest
 
 	if !tea.BoolValue(util.IsUnset(request.RegionId)) {
 		query["RegionId"] = request.RegionId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ResourceGroupId)) {
+		query["ResourceGroupId"] = request.ResourceGroupId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Tags)) {
+		query["Tags"] = request.Tags
 	}
 
 	req := &openapi.OpenApiRequest{

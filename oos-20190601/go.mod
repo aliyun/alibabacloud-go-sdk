@@ -1,4 +1,4 @@
-module github.com/alibabacloud-go/oos-20190601/v2
+module github.com/alibabacloud-go/oos-20190601/v3
 
 go 1.15
 
