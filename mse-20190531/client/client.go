@@ -154,8 +154,11 @@ func (s *GatewayOptionLogConfigDetails) SetProjectName(v string) *GatewayOptionL
 }
 
 type GatewayOptionTraceDetails struct {
-	Sample       *int64 `json:"Sample,omitempty" xml:"Sample,omitempty"`
-	TraceEnabled *bool  `json:"TraceEnabled,omitempty" xml:"TraceEnabled,omitempty"`
+	Sample       *int64  `json:"Sample,omitempty" xml:"Sample,omitempty"`
+	ServiceId    *int64  `json:"ServiceId,omitempty" xml:"ServiceId,omitempty"`
+	ServicePort  *string `json:"ServicePort,omitempty" xml:"ServicePort,omitempty"`
+	TraceEnabled *bool   `json:"TraceEnabled,omitempty" xml:"TraceEnabled,omitempty"`
+	TraceType    *string `json:"TraceType,omitempty" xml:"TraceType,omitempty"`
 }
 
 func (s GatewayOptionTraceDetails) String() string {
@@ -171,8 +174,23 @@ func (s *GatewayOptionTraceDetails) SetSample(v int64) *GatewayOptionTraceDetail
 	return s
 }
 
+func (s *GatewayOptionTraceDetails) SetServiceId(v int64) *GatewayOptionTraceDetails {
+	s.ServiceId = &v
+	return s
+}
+
+func (s *GatewayOptionTraceDetails) SetServicePort(v string) *GatewayOptionTraceDetails {
+	s.ServicePort = &v
+	return s
+}
+
 func (s *GatewayOptionTraceDetails) SetTraceEnabled(v bool) *GatewayOptionTraceDetails {
 	s.TraceEnabled = &v
+	return s
+}
+
+func (s *GatewayOptionTraceDetails) SetTraceType(v string) *GatewayOptionTraceDetails {
+	s.TraceType = &v
 	return s
 }
 
@@ -45068,6 +45086,248 @@ func (s *UpdateGatewayRouteWafStatusResponse) SetBody(v *UpdateGatewayRouteWafSt
 	return s
 }
 
+type UpdateGatewayServiceCheckRequest struct {
+	AcceptLanguage     *string  `json:"AcceptLanguage,omitempty" xml:"AcceptLanguage,omitempty"`
+	Check              *bool    `json:"Check,omitempty" xml:"Check,omitempty"`
+	ExpectedStatuses   []*int32 `json:"ExpectedStatuses,omitempty" xml:"ExpectedStatuses,omitempty" type:"Repeated"`
+	GatewayUniqueId    *string  `json:"GatewayUniqueId,omitempty" xml:"GatewayUniqueId,omitempty"`
+	HealthyThreshold   *int32   `json:"HealthyThreshold,omitempty" xml:"HealthyThreshold,omitempty"`
+	HttpHost           *string  `json:"HttpHost,omitempty" xml:"HttpHost,omitempty"`
+	HttpPath           *string  `json:"HttpPath,omitempty" xml:"HttpPath,omitempty"`
+	Interval           *int32   `json:"Interval,omitempty" xml:"Interval,omitempty"`
+	Protocol           *string  `json:"Protocol,omitempty" xml:"Protocol,omitempty"`
+	ServiceId          *string  `json:"ServiceId,omitempty" xml:"ServiceId,omitempty"`
+	Timeout            *int32   `json:"Timeout,omitempty" xml:"Timeout,omitempty"`
+	UnhealthyThreshold *int32   `json:"UnhealthyThreshold,omitempty" xml:"UnhealthyThreshold,omitempty"`
+}
+
+func (s UpdateGatewayServiceCheckRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UpdateGatewayServiceCheckRequest) GoString() string {
+	return s.String()
+}
+
+func (s *UpdateGatewayServiceCheckRequest) SetAcceptLanguage(v string) *UpdateGatewayServiceCheckRequest {
+	s.AcceptLanguage = &v
+	return s
+}
+
+func (s *UpdateGatewayServiceCheckRequest) SetCheck(v bool) *UpdateGatewayServiceCheckRequest {
+	s.Check = &v
+	return s
+}
+
+func (s *UpdateGatewayServiceCheckRequest) SetExpectedStatuses(v []*int32) *UpdateGatewayServiceCheckRequest {
+	s.ExpectedStatuses = v
+	return s
+}
+
+func (s *UpdateGatewayServiceCheckRequest) SetGatewayUniqueId(v string) *UpdateGatewayServiceCheckRequest {
+	s.GatewayUniqueId = &v
+	return s
+}
+
+func (s *UpdateGatewayServiceCheckRequest) SetHealthyThreshold(v int32) *UpdateGatewayServiceCheckRequest {
+	s.HealthyThreshold = &v
+	return s
+}
+
+func (s *UpdateGatewayServiceCheckRequest) SetHttpHost(v string) *UpdateGatewayServiceCheckRequest {
+	s.HttpHost = &v
+	return s
+}
+
+func (s *UpdateGatewayServiceCheckRequest) SetHttpPath(v string) *UpdateGatewayServiceCheckRequest {
+	s.HttpPath = &v
+	return s
+}
+
+func (s *UpdateGatewayServiceCheckRequest) SetInterval(v int32) *UpdateGatewayServiceCheckRequest {
+	s.Interval = &v
+	return s
+}
+
+func (s *UpdateGatewayServiceCheckRequest) SetProtocol(v string) *UpdateGatewayServiceCheckRequest {
+	s.Protocol = &v
+	return s
+}
+
+func (s *UpdateGatewayServiceCheckRequest) SetServiceId(v string) *UpdateGatewayServiceCheckRequest {
+	s.ServiceId = &v
+	return s
+}
+
+func (s *UpdateGatewayServiceCheckRequest) SetTimeout(v int32) *UpdateGatewayServiceCheckRequest {
+	s.Timeout = &v
+	return s
+}
+
+func (s *UpdateGatewayServiceCheckRequest) SetUnhealthyThreshold(v int32) *UpdateGatewayServiceCheckRequest {
+	s.UnhealthyThreshold = &v
+	return s
+}
+
+type UpdateGatewayServiceCheckShrinkRequest struct {
+	AcceptLanguage         *string `json:"AcceptLanguage,omitempty" xml:"AcceptLanguage,omitempty"`
+	Check                  *bool   `json:"Check,omitempty" xml:"Check,omitempty"`
+	ExpectedStatusesShrink *string `json:"ExpectedStatuses,omitempty" xml:"ExpectedStatuses,omitempty"`
+	GatewayUniqueId        *string `json:"GatewayUniqueId,omitempty" xml:"GatewayUniqueId,omitempty"`
+	HealthyThreshold       *int32  `json:"HealthyThreshold,omitempty" xml:"HealthyThreshold,omitempty"`
+	HttpHost               *string `json:"HttpHost,omitempty" xml:"HttpHost,omitempty"`
+	HttpPath               *string `json:"HttpPath,omitempty" xml:"HttpPath,omitempty"`
+	Interval               *int32  `json:"Interval,omitempty" xml:"Interval,omitempty"`
+	Protocol               *string `json:"Protocol,omitempty" xml:"Protocol,omitempty"`
+	ServiceId              *string `json:"ServiceId,omitempty" xml:"ServiceId,omitempty"`
+	Timeout                *int32  `json:"Timeout,omitempty" xml:"Timeout,omitempty"`
+	UnhealthyThreshold     *int32  `json:"UnhealthyThreshold,omitempty" xml:"UnhealthyThreshold,omitempty"`
+}
+
+func (s UpdateGatewayServiceCheckShrinkRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UpdateGatewayServiceCheckShrinkRequest) GoString() string {
+	return s.String()
+}
+
+func (s *UpdateGatewayServiceCheckShrinkRequest) SetAcceptLanguage(v string) *UpdateGatewayServiceCheckShrinkRequest {
+	s.AcceptLanguage = &v
+	return s
+}
+
+func (s *UpdateGatewayServiceCheckShrinkRequest) SetCheck(v bool) *UpdateGatewayServiceCheckShrinkRequest {
+	s.Check = &v
+	return s
+}
+
+func (s *UpdateGatewayServiceCheckShrinkRequest) SetExpectedStatusesShrink(v string) *UpdateGatewayServiceCheckShrinkRequest {
+	s.ExpectedStatusesShrink = &v
+	return s
+}
+
+func (s *UpdateGatewayServiceCheckShrinkRequest) SetGatewayUniqueId(v string) *UpdateGatewayServiceCheckShrinkRequest {
+	s.GatewayUniqueId = &v
+	return s
+}
+
+func (s *UpdateGatewayServiceCheckShrinkRequest) SetHealthyThreshold(v int32) *UpdateGatewayServiceCheckShrinkRequest {
+	s.HealthyThreshold = &v
+	return s
+}
+
+func (s *UpdateGatewayServiceCheckShrinkRequest) SetHttpHost(v string) *UpdateGatewayServiceCheckShrinkRequest {
+	s.HttpHost = &v
+	return s
+}
+
+func (s *UpdateGatewayServiceCheckShrinkRequest) SetHttpPath(v string) *UpdateGatewayServiceCheckShrinkRequest {
+	s.HttpPath = &v
+	return s
+}
+
+func (s *UpdateGatewayServiceCheckShrinkRequest) SetInterval(v int32) *UpdateGatewayServiceCheckShrinkRequest {
+	s.Interval = &v
+	return s
+}
+
+func (s *UpdateGatewayServiceCheckShrinkRequest) SetProtocol(v string) *UpdateGatewayServiceCheckShrinkRequest {
+	s.Protocol = &v
+	return s
+}
+
+func (s *UpdateGatewayServiceCheckShrinkRequest) SetServiceId(v string) *UpdateGatewayServiceCheckShrinkRequest {
+	s.ServiceId = &v
+	return s
+}
+
+func (s *UpdateGatewayServiceCheckShrinkRequest) SetTimeout(v int32) *UpdateGatewayServiceCheckShrinkRequest {
+	s.Timeout = &v
+	return s
+}
+
+func (s *UpdateGatewayServiceCheckShrinkRequest) SetUnhealthyThreshold(v int32) *UpdateGatewayServiceCheckShrinkRequest {
+	s.UnhealthyThreshold = &v
+	return s
+}
+
+type UpdateGatewayServiceCheckResponseBody struct {
+	Code           *int32  `json:"Code,omitempty" xml:"Code,omitempty"`
+	Data           *int64  `json:"Data,omitempty" xml:"Data,omitempty"`
+	HttpStatusCode *int32  `json:"HttpStatusCode,omitempty" xml:"HttpStatusCode,omitempty"`
+	Message        *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	RequestId      *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	Success        *bool   `json:"Success,omitempty" xml:"Success,omitempty"`
+}
+
+func (s UpdateGatewayServiceCheckResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UpdateGatewayServiceCheckResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *UpdateGatewayServiceCheckResponseBody) SetCode(v int32) *UpdateGatewayServiceCheckResponseBody {
+	s.Code = &v
+	return s
+}
+
+func (s *UpdateGatewayServiceCheckResponseBody) SetData(v int64) *UpdateGatewayServiceCheckResponseBody {
+	s.Data = &v
+	return s
+}
+
+func (s *UpdateGatewayServiceCheckResponseBody) SetHttpStatusCode(v int32) *UpdateGatewayServiceCheckResponseBody {
+	s.HttpStatusCode = &v
+	return s
+}
+
+func (s *UpdateGatewayServiceCheckResponseBody) SetMessage(v string) *UpdateGatewayServiceCheckResponseBody {
+	s.Message = &v
+	return s
+}
+
+func (s *UpdateGatewayServiceCheckResponseBody) SetRequestId(v string) *UpdateGatewayServiceCheckResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *UpdateGatewayServiceCheckResponseBody) SetSuccess(v bool) *UpdateGatewayServiceCheckResponseBody {
+	s.Success = &v
+	return s
+}
+
+type UpdateGatewayServiceCheckResponse struct {
+	Headers    map[string]*string                     `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                                 `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *UpdateGatewayServiceCheckResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s UpdateGatewayServiceCheckResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UpdateGatewayServiceCheckResponse) GoString() string {
+	return s.String()
+}
+
+func (s *UpdateGatewayServiceCheckResponse) SetHeaders(v map[string]*string) *UpdateGatewayServiceCheckResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *UpdateGatewayServiceCheckResponse) SetStatusCode(v int32) *UpdateGatewayServiceCheckResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *UpdateGatewayServiceCheckResponse) SetBody(v *UpdateGatewayServiceCheckResponseBody) *UpdateGatewayServiceCheckResponse {
+	s.Body = v
+	return s
+}
+
 type UpdateGatewayServiceTrafficPolicyRequest struct {
 	// The language of the response. Valid values:
 	//
@@ -59776,6 +60036,100 @@ func (client *Client) UpdateGatewayRouteWafStatus(request *UpdateGatewayRouteWaf
 	runtime := &util.RuntimeOptions{}
 	_result = &UpdateGatewayRouteWafStatusResponse{}
 	_body, _err := client.UpdateGatewayRouteWafStatusWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) UpdateGatewayServiceCheckWithOptions(tmpReq *UpdateGatewayServiceCheckRequest, runtime *util.RuntimeOptions) (_result *UpdateGatewayServiceCheckResponse, _err error) {
+	_err = util.ValidateModel(tmpReq)
+	if _err != nil {
+		return _result, _err
+	}
+	request := &UpdateGatewayServiceCheckShrinkRequest{}
+	openapiutil.Convert(tmpReq, request)
+	if !tea.BoolValue(util.IsUnset(tmpReq.ExpectedStatuses)) {
+		request.ExpectedStatusesShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.ExpectedStatuses, tea.String("ExpectedStatuses"), tea.String("json"))
+	}
+
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.AcceptLanguage)) {
+		query["AcceptLanguage"] = request.AcceptLanguage
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Check)) {
+		query["Check"] = request.Check
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ExpectedStatusesShrink)) {
+		query["ExpectedStatuses"] = request.ExpectedStatusesShrink
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.GatewayUniqueId)) {
+		query["GatewayUniqueId"] = request.GatewayUniqueId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.HealthyThreshold)) {
+		query["HealthyThreshold"] = request.HealthyThreshold
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.HttpHost)) {
+		query["HttpHost"] = request.HttpHost
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.HttpPath)) {
+		query["HttpPath"] = request.HttpPath
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Interval)) {
+		query["Interval"] = request.Interval
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Protocol)) {
+		query["Protocol"] = request.Protocol
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ServiceId)) {
+		query["ServiceId"] = request.ServiceId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Timeout)) {
+		query["Timeout"] = request.Timeout
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.UnhealthyThreshold)) {
+		query["UnhealthyThreshold"] = request.UnhealthyThreshold
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("UpdateGatewayServiceCheck"),
+		Version:     tea.String("2019-05-31"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &UpdateGatewayServiceCheckResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) UpdateGatewayServiceCheck(request *UpdateGatewayServiceCheckRequest) (_result *UpdateGatewayServiceCheckResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &UpdateGatewayServiceCheckResponse{}
+	_body, _err := client.UpdateGatewayServiceCheckWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
