@@ -9575,10 +9575,12 @@ func (s *DescribeLimitationResponse) SetBody(v *DescribeLimitationResponseBody) 
 }
 
 type DescribeNotificationConfigurationsRequest struct {
-	OwnerId              *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
+	OwnerId *int64 `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
+	// The region ID of the scaling group.
 	RegionId             *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 	ResourceOwnerAccount *string `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
-	ScalingGroupId       *string `json:"ScalingGroupId,omitempty" xml:"ScalingGroupId,omitempty"`
+	// The ID of the scaling group.
+	ScalingGroupId *string `json:"ScalingGroupId,omitempty" xml:"ScalingGroupId,omitempty"`
 }
 
 func (s DescribeNotificationConfigurationsRequest) String() string {
@@ -9610,8 +9612,10 @@ func (s *DescribeNotificationConfigurationsRequest) SetScalingGroupId(v string) 
 }
 
 type DescribeNotificationConfigurationsResponseBody struct {
+	// Details of the notifications.
 	NotificationConfigurationModels []*DescribeNotificationConfigurationsResponseBodyNotificationConfigurationModels `json:"NotificationConfigurationModels,omitempty" xml:"NotificationConfigurationModels,omitempty" type:"Repeated"`
-	RequestId                       *string                                                                          `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The ID of the request.
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
 func (s DescribeNotificationConfigurationsResponseBody) String() string {
@@ -9633,9 +9637,32 @@ func (s *DescribeNotificationConfigurationsResponseBody) SetRequestId(v string) 
 }
 
 type DescribeNotificationConfigurationsResponseBodyNotificationConfigurationModels struct {
-	NotificationArn   *string   `json:"NotificationArn,omitempty" xml:"NotificationArn,omitempty"`
+	// The Alibaba Cloud Resource Name (ARN) of the notification method. The following list describes the value formats of this parameter:
+	//
+	// *   If you use CloudMonitor as the notification method, the value format of this parameter is acs:ess:{region-id}:{account-id}:cloudmonitor.
+	// *   If you use a Message Service (MNS) queue as the notification method, the value format of this parameter is acs:mns:{region-id}:{account-id}:queue/{queuename}.
+	// *   If you use an MNS topic as the notification method, the value format of this parameter is acs:mns:{region-id}:{account-id}:topic/{topicname}.
+	//
+	// The variables in the preceding formats have the following meanings:
+	//
+	// *   region-id: the region ID of the scaling group.
+	// *   account-id: the ID of the Alibaba Cloud account.
+	// *   queuename: the name of the MNS queue.
+	// *   topicname: the name of the MNS topic.
+	NotificationArn *string `json:"NotificationArn,omitempty" xml:"NotificationArn,omitempty"`
+	// The types of notifications for scaling activities and resource changes.
+	//
+	// *   AUTOSCALING:SCALE_OUT_SUCCESS: The scale-out event is successful.
+	// *   AUTOSCALING:SCALE_IN_SUCCESS: The scale-in event is successful.
+	// *   AUTOSCALING:SCALE_OUT_ERROR: The scale-out event fails.
+	// *   AUTOSCALING:SCALE_IN_ERROR: The scale-in event fails.
+	// *   AUTOSCALING:SCALE_REJECT: The scaling activity is rejected.
+	// *   AUTOSCALING:SCALE_OUT_START: The scale-out event is started.
+	// *   AUTOSCALING:SCALE_IN_START: The scale-in event is started.
+	// *   AUTOSCALING:SCHEDULE_TASK_EXPIRING: Auto Scaling sends a notification when a scheduled task is about to expire.
 	NotificationTypes []*string `json:"NotificationTypes,omitempty" xml:"NotificationTypes,omitempty" type:"Repeated"`
-	ScalingGroupId    *string   `json:"ScalingGroupId,omitempty" xml:"ScalingGroupId,omitempty"`
+	// The ID of the scaling group.
+	ScalingGroupId *string `json:"ScalingGroupId,omitempty" xml:"ScalingGroupId,omitempty"`
 }
 
 func (s DescribeNotificationConfigurationsResponseBodyNotificationConfigurationModels) String() string {
@@ -10490,7 +10517,6 @@ func (s *DescribeScalingConfigurationsResponseBody) SetTotalCount(v int32) *Desc
 }
 
 type DescribeScalingConfigurationsResponseBodyScalingConfigurations struct {
-	PrivatePoolOptions *DescribeScalingConfigurationsResponseBodyScalingConfigurationsPrivatePoolOptions `json:"PrivatePoolOptions,omitempty" xml:"PrivatePoolOptions,omitempty" type:"Struct"`
 	// Indicates whether the instance on the dedicated host is associated with the dedicated host. Valid values:
 	//
 	// *   default: The instance is not associated with the dedicated host. If you start an instance that was stopped in Economical Mode and the original dedicated host has insufficient resources, the instance is automatically deployed to another dedicated host in the automatic deployment resource pool.
@@ -10587,7 +10613,9 @@ type DescribeScalingConfigurationsResponseBodyScalingConfigurations struct {
 	// > You can specify CPU and memory specifications to determine the range of instance types only if the Scaling Policy parameter is set to Cost Optimization Policy and no instance type is specified in the scaling configuration.
 	Memory *int32 `json:"Memory,omitempty" xml:"Memory,omitempty"`
 	// Indicates whether the password preconfigured in the image is used.
-	PasswordInherit *bool `json:"PasswordInherit,omitempty" xml:"PasswordInherit,omitempty"`
+	PasswordInherit                  *bool   `json:"PasswordInherit,omitempty" xml:"PasswordInherit,omitempty"`
+	PrivatePoolOptions_id            *string `json:"PrivatePoolOptions.Id,omitempty" xml:"PrivatePoolOptions.Id,omitempty"`
+	PrivatePoolOptions_matchCriteria *string `json:"PrivatePoolOptions.MatchCriteria,omitempty" xml:"PrivatePoolOptions.MatchCriteria,omitempty"`
 	// The name of the RAM role that is associated with the ECS instance. The name is provided and maintained by Resource Access Management (RAM). You can call the ListRoles operation to query the available RAM roles.
 	RamRoleName *string `json:"RamRoleName,omitempty" xml:"RamRoleName,omitempty"`
 	// The ID of the resource group to which the ECS instance belongs.
@@ -10693,11 +10721,6 @@ func (s DescribeScalingConfigurationsResponseBodyScalingConfigurations) String()
 
 func (s DescribeScalingConfigurationsResponseBodyScalingConfigurations) GoString() string {
 	return s.String()
-}
-
-func (s *DescribeScalingConfigurationsResponseBodyScalingConfigurations) SetPrivatePoolOptions(v *DescribeScalingConfigurationsResponseBodyScalingConfigurationsPrivatePoolOptions) *DescribeScalingConfigurationsResponseBodyScalingConfigurations {
-	s.PrivatePoolOptions = v
-	return s
 }
 
 func (s *DescribeScalingConfigurationsResponseBodyScalingConfigurations) SetAffinity(v string) *DescribeScalingConfigurationsResponseBodyScalingConfigurations {
@@ -10855,6 +10878,16 @@ func (s *DescribeScalingConfigurationsResponseBodyScalingConfigurations) SetPass
 	return s
 }
 
+func (s *DescribeScalingConfigurationsResponseBodyScalingConfigurations) SetPrivatePoolOptions_id(v string) *DescribeScalingConfigurationsResponseBodyScalingConfigurations {
+	s.PrivatePoolOptions_id = &v
+	return s
+}
+
+func (s *DescribeScalingConfigurationsResponseBodyScalingConfigurations) SetPrivatePoolOptions_matchCriteria(v string) *DescribeScalingConfigurationsResponseBodyScalingConfigurations {
+	s.PrivatePoolOptions_matchCriteria = &v
+	return s
+}
+
 func (s *DescribeScalingConfigurationsResponseBodyScalingConfigurations) SetRamRoleName(v string) *DescribeScalingConfigurationsResponseBodyScalingConfigurations {
 	s.RamRoleName = &v
 	return s
@@ -11002,29 +11035,6 @@ func (s *DescribeScalingConfigurationsResponseBodyScalingConfigurations) SetWeig
 
 func (s *DescribeScalingConfigurationsResponseBodyScalingConfigurations) SetZoneId(v string) *DescribeScalingConfigurationsResponseBodyScalingConfigurations {
 	s.ZoneId = &v
-	return s
-}
-
-type DescribeScalingConfigurationsResponseBodyScalingConfigurationsPrivatePoolOptions struct {
-	Id            *string `json:"Id,omitempty" xml:"Id,omitempty"`
-	MatchCriteria *string `json:"MatchCriteria,omitempty" xml:"MatchCriteria,omitempty"`
-}
-
-func (s DescribeScalingConfigurationsResponseBodyScalingConfigurationsPrivatePoolOptions) String() string {
-	return tea.Prettify(s)
-}
-
-func (s DescribeScalingConfigurationsResponseBodyScalingConfigurationsPrivatePoolOptions) GoString() string {
-	return s.String()
-}
-
-func (s *DescribeScalingConfigurationsResponseBodyScalingConfigurationsPrivatePoolOptions) SetId(v string) *DescribeScalingConfigurationsResponseBodyScalingConfigurationsPrivatePoolOptions {
-	s.Id = &v
-	return s
-}
-
-func (s *DescribeScalingConfigurationsResponseBodyScalingConfigurationsPrivatePoolOptions) SetMatchCriteria(v string) *DescribeScalingConfigurationsResponseBodyScalingConfigurationsPrivatePoolOptions {
-	s.MatchCriteria = &v
 	return s
 }
 
@@ -11351,18 +11361,19 @@ func (s *DescribeScalingConfigurationsResponse) SetBody(v *DescribeScalingConfig
 }
 
 type DescribeScalingGroupsRequest struct {
-	GroupType            *string   `json:"GroupType,omitempty" xml:"GroupType,omitempty"`
-	OwnerAccount         *string   `json:"OwnerAccount,omitempty" xml:"OwnerAccount,omitempty"`
-	OwnerId              *int64    `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
-	PageNumber           *int32    `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
-	PageSize             *int32    `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	RegionId             *string   `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	ResourceGroupId      *string   `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
-	ResourceOwnerAccount *string   `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
-	ResourceOwnerId      *int64    `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
-	ScalingGroupIds      []*string `json:"ScalingGroupIds,omitempty" xml:"ScalingGroupIds,omitempty" type:"Repeated"`
-	ScalingGroupName     *string   `json:"ScalingGroupName,omitempty" xml:"ScalingGroupName,omitempty"`
-	ScalingGroupNames    []*string `json:"ScalingGroupNames,omitempty" xml:"ScalingGroupNames,omitempty" type:"Repeated"`
+	GroupType            *string                             `json:"GroupType,omitempty" xml:"GroupType,omitempty"`
+	OwnerAccount         *string                             `json:"OwnerAccount,omitempty" xml:"OwnerAccount,omitempty"`
+	OwnerId              *int64                              `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
+	PageNumber           *int32                              `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
+	PageSize             *int32                              `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	RegionId             *string                             `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	ResourceGroupId      *string                             `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
+	ResourceOwnerAccount *string                             `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
+	ResourceOwnerId      *int64                              `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
+	ScalingGroupIds      []*string                           `json:"ScalingGroupIds,omitempty" xml:"ScalingGroupIds,omitempty" type:"Repeated"`
+	ScalingGroupName     *string                             `json:"ScalingGroupName,omitempty" xml:"ScalingGroupName,omitempty"`
+	ScalingGroupNames    []*string                           `json:"ScalingGroupNames,omitempty" xml:"ScalingGroupNames,omitempty" type:"Repeated"`
+	Tags                 []*DescribeScalingGroupsRequestTags `json:"Tags,omitempty" xml:"Tags,omitempty" type:"Repeated"`
 }
 
 func (s DescribeScalingGroupsRequest) String() string {
@@ -11430,6 +11441,34 @@ func (s *DescribeScalingGroupsRequest) SetScalingGroupName(v string) *DescribeSc
 
 func (s *DescribeScalingGroupsRequest) SetScalingGroupNames(v []*string) *DescribeScalingGroupsRequest {
 	s.ScalingGroupNames = v
+	return s
+}
+
+func (s *DescribeScalingGroupsRequest) SetTags(v []*DescribeScalingGroupsRequestTags) *DescribeScalingGroupsRequest {
+	s.Tags = v
+	return s
+}
+
+type DescribeScalingGroupsRequestTags struct {
+	Key   *string `json:"Key,omitempty" xml:"Key,omitempty"`
+	Value *string `json:"Value,omitempty" xml:"Value,omitempty"`
+}
+
+func (s DescribeScalingGroupsRequestTags) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeScalingGroupsRequestTags) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeScalingGroupsRequestTags) SetKey(v string) *DescribeScalingGroupsRequestTags {
+	s.Key = &v
+	return s
+}
+
+func (s *DescribeScalingGroupsRequestTags) SetValue(v string) *DescribeScalingGroupsRequestTags {
+	s.Value = &v
 	return s
 }
 
@@ -20099,12 +20138,14 @@ func (s *ModifyScheduledTaskResponse) SetBody(v *ModifyScheduledTaskResponseBody
 }
 
 type RebalanceInstancesRequest struct {
-	OwnerAccount         *string `json:"OwnerAccount,omitempty" xml:"OwnerAccount,omitempty"`
-	OwnerId              *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
+	OwnerAccount *string `json:"OwnerAccount,omitempty" xml:"OwnerAccount,omitempty"`
+	OwnerId      *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
+	// The region ID of the scaling group.
 	RegionId             *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 	ResourceOwnerAccount *string `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
 	ResourceOwnerId      *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
-	ScalingGroupId       *string `json:"ScalingGroupId,omitempty" xml:"ScalingGroupId,omitempty"`
+	// The ID of the scaling group.
+	ScalingGroupId *string `json:"ScalingGroupId,omitempty" xml:"ScalingGroupId,omitempty"`
 }
 
 func (s RebalanceInstancesRequest) String() string {
@@ -20146,7 +20187,9 @@ func (s *RebalanceInstancesRequest) SetScalingGroupId(v string) *RebalanceInstan
 }
 
 type RebalanceInstancesResponseBody struct {
-	RequestId         *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The ID of the request.
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The ID of the scaling activity.
 	ScalingActivityId *string `json:"ScalingActivityId,omitempty" xml:"ScalingActivityId,omitempty"`
 }
 
@@ -20997,12 +21040,16 @@ func (s *SuspendProcessesResponse) SetBody(v *SuspendProcessesResponseBody) *Sus
 }
 
 type TagResourcesRequest struct {
-	OwnerId              *int64                     `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
-	RegionId             *string                    `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	ResourceIds          []*string                  `json:"ResourceIds,omitempty" xml:"ResourceIds,omitempty" type:"Repeated"`
-	ResourceOwnerAccount *string                    `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
-	ResourceType         *string                    `json:"ResourceType,omitempty" xml:"ResourceType,omitempty"`
-	Tags                 []*TagResourcesRequestTags `json:"Tags,omitempty" xml:"Tags,omitempty" type:"Repeated"`
+	OwnerId *int64 `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
+	// The region ID.
+	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	// The IDs of the Auto Scaling resources. You can specify 1 to 50 resource IDs.
+	ResourceIds          []*string `json:"ResourceIds,omitempty" xml:"ResourceIds,omitempty" type:"Repeated"`
+	ResourceOwnerAccount *string   `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
+	// The type of the resource. Only scaling groups are supported. Set the value to scalinggroup.
+	ResourceType *string `json:"ResourceType,omitempty" xml:"ResourceType,omitempty"`
+	// Details of the tags.
+	Tags []*TagResourcesRequestTags `json:"Tags,omitempty" xml:"Tags,omitempty" type:"Repeated"`
 }
 
 func (s TagResourcesRequest) String() string {
@@ -21044,9 +21091,21 @@ func (s *TagResourcesRequest) SetTags(v []*TagResourcesRequestTags) *TagResource
 }
 
 type TagResourcesRequestTags struct {
-	Key       *string `json:"Key,omitempty" xml:"Key,omitempty"`
-	Propagate *bool   `json:"Propagate,omitempty" xml:"Propagate,omitempty"`
-	Value     *string `json:"Value,omitempty" xml:"Value,omitempty"`
+	// The key of the tag that you want to add to the Auto Scaling resource.
+	//
+	// You cannot specify empty strings as tag keys. The tag key must be 1 to 128 characters in length and cannot contain `http://` or `https://`. The tag key cannot start with `acs:` or `aliyun`.
+	Key *string `json:"Key,omitempty" xml:"Key,omitempty"`
+	// Specifies whether to propagate the tag that you want to add. Valid values:
+	//
+	// *   true: propagates the tag only to instances that are newly created and does not propagate the tag to instances that are already running in the scaling group.
+	// *   false: does not propagate the tag to any instances.
+	//
+	// Default value: false.
+	Propagate *bool `json:"Propagate,omitempty" xml:"Propagate,omitempty"`
+	// The value of the tag that you want to add to the Auto Scaling resource.
+	//
+	// You can specify empty strings as tag values. The tag value must be 0 to 128 characters in length and cannot contain `http://` or `https://`. The tag value cannot start with `acs:`.
+	Value *string `json:"Value,omitempty" xml:"Value,omitempty"`
 }
 
 func (s TagResourcesRequestTags) String() string {
@@ -21073,6 +21132,7 @@ func (s *TagResourcesRequestTags) SetValue(v string) *TagResourcesRequestTags {
 }
 
 type TagResourcesResponseBody struct {
+	// The ID of the request.
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -24727,6 +24787,10 @@ func (client *Client) DescribeScalingGroupsWithOptions(request *DescribeScalingG
 
 	if !tea.BoolValue(util.IsUnset(request.ScalingGroupNames)) {
 		query["ScalingGroupNames"] = request.ScalingGroupNames
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Tags)) {
+		query["Tags"] = request.Tags
 	}
 
 	req := &openapi.OpenApiRequest{
