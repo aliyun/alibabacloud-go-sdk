@@ -16213,8 +16213,10 @@ type FlightItineraryScanQueryRequest struct {
 	BillDate         *string `json:"bill_date,omitempty" xml:"bill_date,omitempty"`
 	BillId           *int64  `json:"bill_id,omitempty" xml:"bill_id,omitempty"`
 	InvoiceSubTaskId *int64  `json:"invoice_sub_task_id,omitempty" xml:"invoice_sub_task_id,omitempty"`
+	ItineraryNum     *string `json:"itinerary_num,omitempty" xml:"itinerary_num,omitempty"`
 	PageNo           *int32  `json:"page_no,omitempty" xml:"page_no,omitempty"`
 	PageSize         *int32  `json:"page_size,omitempty" xml:"page_size,omitempty"`
+	TicketNo         *string `json:"ticket_no,omitempty" xml:"ticket_no,omitempty"`
 }
 
 func (s FlightItineraryScanQueryRequest) String() string {
@@ -16240,6 +16242,11 @@ func (s *FlightItineraryScanQueryRequest) SetInvoiceSubTaskId(v int64) *FlightIt
 	return s
 }
 
+func (s *FlightItineraryScanQueryRequest) SetItineraryNum(v string) *FlightItineraryScanQueryRequest {
+	s.ItineraryNum = &v
+	return s
+}
+
 func (s *FlightItineraryScanQueryRequest) SetPageNo(v int32) *FlightItineraryScanQueryRequest {
 	s.PageNo = &v
 	return s
@@ -16247,6 +16254,11 @@ func (s *FlightItineraryScanQueryRequest) SetPageNo(v int32) *FlightItinerarySca
 
 func (s *FlightItineraryScanQueryRequest) SetPageSize(v int32) *FlightItineraryScanQueryRequest {
 	s.PageSize = &v
+	return s
+}
+
+func (s *FlightItineraryScanQueryRequest) SetTicketNo(v string) *FlightItineraryScanQueryRequest {
+	s.TicketNo = &v
 	return s
 }
 
@@ -38801,6 +38813,7 @@ type HotelGoodsQueryResponseBodyModuleRoomsRates struct {
 	CurrencyCode                   *string                                                               `json:"currency_code,omitempty" xml:"currency_code,omitempty"`
 	DailyPriceFormatYuan           *string                                                               `json:"daily_price_format_yuan,omitempty" xml:"daily_price_format_yuan,omitempty"`
 	DailyPriceView                 *string                                                               `json:"daily_price_view,omitempty" xml:"daily_price_view,omitempty"`
+	DiscountDesc                   *HotelGoodsQueryResponseBodyModuleRoomsRatesDiscountDesc              `json:"discount_desc,omitempty" xml:"discount_desc,omitempty" type:"Struct"`
 	EndTimeDaily                   *string                                                               `json:"end_time_daily,omitempty" xml:"end_time_daily,omitempty"`
 	HotelDetailRatePriceDTO        []*HotelGoodsQueryResponseBodyModuleRoomsRatesHotelDetailRatePriceDTO `json:"hotel_detail_rate_price_d_t_o,omitempty" xml:"hotel_detail_rate_price_d_t_o,omitempty" type:"Repeated"`
 	InstantConfirm                 *bool                                                                 `json:"instant_confirm,omitempty" xml:"instant_confirm,omitempty"`
@@ -38901,6 +38914,11 @@ func (s *HotelGoodsQueryResponseBodyModuleRoomsRates) SetDailyPriceFormatYuan(v 
 
 func (s *HotelGoodsQueryResponseBodyModuleRoomsRates) SetDailyPriceView(v string) *HotelGoodsQueryResponseBodyModuleRoomsRates {
 	s.DailyPriceView = &v
+	return s
+}
+
+func (s *HotelGoodsQueryResponseBodyModuleRoomsRates) SetDiscountDesc(v *HotelGoodsQueryResponseBodyModuleRoomsRatesDiscountDesc) *HotelGoodsQueryResponseBodyModuleRoomsRates {
+	s.DiscountDesc = v
 	return s
 }
 
@@ -39139,6 +39157,70 @@ func (s *HotelGoodsQueryResponseBodyModuleRoomsRatesBtripHotelCancelDesc) SetDes
 
 func (s *HotelGoodsQueryResponseBodyModuleRoomsRatesBtripHotelCancelDesc) SetTitle(v string) *HotelGoodsQueryResponseBodyModuleRoomsRatesBtripHotelCancelDesc {
 	s.Title = &v
+	return s
+}
+
+type HotelGoodsQueryResponseBodyModuleRoomsRatesDiscountDesc struct {
+	CashReduceTotal *string                                                                  `json:"cash_reduce_total,omitempty" xml:"cash_reduce_total,omitempty"`
+	DinamicLabel    *string                                                                  `json:"dinamic_label,omitempty" xml:"dinamic_label,omitempty"`
+	DiscountDetail  []*HotelGoodsQueryResponseBodyModuleRoomsRatesDiscountDescDiscountDetail `json:"discount_detail,omitempty" xml:"discount_detail,omitempty" type:"Repeated"`
+	SubTitle        *string                                                                  `json:"sub_title,omitempty" xml:"sub_title,omitempty"`
+	Title           *string                                                                  `json:"title,omitempty" xml:"title,omitempty"`
+}
+
+func (s HotelGoodsQueryResponseBodyModuleRoomsRatesDiscountDesc) String() string {
+	return tea.Prettify(s)
+}
+
+func (s HotelGoodsQueryResponseBodyModuleRoomsRatesDiscountDesc) GoString() string {
+	return s.String()
+}
+
+func (s *HotelGoodsQueryResponseBodyModuleRoomsRatesDiscountDesc) SetCashReduceTotal(v string) *HotelGoodsQueryResponseBodyModuleRoomsRatesDiscountDesc {
+	s.CashReduceTotal = &v
+	return s
+}
+
+func (s *HotelGoodsQueryResponseBodyModuleRoomsRatesDiscountDesc) SetDinamicLabel(v string) *HotelGoodsQueryResponseBodyModuleRoomsRatesDiscountDesc {
+	s.DinamicLabel = &v
+	return s
+}
+
+func (s *HotelGoodsQueryResponseBodyModuleRoomsRatesDiscountDesc) SetDiscountDetail(v []*HotelGoodsQueryResponseBodyModuleRoomsRatesDiscountDescDiscountDetail) *HotelGoodsQueryResponseBodyModuleRoomsRatesDiscountDesc {
+	s.DiscountDetail = v
+	return s
+}
+
+func (s *HotelGoodsQueryResponseBodyModuleRoomsRatesDiscountDesc) SetSubTitle(v string) *HotelGoodsQueryResponseBodyModuleRoomsRatesDiscountDesc {
+	s.SubTitle = &v
+	return s
+}
+
+func (s *HotelGoodsQueryResponseBodyModuleRoomsRatesDiscountDesc) SetTitle(v string) *HotelGoodsQueryResponseBodyModuleRoomsRatesDiscountDesc {
+	s.Title = &v
+	return s
+}
+
+type HotelGoodsQueryResponseBodyModuleRoomsRatesDiscountDescDiscountDetail struct {
+	LabelName []*string `json:"label_name,omitempty" xml:"label_name,omitempty" type:"Repeated"`
+	MoneyDesc *string   `json:"money_desc,omitempty" xml:"money_desc,omitempty"`
+}
+
+func (s HotelGoodsQueryResponseBodyModuleRoomsRatesDiscountDescDiscountDetail) String() string {
+	return tea.Prettify(s)
+}
+
+func (s HotelGoodsQueryResponseBodyModuleRoomsRatesDiscountDescDiscountDetail) GoString() string {
+	return s.String()
+}
+
+func (s *HotelGoodsQueryResponseBodyModuleRoomsRatesDiscountDescDiscountDetail) SetLabelName(v []*string) *HotelGoodsQueryResponseBodyModuleRoomsRatesDiscountDescDiscountDetail {
+	s.LabelName = v
+	return s
+}
+
+func (s *HotelGoodsQueryResponseBodyModuleRoomsRatesDiscountDescDiscountDetail) SetMoneyDesc(v string) *HotelGoodsQueryResponseBodyModuleRoomsRatesDiscountDescDiscountDetail {
+	s.MoneyDesc = &v
 	return s
 }
 
@@ -43737,24 +43819,25 @@ func (s *HotelSearchResponseBodyModule) SetItems(v []*HotelSearchResponseBodyMod
 }
 
 type HotelSearchResponseBodyModuleItems struct {
-	BrandName        *string  `json:"brand_name,omitempty" xml:"brand_name,omitempty"`
-	BtandCode        *string  `json:"btand_code,omitempty" xml:"btand_code,omitempty"`
-	CityCode         *string  `json:"city_code,omitempty" xml:"city_code,omitempty"`
-	Distance         *int32   `json:"distance,omitempty" xml:"distance,omitempty"`
-	DistrictCode     *string  `json:"district_code,omitempty" xml:"district_code,omitempty"`
-	HotelAddress     *string  `json:"hotel_address,omitempty" xml:"hotel_address,omitempty"`
-	HotelCode        *string  `json:"hotel_code,omitempty" xml:"hotel_code,omitempty"`
-	HotelEnName      *string  `json:"hotel_en_name,omitempty" xml:"hotel_en_name,omitempty"`
-	HotelName        *string  `json:"hotel_name,omitempty" xml:"hotel_name,omitempty"`
-	HotelStar        *string  `json:"hotel_star,omitempty" xml:"hotel_star,omitempty"`
-	ImageUrl         *string  `json:"image_url,omitempty" xml:"image_url,omitempty"`
-	IsProtocol       *bool    `json:"is_protocol,omitempty" xml:"is_protocol,omitempty"`
-	Location         *string  `json:"location,omitempty" xml:"location,omitempty"`
-	MinPrice         *float64 `json:"min_price,omitempty" xml:"min_price,omitempty"`
-	OriginalMinPrice *float64 `json:"original_min_price,omitempty" xml:"original_min_price,omitempty"`
-	Score            *string  `json:"score,omitempty" xml:"score,omitempty"`
-	Status           *int32   `json:"status,omitempty" xml:"status,omitempty"`
-	Tel              *string  `json:"tel,omitempty" xml:"tel,omitempty"`
+	BrandName        *string                                         `json:"brand_name,omitempty" xml:"brand_name,omitempty"`
+	BtandCode        *string                                         `json:"btand_code,omitempty" xml:"btand_code,omitempty"`
+	CityCode         *string                                         `json:"city_code,omitempty" xml:"city_code,omitempty"`
+	DiscountDesc     *HotelSearchResponseBodyModuleItemsDiscountDesc `json:"discount_desc,omitempty" xml:"discount_desc,omitempty" type:"Struct"`
+	Distance         *int32                                          `json:"distance,omitempty" xml:"distance,omitempty"`
+	DistrictCode     *string                                         `json:"district_code,omitempty" xml:"district_code,omitempty"`
+	HotelAddress     *string                                         `json:"hotel_address,omitempty" xml:"hotel_address,omitempty"`
+	HotelCode        *string                                         `json:"hotel_code,omitempty" xml:"hotel_code,omitempty"`
+	HotelEnName      *string                                         `json:"hotel_en_name,omitempty" xml:"hotel_en_name,omitempty"`
+	HotelName        *string                                         `json:"hotel_name,omitempty" xml:"hotel_name,omitempty"`
+	HotelStar        *string                                         `json:"hotel_star,omitempty" xml:"hotel_star,omitempty"`
+	ImageUrl         *string                                         `json:"image_url,omitempty" xml:"image_url,omitempty"`
+	IsProtocol       *bool                                           `json:"is_protocol,omitempty" xml:"is_protocol,omitempty"`
+	Location         *string                                         `json:"location,omitempty" xml:"location,omitempty"`
+	MinPrice         *float64                                        `json:"min_price,omitempty" xml:"min_price,omitempty"`
+	OriginalMinPrice *float64                                        `json:"original_min_price,omitempty" xml:"original_min_price,omitempty"`
+	Score            *string                                         `json:"score,omitempty" xml:"score,omitempty"`
+	Status           *int32                                          `json:"status,omitempty" xml:"status,omitempty"`
+	Tel              *string                                         `json:"tel,omitempty" xml:"tel,omitempty"`
 }
 
 func (s HotelSearchResponseBodyModuleItems) String() string {
@@ -43777,6 +43860,11 @@ func (s *HotelSearchResponseBodyModuleItems) SetBtandCode(v string) *HotelSearch
 
 func (s *HotelSearchResponseBodyModuleItems) SetCityCode(v string) *HotelSearchResponseBodyModuleItems {
 	s.CityCode = &v
+	return s
+}
+
+func (s *HotelSearchResponseBodyModuleItems) SetDiscountDesc(v *HotelSearchResponseBodyModuleItemsDiscountDesc) *HotelSearchResponseBodyModuleItems {
+	s.DiscountDesc = v
 	return s
 }
 
@@ -43852,6 +43940,70 @@ func (s *HotelSearchResponseBodyModuleItems) SetStatus(v int32) *HotelSearchResp
 
 func (s *HotelSearchResponseBodyModuleItems) SetTel(v string) *HotelSearchResponseBodyModuleItems {
 	s.Tel = &v
+	return s
+}
+
+type HotelSearchResponseBodyModuleItemsDiscountDesc struct {
+	CashReduceTotal *string                                                         `json:"cash_reduce_total,omitempty" xml:"cash_reduce_total,omitempty"`
+	DinamicLabel    *string                                                         `json:"dinamic_label,omitempty" xml:"dinamic_label,omitempty"`
+	DiscountDetail  []*HotelSearchResponseBodyModuleItemsDiscountDescDiscountDetail `json:"discount_detail,omitempty" xml:"discount_detail,omitempty" type:"Repeated"`
+	SubTitle        *string                                                         `json:"sub_title,omitempty" xml:"sub_title,omitempty"`
+	Title           *string                                                         `json:"title,omitempty" xml:"title,omitempty"`
+}
+
+func (s HotelSearchResponseBodyModuleItemsDiscountDesc) String() string {
+	return tea.Prettify(s)
+}
+
+func (s HotelSearchResponseBodyModuleItemsDiscountDesc) GoString() string {
+	return s.String()
+}
+
+func (s *HotelSearchResponseBodyModuleItemsDiscountDesc) SetCashReduceTotal(v string) *HotelSearchResponseBodyModuleItemsDiscountDesc {
+	s.CashReduceTotal = &v
+	return s
+}
+
+func (s *HotelSearchResponseBodyModuleItemsDiscountDesc) SetDinamicLabel(v string) *HotelSearchResponseBodyModuleItemsDiscountDesc {
+	s.DinamicLabel = &v
+	return s
+}
+
+func (s *HotelSearchResponseBodyModuleItemsDiscountDesc) SetDiscountDetail(v []*HotelSearchResponseBodyModuleItemsDiscountDescDiscountDetail) *HotelSearchResponseBodyModuleItemsDiscountDesc {
+	s.DiscountDetail = v
+	return s
+}
+
+func (s *HotelSearchResponseBodyModuleItemsDiscountDesc) SetSubTitle(v string) *HotelSearchResponseBodyModuleItemsDiscountDesc {
+	s.SubTitle = &v
+	return s
+}
+
+func (s *HotelSearchResponseBodyModuleItemsDiscountDesc) SetTitle(v string) *HotelSearchResponseBodyModuleItemsDiscountDesc {
+	s.Title = &v
+	return s
+}
+
+type HotelSearchResponseBodyModuleItemsDiscountDescDiscountDetail struct {
+	LabelName []*string `json:"label_name,omitempty" xml:"label_name,omitempty" type:"Repeated"`
+	MoneyDesc *string   `json:"money_desc,omitempty" xml:"money_desc,omitempty"`
+}
+
+func (s HotelSearchResponseBodyModuleItemsDiscountDescDiscountDetail) String() string {
+	return tea.Prettify(s)
+}
+
+func (s HotelSearchResponseBodyModuleItemsDiscountDescDiscountDetail) GoString() string {
+	return s.String()
+}
+
+func (s *HotelSearchResponseBodyModuleItemsDiscountDescDiscountDetail) SetLabelName(v []*string) *HotelSearchResponseBodyModuleItemsDiscountDescDiscountDetail {
+	s.LabelName = v
+	return s
+}
+
+func (s *HotelSearchResponseBodyModuleItemsDiscountDescDiscountDetail) SetMoneyDesc(v string) *HotelSearchResponseBodyModuleItemsDiscountDescDiscountDetail {
+	s.MoneyDesc = &v
 	return s
 }
 
@@ -55717,6 +55869,8 @@ type TrainTicketScanQueryRequest struct {
 	InvoiceSubTaskId *int64  `json:"invoice_sub_task_id,omitempty" xml:"invoice_sub_task_id,omitempty"`
 	PageNo           *int32  `json:"page_no,omitempty" xml:"page_no,omitempty"`
 	PageSize         *int32  `json:"page_size,omitempty" xml:"page_size,omitempty"`
+	SerialNumber     *string `json:"serial_number,omitempty" xml:"serial_number,omitempty"`
+	TicketNo         *string `json:"ticket_no,omitempty" xml:"ticket_no,omitempty"`
 }
 
 func (s TrainTicketScanQueryRequest) String() string {
@@ -55749,6 +55903,16 @@ func (s *TrainTicketScanQueryRequest) SetPageNo(v int32) *TrainTicketScanQueryRe
 
 func (s *TrainTicketScanQueryRequest) SetPageSize(v int32) *TrainTicketScanQueryRequest {
 	s.PageSize = &v
+	return s
+}
+
+func (s *TrainTicketScanQueryRequest) SetSerialNumber(v string) *TrainTicketScanQueryRequest {
+	s.SerialNumber = &v
+	return s
+}
+
+func (s *TrainTicketScanQueryRequest) SetTicketNo(v string) *TrainTicketScanQueryRequest {
+	s.TicketNo = &v
 	return s
 }
 
@@ -60224,12 +60388,20 @@ func (client *Client) FlightItineraryScanQueryWithOptions(request *FlightItinera
 		query["invoice_sub_task_id"] = request.InvoiceSubTaskId
 	}
 
+	if !tea.BoolValue(util.IsUnset(request.ItineraryNum)) {
+		query["itinerary_num"] = request.ItineraryNum
+	}
+
 	if !tea.BoolValue(util.IsUnset(request.PageNo)) {
 		query["page_no"] = request.PageNo
 	}
 
 	if !tea.BoolValue(util.IsUnset(request.PageSize)) {
 		query["page_size"] = request.PageSize
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.TicketNo)) {
+		query["ticket_no"] = request.TicketNo
 	}
 
 	realHeaders := make(map[string]*string)
@@ -66061,6 +66233,14 @@ func (client *Client) TrainTicketScanQueryWithOptions(request *TrainTicketScanQu
 
 	if !tea.BoolValue(util.IsUnset(request.PageSize)) {
 		query["page_size"] = request.PageSize
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.SerialNumber)) {
+		query["serial_number"] = request.SerialNumber
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.TicketNo)) {
+		query["ticket_no"] = request.TicketNo
 	}
 
 	realHeaders := make(map[string]*string)
