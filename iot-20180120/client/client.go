@@ -52081,6 +52081,116 @@ func (s *QuerySchedulePeriodListResponse) SetBody(v *QuerySchedulePeriodListResp
 	return s
 }
 
+type QueryShareProductNameByProductKeyRequest struct {
+	ProductKey    *string `json:"ProductKey,omitempty" xml:"ProductKey,omitempty"`
+	ShareTaskCode *string `json:"ShareTaskCode,omitempty" xml:"ShareTaskCode,omitempty"`
+}
+
+func (s QueryShareProductNameByProductKeyRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s QueryShareProductNameByProductKeyRequest) GoString() string {
+	return s.String()
+}
+
+func (s *QueryShareProductNameByProductKeyRequest) SetProductKey(v string) *QueryShareProductNameByProductKeyRequest {
+	s.ProductKey = &v
+	return s
+}
+
+func (s *QueryShareProductNameByProductKeyRequest) SetShareTaskCode(v string) *QueryShareProductNameByProductKeyRequest {
+	s.ShareTaskCode = &v
+	return s
+}
+
+type QueryShareProductNameByProductKeyResponseBody struct {
+	Code         *string                                            `json:"Code,omitempty" xml:"Code,omitempty"`
+	Data         *QueryShareProductNameByProductKeyResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
+	ErrorMessage *string                                            `json:"ErrorMessage,omitempty" xml:"ErrorMessage,omitempty"`
+	RequestId    *string                                            `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	Success      *bool                                              `json:"Success,omitempty" xml:"Success,omitempty"`
+}
+
+func (s QueryShareProductNameByProductKeyResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s QueryShareProductNameByProductKeyResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *QueryShareProductNameByProductKeyResponseBody) SetCode(v string) *QueryShareProductNameByProductKeyResponseBody {
+	s.Code = &v
+	return s
+}
+
+func (s *QueryShareProductNameByProductKeyResponseBody) SetData(v *QueryShareProductNameByProductKeyResponseBodyData) *QueryShareProductNameByProductKeyResponseBody {
+	s.Data = v
+	return s
+}
+
+func (s *QueryShareProductNameByProductKeyResponseBody) SetErrorMessage(v string) *QueryShareProductNameByProductKeyResponseBody {
+	s.ErrorMessage = &v
+	return s
+}
+
+func (s *QueryShareProductNameByProductKeyResponseBody) SetRequestId(v string) *QueryShareProductNameByProductKeyResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *QueryShareProductNameByProductKeyResponseBody) SetSuccess(v bool) *QueryShareProductNameByProductKeyResponseBody {
+	s.Success = &v
+	return s
+}
+
+type QueryShareProductNameByProductKeyResponseBodyData struct {
+	ProductName *string `json:"ProductName,omitempty" xml:"ProductName,omitempty"`
+}
+
+func (s QueryShareProductNameByProductKeyResponseBodyData) String() string {
+	return tea.Prettify(s)
+}
+
+func (s QueryShareProductNameByProductKeyResponseBodyData) GoString() string {
+	return s.String()
+}
+
+func (s *QueryShareProductNameByProductKeyResponseBodyData) SetProductName(v string) *QueryShareProductNameByProductKeyResponseBodyData {
+	s.ProductName = &v
+	return s
+}
+
+type QueryShareProductNameByProductKeyResponse struct {
+	Headers    map[string]*string                             `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                                         `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *QueryShareProductNameByProductKeyResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s QueryShareProductNameByProductKeyResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s QueryShareProductNameByProductKeyResponse) GoString() string {
+	return s.String()
+}
+
+func (s *QueryShareProductNameByProductKeyResponse) SetHeaders(v map[string]*string) *QueryShareProductNameByProductKeyResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *QueryShareProductNameByProductKeyResponse) SetStatusCode(v int32) *QueryShareProductNameByProductKeyResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *QueryShareProductNameByProductKeyResponse) SetBody(v *QueryShareProductNameByProductKeyResponseBody) *QueryShareProductNameByProductKeyResponse {
+	s.Body = v
+	return s
+}
+
 type QuerySharePromotionActivityAuditResultRequest struct {
 	IotInstanceId            *string `json:"IotInstanceId,omitempty" xml:"IotInstanceId,omitempty"`
 	SharePromotionActivityId *string `json:"SharePromotionActivityId,omitempty" xml:"SharePromotionActivityId,omitempty"`
@@ -88744,6 +88854,54 @@ func (client *Client) QuerySchedulePeriodList(request *QuerySchedulePeriodListRe
 	runtime := &util.RuntimeOptions{}
 	_result = &QuerySchedulePeriodListResponse{}
 	_body, _err := client.QuerySchedulePeriodListWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) QueryShareProductNameByProductKeyWithOptions(request *QueryShareProductNameByProductKeyRequest, runtime *util.RuntimeOptions) (_result *QueryShareProductNameByProductKeyResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	body := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.ProductKey)) {
+		body["ProductKey"] = request.ProductKey
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ShareTaskCode)) {
+		body["ShareTaskCode"] = request.ShareTaskCode
+	}
+
+	req := &openapi.OpenApiRequest{
+		Body: openapiutil.ParseToMap(body),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("QueryShareProductNameByProductKey"),
+		Version:     tea.String("2018-01-20"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &QueryShareProductNameByProductKeyResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) QueryShareProductNameByProductKey(request *QueryShareProductNameByProductKeyRequest) (_result *QueryShareProductNameByProductKeyResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &QueryShareProductNameByProductKeyResponse{}
+	_body, _err := client.QueryShareProductNameByProductKeyWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
