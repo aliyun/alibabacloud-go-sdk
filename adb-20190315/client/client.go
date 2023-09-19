@@ -1400,12 +1400,8 @@ type CreateElasticPlanRequest struct {
 	// *   **worker**: scales only elastic I/O resources.
 	// *   **executor**: scales only computing resources.
 	// *   **executorcombineworker** (default): scales both elastic I/O resources and computing resources by proportion.
-	//
-	// >
-	//
-	// *   If you want to set this parameter to **executorcombineworker**, make sure that the cluster runs a minor version of 3.1.3.2 or later.
-	//
-	// *   If you want to set this parameter to **worker** or **executor**, make sure that the cluster runs a minor version of 3.1.6.1 or later and a ticket is submitted. After your request is approved, you can set this parameter to **worker** or **executor**.
+	// > - If you want to set this parameter to **executorcombineworker**, make sure that the cluster runs a minor version of 3.1.3.2 or later.
+	// > - If you want to set this parameter to **worker** or **executor**, make sure that the cluster runs a minor version of 3.1.6.1 or later and a ticket is submitted. After your request is approved, you can set this parameter to **worker** or **executor**.
 	ElasticPlanType *string `json:"ElasticPlanType,omitempty" xml:"ElasticPlanType,omitempty"`
 	// The days of the week when you want to execute the scaling plan. Valid values: 0 to 6, which indicates Sunday to Saturday. Separate multiple values with commas (,).
 	ElasticPlanWeeklyRepeat *string `json:"ElasticPlanWeeklyRepeat,omitempty" xml:"ElasticPlanWeeklyRepeat,omitempty"`
@@ -1774,7 +1770,7 @@ func (s *DeleteDBClusterResponse) SetBody(v *DeleteDBClusterResponseBody) *Delet
 type DeleteDBResourceGroupRequest struct {
 	// The ID of the AnalyticDB for MySQL Data Warehouse Edition (V3.0) cluster.
 	//
-	// >  You can call the [DescribeDBClusters](~~129857~~) operation to query the cluster IDs of all AnalyticDB for MySQL Data Warehouse Edition (V3.0) clusters within a specific region.
+	// > You can call the [DescribeDBClusters](~~129857~~) operation to query the IDs of all AnalyticDB for MySQL Data Warehouse Edition (V3.0) clusters within a region.
 	DBClusterId *string `json:"DBClusterId,omitempty" xml:"DBClusterId,omitempty"`
 	// The name of the resource group.
 	GroupName            *string `json:"GroupName,omitempty" xml:"GroupName,omitempty"`
@@ -1823,7 +1819,7 @@ func (s *DeleteDBResourceGroupRequest) SetResourceOwnerId(v int64) *DeleteDBReso
 }
 
 type DeleteDBResourceGroupResponseBody struct {
-	// The ID of the request.
+	// The request ID.
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -2236,13 +2232,13 @@ func (s *DescribeAccountsResponse) SetBody(v *DescribeAccountsResponseBody) *Des
 }
 
 type DescribeAdviceServiceEnabledRequest struct {
-	// The ID of the cluster.
+	// The cluster ID.
 	//
-	// >  You can call the [DescribeDBClusters](~~129857~~) operation to query the IDs of Data Warehouse Edition (V3.0) clusters.
+	// > You can call the [DescribeDBClusters](~~129857~~) operation to query the IDs of Data Warehouse Edition (V3.0) clusters.
 	DBClusterId *string `json:"DBClusterId,omitempty" xml:"DBClusterId,omitempty"`
 	// The region ID of the cluster.
 	//
-	// >  You can call the [DescribeRegions](~~143074~~) operation to query the most recent region list.
+	// > You can call the [DescribeRegions](~~143074~~) operation to query the most recent region list.
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 }
 
@@ -2265,17 +2261,17 @@ func (s *DescribeAdviceServiceEnabledRequest) SetRegionId(v string) *DescribeAdv
 }
 
 type DescribeAdviceServiceEnabledResponseBody struct {
-	// The message returned for the operation. Valid values:
+	// The returned message.
 	//
-	// *   **Success** is returned if the operation is successful.
-	// *   An error message is returned if the operation fails.
+	// *   If the request was successful, **Success** is returned.
+	// *   If the request failed, an error message is returned.
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
-	// The ID of the request.
+	// The request ID.
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	// Indicates whether the suggestion feature is enabled. Valid values:
 	//
-	// *   **True**: The suggestion feature is enabled.
-	// *   **False**: The suggestion feature is disabled.
+	// *   **True**
+	// *   **False**
 	Result *bool `json:"Result,omitempty" xml:"Result,omitempty"`
 }
 
@@ -2744,32 +2740,32 @@ func (s *DescribeAllDataSourceResponse) SetBody(v *DescribeAllDataSourceResponse
 }
 
 type DescribeAppliedAdvicesRequest struct {
-	// The ID of the cluster.
+	// The cluster ID.
 	//
-	// >  You can call the [DescribeDBClusters](~~129857~~) operation to query the IDs of Data Warehouse Edition (V3.0) clusters.
+	// > You can call the [DescribeDBClusters](~~129857~~) operation to query the IDs of Data Warehouse Edition (V3.0) clusters.
 	DBClusterId *string `json:"DBClusterId,omitempty" xml:"DBClusterId,omitempty"`
-	// The end date of the time range to query. Specify the date in the yyyyMMdd format. The date must be in UTC.
+	// The end of the time range to query. Specify the time in the ISO 8601 standard in the yyyyMMdd format. The time must be in UTC.
 	EndTime *int64 `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
-	// The display language of the suggestion. Default value: zh. Valid values:
+	// The display language of the suggestion. Valid values:
 	//
-	// *   **zh**: simplified Chinese
-	// *   **en**: English
-	// *   **ja**: Japanese
-	// *   **zh-tw**: traditional Chinese
+	// *   **zh** (default): simplified Chinese.
+	// *   **en**: English.
+	// *   **ja**: Japanese.
+	// *   **zh-tw**: traditional Chinese.
 	Lang *string `json:"Lang,omitempty" xml:"Lang,omitempty"`
-	// The number of the page to return. The value must be an integer that is greater than 0. Default value: 1.
+	// The page number. Pages start from page 1. Default value: 1.
 	PageNumber *int64 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
-	// The number of entries to return on each page. Default value: 30. Valid values:
+	// The number of entries per page. Valid values:
 	//
-	// *   **30**
+	// *   **30** (default)
 	// *   **50**
 	// *   **100**
 	PageSize *int64 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
 	// The region ID of the cluster.
 	//
-	// >  You can call the [DescribeRegions](~~143074~~) operation to query the most recent region list.
+	// > You can call the [DescribeRegions](~~143074~~) operation to query the most recent region list.
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	// The start date of the time range to query. Specify the date in the yyyyMMdd format. The date must be in UTC.
+	// The beginning of the time range to query. Specify the time in the ISO 8601 standard in the yyyyMMdd format. The time must be in UTC.
 	StartTime *int64 `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
 }
 
@@ -2817,19 +2813,19 @@ func (s *DescribeAppliedAdvicesRequest) SetStartTime(v int64) *DescribeAppliedAd
 }
 
 type DescribeAppliedAdvicesResponseBody struct {
-	// Details of the suggestions.
+	// The queried suggestions.
 	Items []*DescribeAppliedAdvicesResponseBodyItems `json:"Items,omitempty" xml:"Items,omitempty" type:"Repeated"`
-	// The page number of the returned page. The value must be an integer that is greater than 0. Default value: 1.
+	// The page number. Pages start from page 1. Default value: 1.
 	PageNumber *int64 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
-	// The number of entries returned per page. Default value: 30. Valid values:
+	// The number of entries per page. Valid values:
 	//
-	// *   **30**
+	// *   **30** (default)
 	// *   **50**
 	// *   **100**
 	PageSize *int64 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	// The ID of the request.
+	// The request ID.
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// The total number of entries returned. The value must be an integer that is greater than or equal to 0. Default value: 0.
+	// The total number of entries returned. The value is an integer that is greater than or equal to 0. Default value: 0.
 	TotalCount *int64 `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
 }
 
@@ -2873,35 +2869,31 @@ type DescribeAppliedAdvicesResponseBodyItems struct {
 	Benefit *string `json:"Benefit,omitempty" xml:"Benefit,omitempty"`
 	// The SQL statement used to execute the BUILD task.
 	BuildSQL *string `json:"BuildSQL,omitempty" xml:"BuildSQL,omitempty"`
-	// The state of the suggestion execution task.
-	//
-	// Valid values:
+	// The state of the suggestion execution task. Valid values:
 	//
 	// *   **SUCCEED**
 	// *   **FAILED**
 	JobStatus *string `json:"JobStatus,omitempty" xml:"JobStatus,omitempty"`
-	// The page number of the returned page. The value must be an integer that is greater than 0. Default value: 1.
+	// The page number. Pages start from page 1. Default value: 1.
 	PageNumber *int64 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
-	// The number of entries returned per page. Default value: 30. Valid values:
+	// The number of entries per page. Valid values:
 	//
-	// *   **30**
+	// *   **30** (default)
 	// *   **50**
 	// *   **100**
 	PageSize *int64 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
 	// The SQL statement used to roll back the suggestion.
 	RollbackSQL *string `json:"RollbackSQL,omitempty" xml:"RollbackSQL,omitempty"`
-	// The SQL statement used to apply the suggestion.
+	// The SQL statement that is used to apply the suggestion.
 	SQL *string `json:"SQL,omitempty" xml:"SQL,omitempty"`
-	// The submission state of the suggestion.
-	//
-	// Valid values:
+	// The submission state of the suggestion. Valid values:
 	//
 	// *   **SUCCEED**
 	// *   **FAILED**
 	SubmitStatus *string `json:"SubmitStatus,omitempty" xml:"SubmitStatus,omitempty"`
-	// The time when the suggestion was submitted. The time follows the yyMMddHHmm format. The time is displayed in UTC.
+	// The time when the suggestion was submitted. The time follows the ISO 8601 standard in the yyMMddHHmm format. The time is displayed in UTC.
 	SubmitTime *string `json:"SubmitTime,omitempty" xml:"SubmitTime,omitempty"`
-	// The total number of entries returned. The value must be an integer that is greater than or equal to 0. Default value: 0.
+	// The total number of entries returned. The value is an integer that is greater than or equal to 0. Default value: 0.
 	TotalCount *int64 `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
 }
 
@@ -3460,23 +3452,19 @@ func (s *DescribeAuditLogRecordsResponse) SetBody(v *DescribeAuditLogRecordsResp
 }
 
 type DescribeAutoRenewAttributeRequest struct {
-	// The ID of the cluster.
-	//
-	// Separate multiple clusters with commas (,).
+	// The cluster ID. Separate multiple clusters with commas (,).
 	DBClusterIds *string `json:"DBClusterIds,omitempty" xml:"DBClusterIds,omitempty"`
 	OwnerAccount *string `json:"OwnerAccount,omitempty" xml:"OwnerAccount,omitempty"`
 	OwnerId      *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
-	// The number of the page to return. The value must be an integer that is greater than 0.
-	//
-	// Default value: 1
+	// The page number. Pages start from page 1. Default value: 1.
 	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
-	// The number of entries to return on each page. Valid values:
+	// The number of entries per page. Valid values:
 	//
 	// *   30
 	// *   50
 	// *   100
 	//
-	// Default value: 30
+	// Default value: 30.
 	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
 	// The region ID of the cluster.
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
@@ -3542,11 +3530,11 @@ func (s *DescribeAutoRenewAttributeRequest) SetResourceOwnerId(v int64) *Describ
 type DescribeAutoRenewAttributeResponseBody struct {
 	// The renewal information of the cluster.
 	Items *DescribeAutoRenewAttributeResponseBodyItems `json:"Items,omitempty" xml:"Items,omitempty" type:"Struct"`
-	// The page number of the returned page.
+	// The page number.
 	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
-	// The number of entries returned per page.
+	// The number of entries per page.
 	PageRecordCount *int32 `json:"PageRecordCount,omitempty" xml:"PageRecordCount,omitempty"`
-	// The ID of the request.
+	// The request ID.
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	// The total number of entries returned.
 	TotalRecordCount *int32 `json:"TotalRecordCount,omitempty" xml:"TotalRecordCount,omitempty"`
@@ -3605,14 +3593,14 @@ func (s *DescribeAutoRenewAttributeResponseBodyItems) SetAutoRenewAttribute(v []
 type DescribeAutoRenewAttributeResponseBodyItemsAutoRenewAttribute struct {
 	// Indicates whether auto-renewal is enabled for the cluster. Valid values:
 	//
-	// *   **true**: Auto-renewal is enabled.
-	// *   **false**: Auto-renewal is disabled.
+	// *   **true**
+	// *   **false**
 	AutoRenewEnabled *bool `json:"AutoRenewEnabled,omitempty" xml:"AutoRenewEnabled,omitempty"`
-	// The ID of the cluster.
+	// The cluster ID.
 	DBClusterId *string `json:"DBClusterId,omitempty" xml:"DBClusterId,omitempty"`
-	// The renewal period.
+	// The renewal duration.
 	Duration *int32 `json:"Duration,omitempty" xml:"Duration,omitempty"`
-	// The unit of the renewal period. Valid values:
+	// The unit of the renewal duration. Valid values:
 	//
 	// *   **Year**
 	// *   **Month**
@@ -4912,18 +4900,22 @@ func (s *DescribeColumnsResponse) SetBody(v *DescribeColumnsResponseBody) *Descr
 }
 
 type DescribeComputeResourceRequest struct {
-	DBClusterId      *string `json:"DBClusterId,omitempty" xml:"DBClusterId,omitempty"`
+	DBClusterId *string `json:"DBClusterId,omitempty" xml:"DBClusterId,omitempty"`
+	// The version of the AnalyticDB for MySQL Data Warehouse Edition cluster. Set the value to **3**.
 	DBClusterVersion *string `json:"DBClusterVersion,omitempty" xml:"DBClusterVersion,omitempty"`
 	Migrate          *bool   `json:"Migrate,omitempty" xml:"Migrate,omitempty"`
 	OwnerAccount     *string `json:"OwnerAccount,omitempty" xml:"OwnerAccount,omitempty"`
 	OwnerId          *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
-	// The ID of the region.
+	// The region ID of the cluster.
 	//
-	// >  You can call the [DescribeRegions](~~143074~~) operation to query the most recent region list.
+	// > You can call the [DescribeRegions](~~143074~~) operation to query the most recent region list.
 	RegionId             *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 	ResourceOwnerAccount *string `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
 	ResourceOwnerId      *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
-	ZoneId               *string `json:"ZoneId,omitempty" xml:"ZoneId,omitempty"`
+	// The zone ID of the cluster.
+	//
+	// > You can call the [DescribeRegions](~~129857~~) operation to query the most recent zone list.
+	ZoneId *string `json:"ZoneId,omitempty" xml:"ZoneId,omitempty"`
 }
 
 func (s DescribeComputeResourceRequest) String() string {
@@ -4980,9 +4972,9 @@ func (s *DescribeComputeResourceRequest) SetZoneId(v string) *DescribeComputeRes
 }
 
 type DescribeComputeResourceResponseBody struct {
-	// Details of computing resource specifications.
+	// The queried specifications of computing resources.
 	ComputeResource []*DescribeComputeResourceResponseBodyComputeResource `json:"ComputeResource,omitempty" xml:"ComputeResource,omitempty" type:"Repeated"`
-	// The ID of the request.
+	// The request ID.
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -5059,9 +5051,9 @@ func (s *DescribeComputeResourceResponse) SetBody(v *DescribeComputeResourceResp
 }
 
 type DescribeConnectionCountRecordsRequest struct {
-	// The ID of the cluster.
+	// The cluster ID.
 	//
-	// >  You can call the [DescribeDBClusters](~~129857~~) operation to query the details of all AnalyticDB for MySQL clusters within a specific region, including cluster IDs.
+	// > You can call the [DescribeDBClusters](~~129857~~) operation to query the information about all AnalyticDB for MySQL clusters within a region, including cluster IDs.
 	DBClusterId          *string `json:"DBClusterId,omitempty" xml:"DBClusterId,omitempty"`
 	OwnerAccount         *string `json:"OwnerAccount,omitempty" xml:"OwnerAccount,omitempty"`
 	OwnerId              *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
@@ -5103,13 +5095,13 @@ func (s *DescribeConnectionCountRecordsRequest) SetResourceOwnerId(v int64) *Des
 }
 
 type DescribeConnectionCountRecordsResponseBody struct {
-	// Details of the client IP addresses.
+	// The queried client IP addresses.
 	AccessIpRecords []*DescribeConnectionCountRecordsResponseBodyAccessIpRecords `json:"AccessIpRecords,omitempty" xml:"AccessIpRecords,omitempty" type:"Repeated"`
-	// The ID of the cluster.
+	// The cluster ID.
 	DBClusterId *string `json:"DBClusterId,omitempty" xml:"DBClusterId,omitempty"`
-	// The ID of the request.
+	// The request ID.
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// Details of the users.
+	// The queried database accounts.
 	UserRecords []*DescribeConnectionCountRecordsResponseBodyUserRecords `json:"UserRecords,omitempty" xml:"UserRecords,omitempty" type:"Repeated"`
 }
 
@@ -5142,7 +5134,7 @@ func (s *DescribeConnectionCountRecordsResponseBody) SetUserRecords(v []*Describ
 }
 
 type DescribeConnectionCountRecordsResponseBodyAccessIpRecords struct {
-	// The IP address of the client used to connect to the cluster.
+	// The IP address of the client.
 	AccessIp *string `json:"AccessIp,omitempty" xml:"AccessIp,omitempty"`
 	// The number of connections.
 	Count *int64 `json:"Count,omitempty" xml:"Count,omitempty"`
@@ -5169,7 +5161,7 @@ func (s *DescribeConnectionCountRecordsResponseBodyAccessIpRecords) SetCount(v i
 type DescribeConnectionCountRecordsResponseBodyUserRecords struct {
 	// The number of connections.
 	Count *int64 `json:"Count,omitempty" xml:"Count,omitempty"`
-	// The name of the user used to connect to the cluster.
+	// The username of the database account.
 	User *string `json:"User,omitempty" xml:"User,omitempty"`
 }
 
@@ -7571,7 +7563,7 @@ func (s *DescribeDBClustersResponse) SetBody(v *DescribeDBClustersResponseBody) 
 type DescribeDBResourceGroupRequest struct {
 	// The ID of the AnalyticDB for MySQL Data Warehouse Edition (V3.0) cluster.
 	//
-	// >  You can call the [DescribeDBClusters](~~129857~~) operation to query the cluster IDs of all AnalyticDB for MySQL Data Warehouse Edition (V3.0) clusters within a specific region.
+	// > You can call the [DescribeDBClusters](~~129857~~) operation to query the IDs of all AnalyticDB for MySQL Data Warehouse Edition (V3.0) clusters within a region.
 	DBClusterId *string `json:"DBClusterId,omitempty" xml:"DBClusterId,omitempty"`
 	// The name of the resource group.
 	GroupName            *string `json:"GroupName,omitempty" xml:"GroupName,omitempty"`
@@ -7620,11 +7612,11 @@ func (s *DescribeDBResourceGroupRequest) SetResourceOwnerId(v int64) *DescribeDB
 }
 
 type DescribeDBResourceGroupResponseBody struct {
-	// The ID of the cluster.
+	// The cluster ID.
 	DBClusterId *string `json:"DBClusterId,omitempty" xml:"DBClusterId,omitempty"`
-	// Details of the resource group.
+	// The queried resource group.
 	GroupsInfo []*DescribeDBResourceGroupResponseBodyGroupsInfo `json:"GroupsInfo,omitempty" xml:"GroupsInfo,omitempty" type:"Repeated"`
-	// The ID of the request.
+	// The request ID.
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -7659,13 +7651,13 @@ type DescribeDBResourceGroupResponseBodyGroupsInfo struct {
 	// The query execution mode. Valid values:
 	//
 	// *   **interactive**
-	// *   **batch**
+	// *   **batch** (default)
 	//
-	// >  For more information, see [Query execution modes](~~189502~~).
+	// > For more information, see [Query execution modes](~~189502~~).
 	GroupType *string `json:"GroupType,omitempty" xml:"GroupType,omitempty"`
 	// The database accounts that are associated with the resource group.
 	GroupUsers *string `json:"GroupUsers,omitempty" xml:"GroupUsers,omitempty"`
-	// The number of nodes. Each node consumes 16 cores and 64 GB memory.
+	// The number of nodes. Each node provides 16 cores and 64 GB memory.
 	NodeNum *int32 `json:"NodeNum,omitempty" xml:"NodeNum,omitempty"`
 	// The time when the resource group was updated.
 	UpdateTime *string `json:"UpdateTime,omitempty" xml:"UpdateTime,omitempty"`
@@ -9799,20 +9791,19 @@ func (s *DescribeElasticDailyPlanResponse) SetBody(v *DescribeElasticDailyPlanRe
 type DescribeElasticPlanRequest struct {
 	// The ID of the AnalyticDB for MySQL Data Warehouse Edition (V3.0) cluster.
 	//
-	// >  You can call the [DescribeDBClusters](~~129857~~) operation to query the cluster IDs of all AnalyticDB for MySQL Data Warehouse Edition (V3.0) clusters within a specific region.
+	// > You can call the [DescribeDBClusters](~~129857~~) operation to query the IDs of all AnalyticDB for MySQL Data Warehouse Edition (V3.0) clusters within a region.
 	DBClusterId *string `json:"DBClusterId,omitempty" xml:"DBClusterId,omitempty"`
-	// Specifies whether the scaling plan takes effect. Default value: true. Valid values:
+	// Specifies whether the scaling plan takes effect. Valid values:
 	//
-	// *   **true**: The scaling plan takes effect.
-	// *   **false**: The scaling plan does not take effect.
+	// *   **true** (default)
+	// *   **false**
 	ElasticPlanEnable *bool `json:"ElasticPlanEnable,omitempty" xml:"ElasticPlanEnable,omitempty"`
 	// The name of the scaling plan.
 	//
 	// *   The name must be 2 to 30 characters in length.
-	//
 	// *   The name can contain letters, digits, and underscores (\_).
 	//
-	// >  If you do not specify this parameter, the details of all scaling plans for the specified cluster are returned.
+	// > If you do not specify this parameter, the information about all scaling plans for the specified cluster is returned.
 	ElasticPlanName      *string `json:"ElasticPlanName,omitempty" xml:"ElasticPlanName,omitempty"`
 	OwnerAccount         *string `json:"OwnerAccount,omitempty" xml:"OwnerAccount,omitempty"`
 	OwnerId              *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
@@ -9820,7 +9811,7 @@ type DescribeElasticPlanRequest struct {
 	ResourceOwnerId      *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
 	// The name of the resource group.
 	//
-	// > *   You can call the [DescribeDBResourceGroup](~~466685~~) operation to query the resource group name.
+	// > You can call the [DescribeDBResourceGroup](~~466685~~) operation to query the resource group name.
 	ResourcePoolName *string `json:"ResourcePoolName,omitempty" xml:"ResourcePoolName,omitempty"`
 }
 
@@ -9873,9 +9864,9 @@ func (s *DescribeElasticPlanRequest) SetResourcePoolName(v string) *DescribeElas
 }
 
 type DescribeElasticPlanResponseBody struct {
-	// Details of the scaling plans.
+	// The queried scaling plans.
 	ElasticPlanList []*DescribeElasticPlanResponseBodyElasticPlanList `json:"ElasticPlanList,omitempty" xml:"ElasticPlanList,omitempty" type:"Repeated"`
-	// The ID of the request.
+	// The request ID.
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -9898,20 +9889,20 @@ func (s *DescribeElasticPlanResponseBody) SetRequestId(v string) *DescribeElasti
 }
 
 type DescribeElasticPlanResponseBodyElasticPlanList struct {
-	// The number of nodes involved in the scaling plan.
+	// The number of nodes that are involved in the scaling plan.
 	//
 	// *   If ElasticPlanType is set to **worker**, a value of 0 or null is returned.
 	// *   If ElasticPlanType is set to **executorcombineworker** or **executor**, a value greater than 0 is returned.
 	ElasticNodeNum *int32 `json:"ElasticNodeNum,omitempty" xml:"ElasticNodeNum,omitempty"`
-	// The type of the scaling plan. Default value: executorcombineworker. Valid values:
+	// The type of the scaling plan. Valid values:
 	//
 	// *   **worker**: scales only elastic I/O resources.
 	// *   **executor**: scales only computing resources.
-	// *   **executorcombineworker**: scales both elastic I/O resources and computing resources by proportion.
+	// *   **executorcombineworker** (default): scales both elastic I/O resources and computing resources by proportion.
 	ElasticPlanType *string `json:"ElasticPlanType,omitempty" xml:"ElasticPlanType,omitempty"`
-	// The resource specifications that can be scaled up by the scaling plan. Default value: 8 Core 64 GB. Valid values:
+	// The resource specifications that can be scaled up by the scaling plan. Valid values:
 	//
-	// *   8 Core 64 GB
+	// *   8 Core 64 GB (default)
 	// *   16 Core 64 GB
 	// *   32 Core 64 GB
 	// *   64 Core 128 GB
@@ -9919,10 +9910,10 @@ type DescribeElasticPlanResponseBodyElasticPlanList struct {
 	// *   24 Core 96 GB
 	// *   52 Core 86 GB
 	ElasticPlanWorkerSpec *string `json:"ElasticPlanWorkerSpec,omitempty" xml:"ElasticPlanWorkerSpec,omitempty"`
-	// Specifies whether the scaling plan takes effect. Default value: true. Valid values:
+	// Indicates whether the scaling plan takes effect. Default value: true. Valid values:
 	//
-	// *   **true**: The scaling plan takes effect.
-	// *   **false**: The scaling plan does not take effect.
+	// *   **true** (default)
+	// *   **false**
 	Enable *bool `json:"Enable,omitempty" xml:"Enable,omitempty"`
 	// The end date of the scaling plan. This parameter is returned only if the end date of the scaling plan is set. The date is in the yyyy-MM-dd format.
 	EndDay *string `json:"EndDay,omitempty" xml:"EndDay,omitempty"`
@@ -9936,7 +9927,7 @@ type DescribeElasticPlanResponseBodyElasticPlanList struct {
 	StartDay *string `json:"StartDay,omitempty" xml:"StartDay,omitempty"`
 	// The scale-up time of the scaling plan. The time is in the HH:mm:ss format.
 	StartTime *string `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
-	// The days of the week when you want to execute the scaling plan. Valid values: 0 to 6, which indicate Sunday to Saturday. Multiple values are separated by commas (,).
+	// The days of the week when the scaling plan was executed. Valid values: 0 to 6, which indicate Sunday to Saturday. Multiple values are separated by commas (,).
 	WeeklyRepeat *string `json:"WeeklyRepeat,omitempty" xml:"WeeklyRepeat,omitempty"`
 }
 
@@ -10544,34 +10535,34 @@ func (s *DescribeLoadTasksRecordsResponse) SetBody(v *DescribeLoadTasksRecordsRe
 }
 
 type DescribeMaintenanceActionRequest struct {
-	// Specifies whether to return the details of pending or historical O\&M events. Valid values:
+	// Specifies whether to return the information about pending or historical O\&M events. Valid values:
 	//
-	// *   **0**: returns the details of pending O\&M event.
-	// *   **1**: returns the details of historical O\&M event.
+	// *   **0**: returns the information about pending O\&M event.
+	// *   **1**: returns the information about historical O\&M event.
 	//
-	// If you do not specify this parameter, the details of pending O\&M event are returned.
+	// If you do not specify this parameter, the information about pending O\&M event are returned.
 	IsHistory    *int32  `json:"IsHistory,omitempty" xml:"IsHistory,omitempty"`
 	OwnerAccount *string `json:"OwnerAccount,omitempty" xml:"OwnerAccount,omitempty"`
 	OwnerId      *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
-	// The number of the page to return. The value must be an integer that is greater than 0. Default value: **1**.
+	// The page number. Pages start from page 1. Default value: **1**.
 	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
-	// The number of entries to return on each page. Valid values: **30**, **50**, and **100**. Default value: 30.
+	// The number of entries per page. Valid values: **30**, **50**, and **100**. Default value: 30.
 	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	// The ID of the region where the O\&M event occurs. Valid values:
+	// The region ID. Valid values:
 	//
-	// *   The ID of the region where the O\&M event occurs. Example: `cn-hangzhou`. You can call the [DescribeRegions](~~143074~~) operation to query the regions and zones supported by AnalyticDB for MySQL, including the region IDs.
-	// *   You can also set Region to `all` to view all the O\&M events in all regions. If `Region` is set to `all`, `TaskType` must be set to `all`.
+	// *   The ID of the region where the O\&M event occurs. Example: `cn-hangzhou`. You can call the [DescribeRegions](~~143074~~) operation to query the most recent region list.
+	// *   You can also set Region to `all` to query the O\&M events in all regions. If you set `Region` to `all`, you must set `TaskType` to `all`.
 	Region *string `json:"Region,omitempty" xml:"Region,omitempty"`
 	// The ID of the region where the O\&M event occurs.
 	//
-	// >  You can call the [DescribeRegions](~~143074~~) operation to query the regions and zones supported by AnalyticDB for MySQL, including the region IDs.
+	// > You can call the [DescribeRegions](~~143074~~) operation to query the most recent region list.
 	RegionId             *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 	ResourceOwnerAccount *string `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
 	ResourceOwnerId      *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
 	// The type of the O\&M event. Valid values:
 	//
-	// *   **rds_apsaradb_upgrade**: indicates database software upgrades.
-	// *   **all**: indicates all the O\&M events in all regions within the current account. If `Region` is set to `all`, `TaskType` must be set to `all`.
+	// *   **rds_apsaradb_upgrade**: database software upgrades.
+	// *   **all**: all the O\&M events in all regions within the current account. If you set `Region` to `all`, you must set `TaskType` to `all`.
 	TaskType *string `json:"TaskType,omitempty" xml:"TaskType,omitempty"`
 }
 
@@ -10634,13 +10625,13 @@ func (s *DescribeMaintenanceActionRequest) SetTaskType(v string) *DescribeMainte
 }
 
 type DescribeMaintenanceActionResponseBody struct {
-	// The list of events.
+	// The queried O\&M events.
 	Items []*DescribeMaintenanceActionResponseBodyItems `json:"Items,omitempty" xml:"Items,omitempty" type:"Repeated"`
-	// The page number of the returned page.
+	// The page number.
 	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
-	// The number of entries returned per page.
+	// The number of entries per page.
 	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	// The ID of the request.
+	// The request ID.
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	// The total number of entries returned.
 	TotalRecordCount *int32 `json:"TotalRecordCount,omitempty" xml:"TotalRecordCount,omitempty"`
@@ -10682,7 +10673,7 @@ func (s *DescribeMaintenanceActionResponseBody) SetTotalRecordCount(v int32) *De
 type DescribeMaintenanceActionResponseBodyItems struct {
 	// The time when the O\&M event was created. The time follows the ISO 8601 standard in the `yyyy-MM-ddTHH:mm:ssZ` format. The time is displayed in UTC.
 	CreatedTime *string `json:"CreatedTime,omitempty" xml:"CreatedTime,omitempty"`
-	// The ID of the cluster involved in the O\&M event.
+	// The ID of the cluster that is involved in the O\&M event.
 	DBClusterId *string `json:"DBClusterId,omitempty" xml:"DBClusterId,omitempty"`
 	// The database engine.
 	DBType *string `json:"DBType,omitempty" xml:"DBType,omitempty"`
@@ -10690,9 +10681,9 @@ type DescribeMaintenanceActionResponseBodyItems struct {
 	DBVersion *string `json:"DBVersion,omitempty" xml:"DBVersion,omitempty"`
 	// The deadline before which the event can be executed. The time follows the ISO 8601 standard in the `yyyy-MM-ddTHH:mm:ssZ` format. The time is displayed in UTC.
 	Deadline *string `json:"Deadline,omitempty" xml:"Deadline,omitempty"`
-	// The ID of the event.
+	// The ID of the O\&M event.
 	Id *int32 `json:"Id,omitempty" xml:"Id,omitempty"`
-	// The point in time at which the O\&M event was switched. The time follows the ISO 8601 standard in the `yyyy-MM-ddTHH:mm:ssZ` format. The time is displayed in UTC.
+	// The point in time at which the switchover time of the O\&M event was modified. The time follows the ISO 8601 standard in the `yyyy-MM-ddTHH:mm:ssZ` format. The time is displayed in UTC.
 	ModifiedTime *string `json:"ModifiedTime,omitempty" xml:"ModifiedTime,omitempty"`
 	// The preparation time that is required before the pending O\&M event can be switched. The time is in the `HH:mm:ss` format.
 	PrepareInterval *string `json:"PrepareInterval,omitempty" xml:"PrepareInterval,omitempty"`
@@ -10700,7 +10691,7 @@ type DescribeMaintenanceActionResponseBodyItems struct {
 	Region *string `json:"Region,omitempty" xml:"Region,omitempty"`
 	// The execution result of the O\&M event.
 	//
-	// >  This parameter is valid only when `Status` is set to **FAILED** or **CANCEL**.
+	// > This parameter is returned only when the value of `Status` is **FAILED** or **CANCEL**.
 	ResultInfo *string `json:"ResultInfo,omitempty" xml:"ResultInfo,omitempty"`
 	// The time when the task was executed in the backend. The time follows the ISO 8601 standard in the `yyyy-MM-ddTHH:mm:ssZ` format. The time is displayed in UTC.
 	StartTime *string `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
@@ -10710,7 +10701,7 @@ type DescribeMaintenanceActionResponseBodyItems struct {
 	//
 	//     *   **WAITING_MODIFY**: The start time of the O\&M event is waiting to be set.
 	//     *   **WAITING**: The O\&M event is waiting to be processed.
-	//     *   **PROCESSING**: The O\&M event is being processed. The switching time of an event in this state cannot be changed.
+	//     *   **PROCESSING**: The O\&M event is being processed. The switchover time of an event in this state cannot be changed.
 	//
 	// *   If you set `IsHistory` to **1**, the state of the historical O\&M event is returned. Valid values:
 	//
@@ -10718,9 +10709,9 @@ type DescribeMaintenanceActionResponseBodyItems struct {
 	//     *   **FAILED**: The event ended but the execution failed.
 	//     *   **CANCEL**: The event was canceled.
 	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
-	// The time when the pending event was switched. The time follows the ISO 8601 standard in the `yyyy-MM-ddTHH:mm:ssZ` format. The time is displayed in UTC.
+	// The time when the pending O\&M event is switched. The time follows the ISO 8601 standard in the `yyyy-MM-ddTHH:mm:ssZ` format. The time is displayed in UTC.
 	SwitchTime *string `json:"SwitchTime,omitempty" xml:"SwitchTime,omitempty"`
-	// The type of the O&M event.
+	// The type of the O\&M event.
 	TaskType *string `json:"TaskType,omitempty" xml:"TaskType,omitempty"`
 }
 
@@ -11436,13 +11427,13 @@ func (s *DescribeProcessListResponse) SetBody(v *DescribeProcessListResponseBody
 }
 
 type DescribeRegionsRequest struct {
-	// The language used for the region and zone names specified by the `LocalName` parameter. Valid values:
+	// Th language of the `LocalName` response parameter. Valid values:
 	//
-	// *   **zh-CN**: Chinese
-	// *   **en-US**: English
-	// *   **ja**: Japanese
+	// *   **zh-CN**: Chinese.
+	// *   **en-US**: English.
+	// *   **ja**: Japanese.
 	//
-	// >  If this parameter is left empty, Chinese is used.
+	// > If you do not specify this parameter, the Chinese language is used.
 	AcceptLanguage       *string `json:"AcceptLanguage,omitempty" xml:"AcceptLanguage,omitempty"`
 	OwnerAccount         *string `json:"OwnerAccount,omitempty" xml:"OwnerAccount,omitempty"`
 	OwnerId              *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
@@ -11484,9 +11475,9 @@ func (s *DescribeRegionsRequest) SetResourceOwnerId(v int64) *DescribeRegionsReq
 }
 
 type DescribeRegionsResponseBody struct {
-	// The list of regions.
+	// The queried regions.
 	Regions *DescribeRegionsResponseBodyRegions `json:"Regions,omitempty" xml:"Regions,omitempty" type:"Struct"`
-	// The ID of the request.
+	// The request ID.
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -11526,12 +11517,13 @@ func (s *DescribeRegionsResponseBodyRegions) SetRegion(v []*DescribeRegionsRespo
 }
 
 type DescribeRegionsResponseBodyRegionsRegion struct {
+	// The region name.
 	LocalName *string `json:"LocalName,omitempty" xml:"LocalName,omitempty"`
 	// The endpoint of the region.
 	RegionEndpoint *string `json:"RegionEndpoint,omitempty" xml:"RegionEndpoint,omitempty"`
-	// The ID of the region.
+	// The region ID.
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	// The list of zones.
+	// The queried zones.
 	Zones *DescribeRegionsResponseBodyRegionsRegionZones `json:"Zones,omitempty" xml:"Zones,omitempty" type:"Struct"`
 }
 
@@ -11581,14 +11573,14 @@ func (s *DescribeRegionsResponseBodyRegionsRegionZones) SetZone(v []*DescribeReg
 }
 
 type DescribeRegionsResponseBodyRegionsRegionZonesZone struct {
-	// The name of the region.
+	// The zone name.
 	LocalName *string `json:"LocalName,omitempty" xml:"LocalName,omitempty"`
-	// Indicates whether Virtual Private Cloud (VPC) is available in the zone that you want to select. Valid values:
+	// Indicates whether Virtual Private Cloud (VPC) is supported in the zone. Valid values:
 	//
-	// *   **true**: VPC is available.
-	// *   **false**: VPC is unavailable.
+	// *   **true**
+	// *   **false**
 	VpcEnabled *bool `json:"VpcEnabled,omitempty" xml:"VpcEnabled,omitempty"`
-	// The ID of the zone.
+	// The zone ID.
 	ZoneId *string `json:"ZoneId,omitempty" xml:"ZoneId,omitempty"`
 }
 
@@ -11645,32 +11637,32 @@ func (s *DescribeRegionsResponse) SetBody(v *DescribeRegionsResponseBody) *Descr
 }
 
 type DescribeSQLPatternAttributeRequest struct {
-	// The ID of the cluster.
+	// The cluster ID.
 	//
-	// >  You can call the [DescribeDBClusters](~~129857~~) operation to query the detailed information of all AnalyticDB for MySQL clusters within a specific region, including cluster IDs.
+	// > You can call the [DescribeDBClusters](~~129857~~) operation to query the information about all AnalyticDB for MySQL clusters within a region, including cluster IDs.
 	DBClusterId *string `json:"DBClusterId,omitempty" xml:"DBClusterId,omitempty"`
 	// The end of the time range to query. Specify the time in the ISO 8601 standard in the *yyyy-MM-ddTHH:mmZ* format. The time must be in UTC.
 	//
-	// >  The end time must be later than the start time.
+	// > The end time must be later than the start time.
 	EndTime *string `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
-	// The languages available for file titles and some error messages. Default value: zh. Valid values:
+	// The language of file titles and error messages. Valid values:
 	//
-	// *   **zh**: Simplified Chinese
-	// *   **en**: English
-	// *   **ja**: Japanese
-	// *   **zh-tw**: Traditional Chinese
+	// *   **zh**: simplified Chinese.
+	// *   **en**: English.
+	// *   **ja**: Japanese.
+	// *   **zh-tw**: traditional Chinese.
 	Lang *string `json:"Lang,omitempty" xml:"Lang,omitempty"`
-	// The ID of the SQL pattern.
+	// The SQL pattern ID.
 	//
-	// >  You can call the [DescribeSQLPatterns](~~321868~~) operation to query the list of SQL patterns within an AnalyticDB for MySQL cluster for a specific period of time, including SQL pattern IDs.
+	// > You can call the [DescribeSQLPatterns](~~321868~~) operation to query the information about all SQL patterns in an AnalyticDB for MySQL cluster within a period of time, including SQL pattern IDs.
 	PatternId *int64 `json:"PatternId,omitempty" xml:"PatternId,omitempty"`
 	// The region ID of the cluster.
 	//
-	// >  You can call the [DescribeRegions](~~143074~~) operation to query the regions and zones supported by AnalyticDB for MySQL, including region IDs.
+	// > You can call the [DescribeRegions](~~143074~~) operation to query the most recent region list.
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 	// The beginning of the time range to query. Specify the time in the ISO 8601 standard in the *yyyy-MM-ddTHH:mmZ* format. The time must be in UTC.
 	//
-	// >  Only data generated within the last 15 days can be viewed.
+	// > You can query the data only within the last 15 days.
 	StartTime *string `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
 }
 
@@ -11713,9 +11705,9 @@ func (s *DescribeSQLPatternAttributeRequest) SetStartTime(v string) *DescribeSQL
 }
 
 type DescribeSQLPatternAttributeResponseBody struct {
-	// The detailed information of the SQL pattern.
+	// The queried SQL pattern.
 	PatternDetail *DescribeSQLPatternAttributeResponseBodyPatternDetail `json:"PatternDetail,omitempty" xml:"PatternDetail,omitempty" type:"Struct"`
-	// The ID of the request.
+	// The request ID.
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -11738,15 +11730,15 @@ func (s *DescribeSQLPatternAttributeResponseBody) SetRequestId(v string) *Descri
 }
 
 type DescribeSQLPatternAttributeResponseBodyPatternDetail struct {
-	// The average memory consumption associated with the SQL pattern. Unit: MB.
+	// The average used memory associated with the SQL pattern. Unit: MB.
 	AverageMemory *string `json:"AverageMemory,omitempty" xml:"AverageMemory,omitempty"`
-	// The average query time associated with the SQL pattern. Unit: milliseconds.
+	// The average query duration associated with the SQL pattern. Unit: milliseconds.
 	AverageQueryTime *string `json:"AverageQueryTime,omitempty" xml:"AverageQueryTime,omitempty"`
-	// The number of queries performed based on the SQL pattern.
+	// The number of queries.
 	QueryCount *int64 `json:"QueryCount,omitempty" xml:"QueryCount,omitempty"`
 	// The statement of the SQL pattern.
 	SQLPattern *string `json:"SQLPattern,omitempty" xml:"SQLPattern,omitempty"`
-	// The total query time associated with the SQL pattern. Unit: milliseconds.
+	// The total query duration associated with the SQL pattern. Unit: milliseconds.
 	TotalQueryTime *string `json:"TotalQueryTime,omitempty" xml:"TotalQueryTime,omitempty"`
 }
 
@@ -12141,15 +12133,15 @@ func (s *DescribeSQLPatternsResponse) SetBody(v *DescribeSQLPatternsResponseBody
 }
 
 type DescribeSQLPlanRequest struct {
-	// The ID of the cluster.
+	// The cluster ID.
 	//
-	// >  You can call the [DescribeDBClusters](~~129857~~) operation to query details about all AnalyticDB for MySQL clusters in a specific region, including cluster IDs.
+	// > You can call the [DescribeDBClusters](~~129857~~) operation to query the information about all AnalyticDB for MySQL clusters within a region, including cluster IDs.
 	DBClusterId  *string `json:"DBClusterId,omitempty" xml:"DBClusterId,omitempty"`
 	OwnerAccount *string `json:"OwnerAccount,omitempty" xml:"OwnerAccount,omitempty"`
 	OwnerId      *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
-	// The ID of the task.
+	// The query ID.
 	//
-	// >  You can call the [DescribeSlowLogRecords](~~143382~~) operation to query the task ID of the SQL statement.
+	// > You can call the [DescribeProcessList](~~143382~~) operation to query the IDs of queries that are being executed.
 	ProcessId            *string `json:"ProcessId,omitempty" xml:"ProcessId,omitempty"`
 	ResourceOwnerAccount *string `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
 	ResourceOwnerId      *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
@@ -12194,13 +12186,13 @@ func (s *DescribeSQLPlanRequest) SetResourceOwnerId(v int64) *DescribeSQLPlanReq
 }
 
 type DescribeSQLPlanResponseBody struct {
-	// Details about the execution of the SQL statement.
+	// The execution information about the SQL statement.
 	Detail *DescribeSQLPlanResponseBodyDetail `json:"Detail,omitempty" xml:"Detail,omitempty" type:"Struct"`
-	// The original details of the SQL statement.
+	// The original information about the SQL statement.
 	OriginInfo *string `json:"OriginInfo,omitempty" xml:"OriginInfo,omitempty"`
-	// The ID of the request.
+	// The request ID.
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// Details about the plan stages.
+	// The queried plan in different stages.
 	StageList []*DescribeSQLPlanResponseBodyStageList `json:"StageList,omitempty" xml:"StageList,omitempty" type:"Repeated"`
 }
 
@@ -12237,21 +12229,21 @@ type DescribeSQLPlanResponseBodyDetail struct {
 	CPUTime *int64 `json:"CPUTime,omitempty" xml:"CPUTime,omitempty"`
 	// The IP address of the client that is used to execute the SQL statement.
 	ClientIP *string `json:"ClientIP,omitempty" xml:"ClientIP,omitempty"`
-	// The name of the database on which the SQL statement is executed.
+	// The name of the database on which the SQL statement was executed.
 	Database *string `json:"Database,omitempty" xml:"Database,omitempty"`
 	// The total number of rows generated by the SQL statement.
 	OutputRows *int64 `json:"OutputRows,omitempty" xml:"OutputRows,omitempty"`
-	// The total amount of data generated by the SQL statement. Unit: byte.
+	// The total amount of data generated by the SQL statement. Unit: bytes.
 	OutputSize *int64 `json:"OutputSize,omitempty" xml:"OutputSize,omitempty"`
-	// The maximum memory usage when the SQL statement is executed. Unit: byte.
+	// The maximum memory usage when the SQL statement is executed. Unit: bytes.
 	PeakMemory *int64 `json:"PeakMemory,omitempty" xml:"PeakMemory,omitempty"`
-	// The time when the execution plan of the SQL statement is generated. Unit: milliseconds.
+	// The amount of time consumed to generate the execution plan of the SQL statement. Unit: milliseconds.
 	PlanningTime *int64 `json:"PlanningTime,omitempty" xml:"PlanningTime,omitempty"`
-	// The amount of time that the SQL statement is queued before it is executed. Unit: milliseconds.
+	// The amount of time consumed to queue the SQL statement. Unit: milliseconds.
 	QueuedTime *int64 `json:"QueuedTime,omitempty" xml:"QueuedTime,omitempty"`
 	// The SQL statement.
 	SQL *string `json:"SQL,omitempty" xml:"SQL,omitempty"`
-	// The beginning of the time range in which the SQL statement is executed. The time is in the UNIX timestamp format. Unit: milliseconds.
+	// The execution start time of the SQL statement. This value is a UNIX timestamp representing the number of milliseconds that have elapsed since January 1, 1970, 00:00:00 UTC.
 	StartTime *string `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
 	// The final execution state of the SQL statement. Valid values:
 	//
@@ -12262,7 +12254,7 @@ type DescribeSQLPlanResponseBodyDetail struct {
 	TotalStage *int64 `json:"TotalStage,omitempty" xml:"TotalStage,omitempty"`
 	// The total number of tasks in the SQL statement.
 	TotalTask *int64 `json:"TotalTask,omitempty" xml:"TotalTask,omitempty"`
-	// The time consumed to execute the SQL statement. Unit: milliseconds.
+	// The total amount of time consumed to execute the SQL statement. Unit: milliseconds.
 	TotalTime *int64 `json:"TotalTime,omitempty" xml:"TotalTime,omitempty"`
 	// The name of the user who submitted the SQL statement.
 	User *string `json:"User,omitempty" xml:"User,omitempty"`
@@ -12358,21 +12350,21 @@ type DescribeSQLPlanResponseBodyStageList struct {
 	CPUTimeMax *int64 `json:"CPUTimeMax,omitempty" xml:"CPUTimeMax,omitempty"`
 	// The minimum `CPU Time` value on each compute node in the stage. Unit: milliseconds.
 	CPUTimeMin *int64 `json:"CPUTimeMin,omitempty" xml:"CPUTimeMin,omitempty"`
-	// The average amount of input data on each compute node in the stage. Unit: byte.
+	// The average amount of input data on each compute node in the stage. Unit: bytes.
 	InputSizeAvg *int64 `json:"InputSizeAvg,omitempty" xml:"InputSizeAvg,omitempty"`
 	// The maximum amount of input data on each compute node in the stage. Unit: byte.
 	InputSizeMax *int64 `json:"InputSizeMax,omitempty" xml:"InputSizeMax,omitempty"`
-	// The minimum amount of input data on each compute node in the stage. Unit: byte.
+	// The minimum amount of input data on each compute node in the stage. Unit: bytes.
 	InputSizeMin *int64 `json:"InputSizeMin,omitempty" xml:"InputSizeMin,omitempty"`
 	// The total CPU time consumed by all operators in the stage, which is equivalent to the total CPU time of the stage. You can use this parameter to determine which parts of the stage consume a large amount of computing resources. Unit: milliseconds.
 	OperatorCost *int64 `json:"OperatorCost,omitempty" xml:"OperatorCost,omitempty"`
-	// The maximum memory usage when the SQL statement is executed. Unit: byte.
+	// The maximum memory usage when the SQL statement is executed. Unit: bytes.
 	PeakMemory *int64 `json:"PeakMemory,omitempty" xml:"PeakMemory,omitempty"`
-	// The average amount of data scanned by a scan operator on each storage node in the stage. Unit: byte.
+	// The average amount of data scanned by a scan operator on each storage node in the stage. Unit: bytes.
 	ScanSizeAvg *int64 `json:"ScanSizeAvg,omitempty" xml:"ScanSizeAvg,omitempty"`
-	// The maximum amount of data scanned by a scan operator on each storage node in the stage. Unit: byte.
+	// The maximum amount of data scanned by a scan operator on each storage node in the stage. Unit: bytes.
 	ScanSizeMax *int64 `json:"ScanSizeMax,omitempty" xml:"ScanSizeMax,omitempty"`
-	// The minimum amount of data scanned by a scan operator on each storage node in the stage. Unit: byte.
+	// The minimum amount of data scanned by a scan operator on each storage node in the stage. Unit: bytes.
 	ScanSizeMin *int64 `json:"ScanSizeMin,omitempty" xml:"ScanSizeMin,omitempty"`
 	// The average amount of time consumed by a scan operator to read data on each storage node in the stage. Unit: milliseconds.
 	ScanTimeAvg *int64 `json:"ScanTimeAvg,omitempty" xml:"ScanTimeAvg,omitempty"`
@@ -12380,7 +12372,7 @@ type DescribeSQLPlanResponseBodyStageList struct {
 	ScanTimeMax *int64 `json:"ScanTimeMax,omitempty" xml:"ScanTimeMax,omitempty"`
 	// The minimum amount of time consumed by a scan operator to read data on each storage node in the stage. Unit: milliseconds.
 	ScanTimeMin *int64 `json:"ScanTimeMin,omitempty" xml:"ScanTimeMin,omitempty"`
-	// The ID of the stage.
+	// The stage ID.
 	StageId *int32 `json:"StageId,omitempty" xml:"StageId,omitempty"`
 	// The final execution state of the stage. Valid values:
 	//
@@ -13461,59 +13453,62 @@ func (s *DescribeSlowLogTrendResponse) SetBody(v *DescribeSlowLogTrendResponseBo
 }
 
 type DescribeSqlPatternRequest struct {
-	// The ID of the cluster.
+	// The cluster ID.
 	//
-	// >  You can call the [DescribeDBClusters](~~129857~~) operation to query the details of all AnalyticDB for MySQL clusters within a specified region, including cluster IDs.
+	// > You can call the [DescribeDBClusters](~~129857~~) operation to query the information about all AnalyticDB for MySQL clusters within a region, including cluster IDs.
 	DBClusterId *string `json:"DBClusterId,omitempty" xml:"DBClusterId,omitempty"`
-	// The order by which to sort query results. Specify the parameter value in the JSON string format. Example: `[{"Field":"Pattern","Type":"Asc"}]`.
+	// The order by which to sort query results. Specify the parameter value in the JSON string format. Example: `[{"Field":"Pattern","Type":"Asc"}]`. Parameters:
 	//
-	// *   `Field` indicates the field that is used to sort the retrieved entries. Valid values:
+	// *   `Field` specifies the field by which to sort the query results. Valid values:
 	//
-	//     *   `Pattern` : the SQL pattern.
+	//     *   `Pattern`: the SQL pattern.
 	//     *   `AccessIP`: the IP address of the client.
 	//     *   `User`: the username.
-	//     *   `QueryCount`: the total number of queries.
-	//     *   `AvgPeakMemory`: the average peak memory. Unit: KB.
-	//     *   `MaxPeakMemory`: the maximum peak memory. Unit: KB.
-	//     *   `AvgCpuTime`: the average CPU time. Unit: milliseconds.
-	//     *   `MaxCpuTime`: the maximum CPU time. Unit: milliseconds.
+	//     *   `QueryCount`: the number of queries performed in association with the SQL pattern within the time range to query.
+	//     *   `AvgPeakMemory`: the average peak memory usage of the SQL pattern within the time range to query. Unit: KB.
+	//     *   `MaxPeakMemory`: the maximum peak memory usage of the SQL pattern within the time range to query. Unit: KB.
+	//     *   `AvgCpuTime`: the average execution duration of the SQL pattern within the time range to query. Unit: milliseconds.
+	//     *   `MaxCpuTime`: the maximum execution duration of the SQL pattern within the time range to query. Unit: milliseconds.
 	//     *   `AvgStageCount`: the average number of stages.
 	//     *   `MaxStageCount`: the maximum number of stages.
 	//     *   `AvgTaskCount`: the average number of tasks.
 	//     *   `MaxTaskCount`: the maximum number of tasks.
-	//     *   `AvgScanSize`: the average scan size. Unit: KB.
-	//     *   `MaxScanSize`: the maximum scan size. Unit: KB.
+	//     *   `AvgScanSize`: the average amount of data scanned based on the SQL pattern within the time range to query. Unit: KB.
+	//     *   `MaxScanSize`: the maximum amount of data scanned based on the SQL pattern within the time range to query. Unit: KB.
 	//
-	// *   `Type` indicates the sorting method. Valid values:
+	// *   `Type` specifies the sorting order. Valid values:
 	//
 	//     *   `Asc`: ascending order.
 	//     *   `Desc`: descending order.
 	//
-	// > *   If this parameter is not specified, query results are sorted in ascending order of `Pattern`.
-	// > *   If you need to sort query results by `AccessIP`, you must set the `Type` parameter to `accessip`. If you need to sort query results by `User`, you must leave the `Type` parameter empty or set it to `user`.
+	// >
+	//
+	// *   If you do not specify this parameter, query results are sorted in ascending order of `Pattern`.
+	//
+	// *   If you want to sort query results by `AccessIP`, you must set the `Type` parameter to `accessip`. If you want to sort query results by `User`, you must leave the `Type` parameter empty or set it to `user`.
 	Order *string `json:"Order,omitempty" xml:"Order,omitempty"`
-	// The number of the page to return. The value must be an integer that is greater than 0. Default value: **1**.
+	// The page number. Pages start from page 1. Default value: **1**.
 	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
-	// The number of entries to return on each page. The value must be a positive integer. Default value: **30**.
+	// The number of entries per page. The value must be a positive integer. Default value: **30**.
 	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	// The ID of the region.
+	// The region ID of the cluster.
 	//
-	// >  You can call the [DescribeRegions](~~143074~~) operation to query the regions and zones supported by AnalyticDB for MySQL, including region IDs.
+	// > You can call the [DescribeRegions](~~143074~~) operation to query the most recent region list.
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	// The keyword contained in the SQL pattern.
+	// The keyword that is used for the query.
 	//
-	// >  If this parameter is not specified, all SQL patterns within an AnalyticDB for MySQL cluster for a date specified by `StartTime` are returned.
+	// > If you do not specify this parameter, all SQL patterns of the AnalyticDB for MySQL cluster within the time period specified by `StartTime` are returned.
 	SqlPattern *string `json:"SqlPattern,omitempty" xml:"SqlPattern,omitempty"`
-	// The date to query. Specify the time in the *yyyy-MM-dd* format. The time must be in UTC.
+	// The start date to query. Specify the time in the *yyyy-MM-dd* format. The time must be in UTC.
 	//
-	// >  Only data for the last 30 days can be queried.
+	// > Only data within the last 30 days can be queried.
 	StartTime *string `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
-	// The dimension by which to aggregate the SQL pattern. Valid values:
+	// The dimension by which to aggregate the SQL patterns. Valid values:
 	//
-	// *   `user`: the user.
-	// *   `accessip`: the IP address of the client.
+	// *   `user`: aggregates the SQL patterns by user.
+	// *   `accessip`: aggregates the SQL patterns by client IP address.
 	//
-	// >  If this parameter is not specified, the SQL pattern is aggregated by `user`.
+	// > If you do not specify this parameter, the SQL patterns are aggregated by `user`.
 	Type *string `json:"Type,omitempty" xml:"Type,omitempty"`
 }
 
@@ -13566,15 +13561,15 @@ func (s *DescribeSqlPatternRequest) SetType(v string) *DescribeSqlPatternRequest
 }
 
 type DescribeSqlPatternResponseBody struct {
-	// Details about the SQL pattern.
+	// The queried SQL pattern.
 	Items []*DescribeSqlPatternResponseBodyItems `json:"Items,omitempty" xml:"Items,omitempty" type:"Repeated"`
-	// The page number of the returned page.
+	// The page number.
 	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
-	// The number of entries returned on the current page.
+	// The number of entries per page.
 	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	// The ID of the request.
+	// The request ID.
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// The total number of entries.
+	// The total number of entries returned.
 	TotalCount *int32 `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
 }
 
@@ -13614,25 +13609,25 @@ func (s *DescribeSqlPatternResponseBody) SetTotalCount(v int32) *DescribeSqlPatt
 type DescribeSqlPatternResponseBodyItems struct {
 	// The IP address of the client.
 	//
-	// >  This parameter is returned only when the `Type` parameter is set to `accessip`.
+	// > This parameter is returned only when `Type` is set to `accessip`.
 	AccessIP *string `json:"AccessIP,omitempty" xml:"AccessIP,omitempty"`
-	// The average CPU time. Unit: milliseconds.
+	// The average execution duration of the SQL pattern within the time range to query. Unit: milliseconds.
 	AvgCpuTime *string `json:"AvgCpuTime,omitempty" xml:"AvgCpuTime,omitempty"`
-	// The average peak memory. Unit: KB.
+	// The average peak memory usage of the SQL pattern within the query time range. Unit: KB.
 	AvgPeakMemory *string `json:"AvgPeakMemory,omitempty" xml:"AvgPeakMemory,omitempty"`
-	// The average scan size. Unit: KB.
+	// The average amount of data scanned based on the SQL pattern within the query time range. Unit: KB.
 	AvgScanSize *string `json:"AvgScanSize,omitempty" xml:"AvgScanSize,omitempty"`
 	// The average number of stages.
 	AvgStageCount *string `json:"AvgStageCount,omitempty" xml:"AvgStageCount,omitempty"`
 	// The average number of tasks.
 	AvgTaskCount *string `json:"AvgTaskCount,omitempty" xml:"AvgTaskCount,omitempty"`
-	// The ID of the cluster.
+	// The cluster ID.
 	InstanceName *string `json:"InstanceName,omitempty" xml:"InstanceName,omitempty"`
-	// The maximum CPU time. Unit: milliseconds.
+	// The maximum execution duration of the SQL pattern within the time range to query. Unit: milliseconds.
 	MaxCpuTime *string `json:"MaxCpuTime,omitempty" xml:"MaxCpuTime,omitempty"`
-	// The maximum peak memory. Unit: KB.
+	// The maximum peak memory usage of the SQL pattern within the query time range. Unit: KB.
 	MaxPeakMemory *string `json:"MaxPeakMemory,omitempty" xml:"MaxPeakMemory,omitempty"`
-	// The maximum scan size. Unit: KB.
+	// The maximum amount of data scanned based on the SQL pattern within the query time range. Unit: KB.
 	MaxScanSize *string `json:"MaxScanSize,omitempty" xml:"MaxScanSize,omitempty"`
 	// The maximum number of stages.
 	MaxStageCount *string `json:"MaxStageCount,omitempty" xml:"MaxStageCount,omitempty"`
@@ -13640,13 +13635,13 @@ type DescribeSqlPatternResponseBodyItems struct {
 	MaxTaskCount *string `json:"MaxTaskCount,omitempty" xml:"MaxTaskCount,omitempty"`
 	// The SQL pattern.
 	Pattern *string `json:"Pattern,omitempty" xml:"Pattern,omitempty"`
-	// The total number of queries.
+	// The number of queries performed in association with the SQL pattern within the query time range.
 	QueryCount *string `json:"QueryCount,omitempty" xml:"QueryCount,omitempty"`
-	// The query date.
+	// The start date of the query.
 	ReportDate *string `json:"ReportDate,omitempty" xml:"ReportDate,omitempty"`
 	// The username.
 	//
-	// >  This parameter is returned only when the `Type` parameter is left empty or set to `user`.
+	// > This parameter is returned only when `Type` is left empty or set to `user`.
 	User *string `json:"User,omitempty" xml:"User,omitempty"`
 }
 
@@ -14893,6 +14888,239 @@ func (s *DescribeTaskInfoResponse) SetBody(v *DescribeTaskInfoResponseBody) *Des
 	return s
 }
 
+type DescribeVSwitchesRequest struct {
+	OwnerAccount *string `json:"OwnerAccount,omitempty" xml:"OwnerAccount,omitempty"`
+	OwnerId      *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
+	// The region ID.
+	//
+	// > You can call the [DescribeRegions](~~143074~~) operation to query the most recent region list.
+	RegionId             *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	ResourceOwnerAccount *string `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
+	ResourceOwnerId      *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
+	SecurityToken        *string `json:"SecurityToken,omitempty" xml:"SecurityToken,omitempty"`
+	// The virtual private cloud (VPC) ID.
+	//
+	// > You can call the [DescribeDBClusters](~~129857~~) operation to query the VPC ID.
+	VpcId *string `json:"VpcId,omitempty" xml:"VpcId,omitempty"`
+	VswId *string `json:"VswId,omitempty" xml:"VswId,omitempty"`
+	// The zone ID.
+	//
+	// > You can call the [DescribeRegions](~~129857~~) operation to query the most recent zone list.
+	ZoneId *string `json:"ZoneId,omitempty" xml:"ZoneId,omitempty"`
+}
+
+func (s DescribeVSwitchesRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeVSwitchesRequest) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeVSwitchesRequest) SetOwnerAccount(v string) *DescribeVSwitchesRequest {
+	s.OwnerAccount = &v
+	return s
+}
+
+func (s *DescribeVSwitchesRequest) SetOwnerId(v int64) *DescribeVSwitchesRequest {
+	s.OwnerId = &v
+	return s
+}
+
+func (s *DescribeVSwitchesRequest) SetRegionId(v string) *DescribeVSwitchesRequest {
+	s.RegionId = &v
+	return s
+}
+
+func (s *DescribeVSwitchesRequest) SetResourceOwnerAccount(v string) *DescribeVSwitchesRequest {
+	s.ResourceOwnerAccount = &v
+	return s
+}
+
+func (s *DescribeVSwitchesRequest) SetResourceOwnerId(v int64) *DescribeVSwitchesRequest {
+	s.ResourceOwnerId = &v
+	return s
+}
+
+func (s *DescribeVSwitchesRequest) SetSecurityToken(v string) *DescribeVSwitchesRequest {
+	s.SecurityToken = &v
+	return s
+}
+
+func (s *DescribeVSwitchesRequest) SetVpcId(v string) *DescribeVSwitchesRequest {
+	s.VpcId = &v
+	return s
+}
+
+func (s *DescribeVSwitchesRequest) SetVswId(v string) *DescribeVSwitchesRequest {
+	s.VswId = &v
+	return s
+}
+
+func (s *DescribeVSwitchesRequest) SetZoneId(v string) *DescribeVSwitchesRequest {
+	s.ZoneId = &v
+	return s
+}
+
+type DescribeVSwitchesResponseBody struct {
+	// The request ID.
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The queried vSwitches.
+	VSwitches *DescribeVSwitchesResponseBodyVSwitches `json:"VSwitches,omitempty" xml:"VSwitches,omitempty" type:"Struct"`
+}
+
+func (s DescribeVSwitchesResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeVSwitchesResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeVSwitchesResponseBody) SetRequestId(v string) *DescribeVSwitchesResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *DescribeVSwitchesResponseBody) SetVSwitches(v *DescribeVSwitchesResponseBodyVSwitches) *DescribeVSwitchesResponseBody {
+	s.VSwitches = v
+	return s
+}
+
+type DescribeVSwitchesResponseBodyVSwitches struct {
+	VSwitch []*DescribeVSwitchesResponseBodyVSwitchesVSwitch `json:"VSwitch,omitempty" xml:"VSwitch,omitempty" type:"Repeated"`
+}
+
+func (s DescribeVSwitchesResponseBodyVSwitches) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeVSwitchesResponseBodyVSwitches) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeVSwitchesResponseBodyVSwitches) SetVSwitch(v []*DescribeVSwitchesResponseBodyVSwitchesVSwitch) *DescribeVSwitchesResponseBodyVSwitches {
+	s.VSwitch = v
+	return s
+}
+
+type DescribeVSwitchesResponseBodyVSwitchesVSwitch struct {
+	// The ID of the Resource Access Management (RAM) user.
+	AliUid *string `json:"AliUid,omitempty" xml:"AliUid,omitempty"`
+	// The ID of the user channel.
+	Bid *string `json:"Bid,omitempty" xml:"Bid,omitempty"`
+	// The IPv4 CIDR block of the vSwitch.
+	CidrBlock *string `json:"CidrBlock,omitempty" xml:"CidrBlock,omitempty"`
+	// The time when the vSwitch was created.
+	GmtCreate *string `json:"GmtCreate,omitempty" xml:"GmtCreate,omitempty"`
+	// The time when the vSwitch was modified.
+	GmtModified *string `json:"GmtModified,omitempty" xml:"GmtModified,omitempty"`
+	// Indicates whether the vSwitch is the default vSwitch. Valid values: **true** **false**
+	IsDefault *bool `json:"IsDefault,omitempty" xml:"IsDefault,omitempty"`
+	// The zone ID of the vSwitch.
+	IzNo *string `json:"IzNo,omitempty" xml:"IzNo,omitempty"`
+	// The region ID of the vSwitch.
+	RegionNo *string `json:"RegionNo,omitempty" xml:"RegionNo,omitempty"`
+	// The state of the vSwitch. Valid values: **Pending**: the vSwitch is being configured. **Available**: the vSwitch is available.
+	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
+	// The vSwitch ID.
+	VSwitchId *string `json:"VSwitchId,omitempty" xml:"VSwitchId,omitempty"`
+	// The name of the vSwitch.
+	VSwitchName *string `json:"VSwitchName,omitempty" xml:"VSwitchName,omitempty"`
+}
+
+func (s DescribeVSwitchesResponseBodyVSwitchesVSwitch) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeVSwitchesResponseBodyVSwitchesVSwitch) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeVSwitchesResponseBodyVSwitchesVSwitch) SetAliUid(v string) *DescribeVSwitchesResponseBodyVSwitchesVSwitch {
+	s.AliUid = &v
+	return s
+}
+
+func (s *DescribeVSwitchesResponseBodyVSwitchesVSwitch) SetBid(v string) *DescribeVSwitchesResponseBodyVSwitchesVSwitch {
+	s.Bid = &v
+	return s
+}
+
+func (s *DescribeVSwitchesResponseBodyVSwitchesVSwitch) SetCidrBlock(v string) *DescribeVSwitchesResponseBodyVSwitchesVSwitch {
+	s.CidrBlock = &v
+	return s
+}
+
+func (s *DescribeVSwitchesResponseBodyVSwitchesVSwitch) SetGmtCreate(v string) *DescribeVSwitchesResponseBodyVSwitchesVSwitch {
+	s.GmtCreate = &v
+	return s
+}
+
+func (s *DescribeVSwitchesResponseBodyVSwitchesVSwitch) SetGmtModified(v string) *DescribeVSwitchesResponseBodyVSwitchesVSwitch {
+	s.GmtModified = &v
+	return s
+}
+
+func (s *DescribeVSwitchesResponseBodyVSwitchesVSwitch) SetIsDefault(v bool) *DescribeVSwitchesResponseBodyVSwitchesVSwitch {
+	s.IsDefault = &v
+	return s
+}
+
+func (s *DescribeVSwitchesResponseBodyVSwitchesVSwitch) SetIzNo(v string) *DescribeVSwitchesResponseBodyVSwitchesVSwitch {
+	s.IzNo = &v
+	return s
+}
+
+func (s *DescribeVSwitchesResponseBodyVSwitchesVSwitch) SetRegionNo(v string) *DescribeVSwitchesResponseBodyVSwitchesVSwitch {
+	s.RegionNo = &v
+	return s
+}
+
+func (s *DescribeVSwitchesResponseBodyVSwitchesVSwitch) SetStatus(v string) *DescribeVSwitchesResponseBodyVSwitchesVSwitch {
+	s.Status = &v
+	return s
+}
+
+func (s *DescribeVSwitchesResponseBodyVSwitchesVSwitch) SetVSwitchId(v string) *DescribeVSwitchesResponseBodyVSwitchesVSwitch {
+	s.VSwitchId = &v
+	return s
+}
+
+func (s *DescribeVSwitchesResponseBodyVSwitchesVSwitch) SetVSwitchName(v string) *DescribeVSwitchesResponseBodyVSwitchesVSwitch {
+	s.VSwitchName = &v
+	return s
+}
+
+type DescribeVSwitchesResponse struct {
+	Headers    map[string]*string             `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                         `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *DescribeVSwitchesResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s DescribeVSwitchesResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeVSwitchesResponse) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeVSwitchesResponse) SetHeaders(v map[string]*string) *DescribeVSwitchesResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *DescribeVSwitchesResponse) SetStatusCode(v int32) *DescribeVSwitchesResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *DescribeVSwitchesResponse) SetBody(v *DescribeVSwitchesResponseBody) *DescribeVSwitchesResponse {
+	s.Body = v
+	return s
+}
+
 type DetachUserENIRequest struct {
 	// The ID of the AnalyticDB for MySQL Data Warehouse Edition (V3.0) cluster.
 	//
@@ -15265,215 +15493,6 @@ func (s *DownloadDiagnosisRecordsResponse) SetStatusCode(v int32) *DownloadDiagn
 }
 
 func (s *DownloadDiagnosisRecordsResponse) SetBody(v *DownloadDiagnosisRecordsResponseBody) *DownloadDiagnosisRecordsResponse {
-	s.Body = v
-	return s
-}
-
-type DryRunClusterRequest struct {
-	// The specifications of computing resources.
-	//
-	// > You can call the [DescribeComputeResource](~~469002~~) operation to query the specifications of computing resources.
-	ComputeResource *string `json:"ComputeResource,omitempty" xml:"ComputeResource,omitempty"`
-	// The description of the cluster.
-	//
-	// *   The description cannot start with `http://` or `https://`.
-	// *   The description must be 2 to 256 characters in length
-	DBClusterDescription *string `json:"DBClusterDescription,omitempty" xml:"DBClusterDescription,omitempty"`
-	// The ID of the AnalyticDB for MySQL Data Warehouse Edition (V3.0) cluster.
-	//
-	// *   You can leave this parameter empty when you set Operation to **Buy**.
-	// *   This parameter must be specified when you set Operation to **Modify**.
-	//
-	// > You can call the [DescribeDBClusters](~~129857~~) operation to query the IDs of all AnalyticDB for MySQL Data Warehouse Edition (V3.0) clusters within a region.
-	DBClusterId *string `json:"DBClusterId,omitempty" xml:"DBClusterId,omitempty"`
-	// The network type of the cluster. Set the value to **VPC**.
-	DBClusterNetworkType *string `json:"DBClusterNetworkType,omitempty" xml:"DBClusterNetworkType,omitempty"`
-	// The version of the AnalyticDB for MySQL Data Warehouse Edition cluster. Set the value to **3.0**.
-	DBClusterVersion *string `json:"DBClusterVersion,omitempty" xml:"DBClusterVersion,omitempty"`
-	// Specifies whether to enable the default resource group.
-	//
-	// > If you leave this parameter empty, true is used.
-	EnableDefaultResourcePool *bool `json:"EnableDefaultResourcePool,omitempty" xml:"EnableDefaultResourcePool,omitempty"`
-	// The type of the operation. Valid values:
-	//
-	// *   **Buy**: purchases a cluster.
-	// *   **Modify**: changes configurations of a cluster.
-	Operation *string `json:"Operation,omitempty" xml:"Operation,omitempty"`
-	// The billing method of the cluster. Valid values:
-	//
-	// *   **Postpaid**: pay-as-you-go.
-	// *   **Prepaid**: subscription.
-	PayType *string `json:"PayType,omitempty" xml:"PayType,omitempty"`
-	// The subscription type of the subscription cluster. Valid values:
-	//
-	// *   **Year**: subscription on a yearly basis.
-	// *   **Month**: subscription on a monthly basis.
-	//
-	// > This parameter must be specified when PayType is set to Prepaid.
-	Period *string `json:"Period,omitempty" xml:"Period,omitempty"`
-	// The region ID of the cluster.
-	//
-	// > You can call the [DescribeRegions](~~143074~~) operation to query the most recent region list.
-	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	// The amount of reserved storage resources.
-	StorageResource *string `json:"StorageResource,omitempty" xml:"StorageResource,omitempty"`
-	// The subscription duration of the subscription cluster.
-	//
-	// *   Valid values when Period is set to Year: 1, 2, 3, and 5 (integer).
-	// *   Valid values when Period is set to Month: 1 to 11 (integer).
-	//
-	// >
-	//
-	// *   This parameter must be specified when PayType is set to Prepaid.
-	//
-	// *   Longer subscription durations offer more savings. Purchasing a cluster for one year is more cost-effective than purchasing the cluster for 10 or 11 months.
-	UsedTime *string `json:"UsedTime,omitempty" xml:"UsedTime,omitempty"`
-	// The virtual private cloud (VPC) ID of the cluster.
-	VPCId *string `json:"VPCId,omitempty" xml:"VPCId,omitempty"`
-	// The vSwitch ID of the cluster.
-	VSwitchId *string `json:"VSwitchId,omitempty" xml:"VSwitchId,omitempty"`
-	// The zone ID of the cluster.
-	//
-	// > You can call the [DescribeRegions](~~143074~~) operation to query the most recent zone list.
-	ZoneId *string `json:"ZoneId,omitempty" xml:"ZoneId,omitempty"`
-}
-
-func (s DryRunClusterRequest) String() string {
-	return tea.Prettify(s)
-}
-
-func (s DryRunClusterRequest) GoString() string {
-	return s.String()
-}
-
-func (s *DryRunClusterRequest) SetComputeResource(v string) *DryRunClusterRequest {
-	s.ComputeResource = &v
-	return s
-}
-
-func (s *DryRunClusterRequest) SetDBClusterDescription(v string) *DryRunClusterRequest {
-	s.DBClusterDescription = &v
-	return s
-}
-
-func (s *DryRunClusterRequest) SetDBClusterId(v string) *DryRunClusterRequest {
-	s.DBClusterId = &v
-	return s
-}
-
-func (s *DryRunClusterRequest) SetDBClusterNetworkType(v string) *DryRunClusterRequest {
-	s.DBClusterNetworkType = &v
-	return s
-}
-
-func (s *DryRunClusterRequest) SetDBClusterVersion(v string) *DryRunClusterRequest {
-	s.DBClusterVersion = &v
-	return s
-}
-
-func (s *DryRunClusterRequest) SetEnableDefaultResourcePool(v bool) *DryRunClusterRequest {
-	s.EnableDefaultResourcePool = &v
-	return s
-}
-
-func (s *DryRunClusterRequest) SetOperation(v string) *DryRunClusterRequest {
-	s.Operation = &v
-	return s
-}
-
-func (s *DryRunClusterRequest) SetPayType(v string) *DryRunClusterRequest {
-	s.PayType = &v
-	return s
-}
-
-func (s *DryRunClusterRequest) SetPeriod(v string) *DryRunClusterRequest {
-	s.Period = &v
-	return s
-}
-
-func (s *DryRunClusterRequest) SetRegionId(v string) *DryRunClusterRequest {
-	s.RegionId = &v
-	return s
-}
-
-func (s *DryRunClusterRequest) SetStorageResource(v string) *DryRunClusterRequest {
-	s.StorageResource = &v
-	return s
-}
-
-func (s *DryRunClusterRequest) SetUsedTime(v string) *DryRunClusterRequest {
-	s.UsedTime = &v
-	return s
-}
-
-func (s *DryRunClusterRequest) SetVPCId(v string) *DryRunClusterRequest {
-	s.VPCId = &v
-	return s
-}
-
-func (s *DryRunClusterRequest) SetVSwitchId(v string) *DryRunClusterRequest {
-	s.VSwitchId = &v
-	return s
-}
-
-func (s *DryRunClusterRequest) SetZoneId(v string) *DryRunClusterRequest {
-	s.ZoneId = &v
-	return s
-}
-
-type DryRunClusterResponseBody struct {
-	// The request ID.
-	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// Indicates whether the dry run succeeds. Valid values:
-	//
-	// *   **true**
-	// *   **false**
-	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
-}
-
-func (s DryRunClusterResponseBody) String() string {
-	return tea.Prettify(s)
-}
-
-func (s DryRunClusterResponseBody) GoString() string {
-	return s.String()
-}
-
-func (s *DryRunClusterResponseBody) SetRequestId(v string) *DryRunClusterResponseBody {
-	s.RequestId = &v
-	return s
-}
-
-func (s *DryRunClusterResponseBody) SetSuccess(v bool) *DryRunClusterResponseBody {
-	s.Success = &v
-	return s
-}
-
-type DryRunClusterResponse struct {
-	Headers    map[string]*string         `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                     `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *DryRunClusterResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
-}
-
-func (s DryRunClusterResponse) String() string {
-	return tea.Prettify(s)
-}
-
-func (s DryRunClusterResponse) GoString() string {
-	return s.String()
-}
-
-func (s *DryRunClusterResponse) SetHeaders(v map[string]*string) *DryRunClusterResponse {
-	s.Headers = v
-	return s
-}
-
-func (s *DryRunClusterResponse) SetStatusCode(v int32) *DryRunClusterResponse {
-	s.StatusCode = &v
-	return s
-}
-
-func (s *DryRunClusterResponse) SetBody(v *DryRunClusterResponseBody) *DryRunClusterResponse {
 	s.Body = v
 	return s
 }
@@ -16298,26 +16317,25 @@ func (s *ModifyAuditLogConfigResponse) SetBody(v *ModifyAuditLogConfigResponseBo
 type ModifyAutoRenewAttributeRequest struct {
 	// The ID of the AnalyticDB for MySQL Data Warehouse Edition (V3.0) cluster.
 	//
-	// >  You can call the [DescribeDBClusters](~~129857~~) operation to query the cluster IDs of all AnalyticDB for MySQL Data Warehouse Edition (V3.0) clusters within a specific region.
+	// > You can call the [DescribeDBClusters](~~129857~~) operation to query the IDs of all AnalyticDB for MySQL Data Warehouse Edition (V3.0) clusters within a region.
 	DBClusterId *string `json:"DBClusterId,omitempty" xml:"DBClusterId,omitempty"`
 	// The renewal duration. Default value: **1**.
 	//
 	// *   Valid values when PeriodUnit is set to **Month**: 1 to 11. Data type: INTEGER.
-	//
 	// *   Valid values when PeriodUnit is set to **Year**: 1, 2, 3, and 5. Data type: INTEGER.
 	//
-	// > Longer subscription periods offer more savings. Purchasing a cluster for one year is more cost-effective than purchasing the cluster for 10 or 11 months.
+	// > Longer subscription durations offer more savings. Purchasing a cluster for one year is more cost-effective than purchasing the cluster for 10 or 11 months.
 	Duration     *string `json:"Duration,omitempty" xml:"Duration,omitempty"`
 	OwnerAccount *string `json:"OwnerAccount,omitempty" xml:"OwnerAccount,omitempty"`
 	OwnerId      *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
-	// The unit of the renewal duration. Default value: **Month**. Valid values:
+	// The unit of the renewal period. Default value: **Month**. Valid values:
 	//
 	// *   **Year**
 	// *   **Month**
 	PeriodUnit *string `json:"PeriodUnit,omitempty" xml:"PeriodUnit,omitempty"`
 	// The region ID of the cluster.
 	//
-	// >  You can call the [DescribeRegions](~~143074~~) operation to query the most recent region list.
+	// > You can call the [DescribeRegions](~~143074~~) operation to query the most recent region list.
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 	// The renewal status of the cluster. Valid values:
 	//
@@ -16383,7 +16401,7 @@ func (s *ModifyAutoRenewAttributeRequest) SetResourceOwnerId(v int64) *ModifyAut
 }
 
 type ModifyAutoRenewAttributeResponseBody struct {
-	// The ID of the request.
+	// The request ID.
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -17629,11 +17647,8 @@ type ModifyDBResourcePoolRequest struct {
 	// *   Each node provides 16 cores and 64 GB memory.
 	// *   The amount of resources that you want to add to or remove from the cluster cannot exceed the total amount of resources in the cluster.
 	//
-	// >
-	//
-	// *   If you do not specify this parameter, the original value is retained.
-	//
-	// *   You must specify at least one of the QueryType and NodeNum parameters.
+	// > - If you do not specify this parameter, the original value is retained.
+	// > - You must specify at least one of the QueryType and NodeNum parameters.
 	NodeNum      *int32  `json:"NodeNum,omitempty" xml:"NodeNum,omitempty"`
 	OwnerAccount *string `json:"OwnerAccount,omitempty" xml:"OwnerAccount,omitempty"`
 	OwnerId      *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
@@ -17945,16 +17960,16 @@ func (s *ModifyElasticPlanResponse) SetBody(v *ModifyElasticPlanResponseBody) *M
 }
 
 type ModifyLogBackupPolicyRequest struct {
-	// The ID of the cluster.
+	// The cluster ID.
 	DBClusterId *string `json:"DBClusterId,omitempty" xml:"DBClusterId,omitempty"`
 	// Specifies whether to enable log backup. Valid values:
 	//
 	// *   **Enable**
 	// *   **Disable**
 	EnableBackupLog *string `json:"EnableBackupLog,omitempty" xml:"EnableBackupLog,omitempty"`
-	// The number of days for which to retain data backup files. Valid values: 7 to 730.
+	// The number of days for which to retain backup files. Valid values: 7 to 730.
 	//
-	// >  If you leave this parameter empty, the default value 7 is used.
+	// > The default value is 7.
 	LogBackupRetentionPeriod *string `json:"LogBackupRetentionPeriod,omitempty" xml:"LogBackupRetentionPeriod,omitempty"`
 	OwnerAccount             *string `json:"OwnerAccount,omitempty" xml:"OwnerAccount,omitempty"`
 	OwnerId                  *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
@@ -18012,7 +18027,7 @@ func (s *ModifyLogBackupPolicyRequest) SetResourceOwnerId(v int64) *ModifyLogBac
 }
 
 type ModifyLogBackupPolicyResponseBody struct {
-	// The ID of the request.
+	// The request ID.
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -18640,7 +18655,7 @@ func (s *TagResourcesResponse) SetBody(v *TagResourcesResponseBody) *TagResource
 type UnbindDBResourceGroupWithUserRequest struct {
 	// The ID of the AnalyticDB for MySQL Data Warehouse Edition (V3.0) cluster.
 	//
-	// >  You can call the [DescribeDBClusters](~~129857~~) operation to query the cluster IDs of all AnalyticDB for MySQL Data Warehouse Edition (V3.0) clusters within a specific region.
+	// > You can call the [DescribeDBClusters](~~129857~~) operation to query the IDs of all AnalyticDB for MySQL Data Warehouse Edition (V3.0) clusters within a region.
 	DBClusterId *string `json:"DBClusterId,omitempty" xml:"DBClusterId,omitempty"`
 	// The name of the resource group.
 	GroupName *string `json:"GroupName,omitempty" xml:"GroupName,omitempty"`
@@ -18696,7 +18711,7 @@ func (s *UnbindDBResourceGroupWithUserRequest) SetResourceOwnerId(v int64) *Unbi
 }
 
 type UnbindDBResourceGroupWithUserResponseBody struct {
-	// The ID of the request.
+	// The request ID.
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -20163,8 +20178,8 @@ func (client *Client) DeleteDBCluster(request *DeleteDBClusterRequest) (_result 
 }
 
 /**
- * ## Precautions
- * *   This operation is applicable only for elastic clusters of 32 cores or more.
+ * ### Precautions
+ * *   You can call this operation only for AnalyticDB for MySQL clusters in elastic mode for Cluster Edition that have 32 cores or more.
  * *   The default resource group USER_DEFAULT cannot be deleted.
  *
  * @param request DeleteDBResourceGroupRequest
@@ -20225,8 +20240,8 @@ func (client *Client) DeleteDBResourceGroupWithOptions(request *DeleteDBResource
 }
 
 /**
- * ## Precautions
- * *   This operation is applicable only for elastic clusters of 32 cores or more.
+ * ### Precautions
+ * *   You can call this operation only for AnalyticDB for MySQL clusters in elastic mode for Cluster Edition that have 32 cores or more.
  * *   The default resource group USER_DEFAULT cannot be deleted.
  *
  * @param request DeleteDBResourceGroupRequest
@@ -22006,8 +22021,8 @@ func (client *Client) DescribeDBClusters(request *DescribeDBClustersRequest) (_r
 }
 
 /**
- * ## Precautions
- * This operation is available only for AnalyticDB for MySQL clusters in elastic mode for Cluster Edition that have 32 cores or more.
+ * ###
+ * You can call this operation only for AnalyticDB for MySQL clusters in elastic mode for Cluster Edition that have 32 cores or more.
  *
  * @param request DescribeDBResourceGroupRequest
  * @param runtime runtime options for this request RuntimeOptions
@@ -22067,8 +22082,8 @@ func (client *Client) DescribeDBResourceGroupWithOptions(request *DescribeDBReso
 }
 
 /**
- * ## Precautions
- * This operation is available only for AnalyticDB for MySQL clusters in elastic mode for Cluster Edition that have 32 cores or more.
+ * ###
+ * You can call this operation only for AnalyticDB for MySQL clusters in elastic mode for Cluster Edition that have 32 cores or more.
  *
  * @param request DescribeDBResourceGroupRequest
  * @return DescribeDBResourceGroupResponse
@@ -22711,7 +22726,8 @@ func (client *Client) DescribeElasticDailyPlan(request *DescribeElasticDailyPlan
 }
 
 /**
- * This operation is available only for AnalyticDB for MySQL Data Warehouse Edition (V3.0) clusters in elastic mode for Cluster Edition that have 32 cores or more.
+ * ###
+ * You can call this operation only for AnalyticDB for MySQL Data Warehouse Edition (V3.0) clusters in elastic mode for Cluster Edition that have 32 cores or more.
  *
  * @param request DescribeElasticPlanRequest
  * @param runtime runtime options for this request RuntimeOptions
@@ -22779,7 +22795,8 @@ func (client *Client) DescribeElasticPlanWithOptions(request *DescribeElasticPla
 }
 
 /**
- * This operation is available only for AnalyticDB for MySQL Data Warehouse Edition (V3.0) clusters in elastic mode for Cluster Edition that have 32 cores or more.
+ * ###
+ * You can call this operation only for AnalyticDB for MySQL Data Warehouse Edition (V3.0) clusters in elastic mode for Cluster Edition that have 32 cores or more.
  *
  * @param request DescribeElasticPlanRequest
  * @return DescribeElasticPlanResponse
@@ -24325,6 +24342,82 @@ func (client *Client) DescribeTaskInfo(request *DescribeTaskInfoRequest) (_resul
 	return _result, _err
 }
 
+func (client *Client) DescribeVSwitchesWithOptions(request *DescribeVSwitchesRequest, runtime *util.RuntimeOptions) (_result *DescribeVSwitchesResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.OwnerAccount)) {
+		query["OwnerAccount"] = request.OwnerAccount
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.OwnerId)) {
+		query["OwnerId"] = request.OwnerId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.RegionId)) {
+		query["RegionId"] = request.RegionId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ResourceOwnerAccount)) {
+		query["ResourceOwnerAccount"] = request.ResourceOwnerAccount
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ResourceOwnerId)) {
+		query["ResourceOwnerId"] = request.ResourceOwnerId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.SecurityToken)) {
+		query["SecurityToken"] = request.SecurityToken
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.VpcId)) {
+		query["VpcId"] = request.VpcId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.VswId)) {
+		query["VswId"] = request.VswId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ZoneId)) {
+		query["ZoneId"] = request.ZoneId
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("DescribeVSwitches"),
+		Version:     tea.String("2019-03-15"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &DescribeVSwitchesResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) DescribeVSwitches(request *DescribeVSwitchesRequest) (_result *DescribeVSwitchesResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &DescribeVSwitchesResponse{}
+	_body, _err := client.DescribeVSwitchesWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
 /**
  * You can call this operation only for AnalyticDB for MySQL Data Warehouse Edition (V3.0) clusters in elastic mode for Cluster Edition.
  *
@@ -24539,106 +24632,6 @@ func (client *Client) DownloadDiagnosisRecords(request *DownloadDiagnosisRecords
 	runtime := &util.RuntimeOptions{}
 	_result = &DownloadDiagnosisRecordsResponse{}
 	_body, _err := client.DownloadDiagnosisRecordsWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
-	return _result, _err
-}
-
-func (client *Client) DryRunClusterWithOptions(request *DryRunClusterRequest, runtime *util.RuntimeOptions) (_result *DryRunClusterResponse, _err error) {
-	_err = util.ValidateModel(request)
-	if _err != nil {
-		return _result, _err
-	}
-	query := map[string]interface{}{}
-	if !tea.BoolValue(util.IsUnset(request.ComputeResource)) {
-		query["ComputeResource"] = request.ComputeResource
-	}
-
-	if !tea.BoolValue(util.IsUnset(request.DBClusterDescription)) {
-		query["DBClusterDescription"] = request.DBClusterDescription
-	}
-
-	if !tea.BoolValue(util.IsUnset(request.DBClusterId)) {
-		query["DBClusterId"] = request.DBClusterId
-	}
-
-	if !tea.BoolValue(util.IsUnset(request.DBClusterNetworkType)) {
-		query["DBClusterNetworkType"] = request.DBClusterNetworkType
-	}
-
-	if !tea.BoolValue(util.IsUnset(request.DBClusterVersion)) {
-		query["DBClusterVersion"] = request.DBClusterVersion
-	}
-
-	if !tea.BoolValue(util.IsUnset(request.EnableDefaultResourcePool)) {
-		query["EnableDefaultResourcePool"] = request.EnableDefaultResourcePool
-	}
-
-	if !tea.BoolValue(util.IsUnset(request.Operation)) {
-		query["Operation"] = request.Operation
-	}
-
-	if !tea.BoolValue(util.IsUnset(request.PayType)) {
-		query["PayType"] = request.PayType
-	}
-
-	if !tea.BoolValue(util.IsUnset(request.Period)) {
-		query["Period"] = request.Period
-	}
-
-	if !tea.BoolValue(util.IsUnset(request.RegionId)) {
-		query["RegionId"] = request.RegionId
-	}
-
-	if !tea.BoolValue(util.IsUnset(request.StorageResource)) {
-		query["StorageResource"] = request.StorageResource
-	}
-
-	if !tea.BoolValue(util.IsUnset(request.UsedTime)) {
-		query["UsedTime"] = request.UsedTime
-	}
-
-	if !tea.BoolValue(util.IsUnset(request.VPCId)) {
-		query["VPCId"] = request.VPCId
-	}
-
-	if !tea.BoolValue(util.IsUnset(request.VSwitchId)) {
-		query["VSwitchId"] = request.VSwitchId
-	}
-
-	if !tea.BoolValue(util.IsUnset(request.ZoneId)) {
-		query["ZoneId"] = request.ZoneId
-	}
-
-	req := &openapi.OpenApiRequest{
-		Query: openapiutil.Query(query),
-	}
-	params := &openapi.Params{
-		Action:      tea.String("DryRunCluster"),
-		Version:     tea.String("2019-03-15"),
-		Protocol:    tea.String("HTTPS"),
-		Pathname:    tea.String("/"),
-		Method:      tea.String("POST"),
-		AuthType:    tea.String("AK"),
-		Style:       tea.String("RPC"),
-		ReqBodyType: tea.String("formData"),
-		BodyType:    tea.String("json"),
-	}
-	_result = &DryRunClusterResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
-}
-
-func (client *Client) DryRunCluster(request *DryRunClusterRequest) (_result *DryRunClusterResponse, _err error) {
-	runtime := &util.RuntimeOptions{}
-	_result = &DryRunClusterResponse{}
-	_body, _err := client.DryRunClusterWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}

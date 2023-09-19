@@ -1,4 +1,4 @@
-module github.com/alibabacloud-go/adb-20190315/v2
+module github.com/alibabacloud-go/adb-20190315/v3
 
 go 1.15
 
