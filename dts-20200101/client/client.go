@@ -48,7 +48,9 @@ type ConfigureDtsJobRequest struct {
 	// >
 	// *   This parameter is available only for China site (aliyun.com) users. Only mobile numbers in the Chinese mainland are supported. Up to 10 mobile numbers can be specified.
 	// *   International site (alibabacloud.com) users cannot receive alerts by using mobile phones, but can [set alert rules for DTS tasks in the CloudMonitor console](~~175876~~).
-	DelayRuleTime *int64 `json:"DelayRuleTime,omitempty" xml:"DelayRuleTime,omitempty"`
+	DelayRuleTime             *int64  `json:"DelayRuleTime,omitempty" xml:"DelayRuleTime,omitempty"`
+	DestCaCertificateOssUrl   *string `json:"DestCaCertificateOssUrl,omitempty" xml:"DestCaCertificateOssUrl,omitempty"`
+	DestCaCertificatePassword *string `json:"DestCaCertificatePassword,omitempty" xml:"DestCaCertificatePassword,omitempty"`
 	// The password of the destination database account.
 	//
 	// >  If the destination database is a MaxCompute project, you must specify the AccessKey secret of your Alibaba Cloud account. For information about how to obtain your AccessKey pair, see [Create an AccessKey pair](~~116401~~).
@@ -278,7 +280,9 @@ type ConfigureDtsJobRequest struct {
 	// >  You can specify this parameter to migrate or synchronize data across different Alibaba Cloud accounts. In this case, you must specify the **SourceEndpointRole** parameter.
 	SourceEndpointUserName *string `json:"SourceEndpointUserName,omitempty" xml:"SourceEndpointUserName,omitempty"`
 	// 数据投递链路交换机实例id
-	SourceEndpointVSwitchID *string `json:"SourceEndpointVSwitchID,omitempty" xml:"SourceEndpointVSwitchID,omitempty"`
+	SourceEndpointVSwitchID  *string `json:"SourceEndpointVSwitchID,omitempty" xml:"SourceEndpointVSwitchID,omitempty"`
+	SrcCaCertificateOssUrl   *string `json:"SrcCaCertificateOssUrl,omitempty" xml:"SrcCaCertificateOssUrl,omitempty"`
+	SrcCaCertificatePassword *string `json:"SrcCaCertificatePassword,omitempty" xml:"SrcCaCertificatePassword,omitempty"`
 	// Specifies whether to perform incremental data migration or synchronization. Default value: false. Valid values:
 	//
 	// *   **false**: does not perform incremental data migration or synchronization.
@@ -340,6 +344,16 @@ func (s *ConfigureDtsJobRequest) SetDelayPhone(v string) *ConfigureDtsJobRequest
 
 func (s *ConfigureDtsJobRequest) SetDelayRuleTime(v int64) *ConfigureDtsJobRequest {
 	s.DelayRuleTime = &v
+	return s
+}
+
+func (s *ConfigureDtsJobRequest) SetDestCaCertificateOssUrl(v string) *ConfigureDtsJobRequest {
+	s.DestCaCertificateOssUrl = &v
+	return s
+}
+
+func (s *ConfigureDtsJobRequest) SetDestCaCertificatePassword(v string) *ConfigureDtsJobRequest {
+	s.DestCaCertificatePassword = &v
 	return s
 }
 
@@ -528,6 +542,16 @@ func (s *ConfigureDtsJobRequest) SetSourceEndpointVSwitchID(v string) *Configure
 	return s
 }
 
+func (s *ConfigureDtsJobRequest) SetSrcCaCertificateOssUrl(v string) *ConfigureDtsJobRequest {
+	s.SrcCaCertificateOssUrl = &v
+	return s
+}
+
+func (s *ConfigureDtsJobRequest) SetSrcCaCertificatePassword(v string) *ConfigureDtsJobRequest {
+	s.SrcCaCertificatePassword = &v
+	return s
+}
+
 func (s *ConfigureDtsJobRequest) SetStructureInitialization(v bool) *ConfigureDtsJobRequest {
 	s.StructureInitialization = &v
 	return s
@@ -569,7 +593,9 @@ type ConfigureDtsJobAdvanceRequest struct {
 	// >
 	// *   This parameter is available only for China site (aliyun.com) users. Only mobile numbers in the Chinese mainland are supported. Up to 10 mobile numbers can be specified.
 	// *   International site (alibabacloud.com) users cannot receive alerts by using mobile phones, but can [set alert rules for DTS tasks in the CloudMonitor console](~~175876~~).
-	DelayRuleTime *int64 `json:"DelayRuleTime,omitempty" xml:"DelayRuleTime,omitempty"`
+	DelayRuleTime             *int64  `json:"DelayRuleTime,omitempty" xml:"DelayRuleTime,omitempty"`
+	DestCaCertificateOssUrl   *string `json:"DestCaCertificateOssUrl,omitempty" xml:"DestCaCertificateOssUrl,omitempty"`
+	DestCaCertificatePassword *string `json:"DestCaCertificatePassword,omitempty" xml:"DestCaCertificatePassword,omitempty"`
 	// The password of the destination database account.
 	//
 	// >  If the destination database is a MaxCompute project, you must specify the AccessKey secret of your Alibaba Cloud account. For information about how to obtain your AccessKey pair, see [Create an AccessKey pair](~~116401~~).
@@ -799,7 +825,9 @@ type ConfigureDtsJobAdvanceRequest struct {
 	// >  You can specify this parameter to migrate or synchronize data across different Alibaba Cloud accounts. In this case, you must specify the **SourceEndpointRole** parameter.
 	SourceEndpointUserName *string `json:"SourceEndpointUserName,omitempty" xml:"SourceEndpointUserName,omitempty"`
 	// 数据投递链路交换机实例id
-	SourceEndpointVSwitchID *string `json:"SourceEndpointVSwitchID,omitempty" xml:"SourceEndpointVSwitchID,omitempty"`
+	SourceEndpointVSwitchID  *string `json:"SourceEndpointVSwitchID,omitempty" xml:"SourceEndpointVSwitchID,omitempty"`
+	SrcCaCertificateOssUrl   *string `json:"SrcCaCertificateOssUrl,omitempty" xml:"SrcCaCertificateOssUrl,omitempty"`
+	SrcCaCertificatePassword *string `json:"SrcCaCertificatePassword,omitempty" xml:"SrcCaCertificatePassword,omitempty"`
 	// Specifies whether to perform incremental data migration or synchronization. Default value: false. Valid values:
 	//
 	// *   **false**: does not perform incremental data migration or synchronization.
@@ -861,6 +889,16 @@ func (s *ConfigureDtsJobAdvanceRequest) SetDelayPhone(v string) *ConfigureDtsJob
 
 func (s *ConfigureDtsJobAdvanceRequest) SetDelayRuleTime(v int64) *ConfigureDtsJobAdvanceRequest {
 	s.DelayRuleTime = &v
+	return s
+}
+
+func (s *ConfigureDtsJobAdvanceRequest) SetDestCaCertificateOssUrl(v string) *ConfigureDtsJobAdvanceRequest {
+	s.DestCaCertificateOssUrl = &v
+	return s
+}
+
+func (s *ConfigureDtsJobAdvanceRequest) SetDestCaCertificatePassword(v string) *ConfigureDtsJobAdvanceRequest {
+	s.DestCaCertificatePassword = &v
 	return s
 }
 
@@ -1046,6 +1084,16 @@ func (s *ConfigureDtsJobAdvanceRequest) SetSourceEndpointUserName(v string) *Con
 
 func (s *ConfigureDtsJobAdvanceRequest) SetSourceEndpointVSwitchID(v string) *ConfigureDtsJobAdvanceRequest {
 	s.SourceEndpointVSwitchID = &v
+	return s
+}
+
+func (s *ConfigureDtsJobAdvanceRequest) SetSrcCaCertificateOssUrl(v string) *ConfigureDtsJobAdvanceRequest {
+	s.SrcCaCertificateOssUrl = &v
+	return s
+}
+
+func (s *ConfigureDtsJobAdvanceRequest) SetSrcCaCertificatePassword(v string) *ConfigureDtsJobAdvanceRequest {
+	s.SrcCaCertificatePassword = &v
 	return s
 }
 
@@ -33430,6 +33478,14 @@ func (client *Client) ConfigureDtsJobWithOptions(request *ConfigureDtsJobRequest
 		query["DelayRuleTime"] = request.DelayRuleTime
 	}
 
+	if !tea.BoolValue(util.IsUnset(request.DestCaCertificateOssUrl)) {
+		query["DestCaCertificateOssUrl"] = request.DestCaCertificateOssUrl
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.DestCaCertificatePassword)) {
+		query["DestCaCertificatePassword"] = request.DestCaCertificatePassword
+	}
+
 	if !tea.BoolValue(util.IsUnset(request.DestinationEndpointDataBaseName)) {
 		query["DestinationEndpointDataBaseName"] = request.DestinationEndpointDataBaseName
 	}
@@ -33572,6 +33628,14 @@ func (client *Client) ConfigureDtsJobWithOptions(request *ConfigureDtsJobRequest
 
 	if !tea.BoolValue(util.IsUnset(request.SourceEndpointVSwitchID)) {
 		query["SourceEndpointVSwitchID"] = request.SourceEndpointVSwitchID
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.SrcCaCertificateOssUrl)) {
+		query["SrcCaCertificateOssUrl"] = request.SrcCaCertificateOssUrl
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.SrcCaCertificatePassword)) {
+		query["SrcCaCertificatePassword"] = request.SrcCaCertificatePassword
 	}
 
 	if !tea.BoolValue(util.IsUnset(request.StructureInitialization)) {
