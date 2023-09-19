@@ -17,6 +17,164 @@ import (
 	"io"
 )
 
+type AyncTradeDocumentPackageExtractSmartAppRequest struct {
+	CustomExtractionRange []*string `json:"CustomExtractionRange,omitempty" xml:"CustomExtractionRange,omitempty" type:"Repeated"`
+	FileName              *string   `json:"FileName,omitempty" xml:"FileName,omitempty"`
+	FileUrl               *string   `json:"FileUrl,omitempty" xml:"FileUrl,omitempty"`
+	Option                *string   `json:"Option,omitempty" xml:"Option,omitempty"`
+	TemplateName          *string   `json:"TemplateName,omitempty" xml:"TemplateName,omitempty"`
+}
+
+func (s AyncTradeDocumentPackageExtractSmartAppRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s AyncTradeDocumentPackageExtractSmartAppRequest) GoString() string {
+	return s.String()
+}
+
+func (s *AyncTradeDocumentPackageExtractSmartAppRequest) SetCustomExtractionRange(v []*string) *AyncTradeDocumentPackageExtractSmartAppRequest {
+	s.CustomExtractionRange = v
+	return s
+}
+
+func (s *AyncTradeDocumentPackageExtractSmartAppRequest) SetFileName(v string) *AyncTradeDocumentPackageExtractSmartAppRequest {
+	s.FileName = &v
+	return s
+}
+
+func (s *AyncTradeDocumentPackageExtractSmartAppRequest) SetFileUrl(v string) *AyncTradeDocumentPackageExtractSmartAppRequest {
+	s.FileUrl = &v
+	return s
+}
+
+func (s *AyncTradeDocumentPackageExtractSmartAppRequest) SetOption(v string) *AyncTradeDocumentPackageExtractSmartAppRequest {
+	s.Option = &v
+	return s
+}
+
+func (s *AyncTradeDocumentPackageExtractSmartAppRequest) SetTemplateName(v string) *AyncTradeDocumentPackageExtractSmartAppRequest {
+	s.TemplateName = &v
+	return s
+}
+
+type AyncTradeDocumentPackageExtractSmartAppShrinkRequest struct {
+	CustomExtractionRangeShrink *string `json:"CustomExtractionRange,omitempty" xml:"CustomExtractionRange,omitempty"`
+	FileName                    *string `json:"FileName,omitempty" xml:"FileName,omitempty"`
+	FileUrl                     *string `json:"FileUrl,omitempty" xml:"FileUrl,omitempty"`
+	Option                      *string `json:"Option,omitempty" xml:"Option,omitempty"`
+	TemplateName                *string `json:"TemplateName,omitempty" xml:"TemplateName,omitempty"`
+}
+
+func (s AyncTradeDocumentPackageExtractSmartAppShrinkRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s AyncTradeDocumentPackageExtractSmartAppShrinkRequest) GoString() string {
+	return s.String()
+}
+
+func (s *AyncTradeDocumentPackageExtractSmartAppShrinkRequest) SetCustomExtractionRangeShrink(v string) *AyncTradeDocumentPackageExtractSmartAppShrinkRequest {
+	s.CustomExtractionRangeShrink = &v
+	return s
+}
+
+func (s *AyncTradeDocumentPackageExtractSmartAppShrinkRequest) SetFileName(v string) *AyncTradeDocumentPackageExtractSmartAppShrinkRequest {
+	s.FileName = &v
+	return s
+}
+
+func (s *AyncTradeDocumentPackageExtractSmartAppShrinkRequest) SetFileUrl(v string) *AyncTradeDocumentPackageExtractSmartAppShrinkRequest {
+	s.FileUrl = &v
+	return s
+}
+
+func (s *AyncTradeDocumentPackageExtractSmartAppShrinkRequest) SetOption(v string) *AyncTradeDocumentPackageExtractSmartAppShrinkRequest {
+	s.Option = &v
+	return s
+}
+
+func (s *AyncTradeDocumentPackageExtractSmartAppShrinkRequest) SetTemplateName(v string) *AyncTradeDocumentPackageExtractSmartAppShrinkRequest {
+	s.TemplateName = &v
+	return s
+}
+
+type AyncTradeDocumentPackageExtractSmartAppResponseBody struct {
+	Completed  *bool       `json:"Completed,omitempty" xml:"Completed,omitempty"`
+	CreateTime *string     `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
+	Data       interface{} `json:"Data,omitempty" xml:"Data,omitempty"`
+	RequestId  *string     `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	Status     *string     `json:"Status,omitempty" xml:"Status,omitempty"`
+	Success    *bool       `json:"Success,omitempty" xml:"Success,omitempty"`
+}
+
+func (s AyncTradeDocumentPackageExtractSmartAppResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s AyncTradeDocumentPackageExtractSmartAppResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *AyncTradeDocumentPackageExtractSmartAppResponseBody) SetCompleted(v bool) *AyncTradeDocumentPackageExtractSmartAppResponseBody {
+	s.Completed = &v
+	return s
+}
+
+func (s *AyncTradeDocumentPackageExtractSmartAppResponseBody) SetCreateTime(v string) *AyncTradeDocumentPackageExtractSmartAppResponseBody {
+	s.CreateTime = &v
+	return s
+}
+
+func (s *AyncTradeDocumentPackageExtractSmartAppResponseBody) SetData(v interface{}) *AyncTradeDocumentPackageExtractSmartAppResponseBody {
+	s.Data = v
+	return s
+}
+
+func (s *AyncTradeDocumentPackageExtractSmartAppResponseBody) SetRequestId(v string) *AyncTradeDocumentPackageExtractSmartAppResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *AyncTradeDocumentPackageExtractSmartAppResponseBody) SetStatus(v string) *AyncTradeDocumentPackageExtractSmartAppResponseBody {
+	s.Status = &v
+	return s
+}
+
+func (s *AyncTradeDocumentPackageExtractSmartAppResponseBody) SetSuccess(v bool) *AyncTradeDocumentPackageExtractSmartAppResponseBody {
+	s.Success = &v
+	return s
+}
+
+type AyncTradeDocumentPackageExtractSmartAppResponse struct {
+	Headers    map[string]*string                                   `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                                               `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *AyncTradeDocumentPackageExtractSmartAppResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s AyncTradeDocumentPackageExtractSmartAppResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s AyncTradeDocumentPackageExtractSmartAppResponse) GoString() string {
+	return s.String()
+}
+
+func (s *AyncTradeDocumentPackageExtractSmartAppResponse) SetHeaders(v map[string]*string) *AyncTradeDocumentPackageExtractSmartAppResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *AyncTradeDocumentPackageExtractSmartAppResponse) SetStatusCode(v int32) *AyncTradeDocumentPackageExtractSmartAppResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *AyncTradeDocumentPackageExtractSmartAppResponse) SetBody(v *AyncTradeDocumentPackageExtractSmartAppResponseBody) *AyncTradeDocumentPackageExtractSmartAppResponse {
+	s.Body = v
+	return s
+}
+
 type GetDocStructureResultRequest struct {
 	Id *string `json:"Id,omitempty" xml:"Id,omitempty"`
 }
@@ -1363,6 +1521,140 @@ func (s *SubmitConvertPdfToWordJobResponse) SetBody(v *SubmitConvertPdfToWordJob
 	return s
 }
 
+type SubmitDigitalDocStructureJobRequest struct {
+	FileName          *string `json:"FileName,omitempty" xml:"FileName,omitempty"`
+	FileNameExtension *string `json:"FileNameExtension,omitempty" xml:"FileNameExtension,omitempty"`
+	FileUrl           *string `json:"FileUrl,omitempty" xml:"FileUrl,omitempty"`
+}
+
+func (s SubmitDigitalDocStructureJobRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s SubmitDigitalDocStructureJobRequest) GoString() string {
+	return s.String()
+}
+
+func (s *SubmitDigitalDocStructureJobRequest) SetFileName(v string) *SubmitDigitalDocStructureJobRequest {
+	s.FileName = &v
+	return s
+}
+
+func (s *SubmitDigitalDocStructureJobRequest) SetFileNameExtension(v string) *SubmitDigitalDocStructureJobRequest {
+	s.FileNameExtension = &v
+	return s
+}
+
+func (s *SubmitDigitalDocStructureJobRequest) SetFileUrl(v string) *SubmitDigitalDocStructureJobRequest {
+	s.FileUrl = &v
+	return s
+}
+
+type SubmitDigitalDocStructureJobAdvanceRequest struct {
+	FileName          *string   `json:"FileName,omitempty" xml:"FileName,omitempty"`
+	FileNameExtension *string   `json:"FileNameExtension,omitempty" xml:"FileNameExtension,omitempty"`
+	FileUrlObject     io.Reader `json:"FileUrl,omitempty" xml:"FileUrl,omitempty"`
+}
+
+func (s SubmitDigitalDocStructureJobAdvanceRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s SubmitDigitalDocStructureJobAdvanceRequest) GoString() string {
+	return s.String()
+}
+
+func (s *SubmitDigitalDocStructureJobAdvanceRequest) SetFileName(v string) *SubmitDigitalDocStructureJobAdvanceRequest {
+	s.FileName = &v
+	return s
+}
+
+func (s *SubmitDigitalDocStructureJobAdvanceRequest) SetFileNameExtension(v string) *SubmitDigitalDocStructureJobAdvanceRequest {
+	s.FileNameExtension = &v
+	return s
+}
+
+func (s *SubmitDigitalDocStructureJobAdvanceRequest) SetFileUrlObject(v io.Reader) *SubmitDigitalDocStructureJobAdvanceRequest {
+	s.FileUrlObject = v
+	return s
+}
+
+type SubmitDigitalDocStructureJobResponseBody struct {
+	Code      *string     `json:"Code,omitempty" xml:"Code,omitempty"`
+	Data      interface{} `json:"Data,omitempty" xml:"Data,omitempty"`
+	Id        *string     `json:"Id,omitempty" xml:"Id,omitempty"`
+	Message   *string     `json:"Message,omitempty" xml:"Message,omitempty"`
+	RequestId *string     `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	Status    *string     `json:"Status,omitempty" xml:"Status,omitempty"`
+}
+
+func (s SubmitDigitalDocStructureJobResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s SubmitDigitalDocStructureJobResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *SubmitDigitalDocStructureJobResponseBody) SetCode(v string) *SubmitDigitalDocStructureJobResponseBody {
+	s.Code = &v
+	return s
+}
+
+func (s *SubmitDigitalDocStructureJobResponseBody) SetData(v interface{}) *SubmitDigitalDocStructureJobResponseBody {
+	s.Data = v
+	return s
+}
+
+func (s *SubmitDigitalDocStructureJobResponseBody) SetId(v string) *SubmitDigitalDocStructureJobResponseBody {
+	s.Id = &v
+	return s
+}
+
+func (s *SubmitDigitalDocStructureJobResponseBody) SetMessage(v string) *SubmitDigitalDocStructureJobResponseBody {
+	s.Message = &v
+	return s
+}
+
+func (s *SubmitDigitalDocStructureJobResponseBody) SetRequestId(v string) *SubmitDigitalDocStructureJobResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *SubmitDigitalDocStructureJobResponseBody) SetStatus(v string) *SubmitDigitalDocStructureJobResponseBody {
+	s.Status = &v
+	return s
+}
+
+type SubmitDigitalDocStructureJobResponse struct {
+	Headers    map[string]*string                        `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                                    `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *SubmitDigitalDocStructureJobResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s SubmitDigitalDocStructureJobResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s SubmitDigitalDocStructureJobResponse) GoString() string {
+	return s.String()
+}
+
+func (s *SubmitDigitalDocStructureJobResponse) SetHeaders(v map[string]*string) *SubmitDigitalDocStructureJobResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *SubmitDigitalDocStructureJobResponse) SetStatusCode(v int32) *SubmitDigitalDocStructureJobResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *SubmitDigitalDocStructureJobResponse) SetBody(v *SubmitDigitalDocStructureJobResponseBody) *SubmitDigitalDocStructureJobResponse {
+	s.Body = v
+	return s
+}
+
 type SubmitDocStructureJobRequest struct {
 	FileName          *string `json:"FileName,omitempty" xml:"FileName,omitempty"`
 	FileNameExtension *string `json:"FileNameExtension,omitempty" xml:"FileNameExtension,omitempty"`
@@ -2006,6 +2298,72 @@ func (client *Client) GetEndpoint(productId *string, regionId *string, endpointR
 	}
 
 	_body, _err := endpointutil.GetEndpointRules(productId, regionId, endpointRule, network, suffix)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) AyncTradeDocumentPackageExtractSmartAppWithOptions(tmpReq *AyncTradeDocumentPackageExtractSmartAppRequest, runtime *util.RuntimeOptions) (_result *AyncTradeDocumentPackageExtractSmartAppResponse, _err error) {
+	_err = util.ValidateModel(tmpReq)
+	if _err != nil {
+		return _result, _err
+	}
+	request := &AyncTradeDocumentPackageExtractSmartAppShrinkRequest{}
+	openapiutil.Convert(tmpReq, request)
+	if !tea.BoolValue(util.IsUnset(tmpReq.CustomExtractionRange)) {
+		request.CustomExtractionRangeShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.CustomExtractionRange, tea.String("CustomExtractionRange"), tea.String("json"))
+	}
+
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.CustomExtractionRangeShrink)) {
+		query["CustomExtractionRange"] = request.CustomExtractionRangeShrink
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.FileName)) {
+		query["FileName"] = request.FileName
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.FileUrl)) {
+		query["FileUrl"] = request.FileUrl
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Option)) {
+		query["Option"] = request.Option
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.TemplateName)) {
+		query["TemplateName"] = request.TemplateName
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("AyncTradeDocumentPackageExtractSmartApp"),
+		Version:     tea.String("2022-07-11"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &AyncTradeDocumentPackageExtractSmartAppResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) AyncTradeDocumentPackageExtractSmartApp(request *AyncTradeDocumentPackageExtractSmartAppRequest) (_result *AyncTradeDocumentPackageExtractSmartAppResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &AyncTradeDocumentPackageExtractSmartAppResponse{}
+	_body, _err := client.AyncTradeDocumentPackageExtractSmartAppWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -2894,6 +3252,164 @@ func (client *Client) SubmitConvertPdfToWordJobAdvance(request *SubmitConvertPdf
 	}
 
 	_result = submitConvertPdfToWordJobResp
+	return _result, _err
+}
+
+func (client *Client) SubmitDigitalDocStructureJobWithOptions(request *SubmitDigitalDocStructureJobRequest, runtime *util.RuntimeOptions) (_result *SubmitDigitalDocStructureJobResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.FileName)) {
+		query["FileName"] = request.FileName
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.FileNameExtension)) {
+		query["FileNameExtension"] = request.FileNameExtension
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.FileUrl)) {
+		query["FileUrl"] = request.FileUrl
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("SubmitDigitalDocStructureJob"),
+		Version:     tea.String("2022-07-11"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &SubmitDigitalDocStructureJobResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) SubmitDigitalDocStructureJob(request *SubmitDigitalDocStructureJobRequest) (_result *SubmitDigitalDocStructureJobResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &SubmitDigitalDocStructureJobResponse{}
+	_body, _err := client.SubmitDigitalDocStructureJobWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) SubmitDigitalDocStructureJobAdvance(request *SubmitDigitalDocStructureJobAdvanceRequest, runtime *util.RuntimeOptions) (_result *SubmitDigitalDocStructureJobResponse, _err error) {
+	// Step 0: init client
+	accessKeyId, _err := client.Credential.GetAccessKeyId()
+	if _err != nil {
+		return _result, _err
+	}
+
+	accessKeySecret, _err := client.Credential.GetAccessKeySecret()
+	if _err != nil {
+		return _result, _err
+	}
+
+	securityToken, _err := client.Credential.GetSecurityToken()
+	if _err != nil {
+		return _result, _err
+	}
+
+	credentialType := client.Credential.GetType()
+	openPlatformEndpoint := client.OpenPlatformEndpoint
+	if tea.BoolValue(util.IsUnset(openPlatformEndpoint)) {
+		openPlatformEndpoint = tea.String("openplatform.aliyuncs.com")
+	}
+
+	if tea.BoolValue(util.IsUnset(credentialType)) {
+		credentialType = tea.String("access_key")
+	}
+
+	authConfig := &openapi.Config{
+		AccessKeyId:     accessKeyId,
+		AccessKeySecret: accessKeySecret,
+		SecurityToken:   securityToken,
+		Type:            credentialType,
+		Endpoint:        openPlatformEndpoint,
+		Protocol:        client.Protocol,
+		RegionId:        client.RegionId,
+	}
+	authClient, _err := openplatform.NewClient(authConfig)
+	if _err != nil {
+		return _result, _err
+	}
+
+	authRequest := &openplatform.AuthorizeFileUploadRequest{
+		Product:  tea.String("docmind-api"),
+		RegionId: client.RegionId,
+	}
+	authResponse := &openplatform.AuthorizeFileUploadResponse{}
+	ossConfig := &oss.Config{
+		AccessKeySecret: accessKeySecret,
+		Type:            tea.String("access_key"),
+		Protocol:        client.Protocol,
+		RegionId:        client.RegionId,
+	}
+	var ossClient *oss.Client
+	fileObj := &fileform.FileField{}
+	ossHeader := &oss.PostObjectRequestHeader{}
+	uploadRequest := &oss.PostObjectRequest{}
+	ossRuntime := &ossutil.RuntimeOptions{}
+	openapiutil.Convert(runtime, ossRuntime)
+	submitDigitalDocStructureJobReq := &SubmitDigitalDocStructureJobRequest{}
+	openapiutil.Convert(request, submitDigitalDocStructureJobReq)
+	if !tea.BoolValue(util.IsUnset(request.FileUrlObject)) {
+		authResponse, _err = authClient.AuthorizeFileUploadWithOptions(authRequest, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+
+		ossConfig.AccessKeyId = authResponse.Body.AccessKeyId
+		ossConfig.Endpoint = openapiutil.GetEndpoint(authResponse.Body.Endpoint, authResponse.Body.UseAccelerate, client.EndpointType)
+		ossClient, _err = oss.NewClient(ossConfig)
+		if _err != nil {
+			return _result, _err
+		}
+
+		fileObj = &fileform.FileField{
+			Filename:    authResponse.Body.ObjectKey,
+			Content:     request.FileUrlObject,
+			ContentType: tea.String(""),
+		}
+		ossHeader = &oss.PostObjectRequestHeader{
+			AccessKeyId:         authResponse.Body.AccessKeyId,
+			Policy:              authResponse.Body.EncodedPolicy,
+			Signature:           authResponse.Body.Signature,
+			Key:                 authResponse.Body.ObjectKey,
+			File:                fileObj,
+			SuccessActionStatus: tea.String("201"),
+		}
+		uploadRequest = &oss.PostObjectRequest{
+			BucketName: authResponse.Body.Bucket,
+			Header:     ossHeader,
+		}
+		_, _err = ossClient.PostObject(uploadRequest, ossRuntime)
+		if _err != nil {
+			return _result, _err
+		}
+		submitDigitalDocStructureJobReq.FileUrl = tea.String("http://" + tea.StringValue(authResponse.Body.Bucket) + "." + tea.StringValue(authResponse.Body.Endpoint) + "/" + tea.StringValue(authResponse.Body.ObjectKey))
+	}
+
+	submitDigitalDocStructureJobResp, _err := client.SubmitDigitalDocStructureJobWithOptions(submitDigitalDocStructureJobReq, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+
+	_result = submitDigitalDocStructureJobResp
 	return _result, _err
 }
 
