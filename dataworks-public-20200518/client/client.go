@@ -737,6 +737,93 @@ func (s *ApprovePermissionApplyOrderResponse) SetBody(v *ApprovePermissionApplyO
 	return s
 }
 
+type CallbackExtensionRequest struct {
+	CheckMessage  *string `json:"CheckMessage,omitempty" xml:"CheckMessage,omitempty"`
+	CheckResult   *string `json:"CheckResult,omitempty" xml:"CheckResult,omitempty"`
+	ExtensionCode *string `json:"ExtensionCode,omitempty" xml:"ExtensionCode,omitempty"`
+	MessageId     *string `json:"MessageId,omitempty" xml:"MessageId,omitempty"`
+}
+
+func (s CallbackExtensionRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CallbackExtensionRequest) GoString() string {
+	return s.String()
+}
+
+func (s *CallbackExtensionRequest) SetCheckMessage(v string) *CallbackExtensionRequest {
+	s.CheckMessage = &v
+	return s
+}
+
+func (s *CallbackExtensionRequest) SetCheckResult(v string) *CallbackExtensionRequest {
+	s.CheckResult = &v
+	return s
+}
+
+func (s *CallbackExtensionRequest) SetExtensionCode(v string) *CallbackExtensionRequest {
+	s.ExtensionCode = &v
+	return s
+}
+
+func (s *CallbackExtensionRequest) SetMessageId(v string) *CallbackExtensionRequest {
+	s.MessageId = &v
+	return s
+}
+
+type CallbackExtensionResponseBody struct {
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	Success   *string `json:"Success,omitempty" xml:"Success,omitempty"`
+}
+
+func (s CallbackExtensionResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CallbackExtensionResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *CallbackExtensionResponseBody) SetRequestId(v string) *CallbackExtensionResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *CallbackExtensionResponseBody) SetSuccess(v string) *CallbackExtensionResponseBody {
+	s.Success = &v
+	return s
+}
+
+type CallbackExtensionResponse struct {
+	Headers    map[string]*string             `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                         `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *CallbackExtensionResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s CallbackExtensionResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CallbackExtensionResponse) GoString() string {
+	return s.String()
+}
+
+func (s *CallbackExtensionResponse) SetHeaders(v map[string]*string) *CallbackExtensionResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *CallbackExtensionResponse) SetStatusCode(v int32) *CallbackExtensionResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *CallbackExtensionResponse) SetBody(v *CallbackExtensionResponseBody) *CallbackExtensionResponse {
+	s.Body = v
+	return s
+}
+
 type ChangeResourceManagerResourceGroupRequest struct {
 	// The ID of the new resource group.
 	ResourceId *string `json:"ResourceId,omitempty" xml:"ResourceId,omitempty"`
@@ -15309,6 +15396,7 @@ type GetFileResponseBodyDataFile struct {
 	FileDescription *string `json:"FileDescription,omitempty" xml:"FileDescription,omitempty"`
 	// The ID of the folder to which the file belongs.
 	FileFolderId *string `json:"FileFolderId,omitempty" xml:"FileFolderId,omitempty"`
+	FileId       *int64  `json:"FileId,omitempty" xml:"FileId,omitempty"`
 	// The name of the file.
 	FileName *string `json:"FileName,omitempty" xml:"FileName,omitempty"`
 	// The type of the code for the file. Valid values: 6 (Shell), 10 (ODPS SQL), 11 (ODPS MR), 23 (Data Integration), 24 (ODPS Script), 99 (zero load), 221 (PyODPS 2), 225 (ODPS Spark), 227 (EMR Hive), 228 (EMR Spark), 229 (EMR Spark SQL), 230 (EMR MR), 239 (OSS object inspection), 257 (EMR Shell), 258 (EMR Spark Shell), 259 (EMR Presto), 260 (EMR Impala), 900 (real-time synchronization), 1089 (cross-tenant collaboration), 1091 (Hologres development), 1093 (Hologres SQL), 1100 (assignment), and 1221 (PyODPS 3).
@@ -15408,6 +15496,11 @@ func (s *GetFileResponseBodyDataFile) SetFileDescription(v string) *GetFileRespo
 
 func (s *GetFileResponseBodyDataFile) SetFileFolderId(v string) *GetFileResponseBodyDataFile {
 	s.FileFolderId = &v
+	return s
+}
+
+func (s *GetFileResponseBodyDataFile) SetFileId(v int64) *GetFileResponseBodyDataFile {
+	s.FileId = &v
 	return s
 }
 
@@ -24106,7 +24199,8 @@ func (s *GetPermissionApplyOrderDetailResponse) SetBody(v *GetPermissionApplyOrd
 
 type GetProjectRequest struct {
 	// The ID of the request. You can use the ID to locate logs and troubleshoot issues.
-	ProjectId *int64 `json:"ProjectId,omitempty" xml:"ProjectId,omitempty"`
+	ProjectId         *int64  `json:"ProjectId,omitempty" xml:"ProjectId,omitempty"`
+	ProjectIdentifier *string `json:"ProjectIdentifier,omitempty" xml:"ProjectIdentifier,omitempty"`
 }
 
 func (s GetProjectRequest) String() string {
@@ -24119,6 +24213,11 @@ func (s GetProjectRequest) GoString() string {
 
 func (s *GetProjectRequest) SetProjectId(v int64) *GetProjectRequest {
 	s.ProjectId = &v
+	return s
+}
+
+func (s *GetProjectRequest) SetProjectIdentifier(v string) *GetProjectRequest {
+	s.ProjectIdentifier = &v
 	return s
 }
 
@@ -52410,6 +52509,62 @@ func (client *Client) ApprovePermissionApplyOrder(request *ApprovePermissionAppl
 	return _result, _err
 }
 
+func (client *Client) CallbackExtensionWithOptions(request *CallbackExtensionRequest, runtime *util.RuntimeOptions) (_result *CallbackExtensionResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	body := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.CheckMessage)) {
+		body["CheckMessage"] = request.CheckMessage
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.CheckResult)) {
+		body["CheckResult"] = request.CheckResult
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ExtensionCode)) {
+		body["ExtensionCode"] = request.ExtensionCode
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.MessageId)) {
+		body["MessageId"] = request.MessageId
+	}
+
+	req := &openapi.OpenApiRequest{
+		Body: openapiutil.ParseToMap(body),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("CallbackExtension"),
+		Version:     tea.String("2020-05-18"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &CallbackExtensionResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) CallbackExtension(request *CallbackExtensionRequest) (_result *CallbackExtensionResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &CallbackExtensionResponse{}
+	_body, _err := client.CallbackExtensionWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
 func (client *Client) ChangeResourceManagerResourceGroupWithOptions(request *ChangeResourceManagerResourceGroupRequest, runtime *util.RuntimeOptions) (_result *ChangeResourceManagerResourceGroupResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -60039,6 +60194,10 @@ func (client *Client) GetProjectWithOptions(request *GetProjectRequest, runtime 
 	query := map[string]interface{}{}
 	if !tea.BoolValue(util.IsUnset(request.ProjectId)) {
 		query["ProjectId"] = request.ProjectId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ProjectIdentifier)) {
+		query["ProjectIdentifier"] = request.ProjectIdentifier
 	}
 
 	req := &openapi.OpenApiRequest{
