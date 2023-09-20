@@ -5026,6 +5026,7 @@ func (s *DescribeDBInstanceErrorLogResponse) SetBody(v *DescribeDBInstanceErrorL
 }
 
 type DescribeDBInstanceIPArrayListRequest struct {
+	DBInstanceIPArrayName *string `json:"DBInstanceIPArrayName,omitempty" xml:"DBInstanceIPArrayName,omitempty"`
 	// The instance ID.
 	//
 	// > You can call the [DescribeDBInstances](~~86911~~) operation to query details about all AnalyticDB for PostgreSQL instances within a region, including instance IDs.
@@ -5040,6 +5041,11 @@ func (s DescribeDBInstanceIPArrayListRequest) String() string {
 
 func (s DescribeDBInstanceIPArrayListRequest) GoString() string {
 	return s.String()
+}
+
+func (s *DescribeDBInstanceIPArrayListRequest) SetDBInstanceIPArrayName(v string) *DescribeDBInstanceIPArrayListRequest {
+	s.DBInstanceIPArrayName = &v
+	return s
 }
 
 func (s *DescribeDBInstanceIPArrayListRequest) SetDBInstanceId(v string) *DescribeDBInstanceIPArrayListRequest {
@@ -18823,6 +18829,10 @@ func (client *Client) DescribeDBInstanceIPArrayListWithOptions(request *Describe
 		return _result, _err
 	}
 	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.DBInstanceIPArrayName)) {
+		query["DBInstanceIPArrayName"] = request.DBInstanceIPArrayName
+	}
+
 	if !tea.BoolValue(util.IsUnset(request.DBInstanceId)) {
 		query["DBInstanceId"] = request.DBInstanceId
 	}
