@@ -20741,6 +20741,7 @@ type ImportServicesRequest struct {
 	// *   zh: Chinese
 	// *   en: English
 	AcceptLanguage *string `json:"AcceptLanguage,omitempty" xml:"AcceptLanguage,omitempty"`
+	FcAlias        *string `json:"FcAlias,omitempty" xml:"FcAlias,omitempty"`
 	FcServiceName  *string `json:"FcServiceName,omitempty" xml:"FcServiceName,omitempty"`
 	FcVersion      *string `json:"FcVersion,omitempty" xml:"FcVersion,omitempty"`
 	// The unique ID of the gateway.
@@ -20774,6 +20775,11 @@ func (s ImportServicesRequest) GoString() string {
 
 func (s *ImportServicesRequest) SetAcceptLanguage(v string) *ImportServicesRequest {
 	s.AcceptLanguage = &v
+	return s
+}
+
+func (s *ImportServicesRequest) SetFcAlias(v string) *ImportServicesRequest {
+	s.FcAlias = &v
 	return s
 }
 
@@ -20866,6 +20872,7 @@ type ImportServicesShrinkRequest struct {
 	// *   zh: Chinese
 	// *   en: English
 	AcceptLanguage *string `json:"AcceptLanguage,omitempty" xml:"AcceptLanguage,omitempty"`
+	FcAlias        *string `json:"FcAlias,omitempty" xml:"FcAlias,omitempty"`
 	FcServiceName  *string `json:"FcServiceName,omitempty" xml:"FcServiceName,omitempty"`
 	FcVersion      *string `json:"FcVersion,omitempty" xml:"FcVersion,omitempty"`
 	// The unique ID of the gateway.
@@ -20899,6 +20906,11 @@ func (s ImportServicesShrinkRequest) GoString() string {
 
 func (s *ImportServicesShrinkRequest) SetAcceptLanguage(v string) *ImportServicesShrinkRequest {
 	s.AcceptLanguage = &v
+	return s
+}
+
+func (s *ImportServicesShrinkRequest) SetFcAlias(v string) *ImportServicesShrinkRequest {
+	s.FcAlias = &v
 	return s
 }
 
@@ -39083,8 +39095,8 @@ type TagResourcesRequest struct {
 	//
 	// > This parameter specifies the instance ID that is passed. Examples:
 	//
-	// *   **ResourceId.1** specifies that the first instance ID is passed.
-	// *   **ResourceId.2** specifies that the second instance ID is passed.
+	// - ResourceId.0 specifies the first instance ID that is passed.
+	// - ResourceId.1 specifies the second instance ID that is passed.
 	ResourceId []*string `json:"ResourceId,omitempty" xml:"ResourceId,omitempty" type:"Repeated"`
 	// The type of the resources. Valid values:
 	//
@@ -53947,6 +53959,10 @@ func (client *Client) ImportServicesWithOptions(tmpReq *ImportServicesRequest, r
 	query := map[string]interface{}{}
 	if !tea.BoolValue(util.IsUnset(request.AcceptLanguage)) {
 		query["AcceptLanguage"] = request.AcceptLanguage
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.FcAlias)) {
+		query["FcAlias"] = request.FcAlias
 	}
 
 	if !tea.BoolValue(util.IsUnset(request.FcServiceName)) {
