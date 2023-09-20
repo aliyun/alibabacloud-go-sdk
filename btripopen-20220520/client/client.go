@@ -47294,6 +47294,7 @@ type IsvUserSaveRequestUserList struct {
 	DepartId          *int64                                `json:"depart_id,omitempty" xml:"depart_id,omitempty"`
 	Email             *string                               `json:"email,omitempty" xml:"email,omitempty"`
 	Gender            *string                               `json:"gender,omitempty" xml:"gender,omitempty"`
+	IsAdmin           *bool                                 `json:"is_admin,omitempty" xml:"is_admin,omitempty"`
 	JobNo             *string                               `json:"job_no,omitempty" xml:"job_no,omitempty"`
 	LeaveStatus       *int32                                `json:"leave_status,omitempty" xml:"leave_status,omitempty"`
 	ManagerUserId     *string                               `json:"manager_user_id,omitempty" xml:"manager_user_id,omitempty"`
@@ -47337,6 +47338,11 @@ func (s *IsvUserSaveRequestUserList) SetEmail(v string) *IsvUserSaveRequestUserL
 
 func (s *IsvUserSaveRequestUserList) SetGender(v string) *IsvUserSaveRequestUserList {
 	s.Gender = &v
+	return s
+}
+
+func (s *IsvUserSaveRequestUserList) SetIsAdmin(v bool) *IsvUserSaveRequestUserList {
+	s.IsAdmin = &v
 	return s
 }
 
