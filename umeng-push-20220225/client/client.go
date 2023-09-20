@@ -42,9 +42,9 @@ func (s *Alert) SetTitle(v string) *Alert {
 }
 
 type AndroidPayload struct {
-	Body        *Body              `json:"body,omitempty" xml:"body,omitempty"`
-	DisplayType *string            `json:"displayType,omitempty" xml:"displayType,omitempty"`
-	Extra       map[string]*string `json:"extra,omitempty" xml:"extra,omitempty"`
+	Body        *Body                  `json:"body,omitempty" xml:"body,omitempty"`
+	DisplayType *string                `json:"displayType,omitempty" xml:"displayType,omitempty"`
+	Extra       map[string]interface{} `json:"extra,omitempty" xml:"extra,omitempty"`
 }
 
 func (s AndroidPayload) String() string {
@@ -65,7 +65,7 @@ func (s *AndroidPayload) SetDisplayType(v string) *AndroidPayload {
 	return s
 }
 
-func (s *AndroidPayload) SetExtra(v map[string]*string) *AndroidPayload {
+func (s *AndroidPayload) SetExtra(v map[string]interface{}) *AndroidPayload {
 	s.Extra = v
 	return s
 }
@@ -126,7 +126,6 @@ type Body struct {
 	ExpandImage *string `json:"expandImage,omitempty" xml:"expandImage,omitempty"`
 	Icon        *string `json:"icon,omitempty" xml:"icon,omitempty"`
 	Img         *string `json:"img,omitempty" xml:"img,omitempty"`
-	LargeIcon   *string `json:"largeIcon,omitempty" xml:"largeIcon,omitempty"`
 	PlayLights  *bool   `json:"playLights,omitempty" xml:"playLights,omitempty"`
 	PlaySound   *bool   `json:"playSound,omitempty" xml:"playSound,omitempty"`
 	PlayVibrate *bool   `json:"playVibrate,omitempty" xml:"playVibrate,omitempty"`
@@ -183,11 +182,6 @@ func (s *Body) SetIcon(v string) *Body {
 
 func (s *Body) SetImg(v string) *Body {
 	s.Img = &v
-	return s
-}
-
-func (s *Body) SetLargeIcon(v string) *Body {
-	s.LargeIcon = &v
 	return s
 }
 
