@@ -25171,6 +25171,7 @@ type ListServiceConnectionsResponseBodyServiceConnections struct {
 	Name           *string `json:"name,omitempty" xml:"name,omitempty"`
 	OwnerAccountId *int64  `json:"ownerAccountId,omitempty" xml:"ownerAccountId,omitempty"`
 	Type           *string `json:"type,omitempty" xml:"type,omitempty"`
+	Uuid           *string `json:"uuid,omitempty" xml:"uuid,omitempty"`
 }
 
 func (s ListServiceConnectionsResponseBodyServiceConnections) String() string {
@@ -25203,6 +25204,11 @@ func (s *ListServiceConnectionsResponseBodyServiceConnections) SetOwnerAccountId
 
 func (s *ListServiceConnectionsResponseBodyServiceConnections) SetType(v string) *ListServiceConnectionsResponseBodyServiceConnections {
 	s.Type = &v
+	return s
+}
+
+func (s *ListServiceConnectionsResponseBodyServiceConnections) SetUuid(v string) *ListServiceConnectionsResponseBodyServiceConnections {
+	s.Uuid = &v
 	return s
 }
 
