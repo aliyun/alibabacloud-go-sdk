@@ -4382,7 +4382,8 @@ type ReprotectDiskReplicaGroupRequest struct {
 	// The ID of the replication pair-consistent group. You can call the [DescribeDiskReplicaGroups](~~426614~~) operation to query the IDs of replication pair-consistent groups.
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 	// The client token that is used to ensure the idempotence of the request. You can use the client to generate the value, but you must make sure that the value is unique among different requests. The ClientToken value can contain only ASCII characters and cannot exceed 64 characters in length. For more information, see [How to ensure idempotence](~~25693~~).
-	ReplicaGroupId *string `json:"ReplicaGroupId,omitempty" xml:"ReplicaGroupId,omitempty"`
+	ReplicaGroupId   *string `json:"ReplicaGroupId,omitempty" xml:"ReplicaGroupId,omitempty"`
+	ReverseReplicate *bool   `json:"ReverseReplicate,omitempty" xml:"ReverseReplicate,omitempty"`
 }
 
 func (s ReprotectDiskReplicaGroupRequest) String() string {
@@ -4405,6 +4406,11 @@ func (s *ReprotectDiskReplicaGroupRequest) SetRegionId(v string) *ReprotectDiskR
 
 func (s *ReprotectDiskReplicaGroupRequest) SetReplicaGroupId(v string) *ReprotectDiskReplicaGroupRequest {
 	s.ReplicaGroupId = &v
+	return s
+}
+
+func (s *ReprotectDiskReplicaGroupRequest) SetReverseReplicate(v bool) *ReprotectDiskReplicaGroupRequest {
+	s.ReverseReplicate = &v
 	return s
 }
 
@@ -4458,6 +4464,8 @@ type ReprotectDiskReplicaPairRequest struct {
 	ClientToken   *string `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
 	RegionId      *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 	ReplicaPairId *string `json:"ReplicaPairId,omitempty" xml:"ReplicaPairId,omitempty"`
+	// 反向复制开关：false代表恢复原方向，true代表反向复制。默认值是true。
+	ReverseReplicate *bool `json:"ReverseReplicate,omitempty" xml:"ReverseReplicate,omitempty"`
 }
 
 func (s ReprotectDiskReplicaPairRequest) String() string {
@@ -4480,6 +4488,11 @@ func (s *ReprotectDiskReplicaPairRequest) SetRegionId(v string) *ReprotectDiskRe
 
 func (s *ReprotectDiskReplicaPairRequest) SetReplicaPairId(v string) *ReprotectDiskReplicaPairRequest {
 	s.ReplicaPairId = &v
+	return s
+}
+
+func (s *ReprotectDiskReplicaPairRequest) SetReverseReplicate(v bool) *ReprotectDiskReplicaPairRequest {
+	s.ReverseReplicate = &v
 	return s
 }
 
@@ -7345,6 +7358,10 @@ func (client *Client) ReprotectDiskReplicaGroupWithOptions(request *ReprotectDis
 		query["ReplicaGroupId"] = request.ReplicaGroupId
 	}
 
+	if !tea.BoolValue(util.IsUnset(request.ReverseReplicate)) {
+		query["ReverseReplicate"] = request.ReverseReplicate
+	}
+
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
 	}
@@ -7408,6 +7425,10 @@ func (client *Client) ReprotectDiskReplicaPairWithOptions(request *ReprotectDisk
 
 	if !tea.BoolValue(util.IsUnset(request.ReplicaPairId)) {
 		query["ReplicaPairId"] = request.ReplicaPairId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ReverseReplicate)) {
+		query["ReverseReplicate"] = request.ReverseReplicate
 	}
 
 	req := &openapi.OpenApiRequest{

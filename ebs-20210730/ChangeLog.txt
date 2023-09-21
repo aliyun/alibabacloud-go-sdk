@@ -1,3 +1,6 @@
+2023-09-21 Version: v1.3.18
+- Generated golang 2021-07-30 for ebs.
+
 2023-09-05 Version: v1.3.17
 - Generated golang 2021-07-30 for ebs.
 
