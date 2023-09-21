@@ -2041,6 +2041,123 @@ func (s *ChangeColumnSecLevelResponse) SetBody(v *ChangeColumnSecLevelResponseBo
 	return s
 }
 
+type ChangeColumnSecurityLevelRequest struct {
+	ColumnName          *string `json:"ColumnName,omitempty" xml:"ColumnName,omitempty"`
+	DbId                *int64  `json:"DbId,omitempty" xml:"DbId,omitempty"`
+	IsLogic             *bool   `json:"IsLogic,omitempty" xml:"IsLogic,omitempty"`
+	NewSensitivityLevel *string `json:"NewSensitivityLevel,omitempty" xml:"NewSensitivityLevel,omitempty"`
+	SchemaName          *string `json:"SchemaName,omitempty" xml:"SchemaName,omitempty"`
+	TableName           *string `json:"TableName,omitempty" xml:"TableName,omitempty"`
+	Tid                 *int64  `json:"Tid,omitempty" xml:"Tid,omitempty"`
+}
+
+func (s ChangeColumnSecurityLevelRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ChangeColumnSecurityLevelRequest) GoString() string {
+	return s.String()
+}
+
+func (s *ChangeColumnSecurityLevelRequest) SetColumnName(v string) *ChangeColumnSecurityLevelRequest {
+	s.ColumnName = &v
+	return s
+}
+
+func (s *ChangeColumnSecurityLevelRequest) SetDbId(v int64) *ChangeColumnSecurityLevelRequest {
+	s.DbId = &v
+	return s
+}
+
+func (s *ChangeColumnSecurityLevelRequest) SetIsLogic(v bool) *ChangeColumnSecurityLevelRequest {
+	s.IsLogic = &v
+	return s
+}
+
+func (s *ChangeColumnSecurityLevelRequest) SetNewSensitivityLevel(v string) *ChangeColumnSecurityLevelRequest {
+	s.NewSensitivityLevel = &v
+	return s
+}
+
+func (s *ChangeColumnSecurityLevelRequest) SetSchemaName(v string) *ChangeColumnSecurityLevelRequest {
+	s.SchemaName = &v
+	return s
+}
+
+func (s *ChangeColumnSecurityLevelRequest) SetTableName(v string) *ChangeColumnSecurityLevelRequest {
+	s.TableName = &v
+	return s
+}
+
+func (s *ChangeColumnSecurityLevelRequest) SetTid(v int64) *ChangeColumnSecurityLevelRequest {
+	s.Tid = &v
+	return s
+}
+
+type ChangeColumnSecurityLevelResponseBody struct {
+	ErrorCode    *string `json:"ErrorCode,omitempty" xml:"ErrorCode,omitempty"`
+	ErrorMessage *string `json:"ErrorMessage,omitempty" xml:"ErrorMessage,omitempty"`
+	RequestId    *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	Success      *bool   `json:"Success,omitempty" xml:"Success,omitempty"`
+}
+
+func (s ChangeColumnSecurityLevelResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ChangeColumnSecurityLevelResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *ChangeColumnSecurityLevelResponseBody) SetErrorCode(v string) *ChangeColumnSecurityLevelResponseBody {
+	s.ErrorCode = &v
+	return s
+}
+
+func (s *ChangeColumnSecurityLevelResponseBody) SetErrorMessage(v string) *ChangeColumnSecurityLevelResponseBody {
+	s.ErrorMessage = &v
+	return s
+}
+
+func (s *ChangeColumnSecurityLevelResponseBody) SetRequestId(v string) *ChangeColumnSecurityLevelResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *ChangeColumnSecurityLevelResponseBody) SetSuccess(v bool) *ChangeColumnSecurityLevelResponseBody {
+	s.Success = &v
+	return s
+}
+
+type ChangeColumnSecurityLevelResponse struct {
+	Headers    map[string]*string                     `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                                 `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *ChangeColumnSecurityLevelResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s ChangeColumnSecurityLevelResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ChangeColumnSecurityLevelResponse) GoString() string {
+	return s.String()
+}
+
+func (s *ChangeColumnSecurityLevelResponse) SetHeaders(v map[string]*string) *ChangeColumnSecurityLevelResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *ChangeColumnSecurityLevelResponse) SetStatusCode(v int32) *ChangeColumnSecurityLevelResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *ChangeColumnSecurityLevelResponse) SetBody(v *ChangeColumnSecurityLevelResponseBody) *ChangeColumnSecurityLevelResponse {
+	s.Body = v
+	return s
+}
+
 type ChangeLhDagOwnerRequest struct {
 	// The ID of the task flow. You can call the [ListLhTaskFlowAndScenario](~~426672~~) operation to obtain the task flow ID.
 	DagId *int64 `json:"DagId,omitempty" xml:"DagId,omitempty"`
@@ -5257,6 +5374,228 @@ func (s *CreateOrderResponse) SetStatusCode(v int32) *CreateOrderResponse {
 }
 
 func (s *CreateOrderResponse) SetBody(v *CreateOrderResponseBody) *CreateOrderResponse {
+	s.Body = v
+	return s
+}
+
+type CreateProcCorrectOrderRequest struct {
+	AttachmentKey   *string                             `json:"AttachmentKey,omitempty" xml:"AttachmentKey,omitempty"`
+	Comment         *string                             `json:"Comment,omitempty" xml:"Comment,omitempty"`
+	Param           *CreateProcCorrectOrderRequestParam `json:"Param,omitempty" xml:"Param,omitempty" type:"Struct"`
+	RelatedUserList []*int64                            `json:"RelatedUserList,omitempty" xml:"RelatedUserList,omitempty" type:"Repeated"`
+	Tid             *int64                              `json:"Tid,omitempty" xml:"Tid,omitempty"`
+}
+
+func (s CreateProcCorrectOrderRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateProcCorrectOrderRequest) GoString() string {
+	return s.String()
+}
+
+func (s *CreateProcCorrectOrderRequest) SetAttachmentKey(v string) *CreateProcCorrectOrderRequest {
+	s.AttachmentKey = &v
+	return s
+}
+
+func (s *CreateProcCorrectOrderRequest) SetComment(v string) *CreateProcCorrectOrderRequest {
+	s.Comment = &v
+	return s
+}
+
+func (s *CreateProcCorrectOrderRequest) SetParam(v *CreateProcCorrectOrderRequestParam) *CreateProcCorrectOrderRequest {
+	s.Param = v
+	return s
+}
+
+func (s *CreateProcCorrectOrderRequest) SetRelatedUserList(v []*int64) *CreateProcCorrectOrderRequest {
+	s.RelatedUserList = v
+	return s
+}
+
+func (s *CreateProcCorrectOrderRequest) SetTid(v int64) *CreateProcCorrectOrderRequest {
+	s.Tid = &v
+	return s
+}
+
+type CreateProcCorrectOrderRequestParam struct {
+	Classify               *string                                         `json:"Classify,omitempty" xml:"Classify,omitempty"`
+	DbItemList             []*CreateProcCorrectOrderRequestParamDbItemList `json:"DbItemList,omitempty" xml:"DbItemList,omitempty" type:"Repeated"`
+	ExecSQL                *string                                         `json:"ExecSQL,omitempty" xml:"ExecSQL,omitempty"`
+	RollbackAttachmentName *string                                         `json:"RollbackAttachmentName,omitempty" xml:"RollbackAttachmentName,omitempty"`
+	RollbackSQL            *string                                         `json:"RollbackSQL,omitempty" xml:"RollbackSQL,omitempty"`
+	RollbackSqlType        *string                                         `json:"RollbackSqlType,omitempty" xml:"RollbackSqlType,omitempty"`
+}
+
+func (s CreateProcCorrectOrderRequestParam) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateProcCorrectOrderRequestParam) GoString() string {
+	return s.String()
+}
+
+func (s *CreateProcCorrectOrderRequestParam) SetClassify(v string) *CreateProcCorrectOrderRequestParam {
+	s.Classify = &v
+	return s
+}
+
+func (s *CreateProcCorrectOrderRequestParam) SetDbItemList(v []*CreateProcCorrectOrderRequestParamDbItemList) *CreateProcCorrectOrderRequestParam {
+	s.DbItemList = v
+	return s
+}
+
+func (s *CreateProcCorrectOrderRequestParam) SetExecSQL(v string) *CreateProcCorrectOrderRequestParam {
+	s.ExecSQL = &v
+	return s
+}
+
+func (s *CreateProcCorrectOrderRequestParam) SetRollbackAttachmentName(v string) *CreateProcCorrectOrderRequestParam {
+	s.RollbackAttachmentName = &v
+	return s
+}
+
+func (s *CreateProcCorrectOrderRequestParam) SetRollbackSQL(v string) *CreateProcCorrectOrderRequestParam {
+	s.RollbackSQL = &v
+	return s
+}
+
+func (s *CreateProcCorrectOrderRequestParam) SetRollbackSqlType(v string) *CreateProcCorrectOrderRequestParam {
+	s.RollbackSqlType = &v
+	return s
+}
+
+type CreateProcCorrectOrderRequestParamDbItemList struct {
+	DbId  *int64 `json:"DbId,omitempty" xml:"DbId,omitempty"`
+	Logic *bool  `json:"Logic,omitempty" xml:"Logic,omitempty"`
+}
+
+func (s CreateProcCorrectOrderRequestParamDbItemList) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateProcCorrectOrderRequestParamDbItemList) GoString() string {
+	return s.String()
+}
+
+func (s *CreateProcCorrectOrderRequestParamDbItemList) SetDbId(v int64) *CreateProcCorrectOrderRequestParamDbItemList {
+	s.DbId = &v
+	return s
+}
+
+func (s *CreateProcCorrectOrderRequestParamDbItemList) SetLogic(v bool) *CreateProcCorrectOrderRequestParamDbItemList {
+	s.Logic = &v
+	return s
+}
+
+type CreateProcCorrectOrderShrinkRequest struct {
+	AttachmentKey         *string `json:"AttachmentKey,omitempty" xml:"AttachmentKey,omitempty"`
+	Comment               *string `json:"Comment,omitempty" xml:"Comment,omitempty"`
+	ParamShrink           *string `json:"Param,omitempty" xml:"Param,omitempty"`
+	RelatedUserListShrink *string `json:"RelatedUserList,omitempty" xml:"RelatedUserList,omitempty"`
+	Tid                   *int64  `json:"Tid,omitempty" xml:"Tid,omitempty"`
+}
+
+func (s CreateProcCorrectOrderShrinkRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateProcCorrectOrderShrinkRequest) GoString() string {
+	return s.String()
+}
+
+func (s *CreateProcCorrectOrderShrinkRequest) SetAttachmentKey(v string) *CreateProcCorrectOrderShrinkRequest {
+	s.AttachmentKey = &v
+	return s
+}
+
+func (s *CreateProcCorrectOrderShrinkRequest) SetComment(v string) *CreateProcCorrectOrderShrinkRequest {
+	s.Comment = &v
+	return s
+}
+
+func (s *CreateProcCorrectOrderShrinkRequest) SetParamShrink(v string) *CreateProcCorrectOrderShrinkRequest {
+	s.ParamShrink = &v
+	return s
+}
+
+func (s *CreateProcCorrectOrderShrinkRequest) SetRelatedUserListShrink(v string) *CreateProcCorrectOrderShrinkRequest {
+	s.RelatedUserListShrink = &v
+	return s
+}
+
+func (s *CreateProcCorrectOrderShrinkRequest) SetTid(v int64) *CreateProcCorrectOrderShrinkRequest {
+	s.Tid = &v
+	return s
+}
+
+type CreateProcCorrectOrderResponseBody struct {
+	CreateOrderResult []*int64 `json:"CreateOrderResult,omitempty" xml:"CreateOrderResult,omitempty" type:"Repeated"`
+	ErrorCode         *string  `json:"ErrorCode,omitempty" xml:"ErrorCode,omitempty"`
+	ErrorMessage      *string  `json:"ErrorMessage,omitempty" xml:"ErrorMessage,omitempty"`
+	RequestId         *string  `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	Success           *bool    `json:"Success,omitempty" xml:"Success,omitempty"`
+}
+
+func (s CreateProcCorrectOrderResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateProcCorrectOrderResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *CreateProcCorrectOrderResponseBody) SetCreateOrderResult(v []*int64) *CreateProcCorrectOrderResponseBody {
+	s.CreateOrderResult = v
+	return s
+}
+
+func (s *CreateProcCorrectOrderResponseBody) SetErrorCode(v string) *CreateProcCorrectOrderResponseBody {
+	s.ErrorCode = &v
+	return s
+}
+
+func (s *CreateProcCorrectOrderResponseBody) SetErrorMessage(v string) *CreateProcCorrectOrderResponseBody {
+	s.ErrorMessage = &v
+	return s
+}
+
+func (s *CreateProcCorrectOrderResponseBody) SetRequestId(v string) *CreateProcCorrectOrderResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *CreateProcCorrectOrderResponseBody) SetSuccess(v bool) *CreateProcCorrectOrderResponseBody {
+	s.Success = &v
+	return s
+}
+
+type CreateProcCorrectOrderResponse struct {
+	Headers    map[string]*string                  `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                              `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *CreateProcCorrectOrderResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s CreateProcCorrectOrderResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateProcCorrectOrderResponse) GoString() string {
+	return s.String()
+}
+
+func (s *CreateProcCorrectOrderResponse) SetHeaders(v map[string]*string) *CreateProcCorrectOrderResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *CreateProcCorrectOrderResponse) SetStatusCode(v int32) *CreateProcCorrectOrderResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *CreateProcCorrectOrderResponse) SetBody(v *CreateProcCorrectOrderResponseBody) *CreateProcCorrectOrderResponse {
 	s.Body = v
 	return s
 }
@@ -10289,6 +10628,134 @@ func (s *GetAuthorityTemplateItemResponse) SetStatusCode(v int32) *GetAuthorityT
 }
 
 func (s *GetAuthorityTemplateItemResponse) SetBody(v *GetAuthorityTemplateItemResponseBody) *GetAuthorityTemplateItemResponse {
+	s.Body = v
+	return s
+}
+
+type GetClassificationTemplateRequest struct {
+	InstanceId *int64 `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	Tid        *int64 `json:"Tid,omitempty" xml:"Tid,omitempty"`
+}
+
+func (s GetClassificationTemplateRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetClassificationTemplateRequest) GoString() string {
+	return s.String()
+}
+
+func (s *GetClassificationTemplateRequest) SetInstanceId(v int64) *GetClassificationTemplateRequest {
+	s.InstanceId = &v
+	return s
+}
+
+func (s *GetClassificationTemplateRequest) SetTid(v int64) *GetClassificationTemplateRequest {
+	s.Tid = &v
+	return s
+}
+
+type GetClassificationTemplateResponseBody struct {
+	ClassificationResourceTemplateMap *GetClassificationTemplateResponseBodyClassificationResourceTemplateMap `json:"ClassificationResourceTemplateMap,omitempty" xml:"ClassificationResourceTemplateMap,omitempty" type:"Struct"`
+	ErrorCode                         *string                                                                 `json:"ErrorCode,omitempty" xml:"ErrorCode,omitempty"`
+	ErrorMessage                      *string                                                                 `json:"ErrorMessage,omitempty" xml:"ErrorMessage,omitempty"`
+	RequestId                         *string                                                                 `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	Success                           *bool                                                                   `json:"Success,omitempty" xml:"Success,omitempty"`
+}
+
+func (s GetClassificationTemplateResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetClassificationTemplateResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *GetClassificationTemplateResponseBody) SetClassificationResourceTemplateMap(v *GetClassificationTemplateResponseBodyClassificationResourceTemplateMap) *GetClassificationTemplateResponseBody {
+	s.ClassificationResourceTemplateMap = v
+	return s
+}
+
+func (s *GetClassificationTemplateResponseBody) SetErrorCode(v string) *GetClassificationTemplateResponseBody {
+	s.ErrorCode = &v
+	return s
+}
+
+func (s *GetClassificationTemplateResponseBody) SetErrorMessage(v string) *GetClassificationTemplateResponseBody {
+	s.ErrorMessage = &v
+	return s
+}
+
+func (s *GetClassificationTemplateResponseBody) SetRequestId(v string) *GetClassificationTemplateResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *GetClassificationTemplateResponseBody) SetSuccess(v bool) *GetClassificationTemplateResponseBody {
+	s.Success = &v
+	return s
+}
+
+type GetClassificationTemplateResponseBodyClassificationResourceTemplateMap struct {
+	ResourceId   *int64  `json:"ResourceId,omitempty" xml:"ResourceId,omitempty"`
+	ResourceType *string `json:"ResourceType,omitempty" xml:"ResourceType,omitempty"`
+	TemplateId   *int64  `json:"TemplateId,omitempty" xml:"TemplateId,omitempty"`
+	TemplateType *string `json:"TemplateType,omitempty" xml:"TemplateType,omitempty"`
+}
+
+func (s GetClassificationTemplateResponseBodyClassificationResourceTemplateMap) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetClassificationTemplateResponseBodyClassificationResourceTemplateMap) GoString() string {
+	return s.String()
+}
+
+func (s *GetClassificationTemplateResponseBodyClassificationResourceTemplateMap) SetResourceId(v int64) *GetClassificationTemplateResponseBodyClassificationResourceTemplateMap {
+	s.ResourceId = &v
+	return s
+}
+
+func (s *GetClassificationTemplateResponseBodyClassificationResourceTemplateMap) SetResourceType(v string) *GetClassificationTemplateResponseBodyClassificationResourceTemplateMap {
+	s.ResourceType = &v
+	return s
+}
+
+func (s *GetClassificationTemplateResponseBodyClassificationResourceTemplateMap) SetTemplateId(v int64) *GetClassificationTemplateResponseBodyClassificationResourceTemplateMap {
+	s.TemplateId = &v
+	return s
+}
+
+func (s *GetClassificationTemplateResponseBodyClassificationResourceTemplateMap) SetTemplateType(v string) *GetClassificationTemplateResponseBodyClassificationResourceTemplateMap {
+	s.TemplateType = &v
+	return s
+}
+
+type GetClassificationTemplateResponse struct {
+	Headers    map[string]*string                     `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                                 `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *GetClassificationTemplateResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s GetClassificationTemplateResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetClassificationTemplateResponse) GoString() string {
+	return s.String()
+}
+
+func (s *GetClassificationTemplateResponse) SetHeaders(v map[string]*string) *GetClassificationTemplateResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *GetClassificationTemplateResponse) SetStatusCode(v int32) *GetClassificationTemplateResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *GetClassificationTemplateResponse) SetBody(v *GetClassificationTemplateResponseBody) *GetClassificationTemplateResponse {
 	s.Body = v
 	return s
 }
@@ -30588,6 +31055,140 @@ func (s *ListSensitiveDataAuditLogResponse) SetBody(v *ListSensitiveDataAuditLog
 	return s
 }
 
+type ListSensitivityLevelRequest struct {
+	TemplateId   *int64  `json:"TemplateId,omitempty" xml:"TemplateId,omitempty"`
+	TemplateType *string `json:"TemplateType,omitempty" xml:"TemplateType,omitempty"`
+	Tid          *int64  `json:"Tid,omitempty" xml:"Tid,omitempty"`
+}
+
+func (s ListSensitivityLevelRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListSensitivityLevelRequest) GoString() string {
+	return s.String()
+}
+
+func (s *ListSensitivityLevelRequest) SetTemplateId(v int64) *ListSensitivityLevelRequest {
+	s.TemplateId = &v
+	return s
+}
+
+func (s *ListSensitivityLevelRequest) SetTemplateType(v string) *ListSensitivityLevelRequest {
+	s.TemplateType = &v
+	return s
+}
+
+func (s *ListSensitivityLevelRequest) SetTid(v int64) *ListSensitivityLevelRequest {
+	s.Tid = &v
+	return s
+}
+
+type ListSensitivityLevelResponseBody struct {
+	ErrorCode            *string                                                 `json:"ErrorCode,omitempty" xml:"ErrorCode,omitempty"`
+	ErrorMessage         *string                                                 `json:"ErrorMessage,omitempty" xml:"ErrorMessage,omitempty"`
+	RequestId            *string                                                 `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	SensitivityLevelList []*ListSensitivityLevelResponseBodySensitivityLevelList `json:"SensitivityLevelList,omitempty" xml:"SensitivityLevelList,omitempty" type:"Repeated"`
+	Success              *bool                                                   `json:"Success,omitempty" xml:"Success,omitempty"`
+}
+
+func (s ListSensitivityLevelResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListSensitivityLevelResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *ListSensitivityLevelResponseBody) SetErrorCode(v string) *ListSensitivityLevelResponseBody {
+	s.ErrorCode = &v
+	return s
+}
+
+func (s *ListSensitivityLevelResponseBody) SetErrorMessage(v string) *ListSensitivityLevelResponseBody {
+	s.ErrorMessage = &v
+	return s
+}
+
+func (s *ListSensitivityLevelResponseBody) SetRequestId(v string) *ListSensitivityLevelResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *ListSensitivityLevelResponseBody) SetSensitivityLevelList(v []*ListSensitivityLevelResponseBodySensitivityLevelList) *ListSensitivityLevelResponseBody {
+	s.SensitivityLevelList = v
+	return s
+}
+
+func (s *ListSensitivityLevelResponseBody) SetSuccess(v bool) *ListSensitivityLevelResponseBody {
+	s.Success = &v
+	return s
+}
+
+type ListSensitivityLevelResponseBodySensitivityLevelList struct {
+	IsPlain      *bool   `json:"IsPlain,omitempty" xml:"IsPlain,omitempty"`
+	Name         *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	TemplateId   *string `json:"TemplateId,omitempty" xml:"TemplateId,omitempty"`
+	TemplateType *string `json:"TemplateType,omitempty" xml:"TemplateType,omitempty"`
+}
+
+func (s ListSensitivityLevelResponseBodySensitivityLevelList) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListSensitivityLevelResponseBodySensitivityLevelList) GoString() string {
+	return s.String()
+}
+
+func (s *ListSensitivityLevelResponseBodySensitivityLevelList) SetIsPlain(v bool) *ListSensitivityLevelResponseBodySensitivityLevelList {
+	s.IsPlain = &v
+	return s
+}
+
+func (s *ListSensitivityLevelResponseBodySensitivityLevelList) SetName(v string) *ListSensitivityLevelResponseBodySensitivityLevelList {
+	s.Name = &v
+	return s
+}
+
+func (s *ListSensitivityLevelResponseBodySensitivityLevelList) SetTemplateId(v string) *ListSensitivityLevelResponseBodySensitivityLevelList {
+	s.TemplateId = &v
+	return s
+}
+
+func (s *ListSensitivityLevelResponseBodySensitivityLevelList) SetTemplateType(v string) *ListSensitivityLevelResponseBodySensitivityLevelList {
+	s.TemplateType = &v
+	return s
+}
+
+type ListSensitivityLevelResponse struct {
+	Headers    map[string]*string                `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                            `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *ListSensitivityLevelResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s ListSensitivityLevelResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListSensitivityLevelResponse) GoString() string {
+	return s.String()
+}
+
+func (s *ListSensitivityLevelResponse) SetHeaders(v map[string]*string) *ListSensitivityLevelResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *ListSensitivityLevelResponse) SetStatusCode(v int32) *ListSensitivityLevelResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *ListSensitivityLevelResponse) SetBody(v *ListSensitivityLevelResponseBody) *ListSensitivityLevelResponse {
+	s.Body = v
+	return s
+}
+
 type ListStandardGroupsRequest struct {
 	// The ID of the tenant.
 	Tid *int64 `json:"Tid,omitempty" xml:"Tid,omitempty"`
@@ -35330,6 +35931,7 @@ func (s *ReRunTaskFlowInstanceResponse) SetBody(v *ReRunTaskFlowInstanceResponse
 }
 
 type RefundPayAsYouGoOrderRequest struct {
+	// The ID of the sales order instance.
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
 	// The order ID of the order for the pay-as-you-go resource. You can call the ListEffectiveOrders operation to query the order ID.
 	OrderId *string `json:"OrderId,omitempty" xml:"OrderId,omitempty"`
@@ -41774,6 +42376,74 @@ func (client *Client) ChangeColumnSecLevel(request *ChangeColumnSecLevelRequest)
 	return _result, _err
 }
 
+func (client *Client) ChangeColumnSecurityLevelWithOptions(request *ChangeColumnSecurityLevelRequest, runtime *util.RuntimeOptions) (_result *ChangeColumnSecurityLevelResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.ColumnName)) {
+		query["ColumnName"] = request.ColumnName
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.DbId)) {
+		query["DbId"] = request.DbId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.IsLogic)) {
+		query["IsLogic"] = request.IsLogic
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.NewSensitivityLevel)) {
+		query["NewSensitivityLevel"] = request.NewSensitivityLevel
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.SchemaName)) {
+		query["SchemaName"] = request.SchemaName
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.TableName)) {
+		query["TableName"] = request.TableName
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Tid)) {
+		query["Tid"] = request.Tid
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("ChangeColumnSecurityLevel"),
+		Version:     tea.String("2018-11-01"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &ChangeColumnSecurityLevelResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) ChangeColumnSecurityLevel(request *ChangeColumnSecurityLevelRequest) (_result *ChangeColumnSecurityLevelResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &ChangeColumnSecurityLevelResponse{}
+	_body, _err := client.ChangeColumnSecurityLevelWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
 /**
  * Usage notes:
  * *   If you call this operation to transfer the ownership of a published task flow, the ownership transfer does not take effect.
@@ -42828,6 +43498,76 @@ func (client *Client) CreateOrder(request *CreateOrderRequest) (_result *CreateO
 	runtime := &util.RuntimeOptions{}
 	_result = &CreateOrderResponse{}
 	_body, _err := client.CreateOrderWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) CreateProcCorrectOrderWithOptions(tmpReq *CreateProcCorrectOrderRequest, runtime *util.RuntimeOptions) (_result *CreateProcCorrectOrderResponse, _err error) {
+	_err = util.ValidateModel(tmpReq)
+	if _err != nil {
+		return _result, _err
+	}
+	request := &CreateProcCorrectOrderShrinkRequest{}
+	openapiutil.Convert(tmpReq, request)
+	if !tea.BoolValue(util.IsUnset(tmpReq.Param)) {
+		request.ParamShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.Param, tea.String("Param"), tea.String("json"))
+	}
+
+	if !tea.BoolValue(util.IsUnset(tmpReq.RelatedUserList)) {
+		request.RelatedUserListShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.RelatedUserList, tea.String("RelatedUserList"), tea.String("json"))
+	}
+
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.AttachmentKey)) {
+		query["AttachmentKey"] = request.AttachmentKey
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Comment)) {
+		query["Comment"] = request.Comment
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ParamShrink)) {
+		query["Param"] = request.ParamShrink
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.RelatedUserListShrink)) {
+		query["RelatedUserList"] = request.RelatedUserListShrink
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Tid)) {
+		query["Tid"] = request.Tid
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("CreateProcCorrectOrder"),
+		Version:     tea.String("2018-11-01"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &CreateProcCorrectOrderResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) CreateProcCorrectOrder(request *CreateProcCorrectOrderRequest) (_result *CreateProcCorrectOrderResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &CreateProcCorrectOrderResponse{}
+	_body, _err := client.CreateProcCorrectOrderWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -44939,6 +45679,54 @@ func (client *Client) GetAuthorityTemplateItem(request *GetAuthorityTemplateItem
 	runtime := &util.RuntimeOptions{}
 	_result = &GetAuthorityTemplateItemResponse{}
 	_body, _err := client.GetAuthorityTemplateItemWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) GetClassificationTemplateWithOptions(request *GetClassificationTemplateRequest, runtime *util.RuntimeOptions) (_result *GetClassificationTemplateResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.InstanceId)) {
+		query["InstanceId"] = request.InstanceId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Tid)) {
+		query["Tid"] = request.Tid
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("GetClassificationTemplate"),
+		Version:     tea.String("2018-11-01"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &GetClassificationTemplateResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) GetClassificationTemplate(request *GetClassificationTemplateRequest) (_result *GetClassificationTemplateResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &GetClassificationTemplateResponse{}
+	_body, _err := client.GetClassificationTemplateWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -49903,6 +50691,46 @@ func (client *Client) ListSensitiveDataAuditLog(request *ListSensitiveDataAuditL
 	runtime := &util.RuntimeOptions{}
 	_result = &ListSensitiveDataAuditLogResponse{}
 	_body, _err := client.ListSensitiveDataAuditLogWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) ListSensitivityLevelWithOptions(request *ListSensitivityLevelRequest, runtime *util.RuntimeOptions) (_result *ListSensitivityLevelResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := openapiutil.Query(util.ToMap(request))
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("ListSensitivityLevel"),
+		Version:     tea.String("2018-11-01"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("GET"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &ListSensitivityLevelResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) ListSensitivityLevel(request *ListSensitivityLevelRequest) (_result *ListSensitivityLevelResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &ListSensitivityLevelResponse{}
+	_body, _err := client.ListSensitivityLevelWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
