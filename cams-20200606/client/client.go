@@ -4734,6 +4734,7 @@ func (s *ListChatappTemplateShrinkRequest) SetTemplateType(v string) *ListChatap
 }
 
 type ListChatappTemplateResponseBody struct {
+	// 访问被拒绝详细信息。
 	AccessDeniedDetail *string `json:"AccessDeniedDetail,omitempty" xml:"AccessDeniedDetail,omitempty"`
 	// The HTTP status code returned.
 	//
@@ -4804,7 +4805,8 @@ type ListChatappTemplateResponseBodyListTemplate struct {
 	Category *string `json:"Category,omitempty" xml:"Category,omitempty"`
 	// The language that is used in the message template. For more information, see [Language codes](~~463420~~).
 	Language *string `json:"Language,omitempty" xml:"Language,omitempty"`
-	Reason   *string `json:"Reason,omitempty" xml:"Reason,omitempty"`
+	// 模板审核被拒的原因
+	Reason *string `json:"Reason,omitempty" xml:"Reason,omitempty"`
 	// The code of the message template.
 	TemplateCode *string `json:"TemplateCode,omitempty" xml:"TemplateCode,omitempty"`
 	// The name of the message template.
@@ -6700,7 +6702,8 @@ type SendChatappMassMessageRequest struct {
 	// 消息在指定时间内没有返回已到达回执时回落, 不填代表不根据此时间判断回落，只有发送失败和有失败的状态报告时才会回落。时间单位为秒 最小值为60，最大值43200
 	FallBackDuration *int32 `json:"FallBackDuration,omitempty" xml:"FallBackDuration,omitempty"`
 	// The ID of the fallback strategy.
-	FallBackId *string `json:"FallBackId,omitempty" xml:"FallBackId,omitempty"`
+	FallBackId   *string `json:"FallBackId,omitempty" xml:"FallBackId,omitempty"`
+	FallBackRule *string `json:"FallBackRule,omitempty" xml:"FallBackRule,omitempty"`
 	// The phone number of the message sender.
 	From *string `json:"From,omitempty" xml:"From,omitempty"`
 	// The ISV verification code, which is used to verify whether the user is authorized by the ISV account.
@@ -6756,6 +6759,11 @@ func (s *SendChatappMassMessageRequest) SetFallBackDuration(v int32) *SendChatap
 
 func (s *SendChatappMassMessageRequest) SetFallBackId(v string) *SendChatappMassMessageRequest {
 	s.FallBackId = &v
+	return s
+}
+
+func (s *SendChatappMassMessageRequest) SetFallBackRule(v string) *SendChatappMassMessageRequest {
+	s.FallBackRule = &v
 	return s
 }
 
@@ -6918,7 +6926,8 @@ type SendChatappMassMessageShrinkRequest struct {
 	// 消息在指定时间内没有返回已到达回执时回落, 不填代表不根据此时间判断回落，只有发送失败和有失败的状态报告时才会回落。时间单位为秒 最小值为60，最大值43200
 	FallBackDuration *int32 `json:"FallBackDuration,omitempty" xml:"FallBackDuration,omitempty"`
 	// The ID of the fallback strategy.
-	FallBackId *string `json:"FallBackId,omitempty" xml:"FallBackId,omitempty"`
+	FallBackId   *string `json:"FallBackId,omitempty" xml:"FallBackId,omitempty"`
+	FallBackRule *string `json:"FallBackRule,omitempty" xml:"FallBackRule,omitempty"`
 	// The phone number of the message sender.
 	From *string `json:"From,omitempty" xml:"From,omitempty"`
 	// The ISV verification code, which is used to verify whether the user is authorized by the ISV account.
@@ -6974,6 +6983,11 @@ func (s *SendChatappMassMessageShrinkRequest) SetFallBackDuration(v int32) *Send
 
 func (s *SendChatappMassMessageShrinkRequest) SetFallBackId(v string) *SendChatappMassMessageShrinkRequest {
 	s.FallBackId = &v
+	return s
+}
+
+func (s *SendChatappMassMessageShrinkRequest) SetFallBackRule(v string) *SendChatappMassMessageShrinkRequest {
+	s.FallBackRule = &v
 	return s
 }
 
@@ -7140,11 +7154,11 @@ type SendChatappMessageRequest struct {
 	// The ID of the WhatsApp account that you register.
 	CustWabaId *string `json:"CustWabaId,omitempty" xml:"CustWabaId,omitempty"`
 	// The content of the fallback message.
-	FallBackContent *string `json:"FallBackContent,omitempty" xml:"FallBackContent,omitempty"`
-	// 消息在指定时间内未返回回执回落
-	FallBackDuration *int32 `json:"FallBackDuration,omitempty" xml:"FallBackDuration,omitempty"`
+	FallBackContent  *string `json:"FallBackContent,omitempty" xml:"FallBackContent,omitempty"`
+	FallBackDuration *int32  `json:"FallBackDuration,omitempty" xml:"FallBackDuration,omitempty"`
 	// The ID of the fallback strategy. You can create a fallback strategy and view the information in the console.
-	FallBackId *string `json:"FallBackId,omitempty" xml:"FallBackId,omitempty"`
+	FallBackId   *string `json:"FallBackId,omitempty" xml:"FallBackId,omitempty"`
+	FallBackRule *string `json:"FallBackRule,omitempty" xml:"FallBackRule,omitempty"`
 	// The phone number of the message sender.
 	//
 	// > You can specify a mobile phone number that is registered for a WhatsApp account and is approved in the ChatAPP console.
@@ -7185,7 +7199,8 @@ type SendChatappMessageRequest struct {
 	// > For more information, see [Parameters of a message template](~~454530~~).
 	MessageType *string `json:"MessageType,omitempty" xml:"MessageType,omitempty"`
 	// The payload of the button.
-	Payload       []*string                               `json:"Payload,omitempty" xml:"Payload,omitempty" type:"Repeated"`
+	Payload []*string `json:"Payload,omitempty" xml:"Payload,omitempty" type:"Repeated"`
+	// The information about the products included in the WhatsApp catalog message or multi-product message (MPM).
 	ProductAction *SendChatappMessageRequestProductAction `json:"ProductAction,omitempty" xml:"ProductAction,omitempty" type:"Struct"`
 	// The tag information of the Viber message.
 	Tag *string `json:"Tag,omitempty" xml:"Tag,omitempty"`
@@ -7253,6 +7268,11 @@ func (s *SendChatappMessageRequest) SetFallBackDuration(v int32) *SendChatappMes
 
 func (s *SendChatappMessageRequest) SetFallBackId(v string) *SendChatappMessageRequest {
 	s.FallBackId = &v
+	return s
+}
+
+func (s *SendChatappMessageRequest) SetFallBackRule(v string) *SendChatappMessageRequest {
+	s.FallBackRule = &v
 	return s
 }
 
@@ -7332,8 +7352,10 @@ func (s *SendChatappMessageRequest) SetType(v string) *SendChatappMessageRequest
 }
 
 type SendChatappMessageRequestProductAction struct {
-	Sections                   []*SendChatappMessageRequestProductActionSections `json:"Sections,omitempty" xml:"Sections,omitempty" type:"Repeated"`
-	ThumbnailProductRetailerId *string                                           `json:"ThumbnailProductRetailerId,omitempty" xml:"ThumbnailProductRetailerId,omitempty"`
+	// The products. Up to 30 products can be added. The products can be divided into up to 10 categories.
+	Sections []*SendChatappMessageRequestProductActionSections `json:"Sections,omitempty" xml:"Sections,omitempty" type:"Repeated"`
+	// The retailer ID of the product.
+	ThumbnailProductRetailerId *string `json:"ThumbnailProductRetailerId,omitempty" xml:"ThumbnailProductRetailerId,omitempty"`
 }
 
 func (s SendChatappMessageRequestProductAction) String() string {
@@ -7355,8 +7377,10 @@ func (s *SendChatappMessageRequestProductAction) SetThumbnailProductRetailerId(v
 }
 
 type SendChatappMessageRequestProductActionSections struct {
+	// The products.
 	ProductItems []*SendChatappMessageRequestProductActionSectionsProductItems `json:"ProductItems,omitempty" xml:"ProductItems,omitempty" type:"Repeated"`
-	Title        *string                                                       `json:"Title,omitempty" xml:"Title,omitempty"`
+	// The name of the category.
+	Title *string `json:"Title,omitempty" xml:"Title,omitempty"`
 }
 
 func (s SendChatappMessageRequestProductActionSections) String() string {
@@ -7378,6 +7402,7 @@ func (s *SendChatappMessageRequestProductActionSections) SetTitle(v string) *Sen
 }
 
 type SendChatappMessageRequestProductActionSectionsProductItems struct {
+	// The retailer ID of the product.
 	ProductRetailerId *string `json:"ProductRetailerId,omitempty" xml:"ProductRetailerId,omitempty"`
 }
 
@@ -7435,11 +7460,11 @@ type SendChatappMessageShrinkRequest struct {
 	// The ID of the WhatsApp account that you register.
 	CustWabaId *string `json:"CustWabaId,omitempty" xml:"CustWabaId,omitempty"`
 	// The content of the fallback message.
-	FallBackContent *string `json:"FallBackContent,omitempty" xml:"FallBackContent,omitempty"`
-	// 消息在指定时间内未返回回执回落
-	FallBackDuration *int32 `json:"FallBackDuration,omitempty" xml:"FallBackDuration,omitempty"`
+	FallBackContent  *string `json:"FallBackContent,omitempty" xml:"FallBackContent,omitempty"`
+	FallBackDuration *int32  `json:"FallBackDuration,omitempty" xml:"FallBackDuration,omitempty"`
 	// The ID of the fallback strategy. You can create a fallback strategy and view the information in the console.
-	FallBackId *string `json:"FallBackId,omitempty" xml:"FallBackId,omitempty"`
+	FallBackId   *string `json:"FallBackId,omitempty" xml:"FallBackId,omitempty"`
+	FallBackRule *string `json:"FallBackRule,omitempty" xml:"FallBackRule,omitempty"`
 	// The phone number of the message sender.
 	//
 	// > You can specify a mobile phone number that is registered for a WhatsApp account and is approved in the ChatAPP console.
@@ -7480,7 +7505,8 @@ type SendChatappMessageShrinkRequest struct {
 	// > For more information, see [Parameters of a message template](~~454530~~).
 	MessageType *string `json:"MessageType,omitempty" xml:"MessageType,omitempty"`
 	// The payload of the button.
-	PayloadShrink       *string `json:"Payload,omitempty" xml:"Payload,omitempty"`
+	PayloadShrink *string `json:"Payload,omitempty" xml:"Payload,omitempty"`
+	// The information about the products included in the WhatsApp catalog message or multi-product message (MPM).
 	ProductActionShrink *string `json:"ProductAction,omitempty" xml:"ProductAction,omitempty"`
 	// The tag information of the Viber message.
 	Tag *string `json:"Tag,omitempty" xml:"Tag,omitempty"`
@@ -7548,6 +7574,11 @@ func (s *SendChatappMessageShrinkRequest) SetFallBackDuration(v int32) *SendChat
 
 func (s *SendChatappMessageShrinkRequest) SetFallBackId(v string) *SendChatappMessageShrinkRequest {
 	s.FallBackId = &v
+	return s
+}
+
+func (s *SendChatappMessageShrinkRequest) SetFallBackRule(v string) *SendChatappMessageShrinkRequest {
+	s.FallBackRule = &v
 	return s
 }
 
@@ -10487,6 +10518,10 @@ func (client *Client) SendChatappMassMessageWithOptions(tmpReq *SendChatappMassM
 		body["FallBackId"] = request.FallBackId
 	}
 
+	if !tea.BoolValue(util.IsUnset(request.FallBackRule)) {
+		body["FallBackRule"] = request.FallBackRule
+	}
+
 	if !tea.BoolValue(util.IsUnset(request.From)) {
 		body["From"] = request.From
 	}
@@ -10626,6 +10661,10 @@ func (client *Client) SendChatappMessageWithOptions(tmpReq *SendChatappMessageRe
 
 	if !tea.BoolValue(util.IsUnset(request.FallBackId)) {
 		body["FallBackId"] = request.FallBackId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.FallBackRule)) {
+		body["FallBackRule"] = request.FallBackRule
 	}
 
 	if !tea.BoolValue(util.IsUnset(request.From)) {
