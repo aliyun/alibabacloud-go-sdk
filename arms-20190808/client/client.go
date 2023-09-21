@@ -5572,6 +5572,7 @@ func (s *CreateOrUpdateIMRobotResponse) SetBody(v *CreateOrUpdateIMRobotResponse
 }
 
 type CreateOrUpdateNotificationPolicyRequest struct {
+	// Specifies whether to enable simple mode.
 	DirectedMode *bool `json:"DirectedMode,omitempty" xml:"DirectedMode,omitempty"`
 	// The ID of the escalation policy.
 	EscalationPolicyId *int64 `json:"EscalationPolicyId,omitempty" xml:"EscalationPolicyId,omitempty"`
@@ -5752,6 +5753,7 @@ func (s *CreateOrUpdateNotificationPolicyResponseBody) SetRequestId(v string) *C
 }
 
 type CreateOrUpdateNotificationPolicyResponseBodyNotificationPolicy struct {
+	// 极简模式
 	DirectedMode *bool `json:"DirectedMode,omitempty" xml:"DirectedMode,omitempty"`
 	// The ID of the escalation policy.
 	EscalationPolicyId *int64 `json:"EscalationPolicyId,omitempty" xml:"EscalationPolicyId,omitempty"`
@@ -8654,6 +8656,7 @@ type CreateTimingSyntheticTaskRequestMonitorConf struct {
 	NetDNS       *CreateTimingSyntheticTaskRequestMonitorConfNetDNS       `json:"NetDNS,omitempty" xml:"NetDNS,omitempty" type:"Struct"`
 	NetICMP      *CreateTimingSyntheticTaskRequestMonitorConfNetICMP      `json:"NetICMP,omitempty" xml:"NetICMP,omitempty" type:"Struct"`
 	NetTCP       *CreateTimingSyntheticTaskRequestMonitorConfNetTCP       `json:"NetTCP,omitempty" xml:"NetTCP,omitempty" type:"Struct"`
+	Stream       *CreateTimingSyntheticTaskRequestMonitorConfStream       `json:"Stream,omitempty" xml:"Stream,omitempty" type:"Struct"`
 	Website      *CreateTimingSyntheticTaskRequestMonitorConfWebsite      `json:"Website,omitempty" xml:"Website,omitempty" type:"Struct"`
 }
 
@@ -8687,6 +8690,11 @@ func (s *CreateTimingSyntheticTaskRequestMonitorConf) SetNetICMP(v *CreateTiming
 
 func (s *CreateTimingSyntheticTaskRequestMonitorConf) SetNetTCP(v *CreateTimingSyntheticTaskRequestMonitorConfNetTCP) *CreateTimingSyntheticTaskRequestMonitorConf {
 	s.NetTCP = v
+	return s
+}
+
+func (s *CreateTimingSyntheticTaskRequestMonitorConf) SetStream(v *CreateTimingSyntheticTaskRequestMonitorConfStream) *CreateTimingSyntheticTaskRequestMonitorConf {
+	s.Stream = v
 	return s
 }
 
@@ -8781,6 +8789,9 @@ type CreateTimingSyntheticTaskRequestMonitorConfFileDownload struct {
 	Redirection                         *int32             `json:"Redirection,omitempty" xml:"Redirection,omitempty"`
 	TargetUrl                           *string            `json:"TargetUrl,omitempty" xml:"TargetUrl,omitempty"`
 	TransmissionSize                    *int64             `json:"TransmissionSize,omitempty" xml:"TransmissionSize,omitempty"`
+	ValidateKeywords                    *string            `json:"ValidateKeywords,omitempty" xml:"ValidateKeywords,omitempty"`
+	VerifyWay                           *int32             `json:"VerifyWay,omitempty" xml:"VerifyWay,omitempty"`
+	WhiteList                           *string            `json:"WhiteList,omitempty" xml:"WhiteList,omitempty"`
 }
 
 func (s CreateTimingSyntheticTaskRequestMonitorConfFileDownload) String() string {
@@ -8863,6 +8874,21 @@ func (s *CreateTimingSyntheticTaskRequestMonitorConfFileDownload) SetTargetUrl(v
 
 func (s *CreateTimingSyntheticTaskRequestMonitorConfFileDownload) SetTransmissionSize(v int64) *CreateTimingSyntheticTaskRequestMonitorConfFileDownload {
 	s.TransmissionSize = &v
+	return s
+}
+
+func (s *CreateTimingSyntheticTaskRequestMonitorConfFileDownload) SetValidateKeywords(v string) *CreateTimingSyntheticTaskRequestMonitorConfFileDownload {
+	s.ValidateKeywords = &v
+	return s
+}
+
+func (s *CreateTimingSyntheticTaskRequestMonitorConfFileDownload) SetVerifyWay(v int32) *CreateTimingSyntheticTaskRequestMonitorConfFileDownload {
+	s.VerifyWay = &v
+	return s
+}
+
+func (s *CreateTimingSyntheticTaskRequestMonitorConfFileDownload) SetWhiteList(v string) *CreateTimingSyntheticTaskRequestMonitorConfFileDownload {
+	s.WhiteList = &v
 	return s
 }
 
@@ -9025,18 +9051,78 @@ func (s *CreateTimingSyntheticTaskRequestMonitorConfNetTCP) SetTracertTimeout(v 
 	return s
 }
 
+type CreateTimingSyntheticTaskRequestMonitorConfStream struct {
+	CustomHeaderContent  map[string]*string `json:"CustomHeaderContent,omitempty" xml:"CustomHeaderContent,omitempty"`
+	PlayerType           *int32             `json:"PlayerType,omitempty" xml:"PlayerType,omitempty"`
+	StreamAddressType    *int32             `json:"StreamAddressType,omitempty" xml:"StreamAddressType,omitempty"`
+	StreamMonitorTimeout *int32             `json:"StreamMonitorTimeout,omitempty" xml:"StreamMonitorTimeout,omitempty"`
+	StreamType           *int32             `json:"StreamType,omitempty" xml:"StreamType,omitempty"`
+	TargetUrl            *string            `json:"TargetUrl,omitempty" xml:"TargetUrl,omitempty"`
+	WhiteList            *string            `json:"WhiteList,omitempty" xml:"WhiteList,omitempty"`
+}
+
+func (s CreateTimingSyntheticTaskRequestMonitorConfStream) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateTimingSyntheticTaskRequestMonitorConfStream) GoString() string {
+	return s.String()
+}
+
+func (s *CreateTimingSyntheticTaskRequestMonitorConfStream) SetCustomHeaderContent(v map[string]*string) *CreateTimingSyntheticTaskRequestMonitorConfStream {
+	s.CustomHeaderContent = v
+	return s
+}
+
+func (s *CreateTimingSyntheticTaskRequestMonitorConfStream) SetPlayerType(v int32) *CreateTimingSyntheticTaskRequestMonitorConfStream {
+	s.PlayerType = &v
+	return s
+}
+
+func (s *CreateTimingSyntheticTaskRequestMonitorConfStream) SetStreamAddressType(v int32) *CreateTimingSyntheticTaskRequestMonitorConfStream {
+	s.StreamAddressType = &v
+	return s
+}
+
+func (s *CreateTimingSyntheticTaskRequestMonitorConfStream) SetStreamMonitorTimeout(v int32) *CreateTimingSyntheticTaskRequestMonitorConfStream {
+	s.StreamMonitorTimeout = &v
+	return s
+}
+
+func (s *CreateTimingSyntheticTaskRequestMonitorConfStream) SetStreamType(v int32) *CreateTimingSyntheticTaskRequestMonitorConfStream {
+	s.StreamType = &v
+	return s
+}
+
+func (s *CreateTimingSyntheticTaskRequestMonitorConfStream) SetTargetUrl(v string) *CreateTimingSyntheticTaskRequestMonitorConfStream {
+	s.TargetUrl = &v
+	return s
+}
+
+func (s *CreateTimingSyntheticTaskRequestMonitorConfStream) SetWhiteList(v string) *CreateTimingSyntheticTaskRequestMonitorConfStream {
+	s.WhiteList = &v
+	return s
+}
+
 type CreateTimingSyntheticTaskRequestMonitorConfWebsite struct {
 	AutomaticScrolling     *int32             `json:"AutomaticScrolling,omitempty" xml:"AutomaticScrolling,omitempty"`
 	CustomHeader           *int32             `json:"CustomHeader,omitempty" xml:"CustomHeader,omitempty"`
 	CustomHeaderContent    map[string]*string `json:"CustomHeaderContent,omitempty" xml:"CustomHeaderContent,omitempty"`
+	DNSHijackWhitelist     *string            `json:"DNSHijackWhitelist,omitempty" xml:"DNSHijackWhitelist,omitempty"`
 	DisableCache           *int32             `json:"DisableCache,omitempty" xml:"DisableCache,omitempty"`
 	DisableCompression     *int32             `json:"DisableCompression,omitempty" xml:"DisableCompression,omitempty"`
+	ElementBlacklist       *string            `json:"ElementBlacklist,omitempty" xml:"ElementBlacklist,omitempty"`
 	FilterInvalidIP        *int32             `json:"FilterInvalidIP,omitempty" xml:"FilterInvalidIP,omitempty"`
+	FlowHijackJumpTimes    *int32             `json:"FlowHijackJumpTimes,omitempty" xml:"FlowHijackJumpTimes,omitempty"`
+	FlowHijackLogo         *string            `json:"FlowHijackLogo,omitempty" xml:"FlowHijackLogo,omitempty"`
 	IgnoreCertificateError *int32             `json:"IgnoreCertificateError,omitempty" xml:"IgnoreCertificateError,omitempty"`
 	MonitorTimeout         *int64             `json:"MonitorTimeout,omitempty" xml:"MonitorTimeout,omitempty"`
+	PageTamper             *string            `json:"PageTamper,omitempty" xml:"PageTamper,omitempty"`
 	Redirection            *int32             `json:"Redirection,omitempty" xml:"Redirection,omitempty"`
 	SlowElementThreshold   *int64             `json:"SlowElementThreshold,omitempty" xml:"SlowElementThreshold,omitempty"`
 	TargetUrl              *string            `json:"TargetUrl,omitempty" xml:"TargetUrl,omitempty"`
+	VerifyStringBlacklist  *string            `json:"VerifyStringBlacklist,omitempty" xml:"VerifyStringBlacklist,omitempty"`
+	VerifyStringWhitelist  *string            `json:"VerifyStringWhitelist,omitempty" xml:"VerifyStringWhitelist,omitempty"`
 	WaitCompletionTime     *int64             `json:"WaitCompletionTime,omitempty" xml:"WaitCompletionTime,omitempty"`
 }
 
@@ -9063,6 +9149,11 @@ func (s *CreateTimingSyntheticTaskRequestMonitorConfWebsite) SetCustomHeaderCont
 	return s
 }
 
+func (s *CreateTimingSyntheticTaskRequestMonitorConfWebsite) SetDNSHijackWhitelist(v string) *CreateTimingSyntheticTaskRequestMonitorConfWebsite {
+	s.DNSHijackWhitelist = &v
+	return s
+}
+
 func (s *CreateTimingSyntheticTaskRequestMonitorConfWebsite) SetDisableCache(v int32) *CreateTimingSyntheticTaskRequestMonitorConfWebsite {
 	s.DisableCache = &v
 	return s
@@ -9073,8 +9164,23 @@ func (s *CreateTimingSyntheticTaskRequestMonitorConfWebsite) SetDisableCompressi
 	return s
 }
 
+func (s *CreateTimingSyntheticTaskRequestMonitorConfWebsite) SetElementBlacklist(v string) *CreateTimingSyntheticTaskRequestMonitorConfWebsite {
+	s.ElementBlacklist = &v
+	return s
+}
+
 func (s *CreateTimingSyntheticTaskRequestMonitorConfWebsite) SetFilterInvalidIP(v int32) *CreateTimingSyntheticTaskRequestMonitorConfWebsite {
 	s.FilterInvalidIP = &v
+	return s
+}
+
+func (s *CreateTimingSyntheticTaskRequestMonitorConfWebsite) SetFlowHijackJumpTimes(v int32) *CreateTimingSyntheticTaskRequestMonitorConfWebsite {
+	s.FlowHijackJumpTimes = &v
+	return s
+}
+
+func (s *CreateTimingSyntheticTaskRequestMonitorConfWebsite) SetFlowHijackLogo(v string) *CreateTimingSyntheticTaskRequestMonitorConfWebsite {
+	s.FlowHijackLogo = &v
 	return s
 }
 
@@ -9085,6 +9191,11 @@ func (s *CreateTimingSyntheticTaskRequestMonitorConfWebsite) SetIgnoreCertificat
 
 func (s *CreateTimingSyntheticTaskRequestMonitorConfWebsite) SetMonitorTimeout(v int64) *CreateTimingSyntheticTaskRequestMonitorConfWebsite {
 	s.MonitorTimeout = &v
+	return s
+}
+
+func (s *CreateTimingSyntheticTaskRequestMonitorConfWebsite) SetPageTamper(v string) *CreateTimingSyntheticTaskRequestMonitorConfWebsite {
+	s.PageTamper = &v
 	return s
 }
 
@@ -9100,6 +9211,16 @@ func (s *CreateTimingSyntheticTaskRequestMonitorConfWebsite) SetSlowElementThres
 
 func (s *CreateTimingSyntheticTaskRequestMonitorConfWebsite) SetTargetUrl(v string) *CreateTimingSyntheticTaskRequestMonitorConfWebsite {
 	s.TargetUrl = &v
+	return s
+}
+
+func (s *CreateTimingSyntheticTaskRequestMonitorConfWebsite) SetVerifyStringBlacklist(v string) *CreateTimingSyntheticTaskRequestMonitorConfWebsite {
+	s.VerifyStringBlacklist = &v
+	return s
+}
+
+func (s *CreateTimingSyntheticTaskRequestMonitorConfWebsite) SetVerifyStringWhitelist(v string) *CreateTimingSyntheticTaskRequestMonitorConfWebsite {
+	s.VerifyStringWhitelist = &v
 	return s
 }
 
@@ -19962,6 +20083,7 @@ type GetTimingSyntheticTaskResponseBodyDataMonitorConf struct {
 	NetDNS       *GetTimingSyntheticTaskResponseBodyDataMonitorConfNetDNS       `json:"NetDNS,omitempty" xml:"NetDNS,omitempty" type:"Struct"`
 	NetICMP      *GetTimingSyntheticTaskResponseBodyDataMonitorConfNetICMP      `json:"NetICMP,omitempty" xml:"NetICMP,omitempty" type:"Struct"`
 	NetTCP       *GetTimingSyntheticTaskResponseBodyDataMonitorConfNetTCP       `json:"NetTCP,omitempty" xml:"NetTCP,omitempty" type:"Struct"`
+	Stream       *GetTimingSyntheticTaskResponseBodyDataMonitorConfStream       `json:"Stream,omitempty" xml:"Stream,omitempty" type:"Struct"`
 	Website      *GetTimingSyntheticTaskResponseBodyDataMonitorConfWebsite      `json:"Website,omitempty" xml:"Website,omitempty" type:"Struct"`
 }
 
@@ -19995,6 +20117,11 @@ func (s *GetTimingSyntheticTaskResponseBodyDataMonitorConf) SetNetICMP(v *GetTim
 
 func (s *GetTimingSyntheticTaskResponseBodyDataMonitorConf) SetNetTCP(v *GetTimingSyntheticTaskResponseBodyDataMonitorConfNetTCP) *GetTimingSyntheticTaskResponseBodyDataMonitorConf {
 	s.NetTCP = v
+	return s
+}
+
+func (s *GetTimingSyntheticTaskResponseBodyDataMonitorConf) SetStream(v *GetTimingSyntheticTaskResponseBodyDataMonitorConfStream) *GetTimingSyntheticTaskResponseBodyDataMonitorConf {
+	s.Stream = v
 	return s
 }
 
@@ -20089,6 +20216,9 @@ type GetTimingSyntheticTaskResponseBodyDataMonitorConfFileDownload struct {
 	Redirection                         *int32             `json:"Redirection,omitempty" xml:"Redirection,omitempty"`
 	TargetUrl                           *string            `json:"TargetUrl,omitempty" xml:"TargetUrl,omitempty"`
 	TransmissionSize                    *int64             `json:"TransmissionSize,omitempty" xml:"TransmissionSize,omitempty"`
+	ValidateKeywords                    *string            `json:"ValidateKeywords,omitempty" xml:"ValidateKeywords,omitempty"`
+	VerifyWay                           *int32             `json:"VerifyWay,omitempty" xml:"VerifyWay,omitempty"`
+	WhiteList                           *string            `json:"WhiteList,omitempty" xml:"WhiteList,omitempty"`
 }
 
 func (s GetTimingSyntheticTaskResponseBodyDataMonitorConfFileDownload) String() string {
@@ -20171,6 +20301,21 @@ func (s *GetTimingSyntheticTaskResponseBodyDataMonitorConfFileDownload) SetTarge
 
 func (s *GetTimingSyntheticTaskResponseBodyDataMonitorConfFileDownload) SetTransmissionSize(v int64) *GetTimingSyntheticTaskResponseBodyDataMonitorConfFileDownload {
 	s.TransmissionSize = &v
+	return s
+}
+
+func (s *GetTimingSyntheticTaskResponseBodyDataMonitorConfFileDownload) SetValidateKeywords(v string) *GetTimingSyntheticTaskResponseBodyDataMonitorConfFileDownload {
+	s.ValidateKeywords = &v
+	return s
+}
+
+func (s *GetTimingSyntheticTaskResponseBodyDataMonitorConfFileDownload) SetVerifyWay(v int32) *GetTimingSyntheticTaskResponseBodyDataMonitorConfFileDownload {
+	s.VerifyWay = &v
+	return s
+}
+
+func (s *GetTimingSyntheticTaskResponseBodyDataMonitorConfFileDownload) SetWhiteList(v string) *GetTimingSyntheticTaskResponseBodyDataMonitorConfFileDownload {
+	s.WhiteList = &v
 	return s
 }
 
@@ -20333,18 +20478,78 @@ func (s *GetTimingSyntheticTaskResponseBodyDataMonitorConfNetTCP) SetTracertTime
 	return s
 }
 
+type GetTimingSyntheticTaskResponseBodyDataMonitorConfStream struct {
+	CustomHeaderContent  map[string]*string `json:"CustomHeaderContent,omitempty" xml:"CustomHeaderContent,omitempty"`
+	PlayerType           *int32             `json:"PlayerType,omitempty" xml:"PlayerType,omitempty"`
+	StreamAddressType    *int32             `json:"StreamAddressType,omitempty" xml:"StreamAddressType,omitempty"`
+	StreamMonitorTimeout *int32             `json:"StreamMonitorTimeout,omitempty" xml:"StreamMonitorTimeout,omitempty"`
+	StreamType           *int32             `json:"StreamType,omitempty" xml:"StreamType,omitempty"`
+	TargetUrl            *string            `json:"TargetUrl,omitempty" xml:"TargetUrl,omitempty"`
+	WhiteList            *string            `json:"WhiteList,omitempty" xml:"WhiteList,omitempty"`
+}
+
+func (s GetTimingSyntheticTaskResponseBodyDataMonitorConfStream) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetTimingSyntheticTaskResponseBodyDataMonitorConfStream) GoString() string {
+	return s.String()
+}
+
+func (s *GetTimingSyntheticTaskResponseBodyDataMonitorConfStream) SetCustomHeaderContent(v map[string]*string) *GetTimingSyntheticTaskResponseBodyDataMonitorConfStream {
+	s.CustomHeaderContent = v
+	return s
+}
+
+func (s *GetTimingSyntheticTaskResponseBodyDataMonitorConfStream) SetPlayerType(v int32) *GetTimingSyntheticTaskResponseBodyDataMonitorConfStream {
+	s.PlayerType = &v
+	return s
+}
+
+func (s *GetTimingSyntheticTaskResponseBodyDataMonitorConfStream) SetStreamAddressType(v int32) *GetTimingSyntheticTaskResponseBodyDataMonitorConfStream {
+	s.StreamAddressType = &v
+	return s
+}
+
+func (s *GetTimingSyntheticTaskResponseBodyDataMonitorConfStream) SetStreamMonitorTimeout(v int32) *GetTimingSyntheticTaskResponseBodyDataMonitorConfStream {
+	s.StreamMonitorTimeout = &v
+	return s
+}
+
+func (s *GetTimingSyntheticTaskResponseBodyDataMonitorConfStream) SetStreamType(v int32) *GetTimingSyntheticTaskResponseBodyDataMonitorConfStream {
+	s.StreamType = &v
+	return s
+}
+
+func (s *GetTimingSyntheticTaskResponseBodyDataMonitorConfStream) SetTargetUrl(v string) *GetTimingSyntheticTaskResponseBodyDataMonitorConfStream {
+	s.TargetUrl = &v
+	return s
+}
+
+func (s *GetTimingSyntheticTaskResponseBodyDataMonitorConfStream) SetWhiteList(v string) *GetTimingSyntheticTaskResponseBodyDataMonitorConfStream {
+	s.WhiteList = &v
+	return s
+}
+
 type GetTimingSyntheticTaskResponseBodyDataMonitorConfWebsite struct {
 	AutomaticScrolling     *int32             `json:"AutomaticScrolling,omitempty" xml:"AutomaticScrolling,omitempty"`
 	CustomHeader           *int32             `json:"CustomHeader,omitempty" xml:"CustomHeader,omitempty"`
 	CustomHeaderContent    map[string]*string `json:"CustomHeaderContent,omitempty" xml:"CustomHeaderContent,omitempty"`
+	DNSHijackWhitelist     *string            `json:"DNSHijackWhitelist,omitempty" xml:"DNSHijackWhitelist,omitempty"`
 	DisableCache           *int32             `json:"DisableCache,omitempty" xml:"DisableCache,omitempty"`
 	DisableCompression     *int32             `json:"DisableCompression,omitempty" xml:"DisableCompression,omitempty"`
+	ElementBlacklist       *string            `json:"ElementBlacklist,omitempty" xml:"ElementBlacklist,omitempty"`
 	FilterInvalidIP        *int32             `json:"FilterInvalidIP,omitempty" xml:"FilterInvalidIP,omitempty"`
+	FlowHijackJumpTimes    *int32             `json:"FlowHijackJumpTimes,omitempty" xml:"FlowHijackJumpTimes,omitempty"`
+	FlowHijackLogo         *string            `json:"FlowHijackLogo,omitempty" xml:"FlowHijackLogo,omitempty"`
 	IgnoreCertificateError *int32             `json:"IgnoreCertificateError,omitempty" xml:"IgnoreCertificateError,omitempty"`
 	MonitorTimeout         *int32             `json:"MonitorTimeout,omitempty" xml:"MonitorTimeout,omitempty"`
+	PageTamper             *string            `json:"PageTamper,omitempty" xml:"PageTamper,omitempty"`
 	Redirection            *int32             `json:"Redirection,omitempty" xml:"Redirection,omitempty"`
 	SlowElementThreshold   *int64             `json:"SlowElementThreshold,omitempty" xml:"SlowElementThreshold,omitempty"`
 	TargetUrl              *string            `json:"TargetUrl,omitempty" xml:"TargetUrl,omitempty"`
+	VerifyStringBlacklist  *string            `json:"VerifyStringBlacklist,omitempty" xml:"VerifyStringBlacklist,omitempty"`
+	VerifyStringWhitelist  *string            `json:"VerifyStringWhitelist,omitempty" xml:"VerifyStringWhitelist,omitempty"`
 	WaitCompletionTime     *int64             `json:"WaitCompletionTime,omitempty" xml:"WaitCompletionTime,omitempty"`
 }
 
@@ -20371,6 +20576,11 @@ func (s *GetTimingSyntheticTaskResponseBodyDataMonitorConfWebsite) SetCustomHead
 	return s
 }
 
+func (s *GetTimingSyntheticTaskResponseBodyDataMonitorConfWebsite) SetDNSHijackWhitelist(v string) *GetTimingSyntheticTaskResponseBodyDataMonitorConfWebsite {
+	s.DNSHijackWhitelist = &v
+	return s
+}
+
 func (s *GetTimingSyntheticTaskResponseBodyDataMonitorConfWebsite) SetDisableCache(v int32) *GetTimingSyntheticTaskResponseBodyDataMonitorConfWebsite {
 	s.DisableCache = &v
 	return s
@@ -20381,8 +20591,23 @@ func (s *GetTimingSyntheticTaskResponseBodyDataMonitorConfWebsite) SetDisableCom
 	return s
 }
 
+func (s *GetTimingSyntheticTaskResponseBodyDataMonitorConfWebsite) SetElementBlacklist(v string) *GetTimingSyntheticTaskResponseBodyDataMonitorConfWebsite {
+	s.ElementBlacklist = &v
+	return s
+}
+
 func (s *GetTimingSyntheticTaskResponseBodyDataMonitorConfWebsite) SetFilterInvalidIP(v int32) *GetTimingSyntheticTaskResponseBodyDataMonitorConfWebsite {
 	s.FilterInvalidIP = &v
+	return s
+}
+
+func (s *GetTimingSyntheticTaskResponseBodyDataMonitorConfWebsite) SetFlowHijackJumpTimes(v int32) *GetTimingSyntheticTaskResponseBodyDataMonitorConfWebsite {
+	s.FlowHijackJumpTimes = &v
+	return s
+}
+
+func (s *GetTimingSyntheticTaskResponseBodyDataMonitorConfWebsite) SetFlowHijackLogo(v string) *GetTimingSyntheticTaskResponseBodyDataMonitorConfWebsite {
+	s.FlowHijackLogo = &v
 	return s
 }
 
@@ -20393,6 +20618,11 @@ func (s *GetTimingSyntheticTaskResponseBodyDataMonitorConfWebsite) SetIgnoreCert
 
 func (s *GetTimingSyntheticTaskResponseBodyDataMonitorConfWebsite) SetMonitorTimeout(v int32) *GetTimingSyntheticTaskResponseBodyDataMonitorConfWebsite {
 	s.MonitorTimeout = &v
+	return s
+}
+
+func (s *GetTimingSyntheticTaskResponseBodyDataMonitorConfWebsite) SetPageTamper(v string) *GetTimingSyntheticTaskResponseBodyDataMonitorConfWebsite {
+	s.PageTamper = &v
 	return s
 }
 
@@ -20408,6 +20638,16 @@ func (s *GetTimingSyntheticTaskResponseBodyDataMonitorConfWebsite) SetSlowElemen
 
 func (s *GetTimingSyntheticTaskResponseBodyDataMonitorConfWebsite) SetTargetUrl(v string) *GetTimingSyntheticTaskResponseBodyDataMonitorConfWebsite {
 	s.TargetUrl = &v
+	return s
+}
+
+func (s *GetTimingSyntheticTaskResponseBodyDataMonitorConfWebsite) SetVerifyStringBlacklist(v string) *GetTimingSyntheticTaskResponseBodyDataMonitorConfWebsite {
+	s.VerifyStringBlacklist = &v
+	return s
+}
+
+func (s *GetTimingSyntheticTaskResponseBodyDataMonitorConfWebsite) SetVerifyStringWhitelist(v string) *GetTimingSyntheticTaskResponseBodyDataMonitorConfWebsite {
+	s.VerifyStringWhitelist = &v
 	return s
 }
 
@@ -24334,6 +24574,7 @@ func (s *ListIntegrationResponse) SetBody(v *ListIntegrationResponseBody) *ListI
 }
 
 type ListNotificationPoliciesRequest struct {
+	// Specifies whether to enable simple mode.
 	DirectedMode *bool `json:"DirectedMode,omitempty" xml:"DirectedMode,omitempty"`
 	// The ID of the notification policy.
 	Ids *string `json:"Ids,omitempty" xml:"Ids,omitempty"`
@@ -24396,7 +24637,7 @@ func (s *ListNotificationPoliciesRequest) SetSize(v int64) *ListNotificationPoli
 }
 
 type ListNotificationPoliciesResponseBody struct {
-	// The pages that are returned.
+	// The returned pages.
 	PageBean *ListNotificationPoliciesResponseBodyPageBean `json:"PageBean,omitempty" xml:"PageBean,omitempty" type:"Struct"`
 	// The ID of the request.
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
@@ -24421,7 +24662,7 @@ func (s *ListNotificationPoliciesResponseBody) SetRequestId(v string) *ListNotif
 }
 
 type ListNotificationPoliciesResponseBodyPageBean struct {
-	// The information about the notification policies.
+	// The queried notification policies.
 	NotificationPolicies []*ListNotificationPoliciesResponseBodyPageBeanNotificationPolicies `json:"NotificationPolicies,omitempty" xml:"NotificationPolicies,omitempty" type:"Repeated"`
 	// The number of the page returned.
 	Page *int64 `json:"Page,omitempty" xml:"Page,omitempty"`
@@ -24460,8 +24701,9 @@ func (s *ListNotificationPoliciesResponseBodyPageBean) SetTotal(v int64) *ListNo
 }
 
 type ListNotificationPoliciesResponseBodyPageBeanNotificationPolicies struct {
+	// Indicates whether simple mode is enabled.
 	DirectedMode *bool `json:"DirectedMode,omitempty" xml:"DirectedMode,omitempty"`
-	// The ID of the escalation rule.
+	// The ID of the escalation policy.
 	EscalationPolicyId *int64 `json:"EscalationPolicyId,omitempty" xml:"EscalationPolicyId,omitempty"`
 	// The grouping rule for alert events.
 	GroupRule *ListNotificationPoliciesResponseBodyPageBeanNotificationPoliciesGroupRule `json:"GroupRule,omitempty" xml:"GroupRule,omitempty" type:"Struct"`
@@ -24469,7 +24711,7 @@ type ListNotificationPoliciesResponseBodyPageBeanNotificationPolicies struct {
 	Id *int64 `json:"Id,omitempty" xml:"Id,omitempty"`
 	// The integration ID of the ticket system to which alerts are pushed.
 	IntegrationId *int64 `json:"IntegrationId,omitempty" xml:"IntegrationId,omitempty"`
-	// The alert event matching rules.
+	// The matching rules for alert events.
 	MatchingRules []*ListNotificationPoliciesResponseBodyPageBeanNotificationPoliciesMatchingRules `json:"MatchingRules,omitempty" xml:"MatchingRules,omitempty" type:"Repeated"`
 	// The name of the notification policy.
 	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
@@ -24477,17 +24719,17 @@ type ListNotificationPoliciesResponseBodyPageBeanNotificationPolicies struct {
 	NotifyRule *ListNotificationPoliciesResponseBodyPageBeanNotificationPoliciesNotifyRule `json:"NotifyRule,omitempty" xml:"NotifyRule,omitempty" type:"Struct"`
 	// The notification templates.
 	NotifyTemplate *ListNotificationPoliciesResponseBodyPageBeanNotificationPoliciesNotifyTemplate `json:"NotifyTemplate,omitempty" xml:"NotifyTemplate,omitempty" type:"Struct"`
-	// Indicates whether the system repeatedly sends notifications for a long-lasting unresolved alert. Default value: true. Valid values:
+	// Indicates whether the system resends notifications for a long-lasting unresolved alert. Valid values:
 	//
-	// - `true`: The system repeatedly sends notifications for a long-lasting unresolved alert at a specified time interval.
-	// - `false`: The system sends a notification for a long-lasting unresolved alert based on an escalation policy.
+	// *   `true` (default): The system resends notifications for a long-lasting unresolved alert at a specified time interval.
+	// *   `false`: The system resends notifications for a long-lasting unresolved alert based on an escalation policy.
 	Repeat *bool `json:"Repeat,omitempty" xml:"Repeat,omitempty"`
-	// The time interval at which notifications are sent for a long-lasting unresolved alert. Unit: seconds.
+	// The time interval at which notifications are resent for a long-lasting unresolved alert. Unit: seconds.
 	RepeatInterval *int64 `json:"RepeatInterval,omitempty" xml:"RepeatInterval,omitempty"`
-	// Specifies whether the status of an alert automatically changes to Resolved when all events related to the alert change to the Restored state. The system notifies contacts when the alert status changes to Resolved.
+	// Indicates whether the status of an alert automatically changes to Resolved when all events related to the alert change to the Restored state. The system sends a notification to the alert contacts when the alert status changes to Resolved.
 	//
-	// - `true`: The system sends a notification. This is the default value.
-	// - `false`: The system does not send a notification.
+	// *   `true` (default): The system sends a notification.
+	// *   `false`: The system does not send a notification.
 	SendRecoverMessage *bool `json:"SendRecoverMessage,omitempty" xml:"SendRecoverMessage,omitempty"`
 }
 
@@ -24560,11 +24802,14 @@ func (s *ListNotificationPoliciesResponseBodyPageBeanNotificationPolicies) SetSe
 }
 
 type ListNotificationPoliciesResponseBodyPageBeanNotificationPoliciesGroupRule struct {
-	// The time interval for grouping. Unit: seconds. Default value: 30.
+	// The time interval of grouping. Unit: seconds. Default value: 30.
 	GroupInterval *int64 `json:"GroupInterval,omitempty" xml:"GroupInterval,omitempty"`
 	// The waiting time for grouping. Unit: seconds. Default value: 5.
 	GroupWait *int64 `json:"GroupWait,omitempty" xml:"GroupWait,omitempty"`
 	// The fields that are used to group events.
+	//
+	// *   If this parameter is not returned, all alert notifications are sent to the alert contacts that belong to the `alertname` group. By default, this parameter is not returned.
+	// *   If this parameter is returned, alerts with the same fields are sent to the alert contacts in one notification.
 	GroupingFields []*string `json:"GroupingFields,omitempty" xml:"GroupingFields,omitempty" type:"Repeated"`
 }
 
@@ -24592,7 +24837,7 @@ func (s *ListNotificationPoliciesResponseBodyPageBeanNotificationPoliciesGroupRu
 }
 
 type ListNotificationPoliciesResponseBodyPageBeanNotificationPoliciesMatchingRules struct {
-	// The alert event matching conditions.
+	// The matching conditions.
 	MatchingConditions []*ListNotificationPoliciesResponseBodyPageBeanNotificationPoliciesMatchingRulesMatchingConditions `json:"MatchingConditions,omitempty" xml:"MatchingConditions,omitempty" type:"Repeated"`
 }
 
@@ -24614,12 +24859,12 @@ type ListNotificationPoliciesResponseBodyPageBeanNotificationPoliciesMatchingRul
 	Key *string `json:"Key,omitempty" xml:"Key,omitempty"`
 	// The logical operator of the matching condition. Valid values:
 	//
-	// *   `eq`: equal to.
-	// *   `neq`: not equal to.
-	// *   `in`: contains.
-	// *   `nin`: does not contain.
-	// *   `re`: regular expression match.
-	// *   `nre`: regular expression mismatch.
+	// *   `eq`: equal to
+	// *   `neq`: not equal to
+	// *   `in`: contains
+	// *   `nin`: does not contain
+	// *   `re`: regular expression match
+	// *   `nre`: regular expression mismatch
 	Operator *string `json:"Operator,omitempty" xml:"Operator,omitempty"`
 	// The value of the matching condition.
 	Value *string `json:"Value,omitempty" xml:"Value,omitempty"`
@@ -24649,11 +24894,11 @@ func (s *ListNotificationPoliciesResponseBodyPageBeanNotificationPoliciesMatchin
 }
 
 type ListNotificationPoliciesResponseBodyPageBeanNotificationPoliciesNotifyRule struct {
-	// The notification method.
+	// The notification methods.
 	NotifyChannels []*string `json:"NotifyChannels,omitempty" xml:"NotifyChannels,omitempty" type:"Repeated"`
 	// The end time of the notification window.
 	NotifyEndTime *string `json:"NotifyEndTime,omitempty" xml:"NotifyEndTime,omitempty"`
-	// The contacts.
+	// The notification objects.
 	NotifyObjects []*ListNotificationPoliciesResponseBodyPageBeanNotificationPoliciesNotifyRuleNotifyObjects `json:"NotifyObjects,omitempty" xml:"NotifyObjects,omitempty" type:"Repeated"`
 	// The start time of the notification window.
 	NotifyStartTime *string `json:"NotifyStartTime,omitempty" xml:"NotifyStartTime,omitempty"`
@@ -24688,18 +24933,18 @@ func (s *ListNotificationPoliciesResponseBodyPageBeanNotificationPoliciesNotifyR
 }
 
 type ListNotificationPoliciesResponseBodyPageBeanNotificationPoliciesNotifyRuleNotifyObjects struct {
-	// 通知对象为联系人时单独的联系方式
+	// The notification methods specified for a contact.
 	NotifyChannels []*string `json:"NotifyChannels,omitempty" xml:"NotifyChannels,omitempty" type:"Repeated"`
-	// The ID of the contact.
+	// The ID of the notification object.
 	NotifyObjectId *int64 `json:"NotifyObjectId,omitempty" xml:"NotifyObjectId,omitempty"`
-	// The name of the contact.
+	// The name of the notification object.
 	NotifyObjectName *string `json:"NotifyObjectName,omitempty" xml:"NotifyObjectName,omitempty"`
-	// The type of the contact. Valid values:
+	// The type of the notification object. Valid values:
 	//
-	// - CONTACT: an individual contact
-	// - CONTACT_GROUP: a contact group
-	// - DING_ROBOT: an instant messaging (IM) robot
-	// - CONTACT_SCHEDULE: a person on duty based on an established schedule
+	// *   CONTACT: an individual contact
+	// *   CONTACT_GROUP: a contact group
+	// *   DING_ROBOT: an instant messaging (IM) chatbot
+	// *   CONTACT_SCHEDULE: a person on duty based on an established schedule
 	NotifyObjectType *string `json:"NotifyObjectType,omitempty" xml:"NotifyObjectType,omitempty"`
 }
 
@@ -24740,7 +24985,7 @@ type ListNotificationPoliciesResponseBodyPageBeanNotificationPoliciesNotifyTempl
 	EmailRecoverTitle *string `json:"EmailRecoverTitle,omitempty" xml:"EmailRecoverTitle,omitempty"`
 	// The title of the alert notification sent by email.
 	EmailTitle *string `json:"EmailTitle,omitempty" xml:"EmailTitle,omitempty"`
-	// The content of the alert notification sent by an IM robot.
+	// The content of the alert notification sent by an IM chatbot.
 	RobotContent *string `json:"RobotContent,omitempty" xml:"RobotContent,omitempty"`
 	// The content of the alert notification sent by text message.
 	SmsContent *string `json:"SmsContent,omitempty" xml:"SmsContent,omitempty"`
@@ -35748,6 +35993,9 @@ type UpdateTimingSyntheticTaskRequestMonitorConfFileDownload struct {
 	Redirection                         *int32             `json:"Redirection,omitempty" xml:"Redirection,omitempty"`
 	TargetUrl                           *string            `json:"TargetUrl,omitempty" xml:"TargetUrl,omitempty"`
 	TransmissionSize                    *int64             `json:"TransmissionSize,omitempty" xml:"TransmissionSize,omitempty"`
+	ValidateKeywords                    *string            `json:"ValidateKeywords,omitempty" xml:"ValidateKeywords,omitempty"`
+	VerifyWay                           *int32             `json:"VerifyWay,omitempty" xml:"VerifyWay,omitempty"`
+	WhiteList                           *string            `json:"WhiteList,omitempty" xml:"WhiteList,omitempty"`
 }
 
 func (s UpdateTimingSyntheticTaskRequestMonitorConfFileDownload) String() string {
@@ -35830,6 +36078,21 @@ func (s *UpdateTimingSyntheticTaskRequestMonitorConfFileDownload) SetTargetUrl(v
 
 func (s *UpdateTimingSyntheticTaskRequestMonitorConfFileDownload) SetTransmissionSize(v int64) *UpdateTimingSyntheticTaskRequestMonitorConfFileDownload {
 	s.TransmissionSize = &v
+	return s
+}
+
+func (s *UpdateTimingSyntheticTaskRequestMonitorConfFileDownload) SetValidateKeywords(v string) *UpdateTimingSyntheticTaskRequestMonitorConfFileDownload {
+	s.ValidateKeywords = &v
+	return s
+}
+
+func (s *UpdateTimingSyntheticTaskRequestMonitorConfFileDownload) SetVerifyWay(v int32) *UpdateTimingSyntheticTaskRequestMonitorConfFileDownload {
+	s.VerifyWay = &v
+	return s
+}
+
+func (s *UpdateTimingSyntheticTaskRequestMonitorConfFileDownload) SetWhiteList(v string) *UpdateTimingSyntheticTaskRequestMonitorConfFileDownload {
+	s.WhiteList = &v
 	return s
 }
 
@@ -36002,14 +36265,21 @@ type UpdateTimingSyntheticTaskRequestMonitorConfWebsite struct {
 	AutomaticScrolling     *int32             `json:"AutomaticScrolling,omitempty" xml:"AutomaticScrolling,omitempty"`
 	CustomHeader           *int32             `json:"CustomHeader,omitempty" xml:"CustomHeader,omitempty"`
 	CustomHeaderContent    map[string]*string `json:"CustomHeaderContent,omitempty" xml:"CustomHeaderContent,omitempty"`
+	DNSHijackWhitelist     *string            `json:"DNSHijackWhitelist,omitempty" xml:"DNSHijackWhitelist,omitempty"`
 	DisableCache           *int32             `json:"DisableCache,omitempty" xml:"DisableCache,omitempty"`
 	DisableCompression     *int32             `json:"DisableCompression,omitempty" xml:"DisableCompression,omitempty"`
+	ElementBlacklist       *string            `json:"ElementBlacklist,omitempty" xml:"ElementBlacklist,omitempty"`
 	FilterInvalidIP        *int32             `json:"FilterInvalidIP,omitempty" xml:"FilterInvalidIP,omitempty"`
+	FlowHijackJumpTimes    *int32             `json:"FlowHijackJumpTimes,omitempty" xml:"FlowHijackJumpTimes,omitempty"`
+	FlowHijackLogo         *string            `json:"FlowHijackLogo,omitempty" xml:"FlowHijackLogo,omitempty"`
 	IgnoreCertificateError *int32             `json:"IgnoreCertificateError,omitempty" xml:"IgnoreCertificateError,omitempty"`
 	MonitorTimeout         *int64             `json:"MonitorTimeout,omitempty" xml:"MonitorTimeout,omitempty"`
+	PageTamper             *string            `json:"PageTamper,omitempty" xml:"PageTamper,omitempty"`
 	Redirection            *int32             `json:"Redirection,omitempty" xml:"Redirection,omitempty"`
 	SlowElementThreshold   *int64             `json:"SlowElementThreshold,omitempty" xml:"SlowElementThreshold,omitempty"`
 	TargetUrl              *string            `json:"TargetUrl,omitempty" xml:"TargetUrl,omitempty"`
+	VerifyStringBlacklist  *string            `json:"VerifyStringBlacklist,omitempty" xml:"VerifyStringBlacklist,omitempty"`
+	VerifyStringWhitelist  *string            `json:"VerifyStringWhitelist,omitempty" xml:"VerifyStringWhitelist,omitempty"`
 	WaitCompletionTime     *int64             `json:"WaitCompletionTime,omitempty" xml:"WaitCompletionTime,omitempty"`
 }
 
@@ -36036,6 +36306,11 @@ func (s *UpdateTimingSyntheticTaskRequestMonitorConfWebsite) SetCustomHeaderCont
 	return s
 }
 
+func (s *UpdateTimingSyntheticTaskRequestMonitorConfWebsite) SetDNSHijackWhitelist(v string) *UpdateTimingSyntheticTaskRequestMonitorConfWebsite {
+	s.DNSHijackWhitelist = &v
+	return s
+}
+
 func (s *UpdateTimingSyntheticTaskRequestMonitorConfWebsite) SetDisableCache(v int32) *UpdateTimingSyntheticTaskRequestMonitorConfWebsite {
 	s.DisableCache = &v
 	return s
@@ -36046,8 +36321,23 @@ func (s *UpdateTimingSyntheticTaskRequestMonitorConfWebsite) SetDisableCompressi
 	return s
 }
 
+func (s *UpdateTimingSyntheticTaskRequestMonitorConfWebsite) SetElementBlacklist(v string) *UpdateTimingSyntheticTaskRequestMonitorConfWebsite {
+	s.ElementBlacklist = &v
+	return s
+}
+
 func (s *UpdateTimingSyntheticTaskRequestMonitorConfWebsite) SetFilterInvalidIP(v int32) *UpdateTimingSyntheticTaskRequestMonitorConfWebsite {
 	s.FilterInvalidIP = &v
+	return s
+}
+
+func (s *UpdateTimingSyntheticTaskRequestMonitorConfWebsite) SetFlowHijackJumpTimes(v int32) *UpdateTimingSyntheticTaskRequestMonitorConfWebsite {
+	s.FlowHijackJumpTimes = &v
+	return s
+}
+
+func (s *UpdateTimingSyntheticTaskRequestMonitorConfWebsite) SetFlowHijackLogo(v string) *UpdateTimingSyntheticTaskRequestMonitorConfWebsite {
+	s.FlowHijackLogo = &v
 	return s
 }
 
@@ -36058,6 +36348,11 @@ func (s *UpdateTimingSyntheticTaskRequestMonitorConfWebsite) SetIgnoreCertificat
 
 func (s *UpdateTimingSyntheticTaskRequestMonitorConfWebsite) SetMonitorTimeout(v int64) *UpdateTimingSyntheticTaskRequestMonitorConfWebsite {
 	s.MonitorTimeout = &v
+	return s
+}
+
+func (s *UpdateTimingSyntheticTaskRequestMonitorConfWebsite) SetPageTamper(v string) *UpdateTimingSyntheticTaskRequestMonitorConfWebsite {
+	s.PageTamper = &v
 	return s
 }
 
@@ -36073,6 +36368,16 @@ func (s *UpdateTimingSyntheticTaskRequestMonitorConfWebsite) SetSlowElementThres
 
 func (s *UpdateTimingSyntheticTaskRequestMonitorConfWebsite) SetTargetUrl(v string) *UpdateTimingSyntheticTaskRequestMonitorConfWebsite {
 	s.TargetUrl = &v
+	return s
+}
+
+func (s *UpdateTimingSyntheticTaskRequestMonitorConfWebsite) SetVerifyStringBlacklist(v string) *UpdateTimingSyntheticTaskRequestMonitorConfWebsite {
+	s.VerifyStringBlacklist = &v
+	return s
+}
+
+func (s *UpdateTimingSyntheticTaskRequestMonitorConfWebsite) SetVerifyStringWhitelist(v string) *UpdateTimingSyntheticTaskRequestMonitorConfWebsite {
+	s.VerifyStringWhitelist = &v
 	return s
 }
 
