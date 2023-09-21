@@ -93,8 +93,10 @@ type CreateClusterRequest struct {
 	ClusterName           *string                           `json:"ClusterName,omitempty" xml:"ClusterName,omitempty"`
 	ClusterType           *string                           `json:"ClusterType,omitempty" xml:"ClusterType,omitempty"`
 	Components            []*CreateClusterRequestComponents `json:"Components,omitempty" xml:"Components,omitempty" type:"Repeated"`
+	HpnZone               *string                           `json:"HpnZone,omitempty" xml:"HpnZone,omitempty"`
 	IgnoreFailedNodeTasks *bool                             `json:"IgnoreFailedNodeTasks,omitempty" xml:"IgnoreFailedNodeTasks,omitempty"`
 	Networks              *CreateClusterRequestNetworks     `json:"Networks,omitempty" xml:"Networks,omitempty" type:"Struct"`
+	NimizVSwitches        []*string                         `json:"NimizVSwitches,omitempty" xml:"NimizVSwitches,omitempty" type:"Repeated"`
 	NodeGroups            []*CreateClusterRequestNodeGroups `json:"NodeGroups,omitempty" xml:"NodeGroups,omitempty" type:"Repeated"`
 	ResourceGroupId       *string                           `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
 	Tag                   []*CreateClusterRequestTag        `json:"Tag,omitempty" xml:"Tag,omitempty" type:"Repeated"`
@@ -128,6 +130,11 @@ func (s *CreateClusterRequest) SetComponents(v []*CreateClusterRequestComponents
 	return s
 }
 
+func (s *CreateClusterRequest) SetHpnZone(v string) *CreateClusterRequest {
+	s.HpnZone = &v
+	return s
+}
+
 func (s *CreateClusterRequest) SetIgnoreFailedNodeTasks(v bool) *CreateClusterRequest {
 	s.IgnoreFailedNodeTasks = &v
 	return s
@@ -135,6 +142,11 @@ func (s *CreateClusterRequest) SetIgnoreFailedNodeTasks(v bool) *CreateClusterRe
 
 func (s *CreateClusterRequest) SetNetworks(v *CreateClusterRequestNetworks) *CreateClusterRequest {
 	s.Networks = v
+	return s
+}
+
+func (s *CreateClusterRequest) SetNimizVSwitches(v []*string) *CreateClusterRequest {
+	s.NimizVSwitches = v
 	return s
 }
 
@@ -625,8 +637,10 @@ type CreateClusterShrinkRequest struct {
 	ClusterName           *string                          `json:"ClusterName,omitempty" xml:"ClusterName,omitempty"`
 	ClusterType           *string                          `json:"ClusterType,omitempty" xml:"ClusterType,omitempty"`
 	ComponentsShrink      *string                          `json:"Components,omitempty" xml:"Components,omitempty"`
+	HpnZone               *string                          `json:"HpnZone,omitempty" xml:"HpnZone,omitempty"`
 	IgnoreFailedNodeTasks *bool                            `json:"IgnoreFailedNodeTasks,omitempty" xml:"IgnoreFailedNodeTasks,omitempty"`
 	NetworksShrink        *string                          `json:"Networks,omitempty" xml:"Networks,omitempty"`
+	NimizVSwitchesShrink  *string                          `json:"NimizVSwitches,omitempty" xml:"NimizVSwitches,omitempty"`
 	NodeGroupsShrink      *string                          `json:"NodeGroups,omitempty" xml:"NodeGroups,omitempty"`
 	ResourceGroupId       *string                          `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
 	Tag                   []*CreateClusterShrinkRequestTag `json:"Tag,omitempty" xml:"Tag,omitempty" type:"Repeated"`
@@ -660,6 +674,11 @@ func (s *CreateClusterShrinkRequest) SetComponentsShrink(v string) *CreateCluste
 	return s
 }
 
+func (s *CreateClusterShrinkRequest) SetHpnZone(v string) *CreateClusterShrinkRequest {
+	s.HpnZone = &v
+	return s
+}
+
 func (s *CreateClusterShrinkRequest) SetIgnoreFailedNodeTasks(v bool) *CreateClusterShrinkRequest {
 	s.IgnoreFailedNodeTasks = &v
 	return s
@@ -667,6 +686,11 @@ func (s *CreateClusterShrinkRequest) SetIgnoreFailedNodeTasks(v bool) *CreateClu
 
 func (s *CreateClusterShrinkRequest) SetNetworksShrink(v string) *CreateClusterShrinkRequest {
 	s.NetworksShrink = &v
+	return s
+}
+
+func (s *CreateClusterShrinkRequest) SetNimizVSwitchesShrink(v string) *CreateClusterShrinkRequest {
+	s.NimizVSwitchesShrink = &v
 	return s
 }
 
@@ -853,6 +877,7 @@ type DescribeClusterResponseBody struct {
 	ClusterType        *string                                  `json:"ClusterType,omitempty" xml:"ClusterType,omitempty"`
 	Components         []*DescribeClusterResponseBodyComponents `json:"Components,omitempty" xml:"Components,omitempty" type:"Repeated"`
 	CreateTime         *string                                  `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
+	HpnZone            *string                                  `json:"HpnZone,omitempty" xml:"HpnZone,omitempty"`
 	Networks           []*DescribeClusterResponseBodyNetworks   `json:"Networks,omitempty" xml:"Networks,omitempty" type:"Repeated"`
 	NodeCount          *int64                                   `json:"NodeCount,omitempty" xml:"NodeCount,omitempty"`
 	NodeGroupCount     *int64                                   `json:"NodeGroupCount,omitempty" xml:"NodeGroupCount,omitempty"`
@@ -899,6 +924,11 @@ func (s *DescribeClusterResponseBody) SetComponents(v []*DescribeClusterResponse
 
 func (s *DescribeClusterResponseBody) SetCreateTime(v string) *DescribeClusterResponseBody {
 	s.CreateTime = &v
+	return s
+}
+
+func (s *DescribeClusterResponseBody) SetHpnZone(v string) *DescribeClusterResponseBody {
+	s.HpnZone = &v
 	return s
 }
 
@@ -1039,6 +1069,7 @@ type DescribeNodeResponseBody struct {
 	CreateTime  *string `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
 	ExpiredTime *string `json:"ExpiredTime,omitempty" xml:"ExpiredTime,omitempty"`
 	Hostname    *string `json:"Hostname,omitempty" xml:"Hostname,omitempty"`
+	HpnZone     *string `json:"HpnZone,omitempty" xml:"HpnZone,omitempty"`
 	ImageId     *string `json:"ImageId,omitempty" xml:"ImageId,omitempty"`
 	// 镜像名称
 	ImageName      *string                             `json:"ImageName,omitempty" xml:"ImageName,omitempty"`
@@ -1083,6 +1114,11 @@ func (s *DescribeNodeResponseBody) SetExpiredTime(v string) *DescribeNodeRespons
 
 func (s *DescribeNodeResponseBody) SetHostname(v string) *DescribeNodeResponseBody {
 	s.Hostname = &v
+	return s
+}
+
+func (s *DescribeNodeResponseBody) SetHpnZone(v string) *DescribeNodeResponseBody {
+	s.HpnZone = &v
 	return s
 }
 
@@ -1853,6 +1889,8 @@ type ExtendClusterRequestNodeGroupsNodes struct {
 	Hostname      *string `json:"Hostname,omitempty" xml:"Hostname,omitempty"`
 	LoginPassword *string `json:"LoginPassword,omitempty" xml:"LoginPassword,omitempty"`
 	NodeId        *string `json:"NodeId,omitempty" xml:"NodeId,omitempty"`
+	VSwitchId     *string `json:"VSwitchId,omitempty" xml:"VSwitchId,omitempty"`
+	VpcId         *string `json:"VpcId,omitempty" xml:"VpcId,omitempty"`
 }
 
 func (s ExtendClusterRequestNodeGroupsNodes) String() string {
@@ -1875,6 +1913,16 @@ func (s *ExtendClusterRequestNodeGroupsNodes) SetLoginPassword(v string) *Extend
 
 func (s *ExtendClusterRequestNodeGroupsNodes) SetNodeId(v string) *ExtendClusterRequestNodeGroupsNodes {
 	s.NodeId = &v
+	return s
+}
+
+func (s *ExtendClusterRequestNodeGroupsNodes) SetVSwitchId(v string) *ExtendClusterRequestNodeGroupsNodes {
+	s.VSwitchId = &v
+	return s
+}
+
+func (s *ExtendClusterRequestNodeGroupsNodes) SetVpcId(v string) *ExtendClusterRequestNodeGroupsNodes {
+	s.VpcId = &v
 	return s
 }
 
@@ -2039,6 +2087,7 @@ type ListClusterNodesResponseBodyNodes struct {
 	CreateTime     *string                                      `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
 	ExpiredTime    *string                                      `json:"ExpiredTime,omitempty" xml:"ExpiredTime,omitempty"`
 	Hostname       *string                                      `json:"Hostname,omitempty" xml:"Hostname,omitempty"`
+	HpnZone        *string                                      `json:"HpnZone,omitempty" xml:"HpnZone,omitempty"`
 	ImageId        *string                                      `json:"ImageId,omitempty" xml:"ImageId,omitempty"`
 	MachineType    *string                                      `json:"MachineType,omitempty" xml:"MachineType,omitempty"`
 	Networks       []*ListClusterNodesResponseBodyNodesNetworks `json:"Networks,omitempty" xml:"Networks,omitempty" type:"Repeated"`
@@ -2070,6 +2119,11 @@ func (s *ListClusterNodesResponseBodyNodes) SetExpiredTime(v string) *ListCluste
 
 func (s *ListClusterNodesResponseBodyNodes) SetHostname(v string) *ListClusterNodesResponseBodyNodes {
 	s.Hostname = &v
+	return s
+}
+
+func (s *ListClusterNodesResponseBodyNodes) SetHpnZone(v string) *ListClusterNodesResponseBodyNodes {
+	s.HpnZone = &v
 	return s
 }
 
@@ -2247,6 +2301,7 @@ type ListClustersResponseBodyClusters struct {
 	ClusterType        *string     `json:"ClusterType,omitempty" xml:"ClusterType,omitempty"`
 	Components         interface{} `json:"Components,omitempty" xml:"Components,omitempty"`
 	CreateTime         *string     `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
+	HpnZone            *string     `json:"HpnZone,omitempty" xml:"HpnZone,omitempty"`
 	NodeCount          *int64      `json:"NodeCount,omitempty" xml:"NodeCount,omitempty"`
 	NodeGroupCount     *int64      `json:"NodeGroupCount,omitempty" xml:"NodeGroupCount,omitempty"`
 	OperatingState     *string     `json:"OperatingState,omitempty" xml:"OperatingState,omitempty"`
@@ -2291,6 +2346,11 @@ func (s *ListClustersResponseBodyClusters) SetComponents(v interface{}) *ListClu
 
 func (s *ListClustersResponseBodyClusters) SetCreateTime(v string) *ListClustersResponseBodyClusters {
 	s.CreateTime = &v
+	return s
+}
+
+func (s *ListClustersResponseBodyClusters) SetHpnZone(v string) *ListClustersResponseBodyClusters {
+	s.HpnZone = &v
 	return s
 }
 
@@ -2359,6 +2419,7 @@ func (s *ListClustersResponse) SetBody(v *ListClustersResponseBody) *ListCluster
 }
 
 type ListFreeNodesRequest struct {
+	HpnZone     *string `json:"HpnZone,omitempty" xml:"HpnZone,omitempty"`
 	MachineType *string `json:"MachineType,omitempty" xml:"MachineType,omitempty"`
 	MaxResults  *int64  `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
 	NextToken   *string `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
@@ -2370,6 +2431,11 @@ func (s ListFreeNodesRequest) String() string {
 
 func (s ListFreeNodesRequest) GoString() string {
 	return s.String()
+}
+
+func (s *ListFreeNodesRequest) SetHpnZone(v string) *ListFreeNodesRequest {
+	s.HpnZone = &v
+	return s
 }
 
 func (s *ListFreeNodesRequest) SetMachineType(v string) *ListFreeNodesRequest {
@@ -2419,6 +2485,7 @@ func (s *ListFreeNodesResponseBody) SetRequestId(v string) *ListFreeNodesRespons
 type ListFreeNodesResponseBodyNodes struct {
 	CreateTime  *string `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
 	ExpiredTime *string `json:"ExpiredTime,omitempty" xml:"ExpiredTime,omitempty"`
+	HpnZone     *string `json:"HpnZone,omitempty" xml:"HpnZone,omitempty"`
 	MachineType *string `json:"MachineType,omitempty" xml:"MachineType,omitempty"`
 	NodeId      *string `json:"NodeId,omitempty" xml:"NodeId,omitempty"`
 	Sn          *string `json:"Sn,omitempty" xml:"Sn,omitempty"`
@@ -2440,6 +2507,11 @@ func (s *ListFreeNodesResponseBodyNodes) SetCreateTime(v string) *ListFreeNodesR
 
 func (s *ListFreeNodesResponseBodyNodes) SetExpiredTime(v string) *ListFreeNodesResponseBodyNodes {
 	s.ExpiredTime = &v
+	return s
+}
+
+func (s *ListFreeNodesResponseBodyNodes) SetHpnZone(v string) *ListFreeNodesResponseBodyNodes {
+	s.HpnZone = &v
 	return s
 }
 
@@ -3389,6 +3461,10 @@ func (client *Client) CreateClusterWithOptions(tmpReq *CreateClusterRequest, run
 		request.NetworksShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.Networks, tea.String("Networks"), tea.String("json"))
 	}
 
+	if !tea.BoolValue(util.IsUnset(tmpReq.NimizVSwitches)) {
+		request.NimizVSwitchesShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.NimizVSwitches, tea.String("NimizVSwitches"), tea.String("json"))
+	}
+
 	if !tea.BoolValue(util.IsUnset(tmpReq.NodeGroups)) {
 		request.NodeGroupsShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.NodeGroups, tea.String("NodeGroups"), tea.String("json"))
 	}
@@ -3415,12 +3491,20 @@ func (client *Client) CreateClusterWithOptions(tmpReq *CreateClusterRequest, run
 		body["Components"] = request.ComponentsShrink
 	}
 
+	if !tea.BoolValue(util.IsUnset(request.HpnZone)) {
+		body["HpnZone"] = request.HpnZone
+	}
+
 	if !tea.BoolValue(util.IsUnset(request.IgnoreFailedNodeTasks)) {
 		body["IgnoreFailedNodeTasks"] = request.IgnoreFailedNodeTasks
 	}
 
 	if !tea.BoolValue(util.IsUnset(request.NetworksShrink)) {
 		body["Networks"] = request.NetworksShrink
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.NimizVSwitchesShrink)) {
+		body["NimizVSwitches"] = request.NimizVSwitchesShrink
 	}
 
 	if !tea.BoolValue(util.IsUnset(request.NodeGroupsShrink)) {
@@ -3918,6 +4002,10 @@ func (client *Client) ListFreeNodesWithOptions(request *ListFreeNodesRequest, ru
 		return _result, _err
 	}
 	body := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.HpnZone)) {
+		body["HpnZone"] = request.HpnZone
+	}
+
 	if !tea.BoolValue(util.IsUnset(request.MachineType)) {
 		body["MachineType"] = request.MachineType
 	}
