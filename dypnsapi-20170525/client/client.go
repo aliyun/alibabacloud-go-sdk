@@ -12,6 +12,328 @@ import (
 	"github.com/alibabacloud-go/tea/tea"
 )
 
+type CheckSmsVerifyCodeRequest struct {
+	CaseAuthPolicy       *int64  `json:"CaseAuthPolicy,omitempty" xml:"CaseAuthPolicy,omitempty"`
+	CountryCode          *string `json:"CountryCode,omitempty" xml:"CountryCode,omitempty"`
+	OutId                *string `json:"OutId,omitempty" xml:"OutId,omitempty"`
+	OwnerId              *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
+	PhoneNumber          *string `json:"PhoneNumber,omitempty" xml:"PhoneNumber,omitempty"`
+	ResourceOwnerAccount *string `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
+	ResourceOwnerId      *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
+	SchemeName           *string `json:"SchemeName,omitempty" xml:"SchemeName,omitempty"`
+	VerifyCode           *string `json:"VerifyCode,omitempty" xml:"VerifyCode,omitempty"`
+}
+
+func (s CheckSmsVerifyCodeRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CheckSmsVerifyCodeRequest) GoString() string {
+	return s.String()
+}
+
+func (s *CheckSmsVerifyCodeRequest) SetCaseAuthPolicy(v int64) *CheckSmsVerifyCodeRequest {
+	s.CaseAuthPolicy = &v
+	return s
+}
+
+func (s *CheckSmsVerifyCodeRequest) SetCountryCode(v string) *CheckSmsVerifyCodeRequest {
+	s.CountryCode = &v
+	return s
+}
+
+func (s *CheckSmsVerifyCodeRequest) SetOutId(v string) *CheckSmsVerifyCodeRequest {
+	s.OutId = &v
+	return s
+}
+
+func (s *CheckSmsVerifyCodeRequest) SetOwnerId(v int64) *CheckSmsVerifyCodeRequest {
+	s.OwnerId = &v
+	return s
+}
+
+func (s *CheckSmsVerifyCodeRequest) SetPhoneNumber(v string) *CheckSmsVerifyCodeRequest {
+	s.PhoneNumber = &v
+	return s
+}
+
+func (s *CheckSmsVerifyCodeRequest) SetResourceOwnerAccount(v string) *CheckSmsVerifyCodeRequest {
+	s.ResourceOwnerAccount = &v
+	return s
+}
+
+func (s *CheckSmsVerifyCodeRequest) SetResourceOwnerId(v int64) *CheckSmsVerifyCodeRequest {
+	s.ResourceOwnerId = &v
+	return s
+}
+
+func (s *CheckSmsVerifyCodeRequest) SetSchemeName(v string) *CheckSmsVerifyCodeRequest {
+	s.SchemeName = &v
+	return s
+}
+
+func (s *CheckSmsVerifyCodeRequest) SetVerifyCode(v string) *CheckSmsVerifyCodeRequest {
+	s.VerifyCode = &v
+	return s
+}
+
+type CheckSmsVerifyCodeResponseBody struct {
+	AccessDeniedDetail *string                              `json:"AccessDeniedDetail,omitempty" xml:"AccessDeniedDetail,omitempty"`
+	Code               *string                              `json:"Code,omitempty" xml:"Code,omitempty"`
+	Message            *string                              `json:"Message,omitempty" xml:"Message,omitempty"`
+	Model              *CheckSmsVerifyCodeResponseBodyModel `json:"Model,omitempty" xml:"Model,omitempty" type:"Struct"`
+	Success            *bool                                `json:"Success,omitempty" xml:"Success,omitempty"`
+}
+
+func (s CheckSmsVerifyCodeResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CheckSmsVerifyCodeResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *CheckSmsVerifyCodeResponseBody) SetAccessDeniedDetail(v string) *CheckSmsVerifyCodeResponseBody {
+	s.AccessDeniedDetail = &v
+	return s
+}
+
+func (s *CheckSmsVerifyCodeResponseBody) SetCode(v string) *CheckSmsVerifyCodeResponseBody {
+	s.Code = &v
+	return s
+}
+
+func (s *CheckSmsVerifyCodeResponseBody) SetMessage(v string) *CheckSmsVerifyCodeResponseBody {
+	s.Message = &v
+	return s
+}
+
+func (s *CheckSmsVerifyCodeResponseBody) SetModel(v *CheckSmsVerifyCodeResponseBodyModel) *CheckSmsVerifyCodeResponseBody {
+	s.Model = v
+	return s
+}
+
+func (s *CheckSmsVerifyCodeResponseBody) SetSuccess(v bool) *CheckSmsVerifyCodeResponseBody {
+	s.Success = &v
+	return s
+}
+
+type CheckSmsVerifyCodeResponseBodyModel struct {
+	OutId        *string `json:"OutId,omitempty" xml:"OutId,omitempty"`
+	VerifyResult *string `json:"VerifyResult,omitempty" xml:"VerifyResult,omitempty"`
+}
+
+func (s CheckSmsVerifyCodeResponseBodyModel) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CheckSmsVerifyCodeResponseBodyModel) GoString() string {
+	return s.String()
+}
+
+func (s *CheckSmsVerifyCodeResponseBodyModel) SetOutId(v string) *CheckSmsVerifyCodeResponseBodyModel {
+	s.OutId = &v
+	return s
+}
+
+func (s *CheckSmsVerifyCodeResponseBodyModel) SetVerifyResult(v string) *CheckSmsVerifyCodeResponseBodyModel {
+	s.VerifyResult = &v
+	return s
+}
+
+type CheckSmsVerifyCodeResponse struct {
+	Headers    map[string]*string              `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                          `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *CheckSmsVerifyCodeResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s CheckSmsVerifyCodeResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CheckSmsVerifyCodeResponse) GoString() string {
+	return s.String()
+}
+
+func (s *CheckSmsVerifyCodeResponse) SetHeaders(v map[string]*string) *CheckSmsVerifyCodeResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *CheckSmsVerifyCodeResponse) SetStatusCode(v int32) *CheckSmsVerifyCodeResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *CheckSmsVerifyCodeResponse) SetBody(v *CheckSmsVerifyCodeResponseBody) *CheckSmsVerifyCodeResponse {
+	s.Body = v
+	return s
+}
+
+type CreateSchemeConfigRequest struct {
+	AndroidPackageName   *string `json:"AndroidPackageName,omitempty" xml:"AndroidPackageName,omitempty"`
+	AndroidPackageSign   *string `json:"AndroidPackageSign,omitempty" xml:"AndroidPackageSign,omitempty"`
+	AppName              *string `json:"AppName,omitempty" xml:"AppName,omitempty"`
+	H5Origin             *string `json:"H5Origin,omitempty" xml:"H5Origin,omitempty"`
+	H5Url                *string `json:"H5Url,omitempty" xml:"H5Url,omitempty"`
+	IosBundleId          *string `json:"IosBundleId,omitempty" xml:"IosBundleId,omitempty"`
+	OwnerId              *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
+	Platform             *string `json:"Platform,omitempty" xml:"Platform,omitempty"`
+	ResourceOwnerAccount *string `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
+	ResourceOwnerId      *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
+	SchemeName           *string `json:"SchemeName,omitempty" xml:"SchemeName,omitempty"`
+}
+
+func (s CreateSchemeConfigRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateSchemeConfigRequest) GoString() string {
+	return s.String()
+}
+
+func (s *CreateSchemeConfigRequest) SetAndroidPackageName(v string) *CreateSchemeConfigRequest {
+	s.AndroidPackageName = &v
+	return s
+}
+
+func (s *CreateSchemeConfigRequest) SetAndroidPackageSign(v string) *CreateSchemeConfigRequest {
+	s.AndroidPackageSign = &v
+	return s
+}
+
+func (s *CreateSchemeConfigRequest) SetAppName(v string) *CreateSchemeConfigRequest {
+	s.AppName = &v
+	return s
+}
+
+func (s *CreateSchemeConfigRequest) SetH5Origin(v string) *CreateSchemeConfigRequest {
+	s.H5Origin = &v
+	return s
+}
+
+func (s *CreateSchemeConfigRequest) SetH5Url(v string) *CreateSchemeConfigRequest {
+	s.H5Url = &v
+	return s
+}
+
+func (s *CreateSchemeConfigRequest) SetIosBundleId(v string) *CreateSchemeConfigRequest {
+	s.IosBundleId = &v
+	return s
+}
+
+func (s *CreateSchemeConfigRequest) SetOwnerId(v int64) *CreateSchemeConfigRequest {
+	s.OwnerId = &v
+	return s
+}
+
+func (s *CreateSchemeConfigRequest) SetPlatform(v string) *CreateSchemeConfigRequest {
+	s.Platform = &v
+	return s
+}
+
+func (s *CreateSchemeConfigRequest) SetResourceOwnerAccount(v string) *CreateSchemeConfigRequest {
+	s.ResourceOwnerAccount = &v
+	return s
+}
+
+func (s *CreateSchemeConfigRequest) SetResourceOwnerId(v int64) *CreateSchemeConfigRequest {
+	s.ResourceOwnerId = &v
+	return s
+}
+
+func (s *CreateSchemeConfigRequest) SetSchemeName(v string) *CreateSchemeConfigRequest {
+	s.SchemeName = &v
+	return s
+}
+
+type CreateSchemeConfigResponseBody struct {
+	Code      *string                              `json:"Code,omitempty" xml:"Code,omitempty"`
+	Message   *string                              `json:"Message,omitempty" xml:"Message,omitempty"`
+	Model     *CreateSchemeConfigResponseBodyModel `json:"Model,omitempty" xml:"Model,omitempty" type:"Struct"`
+	RequestId *string                              `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	Success   *bool                                `json:"Success,omitempty" xml:"Success,omitempty"`
+}
+
+func (s CreateSchemeConfigResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateSchemeConfigResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *CreateSchemeConfigResponseBody) SetCode(v string) *CreateSchemeConfigResponseBody {
+	s.Code = &v
+	return s
+}
+
+func (s *CreateSchemeConfigResponseBody) SetMessage(v string) *CreateSchemeConfigResponseBody {
+	s.Message = &v
+	return s
+}
+
+func (s *CreateSchemeConfigResponseBody) SetModel(v *CreateSchemeConfigResponseBodyModel) *CreateSchemeConfigResponseBody {
+	s.Model = v
+	return s
+}
+
+func (s *CreateSchemeConfigResponseBody) SetRequestId(v string) *CreateSchemeConfigResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *CreateSchemeConfigResponseBody) SetSuccess(v bool) *CreateSchemeConfigResponseBody {
+	s.Success = &v
+	return s
+}
+
+type CreateSchemeConfigResponseBodyModel struct {
+	SchemeCode *string `json:"SchemeCode,omitempty" xml:"SchemeCode,omitempty"`
+}
+
+func (s CreateSchemeConfigResponseBodyModel) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateSchemeConfigResponseBodyModel) GoString() string {
+	return s.String()
+}
+
+func (s *CreateSchemeConfigResponseBodyModel) SetSchemeCode(v string) *CreateSchemeConfigResponseBodyModel {
+	s.SchemeCode = &v
+	return s
+}
+
+type CreateSchemeConfigResponse struct {
+	Headers    map[string]*string              `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                          `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *CreateSchemeConfigResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s CreateSchemeConfigResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateSchemeConfigResponse) GoString() string {
+	return s.String()
+}
+
+func (s *CreateSchemeConfigResponse) SetHeaders(v map[string]*string) *CreateSchemeConfigResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *CreateSchemeConfigResponse) SetStatusCode(v int32) *CreateSchemeConfigResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *CreateSchemeConfigResponse) SetBody(v *CreateSchemeConfigResponseBody) *CreateSchemeConfigResponse {
+	s.Body = v
+	return s
+}
+
 type CreateVerifySchemeRequest struct {
 	AppName              *string `json:"AppName,omitempty" xml:"AppName,omitempty"`
 	AuthType             *string `json:"AuthType,omitempty" xml:"AuthType,omitempty"`
@@ -1636,6 +1958,418 @@ func (s *QueryGateVerifyStatisticPublicResponse) SetBody(v *QueryGateVerifyStati
 	return s
 }
 
+type QuerySendDetailsRequest struct {
+	BizId                *string `json:"BizId,omitempty" xml:"BizId,omitempty"`
+	CurrentPage          *int64  `json:"CurrentPage,omitempty" xml:"CurrentPage,omitempty"`
+	OwnerId              *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
+	PageSize             *int64  `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	PhoneNumber          *string `json:"PhoneNumber,omitempty" xml:"PhoneNumber,omitempty"`
+	ResourceOwnerAccount *string `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
+	ResourceOwnerId      *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
+	SendDate             *string `json:"SendDate,omitempty" xml:"SendDate,omitempty"`
+}
+
+func (s QuerySendDetailsRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s QuerySendDetailsRequest) GoString() string {
+	return s.String()
+}
+
+func (s *QuerySendDetailsRequest) SetBizId(v string) *QuerySendDetailsRequest {
+	s.BizId = &v
+	return s
+}
+
+func (s *QuerySendDetailsRequest) SetCurrentPage(v int64) *QuerySendDetailsRequest {
+	s.CurrentPage = &v
+	return s
+}
+
+func (s *QuerySendDetailsRequest) SetOwnerId(v int64) *QuerySendDetailsRequest {
+	s.OwnerId = &v
+	return s
+}
+
+func (s *QuerySendDetailsRequest) SetPageSize(v int64) *QuerySendDetailsRequest {
+	s.PageSize = &v
+	return s
+}
+
+func (s *QuerySendDetailsRequest) SetPhoneNumber(v string) *QuerySendDetailsRequest {
+	s.PhoneNumber = &v
+	return s
+}
+
+func (s *QuerySendDetailsRequest) SetResourceOwnerAccount(v string) *QuerySendDetailsRequest {
+	s.ResourceOwnerAccount = &v
+	return s
+}
+
+func (s *QuerySendDetailsRequest) SetResourceOwnerId(v int64) *QuerySendDetailsRequest {
+	s.ResourceOwnerId = &v
+	return s
+}
+
+func (s *QuerySendDetailsRequest) SetSendDate(v string) *QuerySendDetailsRequest {
+	s.SendDate = &v
+	return s
+}
+
+type QuerySendDetailsResponseBody struct {
+	AccessDeniedDetail *string                              `json:"AccessDeniedDetail,omitempty" xml:"AccessDeniedDetail,omitempty"`
+	Code               *string                              `json:"Code,omitempty" xml:"Code,omitempty"`
+	Message            *string                              `json:"Message,omitempty" xml:"Message,omitempty"`
+	Model              []*QuerySendDetailsResponseBodyModel `json:"Model,omitempty" xml:"Model,omitempty" type:"Repeated"`
+	Success            *bool                                `json:"Success,omitempty" xml:"Success,omitempty"`
+	TotalCount         *int64                               `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
+}
+
+func (s QuerySendDetailsResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s QuerySendDetailsResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *QuerySendDetailsResponseBody) SetAccessDeniedDetail(v string) *QuerySendDetailsResponseBody {
+	s.AccessDeniedDetail = &v
+	return s
+}
+
+func (s *QuerySendDetailsResponseBody) SetCode(v string) *QuerySendDetailsResponseBody {
+	s.Code = &v
+	return s
+}
+
+func (s *QuerySendDetailsResponseBody) SetMessage(v string) *QuerySendDetailsResponseBody {
+	s.Message = &v
+	return s
+}
+
+func (s *QuerySendDetailsResponseBody) SetModel(v []*QuerySendDetailsResponseBodyModel) *QuerySendDetailsResponseBody {
+	s.Model = v
+	return s
+}
+
+func (s *QuerySendDetailsResponseBody) SetSuccess(v bool) *QuerySendDetailsResponseBody {
+	s.Success = &v
+	return s
+}
+
+func (s *QuerySendDetailsResponseBody) SetTotalCount(v int64) *QuerySendDetailsResponseBody {
+	s.TotalCount = &v
+	return s
+}
+
+type QuerySendDetailsResponseBodyModel struct {
+	Content      *string `json:"Content,omitempty" xml:"Content,omitempty"`
+	ErrCode      *string `json:"ErrCode,omitempty" xml:"ErrCode,omitempty"`
+	OutId        *string `json:"OutId,omitempty" xml:"OutId,omitempty"`
+	PhoneNum     *string `json:"PhoneNum,omitempty" xml:"PhoneNum,omitempty"`
+	ReceiveDate  *string `json:"ReceiveDate,omitempty" xml:"ReceiveDate,omitempty"`
+	SendDate     *string `json:"SendDate,omitempty" xml:"SendDate,omitempty"`
+	SendStatus   *int64  `json:"SendStatus,omitempty" xml:"SendStatus,omitempty"`
+	TemplateCode *string `json:"TemplateCode,omitempty" xml:"TemplateCode,omitempty"`
+}
+
+func (s QuerySendDetailsResponseBodyModel) String() string {
+	return tea.Prettify(s)
+}
+
+func (s QuerySendDetailsResponseBodyModel) GoString() string {
+	return s.String()
+}
+
+func (s *QuerySendDetailsResponseBodyModel) SetContent(v string) *QuerySendDetailsResponseBodyModel {
+	s.Content = &v
+	return s
+}
+
+func (s *QuerySendDetailsResponseBodyModel) SetErrCode(v string) *QuerySendDetailsResponseBodyModel {
+	s.ErrCode = &v
+	return s
+}
+
+func (s *QuerySendDetailsResponseBodyModel) SetOutId(v string) *QuerySendDetailsResponseBodyModel {
+	s.OutId = &v
+	return s
+}
+
+func (s *QuerySendDetailsResponseBodyModel) SetPhoneNum(v string) *QuerySendDetailsResponseBodyModel {
+	s.PhoneNum = &v
+	return s
+}
+
+func (s *QuerySendDetailsResponseBodyModel) SetReceiveDate(v string) *QuerySendDetailsResponseBodyModel {
+	s.ReceiveDate = &v
+	return s
+}
+
+func (s *QuerySendDetailsResponseBodyModel) SetSendDate(v string) *QuerySendDetailsResponseBodyModel {
+	s.SendDate = &v
+	return s
+}
+
+func (s *QuerySendDetailsResponseBodyModel) SetSendStatus(v int64) *QuerySendDetailsResponseBodyModel {
+	s.SendStatus = &v
+	return s
+}
+
+func (s *QuerySendDetailsResponseBodyModel) SetTemplateCode(v string) *QuerySendDetailsResponseBodyModel {
+	s.TemplateCode = &v
+	return s
+}
+
+type QuerySendDetailsResponse struct {
+	Headers    map[string]*string            `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                        `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *QuerySendDetailsResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s QuerySendDetailsResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s QuerySendDetailsResponse) GoString() string {
+	return s.String()
+}
+
+func (s *QuerySendDetailsResponse) SetHeaders(v map[string]*string) *QuerySendDetailsResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *QuerySendDetailsResponse) SetStatusCode(v int32) *QuerySendDetailsResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *QuerySendDetailsResponse) SetBody(v *QuerySendDetailsResponseBody) *QuerySendDetailsResponse {
+	s.Body = v
+	return s
+}
+
+type SendSmsVerifyCodeRequest struct {
+	CodeLength           *int64  `json:"CodeLength,omitempty" xml:"CodeLength,omitempty"`
+	CodeType             *int64  `json:"CodeType,omitempty" xml:"CodeType,omitempty"`
+	CountryCode          *string `json:"CountryCode,omitempty" xml:"CountryCode,omitempty"`
+	DuplicatePolicy      *int64  `json:"DuplicatePolicy,omitempty" xml:"DuplicatePolicy,omitempty"`
+	Interval             *int64  `json:"Interval,omitempty" xml:"Interval,omitempty"`
+	OutId                *string `json:"OutId,omitempty" xml:"OutId,omitempty"`
+	OwnerId              *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
+	PhoneNumber          *string `json:"PhoneNumber,omitempty" xml:"PhoneNumber,omitempty"`
+	ResourceOwnerAccount *string `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
+	ResourceOwnerId      *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
+	ReturnVerifyCode     *bool   `json:"ReturnVerifyCode,omitempty" xml:"ReturnVerifyCode,omitempty"`
+	SchemeName           *string `json:"SchemeName,omitempty" xml:"SchemeName,omitempty"`
+	SignName             *string `json:"SignName,omitempty" xml:"SignName,omitempty"`
+	SmsUpExtendCode      *string `json:"SmsUpExtendCode,omitempty" xml:"SmsUpExtendCode,omitempty"`
+	TemplateCode         *string `json:"TemplateCode,omitempty" xml:"TemplateCode,omitempty"`
+	TemplateParam        *string `json:"TemplateParam,omitempty" xml:"TemplateParam,omitempty"`
+	ValidTime            *int64  `json:"ValidTime,omitempty" xml:"ValidTime,omitempty"`
+}
+
+func (s SendSmsVerifyCodeRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s SendSmsVerifyCodeRequest) GoString() string {
+	return s.String()
+}
+
+func (s *SendSmsVerifyCodeRequest) SetCodeLength(v int64) *SendSmsVerifyCodeRequest {
+	s.CodeLength = &v
+	return s
+}
+
+func (s *SendSmsVerifyCodeRequest) SetCodeType(v int64) *SendSmsVerifyCodeRequest {
+	s.CodeType = &v
+	return s
+}
+
+func (s *SendSmsVerifyCodeRequest) SetCountryCode(v string) *SendSmsVerifyCodeRequest {
+	s.CountryCode = &v
+	return s
+}
+
+func (s *SendSmsVerifyCodeRequest) SetDuplicatePolicy(v int64) *SendSmsVerifyCodeRequest {
+	s.DuplicatePolicy = &v
+	return s
+}
+
+func (s *SendSmsVerifyCodeRequest) SetInterval(v int64) *SendSmsVerifyCodeRequest {
+	s.Interval = &v
+	return s
+}
+
+func (s *SendSmsVerifyCodeRequest) SetOutId(v string) *SendSmsVerifyCodeRequest {
+	s.OutId = &v
+	return s
+}
+
+func (s *SendSmsVerifyCodeRequest) SetOwnerId(v int64) *SendSmsVerifyCodeRequest {
+	s.OwnerId = &v
+	return s
+}
+
+func (s *SendSmsVerifyCodeRequest) SetPhoneNumber(v string) *SendSmsVerifyCodeRequest {
+	s.PhoneNumber = &v
+	return s
+}
+
+func (s *SendSmsVerifyCodeRequest) SetResourceOwnerAccount(v string) *SendSmsVerifyCodeRequest {
+	s.ResourceOwnerAccount = &v
+	return s
+}
+
+func (s *SendSmsVerifyCodeRequest) SetResourceOwnerId(v int64) *SendSmsVerifyCodeRequest {
+	s.ResourceOwnerId = &v
+	return s
+}
+
+func (s *SendSmsVerifyCodeRequest) SetReturnVerifyCode(v bool) *SendSmsVerifyCodeRequest {
+	s.ReturnVerifyCode = &v
+	return s
+}
+
+func (s *SendSmsVerifyCodeRequest) SetSchemeName(v string) *SendSmsVerifyCodeRequest {
+	s.SchemeName = &v
+	return s
+}
+
+func (s *SendSmsVerifyCodeRequest) SetSignName(v string) *SendSmsVerifyCodeRequest {
+	s.SignName = &v
+	return s
+}
+
+func (s *SendSmsVerifyCodeRequest) SetSmsUpExtendCode(v string) *SendSmsVerifyCodeRequest {
+	s.SmsUpExtendCode = &v
+	return s
+}
+
+func (s *SendSmsVerifyCodeRequest) SetTemplateCode(v string) *SendSmsVerifyCodeRequest {
+	s.TemplateCode = &v
+	return s
+}
+
+func (s *SendSmsVerifyCodeRequest) SetTemplateParam(v string) *SendSmsVerifyCodeRequest {
+	s.TemplateParam = &v
+	return s
+}
+
+func (s *SendSmsVerifyCodeRequest) SetValidTime(v int64) *SendSmsVerifyCodeRequest {
+	s.ValidTime = &v
+	return s
+}
+
+type SendSmsVerifyCodeResponseBody struct {
+	AccessDeniedDetail *string                             `json:"AccessDeniedDetail,omitempty" xml:"AccessDeniedDetail,omitempty"`
+	Code               *string                             `json:"Code,omitempty" xml:"Code,omitempty"`
+	Message            *string                             `json:"Message,omitempty" xml:"Message,omitempty"`
+	Model              *SendSmsVerifyCodeResponseBodyModel `json:"Model,omitempty" xml:"Model,omitempty" type:"Struct"`
+	Success            *bool                               `json:"Success,omitempty" xml:"Success,omitempty"`
+}
+
+func (s SendSmsVerifyCodeResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s SendSmsVerifyCodeResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *SendSmsVerifyCodeResponseBody) SetAccessDeniedDetail(v string) *SendSmsVerifyCodeResponseBody {
+	s.AccessDeniedDetail = &v
+	return s
+}
+
+func (s *SendSmsVerifyCodeResponseBody) SetCode(v string) *SendSmsVerifyCodeResponseBody {
+	s.Code = &v
+	return s
+}
+
+func (s *SendSmsVerifyCodeResponseBody) SetMessage(v string) *SendSmsVerifyCodeResponseBody {
+	s.Message = &v
+	return s
+}
+
+func (s *SendSmsVerifyCodeResponseBody) SetModel(v *SendSmsVerifyCodeResponseBodyModel) *SendSmsVerifyCodeResponseBody {
+	s.Model = v
+	return s
+}
+
+func (s *SendSmsVerifyCodeResponseBody) SetSuccess(v bool) *SendSmsVerifyCodeResponseBody {
+	s.Success = &v
+	return s
+}
+
+type SendSmsVerifyCodeResponseBodyModel struct {
+	BizId      *string `json:"BizId,omitempty" xml:"BizId,omitempty"`
+	OutId      *string `json:"OutId,omitempty" xml:"OutId,omitempty"`
+	RequestId  *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	VerifyCode *string `json:"VerifyCode,omitempty" xml:"VerifyCode,omitempty"`
+}
+
+func (s SendSmsVerifyCodeResponseBodyModel) String() string {
+	return tea.Prettify(s)
+}
+
+func (s SendSmsVerifyCodeResponseBodyModel) GoString() string {
+	return s.String()
+}
+
+func (s *SendSmsVerifyCodeResponseBodyModel) SetBizId(v string) *SendSmsVerifyCodeResponseBodyModel {
+	s.BizId = &v
+	return s
+}
+
+func (s *SendSmsVerifyCodeResponseBodyModel) SetOutId(v string) *SendSmsVerifyCodeResponseBodyModel {
+	s.OutId = &v
+	return s
+}
+
+func (s *SendSmsVerifyCodeResponseBodyModel) SetRequestId(v string) *SendSmsVerifyCodeResponseBodyModel {
+	s.RequestId = &v
+	return s
+}
+
+func (s *SendSmsVerifyCodeResponseBodyModel) SetVerifyCode(v string) *SendSmsVerifyCodeResponseBodyModel {
+	s.VerifyCode = &v
+	return s
+}
+
+type SendSmsVerifyCodeResponse struct {
+	Headers    map[string]*string             `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                         `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *SendSmsVerifyCodeResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s SendSmsVerifyCodeResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s SendSmsVerifyCodeResponse) GoString() string {
+	return s.String()
+}
+
+func (s *SendSmsVerifyCodeResponse) SetHeaders(v map[string]*string) *SendSmsVerifyCodeResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *SendSmsVerifyCodeResponse) SetStatusCode(v int32) *SendSmsVerifyCodeResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *SendSmsVerifyCodeResponse) SetBody(v *SendSmsVerifyCodeResponseBody) *SendSmsVerifyCodeResponse {
+	s.Body = v
+	return s
+}
+
 type VerifyMobileRequest struct {
 	AccessCode           *string `json:"AccessCode,omitempty" xml:"AccessCode,omitempty"`
 	OutId                *string `json:"OutId,omitempty" xml:"OutId,omitempty"`
@@ -2166,6 +2900,166 @@ func (client *Client) GetEndpoint(productId *string, regionId *string, endpointR
 	}
 
 	_body, _err := endpointutil.GetEndpointRules(productId, regionId, endpointRule, network, suffix)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) CheckSmsVerifyCodeWithOptions(request *CheckSmsVerifyCodeRequest, runtime *util.RuntimeOptions) (_result *CheckSmsVerifyCodeResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.CaseAuthPolicy)) {
+		query["CaseAuthPolicy"] = request.CaseAuthPolicy
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.CountryCode)) {
+		query["CountryCode"] = request.CountryCode
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.OutId)) {
+		query["OutId"] = request.OutId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.OwnerId)) {
+		query["OwnerId"] = request.OwnerId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.PhoneNumber)) {
+		query["PhoneNumber"] = request.PhoneNumber
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ResourceOwnerAccount)) {
+		query["ResourceOwnerAccount"] = request.ResourceOwnerAccount
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ResourceOwnerId)) {
+		query["ResourceOwnerId"] = request.ResourceOwnerId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.SchemeName)) {
+		query["SchemeName"] = request.SchemeName
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.VerifyCode)) {
+		query["VerifyCode"] = request.VerifyCode
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("CheckSmsVerifyCode"),
+		Version:     tea.String("2017-05-25"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &CheckSmsVerifyCodeResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) CheckSmsVerifyCode(request *CheckSmsVerifyCodeRequest) (_result *CheckSmsVerifyCodeResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &CheckSmsVerifyCodeResponse{}
+	_body, _err := client.CheckSmsVerifyCodeWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) CreateSchemeConfigWithOptions(request *CreateSchemeConfigRequest, runtime *util.RuntimeOptions) (_result *CreateSchemeConfigResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.AndroidPackageName)) {
+		query["AndroidPackageName"] = request.AndroidPackageName
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.AndroidPackageSign)) {
+		query["AndroidPackageSign"] = request.AndroidPackageSign
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.AppName)) {
+		query["AppName"] = request.AppName
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.H5Origin)) {
+		query["H5Origin"] = request.H5Origin
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.H5Url)) {
+		query["H5Url"] = request.H5Url
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.IosBundleId)) {
+		query["IosBundleId"] = request.IosBundleId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.OwnerId)) {
+		query["OwnerId"] = request.OwnerId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Platform)) {
+		query["Platform"] = request.Platform
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ResourceOwnerAccount)) {
+		query["ResourceOwnerAccount"] = request.ResourceOwnerAccount
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ResourceOwnerId)) {
+		query["ResourceOwnerId"] = request.ResourceOwnerId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.SchemeName)) {
+		query["SchemeName"] = request.SchemeName
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("CreateSchemeConfig"),
+		Version:     tea.String("2017-05-25"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &CreateSchemeConfigResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) CreateSchemeConfig(request *CreateSchemeConfigRequest) (_result *CreateSchemeConfigResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &CreateSchemeConfigResponse{}
+	_body, _err := client.CreateSchemeConfigWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -2926,6 +3820,186 @@ func (client *Client) QueryGateVerifyStatisticPublic(request *QueryGateVerifySta
 	runtime := &util.RuntimeOptions{}
 	_result = &QueryGateVerifyStatisticPublicResponse{}
 	_body, _err := client.QueryGateVerifyStatisticPublicWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) QuerySendDetailsWithOptions(request *QuerySendDetailsRequest, runtime *util.RuntimeOptions) (_result *QuerySendDetailsResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.BizId)) {
+		query["BizId"] = request.BizId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.CurrentPage)) {
+		query["CurrentPage"] = request.CurrentPage
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.OwnerId)) {
+		query["OwnerId"] = request.OwnerId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.PageSize)) {
+		query["PageSize"] = request.PageSize
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.PhoneNumber)) {
+		query["PhoneNumber"] = request.PhoneNumber
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ResourceOwnerAccount)) {
+		query["ResourceOwnerAccount"] = request.ResourceOwnerAccount
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ResourceOwnerId)) {
+		query["ResourceOwnerId"] = request.ResourceOwnerId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.SendDate)) {
+		query["SendDate"] = request.SendDate
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("QuerySendDetails"),
+		Version:     tea.String("2017-05-25"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &QuerySendDetailsResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) QuerySendDetails(request *QuerySendDetailsRequest) (_result *QuerySendDetailsResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &QuerySendDetailsResponse{}
+	_body, _err := client.QuerySendDetailsWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) SendSmsVerifyCodeWithOptions(request *SendSmsVerifyCodeRequest, runtime *util.RuntimeOptions) (_result *SendSmsVerifyCodeResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.CodeLength)) {
+		query["CodeLength"] = request.CodeLength
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.CodeType)) {
+		query["CodeType"] = request.CodeType
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.CountryCode)) {
+		query["CountryCode"] = request.CountryCode
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.DuplicatePolicy)) {
+		query["DuplicatePolicy"] = request.DuplicatePolicy
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Interval)) {
+		query["Interval"] = request.Interval
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.OutId)) {
+		query["OutId"] = request.OutId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.OwnerId)) {
+		query["OwnerId"] = request.OwnerId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.PhoneNumber)) {
+		query["PhoneNumber"] = request.PhoneNumber
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ResourceOwnerAccount)) {
+		query["ResourceOwnerAccount"] = request.ResourceOwnerAccount
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ResourceOwnerId)) {
+		query["ResourceOwnerId"] = request.ResourceOwnerId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ReturnVerifyCode)) {
+		query["ReturnVerifyCode"] = request.ReturnVerifyCode
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.SchemeName)) {
+		query["SchemeName"] = request.SchemeName
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.SignName)) {
+		query["SignName"] = request.SignName
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.SmsUpExtendCode)) {
+		query["SmsUpExtendCode"] = request.SmsUpExtendCode
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.TemplateCode)) {
+		query["TemplateCode"] = request.TemplateCode
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.TemplateParam)) {
+		query["TemplateParam"] = request.TemplateParam
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ValidTime)) {
+		query["ValidTime"] = request.ValidTime
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("SendSmsVerifyCode"),
+		Version:     tea.String("2017-05-25"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &SendSmsVerifyCodeResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) SendSmsVerifyCode(request *SendSmsVerifyCodeRequest) (_result *SendSmsVerifyCodeResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &SendSmsVerifyCodeResponse{}
+	_body, _err := client.SendSmsVerifyCodeWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
