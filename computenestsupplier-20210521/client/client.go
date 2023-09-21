@@ -512,6 +512,7 @@ type CreateServiceRequest struct {
 	OperationMetadata    *string                            `json:"OperationMetadata,omitempty" xml:"OperationMetadata,omitempty"`
 	PolicyNames          *string                            `json:"PolicyNames,omitempty" xml:"PolicyNames,omitempty"`
 	RegionId             *string                            `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	Resellable           *bool                              `json:"Resellable,omitempty" xml:"Resellable,omitempty"`
 	ResourceGroupId      *string                            `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
 	ServiceId            *string                            `json:"ServiceId,omitempty" xml:"ServiceId,omitempty"`
 	ServiceInfo          []*CreateServiceRequestServiceInfo `json:"ServiceInfo,omitempty" xml:"ServiceInfo,omitempty" type:"Repeated"`
@@ -591,6 +592,11 @@ func (s *CreateServiceRequest) SetPolicyNames(v string) *CreateServiceRequest {
 
 func (s *CreateServiceRequest) SetRegionId(v string) *CreateServiceRequest {
 	s.RegionId = &v
+	return s
+}
+
+func (s *CreateServiceRequest) SetResellable(v bool) *CreateServiceRequest {
+	s.Resellable = &v
 	return s
 }
 
@@ -1761,6 +1767,7 @@ type GetServiceResponseBody struct {
 	PublishTime             *string                                          `json:"PublishTime,omitempty" xml:"PublishTime,omitempty"`
 	RegistrationId          *string                                          `json:"RegistrationId,omitempty" xml:"RegistrationId,omitempty"`
 	RequestId               *string                                          `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	Resellable              *bool                                            `json:"Resellable,omitempty" xml:"Resellable,omitempty"`
 	ResourceGroupId         *string                                          `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
 	ServiceDocUrl           *string                                          `json:"ServiceDocUrl,omitempty" xml:"ServiceDocUrl,omitempty"`
 	ServiceId               *string                                          `json:"ServiceId,omitempty" xml:"ServiceId,omitempty"`
@@ -1785,6 +1792,7 @@ type GetServiceResponseBody struct {
 	UpgradeMetadata         *string                                          `json:"UpgradeMetadata,omitempty" xml:"UpgradeMetadata,omitempty"`
 	Version                 *string                                          `json:"Version,omitempty" xml:"Version,omitempty"`
 	VersionName             *string                                          `json:"VersionName,omitempty" xml:"VersionName,omitempty"`
+	VirtualInternetService  *string                                          `json:"VirtualInternetService,omitempty" xml:"VirtualInternetService,omitempty"`
 }
 
 func (s GetServiceResponseBody) String() string {
@@ -1905,6 +1913,11 @@ func (s *GetServiceResponseBody) SetRequestId(v string) *GetServiceResponseBody 
 	return s
 }
 
+func (s *GetServiceResponseBody) SetResellable(v bool) *GetServiceResponseBody {
+	s.Resellable = &v
+	return s
+}
+
 func (s *GetServiceResponseBody) SetResourceGroupId(v string) *GetServiceResponseBody {
 	s.ResourceGroupId = &v
 	return s
@@ -2022,6 +2035,11 @@ func (s *GetServiceResponseBody) SetVersion(v string) *GetServiceResponseBody {
 
 func (s *GetServiceResponseBody) SetVersionName(v string) *GetServiceResponseBody {
 	s.VersionName = &v
+	return s
+}
+
+func (s *GetServiceResponseBody) SetVirtualInternetService(v string) *GetServiceResponseBody {
+	s.VirtualInternetService = &v
 	return s
 }
 
@@ -4448,14 +4466,24 @@ func (s *ListServiceUsagesResponseBodyServiceUsages) SetUserInformation(v *ListS
 }
 
 type ListServiceUsagesResponseBodyServiceUsagesUserInformation struct {
-	Company      *string `json:"Company,omitempty" xml:"Company,omitempty"`
-	Country      *string `json:"Country,omitempty" xml:"Country,omitempty"`
-	EmailAddress *string `json:"EmailAddress,omitempty" xml:"EmailAddress,omitempty"`
-	Industry     *string `json:"Industry,omitempty" xml:"Industry,omitempty"`
-	Name         *string `json:"Name,omitempty" xml:"Name,omitempty"`
-	Source       *string `json:"Source,omitempty" xml:"Source,omitempty"`
-	Telephone    *string `json:"Telephone,omitempty" xml:"Telephone,omitempty"`
-	Title        *string `json:"Title,omitempty" xml:"Title,omitempty"`
+	Company              *string `json:"Company,omitempty" xml:"Company,omitempty"`
+	ContactEmail         *string `json:"ContactEmail,omitempty" xml:"ContactEmail,omitempty"`
+	ContactNumber        *string `json:"ContactNumber,omitempty" xml:"ContactNumber,omitempty"`
+	ContactPerson        *string `json:"ContactPerson,omitempty" xml:"ContactPerson,omitempty"`
+	ContactPersonTitle   *string `json:"ContactPersonTitle,omitempty" xml:"ContactPersonTitle,omitempty"`
+	Country              *string `json:"Country,omitempty" xml:"Country,omitempty"`
+	EmailAddress         *string `json:"EmailAddress,omitempty" xml:"EmailAddress,omitempty"`
+	Industry             *string `json:"Industry,omitempty" xml:"Industry,omitempty"`
+	Name                 *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	ProductBusiness      *string `json:"ProductBusiness,omitempty" xml:"ProductBusiness,omitempty"`
+	ProductDeliveryTypes *string `json:"ProductDeliveryTypes,omitempty" xml:"ProductDeliveryTypes,omitempty"`
+	ProductSellTypes     *string `json:"ProductSellTypes,omitempty" xml:"ProductSellTypes,omitempty"`
+	Source               *string `json:"Source,omitempty" xml:"Source,omitempty"`
+	SupplierDesc         *string `json:"SupplierDesc,omitempty" xml:"SupplierDesc,omitempty"`
+	SupplierName         *string `json:"SupplierName,omitempty" xml:"SupplierName,omitempty"`
+	SupplierUrl          *string `json:"SupplierUrl,omitempty" xml:"SupplierUrl,omitempty"`
+	Telephone            *string `json:"Telephone,omitempty" xml:"Telephone,omitempty"`
+	Title                *string `json:"Title,omitempty" xml:"Title,omitempty"`
 }
 
 func (s ListServiceUsagesResponseBodyServiceUsagesUserInformation) String() string {
@@ -4468,6 +4496,26 @@ func (s ListServiceUsagesResponseBodyServiceUsagesUserInformation) GoString() st
 
 func (s *ListServiceUsagesResponseBodyServiceUsagesUserInformation) SetCompany(v string) *ListServiceUsagesResponseBodyServiceUsagesUserInformation {
 	s.Company = &v
+	return s
+}
+
+func (s *ListServiceUsagesResponseBodyServiceUsagesUserInformation) SetContactEmail(v string) *ListServiceUsagesResponseBodyServiceUsagesUserInformation {
+	s.ContactEmail = &v
+	return s
+}
+
+func (s *ListServiceUsagesResponseBodyServiceUsagesUserInformation) SetContactNumber(v string) *ListServiceUsagesResponseBodyServiceUsagesUserInformation {
+	s.ContactNumber = &v
+	return s
+}
+
+func (s *ListServiceUsagesResponseBodyServiceUsagesUserInformation) SetContactPerson(v string) *ListServiceUsagesResponseBodyServiceUsagesUserInformation {
+	s.ContactPerson = &v
+	return s
+}
+
+func (s *ListServiceUsagesResponseBodyServiceUsagesUserInformation) SetContactPersonTitle(v string) *ListServiceUsagesResponseBodyServiceUsagesUserInformation {
+	s.ContactPersonTitle = &v
 	return s
 }
 
@@ -4491,8 +4539,38 @@ func (s *ListServiceUsagesResponseBodyServiceUsagesUserInformation) SetName(v st
 	return s
 }
 
+func (s *ListServiceUsagesResponseBodyServiceUsagesUserInformation) SetProductBusiness(v string) *ListServiceUsagesResponseBodyServiceUsagesUserInformation {
+	s.ProductBusiness = &v
+	return s
+}
+
+func (s *ListServiceUsagesResponseBodyServiceUsagesUserInformation) SetProductDeliveryTypes(v string) *ListServiceUsagesResponseBodyServiceUsagesUserInformation {
+	s.ProductDeliveryTypes = &v
+	return s
+}
+
+func (s *ListServiceUsagesResponseBodyServiceUsagesUserInformation) SetProductSellTypes(v string) *ListServiceUsagesResponseBodyServiceUsagesUserInformation {
+	s.ProductSellTypes = &v
+	return s
+}
+
 func (s *ListServiceUsagesResponseBodyServiceUsagesUserInformation) SetSource(v string) *ListServiceUsagesResponseBodyServiceUsagesUserInformation {
 	s.Source = &v
+	return s
+}
+
+func (s *ListServiceUsagesResponseBodyServiceUsagesUserInformation) SetSupplierDesc(v string) *ListServiceUsagesResponseBodyServiceUsagesUserInformation {
+	s.SupplierDesc = &v
+	return s
+}
+
+func (s *ListServiceUsagesResponseBodyServiceUsagesUserInformation) SetSupplierName(v string) *ListServiceUsagesResponseBodyServiceUsagesUserInformation {
+	s.SupplierName = &v
+	return s
+}
+
+func (s *ListServiceUsagesResponseBodyServiceUsagesUserInformation) SetSupplierUrl(v string) *ListServiceUsagesResponseBodyServiceUsagesUserInformation {
+	s.SupplierUrl = &v
 	return s
 }
 
@@ -4686,6 +4764,7 @@ type ListServicesResponseBodyServices struct {
 	LatestResellSourceServiceVersion *string                                         `json:"LatestResellSourceServiceVersion,omitempty" xml:"LatestResellSourceServiceVersion,omitempty"`
 	PublishTime                      *string                                         `json:"PublishTime,omitempty" xml:"PublishTime,omitempty"`
 	RelationType                     *string                                         `json:"RelationType,omitempty" xml:"RelationType,omitempty"`
+	ResellApplyStatus                *string                                         `json:"ResellApplyStatus,omitempty" xml:"ResellApplyStatus,omitempty"`
 	ResellServiceId                  *string                                         `json:"ResellServiceId,omitempty" xml:"ResellServiceId,omitempty"`
 	ResourceGroupId                  *string                                         `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
 	ServiceId                        *string                                         `json:"ServiceId,omitempty" xml:"ServiceId,omitempty"`
@@ -4705,6 +4784,7 @@ type ListServicesResponseBodyServices struct {
 	UpdateTime                       *string                                         `json:"UpdateTime,omitempty" xml:"UpdateTime,omitempty"`
 	Version                          *string                                         `json:"Version,omitempty" xml:"Version,omitempty"`
 	VersionName                      *string                                         `json:"VersionName,omitempty" xml:"VersionName,omitempty"`
+	VirtualInternetService           *string                                         `json:"VirtualInternetService,omitempty" xml:"VirtualInternetService,omitempty"`
 }
 
 func (s ListServicesResponseBodyServices) String() string {
@@ -4762,6 +4842,11 @@ func (s *ListServicesResponseBodyServices) SetPublishTime(v string) *ListService
 
 func (s *ListServicesResponseBodyServices) SetRelationType(v string) *ListServicesResponseBodyServices {
 	s.RelationType = &v
+	return s
+}
+
+func (s *ListServicesResponseBodyServices) SetResellApplyStatus(v string) *ListServicesResponseBodyServices {
+	s.ResellApplyStatus = &v
 	return s
 }
 
@@ -4857,6 +4942,11 @@ func (s *ListServicesResponseBodyServices) SetVersion(v string) *ListServicesRes
 
 func (s *ListServicesResponseBodyServices) SetVersionName(v string) *ListServicesResponseBodyServices {
 	s.VersionName = &v
+	return s
+}
+
+func (s *ListServicesResponseBodyServices) SetVirtualInternetService(v string) *ListServicesResponseBodyServices {
+	s.VirtualInternetService = &v
 	return s
 }
 
@@ -5530,6 +5620,7 @@ type UpdateServiceRequest struct {
 	OperationMetadata *string                            `json:"OperationMetadata,omitempty" xml:"OperationMetadata,omitempty"`
 	PolicyNames       *string                            `json:"PolicyNames,omitempty" xml:"PolicyNames,omitempty"`
 	RegionId          *string                            `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	Resellable        *bool                              `json:"Resellable,omitempty" xml:"Resellable,omitempty"`
 	ServiceId         *string                            `json:"ServiceId,omitempty" xml:"ServiceId,omitempty"`
 	ServiceInfo       []*UpdateServiceRequestServiceInfo `json:"ServiceInfo,omitempty" xml:"ServiceInfo,omitempty" type:"Repeated"`
 	ServiceType       *string                            `json:"ServiceType,omitempty" xml:"ServiceType,omitempty"`
@@ -5600,6 +5691,11 @@ func (s *UpdateServiceRequest) SetPolicyNames(v string) *UpdateServiceRequest {
 
 func (s *UpdateServiceRequest) SetRegionId(v string) *UpdateServiceRequest {
 	s.RegionId = &v
+	return s
+}
+
+func (s *UpdateServiceRequest) SetResellable(v bool) *UpdateServiceRequest {
+	s.Resellable = &v
 	return s
 }
 
@@ -5971,6 +6067,10 @@ func (client *Client) CreateServiceWithOptions(request *CreateServiceRequest, ru
 
 	if !tea.BoolValue(util.IsUnset(request.RegionId)) {
 		query["RegionId"] = request.RegionId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Resellable)) {
+		query["Resellable"] = request.Resellable
 	}
 
 	if !tea.BoolValue(util.IsUnset(request.ResourceGroupId)) {
@@ -7413,6 +7513,10 @@ func (client *Client) UpdateServiceWithOptions(request *UpdateServiceRequest, ru
 
 	if !tea.BoolValue(util.IsUnset(request.RegionId)) {
 		query["RegionId"] = request.RegionId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Resellable)) {
+		query["Resellable"] = request.Resellable
 	}
 
 	if !tea.BoolValue(util.IsUnset(request.ServiceId)) {
