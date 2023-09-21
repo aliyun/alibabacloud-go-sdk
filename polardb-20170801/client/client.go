@@ -14195,9 +14195,8 @@ func (s *DescribeMaskingRulesResponse) SetBody(v *DescribeMaskingRulesResponseBo
 type DescribeMetaListRequest struct {
 	// The ID of the data backup file.
 	//
-	// >
-	// *   When you run a query, you must specify the `BackId` or `RestoreTime` parameter.
-	// *   You can call the [DescribeBackups](~~98102~~) operation to query the ID of the backup set.
+	// >*   When you run a query, you must specify the `BackId` or `RestoreTime` parameter.
+	// >*   You can call the [DescribeBackups](~~98102~~) operation to query the ID of the backup set.
 	BackupId *string `json:"BackupId,omitempty" xml:"BackupId,omitempty"`
 	// The ID of the cluster.
 	//
@@ -14205,9 +14204,8 @@ type DescribeMetaListRequest struct {
 	DBClusterId *string `json:"DBClusterId,omitempty" xml:"DBClusterId,omitempty"`
 	// Specify the specific database name (such as `test_db`) to query the names of all data tables that can be restored in the desired database.
 	//
-	// >
-	// *   You can specify only one database name each time.
-	// *   If you do not specify this parameter, you can query the names of all databases that can be restored in the current backup set. However, you cannot query the names of data tables in each database.
+	// >*   You can specify only one database name each time.
+	// >*   If you do not specify this parameter, you can query the names of all databases that can be restored in the current backup set. However, you cannot query the names of data tables in each database.
 	GetDbName    *string `json:"GetDbName,omitempty" xml:"GetDbName,omitempty"`
 	OwnerAccount *string `json:"OwnerAccount,omitempty" xml:"OwnerAccount,omitempty"`
 	OwnerId      *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
@@ -14302,6 +14300,7 @@ func (s *DescribeMetaListRequest) SetSecurityToken(v string) *DescribeMetaListRe
 }
 
 type DescribeMetaListResponseBody struct {
+	// The ID of the cluster.
 	DBClusterId *string `json:"DBClusterId,omitempty" xml:"DBClusterId,omitempty"`
 	// The details of databases and tables that can be restored.
 	Items []*DescribeMetaListResponseBodyItems `json:"Items,omitempty" xml:"Items,omitempty" type:"Repeated"`
@@ -20803,8 +20802,11 @@ type ModifyDBClusterServerlessConfRequest struct {
 	AllowShutDown *string `json:"AllowShutDown,omitempty" xml:"AllowShutDown,omitempty"`
 	// The ID of the serverless cluster.
 	DBClusterId          *string `json:"DBClusterId,omitempty" xml:"DBClusterId,omitempty"`
+	FromTimeService      *bool   `json:"FromTimeService,omitempty" xml:"FromTimeService,omitempty"`
 	OwnerAccount         *string `json:"OwnerAccount,omitempty" xml:"OwnerAccount,omitempty"`
 	OwnerId              *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
+	PlannedEndTime       *string `json:"PlannedEndTime,omitempty" xml:"PlannedEndTime,omitempty"`
+	PlannedStartTime     *string `json:"PlannedStartTime,omitempty" xml:"PlannedStartTime,omitempty"`
 	ResourceOwnerAccount *string `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
 	ResourceOwnerId      *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
 	// The maximum number of PCUs per node for scaling. Valid values: 1 PCU to 32 PCUs.
@@ -20837,6 +20839,11 @@ func (s *ModifyDBClusterServerlessConfRequest) SetDBClusterId(v string) *ModifyD
 	return s
 }
 
+func (s *ModifyDBClusterServerlessConfRequest) SetFromTimeService(v bool) *ModifyDBClusterServerlessConfRequest {
+	s.FromTimeService = &v
+	return s
+}
+
 func (s *ModifyDBClusterServerlessConfRequest) SetOwnerAccount(v string) *ModifyDBClusterServerlessConfRequest {
 	s.OwnerAccount = &v
 	return s
@@ -20844,6 +20851,16 @@ func (s *ModifyDBClusterServerlessConfRequest) SetOwnerAccount(v string) *Modify
 
 func (s *ModifyDBClusterServerlessConfRequest) SetOwnerId(v int64) *ModifyDBClusterServerlessConfRequest {
 	s.OwnerId = &v
+	return s
+}
+
+func (s *ModifyDBClusterServerlessConfRequest) SetPlannedEndTime(v string) *ModifyDBClusterServerlessConfRequest {
+	s.PlannedEndTime = &v
+	return s
+}
+
+func (s *ModifyDBClusterServerlessConfRequest) SetPlannedStartTime(v string) *ModifyDBClusterServerlessConfRequest {
+	s.PlannedStartTime = &v
 	return s
 }
 
@@ -33562,12 +33579,24 @@ func (client *Client) ModifyDBClusterServerlessConfWithOptions(request *ModifyDB
 		query["DBClusterId"] = request.DBClusterId
 	}
 
+	if !tea.BoolValue(util.IsUnset(request.FromTimeService)) {
+		query["FromTimeService"] = request.FromTimeService
+	}
+
 	if !tea.BoolValue(util.IsUnset(request.OwnerAccount)) {
 		query["OwnerAccount"] = request.OwnerAccount
 	}
 
 	if !tea.BoolValue(util.IsUnset(request.OwnerId)) {
 		query["OwnerId"] = request.OwnerId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.PlannedEndTime)) {
+		query["PlannedEndTime"] = request.PlannedEndTime
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.PlannedStartTime)) {
+		query["PlannedStartTime"] = request.PlannedStartTime
 	}
 
 	if !tea.BoolValue(util.IsUnset(request.ResourceOwnerAccount)) {
