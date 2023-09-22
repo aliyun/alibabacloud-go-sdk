@@ -28846,6 +28846,7 @@ type InvokeThingsServiceRequest struct {
 	IotInstanceId *string `json:"IotInstanceId,omitempty" xml:"IotInstanceId,omitempty"`
 	// The **ProductKey** of the product to which the device belongs.
 	ProductKey *string `json:"ProductKey,omitempty" xml:"ProductKey,omitempty"`
+	Qos        *int32  `json:"Qos,omitempty" xml:"Qos,omitempty"`
 }
 
 func (s InvokeThingsServiceRequest) String() string {
@@ -28878,6 +28879,11 @@ func (s *InvokeThingsServiceRequest) SetIotInstanceId(v string) *InvokeThingsSer
 
 func (s *InvokeThingsServiceRequest) SetProductKey(v string) *InvokeThingsServiceRequest {
 	s.ProductKey = &v
+	return s
+}
+
+func (s *InvokeThingsServiceRequest) SetQos(v int32) *InvokeThingsServiceRequest {
+	s.Qos = &v
 	return s
 }
 
@@ -60042,6 +60048,99 @@ func (s *ResetConsumerGroupPositionResponse) SetBody(v *ResetConsumerGroupPositi
 	return s
 }
 
+type ResetDeviceTimelineRequest struct {
+	DeviceName    *string `json:"DeviceName,omitempty" xml:"DeviceName,omitempty"`
+	IotInstanceId *string `json:"IotInstanceId,omitempty" xml:"IotInstanceId,omitempty"`
+	ProductKey    *string `json:"ProductKey,omitempty" xml:"ProductKey,omitempty"`
+}
+
+func (s ResetDeviceTimelineRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ResetDeviceTimelineRequest) GoString() string {
+	return s.String()
+}
+
+func (s *ResetDeviceTimelineRequest) SetDeviceName(v string) *ResetDeviceTimelineRequest {
+	s.DeviceName = &v
+	return s
+}
+
+func (s *ResetDeviceTimelineRequest) SetIotInstanceId(v string) *ResetDeviceTimelineRequest {
+	s.IotInstanceId = &v
+	return s
+}
+
+func (s *ResetDeviceTimelineRequest) SetProductKey(v string) *ResetDeviceTimelineRequest {
+	s.ProductKey = &v
+	return s
+}
+
+type ResetDeviceTimelineResponseBody struct {
+	Code         *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	ErrorMessage *string `json:"ErrorMessage,omitempty" xml:"ErrorMessage,omitempty"`
+	RequestId    *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	Success      *bool   `json:"Success,omitempty" xml:"Success,omitempty"`
+}
+
+func (s ResetDeviceTimelineResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ResetDeviceTimelineResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *ResetDeviceTimelineResponseBody) SetCode(v string) *ResetDeviceTimelineResponseBody {
+	s.Code = &v
+	return s
+}
+
+func (s *ResetDeviceTimelineResponseBody) SetErrorMessage(v string) *ResetDeviceTimelineResponseBody {
+	s.ErrorMessage = &v
+	return s
+}
+
+func (s *ResetDeviceTimelineResponseBody) SetRequestId(v string) *ResetDeviceTimelineResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *ResetDeviceTimelineResponseBody) SetSuccess(v bool) *ResetDeviceTimelineResponseBody {
+	s.Success = &v
+	return s
+}
+
+type ResetDeviceTimelineResponse struct {
+	Headers    map[string]*string               `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                           `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *ResetDeviceTimelineResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s ResetDeviceTimelineResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ResetDeviceTimelineResponse) GoString() string {
+	return s.String()
+}
+
+func (s *ResetDeviceTimelineResponse) SetHeaders(v map[string]*string) *ResetDeviceTimelineResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *ResetDeviceTimelineResponse) SetStatusCode(v int32) *ResetDeviceTimelineResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *ResetDeviceTimelineResponse) SetBody(v *ResetDeviceTimelineResponseBody) *ResetDeviceTimelineResponse {
+	s.Body = v
+	return s
+}
+
 type ResetThingRequest struct {
 	// The DeviceName of the device.
 	//
@@ -61115,6 +61214,7 @@ type SetDevicesPropertyRequest struct {
 	Items *string `json:"Items,omitempty" xml:"Items,omitempty"`
 	// The **ProductKey** of the product to which the device belongs.
 	ProductKey *string `json:"ProductKey,omitempty" xml:"ProductKey,omitempty"`
+	Qos        *int32  `json:"Qos,omitempty" xml:"Qos,omitempty"`
 }
 
 func (s SetDevicesPropertyRequest) String() string {
@@ -61142,6 +61242,11 @@ func (s *SetDevicesPropertyRequest) SetItems(v string) *SetDevicesPropertyReques
 
 func (s *SetDevicesPropertyRequest) SetProductKey(v string) *SetDevicesPropertyRequest {
 	s.ProductKey = &v
+	return s
+}
+
+func (s *SetDevicesPropertyRequest) SetQos(v int32) *SetDevicesPropertyRequest {
+	s.Qos = &v
 	return s
 }
 
@@ -81112,6 +81217,10 @@ func (client *Client) InvokeThingsServiceWithOptions(request *InvokeThingsServic
 		query["ProductKey"] = request.ProductKey
 	}
 
+	if !tea.BoolValue(util.IsUnset(request.Qos)) {
+		query["Qos"] = request.Qos
+	}
+
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
 	}
@@ -91724,6 +91833,58 @@ func (client *Client) ResetConsumerGroupPosition(request *ResetConsumerGroupPosi
 	return _result, _err
 }
 
+func (client *Client) ResetDeviceTimelineWithOptions(request *ResetDeviceTimelineRequest, runtime *util.RuntimeOptions) (_result *ResetDeviceTimelineResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.DeviceName)) {
+		query["DeviceName"] = request.DeviceName
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.IotInstanceId)) {
+		query["IotInstanceId"] = request.IotInstanceId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ProductKey)) {
+		query["ProductKey"] = request.ProductKey
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("ResetDeviceTimeline"),
+		Version:     tea.String("2018-01-20"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &ResetDeviceTimelineResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) ResetDeviceTimeline(request *ResetDeviceTimelineRequest) (_result *ResetDeviceTimelineResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &ResetDeviceTimelineResponse{}
+	_body, _err := client.ResetDeviceTimelineWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
 /**
  * *   After you use dynamic registration to obtain the device certificate information of a directly connected device and activate the device, you can call this operation to reset the dynamic registration status of the status to unregistered in the IoT Platform console. Then, you can use dynamic registration again to obtain the device certificate information. The device certificate information includes ProductKey, DeviceName, and DeviceSecret.
  * > This operation is called to reset the dynamic registration status instead of activation status of a device. After you call the operation to reset the dynamic registration status of a device, the status of the device in the IoT Platform console is not reset to inactive.
@@ -92334,6 +92495,10 @@ func (client *Client) SetDevicesPropertyWithOptions(request *SetDevicesPropertyR
 
 	if !tea.BoolValue(util.IsUnset(request.ProductKey)) {
 		query["ProductKey"] = request.ProductKey
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Qos)) {
+		query["Qos"] = request.Qos
 	}
 
 	req := &openapi.OpenApiRequest{
