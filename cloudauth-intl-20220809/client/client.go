@@ -1374,6 +1374,912 @@ func (s *DescribeTransactionsListResponse) SetBody(v *DescribeTransactionsListRe
 	return s
 }
 
+type DescribeWeb3AddressLabelsRequest struct {
+	// The address hash.
+	Address *string `json:"Address,omitempty" xml:"Address,omitempty"`
+	// This is the short name of blockchain。
+	// [ ETH, MATIC, BNB ]
+	ChainShortName *string `json:"ChainShortName,omitempty" xml:"ChainShortName,omitempty"`
+	// A unique business ID for tracing purpose. For example，the sequence ID from the merchant\"s business-related database.
+	MerchantBizId *string `json:"MerchantBizId,omitempty" xml:"MerchantBizId,omitempty"`
+}
+
+func (s DescribeWeb3AddressLabelsRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeWeb3AddressLabelsRequest) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeWeb3AddressLabelsRequest) SetAddress(v string) *DescribeWeb3AddressLabelsRequest {
+	s.Address = &v
+	return s
+}
+
+func (s *DescribeWeb3AddressLabelsRequest) SetChainShortName(v string) *DescribeWeb3AddressLabelsRequest {
+	s.ChainShortName = &v
+	return s
+}
+
+func (s *DescribeWeb3AddressLabelsRequest) SetMerchantBizId(v string) *DescribeWeb3AddressLabelsRequest {
+	s.MerchantBizId = &v
+	return s
+}
+
+type DescribeWeb3AddressLabelsResponseBody struct {
+	// Return code. For the full list of codes, see Codes and Messages.
+	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	// data
+	Data *DescribeWeb3AddressLabelsResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
+	// The HTTP status code
+	HttpStatusCode *int32 `json:"HttpStatusCode,omitempty" xml:"HttpStatusCode,omitempty"`
+	// Response detailed message.
+	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// The unique ID of the request, which can be used to locate issues.
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+}
+
+func (s DescribeWeb3AddressLabelsResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeWeb3AddressLabelsResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeWeb3AddressLabelsResponseBody) SetCode(v string) *DescribeWeb3AddressLabelsResponseBody {
+	s.Code = &v
+	return s
+}
+
+func (s *DescribeWeb3AddressLabelsResponseBody) SetData(v *DescribeWeb3AddressLabelsResponseBodyData) *DescribeWeb3AddressLabelsResponseBody {
+	s.Data = v
+	return s
+}
+
+func (s *DescribeWeb3AddressLabelsResponseBody) SetHttpStatusCode(v int32) *DescribeWeb3AddressLabelsResponseBody {
+	s.HttpStatusCode = &v
+	return s
+}
+
+func (s *DescribeWeb3AddressLabelsResponseBody) SetMessage(v string) *DescribeWeb3AddressLabelsResponseBody {
+	s.Message = &v
+	return s
+}
+
+func (s *DescribeWeb3AddressLabelsResponseBody) SetRequestId(v string) *DescribeWeb3AddressLabelsResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+type DescribeWeb3AddressLabelsResponseBodyData struct {
+	// address
+	Address *string `json:"Address,omitempty" xml:"Address,omitempty"`
+	// amount of native currency
+	Balance *string `json:"Balance,omitempty" xml:"Balance,omitempty"`
+	// native currency of the chain
+	BalanceSymbol *string `json:"BalanceSymbol,omitempty" xml:"BalanceSymbol,omitempty"`
+	// ChainNameEnumstring name of blockchain
+	ChainName *string `json:"ChainName,omitempty" xml:"ChainName,omitempty"`
+	// ChainShortName
+	ChainShortName *string `json:"ChainShortName,omitempty" xml:"ChainShortName,omitempty"`
+	// 0: EOA; 1: Contract
+	ContractAddress *string `json:"ContractAddress,omitempty" xml:"ContractAddress,omitempty"`
+	// the address of deployer if the current address is a contract, null if the current address is an EOA
+	CreateContractAddress *string `json:"CreateContractAddress,omitempty" xml:"CreateContractAddress,omitempty"`
+	// contract creation hash if the current address is a contract, null if the current address is an EOA
+	CreateContractTransactionHash *string `json:"CreateContractTransactionHash,omitempty" xml:"CreateContractTransactionHash,omitempty"`
+	// customized assessment detail
+	CustomRiskAssessment *string `json:"CustomRiskAssessment,omitempty" xml:"CustomRiskAssessment,omitempty"`
+	// the first transaction hash sent by the address
+	FirstTransactionTime *string `json:"FirstTransactionTime,omitempty" xml:"FirstTransactionTime,omitempty"`
+	// 0: Not validator; 1: validator
+	IsProducerAddress *string `json:"IsProducerAddress,omitempty" xml:"IsProducerAddress,omitempty"`
+	// the latest transaction hash sent by the address
+	LastTransactionTime *string `json:"LastTransactionTime,omitempty" xml:"LastTransactionTime,omitempty"`
+	// the amount of native currency received in 180 days
+	ReceiveAmount *string `json:"ReceiveAmount,omitempty" xml:"ReceiveAmount,omitempty"`
+	// the amount of native currency sent in 180 days
+	SendAmount *string `json:"SendAmount,omitempty" xml:"SendAmount,omitempty"`
+	// tag
+	Tag *string `json:"Tag,omitempty" xml:"Tag,omitempty"`
+	// if the address is an erc20 token, returns the token name
+	Token *string `json:"Token,omitempty" xml:"Token,omitempty"`
+	// the number of erc20 tokens involved with current address in 180 days
+	TokenAmount *int32 `json:"TokenAmount,omitempty" xml:"TokenAmount,omitempty"`
+	// address of erc20 tokens involved with current address in 180 days
+	TokenList *string `json:"TokenList,omitempty" xml:"TokenList,omitempty"`
+	// the number of transactions
+	TransactionCount *int32 `json:"TransactionCount,omitempty" xml:"TransactionCount,omitempty"`
+}
+
+func (s DescribeWeb3AddressLabelsResponseBodyData) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeWeb3AddressLabelsResponseBodyData) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeWeb3AddressLabelsResponseBodyData) SetAddress(v string) *DescribeWeb3AddressLabelsResponseBodyData {
+	s.Address = &v
+	return s
+}
+
+func (s *DescribeWeb3AddressLabelsResponseBodyData) SetBalance(v string) *DescribeWeb3AddressLabelsResponseBodyData {
+	s.Balance = &v
+	return s
+}
+
+func (s *DescribeWeb3AddressLabelsResponseBodyData) SetBalanceSymbol(v string) *DescribeWeb3AddressLabelsResponseBodyData {
+	s.BalanceSymbol = &v
+	return s
+}
+
+func (s *DescribeWeb3AddressLabelsResponseBodyData) SetChainName(v string) *DescribeWeb3AddressLabelsResponseBodyData {
+	s.ChainName = &v
+	return s
+}
+
+func (s *DescribeWeb3AddressLabelsResponseBodyData) SetChainShortName(v string) *DescribeWeb3AddressLabelsResponseBodyData {
+	s.ChainShortName = &v
+	return s
+}
+
+func (s *DescribeWeb3AddressLabelsResponseBodyData) SetContractAddress(v string) *DescribeWeb3AddressLabelsResponseBodyData {
+	s.ContractAddress = &v
+	return s
+}
+
+func (s *DescribeWeb3AddressLabelsResponseBodyData) SetCreateContractAddress(v string) *DescribeWeb3AddressLabelsResponseBodyData {
+	s.CreateContractAddress = &v
+	return s
+}
+
+func (s *DescribeWeb3AddressLabelsResponseBodyData) SetCreateContractTransactionHash(v string) *DescribeWeb3AddressLabelsResponseBodyData {
+	s.CreateContractTransactionHash = &v
+	return s
+}
+
+func (s *DescribeWeb3AddressLabelsResponseBodyData) SetCustomRiskAssessment(v string) *DescribeWeb3AddressLabelsResponseBodyData {
+	s.CustomRiskAssessment = &v
+	return s
+}
+
+func (s *DescribeWeb3AddressLabelsResponseBodyData) SetFirstTransactionTime(v string) *DescribeWeb3AddressLabelsResponseBodyData {
+	s.FirstTransactionTime = &v
+	return s
+}
+
+func (s *DescribeWeb3AddressLabelsResponseBodyData) SetIsProducerAddress(v string) *DescribeWeb3AddressLabelsResponseBodyData {
+	s.IsProducerAddress = &v
+	return s
+}
+
+func (s *DescribeWeb3AddressLabelsResponseBodyData) SetLastTransactionTime(v string) *DescribeWeb3AddressLabelsResponseBodyData {
+	s.LastTransactionTime = &v
+	return s
+}
+
+func (s *DescribeWeb3AddressLabelsResponseBodyData) SetReceiveAmount(v string) *DescribeWeb3AddressLabelsResponseBodyData {
+	s.ReceiveAmount = &v
+	return s
+}
+
+func (s *DescribeWeb3AddressLabelsResponseBodyData) SetSendAmount(v string) *DescribeWeb3AddressLabelsResponseBodyData {
+	s.SendAmount = &v
+	return s
+}
+
+func (s *DescribeWeb3AddressLabelsResponseBodyData) SetTag(v string) *DescribeWeb3AddressLabelsResponseBodyData {
+	s.Tag = &v
+	return s
+}
+
+func (s *DescribeWeb3AddressLabelsResponseBodyData) SetToken(v string) *DescribeWeb3AddressLabelsResponseBodyData {
+	s.Token = &v
+	return s
+}
+
+func (s *DescribeWeb3AddressLabelsResponseBodyData) SetTokenAmount(v int32) *DescribeWeb3AddressLabelsResponseBodyData {
+	s.TokenAmount = &v
+	return s
+}
+
+func (s *DescribeWeb3AddressLabelsResponseBodyData) SetTokenList(v string) *DescribeWeb3AddressLabelsResponseBodyData {
+	s.TokenList = &v
+	return s
+}
+
+func (s *DescribeWeb3AddressLabelsResponseBodyData) SetTransactionCount(v int32) *DescribeWeb3AddressLabelsResponseBodyData {
+	s.TransactionCount = &v
+	return s
+}
+
+type DescribeWeb3AddressLabelsResponse struct {
+	Headers    map[string]*string                     `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                                 `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *DescribeWeb3AddressLabelsResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s DescribeWeb3AddressLabelsResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeWeb3AddressLabelsResponse) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeWeb3AddressLabelsResponse) SetHeaders(v map[string]*string) *DescribeWeb3AddressLabelsResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *DescribeWeb3AddressLabelsResponse) SetStatusCode(v int32) *DescribeWeb3AddressLabelsResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *DescribeWeb3AddressLabelsResponse) SetBody(v *DescribeWeb3AddressLabelsResponseBody) *DescribeWeb3AddressLabelsResponse {
+	s.Body = v
+	return s
+}
+
+type DescribeWeb3RiskScoreRequest struct {
+	// This is the short name of blockchain。
+	// [ ETH, MATIC, BNB ]
+	ChainShortName *string `json:"ChainShortName,omitempty" xml:"ChainShortName,omitempty"`
+	// minimum: 1
+	// maximum: 100
+	// the maximum depth for risk analysis. For UTXO-based blockchains, default and maximum is enforced at 100.
+	// For account-based blockchains, default and maximum is enforced at 6
+	Depth *int32 `json:"Depth,omitempty" xml:"Depth,omitempty"`
+	// A unique business ID for tracing purpose. For example，the sequence ID from the merchant\"s business-related database.
+	MerchantBizId *string `json:"MerchantBizId,omitempty" xml:"MerchantBizId,omitempty"`
+	// For TRANSACTION objects, you need to provide the transaction hash。
+	// For ADDRESS objects, you need to provide the address or reference address hash。
+	ObjectId *string `json:"ObjectId,omitempty" xml:"ObjectId,omitempty"`
+	// The object of the analysis.
+	// [ TRANSACTION, ADDRESS ]
+	ObjectType *string `json:"ObjectType,omitempty" xml:"ObjectType,omitempty"`
+}
+
+func (s DescribeWeb3RiskScoreRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeWeb3RiskScoreRequest) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeWeb3RiskScoreRequest) SetChainShortName(v string) *DescribeWeb3RiskScoreRequest {
+	s.ChainShortName = &v
+	return s
+}
+
+func (s *DescribeWeb3RiskScoreRequest) SetDepth(v int32) *DescribeWeb3RiskScoreRequest {
+	s.Depth = &v
+	return s
+}
+
+func (s *DescribeWeb3RiskScoreRequest) SetMerchantBizId(v string) *DescribeWeb3RiskScoreRequest {
+	s.MerchantBizId = &v
+	return s
+}
+
+func (s *DescribeWeb3RiskScoreRequest) SetObjectId(v string) *DescribeWeb3RiskScoreRequest {
+	s.ObjectId = &v
+	return s
+}
+
+func (s *DescribeWeb3RiskScoreRequest) SetObjectType(v string) *DescribeWeb3RiskScoreRequest {
+	s.ObjectType = &v
+	return s
+}
+
+type DescribeWeb3RiskScoreResponseBody struct {
+	// Return code. For the full list of codes, see Codes and Messages.
+	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	// data
+	Data *DescribeWeb3RiskScoreResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
+	// The HTTP status code.
+	HttpStatusCode *int32 `json:"HttpStatusCode,omitempty" xml:"HttpStatusCode,omitempty"`
+	// Response detailed message.
+	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// The unique ID of the request, which can be used to locate issues.
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+}
+
+func (s DescribeWeb3RiskScoreResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeWeb3RiskScoreResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeWeb3RiskScoreResponseBody) SetCode(v string) *DescribeWeb3RiskScoreResponseBody {
+	s.Code = &v
+	return s
+}
+
+func (s *DescribeWeb3RiskScoreResponseBody) SetData(v *DescribeWeb3RiskScoreResponseBodyData) *DescribeWeb3RiskScoreResponseBody {
+	s.Data = v
+	return s
+}
+
+func (s *DescribeWeb3RiskScoreResponseBody) SetHttpStatusCode(v int32) *DescribeWeb3RiskScoreResponseBody {
+	s.HttpStatusCode = &v
+	return s
+}
+
+func (s *DescribeWeb3RiskScoreResponseBody) SetMessage(v string) *DescribeWeb3RiskScoreResponseBody {
+	s.Message = &v
+	return s
+}
+
+func (s *DescribeWeb3RiskScoreResponseBody) SetRequestId(v string) *DescribeWeb3RiskScoreResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+type DescribeWeb3RiskScoreResponseBodyData struct {
+	// risk results
+	RiskResults []*DescribeWeb3RiskScoreResponseBodyDataRiskResults `json:"RiskResults,omitempty" xml:"RiskResults,omitempty" type:"Repeated"`
+	// Risk score
+	Score *string `json:"Score,omitempty" xml:"Score,omitempty"`
+}
+
+func (s DescribeWeb3RiskScoreResponseBodyData) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeWeb3RiskScoreResponseBodyData) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeWeb3RiskScoreResponseBodyData) SetRiskResults(v []*DescribeWeb3RiskScoreResponseBodyDataRiskResults) *DescribeWeb3RiskScoreResponseBodyData {
+	s.RiskResults = v
+	return s
+}
+
+func (s *DescribeWeb3RiskScoreResponseBodyData) SetScore(v string) *DescribeWeb3RiskScoreResponseBodyData {
+	s.Score = &v
+	return s
+}
+
+type DescribeWeb3RiskScoreResponseBodyDataRiskResults struct {
+	// description
+	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
+	// [ CRITICAL, HIGH, MEDIUM, LOW, NO ]
+	// 100: Critical
+	// 67-99: High risk
+	// 34-66: Medium risk
+	// 1-33: Low risk
+	// 0: No risk
+	Severity *string `json:"Severity,omitempty" xml:"Severity,omitempty"`
+	// Address
+	// Transaction
+	Type *string `json:"Type,omitempty" xml:"Type,omitempty"`
+}
+
+func (s DescribeWeb3RiskScoreResponseBodyDataRiskResults) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeWeb3RiskScoreResponseBodyDataRiskResults) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeWeb3RiskScoreResponseBodyDataRiskResults) SetDescription(v string) *DescribeWeb3RiskScoreResponseBodyDataRiskResults {
+	s.Description = &v
+	return s
+}
+
+func (s *DescribeWeb3RiskScoreResponseBodyDataRiskResults) SetSeverity(v string) *DescribeWeb3RiskScoreResponseBodyDataRiskResults {
+	s.Severity = &v
+	return s
+}
+
+func (s *DescribeWeb3RiskScoreResponseBodyDataRiskResults) SetType(v string) *DescribeWeb3RiskScoreResponseBodyDataRiskResults {
+	s.Type = &v
+	return s
+}
+
+type DescribeWeb3RiskScoreResponse struct {
+	Headers    map[string]*string                 `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                             `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *DescribeWeb3RiskScoreResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s DescribeWeb3RiskScoreResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeWeb3RiskScoreResponse) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeWeb3RiskScoreResponse) SetHeaders(v map[string]*string) *DescribeWeb3RiskScoreResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *DescribeWeb3RiskScoreResponse) SetStatusCode(v int32) *DescribeWeb3RiskScoreResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *DescribeWeb3RiskScoreResponse) SetBody(v *DescribeWeb3RiskScoreResponseBody) *DescribeWeb3RiskScoreResponse {
+	s.Body = v
+	return s
+}
+
+type DescribeWeb3TransactionLabelsRequest struct {
+	// This is the short name of blockchain。
+	// [ ETH, MATIC, BNB ]
+	ChainShortName *string `json:"ChainShortName,omitempty" xml:"ChainShortName,omitempty"`
+	// A unique business ID for tracing purpose. For example，the sequence ID from the merchant\"s business-related database.
+	MerchantBizId *string `json:"MerchantBizId,omitempty" xml:"MerchantBizId,omitempty"`
+	// The Transaction hash.
+	Transaction *string `json:"Transaction,omitempty" xml:"Transaction,omitempty"`
+}
+
+func (s DescribeWeb3TransactionLabelsRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeWeb3TransactionLabelsRequest) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeWeb3TransactionLabelsRequest) SetChainShortName(v string) *DescribeWeb3TransactionLabelsRequest {
+	s.ChainShortName = &v
+	return s
+}
+
+func (s *DescribeWeb3TransactionLabelsRequest) SetMerchantBizId(v string) *DescribeWeb3TransactionLabelsRequest {
+	s.MerchantBizId = &v
+	return s
+}
+
+func (s *DescribeWeb3TransactionLabelsRequest) SetTransaction(v string) *DescribeWeb3TransactionLabelsRequest {
+	s.Transaction = &v
+	return s
+}
+
+type DescribeWeb3TransactionLabelsResponseBody struct {
+	// Return code. For the full list of codes, see Codes and Messages.
+	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	// data
+	Data *DescribeWeb3TransactionLabelsResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
+	// The HTTP status code.
+	HttpStatusCode *int32 `json:"HttpStatusCode,omitempty" xml:"HttpStatusCode,omitempty"`
+	// Response detailed message.
+	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// The unique ID of the request, which can be used to locate issues.
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+}
+
+func (s DescribeWeb3TransactionLabelsResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeWeb3TransactionLabelsResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeWeb3TransactionLabelsResponseBody) SetCode(v string) *DescribeWeb3TransactionLabelsResponseBody {
+	s.Code = &v
+	return s
+}
+
+func (s *DescribeWeb3TransactionLabelsResponseBody) SetData(v *DescribeWeb3TransactionLabelsResponseBodyData) *DescribeWeb3TransactionLabelsResponseBody {
+	s.Data = v
+	return s
+}
+
+func (s *DescribeWeb3TransactionLabelsResponseBody) SetHttpStatusCode(v int32) *DescribeWeb3TransactionLabelsResponseBody {
+	s.HttpStatusCode = &v
+	return s
+}
+
+func (s *DescribeWeb3TransactionLabelsResponseBody) SetMessage(v string) *DescribeWeb3TransactionLabelsResponseBody {
+	s.Message = &v
+	return s
+}
+
+func (s *DescribeWeb3TransactionLabelsResponseBody) SetRequestId(v string) *DescribeWeb3TransactionLabelsResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+type DescribeWeb3TransactionLabelsResponseBodyData struct {
+	// the amount of native currency
+	Amount *string `json:"Amount,omitempty" xml:"Amount,omitempty"`
+	// chainName
+	ChainName *string `json:"ChainName,omitempty" xml:"ChainName,omitempty"`
+	// short name of blockchain
+	ChainShortName *string `json:"ChainShortName,omitempty" xml:"ChainShortName,omitempty"`
+	// contract details
+	ContractDetails []*DescribeWeb3TransactionLabelsResponseBodyDataContractDetails `json:"ContractDetails,omitempty" xml:"ContractDetails,omitempty" type:"Repeated"`
+	// error log
+	ErrorLog *string `json:"ErrorLog,omitempty" xml:"ErrorLog,omitempty"`
+	// gasLimit
+	GasLimit *int32 `json:"GasLimit,omitempty" xml:"GasLimit,omitempty"`
+	// gasPrice
+	GasPrice *string `json:"GasPrice,omitempty" xml:"GasPrice,omitempty"`
+	// gasUsed
+	GasUsed *int32 `json:"GasUsed,omitempty" xml:"GasUsed,omitempty"`
+	// height
+	Height *int32 `json:"Height,omitempty" xml:"Height,omitempty"`
+	// the position of the transaction in the block
+	Index *int32 `json:"Index,omitempty" xml:"Index,omitempty"`
+	// input data
+	InputData *string `json:"InputData,omitempty" xml:"InputData,omitempty"`
+	// input details
+	InputDetails []*DescribeWeb3TransactionLabelsResponseBodyDataInputDetails `json:"InputDetails,omitempty" xml:"InputDetails,omitempty" type:"Repeated"`
+	// the method name of contract call. For external transaction method: [\"CALL\",\"CALLCODE\",\"DELEGATECALL\",\"STATICCALL\"]; for internal transaction method: the first 4 bytes of the hash of the method name
+	MethodId *string `json:"MethodId,omitempty" xml:"MethodId,omitempty"`
+	// nonce
+	Nonce *string `json:"Nonce,omitempty" xml:"Nonce,omitempty"`
+	// output details
+	OutputDetails []*DescribeWeb3TransactionLabelsResponseBodyDataOutputDetails `json:"OutputDetails,omitempty" xml:"OutputDetails,omitempty" type:"Repeated"`
+	// the transaction state. 1: success 0: fail
+	State *int32 `json:"State,omitempty" xml:"State,omitempty"`
+	// token transfer details
+	TokenTransferDetails []*DescribeWeb3TransactionLabelsResponseBodyDataTokenTransferDetails `json:"TokenTransferDetails,omitempty" xml:"TokenTransferDetails,omitempty" type:"Repeated"`
+	// the symbol of native currency
+	TransactionSymbol *string `json:"TransactionSymbol,omitempty" xml:"TransactionSymbol,omitempty"`
+	// the block timestamp
+	TransactionTime *string `json:"TransactionTime,omitempty" xml:"TransactionTime,omitempty"`
+	// Integer	0: legacy; 1: eip 2930; 2: eip 1559
+	TransactionType *string `json:"TransactionType,omitempty" xml:"TransactionType,omitempty"`
+	// the transaction fee in eth
+	Txfee *string `json:"Txfee,omitempty" xml:"Txfee,omitempty"`
+	// Txid
+	Txid *string `json:"Txid,omitempty" xml:"Txid,omitempty"`
+}
+
+func (s DescribeWeb3TransactionLabelsResponseBodyData) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeWeb3TransactionLabelsResponseBodyData) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeWeb3TransactionLabelsResponseBodyData) SetAmount(v string) *DescribeWeb3TransactionLabelsResponseBodyData {
+	s.Amount = &v
+	return s
+}
+
+func (s *DescribeWeb3TransactionLabelsResponseBodyData) SetChainName(v string) *DescribeWeb3TransactionLabelsResponseBodyData {
+	s.ChainName = &v
+	return s
+}
+
+func (s *DescribeWeb3TransactionLabelsResponseBodyData) SetChainShortName(v string) *DescribeWeb3TransactionLabelsResponseBodyData {
+	s.ChainShortName = &v
+	return s
+}
+
+func (s *DescribeWeb3TransactionLabelsResponseBodyData) SetContractDetails(v []*DescribeWeb3TransactionLabelsResponseBodyDataContractDetails) *DescribeWeb3TransactionLabelsResponseBodyData {
+	s.ContractDetails = v
+	return s
+}
+
+func (s *DescribeWeb3TransactionLabelsResponseBodyData) SetErrorLog(v string) *DescribeWeb3TransactionLabelsResponseBodyData {
+	s.ErrorLog = &v
+	return s
+}
+
+func (s *DescribeWeb3TransactionLabelsResponseBodyData) SetGasLimit(v int32) *DescribeWeb3TransactionLabelsResponseBodyData {
+	s.GasLimit = &v
+	return s
+}
+
+func (s *DescribeWeb3TransactionLabelsResponseBodyData) SetGasPrice(v string) *DescribeWeb3TransactionLabelsResponseBodyData {
+	s.GasPrice = &v
+	return s
+}
+
+func (s *DescribeWeb3TransactionLabelsResponseBodyData) SetGasUsed(v int32) *DescribeWeb3TransactionLabelsResponseBodyData {
+	s.GasUsed = &v
+	return s
+}
+
+func (s *DescribeWeb3TransactionLabelsResponseBodyData) SetHeight(v int32) *DescribeWeb3TransactionLabelsResponseBodyData {
+	s.Height = &v
+	return s
+}
+
+func (s *DescribeWeb3TransactionLabelsResponseBodyData) SetIndex(v int32) *DescribeWeb3TransactionLabelsResponseBodyData {
+	s.Index = &v
+	return s
+}
+
+func (s *DescribeWeb3TransactionLabelsResponseBodyData) SetInputData(v string) *DescribeWeb3TransactionLabelsResponseBodyData {
+	s.InputData = &v
+	return s
+}
+
+func (s *DescribeWeb3TransactionLabelsResponseBodyData) SetInputDetails(v []*DescribeWeb3TransactionLabelsResponseBodyDataInputDetails) *DescribeWeb3TransactionLabelsResponseBodyData {
+	s.InputDetails = v
+	return s
+}
+
+func (s *DescribeWeb3TransactionLabelsResponseBodyData) SetMethodId(v string) *DescribeWeb3TransactionLabelsResponseBodyData {
+	s.MethodId = &v
+	return s
+}
+
+func (s *DescribeWeb3TransactionLabelsResponseBodyData) SetNonce(v string) *DescribeWeb3TransactionLabelsResponseBodyData {
+	s.Nonce = &v
+	return s
+}
+
+func (s *DescribeWeb3TransactionLabelsResponseBodyData) SetOutputDetails(v []*DescribeWeb3TransactionLabelsResponseBodyDataOutputDetails) *DescribeWeb3TransactionLabelsResponseBodyData {
+	s.OutputDetails = v
+	return s
+}
+
+func (s *DescribeWeb3TransactionLabelsResponseBodyData) SetState(v int32) *DescribeWeb3TransactionLabelsResponseBodyData {
+	s.State = &v
+	return s
+}
+
+func (s *DescribeWeb3TransactionLabelsResponseBodyData) SetTokenTransferDetails(v []*DescribeWeb3TransactionLabelsResponseBodyDataTokenTransferDetails) *DescribeWeb3TransactionLabelsResponseBodyData {
+	s.TokenTransferDetails = v
+	return s
+}
+
+func (s *DescribeWeb3TransactionLabelsResponseBodyData) SetTransactionSymbol(v string) *DescribeWeb3TransactionLabelsResponseBodyData {
+	s.TransactionSymbol = &v
+	return s
+}
+
+func (s *DescribeWeb3TransactionLabelsResponseBodyData) SetTransactionTime(v string) *DescribeWeb3TransactionLabelsResponseBodyData {
+	s.TransactionTime = &v
+	return s
+}
+
+func (s *DescribeWeb3TransactionLabelsResponseBodyData) SetTransactionType(v string) *DescribeWeb3TransactionLabelsResponseBodyData {
+	s.TransactionType = &v
+	return s
+}
+
+func (s *DescribeWeb3TransactionLabelsResponseBodyData) SetTxfee(v string) *DescribeWeb3TransactionLabelsResponseBodyData {
+	s.Txfee = &v
+	return s
+}
+
+func (s *DescribeWeb3TransactionLabelsResponseBodyData) SetTxid(v string) *DescribeWeb3TransactionLabelsResponseBodyData {
+	s.Txid = &v
+	return s
+}
+
+type DescribeWeb3TransactionLabelsResponseBodyDataContractDetails struct {
+	// the value of internal transaction
+	Amount *string `json:"Amount,omitempty" xml:"Amount,omitempty"`
+	// the sender of internal transaction
+	From *string `json:"From,omitempty" xml:"From,omitempty"`
+	// the gaslimit of internal transaction
+	GasLimit *int32 `json:"GasLimit,omitempty" xml:"GasLimit,omitempty"`
+	// the call layer of internal transaction
+	Index *int32 `json:"Index,omitempty" xml:"Index,omitempty"`
+	// the receiver of internal transaction
+	To *string `json:"To,omitempty" xml:"To,omitempty"`
+}
+
+func (s DescribeWeb3TransactionLabelsResponseBodyDataContractDetails) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeWeb3TransactionLabelsResponseBodyDataContractDetails) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeWeb3TransactionLabelsResponseBodyDataContractDetails) SetAmount(v string) *DescribeWeb3TransactionLabelsResponseBodyDataContractDetails {
+	s.Amount = &v
+	return s
+}
+
+func (s *DescribeWeb3TransactionLabelsResponseBodyDataContractDetails) SetFrom(v string) *DescribeWeb3TransactionLabelsResponseBodyDataContractDetails {
+	s.From = &v
+	return s
+}
+
+func (s *DescribeWeb3TransactionLabelsResponseBodyDataContractDetails) SetGasLimit(v int32) *DescribeWeb3TransactionLabelsResponseBodyDataContractDetails {
+	s.GasLimit = &v
+	return s
+}
+
+func (s *DescribeWeb3TransactionLabelsResponseBodyDataContractDetails) SetIndex(v int32) *DescribeWeb3TransactionLabelsResponseBodyDataContractDetails {
+	s.Index = &v
+	return s
+}
+
+func (s *DescribeWeb3TransactionLabelsResponseBodyDataContractDetails) SetTo(v string) *DescribeWeb3TransactionLabelsResponseBodyDataContractDetails {
+	s.To = &v
+	return s
+}
+
+type DescribeWeb3TransactionLabelsResponseBodyDataInputDetails struct {
+	// example: 15. the amount of transation sent by the address
+	Amount *int32 `json:"Amount,omitempty" xml:"Amount,omitempty"`
+	// the address hash
+	InputHash *string `json:"InputHash,omitempty" xml:"InputHash,omitempty"`
+	// example: true. is it a contract
+	IsContract *string `json:"IsContract,omitempty" xml:"IsContract,omitempty"`
+	// example: Dex . the tag of the address
+	Tag *string `json:"Tag,omitempty" xml:"Tag,omitempty"`
+}
+
+func (s DescribeWeb3TransactionLabelsResponseBodyDataInputDetails) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeWeb3TransactionLabelsResponseBodyDataInputDetails) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeWeb3TransactionLabelsResponseBodyDataInputDetails) SetAmount(v int32) *DescribeWeb3TransactionLabelsResponseBodyDataInputDetails {
+	s.Amount = &v
+	return s
+}
+
+func (s *DescribeWeb3TransactionLabelsResponseBodyDataInputDetails) SetInputHash(v string) *DescribeWeb3TransactionLabelsResponseBodyDataInputDetails {
+	s.InputHash = &v
+	return s
+}
+
+func (s *DescribeWeb3TransactionLabelsResponseBodyDataInputDetails) SetIsContract(v string) *DescribeWeb3TransactionLabelsResponseBodyDataInputDetails {
+	s.IsContract = &v
+	return s
+}
+
+func (s *DescribeWeb3TransactionLabelsResponseBodyDataInputDetails) SetTag(v string) *DescribeWeb3TransactionLabelsResponseBodyDataInputDetails {
+	s.Tag = &v
+	return s
+}
+
+type DescribeWeb3TransactionLabelsResponseBodyDataOutputDetails struct {
+	// example: 15. the amount of transation sent by the address
+	Amount *int32 `json:"Amount,omitempty" xml:"Amount,omitempty"`
+	// the address hash
+	InputHash *string `json:"InputHash,omitempty" xml:"InputHash,omitempty"`
+	// example: true. is it a contract
+	IsContract *string `json:"IsContract,omitempty" xml:"IsContract,omitempty"`
+	// example: Dex. the tag of the address
+	Tag *string `json:"Tag,omitempty" xml:"Tag,omitempty"`
+}
+
+func (s DescribeWeb3TransactionLabelsResponseBodyDataOutputDetails) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeWeb3TransactionLabelsResponseBodyDataOutputDetails) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeWeb3TransactionLabelsResponseBodyDataOutputDetails) SetAmount(v int32) *DescribeWeb3TransactionLabelsResponseBodyDataOutputDetails {
+	s.Amount = &v
+	return s
+}
+
+func (s *DescribeWeb3TransactionLabelsResponseBodyDataOutputDetails) SetInputHash(v string) *DescribeWeb3TransactionLabelsResponseBodyDataOutputDetails {
+	s.InputHash = &v
+	return s
+}
+
+func (s *DescribeWeb3TransactionLabelsResponseBodyDataOutputDetails) SetIsContract(v string) *DescribeWeb3TransactionLabelsResponseBodyDataOutputDetails {
+	s.IsContract = &v
+	return s
+}
+
+func (s *DescribeWeb3TransactionLabelsResponseBodyDataOutputDetails) SetTag(v string) *DescribeWeb3TransactionLabelsResponseBodyDataOutputDetails {
+	s.Tag = &v
+	return s
+}
+
+type DescribeWeb3TransactionLabelsResponseBodyDataTokenTransferDetails struct {
+	// the token amount
+	Amount *string `json:"Amount,omitempty" xml:"Amount,omitempty"`
+	// the sender of the token
+	From *string `json:"From,omitempty" xml:"From,omitempty"`
+	// the call layer of to token transfer
+	Index *int32 `json:"Index,omitempty" xml:"Index,omitempty"`
+	// the token symbol
+	Symbol *string `json:"Symbol,omitempty" xml:"Symbol,omitempty"`
+	// the receiver of the token
+	To *string `json:"To,omitempty" xml:"To,omitempty"`
+	// the token name
+	Token *string `json:"Token,omitempty" xml:"Token,omitempty"`
+	// the token address
+	TokenContractAddress *string `json:"TokenContractAddress,omitempty" xml:"TokenContractAddress,omitempty"`
+	// NFT ID, if the token is erc721
+	TokenId *string `json:"TokenId,omitempty" xml:"TokenId,omitempty"`
+}
+
+func (s DescribeWeb3TransactionLabelsResponseBodyDataTokenTransferDetails) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeWeb3TransactionLabelsResponseBodyDataTokenTransferDetails) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeWeb3TransactionLabelsResponseBodyDataTokenTransferDetails) SetAmount(v string) *DescribeWeb3TransactionLabelsResponseBodyDataTokenTransferDetails {
+	s.Amount = &v
+	return s
+}
+
+func (s *DescribeWeb3TransactionLabelsResponseBodyDataTokenTransferDetails) SetFrom(v string) *DescribeWeb3TransactionLabelsResponseBodyDataTokenTransferDetails {
+	s.From = &v
+	return s
+}
+
+func (s *DescribeWeb3TransactionLabelsResponseBodyDataTokenTransferDetails) SetIndex(v int32) *DescribeWeb3TransactionLabelsResponseBodyDataTokenTransferDetails {
+	s.Index = &v
+	return s
+}
+
+func (s *DescribeWeb3TransactionLabelsResponseBodyDataTokenTransferDetails) SetSymbol(v string) *DescribeWeb3TransactionLabelsResponseBodyDataTokenTransferDetails {
+	s.Symbol = &v
+	return s
+}
+
+func (s *DescribeWeb3TransactionLabelsResponseBodyDataTokenTransferDetails) SetTo(v string) *DescribeWeb3TransactionLabelsResponseBodyDataTokenTransferDetails {
+	s.To = &v
+	return s
+}
+
+func (s *DescribeWeb3TransactionLabelsResponseBodyDataTokenTransferDetails) SetToken(v string) *DescribeWeb3TransactionLabelsResponseBodyDataTokenTransferDetails {
+	s.Token = &v
+	return s
+}
+
+func (s *DescribeWeb3TransactionLabelsResponseBodyDataTokenTransferDetails) SetTokenContractAddress(v string) *DescribeWeb3TransactionLabelsResponseBodyDataTokenTransferDetails {
+	s.TokenContractAddress = &v
+	return s
+}
+
+func (s *DescribeWeb3TransactionLabelsResponseBodyDataTokenTransferDetails) SetTokenId(v string) *DescribeWeb3TransactionLabelsResponseBodyDataTokenTransferDetails {
+	s.TokenId = &v
+	return s
+}
+
+type DescribeWeb3TransactionLabelsResponse struct {
+	Headers    map[string]*string                         `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                                     `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *DescribeWeb3TransactionLabelsResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s DescribeWeb3TransactionLabelsResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeWeb3TransactionLabelsResponse) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeWeb3TransactionLabelsResponse) SetHeaders(v map[string]*string) *DescribeWeb3TransactionLabelsResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *DescribeWeb3TransactionLabelsResponse) SetStatusCode(v int32) *DescribeWeb3TransactionLabelsResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *DescribeWeb3TransactionLabelsResponse) SetBody(v *DescribeWeb3TransactionLabelsResponseBody) *DescribeWeb3TransactionLabelsResponse {
+	s.Body = v
+	return s
+}
+
 type DocOcrRequest struct {
 	DocType            *string `json:"DocType,omitempty" xml:"DocType,omitempty"`
 	IdFaceQuality      *string `json:"IdFaceQuality,omitempty" xml:"IdFaceQuality,omitempty"`
@@ -2952,6 +3858,170 @@ func (client *Client) DescribeTransactionsList(request *DescribeTransactionsList
 	runtime := &util.RuntimeOptions{}
 	_result = &DescribeTransactionsListResponse{}
 	_body, _err := client.DescribeTransactionsListWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) DescribeWeb3AddressLabelsWithOptions(request *DescribeWeb3AddressLabelsRequest, runtime *util.RuntimeOptions) (_result *DescribeWeb3AddressLabelsResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.Address)) {
+		query["Address"] = request.Address
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ChainShortName)) {
+		query["ChainShortName"] = request.ChainShortName
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.MerchantBizId)) {
+		query["MerchantBizId"] = request.MerchantBizId
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("DescribeWeb3AddressLabels"),
+		Version:     tea.String("2022-08-09"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &DescribeWeb3AddressLabelsResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) DescribeWeb3AddressLabels(request *DescribeWeb3AddressLabelsRequest) (_result *DescribeWeb3AddressLabelsResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &DescribeWeb3AddressLabelsResponse{}
+	_body, _err := client.DescribeWeb3AddressLabelsWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) DescribeWeb3RiskScoreWithOptions(request *DescribeWeb3RiskScoreRequest, runtime *util.RuntimeOptions) (_result *DescribeWeb3RiskScoreResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.ChainShortName)) {
+		query["ChainShortName"] = request.ChainShortName
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Depth)) {
+		query["Depth"] = request.Depth
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.MerchantBizId)) {
+		query["MerchantBizId"] = request.MerchantBizId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ObjectId)) {
+		query["ObjectId"] = request.ObjectId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ObjectType)) {
+		query["ObjectType"] = request.ObjectType
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("DescribeWeb3RiskScore"),
+		Version:     tea.String("2022-08-09"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &DescribeWeb3RiskScoreResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) DescribeWeb3RiskScore(request *DescribeWeb3RiskScoreRequest) (_result *DescribeWeb3RiskScoreResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &DescribeWeb3RiskScoreResponse{}
+	_body, _err := client.DescribeWeb3RiskScoreWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) DescribeWeb3TransactionLabelsWithOptions(request *DescribeWeb3TransactionLabelsRequest, runtime *util.RuntimeOptions) (_result *DescribeWeb3TransactionLabelsResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.ChainShortName)) {
+		query["ChainShortName"] = request.ChainShortName
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.MerchantBizId)) {
+		query["MerchantBizId"] = request.MerchantBizId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Transaction)) {
+		query["Transaction"] = request.Transaction
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("DescribeWeb3TransactionLabels"),
+		Version:     tea.String("2022-08-09"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &DescribeWeb3TransactionLabelsResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) DescribeWeb3TransactionLabels(request *DescribeWeb3TransactionLabelsRequest) (_result *DescribeWeb3TransactionLabelsResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &DescribeWeb3TransactionLabelsResponse{}
+	_body, _err := client.DescribeWeb3TransactionLabelsWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
