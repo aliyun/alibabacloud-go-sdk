@@ -84,7 +84,7 @@ func (s *ApplyReason) SetReasonTips(v string) *ApplyReason {
 
 type Category struct {
 	CategoryId *int64  `json:"categoryId,omitempty" xml:"categoryId,omitempty"`
-	Leaf       *bool   `json:"leaf,omitempty" xml:"leaf,omitempty"`
+	IsLeaf     *bool   `json:"isLeaf,omitempty" xml:"isLeaf,omitempty"`
 	Level      *int32  `json:"level,omitempty" xml:"level,omitempty"`
 	Name       *string `json:"name,omitempty" xml:"name,omitempty"`
 	ParentId   *int64  `json:"parentId,omitempty" xml:"parentId,omitempty"`
@@ -103,8 +103,8 @@ func (s *Category) SetCategoryId(v int64) *Category {
 	return s
 }
 
-func (s *Category) SetLeaf(v bool) *Category {
-	s.Leaf = &v
+func (s *Category) SetIsLeaf(v bool) *Category {
+	s.IsLeaf = &v
 	return s
 }
 
@@ -120,6 +120,52 @@ func (s *Category) SetName(v string) *Category {
 
 func (s *Category) SetParentId(v int64) *Category {
 	s.ParentId = &v
+	return s
+}
+
+type CategoryListQuery struct {
+	CategoryIds      []*int64 `json:"categoryIds,omitempty" xml:"categoryIds,omitempty" type:"Repeated"`
+	ParentCategoryId *int64   `json:"parentCategoryId,omitempty" xml:"parentCategoryId,omitempty"`
+}
+
+func (s CategoryListQuery) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CategoryListQuery) GoString() string {
+	return s.String()
+}
+
+func (s *CategoryListQuery) SetCategoryIds(v []*int64) *CategoryListQuery {
+	s.CategoryIds = v
+	return s
+}
+
+func (s *CategoryListQuery) SetParentCategoryId(v int64) *CategoryListQuery {
+	s.ParentCategoryId = &v
+	return s
+}
+
+type CategoryListResult struct {
+	Categories []*Category `json:"categories,omitempty" xml:"categories,omitempty" type:"Repeated"`
+	RequestId  *string     `json:"requestId,omitempty" xml:"requestId,omitempty"`
+}
+
+func (s CategoryListResult) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CategoryListResult) GoString() string {
+	return s.String()
+}
+
+func (s *CategoryListResult) SetCategories(v []*Category) *CategoryListResult {
+	s.Categories = v
+	return s
+}
+
+func (s *CategoryListResult) SetRequestId(v string) *CategoryListResult {
+	s.RequestId = &v
 	return s
 }
 
@@ -551,7 +597,7 @@ func (s *Good) SetQuantity(v int32) *Good {
 
 type GoodsShippingNoticeCreateCmd struct {
 	CpCode      *string `json:"cpCode,omitempty" xml:"cpCode,omitempty"`
-	DisputeId   *int64  `json:"disputeId,omitempty" xml:"disputeId,omitempty"`
+	DisputeId   *string `json:"disputeId,omitempty" xml:"disputeId,omitempty"`
 	LogisticsNo *string `json:"logisticsNo,omitempty" xml:"logisticsNo,omitempty"`
 }
 
@@ -568,7 +614,7 @@ func (s *GoodsShippingNoticeCreateCmd) SetCpCode(v string) *GoodsShippingNoticeC
 	return s
 }
 
-func (s *GoodsShippingNoticeCreateCmd) SetDisputeId(v int64) *GoodsShippingNoticeCreateCmd {
+func (s *GoodsShippingNoticeCreateCmd) SetDisputeId(v string) *GoodsShippingNoticeCreateCmd {
 	s.DisputeId = &v
 	return s
 }
@@ -2071,6 +2117,7 @@ type RefundResult struct {
 	RefunderName                 *string        `json:"refunderName,omitempty" xml:"refunderName,omitempty"`
 	RefunderTel                  *string        `json:"refunderTel,omitempty" xml:"refunderTel,omitempty"`
 	RefunderZipCode              *string        `json:"refunderZipCode,omitempty" xml:"refunderZipCode,omitempty"`
+	RequestId                    *string        `json:"requestId,omitempty" xml:"requestId,omitempty"`
 	ReturnGoodLogisticsStatus    *int32         `json:"returnGoodLogisticsStatus,omitempty" xml:"returnGoodLogisticsStatus,omitempty"`
 	SellerAgreeMsg               *string        `json:"sellerAgreeMsg,omitempty" xml:"sellerAgreeMsg,omitempty"`
 	SellerRefuseAgreementMessage *string        `json:"sellerRefuseAgreementMessage,omitempty" xml:"sellerRefuseAgreementMessage,omitempty"`
@@ -2167,6 +2214,11 @@ func (s *RefundResult) SetRefunderTel(v string) *RefundResult {
 
 func (s *RefundResult) SetRefunderZipCode(v string) *RefundResult {
 	s.RefunderZipCode = &v
+	return s
+}
+
+func (s *RefundResult) SetRequestId(v string) *RefundResult {
+	s.RequestId = &v
 	return s
 }
 
@@ -3066,6 +3118,52 @@ func (s *GetSelectionProductSaleInfoResponse) SetStatusCode(v int32) *GetSelecti
 }
 
 func (s *GetSelectionProductSaleInfoResponse) SetBody(v *ProductSaleInfo) *GetSelectionProductSaleInfoResponse {
+	s.Body = v
+	return s
+}
+
+type ListCategoriesRequest struct {
+	Body *CategoryListQuery `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s ListCategoriesRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListCategoriesRequest) GoString() string {
+	return s.String()
+}
+
+func (s *ListCategoriesRequest) SetBody(v *CategoryListQuery) *ListCategoriesRequest {
+	s.Body = v
+	return s
+}
+
+type ListCategoriesResponse struct {
+	Headers    map[string]*string  `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32              `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *CategoryListResult `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s ListCategoriesResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListCategoriesResponse) GoString() string {
+	return s.String()
+}
+
+func (s *ListCategoriesResponse) SetHeaders(v map[string]*string) *ListCategoriesResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *ListCategoriesResponse) SetStatusCode(v int32) *ListCategoriesResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *ListCategoriesResponse) SetBody(v *CategoryListResult) *ListCategoriesResponse {
 	s.Body = v
 	return s
 }
@@ -4025,6 +4123,47 @@ func (client *Client) GetSelectionProductSaleInfo(productId *string, request *Ge
 	headers := make(map[string]*string)
 	_result = &GetSelectionProductSaleInfoResponse{}
 	_body, _err := client.GetSelectionProductSaleInfoWithOptions(productId, request, headers, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) ListCategoriesWithOptions(request *ListCategoriesRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *ListCategoriesResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	req := &openapi.OpenApiRequest{
+		Headers: headers,
+		Body:    openapiutil.ParseToMap(request.Body),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("ListCategories"),
+		Version:     tea.String("2023-09-30"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/opensaas-s2b/opensaas-s2b-biz-trade/v2/categories/commands/list"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("ROA"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &ListCategoriesResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) ListCategories(request *ListCategoriesRequest) (_result *ListCategoriesResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	headers := make(map[string]*string)
+	_result = &ListCategoriesResponse{}
+	_body, _err := client.ListCategoriesWithOptions(request, headers, runtime)
 	if _err != nil {
 		return _result, _err
 	}
