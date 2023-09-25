@@ -2316,6 +2316,8 @@ func (s *CreateDBClusterResponse) SetBody(v *CreateDBClusterResponseBody) *Creat
 }
 
 type CreateDBResourceGroupRequest struct {
+	ClusterMode         *string `json:"ClusterMode,omitempty" xml:"ClusterMode,omitempty"`
+	ClusterSizeResource *string `json:"ClusterSizeResource,omitempty" xml:"ClusterSizeResource,omitempty"`
 	// The ID of the AnalyticDB for MySQL Data Lakehouse Edition (V3.0) cluster.
 	DBClusterId *string `json:"DBClusterId,omitempty" xml:"DBClusterId,omitempty"`
 	// The name of the resource group.
@@ -2330,12 +2332,14 @@ type CreateDBResourceGroupRequest struct {
 	// *   **Job**
 	//
 	// > For information about resource groups of Data Lakehouse Edition, see [Resource groups](~~428610~~).
-	GroupType *string `json:"GroupType,omitempty" xml:"GroupType,omitempty"`
+	GroupType       *string `json:"GroupType,omitempty" xml:"GroupType,omitempty"`
+	MaxClusterCount *int32  `json:"MaxClusterCount,omitempty" xml:"MaxClusterCount,omitempty"`
 	// The maximum reserved computing resources. Unit: ACU.
 	//
 	// *   If GroupType is set to Interactive, the maximum amount of reserved computing resources refers to the amount of resources that are not allocated in the cluster. Set this parameter to a value in increments of 16 ACUs.
 	// *   If GroupType is set to Job, the maximum amount of reserved computing resources refers to the amount of resources that are not allocated in the cluster. Set this parameter to a value in increments of 8 ACUs.
 	MaxComputeResource *string `json:"MaxComputeResource,omitempty" xml:"MaxComputeResource,omitempty"`
+	MinClusterCount    *int32  `json:"MinClusterCount,omitempty" xml:"MinClusterCount,omitempty"`
 	// The minimum reserved computing resources. Unit: AnalyticDB Compute Unit (ACU).
 	//
 	// *   If GroupType is set to Interactive, set the value to 16ACU.
@@ -2349,6 +2353,16 @@ func (s CreateDBResourceGroupRequest) String() string {
 
 func (s CreateDBResourceGroupRequest) GoString() string {
 	return s.String()
+}
+
+func (s *CreateDBResourceGroupRequest) SetClusterMode(v string) *CreateDBResourceGroupRequest {
+	s.ClusterMode = &v
+	return s
+}
+
+func (s *CreateDBResourceGroupRequest) SetClusterSizeResource(v string) *CreateDBResourceGroupRequest {
+	s.ClusterSizeResource = &v
+	return s
 }
 
 func (s *CreateDBResourceGroupRequest) SetDBClusterId(v string) *CreateDBResourceGroupRequest {
@@ -2366,8 +2380,18 @@ func (s *CreateDBResourceGroupRequest) SetGroupType(v string) *CreateDBResourceG
 	return s
 }
 
+func (s *CreateDBResourceGroupRequest) SetMaxClusterCount(v int32) *CreateDBResourceGroupRequest {
+	s.MaxClusterCount = &v
+	return s
+}
+
 func (s *CreateDBResourceGroupRequest) SetMaxComputeResource(v string) *CreateDBResourceGroupRequest {
 	s.MaxComputeResource = &v
+	return s
+}
+
+func (s *CreateDBResourceGroupRequest) SetMinClusterCount(v int32) *CreateDBResourceGroupRequest {
+	s.MinClusterCount = &v
 	return s
 }
 
@@ -3141,10 +3165,16 @@ func (s *DeleteElasticPlanResponse) SetBody(v *DeleteElasticPlanResponseBody) *D
 }
 
 type DeleteProcessInstanceRequest struct {
-	DBClusterId       *string `json:"DBClusterId,omitempty" xml:"DBClusterId,omitempty"`
-	ProcessInstanceId *int64  `json:"ProcessInstanceId,omitempty" xml:"ProcessInstanceId,omitempty"`
-	ProjectCode       *int64  `json:"ProjectCode,omitempty" xml:"ProjectCode,omitempty"`
-	RegionId          *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	// The ID of the Data Lakehouse Edition (V3.0) cluster.
+	//
+	// > You can call the [DescribeDBClusters](~~612397~~) operation to query the IDs of all AnalyticDB for MySQL Data Lakehouse Edition (V3.0) clusters within a region.
+	DBClusterId *string `json:"DBClusterId,omitempty" xml:"DBClusterId,omitempty"`
+	// The ID of the workflow instance.
+	ProcessInstanceId *int64 `json:"ProcessInstanceId,omitempty" xml:"ProcessInstanceId,omitempty"`
+	// The project ID, which is the unique identifier of the project.
+	ProjectCode *int64 `json:"ProjectCode,omitempty" xml:"ProjectCode,omitempty"`
+	// The region ID of the cluster.
+	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 }
 
 func (s DeleteProcessInstanceRequest) String() string {
@@ -3176,10 +3206,23 @@ func (s *DeleteProcessInstanceRequest) SetRegionId(v string) *DeleteProcessInsta
 }
 
 type DeleteProcessInstanceResponseBody struct {
-	Data      *bool   `json:"Data,omitempty" xml:"Data,omitempty"`
-	Message   *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// Indicates whether the workflow instance is deleted. Valid values:
+	//
+	// *   **true**
+	// *   **false**
+	Data *bool `json:"Data,omitempty" xml:"Data,omitempty"`
+	// The returned message. Valid values:
+	//
+	// *   If the request was successful, **Success** is returned.
+	// *   If the request failed, an error message is returned.
+	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// The request ID.
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	Success   *bool   `json:"Success,omitempty" xml:"Success,omitempty"`
+	// Indicates whether the request was successful. Valid values:
+	//
+	// *   **true**
+	// *   **false**
+	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
 }
 
 func (s DeleteProcessInstanceResponseBody) String() string {
@@ -4592,10 +4635,14 @@ func (s *DescribeAdbMySqlTablesResponse) SetBody(v *DescribeAdbMySqlTablesRespon
 }
 
 type DescribeAllDataSourceRequest struct {
+	// The ID of the AnalyticDB for MySQL Data Lakehouse Edition (V3.0) cluster.
 	DBClusterId *string `json:"DBClusterId,omitempty" xml:"DBClusterId,omitempty"`
-	RegionId    *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	SchemaName  *string `json:"SchemaName,omitempty" xml:"SchemaName,omitempty"`
-	TableName   *string `json:"TableName,omitempty" xml:"TableName,omitempty"`
+	// The region ID.
+	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	// The name of the database.
+	SchemaName *string `json:"SchemaName,omitempty" xml:"SchemaName,omitempty"`
+	// The name of the table.
+	TableName *string `json:"TableName,omitempty" xml:"TableName,omitempty"`
 }
 
 func (s DescribeAllDataSourceRequest) String() string {
@@ -4627,10 +4674,14 @@ func (s *DescribeAllDataSourceRequest) SetTableName(v string) *DescribeAllDataSo
 }
 
 type DescribeAllDataSourceResponseBody struct {
-	Columns   *DescribeAllDataSourceResponseBodyColumns `json:"Columns,omitempty" xml:"Columns,omitempty" type:"Struct"`
-	RequestId *string                                   `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	Schemas   *DescribeAllDataSourceResponseBodySchemas `json:"Schemas,omitempty" xml:"Schemas,omitempty" type:"Struct"`
-	Tables    *DescribeAllDataSourceResponseBodyTables  `json:"Tables,omitempty" xml:"Tables,omitempty" type:"Struct"`
+	// The queried columns.
+	Columns *DescribeAllDataSourceResponseBodyColumns `json:"Columns,omitempty" xml:"Columns,omitempty" type:"Struct"`
+	// The request ID.
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The queried databases.
+	Schemas *DescribeAllDataSourceResponseBodySchemas `json:"Schemas,omitempty" xml:"Schemas,omitempty" type:"Struct"`
+	// The queried tables.
+	Tables *DescribeAllDataSourceResponseBodyTables `json:"Tables,omitempty" xml:"Tables,omitempty" type:"Struct"`
 }
 
 func (s DescribeAllDataSourceResponseBody) String() string {
@@ -4679,13 +4730,26 @@ func (s *DescribeAllDataSourceResponseBodyColumns) SetColumn(v []*DescribeAllDat
 }
 
 type DescribeAllDataSourceResponseBodyColumnsColumn struct {
-	AutoIncrementColumn *bool   `json:"AutoIncrementColumn,omitempty" xml:"AutoIncrementColumn,omitempty"`
-	ColumnName          *string `json:"ColumnName,omitempty" xml:"ColumnName,omitempty"`
-	DBClusterId         *string `json:"DBClusterId,omitempty" xml:"DBClusterId,omitempty"`
-	PrimaryKey          *bool   `json:"PrimaryKey,omitempty" xml:"PrimaryKey,omitempty"`
-	SchemaName          *string `json:"SchemaName,omitempty" xml:"SchemaName,omitempty"`
-	TableName           *string `json:"TableName,omitempty" xml:"TableName,omitempty"`
-	Type                *string `json:"Type,omitempty" xml:"Type,omitempty"`
+	// Indicates whether the column is an auto-increment column. Valid values:
+	//
+	// *   **true**
+	// *   **false**
+	AutoIncrementColumn *bool `json:"AutoIncrementColumn,omitempty" xml:"AutoIncrementColumn,omitempty"`
+	// The name of the column.
+	ColumnName *string `json:"ColumnName,omitempty" xml:"ColumnName,omitempty"`
+	// The ID of the AnalyticDB for MySQL Data Lakehouse Edition (V3.0) cluster.
+	DBClusterId *string `json:"DBClusterId,omitempty" xml:"DBClusterId,omitempty"`
+	// Indicates whether the column is the primary key of the table. Valid values:
+	//
+	// *   **true**
+	// *   **false**
+	PrimaryKey *bool `json:"PrimaryKey,omitempty" xml:"PrimaryKey,omitempty"`
+	// The logical name of the database.
+	SchemaName *string `json:"SchemaName,omitempty" xml:"SchemaName,omitempty"`
+	// The logical name of the table.
+	TableName *string `json:"TableName,omitempty" xml:"TableName,omitempty"`
+	// The data type of the column.
+	Type *string `json:"Type,omitempty" xml:"Type,omitempty"`
 }
 
 func (s DescribeAllDataSourceResponseBodyColumnsColumn) String() string {
@@ -4749,8 +4813,10 @@ func (s *DescribeAllDataSourceResponseBodySchemas) SetSchema(v []*DescribeAllDat
 }
 
 type DescribeAllDataSourceResponseBodySchemasSchema struct {
+	// The ID of the AnalyticDB for MySQL Data Lakehouse Edition (V3.0) cluster.
 	DBClusterId *string `json:"DBClusterId,omitempty" xml:"DBClusterId,omitempty"`
-	SchemaName  *string `json:"SchemaName,omitempty" xml:"SchemaName,omitempty"`
+	// The logical name of the database.
+	SchemaName *string `json:"SchemaName,omitempty" xml:"SchemaName,omitempty"`
 }
 
 func (s DescribeAllDataSourceResponseBodySchemasSchema) String() string {
@@ -4789,9 +4855,12 @@ func (s *DescribeAllDataSourceResponseBodyTables) SetTable(v []*DescribeAllDataS
 }
 
 type DescribeAllDataSourceResponseBodyTablesTable struct {
+	// The ID of the AnalyticDB for MySQL Data Lakehouse Edition (V3.0) cluster.
 	DBClusterId *string `json:"DBClusterId,omitempty" xml:"DBClusterId,omitempty"`
-	SchemaName  *string `json:"SchemaName,omitempty" xml:"SchemaName,omitempty"`
-	TableName   *string `json:"TableName,omitempty" xml:"TableName,omitempty"`
+	// The name of the database.
+	SchemaName *string `json:"SchemaName,omitempty" xml:"SchemaName,omitempty"`
+	// The logical name of the table.
+	TableName *string `json:"TableName,omitempty" xml:"TableName,omitempty"`
 }
 
 func (s DescribeAllDataSourceResponseBodyTablesTable) String() string {
@@ -5936,10 +6005,14 @@ func (s *DescribeClusterNetInfoResponse) SetBody(v *DescribeClusterNetInfoRespon
 }
 
 type DescribeColumnsRequest struct {
+	// The ID of the AnalyticDB for MySQL Data Lakehouse Edition (V3.0) cluster.
 	DBClusterId *string `json:"DBClusterId,omitempty" xml:"DBClusterId,omitempty"`
-	RegionId    *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	SchemaName  *string `json:"SchemaName,omitempty" xml:"SchemaName,omitempty"`
-	TableName   *string `json:"TableName,omitempty" xml:"TableName,omitempty"`
+	// The region ID.
+	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	// The name of the database.
+	SchemaName *string `json:"SchemaName,omitempty" xml:"SchemaName,omitempty"`
+	// The name of the table.
+	TableName *string `json:"TableName,omitempty" xml:"TableName,omitempty"`
 }
 
 func (s DescribeColumnsRequest) String() string {
@@ -5971,8 +6044,10 @@ func (s *DescribeColumnsRequest) SetTableName(v string) *DescribeColumnsRequest 
 }
 
 type DescribeColumnsResponseBody struct {
-	Items     *DescribeColumnsResponseBodyItems `json:"Items,omitempty" xml:"Items,omitempty" type:"Struct"`
-	RequestId *string                           `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The queried columns.
+	Items *DescribeColumnsResponseBodyItems `json:"Items,omitempty" xml:"Items,omitempty" type:"Struct"`
+	// The request ID.
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
 func (s DescribeColumnsResponseBody) String() string {
@@ -6011,13 +6086,26 @@ func (s *DescribeColumnsResponseBodyItems) SetColumn(v []*DescribeColumnsRespons
 }
 
 type DescribeColumnsResponseBodyItemsColumn struct {
-	AutoIncrementColumn *bool   `json:"AutoIncrementColumn,omitempty" xml:"AutoIncrementColumn,omitempty"`
-	ColumnName          *string `json:"ColumnName,omitempty" xml:"ColumnName,omitempty"`
-	DBClusterId         *string `json:"DBClusterId,omitempty" xml:"DBClusterId,omitempty"`
-	PrimaryKey          *bool   `json:"PrimaryKey,omitempty" xml:"PrimaryKey,omitempty"`
-	SchemaName          *string `json:"SchemaName,omitempty" xml:"SchemaName,omitempty"`
-	TableName           *string `json:"TableName,omitempty" xml:"TableName,omitempty"`
-	Type                *string `json:"Type,omitempty" xml:"Type,omitempty"`
+	// Indicates whether the column is an auto-increment column. Valid values:
+	//
+	// *   **true**
+	// *   **false**
+	AutoIncrementColumn *bool `json:"AutoIncrementColumn,omitempty" xml:"AutoIncrementColumn,omitempty"`
+	// The name of the column.
+	ColumnName *string `json:"ColumnName,omitempty" xml:"ColumnName,omitempty"`
+	// The ID of the AnalyticDB for MySQL Data Lakehouse Edition (V3.0) cluster.
+	DBClusterId *string `json:"DBClusterId,omitempty" xml:"DBClusterId,omitempty"`
+	// Indicates whether the column is the primary key of the table. Valid values:
+	//
+	// *   **true**
+	// *   **false**
+	PrimaryKey *bool `json:"PrimaryKey,omitempty" xml:"PrimaryKey,omitempty"`
+	// The name of the database.
+	SchemaName *string `json:"SchemaName,omitempty" xml:"SchemaName,omitempty"`
+	// The name of the table.
+	TableName *string `json:"TableName,omitempty" xml:"TableName,omitempty"`
+	// The data type of the column.
+	Type *string `json:"Type,omitempty" xml:"Type,omitempty"`
 }
 
 func (s DescribeColumnsResponseBodyItemsColumn) String() string {
@@ -7487,6 +7575,8 @@ func (s *DescribeDBResourceGroupResponseBody) SetRequestId(v string) *DescribeDB
 }
 
 type DescribeDBResourceGroupResponseBodyGroupsInfo struct {
+	ClusterMode         *string `json:"ClusterMode,omitempty" xml:"ClusterMode,omitempty"`
+	ClusterSizeResource *string `json:"ClusterSizeResource,omitempty" xml:"ClusterSizeResource,omitempty"`
 	// The time when the resource group was created. The time follows the ISO 8601 standard in the *yyyy-MM-ddTHH:mm:ssZ* format. The time is displayed in UTC.
 	CreateTime *string `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
 	// The amount of minimum elastic computing resources. Unit: ACU.
@@ -7501,11 +7591,14 @@ type DescribeDBResourceGroupResponseBodyGroupsInfo struct {
 	// > For information about resource groups of Data Lakehouse Edition, see [Resource groups](~~428610~~).
 	GroupType *string `json:"GroupType,omitempty" xml:"GroupType,omitempty"`
 	// The Resource Access Management (RAM) user with which the resource group is associated.
-	GroupUsers *string `json:"GroupUsers,omitempty" xml:"GroupUsers,omitempty"`
+	GroupUsers      *string `json:"GroupUsers,omitempty" xml:"GroupUsers,omitempty"`
+	MaxClusterCount *int32  `json:"MaxClusterCount,omitempty" xml:"MaxClusterCount,omitempty"`
 	// The maximum amount of reserved computing resources. Unit: ACU.
 	MaxComputeResource *string `json:"MaxComputeResource,omitempty" xml:"MaxComputeResource,omitempty"`
+	MinClusterCount    *int32  `json:"MinClusterCount,omitempty" xml:"MinClusterCount,omitempty"`
 	// The minimum amount of reserved computing resources. Unit: AnalyticDB compute unit (ACU).
-	MinComputeResource *string `json:"MinComputeResource,omitempty" xml:"MinComputeResource,omitempty"`
+	MinComputeResource  *string `json:"MinComputeResource,omitempty" xml:"MinComputeResource,omitempty"`
+	RunningClusterCount *int32  `json:"RunningClusterCount,omitempty" xml:"RunningClusterCount,omitempty"`
 	// The state of the resource group. Valid values:
 	//
 	// *   **creating**
@@ -7522,6 +7615,16 @@ func (s DescribeDBResourceGroupResponseBodyGroupsInfo) String() string {
 
 func (s DescribeDBResourceGroupResponseBodyGroupsInfo) GoString() string {
 	return s.String()
+}
+
+func (s *DescribeDBResourceGroupResponseBodyGroupsInfo) SetClusterMode(v string) *DescribeDBResourceGroupResponseBodyGroupsInfo {
+	s.ClusterMode = &v
+	return s
+}
+
+func (s *DescribeDBResourceGroupResponseBodyGroupsInfo) SetClusterSizeResource(v string) *DescribeDBResourceGroupResponseBodyGroupsInfo {
+	s.ClusterSizeResource = &v
+	return s
 }
 
 func (s *DescribeDBResourceGroupResponseBodyGroupsInfo) SetCreateTime(v string) *DescribeDBResourceGroupResponseBodyGroupsInfo {
@@ -7549,13 +7652,28 @@ func (s *DescribeDBResourceGroupResponseBodyGroupsInfo) SetGroupUsers(v string) 
 	return s
 }
 
+func (s *DescribeDBResourceGroupResponseBodyGroupsInfo) SetMaxClusterCount(v int32) *DescribeDBResourceGroupResponseBodyGroupsInfo {
+	s.MaxClusterCount = &v
+	return s
+}
+
 func (s *DescribeDBResourceGroupResponseBodyGroupsInfo) SetMaxComputeResource(v string) *DescribeDBResourceGroupResponseBodyGroupsInfo {
 	s.MaxComputeResource = &v
 	return s
 }
 
+func (s *DescribeDBResourceGroupResponseBodyGroupsInfo) SetMinClusterCount(v int32) *DescribeDBResourceGroupResponseBodyGroupsInfo {
+	s.MinClusterCount = &v
+	return s
+}
+
 func (s *DescribeDBResourceGroupResponseBodyGroupsInfo) SetMinComputeResource(v string) *DescribeDBResourceGroupResponseBodyGroupsInfo {
 	s.MinComputeResource = &v
+	return s
+}
+
+func (s *DescribeDBResourceGroupResponseBodyGroupsInfo) SetRunningClusterCount(v int32) *DescribeDBResourceGroupResponseBodyGroupsInfo {
+	s.RunningClusterCount = &v
 	return s
 }
 
@@ -9984,8 +10102,10 @@ func (s *DescribeSQLPatternsResponse) SetBody(v *DescribeSQLPatternsResponseBody
 }
 
 type DescribeSchemasRequest struct {
+	// The ID of the AnalyticDB for MySQL Data Lakehouse Edition (V3.0) cluster.
 	DBClusterId *string `json:"DBClusterId,omitempty" xml:"DBClusterId,omitempty"`
-	RegionId    *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	// The region ID.
+	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 }
 
 func (s DescribeSchemasRequest) String() string {
@@ -10007,8 +10127,10 @@ func (s *DescribeSchemasRequest) SetRegionId(v string) *DescribeSchemasRequest {
 }
 
 type DescribeSchemasResponseBody struct {
-	Items     *DescribeSchemasResponseBodyItems `json:"Items,omitempty" xml:"Items,omitempty" type:"Struct"`
-	RequestId *string                           `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The queried databases.
+	Items *DescribeSchemasResponseBodyItems `json:"Items,omitempty" xml:"Items,omitempty" type:"Struct"`
+	// The request ID.
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
 func (s DescribeSchemasResponseBody) String() string {
@@ -10047,8 +10169,10 @@ func (s *DescribeSchemasResponseBodyItems) SetSchema(v []*DescribeSchemasRespons
 }
 
 type DescribeSchemasResponseBodyItemsSchema struct {
+	// The ID of the AnalyticDB for MySQL Data Lakehouse Edition (V3.0) cluster.
 	DBClusterId *string `json:"DBClusterId,omitempty" xml:"DBClusterId,omitempty"`
-	SchemaName  *string `json:"SchemaName,omitempty" xml:"SchemaName,omitempty"`
+	// The name of the database.
+	SchemaName *string `json:"SchemaName,omitempty" xml:"SchemaName,omitempty"`
 }
 
 func (s DescribeSchemasResponseBodyItemsSchema) String() string {
@@ -10836,9 +10960,12 @@ func (s *DescribeTableAccessCountResponse) SetBody(v *DescribeTableAccessCountRe
 }
 
 type DescribeTablesRequest struct {
+	// The ID of the AnalyticDB for MySQL Data Lakehouse Edition (V3.0) cluster.
 	DBClusterId *string `json:"DBClusterId,omitempty" xml:"DBClusterId,omitempty"`
-	RegionId    *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	SchemaName  *string `json:"SchemaName,omitempty" xml:"SchemaName,omitempty"`
+	// The region ID.
+	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	// The name of the database.
+	SchemaName *string `json:"SchemaName,omitempty" xml:"SchemaName,omitempty"`
 }
 
 func (s DescribeTablesRequest) String() string {
@@ -10865,8 +10992,10 @@ func (s *DescribeTablesRequest) SetSchemaName(v string) *DescribeTablesRequest {
 }
 
 type DescribeTablesResponseBody struct {
-	Items     *DescribeTablesResponseBodyItems `json:"Items,omitempty" xml:"Items,omitempty" type:"Struct"`
-	RequestId *string                          `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The queried tables.
+	Items *DescribeTablesResponseBodyItems `json:"Items,omitempty" xml:"Items,omitempty" type:"Struct"`
+	// The request ID.
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
 func (s DescribeTablesResponseBody) String() string {
@@ -10905,9 +11034,12 @@ func (s *DescribeTablesResponseBodyItems) SetTable(v []*DescribeTablesResponseBo
 }
 
 type DescribeTablesResponseBodyItemsTable struct {
+	// The ID of the AnalyticDB for MySQL Data Lakehouse Edition (V3.0) cluster.
 	DBClusterId *string `json:"DBClusterId,omitempty" xml:"DBClusterId,omitempty"`
-	SchemaName  *string `json:"SchemaName,omitempty" xml:"SchemaName,omitempty"`
-	TableName   *string `json:"TableName,omitempty" xml:"TableName,omitempty"`
+	// The name of the database.
+	SchemaName *string `json:"SchemaName,omitempty" xml:"SchemaName,omitempty"`
+	// The name of the table.
+	TableName *string `json:"TableName,omitempty" xml:"TableName,omitempty"`
 }
 
 func (s DescribeTablesResponseBodyItemsTable) String() string {
@@ -15745,6 +15877,8 @@ func (s *ModifyDBClusterMaintainTimeResponse) SetBody(v *ModifyDBClusterMaintain
 }
 
 type ModifyDBResourceGroupRequest struct {
+	ClusterMode         *string `json:"ClusterMode,omitempty" xml:"ClusterMode,omitempty"`
+	ClusterSizeResource *string `json:"ClusterSizeResource,omitempty" xml:"ClusterSizeResource,omitempty"`
 	// The ID of the AnalyticDB for MySQL Data Lakehouse Edition (V3.0) cluster.
 	DBClusterId *string `json:"DBClusterId,omitempty" xml:"DBClusterId,omitempty"`
 	// The name of the resource group.
@@ -15757,12 +15891,14 @@ type ModifyDBResourceGroupRequest struct {
 	// *   **Job**
 	//
 	// > For information about resource groups of Data Lakehouse Edition, see [Resource groups](~~428610~~).
-	GroupType *string `json:"GroupType,omitempty" xml:"GroupType,omitempty"`
+	GroupType       *string `json:"GroupType,omitempty" xml:"GroupType,omitempty"`
+	MaxClusterCount *int32  `json:"MaxClusterCount,omitempty" xml:"MaxClusterCount,omitempty"`
 	// The maximum amount of reserved computing resources. Unit: ACU.
 	//
 	// *   If GroupType is set to Interactive, the maximum amount of reserved computing resources refers to the amount of resources that are not allocated in the cluster. Set this parameter to a value in increments of 16 ACUs.
 	// *   If GroupType is set to Job, the maximum amount of reserved computing resources refers to the amount of resources that are not allocated in the cluster. Set this parameter to a value in increments of 8 ACUs.
 	MaxComputeResource *string `json:"MaxComputeResource,omitempty" xml:"MaxComputeResource,omitempty"`
+	MinClusterCount    *int32  `json:"MinClusterCount,omitempty" xml:"MinClusterCount,omitempty"`
 	// The minimum amount of reserved computing resources. Unit: AnalyticDB compute unit (ACU).
 	//
 	// *   If GroupType is set to Interactive, set the value to 16ACU.
@@ -15776,6 +15912,16 @@ func (s ModifyDBResourceGroupRequest) String() string {
 
 func (s ModifyDBResourceGroupRequest) GoString() string {
 	return s.String()
+}
+
+func (s *ModifyDBResourceGroupRequest) SetClusterMode(v string) *ModifyDBResourceGroupRequest {
+	s.ClusterMode = &v
+	return s
+}
+
+func (s *ModifyDBResourceGroupRequest) SetClusterSizeResource(v string) *ModifyDBResourceGroupRequest {
+	s.ClusterSizeResource = &v
+	return s
 }
 
 func (s *ModifyDBResourceGroupRequest) SetDBClusterId(v string) *ModifyDBResourceGroupRequest {
@@ -15793,8 +15939,18 @@ func (s *ModifyDBResourceGroupRequest) SetGroupType(v string) *ModifyDBResourceG
 	return s
 }
 
+func (s *ModifyDBResourceGroupRequest) SetMaxClusterCount(v int32) *ModifyDBResourceGroupRequest {
+	s.MaxClusterCount = &v
+	return s
+}
+
 func (s *ModifyDBResourceGroupRequest) SetMaxComputeResource(v string) *ModifyDBResourceGroupRequest {
 	s.MaxComputeResource = &v
+	return s
+}
+
+func (s *ModifyDBResourceGroupRequest) SetMinClusterCount(v int32) *ModifyDBResourceGroupRequest {
+	s.MinClusterCount = &v
 	return s
 }
 
@@ -17735,6 +17891,14 @@ func (client *Client) CreateDBResourceGroupWithOptions(request *CreateDBResource
 		return _result, _err
 	}
 	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.ClusterMode)) {
+		query["ClusterMode"] = request.ClusterMode
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ClusterSizeResource)) {
+		query["ClusterSizeResource"] = request.ClusterSizeResource
+	}
+
 	if !tea.BoolValue(util.IsUnset(request.DBClusterId)) {
 		query["DBClusterId"] = request.DBClusterId
 	}
@@ -17747,8 +17911,16 @@ func (client *Client) CreateDBResourceGroupWithOptions(request *CreateDBResource
 		query["GroupType"] = request.GroupType
 	}
 
+	if !tea.BoolValue(util.IsUnset(request.MaxClusterCount)) {
+		query["MaxClusterCount"] = request.MaxClusterCount
+	}
+
 	if !tea.BoolValue(util.IsUnset(request.MaxComputeResource)) {
 		query["MaxComputeResource"] = request.MaxComputeResource
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.MinClusterCount)) {
+		query["MinClusterCount"] = request.MinClusterCount
 	}
 
 	if !tea.BoolValue(util.IsUnset(request.MinComputeResource)) {
@@ -22894,6 +23066,14 @@ func (client *Client) ModifyDBResourceGroupWithOptions(request *ModifyDBResource
 		return _result, _err
 	}
 	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.ClusterMode)) {
+		query["ClusterMode"] = request.ClusterMode
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ClusterSizeResource)) {
+		query["ClusterSizeResource"] = request.ClusterSizeResource
+	}
+
 	if !tea.BoolValue(util.IsUnset(request.DBClusterId)) {
 		query["DBClusterId"] = request.DBClusterId
 	}
@@ -22906,8 +23086,16 @@ func (client *Client) ModifyDBResourceGroupWithOptions(request *ModifyDBResource
 		query["GroupType"] = request.GroupType
 	}
 
+	if !tea.BoolValue(util.IsUnset(request.MaxClusterCount)) {
+		query["MaxClusterCount"] = request.MaxClusterCount
+	}
+
 	if !tea.BoolValue(util.IsUnset(request.MaxComputeResource)) {
 		query["MaxComputeResource"] = request.MaxComputeResource
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.MinClusterCount)) {
+		query["MinClusterCount"] = request.MinClusterCount
 	}
 
 	if !tea.BoolValue(util.IsUnset(request.MinComputeResource)) {
