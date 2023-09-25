@@ -910,7 +910,8 @@ type DescribeUsersRequest struct {
 	// The list of usernames to be exactly excluded.
 	ExcludeEndUserIds []*string `json:"ExcludeEndUserIds,omitempty" xml:"ExcludeEndUserIds,omitempty" type:"Repeated"`
 	// The string that is used for fuzzy search. You perform fuzzy search by username (EndUserId) and email address (Email). Wildcard characters (\*) are supported. For example, if you set this parameter to `a*m`, usernames or email addresses that start with `a` and end with `m` are returned.
-	Filter *string `json:"Filter,omitempty" xml:"Filter,omitempty"`
+	Filter  *string `json:"Filter,omitempty" xml:"Filter,omitempty"`
+	GroupId *string `json:"GroupId,omitempty" xml:"GroupId,omitempty"`
 	// The number of entries per page.
 	//
 	// *   Valid values: 1 to 500
@@ -943,6 +944,11 @@ func (s *DescribeUsersRequest) SetExcludeEndUserIds(v []*string) *DescribeUsersR
 
 func (s *DescribeUsersRequest) SetFilter(v string) *DescribeUsersRequest {
 	s.Filter = &v
+	return s
+}
+
+func (s *DescribeUsersRequest) SetGroupId(v string) *DescribeUsersRequest {
+	s.GroupId = &v
 	return s
 }
 
@@ -992,18 +998,23 @@ func (s *DescribeUsersResponseBody) SetUsers(v []*DescribeUsersResponseBodyUsers
 }
 
 type DescribeUsersResponseBodyUsers struct {
+	Address *string `json:"Address,omitempty" xml:"Address,omitempty"`
+	Avatar  *string `json:"Avatar,omitempty" xml:"Avatar,omitempty"`
 	// The email address.
 	Email *string `json:"Email,omitempty" xml:"Email,omitempty"`
 	// The name of the user.
-	EndUserId *string `json:"EndUserId,omitempty" xml:"EndUserId,omitempty"`
+	EndUserId *string                                 `json:"EndUserId,omitempty" xml:"EndUserId,omitempty"`
+	Groups    []*DescribeUsersResponseBodyUsersGroups `json:"Groups,omitempty" xml:"Groups,omitempty" type:"Repeated"`
 	// The ID of the user.
 	Id *int64 `json:"Id,omitempty" xml:"Id,omitempty"`
 	// Indicates whether the user is an administrator. If the convenience user is of the administrator-activated type, you must specify a user administrator. Notifications such as password reset on a client are sent to the email address or mobile phone of the user administrator. For more information, see [Create a convenience user](~~214472~~).
-	IsTenantManager *bool `json:"IsTenantManager,omitempty" xml:"IsTenantManager,omitempty"`
+	IsTenantManager *bool   `json:"IsTenantManager,omitempty" xml:"IsTenantManager,omitempty"`
+	JobNumber       *string `json:"JobNumber,omitempty" xml:"JobNumber,omitempty"`
 	// The nickname of the user.
 	NickName *string `json:"NickName,omitempty" xml:"NickName,omitempty"`
 	// The ID of the organization to which the user belongs.
-	OrgId *string `json:"OrgId,omitempty" xml:"OrgId,omitempty"`
+	OrgId *string                               `json:"OrgId,omitempty" xml:"OrgId,omitempty"`
+	Orgs  []*DescribeUsersResponseBodyUsersOrgs `json:"Orgs,omitempty" xml:"Orgs,omitempty" type:"Repeated"`
 	// The type of the convenience account.
 	//
 	// *   The administrator-activated type. The administrator specifies the username and the password of the convenience account. User notifications such as password reset are sent to the email address or mobile number of the administrator.
@@ -1049,6 +1060,16 @@ func (s DescribeUsersResponseBodyUsers) GoString() string {
 	return s.String()
 }
 
+func (s *DescribeUsersResponseBodyUsers) SetAddress(v string) *DescribeUsersResponseBodyUsers {
+	s.Address = &v
+	return s
+}
+
+func (s *DescribeUsersResponseBodyUsers) SetAvatar(v string) *DescribeUsersResponseBodyUsers {
+	s.Avatar = &v
+	return s
+}
+
 func (s *DescribeUsersResponseBodyUsers) SetEmail(v string) *DescribeUsersResponseBodyUsers {
 	s.Email = &v
 	return s
@@ -1056,6 +1077,11 @@ func (s *DescribeUsersResponseBodyUsers) SetEmail(v string) *DescribeUsersRespon
 
 func (s *DescribeUsersResponseBodyUsers) SetEndUserId(v string) *DescribeUsersResponseBodyUsers {
 	s.EndUserId = &v
+	return s
+}
+
+func (s *DescribeUsersResponseBodyUsers) SetGroups(v []*DescribeUsersResponseBodyUsersGroups) *DescribeUsersResponseBodyUsers {
+	s.Groups = v
 	return s
 }
 
@@ -1069,6 +1095,11 @@ func (s *DescribeUsersResponseBodyUsers) SetIsTenantManager(v bool) *DescribeUse
 	return s
 }
 
+func (s *DescribeUsersResponseBodyUsers) SetJobNumber(v string) *DescribeUsersResponseBodyUsers {
+	s.JobNumber = &v
+	return s
+}
+
 func (s *DescribeUsersResponseBodyUsers) SetNickName(v string) *DescribeUsersResponseBodyUsers {
 	s.NickName = &v
 	return s
@@ -1076,6 +1107,11 @@ func (s *DescribeUsersResponseBodyUsers) SetNickName(v string) *DescribeUsersRes
 
 func (s *DescribeUsersResponseBodyUsers) SetOrgId(v string) *DescribeUsersResponseBodyUsers {
 	s.OrgId = &v
+	return s
+}
+
+func (s *DescribeUsersResponseBodyUsers) SetOrgs(v []*DescribeUsersResponseBodyUsersOrgs) *DescribeUsersResponseBodyUsers {
+	s.Orgs = v
 	return s
 }
 
@@ -1101,6 +1137,52 @@ func (s *DescribeUsersResponseBodyUsers) SetStatus(v int64) *DescribeUsersRespon
 
 func (s *DescribeUsersResponseBodyUsers) SetWyId(v string) *DescribeUsersResponseBodyUsers {
 	s.WyId = &v
+	return s
+}
+
+type DescribeUsersResponseBodyUsersGroups struct {
+	GroupId   *string `json:"GroupId,omitempty" xml:"GroupId,omitempty"`
+	GroupName *string `json:"GroupName,omitempty" xml:"GroupName,omitempty"`
+}
+
+func (s DescribeUsersResponseBodyUsersGroups) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeUsersResponseBodyUsersGroups) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeUsersResponseBodyUsersGroups) SetGroupId(v string) *DescribeUsersResponseBodyUsersGroups {
+	s.GroupId = &v
+	return s
+}
+
+func (s *DescribeUsersResponseBodyUsersGroups) SetGroupName(v string) *DescribeUsersResponseBodyUsersGroups {
+	s.GroupName = &v
+	return s
+}
+
+type DescribeUsersResponseBodyUsersOrgs struct {
+	OrgId   *string `json:"OrgId,omitempty" xml:"OrgId,omitempty"`
+	OrgName *string `json:"OrgName,omitempty" xml:"OrgName,omitempty"`
+}
+
+func (s DescribeUsersResponseBodyUsersOrgs) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeUsersResponseBodyUsersOrgs) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeUsersResponseBodyUsersOrgs) SetOrgId(v string) *DescribeUsersResponseBodyUsersOrgs {
+	s.OrgId = &v
+	return s
+}
+
+func (s *DescribeUsersResponseBodyUsersOrgs) SetOrgName(v string) *DescribeUsersResponseBodyUsersOrgs {
+	s.OrgName = &v
 	return s
 }
 
@@ -1820,6 +1902,99 @@ func (s *FilterUsersResponse) SetStatusCode(v int32) *FilterUsersResponse {
 }
 
 func (s *FilterUsersResponse) SetBody(v *FilterUsersResponseBody) *FilterUsersResponse {
+	s.Body = v
+	return s
+}
+
+type GetManagerInfoByAuthCodeRequest struct {
+	AuthCode *string `json:"AuthCode,omitempty" xml:"AuthCode,omitempty"`
+}
+
+func (s GetManagerInfoByAuthCodeRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetManagerInfoByAuthCodeRequest) GoString() string {
+	return s.String()
+}
+
+func (s *GetManagerInfoByAuthCodeRequest) SetAuthCode(v string) *GetManagerInfoByAuthCodeRequest {
+	s.AuthCode = &v
+	return s
+}
+
+type GetManagerInfoByAuthCodeResponseBody struct {
+	OrgId     *string `json:"OrgId,omitempty" xml:"OrgId,omitempty"`
+	Phone     *string `json:"Phone,omitempty" xml:"Phone,omitempty"`
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	TeamName  *string `json:"TeamName,omitempty" xml:"TeamName,omitempty"`
+	UserName  *string `json:"UserName,omitempty" xml:"UserName,omitempty"`
+	WaId      *int64  `json:"WaId,omitempty" xml:"WaId,omitempty"`
+}
+
+func (s GetManagerInfoByAuthCodeResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetManagerInfoByAuthCodeResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *GetManagerInfoByAuthCodeResponseBody) SetOrgId(v string) *GetManagerInfoByAuthCodeResponseBody {
+	s.OrgId = &v
+	return s
+}
+
+func (s *GetManagerInfoByAuthCodeResponseBody) SetPhone(v string) *GetManagerInfoByAuthCodeResponseBody {
+	s.Phone = &v
+	return s
+}
+
+func (s *GetManagerInfoByAuthCodeResponseBody) SetRequestId(v string) *GetManagerInfoByAuthCodeResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *GetManagerInfoByAuthCodeResponseBody) SetTeamName(v string) *GetManagerInfoByAuthCodeResponseBody {
+	s.TeamName = &v
+	return s
+}
+
+func (s *GetManagerInfoByAuthCodeResponseBody) SetUserName(v string) *GetManagerInfoByAuthCodeResponseBody {
+	s.UserName = &v
+	return s
+}
+
+func (s *GetManagerInfoByAuthCodeResponseBody) SetWaId(v int64) *GetManagerInfoByAuthCodeResponseBody {
+	s.WaId = &v
+	return s
+}
+
+type GetManagerInfoByAuthCodeResponse struct {
+	Headers    map[string]*string                    `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                                `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *GetManagerInfoByAuthCodeResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s GetManagerInfoByAuthCodeResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetManagerInfoByAuthCodeResponse) GoString() string {
+	return s.String()
+}
+
+func (s *GetManagerInfoByAuthCodeResponse) SetHeaders(v map[string]*string) *GetManagerInfoByAuthCodeResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *GetManagerInfoByAuthCodeResponse) SetStatusCode(v int32) *GetManagerInfoByAuthCodeResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *GetManagerInfoByAuthCodeResponse) SetBody(v *GetManagerInfoByAuthCodeResponseBody) *GetManagerInfoByAuthCodeResponse {
 	s.Body = v
 	return s
 }
@@ -3831,6 +4006,10 @@ func (client *Client) DescribeUsersWithOptions(request *DescribeUsersRequest, ru
 		body["ExcludeEndUserIds"] = request.ExcludeEndUserIds
 	}
 
+	if !tea.BoolValue(util.IsUnset(request.GroupId)) {
+		body["GroupId"] = request.GroupId
+	}
+
 	if !tea.BoolValue(util.IsUnset(request.OrgId)) {
 		body["OrgId"] = request.OrgId
 	}
@@ -3953,6 +4132,50 @@ func (client *Client) FilterUsers(request *FilterUsersRequest) (_result *FilterU
 	runtime := &util.RuntimeOptions{}
 	_result = &FilterUsersResponse{}
 	_body, _err := client.FilterUsersWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) GetManagerInfoByAuthCodeWithOptions(request *GetManagerInfoByAuthCodeRequest, runtime *util.RuntimeOptions) (_result *GetManagerInfoByAuthCodeResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.AuthCode)) {
+		query["AuthCode"] = request.AuthCode
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("GetManagerInfoByAuthCode"),
+		Version:     tea.String("2021-03-08"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &GetManagerInfoByAuthCodeResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) GetManagerInfoByAuthCode(request *GetManagerInfoByAuthCodeRequest) (_result *GetManagerInfoByAuthCodeResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &GetManagerInfoByAuthCodeResponse{}
+	_body, _err := client.GetManagerInfoByAuthCodeWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
