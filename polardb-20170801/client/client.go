@@ -9639,7 +9639,9 @@ type DescribeDBClusterServerlessConfResponseBody struct {
 	// The ID of the serverless cluster.
 	DBClusterId *string `json:"DBClusterId,omitempty" xml:"DBClusterId,omitempty"`
 	// The ID of the request.
-	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	RequestId       *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	ScaleApRoNumMax *string `json:"ScaleApRoNumMax,omitempty" xml:"ScaleApRoNumMax,omitempty"`
+	ScaleApRoNumMin *string `json:"ScaleApRoNumMin,omitempty" xml:"ScaleApRoNumMin,omitempty"`
 	// The maximum number of PCUs per node for scaling. Valid values: 1 PCU to 32 PCUs.
 	ScaleMax *string `json:"ScaleMax,omitempty" xml:"ScaleMax,omitempty"`
 	// The minimum number of PCUs per node for scaling. Valid values: 1 PCU to 31 PCUs.
@@ -9650,6 +9652,7 @@ type DescribeDBClusterServerlessConfResponseBody struct {
 	ScaleRoNumMin *string `json:"ScaleRoNumMin,omitempty" xml:"ScaleRoNumMin,omitempty"`
 	// The detection period for no-activity suspension. Valid values: 300 to 86400. Unit: seconds. The value must be a multiple of 300.
 	SecondsUntilAutoPause *string `json:"SecondsUntilAutoPause,omitempty" xml:"SecondsUntilAutoPause,omitempty"`
+	Switchs               *string `json:"Switchs,omitempty" xml:"Switchs,omitempty"`
 }
 
 func (s DescribeDBClusterServerlessConfResponseBody) String() string {
@@ -9675,6 +9678,16 @@ func (s *DescribeDBClusterServerlessConfResponseBody) SetRequestId(v string) *De
 	return s
 }
 
+func (s *DescribeDBClusterServerlessConfResponseBody) SetScaleApRoNumMax(v string) *DescribeDBClusterServerlessConfResponseBody {
+	s.ScaleApRoNumMax = &v
+	return s
+}
+
+func (s *DescribeDBClusterServerlessConfResponseBody) SetScaleApRoNumMin(v string) *DescribeDBClusterServerlessConfResponseBody {
+	s.ScaleApRoNumMin = &v
+	return s
+}
+
 func (s *DescribeDBClusterServerlessConfResponseBody) SetScaleMax(v string) *DescribeDBClusterServerlessConfResponseBody {
 	s.ScaleMax = &v
 	return s
@@ -9697,6 +9710,11 @@ func (s *DescribeDBClusterServerlessConfResponseBody) SetScaleRoNumMin(v string)
 
 func (s *DescribeDBClusterServerlessConfResponseBody) SetSecondsUntilAutoPause(v string) *DescribeDBClusterServerlessConfResponseBody {
 	s.SecondsUntilAutoPause = &v
+	return s
+}
+
+func (s *DescribeDBClusterServerlessConfResponseBody) SetSwitchs(v string) *DescribeDBClusterServerlessConfResponseBody {
+	s.Switchs = &v
 	return s
 }
 
@@ -17472,6 +17490,99 @@ func (s *DescribeVSwitchesResponse) SetBody(v *DescribeVSwitchesResponseBody) *D
 	return s
 }
 
+type DisableDBClusterServerlessRequest struct {
+	DBClusterId          *string `json:"DBClusterId,omitempty" xml:"DBClusterId,omitempty"`
+	OwnerAccount         *string `json:"OwnerAccount,omitempty" xml:"OwnerAccount,omitempty"`
+	OwnerId              *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
+	ResourceOwnerAccount *string `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
+	ResourceOwnerId      *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
+}
+
+func (s DisableDBClusterServerlessRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DisableDBClusterServerlessRequest) GoString() string {
+	return s.String()
+}
+
+func (s *DisableDBClusterServerlessRequest) SetDBClusterId(v string) *DisableDBClusterServerlessRequest {
+	s.DBClusterId = &v
+	return s
+}
+
+func (s *DisableDBClusterServerlessRequest) SetOwnerAccount(v string) *DisableDBClusterServerlessRequest {
+	s.OwnerAccount = &v
+	return s
+}
+
+func (s *DisableDBClusterServerlessRequest) SetOwnerId(v int64) *DisableDBClusterServerlessRequest {
+	s.OwnerId = &v
+	return s
+}
+
+func (s *DisableDBClusterServerlessRequest) SetResourceOwnerAccount(v string) *DisableDBClusterServerlessRequest {
+	s.ResourceOwnerAccount = &v
+	return s
+}
+
+func (s *DisableDBClusterServerlessRequest) SetResourceOwnerId(v int64) *DisableDBClusterServerlessRequest {
+	s.ResourceOwnerId = &v
+	return s
+}
+
+type DisableDBClusterServerlessResponseBody struct {
+	DBClusterId *string `json:"DBClusterId,omitempty" xml:"DBClusterId,omitempty"`
+	RequestId   *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+}
+
+func (s DisableDBClusterServerlessResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DisableDBClusterServerlessResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *DisableDBClusterServerlessResponseBody) SetDBClusterId(v string) *DisableDBClusterServerlessResponseBody {
+	s.DBClusterId = &v
+	return s
+}
+
+func (s *DisableDBClusterServerlessResponseBody) SetRequestId(v string) *DisableDBClusterServerlessResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+type DisableDBClusterServerlessResponse struct {
+	Headers    map[string]*string                      `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                                  `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *DisableDBClusterServerlessResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s DisableDBClusterServerlessResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DisableDBClusterServerlessResponse) GoString() string {
+	return s.String()
+}
+
+func (s *DisableDBClusterServerlessResponse) SetHeaders(v map[string]*string) *DisableDBClusterServerlessResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *DisableDBClusterServerlessResponse) SetStatusCode(v int32) *DisableDBClusterServerlessResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *DisableDBClusterServerlessResponse) SetBody(v *DisableDBClusterServerlessResponseBody) *DisableDBClusterServerlessResponse {
+	s.Body = v
+	return s
+}
+
 type EnableFirewallRulesRequest struct {
 	DBClusterId          *string `json:"DBClusterId,omitempty" xml:"DBClusterId,omitempty"`
 	Enable               *bool   `json:"Enable,omitempty" xml:"Enable,omitempty"`
@@ -20809,6 +20920,8 @@ type ModifyDBClusterServerlessConfRequest struct {
 	PlannedStartTime     *string `json:"PlannedStartTime,omitempty" xml:"PlannedStartTime,omitempty"`
 	ResourceOwnerAccount *string `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
 	ResourceOwnerId      *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
+	ScaleApRoNumMax      *string `json:"ScaleApRoNumMax,omitempty" xml:"ScaleApRoNumMax,omitempty"`
+	ScaleApRoNumMin      *string `json:"ScaleApRoNumMin,omitempty" xml:"ScaleApRoNumMin,omitempty"`
 	// The maximum number of PCUs per node for scaling. Valid values: 1 PCU to 32 PCUs.
 	ScaleMax *string `json:"ScaleMax,omitempty" xml:"ScaleMax,omitempty"`
 	// The minimum number of PCUs per node for scaling. Valid values: 1 PCU to 31 PCUs.
@@ -20871,6 +20984,16 @@ func (s *ModifyDBClusterServerlessConfRequest) SetResourceOwnerAccount(v string)
 
 func (s *ModifyDBClusterServerlessConfRequest) SetResourceOwnerId(v int64) *ModifyDBClusterServerlessConfRequest {
 	s.ResourceOwnerId = &v
+	return s
+}
+
+func (s *ModifyDBClusterServerlessConfRequest) SetScaleApRoNumMax(v string) *ModifyDBClusterServerlessConfRequest {
+	s.ScaleApRoNumMax = &v
+	return s
+}
+
+func (s *ModifyDBClusterServerlessConfRequest) SetScaleApRoNumMin(v string) *ModifyDBClusterServerlessConfRequest {
+	s.ScaleApRoNumMin = &v
 	return s
 }
 
@@ -31639,6 +31762,66 @@ func (client *Client) DescribeVSwitches(request *DescribeVSwitchesRequest) (_res
 	return _result, _err
 }
 
+func (client *Client) DisableDBClusterServerlessWithOptions(request *DisableDBClusterServerlessRequest, runtime *util.RuntimeOptions) (_result *DisableDBClusterServerlessResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.DBClusterId)) {
+		query["DBClusterId"] = request.DBClusterId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.OwnerAccount)) {
+		query["OwnerAccount"] = request.OwnerAccount
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.OwnerId)) {
+		query["OwnerId"] = request.OwnerId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ResourceOwnerAccount)) {
+		query["ResourceOwnerAccount"] = request.ResourceOwnerAccount
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ResourceOwnerId)) {
+		query["ResourceOwnerId"] = request.ResourceOwnerId
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("DisableDBClusterServerless"),
+		Version:     tea.String("2017-08-01"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &DisableDBClusterServerlessResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) DisableDBClusterServerless(request *DisableDBClusterServerlessRequest) (_result *DisableDBClusterServerlessResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &DisableDBClusterServerlessResponse{}
+	_body, _err := client.DisableDBClusterServerlessWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
 func (client *Client) EnableFirewallRulesWithOptions(request *EnableFirewallRulesRequest, runtime *util.RuntimeOptions) (_result *EnableFirewallRulesResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -33605,6 +33788,14 @@ func (client *Client) ModifyDBClusterServerlessConfWithOptions(request *ModifyDB
 
 	if !tea.BoolValue(util.IsUnset(request.ResourceOwnerId)) {
 		query["ResourceOwnerId"] = request.ResourceOwnerId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ScaleApRoNumMax)) {
+		query["ScaleApRoNumMax"] = request.ScaleApRoNumMax
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ScaleApRoNumMin)) {
+		query["ScaleApRoNumMin"] = request.ScaleApRoNumMin
 	}
 
 	if !tea.BoolValue(util.IsUnset(request.ScaleMax)) {
