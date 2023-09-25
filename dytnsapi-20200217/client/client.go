@@ -12,6 +12,462 @@ import (
 	"github.com/alibabacloud-go/tea/tea"
 )
 
+type CompanyFourElementsVerificationRequest struct {
+	AuthCode             *string `json:"AuthCode,omitempty" xml:"AuthCode,omitempty"`
+	EpCertName           *string `json:"EpCertName,omitempty" xml:"EpCertName,omitempty"`
+	EpCertNo             *string `json:"EpCertNo,omitempty" xml:"EpCertNo,omitempty"`
+	LegalPersonCertName  *string `json:"LegalPersonCertName,omitempty" xml:"LegalPersonCertName,omitempty"`
+	LegalPersonCertNo    *string `json:"LegalPersonCertNo,omitempty" xml:"LegalPersonCertNo,omitempty"`
+	OwnerId              *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
+	ResourceOwnerAccount *string `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
+	ResourceOwnerId      *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
+}
+
+func (s CompanyFourElementsVerificationRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CompanyFourElementsVerificationRequest) GoString() string {
+	return s.String()
+}
+
+func (s *CompanyFourElementsVerificationRequest) SetAuthCode(v string) *CompanyFourElementsVerificationRequest {
+	s.AuthCode = &v
+	return s
+}
+
+func (s *CompanyFourElementsVerificationRequest) SetEpCertName(v string) *CompanyFourElementsVerificationRequest {
+	s.EpCertName = &v
+	return s
+}
+
+func (s *CompanyFourElementsVerificationRequest) SetEpCertNo(v string) *CompanyFourElementsVerificationRequest {
+	s.EpCertNo = &v
+	return s
+}
+
+func (s *CompanyFourElementsVerificationRequest) SetLegalPersonCertName(v string) *CompanyFourElementsVerificationRequest {
+	s.LegalPersonCertName = &v
+	return s
+}
+
+func (s *CompanyFourElementsVerificationRequest) SetLegalPersonCertNo(v string) *CompanyFourElementsVerificationRequest {
+	s.LegalPersonCertNo = &v
+	return s
+}
+
+func (s *CompanyFourElementsVerificationRequest) SetOwnerId(v int64) *CompanyFourElementsVerificationRequest {
+	s.OwnerId = &v
+	return s
+}
+
+func (s *CompanyFourElementsVerificationRequest) SetResourceOwnerAccount(v string) *CompanyFourElementsVerificationRequest {
+	s.ResourceOwnerAccount = &v
+	return s
+}
+
+func (s *CompanyFourElementsVerificationRequest) SetResourceOwnerId(v int64) *CompanyFourElementsVerificationRequest {
+	s.ResourceOwnerId = &v
+	return s
+}
+
+type CompanyFourElementsVerificationResponseBody struct {
+	AccessDeniedDetail *string                                          `json:"AccessDeniedDetail,omitempty" xml:"AccessDeniedDetail,omitempty"`
+	Code               *string                                          `json:"Code,omitempty" xml:"Code,omitempty"`
+	Data               *CompanyFourElementsVerificationResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
+	Message            *string                                          `json:"Message,omitempty" xml:"Message,omitempty"`
+	RequestId          *string                                          `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+}
+
+func (s CompanyFourElementsVerificationResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CompanyFourElementsVerificationResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *CompanyFourElementsVerificationResponseBody) SetAccessDeniedDetail(v string) *CompanyFourElementsVerificationResponseBody {
+	s.AccessDeniedDetail = &v
+	return s
+}
+
+func (s *CompanyFourElementsVerificationResponseBody) SetCode(v string) *CompanyFourElementsVerificationResponseBody {
+	s.Code = &v
+	return s
+}
+
+func (s *CompanyFourElementsVerificationResponseBody) SetData(v *CompanyFourElementsVerificationResponseBodyData) *CompanyFourElementsVerificationResponseBody {
+	s.Data = v
+	return s
+}
+
+func (s *CompanyFourElementsVerificationResponseBody) SetMessage(v string) *CompanyFourElementsVerificationResponseBody {
+	s.Message = &v
+	return s
+}
+
+func (s *CompanyFourElementsVerificationResponseBody) SetRequestId(v string) *CompanyFourElementsVerificationResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+type CompanyFourElementsVerificationResponseBodyData struct {
+	DetailInfo   map[string]interface{} `json:"DetailInfo,omitempty" xml:"DetailInfo,omitempty"`
+	ReasonCode   *int64                 `json:"ReasonCode,omitempty" xml:"ReasonCode,omitempty"`
+	VerifyResult *string                `json:"VerifyResult,omitempty" xml:"VerifyResult,omitempty"`
+}
+
+func (s CompanyFourElementsVerificationResponseBodyData) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CompanyFourElementsVerificationResponseBodyData) GoString() string {
+	return s.String()
+}
+
+func (s *CompanyFourElementsVerificationResponseBodyData) SetDetailInfo(v map[string]interface{}) *CompanyFourElementsVerificationResponseBodyData {
+	s.DetailInfo = v
+	return s
+}
+
+func (s *CompanyFourElementsVerificationResponseBodyData) SetReasonCode(v int64) *CompanyFourElementsVerificationResponseBodyData {
+	s.ReasonCode = &v
+	return s
+}
+
+func (s *CompanyFourElementsVerificationResponseBodyData) SetVerifyResult(v string) *CompanyFourElementsVerificationResponseBodyData {
+	s.VerifyResult = &v
+	return s
+}
+
+type CompanyFourElementsVerificationResponse struct {
+	Headers    map[string]*string                           `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                                       `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *CompanyFourElementsVerificationResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s CompanyFourElementsVerificationResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CompanyFourElementsVerificationResponse) GoString() string {
+	return s.String()
+}
+
+func (s *CompanyFourElementsVerificationResponse) SetHeaders(v map[string]*string) *CompanyFourElementsVerificationResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *CompanyFourElementsVerificationResponse) SetStatusCode(v int32) *CompanyFourElementsVerificationResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *CompanyFourElementsVerificationResponse) SetBody(v *CompanyFourElementsVerificationResponseBody) *CompanyFourElementsVerificationResponse {
+	s.Body = v
+	return s
+}
+
+type CompanyThreeElementsVerificationRequest struct {
+	AuthCode             *string `json:"AuthCode,omitempty" xml:"AuthCode,omitempty"`
+	EpCertName           *string `json:"EpCertName,omitempty" xml:"EpCertName,omitempty"`
+	EpCertNo             *string `json:"EpCertNo,omitempty" xml:"EpCertNo,omitempty"`
+	LegalPersonCertName  *string `json:"LegalPersonCertName,omitempty" xml:"LegalPersonCertName,omitempty"`
+	OwnerId              *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
+	ResourceOwnerAccount *string `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
+	ResourceOwnerId      *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
+}
+
+func (s CompanyThreeElementsVerificationRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CompanyThreeElementsVerificationRequest) GoString() string {
+	return s.String()
+}
+
+func (s *CompanyThreeElementsVerificationRequest) SetAuthCode(v string) *CompanyThreeElementsVerificationRequest {
+	s.AuthCode = &v
+	return s
+}
+
+func (s *CompanyThreeElementsVerificationRequest) SetEpCertName(v string) *CompanyThreeElementsVerificationRequest {
+	s.EpCertName = &v
+	return s
+}
+
+func (s *CompanyThreeElementsVerificationRequest) SetEpCertNo(v string) *CompanyThreeElementsVerificationRequest {
+	s.EpCertNo = &v
+	return s
+}
+
+func (s *CompanyThreeElementsVerificationRequest) SetLegalPersonCertName(v string) *CompanyThreeElementsVerificationRequest {
+	s.LegalPersonCertName = &v
+	return s
+}
+
+func (s *CompanyThreeElementsVerificationRequest) SetOwnerId(v int64) *CompanyThreeElementsVerificationRequest {
+	s.OwnerId = &v
+	return s
+}
+
+func (s *CompanyThreeElementsVerificationRequest) SetResourceOwnerAccount(v string) *CompanyThreeElementsVerificationRequest {
+	s.ResourceOwnerAccount = &v
+	return s
+}
+
+func (s *CompanyThreeElementsVerificationRequest) SetResourceOwnerId(v int64) *CompanyThreeElementsVerificationRequest {
+	s.ResourceOwnerId = &v
+	return s
+}
+
+type CompanyThreeElementsVerificationResponseBody struct {
+	AccessDeniedDetail *string                                           `json:"AccessDeniedDetail,omitempty" xml:"AccessDeniedDetail,omitempty"`
+	Code               *string                                           `json:"Code,omitempty" xml:"Code,omitempty"`
+	Data               *CompanyThreeElementsVerificationResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
+	Message            *string                                           `json:"Message,omitempty" xml:"Message,omitempty"`
+	RequestId          *string                                           `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+}
+
+func (s CompanyThreeElementsVerificationResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CompanyThreeElementsVerificationResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *CompanyThreeElementsVerificationResponseBody) SetAccessDeniedDetail(v string) *CompanyThreeElementsVerificationResponseBody {
+	s.AccessDeniedDetail = &v
+	return s
+}
+
+func (s *CompanyThreeElementsVerificationResponseBody) SetCode(v string) *CompanyThreeElementsVerificationResponseBody {
+	s.Code = &v
+	return s
+}
+
+func (s *CompanyThreeElementsVerificationResponseBody) SetData(v *CompanyThreeElementsVerificationResponseBodyData) *CompanyThreeElementsVerificationResponseBody {
+	s.Data = v
+	return s
+}
+
+func (s *CompanyThreeElementsVerificationResponseBody) SetMessage(v string) *CompanyThreeElementsVerificationResponseBody {
+	s.Message = &v
+	return s
+}
+
+func (s *CompanyThreeElementsVerificationResponseBody) SetRequestId(v string) *CompanyThreeElementsVerificationResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+type CompanyThreeElementsVerificationResponseBodyData struct {
+	DetailInfo   map[string]interface{} `json:"DetailInfo,omitempty" xml:"DetailInfo,omitempty"`
+	ReasonCode   *int64                 `json:"ReasonCode,omitempty" xml:"ReasonCode,omitempty"`
+	VerifyResult *string                `json:"VerifyResult,omitempty" xml:"VerifyResult,omitempty"`
+}
+
+func (s CompanyThreeElementsVerificationResponseBodyData) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CompanyThreeElementsVerificationResponseBodyData) GoString() string {
+	return s.String()
+}
+
+func (s *CompanyThreeElementsVerificationResponseBodyData) SetDetailInfo(v map[string]interface{}) *CompanyThreeElementsVerificationResponseBodyData {
+	s.DetailInfo = v
+	return s
+}
+
+func (s *CompanyThreeElementsVerificationResponseBodyData) SetReasonCode(v int64) *CompanyThreeElementsVerificationResponseBodyData {
+	s.ReasonCode = &v
+	return s
+}
+
+func (s *CompanyThreeElementsVerificationResponseBodyData) SetVerifyResult(v string) *CompanyThreeElementsVerificationResponseBodyData {
+	s.VerifyResult = &v
+	return s
+}
+
+type CompanyThreeElementsVerificationResponse struct {
+	Headers    map[string]*string                            `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                                        `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *CompanyThreeElementsVerificationResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s CompanyThreeElementsVerificationResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CompanyThreeElementsVerificationResponse) GoString() string {
+	return s.String()
+}
+
+func (s *CompanyThreeElementsVerificationResponse) SetHeaders(v map[string]*string) *CompanyThreeElementsVerificationResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *CompanyThreeElementsVerificationResponse) SetStatusCode(v int32) *CompanyThreeElementsVerificationResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *CompanyThreeElementsVerificationResponse) SetBody(v *CompanyThreeElementsVerificationResponseBody) *CompanyThreeElementsVerificationResponse {
+	s.Body = v
+	return s
+}
+
+type CompanyTwoElementsVerificationRequest struct {
+	AuthCode             *string `json:"AuthCode,omitempty" xml:"AuthCode,omitempty"`
+	EpCertName           *string `json:"EpCertName,omitempty" xml:"EpCertName,omitempty"`
+	EpCertNo             *string `json:"EpCertNo,omitempty" xml:"EpCertNo,omitempty"`
+	OwnerId              *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
+	ResourceOwnerAccount *string `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
+	ResourceOwnerId      *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
+}
+
+func (s CompanyTwoElementsVerificationRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CompanyTwoElementsVerificationRequest) GoString() string {
+	return s.String()
+}
+
+func (s *CompanyTwoElementsVerificationRequest) SetAuthCode(v string) *CompanyTwoElementsVerificationRequest {
+	s.AuthCode = &v
+	return s
+}
+
+func (s *CompanyTwoElementsVerificationRequest) SetEpCertName(v string) *CompanyTwoElementsVerificationRequest {
+	s.EpCertName = &v
+	return s
+}
+
+func (s *CompanyTwoElementsVerificationRequest) SetEpCertNo(v string) *CompanyTwoElementsVerificationRequest {
+	s.EpCertNo = &v
+	return s
+}
+
+func (s *CompanyTwoElementsVerificationRequest) SetOwnerId(v int64) *CompanyTwoElementsVerificationRequest {
+	s.OwnerId = &v
+	return s
+}
+
+func (s *CompanyTwoElementsVerificationRequest) SetResourceOwnerAccount(v string) *CompanyTwoElementsVerificationRequest {
+	s.ResourceOwnerAccount = &v
+	return s
+}
+
+func (s *CompanyTwoElementsVerificationRequest) SetResourceOwnerId(v int64) *CompanyTwoElementsVerificationRequest {
+	s.ResourceOwnerId = &v
+	return s
+}
+
+type CompanyTwoElementsVerificationResponseBody struct {
+	AccessDeniedDetail *string                                         `json:"AccessDeniedDetail,omitempty" xml:"AccessDeniedDetail,omitempty"`
+	Code               *string                                         `json:"Code,omitempty" xml:"Code,omitempty"`
+	Data               *CompanyTwoElementsVerificationResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
+	Message            *string                                         `json:"Message,omitempty" xml:"Message,omitempty"`
+	RequestId          *string                                         `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+}
+
+func (s CompanyTwoElementsVerificationResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CompanyTwoElementsVerificationResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *CompanyTwoElementsVerificationResponseBody) SetAccessDeniedDetail(v string) *CompanyTwoElementsVerificationResponseBody {
+	s.AccessDeniedDetail = &v
+	return s
+}
+
+func (s *CompanyTwoElementsVerificationResponseBody) SetCode(v string) *CompanyTwoElementsVerificationResponseBody {
+	s.Code = &v
+	return s
+}
+
+func (s *CompanyTwoElementsVerificationResponseBody) SetData(v *CompanyTwoElementsVerificationResponseBodyData) *CompanyTwoElementsVerificationResponseBody {
+	s.Data = v
+	return s
+}
+
+func (s *CompanyTwoElementsVerificationResponseBody) SetMessage(v string) *CompanyTwoElementsVerificationResponseBody {
+	s.Message = &v
+	return s
+}
+
+func (s *CompanyTwoElementsVerificationResponseBody) SetRequestId(v string) *CompanyTwoElementsVerificationResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+type CompanyTwoElementsVerificationResponseBodyData struct {
+	DetailInfo   map[string]interface{} `json:"DetailInfo,omitempty" xml:"DetailInfo,omitempty"`
+	ReasonCode   *string                `json:"ReasonCode,omitempty" xml:"ReasonCode,omitempty"`
+	VerifyResult *string                `json:"VerifyResult,omitempty" xml:"VerifyResult,omitempty"`
+}
+
+func (s CompanyTwoElementsVerificationResponseBodyData) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CompanyTwoElementsVerificationResponseBodyData) GoString() string {
+	return s.String()
+}
+
+func (s *CompanyTwoElementsVerificationResponseBodyData) SetDetailInfo(v map[string]interface{}) *CompanyTwoElementsVerificationResponseBodyData {
+	s.DetailInfo = v
+	return s
+}
+
+func (s *CompanyTwoElementsVerificationResponseBodyData) SetReasonCode(v string) *CompanyTwoElementsVerificationResponseBodyData {
+	s.ReasonCode = &v
+	return s
+}
+
+func (s *CompanyTwoElementsVerificationResponseBodyData) SetVerifyResult(v string) *CompanyTwoElementsVerificationResponseBodyData {
+	s.VerifyResult = &v
+	return s
+}
+
+type CompanyTwoElementsVerificationResponse struct {
+	Headers    map[string]*string                          `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                                      `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *CompanyTwoElementsVerificationResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s CompanyTwoElementsVerificationResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CompanyTwoElementsVerificationResponse) GoString() string {
+	return s.String()
+}
+
+func (s *CompanyTwoElementsVerificationResponse) SetHeaders(v map[string]*string) *CompanyTwoElementsVerificationResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *CompanyTwoElementsVerificationResponse) SetStatusCode(v int32) *CompanyTwoElementsVerificationResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *CompanyTwoElementsVerificationResponse) SetBody(v *CompanyTwoElementsVerificationResponseBody) *CompanyTwoElementsVerificationResponse {
+	s.Body = v
+	return s
+}
+
 type DescribeEmptyNumberRequest struct {
 	AuthCode             *string `json:"AuthCode,omitempty" xml:"AuthCode,omitempty"`
 	InputNumber          *string `json:"InputNumber,omitempty" xml:"InputNumber,omitempty"`
@@ -1179,6 +1635,152 @@ func (s *InvalidPhoneNumberFilterResponse) SetBody(v *InvalidPhoneNumberFilterRe
 	return s
 }
 
+type PhoneNumberConvertServiceRequest struct {
+	AuthCode             *string `json:"AuthCode,omitempty" xml:"AuthCode,omitempty"`
+	InputNumber          *string `json:"InputNumber,omitempty" xml:"InputNumber,omitempty"`
+	Mask                 *string `json:"Mask,omitempty" xml:"Mask,omitempty"`
+	OwnerId              *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
+	ResourceOwnerAccount *string `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
+	ResourceOwnerId      *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
+}
+
+func (s PhoneNumberConvertServiceRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s PhoneNumberConvertServiceRequest) GoString() string {
+	return s.String()
+}
+
+func (s *PhoneNumberConvertServiceRequest) SetAuthCode(v string) *PhoneNumberConvertServiceRequest {
+	s.AuthCode = &v
+	return s
+}
+
+func (s *PhoneNumberConvertServiceRequest) SetInputNumber(v string) *PhoneNumberConvertServiceRequest {
+	s.InputNumber = &v
+	return s
+}
+
+func (s *PhoneNumberConvertServiceRequest) SetMask(v string) *PhoneNumberConvertServiceRequest {
+	s.Mask = &v
+	return s
+}
+
+func (s *PhoneNumberConvertServiceRequest) SetOwnerId(v int64) *PhoneNumberConvertServiceRequest {
+	s.OwnerId = &v
+	return s
+}
+
+func (s *PhoneNumberConvertServiceRequest) SetResourceOwnerAccount(v string) *PhoneNumberConvertServiceRequest {
+	s.ResourceOwnerAccount = &v
+	return s
+}
+
+func (s *PhoneNumberConvertServiceRequest) SetResourceOwnerId(v int64) *PhoneNumberConvertServiceRequest {
+	s.ResourceOwnerId = &v
+	return s
+}
+
+type PhoneNumberConvertServiceResponseBody struct {
+	Code      *string                                      `json:"Code,omitempty" xml:"Code,omitempty"`
+	Data      []*PhoneNumberConvertServiceResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Repeated"`
+	Message   *string                                      `json:"Message,omitempty" xml:"Message,omitempty"`
+	RequestId *string                                      `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+}
+
+func (s PhoneNumberConvertServiceResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s PhoneNumberConvertServiceResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *PhoneNumberConvertServiceResponseBody) SetCode(v string) *PhoneNumberConvertServiceResponseBody {
+	s.Code = &v
+	return s
+}
+
+func (s *PhoneNumberConvertServiceResponseBody) SetData(v []*PhoneNumberConvertServiceResponseBodyData) *PhoneNumberConvertServiceResponseBody {
+	s.Data = v
+	return s
+}
+
+func (s *PhoneNumberConvertServiceResponseBody) SetMessage(v string) *PhoneNumberConvertServiceResponseBody {
+	s.Message = &v
+	return s
+}
+
+func (s *PhoneNumberConvertServiceResponseBody) SetRequestId(v string) *PhoneNumberConvertServiceResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+type PhoneNumberConvertServiceResponseBodyData struct {
+	ConverResult *bool   `json:"ConverResult,omitempty" xml:"ConverResult,omitempty"`
+	Number       *string `json:"Number,omitempty" xml:"Number,omitempty"`
+	NumberMd5    *string `json:"NumberMd5,omitempty" xml:"NumberMd5,omitempty"`
+	NumberSha256 *string `json:"NumberSha256,omitempty" xml:"NumberSha256,omitempty"`
+}
+
+func (s PhoneNumberConvertServiceResponseBodyData) String() string {
+	return tea.Prettify(s)
+}
+
+func (s PhoneNumberConvertServiceResponseBodyData) GoString() string {
+	return s.String()
+}
+
+func (s *PhoneNumberConvertServiceResponseBodyData) SetConverResult(v bool) *PhoneNumberConvertServiceResponseBodyData {
+	s.ConverResult = &v
+	return s
+}
+
+func (s *PhoneNumberConvertServiceResponseBodyData) SetNumber(v string) *PhoneNumberConvertServiceResponseBodyData {
+	s.Number = &v
+	return s
+}
+
+func (s *PhoneNumberConvertServiceResponseBodyData) SetNumberMd5(v string) *PhoneNumberConvertServiceResponseBodyData {
+	s.NumberMd5 = &v
+	return s
+}
+
+func (s *PhoneNumberConvertServiceResponseBodyData) SetNumberSha256(v string) *PhoneNumberConvertServiceResponseBodyData {
+	s.NumberSha256 = &v
+	return s
+}
+
+type PhoneNumberConvertServiceResponse struct {
+	Headers    map[string]*string                     `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                                 `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *PhoneNumberConvertServiceResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s PhoneNumberConvertServiceResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s PhoneNumberConvertServiceResponse) GoString() string {
+	return s.String()
+}
+
+func (s *PhoneNumberConvertServiceResponse) SetHeaders(v map[string]*string) *PhoneNumberConvertServiceResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *PhoneNumberConvertServiceResponse) SetStatusCode(v int32) *PhoneNumberConvertServiceResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *PhoneNumberConvertServiceResponse) SetBody(v *PhoneNumberConvertServiceResponseBody) *PhoneNumberConvertServiceResponse {
+	s.Body = v
+	return s
+}
+
 type PhoneNumberEncryptRequest struct {
 	AuthCode             *string `json:"AuthCode,omitempty" xml:"AuthCode,omitempty"`
 	InputNumber          *string `json:"InputNumber,omitempty" xml:"InputNumber,omitempty"`
@@ -2117,6 +2719,1031 @@ func (s *PhoneNumberStatusForVoiceResponse) SetBody(v *PhoneNumberStatusForVoice
 	return s
 }
 
+type QueryAvailableAuthCodeRequest struct {
+	OwnerId              *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
+	ResourceOwnerAccount *string `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
+	ResourceOwnerId      *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
+	// 标签id
+	TagId *int64 `json:"TagId,omitempty" xml:"TagId,omitempty"`
+}
+
+func (s QueryAvailableAuthCodeRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s QueryAvailableAuthCodeRequest) GoString() string {
+	return s.String()
+}
+
+func (s *QueryAvailableAuthCodeRequest) SetOwnerId(v int64) *QueryAvailableAuthCodeRequest {
+	s.OwnerId = &v
+	return s
+}
+
+func (s *QueryAvailableAuthCodeRequest) SetResourceOwnerAccount(v string) *QueryAvailableAuthCodeRequest {
+	s.ResourceOwnerAccount = &v
+	return s
+}
+
+func (s *QueryAvailableAuthCodeRequest) SetResourceOwnerId(v int64) *QueryAvailableAuthCodeRequest {
+	s.ResourceOwnerId = &v
+	return s
+}
+
+func (s *QueryAvailableAuthCodeRequest) SetTagId(v int64) *QueryAvailableAuthCodeRequest {
+	s.TagId = &v
+	return s
+}
+
+type QueryAvailableAuthCodeResponseBody struct {
+	Code      *string   `json:"Code,omitempty" xml:"Code,omitempty"`
+	Data      []*string `json:"Data,omitempty" xml:"Data,omitempty" type:"Repeated"`
+	Message   *string   `json:"Message,omitempty" xml:"Message,omitempty"`
+	RequestId *string   `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	Success   *bool     `json:"Success,omitempty" xml:"Success,omitempty"`
+}
+
+func (s QueryAvailableAuthCodeResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s QueryAvailableAuthCodeResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *QueryAvailableAuthCodeResponseBody) SetCode(v string) *QueryAvailableAuthCodeResponseBody {
+	s.Code = &v
+	return s
+}
+
+func (s *QueryAvailableAuthCodeResponseBody) SetData(v []*string) *QueryAvailableAuthCodeResponseBody {
+	s.Data = v
+	return s
+}
+
+func (s *QueryAvailableAuthCodeResponseBody) SetMessage(v string) *QueryAvailableAuthCodeResponseBody {
+	s.Message = &v
+	return s
+}
+
+func (s *QueryAvailableAuthCodeResponseBody) SetRequestId(v string) *QueryAvailableAuthCodeResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *QueryAvailableAuthCodeResponseBody) SetSuccess(v bool) *QueryAvailableAuthCodeResponseBody {
+	s.Success = &v
+	return s
+}
+
+type QueryAvailableAuthCodeResponse struct {
+	Headers    map[string]*string                  `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                              `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *QueryAvailableAuthCodeResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s QueryAvailableAuthCodeResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s QueryAvailableAuthCodeResponse) GoString() string {
+	return s.String()
+}
+
+func (s *QueryAvailableAuthCodeResponse) SetHeaders(v map[string]*string) *QueryAvailableAuthCodeResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *QueryAvailableAuthCodeResponse) SetStatusCode(v int32) *QueryAvailableAuthCodeResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *QueryAvailableAuthCodeResponse) SetBody(v *QueryAvailableAuthCodeResponseBody) *QueryAvailableAuthCodeResponse {
+	s.Body = v
+	return s
+}
+
+type QueryTagApplyRuleRequest struct {
+	OwnerId              *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
+	ResourceOwnerAccount *string `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
+	ResourceOwnerId      *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
+	// 标签id
+	TagId *int64 `json:"TagId,omitempty" xml:"TagId,omitempty"`
+}
+
+func (s QueryTagApplyRuleRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s QueryTagApplyRuleRequest) GoString() string {
+	return s.String()
+}
+
+func (s *QueryTagApplyRuleRequest) SetOwnerId(v int64) *QueryTagApplyRuleRequest {
+	s.OwnerId = &v
+	return s
+}
+
+func (s *QueryTagApplyRuleRequest) SetResourceOwnerAccount(v string) *QueryTagApplyRuleRequest {
+	s.ResourceOwnerAccount = &v
+	return s
+}
+
+func (s *QueryTagApplyRuleRequest) SetResourceOwnerId(v int64) *QueryTagApplyRuleRequest {
+	s.ResourceOwnerId = &v
+	return s
+}
+
+func (s *QueryTagApplyRuleRequest) SetTagId(v int64) *QueryTagApplyRuleRequest {
+	s.TagId = &v
+	return s
+}
+
+type QueryTagApplyRuleResponseBody struct {
+	Code      *string                            `json:"Code,omitempty" xml:"Code,omitempty"`
+	Data      *QueryTagApplyRuleResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
+	Message   *string                            `json:"Message,omitempty" xml:"Message,omitempty"`
+	RequestId *string                            `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	Success   *bool                              `json:"Success,omitempty" xml:"Success,omitempty"`
+}
+
+func (s QueryTagApplyRuleResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s QueryTagApplyRuleResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *QueryTagApplyRuleResponseBody) SetCode(v string) *QueryTagApplyRuleResponseBody {
+	s.Code = &v
+	return s
+}
+
+func (s *QueryTagApplyRuleResponseBody) SetData(v *QueryTagApplyRuleResponseBodyData) *QueryTagApplyRuleResponseBody {
+	s.Data = v
+	return s
+}
+
+func (s *QueryTagApplyRuleResponseBody) SetMessage(v string) *QueryTagApplyRuleResponseBody {
+	s.Message = &v
+	return s
+}
+
+func (s *QueryTagApplyRuleResponseBody) SetRequestId(v string) *QueryTagApplyRuleResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *QueryTagApplyRuleResponseBody) SetSuccess(v bool) *QueryTagApplyRuleResponseBody {
+	s.Success = &v
+	return s
+}
+
+type QueryTagApplyRuleResponseBodyData struct {
+	// 申请材料要求
+	ApplyMaterialDesc *string `json:"ApplyMaterialDesc,omitempty" xml:"ApplyMaterialDesc,omitempty"`
+	// 是否自动审批
+	AutoAudit *int64 `json:"AutoAudit,omitempty" xml:"AutoAudit,omitempty"`
+	// 计费标准说明链接
+	ChargingStandardLink *string `json:"ChargingStandardLink,omitempty" xml:"ChargingStandardLink,omitempty"`
+	// 是否支持加密查询
+	EncryptedQuery *int64 `json:"EncryptedQuery,omitempty" xml:"EncryptedQuery,omitempty"`
+	// 是否需要提供申请材料
+	NeedApplyMaterial *int64 `json:"NeedApplyMaterial,omitempty" xml:"NeedApplyMaterial,omitempty"`
+	// 服务协议链接
+	SlaLink *string `json:"SlaLink,omitempty" xml:"SlaLink,omitempty"`
+}
+
+func (s QueryTagApplyRuleResponseBodyData) String() string {
+	return tea.Prettify(s)
+}
+
+func (s QueryTagApplyRuleResponseBodyData) GoString() string {
+	return s.String()
+}
+
+func (s *QueryTagApplyRuleResponseBodyData) SetApplyMaterialDesc(v string) *QueryTagApplyRuleResponseBodyData {
+	s.ApplyMaterialDesc = &v
+	return s
+}
+
+func (s *QueryTagApplyRuleResponseBodyData) SetAutoAudit(v int64) *QueryTagApplyRuleResponseBodyData {
+	s.AutoAudit = &v
+	return s
+}
+
+func (s *QueryTagApplyRuleResponseBodyData) SetChargingStandardLink(v string) *QueryTagApplyRuleResponseBodyData {
+	s.ChargingStandardLink = &v
+	return s
+}
+
+func (s *QueryTagApplyRuleResponseBodyData) SetEncryptedQuery(v int64) *QueryTagApplyRuleResponseBodyData {
+	s.EncryptedQuery = &v
+	return s
+}
+
+func (s *QueryTagApplyRuleResponseBodyData) SetNeedApplyMaterial(v int64) *QueryTagApplyRuleResponseBodyData {
+	s.NeedApplyMaterial = &v
+	return s
+}
+
+func (s *QueryTagApplyRuleResponseBodyData) SetSlaLink(v string) *QueryTagApplyRuleResponseBodyData {
+	s.SlaLink = &v
+	return s
+}
+
+type QueryTagApplyRuleResponse struct {
+	Headers    map[string]*string             `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                         `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *QueryTagApplyRuleResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s QueryTagApplyRuleResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s QueryTagApplyRuleResponse) GoString() string {
+	return s.String()
+}
+
+func (s *QueryTagApplyRuleResponse) SetHeaders(v map[string]*string) *QueryTagApplyRuleResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *QueryTagApplyRuleResponse) SetStatusCode(v int32) *QueryTagApplyRuleResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *QueryTagApplyRuleResponse) SetBody(v *QueryTagApplyRuleResponseBody) *QueryTagApplyRuleResponse {
+	s.Body = v
+	return s
+}
+
+type QueryTagInfoBySelectionRequest struct {
+	// 行业id
+	IndustryId           *int64  `json:"IndustryId,omitempty" xml:"IndustryId,omitempty"`
+	OwnerId              *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
+	ResourceOwnerAccount *string `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
+	ResourceOwnerId      *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
+	// 场景id
+	SceneId *int64 `json:"SceneId,omitempty" xml:"SceneId,omitempty"`
+	// 标签id
+	TagId *int64 `json:"TagId,omitempty" xml:"TagId,omitempty"`
+}
+
+func (s QueryTagInfoBySelectionRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s QueryTagInfoBySelectionRequest) GoString() string {
+	return s.String()
+}
+
+func (s *QueryTagInfoBySelectionRequest) SetIndustryId(v int64) *QueryTagInfoBySelectionRequest {
+	s.IndustryId = &v
+	return s
+}
+
+func (s *QueryTagInfoBySelectionRequest) SetOwnerId(v int64) *QueryTagInfoBySelectionRequest {
+	s.OwnerId = &v
+	return s
+}
+
+func (s *QueryTagInfoBySelectionRequest) SetResourceOwnerAccount(v string) *QueryTagInfoBySelectionRequest {
+	s.ResourceOwnerAccount = &v
+	return s
+}
+
+func (s *QueryTagInfoBySelectionRequest) SetResourceOwnerId(v int64) *QueryTagInfoBySelectionRequest {
+	s.ResourceOwnerId = &v
+	return s
+}
+
+func (s *QueryTagInfoBySelectionRequest) SetSceneId(v int64) *QueryTagInfoBySelectionRequest {
+	s.SceneId = &v
+	return s
+}
+
+func (s *QueryTagInfoBySelectionRequest) SetTagId(v int64) *QueryTagInfoBySelectionRequest {
+	s.TagId = &v
+	return s
+}
+
+type QueryTagInfoBySelectionResponseBody struct {
+	Code      *string                                    `json:"Code,omitempty" xml:"Code,omitempty"`
+	Data      []*QueryTagInfoBySelectionResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Repeated"`
+	Message   *string                                    `json:"Message,omitempty" xml:"Message,omitempty"`
+	RequestId *string                                    `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	Success   *bool                                      `json:"Success,omitempty" xml:"Success,omitempty"`
+}
+
+func (s QueryTagInfoBySelectionResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s QueryTagInfoBySelectionResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *QueryTagInfoBySelectionResponseBody) SetCode(v string) *QueryTagInfoBySelectionResponseBody {
+	s.Code = &v
+	return s
+}
+
+func (s *QueryTagInfoBySelectionResponseBody) SetData(v []*QueryTagInfoBySelectionResponseBodyData) *QueryTagInfoBySelectionResponseBody {
+	s.Data = v
+	return s
+}
+
+func (s *QueryTagInfoBySelectionResponseBody) SetMessage(v string) *QueryTagInfoBySelectionResponseBody {
+	s.Message = &v
+	return s
+}
+
+func (s *QueryTagInfoBySelectionResponseBody) SetRequestId(v string) *QueryTagInfoBySelectionResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *QueryTagInfoBySelectionResponseBody) SetSuccess(v bool) *QueryTagInfoBySelectionResponseBody {
+	s.Success = &v
+	return s
+}
+
+type QueryTagInfoBySelectionResponseBodyData struct {
+	// 可用的授权码列表
+	AuthCodeList []*string `json:"AuthCodeList,omitempty" xml:"AuthCodeList,omitempty" type:"Repeated"`
+	// API demo链接
+	DemoAddress *string `json:"DemoAddress,omitempty" xml:"DemoAddress,omitempty"`
+	// API文档链接
+	DocAddress *string `json:"DocAddress,omitempty" xml:"DocAddress,omitempty"`
+	// 枚举值定义链接
+	EnumDefinitionAddress *string `json:"EnumDefinitionAddress,omitempty" xml:"EnumDefinitionAddress,omitempty"`
+	// 流程名称
+	FlowName *string `json:"FlowName,omitempty" xml:"FlowName,omitempty"`
+	// 行业id
+	IndustryId *int64 `json:"IndustryId,omitempty" xml:"IndustryId,omitempty"`
+	// 行业名称
+	IndustryName *string `json:"IndustryName,omitempty" xml:"IndustryName,omitempty"`
+	// 标签参数列表
+	ParamList []*QueryTagInfoBySelectionResponseBodyDataParamList `json:"ParamList,omitempty" xml:"ParamList,omitempty" type:"Repeated"`
+	// 场景id
+	SceneId *int64 `json:"SceneId,omitempty" xml:"SceneId,omitempty"`
+	// 场景名称
+	SceneName *string `json:"SceneName,omitempty" xml:"SceneName,omitempty"`
+	// 标签id
+	TagId *int64 `json:"TagId,omitempty" xml:"TagId,omitempty"`
+	// 标签名称
+	TagName *string `json:"TagName,omitempty" xml:"TagName,omitempty"`
+}
+
+func (s QueryTagInfoBySelectionResponseBodyData) String() string {
+	return tea.Prettify(s)
+}
+
+func (s QueryTagInfoBySelectionResponseBodyData) GoString() string {
+	return s.String()
+}
+
+func (s *QueryTagInfoBySelectionResponseBodyData) SetAuthCodeList(v []*string) *QueryTagInfoBySelectionResponseBodyData {
+	s.AuthCodeList = v
+	return s
+}
+
+func (s *QueryTagInfoBySelectionResponseBodyData) SetDemoAddress(v string) *QueryTagInfoBySelectionResponseBodyData {
+	s.DemoAddress = &v
+	return s
+}
+
+func (s *QueryTagInfoBySelectionResponseBodyData) SetDocAddress(v string) *QueryTagInfoBySelectionResponseBodyData {
+	s.DocAddress = &v
+	return s
+}
+
+func (s *QueryTagInfoBySelectionResponseBodyData) SetEnumDefinitionAddress(v string) *QueryTagInfoBySelectionResponseBodyData {
+	s.EnumDefinitionAddress = &v
+	return s
+}
+
+func (s *QueryTagInfoBySelectionResponseBodyData) SetFlowName(v string) *QueryTagInfoBySelectionResponseBodyData {
+	s.FlowName = &v
+	return s
+}
+
+func (s *QueryTagInfoBySelectionResponseBodyData) SetIndustryId(v int64) *QueryTagInfoBySelectionResponseBodyData {
+	s.IndustryId = &v
+	return s
+}
+
+func (s *QueryTagInfoBySelectionResponseBodyData) SetIndustryName(v string) *QueryTagInfoBySelectionResponseBodyData {
+	s.IndustryName = &v
+	return s
+}
+
+func (s *QueryTagInfoBySelectionResponseBodyData) SetParamList(v []*QueryTagInfoBySelectionResponseBodyDataParamList) *QueryTagInfoBySelectionResponseBodyData {
+	s.ParamList = v
+	return s
+}
+
+func (s *QueryTagInfoBySelectionResponseBodyData) SetSceneId(v int64) *QueryTagInfoBySelectionResponseBodyData {
+	s.SceneId = &v
+	return s
+}
+
+func (s *QueryTagInfoBySelectionResponseBodyData) SetSceneName(v string) *QueryTagInfoBySelectionResponseBodyData {
+	s.SceneName = &v
+	return s
+}
+
+func (s *QueryTagInfoBySelectionResponseBodyData) SetTagId(v int64) *QueryTagInfoBySelectionResponseBodyData {
+	s.TagId = &v
+	return s
+}
+
+func (s *QueryTagInfoBySelectionResponseBodyData) SetTagName(v string) *QueryTagInfoBySelectionResponseBodyData {
+	s.TagName = &v
+	return s
+}
+
+type QueryTagInfoBySelectionResponseBodyDataParamList struct {
+	// 参数英文名
+	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	// 输入提示
+	Hint *string `json:"Hint,omitempty" xml:"Hint,omitempty"`
+	// 是否必填
+	Must *bool `json:"Must,omitempty" xml:"Must,omitempty"`
+	// 参数中文名
+	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// 类型EnumUIWidgetTypes对应的code
+	Type *string `json:"Type,omitempty" xml:"Type,omitempty"`
+	// 枚举值定义，code:desc
+	ValueDict []*QueryTagInfoBySelectionResponseBodyDataParamListValueDict `json:"ValueDict,omitempty" xml:"ValueDict,omitempty" type:"Repeated"`
+}
+
+func (s QueryTagInfoBySelectionResponseBodyDataParamList) String() string {
+	return tea.Prettify(s)
+}
+
+func (s QueryTagInfoBySelectionResponseBodyDataParamList) GoString() string {
+	return s.String()
+}
+
+func (s *QueryTagInfoBySelectionResponseBodyDataParamList) SetCode(v string) *QueryTagInfoBySelectionResponseBodyDataParamList {
+	s.Code = &v
+	return s
+}
+
+func (s *QueryTagInfoBySelectionResponseBodyDataParamList) SetHint(v string) *QueryTagInfoBySelectionResponseBodyDataParamList {
+	s.Hint = &v
+	return s
+}
+
+func (s *QueryTagInfoBySelectionResponseBodyDataParamList) SetMust(v bool) *QueryTagInfoBySelectionResponseBodyDataParamList {
+	s.Must = &v
+	return s
+}
+
+func (s *QueryTagInfoBySelectionResponseBodyDataParamList) SetName(v string) *QueryTagInfoBySelectionResponseBodyDataParamList {
+	s.Name = &v
+	return s
+}
+
+func (s *QueryTagInfoBySelectionResponseBodyDataParamList) SetType(v string) *QueryTagInfoBySelectionResponseBodyDataParamList {
+	s.Type = &v
+	return s
+}
+
+func (s *QueryTagInfoBySelectionResponseBodyDataParamList) SetValueDict(v []*QueryTagInfoBySelectionResponseBodyDataParamListValueDict) *QueryTagInfoBySelectionResponseBodyDataParamList {
+	s.ValueDict = v
+	return s
+}
+
+type QueryTagInfoBySelectionResponseBodyDataParamListValueDict struct {
+	// 英文名
+	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	// 中文名
+	Desc *string `json:"Desc,omitempty" xml:"Desc,omitempty"`
+}
+
+func (s QueryTagInfoBySelectionResponseBodyDataParamListValueDict) String() string {
+	return tea.Prettify(s)
+}
+
+func (s QueryTagInfoBySelectionResponseBodyDataParamListValueDict) GoString() string {
+	return s.String()
+}
+
+func (s *QueryTagInfoBySelectionResponseBodyDataParamListValueDict) SetCode(v string) *QueryTagInfoBySelectionResponseBodyDataParamListValueDict {
+	s.Code = &v
+	return s
+}
+
+func (s *QueryTagInfoBySelectionResponseBodyDataParamListValueDict) SetDesc(v string) *QueryTagInfoBySelectionResponseBodyDataParamListValueDict {
+	s.Desc = &v
+	return s
+}
+
+type QueryTagInfoBySelectionResponse struct {
+	Headers    map[string]*string                   `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                               `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *QueryTagInfoBySelectionResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s QueryTagInfoBySelectionResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s QueryTagInfoBySelectionResponse) GoString() string {
+	return s.String()
+}
+
+func (s *QueryTagInfoBySelectionResponse) SetHeaders(v map[string]*string) *QueryTagInfoBySelectionResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *QueryTagInfoBySelectionResponse) SetStatusCode(v int32) *QueryTagInfoBySelectionResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *QueryTagInfoBySelectionResponse) SetBody(v *QueryTagInfoBySelectionResponseBody) *QueryTagInfoBySelectionResponse {
+	s.Body = v
+	return s
+}
+
+type QueryTagListPageRequest struct {
+	OwnerId              *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
+	PageNo               *int64  `json:"PageNo,omitempty" xml:"PageNo,omitempty"`
+	PageSize             *int64  `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	ResourceOwnerAccount *string `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
+	ResourceOwnerId      *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
+}
+
+func (s QueryTagListPageRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s QueryTagListPageRequest) GoString() string {
+	return s.String()
+}
+
+func (s *QueryTagListPageRequest) SetOwnerId(v int64) *QueryTagListPageRequest {
+	s.OwnerId = &v
+	return s
+}
+
+func (s *QueryTagListPageRequest) SetPageNo(v int64) *QueryTagListPageRequest {
+	s.PageNo = &v
+	return s
+}
+
+func (s *QueryTagListPageRequest) SetPageSize(v int64) *QueryTagListPageRequest {
+	s.PageSize = &v
+	return s
+}
+
+func (s *QueryTagListPageRequest) SetResourceOwnerAccount(v string) *QueryTagListPageRequest {
+	s.ResourceOwnerAccount = &v
+	return s
+}
+
+func (s *QueryTagListPageRequest) SetResourceOwnerId(v int64) *QueryTagListPageRequest {
+	s.ResourceOwnerId = &v
+	return s
+}
+
+type QueryTagListPageResponseBody struct {
+	Code      *string                           `json:"Code,omitempty" xml:"Code,omitempty"`
+	Data      *QueryTagListPageResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
+	Message   *string                           `json:"Message,omitempty" xml:"Message,omitempty"`
+	RequestId *string                           `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	Success   *bool                             `json:"Success,omitempty" xml:"Success,omitempty"`
+}
+
+func (s QueryTagListPageResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s QueryTagListPageResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *QueryTagListPageResponseBody) SetCode(v string) *QueryTagListPageResponseBody {
+	s.Code = &v
+	return s
+}
+
+func (s *QueryTagListPageResponseBody) SetData(v *QueryTagListPageResponseBodyData) *QueryTagListPageResponseBody {
+	s.Data = v
+	return s
+}
+
+func (s *QueryTagListPageResponseBody) SetMessage(v string) *QueryTagListPageResponseBody {
+	s.Message = &v
+	return s
+}
+
+func (s *QueryTagListPageResponseBody) SetRequestId(v string) *QueryTagListPageResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *QueryTagListPageResponseBody) SetSuccess(v bool) *QueryTagListPageResponseBody {
+	s.Success = &v
+	return s
+}
+
+type QueryTagListPageResponseBodyData struct {
+	PageNo     *int64                                     `json:"PageNo,omitempty" xml:"PageNo,omitempty"`
+	PageSize   *int64                                     `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	Records    []*QueryTagListPageResponseBodyDataRecords `json:"Records,omitempty" xml:"Records,omitempty" type:"Repeated"`
+	TotalCount *int64                                     `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
+	TotalPage  *int64                                     `json:"TotalPage,omitempty" xml:"TotalPage,omitempty"`
+}
+
+func (s QueryTagListPageResponseBodyData) String() string {
+	return tea.Prettify(s)
+}
+
+func (s QueryTagListPageResponseBodyData) GoString() string {
+	return s.String()
+}
+
+func (s *QueryTagListPageResponseBodyData) SetPageNo(v int64) *QueryTagListPageResponseBodyData {
+	s.PageNo = &v
+	return s
+}
+
+func (s *QueryTagListPageResponseBodyData) SetPageSize(v int64) *QueryTagListPageResponseBodyData {
+	s.PageSize = &v
+	return s
+}
+
+func (s *QueryTagListPageResponseBodyData) SetRecords(v []*QueryTagListPageResponseBodyDataRecords) *QueryTagListPageResponseBodyData {
+	s.Records = v
+	return s
+}
+
+func (s *QueryTagListPageResponseBodyData) SetTotalCount(v int64) *QueryTagListPageResponseBodyData {
+	s.TotalCount = &v
+	return s
+}
+
+func (s *QueryTagListPageResponseBodyData) SetTotalPage(v int64) *QueryTagListPageResponseBodyData {
+	s.TotalPage = &v
+	return s
+}
+
+type QueryTagListPageResponseBodyDataRecords struct {
+	// 前端调用的api名称
+	ApiName *string `json:"ApiName,omitempty" xml:"ApiName,omitempty"`
+	// code
+	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	// API文档链接
+	DocAddress *string `json:"DocAddress,omitempty" xml:"DocAddress,omitempty"`
+	// 标签 id
+	Id *int64 `json:"Id,omitempty" xml:"Id,omitempty"`
+	// 行业id
+	IndustryId *int64 `json:"IndustryId,omitempty" xml:"IndustryId,omitempty"`
+	// 行业名称
+	IndustryName *string `json:"IndustryName,omitempty" xml:"IndustryName,omitempty"`
+	// 标签介绍
+	Introduction *string `json:"Introduction,omitempty" xml:"Introduction,omitempty"`
+	// 是否已经申请开通
+	IsOpen *int64 `json:"IsOpen,omitempty" xml:"IsOpen,omitempty"`
+	// 标签名称
+	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// 0 隐藏 1 公开
+	SaleStatusStr *string `json:"SaleStatusStr,omitempty" xml:"SaleStatusStr,omitempty"`
+	// 场景id
+	SceneId *int64 `json:"SceneId,omitempty" xml:"SceneId,omitempty"`
+	// 场景名称
+	SceneName *string `json:"SceneName,omitempty" xml:"SceneName,omitempty"`
+}
+
+func (s QueryTagListPageResponseBodyDataRecords) String() string {
+	return tea.Prettify(s)
+}
+
+func (s QueryTagListPageResponseBodyDataRecords) GoString() string {
+	return s.String()
+}
+
+func (s *QueryTagListPageResponseBodyDataRecords) SetApiName(v string) *QueryTagListPageResponseBodyDataRecords {
+	s.ApiName = &v
+	return s
+}
+
+func (s *QueryTagListPageResponseBodyDataRecords) SetCode(v string) *QueryTagListPageResponseBodyDataRecords {
+	s.Code = &v
+	return s
+}
+
+func (s *QueryTagListPageResponseBodyDataRecords) SetDocAddress(v string) *QueryTagListPageResponseBodyDataRecords {
+	s.DocAddress = &v
+	return s
+}
+
+func (s *QueryTagListPageResponseBodyDataRecords) SetId(v int64) *QueryTagListPageResponseBodyDataRecords {
+	s.Id = &v
+	return s
+}
+
+func (s *QueryTagListPageResponseBodyDataRecords) SetIndustryId(v int64) *QueryTagListPageResponseBodyDataRecords {
+	s.IndustryId = &v
+	return s
+}
+
+func (s *QueryTagListPageResponseBodyDataRecords) SetIndustryName(v string) *QueryTagListPageResponseBodyDataRecords {
+	s.IndustryName = &v
+	return s
+}
+
+func (s *QueryTagListPageResponseBodyDataRecords) SetIntroduction(v string) *QueryTagListPageResponseBodyDataRecords {
+	s.Introduction = &v
+	return s
+}
+
+func (s *QueryTagListPageResponseBodyDataRecords) SetIsOpen(v int64) *QueryTagListPageResponseBodyDataRecords {
+	s.IsOpen = &v
+	return s
+}
+
+func (s *QueryTagListPageResponseBodyDataRecords) SetName(v string) *QueryTagListPageResponseBodyDataRecords {
+	s.Name = &v
+	return s
+}
+
+func (s *QueryTagListPageResponseBodyDataRecords) SetSaleStatusStr(v string) *QueryTagListPageResponseBodyDataRecords {
+	s.SaleStatusStr = &v
+	return s
+}
+
+func (s *QueryTagListPageResponseBodyDataRecords) SetSceneId(v int64) *QueryTagListPageResponseBodyDataRecords {
+	s.SceneId = &v
+	return s
+}
+
+func (s *QueryTagListPageResponseBodyDataRecords) SetSceneName(v string) *QueryTagListPageResponseBodyDataRecords {
+	s.SceneName = &v
+	return s
+}
+
+type QueryTagListPageResponse struct {
+	Headers    map[string]*string            `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                        `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *QueryTagListPageResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s QueryTagListPageResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s QueryTagListPageResponse) GoString() string {
+	return s.String()
+}
+
+func (s *QueryTagListPageResponse) SetHeaders(v map[string]*string) *QueryTagListPageResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *QueryTagListPageResponse) SetStatusCode(v int32) *QueryTagListPageResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *QueryTagListPageResponse) SetBody(v *QueryTagListPageResponseBody) *QueryTagListPageResponse {
+	s.Body = v
+	return s
+}
+
+type QueryUsageStatisticsByTagIdRequest struct {
+	// 开始时间
+	BeginTime *string `json:"BeginTime,omitempty" xml:"BeginTime,omitempty"`
+	// 结束时间
+	EndTime              *string `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
+	OwnerId              *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
+	PageNo               *int64  `json:"PageNo,omitempty" xml:"PageNo,omitempty"`
+	PageSize             *int64  `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	ResourceOwnerAccount *string `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
+	ResourceOwnerId      *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
+	// 结束时间
+	TagId *int64 `json:"TagId,omitempty" xml:"TagId,omitempty"`
+}
+
+func (s QueryUsageStatisticsByTagIdRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s QueryUsageStatisticsByTagIdRequest) GoString() string {
+	return s.String()
+}
+
+func (s *QueryUsageStatisticsByTagIdRequest) SetBeginTime(v string) *QueryUsageStatisticsByTagIdRequest {
+	s.BeginTime = &v
+	return s
+}
+
+func (s *QueryUsageStatisticsByTagIdRequest) SetEndTime(v string) *QueryUsageStatisticsByTagIdRequest {
+	s.EndTime = &v
+	return s
+}
+
+func (s *QueryUsageStatisticsByTagIdRequest) SetOwnerId(v int64) *QueryUsageStatisticsByTagIdRequest {
+	s.OwnerId = &v
+	return s
+}
+
+func (s *QueryUsageStatisticsByTagIdRequest) SetPageNo(v int64) *QueryUsageStatisticsByTagIdRequest {
+	s.PageNo = &v
+	return s
+}
+
+func (s *QueryUsageStatisticsByTagIdRequest) SetPageSize(v int64) *QueryUsageStatisticsByTagIdRequest {
+	s.PageSize = &v
+	return s
+}
+
+func (s *QueryUsageStatisticsByTagIdRequest) SetResourceOwnerAccount(v string) *QueryUsageStatisticsByTagIdRequest {
+	s.ResourceOwnerAccount = &v
+	return s
+}
+
+func (s *QueryUsageStatisticsByTagIdRequest) SetResourceOwnerId(v int64) *QueryUsageStatisticsByTagIdRequest {
+	s.ResourceOwnerId = &v
+	return s
+}
+
+func (s *QueryUsageStatisticsByTagIdRequest) SetTagId(v int64) *QueryUsageStatisticsByTagIdRequest {
+	s.TagId = &v
+	return s
+}
+
+type QueryUsageStatisticsByTagIdResponseBody struct {
+	Code      *string                                        `json:"Code,omitempty" xml:"Code,omitempty"`
+	Data      []*QueryUsageStatisticsByTagIdResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Repeated"`
+	Message   *string                                        `json:"Message,omitempty" xml:"Message,omitempty"`
+	RequestId *string                                        `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	Success   *bool                                          `json:"Success,omitempty" xml:"Success,omitempty"`
+}
+
+func (s QueryUsageStatisticsByTagIdResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s QueryUsageStatisticsByTagIdResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *QueryUsageStatisticsByTagIdResponseBody) SetCode(v string) *QueryUsageStatisticsByTagIdResponseBody {
+	s.Code = &v
+	return s
+}
+
+func (s *QueryUsageStatisticsByTagIdResponseBody) SetData(v []*QueryUsageStatisticsByTagIdResponseBodyData) *QueryUsageStatisticsByTagIdResponseBody {
+	s.Data = v
+	return s
+}
+
+func (s *QueryUsageStatisticsByTagIdResponseBody) SetMessage(v string) *QueryUsageStatisticsByTagIdResponseBody {
+	s.Message = &v
+	return s
+}
+
+func (s *QueryUsageStatisticsByTagIdResponseBody) SetRequestId(v string) *QueryUsageStatisticsByTagIdResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *QueryUsageStatisticsByTagIdResponseBody) SetSuccess(v bool) *QueryUsageStatisticsByTagIdResponseBody {
+	s.Success = &v
+	return s
+}
+
+type QueryUsageStatisticsByTagIdResponseBodyData struct {
+	// 授权码
+	AuthorizationCode *string `json:"AuthorizationCode,omitempty" xml:"AuthorizationCode,omitempty"`
+	// 查询失败号码数
+	FailTotal *int64 `json:"FailTotal,omitempty" xml:"FailTotal,omitempty"`
+	// 创建时间
+	GmtDateStr *string `json:"GmtDateStr,omitempty" xml:"GmtDateStr,omitempty"`
+	// 授权码使用记录 id
+	Id *int64 `json:"Id,omitempty" xml:"Id,omitempty"`
+	// 行业名称
+	IndustryName *string `json:"IndustryName,omitempty" xml:"IndustryName,omitempty"`
+	// 客户 pid
+	PartnerId *int64 `json:"PartnerId,omitempty" xml:"PartnerId,omitempty"`
+	// 场景名称
+	SceneName *string `json:"SceneName,omitempty" xml:"SceneName,omitempty"`
+	// 查询成功号码数
+	SuccessTotal *int64 `json:"SuccessTotal,omitempty" xml:"SuccessTotal,omitempty"`
+	// 标签名称
+	TagId *int64 `json:"TagId,omitempty" xml:"TagId,omitempty"`
+	// 标签名称
+	TagName *string `json:"TagName,omitempty" xml:"TagName,omitempty"`
+	// 查询总号码数
+	Total *int64 `json:"Total,omitempty" xml:"Total,omitempty"`
+}
+
+func (s QueryUsageStatisticsByTagIdResponseBodyData) String() string {
+	return tea.Prettify(s)
+}
+
+func (s QueryUsageStatisticsByTagIdResponseBodyData) GoString() string {
+	return s.String()
+}
+
+func (s *QueryUsageStatisticsByTagIdResponseBodyData) SetAuthorizationCode(v string) *QueryUsageStatisticsByTagIdResponseBodyData {
+	s.AuthorizationCode = &v
+	return s
+}
+
+func (s *QueryUsageStatisticsByTagIdResponseBodyData) SetFailTotal(v int64) *QueryUsageStatisticsByTagIdResponseBodyData {
+	s.FailTotal = &v
+	return s
+}
+
+func (s *QueryUsageStatisticsByTagIdResponseBodyData) SetGmtDateStr(v string) *QueryUsageStatisticsByTagIdResponseBodyData {
+	s.GmtDateStr = &v
+	return s
+}
+
+func (s *QueryUsageStatisticsByTagIdResponseBodyData) SetId(v int64) *QueryUsageStatisticsByTagIdResponseBodyData {
+	s.Id = &v
+	return s
+}
+
+func (s *QueryUsageStatisticsByTagIdResponseBodyData) SetIndustryName(v string) *QueryUsageStatisticsByTagIdResponseBodyData {
+	s.IndustryName = &v
+	return s
+}
+
+func (s *QueryUsageStatisticsByTagIdResponseBodyData) SetPartnerId(v int64) *QueryUsageStatisticsByTagIdResponseBodyData {
+	s.PartnerId = &v
+	return s
+}
+
+func (s *QueryUsageStatisticsByTagIdResponseBodyData) SetSceneName(v string) *QueryUsageStatisticsByTagIdResponseBodyData {
+	s.SceneName = &v
+	return s
+}
+
+func (s *QueryUsageStatisticsByTagIdResponseBodyData) SetSuccessTotal(v int64) *QueryUsageStatisticsByTagIdResponseBodyData {
+	s.SuccessTotal = &v
+	return s
+}
+
+func (s *QueryUsageStatisticsByTagIdResponseBodyData) SetTagId(v int64) *QueryUsageStatisticsByTagIdResponseBodyData {
+	s.TagId = &v
+	return s
+}
+
+func (s *QueryUsageStatisticsByTagIdResponseBodyData) SetTagName(v string) *QueryUsageStatisticsByTagIdResponseBodyData {
+	s.TagName = &v
+	return s
+}
+
+func (s *QueryUsageStatisticsByTagIdResponseBodyData) SetTotal(v int64) *QueryUsageStatisticsByTagIdResponseBodyData {
+	s.Total = &v
+	return s
+}
+
+type QueryUsageStatisticsByTagIdResponse struct {
+	Headers    map[string]*string                       `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                                   `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *QueryUsageStatisticsByTagIdResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s QueryUsageStatisticsByTagIdResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s QueryUsageStatisticsByTagIdResponse) GoString() string {
+	return s.String()
+}
+
+func (s *QueryUsageStatisticsByTagIdResponse) SetHeaders(v map[string]*string) *QueryUsageStatisticsByTagIdResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *QueryUsageStatisticsByTagIdResponse) SetStatusCode(v int32) *QueryUsageStatisticsByTagIdResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *QueryUsageStatisticsByTagIdResponse) SetBody(v *QueryUsageStatisticsByTagIdResponseBody) *QueryUsageStatisticsByTagIdResponse {
+	s.Body = v
+	return s
+}
+
 type ThreeElementsVerificationRequest struct {
 	AuthCode             *string `json:"AuthCode,omitempty" xml:"AuthCode,omitempty"`
 	CertCode             *string `json:"CertCode,omitempty" xml:"CertCode,omitempty"`
@@ -2443,6 +4070,210 @@ func (client *Client) GetEndpoint(productId *string, regionId *string, endpointR
 	}
 
 	_body, _err := endpointutil.GetEndpointRules(productId, regionId, endpointRule, network, suffix)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) CompanyFourElementsVerificationWithOptions(request *CompanyFourElementsVerificationRequest, runtime *util.RuntimeOptions) (_result *CompanyFourElementsVerificationResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.AuthCode)) {
+		query["AuthCode"] = request.AuthCode
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.EpCertName)) {
+		query["EpCertName"] = request.EpCertName
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.EpCertNo)) {
+		query["EpCertNo"] = request.EpCertNo
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.LegalPersonCertName)) {
+		query["LegalPersonCertName"] = request.LegalPersonCertName
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.LegalPersonCertNo)) {
+		query["LegalPersonCertNo"] = request.LegalPersonCertNo
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.OwnerId)) {
+		query["OwnerId"] = request.OwnerId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ResourceOwnerAccount)) {
+		query["ResourceOwnerAccount"] = request.ResourceOwnerAccount
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ResourceOwnerId)) {
+		query["ResourceOwnerId"] = request.ResourceOwnerId
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("CompanyFourElementsVerification"),
+		Version:     tea.String("2020-02-17"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &CompanyFourElementsVerificationResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) CompanyFourElementsVerification(request *CompanyFourElementsVerificationRequest) (_result *CompanyFourElementsVerificationResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &CompanyFourElementsVerificationResponse{}
+	_body, _err := client.CompanyFourElementsVerificationWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) CompanyThreeElementsVerificationWithOptions(request *CompanyThreeElementsVerificationRequest, runtime *util.RuntimeOptions) (_result *CompanyThreeElementsVerificationResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.AuthCode)) {
+		query["AuthCode"] = request.AuthCode
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.EpCertName)) {
+		query["EpCertName"] = request.EpCertName
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.EpCertNo)) {
+		query["EpCertNo"] = request.EpCertNo
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.LegalPersonCertName)) {
+		query["LegalPersonCertName"] = request.LegalPersonCertName
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.OwnerId)) {
+		query["OwnerId"] = request.OwnerId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ResourceOwnerAccount)) {
+		query["ResourceOwnerAccount"] = request.ResourceOwnerAccount
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ResourceOwnerId)) {
+		query["ResourceOwnerId"] = request.ResourceOwnerId
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("CompanyThreeElementsVerification"),
+		Version:     tea.String("2020-02-17"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &CompanyThreeElementsVerificationResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) CompanyThreeElementsVerification(request *CompanyThreeElementsVerificationRequest) (_result *CompanyThreeElementsVerificationResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &CompanyThreeElementsVerificationResponse{}
+	_body, _err := client.CompanyThreeElementsVerificationWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) CompanyTwoElementsVerificationWithOptions(request *CompanyTwoElementsVerificationRequest, runtime *util.RuntimeOptions) (_result *CompanyTwoElementsVerificationResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.AuthCode)) {
+		query["AuthCode"] = request.AuthCode
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.EpCertName)) {
+		query["EpCertName"] = request.EpCertName
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.EpCertNo)) {
+		query["EpCertNo"] = request.EpCertNo
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.OwnerId)) {
+		query["OwnerId"] = request.OwnerId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ResourceOwnerAccount)) {
+		query["ResourceOwnerAccount"] = request.ResourceOwnerAccount
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ResourceOwnerId)) {
+		query["ResourceOwnerId"] = request.ResourceOwnerId
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("CompanyTwoElementsVerification"),
+		Version:     tea.String("2020-02-17"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &CompanyTwoElementsVerificationResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) CompanyTwoElementsVerification(request *CompanyTwoElementsVerificationRequest) (_result *CompanyTwoElementsVerificationResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &CompanyTwoElementsVerificationResponse{}
+	_body, _err := client.CompanyTwoElementsVerificationWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -2974,6 +4805,70 @@ func (client *Client) InvalidPhoneNumberFilter(request *InvalidPhoneNumberFilter
 	return _result, _err
 }
 
+func (client *Client) PhoneNumberConvertServiceWithOptions(request *PhoneNumberConvertServiceRequest, runtime *util.RuntimeOptions) (_result *PhoneNumberConvertServiceResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.AuthCode)) {
+		query["AuthCode"] = request.AuthCode
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.InputNumber)) {
+		query["InputNumber"] = request.InputNumber
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Mask)) {
+		query["Mask"] = request.Mask
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.OwnerId)) {
+		query["OwnerId"] = request.OwnerId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ResourceOwnerAccount)) {
+		query["ResourceOwnerAccount"] = request.ResourceOwnerAccount
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ResourceOwnerId)) {
+		query["ResourceOwnerId"] = request.ResourceOwnerId
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("PhoneNumberConvertService"),
+		Version:     tea.String("2020-02-17"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &PhoneNumberConvertServiceResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) PhoneNumberConvertService(request *PhoneNumberConvertServiceRequest) (_result *PhoneNumberConvertServiceResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &PhoneNumberConvertServiceResponse{}
+	_body, _err := client.PhoneNumberConvertServiceWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
 func (client *Client) PhoneNumberEncryptWithOptions(request *PhoneNumberEncryptRequest, runtime *util.RuntimeOptions) (_result *PhoneNumberEncryptResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -3415,6 +5310,314 @@ func (client *Client) PhoneNumberStatusForVoice(request *PhoneNumberStatusForVoi
 	runtime := &util.RuntimeOptions{}
 	_result = &PhoneNumberStatusForVoiceResponse{}
 	_body, _err := client.PhoneNumberStatusForVoiceWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) QueryAvailableAuthCodeWithOptions(request *QueryAvailableAuthCodeRequest, runtime *util.RuntimeOptions) (_result *QueryAvailableAuthCodeResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.OwnerId)) {
+		query["OwnerId"] = request.OwnerId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ResourceOwnerAccount)) {
+		query["ResourceOwnerAccount"] = request.ResourceOwnerAccount
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ResourceOwnerId)) {
+		query["ResourceOwnerId"] = request.ResourceOwnerId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.TagId)) {
+		query["TagId"] = request.TagId
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("QueryAvailableAuthCode"),
+		Version:     tea.String("2020-02-17"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &QueryAvailableAuthCodeResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) QueryAvailableAuthCode(request *QueryAvailableAuthCodeRequest) (_result *QueryAvailableAuthCodeResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &QueryAvailableAuthCodeResponse{}
+	_body, _err := client.QueryAvailableAuthCodeWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) QueryTagApplyRuleWithOptions(request *QueryTagApplyRuleRequest, runtime *util.RuntimeOptions) (_result *QueryTagApplyRuleResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.OwnerId)) {
+		query["OwnerId"] = request.OwnerId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ResourceOwnerAccount)) {
+		query["ResourceOwnerAccount"] = request.ResourceOwnerAccount
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ResourceOwnerId)) {
+		query["ResourceOwnerId"] = request.ResourceOwnerId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.TagId)) {
+		query["TagId"] = request.TagId
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("QueryTagApplyRule"),
+		Version:     tea.String("2020-02-17"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &QueryTagApplyRuleResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) QueryTagApplyRule(request *QueryTagApplyRuleRequest) (_result *QueryTagApplyRuleResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &QueryTagApplyRuleResponse{}
+	_body, _err := client.QueryTagApplyRuleWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) QueryTagInfoBySelectionWithOptions(request *QueryTagInfoBySelectionRequest, runtime *util.RuntimeOptions) (_result *QueryTagInfoBySelectionResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.IndustryId)) {
+		query["IndustryId"] = request.IndustryId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.OwnerId)) {
+		query["OwnerId"] = request.OwnerId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ResourceOwnerAccount)) {
+		query["ResourceOwnerAccount"] = request.ResourceOwnerAccount
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ResourceOwnerId)) {
+		query["ResourceOwnerId"] = request.ResourceOwnerId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.SceneId)) {
+		query["SceneId"] = request.SceneId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.TagId)) {
+		query["TagId"] = request.TagId
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("QueryTagInfoBySelection"),
+		Version:     tea.String("2020-02-17"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &QueryTagInfoBySelectionResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) QueryTagInfoBySelection(request *QueryTagInfoBySelectionRequest) (_result *QueryTagInfoBySelectionResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &QueryTagInfoBySelectionResponse{}
+	_body, _err := client.QueryTagInfoBySelectionWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) QueryTagListPageWithOptions(request *QueryTagListPageRequest, runtime *util.RuntimeOptions) (_result *QueryTagListPageResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.OwnerId)) {
+		query["OwnerId"] = request.OwnerId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.PageNo)) {
+		query["PageNo"] = request.PageNo
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.PageSize)) {
+		query["PageSize"] = request.PageSize
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ResourceOwnerAccount)) {
+		query["ResourceOwnerAccount"] = request.ResourceOwnerAccount
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ResourceOwnerId)) {
+		query["ResourceOwnerId"] = request.ResourceOwnerId
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("QueryTagListPage"),
+		Version:     tea.String("2020-02-17"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &QueryTagListPageResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) QueryTagListPage(request *QueryTagListPageRequest) (_result *QueryTagListPageResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &QueryTagListPageResponse{}
+	_body, _err := client.QueryTagListPageWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) QueryUsageStatisticsByTagIdWithOptions(request *QueryUsageStatisticsByTagIdRequest, runtime *util.RuntimeOptions) (_result *QueryUsageStatisticsByTagIdResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.BeginTime)) {
+		query["BeginTime"] = request.BeginTime
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.EndTime)) {
+		query["EndTime"] = request.EndTime
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.OwnerId)) {
+		query["OwnerId"] = request.OwnerId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.PageNo)) {
+		query["PageNo"] = request.PageNo
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.PageSize)) {
+		query["PageSize"] = request.PageSize
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ResourceOwnerAccount)) {
+		query["ResourceOwnerAccount"] = request.ResourceOwnerAccount
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ResourceOwnerId)) {
+		query["ResourceOwnerId"] = request.ResourceOwnerId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.TagId)) {
+		query["TagId"] = request.TagId
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("QueryUsageStatisticsByTagId"),
+		Version:     tea.String("2020-02-17"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &QueryUsageStatisticsByTagIdResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) QueryUsageStatisticsByTagId(request *QueryUsageStatisticsByTagIdRequest) (_result *QueryUsageStatisticsByTagIdResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &QueryUsageStatisticsByTagIdResponse{}
+	_body, _err := client.QueryUsageStatisticsByTagIdWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
