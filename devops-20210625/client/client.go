@@ -3252,6 +3252,210 @@ func (s *CreateProtectdBranchResponse) SetBody(v *CreateProtectdBranchResponseBo
 	return s
 }
 
+type CreatePushRuleRequest struct {
+	AccessToken    *string                           `json:"accessToken,omitempty" xml:"accessToken,omitempty"`
+	RuleInfos      []*CreatePushRuleRequestRuleInfos `json:"ruleInfos,omitempty" xml:"ruleInfos,omitempty" type:"Repeated"`
+	OrganizationId *string                           `json:"organizationId,omitempty" xml:"organizationId,omitempty"`
+}
+
+func (s CreatePushRuleRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreatePushRuleRequest) GoString() string {
+	return s.String()
+}
+
+func (s *CreatePushRuleRequest) SetAccessToken(v string) *CreatePushRuleRequest {
+	s.AccessToken = &v
+	return s
+}
+
+func (s *CreatePushRuleRequest) SetRuleInfos(v []*CreatePushRuleRequestRuleInfos) *CreatePushRuleRequest {
+	s.RuleInfos = v
+	return s
+}
+
+func (s *CreatePushRuleRequest) SetOrganizationId(v string) *CreatePushRuleRequest {
+	s.OrganizationId = &v
+	return s
+}
+
+type CreatePushRuleRequestRuleInfos struct {
+	CheckerName     *string   `json:"checkerName,omitempty" xml:"checkerName,omitempty"`
+	CheckerType     *string   `json:"checkerType,omitempty" xml:"checkerType,omitempty"`
+	ExtraMessage    *string   `json:"extraMessage,omitempty" xml:"extraMessage,omitempty"`
+	FileRuleRegexes []*string `json:"fileRuleRegexes,omitempty" xml:"fileRuleRegexes,omitempty" type:"Repeated"`
+}
+
+func (s CreatePushRuleRequestRuleInfos) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreatePushRuleRequestRuleInfos) GoString() string {
+	return s.String()
+}
+
+func (s *CreatePushRuleRequestRuleInfos) SetCheckerName(v string) *CreatePushRuleRequestRuleInfos {
+	s.CheckerName = &v
+	return s
+}
+
+func (s *CreatePushRuleRequestRuleInfos) SetCheckerType(v string) *CreatePushRuleRequestRuleInfos {
+	s.CheckerType = &v
+	return s
+}
+
+func (s *CreatePushRuleRequestRuleInfos) SetExtraMessage(v string) *CreatePushRuleRequestRuleInfos {
+	s.ExtraMessage = &v
+	return s
+}
+
+func (s *CreatePushRuleRequestRuleInfos) SetFileRuleRegexes(v []*string) *CreatePushRuleRequestRuleInfos {
+	s.FileRuleRegexes = v
+	return s
+}
+
+type CreatePushRuleResponseBody struct {
+	ErrorCode    *string                           `json:"errorCode,omitempty" xml:"errorCode,omitempty"`
+	ErrorMessage *string                           `json:"errorMessage,omitempty" xml:"errorMessage,omitempty"`
+	RequestId    *string                           `json:"requestId,omitempty" xml:"requestId,omitempty"`
+	Result       *CreatePushRuleResponseBodyResult `json:"result,omitempty" xml:"result,omitempty" type:"Struct"`
+	Success      *bool                             `json:"success,omitempty" xml:"success,omitempty"`
+}
+
+func (s CreatePushRuleResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreatePushRuleResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *CreatePushRuleResponseBody) SetErrorCode(v string) *CreatePushRuleResponseBody {
+	s.ErrorCode = &v
+	return s
+}
+
+func (s *CreatePushRuleResponseBody) SetErrorMessage(v string) *CreatePushRuleResponseBody {
+	s.ErrorMessage = &v
+	return s
+}
+
+func (s *CreatePushRuleResponseBody) SetRequestId(v string) *CreatePushRuleResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *CreatePushRuleResponseBody) SetResult(v *CreatePushRuleResponseBodyResult) *CreatePushRuleResponseBody {
+	s.Result = v
+	return s
+}
+
+func (s *CreatePushRuleResponseBody) SetSuccess(v bool) *CreatePushRuleResponseBody {
+	s.Success = &v
+	return s
+}
+
+type CreatePushRuleResponseBodyResult struct {
+	GmtCreate   *string                                      `json:"gmtCreate,omitempty" xml:"gmtCreate,omitempty"`
+	GmtModified *string                                      `json:"gmtModified,omitempty" xml:"gmtModified,omitempty"`
+	Id          *int64                                       `json:"id,omitempty" xml:"id,omitempty"`
+	RuleInfos   []*CreatePushRuleResponseBodyResultRuleInfos `json:"ruleInfos,omitempty" xml:"ruleInfos,omitempty" type:"Repeated"`
+}
+
+func (s CreatePushRuleResponseBodyResult) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreatePushRuleResponseBodyResult) GoString() string {
+	return s.String()
+}
+
+func (s *CreatePushRuleResponseBodyResult) SetGmtCreate(v string) *CreatePushRuleResponseBodyResult {
+	s.GmtCreate = &v
+	return s
+}
+
+func (s *CreatePushRuleResponseBodyResult) SetGmtModified(v string) *CreatePushRuleResponseBodyResult {
+	s.GmtModified = &v
+	return s
+}
+
+func (s *CreatePushRuleResponseBodyResult) SetId(v int64) *CreatePushRuleResponseBodyResult {
+	s.Id = &v
+	return s
+}
+
+func (s *CreatePushRuleResponseBodyResult) SetRuleInfos(v []*CreatePushRuleResponseBodyResultRuleInfos) *CreatePushRuleResponseBodyResult {
+	s.RuleInfos = v
+	return s
+}
+
+type CreatePushRuleResponseBodyResultRuleInfos struct {
+	CheckerName     *string   `json:"checkerName,omitempty" xml:"checkerName,omitempty"`
+	CheckerType     *string   `json:"checkerType,omitempty" xml:"checkerType,omitempty"`
+	ExtraMessage    *string   `json:"extraMessage,omitempty" xml:"extraMessage,omitempty"`
+	FileRuleRegexes []*string `json:"fileRuleRegexes,omitempty" xml:"fileRuleRegexes,omitempty" type:"Repeated"`
+}
+
+func (s CreatePushRuleResponseBodyResultRuleInfos) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreatePushRuleResponseBodyResultRuleInfos) GoString() string {
+	return s.String()
+}
+
+func (s *CreatePushRuleResponseBodyResultRuleInfos) SetCheckerName(v string) *CreatePushRuleResponseBodyResultRuleInfos {
+	s.CheckerName = &v
+	return s
+}
+
+func (s *CreatePushRuleResponseBodyResultRuleInfos) SetCheckerType(v string) *CreatePushRuleResponseBodyResultRuleInfos {
+	s.CheckerType = &v
+	return s
+}
+
+func (s *CreatePushRuleResponseBodyResultRuleInfos) SetExtraMessage(v string) *CreatePushRuleResponseBodyResultRuleInfos {
+	s.ExtraMessage = &v
+	return s
+}
+
+func (s *CreatePushRuleResponseBodyResultRuleInfos) SetFileRuleRegexes(v []*string) *CreatePushRuleResponseBodyResultRuleInfos {
+	s.FileRuleRegexes = v
+	return s
+}
+
+type CreatePushRuleResponse struct {
+	Headers    map[string]*string          `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                      `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *CreatePushRuleResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s CreatePushRuleResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreatePushRuleResponse) GoString() string {
+	return s.String()
+}
+
+func (s *CreatePushRuleResponse) SetHeaders(v map[string]*string) *CreatePushRuleResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *CreatePushRuleResponse) SetStatusCode(v int32) *CreatePushRuleResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *CreatePushRuleResponse) SetBody(v *CreatePushRuleResponseBody) *CreatePushRuleResponse {
+	s.Body = v
+	return s
+}
+
 type CreateRepositoryRequest struct {
 	AccessToken          *string `json:"accessToken,omitempty" xml:"accessToken,omitempty"`
 	AvatarUrl            *string `json:"avatarUrl,omitempty" xml:"avatarUrl,omitempty"`
@@ -8101,6 +8305,116 @@ func (s *DeleteProtectedBranchResponse) SetBody(v *DeleteProtectedBranchResponse
 	return s
 }
 
+type DeletePushRuleRequest struct {
+	AccessToken    *string `json:"accessToken,omitempty" xml:"accessToken,omitempty"`
+	OrganizationId *string `json:"organizationId,omitempty" xml:"organizationId,omitempty"`
+}
+
+func (s DeletePushRuleRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DeletePushRuleRequest) GoString() string {
+	return s.String()
+}
+
+func (s *DeletePushRuleRequest) SetAccessToken(v string) *DeletePushRuleRequest {
+	s.AccessToken = &v
+	return s
+}
+
+func (s *DeletePushRuleRequest) SetOrganizationId(v string) *DeletePushRuleRequest {
+	s.OrganizationId = &v
+	return s
+}
+
+type DeletePushRuleResponseBody struct {
+	ErrorCode    *string                           `json:"errorCode,omitempty" xml:"errorCode,omitempty"`
+	ErrorMessage *string                           `json:"errorMessage,omitempty" xml:"errorMessage,omitempty"`
+	RequestId    *string                           `json:"requestId,omitempty" xml:"requestId,omitempty"`
+	Result       *DeletePushRuleResponseBodyResult `json:"result,omitempty" xml:"result,omitempty" type:"Struct"`
+	Success      *string                           `json:"success,omitempty" xml:"success,omitempty"`
+}
+
+func (s DeletePushRuleResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DeletePushRuleResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *DeletePushRuleResponseBody) SetErrorCode(v string) *DeletePushRuleResponseBody {
+	s.ErrorCode = &v
+	return s
+}
+
+func (s *DeletePushRuleResponseBody) SetErrorMessage(v string) *DeletePushRuleResponseBody {
+	s.ErrorMessage = &v
+	return s
+}
+
+func (s *DeletePushRuleResponseBody) SetRequestId(v string) *DeletePushRuleResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *DeletePushRuleResponseBody) SetResult(v *DeletePushRuleResponseBodyResult) *DeletePushRuleResponseBody {
+	s.Result = v
+	return s
+}
+
+func (s *DeletePushRuleResponseBody) SetSuccess(v string) *DeletePushRuleResponseBody {
+	s.Success = &v
+	return s
+}
+
+type DeletePushRuleResponseBodyResult struct {
+	Result *bool `json:"result,omitempty" xml:"result,omitempty"`
+}
+
+func (s DeletePushRuleResponseBodyResult) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DeletePushRuleResponseBodyResult) GoString() string {
+	return s.String()
+}
+
+func (s *DeletePushRuleResponseBodyResult) SetResult(v bool) *DeletePushRuleResponseBodyResult {
+	s.Result = &v
+	return s
+}
+
+type DeletePushRuleResponse struct {
+	Headers    map[string]*string          `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                      `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *DeletePushRuleResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s DeletePushRuleResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DeletePushRuleResponse) GoString() string {
+	return s.String()
+}
+
+func (s *DeletePushRuleResponse) SetHeaders(v map[string]*string) *DeletePushRuleResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *DeletePushRuleResponse) SetStatusCode(v int32) *DeletePushRuleResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *DeletePushRuleResponse) SetBody(v *DeletePushRuleResponseBody) *DeletePushRuleResponse {
+	s.Body = v
+	return s
+}
+
 type DeleteRepositoryRequest struct {
 	AccessToken    *string `json:"accessToken,omitempty" xml:"accessToken,omitempty"`
 	Reason         *string `json:"reason,omitempty" xml:"reason,omitempty"`
@@ -11128,6 +11442,176 @@ func (s *GetFlowTagGroupResponse) SetBody(v *GetFlowTagGroupResponseBody) *GetFl
 	return s
 }
 
+type GetGroupByPathRequest struct {
+	Identity       *string `json:"identity,omitempty" xml:"identity,omitempty"`
+	OrganizationId *string `json:"organizationId,omitempty" xml:"organizationId,omitempty"`
+}
+
+func (s GetGroupByPathRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetGroupByPathRequest) GoString() string {
+	return s.String()
+}
+
+func (s *GetGroupByPathRequest) SetIdentity(v string) *GetGroupByPathRequest {
+	s.Identity = &v
+	return s
+}
+
+func (s *GetGroupByPathRequest) SetOrganizationId(v string) *GetGroupByPathRequest {
+	s.OrganizationId = &v
+	return s
+}
+
+type GetGroupByPathResponseBody struct {
+	ErrorCode    *string                           `json:"errorCode,omitempty" xml:"errorCode,omitempty"`
+	ErrorMessage *string                           `json:"errorMessage,omitempty" xml:"errorMessage,omitempty"`
+	RequestId    *string                           `json:"requestId,omitempty" xml:"requestId,omitempty"`
+	Result       *GetGroupByPathResponseBodyResult `json:"result,omitempty" xml:"result,omitempty" type:"Struct"`
+	Success      *bool                             `json:"success,omitempty" xml:"success,omitempty"`
+}
+
+func (s GetGroupByPathResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetGroupByPathResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *GetGroupByPathResponseBody) SetErrorCode(v string) *GetGroupByPathResponseBody {
+	s.ErrorCode = &v
+	return s
+}
+
+func (s *GetGroupByPathResponseBody) SetErrorMessage(v string) *GetGroupByPathResponseBody {
+	s.ErrorMessage = &v
+	return s
+}
+
+func (s *GetGroupByPathResponseBody) SetRequestId(v string) *GetGroupByPathResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *GetGroupByPathResponseBody) SetResult(v *GetGroupByPathResponseBodyResult) *GetGroupByPathResponseBody {
+	s.Result = v
+	return s
+}
+
+func (s *GetGroupByPathResponseBody) SetSuccess(v bool) *GetGroupByPathResponseBody {
+	s.Success = &v
+	return s
+}
+
+type GetGroupByPathResponseBodyResult struct {
+	AvatarUrl         *string `json:"avatarUrl,omitempty" xml:"avatarUrl,omitempty"`
+	Description       *string `json:"description,omitempty" xml:"description,omitempty"`
+	Id                *int64  `json:"id,omitempty" xml:"id,omitempty"`
+	Name              *string `json:"name,omitempty" xml:"name,omitempty"`
+	NameWithNamespace *string `json:"nameWithNamespace,omitempty" xml:"nameWithNamespace,omitempty"`
+	OwnerId           *string `json:"ownerId,omitempty" xml:"ownerId,omitempty"`
+	ParentId          *string `json:"parentId,omitempty" xml:"parentId,omitempty"`
+	Path              *string `json:"path,omitempty" xml:"path,omitempty"`
+	PathWithNamespace *string `json:"pathWithNamespace,omitempty" xml:"pathWithNamespace,omitempty"`
+	VisibilityLevel   *int32  `json:"visibilityLevel,omitempty" xml:"visibilityLevel,omitempty"`
+	WebUrl            *string `json:"webUrl,omitempty" xml:"webUrl,omitempty"`
+}
+
+func (s GetGroupByPathResponseBodyResult) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetGroupByPathResponseBodyResult) GoString() string {
+	return s.String()
+}
+
+func (s *GetGroupByPathResponseBodyResult) SetAvatarUrl(v string) *GetGroupByPathResponseBodyResult {
+	s.AvatarUrl = &v
+	return s
+}
+
+func (s *GetGroupByPathResponseBodyResult) SetDescription(v string) *GetGroupByPathResponseBodyResult {
+	s.Description = &v
+	return s
+}
+
+func (s *GetGroupByPathResponseBodyResult) SetId(v int64) *GetGroupByPathResponseBodyResult {
+	s.Id = &v
+	return s
+}
+
+func (s *GetGroupByPathResponseBodyResult) SetName(v string) *GetGroupByPathResponseBodyResult {
+	s.Name = &v
+	return s
+}
+
+func (s *GetGroupByPathResponseBodyResult) SetNameWithNamespace(v string) *GetGroupByPathResponseBodyResult {
+	s.NameWithNamespace = &v
+	return s
+}
+
+func (s *GetGroupByPathResponseBodyResult) SetOwnerId(v string) *GetGroupByPathResponseBodyResult {
+	s.OwnerId = &v
+	return s
+}
+
+func (s *GetGroupByPathResponseBodyResult) SetParentId(v string) *GetGroupByPathResponseBodyResult {
+	s.ParentId = &v
+	return s
+}
+
+func (s *GetGroupByPathResponseBodyResult) SetPath(v string) *GetGroupByPathResponseBodyResult {
+	s.Path = &v
+	return s
+}
+
+func (s *GetGroupByPathResponseBodyResult) SetPathWithNamespace(v string) *GetGroupByPathResponseBodyResult {
+	s.PathWithNamespace = &v
+	return s
+}
+
+func (s *GetGroupByPathResponseBodyResult) SetVisibilityLevel(v int32) *GetGroupByPathResponseBodyResult {
+	s.VisibilityLevel = &v
+	return s
+}
+
+func (s *GetGroupByPathResponseBodyResult) SetWebUrl(v string) *GetGroupByPathResponseBodyResult {
+	s.WebUrl = &v
+	return s
+}
+
+type GetGroupByPathResponse struct {
+	Headers    map[string]*string          `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                      `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *GetGroupByPathResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s GetGroupByPathResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetGroupByPathResponse) GoString() string {
+	return s.String()
+}
+
+func (s *GetGroupByPathResponse) SetHeaders(v map[string]*string) *GetGroupByPathResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *GetGroupByPathResponse) SetStatusCode(v int32) *GetGroupByPathResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *GetGroupByPathResponse) SetBody(v *GetGroupByPathResponseBody) *GetGroupByPathResponse {
+	s.Body = v
+	return s
+}
+
 type GetGroupDetailRequest struct {
 	AccessToken    *string `json:"accessToken,omitempty" xml:"accessToken,omitempty"`
 	GroupId        *int64  `json:"groupId,omitempty" xml:"groupId,omitempty"`
@@ -13579,6 +14063,169 @@ func (s *GetProjectMemberResponse) SetStatusCode(v int32) *GetProjectMemberRespo
 }
 
 func (s *GetProjectMemberResponse) SetBody(v *GetProjectMemberResponseBody) *GetProjectMemberResponse {
+	s.Body = v
+	return s
+}
+
+type GetPushRuleRequest struct {
+	AccessToken    *string `json:"accessToken,omitempty" xml:"accessToken,omitempty"`
+	OrganizationId *string `json:"organizationId,omitempty" xml:"organizationId,omitempty"`
+}
+
+func (s GetPushRuleRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetPushRuleRequest) GoString() string {
+	return s.String()
+}
+
+func (s *GetPushRuleRequest) SetAccessToken(v string) *GetPushRuleRequest {
+	s.AccessToken = &v
+	return s
+}
+
+func (s *GetPushRuleRequest) SetOrganizationId(v string) *GetPushRuleRequest {
+	s.OrganizationId = &v
+	return s
+}
+
+type GetPushRuleResponseBody struct {
+	ErrorCode    *string                        `json:"errorCode,omitempty" xml:"errorCode,omitempty"`
+	ErrorMessage *string                        `json:"errorMessage,omitempty" xml:"errorMessage,omitempty"`
+	RequestId    *string                        `json:"requestId,omitempty" xml:"requestId,omitempty"`
+	Result       *GetPushRuleResponseBodyResult `json:"result,omitempty" xml:"result,omitempty" type:"Struct"`
+	Success      *bool                          `json:"success,omitempty" xml:"success,omitempty"`
+}
+
+func (s GetPushRuleResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetPushRuleResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *GetPushRuleResponseBody) SetErrorCode(v string) *GetPushRuleResponseBody {
+	s.ErrorCode = &v
+	return s
+}
+
+func (s *GetPushRuleResponseBody) SetErrorMessage(v string) *GetPushRuleResponseBody {
+	s.ErrorMessage = &v
+	return s
+}
+
+func (s *GetPushRuleResponseBody) SetRequestId(v string) *GetPushRuleResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *GetPushRuleResponseBody) SetResult(v *GetPushRuleResponseBodyResult) *GetPushRuleResponseBody {
+	s.Result = v
+	return s
+}
+
+func (s *GetPushRuleResponseBody) SetSuccess(v bool) *GetPushRuleResponseBody {
+	s.Success = &v
+	return s
+}
+
+type GetPushRuleResponseBodyResult struct {
+	GmtCreate   *string                                   `json:"gmtCreate,omitempty" xml:"gmtCreate,omitempty"`
+	GmtModified *string                                   `json:"gmtModified,omitempty" xml:"gmtModified,omitempty"`
+	Id          *int64                                    `json:"id,omitempty" xml:"id,omitempty"`
+	RuleInfos   []*GetPushRuleResponseBodyResultRuleInfos `json:"ruleInfos,omitempty" xml:"ruleInfos,omitempty" type:"Repeated"`
+}
+
+func (s GetPushRuleResponseBodyResult) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetPushRuleResponseBodyResult) GoString() string {
+	return s.String()
+}
+
+func (s *GetPushRuleResponseBodyResult) SetGmtCreate(v string) *GetPushRuleResponseBodyResult {
+	s.GmtCreate = &v
+	return s
+}
+
+func (s *GetPushRuleResponseBodyResult) SetGmtModified(v string) *GetPushRuleResponseBodyResult {
+	s.GmtModified = &v
+	return s
+}
+
+func (s *GetPushRuleResponseBodyResult) SetId(v int64) *GetPushRuleResponseBodyResult {
+	s.Id = &v
+	return s
+}
+
+func (s *GetPushRuleResponseBodyResult) SetRuleInfos(v []*GetPushRuleResponseBodyResultRuleInfos) *GetPushRuleResponseBodyResult {
+	s.RuleInfos = v
+	return s
+}
+
+type GetPushRuleResponseBodyResultRuleInfos struct {
+	CheckerName     *string   `json:"checkerName,omitempty" xml:"checkerName,omitempty"`
+	CheckerType     *string   `json:"checkerType,omitempty" xml:"checkerType,omitempty"`
+	ExtraMessage    *string   `json:"extraMessage,omitempty" xml:"extraMessage,omitempty"`
+	FileRuleRegexes []*string `json:"fileRuleRegexes,omitempty" xml:"fileRuleRegexes,omitempty" type:"Repeated"`
+}
+
+func (s GetPushRuleResponseBodyResultRuleInfos) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetPushRuleResponseBodyResultRuleInfos) GoString() string {
+	return s.String()
+}
+
+func (s *GetPushRuleResponseBodyResultRuleInfos) SetCheckerName(v string) *GetPushRuleResponseBodyResultRuleInfos {
+	s.CheckerName = &v
+	return s
+}
+
+func (s *GetPushRuleResponseBodyResultRuleInfos) SetCheckerType(v string) *GetPushRuleResponseBodyResultRuleInfos {
+	s.CheckerType = &v
+	return s
+}
+
+func (s *GetPushRuleResponseBodyResultRuleInfos) SetExtraMessage(v string) *GetPushRuleResponseBodyResultRuleInfos {
+	s.ExtraMessage = &v
+	return s
+}
+
+func (s *GetPushRuleResponseBodyResultRuleInfos) SetFileRuleRegexes(v []*string) *GetPushRuleResponseBodyResultRuleInfos {
+	s.FileRuleRegexes = v
+	return s
+}
+
+type GetPushRuleResponse struct {
+	Headers    map[string]*string       `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                   `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *GetPushRuleResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s GetPushRuleResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetPushRuleResponse) GoString() string {
+	return s.String()
+}
+
+func (s *GetPushRuleResponse) SetHeaders(v map[string]*string) *GetPushRuleResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *GetPushRuleResponse) SetStatusCode(v int32) *GetPushRuleResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *GetPushRuleResponse) SetBody(v *GetPushRuleResponseBody) *GetPushRuleResponse {
 	s.Body = v
 	return s
 }
@@ -21789,6 +22436,175 @@ func (s *ListProtectedBranchesResponse) SetStatusCode(v int32) *ListProtectedBra
 }
 
 func (s *ListProtectedBranchesResponse) SetBody(v *ListProtectedBranchesResponseBody) *ListProtectedBranchesResponse {
+	s.Body = v
+	return s
+}
+
+type ListPushRulesRequest struct {
+	AccessToken    *string `json:"accessToken,omitempty" xml:"accessToken,omitempty"`
+	OrganizationId *string `json:"organizationId,omitempty" xml:"organizationId,omitempty"`
+}
+
+func (s ListPushRulesRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListPushRulesRequest) GoString() string {
+	return s.String()
+}
+
+func (s *ListPushRulesRequest) SetAccessToken(v string) *ListPushRulesRequest {
+	s.AccessToken = &v
+	return s
+}
+
+func (s *ListPushRulesRequest) SetOrganizationId(v string) *ListPushRulesRequest {
+	s.OrganizationId = &v
+	return s
+}
+
+type ListPushRulesResponseBody struct {
+	ErrorCode    *string                            `json:"errorCode,omitempty" xml:"errorCode,omitempty"`
+	ErrorMessage *string                            `json:"errorMessage,omitempty" xml:"errorMessage,omitempty"`
+	RequestId    *string                            `json:"requestId,omitempty" xml:"requestId,omitempty"`
+	Result       []*ListPushRulesResponseBodyResult `json:"result,omitempty" xml:"result,omitempty" type:"Repeated"`
+	Success      *bool                              `json:"success,omitempty" xml:"success,omitempty"`
+	Total        *int64                             `json:"total,omitempty" xml:"total,omitempty"`
+}
+
+func (s ListPushRulesResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListPushRulesResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *ListPushRulesResponseBody) SetErrorCode(v string) *ListPushRulesResponseBody {
+	s.ErrorCode = &v
+	return s
+}
+
+func (s *ListPushRulesResponseBody) SetErrorMessage(v string) *ListPushRulesResponseBody {
+	s.ErrorMessage = &v
+	return s
+}
+
+func (s *ListPushRulesResponseBody) SetRequestId(v string) *ListPushRulesResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *ListPushRulesResponseBody) SetResult(v []*ListPushRulesResponseBodyResult) *ListPushRulesResponseBody {
+	s.Result = v
+	return s
+}
+
+func (s *ListPushRulesResponseBody) SetSuccess(v bool) *ListPushRulesResponseBody {
+	s.Success = &v
+	return s
+}
+
+func (s *ListPushRulesResponseBody) SetTotal(v int64) *ListPushRulesResponseBody {
+	s.Total = &v
+	return s
+}
+
+type ListPushRulesResponseBodyResult struct {
+	GmtCreate   *string                                     `json:"gmtCreate,omitempty" xml:"gmtCreate,omitempty"`
+	GmtModified *string                                     `json:"gmtModified,omitempty" xml:"gmtModified,omitempty"`
+	Id          *int64                                      `json:"id,omitempty" xml:"id,omitempty"`
+	RuleInfos   []*ListPushRulesResponseBodyResultRuleInfos `json:"ruleInfos,omitempty" xml:"ruleInfos,omitempty" type:"Repeated"`
+}
+
+func (s ListPushRulesResponseBodyResult) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListPushRulesResponseBodyResult) GoString() string {
+	return s.String()
+}
+
+func (s *ListPushRulesResponseBodyResult) SetGmtCreate(v string) *ListPushRulesResponseBodyResult {
+	s.GmtCreate = &v
+	return s
+}
+
+func (s *ListPushRulesResponseBodyResult) SetGmtModified(v string) *ListPushRulesResponseBodyResult {
+	s.GmtModified = &v
+	return s
+}
+
+func (s *ListPushRulesResponseBodyResult) SetId(v int64) *ListPushRulesResponseBodyResult {
+	s.Id = &v
+	return s
+}
+
+func (s *ListPushRulesResponseBodyResult) SetRuleInfos(v []*ListPushRulesResponseBodyResultRuleInfos) *ListPushRulesResponseBodyResult {
+	s.RuleInfos = v
+	return s
+}
+
+type ListPushRulesResponseBodyResultRuleInfos struct {
+	CheckerName     *string   `json:"checkerName,omitempty" xml:"checkerName,omitempty"`
+	CheckerType     *string   `json:"checkerType,omitempty" xml:"checkerType,omitempty"`
+	ExtraMessage    *string   `json:"extraMessage,omitempty" xml:"extraMessage,omitempty"`
+	FileRuleRegexes []*string `json:"fileRuleRegexes,omitempty" xml:"fileRuleRegexes,omitempty" type:"Repeated"`
+}
+
+func (s ListPushRulesResponseBodyResultRuleInfos) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListPushRulesResponseBodyResultRuleInfos) GoString() string {
+	return s.String()
+}
+
+func (s *ListPushRulesResponseBodyResultRuleInfos) SetCheckerName(v string) *ListPushRulesResponseBodyResultRuleInfos {
+	s.CheckerName = &v
+	return s
+}
+
+func (s *ListPushRulesResponseBodyResultRuleInfos) SetCheckerType(v string) *ListPushRulesResponseBodyResultRuleInfos {
+	s.CheckerType = &v
+	return s
+}
+
+func (s *ListPushRulesResponseBodyResultRuleInfos) SetExtraMessage(v string) *ListPushRulesResponseBodyResultRuleInfos {
+	s.ExtraMessage = &v
+	return s
+}
+
+func (s *ListPushRulesResponseBodyResultRuleInfos) SetFileRuleRegexes(v []*string) *ListPushRulesResponseBodyResultRuleInfos {
+	s.FileRuleRegexes = v
+	return s
+}
+
+type ListPushRulesResponse struct {
+	Headers    map[string]*string         `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                     `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *ListPushRulesResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s ListPushRulesResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListPushRulesResponse) GoString() string {
+	return s.String()
+}
+
+func (s *ListPushRulesResponse) SetHeaders(v map[string]*string) *ListPushRulesResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *ListPushRulesResponse) SetStatusCode(v int32) *ListPushRulesResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *ListPushRulesResponse) SetBody(v *ListPushRulesResponseBody) *ListPushRulesResponse {
 	s.Body = v
 	return s
 }
@@ -32456,6 +33272,210 @@ func (s *UpdatePushReviewOnOffResponse) SetBody(v *UpdatePushReviewOnOffResponse
 	return s
 }
 
+type UpdatePushRuleRequest struct {
+	AccessToken    *string                           `json:"accessToken,omitempty" xml:"accessToken,omitempty"`
+	RuleInfos      []*UpdatePushRuleRequestRuleInfos `json:"ruleInfos,omitempty" xml:"ruleInfos,omitempty" type:"Repeated"`
+	OrganizationId *string                           `json:"organizationId,omitempty" xml:"organizationId,omitempty"`
+}
+
+func (s UpdatePushRuleRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UpdatePushRuleRequest) GoString() string {
+	return s.String()
+}
+
+func (s *UpdatePushRuleRequest) SetAccessToken(v string) *UpdatePushRuleRequest {
+	s.AccessToken = &v
+	return s
+}
+
+func (s *UpdatePushRuleRequest) SetRuleInfos(v []*UpdatePushRuleRequestRuleInfos) *UpdatePushRuleRequest {
+	s.RuleInfos = v
+	return s
+}
+
+func (s *UpdatePushRuleRequest) SetOrganizationId(v string) *UpdatePushRuleRequest {
+	s.OrganizationId = &v
+	return s
+}
+
+type UpdatePushRuleRequestRuleInfos struct {
+	CheckerName     *string   `json:"checkerName,omitempty" xml:"checkerName,omitempty"`
+	CheckerType     *string   `json:"checkerType,omitempty" xml:"checkerType,omitempty"`
+	ExtraMessage    *string   `json:"extraMessage,omitempty" xml:"extraMessage,omitempty"`
+	FileRuleRegexes []*string `json:"fileRuleRegexes,omitempty" xml:"fileRuleRegexes,omitempty" type:"Repeated"`
+}
+
+func (s UpdatePushRuleRequestRuleInfos) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UpdatePushRuleRequestRuleInfos) GoString() string {
+	return s.String()
+}
+
+func (s *UpdatePushRuleRequestRuleInfos) SetCheckerName(v string) *UpdatePushRuleRequestRuleInfos {
+	s.CheckerName = &v
+	return s
+}
+
+func (s *UpdatePushRuleRequestRuleInfos) SetCheckerType(v string) *UpdatePushRuleRequestRuleInfos {
+	s.CheckerType = &v
+	return s
+}
+
+func (s *UpdatePushRuleRequestRuleInfos) SetExtraMessage(v string) *UpdatePushRuleRequestRuleInfos {
+	s.ExtraMessage = &v
+	return s
+}
+
+func (s *UpdatePushRuleRequestRuleInfos) SetFileRuleRegexes(v []*string) *UpdatePushRuleRequestRuleInfos {
+	s.FileRuleRegexes = v
+	return s
+}
+
+type UpdatePushRuleResponseBody struct {
+	ErrorCode    *string                           `json:"errorCode,omitempty" xml:"errorCode,omitempty"`
+	ErrorMessage *string                           `json:"errorMessage,omitempty" xml:"errorMessage,omitempty"`
+	RequestId    *string                           `json:"requestId,omitempty" xml:"requestId,omitempty"`
+	Result       *UpdatePushRuleResponseBodyResult `json:"result,omitempty" xml:"result,omitempty" type:"Struct"`
+	Success      *bool                             `json:"success,omitempty" xml:"success,omitempty"`
+}
+
+func (s UpdatePushRuleResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UpdatePushRuleResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *UpdatePushRuleResponseBody) SetErrorCode(v string) *UpdatePushRuleResponseBody {
+	s.ErrorCode = &v
+	return s
+}
+
+func (s *UpdatePushRuleResponseBody) SetErrorMessage(v string) *UpdatePushRuleResponseBody {
+	s.ErrorMessage = &v
+	return s
+}
+
+func (s *UpdatePushRuleResponseBody) SetRequestId(v string) *UpdatePushRuleResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *UpdatePushRuleResponseBody) SetResult(v *UpdatePushRuleResponseBodyResult) *UpdatePushRuleResponseBody {
+	s.Result = v
+	return s
+}
+
+func (s *UpdatePushRuleResponseBody) SetSuccess(v bool) *UpdatePushRuleResponseBody {
+	s.Success = &v
+	return s
+}
+
+type UpdatePushRuleResponseBodyResult struct {
+	GmtCreate   *string                                      `json:"gmtCreate,omitempty" xml:"gmtCreate,omitempty"`
+	GmtModified *string                                      `json:"gmtModified,omitempty" xml:"gmtModified,omitempty"`
+	Id          *int64                                       `json:"id,omitempty" xml:"id,omitempty"`
+	RuleInfos   []*UpdatePushRuleResponseBodyResultRuleInfos `json:"ruleInfos,omitempty" xml:"ruleInfos,omitempty" type:"Repeated"`
+}
+
+func (s UpdatePushRuleResponseBodyResult) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UpdatePushRuleResponseBodyResult) GoString() string {
+	return s.String()
+}
+
+func (s *UpdatePushRuleResponseBodyResult) SetGmtCreate(v string) *UpdatePushRuleResponseBodyResult {
+	s.GmtCreate = &v
+	return s
+}
+
+func (s *UpdatePushRuleResponseBodyResult) SetGmtModified(v string) *UpdatePushRuleResponseBodyResult {
+	s.GmtModified = &v
+	return s
+}
+
+func (s *UpdatePushRuleResponseBodyResult) SetId(v int64) *UpdatePushRuleResponseBodyResult {
+	s.Id = &v
+	return s
+}
+
+func (s *UpdatePushRuleResponseBodyResult) SetRuleInfos(v []*UpdatePushRuleResponseBodyResultRuleInfos) *UpdatePushRuleResponseBodyResult {
+	s.RuleInfos = v
+	return s
+}
+
+type UpdatePushRuleResponseBodyResultRuleInfos struct {
+	CheckerName     *string   `json:"checkerName,omitempty" xml:"checkerName,omitempty"`
+	CheckerType     *string   `json:"checkerType,omitempty" xml:"checkerType,omitempty"`
+	ExtraMessage    *string   `json:"extraMessage,omitempty" xml:"extraMessage,omitempty"`
+	FileRuleRegexes []*string `json:"fileRuleRegexes,omitempty" xml:"fileRuleRegexes,omitempty" type:"Repeated"`
+}
+
+func (s UpdatePushRuleResponseBodyResultRuleInfos) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UpdatePushRuleResponseBodyResultRuleInfos) GoString() string {
+	return s.String()
+}
+
+func (s *UpdatePushRuleResponseBodyResultRuleInfos) SetCheckerName(v string) *UpdatePushRuleResponseBodyResultRuleInfos {
+	s.CheckerName = &v
+	return s
+}
+
+func (s *UpdatePushRuleResponseBodyResultRuleInfos) SetCheckerType(v string) *UpdatePushRuleResponseBodyResultRuleInfos {
+	s.CheckerType = &v
+	return s
+}
+
+func (s *UpdatePushRuleResponseBodyResultRuleInfos) SetExtraMessage(v string) *UpdatePushRuleResponseBodyResultRuleInfos {
+	s.ExtraMessage = &v
+	return s
+}
+
+func (s *UpdatePushRuleResponseBodyResultRuleInfos) SetFileRuleRegexes(v []*string) *UpdatePushRuleResponseBodyResultRuleInfos {
+	s.FileRuleRegexes = v
+	return s
+}
+
+type UpdatePushRuleResponse struct {
+	Headers    map[string]*string          `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                      `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *UpdatePushRuleResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s UpdatePushRuleResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UpdatePushRuleResponse) GoString() string {
+	return s.String()
+}
+
+func (s *UpdatePushRuleResponse) SetHeaders(v map[string]*string) *UpdatePushRuleResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *UpdatePushRuleResponse) SetStatusCode(v int32) *UpdatePushRuleResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *UpdatePushRuleResponse) SetBody(v *UpdatePushRuleResponseBody) *UpdatePushRuleResponse {
+	s.Body = v
+	return s
+}
+
 type UpdateRepositoryRequest struct {
 	AccessToken                    *string                                                  `json:"accessToken,omitempty" xml:"accessToken,omitempty"`
 	AdminSettingLanguage           *string                                                  `json:"adminSettingLanguage,omitempty" xml:"adminSettingLanguage,omitempty"`
@@ -35751,6 +36771,62 @@ func (client *Client) CreateProtectdBranch(repositoryId *string, request *Create
 	return _result, _err
 }
 
+func (client *Client) CreatePushRuleWithOptions(repositoryId *string, request *CreatePushRuleRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *CreatePushRuleResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.AccessToken)) {
+		query["accessToken"] = request.AccessToken
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.OrganizationId)) {
+		query["organizationId"] = request.OrganizationId
+	}
+
+	body := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.RuleInfos)) {
+		body["ruleInfos"] = request.RuleInfos
+	}
+
+	req := &openapi.OpenApiRequest{
+		Headers: headers,
+		Query:   openapiutil.Query(query),
+		Body:    openapiutil.ParseToMap(body),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("CreatePushRule"),
+		Version:     tea.String("2021-06-25"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/api/v4/projects/" + tea.StringValue(openapiutil.GetEncodeParam(repositoryId)) + "/push_rule"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("ROA"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &CreatePushRuleResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) CreatePushRule(repositoryId *string, request *CreatePushRuleRequest) (_result *CreatePushRuleResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	headers := make(map[string]*string)
+	_result = &CreatePushRuleResponse{}
+	_body, _err := client.CreatePushRuleWithOptions(repositoryId, request, headers, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
 func (client *Client) CreateRepositoryWithOptions(request *CreateRepositoryRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *CreateRepositoryResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -37499,6 +38575,56 @@ func (client *Client) DeleteProtectedBranch(repositoryId *string, protectedBranc
 	return _result, _err
 }
 
+func (client *Client) DeletePushRuleWithOptions(repositoryId *string, pushRuleId *string, request *DeletePushRuleRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *DeletePushRuleResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.AccessToken)) {
+		query["accessToken"] = request.AccessToken
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.OrganizationId)) {
+		query["organizationId"] = request.OrganizationId
+	}
+
+	req := &openapi.OpenApiRequest{
+		Headers: headers,
+		Query:   openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("DeletePushRule"),
+		Version:     tea.String("2021-06-25"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/api/v4/projects/" + tea.StringValue(openapiutil.GetEncodeParam(repositoryId)) + "/push_rule/" + tea.StringValue(openapiutil.GetEncodeParam(pushRuleId))),
+		Method:      tea.String("DELETE"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("ROA"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &DeletePushRuleResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) DeletePushRule(repositoryId *string, pushRuleId *string, request *DeletePushRuleRequest) (_result *DeletePushRuleResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	headers := make(map[string]*string)
+	_result = &DeletePushRuleResponse{}
+	_body, _err := client.DeletePushRuleWithOptions(repositoryId, pushRuleId, request, headers, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
 func (client *Client) DeleteRepositoryWithOptions(repositoryId *string, request *DeleteRepositoryRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *DeleteRepositoryResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -38505,6 +39631,56 @@ func (client *Client) GetFlowTagGroup(organizationId *string, id *string) (_resu
 	return _result, _err
 }
 
+func (client *Client) GetGroupByPathWithOptions(request *GetGroupByPathRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *GetGroupByPathResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.Identity)) {
+		query["identity"] = request.Identity
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.OrganizationId)) {
+		query["organizationId"] = request.OrganizationId
+	}
+
+	req := &openapi.OpenApiRequest{
+		Headers: headers,
+		Query:   openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("GetGroupByPath"),
+		Version:     tea.String("2021-06-25"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/api/4/groups/find_by_path"),
+		Method:      tea.String("GET"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("ROA"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &GetGroupByPathResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) GetGroupByPath(request *GetGroupByPathRequest) (_result *GetGroupByPathResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	headers := make(map[string]*string)
+	_result = &GetGroupByPathResponse{}
+	_body, _err := client.GetGroupByPathWithOptions(request, headers, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
 func (client *Client) GetGroupDetailWithOptions(request *GetGroupDetailRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *GetGroupDetailResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -39010,6 +40186,56 @@ func (client *Client) GetProjectMember(repositoryId *string, aliyunPk *string, r
 	headers := make(map[string]*string)
 	_result = &GetProjectMemberResponse{}
 	_body, _err := client.GetProjectMemberWithOptions(repositoryId, aliyunPk, request, headers, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) GetPushRuleWithOptions(repositoryId *string, pushRuleId *string, request *GetPushRuleRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *GetPushRuleResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.AccessToken)) {
+		query["accessToken"] = request.AccessToken
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.OrganizationId)) {
+		query["organizationId"] = request.OrganizationId
+	}
+
+	req := &openapi.OpenApiRequest{
+		Headers: headers,
+		Query:   openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("GetPushRule"),
+		Version:     tea.String("2021-06-25"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/api/v4/projects/" + tea.StringValue(openapiutil.GetEncodeParam(repositoryId)) + "/push_rule/" + tea.StringValue(openapiutil.GetEncodeParam(pushRuleId))),
+		Method:      tea.String("GET"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("ROA"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &GetPushRuleResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) GetPushRule(repositoryId *string, pushRuleId *string, request *GetPushRuleRequest) (_result *GetPushRuleResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	headers := make(map[string]*string)
+	_result = &GetPushRuleResponse{}
+	_body, _err := client.GetPushRuleWithOptions(repositoryId, pushRuleId, request, headers, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -40992,6 +42218,56 @@ func (client *Client) ListProtectedBranches(repositoryId *string, request *ListP
 	headers := make(map[string]*string)
 	_result = &ListProtectedBranchesResponse{}
 	_body, _err := client.ListProtectedBranchesWithOptions(repositoryId, request, headers, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) ListPushRulesWithOptions(repositoryId *string, request *ListPushRulesRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *ListPushRulesResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.AccessToken)) {
+		query["accessToken"] = request.AccessToken
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.OrganizationId)) {
+		query["organizationId"] = request.OrganizationId
+	}
+
+	req := &openapi.OpenApiRequest{
+		Headers: headers,
+		Query:   openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("ListPushRules"),
+		Version:     tea.String("2021-06-25"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/api/v4/projects/" + tea.StringValue(openapiutil.GetEncodeParam(repositoryId)) + "/push_rule/push_rules/list"),
+		Method:      tea.String("GET"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("ROA"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &ListPushRulesResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) ListPushRules(repositoryId *string, request *ListPushRulesRequest) (_result *ListPushRulesResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	headers := make(map[string]*string)
+	_result = &ListPushRulesResponse{}
+	_body, _err := client.ListPushRulesWithOptions(repositoryId, request, headers, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -44394,6 +45670,62 @@ func (client *Client) UpdatePushReviewOnOff(repositoryId *string, request *Updat
 	headers := make(map[string]*string)
 	_result = &UpdatePushReviewOnOffResponse{}
 	_body, _err := client.UpdatePushReviewOnOffWithOptions(repositoryId, request, headers, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) UpdatePushRuleWithOptions(repositoryId *string, pushRuleId *string, request *UpdatePushRuleRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *UpdatePushRuleResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.AccessToken)) {
+		query["accessToken"] = request.AccessToken
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.OrganizationId)) {
+		query["organizationId"] = request.OrganizationId
+	}
+
+	body := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.RuleInfos)) {
+		body["ruleInfos"] = request.RuleInfos
+	}
+
+	req := &openapi.OpenApiRequest{
+		Headers: headers,
+		Query:   openapiutil.Query(query),
+		Body:    openapiutil.ParseToMap(body),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("UpdatePushRule"),
+		Version:     tea.String("2021-06-25"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/api/v4/projects/" + tea.StringValue(openapiutil.GetEncodeParam(repositoryId)) + "/push_rule/" + tea.StringValue(openapiutil.GetEncodeParam(pushRuleId))),
+		Method:      tea.String("PUT"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("ROA"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &UpdatePushRuleResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) UpdatePushRule(repositoryId *string, pushRuleId *string, request *UpdatePushRuleRequest) (_result *UpdatePushRuleResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	headers := make(map[string]*string)
+	_result = &UpdatePushRuleResponse{}
+	_body, _err := client.UpdatePushRuleWithOptions(repositoryId, pushRuleId, request, headers, runtime)
 	if _err != nil {
 		return _result, _err
 	}
