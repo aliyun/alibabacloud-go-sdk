@@ -1,3 +1,6 @@
+2023-09-26 Version: v1.4.10
+- Generated golang 2022-05-20 for btripOpen.
+
 2023-09-20 Version: v1.4.9
 - Generated golang 2022-05-20 for btripOpen.
 
