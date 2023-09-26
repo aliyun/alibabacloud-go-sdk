@@ -3338,7 +3338,8 @@ func (s *GetImageResponse) SetBody(v *GetImageResponseBody) *GetImageResponse {
 }
 
 type GetMemberRequest struct {
-	UserId *string `json:"UserId,omitempty" xml:"UserId,omitempty"`
+	MemberId *string `json:"MemberId,omitempty" xml:"MemberId,omitempty"`
+	UserId   *string `json:"UserId,omitempty" xml:"UserId,omitempty"`
 }
 
 func (s GetMemberRequest) String() string {
@@ -3347,6 +3348,11 @@ func (s GetMemberRequest) String() string {
 
 func (s GetMemberRequest) GoString() string {
 	return s.String()
+}
+
+func (s *GetMemberRequest) SetMemberId(v string) *GetMemberRequest {
+	s.MemberId = &v
+	return s
 }
 
 func (s *GetMemberRequest) SetUserId(v string) *GetMemberRequest {
@@ -8631,6 +8637,10 @@ func (client *Client) GetMemberWithOptions(WorkspaceId *string, request *GetMemb
 		return _result, _err
 	}
 	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.MemberId)) {
+		query["MemberId"] = request.MemberId
+	}
+
 	if !tea.BoolValue(util.IsUnset(request.UserId)) {
 		query["UserId"] = request.UserId
 	}
