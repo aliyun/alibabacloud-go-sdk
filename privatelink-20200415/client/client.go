@@ -118,13 +118,27 @@ func (s *AddUserToVpcEndpointServiceResponse) SetBody(v *AddUserToVpcEndpointSer
 }
 
 type AddZoneToVpcEndpointRequest struct {
+	// The client token that is used to ensure the idempotence of the request.
+	//
+	// You can use the client to generate the token, but you must make sure that the token is unique among different requests. The token can contain only ASCII characters.
 	ClientToken *string `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
-	DryRun      *bool   `json:"DryRun,omitempty" xml:"DryRun,omitempty"`
-	EndpointId  *string `json:"EndpointId,omitempty" xml:"EndpointId,omitempty"`
-	RegionId    *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	VSwitchId   *string `json:"VSwitchId,omitempty" xml:"VSwitchId,omitempty"`
-	ZoneId      *string `json:"ZoneId,omitempty" xml:"ZoneId,omitempty"`
-	Ip          *string `json:"ip,omitempty" xml:"ip,omitempty"`
+	// Specifies whether to perform only a dry run, without performing the actual request. Valid values:
+	//
+	// *   **true**: performs only a dry run. The system checks the request for potential issues, including missing parameter values, incorrect request syntax, and service limits. If the request fails the dry run, an error message is returned. If the request passes the dry run, the `DryRunOperation` error code is returned.
+	// *   **false** (default): performs a dry run and performs the actual request. If the request passes the dry run, a 2xx HTTP status code is returned and the operation is performed.
+	DryRun *bool `json:"DryRun,omitempty" xml:"DryRun,omitempty"`
+	// The ID of the endpoint to which you want to add the zone.
+	EndpointId *string `json:"EndpointId,omitempty" xml:"EndpointId,omitempty"`
+	// The region ID of the endpoint.
+	//
+	// You can call the [DescribeRegions](~~120468~~) operation to query the most recent region list.
+	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	// The ID of the vSwitch in the zone that you want to add. The system automatically creates an endpoint ENI in the vSwitch.
+	VSwitchId *string `json:"VSwitchId,omitempty" xml:"VSwitchId,omitempty"`
+	// The ID of the zone that you want to add.
+	ZoneId *string `json:"ZoneId,omitempty" xml:"ZoneId,omitempty"`
+	// The IP address of the endpoint ENI in the zone that you want to add.
+	Ip *string `json:"ip,omitempty" xml:"ip,omitempty"`
 }
 
 func (s AddZoneToVpcEndpointRequest) String() string {
@@ -171,6 +185,7 @@ func (s *AddZoneToVpcEndpointRequest) SetIp(v string) *AddZoneToVpcEndpointReque
 }
 
 type AddZoneToVpcEndpointResponseBody struct {
+	// The request ID.
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -217,13 +232,29 @@ func (s *AddZoneToVpcEndpointResponse) SetBody(v *AddZoneToVpcEndpointResponseBo
 }
 
 type AttachResourceToVpcEndpointServiceRequest struct {
-	ClientToken  *string `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
-	DryRun       *bool   `json:"DryRun,omitempty" xml:"DryRun,omitempty"`
-	RegionId     *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	ResourceId   *string `json:"ResourceId,omitempty" xml:"ResourceId,omitempty"`
+	// The client token that is used to ensure the idempotence of the request.
+	//
+	// You can use the client to generate the token, but you must make sure that the token is unique among different requests. The token can contain only ASCII characters.
+	ClientToken *string `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
+	// Specifies whether to perform only a dry run, without performing the actual request. Valid values:
+	//
+	// *   **true**: performs only a dry run. The system checks the request for potential issues, including missing parameter values, incorrect request syntax, and service limits. If the request fails the dry run, an error code is returned. If the request passes the dry run, the `DryRunOperation` error code is returned.
+	// *   **false** (default): performs a dry run and performs the actual request. If the request passes the dry run, a 2xx HTTP status code is returned and the operation is performed.
+	DryRun *bool `json:"DryRun,omitempty" xml:"DryRun,omitempty"`
+	// The region ID of the endpoint service to which you want to add the service resource.
+	//
+	// You can call the [DescribeRegions](~~120468~~) operation to query the most recent region list.
+	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	// The service resource ID.
+	ResourceId *string `json:"ResourceId,omitempty" xml:"ResourceId,omitempty"`
+	// The type of the service resource. Valid values:
+	//
+	// *   **slb**: a Classic Load Balancer (CLB) instance that supports PrivateLink. In addition, the CLB instance is deployed in a virtual private cloud (VPC).
+	// *   **alb**: an Application Load Balancer (ALB) instance that supports PrivateLink. In addition, the ALB instance is deployed in a VPC.
 	ResourceType *string `json:"ResourceType,omitempty" xml:"ResourceType,omitempty"`
-	ServiceId    *string `json:"ServiceId,omitempty" xml:"ServiceId,omitempty"`
-	ZoneId       *string `json:"ZoneId,omitempty" xml:"ZoneId,omitempty"`
+	// The ID of the endpoint service to which you want to add the service resource.
+	ServiceId *string `json:"ServiceId,omitempty" xml:"ServiceId,omitempty"`
+	ZoneId    *string `json:"ZoneId,omitempty" xml:"ZoneId,omitempty"`
 }
 
 func (s AttachResourceToVpcEndpointServiceRequest) String() string {
@@ -270,6 +301,7 @@ func (s *AttachResourceToVpcEndpointServiceRequest) SetZoneId(v string) *AttachR
 }
 
 type AttachResourceToVpcEndpointServiceResponseBody struct {
+	// The request ID.
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -544,154 +576,54 @@ func (s *CheckProductOpenResponse) SetBody(v *CheckProductOpenResponseBody) *Che
 	return s
 }
 
-type CheckResourceSupportOperateRequest struct {
-	// The resource ID.
-	ResourceId *string `json:"ResourceId,omitempty" xml:"ResourceId,omitempty"`
-	// The type of the service resource. Valid values:
-	//
-	// *   **NLB**: a Network Load Balancer (NLB) instance
-	// *   **CLB**: a Classic Load Balancer (CLB) instance
-	// *   **ALB**: an Application Load Balancer (ALB) instance
-	ResourceType *string `json:"ResourceType,omitempty" xml:"ResourceType,omitempty"`
-	// The ID of the zone where the service resource is deployed.
-	//
-	// You can call the [DescribeZones](~~120502~~) operation to obtain the zone ID.
-	ZoneId *string `json:"ZoneId,omitempty" xml:"ZoneId,omitempty"`
-}
-
-func (s CheckResourceSupportOperateRequest) String() string {
-	return tea.Prettify(s)
-}
-
-func (s CheckResourceSupportOperateRequest) GoString() string {
-	return s.String()
-}
-
-func (s *CheckResourceSupportOperateRequest) SetResourceId(v string) *CheckResourceSupportOperateRequest {
-	s.ResourceId = &v
-	return s
-}
-
-func (s *CheckResourceSupportOperateRequest) SetResourceType(v string) *CheckResourceSupportOperateRequest {
-	s.ResourceType = &v
-	return s
-}
-
-func (s *CheckResourceSupportOperateRequest) SetZoneId(v string) *CheckResourceSupportOperateRequest {
-	s.ZoneId = &v
-	return s
-}
-
-type CheckResourceSupportOperateResponseBody struct {
-	// The request ID.
-	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// Indicates whether the service resource can be downgraded. Valid values:
-	//
-	// *   **true**
-	// *   **false**
-	ResourceCanBeDowngraded *bool `json:"ResourceCanBeDowngraded,omitempty" xml:"ResourceCanBeDowngraded,omitempty"`
-	// Indicates whether the zone where the service resource is deployed can be deleted. Valid values:
-	//
-	// *   **true**
-	// *   **false**
-	ResourceZoneCanBeDeleted *bool `json:"ResourceZoneCanBeDeleted,omitempty" xml:"ResourceZoneCanBeDeleted,omitempty"`
-}
-
-func (s CheckResourceSupportOperateResponseBody) String() string {
-	return tea.Prettify(s)
-}
-
-func (s CheckResourceSupportOperateResponseBody) GoString() string {
-	return s.String()
-}
-
-func (s *CheckResourceSupportOperateResponseBody) SetRequestId(v string) *CheckResourceSupportOperateResponseBody {
-	s.RequestId = &v
-	return s
-}
-
-func (s *CheckResourceSupportOperateResponseBody) SetResourceCanBeDowngraded(v bool) *CheckResourceSupportOperateResponseBody {
-	s.ResourceCanBeDowngraded = &v
-	return s
-}
-
-func (s *CheckResourceSupportOperateResponseBody) SetResourceZoneCanBeDeleted(v bool) *CheckResourceSupportOperateResponseBody {
-	s.ResourceZoneCanBeDeleted = &v
-	return s
-}
-
-type CheckResourceSupportOperateResponse struct {
-	Headers    map[string]*string                       `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                                   `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *CheckResourceSupportOperateResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
-}
-
-func (s CheckResourceSupportOperateResponse) String() string {
-	return tea.Prettify(s)
-}
-
-func (s CheckResourceSupportOperateResponse) GoString() string {
-	return s.String()
-}
-
-func (s *CheckResourceSupportOperateResponse) SetHeaders(v map[string]*string) *CheckResourceSupportOperateResponse {
-	s.Headers = v
-	return s
-}
-
-func (s *CheckResourceSupportOperateResponse) SetStatusCode(v int32) *CheckResourceSupportOperateResponse {
-	s.StatusCode = &v
-	return s
-}
-
-func (s *CheckResourceSupportOperateResponse) SetBody(v *CheckResourceSupportOperateResponseBody) *CheckResourceSupportOperateResponse {
-	s.Body = v
-	return s
-}
-
 type CreateVpcEndpointRequest struct {
+	// The client token that is used to ensure the idempotence of the request.
+	//
+	// You can use the client to generate the token, but you must make sure that the token is unique among different requests. The token can contain only ASCII characters.
+	ClientToken *string `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
 	// Specifies whether to perform only a dry run, without performing the actual request. Valid values:
 	//
 	// *   **true**: performs only a dry run. The system checks the request for potential issues, including missing parameter values, incorrect request syntax, and service limits. If the request fails the dry run, an error message is returned. If the request passes the dry run, the `DryRunOperation` error code is returned.
 	// *   **false** (default): performs a dry run and performs the actual request. If the request passes the dry run, a 2xx HTTP status code is returned and the operation is performed.
-	ClientToken *string `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
-	// The name of the endpoint.
-	//
-	// The name must be 2 to 128 characters in length, and can contain digits, underscores (\_), and hyphens (-). The name must start with a letter.
 	DryRun *bool `json:"DryRun,omitempty" xml:"DryRun,omitempty"`
-	// The ID of the virtual private cloud (VPC) to which the endpoint belongs.
-	EndpointDescription *string `json:"EndpointDescription,omitempty" xml:"EndpointDescription,omitempty"`
-	// The type of the endpoint.
-	//
-	// Set the value to **Interface**. Then, you can specify Application Load Balancer (ALB) and Classic Load Balancer (CLB) instances as service resources for the endpoint service.
-	EndpointName *string `json:"EndpointName,omitempty" xml:"EndpointName,omitempty"`
-	// The number of private IP addresses that are assigned to an elastic network interface (ENI) in each zone. Set the value to **1**.
-	EndpointType *string `json:"EndpointType,omitempty" xml:"EndpointType,omitempty"`
-	// The list of tags.
-	ProtectedEnabled *bool `json:"ProtectedEnabled,omitempty" xml:"ProtectedEnabled,omitempty"`
-	// The client token that is used to ensure the idempotence of the request.
-	//
-	// You can use the client to generate the token, but you must make sure that the token is unique among different requests. The token can contain only ASCII characters.
-	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	// The domain name of the endpoint.
-	ResourceGroupId *string `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
-	// The information about the array object.
-	//
-	// The endpoint can be associated with up to 10 security groups.
-	SecurityGroupId []*string `json:"SecurityGroupId,omitempty" xml:"SecurityGroupId,omitempty" type:"Repeated"`
-	// The name of the endpoint service with which the endpoint is associated.
-	ServiceId *string `json:"ServiceId,omitempty" xml:"ServiceId,omitempty"`
-	// The zones where the endpoint is deployed.
-	ServiceName *string `json:"ServiceName,omitempty" xml:"ServiceName,omitempty"`
-	// The key of the tag.
-	Tag []*CreateVpcEndpointRequestTag `json:"Tag,omitempty" xml:"Tag,omitempty" type:"Repeated"`
-	// The ID of the endpoint service with which the endpoint is associated.
-	VpcId *string `json:"VpcId,omitempty" xml:"VpcId,omitempty"`
-	// The ID of the vSwitch where you want to create the endpoint ENI in the zone. You can specify up to 10 vSwitch IDs.
-	Zone []*CreateVpcEndpointRequestZone `json:"Zone,omitempty" xml:"Zone,omitempty" type:"Repeated"`
 	// The description of the endpoint.
 	//
 	// The description must be 2 to 256 characters in length, and cannot start with `http://` or `https://`.
+	EndpointDescription *string `json:"EndpointDescription,omitempty" xml:"EndpointDescription,omitempty"`
+	// The name of the endpoint.
+	//
+	// The name must be 2 to 128 characters in length, and can contain digits, underscores (\_), and hyphens (-). The name must start with a letter.
+	EndpointName *string `json:"EndpointName,omitempty" xml:"EndpointName,omitempty"`
+	// The type of the endpoint.
+	//
+	// Set the value to **Interface**. Then, you can specify Application Load Balancer (ALB) and Classic Load Balancer (CLB) instances as service resources for the endpoint service.
+	EndpointType *string `json:"EndpointType,omitempty" xml:"EndpointType,omitempty"`
+	// Specifies whether to enable user authentication. This parameter is available in Security Token Service (STS) mode. Valid values:
+	//
+	// *   **true**: enables user authentication. After user authentication is enabled, only the user who creates the endpoint can modify or delete the endpoint in STS mode.
+	// *   **false** (default): disables user authentication.
+	ProtectedEnabled *bool `json:"ProtectedEnabled,omitempty" xml:"ProtectedEnabled,omitempty"`
+	// The region ID of the endpoint.
+	//
+	// You can call the [DescribeRegions](~~120468~~) operation to query the most recent region list.
+	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	// The resource group ID.
+	ResourceGroupId *string `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
+	// The ID of the security group that is associated with the endpoint ENI. The security group can be used to control data transfer between the VPC and the endpoint ENI.
+	//
+	// The endpoint can be associated with up to 10 security groups.
+	SecurityGroupId []*string `json:"SecurityGroupId,omitempty" xml:"SecurityGroupId,omitempty" type:"Repeated"`
+	// The ID of the endpoint service with which the endpoint is associated.
+	ServiceId *string `json:"ServiceId,omitempty" xml:"ServiceId,omitempty"`
+	// The name of the endpoint service with which the endpoint is associated.
+	ServiceName *string `json:"ServiceName,omitempty" xml:"ServiceName,omitempty"`
+	// The list of tags.
+	Tag []*CreateVpcEndpointRequestTag `json:"Tag,omitempty" xml:"Tag,omitempty" type:"Repeated"`
+	// The ID of the virtual private cloud (VPC) to which the endpoint belongs.
+	VpcId *string `json:"VpcId,omitempty" xml:"VpcId,omitempty"`
+	// The zones where the endpoint is deployed.
+	Zone []*CreateVpcEndpointRequestZone `json:"Zone,omitempty" xml:"Zone,omitempty" type:"Repeated"`
+	// The number of private IP addresses that are assigned to an elastic network interface (ENI) in each zone. Set the value to **1**.
 	ZonePrivateIpAddressCount *int64 `json:"ZonePrivateIpAddressCount,omitempty" xml:"ZonePrivateIpAddressCount,omitempty"`
 }
 
@@ -779,9 +711,9 @@ func (s *CreateVpcEndpointRequest) SetZonePrivateIpAddressCount(v int64) *Create
 }
 
 type CreateVpcEndpointRequestTag struct {
-	// The value of the tag.
+	// The key of the tag.
 	Key *string `json:"Key,omitempty" xml:"Key,omitempty"`
-	// The resource group ID.
+	// The value of the tag.
 	Value *string `json:"Value,omitempty" xml:"Value,omitempty"`
 }
 
@@ -804,17 +736,15 @@ func (s *CreateVpcEndpointRequestTag) SetValue(v string) *CreateVpcEndpointReque
 }
 
 type CreateVpcEndpointRequestZone struct {
+	// The ID of the vSwitch where you want to create the endpoint ENI in the zone. You can specify up to 10 vSwitch IDs.
+	VSwitchId *string `json:"VSwitchId,omitempty" xml:"VSwitchId,omitempty"`
 	// The ID of the zone in which the endpoint is deployed.
 	//
 	// You can specify up to 10 zone IDs.
-	VSwitchId *string `json:"VSwitchId,omitempty" xml:"VSwitchId,omitempty"`
+	ZoneId *string `json:"ZoneId,omitempty" xml:"ZoneId,omitempty"`
 	// The IP address of the zone in which the endpoint is deployed.
 	//
 	// You can specify up to 10 IP addresses.
-	ZoneId *string `json:"ZoneId,omitempty" xml:"ZoneId,omitempty"`
-	// The ID of the security group that is associated with the endpoint ENI. The security group can be used to control data transfer between the VPC and the endpoint ENI.
-	//
-	// The endpoint can be associated with up to 10 security groups.
 	Ip *string `json:"ip,omitempty" xml:"ip,omitempty"`
 }
 
@@ -842,20 +772,8 @@ func (s *CreateVpcEndpointRequestZone) SetIp(v string) *CreateVpcEndpointRequest
 }
 
 type CreateVpcEndpointResponseBody struct {
-	// The endpoint ID.
-	Bandwidth        *int64  `json:"Bandwidth,omitempty" xml:"Bandwidth,omitempty"`
-	ConnectionStatus *string `json:"ConnectionStatus,omitempty" xml:"ConnectionStatus,omitempty"`
-	// The service state of the endpoint. Valid values:
-	//
-	// *   **Normal**: The endpoint runs as expected.
-	// *   **FinacialLocked**: The endpoint is locked due to overdue payments.
-	CreateTime *string `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
-	// The description of the endpoint.
-	EndpointBusinessStatus *string `json:"EndpointBusinessStatus,omitempty" xml:"EndpointBusinessStatus,omitempty"`
-	// The ID of the endpoint service with which the endpoint is associated.
-	EndpointDescription *string `json:"EndpointDescription,omitempty" xml:"EndpointDescription,omitempty"`
-	// The request ID.
-	EndpointDomain *string `json:"EndpointDomain,omitempty" xml:"EndpointDomain,omitempty"`
+	// The bandwidth of the endpoint connection. Unit: Mbit/s.
+	Bandwidth *int64 `json:"Bandwidth,omitempty" xml:"Bandwidth,omitempty"`
 	// The state of the endpoint connection. Valid values:
 	//
 	// *   **Pending**: The connection is being modified.
@@ -864,23 +782,36 @@ type CreateVpcEndpointResponseBody struct {
 	// *   **Disconnecting**: The endpoint is being disconnected from the endpoint service.
 	// *   **Disconnected**: The endpoint is disconnected from the endpoint service.
 	// *   **Deleting**: The connection is being deleted.
-	EndpointId *string `json:"EndpointId,omitempty" xml:"EndpointId,omitempty"`
-	// The name of the endpoint service with which the endpoint is associated.
-	EndpointName *string `json:"EndpointName,omitempty" xml:"EndpointName,omitempty"`
-	// The ID of the VPC to which the endpoint belongs.
-	EndpointStatus *string `json:"EndpointStatus,omitempty" xml:"EndpointStatus,omitempty"`
+	ConnectionStatus *string `json:"ConnectionStatus,omitempty" xml:"ConnectionStatus,omitempty"`
 	// The time when the endpoint was created.
-	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	CreateTime *string `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
+	// The service state of the endpoint. Valid values:
+	//
+	// *   **Normal**: The endpoint runs as expected.
+	// *   **FinacialLocked**: The endpoint is locked due to overdue payments.
+	EndpointBusinessStatus *string `json:"EndpointBusinessStatus,omitempty" xml:"EndpointBusinessStatus,omitempty"`
+	// The description of the endpoint.
+	EndpointDescription *string `json:"EndpointDescription,omitempty" xml:"EndpointDescription,omitempty"`
+	// The domain name of the endpoint.
+	EndpointDomain *string `json:"EndpointDomain,omitempty" xml:"EndpointDomain,omitempty"`
+	// The endpoint ID.
+	EndpointId *string `json:"EndpointId,omitempty" xml:"EndpointId,omitempty"`
+	// The name of the endpoint.
+	EndpointName *string `json:"EndpointName,omitempty" xml:"EndpointName,omitempty"`
 	// The state of the endpoint. Valid values:
 	//
 	// *   **Creating**: The endpoint is being created.
 	// *   **Active**: The endpoint is available.
 	// *   **Pending**: The endpoint is being modified.
 	// *   **Deleting**: The endpoint is being deleted.
+	EndpointStatus *string `json:"EndpointStatus,omitempty" xml:"EndpointStatus,omitempty"`
+	// The request ID.
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The ID of the endpoint service with which the endpoint is associated.
 	ServiceId *string `json:"ServiceId,omitempty" xml:"ServiceId,omitempty"`
-	// The bandwidth of the endpoint connection. Unit: Mbit/s.
+	// The name of the endpoint service with which the endpoint is associated.
 	ServiceName *string `json:"ServiceName,omitempty" xml:"ServiceName,omitempty"`
-	// The name of the endpoint.
+	// The ID of the VPC to which the endpoint belongs.
 	VpcId *string `json:"VpcId,omitempty" xml:"VpcId,omitempty"`
 }
 
@@ -987,18 +918,55 @@ func (s *CreateVpcEndpointResponse) SetBody(v *CreateVpcEndpointResponseBody) *C
 }
 
 type CreateVpcEndpointServiceRequest struct {
-	AutoAcceptEnabled   *bool                                      `json:"AutoAcceptEnabled,omitempty" xml:"AutoAcceptEnabled,omitempty"`
-	ClientToken         *string                                    `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
-	DryRun              *bool                                      `json:"DryRun,omitempty" xml:"DryRun,omitempty"`
-	Payer               *string                                    `json:"Payer,omitempty" xml:"Payer,omitempty"`
-	RegionId            *string                                    `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	Resource            []*CreateVpcEndpointServiceRequestResource `json:"Resource,omitempty" xml:"Resource,omitempty" type:"Repeated"`
-	ResourceGroupId     *string                                    `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
-	ServiceDescription  *string                                    `json:"ServiceDescription,omitempty" xml:"ServiceDescription,omitempty"`
-	ServiceResourceType *string                                    `json:"ServiceResourceType,omitempty" xml:"ServiceResourceType,omitempty"`
-	ServiceSupportIPv6  *bool                                      `json:"ServiceSupportIPv6,omitempty" xml:"ServiceSupportIPv6,omitempty"`
-	Tag                 []*CreateVpcEndpointServiceRequestTag      `json:"Tag,omitempty" xml:"Tag,omitempty" type:"Repeated"`
-	ZoneAffinityEnabled *bool                                      `json:"ZoneAffinityEnabled,omitempty" xml:"ZoneAffinityEnabled,omitempty"`
+	// Specifies whether to automatically accept endpoint connection requests. Valid values:
+	//
+	// *   **true**
+	// *   **false** (default)
+	AutoAcceptEnabled *bool `json:"AutoAcceptEnabled,omitempty" xml:"AutoAcceptEnabled,omitempty"`
+	// The client token that is used to ensure the idempotence of the request.
+	//
+	// You can use the client to generate the token, but you must make sure that the token is unique among different requests. The token can contain only ASCII characters.
+	ClientToken *string `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
+	// Specifies whether to perform only a dry run, without performing the actual request.
+	//
+	// *   **true**: performs only a dry run. The system checks the request for potential issues, including missing parameter values, incorrect request syntax, and service limits. If the request fails the dry run, an error message is returned. If the request passes the dry run, the `DryRunOperation` error code is returned.
+	// *   **false** (default): performs a dry run and performs the actual request. If the request passes the dry run, a 2xx HTTP status code is returned and the operation is performed.
+	DryRun *bool `json:"DryRun,omitempty" xml:"DryRun,omitempty"`
+	// The payer of the endpoint service. Valid values:
+	//
+	// *   **Endpoint**: the service consumer
+	// *   **EndpointService**: the service provider
+	//
+	// > By default, the feature of allowing the service provider to pay is unavailable. To use this feature, log on to the [Quota Center console](https://quotas.console.aliyun.com/white-list-products/privatelink/quotas) and click Privileges in the left-side navigation pane. On the **Privileges** page, enter the quota ID `privatelink_whitelist/epsvc_payer_mode`, and click Apply in the Actions column.
+	Payer *string `json:"Payer,omitempty" xml:"Payer,omitempty"`
+	// The region ID of the endpoint service.
+	//
+	// You can call the [DescribeRegions](~~120468~~) operation to query the most recent region list.
+	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	// The service resources of the endpoint service.
+	Resource []*CreateVpcEndpointServiceRequestResource `json:"Resource,omitempty" xml:"Resource,omitempty" type:"Repeated"`
+	// The resource group ID.
+	ResourceGroupId *string `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
+	// The description of the endpoint service.
+	ServiceDescription *string `json:"ServiceDescription,omitempty" xml:"ServiceDescription,omitempty"`
+	// The type of the service resource. Valid values:
+	//
+	// *   **slb**: a Classic Load Balancer (CLB) instance
+	// *   **alb**: an Application Load Balancer (ALB) instance
+	// *   **nlb**: a Network Load Balancer (NLB) instance
+	ServiceResourceType *string `json:"ServiceResourceType,omitempty" xml:"ServiceResourceType,omitempty"`
+	// Specifies whether to enable IPv6 for the endpoint service. Valid values:
+	//
+	// *   **true**
+	// *   **false** (default)
+	ServiceSupportIPv6 *bool `json:"ServiceSupportIPv6,omitempty" xml:"ServiceSupportIPv6,omitempty"`
+	// The list of tags.
+	Tag []*CreateVpcEndpointServiceRequestTag `json:"Tag,omitempty" xml:"Tag,omitempty" type:"Repeated"`
+	// Specifies whether to first resolve the domain name of the nearest endpoint that is associated with the endpoint service. Valid values:
+	//
+	// *   **true**
+	// *   **false** (default)
+	ZoneAffinityEnabled *bool `json:"ZoneAffinityEnabled,omitempty" xml:"ZoneAffinityEnabled,omitempty"`
 }
 
 func (s CreateVpcEndpointServiceRequest) String() string {
@@ -1070,9 +1038,18 @@ func (s *CreateVpcEndpointServiceRequest) SetZoneAffinityEnabled(v bool) *Create
 }
 
 type CreateVpcEndpointServiceRequestResource struct {
-	ResourceId   *string `json:"ResourceId,omitempty" xml:"ResourceId,omitempty"`
+	// The ID of the service resource that is added to the endpoint service. You can specify up to 20 service resource IDs.
+	ResourceId *string `json:"ResourceId,omitempty" xml:"ResourceId,omitempty"`
+	// The type of the service resource that is added to the endpoint service. You can add up to 20 service resources to the endpoint service. Valid values:
+	//
+	// *   **slb**: a CLB instance
+	// *   **alb**: an ALB instance
+	// *   **nlb**: a NLB instance
+	//
+	// >  In regions where PrivateLink is supported, CLB instances deployed in virtual private clouds (VPCs) can serve as service resources of the endpoint service.
 	ResourceType *string `json:"ResourceType,omitempty" xml:"ResourceType,omitempty"`
-	ZoneId       *string `json:"ZoneId,omitempty" xml:"ZoneId,omitempty"`
+	// The zone ID.
+	ZoneId *string `json:"ZoneId,omitempty" xml:"ZoneId,omitempty"`
 }
 
 func (s CreateVpcEndpointServiceRequestResource) String() string {
@@ -1099,7 +1076,13 @@ func (s *CreateVpcEndpointServiceRequestResource) SetZoneId(v string) *CreateVpc
 }
 
 type CreateVpcEndpointServiceRequestTag struct {
-	Key   *string `json:"Key,omitempty" xml:"Key,omitempty"`
+	// The key of the tag. You can specify up to 20 tag keys. The tag key cannot be an empty string.
+	//
+	// The tag key must be 1 to 64 characters in length and cannot start with `aliyun` or `acs:`. It cannot contain `http://` or `https://`.
+	Key *string `json:"Key,omitempty" xml:"Key,omitempty"`
+	// The value of the tag. You can specify up to 20 tag values. The tag value can be an empty string.
+	//
+	// The tag value must be 1 to 128 characters in length and cannot start with `acs:` or `aliyun`. It cannot contain `http://` or `https://`.
 	Value *string `json:"Value,omitempty" xml:"Value,omitempty"`
 }
 
@@ -1122,18 +1105,48 @@ func (s *CreateVpcEndpointServiceRequestTag) SetValue(v string) *CreateVpcEndpoi
 }
 
 type CreateVpcEndpointServiceResponseBody struct {
-	AutoAcceptEnabled     *bool   `json:"AutoAcceptEnabled,omitempty" xml:"AutoAcceptEnabled,omitempty"`
-	CreateTime            *string `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
-	RequestId             *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	ResourceGroupId       *string `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
+	// Indicates whether the endpoint service automatically accepts endpoint connection requests. Valid values:
+	//
+	// *   **true**
+	// *   **false**
+	AutoAcceptEnabled *bool `json:"AutoAcceptEnabled,omitempty" xml:"AutoAcceptEnabled,omitempty"`
+	// The time when the endpoint service was created.
+	CreateTime *string `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
+	// The request ID.
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The resource group ID.
+	ResourceGroupId *string `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
+	// The service state of the endpoint service. Valid values:
+	//
+	// *   **Normal**: The endpoint service runs as expected.
+	// *   **FinacialLocked**: The endpoint service is locked due to overdue payments.
 	ServiceBusinessStatus *string `json:"ServiceBusinessStatus,omitempty" xml:"ServiceBusinessStatus,omitempty"`
-	ServiceDescription    *string `json:"ServiceDescription,omitempty" xml:"ServiceDescription,omitempty"`
-	ServiceDomain         *string `json:"ServiceDomain,omitempty" xml:"ServiceDomain,omitempty"`
-	ServiceId             *string `json:"ServiceId,omitempty" xml:"ServiceId,omitempty"`
-	ServiceName           *string `json:"ServiceName,omitempty" xml:"ServiceName,omitempty"`
-	ServiceStatus         *string `json:"ServiceStatus,omitempty" xml:"ServiceStatus,omitempty"`
-	ServiceSupportIPv6    *bool   `json:"ServiceSupportIPv6,omitempty" xml:"ServiceSupportIPv6,omitempty"`
-	ZoneAffinityEnabled   *bool   `json:"ZoneAffinityEnabled,omitempty" xml:"ZoneAffinityEnabled,omitempty"`
+	// The description of the endpoint service.
+	ServiceDescription *string `json:"ServiceDescription,omitempty" xml:"ServiceDescription,omitempty"`
+	// The domain name of the endpoint service.
+	ServiceDomain *string `json:"ServiceDomain,omitempty" xml:"ServiceDomain,omitempty"`
+	// The endpoint service ID.
+	ServiceId *string `json:"ServiceId,omitempty" xml:"ServiceId,omitempty"`
+	// The name of the endpoint service.
+	ServiceName *string `json:"ServiceName,omitempty" xml:"ServiceName,omitempty"`
+	// The state of the endpoint service. Valid values:
+	//
+	// *   **Creating**: The endpoint service is being created.
+	// *   **Pending**: The endpoint service is being modified.
+	// *   **Active**: The endpoint service is available.
+	// *   **Deleting**: The endpoint service is being deleted.
+	// *   **Inactive**: The endpoint service is unavailable.
+	ServiceStatus *string `json:"ServiceStatus,omitempty" xml:"ServiceStatus,omitempty"`
+	// Indicates whether IPv6 was enabled for the endpoint service. Valid values:
+	//
+	// *   **true**
+	// *   **false**
+	ServiceSupportIPv6 *bool `json:"ServiceSupportIPv6,omitempty" xml:"ServiceSupportIPv6,omitempty"`
+	// Indicates whether the domain name of the nearest endpoint that is associated with the endpoint service is resolved first. Valid values:
+	//
+	// *   **true**
+	// *   **false**
+	ZoneAffinityEnabled *bool `json:"ZoneAffinityEnabled,omitempty" xml:"ZoneAffinityEnabled,omitempty"`
 }
 
 func (s CreateVpcEndpointServiceResponseBody) String() string {
@@ -1416,7 +1429,7 @@ func (s *DeleteVpcEndpointServiceResponse) SetBody(v *DeleteVpcEndpointServiceRe
 }
 
 type DescribeRegionsRequest struct {
-	// The list of regions.
+	// The region ID.
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 }
 
@@ -1434,9 +1447,9 @@ func (s *DescribeRegionsRequest) SetRegionId(v string) *DescribeRegionsRequest {
 }
 
 type DescribeRegionsResponseBody struct {
-	// The ID of the request.
+	// The available regions.
 	Regions *DescribeRegionsResponseBodyRegions `json:"Regions,omitempty" xml:"Regions,omitempty" type:"Struct"`
-	// The ID of the region.
+	// The request ID.
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -1476,10 +1489,12 @@ func (s *DescribeRegionsResponseBodyRegions) SetRegion(v []*DescribeRegionsRespo
 }
 
 type DescribeRegionsResponseBodyRegionsRegion struct {
-	// The operation that you want to perform. Set the value to **DescribeRegions**.
-	LocalName      *string `json:"LocalName,omitempty" xml:"LocalName,omitempty"`
+	// The name of the region.
+	LocalName *string `json:"LocalName,omitempty" xml:"LocalName,omitempty"`
+	// The endpoint of the region.
 	RegionEndpoint *string `json:"RegionEndpoint,omitempty" xml:"RegionEndpoint,omitempty"`
-	RegionId       *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	// The region ID.
+	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 }
 
 func (s DescribeRegionsResponseBodyRegionsRegion) String() string {
@@ -1766,23 +1781,20 @@ func (s *DetachResourceFromVpcEndpointServiceResponse) SetBody(v *DetachResource
 }
 
 type DetachSecurityGroupFromVpcEndpointRequest struct {
-	// Specifies whether to check the request without performing the operation. Valid values:
+	// The client token that is used to ensure the idempotence of the request.
 	//
-	// *   **true**: sends a request for check purpose only. If you select this option, the endpoint is still associated with the security group after the request passes the check. The system checks whether your AccessKey pair is valid, whether RAM users are granted required permissions, and whether the required parameters are set. If the request fails to pass the check, the corresponding error message is returned. If the request passes the check, the `DryRunOperation` error code is returned.
-	// *   **false** (default): sends a common request. If the request passes the check, the 2xx HTTP status code is returned, and the operation is performed.
+	// You can use the client to generate the token, but you must make sure that the token is unique among different requests. The token can contain only ASCII characters.
 	ClientToken *string `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
-	// The ID of the endpoint that you want to disassociate from the security group.
+	// Specifies whether to perform only a dry run, without performing the actual request. Valid values:
+	//
+	// *   **true**: performs only a dry run. The system checks the request for potential issues, including missing parameter values, incorrect request syntax, and service limits. If the request fails the dry run, an error message is returned. If the request passes the dry run, the `DryRunOperation` error code is returned.
+	// *   **false** (default): performs a dry run and performs the actual request. If the request passes the dry run, a 2xx HTTP status code is returned and the operation is performed.
 	DryRun *bool `json:"DryRun,omitempty" xml:"DryRun,omitempty"`
-	// The ID of the security group from which you want to disassociate the endpoint.
+	// The ID of the endpoint that you want to disassociate from the security group.
 	EndpointId *string `json:"EndpointId,omitempty" xml:"EndpointId,omitempty"`
-	// *   **DetachSecurityGroupFromVpcEndpoint** is an asynchronous operation. After you send a request, the system returns a request ID. However, the operation is still being performed in the system background. You can call the [ListVpcEndpoints](~~183558#doc-api-Privatelink-ListVpcEndpoints~~) operation to query whether the endpoint is disassociated from the security group.
-	//
-	//     *   If the endpoint is in the **Pending** state, it indicates that the endpoint is being disassociated from the security group.
-	//     *   If the endpoint is in the **Active** state, it indicates that the endpoint is disassociated from the security group.
-	//
-	// *   You cannot use the **DetachSecurityGroupFromVpcEndpoint** operation to disassociate an endpoint from multiple security groups at the same time.
+	// The region ID of the endpoint that you want to disassociate from the security group. You can call the [DescribeRegions](~~120468~~) operation to query the most recent region list.
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	// The ID of the region to which the endpoint belongs. You can call the [DescribeRegions](~~120468#doc-api-Privatelink-DescribeRegions~~) operation to query the most recent region list.
+	// The ID of the security group from which you want to disassociate the endpoint.
 	SecurityGroupId *string `json:"SecurityGroupId,omitempty" xml:"SecurityGroupId,omitempty"`
 }
 
@@ -1820,7 +1832,7 @@ func (s *DetachSecurityGroupFromVpcEndpointRequest) SetSecurityGroupId(v string)
 }
 
 type DetachSecurityGroupFromVpcEndpointResponseBody struct {
-	// The ID of the request.
+	// The request ID.
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -1965,23 +1977,32 @@ func (s *DisableVpcEndpointConnectionResponse) SetBody(v *DisableVpcEndpointConn
 }
 
 type DisableVpcEndpointZoneConnectionRequest struct {
-	// The ID of the endpoint service.
+	// The client token that is used to ensure the idempotence of the request.
+	//
+	// You can use the client to generate the token, but you must make sure that the token is unique among different requests. The token can contain only ASCII characters and cannot exceed 64 characters in length.
 	ClientToken *string `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
-	// The ID of the request.
+	// Specifies whether to perform only a dry run, without performing the actual request. Valid values:
+	//
+	// *   **true**: performs only a dry run. The system checks the AccessKey pair, the permissions of the RAM user, and the required parameters. If the request fails the dry run, an error message is returned. If the request passes the dry run, the `DryRunOperation` error code is returned.
+	// *   **false** (default): performs a dry run and performs the actual request. If the request passes the dry run, a 2xx HTTP status code is returned and the operation is performed.
 	DryRun *bool `json:"DryRun,omitempty" xml:"DryRun,omitempty"`
-	// The ID of the endpoint.
+	// The endpoint ID.
 	EndpointId *string `json:"EndpointId,omitempty" xml:"EndpointId,omitempty"`
-	// Specifies whether to disconnect the endpoint from previous connections after migration. Valid values:
+	// The ID of the region where the connection request from the endpoint is rejected.
 	//
-	// *   **true**: yes
-	// *   **false** (default): no
+	// You can call the [DescribeRegions](~~120468~~) operation to query the most recent region list.
+	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	// Specifies whether to disconnect the endpoint from the previous connection after the service resource is smoothly migrated. Valid values:
 	//
-	// >  Set the value to true if you want to disconnect the endpoint from the previous connections in the zone after migration.
-	RegionId         *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	ReplacedResource *bool   `json:"ReplacedResource,omitempty" xml:"ReplacedResource,omitempty"`
-	// The operation that you want to perform. Set the value to **DisableVpcEndpointZoneConnection**.
+	// *   **true**
+	// *   **false** (default)
+	//
+	// > Set the value to true if you want to disconnect the endpoint from the previous connection in the zone after the service resource is smoothly migrated.
+	ReplacedResource *bool `json:"ReplacedResource,omitempty" xml:"ReplacedResource,omitempty"`
+	// The endpoint service ID.
 	ServiceId *string `json:"ServiceId,omitempty" xml:"ServiceId,omitempty"`
-	ZoneId    *string `json:"ZoneId,omitempty" xml:"ZoneId,omitempty"`
+	// The ID of the zone that is associated with the endpoint.
+	ZoneId *string `json:"ZoneId,omitempty" xml:"ZoneId,omitempty"`
 }
 
 func (s DisableVpcEndpointZoneConnectionRequest) String() string {
@@ -2028,6 +2049,7 @@ func (s *DisableVpcEndpointZoneConnectionRequest) SetZoneId(v string) *DisableVp
 }
 
 type DisableVpcEndpointZoneConnectionResponseBody struct {
+	// The request ID.
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -2288,14 +2310,11 @@ func (s *EnableVpcEndpointZoneConnectionResponse) SetBody(v *EnableVpcEndpointZo
 }
 
 type GetVpcEndpointAttributeRequest struct {
-	// The ID of the endpoint that you want to query.
+	// The ID of the endpoint whose attributes you want to query.
 	EndpointId *string `json:"EndpointId,omitempty" xml:"EndpointId,omitempty"`
-	// The status of the endpoint. Valid values:
+	// The region ID of the endpoint whose attributes you want to query.
 	//
-	// *   **Creating**: being created
-	// *   **Active**: available
-	// *   **Pending**: being modified
-	// *   **Deleting**: being deleted
+	// You can call the [DescribeRegions](~~120468~~) operation to query the most recent region list.
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 }
 
@@ -2318,65 +2337,71 @@ func (s *GetVpcEndpointAttributeRequest) SetRegionId(v string) *GetVpcEndpointAt
 }
 
 type GetVpcEndpointAttributeResponseBody struct {
-	// The description of the endpoint.
-	Bandwidth *int32 `json:"Bandwidth,omitempty" xml:"Bandwidth,omitempty"`
-	// The ID of the endpoint.
-	ConnectionStatus *string `json:"ConnectionStatus,omitempty" xml:"ConnectionStatus,omitempty"`
-	// The ID of the endpoint service with which the endpoint is associated.
-	CreateTime *string `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
-	// The business status of the endpoint. Valid values:
-	//
-	// *   **Normal**: normal
-	// *   **FinacialLocked**: locked due to overdue payments
-	EndpointBusinessStatus *string `json:"EndpointBusinessStatus,omitempty" xml:"EndpointBusinessStatus,omitempty"`
-	// The name of the endpoint.
-	EndpointDescription *string `json:"EndpointDescription,omitempty" xml:"EndpointDescription,omitempty"`
-	// The ID of the virtual private cloud (VPC) to which the endpoint belongs.
-	EndpointDomain *string `json:"EndpointDomain,omitempty" xml:"EndpointDomain,omitempty"`
 	// The bandwidth of the endpoint connection. Unit: Mbit/s.
-	EndpointId *string `json:"EndpointId,omitempty" xml:"EndpointId,omitempty"`
-	// The time when the endpoint was created.
-	EndpointName *string `json:"EndpointName,omitempty" xml:"EndpointName,omitempty"`
-	// The operation that you want to perform. Set the value to **GetVpcEndpointAttribute**.
-	EndpointStatus *string `json:"EndpointStatus,omitempty" xml:"EndpointStatus,omitempty"`
-	// The payer. Valid values:
+	Bandwidth *int32 `json:"Bandwidth,omitempty" xml:"Bandwidth,omitempty"`
+	// The state of the endpoint connection. Valid values:
 	//
-	// *   **Endpoint**: the service consumer
-	// *   **EndpointService**: the service provider
-	EndpointType *string `json:"EndpointType,omitempty" xml:"EndpointType,omitempty"`
-	// The name of the endpoint service that is associated with the endpoint.
-	Payer *string `json:"Payer,omitempty" xml:"Payer,omitempty"`
-	// The number of private IP addresses that can be used by an elastic network interface (ENI) in each zone. The value is set to **1**.
-	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	// *   **Pending**: The connection is being modified.
+	// *   **Connecting**: The connection is being established.
+	// *   **Connected**: The connection is established.
+	// *   **Disconnecting**: The endpoint is being disconnected from the endpoint service.
+	// *   **Disconnected**: The endpoint is disconnected from the endpoint service.
+	// *   **Deleting**: The connection is being deleted.
+	ConnectionStatus *string `json:"ConnectionStatus,omitempty" xml:"ConnectionStatus,omitempty"`
+	// The time when the endpoint was created.
+	CreateTime *string `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
+	// The service state of the endpoint. Valid values:
+	//
+	// *   **Normal**: The endpoint runs as expected.
+	// *   **FinacialLocked**: The endpoint is locked due to overdue payments.
+	EndpointBusinessStatus *string `json:"EndpointBusinessStatus,omitempty" xml:"EndpointBusinessStatus,omitempty"`
+	// The description of the endpoint.
+	EndpointDescription *string `json:"EndpointDescription,omitempty" xml:"EndpointDescription,omitempty"`
+	// The domain name of the endpoint.
+	EndpointDomain *string `json:"EndpointDomain,omitempty" xml:"EndpointDomain,omitempty"`
+	// The endpoint ID.
+	EndpointId *string `json:"EndpointId,omitempty" xml:"EndpointId,omitempty"`
+	// The name of the endpoint.
+	EndpointName *string `json:"EndpointName,omitempty" xml:"EndpointName,omitempty"`
+	// The state of the endpoint. Valid values:
+	//
+	// *   **Creating**: The endpoint is being created.
+	// *   **Active**: The endpoint is available.
+	// *   **Pending**: The endpoint is being modified.
+	// *   **Deleting**: The endpoint is being deleted.
+	EndpointStatus *string `json:"EndpointStatus,omitempty" xml:"EndpointStatus,omitempty"`
 	// The type of the endpoint.
 	//
-	// The value is set to **Interface**, which indicates that the resource type of **ServiceId** is Classic Load Balancer (CLB).
-	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// Queries the details about a specified endpoint.
-	ResourceGroupId *string `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
+	// **Interface** is returned. The value indicates the interface endpoint with which the Classic Load Balancer (CLB) instances are associated.
+	EndpointType *string `json:"EndpointType,omitempty" xml:"EndpointType,omitempty"`
+	// The payer. Valid values:
+	//
+	// *   **Endpoint**: the service consumer.
+	// *   **EndpointService**: the service provider.
+	Payer *string `json:"Payer,omitempty" xml:"Payer,omitempty"`
 	// The region ID of the endpoint.
+	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	// The request ID.
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The resource group ID.
+	ResourceGroupId *string `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
+	// Indicates whether the endpoint and the endpoint service belong to the same Alibaba Cloud account. Valid values:
+	//
+	// *   **true**: The endpoint and the endpoint service belong to the same Alibaba Cloud account.
+	// *   **false**: The endpoint and the endpoint service do not belong to the same Alibaba Cloud account.
 	ResourceOwner *bool `json:"ResourceOwner,omitempty" xml:"ResourceOwner,omitempty"`
+	// The ID of the endpoint service with which the endpoint is associated.
+	ServiceId *string `json:"ServiceId,omitempty" xml:"ServiceId,omitempty"`
+	// The name of the endpoint service with which the endpoint is associated.
+	ServiceName *string `json:"ServiceName,omitempty" xml:"ServiceName,omitempty"`
+	// The ID of the virtual private cloud (VPC) to which the endpoint belongs.
+	VpcId *string `json:"VpcId,omitempty" xml:"VpcId,omitempty"`
 	// Indicates whether zone affinity is enabled. Valid values:
 	//
-	// *   **true**: yes
-	// *   **false**: no
-	ServiceId *string `json:"ServiceId,omitempty" xml:"ServiceId,omitempty"`
-	// The status of the endpoint connection. Valid values:
-	//
-	// *   **Pending**: being modified
-	// *   **Connecting**: connecting
-	// *   **Connected**: connected
-	// *   **Disconnecting**: disconnecting
-	// *   **Disconnected**: disconnected
-	// *   **Deleting**: being deleted
-	ServiceName *string `json:"ServiceName,omitempty" xml:"ServiceName,omitempty"`
-	// The domain name of the endpoint.
-	VpcId *string `json:"VpcId,omitempty" xml:"VpcId,omitempty"`
-	// The ID of the request.
+	// *   **true**: Zone affinity is enabled.
+	// *   **false**: Zone affinity is disabled.
 	ZoneAffinityEnabled *bool `json:"ZoneAffinityEnabled,omitempty" xml:"ZoneAffinityEnabled,omitempty"`
-	// The region ID of the endpoint.
-	//
-	// You can call the [DescribeRegions](~~120468~~) operation to query the most recent region list.
+	// The number of private IP addresses that are assigned to an elastic network interface (ENI) in each zone. Only **1** is returned.
 	ZonePrivateIpAddressCount *int64 `json:"ZonePrivateIpAddressCount,omitempty" xml:"ZonePrivateIpAddressCount,omitempty"`
 }
 
@@ -2751,10 +2776,6 @@ func (s *GetVpcEndpointServiceAttributeResponse) SetBody(v *GetVpcEndpointServic
 }
 
 type ListVpcEndpointConnectionsRequest struct {
-	// The ID of the endpoint connection.
-	//
-	// > This parameter is required only when a gateway is used for load balancing.
-	ConnectionId *int64 `json:"ConnectionId,omitempty" xml:"ConnectionId,omitempty"`
 	// The state of the endpoint connection. Valid values:
 	//
 	// *   **Pending**: The endpoint connection is being modified.
@@ -2798,11 +2819,6 @@ func (s ListVpcEndpointConnectionsRequest) String() string {
 
 func (s ListVpcEndpointConnectionsRequest) GoString() string {
 	return s.String()
-}
-
-func (s *ListVpcEndpointConnectionsRequest) SetConnectionId(v int64) *ListVpcEndpointConnectionsRequest {
-	s.ConnectionId = &v
-	return s
 }
 
 func (s *ListVpcEndpointConnectionsRequest) SetConnectionStatus(v string) *ListVpcEndpointConnectionsRequest {
@@ -3001,14 +3017,6 @@ func (s *ListVpcEndpointConnectionsResponseBodyConnections) SetZones(v []*ListVp
 }
 
 type ListVpcEndpointConnectionsResponseBodyConnectionsZones struct {
-	// The endpoint connection ID.
-	//
-	// > This parameter is returned only when a gateway is used for load balancing.
-	ConnectionId *int64 `json:"ConnectionId,omitempty" xml:"ConnectionId,omitempty"`
-	// The endpoint connection ID.
-	//
-	// > This parameter is returned only when a gateway is used for load balancing. The value of this parameter is the value of the **ConnectionId** parameter in **string** format.
-	ConnectionStringId *string `json:"ConnectionStringId,omitempty" xml:"ConnectionStringId,omitempty"`
 	// The endpoint ENI ID.
 	EniId *string `json:"EniId,omitempty" xml:"EniId,omitempty"`
 	// The ID of the replaced endpoint ENI in smooth migration scenarios.
@@ -3043,16 +3051,6 @@ func (s ListVpcEndpointConnectionsResponseBodyConnectionsZones) String() string 
 
 func (s ListVpcEndpointConnectionsResponseBodyConnectionsZones) GoString() string {
 	return s.String()
-}
-
-func (s *ListVpcEndpointConnectionsResponseBodyConnectionsZones) SetConnectionId(v int64) *ListVpcEndpointConnectionsResponseBodyConnectionsZones {
-	s.ConnectionId = &v
-	return s
-}
-
-func (s *ListVpcEndpointConnectionsResponseBodyConnectionsZones) SetConnectionStringId(v string) *ListVpcEndpointConnectionsResponseBodyConnectionsZones {
-	s.ConnectionStringId = &v
-	return s
 }
 
 func (s *ListVpcEndpointConnectionsResponseBodyConnectionsZones) SetEniId(v string) *ListVpcEndpointConnectionsResponseBodyConnectionsZones {
@@ -3258,16 +3256,18 @@ func (s *ListVpcEndpointSecurityGroupsResponse) SetBody(v *ListVpcEndpointSecuri
 }
 
 type ListVpcEndpointServiceResourcesRequest struct {
-	// The virtual private cloud (VPC) to which the service resource belongs.
-	MaxResults *int32 `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
 	// The number of entries to return on each page. Valid values: **1** to **50**. Default value: **50**.
-	NextToken *string `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
-	// The ID of the service resource.
-	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	// Indicates whether the endpoint service supports IPv6. Valid values:
+	MaxResults *int32 `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
+	// The pagination token that is used in the next request to retrieve a new page of results. Valid values:
 	//
-	// *   **true**: yes
-	// *   **false**: no
+	// *   If this is your first request and no next requests are to be performed, you do not need to specify this parameter.
+	// *   If a next request is to be performed, set the parameter to the value of NextToken that is returned from the last call.
+	NextToken *string `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
+	// The region ID of the service resource.
+	//
+	// You can call the [DescribeRegions](~~120468~~) operation to query the most recent region list.
+	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	// The endpoint service ID.
 	ServiceId *string `json:"ServiceId,omitempty" xml:"ServiceId,omitempty"`
 }
 
@@ -3300,15 +3300,16 @@ func (s *ListVpcEndpointServiceResourcesRequest) SetServiceId(v string) *ListVpc
 }
 
 type ListVpcEndpointServiceResourcesResponseBody struct {
-	// The vSwitch to which the service resource belongs.
+	// The number of entries returned on each page.
 	MaxResults *int32 `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
-	// The type of the service resource.
+	// The returned value of NextToken is a pagination token, which can be used in the next request to retrieve a new page of results. Valid values:
 	//
-	// The value is set to **slb**, which indicates Classic Load Balancer (CLB).
+	// *   If no value is returned for **NextToken**, no next requests are performed.
+	// *   If a value is returned for **NextToken**, the value can be used in the next request to retrieve a new page of results.
 	NextToken *string `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
-	// The operation that you want to perform. Set the value to **ListVpcEndpointServiceResources**.
+	// The request ID.
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// The list of service resources.
+	// The service resources.
 	Resources []*ListVpcEndpointServiceResourcesResponseBodyResources `json:"Resources,omitempty" xml:"Resources,omitempty" type:"Repeated"`
 }
 
@@ -3341,25 +3342,35 @@ func (s *ListVpcEndpointServiceResourcesResponseBody) SetResources(v []*ListVpcE
 }
 
 type ListVpcEndpointServiceResourcesResponseBodyResources struct {
-	AutoAllocatedEnabled *bool `json:"AutoAllocatedEnabled,omitempty" xml:"AutoAllocatedEnabled,omitempty"`
-	// The ID of the endpoint service.
-	Ip                             *string `json:"Ip,omitempty" xml:"Ip,omitempty"`
-	RegionId                       *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	RelatedDeprecatedEndpointCount *int64  `json:"RelatedDeprecatedEndpointCount,omitempty" xml:"RelatedDeprecatedEndpointCount,omitempty"`
-	RelatedEndpointCount           *int64  `json:"RelatedEndpointCount,omitempty" xml:"RelatedEndpointCount,omitempty"`
-	// The ID of the request.
-	ResourceId          *string `json:"ResourceId,omitempty" xml:"ResourceId,omitempty"`
-	ResourceSupportIPv6 *bool   `json:"ResourceSupportIPv6,omitempty" xml:"ResourceSupportIPv6,omitempty"`
-	// The number of replaced connections to the endpoint associated with the endpoint service in smooth migration scenarios.
-	ResourceType *string `json:"ResourceType,omitempty" xml:"ResourceType,omitempty"`
-	// Indicates whether automatic resource allocation is allowed. Valid values:
+	// Indicates whether automatic resource allocation is enabled. Valid values:
 	//
-	// *   **true**: yes
-	// *   **false**: no
-	VSwitchId *string `json:"VSwitchId,omitempty" xml:"VSwitchId,omitempty"`
+	// *   **true**
+	// *   **false**
+	AutoAllocatedEnabled *bool `json:"AutoAllocatedEnabled,omitempty" xml:"AutoAllocatedEnabled,omitempty"`
+	// The IP address of the service resource.
+	Ip *string `json:"Ip,omitempty" xml:"Ip,omitempty"`
 	// The ID of the region where the service resource is deployed.
+	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	// The number of endpoints that are associated with the service resource that is smoothly migrated.
+	RelatedDeprecatedEndpointCount *int64 `json:"RelatedDeprecatedEndpointCount,omitempty" xml:"RelatedDeprecatedEndpointCount,omitempty"`
+	// The number of endpoints that are associated with the service resource.
+	RelatedEndpointCount *int64 `json:"RelatedEndpointCount,omitempty" xml:"RelatedEndpointCount,omitempty"`
+	// The service resource ID.
+	ResourceId *string `json:"ResourceId,omitempty" xml:"ResourceId,omitempty"`
+	// Indicates whether IPv6 is enabled for the endpoint service. Valid values:
+	//
+	// *   **true**
+	// *   **false**
+	ResourceSupportIPv6 *bool `json:"ResourceSupportIPv6,omitempty" xml:"ResourceSupportIPv6,omitempty"`
+	// The type of the service resource.
+	//
+	// Only **slb** is returned. This value indicates a Classic Load Balancer (CLB) instance.
+	ResourceType *string `json:"ResourceType,omitempty" xml:"ResourceType,omitempty"`
+	// The ID of the vSwitch to which the service resource belongs.
+	VSwitchId *string `json:"VSwitchId,omitempty" xml:"VSwitchId,omitempty"`
+	// The ID of the virtual private cloud (VPC) to which the service resource belongs.
 	VpcId *string `json:"VpcId,omitempty" xml:"VpcId,omitempty"`
-	// The ID of the zone where the service resource is deployed.
+	// The ID of the zone to which the service resource belongs.
 	ZoneId *string `json:"ZoneId,omitempty" xml:"ZoneId,omitempty"`
 }
 
@@ -4304,13 +4315,6 @@ type ListVpcEndpointZonesResponseBodyZones struct {
 	EniIp *string `json:"EniIp,omitempty" xml:"EniIp,omitempty"`
 	// The region ID of the endpoint.
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	// The state of the endpoint service. Valid values:
-	//
-	// *   **Creating**: The endpoint service is being created.
-	// *   **Pending**: The endpoint service is being modified.
-	// *   **Active**: The endpoint service is available.
-	// *   **Deleting**: The endpoint service is being deleted.
-	ServiceStatus *string `json:"ServiceStatus,omitempty" xml:"ServiceStatus,omitempty"`
 	// The ID of the vSwitch in the zone. The system automatically creates an endpoint elastic network interface (ENI) in the vSwitch.
 	VSwitchId *string `json:"VSwitchId,omitempty" xml:"VSwitchId,omitempty"`
 	// The domain name of the zone.
@@ -4356,11 +4360,6 @@ func (s *ListVpcEndpointZonesResponseBodyZones) SetEniIp(v string) *ListVpcEndpo
 
 func (s *ListVpcEndpointZonesResponseBodyZones) SetRegionId(v string) *ListVpcEndpointZonesResponseBodyZones {
 	s.RegionId = &v
-	return s
-}
-
-func (s *ListVpcEndpointZonesResponseBodyZones) SetServiceStatus(v string) *ListVpcEndpointZonesResponseBodyZones {
-	s.ServiceStatus = &v
 	return s
 }
 
@@ -4736,87 +4735,6 @@ func (s *ListVpcEndpointsResponse) SetBody(v *ListVpcEndpointsResponseBody) *Lis
 	return s
 }
 
-type NotifyResourceAddressFamilyRequest struct {
-	AddressFamily *string `json:"AddressFamily,omitempty" xml:"AddressFamily,omitempty"`
-	Ipv6Address   *string `json:"Ipv6Address,omitempty" xml:"Ipv6Address,omitempty"`
-	ResourceId    *string `json:"ResourceId,omitempty" xml:"ResourceId,omitempty"`
-	ResourceType  *string `json:"ResourceType,omitempty" xml:"ResourceType,omitempty"`
-}
-
-func (s NotifyResourceAddressFamilyRequest) String() string {
-	return tea.Prettify(s)
-}
-
-func (s NotifyResourceAddressFamilyRequest) GoString() string {
-	return s.String()
-}
-
-func (s *NotifyResourceAddressFamilyRequest) SetAddressFamily(v string) *NotifyResourceAddressFamilyRequest {
-	s.AddressFamily = &v
-	return s
-}
-
-func (s *NotifyResourceAddressFamilyRequest) SetIpv6Address(v string) *NotifyResourceAddressFamilyRequest {
-	s.Ipv6Address = &v
-	return s
-}
-
-func (s *NotifyResourceAddressFamilyRequest) SetResourceId(v string) *NotifyResourceAddressFamilyRequest {
-	s.ResourceId = &v
-	return s
-}
-
-func (s *NotifyResourceAddressFamilyRequest) SetResourceType(v string) *NotifyResourceAddressFamilyRequest {
-	s.ResourceType = &v
-	return s
-}
-
-type NotifyResourceAddressFamilyResponseBody struct {
-	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-}
-
-func (s NotifyResourceAddressFamilyResponseBody) String() string {
-	return tea.Prettify(s)
-}
-
-func (s NotifyResourceAddressFamilyResponseBody) GoString() string {
-	return s.String()
-}
-
-func (s *NotifyResourceAddressFamilyResponseBody) SetRequestId(v string) *NotifyResourceAddressFamilyResponseBody {
-	s.RequestId = &v
-	return s
-}
-
-type NotifyResourceAddressFamilyResponse struct {
-	Headers    map[string]*string                       `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                                   `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *NotifyResourceAddressFamilyResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
-}
-
-func (s NotifyResourceAddressFamilyResponse) String() string {
-	return tea.Prettify(s)
-}
-
-func (s NotifyResourceAddressFamilyResponse) GoString() string {
-	return s.String()
-}
-
-func (s *NotifyResourceAddressFamilyResponse) SetHeaders(v map[string]*string) *NotifyResourceAddressFamilyResponse {
-	s.Headers = v
-	return s
-}
-
-func (s *NotifyResourceAddressFamilyResponse) SetStatusCode(v int32) *NotifyResourceAddressFamilyResponse {
-	s.StatusCode = &v
-	return s
-}
-
-func (s *NotifyResourceAddressFamilyResponse) SetBody(v *NotifyResourceAddressFamilyResponseBody) *NotifyResourceAddressFamilyResponse {
-	s.Body = v
-	return s
-}
-
 type OpenPrivateLinkServiceRequest struct {
 	OwnerId *int64 `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
 }
@@ -4835,9 +4753,9 @@ func (s *OpenPrivateLinkServiceRequest) SetOwnerId(v int64) *OpenPrivateLinkServ
 }
 
 type OpenPrivateLinkServiceResponseBody struct {
-	// The ID of the request.
+	// The order ID.
 	OrderId *string `json:"OrderId,omitempty" xml:"OrderId,omitempty"`
-	// The ID of the order.
+	// The request ID.
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -5337,17 +5255,22 @@ func (s *UpdateVpcEndpointAttributeResponse) SetBody(v *UpdateVpcEndpointAttribu
 }
 
 type UpdateVpcEndpointConnectionAttributeRequest struct {
-	// WB01218782
+	// The bandwidth of the endpoint connection that you want to modify. Unit: Mbit/s.
 	Bandwidth *int32 `json:"Bandwidth,omitempty" xml:"Bandwidth,omitempty"`
-	// The operation that you want to perform. Set the value to **UpdateVpcEndpointConnectionAttribute**.
+	// The client token that is used to ensure the idempotence of the request.
+	//
+	// You can use the client to generate the token, but you must make sure that the token is unique among different requests. The token can contain only ASCII characters.
 	ClientToken *string `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
-	// The ID of the endpoint.
+	// Specifies whether to perform only a dry run, without performing the actual request. Valid values:
+	//
+	// *   **true**: performs only a dry run. The system checks the request for potential issues, including missing parameter values, incorrect request syntax, and service limits. If the request fails the dry run, an error message is returned. If the request passes the dry run, the `DryRunOperation` error code is returned.
+	// *   **false** (default): performs a dry run and performs the actual request. If the request passes the dry run, a 2xx HTTP status code is returned and the operation is performed.
 	DryRun *bool `json:"DryRun,omitempty" xml:"DryRun,omitempty"`
-	// UpdateVpcEndpointConnectionAttribute
+	// The endpoint ID.
 	EndpointId *string `json:"EndpointId,omitempty" xml:"EndpointId,omitempty"`
-	// The ID of the request.
+	// The region ID of the endpoint connection whose bandwidth you want to modify. You can call the [DescribeRegions](~~120468~~) operation to query the most recent region list.
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	// Modifies the maximum bandwidth of an endpoint connection.
+	// The endpoint service ID.
 	ServiceId *string `json:"ServiceId,omitempty" xml:"ServiceId,omitempty"`
 }
 
@@ -5390,6 +5313,7 @@ func (s *UpdateVpcEndpointConnectionAttributeRequest) SetServiceId(v string) *Up
 }
 
 type UpdateVpcEndpointConnectionAttributeResponseBody struct {
+	// The request ID.
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -5595,7 +5519,8 @@ type UpdateVpcEndpointServiceResourceAttributeRequest struct {
 	ResourceId *string `json:"ResourceId,omitempty" xml:"ResourceId,omitempty"`
 	// The endpoint service ID.
 	ServiceId *string `json:"ServiceId,omitempty" xml:"ServiceId,omitempty"`
-	ZoneId    *string `json:"ZoneId,omitempty" xml:"ZoneId,omitempty"`
+	// The zone ID of the service resource.
+	ZoneId *string `json:"ZoneId,omitempty" xml:"ZoneId,omitempty"`
 }
 
 func (s UpdateVpcEndpointServiceResourceAttributeRequest) String() string {
@@ -5967,7 +5892,10 @@ func (client *Client) AddUserToVpcEndpointService(request *AddUserToVpcEndpointS
 }
 
 /**
- * The request ID.
+ * *   **AddZoneToVpcEndpoint** is an asynchronous operation. After you send a request, the system returns a request ID and runs the task in the background. You can call the [ListVpcEndpointZones](~~183560~~) operation to query the state of the zone.
+ *     *   If the zone is in the **Creating** state, the zone is being added.
+ *     *   If the zone is in the Wait state, the zone is added.
+ * *   You cannot repeatedly call the **AddZoneToVpcEndpoint** operation to add a zone to an endpoint within a specified period of time.
  *
  * @param request AddZoneToVpcEndpointRequest
  * @param runtime runtime options for this request RuntimeOptions
@@ -6035,7 +5963,10 @@ func (client *Client) AddZoneToVpcEndpointWithOptions(request *AddZoneToVpcEndpo
 }
 
 /**
- * The request ID.
+ * *   **AddZoneToVpcEndpoint** is an asynchronous operation. After you send a request, the system returns a request ID and runs the task in the background. You can call the [ListVpcEndpointZones](~~183560~~) operation to query the state of the zone.
+ *     *   If the zone is in the **Creating** state, the zone is being added.
+ *     *   If the zone is in the Wait state, the zone is added.
+ * *   You cannot repeatedly call the **AddZoneToVpcEndpoint** operation to add a zone to an endpoint within a specified period of time.
  *
  * @param request AddZoneToVpcEndpointRequest
  * @return AddZoneToVpcEndpointResponse
@@ -6304,61 +6235,10 @@ func (client *Client) CheckProductOpen() (_result *CheckProductOpenResponse, _er
 	return _result, _err
 }
 
-func (client *Client) CheckResourceSupportOperateWithOptions(request *CheckResourceSupportOperateRequest, runtime *util.RuntimeOptions) (_result *CheckResourceSupportOperateResponse, _err error) {
-	_err = util.ValidateModel(request)
-	if _err != nil {
-		return _result, _err
-	}
-	query := map[string]interface{}{}
-	if !tea.BoolValue(util.IsUnset(request.ResourceId)) {
-		query["ResourceId"] = request.ResourceId
-	}
-
-	if !tea.BoolValue(util.IsUnset(request.ResourceType)) {
-		query["ResourceType"] = request.ResourceType
-	}
-
-	if !tea.BoolValue(util.IsUnset(request.ZoneId)) {
-		query["ZoneId"] = request.ZoneId
-	}
-
-	req := &openapi.OpenApiRequest{
-		Query: openapiutil.Query(query),
-	}
-	params := &openapi.Params{
-		Action:      tea.String("CheckResourceSupportOperate"),
-		Version:     tea.String("2020-04-15"),
-		Protocol:    tea.String("HTTPS"),
-		Pathname:    tea.String("/"),
-		Method:      tea.String("POST"),
-		AuthType:    tea.String("AK"),
-		Style:       tea.String("RPC"),
-		ReqBodyType: tea.String("formData"),
-		BodyType:    tea.String("json"),
-	}
-	_result = &CheckResourceSupportOperateResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
-}
-
-func (client *Client) CheckResourceSupportOperate(request *CheckResourceSupportOperateRequest) (_result *CheckResourceSupportOperateResponse, _err error) {
-	runtime := &util.RuntimeOptions{}
-	_result = &CheckResourceSupportOperateResponse{}
-	_body, _err := client.CheckResourceSupportOperateWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
-	return _result, _err
-}
-
 /**
- * The region ID of the endpoint.
- * You can call the [DescribeRegions](~~120468~~) operation to query the most recent region list.
+ * **CreateIpv6Gateway** is an asynchronous operation. After a request is sent, the system returns a request ID and runs the task in the background. You can call the [GetVpcEndpointAttribute](~~183568~~) operation to check whether the endpoint is created.
+ * *   If the endpoint is in the **Creating** state, the endpoint is being created.
+ * *   If the endpoint is in the **Active** state, the endpoint is created.
  *
  * @param request CreateVpcEndpointRequest
  * @param runtime runtime options for this request RuntimeOptions
@@ -6458,8 +6338,9 @@ func (client *Client) CreateVpcEndpointWithOptions(request *CreateVpcEndpointReq
 }
 
 /**
- * The region ID of the endpoint.
- * You can call the [DescribeRegions](~~120468~~) operation to query the most recent region list.
+ * **CreateIpv6Gateway** is an asynchronous operation. After a request is sent, the system returns a request ID and runs the task in the background. You can call the [GetVpcEndpointAttribute](~~183568~~) operation to check whether the endpoint is created.
+ * *   If the endpoint is in the **Creating** state, the endpoint is being created.
+ * *   If the endpoint is in the **Active** state, the endpoint is created.
  *
  * @param request CreateVpcEndpointRequest
  * @return CreateVpcEndpointResponse
@@ -6476,7 +6357,9 @@ func (client *Client) CreateVpcEndpoint(request *CreateVpcEndpointRequest) (_res
 }
 
 /**
- * The resource group ID.
+ * **CreateVpcEndpointService** is an asynchronous operation. After a request is sent, the system returns a request ID and runs the task in the background. You can call the [GetVpcEndpointServiceAttribute](~~183542~~) operation to query the state of the endpoint service.
+ * *   If the endpoint service is in the **Creating** state, the endpoint service is being created.
+ * *   If the endpoint service is in the **Active** state, the endpoint service is created.
  *
  * @param request CreateVpcEndpointServiceRequest
  * @param runtime runtime options for this request RuntimeOptions
@@ -6564,7 +6447,9 @@ func (client *Client) CreateVpcEndpointServiceWithOptions(request *CreateVpcEndp
 }
 
 /**
- * The resource group ID.
+ * **CreateVpcEndpointService** is an asynchronous operation. After a request is sent, the system returns a request ID and runs the task in the background. You can call the [GetVpcEndpointServiceAttribute](~~183542~~) operation to query the state of the endpoint service.
+ * *   If the endpoint service is in the **Creating** state, the endpoint service is being created.
+ * *   If the endpoint service is in the **Active** state, the endpoint service is created.
  *
  * @param request CreateVpcEndpointServiceRequest
  * @return CreateVpcEndpointServiceResponse
@@ -6905,7 +6790,10 @@ func (client *Client) DetachResourceFromVpcEndpointService(request *DetachResour
 }
 
 /**
- * 671231
+ * *   **DetachSecurityGroupFromVpcEndpoint** is an asynchronous operation. After you send a request, the system returns a request ID and runs the task in the background. You can call the [ListVpcEndpoints](~~183558~~) to check whether the endpoint is disassociated from the security group.
+ *     *   If the endpoint is in the **Pending** state, the endpoint is being disassociated from the security group.
+ *     *   If you cannot query the endpoint in the security group, the endpoint is disassociated from the security group.
+ * *   You cannot repeatedly call the **DetachSecurityGroupFromVpcEndpoint** operation to disassociate an endpoint from a security group within a specified period of time.
  *
  * @param request DetachSecurityGroupFromVpcEndpointRequest
  * @param runtime runtime options for this request RuntimeOptions
@@ -6965,7 +6853,10 @@ func (client *Client) DetachSecurityGroupFromVpcEndpointWithOptions(request *Det
 }
 
 /**
- * 671231
+ * *   **DetachSecurityGroupFromVpcEndpoint** is an asynchronous operation. After you send a request, the system returns a request ID and runs the task in the background. You can call the [ListVpcEndpoints](~~183558~~) to check whether the endpoint is disassociated from the security group.
+ *     *   If the endpoint is in the **Pending** state, the endpoint is being disassociated from the security group.
+ *     *   If you cannot query the endpoint in the security group, the endpoint is disassociated from the security group.
+ * *   You cannot repeatedly call the **DetachSecurityGroupFromVpcEndpoint** operation to disassociate an endpoint from a security group within a specified period of time.
  *
  * @param request DetachSecurityGroupFromVpcEndpointRequest
  * @return DetachSecurityGroupFromVpcEndpointResponse
@@ -7065,9 +6956,7 @@ func (client *Client) DisableVpcEndpointConnection(request *DisableVpcEndpointCo
 }
 
 /**
- * Specifies whether to only precheck the request. Valid values:
- * *   **true**: only prechecks the API request without performing the operation. The system checks whether your AccessKey pair is valid, whether the Resource Access Management (RAM) user is authorized, and whether required parameters are set. If the request fails to pass the precheck, an error code is returned. If the request passes the check, the `DryRunOperation` error code is returned.
- * *   **false** (default): sends the request. If the request passes the precheck, a 2xx HTTP status code is returned and the operation is performed.
+ * > You can call this operation only when the state of the endpoint is **Connected** and the state of the zone that is associated with the endpoint is **Connected** or **Migrated**.
  *
  * @param request DisableVpcEndpointZoneConnectionRequest
  * @param runtime runtime options for this request RuntimeOptions
@@ -7135,9 +7024,7 @@ func (client *Client) DisableVpcEndpointZoneConnectionWithOptions(request *Disab
 }
 
 /**
- * Specifies whether to only precheck the request. Valid values:
- * *   **true**: only prechecks the API request without performing the operation. The system checks whether your AccessKey pair is valid, whether the Resource Access Management (RAM) user is authorized, and whether required parameters are set. If the request fails to pass the precheck, an error code is returned. If the request passes the check, the `DryRunOperation` error code is returned.
- * *   **false** (default): sends the request. If the request passes the precheck, a 2xx HTTP status code is returned and the operation is performed.
+ * > You can call this operation only when the state of the endpoint is **Connected** and the state of the zone that is associated with the endpoint is **Connected** or **Migrated**.
  *
  * @param request DisableVpcEndpointZoneConnectionRequest
  * @return DisableVpcEndpointZoneConnectionResponse
@@ -7439,10 +7326,6 @@ func (client *Client) ListVpcEndpointConnectionsWithOptions(request *ListVpcEndp
 		return _result, _err
 	}
 	query := map[string]interface{}{}
-	if !tea.BoolValue(util.IsUnset(request.ConnectionId)) {
-		query["ConnectionId"] = request.ConnectionId
-	}
-
 	if !tea.BoolValue(util.IsUnset(request.ConnectionStatus)) {
 		query["ConnectionStatus"] = request.ConnectionStatus
 	}
@@ -8037,75 +7920,6 @@ func (client *Client) ListVpcEndpoints(request *ListVpcEndpointsRequest) (_resul
 	return _result, _err
 }
 
-/**
- * The ID of the request.
- *
- * @param request NotifyResourceAddressFamilyRequest
- * @param runtime runtime options for this request RuntimeOptions
- * @return NotifyResourceAddressFamilyResponse
- */
-func (client *Client) NotifyResourceAddressFamilyWithOptions(request *NotifyResourceAddressFamilyRequest, runtime *util.RuntimeOptions) (_result *NotifyResourceAddressFamilyResponse, _err error) {
-	_err = util.ValidateModel(request)
-	if _err != nil {
-		return _result, _err
-	}
-	query := map[string]interface{}{}
-	if !tea.BoolValue(util.IsUnset(request.AddressFamily)) {
-		query["AddressFamily"] = request.AddressFamily
-	}
-
-	if !tea.BoolValue(util.IsUnset(request.Ipv6Address)) {
-		query["Ipv6Address"] = request.Ipv6Address
-	}
-
-	if !tea.BoolValue(util.IsUnset(request.ResourceId)) {
-		query["ResourceId"] = request.ResourceId
-	}
-
-	if !tea.BoolValue(util.IsUnset(request.ResourceType)) {
-		query["ResourceType"] = request.ResourceType
-	}
-
-	req := &openapi.OpenApiRequest{
-		Query: openapiutil.Query(query),
-	}
-	params := &openapi.Params{
-		Action:      tea.String("NotifyResourceAddressFamily"),
-		Version:     tea.String("2020-04-15"),
-		Protocol:    tea.String("HTTPS"),
-		Pathname:    tea.String("/"),
-		Method:      tea.String("POST"),
-		AuthType:    tea.String("AK"),
-		Style:       tea.String("RPC"),
-		ReqBodyType: tea.String("formData"),
-		BodyType:    tea.String("json"),
-	}
-	_result = &NotifyResourceAddressFamilyResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
-}
-
-/**
- * The ID of the request.
- *
- * @param request NotifyResourceAddressFamilyRequest
- * @return NotifyResourceAddressFamilyResponse
- */
-func (client *Client) NotifyResourceAddressFamily(request *NotifyResourceAddressFamilyRequest) (_result *NotifyResourceAddressFamilyResponse, _err error) {
-	runtime := &util.RuntimeOptions{}
-	_result = &NotifyResourceAddressFamilyResponse{}
-	_body, _err := client.NotifyResourceAddressFamilyWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
-	return _result, _err
-}
-
 func (client *Client) OpenPrivateLinkServiceWithOptions(request *OpenPrivateLinkServiceRequest, runtime *util.RuntimeOptions) (_result *OpenPrivateLinkServiceResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -8476,7 +8290,7 @@ func (client *Client) UpdateVpcEndpointAttribute(request *UpdateVpcEndpointAttri
 }
 
 /**
- * The ID of the endpoint service.
+ * You cannot repeatedly call the **UpdateVpcEndpointConnectionAttribute** operation to modify the bandwidth of an endpoint connection that belongs to an Alibaba Cloud account within a specified period of time.
  *
  * @param request UpdateVpcEndpointConnectionAttributeRequest
  * @param runtime runtime options for this request RuntimeOptions
@@ -8540,7 +8354,7 @@ func (client *Client) UpdateVpcEndpointConnectionAttributeWithOptions(request *U
 }
 
 /**
- * The ID of the endpoint service.
+ * You cannot repeatedly call the **UpdateVpcEndpointConnectionAttribute** operation to modify the bandwidth of an endpoint connection that belongs to an Alibaba Cloud account within a specified period of time.
  *
  * @param request UpdateVpcEndpointConnectionAttributeRequest
  * @return UpdateVpcEndpointConnectionAttributeResponse
@@ -8651,6 +8465,9 @@ func (client *Client) UpdateVpcEndpointServiceAttribute(request *UpdateVpcEndpoi
 
 /**
  * You cannot repeatedly call the **UpdateVpcEndpointServiceResourceAttribute** operation to modify the attributes of a service resource that is added to an endpoint service within a specified period of time.
+ * ### Limits
+ * *   By default, the feature of replacing a service resource with another service resource in the same zone is disabled. If you want to enable this feature, log on to the [Quota Center console](https://quotas.console.aliyun.com/products?spm=5176.12818093.ProductAndResource--ali--widget-product-recent.dre9.3be916d0NAkhTD), search for the quota ID `privatelink_whitelist/svc_res_mgt_uat`, and then click Apply in the Actions column to submit an application.
+ * *   All instances except for the Network Load Balancer (NLB) instances that serve as service resources of endpoint services can be replaced by other service resources in the same zone.
  *
  * @param request UpdateVpcEndpointServiceResourceAttributeRequest
  * @param runtime runtime options for this request RuntimeOptions
@@ -8719,6 +8536,9 @@ func (client *Client) UpdateVpcEndpointServiceResourceAttributeWithOptions(reque
 
 /**
  * You cannot repeatedly call the **UpdateVpcEndpointServiceResourceAttribute** operation to modify the attributes of a service resource that is added to an endpoint service within a specified period of time.
+ * ### Limits
+ * *   By default, the feature of replacing a service resource with another service resource in the same zone is disabled. If you want to enable this feature, log on to the [Quota Center console](https://quotas.console.aliyun.com/products?spm=5176.12818093.ProductAndResource--ali--widget-product-recent.dre9.3be916d0NAkhTD), search for the quota ID `privatelink_whitelist/svc_res_mgt_uat`, and then click Apply in the Actions column to submit an application.
+ * *   All instances except for the Network Load Balancer (NLB) instances that serve as service resources of endpoint services can be replaced by other service resources in the same zone.
  *
  * @param request UpdateVpcEndpointServiceResourceAttributeRequest
  * @return UpdateVpcEndpointServiceResourceAttributeResponse
