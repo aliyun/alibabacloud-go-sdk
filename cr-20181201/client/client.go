@@ -369,6 +369,99 @@ func (s *CreateArtifactBuildRuleResponse) SetBody(v *CreateArtifactBuildRuleResp
 	return s
 }
 
+type CreateBuildRecordByRecordRequest struct {
+	BuildRecordId *string `json:"BuildRecordId,omitempty" xml:"BuildRecordId,omitempty"`
+	InstanceId    *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	RepoId        *string `json:"RepoId,omitempty" xml:"RepoId,omitempty"`
+}
+
+func (s CreateBuildRecordByRecordRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateBuildRecordByRecordRequest) GoString() string {
+	return s.String()
+}
+
+func (s *CreateBuildRecordByRecordRequest) SetBuildRecordId(v string) *CreateBuildRecordByRecordRequest {
+	s.BuildRecordId = &v
+	return s
+}
+
+func (s *CreateBuildRecordByRecordRequest) SetInstanceId(v string) *CreateBuildRecordByRecordRequest {
+	s.InstanceId = &v
+	return s
+}
+
+func (s *CreateBuildRecordByRecordRequest) SetRepoId(v string) *CreateBuildRecordByRecordRequest {
+	s.RepoId = &v
+	return s
+}
+
+type CreateBuildRecordByRecordResponseBody struct {
+	BuildRecordId *string `json:"BuildRecordId,omitempty" xml:"BuildRecordId,omitempty"`
+	Code          *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	IsSuccess     *bool   `json:"IsSuccess,omitempty" xml:"IsSuccess,omitempty"`
+	RequestId     *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+}
+
+func (s CreateBuildRecordByRecordResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateBuildRecordByRecordResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *CreateBuildRecordByRecordResponseBody) SetBuildRecordId(v string) *CreateBuildRecordByRecordResponseBody {
+	s.BuildRecordId = &v
+	return s
+}
+
+func (s *CreateBuildRecordByRecordResponseBody) SetCode(v string) *CreateBuildRecordByRecordResponseBody {
+	s.Code = &v
+	return s
+}
+
+func (s *CreateBuildRecordByRecordResponseBody) SetIsSuccess(v bool) *CreateBuildRecordByRecordResponseBody {
+	s.IsSuccess = &v
+	return s
+}
+
+func (s *CreateBuildRecordByRecordResponseBody) SetRequestId(v string) *CreateBuildRecordByRecordResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+type CreateBuildRecordByRecordResponse struct {
+	Headers    map[string]*string                     `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                                 `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *CreateBuildRecordByRecordResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s CreateBuildRecordByRecordResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateBuildRecordByRecordResponse) GoString() string {
+	return s.String()
+}
+
+func (s *CreateBuildRecordByRecordResponse) SetHeaders(v map[string]*string) *CreateBuildRecordByRecordResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *CreateBuildRecordByRecordResponse) SetStatusCode(v int32) *CreateBuildRecordByRecordResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *CreateBuildRecordByRecordResponse) SetBody(v *CreateBuildRecordByRecordResponseBody) *CreateBuildRecordByRecordResponse {
+	s.Body = v
+	return s
+}
+
 type CreateBuildRecordByRuleRequest struct {
 	// The ID of the image building rule.
 	BuildRuleId *string `json:"BuildRuleId,omitempty" xml:"BuildRuleId,omitempty"`
@@ -3535,6 +3628,129 @@ func (s *DeleteRepositoryResponse) SetStatusCode(v int32) *DeleteRepositoryRespo
 }
 
 func (s *DeleteRepositoryResponse) SetBody(v *DeleteRepositoryResponseBody) *DeleteRepositoryResponse {
+	s.Body = v
+	return s
+}
+
+type GetArtifactBuildRuleRequest struct {
+	ArtifactType *string `json:"ArtifactType,omitempty" xml:"ArtifactType,omitempty"`
+	BuildRuleId  *string `json:"BuildRuleId,omitempty" xml:"BuildRuleId,omitempty"`
+	InstanceId   *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	ScopeId      *string `json:"ScopeId,omitempty" xml:"ScopeId,omitempty"`
+	ScopeType    *string `json:"ScopeType,omitempty" xml:"ScopeType,omitempty"`
+}
+
+func (s GetArtifactBuildRuleRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetArtifactBuildRuleRequest) GoString() string {
+	return s.String()
+}
+
+func (s *GetArtifactBuildRuleRequest) SetArtifactType(v string) *GetArtifactBuildRuleRequest {
+	s.ArtifactType = &v
+	return s
+}
+
+func (s *GetArtifactBuildRuleRequest) SetBuildRuleId(v string) *GetArtifactBuildRuleRequest {
+	s.BuildRuleId = &v
+	return s
+}
+
+func (s *GetArtifactBuildRuleRequest) SetInstanceId(v string) *GetArtifactBuildRuleRequest {
+	s.InstanceId = &v
+	return s
+}
+
+func (s *GetArtifactBuildRuleRequest) SetScopeId(v string) *GetArtifactBuildRuleRequest {
+	s.ScopeId = &v
+	return s
+}
+
+func (s *GetArtifactBuildRuleRequest) SetScopeType(v string) *GetArtifactBuildRuleRequest {
+	s.ScopeType = &v
+	return s
+}
+
+type GetArtifactBuildRuleResponseBody struct {
+	ArtifactType *string `json:"ArtifactType,omitempty" xml:"ArtifactType,omitempty"`
+	BuildRuleId  *string `json:"BuildRuleId,omitempty" xml:"BuildRuleId,omitempty"`
+	Code         *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	IsSuccess    *bool   `json:"IsSuccess,omitempty" xml:"IsSuccess,omitempty"`
+	RequestId    *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	ScopeId      *string `json:"ScopeId,omitempty" xml:"ScopeId,omitempty"`
+	ScopeType    *string `json:"ScopeType,omitempty" xml:"ScopeType,omitempty"`
+}
+
+func (s GetArtifactBuildRuleResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetArtifactBuildRuleResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *GetArtifactBuildRuleResponseBody) SetArtifactType(v string) *GetArtifactBuildRuleResponseBody {
+	s.ArtifactType = &v
+	return s
+}
+
+func (s *GetArtifactBuildRuleResponseBody) SetBuildRuleId(v string) *GetArtifactBuildRuleResponseBody {
+	s.BuildRuleId = &v
+	return s
+}
+
+func (s *GetArtifactBuildRuleResponseBody) SetCode(v string) *GetArtifactBuildRuleResponseBody {
+	s.Code = &v
+	return s
+}
+
+func (s *GetArtifactBuildRuleResponseBody) SetIsSuccess(v bool) *GetArtifactBuildRuleResponseBody {
+	s.IsSuccess = &v
+	return s
+}
+
+func (s *GetArtifactBuildRuleResponseBody) SetRequestId(v string) *GetArtifactBuildRuleResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *GetArtifactBuildRuleResponseBody) SetScopeId(v string) *GetArtifactBuildRuleResponseBody {
+	s.ScopeId = &v
+	return s
+}
+
+func (s *GetArtifactBuildRuleResponseBody) SetScopeType(v string) *GetArtifactBuildRuleResponseBody {
+	s.ScopeType = &v
+	return s
+}
+
+type GetArtifactBuildRuleResponse struct {
+	Headers    map[string]*string                `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                            `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *GetArtifactBuildRuleResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s GetArtifactBuildRuleResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetArtifactBuildRuleResponse) GoString() string {
+	return s.String()
+}
+
+func (s *GetArtifactBuildRuleResponse) SetHeaders(v map[string]*string) *GetArtifactBuildRuleResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *GetArtifactBuildRuleResponse) SetStatusCode(v int32) *GetArtifactBuildRuleResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *GetArtifactBuildRuleResponse) SetBody(v *GetArtifactBuildRuleResponseBody) *GetArtifactBuildRuleResponse {
 	s.Body = v
 	return s
 }
@@ -13172,6 +13388,58 @@ func (client *Client) CreateArtifactBuildRule(request *CreateArtifactBuildRuleRe
 	return _result, _err
 }
 
+func (client *Client) CreateBuildRecordByRecordWithOptions(request *CreateBuildRecordByRecordRequest, runtime *util.RuntimeOptions) (_result *CreateBuildRecordByRecordResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.BuildRecordId)) {
+		query["BuildRecordId"] = request.BuildRecordId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.InstanceId)) {
+		query["InstanceId"] = request.InstanceId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.RepoId)) {
+		query["RepoId"] = request.RepoId
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("CreateBuildRecordByRecord"),
+		Version:     tea.String("2018-12-01"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &CreateBuildRecordByRecordResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) CreateBuildRecordByRecord(request *CreateBuildRecordByRecordRequest) (_result *CreateBuildRecordByRecordResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &CreateBuildRecordByRecordResponse{}
+	_body, _err := client.CreateBuildRecordByRecordWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
 func (client *Client) CreateBuildRecordByRuleWithOptions(request *CreateBuildRecordByRuleRequest, runtime *util.RuntimeOptions) (_result *CreateBuildRecordByRuleResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -14929,6 +15197,46 @@ func (client *Client) DeleteRepository(request *DeleteRepositoryRequest) (_resul
 	runtime := &util.RuntimeOptions{}
 	_result = &DeleteRepositoryResponse{}
 	_body, _err := client.DeleteRepositoryWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) GetArtifactBuildRuleWithOptions(request *GetArtifactBuildRuleRequest, runtime *util.RuntimeOptions) (_result *GetArtifactBuildRuleResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := openapiutil.Query(util.ToMap(request))
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("GetArtifactBuildRule"),
+		Version:     tea.String("2018-12-01"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("GET"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &GetArtifactBuildRuleResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) GetArtifactBuildRule(request *GetArtifactBuildRuleRequest) (_result *GetArtifactBuildRuleResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &GetArtifactBuildRuleResponse{}
+	_body, _err := client.GetArtifactBuildRuleWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
