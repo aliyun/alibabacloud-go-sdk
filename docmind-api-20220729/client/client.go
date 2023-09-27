@@ -1380,6 +1380,7 @@ func (s *SubmitExportDeclarationSheetExtractJobResponse) SetBody(v *SubmitExport
 }
 
 type SubmitGeneralContractExtractJobRequest struct {
+	ContractModel     *string `json:"ContractModel,omitempty" xml:"ContractModel,omitempty"`
 	FileName          *string `json:"FileName,omitempty" xml:"FileName,omitempty"`
 	FileNameExtension *string `json:"FileNameExtension,omitempty" xml:"FileNameExtension,omitempty"`
 	FileUrl           *string `json:"FileUrl,omitempty" xml:"FileUrl,omitempty"`
@@ -1391,6 +1392,11 @@ func (s SubmitGeneralContractExtractJobRequest) String() string {
 
 func (s SubmitGeneralContractExtractJobRequest) GoString() string {
 	return s.String()
+}
+
+func (s *SubmitGeneralContractExtractJobRequest) SetContractModel(v string) *SubmitGeneralContractExtractJobRequest {
+	s.ContractModel = &v
+	return s
 }
 
 func (s *SubmitGeneralContractExtractJobRequest) SetFileName(v string) *SubmitGeneralContractExtractJobRequest {
@@ -1409,6 +1415,7 @@ func (s *SubmitGeneralContractExtractJobRequest) SetFileUrl(v string) *SubmitGen
 }
 
 type SubmitGeneralContractExtractJobAdvanceRequest struct {
+	ContractModel     *string   `json:"ContractModel,omitempty" xml:"ContractModel,omitempty"`
 	FileName          *string   `json:"FileName,omitempty" xml:"FileName,omitempty"`
 	FileNameExtension *string   `json:"FileNameExtension,omitempty" xml:"FileNameExtension,omitempty"`
 	FileUrlObject     io.Reader `json:"FileUrl,omitempty" xml:"FileUrl,omitempty"`
@@ -1420,6 +1427,11 @@ func (s SubmitGeneralContractExtractJobAdvanceRequest) String() string {
 
 func (s SubmitGeneralContractExtractJobAdvanceRequest) GoString() string {
 	return s.String()
+}
+
+func (s *SubmitGeneralContractExtractJobAdvanceRequest) SetContractModel(v string) *SubmitGeneralContractExtractJobAdvanceRequest {
+	s.ContractModel = &v
+	return s
 }
 
 func (s *SubmitGeneralContractExtractJobAdvanceRequest) SetFileName(v string) *SubmitGeneralContractExtractJobAdvanceRequest {
@@ -3834,6 +3846,10 @@ func (client *Client) SubmitGeneralContractExtractJobWithOptions(request *Submit
 		return _result, _err
 	}
 	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.ContractModel)) {
+		query["ContractModel"] = request.ContractModel
+	}
+
 	if !tea.BoolValue(util.IsUnset(request.FileName)) {
 		query["FileName"] = request.FileName
 	}
