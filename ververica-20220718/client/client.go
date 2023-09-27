@@ -204,18 +204,24 @@ func (s *BriefResourceSetting) SetStreamingResourceSetting(v *StreamingResourceS
 }
 
 type Deployment struct {
-	Artifact             *Artifact              `json:"artifact,omitempty" xml:"artifact,omitempty"`
-	DeploymentHasChanged *bool                  `json:"deploymentHasChanged,omitempty" xml:"deploymentHasChanged,omitempty"`
-	DeploymentId         *string                `json:"deploymentId,omitempty" xml:"deploymentId,omitempty"`
-	DeploymentTarget     *BriefDeploymentTarget `json:"deploymentTarget,omitempty" xml:"deploymentTarget,omitempty"`
-	Description          *string                `json:"description,omitempty" xml:"description,omitempty"`
-	EngineVersion        *string                `json:"engineVersion,omitempty" xml:"engineVersion,omitempty"`
-	ExecutionMode        *string                `json:"executionMode,omitempty" xml:"executionMode,omitempty"`
-	FlinkConf            map[string]interface{} `json:"flinkConf,omitempty" xml:"flinkConf,omitempty"`
-	JobSummary           *JobSummary            `json:"jobSummary,omitempty" xml:"jobSummary,omitempty"`
-	Logging              *Logging               `json:"logging,omitempty" xml:"logging,omitempty"`
-	Name                 *string                `json:"name,omitempty" xml:"name,omitempty"`
-	Namespace            *string                `json:"namespace,omitempty" xml:"namespace,omitempty"`
+	Artifact                 *Artifact                 `json:"artifact,omitempty" xml:"artifact,omitempty"`
+	BatchResourceSetting     *BatchResourceSetting     `json:"batchResourceSetting,omitempty" xml:"batchResourceSetting,omitempty"`
+	Creator                  *string                   `json:"creator,omitempty" xml:"creator,omitempty"`
+	CreatorName              *string                   `json:"creatorName,omitempty" xml:"creatorName,omitempty"`
+	DeploymentHasChanged     *bool                     `json:"deploymentHasChanged,omitempty" xml:"deploymentHasChanged,omitempty"`
+	DeploymentId             *string                   `json:"deploymentId,omitempty" xml:"deploymentId,omitempty"`
+	DeploymentTarget         *BriefDeploymentTarget    `json:"deploymentTarget,omitempty" xml:"deploymentTarget,omitempty"`
+	Description              *string                   `json:"description,omitempty" xml:"description,omitempty"`
+	EngineVersion            *string                   `json:"engineVersion,omitempty" xml:"engineVersion,omitempty"`
+	ExecutionMode            *string                   `json:"executionMode,omitempty" xml:"executionMode,omitempty"`
+	FlinkConf                map[string]interface{}    `json:"flinkConf,omitempty" xml:"flinkConf,omitempty"`
+	JobSummary               *JobSummary               `json:"jobSummary,omitempty" xml:"jobSummary,omitempty"`
+	Logging                  *Logging                  `json:"logging,omitempty" xml:"logging,omitempty"`
+	Modifier                 *string                   `json:"modifier,omitempty" xml:"modifier,omitempty"`
+	ModifierName             *string                   `json:"modifierName,omitempty" xml:"modifierName,omitempty"`
+	Name                     *string                   `json:"name,omitempty" xml:"name,omitempty"`
+	Namespace                *string                   `json:"namespace,omitempty" xml:"namespace,omitempty"`
+	StreamingResourceSetting *StreamingResourceSetting `json:"streamingResourceSetting,omitempty" xml:"streamingResourceSetting,omitempty"`
 }
 
 func (s Deployment) String() string {
@@ -228,6 +234,21 @@ func (s Deployment) GoString() string {
 
 func (s *Deployment) SetArtifact(v *Artifact) *Deployment {
 	s.Artifact = v
+	return s
+}
+
+func (s *Deployment) SetBatchResourceSetting(v *BatchResourceSetting) *Deployment {
+	s.BatchResourceSetting = v
+	return s
+}
+
+func (s *Deployment) SetCreator(v string) *Deployment {
+	s.Creator = &v
+	return s
+}
+
+func (s *Deployment) SetCreatorName(v string) *Deployment {
+	s.CreatorName = &v
 	return s
 }
 
@@ -276,6 +297,16 @@ func (s *Deployment) SetLogging(v *Logging) *Deployment {
 	return s
 }
 
+func (s *Deployment) SetModifier(v string) *Deployment {
+	s.Modifier = &v
+	return s
+}
+
+func (s *Deployment) SetModifierName(v string) *Deployment {
+	s.ModifierName = &v
+	return s
+}
+
 func (s *Deployment) SetName(v string) *Deployment {
 	s.Name = &v
 	return s
@@ -283,6 +314,11 @@ func (s *Deployment) SetName(v string) *Deployment {
 
 func (s *Deployment) SetNamespace(v string) *Deployment {
 	s.Namespace = &v
+	return s
+}
+
+func (s *Deployment) SetStreamingResourceSetting(v *StreamingResourceSetting) *Deployment {
+	s.StreamingResourceSetting = v
 	return s
 }
 
@@ -480,6 +516,8 @@ func (s *JarArtifact) SetMainArgs(v string) *JarArtifact {
 type Job struct {
 	Artifact                 *Artifact                  `json:"artifact,omitempty" xml:"artifact,omitempty"`
 	BatchResourceSetting     *BatchResourceSetting      `json:"batchResourceSetting,omitempty" xml:"batchResourceSetting,omitempty"`
+	Creator                  *string                    `json:"creator,omitempty" xml:"creator,omitempty"`
+	CreatorName              *string                    `json:"creatorName,omitempty" xml:"creatorName,omitempty"`
 	DeploymentId             *string                    `json:"deploymentId,omitempty" xml:"deploymentId,omitempty"`
 	DeploymentName           *string                    `json:"deploymentName,omitempty" xml:"deploymentName,omitempty"`
 	EndTime                  *int64                     `json:"endTime,omitempty" xml:"endTime,omitempty"`
@@ -489,12 +527,15 @@ type Job struct {
 	JobId                    *string                    `json:"jobId,omitempty" xml:"jobId,omitempty"`
 	Logging                  *Logging                   `json:"logging,omitempty" xml:"logging,omitempty"`
 	Metric                   *JobMetric                 `json:"metric,omitempty" xml:"metric,omitempty"`
+	Modifier                 *string                    `json:"modifier,omitempty" xml:"modifier,omitempty"`
+	ModifierName             *string                    `json:"modifierName,omitempty" xml:"modifierName,omitempty"`
 	Namespace                *string                    `json:"namespace,omitempty" xml:"namespace,omitempty"`
 	RestoreStrategy          *DeploymentRestoreStrategy `json:"restoreStrategy,omitempty" xml:"restoreStrategy,omitempty"`
 	SessionClusterName       *string                    `json:"sessionClusterName,omitempty" xml:"sessionClusterName,omitempty"`
 	StartTime                *int64                     `json:"startTime,omitempty" xml:"startTime,omitempty"`
 	Status                   *JobStatus                 `json:"status,omitempty" xml:"status,omitempty"`
 	StreamingResourceSetting *StreamingResourceSetting  `json:"streamingResourceSetting,omitempty" xml:"streamingResourceSetting,omitempty"`
+	UserFlinkConf            map[string]interface{}     `json:"userFlinkConf,omitempty" xml:"userFlinkConf,omitempty"`
 }
 
 func (s Job) String() string {
@@ -512,6 +553,16 @@ func (s *Job) SetArtifact(v *Artifact) *Job {
 
 func (s *Job) SetBatchResourceSetting(v *BatchResourceSetting) *Job {
 	s.BatchResourceSetting = v
+	return s
+}
+
+func (s *Job) SetCreator(v string) *Job {
+	s.Creator = &v
+	return s
+}
+
+func (s *Job) SetCreatorName(v string) *Job {
+	s.CreatorName = &v
 	return s
 }
 
@@ -560,6 +611,16 @@ func (s *Job) SetMetric(v *JobMetric) *Job {
 	return s
 }
 
+func (s *Job) SetModifier(v string) *Job {
+	s.Modifier = &v
+	return s
+}
+
+func (s *Job) SetModifierName(v string) *Job {
+	s.ModifierName = &v
+	return s
+}
+
 func (s *Job) SetNamespace(v string) *Job {
 	s.Namespace = &v
 	return s
@@ -587,6 +648,11 @@ func (s *Job) SetStatus(v *JobStatus) *Job {
 
 func (s *Job) SetStreamingResourceSetting(v *StreamingResourceSetting) *Job {
 	s.StreamingResourceSetting = v
+	return s
+}
+
+func (s *Job) SetUserFlinkConf(v map[string]interface{}) *Job {
+	s.UserFlinkConf = v
 	return s
 }
 
@@ -639,6 +705,29 @@ func (s *JobMetric) SetTotalCpu(v float64) *JobMetric {
 
 func (s *JobMetric) SetTotalMemoryByte(v int64) *JobMetric {
 	s.TotalMemoryByte = &v
+	return s
+}
+
+type JobStartParameters struct {
+	DeploymentId    *string                    `json:"deploymentId,omitempty" xml:"deploymentId,omitempty"`
+	RestoreStrategy *DeploymentRestoreStrategy `json:"restoreStrategy,omitempty" xml:"restoreStrategy,omitempty"`
+}
+
+func (s JobStartParameters) String() string {
+	return tea.Prettify(s)
+}
+
+func (s JobStartParameters) GoString() string {
+	return s.String()
+}
+
+func (s *JobStartParameters) SetDeploymentId(v string) *JobStartParameters {
+	s.DeploymentId = &v
+	return s
+}
+
+func (s *JobStartParameters) SetRestoreStrategy(v *DeploymentRestoreStrategy) *JobStartParameters {
+	s.RestoreStrategy = v
 	return s
 }
 
@@ -2696,8 +2785,10 @@ func (s *ListDeploymentsHeaders) SetWorkspace(v string) *ListDeploymentsHeaders 
 }
 
 type ListDeploymentsRequest struct {
-	PageIndex *int32 `json:"pageIndex,omitempty" xml:"pageIndex,omitempty"`
-	PageSize  *int32 `json:"pageSize,omitempty" xml:"pageSize,omitempty"`
+	ExecutionMode *string `json:"executionMode,omitempty" xml:"executionMode,omitempty"`
+	Name          *string `json:"name,omitempty" xml:"name,omitempty"`
+	PageIndex     *int32  `json:"pageIndex,omitempty" xml:"pageIndex,omitempty"`
+	PageSize      *int32  `json:"pageSize,omitempty" xml:"pageSize,omitempty"`
 }
 
 func (s ListDeploymentsRequest) String() string {
@@ -2706,6 +2797,16 @@ func (s ListDeploymentsRequest) String() string {
 
 func (s ListDeploymentsRequest) GoString() string {
 	return s.String()
+}
+
+func (s *ListDeploymentsRequest) SetExecutionMode(v string) *ListDeploymentsRequest {
+	s.ExecutionMode = &v
+	return s
+}
+
+func (s *ListDeploymentsRequest) SetName(v string) *ListDeploymentsRequest {
+	s.Name = &v
+	return s
 }
 
 func (s *ListDeploymentsRequest) SetPageIndex(v int32) *ListDeploymentsRequest {
@@ -3465,6 +3566,122 @@ func (s *StartJobResponse) SetBody(v *StartJobResponseBody) *StartJobResponse {
 	return s
 }
 
+type StartJobWithParamsHeaders struct {
+	CommonHeaders map[string]*string `json:"commonHeaders,omitempty" xml:"commonHeaders,omitempty"`
+	Workspace     *string            `json:"workspace,omitempty" xml:"workspace,omitempty"`
+}
+
+func (s StartJobWithParamsHeaders) String() string {
+	return tea.Prettify(s)
+}
+
+func (s StartJobWithParamsHeaders) GoString() string {
+	return s.String()
+}
+
+func (s *StartJobWithParamsHeaders) SetCommonHeaders(v map[string]*string) *StartJobWithParamsHeaders {
+	s.CommonHeaders = v
+	return s
+}
+
+func (s *StartJobWithParamsHeaders) SetWorkspace(v string) *StartJobWithParamsHeaders {
+	s.Workspace = &v
+	return s
+}
+
+type StartJobWithParamsRequest struct {
+	Body *JobStartParameters `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s StartJobWithParamsRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s StartJobWithParamsRequest) GoString() string {
+	return s.String()
+}
+
+func (s *StartJobWithParamsRequest) SetBody(v *JobStartParameters) *StartJobWithParamsRequest {
+	s.Body = v
+	return s
+}
+
+type StartJobWithParamsResponseBody struct {
+	Data         *Job    `json:"data,omitempty" xml:"data,omitempty"`
+	ErrorCode    *string `json:"errorCode,omitempty" xml:"errorCode,omitempty"`
+	ErrorMessage *string `json:"errorMessage,omitempty" xml:"errorMessage,omitempty"`
+	HttpCode     *int32  `json:"httpCode,omitempty" xml:"httpCode,omitempty"`
+	RequestId    *string `json:"requestId,omitempty" xml:"requestId,omitempty"`
+	Success      *bool   `json:"success,omitempty" xml:"success,omitempty"`
+}
+
+func (s StartJobWithParamsResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s StartJobWithParamsResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *StartJobWithParamsResponseBody) SetData(v *Job) *StartJobWithParamsResponseBody {
+	s.Data = v
+	return s
+}
+
+func (s *StartJobWithParamsResponseBody) SetErrorCode(v string) *StartJobWithParamsResponseBody {
+	s.ErrorCode = &v
+	return s
+}
+
+func (s *StartJobWithParamsResponseBody) SetErrorMessage(v string) *StartJobWithParamsResponseBody {
+	s.ErrorMessage = &v
+	return s
+}
+
+func (s *StartJobWithParamsResponseBody) SetHttpCode(v int32) *StartJobWithParamsResponseBody {
+	s.HttpCode = &v
+	return s
+}
+
+func (s *StartJobWithParamsResponseBody) SetRequestId(v string) *StartJobWithParamsResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *StartJobWithParamsResponseBody) SetSuccess(v bool) *StartJobWithParamsResponseBody {
+	s.Success = &v
+	return s
+}
+
+type StartJobWithParamsResponse struct {
+	Headers    map[string]*string              `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                          `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *StartJobWithParamsResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s StartJobWithParamsResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s StartJobWithParamsResponse) GoString() string {
+	return s.String()
+}
+
+func (s *StartJobWithParamsResponse) SetHeaders(v map[string]*string) *StartJobWithParamsResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *StartJobWithParamsResponse) SetStatusCode(v int32) *StartJobWithParamsResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *StartJobWithParamsResponse) SetBody(v *StartJobWithParamsResponseBody) *StartJobWithParamsResponse {
+	s.Body = v
+	return s
+}
+
 type StopJobHeaders struct {
 	CommonHeaders map[string]*string `json:"commonHeaders,omitempty" xml:"commonHeaders,omitempty"`
 	Workspace     *string            `json:"workspace,omitempty" xml:"workspace,omitempty"`
@@ -3744,18 +3961,6 @@ func (client *Client) GetEndpoint(productId *string, regionId *string, endpointR
 	return _result, _err
 }
 
-func (client *Client) CreateDeployment(namespace *string, request *CreateDeploymentRequest) (_result *CreateDeploymentResponse, _err error) {
-	runtime := &util.RuntimeOptions{}
-	headers := &CreateDeploymentHeaders{}
-	_result = &CreateDeploymentResponse{}
-	_body, _err := client.CreateDeploymentWithOptions(namespace, request, headers, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
-	return _result, _err
-}
-
 func (client *Client) CreateDeploymentWithOptions(namespace *string, request *CreateDeploymentRequest, headers *CreateDeploymentHeaders, runtime *util.RuntimeOptions) (_result *CreateDeploymentResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -3794,11 +3999,11 @@ func (client *Client) CreateDeploymentWithOptions(namespace *string, request *Cr
 	return _result, _err
 }
 
-func (client *Client) CreateSavepoint(namespace *string, request *CreateSavepointRequest) (_result *CreateSavepointResponse, _err error) {
+func (client *Client) CreateDeployment(namespace *string, request *CreateDeploymentRequest) (_result *CreateDeploymentResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
-	headers := &CreateSavepointHeaders{}
-	_result = &CreateSavepointResponse{}
-	_body, _err := client.CreateSavepointWithOptions(namespace, request, headers, runtime)
+	headers := &CreateDeploymentHeaders{}
+	_result = &CreateDeploymentResponse{}
+	_body, _err := client.CreateDeploymentWithOptions(namespace, request, headers, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -3857,11 +4062,11 @@ func (client *Client) CreateSavepointWithOptions(namespace *string, request *Cre
 	return _result, _err
 }
 
-func (client *Client) CreateVariable(namespace *string, request *CreateVariableRequest) (_result *CreateVariableResponse, _err error) {
+func (client *Client) CreateSavepoint(namespace *string, request *CreateSavepointRequest) (_result *CreateSavepointResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
-	headers := &CreateVariableHeaders{}
-	_result = &CreateVariableResponse{}
-	_body, _err := client.CreateVariableWithOptions(namespace, request, headers, runtime)
+	headers := &CreateSavepointHeaders{}
+	_result = &CreateSavepointResponse{}
+	_body, _err := client.CreateSavepointWithOptions(namespace, request, headers, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -3907,11 +4112,11 @@ func (client *Client) CreateVariableWithOptions(namespace *string, request *Crea
 	return _result, _err
 }
 
-func (client *Client) DeleteDeployment(namespace *string, deploymentId *string) (_result *DeleteDeploymentResponse, _err error) {
+func (client *Client) CreateVariable(namespace *string, request *CreateVariableRequest) (_result *CreateVariableResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
-	headers := &DeleteDeploymentHeaders{}
-	_result = &DeleteDeploymentResponse{}
-	_body, _err := client.DeleteDeploymentWithOptions(namespace, deploymentId, headers, runtime)
+	headers := &CreateVariableHeaders{}
+	_result = &CreateVariableResponse{}
+	_body, _err := client.CreateVariableWithOptions(namespace, request, headers, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -3952,11 +4157,11 @@ func (client *Client) DeleteDeploymentWithOptions(namespace *string, deploymentI
 	return _result, _err
 }
 
-func (client *Client) DeleteJob(namespace *string, jobId *string) (_result *DeleteJobResponse, _err error) {
+func (client *Client) DeleteDeployment(namespace *string, deploymentId *string) (_result *DeleteDeploymentResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
-	headers := &DeleteJobHeaders{}
-	_result = &DeleteJobResponse{}
-	_body, _err := client.DeleteJobWithOptions(namespace, jobId, headers, runtime)
+	headers := &DeleteDeploymentHeaders{}
+	_result = &DeleteDeploymentResponse{}
+	_body, _err := client.DeleteDeploymentWithOptions(namespace, deploymentId, headers, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -3997,11 +4202,11 @@ func (client *Client) DeleteJobWithOptions(namespace *string, jobId *string, hea
 	return _result, _err
 }
 
-func (client *Client) DeleteSavepoint(namespace *string, savepointId *string) (_result *DeleteSavepointResponse, _err error) {
+func (client *Client) DeleteJob(namespace *string, jobId *string) (_result *DeleteJobResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
-	headers := &DeleteSavepointHeaders{}
-	_result = &DeleteSavepointResponse{}
-	_body, _err := client.DeleteSavepointWithOptions(namespace, savepointId, headers, runtime)
+	headers := &DeleteJobHeaders{}
+	_result = &DeleteJobResponse{}
+	_body, _err := client.DeleteJobWithOptions(namespace, jobId, headers, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -4042,11 +4247,11 @@ func (client *Client) DeleteSavepointWithOptions(namespace *string, savepointId 
 	return _result, _err
 }
 
-func (client *Client) DeleteVariable(namespace *string, name *string) (_result *DeleteVariableResponse, _err error) {
+func (client *Client) DeleteSavepoint(namespace *string, savepointId *string) (_result *DeleteSavepointResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
-	headers := &DeleteVariableHeaders{}
-	_result = &DeleteVariableResponse{}
-	_body, _err := client.DeleteVariableWithOptions(namespace, name, headers, runtime)
+	headers := &DeleteSavepointHeaders{}
+	_result = &DeleteSavepointResponse{}
+	_body, _err := client.DeleteSavepointWithOptions(namespace, savepointId, headers, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -4087,11 +4292,11 @@ func (client *Client) DeleteVariableWithOptions(namespace *string, name *string,
 	return _result, _err
 }
 
-func (client *Client) FlinkApiProxy(request *FlinkApiProxyRequest) (_result *FlinkApiProxyResponse, _err error) {
+func (client *Client) DeleteVariable(namespace *string, name *string) (_result *DeleteVariableResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
-	headers := &FlinkApiProxyHeaders{}
-	_result = &FlinkApiProxyResponse{}
-	_body, _err := client.FlinkApiProxyWithOptions(request, headers, runtime)
+	headers := &DeleteVariableHeaders{}
+	_result = &DeleteVariableResponse{}
+	_body, _err := client.DeleteVariableWithOptions(namespace, name, headers, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -4154,11 +4359,11 @@ func (client *Client) FlinkApiProxyWithOptions(request *FlinkApiProxyRequest, he
 	return _result, _err
 }
 
-func (client *Client) GenerateResourcePlanWithFlinkConfAsync(namespace *string, deploymentId *string, request *GenerateResourcePlanWithFlinkConfAsyncRequest) (_result *GenerateResourcePlanWithFlinkConfAsyncResponse, _err error) {
+func (client *Client) FlinkApiProxy(request *FlinkApiProxyRequest) (_result *FlinkApiProxyResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
-	headers := &GenerateResourcePlanWithFlinkConfAsyncHeaders{}
-	_result = &GenerateResourcePlanWithFlinkConfAsyncResponse{}
-	_body, _err := client.GenerateResourcePlanWithFlinkConfAsyncWithOptions(namespace, deploymentId, request, headers, runtime)
+	headers := &FlinkApiProxyHeaders{}
+	_result = &FlinkApiProxyResponse{}
+	_body, _err := client.FlinkApiProxyWithOptions(request, headers, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -4204,11 +4409,11 @@ func (client *Client) GenerateResourcePlanWithFlinkConfAsyncWithOptions(namespac
 	return _result, _err
 }
 
-func (client *Client) GetDeployment(namespace *string, deploymentId *string) (_result *GetDeploymentResponse, _err error) {
+func (client *Client) GenerateResourcePlanWithFlinkConfAsync(namespace *string, deploymentId *string, request *GenerateResourcePlanWithFlinkConfAsyncRequest) (_result *GenerateResourcePlanWithFlinkConfAsyncResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
-	headers := &GetDeploymentHeaders{}
-	_result = &GetDeploymentResponse{}
-	_body, _err := client.GetDeploymentWithOptions(namespace, deploymentId, headers, runtime)
+	headers := &GenerateResourcePlanWithFlinkConfAsyncHeaders{}
+	_result = &GenerateResourcePlanWithFlinkConfAsyncResponse{}
+	_body, _err := client.GenerateResourcePlanWithFlinkConfAsyncWithOptions(namespace, deploymentId, request, headers, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -4249,11 +4454,11 @@ func (client *Client) GetDeploymentWithOptions(namespace *string, deploymentId *
 	return _result, _err
 }
 
-func (client *Client) GetGenerateResourcePlanResult(namespace *string, ticketId *string) (_result *GetGenerateResourcePlanResultResponse, _err error) {
+func (client *Client) GetDeployment(namespace *string, deploymentId *string) (_result *GetDeploymentResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
-	headers := &GetGenerateResourcePlanResultHeaders{}
-	_result = &GetGenerateResourcePlanResultResponse{}
-	_body, _err := client.GetGenerateResourcePlanResultWithOptions(namespace, ticketId, headers, runtime)
+	headers := &GetDeploymentHeaders{}
+	_result = &GetDeploymentResponse{}
+	_body, _err := client.GetDeploymentWithOptions(namespace, deploymentId, headers, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -4294,11 +4499,11 @@ func (client *Client) GetGenerateResourcePlanResultWithOptions(namespace *string
 	return _result, _err
 }
 
-func (client *Client) GetJob(namespace *string, jobId *string) (_result *GetJobResponse, _err error) {
+func (client *Client) GetGenerateResourcePlanResult(namespace *string, ticketId *string) (_result *GetGenerateResourcePlanResultResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
-	headers := &GetJobHeaders{}
-	_result = &GetJobResponse{}
-	_body, _err := client.GetJobWithOptions(namespace, jobId, headers, runtime)
+	headers := &GetGenerateResourcePlanResultHeaders{}
+	_result = &GetGenerateResourcePlanResultResponse{}
+	_body, _err := client.GetGenerateResourcePlanResultWithOptions(namespace, ticketId, headers, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -4339,11 +4544,11 @@ func (client *Client) GetJobWithOptions(namespace *string, jobId *string, header
 	return _result, _err
 }
 
-func (client *Client) GetSavepoint(namespace *string, savepointId *string) (_result *GetSavepointResponse, _err error) {
+func (client *Client) GetJob(namespace *string, jobId *string) (_result *GetJobResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
-	headers := &GetSavepointHeaders{}
-	_result = &GetSavepointResponse{}
-	_body, _err := client.GetSavepointWithOptions(namespace, savepointId, headers, runtime)
+	headers := &GetJobHeaders{}
+	_result = &GetJobResponse{}
+	_body, _err := client.GetJobWithOptions(namespace, jobId, headers, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -4384,11 +4589,11 @@ func (client *Client) GetSavepointWithOptions(namespace *string, savepointId *st
 	return _result, _err
 }
 
-func (client *Client) ListDeploymentTargets(namespace *string, request *ListDeploymentTargetsRequest) (_result *ListDeploymentTargetsResponse, _err error) {
+func (client *Client) GetSavepoint(namespace *string, savepointId *string) (_result *GetSavepointResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
-	headers := &ListDeploymentTargetsHeaders{}
-	_result = &ListDeploymentTargetsResponse{}
-	_body, _err := client.ListDeploymentTargetsWithOptions(namespace, request, headers, runtime)
+	headers := &GetSavepointHeaders{}
+	_result = &GetSavepointResponse{}
+	_body, _err := client.GetSavepointWithOptions(namespace, savepointId, headers, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -4443,11 +4648,11 @@ func (client *Client) ListDeploymentTargetsWithOptions(namespace *string, reques
 	return _result, _err
 }
 
-func (client *Client) ListDeployments(namespace *string, request *ListDeploymentsRequest) (_result *ListDeploymentsResponse, _err error) {
+func (client *Client) ListDeploymentTargets(namespace *string, request *ListDeploymentTargetsRequest) (_result *ListDeploymentTargetsResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
-	headers := &ListDeploymentsHeaders{}
-	_result = &ListDeploymentsResponse{}
-	_body, _err := client.ListDeploymentsWithOptions(namespace, request, headers, runtime)
+	headers := &ListDeploymentTargetsHeaders{}
+	_result = &ListDeploymentTargetsResponse{}
+	_body, _err := client.ListDeploymentTargetsWithOptions(namespace, request, headers, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -4461,6 +4666,14 @@ func (client *Client) ListDeploymentsWithOptions(namespace *string, request *Lis
 		return _result, _err
 	}
 	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.ExecutionMode)) {
+		query["executionMode"] = request.ExecutionMode
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Name)) {
+		query["name"] = request.Name
+	}
+
 	if !tea.BoolValue(util.IsUnset(request.PageIndex)) {
 		query["pageIndex"] = request.PageIndex
 	}
@@ -4502,11 +4715,11 @@ func (client *Client) ListDeploymentsWithOptions(namespace *string, request *Lis
 	return _result, _err
 }
 
-func (client *Client) ListEngineVersionMetadata() (_result *ListEngineVersionMetadataResponse, _err error) {
+func (client *Client) ListDeployments(namespace *string, request *ListDeploymentsRequest) (_result *ListDeploymentsResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
-	headers := &ListEngineVersionMetadataHeaders{}
-	_result = &ListEngineVersionMetadataResponse{}
-	_body, _err := client.ListEngineVersionMetadataWithOptions(headers, runtime)
+	headers := &ListDeploymentsHeaders{}
+	_result = &ListDeploymentsResponse{}
+	_body, _err := client.ListDeploymentsWithOptions(namespace, request, headers, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -4547,11 +4760,11 @@ func (client *Client) ListEngineVersionMetadataWithOptions(headers *ListEngineVe
 	return _result, _err
 }
 
-func (client *Client) ListJobs(namespace *string, request *ListJobsRequest) (_result *ListJobsResponse, _err error) {
+func (client *Client) ListEngineVersionMetadata() (_result *ListEngineVersionMetadataResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
-	headers := &ListJobsHeaders{}
-	_result = &ListJobsResponse{}
-	_body, _err := client.ListJobsWithOptions(namespace, request, headers, runtime)
+	headers := &ListEngineVersionMetadataHeaders{}
+	_result = &ListEngineVersionMetadataResponse{}
+	_body, _err := client.ListEngineVersionMetadataWithOptions(headers, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -4610,11 +4823,11 @@ func (client *Client) ListJobsWithOptions(namespace *string, request *ListJobsRe
 	return _result, _err
 }
 
-func (client *Client) ListSavepoints(namespace *string, request *ListSavepointsRequest) (_result *ListSavepointsResponse, _err error) {
+func (client *Client) ListJobs(namespace *string, request *ListJobsRequest) (_result *ListJobsResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
-	headers := &ListSavepointsHeaders{}
-	_result = &ListSavepointsResponse{}
-	_body, _err := client.ListSavepointsWithOptions(namespace, request, headers, runtime)
+	headers := &ListJobsHeaders{}
+	_result = &ListJobsResponse{}
+	_body, _err := client.ListJobsWithOptions(namespace, request, headers, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -4677,11 +4890,11 @@ func (client *Client) ListSavepointsWithOptions(namespace *string, request *List
 	return _result, _err
 }
 
-func (client *Client) ListVariables(namespace *string, request *ListVariablesRequest) (_result *ListVariablesResponse, _err error) {
+func (client *Client) ListSavepoints(namespace *string, request *ListSavepointsRequest) (_result *ListSavepointsResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
-	headers := &ListVariablesHeaders{}
-	_result = &ListVariablesResponse{}
-	_body, _err := client.ListVariablesWithOptions(namespace, request, headers, runtime)
+	headers := &ListSavepointsHeaders{}
+	_result = &ListSavepointsResponse{}
+	_body, _err := client.ListSavepointsWithOptions(namespace, request, headers, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -4736,11 +4949,11 @@ func (client *Client) ListVariablesWithOptions(namespace *string, request *ListV
 	return _result, _err
 }
 
-func (client *Client) StartJob(namespace *string, request *StartJobRequest) (_result *StartJobResponse, _err error) {
+func (client *Client) ListVariables(namespace *string, request *ListVariablesRequest) (_result *ListVariablesResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
-	headers := &StartJobHeaders{}
-	_result = &StartJobResponse{}
-	_body, _err := client.StartJobWithOptions(namespace, request, headers, runtime)
+	headers := &ListVariablesHeaders{}
+	_result = &ListVariablesResponse{}
+	_body, _err := client.ListVariablesWithOptions(namespace, request, headers, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -4748,6 +4961,15 @@ func (client *Client) StartJob(namespace *string, request *StartJobRequest) (_re
 	return _result, _err
 }
 
+/**
+ * @deprecated
+ *
+ * @param request StartJobRequest
+ * @param headers StartJobHeaders
+ * @param runtime runtime options for this request RuntimeOptions
+ * @return StartJobResponse
+ */
+// Deprecated
 func (client *Client) StartJobWithOptions(namespace *string, request *StartJobRequest, headers *StartJobHeaders, runtime *util.RuntimeOptions) (_result *StartJobResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -4786,11 +5008,68 @@ func (client *Client) StartJobWithOptions(namespace *string, request *StartJobRe
 	return _result, _err
 }
 
-func (client *Client) StopJob(namespace *string, jobId *string, request *StopJobRequest) (_result *StopJobResponse, _err error) {
+/**
+ * @deprecated
+ *
+ * @param request StartJobRequest
+ * @return StartJobResponse
+ */
+// Deprecated
+func (client *Client) StartJob(namespace *string, request *StartJobRequest) (_result *StartJobResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
-	headers := &StopJobHeaders{}
-	_result = &StopJobResponse{}
-	_body, _err := client.StopJobWithOptions(namespace, jobId, request, headers, runtime)
+	headers := &StartJobHeaders{}
+	_result = &StartJobResponse{}
+	_body, _err := client.StartJobWithOptions(namespace, request, headers, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) StartJobWithParamsWithOptions(namespace *string, request *StartJobWithParamsRequest, headers *StartJobWithParamsHeaders, runtime *util.RuntimeOptions) (_result *StartJobWithParamsResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	realHeaders := make(map[string]*string)
+	if !tea.BoolValue(util.IsUnset(headers.CommonHeaders)) {
+		realHeaders = headers.CommonHeaders
+	}
+
+	if !tea.BoolValue(util.IsUnset(headers.Workspace)) {
+		realHeaders["workspace"] = util.ToJSONString(headers.Workspace)
+	}
+
+	req := &openapi.OpenApiRequest{
+		Headers: realHeaders,
+		Body:    openapiutil.ParseToMap(request.Body),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("StartJobWithParams"),
+		Version:     tea.String("2022-07-18"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/api/v2/namespaces/" + tea.StringValue(openapiutil.GetEncodeParam(namespace)) + "/jobs%3Astart"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("ROA"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &StartJobWithParamsResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) StartJobWithParams(namespace *string, request *StartJobWithParamsRequest) (_result *StartJobWithParamsResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	headers := &StartJobWithParamsHeaders{}
+	_result = &StartJobWithParamsResponse{}
+	_body, _err := client.StartJobWithParamsWithOptions(namespace, request, headers, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -4836,11 +5115,11 @@ func (client *Client) StopJobWithOptions(namespace *string, jobId *string, reque
 	return _result, _err
 }
 
-func (client *Client) UpdateDeployment(namespace *string, deploymentId *string, request *UpdateDeploymentRequest) (_result *UpdateDeploymentResponse, _err error) {
+func (client *Client) StopJob(namespace *string, jobId *string, request *StopJobRequest) (_result *StopJobResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
-	headers := &UpdateDeploymentHeaders{}
-	_result = &UpdateDeploymentResponse{}
-	_body, _err := client.UpdateDeploymentWithOptions(namespace, deploymentId, request, headers, runtime)
+	headers := &StopJobHeaders{}
+	_result = &StopJobResponse{}
+	_body, _err := client.StopJobWithOptions(namespace, jobId, request, headers, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -4883,5 +5162,17 @@ func (client *Client) UpdateDeploymentWithOptions(namespace *string, deploymentI
 		return _result, _err
 	}
 	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) UpdateDeployment(namespace *string, deploymentId *string, request *UpdateDeploymentRequest) (_result *UpdateDeploymentResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	headers := &UpdateDeploymentHeaders{}
+	_result = &UpdateDeploymentResponse{}
+	_body, _err := client.UpdateDeploymentWithOptions(namespace, deploymentId, request, headers, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
 	return _result, _err
 }
