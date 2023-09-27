@@ -113,9 +113,10 @@ func (s *CompanyFourElementsVerificationResponseBody) SetRequestId(v string) *Co
 }
 
 type CompanyFourElementsVerificationResponseBodyData struct {
-	DetailInfo   map[string]interface{} `json:"DetailInfo,omitempty" xml:"DetailInfo,omitempty"`
-	ReasonCode   *int64                 `json:"ReasonCode,omitempty" xml:"ReasonCode,omitempty"`
-	VerifyResult *string                `json:"VerifyResult,omitempty" xml:"VerifyResult,omitempty"`
+	DetailInfo       *CompanyFourElementsVerificationResponseBodyDataDetailInfo `json:"DetailInfo,omitempty" xml:"DetailInfo,omitempty" type:"Struct"`
+	InconsistentData []*string                                                  `json:"InconsistentData,omitempty" xml:"InconsistentData,omitempty" type:"Repeated"`
+	ReasonCode       *int64                                                     `json:"ReasonCode,omitempty" xml:"ReasonCode,omitempty"`
+	VerifyResult     *string                                                    `json:"VerifyResult,omitempty" xml:"VerifyResult,omitempty"`
 }
 
 func (s CompanyFourElementsVerificationResponseBodyData) String() string {
@@ -126,8 +127,13 @@ func (s CompanyFourElementsVerificationResponseBodyData) GoString() string {
 	return s.String()
 }
 
-func (s *CompanyFourElementsVerificationResponseBodyData) SetDetailInfo(v map[string]interface{}) *CompanyFourElementsVerificationResponseBodyData {
+func (s *CompanyFourElementsVerificationResponseBodyData) SetDetailInfo(v *CompanyFourElementsVerificationResponseBodyDataDetailInfo) *CompanyFourElementsVerificationResponseBodyData {
 	s.DetailInfo = v
+	return s
+}
+
+func (s *CompanyFourElementsVerificationResponseBodyData) SetInconsistentData(v []*string) *CompanyFourElementsVerificationResponseBodyData {
+	s.InconsistentData = v
 	return s
 }
 
@@ -138,6 +144,29 @@ func (s *CompanyFourElementsVerificationResponseBodyData) SetReasonCode(v int64)
 
 func (s *CompanyFourElementsVerificationResponseBodyData) SetVerifyResult(v string) *CompanyFourElementsVerificationResponseBodyData {
 	s.VerifyResult = &v
+	return s
+}
+
+type CompanyFourElementsVerificationResponseBodyDataDetailInfo struct {
+	EnterpriseStatus *string `json:"EnterpriseStatus,omitempty" xml:"EnterpriseStatus,omitempty"`
+	OpenTime         *string `json:"OpenTime,omitempty" xml:"OpenTime,omitempty"`
+}
+
+func (s CompanyFourElementsVerificationResponseBodyDataDetailInfo) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CompanyFourElementsVerificationResponseBodyDataDetailInfo) GoString() string {
+	return s.String()
+}
+
+func (s *CompanyFourElementsVerificationResponseBodyDataDetailInfo) SetEnterpriseStatus(v string) *CompanyFourElementsVerificationResponseBodyDataDetailInfo {
+	s.EnterpriseStatus = &v
+	return s
+}
+
+func (s *CompanyFourElementsVerificationResponseBodyDataDetailInfo) SetOpenTime(v string) *CompanyFourElementsVerificationResponseBodyDataDetailInfo {
+	s.OpenTime = &v
 	return s
 }
 
@@ -265,9 +294,10 @@ func (s *CompanyThreeElementsVerificationResponseBody) SetRequestId(v string) *C
 }
 
 type CompanyThreeElementsVerificationResponseBodyData struct {
-	DetailInfo   map[string]interface{} `json:"DetailInfo,omitempty" xml:"DetailInfo,omitempty"`
-	ReasonCode   *int64                 `json:"ReasonCode,omitempty" xml:"ReasonCode,omitempty"`
-	VerifyResult *string                `json:"VerifyResult,omitempty" xml:"VerifyResult,omitempty"`
+	DetailInfo       *CompanyThreeElementsVerificationResponseBodyDataDetailInfo `json:"DetailInfo,omitempty" xml:"DetailInfo,omitempty" type:"Struct"`
+	InconsistentData []*string                                                   `json:"InconsistentData,omitempty" xml:"InconsistentData,omitempty" type:"Repeated"`
+	ReasonCode       *int64                                                      `json:"ReasonCode,omitempty" xml:"ReasonCode,omitempty"`
+	VerifyResult     *string                                                     `json:"VerifyResult,omitempty" xml:"VerifyResult,omitempty"`
 }
 
 func (s CompanyThreeElementsVerificationResponseBodyData) String() string {
@@ -278,8 +308,13 @@ func (s CompanyThreeElementsVerificationResponseBodyData) GoString() string {
 	return s.String()
 }
 
-func (s *CompanyThreeElementsVerificationResponseBodyData) SetDetailInfo(v map[string]interface{}) *CompanyThreeElementsVerificationResponseBodyData {
+func (s *CompanyThreeElementsVerificationResponseBodyData) SetDetailInfo(v *CompanyThreeElementsVerificationResponseBodyDataDetailInfo) *CompanyThreeElementsVerificationResponseBodyData {
 	s.DetailInfo = v
+	return s
+}
+
+func (s *CompanyThreeElementsVerificationResponseBodyData) SetInconsistentData(v []*string) *CompanyThreeElementsVerificationResponseBodyData {
+	s.InconsistentData = v
 	return s
 }
 
@@ -290,6 +325,29 @@ func (s *CompanyThreeElementsVerificationResponseBodyData) SetReasonCode(v int64
 
 func (s *CompanyThreeElementsVerificationResponseBodyData) SetVerifyResult(v string) *CompanyThreeElementsVerificationResponseBodyData {
 	s.VerifyResult = &v
+	return s
+}
+
+type CompanyThreeElementsVerificationResponseBodyDataDetailInfo struct {
+	EnterpriseStatus *string `json:"EnterpriseStatus,omitempty" xml:"EnterpriseStatus,omitempty"`
+	OpenTime         *string `json:"OpenTime,omitempty" xml:"OpenTime,omitempty"`
+}
+
+func (s CompanyThreeElementsVerificationResponseBodyDataDetailInfo) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CompanyThreeElementsVerificationResponseBodyDataDetailInfo) GoString() string {
+	return s.String()
+}
+
+func (s *CompanyThreeElementsVerificationResponseBodyDataDetailInfo) SetEnterpriseStatus(v string) *CompanyThreeElementsVerificationResponseBodyDataDetailInfo {
+	s.EnterpriseStatus = &v
+	return s
+}
+
+func (s *CompanyThreeElementsVerificationResponseBodyDataDetailInfo) SetOpenTime(v string) *CompanyThreeElementsVerificationResponseBodyDataDetailInfo {
+	s.OpenTime = &v
 	return s
 }
 
@@ -411,9 +469,10 @@ func (s *CompanyTwoElementsVerificationResponseBody) SetRequestId(v string) *Com
 }
 
 type CompanyTwoElementsVerificationResponseBodyData struct {
-	DetailInfo   map[string]interface{} `json:"DetailInfo,omitempty" xml:"DetailInfo,omitempty"`
-	ReasonCode   *string                `json:"ReasonCode,omitempty" xml:"ReasonCode,omitempty"`
-	VerifyResult *string                `json:"VerifyResult,omitempty" xml:"VerifyResult,omitempty"`
+	DetailInfo       *CompanyTwoElementsVerificationResponseBodyDataDetailInfo `json:"DetailInfo,omitempty" xml:"DetailInfo,omitempty" type:"Struct"`
+	InconsistentData []*string                                                 `json:"InconsistentData,omitempty" xml:"InconsistentData,omitempty" type:"Repeated"`
+	ReasonCode       *string                                                   `json:"ReasonCode,omitempty" xml:"ReasonCode,omitempty"`
+	VerifyResult     *string                                                   `json:"VerifyResult,omitempty" xml:"VerifyResult,omitempty"`
 }
 
 func (s CompanyTwoElementsVerificationResponseBodyData) String() string {
@@ -424,8 +483,13 @@ func (s CompanyTwoElementsVerificationResponseBodyData) GoString() string {
 	return s.String()
 }
 
-func (s *CompanyTwoElementsVerificationResponseBodyData) SetDetailInfo(v map[string]interface{}) *CompanyTwoElementsVerificationResponseBodyData {
+func (s *CompanyTwoElementsVerificationResponseBodyData) SetDetailInfo(v *CompanyTwoElementsVerificationResponseBodyDataDetailInfo) *CompanyTwoElementsVerificationResponseBodyData {
 	s.DetailInfo = v
+	return s
+}
+
+func (s *CompanyTwoElementsVerificationResponseBodyData) SetInconsistentData(v []*string) *CompanyTwoElementsVerificationResponseBodyData {
+	s.InconsistentData = v
 	return s
 }
 
@@ -436,6 +500,29 @@ func (s *CompanyTwoElementsVerificationResponseBodyData) SetReasonCode(v string)
 
 func (s *CompanyTwoElementsVerificationResponseBodyData) SetVerifyResult(v string) *CompanyTwoElementsVerificationResponseBodyData {
 	s.VerifyResult = &v
+	return s
+}
+
+type CompanyTwoElementsVerificationResponseBodyDataDetailInfo struct {
+	EnterpriseStatus *string `json:"EnterpriseStatus,omitempty" xml:"EnterpriseStatus,omitempty"`
+	OpenTime         *string `json:"OpenTime,omitempty" xml:"OpenTime,omitempty"`
+}
+
+func (s CompanyTwoElementsVerificationResponseBodyDataDetailInfo) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CompanyTwoElementsVerificationResponseBodyDataDetailInfo) GoString() string {
+	return s.String()
+}
+
+func (s *CompanyTwoElementsVerificationResponseBodyDataDetailInfo) SetEnterpriseStatus(v string) *CompanyTwoElementsVerificationResponseBodyDataDetailInfo {
+	s.EnterpriseStatus = &v
+	return s
+}
+
+func (s *CompanyTwoElementsVerificationResponseBodyDataDetailInfo) SetOpenTime(v string) *CompanyTwoElementsVerificationResponseBodyDataDetailInfo {
+	s.OpenTime = &v
 	return s
 }
 
