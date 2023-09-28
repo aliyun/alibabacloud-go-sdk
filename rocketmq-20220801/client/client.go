@@ -13,10 +13,18 @@ import (
 )
 
 type ChangeResourceGroupRequest struct {
-	RegionId        *string `json:"regionId,omitempty" xml:"regionId,omitempty"`
+	// The ID of the region in which the instance resides.
+	RegionId *string `json:"regionId,omitempty" xml:"regionId,omitempty"`
+	// The ID of the resource group to which the instance is changed.
+	//
+	// You can call the [ListResourceGroups](https://www.alibabacloud.com/help/resource-management/latest/listresourcegroups) operation to query existing resource groups.
 	ResourceGroupId *string `json:"resourceGroupId,omitempty" xml:"resourceGroupId,omitempty"`
-	ResourceId      *string `json:"resourceId,omitempty" xml:"resourceId,omitempty"`
-	ResourceType    *string `json:"resourceType,omitempty" xml:"resourceType,omitempty"`
+	// The ID of the resource. Set this parameter to the ID of the ApsaraMQ for RocketMQ instance whose resource group you want to change.
+	ResourceId *string `json:"resourceId,omitempty" xml:"resourceId,omitempty"`
+	// The type of resource.
+	//
+	// Set this parameter to **instance**. The value of this parameter cannot be changed.
+	ResourceType *string `json:"resourceType,omitempty" xml:"resourceType,omitempty"`
 }
 
 func (s ChangeResourceGroupRequest) String() string {
@@ -48,14 +56,22 @@ func (s *ChangeResourceGroupRequest) SetResourceType(v string) *ChangeResourceGr
 }
 
 type ChangeResourceGroupResponseBody struct {
-	Code           *string `json:"code,omitempty" xml:"code,omitempty"`
-	Data           *bool   `json:"data,omitempty" xml:"data,omitempty"`
-	DynamicCode    *string `json:"dynamicCode,omitempty" xml:"dynamicCode,omitempty"`
+	// The error code returned if the call failed.
+	Code *string `json:"code,omitempty" xml:"code,omitempty"`
+	// The returned result.
+	Data *bool `json:"data,omitempty" xml:"data,omitempty"`
+	// The dynamic error code.
+	DynamicCode *string `json:"dynamicCode,omitempty" xml:"dynamicCode,omitempty"`
+	// The dynamic error message.
 	DynamicMessage *string `json:"dynamicMessage,omitempty" xml:"dynamicMessage,omitempty"`
-	HttpStatusCode *int32  `json:"httpStatusCode,omitempty" xml:"httpStatusCode,omitempty"`
-	Message        *string `json:"message,omitempty" xml:"message,omitempty"`
-	RequestId      *string `json:"requestId,omitempty" xml:"requestId,omitempty"`
-	Success        *bool   `json:"success,omitempty" xml:"success,omitempty"`
+	// The HTTP status code returned.
+	HttpStatusCode *int32 `json:"httpStatusCode,omitempty" xml:"httpStatusCode,omitempty"`
+	// The error message.
+	Message *string `json:"message,omitempty" xml:"message,omitempty"`
+	// The ID of the request. Each request has a unique ID. You can use this ID to troubleshoot issues.
+	RequestId *string `json:"requestId,omitempty" xml:"requestId,omitempty"`
+	// Indicates whether the call was successful.
+	Success *bool `json:"success,omitempty" xml:"success,omitempty"`
 }
 
 func (s ChangeResourceGroupResponseBody) String() string {
@@ -136,9 +152,17 @@ func (s *ChangeResourceGroupResponse) SetBody(v *ChangeResourceGroupResponseBody
 }
 
 type CreateConsumerGroupRequest struct {
+	// The consumption retry policy that you want to configure for the consumer group. For more information, see [Consumption retry](~~440356~~).
 	ConsumeRetryPolicy *CreateConsumerGroupRequestConsumeRetryPolicy `json:"consumeRetryPolicy,omitempty" xml:"consumeRetryPolicy,omitempty" type:"Struct"`
-	DeliveryOrderType  *string                                       `json:"deliveryOrderType,omitempty" xml:"deliveryOrderType,omitempty"`
-	Remark             *string                                       `json:"remark,omitempty" xml:"remark,omitempty"`
+	// The message delivery order of the consumer group.
+	//
+	// Valid values:
+	//
+	// *   Concurrently: concurrent delivery
+	// *   Orderly: ordered delivery
+	DeliveryOrderType *string `json:"deliveryOrderType,omitempty" xml:"deliveryOrderType,omitempty"`
+	// The remarks on the consumer group.
+	Remark *string `json:"remark,omitempty" xml:"remark,omitempty"`
 }
 
 func (s CreateConsumerGroupRequest) String() string {
@@ -165,9 +189,19 @@ func (s *CreateConsumerGroupRequest) SetRemark(v string) *CreateConsumerGroupReq
 }
 
 type CreateConsumerGroupRequestConsumeRetryPolicy struct {
+	// The dead-letter topic.
+	//
+	// If a consumer still fails to consume a message after the message is retried for a specified number of times, the message is delivered to a dead-letter topic for subsequent business recovery or troubleshooting. For more information, see [Consumption retry and dead-letter messages](~~440356~~).
 	DeadLetterTargetTopic *string `json:"deadLetterTargetTopic,omitempty" xml:"deadLetterTargetTopic,omitempty"`
-	MaxRetryTimes         *int32  `json:"maxRetryTimes,omitempty" xml:"maxRetryTimes,omitempty"`
-	RetryPolicy           *string `json:"retryPolicy,omitempty" xml:"retryPolicy,omitempty"`
+	// The maximum number of retries.
+	MaxRetryTimes *int32 `json:"maxRetryTimes,omitempty" xml:"maxRetryTimes,omitempty"`
+	// The retry policy. For more information, see [Message retry](~~440356~~).
+	//
+	// Valid values:
+	//
+	// *   FixedRetryPolicy: Failed messages are retried at a fixed interval.
+	// *   DefaultRetryPolicy: Failed messages are retried at incremental intervals as the number of retries increases.
+	RetryPolicy *string `json:"retryPolicy,omitempty" xml:"retryPolicy,omitempty"`
 }
 
 func (s CreateConsumerGroupRequestConsumeRetryPolicy) String() string {
@@ -194,14 +228,22 @@ func (s *CreateConsumerGroupRequestConsumeRetryPolicy) SetRetryPolicy(v string) 
 }
 
 type CreateConsumerGroupResponseBody struct {
-	Code           *string `json:"code,omitempty" xml:"code,omitempty"`
-	Data           *bool   `json:"data,omitempty" xml:"data,omitempty"`
-	DynamicCode    *string `json:"dynamicCode,omitempty" xml:"dynamicCode,omitempty"`
+	// The error code.
+	Code *string `json:"code,omitempty" xml:"code,omitempty"`
+	// The result data that is returned.
+	Data *bool `json:"data,omitempty" xml:"data,omitempty"`
+	// The dynamic error code.
+	DynamicCode *string `json:"dynamicCode,omitempty" xml:"dynamicCode,omitempty"`
+	// The dynamic error message.
 	DynamicMessage *string `json:"dynamicMessage,omitempty" xml:"dynamicMessage,omitempty"`
-	HttpStatusCode *int32  `json:"httpStatusCode,omitempty" xml:"httpStatusCode,omitempty"`
-	Message        *string `json:"message,omitempty" xml:"message,omitempty"`
-	RequestId      *string `json:"requestId,omitempty" xml:"requestId,omitempty"`
-	Success        *bool   `json:"success,omitempty" xml:"success,omitempty"`
+	// The HTTP status code.
+	HttpStatusCode *int32 `json:"httpStatusCode,omitempty" xml:"httpStatusCode,omitempty"`
+	// The error message.
+	Message *string `json:"message,omitempty" xml:"message,omitempty"`
+	// The ID of the request. The system generates a unique ID for each request. You can troubleshoot issues based on the request ID.
+	RequestId *string `json:"requestId,omitempty" xml:"requestId,omitempty"`
+	// Indicates whether the call is successful.
+	Success *bool `json:"success,omitempty" xml:"success,omitempty"`
 }
 
 func (s CreateConsumerGroupResponseBody) String() string {
@@ -282,20 +324,77 @@ func (s *CreateConsumerGroupResponse) SetBody(v *CreateConsumerGroupResponseBody
 }
 
 type CreateInstanceRequest struct {
-	AutoRenew       *bool                             `json:"autoRenew,omitempty" xml:"autoRenew,omitempty"`
-	AutoRenewPeriod *int32                            `json:"autoRenewPeriod,omitempty" xml:"autoRenewPeriod,omitempty"`
-	InstanceName    *string                           `json:"instanceName,omitempty" xml:"instanceName,omitempty"`
-	NetworkInfo     *CreateInstanceRequestNetworkInfo `json:"networkInfo,omitempty" xml:"networkInfo,omitempty" type:"Struct"`
-	PaymentType     *string                           `json:"paymentType,omitempty" xml:"paymentType,omitempty"`
-	Period          *int32                            `json:"period,omitempty" xml:"period,omitempty"`
-	PeriodUnit      *string                           `json:"periodUnit,omitempty" xml:"periodUnit,omitempty"`
-	ProductInfo     *CreateInstanceRequestProductInfo `json:"productInfo,omitempty" xml:"productInfo,omitempty" type:"Struct"`
-	Remark          *string                           `json:"remark,omitempty" xml:"remark,omitempty"`
-	ResourceGroupId *string                           `json:"resourceGroupId,omitempty" xml:"resourceGroupId,omitempty"`
-	SeriesCode      *string                           `json:"seriesCode,omitempty" xml:"seriesCode,omitempty"`
-	ServiceCode     *string                           `json:"serviceCode,omitempty" xml:"serviceCode,omitempty"`
-	SubSeriesCode   *string                           `json:"subSeriesCode,omitempty" xml:"subSeriesCode,omitempty"`
-	ClientToken     *string                           `json:"clientToken,omitempty" xml:"clientToken,omitempty"`
+	// Specifies whether to enable auto-renewal. This parameter takes effect only when the PaymentType parameter is set to Subscription.
+	//
+	// *   true: enable
+	// *   false: disable
+	AutoRenew *bool `json:"autoRenew,omitempty" xml:"autoRenew,omitempty"`
+	// The auto-renewal cycle of the instance. This parameter takes effect only when the autoRenew parameter is set to true. Unit: months.
+	//
+	// Valid values:
+	//
+	// *   Monthly renewal: 1, 2, 3, 6, and 12
+	AutoRenewPeriod *int32 `json:"autoRenewPeriod,omitempty" xml:"autoRenewPeriod,omitempty"`
+	// The name of the instance that you want to create.
+	//
+	// If you do not configure this parameter, the instance ID is used as the instance name.
+	InstanceName *string `json:"instanceName,omitempty" xml:"instanceName,omitempty"`
+	// The information about the network.
+	NetworkInfo *CreateInstanceRequestNetworkInfo `json:"networkInfo,omitempty" xml:"networkInfo,omitempty" type:"Struct"`
+	// The billing method of the instance. ApsaraMQ for RocketMQ supports the subscription and pay-as-you-go billing methods.
+	//
+	// Valid values:
+	//
+	// *   PayAsYouGo: pay-as-you go. This billing method allows you to use resources before you pay for the resources.
+	// *   Subscription: This billing method allows you to use resources after you pay for the resources.
+	//
+	// For more information, see [Billing methods](~~427234~~).
+	PaymentType *string `json:"paymentType,omitempty" xml:"paymentType,omitempty"`
+	// The subscription duration of the instance. This parameter takes effect only when the PaymentType parameter is set to Subscription.
+	//
+	// Valid values:
+	//
+	// *   Monthly subscription: 1, 2, 3, 4, 5, and 6
+	// *   Yearly subscription: 1, 2, and 3
+	Period *int32 `json:"period,omitempty" xml:"period,omitempty"`
+	// The unit of the subscription duration.
+	//
+	// Valid values:
+	//
+	// *   Month
+	// *   Year
+	PeriodUnit *string `json:"periodUnit,omitempty" xml:"periodUnit,omitempty"`
+	// The information about the instance specification.
+	ProductInfo *CreateInstanceRequestProductInfo `json:"productInfo,omitempty" xml:"productInfo,omitempty" type:"Struct"`
+	// The description of the instance.
+	Remark *string `json:"remark,omitempty" xml:"remark,omitempty"`
+	// The ID of the resource group.
+	ResourceGroupId *string `json:"resourceGroupId,omitempty" xml:"resourceGroupId,omitempty"`
+	// The primary edition of the instance. For information about the differences between primary edition instances, see [Instance selection](~~444722~~).
+	//
+	// Valid values:
+	//
+	// *   standard: Standard Edition
+	// *   ultimate: Enterprise Platinum Edition
+	// *   professional: Professional Edition
+	//
+	// > After you create a ApsaraMQ for RocketMQ instance, you can only upgrade the primary edition of the instance. The following editions are sorted in ascending order: Standard Edition, Professional Edition, and Platinum Edition. For example, an instance of Standard Edition can be upgraded to Professional Edition. However, an instance of Professional Edition cannot be downgraded to Standard Edition.
+	SeriesCode *string `json:"seriesCode,omitempty" xml:"seriesCode,omitempty"`
+	// The code of the service to which the instance belongs. The service code of ApsaraMQ for RocketMQ is rmq.
+	ServiceCode *string `json:"serviceCode,omitempty" xml:"serviceCode,omitempty"`
+	// The sub-category edition of the instance. For information about the differences between sub-category edition instances, see [Instance selection](~~444722~~).
+	//
+	// Valid values:
+	//
+	// *   cluster_ha: Cluster High-availability Edition
+	// *   single_node: Standalone Edition
+	//
+	// If you set the seriesCode parameter to ultimate, you can set this parameter to only cluster_ha.
+	//
+	// > After you create a ApsaraMQ for RocketMQ instance, you cannot change the sub-category edition of the instance.
+	SubSeriesCode *string `json:"subSeriesCode,omitempty" xml:"subSeriesCode,omitempty"`
+	// The client token that is used to ensure the idempotence of the request. You can use the client to generate the value of this parameter, but you must ensure that the value is unique among different requests. The token can contain only ASCII characters and cannot exceed 64 characters in length.
+	ClientToken *string `json:"clientToken,omitempty" xml:"clientToken,omitempty"`
 }
 
 func (s CreateInstanceRequest) String() string {
@@ -377,8 +476,10 @@ func (s *CreateInstanceRequest) SetClientToken(v string) *CreateInstanceRequest 
 }
 
 type CreateInstanceRequestNetworkInfo struct {
+	// The Internet-related configurations.
 	InternetInfo *CreateInstanceRequestNetworkInfoInternetInfo `json:"internetInfo,omitempty" xml:"internetInfo,omitempty" type:"Struct"`
-	VpcInfo      *CreateInstanceRequestNetworkInfoVpcInfo      `json:"vpcInfo,omitempty" xml:"vpcInfo,omitempty" type:"Struct"`
+	// The virtual private cloud (VPC)-related configurations.
+	VpcInfo *CreateInstanceRequestNetworkInfoVpcInfo `json:"vpcInfo,omitempty" xml:"vpcInfo,omitempty" type:"Struct"`
 }
 
 func (s CreateInstanceRequestNetworkInfo) String() string {
@@ -400,10 +501,33 @@ func (s *CreateInstanceRequestNetworkInfo) SetVpcInfo(v *CreateInstanceRequestNe
 }
 
 type CreateInstanceRequestNetworkInfoInternetInfo struct {
-	FlowOutBandwidth *int32    `json:"flowOutBandwidth,omitempty" xml:"flowOutBandwidth,omitempty"`
-	FlowOutType      *string   `json:"flowOutType,omitempty" xml:"flowOutType,omitempty"`
-	InternetSpec     *string   `json:"internetSpec,omitempty" xml:"internetSpec,omitempty"`
-	IpWhitelist      []*string `json:"ipWhitelist,omitempty" xml:"ipWhitelist,omitempty" type:"Repeated"`
+	// The Internet bandwidth. Unit: MB/s.
+	//
+	// This parameter is required only when the flowOutType parameter is set to payByBandwidth.
+	//
+	// Valid values: 1 to 1000.
+	FlowOutBandwidth *int32 `json:"flowOutBandwidth,omitempty" xml:"flowOutBandwidth,omitempty"`
+	// The metering method for Internet usage.
+	//
+	// Valid values:
+	//
+	// *   payByBandwidth: pay-by-bandwidth. If the Internet access feature is enabled, specify this value for the parameter.
+	// *   uninvolved: N/A. If the Internet access feature is disabled, specify this value for the parameter.
+	FlowOutType *string `json:"flowOutType,omitempty" xml:"flowOutType,omitempty"`
+	// Specifies whether to enable the Internet access feature.
+	//
+	// Valid values:
+	//
+	// *   enable
+	// *   disable
+	//
+	// By default, ApsaraMQ for RocketMQ instances are accessed in VPCs. If you enable the Internet access feature, you are charged for Internet outbound bandwidth. For more information, see [Internet access fee](~~427240~~).
+	InternetSpec *string `json:"internetSpec,omitempty" xml:"internetSpec,omitempty"`
+	// The whitelist that includes the IP addresses that are allowed to access the ApsaraMQ for RocketMQ broker over the Internet. This parameter can be configured only when you use a public endpoint to access the ApsaraMQ for RocketMQ broker.
+	//
+	// *   If this parameter is not configured, all IP addresses are allowed to access the ApsaraMQ for RocketMQ broker over the Internet.
+	// *   If this parameter is configured, only the IP addresses that are included in the whitelist can access the ApsaraMQ for RocketMQ broker over the Internet.
+	IpWhitelist []*string `json:"ipWhitelist,omitempty" xml:"ipWhitelist,omitempty" type:"Repeated"`
 }
 
 func (s CreateInstanceRequestNetworkInfoInternetInfo) String() string {
@@ -435,8 +559,14 @@ func (s *CreateInstanceRequestNetworkInfoInternetInfo) SetIpWhitelist(v []*strin
 }
 
 type CreateInstanceRequestNetworkInfoVpcInfo struct {
+	// The ID of the vSwitch with which the instance is associated.
+	//
+	// > After you create a ApsaraMQ for RocketMQ instance, you cannot change the vSwitch to which the instance is connected. If you want to change the vSwitch with which a ApsaraMQ for RocketMQ is associated, you must release the instance and purchase a new instance.
 	VSwitchId *string `json:"vSwitchId,omitempty" xml:"vSwitchId,omitempty"`
-	VpcId     *string `json:"vpcId,omitempty" xml:"vpcId,omitempty"`
+	// The ID of the VPC with which the instance that you want to create is associated.
+	//
+	// > After you create a ApsaraMQ for RocketMQ instance, you cannot change the VPC in which the instance is created. If you want to change the VPC with which a ApsaraMQ for RocketMQ is associated, you must release the instance and purchase a new instance.
+	VpcId *string `json:"vpcId,omitempty" xml:"vpcId,omitempty"`
 }
 
 func (s CreateInstanceRequestNetworkInfoVpcInfo) String() string {
@@ -458,10 +588,29 @@ func (s *CreateInstanceRequestNetworkInfoVpcInfo) SetVpcId(v string) *CreateInst
 }
 
 type CreateInstanceRequestProductInfo struct {
-	AutoScaling          *bool    `json:"autoScaling,omitempty" xml:"autoScaling,omitempty"`
-	MessageRetentionTime *int32   `json:"messageRetentionTime,omitempty" xml:"messageRetentionTime,omitempty"`
-	MsgProcessSpec       *string  `json:"msgProcessSpec,omitempty" xml:"msgProcessSpec,omitempty"`
-	SendReceiveRatio     *float32 `json:"sendReceiveRatio,omitempty" xml:"sendReceiveRatio,omitempty"`
+	// Specifies whether to enable the elastic TPS feature for the instance.
+	//
+	// Valid values:
+	//
+	// *   true: enable
+	// *   false: disable
+	//
+	// After you enable the elastic TPS feature for a ApsaraMQ for RocketMQ instance, you can use a specific amount of TPS that exceeds the specification limit. You are charged for the elastic TPS feature. For more information, see [Computing fee](~~427237~~).
+	//
+	// > The elastic TPS feature is supported by only specific instance editions. For more information, see [Instance specifications](~~444715~~).
+	AutoScaling *bool `json:"autoScaling,omitempty" xml:"autoScaling,omitempty"`
+	// The retention period of messages. Unit: hours.
+	//
+	// For information about the valid values of this parameter, see the "Limits on resource quotas" section in [Usage limits](~~440347~~).
+	//
+	// The storage of messages in ApsaraMQ for RocketMQ is serverless and scalable. You are charged for message storage based on your actual usage. You can change the retention period of messages to adjust storage capacity. For more information, see [Storage fee](~~427238~~).
+	MessageRetentionTime *int32 `json:"messageRetentionTime,omitempty" xml:"messageRetentionTime,omitempty"`
+	// The computing specification that is used to send and receive messages. For information about the upper limit of TPS, see [Instance specifications](~~444715~~).
+	MsgProcessSpec *string `json:"msgProcessSpec,omitempty" xml:"msgProcessSpec,omitempty"`
+	// The ratio between sent messages and received messages in the instance.
+	//
+	// Value values: 0.2 to 0.5.
+	SendReceiveRatio *float32 `json:"sendReceiveRatio,omitempty" xml:"sendReceiveRatio,omitempty"`
 }
 
 func (s CreateInstanceRequestProductInfo) String() string {
@@ -493,14 +642,22 @@ func (s *CreateInstanceRequestProductInfo) SetSendReceiveRatio(v float32) *Creat
 }
 
 type CreateInstanceResponseBody struct {
-	Code           *string `json:"code,omitempty" xml:"code,omitempty"`
-	Data           *string `json:"data,omitempty" xml:"data,omitempty"`
-	DynamicCode    *string `json:"dynamicCode,omitempty" xml:"dynamicCode,omitempty"`
+	// The error code returned if the call failed.
+	Code *string `json:"code,omitempty" xml:"code,omitempty"`
+	// The ID of the created instance.
+	Data *string `json:"data,omitempty" xml:"data,omitempty"`
+	// The dynamic error code.
+	DynamicCode *string `json:"dynamicCode,omitempty" xml:"dynamicCode,omitempty"`
+	// The dynamic error message.
 	DynamicMessage *string `json:"dynamicMessage,omitempty" xml:"dynamicMessage,omitempty"`
-	HttpStatusCode *int32  `json:"httpStatusCode,omitempty" xml:"httpStatusCode,omitempty"`
-	Message        *string `json:"message,omitempty" xml:"message,omitempty"`
-	RequestId      *string `json:"requestId,omitempty" xml:"requestId,omitempty"`
-	Success        *bool   `json:"success,omitempty" xml:"success,omitempty"`
+	// The HTTP status code returned.
+	HttpStatusCode *int32 `json:"httpStatusCode,omitempty" xml:"httpStatusCode,omitempty"`
+	// The error message.
+	Message *string `json:"message,omitempty" xml:"message,omitempty"`
+	// The ID of the request. Each request has a unique ID. You can use this ID to troubleshoot issues.
+	RequestId *string `json:"requestId,omitempty" xml:"requestId,omitempty"`
+	// Indicates whether the call was successful.
+	Success *bool `json:"success,omitempty" xml:"success,omitempty"`
 }
 
 func (s CreateInstanceResponseBody) String() string {
@@ -581,8 +738,19 @@ func (s *CreateInstanceResponse) SetBody(v *CreateInstanceResponseBody) *CreateI
 }
 
 type CreateTopicRequest struct {
+	// The type of messages in the topic that you want to create.
+	//
+	// Valid values:
+	//
+	// *   TRANSACTION: transactional messages
+	// *   FIFO: ordered messages
+	// *   DELAY: scheduled messages or delayed Message
+	// *   NORMAL: normal messages
+	//
+	// > The type of messages in the topic must be the same as the type of messages that you want to send. For example, if you create a topic whose message type is ordered messages, the topic can be used to send and receive only ordered messages.
 	MessageType *string `json:"messageType,omitempty" xml:"messageType,omitempty"`
-	Remark      *string `json:"remark,omitempty" xml:"remark,omitempty"`
+	// The description of the topic that you want to create.
+	Remark *string `json:"remark,omitempty" xml:"remark,omitempty"`
 }
 
 func (s CreateTopicRequest) String() string {
@@ -604,14 +772,22 @@ func (s *CreateTopicRequest) SetRemark(v string) *CreateTopicRequest {
 }
 
 type CreateTopicResponseBody struct {
-	Code           *string `json:"code,omitempty" xml:"code,omitempty"`
-	Data           *bool   `json:"data,omitempty" xml:"data,omitempty"`
-	DynamicCode    *string `json:"dynamicCode,omitempty" xml:"dynamicCode,omitempty"`
+	// The error code returned if the call failed.
+	Code *string `json:"code,omitempty" xml:"code,omitempty"`
+	// The returned result.
+	Data *bool `json:"data,omitempty" xml:"data,omitempty"`
+	// The dynamic error code.
+	DynamicCode *string `json:"dynamicCode,omitempty" xml:"dynamicCode,omitempty"`
+	// The dynamic error message.
 	DynamicMessage *string `json:"dynamicMessage,omitempty" xml:"dynamicMessage,omitempty"`
-	HttpStatusCode *int32  `json:"httpStatusCode,omitempty" xml:"httpStatusCode,omitempty"`
-	Message        *string `json:"message,omitempty" xml:"message,omitempty"`
-	RequestId      *string `json:"requestId,omitempty" xml:"requestId,omitempty"`
-	Success        *bool   `json:"success,omitempty" xml:"success,omitempty"`
+	// The HTTP status code returned.
+	HttpStatusCode *int32 `json:"httpStatusCode,omitempty" xml:"httpStatusCode,omitempty"`
+	// The error message.
+	Message *string `json:"message,omitempty" xml:"message,omitempty"`
+	// The ID of the request. Each request has a unique ID. You can use this ID to troubleshoot issues.
+	RequestId *string `json:"requestId,omitempty" xml:"requestId,omitempty"`
+	// Indicates whether the call was successful.
+	Success *bool `json:"success,omitempty" xml:"success,omitempty"`
 }
 
 func (s CreateTopicResponseBody) String() string {
@@ -692,14 +868,22 @@ func (s *CreateTopicResponse) SetBody(v *CreateTopicResponseBody) *CreateTopicRe
 }
 
 type DeleteConsumerGroupResponseBody struct {
-	Code           *string `json:"code,omitempty" xml:"code,omitempty"`
-	Data           *bool   `json:"data,omitempty" xml:"data,omitempty"`
-	DynamicCode    *string `json:"dynamicCode,omitempty" xml:"dynamicCode,omitempty"`
+	// The error code.
+	Code *string `json:"code,omitempty" xml:"code,omitempty"`
+	// The result data that is returned.
+	Data *bool `json:"data,omitempty" xml:"data,omitempty"`
+	// The dynamic error code.
+	DynamicCode *string `json:"dynamicCode,omitempty" xml:"dynamicCode,omitempty"`
+	// The dynamic error message.
 	DynamicMessage *string `json:"dynamicMessage,omitempty" xml:"dynamicMessage,omitempty"`
-	HttpStatusCode *int32  `json:"httpStatusCode,omitempty" xml:"httpStatusCode,omitempty"`
-	Message        *string `json:"message,omitempty" xml:"message,omitempty"`
-	RequestId      *string `json:"requestId,omitempty" xml:"requestId,omitempty"`
-	Success        *bool   `json:"success,omitempty" xml:"success,omitempty"`
+	// The HTTP status code.
+	HttpStatusCode *int32 `json:"httpStatusCode,omitempty" xml:"httpStatusCode,omitempty"`
+	// The error message.
+	Message *string `json:"message,omitempty" xml:"message,omitempty"`
+	// The ID of the request. The system generates a unique ID for each request. You can troubleshoot issues based on the request ID.
+	RequestId *string `json:"requestId,omitempty" xml:"requestId,omitempty"`
+	// Indicates whether the call is successful.
+	Success *bool `json:"success,omitempty" xml:"success,omitempty"`
 }
 
 func (s DeleteConsumerGroupResponseBody) String() string {
@@ -780,14 +964,22 @@ func (s *DeleteConsumerGroupResponse) SetBody(v *DeleteConsumerGroupResponseBody
 }
 
 type DeleteInstanceResponseBody struct {
-	Code           *string `json:"code,omitempty" xml:"code,omitempty"`
-	Data           *bool   `json:"data,omitempty" xml:"data,omitempty"`
-	DynamicCode    *string `json:"dynamicCode,omitempty" xml:"dynamicCode,omitempty"`
+	// The error code returned if the call failed.
+	Code *string `json:"code,omitempty" xml:"code,omitempty"`
+	// The returned result.
+	Data *bool `json:"data,omitempty" xml:"data,omitempty"`
+	// The dynamic error code.
+	DynamicCode *string `json:"dynamicCode,omitempty" xml:"dynamicCode,omitempty"`
+	// The dynamic error message.
 	DynamicMessage *string `json:"dynamicMessage,omitempty" xml:"dynamicMessage,omitempty"`
-	HttpStatusCode *int32  `json:"httpStatusCode,omitempty" xml:"httpStatusCode,omitempty"`
-	Message        *string `json:"message,omitempty" xml:"message,omitempty"`
-	RequestId      *string `json:"requestId,omitempty" xml:"requestId,omitempty"`
-	Success        *bool   `json:"success,omitempty" xml:"success,omitempty"`
+	// The HTTP status code returned.
+	HttpStatusCode *int32 `json:"httpStatusCode,omitempty" xml:"httpStatusCode,omitempty"`
+	// The error message.
+	Message *string `json:"message,omitempty" xml:"message,omitempty"`
+	// The ID of the request. Each request has a unique ID. You can use this ID to troubleshoot issues.
+	RequestId *string `json:"requestId,omitempty" xml:"requestId,omitempty"`
+	// Indicates whether the call was successful.
+	Success *bool `json:"success,omitempty" xml:"success,omitempty"`
 }
 
 func (s DeleteInstanceResponseBody) String() string {
@@ -868,14 +1060,22 @@ func (s *DeleteInstanceResponse) SetBody(v *DeleteInstanceResponseBody) *DeleteI
 }
 
 type DeleteTopicResponseBody struct {
-	Code           *string `json:"code,omitempty" xml:"code,omitempty"`
-	Data           *bool   `json:"data,omitempty" xml:"data,omitempty"`
-	DynamicCode    *string `json:"dynamicCode,omitempty" xml:"dynamicCode,omitempty"`
+	// The error code.
+	Code *string `json:"code,omitempty" xml:"code,omitempty"`
+	// The result data that is returned.
+	Data *bool `json:"data,omitempty" xml:"data,omitempty"`
+	// The dynamic error code.
+	DynamicCode *string `json:"dynamicCode,omitempty" xml:"dynamicCode,omitempty"`
+	// The dynamic error message.
 	DynamicMessage *string `json:"dynamicMessage,omitempty" xml:"dynamicMessage,omitempty"`
-	HttpStatusCode *int32  `json:"httpStatusCode,omitempty" xml:"httpStatusCode,omitempty"`
-	Message        *string `json:"message,omitempty" xml:"message,omitempty"`
-	RequestId      *string `json:"requestId,omitempty" xml:"requestId,omitempty"`
-	Success        *bool   `json:"success,omitempty" xml:"success,omitempty"`
+	// The HTTP status code.
+	HttpStatusCode *int32 `json:"httpStatusCode,omitempty" xml:"httpStatusCode,omitempty"`
+	// The error message.
+	Message *string `json:"message,omitempty" xml:"message,omitempty"`
+	// The ID of the request. The system generates a unique ID for each request. You can troubleshoot issues based on the request ID.
+	RequestId *string `json:"requestId,omitempty" xml:"requestId,omitempty"`
+	// Indicates whether the call is successful.
+	Success *bool `json:"success,omitempty" xml:"success,omitempty"`
 }
 
 func (s DeleteTopicResponseBody) String() string {
@@ -956,14 +1156,22 @@ func (s *DeleteTopicResponse) SetBody(v *DeleteTopicResponseBody) *DeleteTopicRe
 }
 
 type GetConsumerGroupResponseBody struct {
-	Code           *string                           `json:"code,omitempty" xml:"code,omitempty"`
-	Data           *GetConsumerGroupResponseBodyData `json:"data,omitempty" xml:"data,omitempty" type:"Struct"`
-	DynamicCode    *string                           `json:"dynamicCode,omitempty" xml:"dynamicCode,omitempty"`
-	DynamicMessage *string                           `json:"dynamicMessage,omitempty" xml:"dynamicMessage,omitempty"`
-	HttpStatusCode *int32                            `json:"httpStatusCode,omitempty" xml:"httpStatusCode,omitempty"`
-	Message        *string                           `json:"message,omitempty" xml:"message,omitempty"`
-	RequestId      *string                           `json:"requestId,omitempty" xml:"requestId,omitempty"`
-	Success        *bool                             `json:"success,omitempty" xml:"success,omitempty"`
+	// The error code.
+	Code *string `json:"code,omitempty" xml:"code,omitempty"`
+	// The result data that is returned.
+	Data *GetConsumerGroupResponseBodyData `json:"data,omitempty" xml:"data,omitempty" type:"Struct"`
+	// The dynamic error code.
+	DynamicCode *string `json:"dynamicCode,omitempty" xml:"dynamicCode,omitempty"`
+	// The dynamic error message.
+	DynamicMessage *string `json:"dynamicMessage,omitempty" xml:"dynamicMessage,omitempty"`
+	// The HTTP status code.
+	HttpStatusCode *int32 `json:"httpStatusCode,omitempty" xml:"httpStatusCode,omitempty"`
+	// The error message.
+	Message *string `json:"message,omitempty" xml:"message,omitempty"`
+	// The ID of the request. The system generates a unique ID for each request. You can troubleshoot issues based on the request ID.
+	RequestId *string `json:"requestId,omitempty" xml:"requestId,omitempty"`
+	// Indicates whether the call is successful.
+	Success *bool `json:"success,omitempty" xml:"success,omitempty"`
 }
 
 func (s GetConsumerGroupResponseBody) String() string {
@@ -1015,15 +1223,80 @@ func (s *GetConsumerGroupResponseBody) SetSuccess(v bool) *GetConsumerGroupRespo
 }
 
 type GetConsumerGroupResponseBodyData struct {
+	// The consumption retry policy that you want to configure for the consumer group. For more information, see [Consumption retry](~~440356~~).
 	ConsumeRetryPolicy *GetConsumerGroupResponseBodyDataConsumeRetryPolicy `json:"consumeRetryPolicy,omitempty" xml:"consumeRetryPolicy,omitempty" type:"Struct"`
-	ConsumerGroupId    *string                                             `json:"consumerGroupId,omitempty" xml:"consumerGroupId,omitempty"`
-	CreateTime         *string                                             `json:"createTime,omitempty" xml:"createTime,omitempty"`
-	DeliveryOrderType  *string                                             `json:"deliveryOrderType,omitempty" xml:"deliveryOrderType,omitempty"`
-	InstanceId         *string                                             `json:"instanceId,omitempty" xml:"instanceId,omitempty"`
-	RegionId           *string                                             `json:"regionId,omitempty" xml:"regionId,omitempty"`
-	Remark             *string                                             `json:"remark,omitempty" xml:"remark,omitempty"`
-	Status             *string                                             `json:"status,omitempty" xml:"status,omitempty"`
-	UpdateTime         *string                                             `json:"updateTime,omitempty" xml:"updateTime,omitempty"`
+	// The ID of the consumer group.
+	ConsumerGroupId *string `json:"consumerGroupId,omitempty" xml:"consumerGroupId,omitempty"`
+	// The time when the consumer group was created.
+	CreateTime *string `json:"createTime,omitempty" xml:"createTime,omitempty"`
+	// The message delivery order of the consumer group.
+	//
+	// Valid values:
+	//
+	// *   Concurrently
+	//
+	//     <!-- -->
+	//
+	//     :
+	//
+	//     <!-- -->
+	//
+	//     concurrent delivery
+	//
+	//     <!-- -->
+	//
+	// *   Orderly
+	//
+	//     <!-- -->
+	//
+	//     :
+	//
+	//     <!-- -->
+	//
+	//     ordered delivery
+	//
+	//     <!-- -->
+	DeliveryOrderType *string `json:"deliveryOrderType,omitempty" xml:"deliveryOrderType,omitempty"`
+	// The ID of the instance.
+	InstanceId *string `json:"instanceId,omitempty" xml:"instanceId,omitempty"`
+	// The ID of the region in which the instance resides.
+	RegionId *string `json:"regionId,omitempty" xml:"regionId,omitempty"`
+	// The remarks on the consumer group.
+	Remark *string `json:"remark,omitempty" xml:"remark,omitempty"`
+	// The state of the consumer group.
+	//
+	// Valid values:
+	//
+	// *   RUNNING
+	//
+	//     <!-- -->
+	//
+	//     : The consumer group is
+	//
+	//     <!-- -->
+	//
+	//     running
+	//
+	//     <!-- -->
+	//
+	//     .
+	//
+	// *   CREATING
+	//
+	//     <!-- -->
+	//
+	//     : The consumer group is
+	//
+	//     <!-- -->
+	//
+	//     being created
+	//
+	//     <!-- -->
+	//
+	//     .
+	Status *string `json:"status,omitempty" xml:"status,omitempty"`
+	// The time when the consumer group was last updated.
+	UpdateTime *string `json:"updateTime,omitempty" xml:"updateTime,omitempty"`
 }
 
 func (s GetConsumerGroupResponseBodyData) String() string {
@@ -1080,9 +1353,44 @@ func (s *GetConsumerGroupResponseBodyData) SetUpdateTime(v string) *GetConsumerG
 }
 
 type GetConsumerGroupResponseBodyDataConsumeRetryPolicy struct {
+	// The dead-letter topic.
+	//
+	// If a consumer still fails to consume a message after the message is retried for a specified number of times, the message is delivered to a dead-letter topic for subsequent business recovery or troubleshooting. For more information, see [Consumption retry and dead-letter messages](~~440356~~).
 	DeadLetterTargetTopic *string `json:"deadLetterTargetTopic,omitempty" xml:"deadLetterTargetTopic,omitempty"`
-	MaxRetryTimes         *int32  `json:"maxRetryTimes,omitempty" xml:"maxRetryTimes,omitempty"`
-	RetryPolicy           *string `json:"retryPolicy,omitempty" xml:"retryPolicy,omitempty"`
+	// The maximum number of retries.
+	MaxRetryTimes *int32 `json:"maxRetryTimes,omitempty" xml:"maxRetryTimes,omitempty"`
+	// The retry policy.
+	//
+	// Valid values:
+	//
+	// *   FixedRetryPolicy
+	//
+	//     <!-- -->
+	//
+	//     :
+	//
+	//     <!-- -->
+	//
+	//     Failed messages are retried at a fixed interval
+	//
+	//     <!-- -->
+	//
+	//     .
+	//
+	// *   DefaultRetryPolicy
+	//
+	//     <!-- -->
+	//
+	//     :
+	//
+	//     <!-- -->
+	//
+	//     Failed messages are retried at incremental intervals as the number of retries increases
+	//
+	//     <!-- -->
+	//
+	//     .
+	RetryPolicy *string `json:"retryPolicy,omitempty" xml:"retryPolicy,omitempty"`
 }
 
 func (s GetConsumerGroupResponseBodyDataConsumeRetryPolicy) String() string {
@@ -1138,14 +1446,22 @@ func (s *GetConsumerGroupResponse) SetBody(v *GetConsumerGroupResponseBody) *Get
 }
 
 type GetInstanceResponseBody struct {
-	Code           *string                      `json:"code,omitempty" xml:"code,omitempty"`
-	Data           *GetInstanceResponseBodyData `json:"data,omitempty" xml:"data,omitempty" type:"Struct"`
-	DynamicCode    *string                      `json:"dynamicCode,omitempty" xml:"dynamicCode,omitempty"`
-	DynamicMessage *string                      `json:"dynamicMessage,omitempty" xml:"dynamicMessage,omitempty"`
-	HttpStatusCode *int32                       `json:"httpStatusCode,omitempty" xml:"httpStatusCode,omitempty"`
-	Message        *string                      `json:"message,omitempty" xml:"message,omitempty"`
-	RequestId      *string                      `json:"requestId,omitempty" xml:"requestId,omitempty"`
-	Success        *bool                        `json:"success,omitempty" xml:"success,omitempty"`
+	// The error code returned if the call failed.
+	Code *string `json:"code,omitempty" xml:"code,omitempty"`
+	// The returned result.
+	Data *GetInstanceResponseBodyData `json:"data,omitempty" xml:"data,omitempty" type:"Struct"`
+	// The dynamic error code.
+	DynamicCode *string `json:"dynamicCode,omitempty" xml:"dynamicCode,omitempty"`
+	// The dynamic error message.
+	DynamicMessage *string `json:"dynamicMessage,omitempty" xml:"dynamicMessage,omitempty"`
+	// The HTTP status code returned.
+	HttpStatusCode *int32 `json:"httpStatusCode,omitempty" xml:"httpStatusCode,omitempty"`
+	// The error message.
+	Message *string `json:"message,omitempty" xml:"message,omitempty"`
+	// The ID of the request. Each request has a unique ID. You can use this ID to troubleshoot issues.
+	RequestId *string `json:"requestId,omitempty" xml:"requestId,omitempty"`
+	// Indicates whether the call was successful.
+	Success *bool `json:"success,omitempty" xml:"success,omitempty"`
 }
 
 func (s GetInstanceResponseBody) String() string {
@@ -1197,34 +1513,82 @@ func (s *GetInstanceResponseBody) SetSuccess(v bool) *GetInstanceResponseBody {
 }
 
 type GetInstanceResponseBodyData struct {
+	// The account information.
 	AccountInfo *GetInstanceResponseBodyDataAccountInfo `json:"accountInfo,omitempty" xml:"accountInfo,omitempty" type:"Struct"`
-	AclInfo     *GetInstanceResponseBodyDataAclInfo     `json:"aclInfo,omitempty" xml:"aclInfo,omitempty" type:"Struct"`
-	// BID
-	Bid             *string                                      `json:"bid,omitempty" xml:"bid,omitempty"`
-	CommodityCode   *string                                      `json:"commodityCode,omitempty" xml:"commodityCode,omitempty"`
-	CreateTime      *string                                      `json:"createTime,omitempty" xml:"createTime,omitempty"`
-	ExpireTime      *string                                      `json:"expireTime,omitempty" xml:"expireTime,omitempty"`
-	ExtConfig       *GetInstanceResponseBodyDataExtConfig        `json:"extConfig,omitempty" xml:"extConfig,omitempty" type:"Struct"`
-	GroupCount      *int64                                       `json:"groupCount,omitempty" xml:"groupCount,omitempty"`
-	InstanceId      *string                                      `json:"instanceId,omitempty" xml:"instanceId,omitempty"`
-	InstanceName    *string                                      `json:"instanceName,omitempty" xml:"instanceName,omitempty"`
-	InstanceQuotas  []*GetInstanceResponseBodyDataInstanceQuotas `json:"instanceQuotas,omitempty" xml:"instanceQuotas,omitempty" type:"Repeated"`
-	NetworkInfo     *GetInstanceResponseBodyDataNetworkInfo      `json:"networkInfo,omitempty" xml:"networkInfo,omitempty" type:"Struct"`
-	PaymentType     *string                                      `json:"paymentType,omitempty" xml:"paymentType,omitempty"`
-	ProductInfo     *GetInstanceResponseBodyDataProductInfo      `json:"productInfo,omitempty" xml:"productInfo,omitempty" type:"Struct"`
-	RegionId        *string                                      `json:"regionId,omitempty" xml:"regionId,omitempty"`
-	ReleaseTime     *string                                      `json:"releaseTime,omitempty" xml:"releaseTime,omitempty"`
-	Remark          *string                                      `json:"remark,omitempty" xml:"remark,omitempty"`
-	ResourceGroupId *string                                      `json:"resourceGroupId,omitempty" xml:"resourceGroupId,omitempty"`
-	SeriesCode      *string                                      `json:"seriesCode,omitempty" xml:"seriesCode,omitempty"`
-	ServiceCode     *string                                      `json:"serviceCode,omitempty" xml:"serviceCode,omitempty"`
-	Software        *GetInstanceResponseBodyDataSoftware         `json:"software,omitempty" xml:"software,omitempty" type:"Struct"`
-	StartTime       *string                                      `json:"startTime,omitempty" xml:"startTime,omitempty"`
-	Status          *string                                      `json:"status,omitempty" xml:"status,omitempty"`
-	SubSeriesCode   *string                                      `json:"subSeriesCode,omitempty" xml:"subSeriesCode,omitempty"`
-	TopicCount      *int64                                       `json:"topicCount,omitempty" xml:"topicCount,omitempty"`
-	UpdateTime      *string                                      `json:"updateTime,omitempty" xml:"updateTime,omitempty"`
-	UserId          *string                                      `json:"userId,omitempty" xml:"userId,omitempty"`
+	// The information about access control.
+	AclInfo *GetInstanceResponseBodyDataAclInfo `json:"aclInfo,omitempty" xml:"aclInfo,omitempty" type:"Struct"`
+	// The business ID (BID) of the commodity.
+	Bid *string `json:"bid,omitempty" xml:"bid,omitempty"`
+	// The commodity code of the instance. The commodity code of a ApsaraMQ for RocketMQ 5.0 instance has a similar format as ons_rmqsub_public_cn.
+	CommodityCode *string `json:"commodityCode,omitempty" xml:"commodityCode,omitempty"`
+	// The time when the instance was created.
+	CreateTime *string `json:"createTime,omitempty" xml:"createTime,omitempty"`
+	// The time when the instance expires.
+	ExpireTime *string `json:"expireTime,omitempty" xml:"expireTime,omitempty"`
+	// The extended configurations. We recommend you configure the productInfo, internetInfo, or aclInfo parameter instead of this parameter.
+	ExtConfig  *GetInstanceResponseBodyDataExtConfig `json:"extConfig,omitempty" xml:"extConfig,omitempty" type:"Struct"`
+	GroupCount *int64                                `json:"groupCount,omitempty" xml:"groupCount,omitempty"`
+	// The ID of the instance
+	InstanceId *string `json:"instanceId,omitempty" xml:"instanceId,omitempty"`
+	// The name of the instance.
+	InstanceName *string `json:"instanceName,omitempty" xml:"instanceName,omitempty"`
+	// The quotas in the instance.
+	InstanceQuotas []*GetInstanceResponseBodyDataInstanceQuotas `json:"instanceQuotas,omitempty" xml:"instanceQuotas,omitempty" type:"Repeated"`
+	// The network information.
+	NetworkInfo *GetInstanceResponseBodyDataNetworkInfo `json:"networkInfo,omitempty" xml:"networkInfo,omitempty" type:"Struct"`
+	// The billing method of the instance.
+	//
+	// Valid values:
+	//
+	// *   PayAsYouGo: pay-as-you-go
+	// *   Subscription
+	PaymentType *string `json:"paymentType,omitempty" xml:"paymentType,omitempty"`
+	// The extended configurations of the instance.
+	ProductInfo *GetInstanceResponseBodyDataProductInfo `json:"productInfo,omitempty" xml:"productInfo,omitempty" type:"Struct"`
+	// The ID of the region in which the instance resides.
+	RegionId *string `json:"regionId,omitempty" xml:"regionId,omitempty"`
+	// The time when the instance was released.
+	ReleaseTime *string `json:"releaseTime,omitempty" xml:"releaseTime,omitempty"`
+	// The description of the instance.
+	Remark *string `json:"remark,omitempty" xml:"remark,omitempty"`
+	// The ID of the resource group.
+	ResourceGroupId *string `json:"resourceGroupId,omitempty" xml:"resourceGroupId,omitempty"`
+	// The primary edition of the instance. For information about the differences between primary edition instances, see [Instance selection](~~444722~~).
+	//
+	// Valid values:
+	//
+	// *   standard: Standard Edition
+	// *   ultimate: Enterprise Platinum Edition
+	// *   professional: Professional Edition
+	SeriesCode *string `json:"seriesCode,omitempty" xml:"seriesCode,omitempty"`
+	// The code of the service to which the instance belongs. The service code of ApsaraMQ for RocketMQ is rmq.
+	ServiceCode *string                              `json:"serviceCode,omitempty" xml:"serviceCode,omitempty"`
+	Software    *GetInstanceResponseBodyDataSoftware `json:"software,omitempty" xml:"software,omitempty" type:"Struct"`
+	// The time when the instance was started.
+	StartTime *string `json:"startTime,omitempty" xml:"startTime,omitempty"`
+	// The status of the instance.
+	//
+	// Valid values:
+	//
+	// *   RELEASED
+	// *   RUNNING
+	// *   STOPPED
+	// *   CHANGING
+	// *   CREATING
+	Status *string `json:"status,omitempty" xml:"status,omitempty"`
+	// The sub-category edition of the instance. For information about the differences between sub-category edition instances, see [Instance selection](~~444722~~).
+	//
+	// Valid values:
+	//
+	// *   cluster_ha: Cluster High-availability Edition
+	// *   single_node: Standalone Edition
+	SubSeriesCode *string                            `json:"subSeriesCode,omitempty" xml:"subSeriesCode,omitempty"`
+	Tags          []*GetInstanceResponseBodyDataTags `json:"tags,omitempty" xml:"tags,omitempty" type:"Repeated"`
+	TopicCount    *int64                             `json:"topicCount,omitempty" xml:"topicCount,omitempty"`
+	// The time when the instance was last modified.
+	UpdateTime *string `json:"updateTime,omitempty" xml:"updateTime,omitempty"`
+	// The ID of the user who owns the instance.
+	UserId *string `json:"userId,omitempty" xml:"userId,omitempty"`
 }
 
 func (s GetInstanceResponseBodyData) String() string {
@@ -1355,6 +1719,11 @@ func (s *GetInstanceResponseBodyData) SetSubSeriesCode(v string) *GetInstanceRes
 	return s
 }
 
+func (s *GetInstanceResponseBodyData) SetTags(v []*GetInstanceResponseBodyDataTags) *GetInstanceResponseBodyData {
+	s.Tags = v
+	return s
+}
+
 func (s *GetInstanceResponseBodyData) SetTopicCount(v int64) *GetInstanceResponseBodyData {
 	s.TopicCount = &v
 	return s
@@ -1371,6 +1740,7 @@ func (s *GetInstanceResponseBodyData) SetUserId(v string) *GetInstanceResponseBo
 }
 
 type GetInstanceResponseBodyDataAccountInfo struct {
+	// The username of the instance. If you access a ApsaraMQ for RocketMQ instance over the Internet, you must configure the username and password of the instance in the SDK code for authentication.
 	Username *string `json:"username,omitempty" xml:"username,omitempty"`
 }
 
@@ -1388,6 +1758,11 @@ func (s *GetInstanceResponseBodyDataAccountInfo) SetUsername(v string) *GetInsta
 }
 
 type GetInstanceResponseBodyDataAclInfo struct {
+	// The authentication type of the instance.
+	//
+	// Valid values:
+	//
+	// *   default: intelligent authentication
 	AclType *string `json:"aclType,omitempty" xml:"aclType,omitempty"`
 }
 
@@ -1405,15 +1780,61 @@ func (s *GetInstanceResponseBodyDataAclInfo) SetAclType(v string) *GetInstanceRe
 }
 
 type GetInstanceResponseBodyDataExtConfig struct {
-	AclType              *string  `json:"aclType,omitempty" xml:"aclType,omitempty"`
-	AutoScaling          *bool    `json:"autoScaling,omitempty" xml:"autoScaling,omitempty"`
-	FlowOutBandwidth     *int32   `json:"flowOutBandwidth,omitempty" xml:"flowOutBandwidth,omitempty"`
-	FlowOutType          *string  `json:"flowOutType,omitempty" xml:"flowOutType,omitempty"`
-	InternetSpec         *string  `json:"internetSpec,omitempty" xml:"internetSpec,omitempty"`
-	MessageRetentionTime *int32   `json:"messageRetentionTime,omitempty" xml:"messageRetentionTime,omitempty"`
-	MsgProcessSpec       *string  `json:"msgProcessSpec,omitempty" xml:"msgProcessSpec,omitempty"`
-	SendReceiveRatio     *float32 `json:"sendReceiveRatio,omitempty" xml:"sendReceiveRatio,omitempty"`
-	SupportAutoScaling   *bool    `json:"supportAutoScaling,omitempty" xml:"supportAutoScaling,omitempty"`
+	// The authentication type of the instance.
+	//
+	// Valid values:
+	//
+	// *   default: intelligent authentication
+	AclType *string `json:"aclType,omitempty" xml:"aclType,omitempty"`
+	// Specifies whether to enable the elastic TPS feature for the instance.
+	//
+	// Valid values:
+	//
+	// *   true: enable
+	// *   false: disable
+	//
+	// This parameter is valid only when the supportAutoScaling parameter is set to enable.
+	AutoScaling *bool `json:"autoScaling,omitempty" xml:"autoScaling,omitempty"`
+	// The Internet bandwidth. Unit: MB/s.
+	FlowOutBandwidth *int32 `json:"flowOutBandwidth,omitempty" xml:"flowOutBandwidth,omitempty"`
+	// The metering method for Internet usage.
+	//
+	// Valid values:
+	//
+	// *   PayByTraffic: pay-by-traffic
+	// *   paybybandwidth: pay-by-bandwidth
+	// *   uninvolved: N/A
+	FlowOutType *string `json:"flowOutType,omitempty" xml:"flowOutType,omitempty"`
+	// Specifies whether to enable the Internet access feature.
+	//
+	// Valid values:
+	//
+	// *   enable
+	// *   disable
+	//
+	// By default, ApsaraMQ for RocketMQ instances are accessed in virtual private clouds (VPCs). If you enable the Internet access feature, you are charged for Internet outbound bandwidth. For more information, see [Internet access fee](~~427240~~).
+	InternetSpec *string `json:"internetSpec,omitempty" xml:"internetSpec,omitempty"`
+	// The retention period of messages. Unit: hours.
+	//
+	// For information about the valid values of this parameter, see the "Limits on resource quotas" section in [Usage limits](~~440347~~).
+	//
+	// The storage of messages in ApsaraMQ for RocketMQ is serverless and scalable. You are charged for message storage based on your actual usage. You can change the retention period of messages to adjust storage capacity. For more information, see [Storage fee](~~427238~~).
+	MessageRetentionTime *int32 `json:"messageRetentionTime,omitempty" xml:"messageRetentionTime,omitempty"`
+	// The computing specification that is used to send and receive messages. For information about the upper limit of TPS, see [Instance specifications](~~444715~~).
+	MsgProcessSpec *string `json:"msgProcessSpec,omitempty" xml:"msgProcessSpec,omitempty"`
+	// The ratio between sent messages and received messages in the instance.
+	SendReceiveRatio *float32 `json:"sendReceiveRatio,omitempty" xml:"sendReceiveRatio,omitempty"`
+	// Specifies whether the elastic TPS feature is supported by the instance.
+	//
+	// Valid values:
+	//
+	// *   true: enable
+	// *   false: disable
+	//
+	// After you enable the elastic TPS feature for a ApsaraMQ for RocketMQ instance, you can use a specific amount of TPS that exceeds the specification limit. You are charged for the elastic TPS feature. For more information, see [Computing fee](~~427237~~).
+	//
+	// > The elastic TPS feature is supported only by specific instance editions. For more information, see [Instance specifications](~~444715~~).
+	SupportAutoScaling *bool `json:"supportAutoScaling,omitempty" xml:"supportAutoScaling,omitempty"`
 }
 
 func (s GetInstanceResponseBodyDataExtConfig) String() string {
@@ -1470,10 +1891,18 @@ func (s *GetInstanceResponseBodyDataExtConfig) SetSupportAutoScaling(v bool) *Ge
 }
 
 type GetInstanceResponseBodyDataInstanceQuotas struct {
-	FreeCount  *float64 `json:"freeCount,omitempty" xml:"freeCount,omitempty"`
-	QuotaName  *string  `json:"quotaName,omitempty" xml:"quotaName,omitempty"`
+	// The number of free topics in the instance.
+	FreeCount *float64 `json:"freeCount,omitempty" xml:"freeCount,omitempty"`
+	// The name of the quota.
+	//
+	// Valid values:
+	//
+	// *   TOPIC_COUNT: the number of topics that you can create in the instance
+	QuotaName *string `json:"quotaName,omitempty" xml:"quotaName,omitempty"`
+	// The total number of topics in the instance.
 	TotalCount *float64 `json:"totalCount,omitempty" xml:"totalCount,omitempty"`
-	UsedCount  *float64 `json:"usedCount,omitempty" xml:"usedCount,omitempty"`
+	// The number of used topics in the instance.
+	UsedCount *float64 `json:"usedCount,omitempty" xml:"usedCount,omitempty"`
 }
 
 func (s GetInstanceResponseBodyDataInstanceQuotas) String() string {
@@ -1505,9 +1934,12 @@ func (s *GetInstanceResponseBodyDataInstanceQuotas) SetUsedCount(v float64) *Get
 }
 
 type GetInstanceResponseBodyDataNetworkInfo struct {
-	Endpoints    []*GetInstanceResponseBodyDataNetworkInfoEndpoints  `json:"endpoints,omitempty" xml:"endpoints,omitempty" type:"Repeated"`
+	// The information about endpoints.
+	Endpoints []*GetInstanceResponseBodyDataNetworkInfoEndpoints `json:"endpoints,omitempty" xml:"endpoints,omitempty" type:"Repeated"`
+	// The information about the Internet.
 	InternetInfo *GetInstanceResponseBodyDataNetworkInfoInternetInfo `json:"internetInfo,omitempty" xml:"internetInfo,omitempty" type:"Struct"`
-	VpcInfo      *GetInstanceResponseBodyDataNetworkInfoVpcInfo      `json:"vpcInfo,omitempty" xml:"vpcInfo,omitempty" type:"Struct"`
+	// The information about the VPC.
+	VpcInfo *GetInstanceResponseBodyDataNetworkInfoVpcInfo `json:"vpcInfo,omitempty" xml:"vpcInfo,omitempty" type:"Struct"`
 }
 
 func (s GetInstanceResponseBodyDataNetworkInfo) String() string {
@@ -1534,9 +1966,22 @@ func (s *GetInstanceResponseBodyDataNetworkInfo) SetVpcInfo(v *GetInstanceRespon
 }
 
 type GetInstanceResponseBodyDataNetworkInfoEndpoints struct {
-	EndpointType *string   `json:"endpointType,omitempty" xml:"endpointType,omitempty"`
-	EndpointUrl  *string   `json:"endpointUrl,omitempty" xml:"endpointUrl,omitempty"`
-	IpWhitelist  []*string `json:"ipWhitelist,omitempty" xml:"ipWhitelist,omitempty" type:"Repeated"`
+	// The type of the endpoint that is used to access the instance.
+	//
+	// Valid values:
+	//
+	// *   TCP_VPC: VPC endpoint
+	// *   TCP_INTERNET: public endpoint
+	EndpointType *string `json:"endpointType,omitempty" xml:"endpointType,omitempty"`
+	// The endpoint that is used to access the instance.
+	EndpointUrl *string `json:"endpointUrl,omitempty" xml:"endpointUrl,omitempty"`
+	// The whitelist that includes the IP addresses that are allowed to access the ApsaraMQ for RocketMQ broker over the Internet. This parameter can be configured only when you use a public endpoint to access the ApsaraMQ for RocketMQ broker.
+	//
+	// *   If this parameter is not configured, all IP addresses are allowed to access the ApsaraMQ for RocketMQ broker over the Internet.
+	// *   If this parameter is configured, only the IP addresses that are included in the whitelist can access the ApsaraMQ for RocketMQ broker over the Internet.
+	//
+	// We recommend that you configure the internetInfo.ipWhitelist parameter instead of this parameter.
+	IpWhitelist []*string `json:"ipWhitelist,omitempty" xml:"ipWhitelist,omitempty" type:"Repeated"`
 }
 
 func (s GetInstanceResponseBodyDataNetworkInfoEndpoints) String() string {
@@ -1563,10 +2008,29 @@ func (s *GetInstanceResponseBodyDataNetworkInfoEndpoints) SetIpWhitelist(v []*st
 }
 
 type GetInstanceResponseBodyDataNetworkInfoInternetInfo struct {
-	FlowOutBandwidth *int32    `json:"flowOutBandwidth,omitempty" xml:"flowOutBandwidth,omitempty"`
-	FlowOutType      *string   `json:"flowOutType,omitempty" xml:"flowOutType,omitempty"`
-	InternetSpec     *string   `json:"internetSpec,omitempty" xml:"internetSpec,omitempty"`
-	IpWhitelist      []*string `json:"ipWhitelist,omitempty" xml:"ipWhitelist,omitempty" type:"Repeated"`
+	// The Internet bandwidth. Unit: MB/s.
+	FlowOutBandwidth *int32 `json:"flowOutBandwidth,omitempty" xml:"flowOutBandwidth,omitempty"`
+	// The metering method for Internet usage.
+	//
+	// Valid values:
+	//
+	// *   PayByBandwidth: pay-by-bandwidth. If the Internet access feature is enabled, specify this value for the parameter.
+	// *   uninvolved: N/A. If the Internet access feature is not enabled, specify this value for the parameter.
+	FlowOutType *string `json:"flowOutType,omitempty" xml:"flowOutType,omitempty"`
+	// Specifies whether to enable the Internet access feature.
+	//
+	// Valid values:
+	//
+	// *   enable
+	// *   disable
+	//
+	// By default, ApsaraMQ for RocketMQ instances are accessed in virtual private clouds (VPCs). If you enable the Internet access feature, you are charged for Internet outbound bandwidth. For more information, see [Internet access fee](~~427240~~).
+	InternetSpec *string `json:"internetSpec,omitempty" xml:"internetSpec,omitempty"`
+	// The whitelist that includes the IP addresses that are allowed to access the ApsaraMQ for RocketMQ broker.
+	//
+	// *   If this parameter is not configured, all IP addresses are allowed to access the ApsaraMQ for RocketMQ broker over the Internet.
+	// *   If this parameter is configured, only the IP addresses that are included in the whitelist can access the ApsaraMQ for RocketMQ broker over the Internet.
+	IpWhitelist []*string `json:"ipWhitelist,omitempty" xml:"ipWhitelist,omitempty" type:"Repeated"`
 }
 
 func (s GetInstanceResponseBodyDataNetworkInfoInternetInfo) String() string {
@@ -1598,8 +2062,10 @@ func (s *GetInstanceResponseBodyDataNetworkInfoInternetInfo) SetIpWhitelist(v []
 }
 
 type GetInstanceResponseBodyDataNetworkInfoVpcInfo struct {
+	// The ID of the vSwitch with which the instance is associated.
 	VSwitchId *string `json:"vSwitchId,omitempty" xml:"vSwitchId,omitempty"`
-	VpcId     *string `json:"vpcId,omitempty" xml:"vpcId,omitempty"`
+	// The ID of the VPC with which the instance is associated.
+	VpcId *string `json:"vpcId,omitempty" xml:"vpcId,omitempty"`
 }
 
 func (s GetInstanceResponseBodyDataNetworkInfoVpcInfo) String() string {
@@ -1621,11 +2087,36 @@ func (s *GetInstanceResponseBodyDataNetworkInfoVpcInfo) SetVpcId(v string) *GetI
 }
 
 type GetInstanceResponseBodyDataProductInfo struct {
-	AutoScaling          *bool    `json:"autoScaling,omitempty" xml:"autoScaling,omitempty"`
-	MessageRetentionTime *int32   `json:"messageRetentionTime,omitempty" xml:"messageRetentionTime,omitempty"`
-	MsgProcessSpec       *string  `json:"msgProcessSpec,omitempty" xml:"msgProcessSpec,omitempty"`
-	SendReceiveRatio     *float32 `json:"sendReceiveRatio,omitempty" xml:"sendReceiveRatio,omitempty"`
-	SupportAutoScaling   *bool    `json:"supportAutoScaling,omitempty" xml:"supportAutoScaling,omitempty"`
+	// Specifies whether to enable the elastic TPS feature for the instance.
+	//
+	// Valid values:
+	//
+	// *   true: enable
+	// *   false: disable
+	//
+	// This parameter is valid only when the supportAutoScaling parameter is set to enable.
+	AutoScaling *bool `json:"autoScaling,omitempty" xml:"autoScaling,omitempty"`
+	// The retention period of messages. Unit: hours.
+	//
+	// For information about the valid values of this parameter, see the "Limits on resource quotas" section in [Usage limits](~~440347~~).
+	//
+	// The storage of messages in ApsaraMQ for RocketMQ is serverless and scalable. You are charged for message storage based on your actual usage. You can change the retention period of messages to adjust storage capacity. For more information, see [Storage fee](~~427238~~).
+	MessageRetentionTime *int32 `json:"messageRetentionTime,omitempty" xml:"messageRetentionTime,omitempty"`
+	// The computing specification that is used to send and receive messages. For information about the upper limit of TPS, see [Instance specifications](~~444715~~).
+	MsgProcessSpec *string `json:"msgProcessSpec,omitempty" xml:"msgProcessSpec,omitempty"`
+	// The ratio between sent messages and received messages in the instance.
+	SendReceiveRatio *float32 `json:"sendReceiveRatio,omitempty" xml:"sendReceiveRatio,omitempty"`
+	// Specifies whether to enable the elastic TPS feature for the instance.
+	//
+	// Valid values:
+	//
+	// *   true: enable
+	// *   false: disable
+	//
+	// After you enable the elastic TPS feature for a ApsaraMQ for RocketMQ instance, you can use a specific amount of TPS that exceeds the specification limit. You are charged for the elastic TPS feature. For more information, see [Computing fee](~~427237~~).
+	//
+	// > The elastic TPS feature is supported by only specific instance editions. For more information, see [Instance specifications](~~444715~~).
+	SupportAutoScaling *bool `json:"supportAutoScaling,omitempty" xml:"supportAutoScaling,omitempty"`
 }
 
 func (s GetInstanceResponseBodyDataProductInfo) String() string {
@@ -1690,6 +2181,29 @@ func (s *GetInstanceResponseBodyDataSoftware) SetUpgradeMethod(v string) *GetIns
 	return s
 }
 
+type GetInstanceResponseBodyDataTags struct {
+	Key   *string `json:"key,omitempty" xml:"key,omitempty"`
+	Value *string `json:"value,omitempty" xml:"value,omitempty"`
+}
+
+func (s GetInstanceResponseBodyDataTags) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetInstanceResponseBodyDataTags) GoString() string {
+	return s.String()
+}
+
+func (s *GetInstanceResponseBodyDataTags) SetKey(v string) *GetInstanceResponseBodyDataTags {
+	s.Key = &v
+	return s
+}
+
+func (s *GetInstanceResponseBodyDataTags) SetValue(v string) *GetInstanceResponseBodyDataTags {
+	s.Value = &v
+	return s
+}
+
 type GetInstanceResponse struct {
 	Headers    map[string]*string       `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
 	StatusCode *int32                   `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
@@ -1720,14 +2234,22 @@ func (s *GetInstanceResponse) SetBody(v *GetInstanceResponseBody) *GetInstanceRe
 }
 
 type GetTopicResponseBody struct {
-	Code           *string                   `json:"code,omitempty" xml:"code,omitempty"`
-	Data           *GetTopicResponseBodyData `json:"data,omitempty" xml:"data,omitempty" type:"Struct"`
-	DynamicCode    *string                   `json:"dynamicCode,omitempty" xml:"dynamicCode,omitempty"`
-	DynamicMessage *string                   `json:"dynamicMessage,omitempty" xml:"dynamicMessage,omitempty"`
-	HttpStatusCode *int32                    `json:"httpStatusCode,omitempty" xml:"httpStatusCode,omitempty"`
-	Message        *string                   `json:"message,omitempty" xml:"message,omitempty"`
-	RequestId      *string                   `json:"requestId,omitempty" xml:"requestId,omitempty"`
-	Success        *bool                     `json:"success,omitempty" xml:"success,omitempty"`
+	// The error code.
+	Code *string `json:"code,omitempty" xml:"code,omitempty"`
+	// The result data that is returned.
+	Data *GetTopicResponseBodyData `json:"data,omitempty" xml:"data,omitempty" type:"Struct"`
+	// The dynamic error code.
+	DynamicCode *string `json:"dynamicCode,omitempty" xml:"dynamicCode,omitempty"`
+	// The dynamic error message.
+	DynamicMessage *string `json:"dynamicMessage,omitempty" xml:"dynamicMessage,omitempty"`
+	// The HTTP status code.
+	HttpStatusCode *int32 `json:"httpStatusCode,omitempty" xml:"httpStatusCode,omitempty"`
+	// The error message.
+	Message *string `json:"message,omitempty" xml:"message,omitempty"`
+	// The ID of the request. The system generates a unique ID for each request. You can troubleshoot issues based on the request ID.
+	RequestId *string `json:"requestId,omitempty" xml:"requestId,omitempty"`
+	// Indicates whether the call is successful.
+	Success *bool `json:"success,omitempty" xml:"success,omitempty"`
 }
 
 func (s GetTopicResponseBody) String() string {
@@ -1779,14 +2301,34 @@ func (s *GetTopicResponseBody) SetSuccess(v bool) *GetTopicResponseBody {
 }
 
 type GetTopicResponseBodyData struct {
-	CreateTime  *string `json:"createTime,omitempty" xml:"createTime,omitempty"`
-	InstanceId  *string `json:"instanceId,omitempty" xml:"instanceId,omitempty"`
+	// The time when the topic was created.
+	CreateTime *string `json:"createTime,omitempty" xml:"createTime,omitempty"`
+	// The ID of the instance.
+	InstanceId *string `json:"instanceId,omitempty" xml:"instanceId,omitempty"`
+	// The message type of the topic.
+	//
+	// Valid values:
+	//
+	// *   TRANSACTION: transactional message
+	// *   FIFO: ordered message
+	// *   DELAY: scheduled or delayed message
+	// *   NORMAL: normal message
 	MessageType *string `json:"messageType,omitempty" xml:"messageType,omitempty"`
-	RegionId    *string `json:"regionId,omitempty" xml:"regionId,omitempty"`
-	Remark      *string `json:"remark,omitempty" xml:"remark,omitempty"`
-	Status      *string `json:"status,omitempty" xml:"status,omitempty"`
-	TopicName   *string `json:"topicName,omitempty" xml:"topicName,omitempty"`
-	UpdateTime  *string `json:"updateTime,omitempty" xml:"updateTime,omitempty"`
+	// The ID of the region in which the instance resides.
+	RegionId *string `json:"regionId,omitempty" xml:"regionId,omitempty"`
+	// The remarks on the topic.
+	Remark *string `json:"remark,omitempty" xml:"remark,omitempty"`
+	// The state of the topic.
+	//
+	// Valid values:
+	//
+	// *   RUNNING: The topic is running.
+	// *   CREATING: The topic is being created.
+	Status *string `json:"status,omitempty" xml:"status,omitempty"`
+	// The name of the topic.
+	TopicName *string `json:"topicName,omitempty" xml:"topicName,omitempty"`
+	// The time when the topic was last updated.
+	UpdateTime *string `json:"updateTime,omitempty" xml:"updateTime,omitempty"`
 }
 
 func (s GetTopicResponseBodyData) String() string {
@@ -1866,10 +2408,154 @@ func (s *GetTopicResponse) SetBody(v *GetTopicResponseBody) *GetTopicResponse {
 	return s
 }
 
+type ListConsumerGroupSubscriptionsResponseBody struct {
+	Code           *string                                           `json:"code,omitempty" xml:"code,omitempty"`
+	Data           []*ListConsumerGroupSubscriptionsResponseBodyData `json:"data,omitempty" xml:"data,omitempty" type:"Repeated"`
+	DynamicCode    *string                                           `json:"dynamicCode,omitempty" xml:"dynamicCode,omitempty"`
+	DynamicMessage *string                                           `json:"dynamicMessage,omitempty" xml:"dynamicMessage,omitempty"`
+	HttpStatusCode *int32                                            `json:"httpStatusCode,omitempty" xml:"httpStatusCode,omitempty"`
+	Message        *string                                           `json:"message,omitempty" xml:"message,omitempty"`
+	RequestId      *string                                           `json:"requestId,omitempty" xml:"requestId,omitempty"`
+	Success        *bool                                             `json:"success,omitempty" xml:"success,omitempty"`
+}
+
+func (s ListConsumerGroupSubscriptionsResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListConsumerGroupSubscriptionsResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *ListConsumerGroupSubscriptionsResponseBody) SetCode(v string) *ListConsumerGroupSubscriptionsResponseBody {
+	s.Code = &v
+	return s
+}
+
+func (s *ListConsumerGroupSubscriptionsResponseBody) SetData(v []*ListConsumerGroupSubscriptionsResponseBodyData) *ListConsumerGroupSubscriptionsResponseBody {
+	s.Data = v
+	return s
+}
+
+func (s *ListConsumerGroupSubscriptionsResponseBody) SetDynamicCode(v string) *ListConsumerGroupSubscriptionsResponseBody {
+	s.DynamicCode = &v
+	return s
+}
+
+func (s *ListConsumerGroupSubscriptionsResponseBody) SetDynamicMessage(v string) *ListConsumerGroupSubscriptionsResponseBody {
+	s.DynamicMessage = &v
+	return s
+}
+
+func (s *ListConsumerGroupSubscriptionsResponseBody) SetHttpStatusCode(v int32) *ListConsumerGroupSubscriptionsResponseBody {
+	s.HttpStatusCode = &v
+	return s
+}
+
+func (s *ListConsumerGroupSubscriptionsResponseBody) SetMessage(v string) *ListConsumerGroupSubscriptionsResponseBody {
+	s.Message = &v
+	return s
+}
+
+func (s *ListConsumerGroupSubscriptionsResponseBody) SetRequestId(v string) *ListConsumerGroupSubscriptionsResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *ListConsumerGroupSubscriptionsResponseBody) SetSuccess(v bool) *ListConsumerGroupSubscriptionsResponseBody {
+	s.Success = &v
+	return s
+}
+
+type ListConsumerGroupSubscriptionsResponseBodyData struct {
+	ConsumerGroupId      *string `json:"consumerGroupId,omitempty" xml:"consumerGroupId,omitempty"`
+	FilterExpression     *string `json:"filterExpression,omitempty" xml:"filterExpression,omitempty"`
+	FilterExpressionType *string `json:"filterExpressionType,omitempty" xml:"filterExpressionType,omitempty"`
+	MessageModel         *string `json:"messageModel,omitempty" xml:"messageModel,omitempty"`
+	SubscriptionStatus   *string `json:"subscriptionStatus,omitempty" xml:"subscriptionStatus,omitempty"`
+	TopicCreated         *bool   `json:"topicCreated,omitempty" xml:"topicCreated,omitempty"`
+	TopicName            *string `json:"topicName,omitempty" xml:"topicName,omitempty"`
+}
+
+func (s ListConsumerGroupSubscriptionsResponseBodyData) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListConsumerGroupSubscriptionsResponseBodyData) GoString() string {
+	return s.String()
+}
+
+func (s *ListConsumerGroupSubscriptionsResponseBodyData) SetConsumerGroupId(v string) *ListConsumerGroupSubscriptionsResponseBodyData {
+	s.ConsumerGroupId = &v
+	return s
+}
+
+func (s *ListConsumerGroupSubscriptionsResponseBodyData) SetFilterExpression(v string) *ListConsumerGroupSubscriptionsResponseBodyData {
+	s.FilterExpression = &v
+	return s
+}
+
+func (s *ListConsumerGroupSubscriptionsResponseBodyData) SetFilterExpressionType(v string) *ListConsumerGroupSubscriptionsResponseBodyData {
+	s.FilterExpressionType = &v
+	return s
+}
+
+func (s *ListConsumerGroupSubscriptionsResponseBodyData) SetMessageModel(v string) *ListConsumerGroupSubscriptionsResponseBodyData {
+	s.MessageModel = &v
+	return s
+}
+
+func (s *ListConsumerGroupSubscriptionsResponseBodyData) SetSubscriptionStatus(v string) *ListConsumerGroupSubscriptionsResponseBodyData {
+	s.SubscriptionStatus = &v
+	return s
+}
+
+func (s *ListConsumerGroupSubscriptionsResponseBodyData) SetTopicCreated(v bool) *ListConsumerGroupSubscriptionsResponseBodyData {
+	s.TopicCreated = &v
+	return s
+}
+
+func (s *ListConsumerGroupSubscriptionsResponseBodyData) SetTopicName(v string) *ListConsumerGroupSubscriptionsResponseBodyData {
+	s.TopicName = &v
+	return s
+}
+
+type ListConsumerGroupSubscriptionsResponse struct {
+	Headers    map[string]*string                          `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                                      `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *ListConsumerGroupSubscriptionsResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s ListConsumerGroupSubscriptionsResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListConsumerGroupSubscriptionsResponse) GoString() string {
+	return s.String()
+}
+
+func (s *ListConsumerGroupSubscriptionsResponse) SetHeaders(v map[string]*string) *ListConsumerGroupSubscriptionsResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *ListConsumerGroupSubscriptionsResponse) SetStatusCode(v int32) *ListConsumerGroupSubscriptionsResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *ListConsumerGroupSubscriptionsResponse) SetBody(v *ListConsumerGroupSubscriptionsResponseBody) *ListConsumerGroupSubscriptionsResponse {
+	s.Body = v
+	return s
+}
+
 type ListConsumerGroupsRequest struct {
-	Filter     *string `json:"filter,omitempty" xml:"filter,omitempty"`
-	PageNumber *int32  `json:"pageNumber,omitempty" xml:"pageNumber,omitempty"`
-	PageSize   *int32  `json:"pageSize,omitempty" xml:"pageSize,omitempty"`
+	// The condition that you want to use to filter consumer groups in the instance. If you leave this parameter empty, all consumer groups in the instance are queried.
+	Filter *string `json:"filter,omitempty" xml:"filter,omitempty"`
+	// The number of the page to return.
+	PageNumber *int32 `json:"pageNumber,omitempty" xml:"pageNumber,omitempty"`
+	// The number of entries to return on each page.
+	PageSize *int32 `json:"pageSize,omitempty" xml:"pageSize,omitempty"`
 }
 
 func (s ListConsumerGroupsRequest) String() string {
@@ -1896,14 +2582,22 @@ func (s *ListConsumerGroupsRequest) SetPageSize(v int32) *ListConsumerGroupsRequ
 }
 
 type ListConsumerGroupsResponseBody struct {
-	Code           *string                             `json:"code,omitempty" xml:"code,omitempty"`
-	Data           *ListConsumerGroupsResponseBodyData `json:"data,omitempty" xml:"data,omitempty" type:"Struct"`
-	DynamicCode    *string                             `json:"dynamicCode,omitempty" xml:"dynamicCode,omitempty"`
-	DynamicMessage *string                             `json:"dynamicMessage,omitempty" xml:"dynamicMessage,omitempty"`
-	HttpStatusCode *int32                              `json:"httpStatusCode,omitempty" xml:"httpStatusCode,omitempty"`
-	Message        *string                             `json:"message,omitempty" xml:"message,omitempty"`
-	RequestId      *string                             `json:"requestId,omitempty" xml:"requestId,omitempty"`
-	Success        *bool                               `json:"success,omitempty" xml:"success,omitempty"`
+	// The error code.
+	Code *string `json:"code,omitempty" xml:"code,omitempty"`
+	// The result data that is returned.
+	Data *ListConsumerGroupsResponseBodyData `json:"data,omitempty" xml:"data,omitempty" type:"Struct"`
+	// The dynamic error code.
+	DynamicCode *string `json:"dynamicCode,omitempty" xml:"dynamicCode,omitempty"`
+	// The dynamic error message.
+	DynamicMessage *string `json:"dynamicMessage,omitempty" xml:"dynamicMessage,omitempty"`
+	// The HTTP status code.
+	HttpStatusCode *int32 `json:"httpStatusCode,omitempty" xml:"httpStatusCode,omitempty"`
+	// The error message.
+	Message *string `json:"message,omitempty" xml:"message,omitempty"`
+	// The ID of the request. The system generates a unique ID for each request. You can troubleshoot issues based on the request ID.
+	RequestId *string `json:"requestId,omitempty" xml:"requestId,omitempty"`
+	// Indicates whether the call is successful.
+	Success *bool `json:"success,omitempty" xml:"success,omitempty"`
 }
 
 func (s ListConsumerGroupsResponseBody) String() string {
@@ -1955,10 +2649,14 @@ func (s *ListConsumerGroupsResponseBody) SetSuccess(v bool) *ListConsumerGroupsR
 }
 
 type ListConsumerGroupsResponseBodyData struct {
-	List       []*ListConsumerGroupsResponseBodyDataList `json:"list,omitempty" xml:"list,omitempty" type:"Repeated"`
-	PageNumber *int64                                    `json:"pageNumber,omitempty" xml:"pageNumber,omitempty"`
-	PageSize   *int64                                    `json:"pageSize,omitempty" xml:"pageSize,omitempty"`
-	TotalCount *int64                                    `json:"totalCount,omitempty" xml:"totalCount,omitempty"`
+	// The paginated data.
+	List []*ListConsumerGroupsResponseBodyDataList `json:"list,omitempty" xml:"list,omitempty" type:"Repeated"`
+	// The page number of the returned page.
+	PageNumber *int64 `json:"pageNumber,omitempty" xml:"pageNumber,omitempty"`
+	// The number of entries returned per page.
+	PageSize *int64 `json:"pageSize,omitempty" xml:"pageSize,omitempty"`
+	// The total number of returned entries.
+	TotalCount *int64 `json:"totalCount,omitempty" xml:"totalCount,omitempty"`
 }
 
 func (s ListConsumerGroupsResponseBodyData) String() string {
@@ -1990,13 +2688,50 @@ func (s *ListConsumerGroupsResponseBodyData) SetTotalCount(v int64) *ListConsume
 }
 
 type ListConsumerGroupsResponseBodyDataList struct {
+	// The ID of the consumer group.
 	ConsumerGroupId *string `json:"consumerGroupId,omitempty" xml:"consumerGroupId,omitempty"`
-	CreateTime      *string `json:"createTime,omitempty" xml:"createTime,omitempty"`
-	InstanceId      *string `json:"instanceId,omitempty" xml:"instanceId,omitempty"`
-	RegionId        *string `json:"regionId,omitempty" xml:"regionId,omitempty"`
-	Remark          *string `json:"remark,omitempty" xml:"remark,omitempty"`
-	Status          *string `json:"status,omitempty" xml:"status,omitempty"`
-	UpdateTime      *string `json:"updateTime,omitempty" xml:"updateTime,omitempty"`
+	// The time when the consumer group was created.
+	CreateTime *string `json:"createTime,omitempty" xml:"createTime,omitempty"`
+	// The ID of the instance.
+	InstanceId *string `json:"instanceId,omitempty" xml:"instanceId,omitempty"`
+	// The ID of the region in which the instance resides.
+	RegionId *string `json:"regionId,omitempty" xml:"regionId,omitempty"`
+	// The remarks on the consumer group.
+	Remark *string `json:"remark,omitempty" xml:"remark,omitempty"`
+	// The state of the consumer group.
+	//
+	// Valid values:
+	//
+	// *   RUNNING
+	//
+	//     <!-- -->
+	//
+	//     : The consumer group is
+	//
+	//     <!-- -->
+	//
+	//     running
+	//
+	//     <!-- -->
+	//
+	//     .
+	//
+	// *   CREATING
+	//
+	//     <!-- -->
+	//
+	//     : The consumer group is
+	//
+	//     <!-- -->
+	//
+	//     being created
+	//
+	//     <!-- -->
+	//
+	//     .
+	Status *string `json:"status,omitempty" xml:"status,omitempty"`
+	// The time when the consumer group was last updated.
+	UpdateTime *string `json:"updateTime,omitempty" xml:"updateTime,omitempty"`
 }
 
 func (s ListConsumerGroupsResponseBodyDataList) String() string {
@@ -2072,10 +2807,23 @@ func (s *ListConsumerGroupsResponse) SetBody(v *ListConsumerGroupsResponseBody) 
 }
 
 type ListInstancesRequest struct {
-	Filter          *string `json:"filter,omitempty" xml:"filter,omitempty"`
-	PageNumber      *int32  `json:"pageNumber,omitempty" xml:"pageNumber,omitempty"`
-	PageSize        *int32  `json:"pageSize,omitempty" xml:"pageSize,omitempty"`
+	// The filter condition that is used to query instances. If you do not configure this parameter, all instances are queried.
+	Filter *string `json:"filter,omitempty" xml:"filter,omitempty"`
+	// The number of the page to return.
+	//
+	// Valid values: 1 to 100000000.
+	//
+	// If the value that you specify for this parameter is less than 1, the system uses 1 as the value. If the value that you specify for this parameter is greater than 100000000, the system uses 100000000 as the value.
+	PageNumber *int32 `json:"pageNumber,omitempty" xml:"pageNumber,omitempty"`
+	// The number of entries returned on each page.
+	//
+	// Value values: 10 to 200.
+	//
+	// If the value that you specify for this parameter is less than 10, the system uses 10 as the value. If the value that you specify for this parameter is greater than 200, the system uses 200 as the value.
+	PageSize *int32 `json:"pageSize,omitempty" xml:"pageSize,omitempty"`
+	// The ID of the resource group to which the instance belongs.
 	ResourceGroupId *string `json:"resourceGroupId,omitempty" xml:"resourceGroupId,omitempty"`
+	Tags            *string `json:"tags,omitempty" xml:"tags,omitempty"`
 }
 
 func (s ListInstancesRequest) String() string {
@@ -2106,15 +2854,28 @@ func (s *ListInstancesRequest) SetResourceGroupId(v string) *ListInstancesReques
 	return s
 }
 
+func (s *ListInstancesRequest) SetTags(v string) *ListInstancesRequest {
+	s.Tags = &v
+	return s
+}
+
 type ListInstancesResponseBody struct {
-	Code           *string                        `json:"code,omitempty" xml:"code,omitempty"`
-	Data           *ListInstancesResponseBodyData `json:"data,omitempty" xml:"data,omitempty" type:"Struct"`
-	DynamicCode    *string                        `json:"dynamicCode,omitempty" xml:"dynamicCode,omitempty"`
-	DynamicMessage *string                        `json:"dynamicMessage,omitempty" xml:"dynamicMessage,omitempty"`
-	HttpStatusCode *int32                         `json:"httpStatusCode,omitempty" xml:"httpStatusCode,omitempty"`
-	Message        *string                        `json:"message,omitempty" xml:"message,omitempty"`
-	RequestId      *string                        `json:"requestId,omitempty" xml:"requestId,omitempty"`
-	Success        *bool                          `json:"success,omitempty" xml:"success,omitempty"`
+	// The error code returned if the call failed.
+	Code *string `json:"code,omitempty" xml:"code,omitempty"`
+	// The returned result.
+	Data *ListInstancesResponseBodyData `json:"data,omitempty" xml:"data,omitempty" type:"Struct"`
+	// The dynamic error code.
+	DynamicCode *string `json:"dynamicCode,omitempty" xml:"dynamicCode,omitempty"`
+	// The dynamic error message.
+	DynamicMessage *string `json:"dynamicMessage,omitempty" xml:"dynamicMessage,omitempty"`
+	// The HTTP status code returned.
+	HttpStatusCode *int32 `json:"httpStatusCode,omitempty" xml:"httpStatusCode,omitempty"`
+	// The error message.
+	Message *string `json:"message,omitempty" xml:"message,omitempty"`
+	// The ID of the request. Each request has a unique ID. You can use this ID to troubleshoot issues.
+	RequestId *string `json:"requestId,omitempty" xml:"requestId,omitempty"`
+	// Indicates whether the call was successful.
+	Success *bool `json:"success,omitempty" xml:"success,omitempty"`
 }
 
 func (s ListInstancesResponseBody) String() string {
@@ -2166,10 +2927,14 @@ func (s *ListInstancesResponseBody) SetSuccess(v bool) *ListInstancesResponseBod
 }
 
 type ListInstancesResponseBodyData struct {
-	List       []*ListInstancesResponseBodyDataList `json:"list,omitempty" xml:"list,omitempty" type:"Repeated"`
-	PageNumber *int64                               `json:"pageNumber,omitempty" xml:"pageNumber,omitempty"`
-	PageSize   *int64                               `json:"pageSize,omitempty" xml:"pageSize,omitempty"`
-	TotalCount *int64                               `json:"totalCount,omitempty" xml:"totalCount,omitempty"`
+	// The page number of the returned page.
+	List []*ListInstancesResponseBodyDataList `json:"list,omitempty" xml:"list,omitempty" type:"Repeated"`
+	// The page number of the returned page.
+	PageNumber *int64 `json:"pageNumber,omitempty" xml:"pageNumber,omitempty"`
+	// The number of entries returned on each page.
+	PageSize *int64 `json:"pageSize,omitempty" xml:"pageSize,omitempty"`
+	// The total number of returned entries.
+	TotalCount *int64 `json:"totalCount,omitempty" xml:"totalCount,omitempty"`
 }
 
 func (s ListInstancesResponseBodyData) String() string {
@@ -2201,25 +2966,69 @@ func (s *ListInstancesResponseBodyData) SetTotalCount(v int64) *ListInstancesRes
 }
 
 type ListInstancesResponseBodyDataList struct {
-	CommodityCode   *string `json:"commodityCode,omitempty" xml:"commodityCode,omitempty"`
-	CreateTime      *string `json:"createTime,omitempty" xml:"createTime,omitempty"`
-	ExpireTime      *string `json:"expireTime,omitempty" xml:"expireTime,omitempty"`
-	GroupCount      *int64  `json:"groupCount,omitempty" xml:"groupCount,omitempty"`
-	InstanceId      *string `json:"instanceId,omitempty" xml:"instanceId,omitempty"`
-	InstanceName    *string `json:"instanceName,omitempty" xml:"instanceName,omitempty"`
-	PaymentType     *string `json:"paymentType,omitempty" xml:"paymentType,omitempty"`
-	RegionId        *string `json:"regionId,omitempty" xml:"regionId,omitempty"`
-	ReleaseTime     *string `json:"releaseTime,omitempty" xml:"releaseTime,omitempty"`
-	Remark          *string `json:"remark,omitempty" xml:"remark,omitempty"`
+	// The commodity code of the instance. The commodity code of a ApsaraMQ for RocketMQ 5.0 instance has a similar format as ons_rmqsub_public_cn.
+	CommodityCode *string `json:"commodityCode,omitempty" xml:"commodityCode,omitempty"`
+	// The time when the instance was created.
+	CreateTime *string `json:"createTime,omitempty" xml:"createTime,omitempty"`
+	// The time when the instance expires.
+	ExpireTime *string `json:"expireTime,omitempty" xml:"expireTime,omitempty"`
+	// The number of consumer groups created in the instance.
+	GroupCount *int64 `json:"groupCount,omitempty" xml:"groupCount,omitempty"`
+	// The ID of the instance
+	InstanceId *string `json:"instanceId,omitempty" xml:"instanceId,omitempty"`
+	// The name of the instance.
+	InstanceName *string `json:"instanceName,omitempty" xml:"instanceName,omitempty"`
+	// The billing method of the instance.
+	//
+	// Valid values:
+	//
+	// *   PayAsYouGo: pay-as-you-go
+	// *   Subscription
+	PaymentType *string `json:"paymentType,omitempty" xml:"paymentType,omitempty"`
+	// The ID of the region in which the instance resides.
+	RegionId *string `json:"regionId,omitempty" xml:"regionId,omitempty"`
+	// The time when the instance was released.
+	ReleaseTime *string `json:"releaseTime,omitempty" xml:"releaseTime,omitempty"`
+	// The description of the instance.
+	Remark *string `json:"remark,omitempty" xml:"remark,omitempty"`
+	// The ID of the resource group to which the instance belongs.
 	ResourceGroupId *string `json:"resourceGroupId,omitempty" xml:"resourceGroupId,omitempty"`
-	SeriesCode      *string `json:"seriesCode,omitempty" xml:"seriesCode,omitempty"`
-	ServiceCode     *string `json:"serviceCode,omitempty" xml:"serviceCode,omitempty"`
-	StartTime       *string `json:"startTime,omitempty" xml:"startTime,omitempty"`
-	Status          *string `json:"status,omitempty" xml:"status,omitempty"`
-	SubSeriesCode   *string `json:"subSeriesCode,omitempty" xml:"subSeriesCode,omitempty"`
-	TopicCount      *int64  `json:"topicCount,omitempty" xml:"topicCount,omitempty"`
-	UpdateTime      *string `json:"updateTime,omitempty" xml:"updateTime,omitempty"`
-	UserId          *string `json:"userId,omitempty" xml:"userId,omitempty"`
+	// The primary edition of the instance.
+	//
+	// Valid values:
+	//
+	// *   standard: Standard Edition
+	// *   ultimate: Enterprise Platinum Edition
+	// *   professional: Professional Edition
+	SeriesCode *string `json:"seriesCode,omitempty" xml:"seriesCode,omitempty"`
+	// The code of the service to which the instance belongs. The service code of ApsaraMQ for RocketMQ is rmq.
+	ServiceCode *string `json:"serviceCode,omitempty" xml:"serviceCode,omitempty"`
+	// The time when the instance was started.
+	StartTime *string `json:"startTime,omitempty" xml:"startTime,omitempty"`
+	// The status of the instance.
+	//
+	// Valid values:
+	//
+	// *   RELEASED
+	// *   RUNNING
+	// *   STOPPED
+	// *   CHANGING
+	// *   CREATING
+	Status *string `json:"status,omitempty" xml:"status,omitempty"`
+	// The sub-category edition of the instance.
+	//
+	// Valid values:
+	//
+	// *   cluster_ha: Cluster High-availability Edition
+	// *   single_node: Standalone Edition
+	SubSeriesCode *string                                  `json:"subSeriesCode,omitempty" xml:"subSeriesCode,omitempty"`
+	Tags          []*ListInstancesResponseBodyDataListTags `json:"tags,omitempty" xml:"tags,omitempty" type:"Repeated"`
+	// The number of topics created in the instance.
+	TopicCount *int64 `json:"topicCount,omitempty" xml:"topicCount,omitempty"`
+	// The time when the instance was last modified.
+	UpdateTime *string `json:"updateTime,omitempty" xml:"updateTime,omitempty"`
+	// The ID of the user who owns the instance.
+	UserId *string `json:"userId,omitempty" xml:"userId,omitempty"`
 }
 
 func (s ListInstancesResponseBodyDataList) String() string {
@@ -2310,6 +3119,11 @@ func (s *ListInstancesResponseBodyDataList) SetSubSeriesCode(v string) *ListInst
 	return s
 }
 
+func (s *ListInstancesResponseBodyDataList) SetTags(v []*ListInstancesResponseBodyDataListTags) *ListInstancesResponseBodyDataList {
+	s.Tags = v
+	return s
+}
+
 func (s *ListInstancesResponseBodyDataList) SetTopicCount(v int64) *ListInstancesResponseBodyDataList {
 	s.TopicCount = &v
 	return s
@@ -2322,6 +3136,29 @@ func (s *ListInstancesResponseBodyDataList) SetUpdateTime(v string) *ListInstanc
 
 func (s *ListInstancesResponseBodyDataList) SetUserId(v string) *ListInstancesResponseBodyDataList {
 	s.UserId = &v
+	return s
+}
+
+type ListInstancesResponseBodyDataListTags struct {
+	Key   *string `json:"key,omitempty" xml:"key,omitempty"`
+	Value *string `json:"value,omitempty" xml:"value,omitempty"`
+}
+
+func (s ListInstancesResponseBodyDataListTags) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListInstancesResponseBodyDataListTags) GoString() string {
+	return s.String()
+}
+
+func (s *ListInstancesResponseBodyDataListTags) SetKey(v string) *ListInstancesResponseBodyDataListTags {
+	s.Key = &v
+	return s
+}
+
+func (s *ListInstancesResponseBodyDataListTags) SetValue(v string) *ListInstancesResponseBodyDataListTags {
+	s.Value = &v
 	return s
 }
 
@@ -2355,10 +3192,14 @@ func (s *ListInstancesResponse) SetBody(v *ListInstancesResponseBody) *ListInsta
 }
 
 type ListTopicsRequest struct {
-	Filter       *string   `json:"filter,omitempty" xml:"filter,omitempty"`
+	// The condition that you want to use to filter topics in the instance. If you leave this parameter empty, all topics in the instance are queried.
+	Filter *string `json:"filter,omitempty" xml:"filter,omitempty"`
+	// The message types of the topics.
 	MessageTypes []*string `json:"messageTypes,omitempty" xml:"messageTypes,omitempty" type:"Repeated"`
-	PageNumber   *int32    `json:"pageNumber,omitempty" xml:"pageNumber,omitempty"`
-	PageSize     *int32    `json:"pageSize,omitempty" xml:"pageSize,omitempty"`
+	// The number of the page to return.
+	PageNumber *int32 `json:"pageNumber,omitempty" xml:"pageNumber,omitempty"`
+	// The number of entries to return on each page.
+	PageSize *int32 `json:"pageSize,omitempty" xml:"pageSize,omitempty"`
 }
 
 func (s ListTopicsRequest) String() string {
@@ -2390,10 +3231,14 @@ func (s *ListTopicsRequest) SetPageSize(v int32) *ListTopicsRequest {
 }
 
 type ListTopicsShrinkRequest struct {
-	Filter             *string `json:"filter,omitempty" xml:"filter,omitempty"`
+	// The condition that you want to use to filter topics in the instance. If you leave this parameter empty, all topics in the instance are queried.
+	Filter *string `json:"filter,omitempty" xml:"filter,omitempty"`
+	// The message types of the topics.
 	MessageTypesShrink *string `json:"messageTypes,omitempty" xml:"messageTypes,omitempty"`
-	PageNumber         *int32  `json:"pageNumber,omitempty" xml:"pageNumber,omitempty"`
-	PageSize           *int32  `json:"pageSize,omitempty" xml:"pageSize,omitempty"`
+	// The number of the page to return.
+	PageNumber *int32 `json:"pageNumber,omitempty" xml:"pageNumber,omitempty"`
+	// The number of entries to return on each page.
+	PageSize *int32 `json:"pageSize,omitempty" xml:"pageSize,omitempty"`
 }
 
 func (s ListTopicsShrinkRequest) String() string {
@@ -2425,14 +3270,22 @@ func (s *ListTopicsShrinkRequest) SetPageSize(v int32) *ListTopicsShrinkRequest 
 }
 
 type ListTopicsResponseBody struct {
-	Code           *string                     `json:"code,omitempty" xml:"code,omitempty"`
-	Data           *ListTopicsResponseBodyData `json:"data,omitempty" xml:"data,omitempty" type:"Struct"`
-	DynamicCode    *string                     `json:"dynamicCode,omitempty" xml:"dynamicCode,omitempty"`
-	DynamicMessage *string                     `json:"dynamicMessage,omitempty" xml:"dynamicMessage,omitempty"`
-	HttpStatusCode *int32                      `json:"httpStatusCode,omitempty" xml:"httpStatusCode,omitempty"`
-	Message        *string                     `json:"message,omitempty" xml:"message,omitempty"`
-	RequestId      *string                     `json:"requestId,omitempty" xml:"requestId,omitempty"`
-	Success        *bool                       `json:"success,omitempty" xml:"success,omitempty"`
+	// The error code.
+	Code *string `json:"code,omitempty" xml:"code,omitempty"`
+	// The result data that is returned.
+	Data *ListTopicsResponseBodyData `json:"data,omitempty" xml:"data,omitempty" type:"Struct"`
+	// The dynamic error code.
+	DynamicCode *string `json:"dynamicCode,omitempty" xml:"dynamicCode,omitempty"`
+	// The dynamic error message.
+	DynamicMessage *string `json:"dynamicMessage,omitempty" xml:"dynamicMessage,omitempty"`
+	// The HTTP status code.
+	HttpStatusCode *int32 `json:"httpStatusCode,omitempty" xml:"httpStatusCode,omitempty"`
+	// The error message.
+	Message *string `json:"message,omitempty" xml:"message,omitempty"`
+	// The ID of the request. The system generates a unique ID for each request. You can troubleshoot issues based on the request ID.
+	RequestId *string `json:"requestId,omitempty" xml:"requestId,omitempty"`
+	// Indicates whether the call is successful.
+	Success *bool `json:"success,omitempty" xml:"success,omitempty"`
 }
 
 func (s ListTopicsResponseBody) String() string {
@@ -2484,10 +3337,14 @@ func (s *ListTopicsResponseBody) SetSuccess(v bool) *ListTopicsResponseBody {
 }
 
 type ListTopicsResponseBodyData struct {
-	List       []*ListTopicsResponseBodyDataList `json:"list,omitempty" xml:"list,omitempty" type:"Repeated"`
-	PageNumber *int64                            `json:"pageNumber,omitempty" xml:"pageNumber,omitempty"`
-	PageSize   *int64                            `json:"pageSize,omitempty" xml:"pageSize,omitempty"`
-	TotalCount *int64                            `json:"totalCount,omitempty" xml:"totalCount,omitempty"`
+	// The paginated data.
+	List []*ListTopicsResponseBodyDataList `json:"list,omitempty" xml:"list,omitempty" type:"Repeated"`
+	// The page number of the returned page.
+	PageNumber *int64 `json:"pageNumber,omitempty" xml:"pageNumber,omitempty"`
+	// The number of entries returned per page.
+	PageSize *int64 `json:"pageSize,omitempty" xml:"pageSize,omitempty"`
+	// The total number of returned entries.
+	TotalCount *int64 `json:"totalCount,omitempty" xml:"totalCount,omitempty"`
 }
 
 func (s ListTopicsResponseBodyData) String() string {
@@ -2519,14 +3376,102 @@ func (s *ListTopicsResponseBodyData) SetTotalCount(v int64) *ListTopicsResponseB
 }
 
 type ListTopicsResponseBodyDataList struct {
-	CreateTime  *string `json:"createTime,omitempty" xml:"createTime,omitempty"`
-	InstanceId  *string `json:"instanceId,omitempty" xml:"instanceId,omitempty"`
+	// The time when the topic was created.
+	CreateTime *string `json:"createTime,omitempty" xml:"createTime,omitempty"`
+	// The ID of the instance.
+	InstanceId *string `json:"instanceId,omitempty" xml:"instanceId,omitempty"`
+	// The message type of the topic.
+	//
+	// Valid values:
+	//
+	// *   TRANSACTION
+	//
+	//     <!-- -->
+	//
+	//     :
+	//
+	//     <!-- -->
+	//
+	//     transactional message
+	//
+	//     <!-- -->
+	//
+	// *   FIFO
+	//
+	//     <!-- -->
+	//
+	//     :
+	//
+	//     <!-- -->
+	//
+	//     ordered message
+	//
+	//     <!-- -->
+	//
+	// *   DELAY
+	//
+	//     <!-- -->
+	//
+	//     :
+	//
+	//     <!-- -->
+	//
+	//     scheduled or delayed message
+	//
+	//     <!-- -->
+	//
+	// *   NORMAL
+	//
+	//     <!-- -->
+	//
+	//     :
+	//
+	//     <!-- -->
+	//
+	//     normal message
+	//
+	//     <!-- -->
 	MessageType *string `json:"messageType,omitempty" xml:"messageType,omitempty"`
-	RegionId    *string `json:"regionId,omitempty" xml:"regionId,omitempty"`
-	Remark      *string `json:"remark,omitempty" xml:"remark,omitempty"`
-	Status      *string `json:"status,omitempty" xml:"status,omitempty"`
-	TopicName   *string `json:"topicName,omitempty" xml:"topicName,omitempty"`
-	UpdateTime  *string `json:"updateTime,omitempty" xml:"updateTime,omitempty"`
+	// The ID of the region in which the instance resides.
+	RegionId *string `json:"regionId,omitempty" xml:"regionId,omitempty"`
+	// The remarks on the topic.
+	Remark *string `json:"remark,omitempty" xml:"remark,omitempty"`
+	// The state of the topic.
+	//
+	// Valid values:
+	//
+	// *   RUNNING
+	//
+	//     <!-- -->
+	//
+	//     : The topic is
+	//
+	//     <!-- -->
+	//
+	//     running
+	//
+	//     <!-- -->
+	//
+	//     .
+	//
+	// *   CREATING
+	//
+	//     <!-- -->
+	//
+	//     : The topic is
+	//
+	//     <!-- -->
+	//
+	//     being created
+	//
+	//     <!-- -->
+	//
+	//     .
+	Status *string `json:"status,omitempty" xml:"status,omitempty"`
+	// The name of the topic.
+	TopicName *string `json:"topicName,omitempty" xml:"topicName,omitempty"`
+	// The time when the topic was last updated.
+	UpdateTime *string `json:"updateTime,omitempty" xml:"updateTime,omitempty"`
 }
 
 func (s ListTopicsResponseBodyDataList) String() string {
@@ -2606,10 +3551,123 @@ func (s *ListTopicsResponse) SetBody(v *ListTopicsResponseBody) *ListTopicsRespo
 	return s
 }
 
+type ResetConsumeOffsetRequest struct {
+	ResetTime *string `json:"resetTime,omitempty" xml:"resetTime,omitempty"`
+	ResetType *string `json:"resetType,omitempty" xml:"resetType,omitempty"`
+}
+
+func (s ResetConsumeOffsetRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ResetConsumeOffsetRequest) GoString() string {
+	return s.String()
+}
+
+func (s *ResetConsumeOffsetRequest) SetResetTime(v string) *ResetConsumeOffsetRequest {
+	s.ResetTime = &v
+	return s
+}
+
+func (s *ResetConsumeOffsetRequest) SetResetType(v string) *ResetConsumeOffsetRequest {
+	s.ResetType = &v
+	return s
+}
+
+type ResetConsumeOffsetResponseBody struct {
+	Code           *string `json:"code,omitempty" xml:"code,omitempty"`
+	DynamicCode    *string `json:"dynamicCode,omitempty" xml:"dynamicCode,omitempty"`
+	DynamicMessage *string `json:"dynamicMessage,omitempty" xml:"dynamicMessage,omitempty"`
+	HttpStatusCode *int32  `json:"httpStatusCode,omitempty" xml:"httpStatusCode,omitempty"`
+	Message        *string `json:"message,omitempty" xml:"message,omitempty"`
+	RequestId      *string `json:"requestId,omitempty" xml:"requestId,omitempty"`
+	Success        *bool   `json:"success,omitempty" xml:"success,omitempty"`
+}
+
+func (s ResetConsumeOffsetResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ResetConsumeOffsetResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *ResetConsumeOffsetResponseBody) SetCode(v string) *ResetConsumeOffsetResponseBody {
+	s.Code = &v
+	return s
+}
+
+func (s *ResetConsumeOffsetResponseBody) SetDynamicCode(v string) *ResetConsumeOffsetResponseBody {
+	s.DynamicCode = &v
+	return s
+}
+
+func (s *ResetConsumeOffsetResponseBody) SetDynamicMessage(v string) *ResetConsumeOffsetResponseBody {
+	s.DynamicMessage = &v
+	return s
+}
+
+func (s *ResetConsumeOffsetResponseBody) SetHttpStatusCode(v int32) *ResetConsumeOffsetResponseBody {
+	s.HttpStatusCode = &v
+	return s
+}
+
+func (s *ResetConsumeOffsetResponseBody) SetMessage(v string) *ResetConsumeOffsetResponseBody {
+	s.Message = &v
+	return s
+}
+
+func (s *ResetConsumeOffsetResponseBody) SetRequestId(v string) *ResetConsumeOffsetResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *ResetConsumeOffsetResponseBody) SetSuccess(v bool) *ResetConsumeOffsetResponseBody {
+	s.Success = &v
+	return s
+}
+
+type ResetConsumeOffsetResponse struct {
+	Headers    map[string]*string              `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                          `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *ResetConsumeOffsetResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s ResetConsumeOffsetResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ResetConsumeOffsetResponse) GoString() string {
+	return s.String()
+}
+
+func (s *ResetConsumeOffsetResponse) SetHeaders(v map[string]*string) *ResetConsumeOffsetResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *ResetConsumeOffsetResponse) SetStatusCode(v int32) *ResetConsumeOffsetResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *ResetConsumeOffsetResponse) SetBody(v *ResetConsumeOffsetResponseBody) *ResetConsumeOffsetResponse {
+	s.Body = v
+	return s
+}
+
 type UpdateConsumerGroupRequest struct {
+	// The new consumption retry policy that you want to configure for the consumer group. For more information, see [Consumption retry](~~440356~~).
 	ConsumeRetryPolicy *UpdateConsumerGroupRequestConsumeRetryPolicy `json:"consumeRetryPolicy,omitempty" xml:"consumeRetryPolicy,omitempty" type:"Struct"`
-	DeliveryOrderType  *string                                       `json:"deliveryOrderType,omitempty" xml:"deliveryOrderType,omitempty"`
-	Remark             *string                                       `json:"remark,omitempty" xml:"remark,omitempty"`
+	// The new message delivery order of the consumer group.
+	//
+	// Valid values:
+	//
+	// *   Concurrently: concurrent delivery
+	// *   Orderly: ordered delivery
+	DeliveryOrderType *string `json:"deliveryOrderType,omitempty" xml:"deliveryOrderType,omitempty"`
+	// The new remarks on the consumer group.
+	Remark *string `json:"remark,omitempty" xml:"remark,omitempty"`
 }
 
 func (s UpdateConsumerGroupRequest) String() string {
@@ -2636,9 +3694,19 @@ func (s *UpdateConsumerGroupRequest) SetRemark(v string) *UpdateConsumerGroupReq
 }
 
 type UpdateConsumerGroupRequestConsumeRetryPolicy struct {
+	// The dead-letter topic.
+	//
+	// If a consumer still fails to consume a message after the message is retried for a specified number of times, the message is delivered to a dead-letter topic for subsequent business recovery or troubleshooting. For more information, see [Consumption retry and dead-letter messages](~~440356~~).
 	DeadLetterTargetTopic *string `json:"deadLetterTargetTopic,omitempty" xml:"deadLetterTargetTopic,omitempty"`
-	MaxRetryTimes         *int32  `json:"maxRetryTimes,omitempty" xml:"maxRetryTimes,omitempty"`
-	RetryPolicy           *string `json:"retryPolicy,omitempty" xml:"retryPolicy,omitempty"`
+	// The maximum number of retries.
+	MaxRetryTimes *int32 `json:"maxRetryTimes,omitempty" xml:"maxRetryTimes,omitempty"`
+	// The retry policy. For more information, see [Message retry](~~440356~~).
+	//
+	// Valid values:
+	//
+	// *   FixedRetryPolicy: Failed messages are retried at a fixed interval.
+	// *   DefaultRetryPolicy: Failed messages are retried at incremental intervals as the number of retries increases.
+	RetryPolicy *string `json:"retryPolicy,omitempty" xml:"retryPolicy,omitempty"`
 }
 
 func (s UpdateConsumerGroupRequestConsumeRetryPolicy) String() string {
@@ -2665,14 +3733,22 @@ func (s *UpdateConsumerGroupRequestConsumeRetryPolicy) SetRetryPolicy(v string) 
 }
 
 type UpdateConsumerGroupResponseBody struct {
-	Code           *string `json:"code,omitempty" xml:"code,omitempty"`
-	Data           *bool   `json:"data,omitempty" xml:"data,omitempty"`
-	DynamicCode    *string `json:"dynamicCode,omitempty" xml:"dynamicCode,omitempty"`
+	// The error code.
+	Code *string `json:"code,omitempty" xml:"code,omitempty"`
+	// The result data that is returned.
+	Data *bool `json:"data,omitempty" xml:"data,omitempty"`
+	// The dynamic error code.
+	DynamicCode *string `json:"dynamicCode,omitempty" xml:"dynamicCode,omitempty"`
+	// The dynamic error message.
 	DynamicMessage *string `json:"dynamicMessage,omitempty" xml:"dynamicMessage,omitempty"`
-	HttpStatusCode *int32  `json:"httpStatusCode,omitempty" xml:"httpStatusCode,omitempty"`
-	Message        *string `json:"message,omitempty" xml:"message,omitempty"`
-	RequestId      *string `json:"requestId,omitempty" xml:"requestId,omitempty"`
-	Success        *bool   `json:"success,omitempty" xml:"success,omitempty"`
+	// The HTTP status code.
+	HttpStatusCode *int32 `json:"httpStatusCode,omitempty" xml:"httpStatusCode,omitempty"`
+	// The error message.
+	Message *string `json:"message,omitempty" xml:"message,omitempty"`
+	// The ID of the request. The system generates a unique ID for each request. You can troubleshoot issues based on the request ID.
+	RequestId *string `json:"requestId,omitempty" xml:"requestId,omitempty"`
+	// Indicates whether the call is successful.
+	Success *bool `json:"success,omitempty" xml:"success,omitempty"`
 }
 
 func (s UpdateConsumerGroupResponseBody) String() string {
@@ -2753,10 +3829,14 @@ func (s *UpdateConsumerGroupResponse) SetBody(v *UpdateConsumerGroupResponseBody
 }
 
 type UpdateInstanceRequest struct {
-	InstanceName *string                           `json:"instanceName,omitempty" xml:"instanceName,omitempty"`
-	NetworkInfo  *UpdateInstanceRequestNetworkInfo `json:"networkInfo,omitempty" xml:"networkInfo,omitempty" type:"Struct"`
-	ProductInfo  *UpdateInstanceRequestProductInfo `json:"productInfo,omitempty" xml:"productInfo,omitempty" type:"Struct"`
-	Remark       *string                           `json:"remark,omitempty" xml:"remark,omitempty"`
+	// The new name of the instance.
+	InstanceName *string `json:"instanceName,omitempty" xml:"instanceName,omitempty"`
+	// The new network information about the instance.
+	NetworkInfo *UpdateInstanceRequestNetworkInfo `json:"networkInfo,omitempty" xml:"networkInfo,omitempty" type:"Struct"`
+	// The extended configurations of the instance.
+	ProductInfo *UpdateInstanceRequestProductInfo `json:"productInfo,omitempty" xml:"productInfo,omitempty" type:"Struct"`
+	// The new remarks on the instance.
+	Remark *string `json:"remark,omitempty" xml:"remark,omitempty"`
 }
 
 func (s UpdateInstanceRequest) String() string {
@@ -2788,6 +3868,7 @@ func (s *UpdateInstanceRequest) SetRemark(v string) *UpdateInstanceRequest {
 }
 
 type UpdateInstanceRequestNetworkInfo struct {
+	// The Internet information about the instance. This parameter takes effect only when the Internet access feature is enabled for the instance.
 	InternetInfo *UpdateInstanceRequestNetworkInfoInternetInfo `json:"internetInfo,omitempty" xml:"internetInfo,omitempty" type:"Struct"`
 }
 
@@ -2805,6 +3886,10 @@ func (s *UpdateInstanceRequestNetworkInfo) SetInternetInfo(v *UpdateInstanceRequ
 }
 
 type UpdateInstanceRequestNetworkInfoInternetInfo struct {
+	// The IP address whitelist that allows access to the instance over the Internet.
+	//
+	// *   If you do not configure an IP address whitelist, all IP addresses are allowed to access the ApsaraMQ for RocketMQ broker over the Internet.
+	// *   If you configure an IP address whitelist, only IP addresses in the whitelist are allowed to access the ApsaraMQ for RocketMQ broker over the Internet.
 	IpWhitelist []*string `json:"ipWhitelist,omitempty" xml:"ipWhitelist,omitempty" type:"Repeated"`
 }
 
@@ -2822,9 +3907,27 @@ func (s *UpdateInstanceRequestNetworkInfoInternetInfo) SetIpWhitelist(v []*strin
 }
 
 type UpdateInstanceRequestProductInfo struct {
-	AutoScaling          *bool    `json:"autoScaling,omitempty" xml:"autoScaling,omitempty"`
-	MessageRetentionTime *int32   `json:"messageRetentionTime,omitempty" xml:"messageRetentionTime,omitempty"`
-	SendReceiveRatio     *float32 `json:"sendReceiveRatio,omitempty" xml:"sendReceiveRatio,omitempty"`
+	// Specifies whether to enable burst scaling for the instance.
+	//
+	// Valid values:
+	//
+	// *   true
+	// *   false
+	//
+	// After you enable burst scaling, the system allows the actual messaging transactions per second (TPS) of the ApsaraMQ for RocketMQ instance to exceed the upper limit of the basic computing specification. You are charged for the extra TPS. For more information, see [Computing fee](~~427237~~).
+	//
+	// > Only specific types of instances support burst scaling. For more information, see [Instance specifications](~~444715~~).
+	AutoScaling *bool `json:"autoScaling,omitempty" xml:"autoScaling,omitempty"`
+	// The retention period of messages. Unit: hours.
+	//
+	// For more information about the valid values, see the "Limits on resource quotas" section of the [Usage limits](~~440347~~) topic.
+	//
+	// The storage of ApsaraMQ for RocketMQ messages is in serverless scaling mode. You are charged based on the actual used storage. You can adjust the storage retention period to reduce storage usage and costs. For more information, see [Storage fees](~~427238~~).
+	MessageRetentionTime *int32 `json:"messageRetentionTime,omitempty" xml:"messageRetentionTime,omitempty"`
+	// The ratio of the number of messages that you can send to the number of messages that you can receive in the instance.
+	//
+	// Value values: 0.25 to 1.
+	SendReceiveRatio *float32 `json:"sendReceiveRatio,omitempty" xml:"sendReceiveRatio,omitempty"`
 }
 
 func (s UpdateInstanceRequestProductInfo) String() string {
@@ -2851,14 +3954,22 @@ func (s *UpdateInstanceRequestProductInfo) SetSendReceiveRatio(v float32) *Updat
 }
 
 type UpdateInstanceResponseBody struct {
-	Code           *string `json:"code,omitempty" xml:"code,omitempty"`
-	Data           *bool   `json:"data,omitempty" xml:"data,omitempty"`
-	DynamicCode    *string `json:"dynamicCode,omitempty" xml:"dynamicCode,omitempty"`
+	// The error code.
+	Code *string `json:"code,omitempty" xml:"code,omitempty"`
+	// The result data that is returned.
+	Data *bool `json:"data,omitempty" xml:"data,omitempty"`
+	// The dynamic error code.
+	DynamicCode *string `json:"dynamicCode,omitempty" xml:"dynamicCode,omitempty"`
+	// The dynamic error message.
 	DynamicMessage *string `json:"dynamicMessage,omitempty" xml:"dynamicMessage,omitempty"`
-	HttpStatusCode *int32  `json:"httpStatusCode,omitempty" xml:"httpStatusCode,omitempty"`
-	Message        *string `json:"message,omitempty" xml:"message,omitempty"`
-	RequestId      *string `json:"requestId,omitempty" xml:"requestId,omitempty"`
-	Success        *bool   `json:"success,omitempty" xml:"success,omitempty"`
+	// The HTTP status code.
+	HttpStatusCode *int32 `json:"httpStatusCode,omitempty" xml:"httpStatusCode,omitempty"`
+	// The error message.
+	Message *string `json:"message,omitempty" xml:"message,omitempty"`
+	// The ID of the request. The system generates a unique ID for each request. You can troubleshoot issues based on the request ID.
+	RequestId *string `json:"requestId,omitempty" xml:"requestId,omitempty"`
+	// Indicates whether the call is successful.
+	Success *bool `json:"success,omitempty" xml:"success,omitempty"`
 }
 
 func (s UpdateInstanceResponseBody) String() string {
@@ -2939,6 +4050,7 @@ func (s *UpdateInstanceResponse) SetBody(v *UpdateInstanceResponseBody) *UpdateI
 }
 
 type UpdateTopicRequest struct {
+	// The new remarks on the topic.
 	Remark *string `json:"remark,omitempty" xml:"remark,omitempty"`
 }
 
@@ -2956,14 +4068,22 @@ func (s *UpdateTopicRequest) SetRemark(v string) *UpdateTopicRequest {
 }
 
 type UpdateTopicResponseBody struct {
-	Code           *string `json:"code,omitempty" xml:"code,omitempty"`
-	Data           *bool   `json:"data,omitempty" xml:"data,omitempty"`
-	DynamicCode    *string `json:"dynamicCode,omitempty" xml:"dynamicCode,omitempty"`
+	// The error code.
+	Code *string `json:"code,omitempty" xml:"code,omitempty"`
+	// The result data that is returned.
+	Data *bool `json:"data,omitempty" xml:"data,omitempty"`
+	// The dynamic error code.
+	DynamicCode *string `json:"dynamicCode,omitempty" xml:"dynamicCode,omitempty"`
+	// The dynamic error message.
 	DynamicMessage *string `json:"dynamicMessage,omitempty" xml:"dynamicMessage,omitempty"`
-	HttpStatusCode *int32  `json:"httpStatusCode,omitempty" xml:"httpStatusCode,omitempty"`
-	Message        *string `json:"message,omitempty" xml:"message,omitempty"`
-	RequestId      *string `json:"requestId,omitempty" xml:"requestId,omitempty"`
-	Success        *bool   `json:"success,omitempty" xml:"success,omitempty"`
+	// The HTTP status code.
+	HttpStatusCode *int32 `json:"httpStatusCode,omitempty" xml:"httpStatusCode,omitempty"`
+	// The error message.
+	Message *string `json:"message,omitempty" xml:"message,omitempty"`
+	// The ID of the request. The system generates a unique ID for each request. You can troubleshoot issues based on the request ID.
+	RequestId *string `json:"requestId,omitempty" xml:"requestId,omitempty"`
+	// Indicates whether the call is successful.
+	Success *bool `json:"success,omitempty" xml:"success,omitempty"`
 }
 
 func (s UpdateTopicResponseBody) String() string {
@@ -3148,6 +4268,14 @@ func (client *Client) ChangeResourceGroup(request *ChangeResourceGroupRequest) (
 	return _result, _err
 }
 
+/**
+ * > API operations provided by Alibaba Cloud are used to manage and query resources of Alibaba Cloud services. We recommend that you integrate these API operations only in management systems. Do not use these API operations in the core system of messaging services. Otherwise, system risks may occur.
+ *
+ * @param request CreateConsumerGroupRequest
+ * @param headers map
+ * @param runtime runtime options for this request RuntimeOptions
+ * @return CreateConsumerGroupResponse
+ */
 func (client *Client) CreateConsumerGroupWithOptions(instanceId *string, consumerGroupId *string, request *CreateConsumerGroupRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *CreateConsumerGroupResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -3190,6 +4318,12 @@ func (client *Client) CreateConsumerGroupWithOptions(instanceId *string, consume
 	return _result, _err
 }
 
+/**
+ * > API operations provided by Alibaba Cloud are used to manage and query resources of Alibaba Cloud services. We recommend that you integrate these API operations only in management systems. Do not use these API operations in the core system of messaging services. Otherwise, system risks may occur.
+ *
+ * @param request CreateConsumerGroupRequest
+ * @return CreateConsumerGroupResponse
+ */
 func (client *Client) CreateConsumerGroup(instanceId *string, consumerGroupId *string, request *CreateConsumerGroupRequest) (_result *CreateConsumerGroupResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
@@ -3202,6 +4336,14 @@ func (client *Client) CreateConsumerGroup(instanceId *string, consumerGroupId *s
 	return _result, _err
 }
 
+/**
+ * > API operations provided by Alibaba Cloud are used to manage and query resources of Alibaba Cloud services. We recommend that you integrate these API operations only in management systems. Do not use these API operations in the core system of messaging services. Otherwise, system risks may occur.
+ *
+ * @param request CreateInstanceRequest
+ * @param headers map
+ * @param runtime runtime options for this request RuntimeOptions
+ * @return CreateInstanceResponse
+ */
 func (client *Client) CreateInstanceWithOptions(request *CreateInstanceRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *CreateInstanceResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -3290,6 +4432,12 @@ func (client *Client) CreateInstanceWithOptions(request *CreateInstanceRequest, 
 	return _result, _err
 }
 
+/**
+ * > API operations provided by Alibaba Cloud are used to manage and query resources of Alibaba Cloud services. We recommend that you integrate these API operations only in management systems. Do not use these API operations in the core system of messaging services. Otherwise, system risks may occur.
+ *
+ * @param request CreateInstanceRequest
+ * @return CreateInstanceResponse
+ */
 func (client *Client) CreateInstance(request *CreateInstanceRequest) (_result *CreateInstanceResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
@@ -3352,6 +4500,14 @@ func (client *Client) CreateTopic(instanceId *string, topicName *string, request
 	return _result, _err
 }
 
+/**
+ * > API operations provided by Alibaba Cloud are used to manage and query resources of Alibaba Cloud services. We recommend that you integrate these API operations only in management systems. Do not use these API operations in the core system of messaging services. Otherwise, system risks may occur.
+ * After you delete a consumer group, the consumer client associated with the consumer group cannot consume messages. Exercise caution when you call this operation.
+ *
+ * @param headers map
+ * @param runtime runtime options for this request RuntimeOptions
+ * @return DeleteConsumerGroupResponse
+ */
 func (client *Client) DeleteConsumerGroupWithOptions(instanceId *string, consumerGroupId *string, headers map[string]*string, runtime *util.RuntimeOptions) (_result *DeleteConsumerGroupResponse, _err error) {
 	req := &openapi.OpenApiRequest{
 		Headers: headers,
@@ -3376,6 +4532,12 @@ func (client *Client) DeleteConsumerGroupWithOptions(instanceId *string, consume
 	return _result, _err
 }
 
+/**
+ * > API operations provided by Alibaba Cloud are used to manage and query resources of Alibaba Cloud services. We recommend that you integrate these API operations only in management systems. Do not use these API operations in the core system of messaging services. Otherwise, system risks may occur.
+ * After you delete a consumer group, the consumer client associated with the consumer group cannot consume messages. Exercise caution when you call this operation.
+ *
+ * @return DeleteConsumerGroupResponse
+ */
 func (client *Client) DeleteConsumerGroup(instanceId *string, consumerGroupId *string) (_result *DeleteConsumerGroupResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
@@ -3388,6 +4550,15 @@ func (client *Client) DeleteConsumerGroup(instanceId *string, consumerGroupId *s
 	return _result, _err
 }
 
+/**
+ * > API operations provided by Alibaba Cloud are used to manage and query resources of Alibaba Cloud services. We recommend that you integrate these API operations only in management systems. Do not use these API operations in the core system of messaging services. Otherwise, system risks may occur.
+ * *   After an instance is deleted, the instance cannot be restored. Exercise caution when you call this operation.
+ * *   This operation is used to delete a pay-as-you-go instance. A subscription instance is automatically released after it expires. You do not need to manually delete a subscription instance.
+ *
+ * @param headers map
+ * @param runtime runtime options for this request RuntimeOptions
+ * @return DeleteInstanceResponse
+ */
 func (client *Client) DeleteInstanceWithOptions(instanceId *string, headers map[string]*string, runtime *util.RuntimeOptions) (_result *DeleteInstanceResponse, _err error) {
 	req := &openapi.OpenApiRequest{
 		Headers: headers,
@@ -3412,6 +4583,13 @@ func (client *Client) DeleteInstanceWithOptions(instanceId *string, headers map[
 	return _result, _err
 }
 
+/**
+ * > API operations provided by Alibaba Cloud are used to manage and query resources of Alibaba Cloud services. We recommend that you integrate these API operations only in management systems. Do not use these API operations in the core system of messaging services. Otherwise, system risks may occur.
+ * *   After an instance is deleted, the instance cannot be restored. Exercise caution when you call this operation.
+ * *   This operation is used to delete a pay-as-you-go instance. A subscription instance is automatically released after it expires. You do not need to manually delete a subscription instance.
+ *
+ * @return DeleteInstanceResponse
+ */
 func (client *Client) DeleteInstance(instanceId *string) (_result *DeleteInstanceResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
@@ -3424,6 +4602,13 @@ func (client *Client) DeleteInstance(instanceId *string) (_result *DeleteInstanc
 	return _result, _err
 }
 
+/**
+ * If you delete the topic, the publishing and subscription relationships that are established based on the topic are cleared. Exercise caution when you call this operation.
+ *
+ * @param headers map
+ * @param runtime runtime options for this request RuntimeOptions
+ * @return DeleteTopicResponse
+ */
 func (client *Client) DeleteTopicWithOptions(instanceId *string, topicName *string, headers map[string]*string, runtime *util.RuntimeOptions) (_result *DeleteTopicResponse, _err error) {
 	req := &openapi.OpenApiRequest{
 		Headers: headers,
@@ -3448,6 +4633,11 @@ func (client *Client) DeleteTopicWithOptions(instanceId *string, topicName *stri
 	return _result, _err
 }
 
+/**
+ * If you delete the topic, the publishing and subscription relationships that are established based on the topic are cleared. Exercise caution when you call this operation.
+ *
+ * @return DeleteTopicResponse
+ */
 func (client *Client) DeleteTopic(instanceId *string, topicName *string) (_result *DeleteTopicResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
@@ -3460,6 +4650,13 @@ func (client *Client) DeleteTopic(instanceId *string, topicName *string) (_resul
 	return _result, _err
 }
 
+/**
+ * > API operations provided by Alibaba Cloud are used to manage and query resources of Alibaba Cloud services. We recommend that you integrate these API operations only in management systems. Do not use these API operations in the core system of messaging services. Otherwise, system risks may occur.
+ *
+ * @param headers map
+ * @param runtime runtime options for this request RuntimeOptions
+ * @return GetConsumerGroupResponse
+ */
 func (client *Client) GetConsumerGroupWithOptions(instanceId *string, consumerGroupId *string, headers map[string]*string, runtime *util.RuntimeOptions) (_result *GetConsumerGroupResponse, _err error) {
 	req := &openapi.OpenApiRequest{
 		Headers: headers,
@@ -3484,6 +4681,11 @@ func (client *Client) GetConsumerGroupWithOptions(instanceId *string, consumerGr
 	return _result, _err
 }
 
+/**
+ * > API operations provided by Alibaba Cloud are used to manage and query resources of Alibaba Cloud services. We recommend that you integrate these API operations only in management systems. Do not use these API operations in the core system of messaging services. Otherwise, system risks may occur.
+ *
+ * @return GetConsumerGroupResponse
+ */
 func (client *Client) GetConsumerGroup(instanceId *string, consumerGroupId *string) (_result *GetConsumerGroupResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
@@ -3496,6 +4698,13 @@ func (client *Client) GetConsumerGroup(instanceId *string, consumerGroupId *stri
 	return _result, _err
 }
 
+/**
+ * > API operations provided by Alibaba Cloud are used to manage and query resources of Alibaba Cloud services. We recommend that you integrate these API operations only in management systems. Do not use these API operations in the core system of messaging services. Otherwise, system risks may occur.
+ *
+ * @param headers map
+ * @param runtime runtime options for this request RuntimeOptions
+ * @return GetInstanceResponse
+ */
 func (client *Client) GetInstanceWithOptions(instanceId *string, headers map[string]*string, runtime *util.RuntimeOptions) (_result *GetInstanceResponse, _err error) {
 	req := &openapi.OpenApiRequest{
 		Headers: headers,
@@ -3520,6 +4729,11 @@ func (client *Client) GetInstanceWithOptions(instanceId *string, headers map[str
 	return _result, _err
 }
 
+/**
+ * > API operations provided by Alibaba Cloud are used to manage and query resources of Alibaba Cloud services. We recommend that you integrate these API operations only in management systems. Do not use these API operations in the core system of messaging services. Otherwise, system risks may occur.
+ *
+ * @return GetInstanceResponse
+ */
 func (client *Client) GetInstance(instanceId *string) (_result *GetInstanceResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
@@ -3568,6 +4782,50 @@ func (client *Client) GetTopic(instanceId *string, topicName *string) (_result *
 	return _result, _err
 }
 
+func (client *Client) ListConsumerGroupSubscriptionsWithOptions(instanceId *string, consumerGroupId *string, headers map[string]*string, runtime *util.RuntimeOptions) (_result *ListConsumerGroupSubscriptionsResponse, _err error) {
+	req := &openapi.OpenApiRequest{
+		Headers: headers,
+	}
+	params := &openapi.Params{
+		Action:      tea.String("ListConsumerGroupSubscriptions"),
+		Version:     tea.String("2022-08-01"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/instances/" + tea.StringValue(openapiutil.GetEncodeParam(instanceId)) + "/consumerGroups/" + tea.StringValue(openapiutil.GetEncodeParam(consumerGroupId)) + "/subscriptions"),
+		Method:      tea.String("GET"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("ROA"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &ListConsumerGroupSubscriptionsResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) ListConsumerGroupSubscriptions(instanceId *string, consumerGroupId *string) (_result *ListConsumerGroupSubscriptionsResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	headers := make(map[string]*string)
+	_result = &ListConsumerGroupSubscriptionsResponse{}
+	_body, _err := client.ListConsumerGroupSubscriptionsWithOptions(instanceId, consumerGroupId, headers, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+/**
+ * > API operations provided by Alibaba Cloud are used to manage and query resources of Alibaba Cloud services. We recommend that you integrate these API operations only in management systems. Do not use these API operations in the core system of messaging services. Otherwise, system risks may occur.
+ *
+ * @param request ListConsumerGroupsRequest
+ * @param headers map
+ * @param runtime runtime options for this request RuntimeOptions
+ * @return ListConsumerGroupsResponse
+ */
 func (client *Client) ListConsumerGroupsWithOptions(instanceId *string, request *ListConsumerGroupsRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *ListConsumerGroupsResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -3610,6 +4868,12 @@ func (client *Client) ListConsumerGroupsWithOptions(instanceId *string, request 
 	return _result, _err
 }
 
+/**
+ * > API operations provided by Alibaba Cloud are used to manage and query resources of Alibaba Cloud services. We recommend that you integrate these API operations only in management systems. Do not use these API operations in the core system of messaging services. Otherwise, system risks may occur.
+ *
+ * @param request ListConsumerGroupsRequest
+ * @return ListConsumerGroupsResponse
+ */
 func (client *Client) ListConsumerGroups(instanceId *string, request *ListConsumerGroupsRequest) (_result *ListConsumerGroupsResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
@@ -3622,6 +4886,14 @@ func (client *Client) ListConsumerGroups(instanceId *string, request *ListConsum
 	return _result, _err
 }
 
+/**
+ * > API operations provided by Alibaba Cloud are used to manage and query resources of Alibaba Cloud services. We recommend that you integrate these API operations only in management systems. Do not use these API operations in the core system of messaging services. Otherwise, system risks may occur.
+ *
+ * @param request ListInstancesRequest
+ * @param headers map
+ * @param runtime runtime options for this request RuntimeOptions
+ * @return ListInstancesResponse
+ */
 func (client *Client) ListInstancesWithOptions(request *ListInstancesRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *ListInstancesResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -3642,6 +4914,10 @@ func (client *Client) ListInstancesWithOptions(request *ListInstancesRequest, he
 
 	if !tea.BoolValue(util.IsUnset(request.ResourceGroupId)) {
 		query["resourceGroupId"] = request.ResourceGroupId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Tags)) {
+		query["tags"] = request.Tags
 	}
 
 	req := &openapi.OpenApiRequest{
@@ -3668,6 +4944,12 @@ func (client *Client) ListInstancesWithOptions(request *ListInstancesRequest, he
 	return _result, _err
 }
 
+/**
+ * > API operations provided by Alibaba Cloud are used to manage and query resources of Alibaba Cloud services. We recommend that you integrate these API operations only in management systems. Do not use these API operations in the core system of messaging services. Otherwise, system risks may occur.
+ *
+ * @param request ListInstancesRequest
+ * @return ListInstancesResponse
+ */
 func (client *Client) ListInstances(request *ListInstancesRequest) (_result *ListInstancesResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
@@ -3744,6 +5026,64 @@ func (client *Client) ListTopics(instanceId *string, request *ListTopicsRequest)
 	return _result, _err
 }
 
+func (client *Client) ResetConsumeOffsetWithOptions(instanceId *string, consumerGroupId *string, topicName *string, request *ResetConsumeOffsetRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *ResetConsumeOffsetResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	body := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.ResetTime)) {
+		body["resetTime"] = request.ResetTime
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ResetType)) {
+		body["resetType"] = request.ResetType
+	}
+
+	req := &openapi.OpenApiRequest{
+		Headers: headers,
+		Body:    openapiutil.ParseToMap(body),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("ResetConsumeOffset"),
+		Version:     tea.String("2022-08-01"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/instances/" + tea.StringValue(openapiutil.GetEncodeParam(instanceId)) + "/consumerGroups/" + tea.StringValue(openapiutil.GetEncodeParam(consumerGroupId)) + "/consumeOffsets/" + tea.StringValue(openapiutil.GetEncodeParam(topicName))),
+		Method:      tea.String("PATCH"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("ROA"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &ResetConsumeOffsetResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) ResetConsumeOffset(instanceId *string, consumerGroupId *string, topicName *string, request *ResetConsumeOffsetRequest) (_result *ResetConsumeOffsetResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	headers := make(map[string]*string)
+	_result = &ResetConsumeOffsetResponse{}
+	_body, _err := client.ResetConsumeOffsetWithOptions(instanceId, consumerGroupId, topicName, request, headers, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+/**
+ * > API operations provided by Alibaba Cloud are used to manage and query resources of Alibaba Cloud services. We recommend that you integrate these API operations only in management systems. Do not use these API operations in the core system of messaging services. Otherwise, system risks may occur.
+ *
+ * @param request UpdateConsumerGroupRequest
+ * @param headers map
+ * @param runtime runtime options for this request RuntimeOptions
+ * @return UpdateConsumerGroupResponse
+ */
 func (client *Client) UpdateConsumerGroupWithOptions(instanceId *string, consumerGroupId *string, request *UpdateConsumerGroupRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *UpdateConsumerGroupResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -3786,6 +5126,12 @@ func (client *Client) UpdateConsumerGroupWithOptions(instanceId *string, consume
 	return _result, _err
 }
 
+/**
+ * > API operations provided by Alibaba Cloud are used to manage and query resources of Alibaba Cloud services. We recommend that you integrate these API operations only in management systems. Do not use these API operations in the core system of messaging services. Otherwise, system risks may occur.
+ *
+ * @param request UpdateConsumerGroupRequest
+ * @return UpdateConsumerGroupResponse
+ */
 func (client *Client) UpdateConsumerGroup(instanceId *string, consumerGroupId *string, request *UpdateConsumerGroupRequest) (_result *UpdateConsumerGroupResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
@@ -3798,6 +5144,14 @@ func (client *Client) UpdateConsumerGroup(instanceId *string, consumerGroupId *s
 	return _result, _err
 }
 
+/**
+ * > API operations provided by Alibaba Cloud are used to manage and query resources of Alibaba Cloud services. We recommend that you integrate these API operations only in management systems. Do not use these API operations in the core system of messaging services. Otherwise, system risks may occur.
+ *
+ * @param request UpdateInstanceRequest
+ * @param headers map
+ * @param runtime runtime options for this request RuntimeOptions
+ * @return UpdateInstanceResponse
+ */
 func (client *Client) UpdateInstanceWithOptions(instanceId *string, request *UpdateInstanceRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *UpdateInstanceResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -3844,6 +5198,12 @@ func (client *Client) UpdateInstanceWithOptions(instanceId *string, request *Upd
 	return _result, _err
 }
 
+/**
+ * > API operations provided by Alibaba Cloud are used to manage and query resources of Alibaba Cloud services. We recommend that you integrate these API operations only in management systems. Do not use these API operations in the core system of messaging services. Otherwise, system risks may occur.
+ *
+ * @param request UpdateInstanceRequest
+ * @return UpdateInstanceResponse
+ */
 func (client *Client) UpdateInstance(instanceId *string, request *UpdateInstanceRequest) (_result *UpdateInstanceResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
