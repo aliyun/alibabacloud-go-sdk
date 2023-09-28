@@ -17719,6 +17719,248 @@ func (s *GetOwnerApplyOrderDetailResponse) SetBody(v *GetOwnerApplyOrderDetailRe
 	return s
 }
 
+type GetPagedInstanceRequest struct {
+	OrderId *int64 `json:"OrderId,omitempty" xml:"OrderId,omitempty"`
+	Tid     *int64 `json:"Tid,omitempty" xml:"Tid,omitempty"`
+}
+
+func (s GetPagedInstanceRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetPagedInstanceRequest) GoString() string {
+	return s.String()
+}
+
+func (s *GetPagedInstanceRequest) SetOrderId(v int64) *GetPagedInstanceRequest {
+	s.OrderId = &v
+	return s
+}
+
+func (s *GetPagedInstanceRequest) SetTid(v int64) *GetPagedInstanceRequest {
+	s.Tid = &v
+	return s
+}
+
+type GetPagedInstanceResponseBody struct {
+	Data         *GetPagedInstanceResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
+	ErrorCode    *string                           `json:"ErrorCode,omitempty" xml:"ErrorCode,omitempty"`
+	ErrorMessage *string                           `json:"ErrorMessage,omitempty" xml:"ErrorMessage,omitempty"`
+	PageIndex    *int64                            `json:"PageIndex,omitempty" xml:"PageIndex,omitempty"`
+	PageSize     *int64                            `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	RequestId    *string                           `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	Success      *bool                             `json:"Success,omitempty" xml:"Success,omitempty"`
+	Total        *int64                            `json:"Total,omitempty" xml:"Total,omitempty"`
+	// Id of the request
+	TraceId *string `json:"TraceId,omitempty" xml:"TraceId,omitempty"`
+}
+
+func (s GetPagedInstanceResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetPagedInstanceResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *GetPagedInstanceResponseBody) SetData(v *GetPagedInstanceResponseBodyData) *GetPagedInstanceResponseBody {
+	s.Data = v
+	return s
+}
+
+func (s *GetPagedInstanceResponseBody) SetErrorCode(v string) *GetPagedInstanceResponseBody {
+	s.ErrorCode = &v
+	return s
+}
+
+func (s *GetPagedInstanceResponseBody) SetErrorMessage(v string) *GetPagedInstanceResponseBody {
+	s.ErrorMessage = &v
+	return s
+}
+
+func (s *GetPagedInstanceResponseBody) SetPageIndex(v int64) *GetPagedInstanceResponseBody {
+	s.PageIndex = &v
+	return s
+}
+
+func (s *GetPagedInstanceResponseBody) SetPageSize(v int64) *GetPagedInstanceResponseBody {
+	s.PageSize = &v
+	return s
+}
+
+func (s *GetPagedInstanceResponseBody) SetRequestId(v string) *GetPagedInstanceResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *GetPagedInstanceResponseBody) SetSuccess(v bool) *GetPagedInstanceResponseBody {
+	s.Success = &v
+	return s
+}
+
+func (s *GetPagedInstanceResponseBody) SetTotal(v int64) *GetPagedInstanceResponseBody {
+	s.Total = &v
+	return s
+}
+
+func (s *GetPagedInstanceResponseBody) SetTraceId(v string) *GetPagedInstanceResponseBody {
+	s.TraceId = &v
+	return s
+}
+
+type GetPagedInstanceResponseBodyData struct {
+	Instance []*GetPagedInstanceResponseBodyDataInstance `json:"Instance,omitempty" xml:"Instance,omitempty" type:"Repeated"`
+}
+
+func (s GetPagedInstanceResponseBodyData) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetPagedInstanceResponseBodyData) GoString() string {
+	return s.String()
+}
+
+func (s *GetPagedInstanceResponseBodyData) SetInstance(v []*GetPagedInstanceResponseBodyDataInstance) *GetPagedInstanceResponseBodyData {
+	s.Instance = v
+	return s
+}
+
+type GetPagedInstanceResponseBodyDataInstance struct {
+	BusinessTime       *string `json:"BusinessTime,omitempty" xml:"BusinessTime,omitempty"`
+	CheckStatus        *int64  `json:"CheckStatus,omitempty" xml:"CheckStatus,omitempty"`
+	DagId              *int64  `json:"DagId,omitempty" xml:"DagId,omitempty"`
+	Delete             *string `json:"Delete,omitempty" xml:"Delete,omitempty"`
+	EndTime            *string `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
+	GmtCreate          *string `json:"GmtCreate,omitempty" xml:"GmtCreate,omitempty"`
+	GmtModified        *string `json:"GmtModified,omitempty" xml:"GmtModified,omitempty"`
+	HistoryDagId       *int64  `json:"HistoryDagId,omitempty" xml:"HistoryDagId,omitempty"`
+	Id                 *int64  `json:"Id,omitempty" xml:"Id,omitempty"`
+	LastRunningContext *string `json:"LastRunningContext,omitempty" xml:"LastRunningContext,omitempty"`
+	Msg                *string `json:"Msg,omitempty" xml:"Msg,omitempty"`
+	Status             *int64  `json:"Status,omitempty" xml:"Status,omitempty"`
+	TaskType           *int64  `json:"TaskType,omitempty" xml:"TaskType,omitempty"`
+	TenantId           *string `json:"TenantId,omitempty" xml:"TenantId,omitempty"`
+	TriggerType        *int64  `json:"TriggerType,omitempty" xml:"TriggerType,omitempty"`
+	Version            *string `json:"Version,omitempty" xml:"Version,omitempty"`
+}
+
+func (s GetPagedInstanceResponseBodyDataInstance) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetPagedInstanceResponseBodyDataInstance) GoString() string {
+	return s.String()
+}
+
+func (s *GetPagedInstanceResponseBodyDataInstance) SetBusinessTime(v string) *GetPagedInstanceResponseBodyDataInstance {
+	s.BusinessTime = &v
+	return s
+}
+
+func (s *GetPagedInstanceResponseBodyDataInstance) SetCheckStatus(v int64) *GetPagedInstanceResponseBodyDataInstance {
+	s.CheckStatus = &v
+	return s
+}
+
+func (s *GetPagedInstanceResponseBodyDataInstance) SetDagId(v int64) *GetPagedInstanceResponseBodyDataInstance {
+	s.DagId = &v
+	return s
+}
+
+func (s *GetPagedInstanceResponseBodyDataInstance) SetDelete(v string) *GetPagedInstanceResponseBodyDataInstance {
+	s.Delete = &v
+	return s
+}
+
+func (s *GetPagedInstanceResponseBodyDataInstance) SetEndTime(v string) *GetPagedInstanceResponseBodyDataInstance {
+	s.EndTime = &v
+	return s
+}
+
+func (s *GetPagedInstanceResponseBodyDataInstance) SetGmtCreate(v string) *GetPagedInstanceResponseBodyDataInstance {
+	s.GmtCreate = &v
+	return s
+}
+
+func (s *GetPagedInstanceResponseBodyDataInstance) SetGmtModified(v string) *GetPagedInstanceResponseBodyDataInstance {
+	s.GmtModified = &v
+	return s
+}
+
+func (s *GetPagedInstanceResponseBodyDataInstance) SetHistoryDagId(v int64) *GetPagedInstanceResponseBodyDataInstance {
+	s.HistoryDagId = &v
+	return s
+}
+
+func (s *GetPagedInstanceResponseBodyDataInstance) SetId(v int64) *GetPagedInstanceResponseBodyDataInstance {
+	s.Id = &v
+	return s
+}
+
+func (s *GetPagedInstanceResponseBodyDataInstance) SetLastRunningContext(v string) *GetPagedInstanceResponseBodyDataInstance {
+	s.LastRunningContext = &v
+	return s
+}
+
+func (s *GetPagedInstanceResponseBodyDataInstance) SetMsg(v string) *GetPagedInstanceResponseBodyDataInstance {
+	s.Msg = &v
+	return s
+}
+
+func (s *GetPagedInstanceResponseBodyDataInstance) SetStatus(v int64) *GetPagedInstanceResponseBodyDataInstance {
+	s.Status = &v
+	return s
+}
+
+func (s *GetPagedInstanceResponseBodyDataInstance) SetTaskType(v int64) *GetPagedInstanceResponseBodyDataInstance {
+	s.TaskType = &v
+	return s
+}
+
+func (s *GetPagedInstanceResponseBodyDataInstance) SetTenantId(v string) *GetPagedInstanceResponseBodyDataInstance {
+	s.TenantId = &v
+	return s
+}
+
+func (s *GetPagedInstanceResponseBodyDataInstance) SetTriggerType(v int64) *GetPagedInstanceResponseBodyDataInstance {
+	s.TriggerType = &v
+	return s
+}
+
+func (s *GetPagedInstanceResponseBodyDataInstance) SetVersion(v string) *GetPagedInstanceResponseBodyDataInstance {
+	s.Version = &v
+	return s
+}
+
+type GetPagedInstanceResponse struct {
+	Headers    map[string]*string            `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                        `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *GetPagedInstanceResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s GetPagedInstanceResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetPagedInstanceResponse) GoString() string {
+	return s.String()
+}
+
+func (s *GetPagedInstanceResponse) SetHeaders(v map[string]*string) *GetPagedInstanceResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *GetPagedInstanceResponse) SetStatusCode(v int32) *GetPagedInstanceResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *GetPagedInstanceResponse) SetBody(v *GetPagedInstanceResponseBody) *GetPagedInstanceResponse {
+	s.Body = v
+	return s
+}
+
 type GetPermApplyOrderDetailRequest struct {
 	// The ticket ID. You can call the [ListOrders](~~465867~~) operation to query the ticket ID.
 	OrderId *int64 `json:"OrderId,omitempty" xml:"OrderId,omitempty"`
@@ -35441,6 +35683,226 @@ func (s *PauseDataCorrectSQLJobResponse) SetBody(v *PauseDataCorrectSQLJobRespon
 	return s
 }
 
+type PreviewWorkflowRequest struct {
+	OrderId *int64 `json:"OrderId,omitempty" xml:"OrderId,omitempty"`
+	Tid     *int64 `json:"Tid,omitempty" xml:"Tid,omitempty"`
+}
+
+func (s PreviewWorkflowRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s PreviewWorkflowRequest) GoString() string {
+	return s.String()
+}
+
+func (s *PreviewWorkflowRequest) SetOrderId(v int64) *PreviewWorkflowRequest {
+	s.OrderId = &v
+	return s
+}
+
+func (s *PreviewWorkflowRequest) SetTid(v int64) *PreviewWorkflowRequest {
+	s.Tid = &v
+	return s
+}
+
+type PreviewWorkflowResponseBody struct {
+	ErrorCode      *string                                    `json:"ErrorCode,omitempty" xml:"ErrorCode,omitempty"`
+	ErrorMessage   *string                                    `json:"ErrorMessage,omitempty" xml:"ErrorMessage,omitempty"`
+	RequestId      *string                                    `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	Success        *bool                                      `json:"Success,omitempty" xml:"Success,omitempty"`
+	WorkflowDetail *PreviewWorkflowResponseBodyWorkflowDetail `json:"WorkflowDetail,omitempty" xml:"WorkflowDetail,omitempty" type:"Struct"`
+}
+
+func (s PreviewWorkflowResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s PreviewWorkflowResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *PreviewWorkflowResponseBody) SetErrorCode(v string) *PreviewWorkflowResponseBody {
+	s.ErrorCode = &v
+	return s
+}
+
+func (s *PreviewWorkflowResponseBody) SetErrorMessage(v string) *PreviewWorkflowResponseBody {
+	s.ErrorMessage = &v
+	return s
+}
+
+func (s *PreviewWorkflowResponseBody) SetRequestId(v string) *PreviewWorkflowResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *PreviewWorkflowResponseBody) SetSuccess(v bool) *PreviewWorkflowResponseBody {
+	s.Success = &v
+	return s
+}
+
+func (s *PreviewWorkflowResponseBody) SetWorkflowDetail(v *PreviewWorkflowResponseBodyWorkflowDetail) *PreviewWorkflowResponseBody {
+	s.WorkflowDetail = v
+	return s
+}
+
+type PreviewWorkflowResponseBodyWorkflowDetail struct {
+	Comment          *string                                                    `json:"Comment,omitempty" xml:"Comment,omitempty"`
+	WfCateName       *string                                                    `json:"WfCateName,omitempty" xml:"WfCateName,omitempty"`
+	WorkflowNodeList *PreviewWorkflowResponseBodyWorkflowDetailWorkflowNodeList `json:"WorkflowNodeList,omitempty" xml:"WorkflowNodeList,omitempty" type:"Struct"`
+}
+
+func (s PreviewWorkflowResponseBodyWorkflowDetail) String() string {
+	return tea.Prettify(s)
+}
+
+func (s PreviewWorkflowResponseBodyWorkflowDetail) GoString() string {
+	return s.String()
+}
+
+func (s *PreviewWorkflowResponseBodyWorkflowDetail) SetComment(v string) *PreviewWorkflowResponseBodyWorkflowDetail {
+	s.Comment = &v
+	return s
+}
+
+func (s *PreviewWorkflowResponseBodyWorkflowDetail) SetWfCateName(v string) *PreviewWorkflowResponseBodyWorkflowDetail {
+	s.WfCateName = &v
+	return s
+}
+
+func (s *PreviewWorkflowResponseBodyWorkflowDetail) SetWorkflowNodeList(v *PreviewWorkflowResponseBodyWorkflowDetailWorkflowNodeList) *PreviewWorkflowResponseBodyWorkflowDetail {
+	s.WorkflowNodeList = v
+	return s
+}
+
+type PreviewWorkflowResponseBodyWorkflowDetailWorkflowNodeList struct {
+	WorkflowNode []*PreviewWorkflowResponseBodyWorkflowDetailWorkflowNodeListWorkflowNode `json:"WorkflowNode,omitempty" xml:"WorkflowNode,omitempty" type:"Repeated"`
+}
+
+func (s PreviewWorkflowResponseBodyWorkflowDetailWorkflowNodeList) String() string {
+	return tea.Prettify(s)
+}
+
+func (s PreviewWorkflowResponseBodyWorkflowDetailWorkflowNodeList) GoString() string {
+	return s.String()
+}
+
+func (s *PreviewWorkflowResponseBodyWorkflowDetailWorkflowNodeList) SetWorkflowNode(v []*PreviewWorkflowResponseBodyWorkflowDetailWorkflowNodeListWorkflowNode) *PreviewWorkflowResponseBodyWorkflowDetailWorkflowNodeList {
+	s.WorkflowNode = v
+	return s
+}
+
+type PreviewWorkflowResponseBodyWorkflowDetailWorkflowNodeListWorkflowNode struct {
+	AuditUserList *PreviewWorkflowResponseBodyWorkflowDetailWorkflowNodeListWorkflowNodeAuditUserList `json:"AuditUserList,omitempty" xml:"AuditUserList,omitempty" type:"Struct"`
+	Comment       *string                                                                             `json:"Comment,omitempty" xml:"Comment,omitempty"`
+	NodeName      *string                                                                             `json:"NodeName,omitempty" xml:"NodeName,omitempty"`
+	NodeType      *string                                                                             `json:"NodeType,omitempty" xml:"NodeType,omitempty"`
+}
+
+func (s PreviewWorkflowResponseBodyWorkflowDetailWorkflowNodeListWorkflowNode) String() string {
+	return tea.Prettify(s)
+}
+
+func (s PreviewWorkflowResponseBodyWorkflowDetailWorkflowNodeListWorkflowNode) GoString() string {
+	return s.String()
+}
+
+func (s *PreviewWorkflowResponseBodyWorkflowDetailWorkflowNodeListWorkflowNode) SetAuditUserList(v *PreviewWorkflowResponseBodyWorkflowDetailWorkflowNodeListWorkflowNodeAuditUserList) *PreviewWorkflowResponseBodyWorkflowDetailWorkflowNodeListWorkflowNode {
+	s.AuditUserList = v
+	return s
+}
+
+func (s *PreviewWorkflowResponseBodyWorkflowDetailWorkflowNodeListWorkflowNode) SetComment(v string) *PreviewWorkflowResponseBodyWorkflowDetailWorkflowNodeListWorkflowNode {
+	s.Comment = &v
+	return s
+}
+
+func (s *PreviewWorkflowResponseBodyWorkflowDetailWorkflowNodeListWorkflowNode) SetNodeName(v string) *PreviewWorkflowResponseBodyWorkflowDetailWorkflowNodeListWorkflowNode {
+	s.NodeName = &v
+	return s
+}
+
+func (s *PreviewWorkflowResponseBodyWorkflowDetailWorkflowNodeListWorkflowNode) SetNodeType(v string) *PreviewWorkflowResponseBodyWorkflowDetailWorkflowNodeListWorkflowNode {
+	s.NodeType = &v
+	return s
+}
+
+type PreviewWorkflowResponseBodyWorkflowDetailWorkflowNodeListWorkflowNodeAuditUserList struct {
+	AuditUser []*PreviewWorkflowResponseBodyWorkflowDetailWorkflowNodeListWorkflowNodeAuditUserListAuditUser `json:"AuditUser,omitempty" xml:"AuditUser,omitempty" type:"Repeated"`
+}
+
+func (s PreviewWorkflowResponseBodyWorkflowDetailWorkflowNodeListWorkflowNodeAuditUserList) String() string {
+	return tea.Prettify(s)
+}
+
+func (s PreviewWorkflowResponseBodyWorkflowDetailWorkflowNodeListWorkflowNodeAuditUserList) GoString() string {
+	return s.String()
+}
+
+func (s *PreviewWorkflowResponseBodyWorkflowDetailWorkflowNodeListWorkflowNodeAuditUserList) SetAuditUser(v []*PreviewWorkflowResponseBodyWorkflowDetailWorkflowNodeListWorkflowNodeAuditUserListAuditUser) *PreviewWorkflowResponseBodyWorkflowDetailWorkflowNodeListWorkflowNodeAuditUserList {
+	s.AuditUser = v
+	return s
+}
+
+type PreviewWorkflowResponseBodyWorkflowDetailWorkflowNodeListWorkflowNodeAuditUserListAuditUser struct {
+	NickName *string `json:"NickName,omitempty" xml:"NickName,omitempty"`
+	RealName *string `json:"RealName,omitempty" xml:"RealName,omitempty"`
+	UserId   *int64  `json:"UserId,omitempty" xml:"UserId,omitempty"`
+}
+
+func (s PreviewWorkflowResponseBodyWorkflowDetailWorkflowNodeListWorkflowNodeAuditUserListAuditUser) String() string {
+	return tea.Prettify(s)
+}
+
+func (s PreviewWorkflowResponseBodyWorkflowDetailWorkflowNodeListWorkflowNodeAuditUserListAuditUser) GoString() string {
+	return s.String()
+}
+
+func (s *PreviewWorkflowResponseBodyWorkflowDetailWorkflowNodeListWorkflowNodeAuditUserListAuditUser) SetNickName(v string) *PreviewWorkflowResponseBodyWorkflowDetailWorkflowNodeListWorkflowNodeAuditUserListAuditUser {
+	s.NickName = &v
+	return s
+}
+
+func (s *PreviewWorkflowResponseBodyWorkflowDetailWorkflowNodeListWorkflowNodeAuditUserListAuditUser) SetRealName(v string) *PreviewWorkflowResponseBodyWorkflowDetailWorkflowNodeListWorkflowNodeAuditUserListAuditUser {
+	s.RealName = &v
+	return s
+}
+
+func (s *PreviewWorkflowResponseBodyWorkflowDetailWorkflowNodeListWorkflowNodeAuditUserListAuditUser) SetUserId(v int64) *PreviewWorkflowResponseBodyWorkflowDetailWorkflowNodeListWorkflowNodeAuditUserListAuditUser {
+	s.UserId = &v
+	return s
+}
+
+type PreviewWorkflowResponse struct {
+	Headers    map[string]*string           `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                       `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *PreviewWorkflowResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s PreviewWorkflowResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s PreviewWorkflowResponse) GoString() string {
+	return s.String()
+}
+
+func (s *PreviewWorkflowResponse) SetHeaders(v map[string]*string) *PreviewWorkflowResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *PreviewWorkflowResponse) SetStatusCode(v int32) *PreviewWorkflowResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *PreviewWorkflowResponse) SetBody(v *PreviewWorkflowResponseBody) *PreviewWorkflowResponse {
+	s.Body = v
+	return s
+}
+
 type PublishAndDeployTaskFlowRequest struct {
 	// The ID of the task flow. You can call the [ListTaskFlow](~~424565~~) or [ListLhTaskFlowAndScenario](~~426672~~) operation to query the task flow ID.
 	DagId *int64 `json:"DagId,omitempty" xml:"DagId,omitempty"`
@@ -47391,6 +47853,46 @@ func (client *Client) GetOwnerApplyOrderDetail(request *GetOwnerApplyOrderDetail
 	return _result, _err
 }
 
+func (client *Client) GetPagedInstanceWithOptions(request *GetPagedInstanceRequest, runtime *util.RuntimeOptions) (_result *GetPagedInstanceResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := openapiutil.Query(util.ToMap(request))
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("GetPagedInstance"),
+		Version:     tea.String("2018-11-01"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("GET"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &GetPagedInstanceResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) GetPagedInstance(request *GetPagedInstanceRequest) (_result *GetPagedInstanceResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &GetPagedInstanceResponse{}
+	_body, _err := client.GetPagedInstanceWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
 /**
  * You can call this operation to query the information about tickets that apply for permissions on databases, tables, and sensitive columns.
  *
@@ -51927,6 +52429,54 @@ func (client *Client) PauseDataCorrectSQLJob(request *PauseDataCorrectSQLJobRequ
 	runtime := &util.RuntimeOptions{}
 	_result = &PauseDataCorrectSQLJobResponse{}
 	_body, _err := client.PauseDataCorrectSQLJobWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) PreviewWorkflowWithOptions(request *PreviewWorkflowRequest, runtime *util.RuntimeOptions) (_result *PreviewWorkflowResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.OrderId)) {
+		query["OrderId"] = request.OrderId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Tid)) {
+		query["Tid"] = request.Tid
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("PreviewWorkflow"),
+		Version:     tea.String("2018-11-01"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &PreviewWorkflowResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) PreviewWorkflow(request *PreviewWorkflowRequest) (_result *PreviewWorkflowResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &PreviewWorkflowResponse{}
+	_body, _err := client.PreviewWorkflowWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
