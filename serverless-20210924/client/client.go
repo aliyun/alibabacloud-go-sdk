@@ -594,8 +594,9 @@ func (s *Pipeline) SetUid(v string) *Pipeline {
 }
 
 type PipelineSpec struct {
-	Context      *Context `json:"context,omitempty" xml:"context,omitempty"`
-	TemplateName *string  `json:"templateName,omitempty" xml:"templateName,omitempty"`
+	Context      *Context              `json:"context,omitempty" xml:"context,omitempty"`
+	TemplateName *string               `json:"templateName,omitempty" xml:"templateName,omitempty"`
+	TemplateSpec *PipelineTemplateSpec `json:"templateSpec,omitempty" xml:"templateSpec,omitempty"`
 }
 
 func (s PipelineSpec) String() string {
@@ -613,6 +614,11 @@ func (s *PipelineSpec) SetContext(v *Context) *PipelineSpec {
 
 func (s *PipelineSpec) SetTemplateName(v string) *PipelineSpec {
 	s.TemplateName = &v
+	return s
+}
+
+func (s *PipelineSpec) SetTemplateSpec(v *PipelineTemplateSpec) *PipelineSpec {
+	s.TemplateSpec = v
 	return s
 }
 
@@ -1237,12 +1243,55 @@ func (s *TaskExec) SetTaskTemplate(v string) *TaskExec {
 	return s
 }
 
+type TaskExecError struct {
+	Code      *string `json:"code,omitempty" xml:"code,omitempty"`
+	ExtraInfo *string `json:"extraInfo,omitempty" xml:"extraInfo,omitempty"`
+	Message   *string `json:"message,omitempty" xml:"message,omitempty"`
+	RequestId *string `json:"requestId,omitempty" xml:"requestId,omitempty"`
+	Title     *string `json:"title,omitempty" xml:"title,omitempty"`
+}
+
+func (s TaskExecError) String() string {
+	return tea.Prettify(s)
+}
+
+func (s TaskExecError) GoString() string {
+	return s.String()
+}
+
+func (s *TaskExecError) SetCode(v string) *TaskExecError {
+	s.Code = &v
+	return s
+}
+
+func (s *TaskExecError) SetExtraInfo(v string) *TaskExecError {
+	s.ExtraInfo = &v
+	return s
+}
+
+func (s *TaskExecError) SetMessage(v string) *TaskExecError {
+	s.Message = &v
+	return s
+}
+
+func (s *TaskExecError) SetRequestId(v string) *TaskExecError {
+	s.RequestId = &v
+	return s
+}
+
+func (s *TaskExecError) SetTitle(v string) *TaskExecError {
+	s.Title = &v
+	return s
+}
+
 type TaskInvocation struct {
 	InstanceID       *string `json:"instanceID,omitempty" xml:"instanceID,omitempty"`
 	InvocationID     *string `json:"invocationID,omitempty" xml:"invocationID,omitempty"`
 	InvocationTarget *string `json:"invocationTarget,omitempty" xml:"invocationTarget,omitempty"`
 	Output           *string `json:"output,omitempty" xml:"output,omitempty"`
 	RequestID        *string `json:"requestID,omitempty" xml:"requestID,omitempty"`
+	SlsLogStore      *string `json:"slsLogStore,omitempty" xml:"slsLogStore,omitempty"`
+	SlsProject       *string `json:"slsProject,omitempty" xml:"slsProject,omitempty"`
 	Status           *string `json:"status,omitempty" xml:"status,omitempty"`
 }
 
@@ -1279,6 +1328,16 @@ func (s *TaskInvocation) SetRequestID(v string) *TaskInvocation {
 	return s
 }
 
+func (s *TaskInvocation) SetSlsLogStore(v string) *TaskInvocation {
+	s.SlsLogStore = &v
+	return s
+}
+
+func (s *TaskInvocation) SetSlsProject(v string) *TaskInvocation {
+	s.SlsProject = &v
+	return s
+}
+
 func (s *TaskInvocation) SetStatus(v string) *TaskInvocation {
 	s.Status = &v
 	return s
@@ -1310,6 +1369,7 @@ func (s *TaskSpec) SetTemplateName(v string) *TaskSpec {
 type TaskStatus struct {
 	ExecutionDetails []*string         `json:"executionDetails,omitempty" xml:"executionDetails,omitempty" type:"Repeated"`
 	Invocations      []*TaskInvocation `json:"invocations,omitempty" xml:"invocations,omitempty" type:"Repeated"`
+	LatestExecError  *TaskExecError    `json:"latestExecError,omitempty" xml:"latestExecError,omitempty"`
 	Phase            *string           `json:"phase,omitempty" xml:"phase,omitempty"`
 	StatusGeneration *int64            `json:"statusGeneration,omitempty" xml:"statusGeneration,omitempty"`
 }
@@ -1329,6 +1389,11 @@ func (s *TaskStatus) SetExecutionDetails(v []*string) *TaskStatus {
 
 func (s *TaskStatus) SetInvocations(v []*TaskInvocation) *TaskStatus {
 	s.Invocations = v
+	return s
+}
+
+func (s *TaskStatus) SetLatestExecError(v *TaskExecError) *TaskStatus {
+	s.LatestExecError = v
 	return s
 }
 
