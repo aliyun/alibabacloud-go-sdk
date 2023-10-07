@@ -623,7 +623,8 @@ func (s *PipelineSpec) SetTemplateSpec(v *PipelineTemplateSpec) *PipelineSpec {
 }
 
 type PipelineStatus struct {
-	Phase *string `json:"phase,omitempty" xml:"phase,omitempty"`
+	LatestExecError *TaskExecError `json:"latestExecError,omitempty" xml:"latestExecError,omitempty"`
+	Phase           *string        `json:"phase,omitempty" xml:"phase,omitempty"`
 }
 
 func (s PipelineStatus) String() string {
@@ -632,6 +633,11 @@ func (s PipelineStatus) String() string {
 
 func (s PipelineStatus) GoString() string {
 	return s.String()
+}
+
+func (s *PipelineStatus) SetLatestExecError(v *TaskExecError) *PipelineStatus {
+	s.LatestExecError = v
+	return s
 }
 
 func (s *PipelineStatus) SetPhase(v string) *PipelineStatus {
