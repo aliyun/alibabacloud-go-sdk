@@ -2324,6 +2324,8 @@ func (s *DeleteMembersRequest) SetMemberIds(v string) *DeleteMembersRequest {
 }
 
 type DeleteMembersResponseBody struct {
+	Code      *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	Message   *string `json:"Message,omitempty" xml:"Message,omitempty"`
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -2333,6 +2335,16 @@ func (s DeleteMembersResponseBody) String() string {
 
 func (s DeleteMembersResponseBody) GoString() string {
 	return s.String()
+}
+
+func (s *DeleteMembersResponseBody) SetCode(v string) *DeleteMembersResponseBody {
+	s.Code = &v
+	return s
+}
+
+func (s *DeleteMembersResponseBody) SetMessage(v string) *DeleteMembersResponseBody {
+	s.Message = &v
+	return s
 }
 
 func (s *DeleteMembersResponseBody) SetRequestId(v string) *DeleteMembersResponseBody {
