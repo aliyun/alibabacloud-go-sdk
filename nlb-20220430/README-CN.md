@@ -10,7 +10,7 @@
 ## 安装
 你可以使用 `go mod` 来管理你的依赖，
 ```sh
-  go get github.com/alibabacloud-go/nlb-20220430
+  go get github.com/alibabacloud-go/nlb-20220430/v2
 ```
 
 ## 问题

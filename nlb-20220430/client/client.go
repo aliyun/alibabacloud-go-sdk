@@ -202,6 +202,7 @@ func (s *AddServersToServerGroupResponse) SetBody(v *AddServersToServerGroupResp
 }
 
 type AssociateAdditionalCertificatesWithListenerRequest struct {
+	// The additional certificates. You can associate up to 15 additional certificates with a listener in each request.
 	AdditionalCertificateIds []*string `json:"AdditionalCertificateIds,omitempty" xml:"AdditionalCertificateIds,omitempty" type:"Repeated"`
 	// The client token that is used to ensure the idempotence of the request.
 	//
@@ -212,11 +213,11 @@ type AssociateAdditionalCertificatesWithListenerRequest struct {
 	// Specifies whether to perform a dry run, without performing the actual request. Valid values:
 	//
 	// *   **true**: performs only a dry run. The system checks the request for potential issues, including missing parameter values, incorrect request syntax, and service limits. If the request fails the dry run, an error message is returned. If the request passes the dry run, the `DryRunOperation` error code is returned.
-	// *   **false** (default): performs a dry run and performs the actual request. If the request passes the dry run, a 2xx HTTP status code is returned and the operation is performed.
+	// *   **false**(default): performs a dry run and performs the actual request. If the request passes the dry run, a 2xx HTTP status code is returned and the operation is performed.
 	DryRun *bool `json:"DryRun,omitempty" xml:"DryRun,omitempty"`
-	// The listener ID.
+	// The listener ID. You must specify the ID of a listener that uses SSL over TCP.
 	ListenerId *string `json:"ListenerId,omitempty" xml:"ListenerId,omitempty"`
-	// The ID of the region where the NLB instance is deployed.
+	// The region ID of the Network Load Balancer (NLB) instance.
 	//
 	// You can call the [DescribeRegions](~~443657~~) operation to query the most recent region list.
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
@@ -258,7 +259,7 @@ func (s *AssociateAdditionalCertificatesWithListenerRequest) SetRegionId(v strin
 type AssociateAdditionalCertificatesWithListenerResponseBody struct {
 	// The ID of the asynchronous task.
 	JobId *string `json:"JobId,omitempty" xml:"JobId,omitempty"`
-	// The ID of the request.
+	// The request ID.
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -639,8 +640,9 @@ type CreateListenerRequest struct {
 	// The first port in the listener port range. Valid values: **0** to **65535**.
 	//
 	// > This parameter is required when **ListenerPort** is set to **0**.
-	StartPort *int32                      `json:"StartPort,omitempty" xml:"StartPort,omitempty"`
-	Tag       []*CreateListenerRequestTag `json:"Tag,omitempty" xml:"Tag,omitempty" type:"Repeated"`
+	StartPort *int32 `json:"StartPort,omitempty" xml:"StartPort,omitempty"`
+	// The tags.
+	Tag []*CreateListenerRequestTag `json:"Tag,omitempty" xml:"Tag,omitempty" type:"Repeated"`
 }
 
 func (s CreateListenerRequest) String() string {
@@ -762,7 +764,13 @@ func (s *CreateListenerRequest) SetTag(v []*CreateListenerRequestTag) *CreateLis
 }
 
 type CreateListenerRequestTag struct {
-	Key   *string `json:"Key,omitempty" xml:"Key,omitempty"`
+	// The key of the tag. You can specify up to 20 tag keys. The tag key cannot be an empty string.
+	//
+	// The tag key can be up to 64 characters in length and cannot contain `http://` or `https://`. It cannot start with `aliyun` or `acs:`.
+	Key *string `json:"Key,omitempty" xml:"Key,omitempty"`
+	// The tag value. The tag value can be up to 128 characters in length and cannot start with `acs:` or `aliyun`. It cannot contain `http://` or `https://`.
+	//
+	// You can add up to 20 tags in each call.
 	Value *string `json:"Value,omitempty" xml:"Value,omitempty"`
 }
 
@@ -1440,8 +1448,7 @@ type CreateServerGroupRequest struct {
 	// *   **TCP** (default)
 	// *   **UDP**
 	// *   **TCPSSL**
-	Protocol    *string `json:"Protocol,omitempty" xml:"Protocol,omitempty"`
-	QuicVersion *string `json:"QuicVersion,omitempty" xml:"QuicVersion,omitempty"`
+	Protocol *string `json:"Protocol,omitempty" xml:"Protocol,omitempty"`
 	// The region ID of the NLB instance.
 	//
 	// You can call the [DescribeRegions](~~443657~~) operation to query the most recent region list.
@@ -1523,11 +1530,6 @@ func (s *CreateServerGroupRequest) SetPreserveClientIpEnabled(v bool) *CreateSer
 
 func (s *CreateServerGroupRequest) SetProtocol(v string) *CreateServerGroupRequest {
 	s.Protocol = &v
-	return s
-}
-
-func (s *CreateServerGroupRequest) SetQuicVersion(v string) *CreateServerGroupRequest {
-	s.QuicVersion = &v
 	return s
 }
 
@@ -2634,6 +2636,7 @@ func (s *DisableLoadBalancerIpv6InternetResponse) SetBody(v *DisableLoadBalancer
 }
 
 type DisassociateAdditionalCertificatesWithListenerRequest struct {
+	// The additional certificates. You can disassociate up to 15 additional certificates from a listener in each request.
 	AdditionalCertificateIds []*string `json:"AdditionalCertificateIds,omitempty" xml:"AdditionalCertificateIds,omitempty" type:"Repeated"`
 	// The client token that is used to ensure the idempotence of the request.
 	//
@@ -2641,14 +2644,14 @@ type DisassociateAdditionalCertificatesWithListenerRequest struct {
 	//
 	// > If you do not specify this parameter, the system automatically uses the **request ID** as the **client token**. The **request ID** may be different for each request.
 	ClientToken *string `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
-	// Specifies whether to only precheck this request. Valid values:
+	// Specifies whether to perform a dry run, without performing the actual request. Valid values:
 	//
-	// *   **true**: prechecks the request without creating the resource. The system prechecks the required parameters, request syntax, and limits. If the request fails the precheck, an error message is returned. If the request passes the precheck, the `DryRunOperation` error code is returned.
-	// *   **false** (default): sends the request. If the request passes the precheck, a 2xx HTTP status code is returned and the operation is performed.
+	// *   **true**: performs only a dry run. The system checks the request for potential issues, including missing parameter values, incorrect request syntax, and service limits. If the request fails the dry run, an error message is returned. If the request passes the dry run, the `DryRunOperation` error code is returned.
+	// *   **false**(default): performs a dry run and performs the actual request. If the request passes the dry run, a 2xx HTTP status code is returned and the operation is performed.
 	DryRun *bool `json:"DryRun,omitempty" xml:"DryRun,omitempty"`
-	// The listener ID.
+	// The listener ID. You must specify the ID of a listener that uses SSL over TCP.
 	ListenerId *string `json:"ListenerId,omitempty" xml:"ListenerId,omitempty"`
-	// The ID of the region where the NLB instance is deployed.
+	// The region ID of the Network Load Balancer (NLB) instance.
 	//
 	// You can call the [DescribeRegions](~~443657~~) operation to query the most recent region list.
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
@@ -2690,7 +2693,7 @@ func (s *DisassociateAdditionalCertificatesWithListenerRequest) SetRegionId(v st
 type DisassociateAdditionalCertificatesWithListenerResponseBody struct {
 	// The ID of the asynchronous task.
 	JobId *string `json:"JobId,omitempty" xml:"JobId,omitempty"`
-	// The ID of the request.
+	// The request ID.
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -3507,10 +3510,23 @@ func (s *GetListenerHealthStatusResponse) SetBody(v *GetListenerHealthStatusResp
 }
 
 type GetLoadBalancerAttributeRequest struct {
-	ClientToken    *string `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
-	DryRun         *bool   `json:"DryRun,omitempty" xml:"DryRun,omitempty"`
+	// The client token that is used to ensure the idempotence of the request.
+	//
+	// You can use the client to generate the value, but you must ensure that it is unique among all requests. ClientToken can contain only ASCII characters.
+	//
+	// >  If you do not set this parameter, **ClientToken** is set to the value of **RequestId**. The value of **RequestId** for each API request may be different.
+	ClientToken *string `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
+	// Specifies whether only to precheck the request. Valid values:
+	//
+	// *   **true**: checks the request but does not query the listener details. The system prechecks the required parameters, request syntax, and limits. If the request fails the precheck, an error message is returned. If the request passes the precheck, the `DryRunOperation` error code is returned.
+	// *   **false** (default): sends the request. If the request passes the precheck, an HTTP 2xx status code is returned and the operation is performed.
+	DryRun *bool `json:"DryRun,omitempty" xml:"DryRun,omitempty"`
+	// The ID of the NLB instance.
 	LoadBalancerId *string `json:"LoadBalancerId,omitempty" xml:"LoadBalancerId,omitempty"`
-	RegionId       *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	// The ID of the region where the NLB instance is deployed.
+	//
+	// You can call the [DescribeRegions](~~443657~~) operation to query the most recent region list.
+	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 }
 
 func (s GetLoadBalancerAttributeRequest) String() string {
@@ -3542,24 +3558,34 @@ func (s *GetLoadBalancerAttributeRequest) SetRegionId(v string) *GetLoadBalancer
 }
 
 type GetLoadBalancerAttributeResponseBody struct {
+	// The protocol version. Valid values:
+	//
+	// *   **ipv4**: IPv4
+	// *   **DualStack**: dual stack
 	AddressIpVersion *string `json:"AddressIpVersion,omitempty" xml:"AddressIpVersion,omitempty"`
 	// The IPv4 network type of the NLB instance. Valid values:
 	//
 	// *   **Internet** The domain name of the NLB instance is resolved to the public IP address. Therefore, the NLB instance can be accessed over the Internet.
 	// *   **Intranet** The domain name of the NLB instance is resolved to the private IP address. Therefore, the NLB instance can be accessed over the VPC in which the NLB instance is deployed.
-	AddressType        *string `json:"AddressType,omitempty" xml:"AddressType,omitempty"`
+	AddressType *string `json:"AddressType,omitempty" xml:"AddressType,omitempty"`
+	// The ID of the EIP bandwidth plan.
 	BandwidthPackageId *string `json:"BandwidthPackageId,omitempty" xml:"BandwidthPackageId,omitempty"`
 	// The maximum number of connections per second that can be created on the NLB instance. Valid values: **0** to **1000000**.
 	//
 	// **0** indicates that the number of connections is unlimited.
-	Cps        *int32  `json:"Cps,omitempty" xml:"Cps,omitempty"`
+	Cps *int32 `json:"Cps,omitempty" xml:"Cps,omitempty"`
+	// The time when the NLB instance was created. This value is a UNIX timestamp.
+	//
+	// Unit: milliseconds.
 	CreateTime *string `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
 	// Indicates whether the NLB instance is accessible across zones. Valid values:
 	//
 	// *   **true**
 	// *   **false**
-	CrossZoneEnabled         *bool                                                         `json:"CrossZoneEnabled,omitempty" xml:"CrossZoneEnabled,omitempty"`
-	DNSName                  *string                                                       `json:"DNSName,omitempty" xml:"DNSName,omitempty"`
+	CrossZoneEnabled *bool `json:"CrossZoneEnabled,omitempty" xml:"CrossZoneEnabled,omitempty"`
+	// The domain name of the NLB instance.
+	DNSName *string `json:"DNSName,omitempty" xml:"DNSName,omitempty"`
+	// The configuration of the deletion protection feature.
 	DeletionProtectionConfig *GetLoadBalancerAttributeResponseBodyDeletionProtectionConfig `json:"DeletionProtectionConfig,omitempty" xml:"DeletionProtectionConfig,omitempty" type:"Struct"`
 	// The IPv6 network type of the NLB instance. Valid values:
 	//
@@ -3586,14 +3612,18 @@ type GetLoadBalancerAttributeResponseBody struct {
 	// *   **Provisioning**: The NLB instance is being created.
 	// *   **Configuring**: The NLB instance is being modified.
 	// *   **CreateFailed**: The system failed to create the NLB instance. In this case, you are not charged for the NLB instance. You can only delete the NLB instance.
-	LoadBalancerStatus           *string                                                           `json:"LoadBalancerStatus,omitempty" xml:"LoadBalancerStatus,omitempty"`
-	LoadBalancerType             *string                                                           `json:"LoadBalancerType,omitempty" xml:"LoadBalancerType,omitempty"`
+	LoadBalancerStatus *string `json:"LoadBalancerStatus,omitempty" xml:"LoadBalancerStatus,omitempty"`
+	// The type of the Server Load Balancer (SLB) instance. Set the value to **network**, which specifies NLB.
+	LoadBalancerType *string `json:"LoadBalancerType,omitempty" xml:"LoadBalancerType,omitempty"`
+	// The configuration of the configuration read-only mode.
 	ModificationProtectionConfig *GetLoadBalancerAttributeResponseBodyModificationProtectionConfig `json:"ModificationProtectionConfig,omitempty" xml:"ModificationProtectionConfig,omitempty" type:"Struct"`
 	// The information about the locked NLB instance. This parameter is returned only when `LoadBalancerBussinessStatus` is **Abnormal**.
 	OperationLocks []*GetLoadBalancerAttributeResponseBodyOperationLocks `json:"OperationLocks,omitempty" xml:"OperationLocks,omitempty" type:"Repeated"`
 	// The region ID of the NLB instance.
-	RegionId        *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	RequestId       *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	// The request ID.
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The ID of the resource group.
 	ResourceGroupId *string `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
 	// The ID of the security group associated with the NLB instance.
 	SecurityGroupIds []*string `json:"SecurityGroupIds,omitempty" xml:"SecurityGroupIds,omitempty" type:"Repeated"`
@@ -3734,9 +3764,15 @@ func (s *GetLoadBalancerAttributeResponseBody) SetZoneMappings(v []*GetLoadBalan
 }
 
 type GetLoadBalancerAttributeResponseBodyDeletionProtectionConfig struct {
-	Enabled     *bool   `json:"Enabled,omitempty" xml:"Enabled,omitempty"`
+	// Specifies whether to enable deletion protection. Valid values:
+	//
+	// *   **true**: yes
+	// *   **false** (default): no
+	Enabled *bool `json:"Enabled,omitempty" xml:"Enabled,omitempty"`
+	// The time when the deletion protection feature was enabled. The time follows the ISO 8601 standard in the `yyyy-MM-ddTHH:mm:ssZ` format. The time is displayed in UTC.
 	EnabledTime *string `json:"EnabledTime,omitempty" xml:"EnabledTime,omitempty"`
-	Reason      *string `json:"Reason,omitempty" xml:"Reason,omitempty"`
+	// The reason why the deletion protection feature is enabled or disabled. The value must be 2 to 128 characters in length, and can contain letters, digits, periods (.), underscores (\_), and hyphens (-). The value must start with a letter.
+	Reason *string `json:"Reason,omitempty" xml:"Reason,omitempty"`
 }
 
 func (s GetLoadBalancerAttributeResponseBodyDeletionProtectionConfig) String() string {
@@ -3781,9 +3817,19 @@ func (s *GetLoadBalancerAttributeResponseBodyLoadBalancerBillingConfig) SetPayTy
 }
 
 type GetLoadBalancerAttributeResponseBodyModificationProtectionConfig struct {
+	// The time when the modification protection feature was enabled. The time follows the ISO 8601 standard in the yyyy-MM-ddTHH:mm:ssZ format. The time is displayed in UTC.
 	EnabledTime *string `json:"EnabledTime,omitempty" xml:"EnabledTime,omitempty"`
-	Reason      *string `json:"Reason,omitempty" xml:"Reason,omitempty"`
-	Status      *string `json:"Status,omitempty" xml:"Status,omitempty"`
+	// The reason why the configuration read-only mode is enabled. The value must be 2 to 128 characters in length, and can contain letters, digits, periods (.), underscores (\_), and hyphens (-). The value must start with a letter.
+	//
+	// >  This parameter takes effect only if the **Status** parameter is set to **ConsoleProtection**.
+	Reason *string `json:"Reason,omitempty" xml:"Reason,omitempty"`
+	// Specifies whether to enable the configuration read-only mode. Valid values:
+	//
+	// *   **NonProtection**: does not enable the configuration read-only mode. You cannot set the **Reason** parameter. If the **Reason** parameter is set, the value is cleared.
+	// *   **ConsoleProtection**: enables the configuration read-only mode. You can set the **Reason** parameter.
+	//
+	// >  If you set this parameter to **ConsoleProtection**, you cannot use the NLB console to modify instance configurations. However, you can call API operations to modify instance configurations.
+	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
 }
 
 func (s GetLoadBalancerAttributeResponseBodyModificationProtectionConfig) String() string {
@@ -5158,7 +5204,11 @@ func (s *ListLoadBalancersResponseBodyLoadBalancersTags) SetValue(v string) *Lis
 type ListLoadBalancersResponseBodyLoadBalancersZoneMappings struct {
 	// The IP addresses that are used by the NLB instance.
 	LoadBalancerAddresses []*ListLoadBalancersResponseBodyLoadBalancersZoneMappingsLoadBalancerAddresses `json:"LoadBalancerAddresses,omitempty" xml:"LoadBalancerAddresses,omitempty" type:"Repeated"`
-	Status                *string                                                                        `json:"Status,omitempty" xml:"Status,omitempty"`
+	// The state of the task. Valid values:
+	//
+	// *   **Succeeded**: The task is successful.
+	// *   **processing**: The ticket is being executed.
+	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
 	// The ID of the vSwitch in the zone. By default, each zone contains one vSwitch and one subnet.
 	VSwitchId *string `json:"VSwitchId,omitempty" xml:"VSwitchId,omitempty"`
 	// The name of the zone. You can call the [DescribeZones](~~443890~~) operation to query the zones.
@@ -5201,8 +5251,10 @@ type ListLoadBalancersResponseBodyLoadBalancersZoneMappingsLoadBalancerAddresses
 	// The IPv6 address used by the NLB instance.
 	Ipv6Address *string `json:"Ipv6Address,omitempty" xml:"Ipv6Address,omitempty"`
 	// The private IPv4 address of the NLB instance.
-	PrivateIPv4Address  *string `json:"PrivateIPv4Address,omitempty" xml:"PrivateIPv4Address,omitempty"`
+	PrivateIPv4Address *string `json:"PrivateIPv4Address,omitempty" xml:"PrivateIPv4Address,omitempty"`
+	// The health check status of the private IPv4 address.
 	PrivateIPv4HcStatus *string `json:"PrivateIPv4HcStatus,omitempty" xml:"PrivateIPv4HcStatus,omitempty"`
+	// The health check status of the private IPv6 address.
 	PrivateIPv6HcStatus *string `json:"PrivateIPv6HcStatus,omitempty" xml:"PrivateIPv6HcStatus,omitempty"`
 	// The public IPv4 address of the NLB instance.
 	PublicIPv4Address *string `json:"PublicIPv4Address,omitempty" xml:"PublicIPv4Address,omitempty"`
@@ -5645,7 +5697,10 @@ type ListServerGroupServersRequest struct {
 	// *   If this is your first query or no next query is to be sent, ignore this parameter.
 	// *   If a next query is to be sent, set the parameter to the value of NextToken that is returned from the last call.
 	NextToken *string `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
-	RegionId  *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	// The region ID of the NLB instance.
+	//
+	// You can call the [DescribeRegions](~~443657~~) operation to query the most recent region list.
+	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 	// The ID of the server group.
 	ServerGroupId *string `json:"ServerGroupId,omitempty" xml:"ServerGroupId,omitempty"`
 	// The IDs of the servers.
@@ -6044,8 +6099,7 @@ type ListServerGroupsResponseBodyServerGroups struct {
 	// > This parameter is set to **true** by default when **AddressIPVersion** is set to **ipv4**. This parameter is set to **false** when **AddressIPVersion** is set to **ipv6**. **true** will be supported by later versions.
 	PreserveClientIpEnabled *bool `json:"PreserveClientIpEnabled,omitempty" xml:"PreserveClientIpEnabled,omitempty"`
 	// The protocol used to forward requests to the backend servers. Valid values: **TCP**, **UDP**, and **TCPSSL**.
-	Protocol    *string `json:"Protocol,omitempty" xml:"Protocol,omitempty"`
-	QuicVersion *string `json:"QuicVersion,omitempty" xml:"QuicVersion,omitempty"`
+	Protocol *string `json:"Protocol,omitempty" xml:"Protocol,omitempty"`
 	// The region ID of the NLB instance.
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 	// The NLB instances.
@@ -6128,11 +6182,6 @@ func (s *ListServerGroupsResponseBodyServerGroups) SetPreserveClientIpEnabled(v 
 
 func (s *ListServerGroupsResponseBodyServerGroups) SetProtocol(v string) *ListServerGroupsResponseBodyServerGroups {
 	s.Protocol = &v
-	return s
-}
-
-func (s *ListServerGroupsResponseBodyServerGroups) SetQuicVersion(v string) *ListServerGroupsResponseBodyServerGroups {
-	s.QuicVersion = &v
 	return s
 }
 
@@ -7854,20 +7903,31 @@ type UpdateListenerAttributeRequest struct {
 	// *   **true**: yes
 	// *   **false**: no
 	AlpnEnabled *bool `json:"AlpnEnabled,omitempty" xml:"AlpnEnabled,omitempty"`
-	// The ALPN policy.
-	AlpnPolicy       *string   `json:"AlpnPolicy,omitempty" xml:"AlpnPolicy,omitempty"`
+	// The ALPN policy. Valid values:
+	//
+	// *   **HTTP1Only**: uses only HTTP 1.x. The priority of HTTP 1.1 is higher than the priority of HTTP 1.0.
+	// *   **HTTP2Only**: uses only HTTP 2.0.
+	// *   **HTTP2Optional**: preferentially uses HTTP 1.x over HTTP 2.0. The priority of HTTP 1.1 is higher than the priority of HTTP 1.0, and the priority of HTTP 1.0 is higher than the priority of HTTP 2.0.
+	// *   **HTTP2Preferred**: preferentially uses HTTP 2.0 over HTTP 1.x. The priority of HTTP 2.0 is higher than the priority of HTTP 1.1, and the priority of HTTP 1.1 is higher than the priority of HTTP 1.0.
+	//
+	// > This parameter is required if AlpnEnabled is set to true.
+	AlpnPolicy *string `json:"AlpnPolicy,omitempty" xml:"AlpnPolicy,omitempty"`
+	// The CA certificates. Only one CA certificate is supported.
+	//
+	// >  This parameter takes effect only for listeners that use SSL over TCP.
 	CaCertificateIds []*string `json:"CaCertificateIds,omitempty" xml:"CaCertificateIds,omitempty" type:"Repeated"`
 	// Specifies whether to enable mutual authentication. Valid values:
 	//
 	// *   **true**: yes
 	// *   **false** (default): no
-	CaEnabled      *bool     `json:"CaEnabled,omitempty" xml:"CaEnabled,omitempty"`
+	CaEnabled *bool `json:"CaEnabled,omitempty" xml:"CaEnabled,omitempty"`
+	// The server certificates.
 	CertificateIds []*string `json:"CertificateIds,omitempty" xml:"CertificateIds,omitempty" type:"Repeated"`
 	// The client token that is used to ensure the idempotence of the request.
 	//
-	// You can use the client to generate the value, but you must ensure that it is unique among all requests. ClientToken can contain only ASCII characters.
+	// You can use the client to generate the token, but you must make sure that the token is unique among different requests. The token can contain only ASCII characters.
 	//
-	// >  If you do not set this parameter, **ClientToken** is set to the value of **RequestId**. The value of **RequestId** of each API request may be different.
+	// > If you do not specify this parameter, the system automatically uses the **request ID** as the **client token**. The **request ID** may be different for each request.
 	ClientToken *string `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
 	// The maximum number of connections that can be created per second on the NLB instance. Valid values: **0** to **1000000**. **0** specifies that the number of connections is unlimited.
 	Cps *int32 `json:"Cps,omitempty" xml:"Cps,omitempty"`
@@ -8840,8 +8900,7 @@ type UpdateServerGroupAttributeRequest struct {
 	//
 	// *   **true**
 	// *   **false**
-	PreserveClientIpEnabled *bool   `json:"PreserveClientIpEnabled,omitempty" xml:"PreserveClientIpEnabled,omitempty"`
-	QuicVersion             *string `json:"QuicVersion,omitempty" xml:"QuicVersion,omitempty"`
+	PreserveClientIpEnabled *bool `json:"PreserveClientIpEnabled,omitempty" xml:"PreserveClientIpEnabled,omitempty"`
 	// The region ID of the NLB instance.
 	//
 	// You can call the [DescribeRegions](~~443657~~) operation to obtain the region ID.
@@ -8897,11 +8956,6 @@ func (s *UpdateServerGroupAttributeRequest) SetHealthCheckConfig(v *UpdateServer
 
 func (s *UpdateServerGroupAttributeRequest) SetPreserveClientIpEnabled(v bool) *UpdateServerGroupAttributeRequest {
 	s.PreserveClientIpEnabled = &v
-	return s
-}
-
-func (s *UpdateServerGroupAttributeRequest) SetQuicVersion(v string) *UpdateServerGroupAttributeRequest {
-	s.QuicVersion = &v
 	return s
 }
 
@@ -9389,6 +9443,15 @@ func (client *Client) AddServersToServerGroup(request *AddServersToServerGroupRe
 	return _result, _err
 }
 
+/**
+ * **AssociateAdditionalCertificatesWithListener** is an asynchronous operation. After a request is sent, the system returns a request ID and runs the task in the background. You can call the [ListListenerCertificates](~~615175~~) operation to query the status of the task:
+ * *   If the listener is in the **Associating** state, the additional certificates are being associated.
+ * *   If the listener is in the **Associated** state, the additional certificates are associated.
+ *
+ * @param request AssociateAdditionalCertificatesWithListenerRequest
+ * @param runtime runtime options for this request RuntimeOptions
+ * @return AssociateAdditionalCertificatesWithListenerResponse
+ */
 func (client *Client) AssociateAdditionalCertificatesWithListenerWithOptions(request *AssociateAdditionalCertificatesWithListenerRequest, runtime *util.RuntimeOptions) (_result *AssociateAdditionalCertificatesWithListenerResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -9438,6 +9501,14 @@ func (client *Client) AssociateAdditionalCertificatesWithListenerWithOptions(req
 	return _result, _err
 }
 
+/**
+ * **AssociateAdditionalCertificatesWithListener** is an asynchronous operation. After a request is sent, the system returns a request ID and runs the task in the background. You can call the [ListListenerCertificates](~~615175~~) operation to query the status of the task:
+ * *   If the listener is in the **Associating** state, the additional certificates are being associated.
+ * *   If the listener is in the **Associated** state, the additional certificates are associated.
+ *
+ * @param request AssociateAdditionalCertificatesWithListenerRequest
+ * @return AssociateAdditionalCertificatesWithListenerResponse
+ */
 func (client *Client) AssociateAdditionalCertificatesWithListener(request *AssociateAdditionalCertificatesWithListenerRequest) (_result *AssociateAdditionalCertificatesWithListenerResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &AssociateAdditionalCertificatesWithListenerResponse{}
@@ -9956,10 +10027,6 @@ func (client *Client) CreateServerGroupWithOptions(request *CreateServerGroupReq
 
 	if !tea.BoolValue(util.IsUnset(request.Protocol)) {
 		body["Protocol"] = request.Protocol
-	}
-
-	if !tea.BoolValue(util.IsUnset(request.QuicVersion)) {
-		body["QuicVersion"] = request.QuicVersion
 	}
 
 	if !tea.BoolValue(util.IsUnset(request.RegionId)) {
@@ -10499,6 +10566,15 @@ func (client *Client) DisableLoadBalancerIpv6Internet(request *DisableLoadBalanc
 	return _result, _err
 }
 
+/**
+ * **DisassociateAdditionalCertificatesWithListener** is an asynchronous operation. After a request is sent, the system returns a request ID and runs the task in the background. You can call the [ListListenerCertificates](~~615175~~) operation to query the status of the task:
+ * *   If an additional certificate is in the **Dissociating** state, the additional certificate is being disassociated.
+ * *   If an additional certificate is in the **Dissociated** state, the additional certificate is disassociated.
+ *
+ * @param request DisassociateAdditionalCertificatesWithListenerRequest
+ * @param runtime runtime options for this request RuntimeOptions
+ * @return DisassociateAdditionalCertificatesWithListenerResponse
+ */
 func (client *Client) DisassociateAdditionalCertificatesWithListenerWithOptions(request *DisassociateAdditionalCertificatesWithListenerRequest, runtime *util.RuntimeOptions) (_result *DisassociateAdditionalCertificatesWithListenerResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -10548,6 +10624,14 @@ func (client *Client) DisassociateAdditionalCertificatesWithListenerWithOptions(
 	return _result, _err
 }
 
+/**
+ * **DisassociateAdditionalCertificatesWithListener** is an asynchronous operation. After a request is sent, the system returns a request ID and runs the task in the background. You can call the [ListListenerCertificates](~~615175~~) operation to query the status of the task:
+ * *   If an additional certificate is in the **Dissociating** state, the additional certificate is being disassociated.
+ * *   If an additional certificate is in the **Dissociated** state, the additional certificate is disassociated.
+ *
+ * @param request DisassociateAdditionalCertificatesWithListenerRequest
+ * @return DisassociateAdditionalCertificatesWithListenerResponse
+ */
 func (client *Client) DisassociateAdditionalCertificatesWithListener(request *DisassociateAdditionalCertificatesWithListenerRequest) (_result *DisassociateAdditionalCertificatesWithListenerResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &DisassociateAdditionalCertificatesWithListenerResponse{}
@@ -12513,10 +12597,6 @@ func (client *Client) UpdateServerGroupAttributeWithOptions(request *UpdateServe
 
 	if !tea.BoolValue(util.IsUnset(request.PreserveClientIpEnabled)) {
 		body["PreserveClientIpEnabled"] = request.PreserveClientIpEnabled
-	}
-
-	if !tea.BoolValue(util.IsUnset(request.QuicVersion)) {
-		body["QuicVersion"] = request.QuicVersion
 	}
 
 	if !tea.BoolValue(util.IsUnset(request.RegionId)) {

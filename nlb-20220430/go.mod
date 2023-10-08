@@ -1,4 +1,4 @@
-module github.com/alibabacloud-go/nlb-20220430
+module github.com/alibabacloud-go/nlb-20220430/v2
 
 go 1.15
 
