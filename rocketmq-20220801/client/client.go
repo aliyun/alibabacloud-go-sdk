@@ -334,7 +334,8 @@ type CreateInstanceRequest struct {
 	// Valid values:
 	//
 	// *   Monthly renewal: 1, 2, 3, 6, and 12
-	AutoRenewPeriod *int32 `json:"autoRenewPeriod,omitempty" xml:"autoRenewPeriod,omitempty"`
+	AutoRenewPeriod *int32  `json:"autoRenewPeriod,omitempty" xml:"autoRenewPeriod,omitempty"`
+	CommodityCode   *string `json:"commodityCode,omitempty" xml:"commodityCode,omitempty"`
 	// The name of the instance that you want to create.
 	//
 	// If you do not configure this parameter, the instance ID is used as the instance name.
@@ -412,6 +413,11 @@ func (s *CreateInstanceRequest) SetAutoRenew(v bool) *CreateInstanceRequest {
 
 func (s *CreateInstanceRequest) SetAutoRenewPeriod(v int32) *CreateInstanceRequest {
 	s.AutoRenewPeriod = &v
+	return s
+}
+
+func (s *CreateInstanceRequest) SetCommodityCode(v string) *CreateInstanceRequest {
+	s.CommodityCode = &v
 	return s
 }
 
@@ -559,6 +565,7 @@ func (s *CreateInstanceRequestNetworkInfoInternetInfo) SetIpWhitelist(v []*strin
 }
 
 type CreateInstanceRequestNetworkInfoVpcInfo struct {
+	SecurityGroupIds *string `json:"securityGroupIds,omitempty" xml:"securityGroupIds,omitempty"`
 	// The ID of the vSwitch with which the instance is associated.
 	//
 	// > After you create a ApsaraMQ for RocketMQ instance, you cannot change the vSwitch to which the instance is connected. If you want to change the vSwitch with which a ApsaraMQ for RocketMQ is associated, you must release the instance and purchase a new instance.
@@ -575,6 +582,11 @@ func (s CreateInstanceRequestNetworkInfoVpcInfo) String() string {
 
 func (s CreateInstanceRequestNetworkInfoVpcInfo) GoString() string {
 	return s.String()
+}
+
+func (s *CreateInstanceRequestNetworkInfoVpcInfo) SetSecurityGroupIds(v string) *CreateInstanceRequestNetworkInfoVpcInfo {
+	s.SecurityGroupIds = &v
+	return s
 }
 
 func (s *CreateInstanceRequestNetworkInfoVpcInfo) SetVSwitchId(v string) *CreateInstanceRequestNetworkInfoVpcInfo {
@@ -598,7 +610,9 @@ type CreateInstanceRequestProductInfo struct {
 	// After you enable the elastic TPS feature for a ApsaraMQ for RocketMQ instance, you can use a specific amount of TPS that exceeds the specification limit. You are charged for the elastic TPS feature. For more information, see [Computing fee](~~427237~~).
 	//
 	// > The elastic TPS feature is supported by only specific instance editions. For more information, see [Instance specifications](~~444715~~).
-	AutoScaling *bool `json:"autoScaling,omitempty" xml:"autoScaling,omitempty"`
+	AutoScaling  *bool   `json:"autoScaling,omitempty" xml:"autoScaling,omitempty"`
+	ChargeType   *string `json:"chargeType,omitempty" xml:"chargeType,omitempty"`
+	IntranetSpec *string `json:"intranetSpec,omitempty" xml:"intranetSpec,omitempty"`
 	// The retention period of messages. Unit: hours.
 	//
 	// For information about the valid values of this parameter, see the "Limits on resource quotas" section in [Usage limits](~~440347~~).
@@ -623,6 +637,16 @@ func (s CreateInstanceRequestProductInfo) GoString() string {
 
 func (s *CreateInstanceRequestProductInfo) SetAutoScaling(v bool) *CreateInstanceRequestProductInfo {
 	s.AutoScaling = &v
+	return s
+}
+
+func (s *CreateInstanceRequestProductInfo) SetChargeType(v string) *CreateInstanceRequestProductInfo {
+	s.ChargeType = &v
+	return s
+}
+
+func (s *CreateInstanceRequestProductInfo) SetIntranetSpec(v string) *CreateInstanceRequestProductInfo {
+	s.IntranetSpec = &v
 	return s
 }
 
@@ -2087,6 +2111,7 @@ func (s *GetInstanceResponseBodyDataNetworkInfoInternetInfo) SetIpWhitelist(v []
 }
 
 type GetInstanceResponseBodyDataNetworkInfoVpcInfo struct {
+	SecurityGroupIds *string `json:"securityGroupIds,omitempty" xml:"securityGroupIds,omitempty"`
 	// The ID of the vSwitch with which the instance is associated.
 	VSwitchId *string `json:"vSwitchId,omitempty" xml:"vSwitchId,omitempty"`
 	// The ID of the VPC with which the instance is associated.
@@ -2099,6 +2124,11 @@ func (s GetInstanceResponseBodyDataNetworkInfoVpcInfo) String() string {
 
 func (s GetInstanceResponseBodyDataNetworkInfoVpcInfo) GoString() string {
 	return s.String()
+}
+
+func (s *GetInstanceResponseBodyDataNetworkInfoVpcInfo) SetSecurityGroupIds(v string) *GetInstanceResponseBodyDataNetworkInfoVpcInfo {
+	s.SecurityGroupIds = &v
+	return s
 }
 
 func (s *GetInstanceResponseBodyDataNetworkInfoVpcInfo) SetVSwitchId(v string) *GetInstanceResponseBodyDataNetworkInfoVpcInfo {
@@ -2142,6 +2172,7 @@ type GetInstanceResponseBodyDataProductInfo struct {
 	//
 	// > The elastic TPS feature is supported by only specific instance editions. For more information, see [Instance specifications](~~444715~~).
 	SupportAutoScaling *bool `json:"supportAutoScaling,omitempty" xml:"supportAutoScaling,omitempty"`
+	TraceOn            *bool `json:"traceOn,omitempty" xml:"traceOn,omitempty"`
 }
 
 func (s GetInstanceResponseBodyDataProductInfo) String() string {
@@ -2174,6 +2205,11 @@ func (s *GetInstanceResponseBodyDataProductInfo) SetSendReceiveRatio(v float32) 
 
 func (s *GetInstanceResponseBodyDataProductInfo) SetSupportAutoScaling(v bool) *GetInstanceResponseBodyDataProductInfo {
 	s.SupportAutoScaling = &v
+	return s
+}
+
+func (s *GetInstanceResponseBodyDataProductInfo) SetTraceOn(v bool) *GetInstanceResponseBodyDataProductInfo {
+	s.TraceOn = &v
 	return s
 }
 
@@ -3036,7 +3072,8 @@ type ListInstancesResponseBodyDataList struct {
 	//
 	// *   PayAsYouGo
 	// *   Subscription
-	PaymentType *string `json:"paymentType,omitempty" xml:"paymentType,omitempty"`
+	PaymentType *string                                       `json:"paymentType,omitempty" xml:"paymentType,omitempty"`
+	ProductInfo *ListInstancesResponseBodyDataListProductInfo `json:"productInfo,omitempty" xml:"productInfo,omitempty" type:"Struct"`
 	// The ID of the region in which the instance resides.
 	RegionId *string `json:"regionId,omitempty" xml:"regionId,omitempty"`
 	// The time when the instance was released.
@@ -3127,6 +3164,11 @@ func (s *ListInstancesResponseBodyDataList) SetPaymentType(v string) *ListInstan
 	return s
 }
 
+func (s *ListInstancesResponseBodyDataList) SetProductInfo(v *ListInstancesResponseBodyDataListProductInfo) *ListInstancesResponseBodyDataList {
+	s.ProductInfo = v
+	return s
+}
+
 func (s *ListInstancesResponseBodyDataList) SetRegionId(v string) *ListInstancesResponseBodyDataList {
 	s.RegionId = &v
 	return s
@@ -3189,6 +3231,23 @@ func (s *ListInstancesResponseBodyDataList) SetUpdateTime(v string) *ListInstanc
 
 func (s *ListInstancesResponseBodyDataList) SetUserId(v string) *ListInstancesResponseBodyDataList {
 	s.UserId = &v
+	return s
+}
+
+type ListInstancesResponseBodyDataListProductInfo struct {
+	TraceOn *bool `json:"traceOn,omitempty" xml:"traceOn,omitempty"`
+}
+
+func (s ListInstancesResponseBodyDataListProductInfo) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListInstancesResponseBodyDataListProductInfo) GoString() string {
+	return s.String()
+}
+
+func (s *ListInstancesResponseBodyDataListProductInfo) SetTraceOn(v bool) *ListInstancesResponseBodyDataListProductInfo {
+	s.TraceOn = &v
 	return s
 }
 
@@ -3992,6 +4051,7 @@ type UpdateInstanceRequestProductInfo struct {
 	//
 	// Value values: 0.25 to 1.
 	SendReceiveRatio *float32 `json:"sendReceiveRatio,omitempty" xml:"sendReceiveRatio,omitempty"`
+	TraceOn          *bool    `json:"traceOn,omitempty" xml:"traceOn,omitempty"`
 }
 
 func (s UpdateInstanceRequestProductInfo) String() string {
@@ -4014,6 +4074,11 @@ func (s *UpdateInstanceRequestProductInfo) SetMessageRetentionTime(v int32) *Upd
 
 func (s *UpdateInstanceRequestProductInfo) SetSendReceiveRatio(v float32) *UpdateInstanceRequestProductInfo {
 	s.SendReceiveRatio = &v
+	return s
+}
+
+func (s *UpdateInstanceRequestProductInfo) SetTraceOn(v bool) *UpdateInstanceRequestProductInfo {
+	s.TraceOn = &v
 	return s
 }
 
@@ -4425,6 +4490,10 @@ func (client *Client) CreateInstanceWithOptions(request *CreateInstanceRequest, 
 
 	if !tea.BoolValue(util.IsUnset(request.AutoRenewPeriod)) {
 		body["autoRenewPeriod"] = request.AutoRenewPeriod
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.CommodityCode)) {
+		body["commodityCode"] = request.CommodityCode
 	}
 
 	if !tea.BoolValue(util.IsUnset(request.InstanceName)) {
