@@ -4718,6 +4718,7 @@ func (s *DescribeAntChainCertificateApplicationsResponseBodyResult) SetPaginatio
 
 type DescribeAntChainCertificateApplicationsResponseBodyResultCertificateApplications struct {
 	AntChainId *string `json:"AntChainId,omitempty" xml:"AntChainId,omitempty"`
+	// Bid
 	Bid        *string `json:"Bid,omitempty" xml:"Bid,omitempty"`
 	Createtime *int64  `json:"Createtime,omitempty" xml:"Createtime,omitempty"`
 	Status     *string `json:"Status,omitempty" xml:"Status,omitempty"`
@@ -8957,6 +8958,7 @@ type DescribeAntChainTransactionResponseBodyResultTransaction struct {
 	Gas        *string   `json:"Gas,omitempty" xml:"Gas,omitempty"`
 	Hash       *string   `json:"Hash,omitempty" xml:"Hash,omitempty"`
 	Nonce      *string   `json:"Nonce,omitempty" xml:"Nonce,omitempty"`
+	// Period
 	Period     *int64    `json:"Period,omitempty" xml:"Period,omitempty"`
 	Signatures []*string `json:"Signatures,omitempty" xml:"Signatures,omitempty" type:"Repeated"`
 	Timestamp  *int64    `json:"Timestamp,omitempty" xml:"Timestamp,omitempty"`
@@ -12495,6 +12497,7 @@ type DescribeFabricConsortiumsResponseBodyResult struct {
 	CreateTime           *string                                            `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
 	Domain               *string                                            `json:"Domain,omitempty" xml:"Domain,omitempty"`
 	ExpiredTime          *string                                            `json:"ExpiredTime,omitempty" xml:"ExpiredTime,omitempty"`
+	MajorVersion         *string                                            `json:"MajorVersion,omitempty" xml:"MajorVersion,omitempty"`
 	OrganizationCount    *int32                                             `json:"OrganizationCount,omitempty" xml:"OrganizationCount,omitempty"`
 	OwnerBid             *string                                            `json:"OwnerBid,omitempty" xml:"OwnerBid,omitempty"`
 	OwnerName            *string                                            `json:"OwnerName,omitempty" xml:"OwnerName,omitempty"`
@@ -12552,6 +12555,11 @@ func (s *DescribeFabricConsortiumsResponseBodyResult) SetDomain(v string) *Descr
 
 func (s *DescribeFabricConsortiumsResponseBodyResult) SetExpiredTime(v string) *DescribeFabricConsortiumsResponseBodyResult {
 	s.ExpiredTime = &v
+	return s
+}
+
+func (s *DescribeFabricConsortiumsResponseBodyResult) SetMajorVersion(v string) *DescribeFabricConsortiumsResponseBodyResult {
+	s.MajorVersion = &v
 	return s
 }
 
@@ -14691,6 +14699,7 @@ type DescribeFabricOrganizationsResponseBodyResult struct {
 	ConsortiumCount         *int32                                               `json:"ConsortiumCount,omitempty" xml:"ConsortiumCount,omitempty"`
 	CreateTime              *string                                              `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
 	Domain                  *string                                              `json:"Domain,omitempty" xml:"Domain,omitempty"`
+	MajorVersion            *string                                              `json:"MajorVersion,omitempty" xml:"MajorVersion,omitempty"`
 	OrganizationDescription *string                                              `json:"OrganizationDescription,omitempty" xml:"OrganizationDescription,omitempty"`
 	OrganizationId          *string                                              `json:"OrganizationId,omitempty" xml:"OrganizationId,omitempty"`
 	OrganizationName        *string                                              `json:"OrganizationName,omitempty" xml:"OrganizationName,omitempty"`
@@ -14732,6 +14741,11 @@ func (s *DescribeFabricOrganizationsResponseBodyResult) SetCreateTime(v string) 
 
 func (s *DescribeFabricOrganizationsResponseBodyResult) SetDomain(v string) *DescribeFabricOrganizationsResponseBodyResult {
 	s.Domain = &v
+	return s
+}
+
+func (s *DescribeFabricOrganizationsResponseBodyResult) SetMajorVersion(v string) *DescribeFabricOrganizationsResponseBodyResult {
+	s.MajorVersion = &v
 	return s
 }
 
@@ -24260,6 +24274,13 @@ func (client *Client) UpdateAntChainQRCodeAuthorization(request *UpdateAntChainQ
 	return _result, _err
 }
 
+/**
+ * ****
+ *
+ * @param request UpgradeFabricChaincodeRequest
+ * @param runtime runtime options for this request RuntimeOptions
+ * @return UpgradeFabricChaincodeResponse
+ */
 func (client *Client) UpgradeFabricChaincodeWithOptions(request *UpgradeFabricChaincodeRequest, runtime *util.RuntimeOptions) (_result *UpgradeFabricChaincodeResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -24309,6 +24330,12 @@ func (client *Client) UpgradeFabricChaincodeWithOptions(request *UpgradeFabricCh
 	return _result, _err
 }
 
+/**
+ * ****
+ *
+ * @param request UpgradeFabricChaincodeRequest
+ * @return UpgradeFabricChaincodeResponse
+ */
 func (client *Client) UpgradeFabricChaincode(request *UpgradeFabricChaincodeRequest) (_result *UpgradeFabricChaincodeResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &UpgradeFabricChaincodeResponse{}
