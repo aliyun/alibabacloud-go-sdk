@@ -671,6 +671,7 @@ func (s *AppConfigWebContainerConfig) SetUseDefaultConfig(v bool) *AppConfigWebC
 }
 
 type AbortAndRollbackChangeOrderRequest struct {
+	// The ID of the change process.
 	ChangeOrderId *string `json:"ChangeOrderId,omitempty" xml:"ChangeOrderId,omitempty"`
 }
 
@@ -688,12 +689,18 @@ func (s *AbortAndRollbackChangeOrderRequest) SetChangeOrderId(v string) *AbortAn
 }
 
 type AbortAndRollbackChangeOrderResponseBody struct {
-	Code      *int32                                       `json:"Code,omitempty" xml:"Code,omitempty"`
-	Data      *AbortAndRollbackChangeOrderResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
-	ErrorCode *string                                      `json:"ErrorCode,omitempty" xml:"ErrorCode,omitempty"`
-	Message   *string                                      `json:"Message,omitempty" xml:"Message,omitempty"`
-	RequestId *string                                      `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	TraceId   *string                                      `json:"TraceId,omitempty" xml:"TraceId,omitempty"`
+	// The HTTP status code that is returned.
+	Code *int32 `json:"Code,omitempty" xml:"Code,omitempty"`
+	// The information about the change process.
+	Data *AbortAndRollbackChangeOrderResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
+	// The error code that is returned.
+	ErrorCode *string `json:"ErrorCode,omitempty" xml:"ErrorCode,omitempty"`
+	// The additional information that is returned.
+	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// The ID of the request.
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The ID of the trace.
+	TraceId *string `json:"TraceId,omitempty" xml:"TraceId,omitempty"`
 }
 
 func (s AbortAndRollbackChangeOrderResponseBody) String() string {
@@ -735,6 +742,7 @@ func (s *AbortAndRollbackChangeOrderResponseBody) SetTraceId(v string) *AbortAnd
 }
 
 type AbortAndRollbackChangeOrderResponseBodyData struct {
+	// The ID of the change process.
 	ChangeOrderId *string `json:"ChangeOrderId,omitempty" xml:"ChangeOrderId,omitempty"`
 }
 
@@ -781,6 +789,7 @@ func (s *AbortAndRollbackChangeOrderResponse) SetBody(v *AbortAndRollbackChangeO
 }
 
 type AbortChangeOrderRequest struct {
+	// The ID of the change process. You can call the [GetChangeOrderInfo](~~62072~~) operation to query the change process ID.
 	ChangeOrderId *string `json:"ChangeOrderId,omitempty" xml:"ChangeOrderId,omitempty"`
 }
 
@@ -798,12 +807,18 @@ func (s *AbortChangeOrderRequest) SetChangeOrderId(v string) *AbortChangeOrderRe
 }
 
 type AbortChangeOrderResponseBody struct {
-	Code      *int32                            `json:"Code,omitempty" xml:"Code,omitempty"`
-	Data      *AbortChangeOrderResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
-	ErrorCode *string                           `json:"ErrorCode,omitempty" xml:"ErrorCode,omitempty"`
-	Message   *string                           `json:"Message,omitempty" xml:"Message,omitempty"`
-	RequestId *string                           `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	TraceId   *string                           `json:"TraceId,omitempty" xml:"TraceId,omitempty"`
+	// The HTTP status code that is returned.
+	Code *int32 `json:"Code,omitempty" xml:"Code,omitempty"`
+	// The change process.
+	Data *AbortChangeOrderResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
+	// The error code that is returned.
+	ErrorCode *string `json:"ErrorCode,omitempty" xml:"ErrorCode,omitempty"`
+	// The additional information that is returned.
+	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// The ID of the request.
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The ID of the trace.
+	TraceId *string `json:"TraceId,omitempty" xml:"TraceId,omitempty"`
 }
 
 func (s AbortChangeOrderResponseBody) String() string {
@@ -845,6 +860,7 @@ func (s *AbortChangeOrderResponseBody) SetTraceId(v string) *AbortChangeOrderRes
 }
 
 type AbortChangeOrderResponseBodyData struct {
+	// The ID of the change process.
 	ChangeOrderId *string `json:"ChangeOrderId,omitempty" xml:"ChangeOrderId,omitempty"`
 }
 
@@ -891,8 +907,16 @@ func (s *AbortChangeOrderResponse) SetBody(v *AbortChangeOrderResponseBody) *Abo
 }
 
 type AddLogPathRequest struct {
+	// The ID of the application. You can call the ListApplication operation to query the application ID. For more information, see [ListApplication](~~149390~~).
 	AppId *string `json:"AppId,omitempty" xml:"AppId,omitempty"`
-	Path  *string `json:"Path,omitempty" xml:"Path,omitempty"`
+	// The absolute path of the log directory that you want to add. The value must start and end with a forward slash (`/`) and must contain `/log` or `/logs`. The following directories are the default log directories in Enterprise Distributed Application Service (EDAS):
+	//
+	// *   /home/admin/edas-container/logs/
+	// *   /home/admin/taobao-tomcat-7.0.59/logs/
+	// *   /home/admin/taobao-tomcat-production-7.0.59.3/logs/
+	// *   /home/admin/taobao-tomcat-production-7.0.70/logs/
+	// *   /home/admin/edas-agent/logs/
+	Path *string `json:"Path,omitempty" xml:"Path,omitempty"`
 }
 
 func (s AddLogPathRequest) String() string {
@@ -914,8 +938,11 @@ func (s *AddLogPathRequest) SetPath(v string) *AddLogPathRequest {
 }
 
 type AddLogPathResponseBody struct {
-	Code      *int32  `json:"Code,omitempty" xml:"Code,omitempty"`
-	Message   *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// The HTTP status code that is returned.
+	Code *int32 `json:"Code,omitempty" xml:"Code,omitempty"`
+	// The additional information that is returned.
+	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// The ID of the request.
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -972,7 +999,9 @@ func (s *AddLogPathResponse) SetBody(v *AddLogPathResponseBody) *AddLogPathRespo
 }
 
 type AuthorizeApplicationRequest struct {
-	AppIds       *string `json:"AppIds,omitempty" xml:"AppIds,omitempty"`
+	// The ID of the application. You can specify multiple IDs. Separate multiple IDs with semicolons (;). If you leave this parameter empty, the permissions on the application are revoked.
+	AppIds *string `json:"AppIds,omitempty" xml:"AppIds,omitempty"`
+	// The ID of the RAM user to be authorized. The value of the parameter is in the `sub-account name@primary account UID` format.
 	TargetUserId *string `json:"TargetUserId,omitempty" xml:"TargetUserId,omitempty"`
 }
 
@@ -995,8 +1024,11 @@ func (s *AuthorizeApplicationRequest) SetTargetUserId(v string) *AuthorizeApplic
 }
 
 type AuthorizeApplicationResponseBody struct {
-	Code      *int32  `json:"Code,omitempty" xml:"Code,omitempty"`
-	Message   *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// The HTTP status code that is returned.
+	Code *int32 `json:"Code,omitempty" xml:"Code,omitempty"`
+	// The additional information that is returned.
+	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// The ID of the request.
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -1053,8 +1085,12 @@ func (s *AuthorizeApplicationResponse) SetBody(v *AuthorizeApplicationResponseBo
 }
 
 type AuthorizeResourceGroupRequest struct {
+	// The ID of the resource group. You can call the ListResourceGroup operation to query the resource group ID. For more information, see [ListResourceGroup](~~62055~~).
+	//
+	// You can specify multiple resource group IDs. Separate multiple resource group IDs with semicolons (;).
 	ResourceGroupIds *string `json:"ResourceGroupIds,omitempty" xml:"ResourceGroupIds,omitempty"`
-	TargetUserId     *string `json:"TargetUserId,omitempty" xml:"TargetUserId,omitempty"`
+	// The ID of the RAM user to be authorized.
+	TargetUserId *string `json:"TargetUserId,omitempty" xml:"TargetUserId,omitempty"`
 }
 
 func (s AuthorizeResourceGroupRequest) String() string {
@@ -1076,8 +1112,11 @@ func (s *AuthorizeResourceGroupRequest) SetTargetUserId(v string) *AuthorizeReso
 }
 
 type AuthorizeResourceGroupResponseBody struct {
-	Code      *int32  `json:"Code,omitempty" xml:"Code,omitempty"`
-	Message   *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// The HTTP status code that is returned.
+	Code *int32 `json:"Code,omitempty" xml:"Code,omitempty"`
+	// The message that is returned.
+	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// The ID of the request.
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -1134,7 +1173,9 @@ func (s *AuthorizeResourceGroupResponse) SetBody(v *AuthorizeResourceGroupRespon
 }
 
 type AuthorizeRoleRequest struct {
-	RoleIds      *string `json:"RoleIds,omitempty" xml:"RoleIds,omitempty"`
+	// The ID of the role to be assigned. If you want to assign multiple roles to the specified RAM user, separate the IDs of the roles with semicolons (;). If you leave this parameter empty, the roles assigned to the specified RAM user are revoked.
+	RoleIds *string `json:"RoleIds,omitempty" xml:"RoleIds,omitempty"`
+	// The ID of the RAM user to which you want to assign the roles.
 	TargetUserId *string `json:"TargetUserId,omitempty" xml:"TargetUserId,omitempty"`
 }
 
@@ -1157,8 +1198,11 @@ func (s *AuthorizeRoleRequest) SetTargetUserId(v string) *AuthorizeRoleRequest {
 }
 
 type AuthorizeRoleResponseBody struct {
-	Code      *int32  `json:"Code,omitempty" xml:"Code,omitempty"`
-	Message   *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// The HTTP status code that is returned.
+	Code *int32 `json:"Code,omitempty" xml:"Code,omitempty"`
+	// The additional information that is returned.
+	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// The ID of the request.
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -1215,15 +1259,24 @@ func (s *AuthorizeRoleResponse) SetBody(v *AuthorizeRoleResponseBody) *Authorize
 }
 
 type BindEcsSlbRequest struct {
-	AppId                  *string `json:"AppId,omitempty" xml:"AppId,omitempty"`
-	DeployGroupId          *string `json:"DeployGroupId,omitempty" xml:"DeployGroupId,omitempty"`
+	// The ID of the application. You can query the application ID by calling the ListApplication operation. For more information, see [ListApplication](~~149390~~).
+	AppId *string `json:"AppId,omitempty" xml:"AppId,omitempty"`
+	// The ID of the instance group whose application you want to bind. You can call the ListDeployGroup operation to query the group ID. For more information, see [ListDeployGroup](~~62077~~).
+	DeployGroupId *string `json:"DeployGroupId,omitempty" xml:"DeployGroupId,omitempty"`
+	// The health check URL.
 	ListenerHealthCheckUrl *string `json:"ListenerHealthCheckUrl,omitempty" xml:"ListenerHealthCheckUrl,omitempty"`
-	ListenerPort           *int32  `json:"ListenerPort,omitempty" xml:"ListenerPort,omitempty"`
-	ListenerProtocol       *string `json:"ListenerProtocol,omitempty" xml:"ListenerProtocol,omitempty"`
-	SlbId                  *string `json:"SlbId,omitempty" xml:"SlbId,omitempty"`
-	VForwardingUrlRule     *string `json:"VForwardingUrlRule,omitempty" xml:"VForwardingUrlRule,omitempty"`
-	VServerGroupId         *string `json:"VServerGroupId,omitempty" xml:"VServerGroupId,omitempty"`
-	VServerGroupName       *string `json:"VServerGroupName,omitempty" xml:"VServerGroupName,omitempty"`
+	// The listener port for the SLB instance.
+	ListenerPort *int32 `json:"ListenerPort,omitempty" xml:"ListenerPort,omitempty"`
+	// The listener protocol for the SLB instance.
+	ListenerProtocol *string `json:"ListenerProtocol,omitempty" xml:"ListenerProtocol,omitempty"`
+	// The ID of the SLB instance.
+	SlbId *string `json:"SlbId,omitempty" xml:"SlbId,omitempty"`
+	// The forwarding rule of the SLB listener.
+	VForwardingUrlRule *string `json:"VForwardingUrlRule,omitempty" xml:"VForwardingUrlRule,omitempty"`
+	// The ID of the vServer group for the SLB instance.
+	VServerGroupId *string `json:"VServerGroupId,omitempty" xml:"VServerGroupId,omitempty"`
+	// The name of the vServer group.
+	VServerGroupName *string `json:"VServerGroupName,omitempty" xml:"VServerGroupName,omitempty"`
 }
 
 func (s BindEcsSlbRequest) String() string {
@@ -1280,10 +1333,14 @@ func (s *BindEcsSlbRequest) SetVServerGroupName(v string) *BindEcsSlbRequest {
 }
 
 type BindEcsSlbResponseBody struct {
+	// The change process ID for this operation.
 	ChangeOrderId *string `json:"ChangeOrderId,omitempty" xml:"ChangeOrderId,omitempty"`
-	Code          *int32  `json:"Code,omitempty" xml:"Code,omitempty"`
-	Message       *string `json:"Message,omitempty" xml:"Message,omitempty"`
-	RequestId     *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The HTTP status code that is returned.
+	Code *int32 `json:"Code,omitempty" xml:"Code,omitempty"`
+	// The message that is returned.
+	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// The ID of the request.
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
 func (s BindEcsSlbResponseBody) String() string {
@@ -1344,16 +1401,46 @@ func (s *BindEcsSlbResponse) SetBody(v *BindEcsSlbResponseBody) *BindEcsSlbRespo
 }
 
 type BindK8sSlbRequest struct {
-	AppId            *string `json:"AppId,omitempty" xml:"AppId,omitempty"`
-	ClusterId        *string `json:"ClusterId,omitempty" xml:"ClusterId,omitempty"`
-	Port             *string `json:"Port,omitempty" xml:"Port,omitempty"`
-	Scheduler        *string `json:"Scheduler,omitempty" xml:"Scheduler,omitempty"`
+	// The ID of the application.
+	AppId *string `json:"AppId,omitempty" xml:"AppId,omitempty"`
+	// The ID of the cluster.
+	ClusterId *string `json:"ClusterId,omitempty" xml:"ClusterId,omitempty"`
+	// The frontend port. Valid values: 1 to 65535.
+	Port *string `json:"Port,omitempty" xml:"Port,omitempty"`
+	// The scheduling algorithm for the SLB instance. If you do not specify this parameter, the default value rr is used. Valid values:
+	//
+	// *   wrr: weighted round-robin scheduling. Backend servers that have higher weights receive more requests than those that have lower weights.
+	// *   rr: round-robin scheduling. Requests are sequentially distributed to backend servers.
+	Scheduler *string `json:"Scheduler,omitempty" xml:"Scheduler,omitempty"`
+	// The information about the ports. This parameter is required if you want to configure multi-port mappings or use a protocol other than TCP. You must set this parameter to a JSON array. Example: \[{"targetPort":8080,"port":82,"loadBalancerProtocol":"TCP"},{"port":81,"certId":"1362469756373809\_16c185d6fa2\_1914500329\_-xxxxxxx","targetPort":8181,"lo adBalancerProtocol":"HTTPS"}]
+	//
+	// *   port: The frontend port. Valid values: 1 to 65535. This parameter is required. Each port must be unique.
+	// *   targetPort: The backend port. Valid values: 1 to 65535. This parameter is required.
+	// *   loadBalancerProtocol: This parameter is required. Valid values: TCP and HTTPS. If the HTTP protocol is used, set this parameter to TCP.
+	// *   certId: the ID of the certificate. This parameter is required if the HTTPS protocol is used. You can purchase an SLB instance in the SLB console.
+	//
+	// > The ServicePortInfos parameter is specified to support multi-port mappings. If you want this parameter to take effect, make sure that you have set the AppId, ClusterId, Type, and SlbId parameters.
 	ServicePortInfos *string `json:"ServicePortInfos,omitempty" xml:"ServicePortInfos,omitempty"`
-	SlbId            *string `json:"SlbId,omitempty" xml:"SlbId,omitempty"`
-	SlbProtocol      *string `json:"SlbProtocol,omitempty" xml:"SlbProtocol,omitempty"`
-	Specification    *string `json:"Specification,omitempty" xml:"Specification,omitempty"`
-	TargetPort       *string `json:"TargetPort,omitempty" xml:"TargetPort,omitempty"`
-	Type             *string `json:"Type,omitempty" xml:"Type,omitempty"`
+	// The ID of the SLB instance. If you leave this parameter empty, Enterprise Distributed Application Service (EDAS) automatically purchases an SLB instance.
+	SlbId *string `json:"SlbId,omitempty" xml:"SlbId,omitempty"`
+	// The protocol used by the SLB instance. Valid values: TCP, HTTP, and HTTPS.
+	SlbProtocol *string `json:"SlbProtocol,omitempty" xml:"SlbProtocol,omitempty"`
+	// The instance type of the SLB instance. Valid values:
+	//
+	// *   slb.s1.small
+	// *   slb.s2.small
+	// *   slb.s2.medium
+	// *   slb.s3.small
+	// *   slb.s3.medium
+	// *   slb.s3.large
+	Specification *string `json:"Specification,omitempty" xml:"Specification,omitempty"`
+	// The backend port, which is also the service port of the application. Valid values: 1 to 65535.
+	TargetPort *string `json:"TargetPort,omitempty" xml:"TargetPort,omitempty"`
+	// The type of the SLB instance. Valid values:
+	//
+	// *   internet: Internet-facing SLB instance
+	// *   intranet: internal-facing SLB instance
+	Type *string `json:"Type,omitempty" xml:"Type,omitempty"`
 }
 
 func (s BindK8sSlbRequest) String() string {
@@ -1415,10 +1502,14 @@ func (s *BindK8sSlbRequest) SetType(v string) *BindK8sSlbRequest {
 }
 
 type BindK8sSlbResponseBody struct {
+	// The ID of the change process.
 	ChangeOrderId *string `json:"ChangeOrderId,omitempty" xml:"ChangeOrderId,omitempty"`
-	Code          *int32  `json:"Code,omitempty" xml:"Code,omitempty"`
-	Message       *string `json:"Message,omitempty" xml:"Message,omitempty"`
-	RequestId     *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The HTTP status code that is returned.
+	Code *int32 `json:"Code,omitempty" xml:"Code,omitempty"`
+	// The additional information that is returned.
+	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// The ID of the request.
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
 func (s BindK8sSlbResponseBody) String() string {
@@ -1479,11 +1570,20 @@ func (s *BindK8sSlbResponse) SetBody(v *BindK8sSlbResponseBody) *BindK8sSlbRespo
 }
 
 type BindSlbRequest struct {
-	AppId          *string `json:"AppId,omitempty" xml:"AppId,omitempty"`
-	ListenerPort   *int32  `json:"ListenerPort,omitempty" xml:"ListenerPort,omitempty"`
-	SlbId          *string `json:"SlbId,omitempty" xml:"SlbId,omitempty"`
-	SlbIp          *string `json:"SlbIp,omitempty" xml:"SlbIp,omitempty"`
-	Type           *string `json:"Type,omitempty" xml:"Type,omitempty"`
+	// The ID of the EDAS application.
+	AppId *string `json:"AppId,omitempty" xml:"AppId,omitempty"`
+	// The listener port for the SLB instance.
+	ListenerPort *int32 `json:"ListenerPort,omitempty" xml:"ListenerPort,omitempty"`
+	// The ID of the SLB instance.
+	SlbId *string `json:"SlbId,omitempty" xml:"SlbId,omitempty"`
+	// The IP address of the SLB instance.
+	SlbIp *string `json:"SlbIp,omitempty" xml:"SlbIp,omitempty"`
+	// The type of the SLB instance. Valid values:
+	//
+	// *   internet: Internet-facing SLB instance
+	// *   intranet: internal-facing SLB instance
+	Type *string `json:"Type,omitempty" xml:"Type,omitempty"`
+	// The ID of the vServer group for the internal-facing SLB instance.
 	VServerGroupId *string `json:"VServerGroupId,omitempty" xml:"VServerGroupId,omitempty"`
 }
 
@@ -1526,10 +1626,14 @@ func (s *BindSlbRequest) SetVServerGroupId(v string) *BindSlbRequest {
 }
 
 type BindSlbResponseBody struct {
-	Code      *int32                   `json:"Code,omitempty" xml:"Code,omitempty"`
-	Data      *BindSlbResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
-	Message   *string                  `json:"Message,omitempty" xml:"Message,omitempty"`
-	RequestId *string                  `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The HTTP status code that is returned.
+	Code *int32 `json:"Code,omitempty" xml:"Code,omitempty"`
+	// The data that is returned.
+	Data *BindSlbResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
+	// The additional information that is returned.
+	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// The ID of the request.
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
 func (s BindSlbResponseBody) String() string {
@@ -1561,15 +1665,24 @@ func (s *BindSlbResponseBody) SetRequestId(v string) *BindSlbResponseBody {
 }
 
 type BindSlbResponseBodyData struct {
-	ExtSlbId          *string `json:"ExtSlbId,omitempty" xml:"ExtSlbId,omitempty"`
-	ExtSlbIp          *string `json:"ExtSlbIp,omitempty" xml:"ExtSlbIp,omitempty"`
-	ExtSlbName        *string `json:"ExtSlbName,omitempty" xml:"ExtSlbName,omitempty"`
+	// The ID of the Internet-facing SLB instance.
+	ExtSlbId *string `json:"ExtSlbId,omitempty" xml:"ExtSlbId,omitempty"`
+	// The IP address of the Internet-facing SLB instance.
+	ExtSlbIp *string `json:"ExtSlbIp,omitempty" xml:"ExtSlbIp,omitempty"`
+	// The name of the Internet-facing SLB instance.
+	ExtSlbName *string `json:"ExtSlbName,omitempty" xml:"ExtSlbName,omitempty"`
+	// The ID of the vServer group for the Internet-facing SLB instance.
 	ExtVServerGroupId *string `json:"ExtVServerGroupId,omitempty" xml:"ExtVServerGroupId,omitempty"`
-	SlbId             *string `json:"SlbId,omitempty" xml:"SlbId,omitempty"`
-	SlbIp             *string `json:"SlbIp,omitempty" xml:"SlbIp,omitempty"`
-	SlbName           *string `json:"SlbName,omitempty" xml:"SlbName,omitempty"`
-	SlbPort           *int32  `json:"SlbPort,omitempty" xml:"SlbPort,omitempty"`
-	VServerGroupId    *string `json:"VServerGroupId,omitempty" xml:"VServerGroupId,omitempty"`
+	// The ID of the internal-facing SLB instance.
+	SlbId *string `json:"SlbId,omitempty" xml:"SlbId,omitempty"`
+	// The IP address of the internal-facing SLB instance.
+	SlbIp *string `json:"SlbIp,omitempty" xml:"SlbIp,omitempty"`
+	// The name of the internal-facing SLB instance.
+	SlbName *string `json:"SlbName,omitempty" xml:"SlbName,omitempty"`
+	// The listener port for the SLB instance.
+	SlbPort *int32 `json:"SlbPort,omitempty" xml:"SlbPort,omitempty"`
+	// The ID of the vServer group for the internal-facing SLB instance.
+	VServerGroupId *string `json:"VServerGroupId,omitempty" xml:"VServerGroupId,omitempty"`
 }
 
 func (s BindSlbResponseBodyData) String() string {
@@ -1655,10 +1768,16 @@ func (s *BindSlbResponse) SetBody(v *BindSlbResponseBody) *BindSlbResponse {
 }
 
 type ChangeDeployGroupRequest struct {
-	AppId       *string `json:"AppId,omitempty" xml:"AppId,omitempty"`
-	EccInfo     *string `json:"EccInfo,omitempty" xml:"EccInfo,omitempty"`
-	ForceStatus *bool   `json:"ForceStatus,omitempty" xml:"ForceStatus,omitempty"`
-	GroupName   *string `json:"GroupName,omitempty" xml:"GroupName,omitempty"`
+	// The ID of the application.
+	AppId *string `json:"AppId,omitempty" xml:"AppId,omitempty"`
+	// The ID of the elastic compute component (ECC) that corresponds to the ECS instance for which you want to change the application instance group. You can call the ListApplicationEcc operation to query the ECC ID. For more information, see [ListApplicationEcc](~~199277~~).
+	//
+	// > You can change the application instance group for only one ECS instance at a time.
+	EccInfo *string `json:"EccInfo,omitempty" xml:"EccInfo,omitempty"`
+	// Specifies whether to forcibly change the application instance group if the deployment package version of the ECC is different from that of the application instance group.
+	ForceStatus *bool `json:"ForceStatus,omitempty" xml:"ForceStatus,omitempty"`
+	// The name of the application instance group. Examples: group_a and group_b. The parameter value for the default application instance group is `_DEFAULT_GROUP`. The name can be up to 64 characters in length.
+	GroupName *string `json:"GroupName,omitempty" xml:"GroupName,omitempty"`
 }
 
 func (s ChangeDeployGroupRequest) String() string {
@@ -1690,10 +1809,14 @@ func (s *ChangeDeployGroupRequest) SetGroupName(v string) *ChangeDeployGroupRequ
 }
 
 type ChangeDeployGroupResponseBody struct {
+	// The ID of the change process.
 	ChangeOrderId *string `json:"ChangeOrderId,omitempty" xml:"ChangeOrderId,omitempty"`
-	Code          *int32  `json:"Code,omitempty" xml:"Code,omitempty"`
-	Message       *string `json:"Message,omitempty" xml:"Message,omitempty"`
-	RequestId     *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The HTTP status code that is returned.
+	Code *int32 `json:"Code,omitempty" xml:"Code,omitempty"`
+	// The message that is returned.
+	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// The ID of the request.
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
 func (s ChangeDeployGroupResponseBody) String() string {
@@ -1754,7 +1877,12 @@ func (s *ChangeDeployGroupResponse) SetBody(v *ChangeDeployGroupResponseBody) *C
 }
 
 type ContinuePipelineRequest struct {
-	Confirm    *bool   `json:"Confirm,omitempty" xml:"Confirm,omitempty"`
+	// Specifies whether to release the next batch. Valid values:
+	//
+	// *   true: releases the next batch.
+	// *   false: does not release the next batch.
+	Confirm *bool `json:"Confirm,omitempty" xml:"Confirm,omitempty"`
+	// The ID of the change process. You can call the GetChangeOrderInfo operation to query the ID of the change process that corresponds to a specific batch. For more information, see [GetChangeOrderInfo](~~62072~~).
 	PipelineId *string `json:"PipelineId,omitempty" xml:"PipelineId,omitempty"`
 }
 
@@ -1777,8 +1905,11 @@ func (s *ContinuePipelineRequest) SetPipelineId(v string) *ContinuePipelineReque
 }
 
 type ContinuePipelineResponseBody struct {
-	Code      *int32  `json:"Code,omitempty" xml:"Code,omitempty"`
-	Message   *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// The HTTP status code that is returned.
+	Code *int32 `json:"Code,omitempty" xml:"Code,omitempty"`
+	// The additional information that is returned.
+	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// The ID of the request.
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -1835,9 +1966,13 @@ func (s *ContinuePipelineResponse) SetBody(v *ContinuePipelineResponseBody) *Con
 }
 
 type ConvertK8sResourceRequest struct {
-	ClusterId    *string `json:"ClusterId,omitempty" xml:"ClusterId,omitempty"`
-	Namespace    *string `json:"Namespace,omitempty" xml:"Namespace,omitempty"`
+	// The ID of the cluster. You can call the ListCluster operation to query the cluster ID. For more information, see [ListCluster](~~154995~~).
+	ClusterId *string `json:"ClusterId,omitempty" xml:"ClusterId,omitempty"`
+	// The namespace.
+	Namespace *string `json:"Namespace,omitempty" xml:"Namespace,omitempty"`
+	// The name of the resource.
 	ResourceName *string `json:"ResourceName,omitempty" xml:"ResourceName,omitempty"`
+	// The type of the resource that is used. Set the value to deployment.
 	ResourceType *string `json:"ResourceType,omitempty" xml:"ResourceType,omitempty"`
 }
 
@@ -1870,8 +2005,11 @@ func (s *ConvertK8sResourceRequest) SetResourceType(v string) *ConvertK8sResourc
 }
 
 type ConvertK8sResourceResponseBody struct {
-	Code      *int32  `json:"Code,omitempty" xml:"Code,omitempty"`
-	Message   *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// The HTTP status code that is returned.
+	Code *int32 `json:"Code,omitempty" xml:"Code,omitempty"`
+	// The message that is returned.
+	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// The ID of the request.
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -1928,13 +2066,25 @@ func (s *ConvertK8sResourceResponse) SetBody(v *ConvertK8sResourceResponseBody) 
 }
 
 type CreateApplicationScalingRuleRequest struct {
-	AppId              *string `json:"AppId,omitempty" xml:"AppId,omitempty"`
-	ScalingRuleEnable  *bool   `json:"ScalingRuleEnable,omitempty" xml:"ScalingRuleEnable,omitempty"`
-	ScalingRuleMetric  *string `json:"ScalingRuleMetric,omitempty" xml:"ScalingRuleMetric,omitempty"`
-	ScalingRuleName    *string `json:"ScalingRuleName,omitempty" xml:"ScalingRuleName,omitempty"`
-	ScalingRuleTimer   *string `json:"ScalingRuleTimer,omitempty" xml:"ScalingRuleTimer,omitempty"`
+	// The ID of the application. You can call the ListApplication operation to query the application ID. For more information, see [ListApplicationlink](~~149390~~).
+	AppId *string `json:"AppId,omitempty" xml:"AppId,omitempty"`
+	// 配置自定义弹性行为，具体数据结构参考样例。
+	ScalingBehaviour *string `json:"ScalingBehaviour,omitempty" xml:"ScalingBehaviour,omitempty"`
+	// Specifies whether to enable the auto scaling policy. Valid values:
+	//
+	// *   **true**: enables the auto scaling policy.
+	// *   **false**: disables the auto scaling policy.
+	ScalingRuleEnable *bool `json:"ScalingRuleEnable,omitempty" xml:"ScalingRuleEnable,omitempty"`
+	// This parameter is deprecated.
+	ScalingRuleMetric *string `json:"ScalingRuleMetric,omitempty" xml:"ScalingRuleMetric,omitempty"`
+	// The name of the auto scaling policy. The name must start with a lowercase letter, and can contain lowercase letters, digits, and hyphens (-). The name must be 1 to 32 characters in length.
+	ScalingRuleName *string `json:"ScalingRuleName,omitempty" xml:"ScalingRuleName,omitempty"`
+	// This parameter is deprecated.
+	ScalingRuleTimer *string `json:"ScalingRuleTimer,omitempty" xml:"ScalingRuleTimer,omitempty"`
+	// The trigger policy for the auto scaling policy. Set the value in the JSON format by using the ScalingRuleTriggerDTO class. For more information, see Additional information about request parameters.
 	ScalingRuleTrigger *string `json:"ScalingRuleTrigger,omitempty" xml:"ScalingRuleTrigger,omitempty"`
-	ScalingRuleType    *string `json:"ScalingRuleType,omitempty" xml:"ScalingRuleType,omitempty"`
+	// The type of the auto scaling policy. Set the value to **trigger**.
+	ScalingRuleType *string `json:"ScalingRuleType,omitempty" xml:"ScalingRuleType,omitempty"`
 }
 
 func (s CreateApplicationScalingRuleRequest) String() string {
@@ -1947,6 +2097,11 @@ func (s CreateApplicationScalingRuleRequest) GoString() string {
 
 func (s *CreateApplicationScalingRuleRequest) SetAppId(v string) *CreateApplicationScalingRuleRequest {
 	s.AppId = &v
+	return s
+}
+
+func (s *CreateApplicationScalingRuleRequest) SetScalingBehaviour(v string) *CreateApplicationScalingRuleRequest {
+	s.ScalingBehaviour = &v
 	return s
 }
 
@@ -1981,10 +2136,14 @@ func (s *CreateApplicationScalingRuleRequest) SetScalingRuleType(v string) *Crea
 }
 
 type CreateApplicationScalingRuleResponseBody struct {
+	// The information about the auto scaling policy.
 	AppScalingRule *CreateApplicationScalingRuleResponseBodyAppScalingRule `json:"AppScalingRule,omitempty" xml:"AppScalingRule,omitempty" type:"Struct"`
-	Code           *int32                                                  `json:"Code,omitempty" xml:"Code,omitempty"`
-	Message        *string                                                 `json:"Message,omitempty" xml:"Message,omitempty"`
-	RequestId      *string                                                 `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The HTTP status code that is returned.
+	Code *int32 `json:"Code,omitempty" xml:"Code,omitempty"`
+	// The message that is returned.
+	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// The ID of the request.
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
 func (s CreateApplicationScalingRuleResponseBody) String() string {
@@ -2016,17 +2175,32 @@ func (s *CreateApplicationScalingRuleResponseBody) SetRequestId(v string) *Creat
 }
 
 type CreateApplicationScalingRuleResponseBodyAppScalingRule struct {
-	AppId            *string                                                        `json:"AppId,omitempty" xml:"AppId,omitempty"`
-	CreateTime       *int64                                                         `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
-	LastDisableTime  *int64                                                         `json:"LastDisableTime,omitempty" xml:"LastDisableTime,omitempty"`
-	MaxReplicas      *int32                                                         `json:"MaxReplicas,omitempty" xml:"MaxReplicas,omitempty"`
-	Metric           *CreateApplicationScalingRuleResponseBodyAppScalingRuleMetric  `json:"Metric,omitempty" xml:"Metric,omitempty" type:"Struct"`
-	MinReplicas      *int32                                                         `json:"MinReplicas,omitempty" xml:"MinReplicas,omitempty"`
-	ScaleRuleEnabled *bool                                                          `json:"ScaleRuleEnabled,omitempty" xml:"ScaleRuleEnabled,omitempty"`
-	ScaleRuleName    *string                                                        `json:"ScaleRuleName,omitempty" xml:"ScaleRuleName,omitempty"`
-	ScaleRuleType    *string                                                        `json:"ScaleRuleType,omitempty" xml:"ScaleRuleType,omitempty"`
-	Trigger          *CreateApplicationScalingRuleResponseBodyAppScalingRuleTrigger `json:"Trigger,omitempty" xml:"Trigger,omitempty" type:"Struct"`
-	UpdateTime       *int64                                                         `json:"UpdateTime,omitempty" xml:"UpdateTime,omitempty"`
+	// The ID of the application to which the auto scaling policy belongs.
+	AppId     *string                                                          `json:"AppId,omitempty" xml:"AppId,omitempty"`
+	Behaviour *CreateApplicationScalingRuleResponseBodyAppScalingRuleBehaviour `json:"Behaviour,omitempty" xml:"Behaviour,omitempty" type:"Struct"`
+	// The timestamp when the auto scaling policy was created. This value is a UNIX timestamp representing the number of milliseconds that have elapsed since January 1, 1970, 00:00:00 UTC.
+	CreateTime *int64 `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
+	// The timestamp when the auto scaling policy was last disabled. This value is a UNIX timestamp representing the number of milliseconds that have elapsed since January 1, 1970, 00:00:00 UTC.
+	LastDisableTime *int64 `json:"LastDisableTime,omitempty" xml:"LastDisableTime,omitempty"`
+	// This parameter is deprecated.
+	MaxReplicas *int32 `json:"MaxReplicas,omitempty" xml:"MaxReplicas,omitempty"`
+	// This parameter is deprecated.
+	Metric *CreateApplicationScalingRuleResponseBodyAppScalingRuleMetric `json:"Metric,omitempty" xml:"Metric,omitempty" type:"Struct"`
+	// This parameter is deprecated.
+	MinReplicas *int32 `json:"MinReplicas,omitempty" xml:"MinReplicas,omitempty"`
+	// Indicates whether the auto scaling policy is enabled. Valid values:
+	//
+	// *   **true**: The auto scaling policy is enabled.
+	// *   **false**: The auto scaling policy is disabled.
+	ScaleRuleEnabled *bool `json:"ScaleRuleEnabled,omitempty" xml:"ScaleRuleEnabled,omitempty"`
+	// The name of the auto scaling policy.
+	ScaleRuleName *string `json:"ScaleRuleName,omitempty" xml:"ScaleRuleName,omitempty"`
+	// The type of the auto scaling policy. The value is trigger.
+	ScaleRuleType *string `json:"ScaleRuleType,omitempty" xml:"ScaleRuleType,omitempty"`
+	// The configurations of the trigger.
+	Trigger *CreateApplicationScalingRuleResponseBodyAppScalingRuleTrigger `json:"Trigger,omitempty" xml:"Trigger,omitempty" type:"Struct"`
+	// The timestamp when the auto scaling policy was last modified. This value is a UNIX timestamp representing the number of milliseconds that have elapsed since January 1, 1970, 00:00:00 UTC.
+	UpdateTime *int64 `json:"UpdateTime,omitempty" xml:"UpdateTime,omitempty"`
 }
 
 func (s CreateApplicationScalingRuleResponseBodyAppScalingRule) String() string {
@@ -2039,6 +2213,11 @@ func (s CreateApplicationScalingRuleResponseBodyAppScalingRule) GoString() strin
 
 func (s *CreateApplicationScalingRuleResponseBodyAppScalingRule) SetAppId(v string) *CreateApplicationScalingRuleResponseBodyAppScalingRule {
 	s.AppId = &v
+	return s
+}
+
+func (s *CreateApplicationScalingRuleResponseBodyAppScalingRule) SetBehaviour(v *CreateApplicationScalingRuleResponseBodyAppScalingRuleBehaviour) *CreateApplicationScalingRuleResponseBodyAppScalingRule {
+	s.Behaviour = v
 	return s
 }
 
@@ -2092,10 +2271,166 @@ func (s *CreateApplicationScalingRuleResponseBodyAppScalingRule) SetUpdateTime(v
 	return s
 }
 
+type CreateApplicationScalingRuleResponseBodyAppScalingRuleBehaviour struct {
+	// 弹性缩容行为配置。
+	ScaleDown *CreateApplicationScalingRuleResponseBodyAppScalingRuleBehaviourScaleDown `json:"ScaleDown,omitempty" xml:"ScaleDown,omitempty" type:"Struct"`
+	// 弹性扩容行为配置。
+	ScaleUp *CreateApplicationScalingRuleResponseBodyAppScalingRuleBehaviourScaleUp `json:"ScaleUp,omitempty" xml:"ScaleUp,omitempty" type:"Struct"`
+}
+
+func (s CreateApplicationScalingRuleResponseBodyAppScalingRuleBehaviour) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateApplicationScalingRuleResponseBodyAppScalingRuleBehaviour) GoString() string {
+	return s.String()
+}
+
+func (s *CreateApplicationScalingRuleResponseBodyAppScalingRuleBehaviour) SetScaleDown(v *CreateApplicationScalingRuleResponseBodyAppScalingRuleBehaviourScaleDown) *CreateApplicationScalingRuleResponseBodyAppScalingRuleBehaviour {
+	s.ScaleDown = v
+	return s
+}
+
+func (s *CreateApplicationScalingRuleResponseBodyAppScalingRuleBehaviour) SetScaleUp(v *CreateApplicationScalingRuleResponseBodyAppScalingRuleBehaviourScaleUp) *CreateApplicationScalingRuleResponseBodyAppScalingRuleBehaviour {
+	s.ScaleUp = v
+	return s
+}
+
+type CreateApplicationScalingRuleResponseBodyAppScalingRuleBehaviourScaleDown struct {
+	// 策略配置。
+	Policies []*CreateApplicationScalingRuleResponseBodyAppScalingRuleBehaviourScaleDownPolicies `json:"Policies,omitempty" xml:"Policies,omitempty" type:"Repeated"`
+	// 弹性缩容步长策略，可选值Max、Min、Disable。
+	SelectPolicy *string `json:"SelectPolicy,omitempty" xml:"SelectPolicy,omitempty"`
+	// 缩容冷却时间。取值范围[0, 3600]，单位为秒。默认为300秒。
+	StabilizationWindowSeconds *int32 `json:"StabilizationWindowSeconds,omitempty" xml:"StabilizationWindowSeconds,omitempty"`
+}
+
+func (s CreateApplicationScalingRuleResponseBodyAppScalingRuleBehaviourScaleDown) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateApplicationScalingRuleResponseBodyAppScalingRuleBehaviourScaleDown) GoString() string {
+	return s.String()
+}
+
+func (s *CreateApplicationScalingRuleResponseBodyAppScalingRuleBehaviourScaleDown) SetPolicies(v []*CreateApplicationScalingRuleResponseBodyAppScalingRuleBehaviourScaleDownPolicies) *CreateApplicationScalingRuleResponseBodyAppScalingRuleBehaviourScaleDown {
+	s.Policies = v
+	return s
+}
+
+func (s *CreateApplicationScalingRuleResponseBodyAppScalingRuleBehaviourScaleDown) SetSelectPolicy(v string) *CreateApplicationScalingRuleResponseBodyAppScalingRuleBehaviourScaleDown {
+	s.SelectPolicy = &v
+	return s
+}
+
+func (s *CreateApplicationScalingRuleResponseBodyAppScalingRuleBehaviourScaleDown) SetStabilizationWindowSeconds(v int32) *CreateApplicationScalingRuleResponseBodyAppScalingRuleBehaviourScaleDown {
+	s.StabilizationWindowSeconds = &v
+	return s
+}
+
+type CreateApplicationScalingRuleResponseBodyAppScalingRuleBehaviourScaleDownPolicies struct {
+	// 检查执行的周期，取值范围[0, 1800]，单位为秒。
+	PeriodSeconds *int32 `json:"PeriodSeconds,omitempty" xml:"PeriodSeconds,omitempty"`
+	// 策略类型，可为Pods或Percent。
+	Type *string `json:"Type,omitempty" xml:"Type,omitempty"`
+	// 弹性行为的策略值，大于零的整数。若策略类型为Pods，则该值表示Pods数量；若策略类型为Percent，则该值表示百分比，允许超过100%。
+	Value *string `json:"Value,omitempty" xml:"Value,omitempty"`
+}
+
+func (s CreateApplicationScalingRuleResponseBodyAppScalingRuleBehaviourScaleDownPolicies) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateApplicationScalingRuleResponseBodyAppScalingRuleBehaviourScaleDownPolicies) GoString() string {
+	return s.String()
+}
+
+func (s *CreateApplicationScalingRuleResponseBodyAppScalingRuleBehaviourScaleDownPolicies) SetPeriodSeconds(v int32) *CreateApplicationScalingRuleResponseBodyAppScalingRuleBehaviourScaleDownPolicies {
+	s.PeriodSeconds = &v
+	return s
+}
+
+func (s *CreateApplicationScalingRuleResponseBodyAppScalingRuleBehaviourScaleDownPolicies) SetType(v string) *CreateApplicationScalingRuleResponseBodyAppScalingRuleBehaviourScaleDownPolicies {
+	s.Type = &v
+	return s
+}
+
+func (s *CreateApplicationScalingRuleResponseBodyAppScalingRuleBehaviourScaleDownPolicies) SetValue(v string) *CreateApplicationScalingRuleResponseBodyAppScalingRuleBehaviourScaleDownPolicies {
+	s.Value = &v
+	return s
+}
+
+type CreateApplicationScalingRuleResponseBodyAppScalingRuleBehaviourScaleUp struct {
+	// 策略配置。
+	Policies []*CreateApplicationScalingRuleResponseBodyAppScalingRuleBehaviourScaleUpPolicies `json:"Policies,omitempty" xml:"Policies,omitempty" type:"Repeated"`
+	// 弹性扩容步长策略，可选值Max、Min、Disable。
+	SelectPolicy *string `json:"SelectPolicy,omitempty" xml:"SelectPolicy,omitempty"`
+	// 扩容冷却时间。取值范围[0, 3600]，单位为秒。默认为0秒。
+	StabilizationWindowSeconds *int32 `json:"StabilizationWindowSeconds,omitempty" xml:"StabilizationWindowSeconds,omitempty"`
+}
+
+func (s CreateApplicationScalingRuleResponseBodyAppScalingRuleBehaviourScaleUp) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateApplicationScalingRuleResponseBodyAppScalingRuleBehaviourScaleUp) GoString() string {
+	return s.String()
+}
+
+func (s *CreateApplicationScalingRuleResponseBodyAppScalingRuleBehaviourScaleUp) SetPolicies(v []*CreateApplicationScalingRuleResponseBodyAppScalingRuleBehaviourScaleUpPolicies) *CreateApplicationScalingRuleResponseBodyAppScalingRuleBehaviourScaleUp {
+	s.Policies = v
+	return s
+}
+
+func (s *CreateApplicationScalingRuleResponseBodyAppScalingRuleBehaviourScaleUp) SetSelectPolicy(v string) *CreateApplicationScalingRuleResponseBodyAppScalingRuleBehaviourScaleUp {
+	s.SelectPolicy = &v
+	return s
+}
+
+func (s *CreateApplicationScalingRuleResponseBodyAppScalingRuleBehaviourScaleUp) SetStabilizationWindowSeconds(v int32) *CreateApplicationScalingRuleResponseBodyAppScalingRuleBehaviourScaleUp {
+	s.StabilizationWindowSeconds = &v
+	return s
+}
+
+type CreateApplicationScalingRuleResponseBodyAppScalingRuleBehaviourScaleUpPolicies struct {
+	// 检查执行的周期，取值范围[0, 1800]，单位为秒。
+	PeriodSeconds *int32 `json:"PeriodSeconds,omitempty" xml:"PeriodSeconds,omitempty"`
+	// 策略类型，可为Pods或Percent。
+	Type *string `json:"Type,omitempty" xml:"Type,omitempty"`
+	// 弹性行为的策略值，大于零的整数。若策略类型为Pods，则该值表示Pods数量；若策略类型为Percent，则该值表示百分比，允许超过100%。
+	Value *string `json:"Value,omitempty" xml:"Value,omitempty"`
+}
+
+func (s CreateApplicationScalingRuleResponseBodyAppScalingRuleBehaviourScaleUpPolicies) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateApplicationScalingRuleResponseBodyAppScalingRuleBehaviourScaleUpPolicies) GoString() string {
+	return s.String()
+}
+
+func (s *CreateApplicationScalingRuleResponseBodyAppScalingRuleBehaviourScaleUpPolicies) SetPeriodSeconds(v int32) *CreateApplicationScalingRuleResponseBodyAppScalingRuleBehaviourScaleUpPolicies {
+	s.PeriodSeconds = &v
+	return s
+}
+
+func (s *CreateApplicationScalingRuleResponseBodyAppScalingRuleBehaviourScaleUpPolicies) SetType(v string) *CreateApplicationScalingRuleResponseBodyAppScalingRuleBehaviourScaleUpPolicies {
+	s.Type = &v
+	return s
+}
+
+func (s *CreateApplicationScalingRuleResponseBodyAppScalingRuleBehaviourScaleUpPolicies) SetValue(v string) *CreateApplicationScalingRuleResponseBodyAppScalingRuleBehaviourScaleUpPolicies {
+	s.Value = &v
+	return s
+}
+
 type CreateApplicationScalingRuleResponseBodyAppScalingRuleMetric struct {
-	MaxReplicas *int32                                                                 `json:"MaxReplicas,omitempty" xml:"MaxReplicas,omitempty"`
-	Metrics     []*CreateApplicationScalingRuleResponseBodyAppScalingRuleMetricMetrics `json:"Metrics,omitempty" xml:"Metrics,omitempty" type:"Repeated"`
-	MinReplicas *int32                                                                 `json:"MinReplicas,omitempty" xml:"MinReplicas,omitempty"`
+	// This parameter is deprecated.
+	MaxReplicas *int32 `json:"MaxReplicas,omitempty" xml:"MaxReplicas,omitempty"`
+	// This parameter is deprecated.
+	Metrics []*CreateApplicationScalingRuleResponseBodyAppScalingRuleMetricMetrics `json:"Metrics,omitempty" xml:"Metrics,omitempty" type:"Repeated"`
+	// This parameter is deprecated.
+	MinReplicas *int32 `json:"MinReplicas,omitempty" xml:"MinReplicas,omitempty"`
 }
 
 func (s CreateApplicationScalingRuleResponseBodyAppScalingRuleMetric) String() string {
@@ -2122,8 +2457,10 @@ func (s *CreateApplicationScalingRuleResponseBodyAppScalingRuleMetric) SetMinRep
 }
 
 type CreateApplicationScalingRuleResponseBodyAppScalingRuleMetricMetrics struct {
-	MetricTargetAverageUtilization *int32  `json:"MetricTargetAverageUtilization,omitempty" xml:"MetricTargetAverageUtilization,omitempty"`
-	MetricType                     *string `json:"MetricType,omitempty" xml:"MetricType,omitempty"`
+	// This parameter is deprecated.
+	MetricTargetAverageUtilization *int32 `json:"MetricTargetAverageUtilization,omitempty" xml:"MetricTargetAverageUtilization,omitempty"`
+	// This parameter is deprecated.
+	MetricType *string `json:"MetricType,omitempty" xml:"MetricType,omitempty"`
 }
 
 func (s CreateApplicationScalingRuleResponseBodyAppScalingRuleMetricMetrics) String() string {
@@ -2145,9 +2482,12 @@ func (s *CreateApplicationScalingRuleResponseBodyAppScalingRuleMetricMetrics) Se
 }
 
 type CreateApplicationScalingRuleResponseBodyAppScalingRuleTrigger struct {
-	MaxReplicas *int32                                                                   `json:"MaxReplicas,omitempty" xml:"MaxReplicas,omitempty"`
-	MinReplicas *int32                                                                   `json:"MinReplicas,omitempty" xml:"MinReplicas,omitempty"`
-	Triggers    []*CreateApplicationScalingRuleResponseBodyAppScalingRuleTriggerTriggers `json:"Triggers,omitempty" xml:"Triggers,omitempty" type:"Repeated"`
+	// The maximum number of replicas. The maximum value is 1000.
+	MaxReplicas *int32 `json:"MaxReplicas,omitempty" xml:"MaxReplicas,omitempty"`
+	// The minimum number of replicas. The minimum value is 0.
+	MinReplicas *int32 `json:"MinReplicas,omitempty" xml:"MinReplicas,omitempty"`
+	// The list of triggers.
+	Triggers []*CreateApplicationScalingRuleResponseBodyAppScalingRuleTriggerTriggers `json:"Triggers,omitempty" xml:"Triggers,omitempty" type:"Repeated"`
 }
 
 func (s CreateApplicationScalingRuleResponseBodyAppScalingRuleTrigger) String() string {
@@ -2174,9 +2514,12 @@ func (s *CreateApplicationScalingRuleResponseBodyAppScalingRuleTrigger) SetTrigg
 }
 
 type CreateApplicationScalingRuleResponseBodyAppScalingRuleTriggerTriggers struct {
+	// The metadata of the trigger.
 	MetaData *string `json:"MetaData,omitempty" xml:"MetaData,omitempty"`
-	Name     *string `json:"Name,omitempty" xml:"Name,omitempty"`
-	Type     *string `json:"Type,omitempty" xml:"Type,omitempty"`
+	// The name of the trigger.
+	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// The type of the trigger. Valid values: cron and app_metric.
+	Type *string `json:"Type,omitempty" xml:"Type,omitempty"`
 }
 
 func (s CreateApplicationScalingRuleResponseBodyAppScalingRuleTriggerTriggers) String() string {
@@ -2232,10 +2575,21 @@ func (s *CreateApplicationScalingRuleResponse) SetBody(v *CreateApplicationScali
 }
 
 type CreateConfigTemplateRequest struct {
-	Content     *string `json:"Content,omitempty" xml:"Content,omitempty"`
+	// The content of the configuration template. The value must be in the format that is specified by the Format parameter.
+	Content *string `json:"Content,omitempty" xml:"Content,omitempty"`
+	// The description of the configuration template. The description can be up to 255 characters in length.
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
-	Format      *string `json:"Format,omitempty" xml:"Format,omitempty"`
-	Name        *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// The data format of the configuration template. Valid values:
+	//
+	// *   JSON: JSON format
+	// *   XML: XML format
+	// *   YAML: YAML format
+	// *   Properties: .properties format
+	// *   KeyValue: key-value pairs
+	// *   Custom: custom format
+	Format *string `json:"Format,omitempty" xml:"Format,omitempty"`
+	// The name of the configuration template. The name can be up to 64 characters in length.
+	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
 }
 
 func (s CreateConfigTemplateRequest) String() string {
@@ -2267,10 +2621,14 @@ func (s *CreateConfigTemplateRequest) SetName(v string) *CreateConfigTemplateReq
 }
 
 type CreateConfigTemplateResponseBody struct {
-	Code      *int32                                `json:"Code,omitempty" xml:"Code,omitempty"`
-	Data      *CreateConfigTemplateResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
-	Message   *string                               `json:"Message,omitempty" xml:"Message,omitempty"`
-	RequestId *string                               `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The HTTP status code that is returned.
+	Code *int32 `json:"Code,omitempty" xml:"Code,omitempty"`
+	// The data returned.
+	Data *CreateConfigTemplateResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
+	// The additional information that is returned.
+	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// The ID of the request.
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
 func (s CreateConfigTemplateResponseBody) String() string {
@@ -2302,6 +2660,7 @@ func (s *CreateConfigTemplateResponseBody) SetRequestId(v string) *CreateConfigT
 }
 
 type CreateConfigTemplateResponseBodyData struct {
+	// The ID of the template.
 	Id *int64 `json:"Id,omitempty" xml:"Id,omitempty"`
 }
 
@@ -2348,6 +2707,7 @@ func (s *CreateConfigTemplateResponse) SetBody(v *CreateConfigTemplateResponseBo
 }
 
 type CreateIDCImportCommandRequest struct {
+	// The cluster ID. You can call the ListCluster operation to query the cluster ID. For more information, see [ListCluster](~~154995~~).
 	ClusterId *string `json:"ClusterId,omitempty" xml:"ClusterId,omitempty"`
 }
 
@@ -2365,9 +2725,13 @@ func (s *CreateIDCImportCommandRequest) SetClusterId(v string) *CreateIDCImportC
 }
 
 type CreateIDCImportCommandResponseBody struct {
-	Code      *string `json:"Code,omitempty" xml:"Code,omitempty"`
-	Data      *string `json:"Data,omitempty" xml:"Data,omitempty"`
-	Message   *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// The HTTP status code.
+	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	// The generated import command.
+	Data *string `json:"Data,omitempty" xml:"Data,omitempty"`
+	// The returned message.
+	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// The request ID.
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -2429,10 +2793,14 @@ func (s *CreateIDCImportCommandResponse) SetBody(v *CreateIDCImportCommandRespon
 }
 
 type CreateK8sConfigMapRequest struct {
-	ClusterId *string                `json:"ClusterId,omitempty" xml:"ClusterId,omitempty"`
-	Data      map[string]interface{} `json:"Data,omitempty" xml:"Data,omitempty"`
-	Name      *string                `json:"Name,omitempty" xml:"Name,omitempty"`
-	Namespace *string                `json:"Namespace,omitempty" xml:"Namespace,omitempty"`
+	// The ID of the Kubernetes cluster.
+	ClusterId *string `json:"ClusterId,omitempty" xml:"ClusterId,omitempty"`
+	// The data of the ConfigMap. The value must be a JSON array string.
+	Data map[string]interface{} `json:"Data,omitempty" xml:"Data,omitempty"`
+	// The name of the ConfigMap. The name must start with a letter, and can contain digits, letters, and hyphens (-). It can be up to 63 characters in length.
+	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// The namespace of the Kubernetes cluster.
+	Namespace *string `json:"Namespace,omitempty" xml:"Namespace,omitempty"`
 }
 
 func (s CreateK8sConfigMapRequest) String() string {
@@ -2464,8 +2832,11 @@ func (s *CreateK8sConfigMapRequest) SetNamespace(v string) *CreateK8sConfigMapRe
 }
 
 type CreateK8sConfigMapResponseBody struct {
-	Code      *int32  `json:"Code,omitempty" xml:"Code,omitempty"`
-	Message   *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// The HTTP status code.
+	Code *int32 `json:"Code,omitempty" xml:"Code,omitempty"`
+	// The additional information returned.
+	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// The request ID.
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -2522,10 +2893,47 @@ func (s *CreateK8sConfigMapResponse) SetBody(v *CreateK8sConfigMapResponseBody) 
 }
 
 type CreateK8sIngressRuleRequest struct {
-	ClusterId   *string                `json:"ClusterId,omitempty" xml:"ClusterId,omitempty"`
+	// The annotations.
+	Annotations *string `json:"Annotations,omitempty" xml:"Annotations,omitempty"`
+	// The ID of the Kubernetes cluster.
+	ClusterId *string `json:"ClusterId,omitempty" xml:"ClusterId,omitempty"`
+	// The routing rules of the Ingress. Set this parameter to a JSON string in the following format:
+	//
+	//     {
+	//       "rules": [
+	//         {
+	//           "host": "abc.com",
+	//           "secretName": "tls-secret",
+	//           "paths": [
+	//             {
+	//               "path": "/path",
+	//               "backend": {
+	//                 "servicePort": 80,
+	//                 "serviceName": "xxx"
+	//               }
+	//             }
+	//           ]
+	//         }
+	//       ]
+	//     }
+	//
+	// Parameter description:
+	//
+	// *   rules: the list of routing rules.
+	// *   host: the domain name to be accessed.
+	// *   secretName: the name of the Secret that stores the information about the Transport Layer Security (TLS) certificate. The certificate is required if you need to use the HTTPS protocol.
+	// *   paths: the list of paths to be accessed.
+	// *   path: the path to be accessed.
+	// *   backend: the configuration of the backend service. You can specify a service that is created in the Enterprise Distributed Application Service (EDAS) console.
+	// *   serviceName: the name of the backend service.
+	// *   servicePort: the port of the backend service.
 	IngressConf map[string]interface{} `json:"IngressConf,omitempty" xml:"IngressConf,omitempty"`
-	Name        *string                `json:"Name,omitempty" xml:"Name,omitempty"`
-	Namespace   *string                `json:"Namespace,omitempty" xml:"Namespace,omitempty"`
+	// The labels.
+	Labels *string `json:"Labels,omitempty" xml:"Labels,omitempty"`
+	// The name of the Ingress. The name can contain lowercase letters, digits, and hyphens (-). It must start with a lowercase letter but cannot end with a hyphen (-). The name can be up to 63 characters in length.
+	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// The namespace of the Kubernetes cluster.
+	Namespace *string `json:"Namespace,omitempty" xml:"Namespace,omitempty"`
 }
 
 func (s CreateK8sIngressRuleRequest) String() string {
@@ -2536,6 +2944,11 @@ func (s CreateK8sIngressRuleRequest) GoString() string {
 	return s.String()
 }
 
+func (s *CreateK8sIngressRuleRequest) SetAnnotations(v string) *CreateK8sIngressRuleRequest {
+	s.Annotations = &v
+	return s
+}
+
 func (s *CreateK8sIngressRuleRequest) SetClusterId(v string) *CreateK8sIngressRuleRequest {
 	s.ClusterId = &v
 	return s
@@ -2543,6 +2956,11 @@ func (s *CreateK8sIngressRuleRequest) SetClusterId(v string) *CreateK8sIngressRu
 
 func (s *CreateK8sIngressRuleRequest) SetIngressConf(v map[string]interface{}) *CreateK8sIngressRuleRequest {
 	s.IngressConf = v
+	return s
+}
+
+func (s *CreateK8sIngressRuleRequest) SetLabels(v string) *CreateK8sIngressRuleRequest {
+	s.Labels = &v
 	return s
 }
 
@@ -2557,7 +2975,9 @@ func (s *CreateK8sIngressRuleRequest) SetNamespace(v string) *CreateK8sIngressRu
 }
 
 type CreateK8sIngressRuleResponseBody struct {
-	Code    *int32  `json:"Code,omitempty" xml:"Code,omitempty"`
+	// The HTTP status code that is returned.
+	Code *int32 `json:"Code,omitempty" xml:"Code,omitempty"`
+	// The message that is returned.
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
 }
 
@@ -2609,14 +3029,28 @@ func (s *CreateK8sIngressRuleResponse) SetBody(v *CreateK8sIngressRuleResponseBo
 }
 
 type CreateK8sSecretRequest struct {
-	Base64Encoded *bool   `json:"Base64Encoded,omitempty" xml:"Base64Encoded,omitempty"`
-	CertId        *string `json:"CertId,omitempty" xml:"CertId,omitempty"`
-	CertRegionId  *string `json:"CertRegionId,omitempty" xml:"CertRegionId,omitempty"`
-	ClusterId     *string `json:"ClusterId,omitempty" xml:"ClusterId,omitempty"`
-	Data          *string `json:"Data,omitempty" xml:"Data,omitempty"`
-	Name          *string `json:"Name,omitempty" xml:"Name,omitempty"`
-	Namespace     *string `json:"Namespace,omitempty" xml:"Namespace,omitempty"`
-	Type          *string `json:"Type,omitempty" xml:"Type,omitempty"`
+	// Specifies whether the data has been encoded in Base64. Valid values: true and false.
+	Base64Encoded *bool `json:"Base64Encoded,omitempty" xml:"Base64Encoded,omitempty"`
+	// The certificate ID provided by Alibaba Cloud Certificate Management Service.
+	CertId *string `json:"CertId,omitempty" xml:"CertId,omitempty"`
+	// The region in which the certificate is stored.
+	CertRegionId *string `json:"CertRegionId,omitempty" xml:"CertRegionId,omitempty"`
+	// The cluster ID.
+	ClusterId *string `json:"ClusterId,omitempty" xml:"ClusterId,omitempty"`
+	// The data of the Secret. The value must be a JSON array that contains the following information:
+	//
+	// *   Key: Secret key
+	// *   Value: Secret value
+	Data *string `json:"Data,omitempty" xml:"Data,omitempty"`
+	// The name of the Secret. The name must start with a letter, and can contain digits, letters, and hyphens (-). It can be up to 63 characters in length.
+	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// The namespace of the Kubernetes cluster.
+	Namespace *string `json:"Namespace,omitempty" xml:"Namespace,omitempty"`
+	// The Secret type. Valid values:
+	//
+	// *   Opaque: user-defined data
+	// *   kubernetes.io/tls: Transport Layer Security (TLS) certificate
+	Type *string `json:"Type,omitempty" xml:"Type,omitempty"`
 }
 
 func (s CreateK8sSecretRequest) String() string {
@@ -2668,8 +3102,11 @@ func (s *CreateK8sSecretRequest) SetType(v string) *CreateK8sSecretRequest {
 }
 
 type CreateK8sSecretResponseBody struct {
-	Code      *int32  `json:"Code,omitempty" xml:"Code,omitempty"`
-	Message   *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// The HTTP status code.
+	Code *int32 `json:"Code,omitempty" xml:"Code,omitempty"`
+	// The additional information returned.
+	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// The request ID.
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -2726,11 +3163,27 @@ func (s *CreateK8sSecretResponse) SetBody(v *CreateK8sSecretResponseBody) *Creat
 }
 
 type CreateK8sServiceRequest struct {
-	AppId                 *string                `json:"AppId,omitempty" xml:"AppId,omitempty"`
-	ExternalTrafficPolicy *string                `json:"ExternalTrafficPolicy,omitempty" xml:"ExternalTrafficPolicy,omitempty"`
-	Name                  *string                `json:"Name,omitempty" xml:"Name,omitempty"`
-	ServicePorts          map[string]interface{} `json:"ServicePorts,omitempty" xml:"ServicePorts,omitempty"`
-	Type                  *string                `json:"Type,omitempty" xml:"Type,omitempty"`
+	// The application ID.
+	AppId *string `json:"AppId,omitempty" xml:"AppId,omitempty"`
+	// The policy used for external traffic management. Valid values:
+	//
+	// *   Local: The network traffic can be routed to pods on the node where the Service is deployed.
+	// *   Cluster: The network traffic can be routed to pods on other nodes in the cluster.
+	//
+	// Default value: Local.
+	ExternalTrafficPolicy *string `json:"ExternalTrafficPolicy,omitempty" xml:"ExternalTrafficPolicy,omitempty"`
+	// The name of the Kubernetes Service.
+	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// The port mapping of the Kubernetes Service. Set this parameter to a JSON array. The following parameters are included in the configurations:
+	//
+	// *   **protocol**: the protocol used by the Service. Valid values: TCP and UDP. This parameter is mandatory.
+	// *   **port**: the frontend service port. Valid values: 1 to 65535. This parameter is mandatory.
+	// *   **targetPort**: the backend container port. Valid values: 1 to 65535. This parameter is mandatory.
+	//
+	// Example: `[{"protocol": "TCP", "port": 80, "targetPort": 8080},{"protocol": "TCP", "port": 81, "targetPort": 8081}]`
+	ServicePorts map[string]interface{} `json:"ServicePorts,omitempty" xml:"ServicePorts,omitempty"`
+	// The type of the Kubernetes Service. Set the value to ClusterIP.
+	Type *string `json:"Type,omitempty" xml:"Type,omitempty"`
 }
 
 func (s CreateK8sServiceRequest) String() string {
@@ -2767,10 +3220,14 @@ func (s *CreateK8sServiceRequest) SetType(v string) *CreateK8sServiceRequest {
 }
 
 type CreateK8sServiceResponseBody struct {
+	// The change process ID.
 	ChangeOrderId *string `json:"ChangeOrderId,omitempty" xml:"ChangeOrderId,omitempty"`
-	Code          *int32  `json:"Code,omitempty" xml:"Code,omitempty"`
-	Message       *string `json:"Message,omitempty" xml:"Message,omitempty"`
-	RequestId     *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The HTTP status code.
+	Code *int32 `json:"Code,omitempty" xml:"Code,omitempty"`
+	// The additional information returned.
+	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// The request ID.
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
 func (s CreateK8sServiceResponseBody) String() string {
@@ -2831,6 +3288,7 @@ func (s *CreateK8sServiceResponse) SetBody(v *CreateK8sServiceResponseBody) *Cre
 }
 
 type DeleteApplicationRequest struct {
+	// The ID of the application. You can call the ListApplication operation to query the application ID. For more information, see [ListApplication](~~149390~~).
 	AppId *string `json:"AppId,omitempty" xml:"AppId,omitempty"`
 }
 
@@ -2848,10 +3306,14 @@ func (s *DeleteApplicationRequest) SetAppId(v string) *DeleteApplicationRequest 
 }
 
 type DeleteApplicationResponseBody struct {
+	// The ID of the change process.
 	ChangeOrderId *string `json:"ChangeOrderId,omitempty" xml:"ChangeOrderId,omitempty"`
-	Code          *int32  `json:"Code,omitempty" xml:"Code,omitempty"`
-	Message       *string `json:"Message,omitempty" xml:"Message,omitempty"`
-	RequestId     *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The HTTP status code that is returned.
+	Code *int32 `json:"Code,omitempty" xml:"Code,omitempty"`
+	// The additional information that is returned.
+	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// The ID of the request.
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
 func (s DeleteApplicationResponseBody) String() string {
@@ -2912,7 +3374,9 @@ func (s *DeleteApplicationResponse) SetBody(v *DeleteApplicationResponseBody) *D
 }
 
 type DeleteApplicationScalingRuleRequest struct {
-	AppId           *string `json:"AppId,omitempty" xml:"AppId,omitempty"`
+	// The ID of the application. You can call the ListApplication operation to query the application ID. For more information, see [ListApplication](~~149390~~).
+	AppId *string `json:"AppId,omitempty" xml:"AppId,omitempty"`
+	// The name of the auto scaling policy.
 	ScalingRuleName *string `json:"ScalingRuleName,omitempty" xml:"ScalingRuleName,omitempty"`
 }
 
@@ -2935,6 +3399,7 @@ func (s *DeleteApplicationScalingRuleRequest) SetScalingRuleName(v string) *Dele
 }
 
 type DeleteApplicationScalingRuleResponseBody struct {
+	// The ID of the request.
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -2981,8 +3446,13 @@ func (s *DeleteApplicationScalingRuleResponse) SetBody(v *DeleteApplicationScali
 }
 
 type DeleteClusterRequest struct {
+	// The ID of the cluster.
 	ClusterId *string `json:"ClusterId,omitempty" xml:"ClusterId,omitempty"`
-	Mode      *int32  `json:"Mode,omitempty" xml:"Mode,omitempty"`
+	// The type of the cluster ID. Valid values:
+	//
+	// *   0: specifies the ID of the cluster in Enterprise Distributed Application Service (EDAS).
+	// *   1: specifies the ID of the ACK cluster.
+	Mode *int32 `json:"Mode,omitempty" xml:"Mode,omitempty"`
 }
 
 func (s DeleteClusterRequest) String() string {
@@ -3004,9 +3474,16 @@ func (s *DeleteClusterRequest) SetMode(v int32) *DeleteClusterRequest {
 }
 
 type DeleteClusterResponseBody struct {
-	Code      *int32  `json:"Code,omitempty" xml:"Code,omitempty"`
-	Data      *bool   `json:"Data,omitempty" xml:"Data,omitempty"`
-	Message   *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// The HTTP status code that is returned.
+	Code *int32 `json:"Code,omitempty" xml:"Code,omitempty"`
+	// Indicates whether the cluster is deleted. Valid values:
+	//
+	// *   true: The cluster is deleted.
+	// *   false: The cluster is not deleted.
+	Data *bool `json:"Data,omitempty" xml:"Data,omitempty"`
+	// The additional information that is returned.
+	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// The ID of the request.
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -3068,7 +3545,9 @@ func (s *DeleteClusterResponse) SetBody(v *DeleteClusterResponseBody) *DeleteClu
 }
 
 type DeleteClusterMemberRequest struct {
-	ClusterId       *string `json:"ClusterId,omitempty" xml:"ClusterId,omitempty"`
+	// The ID of the cluster.
+	ClusterId *string `json:"ClusterId,omitempty" xml:"ClusterId,omitempty"`
+	// The member ID of the ECS instance that you want to remove from the cluster.
 	ClusterMemberId *string `json:"ClusterMemberId,omitempty" xml:"ClusterMemberId,omitempty"`
 }
 
@@ -3091,9 +3570,13 @@ func (s *DeleteClusterMemberRequest) SetClusterMemberId(v string) *DeleteCluster
 }
 
 type DeleteClusterMemberResponseBody struct {
-	Code      *int32  `json:"Code,omitempty" xml:"Code,omitempty"`
-	Data      *bool   `json:"Data,omitempty" xml:"Data,omitempty"`
-	Message   *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// The HTTP status code that is returned.
+	Code *int32 `json:"Code,omitempty" xml:"Code,omitempty"`
+	// Indicates whether the request is successful.
+	Data *bool `json:"Data,omitempty" xml:"Data,omitempty"`
+	// The message that is returned.
+	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// The ID of the request.
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -3155,6 +3638,7 @@ func (s *DeleteClusterMemberResponse) SetBody(v *DeleteClusterMemberResponseBody
 }
 
 type DeleteConfigTemplateRequest struct {
+	// The ID of the configuration template.
 	Id *int64 `json:"Id,omitempty" xml:"Id,omitempty"`
 }
 
@@ -3172,8 +3656,11 @@ func (s *DeleteConfigTemplateRequest) SetId(v int64) *DeleteConfigTemplateReques
 }
 
 type DeleteConfigTemplateResponseBody struct {
-	Code      *int32  `json:"Code,omitempty" xml:"Code,omitempty"`
-	Message   *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// The HTTP status code that is returned.
+	Code *int32 `json:"Code,omitempty" xml:"Code,omitempty"`
+	// The additional information that is returned.
+	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// The ID of the request.
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -3230,7 +3717,9 @@ func (s *DeleteConfigTemplateResponse) SetBody(v *DeleteConfigTemplateResponseBo
 }
 
 type DeleteDeployGroupRequest struct {
-	AppId     *string `json:"AppId,omitempty" xml:"AppId,omitempty"`
+	// The ID of the application.
+	AppId *string `json:"AppId,omitempty" xml:"AppId,omitempty"`
+	// The name of the instance group.
 	GroupName *string `json:"GroupName,omitempty" xml:"GroupName,omitempty"`
 }
 
@@ -3253,9 +3742,13 @@ func (s *DeleteDeployGroupRequest) SetGroupName(v string) *DeleteDeployGroupRequ
 }
 
 type DeleteDeployGroupResponseBody struct {
-	Code      *int32  `json:"Code,omitempty" xml:"Code,omitempty"`
-	Data      *string `json:"Data,omitempty" xml:"Data,omitempty"`
-	Message   *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// The HTTP status code that is returned.
+	Code *int32 `json:"Code,omitempty" xml:"Code,omitempty"`
+	// The data that is returned.
+	Data *string `json:"Data,omitempty" xml:"Data,omitempty"`
+	// The message that is returned.
+	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// The ID of the request.
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -3317,6 +3810,7 @@ func (s *DeleteDeployGroupResponse) SetBody(v *DeleteDeployGroupResponseBody) *D
 }
 
 type DeleteEcuRequest struct {
+	// The unique ID of the ECU to be deleted.
 	EcuId *string `json:"EcuId,omitempty" xml:"EcuId,omitempty"`
 }
 
@@ -3334,9 +3828,13 @@ func (s *DeleteEcuRequest) SetEcuId(v string) *DeleteEcuRequest {
 }
 
 type DeleteEcuResponseBody struct {
-	Code      *int32  `json:"Code,omitempty" xml:"Code,omitempty"`
-	Data      *string `json:"Data,omitempty" xml:"Data,omitempty"`
-	Message   *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// The HTTP status code that is returned.
+	Code *int32 `json:"Code,omitempty" xml:"Code,omitempty"`
+	// The returned data that indicates whether the ECU is deleted. A value of `OK` indicates that the ECU is deleted.
+	Data *string `json:"Data,omitempty" xml:"Data,omitempty"`
+	// The additional information that is returned.
+	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// The ID of the request.
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -3398,8 +3896,10 @@ func (s *DeleteEcuResponse) SetBody(v *DeleteEcuResponseBody) *DeleteEcuResponse
 }
 
 type DeleteK8sApplicationRequest struct {
+	// The ID of the application that you want to delete. You can call the ListApplication operation to query the application ID.
 	AppId *string `json:"AppId,omitempty" xml:"AppId,omitempty"`
-	Force *bool   `json:"Force,omitempty" xml:"Force,omitempty"`
+	// Specifies whether to forcibly delete the application and disable application deletion protection.
+	Force *bool `json:"Force,omitempty" xml:"Force,omitempty"`
 }
 
 func (s DeleteK8sApplicationRequest) String() string {
@@ -3421,10 +3921,14 @@ func (s *DeleteK8sApplicationRequest) SetForce(v bool) *DeleteK8sApplicationRequ
 }
 
 type DeleteK8sApplicationResponseBody struct {
+	// The ID of the change process for this operation. If an instance on which the application is deployed is running or a Server Load Balancer (SLB) instance is bound to the application, this operation generates a change process ID and deletes the application. You can call the GetChangeOrderInfo operation to query the progress of this operation. You can determine whether the operation is successful based on the value of the Code parameter.
 	ChangeOrderId *string `json:"ChangeOrderId,omitempty" xml:"ChangeOrderId,omitempty"`
-	Code          *int32  `json:"Code,omitempty" xml:"Code,omitempty"`
-	Message       *string `json:"Message,omitempty" xml:"Message,omitempty"`
-	RequestId     *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The HTTP status code that is returned.
+	Code *int32 `json:"Code,omitempty" xml:"Code,omitempty"`
+	// The additional information that is returned.
+	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// The ID of the request.
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
 func (s DeleteK8sApplicationResponseBody) String() string {
@@ -3485,8 +3989,11 @@ func (s *DeleteK8sApplicationResponse) SetBody(v *DeleteK8sApplicationResponseBo
 }
 
 type DeleteK8sConfigMapRequest struct {
+	// The ID of the cluster.
 	ClusterId *string `json:"ClusterId,omitempty" xml:"ClusterId,omitempty"`
-	Name      *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// The name of the ConfigMap. The name must start with a letter, and can contain digits, letters, and hyphens (-). It can be up to 63 characters in length.
+	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// The namespace of the Kubernetes cluster.
 	Namespace *string `json:"Namespace,omitempty" xml:"Namespace,omitempty"`
 }
 
@@ -3514,8 +4021,11 @@ func (s *DeleteK8sConfigMapRequest) SetNamespace(v string) *DeleteK8sConfigMapRe
 }
 
 type DeleteK8sConfigMapResponseBody struct {
-	Code      *int32  `json:"Code,omitempty" xml:"Code,omitempty"`
-	Message   *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// The HTTP status code that is returned.
+	Code *int32 `json:"Code,omitempty" xml:"Code,omitempty"`
+	// The additional information that is returned.
+	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// The ID of the request.
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -3572,8 +4082,11 @@ func (s *DeleteK8sConfigMapResponse) SetBody(v *DeleteK8sConfigMapResponseBody) 
 }
 
 type DeleteK8sIngressRuleRequest struct {
+	// The ID of the Kubernetes cluster.
 	ClusterId *string `json:"ClusterId,omitempty" xml:"ClusterId,omitempty"`
-	Name      *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// The name of the Ingress. The name can contain lowercase letters, digits, and hyphens (-). It must start with a lowercase letter but cannot end with a hyphen (-). The name can be up to 63 characters in length.
+	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// The namespace of the Kubernetes cluster.
 	Namespace *string `json:"Namespace,omitempty" xml:"Namespace,omitempty"`
 }
 
@@ -3601,7 +4114,9 @@ func (s *DeleteK8sIngressRuleRequest) SetNamespace(v string) *DeleteK8sIngressRu
 }
 
 type DeleteK8sIngressRuleResponseBody struct {
-	Code    *int32  `json:"Code,omitempty" xml:"Code,omitempty"`
+	// The HTTP status code that is returned.
+	Code *int32 `json:"Code,omitempty" xml:"Code,omitempty"`
+	// The message that is returned.
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
 }
 
@@ -3653,8 +4168,11 @@ func (s *DeleteK8sIngressRuleResponse) SetBody(v *DeleteK8sIngressRuleResponseBo
 }
 
 type DeleteK8sSecretRequest struct {
+	// The ID of the cluster.
 	ClusterId *string `json:"ClusterId,omitempty" xml:"ClusterId,omitempty"`
-	Name      *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// The name of the Secret. The name must start with a letter, and can contain digits, letters, and hyphens (-). It can be up to 63 characters in length.
+	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// The namespace of the Kubernetes cluster.
 	Namespace *string `json:"Namespace,omitempty" xml:"Namespace,omitempty"`
 }
 
@@ -3682,8 +4200,11 @@ func (s *DeleteK8sSecretRequest) SetNamespace(v string) *DeleteK8sSecretRequest 
 }
 
 type DeleteK8sSecretResponseBody struct {
-	Code      *int32  `json:"Code,omitempty" xml:"Code,omitempty"`
-	Message   *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// The HTTP status code that is returned.
+	Code *int32 `json:"Code,omitempty" xml:"Code,omitempty"`
+	// The additional information that is returned.
+	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// The ID of the request.
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -3740,8 +4261,10 @@ func (s *DeleteK8sSecretResponse) SetBody(v *DeleteK8sSecretResponseBody) *Delet
 }
 
 type DeleteK8sServiceRequest struct {
+	// The ID of the application.
 	AppId *string `json:"AppId,omitempty" xml:"AppId,omitempty"`
-	Name  *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// The name of the service.
+	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
 }
 
 func (s DeleteK8sServiceRequest) String() string {
@@ -3763,10 +4286,14 @@ func (s *DeleteK8sServiceRequest) SetName(v string) *DeleteK8sServiceRequest {
 }
 
 type DeleteK8sServiceResponseBody struct {
+	// The ID of the change process.
 	ChangeOrderId *string `json:"ChangeOrderId,omitempty" xml:"ChangeOrderId,omitempty"`
-	Code          *int32  `json:"Code,omitempty" xml:"Code,omitempty"`
-	Message       *string `json:"Message,omitempty" xml:"Message,omitempty"`
-	RequestId     *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The HTTP status code that is returned.
+	Code *int32 `json:"Code,omitempty" xml:"Code,omitempty"`
+	// The additional information that is returned.
+	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// The ID of the request.
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
 func (s DeleteK8sServiceResponseBody) String() string {
@@ -3827,8 +4354,16 @@ func (s *DeleteK8sServiceResponse) SetBody(v *DeleteK8sServiceResponseBody) *Del
 }
 
 type DeleteLogPathRequest struct {
+	// The ID of the application. You can call the ListApplication operation to query the application ID. For more information, see [ListApplication](~~149390~~).
 	AppId *string `json:"AppId,omitempty" xml:"AppId,omitempty"`
-	Path  *string `json:"Path,omitempty" xml:"Path,omitempty"`
+	// The absolute path of the log directory that you want to remove. The value must start and end with a forward slash (`/`) and must contain `/log` or `/logs`. The following directories are the default log directories in Enterprise Distributed Application Service (EDAS):
+	//
+	// *   /home/admin/edas-container/logs/
+	// *   /home/admin/taobao-tomcat-7.0.59/logs/
+	// *   /home/admin/taobao-tomcat-production-7.0.59.3/logs/
+	// *   /home/admin/taobao-tomcat-production-7.0.70/logs/
+	// *   /home/admin/edas-agent/logs/
+	Path *string `json:"Path,omitempty" xml:"Path,omitempty"`
 }
 
 func (s DeleteLogPathRequest) String() string {
@@ -3850,8 +4385,11 @@ func (s *DeleteLogPathRequest) SetPath(v string) *DeleteLogPathRequest {
 }
 
 type DeleteLogPathResponseBody struct {
-	Code      *string `json:"Code,omitempty" xml:"Code,omitempty"`
-	Message   *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// The HTTP status code that is returned.
+	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	// The additional information that is returned.
+	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// The ID of the request.
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -3908,6 +4446,7 @@ func (s *DeleteLogPathResponse) SetBody(v *DeleteLogPathResponseBody) *DeleteLog
 }
 
 type DeleteRoleRequest struct {
+	// The ID of the RAM role.
 	RoleId *int32 `json:"RoleId,omitempty" xml:"RoleId,omitempty"`
 }
 
@@ -3925,8 +4464,11 @@ func (s *DeleteRoleRequest) SetRoleId(v int32) *DeleteRoleRequest {
 }
 
 type DeleteRoleResponseBody struct {
-	Code      *int32  `json:"Code,omitempty" xml:"Code,omitempty"`
-	Message   *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// The HTTP status code that is returned.
+	Code *int32 `json:"Code,omitempty" xml:"Code,omitempty"`
+	// The additional information that is returned.
+	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// The ID of the request.
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -3983,6 +4525,7 @@ func (s *DeleteRoleResponse) SetBody(v *DeleteRoleResponseBody) *DeleteRoleRespo
 }
 
 type DeleteServiceGroupRequest struct {
+	// The ID of the service group that you want to delete.
 	GroupId *string `json:"GroupId,omitempty" xml:"GroupId,omitempty"`
 }
 
@@ -4000,8 +4543,11 @@ func (s *DeleteServiceGroupRequest) SetGroupId(v string) *DeleteServiceGroupRequ
 }
 
 type DeleteServiceGroupResponseBody struct {
-	Code      *int32  `json:"Code,omitempty" xml:"Code,omitempty"`
-	Message   *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// The HTTP status code that is returned.
+	Code *int32 `json:"Code,omitempty" xml:"Code,omitempty"`
+	// The message that is returned.
+	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// The ID of the request.
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -4058,6 +4604,7 @@ func (s *DeleteServiceGroupResponse) SetBody(v *DeleteServiceGroupResponseBody) 
 }
 
 type DeleteSwimmingLaneRequest struct {
+	// The ID of the lane.
 	LaneId *int64 `json:"LaneId,omitempty" xml:"LaneId,omitempty"`
 }
 
@@ -4075,9 +4622,13 @@ func (s *DeleteSwimmingLaneRequest) SetLaneId(v int64) *DeleteSwimmingLaneReques
 }
 
 type DeleteSwimmingLaneResponseBody struct {
-	Code      *int32  `json:"Code,omitempty" xml:"Code,omitempty"`
-	Data      *int32  `json:"Data,omitempty" xml:"Data,omitempty"`
-	Message   *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// The HTTP status code that is returned.
+	Code *int32 `json:"Code,omitempty" xml:"Code,omitempty"`
+	// Indicates whether the lane is deleted.
+	Data *int32 `json:"Data,omitempty" xml:"Data,omitempty"`
+	// The additional information that is returned.
+	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// The ID of the request.
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -4139,7 +4690,9 @@ func (s *DeleteSwimmingLaneResponse) SetBody(v *DeleteSwimmingLaneResponseBody) 
 }
 
 type DeleteUserDefineRegionRequest struct {
-	Id        *int64  `json:"Id,omitempty" xml:"Id,omitempty"`
+	// The unique ID of the custom namespace. You can call the ListUserDefineRegion operation to query the ID. For more information, see [ListUserDefineRegion](~~149377~~).
+	Id *int64 `json:"Id,omitempty" xml:"Id,omitempty"`
+	// The tag of the custom namespace.
 	RegionTag *string `json:"RegionTag,omitempty" xml:"RegionTag,omitempty"`
 }
 
@@ -4162,10 +4715,14 @@ func (s *DeleteUserDefineRegionRequest) SetRegionTag(v string) *DeleteUserDefine
 }
 
 type DeleteUserDefineRegionResponseBody struct {
-	Code         *int32                                          `json:"Code,omitempty" xml:"Code,omitempty"`
-	Message      *string                                         `json:"Message,omitempty" xml:"Message,omitempty"`
+	// The HTTP status code that is returned.
+	Code *int32 `json:"Code,omitempty" xml:"Code,omitempty"`
+	// The additional information that is returned.
+	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// The custom namespace.
 	RegionDefine *DeleteUserDefineRegionResponseBodyRegionDefine `json:"RegionDefine,omitempty" xml:"RegionDefine,omitempty" type:"Struct"`
-	RequestId    *string                                         `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The ID of the request.
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
 func (s DeleteUserDefineRegionResponseBody) String() string {
@@ -4197,12 +4754,18 @@ func (s *DeleteUserDefineRegionResponseBody) SetRequestId(v string) *DeleteUserD
 }
 
 type DeleteUserDefineRegionResponseBodyRegionDefine struct {
+	// The ID of the region to which the custom namespace belongs.
 	BelongRegion *string `json:"BelongRegion,omitempty" xml:"BelongRegion,omitempty"`
-	Description  *string `json:"Description,omitempty" xml:"Description,omitempty"`
-	Id           *int64  `json:"Id,omitempty" xml:"Id,omitempty"`
-	RegionId     *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	RegionName   *string `json:"RegionName,omitempty" xml:"RegionName,omitempty"`
-	UserId       *string `json:"UserId,omitempty" xml:"UserId,omitempty"`
+	// The description of the custom namespace.
+	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
+	// The unique identifier of the custom namespace.
+	Id *int64 `json:"Id,omitempty" xml:"Id,omitempty"`
+	// The ID of the custom namespace. The ID cannot be changed after the custom namespace is created. The format is `region ID:custom namespace ID`.
+	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	// The name of the custom namespace.
+	RegionName *string `json:"RegionName,omitempty" xml:"RegionName,omitempty"`
+	// The ID of the Alibaba Cloud account to which the custom namespace belongs.
+	UserId *string `json:"UserId,omitempty" xml:"UserId,omitempty"`
 }
 
 func (s DeleteUserDefineRegionResponseBodyRegionDefine) String() string {
@@ -4273,21 +4836,77 @@ func (s *DeleteUserDefineRegionResponse) SetBody(v *DeleteUserDefineRegionRespon
 }
 
 type DeployApplicationRequest struct {
-	AppEnv                 *string `json:"AppEnv,omitempty" xml:"AppEnv,omitempty"`
-	AppId                  *string `json:"AppId,omitempty" xml:"AppId,omitempty"`
-	Batch                  *int32  `json:"Batch,omitempty" xml:"Batch,omitempty"`
-	BatchWaitTime          *int32  `json:"BatchWaitTime,omitempty" xml:"BatchWaitTime,omitempty"`
-	BuildPackId            *int64  `json:"BuildPackId,omitempty" xml:"BuildPackId,omitempty"`
-	ComponentIds           *string `json:"ComponentIds,omitempty" xml:"ComponentIds,omitempty"`
-	DeployType             *string `json:"DeployType,omitempty" xml:"DeployType,omitempty"`
-	Desc                   *string `json:"Desc,omitempty" xml:"Desc,omitempty"`
-	Gray                   *bool   `json:"Gray,omitempty" xml:"Gray,omitempty"`
-	GroupId                *string `json:"GroupId,omitempty" xml:"GroupId,omitempty"`
-	ImageUrl               *string `json:"ImageUrl,omitempty" xml:"ImageUrl,omitempty"`
-	PackageVersion         *string `json:"PackageVersion,omitempty" xml:"PackageVersion,omitempty"`
-	ReleaseType            *int64  `json:"ReleaseType,omitempty" xml:"ReleaseType,omitempty"`
+	// The environment variables of the application. Specify each environment variable by using two key-value pairs. Example: `{"name":"x","value":"y"},{"name":"x2","value":"y2"}`. The `keys` of the two key-value pairs are `name` and `value`.
+	AppEnv *string `json:"AppEnv,omitempty" xml:"AppEnv,omitempty"`
+	// The ID of the application. You can call the ListApplication operation to query the application ID. For more information, see [ListApplication](~~423162~~).
+	AppId *string `json:"AppId,omitempty" xml:"AppId,omitempty"`
+	// The number of batches per instance group.
+	//
+	// *   If you specify an ID when you set the GroupId parameter, the application is deployed to the specified instance group. The minimum number of batches that can be specified is 1. The maximum number of batches is the maximum number of ECS instances in the Normal state in the instance group. The actual value falls in the range of \[1, specified number]. The specified number of batches equals the number of ECS instances in the specified instance group.
+	// *   If you set the GroupId parameter to all, the application is deployed to all instance groups. The minimum number of batches that can be specified is 1. The maximum number of batches is the number of ECS instances in the instance group that has the largest number of ECS instances in the Normal state.
+	Batch *int32 `json:"Batch,omitempty" xml:"Batch,omitempty"`
+	// The wait time between deployment batches for the application. Unit: minutes.
+	//
+	// *   Default value: 0. If no wait time between deployment batches is needed, set this parameter to 0.
+	// *   Maximum value: 5.
+	//
+	// If many deployment batches are needed, we recommend that you specify a small value for this parameter. Otherwise, the application deployment is time-consuming.
+	BatchWaitTime *int32 `json:"BatchWaitTime,omitempty" xml:"BatchWaitTime,omitempty"`
+	// The build package number of EDAS Container.
+	//
+	// *   You do not need to set the parameter if you do not need to change the EDAS Container version during the deployment.
+	// *   Set the parameter if you need to update the EDAS Container version of the application during the deployment.
+	//
+	// You can query the build package number by using one of the following methods:
+	//
+	// *   Call the ListBuildPack operation. For more information, see [ListBuildPack](~~149391~~).
+	// *   Obtain the value in the **Build package number** column of the [Release notes for EDAS Container](~~92614~~) topic. For example, `59` indicates `EDAS Container 3.5.8`.
+	BuildPackId *int64 `json:"BuildPackId,omitempty" xml:"BuildPackId,omitempty"`
+	// The IDs of the components used by the application. The parameter is not applicable to High-Speed Framework (HSF) applications. You can call the ListComponents operation to query the component IDs. For more information, see [ListComponents](~~423223~~).
+	//
+	// *   If you have specified the component IDs when you create the application, you do not need to set the parameter when you deploy the application.
+	// *   Set the parameter if you need to update the component versions for the application during the deployment.
+	//
+	// Valid values for common application components:
+	//
+	// *   4: Apache Tomcat 7.0.91
+	// *   7: Apache Tomcat 8.5.42
+	// *   5: OpenJDK 1.8.x
+	// *   6: OpenJDK 1.7.x
+	//
+	// For more information, see the Common application parameters section of the [InsertApplication](~~423185~~) topic.
+	ComponentIds *string `json:"ComponentIds,omitempty" xml:"ComponentIds,omitempty"`
+	// The deployment mode of the application. Valid values: `url` and `image`. The image value is deprecated. You can deploy an application to a Swarm cluster only by using an image.``
+	DeployType *string `json:"DeployType,omitempty" xml:"DeployType,omitempty"`
+	// The description of the application deployment.
+	Desc *string `json:"Desc,omitempty" xml:"Desc,omitempty"`
+	// Specifies whether canary release is selected as the deployment method. Valid values:
+	//
+	// *   true: Canary release is selected.
+	//
+	//     *   To implement a canary release, specify the GroupId parameter, which specifies the ID of the instance group for the canary release.
+	//     *   Canary release can be selected as the deployment method for only one batch.
+	//     *   After the canary release is complete, the application is released in regular mode. The Batch parameter specifies the number of batches.
+	//
+	// *   false: Single-batch release or phased release is selected.
+	Gray *bool `json:"Gray,omitempty" xml:"Gray,omitempty"`
+	// The ID of the instance group to which the application is deployed. You can call the ListDeployGroup operation to query the ID of the instance group. For more information, see [ListDeployGroup](~~423184~~).
+	//
+	// Set the parameter to `all` if you want to deploy the application to all instance groups.
+	GroupId *string `json:"GroupId,omitempty" xml:"GroupId,omitempty"`
+	// The URL of the application image that is used to deploy the application in a Swarm cluster. We recommend that you use an image that is stored in Alibaba Cloud Container Registry. This parameter is deprecated.
+	ImageUrl *string `json:"ImageUrl,omitempty" xml:"ImageUrl,omitempty"`
+	// The version of the application deployment package. The value can be up to 64 characters in length. We recommend that you use a timestamp.
+	PackageVersion *string `json:"PackageVersion,omitempty" xml:"PackageVersion,omitempty"`
+	// The mode in which the deployment batches are triggered. Valid values:
+	//
+	// *   0: automatic.
+	// *   1: You must manually trigger the next batch. You can manually click **Proceed to Next Batch** in the console or call the ContinuePipeline operation to proceed to the next batch. We recommend that you choose the automatic mode when you call an API operation to deploy the application. For more information, see [ContinuePipeline](~~126990~~).
+	ReleaseType *int64 `json:"ReleaseType,omitempty" xml:"ReleaseType,omitempty"`
+	// The canary release policy. For more information about canary release policies, see [DeployK8sApplication](~~423212~~).
 	TrafficControlStrategy *string `json:"TrafficControlStrategy,omitempty" xml:"TrafficControlStrategy,omitempty"`
-	WarUrl                 *string `json:"WarUrl,omitempty" xml:"WarUrl,omitempty"`
+	// The URL of the application deployment package. The package can be a WAR or JAR package. This parameter is required if you set the **DeployType** parameter to `url`. We recommend that you specify the URL of an application deployment package that is stored in an Object Storage Service (OSS) bucket.
+	WarUrl *string `json:"WarUrl,omitempty" xml:"WarUrl,omitempty"`
 }
 
 func (s DeployApplicationRequest) String() string {
@@ -4374,10 +4993,14 @@ func (s *DeployApplicationRequest) SetWarUrl(v string) *DeployApplicationRequest
 }
 
 type DeployApplicationResponseBody struct {
+	// The change process ID of the application deployment.
 	ChangeOrderId *string `json:"ChangeOrderId,omitempty" xml:"ChangeOrderId,omitempty"`
-	Code          *int32  `json:"Code,omitempty" xml:"Code,omitempty"`
-	Message       *string `json:"Message,omitempty" xml:"Message,omitempty"`
-	RequestId     *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The HTTP status code that is returned.
+	Code *int32 `json:"Code,omitempty" xml:"Code,omitempty"`
+	// The message returned for the request.
+	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// The ID of the request.
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
 func (s DeployApplicationResponseBody) String() string {
@@ -4438,64 +5061,269 @@ func (s *DeployApplicationResponse) SetBody(v *DeployApplicationResponseBody) *D
 }
 
 type DeployK8sApplicationRequest struct {
-	Annotations            *string `json:"Annotations,omitempty" xml:"Annotations,omitempty"`
-	AppId                  *string `json:"AppId,omitempty" xml:"AppId,omitempty"`
-	Args                   *string `json:"Args,omitempty" xml:"Args,omitempty"`
-	BatchTimeout           *int32  `json:"BatchTimeout,omitempty" xml:"BatchTimeout,omitempty"`
-	BatchWaitTime          *int32  `json:"BatchWaitTime,omitempty" xml:"BatchWaitTime,omitempty"`
-	BuildPackId            *string `json:"BuildPackId,omitempty" xml:"BuildPackId,omitempty"`
-	ChangeOrderDesc        *string `json:"ChangeOrderDesc,omitempty" xml:"ChangeOrderDesc,omitempty"`
-	Command                *string `json:"Command,omitempty" xml:"Command,omitempty"`
-	ConfigMountDescs       *string `json:"ConfigMountDescs,omitempty" xml:"ConfigMountDescs,omitempty"`
-	CpuLimit               *int32  `json:"CpuLimit,omitempty" xml:"CpuLimit,omitempty"`
-	CpuRequest             *int32  `json:"CpuRequest,omitempty" xml:"CpuRequest,omitempty"`
-	CustomAffinity         *string `json:"CustomAffinity,omitempty" xml:"CustomAffinity,omitempty"`
-	CustomTolerations      *string `json:"CustomTolerations,omitempty" xml:"CustomTolerations,omitempty"`
-	DeployAcrossNodes      *string `json:"DeployAcrossNodes,omitempty" xml:"DeployAcrossNodes,omitempty"`
-	DeployAcrossZones      *string `json:"DeployAcrossZones,omitempty" xml:"DeployAcrossZones,omitempty"`
-	EdasContainerVersion   *string `json:"EdasContainerVersion,omitempty" xml:"EdasContainerVersion,omitempty"`
-	EmptyDirs              *string `json:"EmptyDirs,omitempty" xml:"EmptyDirs,omitempty"`
-	EnableAhas             *bool   `json:"EnableAhas,omitempty" xml:"EnableAhas,omitempty"`
-	EnableEmptyPushReject  *bool   `json:"EnableEmptyPushReject,omitempty" xml:"EnableEmptyPushReject,omitempty"`
-	EnableLosslessRule     *bool   `json:"EnableLosslessRule,omitempty" xml:"EnableLosslessRule,omitempty"`
-	EnvFroms               *string `json:"EnvFroms,omitempty" xml:"EnvFroms,omitempty"`
-	Envs                   *string `json:"Envs,omitempty" xml:"Envs,omitempty"`
-	Image                  *string `json:"Image,omitempty" xml:"Image,omitempty"`
-	ImageTag               *string `json:"ImageTag,omitempty" xml:"ImageTag,omitempty"`
-	JDK                    *string `json:"JDK,omitempty" xml:"JDK,omitempty"`
-	JavaStartUpConfig      *string `json:"JavaStartUpConfig,omitempty" xml:"JavaStartUpConfig,omitempty"`
-	Labels                 *string `json:"Labels,omitempty" xml:"Labels,omitempty"`
-	Liveness               *string `json:"Liveness,omitempty" xml:"Liveness,omitempty"`
-	LocalVolume            *string `json:"LocalVolume,omitempty" xml:"LocalVolume,omitempty"`
-	LosslessRuleAligned    *bool   `json:"LosslessRuleAligned,omitempty" xml:"LosslessRuleAligned,omitempty"`
-	LosslessRuleDelayTime  *int32  `json:"LosslessRuleDelayTime,omitempty" xml:"LosslessRuleDelayTime,omitempty"`
-	LosslessRuleFuncType   *int32  `json:"LosslessRuleFuncType,omitempty" xml:"LosslessRuleFuncType,omitempty"`
-	LosslessRuleRelated    *bool   `json:"LosslessRuleRelated,omitempty" xml:"LosslessRuleRelated,omitempty"`
-	LosslessRuleWarmupTime *int32  `json:"LosslessRuleWarmupTime,omitempty" xml:"LosslessRuleWarmupTime,omitempty"`
-	McpuLimit              *int32  `json:"McpuLimit,omitempty" xml:"McpuLimit,omitempty"`
-	McpuRequest            *int32  `json:"McpuRequest,omitempty" xml:"McpuRequest,omitempty"`
-	MemoryLimit            *int32  `json:"MemoryLimit,omitempty" xml:"MemoryLimit,omitempty"`
-	MemoryRequest          *int32  `json:"MemoryRequest,omitempty" xml:"MemoryRequest,omitempty"`
-	MountDescs             *string `json:"MountDescs,omitempty" xml:"MountDescs,omitempty"`
-	NasId                  *string `json:"NasId,omitempty" xml:"NasId,omitempty"`
-	PackageUrl             *string `json:"PackageUrl,omitempty" xml:"PackageUrl,omitempty"`
-	PackageVersion         *string `json:"PackageVersion,omitempty" xml:"PackageVersion,omitempty"`
-	PackageVersionId       *string `json:"PackageVersionId,omitempty" xml:"PackageVersionId,omitempty"`
-	PostStart              *string `json:"PostStart,omitempty" xml:"PostStart,omitempty"`
-	PreStop                *string `json:"PreStop,omitempty" xml:"PreStop,omitempty"`
-	PvcMountDescs          *string `json:"PvcMountDescs,omitempty" xml:"PvcMountDescs,omitempty"`
-	Readiness              *string `json:"Readiness,omitempty" xml:"Readiness,omitempty"`
-	Replicas               *int32  `json:"Replicas,omitempty" xml:"Replicas,omitempty"`
-	RuntimeClassName       *string `json:"RuntimeClassName,omitempty" xml:"RuntimeClassName,omitempty"`
-	SlsConfigs             *string `json:"SlsConfigs,omitempty" xml:"SlsConfigs,omitempty"`
-	StorageType            *string `json:"StorageType,omitempty" xml:"StorageType,omitempty"`
+	// The annotation of an application pod.
+	Annotations *string `json:"Annotations,omitempty" xml:"Annotations,omitempty"`
+	// The ID of the application. You can call the ListApplication operation to query the application ID. For more information, see [ListApplication](~~149390~~).
+	AppId *string `json:"AppId,omitempty" xml:"AppId,omitempty"`
+	// The argument array in the container start-up command. Set this parameter to a JSON array in the format of `\["args1","args2"\]`, where each key is set to a string. If you want to cancel this configuration, set this parameter to an empty JSON array in the format of `"\[\]"`.
+	Args *string `json:"Args,omitempty" xml:"Args,omitempty"`
+	// The timeout period for an at-a-time release. Unit: seconds.
+	BatchTimeout *int32 `json:"BatchTimeout,omitempty" xml:"BatchTimeout,omitempty"`
+	// The minimum time interval for the phased release of pods. For more information, see [minReadySeconds](https://kubernetes.io/docs/concepts/workloads/controllers/deployment/#min-ready-seconds).
+	BatchWaitTime *int32 `json:"BatchWaitTime,omitempty" xml:"BatchWaitTime,omitempty"`
+	// The build package number of EDAS Container.
+	//
+	// *   You do not need to set the parameter if you do not need to change the EDAS Container version during the deployment.
+	// *   Set the parameter if you need to update the EDAS Container version of the application during the deployment.
+	//
+	// You can query the build package number by using one of the following methods:
+	//
+	// *   Call the ListBuildPack operation. For more information, see [ListBuildPack](~~423222~~).
+	// *   Obtain the value in the **Build package number** column of the [Release notes for EDAS Container](~~92614~~) topic. For example, `59` indicates `EDAS Container 3.5.8`.
+	BuildPackId  *string `json:"BuildPackId,omitempty" xml:"BuildPackId,omitempty"`
+	CanaryRuleId *string `json:"CanaryRuleId,omitempty" xml:"CanaryRuleId,omitempty"`
+	// The description of the change process.
+	ChangeOrderDesc *string `json:"ChangeOrderDesc,omitempty" xml:"ChangeOrderDesc,omitempty"`
+	// The commands that you run to start the container.
+	//
+	// > If you want to cancel this configuration, set this parameter to an empty string in the format of `""`.
+	Command *string `json:"Command,omitempty" xml:"Command,omitempty"`
+	// The configuration for mounting a Kubernetes ConfigMap or Secret to a directory in an elastic container instance. The following parameters are included in the configuration:
+	//
+	// *   name: the name of the Kubernetes ConfigMap or Secret.
+	// *   type: the type of the API object that you want to mount. You can mount a Kubernetes ConfigMap or Secret.
+	// *   mountPath: the mount path. The mount path must be an absolute path that starts with a forward slash (/).
+	ConfigMountDescs *string `json:"ConfigMountDescs,omitempty" xml:"ConfigMountDescs,omitempty"`
+	// The maximum number of CPU cores allowed for each application instance when the application is running. Unit: cores. Value 0 indicates that no limit is set on CPU cores.
+	CpuLimit *int32 `json:"CpuLimit,omitempty" xml:"CpuLimit,omitempty"`
+	// The number of CPU cores requested for each application instance when the application is running. Unit: cores. We recommend that you set this parameter. Value 0 indicates that no limit is set on CPU cores.
+	//
+	// > You must set this parameter together with the CpuLimit parameter. Make sure that the value of this parameter does not exceed that of the CpuLimit parameter.
+	CpuRequest *int32 `json:"CpuRequest,omitempty" xml:"CpuRequest,omitempty"`
+	// The affinity configuration of the pod. This parameter takes effect only if both the DeployAcrossNodes and DeployAcrossZones parameters are set to false.
+	CustomAffinity *string `json:"CustomAffinity,omitempty" xml:"CustomAffinity,omitempty"`
+	// The scheduling tolerance configuration of the pod. This parameter takes effect only if both the DeployAcrossNodes and DeployAcrossZones parameters are set to false.
+	CustomTolerations *string `json:"CustomTolerations,omitempty" xml:"CustomTolerations,omitempty"`
+	// Specifies whether to distribute application instances to multiple nodes. Value true indicates that application instances are distrubuted across zones. Other values indicate that application instances are not distributed across zones.
+	DeployAcrossNodes *string `json:"DeployAcrossNodes,omitempty" xml:"DeployAcrossNodes,omitempty"`
+	// Specifies whether to distribute application instances across zones. Value true indicates that application instances are distrubuted across zones. Other values indicate that application instances are not distributed across zones.
+	DeployAcrossZones *string `json:"DeployAcrossZones,omitempty" xml:"DeployAcrossZones,omitempty"`
+	// The version of EDAS Container on which the deployment package of the application depends. This parameter is applicable to High-Speed Service Framework (HSF) applications that you deploy by using WAR packages. This parameter is unavailable if you deploy applications by using images.
+	EdasContainerVersion *string `json:"EdasContainerVersion,omitempty" xml:"EdasContainerVersion,omitempty"`
+	// The configuration for mounting a Kubernetes emptyDir volume to a directory in an elastic container instance. The following parameters are included in the configuration:
+	//
+	// *   mountPath: The mount path in the container. This parameter is required.
+	// *   readOnly: (Optional) The mount mode. Value true indicates the read-only mode. Value false indicates the read and write mode. Default value: false.
+	// *   subPathExpr: (Optional) The regular expression that is used to match the subdirectory.
+	EmptyDirs *string `json:"EmptyDirs,omitempty" xml:"EmptyDirs,omitempty"`
+	// Specifies whether to enable access to Application High Availability Service (AHAS).
+	EnableAhas *bool `json:"EnableAhas,omitempty" xml:"EnableAhas,omitempty"`
+	// Specifies whether to enable the empty list protection feature. Valid values:
+	//
+	// *   true: enables the empty list protection feature.
+	// *   false: disables the empty list protection feature.
+	EnableEmptyPushReject *bool `json:"EnableEmptyPushReject,omitempty" xml:"EnableEmptyPushReject,omitempty"`
+	// Specifies whether to enable graceful start rules. Valid values:
+	//
+	// *   true: enables graceful start rules.
+	// *   false: disables graceful start rules.
+	EnableLosslessRule *bool `json:"EnableLosslessRule,omitempty" xml:"EnableLosslessRule,omitempty"`
+	// The Kubernetes environment variables that are configured in EnvFrom mode. A ConfigMap or Secret is mounted to a directory. Each key corresponds to a file in the directory, and the content of the file is the value of the key.
+	//
+	// This parameter contains the following parameters:
+	//
+	// *   configMapRef: the ConfigMap that is referenced. The following parameter is contained:
+	//
+	//     *   name: the name of the ConfigMap.
+	//
+	// *   secretRef: the Secret that is referenced. The following parameter is contained:
+	//
+	//     *   name: the name of the Secret.
+	EnvFroms *string `json:"EnvFroms,omitempty" xml:"EnvFroms,omitempty"`
+	// The environment variables that are used to deploy the application. Set this parameter to a JSON array. Valid values: regular environment variables, Kubernetes ConfigMap environment variables, and Kubernetes Secret environment variables. Specify regular environment variables in the following format:
+	//
+	// `{"name":"x", "value": "y"}`
+	//
+	// Specify Kubernetes ConfigMap environment variables in the following format to reference values from ConfigMaps:
+	//
+	// `{ "name": "x2", "valueFrom": { "configMapKeyRef": { "name": "my-config", "key": "y2" } } }`
+	//
+	// Specify Kubernetes Secret environment variables in the following format to reference values from Secrets:
+	//
+	// `{ "name": "x3", "valueFrom": { "secretKeyRef": { "name": "my-secret", "key": "y3" } } }`
+	//
+	// >  If you want to cancel this configuration, set this parameter to an empty JSON array, which is in the format of "\[]".
+	Envs *string `json:"Envs,omitempty" xml:"Envs,omitempty"`
+	// The absolute URL of the image. This parameter setting overwrites the setting of the ImageTag parameter.
+	Image          *string `json:"Image,omitempty" xml:"Image,omitempty"`
+	ImagePlatforms *string `json:"ImagePlatforms,omitempty" xml:"ImagePlatforms,omitempty"`
+	// The tag of the image.
+	ImageTag       *string `json:"ImageTag,omitempty" xml:"ImageTag,omitempty"`
+	InitContainers *string `json:"InitContainers,omitempty" xml:"InitContainers,omitempty"`
+	// The version of the Java Development Kit (JDK) on which the deployment package of the application depends. Open JDK 7 and Open JDK 8 are supported. This parameter is unavailable if you deploy applications by using images.
+	JDK *string `json:"JDK,omitempty" xml:"JDK,omitempty"`
+	// The configuration of Java startup parameters for a Java application. These startup parameters involve the memory, application, garbage collection (GC) policy, tools, service registration and discovery, and custom configurations. Proper parameter settings help reduce the GC overheads, shorten the server response time, and improve the throughput. Set this parameter to a JSON string. In the example, original indicates the configuration value, and startup indicates a startup parameter. The system automatically concatenates all startup values as the settings of Java startup parameters for the application. To delete this configuration, leave the parameter value empty by entering `""` or `"{}"`.
+	JavaStartUpConfig *string `json:"JavaStartUpConfig,omitempty" xml:"JavaStartUpConfig,omitempty"`
+	// The label of an application pod.
+	Labels *string `json:"Labels,omitempty" xml:"Labels,omitempty"`
+	// The maximum size of space required by ephemeral storage. Unit: GB. Value 0 indicates that no limit is set on the ephemeral storage space.
+	LimitEphemeralStorage *int32 `json:"LimitEphemeralStorage,omitempty" xml:"LimitEphemeralStorage,omitempty"`
+	// The configuration for the liveness check on the container. Example: `{"failureThreshold": 3,"initialDelaySeconds": 5,"successThreshold": 1,"timeoutSeconds": 1,"tcpSocket":{"host":"", "port":8080}}`. If you want to cancel this configuration, set this parameter to `""` or `{}`. If you do not specify this parameter, this configuration is ignored.
+	Liveness *string `json:"Liveness,omitempty" xml:"Liveness,omitempty"`
+	// The configurations that are used when the host files are mounted to the container on which the application is running. Example: `\[{"type":"","nodePath":"/localfiles","mountPath":"/app/files"},{"type":"Directory","nodePath":"/mnt","mountPath":"/app/storage"}\]`. The nodePath parameter specifies the host path, the mountPath parameter specifies the path within the container, and the type parameter specifies the mounting type.
+	LocalVolume *string `json:"LocalVolume,omitempty" xml:"LocalVolume,omitempty"`
+	// Specifies whether to enable Graceful Rolling Release and configure Complete Service Registration before Readiness Probing. Valid values:
+	//
+	// *   true: If you turn on the switch, the system uses the /health path and provides port 55199 for the health check. The system does not intrude into the application. When the service is registered, the system returns HTTP 200 status code. Otherwise, the system returns HTTP 500 status code.
+	//
+	// > If you set both the LosslessRuleRelated parameter and this parameter to true, the operation checks whether the service prefetching is complete.
+	//
+	// *   false: If you turn off the switch, the system does not provide a port to check whether the service is registered.
+	LosslessRuleAligned *bool `json:"LosslessRuleAligned,omitempty" xml:"LosslessRuleAligned,omitempty"`
+	// The delay of service registration. Valid values: 0 to 86400. Unit: seconds.
+	LosslessRuleDelayTime *int32 `json:"LosslessRuleDelayTime,omitempty" xml:"LosslessRuleDelayTime,omitempty"`
+	// The number of prefetching curves. Valid values: 0 to 20. The default value is 2, which is suitable for common prefetching scenarios. This value indicates that the received traffic amount of the provider during prefetching is displayed as a quadratic curve.
+	LosslessRuleFuncType *int32 `json:"LosslessRuleFuncType,omitempty" xml:"LosslessRuleFuncType,omitempty"`
+	// Specifies whether to enable Graceful Rolling Release and configure Complete Service Prefetching before Readiness Probing. Valid values:
+	//
+	// *   true: If you turn on the switch, the system uses the /health path and provides port 55199 for the health check. The system does not intrude into the application. When service prefetching is complete, the system returns HTTP 200 status code. Otherwise, the system returns HTTP 500 status code.
+	// *   false: If you turn off the switch, the system does not provide a port to check whether service prefetching is complete.
+	LosslessRuleRelated *bool `json:"LosslessRuleRelated,omitempty" xml:"LosslessRuleRelated,omitempty"`
+	// The service prefetching duration. Valid values: 0 to 86400. Unit: seconds.
+	LosslessRuleWarmupTime *int32 `json:"LosslessRuleWarmupTime,omitempty" xml:"LosslessRuleWarmupTime,omitempty"`
+	// The maximum number of CPU cores allowed. Unit: cores. Value 0 indicates that no limit is set on CPU cores.
+	McpuLimit *int32 `json:"McpuLimit,omitempty" xml:"McpuLimit,omitempty"`
+	// The minimum number of CPU cores required. Unit: cores. Value 0 indicates that no limit is set on CPU cores.
+	//
+	// > You must set this parameter together with the CpuLimit parameter. Make sure that the value of this parameter does not exceed that of the CpuLimit parameter.
+	McpuRequest *int32 `json:"McpuRequest,omitempty" xml:"McpuRequest,omitempty"`
+	// The maximum size of memory allowed for each application instance when the application is running. Unit: MB. Value 0 indicates that no limit is set on the memory size.
+	MemoryLimit *int32 `json:"MemoryLimit,omitempty" xml:"MemoryLimit,omitempty"`
+	// The size of memory requested for each application instance when the application is running. Unit: MB. We recommend that you set this parameter. If you do not want to apply for a memory quota, set this parameter to 0.
+	//
+	// > You must set this parameter together with the MemoryLimit parameter. Make sure that the value of this parameter does not exceed that of the MemoryLimit parameter.
+	MemoryRequest *int32 `json:"MemoryRequest,omitempty" xml:"MemoryRequest,omitempty"`
+	// The description of the NAS mounting configuration. Set this parameter to a serialized JSON string. Example: `\[{"nasPath": "/k8s","mountPath": "/mnt"},{"nasPath": "/files","mountPath": "/app/files"}\]`. The nasPath parameter specifies the file storage path, and the mountPath parameter specifies the path to mount the file system to the container in which the application is running.
+	MountDescs *string `json:"MountDescs,omitempty" xml:"MountDescs,omitempty"`
+	// The ID of the Apsara File Storage NAS (NAS) file system mounted to the container in which the application is running. The NAS file system must be in the same region as the cluster. The NAS file system must have an available mount target, or have a mount target on the vSwitch in the virtual private cloud (VPC) in which the application resides. If you do not specify this parameter but specify the MountDescs parameter, a NAS file system is automatically purchased and mounted to the vSwitch in the VPC.
+	NasId *string `json:"NasId,omitempty" xml:"NasId,omitempty"`
+	// The URL of the deployment package. This parameter is required if you use a FatJar or WAR package to deploy the application.
+	//
+	// > The version of EDAS SDK for Java or Python must be V2.44.0 or later.
+	PackageUrl *string `json:"PackageUrl,omitempty" xml:"PackageUrl,omitempty"`
+	// The version of the deployment package. This parameter is required if you use a FatJar or WAR package to deploy the application. You must specify a version.
+	//
+	// > The version of EDAS SDK for Java or Python must be V2.44.0 or later.
+	PackageVersion *string `json:"PackageVersion,omitempty" xml:"PackageVersion,omitempty"`
+	// The version ID of the deployment package.
+	PackageVersionId *string `json:"PackageVersionId,omitempty" xml:"PackageVersionId,omitempty"`
+	// The post-start script. Example: `{"exec":{"command":\["cat","/etc/group"\]}}`. If you want to cancel this configuration, set this parameter to `""` or `{}`. If you do not specify this parameter, this configuration is ignored.
+	PostStart *string `json:"PostStart,omitempty" xml:"PostStart,omitempty"`
+	// The pre-stop script. Example: `{"tcpSocket":{"host":"", "port":8080}}`. If you want to cancel this configuration, set this parameter to `""` or `{}`. If you do not specify this parameter, this configuration is ignored.
+	PreStop *string `json:"PreStop,omitempty" xml:"PreStop,omitempty"`
+	// The configuration for mounting a Kubernetes PersistentVolumeClaim (PVC) to a directory in an elastic container instance. The following parameters are included in the configuration:
+	//
+	// *   pvcName: the name of the PVC. Make sure that the volume exists and is in the Bound state.
+	//
+	// *   mountPaths: the directory to which you want to mount the PVC. You can configure multiple directories. You can set the following two parameters for each mount directory:
+	//
+	//     *   mountPath: the mount path. The mount path must be an absolute path that starts with a forward slash (/).
+	//     *   readOnly: the mount mode. Value true indicates the read-only mode. Value false indicates the read and write mode. Default value: false.
+	PvcMountDescs *string `json:"PvcMountDescs,omitempty" xml:"PvcMountDescs,omitempty"`
+	// The configuration for the readiness check on the container. If the check fails, the traffic that passes through the Kubernetes service is not transmitted to the container. Example: `{"failureThreshold": 3,"initialDelaySeconds": 5,"successThreshold": 1,"timeoutSeconds": 1,"httpGet": {"path": "/consumer","port": 8080,"scheme": "HTTP","httpHeaders": \[{"name": "test","value": "testvalue"}\]}}`. If you want to cancel this configuration, set this parameter to `""` or `{}`. If you do not specify this parameter, this configuration is ignored.
+	Readiness *string `json:"Readiness,omitempty" xml:"Readiness,omitempty"`
+	// The number of application instances. The minimum value is 0.
+	Replicas *int32 `json:"Replicas,omitempty" xml:"Replicas,omitempty"`
+	// The minimum size of space required by ephemeral storage. Unit: GB. Value 0 indicates that no limit is set on the ephemeral storage space.
+	RequestsEphemeralStorage *int32 `json:"RequestsEphemeralStorage,omitempty" xml:"RequestsEphemeralStorage,omitempty"`
+	// The type of the container runtime. Valid values:
+	//
+	// *   runc: standard container runtime
+	// *   runv: sandboxed container runtime
+	//
+	// This parameter is applicable only to clusters that use sandboxed containers.
+	RuntimeClassName *string `json:"RuntimeClassName,omitempty" xml:"RuntimeClassName,omitempty"`
+	Sidecars         *string `json:"Sidecars,omitempty" xml:"Sidecars,omitempty"`
+	// The Logstore configuration. If you want to cancel this configuration, leave the parameter value empty by entering `""` or `"{}"`.
+	//
+	// *   The following parameters are included in the configuration:
+	//
+	//     *   type: the collection type. Set this parameter to file to specify the file type. Set this parameter to stdout to specify the standard output type.
+	//
+	//     *   logstore: the name of the Logstore. Make sure that the name of the Logstore is unique in the cluster. The name must comply with the following rules:
+	//
+	//         *   The name can contain only lowercase letters, digits, hyphens (-), and underscores (\_).
+	//         *   The name must start and end with a lowercase letter or a digit.
+	//         *   The name must be 3 to 63 characters in length. If you leave this parameter empty, the system automatically generates a name.
+	//
+	//     *   logDir: If the standard output type is used, the collection path is stdout.log. If the file type is used, the collection path is the path of the collected file. Wildcards (\*) are supported. The collection path must match the following regular expression: `^/(.+)/(.*)^/$`.
+	SlsConfigs *string `json:"SlsConfigs,omitempty" xml:"SlsConfigs,omitempty"`
+	Startup    *string `json:"Startup,omitempty" xml:"Startup,omitempty"`
+	// The storage type of the NAS file system.
+	//
+	// *   Valid values for General-purpose NAS file systems: Capacity and Performance.
+	// *   Valid values for Extreme NAS file systems: standard and advance.
+	//
+	// You can set this parameter only to Performance.
+	StorageType          *string `json:"StorageType,omitempty" xml:"StorageType,omitempty"`
+	TerminateGracePeriod *int32  `json:"TerminateGracePeriod,omitempty" xml:"TerminateGracePeriod,omitempty"`
+	// The traffic adjustment policy for a canary release.
 	TrafficControlStrategy *string `json:"TrafficControlStrategy,omitempty" xml:"TrafficControlStrategy,omitempty"`
-	UpdateStrategy         *string `json:"UpdateStrategy,omitempty" xml:"UpdateStrategy,omitempty"`
-	UriEncoding            *string `json:"UriEncoding,omitempty" xml:"UriEncoding,omitempty"`
-	UseBodyEncoding        *bool   `json:"UseBodyEncoding,omitempty" xml:"UseBodyEncoding,omitempty"`
-	VolumesStr             *string `json:"VolumesStr,omitempty" xml:"VolumesStr,omitempty"`
-	WebContainer           *string `json:"WebContainer,omitempty" xml:"WebContainer,omitempty"`
-	WebContainerConfig     *string `json:"WebContainerConfig,omitempty" xml:"WebContainerConfig,omitempty"`
+	// The phased release policy.
+	//
+	// *   Example 1: One instance for a canary release + Two subsequent batches + Automatic batching + 1-minute batch interval.
+	//
+	// `{"type":"GrayBatchUpdate","batchUpdate":{"batch":2,"releaseType":"auto","batchWaitTime":1},"grayUpdate":{"gray":1}}`
+	//
+	// *   Example 2: One instance for a canary release + Two subsequent batches + Manual batching.
+	//
+	// `{"type":"GrayBatchUpdate","batchUpdate":{"batch":2,"releaseType":"manual"},"grayUpdate":{"gray":1}}`
+	//
+	// *   Example 3: Two batches + Automatic batching + 0-minute batch interval.
+	//
+	// `{"type":"BatchUpdate","batchUpdate":{"batch":2,"releaseType":"auto","batchWaitTime":0}}`
+	UpdateStrategy *string `json:"UpdateStrategy,omitempty" xml:"UpdateStrategy,omitempty"`
+	// The URI encoding scheme. Valid values: ISO-8859-1, GBK, GB2312, and UTF-8.
+	//
+	// > If you do not specify this parameter in the application configurations, the default URI encoding scheme in the Tomcat container is applied.
+	UriEncoding *string `json:"UriEncoding,omitempty" xml:"UriEncoding,omitempty"`
+	// Specifies whether to use the encoding scheme specified in the request body for URI query parameters.
+	//
+	// > If this parameter is not specified in application configuration, the default value false is applied.
+	UseBodyEncoding  *bool   `json:"UseBodyEncoding,omitempty" xml:"UseBodyEncoding,omitempty"`
+	UserBaseImageUrl *string `json:"UserBaseImageUrl,omitempty" xml:"UserBaseImageUrl,omitempty"`
+	// The data volume.
+	VolumesStr *string `json:"VolumesStr,omitempty" xml:"VolumesStr,omitempty"`
+	// The version of the Tomcat container on which the deployment package of the application depends. This parameter is applicable to Spring Cloud and Dubbo applications that you deploy by using WAR packages. This parameter is unavailable if you deploy applications by using images.
+	WebContainer *string `json:"WebContainer,omitempty" xml:"WebContainer,omitempty"`
+	// The Tomcat container configuration. If you want to cancel this configuration, set this parameter to `""` or `"{}"`. The following parameters are included in the configuration:
+	//
+	// *   useDefaultConfig: specifies whether to use the default configuration. Value true indicates to use the default configuration. Value false indicates to use the custom configuration. If the default configuration is used, the following parameters do not take effect.
+	//
+	// *   contextInputType: the type of the access path for the application. Valid values:
+	//
+	//     *   war: The access path for the application is the name of the WAR package. You do not need to specify a custom path.
+	//     *   root: The access path for the application is /. You do not need to specify a custom path.
+	//     *   custom: If you select this option, you must specify a custom path for the contextPath parameter.
+	//
+	// *   contextPath: the custom access path for the application. This parameter is required only when you set the contextInputType parameter to custom.
+	//
+	// *   httpPort: the port number. The port number ranges from 1024 to 65535. Though the admin permissions are configured for the container, the root permissions are required to perform operations on ports whose number is less than 1024. Enter a value that ranges from 1025 to 65535 because the container has only the admin permissions. If you do not configure this parameter, the default port number 8080 is used.
+	//
+	// *   maxThreads: the maximum number of connections in the connection pool. Default value: 400.
+	//
+	//     **
+	//
+	//     **Note**This parameter greatly affects the application performance. We recommend that you set this parameter under professional guidance.
+	//
+	// *   uriEncoding: the URI encoding scheme in the Tomcat container. Valid values: UTF-8, ISO-8859-1, GBK, and GB2312. If you do not specify this parameter, the default value ISO-8859-1 is used.
+	//
+	// *   useBodyEncoding: specifies whether to use the encoding scheme specified in the request body for URI query parameters.
+	//
+	// *   useAdvancedServerXml: specifies whether to use advanced configurations to customize the `server.xml` file. If the preceding parameter types and specific parameters cannot meet your requirements, you can use advanced configurations to customize the `server.xml` file of Tomcat.
+	//
+	// *   serverXml: the content of the `server.xml` file customized by using advanced configurations. This parameter takes effect only when you set the useAdvancedServerXml parameter to true.
+	WebContainerConfig *string `json:"WebContainerConfig,omitempty" xml:"WebContainerConfig,omitempty"`
 }
 
 func (s DeployK8sApplicationRequest) String() string {
@@ -4533,6 +5361,11 @@ func (s *DeployK8sApplicationRequest) SetBatchWaitTime(v int32) *DeployK8sApplic
 
 func (s *DeployK8sApplicationRequest) SetBuildPackId(v string) *DeployK8sApplicationRequest {
 	s.BuildPackId = &v
+	return s
+}
+
+func (s *DeployK8sApplicationRequest) SetCanaryRuleId(v string) *DeployK8sApplicationRequest {
+	s.CanaryRuleId = &v
 	return s
 }
 
@@ -4621,8 +5454,18 @@ func (s *DeployK8sApplicationRequest) SetImage(v string) *DeployK8sApplicationRe
 	return s
 }
 
+func (s *DeployK8sApplicationRequest) SetImagePlatforms(v string) *DeployK8sApplicationRequest {
+	s.ImagePlatforms = &v
+	return s
+}
+
 func (s *DeployK8sApplicationRequest) SetImageTag(v string) *DeployK8sApplicationRequest {
 	s.ImageTag = &v
+	return s
+}
+
+func (s *DeployK8sApplicationRequest) SetInitContainers(v string) *DeployK8sApplicationRequest {
+	s.InitContainers = &v
 	return s
 }
 
@@ -4638,6 +5481,11 @@ func (s *DeployK8sApplicationRequest) SetJavaStartUpConfig(v string) *DeployK8sA
 
 func (s *DeployK8sApplicationRequest) SetLabels(v string) *DeployK8sApplicationRequest {
 	s.Labels = &v
+	return s
+}
+
+func (s *DeployK8sApplicationRequest) SetLimitEphemeralStorage(v int32) *DeployK8sApplicationRequest {
+	s.LimitEphemeralStorage = &v
 	return s
 }
 
@@ -4746,8 +5594,18 @@ func (s *DeployK8sApplicationRequest) SetReplicas(v int32) *DeployK8sApplication
 	return s
 }
 
+func (s *DeployK8sApplicationRequest) SetRequestsEphemeralStorage(v int32) *DeployK8sApplicationRequest {
+	s.RequestsEphemeralStorage = &v
+	return s
+}
+
 func (s *DeployK8sApplicationRequest) SetRuntimeClassName(v string) *DeployK8sApplicationRequest {
 	s.RuntimeClassName = &v
+	return s
+}
+
+func (s *DeployK8sApplicationRequest) SetSidecars(v string) *DeployK8sApplicationRequest {
+	s.Sidecars = &v
 	return s
 }
 
@@ -4756,8 +5614,18 @@ func (s *DeployK8sApplicationRequest) SetSlsConfigs(v string) *DeployK8sApplicat
 	return s
 }
 
+func (s *DeployK8sApplicationRequest) SetStartup(v string) *DeployK8sApplicationRequest {
+	s.Startup = &v
+	return s
+}
+
 func (s *DeployK8sApplicationRequest) SetStorageType(v string) *DeployK8sApplicationRequest {
 	s.StorageType = &v
+	return s
+}
+
+func (s *DeployK8sApplicationRequest) SetTerminateGracePeriod(v int32) *DeployK8sApplicationRequest {
+	s.TerminateGracePeriod = &v
 	return s
 }
 
@@ -4781,6 +5649,11 @@ func (s *DeployK8sApplicationRequest) SetUseBodyEncoding(v bool) *DeployK8sAppli
 	return s
 }
 
+func (s *DeployK8sApplicationRequest) SetUserBaseImageUrl(v string) *DeployK8sApplicationRequest {
+	s.UserBaseImageUrl = &v
+	return s
+}
+
 func (s *DeployK8sApplicationRequest) SetVolumesStr(v string) *DeployK8sApplicationRequest {
 	s.VolumesStr = &v
 	return s
@@ -4797,10 +5670,14 @@ func (s *DeployK8sApplicationRequest) SetWebContainerConfig(v string) *DeployK8s
 }
 
 type DeployK8sApplicationResponseBody struct {
+	// The ID of the change process. You can call the GetChangeOrderInfo operation to query the change process ID. For more information, see [GetChangeOrderInfo](~~62072~~).
 	ChangeOrderId *string `json:"ChangeOrderId,omitempty" xml:"ChangeOrderId,omitempty"`
-	Code          *int32  `json:"Code,omitempty" xml:"Code,omitempty"`
-	Message       *string `json:"Message,omitempty" xml:"Message,omitempty"`
-	RequestId     *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The HTTP status code that is returned.
+	Code *int32 `json:"Code,omitempty" xml:"Code,omitempty"`
+	// The additional information that is returned.
+	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// The ID of the request.
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
 func (s DeployK8sApplicationResponseBody) String() string {
@@ -4861,8 +5738,13 @@ func (s *DeployK8sApplicationResponse) SetBody(v *DeployK8sApplicationResponseBo
 }
 
 type DescribeAppInstanceListRequest struct {
-	AppId        *string `json:"AppId,omitempty" xml:"AppId,omitempty"`
-	WithNodeInfo *bool   `json:"WithNodeInfo,omitempty" xml:"WithNodeInfo,omitempty"`
+	// The ID of the application. You can call the ListApplication operation to query the ID of the application. For more information, see [ListApplication](~~149390~~).
+	AppId *string `json:"AppId,omitempty" xml:"AppId,omitempty"`
+	// Specifies whether to return the information about the node in which the pod resides.
+	//
+	// *   `true`: returns the information about the node in which the pod resides
+	// *   `false`: does not return the information about the node in which the pod resides
+	WithNodeInfo *bool `json:"WithNodeInfo,omitempty" xml:"WithNodeInfo,omitempty"`
 }
 
 func (s DescribeAppInstanceListRequest) String() string {
@@ -4884,10 +5766,14 @@ func (s *DescribeAppInstanceListRequest) SetWithNodeInfo(v bool) *DescribeAppIns
 }
 
 type DescribeAppInstanceListResponseBody struct {
-	Code         *int32                                             `json:"Code,omitempty" xml:"Code,omitempty"`
+	// The HTTP status code that is returned.
+	Code *int32 `json:"Code,omitempty" xml:"Code,omitempty"`
+	// The application instances.
 	InstanceList []*DescribeAppInstanceListResponseBodyInstanceList `json:"InstanceList,omitempty" xml:"InstanceList,omitempty" type:"Repeated"`
-	Message      *string                                            `json:"Message,omitempty" xml:"Message,omitempty"`
-	RequestId    *string                                            `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The message that is returned.
+	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// The ID of the request.
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
 func (s DescribeAppInstanceListResponseBody) String() string {
@@ -4919,14 +5805,25 @@ func (s *DescribeAppInstanceListResponseBody) SetRequestId(v string) *DescribeAp
 }
 
 type DescribeAppInstanceListResponseBodyInstanceList struct {
-	AppId      *string `json:"AppId,omitempty" xml:"AppId,omitempty"`
-	Canary     *bool   `json:"Canary,omitempty" xml:"Canary,omitempty"`
-	GroupId    *string `json:"GroupId,omitempty" xml:"GroupId,omitempty"`
-	GroupName  *string `json:"GroupName,omitempty" xml:"GroupName,omitempty"`
+	// The ID of the application.
+	AppId *string `json:"AppId,omitempty" xml:"AppId,omitempty"`
+	// Indicates whether the application was released in canary release mode.
+	//
+	// *   `true`: The application was released in canary release mode.
+	// *   `false`: The application was not released in canary release mode
+	Canary *bool `json:"Canary,omitempty" xml:"Canary,omitempty"`
+	// The ID of the instance group to which the application is deployed.
+	GroupId *string `json:"GroupId,omitempty" xml:"GroupId,omitempty"`
+	// The name of the instance group to which the application is deployed.
+	GroupName *string `json:"GroupName,omitempty" xml:"GroupName,omitempty"`
+	// The labels of the node. The value is a JSON string.
 	NodeLabels *string `json:"NodeLabels,omitempty" xml:"NodeLabels,omitempty"`
-	NodeName   *string `json:"NodeName,omitempty" xml:"NodeName,omitempty"`
-	PodRaw     *string `json:"PodRaw,omitempty" xml:"PodRaw,omitempty"`
-	Version    *string `json:"Version,omitempty" xml:"Version,omitempty"`
+	// The name of the node.
+	NodeName *string `json:"NodeName,omitempty" xml:"NodeName,omitempty"`
+	// The information about the pod. The value is a JSON string.
+	PodRaw *string `json:"PodRaw,omitempty" xml:"PodRaw,omitempty"`
+	// The deployment package version of the node.
+	Version *string `json:"Version,omitempty" xml:"Version,omitempty"`
 }
 
 func (s DescribeAppInstanceListResponseBodyInstanceList) String() string {
@@ -5007,6 +5904,7 @@ func (s *DescribeAppInstanceListResponse) SetBody(v *DescribeAppInstanceListResp
 }
 
 type DescribeApplicationScalingRulesRequest struct {
+	// The ID of the application. You can call the ListApplication operation to query the application ID. For more information, see [ListApplication](~~149390~~).
 	AppId *string `json:"AppId,omitempty" xml:"AppId,omitempty"`
 }
 
@@ -5024,10 +5922,14 @@ func (s *DescribeApplicationScalingRulesRequest) SetAppId(v string) *DescribeApp
 }
 
 type DescribeApplicationScalingRulesResponseBody struct {
+	// The auto scaling policies of the application.
 	AppScalingRules *DescribeApplicationScalingRulesResponseBodyAppScalingRules `json:"AppScalingRules,omitempty" xml:"AppScalingRules,omitempty" type:"Struct"`
-	Code            *int32                                                      `json:"Code,omitempty" xml:"Code,omitempty"`
-	Message         *string                                                     `json:"Message,omitempty" xml:"Message,omitempty"`
-	RequestId       *string                                                     `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The HTTP status code that is returned.
+	Code *int32 `json:"Code,omitempty" xml:"Code,omitempty"`
+	// The message that is returned.
+	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// The ID of the request.
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
 func (s DescribeApplicationScalingRulesResponseBody) String() string {
@@ -5059,10 +5961,14 @@ func (s *DescribeApplicationScalingRulesResponseBody) SetRequestId(v string) *De
 }
 
 type DescribeApplicationScalingRulesResponseBodyAppScalingRules struct {
-	CurrentPage *int32                                                              `json:"CurrentPage,omitempty" xml:"CurrentPage,omitempty"`
-	PageSize    *int32                                                              `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	Result      []*DescribeApplicationScalingRulesResponseBodyAppScalingRulesResult `json:"Result,omitempty" xml:"Result,omitempty" type:"Repeated"`
-	TotalSize   *int64                                                              `json:"TotalSize,omitempty" xml:"TotalSize,omitempty"`
+	// The page number of the returned page.
+	CurrentPage *int32 `json:"CurrentPage,omitempty" xml:"CurrentPage,omitempty"`
+	// The number of auto scaling policies returned per page.
+	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	// The information about auto scaling policies.
+	Result []*DescribeApplicationScalingRulesResponseBodyAppScalingRulesResult `json:"Result,omitempty" xml:"Result,omitempty" type:"Repeated"`
+	// The total number of auto scaling policies.
+	TotalSize *int64 `json:"TotalSize,omitempty" xml:"TotalSize,omitempty"`
 }
 
 func (s DescribeApplicationScalingRulesResponseBodyAppScalingRules) String() string {
@@ -5094,17 +6000,32 @@ func (s *DescribeApplicationScalingRulesResponseBodyAppScalingRules) SetTotalSiz
 }
 
 type DescribeApplicationScalingRulesResponseBodyAppScalingRulesResult struct {
-	AppId            *string                                                                  `json:"AppId,omitempty" xml:"AppId,omitempty"`
-	CreateTime       *int64                                                                   `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
-	LastDisableTime  *int64                                                                   `json:"LastDisableTime,omitempty" xml:"LastDisableTime,omitempty"`
-	MaxReplicas      *int32                                                                   `json:"MaxReplicas,omitempty" xml:"MaxReplicas,omitempty"`
-	Metric           *DescribeApplicationScalingRulesResponseBodyAppScalingRulesResultMetric  `json:"Metric,omitempty" xml:"Metric,omitempty" type:"Struct"`
-	MinReplicas      *int32                                                                   `json:"MinReplicas,omitempty" xml:"MinReplicas,omitempty"`
-	ScaleRuleEnabled *bool                                                                    `json:"ScaleRuleEnabled,omitempty" xml:"ScaleRuleEnabled,omitempty"`
-	ScaleRuleName    *string                                                                  `json:"ScaleRuleName,omitempty" xml:"ScaleRuleName,omitempty"`
-	ScaleRuleType    *string                                                                  `json:"ScaleRuleType,omitempty" xml:"ScaleRuleType,omitempty"`
-	Trigger          *DescribeApplicationScalingRulesResponseBodyAppScalingRulesResultTrigger `json:"Trigger,omitempty" xml:"Trigger,omitempty" type:"Struct"`
-	UpdateTime       *int64                                                                   `json:"UpdateTime,omitempty" xml:"UpdateTime,omitempty"`
+	// The ID of the application to which the auto scaling policy belongs.
+	AppId     *string                                                                    `json:"AppId,omitempty" xml:"AppId,omitempty"`
+	Behaviour *DescribeApplicationScalingRulesResponseBodyAppScalingRulesResultBehaviour `json:"Behaviour,omitempty" xml:"Behaviour,omitempty" type:"Struct"`
+	// The time when the auto scaling policy was created. This value is a UNIX timestamp representing the number of milliseconds that have elapsed since January 1, 1970, 00:00:00 UTC.
+	CreateTime *int64 `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
+	// The time when the auto scaling policy was last disabled. This value is a UNIX timestamp representing the number of milliseconds that have elapsed since January 1, 1970, 00:00:00 UTC.
+	LastDisableTime *int64 `json:"LastDisableTime,omitempty" xml:"LastDisableTime,omitempty"`
+	// This parameter is deprecated.
+	MaxReplicas *int32 `json:"MaxReplicas,omitempty" xml:"MaxReplicas,omitempty"`
+	// This parameter is deprecated.
+	Metric *DescribeApplicationScalingRulesResponseBodyAppScalingRulesResultMetric `json:"Metric,omitempty" xml:"Metric,omitempty" type:"Struct"`
+	// This parameter is deprecated.
+	MinReplicas *int32 `json:"MinReplicas,omitempty" xml:"MinReplicas,omitempty"`
+	// Indicates whether the auto scaling policy is enabled. Valid values:
+	//
+	// *   **true**: The auto scaling policy is enabled.
+	// *   **false**: The auto scaling policy is disabled.
+	ScaleRuleEnabled *bool `json:"ScaleRuleEnabled,omitempty" xml:"ScaleRuleEnabled,omitempty"`
+	// The name of the auto scaling policy.
+	ScaleRuleName *string `json:"ScaleRuleName,omitempty" xml:"ScaleRuleName,omitempty"`
+	// The type of the auto scaling policy. The value is fixed to trigger.
+	ScaleRuleType *string `json:"ScaleRuleType,omitempty" xml:"ScaleRuleType,omitempty"`
+	// The configurations of the trigger.
+	Trigger *DescribeApplicationScalingRulesResponseBodyAppScalingRulesResultTrigger `json:"Trigger,omitempty" xml:"Trigger,omitempty" type:"Struct"`
+	// The time when the auto scaling policy was last modified. This value is a UNIX timestamp representing the number of milliseconds that have elapsed since January 1, 1970, 00:00:00 UTC.
+	UpdateTime *int64 `json:"UpdateTime,omitempty" xml:"UpdateTime,omitempty"`
 }
 
 func (s DescribeApplicationScalingRulesResponseBodyAppScalingRulesResult) String() string {
@@ -5117,6 +6038,11 @@ func (s DescribeApplicationScalingRulesResponseBodyAppScalingRulesResult) GoStri
 
 func (s *DescribeApplicationScalingRulesResponseBodyAppScalingRulesResult) SetAppId(v string) *DescribeApplicationScalingRulesResponseBodyAppScalingRulesResult {
 	s.AppId = &v
+	return s
+}
+
+func (s *DescribeApplicationScalingRulesResponseBodyAppScalingRulesResult) SetBehaviour(v *DescribeApplicationScalingRulesResponseBodyAppScalingRulesResultBehaviour) *DescribeApplicationScalingRulesResponseBodyAppScalingRulesResult {
+	s.Behaviour = v
 	return s
 }
 
@@ -5170,10 +6096,152 @@ func (s *DescribeApplicationScalingRulesResponseBodyAppScalingRulesResult) SetUp
 	return s
 }
 
+type DescribeApplicationScalingRulesResponseBodyAppScalingRulesResultBehaviour struct {
+	ScaleDown *DescribeApplicationScalingRulesResponseBodyAppScalingRulesResultBehaviourScaleDown `json:"ScaleDown,omitempty" xml:"ScaleDown,omitempty" type:"Struct"`
+	ScaleUp   *DescribeApplicationScalingRulesResponseBodyAppScalingRulesResultBehaviourScaleUp   `json:"ScaleUp,omitempty" xml:"ScaleUp,omitempty" type:"Struct"`
+}
+
+func (s DescribeApplicationScalingRulesResponseBodyAppScalingRulesResultBehaviour) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeApplicationScalingRulesResponseBodyAppScalingRulesResultBehaviour) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeApplicationScalingRulesResponseBodyAppScalingRulesResultBehaviour) SetScaleDown(v *DescribeApplicationScalingRulesResponseBodyAppScalingRulesResultBehaviourScaleDown) *DescribeApplicationScalingRulesResponseBodyAppScalingRulesResultBehaviour {
+	s.ScaleDown = v
+	return s
+}
+
+func (s *DescribeApplicationScalingRulesResponseBodyAppScalingRulesResultBehaviour) SetScaleUp(v *DescribeApplicationScalingRulesResponseBodyAppScalingRulesResultBehaviourScaleUp) *DescribeApplicationScalingRulesResponseBodyAppScalingRulesResultBehaviour {
+	s.ScaleUp = v
+	return s
+}
+
+type DescribeApplicationScalingRulesResponseBodyAppScalingRulesResultBehaviourScaleDown struct {
+	Policies                   []*DescribeApplicationScalingRulesResponseBodyAppScalingRulesResultBehaviourScaleDownPolicies `json:"Policies,omitempty" xml:"Policies,omitempty" type:"Repeated"`
+	SelectPolicy               *string                                                                                       `json:"SelectPolicy,omitempty" xml:"SelectPolicy,omitempty"`
+	StabilizationWindowSeconds *int32                                                                                        `json:"StabilizationWindowSeconds,omitempty" xml:"StabilizationWindowSeconds,omitempty"`
+}
+
+func (s DescribeApplicationScalingRulesResponseBodyAppScalingRulesResultBehaviourScaleDown) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeApplicationScalingRulesResponseBodyAppScalingRulesResultBehaviourScaleDown) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeApplicationScalingRulesResponseBodyAppScalingRulesResultBehaviourScaleDown) SetPolicies(v []*DescribeApplicationScalingRulesResponseBodyAppScalingRulesResultBehaviourScaleDownPolicies) *DescribeApplicationScalingRulesResponseBodyAppScalingRulesResultBehaviourScaleDown {
+	s.Policies = v
+	return s
+}
+
+func (s *DescribeApplicationScalingRulesResponseBodyAppScalingRulesResultBehaviourScaleDown) SetSelectPolicy(v string) *DescribeApplicationScalingRulesResponseBodyAppScalingRulesResultBehaviourScaleDown {
+	s.SelectPolicy = &v
+	return s
+}
+
+func (s *DescribeApplicationScalingRulesResponseBodyAppScalingRulesResultBehaviourScaleDown) SetStabilizationWindowSeconds(v int32) *DescribeApplicationScalingRulesResponseBodyAppScalingRulesResultBehaviourScaleDown {
+	s.StabilizationWindowSeconds = &v
+	return s
+}
+
+type DescribeApplicationScalingRulesResponseBodyAppScalingRulesResultBehaviourScaleDownPolicies struct {
+	PeriodSeconds *int32  `json:"PeriodSeconds,omitempty" xml:"PeriodSeconds,omitempty"`
+	Type          *string `json:"Type,omitempty" xml:"Type,omitempty"`
+	Value         *string `json:"Value,omitempty" xml:"Value,omitempty"`
+}
+
+func (s DescribeApplicationScalingRulesResponseBodyAppScalingRulesResultBehaviourScaleDownPolicies) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeApplicationScalingRulesResponseBodyAppScalingRulesResultBehaviourScaleDownPolicies) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeApplicationScalingRulesResponseBodyAppScalingRulesResultBehaviourScaleDownPolicies) SetPeriodSeconds(v int32) *DescribeApplicationScalingRulesResponseBodyAppScalingRulesResultBehaviourScaleDownPolicies {
+	s.PeriodSeconds = &v
+	return s
+}
+
+func (s *DescribeApplicationScalingRulesResponseBodyAppScalingRulesResultBehaviourScaleDownPolicies) SetType(v string) *DescribeApplicationScalingRulesResponseBodyAppScalingRulesResultBehaviourScaleDownPolicies {
+	s.Type = &v
+	return s
+}
+
+func (s *DescribeApplicationScalingRulesResponseBodyAppScalingRulesResultBehaviourScaleDownPolicies) SetValue(v string) *DescribeApplicationScalingRulesResponseBodyAppScalingRulesResultBehaviourScaleDownPolicies {
+	s.Value = &v
+	return s
+}
+
+type DescribeApplicationScalingRulesResponseBodyAppScalingRulesResultBehaviourScaleUp struct {
+	Policies                   []*DescribeApplicationScalingRulesResponseBodyAppScalingRulesResultBehaviourScaleUpPolicies `json:"Policies,omitempty" xml:"Policies,omitempty" type:"Repeated"`
+	SelectPolicy               *string                                                                                     `json:"SelectPolicy,omitempty" xml:"SelectPolicy,omitempty"`
+	StabilizationWindowSeconds *int32                                                                                      `json:"StabilizationWindowSeconds,omitempty" xml:"StabilizationWindowSeconds,omitempty"`
+}
+
+func (s DescribeApplicationScalingRulesResponseBodyAppScalingRulesResultBehaviourScaleUp) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeApplicationScalingRulesResponseBodyAppScalingRulesResultBehaviourScaleUp) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeApplicationScalingRulesResponseBodyAppScalingRulesResultBehaviourScaleUp) SetPolicies(v []*DescribeApplicationScalingRulesResponseBodyAppScalingRulesResultBehaviourScaleUpPolicies) *DescribeApplicationScalingRulesResponseBodyAppScalingRulesResultBehaviourScaleUp {
+	s.Policies = v
+	return s
+}
+
+func (s *DescribeApplicationScalingRulesResponseBodyAppScalingRulesResultBehaviourScaleUp) SetSelectPolicy(v string) *DescribeApplicationScalingRulesResponseBodyAppScalingRulesResultBehaviourScaleUp {
+	s.SelectPolicy = &v
+	return s
+}
+
+func (s *DescribeApplicationScalingRulesResponseBodyAppScalingRulesResultBehaviourScaleUp) SetStabilizationWindowSeconds(v int32) *DescribeApplicationScalingRulesResponseBodyAppScalingRulesResultBehaviourScaleUp {
+	s.StabilizationWindowSeconds = &v
+	return s
+}
+
+type DescribeApplicationScalingRulesResponseBodyAppScalingRulesResultBehaviourScaleUpPolicies struct {
+	PeriodSeconds *int32  `json:"PeriodSeconds,omitempty" xml:"PeriodSeconds,omitempty"`
+	Type          *string `json:"Type,omitempty" xml:"Type,omitempty"`
+	Value         *string `json:"Value,omitempty" xml:"Value,omitempty"`
+}
+
+func (s DescribeApplicationScalingRulesResponseBodyAppScalingRulesResultBehaviourScaleUpPolicies) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeApplicationScalingRulesResponseBodyAppScalingRulesResultBehaviourScaleUpPolicies) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeApplicationScalingRulesResponseBodyAppScalingRulesResultBehaviourScaleUpPolicies) SetPeriodSeconds(v int32) *DescribeApplicationScalingRulesResponseBodyAppScalingRulesResultBehaviourScaleUpPolicies {
+	s.PeriodSeconds = &v
+	return s
+}
+
+func (s *DescribeApplicationScalingRulesResponseBodyAppScalingRulesResultBehaviourScaleUpPolicies) SetType(v string) *DescribeApplicationScalingRulesResponseBodyAppScalingRulesResultBehaviourScaleUpPolicies {
+	s.Type = &v
+	return s
+}
+
+func (s *DescribeApplicationScalingRulesResponseBodyAppScalingRulesResultBehaviourScaleUpPolicies) SetValue(v string) *DescribeApplicationScalingRulesResponseBodyAppScalingRulesResultBehaviourScaleUpPolicies {
+	s.Value = &v
+	return s
+}
+
 type DescribeApplicationScalingRulesResponseBodyAppScalingRulesResultMetric struct {
-	MaxReplicas *int32                                                                           `json:"MaxReplicas,omitempty" xml:"MaxReplicas,omitempty"`
-	Metrics     []*DescribeApplicationScalingRulesResponseBodyAppScalingRulesResultMetricMetrics `json:"Metrics,omitempty" xml:"Metrics,omitempty" type:"Repeated"`
-	MinReplicas *int32                                                                           `json:"MinReplicas,omitempty" xml:"MinReplicas,omitempty"`
+	// This parameter is deprecated.
+	MaxReplicas *int32 `json:"MaxReplicas,omitempty" xml:"MaxReplicas,omitempty"`
+	// This parameter is deprecated.
+	Metrics []*DescribeApplicationScalingRulesResponseBodyAppScalingRulesResultMetricMetrics `json:"Metrics,omitempty" xml:"Metrics,omitempty" type:"Repeated"`
+	// This parameter is deprecated.
+	MinReplicas *int32 `json:"MinReplicas,omitempty" xml:"MinReplicas,omitempty"`
 }
 
 func (s DescribeApplicationScalingRulesResponseBodyAppScalingRulesResultMetric) String() string {
@@ -5200,8 +6268,10 @@ func (s *DescribeApplicationScalingRulesResponseBodyAppScalingRulesResultMetric)
 }
 
 type DescribeApplicationScalingRulesResponseBodyAppScalingRulesResultMetricMetrics struct {
-	MetricTargetAverageUtilization *int32  `json:"MetricTargetAverageUtilization,omitempty" xml:"MetricTargetAverageUtilization,omitempty"`
-	MetricType                     *string `json:"MetricType,omitempty" xml:"MetricType,omitempty"`
+	// This parameter is deprecated.
+	MetricTargetAverageUtilization *int32 `json:"MetricTargetAverageUtilization,omitempty" xml:"MetricTargetAverageUtilization,omitempty"`
+	// This parameter is deprecated.
+	MetricType *string `json:"MetricType,omitempty" xml:"MetricType,omitempty"`
 }
 
 func (s DescribeApplicationScalingRulesResponseBodyAppScalingRulesResultMetricMetrics) String() string {
@@ -5223,9 +6293,12 @@ func (s *DescribeApplicationScalingRulesResponseBodyAppScalingRulesResultMetricM
 }
 
 type DescribeApplicationScalingRulesResponseBodyAppScalingRulesResultTrigger struct {
-	MaxReplicas *int32                                                                             `json:"MaxReplicas,omitempty" xml:"MaxReplicas,omitempty"`
-	MinReplicas *int32                                                                             `json:"MinReplicas,omitempty" xml:"MinReplicas,omitempty"`
-	Triggers    []*DescribeApplicationScalingRulesResponseBodyAppScalingRulesResultTriggerTriggers `json:"Triggers,omitempty" xml:"Triggers,omitempty" type:"Repeated"`
+	// The maximum number of replicas. The upper limit is 1000.
+	MaxReplicas *int32 `json:"MaxReplicas,omitempty" xml:"MaxReplicas,omitempty"`
+	// The minimum number of replicas. The lower limit is 0.
+	MinReplicas *int32 `json:"MinReplicas,omitempty" xml:"MinReplicas,omitempty"`
+	// The configurations of the trigger.
+	Triggers []*DescribeApplicationScalingRulesResponseBodyAppScalingRulesResultTriggerTriggers `json:"Triggers,omitempty" xml:"Triggers,omitempty" type:"Repeated"`
 }
 
 func (s DescribeApplicationScalingRulesResponseBodyAppScalingRulesResultTrigger) String() string {
@@ -5252,9 +6325,12 @@ func (s *DescribeApplicationScalingRulesResponseBodyAppScalingRulesResultTrigger
 }
 
 type DescribeApplicationScalingRulesResponseBodyAppScalingRulesResultTriggerTriggers struct {
+	// The metadata of the trigger.
 	MetaData *string `json:"MetaData,omitempty" xml:"MetaData,omitempty"`
-	Name     *string `json:"Name,omitempty" xml:"Name,omitempty"`
-	Type     *string `json:"Type,omitempty" xml:"Type,omitempty"`
+	// The name of the trigger.
+	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// The type of the trigger. Valid values: cron and app_metric.
+	Type *string `json:"Type,omitempty" xml:"Type,omitempty"`
 }
 
 func (s DescribeApplicationScalingRulesResponseBodyAppScalingRulesResultTriggerTriggers) String() string {
@@ -5310,7 +6386,9 @@ func (s *DescribeApplicationScalingRulesResponse) SetBody(v *DescribeApplication
 }
 
 type DisableApplicationScalingRuleRequest struct {
-	AppId           *string `json:"AppId,omitempty" xml:"AppId,omitempty"`
+	// The ID of the application. You can call the ListApplication operation to query the application ID. For more information, see [ListApplication](~~149390~~).
+	AppId *string `json:"AppId,omitempty" xml:"AppId,omitempty"`
+	// The name of the auto scaling policy.
 	ScalingRuleName *string `json:"ScalingRuleName,omitempty" xml:"ScalingRuleName,omitempty"`
 }
 
@@ -5333,10 +6411,14 @@ func (s *DisableApplicationScalingRuleRequest) SetScalingRuleName(v string) *Dis
 }
 
 type DisableApplicationScalingRuleResponseBody struct {
+	// The information about the auto scaling policy.
 	AppScalingRule *DisableApplicationScalingRuleResponseBodyAppScalingRule `json:"AppScalingRule,omitempty" xml:"AppScalingRule,omitempty" type:"Struct"`
-	Code           *int32                                                   `json:"Code,omitempty" xml:"Code,omitempty"`
-	Message        *string                                                  `json:"Message,omitempty" xml:"Message,omitempty"`
-	RequestId      *string                                                  `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The HTTP status code.
+	Code *int32 `json:"Code,omitempty" xml:"Code,omitempty"`
+	// The returned message.
+	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// The ID of the request.
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
 func (s DisableApplicationScalingRuleResponseBody) String() string {
@@ -5368,17 +6450,31 @@ func (s *DisableApplicationScalingRuleResponseBody) SetRequestId(v string) *Disa
 }
 
 type DisableApplicationScalingRuleResponseBodyAppScalingRule struct {
-	AppId            *string                                                         `json:"AppId,omitempty" xml:"AppId,omitempty"`
-	CreateTime       *int64                                                          `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
-	LastDisableTime  *int64                                                          `json:"LastDisableTime,omitempty" xml:"LastDisableTime,omitempty"`
-	MaxReplicas      *int32                                                          `json:"MaxReplicas,omitempty" xml:"MaxReplicas,omitempty"`
-	Metric           *DisableApplicationScalingRuleResponseBodyAppScalingRuleMetric  `json:"Metric,omitempty" xml:"Metric,omitempty" type:"Struct"`
-	MinReplicas      *int32                                                          `json:"MinReplicas,omitempty" xml:"MinReplicas,omitempty"`
-	ScaleRuleEnabled *bool                                                           `json:"ScaleRuleEnabled,omitempty" xml:"ScaleRuleEnabled,omitempty"`
-	ScaleRuleName    *string                                                         `json:"ScaleRuleName,omitempty" xml:"ScaleRuleName,omitempty"`
-	ScaleRuleType    *string                                                         `json:"ScaleRuleType,omitempty" xml:"ScaleRuleType,omitempty"`
-	Trigger          *DisableApplicationScalingRuleResponseBodyAppScalingRuleTrigger `json:"Trigger,omitempty" xml:"Trigger,omitempty" type:"Struct"`
-	UpdateTime       *int64                                                          `json:"UpdateTime,omitempty" xml:"UpdateTime,omitempty"`
+	// The ID of the application to which the auto scaling policy belongs.
+	AppId *string `json:"AppId,omitempty" xml:"AppId,omitempty"`
+	// The time when the auto scaling policy was created.
+	CreateTime *int64 `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
+	// The time when the auto scaling policy was last disabled.
+	LastDisableTime *int64 `json:"LastDisableTime,omitempty" xml:"LastDisableTime,omitempty"`
+	// This parameter is deprecated.
+	MaxReplicas *int32 `json:"MaxReplicas,omitempty" xml:"MaxReplicas,omitempty"`
+	// This parameter is deprecated.
+	Metric *DisableApplicationScalingRuleResponseBodyAppScalingRuleMetric `json:"Metric,omitempty" xml:"Metric,omitempty" type:"Struct"`
+	// This parameter is deprecated.
+	MinReplicas *int32 `json:"MinReplicas,omitempty" xml:"MinReplicas,omitempty"`
+	// Indicates whether the auto scaling policy is enabled. Valid values:
+	//
+	// *   **true**: The auto scaling policy is enabled.
+	// *   **false**: The auto scaling policy is disabled.
+	ScaleRuleEnabled *bool `json:"ScaleRuleEnabled,omitempty" xml:"ScaleRuleEnabled,omitempty"`
+	// The name of the auto scaling policy.
+	ScaleRuleName *string `json:"ScaleRuleName,omitempty" xml:"ScaleRuleName,omitempty"`
+	// The type of the auto scaling policy. The value is fixed to trigger.
+	ScaleRuleType *string `json:"ScaleRuleType,omitempty" xml:"ScaleRuleType,omitempty"`
+	// The configurations of the trigger.
+	Trigger *DisableApplicationScalingRuleResponseBodyAppScalingRuleTrigger `json:"Trigger,omitempty" xml:"Trigger,omitempty" type:"Struct"`
+	// The time when the auto scaling policy was last modified.
+	UpdateTime *int64 `json:"UpdateTime,omitempty" xml:"UpdateTime,omitempty"`
 }
 
 func (s DisableApplicationScalingRuleResponseBodyAppScalingRule) String() string {
@@ -5445,9 +6541,12 @@ func (s *DisableApplicationScalingRuleResponseBodyAppScalingRule) SetUpdateTime(
 }
 
 type DisableApplicationScalingRuleResponseBodyAppScalingRuleMetric struct {
-	MaxReplicas *int32                                                                  `json:"MaxReplicas,omitempty" xml:"MaxReplicas,omitempty"`
-	Metrics     []*DisableApplicationScalingRuleResponseBodyAppScalingRuleMetricMetrics `json:"Metrics,omitempty" xml:"Metrics,omitempty" type:"Repeated"`
-	MinReplicas *int32                                                                  `json:"MinReplicas,omitempty" xml:"MinReplicas,omitempty"`
+	// This parameter is deprecated.
+	MaxReplicas *int32 `json:"MaxReplicas,omitempty" xml:"MaxReplicas,omitempty"`
+	// This parameter is deprecated.
+	Metrics []*DisableApplicationScalingRuleResponseBodyAppScalingRuleMetricMetrics `json:"Metrics,omitempty" xml:"Metrics,omitempty" type:"Repeated"`
+	// This parameter is deprecated.
+	MinReplicas *int32 `json:"MinReplicas,omitempty" xml:"MinReplicas,omitempty"`
 }
 
 func (s DisableApplicationScalingRuleResponseBodyAppScalingRuleMetric) String() string {
@@ -5474,8 +6573,10 @@ func (s *DisableApplicationScalingRuleResponseBodyAppScalingRuleMetric) SetMinRe
 }
 
 type DisableApplicationScalingRuleResponseBodyAppScalingRuleMetricMetrics struct {
-	MetricTargetAverageUtilization *int32  `json:"MetricTargetAverageUtilization,omitempty" xml:"MetricTargetAverageUtilization,omitempty"`
-	MetricType                     *string `json:"MetricType,omitempty" xml:"MetricType,omitempty"`
+	// This parameter is deprecated.
+	MetricTargetAverageUtilization *int32 `json:"MetricTargetAverageUtilization,omitempty" xml:"MetricTargetAverageUtilization,omitempty"`
+	// This parameter is deprecated.
+	MetricType *string `json:"MetricType,omitempty" xml:"MetricType,omitempty"`
 }
 
 func (s DisableApplicationScalingRuleResponseBodyAppScalingRuleMetricMetrics) String() string {
@@ -5497,9 +6598,12 @@ func (s *DisableApplicationScalingRuleResponseBodyAppScalingRuleMetricMetrics) S
 }
 
 type DisableApplicationScalingRuleResponseBodyAppScalingRuleTrigger struct {
-	MaxReplicas *int32                                                                    `json:"MaxReplicas,omitempty" xml:"MaxReplicas,omitempty"`
-	MinReplicas *int32                                                                    `json:"MinReplicas,omitempty" xml:"MinReplicas,omitempty"`
-	Triggers    []*DisableApplicationScalingRuleResponseBodyAppScalingRuleTriggerTriggers `json:"Triggers,omitempty" xml:"Triggers,omitempty" type:"Repeated"`
+	// The maximum number of replicas. The upper limit is 1000.
+	MaxReplicas *int32 `json:"MaxReplicas,omitempty" xml:"MaxReplicas,omitempty"`
+	// The minimum number of replicas. The lower limit is 0.
+	MinReplicas *int32 `json:"MinReplicas,omitempty" xml:"MinReplicas,omitempty"`
+	// The information about the trigger.
+	Triggers []*DisableApplicationScalingRuleResponseBodyAppScalingRuleTriggerTriggers `json:"Triggers,omitempty" xml:"Triggers,omitempty" type:"Repeated"`
 }
 
 func (s DisableApplicationScalingRuleResponseBodyAppScalingRuleTrigger) String() string {
@@ -5526,9 +6630,12 @@ func (s *DisableApplicationScalingRuleResponseBodyAppScalingRuleTrigger) SetTrig
 }
 
 type DisableApplicationScalingRuleResponseBodyAppScalingRuleTriggerTriggers struct {
+	// The metadata of the trigger.
 	MetaData *string `json:"MetaData,omitempty" xml:"MetaData,omitempty"`
-	Name     *string `json:"Name,omitempty" xml:"Name,omitempty"`
-	Type     *string `json:"Type,omitempty" xml:"Type,omitempty"`
+	// The name of the trigger.
+	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// The type of the trigger. Valid values: cron and app_metric.
+	Type *string `json:"Type,omitempty" xml:"Type,omitempty"`
 }
 
 func (s DisableApplicationScalingRuleResponseBodyAppScalingRuleTriggerTriggers) String() string {
@@ -5584,7 +6691,9 @@ func (s *DisableApplicationScalingRuleResponse) SetBody(v *DisableApplicationSca
 }
 
 type EnableApplicationScalingRuleRequest struct {
-	AppId           *string `json:"AppId,omitempty" xml:"AppId,omitempty"`
+	// The ID of the application. You can call the ListApplication operation to query the application ID. For more information, see [ListApplication](~~149390~~).
+	AppId *string `json:"AppId,omitempty" xml:"AppId,omitempty"`
+	// The name of the auto scaling policy.
 	ScalingRuleName *string `json:"ScalingRuleName,omitempty" xml:"ScalingRuleName,omitempty"`
 }
 
@@ -5607,10 +6716,14 @@ func (s *EnableApplicationScalingRuleRequest) SetScalingRuleName(v string) *Enab
 }
 
 type EnableApplicationScalingRuleResponseBody struct {
+	// The information about the auto scaling policy.
 	AppScalingRule *EnableApplicationScalingRuleResponseBodyAppScalingRule `json:"AppScalingRule,omitempty" xml:"AppScalingRule,omitempty" type:"Struct"`
-	Code           *int32                                                  `json:"Code,omitempty" xml:"Code,omitempty"`
-	Message        *string                                                 `json:"Message,omitempty" xml:"Message,omitempty"`
-	RequestId      *string                                                 `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The HTTP status code.
+	Code *int32 `json:"Code,omitempty" xml:"Code,omitempty"`
+	// The returned message.
+	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// The ID of the request.
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
 func (s EnableApplicationScalingRuleResponseBody) String() string {
@@ -5642,17 +6755,31 @@ func (s *EnableApplicationScalingRuleResponseBody) SetRequestId(v string) *Enabl
 }
 
 type EnableApplicationScalingRuleResponseBodyAppScalingRule struct {
-	AppId            *string                                                        `json:"AppId,omitempty" xml:"AppId,omitempty"`
-	CreateTime       *int64                                                         `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
-	LastDisableTime  *int64                                                         `json:"LastDisableTime,omitempty" xml:"LastDisableTime,omitempty"`
-	MaxReplicas      *int32                                                         `json:"MaxReplicas,omitempty" xml:"MaxReplicas,omitempty"`
-	Metric           *EnableApplicationScalingRuleResponseBodyAppScalingRuleMetric  `json:"Metric,omitempty" xml:"Metric,omitempty" type:"Struct"`
-	MinReplicas      *int32                                                         `json:"MinReplicas,omitempty" xml:"MinReplicas,omitempty"`
-	ScaleRuleEnabled *bool                                                          `json:"ScaleRuleEnabled,omitempty" xml:"ScaleRuleEnabled,omitempty"`
-	ScaleRuleName    *string                                                        `json:"ScaleRuleName,omitempty" xml:"ScaleRuleName,omitempty"`
-	ScaleRuleType    *string                                                        `json:"ScaleRuleType,omitempty" xml:"ScaleRuleType,omitempty"`
-	Trigger          *EnableApplicationScalingRuleResponseBodyAppScalingRuleTrigger `json:"Trigger,omitempty" xml:"Trigger,omitempty" type:"Struct"`
-	UpdateTime       *int64                                                         `json:"UpdateTime,omitempty" xml:"UpdateTime,omitempty"`
+	// The ID of the application to which the auto scaling policy belongs.
+	AppId *string `json:"AppId,omitempty" xml:"AppId,omitempty"`
+	// The time when the auto scaling policy was created.
+	CreateTime *int64 `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
+	// The time when the auto scaling policy was last disabled.
+	LastDisableTime *int64 `json:"LastDisableTime,omitempty" xml:"LastDisableTime,omitempty"`
+	// This parameter is deprecated.
+	MaxReplicas *int32 `json:"MaxReplicas,omitempty" xml:"MaxReplicas,omitempty"`
+	// This parameter is deprecated.
+	Metric *EnableApplicationScalingRuleResponseBodyAppScalingRuleMetric `json:"Metric,omitempty" xml:"Metric,omitempty" type:"Struct"`
+	// This parameter is deprecated.
+	MinReplicas *int32 `json:"MinReplicas,omitempty" xml:"MinReplicas,omitempty"`
+	// Indicates whether the auto scaling policy is enabled. Valid values:
+	//
+	// *   **true**: The auto scaling policy is enabled.
+	// *   **false**: The auto scaling policy is disabled.
+	ScaleRuleEnabled *bool `json:"ScaleRuleEnabled,omitempty" xml:"ScaleRuleEnabled,omitempty"`
+	// The name of the auto scaling policy.
+	ScaleRuleName *string `json:"ScaleRuleName,omitempty" xml:"ScaleRuleName,omitempty"`
+	// The type of the auto scaling policy. The value is fixed to trigger.
+	ScaleRuleType *string `json:"ScaleRuleType,omitempty" xml:"ScaleRuleType,omitempty"`
+	// The configurations of the trigger.
+	Trigger *EnableApplicationScalingRuleResponseBodyAppScalingRuleTrigger `json:"Trigger,omitempty" xml:"Trigger,omitempty" type:"Struct"`
+	// The time when the auto scaling policy was last modified.
+	UpdateTime *int64 `json:"UpdateTime,omitempty" xml:"UpdateTime,omitempty"`
 }
 
 func (s EnableApplicationScalingRuleResponseBodyAppScalingRule) String() string {
@@ -5719,9 +6846,12 @@ func (s *EnableApplicationScalingRuleResponseBodyAppScalingRule) SetUpdateTime(v
 }
 
 type EnableApplicationScalingRuleResponseBodyAppScalingRuleMetric struct {
-	MaxReplicas *int32                                                                 `json:"MaxReplicas,omitempty" xml:"MaxReplicas,omitempty"`
-	Metrics     []*EnableApplicationScalingRuleResponseBodyAppScalingRuleMetricMetrics `json:"Metrics,omitempty" xml:"Metrics,omitempty" type:"Repeated"`
-	MinReplicas *int32                                                                 `json:"MinReplicas,omitempty" xml:"MinReplicas,omitempty"`
+	// This parameter is deprecated.
+	MaxReplicas *int32 `json:"MaxReplicas,omitempty" xml:"MaxReplicas,omitempty"`
+	// This parameter is deprecated.
+	Metrics []*EnableApplicationScalingRuleResponseBodyAppScalingRuleMetricMetrics `json:"Metrics,omitempty" xml:"Metrics,omitempty" type:"Repeated"`
+	// This parameter is deprecated.
+	MinReplicas *int32 `json:"MinReplicas,omitempty" xml:"MinReplicas,omitempty"`
 }
 
 func (s EnableApplicationScalingRuleResponseBodyAppScalingRuleMetric) String() string {
@@ -5748,8 +6878,10 @@ func (s *EnableApplicationScalingRuleResponseBodyAppScalingRuleMetric) SetMinRep
 }
 
 type EnableApplicationScalingRuleResponseBodyAppScalingRuleMetricMetrics struct {
-	MetricTargetAverageUtilization *int32  `json:"MetricTargetAverageUtilization,omitempty" xml:"MetricTargetAverageUtilization,omitempty"`
-	MetricType                     *string `json:"MetricType,omitempty" xml:"MetricType,omitempty"`
+	// This parameter is deprecated.
+	MetricTargetAverageUtilization *int32 `json:"MetricTargetAverageUtilization,omitempty" xml:"MetricTargetAverageUtilization,omitempty"`
+	// This parameter is deprecated.
+	MetricType *string `json:"MetricType,omitempty" xml:"MetricType,omitempty"`
 }
 
 func (s EnableApplicationScalingRuleResponseBodyAppScalingRuleMetricMetrics) String() string {
@@ -5771,9 +6903,12 @@ func (s *EnableApplicationScalingRuleResponseBodyAppScalingRuleMetricMetrics) Se
 }
 
 type EnableApplicationScalingRuleResponseBodyAppScalingRuleTrigger struct {
-	MaxReplicas *int32                                                                   `json:"MaxReplicas,omitempty" xml:"MaxReplicas,omitempty"`
-	MinReplicas *int32                                                                   `json:"MinReplicas,omitempty" xml:"MinReplicas,omitempty"`
-	Triggers    []*EnableApplicationScalingRuleResponseBodyAppScalingRuleTriggerTriggers `json:"Triggers,omitempty" xml:"Triggers,omitempty" type:"Repeated"`
+	// The maximum number of replicas. The upper limit is 1000.
+	MaxReplicas *int32 `json:"MaxReplicas,omitempty" xml:"MaxReplicas,omitempty"`
+	// The minimum number of replicas. The lower limit is 0.
+	MinReplicas *int32 `json:"MinReplicas,omitempty" xml:"MinReplicas,omitempty"`
+	// The list of triggers.
+	Triggers []*EnableApplicationScalingRuleResponseBodyAppScalingRuleTriggerTriggers `json:"Triggers,omitempty" xml:"Triggers,omitempty" type:"Repeated"`
 }
 
 func (s EnableApplicationScalingRuleResponseBodyAppScalingRuleTrigger) String() string {
@@ -5800,9 +6935,12 @@ func (s *EnableApplicationScalingRuleResponseBodyAppScalingRuleTrigger) SetTrigg
 }
 
 type EnableApplicationScalingRuleResponseBodyAppScalingRuleTriggerTriggers struct {
+	// The metadata of the trigger.
 	MetaData *string `json:"MetaData,omitempty" xml:"MetaData,omitempty"`
-	Name     *string `json:"Name,omitempty" xml:"Name,omitempty"`
-	Type     *string `json:"Type,omitempty" xml:"Type,omitempty"`
+	// The name of the trigger.
+	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// The type of the trigger. Valid values: cron and app_metric.
+	Type *string `json:"Type,omitempty" xml:"Type,omitempty"`
 }
 
 func (s EnableApplicationScalingRuleResponseBodyAppScalingRuleTriggerTriggers) String() string {
@@ -5858,6 +6996,7 @@ func (s *EnableApplicationScalingRuleResponse) SetBody(v *EnableApplicationScali
 }
 
 type GetAppDeploymentRequest struct {
+	// The ID of the application. You can call the ListApplication operation to query the application ID.
 	AppId *string `json:"AppId,omitempty" xml:"AppId,omitempty"`
 }
 
@@ -5875,9 +7014,13 @@ func (s *GetAppDeploymentRequest) SetAppId(v string) *GetAppDeploymentRequest {
 }
 
 type GetAppDeploymentResponseBody struct {
-	Code      *int32  `json:"Code,omitempty" xml:"Code,omitempty"`
-	Data      *string `json:"Data,omitempty" xml:"Data,omitempty"`
-	Message   *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// The HTTP status code that is returned.
+	Code *int32 `json:"Code,omitempty" xml:"Code,omitempty"`
+	// The information about the Deployment of the application. The value is a JSON string.
+	Data *string `json:"Data,omitempty" xml:"Data,omitempty"`
+	// The message that is returned.
+	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// The ID of the request.
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -5939,6 +7082,7 @@ func (s *GetAppDeploymentResponse) SetBody(v *GetAppDeploymentResponseBody) *Get
 }
 
 type GetApplicationRequest struct {
+	// The ID of the application.
 	AppId *string `json:"AppId,omitempty" xml:"AppId,omitempty"`
 }
 
@@ -5956,10 +7100,14 @@ func (s *GetApplicationRequest) SetAppId(v string) *GetApplicationRequest {
 }
 
 type GetApplicationResponseBody struct {
+	// The details of the application.
 	Application *GetApplicationResponseBodyApplication `json:"Application,omitempty" xml:"Application,omitempty" type:"Struct"`
-	Code        *int32                                 `json:"Code,omitempty" xml:"Code,omitempty"`
-	Message     *string                                `json:"Message,omitempty" xml:"Message,omitempty"`
-	RequestId   *string                                `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The HTTP status code that is returned.
+	Code *int32 `json:"Code,omitempty" xml:"Code,omitempty"`
+	// The additional information that is returned.
+	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// The ID of the request.
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
 func (s GetApplicationResponseBody) String() string {
@@ -5991,36 +7139,101 @@ func (s *GetApplicationResponseBody) SetRequestId(v string) *GetApplicationRespo
 }
 
 type GetApplicationResponseBodyApplication struct {
-	AppId                *string `json:"AppId,omitempty" xml:"AppId,omitempty"`
-	ApplicationType      *string `json:"ApplicationType,omitempty" xml:"ApplicationType,omitempty"`
-	BuildPackageId       *int64  `json:"BuildPackageId,omitempty" xml:"BuildPackageId,omitempty"`
-	ClusterId            *string `json:"ClusterId,omitempty" xml:"ClusterId,omitempty"`
-	ClusterType          *string `json:"ClusterType,omitempty" xml:"ClusterType,omitempty"`
-	Cpu                  *int32  `json:"Cpu,omitempty" xml:"Cpu,omitempty"`
-	CreateTime           *int64  `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
-	Description          *string `json:"Description,omitempty" xml:"Description,omitempty"`
-	Dockerize            *bool   `json:"Dockerize,omitempty" xml:"Dockerize,omitempty"`
-	Email                *string `json:"Email,omitempty" xml:"Email,omitempty"`
-	EnablePortCheck      *bool   `json:"EnablePortCheck,omitempty" xml:"EnablePortCheck,omitempty"`
-	EnableUrlCheck       *bool   `json:"EnableUrlCheck,omitempty" xml:"EnableUrlCheck,omitempty"`
-	ExtSlbId             *string `json:"ExtSlbId,omitempty" xml:"ExtSlbId,omitempty"`
-	ExtSlbIp             *string `json:"ExtSlbIp,omitempty" xml:"ExtSlbIp,omitempty"`
-	ExtSlbName           *string `json:"ExtSlbName,omitempty" xml:"ExtSlbName,omitempty"`
-	HealthCheckUrl       *string `json:"HealthCheckUrl,omitempty" xml:"HealthCheckUrl,omitempty"`
-	InstanceCount        *int32  `json:"InstanceCount,omitempty" xml:"InstanceCount,omitempty"`
-	Memory               *int32  `json:"Memory,omitempty" xml:"Memory,omitempty"`
-	Name                 *string `json:"Name,omitempty" xml:"Name,omitempty"`
-	NameSpace            *string `json:"NameSpace,omitempty" xml:"NameSpace,omitempty"`
-	Owner                *string `json:"Owner,omitempty" xml:"Owner,omitempty"`
-	Port                 *int32  `json:"Port,omitempty" xml:"Port,omitempty"`
-	RegionId             *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	RunningInstanceCount *int32  `json:"RunningInstanceCount,omitempty" xml:"RunningInstanceCount,omitempty"`
-	SlbId                *string `json:"SlbId,omitempty" xml:"SlbId,omitempty"`
-	SlbInfo              *string `json:"SlbInfo,omitempty" xml:"SlbInfo,omitempty"`
-	SlbIp                *string `json:"SlbIp,omitempty" xml:"SlbIp,omitempty"`
-	SlbName              *string `json:"SlbName,omitempty" xml:"SlbName,omitempty"`
-	SlbPort              *int32  `json:"SlbPort,omitempty" xml:"SlbPort,omitempty"`
-	UserId               *string `json:"UserId,omitempty" xml:"UserId,omitempty"`
+	// The ID of the application.
+	AppId *string `json:"AppId,omitempty" xml:"AppId,omitempty"`
+	// The current status of the Kubernetes application, which is used to determine whether the application is in a stable state. If the application is in an unstable state, related configuration operations are prohibited. Valid values:
+	//
+	// *   ready: The application is in the ready state and can be changed.
+	// *   progressive: The application is being changed.
+	// *   pending: The application change is blocked.
+	// *   failed: The application fails to be changed.
+	//
+	// In these states, ready is a stable state and other states are unstable.
+	AppPhase *string `json:"AppPhase,omitempty" xml:"AppPhase,omitempty"`
+	// The deployment type of the application. Valid values:
+	//
+	// *   War: The application is deployed by using a WAR package.
+	// *   FatJar: The application is deployed by using a JAR package.
+	// *   Empty: The application is not deployed.
+	ApplicationType *string `json:"ApplicationType,omitempty" xml:"ApplicationType,omitempty"`
+	// The build package number of Enterprise Distributed Application Service (EDAS) Container.
+	BuildPackageId *int64 `json:"BuildPackageId,omitempty" xml:"BuildPackageId,omitempty"`
+	// The ID of the ECS cluster in which the application is deployed.
+	ClusterId *string `json:"ClusterId,omitempty" xml:"ClusterId,omitempty"`
+	// The type of the cluster. Valid values:
+	//
+	// *   0: regular Docker cluster
+	// *   1: Swarm cluster
+	// *   2: ECS cluster
+	// *   3: Kubernetes cluster
+	// *   4: cluster in which Pandora automatically registers applications
+	ClusterType *string `json:"ClusterType,omitempty" xml:"ClusterType,omitempty"`
+	// The number of CPU cores.
+	Cpu *int32 `json:"Cpu,omitempty" xml:"Cpu,omitempty"`
+	// The time when the application was created. This value is a UNIX timestamp representing the number of milliseconds that have elapsed since January 1, 1970, 00:00:00 UTC.
+	CreateTime *int64 `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
+	// The description of the application.
+	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
+	// Indicates whether the application is a Docker application. Valid values:
+	//
+	// *   false: The application is not a Docker application.
+	// *   true: The application is a Docker application.
+	Dockerize *bool `json:"Dockerize,omitempty" xml:"Dockerize,omitempty"`
+	// The email address of the account.
+	Email *string `json:"Email,omitempty" xml:"Email,omitempty"`
+	// Indicates whether the port health check is enabled. Valid values:
+	//
+	// *   true: The port health check is enabled.
+	// *   false: The port health check is disabled.
+	//
+	// If the port health check is enabled, EDAS checks whether a port exists during application startup. If the port exists, the application is considered to have started.
+	EnablePortCheck *bool `json:"EnablePortCheck,omitempty" xml:"EnablePortCheck,omitempty"`
+	// Indicates whether the URL health check is enabled. Valid values:
+	//
+	// *   true: The URL health check is enabled.
+	// *   false: The URL health check is disabled.
+	//
+	// If the URL health check is enabled, EDAS attempts to detect the specified URL during application startup. If EDAS detects the specified URL, the application is considered to have started.
+	EnableUrlCheck *bool `json:"EnableUrlCheck,omitempty" xml:"EnableUrlCheck,omitempty"`
+	// The ID of the Internet-facing SLB instance that is bound to the application.
+	ExtSlbId *string `json:"ExtSlbId,omitempty" xml:"ExtSlbId,omitempty"`
+	// The IP address of the Internet-facing Server Load Balancer (SLB) instance that is bound to the application.
+	ExtSlbIp *string `json:"ExtSlbIp,omitempty" xml:"ExtSlbIp,omitempty"`
+	// The name of the Internet-facing SLB instance that is bound to the application.
+	ExtSlbName       *string `json:"ExtSlbName,omitempty" xml:"ExtSlbName,omitempty"`
+	HaveManageAccess *string `json:"HaveManageAccess,omitempty" xml:"HaveManageAccess,omitempty"`
+	// The health check URL of the application.
+	HealthCheckUrl *string `json:"HealthCheckUrl,omitempty" xml:"HealthCheckUrl,omitempty"`
+	// The number of instances deployed with the application.
+	InstanceCount *int32 `json:"InstanceCount,omitempty" xml:"InstanceCount,omitempty"`
+	// The memory size of the application instance. Unit: MB.
+	Memory *int32 `json:"Memory,omitempty" xml:"Memory,omitempty"`
+	// The name of the application.
+	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// The namespace to which the application belongs.
+	NameSpace *string `json:"NameSpace,omitempty" xml:"NameSpace,omitempty"`
+	// The ID of the user who created the application.
+	Owner *string `json:"Owner,omitempty" xml:"Owner,omitempty"`
+	// The service port of the application.
+	Port *int32 `json:"Port,omitempty" xml:"Port,omitempty"`
+	// The ID of the region in which the application is deployed.
+	RegionId        *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	ResourceGroupId *string `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
+	// The number of running instances for the application.
+	RunningInstanceCount *int32 `json:"RunningInstanceCount,omitempty" xml:"RunningInstanceCount,omitempty"`
+	// The ID of the internal-facing SLB instance that is bound to the application.
+	SlbId *string `json:"SlbId,omitempty" xml:"SlbId,omitempty"`
+	// The information about the internal-facing SLB instance that is bound to the application.
+	SlbInfo *string `json:"SlbInfo,omitempty" xml:"SlbInfo,omitempty"`
+	// The IP address of the internal-facing SLB instance that is bound to the application.
+	SlbIp *string `json:"SlbIp,omitempty" xml:"SlbIp,omitempty"`
+	// The name of the internal-facing SLB instance that is bound to the application.
+	SlbName *string `json:"SlbName,omitempty" xml:"SlbName,omitempty"`
+	// The port of the internal-facing SLB instance that is bound to the application.
+	SlbPort *int32 `json:"SlbPort,omitempty" xml:"SlbPort,omitempty"`
+	// The ID of the Alibaba Cloud account.
+	UserId       *string `json:"UserId,omitempty" xml:"UserId,omitempty"`
+	WorkloadType *string `json:"WorkloadType,omitempty" xml:"WorkloadType,omitempty"`
 }
 
 func (s GetApplicationResponseBodyApplication) String() string {
@@ -6033,6 +7246,11 @@ func (s GetApplicationResponseBodyApplication) GoString() string {
 
 func (s *GetApplicationResponseBodyApplication) SetAppId(v string) *GetApplicationResponseBodyApplication {
 	s.AppId = &v
+	return s
+}
+
+func (s *GetApplicationResponseBodyApplication) SetAppPhase(v string) *GetApplicationResponseBodyApplication {
+	s.AppPhase = &v
 	return s
 }
 
@@ -6106,6 +7324,11 @@ func (s *GetApplicationResponseBodyApplication) SetExtSlbName(v string) *GetAppl
 	return s
 }
 
+func (s *GetApplicationResponseBodyApplication) SetHaveManageAccess(v string) *GetApplicationResponseBodyApplication {
+	s.HaveManageAccess = &v
+	return s
+}
+
 func (s *GetApplicationResponseBodyApplication) SetHealthCheckUrl(v string) *GetApplicationResponseBodyApplication {
 	s.HealthCheckUrl = &v
 	return s
@@ -6146,6 +7369,11 @@ func (s *GetApplicationResponseBodyApplication) SetRegionId(v string) *GetApplic
 	return s
 }
 
+func (s *GetApplicationResponseBodyApplication) SetResourceGroupId(v string) *GetApplicationResponseBodyApplication {
+	s.ResourceGroupId = &v
+	return s
+}
+
 func (s *GetApplicationResponseBodyApplication) SetRunningInstanceCount(v int32) *GetApplicationResponseBodyApplication {
 	s.RunningInstanceCount = &v
 	return s
@@ -6181,6 +7409,11 @@ func (s *GetApplicationResponseBodyApplication) SetUserId(v string) *GetApplicat
 	return s
 }
 
+func (s *GetApplicationResponseBodyApplication) SetWorkloadType(v string) *GetApplicationResponseBodyApplication {
+	s.WorkloadType = &v
+	return s
+}
+
 type GetApplicationResponse struct {
 	Headers    map[string]*string          `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
 	StatusCode *int32                      `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
@@ -6211,6 +7444,7 @@ func (s *GetApplicationResponse) SetBody(v *GetApplicationResponseBody) *GetAppl
 }
 
 type GetChangeOrderInfoRequest struct {
+	// The ID of the change process.
 	ChangeOrderId *string `json:"ChangeOrderId,omitempty" xml:"ChangeOrderId,omitempty"`
 }
 
@@ -6228,9 +7462,13 @@ func (s *GetChangeOrderInfoRequest) SetChangeOrderId(v string) *GetChangeOrderIn
 }
 
 type GetChangeOrderInfoResponseBody struct {
-	Code            *int32                                         `json:"Code,omitempty" xml:"Code,omitempty"`
-	Message         *string                                        `json:"Message,omitempty" xml:"Message,omitempty"`
-	RequestId       *string                                        `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The HTTP status code that is returned.
+	Code *int32 `json:"Code,omitempty" xml:"Code,omitempty"`
+	// The additional information that is returned.
+	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// The ID of the request.
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The details about the change process.
 	ChangeOrderInfo *GetChangeOrderInfoResponseBodyChangeOrderInfo `json:"changeOrderInfo,omitempty" xml:"changeOrderInfo,omitempty" type:"Struct"`
 }
 
@@ -6263,19 +7501,47 @@ func (s *GetChangeOrderInfoResponseBody) SetChangeOrderInfo(v *GetChangeOrderInf
 }
 
 type GetChangeOrderInfoResponseBodyChangeOrderInfo struct {
-	BatchCount             *int32                                                         `json:"BatchCount,omitempty" xml:"BatchCount,omitempty"`
-	BatchType              *string                                                        `json:"BatchType,omitempty" xml:"BatchType,omitempty"`
-	ChangeOrderDescription *string                                                        `json:"ChangeOrderDescription,omitempty" xml:"ChangeOrderDescription,omitempty"`
-	ChangeOrderId          *string                                                        `json:"ChangeOrderId,omitempty" xml:"ChangeOrderId,omitempty"`
-	CoType                 *string                                                        `json:"CoType,omitempty" xml:"CoType,omitempty"`
-	CreateTime             *string                                                        `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
-	CreateUserId           *string                                                        `json:"CreateUserId,omitempty" xml:"CreateUserId,omitempty"`
-	Desc                   *string                                                        `json:"Desc,omitempty" xml:"Desc,omitempty"`
-	PipelineInfoList       *GetChangeOrderInfoResponseBodyChangeOrderInfoPipelineInfoList `json:"PipelineInfoList,omitempty" xml:"PipelineInfoList,omitempty" type:"Struct"`
-	Status                 *int32                                                         `json:"Status,omitempty" xml:"Status,omitempty"`
-	SupportRollback        *bool                                                          `json:"SupportRollback,omitempty" xml:"SupportRollback,omitempty"`
-	Targets                *GetChangeOrderInfoResponseBodyChangeOrderInfoTargets          `json:"Targets,omitempty" xml:"Targets,omitempty" type:"Struct"`
-	TrafficControl         *GetChangeOrderInfoResponseBodyChangeOrderInfoTrafficControl   `json:"TrafficControl,omitempty" xml:"TrafficControl,omitempty" type:"Struct"`
+	// The number of batches for the change.
+	BatchCount *int32 `json:"BatchCount,omitempty" xml:"BatchCount,omitempty"`
+	// Indicates whether the change for the next batch is automatically or manually triggered when phased release is performed. Valid values:
+	//
+	// *   Automatic: The change for the next batch is automatically triggered.
+	// *   Manual: The change for the next batch is manually triggered.
+	BatchType *string `json:"BatchType,omitempty" xml:"BatchType,omitempty"`
+	// The description of the change process.
+	ChangeOrderDescription *string `json:"ChangeOrderDescription,omitempty" xml:"ChangeOrderDescription,omitempty"`
+	// The ID of the change process.
+	ChangeOrderId *string `json:"ChangeOrderId,omitempty" xml:"ChangeOrderId,omitempty"`
+	// The type of the change process.
+	CoType *string `json:"CoType,omitempty" xml:"CoType,omitempty"`
+	// The time when the change process is created.
+	CreateTime *string `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
+	// The person in charge of the change process.
+	CreateUserId *string `json:"CreateUserId,omitempty" xml:"CreateUserId,omitempty"`
+	// The description of the change process.
+	Desc *string `json:"Desc,omitempty" xml:"Desc,omitempty"`
+	// The information about the batches of the change task.
+	PipelineInfoList *GetChangeOrderInfoResponseBodyChangeOrderInfoPipelineInfoList `json:"PipelineInfoList,omitempty" xml:"PipelineInfoList,omitempty" type:"Struct"`
+	// The state of the change process. Valid values:
+	//
+	// *   0: ready
+	// *   1: in progress
+	// *   2: successful
+	// *   3: failed
+	// *   6: terminated
+	// *   7: partially executed
+	// *   8: wait for manual confirmation to trigger the next batch during a manual phased release
+	// *   9: wait to trigger the next batch during an automatic phased release
+	// *   10: failed due to a system exception
+	Status *int32 `json:"Status,omitempty" xml:"Status,omitempty"`
+	// Indicates whether rollbacks are allowed. Valid values:
+	//
+	// *   true: Rollbacks are allowed.
+	// *   false: Rollbacks are not allowed.
+	SupportRollback *bool                                                 `json:"SupportRollback,omitempty" xml:"SupportRollback,omitempty"`
+	Targets         *GetChangeOrderInfoResponseBodyChangeOrderInfoTargets `json:"Targets,omitempty" xml:"Targets,omitempty" type:"Struct"`
+	// The throttling rules.
+	TrafficControl *GetChangeOrderInfoResponseBodyChangeOrderInfoTrafficControl `json:"TrafficControl,omitempty" xml:"TrafficControl,omitempty" type:"Struct"`
 }
 
 func (s GetChangeOrderInfoResponseBodyChangeOrderInfo) String() string {
@@ -6369,13 +7635,29 @@ func (s *GetChangeOrderInfoResponseBodyChangeOrderInfoPipelineInfoList) SetPipel
 }
 
 type GetChangeOrderInfoResponseBodyChangeOrderInfoPipelineInfoListPipelineInfo struct {
-	PipelineId      *string                                                                                   `json:"PipelineId,omitempty" xml:"PipelineId,omitempty"`
-	PipelineName    *string                                                                                   `json:"PipelineName,omitempty" xml:"PipelineName,omitempty"`
-	PipelineStatus  *int32                                                                                    `json:"PipelineStatus,omitempty" xml:"PipelineStatus,omitempty"`
+	// The ID of each batch for the change during the phased release.
+	PipelineId *string `json:"PipelineId,omitempty" xml:"PipelineId,omitempty"`
+	// The name of the batch.
+	PipelineName *string `json:"PipelineName,omitempty" xml:"PipelineName,omitempty"`
+	// The state of the change task. Valid values:
+	//
+	// *   0: ready
+	// *   1: in progress
+	// *   2: successful
+	// *   3: failed
+	// *   6: terminated
+	// *   8: wait for manual confirmation to trigger the next batch during a manual phased release
+	// *   9: wait to trigger the next batch during an automatic phased release
+	// *   10: failed due to a system exception
+	PipelineStatus *int32 `json:"PipelineStatus,omitempty" xml:"PipelineStatus,omitempty"`
+	// The execution results in each stage.
 	StageDetailList *GetChangeOrderInfoResponseBodyChangeOrderInfoPipelineInfoListPipelineInfoStageDetailList `json:"StageDetailList,omitempty" xml:"StageDetailList,omitempty" type:"Struct"`
-	StageList       *GetChangeOrderInfoResponseBodyChangeOrderInfoPipelineInfoListPipelineInfoStageList       `json:"StageList,omitempty" xml:"StageList,omitempty" type:"Struct"`
-	StartTime       *string                                                                                   `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
-	UpdateTime      *string                                                                                   `json:"UpdateTime,omitempty" xml:"UpdateTime,omitempty"`
+	// The stages of the change process.
+	StageList *GetChangeOrderInfoResponseBodyChangeOrderInfoPipelineInfoListPipelineInfoStageList `json:"StageList,omitempty" xml:"StageList,omitempty" type:"Struct"`
+	// The time when the change task was created. This value is a UNIX timestamp representing the number of milliseconds that have elapsed since January 1, 1970, 00:00:00 UTC.
+	StartTime *string `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
+	// The time when the change task was updated. This value is a UNIX timestamp representing the number of milliseconds that have elapsed since January 1, 1970, 00:00:00 UTC.
+	UpdateTime *string `json:"UpdateTime,omitempty" xml:"UpdateTime,omitempty"`
 }
 
 func (s GetChangeOrderInfoResponseBodyChangeOrderInfoPipelineInfoListPipelineInfo) String() string {
@@ -6439,10 +7721,23 @@ func (s *GetChangeOrderInfoResponseBodyChangeOrderInfoPipelineInfoListPipelineIn
 }
 
 type GetChangeOrderInfoResponseBodyChangeOrderInfoPipelineInfoListPipelineInfoStageDetailListStageDetailDTO struct {
-	StageId     *string                                                                                                         `json:"StageId,omitempty" xml:"StageId,omitempty"`
-	StageName   *string                                                                                                         `json:"StageName,omitempty" xml:"StageName,omitempty"`
-	StageStatus *int32                                                                                                          `json:"StageStatus,omitempty" xml:"StageStatus,omitempty"`
-	TaskList    *GetChangeOrderInfoResponseBodyChangeOrderInfoPipelineInfoListPipelineInfoStageDetailListStageDetailDTOTaskList `json:"TaskList,omitempty" xml:"TaskList,omitempty" type:"Struct"`
+	// The ID of the stage.
+	StageId *string `json:"StageId,omitempty" xml:"StageId,omitempty"`
+	// The name of the stage.
+	StageName *string `json:"StageName,omitempty" xml:"StageName,omitempty"`
+	// The status of the stage. Valid values:
+	//
+	// *   0: ready
+	// *   1: in progress
+	// *   2: successful
+	// *   3: failed
+	// *   6: terminated
+	// *   8: wait for manual confirmation to trigger the next batch during a manual phased release
+	// *   9: wait to trigger the next batch during an automatic phased release
+	// *   10: failed due to a system exception
+	StageStatus *int32 `json:"StageStatus,omitempty" xml:"StageStatus,omitempty"`
+	// The information about the task.
+	TaskList *GetChangeOrderInfoResponseBodyChangeOrderInfoPipelineInfoListPipelineInfoStageDetailListStageDetailDTOTaskList `json:"TaskList,omitempty" xml:"TaskList,omitempty" type:"Struct"`
 }
 
 func (s GetChangeOrderInfoResponseBodyChangeOrderInfoPipelineInfoListPipelineInfoStageDetailListStageDetailDTO) String() string {
@@ -6491,15 +7786,39 @@ func (s *GetChangeOrderInfoResponseBodyChangeOrderInfoPipelineInfoListPipelineIn
 }
 
 type GetChangeOrderInfoResponseBodyChangeOrderInfoPipelineInfoListPipelineInfoStageDetailListStageDetailDTOTaskListTaskInfoDTO struct {
-	RetryType           *int32  `json:"RetryType,omitempty" xml:"RetryType,omitempty"`
-	ShowManualIgnorance *bool   `json:"ShowManualIgnorance,omitempty" xml:"ShowManualIgnorance,omitempty"`
-	TaskErrorCode       *string `json:"TaskErrorCode,omitempty" xml:"TaskErrorCode,omitempty"`
-	TaskErrorIgnorance  *int32  `json:"TaskErrorIgnorance,omitempty" xml:"TaskErrorIgnorance,omitempty"`
-	TaskErrorMessage    *string `json:"TaskErrorMessage,omitempty" xml:"TaskErrorMessage,omitempty"`
-	TaskId              *string `json:"TaskId,omitempty" xml:"TaskId,omitempty"`
-	TaskMessage         *string `json:"TaskMessage,omitempty" xml:"TaskMessage,omitempty"`
-	TaskName            *string `json:"TaskName,omitempty" xml:"TaskName,omitempty"`
-	TaskStatus          *string `json:"TaskStatus,omitempty" xml:"TaskStatus,omitempty"`
+	// The type of the retry policy. Value 0 indicates no retry, value 1 indicates automatic retry, and value 2 indicates manual retry.
+	RetryType *int32 `json:"RetryType,omitempty" xml:"RetryType,omitempty"`
+	// Indicates whether errors that occur in the change process are ignored. Valid values:``
+	//
+	// *   true: Errors that occur in the change process are ignored. This parameter can be set to true only when URL health checks are performed.
+	// *   false: Errors that occur in the change process are not ignored.
+	ShowManualIgnorance *bool `json:"ShowManualIgnorance,omitempty" xml:"ShowManualIgnorance,omitempty"`
+	// Error codes
+	TaskErrorCode *string `json:"TaskErrorCode,omitempty" xml:"TaskErrorCode,omitempty"`
+	// Indicates whether the task is error-tolerant. If the task can tolerate errors, the errors that occur in the change process are ignored and the next task is executed.
+	//
+	// *   0: The task is not error-tolerant.
+	// *   1: The task is error-tolerant.
+	TaskErrorIgnorance *int32 `json:"TaskErrorIgnorance,omitempty" xml:"TaskErrorIgnorance,omitempty"`
+	// The error message for the task.
+	TaskErrorMessage *string `json:"TaskErrorMessage,omitempty" xml:"TaskErrorMessage,omitempty"`
+	// The ID of the task.
+	TaskId *string `json:"TaskId,omitempty" xml:"TaskId,omitempty"`
+	// Task information
+	TaskMessage *string `json:"TaskMessage,omitempty" xml:"TaskMessage,omitempty"`
+	// The name of the task.
+	TaskName *string `json:"TaskName,omitempty" xml:"TaskName,omitempty"`
+	// The state of the task. Valid values:
+	//
+	// *   0: ready
+	// *   1: in progress
+	// *   2: successful
+	// *   3: failed
+	// *   6: terminated
+	// *   8: wait for manual confirmation to trigger the next batch during a manual phased release
+	// *   9: wait to trigger the next batch during an automatic phased release
+	// *   10: failed due to a system exception
+	TaskStatus *string `json:"TaskStatus,omitempty" xml:"TaskStatus,omitempty"`
 }
 
 func (s GetChangeOrderInfoResponseBodyChangeOrderInfoPipelineInfoListPipelineInfoStageDetailListStageDetailDTOTaskListTaskInfoDTO) String() string {
@@ -6573,10 +7892,23 @@ func (s *GetChangeOrderInfoResponseBodyChangeOrderInfoPipelineInfoListPipelineIn
 }
 
 type GetChangeOrderInfoResponseBodyChangeOrderInfoPipelineInfoListPipelineInfoStageListStageInfoDTO struct {
-	StageId        *string                                                                                                       `json:"StageId,omitempty" xml:"StageId,omitempty"`
-	StageName      *string                                                                                                       `json:"StageName,omitempty" xml:"StageName,omitempty"`
+	// The ID of the stage.
+	StageId *string `json:"StageId,omitempty" xml:"StageId,omitempty"`
+	// The name of the stage.
+	StageName *string `json:"StageName,omitempty" xml:"StageName,omitempty"`
+	// The results of the task executed in the stage.
 	StageResultDTO *GetChangeOrderInfoResponseBodyChangeOrderInfoPipelineInfoListPipelineInfoStageListStageInfoDTOStageResultDTO `json:"StageResultDTO,omitempty" xml:"StageResultDTO,omitempty" type:"Struct"`
-	Status         *int32                                                                                                        `json:"Status,omitempty" xml:"Status,omitempty"`
+	// The state of the stage. Valid values:
+	//
+	// *   0: ready
+	// *   1: in progress
+	// *   2: successful
+	// *   3: failed
+	// *   6: terminated
+	// *   8: wait for manual confirmation to trigger the next batch during a manual phased release
+	// *   9: wait to trigger the next batch during an automatic phased release
+	// *   10: failed due to a system exception
+	Status *int32 `json:"Status,omitempty" xml:"Status,omitempty"`
 }
 
 func (s GetChangeOrderInfoResponseBodyChangeOrderInfoPipelineInfoListPipelineInfoStageListStageInfoDTO) String() string {
@@ -6608,8 +7940,10 @@ func (s *GetChangeOrderInfoResponseBodyChangeOrderInfoPipelineInfoListPipelineIn
 }
 
 type GetChangeOrderInfoResponseBodyChangeOrderInfoPipelineInfoListPipelineInfoStageListStageInfoDTOStageResultDTO struct {
+	// The results of the task executed on each Elastic Compute Service (ECS) instance in each stage.
 	InstanceDTOList *GetChangeOrderInfoResponseBodyChangeOrderInfoPipelineInfoListPipelineInfoStageListStageInfoDTOStageResultDTOInstanceDTOList `json:"InstanceDTOList,omitempty" xml:"InstanceDTOList,omitempty" type:"Struct"`
-	ServiceStage    *GetChangeOrderInfoResponseBodyChangeOrderInfoPipelineInfoListPipelineInfoStageListStageInfoDTOStageResultDTOServiceStage    `json:"ServiceStage,omitempty" xml:"ServiceStage,omitempty" type:"Struct"`
+	// The results of tasks executed in each service-oriented stage.
+	ServiceStage *GetChangeOrderInfoResponseBodyChangeOrderInfoPipelineInfoListPipelineInfoStageListStageInfoDTOStageResultDTOServiceStage `json:"ServiceStage,omitempty" xml:"ServiceStage,omitempty" type:"Struct"`
 }
 
 func (s GetChangeOrderInfoResponseBodyChangeOrderInfoPipelineInfoListPipelineInfoStageListStageInfoDTOStageResultDTO) String() string {
@@ -6648,12 +7982,27 @@ func (s *GetChangeOrderInfoResponseBodyChangeOrderInfoPipelineInfoListPipelineIn
 }
 
 type GetChangeOrderInfoResponseBodyChangeOrderInfoPipelineInfoListPipelineInfoStageListStageInfoDTOStageResultDTOInstanceDTOListInstanceDTO struct {
-	InstanceIp           *string                                                                                                                                                     `json:"InstanceIp,omitempty" xml:"InstanceIp,omitempty"`
-	InstanceName         *string                                                                                                                                                     `json:"InstanceName,omitempty" xml:"InstanceName,omitempty"`
+	// The IP address of the ECS instance.
+	InstanceIp *string `json:"InstanceIp,omitempty" xml:"InstanceIp,omitempty"`
+	// The name of the ECS instance.
+	InstanceName *string `json:"InstanceName,omitempty" xml:"InstanceName,omitempty"`
+	// The results of the task executed on the ECS instance in each stage.
 	InstanceStageDTOList *GetChangeOrderInfoResponseBodyChangeOrderInfoPipelineInfoListPipelineInfoStageListStageInfoDTOStageResultDTOInstanceDTOListInstanceDTOInstanceStageDTOList `json:"InstanceStageDTOList,omitempty" xml:"InstanceStageDTOList,omitempty" type:"Struct"`
-	PodName              *string                                                                                                                                                     `json:"PodName,omitempty" xml:"PodName,omitempty"`
-	PodStatus            *string                                                                                                                                                     `json:"PodStatus,omitempty" xml:"PodStatus,omitempty"`
-	Status               *int32                                                                                                                                                      `json:"Status,omitempty" xml:"Status,omitempty"`
+	// The name of the node.
+	PodName *string `json:"PodName,omitempty" xml:"PodName,omitempty"`
+	// The state of the pod.
+	PodStatus *string `json:"PodStatus,omitempty" xml:"PodStatus,omitempty"`
+	// The running state. Valid values:
+	//
+	// *   0: ready
+	// *   1: in progress
+	// *   2: successful
+	// *   3: failed
+	// *   6: terminated
+	// *   8: wait for manual confirmation to trigger the next batch during a manual phased release
+	// *   9: wait to trigger the next batch during an automatic phased release
+	// *   10: failed due to a system exception
+	Status *int32 `json:"Status,omitempty" xml:"Status,omitempty"`
 }
 
 func (s GetChangeOrderInfoResponseBodyChangeOrderInfoPipelineInfoListPipelineInfoStageListStageInfoDTOStageResultDTOInstanceDTOListInstanceDTO) String() string {
@@ -6712,12 +8061,27 @@ func (s *GetChangeOrderInfoResponseBodyChangeOrderInfoPipelineInfoListPipelineIn
 }
 
 type GetChangeOrderInfoResponseBodyChangeOrderInfoPipelineInfoListPipelineInfoStageListStageInfoDTOStageResultDTOInstanceDTOListInstanceDTOInstanceStageDTOListInstanceStageDTO struct {
-	FinishTime   *string `json:"FinishTime,omitempty" xml:"FinishTime,omitempty"`
-	StageId      *string `json:"StageId,omitempty" xml:"StageId,omitempty"`
+	// The time when the execution stopped.
+	FinishTime *string `json:"FinishTime,omitempty" xml:"FinishTime,omitempty"`
+	// The ID of the stage.
+	StageId *string `json:"StageId,omitempty" xml:"StageId,omitempty"`
+	// The information about the stage.
 	StageMessage *string `json:"StageMessage,omitempty" xml:"StageMessage,omitempty"`
-	StageName    *string `json:"StageName,omitempty" xml:"StageName,omitempty"`
-	StartTime    *string `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
-	Status       *int32  `json:"Status,omitempty" xml:"Status,omitempty"`
+	// The name of the stage.
+	StageName *string `json:"StageName,omitempty" xml:"StageName,omitempty"`
+	// The time when the execution was started.
+	StartTime *string `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
+	// The state of the stage. Valid values:
+	//
+	// *   0: ready
+	// *   1: in progress
+	// *   2: successful
+	// *   3: failed
+	// *   6: terminated
+	// *   8: wait for manual confirmation to trigger the next batch during a manual phased release
+	// *   9: wait to trigger the next batch during an automatic phased release
+	// *   10: failed due to a system exception
+	Status *int32 `json:"Status,omitempty" xml:"Status,omitempty"`
 }
 
 func (s GetChangeOrderInfoResponseBodyChangeOrderInfoPipelineInfoListPipelineInfoStageListStageInfoDTOStageResultDTOInstanceDTOListInstanceDTOInstanceStageDTOListInstanceStageDTO) String() string {
@@ -6759,10 +8123,23 @@ func (s *GetChangeOrderInfoResponseBodyChangeOrderInfoPipelineInfoListPipelineIn
 }
 
 type GetChangeOrderInfoResponseBodyChangeOrderInfoPipelineInfoListPipelineInfoStageListStageInfoDTOStageResultDTOServiceStage struct {
-	Message   *string `json:"Message,omitempty" xml:"Message,omitempty"`
-	StageId   *string `json:"StageId,omitempty" xml:"StageId,omitempty"`
+	// The execution result in the stage.
+	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// The ID of the stage.
+	StageId *string `json:"StageId,omitempty" xml:"StageId,omitempty"`
+	// Phase Name
 	StageName *string `json:"StageName,omitempty" xml:"StageName,omitempty"`
-	Status    *int32  `json:"Status,omitempty" xml:"Status,omitempty"`
+	// The running state. Valid values:
+	//
+	// *   0: ready
+	// *   1: in progress
+	// *   2: successful
+	// *   3: failed
+	// *   6: terminated
+	// *   8: wait for manual confirmation to trigger the next batch during a manual phased release
+	// *   9: wait to trigger the next batch during an automatic phased release
+	// *   10: failed due to a system exception
+	Status *int32 `json:"Status,omitempty" xml:"Status,omitempty"`
 }
 
 func (s GetChangeOrderInfoResponseBodyChangeOrderInfoPipelineInfoListPipelineInfoStageListStageInfoDTOStageResultDTOServiceStage) String() string {
@@ -6811,9 +8188,12 @@ func (s *GetChangeOrderInfoResponseBodyChangeOrderInfoTargets) SetItems(v []*str
 }
 
 type GetChangeOrderInfoResponseBodyChangeOrderInfoTrafficControl struct {
+	// The route forwarding policy.
 	Routes *string `json:"Routes,omitempty" xml:"Routes,omitempty"`
-	Rules  *string `json:"Rules,omitempty" xml:"Rules,omitempty"`
-	Tips   *string `json:"Tips,omitempty" xml:"Tips,omitempty"`
+	// The traffic routing rules.
+	Rules *string `json:"Rules,omitempty" xml:"Rules,omitempty"`
+	// The description of throttling rules.
+	Tips *string `json:"Tips,omitempty" xml:"Tips,omitempty"`
 }
 
 func (s GetChangeOrderInfoResponseBodyChangeOrderInfoTrafficControl) String() string {
@@ -6869,6 +8249,7 @@ func (s *GetChangeOrderInfoResponse) SetBody(v *GetChangeOrderInfoResponseBody) 
 }
 
 type GetClusterRequest struct {
+	// The ID of the cluster in Enterprise Distributed Application Service (EDAS). You can call the ListCluster operation to query the cluster ID. For more information, see [ListCluster](~~154995~~).
 	ClusterId *string `json:"ClusterId,omitempty" xml:"ClusterId,omitempty"`
 }
 
@@ -6886,10 +8267,14 @@ func (s *GetClusterRequest) SetClusterId(v string) *GetClusterRequest {
 }
 
 type GetClusterResponseBody struct {
-	Cluster   *GetClusterResponseBodyCluster `json:"Cluster,omitempty" xml:"Cluster,omitempty" type:"Struct"`
-	Code      *int32                         `json:"Code,omitempty" xml:"Code,omitempty"`
-	Message   *string                        `json:"Message,omitempty" xml:"Message,omitempty"`
-	RequestId *string                        `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The information about the cluster.
+	Cluster *GetClusterResponseBodyCluster `json:"Cluster,omitempty" xml:"Cluster,omitempty" type:"Struct"`
+	// The HTTP status code that is returned.
+	Code *int32 `json:"Code,omitempty" xml:"Code,omitempty"`
+	// The detailed information that is returned.
+	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// The ID of the request.
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
 func (s GetClusterResponseBody) String() string {
@@ -6921,25 +8306,65 @@ func (s *GetClusterResponseBody) SetRequestId(v string) *GetClusterResponseBody 
 }
 
 type GetClusterResponseBodyCluster struct {
-	ClusterId           *string `json:"ClusterId,omitempty" xml:"ClusterId,omitempty"`
-	ClusterImportStatus *int32  `json:"ClusterImportStatus,omitempty" xml:"ClusterImportStatus,omitempty"`
-	ClusterName         *string `json:"ClusterName,omitempty" xml:"ClusterName,omitempty"`
-	ClusterType         *int32  `json:"ClusterType,omitempty" xml:"ClusterType,omitempty"`
-	Cpu                 *int32  `json:"Cpu,omitempty" xml:"Cpu,omitempty"`
-	CpuUsed             *int32  `json:"CpuUsed,omitempty" xml:"CpuUsed,omitempty"`
-	CreateTime          *int64  `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
-	CsClusterId         *string `json:"CsClusterId,omitempty" xml:"CsClusterId,omitempty"`
-	Description         *string `json:"Description,omitempty" xml:"Description,omitempty"`
-	IaasProvider        *string `json:"IaasProvider,omitempty" xml:"IaasProvider,omitempty"`
-	Mem                 *int32  `json:"Mem,omitempty" xml:"Mem,omitempty"`
-	MemUsed             *int32  `json:"MemUsed,omitempty" xml:"MemUsed,omitempty"`
-	NetworkMode         *int32  `json:"NetworkMode,omitempty" xml:"NetworkMode,omitempty"`
-	NodeNum             *int32  `json:"NodeNum,omitempty" xml:"NodeNum,omitempty"`
-	OversoldFactor      *int32  `json:"OversoldFactor,omitempty" xml:"OversoldFactor,omitempty"`
-	RegionId            *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	SubClusterType      *string `json:"SubClusterType,omitempty" xml:"SubClusterType,omitempty"`
-	UpdateTime          *int64  `json:"UpdateTime,omitempty" xml:"UpdateTime,omitempty"`
-	VpcId               *string `json:"VpcId,omitempty" xml:"VpcId,omitempty"`
+	// The ID of the cluster.
+	ClusterId *string `json:"ClusterId,omitempty" xml:"ClusterId,omitempty"`
+	// The import status of the cluster. Valid values:
+	//
+	// *   1: The cluster is imported.
+	// *   2: The cluster fails to be imported.
+	// *   3: The cluster is being imported.
+	// *   4: The cluster is deleted.
+	// *   0: The cluster is not imported.
+	ClusterImportStatus *int32 `json:"ClusterImportStatus,omitempty" xml:"ClusterImportStatus,omitempty"`
+	// The name of the cluster.
+	ClusterName *string `json:"ClusterName,omitempty" xml:"ClusterName,omitempty"`
+	// The type of the cluster. Valid values:
+	//
+	// *   0: regular Docker cluster
+	// *   1: Swarm cluster
+	// *   2: Elastic Compute Service (ECS) cluster
+	// *   3: self-managed Kubernetes cluster in EDAS
+	// *   4: cluster in which Pandora automatically registers applications
+	// *   5: ACK cluster
+	ClusterType *int32 `json:"ClusterType,omitempty" xml:"ClusterType,omitempty"`
+	// The total number of CPU cores.
+	Cpu *int32 `json:"Cpu,omitempty" xml:"Cpu,omitempty"`
+	// The number of used CPU cores.
+	CpuUsed *int32 `json:"CpuUsed,omitempty" xml:"CpuUsed,omitempty"`
+	// The time when the cluster was created. This value is a UNIX timestamp representing the number of milliseconds that have elapsed since January 1, 1970, 00:00:00 UTC.
+	CreateTime *int64 `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
+	// The ID of the Container Service for Kubernetes (ACK) cluster.
+	CsClusterId *string `json:"CsClusterId,omitempty" xml:"CsClusterId,omitempty"`
+	// The description of the cluster.
+	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
+	// The provider of Infrastructure as a Service (IaaS) resources used in the cluster.
+	IaasProvider *string `json:"IaasProvider,omitempty" xml:"IaasProvider,omitempty"`
+	// The total size of memory. Unit: MB.
+	Mem *int32 `json:"Mem,omitempty" xml:"Mem,omitempty"`
+	// The size of used memory. Unit: MB.
+	MemUsed *int32 `json:"MemUsed,omitempty" xml:"MemUsed,omitempty"`
+	// The network type of the cluster. Valid values:
+	//
+	// *   1: classic network
+	// *   2: virtual private cloud (VPC)
+	NetworkMode *int32 `json:"NetworkMode,omitempty" xml:"NetworkMode,omitempty"`
+	// The number of ECS instances.
+	NodeNum *int32 `json:"NodeNum,omitempty" xml:"NodeNum,omitempty"`
+	// The overcommit ratio supported by a Docker cluster. Valid values:
+	//
+	// *   1: 1:1, which means that resources are not overcommitted.
+	// *   2: 1:2, which means that resources are overcommitted by 1:2.
+	// *   4: 1:4, which means that resources are overcommitted by 1:4.
+	// *   8: 1:8, which means that resources are overcommitted by 1:8.
+	OversoldFactor *int32 `json:"OversoldFactor,omitempty" xml:"OversoldFactor,omitempty"`
+	// The ID of the region where the cluster resides.
+	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	// The subtype of the Kubernetes cluster. Valid values: ManagedKubernetes, Ask, and ExternalKubernetes. ManagedKubernetes refers to the ACK cluster. Ask refers to the Serverless Kubernetes (ASK) cluster. ExternalKubernetes refers to the external cluster.
+	SubClusterType *string `json:"SubClusterType,omitempty" xml:"SubClusterType,omitempty"`
+	// The time when the cluster was last modified. This value is a UNIX timestamp representing the number of milliseconds that have elapsed since January 1, 1970, 00:00:00 UTC.
+	UpdateTime *int64 `json:"UpdateTime,omitempty" xml:"UpdateTime,omitempty"`
+	// The ID of the virtual private cloud (VPC).
+	VpcId *string `json:"VpcId,omitempty" xml:"VpcId,omitempty"`
 }
 
 func (s GetClusterResponseBodyCluster) String() string {
@@ -7075,7 +8500,12 @@ func (s *GetClusterResponse) SetBody(v *GetClusterResponseBody) *GetClusterRespo
 }
 
 type GetContainerConfigurationRequest struct {
-	AppId   *string `json:"AppId,omitempty" xml:"AppId,omitempty"`
+	// The ID of the application.
+	AppId *string `json:"AppId,omitempty" xml:"AppId,omitempty"`
+	// The ID of the instance group.
+	//
+	// *   If this parameter is specified, this operation queries the Tomcat configuration of the instance group.
+	// *   If this parameter is not specified, this operation queries the Tomcat configuration of the application.
 	GroupId *string `json:"GroupId,omitempty" xml:"GroupId,omitempty"`
 }
 
@@ -7098,10 +8528,14 @@ func (s *GetContainerConfigurationRequest) SetGroupId(v string) *GetContainerCon
 }
 
 type GetContainerConfigurationResponseBody struct {
-	Code                   *int32                                                       `json:"Code,omitempty" xml:"Code,omitempty"`
+	// The HTTP status code that is returned.
+	Code *int32 `json:"Code,omitempty" xml:"Code,omitempty"`
+	// The Tomcat configuration.
 	ContainerConfiguration *GetContainerConfigurationResponseBodyContainerConfiguration `json:"ContainerConfiguration,omitempty" xml:"ContainerConfiguration,omitempty" type:"Struct"`
-	Message                *string                                                      `json:"Message,omitempty" xml:"Message,omitempty"`
-	RequestId              *string                                                      `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The message returned for the request.
+	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// The ID of the request.
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
 func (s GetContainerConfigurationResponseBody) String() string {
@@ -7133,11 +8567,25 @@ func (s *GetContainerConfigurationResponseBody) SetRequestId(v string) *GetConta
 }
 
 type GetContainerConfigurationResponseBodyContainerConfiguration struct {
-	ContextPath     *string `json:"ContextPath,omitempty" xml:"ContextPath,omitempty"`
-	HttpPort        *int32  `json:"HttpPort,omitempty" xml:"HttpPort,omitempty"`
-	MaxThreads      *int32  `json:"MaxThreads,omitempty" xml:"MaxThreads,omitempty"`
-	URIEncoding     *string `json:"URIEncoding,omitempty" xml:"URIEncoding,omitempty"`
-	UseBodyEncoding *bool   `json:"UseBodyEncoding,omitempty" xml:"UseBodyEncoding,omitempty"`
+	// The context path of the Tomcat container.
+	ContextPath *string `json:"ContextPath,omitempty" xml:"ContextPath,omitempty"`
+	// The application port number for the Tomcat container. The value specified in the application configuration is returned.
+	HttpPort *int32 `json:"HttpPort,omitempty" xml:"HttpPort,omitempty"`
+	// The maximum number of threads in the Tomcat container.
+	//
+	// *   If no instance group is specified, the configuration of the application is returned.
+	// *   If no application is specified, the default configuration is returned.
+	MaxThreads *int32 `json:"MaxThreads,omitempty" xml:"MaxThreads,omitempty"`
+	// The Uniform Resource Identifier (URI) encoding scheme. Valid values: ISO-8859-1, GBK, GB2312, and UTF-8.
+	//
+	// *   If no instance group is specified, the configuration of the application is returned.
+	// *   If no application is specified, the default configuration is returned.
+	URIEncoding *string `json:"URIEncoding,omitempty" xml:"URIEncoding,omitempty"`
+	// Indicates whether useBodyEncodingForURI is enabled in the Tomcat container.
+	//
+	// *   If no instance group is specified, the configuration of the application is returned.
+	// *   If no application is specified, the default configuration is returned.
+	UseBodyEncoding *bool `json:"UseBodyEncoding,omitempty" xml:"UseBodyEncoding,omitempty"`
 }
 
 func (s GetContainerConfigurationResponseBodyContainerConfiguration) String() string {
@@ -7203,6 +8651,7 @@ func (s *GetContainerConfigurationResponse) SetBody(v *GetContainerConfiguration
 }
 
 type GetJavaStartUpConfigRequest struct {
+	// The ID of the application.
 	AppId *string `json:"AppId,omitempty" xml:"AppId,omitempty"`
 }
 
@@ -7220,10 +8669,14 @@ func (s *GetJavaStartUpConfigRequest) SetAppId(v string) *GetJavaStartUpConfigRe
 }
 
 type GetJavaStartUpConfigResponseBody struct {
-	Code              *int32                                             `json:"Code,omitempty" xml:"Code,omitempty"`
+	// The HTTP status code that is returned.
+	Code *int32 `json:"Code,omitempty" xml:"Code,omitempty"`
+	// The configuration of Java startup parameters.
 	JavaStartUpConfig *GetJavaStartUpConfigResponseBodyJavaStartUpConfig `json:"JavaStartUpConfig,omitempty" xml:"JavaStartUpConfig,omitempty" type:"Struct"`
-	Message           *string                                            `json:"Message,omitempty" xml:"Message,omitempty"`
-	RequestId         *string                                            `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The message that is returned.
+	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// The ID of the request.
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
 func (s GetJavaStartUpConfigResponseBody) String() string {
@@ -7255,8 +8708,10 @@ func (s *GetJavaStartUpConfigResponseBody) SetRequestId(v string) *GetJavaStartU
 }
 
 type GetJavaStartUpConfigResponseBodyJavaStartUpConfig struct {
+	// The displayed startup parameter configuration.
 	OriginalConfigs *string `json:"OriginalConfigs,omitempty" xml:"OriginalConfigs,omitempty"`
-	StartUpArgs     *string `json:"StartUpArgs,omitempty" xml:"StartUpArgs,omitempty"`
+	// The effective startup parameter configuration.
+	StartUpArgs *string `json:"StartUpArgs,omitempty" xml:"StartUpArgs,omitempty"`
 }
 
 func (s GetJavaStartUpConfigResponseBodyJavaStartUpConfig) String() string {
@@ -7307,7 +8762,12 @@ func (s *GetJavaStartUpConfigResponse) SetBody(v *GetJavaStartUpConfigResponseBo
 }
 
 type GetJvmConfigurationRequest struct {
-	AppId   *string `json:"AppId,omitempty" xml:"AppId,omitempty"`
+	// The ID of the application.
+	AppId *string `json:"AppId,omitempty" xml:"AppId,omitempty"`
+	// The ID of the instance group.
+	//
+	// *   If an ID is specified, this operation queries the JVM configuration information of the instance group.
+	// *   If an ID is not specified, this operation queries the JVM configuration information of the application.
 	GroupId *string `json:"GroupId,omitempty" xml:"GroupId,omitempty"`
 }
 
@@ -7330,10 +8790,14 @@ func (s *GetJvmConfigurationRequest) SetGroupId(v string) *GetJvmConfigurationRe
 }
 
 type GetJvmConfigurationResponseBody struct {
-	Code             *int32                                           `json:"Code,omitempty" xml:"Code,omitempty"`
+	// The HTTP status code that is returned.
+	Code *int32 `json:"Code,omitempty" xml:"Code,omitempty"`
+	// The JVM configuration of the application or instance group.
 	JvmConfiguration *GetJvmConfigurationResponseBodyJvmConfiguration `json:"JvmConfiguration,omitempty" xml:"JvmConfiguration,omitempty" type:"Struct"`
-	Message          *string                                          `json:"Message,omitempty" xml:"Message,omitempty"`
-	RequestId        *string                                          `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The additional information that is returned.
+	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// The ID of the request.
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
 func (s GetJvmConfigurationResponseBody) String() string {
@@ -7365,10 +8829,14 @@ func (s *GetJvmConfigurationResponseBody) SetRequestId(v string) *GetJvmConfigur
 }
 
 type GetJvmConfigurationResponseBodyJvmConfiguration struct {
-	MaxHeapSize *int32  `json:"MaxHeapSize,omitempty" xml:"MaxHeapSize,omitempty"`
-	MaxPermSize *int32  `json:"MaxPermSize,omitempty" xml:"MaxPermSize,omitempty"`
-	MinHeapSize *int32  `json:"MinHeapSize,omitempty" xml:"MinHeapSize,omitempty"`
-	Options     *string `json:"Options,omitempty" xml:"Options,omitempty"`
+	// The maximum size of the heap memory. Unit: MB.
+	MaxHeapSize *int32 `json:"MaxHeapSize,omitempty" xml:"MaxHeapSize,omitempty"`
+	// The size of the permanent generation heap memory. Unit: MB.
+	MaxPermSize *int32 `json:"MaxPermSize,omitempty" xml:"MaxPermSize,omitempty"`
+	// The initial size of the heap memory. Unit: MB.
+	MinHeapSize *int32 `json:"MinHeapSize,omitempty" xml:"MinHeapSize,omitempty"`
+	// The custom parameter.
+	Options *string `json:"Options,omitempty" xml:"Options,omitempty"`
 }
 
 func (s GetJvmConfigurationResponseBodyJvmConfiguration) String() string {
@@ -7429,8 +8897,11 @@ func (s *GetJvmConfigurationResponse) SetBody(v *GetJvmConfigurationResponseBody
 }
 
 type GetK8sAppPrecheckResultRequest struct {
-	AppName   *string `json:"AppName,omitempty" xml:"AppName,omitempty"`
+	// The name of the application.
+	AppName *string `json:"AppName,omitempty" xml:"AppName,omitempty"`
+	// The ID of the cluster in Enterprise Distributed Application Service (EDAS).
 	ClusterId *string `json:"ClusterId,omitempty" xml:"ClusterId,omitempty"`
+	// The namespace of the Kubernetes cluster.
 	Namespace *string `json:"Namespace,omitempty" xml:"Namespace,omitempty"`
 }
 
@@ -7458,10 +8929,14 @@ func (s *GetK8sAppPrecheckResultRequest) SetNamespace(v string) *GetK8sAppPreche
 }
 
 type GetK8sAppPrecheckResultResponseBody struct {
-	Code      *int32                                   `json:"Code,omitempty" xml:"Code,omitempty"`
-	Data      *GetK8sAppPrecheckResultResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
-	Message   *string                                  `json:"Message,omitempty" xml:"Message,omitempty"`
-	RequestId *string                                  `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The HTTP status code that is returned.
+	Code *int32 `json:"Code,omitempty" xml:"Code,omitempty"`
+	// The data that is returned.
+	Data *GetK8sAppPrecheckResultResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
+	// The additional information that is returned.
+	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// The ID of the request.
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
 func (s GetK8sAppPrecheckResultResponseBody) String() string {
@@ -7493,9 +8968,16 @@ func (s *GetK8sAppPrecheckResultResponseBody) SetRequestId(v string) *GetK8sAppP
 }
 
 type GetK8sAppPrecheckResultResponseBodyData struct {
+	// The precheck result for the application change.
 	JobResults []*GetK8sAppPrecheckResultResponseBodyDataJobResults `json:"JobResults,omitempty" xml:"JobResults,omitempty" type:"Repeated"`
-	Reason     *string                                              `json:"Reason,omitempty" xml:"Reason,omitempty"`
-	Status     *string                                              `json:"Status,omitempty" xml:"Status,omitempty"`
+	// The reason why the application failed the precheck. This parameter is left empty when the application passed the precheck.
+	Reason *string `json:"Reason,omitempty" xml:"Reason,omitempty"`
+	// The precheck state for the application change. Valid values:
+	//
+	// *   checking: The application is being prechecked.
+	// *   pass: The application passed the precheck.
+	// *   failed: The application failed the precheck.
+	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
 }
 
 func (s GetK8sAppPrecheckResultResponseBodyData) String() string {
@@ -7522,10 +9004,20 @@ func (s *GetK8sAppPrecheckResultResponseBodyData) SetStatus(v string) *GetK8sApp
 }
 
 type GetK8sAppPrecheckResultResponseBodyDataJobResults struct {
-	Interrupted *bool   `json:"Interrupted,omitempty" xml:"Interrupted,omitempty"`
-	Name        *string `json:"Name,omitempty" xml:"Name,omitempty"`
-	Pass        *bool   `json:"Pass,omitempty" xml:"Pass,omitempty"`
-	Reason      *string `json:"Reason,omitempty" xml:"Reason,omitempty"`
+	// Specifies whether the precheck of the item was interrupted:
+	//
+	// *   true: The precheck of the item was interrupted.
+	// *   false: The precheck of the item was not interrupted.
+	Interrupted *bool `json:"Interrupted,omitempty" xml:"Interrupted,omitempty"`
+	// The name of the precheck item.
+	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// Indicates whether the precheck item passed the precheck:
+	//
+	// *   true: The precheck item passed the precheck.
+	// *   false: The precheck item failed the precheck.
+	Pass *bool `json:"Pass,omitempty" xml:"Pass,omitempty"`
+	// The reason why the precheck item failed the precheck or the precheck of the item was interrupted. This parameter is left empty when the application passed the precheck.
+	Reason *string `json:"Reason,omitempty" xml:"Reason,omitempty"`
 }
 
 func (s GetK8sAppPrecheckResultResponseBodyDataJobResults) String() string {
@@ -7586,8 +9078,13 @@ func (s *GetK8sAppPrecheckResultResponse) SetBody(v *GetK8sAppPrecheckResultResp
 }
 
 type GetK8sApplicationRequest struct {
+	// The ID of the application. You can call the ListApplication operation to query the application ID. For more information, see [ListApplication](~~149390~~).
 	AppId *string `json:"AppId,omitempty" xml:"AppId,omitempty"`
-	From  *string `json:"From,omitempty" xml:"From,omitempty"`
+	// The source from which data is queried.
+	//
+	// *   If you leave this parameter empty, a common query is performed.
+	// *   If you set the value to deploy, you query application information from the deployment page.
+	From *string `json:"From,omitempty" xml:"From,omitempty"`
 }
 
 func (s GetK8sApplicationRequest) String() string {
@@ -7609,10 +9106,14 @@ func (s *GetK8sApplicationRequest) SetFrom(v string) *GetK8sApplicationRequest {
 }
 
 type GetK8sApplicationResponseBody struct {
+	// The details of the application.
 	Applcation *GetK8sApplicationResponseBodyApplcation `json:"Applcation,omitempty" xml:"Applcation,omitempty" type:"Struct"`
-	Code       *int32                                   `json:"Code,omitempty" xml:"Code,omitempty"`
-	Message    *string                                  `json:"Message,omitempty" xml:"Message,omitempty"`
-	RequestId  *string                                  `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The HTTP status code that is returned.
+	Code *int32 `json:"Code,omitempty" xml:"Code,omitempty"`
+	// The additional information that is returned.
+	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// The ID of the request.
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
 func (s GetK8sApplicationResponseBody) String() string {
@@ -7644,11 +9145,17 @@ func (s *GetK8sApplicationResponseBody) SetRequestId(v string) *GetK8sApplicatio
 }
 
 type GetK8sApplicationResponseBodyApplcation struct {
-	App           *GetK8sApplicationResponseBodyApplcationApp           `json:"App,omitempty" xml:"App,omitempty" type:"Struct"`
-	AppId         *string                                               `json:"AppId,omitempty" xml:"AppId,omitempty"`
-	Conf          *GetK8sApplicationResponseBodyApplcationConf          `json:"Conf,omitempty" xml:"Conf,omitempty" type:"Struct"`
-	DeployGroups  *GetK8sApplicationResponseBodyApplcationDeployGroups  `json:"DeployGroups,omitempty" xml:"DeployGroups,omitempty" type:"Struct"`
-	ImageInfo     *GetK8sApplicationResponseBodyApplcationImageInfo     `json:"ImageInfo,omitempty" xml:"ImageInfo,omitempty" type:"Struct"`
+	// The basic information about the application.
+	App *GetK8sApplicationResponseBodyApplcationApp `json:"App,omitempty" xml:"App,omitempty" type:"Struct"`
+	// The ID of the application. You can call the ListApplication operation to query the application ID. For more information, see [ListApplication](~~149390~~).
+	AppId *string `json:"AppId,omitempty" xml:"AppId,omitempty"`
+	// The configurations.
+	Conf *GetK8sApplicationResponseBodyApplcationConf `json:"Conf,omitempty" xml:"Conf,omitempty" type:"Struct"`
+	// The information about the instance group in which the application is deployed.
+	DeployGroups *GetK8sApplicationResponseBodyApplcationDeployGroups `json:"DeployGroups,omitempty" xml:"DeployGroups,omitempty" type:"Struct"`
+	// The information about the image.
+	ImageInfo *GetK8sApplicationResponseBodyApplcationImageInfo `json:"ImageInfo,omitempty" xml:"ImageInfo,omitempty" type:"Struct"`
+	// The information about the latest version.
 	LatestVersion *GetK8sApplicationResponseBodyApplcationLatestVersion `json:"LatestVersion,omitempty" xml:"LatestVersion,omitempty" type:"Struct"`
 }
 
@@ -7691,28 +9198,76 @@ func (s *GetK8sApplicationResponseBodyApplcation) SetLatestVersion(v *GetK8sAppl
 }
 
 type GetK8sApplicationResponseBodyApplcationApp struct {
-	AppId                  *string                                            `json:"AppId,omitempty" xml:"AppId,omitempty"`
-	ApplicationName        *string                                            `json:"ApplicationName,omitempty" xml:"ApplicationName,omitempty"`
-	ApplicationType        *string                                            `json:"ApplicationType,omitempty" xml:"ApplicationType,omitempty"`
-	BuildpackId            *int32                                             `json:"BuildpackId,omitempty" xml:"BuildpackId,omitempty"`
-	ClusterId              *string                                            `json:"ClusterId,omitempty" xml:"ClusterId,omitempty"`
-	Cmd                    *string                                            `json:"Cmd,omitempty" xml:"Cmd,omitempty"`
-	CmdArgs                *GetK8sApplicationResponseBodyApplcationAppCmdArgs `json:"CmdArgs,omitempty" xml:"CmdArgs,omitempty" type:"Struct"`
-	CsClusterId            *string                                            `json:"CsClusterId,omitempty" xml:"CsClusterId,omitempty"`
-	DeployType             *string                                            `json:"DeployType,omitempty" xml:"DeployType,omitempty"`
-	DevelopType            *string                                            `json:"DevelopType,omitempty" xml:"DevelopType,omitempty"`
-	EdasContainerVersion   *string                                            `json:"EdasContainerVersion,omitempty" xml:"EdasContainerVersion,omitempty"`
-	EnvList                *GetK8sApplicationResponseBodyApplcationAppEnvList `json:"EnvList,omitempty" xml:"EnvList,omitempty" type:"Struct"`
-	Instances              *int32                                             `json:"Instances,omitempty" xml:"Instances,omitempty"`
-	InstancesBeforeScaling *int32                                             `json:"InstancesBeforeScaling,omitempty" xml:"InstancesBeforeScaling,omitempty"`
-	K8sNamespace           *string                                            `json:"K8sNamespace,omitempty" xml:"K8sNamespace,omitempty"`
-	LimitCpuM              *int32                                             `json:"LimitCpuM,omitempty" xml:"LimitCpuM,omitempty"`
-	LimitMem               *int32                                             `json:"LimitMem,omitempty" xml:"LimitMem,omitempty"`
-	RegionId               *string                                            `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	RequestCpuM            *int32                                             `json:"RequestCpuM,omitempty" xml:"RequestCpuM,omitempty"`
-	RequestMem             *int32                                             `json:"RequestMem,omitempty" xml:"RequestMem,omitempty"`
-	SlbInfo                *string                                            `json:"SlbInfo,omitempty" xml:"SlbInfo,omitempty"`
-	TomcatVersion          *string                                            `json:"TomcatVersion,omitempty" xml:"TomcatVersion,omitempty"`
+	// The annotation of an application pod.
+	Annotations *string `json:"Annotations,omitempty" xml:"Annotations,omitempty"`
+	// The ID of the application. You can call the ListApplication operation to query the application ID. For more information, see [ListApplication](~~149390~~).
+	AppId *string `json:"AppId,omitempty" xml:"AppId,omitempty"`
+	// The name of the application.
+	ApplicationName *string `json:"ApplicationName,omitempty" xml:"ApplicationName,omitempty"`
+	// The type of the application.
+	ApplicationType *string `json:"ApplicationType,omitempty" xml:"ApplicationType,omitempty"`
+	// The build package number of Enterprise Distributed Application Service (EDAS) Container.
+	BuildpackId *int32 `json:"BuildpackId,omitempty" xml:"BuildpackId,omitempty"`
+	// The ID of the cluster.
+	ClusterId *string `json:"ClusterId,omitempty" xml:"ClusterId,omitempty"`
+	// The startup command.
+	Cmd *string `json:"Cmd,omitempty" xml:"Cmd,omitempty"`
+	// The list of commands.
+	CmdArgs *GetK8sApplicationResponseBodyApplcationAppCmdArgs `json:"CmdArgs,omitempty" xml:"CmdArgs,omitempty" type:"Struct"`
+	// The ID of the cluster to which the container belongs.
+	CsClusterId *string `json:"CsClusterId,omitempty" xml:"CsClusterId,omitempty"`
+	// The deployment type of the application. Example: Image.
+	DeployType *string `json:"DeployType,omitempty" xml:"DeployType,omitempty"`
+	// The type of the application. Valid values:
+	//
+	// *   General: native Java application
+	// *   Pandora: Pandora application
+	// *   Multilingual: multilingual application
+	DevelopType *string `json:"DevelopType,omitempty" xml:"DevelopType,omitempty"`
+	// The version of EDAS Container.
+	EdasContainerVersion *string `json:"EdasContainerVersion,omitempty" xml:"EdasContainerVersion,omitempty"`
+	// 应用是否开启了推空保护。
+	EnableEmptyPushReject *bool `json:"EnableEmptyPushReject,omitempty" xml:"EnableEmptyPushReject,omitempty"`
+	// 应用是否开启了无损上线。
+	EnableLosslessRule *bool `json:"EnableLosslessRule,omitempty" xml:"EnableLosslessRule,omitempty"`
+	// The list of environment variables.
+	EnvList *GetK8sApplicationResponseBodyApplcationAppEnvList `json:"EnvList,omitempty" xml:"EnvList,omitempty" type:"Struct"`
+	// The number of application instances.
+	Instances *int32 `json:"Instances,omitempty" xml:"Instances,omitempty"`
+	// The number of application instances before the last auto scaling operation.
+	InstancesBeforeScaling *int32 `json:"InstancesBeforeScaling,omitempty" xml:"InstancesBeforeScaling,omitempty"`
+	// The namespace of the Kubernetes cluster.
+	K8sNamespace *string `json:"K8sNamespace,omitempty" xml:"K8sNamespace,omitempty"`
+	// The label of an application pod.
+	Labels *string `json:"Labels,omitempty" xml:"Labels,omitempty"`
+	// The maximum number of CPU cores allowed. Unit: millicores. 1,000 millicores equal one CPU core.
+	LimitCpuM *int32 `json:"LimitCpuM,omitempty" xml:"LimitCpuM,omitempty"`
+	// The maximum size of space required by ephemeral storage. Unit: GB. Value 0 indicates that no limit is set on the space size.
+	LimitEphemeralStorage *string `json:"LimitEphemeralStorage,omitempty" xml:"LimitEphemeralStorage,omitempty"`
+	// The maximum size of the memory allowed. Unit: MiB.
+	LimitMem *int32 `json:"LimitMem,omitempty" xml:"LimitMem,omitempty"`
+	// 应用是否启用了无损滚动发布模式配置通过就绪检查前完成服务注册。
+	LosslessRuleAligned *bool `json:"LosslessRuleAligned,omitempty" xml:"LosslessRuleAligned,omitempty"`
+	// 应用配置的服务延迟注册时长，单位：秒。
+	LosslessRuleDelayTime *int32 `json:"LosslessRuleDelayTime,omitempty" xml:"LosslessRuleDelayTime,omitempty"`
+	// 应用设置的服务预热曲线。
+	LosslessRuleFuncType *int32 `json:"LosslessRuleFuncType,omitempty" xml:"LosslessRuleFuncType,omitempty"`
+	// 应用是否启用了无损滚动发布模式配置通过就绪检查前完成服务预热。
+	LosslessRuleRelated *bool `json:"LosslessRuleRelated,omitempty" xml:"LosslessRuleRelated,omitempty"`
+	// 应用设置的服务预热时长，单位：秒。
+	LosslessRuleWarmupTime *int32 `json:"LosslessRuleWarmupTime,omitempty" xml:"LosslessRuleWarmupTime,omitempty"`
+	// The ID of the region.
+	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	// The number of requested CPU cores. Unit: millicores. 1,000 millicores equal one CPU core.
+	RequestCpuM *int32 `json:"RequestCpuM,omitempty" xml:"RequestCpuM,omitempty"`
+	// The size of space reserved for ephemeral storage resources. Unit: GB. Value 0 indicates that no limit is set on the space size.
+	RequestEphemeralStorage *string `json:"RequestEphemeralStorage,omitempty" xml:"RequestEphemeralStorage,omitempty"`
+	// The size of the reserved memory. Unit: MiB.
+	RequestMem *int32 `json:"RequestMem,omitempty" xml:"RequestMem,omitempty"`
+	// The configuration information about the Server Load Balancer (SLB).
+	SlbInfo *string `json:"SlbInfo,omitempty" xml:"SlbInfo,omitempty"`
+	// The version of Apache Tomcat.
+	TomcatVersion *string `json:"TomcatVersion,omitempty" xml:"TomcatVersion,omitempty"`
 }
 
 func (s GetK8sApplicationResponseBodyApplcationApp) String() string {
@@ -7721,6 +9276,11 @@ func (s GetK8sApplicationResponseBodyApplcationApp) String() string {
 
 func (s GetK8sApplicationResponseBodyApplcationApp) GoString() string {
 	return s.String()
+}
+
+func (s *GetK8sApplicationResponseBodyApplcationApp) SetAnnotations(v string) *GetK8sApplicationResponseBodyApplcationApp {
+	s.Annotations = &v
+	return s
 }
 
 func (s *GetK8sApplicationResponseBodyApplcationApp) SetAppId(v string) *GetK8sApplicationResponseBodyApplcationApp {
@@ -7778,6 +9338,16 @@ func (s *GetK8sApplicationResponseBodyApplcationApp) SetEdasContainerVersion(v s
 	return s
 }
 
+func (s *GetK8sApplicationResponseBodyApplcationApp) SetEnableEmptyPushReject(v bool) *GetK8sApplicationResponseBodyApplcationApp {
+	s.EnableEmptyPushReject = &v
+	return s
+}
+
+func (s *GetK8sApplicationResponseBodyApplcationApp) SetEnableLosslessRule(v bool) *GetK8sApplicationResponseBodyApplcationApp {
+	s.EnableLosslessRule = &v
+	return s
+}
+
 func (s *GetK8sApplicationResponseBodyApplcationApp) SetEnvList(v *GetK8sApplicationResponseBodyApplcationAppEnvList) *GetK8sApplicationResponseBodyApplcationApp {
 	s.EnvList = v
 	return s
@@ -7798,13 +9368,48 @@ func (s *GetK8sApplicationResponseBodyApplcationApp) SetK8sNamespace(v string) *
 	return s
 }
 
+func (s *GetK8sApplicationResponseBodyApplcationApp) SetLabels(v string) *GetK8sApplicationResponseBodyApplcationApp {
+	s.Labels = &v
+	return s
+}
+
 func (s *GetK8sApplicationResponseBodyApplcationApp) SetLimitCpuM(v int32) *GetK8sApplicationResponseBodyApplcationApp {
 	s.LimitCpuM = &v
 	return s
 }
 
+func (s *GetK8sApplicationResponseBodyApplcationApp) SetLimitEphemeralStorage(v string) *GetK8sApplicationResponseBodyApplcationApp {
+	s.LimitEphemeralStorage = &v
+	return s
+}
+
 func (s *GetK8sApplicationResponseBodyApplcationApp) SetLimitMem(v int32) *GetK8sApplicationResponseBodyApplcationApp {
 	s.LimitMem = &v
+	return s
+}
+
+func (s *GetK8sApplicationResponseBodyApplcationApp) SetLosslessRuleAligned(v bool) *GetK8sApplicationResponseBodyApplcationApp {
+	s.LosslessRuleAligned = &v
+	return s
+}
+
+func (s *GetK8sApplicationResponseBodyApplcationApp) SetLosslessRuleDelayTime(v int32) *GetK8sApplicationResponseBodyApplcationApp {
+	s.LosslessRuleDelayTime = &v
+	return s
+}
+
+func (s *GetK8sApplicationResponseBodyApplcationApp) SetLosslessRuleFuncType(v int32) *GetK8sApplicationResponseBodyApplcationApp {
+	s.LosslessRuleFuncType = &v
+	return s
+}
+
+func (s *GetK8sApplicationResponseBodyApplcationApp) SetLosslessRuleRelated(v bool) *GetK8sApplicationResponseBodyApplcationApp {
+	s.LosslessRuleRelated = &v
+	return s
+}
+
+func (s *GetK8sApplicationResponseBodyApplcationApp) SetLosslessRuleWarmupTime(v int32) *GetK8sApplicationResponseBodyApplcationApp {
+	s.LosslessRuleWarmupTime = &v
 	return s
 }
 
@@ -7815,6 +9420,11 @@ func (s *GetK8sApplicationResponseBodyApplcationApp) SetRegionId(v string) *GetK
 
 func (s *GetK8sApplicationResponseBodyApplcationApp) SetRequestCpuM(v int32) *GetK8sApplicationResponseBodyApplcationApp {
 	s.RequestCpuM = &v
+	return s
+}
+
+func (s *GetK8sApplicationResponseBodyApplcationApp) SetRequestEphemeralStorage(v string) *GetK8sApplicationResponseBodyApplcationApp {
+	s.RequestEphemeralStorage = &v
 	return s
 }
 
@@ -7868,7 +9478,9 @@ func (s *GetK8sApplicationResponseBodyApplcationAppEnvList) SetEnv(v []*GetK8sAp
 }
 
 type GetK8sApplicationResponseBodyApplcationAppEnvListEnv struct {
-	Name  *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// The name of the environment variable.
+	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// The value of the environment variable.
 	Value *string `json:"Value,omitempty" xml:"Value,omitempty"`
 }
 
@@ -7891,23 +9503,48 @@ func (s *GetK8sApplicationResponseBodyApplcationAppEnvListEnv) SetValue(v string
 }
 
 type GetK8sApplicationResponseBodyApplcationConf struct {
-	Affinity           *string `json:"Affinity,omitempty" xml:"Affinity,omitempty"`
-	AhasEnabled        *bool   `json:"AhasEnabled,omitempty" xml:"AhasEnabled,omitempty"`
-	DeployAcrossNodes  *string `json:"DeployAcrossNodes,omitempty" xml:"DeployAcrossNodes,omitempty"`
-	DeployAcrossZones  *string `json:"DeployAcrossZones,omitempty" xml:"DeployAcrossZones,omitempty"`
-	JarStartArgs       *string `json:"JarStartArgs,omitempty" xml:"JarStartArgs,omitempty"`
-	JarStartOptions    *string `json:"JarStartOptions,omitempty" xml:"JarStartOptions,omitempty"`
-	K8sCmd             *string `json:"K8sCmd,omitempty" xml:"K8sCmd,omitempty"`
-	K8sCmdArgs         *string `json:"K8sCmdArgs,omitempty" xml:"K8sCmdArgs,omitempty"`
+	// The affinity configuration of the pod.
+	Affinity *string `json:"Affinity,omitempty" xml:"Affinity,omitempty"`
+	// Indicates whether the application is connected to Application High Availability Service (AHAS).
+	AhasEnabled *bool `json:"AhasEnabled,omitempty" xml:"AhasEnabled,omitempty"`
+	// Indicates whether the application instances are deployed across nodes.
+	//
+	// *   Value `true` indicates that the application instances are deployed across nodes.
+	// *   Other values indicate that the application instances are not deployed across nodes.
+	DeployAcrossNodes *string `json:"DeployAcrossNodes,omitempty" xml:"DeployAcrossNodes,omitempty"`
+	// Indicates whether the application instances are deployed across zones.
+	//
+	// *   Value `true` indicates that the application instances are deployed across zones.
+	// *   Other values indicate that the application instances are not deployed across zones.
+	DeployAcrossZones *string `json:"DeployAcrossZones,omitempty" xml:"DeployAcrossZones,omitempty"`
+	// The startup parameters for a JAR application. This parameter is deprecated.
+	JarStartArgs *string `json:"JarStartArgs,omitempty" xml:"JarStartArgs,omitempty"`
+	// The startup options for a JAR application. This parameter is deprecated.
+	JarStartOptions *string `json:"JarStartOptions,omitempty" xml:"JarStartOptions,omitempty"`
+	// The startup command.
+	K8sCmd *string `json:"K8sCmd,omitempty" xml:"K8sCmd,omitempty"`
+	// The parameters of the startup command.
+	K8sCmdArgs *string `json:"K8sCmdArgs,omitempty" xml:"K8sCmdArgs,omitempty"`
+	// The information about the local storage.
 	K8sLocalvolumeInfo *string `json:"K8sLocalvolumeInfo,omitempty" xml:"K8sLocalvolumeInfo,omitempty"`
-	K8sNasInfo         *string `json:"K8sNasInfo,omitempty" xml:"K8sNasInfo,omitempty"`
-	K8sVolumeInfo      *string `json:"K8sVolumeInfo,omitempty" xml:"K8sVolumeInfo,omitempty"`
-	Liveness           *string `json:"Liveness,omitempty" xml:"Liveness,omitempty"`
-	PostStart          *string `json:"PostStart,omitempty" xml:"PostStart,omitempty"`
-	PreStop            *string `json:"PreStop,omitempty" xml:"PreStop,omitempty"`
-	Readiness          *string `json:"Readiness,omitempty" xml:"Readiness,omitempty"`
-	RuntimeClassName   *string `json:"RuntimeClassName,omitempty" xml:"RuntimeClassName,omitempty"`
-	Tolerations        *string `json:"Tolerations,omitempty" xml:"Tolerations,omitempty"`
+	// The information about the Apsara File Storage NAS (NAS) storage.
+	K8sNasInfo *string `json:"K8sNasInfo,omitempty" xml:"K8sNasInfo,omitempty"`
+	// The information about the storage.
+	K8sVolumeInfo *string `json:"K8sVolumeInfo,omitempty" xml:"K8sVolumeInfo,omitempty"`
+	// The information about the liveness check on the container.
+	Liveness *string `json:"Liveness,omitempty" xml:"Liveness,omitempty"`
+	// The script executed after the container is started.
+	PostStart *string `json:"PostStart,omitempty" xml:"PostStart,omitempty"`
+	// The script executed before the container is stopped.
+	PreStop *string `json:"PreStop,omitempty" xml:"PreStop,omitempty"`
+	// The information about the readiness check on the container.
+	Readiness *string `json:"Readiness,omitempty" xml:"Readiness,omitempty"`
+	// The type of the container runtime. This parameter is applicable only to clusters that use sandboxed containers.
+	RuntimeClassName *string `json:"RuntimeClassName,omitempty" xml:"RuntimeClassName,omitempty"`
+	// The scheduling tolerance configuration of the pod.
+	Tolerations *string `json:"Tolerations,omitempty" xml:"Tolerations,omitempty"`
+	// 使用自定义OpenJDK运行时，配置的基础镜像地址。
+	UserBaseImageUrl *string `json:"UserBaseImageUrl,omitempty" xml:"UserBaseImageUrl,omitempty"`
 }
 
 func (s GetK8sApplicationResponseBodyApplcationConf) String() string {
@@ -8003,6 +9640,11 @@ func (s *GetK8sApplicationResponseBodyApplcationConf) SetTolerations(v string) *
 	return s
 }
 
+func (s *GetK8sApplicationResponseBodyApplcationConf) SetUserBaseImageUrl(v string) *GetK8sApplicationResponseBodyApplcationConf {
+	s.UserBaseImageUrl = &v
+	return s
+}
+
 type GetK8sApplicationResponseBodyApplcationDeployGroups struct {
 	DeployGroup []*GetK8sApplicationResponseBodyApplcationDeployGroupsDeployGroup `json:"DeployGroup,omitempty" xml:"DeployGroup,omitempty" type:"Repeated"`
 }
@@ -8021,8 +9663,12 @@ func (s *GetK8sApplicationResponseBodyApplcationDeployGroups) SetDeployGroup(v [
 }
 
 type GetK8sApplicationResponseBodyApplcationDeployGroupsDeployGroup struct {
+	// The information about the component.
 	Components *GetK8sApplicationResponseBodyApplcationDeployGroupsDeployGroupComponents `json:"Components,omitempty" xml:"Components,omitempty" type:"Struct"`
-	Env        *string                                                                   `json:"Env,omitempty" xml:"Env,omitempty"`
+	// The environment variable. This parameter is different from the EnvList parameter. This parameter specifies the referenced configuration of the ConfigMap or Secret.
+	Env *string `json:"Env,omitempty" xml:"Env,omitempty"`
+	// The source of the environment variable.
+	EnvFrom *string `json:"EnvFrom,omitempty" xml:"EnvFrom,omitempty"`
 }
 
 func (s GetK8sApplicationResponseBodyApplcationDeployGroupsDeployGroup) String() string {
@@ -8040,6 +9686,11 @@ func (s *GetK8sApplicationResponseBodyApplcationDeployGroupsDeployGroup) SetComp
 
 func (s *GetK8sApplicationResponseBodyApplcationDeployGroupsDeployGroup) SetEnv(v string) *GetK8sApplicationResponseBodyApplcationDeployGroupsDeployGroup {
 	s.Env = &v
+	return s
+}
+
+func (s *GetK8sApplicationResponseBodyApplcationDeployGroupsDeployGroup) SetEnvFrom(v string) *GetK8sApplicationResponseBodyApplcationDeployGroupsDeployGroup {
+	s.EnvFrom = &v
 	return s
 }
 
@@ -8061,9 +9712,12 @@ func (s *GetK8sApplicationResponseBodyApplcationDeployGroupsDeployGroupComponent
 }
 
 type GetK8sApplicationResponseBodyApplcationDeployGroupsDeployGroupComponentsComponents struct {
-	ComponentId  *string `json:"ComponentId,omitempty" xml:"ComponentId,omitempty"`
+	// The ID of the component.
+	ComponentId *string `json:"ComponentId,omitempty" xml:"ComponentId,omitempty"`
+	// The keyword that is included in the component name.
 	ComponentKey *string `json:"ComponentKey,omitempty" xml:"ComponentKey,omitempty"`
-	Type         *string `json:"Type,omitempty" xml:"Type,omitempty"`
+	// The type of the component. Valid values:
+	Type *string `json:"Type,omitempty" xml:"Type,omitempty"`
 }
 
 func (s GetK8sApplicationResponseBodyApplcationDeployGroupsDeployGroupComponentsComponents) String() string {
@@ -8090,13 +9744,20 @@ func (s *GetK8sApplicationResponseBodyApplcationDeployGroupsDeployGroupComponent
 }
 
 type GetK8sApplicationResponseBodyApplcationImageInfo struct {
-	ImageUrl       *string `json:"ImageUrl,omitempty" xml:"ImageUrl,omitempty"`
-	RegionId       *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	RepoId         *string `json:"RepoId,omitempty" xml:"RepoId,omitempty"`
-	RepoName       *string `json:"RepoName,omitempty" xml:"RepoName,omitempty"`
-	RepoNamespace  *string `json:"RepoNamespace,omitempty" xml:"RepoNamespace,omitempty"`
+	// The URL of the image.
+	ImageUrl *string `json:"ImageUrl,omitempty" xml:"ImageUrl,omitempty"`
+	// The region ID of the image repository.
+	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	// The ID of the image repository.
+	RepoId *string `json:"RepoId,omitempty" xml:"RepoId,omitempty"`
+	// The name of the image repository.
+	RepoName *string `json:"RepoName,omitempty" xml:"RepoName,omitempty"`
+	// The namespace to which the image repository belongs.
+	RepoNamespace *string `json:"RepoNamespace,omitempty" xml:"RepoNamespace,omitempty"`
+	// The source type of the image repository.
 	RepoOriginType *string `json:"RepoOriginType,omitempty" xml:"RepoOriginType,omitempty"`
-	Tag            *string `json:"Tag,omitempty" xml:"Tag,omitempty"`
+	// The tag of the image.
+	Tag *string `json:"Tag,omitempty" xml:"Tag,omitempty"`
 }
 
 func (s GetK8sApplicationResponseBodyApplcationImageInfo) String() string {
@@ -8143,9 +9804,12 @@ func (s *GetK8sApplicationResponseBodyApplcationImageInfo) SetTag(v string) *Get
 }
 
 type GetK8sApplicationResponseBodyApplcationLatestVersion struct {
+	// The version of the deployment package.
 	PackageVersion *string `json:"PackageVersion,omitempty" xml:"PackageVersion,omitempty"`
-	Url            *string `json:"Url,omitempty" xml:"Url,omitempty"`
-	WarUrl         *string `json:"WarUrl,omitempty" xml:"WarUrl,omitempty"`
+	// The URL of the deployment package. This parameter is required if you use a FatJar or WAR package to deploy the application.
+	Url *string `json:"Url,omitempty" xml:"Url,omitempty"`
+	// The URL of the deployment package. This parameter is required if you use a FatJar or WAR package to deploy the application.
+	WarUrl *string `json:"WarUrl,omitempty" xml:"WarUrl,omitempty"`
 }
 
 func (s GetK8sApplicationResponseBodyApplcationLatestVersion) String() string {
@@ -8201,10 +9865,21 @@ func (s *GetK8sApplicationResponse) SetBody(v *GetK8sApplicationResponseBody) *G
 }
 
 type GetK8sClusterRequest struct {
-	ClusterType    *int32  `json:"ClusterType,omitempty" xml:"ClusterType,omitempty"`
-	CurrentPage    *int32  `json:"CurrentPage,omitempty" xml:"CurrentPage,omitempty"`
-	PageSize       *int32  `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	RegionTag      *string `json:"RegionTag,omitempty" xml:"RegionTag,omitempty"`
+	// The type of the Kubernetes cluster. Valid values:
+	//
+	// *   5: ACK cluster
+	// *   7: self-managed Kubernetes cluster
+	ClusterType *int32 `json:"ClusterType,omitempty" xml:"ClusterType,omitempty"`
+	// The number of the page to return. Default value: 1.
+	CurrentPage *int32 `json:"CurrentPage,omitempty" xml:"CurrentPage,omitempty"`
+	// The number of entries to return on each page. Default value: 1000.
+	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	// The ID of the region.
+	RegionTag *string `json:"RegionTag,omitempty" xml:"RegionTag,omitempty"`
+	// The subtype of the cluster. Valid values:
+	//
+	// *   Ask: Serverless Kubernetes cluster
+	// *   ManagedKubernetes: ACK cluster
 	SubClusterType *string `json:"SubClusterType,omitempty" xml:"SubClusterType,omitempty"`
 }
 
@@ -8242,10 +9917,14 @@ func (s *GetK8sClusterRequest) SetSubClusterType(v string) *GetK8sClusterRequest
 }
 
 type GetK8sClusterResponseBody struct {
+	// The cluster data that is returned by page.
 	ClusterPage *GetK8sClusterResponseBodyClusterPage `json:"ClusterPage,omitempty" xml:"ClusterPage,omitempty" type:"Struct"`
-	Code        *int32                                `json:"Code,omitempty" xml:"Code,omitempty"`
-	Message     *string                               `json:"Message,omitempty" xml:"Message,omitempty"`
-	RequestId   *string                               `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The HTTP status code that is returned.
+	Code *int32 `json:"Code,omitempty" xml:"Code,omitempty"`
+	// The additional information that is returned.
+	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// The ID of the request.
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
 func (s GetK8sClusterResponseBody) String() string {
@@ -8277,10 +9956,14 @@ func (s *GetK8sClusterResponseBody) SetRequestId(v string) *GetK8sClusterRespons
 }
 
 type GetK8sClusterResponseBodyClusterPage struct {
+	// The list of clusters.
 	ClusterList *GetK8sClusterResponseBodyClusterPageClusterList `json:"ClusterList,omitempty" xml:"ClusterList,omitempty" type:"Struct"`
-	CurrentPage *int32                                           `json:"CurrentPage,omitempty" xml:"CurrentPage,omitempty"`
-	PageSize    *int32                                           `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	TotalSize   *int32                                           `json:"TotalSize,omitempty" xml:"TotalSize,omitempty"`
+	// The number of the returned page. Default value: 1.
+	CurrentPage *int32 `json:"CurrentPage,omitempty" xml:"CurrentPage,omitempty"`
+	// The number of entries returned per page. Default value: 1000.
+	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	// The total number of pages that are returned.
+	TotalSize *int32 `json:"TotalSize,omitempty" xml:"TotalSize,omitempty"`
 }
 
 func (s GetK8sClusterResponseBodyClusterPage) String() string {
@@ -8329,23 +10012,70 @@ func (s *GetK8sClusterResponseBodyClusterPageClusterList) SetCluster(v []*GetK8s
 }
 
 type GetK8sClusterResponseBodyClusterPageClusterListCluster struct {
-	ClusterId           *string `json:"ClusterId,omitempty" xml:"ClusterId,omitempty"`
-	ClusterImportStatus *int32  `json:"ClusterImportStatus,omitempty" xml:"ClusterImportStatus,omitempty"`
-	ClusterName         *string `json:"ClusterName,omitempty" xml:"ClusterName,omitempty"`
-	ClusterStatus       *int32  `json:"ClusterStatus,omitempty" xml:"ClusterStatus,omitempty"`
-	ClusterType         *int32  `json:"ClusterType,omitempty" xml:"ClusterType,omitempty"`
-	Cpu                 *int32  `json:"Cpu,omitempty" xml:"Cpu,omitempty"`
-	CsClusterId         *string `json:"CsClusterId,omitempty" xml:"CsClusterId,omitempty"`
-	CsClusterStatus     *string `json:"CsClusterStatus,omitempty" xml:"CsClusterStatus,omitempty"`
-	Description         *string `json:"Description,omitempty" xml:"Description,omitempty"`
-	Mem                 *int32  `json:"Mem,omitempty" xml:"Mem,omitempty"`
-	NetworkMode         *int32  `json:"NetworkMode,omitempty" xml:"NetworkMode,omitempty"`
-	NodeNum             *int32  `json:"NodeNum,omitempty" xml:"NodeNum,omitempty"`
-	RegionId            *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	SubClusterType      *string `json:"SubClusterType,omitempty" xml:"SubClusterType,omitempty"`
-	SubNetCidr          *string `json:"SubNetCidr,omitempty" xml:"SubNetCidr,omitempty"`
-	VpcId               *string `json:"VpcId,omitempty" xml:"VpcId,omitempty"`
-	VswitchId           *string `json:"VswitchId,omitempty" xml:"VswitchId,omitempty"`
+	// The ID of the cluster.
+	ClusterId *string `json:"ClusterId,omitempty" xml:"ClusterId,omitempty"`
+	// The import state of the cluster. Valid values:
+	//
+	// *   0: The cluster is not imported.
+	// *   1: The cluster is imported.
+	// *   2: The cluster fails to be imported.
+	// *   3: The cluster is being imported.
+	// *   4: The cluster is deleted.
+	ClusterImportStatus *int32 `json:"ClusterImportStatus,omitempty" xml:"ClusterImportStatus,omitempty"`
+	// The name of the cluster.
+	ClusterName *string `json:"ClusterName,omitempty" xml:"ClusterName,omitempty"`
+	// The status of the cluster. Valid values:
+	//
+	// *   1: The cluster runs as expected.
+	// *   2: The cluster does not run as expected.
+	// *   3: The cluster is offline.
+	ClusterStatus *int32 `json:"ClusterStatus,omitempty" xml:"ClusterStatus,omitempty"`
+	// The type of the cluster. Valid values:
+	//
+	// *   2: Elastic Compute Service (ECS) cluster
+	// *   5: ACK cluster or Serverless Kubernetes cluster
+	ClusterType *int32 `json:"ClusterType,omitempty" xml:"ClusterType,omitempty"`
+	// The total number of CPU cores.
+	Cpu *int32 `json:"Cpu,omitempty" xml:"Cpu,omitempty"`
+	// The ID of the ACK cluster.
+	CsClusterId *string `json:"CsClusterId,omitempty" xml:"CsClusterId,omitempty"`
+	// The state of the ACK cluster. Valid values:
+	//
+	// *   initial: The cluster is being initialized.
+	// *   failed: The cluster fails to be created.
+	// *   running: The cluster is running.
+	// *   updating: The cluster is being updated.
+	// *   scaling: The cluster is being scaled out.
+	// *   removing: Nodes are being removed from the cluster.
+	// *   upgrading: The cluster is being upgraded.
+	// *   deleting: The cluster is being deleted.
+	// *   delete_failed: The cluster fails to be deleted.
+	// *   deleted: The cluster is deleted. The deleted cluster is invisible to users.
+	CsClusterStatus *string `json:"CsClusterStatus,omitempty" xml:"CsClusterStatus,omitempty"`
+	// The description of the cluster.
+	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
+	// The total size of memory. Unit: MB.
+	Mem *int32 `json:"Mem,omitempty" xml:"Mem,omitempty"`
+	// The network type of the cluster. Valid values:
+	//
+	// *   1: classic network
+	// *   2: VPC
+	NetworkMode *int32 `json:"NetworkMode,omitempty" xml:"NetworkMode,omitempty"`
+	// The number of nodes.
+	NodeNum *int32 `json:"NodeNum,omitempty" xml:"NodeNum,omitempty"`
+	// The ID of the namespace.
+	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	// The subtype of the cluster. Valid values:
+	//
+	// *   Ask: Serverless Kubernetes cluster
+	// *   ManagedKubernetes: ACK cluster
+	SubClusterType *string `json:"SubClusterType,omitempty" xml:"SubClusterType,omitempty"`
+	// The CIDR block of the subnet.
+	SubNetCidr *string `json:"SubNetCidr,omitempty" xml:"SubNetCidr,omitempty"`
+	// The ID of the virtual private cloud (VPC).
+	VpcId *string `json:"VpcId,omitempty" xml:"VpcId,omitempty"`
+	// The ID of the vSwitch.
+	VswitchId *string `json:"VswitchId,omitempty" xml:"VswitchId,omitempty"`
 }
 
 func (s GetK8sClusterResponseBodyClusterPageClusterListCluster) String() string {
@@ -8471,6 +10201,7 @@ func (s *GetK8sClusterResponse) SetBody(v *GetK8sClusterResponseBody) *GetK8sClu
 }
 
 type GetK8sServicesRequest struct {
+	// The ID of the application.
 	AppId *string `json:"AppId,omitempty" xml:"AppId,omitempty"`
 }
 
@@ -8488,10 +10219,14 @@ func (s *GetK8sServicesRequest) SetAppId(v string) *GetK8sServicesRequest {
 }
 
 type GetK8sServicesResponseBody struct {
-	Code      *int32                                `json:"Code,omitempty" xml:"Code,omitempty"`
-	Message   *string                               `json:"Message,omitempty" xml:"Message,omitempty"`
-	RequestId *string                               `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	Services  []*GetK8sServicesResponseBodyServices `json:"Services,omitempty" xml:"Services,omitempty" type:"Repeated"`
+	// The ID of the change process.
+	Code *int32 `json:"Code,omitempty" xml:"Code,omitempty"`
+	// The additional information that is returned.
+	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// The ID of the request.
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The list of services in the Kubernetes cluster.
+	Services []*GetK8sServicesResponseBodyServices `json:"Services,omitempty" xml:"Services,omitempty" type:"Repeated"`
 }
 
 func (s GetK8sServicesResponseBody) String() string {
@@ -8523,10 +10258,14 @@ func (s *GetK8sServicesResponseBody) SetServices(v []*GetK8sServicesResponseBody
 }
 
 type GetK8sServicesResponseBodyServices struct {
-	ClusterIP    *string                                           `json:"ClusterIP,omitempty" xml:"ClusterIP,omitempty"`
-	Name         *string                                           `json:"Name,omitempty" xml:"Name,omitempty"`
+	// The IP address of the service in the Kubernetes cluster.
+	ClusterIP *string `json:"ClusterIP,omitempty" xml:"ClusterIP,omitempty"`
+	// The name of the service.
+	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// The mapping of service ports.
 	ServicePorts []*GetK8sServicesResponseBodyServicesServicePorts `json:"ServicePorts,omitempty" xml:"ServicePorts,omitempty" type:"Repeated"`
-	Type         *string                                           `json:"Type,omitempty" xml:"Type,omitempty"`
+	// The type of the service.
+	Type *string `json:"Type,omitempty" xml:"Type,omitempty"`
 }
 
 func (s GetK8sServicesResponseBodyServices) String() string {
@@ -8558,9 +10297,13 @@ func (s *GetK8sServicesResponseBodyServices) SetType(v string) *GetK8sServicesRe
 }
 
 type GetK8sServicesResponseBodyServicesServicePorts struct {
-	NodePort   *int32  `json:"NodePort,omitempty" xml:"NodePort,omitempty"`
-	Port       *int32  `json:"Port,omitempty" xml:"Port,omitempty"`
-	Protocol   *string `json:"Protocol,omitempty" xml:"Protocol,omitempty"`
+	// The port of the node.
+	NodePort *int32 `json:"NodePort,omitempty" xml:"NodePort,omitempty"`
+	// The frontend service port.
+	Port *int32 `json:"Port,omitempty" xml:"Port,omitempty"`
+	// The protocol of the service.
+	Protocol *string `json:"Protocol,omitempty" xml:"Protocol,omitempty"`
+	// The backend container port.
 	TargetPort *string `json:"TargetPort,omitempty" xml:"TargetPort,omitempty"`
 }
 
@@ -8622,10 +10365,14 @@ func (s *GetK8sServicesResponse) SetBody(v *GetK8sServicesResponseBody) *GetK8sS
 }
 
 type GetPackageStorageCredentialResponseBody struct {
-	Code       *int32                                             `json:"Code,omitempty" xml:"Code,omitempty"`
+	// The HTTP status code that is returned.
+	Code *int32 `json:"Code,omitempty" xml:"Code,omitempty"`
+	// The STS credential.
 	Credential *GetPackageStorageCredentialResponseBodyCredential `json:"Credential,omitempty" xml:"Credential,omitempty" type:"Struct"`
-	Message    *string                                            `json:"Message,omitempty" xml:"Message,omitempty"`
-	RequestId  *string                                            `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The message that is returned.
+	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// The ID of the request.
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
 func (s GetPackageStorageCredentialResponseBody) String() string {
@@ -8657,16 +10404,26 @@ func (s *GetPackageStorageCredentialResponseBody) SetRequestId(v string) *GetPac
 }
 
 type GetPackageStorageCredentialResponseBodyCredential struct {
-	AccessKeyId         *string `json:"AccessKeyId,omitempty" xml:"AccessKeyId,omitempty"`
-	AccessKeySecret     *string `json:"AccessKeySecret,omitempty" xml:"AccessKeySecret,omitempty"`
-	Bucket              *string `json:"Bucket,omitempty" xml:"Bucket,omitempty"`
-	Expiration          *string `json:"Expiration,omitempty" xml:"Expiration,omitempty"`
-	KeyPrefix           *string `json:"KeyPrefix,omitempty" xml:"KeyPrefix,omitempty"`
+	// The AccessKey ID of your account.
+	AccessKeyId *string `json:"AccessKeyId,omitempty" xml:"AccessKeyId,omitempty"`
+	// The AccessKey secret of your account.
+	AccessKeySecret *string `json:"AccessKeySecret,omitempty" xml:"AccessKeySecret,omitempty"`
+	// The name of the OSS bucket.
+	Bucket *string `json:"Bucket,omitempty" xml:"Bucket,omitempty"`
+	// The time when the STS credential expires. Example: 2019-11-10T07:20:19Z.
+	Expiration *string `json:"Expiration,omitempty" xml:"Expiration,omitempty"`
+	// The object key prefix in Object Storage Service (OSS).
+	KeyPrefix *string `json:"KeyPrefix,omitempty" xml:"KeyPrefix,omitempty"`
+	// The private endpoint of OSS.
 	OssInternalEndpoint *string `json:"OssInternalEndpoint,omitempty" xml:"OssInternalEndpoint,omitempty"`
-	OssPublicEndpoint   *string `json:"OssPublicEndpoint,omitempty" xml:"OssPublicEndpoint,omitempty"`
-	OssVpcEndpoint      *string `json:"OssVpcEndpoint,omitempty" xml:"OssVpcEndpoint,omitempty"`
-	RegionId            *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	SecurityToken       *string `json:"SecurityToken,omitempty" xml:"SecurityToken,omitempty"`
+	// The public endpoint of OSS.
+	OssPublicEndpoint *string `json:"OssPublicEndpoint,omitempty" xml:"OssPublicEndpoint,omitempty"`
+	// The VPC endpoint of OSS.
+	OssVpcEndpoint *string `json:"OssVpcEndpoint,omitempty" xml:"OssVpcEndpoint,omitempty"`
+	// The ID of the region.
+	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	// The security token issued by STS.
+	SecurityToken *string `json:"SecurityToken,omitempty" xml:"SecurityToken,omitempty"`
 }
 
 func (s GetPackageStorageCredentialResponseBodyCredential) String() string {
@@ -8757,9 +10514,15 @@ func (s *GetPackageStorageCredentialResponse) SetBody(v *GetPackageStorageCreden
 }
 
 type GetScalingRulesRequest struct {
-	AppId   *string `json:"AppId,omitempty" xml:"AppId,omitempty"`
+	// The ID of the application.
+	AppId *string `json:"AppId,omitempty" xml:"AppId,omitempty"`
+	// The ID of the instance group to which the application is deployed.
 	GroupId *string `json:"GroupId,omitempty" xml:"GroupId,omitempty"`
-	Mode    *string `json:"Mode,omitempty" xml:"Mode,omitempty"`
+	// The type of the scaling rule. You can leave this parameter empty. Valid values:
+	//
+	// *   SCALE_IN: scale-in rules
+	// *   SCALE_OUT: scale-out rules
+	Mode *string `json:"Mode,omitempty" xml:"Mode,omitempty"`
 }
 
 func (s GetScalingRulesRequest) String() string {
@@ -8786,11 +10549,16 @@ func (s *GetScalingRulesRequest) SetMode(v string) *GetScalingRulesRequest {
 }
 
 type GetScalingRulesResponseBody struct {
-	Code       *int32                           `json:"Code,omitempty" xml:"Code,omitempty"`
-	Data       *GetScalingRulesResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
-	Message    *string                          `json:"Message,omitempty" xml:"Message,omitempty"`
-	RequestId  *string                          `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	UpdateTime *int64                           `json:"UpdateTime,omitempty" xml:"UpdateTime,omitempty"`
+	// The HTTP status code that is returned.
+	Code *int32 `json:"Code,omitempty" xml:"Code,omitempty"`
+	// The data that is returned.
+	Data *GetScalingRulesResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
+	// The message that is returned.
+	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// The ID of the request.
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The time when the scaling rule was last updated. This value is a UNIX timestamp representing the number of milliseconds that have elapsed since January 1, 1970, 00:00:00 UTC.
+	UpdateTime *int64 `json:"UpdateTime,omitempty" xml:"UpdateTime,omitempty"`
 }
 
 func (s GetScalingRulesResponseBody) String() string {
@@ -8827,11 +10595,28 @@ func (s *GetScalingRulesResponseBody) SetUpdateTime(v int64) *GetScalingRulesRes
 }
 
 type GetScalingRulesResponseBodyData struct {
-	ClusterType    *int32                                   `json:"ClusterType,omitempty" xml:"ClusterType,omitempty"`
-	OversoldFactor *int32                                   `json:"OversoldFactor,omitempty" xml:"OversoldFactor,omitempty"`
-	RuleList       *GetScalingRulesResponseBodyDataRuleList `json:"RuleList,omitempty" xml:"RuleList,omitempty" type:"Struct"`
-	UpdateTime     *int64                                   `json:"UpdateTime,omitempty" xml:"UpdateTime,omitempty"`
-	VpcId          *string                                  `json:"VpcId,omitempty" xml:"VpcId,omitempty"`
+	// The type of the cluster. Valid values:
+	//
+	// *   0: regular Docker cluster
+	// *   1: Swarm cluster (deprecated)
+	// *   2: Elastic Compute Service (ECS) cluster
+	// *   3: self-managed Kubernetes cluster in EDAS
+	// *   4: cluster in which Pandora automatically registers applications
+	// *   5: Container Service for Kubernetes (ACK) clusters
+	ClusterType *int32 `json:"ClusterType,omitempty" xml:"ClusterType,omitempty"`
+	// The overcommit ratio supported by a Docker cluster. Valid values:
+	//
+	// *   1: 1:1, which means that resources are not overcommitted.
+	// *   2: 1:2, which means that resources are overcommitted by 1:2.
+	// *   4: 1:4, which means that resources are overcommitted by 1:4.
+	// *   8: 1:8, which means that resources are overcommitted by 1:8.
+	OversoldFactor *int32 `json:"OversoldFactor,omitempty" xml:"OversoldFactor,omitempty"`
+	// The array data of the scaling rule.
+	RuleList *GetScalingRulesResponseBodyDataRuleList `json:"RuleList,omitempty" xml:"RuleList,omitempty" type:"Struct"`
+	// The time when the scaling rule was last updated. This value is a UNIX timestamp representing the number of milliseconds that have elapsed since January 1, 1970, 00:00:00 UTC.
+	UpdateTime *int64 `json:"UpdateTime,omitempty" xml:"UpdateTime,omitempty"`
+	// The ID of the virtual private cloud (VPC).
+	VpcId *string `json:"VpcId,omitempty" xml:"VpcId,omitempty"`
 }
 
 func (s GetScalingRulesResponseBodyData) String() string {
@@ -8885,27 +10670,64 @@ func (s *GetScalingRulesResponseBodyDataRuleList) SetRule(v []*GetScalingRulesRe
 }
 
 type GetScalingRulesResponseBodyDataRuleListRule struct {
-	AppId           *string `json:"AppId,omitempty" xml:"AppId,omitempty"`
-	Cond            *string `json:"Cond,omitempty" xml:"Cond,omitempty"`
-	Cpu             *int32  `json:"Cpu,omitempty" xml:"Cpu,omitempty"`
-	CreateTime      *int64  `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
-	Duration        *int32  `json:"Duration,omitempty" xml:"Duration,omitempty"`
-	Enable          *bool   `json:"Enable,omitempty" xml:"Enable,omitempty"`
-	GroupId         *string `json:"GroupId,omitempty" xml:"GroupId,omitempty"`
-	InstNum         *int32  `json:"InstNum,omitempty" xml:"InstNum,omitempty"`
-	LoadNum         *int32  `json:"LoadNum,omitempty" xml:"LoadNum,omitempty"`
-	MetricType      *string `json:"MetricType,omitempty" xml:"MetricType,omitempty"`
-	Mode            *string `json:"Mode,omitempty" xml:"Mode,omitempty"`
-	MultiAzPolicy   *string `json:"MultiAzPolicy,omitempty" xml:"MultiAzPolicy,omitempty"`
-	ResourceFrom    *string `json:"ResourceFrom,omitempty" xml:"ResourceFrom,omitempty"`
-	Rt              *int32  `json:"Rt,omitempty" xml:"Rt,omitempty"`
-	SpecId          *string `json:"SpecId,omitempty" xml:"SpecId,omitempty"`
-	Step            *int32  `json:"Step,omitempty" xml:"Step,omitempty"`
-	TemplateId      *string `json:"TemplateId,omitempty" xml:"TemplateId,omitempty"`
-	TemplateVersion *int32  `json:"TemplateVersion,omitempty" xml:"TemplateVersion,omitempty"`
-	UpdateTime      *int64  `json:"UpdateTime,omitempty" xml:"UpdateTime,omitempty"`
-	VSwitchIds      *string `json:"VSwitchIds,omitempty" xml:"VSwitchIds,omitempty"`
-	VpcId           *string `json:"VpcId,omitempty" xml:"VpcId,omitempty"`
+	// The ID of the application.
+	AppId *string `json:"AppId,omitempty" xml:"AppId,omitempty"`
+	// The relationship among the conditions that trigger the scaling rule.
+	//
+	// *   OR: one of the conditions
+	// *   AND: all conditions
+	Cond *string `json:"Cond,omitempty" xml:"Cond,omitempty"`
+	// The minimum CPU utilization that triggers the scaling rule.
+	Cpu *int32 `json:"Cpu,omitempty" xml:"Cpu,omitempty"`
+	// The time when the scaling rule was created. This value is a UNIX timestamp representing the number of milliseconds that have elapsed since January 1, 1970, 00:00:00 UTC.
+	CreateTime *int64 `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
+	// The duration of the scaling rule. This value is a UNIX timestamp representing the number of milliseconds that have elapsed since January 1, 1970, 00:00:00 UTC.
+	Duration *int32 `json:"Duration,omitempty" xml:"Duration,omitempty"`
+	// Indicates whether scale-ins or scale-outs are allowed. Valid values:
+	//
+	// *   true: Scale-ins or scale-outs are allowed.
+	// *   false: Scale-ins or scale-outs are disallowed.
+	Enable *bool `json:"Enable,omitempty" xml:"Enable,omitempty"`
+	// The ID of the instance group to which the application is deployed.
+	GroupId *string `json:"GroupId,omitempty" xml:"GroupId,omitempty"`
+	// The maximum number of instances in the group when a scale-out is performed, or the minimum number of instances in the group when a scale-in is performed.
+	InstNum *int32 `json:"InstNum,omitempty" xml:"InstNum,omitempty"`
+	// The system load that triggers the scaling rule. The system load is evaluated based on the number of processes that are being executed by CPUs and the number of processes that wait to be executed by CPUs.
+	LoadNum *int32 `json:"LoadNum,omitempty" xml:"LoadNum,omitempty"`
+	// The type of the metric.
+	MetricType *string `json:"MetricType,omitempty" xml:"MetricType,omitempty"`
+	// The type of the scaling rule. Valid values:
+	//
+	// *   SCALE_IN: scale-in rules
+	// *   SCALE_OUT: scale-out rules
+	Mode *string `json:"Mode,omitempty" xml:"Mode,omitempty"`
+	// The policy of auto scaling across multiple zones. Valid values:
+	//
+	// *   PRIORITY: The vSwitch that is first selected has the highest priority.
+	// *   BALANCE: This policy evenly distributes instances across zones in which the vSwitches reside.
+	MultiAzPolicy *string `json:"MultiAzPolicy,omitempty" xml:"MultiAzPolicy,omitempty"`
+	// The source of the instance that you want to add during a scale-out. Valid values:
+	//
+	// *   NEW: Elastic resources are used.
+	// *   AVAILABLE: The existing resources are used.
+	// *   AVAILABLE_FIRST: The existing resources are used first.
+	ResourceFrom *string `json:"ResourceFrom,omitempty" xml:"ResourceFrom,omitempty"`
+	// The service latency that triggers the scaling rule. Unit: milliseconds.
+	Rt *int32 `json:"Rt,omitempty" xml:"Rt,omitempty"`
+	// The ID of the specification.
+	SpecId *string `json:"SpecId,omitempty" xml:"SpecId,omitempty"`
+	// The number of instances that are added during each scale-out or removed during each scale-in.
+	Step *int32 `json:"Step,omitempty" xml:"Step,omitempty"`
+	// The ID of the launch template.
+	TemplateId *string `json:"TemplateId,omitempty" xml:"TemplateId,omitempty"`
+	// The version of the launch template.
+	TemplateVersion *int32 `json:"TemplateVersion,omitempty" xml:"TemplateVersion,omitempty"`
+	// The time when the scaling rule was last modified. This value is a UNIX timestamp representing the number of milliseconds that have elapsed since January 1, 1970, 00:00:00 UTC.
+	UpdateTime *int64 `json:"UpdateTime,omitempty" xml:"UpdateTime,omitempty"`
+	// The IDs of the vSwitches. The IDs of multiple vSwitches are separated by commas (,).
+	VSwitchIds *string `json:"VSwitchIds,omitempty" xml:"VSwitchIds,omitempty"`
+	// The ID of the VPC.
+	VpcId *string `json:"VpcId,omitempty" xml:"VpcId,omitempty"`
 }
 
 func (s GetScalingRulesResponseBodyDataRuleListRule) String() string {
@@ -9051,6 +10873,7 @@ func (s *GetScalingRulesResponse) SetBody(v *GetScalingRulesResponseBody) *GetSc
 }
 
 type GetSecureTokenRequest struct {
+	// The ID of the namespace, such as cn-beijing or cn-beijing:prod````.
 	NamespaceId *string `json:"NamespaceId,omitempty" xml:"NamespaceId,omitempty"`
 }
 
@@ -9068,9 +10891,13 @@ func (s *GetSecureTokenRequest) SetNamespaceId(v string) *GetSecureTokenRequest 
 }
 
 type GetSecureTokenResponseBody struct {
-	Code        *int32                                 `json:"Code,omitempty" xml:"Code,omitempty"`
-	Message     *string                                `json:"Message,omitempty" xml:"Message,omitempty"`
-	RequestId   *string                                `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The HTTP status code that is returned.
+	Code *int32 `json:"Code,omitempty" xml:"Code,omitempty"`
+	// The message returned for the request.
+	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// The ID of the request.
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The returned security token.
 	SecureToken *GetSecureTokenResponseBodySecureToken `json:"SecureToken,omitempty" xml:"SecureToken,omitempty" type:"Struct"`
 }
 
@@ -9103,21 +10930,39 @@ func (s *GetSecureTokenResponseBody) SetSecureToken(v *GetSecureTokenResponseBod
 }
 
 type GetSecureTokenResponseBodySecureToken struct {
-	AccessKey          *string `json:"AccessKey,omitempty" xml:"AccessKey,omitempty"`
-	AddressServerHost  *string `json:"AddressServerHost,omitempty" xml:"AddressServerHost,omitempty"`
-	BelongRegion       *string `json:"BelongRegion,omitempty" xml:"BelongRegion,omitempty"`
-	Description        *string `json:"Description,omitempty" xml:"Description,omitempty"`
-	EdasId             *string `json:"EdasId,omitempty" xml:"EdasId,omitempty"`
-	Id                 *int64  `json:"Id,omitempty" xml:"Id,omitempty"`
-	MseInstanceId      *string `json:"MseInstanceId,omitempty" xml:"MseInstanceId,omitempty"`
+	// The AccessKey ID used in the namespace.
+	AccessKey *string `json:"AccessKey,omitempty" xml:"AccessKey,omitempty"`
+	// The address of Address Server associated with the namespace.
+	AddressServerHost *string `json:"AddressServerHost,omitempty" xml:"AddressServerHost,omitempty"`
+	// The ID of the region.
+	BelongRegion *string `json:"BelongRegion,omitempty" xml:"BelongRegion,omitempty"`
+	// The description of the namespace.
+	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
+	// The ID of the Alibaba Cloud account that activated Enterprise Distributed Application Service (EDAS).
+	EdasId *string `json:"EdasId,omitempty" xml:"EdasId,omitempty"`
+	// The ID of the security token.
+	Id *int64 `json:"Id,omitempty" xml:"Id,omitempty"`
+	// The ID of the MSE instance.
+	MseInstanceId *string `json:"MseInstanceId,omitempty" xml:"MseInstanceId,omitempty"`
+	// The public endpoint of the MSE registry.
 	MseInternetAddress *string `json:"MseInternetAddress,omitempty" xml:"MseInternetAddress,omitempty"`
+	// The private endpoint of the MSE registry.
 	MseIntranetAddress *string `json:"MseIntranetAddress,omitempty" xml:"MseIntranetAddress,omitempty"`
-	MseRegistryType    *string `json:"MseRegistryType,omitempty" xml:"MseRegistryType,omitempty"`
-	RegionId           *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	RegionName         *string `json:"RegionName,omitempty" xml:"RegionName,omitempty"`
-	SecretKey          *string `json:"SecretKey,omitempty" xml:"SecretKey,omitempty"`
-	TenantId           *string `json:"TenantId,omitempty" xml:"TenantId,omitempty"`
-	UserId             *string `json:"UserId,omitempty" xml:"UserId,omitempty"`
+	// The type of the Microservices Engine (MSE) registry.
+	//
+	// *   default: the shared registry of EDAS
+	// *   exclusive_mse: MSE Nacos registry
+	MseRegistryType *string `json:"MseRegistryType,omitempty" xml:"MseRegistryType,omitempty"`
+	// The ID of the region where the namespace resides.
+	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	// The name of the region where the namespace resides.
+	RegionName *string `json:"RegionName,omitempty" xml:"RegionName,omitempty"`
+	// The AccessKey secret used in the namespace.
+	SecretKey *string `json:"SecretKey,omitempty" xml:"SecretKey,omitempty"`
+	// The tenant ID of the namespace.
+	TenantId *string `json:"TenantId,omitempty" xml:"TenantId,omitempty"`
+	// The ID of the user.
+	UserId *string `json:"UserId,omitempty" xml:"UserId,omitempty"`
 }
 
 func (s GetSecureTokenResponseBodySecureToken) String() string {
@@ -9233,20 +11078,37 @@ func (s *GetSecureTokenResponse) SetBody(v *GetSecureTokenResponseBody) *GetSecu
 }
 
 type GetServiceConsumersPageRequest struct {
-	AppId          *string `json:"appId,omitempty" xml:"appId,omitempty"`
-	Group          *string `json:"group,omitempty" xml:"group,omitempty"`
-	Ip             *string `json:"ip,omitempty" xml:"ip,omitempty"`
-	Namespace      *string `json:"namespace,omitempty" xml:"namespace,omitempty"`
-	Origin         *string `json:"origin,omitempty" xml:"origin,omitempty"`
-	Page           *int32  `json:"page,omitempty" xml:"page,omitempty"`
-	Region         *string `json:"region,omitempty" xml:"region,omitempty"`
-	RegistryType   *string `json:"registryType,omitempty" xml:"registryType,omitempty"`
-	ServiceId      *string `json:"serviceId,omitempty" xml:"serviceId,omitempty"`
-	ServiceName    *string `json:"serviceName,omitempty" xml:"serviceName,omitempty"`
-	ServiceType    *string `json:"serviceType,omitempty" xml:"serviceType,omitempty"`
+	// The ID of the application.
+	AppId *string `json:"appId,omitempty" xml:"appId,omitempty"`
+	// The service group.
+	Group *string `json:"group,omitempty" xml:"group,omitempty"`
+	// The IP address of the service provider. Fuzzy searches are supported.
+	Ip *string `json:"ip,omitempty" xml:"ip,omitempty"`
+	// The ID of the namespace.
+	Namespace *string `json:"namespace,omitempty" xml:"namespace,omitempty"`
+	// The source of the data. Valid values:
+	//
+	// *   agent: Use this value if you use the service query feature of the latest version to pass the query result.
+	// *   registry: Use this value if you use the service query feature of the earlier version to pass the query result.
+	Origin *string `json:"origin,omitempty" xml:"origin,omitempty"`
+	// The number of the page to return.
+	Page *int32 `json:"page,omitempty" xml:"page,omitempty"`
+	// The ID of the region.
+	Region *string `json:"region,omitempty" xml:"region,omitempty"`
+	// The type of the service registry. This parameter is deprecated. You can ignore it.
+	RegistryType *string `json:"registryType,omitempty" xml:"registryType,omitempty"`
+	// The ID of the service. This parameter is deprecated. You can ignore it.
+	ServiceId *string `json:"serviceId,omitempty" xml:"serviceId,omitempty"`
+	// The name of the service.
+	ServiceName *string `json:"serviceName,omitempty" xml:"serviceName,omitempty"`
+	// The type of the service.
+	ServiceType *string `json:"serviceType,omitempty" xml:"serviceType,omitempty"`
+	// The version of the service.
 	ServiceVersion *string `json:"serviceVersion,omitempty" xml:"serviceVersion,omitempty"`
-	Size           *int32  `json:"size,omitempty" xml:"size,omitempty"`
-	Source         *string `json:"source,omitempty" xml:"source,omitempty"`
+	// The number of entries returned per page.
+	Size *int32 `json:"size,omitempty" xml:"size,omitempty"`
+	// The source of the service. Set the value to edas.
+	Source *string `json:"source,omitempty" xml:"source,omitempty"`
 }
 
 func (s GetServiceConsumersPageRequest) String() string {
@@ -9328,10 +11190,14 @@ func (s *GetServiceConsumersPageRequest) SetSource(v string) *GetServiceConsumer
 }
 
 type GetServiceConsumersPageResponseBody struct {
-	Code    *int32                                   `json:"Code,omitempty" xml:"Code,omitempty"`
-	Data    *GetServiceConsumersPageResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
-	Message *string                                  `json:"Message,omitempty" xml:"Message,omitempty"`
-	Success *bool                                    `json:"Success,omitempty" xml:"Success,omitempty"`
+	// The HTTP status code that is returned.
+	Code *int32 `json:"Code,omitempty" xml:"Code,omitempty"`
+	// The data that is returned.
+	Data *GetServiceConsumersPageResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
+	// The message that is returned for the request.
+	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// Indicates whether the request is successful.
+	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
 }
 
 func (s GetServiceConsumersPageResponseBody) String() string {
@@ -9363,10 +11229,14 @@ func (s *GetServiceConsumersPageResponseBody) SetSuccess(v bool) *GetServiceCons
 }
 
 type GetServiceConsumersPageResponseBodyData struct {
-	Content       []*GetServiceConsumersPageResponseBodyDataContent `json:"Content,omitempty" xml:"Content,omitempty" type:"Repeated"`
-	Size          *int32                                            `json:"Size,omitempty" xml:"Size,omitempty"`
-	TotalElements *int32                                            `json:"TotalElements,omitempty" xml:"TotalElements,omitempty"`
-	TotalPages    *int32                                            `json:"TotalPages,omitempty" xml:"TotalPages,omitempty"`
+	// The data array that is returned.
+	Content []*GetServiceConsumersPageResponseBodyDataContent `json:"Content,omitempty" xml:"Content,omitempty" type:"Repeated"`
+	// The number of entries to return on each page.
+	Size *int32 `json:"Size,omitempty" xml:"Size,omitempty"`
+	// The total number of returned entries.
+	TotalElements *int32 `json:"TotalElements,omitempty" xml:"TotalElements,omitempty"`
+	// The total number of returned pages.
+	TotalPages *int32 `json:"TotalPages,omitempty" xml:"TotalPages,omitempty"`
 }
 
 func (s GetServiceConsumersPageResponseBodyData) String() string {
@@ -9398,9 +11268,12 @@ func (s *GetServiceConsumersPageResponseBodyData) SetTotalPages(v int32) *GetSer
 }
 
 type GetServiceConsumersPageResponseBodyDataContent struct {
+	// The name of the service consumer.
 	EdasAppName *string `json:"EdasAppName,omitempty" xml:"EdasAppName,omitempty"`
-	EdassAppId  *string `json:"EdassAppId,omitempty" xml:"EdassAppId,omitempty"`
-	Ip          *string `json:"Ip,omitempty" xml:"Ip,omitempty"`
+	// The ID of the service consumer.
+	EdassAppId *string `json:"EdassAppId,omitempty" xml:"EdassAppId,omitempty"`
+	// The IP address of the service consumer.
+	Ip *string `json:"Ip,omitempty" xml:"Ip,omitempty"`
 }
 
 func (s GetServiceConsumersPageResponseBodyDataContent) String() string {
@@ -9456,18 +11329,38 @@ func (s *GetServiceConsumersPageResponse) SetBody(v *GetServiceConsumersPageResp
 }
 
 type GetServiceDetailRequest struct {
-	AppId          *string `json:"appId,omitempty" xml:"appId,omitempty"`
-	Group          *string `json:"group,omitempty" xml:"group,omitempty"`
-	Ip             *string `json:"ip,omitempty" xml:"ip,omitempty"`
-	Namespace      *string `json:"namespace,omitempty" xml:"namespace,omitempty"`
-	Origin         *string `json:"origin,omitempty" xml:"origin,omitempty"`
-	Region         *string `json:"region,omitempty" xml:"region,omitempty"`
-	RegistryType   *string `json:"registryType,omitempty" xml:"registryType,omitempty"`
-	ServiceId      *string `json:"serviceId,omitempty" xml:"serviceId,omitempty"`
-	ServiceName    *string `json:"serviceName,omitempty" xml:"serviceName,omitempty"`
-	ServiceType    *string `json:"serviceType,omitempty" xml:"serviceType,omitempty"`
+	// The ID of the application.
+	AppId *string `json:"appId,omitempty" xml:"appId,omitempty"`
+	// The group to which the service belongs.
+	Group *string `json:"group,omitempty" xml:"group,omitempty"`
+	// The IP address of the service provider. Fuzzy searches are supported.
+	Ip *string `json:"ip,omitempty" xml:"ip,omitempty"`
+	// The ID of the namespace.
+	Namespace *string `json:"namespace,omitempty" xml:"namespace,omitempty"`
+	// The source of the data. Valid values:
+	//
+	// *   agent: Use this value if you use the service query feature of the latest version to pass the query result.
+	// *   registry: Use this value if you use the service query feature of the earlier version to pass the query result.
+	Origin *string `json:"origin,omitempty" xml:"origin,omitempty"`
+	// The ID of the region.
+	Region *string `json:"region,omitempty" xml:"region,omitempty"`
+	// The type of the service registry. This parameter is deprecated. You can ignore it.
+	RegistryType *string `json:"registryType,omitempty" xml:"registryType,omitempty"`
+	// The ID of the service. This parameter is deprecated. You can ignore it.
+	ServiceId *string `json:"serviceId,omitempty" xml:"serviceId,omitempty"`
+	// The name of the service.
+	ServiceName *string `json:"serviceName,omitempty" xml:"serviceName,omitempty"`
+	// The type of the service. Valid values:
+	//
+	// *   dubbo
+	// *   springCloud
+	// *   hsf
+	// *   istio
+	ServiceType *string `json:"serviceType,omitempty" xml:"serviceType,omitempty"`
+	// The version of the service.
 	ServiceVersion *string `json:"serviceVersion,omitempty" xml:"serviceVersion,omitempty"`
-	Source         *string `json:"source,omitempty" xml:"source,omitempty"`
+	// The source of the service. Set the value to edas.
+	Source *string `json:"source,omitempty" xml:"source,omitempty"`
 }
 
 func (s GetServiceDetailRequest) String() string {
@@ -9539,10 +11432,14 @@ func (s *GetServiceDetailRequest) SetSource(v string) *GetServiceDetailRequest {
 }
 
 type GetServiceDetailResponseBody struct {
-	Code    *int32                            `json:"Code,omitempty" xml:"Code,omitempty"`
-	Data    *GetServiceDetailResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
-	Message *string                           `json:"Message,omitempty" xml:"Message,omitempty"`
-	Success *bool                             `json:"Success,omitempty" xml:"Success,omitempty"`
+	// The HTTP status code that is returned.
+	Code *int32 `json:"Code,omitempty" xml:"Code,omitempty"`
+	// The data that is returned.
+	Data *GetServiceDetailResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
+	// The message returned for the request.
+	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// Indicates whether the request is successful.
+	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
 }
 
 func (s GetServiceDetailResponseBody) String() string {
@@ -9574,16 +11471,26 @@ func (s *GetServiceDetailResponseBody) SetSuccess(v bool) *GetServiceDetailRespo
 }
 
 type GetServiceDetailResponseBodyData struct {
-	DubboApplicationName  *string                                    `json:"DubboApplicationName,omitempty" xml:"DubboApplicationName,omitempty"`
-	EdasAppName           *string                                    `json:"EdasAppName,omitempty" xml:"EdasAppName,omitempty"`
-	Group                 *string                                    `json:"Group,omitempty" xml:"Group,omitempty"`
-	Metadata              *string                                    `json:"Metadata,omitempty" xml:"Metadata,omitempty"`
-	Methods               []*GetServiceDetailResponseBodyDataMethods `json:"Methods,omitempty" xml:"Methods,omitempty" type:"Repeated"`
-	RegistryType          *string                                    `json:"RegistryType,omitempty" xml:"RegistryType,omitempty"`
-	ServiceName           *string                                    `json:"ServiceName,omitempty" xml:"ServiceName,omitempty"`
-	ServiceType           *string                                    `json:"ServiceType,omitempty" xml:"ServiceType,omitempty"`
-	SpringApplicationName *string                                    `json:"SpringApplicationName,omitempty" xml:"SpringApplicationName,omitempty"`
-	Version               *string                                    `json:"Version,omitempty" xml:"Version,omitempty"`
+	// The name of the Dubbo application.
+	DubboApplicationName *string `json:"DubboApplicationName,omitempty" xml:"DubboApplicationName,omitempty"`
+	// The name of the Enterprise Distributed Application Service (EDAS) application.
+	EdasAppName *string `json:"EdasAppName,omitempty" xml:"EdasAppName,omitempty"`
+	// The group to which the service belongs.
+	Group *string `json:"Group,omitempty" xml:"Group,omitempty"`
+	// The metadata.
+	Metadata *string `json:"Metadata,omitempty" xml:"Metadata,omitempty"`
+	// The methods.
+	Methods []*GetServiceDetailResponseBodyDataMethods `json:"Methods,omitempty" xml:"Methods,omitempty" type:"Repeated"`
+	// The type of the service registry.
+	RegistryType *string `json:"RegistryType,omitempty" xml:"RegistryType,omitempty"`
+	// The name of the service.
+	ServiceName *string `json:"ServiceName,omitempty" xml:"ServiceName,omitempty"`
+	// The type of the service.
+	ServiceType *string `json:"ServiceType,omitempty" xml:"ServiceType,omitempty"`
+	// The name of the Spring application.
+	SpringApplicationName *string `json:"SpringApplicationName,omitempty" xml:"SpringApplicationName,omitempty"`
+	// The version number.
+	Version *string `json:"Version,omitempty" xml:"Version,omitempty"`
 }
 
 func (s GetServiceDetailResponseBodyData) String() string {
@@ -9645,18 +11552,30 @@ func (s *GetServiceDetailResponseBodyData) SetVersion(v string) *GetServiceDetai
 }
 
 type GetServiceDetailResponseBodyDataMethods struct {
-	MethodController     *string                                                  `json:"MethodController,omitempty" xml:"MethodController,omitempty"`
-	Name                 *string                                                  `json:"Name,omitempty" xml:"Name,omitempty"`
-	NameDetail           *string                                                  `json:"NameDetail,omitempty" xml:"NameDetail,omitempty"`
-	ParameterDefinitions *string                                                  `json:"ParameterDefinitions,omitempty" xml:"ParameterDefinitions,omitempty"`
-	ParameterDetails     *string                                                  `json:"ParameterDetails,omitempty" xml:"ParameterDetails,omitempty"`
-	ParameterNames       *string                                                  `json:"ParameterNames,omitempty" xml:"ParameterNames,omitempty"`
-	ParameterTypes       *string                                                  `json:"ParameterTypes,omitempty" xml:"ParameterTypes,omitempty"`
-	Paths                *string                                                  `json:"Paths,omitempty" xml:"Paths,omitempty"`
-	RequestMethods       *string                                                  `json:"RequestMethods,omitempty" xml:"RequestMethods,omitempty"`
-	ReturnDefinition     *GetServiceDetailResponseBodyDataMethodsReturnDefinition `json:"ReturnDefinition,omitempty" xml:"ReturnDefinition,omitempty" type:"Struct"`
-	ReturnDetails        *string                                                  `json:"ReturnDetails,omitempty" xml:"ReturnDetails,omitempty"`
-	ReturnType           *string                                                  `json:"ReturnType,omitempty" xml:"ReturnType,omitempty"`
+	// The controllers.
+	MethodController *string `json:"MethodController,omitempty" xml:"MethodController,omitempty"`
+	// The name.
+	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// The specific name.
+	NameDetail *string `json:"NameDetail,omitempty" xml:"NameDetail,omitempty"`
+	// The definition of the parameter.
+	ParameterDefinitions *string `json:"ParameterDefinitions,omitempty" xml:"ParameterDefinitions,omitempty"`
+	// The details of the parameters.
+	ParameterDetails *string `json:"ParameterDetails,omitempty" xml:"ParameterDetails,omitempty"`
+	// The name of the parameter.
+	ParameterNames *string `json:"ParameterNames,omitempty" xml:"ParameterNames,omitempty"`
+	// The data type of the parameter.
+	ParameterTypes *string `json:"ParameterTypes,omitempty" xml:"ParameterTypes,omitempty"`
+	// The method path.
+	Paths *string `json:"Paths,omitempty" xml:"Paths,omitempty"`
+	// The request method.
+	RequestMethods *string `json:"RequestMethods,omitempty" xml:"RequestMethods,omitempty"`
+	// The definition of the value returned by the method.
+	ReturnDefinition *GetServiceDetailResponseBodyDataMethodsReturnDefinition `json:"ReturnDefinition,omitempty" xml:"ReturnDefinition,omitempty" type:"Struct"`
+	// The details of the response.
+	ReturnDetails *string `json:"ReturnDetails,omitempty" xml:"ReturnDetails,omitempty"`
+	// The data format of the response.
+	ReturnType *string `json:"ReturnType,omitempty" xml:"ReturnType,omitempty"`
 }
 
 func (s GetServiceDetailResponseBodyDataMethods) String() string {
@@ -9728,7 +11647,9 @@ func (s *GetServiceDetailResponseBodyDataMethods) SetReturnType(v string) *GetSe
 }
 
 type GetServiceDetailResponseBodyDataMethodsReturnDefinition struct {
-	Id   *string `json:"Id,omitempty" xml:"Id,omitempty"`
+	// The ID of the return value.
+	Id *string `json:"Id,omitempty" xml:"Id,omitempty"`
+	// The type.
 	Type *string `json:"Type,omitempty" xml:"Type,omitempty"`
 }
 
@@ -9780,15 +11701,43 @@ func (s *GetServiceDetailResponse) SetBody(v *GetServiceDetailResponseBody) *Get
 }
 
 type GetServiceListPageRequest struct {
-	Namespace   *string `json:"namespace,omitempty" xml:"namespace,omitempty"`
-	Origin      *string `json:"origin,omitempty" xml:"origin,omitempty"`
-	Page        *int32  `json:"page,omitempty" xml:"page,omitempty"`
-	Region      *string `json:"region,omitempty" xml:"region,omitempty"`
-	SearchType  *string `json:"searchType,omitempty" xml:"searchType,omitempty"`
+	// The namespace.
+	Namespace *string `json:"namespace,omitempty" xml:"namespace,omitempty"`
+	// The source of the data. Valid values:
+	//
+	// *   `agent`: Use this value if you use the service query feature of the latest version to pass the query result.
+	// *   `registry`: Use this value if you use the service query feature of the earlier version to pass the query result.
+	Origin *string `json:"origin,omitempty" xml:"origin,omitempty"`
+	// The number of the page to return. Pages start from Page 0.
+	Page *int32 `json:"page,omitempty" xml:"page,omitempty"`
+	// The ID of the region.
+	Region *string `json:"region,omitempty" xml:"region,omitempty"`
+	// The type of the service. Valid values:
+	//
+	// *   `app`: searches by application.
+	// *   `service`: searches by service.
+	// *   `providerIp`: searches by IP address.
+	SearchType *string `json:"searchType,omitempty" xml:"searchType,omitempty"`
+	// The keyword used for the search.
+	//
+	// *   Set this parameter to the ID of the application if you set the searchType parameter to app.``
+	// *   Set this parameter to the name of the service if you set the serachType parameter to service.``
+	// *   Set this parameter to the IP address of the application if you set the searchType parameter to providerIp.
 	SearchValue *string `json:"searchValue,omitempty" xml:"searchValue,omitempty"`
+	// The type of the service. Valid values:
+	//
+	// *   `dubbo`
+	// *   `springCloud`
+	// *   `hsf`
+	// *   `istio`
 	ServiceType *string `json:"serviceType,omitempty" xml:"serviceType,omitempty"`
-	Side        *string `json:"side,omitempty" xml:"side,omitempty"`
-	Size        *int32  `json:"size,omitempty" xml:"size,omitempty"`
+	// Specifies the provider side or the consumer side. Valid values:
+	//
+	// *   provider
+	// *   consumer
+	Side *string `json:"side,omitempty" xml:"side,omitempty"`
+	// The number of entries to return on each page.
+	Size *int32 `json:"size,omitempty" xml:"size,omitempty"`
 }
 
 func (s GetServiceListPageRequest) String() string {
@@ -9845,10 +11794,14 @@ func (s *GetServiceListPageRequest) SetSize(v int32) *GetServiceListPageRequest 
 }
 
 type GetServiceListPageResponseBody struct {
-	Code    *int32                              `json:"Code,omitempty" xml:"Code,omitempty"`
-	Data    *GetServiceListPageResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
-	Message *string                             `json:"Message,omitempty" xml:"Message,omitempty"`
-	Success *bool                               `json:"Success,omitempty" xml:"Success,omitempty"`
+	// The HTTP status code that is returned.
+	Code *int32 `json:"Code,omitempty" xml:"Code,omitempty"`
+	// The returned data.
+	Data *GetServiceListPageResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
+	// The message that is returned for the request.
+	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// Indicates whether the request is successful.
+	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
 }
 
 func (s GetServiceListPageResponseBody) String() string {
@@ -9880,10 +11833,14 @@ func (s *GetServiceListPageResponseBody) SetSuccess(v bool) *GetServiceListPageR
 }
 
 type GetServiceListPageResponseBodyData struct {
-	Content       []*GetServiceListPageResponseBodyDataContent `json:"Content,omitempty" xml:"Content,omitempty" type:"Repeated"`
-	Size          *int32                                       `json:"Size,omitempty" xml:"Size,omitempty"`
-	TotalElements *int32                                       `json:"TotalElements,omitempty" xml:"TotalElements,omitempty"`
-	TotalPages    *int32                                       `json:"TotalPages,omitempty" xml:"TotalPages,omitempty"`
+	// The data array that is returned.
+	Content []*GetServiceListPageResponseBodyDataContent `json:"Content,omitempty" xml:"Content,omitempty" type:"Repeated"`
+	// The number of entries returned per page.
+	Size *int32 `json:"Size,omitempty" xml:"Size,omitempty"`
+	// The total number of returned entries.
+	TotalElements *int32 `json:"TotalElements,omitempty" xml:"TotalElements,omitempty"`
+	// The total number of returned pages.
+	TotalPages *int32 `json:"TotalPages,omitempty" xml:"TotalPages,omitempty"`
 }
 
 func (s GetServiceListPageResponseBodyData) String() string {
@@ -9915,14 +11872,22 @@ func (s *GetServiceListPageResponseBodyData) SetTotalPages(v int32) *GetServiceL
 }
 
 type GetServiceListPageResponseBodyDataContent struct {
-	EdasAppId    *string `json:"EdasAppId,omitempty" xml:"EdasAppId,omitempty"`
-	EdasAppName  *string `json:"EdasAppName,omitempty" xml:"EdasAppName,omitempty"`
-	Group        *string `json:"Group,omitempty" xml:"Group,omitempty"`
-	InstanceNum  *int32  `json:"InstanceNum,omitempty" xml:"InstanceNum,omitempty"`
+	// The ID of the application.
+	EdasAppId *string `json:"EdasAppId,omitempty" xml:"EdasAppId,omitempty"`
+	// The name of the application.
+	EdasAppName *string `json:"EdasAppName,omitempty" xml:"EdasAppName,omitempty"`
+	// The service group.
+	Group *string `json:"Group,omitempty" xml:"Group,omitempty"`
+	// The number of instances.
+	InstanceNum *int32 `json:"InstanceNum,omitempty" xml:"InstanceNum,omitempty"`
+	// The type of the service registry.
 	RegisterType *string `json:"RegisterType,omitempty" xml:"RegisterType,omitempty"`
-	ServiceId    *string `json:"ServiceId,omitempty" xml:"ServiceId,omitempty"`
-	ServiceName  *string `json:"ServiceName,omitempty" xml:"ServiceName,omitempty"`
-	Version      *string `json:"Version,omitempty" xml:"Version,omitempty"`
+	// The ID of the service.
+	ServiceId *string `json:"ServiceId,omitempty" xml:"ServiceId,omitempty"`
+	// The name of the service.
+	ServiceName *string `json:"ServiceName,omitempty" xml:"ServiceName,omitempty"`
+	// The version number.
+	Version *string `json:"Version,omitempty" xml:"Version,omitempty"`
 }
 
 func (s GetServiceListPageResponseBodyDataContent) String() string {
@@ -10003,23 +11968,47 @@ func (s *GetServiceListPageResponse) SetBody(v *GetServiceListPageResponseBody) 
 }
 
 type GetServiceMethodPageRequest struct {
-	AppId            *string `json:"appId,omitempty" xml:"appId,omitempty"`
-	Group            *string `json:"group,omitempty" xml:"group,omitempty"`
-	Ip               *string `json:"ip,omitempty" xml:"ip,omitempty"`
+	// The ID of the application.
+	AppId *string `json:"appId,omitempty" xml:"appId,omitempty"`
+	// The group to which the service belongs.
+	Group *string `json:"group,omitempty" xml:"group,omitempty"`
+	// The IP address of the service.
+	Ip *string `json:"ip,omitempty" xml:"ip,omitempty"`
+	// The controller method.
 	MethodController *string `json:"methodController,omitempty" xml:"methodController,omitempty"`
-	Name             *string `json:"name,omitempty" xml:"name,omitempty"`
-	Namespace        *string `json:"namespace,omitempty" xml:"namespace,omitempty"`
-	Origin           *string `json:"origin,omitempty" xml:"origin,omitempty"`
-	PageNumber       *int32  `json:"pageNumber,omitempty" xml:"pageNumber,omitempty"`
-	PageSize         *int32  `json:"pageSize,omitempty" xml:"pageSize,omitempty"`
-	Path             *string `json:"path,omitempty" xml:"path,omitempty"`
-	Region           *string `json:"region,omitempty" xml:"region,omitempty"`
-	RegistryType     *string `json:"registryType,omitempty" xml:"registryType,omitempty"`
-	ServiceId        *string `json:"serviceId,omitempty" xml:"serviceId,omitempty"`
-	ServiceName      *string `json:"serviceName,omitempty" xml:"serviceName,omitempty"`
-	ServiceType      *string `json:"serviceType,omitempty" xml:"serviceType,omitempty"`
-	ServiceVersion   *string `json:"serviceVersion,omitempty" xml:"serviceVersion,omitempty"`
-	Source           *string `json:"source,omitempty" xml:"source,omitempty"`
+	// The name of the method.
+	Name *string `json:"name,omitempty" xml:"name,omitempty"`
+	// The ID of the namespace.
+	Namespace *string `json:"namespace,omitempty" xml:"namespace,omitempty"`
+	// The source of the data. Valid values:
+	//
+	// *   agent: Use this value if you use the service query feature of the latest version to pass the query result.
+	// *   registry: Use this value if you use the service query feature of the earlier version to pass the query result.
+	Origin *string `json:"origin,omitempty" xml:"origin,omitempty"`
+	// The number of the page to return.
+	PageNumber *int32 `json:"pageNumber,omitempty" xml:"pageNumber,omitempty"`
+	// The number of entries to return on each page.
+	PageSize *int32 `json:"pageSize,omitempty" xml:"pageSize,omitempty"`
+	// The request path.
+	Path *string `json:"path,omitempty" xml:"path,omitempty"`
+	// The ID of the region.
+	Region *string `json:"region,omitempty" xml:"region,omitempty"`
+	// The type of the service registry.
+	RegistryType *string `json:"registryType,omitempty" xml:"registryType,omitempty"`
+	// The ID of the service.
+	ServiceId *string `json:"serviceId,omitempty" xml:"serviceId,omitempty"`
+	// The name of the service.
+	ServiceName *string `json:"serviceName,omitempty" xml:"serviceName,omitempty"`
+	// The type of the service. Valid values:
+	//
+	// *   dubbo: Dubbo service
+	// *   springCloud: Spring Cloud service
+	// *   hsf: High-speed Service Framework (HSF) service
+	ServiceType *string `json:"serviceType,omitempty" xml:"serviceType,omitempty"`
+	// The version of the service.
+	ServiceVersion *string `json:"serviceVersion,omitempty" xml:"serviceVersion,omitempty"`
+	// The source of the service. Set the value to edas.
+	Source *string `json:"source,omitempty" xml:"source,omitempty"`
 }
 
 func (s GetServiceMethodPageRequest) String() string {
@@ -10116,12 +12105,18 @@ func (s *GetServiceMethodPageRequest) SetSource(v string) *GetServiceMethodPageR
 }
 
 type GetServiceMethodPageResponseBody struct {
-	Code      *string                               `json:"Code,omitempty" xml:"Code,omitempty"`
-	Data      *GetServiceMethodPageResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
-	HttpCode  *string                               `json:"HttpCode,omitempty" xml:"HttpCode,omitempty"`
-	Message   *string                               `json:"Message,omitempty" xml:"Message,omitempty"`
-	RequestId *string                               `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	Success   *bool                                 `json:"Success,omitempty" xml:"Success,omitempty"`
+	// The HTTP status code that is returned.
+	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	// The data that is returned.
+	Data *GetServiceMethodPageResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
+	// The HTTP status code that is returned.
+	HttpCode *string `json:"HttpCode,omitempty" xml:"HttpCode,omitempty"`
+	// The additional information that is returned.
+	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// The ID of the request.
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// Indicates whether the request is successful.
+	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
 }
 
 func (s GetServiceMethodPageResponseBody) String() string {
@@ -10163,10 +12158,14 @@ func (s *GetServiceMethodPageResponseBody) SetSuccess(v bool) *GetServiceMethodP
 }
 
 type GetServiceMethodPageResponseBodyData struct {
-	PageNumber *int32                                        `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
-	PageSize   *int32                                        `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	Result     []*GetServiceMethodPageResponseBodyDataResult `json:"Result,omitempty" xml:"Result,omitempty" type:"Repeated"`
-	TotalSize  *int32                                        `json:"TotalSize,omitempty" xml:"TotalSize,omitempty"`
+	// The page number of the returned page.
+	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
+	// The number of entries returned per page.
+	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	// The data about the method.
+	Result []*GetServiceMethodPageResponseBodyDataResult `json:"Result,omitempty" xml:"Result,omitempty" type:"Repeated"`
+	// The total number of entries.
+	TotalSize *int32 `json:"TotalSize,omitempty" xml:"TotalSize,omitempty"`
 }
 
 func (s GetServiceMethodPageResponseBodyData) String() string {
@@ -10198,18 +12197,30 @@ func (s *GetServiceMethodPageResponseBodyData) SetTotalSize(v int32) *GetService
 }
 
 type GetServiceMethodPageResponseBodyDataResult struct {
-	MethodController     *string                                                     `json:"MethodController,omitempty" xml:"MethodController,omitempty"`
-	Name                 *string                                                     `json:"Name,omitempty" xml:"Name,omitempty"`
-	NameDetail           *string                                                     `json:"NameDetail,omitempty" xml:"NameDetail,omitempty"`
-	ParameterDefinitions *string                                                     `json:"ParameterDefinitions,omitempty" xml:"ParameterDefinitions,omitempty"`
-	ParameterDetails     *string                                                     `json:"ParameterDetails,omitempty" xml:"ParameterDetails,omitempty"`
-	ParameterNames       *string                                                     `json:"ParameterNames,omitempty" xml:"ParameterNames,omitempty"`
-	ParameterTypes       *string                                                     `json:"ParameterTypes,omitempty" xml:"ParameterTypes,omitempty"`
-	Paths                *string                                                     `json:"Paths,omitempty" xml:"Paths,omitempty"`
-	RequestMethods       *string                                                     `json:"RequestMethods,omitempty" xml:"RequestMethods,omitempty"`
-	ReturnDefinition     *GetServiceMethodPageResponseBodyDataResultReturnDefinition `json:"ReturnDefinition,omitempty" xml:"ReturnDefinition,omitempty" type:"Struct"`
-	ReturnDetails        *string                                                     `json:"ReturnDetails,omitempty" xml:"ReturnDetails,omitempty"`
-	ReturnType           *string                                                     `json:"ReturnType,omitempty" xml:"ReturnType,omitempty"`
+	// The method.
+	MethodController *string `json:"MethodController,omitempty" xml:"MethodController,omitempty"`
+	// The name of the method.
+	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// The details of the method.
+	NameDetail *string `json:"NameDetail,omitempty" xml:"NameDetail,omitempty"`
+	// The definition of the parameter.
+	ParameterDefinitions *string `json:"ParameterDefinitions,omitempty" xml:"ParameterDefinitions,omitempty"`
+	// The details of the parameters.
+	ParameterDetails *string `json:"ParameterDetails,omitempty" xml:"ParameterDetails,omitempty"`
+	// The name of the parameter.
+	ParameterNames *string `json:"ParameterNames,omitempty" xml:"ParameterNames,omitempty"`
+	// The data type of the parameter.
+	ParameterTypes *string `json:"ParameterTypes,omitempty" xml:"ParameterTypes,omitempty"`
+	// The method path.
+	Paths *string `json:"Paths,omitempty" xml:"Paths,omitempty"`
+	// The request method.
+	RequestMethods *string `json:"RequestMethods,omitempty" xml:"RequestMethods,omitempty"`
+	// The return value.
+	ReturnDefinition *GetServiceMethodPageResponseBodyDataResultReturnDefinition `json:"ReturnDefinition,omitempty" xml:"ReturnDefinition,omitempty" type:"Struct"`
+	// The details of the response.
+	ReturnDetails *string `json:"ReturnDetails,omitempty" xml:"ReturnDetails,omitempty"`
+	// The data format of the response.
+	ReturnType *string `json:"ReturnType,omitempty" xml:"ReturnType,omitempty"`
 }
 
 func (s GetServiceMethodPageResponseBodyDataResult) String() string {
@@ -10281,7 +12292,9 @@ func (s *GetServiceMethodPageResponseBodyDataResult) SetReturnType(v string) *Ge
 }
 
 type GetServiceMethodPageResponseBodyDataResultReturnDefinition struct {
-	Id   *string `json:"Id,omitempty" xml:"Id,omitempty"`
+	// The ID of the return value.
+	Id *string `json:"Id,omitempty" xml:"Id,omitempty"`
+	// The data format of the response.
 	Type *string `json:"Type,omitempty" xml:"Type,omitempty"`
 }
 
@@ -10333,20 +12346,41 @@ func (s *GetServiceMethodPageResponse) SetBody(v *GetServiceMethodPageResponseBo
 }
 
 type GetServiceProvidersPageRequest struct {
-	AppId          *string `json:"appId,omitempty" xml:"appId,omitempty"`
-	Group          *string `json:"group,omitempty" xml:"group,omitempty"`
-	Ip             *string `json:"ip,omitempty" xml:"ip,omitempty"`
-	Namespace      *string `json:"namespace,omitempty" xml:"namespace,omitempty"`
-	Origin         *string `json:"origin,omitempty" xml:"origin,omitempty"`
-	Page           *int32  `json:"page,omitempty" xml:"page,omitempty"`
-	Region         *string `json:"region,omitempty" xml:"region,omitempty"`
-	RegistryType   *string `json:"registryType,omitempty" xml:"registryType,omitempty"`
-	ServiceId      *string `json:"serviceId,omitempty" xml:"serviceId,omitempty"`
-	ServiceName    *string `json:"serviceName,omitempty" xml:"serviceName,omitempty"`
-	ServiceType    *string `json:"serviceType,omitempty" xml:"serviceType,omitempty"`
+	// The ID of the application.
+	AppId *string `json:"appId,omitempty" xml:"appId,omitempty"`
+	// The group to which the service belongs.
+	Group *string `json:"group,omitempty" xml:"group,omitempty"`
+	// The IP address of the service provider. Fuzzy searches are supported.
+	Ip *string `json:"ip,omitempty" xml:"ip,omitempty"`
+	// The ID of the namespace.
+	Namespace *string `json:"namespace,omitempty" xml:"namespace,omitempty"`
+	// The source of data. Valid values:
+	//
+	// *   agent: Use this value if you use the service query feature of the latest version to pass the query result.
+	// *   registry: Use this value if you use the service query feature of the earlier version to pass the query result.
+	Origin *string `json:"origin,omitempty" xml:"origin,omitempty"`
+	// The number of the page to return. Pages start from Page 0.
+	Page *int32 `json:"page,omitempty" xml:"page,omitempty"`
+	// The ID of the region.
+	Region *string `json:"region,omitempty" xml:"region,omitempty"`
+	// The type of the service registry. This parameter is deprecated. You can ignore it.
+	RegistryType *string `json:"registryType,omitempty" xml:"registryType,omitempty"`
+	// The ID of the service. This parameter is deprecated. You can ignore it.
+	ServiceId *string `json:"serviceId,omitempty" xml:"serviceId,omitempty"`
+	// The name of the service.
+	ServiceName *string `json:"serviceName,omitempty" xml:"serviceName,omitempty"`
+	// The type of the service. Valid values:
+	//
+	// *   dubbo: Dubbo service
+	// *   springCloud: Spring Cloud service
+	// *   hsf: High-speed Service Framework (HSF) service
+	ServiceType *string `json:"serviceType,omitempty" xml:"serviceType,omitempty"`
+	// The version of the service.
 	ServiceVersion *string `json:"serviceVersion,omitempty" xml:"serviceVersion,omitempty"`
-	Size           *int32  `json:"size,omitempty" xml:"size,omitempty"`
-	Source         *string `json:"source,omitempty" xml:"source,omitempty"`
+	// The number of entries to return on each page.
+	Size *int32 `json:"size,omitempty" xml:"size,omitempty"`
+	// The source of the service. Set the value to edas.
+	Source *string `json:"source,omitempty" xml:"source,omitempty"`
 }
 
 func (s GetServiceProvidersPageRequest) String() string {
@@ -10428,10 +12462,14 @@ func (s *GetServiceProvidersPageRequest) SetSource(v string) *GetServiceProvider
 }
 
 type GetServiceProvidersPageResponseBody struct {
-	Code    *int32                                   `json:"Code,omitempty" xml:"Code,omitempty"`
-	Data    *GetServiceProvidersPageResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
-	Message *string                                  `json:"Message,omitempty" xml:"Message,omitempty"`
-	Success *bool                                    `json:"Success,omitempty" xml:"Success,omitempty"`
+	// The HTTP status code that is returned.
+	Code *int32 `json:"Code,omitempty" xml:"Code,omitempty"`
+	// The data that is returned.
+	Data *GetServiceProvidersPageResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
+	// The message returned for the request.
+	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// Indicates whether the request is successful.
+	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
 }
 
 func (s GetServiceProvidersPageResponseBody) String() string {
@@ -10463,10 +12501,14 @@ func (s *GetServiceProvidersPageResponseBody) SetSuccess(v bool) *GetServiceProv
 }
 
 type GetServiceProvidersPageResponseBodyData struct {
-	Content       []*GetServiceProvidersPageResponseBodyDataContent `json:"Content,omitempty" xml:"Content,omitempty" type:"Repeated"`
-	Size          *int32                                            `json:"Size,omitempty" xml:"Size,omitempty"`
-	TotalElements *int32                                            `json:"TotalElements,omitempty" xml:"TotalElements,omitempty"`
-	TotalPages    *int32                                            `json:"TotalPages,omitempty" xml:"TotalPages,omitempty"`
+	// The data array returned.
+	Content []*GetServiceProvidersPageResponseBodyDataContent `json:"Content,omitempty" xml:"Content,omitempty" type:"Repeated"`
+	// The number of entries returned per page.
+	Size *int32 `json:"Size,omitempty" xml:"Size,omitempty"`
+	// The total number of returned entries.
+	TotalElements *int32 `json:"TotalElements,omitempty" xml:"TotalElements,omitempty"`
+	// The total number of returned pages.
+	TotalPages *int32 `json:"TotalPages,omitempty" xml:"TotalPages,omitempty"`
 }
 
 func (s GetServiceProvidersPageResponseBodyData) String() string {
@@ -10498,10 +12540,15 @@ func (s *GetServiceProvidersPageResponseBodyData) SetTotalPages(v int32) *GetSer
 }
 
 type GetServiceProvidersPageResponseBodyDataContent struct {
-	Ip            *string `json:"Ip,omitempty" xml:"Ip,omitempty"`
-	Port          *string `json:"Port,omitempty" xml:"Port,omitempty"`
+	Iannotations *string `json:"Iannotations,omitempty" xml:"Iannotations,omitempty"`
+	// The IP address of the service provider.
+	Ip *string `json:"Ip,omitempty" xml:"Ip,omitempty"`
+	// The port number of the service provider.
+	Port *string `json:"Port,omitempty" xml:"Port,omitempty"`
+	// The serialization type.
 	SerializeType *string `json:"SerializeType,omitempty" xml:"SerializeType,omitempty"`
-	Timeout       *string `json:"Timeout,omitempty" xml:"Timeout,omitempty"`
+	// The service timeout period.
+	Timeout *string `json:"Timeout,omitempty" xml:"Timeout,omitempty"`
 }
 
 func (s GetServiceProvidersPageResponseBodyDataContent) String() string {
@@ -10510,6 +12557,11 @@ func (s GetServiceProvidersPageResponseBodyDataContent) String() string {
 
 func (s GetServiceProvidersPageResponseBodyDataContent) GoString() string {
 	return s.String()
+}
+
+func (s *GetServiceProvidersPageResponseBodyDataContent) SetIannotations(v string) *GetServiceProvidersPageResponseBodyDataContent {
+	s.Iannotations = &v
+	return s
 }
 
 func (s *GetServiceProvidersPageResponseBodyDataContent) SetIp(v string) *GetServiceProvidersPageResponseBodyDataContent {
@@ -10562,6 +12614,7 @@ func (s *GetServiceProvidersPageResponse) SetBody(v *GetServiceProvidersPageResp
 }
 
 type GetWebContainerConfigRequest struct {
+	// The ID of the application.
 	AppId *string `json:"AppId,omitempty" xml:"AppId,omitempty"`
 }
 
@@ -10579,9 +12632,13 @@ func (s *GetWebContainerConfigRequest) SetAppId(v string) *GetWebContainerConfig
 }
 
 type GetWebContainerConfigResponseBody struct {
-	Code               *int32                                               `json:"Code,omitempty" xml:"Code,omitempty"`
-	Message            *string                                              `json:"Message,omitempty" xml:"Message,omitempty"`
-	RequestId          *string                                              `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The HTTP status code that is returned.
+	Code *int32 `json:"Code,omitempty" xml:"Code,omitempty"`
+	// The additional information that is returned.
+	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// The ID of the request.
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The Tomcat configurations of the application.
 	WebContainerConfig *GetWebContainerConfigResponseBodyWebContainerConfig `json:"WebContainerConfig,omitempty" xml:"WebContainerConfig,omitempty" type:"Struct"`
 }
 
@@ -10614,15 +12671,24 @@ func (s *GetWebContainerConfigResponseBody) SetWebContainerConfig(v *GetWebConta
 }
 
 type GetWebContainerConfigResponseBodyWebContainerConfig struct {
-	ContextInputType     *string `json:"ContextInputType,omitempty" xml:"ContextInputType,omitempty"`
-	ContextPath          *string `json:"ContextPath,omitempty" xml:"ContextPath,omitempty"`
-	HttpPort             *int32  `json:"HttpPort,omitempty" xml:"HttpPort,omitempty"`
-	MaxThreads           *int32  `json:"MaxThreads,omitempty" xml:"MaxThreads,omitempty"`
-	ServerXml            *string `json:"ServerXml,omitempty" xml:"ServerXml,omitempty"`
-	UriEncoding          *string `json:"UriEncoding,omitempty" xml:"UriEncoding,omitempty"`
-	UseAdvancedServerXml *bool   `json:"UseAdvancedServerXml,omitempty" xml:"UseAdvancedServerXml,omitempty"`
-	UseBodyEncoding      *bool   `json:"UseBodyEncoding,omitempty" xml:"UseBodyEncoding,omitempty"`
-	UseDefaultConfig     *bool   `json:"UseDefaultConfig,omitempty" xml:"UseDefaultConfig,omitempty"`
+	// The type of the context path.
+	ContextInputType *string `json:"ContextInputType,omitempty" xml:"ContextInputType,omitempty"`
+	// The context path.
+	ContextPath *string `json:"ContextPath,omitempty" xml:"ContextPath,omitempty"`
+	// The HTTP service port.
+	HttpPort *int32 `json:"HttpPort,omitempty" xml:"HttpPort,omitempty"`
+	// The maximum number of threads.
+	MaxThreads *int32 `json:"MaxThreads,omitempty" xml:"MaxThreads,omitempty"`
+	// The content of the server.xml file customized by using advanced configurations.
+	ServerXml *string `json:"ServerXml,omitempty" xml:"ServerXml,omitempty"`
+	// The URI encoding scheme.
+	UriEncoding *string `json:"UriEncoding,omitempty" xml:"UriEncoding,omitempty"`
+	// Indicates whether advanced configurations are used to customize the server.xml file.
+	UseAdvancedServerXml *bool `json:"UseAdvancedServerXml,omitempty" xml:"UseAdvancedServerXml,omitempty"`
+	// Indicates whether the encoding scheme specified in the request body is used for uniform resource identifier (URI) query parameters.
+	UseBodyEncoding *bool `json:"UseBodyEncoding,omitempty" xml:"UseBodyEncoding,omitempty"`
+	// Indicates whether the default configurations are used.
+	UseDefaultConfig *bool `json:"UseDefaultConfig,omitempty" xml:"UseDefaultConfig,omitempty"`
 }
 
 func (s GetWebContainerConfigResponseBodyWebContainerConfig) String() string {
@@ -10708,9 +12774,16 @@ func (s *GetWebContainerConfigResponse) SetBody(v *GetWebContainerConfigResponse
 }
 
 type ImportK8sClusterRequest struct {
-	ClusterId   *string `json:"ClusterId,omitempty" xml:"ClusterId,omitempty"`
-	EnableAsm   *bool   `json:"EnableAsm,omitempty" xml:"EnableAsm,omitempty"`
-	Mode        *int32  `json:"Mode,omitempty" xml:"Mode,omitempty"`
+	// The ID of the ACK cluster or serverless Kubernetes cluster. You can obtain the cluster ID by calling the GetK8sCluster operation. For more information, see [GetK8sCluster](~~181437~~).
+	ClusterId *string `json:"ClusterId,omitempty" xml:"ClusterId,omitempty"`
+	// Specifies whether to enable the integration with Alibaba Cloud Service Mesh (ASM). Valid values:
+	//
+	// *   true: Enables the integration with ASM.
+	// *   false: Disables the integration with ASM.
+	EnableAsm *bool `json:"EnableAsm,omitempty" xml:"EnableAsm,omitempty"`
+	// You can ignore this parameter.
+	Mode *int32 `json:"Mode,omitempty" xml:"Mode,omitempty"`
+	// The ID of the namespace. It is in the format of `Region ID:Identifier of the microservices namespace`. Example: `cn-hangzhou:doc`.
 	NamespaceId *string `json:"NamespaceId,omitempty" xml:"NamespaceId,omitempty"`
 }
 
@@ -10743,9 +12816,13 @@ func (s *ImportK8sClusterRequest) SetNamespaceId(v string) *ImportK8sClusterRequ
 }
 
 type ImportK8sClusterResponseBody struct {
-	Code      *int32  `json:"Code,omitempty" xml:"Code,omitempty"`
-	Data      *string `json:"Data,omitempty" xml:"Data,omitempty"`
-	Message   *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// The HTTP status code that is returned.
+	Code *int32 `json:"Code,omitempty" xml:"Code,omitempty"`
+	// The ID of the cluster in EDAS.
+	Data *string `json:"Data,omitempty" xml:"Data,omitempty"`
+	// The message that is returned.
+	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// The ID of the request.
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -10807,29 +12884,75 @@ func (s *ImportK8sClusterResponse) SetBody(v *ImportK8sClusterResponseBody) *Imp
 }
 
 type InsertApplicationRequest struct {
+	// The name of the application. The name can contain only digits, letters, hyphens (-), and underscores (\_) and must start with a letter. The name can be up to 36 characters in length.
 	ApplicationName *string `json:"ApplicationName,omitempty" xml:"ApplicationName,omitempty"`
-	BuildPackId     *int32  `json:"BuildPackId,omitempty" xml:"BuildPackId,omitempty"`
-	ClusterId       *string `json:"ClusterId,omitempty" xml:"ClusterId,omitempty"`
-	ComponentIds    *string `json:"ComponentIds,omitempty" xml:"ComponentIds,omitempty"`
-	Cpu             *int32  `json:"Cpu,omitempty" xml:"Cpu,omitempty"`
-	Description     *string `json:"Description,omitempty" xml:"Description,omitempty"`
-	EcuInfo         *string `json:"EcuInfo,omitempty" xml:"EcuInfo,omitempty"`
-	EnablePortCheck *bool   `json:"EnablePortCheck,omitempty" xml:"EnablePortCheck,omitempty"`
-	EnableUrlCheck  *bool   `json:"EnableUrlCheck,omitempty" xml:"EnableUrlCheck,omitempty"`
-	HealthCheckURL  *string `json:"HealthCheckURL,omitempty" xml:"HealthCheckURL,omitempty"`
-	HealthCheckUrl  *string `json:"HealthCheckUrl,omitempty" xml:"HealthCheckUrl,omitempty"`
-	Hooks           *string `json:"Hooks,omitempty" xml:"Hooks,omitempty"`
-	Jdk             *string `json:"Jdk,omitempty" xml:"Jdk,omitempty"`
-	JvmOptions      *string `json:"JvmOptions,omitempty" xml:"JvmOptions,omitempty"`
+	// The build package number of EDAS Container. This parameter is required if you create a High-Speed Service Framework (HSF) application. You can query the build package number by using one of the following methods:
+	//
+	// *   Call the ListBuildPack operation. For more information, see [ListBuildPack](~~149391~~).
+	// *   Obtain the value in the **Build package number** column of the [Release notes for EDAS Container](~~92614~~) topic.
+	BuildPackId *int32 `json:"BuildPackId,omitempty" xml:"BuildPackId,omitempty"`
+	// The ID of the ECS cluster in which you want to create the application. If you specify an ID, the application is created in the specified ECS cluster. If you leave this parameter empty, the application is created in the default cluster. We recommend that you specify this parameter.
+	ClusterId *string `json:"ClusterId,omitempty" xml:"ClusterId,omitempty"`
+	// The ID of the application component. You can call the ListComponents operation to query the component IDs. For more information, see [ListComponents](~~97502~~).
+	//
+	// This parameter is required if the application runs in Apache Tomcat or in a standard Java application runtime environment. The Apache Tomcat application runtime environment is applicable to Dubbo applications that are deployed by using WAR packages. A standard Java application runtime environment is applicable to Spring Boot or Spring Cloud applications that are deployed by using JAR packages.
+	//
+	// Valid values for common application components:
+	//
+	// *   4: Apache Tomcat 7.0.91
+	// *   7: Apache Tomcat 8.5.42
+	// *   5: OpenJDK 1.8.x
+	// *   6: OpenJDK 1.7.x
+	//
+	// This parameter is available only for Java SDK 2.57.3 or later, or Python SDK 2.57.3 or later. Assume that you use an SDK that is not provided by EDAS, for example, aliyun-python-sdk-core, aliyun-java-sdk-core, and Alibaba Cloud CLI. In this case, you can directly specify this parameter.
+	ComponentIds *string `json:"ComponentIds,omitempty" xml:"ComponentIds,omitempty"`
+	// The number of CPU cores that can be used by the application container in a Swarm cluster. \*\*This parameter is deprecated.\*\*
+	Cpu *int32 `json:"Cpu,omitempty" xml:"Cpu,omitempty"`
+	// The description of the application.
+	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
+	// The value of `ecu_id` of the ECS instance to be added during scale-out. The ECU ID is the unique identity for an ECS instance that is imported to EDAS. Separate multiple values of `ecu_id` with commas (,). You can call the ListScaleOutEcu operation to query the value of `ecu_id`. For more information, see [ListScaleOutEcu](~~149371~~).
+	EcuInfo *string `json:"EcuInfo,omitempty" xml:"EcuInfo,omitempty"`
+	// Specifies whether to enable the port health check. Valid values:
+	//
+	// *   **true**: enable the port health check.
+	// *   **false**: does not enable the port health check.
+	EnablePortCheck *bool `json:"EnablePortCheck,omitempty" xml:"EnablePortCheck,omitempty"`
+	// Specifies whether to enable the URL health check. Valid values:
+	//
+	// *   **true**: enables the URL health check.
+	// *   **false**: does not enable the URL health check.
+	EnableUrlCheck *bool `json:"EnableUrlCheck,omitempty" xml:"EnableUrlCheck,omitempty"`
+	// The health check URL of the application.
+	HealthCheckURL *string `json:"HealthCheckURL,omitempty" xml:"HealthCheckURL,omitempty"`
+	// The health check URL of the application. This parameter is equivalent to the HealthCheckURL parameter.
+	HealthCheckUrl *string `json:"HealthCheckUrl,omitempty" xml:"HealthCheckUrl,omitempty"`
+	// The script to mount. Set the value in the JSON format. Example: `[{"ignoreFail":false,"name":"postprepareInstanceEnvironmentOnScaleOut","script":"ls"},{"ignoreFail":true,"name":"postdeleteInstanceDataOnScaleIn","script":""},{"ignoreFail":true,"name":"prestartInstance","script":""},{"ignoreFail":true,"name":"poststartInstance","script":""},{"ignoreFail":true,"name":"prestopInstance","script":""},{"ignoreFail":true,"name":"poststopInstance","script":""}]`
+	Hooks *string `json:"Hooks,omitempty" xml:"Hooks,omitempty"`
+	// The version of the Java Development Kit (JDK) used to deploy the application. **This parameter is deprecated.
+	Jdk *string `json:"Jdk,omitempty" xml:"Jdk,omitempty"`
+	// The custom parameters.
+	JvmOptions *string `json:"JvmOptions,omitempty" xml:"JvmOptions,omitempty"`
+	// The ID of the microservices namespace. To query the ID of a microservices namespace, you can choose **Resource Management** > **Microservice Namespaces** in the left-side navigation pane of the EDAS console or call the ListUserDefineRegion operation. For more information, see [ListUserDefineRegion](~~149377~~).
+	//
+	// *   This parameter is required if the cluster you specify is not deployed in the default microservices namespace. Otherwise, the message `application regionId is different with cluster regionId!` appears.
+	// *   If the cluster you specify is deployed in the default microservices namespace, you do not need to specify this parameter. Set this parameter to the ID of the microservices namespace in which the cluster you specify is deployed.
 	LogicalRegionId *string `json:"LogicalRegionId,omitempty" xml:"LogicalRegionId,omitempty"`
-	MaxHeapSize     *int32  `json:"MaxHeapSize,omitempty" xml:"MaxHeapSize,omitempty"`
-	MaxPermSize     *int32  `json:"MaxPermSize,omitempty" xml:"MaxPermSize,omitempty"`
-	Mem             *int32  `json:"Mem,omitempty" xml:"Mem,omitempty"`
-	MinHeapSize     *int32  `json:"MinHeapSize,omitempty" xml:"MinHeapSize,omitempty"`
-	PackageType     *string `json:"PackageType,omitempty" xml:"PackageType,omitempty"`
+	// The maximum size of the heap memory. Unit: MB.
+	MaxHeapSize *int32 `json:"MaxHeapSize,omitempty" xml:"MaxHeapSize,omitempty"`
+	// The size of the permanent generation heap memory. Unit: MB.
+	MaxPermSize *int32 `json:"MaxPermSize,omitempty" xml:"MaxPermSize,omitempty"`
+	// The memory size that can be used by the application container in a Swarm cluster. \*\*This parameter is deprecated.\*\*
+	Mem *int32 `json:"Mem,omitempty" xml:"Mem,omitempty"`
+	// The initial size of the heap memory. Unit: MB.
+	MinHeapSize *int32 `json:"MinHeapSize,omitempty" xml:"MinHeapSize,omitempty"`
+	// The type of the application deployment package. Valid values: war and jar.
+	PackageType *string `json:"PackageType,omitempty" xml:"PackageType,omitempty"`
+	// The reserved port for the application. \*\*This parameter is deprecated.\*\*
 	ReservedPortStr *string `json:"ReservedPortStr,omitempty" xml:"ReservedPortStr,omitempty"`
+	// The ID of the resource group.
 	ResourceGroupId *string `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
-	WebContainer    *string `json:"WebContainer,omitempty" xml:"WebContainer,omitempty"`
+	// The version of Apache Tomcat. **This parameter is deprecated.
+	WebContainer *string `json:"WebContainer,omitempty" xml:"WebContainer,omitempty"`
 }
 
 func (s InsertApplicationRequest) String() string {
@@ -10956,10 +13079,14 @@ func (s *InsertApplicationRequest) SetWebContainer(v string) *InsertApplicationR
 }
 
 type InsertApplicationResponseBody struct {
+	// The information about the created application.
 	ApplicationInfo *InsertApplicationResponseBodyApplicationInfo `json:"ApplicationInfo,omitempty" xml:"ApplicationInfo,omitempty" type:"Struct"`
-	Code            *int32                                        `json:"Code,omitempty" xml:"Code,omitempty"`
-	Message         *string                                       `json:"Message,omitempty" xml:"Message,omitempty"`
-	RequestId       *string                                       `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The HTTP status code that is returned.
+	Code *int32 `json:"Code,omitempty" xml:"Code,omitempty"`
+	// The message that is returned.
+	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// The ID of the request.
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
 func (s InsertApplicationResponseBody) String() string {
@@ -10991,14 +13118,25 @@ func (s *InsertApplicationResponseBody) SetRequestId(v string) *InsertApplicatio
 }
 
 type InsertApplicationResponseBodyApplicationInfo struct {
-	AppId         *string `json:"AppId,omitempty" xml:"AppId,omitempty"`
-	AppName       *string `json:"AppName,omitempty" xml:"AppName,omitempty"`
+	// The ID of the application. The ID is the unique identifier of the application in EDAS.
+	AppId *string `json:"AppId,omitempty" xml:"AppId,omitempty"`
+	// The name of the application.
+	AppName *string `json:"AppName,omitempty" xml:"AppName,omitempty"`
+	// The ID of the change process.
 	ChangeOrderId *string `json:"ChangeOrderId,omitempty" xml:"ChangeOrderId,omitempty"`
-	Dockerize     *bool   `json:"Dockerize,omitempty" xml:"Dockerize,omitempty"`
-	Owner         *string `json:"Owner,omitempty" xml:"Owner,omitempty"`
-	Port          *int32  `json:"Port,omitempty" xml:"Port,omitempty"`
-	RegionName    *string `json:"RegionName,omitempty" xml:"RegionName,omitempty"`
-	UserId        *string `json:"UserId,omitempty" xml:"UserId,omitempty"`
+	// Indicates whether the application is a Docker application. Valid values:
+	//
+	// *   **true**: The application is a Docker application.
+	// *   **false**: The application is not a Docker application.
+	Dockerize *bool `json:"Dockerize,omitempty" xml:"Dockerize,omitempty"`
+	// The owner of the application. The owner is the user who created the application.
+	Owner *string `json:"Owner,omitempty" xml:"Owner,omitempty"`
+	// The port used by the created application. Default value: 8080. You can call the UpdateContainerConfiguration operation to change the port. For more information, see [UpdateContainerConfiguration](~~149403~~).
+	Port *int32 `json:"Port,omitempty" xml:"Port,omitempty"`
+	// The name of the region.
+	RegionName *string `json:"RegionName,omitempty" xml:"RegionName,omitempty"`
+	// The ID of the user who created the application.
+	UserId *string `json:"UserId,omitempty" xml:"UserId,omitempty"`
 }
 
 func (s InsertApplicationResponseBodyApplicationInfo) String() string {
@@ -11079,13 +13217,33 @@ func (s *InsertApplicationResponse) SetBody(v *InsertApplicationResponseBody) *I
 }
 
 type InsertClusterRequest struct {
-	ClusterName     *string `json:"ClusterName,omitempty" xml:"ClusterName,omitempty"`
-	ClusterType     *int32  `json:"ClusterType,omitempty" xml:"ClusterType,omitempty"`
-	IaasProvider    *string `json:"IaasProvider,omitempty" xml:"IaasProvider,omitempty"`
+	// The name of the cluster.
+	ClusterName *string `json:"ClusterName,omitempty" xml:"ClusterName,omitempty"`
+	// The type of the cluster. Valid values:
+	//
+	// *   2: Elastic Compute Service (ECS) cluster
+	// *   3: self-managed Kubernetes cluster in Enterprise Distributed Application Service (EDAS)
+	// *   5: Kubernetes cluster
+	ClusterType *int32 `json:"ClusterType,omitempty" xml:"ClusterType,omitempty"`
+	// The provider of Infrastructure as a Service (IaaS) resources that are used in the cluster.
+	//
+	// When you use Alibaba Cloud, set the value to `ALIYUN`. The value is case-sensitive.
+	IaasProvider *string `json:"IaasProvider,omitempty" xml:"IaasProvider,omitempty"`
+	// The ID of the custom namespace. The ID is in the `physical region ID:custom namespace identifier` format. Example: `cn-hangzhou:test`.
 	LogicalRegionId *string `json:"LogicalRegionId,omitempty" xml:"LogicalRegionId,omitempty"`
-	NetworkMode     *int32  `json:"NetworkMode,omitempty" xml:"NetworkMode,omitempty"`
-	OversoldFactor  *int32  `json:"OversoldFactor,omitempty" xml:"OversoldFactor,omitempty"`
-	VpcId           *string `json:"VpcId,omitempty" xml:"VpcId,omitempty"`
+	// The network type of the cluster. Valid values:
+	//
+	// *   1: classic network
+	// *   2: virtual private cloud (VPC)
+	NetworkMode *int32 `json:"NetworkMode,omitempty" xml:"NetworkMode,omitempty"`
+	// **This parameter is deprecated.** The CPU overcommit ratio supported by a Docker cluster. Valid values:
+	//
+	// *   2: 1:2, which means that resources are overcommitted by 1:2.
+	// *   4: 1:4, which means that resources are overcommitted by 1:4.
+	// *   8: 1:8, which means that resources are overcommitted by 1:8.
+	OversoldFactor *int32 `json:"OversoldFactor,omitempty" xml:"OversoldFactor,omitempty"`
+	// The ID of the VPC. This parameter is required if you set the NetworkMode parameter to 2.
+	VpcId *string `json:"VpcId,omitempty" xml:"VpcId,omitempty"`
 }
 
 func (s InsertClusterRequest) String() string {
@@ -11132,10 +13290,14 @@ func (s *InsertClusterRequest) SetVpcId(v string) *InsertClusterRequest {
 }
 
 type InsertClusterResponseBody struct {
-	Cluster   *InsertClusterResponseBodyCluster `json:"Cluster,omitempty" xml:"Cluster,omitempty" type:"Struct"`
-	Code      *int32                            `json:"Code,omitempty" xml:"Code,omitempty"`
-	Message   *string                           `json:"Message,omitempty" xml:"Message,omitempty"`
-	RequestId *string                           `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The information about the cluster that was created.
+	Cluster *InsertClusterResponseBodyCluster `json:"Cluster,omitempty" xml:"Cluster,omitempty" type:"Struct"`
+	// The HTTP status code that is returned.
+	Code *int32 `json:"Code,omitempty" xml:"Code,omitempty"`
+	// The additional information that is returned.
+	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// The ID of the request.
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
 func (s InsertClusterResponseBody) String() string {
@@ -11167,14 +13329,33 @@ func (s *InsertClusterResponseBody) SetRequestId(v string) *InsertClusterRespons
 }
 
 type InsertClusterResponseBodyCluster struct {
-	ClusterId      *string `json:"ClusterId,omitempty" xml:"ClusterId,omitempty"`
-	ClusterName    *string `json:"ClusterName,omitempty" xml:"ClusterName,omitempty"`
-	ClusterType    *int32  `json:"ClusterType,omitempty" xml:"ClusterType,omitempty"`
-	IaasProvider   *string `json:"IaasProvider,omitempty" xml:"IaasProvider,omitempty"`
-	NetworkMode    *int32  `json:"NetworkMode,omitempty" xml:"NetworkMode,omitempty"`
-	OversoldFactor *int32  `json:"OversoldFactor,omitempty" xml:"OversoldFactor,omitempty"`
-	RegionId       *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	VpcId          *string `json:"VpcId,omitempty" xml:"VpcId,omitempty"`
+	// The ID of cluster.
+	ClusterId *string `json:"ClusterId,omitempty" xml:"ClusterId,omitempty"`
+	// The name of the cluster.
+	ClusterName *string `json:"ClusterName,omitempty" xml:"ClusterName,omitempty"`
+	// The type of the cluster. Valid values:
+	//
+	// *   2: ECS cluster
+	// *   3: self-managed Kubernetes cluster in EDAS
+	// *   5: Kubernetes cluster
+	ClusterType *int32 `json:"ClusterType,omitempty" xml:"ClusterType,omitempty"`
+	// The provider of the IaaS resources that are used in the cluster.
+	IaasProvider *string `json:"IaasProvider,omitempty" xml:"IaasProvider,omitempty"`
+	// The network type of the cluster. Valid values:
+	//
+	// *   1: classic network
+	// *   2\. VPC
+	NetworkMode *int32 `json:"NetworkMode,omitempty" xml:"NetworkMode,omitempty"`
+	// **This parameter is deprecated.** The CPU overcommit ratio supported by the Docker cluster. Valid values:
+	//
+	// *   2: 1:2, which means that resources are overcommitted by 1:2.
+	// *   4: 1:4, which means that resources are overcommitted by 1:4.
+	// *   8: 1:8, which means that resources are overcommitted by 1:8.
+	OversoldFactor *int32 `json:"OversoldFactor,omitempty" xml:"OversoldFactor,omitempty"`
+	// The ID of the region in which the cluster resides.
+	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	// The ID of the VPC.
+	VpcId *string `json:"VpcId,omitempty" xml:"VpcId,omitempty"`
 }
 
 func (s InsertClusterResponseBodyCluster) String() string {
@@ -11255,9 +13436,12 @@ func (s *InsertClusterResponse) SetBody(v *InsertClusterResponseBody) *InsertClu
 }
 
 type InsertClusterMemberRequest struct {
-	ClusterId   *string `json:"clusterId,omitempty" xml:"clusterId,omitempty"`
+	// The ID of the cluster into which you want to import ECS instances.
+	ClusterId *string `json:"clusterId,omitempty" xml:"clusterId,omitempty"`
+	// The ID of the ECS instance that you want to import into the cluster. Separate multiple IDs with commas (,).
 	InstanceIds *string `json:"instanceIds,omitempty" xml:"instanceIds,omitempty"`
-	Password    *string `json:"password,omitempty" xml:"password,omitempty"`
+	// The logon password of the ECS instance that you want to import into the cluster.
+	Password *string `json:"password,omitempty" xml:"password,omitempty"`
 }
 
 func (s InsertClusterMemberRequest) String() string {
@@ -11284,9 +13468,13 @@ func (s *InsertClusterMemberRequest) SetPassword(v string) *InsertClusterMemberR
 }
 
 type InsertClusterMemberResponseBody struct {
-	Code      *int32  `json:"Code,omitempty" xml:"Code,omitempty"`
-	Data      *string `json:"Data,omitempty" xml:"Data,omitempty"`
-	Message   *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// The HTTP status code.
+	Code *int32 `json:"Code,omitempty" xml:"Code,omitempty"`
+	// The data returned for the request.
+	Data *string `json:"Data,omitempty" xml:"Data,omitempty"`
+	// The additional information returned.
+	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// The request ID.
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -11348,8 +13536,11 @@ func (s *InsertClusterMemberResponse) SetBody(v *InsertClusterMemberResponseBody
 }
 
 type InsertDeployGroupRequest struct {
-	AppId                *string `json:"AppId,omitempty" xml:"AppId,omitempty"`
-	GroupName            *string `json:"GroupName,omitempty" xml:"GroupName,omitempty"`
+	// The ID of the application.
+	AppId *string `json:"AppId,omitempty" xml:"AppId,omitempty"`
+	// The name of the instance group. The name can be up to 64 characters in length.
+	GroupName *string `json:"GroupName,omitempty" xml:"GroupName,omitempty"`
+	// The version of the initial deployment package associated with the instance group. You can call the ListHistoryDeployVersion operation to query the version. For more information, see [ListHistoryDeployVersion](~~149392~~).
 	InitPackageVersionId *string `json:"InitPackageVersionId,omitempty" xml:"InitPackageVersionId,omitempty"`
 }
 
@@ -11377,10 +13568,14 @@ func (s *InsertDeployGroupRequest) SetInitPackageVersionId(v string) *InsertDepl
 }
 
 type InsertDeployGroupResponseBody struct {
-	Code              *int32                                          `json:"Code,omitempty" xml:"Code,omitempty"`
+	// The HTTP status code that is returned.
+	Code *int32 `json:"Code,omitempty" xml:"Code,omitempty"`
+	// The information about the instance group.
 	DeployGroupEntity *InsertDeployGroupResponseBodyDeployGroupEntity `json:"DeployGroupEntity,omitempty" xml:"DeployGroupEntity,omitempty" type:"Struct"`
-	Message           *string                                         `json:"Message,omitempty" xml:"Message,omitempty"`
-	RequestId         *string                                         `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The additional information that is returned.
+	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// The ID of the request.
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
 func (s InsertDeployGroupResponseBody) String() string {
@@ -11412,15 +13607,34 @@ func (s *InsertDeployGroupResponseBody) SetRequestId(v string) *InsertDeployGrou
 }
 
 type InsertDeployGroupResponseBodyDeployGroupEntity struct {
-	AppId            *string `json:"AppId,omitempty" xml:"AppId,omitempty"`
-	AppVersionId     *string `json:"AppVersionId,omitempty" xml:"AppVersionId,omitempty"`
-	ClusterId        *string `json:"ClusterId,omitempty" xml:"ClusterId,omitempty"`
-	CreateTime       *int64  `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
-	GroupName        *string `json:"GroupName,omitempty" xml:"GroupName,omitempty"`
-	GroupType        *int32  `json:"GroupType,omitempty" xml:"GroupType,omitempty"`
-	Id               *string `json:"Id,omitempty" xml:"Id,omitempty"`
+	// The ID of the application.
+	AppId *string `json:"AppId,omitempty" xml:"AppId,omitempty"`
+	// The version of the deployment package for the application.
+	//
+	// *   If the application is deployed, a string of random numbers is returned.
+	// *   If the application is not deployed, the return value is empty.
+	AppVersionId *string `json:"AppVersionId,omitempty" xml:"AppVersionId,omitempty"`
+	// The ID of the cluster.
+	ClusterId *string `json:"ClusterId,omitempty" xml:"ClusterId,omitempty"`
+	// The time when the instance group was created. This value is a UNIX timestamp representing the number of milliseconds that have elapsed since January 1, 1970, 00:00:00 UTC.
+	CreateTime *int64 `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
+	// The name of the instance group.
+	GroupName *string `json:"GroupName,omitempty" xml:"GroupName,omitempty"`
+	// The type of the instance group. Valid values:
+	//
+	// *   0: the default group.
+	// *   1: a group for which canary traffic management is not enabled.
+	// *   2: a group for which canary traffic management is enabled.
+	GroupType *int32 `json:"GroupType,omitempty" xml:"GroupType,omitempty"`
+	// The ID of the instance group.
+	Id *string `json:"Id,omitempty" xml:"Id,omitempty"`
+	// The version of the deployment package that was used to deploy an application in the instance group.
+	//
+	// *   If an application is deployed in the instance group, a string of random numbers is returned.
+	// *   If no application is deployed in the instance group, the return value is empty.
 	PackageVersionId *string `json:"PackageVersionId,omitempty" xml:"PackageVersionId,omitempty"`
-	UpdateTime       *int64  `json:"UpdateTime,omitempty" xml:"UpdateTime,omitempty"`
+	// The time when the instance group was last modified. This value is a UNIX timestamp representing the number of milliseconds that have elapsed since January 1, 1970, 00:00:00 UTC.
+	UpdateTime *int64 `json:"UpdateTime,omitempty" xml:"UpdateTime,omitempty"`
 }
 
 func (s InsertDeployGroupResponseBodyDeployGroupEntity) String() string {
@@ -11506,78 +13720,292 @@ func (s *InsertDeployGroupResponse) SetBody(v *InsertDeployGroupResponseBody) *I
 }
 
 type InsertK8sApplicationRequest struct {
-	Annotations            *string `json:"Annotations,omitempty" xml:"Annotations,omitempty"`
-	AppConfig              *string `json:"AppConfig,omitempty" xml:"AppConfig,omitempty"`
-	AppName                *string `json:"AppName,omitempty" xml:"AppName,omitempty"`
-	AppTemplateName        *string `json:"AppTemplateName,omitempty" xml:"AppTemplateName,omitempty"`
+	// The annotation of an application pod.
+	Annotations *string `json:"Annotations,omitempty" xml:"Annotations,omitempty"`
+	// The application configuration when the application template is used. Set this parameter to a JSON array.
+	AppConfig *string `json:"AppConfig,omitempty" xml:"AppConfig,omitempty"`
+	// The name of the application. The name must start with a letter, and can contain digits, letters, and hyphens (-). It can be up to 36 characters in length.
+	AppName *string `json:"AppName,omitempty" xml:"AppName,omitempty"`
+	// The name of the template used to create the application. If you specify an application template when you create an application, the application template and the AppConfig parameter are used to configure the application. Other configurations are ignored.
+	AppTemplateName *string `json:"AppTemplateName,omitempty" xml:"AppTemplateName,omitempty"`
+	// The description of the application.
 	ApplicationDescription *string `json:"ApplicationDescription,omitempty" xml:"ApplicationDescription,omitempty"`
-	BuildPackId            *string `json:"BuildPackId,omitempty" xml:"BuildPackId,omitempty"`
-	ClusterId              *string `json:"ClusterId,omitempty" xml:"ClusterId,omitempty"`
-	Command                *string `json:"Command,omitempty" xml:"Command,omitempty"`
-	CommandArgs            *string `json:"CommandArgs,omitempty" xml:"CommandArgs,omitempty"`
-	ConfigMountDescs       *string `json:"ConfigMountDescs,omitempty" xml:"ConfigMountDescs,omitempty"`
-	CsClusterId            *string `json:"CsClusterId,omitempty" xml:"CsClusterId,omitempty"`
-	CustomAffinity         *string `json:"CustomAffinity,omitempty" xml:"CustomAffinity,omitempty"`
-	CustomTolerations      *string `json:"CustomTolerations,omitempty" xml:"CustomTolerations,omitempty"`
-	DeployAcrossNodes      *string `json:"DeployAcrossNodes,omitempty" xml:"DeployAcrossNodes,omitempty"`
-	DeployAcrossZones      *string `json:"DeployAcrossZones,omitempty" xml:"DeployAcrossZones,omitempty"`
-	EdasContainerVersion   *string `json:"EdasContainerVersion,omitempty" xml:"EdasContainerVersion,omitempty"`
-	EmptyDirs              *string `json:"EmptyDirs,omitempty" xml:"EmptyDirs,omitempty"`
-	EnableAhas             *bool   `json:"EnableAhas,omitempty" xml:"EnableAhas,omitempty"`
-	EnableAsm              *bool   `json:"EnableAsm,omitempty" xml:"EnableAsm,omitempty"`
-	EnableEmptyPushReject  *bool   `json:"EnableEmptyPushReject,omitempty" xml:"EnableEmptyPushReject,omitempty"`
-	EnableLosslessRule     *bool   `json:"EnableLosslessRule,omitempty" xml:"EnableLosslessRule,omitempty"`
-	EnvFroms               *string `json:"EnvFroms,omitempty" xml:"EnvFroms,omitempty"`
-	Envs                   *string `json:"Envs,omitempty" xml:"Envs,omitempty"`
-	ImageUrl               *string `json:"ImageUrl,omitempty" xml:"ImageUrl,omitempty"`
-	InternetSlbId          *string `json:"InternetSlbId,omitempty" xml:"InternetSlbId,omitempty"`
-	InternetSlbPort        *int32  `json:"InternetSlbPort,omitempty" xml:"InternetSlbPort,omitempty"`
-	InternetSlbProtocol    *string `json:"InternetSlbProtocol,omitempty" xml:"InternetSlbProtocol,omitempty"`
-	InternetTargetPort     *int32  `json:"InternetTargetPort,omitempty" xml:"InternetTargetPort,omitempty"`
-	IntranetSlbId          *string `json:"IntranetSlbId,omitempty" xml:"IntranetSlbId,omitempty"`
-	IntranetSlbPort        *int32  `json:"IntranetSlbPort,omitempty" xml:"IntranetSlbPort,omitempty"`
-	IntranetSlbProtocol    *string `json:"IntranetSlbProtocol,omitempty" xml:"IntranetSlbProtocol,omitempty"`
-	IntranetTargetPort     *int32  `json:"IntranetTargetPort,omitempty" xml:"IntranetTargetPort,omitempty"`
-	IsMultilingualApp      *bool   `json:"IsMultilingualApp,omitempty" xml:"IsMultilingualApp,omitempty"`
-	JDK                    *string `json:"JDK,omitempty" xml:"JDK,omitempty"`
-	JavaStartUpConfig      *string `json:"JavaStartUpConfig,omitempty" xml:"JavaStartUpConfig,omitempty"`
-	Labels                 *string `json:"Labels,omitempty" xml:"Labels,omitempty"`
-	LimitCpu               *int32  `json:"LimitCpu,omitempty" xml:"LimitCpu,omitempty"`
-	LimitMem               *int32  `json:"LimitMem,omitempty" xml:"LimitMem,omitempty"`
-	LimitmCpu              *int32  `json:"LimitmCpu,omitempty" xml:"LimitmCpu,omitempty"`
-	Liveness               *string `json:"Liveness,omitempty" xml:"Liveness,omitempty"`
-	LocalVolume            *string `json:"LocalVolume,omitempty" xml:"LocalVolume,omitempty"`
-	LogicalRegionId        *string `json:"LogicalRegionId,omitempty" xml:"LogicalRegionId,omitempty"`
-	LosslessRuleAligned    *bool   `json:"LosslessRuleAligned,omitempty" xml:"LosslessRuleAligned,omitempty"`
-	LosslessRuleDelayTime  *int32  `json:"LosslessRuleDelayTime,omitempty" xml:"LosslessRuleDelayTime,omitempty"`
-	LosslessRuleFuncType   *int32  `json:"LosslessRuleFuncType,omitempty" xml:"LosslessRuleFuncType,omitempty"`
-	LosslessRuleRelated    *bool   `json:"LosslessRuleRelated,omitempty" xml:"LosslessRuleRelated,omitempty"`
-	LosslessRuleWarmupTime *int32  `json:"LosslessRuleWarmupTime,omitempty" xml:"LosslessRuleWarmupTime,omitempty"`
-	MountDescs             *string `json:"MountDescs,omitempty" xml:"MountDescs,omitempty"`
-	Namespace              *string `json:"Namespace,omitempty" xml:"Namespace,omitempty"`
-	NasId                  *string `json:"NasId,omitempty" xml:"NasId,omitempty"`
-	PackageType            *string `json:"PackageType,omitempty" xml:"PackageType,omitempty"`
-	PackageUrl             *string `json:"PackageUrl,omitempty" xml:"PackageUrl,omitempty"`
-	PackageVersion         *string `json:"PackageVersion,omitempty" xml:"PackageVersion,omitempty"`
-	PostStart              *string `json:"PostStart,omitempty" xml:"PostStart,omitempty"`
-	PreStop                *string `json:"PreStop,omitempty" xml:"PreStop,omitempty"`
-	PvcMountDescs          *string `json:"PvcMountDescs,omitempty" xml:"PvcMountDescs,omitempty"`
-	Readiness              *string `json:"Readiness,omitempty" xml:"Readiness,omitempty"`
-	Replicas               *int32  `json:"Replicas,omitempty" xml:"Replicas,omitempty"`
-	RepoId                 *string `json:"RepoId,omitempty" xml:"RepoId,omitempty"`
-	RequestsCpu            *int32  `json:"RequestsCpu,omitempty" xml:"RequestsCpu,omitempty"`
-	RequestsMem            *int32  `json:"RequestsMem,omitempty" xml:"RequestsMem,omitempty"`
-	RequestsmCpu           *int32  `json:"RequestsmCpu,omitempty" xml:"RequestsmCpu,omitempty"`
-	ResourceGroupId        *string `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
-	RuntimeClassName       *string `json:"RuntimeClassName,omitempty" xml:"RuntimeClassName,omitempty"`
-	ServiceConfigs         *string `json:"ServiceConfigs,omitempty" xml:"ServiceConfigs,omitempty"`
-	SlsConfigs             *string `json:"SlsConfigs,omitempty" xml:"SlsConfigs,omitempty"`
-	StorageType            *string `json:"StorageType,omitempty" xml:"StorageType,omitempty"`
-	Timeout                *int32  `json:"Timeout,omitempty" xml:"Timeout,omitempty"`
-	UriEncoding            *string `json:"UriEncoding,omitempty" xml:"UriEncoding,omitempty"`
-	UseBodyEncoding        *bool   `json:"UseBodyEncoding,omitempty" xml:"UseBodyEncoding,omitempty"`
-	WebContainer           *string `json:"WebContainer,omitempty" xml:"WebContainer,omitempty"`
-	WebContainerConfig     *string `json:"WebContainerConfig,omitempty" xml:"WebContainerConfig,omitempty"`
+	// The version of `EDAS Container`. The value of this parameter conflicts with that of the `EdasContainerVersion` parameter. We recommend that you use the `EdasContainerVersion` parameter.
+	BuildPackId *string `json:"BuildPackId,omitempty" xml:"BuildPackId,omitempty"`
+	// The ID of the cluster. You can call the ListCluster operation to query the cluster ID. For more information, see [ListCluster](~~154995~~).
+	ClusterId *string `json:"ClusterId,omitempty" xml:"ClusterId,omitempty"`
+	// The application startup command. If you specify this parameter, the value of this parameter will replace the startup command in the image.
+	Command *string `json:"Command,omitempty" xml:"Command,omitempty"`
+	// The arguments in the command. The parameter value is a JSON array of strings. An example is `[{"argument":"-c"},{"argument":"test"}]`, where `-c` and `test` are two arguments that can be set.
+	CommandArgs *string `json:"CommandArgs,omitempty" xml:"CommandArgs,omitempty"`
+	// The configuration for mounting a Kubernetes ConfigMap or Secret to a directory in an elastic container instance. The following parameters are included in the configuration:
+	//
+	// *   name: the name of the Kubernetes ConfigMap or Secret.
+	// *   type: the type of the API object that you want to mount. You can mount a Kubernetes ConfigMap or Secret.
+	// *   mountPath: the mount path. The mount path must be an absolute path that starts with a forward slash (/).
+	ConfigMountDescs *string `json:"ConfigMountDescs,omitempty" xml:"ConfigMountDescs,omitempty"`
+	// The ID of the repository used to build the image repository. If this parameter is left empty, the default repository provided by EDAS is used. Only the default repository provided by EDAS is supported.
+	ContainerRegistryId *string `json:"ContainerRegistryId,omitempty" xml:"ContainerRegistryId,omitempty"`
+	// The ID of the cluster. This parameter is required only when you create the application in a cluster that has not been imported.
+	CsClusterId *string `json:"CsClusterId,omitempty" xml:"CsClusterId,omitempty"`
+	// The custom affinity.
+	CustomAffinity *string `json:"CustomAffinity,omitempty" xml:"CustomAffinity,omitempty"`
+	// The custom tolerances.
+	CustomTolerations *string `json:"CustomTolerations,omitempty" xml:"CustomTolerations,omitempty"`
+	// Specifies whether to distribute application instances across nodes. Value `true` indicates that application instances are distributed across nodes. Other values indicate that application instances are not distributed across nodes.
+	DeployAcrossNodes *string `json:"DeployAcrossNodes,omitempty" xml:"DeployAcrossNodes,omitempty"`
+	// Specifies whether to distribute application instances across zones. Value `true` indicates that application instances are distributed across zones. Other values indicate that application instances are not distributed across zones.
+	DeployAcrossZones *string `json:"DeployAcrossZones,omitempty" xml:"DeployAcrossZones,omitempty"`
+	// The version of `EDAS Container` on which the deployment package of the application depends.
+	//
+	// > This parameter is unavailable if you deploy applications by using images.
+	EdasContainerVersion *string `json:"EdasContainerVersion,omitempty" xml:"EdasContainerVersion,omitempty"`
+	// The configuration for mounting a Kubernetes emptyDir volume to a directory in an elastic container instance. The following parameters are included in the configuration:
+	//
+	// *   mountPath: The mount path in the container. This parameter is required.
+	// *   readOnly: (Optional) The mount mode. Value true indicates the read-only mode. Value false indicates the read and write mode. Default value: false.
+	// *   subPathExpr: (Optional) The regular expression that is used to match the subdirectory.
+	EmptyDirs *string `json:"EmptyDirs,omitempty" xml:"EmptyDirs,omitempty"`
+	// Specifies whether to enable access to Application High Availability Service (AHAS). Valid values:
+	//
+	// *   true: enables access to AHAS.
+	// *   false: does not enable access to AHAS.
+	EnableAhas *bool `json:"EnableAhas,omitempty" xml:"EnableAhas,omitempty"`
+	// Specifies whether to activate Alibaba Cloud Service Mesh (ASM). Set this parameter to true only when you create the application in a cluster that has not been imported and you need to use ASM.
+	EnableAsm *bool `json:"EnableAsm,omitempty" xml:"EnableAsm,omitempty"`
+	// Specifies whether to enable the empty list protection feature. Valid values:
+	//
+	// *   true: enables the empty list protection feature.
+	// *   false: disables the empty list protection feature.
+	EnableEmptyPushReject *bool `json:"EnableEmptyPushReject,omitempty" xml:"EnableEmptyPushReject,omitempty"`
+	// Specifies whether to enable graceful start rules. Valid values:
+	//
+	// *   true: enables graceful start rules.
+	// *   false: disables graceful start rules.
+	EnableLosslessRule *bool `json:"EnableLosslessRule,omitempty" xml:"EnableLosslessRule,omitempty"`
+	// The Kubernetes environment variables that are configured in EnvFrom mode. A ConfigMap or Secret is mounted to a directory. Each key corresponds to a file in the directory, and the content of the file is the value of the key.
+	//
+	// The following parameters are included in the configuration:
+	//
+	// *   configMapRef: the ConfigMap that is referenced. The following parameter is contained:
+	//
+	//     *   name: the name of the ConfigMap.
+	//
+	// *   secretRef: the Secret that is referenced. The following parameter is contained:
+	//
+	//     *   name: the name of the Secret.
+	EnvFroms *string `json:"EnvFroms,omitempty" xml:"EnvFroms,omitempty"`
+	// The environment variables that are used to deploy the application. The value must be a JSON array. Valid values: regular environment variables, Kubernetes ConfigMap environment variables, or Kubernetes Secret environment variables. Specify regular environment variables in the following format:
+	//
+	// `{"name":"x", "value": "y"}`
+	//
+	// Specify Kubernetes ConfigMap environment variables in the following format to reference values from ConfigMaps:
+	//
+	// `{ "name": "x2", "valueFrom": { "configMapKeyRef": { "name": "my-config", "key": "y2" } } }`
+	//
+	// Specify Kubernetes Secret environment variables in the following format to reference values from Secrets:
+	//
+	// `{ "name": "x3", "valueFrom": { "secretKeyRef": { "name": "my-secret", "key": "y3" } } }`
+	//
+	// >  If you want to cancel this configuration, set this parameter to an empty JSON array in the format of "\[]".
+	Envs           *string `json:"Envs,omitempty" xml:"Envs,omitempty"`
+	ImagePlatforms *string `json:"ImagePlatforms,omitempty" xml:"ImagePlatforms,omitempty"`
+	// The URL of the image. This parameter is required if you set the `PackageType` parameter to `Image`.
+	ImageUrl       *string `json:"ImageUrl,omitempty" xml:"ImageUrl,omitempty"`
+	InitContainers *string `json:"InitContainers,omitempty" xml:"InitContainers,omitempty"`
+	// The ID of the Internet-facing SLB instance. If you do not specify this parameter, EDAS automatically purchases a new SLB instance for you.
+	InternetSlbId *string `json:"InternetSlbId,omitempty" xml:"InternetSlbId,omitempty"`
+	// The frontend port of the Internet-facing SLB instance. Valid values: 1 to 65535.
+	InternetSlbPort *int32 `json:"InternetSlbPort,omitempty" xml:"InternetSlbPort,omitempty"`
+	// The protocol used by the Internet-facing SLB instance. Valid values: TCP, HTTP, and HTTPS.
+	InternetSlbProtocol *string `json:"InternetSlbProtocol,omitempty" xml:"InternetSlbProtocol,omitempty"`
+	// The backend port of the internal-facing SLB instance. This port also serves as the service port of the application. Valid values: 1 to 65535.
+	InternetTargetPort *int32 `json:"InternetTargetPort,omitempty" xml:"InternetTargetPort,omitempty"`
+	// The ID of the internal-facing SLB instance. If you do not specify this parameter, Enterprise Distributed Application Service (EDAS) automatically purchases a new SLB instance for you.
+	IntranetSlbId *string `json:"IntranetSlbId,omitempty" xml:"IntranetSlbId,omitempty"`
+	// The frontend port of the internal-facing SLB instance. Valid values: 1 to 65535.
+	IntranetSlbPort *int32 `json:"IntranetSlbPort,omitempty" xml:"IntranetSlbPort,omitempty"`
+	// The protocol used by the internal-facing SLB instance. Valid values: TCP, HTTP, and HTTPS.
+	IntranetSlbProtocol *string `json:"IntranetSlbProtocol,omitempty" xml:"IntranetSlbProtocol,omitempty"`
+	// The backend port of the internal-facing Server Load Balancer (SLB) instance. This port also serves as the service port of the application. Valid values: 1 to 65535.
+	IntranetTargetPort *int32 `json:"IntranetTargetPort,omitempty" xml:"IntranetTargetPort,omitempty"`
+	// Specifies whether the application is a multi-language application.
+	IsMultilingualApp *bool `json:"IsMultilingualApp,omitempty" xml:"IsMultilingualApp,omitempty"`
+	// The version of the Java Development Kit (JDK) on which the deployment package of the application depends. Valid values: Open JDK 7 and Open JDK 8. This parameter is unavailable if you deploy applications by using images.
+	JDK *string `json:"JDK,omitempty" xml:"JDK,omitempty"`
+	// The configuration of Java startup parameters for a Java application. These startup parameters involve the memory, application, garbage collection (GC) policy, tools, service registration and discovery, and custom configurations. Appropriate parameter settings help reduce the GC overheads, shorten the server response time, and improve the throughput. Set this parameter to a JSON string. In the example, original indicates the configuration value, and startup indicates a startup parameter. The system automatically concatenates all startup values as the settings of Java startup parameters for the application. To delete this configuration, leave the parameter value empty by entering `""` or `"{}"`. The following parameters are included in the configuration:
+	//
+	// *   InitialHeapSize: the initial size of the heap memory.
+	// *   MaxHeapSize: the maximum size of the heap memory.
+	// *   CustomParams: the custom parameters, such as JVM -D parameters.
+	// *   Other parameters: You can view the JSON structure submitted by the frontend.
+	JavaStartUpConfig *string `json:"JavaStartUpConfig,omitempty" xml:"JavaStartUpConfig,omitempty"`
+	// The label of an application pod.
+	Labels *string `json:"Labels,omitempty" xml:"Labels,omitempty"`
+	// The maximum number of CPU cores allowed for each application instance when the application is running. Unit: cores. If the LimitmCpu parameter is specified, you can ignore this parameter.
+	LimitCpu *int32 `json:"LimitCpu,omitempty" xml:"LimitCpu,omitempty"`
+	// The maximum size of space required by ephemeral storage. Unit: GB. Value 0 indicates that no limit is set on the space size.
+	LimitEphemeralStorage *int32 `json:"LimitEphemeralStorage,omitempty" xml:"LimitEphemeralStorage,omitempty"`
+	// The maximum size of memory allowed for each application instance when the application is running. Unit: MB. The value of LimitMem must be greater than that of RequestsMem.
+	LimitMem *int32 `json:"LimitMem,omitempty" xml:"LimitMem,omitempty"`
+	// The maximum number of CPU cores allowed for each application instance when the application is running. Unit: millicores. Value 0 indicates that no limit is set on CPU cores.
+	LimitmCpu *int32 `json:"LimitmCpu,omitempty" xml:"LimitmCpu,omitempty"`
+	// The configuration for the liveness check on the container. Example: `{"failureThreshold": 3,"initialDelaySeconds": 5,"successThreshold": 1,"timeoutSeconds": 1,"tcpSocket":{"host":"", "port":8080}}`.
+	//
+	// If you want to cancel this configuration, leave the parameter value empty by entering `""` or `{}`. If you do not specify this parameter, this configuration is ignored.
+	Liveness *string `json:"Liveness,omitempty" xml:"Liveness,omitempty"`
+	// The configurations that are used when the host files are mounted to the container on which the application is running. Example: `\[{"type":"","nodePath":"/localfiles","mountPath":"/app/files"},{"type":"Directory","nodePath":"/mnt","mountPath":"/app/storage"}\]`. Description:
+	//
+	// *   `nodePath`: the host path.
+	// *   `mountPath`: the path in the container.
+	// *   `type`: the mounting type.
+	LocalVolume *string `json:"LocalVolume,omitempty" xml:"LocalVolume,omitempty"`
+	// The ID of the EDAS namespace. This parameter is required for a non-default namespace.
+	LogicalRegionId *string `json:"LogicalRegionId,omitempty" xml:"LogicalRegionId,omitempty"`
+	// Specifies whether to enable the graceful rolling deployment mode and ensure that the service is registered before the readiness check. Valid values:
+	//
+	// *   true: provides port 55199 and the /health path for the health check in a non-intrusive manner. When the service is registered, the system returns HTTP 200 status code. Otherwise, the system returns HTTP 500 status code.
+	//
+	//     **
+	//
+	//     **Note**If you set both the `LosslessRuleRelated` parameter and this parameter to `true`, the operation checks whether the service prefetching is complete.
+	//
+	// *   false: does not check whether the service is registered.
+	LosslessRuleAligned *bool `json:"LosslessRuleAligned,omitempty" xml:"LosslessRuleAligned,omitempty"`
+	// The delay of service registration. Valid values: 0 to 86400. Unit: seconds.
+	LosslessRuleDelayTime *int32 `json:"LosslessRuleDelayTime,omitempty" xml:"LosslessRuleDelayTime,omitempty"`
+	// The number of prefetching curves. Valid values: 0 to 20. The default value is 2, which is suitable for common prefetching scenarios. This value indicates that the received traffic of the provider during prefetching is displayed as a quadratic curve.
+	LosslessRuleFuncType *int32 `json:"LosslessRuleFuncType,omitempty" xml:"LosslessRuleFuncType,omitempty"`
+	// Specifies whether to enable the graceful rolling deployment mode and ensure that the service prefetching is complete before the readiness check. Valid values:
+	//
+	// *   true: provides port 55199 and the /health path for the health check in a non-intrusive manner. When the service prefetching is complete, the system returns HTTP 200 status code. Otherwise, the system returns HTTP 500 status code.
+	// *   false: does not check whether the service prefetching is complete.
+	LosslessRuleRelated *bool `json:"LosslessRuleRelated,omitempty" xml:"LosslessRuleRelated,omitempty"`
+	// The service prefetching duration. Valid values: 0 to 86400. Unit: seconds.
+	LosslessRuleWarmupTime *int32 `json:"LosslessRuleWarmupTime,omitempty" xml:"LosslessRuleWarmupTime,omitempty"`
+	// The description of the NAS mounting configuration. Set this parameter to a serialized JSON string. Example: `\[{"nasPath": "/k8s","mountPath": "/mnt"},{"nasPath": "/files","mountPath": "/app/files"}\]`. The `nasPath` parameter specifies the file storage path, and the `mountPath` parameter specifies the path to mount the file system to the container where the application is running.
+	MountDescs *string `json:"MountDescs,omitempty" xml:"MountDescs,omitempty"`
+	// The namespace of the Kubernetes cluster. This parameter specifies the Kubernetes namespace in which your application is deployed. By default, the default namespace is used.
+	Namespace *string `json:"Namespace,omitempty" xml:"Namespace,omitempty"`
+	// The ID of the Network Attached Storage (NAS) file system that you want to mount to the application. If you do not specify this parameter but specify the MountDescs parameter, a NAS file system is automatically purchased and mounted to the vSwitch in the VPC.
+	NasId *string `json:"NasId,omitempty" xml:"NasId,omitempty"`
+	// The type of the deployment package. Valid values: FatJar, WAR, and Image.
+	PackageType *string `json:"PackageType,omitempty" xml:"PackageType,omitempty"`
+	// The URL of the deployment package. This parameter is required if you use a FatJar or WAR package to deploy the application.
+	//
+	// > The version of EDAS SDK for Java or Python must be V2.44.0 or later.
+	PackageUrl *string `json:"PackageUrl,omitempty" xml:"PackageUrl,omitempty"`
+	// The version of the deployment package. This parameter is required if you use a FatJar or WAR package to deploy the application. You must specify a version.
+	//
+	// > The version of EDAS SDK for Java or Python must be V2.44.0 or later.
+	PackageVersion *string `json:"PackageVersion,omitempty" xml:"PackageVersion,omitempty"`
+	// The post-start script. Example: `{"exec":{"command":\["cat","/etc/group"\]}}`.
+	//
+	// If you want to cancel this configuration, leave this parameter empty by setting it to `""` or `{}`. If you do not specify this parameter, this configuration is ignored.
+	PostStart *string `json:"PostStart,omitempty" xml:"PostStart,omitempty"`
+	// The pre-stop script. Example: `{"tcpSocket":{"host":"", "port":8080}}`.
+	//
+	// If you want to cancel this configuration, leave this parameter empty by setting it to `""` or `{}`. If you do not specify this parameter, this configuration is ignored.
+	PreStop *string `json:"PreStop,omitempty" xml:"PreStop,omitempty"`
+	// The configuration for mounting a Kubernetes PersistentVolumeClaim (PVC) volume to a directory in an elastic container instance. The following parameters are included in the configuration:
+	//
+	// *   pvcName: the name of the PVC volume. Make sure that the PVC volume is an existing volume and is in the Bound state.
+	//
+	// *   mountPaths: the directory to which you want to mount the PVC volume. You can configure multiple directories. You can set the following two parameters for each mount directory:
+	//
+	//     *   mountPath: the mount path. The mount path must be an absolute path that starts with a forward slash (/).
+	//     *   readOnly: the mount mode. Value true indicates the read-only mode. Value false indicates the read and write mode. Default value: false.
+	PvcMountDescs *string `json:"PvcMountDescs,omitempty" xml:"PvcMountDescs,omitempty"`
+	// The configuration for the readiness check on the container. If the check fails, the traffic that passes through the Kubernetes Service is not transmitted to the container. Example: \`{"failureThreshold": 3,"initialDelaySeconds": 5,"successThreshold": 1,"timeoutSeconds": 1,"httpGet": {"path": "/consumer","port": 8080,"scheme": "HTTP","httpHeaders": \\[{"name": "test","value": "testvalue"}\\]}}\`.``
+	//
+	// If you want to cancel this configuration, leave the parameter value empty by entering `""` or `{}`. If you do not specify this parameter, this configuration is ignored.
+	Readiness *string `json:"Readiness,omitempty" xml:"Readiness,omitempty"`
+	// The number of application instances.
+	Replicas *int32 `json:"Replicas,omitempty" xml:"Replicas,omitempty"`
+	// The ID of the image repository.
+	RepoId *string `json:"RepoId,omitempty" xml:"RepoId,omitempty"`
+	// The maximum number of CPU cores allowed for each application instance when the application is created. Unit: cores. Value 0 indicates that no limit is set on CPU cores. If the RequestsmCpu parameter is specified, the value of the RequestsmCpu parameter is used. You can ignore this parameter.
+	RequestsCpu *int32 `json:"RequestsCpu,omitempty" xml:"RequestsCpu,omitempty"`
+	// The minimum size of space required by ephemeral storage. Unit: GB. Value 0 indicates that no limit is set on the space size.
+	RequestsEphemeralStorage *int32 `json:"RequestsEphemeralStorage,omitempty" xml:"RequestsEphemeralStorage,omitempty"`
+	// The maximum size of memory allowed for each application instance when the application is created. Unit: MB. Value 0 indicates that no limit is set on the memory size. The value of RequestsMem cannot be greater than that of LimitMem.
+	RequestsMem *int32 `json:"RequestsMem,omitempty" xml:"RequestsMem,omitempty"`
+	// The maximum number of CPU cores allowed for each application instance when the application is created. Unit: millicores.
+	RequestsmCpu *int32 `json:"RequestsmCpu,omitempty" xml:"RequestsmCpu,omitempty"`
+	// The ID of the resource group.
+	ResourceGroupId *string `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
+	// The type of the container runtime. This parameter is applicable only to clusters that use sandboxed containers.
+	RuntimeClassName *string `json:"RuntimeClassName,omitempty" xml:"RuntimeClassName,omitempty"`
+	// The name of the credential that is used to pull the images specified by the user. You must configure the Secret.
+	SecretName *string `json:"SecretName,omitempty" xml:"SecretName,omitempty"`
+	// The configurations of services in a Kubernetes cluster.
+	ServiceConfigs *string `json:"ServiceConfigs,omitempty" xml:"ServiceConfigs,omitempty"`
+	Sidecars       *string `json:"Sidecars,omitempty" xml:"Sidecars,omitempty"`
+	// The Logstore configuration. To delete this configuration, leave the parameter value empty by entering `""` or `"{}"`.
+	//
+	// *   The following parameters are included in the configuration:
+	//
+	//     *   type: the collection type. Set this parameter to file to specify the file type. Set this parameter to stdout to specify the standard output type.
+	//
+	//     *   logstore: the name of the Logstore. Make sure that the name of the Logstore is unique in the cluster. The name must comply with the following rules:
+	//
+	//         *   The name can contain only lowercase letters, digits, hyphens (-), and underscores (\_).
+	//         *   The name must start and end with a lowercase letter or a digit.
+	//         *   The name must be 3 to 63 characters in length. If you leave this parameter empty, the system automatically generates a name.
+	//
+	//     *   LogDir: If the standard output type is used, the collection path is stdout.log. If the file type is used, the collection path is the path of the collected file. Wildcards (\*) are supported. The collection path must match the following regular expression: `^/(.+)/(.*)^/$`.
+	SlsConfigs *string `json:"SlsConfigs,omitempty" xml:"SlsConfigs,omitempty"`
+	Startup    *string `json:"Startup,omitempty" xml:"Startup,omitempty"`
+	// The storage type of the NAS file system.
+	//
+	// *   Valid values for General-purpose NAS file systems: Capacity and Performance.
+	// *   Valid values for Extreme NAS file systems: Standard and Advance.
+	//
+	// You can set this parameter only to Performance.
+	StorageType          *string `json:"StorageType,omitempty" xml:"StorageType,omitempty"`
+	TerminateGracePeriod *int32  `json:"TerminateGracePeriod,omitempty" xml:"TerminateGracePeriod,omitempty"`
+	// The timeout period of the change process. Valid values: 1 to 1800. Unit: seconds. If you do not specify this Unidentifiedparameter, the default value 1800 is used.
+	Timeout *int32 `json:"Timeout,omitempty" xml:"Timeout,omitempty"`
+	// The URI encoding scheme. Valid values: ISO-8859-1, GBK, GB2312, and UTF-8.
+	//
+	// > If you do not specify this parameter in the application configurations, the default URI encoding scheme in the Tomcat container is applied.
+	UriEncoding *string `json:"UriEncoding,omitempty" xml:"UriEncoding,omitempty"`
+	// Specifies whether to use the encoding scheme specified in the request body for URI query parameters.
+	//
+	// > If this parameter is not specified in application configuration, the default value false is applied.
+	UseBodyEncoding  *bool   `json:"UseBodyEncoding,omitempty" xml:"UseBodyEncoding,omitempty"`
+	UserBaseImageUrl *string `json:"UserBaseImageUrl,omitempty" xml:"UserBaseImageUrl,omitempty"`
+	// The version of the Tomcat container on which the deployment package of the application depends. This parameter is applicable to Spring Cloud and Dubbo applications that you deploy by using WAR packages. This parameter is unavailable if you deploy applications by using images.
+	WebContainer *string `json:"WebContainer,omitempty" xml:"WebContainer,omitempty"`
+	// The configuration of the Tomcat container. If you want to cancel this configuration, set this parameter to "" or "{}". The following parameters are included in the configuration:
+	//
+	// *   useDefaultConfig: specifies whether to use the default configuration. Value true indicates that the default configuration is used. Value false indicates that the custom configuration is used. If the default configuration is used, the following parameters do not take effect:
+	//
+	// *   contextInputType: the type of the access path for the application. Valid values:
+	//
+	//     *   war: The access path is the name of the WAR package. You do not need to specify a custom path.
+	//     *   root: The access path for the application is `/`. You do not need to specify a custom path.
+	//     *   custom: If you select this option, you must specify a custom path for the contextPath parameter.
+	//
+	// *   contextPath: the custom access path for the application. This parameter is required only when you set the contextInputType parameter to custom.
+	//
+	// *   httpPort: the port number. The port number ranges from 1024 to 65535. Though the admin permissions are configured for the container, the root permissions are required to perform operations on ports whose number is less than 1024. Enter a value that ranges from 1024 to 65535 because the container has only the admin permissions. If you do not configure this parameter, the default port number 8080 is used.
+	//
+	// *   maxThreads: the maximum number of connections in the connection pool. Default value: 400.
+	//
+	//     **
+	//
+	//     **Note**This parameter significantly affects application performance. We recommend that you consult with technical support before you set this parameter.
+	//
+	// *   uriEncoding: the URI encoding scheme in the Tomcat container. Valid values: UTF-8, ISO-8859-1, GBK, and GB2312. If you do not specify this parameter, the default value ISO-8859-1 is used.
+	//
+	// *   useBodyEncoding: specifies whether to use the encoding scheme specified in the request body for URI query parameters.
+	//
+	// *   useAdvancedServerXml: specifies whether to use advanced configurations to customize the server.xml file. If the preceding parameter types and specific parameters cannot meet your requirements, you can use advanced configurations to customize the server.xml file of Tomcat.
+	//
+	// *   serverXml: the content of the server.xml file customized by using advanced configurations. This parameter takes effect only when you set the useAdvancedServerXml parameter to true.
+	WebContainerConfig *string `json:"WebContainerConfig,omitempty" xml:"WebContainerConfig,omitempty"`
+	WorkloadType       *string `json:"WorkloadType,omitempty" xml:"WorkloadType,omitempty"`
 }
 
 func (s InsertK8sApplicationRequest) String() string {
@@ -11635,6 +14063,11 @@ func (s *InsertK8sApplicationRequest) SetCommandArgs(v string) *InsertK8sApplica
 
 func (s *InsertK8sApplicationRequest) SetConfigMountDescs(v string) *InsertK8sApplicationRequest {
 	s.ConfigMountDescs = &v
+	return s
+}
+
+func (s *InsertK8sApplicationRequest) SetContainerRegistryId(v string) *InsertK8sApplicationRequest {
+	s.ContainerRegistryId = &v
 	return s
 }
 
@@ -11703,8 +14136,18 @@ func (s *InsertK8sApplicationRequest) SetEnvs(v string) *InsertK8sApplicationReq
 	return s
 }
 
+func (s *InsertK8sApplicationRequest) SetImagePlatforms(v string) *InsertK8sApplicationRequest {
+	s.ImagePlatforms = &v
+	return s
+}
+
 func (s *InsertK8sApplicationRequest) SetImageUrl(v string) *InsertK8sApplicationRequest {
 	s.ImageUrl = &v
+	return s
+}
+
+func (s *InsertK8sApplicationRequest) SetInitContainers(v string) *InsertK8sApplicationRequest {
+	s.InitContainers = &v
 	return s
 }
 
@@ -11770,6 +14213,11 @@ func (s *InsertK8sApplicationRequest) SetLabels(v string) *InsertK8sApplicationR
 
 func (s *InsertK8sApplicationRequest) SetLimitCpu(v int32) *InsertK8sApplicationRequest {
 	s.LimitCpu = &v
+	return s
+}
+
+func (s *InsertK8sApplicationRequest) SetLimitEphemeralStorage(v int32) *InsertK8sApplicationRequest {
+	s.LimitEphemeralStorage = &v
 	return s
 }
 
@@ -11888,6 +14336,11 @@ func (s *InsertK8sApplicationRequest) SetRequestsCpu(v int32) *InsertK8sApplicat
 	return s
 }
 
+func (s *InsertK8sApplicationRequest) SetRequestsEphemeralStorage(v int32) *InsertK8sApplicationRequest {
+	s.RequestsEphemeralStorage = &v
+	return s
+}
+
 func (s *InsertK8sApplicationRequest) SetRequestsMem(v int32) *InsertK8sApplicationRequest {
 	s.RequestsMem = &v
 	return s
@@ -11908,8 +14361,18 @@ func (s *InsertK8sApplicationRequest) SetRuntimeClassName(v string) *InsertK8sAp
 	return s
 }
 
+func (s *InsertK8sApplicationRequest) SetSecretName(v string) *InsertK8sApplicationRequest {
+	s.SecretName = &v
+	return s
+}
+
 func (s *InsertK8sApplicationRequest) SetServiceConfigs(v string) *InsertK8sApplicationRequest {
 	s.ServiceConfigs = &v
+	return s
+}
+
+func (s *InsertK8sApplicationRequest) SetSidecars(v string) *InsertK8sApplicationRequest {
+	s.Sidecars = &v
 	return s
 }
 
@@ -11918,8 +14381,18 @@ func (s *InsertK8sApplicationRequest) SetSlsConfigs(v string) *InsertK8sApplicat
 	return s
 }
 
+func (s *InsertK8sApplicationRequest) SetStartup(v string) *InsertK8sApplicationRequest {
+	s.Startup = &v
+	return s
+}
+
 func (s *InsertK8sApplicationRequest) SetStorageType(v string) *InsertK8sApplicationRequest {
 	s.StorageType = &v
+	return s
+}
+
+func (s *InsertK8sApplicationRequest) SetTerminateGracePeriod(v int32) *InsertK8sApplicationRequest {
+	s.TerminateGracePeriod = &v
 	return s
 }
 
@@ -11938,6 +14411,11 @@ func (s *InsertK8sApplicationRequest) SetUseBodyEncoding(v bool) *InsertK8sAppli
 	return s
 }
 
+func (s *InsertK8sApplicationRequest) SetUserBaseImageUrl(v string) *InsertK8sApplicationRequest {
+	s.UserBaseImageUrl = &v
+	return s
+}
+
 func (s *InsertK8sApplicationRequest) SetWebContainer(v string) *InsertK8sApplicationRequest {
 	s.WebContainer = &v
 	return s
@@ -11948,11 +14426,20 @@ func (s *InsertK8sApplicationRequest) SetWebContainerConfig(v string) *InsertK8s
 	return s
 }
 
+func (s *InsertK8sApplicationRequest) SetWorkloadType(v string) *InsertK8sApplicationRequest {
+	s.WorkloadType = &v
+	return s
+}
+
 type InsertK8sApplicationResponseBody struct {
+	// The details of the application.
 	ApplicationInfo *InsertK8sApplicationResponseBodyApplicationInfo `json:"ApplicationInfo,omitempty" xml:"ApplicationInfo,omitempty" type:"Struct"`
-	Code            *int32                                           `json:"Code,omitempty" xml:"Code,omitempty"`
-	Message         *string                                          `json:"Message,omitempty" xml:"Message,omitempty"`
-	RequestId       *string                                          `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The HTTP status code that is returned.
+	Code *int32 `json:"Code,omitempty" xml:"Code,omitempty"`
+	// The additional information that is returned.
+	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// The ID of the request.
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
 func (s InsertK8sApplicationResponseBody) String() string {
@@ -11984,15 +14471,34 @@ func (s *InsertK8sApplicationResponseBody) SetRequestId(v string) *InsertK8sAppl
 }
 
 type InsertK8sApplicationResponseBodyApplicationInfo struct {
-	AppId         *string `json:"AppId,omitempty" xml:"AppId,omitempty"`
-	AppName       *string `json:"AppName,omitempty" xml:"AppName,omitempty"`
+	// The ID of the application. You can call the ListApplication operation to query the application ID. For more information, see [ListApplication](~~149390~~).
+	AppId *string `json:"AppId,omitempty" xml:"AppId,omitempty"`
+	// The name of the application.
+	AppName *string `json:"AppName,omitempty" xml:"AppName,omitempty"`
+	// The ID of the change process. You can call the GetChangeOrderInfo operation to query the change process ID. For more information, see [GetChangeOrderInfo](~~62072~~).
 	ChangeOrderId *string `json:"ChangeOrderId,omitempty" xml:"ChangeOrderId,omitempty"`
-	ClusterType   *int32  `json:"ClusterType,omitempty" xml:"ClusterType,omitempty"`
-	Dockerize     *bool   `json:"Dockerize,omitempty" xml:"Dockerize,omitempty"`
-	EdasId        *string `json:"EdasId,omitempty" xml:"EdasId,omitempty"`
-	Owner         *string `json:"Owner,omitempty" xml:"Owner,omitempty"`
-	RegionId      *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	UserId        *string `json:"UserId,omitempty" xml:"UserId,omitempty"`
+	// The type of the cluster. Valid values:
+	//
+	// *   0: regular Docker cluster
+	// *   1: Swarm cluster (discontinued)
+	// *   2: Elastic Compute Service (ECS) cluster
+	// *   3: self-managed Kubernetes cluster in EDAS (discontinued)
+	// *   4: cluster in which Pandora automatically registers applications
+	// *   5: ACK cluster and serverless Kubernetes cluster
+	ClusterType *int32 `json:"ClusterType,omitempty" xml:"ClusterType,omitempty"`
+	// Indicates whether the application is a Docker application.
+	//
+	// *   true: The application is a Docker application.
+	// *   false: The application is not a Docker application.
+	Dockerize *bool `json:"Dockerize,omitempty" xml:"Dockerize,omitempty"`
+	// The ID of the user to which the application belongs. This ID is generated by EDAS.
+	EdasId *string `json:"EdasId,omitempty" xml:"EdasId,omitempty"`
+	// The owner of the application.
+	Owner *string `json:"Owner,omitempty" xml:"Owner,omitempty"`
+	// The ID of the region.
+	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	// The ID of the Alibaba Cloud account to which the application belongs.
+	UserId *string `json:"UserId,omitempty" xml:"UserId,omitempty"`
 }
 
 func (s InsertK8sApplicationResponseBodyApplicationInfo) String() string {
@@ -12078,13 +14584,29 @@ func (s *InsertK8sApplicationResponse) SetBody(v *InsertK8sApplicationResponseBo
 }
 
 type InsertOrUpdateRegionRequest struct {
-	DebugEnable   *bool   `json:"DebugEnable,omitempty" xml:"DebugEnable,omitempty"`
-	Description   *string `json:"Description,omitempty" xml:"Description,omitempty"`
-	Id            *int64  `json:"Id,omitempty" xml:"Id,omitempty"`
+	// Specifies whether to enable remote debugging. Valid values:
+	//
+	// *   true: enables remote debugging.
+	// *   false: disables remote debugging.
+	DebugEnable *bool `json:"DebugEnable,omitempty" xml:"DebugEnable,omitempty"`
+	// The description of the namespace. The description can be up to 128 characters in length.
+	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
+	// Specifies whether to create or modify the namespace. If this parameter is left empty or is set to 0, the namespace is created. Otherwise, the namespace is modified.
+	Id *int64 `json:"Id,omitempty" xml:"Id,omitempty"`
+	// The ID of the MSE registry.
 	MseInstanceId *string `json:"MseInstanceId,omitempty" xml:"MseInstanceId,omitempty"`
-	RegionName    *string `json:"RegionName,omitempty" xml:"RegionName,omitempty"`
-	RegionTag     *string `json:"RegionTag,omitempty" xml:"RegionTag,omitempty"`
-	RegistryType  *string `json:"RegistryType,omitempty" xml:"RegistryType,omitempty"`
+	// The name of the namespace. The name can be up to 63 characters in length.
+	RegionName *string `json:"RegionName,omitempty" xml:"RegionName,omitempty"`
+	// The ID of the namespace.
+	//
+	// *   The ID of a custom namespace is in the `Region ID:Namespace identifier` format. Example: cn-beijing:tdy218.
+	// *   The ID of the default namespace is in the `region ID` format. Example: cn-beijing.
+	RegionTag *string `json:"RegionTag,omitempty" xml:"RegionTag,omitempty"`
+	// The type of the registry.
+	//
+	// *   default: the shared registry of Enterprise Distributed Application Service (EDAS)
+	// *   exclusive_mse: a Microservices Engine (MSE) registry
+	RegistryType *string `json:"RegistryType,omitempty" xml:"RegistryType,omitempty"`
 }
 
 func (s InsertOrUpdateRegionRequest) String() string {
@@ -12131,9 +14653,13 @@ func (s *InsertOrUpdateRegionRequest) SetRegistryType(v string) *InsertOrUpdateR
 }
 
 type InsertOrUpdateRegionResponseBody struct {
-	Code                   *int32                                                  `json:"Code,omitempty" xml:"Code,omitempty"`
-	Message                *string                                                 `json:"Message,omitempty" xml:"Message,omitempty"`
-	RequestId              *string                                                 `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The HTTP status code that is returned.
+	Code *int32 `json:"Code,omitempty" xml:"Code,omitempty"`
+	// The additional information that is returned.
+	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// The ID of the request.
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The information about the custom namespace.
 	UserDefineRegionEntity *InsertOrUpdateRegionResponseBodyUserDefineRegionEntity `json:"UserDefineRegionEntity,omitempty" xml:"UserDefineRegionEntity,omitempty" type:"Struct"`
 }
 
@@ -12166,13 +14692,26 @@ func (s *InsertOrUpdateRegionResponseBody) SetUserDefineRegionEntity(v *InsertOr
 }
 
 type InsertOrUpdateRegionResponseBodyUserDefineRegionEntity struct {
+	// The ID of the region to which the namespace belongs.
 	BelongRegion *string `json:"BelongRegion,omitempty" xml:"BelongRegion,omitempty"`
-	DebugEnable  *bool   `json:"DebugEnable,omitempty" xml:"DebugEnable,omitempty"`
-	Description  *string `json:"Description,omitempty" xml:"Description,omitempty"`
-	Id           *int64  `json:"Id,omitempty" xml:"Id,omitempty"`
-	RegionId     *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	RegionName   *string `json:"RegionName,omitempty" xml:"RegionName,omitempty"`
-	UserId       *string `json:"UserId,omitempty" xml:"UserId,omitempty"`
+	// Indicates whether remote debugging is enabled. Valid values:
+	//
+	// *   true: Remote debugging is enabled.
+	// *   false: Remote debugging is disabled.
+	DebugEnable *bool `json:"DebugEnable,omitempty" xml:"DebugEnable,omitempty"`
+	// The description of the namespace.
+	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
+	// Indicates whether the namespace is created or modified. If this parameter is left empty or 0 is returned, the namespace is created. Otherwise, the namespace is modified.
+	Id *int64 `json:"Id,omitempty" xml:"Id,omitempty"`
+	// The ID of the namespace.
+	//
+	// *   The ID of a custom namespace is in the `region ID:namespace identifier` format. Example: cn-beijing:tdy218.
+	// *   The ID of the default namespace is in the `region ID` format. Example: cn-beijing.
+	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	// The name of the namespace.
+	RegionName *string `json:"RegionName,omitempty" xml:"RegionName,omitempty"`
+	// The ID of the Alibaba Cloud account to which the custom namespace belongs.
+	UserId *string `json:"UserId,omitempty" xml:"UserId,omitempty"`
 }
 
 func (s InsertOrUpdateRegionResponseBodyUserDefineRegionEntity) String() string {
@@ -12248,8 +14787,10 @@ func (s *InsertOrUpdateRegionResponse) SetBody(v *InsertOrUpdateRegionResponseBo
 }
 
 type InsertRoleRequest struct {
+	// The set of permissions to be granted to the role. The value is in the format of `Permission group ID 1:Permission serial number 1;...;Permission group ID n:Permission serial number n`. Example: `1:1;1:2;2:1;2:2`. For more information about permission groups and permission serial numbers, see [ListAuthority](~~149409~~).
 	ActionData *string `json:"ActionData,omitempty" xml:"ActionData,omitempty"`
-	RoleName   *string `json:"RoleName,omitempty" xml:"RoleName,omitempty"`
+	// The name of the role.
+	RoleName *string `json:"RoleName,omitempty" xml:"RoleName,omitempty"`
 }
 
 func (s InsertRoleRequest) String() string {
@@ -12271,10 +14812,14 @@ func (s *InsertRoleRequest) SetRoleName(v string) *InsertRoleRequest {
 }
 
 type InsertRoleResponseBody struct {
-	Code      *int32  `json:"Code,omitempty" xml:"Code,omitempty"`
-	Message   *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// The HTTP status code that is returned.
+	Code *int32 `json:"Code,omitempty" xml:"Code,omitempty"`
+	// The additional information that is returned.
+	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// The ID of the request.
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	RoleId    *int32  `json:"RoleId,omitempty" xml:"RoleId,omitempty"`
+	// The ID of the role.
+	RoleId *int32 `json:"RoleId,omitempty" xml:"RoleId,omitempty"`
 }
 
 func (s InsertRoleResponseBody) String() string {
@@ -12335,6 +14880,7 @@ func (s *InsertRoleResponse) SetBody(v *InsertRoleResponseBody) *InsertRoleRespo
 }
 
 type InsertServiceGroupRequest struct {
+	// The name of the service group that you want to create.
 	GroupName *string `json:"GroupName,omitempty" xml:"GroupName,omitempty"`
 }
 
@@ -12352,8 +14898,11 @@ func (s *InsertServiceGroupRequest) SetGroupName(v string) *InsertServiceGroupRe
 }
 
 type InsertServiceGroupResponseBody struct {
-	Code      *int32  `json:"Code,omitempty" xml:"Code,omitempty"`
-	Message   *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// The HTTP status code that is returned.
+	Code *int32 `json:"Code,omitempty" xml:"Code,omitempty"`
+	// The message that is returned.
+	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// The ID of the request.
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -12410,13 +14959,20 @@ func (s *InsertServiceGroupResponse) SetBody(v *InsertServiceGroupResponseBody) 
 }
 
 type InsertSwimmingLaneRequest struct {
-	AppInfos        *string `json:"AppInfos,omitempty" xml:"AppInfos,omitempty"`
-	EnableRules     *bool   `json:"EnableRules,omitempty" xml:"EnableRules,omitempty"`
-	EntryRules      *string `json:"EntryRules,omitempty" xml:"EntryRules,omitempty"`
-	GroupId         *int64  `json:"GroupId,omitempty" xml:"GroupId,omitempty"`
+	// The information about applications related to the lane.
+	AppInfos *string `json:"AppInfos,omitempty" xml:"AppInfos,omitempty"`
+	// Specifies whether to enable the throttling rule.
+	EnableRules *bool `json:"EnableRules,omitempty" xml:"EnableRules,omitempty"`
+	// The throttling conditions.
+	EntryRules *string `json:"EntryRules,omitempty" xml:"EntryRules,omitempty"`
+	// The ID of the lane group.
+	GroupId *int64 `json:"GroupId,omitempty" xml:"GroupId,omitempty"`
+	// The ID of the custom namespace. The ID is in the `physical region ID:custom namespace identifier` format. Example: `cn-hangzhou:test`.
 	LogicalRegionId *string `json:"LogicalRegionId,omitempty" xml:"LogicalRegionId,omitempty"`
-	Name            *string `json:"Name,omitempty" xml:"Name,omitempty"`
-	Tag             *string `json:"Tag,omitempty" xml:"Tag,omitempty"`
+	// The name of the lane.
+	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// The tag.
+	Tag *string `json:"Tag,omitempty" xml:"Tag,omitempty"`
 }
 
 func (s InsertSwimmingLaneRequest) String() string {
@@ -12463,10 +15019,14 @@ func (s *InsertSwimmingLaneRequest) SetTag(v string) *InsertSwimmingLaneRequest 
 }
 
 type InsertSwimmingLaneResponseBody struct {
-	Code      *int32                              `json:"Code,omitempty" xml:"Code,omitempty"`
-	Data      *InsertSwimmingLaneResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
-	Message   *string                             `json:"Message,omitempty" xml:"Message,omitempty"`
-	RequestId *string                             `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The HTTP status code that is returned.
+	Code *int32 `json:"Code,omitempty" xml:"Code,omitempty"`
+	// The data that is returned.
+	Data *InsertSwimmingLaneResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
+	// The additional information that is returned.
+	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// The ID of the request.
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
 func (s InsertSwimmingLaneResponseBody) String() string {
@@ -12498,14 +15058,59 @@ func (s *InsertSwimmingLaneResponseBody) SetRequestId(v string) *InsertSwimmingL
 }
 
 type InsertSwimmingLaneResponseBodyData struct {
-	AppInfos                        *string                                                              `json:"AppInfos,omitempty" xml:"AppInfos,omitempty"`
-	EntryRule                       *string                                                              `json:"EntryRule,omitempty" xml:"EntryRule,omitempty"`
-	GroupId                         *int64                                                               `json:"GroupId,omitempty" xml:"GroupId,omitempty"`
-	Id                              *int64                                                               `json:"Id,omitempty" xml:"Id,omitempty"`
-	Name                            *string                                                              `json:"Name,omitempty" xml:"Name,omitempty"`
-	NamespaceId                     *string                                                              `json:"NamespaceId,omitempty" xml:"NamespaceId,omitempty"`
+	// The applications that are associated with lanes.
+	AppInfos *string `json:"AppInfos,omitempty" xml:"AppInfos,omitempty"`
+	// The throttling rule for the lane.
+	//
+	// priority: the priority of the throttling rule for the lane. Valid values: 1 to 100.
+	//
+	// path: the path that is matched by the throttling rule for the lane.
+	//
+	// restItems: conditions to be met.
+	//
+	// condition: the relationship among the conditions to be met.
+	//
+	// *   AND: all conditions
+	// *   OR: one of the conditions
+	//
+	// restItems.type: the type of the rule. Valid values:
+	//
+	// *   header: matches by request header.
+	// *   cookie: matches by request cookie.
+	// *   param: matches by request parameters.
+	//
+	// restItems.name: the key that matches the rule.
+	//
+	// restItems.value: the value that matches the rule.
+	//
+	// restItems.cond: the condition that matches the rule. Valid values:
+	//
+	// *   "==": The parameter value is equal to the value that you enter in the Value field.
+	// *   "!=": The parameter value is not equal to the value that you enter in the Value field.
+	// *   ">": The parameter value is greater than the value that you enter in the Value field.
+	// *   "<": The parameter value is less than the value that you enter in the Value field.
+	// *   ">=": The parameter value is greater than or equal to the value that you enter in the Value field.
+	// *   "<=": The parameter value is less than or equal to the value that you enter in the Value field.
+	// *   "in": The parameter value is within the values that you enter in the Value field.
+	//
+	// restItems.operator: the type of the value. Valid values:
+	//
+	// *   rawvalue: the initial value
+	// *   mod: the reminder obtained by performing modulo operation
+	// *   list: the value from the list
+	EntryRule *string `json:"EntryRule,omitempty" xml:"EntryRule,omitempty"`
+	// The ID of the lane group.
+	GroupId *int64 `json:"GroupId,omitempty" xml:"GroupId,omitempty"`
+	// The ID of the lane.
+	Id *int64 `json:"Id,omitempty" xml:"Id,omitempty"`
+	// The name of the lane.
+	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// The ID of the namespace.
+	NamespaceId *string `json:"NamespaceId,omitempty" xml:"NamespaceId,omitempty"`
+	// The association relationships between lanes and applications.
 	SwimmingLaneAppRelationShipList []*InsertSwimmingLaneResponseBodyDataSwimmingLaneAppRelationShipList `json:"SwimmingLaneAppRelationShipList,omitempty" xml:"SwimmingLaneAppRelationShipList,omitempty" type:"Repeated"`
-	Tag                             *string                                                              `json:"Tag,omitempty" xml:"Tag,omitempty"`
+	// The tag of the lane.
+	Tag *string `json:"Tag,omitempty" xml:"Tag,omitempty"`
 }
 
 func (s InsertSwimmingLaneResponseBodyData) String() string {
@@ -12557,10 +15162,14 @@ func (s *InsertSwimmingLaneResponseBodyData) SetTag(v string) *InsertSwimmingLan
 }
 
 type InsertSwimmingLaneResponseBodyDataSwimmingLaneAppRelationShipList struct {
-	AppId   *string `json:"AppId,omitempty" xml:"AppId,omitempty"`
+	// The ID of the application.
+	AppId *string `json:"AppId,omitempty" xml:"AppId,omitempty"`
+	// The name of the application.
 	AppName *string `json:"AppName,omitempty" xml:"AppName,omitempty"`
-	LaneId  *int64  `json:"LaneId,omitempty" xml:"LaneId,omitempty"`
-	Rules   *string `json:"Rules,omitempty" xml:"Rules,omitempty"`
+	// The ID of the lane.
+	LaneId *int64 `json:"LaneId,omitempty" xml:"LaneId,omitempty"`
+	// The association rule.
+	Rules *string `json:"Rules,omitempty" xml:"Rules,omitempty"`
 }
 
 func (s InsertSwimmingLaneResponseBodyDataSwimmingLaneAppRelationShipList) String() string {
@@ -12621,10 +15230,14 @@ func (s *InsertSwimmingLaneResponse) SetBody(v *InsertSwimmingLaneResponseBody) 
 }
 
 type InsertSwimmingLaneGroupRequest struct {
-	AppIds          *string `json:"AppIds,omitempty" xml:"AppIds,omitempty"`
-	EntryApp        *string `json:"EntryApp,omitempty" xml:"EntryApp,omitempty"`
+	// IDs of all applications that are related to the lane group. Separate multiple applications with commas (,).
+	AppIds *string `json:"AppIds,omitempty" xml:"AppIds,omitempty"`
+	// The ingress application. The application is in the EDAS:{application ID} format.
+	EntryApp *string `json:"EntryApp,omitempty" xml:"EntryApp,omitempty"`
+	// The ID of the custom namespace. The ID is in the physical region ID:custom namespace identifier format. Example: cn-hangzhou:test.
 	LogicalRegionId *string `json:"LogicalRegionId,omitempty" xml:"LogicalRegionId,omitempty"`
-	Name            *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// The name of the lane group.
+	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
 }
 
 func (s InsertSwimmingLaneGroupRequest) String() string {
@@ -12656,10 +15269,14 @@ func (s *InsertSwimmingLaneGroupRequest) SetName(v string) *InsertSwimmingLaneGr
 }
 
 type InsertSwimmingLaneGroupResponseBody struct {
-	Code      *int32                                   `json:"Code,omitempty" xml:"Code,omitempty"`
-	Data      *InsertSwimmingLaneGroupResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
-	Message   *string                                  `json:"Message,omitempty" xml:"Message,omitempty"`
-	RequestId *string                                  `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The HTTP status code that is returned.
+	Code *int32 `json:"Code,omitempty" xml:"Code,omitempty"`
+	// The data that is returned.
+	Data *InsertSwimmingLaneGroupResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
+	// The additional information that is returned.
+	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// The ID of the request.
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
 func (s InsertSwimmingLaneGroupResponseBody) String() string {
@@ -12691,11 +15308,16 @@ func (s *InsertSwimmingLaneGroupResponseBody) SetRequestId(v string) *InsertSwim
 }
 
 type InsertSwimmingLaneGroupResponseBodyData struct {
-	ApplicationList  *InsertSwimmingLaneGroupResponseBodyDataApplicationList  `json:"ApplicationList,omitempty" xml:"ApplicationList,omitempty" type:"Struct"`
+	// The list of all applications that are related to the lane group.
+	ApplicationList *InsertSwimmingLaneGroupResponseBodyDataApplicationList `json:"ApplicationList,omitempty" xml:"ApplicationList,omitempty" type:"Struct"`
+	// The information about the Enterprise Distributed Application Service (EDAS) ingress gateway.
 	EntryApplication *InsertSwimmingLaneGroupResponseBodyDataEntryApplication `json:"EntryApplication,omitempty" xml:"EntryApplication,omitempty" type:"Struct"`
-	Id               *int64                                                   `json:"Id,omitempty" xml:"Id,omitempty"`
-	Name             *string                                                  `json:"Name,omitempty" xml:"Name,omitempty"`
-	NamespaceId      *string                                                  `json:"NamespaceId,omitempty" xml:"NamespaceId,omitempty"`
+	// The ID of the lane group.
+	Id *int64 `json:"Id,omitempty" xml:"Id,omitempty"`
+	// The name of the lane group.
+	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// The ID of the namespace.
+	NamespaceId *string `json:"NamespaceId,omitempty" xml:"NamespaceId,omitempty"`
 }
 
 func (s InsertSwimmingLaneGroupResponseBodyData) String() string {
@@ -12749,7 +15371,9 @@ func (s *InsertSwimmingLaneGroupResponseBodyDataApplicationList) SetApplication(
 }
 
 type InsertSwimmingLaneGroupResponseBodyDataApplicationListApplication struct {
-	AppId   *string `json:"AppId,omitempty" xml:"AppId,omitempty"`
+	// The ID of the application.
+	AppId *string `json:"AppId,omitempty" xml:"AppId,omitempty"`
+	// The name of the application.
 	AppName *string `json:"AppName,omitempty" xml:"AppName,omitempty"`
 }
 
@@ -12772,7 +15396,9 @@ func (s *InsertSwimmingLaneGroupResponseBodyDataApplicationListApplication) SetA
 }
 
 type InsertSwimmingLaneGroupResponseBodyDataEntryApplication struct {
-	AppId   *string `json:"AppId,omitempty" xml:"AppId,omitempty"`
+	// The ID of the application.
+	AppId *string `json:"AppId,omitempty" xml:"AppId,omitempty"`
+	// The name of the application.
 	AppName *string `json:"AppName,omitempty" xml:"AppName,omitempty"`
 }
 
@@ -12824,8 +15450,11 @@ func (s *InsertSwimmingLaneGroupResponse) SetBody(v *InsertSwimmingLaneGroupResp
 }
 
 type InstallAgentRequest struct {
-	ClusterId   *string `json:"ClusterId,omitempty" xml:"ClusterId,omitempty"`
-	DoAsync     *bool   `json:"DoAsync,omitempty" xml:"DoAsync,omitempty"`
+	// The ID of the cluster.
+	ClusterId *string `json:"ClusterId,omitempty" xml:"ClusterId,omitempty"`
+	// This parameter is deprecated.
+	DoAsync *bool `json:"DoAsync,omitempty" xml:"DoAsync,omitempty"`
+	// The ID of the ECS instance. Separate multiple IDs with commas (,). Example: instanceId1,instanceId2.
 	InstanceIds *string `json:"InstanceIds,omitempty" xml:"InstanceIds,omitempty"`
 }
 
@@ -12853,10 +15482,14 @@ func (s *InstallAgentRequest) SetInstanceIds(v string) *InstallAgentRequest {
 }
 
 type InstallAgentResponseBody struct {
-	Code                *int32                                       `json:"Code,omitempty" xml:"Code,omitempty"`
+	// The HTTP status code that is returned.
+	Code *int32 `json:"Code,omitempty" xml:"Code,omitempty"`
+	// The execution result.
 	ExecutionResultList *InstallAgentResponseBodyExecutionResultList `json:"ExecutionResultList,omitempty" xml:"ExecutionResultList,omitempty" type:"Struct"`
-	Message             *string                                      `json:"Message,omitempty" xml:"Message,omitempty"`
-	RequestId           *string                                      `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The message that is returned.
+	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// The ID of the request.
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
 func (s InstallAgentResponseBody) String() string {
@@ -12905,11 +15538,16 @@ func (s *InstallAgentResponseBodyExecutionResultList) SetExecutionResult(v []*In
 }
 
 type InstallAgentResponseBodyExecutionResultListExecutionResult struct {
-	FinishedTime       *string `json:"FinishedTime,omitempty" xml:"FinishedTime,omitempty"`
-	InstanceId         *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	// The time when the installation was complete.
+	FinishedTime *string `json:"FinishedTime,omitempty" xml:"FinishedTime,omitempty"`
+	// The ID of the instance.
+	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	// The state of the installation.
 	InvokeRecordStatus *string `json:"InvokeRecordStatus,omitempty" xml:"InvokeRecordStatus,omitempty"`
-	Status             *string `json:"Status,omitempty" xml:"Status,omitempty"`
-	Success            *bool   `json:"Success,omitempty" xml:"Success,omitempty"`
+	// The state of the installation command.
+	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
+	// Indicates whether the installation was successful.
+	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
 }
 
 func (s InstallAgentResponseBodyExecutionResultListExecutionResult) String() string {
@@ -12975,10 +15613,14 @@ func (s *InstallAgentResponse) SetBody(v *InstallAgentResponseBody) *InstallAgen
 }
 
 type ListAliyunRegionResponseBody struct {
-	Code             *int32                                        `json:"Code,omitempty" xml:"Code,omitempty"`
-	Message          *string                                       `json:"Message,omitempty" xml:"Message,omitempty"`
+	// The HTTP status code that is returned.
+	Code *int32 `json:"Code,omitempty" xml:"Code,omitempty"`
+	// The message that is returned.
+	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// The details of the regions.
 	RegionEntityList *ListAliyunRegionResponseBodyRegionEntityList `json:"RegionEntityList,omitempty" xml:"RegionEntityList,omitempty" type:"Struct"`
-	RequestId        *string                                       `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The ID of the request.
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
 func (s ListAliyunRegionResponseBody) String() string {
@@ -13027,7 +15669,9 @@ func (s *ListAliyunRegionResponseBodyRegionEntityList) SetRegionEntity(v []*List
 }
 
 type ListAliyunRegionResponseBodyRegionEntityListRegionEntity struct {
-	Id   *string `json:"Id,omitempty" xml:"Id,omitempty"`
+	// The ID of the region.
+	Id *string `json:"Id,omitempty" xml:"Id,omitempty"`
+	// The name of the region.
 	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
 }
 
@@ -13079,11 +15723,20 @@ func (s *ListAliyunRegionResponse) SetBody(v *ListAliyunRegionResponseBody) *Lis
 }
 
 type ListApplicationRequest struct {
-	AppName               *string `json:"AppName,omitempty" xml:"AppName,omitempty"`
-	ClusterId             *string `json:"ClusterId,omitempty" xml:"ClusterId,omitempty"`
-	LogicalRegionId       *string `json:"LogicalRegionId,omitempty" xml:"LogicalRegionId,omitempty"`
+	// The application IDs.
+	AppIds *string `json:"AppIds,omitempty" xml:"AppIds,omitempty"`
+	// The name of the application. Specify this parameter if you want to filter applications by application name.
+	AppName *string `json:"AppName,omitempty" xml:"AppName,omitempty"`
+	// The cluster ID. Specify this parameter if you want to filter applications by cluster.
+	ClusterId   *string `json:"ClusterId,omitempty" xml:"ClusterId,omitempty"`
+	CurrentPage *int32  `json:"CurrentPage,omitempty" xml:"CurrentPage,omitempty"`
+	// The namespace ID. Specify this parameter if you want to filter applications by namespace.
+	LogicalRegionId *string `json:"LogicalRegionId,omitempty" xml:"LogicalRegionId,omitempty"`
+	// The ID of the namespace that you use in the exact search to filter applications.
 	LogicalRegionIdFilter *string `json:"LogicalRegionIdFilter,omitempty" xml:"LogicalRegionIdFilter,omitempty"`
-	ResourceGroupId       *string `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
+	PageSize              *int32  `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	// The ID of the resource group. Specify this parameter if you want to filter applications by resource group.
+	ResourceGroupId *string `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
 }
 
 func (s ListApplicationRequest) String() string {
@@ -13094,6 +15747,11 @@ func (s ListApplicationRequest) GoString() string {
 	return s.String()
 }
 
+func (s *ListApplicationRequest) SetAppIds(v string) *ListApplicationRequest {
+	s.AppIds = &v
+	return s
+}
+
 func (s *ListApplicationRequest) SetAppName(v string) *ListApplicationRequest {
 	s.AppName = &v
 	return s
@@ -13101,6 +15759,11 @@ func (s *ListApplicationRequest) SetAppName(v string) *ListApplicationRequest {
 
 func (s *ListApplicationRequest) SetClusterId(v string) *ListApplicationRequest {
 	s.ClusterId = &v
+	return s
+}
+
+func (s *ListApplicationRequest) SetCurrentPage(v int32) *ListApplicationRequest {
+	s.CurrentPage = &v
 	return s
 }
 
@@ -13114,16 +15777,25 @@ func (s *ListApplicationRequest) SetLogicalRegionIdFilter(v string) *ListApplica
 	return s
 }
 
+func (s *ListApplicationRequest) SetPageSize(v int32) *ListApplicationRequest {
+	s.PageSize = &v
+	return s
+}
+
 func (s *ListApplicationRequest) SetResourceGroupId(v string) *ListApplicationRequest {
 	s.ResourceGroupId = &v
 	return s
 }
 
 type ListApplicationResponseBody struct {
+	// The applications that are queried.
 	ApplicationList *ListApplicationResponseBodyApplicationList `json:"ApplicationList,omitempty" xml:"ApplicationList,omitempty" type:"Struct"`
-	Code            *int32                                      `json:"Code,omitempty" xml:"Code,omitempty"`
-	Message         *string                                     `json:"Message,omitempty" xml:"Message,omitempty"`
-	RequestId       *string                                     `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The HTTP status code that is returned.
+	Code *int32 `json:"Code,omitempty" xml:"Code,omitempty"`
+	// The message that is returned.
+	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// The request ID.
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
 func (s ListApplicationResponseBody) String() string {
@@ -13172,24 +15844,59 @@ func (s *ListApplicationResponseBodyApplicationList) SetApplication(v []*ListApp
 }
 
 type ListApplicationResponseBodyApplicationListApplication struct {
-	AppId                *string `json:"AppId,omitempty" xml:"AppId,omitempty"`
-	ApplicationType      *string `json:"ApplicationType,omitempty" xml:"ApplicationType,omitempty"`
-	BuildPackageId       *int64  `json:"BuildPackageId,omitempty" xml:"BuildPackageId,omitempty"`
-	ClusterId            *string `json:"ClusterId,omitempty" xml:"ClusterId,omitempty"`
-	ClusterType          *int32  `json:"ClusterType,omitempty" xml:"ClusterType,omitempty"`
-	CreateTime           *int64  `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
-	ExtSlbIp             *string `json:"ExtSlbIp,omitempty" xml:"ExtSlbIp,omitempty"`
-	ExtSlbListenerPort   *int32  `json:"ExtSlbListenerPort,omitempty" xml:"ExtSlbListenerPort,omitempty"`
-	Instances            *int32  `json:"Instances,omitempty" xml:"Instances,omitempty"`
-	Name                 *string `json:"Name,omitempty" xml:"Name,omitempty"`
-	Port                 *int32  `json:"Port,omitempty" xml:"Port,omitempty"`
-	RegionId             *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	ResourceGroupId      *string `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
-	RunningInstanceCount *int32  `json:"RunningInstanceCount,omitempty" xml:"RunningInstanceCount,omitempty"`
-	SlbIp                *string `json:"SlbIp,omitempty" xml:"SlbIp,omitempty"`
-	SlbListenerPort      *int32  `json:"SlbListenerPort,omitempty" xml:"SlbListenerPort,omitempty"`
-	SlbPort              *int32  `json:"SlbPort,omitempty" xml:"SlbPort,omitempty"`
-	State                *string `json:"State,omitempty" xml:"State,omitempty"`
+	// The application ID.
+	AppId *string `json:"AppId,omitempty" xml:"AppId,omitempty"`
+	// The deployment type of the application. Valid values:
+	//
+	// *   War: The application is deployed by using a WAR package.
+	// *   FatJar: The application is deployed by using a JAR package.
+	// *   Image: The application is deployed by using an image.
+	// *   If this parameter is empty, the application is not deployed.
+	ApplicationType *string `json:"ApplicationType,omitempty" xml:"ApplicationType,omitempty"`
+	// The build package number of Enterprise Distributed Application Service (EDAS) Container.
+	BuildPackageId *int64 `json:"BuildPackageId,omitempty" xml:"BuildPackageId,omitempty"`
+	// The cluster ID.
+	ClusterId *string `json:"ClusterId,omitempty" xml:"ClusterId,omitempty"`
+	// The type of the cluster in which the application is deployed. Valid values:
+	//
+	// *   **2**: Elastic Compute Service (ECS) cluster
+	// *   **3**: self-managed Kubernetes cluster in EDAS
+	// *   **5**: Container Service for Kubernetes (ACK) cluster
+	ClusterType *int32 `json:"ClusterType,omitempty" xml:"ClusterType,omitempty"`
+	// The time when the application was created.
+	CreateTime *int64 `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
+	// The IP address of the Internet-facing SLB instance.
+	ExtSlbIp *string `json:"ExtSlbIp,omitempty" xml:"ExtSlbIp,omitempty"`
+	// The listener port of the Internet-facing SLB instance.
+	ExtSlbListenerPort *int32 `json:"ExtSlbListenerPort,omitempty" xml:"ExtSlbListenerPort,omitempty"`
+	// The number of application instances.
+	Instances *int32 `json:"Instances,omitempty" xml:"Instances,omitempty"`
+	// The namespace of the Kubernetes cluster.
+	K8sNamespace *string `json:"K8sNamespace,omitempty" xml:"K8sNamespace,omitempty"`
+	// The name of the application.
+	Name        *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	NamespaceId *string `json:"NamespaceId,omitempty" xml:"NamespaceId,omitempty"`
+	// The service port of the application.
+	Port *int32 `json:"Port,omitempty" xml:"Port,omitempty"`
+	// The region ID.
+	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	// The ID of the resource group.
+	ResourceGroupId *string `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
+	// The number of running application instances.
+	RunningInstanceCount *int32 `json:"RunningInstanceCount,omitempty" xml:"RunningInstanceCount,omitempty"`
+	// The IP address of the internal-facing Server Load Balancer (SLB) instance.
+	SlbIp *string `json:"SlbIp,omitempty" xml:"SlbIp,omitempty"`
+	// The listener port of the internal-facing SLB instance.
+	SlbListenerPort *int32 `json:"SlbListenerPort,omitempty" xml:"SlbListenerPort,omitempty"`
+	// The port of the internal-facing SLB instance.
+	SlbPort *int32 `json:"SlbPort,omitempty" xml:"SlbPort,omitempty"`
+	// The state of the application. Valid values:
+	//
+	// *   RUNNING: The application is running.
+	// *   STOPPED: The application is stopped.
+	// *   DEPLOYING: The application is being deployed.
+	// *   DELETING: The application is being deleted.
+	State *string `json:"State,omitempty" xml:"State,omitempty"`
 }
 
 func (s ListApplicationResponseBodyApplicationListApplication) String() string {
@@ -13245,8 +15952,18 @@ func (s *ListApplicationResponseBodyApplicationListApplication) SetInstances(v i
 	return s
 }
 
+func (s *ListApplicationResponseBodyApplicationListApplication) SetK8sNamespace(v string) *ListApplicationResponseBodyApplicationListApplication {
+	s.K8sNamespace = &v
+	return s
+}
+
 func (s *ListApplicationResponseBodyApplicationListApplication) SetName(v string) *ListApplicationResponseBodyApplicationListApplication {
 	s.Name = &v
+	return s
+}
+
+func (s *ListApplicationResponseBodyApplicationListApplication) SetNamespaceId(v string) *ListApplicationResponseBodyApplicationListApplication {
+	s.NamespaceId = &v
 	return s
 }
 
@@ -13320,7 +16037,9 @@ func (s *ListApplicationResponse) SetBody(v *ListApplicationResponseBody) *ListA
 }
 
 type ListApplicationEcuRequest struct {
-	AppId           *string `json:"AppId,omitempty" xml:"AppId,omitempty"`
+	// The ID of the application whose ECUs you want to query. You can call the ListApplication operation to query the application ID. For more information, see [ListApplication](~~149390~~).
+	AppId *string `json:"AppId,omitempty" xml:"AppId,omitempty"`
+	// The ID of the microservices namespace.
 	LogicalRegionId *string `json:"LogicalRegionId,omitempty" xml:"LogicalRegionId,omitempty"`
 }
 
@@ -13343,10 +16062,14 @@ func (s *ListApplicationEcuRequest) SetLogicalRegionId(v string) *ListApplicatio
 }
 
 type ListApplicationEcuResponseBody struct {
-	Code        *int32                                     `json:"Code,omitempty" xml:"Code,omitempty"`
+	// The HTTP status code that is returned.
+	Code *int32 `json:"Code,omitempty" xml:"Code,omitempty"`
+	// The information about ECUs.
 	EcuInfoList *ListApplicationEcuResponseBodyEcuInfoList `json:"EcuInfoList,omitempty" xml:"EcuInfoList,omitempty" type:"Struct"`
-	Message     *string                                    `json:"Message,omitempty" xml:"Message,omitempty"`
-	RequestId   *string                                    `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The message that is returned.
+	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// The ID of the request.
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
 func (s ListApplicationEcuResponseBody) String() string {
@@ -13395,24 +16118,48 @@ func (s *ListApplicationEcuResponseBodyEcuInfoList) SetEcuEntity(v []*ListApplic
 }
 
 type ListApplicationEcuResponseBodyEcuInfoListEcuEntity struct {
-	AppId         *string `json:"AppId,omitempty" xml:"AppId,omitempty"`
-	AvailableCpu  *int32  `json:"AvailableCpu,omitempty" xml:"AvailableCpu,omitempty"`
-	AvailableMem  *int32  `json:"AvailableMem,omitempty" xml:"AvailableMem,omitempty"`
-	Cpu           *int32  `json:"Cpu,omitempty" xml:"Cpu,omitempty"`
-	CreateTime    *int64  `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
-	DockerEnv     *bool   `json:"DockerEnv,omitempty" xml:"DockerEnv,omitempty"`
-	EcuId         *string `json:"EcuId,omitempty" xml:"EcuId,omitempty"`
-	HeartbeatTime *int64  `json:"HeartbeatTime,omitempty" xml:"HeartbeatTime,omitempty"`
-	InstanceId    *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	IpAddr        *string `json:"IpAddr,omitempty" xml:"IpAddr,omitempty"`
-	Mem           *int32  `json:"Mem,omitempty" xml:"Mem,omitempty"`
-	Name          *string `json:"Name,omitempty" xml:"Name,omitempty"`
-	Online        *bool   `json:"Online,omitempty" xml:"Online,omitempty"`
-	RegionId      *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	UpdateTime    *int64  `json:"UpdateTime,omitempty" xml:"UpdateTime,omitempty"`
-	UserId        *string `json:"UserId,omitempty" xml:"UserId,omitempty"`
-	VpcId         *string `json:"VpcId,omitempty" xml:"VpcId,omitempty"`
-	ZoneId        *string `json:"ZoneId,omitempty" xml:"ZoneId,omitempty"`
+	// The ID of the application.
+	AppId *string `json:"AppId,omitempty" xml:"AppId,omitempty"`
+	// The number of available CPU cores.
+	AvailableCpu *int32 `json:"AvailableCpu,omitempty" xml:"AvailableCpu,omitempty"`
+	// The size of available memory. Unit: MB.
+	AvailableMem *int32 `json:"AvailableMem,omitempty" xml:"AvailableMem,omitempty"`
+	// The total number of CPU cores.
+	Cpu *int32 `json:"Cpu,omitempty" xml:"Cpu,omitempty"`
+	// The time when the ECU was created. This value is a UNIX timestamp representing the number of milliseconds that have elapsed since the epoch time January 1, 1970, 00:00:00 UTC.
+	CreateTime *int64 `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
+	// Indicates whether Docker is installed. Valid values:
+	//
+	// *   true: Docker is installed.
+	// *   false: Docker is not installed.
+	DockerEnv *bool `json:"DockerEnv,omitempty" xml:"DockerEnv,omitempty"`
+	// The unique ID of the ECU. To query the ID, you can run the `dmidecode` command on the ECS instance that corresponds to the ECU.
+	EcuId *string `json:"EcuId,omitempty" xml:"EcuId,omitempty"`
+	// The time when the last heartbeat detection was performed. This value is a UNIX timestamp representing the number of milliseconds that have elapsed since the epoch time January 1, 1970, 00:00:00 UTC.
+	HeartbeatTime *int64 `json:"HeartbeatTime,omitempty" xml:"HeartbeatTime,omitempty"`
+	// The ID of the Elastic Compute Service (ECS) instance.
+	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	// The internal IP address allocated to the ECU.
+	IpAddr *string `json:"IpAddr,omitempty" xml:"IpAddr,omitempty"`
+	// The total size of memory. Unit: MB.
+	Mem *int32 `json:"Mem,omitempty" xml:"Mem,omitempty"`
+	// The name of the ECU.
+	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// Indicates whether the ECU is online. Valid values:
+	//
+	// *   true: The ECU is online.
+	// *   false: The ECU is offline.
+	Online *bool `json:"Online,omitempty" xml:"Online,omitempty"`
+	// The ID of the region.
+	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	// The time when the ECU was updated. This value is a UNIX timestamp representing the number of milliseconds that have elapsed since the epoch time January 1, 1970, 00:00:00 UTC.
+	UpdateTime *int64 `json:"UpdateTime,omitempty" xml:"UpdateTime,omitempty"`
+	// The ID of the Alibaba Cloud account to which the ECU belongs.
+	UserId *string `json:"UserId,omitempty" xml:"UserId,omitempty"`
+	// The ID of the virtual private cloud (VPC).
+	VpcId *string `json:"VpcId,omitempty" xml:"VpcId,omitempty"`
+	// The ID of the zone.
+	ZoneId *string `json:"ZoneId,omitempty" xml:"ZoneId,omitempty"`
 }
 
 func (s ListApplicationEcuResponseBodyEcuInfoListEcuEntity) String() string {
@@ -13543,10 +16290,14 @@ func (s *ListApplicationEcuResponse) SetBody(v *ListApplicationEcuResponseBody) 
 }
 
 type ListAuthorityResponseBody struct {
+	// The permissions.
 	AuthorityList *ListAuthorityResponseBodyAuthorityList `json:"AuthorityList,omitempty" xml:"AuthorityList,omitempty" type:"Struct"`
-	Code          *int32                                  `json:"Code,omitempty" xml:"Code,omitempty"`
-	Message       *string                                 `json:"Message,omitempty" xml:"Message,omitempty"`
-	RequestId     *string                                 `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The HTTP status code that is returned.
+	Code *int32 `json:"Code,omitempty" xml:"Code,omitempty"`
+	// The additional information that is returned.
+	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// The ID of the request.
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
 func (s ListAuthorityResponseBody) String() string {
@@ -13595,10 +16346,14 @@ func (s *ListAuthorityResponseBodyAuthorityList) SetAuthority(v []*ListAuthority
 }
 
 type ListAuthorityResponseBodyAuthorityListAuthority struct {
-	ActionList  *ListAuthorityResponseBodyAuthorityListAuthorityActionList `json:"ActionList,omitempty" xml:"ActionList,omitempty" type:"Struct"`
-	Description *string                                                    `json:"Description,omitempty" xml:"Description,omitempty"`
-	GroupId     *string                                                    `json:"GroupId,omitempty" xml:"GroupId,omitempty"`
-	Name        *string                                                    `json:"Name,omitempty" xml:"Name,omitempty"`
+	// The set of permissions.
+	ActionList *ListAuthorityResponseBodyAuthorityListAuthorityActionList `json:"ActionList,omitempty" xml:"ActionList,omitempty" type:"Struct"`
+	// The description of the permission group.
+	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
+	// The ID of the permission group.
+	GroupId *string `json:"GroupId,omitempty" xml:"GroupId,omitempty"`
+	// The name of the permission group.
+	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
 }
 
 func (s ListAuthorityResponseBodyAuthorityListAuthority) String() string {
@@ -13647,10 +16402,14 @@ func (s *ListAuthorityResponseBodyAuthorityListAuthorityActionList) SetAction(v 
 }
 
 type ListAuthorityResponseBodyAuthorityListAuthorityActionListAction struct {
-	Code        *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	// The code of the permission.
+	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	// The description of the permission.
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
-	GroupId     *string `json:"GroupId,omitempty" xml:"GroupId,omitempty"`
-	Name        *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// The ID of the permission group.
+	GroupId *string `json:"GroupId,omitempty" xml:"GroupId,omitempty"`
+	// The name of the permission.
+	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
 }
 
 func (s ListAuthorityResponseBodyAuthorityListAuthorityActionListAction) String() string {
@@ -13711,10 +16470,14 @@ func (s *ListAuthorityResponse) SetBody(v *ListAuthorityResponseBody) *ListAutho
 }
 
 type ListBuildPackResponseBody struct {
+	// The returned versions of EDAS Container.
 	BuildPackList *ListBuildPackResponseBodyBuildPackList `json:"BuildPackList,omitempty" xml:"BuildPackList,omitempty" type:"Struct"`
-	Code          *int32                                  `json:"Code,omitempty" xml:"Code,omitempty"`
-	Message       *string                                 `json:"Message,omitempty" xml:"Message,omitempty"`
-	RequestId     *string                                 `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// code
+	Code *int32 `json:"Code,omitempty" xml:"Code,omitempty"`
+	// The message that is returned.
+	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// The ID of the request.
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
 func (s ListBuildPackResponseBody) String() string {
@@ -13763,26 +16526,46 @@ func (s *ListBuildPackResponseBodyBuildPackList) SetBuildPack(v []*ListBuildPack
 }
 
 type ListBuildPackResponseBodyBuildPackListBuildPack struct {
-	ConfigId           *int64  `json:"ConfigId,omitempty" xml:"ConfigId,omitempty"`
-	Disabled           *bool   `json:"Disabled,omitempty" xml:"Disabled,omitempty"`
-	Feature            *string `json:"Feature,omitempty" xml:"Feature,omitempty"`
-	ImageId            *string `json:"ImageId,omitempty" xml:"ImageId,omitempty"`
-	MultipleTenant     *bool   `json:"MultipleTenant,omitempty" xml:"MultipleTenant,omitempty"`
-	PackVersion        *string `json:"PackVersion,omitempty" xml:"PackVersion,omitempty"`
-	PandoraDesc        *string `json:"PandoraDesc,omitempty" xml:"PandoraDesc,omitempty"`
+	// The build package number of EDAS Container.
+	ConfigId *int64 `json:"ConfigId,omitempty" xml:"ConfigId,omitempty"`
+	// Indicates whether the EDAS Container version is disabled. A disabled version cannot be configured for use.
+	Disabled *bool `json:"Disabled,omitempty" xml:"Disabled,omitempty"`
+	// The features of the EDAS Container version, which are released for public preview.
+	Feature *string `json:"Feature,omitempty" xml:"Feature,omitempty"`
+	// The ID of the base image that corresponds to EDAS Container.
+	ImageId *string `json:"ImageId,omitempty" xml:"ImageId,omitempty"`
+	// Indicates whether EDAS Container supports multitenancy.
+	MultipleTenant *bool `json:"MultipleTenant,omitempty" xml:"MultipleTenant,omitempty"`
+	// The version of the application.
+	PackVersion *string `json:"PackVersion,omitempty" xml:"PackVersion,omitempty"`
+	// The description of the Pandora container.
+	PandoraDesc *string `json:"PandoraDesc,omitempty" xml:"PandoraDesc,omitempty"`
+	// The download URL of the Pandora installer.
 	PandoraDownloadUrl *string `json:"PandoraDownloadUrl,omitempty" xml:"PandoraDownloadUrl,omitempty"`
-	PandoraVersion     *string `json:"PandoraVersion,omitempty" xml:"PandoraVersion,omitempty"`
-	PluginInfo         *string `json:"PluginInfo,omitempty" xml:"PluginInfo,omitempty"`
-	ScriptName         *string `json:"ScriptName,omitempty" xml:"ScriptName,omitempty"`
-	ScriptVersion      *string `json:"ScriptVersion,omitempty" xml:"ScriptVersion,omitempty"`
-	SupportFeatures    *string `json:"SupportFeatures,omitempty" xml:"SupportFeatures,omitempty"`
+	// The version of the Pandora container.
+	PandoraVersion *string `json:"PandoraVersion,omitempty" xml:"PandoraVersion,omitempty"`
+	// The description of the plug-in.
+	PluginInfo *string `json:"PluginInfo,omitempty" xml:"PluginInfo,omitempty"`
+	// The name of the Shell script that runs EDAS Container.
+	ScriptName *string `json:"ScriptName,omitempty" xml:"ScriptName,omitempty"`
+	// The version of the Shell script that runs EDAS Container.
+	ScriptVersion *string `json:"ScriptVersion,omitempty" xml:"ScriptVersion,omitempty"`
+	// The features supported by EDAS Container.
+	SupportFeatures *string `json:"SupportFeatures,omitempty" xml:"SupportFeatures,omitempty"`
+	// The download URL of the Tengine installer.
 	TengineDownloadUrl *string `json:"TengineDownloadUrl,omitempty" xml:"TengineDownloadUrl,omitempty"`
-	TengineImageId     *string `json:"TengineImageId,omitempty" xml:"TengineImageId,omitempty"`
-	TomcatDesc         *string `json:"TomcatDesc,omitempty" xml:"TomcatDesc,omitempty"`
-	TomcatDownloadUrl  *string `json:"TomcatDownloadUrl,omitempty" xml:"TomcatDownloadUrl,omitempty"`
-	TomcatPath         *string `json:"TomcatPath,omitempty" xml:"TomcatPath,omitempty"`
-	TomcatVersion      *string `json:"TomcatVersion,omitempty" xml:"TomcatVersion,omitempty"`
-	WithTengine        *bool   `json:"WithTengine,omitempty" xml:"WithTengine,omitempty"`
+	// The ID of the Tengine image that corresponds to EDAS Container.
+	TengineImageId *string `json:"TengineImageId,omitempty" xml:"TengineImageId,omitempty"`
+	// The description of the Tomcat container.
+	TomcatDesc *string `json:"TomcatDesc,omitempty" xml:"TomcatDesc,omitempty"`
+	// The download URL of the Tomcat installer.
+	TomcatDownloadUrl *string `json:"TomcatDownloadUrl,omitempty" xml:"TomcatDownloadUrl,omitempty"`
+	// The directory of the Tomcat container.
+	TomcatPath *string `json:"TomcatPath,omitempty" xml:"TomcatPath,omitempty"`
+	// The version of the Tomcat container.
+	TomcatVersion *string `json:"TomcatVersion,omitempty" xml:"TomcatVersion,omitempty"`
+	// Indicates whether EDAS Container supports traffic management.
+	WithTengine *bool `json:"WithTengine,omitempty" xml:"WithTengine,omitempty"`
 }
 
 func (s ListBuildPackResponseBodyBuildPackListBuildPack) String() string {
@@ -13923,7 +16706,15 @@ func (s *ListBuildPackResponse) SetBody(v *ListBuildPackResponseBody) *ListBuild
 }
 
 type ListClusterRequest struct {
+	// The ID of the namespace. You can call the ListUserDefineRegion operation to query the namespace ID. For more information, see [ListUserDefineRegion](~~149377~~).
+	//
+	// *   If this parameter is left empty, the clusters in the default namespace are queried.
+	// *   If this parameter is specified, the clusters in the specified namespace are queried.
 	LogicalRegionId *string `json:"LogicalRegionId,omitempty" xml:"LogicalRegionId,omitempty"`
+	// The ID of the resource group. You can call the ListResourceGroup operation to query the resource group ID. For more information, see [ListResourceGroup](~~62055~~).
+	//
+	// *   If this parameter is left empty, the clusters in the default resource group are queried.
+	// *   If this parameter is specified, the clusters in the specified resource group are queried.
 	ResourceGroupId *string `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
 }
 
@@ -13946,10 +16737,14 @@ func (s *ListClusterRequest) SetResourceGroupId(v string) *ListClusterRequest {
 }
 
 type ListClusterResponseBody struct {
+	// The clusters.
 	ClusterList *ListClusterResponseBodyClusterList `json:"ClusterList,omitempty" xml:"ClusterList,omitempty" type:"Struct"`
-	Code        *int32                              `json:"Code,omitempty" xml:"Code,omitempty"`
-	Message     *string                             `json:"Message,omitempty" xml:"Message,omitempty"`
-	RequestId   *string                             `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The HTTP status code that is returned.
+	Code *int32 `json:"Code,omitempty" xml:"Code,omitempty"`
+	// The additional information that is returned.
+	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// The ID of the request.
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
 func (s ListClusterResponseBody) String() string {
@@ -13998,24 +16793,57 @@ func (s *ListClusterResponseBodyClusterList) SetCluster(v []*ListClusterResponse
 }
 
 type ListClusterResponseBodyClusterListCluster struct {
-	ClusterId       *string `json:"ClusterId,omitempty" xml:"ClusterId,omitempty"`
-	ClusterName     *string `json:"ClusterName,omitempty" xml:"ClusterName,omitempty"`
-	ClusterType     *int32  `json:"ClusterType,omitempty" xml:"ClusterType,omitempty"`
-	Cpu             *int32  `json:"Cpu,omitempty" xml:"Cpu,omitempty"`
-	CpuUsed         *int32  `json:"CpuUsed,omitempty" xml:"CpuUsed,omitempty"`
-	CreateTime      *int64  `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
-	CsClusterId     *string `json:"CsClusterId,omitempty" xml:"CsClusterId,omitempty"`
-	Description     *string `json:"Description,omitempty" xml:"Description,omitempty"`
-	IaasProvider    *string `json:"IaasProvider,omitempty" xml:"IaasProvider,omitempty"`
-	Mem             *int32  `json:"Mem,omitempty" xml:"Mem,omitempty"`
-	MemUsed         *int32  `json:"MemUsed,omitempty" xml:"MemUsed,omitempty"`
-	NetworkMode     *int32  `json:"NetworkMode,omitempty" xml:"NetworkMode,omitempty"`
-	NodeNum         *int32  `json:"NodeNum,omitempty" xml:"NodeNum,omitempty"`
-	OversoldFactor  *int32  `json:"OversoldFactor,omitempty" xml:"OversoldFactor,omitempty"`
-	RegionId        *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	// The ID of the cluster in EDAS.
+	ClusterId *string `json:"ClusterId,omitempty" xml:"ClusterId,omitempty"`
+	// The name of the cluster.
+	ClusterName *string `json:"ClusterName,omitempty" xml:"ClusterName,omitempty"`
+	// The type of the cluster. Valid values:
+	//
+	// *   0: regular Docker cluster
+	// *   1: Swarm cluster
+	// *   2: Elastic Compute Service (ECS) cluster
+	// *   3: self-managed Kubernetes cluster in Enterprise Distributed Application Service (EDAS)
+	// *   4: cluster in which Pandora automatically registers applications
+	// *   5: ACK cluster
+	ClusterType *int32 `json:"ClusterType,omitempty" xml:"ClusterType,omitempty"`
+	// The total number of CPU cores.
+	Cpu *int32 `json:"Cpu,omitempty" xml:"Cpu,omitempty"`
+	// The number of used CPU cores.
+	CpuUsed *int32 `json:"CpuUsed,omitempty" xml:"CpuUsed,omitempty"`
+	// The timestamp when the cluster was created. This value is a UNIX timestamp representing the number of milliseconds that have elapsed since January 1, 1970, 00:00:00 UTC.
+	CreateTime *int64 `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
+	// The ID of the cluster in Container Service for Kubernetes (ACK).
+	CsClusterId *string `json:"CsClusterId,omitempty" xml:"CsClusterId,omitempty"`
+	// The description of the cluster.
+	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
+	// The provider of the cluster.
+	IaasProvider *string `json:"IaasProvider,omitempty" xml:"IaasProvider,omitempty"`
+	// The total size of memory. Unit: MB.
+	Mem *int32 `json:"Mem,omitempty" xml:"Mem,omitempty"`
+	// The size of used memory. Unit: MB.
+	MemUsed *int32 `json:"MemUsed,omitempty" xml:"MemUsed,omitempty"`
+	// The network type of the cluster. Valid values:
+	//
+	// *   1: classic network
+	// *   2: virtual private cloud (VPC)
+	NetworkMode *int32 `json:"NetworkMode,omitempty" xml:"NetworkMode,omitempty"`
+	// The number of instances.
+	NodeNum *int32 `json:"NodeNum,omitempty" xml:"NodeNum,omitempty"`
+	// The CPU overcommit ratio that is supported by a Docker cluster. Valid values:
+	//
+	// *   1: 1:1, which means that CPU resources are not overcommitted.
+	// *   2: 1:2, which means that CPU resources are overcommitted by 1:2.
+	// *   4: 1:4, which means that CPU resources are overcommitted by 1:4.
+	// *   8: 1:8, which means that CPU resources are overcommitted by 1:8.
+	OversoldFactor *int32 `json:"OversoldFactor,omitempty" xml:"OversoldFactor,omitempty"`
+	// The ID of the region.
+	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	// The ID of the resource group.
 	ResourceGroupId *string `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
-	UpdateTime      *int64  `json:"UpdateTime,omitempty" xml:"UpdateTime,omitempty"`
-	VpcId           *string `json:"VpcId,omitempty" xml:"VpcId,omitempty"`
+	// The timestamp when the cluster was last modified. This value is a UNIX timestamp representing the number of milliseconds that have elapsed since January 1, 1970, 00:00:00 UTC.
+	UpdateTime *int64 `json:"UpdateTime,omitempty" xml:"UpdateTime,omitempty"`
+	// VPC ID
+	VpcId *string `json:"VpcId,omitempty" xml:"VpcId,omitempty"`
 }
 
 func (s ListClusterResponseBodyClusterListCluster) String() string {
@@ -14146,10 +16974,14 @@ func (s *ListClusterResponse) SetBody(v *ListClusterResponseBody) *ListClusterRe
 }
 
 type ListClusterMembersRequest struct {
-	ClusterId   *string `json:"ClusterId,omitempty" xml:"ClusterId,omitempty"`
-	CurrentPage *int32  `json:"CurrentPage,omitempty" xml:"CurrentPage,omitempty"`
-	EcsList     *string `json:"EcsList,omitempty" xml:"EcsList,omitempty"`
-	PageSize    *int32  `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	// The ID of the cluster. You can call the ListCluster operation to query the cluster ID. For more information, see [ListCluster](~~154995~~).
+	ClusterId *string `json:"ClusterId,omitempty" xml:"ClusterId,omitempty"`
+	// The number of the page to return. If you do not specify this parameter, the first page is returned.
+	CurrentPage *int32 `json:"CurrentPage,omitempty" xml:"CurrentPage,omitempty"`
+	// The number of ECS instances.
+	EcsList *string `json:"EcsList,omitempty" xml:"EcsList,omitempty"`
+	// The number of ECS instances to return on each page. If you do not specify this parameter, all ECS instances in the specified cluster are returned on one page.
+	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
 }
 
 func (s ListClusterMembersRequest) String() string {
@@ -14181,10 +17013,14 @@ func (s *ListClusterMembersRequest) SetPageSize(v int32) *ListClusterMembersRequ
 }
 
 type ListClusterMembersResponseBody struct {
+	// The information about the ECS instances in the cluster.
 	ClusterMemberPage *ListClusterMembersResponseBodyClusterMemberPage `json:"ClusterMemberPage,omitempty" xml:"ClusterMemberPage,omitempty" type:"Struct"`
-	Code              *int32                                           `json:"Code,omitempty" xml:"Code,omitempty"`
-	Message           *string                                          `json:"Message,omitempty" xml:"Message,omitempty"`
-	RequestId         *string                                          `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The HTTP status code that is returned.
+	Code *int32 `json:"Code,omitempty" xml:"Code,omitempty"`
+	// The message that is returned.
+	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// The ID of the request.
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
 func (s ListClusterMembersResponseBody) String() string {
@@ -14216,10 +17052,14 @@ func (s *ListClusterMembersResponseBody) SetRequestId(v string) *ListClusterMemb
 }
 
 type ListClusterMembersResponseBodyClusterMemberPage struct {
+	// The list of ECS instances in the cluster.
 	ClusterMemberList *ListClusterMembersResponseBodyClusterMemberPageClusterMemberList `json:"ClusterMemberList,omitempty" xml:"ClusterMemberList,omitempty" type:"Struct"`
-	CurrentPage       *int32                                                            `json:"CurrentPage,omitempty" xml:"CurrentPage,omitempty"`
-	PageSize          *int32                                                            `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	TotalSize         *int32                                                            `json:"TotalSize,omitempty" xml:"TotalSize,omitempty"`
+	// The page number of the returned page. If this parameter is not returned, the first page is returned.
+	CurrentPage *int32 `json:"CurrentPage,omitempty" xml:"CurrentPage,omitempty"`
+	// The number of ECS instances returned per page.
+	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	// The total number of pages returned when all ECS instances are returned based on the specified PageSize parameter.
+	TotalSize *int32 `json:"TotalSize,omitempty" xml:"TotalSize,omitempty"`
 }
 
 func (s ListClusterMembersResponseBodyClusterMemberPage) String() string {
@@ -14268,13 +17108,27 @@ func (s *ListClusterMembersResponseBodyClusterMemberPageClusterMemberList) SetCl
 }
 
 type ListClusterMembersResponseBodyClusterMemberPageClusterMemberListClusterMember struct {
-	ClusterId       *string `json:"ClusterId,omitempty" xml:"ClusterId,omitempty"`
+	// The ID of the cluster.
+	ClusterId *string `json:"ClusterId,omitempty" xml:"ClusterId,omitempty"`
+	// The ID of the ECS instance in the cluster.
 	ClusterMemberId *string `json:"ClusterMemberId,omitempty" xml:"ClusterMemberId,omitempty"`
-	CreateTime      *int64  `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
-	EcsId           *string `json:"EcsId,omitempty" xml:"EcsId,omitempty"`
-	EcuId           *string `json:"EcuId,omitempty" xml:"EcuId,omitempty"`
-	Status          *int32  `json:"Status,omitempty" xml:"Status,omitempty"`
-	UpdateTime      *int64  `json:"UpdateTime,omitempty" xml:"UpdateTime,omitempty"`
+	// The timestamp when the ECS instance was created. This value is a UNIX timestamp representing the number of milliseconds that have elapsed since the epoch time January 1, 1970, 00:00:00 UTC.
+	CreateTime *int64 `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
+	// The ID of the ECS instance.
+	EcsId *string `json:"EcsId,omitempty" xml:"EcsId,omitempty"`
+	// The unique ID of the elastic compute unit (ECU). You can run the `dmidecode` command on the ECS instance to query the ECU ID.
+	EcuId *string `json:"EcuId,omitempty" xml:"EcuId,omitempty"`
+	// The private IP address for the ECS instance.
+	PrivateIp *string `json:"PrivateIp,omitempty" xml:"PrivateIp,omitempty"`
+	// The state of the ECS instance. Valid values:
+	//
+	// *   1: The instance is running.
+	// *   0: The instance is being converted.
+	// *   \-1: The instance fails to be converted.
+	// *   \-2: The instance is offline.
+	Status *int32 `json:"Status,omitempty" xml:"Status,omitempty"`
+	// The timestamp when the ECS instance was updated. This value is a UNIX timestamp representing the number of milliseconds that have elapsed since January 1, 1970, 00:00:00 UTC.
+	UpdateTime *int64 `json:"UpdateTime,omitempty" xml:"UpdateTime,omitempty"`
 }
 
 func (s ListClusterMembersResponseBodyClusterMemberPageClusterMemberListClusterMember) String() string {
@@ -14307,6 +17161,11 @@ func (s *ListClusterMembersResponseBodyClusterMemberPageClusterMemberListCluster
 
 func (s *ListClusterMembersResponseBodyClusterMemberPageClusterMemberListClusterMember) SetEcuId(v string) *ListClusterMembersResponseBodyClusterMemberPageClusterMemberListClusterMember {
 	s.EcuId = &v
+	return s
+}
+
+func (s *ListClusterMembersResponseBodyClusterMemberPageClusterMemberListClusterMember) SetPrivateIp(v string) *ListClusterMembersResponseBodyClusterMemberPageClusterMemberListClusterMember {
+	s.PrivateIp = &v
 	return s
 }
 
@@ -14350,9 +17209,12 @@ func (s *ListClusterMembersResponse) SetBody(v *ListClusterMembersResponseBody) 
 }
 
 type ListComponentsResponseBody struct {
-	Code          *int32                                   `json:"Code,omitempty" xml:"Code,omitempty"`
+	// The HTTP status code that is returned.
+	Code *int32 `json:"Code,omitempty" xml:"Code,omitempty"`
+	// The components.
 	ComponentList *ListComponentsResponseBodyComponentList `json:"ComponentList,omitempty" xml:"ComponentList,omitempty" type:"Struct"`
-	Message       *string                                  `json:"Message,omitempty" xml:"Message,omitempty"`
+	// The message that is returned.
+	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
 }
 
 func (s ListComponentsResponseBody) String() string {
@@ -14396,12 +17258,25 @@ func (s *ListComponentsResponseBodyComponentList) SetComponent(v []*ListComponen
 }
 
 type ListComponentsResponseBodyComponentListComponent struct {
-	ComponentId  *string `json:"ComponentId,omitempty" xml:"ComponentId,omitempty"`
+	// The ID of the component.
+	ComponentId *string `json:"ComponentId,omitempty" xml:"ComponentId,omitempty"`
+	// The key of the component.
 	ComponentKey *string `json:"ComponentKey,omitempty" xml:"ComponentKey,omitempty"`
-	Desc         *string `json:"Desc,omitempty" xml:"Desc,omitempty"`
-	Expired      *bool   `json:"Expired,omitempty" xml:"Expired,omitempty"`
-	Type         *string `json:"Type,omitempty" xml:"Type,omitempty"`
-	Version      *string `json:"Version,omitempty" xml:"Version,omitempty"`
+	// The description of the component.
+	Desc *string `json:"Desc,omitempty" xml:"Desc,omitempty"`
+	// Indicates whether the component has expired. Valid values:
+	//
+	// *   false: The component has not expired.
+	// *   true: The component has expired.
+	Expired *bool `json:"Expired,omitempty" xml:"Expired,omitempty"`
+	// The type of the component. Valid values:
+	//
+	// *   JDK
+	// *   TOMCAT
+	// *   TENGINE
+	Type *string `json:"Type,omitempty" xml:"Type,omitempty"`
+	// The version of the component.
+	Version *string `json:"Version,omitempty" xml:"Version,omitempty"`
 }
 
 func (s ListComponentsResponseBodyComponentListComponent) String() string {
@@ -14472,10 +17347,14 @@ func (s *ListComponentsResponse) SetBody(v *ListComponentsResponseBody) *ListCom
 }
 
 type ListConfigTemplatesRequest struct {
-	CurrentPage *int64  `json:"CurrentPage,omitempty" xml:"CurrentPage,omitempty"`
-	Id          *int64  `json:"Id,omitempty" xml:"Id,omitempty"`
-	Name        *string `json:"Name,omitempty" xml:"Name,omitempty"`
-	PageSize    *int64  `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	// The number of the page to return. Pages start from Page 1.
+	CurrentPage *int64 `json:"CurrentPage,omitempty" xml:"CurrentPage,omitempty"`
+	// The ID of the configuration template.
+	Id *int64 `json:"Id,omitempty" xml:"Id,omitempty"`
+	// The name of the configuration template.
+	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// The number of entries to return on each page.
+	PageSize *int64 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
 }
 
 func (s ListConfigTemplatesRequest) String() string {
@@ -14507,10 +17386,14 @@ func (s *ListConfigTemplatesRequest) SetPageSize(v int64) *ListConfigTemplatesRe
 }
 
 type ListConfigTemplatesResponseBody struct {
-	Code      *int32                               `json:"Code,omitempty" xml:"Code,omitempty"`
-	Data      *ListConfigTemplatesResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
-	Message   *string                              `json:"Message,omitempty" xml:"Message,omitempty"`
-	RequestId *string                              `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The HTTP status code that is returned.
+	Code *int32 `json:"Code,omitempty" xml:"Code,omitempty"`
+	// The result of the request.
+	Data *ListConfigTemplatesResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
+	// The additional information that is returned.
+	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// The ID of the request.
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
 func (s ListConfigTemplatesResponseBody) String() string {
@@ -14542,10 +17425,14 @@ func (s *ListConfigTemplatesResponseBody) SetRequestId(v string) *ListConfigTemp
 }
 
 type ListConfigTemplatesResponseBodyData struct {
-	CurrentPage *int32                                       `json:"CurrentPage,omitempty" xml:"CurrentPage,omitempty"`
-	PageSize    *int32                                       `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	Result      []*ListConfigTemplatesResponseBodyDataResult `json:"Result,omitempty" xml:"Result,omitempty" type:"Repeated"`
-	TotalSize   *int64                                       `json:"TotalSize,omitempty" xml:"TotalSize,omitempty"`
+	// The page number of the returned page.
+	CurrentPage *int32 `json:"CurrentPage,omitempty" xml:"CurrentPage,omitempty"`
+	// The number of entries returned per page.
+	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	// The configuration templates.
+	Result []*ListConfigTemplatesResponseBodyDataResult `json:"Result,omitempty" xml:"Result,omitempty" type:"Repeated"`
+	// The total number of configuration templates.
+	TotalSize *int64 `json:"TotalSize,omitempty" xml:"TotalSize,omitempty"`
 }
 
 func (s ListConfigTemplatesResponseBodyData) String() string {
@@ -14577,13 +17464,20 @@ func (s *ListConfigTemplatesResponseBodyData) SetTotalSize(v int64) *ListConfigT
 }
 
 type ListConfigTemplatesResponseBodyDataResult struct {
-	Content     *string `json:"Content,omitempty" xml:"Content,omitempty"`
+	// The content of the configuration template.
+	Content *string `json:"Content,omitempty" xml:"Content,omitempty"`
+	// The description of the configuration template.
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
-	Format      *string `json:"Format,omitempty" xml:"Format,omitempty"`
-	GmtCreate   *int64  `json:"GmtCreate,omitempty" xml:"GmtCreate,omitempty"`
-	GmtModified *int64  `json:"GmtModified,omitempty" xml:"GmtModified,omitempty"`
-	Id          *string `json:"Id,omitempty" xml:"Id,omitempty"`
-	Name        *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// The data format of the configuration template.
+	Format *string `json:"Format,omitempty" xml:"Format,omitempty"`
+	// The time when the configuration template was created.
+	GmtCreate *int64 `json:"GmtCreate,omitempty" xml:"GmtCreate,omitempty"`
+	// The time when the configuration template was updated.
+	GmtModified *int64 `json:"GmtModified,omitempty" xml:"GmtModified,omitempty"`
+	// The ID of the configuration template.
+	Id *string `json:"Id,omitempty" xml:"Id,omitempty"`
+	// The name of the configuration template.
+	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
 }
 
 func (s ListConfigTemplatesResponseBodyDataResult) String() string {
@@ -14659,6 +17553,7 @@ func (s *ListConfigTemplatesResponse) SetBody(v *ListConfigTemplatesResponseBody
 }
 
 type ListConsumedServicesRequest struct {
+	// The ID of the application.
 	AppId *string `json:"AppId,omitempty" xml:"AppId,omitempty"`
 }
 
@@ -14676,10 +17571,14 @@ func (s *ListConsumedServicesRequest) SetAppId(v string) *ListConsumedServicesRe
 }
 
 type ListConsumedServicesResponseBody struct {
-	Code                 *int32                                                `json:"Code,omitempty" xml:"Code,omitempty"`
+	// The HTTP status code that is returned.
+	Code *int32 `json:"Code,omitempty" xml:"Code,omitempty"`
+	// The information about consumed services.
 	ConsumedServicesList *ListConsumedServicesResponseBodyConsumedServicesList `json:"ConsumedServicesList,omitempty" xml:"ConsumedServicesList,omitempty" type:"Struct"`
-	Message              *string                                               `json:"Message,omitempty" xml:"Message,omitempty"`
-	RequestId            *string                                               `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The message that is returned.
+	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// The ID of the request.
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
 func (s ListConsumedServicesResponseBody) String() string {
@@ -14728,14 +17627,23 @@ func (s *ListConsumedServicesResponseBodyConsumedServicesList) SetListConsumedSe
 }
 
 type ListConsumedServicesResponseBodyConsumedServicesListListConsumedServices struct {
-	AppId             *string                                                                         `json:"AppId,omitempty" xml:"AppId,omitempty"`
-	DockerApplication *bool                                                                           `json:"DockerApplication,omitempty" xml:"DockerApplication,omitempty"`
-	Group2Ip          *string                                                                         `json:"Group2Ip,omitempty" xml:"Group2Ip,omitempty"`
-	Groups            *ListConsumedServicesResponseBodyConsumedServicesListListConsumedServicesGroups `json:"Groups,omitempty" xml:"Groups,omitempty" type:"Struct"`
-	Ips               *ListConsumedServicesResponseBodyConsumedServicesListListConsumedServicesIps    `json:"Ips,omitempty" xml:"Ips,omitempty" type:"Struct"`
-	Name              *string                                                                         `json:"Name,omitempty" xml:"Name,omitempty"`
-	Type              *string                                                                         `json:"Type,omitempty" xml:"Type,omitempty"`
-	Version           *string                                                                         `json:"Version,omitempty" xml:"Version,omitempty"`
+	// The ID of the application.
+	AppId *string `json:"AppId,omitempty" xml:"AppId,omitempty"`
+	// Indicates whether the application runs in a Docker container. Valid values:
+	//
+	// *   true: The application runs in a Docker container.
+	// *   false: The application does not run in a Docker container.
+	DockerApplication *bool `json:"DockerApplication,omitempty" xml:"DockerApplication,omitempty"`
+	// A reserved parameter.
+	Group2Ip *string                                                                         `json:"Group2Ip,omitempty" xml:"Group2Ip,omitempty"`
+	Groups   *ListConsumedServicesResponseBodyConsumedServicesListListConsumedServicesGroups `json:"Groups,omitempty" xml:"Groups,omitempty" type:"Struct"`
+	Ips      *ListConsumedServicesResponseBodyConsumedServicesListListConsumedServicesIps    `json:"Ips,omitempty" xml:"Ips,omitempty" type:"Struct"`
+	// The name of the consumed service.
+	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// The type of the consumed service.
+	Type *string `json:"Type,omitempty" xml:"Type,omitempty"`
+	// The version of the consumed service.
+	Version *string `json:"Version,omitempty" xml:"Version,omitempty"`
 }
 
 func (s ListConsumedServicesResponseBodyConsumedServicesListListConsumedServices) String() string {
@@ -14850,6 +17758,7 @@ func (s *ListConsumedServicesResponse) SetBody(v *ListConsumedServicesResponseBo
 }
 
 type ListConvertableEcuRequest struct {
+	// The ID of the cluster. You can call the ListCluster operation to query the cluster ID. For more information, see [ListCluster](~~154995~~).
 	ClusterId *string `json:"clusterId,omitempty" xml:"clusterId,omitempty"`
 }
 
@@ -14867,10 +17776,14 @@ func (s *ListConvertableEcuRequest) SetClusterId(v string) *ListConvertableEcuRe
 }
 
 type ListConvertableEcuResponseBody struct {
-	Code         *int32                                      `json:"Code,omitempty" xml:"Code,omitempty"`
+	// The HTTP status code that is returned.
+	Code *int32 `json:"Code,omitempty" xml:"Code,omitempty"`
+	// The ECS instances that can be imported to the cluster.
 	InstanceList *ListConvertableEcuResponseBodyInstanceList `json:"InstanceList,omitempty" xml:"InstanceList,omitempty" type:"Struct"`
-	Message      *string                                     `json:"Message,omitempty" xml:"Message,omitempty"`
-	RequestId    *string                                     `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The additional information that is returned.
+	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// The ID of the request.
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
 func (s ListConvertableEcuResponseBody) String() string {
@@ -14919,20 +17832,40 @@ func (s *ListConvertableEcuResponseBodyInstanceList) SetInstance(v []*ListConver
 }
 
 type ListConvertableEcuResponseBodyInstanceListInstance struct {
-	Cpu          *int32  `json:"Cpu,omitempty" xml:"Cpu,omitempty"`
-	EcuId        *string `json:"EcuId,omitempty" xml:"EcuId,omitempty"`
-	Eip          *string `json:"Eip,omitempty" xml:"Eip,omitempty"`
-	Expired      *bool   `json:"Expired,omitempty" xml:"Expired,omitempty"`
-	InnerIp      *string `json:"InnerIp,omitempty" xml:"InnerIp,omitempty"`
-	InstanceId   *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	// The number of CPU cores of the ECS instance.
+	Cpu *int32 `json:"Cpu,omitempty" xml:"Cpu,omitempty"`
+	// The ID of the elastic compute units (ECU).
+	EcuId *string `json:"EcuId,omitempty" xml:"EcuId,omitempty"`
+	// The elastic IP address (EIP) associated with the ECS instance. The EIP can be changed.
+	Eip *string `json:"Eip,omitempty" xml:"Eip,omitempty"`
+	// Indicates whether the ECS instance has expired.
+	Expired *bool `json:"Expired,omitempty" xml:"Expired,omitempty"`
+	// The private IP address of the ECS instance. This parameter is valid only when the ECS instance is deployed in a VPC.
+	InnerIp *string `json:"InnerIp,omitempty" xml:"InnerIp,omitempty"`
+	// The ID of the ECS instance.
+	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	// The name of the ECS instance.
 	InstanceName *string `json:"InstanceName,omitempty" xml:"InstanceName,omitempty"`
-	Mem          *int32  `json:"Mem,omitempty" xml:"Mem,omitempty"`
-	PrivateIp    *string `json:"PrivateIp,omitempty" xml:"PrivateIp,omitempty"`
-	PublicIp     *string `json:"PublicIp,omitempty" xml:"PublicIp,omitempty"`
-	RegionId     *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	Status       *string `json:"Status,omitempty" xml:"Status,omitempty"`
-	VpcId        *string `json:"VpcId,omitempty" xml:"VpcId,omitempty"`
-	VpcName      *string `json:"VpcName,omitempty" xml:"VpcName,omitempty"`
+	// The size of memory for the ECS instance.
+	Mem *int32 `json:"Mem,omitempty" xml:"Mem,omitempty"`
+	// The private IP address of the ECS instance. This parameter is valid only when the ECS instance is deployed in a VPC.
+	PrivateIp *string `json:"PrivateIp,omitempty" xml:"PrivateIp,omitempty"`
+	// The public IP address of the ECS instance. This IP address can be used only by the ECS instance.
+	PublicIp *string `json:"PublicIp,omitempty" xml:"PublicIp,omitempty"`
+	// The ID of the region where the ECS instance is located.
+	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	// The state of the instance. Valid values:
+	//
+	// *   Pending: The instance is being created.
+	// *   Running: The instance is running.
+	// *   Starting: The instance is being started.
+	// *   Stopping: The instance is being stopped.
+	// *   Stopped: The instance is stopped.
+	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
+	// The ID of the virtual private cloud (VPC).
+	VpcId *string `json:"VpcId,omitempty" xml:"VpcId,omitempty"`
+	// The name of the VPC.
+	VpcName *string `json:"VpcName,omitempty" xml:"VpcName,omitempty"`
 }
 
 func (s ListConvertableEcuResponseBodyInstanceListInstance) String() string {
@@ -15043,6 +17976,7 @@ func (s *ListConvertableEcuResponse) SetBody(v *ListConvertableEcuResponseBody) 
 }
 
 type ListDeployGroupRequest struct {
+	// The ID of the application. You can call the ListApplication operation to query the application ID. For more information, see [ListApplication](~~149390~~).
 	AppId *string `json:"AppId,omitempty" xml:"AppId,omitempty"`
 }
 
@@ -15060,10 +17994,14 @@ func (s *ListDeployGroupRequest) SetAppId(v string) *ListDeployGroupRequest {
 }
 
 type ListDeployGroupResponseBody struct {
-	Code            *int32                                      `json:"Code,omitempty" xml:"Code,omitempty"`
+	// The HTTP status code that is returned.
+	Code *int32 `json:"Code,omitempty" xml:"Code,omitempty"`
+	// The information about the instance group in which the application is deployed.
 	DeployGroupList *ListDeployGroupResponseBodyDeployGroupList `json:"DeployGroupList,omitempty" xml:"DeployGroupList,omitempty" type:"Struct"`
-	Message         *string                                     `json:"Message,omitempty" xml:"Message,omitempty"`
-	RequestId       *string                                     `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The additional information that is returned.
+	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// The ID of the request.
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
 func (s ListDeployGroupResponseBody) String() string {
@@ -15112,40 +18050,85 @@ func (s *ListDeployGroupResponseBodyDeployGroupList) SetDeployGroup(v []*ListDep
 }
 
 type ListDeployGroupResponseBodyDeployGroupListDeployGroup struct {
-	AppId                   *string `json:"AppId,omitempty" xml:"AppId,omitempty"`
-	AppVersionId            *string `json:"AppVersionId,omitempty" xml:"AppVersionId,omitempty"`
-	BaseComponentMetaName   *string `json:"BaseComponentMetaName,omitempty" xml:"BaseComponentMetaName,omitempty"`
-	ClusterId               *string `json:"ClusterId,omitempty" xml:"ClusterId,omitempty"`
-	ClusterName             *string `json:"ClusterName,omitempty" xml:"ClusterName,omitempty"`
-	CpuLimit                *string `json:"CpuLimit,omitempty" xml:"CpuLimit,omitempty"`
-	CpuRequest              *string `json:"CpuRequest,omitempty" xml:"CpuRequest,omitempty"`
-	CreateTime              *int64  `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
-	CsClusterId             *string `json:"CsClusterId,omitempty" xml:"CsClusterId,omitempty"`
-	DeploymentName          *string `json:"DeploymentName,omitempty" xml:"DeploymentName,omitempty"`
-	Env                     *string `json:"Env,omitempty" xml:"Env,omitempty"`
-	EphemeralStorageLimit   *string `json:"EphemeralStorageLimit,omitempty" xml:"EphemeralStorageLimit,omitempty"`
+	// The ID of the application.
+	AppId *string `json:"AppId,omitempty" xml:"AppId,omitempty"`
+	// The ID of the change process for application deployment in the instance group.
+	AppVersionId *string `json:"AppVersionId,omitempty" xml:"AppVersionId,omitempty"`
+	// The name of the basic component.
+	BaseComponentMetaName *string `json:"BaseComponentMetaName,omitempty" xml:"BaseComponentMetaName,omitempty"`
+	// The ID of the cluster.
+	ClusterId *string `json:"ClusterId,omitempty" xml:"ClusterId,omitempty"`
+	// The name of the cluster.
+	ClusterName *string `json:"ClusterName,omitempty" xml:"ClusterName,omitempty"`
+	// The maximum number of CPU cores allowed for each application instance when the application is running.
+	CpuLimit *string `json:"CpuLimit,omitempty" xml:"CpuLimit,omitempty"`
+	// The number of CPU cores requested for each application instance when the application is running. Unit: cores. Value 0 indicates that no limit is set on CPU cores.
+	CpuRequest *string `json:"CpuRequest,omitempty" xml:"CpuRequest,omitempty"`
+	// The time when the application was created. This value is a UNIX timestamp representing the number of milliseconds that have elapsed since January 1, 1970, 00:00:00 UTC.
+	CreateTime *int64 `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
+	// The ID of the Container Service for Kubernetes (ACK) cluster.
+	CsClusterId *string `json:"CsClusterId,omitempty" xml:"CsClusterId,omitempty"`
+	// The name of the deployment.
+	DeploymentName *string `json:"DeploymentName,omitempty" xml:"DeploymentName,omitempty"`
+	// The ID of the ACK cluster.
+	Env *string `json:"Env,omitempty" xml:"Env,omitempty"`
+	// The maximum size of space required by ephemeral storage. Unit: GB. Value 0 indicates that no limit is set on the space size.
+	EphemeralStorageLimit *string `json:"EphemeralStorageLimit,omitempty" xml:"EphemeralStorageLimit,omitempty"`
+	// The minimum size of space required by ephemeral storage. Unit: GB. Value 0 indicates that no limit is set on the space size.
 	EphemeralStorageRequest *string `json:"EphemeralStorageRequest,omitempty" xml:"EphemeralStorageRequest,omitempty"`
-	GroupId                 *string `json:"GroupId,omitempty" xml:"GroupId,omitempty"`
-	GroupName               *string `json:"GroupName,omitempty" xml:"GroupName,omitempty"`
-	GroupType               *int32  `json:"GroupType,omitempty" xml:"GroupType,omitempty"`
-	Labels                  *string `json:"Labels,omitempty" xml:"Labels,omitempty"`
-	LastUpdateTime          *int64  `json:"LastUpdateTime,omitempty" xml:"LastUpdateTime,omitempty"`
-	MemoryLimit             *string `json:"MemoryLimit,omitempty" xml:"MemoryLimit,omitempty"`
-	MemoryRequest           *string `json:"MemoryRequest,omitempty" xml:"MemoryRequest,omitempty"`
-	NameSpace               *string `json:"NameSpace,omitempty" xml:"NameSpace,omitempty"`
-	PackagePublicUrl        *string `json:"PackagePublicUrl,omitempty" xml:"PackagePublicUrl,omitempty"`
-	PackageUrl              *string `json:"PackageUrl,omitempty" xml:"PackageUrl,omitempty"`
-	PackageVersion          *string `json:"PackageVersion,omitempty" xml:"PackageVersion,omitempty"`
-	PackageVersionId        *string `json:"PackageVersionId,omitempty" xml:"PackageVersionId,omitempty"`
-	PostStart               *string `json:"PostStart,omitempty" xml:"PostStart,omitempty"`
-	PreStop                 *string `json:"PreStop,omitempty" xml:"PreStop,omitempty"`
-	Reversion               *string `json:"Reversion,omitempty" xml:"Reversion,omitempty"`
-	Selector                *string `json:"Selector,omitempty" xml:"Selector,omitempty"`
-	Status                  *string `json:"Status,omitempty" xml:"Status,omitempty"`
-	Strategy                *string `json:"Strategy,omitempty" xml:"Strategy,omitempty"`
-	UpdateTime              *int64  `json:"UpdateTime,omitempty" xml:"UpdateTime,omitempty"`
-	VExtServerGroupId       *string `json:"VExtServerGroupId,omitempty" xml:"VExtServerGroupId,omitempty"`
-	VServerGroupId          *string `json:"VServerGroupId,omitempty" xml:"VServerGroupId,omitempty"`
+	// The ID of the instance group.
+	GroupId *string `json:"GroupId,omitempty" xml:"GroupId,omitempty"`
+	// The name of the instance group.
+	GroupName *string `json:"GroupName,omitempty" xml:"GroupName,omitempty"`
+	// The type of the instance group. Valid values:
+	//
+	// *   0: default group.
+	// *   1: Canary release is disabled for traffic management.
+	// *   2: Canary release is enabled for traffic management.
+	GroupType *int32 `json:"GroupType,omitempty" xml:"GroupType,omitempty"`
+	// The tag.
+	Labels *string `json:"Labels,omitempty" xml:"Labels,omitempty"`
+	// The time when the application was last modified. This value is a UNIX timestamp representing the number of milliseconds that have elapsed since January 1, 1970, 00:00:00 UTC.
+	LastUpdateTime *int64 `json:"LastUpdateTime,omitempty" xml:"LastUpdateTime,omitempty"`
+	// The maximum size of memory allowed for each application instance when the application is running. Unit: MB. Value 0 indicates that no limit is set on the memory size.
+	MemoryLimit *string `json:"MemoryLimit,omitempty" xml:"MemoryLimit,omitempty"`
+	// The size of memory requested for each application instance when the application is running. Unit: MB. Value 0 indicates that no limit is set on the memory size.
+	MemoryRequest *string `json:"MemoryRequest,omitempty" xml:"MemoryRequest,omitempty"`
+	// The namespace.
+	NameSpace *string `json:"NameSpace,omitempty" xml:"NameSpace,omitempty"`
+	// The external download URL of the deployment package.
+	PackagePublicUrl *string `json:"PackagePublicUrl,omitempty" xml:"PackagePublicUrl,omitempty"`
+	// The URL of the deployment package.
+	PackageUrl *string `json:"PackageUrl,omitempty" xml:"PackageUrl,omitempty"`
+	// The version of the deployment package.
+	PackageVersion *string `json:"PackageVersion,omitempty" xml:"PackageVersion,omitempty"`
+	// The version of the deployment package that was used to deploy an application in the instance group.
+	PackageVersionId *string `json:"PackageVersionId,omitempty" xml:"PackageVersionId,omitempty"`
+	// The post-start script.
+	PostStart *string `json:"PostStart,omitempty" xml:"PostStart,omitempty"`
+	// The pre-stop script.
+	PreStop *string `json:"PreStop,omitempty" xml:"PreStop,omitempty"`
+	// The version of the application. The value progressively increases in the range of 0 to 7.
+	Reversion *string `json:"Reversion,omitempty" xml:"Reversion,omitempty"`
+	// The ID of the application deployed in the ACK cluster in Enterprise Distributed Application Service (EDAS).
+	Selector *string `json:"Selector,omitempty" xml:"Selector,omitempty"`
+	// The state of the application instance group. Valid values:
+	//
+	// *   0: ready
+	// *   1: in progress
+	// *   2: successful
+	// *   3: failed
+	// *   6: terminated
+	// *   10: failed due to a system exception
+	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
+	// The throttling policy. This parameter is reserved.
+	Strategy *string `json:"Strategy,omitempty" xml:"Strategy,omitempty"`
+	// The time when the application was last modified. This value is a UNIX timestamp representing the number of milliseconds that have elapsed since January 1, 1970, 00:00:00 UTC.
+	UpdateTime *int64 `json:"UpdateTime,omitempty" xml:"UpdateTime,omitempty"`
+	// The ID of the vServer group of the Internet-facing SLB instance associated with the instance group.
+	VExtServerGroupId *string `json:"VExtServerGroupId,omitempty" xml:"VExtServerGroupId,omitempty"`
+	// The ID of the vServer group of the internal-facing Server Load Balancer (SLB) instance associated with the instance group.
+	VServerGroupId *string `json:"VServerGroupId,omitempty" xml:"VServerGroupId,omitempty"`
 }
 
 func (s ListDeployGroupResponseBodyDeployGroupListDeployGroup) String() string {
@@ -15356,8 +18339,13 @@ func (s *ListDeployGroupResponse) SetBody(v *ListDeployGroupResponseBody) *ListD
 }
 
 type ListEcsNotInClusterRequest struct {
-	NetworkMode *int32  `json:"NetworkMode,omitempty" xml:"NetworkMode,omitempty"`
-	VpcId       *string `json:"VpcId,omitempty" xml:"VpcId,omitempty"`
+	// The network type. Valid values:
+	//
+	// *   1: classic network
+	// *   2: virtual private cloud (VPC)
+	NetworkMode *int32 `json:"NetworkMode,omitempty" xml:"NetworkMode,omitempty"`
+	// The ID of the VPC. This parameter is required if the NetworkMode parameter is set to 2.
+	VpcId *string `json:"VpcId,omitempty" xml:"VpcId,omitempty"`
 }
 
 func (s ListEcsNotInClusterRequest) String() string {
@@ -15379,10 +18367,14 @@ func (s *ListEcsNotInClusterRequest) SetVpcId(v string) *ListEcsNotInClusterRequ
 }
 
 type ListEcsNotInClusterResponseBody struct {
-	Code          *int32                                        `json:"Code,omitempty" xml:"Code,omitempty"`
+	// The HTTP status code that is returned.
+	Code *int32 `json:"Code,omitempty" xml:"Code,omitempty"`
+	// The information about ECS instances.
 	EcsEntityList *ListEcsNotInClusterResponseBodyEcsEntityList `json:"EcsEntityList,omitempty" xml:"EcsEntityList,omitempty" type:"Struct"`
-	Message       *string                                       `json:"Message,omitempty" xml:"Message,omitempty"`
-	RequestId     *string                                       `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The message that is returned.
+	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// The ID of the request.
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
 func (s ListEcsNotInClusterResponseBody) String() string {
@@ -15431,19 +18423,41 @@ func (s *ListEcsNotInClusterResponseBodyEcsEntityList) SetEcsEntity(v []*ListEcs
 }
 
 type ListEcsNotInClusterResponseBodyEcsEntityListEcsEntity struct {
-	Cpu          *int32  `json:"Cpu,omitempty" xml:"Cpu,omitempty"`
-	Eip          *string `json:"Eip,omitempty" xml:"Eip,omitempty"`
-	Expired      *bool   `json:"Expired,omitempty" xml:"Expired,omitempty"`
-	InnerIp      *string `json:"InnerIp,omitempty" xml:"InnerIp,omitempty"`
-	InstanceId   *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	// The number of CPU cores.
+	Cpu *int32 `json:"Cpu,omitempty" xml:"Cpu,omitempty"`
+	// The elastic IP address (EIP) associated with the ECS instance.
+	Eip *string `json:"Eip,omitempty" xml:"Eip,omitempty"`
+	// Indicates whether the ECS instance has expired. Valid values:
+	//
+	// *   **true**: The ECS instance has expired.
+	// *   **false**: The ECS instance has not expired.
+	Expired *bool `json:"Expired,omitempty" xml:"Expired,omitempty"`
+	// The private IP address of the ECS instance.
+	InnerIp *string `json:"InnerIp,omitempty" xml:"InnerIp,omitempty"`
+	// The ID of the ECS instance.
+	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	// The name of the ECS instance.
 	InstanceName *string `json:"InstanceName,omitempty" xml:"InstanceName,omitempty"`
-	Mem          *int32  `json:"Mem,omitempty" xml:"Mem,omitempty"`
-	PrivateIp    *string `json:"PrivateIp,omitempty" xml:"PrivateIp,omitempty"`
-	PublicIp     *string `json:"PublicIp,omitempty" xml:"PublicIp,omitempty"`
-	RegionId     *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	Status       *string `json:"Status,omitempty" xml:"Status,omitempty"`
-	VpcId        *string `json:"VpcId,omitempty" xml:"VpcId,omitempty"`
-	VpcName      *string `json:"VpcName,omitempty" xml:"VpcName,omitempty"`
+	// The size of memory. Unit: bytes.
+	Mem *int32 `json:"Mem,omitempty" xml:"Mem,omitempty"`
+	// The private IP address of the ECS instance.
+	PrivateIp *string `json:"PrivateIp,omitempty" xml:"PrivateIp,omitempty"`
+	// The public IP address of the ECS instance.
+	PublicIp *string `json:"PublicIp,omitempty" xml:"PublicIp,omitempty"`
+	// The ID of the region where the ECS instance is located.
+	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	// The status of the ECS instance. Valid values:
+	//
+	// *   **Pending**: The ECS instance is being created.
+	// *   **Running**: The ECS instance is running.
+	// *   **Starting**: The ECS instance is being started.
+	// *   **Stopping**: The ECS instance is being stopped.
+	// *   **Stopped**: The ECS instance is stopped.
+	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
+	// The ID of the VPC.
+	VpcId *string `json:"VpcId,omitempty" xml:"VpcId,omitempty"`
+	// The name of the VPC.
+	VpcName *string `json:"VpcName,omitempty" xml:"VpcName,omitempty"`
 }
 
 func (s ListEcsNotInClusterResponseBodyEcsEntityListEcsEntity) String() string {
@@ -15549,7 +18563,12 @@ func (s *ListEcsNotInClusterResponse) SetBody(v *ListEcsNotInClusterResponseBody
 }
 
 type ListEcuByRegionRequest struct {
-	Act             *string `json:"Act,omitempty" xml:"Act,omitempty"`
+	// Set the value to `pop-query`.
+	Act *string `json:"Act,omitempty" xml:"Act,omitempty"`
+	// The ID of the namespace.
+	//
+	// *   The ID of a custom namespace is in the `region ID:namespace identifier` format. Example: cn-beijing:tdy218.
+	// *   The ID of the default namespace is in the `region ID` format. Example: cn-beijing.
 	LogicalRegionId *string `json:"LogicalRegionId,omitempty" xml:"LogicalRegionId,omitempty"`
 }
 
@@ -15572,10 +18591,14 @@ func (s *ListEcuByRegionRequest) SetLogicalRegionId(v string) *ListEcuByRegionRe
 }
 
 type ListEcuByRegionResponseBody struct {
-	Code          *int32                                    `json:"Code,omitempty" xml:"Code,omitempty"`
+	// The HTTP status code that is returned.
+	Code *int32 `json:"Code,omitempty" xml:"Code,omitempty"`
+	// The information about ECUs.
 	EcuEntityList *ListEcuByRegionResponseBodyEcuEntityList `json:"EcuEntityList,omitempty" xml:"EcuEntityList,omitempty" type:"Struct"`
-	Message       *string                                   `json:"Message,omitempty" xml:"Message,omitempty"`
-	RequestId     *string                                   `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The additional information that is returned.
+	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// The ID of the request.
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
 func (s ListEcuByRegionResponseBody) String() string {
@@ -15624,23 +18647,46 @@ func (s *ListEcuByRegionResponseBodyEcuEntityList) SetEcuEntity(v []*ListEcuByRe
 }
 
 type ListEcuByRegionResponseBodyEcuEntityListEcuEntity struct {
-	AvailableCpu  *int32  `json:"AvailableCpu,omitempty" xml:"AvailableCpu,omitempty"`
-	AvailableMem  *int32  `json:"AvailableMem,omitempty" xml:"AvailableMem,omitempty"`
-	Cpu           *int32  `json:"Cpu,omitempty" xml:"Cpu,omitempty"`
-	CreateTime    *int64  `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
-	DockerEnv     *bool   `json:"DockerEnv,omitempty" xml:"DockerEnv,omitempty"`
-	EcuId         *string `json:"EcuId,omitempty" xml:"EcuId,omitempty"`
-	HeartbeatTime *int64  `json:"HeartbeatTime,omitempty" xml:"HeartbeatTime,omitempty"`
-	InstanceId    *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	IpAddr        *string `json:"IpAddr,omitempty" xml:"IpAddr,omitempty"`
-	Mem           *int32  `json:"Mem,omitempty" xml:"Mem,omitempty"`
-	Name          *string `json:"Name,omitempty" xml:"Name,omitempty"`
-	Online        *bool   `json:"Online,omitempty" xml:"Online,omitempty"`
-	RegionId      *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	UpdateTime    *int64  `json:"UpdateTime,omitempty" xml:"UpdateTime,omitempty"`
-	UserId        *string `json:"UserId,omitempty" xml:"UserId,omitempty"`
-	VpcId         *string `json:"VpcId,omitempty" xml:"VpcId,omitempty"`
-	ZoneId        *string `json:"ZoneId,omitempty" xml:"ZoneId,omitempty"`
+	// The number of available CPU cores for the ECU.
+	AvailableCpu *int32 `json:"AvailableCpu,omitempty" xml:"AvailableCpu,omitempty"`
+	// The size of available memory for the ECU. Unit: MB.
+	AvailableMem *int32 `json:"AvailableMem,omitempty" xml:"AvailableMem,omitempty"`
+	// The total number of CPU cores.
+	Cpu *int32 `json:"Cpu,omitempty" xml:"Cpu,omitempty"`
+	// The timestamp when the ECU was created. This value is a UNIX timestamp representing the number of milliseconds that have elapsed since the epoch time January 1, 1970, 00:00:00 UTC.
+	CreateTime *int64 `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
+	// Indicates whether Docker is installed. Valid values:
+	//
+	// *   true: Docker is installed.
+	// *   false: Docker is not installed.
+	DockerEnv *bool `json:"DockerEnv,omitempty" xml:"DockerEnv,omitempty"`
+	// The unique ID of the ECU. To query the ID, you can run the `dmidecode` command on the ECS instance that corresponds to the ECU.
+	EcuId *string `json:"EcuId,omitempty" xml:"EcuId,omitempty"`
+	// The timestamp when the last heartbeat detection was performed. This value is a UNIX timestamp representing the number of milliseconds that have elapsed since January 1, 1970, 00:00:00 UTC.
+	HeartbeatTime *int64 `json:"HeartbeatTime,omitempty" xml:"HeartbeatTime,omitempty"`
+	// The ID of the ECU.
+	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	// The private IP address of the ECU.
+	IpAddr *string `json:"IpAddr,omitempty" xml:"IpAddr,omitempty"`
+	// The total size of memory. Unit: MB.
+	Mem *int32 `json:"Mem,omitempty" xml:"Mem,omitempty"`
+	// The name of the ECU.
+	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// Indicates whether the ECU is online. Valid values:
+	//
+	// *   true: The ECU is online.
+	// *   false: The ECU is offline.
+	Online *bool `json:"Online,omitempty" xml:"Online,omitempty"`
+	// The ID of the region in which the ECU resides.
+	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	// The timestamp when the ECU was last modified. This value is a UNIX timestamp representing the number of milliseconds that have elapsed since January 1, 1970, 00:00:00 UTC.
+	UpdateTime *int64 `json:"UpdateTime,omitempty" xml:"UpdateTime,omitempty"`
+	// The ID of the Alibaba Cloud account.
+	UserId *string `json:"UserId,omitempty" xml:"UserId,omitempty"`
+	// The ID of the virtual private cloud (VPC) in which the ECU resides.
+	VpcId *string `json:"VpcId,omitempty" xml:"VpcId,omitempty"`
+	// The ID of the zone in which the ECU resides.
+	ZoneId *string `json:"ZoneId,omitempty" xml:"ZoneId,omitempty"`
 }
 
 func (s ListEcuByRegionResponseBodyEcuEntityListEcuEntity) String() string {
@@ -15766,6 +18812,7 @@ func (s *ListEcuByRegionResponse) SetBody(v *ListEcuByRegionResponseBody) *ListE
 }
 
 type ListHistoryDeployVersionRequest struct {
+	// The ID of the application. You can call the ListApplication operation to query the application ID. For more information, see [ListApplication](~~149390~~).
 	AppId *string `json:"AppId,omitempty" xml:"AppId,omitempty"`
 }
 
@@ -15783,10 +18830,14 @@ func (s *ListHistoryDeployVersionRequest) SetAppId(v string) *ListHistoryDeployV
 }
 
 type ListHistoryDeployVersionResponseBody struct {
-	Code               *int32                                                  `json:"Code,omitempty" xml:"Code,omitempty"`
-	Message            *string                                                 `json:"Message,omitempty" xml:"Message,omitempty"`
+	// The HTTP status code that is returned.
+	Code *int32 `json:"Code,omitempty" xml:"Code,omitempty"`
+	// The additional information that is returned.
+	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// The information about historical deployment packages.
 	PackageVersionList *ListHistoryDeployVersionResponseBodyPackageVersionList `json:"PackageVersionList,omitempty" xml:"PackageVersionList,omitempty" type:"Struct"`
-	RequestId          *string                                                 `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The ID of the request.
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
 func (s ListHistoryDeployVersionResponseBody) String() string {
@@ -15835,15 +18886,27 @@ func (s *ListHistoryDeployVersionResponseBodyPackageVersionList) SetPackageVersi
 }
 
 type ListHistoryDeployVersionResponseBodyPackageVersionListPackageVersion struct {
-	AppId          *string `json:"AppId,omitempty" xml:"AppId,omitempty"`
-	CreateTime     *int64  `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
-	Description    *string `json:"Description,omitempty" xml:"Description,omitempty"`
-	Id             *string `json:"Id,omitempty" xml:"Id,omitempty"`
+	// The ID of the application.
+	AppId *string `json:"AppId,omitempty" xml:"AppId,omitempty"`
+	// The time when the deployment package was created. This value is a UNIX timestamp representing the number of milliseconds that have elapsed since January 1, 1970, 00:00:00 UTC.
+	CreateTime *int64 `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
+	// The description of the deployment package.
+	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
+	// The unique ID of the deployment package.
+	Id *string `json:"Id,omitempty" xml:"Id,omitempty"`
+	// The version of the application that was released by using the deployment package. This version can be used to call the RollbackApplication operation.
 	PackageVersion *string `json:"PackageVersion,omitempty" xml:"PackageVersion,omitempty"`
-	PublicUrl      *string `json:"PublicUrl,omitempty" xml:"PublicUrl,omitempty"`
-	Type           *string `json:"Type,omitempty" xml:"Type,omitempty"`
-	UpdateTime     *int64  `json:"UpdateTime,omitempty" xml:"UpdateTime,omitempty"`
-	WarUrl         *string `json:"WarUrl,omitempty" xml:"WarUrl,omitempty"`
+	// The URL of the deployment package.
+	PublicUrl *string `json:"PublicUrl,omitempty" xml:"PublicUrl,omitempty"`
+	// The deployment mode of the application. Valid values:
+	//
+	// *   url: The application is deployed by using a JAR or WAR package.
+	// *   image: The application is deployed by using an image.
+	Type *string `json:"Type,omitempty" xml:"Type,omitempty"`
+	// The time when the deployment package was last modified. This value is a UNIX timestamp representing the number of milliseconds that have elapsed since January 1, 1970, 00:00:00 UTC.
+	UpdateTime *int64 `json:"UpdateTime,omitempty" xml:"UpdateTime,omitempty"`
+	// The URL of the deployment package.
+	WarUrl *string `json:"WarUrl,omitempty" xml:"WarUrl,omitempty"`
 }
 
 func (s ListHistoryDeployVersionResponseBodyPackageVersionListPackageVersion) String() string {
@@ -15929,13 +18992,20 @@ func (s *ListHistoryDeployVersionResponse) SetBody(v *ListHistoryDeployVersionRe
 }
 
 type ListK8sConfigMapsRequest struct {
-	ClusterId       *string                `json:"ClusterId,omitempty" xml:"ClusterId,omitempty"`
-	Condition       map[string]interface{} `json:"Condition,omitempty" xml:"Condition,omitempty"`
-	Namespace       *string                `json:"Namespace,omitempty" xml:"Namespace,omitempty"`
-	PageNo          *int32                 `json:"PageNo,omitempty" xml:"PageNo,omitempty"`
-	PageSize        *int32                 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	RegionId        *string                `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	ShowRelatedApps *bool                  `json:"ShowRelatedApps,omitempty" xml:"ShowRelatedApps,omitempty"`
+	// The ID of the cluster.
+	ClusterId *string `json:"ClusterId,omitempty" xml:"ClusterId,omitempty"`
+	// The filter conditions. Set this parameter to a JSON string in the format of {"field":"Name", "pattern":"configmap-"}.
+	Condition map[string]interface{} `json:"Condition,omitempty" xml:"Condition,omitempty"`
+	// The namespace of the Kubernetes cluster.
+	Namespace *string `json:"Namespace,omitempty" xml:"Namespace,omitempty"`
+	// The number of the page to return. Pages start from Page 0.
+	PageNo *int32 `json:"PageNo,omitempty" xml:"PageNo,omitempty"`
+	// The number of entries to return on each page.
+	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	// The ID of the region.
+	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	// Specifies whether to return a list of applications that use a ConfigMap. Valid values: true and false.
+	ShowRelatedApps *bool `json:"ShowRelatedApps,omitempty" xml:"ShowRelatedApps,omitempty"`
 }
 
 func (s ListK8sConfigMapsRequest) String() string {
@@ -15982,10 +19052,14 @@ func (s *ListK8sConfigMapsRequest) SetShowRelatedApps(v bool) *ListK8sConfigMaps
 }
 
 type ListK8sConfigMapsResponseBody struct {
-	Code      *int32                               `json:"Code,omitempty" xml:"Code,omitempty"`
-	Message   *string                              `json:"Message,omitempty" xml:"Message,omitempty"`
-	RequestId *string                              `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	Result    *ListK8sConfigMapsResponseBodyResult `json:"Result,omitempty" xml:"Result,omitempty" type:"Struct"`
+	// The HTTP status code.
+	Code *int32 `json:"Code,omitempty" xml:"Code,omitempty"`
+	// The additional information that is returned.
+	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// The ID of the request.
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The query results that are returned.
+	Result *ListK8sConfigMapsResponseBodyResult `json:"Result,omitempty" xml:"Result,omitempty" type:"Struct"`
 }
 
 func (s ListK8sConfigMapsResponseBody) String() string {
@@ -16017,8 +19091,10 @@ func (s *ListK8sConfigMapsResponseBody) SetResult(v *ListK8sConfigMapsResponseBo
 }
 
 type ListK8sConfigMapsResponseBodyResult struct {
+	// The information about ConfigMaps.
 	ConfigMaps []*ListK8sConfigMapsResponseBodyResultConfigMaps `json:"ConfigMaps,omitempty" xml:"ConfigMaps,omitempty" type:"Repeated"`
-	Total      *int32                                           `json:"Total,omitempty" xml:"Total,omitempty"`
+	// The total number of entries that are returned.
+	Total *int32 `json:"Total,omitempty" xml:"Total,omitempty"`
 }
 
 func (s ListK8sConfigMapsResponseBodyResult) String() string {
@@ -16040,13 +19116,20 @@ func (s *ListK8sConfigMapsResponseBodyResult) SetTotal(v int32) *ListK8sConfigMa
 }
 
 type ListK8sConfigMapsResponseBodyResultConfigMaps struct {
-	ClusterId    *string                                                     `json:"ClusterId,omitempty" xml:"ClusterId,omitempty"`
-	ClusterName  *string                                                     `json:"ClusterName,omitempty" xml:"ClusterName,omitempty"`
-	CreationTime *string                                                     `json:"CreationTime,omitempty" xml:"CreationTime,omitempty"`
-	Data         []*ListK8sConfigMapsResponseBodyResultConfigMapsData        `json:"Data,omitempty" xml:"Data,omitempty" type:"Repeated"`
-	Name         *string                                                     `json:"Name,omitempty" xml:"Name,omitempty"`
-	Namespace    *string                                                     `json:"Namespace,omitempty" xml:"Namespace,omitempty"`
-	RelatedApps  []*ListK8sConfigMapsResponseBodyResultConfigMapsRelatedApps `json:"RelatedApps,omitempty" xml:"RelatedApps,omitempty" type:"Repeated"`
+	// The ID of the Kubernetes cluster. You can obtain the cluster ID by calling the GetK8sCluster operation. For more information, see [GetK8sCluster](~~181437~~).
+	ClusterId *string `json:"ClusterId,omitempty" xml:"ClusterId,omitempty"`
+	// The name of the cluster.
+	ClusterName *string `json:"ClusterName,omitempty" xml:"ClusterName,omitempty"`
+	// The time when the ConfigMaps were created. The time follows the ISO 8601 standard in the yyyy-MM-ddThh:mm:ssZ format. The time is displayed in UTC.
+	CreationTime *string `json:"CreationTime,omitempty" xml:"CreationTime,omitempty"`
+	// The information about ConfigMaps.
+	Data []*ListK8sConfigMapsResponseBodyResultConfigMapsData `json:"Data,omitempty" xml:"Data,omitempty" type:"Repeated"`
+	// The name of the ConfigMap.
+	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// The namespace of the Kubernetes cluster.
+	Namespace *string `json:"Namespace,omitempty" xml:"Namespace,omitempty"`
+	// The related applications.
+	RelatedApps []*ListK8sConfigMapsResponseBodyResultConfigMapsRelatedApps `json:"RelatedApps,omitempty" xml:"RelatedApps,omitempty" type:"Repeated"`
 }
 
 func (s ListK8sConfigMapsResponseBodyResultConfigMaps) String() string {
@@ -16093,7 +19176,9 @@ func (s *ListK8sConfigMapsResponseBodyResultConfigMaps) SetRelatedApps(v []*List
 }
 
 type ListK8sConfigMapsResponseBodyResultConfigMapsData struct {
-	Key   *string `json:"Key,omitempty" xml:"Key,omitempty"`
+	// The user-defined key that is stored in the ConfigMap.
+	Key *string `json:"Key,omitempty" xml:"Key,omitempty"`
+	// The user-defined value that is stored in the ConfigMap.
 	Value *string `json:"Value,omitempty" xml:"Value,omitempty"`
 }
 
@@ -16116,7 +19201,9 @@ func (s *ListK8sConfigMapsResponseBodyResultConfigMapsData) SetValue(v string) *
 }
 
 type ListK8sConfigMapsResponseBodyResultConfigMapsRelatedApps struct {
-	AppId   *string `json:"AppId,omitempty" xml:"AppId,omitempty"`
+	// The ID of the application.
+	AppId *string `json:"AppId,omitempty" xml:"AppId,omitempty"`
+	// The name of the application.
 	AppName *string `json:"AppName,omitempty" xml:"AppName,omitempty"`
 }
 
@@ -16168,10 +19255,19 @@ func (s *ListK8sConfigMapsResponse) SetBody(v *ListK8sConfigMapsResponseBody) *L
 }
 
 type ListK8sIngressRulesRequest struct {
+	// The ID of the Kubernetes cluster.
 	ClusterId *string `json:"ClusterId,omitempty" xml:"ClusterId,omitempty"`
+	// The filter conditions. Set the value to a JSON string in the format of {"field":"Name", "pattern":"my-"}, where:
+	//
+	// *   field: the parameter to be matched. Valid values: Name and ClusterName.
+	// *   pattern: the content to be matched.
+	//
+	// For example, a value of {"field":"Name", "pattern":"my-"} indicates that the specified filter conditions match the routing rules whose names start with my-.
 	Condition *string `json:"Condition,omitempty" xml:"Condition,omitempty"`
+	// The namespace of the Kubernetes cluster.
 	Namespace *string `json:"Namespace,omitempty" xml:"Namespace,omitempty"`
-	RegionId  *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	// The ID of the region where the cluster resides.
+	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 }
 
 func (s ListK8sIngressRulesRequest) String() string {
@@ -16203,10 +19299,14 @@ func (s *ListK8sIngressRulesRequest) SetRegionId(v string) *ListK8sIngressRulesR
 }
 
 type ListK8sIngressRulesResponseBody struct {
-	Code      *int32                                 `json:"Code,omitempty" xml:"Code,omitempty"`
-	Data      []*ListK8sIngressRulesResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Repeated"`
-	Message   *string                                `json:"Message,omitempty" xml:"Message,omitempty"`
-	RequestId *string                                `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The HTTP status code that is returned.
+	Code *int32 `json:"Code,omitempty" xml:"Code,omitempty"`
+	// The data that is returned.
+	Data []*ListK8sIngressRulesResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Repeated"`
+	// The message that is returned.
+	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// The ID of the request.
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
 func (s ListK8sIngressRulesResponseBody) String() string {
@@ -16238,10 +19338,14 @@ func (s *ListK8sIngressRulesResponseBody) SetRequestId(v string) *ListK8sIngress
 }
 
 type ListK8sIngressRulesResponseBodyData struct {
-	ClusterId    *string                                            `json:"ClusterId,omitempty" xml:"ClusterId,omitempty"`
-	ClusterName  *string                                            `json:"ClusterName,omitempty" xml:"ClusterName,omitempty"`
+	// The ID of the Kubernetes cluster.
+	ClusterId *string `json:"ClusterId,omitempty" xml:"ClusterId,omitempty"`
+	// The name of the Kubernetes cluster.
+	ClusterName *string `json:"ClusterName,omitempty" xml:"ClusterName,omitempty"`
+	// The Ingresses.
 	IngressConfs []*ListK8sIngressRulesResponseBodyDataIngressConfs `json:"IngressConfs,omitempty" xml:"IngressConfs,omitempty" type:"Repeated"`
-	RegionId     *string                                            `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	// The ID of the region where the cluster resides.
+	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 }
 
 func (s ListK8sIngressRulesResponseBodyData) String() string {
@@ -16273,19 +19377,44 @@ func (s *ListK8sIngressRulesResponseBodyData) SetRegionId(v string) *ListK8sIngr
 }
 
 type ListK8sIngressRulesResponseBodyDataIngressConfs struct {
-	AlbId             *string                                                 `json:"AlbId,omitempty" xml:"AlbId,omitempty"`
-	CreationTime      *string                                                 `json:"CreationTime,omitempty" xml:"CreationTime,omitempty"`
-	DashboardUrl      *string                                                 `json:"DashboardUrl,omitempty" xml:"DashboardUrl,omitempty"`
-	Endpoint          *string                                                 `json:"Endpoint,omitempty" xml:"Endpoint,omitempty"`
-	IngressType       *string                                                 `json:"IngressType,omitempty" xml:"IngressType,omitempty"`
-	MseGatewayId      *string                                                 `json:"MseGatewayId,omitempty" xml:"MseGatewayId,omitempty"`
-	MseGatewayName    *string                                                 `json:"MseGatewayName,omitempty" xml:"MseGatewayName,omitempty"`
-	Name              *string                                                 `json:"Name,omitempty" xml:"Name,omitempty"`
-	Namespace         *string                                                 `json:"Namespace,omitempty" xml:"Namespace,omitempty"`
-	OfficalBasicUrl   *string                                                 `json:"OfficalBasicUrl,omitempty" xml:"OfficalBasicUrl,omitempty"`
-	OfficalRequestUrl *string                                                 `json:"OfficalRequestUrl,omitempty" xml:"OfficalRequestUrl,omitempty"`
-	Rules             []*ListK8sIngressRulesResponseBodyDataIngressConfsRules `json:"Rules,omitempty" xml:"Rules,omitempty" type:"Repeated"`
-	SslRedirect       *bool                                                   `json:"SslRedirect,omitempty" xml:"SslRedirect,omitempty"`
+	// The ID of the Application Load Balancer (ALB) instance.
+	AlbId *string `json:"AlbId,omitempty" xml:"AlbId,omitempty"`
+	// The annotations.
+	Annotations *string `json:"Annotations,omitempty" xml:"Annotations,omitempty"`
+	// The time when the Ingress was created.
+	CreationTime *string `json:"CreationTime,omitempty" xml:"CreationTime,omitempty"`
+	// The monitoring URL of the Ingress.
+	DashboardUrl *string `json:"DashboardUrl,omitempty" xml:"DashboardUrl,omitempty"`
+	// The IP address of the Ingress.
+	Endpoint *string `json:"Endpoint,omitempty" xml:"Endpoint,omitempty"`
+	// The type of the Ingress. Valid values:
+	//
+	// *   **NginxIngress**: NGINX Ingress controller
+	// *   **AlbIngress**: ALB Ingress controller
+	//
+	// Default value: NginxIngress.
+	IngressType *string `json:"IngressType,omitempty" xml:"IngressType,omitempty"`
+	// The labels.
+	Labels *string `json:"Labels,omitempty" xml:"Labels,omitempty"`
+	// The ID of the Microservices Engine (MSE) gateway.
+	MseGatewayId *string `json:"MseGatewayId,omitempty" xml:"MseGatewayId,omitempty"`
+	// The name of the MSE gateway.
+	MseGatewayName *string `json:"MseGatewayName,omitempty" xml:"MseGatewayName,omitempty"`
+	// The name of the Ingress.
+	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// The Kubernetes namespace to which the Ingress belongs.
+	Namespace *string `json:"Namespace,omitempty" xml:"Namespace,omitempty"`
+	// The URL used for basic monitoring of the open source version.
+	OfficalBasicUrl *string `json:"OfficalBasicUrl,omitempty" xml:"OfficalBasicUrl,omitempty"`
+	// The URL used for request performance monitoring of the open source version.
+	OfficalRequestUrl *string `json:"OfficalRequestUrl,omitempty" xml:"OfficalRequestUrl,omitempty"`
+	// The list of routing rules.
+	Rules []*ListK8sIngressRulesResponseBodyDataIngressConfsRules `json:"Rules,omitempty" xml:"Rules,omitempty" type:"Repeated"`
+	// Indicates whether SSL redirect is enabled. Valid values:
+	//
+	// *   true: SSL redirect is enabled.
+	// *   false: SSL redirect is disabled.
+	SslRedirect *bool `json:"SslRedirect,omitempty" xml:"SslRedirect,omitempty"`
 }
 
 func (s ListK8sIngressRulesResponseBodyDataIngressConfs) String() string {
@@ -16298,6 +19427,11 @@ func (s ListK8sIngressRulesResponseBodyDataIngressConfs) GoString() string {
 
 func (s *ListK8sIngressRulesResponseBodyDataIngressConfs) SetAlbId(v string) *ListK8sIngressRulesResponseBodyDataIngressConfs {
 	s.AlbId = &v
+	return s
+}
+
+func (s *ListK8sIngressRulesResponseBodyDataIngressConfs) SetAnnotations(v string) *ListK8sIngressRulesResponseBodyDataIngressConfs {
+	s.Annotations = &v
 	return s
 }
 
@@ -16318,6 +19452,11 @@ func (s *ListK8sIngressRulesResponseBodyDataIngressConfs) SetEndpoint(v string) 
 
 func (s *ListK8sIngressRulesResponseBodyDataIngressConfs) SetIngressType(v string) *ListK8sIngressRulesResponseBodyDataIngressConfs {
 	s.IngressType = &v
+	return s
+}
+
+func (s *ListK8sIngressRulesResponseBodyDataIngressConfs) SetLabels(v string) *ListK8sIngressRulesResponseBodyDataIngressConfs {
+	s.Labels = &v
 	return s
 }
 
@@ -16362,10 +19501,17 @@ func (s *ListK8sIngressRulesResponseBodyDataIngressConfs) SetSslRedirect(v bool)
 }
 
 type ListK8sIngressRulesResponseBodyDataIngressConfsRules struct {
-	EnableTls  *bool                                                        `json:"EnableTls,omitempty" xml:"EnableTls,omitempty"`
-	Host       *string                                                      `json:"Host,omitempty" xml:"Host,omitempty"`
-	Paths      []*ListK8sIngressRulesResponseBodyDataIngressConfsRulesPaths `json:"Paths,omitempty" xml:"Paths,omitempty" type:"Repeated"`
-	SecretName *string                                                      `json:"SecretName,omitempty" xml:"SecretName,omitempty"`
+	// Indicates whether TLS is enabled. Valid values:
+	//
+	// *   true: TLS is enabled.
+	// *   false: TLS is disabled.
+	EnableTls *bool `json:"EnableTls,omitempty" xml:"EnableTls,omitempty"`
+	// The domain name to be accessed.
+	Host *string `json:"Host,omitempty" xml:"Host,omitempty"`
+	// The list of paths to be accessed.
+	Paths []*ListK8sIngressRulesResponseBodyDataIngressConfsRulesPaths `json:"Paths,omitempty" xml:"Paths,omitempty" type:"Repeated"`
+	// The name of the Secret that stores the information about the Transport Layer Security (TLS) certificate.
+	SecretName *string `json:"SecretName,omitempty" xml:"SecretName,omitempty"`
 }
 
 func (s ListK8sIngressRulesResponseBodyDataIngressConfsRules) String() string {
@@ -16397,12 +19543,25 @@ func (s *ListK8sIngressRulesResponseBodyDataIngressConfsRules) SetSecretName(v s
 }
 
 type ListK8sIngressRulesResponseBodyDataIngressConfsRulesPaths struct {
-	AppId       *string                                                           `json:"AppId,omitempty" xml:"AppId,omitempty"`
-	AppName     *string                                                           `json:"AppName,omitempty" xml:"AppName,omitempty"`
-	Backend     *ListK8sIngressRulesResponseBodyDataIngressConfsRulesPathsBackend `json:"Backend,omitempty" xml:"Backend,omitempty" type:"Struct"`
-	CollectRate *int32                                                            `json:"CollectRate,omitempty" xml:"CollectRate,omitempty"`
-	Path        *string                                                           `json:"Path,omitempty" xml:"Path,omitempty"`
-	Status      *string                                                           `json:"Status,omitempty" xml:"Status,omitempty"`
+	// The ID of the EDAS application.
+	AppId *string `json:"AppId,omitempty" xml:"AppId,omitempty"`
+	// The name of the EDAS application.
+	AppName *string `json:"AppName,omitempty" xml:"AppName,omitempty"`
+	// The configuration of the backend service.
+	Backend *ListK8sIngressRulesResponseBodyDataIngressConfsRulesPathsBackend `json:"Backend,omitempty" xml:"Backend,omitempty" type:"Struct"`
+	// The collection rate that is set based on the trace query feature. You can add a TraceID to a gateway to use the trace query feature of EDAS.
+	CollectRate *int32 `json:"CollectRate,omitempty" xml:"CollectRate,omitempty"`
+	// The path to be accessed.
+	Path     *string `json:"Path,omitempty" xml:"Path,omitempty"`
+	PathType *string `json:"PathType,omitempty" xml:"PathType,omitempty"`
+	// The status of the Ingress. Valid values:
+	//
+	// *   **Normal**: The Ingress works properly.
+	// *   **ServiceNotFound**: The backend service does not exist.
+	// *   **InvalidServicePort**: The service port is invalid.
+	// *   **NotManagedService**: The service is not managed by EDAS.
+	// *   **Unknown**: An unknown error occurred.
+	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
 }
 
 func (s ListK8sIngressRulesResponseBodyDataIngressConfsRulesPaths) String() string {
@@ -16438,13 +19597,20 @@ func (s *ListK8sIngressRulesResponseBodyDataIngressConfsRulesPaths) SetPath(v st
 	return s
 }
 
+func (s *ListK8sIngressRulesResponseBodyDataIngressConfsRulesPaths) SetPathType(v string) *ListK8sIngressRulesResponseBodyDataIngressConfsRulesPaths {
+	s.PathType = &v
+	return s
+}
+
 func (s *ListK8sIngressRulesResponseBodyDataIngressConfsRulesPaths) SetStatus(v string) *ListK8sIngressRulesResponseBodyDataIngressConfsRulesPaths {
 	s.Status = &v
 	return s
 }
 
 type ListK8sIngressRulesResponseBodyDataIngressConfsRulesPathsBackend struct {
+	// The name of the backend service.
 	ServiceName *string `json:"ServiceName,omitempty" xml:"ServiceName,omitempty"`
+	// The port of the backend service.
 	ServicePort *string `json:"ServicePort,omitempty" xml:"ServicePort,omitempty"`
 }
 
@@ -16496,6 +19662,7 @@ func (s *ListK8sIngressRulesResponse) SetBody(v *ListK8sIngressRulesResponseBody
 }
 
 type ListK8sNamespacesRequest struct {
+	// The ID of the cluster in Enterprise Distributed Application Service (EDAS).
 	ClusterId *string `json:"ClusterId,omitempty" xml:"ClusterId,omitempty"`
 }
 
@@ -16513,10 +19680,14 @@ func (s *ListK8sNamespacesRequest) SetClusterId(v string) *ListK8sNamespacesRequ
 }
 
 type ListK8sNamespacesResponseBody struct {
-	Code      *int32                               `json:"Code,omitempty" xml:"Code,omitempty"`
-	Data      []*ListK8sNamespacesResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Repeated"`
-	Message   *string                              `json:"Message,omitempty" xml:"Message,omitempty"`
-	RequestId *string                              `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The HTTP status code that is returned.
+	Code *int32 `json:"Code,omitempty" xml:"Code,omitempty"`
+	// The data that is returned.
+	Data []*ListK8sNamespacesResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Repeated"`
+	// The message returned for the request.
+	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// The ID of the request.
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
 func (s ListK8sNamespacesResponseBody) String() string {
@@ -16548,6 +19719,7 @@ func (s *ListK8sNamespacesResponseBody) SetRequestId(v string) *ListK8sNamespace
 }
 
 type ListK8sNamespacesResponseBodyData struct {
+	// The namespaces of the Kubernetes cluster.
 	Namespace *string `json:"Namespace,omitempty" xml:"Namespace,omitempty"`
 }
 
@@ -16594,13 +19766,20 @@ func (s *ListK8sNamespacesResponse) SetBody(v *ListK8sNamespacesResponseBody) *L
 }
 
 type ListK8sSecretsRequest struct {
-	ClusterId       *string `json:"ClusterId,omitempty" xml:"ClusterId,omitempty"`
-	Condition       *string `json:"Condition,omitempty" xml:"Condition,omitempty"`
-	Namespace       *string `json:"Namespace,omitempty" xml:"Namespace,omitempty"`
-	PageNo          *int32  `json:"PageNo,omitempty" xml:"PageNo,omitempty"`
-	PageSize        *int32  `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	RegionId        *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	ShowRelatedApps *bool   `json:"ShowRelatedApps,omitempty" xml:"ShowRelatedApps,omitempty"`
+	// The ID of the cluster.
+	ClusterId *string `json:"ClusterId,omitempty" xml:"ClusterId,omitempty"`
+	// The filter conditions. Set this parameter to a JSON string in the format of {"field":"Name", "pattern":"configmap-"}.
+	Condition *string `json:"Condition,omitempty" xml:"Condition,omitempty"`
+	// The namespace of the Kubernetes cluster.
+	Namespace *string `json:"Namespace,omitempty" xml:"Namespace,omitempty"`
+	// The number of the page to return. Pages start from Page 0.
+	PageNo *int32 `json:"PageNo,omitempty" xml:"PageNo,omitempty"`
+	// The number of entries to return on each page. The value 0 indicates that all entries are returned on one page.
+	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	// The ID of the region.
+	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	// Specifies whether to return a list of applications that use a Secret.
+	ShowRelatedApps *bool `json:"ShowRelatedApps,omitempty" xml:"ShowRelatedApps,omitempty"`
 }
 
 func (s ListK8sSecretsRequest) String() string {
@@ -16647,10 +19826,14 @@ func (s *ListK8sSecretsRequest) SetShowRelatedApps(v bool) *ListK8sSecretsReques
 }
 
 type ListK8sSecretsResponseBody struct {
-	Code      *int32                            `json:"Code,omitempty" xml:"Code,omitempty"`
-	Message   *string                           `json:"Message,omitempty" xml:"Message,omitempty"`
-	RequestId *string                           `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	Result    *ListK8sSecretsResponseBodyResult `json:"Result,omitempty" xml:"Result,omitempty" type:"Struct"`
+	// The HTTP status code that is returned.
+	Code *int32 `json:"Code,omitempty" xml:"Code,omitempty"`
+	// The additional information that is returned.
+	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// The ID of the request.
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The returned query results of Kubernetes Secrets.
+	Result *ListK8sSecretsResponseBodyResult `json:"Result,omitempty" xml:"Result,omitempty" type:"Struct"`
 }
 
 func (s ListK8sSecretsResponseBody) String() string {
@@ -16682,8 +19865,10 @@ func (s *ListK8sSecretsResponseBody) SetResult(v *ListK8sSecretsResponseBodyResu
 }
 
 type ListK8sSecretsResponseBodyResult struct {
+	// The information about Kubernetes Secrets.
 	Secrets []*ListK8sSecretsResponseBodyResultSecrets `json:"Secrets,omitempty" xml:"Secrets,omitempty" type:"Repeated"`
-	Total   *int32                                     `json:"Total,omitempty" xml:"Total,omitempty"`
+	// The total number of entries that are returned.
+	Total *int32 `json:"Total,omitempty" xml:"Total,omitempty"`
 }
 
 func (s ListK8sSecretsResponseBodyResult) String() string {
@@ -16705,19 +19890,38 @@ func (s *ListK8sSecretsResponseBodyResult) SetTotal(v int32) *ListK8sSecretsResp
 }
 
 type ListK8sSecretsResponseBodyResultSecrets struct {
-	Base64Encoded       *bool                                                         `json:"Base64Encoded,omitempty" xml:"Base64Encoded,omitempty"`
-	CertDetail          *ListK8sSecretsResponseBodyResultSecretsCertDetail            `json:"CertDetail,omitempty" xml:"CertDetail,omitempty" type:"Struct"`
-	CertId              *string                                                       `json:"CertId,omitempty" xml:"CertId,omitempty"`
-	CertRegionId        *string                                                       `json:"CertRegionId,omitempty" xml:"CertRegionId,omitempty"`
-	ClusterId           *string                                                       `json:"ClusterId,omitempty" xml:"ClusterId,omitempty"`
-	ClusterName         *string                                                       `json:"ClusterName,omitempty" xml:"ClusterName,omitempty"`
-	CreationTime        *string                                                       `json:"CreationTime,omitempty" xml:"CreationTime,omitempty"`
-	Data                []*ListK8sSecretsResponseBodyResultSecretsData                `json:"Data,omitempty" xml:"Data,omitempty" type:"Repeated"`
-	Name                *string                                                       `json:"Name,omitempty" xml:"Name,omitempty"`
-	Namespace           *string                                                       `json:"Namespace,omitempty" xml:"Namespace,omitempty"`
-	RelatedApps         []*ListK8sSecretsResponseBodyResultSecretsRelatedApps         `json:"RelatedApps,omitempty" xml:"RelatedApps,omitempty" type:"Repeated"`
+	// Indicates whether the data is Base64-encoded. Valid values:
+	//
+	// *   true: The data is Base64-encoded.
+	// *   false: The data is not Base64-encoded.
+	Base64Encoded *bool `json:"Base64Encoded,omitempty" xml:"Base64Encoded,omitempty"`
+	// The details of the Secure Sockets Layer (SSL) certificate.
+	CertDetail *ListK8sSecretsResponseBodyResultSecretsCertDetail `json:"CertDetail,omitempty" xml:"CertDetail,omitempty" type:"Struct"`
+	// The ID of the certificate provided by Alibaba Cloud Certificate Management Service.
+	CertId *string `json:"CertId,omitempty" xml:"CertId,omitempty"`
+	// The region in which the certificate is stored.
+	CertRegionId *string `json:"CertRegionId,omitempty" xml:"CertRegionId,omitempty"`
+	// The ID of the cluster in Enterprise Distributed Application Service (EDAS).
+	ClusterId *string `json:"ClusterId,omitempty" xml:"ClusterId,omitempty"`
+	// The name of the cluster.
+	ClusterName *string `json:"ClusterName,omitempty" xml:"ClusterName,omitempty"`
+	// The time when the Secret was created. The time follows the ISO 8601 standard in the *yyyy-MM-dd*T*hh:mm:ss*Z format. The time is displayed in UTC.
+	CreationTime *string `json:"CreationTime,omitempty" xml:"CreationTime,omitempty"`
+	// The data of the Kubernetes Secret.
+	Data []*ListK8sSecretsResponseBodyResultSecretsData `json:"Data,omitempty" xml:"Data,omitempty" type:"Repeated"`
+	// The name of the Secret. The name must start with a letter, and can contain digits, letters, and hyphens (-). It can be up to 63 characters in length.
+	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// The namespace of the Kubernetes cluster.
+	Namespace *string `json:"Namespace,omitempty" xml:"Namespace,omitempty"`
+	// Applications that use the Secret.
+	RelatedApps []*ListK8sSecretsResponseBodyResultSecretsRelatedApps `json:"RelatedApps,omitempty" xml:"RelatedApps,omitempty" type:"Repeated"`
+	// Rules in the Ingress that is associated with the Secret.
 	RelatedIngressRules []*ListK8sSecretsResponseBodyResultSecretsRelatedIngressRules `json:"RelatedIngressRules,omitempty" xml:"RelatedIngressRules,omitempty" type:"Repeated"`
-	Type                *string                                                       `json:"Type,omitempty" xml:"Type,omitempty"`
+	// The type of the Secret. Valid values:
+	//
+	// *   Opaque: user-defined data
+	// *   kubernetes.io/tls: Transport Layer Security (TLS) certificate
+	Type *string `json:"Type,omitempty" xml:"Type,omitempty"`
 }
 
 func (s ListK8sSecretsResponseBodyResultSecrets) String() string {
@@ -16794,11 +19998,22 @@ func (s *ListK8sSecretsResponseBodyResultSecrets) SetType(v string) *ListK8sSecr
 }
 
 type ListK8sSecretsResponseBodyResultSecretsCertDetail struct {
+	// Domain names that are associated with the SSL certificate.
 	DomainNames []*string `json:"DomainNames,omitempty" xml:"DomainNames,omitempty" type:"Repeated"`
-	EndTime     *string   `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
-	Issuer      *string   `json:"Issuer,omitempty" xml:"Issuer,omitempty"`
-	StartTime   *string   `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
-	Status      *string   `json:"Status,omitempty" xml:"Status,omitempty"`
+	// The time when the SSL certificate expired.
+	EndTime *string `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
+	// The certificate authority (CA) that issued the SSL certificate.
+	Issuer *string `json:"Issuer,omitempty" xml:"Issuer,omitempty"`
+	// The time when the SSL certificate started to take effect.
+	StartTime *string `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
+	// The state of the SSL certificate. Valid values:
+	//
+	// *   normal: The SSL certificate is valid.
+	// *   invalid: The SSL certificate is invalid.
+	// *   expired: The SSL certificate has expired.
+	// *   not_yet_valid: The SSL certificate is currently invalid.
+	// *   about_to_expire: The SSL certificate is about to expire.
+	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
 }
 
 func (s ListK8sSecretsResponseBodyResultSecretsCertDetail) String() string {
@@ -16835,7 +20050,9 @@ func (s *ListK8sSecretsResponseBodyResultSecretsCertDetail) SetStatus(v string) 
 }
 
 type ListK8sSecretsResponseBodyResultSecretsData struct {
-	Key   *string `json:"Key,omitempty" xml:"Key,omitempty"`
+	// The user-defined key of the Kubernetes Secret.
+	Key *string `json:"Key,omitempty" xml:"Key,omitempty"`
+	// The user-defined value of the Kubernetes Secret.
 	Value *string `json:"Value,omitempty" xml:"Value,omitempty"`
 }
 
@@ -16858,7 +20075,9 @@ func (s *ListK8sSecretsResponseBodyResultSecretsData) SetValue(v string) *ListK8
 }
 
 type ListK8sSecretsResponseBodyResultSecretsRelatedApps struct {
-	AppId   *string `json:"AppId,omitempty" xml:"AppId,omitempty"`
+	// The ID of the application.
+	AppId *string `json:"AppId,omitempty" xml:"AppId,omitempty"`
+	// The name of the application.
 	AppName *string `json:"AppName,omitempty" xml:"AppName,omitempty"`
 }
 
@@ -16881,8 +20100,11 @@ func (s *ListK8sSecretsResponseBodyResultSecretsRelatedApps) SetAppName(v string
 }
 
 type ListK8sSecretsResponseBodyResultSecretsRelatedIngressRules struct {
-	Name        *string                                                                  `json:"Name,omitempty" xml:"Name,omitempty"`
-	Namespace   *string                                                                  `json:"Namespace,omitempty" xml:"Namespace,omitempty"`
+	// The name of the rule in the Ingress.
+	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// The namespaces of the Kubernetes cluster.
+	Namespace *string `json:"Namespace,omitempty" xml:"Namespace,omitempty"`
+	// Aplications that are associated with the Ingress.
 	RelatedApps []*ListK8sSecretsResponseBodyResultSecretsRelatedIngressRulesRelatedApps `json:"RelatedApps,omitempty" xml:"RelatedApps,omitempty" type:"Repeated"`
 }
 
@@ -16910,7 +20132,9 @@ func (s *ListK8sSecretsResponseBodyResultSecretsRelatedIngressRules) SetRelatedA
 }
 
 type ListK8sSecretsResponseBodyResultSecretsRelatedIngressRulesRelatedApps struct {
-	AppId   *string `json:"AppId,omitempty" xml:"AppId,omitempty"`
+	// The ID of the application.
+	AppId *string `json:"AppId,omitempty" xml:"AppId,omitempty"`
+	// The name of the EDAS application.
 	AppName *string `json:"AppName,omitempty" xml:"AppName,omitempty"`
 }
 
@@ -16962,7 +20186,9 @@ func (s *ListK8sSecretsResponse) SetBody(v *ListK8sSecretsResponseBody) *ListK8s
 }
 
 type ListMethodsRequest struct {
-	AppId       *string `json:"AppId,omitempty" xml:"AppId,omitempty"`
+	// The ID of the application.
+	AppId *string `json:"AppId,omitempty" xml:"AppId,omitempty"`
+	// The name of the service.
 	ServiceName *string `json:"ServiceName,omitempty" xml:"ServiceName,omitempty"`
 }
 
@@ -16985,9 +20211,13 @@ func (s *ListMethodsRequest) SetServiceName(v string) *ListMethodsRequest {
 }
 
 type ListMethodsResponseBody struct {
-	Code              *int32                                    `json:"Code,omitempty" xml:"Code,omitempty"`
-	Message           *string                                   `json:"Message,omitempty" xml:"Message,omitempty"`
-	RequestId         *string                                   `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The HTTP status code that is returned.
+	Code *int32 `json:"Code,omitempty" xml:"Code,omitempty"`
+	// The returned message that indicates whether the request is successful.
+	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// The ID of the request.
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The information about service methods.
 	ServiceMethodList *ListMethodsResponseBodyServiceMethodList `json:"ServiceMethodList,omitempty" xml:"ServiceMethodList,omitempty" type:"Struct"`
 }
 
@@ -17037,12 +20267,16 @@ func (s *ListMethodsResponseBodyServiceMethodList) SetServiceMethod(v []*ListMet
 }
 
 type ListMethodsResponseBodyServiceMethodListServiceMethod struct {
+	// The name of the application.
 	AppName     *string                                                           `json:"AppName,omitempty" xml:"AppName,omitempty"`
 	InputParams *ListMethodsResponseBodyServiceMethodListServiceMethodInputParams `json:"InputParams,omitempty" xml:"InputParams,omitempty" type:"Struct"`
-	MethodName  *string                                                           `json:"MethodName,omitempty" xml:"MethodName,omitempty"`
-	Output      *string                                                           `json:"Output,omitempty" xml:"Output,omitempty"`
-	ParamTypes  *ListMethodsResponseBodyServiceMethodListServiceMethodParamTypes  `json:"ParamTypes,omitempty" xml:"ParamTypes,omitempty" type:"Struct"`
-	ServiceName *string                                                           `json:"ServiceName,omitempty" xml:"ServiceName,omitempty"`
+	// The name of the service method.
+	MethodName *string `json:"MethodName,omitempty" xml:"MethodName,omitempty"`
+	// The return type of the service method.
+	Output     *string                                                          `json:"Output,omitempty" xml:"Output,omitempty"`
+	ParamTypes *ListMethodsResponseBodyServiceMethodListServiceMethodParamTypes `json:"ParamTypes,omitempty" xml:"ParamTypes,omitempty" type:"Struct"`
+	// The name of the service.
+	ServiceName *string `json:"ServiceName,omitempty" xml:"ServiceName,omitempty"`
 }
 
 func (s ListMethodsResponseBodyServiceMethodListServiceMethod) String() string {
@@ -17147,6 +20381,7 @@ func (s *ListMethodsResponse) SetBody(v *ListMethodsResponseBody) *ListMethodsRe
 }
 
 type ListPublishedServicesRequest struct {
+	// The ID of the application.
 	AppId *string `json:"AppId,omitempty" xml:"AppId,omitempty"`
 }
 
@@ -17164,10 +20399,14 @@ func (s *ListPublishedServicesRequest) SetAppId(v string) *ListPublishedServices
 }
 
 type ListPublishedServicesResponseBody struct {
-	Code                  *int32                                                  `json:"Code,omitempty" xml:"Code,omitempty"`
-	Message               *string                                                 `json:"Message,omitempty" xml:"Message,omitempty"`
+	// The HTTP status code that is returned.
+	Code *int32 `json:"Code,omitempty" xml:"Code,omitempty"`
+	// The message that is returned.
+	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// The published services.
 	PublishedServicesList *ListPublishedServicesResponseBodyPublishedServicesList `json:"PublishedServicesList,omitempty" xml:"PublishedServicesList,omitempty" type:"Struct"`
-	RequestId             *string                                                 `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The ID of the request.
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
 func (s ListPublishedServicesResponseBody) String() string {
@@ -17216,14 +20455,23 @@ func (s *ListPublishedServicesResponseBodyPublishedServicesList) SetListPublishe
 }
 
 type ListPublishedServicesResponseBodyPublishedServicesListListPublishedServices struct {
-	AppId             *string                                                                            `json:"AppId,omitempty" xml:"AppId,omitempty"`
-	DockerApplication *bool                                                                              `json:"DockerApplication,omitempty" xml:"DockerApplication,omitempty"`
-	Group2Ip          *string                                                                            `json:"Group2Ip,omitempty" xml:"Group2Ip,omitempty"`
-	Groups            *ListPublishedServicesResponseBodyPublishedServicesListListPublishedServicesGroups `json:"Groups,omitempty" xml:"Groups,omitempty" type:"Struct"`
-	Ips               *ListPublishedServicesResponseBodyPublishedServicesListListPublishedServicesIps    `json:"Ips,omitempty" xml:"Ips,omitempty" type:"Struct"`
-	Name              *string                                                                            `json:"Name,omitempty" xml:"Name,omitempty"`
-	Type              *string                                                                            `json:"Type,omitempty" xml:"Type,omitempty"`
-	Version           *string                                                                            `json:"Version,omitempty" xml:"Version,omitempty"`
+	// The ID of the application.
+	AppId *string `json:"AppId,omitempty" xml:"AppId,omitempty"`
+	// Indicates whether the application runs in a Docker container. Valid values:
+	//
+	// *   true: The application runs in a Docker container.
+	// *   false: The application does not run in a Docker container.
+	DockerApplication *bool `json:"DockerApplication,omitempty" xml:"DockerApplication,omitempty"`
+	// A reserved parameter.
+	Group2Ip *string                                                                            `json:"Group2Ip,omitempty" xml:"Group2Ip,omitempty"`
+	Groups   *ListPublishedServicesResponseBodyPublishedServicesListListPublishedServicesGroups `json:"Groups,omitempty" xml:"Groups,omitempty" type:"Struct"`
+	Ips      *ListPublishedServicesResponseBodyPublishedServicesListListPublishedServicesIps    `json:"Ips,omitempty" xml:"Ips,omitempty" type:"Struct"`
+	// The name of the published service.
+	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// The type of the published service.
+	Type *string `json:"Type,omitempty" xml:"Type,omitempty"`
+	// The version of the published services.
+	Version *string `json:"Version,omitempty" xml:"Version,omitempty"`
 }
 
 func (s ListPublishedServicesResponseBodyPublishedServicesListListPublishedServices) String() string {
@@ -17338,6 +20586,7 @@ func (s *ListPublishedServicesResponse) SetBody(v *ListPublishedServicesResponse
 }
 
 type ListRecentChangeOrderRequest struct {
+	// The ID of the application.
 	AppId *string `json:"AppId,omitempty" xml:"AppId,omitempty"`
 }
 
@@ -17355,10 +20604,14 @@ func (s *ListRecentChangeOrderRequest) SetAppId(v string) *ListRecentChangeOrder
 }
 
 type ListRecentChangeOrderResponseBody struct {
+	// The information about change processes.
 	ChangeOrderList *ListRecentChangeOrderResponseBodyChangeOrderList `json:"ChangeOrderList,omitempty" xml:"ChangeOrderList,omitempty" type:"Struct"`
-	Code            *int32                                            `json:"Code,omitempty" xml:"Code,omitempty"`
-	Message         *string                                           `json:"Message,omitempty" xml:"Message,omitempty"`
-	RequestId       *string                                           `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The HTTP status code that is returned.
+	Code *int32 `json:"Code,omitempty" xml:"Code,omitempty"`
+	// The additional information that is returned.
+	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// The ID of the request.
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
 func (s ListRecentChangeOrderResponseBody) String() string {
@@ -17407,20 +20660,49 @@ func (s *ListRecentChangeOrderResponseBodyChangeOrderList) SetChangeOrder(v []*L
 }
 
 type ListRecentChangeOrderResponseBodyChangeOrderListChangeOrder struct {
-	AppId                  *string `json:"AppId,omitempty" xml:"AppId,omitempty"`
-	BatchCount             *int32  `json:"BatchCount,omitempty" xml:"BatchCount,omitempty"`
-	BatchType              *string `json:"BatchType,omitempty" xml:"BatchType,omitempty"`
+	// The ID of the application.
+	AppId *string `json:"AppId,omitempty" xml:"AppId,omitempty"`
+	// The number of batches for the change. Valid values: 1 to 5.
+	BatchCount *int32 `json:"BatchCount,omitempty" xml:"BatchCount,omitempty"`
+	// The way in which the next batch is triggered during a phased release. Valid values:
+	//
+	// *   Automatic
+	// *   Manual
+	BatchType *string `json:"BatchType,omitempty" xml:"BatchType,omitempty"`
+	// The description of the change process.
 	ChangeOrderDescription *string `json:"ChangeOrderDescription,omitempty" xml:"ChangeOrderDescription,omitempty"`
-	ChangeOrderId          *string `json:"ChangeOrderId,omitempty" xml:"ChangeOrderId,omitempty"`
-	CoType                 *string `json:"CoType,omitempty" xml:"CoType,omitempty"`
-	CoTypeCode             *string `json:"CoTypeCode,omitempty" xml:"CoTypeCode,omitempty"`
-	CreateTime             *string `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
-	CreateUserId           *string `json:"CreateUserId,omitempty" xml:"CreateUserId,omitempty"`
-	FinishTime             *string `json:"FinishTime,omitempty" xml:"FinishTime,omitempty"`
-	GroupId                *string `json:"GroupId,omitempty" xml:"GroupId,omitempty"`
-	Source                 *string `json:"Source,omitempty" xml:"Source,omitempty"`
-	Status                 *int32  `json:"Status,omitempty" xml:"Status,omitempty"`
-	UserId                 *string `json:"UserId,omitempty" xml:"UserId,omitempty"`
+	// The unique ID of the change process.
+	ChangeOrderId *string `json:"ChangeOrderId,omitempty" xml:"ChangeOrderId,omitempty"`
+	// The type of the change process.
+	CoType *string `json:"CoType,omitempty" xml:"CoType,omitempty"`
+	// The type of the change process.
+	CoTypeCode *string `json:"CoTypeCode,omitempty" xml:"CoTypeCode,omitempty"`
+	// The time when the change process was created.
+	CreateTime *string `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
+	// The user who created the change process.
+	CreateUserId *string `json:"CreateUserId,omitempty" xml:"CreateUserId,omitempty"`
+	// The time when the change process ended.
+	FinishTime *string `json:"FinishTime,omitempty" xml:"FinishTime,omitempty"`
+	// The ID of the application instance group on which the change was performed.
+	GroupId *string `json:"GroupId,omitempty" xml:"GroupId,omitempty"`
+	// The source of the change. Valid values:
+	//
+	// *   console: the Enterprise Distributed Application Service (EDAS) console
+	// *   pop: the POP API or tool
+	Source *string `json:"Source,omitempty" xml:"Source,omitempty"`
+	// The state of the change process. Valid values:
+	//
+	// *   0: ready to start execution
+	// *   1: in progress
+	// *   2: successful
+	// *   3: failed
+	// *   6: terminated
+	// *   8: waiting for manual confirmation (You can see the state when you manually confirm the execution of the next batch of the change.)
+	// *   9: waiting for automatic execution
+	// *   10: failed due to a system error
+	Status *int32 `json:"Status,omitempty" xml:"Status,omitempty"`
+	// The ID of the user who created the change process.
+	UserId *string `json:"UserId,omitempty" xml:"UserId,omitempty"`
 }
 
 func (s ListRecentChangeOrderResponseBodyChangeOrderListChangeOrder) String() string {
@@ -17531,9 +20813,13 @@ func (s *ListRecentChangeOrderResponse) SetBody(v *ListRecentChangeOrderResponse
 }
 
 type ListResourceGroupResponseBody struct {
-	Code              *int32                                          `json:"Code,omitempty" xml:"Code,omitempty"`
-	Message           *string                                         `json:"Message,omitempty" xml:"Message,omitempty"`
-	RequestId         *string                                         `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The HTTP status code that is returned.
+	Code *int32 `json:"Code,omitempty" xml:"Code,omitempty"`
+	// The additional information that is returned.
+	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// The ID of the request.
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// For more information about how to define a resource group, see ResGroupEntity.
 	ResourceGroupList *ListResourceGroupResponseBodyResourceGroupList `json:"ResourceGroupList,omitempty" xml:"ResourceGroupList,omitempty" type:"Struct"`
 }
 
@@ -17583,15 +20869,24 @@ func (s *ListResourceGroupResponseBodyResourceGroupList) SetResGroupEntity(v []*
 }
 
 type ListResourceGroupResponseBodyResourceGroupListResGroupEntity struct {
-	AdminUserId *string                                                              `json:"AdminUserId,omitempty" xml:"AdminUserId,omitempty"`
-	CreateTime  *int64                                                               `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
-	Description *string                                                              `json:"Description,omitempty" xml:"Description,omitempty"`
-	Id          *int64                                                               `json:"Id,omitempty" xml:"Id,omitempty"`
-	Name        *string                                                              `json:"Name,omitempty" xml:"Name,omitempty"`
-	RegionId    *string                                                              `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	SlbList     *ListResourceGroupResponseBodyResourceGroupListResGroupEntitySlbList `json:"SlbList,omitempty" xml:"SlbList,omitempty" type:"Struct"`
-	UpdateTime  *int64                                                               `json:"UpdateTime,omitempty" xml:"UpdateTime,omitempty"`
-	EcsList     *ListResourceGroupResponseBodyResourceGroupListResGroupEntityEcsList `json:"ecsList,omitempty" xml:"ecsList,omitempty" type:"Struct"`
+	// The UID of the Alibaba Cloud account.
+	AdminUserId *string `json:"AdminUserId,omitempty" xml:"AdminUserId,omitempty"`
+	// The time when the resource group was created. This value is a UNIX timestamp representing the number of milliseconds that have elapsed since the epoch time January 1, 1970, 00:00:00 UTC.
+	CreateTime *int64 `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
+	// The description of the resource group.
+	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
+	// The ID of the resource group.
+	Id *int64 `json:"Id,omitempty" xml:"Id,omitempty"`
+	// The name of the resource group.
+	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// The ID of the region where the resource group belongs.
+	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	// The Server Load Balancer (SLB) instances.
+	SlbList *ListResourceGroupResponseBodyResourceGroupListResGroupEntitySlbList `json:"SlbList,omitempty" xml:"SlbList,omitempty" type:"Struct"`
+	// The time when the resource group was updated. This value is a UNIX timestamp representing the number of milliseconds that have elapsed since the epoch time January 1, 1970, 00:00:00 UTC.
+	UpdateTime *int64 `json:"UpdateTime,omitempty" xml:"UpdateTime,omitempty"`
+	// The Elastic Compute Service (ECS) instances.
+	EcsList *ListResourceGroupResponseBodyResourceGroupListResGroupEntityEcsList `json:"ecsList,omitempty" xml:"ecsList,omitempty" type:"Struct"`
 }
 
 func (s ListResourceGroupResponseBodyResourceGroupListResGroupEntity) String() string {
@@ -17665,18 +20960,39 @@ func (s *ListResourceGroupResponseBodyResourceGroupListResGroupEntitySlbList) Se
 }
 
 type ListResourceGroupResponseBodyResourceGroupListResGroupEntitySlbListSlbEntity struct {
-	Address     *string `json:"Address,omitempty" xml:"Address,omitempty"`
+	// The IP address of the SLB instance.
+	Address *string `json:"Address,omitempty" xml:"Address,omitempty"`
+	// The type of the IP address of the SLB instance. Valid values:
+	//
+	// *   Internet: Users can connect to the SLB instance over the Internet.
+	// *   Intranet: Users can connect to the SLB instance over the internal network.
 	AddressType *string `json:"AddressType,omitempty" xml:"AddressType,omitempty"`
-	Expired     *bool   `json:"Expired,omitempty" xml:"Expired,omitempty"`
-	GroupId     *int32  `json:"GroupId,omitempty" xml:"GroupId,omitempty"`
+	// Indicates whether the SLB instance has expired. Valid values:
+	//
+	// *   true: The SLB instance has expired.
+	// *   false: The SLB instance has not expired.
+	Expired *bool `json:"Expired,omitempty" xml:"Expired,omitempty"`
+	// The ID of the group to which the SLB instance belongs.
+	GroupId *int32 `json:"GroupId,omitempty" xml:"GroupId,omitempty"`
+	// The network type of the SLB instance. Valid values:
+	//
+	// *   Classic network
+	// *   VPC
 	NetworkType *string `json:"NetworkType,omitempty" xml:"NetworkType,omitempty"`
-	RegionId    *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	SlbId       *string `json:"SlbId,omitempty" xml:"SlbId,omitempty"`
-	SlbName     *string `json:"SlbName,omitempty" xml:"SlbName,omitempty"`
-	SlbStatus   *string `json:"SlbStatus,omitempty" xml:"SlbStatus,omitempty"`
-	UserId      *string `json:"UserId,omitempty" xml:"UserId,omitempty"`
-	VpcId       *string `json:"VpcId,omitempty" xml:"VpcId,omitempty"`
-	VswitchId   *string `json:"VswitchId,omitempty" xml:"VswitchId,omitempty"`
+	// The ID of the region.
+	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	// The unique ID of the SLB instance.
+	SlbId *string `json:"SlbId,omitempty" xml:"SlbId,omitempty"`
+	// The name of the SLB instance.
+	SlbName *string `json:"SlbName,omitempty" xml:"SlbName,omitempty"`
+	// The status of the SLB instance.
+	SlbStatus *string `json:"SlbStatus,omitempty" xml:"SlbStatus,omitempty"`
+	// The UID of the Alibaba Cloud account.
+	UserId *string `json:"UserId,omitempty" xml:"UserId,omitempty"`
+	// The ID of the VPC.
+	VpcId *string `json:"VpcId,omitempty" xml:"VpcId,omitempty"`
+	// The ID of the vSwitch.
+	VswitchId *string `json:"VswitchId,omitempty" xml:"VswitchId,omitempty"`
 }
 
 func (s ListResourceGroupResponseBodyResourceGroupListResGroupEntitySlbListSlbEntity) String() string {
@@ -17765,27 +21081,57 @@ func (s *ListResourceGroupResponseBodyResourceGroupListResGroupEntityEcsList) Se
 }
 
 type ListResourceGroupResponseBodyResourceGroupListResGroupEntityEcsListEcsEntity struct {
-	Cpu          *int32                                                                                 `json:"Cpu,omitempty" xml:"Cpu,omitempty"`
-	Description  *string                                                                                `json:"Description,omitempty" xml:"Description,omitempty"`
-	EcuEntity    *ListResourceGroupResponseBodyResourceGroupListResGroupEntityEcsListEcsEntityEcuEntity `json:"EcuEntity,omitempty" xml:"EcuEntity,omitempty" type:"Struct"`
-	Eip          *string                                                                                `json:"Eip,omitempty" xml:"Eip,omitempty"`
-	Expired      *bool                                                                                  `json:"Expired,omitempty" xml:"Expired,omitempty"`
-	GroupId      *string                                                                                `json:"GroupId,omitempty" xml:"GroupId,omitempty"`
-	HostName     *string                                                                                `json:"HostName,omitempty" xml:"HostName,omitempty"`
-	InnerIp      *string                                                                                `json:"InnerIp,omitempty" xml:"InnerIp,omitempty"`
-	InstanceId   *string                                                                                `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	InstanceName *string                                                                                `json:"InstanceName,omitempty" xml:"InstanceName,omitempty"`
-	Mem          *int32                                                                                 `json:"Mem,omitempty" xml:"Mem,omitempty"`
-	PrivateIp    *string                                                                                `json:"PrivateIp,omitempty" xml:"PrivateIp,omitempty"`
-	PublicIp     *string                                                                                `json:"PublicIp,omitempty" xml:"PublicIp,omitempty"`
-	RegionId     *string                                                                                `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	SerialNum    *string                                                                                `json:"SerialNum,omitempty" xml:"SerialNum,omitempty"`
-	SgId         *string                                                                                `json:"SgId,omitempty" xml:"SgId,omitempty"`
-	Status       *string                                                                                `json:"Status,omitempty" xml:"Status,omitempty"`
-	UserId       *string                                                                                `json:"UserId,omitempty" xml:"UserId,omitempty"`
-	VpcEntity    *ListResourceGroupResponseBodyResourceGroupListResGroupEntityEcsListEcsEntityVpcEntity `json:"VpcEntity,omitempty" xml:"VpcEntity,omitempty" type:"Struct"`
-	VpcId        *string                                                                                `json:"VpcId,omitempty" xml:"VpcId,omitempty"`
-	ZoneId       *string                                                                                `json:"ZoneId,omitempty" xml:"ZoneId,omitempty"`
+	// The total number of CPU cores.
+	Cpu *int32 `json:"Cpu,omitempty" xml:"Cpu,omitempty"`
+	// The description of the ECS instance.
+	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
+	// The elastic compute unit (ECU) that corresponds to the ECS instance.
+	EcuEntity *ListResourceGroupResponseBodyResourceGroupListResGroupEntityEcsListEcsEntityEcuEntity `json:"EcuEntity,omitempty" xml:"EcuEntity,omitempty" type:"Struct"`
+	// The elastic IP address (EIP).
+	Eip *string `json:"Eip,omitempty" xml:"Eip,omitempty"`
+	// Indicates whether the ECS instance has expired. Valid values:
+	//
+	// *   true: The ECS instance has expired.
+	// *   false: The ECS instance has not expired.
+	Expired *bool `json:"Expired,omitempty" xml:"Expired,omitempty"`
+	// The ID of the resource group in Enterprise Distributed Application Service (EDAS).
+	GroupId *string `json:"GroupId,omitempty" xml:"GroupId,omitempty"`
+	// The name of the host.
+	HostName *string `json:"HostName,omitempty" xml:"HostName,omitempty"`
+	// The private IP address.
+	InnerIp *string `json:"InnerIp,omitempty" xml:"InnerIp,omitempty"`
+	// The ID of the ECS instance.
+	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	// The name of the ECS instance.
+	InstanceName *string `json:"InstanceName,omitempty" xml:"InstanceName,omitempty"`
+	// The total size of memory. Unit: MB.
+	Mem *int32 `json:"Mem,omitempty" xml:"Mem,omitempty"`
+	// The private IP address of the ECS instance.
+	PrivateIp *string `json:"PrivateIp,omitempty" xml:"PrivateIp,omitempty"`
+	// The public IP address.
+	PublicIp *string `json:"PublicIp,omitempty" xml:"PublicIp,omitempty"`
+	// The ID of the region.
+	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	// The serial number of the ECS instance.
+	SerialNum *string `json:"SerialNum,omitempty" xml:"SerialNum,omitempty"`
+	// The ID of the security group.
+	SgId *string `json:"SgId,omitempty" xml:"SgId,omitempty"`
+	// The status of the ECS instance. Valid values:
+	//
+	// *   Pending: The ECS instance is being created.
+	// *   Running: The ECS instance is running.
+	// *   Starting: The ECS instance is being started.
+	// *   Stopping: The ECS instance is being stopped.
+	// *   Stopped: The ECS instance is stopped.
+	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
+	// The ID of the user account.
+	UserId *string `json:"UserId,omitempty" xml:"UserId,omitempty"`
+	// The VPCs.
+	VpcEntity *ListResourceGroupResponseBodyResourceGroupListResGroupEntityEcsListEcsEntityVpcEntity `json:"VpcEntity,omitempty" xml:"VpcEntity,omitempty" type:"Struct"`
+	// The unique ID of the virtual private cloud (VPC).
+	VpcId *string `json:"VpcId,omitempty" xml:"VpcId,omitempty"`
+	// The ID of the zone.
+	ZoneId *string `json:"ZoneId,omitempty" xml:"ZoneId,omitempty"`
 }
 
 func (s ListResourceGroupResponseBodyResourceGroupListResGroupEntityEcsListEcsEntity) String() string {
@@ -17902,23 +21248,46 @@ func (s *ListResourceGroupResponseBodyResourceGroupListResGroupEntityEcsListEcsE
 }
 
 type ListResourceGroupResponseBodyResourceGroupListResGroupEntityEcsListEcsEntityEcuEntity struct {
-	AvailableCpu  *int32  `json:"AvailableCpu,omitempty" xml:"AvailableCpu,omitempty"`
-	AvailableMem  *int32  `json:"AvailableMem,omitempty" xml:"AvailableMem,omitempty"`
-	Cpu           *int32  `json:"Cpu,omitempty" xml:"Cpu,omitempty"`
-	CreateTime    *int64  `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
-	DockerEnv     *bool   `json:"DockerEnv,omitempty" xml:"DockerEnv,omitempty"`
-	EcuId         *string `json:"EcuId,omitempty" xml:"EcuId,omitempty"`
-	HeartbeatTime *int64  `json:"HeartbeatTime,omitempty" xml:"HeartbeatTime,omitempty"`
-	InstanceId    *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	IpAddr        *string `json:"IpAddr,omitempty" xml:"IpAddr,omitempty"`
-	Mem           *int32  `json:"Mem,omitempty" xml:"Mem,omitempty"`
-	Name          *string `json:"Name,omitempty" xml:"Name,omitempty"`
-	Online        *bool   `json:"Online,omitempty" xml:"Online,omitempty"`
-	RegionId      *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	UpdateTime    *int64  `json:"UpdateTime,omitempty" xml:"UpdateTime,omitempty"`
-	UserId        *string `json:"UserId,omitempty" xml:"UserId,omitempty"`
-	VpcId         *string `json:"VpcId,omitempty" xml:"VpcId,omitempty"`
-	ZoneId        *string `json:"ZoneId,omitempty" xml:"ZoneId,omitempty"`
+	// The number of available CPUs.
+	AvailableCpu *int32 `json:"AvailableCpu,omitempty" xml:"AvailableCpu,omitempty"`
+	// The size of the available memory.
+	AvailableMem *int32 `json:"AvailableMem,omitempty" xml:"AvailableMem,omitempty"`
+	// The total number of CPU cores.
+	Cpu *int32 `json:"Cpu,omitempty" xml:"Cpu,omitempty"`
+	// The time when the ECU was created. This value is a UNIX timestamp representing the number of milliseconds that have elapsed since the epoch time January 1, 1970, 00:00:00 UTC.
+	CreateTime *int64 `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
+	// Indicates whether Docker is installed. Valid values:
+	//
+	// *   true: Docker is installed.
+	// *   false: Docker is not installed.
+	DockerEnv *bool `json:"DockerEnv,omitempty" xml:"DockerEnv,omitempty"`
+	// The unique ID of the elastic compute unit (ECU). You can run the `dmidecode` command on the ECS instance to query the ECU ID.
+	EcuId *string `json:"EcuId,omitempty" xml:"EcuId,omitempty"`
+	// The time when the last heartbeat detection was performed. This value is a UNIX timestamp representing the number of milliseconds that have elapsed since the epoch time January 1, 1970, 00:00:00 UTC.
+	HeartbeatTime *int64 `json:"HeartbeatTime,omitempty" xml:"HeartbeatTime,omitempty"`
+	// The ID of the instance.
+	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	// The private IP address of the ECU.
+	IpAddr *string `json:"IpAddr,omitempty" xml:"IpAddr,omitempty"`
+	// The total size of memory. Unit: MB.
+	Mem *int32 `json:"Mem,omitempty" xml:"Mem,omitempty"`
+	// The name of the ECU.
+	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// Indicates whether the ECU is online. Valid values:
+	//
+	// *   true: The ECU is online.
+	// *   false: The ECU is offline.
+	Online *bool `json:"Online,omitempty" xml:"Online,omitempty"`
+	// The ID of the region.
+	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	// The time when the ECU was updated. This value is a UNIX timestamp representing the number of milliseconds that have elapsed since the epoch time January 1, 1970, 00:00:00 UTC.
+	UpdateTime *int64 `json:"UpdateTime,omitempty" xml:"UpdateTime,omitempty"`
+	// The ID of the user associated with the ECU.
+	UserId *string `json:"UserId,omitempty" xml:"UserId,omitempty"`
+	// The ID of the VPC.
+	VpcId *string `json:"VpcId,omitempty" xml:"VpcId,omitempty"`
+	// The ID of the zone.
+	ZoneId *string `json:"ZoneId,omitempty" xml:"ZoneId,omitempty"`
 }
 
 func (s ListResourceGroupResponseBodyResourceGroupListResGroupEntityEcsListEcsEntityEcuEntity) String() string {
@@ -18015,15 +21384,27 @@ func (s *ListResourceGroupResponseBodyResourceGroupListResGroupEntityEcsListEcsE
 }
 
 type ListResourceGroupResponseBodyResourceGroupListResGroupEntityEcsListEcsEntityVpcEntity struct {
-	Cidrblock   *string `json:"Cidrblock,omitempty" xml:"Cidrblock,omitempty"`
+	// The IPv4 CIDR block of the vSwitch.
+	Cidrblock *string `json:"Cidrblock,omitempty" xml:"Cidrblock,omitempty"`
+	// The description of the VPC.
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
-	EcsNum      *int32  `json:"EcsNum,omitempty" xml:"EcsNum,omitempty"`
-	Expired     *bool   `json:"Expired,omitempty" xml:"Expired,omitempty"`
-	RegionId    *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	Status      *string `json:"Status,omitempty" xml:"Status,omitempty"`
-	UserId      *string `json:"UserId,omitempty" xml:"UserId,omitempty"`
-	VpcId       *string `json:"VpcId,omitempty" xml:"VpcId,omitempty"`
-	VpcName     *string `json:"VpcName,omitempty" xml:"VpcName,omitempty"`
+	// The number of ECS instances that run in the VPC.
+	EcsNum *int32 `json:"EcsNum,omitempty" xml:"EcsNum,omitempty"`
+	// Indicates whether the VPC has expired. Valid values:
+	//
+	// *   true: The VPC has expired.
+	// *   false: The VPC has not expired.
+	Expired *bool `json:"Expired,omitempty" xml:"Expired,omitempty"`
+	// The ID of the region.
+	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	// The status of the VPC.
+	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
+	// The ID of the user.
+	UserId *string `json:"UserId,omitempty" xml:"UserId,omitempty"`
+	// The unique ID of the VPC.
+	VpcId *string `json:"VpcId,omitempty" xml:"VpcId,omitempty"`
+	// The name of the VPC.
+	VpcName *string `json:"VpcName,omitempty" xml:"VpcName,omitempty"`
 }
 
 func (s ListResourceGroupResponseBodyResourceGroupListResGroupEntityEcsListEcsEntityVpcEntity) String() string {
@@ -18109,10 +21490,14 @@ func (s *ListResourceGroupResponse) SetBody(v *ListResourceGroupResponseBody) *L
 }
 
 type ListRoleResponseBody struct {
-	Code      *int32                        `json:"Code,omitempty" xml:"Code,omitempty"`
-	Message   *string                       `json:"Message,omitempty" xml:"Message,omitempty"`
-	RequestId *string                       `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	RoleList  *ListRoleResponseBodyRoleList `json:"RoleList,omitempty" xml:"RoleList,omitempty" type:"Struct"`
+	// The HTTP status code that is returned.
+	Code *int32 `json:"Code,omitempty" xml:"Code,omitempty"`
+	// The additional information that is returned.
+	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// The ID of the request.
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The roles.
+	RoleList *ListRoleResponseBodyRoleList `json:"RoleList,omitempty" xml:"RoleList,omitempty" type:"Struct"`
 }
 
 func (s ListRoleResponseBody) String() string {
@@ -18161,8 +21546,10 @@ func (s *ListRoleResponseBodyRoleList) SetRoleItem(v []*ListRoleResponseBodyRole
 }
 
 type ListRoleResponseBodyRoleListRoleItem struct {
+	// The set of permissions to be granted to the role.
 	ActionList *ListRoleResponseBodyRoleListRoleItemActionList `json:"ActionList,omitempty" xml:"ActionList,omitempty" type:"Struct"`
-	Role       *ListRoleResponseBodyRoleListRoleItemRole       `json:"Role,omitempty" xml:"Role,omitempty" type:"Struct"`
+	// The roles.
+	Role *ListRoleResponseBodyRoleListRoleItemRole `json:"Role,omitempty" xml:"Role,omitempty" type:"Struct"`
 }
 
 func (s ListRoleResponseBodyRoleListRoleItem) String() string {
@@ -18201,10 +21588,14 @@ func (s *ListRoleResponseBodyRoleListRoleItemActionList) SetAction(v []*ListRole
 }
 
 type ListRoleResponseBodyRoleListRoleItemActionListAction struct {
-	Code        *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	// The serial number of the permission that is granted to the role.
+	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	// The description of the permission to be granted to the role.
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
-	GroupId     *string `json:"GroupId,omitempty" xml:"GroupId,omitempty"`
-	Name        *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// The ID of the permission group to which the permission that is granted to the role belongs.
+	GroupId *string `json:"GroupId,omitempty" xml:"GroupId,omitempty"`
+	// The name of the permission to be granted to the role.
+	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
 }
 
 func (s ListRoleResponseBodyRoleListRoleItemActionListAction) String() string {
@@ -18236,12 +21627,18 @@ func (s *ListRoleResponseBodyRoleListRoleItemActionListAction) SetName(v string)
 }
 
 type ListRoleResponseBodyRoleListRoleItemRole struct {
+	// The ID of the Alibaba Cloud account.
 	AdminUserId *string `json:"AdminUserId,omitempty" xml:"AdminUserId,omitempty"`
-	CreateTime  *int64  `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
-	Id          *int32  `json:"Id,omitempty" xml:"Id,omitempty"`
-	IsDefault   *bool   `json:"IsDefault,omitempty" xml:"IsDefault,omitempty"`
-	Name        *string `json:"Name,omitempty" xml:"Name,omitempty"`
-	UpdateTime  *int64  `json:"UpdateTime,omitempty" xml:"UpdateTime,omitempty"`
+	// The timestamp when the role was created. This value is a UNIX timestamp representing the number of milliseconds that have elapsed since January 1, 1970, 00:00:00 UTC.
+	CreateTime *int64 `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
+	// The ID of the role.
+	Id *int32 `json:"Id,omitempty" xml:"Id,omitempty"`
+	// Indicates whether the role is a default role.
+	IsDefault *bool `json:"IsDefault,omitempty" xml:"IsDefault,omitempty"`
+	// The name of the role.
+	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// The timestamp when the role was last modified. This value is a UNIX timestamp representing the number of milliseconds that have elapsed since January 1, 1970, 00:00:00 UTC.
+	UpdateTime *int64 `json:"UpdateTime,omitempty" xml:"UpdateTime,omitempty"`
 }
 
 func (s ListRoleResponseBodyRoleListRoleItemRole) String() string {
@@ -18312,13 +21709,27 @@ func (s *ListRoleResponse) SetBody(v *ListRoleResponseBody) *ListRoleResponse {
 }
 
 type ListScaleOutEcuRequest struct {
-	AppId           *string `json:"AppId,omitempty" xml:"AppId,omitempty"`
-	ClusterId       *string `json:"ClusterId,omitempty" xml:"ClusterId,omitempty"`
-	Cpu             *int32  `json:"Cpu,omitempty" xml:"Cpu,omitempty"`
-	GroupId         *string `json:"GroupId,omitempty" xml:"GroupId,omitempty"`
-	InstanceNum     *int32  `json:"InstanceNum,omitempty" xml:"InstanceNum,omitempty"`
+	// The ID of the application. Specify this parameter if you want to query the available ECUs in the cluster where the application is deployed.
+	//
+	// >  Specify at least one of the ClusterId and AppId parameters as the query parameter.
+	AppId *string `json:"AppId,omitempty" xml:"AppId,omitempty"`
+	// The ID of the cluster. Specify this parameter if you want to query the available ECUs in the cluster.
+	//
+	// > Specify at least one of the ClusterId and AppId parameters as the query parameter.
+	ClusterId *string `json:"ClusterId,omitempty" xml:"ClusterId,omitempty"`
+	// The number of CPU cores based on which you want to query the available ECUs in the cluster.
+	Cpu *int32 `json:"Cpu,omitempty" xml:"Cpu,omitempty"`
+	// The ID of the instance group. Specify this parameter if you want to query the available ECUs in the cluster where the instance group resides.
+	GroupId *string `json:"GroupId,omitempty" xml:"GroupId,omitempty"`
+	// The number of ECUs that you want to query. If this parameter is not specified, all the ECUs that meet the query conditions are returned.
+	InstanceNum *int32 `json:"InstanceNum,omitempty" xml:"InstanceNum,omitempty"`
+	// The ID of the namespace.
+	//
+	// *   The ID of a custom namespace is in the `region ID:namespace identifier` format. Example: cn-beijing:test.
+	// *   The ID of the default namespace is in the `region ID` format. Example: cn-beijing.
 	LogicalRegionId *string `json:"LogicalRegionId,omitempty" xml:"LogicalRegionId,omitempty"`
-	Mem             *int32  `json:"Mem,omitempty" xml:"Mem,omitempty"`
+	// The size of available memory based on which you want to query the available ECUs in the cluster. Unit: MB.
+	Mem *int32 `json:"Mem,omitempty" xml:"Mem,omitempty"`
 }
 
 func (s ListScaleOutEcuRequest) String() string {
@@ -18365,10 +21776,14 @@ func (s *ListScaleOutEcuRequest) SetMem(v int32) *ListScaleOutEcuRequest {
 }
 
 type ListScaleOutEcuResponseBody struct {
-	Code        *int32                                  `json:"Code,omitempty" xml:"Code,omitempty"`
+	// The HTTP status code that is returned.
+	Code *int32 `json:"Code,omitempty" xml:"Code,omitempty"`
+	// The ECUs.
 	EcuInfoList *ListScaleOutEcuResponseBodyEcuInfoList `json:"EcuInfoList,omitempty" xml:"EcuInfoList,omitempty" type:"Struct"`
-	Message     *string                                 `json:"Message,omitempty" xml:"Message,omitempty"`
-	RequestId   *string                                 `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The additional information that is returned.
+	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// The ID of the request.
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
 func (s ListScaleOutEcuResponseBody) String() string {
@@ -18417,21 +21832,42 @@ func (s *ListScaleOutEcuResponseBodyEcuInfoList) SetEcuInfo(v []*ListScaleOutEcu
 }
 
 type ListScaleOutEcuResponseBodyEcuInfoListEcuInfo struct {
-	AvailableCpu  *int32  `json:"AvailableCpu,omitempty" xml:"AvailableCpu,omitempty"`
-	AvailableMem  *int32  `json:"AvailableMem,omitempty" xml:"AvailableMem,omitempty"`
-	CreateTime    *int64  `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
-	DockerEnv     *bool   `json:"DockerEnv,omitempty" xml:"DockerEnv,omitempty"`
-	EcuId         *string `json:"EcuId,omitempty" xml:"EcuId,omitempty"`
-	HeartbeatTime *int64  `json:"HeartbeatTime,omitempty" xml:"HeartbeatTime,omitempty"`
-	InstanceId    *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	IpAddr        *string `json:"IpAddr,omitempty" xml:"IpAddr,omitempty"`
-	Name          *string `json:"Name,omitempty" xml:"Name,omitempty"`
-	Online        *bool   `json:"Online,omitempty" xml:"Online,omitempty"`
-	RegionId      *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	UpdateTime    *int64  `json:"UpdateTime,omitempty" xml:"UpdateTime,omitempty"`
-	UserId        *string `json:"UserId,omitempty" xml:"UserId,omitempty"`
-	VpcId         *string `json:"VpcId,omitempty" xml:"VpcId,omitempty"`
-	ZoneId        *string `json:"ZoneId,omitempty" xml:"ZoneId,omitempty"`
+	// The number of available CPU cores for the ECU.
+	AvailableCpu *int32 `json:"AvailableCpu,omitempty" xml:"AvailableCpu,omitempty"`
+	// The size of available memory for the ECU. Unit: MB.
+	AvailableMem *int32 `json:"AvailableMem,omitempty" xml:"AvailableMem,omitempty"`
+	// The time when the ECU was created. This value is a UNIX timestamp representing the number of milliseconds that have elapsed since the epoch time January 1, 1970, 00:00:00 UTC.
+	CreateTime *int64 `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
+	// Indicates whether Docker is installed. Valid values:
+	//
+	// *   true: Docker is installed.
+	// *   false: Docker is not installed.
+	DockerEnv *bool `json:"DockerEnv,omitempty" xml:"DockerEnv,omitempty"`
+	// The unique ID of the ECU. To query the ID, you can run the `dmidecode` command on the ECS instance that corresponds to the ECU.
+	EcuId *string `json:"EcuId,omitempty" xml:"EcuId,omitempty"`
+	// The time when the last heartbeat detection was performed. This value is a UNIX timestamp representing the number of milliseconds that have elapsed since the epoch time January 1, 1970, 00:00:00 UTC.
+	HeartbeatTime *int64 `json:"HeartbeatTime,omitempty" xml:"HeartbeatTime,omitempty"`
+	// The ID of the ECU.
+	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	// The private IP address of the ECU.
+	IpAddr *string `json:"IpAddr,omitempty" xml:"IpAddr,omitempty"`
+	// The name of the ECU.
+	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// Indicates whether the ECU is online. If the ECU is online, its corresponding ECS instance is managed in EDAS. Valid values:
+	//
+	// *   true: The ECU is online.
+	// *   false: The ECU is offline.
+	Online *bool `json:"Online,omitempty" xml:"Online,omitempty"`
+	// The ID of the region where the ECU is located.
+	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	// The time when the ECU was last updated. This value is a UNIX timestamp representing the number of milliseconds that have elapsed since the epoch time January 1, 1970, 00:00:00 UTC.
+	UpdateTime *int64 `json:"UpdateTime,omitempty" xml:"UpdateTime,omitempty"`
+	// The ID of the Alibaba Cloud account to which the ECU belongs.
+	UserId *string `json:"UserId,omitempty" xml:"UserId,omitempty"`
+	// The ID of the virtual private cloud (VPC) where the ECU is located.
+	VpcId *string `json:"VpcId,omitempty" xml:"VpcId,omitempty"`
+	// The ID of the zone where the ECU resides.
+	ZoneId *string `json:"ZoneId,omitempty" xml:"ZoneId,omitempty"`
 }
 
 func (s ListScaleOutEcuResponseBodyEcuInfoListEcuInfo) String() string {
@@ -18547,9 +21983,13 @@ func (s *ListScaleOutEcuResponse) SetBody(v *ListScaleOutEcuResponseBody) *ListS
 }
 
 type ListServiceGroupsResponseBody struct {
-	Code              *int32                                          `json:"Code,omitempty" xml:"Code,omitempty"`
-	Message           *string                                         `json:"Message,omitempty" xml:"Message,omitempty"`
-	RequestId         *string                                         `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The HTTP status code that is returned.
+	Code *int32 `json:"Code,omitempty" xml:"Code,omitempty"`
+	// The message that is returned.
+	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// The ID of the request.
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The information about service groups.
 	ServiceGroupsList *ListServiceGroupsResponseBodyServiceGroupsList `json:"ServiceGroupsList,omitempty" xml:"ServiceGroupsList,omitempty" type:"Struct"`
 }
 
@@ -18599,9 +22039,12 @@ func (s *ListServiceGroupsResponseBodyServiceGroupsList) SetListServiceGroups(v 
 }
 
 type ListServiceGroupsResponseBodyServiceGroupsListListServiceGroups struct {
+	// The time when the service group was created. This value is a UNIX timestamp representing the number of milliseconds that have elapsed since the epoch time January 1, 1970, 00:00:00 UTC.
 	CreateTime *string `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
-	GroupId    *string `json:"GroupId,omitempty" xml:"GroupId,omitempty"`
-	GroupName  *string `json:"GroupName,omitempty" xml:"GroupName,omitempty"`
+	// The ID of the service group.
+	GroupId *string `json:"GroupId,omitempty" xml:"GroupId,omitempty"`
+	// The name of the service group.
+	GroupName *string `json:"GroupName,omitempty" xml:"GroupName,omitempty"`
 }
 
 func (s ListServiceGroupsResponseBodyServiceGroupsListListServiceGroups) String() string {
@@ -18657,9 +22100,18 @@ func (s *ListServiceGroupsResponse) SetBody(v *ListServiceGroupsResponseBody) *L
 }
 
 type ListSlbRequest struct {
+	// The type of the IP addresses. Valid values:
+	//
+	// *   Internet: Users can connect to the SLB instance over the Internet.
+	// *   Intranet: Users can connect to the SLB instance over the internal network.
 	AddressType *string `json:"AddressType,omitempty" xml:"AddressType,omitempty"`
-	SlbType     *string `json:"SlbType,omitempty" xml:"SlbType,omitempty"`
-	VpcId       *string `json:"VpcId,omitempty" xml:"VpcId,omitempty"`
+	// The type of the SLB instance. Valid values:
+	//
+	// *   clb: Classic Load Balancer (CLB)
+	// *   alb: Application Load Balancer (ALB)
+	SlbType *string `json:"SlbType,omitempty" xml:"SlbType,omitempty"`
+	// The ID of the virtual private cloud (VPC).
+	VpcId *string `json:"VpcId,omitempty" xml:"VpcId,omitempty"`
 }
 
 func (s ListSlbRequest) String() string {
@@ -18686,10 +22138,14 @@ func (s *ListSlbRequest) SetVpcId(v string) *ListSlbRequest {
 }
 
 type ListSlbResponseBody struct {
-	Code      *int32                      `json:"Code,omitempty" xml:"Code,omitempty"`
-	Message   *string                     `json:"Message,omitempty" xml:"Message,omitempty"`
-	RequestId *string                     `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	SlbList   *ListSlbResponseBodySlbList `json:"SlbList,omitempty" xml:"SlbList,omitempty" type:"Struct"`
+	// The HTTP status code that is returned.
+	Code *int32 `json:"Code,omitempty" xml:"Code,omitempty"`
+	// The additional information that is returned.
+	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// The ID of the request.
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The list of SLB instances.
+	SlbList *ListSlbResponseBodySlbList `json:"SlbList,omitempty" xml:"SlbList,omitempty" type:"Struct"`
 }
 
 func (s ListSlbResponseBody) String() string {
@@ -18738,20 +22194,43 @@ func (s *ListSlbResponseBodySlbList) SetSlbEntity(v []*ListSlbResponseBodySlbLis
 }
 
 type ListSlbResponseBodySlbListSlbEntity struct {
-	Address     *string `json:"Address,omitempty" xml:"Address,omitempty"`
+	// The IP address of the SLB instance.
+	Address *string `json:"Address,omitempty" xml:"Address,omitempty"`
+	// The type of the IP addresses. Valid values:
+	//
+	// *   internet: Users can connect to the SLB instance over the Internet.
+	// *   intranet: Users can connect to the SLB instance over the internal network.
 	AddressType *string `json:"AddressType,omitempty" xml:"AddressType,omitempty"`
-	Expired     *bool   `json:"Expired,omitempty" xml:"Expired,omitempty"`
-	GroupId     *int32  `json:"GroupId,omitempty" xml:"GroupId,omitempty"`
+	// Indicates whether the SLB instance has expired. Valid values:
+	//
+	// *   true: The SLB instance has expired.
+	// *   false: The SLB instance has not expired.
+	Expired *bool `json:"Expired,omitempty" xml:"Expired,omitempty"`
+	// The ID of the resource group in Enterprise Distributed Application Service (EDAS).
+	GroupId *int32 `json:"GroupId,omitempty" xml:"GroupId,omitempty"`
+	// The type of the network.
 	NetworkType *string `json:"NetworkType,omitempty" xml:"NetworkType,omitempty"`
-	RegionId    *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	Reusable    *bool   `json:"Reusable,omitempty" xml:"Reusable,omitempty"`
-	SlbId       *string `json:"SlbId,omitempty" xml:"SlbId,omitempty"`
-	SlbName     *string `json:"SlbName,omitempty" xml:"SlbName,omitempty"`
-	SlbStatus   *string `json:"SlbStatus,omitempty" xml:"SlbStatus,omitempty"`
-	Tags        *string `json:"Tags,omitempty" xml:"Tags,omitempty"`
-	UserId      *string `json:"UserId,omitempty" xml:"UserId,omitempty"`
-	VpcId       *string `json:"VpcId,omitempty" xml:"VpcId,omitempty"`
-	VswitchId   *string `json:"VswitchId,omitempty" xml:"VswitchId,omitempty"`
+	// The ID of the region.
+	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	// Indicates whether Kubernetes applications can be reused. Valid values:
+	//
+	// *   true: Kubernetes applications can be reused.
+	// *   false: Kubernetes applications cannot be reused.
+	Reusable *bool `json:"Reusable,omitempty" xml:"Reusable,omitempty"`
+	// The ID of the SLB instance.
+	SlbId *string `json:"SlbId,omitempty" xml:"SlbId,omitempty"`
+	// The name of the SLB instance.
+	SlbName *string `json:"SlbName,omitempty" xml:"SlbName,omitempty"`
+	// The status of the SLB instance.
+	SlbStatus *string `json:"SlbStatus,omitempty" xml:"SlbStatus,omitempty"`
+	// The tag of the SLB instance.
+	Tags *string `json:"Tags,omitempty" xml:"Tags,omitempty"`
+	// The ID of the user.
+	UserId *string `json:"UserId,omitempty" xml:"UserId,omitempty"`
+	// The ID of the VPC.
+	VpcId *string `json:"VpcId,omitempty" xml:"VpcId,omitempty"`
+	// The ID of the vSwitch in the VPC.
+	VswitchId *string `json:"VswitchId,omitempty" xml:"VswitchId,omitempty"`
 }
 
 func (s ListSlbResponseBodySlbListSlbEntity) String() string {
@@ -18862,9 +22341,13 @@ func (s *ListSlbResponse) SetBody(v *ListSlbResponseBody) *ListSlbResponse {
 }
 
 type ListSubAccountResponseBody struct {
-	Code           *int32                                    `json:"Code,omitempty" xml:"Code,omitempty"`
-	Message        *string                                   `json:"Message,omitempty" xml:"Message,omitempty"`
-	RequestId      *string                                   `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The HTTP status code that is returned.
+	Code *int32 `json:"Code,omitempty" xml:"Code,omitempty"`
+	// The additional information that is returned.
+	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// The ID of the request.
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The RAM users.
 	SubAccountList *ListSubAccountResponseBodySubAccountList `json:"SubAccountList,omitempty" xml:"SubAccountList,omitempty" type:"Struct"`
 }
 
@@ -18914,14 +22397,22 @@ func (s *ListSubAccountResponseBodySubAccountList) SetSubAccount(v []*ListSubAcc
 }
 
 type ListSubAccountResponseBodySubAccountListSubAccount struct {
+	// The ID of the Alibaba Cloud account. This ID is generated by EDAS.
 	AdminEdasId *string `json:"AdminEdasId,omitempty" xml:"AdminEdasId,omitempty"`
+	// The ID of the Alibaba Cloud account.
 	AdminUserId *string `json:"AdminUserId,omitempty" xml:"AdminUserId,omitempty"`
+	// This parameter is the same as the AdminEdasId parameter. This parameter is deprecated.
 	AdminUserKp *string `json:"AdminUserKp,omitempty" xml:"AdminUserKp,omitempty"`
-	Email       *string `json:"Email,omitempty" xml:"Email,omitempty"`
-	Phone       *string `json:"Phone,omitempty" xml:"Phone,omitempty"`
-	SubEdasId   *string `json:"SubEdasId,omitempty" xml:"SubEdasId,omitempty"`
-	SubUserId   *string `json:"SubUserId,omitempty" xml:"SubUserId,omitempty"`
-	SubUserKp   *string `json:"SubUserKp,omitempty" xml:"SubUserKp,omitempty"`
+	// The email address of the RAM user.
+	Email *string `json:"Email,omitempty" xml:"Email,omitempty"`
+	// The contact information of the RAM user.
+	Phone *string `json:"Phone,omitempty" xml:"Phone,omitempty"`
+	// The ID of the RAM user. This ID is generated by Enterprise Distributed Application Service (EDAS).
+	SubEdasId *string `json:"SubEdasId,omitempty" xml:"SubEdasId,omitempty"`
+	// The ID of the RAM user.
+	SubUserId *string `json:"SubUserId,omitempty" xml:"SubUserId,omitempty"`
+	// This parameter is the same as the SubEdasId parameter. This parameter is deprecated.
+	SubUserKp *string `json:"SubUserKp,omitempty" xml:"SubUserKp,omitempty"`
 }
 
 func (s ListSubAccountResponseBodySubAccountListSubAccount) String() string {
@@ -19002,6 +22493,7 @@ func (s *ListSubAccountResponse) SetBody(v *ListSubAccountResponseBody) *ListSub
 }
 
 type ListSwimmingLaneRequest struct {
+	// The ID of the lane group.
 	GroupId *int64 `json:"GroupId,omitempty" xml:"GroupId,omitempty"`
 }
 
@@ -19019,10 +22511,14 @@ func (s *ListSwimmingLaneRequest) SetGroupId(v int64) *ListSwimmingLaneRequest {
 }
 
 type ListSwimmingLaneResponseBody struct {
-	Code      *int32                              `json:"Code,omitempty" xml:"Code,omitempty"`
-	Data      []*ListSwimmingLaneResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Repeated"`
-	Message   *string                             `json:"Message,omitempty" xml:"Message,omitempty"`
-	RequestId *string                             `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The HTTP status code that is returned.
+	Code *int32 `json:"Code,omitempty" xml:"Code,omitempty"`
+	// The data that is returned.
+	Data []*ListSwimmingLaneResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Repeated"`
+	// The additional information that is returned.
+	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// The ID of the request.
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
 func (s ListSwimmingLaneResponseBody) String() string {
@@ -19054,15 +22550,24 @@ func (s *ListSwimmingLaneResponseBody) SetRequestId(v string) *ListSwimmingLaneR
 }
 
 type ListSwimmingLaneResponseBodyData struct {
-	EnableRules                     *bool                                                              `json:"EnableRules,omitempty" xml:"EnableRules,omitempty"`
-	EntryRule                       *string                                                            `json:"EntryRule,omitempty" xml:"EntryRule,omitempty"`
-	GroupId                         *int64                                                             `json:"GroupId,omitempty" xml:"GroupId,omitempty"`
-	Id                              *int64                                                             `json:"Id,omitempty" xml:"Id,omitempty"`
-	Name                            *string                                                            `json:"Name,omitempty" xml:"Name,omitempty"`
-	NamespaceId                     *string                                                            `json:"NamespaceId,omitempty" xml:"NamespaceId,omitempty"`
-	ScenarioSign                    *string                                                            `json:"ScenarioSign,omitempty" xml:"ScenarioSign,omitempty"`
+	// Indicates whether the throttling rule is enabled.
+	EnableRules *bool `json:"EnableRules,omitempty" xml:"EnableRules,omitempty"`
+	// The conditions.
+	EntryRule *string `json:"EntryRule,omitempty" xml:"EntryRule,omitempty"`
+	// The ID of the lane group.
+	GroupId *int64 `json:"GroupId,omitempty" xml:"GroupId,omitempty"`
+	// The ID of the lane.
+	Id *int64 `json:"Id,omitempty" xml:"Id,omitempty"`
+	// The name of the lane.
+	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// The ID of the microservices namespace.
+	NamespaceId *string `json:"NamespaceId,omitempty" xml:"NamespaceId,omitempty"`
+	// The expected tag.
+	ScenarioSign *string `json:"ScenarioSign,omitempty" xml:"ScenarioSign,omitempty"`
+	// The applications that are related to the lane.
 	SwimmingLaneAppRelationShipList []*ListSwimmingLaneResponseBodyDataSwimmingLaneAppRelationShipList `json:"SwimmingLaneAppRelationShipList,omitempty" xml:"SwimmingLaneAppRelationShipList,omitempty" type:"Repeated"`
-	Tag                             *string                                                            `json:"Tag,omitempty" xml:"Tag,omitempty"`
+	// The tag.
+	Tag *string `json:"Tag,omitempty" xml:"Tag,omitempty"`
 }
 
 func (s ListSwimmingLaneResponseBodyData) String() string {
@@ -19119,10 +22624,15 @@ func (s *ListSwimmingLaneResponseBodyData) SetTag(v string) *ListSwimmingLaneRes
 }
 
 type ListSwimmingLaneResponseBodyDataSwimmingLaneAppRelationShipList struct {
-	AppId   *string `json:"AppId,omitempty" xml:"AppId,omitempty"`
+	// The ID of the application.
+	AppId *string `json:"AppId,omitempty" xml:"AppId,omitempty"`
+	// The name of the application.
 	AppName *string `json:"AppName,omitempty" xml:"AppName,omitempty"`
-	LaneId  *int64  `json:"LaneId,omitempty" xml:"LaneId,omitempty"`
-	Rules   *string `json:"Rules,omitempty" xml:"Rules,omitempty"`
+	Extra   *string `json:"Extra,omitempty" xml:"Extra,omitempty"`
+	// The ID of the lane.
+	LaneId *int64 `json:"LaneId,omitempty" xml:"LaneId,omitempty"`
+	// The association rule.
+	Rules *string `json:"Rules,omitempty" xml:"Rules,omitempty"`
 }
 
 func (s ListSwimmingLaneResponseBodyDataSwimmingLaneAppRelationShipList) String() string {
@@ -19140,6 +22650,11 @@ func (s *ListSwimmingLaneResponseBodyDataSwimmingLaneAppRelationShipList) SetApp
 
 func (s *ListSwimmingLaneResponseBodyDataSwimmingLaneAppRelationShipList) SetAppName(v string) *ListSwimmingLaneResponseBodyDataSwimmingLaneAppRelationShipList {
 	s.AppName = &v
+	return s
+}
+
+func (s *ListSwimmingLaneResponseBodyDataSwimmingLaneAppRelationShipList) SetExtra(v string) *ListSwimmingLaneResponseBodyDataSwimmingLaneAppRelationShipList {
+	s.Extra = &v
 	return s
 }
 
@@ -19183,7 +22698,12 @@ func (s *ListSwimmingLaneResponse) SetBody(v *ListSwimmingLaneResponseBody) *Lis
 }
 
 type ListSwimmingLaneGroupRequest struct {
-	GroupId         *int64  `json:"GroupId,omitempty" xml:"GroupId,omitempty"`
+	// The ID of the lane group.
+	GroupId *int64 `json:"GroupId,omitempty" xml:"GroupId,omitempty"`
+	// The ID of the namespace.
+	//
+	// The ID of a custom namespace is in the region ID:namespace identifier format. Example: cn-beijing:test.\
+	// The ID of the default namespace is in the region ID format. Example: cn-beijing.
 	LogicalRegionId *string `json:"LogicalRegionId,omitempty" xml:"LogicalRegionId,omitempty"`
 }
 
@@ -19206,10 +22726,14 @@ func (s *ListSwimmingLaneGroupRequest) SetLogicalRegionId(v string) *ListSwimmin
 }
 
 type ListSwimmingLaneGroupResponseBody struct {
-	Code      *int32                                   `json:"Code,omitempty" xml:"Code,omitempty"`
-	Data      []*ListSwimmingLaneGroupResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Repeated"`
-	Message   *string                                  `json:"Message,omitempty" xml:"Message,omitempty"`
-	RequestId *string                                  `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The HTTP status code that is returned.
+	Code *int32 `json:"Code,omitempty" xml:"Code,omitempty"`
+	// The data of the lane group.
+	Data []*ListSwimmingLaneGroupResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Repeated"`
+	// The additional information that is returned.
+	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// The ID of the request.
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
 func (s ListSwimmingLaneGroupResponseBody) String() string {
@@ -19241,11 +22765,16 @@ func (s *ListSwimmingLaneGroupResponseBody) SetRequestId(v string) *ListSwimming
 }
 
 type ListSwimmingLaneGroupResponseBodyData struct {
-	ApplicationList  []*ListSwimmingLaneGroupResponseBodyDataApplicationList `json:"ApplicationList,omitempty" xml:"ApplicationList,omitempty" type:"Repeated"`
-	EntryApplication *ListSwimmingLaneGroupResponseBodyDataEntryApplication  `json:"EntryApplication,omitempty" xml:"EntryApplication,omitempty" type:"Struct"`
-	Id               *int64                                                  `json:"Id,omitempty" xml:"Id,omitempty"`
-	Name             *string                                                 `json:"Name,omitempty" xml:"Name,omitempty"`
-	NamespaceId      *string                                                 `json:"NamespaceId,omitempty" xml:"NamespaceId,omitempty"`
+	// The applications that are related to the lane group.
+	ApplicationList []*ListSwimmingLaneGroupResponseBodyDataApplicationList `json:"ApplicationList,omitempty" xml:"ApplicationList,omitempty" type:"Repeated"`
+	// The information about the Enterprise Distributed Application Service (EDAS) ingress gateway.
+	EntryApplication *ListSwimmingLaneGroupResponseBodyDataEntryApplication `json:"EntryApplication,omitempty" xml:"EntryApplication,omitempty" type:"Struct"`
+	// The ID of the lane group.
+	Id *int64 `json:"Id,omitempty" xml:"Id,omitempty"`
+	// The name of the lane group.
+	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// The ID of the microservices namespace.
+	NamespaceId *string `json:"NamespaceId,omitempty" xml:"NamespaceId,omitempty"`
 }
 
 func (s ListSwimmingLaneGroupResponseBodyData) String() string {
@@ -19282,7 +22811,9 @@ func (s *ListSwimmingLaneGroupResponseBodyData) SetNamespaceId(v string) *ListSw
 }
 
 type ListSwimmingLaneGroupResponseBodyDataApplicationList struct {
-	AppId   *string `json:"AppId,omitempty" xml:"AppId,omitempty"`
+	// The ID of the application.
+	AppId *string `json:"AppId,omitempty" xml:"AppId,omitempty"`
+	// The name of the application.
 	AppName *string `json:"AppName,omitempty" xml:"AppName,omitempty"`
 }
 
@@ -19305,9 +22836,12 @@ func (s *ListSwimmingLaneGroupResponseBodyDataApplicationList) SetAppName(v stri
 }
 
 type ListSwimmingLaneGroupResponseBodyDataEntryApplication struct {
-	AppId   *string `json:"AppId,omitempty" xml:"AppId,omitempty"`
+	// The ID of the application.
+	AppId *string `json:"AppId,omitempty" xml:"AppId,omitempty"`
+	// The name of the application.
 	AppName *string `json:"AppName,omitempty" xml:"AppName,omitempty"`
-	Source  *string `json:"Source,omitempty" xml:"Source,omitempty"`
+	// The data source. Set the value to EDAS.
+	Source *string `json:"Source,omitempty" xml:"Source,omitempty"`
 }
 
 func (s ListSwimmingLaneGroupResponseBodyDataEntryApplication) String() string {
@@ -19363,10 +22897,22 @@ func (s *ListSwimmingLaneGroupResponse) SetBody(v *ListSwimmingLaneGroupResponse
 }
 
 type ListTagResourcesRequest struct {
-	ResourceIds      map[string]interface{} `json:"ResourceIds,omitempty" xml:"ResourceIds,omitempty"`
-	ResourceRegionId *string                `json:"ResourceRegionId,omitempty" xml:"ResourceRegionId,omitempty"`
-	ResourceType     *string                `json:"ResourceType,omitempty" xml:"ResourceType,omitempty"`
-	Tags             map[string]interface{} `json:"Tags,omitempty" xml:"Tags,omitempty"`
+	// The IDs of the resources. You can specify up to 20 IDs. Set this parameter to a JSON array.
+	ResourceIds map[string]interface{} `json:"ResourceIds,omitempty" xml:"ResourceIds,omitempty"`
+	// The region in which the resource resides.
+	ResourceRegionId *string `json:"ResourceRegionId,omitempty" xml:"ResourceRegionId,omitempty"`
+	// The type of the resource. Valid values:
+	//
+	// *   **application**: Enterprise Distributed Application Service (EDAS) application
+	// *   **cluster**: EDAS cluster
+	ResourceType *string `json:"ResourceType,omitempty" xml:"ResourceType,omitempty"`
+	// The key-value pairs that specify the tags.
+	//
+	// *   You can add up to 20 tags to a resource.
+	// *   The key cannot start with **aliyun** or **acs:** and cannot contain **http://** or **https://**.
+	// *   The tag key or tag value can be up to 128 characters in length, and can contain letters, digits, hyphens (-), commas (,), asterisks (\*), forward slashes (/), question marks (?), and colons (:).
+	// *   Set this parameter to a JSON array.
+	Tags map[string]interface{} `json:"Tags,omitempty" xml:"Tags,omitempty"`
 }
 
 func (s ListTagResourcesRequest) String() string {
@@ -19398,9 +22944,13 @@ func (s *ListTagResourcesRequest) SetTags(v map[string]interface{}) *ListTagReso
 }
 
 type ListTagResourcesResponseBody struct {
-	Code         *int32                                    `json:"Code,omitempty" xml:"Code,omitempty"`
-	Message      *string                                   `json:"Message,omitempty" xml:"Message,omitempty"`
-	RequestId    *string                                   `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The HTTP status code that is returned.
+	Code *int32 `json:"Code,omitempty" xml:"Code,omitempty"`
+	// The message that is returned.
+	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// The ID of the request.
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The information about resource tags.
 	TagResources *ListTagResourcesResponseBodyTagResources `json:"TagResources,omitempty" xml:"TagResources,omitempty" type:"Struct"`
 }
 
@@ -19450,10 +23000,14 @@ func (s *ListTagResourcesResponseBodyTagResources) SetTagResource(v []*ListTagRe
 }
 
 type ListTagResourcesResponseBodyTagResourcesTagResource struct {
-	ResourceId   *string `json:"ResourceId,omitempty" xml:"ResourceId,omitempty"`
+	// The ID of the resource.
+	ResourceId *string `json:"ResourceId,omitempty" xml:"ResourceId,omitempty"`
+	// The type of the resource.
 	ResourceType *string `json:"ResourceType,omitempty" xml:"ResourceType,omitempty"`
-	TagKey       *string `json:"TagKey,omitempty" xml:"TagKey,omitempty"`
-	TagValue     *string `json:"TagValue,omitempty" xml:"TagValue,omitempty"`
+	// The tag key of the resource.
+	TagKey *string `json:"TagKey,omitempty" xml:"TagKey,omitempty"`
+	// The tag value of the resource.
+	TagValue *string `json:"TagValue,omitempty" xml:"TagValue,omitempty"`
 }
 
 func (s ListTagResourcesResponseBodyTagResourcesTagResource) String() string {
@@ -19514,6 +23068,7 @@ func (s *ListTagResourcesResponse) SetBody(v *ListTagResourcesResponseBody) *Lis
 }
 
 type ListUserDefineRegionRequest struct {
+	// Specifies whether remote debugging is allowed.
 	DebugEnable *bool `json:"DebugEnable,omitempty" xml:"DebugEnable,omitempty"`
 }
 
@@ -19531,9 +23086,13 @@ func (s *ListUserDefineRegionRequest) SetDebugEnable(v bool) *ListUserDefineRegi
 }
 
 type ListUserDefineRegionResponseBody struct {
-	Code                 *int32                                                `json:"Code,omitempty" xml:"Code,omitempty"`
-	Message              *string                                               `json:"Message,omitempty" xml:"Message,omitempty"`
-	RequestId            *string                                               `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The HTTP status code that is returned.
+	Code *int32 `json:"Code,omitempty" xml:"Code,omitempty"`
+	// The additional information that is returned.
+	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// The ID of the request.
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The namespaces.
 	UserDefineRegionList *ListUserDefineRegionResponseBodyUserDefineRegionList `json:"UserDefineRegionList,omitempty" xml:"UserDefineRegionList,omitempty" type:"Struct"`
 }
 
@@ -19583,13 +23142,29 @@ func (s *ListUserDefineRegionResponseBodyUserDefineRegionList) SetUserDefineRegi
 }
 
 type ListUserDefineRegionResponseBodyUserDefineRegionListUserDefineRegionEntity struct {
+	// The ID of the region to which the namespace belongs.
 	BelongRegion *string `json:"BelongRegion,omitempty" xml:"BelongRegion,omitempty"`
-	DebugEnable  *bool   `json:"DebugEnable,omitempty" xml:"DebugEnable,omitempty"`
-	Description  *string `json:"Description,omitempty" xml:"Description,omitempty"`
-	Id           *int64  `json:"Id,omitempty" xml:"Id,omitempty"`
-	RegionId     *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	RegionName   *string `json:"RegionName,omitempty" xml:"RegionName,omitempty"`
-	UserId       *string `json:"UserId,omitempty" xml:"UserId,omitempty"`
+	// Indicates whether remote debugging is allowed.
+	DebugEnable *bool `json:"DebugEnable,omitempty" xml:"DebugEnable,omitempty"`
+	// The description of the namespace.
+	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
+	// The unique identifier of the namespace.
+	Id *int64 `json:"Id,omitempty" xml:"Id,omitempty"`
+	// The type of the registry. Valid values:
+	//
+	// *   default: shared service registry of Enterprise Distributed Application Service (EDAS)
+	// *   exclusive_mse: Microservices Engine (MSE) Nacos registry
+	MseInstanceId *string `json:"MseInstanceId,omitempty" xml:"MseInstanceId,omitempty"`
+	// The ID of the namespace.
+	//
+	// > The ID cannot be changed after the namespace is created. The ID is in the `Physical region ID:Logical region identifier` format .
+	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	// The name of the namespace.
+	RegionName *string `json:"RegionName,omitempty" xml:"RegionName,omitempty"`
+	// The ID of the MSE instance.
+	RegistryType *string `json:"RegistryType,omitempty" xml:"RegistryType,omitempty"`
+	// The ID of the Alibaba Cloud account to which the namespace belongs.
+	UserId *string `json:"UserId,omitempty" xml:"UserId,omitempty"`
 }
 
 func (s ListUserDefineRegionResponseBodyUserDefineRegionListUserDefineRegionEntity) String() string {
@@ -19620,6 +23195,11 @@ func (s *ListUserDefineRegionResponseBodyUserDefineRegionListUserDefineRegionEnt
 	return s
 }
 
+func (s *ListUserDefineRegionResponseBodyUserDefineRegionListUserDefineRegionEntity) SetMseInstanceId(v string) *ListUserDefineRegionResponseBodyUserDefineRegionListUserDefineRegionEntity {
+	s.MseInstanceId = &v
+	return s
+}
+
 func (s *ListUserDefineRegionResponseBodyUserDefineRegionListUserDefineRegionEntity) SetRegionId(v string) *ListUserDefineRegionResponseBodyUserDefineRegionListUserDefineRegionEntity {
 	s.RegionId = &v
 	return s
@@ -19627,6 +23207,11 @@ func (s *ListUserDefineRegionResponseBodyUserDefineRegionListUserDefineRegionEnt
 
 func (s *ListUserDefineRegionResponseBodyUserDefineRegionListUserDefineRegionEntity) SetRegionName(v string) *ListUserDefineRegionResponseBodyUserDefineRegionListUserDefineRegionEntity {
 	s.RegionName = &v
+	return s
+}
+
+func (s *ListUserDefineRegionResponseBodyUserDefineRegionListUserDefineRegionEntity) SetRegistryType(v string) *ListUserDefineRegionResponseBodyUserDefineRegionListUserDefineRegionEntity {
+	s.RegistryType = &v
 	return s
 }
 
@@ -19665,10 +23250,16 @@ func (s *ListUserDefineRegionResponse) SetBody(v *ListUserDefineRegionResponseBo
 }
 
 type ListVpcResponseBody struct {
-	Code      *int32                      `json:"Code,omitempty" xml:"Code,omitempty"`
-	Message   *string                     `json:"Message,omitempty" xml:"Message,omitempty"`
-	RequestId *string                     `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	VpcList   *ListVpcResponseBodyVpcList `json:"VpcList,omitempty" xml:"VpcList,omitempty" type:"Struct"`
+	// The ID of the request.
+	Code *int32 `json:"Code,omitempty" xml:"Code,omitempty"`
+	// The information about VPCs.
+	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// The name of the VPC.
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// Indicates whether the VPC is available. Valid values:
+	// - true: The VPC is available.
+	// - false: The VPC is unavailable.
+	VpcList *ListVpcResponseBodyVpcList `json:"VpcList,omitempty" xml:"VpcList,omitempty" type:"Struct"`
 }
 
 func (s ListVpcResponseBody) String() string {
@@ -19717,12 +23308,19 @@ func (s *ListVpcResponseBodyVpcList) SetVpcEntity(v []*ListVpcResponseBodyVpcLis
 }
 
 type ListVpcResponseBodyVpcListVpcEntity struct {
-	EcsNum   *int32  `json:"EcsNum,omitempty" xml:"EcsNum,omitempty"`
-	Expired  *bool   `json:"Expired,omitempty" xml:"Expired,omitempty"`
+	// This operation uses only common request headers. For more information, see [Common parameters for API calls](~~123488~~).
+	EcsNum *int32 `json:"EcsNum,omitempty" xml:"EcsNum,omitempty"`
+	// The region ID of the VPC.
+	Expired *bool `json:"Expired,omitempty" xml:"Expired,omitempty"`
+	// No request parameters.
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	UserId   *string `json:"UserId,omitempty" xml:"UserId,omitempty"`
-	VpcId    *string `json:"VpcId,omitempty" xml:"VpcId,omitempty"`
-	VpcName  *string `json:"VpcName,omitempty" xml:"VpcName,omitempty"`
+	// GET /pop/v5/vpc_list HTTP/1.1
+	// Common request headers
+	UserId *string `json:"UserId,omitempty" xml:"UserId,omitempty"`
+	// The ID of the Alibaba Cloud account to which the VPC belongs.
+	VpcId *string `json:"VpcId,omitempty" xml:"VpcId,omitempty"`
+	// The number of ECS instances associated with the VPC.
+	VpcName *string `json:"VpcName,omitempty" xml:"VpcName,omitempty"`
 }
 
 func (s ListVpcResponseBodyVpcListVpcEntity) String() string {
@@ -19793,7 +23391,12 @@ func (s *ListVpcResponse) SetBody(v *ListVpcResponseBody) *ListVpcResponse {
 }
 
 type MigrateEcuRequest struct {
-	InstanceIds     *string `json:"InstanceIds,omitempty" xml:"InstanceIds,omitempty"`
+	// The ID of the ECS instance. Separate multiple IDs with commas (,).
+	InstanceIds *string `json:"InstanceIds,omitempty" xml:"InstanceIds,omitempty"`
+	// The ID of the custom namespace.
+	//
+	// *   The ID of a custom namespace is in the `region ID:custom namespace ID` format. Example: cn-beijing:tdy218.
+	// *   The ID of the default namespace is in the `region ID` format. Example: cn-beijing.
 	LogicalRegionId *string `json:"LogicalRegionId,omitempty" xml:"LogicalRegionId,omitempty"`
 }
 
@@ -19816,9 +23419,16 @@ func (s *MigrateEcuRequest) SetLogicalRegionId(v string) *MigrateEcuRequest {
 }
 
 type MigrateEcuResponseBody struct {
-	Code      *int32  `json:"Code,omitempty" xml:"Code,omitempty"`
-	Data      *string `json:"Data,omitempty" xml:"Data,omitempty"`
-	Message   *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// The HTTP status code that is returned.
+	Code *int32 `json:"Code,omitempty" xml:"Code,omitempty"`
+	// Indicates whether the request is successful. Valid values:
+	//
+	// *   true: The request is successful.
+	// *   false: The request fails.
+	Data *string `json:"Data,omitempty" xml:"Data,omitempty"`
+	// The additional information that is returned.
+	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// The ID of the request.
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -19880,36 +23490,86 @@ func (s *MigrateEcuResponse) SetBody(v *MigrateEcuResponseBody) *MigrateEcuRespo
 }
 
 type ModifyScalingRuleRequest struct {
-	AcceptEULA           *bool   `json:"AcceptEULA,omitempty" xml:"AcceptEULA,omitempty"`
-	AppId                *string `json:"AppId,omitempty" xml:"AppId,omitempty"`
-	GroupId              *string `json:"GroupId,omitempty" xml:"GroupId,omitempty"`
-	InCondition          *string `json:"InCondition,omitempty" xml:"InCondition,omitempty"`
-	InCpu                *int32  `json:"InCpu,omitempty" xml:"InCpu,omitempty"`
-	InDuration           *int32  `json:"InDuration,omitempty" xml:"InDuration,omitempty"`
-	InEnable             *bool   `json:"InEnable,omitempty" xml:"InEnable,omitempty"`
-	InInstanceNum        *int32  `json:"InInstanceNum,omitempty" xml:"InInstanceNum,omitempty"`
-	InLoad               *int32  `json:"InLoad,omitempty" xml:"InLoad,omitempty"`
-	InRT                 *int32  `json:"InRT,omitempty" xml:"InRT,omitempty"`
-	InStep               *int32  `json:"InStep,omitempty" xml:"InStep,omitempty"`
-	KeyPairName          *string `json:"KeyPairName,omitempty" xml:"KeyPairName,omitempty"`
-	MultiAzPolicy        *string `json:"MultiAzPolicy,omitempty" xml:"MultiAzPolicy,omitempty"`
-	OutCPU               *int32  `json:"OutCPU,omitempty" xml:"OutCPU,omitempty"`
-	OutCondition         *string `json:"OutCondition,omitempty" xml:"OutCondition,omitempty"`
-	OutDuration          *int32  `json:"OutDuration,omitempty" xml:"OutDuration,omitempty"`
-	OutEnable            *bool   `json:"OutEnable,omitempty" xml:"OutEnable,omitempty"`
-	OutInstanceNum       *int32  `json:"OutInstanceNum,omitempty" xml:"OutInstanceNum,omitempty"`
-	OutLoad              *int32  `json:"OutLoad,omitempty" xml:"OutLoad,omitempty"`
-	OutRT                *int32  `json:"OutRT,omitempty" xml:"OutRT,omitempty"`
-	OutStep              *int32  `json:"OutStep,omitempty" xml:"OutStep,omitempty"`
-	Password             *string `json:"Password,omitempty" xml:"Password,omitempty"`
-	ResourceFrom         *string `json:"ResourceFrom,omitempty" xml:"ResourceFrom,omitempty"`
-	ScalingPolicy        *string `json:"ScalingPolicy,omitempty" xml:"ScalingPolicy,omitempty"`
-	TemplateId           *string `json:"TemplateId,omitempty" xml:"TemplateId,omitempty"`
-	TemplateInstanceId   *string `json:"TemplateInstanceId,omitempty" xml:"TemplateInstanceId,omitempty"`
+	// Set the value to true if scale-outs are allowed.
+	AcceptEULA *bool `json:"AcceptEULA,omitempty" xml:"AcceptEULA,omitempty"`
+	// The ID of the application.
+	AppId *string `json:"AppId,omitempty" xml:"AppId,omitempty"`
+	// The ID of the instance group to which the application is deployed.
+	GroupId *string `json:"GroupId,omitempty" xml:"GroupId,omitempty"`
+	// The relationship among the conditions that trigger a scale-in.
+	//
+	// *   OR: one of the conditions
+	// *   AND: all conditions
+	InCondition *string `json:"InCondition,omitempty" xml:"InCondition,omitempty"`
+	// The CPU utilization that triggers a scale-in.
+	InCpu *int32 `json:"InCpu,omitempty" xml:"InCpu,omitempty"`
+	// The duration in which the metric threshold is exceeded. Unit: minutes.
+	InDuration *int32 `json:"InDuration,omitempty" xml:"InDuration,omitempty"`
+	// Specifies whether to allow scale-ins.
+	//
+	// *   true: allows scale-ins.
+	// *   false: does not allow scale-ins.
+	InEnable *bool `json:"InEnable,omitempty" xml:"InEnable,omitempty"`
+	// The minimum number of instances that must be retained in each group when a scale-in is performed.
+	InInstanceNum *int32 `json:"InInstanceNum,omitempty" xml:"InInstanceNum,omitempty"`
+	// The system load that triggers a scale-in.
+	InLoad *int32 `json:"InLoad,omitempty" xml:"InLoad,omitempty"`
+	// The minimum service latency that triggers a scale-in. The lower limit is 0. Unit: milliseconds.
+	InRT *int32 `json:"InRT,omitempty" xml:"InRT,omitempty"`
+	// The number of instances that are removed during each scale-in.
+	InStep *int32 `json:"InStep,omitempty" xml:"InStep,omitempty"`
+	// The key pair that is used to log on to the instance. This parameter takes effect only if you choose to create instances based on the specifications of an existing instance during a scale-out.
+	KeyPairName *string `json:"KeyPairName,omitempty" xml:"KeyPairName,omitempty"`
+	// The multi-zone scaling policy. Valid values:
+	//
+	// *   PRIORITY: The vSwitch that is first selected has the highest priority.
+	// *   BALANCE: This policy evenly distributes instances across zones in which the vSwitches reside.
+	MultiAzPolicy *string `json:"MultiAzPolicy,omitempty" xml:"MultiAzPolicy,omitempty"`
+	// The CPU utilization that triggers a scale-out.
+	OutCPU *int32 `json:"OutCPU,omitempty" xml:"OutCPU,omitempty"`
+	// The relationship among the conditions that trigger a scale-out.
+	//
+	// *   OR: one of the conditions
+	// *   AND: all conditions
+	OutCondition *string `json:"OutCondition,omitempty" xml:"OutCondition,omitempty"`
+	// The duration in which the metric threshold is exceeded. Unit: minutes.
+	OutDuration *int32 `json:"OutDuration,omitempty" xml:"OutDuration,omitempty"`
+	// Specifies whether to allow scale-outs.
+	OutEnable *bool `json:"OutEnable,omitempty" xml:"OutEnable,omitempty"`
+	// The maximum number of instances in each group when a scale-out is performed.
+	OutInstanceNum *int32 `json:"OutInstanceNum,omitempty" xml:"OutInstanceNum,omitempty"`
+	// The system load that triggers a scale-out.
+	OutLoad *int32 `json:"OutLoad,omitempty" xml:"OutLoad,omitempty"`
+	// The minimum service latency that triggers a scale-out. The lower limit is 0. Unit: milliseconds.
+	OutRT *int32 `json:"OutRT,omitempty" xml:"OutRT,omitempty"`
+	// The number of instances that are added during each scale-out.
+	OutStep *int32 `json:"OutStep,omitempty" xml:"OutStep,omitempty"`
+	// The password that is used to log on to the instance. This parameter takes effect only if you choose to create instances based on the specifications of an existing instance during a scale-out.
+	Password *string `json:"Password,omitempty" xml:"Password,omitempty"`
+	// The source of the instance to be added during a scale-out. Valid values:
+	//
+	// *   NEW: elastic resources
+	// *   AVAILABLE: existing resources If you prefer existing resources to elastic resources, set this parameter to AVAILABLE_FIRST.
+	//
+	// If you set this parameter to NEW or AVAILABLE_FIRST, you must specify the auto-scaling parameters. If you set this parameter to NEW, instances are created based on a launch template or the specifications of an existing instance.
+	ResourceFrom *string `json:"ResourceFrom,omitempty" xml:"ResourceFrom,omitempty"`
+	// The instance handling mode during a scale-in. Valid values:
+	//
+	// *   release: When a scale-in is performed, instances that are no longer used are released.
+	// *   recycle: When a scale-in is performed, instances that are no longer used are stopped and reclaimed.
+	ScalingPolicy *string `json:"ScalingPolicy,omitempty" xml:"ScalingPolicy,omitempty"`
+	// The ID of the launch template that is used to create instances during a scale-out. This parameter takes effect only if you set the OutEnable parameter to true. This parameter takes precedence over the TemplateInstanceId parameter.
+	TemplateId *string `json:"TemplateId,omitempty" xml:"TemplateId,omitempty"`
+	// The ID of the instance whose specifications are used to create instances during a scale-out. This parameter is valid only when you set the OutEnable parameter to true.
+	TemplateInstanceId *string `json:"TemplateInstanceId,omitempty" xml:"TemplateInstanceId,omitempty"`
+	// The name of the instance whose specifications are used to create instances during a scale-out. This parameter takes effect only if you specify the TemplateInstanceId parameter.
 	TemplateInstanceName *string `json:"TemplateInstanceName,omitempty" xml:"TemplateInstanceName,omitempty"`
-	TemplateVersion      *int32  `json:"TemplateVersion,omitempty" xml:"TemplateVersion,omitempty"`
-	VSwitchIds           *string `json:"VSwitchIds,omitempty" xml:"VSwitchIds,omitempty"`
-	VpcId                *string `json:"VpcId,omitempty" xml:"VpcId,omitempty"`
+	// The version of the launch template that is used to create instances during a scale-out. This parameter takes effect only if you set the OutEnable parameter to true. To use the default template version, set this parameter to `-1`. Otherwise, set this parameter to the version that you want to use.
+	TemplateVersion *int32 `json:"TemplateVersion,omitempty" xml:"TemplateVersion,omitempty"`
+	// The IDs of the vSwitches that are associated with the VPC. Separate multiple IDs with commas (,).
+	VSwitchIds *string `json:"VSwitchIds,omitempty" xml:"VSwitchIds,omitempty"`
+	// The ID of the virtual private cloud (VPC) that is associated with the instances created based on a launch template or the specifications of an existing instance.
+	VpcId *string `json:"VpcId,omitempty" xml:"VpcId,omitempty"`
 }
 
 func (s ModifyScalingRuleRequest) String() string {
@@ -20071,8 +23731,11 @@ func (s *ModifyScalingRuleRequest) SetVpcId(v string) *ModifyScalingRuleRequest 
 }
 
 type ModifyScalingRuleResponseBody struct {
-	Code      *int32  `json:"Code,omitempty" xml:"Code,omitempty"`
-	Message   *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// The HTTP status code that is returned.
+	Code *int32 `json:"Code,omitempty" xml:"Code,omitempty"`
+	// The message that is returned.
+	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// The ID of the request.
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -20129,6 +23792,7 @@ func (s *ModifyScalingRuleResponse) SetBody(v *ModifyScalingRuleResponseBody) *M
 }
 
 type QueryApplicationStatusRequest struct {
+	// The ID of the application.
 	AppId *string `json:"AppId,omitempty" xml:"AppId,omitempty"`
 }
 
@@ -20146,10 +23810,14 @@ func (s *QueryApplicationStatusRequest) SetAppId(v string) *QueryApplicationStat
 }
 
 type QueryApplicationStatusResponseBody struct {
-	AppInfo   *QueryApplicationStatusResponseBodyAppInfo `json:"AppInfo,omitempty" xml:"AppInfo,omitempty" type:"Struct"`
-	Code      *int32                                     `json:"Code,omitempty" xml:"Code,omitempty"`
-	Message   *string                                    `json:"Message,omitempty" xml:"Message,omitempty"`
-	RequestId *string                                    `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The information about the application.
+	AppInfo *QueryApplicationStatusResponseBodyAppInfo `json:"AppInfo,omitempty" xml:"AppInfo,omitempty" type:"Struct"`
+	// The HTTP status code that is returned.
+	Code *int32 `json:"Code,omitempty" xml:"Code,omitempty"`
+	// The additional information that is returned.
+	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// The ID of the request.
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
 func (s QueryApplicationStatusResponseBody) String() string {
@@ -20181,11 +23849,16 @@ func (s *QueryApplicationStatusResponseBody) SetRequestId(v string) *QueryApplic
 }
 
 type QueryApplicationStatusResponseBodyAppInfo struct {
-	Application      *QueryApplicationStatusResponseBodyAppInfoApplication      `json:"Application,omitempty" xml:"Application,omitempty" type:"Struct"`
+	// The basic information about the application.
+	Application *QueryApplicationStatusResponseBodyAppInfoApplication `json:"Application,omitempty" xml:"Application,omitempty" type:"Struct"`
+	// The information about deployment records.
 	DeployRecordList *QueryApplicationStatusResponseBodyAppInfoDeployRecordList `json:"DeployRecordList,omitempty" xml:"DeployRecordList,omitempty" type:"Struct"`
-	EccList          *QueryApplicationStatusResponseBodyAppInfoEccList          `json:"EccList,omitempty" xml:"EccList,omitempty" type:"Struct"`
-	EcuList          *QueryApplicationStatusResponseBodyAppInfoEcuList          `json:"EcuList,omitempty" xml:"EcuList,omitempty" type:"Struct"`
-	GroupList        *QueryApplicationStatusResponseBodyAppInfoGroupList        `json:"GroupList,omitempty" xml:"GroupList,omitempty" type:"Struct"`
+	// The information about elastic compute containers (ECCs).
+	EccList *QueryApplicationStatusResponseBodyAppInfoEccList `json:"EccList,omitempty" xml:"EccList,omitempty" type:"Struct"`
+	// The information about elastic compute units (ECUs).
+	EcuList *QueryApplicationStatusResponseBodyAppInfoEcuList `json:"EcuList,omitempty" xml:"EcuList,omitempty" type:"Struct"`
+	// The information about the instance groups.
+	GroupList *QueryApplicationStatusResponseBodyAppInfoGroupList `json:"GroupList,omitempty" xml:"GroupList,omitempty" type:"Struct"`
 }
 
 func (s QueryApplicationStatusResponseBodyAppInfo) String() string {
@@ -20222,24 +23895,42 @@ func (s *QueryApplicationStatusResponseBodyAppInfo) SetGroupList(v *QueryApplica
 }
 
 type QueryApplicationStatusResponseBodyAppInfoApplication struct {
-	ApplicationId        *string `json:"ApplicationId,omitempty" xml:"ApplicationId,omitempty"`
-	BuildPackageId       *int32  `json:"BuildPackageId,omitempty" xml:"BuildPackageId,omitempty"`
-	ClusterId            *string `json:"ClusterId,omitempty" xml:"ClusterId,omitempty"`
-	Cpu                  *int32  `json:"Cpu,omitempty" xml:"Cpu,omitempty"`
-	CreateTime           *int64  `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
-	Dockerize            *bool   `json:"Dockerize,omitempty" xml:"Dockerize,omitempty"`
-	Email                *string `json:"Email,omitempty" xml:"Email,omitempty"`
-	HealthCheckUrl       *string `json:"HealthCheckUrl,omitempty" xml:"HealthCheckUrl,omitempty"`
-	InstanceCount        *int32  `json:"InstanceCount,omitempty" xml:"InstanceCount,omitempty"`
-	LaunchTime           *int64  `json:"LaunchTime,omitempty" xml:"LaunchTime,omitempty"`
-	Memory               *int32  `json:"Memory,omitempty" xml:"Memory,omitempty"`
-	Name                 *string `json:"Name,omitempty" xml:"Name,omitempty"`
-	Owner                *string `json:"Owner,omitempty" xml:"Owner,omitempty"`
-	Phone                *string `json:"Phone,omitempty" xml:"Phone,omitempty"`
-	Port                 *int32  `json:"Port,omitempty" xml:"Port,omitempty"`
-	RegionId             *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	RunningInstanceCount *int32  `json:"RunningInstanceCount,omitempty" xml:"RunningInstanceCount,omitempty"`
-	UserId               *string `json:"UserId,omitempty" xml:"UserId,omitempty"`
+	// The ID of the application.
+	ApplicationId *string `json:"ApplicationId,omitempty" xml:"ApplicationId,omitempty"`
+	// The build package number of Enterprise Distributed Application Service (EDAS) Container.
+	BuildPackageId *int32 `json:"BuildPackageId,omitempty" xml:"BuildPackageId,omitempty"`
+	// The ID of the cluster.
+	ClusterId *string `json:"ClusterId,omitempty" xml:"ClusterId,omitempty"`
+	// The number of CPU cores used by the application.
+	Cpu *int32 `json:"Cpu,omitempty" xml:"Cpu,omitempty"`
+	// The time when the application was created. This value is a UNIX timestamp representing the number of milliseconds that have elapsed since January 1, 1970, 00:00:00 UTC.
+	CreateTime *int64 `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
+	// Indicates whether the application is a Docker application.
+	Dockerize *bool `json:"Dockerize,omitempty" xml:"Dockerize,omitempty"`
+	// The email address of the user who created the application.
+	Email *string `json:"Email,omitempty" xml:"Email,omitempty"`
+	// The health check URL.
+	HealthCheckUrl *string `json:"HealthCheckUrl,omitempty" xml:"HealthCheckUrl,omitempty"`
+	// The number of application instances.
+	InstanceCount *int32 `json:"InstanceCount,omitempty" xml:"InstanceCount,omitempty"`
+	// The time when the application was launched. This value is a UNIX timestamp representing the number of milliseconds that have elapsed since January 1, 1970, 00:00:00 UTC.
+	LaunchTime *int64 `json:"LaunchTime,omitempty" xml:"LaunchTime,omitempty"`
+	// The memory size.
+	Memory *int32 `json:"Memory,omitempty" xml:"Memory,omitempty"`
+	// The name of the application.
+	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// The ID of the user who created the application.
+	Owner *string `json:"Owner,omitempty" xml:"Owner,omitempty"`
+	// The mobile number of the user who created the application.
+	Phone *string `json:"Phone,omitempty" xml:"Phone,omitempty"`
+	// The port used by the application.
+	Port *int32 `json:"Port,omitempty" xml:"Port,omitempty"`
+	// The ID of the namespace.
+	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	// The number of application instances that are running.
+	RunningInstanceCount *int32 `json:"RunningInstanceCount,omitempty" xml:"RunningInstanceCount,omitempty"`
+	// The ID of the Alibaba Cloud account.
+	UserId *string `json:"UserId,omitempty" xml:"UserId,omitempty"`
 }
 
 func (s QueryApplicationStatusResponseBodyAppInfoApplication) String() string {
@@ -20358,11 +24049,17 @@ func (s *QueryApplicationStatusResponseBodyAppInfoDeployRecordList) SetDeployRec
 }
 
 type QueryApplicationStatusResponseBodyAppInfoDeployRecordListDeployRecord struct {
-	CreateTime       *int64  `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
-	DeployRecordId   *string `json:"DeployRecordId,omitempty" xml:"DeployRecordId,omitempty"`
-	EccId            *string `json:"EccId,omitempty" xml:"EccId,omitempty"`
-	EcuId            *string `json:"EcuId,omitempty" xml:"EcuId,omitempty"`
-	PackageMd5       *string `json:"PackageMd5,omitempty" xml:"PackageMd5,omitempty"`
+	// The time when the deployment record was created. This value is a UNIX timestamp representing the number of milliseconds that have elapsed since January 1, 1970, 00:00:00 UTC.
+	CreateTime *int64 `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
+	// The ID of the deployment record.
+	DeployRecordId *string `json:"DeployRecordId,omitempty" xml:"DeployRecordId,omitempty"`
+	// The unique ID of the ECC.
+	EccId *string `json:"EccId,omitempty" xml:"EccId,omitempty"`
+	// The unique ID of the ECU.
+	EcuId *string `json:"EcuId,omitempty" xml:"EcuId,omitempty"`
+	// The MD5 hash value of the deployment package.
+	PackageMd5 *string `json:"PackageMd5,omitempty" xml:"PackageMd5,omitempty"`
+	// The version of the deployment package that was used to deploy an application in the instance group.
 	PackageVersionId *string `json:"PackageVersionId,omitempty" xml:"PackageVersionId,omitempty"`
 }
 
@@ -20422,17 +24119,38 @@ func (s *QueryApplicationStatusResponseBodyAppInfoEccList) SetEcc(v []*QueryAppl
 }
 
 type QueryApplicationStatusResponseBodyAppInfoEccListEcc struct {
-	AppId           *string `json:"AppId,omitempty" xml:"AppId,omitempty"`
-	AppState        *int32  `json:"AppState,omitempty" xml:"AppState,omitempty"`
+	// The ID of the application.
+	AppId *string `json:"AppId,omitempty" xml:"AppId,omitempty"`
+	// The status of the application instance. Valid values:
+	//
+	// *   0: AGENT_OFF: indicates that the agent is offline.
+	// *   1: STOPPED: indicates that the application is stopped.
+	// *   3: RUNNING_BUT_URL_FAILED: indicates that the health check failed.
+	// *   7: RUNNING: indicates that the application is running.
+	AppState *int32 `json:"AppState,omitempty" xml:"AppState,omitempty"`
+	// The status of the container.
 	ContainerStatus *string `json:"ContainerStatus,omitempty" xml:"ContainerStatus,omitempty"`
-	CreateTime      *int64  `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
-	EccId           *string `json:"EccId,omitempty" xml:"EccId,omitempty"`
-	EcuId           *string `json:"EcuId,omitempty" xml:"EcuId,omitempty"`
-	GroupId         *string `json:"GroupId,omitempty" xml:"GroupId,omitempty"`
-	Ip              *string `json:"Ip,omitempty" xml:"Ip,omitempty"`
-	TaskState       *int32  `json:"TaskState,omitempty" xml:"TaskState,omitempty"`
-	UpdateTime      *int64  `json:"UpdateTime,omitempty" xml:"UpdateTime,omitempty"`
-	VpcId           *string `json:"VpcId,omitempty" xml:"VpcId,omitempty"`
+	// The time when the ECC was created. This value is a UNIX timestamp representing the number of milliseconds that have elapsed since January 1, 1970, 00:00:00 UTC.
+	CreateTime *int64 `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
+	// The unique ID of the ECC.
+	EccId *string `json:"EccId,omitempty" xml:"EccId,omitempty"`
+	// The unique ID of the ECU.
+	EcuId *string `json:"EcuId,omitempty" xml:"EcuId,omitempty"`
+	// The ID of the instance group.
+	GroupId *string `json:"GroupId,omitempty" xml:"GroupId,omitempty"`
+	// The private IP address of the ECU.
+	Ip *string `json:"Ip,omitempty" xml:"Ip,omitempty"`
+	// The state of the latest task initiated on the application instance. Valid values:
+	//
+	// *   0: UNKNOWN: indicates that the state of the latest task is unknown.
+	// *   1: PROCESSING: indicates that the latest task is being processed.
+	// *   2: SUCCESS: indicates that the latest task is executed.
+	// *   3: FAILED: indicates that the latest task failed.
+	TaskState *int32 `json:"TaskState,omitempty" xml:"TaskState,omitempty"`
+	// The time when the ECC was last modified. This value is a UNIX timestamp representing the number of milliseconds that have elapsed since January 1, 1970, 00:00:00 UTC.
+	UpdateTime *int64 `json:"UpdateTime,omitempty" xml:"UpdateTime,omitempty"`
+	// The ID of the VPC.
+	VpcId *string `json:"VpcId,omitempty" xml:"VpcId,omitempty"`
 }
 
 func (s QueryApplicationStatusResponseBodyAppInfoEccListEcc) String() string {
@@ -20516,22 +24234,38 @@ func (s *QueryApplicationStatusResponseBodyAppInfoEcuList) SetEcu(v []*QueryAppl
 }
 
 type QueryApplicationStatusResponseBodyAppInfoEcuListEcu struct {
-	AvailableCpu  *int32  `json:"AvailableCpu,omitempty" xml:"AvailableCpu,omitempty"`
-	AvailableMem  *int32  `json:"AvailableMem,omitempty" xml:"AvailableMem,omitempty"`
-	CreateTime    *int64  `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
-	DockerEnv     *bool   `json:"DockerEnv,omitempty" xml:"DockerEnv,omitempty"`
-	EcuId         *string `json:"EcuId,omitempty" xml:"EcuId,omitempty"`
-	GroupId       *string `json:"GroupId,omitempty" xml:"GroupId,omitempty"`
-	HeartbeatTime *int64  `json:"HeartbeatTime,omitempty" xml:"HeartbeatTime,omitempty"`
-	InstanceId    *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	IpAddr        *string `json:"IpAddr,omitempty" xml:"IpAddr,omitempty"`
-	Name          *string `json:"Name,omitempty" xml:"Name,omitempty"`
-	Online        *bool   `json:"Online,omitempty" xml:"Online,omitempty"`
-	RegionId      *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	UpdateTime    *int64  `json:"UpdateTime,omitempty" xml:"UpdateTime,omitempty"`
-	UserId        *string `json:"UserId,omitempty" xml:"UserId,omitempty"`
-	VpcId         *string `json:"VpcId,omitempty" xml:"VpcId,omitempty"`
-	ZoneId        *string `json:"ZoneId,omitempty" xml:"ZoneId,omitempty"`
+	// The number of available CPU cores.
+	AvailableCpu *int32 `json:"AvailableCpu,omitempty" xml:"AvailableCpu,omitempty"`
+	// The size of the available memory.
+	AvailableMem *int32 `json:"AvailableMem,omitempty" xml:"AvailableMem,omitempty"`
+	// The time when the ECU was created. This value is a UNIX timestamp representing the number of milliseconds that have elapsed since January 1, 1970, 00:00:00 UTC.
+	CreateTime *int64 `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
+	// Indicates whether Docker is installed.
+	DockerEnv *bool `json:"DockerEnv,omitempty" xml:"DockerEnv,omitempty"`
+	// The unique ID of the ECU. You can run the `dmidecode` command on the ECS instance to query the ECU ID.
+	EcuId *string `json:"EcuId,omitempty" xml:"EcuId,omitempty"`
+	// The ID of the group.
+	GroupId *string `json:"GroupId,omitempty" xml:"GroupId,omitempty"`
+	// The time when the last heartbeat detection was performed. This value is a UNIX timestamp representing the number of milliseconds that have elapsed since January 1, 1970, 00:00:00 UTC.
+	HeartbeatTime *int64 `json:"HeartbeatTime,omitempty" xml:"HeartbeatTime,omitempty"`
+	// The ID of the instance.
+	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	// The private IP address of the ECU.
+	IpAddr *string `json:"IpAddr,omitempty" xml:"IpAddr,omitempty"`
+	// The name of the ECU.
+	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// Indicates whether the ECU is online.
+	Online *bool `json:"Online,omitempty" xml:"Online,omitempty"`
+	// The ID of the region.
+	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	// The time when the ECU was last modified. This value is a UNIX timestamp representing the number of milliseconds that have elapsed since January 1, 1970, 00:00:00 UTC.
+	UpdateTime *int64 `json:"UpdateTime,omitempty" xml:"UpdateTime,omitempty"`
+	// The ID of the user associated with the ECU.
+	UserId *string `json:"UserId,omitempty" xml:"UserId,omitempty"`
+	// The ID of the virtual private cloud (VPC).
+	VpcId *string `json:"VpcId,omitempty" xml:"VpcId,omitempty"`
+	// The ID of the zone.
+	ZoneId *string `json:"ZoneId,omitempty" xml:"ZoneId,omitempty"`
 }
 
 func (s QueryApplicationStatusResponseBodyAppInfoEcuListEcu) String() string {
@@ -20640,15 +24374,28 @@ func (s *QueryApplicationStatusResponseBodyAppInfoGroupList) SetGroup(v []*Query
 }
 
 type QueryApplicationStatusResponseBodyAppInfoGroupListGroup struct {
-	AppId            *string `json:"AppId,omitempty" xml:"AppId,omitempty"`
-	AppVersionId     *string `json:"AppVersionId,omitempty" xml:"AppVersionId,omitempty"`
-	ClusterId        *string `json:"ClusterId,omitempty" xml:"ClusterId,omitempty"`
-	CreateTime       *int64  `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
-	GroupId          *string `json:"GroupId,omitempty" xml:"GroupId,omitempty"`
-	GroupName        *string `json:"GroupName,omitempty" xml:"GroupName,omitempty"`
-	GroupType        *int32  `json:"GroupType,omitempty" xml:"GroupType,omitempty"`
+	// The ID of the application.
+	AppId *string `json:"AppId,omitempty" xml:"AppId,omitempty"`
+	// The ID of the change process for application deployment in the instance group.
+	AppVersionId *string `json:"AppVersionId,omitempty" xml:"AppVersionId,omitempty"`
+	// The ID of the cluster.
+	ClusterId *string `json:"ClusterId,omitempty" xml:"ClusterId,omitempty"`
+	// The time when the instance group was created. This value is a UNIX timestamp representing the number of milliseconds that have elapsed since January 1, 1970, 00:00:00 UTC.
+	CreateTime *int64 `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
+	// The ID of the instance group.
+	GroupId *string `json:"GroupId,omitempty" xml:"GroupId,omitempty"`
+	// The name of the instance group.
+	GroupName *string `json:"GroupName,omitempty" xml:"GroupName,omitempty"`
+	// The type of the instance group. Valid values:
+	//
+	// *   0: default group
+	// *   1: self-managed group
+	// *   2: canary release group
+	GroupType *int32 `json:"GroupType,omitempty" xml:"GroupType,omitempty"`
+	// The version of the deployment package that was used to deploy an application in the instance group.
 	PackageVersionId *string `json:"PackageVersionId,omitempty" xml:"PackageVersionId,omitempty"`
-	UpdateTime       *int64  `json:"UpdateTime,omitempty" xml:"UpdateTime,omitempty"`
+	// The time when the instance group was last modified. This value is a UNIX timestamp representing the number of milliseconds that have elapsed since January 1, 1970, 00:00:00 UTC.
+	UpdateTime *int64 `json:"UpdateTime,omitempty" xml:"UpdateTime,omitempty"`
 }
 
 func (s QueryApplicationStatusResponseBodyAppInfoGroupListGroup) String() string {
@@ -20734,6 +24481,7 @@ func (s *QueryApplicationStatusResponse) SetBody(v *QueryApplicationStatusRespon
 }
 
 type QueryEccInfoRequest struct {
+	// The ID of the ECC.
 	EccId *string `json:"EccId,omitempty" xml:"EccId,omitempty"`
 }
 
@@ -20751,10 +24499,14 @@ func (s *QueryEccInfoRequest) SetEccId(v string) *QueryEccInfoRequest {
 }
 
 type QueryEccInfoResponseBody struct {
-	Code      *int32                           `json:"Code,omitempty" xml:"Code,omitempty"`
-	EccInfo   *QueryEccInfoResponseBodyEccInfo `json:"EccInfo,omitempty" xml:"EccInfo,omitempty" type:"Struct"`
-	Message   *string                          `json:"Message,omitempty" xml:"Message,omitempty"`
-	RequestId *string                          `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The HTTP status code that is returned.
+	Code *int32 `json:"Code,omitempty" xml:"Code,omitempty"`
+	// The information about the ECC.
+	EccInfo *QueryEccInfoResponseBodyEccInfo `json:"EccInfo,omitempty" xml:"EccInfo,omitempty" type:"Struct"`
+	// The additional information that is returned.
+	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// The ID of the request.
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
 func (s QueryEccInfoResponseBody) String() string {
@@ -20786,14 +24538,22 @@ func (s *QueryEccInfoResponseBody) SetRequestId(v string) *QueryEccInfoResponseB
 }
 
 type QueryEccInfoResponseBodyEccInfo struct {
-	AppId          *string `json:"AppId,omitempty" xml:"AppId,omitempty"`
-	EccId          *string `json:"EccId,omitempty" xml:"EccId,omitempty"`
-	EcuId          *string `json:"EcuId,omitempty" xml:"EcuId,omitempty"`
-	GroupId        *string `json:"GroupId,omitempty" xml:"GroupId,omitempty"`
-	GroupName      *string `json:"GroupName,omitempty" xml:"GroupName,omitempty"`
-	PackageMd5     *string `json:"PackageMd5,omitempty" xml:"PackageMd5,omitempty"`
+	// The ID of the application.
+	AppId *string `json:"AppId,omitempty" xml:"AppId,omitempty"`
+	// ECC ID
+	EccId *string `json:"EccId,omitempty" xml:"EccId,omitempty"`
+	// ECU ID
+	EcuId *string `json:"EcuId,omitempty" xml:"EcuId,omitempty"`
+	// The ID of the ECC group.
+	GroupId *string `json:"GroupId,omitempty" xml:"GroupId,omitempty"`
+	// The name of the ECC group.
+	GroupName *string `json:"GroupName,omitempty" xml:"GroupName,omitempty"`
+	// The MD5 hash value of the deployment package version.
+	PackageMd5 *string `json:"PackageMd5,omitempty" xml:"PackageMd5,omitempty"`
+	// The version of the deployment package.
 	PackageVersion *string `json:"PackageVersion,omitempty" xml:"PackageVersion,omitempty"`
-	VpcId          *string `json:"VpcId,omitempty" xml:"VpcId,omitempty"`
+	// VPC ID
+	VpcId *string `json:"VpcId,omitempty" xml:"VpcId,omitempty"`
 }
 
 func (s QueryEccInfoResponseBodyEccInfo) String() string {
@@ -20874,6 +24634,10 @@ func (s *QueryEccInfoResponse) SetBody(v *QueryEccInfoResponseBody) *QueryEccInf
 }
 
 type QueryMigrateEcuListRequest struct {
+	// The ID of the namespace.
+	//
+	// *   The ID of a custom namespace is in the `region ID:namespace identifier` format. Example: `cn-beijing:test`.
+	// *   The ID of the default namespace is in the `region ID` format. Example: `cn-beijing`.
 	LogicalRegionId *string `json:"LogicalRegionId,omitempty" xml:"LogicalRegionId,omitempty"`
 }
 
@@ -20891,10 +24655,14 @@ func (s *QueryMigrateEcuListRequest) SetLogicalRegionId(v string) *QueryMigrateE
 }
 
 type QueryMigrateEcuListResponseBody struct {
-	Code          *int32                                        `json:"Code,omitempty" xml:"Code,omitempty"`
+	// The HTTP status code that is returned.
+	Code *int32 `json:"Code,omitempty" xml:"Code,omitempty"`
+	// The information about ECUs that can be migrated.
 	EcuEntityList *QueryMigrateEcuListResponseBodyEcuEntityList `json:"EcuEntityList,omitempty" xml:"EcuEntityList,omitempty" type:"Struct"`
-	Message       *string                                       `json:"Message,omitempty" xml:"Message,omitempty"`
-	RequestId     *string                                       `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The additional information that is returned.
+	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// The ID of the request.
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
 func (s QueryMigrateEcuListResponseBody) String() string {
@@ -20943,23 +24711,46 @@ func (s *QueryMigrateEcuListResponseBodyEcuEntityList) SetEcuEntity(v []*QueryMi
 }
 
 type QueryMigrateEcuListResponseBodyEcuEntityListEcuEntity struct {
-	AvailableCpu  *int32  `json:"AvailableCpu,omitempty" xml:"AvailableCpu,omitempty"`
-	AvailableMem  *int32  `json:"AvailableMem,omitempty" xml:"AvailableMem,omitempty"`
-	Cpu           *int32  `json:"Cpu,omitempty" xml:"Cpu,omitempty"`
-	CreateTime    *int64  `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
-	DockerEnv     *bool   `json:"DockerEnv,omitempty" xml:"DockerEnv,omitempty"`
-	EcuId         *string `json:"EcuId,omitempty" xml:"EcuId,omitempty"`
-	HeartbeatTime *int64  `json:"HeartbeatTime,omitempty" xml:"HeartbeatTime,omitempty"`
-	InstanceId    *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	IpAddr        *string `json:"IpAddr,omitempty" xml:"IpAddr,omitempty"`
-	Mem           *int32  `json:"Mem,omitempty" xml:"Mem,omitempty"`
-	Name          *string `json:"Name,omitempty" xml:"Name,omitempty"`
-	Online        *bool   `json:"Online,omitempty" xml:"Online,omitempty"`
-	RegionId      *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	UpdateTime    *int64  `json:"UpdateTime,omitempty" xml:"UpdateTime,omitempty"`
-	UserId        *string `json:"UserId,omitempty" xml:"UserId,omitempty"`
-	VpcId         *string `json:"VpcId,omitempty" xml:"VpcId,omitempty"`
-	ZoneId        *string `json:"ZoneId,omitempty" xml:"ZoneId,omitempty"`
+	// The number of available CPUs. Unit: cores.
+	AvailableCpu *int32 `json:"AvailableCpu,omitempty" xml:"AvailableCpu,omitempty"`
+	// The size of available memory. Unit: MB.
+	AvailableMem *int32 `json:"AvailableMem,omitempty" xml:"AvailableMem,omitempty"`
+	// The CPU quota set by the system. Unit: cores. The value 0 indicates that no quota is set by the system.
+	Cpu *int32 `json:"Cpu,omitempty" xml:"Cpu,omitempty"`
+	// The time when the ECU was created. This value is a UNIX timestamp representing the number of milliseconds that have elapsed since the epoch time January 1, 1970, 00:00:00 UTC.
+	CreateTime *int64 `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
+	// Indicates whether Docker is installed. Valid values:
+	//
+	// *   true: Docker is installed.
+	// *   false: Docker is not installed.
+	DockerEnv *bool `json:"DockerEnv,omitempty" xml:"DockerEnv,omitempty"`
+	// The unique ID of the ECU. To query the ID, you can run the `dmidecode` command on the ECS instance that corresponds to the ECU.
+	EcuId *string `json:"EcuId,omitempty" xml:"EcuId,omitempty"`
+	// The time when the last heartbeat detection was performed. This value is a UNIX timestamp representing the number of milliseconds that have elapsed since the epoch time January 1, 1970, 00:00:00 UTC.
+	HeartbeatTime *int64 `json:"HeartbeatTime,omitempty" xml:"HeartbeatTime,omitempty"`
+	// The ID of the ECU.
+	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	// The private IP address of the ECU.
+	IpAddr *string `json:"IpAddr,omitempty" xml:"IpAddr,omitempty"`
+	// The total size of memory.
+	Mem *int32 `json:"Mem,omitempty" xml:"Mem,omitempty"`
+	// The name of the ECU.
+	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// Indicates whether the ECU is online. Valid values:
+	//
+	// *   true: The ECU is online.
+	// *   false: The ECU is offline.
+	Online *bool `json:"Online,omitempty" xml:"Online,omitempty"`
+	// The ID of the region where the ECU resides.
+	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	// The time when the ECU was updated. This value is a UNIX timestamp representing the number of milliseconds that have elapsed since the epoch time January 1, 1970, 00:00:00 UTC.
+	UpdateTime *int64 `json:"UpdateTime,omitempty" xml:"UpdateTime,omitempty"`
+	// The ID of the Alibaba Cloud account to which the ECU belongs.
+	UserId *string `json:"UserId,omitempty" xml:"UserId,omitempty"`
+	// VPC ID
+	VpcId *string `json:"VpcId,omitempty" xml:"VpcId,omitempty"`
+	// The ID of the zone where the ECU resides.
+	ZoneId *string `json:"ZoneId,omitempty" xml:"ZoneId,omitempty"`
 }
 
 func (s QueryMigrateEcuListResponseBodyEcuEntityListEcuEntity) String() string {
@@ -21085,6 +24876,7 @@ func (s *QueryMigrateEcuListResponse) SetBody(v *QueryMigrateEcuListResponseBody
 }
 
 type QueryMigrateRegionListRequest struct {
+	// The ID of the namespace.
 	LogicalRegionId *string `json:"LogicalRegionId,omitempty" xml:"LogicalRegionId,omitempty"`
 }
 
@@ -21102,10 +24894,14 @@ func (s *QueryMigrateRegionListRequest) SetLogicalRegionId(v string) *QueryMigra
 }
 
 type QueryMigrateRegionListResponseBody struct {
-	Code             *int32                                              `json:"Code,omitempty" xml:"Code,omitempty"`
-	Message          *string                                             `json:"Message,omitempty" xml:"Message,omitempty"`
+	// The HTTP status code that is returned.
+	Code *int32 `json:"Code,omitempty" xml:"Code,omitempty"`
+	// The message that is returned.
+	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// The namespaces.
 	RegionEntityList *QueryMigrateRegionListResponseBodyRegionEntityList `json:"RegionEntityList,omitempty" xml:"RegionEntityList,omitempty" type:"Struct"`
-	RequestId        *string                                             `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The ID of the request.
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
 func (s QueryMigrateRegionListResponseBody) String() string {
@@ -21154,8 +24950,10 @@ func (s *QueryMigrateRegionListResponseBodyRegionEntityList) SetRegionEntity(v [
 }
 
 type QueryMigrateRegionListResponseBodyRegionEntityListRegionEntity struct {
+	// The name of the namespace.
 	RegionName *string `json:"RegionName,omitempty" xml:"RegionName,omitempty"`
-	RegionNo   *string `json:"RegionNo,omitempty" xml:"RegionNo,omitempty"`
+	// The ID of the namespace.
+	RegionNo *string `json:"RegionNo,omitempty" xml:"RegionNo,omitempty"`
 }
 
 func (s QueryMigrateRegionListResponseBodyRegionEntityListRegionEntity) String() string {
@@ -21206,10 +25004,14 @@ func (s *QueryMigrateRegionListResponse) SetBody(v *QueryMigrateRegionListRespon
 }
 
 type QueryRegionConfigResponseBody struct {
-	Code         *int32                                     `json:"Code,omitempty" xml:"Code,omitempty"`
-	Message      *string                                    `json:"Message,omitempty" xml:"Message,omitempty"`
+	// The HTTP status code that is returned.
+	Code *int32 `json:"Code,omitempty" xml:"Code,omitempty"`
+	// The additional information that is returned.
+	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// The information about region configurations.
 	RegionConfig *QueryRegionConfigResponseBodyRegionConfig `json:"RegionConfig,omitempty" xml:"RegionConfig,omitempty" type:"Struct"`
-	RequestId    *string                                    `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The ID of the request.
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
 func (s QueryRegionConfigResponseBody) String() string {
@@ -21241,15 +25043,24 @@ func (s *QueryRegionConfigResponseBody) SetRequestId(v string) *QueryRegionConfi
 }
 
 type QueryRegionConfigResponseBodyRegionConfig struct {
-	AddressServerHost  *string                                                    `json:"AddressServerHost,omitempty" xml:"AddressServerHost,omitempty"`
-	AgentInstallScript *string                                                    `json:"AgentInstallScript,omitempty" xml:"AgentInstallScript,omitempty"`
-	FileServerConfig   *QueryRegionConfigResponseBodyRegionConfigFileServerConfig `json:"FileServerConfig,omitempty" xml:"FileServerConfig,omitempty" type:"Struct"`
-	FileServerType     *string                                                    `json:"FileServerType,omitempty" xml:"FileServerType,omitempty"`
-	Id                 *string                                                    `json:"Id,omitempty" xml:"Id,omitempty"`
-	ImageId            *string                                                    `json:"ImageId,omitempty" xml:"ImageId,omitempty"`
-	Name               *string                                                    `json:"Name,omitempty" xml:"Name,omitempty"`
-	No                 *int32                                                     `json:"No,omitempty" xml:"No,omitempty"`
-	Tag                *string                                                    `json:"Tag,omitempty" xml:"Tag,omitempty"`
+	// The domain name of Address Server.
+	AddressServerHost *string `json:"AddressServerHost,omitempty" xml:"AddressServerHost,omitempty"`
+	// The installation path of the script for EDAS Agent.
+	AgentInstallScript *string `json:"AgentInstallScript,omitempty" xml:"AgentInstallScript,omitempty"`
+	// The information about the file server.
+	FileServerConfig *QueryRegionConfigResponseBodyRegionConfigFileServerConfig `json:"FileServerConfig,omitempty" xml:"FileServerConfig,omitempty" type:"Struct"`
+	// The type of the file server.
+	FileServerType *string `json:"FileServerType,omitempty" xml:"FileServerType,omitempty"`
+	// The configured ID of the region.
+	Id *string `json:"Id,omitempty" xml:"Id,omitempty"`
+	// The ID of the official image.
+	ImageId *string `json:"ImageId,omitempty" xml:"ImageId,omitempty"`
+	// The configured name of the region.
+	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// The serial number of the region. This parameter is deprecated.
+	No *int32 `json:"No,omitempty" xml:"No,omitempty"`
+	// The tag of the region. The value is fixed to `ALIYUN_SHARE`.
+	Tag *string `json:"Tag,omitempty" xml:"Tag,omitempty"`
 }
 
 func (s QueryRegionConfigResponseBodyRegionConfig) String() string {
@@ -21306,10 +25117,14 @@ func (s *QueryRegionConfigResponseBodyRegionConfig) SetTag(v string) *QueryRegio
 }
 
 type QueryRegionConfigResponseBodyRegionConfigFileServerConfig struct {
-	Bucket      *string `json:"Bucket,omitempty" xml:"Bucket,omitempty"`
+	// The Object Storage Service (OSS) bucket of the file server.
+	Bucket *string `json:"Bucket,omitempty" xml:"Bucket,omitempty"`
+	// The internal endpoint of the file server.
 	InternalUrl *string `json:"InternalUrl,omitempty" xml:"InternalUrl,omitempty"`
-	PublicUrl   *string `json:"PublicUrl,omitempty" xml:"PublicUrl,omitempty"`
-	VpcUrl      *string `json:"VpcUrl,omitempty" xml:"VpcUrl,omitempty"`
+	// The public endpoint of the file server.
+	PublicUrl *string `json:"PublicUrl,omitempty" xml:"PublicUrl,omitempty"`
+	// The virtual private cloud (VPC) endpoint of the file server.
+	VpcUrl *string `json:"VpcUrl,omitempty" xml:"VpcUrl,omitempty"`
 }
 
 func (s QueryRegionConfigResponseBodyRegionConfigFileServerConfig) String() string {
@@ -21370,10 +25185,17 @@ func (s *QueryRegionConfigResponse) SetBody(v *QueryRegionConfigResponseBody) *Q
 }
 
 type QuerySlsLogStoreListRequest struct {
-	AppId       *string `json:"AppId,omitempty" xml:"AppId,omitempty"`
-	CurrentPage *int32  `json:"CurrentPage,omitempty" xml:"CurrentPage,omitempty"`
-	PageSize    *int32  `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	Type        *string `json:"Type,omitempty" xml:"Type,omitempty"`
+	// The ID of the application.
+	AppId *string `json:"AppId,omitempty" xml:"AppId,omitempty"`
+	// The number of the page to return. Pages start from Page 1.
+	CurrentPage *int32 `json:"CurrentPage,omitempty" xml:"CurrentPage,omitempty"`
+	// The number of entries to return on each page.
+	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	// The type of data that is collected by Log Service. Valid values:
+	//
+	// *   file: the file type
+	// *   stdout: the standard output type
+	Type *string `json:"Type,omitempty" xml:"Type,omitempty"`
 }
 
 func (s QuerySlsLogStoreListRequest) String() string {
@@ -21405,11 +25227,16 @@ func (s *QuerySlsLogStoreListRequest) SetType(v string) *QuerySlsLogStoreListReq
 }
 
 type QuerySlsLogStoreListResponseBody struct {
-	Code      *int32                                    `json:"Code,omitempty" xml:"Code,omitempty"`
-	Message   *string                                   `json:"Message,omitempty" xml:"Message,omitempty"`
-	RequestId *string                                   `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	Result    []*QuerySlsLogStoreListResponseBodyResult `json:"Result,omitempty" xml:"Result,omitempty" type:"Repeated"`
-	TotalSize *int32                                    `json:"TotalSize,omitempty" xml:"TotalSize,omitempty"`
+	// The HTTP status code that is returned.
+	Code *int32 `json:"Code,omitempty" xml:"Code,omitempty"`
+	// The message that is returned.
+	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// The ID of the request.
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The configurations of Log Service for the application.
+	Result []*QuerySlsLogStoreListResponseBodyResult `json:"Result,omitempty" xml:"Result,omitempty" type:"Repeated"`
+	// The number of log sources configured for the application.
+	TotalSize *int32 `json:"TotalSize,omitempty" xml:"TotalSize,omitempty"`
 }
 
 func (s QuerySlsLogStoreListResponseBody) String() string {
@@ -21446,12 +25273,21 @@ func (s *QuerySlsLogStoreListResponseBody) SetTotalSize(v int32) *QuerySlsLogSto
 }
 
 type QuerySlsLogStoreListResponseBodyResult struct {
+	// The type of the logging service.
 	ConsumerSide *string `json:"ConsumerSide,omitempty" xml:"ConsumerSide,omitempty"`
-	CreateTime   *string `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
-	Link         *string `json:"Link,omitempty" xml:"Link,omitempty"`
-	Logstore     *string `json:"Logstore,omitempty" xml:"Logstore,omitempty"`
-	Project      *string `json:"Project,omitempty" xml:"Project,omitempty"`
-	Source       *string `json:"Source,omitempty" xml:"Source,omitempty"`
+	// The time when the logging service was created.
+	CreateTime *string `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
+	// The URL of the logging service.
+	Link *string `json:"Link,omitempty" xml:"Link,omitempty"`
+	// The name of the Logstore.
+	Logstore *string `json:"Logstore,omitempty" xml:"Logstore,omitempty"`
+	// The name of the project.
+	Project *string `json:"Project,omitempty" xml:"Project,omitempty"`
+	// The source of logs. Valid values:
+	//
+	// *   Standard output: stdout.log
+	// *   File log: the directory that stores logs
+	Source *string `json:"Source,omitempty" xml:"Source,omitempty"`
 }
 
 func (s QuerySlsLogStoreListResponseBodyResult) String() string {
@@ -21522,7 +25358,9 @@ func (s *QuerySlsLogStoreListResponse) SetBody(v *QuerySlsLogStoreListResponseBo
 }
 
 type ResetApplicationRequest struct {
-	AppId   *string `json:"AppId,omitempty" xml:"AppId,omitempty"`
+	// The ID of the application. You can call the ListApplication operation to query the application ID. For more information, see [ListApplication](~~149390~~).
+	AppId *string `json:"AppId,omitempty" xml:"AppId,omitempty"`
+	// The ID of the elastic compute container (ECC) for which you want to reset the application. Separate multiple ECC IDs with commas (,). You can call the QueryApplicationStatus operation to query the ECC ID. For more information, see [QueryApplicationStatus](~~149394~~).
 	EccInfo *string `json:"EccInfo,omitempty" xml:"EccInfo,omitempty"`
 }
 
@@ -21545,10 +25383,14 @@ func (s *ResetApplicationRequest) SetEccInfo(v string) *ResetApplicationRequest 
 }
 
 type ResetApplicationResponseBody struct {
+	// The ID of the change process for this operation. You can call the GetChangeOrderInfo operation to query the progress of this operation. For more information, see [GetChangeOrderInfo](~~62072~~).
 	ChangeOrderId *string `json:"ChangeOrderId,omitempty" xml:"ChangeOrderId,omitempty"`
-	Code          *int32  `json:"Code,omitempty" xml:"Code,omitempty"`
-	Message       *string `json:"Message,omitempty" xml:"Message,omitempty"`
-	RequestId     *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The HTTP status code that is returned.
+	Code *int32 `json:"Code,omitempty" xml:"Code,omitempty"`
+	// The additional information that is returned.
+	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// The ID of the request.
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
 func (s ResetApplicationResponseBody) String() string {
@@ -21609,7 +25451,12 @@ func (s *ResetApplicationResponse) SetBody(v *ResetApplicationResponseBody) *Res
 }
 
 type RestartApplicationRequest struct {
-	AppId   *string `json:"AppId,omitempty" xml:"AppId,omitempty"`
+	// The ID of the application. You can call the ListApplication operation to query the application ID. For more information, see [ListApplication](~~149390~~).
+	AppId *string `json:"AppId,omitempty" xml:"AppId,omitempty"`
+	// The ID of the elastic compute container (ECC) that corresponds to the ECS instance on which you want to restart the application. You can call the QueryApplicationStatus operation to query the ECC ID. For more information, see [QueryApplicationStatus](~~149394~~).
+	//
+	// *   Separate multiple ECC IDs with commas (,).
+	// *   If you leave this parameter empty, the application will be restarted on all the ECS instances deployed with the application.
 	EccInfo *string `json:"EccInfo,omitempty" xml:"EccInfo,omitempty"`
 }
 
@@ -21632,10 +25479,16 @@ func (s *RestartApplicationRequest) SetEccInfo(v string) *RestartApplicationRequ
 }
 
 type RestartApplicationResponseBody struct {
+	// The ID of the change process.
+	//
+	// You can call the GetChangeOrderInfo operation to query the progress of this restart. For more information, see [GetChangeOrderInfo](~~62072~~).
 	ChangeOrderId *string `json:"ChangeOrderId,omitempty" xml:"ChangeOrderId,omitempty"`
-	Code          *int32  `json:"Code,omitempty" xml:"Code,omitempty"`
-	Message       *string `json:"Message,omitempty" xml:"Message,omitempty"`
-	RequestId     *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The HTTP status code that is returned.
+	Code *int32 `json:"Code,omitempty" xml:"Code,omitempty"`
+	// The additional information that is returned.
+	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// The ID of the request.
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
 func (s RestartApplicationResponseBody) String() string {
@@ -21696,8 +25549,10 @@ func (s *RestartApplicationResponse) SetBody(v *RestartApplicationResponseBody) 
 }
 
 type RestartK8sApplicationRequest struct {
-	AppId   *string `json:"AppId,omitempty" xml:"AppId,omitempty"`
-	Timeout *int32  `json:"Timeout,omitempty" xml:"Timeout,omitempty"`
+	// The ID of the application. You can call the ListApplication operation to query the application ID. For more information, see [ListApplication](~~149390~~).
+	AppId *string `json:"AppId,omitempty" xml:"AppId,omitempty"`
+	// The timeout period of the change process. Unit: seconds.
+	Timeout *int32 `json:"Timeout,omitempty" xml:"Timeout,omitempty"`
 }
 
 func (s RestartK8sApplicationRequest) String() string {
@@ -21719,10 +25574,14 @@ func (s *RestartK8sApplicationRequest) SetTimeout(v int32) *RestartK8sApplicatio
 }
 
 type RestartK8sApplicationResponseBody struct {
+	// The ID of the change process.
 	ChangeOrderId *string `json:"ChangeOrderId,omitempty" xml:"ChangeOrderId,omitempty"`
-	Code          *int32  `json:"Code,omitempty" xml:"Code,omitempty"`
-	Message       *string `json:"Message,omitempty" xml:"Message,omitempty"`
-	RequestId     *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The HTTP status code that is returned.
+	Code *int32 `json:"Code,omitempty" xml:"Code,omitempty"`
+	// The additional information that is returned.
+	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// The ID of the request.
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
 func (s RestartK8sApplicationResponseBody) String() string {
@@ -21783,8 +25642,10 @@ func (s *RestartK8sApplicationResponse) SetBody(v *RestartK8sApplicationResponse
 }
 
 type RetryChangeOrderTaskRequest struct {
-	RetryStatus *bool   `json:"RetryStatus,omitempty" xml:"RetryStatus,omitempty"`
-	TaskId      *string `json:"TaskId,omitempty" xml:"TaskId,omitempty"`
+	// The retry status.
+	RetryStatus *bool `json:"RetryStatus,omitempty" xml:"RetryStatus,omitempty"`
+	// The ID of the process.
+	TaskId *string `json:"TaskId,omitempty" xml:"TaskId,omitempty"`
 }
 
 func (s RetryChangeOrderTaskRequest) String() string {
@@ -21806,9 +25667,13 @@ func (s *RetryChangeOrderTaskRequest) SetTaskId(v string) *RetryChangeOrderTaskR
 }
 
 type RetryChangeOrderTaskResponseBody struct {
-	Code      *int32  `json:"Code,omitempty" xml:"Code,omitempty"`
-	Data      *string `json:"Data,omitempty" xml:"Data,omitempty"`
-	Message   *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// The HTTP status code that is returned.
+	Code *int32 `json:"Code,omitempty" xml:"Code,omitempty"`
+	// The retry information.
+	Data *string `json:"Data,omitempty" xml:"Data,omitempty"`
+	// The message that is returned.
+	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// The ID of the request.
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -21870,10 +25735,17 @@ func (s *RetryChangeOrderTaskResponse) SetBody(v *RetryChangeOrderTaskResponseBo
 }
 
 type RollbackApplicationRequest struct {
-	AppId          *string `json:"AppId,omitempty" xml:"AppId,omitempty"`
-	Batch          *int32  `json:"Batch,omitempty" xml:"Batch,omitempty"`
-	BatchWaitTime  *int32  `json:"BatchWaitTime,omitempty" xml:"BatchWaitTime,omitempty"`
-	GroupId        *string `json:"GroupId,omitempty" xml:"GroupId,omitempty"`
+	// The application ID. You can call the ListApplication operation to query the application ID. For more information, see [ListApplication](~~423162~~).
+	AppId *string `json:"AppId,omitempty" xml:"AppId,omitempty"`
+	// The number of batches for the rollback. Default value: 1. Valid values: 1 to 5.
+	Batch *int32 `json:"Batch,omitempty" xml:"Batch,omitempty"`
+	// The wait time between batches. Default value: 0. The default value indicates no wait time. Valid values: 0 to 5. Unit: minutes.
+	BatchWaitTime *int32 `json:"BatchWaitTime,omitempty" xml:"BatchWaitTime,omitempty"`
+	// The application group ID. You can call the ListDeployGroup operation to query the application group ID. For more information, see [ListDeployGroup](~~423184~~).
+	//
+	// If you need to roll back the application in all application groups, set this parameter to `all`.
+	GroupId *string `json:"GroupId,omitempty" xml:"GroupId,omitempty"`
+	// The historical version to which you want to roll back the application. Call the ListHistoryDeployVersion operation to query the historical versions of the application. Then, set this parameter based on the returned value of `PackageVersion`. For more information, see [ListHistoryDeployVersion](~~423163~~).
 	HistoryVersion *string `json:"HistoryVersion,omitempty" xml:"HistoryVersion,omitempty"`
 }
 
@@ -21911,10 +25783,14 @@ func (s *RollbackApplicationRequest) SetHistoryVersion(v string) *RollbackApplic
 }
 
 type RollbackApplicationResponseBody struct {
+	// The change process ID. You can call the GetChangeOrderInfo operation to query the progress of this rollback. For more information, see [GetChangeOrderInfo](~~423155~~).
 	ChangeOrderId *string `json:"ChangeOrderId,omitempty" xml:"ChangeOrderId,omitempty"`
-	Code          *int32  `json:"Code,omitempty" xml:"Code,omitempty"`
-	Message       *string `json:"Message,omitempty" xml:"Message,omitempty"`
-	RequestId     *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The HTTP status code.
+	Code *int32 `json:"Code,omitempty" xml:"Code,omitempty"`
+	// The returned message.
+	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// The request ID.
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
 func (s RollbackApplicationResponseBody) String() string {
@@ -21975,6 +25851,7 @@ func (s *RollbackApplicationResponse) SetBody(v *RollbackApplicationResponseBody
 }
 
 type RollbackChangeOrderRequest struct {
+	// The ID of the change process.
 	ChangeOrderId *string `json:"ChangeOrderId,omitempty" xml:"ChangeOrderId,omitempty"`
 }
 
@@ -21992,12 +25869,18 @@ func (s *RollbackChangeOrderRequest) SetChangeOrderId(v string) *RollbackChangeO
 }
 
 type RollbackChangeOrderResponseBody struct {
-	Code      *int32                               `json:"Code,omitempty" xml:"Code,omitempty"`
-	Data      *RollbackChangeOrderResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
-	ErrorCode *string                              `json:"ErrorCode,omitempty" xml:"ErrorCode,omitempty"`
-	Message   *string                              `json:"Message,omitempty" xml:"Message,omitempty"`
-	RequestId *string                              `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	TraceId   *string                              `json:"TraceId,omitempty" xml:"TraceId,omitempty"`
+	// The HTTP status code that is returned.
+	Code *int32 `json:"Code,omitempty" xml:"Code,omitempty"`
+	// The information about the change process.
+	Data *RollbackChangeOrderResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
+	// The error code that is returned.
+	ErrorCode *string `json:"ErrorCode,omitempty" xml:"ErrorCode,omitempty"`
+	// The additional information that is returned.
+	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// The ID of the request.
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The ID of the trace.
+	TraceId *string `json:"TraceId,omitempty" xml:"TraceId,omitempty"`
 }
 
 func (s RollbackChangeOrderResponseBody) String() string {
@@ -22039,6 +25922,7 @@ func (s *RollbackChangeOrderResponseBody) SetTraceId(v string) *RollbackChangeOr
 }
 
 type RollbackChangeOrderResponseBodyData struct {
+	// The ID of the change process.
 	ChangeOrderId *string `json:"ChangeOrderId,omitempty" xml:"ChangeOrderId,omitempty"`
 }
 
@@ -22085,9 +25969,12 @@ func (s *RollbackChangeOrderResponse) SetBody(v *RollbackChangeOrderResponseBody
 }
 
 type ScaleInApplicationRequest struct {
-	AppId       *string `json:"AppId,omitempty" xml:"AppId,omitempty"`
-	EccInfo     *string `json:"EccInfo,omitempty" xml:"EccInfo,omitempty"`
-	ForceStatus *bool   `json:"ForceStatus,omitempty" xml:"ForceStatus,omitempty"`
+	// The ID of the application. You can call the ListApplication operation to query the application ID. For more information, see [ListApplication](~~149390~~).
+	AppId *string `json:"AppId,omitempty" xml:"AppId,omitempty"`
+	// The ID of the elastic compute container (ECC) that corresponds to the Elastic Compute Service (ECS) instance to be removed for the application. Separate multiple ECC IDs with commas (,). You can call the QueryApplicationStatus operation to query the ECC ID. For more information, see [QueryApplicationStatus](~~149394~~).
+	EccInfo *string `json:"EccInfo,omitempty" xml:"EccInfo,omitempty"`
+	// Specifies whether to forcibly unpublish the application from the ECS instance. You need to set this parameter to true only if the ECS instance expires. In normal cases, you do not need to set this parameter to true.
+	ForceStatus *bool `json:"ForceStatus,omitempty" xml:"ForceStatus,omitempty"`
 }
 
 func (s ScaleInApplicationRequest) String() string {
@@ -22114,9 +26001,12 @@ func (s *ScaleInApplicationRequest) SetForceStatus(v bool) *ScaleInApplicationRe
 }
 
 type ScaleInApplicationResponseBody struct {
+	// The ID of the change process for this operation. You can call the GetChangeOrderInfo operation to query the progress of this scale-in. For more information, see [GetChangeOrderInfo](~~62072~~). No ID is generated if the ForceStatus parameter is set to true. You can check whether the request is successful based on the value of the Code parameter.
 	ChangeOrderId *string `json:"ChangeOrderId,omitempty" xml:"ChangeOrderId,omitempty"`
-	Code          *int32  `json:"Code,omitempty" xml:"Code,omitempty"`
-	Message       *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// The HTTP status code that is returned.
+	Code *int32 `json:"Code,omitempty" xml:"Code,omitempty"`
+	// The message that is returned.
+	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
 }
 
 func (s ScaleInApplicationResponseBody) String() string {
@@ -22172,9 +26062,12 @@ func (s *ScaleInApplicationResponse) SetBody(v *ScaleInApplicationResponseBody) 
 }
 
 type ScaleK8sApplicationRequest struct {
-	AppId    *string `json:"AppId,omitempty" xml:"AppId,omitempty"`
-	Replicas *int32  `json:"Replicas,omitempty" xml:"Replicas,omitempty"`
-	Timeout  *int32  `json:"Timeout,omitempty" xml:"Timeout,omitempty"`
+	// The ID of the application. You can call the ListApplication operation to query the application ID. For more information, see [ListApplication](~~149390~~).
+	AppId *string `json:"AppId,omitempty" xml:"AppId,omitempty"`
+	// The expected number of application instances after the scale-out or scale-in. The minimum number is 0.
+	Replicas *int32 `json:"Replicas,omitempty" xml:"Replicas,omitempty"`
+	// The timeout period of the change process. Unit: seconds.
+	Timeout *int32 `json:"Timeout,omitempty" xml:"Timeout,omitempty"`
 }
 
 func (s ScaleK8sApplicationRequest) String() string {
@@ -22201,10 +26094,14 @@ func (s *ScaleK8sApplicationRequest) SetTimeout(v int32) *ScaleK8sApplicationReq
 }
 
 type ScaleK8sApplicationResponseBody struct {
+	// The ID of the change process. You can call the GetChangeOrderInfo operation to query the progress of this scaling operation. For more information, see [GetChangeOrderInfo](~~62072~~).
 	ChangeOrderId *string `json:"ChangeOrderId,omitempty" xml:"ChangeOrderId,omitempty"`
-	Code          *int32  `json:"Code,omitempty" xml:"Code,omitempty"`
-	Message       *string `json:"Message,omitempty" xml:"Message,omitempty"`
-	RequestId     *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The HTTP status code that is returned.
+	Code *int32 `json:"Code,omitempty" xml:"Code,omitempty"`
+	// The message that is returned.
+	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// The ID of the request.
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
 func (s ScaleK8sApplicationResponseBody) String() string {
@@ -22265,9 +26162,12 @@ func (s *ScaleK8sApplicationResponse) SetBody(v *ScaleK8sApplicationResponseBody
 }
 
 type ScaleOutApplicationRequest struct {
-	AppId       *string `json:"AppId,omitempty" xml:"AppId,omitempty"`
+	// The ID of the application that you want to scale out. You can call the ListApplication operation to query the application ID. For more information, see [ListApplication](~~149390~~).
+	AppId *string `json:"AppId,omitempty" xml:"AppId,omitempty"`
+	// The ID of the instance group where the application you want to scale out is deployed. You can call the QueryApplicationStatus operation to query the group ID. For more information, see [QueryApplicationStatus](~~149394~~).
 	DeployGroup *string `json:"DeployGroup,omitempty" xml:"DeployGroup,omitempty"`
-	EcuInfo     *string `json:"EcuInfo,omitempty" xml:"EcuInfo,omitempty"`
+	// The ID of the elastic compute unit (ECU) that corresponds to the Elastic Compute Service (ECS) instance to be added to the instance group for scale-out. You can call the ListScaleOutEcu operation to query the ECU ID. For more information, see [ListScaleOutEcu](~~149371~~). Separate multiple ECU IDs with commas (,).
+	EcuInfo *string `json:"EcuInfo,omitempty" xml:"EcuInfo,omitempty"`
 }
 
 func (s ScaleOutApplicationRequest) String() string {
@@ -22294,10 +26194,14 @@ func (s *ScaleOutApplicationRequest) SetEcuInfo(v string) *ScaleOutApplicationRe
 }
 
 type ScaleOutApplicationResponseBody struct {
+	// The ID of the change process. You can call the GetChangeOrderInfo operation to query the progress of this scale-out. For more information, see [GetChangeOrderInfo](~~62072~~).
 	ChangeOrderId *string `json:"ChangeOrderId,omitempty" xml:"ChangeOrderId,omitempty"`
-	Code          *int32  `json:"Code,omitempty" xml:"Code,omitempty"`
-	Message       *string `json:"Message,omitempty" xml:"Message,omitempty"`
-	RequestId     *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The HTTP status code that is returned.
+	Code *int32 `json:"Code,omitempty" xml:"Code,omitempty"`
+	// The additional information that is returned.
+	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// The ID of the request.
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
 func (s ScaleOutApplicationResponseBody) String() string {
@@ -22358,19 +26262,56 @@ func (s *ScaleOutApplicationResponse) SetBody(v *ScaleOutApplicationResponseBody
 }
 
 type ScaleoutApplicationWithNewInstancesRequest struct {
-	AppId                    *string `json:"AppId,omitempty" xml:"AppId,omitempty"`
-	AutoRenew                *bool   `json:"AutoRenew,omitempty" xml:"AutoRenew,omitempty"`
-	AutoRenewPeriod          *int32  `json:"AutoRenewPeriod,omitempty" xml:"AutoRenewPeriod,omitempty"`
-	ClusterId                *string `json:"ClusterId,omitempty" xml:"ClusterId,omitempty"`
-	GroupId                  *string `json:"GroupId,omitempty" xml:"GroupId,omitempty"`
-	InstanceChargePeriod     *int32  `json:"InstanceChargePeriod,omitempty" xml:"InstanceChargePeriod,omitempty"`
+	// The ID of the application that you want to scale out. You can call the ListApplication operation to query the application ID. For more information, see [ListApplication](~~149390~~).
+	AppId *string `json:"AppId,omitempty" xml:"AppId,omitempty"`
+	// Specifies whether to enable auto-renewal. This parameter takes effect only when the InstanceChargeType parameter is set to PrePaid. Valid values:
+	//
+	// *   true: enables auto-renewal.
+	// *   false: does not enable auto-renewal. This is the default value.
+	AutoRenew *bool `json:"AutoRenew,omitempty" xml:"AutoRenew,omitempty"`
+	// The auto-renewal period. Valid values:
+	//
+	// *   If the InstanceChargePeriodUnit parameter is set to Week, the valid values of the AutoRenewPeriod parameter are 1, 2, and 3.
+	// *   If the InstanceChargePeriodUnit parameter is set to Month, the valid values of the AutoRenewPeriod parameter are 1, 2, 3, 6, 12, 24, 36, 48, and 60.
+	//
+	// Default value: 1.
+	AutoRenewPeriod *int32 `json:"AutoRenewPeriod,omitempty" xml:"AutoRenewPeriod,omitempty"`
+	// The ID of the cluster to which you want to add ECS instances. If the application and application instance group for the scale-out are specified, this parameter is ignored.
+	ClusterId *string `json:"ClusterId,omitempty" xml:"ClusterId,omitempty"`
+	// The ID of the instance group that you want to scale out. You can call the ListDeployGroup operation to query the group ID. For more information, see [ListDeployGroup](~~62077~~).
+	GroupId *string `json:"GroupId,omitempty" xml:"GroupId,omitempty"`
+	// The duration of the subscription. The unit of the subscription duration is specified by the InstanceChargePeriodUnit parameter. This parameter takes effect only when the InstanceChargeType parameter is set to PrePaid.
+	//
+	// *   If the InstanceChargePeriodUnit parameter is set to Week, the valid values of the InstanceChargePeriod parameter are 1, 2, 3, and 4.
+	// *   If the InstanceChargePeriodUnit parameter is set to Month, the valid values of the InstanceChargePeriod parameter are 1, 2, 3, 4, 5, 6, 7, 8, 9, 12, 24, 36, 48, and 60.
+	InstanceChargePeriod *int32 `json:"InstanceChargePeriod,omitempty" xml:"InstanceChargePeriod,omitempty"`
+	// The unit of the subscription period. Valid values:
+	//
+	// *   Week: billed on a weekly basis.
+	// *   Month: billed on a monthly basis. This is the default value.
 	InstanceChargePeriodUnit *string `json:"InstanceChargePeriodUnit,omitempty" xml:"InstanceChargePeriodUnit,omitempty"`
-	InstanceChargeType       *string `json:"InstanceChargeType,omitempty" xml:"InstanceChargeType,omitempty"`
-	ScalingNum               *int32  `json:"ScalingNum,omitempty" xml:"ScalingNum,omitempty"`
-	ScalingPolicy            *string `json:"ScalingPolicy,omitempty" xml:"ScalingPolicy,omitempty"`
-	TemplateId               *string `json:"TemplateId,omitempty" xml:"TemplateId,omitempty"`
-	TemplateInstanceId       *string `json:"TemplateInstanceId,omitempty" xml:"TemplateInstanceId,omitempty"`
-	TemplateVersion          *string `json:"TemplateVersion,omitempty" xml:"TemplateVersion,omitempty"`
+	// The billing method of the instance. Valid values:
+	//
+	// *   PrePaid: subscription.
+	// *   PostPaid: pay-as-you-go. This is the default value.
+	InstanceChargeType *string `json:"InstanceChargeType,omitempty" xml:"InstanceChargeType,omitempty"`
+	// The number of instances to be added for the scale-out.
+	ScalingNum *int32 `json:"ScalingNum,omitempty" xml:"ScalingNum,omitempty"`
+	// The instance reclaim mode of the scaling group. Valid values:
+	//
+	// *   recycle: economical mode
+	// *   release: release mode
+	//
+	// For more information about how to remove instances from a specified scaling group, see [RemoveInstances](~~25955~~).
+	ScalingPolicy *string `json:"ScalingPolicy,omitempty" xml:"ScalingPolicy,omitempty"`
+	// The ID of the ECS instance launch template. You can call the DescribeLaunchTemplates operation to query the launch template ID. For more information, see [DescribeLaunchTemplates](~~73759~~).
+	TemplateId *string `json:"TemplateId,omitempty" xml:"TemplateId,omitempty"`
+	// The ID of the existing ECS instance used for the scale-out. If this parameter is specified, the specifications and configurations of the specified ECS instance are used as a template to purchase new instances.
+	TemplateInstanceId *string `json:"TemplateInstanceId,omitempty" xml:"TemplateInstanceId,omitempty"`
+	// The version of the ECS instance launch template. You can call the DescribeLaunchTemplateVersions operation to query the launch template version. For more information, see [DescribeLaunchTemplateVersions](~~73761~~).
+	//
+	// > If you set this parameter to `-1`, the default launch template version is used.
+	TemplateVersion *string `json:"TemplateVersion,omitempty" xml:"TemplateVersion,omitempty"`
 }
 
 func (s ScaleoutApplicationWithNewInstancesRequest) String() string {
@@ -22447,11 +26388,16 @@ func (s *ScaleoutApplicationWithNewInstancesRequest) SetTemplateVersion(v string
 }
 
 type ScaleoutApplicationWithNewInstancesResponseBody struct {
-	ChangeOrderId *string   `json:"ChangeOrderId,omitempty" xml:"ChangeOrderId,omitempty"`
-	Code          *int32    `json:"Code,omitempty" xml:"Code,omitempty"`
-	InstanceIds   []*string `json:"InstanceIds,omitempty" xml:"InstanceIds,omitempty" type:"Repeated"`
-	Message       *string   `json:"Message,omitempty" xml:"Message,omitempty"`
-	RequestId     *string   `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The ID of the change process for the scale-out.
+	ChangeOrderId *string `json:"ChangeOrderId,omitempty" xml:"ChangeOrderId,omitempty"`
+	// The HTTP status code that is returned.
+	Code *int32 `json:"Code,omitempty" xml:"Code,omitempty"`
+	// The IDs of ECS instances.
+	InstanceIds []*string `json:"InstanceIds,omitempty" xml:"InstanceIds,omitempty" type:"Repeated"`
+	// The additional information that is returned.
+	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// The ID of the request.
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
 func (s ScaleoutApplicationWithNewInstancesResponseBody) String() string {
@@ -22517,7 +26463,9 @@ func (s *ScaleoutApplicationWithNewInstancesResponse) SetBody(v *ScaleoutApplica
 }
 
 type StartApplicationRequest struct {
-	AppId   *string `json:"AppId,omitempty" xml:"AppId,omitempty"`
+	// The ID of the application. You can call the ListApplication operation to query the application ID. For more information, see [ListApplication](~~149390~~).
+	AppId *string `json:"AppId,omitempty" xml:"AppId,omitempty"`
+	// The ID of the elastic compute container (ECC) that corresponds to the Elastic Compute Service (ECS) instance on which you want to start the application. Separate multiple ECC IDs with commas (,). You can call the QueryApplicationStatus operation to query the ECC ID. For more information, see [QueryApplicationStatus](~~149394~~).
 	EccInfo *string `json:"EccInfo,omitempty" xml:"EccInfo,omitempty"`
 }
 
@@ -22540,10 +26488,14 @@ func (s *StartApplicationRequest) SetEccInfo(v string) *StartApplicationRequest 
 }
 
 type StartApplicationResponseBody struct {
+	// The ID of the change process for this operation. You can call the GetChangeOrderInfo operation to query the progress of this startup. For more information, see [GetChangeOrderInfo](~~62072~~).
 	ChangeOrderId *string `json:"ChangeOrderId,omitempty" xml:"ChangeOrderId,omitempty"`
-	Code          *int32  `json:"Code,omitempty" xml:"Code,omitempty"`
-	Message       *string `json:"Message,omitempty" xml:"Message,omitempty"`
-	RequestId     *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The HTTP status code that is returned.
+	Code *int32 `json:"Code,omitempty" xml:"Code,omitempty"`
+	// The additional information that is returned.
+	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// The ID of the request.
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
 func (s StartApplicationResponseBody) String() string {
@@ -22604,28 +26556,98 @@ func (s *StartApplicationResponse) SetBody(v *StartApplicationResponseBody) *Sta
 }
 
 type StartK8sAppPrecheckRequest struct {
-	Annotations              *string `json:"Annotations,omitempty" xml:"Annotations,omitempty"`
-	AppId                    *string `json:"AppId,omitempty" xml:"AppId,omitempty"`
-	AppName                  *string `json:"AppName,omitempty" xml:"AppName,omitempty"`
-	ClusterId                *string `json:"ClusterId,omitempty" xml:"ClusterId,omitempty"`
-	ConfigMountDescs         *string `json:"ConfigMountDescs,omitempty" xml:"ConfigMountDescs,omitempty"`
-	EmptyDirs                *string `json:"EmptyDirs,omitempty" xml:"EmptyDirs,omitempty"`
-	EnvFroms                 *string `json:"EnvFroms,omitempty" xml:"EnvFroms,omitempty"`
-	Envs                     *string `json:"Envs,omitempty" xml:"Envs,omitempty"`
-	ImageUrl                 *string `json:"ImageUrl,omitempty" xml:"ImageUrl,omitempty"`
-	JavaStartUpConfig        *string `json:"JavaStartUpConfig,omitempty" xml:"JavaStartUpConfig,omitempty"`
-	Labels                   *string `json:"Labels,omitempty" xml:"Labels,omitempty"`
-	LimitEphemeralStorage    *int32  `json:"LimitEphemeralStorage,omitempty" xml:"LimitEphemeralStorage,omitempty"`
-	LimitMem                 *int32  `json:"LimitMem,omitempty" xml:"LimitMem,omitempty"`
-	LimitmCpu                *int32  `json:"LimitmCpu,omitempty" xml:"LimitmCpu,omitempty"`
-	LocalVolume              *string `json:"LocalVolume,omitempty" xml:"LocalVolume,omitempty"`
-	Namespace                *string `json:"Namespace,omitempty" xml:"Namespace,omitempty"`
-	PackageUrl               *string `json:"PackageUrl,omitempty" xml:"PackageUrl,omitempty"`
-	PvcMountDescs            *string `json:"PvcMountDescs,omitempty" xml:"PvcMountDescs,omitempty"`
-	Replicas                 *int32  `json:"Replicas,omitempty" xml:"Replicas,omitempty"`
-	RequestsEphemeralStorage *int32  `json:"RequestsEphemeralStorage,omitempty" xml:"RequestsEphemeralStorage,omitempty"`
-	RequestsMem              *int32  `json:"RequestsMem,omitempty" xml:"RequestsMem,omitempty"`
-	RequestsmCpu             *int32  `json:"RequestsmCpu,omitempty" xml:"RequestsmCpu,omitempty"`
+	// The annotation of an application pod.
+	Annotations *string `json:"Annotations,omitempty" xml:"Annotations,omitempty"`
+	// The ID of the application.
+	AppId *string `json:"AppId,omitempty" xml:"AppId,omitempty"`
+	// The name of the application. The name must start with a letter, and can contain digits, letters, and hyphens (-). It can be up to 36 characters in length.
+	AppName *string `json:"AppName,omitempty" xml:"AppName,omitempty"`
+	// The ID of the cluster.
+	ClusterId    *string `json:"ClusterId,omitempty" xml:"ClusterId,omitempty"`
+	ComponentIds *string `json:"ComponentIds,omitempty" xml:"ComponentIds,omitempty"`
+	// The configuration for mounting a Kubernetes ConfigMap or Secret to a directory in an elastic container instance. The following parameters are included in the configuration:
+	//
+	// *   name: the name of the Kubernetes ConfigMap or Secret.
+	// *   type: the type of the API object that you want to mount. You can mount a Kubernetes ConfigMap or Secret.
+	// *   mountPath: the mount path. The mount path must be an absolute path that starts with a forward slash (/).
+	ConfigMountDescs *string `json:"ConfigMountDescs,omitempty" xml:"ConfigMountDescs,omitempty"`
+	// The configuration for mounting a Kubernetes emptyDir volume to a directory in an elastic container instance. The following parameters are included in the configuration:
+	//
+	// *   mountPath: The mount path in the container. This parameter is required.
+	// *   readOnly: (Optional) The mount mode. The value true indicates the read-only mode. The value false indicates the read and write mode. Default value: false.
+	// *   subPathExpr: (Optional) The regular expression that is used to match the subdirectory.
+	EmptyDirs *string `json:"EmptyDirs,omitempty" xml:"EmptyDirs,omitempty"`
+	// The Kubernetes environment variables that are configured in EnvFrom mode. A ConfigMap or Secret is mounted to a directory. Each key corresponds to a file in the directory, and the content of the file is the value of the key.
+	//
+	// The following parameters are included in the configuration:
+	//
+	// *   configMapRef: the ConfigMap that is referenced. The following parameter is contained:
+	//
+	//     *   name: the name of the ConfigMap.
+	//
+	// *   secretRef: the Secret that is referenced. The following parameter is contained:
+	//
+	//     *   name: the name of the Secret.
+	EnvFroms *string `json:"EnvFroms,omitempty" xml:"EnvFroms,omitempty"`
+	// The environment variables that are used to deploy the application. The value must be a JSON array. Valid values: regular environment variables, Kubernetes ConfigMap environment variables, and Kubernetes Secret environment variables. Specify regular environment variables in the following format:
+	//
+	// `{"name":"x", "value": "y"}`
+	//
+	// Specify Kubernetes ConfigMap environment variables in the following format to reference values from ConfigMaps:
+	//
+	// `{ "name": "x2", "valueFrom": { "configMapKeyRef": { "name": "my-config", "key": "y2" } } }`
+	//
+	// Specify Kubernetes Secret environment variables in the following format to reference values from Secrets:
+	//
+	// `{ "name": "x3", "valueFrom": { "secretKeyRef": { "name": "my-secret", "key": "y3" } } }`
+	//
+	// > If you want to cancel this configuration, set this parameter to an empty JSON array, which is in the format of "\[]".
+	Envs *string `json:"Envs,omitempty" xml:"Envs,omitempty"`
+	// The URL of the image.
+	ImageUrl *string `json:"ImageUrl,omitempty" xml:"ImageUrl,omitempty"`
+	// The configuration of Java startup parameters for a Java application. These startup parameters involve the memory, application, garbage collection (GC) policy, tools, service registration and discovery, and custom configurations. Proper parameter settings help reduce the GC overheads, shorten the server response time, and improve the throughput. Set this parameter to a JSON string. In the example, original indicates the configuration value, and startup indicates a startup parameter. The system automatically concatenates all startup values as the settings of Java startup parameters for the application. To delete this configuration, leave the parameter value empty by entering `""` or `"{}"`. The following parameters are included in the configuration:
+	//
+	// *   InitialHeapSize: the initial size of the heap memory.
+	// *   MaxHeapSize: the maximum size of the heap memory.
+	// *   CustomParams: the custom parameters, such as JVM -D parameters.
+	// *   Other parameters: You can view the JSON structure submitted by the frontend.
+	JavaStartUpConfig *string `json:"JavaStartUpConfig,omitempty" xml:"JavaStartUpConfig,omitempty"`
+	// The label of an application pod.
+	Labels *string `json:"Labels,omitempty" xml:"Labels,omitempty"`
+	// The maximum size of space required by ephemeral storage. Unit: GB. The value 0 indicates that no limit is set on the ephemeral storage space.
+	LimitEphemeralStorage *int32 `json:"LimitEphemeralStorage,omitempty" xml:"LimitEphemeralStorage,omitempty"`
+	// The maximum size of memory allowed for each application instance when the application is running. Unit: MB. The value of LimitMem must be greater than or equal to that of RequestsMem.
+	LimitMem *int32 `json:"LimitMem,omitempty" xml:"LimitMem,omitempty"`
+	// The maximum number of CPU cores allowed for each application instance when the application is running. Unit: millicores. The value 0 indicates that no limit is set on CPU cores.
+	LimitmCpu *int32 `json:"LimitmCpu,omitempty" xml:"LimitmCpu,omitempty"`
+	// The configurations that are used when the host files are mounted to the container on which the application is running. Example: `\[{"type":"","nodePath":"/localfiles","mountPath":"/app/files"},{"type":"Directory","nodePath":"/mnt","mountPath":"/app/storage"}\]`. Description:
+	//
+	// *   `nodePath`: the host path.
+	// *   `mountPath`: the path in the container.
+	// *   `type`: the mounting type.
+	LocalVolume *string `json:"LocalVolume,omitempty" xml:"LocalVolume,omitempty"`
+	// The namespace of the Kubernetes cluster. This parameter specifies the Kubernetes namespace in which your application is deployed. By default, the default namespace is used.
+	Namespace *string `json:"Namespace,omitempty" xml:"Namespace,omitempty"`
+	// The URL of the deployment package.
+	PackageUrl *string `json:"PackageUrl,omitempty" xml:"PackageUrl,omitempty"`
+	// The configuration for mounting a Kubernetes PersistentVolumeClaim (PVC) to a directory in an elastic container instance. The following parameters are included in the configuration:
+	//
+	// *   pvcName: the name of the PVC. Make sure that the volume exists and is in the Bound state.
+	//
+	// *   mountPaths: the directory to which you want to mount the PVC. You can configure multiple directories. You can set the following two parameters for each mount directory:
+	//
+	//     *   mountPath: the mount path. The mount path must be an absolute path that starts with a forward slash (/).
+	//     *   readOnly: the mount mode. The value true indicates the read-only mode. The value false indicates the read and write mode. Default value: false.
+	PvcMountDescs *string `json:"PvcMountDescs,omitempty" xml:"PvcMountDescs,omitempty"`
+	RegionId      *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	// The number of application instances.
+	Replicas *int32 `json:"Replicas,omitempty" xml:"Replicas,omitempty"`
+	// The minimum size of space required by ephemeral storage. Unit: GB. The value 0 indicates that no limit is set on the ephemeral storage space.
+	RequestsEphemeralStorage *int32 `json:"RequestsEphemeralStorage,omitempty" xml:"RequestsEphemeralStorage,omitempty"`
+	// The maximum size of memory allowed for each application instance when the application is created. Unit: MB. The value 0 indicates that no limit is set on the memory size. The value of RequestsMem cannot be greater than that of LimitMem.
+	RequestsMem *int32 `json:"RequestsMem,omitempty" xml:"RequestsMem,omitempty"`
+	// The maximum number of CPU cores allowed for each application instance when the application is created. Unit: millicores.
+	RequestsmCpu *int32 `json:"RequestsmCpu,omitempty" xml:"RequestsmCpu,omitempty"`
 }
 
 func (s StartK8sAppPrecheckRequest) String() string {
@@ -22653,6 +26675,11 @@ func (s *StartK8sAppPrecheckRequest) SetAppName(v string) *StartK8sAppPrecheckRe
 
 func (s *StartK8sAppPrecheckRequest) SetClusterId(v string) *StartK8sAppPrecheckRequest {
 	s.ClusterId = &v
+	return s
+}
+
+func (s *StartK8sAppPrecheckRequest) SetComponentIds(v string) *StartK8sAppPrecheckRequest {
+	s.ComponentIds = &v
 	return s
 }
 
@@ -22726,6 +26753,11 @@ func (s *StartK8sAppPrecheckRequest) SetPvcMountDescs(v string) *StartK8sAppPrec
 	return s
 }
 
+func (s *StartK8sAppPrecheckRequest) SetRegionId(v string) *StartK8sAppPrecheckRequest {
+	s.RegionId = &v
+	return s
+}
+
 func (s *StartK8sAppPrecheckRequest) SetReplicas(v int32) *StartK8sAppPrecheckRequest {
 	s.Replicas = &v
 	return s
@@ -22747,10 +26779,14 @@ func (s *StartK8sAppPrecheckRequest) SetRequestsmCpu(v int32) *StartK8sAppPreche
 }
 
 type StartK8sAppPrecheckResponseBody struct {
-	Code      *int32                               `json:"Code,omitempty" xml:"Code,omitempty"`
-	Data      *StartK8sAppPrecheckResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
-	Message   *string                              `json:"Message,omitempty" xml:"Message,omitempty"`
-	RequestId *string                              `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The HTTP status code.
+	Code *int32 `json:"Code,omitempty" xml:"Code,omitempty"`
+	// The returned data.
+	Data *StartK8sAppPrecheckResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
+	// The returned message.
+	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// The ID of the request.
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
 func (s StartK8sAppPrecheckResponseBody) String() string {
@@ -22782,6 +26818,7 @@ func (s *StartK8sAppPrecheckResponseBody) SetRequestId(v string) *StartK8sAppPre
 }
 
 type StartK8sAppPrecheckResponseBodyData struct {
+	// The jobs and the details about the jobs.
 	Jobs []*string `json:"Jobs,omitempty" xml:"Jobs,omitempty" type:"Repeated"`
 }
 
@@ -22828,9 +26865,12 @@ func (s *StartK8sAppPrecheckResponse) SetBody(v *StartK8sAppPrecheckResponseBody
 }
 
 type StartK8sApplicationRequest struct {
-	AppId    *string `json:"AppId,omitempty" xml:"AppId,omitempty"`
-	Replicas *int32  `json:"Replicas,omitempty" xml:"Replicas,omitempty"`
-	Timeout  *int32  `json:"Timeout,omitempty" xml:"Timeout,omitempty"`
+	// The ID of the application. You can query the application ID by calling the ListApplication operation. For more information, see [ListApplication](~~149390~~).
+	AppId *string `json:"AppId,omitempty" xml:"AppId,omitempty"`
+	// The number of instances on which you want to start the application.
+	Replicas *int32 `json:"Replicas,omitempty" xml:"Replicas,omitempty"`
+	// The timeout period of the change process. Valid values: 1 to 1800. Default value: 600. Unit: seconds.
+	Timeout *int32 `json:"Timeout,omitempty" xml:"Timeout,omitempty"`
 }
 
 func (s StartK8sApplicationRequest) String() string {
@@ -22857,10 +26897,14 @@ func (s *StartK8sApplicationRequest) SetTimeout(v int32) *StartK8sApplicationReq
 }
 
 type StartK8sApplicationResponseBody struct {
+	// The ID of the change process.
 	ChangeOrderId *string `json:"ChangeOrderId,omitempty" xml:"ChangeOrderId,omitempty"`
-	Code          *int32  `json:"Code,omitempty" xml:"Code,omitempty"`
-	Message       *string `json:"Message,omitempty" xml:"Message,omitempty"`
-	RequestId     *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The HTTP status code that is returned.
+	Code *int32 `json:"Code,omitempty" xml:"Code,omitempty"`
+	// The additional information that is returned.
+	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// The ID of the request.
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
 func (s StartK8sApplicationResponseBody) String() string {
@@ -22921,7 +26965,12 @@ func (s *StartK8sApplicationResponse) SetBody(v *StartK8sApplicationResponseBody
 }
 
 type StopApplicationRequest struct {
-	AppId   *string `json:"AppId,omitempty" xml:"AppId,omitempty"`
+	// The ID of the application. You can call the ListApplication operation to query the application ID. For more information, see [ListApplication](~~149390~~).
+	AppId *string `json:"AppId,omitempty" xml:"AppId,omitempty"`
+	// The ID of the elastic compute container (ECC) that corresponds to the Elastic Compute Service (ECS) instance on which you want to stop the application. You can call the QueryApplicationStatus operation to query the ECC ID. For more information, see [QueryApplicationStatus](~~149394~~).
+	//
+	// *   If you want to stop the application on multiple ECS instances, separate the ECC IDs with commas (,).
+	// *   If you leave this parameter empty, the application will be stopped on all ECS instances.
 	EccInfo *string `json:"EccInfo,omitempty" xml:"EccInfo,omitempty"`
 }
 
@@ -22944,10 +26993,14 @@ func (s *StopApplicationRequest) SetEccInfo(v string) *StopApplicationRequest {
 }
 
 type StopApplicationResponseBody struct {
+	// The ID of the change process. You can call the GetChangeOrderInfo operation to query the details about the change process. For more information, see [GetChangeOrderInfo](~~62072~~).
 	ChangeOrderId *string `json:"ChangeOrderId,omitempty" xml:"ChangeOrderId,omitempty"`
-	Code          *int32  `json:"Code,omitempty" xml:"Code,omitempty"`
-	Message       *string `json:"Message,omitempty" xml:"Message,omitempty"`
-	RequestId     *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The HTTP status code that is returned.
+	Code *int32 `json:"Code,omitempty" xml:"Code,omitempty"`
+	// The additional information that is returned.
+	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// The ID of the request.
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
 func (s StopApplicationResponseBody) String() string {
@@ -23008,8 +27061,10 @@ func (s *StopApplicationResponse) SetBody(v *StopApplicationResponseBody) *StopA
 }
 
 type StopK8sApplicationRequest struct {
-	AppId   *string `json:"AppId,omitempty" xml:"AppId,omitempty"`
-	Timeout *int32  `json:"Timeout,omitempty" xml:"Timeout,omitempty"`
+	// The ID of the application. You can query the application ID by calling the ListApplication operation. For more information, see [ListApplication](~~149390~~).
+	AppId *string `json:"AppId,omitempty" xml:"AppId,omitempty"`
+	// The timeout period of the change process. Unit: seconds.
+	Timeout *int32 `json:"Timeout,omitempty" xml:"Timeout,omitempty"`
 }
 
 func (s StopK8sApplicationRequest) String() string {
@@ -23031,10 +27086,14 @@ func (s *StopK8sApplicationRequest) SetTimeout(v int32) *StopK8sApplicationReque
 }
 
 type StopK8sApplicationResponseBody struct {
+	// The ID of the change process.
 	ChangeOrderId *string `json:"ChangeOrderId,omitempty" xml:"ChangeOrderId,omitempty"`
-	Code          *int32  `json:"Code,omitempty" xml:"Code,omitempty"`
-	Message       *string `json:"Message,omitempty" xml:"Message,omitempty"`
-	RequestId     *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The HTTP status code that is returned.
+	Code *int32 `json:"Code,omitempty" xml:"Code,omitempty"`
+	// The additional information that is returned.
+	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// The ID of the request.
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
 func (s StopK8sApplicationResponseBody) String() string {
@@ -23095,8 +27154,15 @@ func (s *StopK8sApplicationResponse) SetBody(v *StopK8sApplicationResponseBody) 
 }
 
 type SwitchAdvancedMonitoringRequest struct {
-	AppId                    *string `json:"AppId,omitempty" xml:"AppId,omitempty"`
-	EnableAdvancedMonitoring *bool   `json:"EnableAdvancedMonitoring,omitempty" xml:"EnableAdvancedMonitoring,omitempty"`
+	// The ID of the application for which you want to query or configure the advanced application monitoring feature.
+	AppId *string `json:"AppId,omitempty" xml:"AppId,omitempty"`
+	// Specifies whether to enable the advanced application monitoring feature. Valid values:
+	//
+	// *   true: enables the advanced application monitoring feature.
+	// *   false: disables the advanced application monitoring feature.
+	//
+	// If you call this operation to query the status of the advanced application monitoring feature, you do not need to specify this parameter.
+	EnableAdvancedMonitoring *bool `json:"EnableAdvancedMonitoring,omitempty" xml:"EnableAdvancedMonitoring,omitempty"`
 }
 
 func (s SwitchAdvancedMonitoringRequest) String() string {
@@ -23118,10 +27184,17 @@ func (s *SwitchAdvancedMonitoringRequest) SetEnableAdvancedMonitoring(v bool) *S
 }
 
 type SwitchAdvancedMonitoringResponseBody struct {
-	AdvancedMonitoringEnabled *bool   `json:"AdvancedMonitoringEnabled,omitempty" xml:"AdvancedMonitoringEnabled,omitempty"`
-	Code                      *int32  `json:"Code,omitempty" xml:"Code,omitempty"`
-	Message                   *string `json:"Message,omitempty" xml:"Message,omitempty"`
-	RequestId                 *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// Indicates whether the advanced application monitoring feature is enabled. Valid values:
+	//
+	// *   true: The advanced application monitoring feature is enabled.
+	// *   false: The advanced application monitoring feature is disabled.
+	AdvancedMonitoringEnabled *bool `json:"AdvancedMonitoringEnabled,omitempty" xml:"AdvancedMonitoringEnabled,omitempty"`
+	// The HTTP status code that is returned.
+	Code *int32 `json:"Code,omitempty" xml:"Code,omitempty"`
+	// The additional information that is returned.
+	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// The ID of the request.
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
 func (s SwitchAdvancedMonitoringResponseBody) String() string {
@@ -23182,8 +27255,10 @@ func (s *SwitchAdvancedMonitoringResponse) SetBody(v *SwitchAdvancedMonitoringRe
 }
 
 type SynchronizeResourceRequest struct {
+	// The ID of the resource. This parameter is required only when you set the Type parameter to `ecs`. If you specify multiple IDs, separate them with commas (,). You can synchronize up to 50 resources at a time.
 	ResourceIds *string `json:"ResourceIds,omitempty" xml:"ResourceIds,omitempty"`
-	Type        *string `json:"Type,omitempty" xml:"Type,omitempty"`
+	// The type of the resource to be synchronized. Valid values: `ecs, slb, vpc, ram, and all`. These values are case-sensitive.
+	Type *string `json:"Type,omitempty" xml:"Type,omitempty"`
 }
 
 func (s SynchronizeResourceRequest) String() string {
@@ -23205,11 +27280,19 @@ func (s *SynchronizeResourceRequest) SetType(v string) *SynchronizeResourceReque
 }
 
 type SynchronizeResourceResponseBody struct {
-	Code      *int32  `json:"Code,omitempty" xml:"Code,omitempty"`
-	Data      *string `json:"Data,omitempty" xml:"Data,omitempty"`
-	Message   *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// The HTTP status code that is returned.
+	Code *int32 `json:"Code,omitempty" xml:"Code,omitempty"`
+	// The data returned for the request.
+	Data *string `json:"Data,omitempty" xml:"Data,omitempty"`
+	// The message that is returned.
+	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// The ID of the request.
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	Success   *bool   `json:"Success,omitempty" xml:"Success,omitempty"`
+	// Indicates whether the resources are synchronized. Valid values:
+	//
+	// *   **true**: The resources are synchronized.
+	// *   **false**: The resources fail to be synchronized.
+	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
 }
 
 func (s SynchronizeResourceResponseBody) String() string {
@@ -23275,10 +27358,22 @@ func (s *SynchronizeResourceResponse) SetBody(v *SynchronizeResourceResponseBody
 }
 
 type TagResourcesRequest struct {
-	ResourceIds      *string `json:"ResourceIds,omitempty" xml:"ResourceIds,omitempty"`
+	// The IDs of the resources. You can specify up to 20 IDs in the format of a JSON array.
+	ResourceIds *string `json:"ResourceIds,omitempty" xml:"ResourceIds,omitempty"`
+	// The region in which the resource resides.
 	ResourceRegionId *string `json:"ResourceRegionId,omitempty" xml:"ResourceRegionId,omitempty"`
-	ResourceType     *string `json:"ResourceType,omitempty" xml:"ResourceType,omitempty"`
-	Tags             *string `json:"Tags,omitempty" xml:"Tags,omitempty"`
+	// The type of the resource. Valid values:
+	//
+	// *   **application**: Enterprise Distributed Application Service (EDAS) application
+	// *   **cluster**: EDAS cluster
+	ResourceType *string `json:"ResourceType,omitempty" xml:"ResourceType,omitempty"`
+	// The key-value pairs. When you set this parameter, take note of the following limits:
+	//
+	// *   You can add up to 20 tags to a resource.
+	// *   The tag key cannot start with **aliyun** or **acs:**. It cannot contain **http://** or **https://**.
+	// *   The tag key or tag value can be up to 128 characters in length, and can contain letters, digits, hyphens (-), commas (,), asterisks (\*), forward slashes (/), question marks (?), and colons (:).
+	// *   Set this parameter to a JSON array.
+	Tags *string `json:"Tags,omitempty" xml:"Tags,omitempty"`
 }
 
 func (s TagResourcesRequest) String() string {
@@ -23310,8 +27405,11 @@ func (s *TagResourcesRequest) SetTags(v string) *TagResourcesRequest {
 }
 
 type TagResourcesResponseBody struct {
-	Code      *int32  `json:"Code,omitempty" xml:"Code,omitempty"`
-	Message   *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// The HTTP status code that is returned.
+	Code *int32 `json:"Code,omitempty" xml:"Code,omitempty"`
+	// The additional information that is returned.
+	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// The ID of the request.
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -23368,8 +27466,14 @@ func (s *TagResourcesResponse) SetBody(v *TagResourcesResponseBody) *TagResource
 }
 
 type TransformClusterMemberRequest struct {
-	InstanceIds     *string `json:"InstanceIds,omitempty" xml:"InstanceIds,omitempty"`
-	Password        *string `json:"Password,omitempty" xml:"Password,omitempty"`
+	// The ID of the instance that you want to import or migrate. Separate multiple IDs with commas (,).
+	//
+	// *   An instance may not belong to a cluster, but an instance can belong to only one cluster at most.
+	// *   The ECS instances and the destination cluster must be in the same virtual private cloud (VPC).
+	InstanceIds *string `json:"InstanceIds,omitempty" xml:"InstanceIds,omitempty"`
+	// The logon password of the ECS instance that you want to import or migrate to the cluster.
+	Password *string `json:"Password,omitempty" xml:"Password,omitempty"`
+	// The ID of the destination cluster.
 	TargetClusterId *string `json:"TargetClusterId,omitempty" xml:"TargetClusterId,omitempty"`
 }
 
@@ -23397,9 +27501,13 @@ func (s *TransformClusterMemberRequest) SetTargetClusterId(v string) *TransformC
 }
 
 type TransformClusterMemberResponseBody struct {
-	Code      *int32  `json:"Code,omitempty" xml:"Code,omitempty"`
-	Data      *string `json:"Data,omitempty" xml:"Data,omitempty"`
-	Message   *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// The HTTP status code that is returned.
+	Code *int32 `json:"Code,omitempty" xml:"Code,omitempty"`
+	// `Transform submit success!` is returned if the request is successful.
+	Data *string `json:"Data,omitempty" xml:"Data,omitempty"`
+	// The additional information that is returned.
+	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// The ID of the request.
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -23461,10 +27569,17 @@ func (s *TransformClusterMemberResponse) SetBody(v *TransformClusterMemberRespon
 }
 
 type UnbindK8sSlbRequest struct {
-	AppId     *string `json:"AppId,omitempty" xml:"AppId,omitempty"`
+	// The ID of the application. You can call the ListApplication operation to query the application ID. For more information, see [ListApplication](~~149390~~).
+	AppId *string `json:"AppId,omitempty" xml:"AppId,omitempty"`
+	// The ID of the cluster. You can call the GetK8sCluster operation to query the cluster ID. For more information, see [GetK8sCluster](~~181437~~).
 	ClusterId *string `json:"ClusterId,omitempty" xml:"ClusterId,omitempty"`
-	SlbName   *string `json:"SlbName,omitempty" xml:"SlbName,omitempty"`
-	Type      *string `json:"Type,omitempty" xml:"Type,omitempty"`
+	// The name of the SLB instance.
+	SlbName *string `json:"SlbName,omitempty" xml:"SlbName,omitempty"`
+	// The type of the SLB instance. Valid values:
+	//
+	// *   **internet**: Internet-facing SLB instance
+	// *   **intranet**: internal-facing SLB instance
+	Type *string `json:"Type,omitempty" xml:"Type,omitempty"`
 }
 
 func (s UnbindK8sSlbRequest) String() string {
@@ -23496,10 +27611,14 @@ func (s *UnbindK8sSlbRequest) SetType(v string) *UnbindK8sSlbRequest {
 }
 
 type UnbindK8sSlbResponseBody struct {
+	// The ID of the change process.
 	ChangeOrderId *string `json:"ChangeOrderId,omitempty" xml:"ChangeOrderId,omitempty"`
-	Code          *int32  `json:"Code,omitempty" xml:"Code,omitempty"`
-	Message       *string `json:"Message,omitempty" xml:"Message,omitempty"`
-	RequestId     *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The HTTP status code that is returned.
+	Code *int32 `json:"Code,omitempty" xml:"Code,omitempty"`
+	// The message that is returned.
+	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// The ID of the request.
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
 func (s UnbindK8sSlbResponseBody) String() string {
@@ -23560,10 +27679,20 @@ func (s *UnbindK8sSlbResponse) SetBody(v *UnbindK8sSlbResponseBody) *UnbindK8sSl
 }
 
 type UnbindSlbRequest struct {
-	AppId          *string `json:"AppId,omitempty" xml:"AppId,omitempty"`
+	// The ID of the application.
+	AppId *string `json:"AppId,omitempty" xml:"AppId,omitempty"`
+	// Specifies whether to remove the configured listeners. Valid values:
+	//
+	// *   true: removes the configured listeners.
+	// *   false: does not remove the configured listeners.
 	DeleteListener *string `json:"DeleteListener,omitempty" xml:"DeleteListener,omitempty"`
-	SlbId          *string `json:"SlbId,omitempty" xml:"SlbId,omitempty"`
-	Type           *string `json:"Type,omitempty" xml:"Type,omitempty"`
+	// The ID of the SLB instance.
+	SlbId *string `json:"SlbId,omitempty" xml:"SlbId,omitempty"`
+	// The network type of the SLB instance. Valid values:
+	//
+	// *   **internet**: Internet-facing SLB instance
+	// *   **intranet**: internal-facing SLB instance
+	Type *string `json:"Type,omitempty" xml:"Type,omitempty"`
 }
 
 func (s UnbindSlbRequest) String() string {
@@ -23595,9 +27724,13 @@ func (s *UnbindSlbRequest) SetType(v string) *UnbindSlbRequest {
 }
 
 type UnbindSlbResponseBody struct {
-	Code      *int32  `json:"Code,omitempty" xml:"Code,omitempty"`
-	Data      *string `json:"Data,omitempty" xml:"Data,omitempty"`
-	Message   *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// The HTTP status code that is returned.
+	Code *int32 `json:"Code,omitempty" xml:"Code,omitempty"`
+	// This parameter is left empty. It has no meaning.
+	Data *string `json:"Data,omitempty" xml:"Data,omitempty"`
+	// The message that is returned.
+	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// The ID of the request.
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -23659,11 +27792,24 @@ func (s *UnbindSlbResponse) SetBody(v *UnbindSlbResponseBody) *UnbindSlbResponse
 }
 
 type UntagResourcesRequest struct {
-	DeleteAll        *bool   `json:"DeleteAll,omitempty" xml:"DeleteAll,omitempty"`
-	ResourceIds      *string `json:"ResourceIds,omitempty" xml:"ResourceIds,omitempty"`
+	// Specifies whether to remove all existing tags from the specified resources. Default value: false. Valid values:
+	//
+	// *   **true**: removes all existing tags from the specified resources.
+	// *   **false**: does not remove all existing tags from the specified resources.
+	//
+	// > All existing tags of a resource are removed only if the **tagKeys** parameter is left empty and the **DeleteAll** parameter is set to true.
+	DeleteAll *bool `json:"DeleteAll,omitempty" xml:"DeleteAll,omitempty"`
+	// The IDs of the resources from which you want to remove tags. You can specify up to 20 IDs.
+	ResourceIds *string `json:"ResourceIds,omitempty" xml:"ResourceIds,omitempty"`
+	// The region in which the resource resides.
 	ResourceRegionId *string `json:"ResourceRegionId,omitempty" xml:"ResourceRegionId,omitempty"`
-	ResourceType     *string `json:"ResourceType,omitempty" xml:"ResourceType,omitempty"`
-	TagKeys          *string `json:"TagKeys,omitempty" xml:"TagKeys,omitempty"`
+	// The type of the resource. Valid values:
+	//
+	// *   **application**: Enterprise Distributed Application Service (EDAS) application
+	// *   **cluster**: EDAS cluster
+	ResourceType *string `json:"ResourceType,omitempty" xml:"ResourceType,omitempty"`
+	// The tags that you want to remove. You can specify up to 20 tags. Set this parameter to a JSON array.
+	TagKeys *string `json:"TagKeys,omitempty" xml:"TagKeys,omitempty"`
 }
 
 func (s UntagResourcesRequest) String() string {
@@ -23700,8 +27846,11 @@ func (s *UntagResourcesRequest) SetTagKeys(v string) *UntagResourcesRequest {
 }
 
 type UntagResourcesResponseBody struct {
-	Code      *int32  `json:"Code,omitempty" xml:"Code,omitempty"`
-	Message   *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// The HTTP status code that is returned.
+	Code *int32 `json:"Code,omitempty" xml:"Code,omitempty"`
+	// The additional information that is returned.
+	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// The ID of the request.
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -23758,8 +27907,11 @@ func (s *UntagResourcesResponse) SetBody(v *UntagResourcesResponseBody) *UntagRe
 }
 
 type UpdateAccountInfoRequest struct {
-	Email     *string `json:"Email,omitempty" xml:"Email,omitempty"`
-	Name      *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// The email address of the account.
+	Email *string `json:"Email,omitempty" xml:"Email,omitempty"`
+	// The name of the account.
+	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// The contact information of the account.
 	Telephone *string `json:"Telephone,omitempty" xml:"Telephone,omitempty"`
 }
 
@@ -23787,8 +27939,11 @@ func (s *UpdateAccountInfoRequest) SetTelephone(v string) *UpdateAccountInfoRequ
 }
 
 type UpdateAccountInfoResponseBody struct {
-	Code      *int32  `json:"Code,omitempty" xml:"Code,omitempty"`
-	Message   *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// The HTTP status code that is returned.
+	Code *int32 `json:"Code,omitempty" xml:"Code,omitempty"`
+	// The message that is returned.
+	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// The ID of the request.
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -23845,10 +28000,14 @@ func (s *UpdateAccountInfoResponse) SetBody(v *UpdateAccountInfoResponseBody) *U
 }
 
 type UpdateApplicationBaseInfoRequest struct {
-	AppId   *string `json:"AppId,omitempty" xml:"AppId,omitempty"`
+	// The ID of the application.
+	AppId *string `json:"AppId,omitempty" xml:"AppId,omitempty"`
+	// The name of the application. The name must start with a letter, and can contain letters, digits, underscores (\_), and hyphens (-). The name can be up to 36 characters in length.
 	AppName *string `json:"AppName,omitempty" xml:"AppName,omitempty"`
-	Desc    *string `json:"Desc,omitempty" xml:"Desc,omitempty"`
-	Owner   *string `json:"Owner,omitempty" xml:"Owner,omitempty"`
+	// The description of the application. The description can be up to 256 characters in length.
+	Desc *string `json:"Desc,omitempty" xml:"Desc,omitempty"`
+	// The owner of the application. The value can be up to 127 characters in length.
+	Owner *string `json:"Owner,omitempty" xml:"Owner,omitempty"`
 }
 
 func (s UpdateApplicationBaseInfoRequest) String() string {
@@ -23880,10 +28039,14 @@ func (s *UpdateApplicationBaseInfoRequest) SetOwner(v string) *UpdateApplication
 }
 
 type UpdateApplicationBaseInfoResponseBody struct {
+	// The applications that you want to modify.
 	Applcation *UpdateApplicationBaseInfoResponseBodyApplcation `json:"Applcation,omitempty" xml:"Applcation,omitempty" type:"Struct"`
-	Code       *int32                                           `json:"Code,omitempty" xml:"Code,omitempty"`
-	Message    *string                                          `json:"Message,omitempty" xml:"Message,omitempty"`
-	RequestId  *string                                          `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The HTTP status code that is returned.
+	Code *int32 `json:"Code,omitempty" xml:"Code,omitempty"`
+	// The message that is returned.
+	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// The ID of the request.
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
 func (s UpdateApplicationBaseInfoResponseBody) String() string {
@@ -23915,31 +28078,68 @@ func (s *UpdateApplicationBaseInfoResponseBody) SetRequestId(v string) *UpdateAp
 }
 
 type UpdateApplicationBaseInfoResponseBodyApplcation struct {
-	AppId                *string `json:"AppId,omitempty" xml:"AppId,omitempty"`
-	ApplicationType      *string `json:"ApplicationType,omitempty" xml:"ApplicationType,omitempty"`
-	BuildPackageId       *int64  `json:"BuildPackageId,omitempty" xml:"BuildPackageId,omitempty"`
-	ClusterId            *string `json:"ClusterId,omitempty" xml:"ClusterId,omitempty"`
-	ClusterType          *int32  `json:"ClusterType,omitempty" xml:"ClusterType,omitempty"`
-	Cpu                  *int32  `json:"Cpu,omitempty" xml:"Cpu,omitempty"`
-	CreateTime           *int64  `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
-	Description          *string `json:"Description,omitempty" xml:"Description,omitempty"`
-	Dockerize            *bool   `json:"Dockerize,omitempty" xml:"Dockerize,omitempty"`
-	ExtSlbId             *string `json:"ExtSlbId,omitempty" xml:"ExtSlbId,omitempty"`
-	ExtSlbIp             *string `json:"ExtSlbIp,omitempty" xml:"ExtSlbIp,omitempty"`
-	ExtSlbName           *string `json:"ExtSlbName,omitempty" xml:"ExtSlbName,omitempty"`
-	HealthCheckUrl       *string `json:"HealthCheckUrl,omitempty" xml:"HealthCheckUrl,omitempty"`
-	InstanceCount        *int32  `json:"InstanceCount,omitempty" xml:"InstanceCount,omitempty"`
-	Memory               *int32  `json:"Memory,omitempty" xml:"Memory,omitempty"`
-	Name                 *string `json:"Name,omitempty" xml:"Name,omitempty"`
-	Owner                *string `json:"Owner,omitempty" xml:"Owner,omitempty"`
-	Port                 *int32  `json:"Port,omitempty" xml:"Port,omitempty"`
-	RegionId             *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	RunningInstanceCount *int32  `json:"RunningInstanceCount,omitempty" xml:"RunningInstanceCount,omitempty"`
-	SlbId                *string `json:"SlbId,omitempty" xml:"SlbId,omitempty"`
-	SlbIp                *string `json:"SlbIp,omitempty" xml:"SlbIp,omitempty"`
-	SlbName              *string `json:"SlbName,omitempty" xml:"SlbName,omitempty"`
-	SlbPort              *int32  `json:"SlbPort,omitempty" xml:"SlbPort,omitempty"`
-	UserId               *string `json:"UserId,omitempty" xml:"UserId,omitempty"`
+	// The ID of the application.
+	AppId *string `json:"AppId,omitempty" xml:"AppId,omitempty"`
+	// The deployment type of the application. Valid values:
+	//
+	// *   War: The application is deployed by using a WAR package.
+	// *   FatJar: The application is deployed by using a JAR package.
+	// *   Image: The application is deployed by using an image.
+	// *   If this parameter is empty, the application is not deployed.
+	ApplicationType *string `json:"ApplicationType,omitempty" xml:"ApplicationType,omitempty"`
+	// The build package number of Enterprise Distributed Application Service (EDAS) Container.
+	BuildPackageId *int64 `json:"BuildPackageId,omitempty" xml:"BuildPackageId,omitempty"`
+	// The ID of the cluster.
+	ClusterId *string `json:"ClusterId,omitempty" xml:"ClusterId,omitempty"`
+	// The type of the cluster. Valid values:
+	//
+	// *   0: normal Docker cluster
+	// *   1: Swarm cluster
+	// *   2: ECS cluster
+	// *   3: self-managed Kubernetes cluster in EDAS
+	// *   4: cluster in which Pandora automatically registers applications
+	// *   5: Container Service for Kubernetes (ACK) clusters
+	ClusterType *int32 `json:"ClusterType,omitempty" xml:"ClusterType,omitempty"`
+	// The number of CPU cores.
+	Cpu *int32 `json:"Cpu,omitempty" xml:"Cpu,omitempty"`
+	// The time when the application was created. This value is a UNIX timestamp representing the number of milliseconds that have elapsed since January 1, 1970, 00:00:00 UTC.
+	CreateTime *int64 `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
+	// The description of the application.
+	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
+	// Indicates whether the application is a Docker application.
+	Dockerize *bool `json:"Dockerize,omitempty" xml:"Dockerize,omitempty"`
+	// The ID of the Internet-facing SLB instance.
+	ExtSlbId *string `json:"ExtSlbId,omitempty" xml:"ExtSlbId,omitempty"`
+	// The IP address of the Internet-facing Server Load Balancer (SLB) instance.
+	ExtSlbIp *string `json:"ExtSlbIp,omitempty" xml:"ExtSlbIp,omitempty"`
+	// The name of the Internet-facing SLB instance.
+	ExtSlbName *string `json:"ExtSlbName,omitempty" xml:"ExtSlbName,omitempty"`
+	// The health check URL.
+	HealthCheckUrl *string `json:"HealthCheckUrl,omitempty" xml:"HealthCheckUrl,omitempty"`
+	// The number of application instances.
+	InstanceCount *int32 `json:"InstanceCount,omitempty" xml:"InstanceCount,omitempty"`
+	// The size of memory configured for an application instance. Unit: MB.
+	Memory *int32 `json:"Memory,omitempty" xml:"Memory,omitempty"`
+	// The name of the application.
+	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// The owner of the application.
+	Owner *string `json:"Owner,omitempty" xml:"Owner,omitempty"`
+	// The port used by the application.
+	Port *int32 `json:"Port,omitempty" xml:"Port,omitempty"`
+	// The ID of the region.
+	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	// The number of running application instances.
+	RunningInstanceCount *int32 `json:"RunningInstanceCount,omitempty" xml:"RunningInstanceCount,omitempty"`
+	// The ID of the internal-facing SLB instance.
+	SlbId *string `json:"SlbId,omitempty" xml:"SlbId,omitempty"`
+	// The IP address of the internal-facing SLB instance.
+	SlbIp *string `json:"SlbIp,omitempty" xml:"SlbIp,omitempty"`
+	// The name of the internal-facing SLB instance.
+	SlbName *string `json:"SlbName,omitempty" xml:"SlbName,omitempty"`
+	// The port used by the internal-facing SLB instance.
+	SlbPort *int32 `json:"SlbPort,omitempty" xml:"SlbPort,omitempty"`
+	// The ID of the Alibaba Cloud account.
+	UserId *string `json:"UserId,omitempty" xml:"UserId,omitempty"`
 }
 
 func (s UpdateApplicationBaseInfoResponseBodyApplcation) String() string {
@@ -24105,13 +28305,27 @@ func (s *UpdateApplicationBaseInfoResponse) SetBody(v *UpdateApplicationBaseInfo
 }
 
 type UpdateApplicationScalingRuleRequest struct {
-	AppId              *string `json:"AppId,omitempty" xml:"AppId,omitempty"`
-	ScalingRuleEnable  *bool   `json:"ScalingRuleEnable,omitempty" xml:"ScalingRuleEnable,omitempty"`
-	ScalingRuleMetric  *string `json:"ScalingRuleMetric,omitempty" xml:"ScalingRuleMetric,omitempty"`
-	ScalingRuleName    *string `json:"ScalingRuleName,omitempty" xml:"ScalingRuleName,omitempty"`
-	ScalingRuleTimer   *string `json:"ScalingRuleTimer,omitempty" xml:"ScalingRuleTimer,omitempty"`
+	// The ID of the application. You can call the ListApplication operation to query the application ID. For more information, see [ListApplication](~~149390~~).
+	AppId *string `json:"AppId,omitempty" xml:"AppId,omitempty"`
+	// The behavior of the auto scaling. See the example for the data structure.
+	ScalingBehaviour *string `json:"ScalingBehaviour,omitempty" xml:"ScalingBehaviour,omitempty"`
+	// Specifies whether to enable the auto scaling policy. Valid values:
+	//
+	// *   **true**: enables the auto scaling policy.
+	// *   **false**: disables the auto scaling policy.
+	ScalingRuleEnable *bool `json:"ScalingRuleEnable,omitempty" xml:"ScalingRuleEnable,omitempty"`
+	// This parameter is deprecated.
+	ScalingRuleMetric *string `json:"ScalingRuleMetric,omitempty" xml:"ScalingRuleMetric,omitempty"`
+	// The name of the auto scaling policy.
+	ScalingRuleName *string `json:"ScalingRuleName,omitempty" xml:"ScalingRuleName,omitempty"`
+	// This parameter is deprecated.
+	ScalingRuleTimer *string `json:"ScalingRuleTimer,omitempty" xml:"ScalingRuleTimer,omitempty"`
+	// The trigger policy for the auto scaling policy. Set this parameter in the JSON format by using the ScalingRuleTriggerDTO class. For more information, see Additional description of request parameters.
 	ScalingRuleTrigger *string `json:"ScalingRuleTrigger,omitempty" xml:"ScalingRuleTrigger,omitempty"`
-	ScalingRuleType    *string `json:"ScalingRuleType,omitempty" xml:"ScalingRuleType,omitempty"`
+	// The type of the auto scaling policy.
+	//
+	// *   Set the value to trigger.
+	ScalingRuleType *string `json:"ScalingRuleType,omitempty" xml:"ScalingRuleType,omitempty"`
 }
 
 func (s UpdateApplicationScalingRuleRequest) String() string {
@@ -24124,6 +28338,11 @@ func (s UpdateApplicationScalingRuleRequest) GoString() string {
 
 func (s *UpdateApplicationScalingRuleRequest) SetAppId(v string) *UpdateApplicationScalingRuleRequest {
 	s.AppId = &v
+	return s
+}
+
+func (s *UpdateApplicationScalingRuleRequest) SetScalingBehaviour(v string) *UpdateApplicationScalingRuleRequest {
+	s.ScalingBehaviour = &v
 	return s
 }
 
@@ -24158,10 +28377,14 @@ func (s *UpdateApplicationScalingRuleRequest) SetScalingRuleType(v string) *Upda
 }
 
 type UpdateApplicationScalingRuleResponseBody struct {
+	// The information about the auto scaling policy.
 	AppScalingRule *UpdateApplicationScalingRuleResponseBodyAppScalingRule `json:"AppScalingRule,omitempty" xml:"AppScalingRule,omitempty" type:"Struct"`
-	Code           *int32                                                  `json:"Code,omitempty" xml:"Code,omitempty"`
-	Message        *string                                                 `json:"Message,omitempty" xml:"Message,omitempty"`
-	RequestId      *string                                                 `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The HTTP status code that is returned.
+	Code *int32 `json:"Code,omitempty" xml:"Code,omitempty"`
+	// The message that is returned.
+	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// The ID of the request.
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
 func (s UpdateApplicationScalingRuleResponseBody) String() string {
@@ -24193,17 +28416,32 @@ func (s *UpdateApplicationScalingRuleResponseBody) SetRequestId(v string) *Updat
 }
 
 type UpdateApplicationScalingRuleResponseBodyAppScalingRule struct {
-	AppId            *string                                                        `json:"AppId,omitempty" xml:"AppId,omitempty"`
-	CreateTime       *int64                                                         `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
-	LastDisableTime  *int64                                                         `json:"LastDisableTime,omitempty" xml:"LastDisableTime,omitempty"`
-	MaxReplicas      *int32                                                         `json:"MaxReplicas,omitempty" xml:"MaxReplicas,omitempty"`
-	Metric           *UpdateApplicationScalingRuleResponseBodyAppScalingRuleMetric  `json:"Metric,omitempty" xml:"Metric,omitempty" type:"Struct"`
-	MinReplicas      *int32                                                         `json:"MinReplicas,omitempty" xml:"MinReplicas,omitempty"`
-	ScaleRuleEnabled *bool                                                          `json:"ScaleRuleEnabled,omitempty" xml:"ScaleRuleEnabled,omitempty"`
-	ScaleRuleName    *string                                                        `json:"ScaleRuleName,omitempty" xml:"ScaleRuleName,omitempty"`
-	ScaleRuleType    *string                                                        `json:"ScaleRuleType,omitempty" xml:"ScaleRuleType,omitempty"`
-	Trigger          *UpdateApplicationScalingRuleResponseBodyAppScalingRuleTrigger `json:"Trigger,omitempty" xml:"Trigger,omitempty" type:"Struct"`
-	UpdateTime       *int64                                                         `json:"UpdateTime,omitempty" xml:"UpdateTime,omitempty"`
+	// The ID of the application to which the auto scaling policy belongs.
+	AppId     *string                                                          `json:"AppId,omitempty" xml:"AppId,omitempty"`
+	Behaviour *UpdateApplicationScalingRuleResponseBodyAppScalingRuleBehaviour `json:"Behaviour,omitempty" xml:"Behaviour,omitempty" type:"Struct"`
+	// The time when the auto scaling policy was created. This value is a UNIX timestamp representing the number of milliseconds that have elapsed since January 1, 1970, 00:00:00 UTC.
+	CreateTime *int64 `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
+	// The time when the auto scaling policy was last disabled. This value is a UNIX timestamp representing the number of milliseconds that have elapsed since January 1, 1970, 00:00:00 UTC.
+	LastDisableTime *int64 `json:"LastDisableTime,omitempty" xml:"LastDisableTime,omitempty"`
+	// This parameter is deprecated.
+	MaxReplicas *int32 `json:"MaxReplicas,omitempty" xml:"MaxReplicas,omitempty"`
+	// This parameter is deprecated.
+	Metric *UpdateApplicationScalingRuleResponseBodyAppScalingRuleMetric `json:"Metric,omitempty" xml:"Metric,omitempty" type:"Struct"`
+	// This parameter is deprecated.
+	MinReplicas *int32 `json:"MinReplicas,omitempty" xml:"MinReplicas,omitempty"`
+	// Indicates whether the auto scaling policy is enabled. Valid values:
+	//
+	// *   **true**: The auto scaling policy is enabled.
+	// *   **false**: The auto scaling policy is disabled.
+	ScaleRuleEnabled *bool `json:"ScaleRuleEnabled,omitempty" xml:"ScaleRuleEnabled,omitempty"`
+	// The name of the auto scaling policy.
+	ScaleRuleName *string `json:"ScaleRuleName,omitempty" xml:"ScaleRuleName,omitempty"`
+	// The type of the auto scaling policy. The value is fixed to trigger.
+	ScaleRuleType *string `json:"ScaleRuleType,omitempty" xml:"ScaleRuleType,omitempty"`
+	// The configurations of the trigger.
+	Trigger *UpdateApplicationScalingRuleResponseBodyAppScalingRuleTrigger `json:"Trigger,omitempty" xml:"Trigger,omitempty" type:"Struct"`
+	// The time when the auto scaling policy was last modified. This value is a UNIX timestamp representing the number of milliseconds that have elapsed since January 1, 1970, 00:00:00 UTC.
+	UpdateTime *int64 `json:"UpdateTime,omitempty" xml:"UpdateTime,omitempty"`
 }
 
 func (s UpdateApplicationScalingRuleResponseBodyAppScalingRule) String() string {
@@ -24216,6 +28454,11 @@ func (s UpdateApplicationScalingRuleResponseBodyAppScalingRule) GoString() strin
 
 func (s *UpdateApplicationScalingRuleResponseBodyAppScalingRule) SetAppId(v string) *UpdateApplicationScalingRuleResponseBodyAppScalingRule {
 	s.AppId = &v
+	return s
+}
+
+func (s *UpdateApplicationScalingRuleResponseBodyAppScalingRule) SetBehaviour(v *UpdateApplicationScalingRuleResponseBodyAppScalingRuleBehaviour) *UpdateApplicationScalingRuleResponseBodyAppScalingRule {
+	s.Behaviour = v
 	return s
 }
 
@@ -24269,10 +28512,164 @@ func (s *UpdateApplicationScalingRuleResponseBodyAppScalingRule) SetUpdateTime(v
 	return s
 }
 
+type UpdateApplicationScalingRuleResponseBodyAppScalingRuleBehaviour struct {
+	ScaleDown *UpdateApplicationScalingRuleResponseBodyAppScalingRuleBehaviourScaleDown `json:"ScaleDown,omitempty" xml:"ScaleDown,omitempty" type:"Struct"`
+	ScaleUp   *UpdateApplicationScalingRuleResponseBodyAppScalingRuleBehaviourScaleUp   `json:"ScaleUp,omitempty" xml:"ScaleUp,omitempty" type:"Struct"`
+}
+
+func (s UpdateApplicationScalingRuleResponseBodyAppScalingRuleBehaviour) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UpdateApplicationScalingRuleResponseBodyAppScalingRuleBehaviour) GoString() string {
+	return s.String()
+}
+
+func (s *UpdateApplicationScalingRuleResponseBodyAppScalingRuleBehaviour) SetScaleDown(v *UpdateApplicationScalingRuleResponseBodyAppScalingRuleBehaviourScaleDown) *UpdateApplicationScalingRuleResponseBodyAppScalingRuleBehaviour {
+	s.ScaleDown = v
+	return s
+}
+
+func (s *UpdateApplicationScalingRuleResponseBodyAppScalingRuleBehaviour) SetScaleUp(v *UpdateApplicationScalingRuleResponseBodyAppScalingRuleBehaviourScaleUp) *UpdateApplicationScalingRuleResponseBodyAppScalingRuleBehaviour {
+	s.ScaleUp = v
+	return s
+}
+
+type UpdateApplicationScalingRuleResponseBodyAppScalingRuleBehaviourScaleDown struct {
+	// The configuration of the policy.
+	Policies []*UpdateApplicationScalingRuleResponseBodyAppScalingRuleBehaviourScaleDownPolicies `json:"Policies,omitempty" xml:"Policies,omitempty" type:"Repeated"`
+	// The step size policy for the scale-in. Valid values: Max, Min, and Disable.
+	SelectPolicy *string `json:"SelectPolicy,omitempty" xml:"SelectPolicy,omitempty"`
+	// The cooldown time of the scale-in. Valid values: 0 to 3600. Unit: seconds. Default value: 300.
+	StabilizationWindowSeconds *int32 `json:"StabilizationWindowSeconds,omitempty" xml:"StabilizationWindowSeconds,omitempty"`
+}
+
+func (s UpdateApplicationScalingRuleResponseBodyAppScalingRuleBehaviourScaleDown) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UpdateApplicationScalingRuleResponseBodyAppScalingRuleBehaviourScaleDown) GoString() string {
+	return s.String()
+}
+
+func (s *UpdateApplicationScalingRuleResponseBodyAppScalingRuleBehaviourScaleDown) SetPolicies(v []*UpdateApplicationScalingRuleResponseBodyAppScalingRuleBehaviourScaleDownPolicies) *UpdateApplicationScalingRuleResponseBodyAppScalingRuleBehaviourScaleDown {
+	s.Policies = v
+	return s
+}
+
+func (s *UpdateApplicationScalingRuleResponseBodyAppScalingRuleBehaviourScaleDown) SetSelectPolicy(v string) *UpdateApplicationScalingRuleResponseBodyAppScalingRuleBehaviourScaleDown {
+	s.SelectPolicy = &v
+	return s
+}
+
+func (s *UpdateApplicationScalingRuleResponseBodyAppScalingRuleBehaviourScaleDown) SetStabilizationWindowSeconds(v int32) *UpdateApplicationScalingRuleResponseBodyAppScalingRuleBehaviourScaleDown {
+	s.StabilizationWindowSeconds = &v
+	return s
+}
+
+type UpdateApplicationScalingRuleResponseBodyAppScalingRuleBehaviourScaleDownPolicies struct {
+	// The cycle of the policy check. Valid values: 0 to 1800. Unit: seconds.
+	PeriodSeconds *int32 `json:"PeriodSeconds,omitempty" xml:"PeriodSeconds,omitempty"`
+	// The type of the policy. Valid values: Pods and Percent.
+	Type *string `json:"Type,omitempty" xml:"Type,omitempty"`
+	// The policy value of auto scaling. Set the value to an integer greater than zero. If the policy type is Pods, the value of this parameter indicates the number of pods. If the policy type is Percent, the value of this parameter indicates a percentage, which can exceed 100%.
+	Value *string `json:"Value,omitempty" xml:"Value,omitempty"`
+}
+
+func (s UpdateApplicationScalingRuleResponseBodyAppScalingRuleBehaviourScaleDownPolicies) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UpdateApplicationScalingRuleResponseBodyAppScalingRuleBehaviourScaleDownPolicies) GoString() string {
+	return s.String()
+}
+
+func (s *UpdateApplicationScalingRuleResponseBodyAppScalingRuleBehaviourScaleDownPolicies) SetPeriodSeconds(v int32) *UpdateApplicationScalingRuleResponseBodyAppScalingRuleBehaviourScaleDownPolicies {
+	s.PeriodSeconds = &v
+	return s
+}
+
+func (s *UpdateApplicationScalingRuleResponseBodyAppScalingRuleBehaviourScaleDownPolicies) SetType(v string) *UpdateApplicationScalingRuleResponseBodyAppScalingRuleBehaviourScaleDownPolicies {
+	s.Type = &v
+	return s
+}
+
+func (s *UpdateApplicationScalingRuleResponseBodyAppScalingRuleBehaviourScaleDownPolicies) SetValue(v string) *UpdateApplicationScalingRuleResponseBodyAppScalingRuleBehaviourScaleDownPolicies {
+	s.Value = &v
+	return s
+}
+
+type UpdateApplicationScalingRuleResponseBodyAppScalingRuleBehaviourScaleUp struct {
+	// The configuration of the policy.
+	Policies []*UpdateApplicationScalingRuleResponseBodyAppScalingRuleBehaviourScaleUpPolicies `json:"Policies,omitempty" xml:"Policies,omitempty" type:"Repeated"`
+	// The step size policy for the scale-out. Valid values: Max, Min, and Disable.
+	SelectPolicy *string `json:"SelectPolicy,omitempty" xml:"SelectPolicy,omitempty"`
+	// The cooldown time of the scale-out. Valid values: 0 to 3600. Unit: seconds. Default value: 0.
+	StabilizationWindowSeconds *int32 `json:"StabilizationWindowSeconds,omitempty" xml:"StabilizationWindowSeconds,omitempty"`
+}
+
+func (s UpdateApplicationScalingRuleResponseBodyAppScalingRuleBehaviourScaleUp) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UpdateApplicationScalingRuleResponseBodyAppScalingRuleBehaviourScaleUp) GoString() string {
+	return s.String()
+}
+
+func (s *UpdateApplicationScalingRuleResponseBodyAppScalingRuleBehaviourScaleUp) SetPolicies(v []*UpdateApplicationScalingRuleResponseBodyAppScalingRuleBehaviourScaleUpPolicies) *UpdateApplicationScalingRuleResponseBodyAppScalingRuleBehaviourScaleUp {
+	s.Policies = v
+	return s
+}
+
+func (s *UpdateApplicationScalingRuleResponseBodyAppScalingRuleBehaviourScaleUp) SetSelectPolicy(v string) *UpdateApplicationScalingRuleResponseBodyAppScalingRuleBehaviourScaleUp {
+	s.SelectPolicy = &v
+	return s
+}
+
+func (s *UpdateApplicationScalingRuleResponseBodyAppScalingRuleBehaviourScaleUp) SetStabilizationWindowSeconds(v int32) *UpdateApplicationScalingRuleResponseBodyAppScalingRuleBehaviourScaleUp {
+	s.StabilizationWindowSeconds = &v
+	return s
+}
+
+type UpdateApplicationScalingRuleResponseBodyAppScalingRuleBehaviourScaleUpPolicies struct {
+	// The cycle of the policy check. Valid values: 0 to 1800. Unit: seconds.
+	PeriodSeconds *int32 `json:"PeriodSeconds,omitempty" xml:"PeriodSeconds,omitempty"`
+	// The type of the policy. Valid values: Pods and Percent.
+	Type *string `json:"Type,omitempty" xml:"Type,omitempty"`
+	// The policy value of auto scaling. Set the value to an integer greater than zero. If the policy type is Pods, the value of this parameter indicates the number of pods. If the policy type is Percent, the value of this parameter indicates a percentage, which can exceed 100%.
+	Value *string `json:"Value,omitempty" xml:"Value,omitempty"`
+}
+
+func (s UpdateApplicationScalingRuleResponseBodyAppScalingRuleBehaviourScaleUpPolicies) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UpdateApplicationScalingRuleResponseBodyAppScalingRuleBehaviourScaleUpPolicies) GoString() string {
+	return s.String()
+}
+
+func (s *UpdateApplicationScalingRuleResponseBodyAppScalingRuleBehaviourScaleUpPolicies) SetPeriodSeconds(v int32) *UpdateApplicationScalingRuleResponseBodyAppScalingRuleBehaviourScaleUpPolicies {
+	s.PeriodSeconds = &v
+	return s
+}
+
+func (s *UpdateApplicationScalingRuleResponseBodyAppScalingRuleBehaviourScaleUpPolicies) SetType(v string) *UpdateApplicationScalingRuleResponseBodyAppScalingRuleBehaviourScaleUpPolicies {
+	s.Type = &v
+	return s
+}
+
+func (s *UpdateApplicationScalingRuleResponseBodyAppScalingRuleBehaviourScaleUpPolicies) SetValue(v string) *UpdateApplicationScalingRuleResponseBodyAppScalingRuleBehaviourScaleUpPolicies {
+	s.Value = &v
+	return s
+}
+
 type UpdateApplicationScalingRuleResponseBodyAppScalingRuleMetric struct {
-	MaxReplicas *int32                                                                 `json:"MaxReplicas,omitempty" xml:"MaxReplicas,omitempty"`
-	Metrics     []*UpdateApplicationScalingRuleResponseBodyAppScalingRuleMetricMetrics `json:"Metrics,omitempty" xml:"Metrics,omitempty" type:"Repeated"`
-	MinReplicas *int32                                                                 `json:"MinReplicas,omitempty" xml:"MinReplicas,omitempty"`
+	// This parameter is deprecated.
+	MaxReplicas *int32 `json:"MaxReplicas,omitempty" xml:"MaxReplicas,omitempty"`
+	// This parameter is deprecated.
+	Metrics []*UpdateApplicationScalingRuleResponseBodyAppScalingRuleMetricMetrics `json:"Metrics,omitempty" xml:"Metrics,omitempty" type:"Repeated"`
+	// This parameter is deprecated.
+	MinReplicas *int32 `json:"MinReplicas,omitempty" xml:"MinReplicas,omitempty"`
 }
 
 func (s UpdateApplicationScalingRuleResponseBodyAppScalingRuleMetric) String() string {
@@ -24299,8 +28696,10 @@ func (s *UpdateApplicationScalingRuleResponseBodyAppScalingRuleMetric) SetMinRep
 }
 
 type UpdateApplicationScalingRuleResponseBodyAppScalingRuleMetricMetrics struct {
-	MetricTargetAverageUtilization *int32  `json:"MetricTargetAverageUtilization,omitempty" xml:"MetricTargetAverageUtilization,omitempty"`
-	MetricType                     *string `json:"MetricType,omitempty" xml:"MetricType,omitempty"`
+	// This parameter is deprecated.
+	MetricTargetAverageUtilization *int32 `json:"MetricTargetAverageUtilization,omitempty" xml:"MetricTargetAverageUtilization,omitempty"`
+	// This parameter is deprecated.
+	MetricType *string `json:"MetricType,omitempty" xml:"MetricType,omitempty"`
 }
 
 func (s UpdateApplicationScalingRuleResponseBodyAppScalingRuleMetricMetrics) String() string {
@@ -24322,9 +28721,12 @@ func (s *UpdateApplicationScalingRuleResponseBodyAppScalingRuleMetricMetrics) Se
 }
 
 type UpdateApplicationScalingRuleResponseBodyAppScalingRuleTrigger struct {
-	MaxReplicas *int32                                                                   `json:"MaxReplicas,omitempty" xml:"MaxReplicas,omitempty"`
-	MinReplicas *int32                                                                   `json:"MinReplicas,omitempty" xml:"MinReplicas,omitempty"`
-	Triggers    []*UpdateApplicationScalingRuleResponseBodyAppScalingRuleTriggerTriggers `json:"Triggers,omitempty" xml:"Triggers,omitempty" type:"Repeated"`
+	// The maximum number of replicas. The maximum value is 1000.
+	MaxReplicas *int32 `json:"MaxReplicas,omitempty" xml:"MaxReplicas,omitempty"`
+	// The minimum number of replicas. The minimum value is 0.
+	MinReplicas *int32 `json:"MinReplicas,omitempty" xml:"MinReplicas,omitempty"`
+	// The configurations of the trigger.
+	Triggers []*UpdateApplicationScalingRuleResponseBodyAppScalingRuleTriggerTriggers `json:"Triggers,omitempty" xml:"Triggers,omitempty" type:"Repeated"`
 }
 
 func (s UpdateApplicationScalingRuleResponseBodyAppScalingRuleTrigger) String() string {
@@ -24351,9 +28753,12 @@ func (s *UpdateApplicationScalingRuleResponseBodyAppScalingRuleTrigger) SetTrigg
 }
 
 type UpdateApplicationScalingRuleResponseBodyAppScalingRuleTriggerTriggers struct {
+	// The metadata of the trigger.
 	MetaData *string `json:"MetaData,omitempty" xml:"MetaData,omitempty"`
-	Name     *string `json:"Name,omitempty" xml:"Name,omitempty"`
-	Type     *string `json:"Type,omitempty" xml:"Type,omitempty"`
+	// The name of the trigger.
+	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// The type of the trigger. Valid values: cron and app_metric.
+	Type *string `json:"Type,omitempty" xml:"Type,omitempty"`
 }
 
 func (s UpdateApplicationScalingRuleResponseBodyAppScalingRuleTriggerTriggers) String() string {
@@ -24409,11 +28814,23 @@ func (s *UpdateApplicationScalingRuleResponse) SetBody(v *UpdateApplicationScali
 }
 
 type UpdateConfigTemplateRequest struct {
-	Content     *string `json:"Content,omitempty" xml:"Content,omitempty"`
+	// The content of the configuration template. The value must be in the format that is specified by the Format parameter.
+	Content *string `json:"Content,omitempty" xml:"Content,omitempty"`
+	// The description of the configuration template. The description can be up to 255 characters in length.
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
-	Format      *string `json:"Format,omitempty" xml:"Format,omitempty"`
-	Id          *int64  `json:"Id,omitempty" xml:"Id,omitempty"`
-	Name        *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// The data format of the configuration template. Valid values:
+	//
+	// *   JSON: JSON format
+	// *   XML: XML format
+	// *   YAML: YAML format
+	// *   Properties: .properties format
+	// *   KeyValue: key-value pairs
+	// *   Custom: custom format
+	Format *string `json:"Format,omitempty" xml:"Format,omitempty"`
+	// The ID of the configuration template.
+	Id *int64 `json:"Id,omitempty" xml:"Id,omitempty"`
+	// The name of the configuration template. The name can be up to 64 characters in length.
+	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
 }
 
 func (s UpdateConfigTemplateRequest) String() string {
@@ -24450,8 +28867,11 @@ func (s *UpdateConfigTemplateRequest) SetName(v string) *UpdateConfigTemplateReq
 }
 
 type UpdateConfigTemplateResponseBody struct {
-	Code      *int32  `json:"Code,omitempty" xml:"Code,omitempty"`
-	Message   *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// The HTTP status code that is returned.
+	Code *int32 `json:"Code,omitempty" xml:"Code,omitempty"`
+	// The additional information that is returned.
+	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// The ID of the request.
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -24508,8 +28928,10 @@ func (s *UpdateConfigTemplateResponse) SetBody(v *UpdateConfigTemplateResponseBo
 }
 
 type UpdateContainerRequest struct {
-	AppId       *string `json:"AppId,omitempty" xml:"AppId,omitempty"`
-	BuildPackId *int32  `json:"BuildPackId,omitempty" xml:"BuildPackId,omitempty"`
+	// The ID of the application.
+	AppId *string `json:"AppId,omitempty" xml:"AppId,omitempty"`
+	// The build package number of EDAS Container. You can obtain the build package number in the Build package number column in the EDAS Container release notes table. For more information, see [Release notes for EDAS Container](~~92614~~).
+	BuildPackId *int32 `json:"BuildPackId,omitempty" xml:"BuildPackId,omitempty"`
 }
 
 func (s UpdateContainerRequest) String() string {
@@ -24531,10 +28953,14 @@ func (s *UpdateContainerRequest) SetBuildPackId(v int32) *UpdateContainerRequest
 }
 
 type UpdateContainerResponseBody struct {
+	// The ID of the change process.
 	ChangeOrderId *string `json:"ChangeOrderId,omitempty" xml:"ChangeOrderId,omitempty"`
-	Code          *int32  `json:"Code,omitempty" xml:"Code,omitempty"`
-	Message       *string `json:"Message,omitempty" xml:"Message,omitempty"`
-	RequestId     *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The HTTP status code that is returned.
+	Code *int32 `json:"Code,omitempty" xml:"Code,omitempty"`
+	// The message that is returned.
+	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// The ID of the request.
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
 func (s UpdateContainerResponseBody) String() string {
@@ -24595,13 +29021,38 @@ func (s *UpdateContainerResponse) SetBody(v *UpdateContainerResponseBody) *Updat
 }
 
 type UpdateContainerConfigurationRequest struct {
-	AppId           *string `json:"AppId,omitempty" xml:"AppId,omitempty"`
-	ContextPath     *string `json:"ContextPath,omitempty" xml:"ContextPath,omitempty"`
-	GroupId         *string `json:"GroupId,omitempty" xml:"GroupId,omitempty"`
-	HttpPort        *int32  `json:"HttpPort,omitempty" xml:"HttpPort,omitempty"`
-	MaxThreads      *int32  `json:"MaxThreads,omitempty" xml:"MaxThreads,omitempty"`
-	URIEncoding     *string `json:"URIEncoding,omitempty" xml:"URIEncoding,omitempty"`
-	UseBodyEncoding *bool   `json:"UseBodyEncoding,omitempty" xml:"UseBodyEncoding,omitempty"`
+	// The ID of the application.
+	AppId *string `json:"AppId,omitempty" xml:"AppId,omitempty"`
+	// The context path of the Tomcat container. The context path can be an empty string, a null WAR package name, a root directory, or other custom non-empty strings. It can contain letters, digits, hyphens (-), and underscores (\_). Take note of the following items:
+	//
+	// *   If this parameter is not specified when you configure the application instance group, the configuration of the application is applied.
+	// *   If this parameter is not specified when you configure the Tomcat container for an application, the root directory `/` is used.
+	ContextPath *string `json:"ContextPath,omitempty" xml:"ContextPath,omitempty"`
+	// The ID of the application instance group.
+	//
+	// *   If an ID is specified, this operation configures the Tomcat container for the specified application instance group.
+	// *   If you set this parameter to "", this operation configures the Tomcat container for the application.
+	GroupId *string `json:"GroupId,omitempty" xml:"GroupId,omitempty"`
+	// The application port number for the Tomcat container. Take note of the following items:
+	//
+	// *   If this parameter is not specified when you configure the application instance group, the configuration of the application is applied.
+	// *   If this parameter is not specified when you configure the application, the default port 8080 is applied.
+	HttpPort *int32 `json:"HttpPort,omitempty" xml:"HttpPort,omitempty"`
+	// The maximum number of threads. Take note of the following items:
+	//
+	// *   If this parameter is not specified when you configure the application instance group, the configuration of the application is applied.
+	// *   If this parameter is not specified when you configure the application, the default value 250 is applied.
+	MaxThreads *int32 `json:"MaxThreads,omitempty" xml:"MaxThreads,omitempty"`
+	// The uniform resource identifier (URI) encoding scheme. Valid values: ISO-8859-1, GBK, GB2312, and UTF-8. Take note of the following items:
+	//
+	// *   If this parameter is not specified when you configure the application instance group, the configuration of the application is applied.
+	// *   If this parameter is not specified when you configure the application, the default URI encoding scheme in the Tomcat container is applied.
+	URIEncoding *string `json:"URIEncoding,omitempty" xml:"URIEncoding,omitempty"`
+	// Specifies whether to use the encoding scheme specified in the request body for URI query parameters. Take note of the following items:
+	//
+	// *   If this parameter is not specified when you configure the application instance group, the configuration of the application is applied.
+	// *   If this parameter is not specified when you configure the application, the default value false is applied.
+	UseBodyEncoding *bool `json:"UseBodyEncoding,omitempty" xml:"UseBodyEncoding,omitempty"`
 }
 
 func (s UpdateContainerConfigurationRequest) String() string {
@@ -24648,10 +29099,14 @@ func (s *UpdateContainerConfigurationRequest) SetUseBodyEncoding(v bool) *Update
 }
 
 type UpdateContainerConfigurationResponseBody struct {
-	Code                   *int32                                                          `json:"Code,omitempty" xml:"Code,omitempty"`
+	// The HTTP status code that is returned.
+	Code *int32 `json:"Code,omitempty" xml:"Code,omitempty"`
+	// The configuration of the Tomcat container.
 	ContainerConfiguration *UpdateContainerConfigurationResponseBodyContainerConfiguration `json:"ContainerConfiguration,omitempty" xml:"ContainerConfiguration,omitempty" type:"Struct"`
-	Message                *string                                                         `json:"Message,omitempty" xml:"Message,omitempty"`
-	RequestId              *string                                                         `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The additional information that is returned.
+	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// The ID of the request.
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
 func (s UpdateContainerConfigurationResponseBody) String() string {
@@ -24683,11 +29138,16 @@ func (s *UpdateContainerConfigurationResponseBody) SetRequestId(v string) *Updat
 }
 
 type UpdateContainerConfigurationResponseBodyContainerConfiguration struct {
-	ContextPath     *string `json:"ContextPath,omitempty" xml:"ContextPath,omitempty"`
-	HttpPort        *int32  `json:"HttpPort,omitempty" xml:"HttpPort,omitempty"`
-	MaxThreads      *int32  `json:"MaxThreads,omitempty" xml:"MaxThreads,omitempty"`
-	URIEncoding     *string `json:"URIEncoding,omitempty" xml:"URIEncoding,omitempty"`
-	UseBodyEncoding *bool   `json:"UseBodyEncoding,omitempty" xml:"UseBodyEncoding,omitempty"`
+	// The context path of the Tomcat container.
+	ContextPath *string `json:"ContextPath,omitempty" xml:"ContextPath,omitempty"`
+	// The application port number for the Tomcat container.
+	HttpPort *int32 `json:"HttpPort,omitempty" xml:"HttpPort,omitempty"`
+	// The maximum number of threads.
+	MaxThreads *int32 `json:"MaxThreads,omitempty" xml:"MaxThreads,omitempty"`
+	// The URI encoding scheme. Valid values: ISO-8859-1, GBK, GB2312, and UTF-8.
+	URIEncoding *string `json:"URIEncoding,omitempty" xml:"URIEncoding,omitempty"`
+	// Indicates whether useBodyEncodingForURI is enabled.
+	UseBodyEncoding *bool `json:"UseBodyEncoding,omitempty" xml:"UseBodyEncoding,omitempty"`
 }
 
 func (s UpdateContainerConfigurationResponseBodyContainerConfiguration) String() string {
@@ -24753,7 +29213,9 @@ func (s *UpdateContainerConfigurationResponse) SetBody(v *UpdateContainerConfigu
 }
 
 type UpdateHealthCheckUrlRequest struct {
+	// The ID of the application.
 	AppId *string `json:"AppId,omitempty" xml:"AppId,omitempty"`
+	// The health check URL of the application. The URL must start with `http://`, and can be up to 255 characters in length. Example: `http://127.0.0.1:8080/_ehc.html`. If this parameter is not specified, the health check URL of the application is not changed.
 	HcURL *string `json:"hcURL,omitempty" xml:"hcURL,omitempty"`
 }
 
@@ -24776,10 +29238,14 @@ func (s *UpdateHealthCheckUrlRequest) SetHcURL(v string) *UpdateHealthCheckUrlRe
 }
 
 type UpdateHealthCheckUrlResponseBody struct {
-	Code           *int32  `json:"Code,omitempty" xml:"Code,omitempty"`
+	// The HTTP status code that is returned.
+	Code *int32 `json:"Code,omitempty" xml:"Code,omitempty"`
+	// The health check URL.
 	HealthCheckURL *string `json:"HealthCheckURL,omitempty" xml:"HealthCheckURL,omitempty"`
-	Message        *string `json:"Message,omitempty" xml:"Message,omitempty"`
-	RequestId      *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The message that is returned.
+	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// The ID of the request.
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
 func (s UpdateHealthCheckUrlResponseBody) String() string {
@@ -24840,9 +29306,12 @@ func (s *UpdateHealthCheckUrlResponse) SetBody(v *UpdateHealthCheckUrlResponseBo
 }
 
 type UpdateHookConfigurationRequest struct {
-	AppId   *string `json:"AppId,omitempty" xml:"AppId,omitempty"`
+	// The ID of the application.
+	AppId *string `json:"AppId,omitempty" xml:"AppId,omitempty"`
+	// The ID of the application instance group.
 	GroupId *string `json:"GroupId,omitempty" xml:"GroupId,omitempty"`
-	Hooks   *string `json:"Hooks,omitempty" xml:"Hooks,omitempty"`
+	// The script to mount. Set the value in the JSON format. Example: `[{"ignoreFail":false,"name":"postprepareInstanceEnvironmentOnScaleOut","script":"ls"},{"ignoreFail":true,"name":"postdeleteInstanceDataOnScaleIn","script":""},{"ignoreFail":true,"name":"prestartInstance","script":""},{"ignoreFail":true,"name":"poststartInstance","script":""},{"ignoreFail":true,"name":"prestopInstance","script":""},{"ignoreFail":true,"name":"poststopInstance","script":""}]`
+	Hooks *string `json:"Hooks,omitempty" xml:"Hooks,omitempty"`
 }
 
 func (s UpdateHookConfigurationRequest) String() string {
@@ -24869,10 +29338,14 @@ func (s *UpdateHookConfigurationRequest) SetHooks(v string) *UpdateHookConfigura
 }
 
 type UpdateHookConfigurationResponseBody struct {
-	Code               *int32                                                   `json:"Code,omitempty" xml:"Code,omitempty"`
+	// The HTTP status code that is returned.
+	Code *int32 `json:"Code,omitempty" xml:"Code,omitempty"`
+	// The information about the mounted script.
 	HooksConfiguration []*UpdateHookConfigurationResponseBodyHooksConfiguration `json:"HooksConfiguration,omitempty" xml:"HooksConfiguration,omitempty" type:"Repeated"`
-	Message            *string                                                  `json:"Message,omitempty" xml:"Message,omitempty"`
-	RequestId          *string                                                  `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The message that is returned.
+	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// The ID of the request.
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
 func (s UpdateHookConfigurationResponseBody) String() string {
@@ -24904,9 +29377,15 @@ func (s *UpdateHookConfigurationResponseBody) SetRequestId(v string) *UpdateHook
 }
 
 type UpdateHookConfigurationResponseBodyHooksConfiguration struct {
-	IgnoreFail *bool   `json:"IgnoreFail,omitempty" xml:"IgnoreFail,omitempty"`
-	Name       *string `json:"Name,omitempty" xml:"Name,omitempty"`
-	Script     *string `json:"Script,omitempty" xml:"Script,omitempty"`
+	// Indicates whether a mount failure is ignored. Valid values:
+	//
+	// *   **true**: A mount failure is ignored.
+	// *   **false**: A mount failure is not ignored.
+	IgnoreFail *bool `json:"IgnoreFail,omitempty" xml:"IgnoreFail,omitempty"`
+	// The name of the mounted script.
+	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// The content of the mounted script.
+	Script *string `json:"Script,omitempty" xml:"Script,omitempty"`
 }
 
 func (s UpdateHookConfigurationResponseBodyHooksConfiguration) String() string {
@@ -24962,12 +29441,48 @@ func (s *UpdateHookConfigurationResponse) SetBody(v *UpdateHookConfigurationResp
 }
 
 type UpdateJvmConfigurationRequest struct {
-	AppId       *string `json:"AppId,omitempty" xml:"AppId,omitempty"`
-	GroupId     *string `json:"GroupId,omitempty" xml:"GroupId,omitempty"`
-	MaxHeapSize *int32  `json:"MaxHeapSize,omitempty" xml:"MaxHeapSize,omitempty"`
-	MaxPermSize *int32  `json:"MaxPermSize,omitempty" xml:"MaxPermSize,omitempty"`
-	MinHeapSize *int32  `json:"MinHeapSize,omitempty" xml:"MinHeapSize,omitempty"`
-	Options     *string `json:"Options,omitempty" xml:"Options,omitempty"`
+	// The ID of the application.
+	AppId *string `json:"AppId,omitempty" xml:"AppId,omitempty"`
+	// The ID of the instance group where the application is deployed. You can call the ListDeployGroup operation to query the group ID. For more information, see [ListDeployGroup](~~62077~~).
+	//
+	// >
+	//
+	// *   To configure the JVM parameters for an instance group, set this parameter to a specific ID.
+	//
+	// *   To configure the JVM parameters for an application, leave this parameter empty.
+	GroupId *string `json:"GroupId,omitempty" xml:"GroupId,omitempty"`
+	// The maximum size of the heap memory. Unit: MB.
+	//
+	// >
+	//
+	// *   If this parameter is not specified in the group configuration, the value specified in the application configuration is used.
+	//
+	// *   If this parameter is not specified in the application configuration, the default value is used.
+	MaxHeapSize *int32 `json:"MaxHeapSize,omitempty" xml:"MaxHeapSize,omitempty"`
+	// The size of the permanent generation heap memory. Unit: MB.
+	//
+	// >
+	//
+	// *   If this parameter is not specified in the group configuration, the value specified in the application configuration is used.
+	//
+	// *   If this parameter is not specified in the application configuration, the default value is used.
+	MaxPermSize *int32 `json:"MaxPermSize,omitempty" xml:"MaxPermSize,omitempty"`
+	// The initial size of the heap memory. Unit: MB.
+	//
+	// >
+	//
+	// *   If this parameter is not specified in the group configuration, the value specified in the application configuration is used.
+	//
+	// *   If this parameter is not specified in the application configuration, the default value is used.
+	MinHeapSize *int32 `json:"MinHeapSize,omitempty" xml:"MinHeapSize,omitempty"`
+	// The custom JVM parameters.
+	//
+	// >
+	//
+	// *   If this parameter is not specified in the group configuration, the value specified in the application configuration is used.
+	//
+	// *   If this parameter is not specified in the application configuration, the default value is used.
+	Options *string `json:"Options,omitempty" xml:"Options,omitempty"`
 }
 
 func (s UpdateJvmConfigurationRequest) String() string {
@@ -25009,10 +29524,14 @@ func (s *UpdateJvmConfigurationRequest) SetOptions(v string) *UpdateJvmConfigura
 }
 
 type UpdateJvmConfigurationResponseBody struct {
-	Code             *int32                                              `json:"Code,omitempty" xml:"Code,omitempty"`
+	// The HTTP status code that is returned.
+	Code *int32 `json:"Code,omitempty" xml:"Code,omitempty"`
+	// The settings of the JVM parameters.
 	JvmConfiguration *UpdateJvmConfigurationResponseBodyJvmConfiguration `json:"JvmConfiguration,omitempty" xml:"JvmConfiguration,omitempty" type:"Struct"`
-	Message          *string                                             `json:"Message,omitempty" xml:"Message,omitempty"`
-	RequestId        *string                                             `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The additional information that is returned.
+	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// The ID of the request.
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
 func (s UpdateJvmConfigurationResponseBody) String() string {
@@ -25044,10 +29563,14 @@ func (s *UpdateJvmConfigurationResponseBody) SetRequestId(v string) *UpdateJvmCo
 }
 
 type UpdateJvmConfigurationResponseBodyJvmConfiguration struct {
-	MaxHeapSize *int32  `json:"MaxHeapSize,omitempty" xml:"MaxHeapSize,omitempty"`
-	MaxPermSize *int32  `json:"MaxPermSize,omitempty" xml:"MaxPermSize,omitempty"`
-	MinHeapSize *int32  `json:"MinHeapSize,omitempty" xml:"MinHeapSize,omitempty"`
-	Options     *string `json:"Options,omitempty" xml:"Options,omitempty"`
+	// The maximum size of the heap memory. Unit: MB.
+	MaxHeapSize *int32 `json:"MaxHeapSize,omitempty" xml:"MaxHeapSize,omitempty"`
+	// The size of the permanent generation heap memory. Unit: MB.
+	MaxPermSize *int32 `json:"MaxPermSize,omitempty" xml:"MaxPermSize,omitempty"`
+	// The initial size of the heap memory. Unit: MB.
+	MinHeapSize *int32 `json:"MinHeapSize,omitempty" xml:"MinHeapSize,omitempty"`
+	// The optional parameters.
+	Options *string `json:"Options,omitempty" xml:"Options,omitempty"`
 }
 
 func (s UpdateJvmConfigurationResponseBodyJvmConfiguration) String() string {
@@ -25108,10 +29631,15 @@ func (s *UpdateJvmConfigurationResponse) SetBody(v *UpdateJvmConfigurationRespon
 }
 
 type UpdateK8sApplicationBaseInfoRequest struct {
-	AppId       *string `json:"AppId,omitempty" xml:"AppId,omitempty"`
+	// The ID of the application that you want to modify.
+	AppId *string `json:"AppId,omitempty" xml:"AppId,omitempty"`
+	// The description of the application. The description can be up to 256 characters in length.
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
-	Email       *string `json:"Email,omitempty" xml:"Email,omitempty"`
-	Owner       *string `json:"Owner,omitempty" xml:"Owner,omitempty"`
+	// The email address of the application owner.
+	Email *string `json:"Email,omitempty" xml:"Email,omitempty"`
+	// The owner of the application. The value can be up to 128 characters in length.
+	Owner *string `json:"Owner,omitempty" xml:"Owner,omitempty"`
+	// The phone number of the application owner.
 	PhoneNumber *string `json:"PhoneNumber,omitempty" xml:"PhoneNumber,omitempty"`
 }
 
@@ -25149,10 +29677,14 @@ func (s *UpdateK8sApplicationBaseInfoRequest) SetPhoneNumber(v string) *UpdateK8
 }
 
 type UpdateK8sApplicationBaseInfoResponseBody struct {
-	Code      *int32  `json:"Code,omitempty" xml:"Code,omitempty"`
-	Message   *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// The HTTP status code that is returned.
+	Code *int32 `json:"Code,omitempty" xml:"Code,omitempty"`
+	// The additional information that is returned.
+	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// The ID of the request.
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	Result    *string `json:"Result,omitempty" xml:"Result,omitempty"`
+	// The result of the modification.
+	Result *string `json:"Result,omitempty" xml:"Result,omitempty"`
 }
 
 func (s UpdateK8sApplicationBaseInfoResponseBody) String() string {
@@ -25213,17 +29745,36 @@ func (s *UpdateK8sApplicationBaseInfoResponse) SetBody(v *UpdateK8sApplicationBa
 }
 
 type UpdateK8sApplicationConfigRequest struct {
-	AppId                   *string `json:"AppId,omitempty" xml:"AppId,omitempty"`
-	ClusterId               *string `json:"ClusterId,omitempty" xml:"ClusterId,omitempty"`
-	CpuLimit                *string `json:"CpuLimit,omitempty" xml:"CpuLimit,omitempty"`
-	CpuRequest              *string `json:"CpuRequest,omitempty" xml:"CpuRequest,omitempty"`
-	EphemeralStorageLimit   *string `json:"EphemeralStorageLimit,omitempty" xml:"EphemeralStorageLimit,omitempty"`
+	// The ID of the application. You can query the application ID by calling the ListApplication operation. For more information, see [ListApplication](~~423162~~).
+	AppId *string `json:"AppId,omitempty" xml:"AppId,omitempty"`
+	// The ID of the cluster. You can query the cluster ID by calling the ListCluster operation. For more information, see [ListCluster](~~411844~~).
+	ClusterId *string `json:"ClusterId,omitempty" xml:"ClusterId,omitempty"`
+	// The maximum number of CPU cores allowed for each application instance when the application is running. The value 0 indicates that no limit is set on CPU cores.
+	CpuLimit *string `json:"CpuLimit,omitempty" xml:"CpuLimit,omitempty"`
+	// The number of CPU cores requested for each application instance when the application is running. Unit: cores. We recommend that you set this parameter. The value 0 indicates that no limit is set on CPU cores.
+	//
+	// > You must set this parameter together with the CpuLimit parameter. Make sure that the value of this parameter does not exceed that of the CpuLimit parameter.
+	CpuRequest *string `json:"CpuRequest,omitempty" xml:"CpuRequest,omitempty"`
+	// The maximum size of space required by ephemeral storage. Unit: GB. The value 0 indicates that no limit is set on the ephemeral storage space.
+	EphemeralStorageLimit *string `json:"EphemeralStorageLimit,omitempty" xml:"EphemeralStorageLimit,omitempty"`
+	// The minimum size of space required by ephemeral storage. Unit: GB. The value 0 indicates that no limit is set on the ephemeral storage space.
+	//
+	// > You must set this parameter together with the EphemeralStorageLimit parameter. Make sure that the value of this parameter does not exceed that of the EphemeralStorageLimit parameter.
 	EphemeralStorageRequest *string `json:"EphemeralStorageRequest,omitempty" xml:"EphemeralStorageRequest,omitempty"`
-	McpuLimit               *string `json:"McpuLimit,omitempty" xml:"McpuLimit,omitempty"`
-	McpuRequest             *string `json:"McpuRequest,omitempty" xml:"McpuRequest,omitempty"`
-	MemoryLimit             *string `json:"MemoryLimit,omitempty" xml:"MemoryLimit,omitempty"`
-	MemoryRequest           *string `json:"MemoryRequest,omitempty" xml:"MemoryRequest,omitempty"`
-	Timeout                 *int32  `json:"Timeout,omitempty" xml:"Timeout,omitempty"`
+	// The maximum number of CPU cores allowed. The value 0 indicates that no limit is set on CPU cores.
+	McpuLimit *string `json:"McpuLimit,omitempty" xml:"McpuLimit,omitempty"`
+	// The minimum number of CPU cores required. Unit: cores. The value 0 indicates that no limit is set on CPU cores.
+	//
+	// > You must set this parameter together with the CpuLimit parameter. Make sure that the value of this parameter does not exceed that of the CpuLimit parameter.
+	McpuRequest *string `json:"McpuRequest,omitempty" xml:"McpuRequest,omitempty"`
+	// The maximum size of memory allowed for each application instance when the application is running. Unit: MB. The value 0 indicates that no limit is set on the memory size.
+	MemoryLimit *string `json:"MemoryLimit,omitempty" xml:"MemoryLimit,omitempty"`
+	// The size of memory requested for each application instance when the application is running. Unit: MB. We recommend that you set this parameter. If you do not want to apply for a memory quota, set this parameter to 0.
+	//
+	// > You must set this parameter together with the MemoryLimit parameter. Make sure that the value of this parameter does not exceed that of the MemoryLimit parameter.
+	MemoryRequest *string `json:"MemoryRequest,omitempty" xml:"MemoryRequest,omitempty"`
+	// The timeout period of the change process. Valid values: 1 to 1800. Default value: 600. Unit: seconds.
+	Timeout *int32 `json:"Timeout,omitempty" xml:"Timeout,omitempty"`
 }
 
 func (s UpdateK8sApplicationConfigRequest) String() string {
@@ -25290,10 +29841,14 @@ func (s *UpdateK8sApplicationConfigRequest) SetTimeout(v int32) *UpdateK8sApplic
 }
 
 type UpdateK8sApplicationConfigResponseBody struct {
+	// The ID of the change process.
 	ChangeOrderId *string `json:"ChangeOrderId,omitempty" xml:"ChangeOrderId,omitempty"`
-	Code          *int32  `json:"Code,omitempty" xml:"Code,omitempty"`
-	Message       *string `json:"Message,omitempty" xml:"Message,omitempty"`
-	RequestId     *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The HTTP status code that is returned.
+	Code *int32 `json:"Code,omitempty" xml:"Code,omitempty"`
+	// The additional information that is returned.
+	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// The ID of the request.
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
 func (s UpdateK8sApplicationConfigResponseBody) String() string {
@@ -25354,10 +29909,14 @@ func (s *UpdateK8sApplicationConfigResponse) SetBody(v *UpdateK8sApplicationConf
 }
 
 type UpdateK8sConfigMapRequest struct {
-	ClusterId *string                `json:"ClusterId,omitempty" xml:"ClusterId,omitempty"`
-	Data      map[string]interface{} `json:"Data,omitempty" xml:"Data,omitempty"`
-	Name      *string                `json:"Name,omitempty" xml:"Name,omitempty"`
-	Namespace *string                `json:"Namespace,omitempty" xml:"Namespace,omitempty"`
+	// The ID of the Kubernetes cluster.
+	ClusterId *string `json:"ClusterId,omitempty" xml:"ClusterId,omitempty"`
+	// The data of the ConfigMap. Set this parameter to a JSON string.
+	Data map[string]interface{} `json:"Data,omitempty" xml:"Data,omitempty"`
+	// The name of the ConfigMap. The name must start with a letter, and can contain digits, letters, and hyphens (-). It can be up to 63 characters in length.
+	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// The namespace of the Kubernetes cluster.
+	Namespace *string `json:"Namespace,omitempty" xml:"Namespace,omitempty"`
 }
 
 func (s UpdateK8sConfigMapRequest) String() string {
@@ -25389,8 +29948,11 @@ func (s *UpdateK8sConfigMapRequest) SetNamespace(v string) *UpdateK8sConfigMapRe
 }
 
 type UpdateK8sConfigMapResponseBody struct {
-	Code      *int32  `json:"Code,omitempty" xml:"Code,omitempty"`
-	Message   *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// The HTTP status code that is returned.
+	Code *int32 `json:"Code,omitempty" xml:"Code,omitempty"`
+	// The additional information that is returned.
+	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// The ID of the request.
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -25447,10 +30009,47 @@ func (s *UpdateK8sConfigMapResponse) SetBody(v *UpdateK8sConfigMapResponseBody) 
 }
 
 type UpdateK8sIngressRuleRequest struct {
-	ClusterId   *string                `json:"ClusterId,omitempty" xml:"ClusterId,omitempty"`
+	// The annotations.
+	Annotations *string `json:"Annotations,omitempty" xml:"Annotations,omitempty"`
+	// The ID of the Kubernetes cluster.
+	ClusterId *string `json:"ClusterId,omitempty" xml:"ClusterId,omitempty"`
+	// The routing rules of the Ingress. Set this parameter to a JSON string in the following format:
+	//
+	//     {
+	//       "rules": [
+	//         {
+	//           "host": "abc.com",
+	//           "secretName": "tls-secret",
+	//           "paths": [
+	//             {
+	//               "path": "/path",
+	//               "backend": {
+	//                 "servicePort": 80,
+	//                 "serviceName": "xxx"
+	//               }
+	//             }
+	//           ]
+	//         }
+	//       ]
+	//     }
+	//
+	// Parameter description:
+	//
+	// *   rules: the list of routing rules.
+	// *   host: the domain name to be accessed.
+	// *   secretName: the name of the Secret that stores the information about the Transport Layer Security (TLS) certificate. The certificate is required if you need to use the HTTPS protocol.
+	// *   paths: the list of paths to be accessed.
+	// *   path: the path to be accessed.
+	// *   backend: the configuration of the backend service. You can specify a service that is created in the Enterprise Distributed Application Service (EDAS) console.
+	// *   serviceName: the name of the backend service.
+	// *   servicePort: the port of the backend service.
 	IngressConf map[string]interface{} `json:"IngressConf,omitempty" xml:"IngressConf,omitempty"`
-	Name        *string                `json:"Name,omitempty" xml:"Name,omitempty"`
-	Namespace   *string                `json:"Namespace,omitempty" xml:"Namespace,omitempty"`
+	// The labels.
+	Labels *string `json:"Labels,omitempty" xml:"Labels,omitempty"`
+	// The name of the Ingress. The name can contain lowercase letters, digits, and hyphens (-). It must start with a lowercase letter but cannot end with a hyphen (-). The name can be up to 63 characters in length.
+	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// The namespace of the Kubernetes cluster.
+	Namespace *string `json:"Namespace,omitempty" xml:"Namespace,omitempty"`
 }
 
 func (s UpdateK8sIngressRuleRequest) String() string {
@@ -25461,6 +30060,11 @@ func (s UpdateK8sIngressRuleRequest) GoString() string {
 	return s.String()
 }
 
+func (s *UpdateK8sIngressRuleRequest) SetAnnotations(v string) *UpdateK8sIngressRuleRequest {
+	s.Annotations = &v
+	return s
+}
+
 func (s *UpdateK8sIngressRuleRequest) SetClusterId(v string) *UpdateK8sIngressRuleRequest {
 	s.ClusterId = &v
 	return s
@@ -25468,6 +30072,11 @@ func (s *UpdateK8sIngressRuleRequest) SetClusterId(v string) *UpdateK8sIngressRu
 
 func (s *UpdateK8sIngressRuleRequest) SetIngressConf(v map[string]interface{}) *UpdateK8sIngressRuleRequest {
 	s.IngressConf = v
+	return s
+}
+
+func (s *UpdateK8sIngressRuleRequest) SetLabels(v string) *UpdateK8sIngressRuleRequest {
+	s.Labels = &v
 	return s
 }
 
@@ -25482,7 +30091,9 @@ func (s *UpdateK8sIngressRuleRequest) SetNamespace(v string) *UpdateK8sIngressRu
 }
 
 type UpdateK8sIngressRuleResponseBody struct {
-	Code    *int32  `json:"Code,omitempty" xml:"Code,omitempty"`
+	// The HTTP status code that is returned.
+	Code *int32 `json:"Code,omitempty" xml:"Code,omitempty"`
+	// The message that is returned.
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
 }
 
@@ -25534,8 +30145,11 @@ func (s *UpdateK8sIngressRuleResponse) SetBody(v *UpdateK8sIngressRuleResponseBo
 }
 
 type UpdateK8sResourceRequest struct {
-	ClusterId       *string `json:"ClusterId,omitempty" xml:"ClusterId,omitempty"`
-	Namespace       *string `json:"Namespace,omitempty" xml:"Namespace,omitempty"`
+	// The ID of the cluster.
+	ClusterId *string `json:"ClusterId,omitempty" xml:"ClusterId,omitempty"`
+	// The ID of the namespace to which the Kubernetes resource belongs.
+	Namespace *string `json:"Namespace,omitempty" xml:"Namespace,omitempty"`
+	// The description of the resource in the YAML format.
 	ResourceContent *string `json:"ResourceContent,omitempty" xml:"ResourceContent,omitempty"`
 }
 
@@ -25563,8 +30177,11 @@ func (s *UpdateK8sResourceRequest) SetResourceContent(v string) *UpdateK8sResour
 }
 
 type UpdateK8sResourceResponseBody struct {
-	Code      *int32  `json:"Code,omitempty" xml:"Code,omitempty"`
-	Message   *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// The HTTP status code that is returned.
+	Code *int32 `json:"Code,omitempty" xml:"Code,omitempty"`
+	// The additional information that is returned.
+	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// The ID of the request.
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -25621,14 +30238,28 @@ func (s *UpdateK8sResourceResponse) SetBody(v *UpdateK8sResourceResponseBody) *U
 }
 
 type UpdateK8sSecretRequest struct {
-	Base64Encoded *bool   `json:"Base64Encoded,omitempty" xml:"Base64Encoded,omitempty"`
-	CertId        *string `json:"CertId,omitempty" xml:"CertId,omitempty"`
-	CertRegionId  *string `json:"CertRegionId,omitempty" xml:"CertRegionId,omitempty"`
-	ClusterId     *string `json:"ClusterId,omitempty" xml:"ClusterId,omitempty"`
-	Data          *string `json:"Data,omitempty" xml:"Data,omitempty"`
-	Name          *string `json:"Name,omitempty" xml:"Name,omitempty"`
-	Namespace     *string `json:"Namespace,omitempty" xml:"Namespace,omitempty"`
-	Type          *string `json:"Type,omitempty" xml:"Type,omitempty"`
+	// Specifies whether the data has been encoded in Base64.
+	Base64Encoded *bool `json:"Base64Encoded,omitempty" xml:"Base64Encoded,omitempty"`
+	// The ID of the certificate.
+	CertId *string `json:"CertId,omitempty" xml:"CertId,omitempty"`
+	// The region ID of the certificate.
+	CertRegionId *string `json:"CertRegionId,omitempty" xml:"CertRegionId,omitempty"`
+	// The ID of the cluster.
+	ClusterId *string `json:"ClusterId,omitempty" xml:"ClusterId,omitempty"`
+	// The data of the Secret. The value must be a JSON array that contains the following information:
+	//
+	// *   Key: Secret key
+	// *   Value: Secret value
+	Data *string `json:"Data,omitempty" xml:"Data,omitempty"`
+	// The name of the Secret. The name must start with a letter, and can contain digits, letters, and hyphens (-). It can be up to 63 characters in length.
+	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// The namespace of the Kubernetes cluster.
+	Namespace *string `json:"Namespace,omitempty" xml:"Namespace,omitempty"`
+	// The type of the Secret. Valid values:
+	//
+	// *   Opaque: user-defined data type
+	// *   kubernetes.io/tls: Transport Layer Security (TLS) certificate type
+	Type *string `json:"Type,omitempty" xml:"Type,omitempty"`
 }
 
 func (s UpdateK8sSecretRequest) String() string {
@@ -25680,8 +30311,11 @@ func (s *UpdateK8sSecretRequest) SetType(v string) *UpdateK8sSecretRequest {
 }
 
 type UpdateK8sSecretResponseBody struct {
-	Code      *int32  `json:"Code,omitempty" xml:"Code,omitempty"`
-	Message   *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// The HTTP status code that is returned.
+	Code *int32 `json:"Code,omitempty" xml:"Code,omitempty"`
+	// The additional information that is returned.
+	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// The ID of the request.
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -25738,11 +30372,31 @@ func (s *UpdateK8sSecretResponse) SetBody(v *UpdateK8sSecretResponseBody) *Updat
 }
 
 type UpdateK8sServiceRequest struct {
-	AppId                 *string                `json:"AppId,omitempty" xml:"AppId,omitempty"`
-	ExternalTrafficPolicy *string                `json:"ExternalTrafficPolicy,omitempty" xml:"ExternalTrafficPolicy,omitempty"`
-	Name                  *string                `json:"Name,omitempty" xml:"Name,omitempty"`
-	ServicePorts          map[string]interface{} `json:"ServicePorts,omitempty" xml:"ServicePorts,omitempty"`
-	Type                  *string                `json:"Type,omitempty" xml:"Type,omitempty"`
+	// The ID of the application.
+	AppId *string `json:"AppId,omitempty" xml:"AppId,omitempty"`
+	// The policy used for external traffic management. Valid values:
+	//
+	// *   Local: local mode
+	// *   Cluster: cluster mode
+	//
+	// Default value: Local.
+	ExternalTrafficPolicy *string `json:"ExternalTrafficPolicy,omitempty" xml:"ExternalTrafficPolicy,omitempty"`
+	// The name of the service in a Kubernetes cluster.
+	//
+	// *   The name can contain lowercase letters, digits, and hyphens (-).
+	// *   It must start with a letter and end with a letter or digit.
+	// *   The name can be 2 to 32 characters in length.
+	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// The mappings between service ports. Set this parameter to a JSON array. The following parameters are included in the configurations:
+	//
+	// *   **protocol**: the protocol used by the service. Valid values: TCP and UDP. This parameter is required.
+	// *   **port**: the frontend service port. Valid values: 1 to 65535. This parameter is required.
+	// *   **targetPort**: the backend container port. Valid values: 1 to 65535. This parameter is required.
+	//
+	// Example: `[{"protocol": "TCP", "port": 80, "targetPort": 8080},{"protocol": "TCP", "port": 81, "targetPort": 8081}]`
+	ServicePorts map[string]interface{} `json:"ServicePorts,omitempty" xml:"ServicePorts,omitempty"`
+	// The type of the service in a Kubernetes cluster. Set the value to ClusterIP.
+	Type *string `json:"Type,omitempty" xml:"Type,omitempty"`
 }
 
 func (s UpdateK8sServiceRequest) String() string {
@@ -25779,10 +30433,14 @@ func (s *UpdateK8sServiceRequest) SetType(v string) *UpdateK8sServiceRequest {
 }
 
 type UpdateK8sServiceResponseBody struct {
+	// The ID of the change process.
 	ChangeOrderId *string `json:"ChangeOrderId,omitempty" xml:"ChangeOrderId,omitempty"`
-	Code          *int32  `json:"Code,omitempty" xml:"Code,omitempty"`
-	Message       *string `json:"Message,omitempty" xml:"Message,omitempty"`
-	RequestId     *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The HTTP status code that is returned.
+	Code *int32 `json:"Code,omitempty" xml:"Code,omitempty"`
+	// The additional information that is returned.
+	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// The ID of the request.
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
 func (s UpdateK8sServiceResponseBody) String() string {
@@ -25843,17 +30501,52 @@ func (s *UpdateK8sServiceResponse) SetBody(v *UpdateK8sServiceResponseBody) *Upd
 }
 
 type UpdateK8sSlbRequest struct {
-	AppId                *string `json:"AppId,omitempty" xml:"AppId,omitempty"`
-	ClusterId            *string `json:"ClusterId,omitempty" xml:"ClusterId,omitempty"`
-	DisableForceOverride *bool   `json:"DisableForceOverride,omitempty" xml:"DisableForceOverride,omitempty"`
-	Port                 *string `json:"Port,omitempty" xml:"Port,omitempty"`
-	Scheduler            *string `json:"Scheduler,omitempty" xml:"Scheduler,omitempty"`
-	ServicePortInfos     *string `json:"ServicePortInfos,omitempty" xml:"ServicePortInfos,omitempty"`
-	SlbName              *string `json:"SlbName,omitempty" xml:"SlbName,omitempty"`
-	SlbProtocol          *string `json:"SlbProtocol,omitempty" xml:"SlbProtocol,omitempty"`
-	Specification        *string `json:"Specification,omitempty" xml:"Specification,omitempty"`
-	TargetPort           *string `json:"TargetPort,omitempty" xml:"TargetPort,omitempty"`
-	Type                 *string `json:"Type,omitempty" xml:"Type,omitempty"`
+	// The ID of the application. You can query the application ID by calling the ListApplication operation. For more information, see [ListApplication](~~149390~~).
+	AppId *string `json:"AppId,omitempty" xml:"AppId,omitempty"`
+	// The ID of the cluster. You can query the cluster ID by calling the GetK8sCluster operation. For more information, see [GetK8sCluster](~~181437~~).
+	ClusterId *string `json:"ClusterId,omitempty" xml:"ClusterId,omitempty"`
+	// Specifies whether to disable listener configuration overriding.
+	//
+	// *   true: disables listener configuration overriding.
+	// *   false: enables listener configuration overriding.
+	DisableForceOverride *bool `json:"DisableForceOverride,omitempty" xml:"DisableForceOverride,omitempty"`
+	// The frontend port. Valid values: 1 to 65535.
+	Port *string `json:"Port,omitempty" xml:"Port,omitempty"`
+	// The scheduling algorithm for the SLB instance. If you do not specify this parameter, the default value rr is used. SLB supports the following scheduling algorithms: round-robin and weighted round-robin. Valid values:
+	//
+	// *   wrr: weighted round-robin scheduling. Backend servers that have higher weights receive more requests than those that have lower weights.
+	// *   rr: round-robin scheduling. Requests are sequentially distributed to backend servers.
+	Scheduler *string `json:"Scheduler,omitempty" xml:"Scheduler,omitempty"`
+	// The information about the ports. This parameter is required if you want to configure multi-port mappings or use a protocol other than TCP. You must set this parameter to a JSON array. Example: \[{"targetPort":8080,"port":82,"loadBalancerProtocol":"TCP"},{"port":81,"certId":"1362469756373809\_16c185d6fa2\_1914500329\_-xxxxxxx","targetPort":8181,"lo adBalancerProtocol":"HTTPS"}]
+	//
+	// *   port: required. The frontend port. Valid values: 1 to 65535. Each port must be unique.
+	// *   targetPort: required. The backend port. Valid values: 1 to 65535.
+	// *   loadBalancerProtocol: required. Valid values: TCP and HTTPS. If the HTTP protocol is used, set this parameter to TCP.
+	// *   certId: the ID of the certificate. This parameter is required if the HTTPS protocol is used. You can purchase an SLB instance in the SLB console.
+	// *   Note: The ServicePortInfos parameter is specified to support multi-port mappings. If you want this parameter to take effect, make sure that you specify the AppId, ClusterId, Type, and SlbId parameters.
+	ServicePortInfos *string `json:"ServicePortInfos,omitempty" xml:"ServicePortInfos,omitempty"`
+	// The name of the SLB instance.
+	SlbName *string `json:"SlbName,omitempty" xml:"SlbName,omitempty"`
+	// The protocol used by the SLB instance. Set the value to TCP.
+	SlbProtocol *string `json:"SlbProtocol,omitempty" xml:"SlbProtocol,omitempty"`
+	// The specifications of the SLB instance.
+	//
+	// *   slb.s1.small
+	// *   slb.s2.small
+	// *   slb.s2.medium
+	// *   slb.s3.small
+	// *   slb.s3.medium
+	// *   slb.s3.large
+	//
+	// If you do not specify this parameter, the default value slb.s1.small is used.
+	Specification *string `json:"Specification,omitempty" xml:"Specification,omitempty"`
+	// The backend port, which is also the service port of the application. Valid values: 1 to 65535.
+	TargetPort *string `json:"TargetPort,omitempty" xml:"TargetPort,omitempty"`
+	// The type of the SLB instance. Valid values:
+	//
+	// *   Internet: an Internet-facing SLB instance
+	// *   Intranet: an internal-facing SLB instance
+	Type *string `json:"Type,omitempty" xml:"Type,omitempty"`
 }
 
 func (s UpdateK8sSlbRequest) String() string {
@@ -25920,10 +30613,14 @@ func (s *UpdateK8sSlbRequest) SetType(v string) *UpdateK8sSlbRequest {
 }
 
 type UpdateK8sSlbResponseBody struct {
+	// The ID of the change process.
 	ChangeOrderId *string `json:"ChangeOrderId,omitempty" xml:"ChangeOrderId,omitempty"`
-	Code          *int32  `json:"Code,omitempty" xml:"Code,omitempty"`
-	Message       *string `json:"Message,omitempty" xml:"Message,omitempty"`
-	RequestId     *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The HTTP status code that is returned.
+	Code *int32 `json:"Code,omitempty" xml:"Code,omitempty"`
+	// The message that is returned.
+	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// The ID of the request.
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
 func (s UpdateK8sSlbResponseBody) String() string {
@@ -25984,8 +30681,10 @@ func (s *UpdateK8sSlbResponse) SetBody(v *UpdateK8sSlbResponseBody) *UpdateK8sSl
 }
 
 type UpdateRoleRequest struct {
+	// The set of permissions to be granted to the role. The value is in the format of `Permission group ID 1:Permission serial number 1;...;Permission group ID n:Permission serial number n`. Example: `1:1;1:2;2:1;2:2`. For more information about permission groups and permission serial numbers, see [ListAuthority](~~149409~~).
 	ActionData *string `json:"ActionData,omitempty" xml:"ActionData,omitempty"`
-	RoleId     *int32  `json:"RoleId,omitempty" xml:"RoleId,omitempty"`
+	// The ID of the role. You can call the ListRole operation to query the role IDs. For more information, see [ListRole](~~149410~~).
+	RoleId *int32 `json:"RoleId,omitempty" xml:"RoleId,omitempty"`
 }
 
 func (s UpdateRoleRequest) String() string {
@@ -26007,8 +30706,11 @@ func (s *UpdateRoleRequest) SetRoleId(v int32) *UpdateRoleRequest {
 }
 
 type UpdateRoleResponseBody struct {
-	Code      *int32  `json:"Code,omitempty" xml:"Code,omitempty"`
-	Message   *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// The HTTP status code that is returned.
+	Code *int32 `json:"Code,omitempty" xml:"Code,omitempty"`
+	// The additional information that is returned.
+	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// The ID of the request.
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -26065,7 +30767,25 @@ func (s *UpdateRoleResponse) SetBody(v *UpdateRoleResponseBody) *UpdateRoleRespo
 }
 
 type UpdateSlsLogStoreRequest struct {
-	AppId   *string `json:"AppId,omitempty" xml:"AppId,omitempty"`
+	// The ID of the application. You can call the ListApplication operation to query the application ID. For more information, see [ListApplication](~~149390~~).
+	AppId *string `json:"AppId,omitempty" xml:"AppId,omitempty"`
+	// The configurations of the Logstore.
+	//
+	// *   The following parameters are included in the configurations:****
+	//
+	//     *   **type**: the collection type. Set this parameter to file to specify the file type. Set this parameter to stdout to specify the standard output type.
+	//
+	//     *   **logstore**: the name of the Logstore. Make sure that the name of the Logstore is unique in the cluster. The name must comply with the following rules:
+	//
+	//         *   The name can contain only lowercase letters, digits, hyphens (-), and underscores (\_).
+	//         *   The name must start and end with a lowercase letter or a digit.
+	//         *   The name must be 3 to 63 characters in length.
+	//
+	//         **
+	//
+	//         **Note**If you leave this parameter empty, the system automatically generates a name.
+	//
+	//     *   **LogDir**: If the standard output type is used, the collection path is stdout.log. If the file type is used, the collection path is the path of the collected file. Wildcards (\*) are supported. The collection path must match the following regular expression: `^/(.+)/(.*)^/$`.
 	Configs *string `json:"Configs,omitempty" xml:"Configs,omitempty"`
 }
 
@@ -26088,8 +30808,11 @@ func (s *UpdateSlsLogStoreRequest) SetConfigs(v string) *UpdateSlsLogStoreReques
 }
 
 type UpdateSlsLogStoreResponseBody struct {
-	Code      *int32  `json:"Code,omitempty" xml:"Code,omitempty"`
-	Message   *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// The HTTP status code that is returned.
+	Code *int32 `json:"Code,omitempty" xml:"Code,omitempty"`
+	// The message that is returned.
+	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// The ID of the request.
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -26146,11 +30869,16 @@ func (s *UpdateSlsLogStoreResponse) SetBody(v *UpdateSlsLogStoreResponseBody) *U
 }
 
 type UpdateSwimmingLaneRequest struct {
-	AppInfos    *string `json:"AppInfos,omitempty" xml:"AppInfos,omitempty"`
-	EnableRules *bool   `json:"EnableRules,omitempty" xml:"EnableRules,omitempty"`
-	EntryRules  *string `json:"EntryRules,omitempty" xml:"EntryRules,omitempty"`
-	LaneId      *int64  `json:"LaneId,omitempty" xml:"LaneId,omitempty"`
-	Name        *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// The list of applications that are related to the lane.
+	AppInfos *string `json:"AppInfos,omitempty" xml:"AppInfos,omitempty"`
+	// Specifies whether to enable the throttling rule.
+	EnableRules *bool `json:"EnableRules,omitempty" xml:"EnableRules,omitempty"`
+	// The configuration of the throttling rule.
+	EntryRules *string `json:"EntryRules,omitempty" xml:"EntryRules,omitempty"`
+	// The ID of the lane.
+	LaneId *int64 `json:"LaneId,omitempty" xml:"LaneId,omitempty"`
+	// The name of the lane.
+	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
 }
 
 func (s UpdateSwimmingLaneRequest) String() string {
@@ -26187,10 +30915,14 @@ func (s *UpdateSwimmingLaneRequest) SetName(v string) *UpdateSwimmingLaneRequest
 }
 
 type UpdateSwimmingLaneResponseBody struct {
-	Code      *int32                              `json:"Code,omitempty" xml:"Code,omitempty"`
-	Data      *UpdateSwimmingLaneResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
-	Message   *string                             `json:"Message,omitempty" xml:"Message,omitempty"`
-	RequestId *string                             `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The HTTP status code that is returned.
+	Code *int32 `json:"Code,omitempty" xml:"Code,omitempty"`
+	// The data that is returned.
+	Data *UpdateSwimmingLaneResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
+	// The additional information that is returned.
+	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// The ID of the request.
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
 func (s UpdateSwimmingLaneResponseBody) String() string {
@@ -26222,13 +30954,20 @@ func (s *UpdateSwimmingLaneResponseBody) SetRequestId(v string) *UpdateSwimmingL
 }
 
 type UpdateSwimmingLaneResponseBodyData struct {
-	EntryRule                       *string                                                              `json:"EntryRule,omitempty" xml:"EntryRule,omitempty"`
-	GroupId                         *int64                                                               `json:"GroupId,omitempty" xml:"GroupId,omitempty"`
-	Id                              *int64                                                               `json:"Id,omitempty" xml:"Id,omitempty"`
-	Name                            *string                                                              `json:"Name,omitempty" xml:"Name,omitempty"`
-	NamespaceId                     *string                                                              `json:"NamespaceId,omitempty" xml:"NamespaceId,omitempty"`
+	// The rule of the lane.
+	EntryRule *string `json:"EntryRule,omitempty" xml:"EntryRule,omitempty"`
+	// The ID of the lane group.
+	GroupId *int64 `json:"GroupId,omitempty" xml:"GroupId,omitempty"`
+	// The ID of the lane.
+	Id *int64 `json:"Id,omitempty" xml:"Id,omitempty"`
+	// The name of the lane.
+	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// The ID of the namespace.
+	NamespaceId *string `json:"NamespaceId,omitempty" xml:"NamespaceId,omitempty"`
+	// The list of associations between the lane and the related application.
 	SwimmingLaneAppRelationShipList []*UpdateSwimmingLaneResponseBodyDataSwimmingLaneAppRelationShipList `json:"SwimmingLaneAppRelationShipList,omitempty" xml:"SwimmingLaneAppRelationShipList,omitempty" type:"Repeated"`
-	Tag                             *string                                                              `json:"Tag,omitempty" xml:"Tag,omitempty"`
+	// The tag of the lane.
+	Tag *string `json:"Tag,omitempty" xml:"Tag,omitempty"`
 }
 
 func (s UpdateSwimmingLaneResponseBodyData) String() string {
@@ -26275,10 +31014,14 @@ func (s *UpdateSwimmingLaneResponseBodyData) SetTag(v string) *UpdateSwimmingLan
 }
 
 type UpdateSwimmingLaneResponseBodyDataSwimmingLaneAppRelationShipList struct {
-	AppId   *string `json:"AppId,omitempty" xml:"AppId,omitempty"`
+	// The ID of the application.
+	AppId *string `json:"AppId,omitempty" xml:"AppId,omitempty"`
+	// The name of the application.
 	AppName *string `json:"AppName,omitempty" xml:"AppName,omitempty"`
-	LaneId  *int64  `json:"LaneId,omitempty" xml:"LaneId,omitempty"`
-	Rules   *string `json:"Rules,omitempty" xml:"Rules,omitempty"`
+	// The ID of the lane.
+	LaneId *int64 `json:"LaneId,omitempty" xml:"LaneId,omitempty"`
+	// The association rule.
+	Rules *string `json:"Rules,omitempty" xml:"Rules,omitempty"`
 }
 
 func (s UpdateSwimmingLaneResponseBodyDataSwimmingLaneAppRelationShipList) String() string {
@@ -26339,10 +31082,14 @@ func (s *UpdateSwimmingLaneResponse) SetBody(v *UpdateSwimmingLaneResponseBody) 
 }
 
 type UpdateSwimmingLaneGroupRequest struct {
-	AppIds   *string `json:"AppIds,omitempty" xml:"AppIds,omitempty"`
+	// The list of application IDs related to the lane group.
+	AppIds *string `json:"AppIds,omitempty" xml:"AppIds,omitempty"`
+	// The ingress application. The application is in the EDAS:{application ID} format.
 	EntryApp *string `json:"EntryApp,omitempty" xml:"EntryApp,omitempty"`
-	GroupId  *int64  `json:"GroupId,omitempty" xml:"GroupId,omitempty"`
-	Name     *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// The ID of the lane group.
+	GroupId *int64 `json:"GroupId,omitempty" xml:"GroupId,omitempty"`
+	// The name of the lane group.
+	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
 }
 
 func (s UpdateSwimmingLaneGroupRequest) String() string {
@@ -26374,10 +31121,14 @@ func (s *UpdateSwimmingLaneGroupRequest) SetName(v string) *UpdateSwimmingLaneGr
 }
 
 type UpdateSwimmingLaneGroupResponseBody struct {
-	Code      *int32                                   `json:"Code,omitempty" xml:"Code,omitempty"`
-	Data      *UpdateSwimmingLaneGroupResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
-	Message   *string                                  `json:"Message,omitempty" xml:"Message,omitempty"`
-	RequestId *string                                  `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The HTTP status code that is returned.
+	Code *int32 `json:"Code,omitempty" xml:"Code,omitempty"`
+	// The data that is returned.
+	Data *UpdateSwimmingLaneGroupResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
+	// The additional information that is returned.
+	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// The ID of the request.
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
 func (s UpdateSwimmingLaneGroupResponseBody) String() string {
@@ -26409,11 +31160,16 @@ func (s *UpdateSwimmingLaneGroupResponseBody) SetRequestId(v string) *UpdateSwim
 }
 
 type UpdateSwimmingLaneGroupResponseBodyData struct {
-	ApplicationList  []*UpdateSwimmingLaneGroupResponseBodyDataApplicationList `json:"ApplicationList,omitempty" xml:"ApplicationList,omitempty" type:"Repeated"`
-	EntryApplication *UpdateSwimmingLaneGroupResponseBodyDataEntryApplication  `json:"EntryApplication,omitempty" xml:"EntryApplication,omitempty" type:"Struct"`
-	Id               *int64                                                    `json:"Id,omitempty" xml:"Id,omitempty"`
-	Name             *string                                                   `json:"Name,omitempty" xml:"Name,omitempty"`
-	NamespaceId      *string                                                   `json:"NamespaceId,omitempty" xml:"NamespaceId,omitempty"`
+	// The list of applications related to the lane group.
+	ApplicationList []*UpdateSwimmingLaneGroupResponseBodyDataApplicationList `json:"ApplicationList,omitempty" xml:"ApplicationList,omitempty" type:"Repeated"`
+	// The EDAS ingress gateway information.
+	EntryApplication *UpdateSwimmingLaneGroupResponseBodyDataEntryApplication `json:"EntryApplication,omitempty" xml:"EntryApplication,omitempty" type:"Struct"`
+	// The ID of the lane group.
+	Id *int64 `json:"Id,omitempty" xml:"Id,omitempty"`
+	// The name of the lane group.
+	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// The ID of the namespace.
+	NamespaceId *string `json:"NamespaceId,omitempty" xml:"NamespaceId,omitempty"`
 }
 
 func (s UpdateSwimmingLaneGroupResponseBodyData) String() string {
@@ -26450,7 +31206,9 @@ func (s *UpdateSwimmingLaneGroupResponseBodyData) SetNamespaceId(v string) *Upda
 }
 
 type UpdateSwimmingLaneGroupResponseBodyDataApplicationList struct {
-	AppId   *string `json:"AppId,omitempty" xml:"AppId,omitempty"`
+	// The ID of the application.
+	AppId *string `json:"AppId,omitempty" xml:"AppId,omitempty"`
+	// The name of the application.
 	AppName *string `json:"AppName,omitempty" xml:"AppName,omitempty"`
 }
 
@@ -26473,7 +31231,9 @@ func (s *UpdateSwimmingLaneGroupResponseBodyDataApplicationList) SetAppName(v st
 }
 
 type UpdateSwimmingLaneGroupResponseBodyDataEntryApplication struct {
-	AppId   *string `json:"AppId,omitempty" xml:"AppId,omitempty"`
+	// The ID of the application.
+	AppId *string `json:"AppId,omitempty" xml:"AppId,omitempty"`
+	// The name of the application.
 	AppName *string `json:"AppName,omitempty" xml:"AppName,omitempty"`
 }
 
@@ -26615,18 +31375,6 @@ func (client *Client) GetEndpoint(productId *string, regionId *string, endpointR
 	return _result, _err
 }
 
-func (client *Client) AbortAndRollbackChangeOrder(request *AbortAndRollbackChangeOrderRequest) (_result *AbortAndRollbackChangeOrderResponse, _err error) {
-	runtime := &util.RuntimeOptions{}
-	headers := make(map[string]*string)
-	_result = &AbortAndRollbackChangeOrderResponse{}
-	_body, _err := client.AbortAndRollbackChangeOrderWithOptions(request, headers, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
-	return _result, _err
-}
-
 func (client *Client) AbortAndRollbackChangeOrderWithOptions(request *AbortAndRollbackChangeOrderRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *AbortAndRollbackChangeOrderResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -26661,11 +31409,11 @@ func (client *Client) AbortAndRollbackChangeOrderWithOptions(request *AbortAndRo
 	return _result, _err
 }
 
-func (client *Client) AbortChangeOrder(request *AbortChangeOrderRequest) (_result *AbortChangeOrderResponse, _err error) {
+func (client *Client) AbortAndRollbackChangeOrder(request *AbortAndRollbackChangeOrderRequest) (_result *AbortAndRollbackChangeOrderResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
-	_result = &AbortChangeOrderResponse{}
-	_body, _err := client.AbortChangeOrderWithOptions(request, headers, runtime)
+	_result = &AbortAndRollbackChangeOrderResponse{}
+	_body, _err := client.AbortAndRollbackChangeOrderWithOptions(request, headers, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -26707,11 +31455,11 @@ func (client *Client) AbortChangeOrderWithOptions(request *AbortChangeOrderReque
 	return _result, _err
 }
 
-func (client *Client) AddLogPath(request *AddLogPathRequest) (_result *AddLogPathResponse, _err error) {
+func (client *Client) AbortChangeOrder(request *AbortChangeOrderRequest) (_result *AbortChangeOrderResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
-	_result = &AddLogPathResponse{}
-	_body, _err := client.AddLogPathWithOptions(request, headers, runtime)
+	_result = &AbortChangeOrderResponse{}
+	_body, _err := client.AbortChangeOrderWithOptions(request, headers, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -26757,11 +31505,11 @@ func (client *Client) AddLogPathWithOptions(request *AddLogPathRequest, headers 
 	return _result, _err
 }
 
-func (client *Client) AuthorizeApplication(request *AuthorizeApplicationRequest) (_result *AuthorizeApplicationResponse, _err error) {
+func (client *Client) AddLogPath(request *AddLogPathRequest) (_result *AddLogPathResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
-	_result = &AuthorizeApplicationResponse{}
-	_body, _err := client.AuthorizeApplicationWithOptions(request, headers, runtime)
+	_result = &AddLogPathResponse{}
+	_body, _err := client.AddLogPathWithOptions(request, headers, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -26807,11 +31555,11 @@ func (client *Client) AuthorizeApplicationWithOptions(request *AuthorizeApplicat
 	return _result, _err
 }
 
-func (client *Client) AuthorizeResourceGroup(request *AuthorizeResourceGroupRequest) (_result *AuthorizeResourceGroupResponse, _err error) {
+func (client *Client) AuthorizeApplication(request *AuthorizeApplicationRequest) (_result *AuthorizeApplicationResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
-	_result = &AuthorizeResourceGroupResponse{}
-	_body, _err := client.AuthorizeResourceGroupWithOptions(request, headers, runtime)
+	_result = &AuthorizeApplicationResponse{}
+	_body, _err := client.AuthorizeApplicationWithOptions(request, headers, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -26857,11 +31605,11 @@ func (client *Client) AuthorizeResourceGroupWithOptions(request *AuthorizeResour
 	return _result, _err
 }
 
-func (client *Client) AuthorizeRole(request *AuthorizeRoleRequest) (_result *AuthorizeRoleResponse, _err error) {
+func (client *Client) AuthorizeResourceGroup(request *AuthorizeResourceGroupRequest) (_result *AuthorizeResourceGroupResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
-	_result = &AuthorizeRoleResponse{}
-	_body, _err := client.AuthorizeRoleWithOptions(request, headers, runtime)
+	_result = &AuthorizeResourceGroupResponse{}
+	_body, _err := client.AuthorizeResourceGroupWithOptions(request, headers, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -26907,11 +31655,11 @@ func (client *Client) AuthorizeRoleWithOptions(request *AuthorizeRoleRequest, he
 	return _result, _err
 }
 
-func (client *Client) BindEcsSlb(request *BindEcsSlbRequest) (_result *BindEcsSlbResponse, _err error) {
+func (client *Client) AuthorizeRole(request *AuthorizeRoleRequest) (_result *AuthorizeRoleResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
-	_result = &BindEcsSlbResponse{}
-	_body, _err := client.BindEcsSlbWithOptions(request, headers, runtime)
+	_result = &AuthorizeRoleResponse{}
+	_body, _err := client.AuthorizeRoleWithOptions(request, headers, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -26985,11 +31733,11 @@ func (client *Client) BindEcsSlbWithOptions(request *BindEcsSlbRequest, headers 
 	return _result, _err
 }
 
-func (client *Client) BindK8sSlb(request *BindK8sSlbRequest) (_result *BindK8sSlbResponse, _err error) {
+func (client *Client) BindEcsSlb(request *BindEcsSlbRequest) (_result *BindEcsSlbResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
-	_result = &BindK8sSlbResponse{}
-	_body, _err := client.BindK8sSlbWithOptions(request, headers, runtime)
+	_result = &BindEcsSlbResponse{}
+	_body, _err := client.BindEcsSlbWithOptions(request, headers, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -27067,11 +31815,11 @@ func (client *Client) BindK8sSlbWithOptions(request *BindK8sSlbRequest, headers 
 	return _result, _err
 }
 
-func (client *Client) BindSlb(request *BindSlbRequest) (_result *BindSlbResponse, _err error) {
+func (client *Client) BindK8sSlb(request *BindK8sSlbRequest) (_result *BindK8sSlbResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
-	_result = &BindSlbResponse{}
-	_body, _err := client.BindSlbWithOptions(request, headers, runtime)
+	_result = &BindK8sSlbResponse{}
+	_body, _err := client.BindK8sSlbWithOptions(request, headers, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -27133,11 +31881,11 @@ func (client *Client) BindSlbWithOptions(request *BindSlbRequest, headers map[st
 	return _result, _err
 }
 
-func (client *Client) ChangeDeployGroup(request *ChangeDeployGroupRequest) (_result *ChangeDeployGroupResponse, _err error) {
+func (client *Client) BindSlb(request *BindSlbRequest) (_result *BindSlbResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
-	_result = &ChangeDeployGroupResponse{}
-	_body, _err := client.ChangeDeployGroupWithOptions(request, headers, runtime)
+	_result = &BindSlbResponse{}
+	_body, _err := client.BindSlbWithOptions(request, headers, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -27191,11 +31939,11 @@ func (client *Client) ChangeDeployGroupWithOptions(request *ChangeDeployGroupReq
 	return _result, _err
 }
 
-func (client *Client) ContinuePipeline(request *ContinuePipelineRequest) (_result *ContinuePipelineResponse, _err error) {
+func (client *Client) ChangeDeployGroup(request *ChangeDeployGroupRequest) (_result *ChangeDeployGroupResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
-	_result = &ContinuePipelineResponse{}
-	_body, _err := client.ContinuePipelineWithOptions(request, headers, runtime)
+	_result = &ChangeDeployGroupResponse{}
+	_body, _err := client.ChangeDeployGroupWithOptions(request, headers, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -27241,11 +31989,11 @@ func (client *Client) ContinuePipelineWithOptions(request *ContinuePipelineReque
 	return _result, _err
 }
 
-func (client *Client) ConvertK8sResource(request *ConvertK8sResourceRequest) (_result *ConvertK8sResourceResponse, _err error) {
+func (client *Client) ContinuePipeline(request *ContinuePipelineRequest) (_result *ContinuePipelineResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
-	_result = &ConvertK8sResourceResponse{}
-	_body, _err := client.ConvertK8sResourceWithOptions(request, headers, runtime)
+	_result = &ContinuePipelineResponse{}
+	_body, _err := client.ContinuePipelineWithOptions(request, headers, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -27299,11 +32047,11 @@ func (client *Client) ConvertK8sResourceWithOptions(request *ConvertK8sResourceR
 	return _result, _err
 }
 
-func (client *Client) CreateApplicationScalingRule(request *CreateApplicationScalingRuleRequest) (_result *CreateApplicationScalingRuleResponse, _err error) {
+func (client *Client) ConvertK8sResource(request *ConvertK8sResourceRequest) (_result *ConvertK8sResourceResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
-	_result = &CreateApplicationScalingRuleResponse{}
-	_body, _err := client.CreateApplicationScalingRuleWithOptions(request, headers, runtime)
+	_result = &ConvertK8sResourceResponse{}
+	_body, _err := client.ConvertK8sResourceWithOptions(request, headers, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -27319,6 +32067,10 @@ func (client *Client) CreateApplicationScalingRuleWithOptions(request *CreateApp
 	query := map[string]interface{}{}
 	if !tea.BoolValue(util.IsUnset(request.AppId)) {
 		query["AppId"] = request.AppId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ScalingBehaviour)) {
+		query["ScalingBehaviour"] = request.ScalingBehaviour
 	}
 
 	if !tea.BoolValue(util.IsUnset(request.ScalingRuleEnable)) {
@@ -27369,11 +32121,11 @@ func (client *Client) CreateApplicationScalingRuleWithOptions(request *CreateApp
 	return _result, _err
 }
 
-func (client *Client) CreateConfigTemplate(request *CreateConfigTemplateRequest) (_result *CreateConfigTemplateResponse, _err error) {
+func (client *Client) CreateApplicationScalingRule(request *CreateApplicationScalingRuleRequest) (_result *CreateApplicationScalingRuleResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
-	_result = &CreateConfigTemplateResponse{}
-	_body, _err := client.CreateConfigTemplateWithOptions(request, headers, runtime)
+	_result = &CreateApplicationScalingRuleResponse{}
+	_body, _err := client.CreateApplicationScalingRuleWithOptions(request, headers, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -27427,11 +32179,11 @@ func (client *Client) CreateConfigTemplateWithOptions(request *CreateConfigTempl
 	return _result, _err
 }
 
-func (client *Client) CreateIDCImportCommand(request *CreateIDCImportCommandRequest) (_result *CreateIDCImportCommandResponse, _err error) {
+func (client *Client) CreateConfigTemplate(request *CreateConfigTemplateRequest) (_result *CreateConfigTemplateResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
-	_result = &CreateIDCImportCommandResponse{}
-	_body, _err := client.CreateIDCImportCommandWithOptions(request, headers, runtime)
+	_result = &CreateConfigTemplateResponse{}
+	_body, _err := client.CreateConfigTemplateWithOptions(request, headers, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -27439,6 +32191,15 @@ func (client *Client) CreateIDCImportCommand(request *CreateIDCImportCommandRequ
 	return _result, _err
 }
 
+/**
+ * ## Description
+ * You must call the CreateIDCImportCommand operation first to generate a command used to import hybrid cloud ECS instances to a hybrid cloud ECS cluster. Then, run this command on the instances to import the instances to the cluster.
+ *
+ * @param request CreateIDCImportCommandRequest
+ * @param headers map
+ * @param runtime runtime options for this request RuntimeOptions
+ * @return CreateIDCImportCommandResponse
+ */
 func (client *Client) CreateIDCImportCommandWithOptions(request *CreateIDCImportCommandRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *CreateIDCImportCommandResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -27473,11 +32234,18 @@ func (client *Client) CreateIDCImportCommandWithOptions(request *CreateIDCImport
 	return _result, _err
 }
 
-func (client *Client) CreateK8sConfigMap(request *CreateK8sConfigMapRequest) (_result *CreateK8sConfigMapResponse, _err error) {
+/**
+ * ## Description
+ * You must call the CreateIDCImportCommand operation first to generate a command used to import hybrid cloud ECS instances to a hybrid cloud ECS cluster. Then, run this command on the instances to import the instances to the cluster.
+ *
+ * @param request CreateIDCImportCommandRequest
+ * @return CreateIDCImportCommandResponse
+ */
+func (client *Client) CreateIDCImportCommand(request *CreateIDCImportCommandRequest) (_result *CreateIDCImportCommandResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
-	_result = &CreateK8sConfigMapResponse{}
-	_body, _err := client.CreateK8sConfigMapWithOptions(request, headers, runtime)
+	_result = &CreateIDCImportCommandResponse{}
+	_body, _err := client.CreateIDCImportCommandWithOptions(request, headers, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -27531,11 +32299,11 @@ func (client *Client) CreateK8sConfigMapWithOptions(request *CreateK8sConfigMapR
 	return _result, _err
 }
 
-func (client *Client) CreateK8sIngressRule(request *CreateK8sIngressRuleRequest) (_result *CreateK8sIngressRuleResponse, _err error) {
+func (client *Client) CreateK8sConfigMap(request *CreateK8sConfigMapRequest) (_result *CreateK8sConfigMapResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
-	_result = &CreateK8sIngressRuleResponse{}
-	_body, _err := client.CreateK8sIngressRuleWithOptions(request, headers, runtime)
+	_result = &CreateK8sConfigMapResponse{}
+	_body, _err := client.CreateK8sConfigMapWithOptions(request, headers, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -27549,12 +32317,20 @@ func (client *Client) CreateK8sIngressRuleWithOptions(request *CreateK8sIngressR
 		return _result, _err
 	}
 	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.Annotations)) {
+		query["Annotations"] = request.Annotations
+	}
+
 	if !tea.BoolValue(util.IsUnset(request.ClusterId)) {
 		query["ClusterId"] = request.ClusterId
 	}
 
 	if !tea.BoolValue(util.IsUnset(request.IngressConf)) {
 		query["IngressConf"] = request.IngressConf
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Labels)) {
+		query["Labels"] = request.Labels
 	}
 
 	if !tea.BoolValue(util.IsUnset(request.Name)) {
@@ -27589,11 +32365,11 @@ func (client *Client) CreateK8sIngressRuleWithOptions(request *CreateK8sIngressR
 	return _result, _err
 }
 
-func (client *Client) CreateK8sSecret(request *CreateK8sSecretRequest) (_result *CreateK8sSecretResponse, _err error) {
+func (client *Client) CreateK8sIngressRule(request *CreateK8sIngressRuleRequest) (_result *CreateK8sIngressRuleResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
-	_result = &CreateK8sSecretResponse{}
-	_body, _err := client.CreateK8sSecretWithOptions(request, headers, runtime)
+	_result = &CreateK8sIngressRuleResponse{}
+	_body, _err := client.CreateK8sIngressRuleWithOptions(request, headers, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -27663,11 +32439,11 @@ func (client *Client) CreateK8sSecretWithOptions(request *CreateK8sSecretRequest
 	return _result, _err
 }
 
-func (client *Client) CreateK8sService(request *CreateK8sServiceRequest) (_result *CreateK8sServiceResponse, _err error) {
+func (client *Client) CreateK8sSecret(request *CreateK8sSecretRequest) (_result *CreateK8sSecretResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
-	_result = &CreateK8sServiceResponse{}
-	_body, _err := client.CreateK8sServiceWithOptions(request, headers, runtime)
+	_result = &CreateK8sSecretResponse{}
+	_body, _err := client.CreateK8sSecretWithOptions(request, headers, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -27725,11 +32501,11 @@ func (client *Client) CreateK8sServiceWithOptions(request *CreateK8sServiceReque
 	return _result, _err
 }
 
-func (client *Client) DeleteApplication(request *DeleteApplicationRequest) (_result *DeleteApplicationResponse, _err error) {
+func (client *Client) CreateK8sService(request *CreateK8sServiceRequest) (_result *CreateK8sServiceResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
-	_result = &DeleteApplicationResponse{}
-	_body, _err := client.DeleteApplicationWithOptions(request, headers, runtime)
+	_result = &CreateK8sServiceResponse{}
+	_body, _err := client.CreateK8sServiceWithOptions(request, headers, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -27771,11 +32547,11 @@ func (client *Client) DeleteApplicationWithOptions(request *DeleteApplicationReq
 	return _result, _err
 }
 
-func (client *Client) DeleteApplicationScalingRule(request *DeleteApplicationScalingRuleRequest) (_result *DeleteApplicationScalingRuleResponse, _err error) {
+func (client *Client) DeleteApplication(request *DeleteApplicationRequest) (_result *DeleteApplicationResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
-	_result = &DeleteApplicationScalingRuleResponse{}
-	_body, _err := client.DeleteApplicationScalingRuleWithOptions(request, headers, runtime)
+	_result = &DeleteApplicationResponse{}
+	_body, _err := client.DeleteApplicationWithOptions(request, headers, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -27821,11 +32597,11 @@ func (client *Client) DeleteApplicationScalingRuleWithOptions(request *DeleteApp
 	return _result, _err
 }
 
-func (client *Client) DeleteCluster(request *DeleteClusterRequest) (_result *DeleteClusterResponse, _err error) {
+func (client *Client) DeleteApplicationScalingRule(request *DeleteApplicationScalingRuleRequest) (_result *DeleteApplicationScalingRuleResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
-	_result = &DeleteClusterResponse{}
-	_body, _err := client.DeleteClusterWithOptions(request, headers, runtime)
+	_result = &DeleteApplicationScalingRuleResponse{}
+	_body, _err := client.DeleteApplicationScalingRuleWithOptions(request, headers, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -27871,11 +32647,11 @@ func (client *Client) DeleteClusterWithOptions(request *DeleteClusterRequest, he
 	return _result, _err
 }
 
-func (client *Client) DeleteClusterMember(request *DeleteClusterMemberRequest) (_result *DeleteClusterMemberResponse, _err error) {
+func (client *Client) DeleteCluster(request *DeleteClusterRequest) (_result *DeleteClusterResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
-	_result = &DeleteClusterMemberResponse{}
-	_body, _err := client.DeleteClusterMemberWithOptions(request, headers, runtime)
+	_result = &DeleteClusterResponse{}
+	_body, _err := client.DeleteClusterWithOptions(request, headers, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -27921,11 +32697,11 @@ func (client *Client) DeleteClusterMemberWithOptions(request *DeleteClusterMembe
 	return _result, _err
 }
 
-func (client *Client) DeleteConfigTemplate(request *DeleteConfigTemplateRequest) (_result *DeleteConfigTemplateResponse, _err error) {
+func (client *Client) DeleteClusterMember(request *DeleteClusterMemberRequest) (_result *DeleteClusterMemberResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
-	_result = &DeleteConfigTemplateResponse{}
-	_body, _err := client.DeleteConfigTemplateWithOptions(request, headers, runtime)
+	_result = &DeleteClusterMemberResponse{}
+	_body, _err := client.DeleteClusterMemberWithOptions(request, headers, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -27967,11 +32743,11 @@ func (client *Client) DeleteConfigTemplateWithOptions(request *DeleteConfigTempl
 	return _result, _err
 }
 
-func (client *Client) DeleteDeployGroup(request *DeleteDeployGroupRequest) (_result *DeleteDeployGroupResponse, _err error) {
+func (client *Client) DeleteConfigTemplate(request *DeleteConfigTemplateRequest) (_result *DeleteConfigTemplateResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
-	_result = &DeleteDeployGroupResponse{}
-	_body, _err := client.DeleteDeployGroupWithOptions(request, headers, runtime)
+	_result = &DeleteConfigTemplateResponse{}
+	_body, _err := client.DeleteConfigTemplateWithOptions(request, headers, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -28017,11 +32793,11 @@ func (client *Client) DeleteDeployGroupWithOptions(request *DeleteDeployGroupReq
 	return _result, _err
 }
 
-func (client *Client) DeleteEcu(request *DeleteEcuRequest) (_result *DeleteEcuResponse, _err error) {
+func (client *Client) DeleteDeployGroup(request *DeleteDeployGroupRequest) (_result *DeleteDeployGroupResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
-	_result = &DeleteEcuResponse{}
-	_body, _err := client.DeleteEcuWithOptions(request, headers, runtime)
+	_result = &DeleteDeployGroupResponse{}
+	_body, _err := client.DeleteDeployGroupWithOptions(request, headers, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -28063,11 +32839,11 @@ func (client *Client) DeleteEcuWithOptions(request *DeleteEcuRequest, headers ma
 	return _result, _err
 }
 
-func (client *Client) DeleteK8sApplication(request *DeleteK8sApplicationRequest) (_result *DeleteK8sApplicationResponse, _err error) {
+func (client *Client) DeleteEcu(request *DeleteEcuRequest) (_result *DeleteEcuResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
-	_result = &DeleteK8sApplicationResponse{}
-	_body, _err := client.DeleteK8sApplicationWithOptions(request, headers, runtime)
+	_result = &DeleteEcuResponse{}
+	_body, _err := client.DeleteEcuWithOptions(request, headers, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -28113,11 +32889,11 @@ func (client *Client) DeleteK8sApplicationWithOptions(request *DeleteK8sApplicat
 	return _result, _err
 }
 
-func (client *Client) DeleteK8sConfigMap(request *DeleteK8sConfigMapRequest) (_result *DeleteK8sConfigMapResponse, _err error) {
+func (client *Client) DeleteK8sApplication(request *DeleteK8sApplicationRequest) (_result *DeleteK8sApplicationResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
-	_result = &DeleteK8sConfigMapResponse{}
-	_body, _err := client.DeleteK8sConfigMapWithOptions(request, headers, runtime)
+	_result = &DeleteK8sApplicationResponse{}
+	_body, _err := client.DeleteK8sApplicationWithOptions(request, headers, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -28167,11 +32943,11 @@ func (client *Client) DeleteK8sConfigMapWithOptions(request *DeleteK8sConfigMapR
 	return _result, _err
 }
 
-func (client *Client) DeleteK8sIngressRule(request *DeleteK8sIngressRuleRequest) (_result *DeleteK8sIngressRuleResponse, _err error) {
+func (client *Client) DeleteK8sConfigMap(request *DeleteK8sConfigMapRequest) (_result *DeleteK8sConfigMapResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
-	_result = &DeleteK8sIngressRuleResponse{}
-	_body, _err := client.DeleteK8sIngressRuleWithOptions(request, headers, runtime)
+	_result = &DeleteK8sConfigMapResponse{}
+	_body, _err := client.DeleteK8sConfigMapWithOptions(request, headers, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -28221,11 +32997,11 @@ func (client *Client) DeleteK8sIngressRuleWithOptions(request *DeleteK8sIngressR
 	return _result, _err
 }
 
-func (client *Client) DeleteK8sSecret(request *DeleteK8sSecretRequest) (_result *DeleteK8sSecretResponse, _err error) {
+func (client *Client) DeleteK8sIngressRule(request *DeleteK8sIngressRuleRequest) (_result *DeleteK8sIngressRuleResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
-	_result = &DeleteK8sSecretResponse{}
-	_body, _err := client.DeleteK8sSecretWithOptions(request, headers, runtime)
+	_result = &DeleteK8sIngressRuleResponse{}
+	_body, _err := client.DeleteK8sIngressRuleWithOptions(request, headers, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -28275,11 +33051,11 @@ func (client *Client) DeleteK8sSecretWithOptions(request *DeleteK8sSecretRequest
 	return _result, _err
 }
 
-func (client *Client) DeleteK8sService(request *DeleteK8sServiceRequest) (_result *DeleteK8sServiceResponse, _err error) {
+func (client *Client) DeleteK8sSecret(request *DeleteK8sSecretRequest) (_result *DeleteK8sSecretResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
-	_result = &DeleteK8sServiceResponse{}
-	_body, _err := client.DeleteK8sServiceWithOptions(request, headers, runtime)
+	_result = &DeleteK8sSecretResponse{}
+	_body, _err := client.DeleteK8sSecretWithOptions(request, headers, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -28325,11 +33101,11 @@ func (client *Client) DeleteK8sServiceWithOptions(request *DeleteK8sServiceReque
 	return _result, _err
 }
 
-func (client *Client) DeleteLogPath(request *DeleteLogPathRequest) (_result *DeleteLogPathResponse, _err error) {
+func (client *Client) DeleteK8sService(request *DeleteK8sServiceRequest) (_result *DeleteK8sServiceResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
-	_result = &DeleteLogPathResponse{}
-	_body, _err := client.DeleteLogPathWithOptions(request, headers, runtime)
+	_result = &DeleteK8sServiceResponse{}
+	_body, _err := client.DeleteK8sServiceWithOptions(request, headers, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -28375,11 +33151,11 @@ func (client *Client) DeleteLogPathWithOptions(request *DeleteLogPathRequest, he
 	return _result, _err
 }
 
-func (client *Client) DeleteRole(request *DeleteRoleRequest) (_result *DeleteRoleResponse, _err error) {
+func (client *Client) DeleteLogPath(request *DeleteLogPathRequest) (_result *DeleteLogPathResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
-	_result = &DeleteRoleResponse{}
-	_body, _err := client.DeleteRoleWithOptions(request, headers, runtime)
+	_result = &DeleteLogPathResponse{}
+	_body, _err := client.DeleteLogPathWithOptions(request, headers, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -28421,11 +33197,11 @@ func (client *Client) DeleteRoleWithOptions(request *DeleteRoleRequest, headers 
 	return _result, _err
 }
 
-func (client *Client) DeleteServiceGroup(request *DeleteServiceGroupRequest) (_result *DeleteServiceGroupResponse, _err error) {
+func (client *Client) DeleteRole(request *DeleteRoleRequest) (_result *DeleteRoleResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
-	_result = &DeleteServiceGroupResponse{}
-	_body, _err := client.DeleteServiceGroupWithOptions(request, headers, runtime)
+	_result = &DeleteRoleResponse{}
+	_body, _err := client.DeleteRoleWithOptions(request, headers, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -28467,11 +33243,11 @@ func (client *Client) DeleteServiceGroupWithOptions(request *DeleteServiceGroupR
 	return _result, _err
 }
 
-func (client *Client) DeleteSwimmingLane(request *DeleteSwimmingLaneRequest) (_result *DeleteSwimmingLaneResponse, _err error) {
+func (client *Client) DeleteServiceGroup(request *DeleteServiceGroupRequest) (_result *DeleteServiceGroupResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
-	_result = &DeleteSwimmingLaneResponse{}
-	_body, _err := client.DeleteSwimmingLaneWithOptions(request, headers, runtime)
+	_result = &DeleteServiceGroupResponse{}
+	_body, _err := client.DeleteServiceGroupWithOptions(request, headers, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -28513,11 +33289,11 @@ func (client *Client) DeleteSwimmingLaneWithOptions(request *DeleteSwimmingLaneR
 	return _result, _err
 }
 
-func (client *Client) DeleteUserDefineRegion(request *DeleteUserDefineRegionRequest) (_result *DeleteUserDefineRegionResponse, _err error) {
+func (client *Client) DeleteSwimmingLane(request *DeleteSwimmingLaneRequest) (_result *DeleteSwimmingLaneResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
-	_result = &DeleteUserDefineRegionResponse{}
-	_body, _err := client.DeleteUserDefineRegionWithOptions(request, headers, runtime)
+	_result = &DeleteSwimmingLaneResponse{}
+	_body, _err := client.DeleteSwimmingLaneWithOptions(request, headers, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -28563,11 +33339,11 @@ func (client *Client) DeleteUserDefineRegionWithOptions(request *DeleteUserDefin
 	return _result, _err
 }
 
-func (client *Client) DeployApplication(request *DeployApplicationRequest) (_result *DeployApplicationResponse, _err error) {
+func (client *Client) DeleteUserDefineRegion(request *DeleteUserDefineRegionRequest) (_result *DeleteUserDefineRegionResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
-	_result = &DeployApplicationResponse{}
-	_body, _err := client.DeployApplicationWithOptions(request, headers, runtime)
+	_result = &DeleteUserDefineRegionResponse{}
+	_body, _err := client.DeleteUserDefineRegionWithOptions(request, headers, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -28575,6 +33351,14 @@ func (client *Client) DeployApplication(request *DeployApplicationRequest) (_res
 	return _result, _err
 }
 
+/**
+ * > To deploy an application in a Container Service for Kubernetes (ACK) cluster that is imported into Enterprise Distributed Application Service (EDAS), call the DeployK8sApplication operation provided by EDAS. For more information, see [](~~149420~~)DeployK8sApplication.
+ *
+ * @param request DeployApplicationRequest
+ * @param headers map
+ * @param runtime runtime options for this request RuntimeOptions
+ * @return DeployApplicationResponse
+ */
 func (client *Client) DeployApplicationWithOptions(request *DeployApplicationRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *DeployApplicationResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -28665,11 +33449,17 @@ func (client *Client) DeployApplicationWithOptions(request *DeployApplicationReq
 	return _result, _err
 }
 
-func (client *Client) DeployK8sApplication(request *DeployK8sApplicationRequest) (_result *DeployK8sApplicationResponse, _err error) {
+/**
+ * > To deploy an application in a Container Service for Kubernetes (ACK) cluster that is imported into Enterprise Distributed Application Service (EDAS), call the DeployK8sApplication operation provided by EDAS. For more information, see [](~~149420~~)DeployK8sApplication.
+ *
+ * @param request DeployApplicationRequest
+ * @return DeployApplicationResponse
+ */
+func (client *Client) DeployApplication(request *DeployApplicationRequest) (_result *DeployApplicationResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
-	_result = &DeployK8sApplicationResponse{}
-	_body, _err := client.DeployK8sApplicationWithOptions(request, headers, runtime)
+	_result = &DeployApplicationResponse{}
+	_body, _err := client.DeployApplicationWithOptions(request, headers, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -28705,6 +33495,10 @@ func (client *Client) DeployK8sApplicationWithOptions(request *DeployK8sApplicat
 
 	if !tea.BoolValue(util.IsUnset(request.BuildPackId)) {
 		query["BuildPackId"] = request.BuildPackId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.CanaryRuleId)) {
+		query["CanaryRuleId"] = request.CanaryRuleId
 	}
 
 	if !tea.BoolValue(util.IsUnset(request.ChangeOrderDesc)) {
@@ -28775,8 +33569,16 @@ func (client *Client) DeployK8sApplicationWithOptions(request *DeployK8sApplicat
 		query["Image"] = request.Image
 	}
 
+	if !tea.BoolValue(util.IsUnset(request.ImagePlatforms)) {
+		query["ImagePlatforms"] = request.ImagePlatforms
+	}
+
 	if !tea.BoolValue(util.IsUnset(request.ImageTag)) {
 		query["ImageTag"] = request.ImageTag
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.InitContainers)) {
+		query["InitContainers"] = request.InitContainers
 	}
 
 	if !tea.BoolValue(util.IsUnset(request.JDK)) {
@@ -28789,6 +33591,10 @@ func (client *Client) DeployK8sApplicationWithOptions(request *DeployK8sApplicat
 
 	if !tea.BoolValue(util.IsUnset(request.Labels)) {
 		query["Labels"] = request.Labels
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.LimitEphemeralStorage)) {
+		query["LimitEphemeralStorage"] = request.LimitEphemeralStorage
 	}
 
 	if !tea.BoolValue(util.IsUnset(request.Liveness)) {
@@ -28875,16 +33681,32 @@ func (client *Client) DeployK8sApplicationWithOptions(request *DeployK8sApplicat
 		query["Replicas"] = request.Replicas
 	}
 
+	if !tea.BoolValue(util.IsUnset(request.RequestsEphemeralStorage)) {
+		query["RequestsEphemeralStorage"] = request.RequestsEphemeralStorage
+	}
+
 	if !tea.BoolValue(util.IsUnset(request.RuntimeClassName)) {
 		query["RuntimeClassName"] = request.RuntimeClassName
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Sidecars)) {
+		query["Sidecars"] = request.Sidecars
 	}
 
 	if !tea.BoolValue(util.IsUnset(request.SlsConfigs)) {
 		query["SlsConfigs"] = request.SlsConfigs
 	}
 
+	if !tea.BoolValue(util.IsUnset(request.Startup)) {
+		query["Startup"] = request.Startup
+	}
+
 	if !tea.BoolValue(util.IsUnset(request.StorageType)) {
 		query["StorageType"] = request.StorageType
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.TerminateGracePeriod)) {
+		query["TerminateGracePeriod"] = request.TerminateGracePeriod
 	}
 
 	if !tea.BoolValue(util.IsUnset(request.TrafficControlStrategy)) {
@@ -28901,6 +33723,10 @@ func (client *Client) DeployK8sApplicationWithOptions(request *DeployK8sApplicat
 
 	if !tea.BoolValue(util.IsUnset(request.UseBodyEncoding)) {
 		query["UseBodyEncoding"] = request.UseBodyEncoding
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.UserBaseImageUrl)) {
+		query["UserBaseImageUrl"] = request.UserBaseImageUrl
 	}
 
 	if !tea.BoolValue(util.IsUnset(request.VolumesStr)) {
@@ -28939,11 +33765,11 @@ func (client *Client) DeployK8sApplicationWithOptions(request *DeployK8sApplicat
 	return _result, _err
 }
 
-func (client *Client) DescribeAppInstanceList(request *DescribeAppInstanceListRequest) (_result *DescribeAppInstanceListResponse, _err error) {
+func (client *Client) DeployK8sApplication(request *DeployK8sApplicationRequest) (_result *DeployK8sApplicationResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
-	_result = &DescribeAppInstanceListResponse{}
-	_body, _err := client.DescribeAppInstanceListWithOptions(request, headers, runtime)
+	_result = &DeployK8sApplicationResponse{}
+	_body, _err := client.DeployK8sApplicationWithOptions(request, headers, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -28989,11 +33815,11 @@ func (client *Client) DescribeAppInstanceListWithOptions(request *DescribeAppIns
 	return _result, _err
 }
 
-func (client *Client) DescribeApplicationScalingRules(request *DescribeApplicationScalingRulesRequest) (_result *DescribeApplicationScalingRulesResponse, _err error) {
+func (client *Client) DescribeAppInstanceList(request *DescribeAppInstanceListRequest) (_result *DescribeAppInstanceListResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
-	_result = &DescribeApplicationScalingRulesResponse{}
-	_body, _err := client.DescribeApplicationScalingRulesWithOptions(request, headers, runtime)
+	_result = &DescribeAppInstanceListResponse{}
+	_body, _err := client.DescribeAppInstanceListWithOptions(request, headers, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -29035,11 +33861,11 @@ func (client *Client) DescribeApplicationScalingRulesWithOptions(request *Descri
 	return _result, _err
 }
 
-func (client *Client) DisableApplicationScalingRule(request *DisableApplicationScalingRuleRequest) (_result *DisableApplicationScalingRuleResponse, _err error) {
+func (client *Client) DescribeApplicationScalingRules(request *DescribeApplicationScalingRulesRequest) (_result *DescribeApplicationScalingRulesResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
-	_result = &DisableApplicationScalingRuleResponse{}
-	_body, _err := client.DisableApplicationScalingRuleWithOptions(request, headers, runtime)
+	_result = &DescribeApplicationScalingRulesResponse{}
+	_body, _err := client.DescribeApplicationScalingRulesWithOptions(request, headers, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -29085,11 +33911,11 @@ func (client *Client) DisableApplicationScalingRuleWithOptions(request *DisableA
 	return _result, _err
 }
 
-func (client *Client) EnableApplicationScalingRule(request *EnableApplicationScalingRuleRequest) (_result *EnableApplicationScalingRuleResponse, _err error) {
+func (client *Client) DisableApplicationScalingRule(request *DisableApplicationScalingRuleRequest) (_result *DisableApplicationScalingRuleResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
-	_result = &EnableApplicationScalingRuleResponse{}
-	_body, _err := client.EnableApplicationScalingRuleWithOptions(request, headers, runtime)
+	_result = &DisableApplicationScalingRuleResponse{}
+	_body, _err := client.DisableApplicationScalingRuleWithOptions(request, headers, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -29135,11 +33961,11 @@ func (client *Client) EnableApplicationScalingRuleWithOptions(request *EnableApp
 	return _result, _err
 }
 
-func (client *Client) GetAppDeployment(request *GetAppDeploymentRequest) (_result *GetAppDeploymentResponse, _err error) {
+func (client *Client) EnableApplicationScalingRule(request *EnableApplicationScalingRuleRequest) (_result *EnableApplicationScalingRuleResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
-	_result = &GetAppDeploymentResponse{}
-	_body, _err := client.GetAppDeploymentWithOptions(request, headers, runtime)
+	_result = &EnableApplicationScalingRuleResponse{}
+	_body, _err := client.EnableApplicationScalingRuleWithOptions(request, headers, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -29181,11 +34007,11 @@ func (client *Client) GetAppDeploymentWithOptions(request *GetAppDeploymentReque
 	return _result, _err
 }
 
-func (client *Client) GetApplication(request *GetApplicationRequest) (_result *GetApplicationResponse, _err error) {
+func (client *Client) GetAppDeployment(request *GetAppDeploymentRequest) (_result *GetAppDeploymentResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
-	_result = &GetApplicationResponse{}
-	_body, _err := client.GetApplicationWithOptions(request, headers, runtime)
+	_result = &GetAppDeploymentResponse{}
+	_body, _err := client.GetAppDeploymentWithOptions(request, headers, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -29227,11 +34053,11 @@ func (client *Client) GetApplicationWithOptions(request *GetApplicationRequest, 
 	return _result, _err
 }
 
-func (client *Client) GetChangeOrderInfo(request *GetChangeOrderInfoRequest) (_result *GetChangeOrderInfoResponse, _err error) {
+func (client *Client) GetApplication(request *GetApplicationRequest) (_result *GetApplicationResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
-	_result = &GetChangeOrderInfoResponse{}
-	_body, _err := client.GetChangeOrderInfoWithOptions(request, headers, runtime)
+	_result = &GetApplicationResponse{}
+	_body, _err := client.GetApplicationWithOptions(request, headers, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -29273,11 +34099,11 @@ func (client *Client) GetChangeOrderInfoWithOptions(request *GetChangeOrderInfoR
 	return _result, _err
 }
 
-func (client *Client) GetCluster(request *GetClusterRequest) (_result *GetClusterResponse, _err error) {
+func (client *Client) GetChangeOrderInfo(request *GetChangeOrderInfoRequest) (_result *GetChangeOrderInfoResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
-	_result = &GetClusterResponse{}
-	_body, _err := client.GetClusterWithOptions(request, headers, runtime)
+	_result = &GetChangeOrderInfoResponse{}
+	_body, _err := client.GetChangeOrderInfoWithOptions(request, headers, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -29319,11 +34145,11 @@ func (client *Client) GetClusterWithOptions(request *GetClusterRequest, headers 
 	return _result, _err
 }
 
-func (client *Client) GetContainerConfiguration(request *GetContainerConfigurationRequest) (_result *GetContainerConfigurationResponse, _err error) {
+func (client *Client) GetCluster(request *GetClusterRequest) (_result *GetClusterResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
-	_result = &GetContainerConfigurationResponse{}
-	_body, _err := client.GetContainerConfigurationWithOptions(request, headers, runtime)
+	_result = &GetClusterResponse{}
+	_body, _err := client.GetClusterWithOptions(request, headers, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -29369,11 +34195,11 @@ func (client *Client) GetContainerConfigurationWithOptions(request *GetContainer
 	return _result, _err
 }
 
-func (client *Client) GetJavaStartUpConfig(request *GetJavaStartUpConfigRequest) (_result *GetJavaStartUpConfigResponse, _err error) {
+func (client *Client) GetContainerConfiguration(request *GetContainerConfigurationRequest) (_result *GetContainerConfigurationResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
-	_result = &GetJavaStartUpConfigResponse{}
-	_body, _err := client.GetJavaStartUpConfigWithOptions(request, headers, runtime)
+	_result = &GetContainerConfigurationResponse{}
+	_body, _err := client.GetContainerConfigurationWithOptions(request, headers, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -29415,11 +34241,11 @@ func (client *Client) GetJavaStartUpConfigWithOptions(request *GetJavaStartUpCon
 	return _result, _err
 }
 
-func (client *Client) GetJvmConfiguration(request *GetJvmConfigurationRequest) (_result *GetJvmConfigurationResponse, _err error) {
+func (client *Client) GetJavaStartUpConfig(request *GetJavaStartUpConfigRequest) (_result *GetJavaStartUpConfigResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
-	_result = &GetJvmConfigurationResponse{}
-	_body, _err := client.GetJvmConfigurationWithOptions(request, headers, runtime)
+	_result = &GetJavaStartUpConfigResponse{}
+	_body, _err := client.GetJavaStartUpConfigWithOptions(request, headers, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -29465,11 +34291,11 @@ func (client *Client) GetJvmConfigurationWithOptions(request *GetJvmConfiguratio
 	return _result, _err
 }
 
-func (client *Client) GetK8sAppPrecheckResult(request *GetK8sAppPrecheckResultRequest) (_result *GetK8sAppPrecheckResultResponse, _err error) {
+func (client *Client) GetJvmConfiguration(request *GetJvmConfigurationRequest) (_result *GetJvmConfigurationResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
-	_result = &GetK8sAppPrecheckResultResponse{}
-	_body, _err := client.GetK8sAppPrecheckResultWithOptions(request, headers, runtime)
+	_result = &GetJvmConfigurationResponse{}
+	_body, _err := client.GetJvmConfigurationWithOptions(request, headers, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -29519,11 +34345,11 @@ func (client *Client) GetK8sAppPrecheckResultWithOptions(request *GetK8sAppPrech
 	return _result, _err
 }
 
-func (client *Client) GetK8sApplication(request *GetK8sApplicationRequest) (_result *GetK8sApplicationResponse, _err error) {
+func (client *Client) GetK8sAppPrecheckResult(request *GetK8sAppPrecheckResultRequest) (_result *GetK8sAppPrecheckResultResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
-	_result = &GetK8sApplicationResponse{}
-	_body, _err := client.GetK8sApplicationWithOptions(request, headers, runtime)
+	_result = &GetK8sAppPrecheckResultResponse{}
+	_body, _err := client.GetK8sAppPrecheckResultWithOptions(request, headers, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -29569,11 +34395,11 @@ func (client *Client) GetK8sApplicationWithOptions(request *GetK8sApplicationReq
 	return _result, _err
 }
 
-func (client *Client) GetK8sCluster(request *GetK8sClusterRequest) (_result *GetK8sClusterResponse, _err error) {
+func (client *Client) GetK8sApplication(request *GetK8sApplicationRequest) (_result *GetK8sApplicationResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
-	_result = &GetK8sClusterResponse{}
-	_body, _err := client.GetK8sClusterWithOptions(request, headers, runtime)
+	_result = &GetK8sApplicationResponse{}
+	_body, _err := client.GetK8sApplicationWithOptions(request, headers, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -29631,11 +34457,11 @@ func (client *Client) GetK8sClusterWithOptions(request *GetK8sClusterRequest, he
 	return _result, _err
 }
 
-func (client *Client) GetK8sServices(request *GetK8sServicesRequest) (_result *GetK8sServicesResponse, _err error) {
+func (client *Client) GetK8sCluster(request *GetK8sClusterRequest) (_result *GetK8sClusterResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
-	_result = &GetK8sServicesResponse{}
-	_body, _err := client.GetK8sServicesWithOptions(request, headers, runtime)
+	_result = &GetK8sClusterResponse{}
+	_body, _err := client.GetK8sClusterWithOptions(request, headers, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -29677,11 +34503,11 @@ func (client *Client) GetK8sServicesWithOptions(request *GetK8sServicesRequest, 
 	return _result, _err
 }
 
-func (client *Client) GetPackageStorageCredential() (_result *GetPackageStorageCredentialResponse, _err error) {
+func (client *Client) GetK8sServices(request *GetK8sServicesRequest) (_result *GetK8sServicesResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
-	_result = &GetPackageStorageCredentialResponse{}
-	_body, _err := client.GetPackageStorageCredentialWithOptions(headers, runtime)
+	_result = &GetK8sServicesResponse{}
+	_body, _err := client.GetK8sServicesWithOptions(request, headers, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -29713,11 +34539,11 @@ func (client *Client) GetPackageStorageCredentialWithOptions(headers map[string]
 	return _result, _err
 }
 
-func (client *Client) GetScalingRules(request *GetScalingRulesRequest) (_result *GetScalingRulesResponse, _err error) {
+func (client *Client) GetPackageStorageCredential() (_result *GetPackageStorageCredentialResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
-	_result = &GetScalingRulesResponse{}
-	_body, _err := client.GetScalingRulesWithOptions(request, headers, runtime)
+	_result = &GetPackageStorageCredentialResponse{}
+	_body, _err := client.GetPackageStorageCredentialWithOptions(headers, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -29767,11 +34593,11 @@ func (client *Client) GetScalingRulesWithOptions(request *GetScalingRulesRequest
 	return _result, _err
 }
 
-func (client *Client) GetSecureToken(request *GetSecureTokenRequest) (_result *GetSecureTokenResponse, _err error) {
+func (client *Client) GetScalingRules(request *GetScalingRulesRequest) (_result *GetScalingRulesResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
-	_result = &GetSecureTokenResponse{}
-	_body, _err := client.GetSecureTokenWithOptions(request, headers, runtime)
+	_result = &GetScalingRulesResponse{}
+	_body, _err := client.GetScalingRulesWithOptions(request, headers, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -29813,11 +34639,11 @@ func (client *Client) GetSecureTokenWithOptions(request *GetSecureTokenRequest, 
 	return _result, _err
 }
 
-func (client *Client) GetServiceConsumersPage(request *GetServiceConsumersPageRequest) (_result *GetServiceConsumersPageResponse, _err error) {
+func (client *Client) GetSecureToken(request *GetSecureTokenRequest) (_result *GetSecureTokenResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
-	_result = &GetServiceConsumersPageResponse{}
-	_body, _err := client.GetServiceConsumersPageWithOptions(request, headers, runtime)
+	_result = &GetSecureTokenResponse{}
+	_body, _err := client.GetSecureTokenWithOptions(request, headers, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -29911,11 +34737,11 @@ func (client *Client) GetServiceConsumersPageWithOptions(request *GetServiceCons
 	return _result, _err
 }
 
-func (client *Client) GetServiceDetail(request *GetServiceDetailRequest) (_result *GetServiceDetailResponse, _err error) {
+func (client *Client) GetServiceConsumersPage(request *GetServiceConsumersPageRequest) (_result *GetServiceConsumersPageResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
-	_result = &GetServiceDetailResponse{}
-	_body, _err := client.GetServiceDetailWithOptions(request, headers, runtime)
+	_result = &GetServiceConsumersPageResponse{}
+	_body, _err := client.GetServiceConsumersPageWithOptions(request, headers, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -30001,11 +34827,11 @@ func (client *Client) GetServiceDetailWithOptions(request *GetServiceDetailReque
 	return _result, _err
 }
 
-func (client *Client) GetServiceListPage(request *GetServiceListPageRequest) (_result *GetServiceListPageResponse, _err error) {
+func (client *Client) GetServiceDetail(request *GetServiceDetailRequest) (_result *GetServiceDetailResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
-	_result = &GetServiceListPageResponse{}
-	_body, _err := client.GetServiceListPageWithOptions(request, headers, runtime)
+	_result = &GetServiceDetailResponse{}
+	_body, _err := client.GetServiceDetailWithOptions(request, headers, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -30079,11 +34905,11 @@ func (client *Client) GetServiceListPageWithOptions(request *GetServiceListPageR
 	return _result, _err
 }
 
-func (client *Client) GetServiceMethodPage(request *GetServiceMethodPageRequest) (_result *GetServiceMethodPageResponse, _err error) {
+func (client *Client) GetServiceListPage(request *GetServiceListPageRequest) (_result *GetServiceListPageResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
-	_result = &GetServiceMethodPageResponse{}
-	_body, _err := client.GetServiceMethodPageWithOptions(request, headers, runtime)
+	_result = &GetServiceListPageResponse{}
+	_body, _err := client.GetServiceListPageWithOptions(request, headers, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -30189,11 +35015,11 @@ func (client *Client) GetServiceMethodPageWithOptions(request *GetServiceMethodP
 	return _result, _err
 }
 
-func (client *Client) GetServiceProvidersPage(request *GetServiceProvidersPageRequest) (_result *GetServiceProvidersPageResponse, _err error) {
+func (client *Client) GetServiceMethodPage(request *GetServiceMethodPageRequest) (_result *GetServiceMethodPageResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
-	_result = &GetServiceProvidersPageResponse{}
-	_body, _err := client.GetServiceProvidersPageWithOptions(request, headers, runtime)
+	_result = &GetServiceMethodPageResponse{}
+	_body, _err := client.GetServiceMethodPageWithOptions(request, headers, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -30287,11 +35113,11 @@ func (client *Client) GetServiceProvidersPageWithOptions(request *GetServiceProv
 	return _result, _err
 }
 
-func (client *Client) GetWebContainerConfig(request *GetWebContainerConfigRequest) (_result *GetWebContainerConfigResponse, _err error) {
+func (client *Client) GetServiceProvidersPage(request *GetServiceProvidersPageRequest) (_result *GetServiceProvidersPageResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
-	_result = &GetWebContainerConfigResponse{}
-	_body, _err := client.GetWebContainerConfigWithOptions(request, headers, runtime)
+	_result = &GetServiceProvidersPageResponse{}
+	_body, _err := client.GetServiceProvidersPageWithOptions(request, headers, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -30299,6 +35125,14 @@ func (client *Client) GetWebContainerConfig(request *GetWebContainerConfigReques
 	return _result, _err
 }
 
+/**
+ * ***
+ *
+ * @param request GetWebContainerConfigRequest
+ * @param headers map
+ * @param runtime runtime options for this request RuntimeOptions
+ * @return GetWebContainerConfigResponse
+ */
 func (client *Client) GetWebContainerConfigWithOptions(request *GetWebContainerConfigRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *GetWebContainerConfigResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -30333,11 +35167,17 @@ func (client *Client) GetWebContainerConfigWithOptions(request *GetWebContainerC
 	return _result, _err
 }
 
-func (client *Client) ImportK8sCluster(request *ImportK8sClusterRequest) (_result *ImportK8sClusterResponse, _err error) {
+/**
+ * ***
+ *
+ * @param request GetWebContainerConfigRequest
+ * @return GetWebContainerConfigResponse
+ */
+func (client *Client) GetWebContainerConfig(request *GetWebContainerConfigRequest) (_result *GetWebContainerConfigResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
-	_result = &ImportK8sClusterResponse{}
-	_body, _err := client.ImportK8sClusterWithOptions(request, headers, runtime)
+	_result = &GetWebContainerConfigResponse{}
+	_body, _err := client.GetWebContainerConfigWithOptions(request, headers, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -30391,11 +35231,11 @@ func (client *Client) ImportK8sClusterWithOptions(request *ImportK8sClusterReque
 	return _result, _err
 }
 
-func (client *Client) InsertApplication(request *InsertApplicationRequest) (_result *InsertApplicationResponse, _err error) {
+func (client *Client) ImportK8sCluster(request *ImportK8sClusterRequest) (_result *ImportK8sClusterResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
-	_result = &InsertApplicationResponse{}
-	_body, _err := client.InsertApplicationWithOptions(request, headers, runtime)
+	_result = &ImportK8sClusterResponse{}
+	_body, _err := client.ImportK8sClusterWithOptions(request, headers, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -30403,6 +35243,14 @@ func (client *Client) InsertApplication(request *InsertApplicationRequest) (_res
 	return _result, _err
 }
 
+/**
+ * > To create an application in a Kubernetes cluster, call the InsertK8sApplication operation provided by Enterprise Distributed Application Service (EDAS).
+ *
+ * @param request InsertApplicationRequest
+ * @param headers map
+ * @param runtime runtime options for this request RuntimeOptions
+ * @return InsertApplicationResponse
+ */
 func (client *Client) InsertApplicationWithOptions(request *InsertApplicationRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *InsertApplicationResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -30525,11 +35373,17 @@ func (client *Client) InsertApplicationWithOptions(request *InsertApplicationReq
 	return _result, _err
 }
 
-func (client *Client) InsertCluster(request *InsertClusterRequest) (_result *InsertClusterResponse, _err error) {
+/**
+ * > To create an application in a Kubernetes cluster, call the InsertK8sApplication operation provided by Enterprise Distributed Application Service (EDAS).
+ *
+ * @param request InsertApplicationRequest
+ * @return InsertApplicationResponse
+ */
+func (client *Client) InsertApplication(request *InsertApplicationRequest) (_result *InsertApplicationResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
-	_result = &InsertClusterResponse{}
-	_body, _err := client.InsertClusterWithOptions(request, headers, runtime)
+	_result = &InsertApplicationResponse{}
+	_body, _err := client.InsertApplicationWithOptions(request, headers, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -30595,11 +35449,11 @@ func (client *Client) InsertClusterWithOptions(request *InsertClusterRequest, he
 	return _result, _err
 }
 
-func (client *Client) InsertClusterMember(request *InsertClusterMemberRequest) (_result *InsertClusterMemberResponse, _err error) {
+func (client *Client) InsertCluster(request *InsertClusterRequest) (_result *InsertClusterResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
-	_result = &InsertClusterMemberResponse{}
-	_body, _err := client.InsertClusterMemberWithOptions(request, headers, runtime)
+	_result = &InsertClusterResponse{}
+	_body, _err := client.InsertClusterWithOptions(request, headers, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -30607,6 +35461,16 @@ func (client *Client) InsertClusterMember(request *InsertClusterMemberRequest) (
 	return _result, _err
 }
 
+/**
+ * ##
+ * If you call this operation to import an ECS instance, the operating system of the ECS instance is reinstalled. After the operating system is reinstalled, all original data of the ECS instance is deleted. In addition, you must set a logon password for the ECS instance. Make sure that no important data exists on the ECS instance that you want to import or data has been backed up for the ECS instance.
+ * > We recommend that you call the InstallAgent operation instead of this operation. For more information, see [InstallAgent](~~127023~~).
+ *
+ * @param request InsertClusterMemberRequest
+ * @param headers map
+ * @param runtime runtime options for this request RuntimeOptions
+ * @return InsertClusterMemberResponse
+ */
 func (client *Client) InsertClusterMemberWithOptions(request *InsertClusterMemberRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *InsertClusterMemberResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -30649,11 +35513,19 @@ func (client *Client) InsertClusterMemberWithOptions(request *InsertClusterMembe
 	return _result, _err
 }
 
-func (client *Client) InsertDeployGroup(request *InsertDeployGroupRequest) (_result *InsertDeployGroupResponse, _err error) {
+/**
+ * ##
+ * If you call this operation to import an ECS instance, the operating system of the ECS instance is reinstalled. After the operating system is reinstalled, all original data of the ECS instance is deleted. In addition, you must set a logon password for the ECS instance. Make sure that no important data exists on the ECS instance that you want to import or data has been backed up for the ECS instance.
+ * > We recommend that you call the InstallAgent operation instead of this operation. For more information, see [InstallAgent](~~127023~~).
+ *
+ * @param request InsertClusterMemberRequest
+ * @return InsertClusterMemberResponse
+ */
+func (client *Client) InsertClusterMember(request *InsertClusterMemberRequest) (_result *InsertClusterMemberResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
-	_result = &InsertDeployGroupResponse{}
-	_body, _err := client.InsertDeployGroupWithOptions(request, headers, runtime)
+	_result = &InsertClusterMemberResponse{}
+	_body, _err := client.InsertClusterMemberWithOptions(request, headers, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -30703,11 +35575,11 @@ func (client *Client) InsertDeployGroupWithOptions(request *InsertDeployGroupReq
 	return _result, _err
 }
 
-func (client *Client) InsertK8sApplication(request *InsertK8sApplicationRequest) (_result *InsertK8sApplicationResponse, _err error) {
+func (client *Client) InsertDeployGroup(request *InsertDeployGroupRequest) (_result *InsertDeployGroupResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
-	_result = &InsertK8sApplicationResponse{}
-	_body, _err := client.InsertK8sApplicationWithOptions(request, headers, runtime)
+	_result = &InsertDeployGroupResponse{}
+	_body, _err := client.InsertDeployGroupWithOptions(request, headers, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -30759,6 +35631,10 @@ func (client *Client) InsertK8sApplicationWithOptions(request *InsertK8sApplicat
 
 	if !tea.BoolValue(util.IsUnset(request.ConfigMountDescs)) {
 		query["ConfigMountDescs"] = request.ConfigMountDescs
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ContainerRegistryId)) {
+		query["ContainerRegistryId"] = request.ContainerRegistryId
 	}
 
 	if !tea.BoolValue(util.IsUnset(request.CsClusterId)) {
@@ -30813,8 +35689,16 @@ func (client *Client) InsertK8sApplicationWithOptions(request *InsertK8sApplicat
 		query["Envs"] = request.Envs
 	}
 
+	if !tea.BoolValue(util.IsUnset(request.ImagePlatforms)) {
+		query["ImagePlatforms"] = request.ImagePlatforms
+	}
+
 	if !tea.BoolValue(util.IsUnset(request.ImageUrl)) {
 		query["ImageUrl"] = request.ImageUrl
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.InitContainers)) {
+		query["InitContainers"] = request.InitContainers
 	}
 
 	if !tea.BoolValue(util.IsUnset(request.InternetSlbId)) {
@@ -30867,6 +35751,10 @@ func (client *Client) InsertK8sApplicationWithOptions(request *InsertK8sApplicat
 
 	if !tea.BoolValue(util.IsUnset(request.LimitCpu)) {
 		query["LimitCpu"] = request.LimitCpu
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.LimitEphemeralStorage)) {
+		query["LimitEphemeralStorage"] = request.LimitEphemeralStorage
 	}
 
 	if !tea.BoolValue(util.IsUnset(request.LimitMem)) {
@@ -30961,6 +35849,10 @@ func (client *Client) InsertK8sApplicationWithOptions(request *InsertK8sApplicat
 		query["RequestsCpu"] = request.RequestsCpu
 	}
 
+	if !tea.BoolValue(util.IsUnset(request.RequestsEphemeralStorage)) {
+		query["RequestsEphemeralStorage"] = request.RequestsEphemeralStorage
+	}
+
 	if !tea.BoolValue(util.IsUnset(request.RequestsMem)) {
 		query["RequestsMem"] = request.RequestsMem
 	}
@@ -30977,16 +35869,32 @@ func (client *Client) InsertK8sApplicationWithOptions(request *InsertK8sApplicat
 		query["RuntimeClassName"] = request.RuntimeClassName
 	}
 
+	if !tea.BoolValue(util.IsUnset(request.SecretName)) {
+		query["SecretName"] = request.SecretName
+	}
+
 	if !tea.BoolValue(util.IsUnset(request.ServiceConfigs)) {
 		query["ServiceConfigs"] = request.ServiceConfigs
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Sidecars)) {
+		query["Sidecars"] = request.Sidecars
 	}
 
 	if !tea.BoolValue(util.IsUnset(request.SlsConfigs)) {
 		query["SlsConfigs"] = request.SlsConfigs
 	}
 
+	if !tea.BoolValue(util.IsUnset(request.Startup)) {
+		query["Startup"] = request.Startup
+	}
+
 	if !tea.BoolValue(util.IsUnset(request.StorageType)) {
 		query["StorageType"] = request.StorageType
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.TerminateGracePeriod)) {
+		query["TerminateGracePeriod"] = request.TerminateGracePeriod
 	}
 
 	if !tea.BoolValue(util.IsUnset(request.Timeout)) {
@@ -31001,12 +35909,20 @@ func (client *Client) InsertK8sApplicationWithOptions(request *InsertK8sApplicat
 		query["UseBodyEncoding"] = request.UseBodyEncoding
 	}
 
+	if !tea.BoolValue(util.IsUnset(request.UserBaseImageUrl)) {
+		query["UserBaseImageUrl"] = request.UserBaseImageUrl
+	}
+
 	if !tea.BoolValue(util.IsUnset(request.WebContainer)) {
 		query["WebContainer"] = request.WebContainer
 	}
 
 	if !tea.BoolValue(util.IsUnset(request.WebContainerConfig)) {
 		query["WebContainerConfig"] = request.WebContainerConfig
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.WorkloadType)) {
+		query["WorkloadType"] = request.WorkloadType
 	}
 
 	req := &openapi.OpenApiRequest{
@@ -31033,11 +35949,11 @@ func (client *Client) InsertK8sApplicationWithOptions(request *InsertK8sApplicat
 	return _result, _err
 }
 
-func (client *Client) InsertOrUpdateRegion(request *InsertOrUpdateRegionRequest) (_result *InsertOrUpdateRegionResponse, _err error) {
+func (client *Client) InsertK8sApplication(request *InsertK8sApplicationRequest) (_result *InsertK8sApplicationResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
-	_result = &InsertOrUpdateRegionResponse{}
-	_body, _err := client.InsertOrUpdateRegionWithOptions(request, headers, runtime)
+	_result = &InsertK8sApplicationResponse{}
+	_body, _err := client.InsertK8sApplicationWithOptions(request, headers, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -31103,11 +36019,11 @@ func (client *Client) InsertOrUpdateRegionWithOptions(request *InsertOrUpdateReg
 	return _result, _err
 }
 
-func (client *Client) InsertRole(request *InsertRoleRequest) (_result *InsertRoleResponse, _err error) {
+func (client *Client) InsertOrUpdateRegion(request *InsertOrUpdateRegionRequest) (_result *InsertOrUpdateRegionResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
-	_result = &InsertRoleResponse{}
-	_body, _err := client.InsertRoleWithOptions(request, headers, runtime)
+	_result = &InsertOrUpdateRegionResponse{}
+	_body, _err := client.InsertOrUpdateRegionWithOptions(request, headers, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -31153,11 +36069,11 @@ func (client *Client) InsertRoleWithOptions(request *InsertRoleRequest, headers 
 	return _result, _err
 }
 
-func (client *Client) InsertServiceGroup(request *InsertServiceGroupRequest) (_result *InsertServiceGroupResponse, _err error) {
+func (client *Client) InsertRole(request *InsertRoleRequest) (_result *InsertRoleResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
-	_result = &InsertServiceGroupResponse{}
-	_body, _err := client.InsertServiceGroupWithOptions(request, headers, runtime)
+	_result = &InsertRoleResponse{}
+	_body, _err := client.InsertRoleWithOptions(request, headers, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -31199,11 +36115,11 @@ func (client *Client) InsertServiceGroupWithOptions(request *InsertServiceGroupR
 	return _result, _err
 }
 
-func (client *Client) InsertSwimmingLane(request *InsertSwimmingLaneRequest) (_result *InsertSwimmingLaneResponse, _err error) {
+func (client *Client) InsertServiceGroup(request *InsertServiceGroupRequest) (_result *InsertServiceGroupResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
-	_result = &InsertSwimmingLaneResponse{}
-	_body, _err := client.InsertSwimmingLaneWithOptions(request, headers, runtime)
+	_result = &InsertServiceGroupResponse{}
+	_body, _err := client.InsertServiceGroupWithOptions(request, headers, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -31269,11 +36185,11 @@ func (client *Client) InsertSwimmingLaneWithOptions(request *InsertSwimmingLaneR
 	return _result, _err
 }
 
-func (client *Client) InsertSwimmingLaneGroup(request *InsertSwimmingLaneGroupRequest) (_result *InsertSwimmingLaneGroupResponse, _err error) {
+func (client *Client) InsertSwimmingLane(request *InsertSwimmingLaneRequest) (_result *InsertSwimmingLaneResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
-	_result = &InsertSwimmingLaneGroupResponse{}
-	_body, _err := client.InsertSwimmingLaneGroupWithOptions(request, headers, runtime)
+	_result = &InsertSwimmingLaneResponse{}
+	_body, _err := client.InsertSwimmingLaneWithOptions(request, headers, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -31327,11 +36243,11 @@ func (client *Client) InsertSwimmingLaneGroupWithOptions(request *InsertSwimming
 	return _result, _err
 }
 
-func (client *Client) InstallAgent(request *InstallAgentRequest) (_result *InstallAgentResponse, _err error) {
+func (client *Client) InsertSwimmingLaneGroup(request *InsertSwimmingLaneGroupRequest) (_result *InsertSwimmingLaneGroupResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
-	_result = &InstallAgentResponse{}
-	_body, _err := client.InstallAgentWithOptions(request, headers, runtime)
+	_result = &InsertSwimmingLaneGroupResponse{}
+	_body, _err := client.InsertSwimmingLaneGroupWithOptions(request, headers, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -31339,6 +36255,14 @@ func (client *Client) InstallAgent(request *InstallAgentRequest) (_result *Insta
 	return _result, _err
 }
 
+/**
+ * If you call this operation to import an ECS instance into EDAS, the operating system of the ECS instance is not reinstalled. We recommend that you call this operation to import ECS instances into EDAS.
+ *
+ * @param request InstallAgentRequest
+ * @param headers map
+ * @param runtime runtime options for this request RuntimeOptions
+ * @return InstallAgentResponse
+ */
 func (client *Client) InstallAgentWithOptions(request *InstallAgentRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *InstallAgentResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -31381,11 +36305,17 @@ func (client *Client) InstallAgentWithOptions(request *InstallAgentRequest, head
 	return _result, _err
 }
 
-func (client *Client) ListAliyunRegion() (_result *ListAliyunRegionResponse, _err error) {
+/**
+ * If you call this operation to import an ECS instance into EDAS, the operating system of the ECS instance is not reinstalled. We recommend that you call this operation to import ECS instances into EDAS.
+ *
+ * @param request InstallAgentRequest
+ * @return InstallAgentResponse
+ */
+func (client *Client) InstallAgent(request *InstallAgentRequest) (_result *InstallAgentResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
-	_result = &ListAliyunRegionResponse{}
-	_body, _err := client.ListAliyunRegionWithOptions(headers, runtime)
+	_result = &InstallAgentResponse{}
+	_body, _err := client.InstallAgentWithOptions(request, headers, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -31417,11 +36347,11 @@ func (client *Client) ListAliyunRegionWithOptions(headers map[string]*string, ru
 	return _result, _err
 }
 
-func (client *Client) ListApplication(request *ListApplicationRequest) (_result *ListApplicationResponse, _err error) {
+func (client *Client) ListAliyunRegion() (_result *ListAliyunRegionResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
-	_result = &ListApplicationResponse{}
-	_body, _err := client.ListApplicationWithOptions(request, headers, runtime)
+	_result = &ListAliyunRegionResponse{}
+	_body, _err := client.ListAliyunRegionWithOptions(headers, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -31435,6 +36365,10 @@ func (client *Client) ListApplicationWithOptions(request *ListApplicationRequest
 		return _result, _err
 	}
 	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.AppIds)) {
+		query["AppIds"] = request.AppIds
+	}
+
 	if !tea.BoolValue(util.IsUnset(request.AppName)) {
 		query["AppName"] = request.AppName
 	}
@@ -31443,12 +36377,20 @@ func (client *Client) ListApplicationWithOptions(request *ListApplicationRequest
 		query["ClusterId"] = request.ClusterId
 	}
 
+	if !tea.BoolValue(util.IsUnset(request.CurrentPage)) {
+		query["CurrentPage"] = request.CurrentPage
+	}
+
 	if !tea.BoolValue(util.IsUnset(request.LogicalRegionId)) {
 		query["LogicalRegionId"] = request.LogicalRegionId
 	}
 
 	if !tea.BoolValue(util.IsUnset(request.LogicalRegionIdFilter)) {
 		query["LogicalRegionIdFilter"] = request.LogicalRegionIdFilter
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.PageSize)) {
+		query["PageSize"] = request.PageSize
 	}
 
 	if !tea.BoolValue(util.IsUnset(request.ResourceGroupId)) {
@@ -31479,11 +36421,11 @@ func (client *Client) ListApplicationWithOptions(request *ListApplicationRequest
 	return _result, _err
 }
 
-func (client *Client) ListApplicationEcu(request *ListApplicationEcuRequest) (_result *ListApplicationEcuResponse, _err error) {
+func (client *Client) ListApplication(request *ListApplicationRequest) (_result *ListApplicationResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
-	_result = &ListApplicationEcuResponse{}
-	_body, _err := client.ListApplicationEcuWithOptions(request, headers, runtime)
+	_result = &ListApplicationResponse{}
+	_body, _err := client.ListApplicationWithOptions(request, headers, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -31529,11 +36471,11 @@ func (client *Client) ListApplicationEcuWithOptions(request *ListApplicationEcuR
 	return _result, _err
 }
 
-func (client *Client) ListAuthority() (_result *ListAuthorityResponse, _err error) {
+func (client *Client) ListApplicationEcu(request *ListApplicationEcuRequest) (_result *ListApplicationEcuResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
-	_result = &ListAuthorityResponse{}
-	_body, _err := client.ListAuthorityWithOptions(headers, runtime)
+	_result = &ListApplicationEcuResponse{}
+	_body, _err := client.ListApplicationEcuWithOptions(request, headers, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -31565,11 +36507,11 @@ func (client *Client) ListAuthorityWithOptions(headers map[string]*string, runti
 	return _result, _err
 }
 
-func (client *Client) ListBuildPack() (_result *ListBuildPackResponse, _err error) {
+func (client *Client) ListAuthority() (_result *ListAuthorityResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
-	_result = &ListBuildPackResponse{}
-	_body, _err := client.ListBuildPackWithOptions(headers, runtime)
+	_result = &ListAuthorityResponse{}
+	_body, _err := client.ListAuthorityWithOptions(headers, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -31601,11 +36543,11 @@ func (client *Client) ListBuildPackWithOptions(headers map[string]*string, runti
 	return _result, _err
 }
 
-func (client *Client) ListCluster(request *ListClusterRequest) (_result *ListClusterResponse, _err error) {
+func (client *Client) ListBuildPack() (_result *ListBuildPackResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
-	_result = &ListClusterResponse{}
-	_body, _err := client.ListClusterWithOptions(request, headers, runtime)
+	_result = &ListBuildPackResponse{}
+	_body, _err := client.ListBuildPackWithOptions(headers, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -31651,11 +36593,11 @@ func (client *Client) ListClusterWithOptions(request *ListClusterRequest, header
 	return _result, _err
 }
 
-func (client *Client) ListClusterMembers(request *ListClusterMembersRequest) (_result *ListClusterMembersResponse, _err error) {
+func (client *Client) ListCluster(request *ListClusterRequest) (_result *ListClusterResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
-	_result = &ListClusterMembersResponse{}
-	_body, _err := client.ListClusterMembersWithOptions(request, headers, runtime)
+	_result = &ListClusterResponse{}
+	_body, _err := client.ListClusterWithOptions(request, headers, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -31709,11 +36651,11 @@ func (client *Client) ListClusterMembersWithOptions(request *ListClusterMembersR
 	return _result, _err
 }
 
-func (client *Client) ListComponents() (_result *ListComponentsResponse, _err error) {
+func (client *Client) ListClusterMembers(request *ListClusterMembersRequest) (_result *ListClusterMembersResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
-	_result = &ListComponentsResponse{}
-	_body, _err := client.ListComponentsWithOptions(headers, runtime)
+	_result = &ListClusterMembersResponse{}
+	_body, _err := client.ListClusterMembersWithOptions(request, headers, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -31745,11 +36687,11 @@ func (client *Client) ListComponentsWithOptions(headers map[string]*string, runt
 	return _result, _err
 }
 
-func (client *Client) ListConfigTemplates(request *ListConfigTemplatesRequest) (_result *ListConfigTemplatesResponse, _err error) {
+func (client *Client) ListComponents() (_result *ListComponentsResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
-	_result = &ListConfigTemplatesResponse{}
-	_body, _err := client.ListConfigTemplatesWithOptions(request, headers, runtime)
+	_result = &ListComponentsResponse{}
+	_body, _err := client.ListComponentsWithOptions(headers, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -31803,11 +36745,11 @@ func (client *Client) ListConfigTemplatesWithOptions(request *ListConfigTemplate
 	return _result, _err
 }
 
-func (client *Client) ListConsumedServices(request *ListConsumedServicesRequest) (_result *ListConsumedServicesResponse, _err error) {
+func (client *Client) ListConfigTemplates(request *ListConfigTemplatesRequest) (_result *ListConfigTemplatesResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
-	_result = &ListConsumedServicesResponse{}
-	_body, _err := client.ListConsumedServicesWithOptions(request, headers, runtime)
+	_result = &ListConfigTemplatesResponse{}
+	_body, _err := client.ListConfigTemplatesWithOptions(request, headers, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -31849,11 +36791,11 @@ func (client *Client) ListConsumedServicesWithOptions(request *ListConsumedServi
 	return _result, _err
 }
 
-func (client *Client) ListConvertableEcu(request *ListConvertableEcuRequest) (_result *ListConvertableEcuResponse, _err error) {
+func (client *Client) ListConsumedServices(request *ListConsumedServicesRequest) (_result *ListConsumedServicesResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
-	_result = &ListConvertableEcuResponse{}
-	_body, _err := client.ListConvertableEcuWithOptions(request, headers, runtime)
+	_result = &ListConsumedServicesResponse{}
+	_body, _err := client.ListConsumedServicesWithOptions(request, headers, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -31895,11 +36837,11 @@ func (client *Client) ListConvertableEcuWithOptions(request *ListConvertableEcuR
 	return _result, _err
 }
 
-func (client *Client) ListDeployGroup(request *ListDeployGroupRequest) (_result *ListDeployGroupResponse, _err error) {
+func (client *Client) ListConvertableEcu(request *ListConvertableEcuRequest) (_result *ListConvertableEcuResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
-	_result = &ListDeployGroupResponse{}
-	_body, _err := client.ListDeployGroupWithOptions(request, headers, runtime)
+	_result = &ListConvertableEcuResponse{}
+	_body, _err := client.ListConvertableEcuWithOptions(request, headers, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -31941,11 +36883,11 @@ func (client *Client) ListDeployGroupWithOptions(request *ListDeployGroupRequest
 	return _result, _err
 }
 
-func (client *Client) ListEcsNotInCluster(request *ListEcsNotInClusterRequest) (_result *ListEcsNotInClusterResponse, _err error) {
+func (client *Client) ListDeployGroup(request *ListDeployGroupRequest) (_result *ListDeployGroupResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
-	_result = &ListEcsNotInClusterResponse{}
-	_body, _err := client.ListEcsNotInClusterWithOptions(request, headers, runtime)
+	_result = &ListDeployGroupResponse{}
+	_body, _err := client.ListDeployGroupWithOptions(request, headers, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -31991,11 +36933,11 @@ func (client *Client) ListEcsNotInClusterWithOptions(request *ListEcsNotInCluste
 	return _result, _err
 }
 
-func (client *Client) ListEcuByRegion(request *ListEcuByRegionRequest) (_result *ListEcuByRegionResponse, _err error) {
+func (client *Client) ListEcsNotInCluster(request *ListEcsNotInClusterRequest) (_result *ListEcsNotInClusterResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
-	_result = &ListEcuByRegionResponse{}
-	_body, _err := client.ListEcuByRegionWithOptions(request, headers, runtime)
+	_result = &ListEcsNotInClusterResponse{}
+	_body, _err := client.ListEcsNotInClusterWithOptions(request, headers, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -32003,6 +36945,17 @@ func (client *Client) ListEcuByRegion(request *ListEcuByRegionRequest) (_result 
 	return _result, _err
 }
 
+/**
+ * ## Terms
+ * *   **Namespace**: the logical concept that is used to isolate resources such as clusters, ECS instances, and applications, and microservices published in EDAS. This concept involves the default namespace and custom namespaces. Each region has a default namespace and supports multiple custom namespaces. By default, only the default namespace is available. You do not need to create a custom namespace if you do not want to isolate resources and microservices.
+ * *   **Elastic compute unit (ECU)**: After an ECS instance is imported to a cluster, the instance becomes an ECU.
+ * *   **Elastic compute container (ECC)**: After you deploy an application to an ECU in a cluster, the ECU becomes an ECC.
+ *
+ * @param request ListEcuByRegionRequest
+ * @param headers map
+ * @param runtime runtime options for this request RuntimeOptions
+ * @return ListEcuByRegionResponse
+ */
 func (client *Client) ListEcuByRegionWithOptions(request *ListEcuByRegionRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *ListEcuByRegionResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -32041,11 +36994,20 @@ func (client *Client) ListEcuByRegionWithOptions(request *ListEcuByRegionRequest
 	return _result, _err
 }
 
-func (client *Client) ListHistoryDeployVersion(request *ListHistoryDeployVersionRequest) (_result *ListHistoryDeployVersionResponse, _err error) {
+/**
+ * ## Terms
+ * *   **Namespace**: the logical concept that is used to isolate resources such as clusters, ECS instances, and applications, and microservices published in EDAS. This concept involves the default namespace and custom namespaces. Each region has a default namespace and supports multiple custom namespaces. By default, only the default namespace is available. You do not need to create a custom namespace if you do not want to isolate resources and microservices.
+ * *   **Elastic compute unit (ECU)**: After an ECS instance is imported to a cluster, the instance becomes an ECU.
+ * *   **Elastic compute container (ECC)**: After you deploy an application to an ECU in a cluster, the ECU becomes an ECC.
+ *
+ * @param request ListEcuByRegionRequest
+ * @return ListEcuByRegionResponse
+ */
+func (client *Client) ListEcuByRegion(request *ListEcuByRegionRequest) (_result *ListEcuByRegionResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
-	_result = &ListHistoryDeployVersionResponse{}
-	_body, _err := client.ListHistoryDeployVersionWithOptions(request, headers, runtime)
+	_result = &ListEcuByRegionResponse{}
+	_body, _err := client.ListEcuByRegionWithOptions(request, headers, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -32087,11 +37049,11 @@ func (client *Client) ListHistoryDeployVersionWithOptions(request *ListHistoryDe
 	return _result, _err
 }
 
-func (client *Client) ListK8sConfigMaps(request *ListK8sConfigMapsRequest) (_result *ListK8sConfigMapsResponse, _err error) {
+func (client *Client) ListHistoryDeployVersion(request *ListHistoryDeployVersionRequest) (_result *ListHistoryDeployVersionResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
-	_result = &ListK8sConfigMapsResponse{}
-	_body, _err := client.ListK8sConfigMapsWithOptions(request, headers, runtime)
+	_result = &ListHistoryDeployVersionResponse{}
+	_body, _err := client.ListHistoryDeployVersionWithOptions(request, headers, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -32157,11 +37119,11 @@ func (client *Client) ListK8sConfigMapsWithOptions(request *ListK8sConfigMapsReq
 	return _result, _err
 }
 
-func (client *Client) ListK8sIngressRules(request *ListK8sIngressRulesRequest) (_result *ListK8sIngressRulesResponse, _err error) {
+func (client *Client) ListK8sConfigMaps(request *ListK8sConfigMapsRequest) (_result *ListK8sConfigMapsResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
-	_result = &ListK8sIngressRulesResponse{}
-	_body, _err := client.ListK8sIngressRulesWithOptions(request, headers, runtime)
+	_result = &ListK8sConfigMapsResponse{}
+	_body, _err := client.ListK8sConfigMapsWithOptions(request, headers, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -32215,11 +37177,11 @@ func (client *Client) ListK8sIngressRulesWithOptions(request *ListK8sIngressRule
 	return _result, _err
 }
 
-func (client *Client) ListK8sNamespaces(request *ListK8sNamespacesRequest) (_result *ListK8sNamespacesResponse, _err error) {
+func (client *Client) ListK8sIngressRules(request *ListK8sIngressRulesRequest) (_result *ListK8sIngressRulesResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
-	_result = &ListK8sNamespacesResponse{}
-	_body, _err := client.ListK8sNamespacesWithOptions(request, headers, runtime)
+	_result = &ListK8sIngressRulesResponse{}
+	_body, _err := client.ListK8sIngressRulesWithOptions(request, headers, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -32261,11 +37223,11 @@ func (client *Client) ListK8sNamespacesWithOptions(request *ListK8sNamespacesReq
 	return _result, _err
 }
 
-func (client *Client) ListK8sSecrets(request *ListK8sSecretsRequest) (_result *ListK8sSecretsResponse, _err error) {
+func (client *Client) ListK8sNamespaces(request *ListK8sNamespacesRequest) (_result *ListK8sNamespacesResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
-	_result = &ListK8sSecretsResponse{}
-	_body, _err := client.ListK8sSecretsWithOptions(request, headers, runtime)
+	_result = &ListK8sNamespacesResponse{}
+	_body, _err := client.ListK8sNamespacesWithOptions(request, headers, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -32331,11 +37293,11 @@ func (client *Client) ListK8sSecretsWithOptions(request *ListK8sSecretsRequest, 
 	return _result, _err
 }
 
-func (client *Client) ListMethods(request *ListMethodsRequest) (_result *ListMethodsResponse, _err error) {
+func (client *Client) ListK8sSecrets(request *ListK8sSecretsRequest) (_result *ListK8sSecretsResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
-	_result = &ListMethodsResponse{}
-	_body, _err := client.ListMethodsWithOptions(request, headers, runtime)
+	_result = &ListK8sSecretsResponse{}
+	_body, _err := client.ListK8sSecretsWithOptions(request, headers, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -32381,11 +37343,11 @@ func (client *Client) ListMethodsWithOptions(request *ListMethodsRequest, header
 	return _result, _err
 }
 
-func (client *Client) ListPublishedServices(request *ListPublishedServicesRequest) (_result *ListPublishedServicesResponse, _err error) {
+func (client *Client) ListMethods(request *ListMethodsRequest) (_result *ListMethodsResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
-	_result = &ListPublishedServicesResponse{}
-	_body, _err := client.ListPublishedServicesWithOptions(request, headers, runtime)
+	_result = &ListMethodsResponse{}
+	_body, _err := client.ListMethodsWithOptions(request, headers, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -32427,11 +37389,11 @@ func (client *Client) ListPublishedServicesWithOptions(request *ListPublishedSer
 	return _result, _err
 }
 
-func (client *Client) ListRecentChangeOrder(request *ListRecentChangeOrderRequest) (_result *ListRecentChangeOrderResponse, _err error) {
+func (client *Client) ListPublishedServices(request *ListPublishedServicesRequest) (_result *ListPublishedServicesResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
-	_result = &ListRecentChangeOrderResponse{}
-	_body, _err := client.ListRecentChangeOrderWithOptions(request, headers, runtime)
+	_result = &ListPublishedServicesResponse{}
+	_body, _err := client.ListPublishedServicesWithOptions(request, headers, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -32473,11 +37435,11 @@ func (client *Client) ListRecentChangeOrderWithOptions(request *ListRecentChange
 	return _result, _err
 }
 
-func (client *Client) ListResourceGroup() (_result *ListResourceGroupResponse, _err error) {
+func (client *Client) ListRecentChangeOrder(request *ListRecentChangeOrderRequest) (_result *ListRecentChangeOrderResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
-	_result = &ListResourceGroupResponse{}
-	_body, _err := client.ListResourceGroupWithOptions(headers, runtime)
+	_result = &ListRecentChangeOrderResponse{}
+	_body, _err := client.ListRecentChangeOrderWithOptions(request, headers, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -32509,11 +37471,11 @@ func (client *Client) ListResourceGroupWithOptions(headers map[string]*string, r
 	return _result, _err
 }
 
-func (client *Client) ListRole() (_result *ListRoleResponse, _err error) {
+func (client *Client) ListResourceGroup() (_result *ListResourceGroupResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
-	_result = &ListRoleResponse{}
-	_body, _err := client.ListRoleWithOptions(headers, runtime)
+	_result = &ListResourceGroupResponse{}
+	_body, _err := client.ListResourceGroupWithOptions(headers, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -32545,11 +37507,11 @@ func (client *Client) ListRoleWithOptions(headers map[string]*string, runtime *u
 	return _result, _err
 }
 
-func (client *Client) ListScaleOutEcu(request *ListScaleOutEcuRequest) (_result *ListScaleOutEcuResponse, _err error) {
+func (client *Client) ListRole() (_result *ListRoleResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
-	_result = &ListScaleOutEcuResponse{}
-	_body, _err := client.ListScaleOutEcuWithOptions(request, headers, runtime)
+	_result = &ListRoleResponse{}
+	_body, _err := client.ListRoleWithOptions(headers, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -32557,6 +37519,17 @@ func (client *Client) ListScaleOutEcu(request *ListScaleOutEcuRequest) (_result 
 	return _result, _err
 }
 
+/**
+ * ## Terms
+ * *   **Namespace**: the logical concept that is used to isolate resources such as clusters, ECS instances, and applications, and microservices published in EDAS. This concept involves the default namespace and custom namespaces. Each region has a default namespace and supports multiple custom namespaces. By default, only the default namespace is available. You do not need to create a custom namespace if you do not want to isolate resources and microservices.
+ * *   **Elastic compute unit (ECU)**: After an ECS instance is imported to a cluster, the instance becomes an ECU.
+ * *   **Elastic compute container (ECC)**: After you deploy an application to an ECU in a cluster, the ECU becomes an ECC.
+ *
+ * @param request ListScaleOutEcuRequest
+ * @param headers map
+ * @param runtime runtime options for this request RuntimeOptions
+ * @return ListScaleOutEcuResponse
+ */
 func (client *Client) ListScaleOutEcuWithOptions(request *ListScaleOutEcuRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *ListScaleOutEcuResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -32615,11 +37588,20 @@ func (client *Client) ListScaleOutEcuWithOptions(request *ListScaleOutEcuRequest
 	return _result, _err
 }
 
-func (client *Client) ListServiceGroups() (_result *ListServiceGroupsResponse, _err error) {
+/**
+ * ## Terms
+ * *   **Namespace**: the logical concept that is used to isolate resources such as clusters, ECS instances, and applications, and microservices published in EDAS. This concept involves the default namespace and custom namespaces. Each region has a default namespace and supports multiple custom namespaces. By default, only the default namespace is available. You do not need to create a custom namespace if you do not want to isolate resources and microservices.
+ * *   **Elastic compute unit (ECU)**: After an ECS instance is imported to a cluster, the instance becomes an ECU.
+ * *   **Elastic compute container (ECC)**: After you deploy an application to an ECU in a cluster, the ECU becomes an ECC.
+ *
+ * @param request ListScaleOutEcuRequest
+ * @return ListScaleOutEcuResponse
+ */
+func (client *Client) ListScaleOutEcu(request *ListScaleOutEcuRequest) (_result *ListScaleOutEcuResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
-	_result = &ListServiceGroupsResponse{}
-	_body, _err := client.ListServiceGroupsWithOptions(headers, runtime)
+	_result = &ListScaleOutEcuResponse{}
+	_body, _err := client.ListScaleOutEcuWithOptions(request, headers, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -32651,11 +37633,11 @@ func (client *Client) ListServiceGroupsWithOptions(headers map[string]*string, r
 	return _result, _err
 }
 
-func (client *Client) ListSlb(request *ListSlbRequest) (_result *ListSlbResponse, _err error) {
+func (client *Client) ListServiceGroups() (_result *ListServiceGroupsResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
-	_result = &ListSlbResponse{}
-	_body, _err := client.ListSlbWithOptions(request, headers, runtime)
+	_result = &ListServiceGroupsResponse{}
+	_body, _err := client.ListServiceGroupsWithOptions(headers, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -32705,11 +37687,11 @@ func (client *Client) ListSlbWithOptions(request *ListSlbRequest, headers map[st
 	return _result, _err
 }
 
-func (client *Client) ListSubAccount() (_result *ListSubAccountResponse, _err error) {
+func (client *Client) ListSlb(request *ListSlbRequest) (_result *ListSlbResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
-	_result = &ListSubAccountResponse{}
-	_body, _err := client.ListSubAccountWithOptions(headers, runtime)
+	_result = &ListSlbResponse{}
+	_body, _err := client.ListSlbWithOptions(request, headers, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -32741,11 +37723,11 @@ func (client *Client) ListSubAccountWithOptions(headers map[string]*string, runt
 	return _result, _err
 }
 
-func (client *Client) ListSwimmingLane(request *ListSwimmingLaneRequest) (_result *ListSwimmingLaneResponse, _err error) {
+func (client *Client) ListSubAccount() (_result *ListSubAccountResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
-	_result = &ListSwimmingLaneResponse{}
-	_body, _err := client.ListSwimmingLaneWithOptions(request, headers, runtime)
+	_result = &ListSubAccountResponse{}
+	_body, _err := client.ListSubAccountWithOptions(headers, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -32787,11 +37769,11 @@ func (client *Client) ListSwimmingLaneWithOptions(request *ListSwimmingLaneReque
 	return _result, _err
 }
 
-func (client *Client) ListSwimmingLaneGroup(request *ListSwimmingLaneGroupRequest) (_result *ListSwimmingLaneGroupResponse, _err error) {
+func (client *Client) ListSwimmingLane(request *ListSwimmingLaneRequest) (_result *ListSwimmingLaneResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
-	_result = &ListSwimmingLaneGroupResponse{}
-	_body, _err := client.ListSwimmingLaneGroupWithOptions(request, headers, runtime)
+	_result = &ListSwimmingLaneResponse{}
+	_body, _err := client.ListSwimmingLaneWithOptions(request, headers, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -32837,11 +37819,11 @@ func (client *Client) ListSwimmingLaneGroupWithOptions(request *ListSwimmingLane
 	return _result, _err
 }
 
-func (client *Client) ListTagResources(request *ListTagResourcesRequest) (_result *ListTagResourcesResponse, _err error) {
+func (client *Client) ListSwimmingLaneGroup(request *ListSwimmingLaneGroupRequest) (_result *ListSwimmingLaneGroupResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
-	_result = &ListTagResourcesResponse{}
-	_body, _err := client.ListTagResourcesWithOptions(request, headers, runtime)
+	_result = &ListSwimmingLaneGroupResponse{}
+	_body, _err := client.ListSwimmingLaneGroupWithOptions(request, headers, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -32895,11 +37877,11 @@ func (client *Client) ListTagResourcesWithOptions(request *ListTagResourcesReque
 	return _result, _err
 }
 
-func (client *Client) ListUserDefineRegion(request *ListUserDefineRegionRequest) (_result *ListUserDefineRegionResponse, _err error) {
+func (client *Client) ListTagResources(request *ListTagResourcesRequest) (_result *ListTagResourcesResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
-	_result = &ListUserDefineRegionResponse{}
-	_body, _err := client.ListUserDefineRegionWithOptions(request, headers, runtime)
+	_result = &ListTagResourcesResponse{}
+	_body, _err := client.ListTagResourcesWithOptions(request, headers, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -32941,11 +37923,11 @@ func (client *Client) ListUserDefineRegionWithOptions(request *ListUserDefineReg
 	return _result, _err
 }
 
-func (client *Client) ListVpc() (_result *ListVpcResponse, _err error) {
+func (client *Client) ListUserDefineRegion(request *ListUserDefineRegionRequest) (_result *ListUserDefineRegionResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
-	_result = &ListVpcResponse{}
-	_body, _err := client.ListVpcWithOptions(headers, runtime)
+	_result = &ListUserDefineRegionResponse{}
+	_body, _err := client.ListUserDefineRegionWithOptions(request, headers, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -32977,11 +37959,11 @@ func (client *Client) ListVpcWithOptions(headers map[string]*string, runtime *ut
 	return _result, _err
 }
 
-func (client *Client) MigrateEcu(request *MigrateEcuRequest) (_result *MigrateEcuResponse, _err error) {
+func (client *Client) ListVpc() (_result *ListVpcResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
-	_result = &MigrateEcuResponse{}
-	_body, _err := client.MigrateEcuWithOptions(request, headers, runtime)
+	_result = &ListVpcResponse{}
+	_body, _err := client.ListVpcWithOptions(headers, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -32989,6 +37971,20 @@ func (client *Client) MigrateEcu(request *MigrateEcuRequest) (_result *MigrateEc
 	return _result, _err
 }
 
+/**
+ * ## Limits
+ * We recommend that you do not call this operation. Instead, we recommend that you call the TransformClusterMember operation. For more information, see [TransformClusterMember](~~71514~~).
+ * When you call this operation to import an Elastic Compute Service (ECS) instance, the operating system of the ECS instance is reinstalled. After the operating system is reinstalled, all data of the ECS instance is deleted. You must set a logon password for the ECS instance. Make sure that no important data exists on or data has been backed up for the ECS instance that you want to import.
+ * ## Terms
+ * *   **Namespace**: the logical concept that is used to isolate resources and microservices in Enterprise Distributed Application Service (EDAS). The resources include clusters, ECS instances, and applications. You can use a default or custom namespace. Each region has a default namespace and supports multiple custom namespaces. By default, only the default namespace is available. You do not need to create a custom namespace if you do not want to isolate resources or microservices.
+ * *   **ECU**: After an ECS instance is imported to a cluster, the instance becomes an ECU.
+ * *   **Elastic compute container (ECC)**: After you deploy an application to an ECU in a cluster, the ECU becomes an ECC.
+ *
+ * @param request MigrateEcuRequest
+ * @param headers map
+ * @param runtime runtime options for this request RuntimeOptions
+ * @return MigrateEcuResponse
+ */
 func (client *Client) MigrateEcuWithOptions(request *MigrateEcuRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *MigrateEcuResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -33027,11 +38023,23 @@ func (client *Client) MigrateEcuWithOptions(request *MigrateEcuRequest, headers 
 	return _result, _err
 }
 
-func (client *Client) ModifyScalingRule(request *ModifyScalingRuleRequest) (_result *ModifyScalingRuleResponse, _err error) {
+/**
+ * ## Limits
+ * We recommend that you do not call this operation. Instead, we recommend that you call the TransformClusterMember operation. For more information, see [TransformClusterMember](~~71514~~).
+ * When you call this operation to import an Elastic Compute Service (ECS) instance, the operating system of the ECS instance is reinstalled. After the operating system is reinstalled, all data of the ECS instance is deleted. You must set a logon password for the ECS instance. Make sure that no important data exists on or data has been backed up for the ECS instance that you want to import.
+ * ## Terms
+ * *   **Namespace**: the logical concept that is used to isolate resources and microservices in Enterprise Distributed Application Service (EDAS). The resources include clusters, ECS instances, and applications. You can use a default or custom namespace. Each region has a default namespace and supports multiple custom namespaces. By default, only the default namespace is available. You do not need to create a custom namespace if you do not want to isolate resources or microservices.
+ * *   **ECU**: After an ECS instance is imported to a cluster, the instance becomes an ECU.
+ * *   **Elastic compute container (ECC)**: After you deploy an application to an ECU in a cluster, the ECU becomes an ECC.
+ *
+ * @param request MigrateEcuRequest
+ * @return MigrateEcuResponse
+ */
+func (client *Client) MigrateEcu(request *MigrateEcuRequest) (_result *MigrateEcuResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
-	_result = &ModifyScalingRuleResponse{}
-	_body, _err := client.ModifyScalingRuleWithOptions(request, headers, runtime)
+	_result = &MigrateEcuResponse{}
+	_body, _err := client.MigrateEcuWithOptions(request, headers, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -33189,11 +38197,11 @@ func (client *Client) ModifyScalingRuleWithOptions(request *ModifyScalingRuleReq
 	return _result, _err
 }
 
-func (client *Client) QueryApplicationStatus(request *QueryApplicationStatusRequest) (_result *QueryApplicationStatusResponse, _err error) {
+func (client *Client) ModifyScalingRule(request *ModifyScalingRuleRequest) (_result *ModifyScalingRuleResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
-	_result = &QueryApplicationStatusResponse{}
-	_body, _err := client.QueryApplicationStatusWithOptions(request, headers, runtime)
+	_result = &ModifyScalingRuleResponse{}
+	_body, _err := client.ModifyScalingRuleWithOptions(request, headers, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -33235,11 +38243,11 @@ func (client *Client) QueryApplicationStatusWithOptions(request *QueryApplicatio
 	return _result, _err
 }
 
-func (client *Client) QueryEccInfo(request *QueryEccInfoRequest) (_result *QueryEccInfoResponse, _err error) {
+func (client *Client) QueryApplicationStatus(request *QueryApplicationStatusRequest) (_result *QueryApplicationStatusResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
-	_result = &QueryEccInfoResponse{}
-	_body, _err := client.QueryEccInfoWithOptions(request, headers, runtime)
+	_result = &QueryApplicationStatusResponse{}
+	_body, _err := client.QueryApplicationStatusWithOptions(request, headers, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -33281,11 +38289,11 @@ func (client *Client) QueryEccInfoWithOptions(request *QueryEccInfoRequest, head
 	return _result, _err
 }
 
-func (client *Client) QueryMigrateEcuList(request *QueryMigrateEcuListRequest) (_result *QueryMigrateEcuListResponse, _err error) {
+func (client *Client) QueryEccInfo(request *QueryEccInfoRequest) (_result *QueryEccInfoResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
-	_result = &QueryMigrateEcuListResponse{}
-	_body, _err := client.QueryMigrateEcuListWithOptions(request, headers, runtime)
+	_result = &QueryEccInfoResponse{}
+	_body, _err := client.QueryEccInfoWithOptions(request, headers, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -33327,11 +38335,11 @@ func (client *Client) QueryMigrateEcuListWithOptions(request *QueryMigrateEcuLis
 	return _result, _err
 }
 
-func (client *Client) QueryMigrateRegionList(request *QueryMigrateRegionListRequest) (_result *QueryMigrateRegionListResponse, _err error) {
+func (client *Client) QueryMigrateEcuList(request *QueryMigrateEcuListRequest) (_result *QueryMigrateEcuListResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
-	_result = &QueryMigrateRegionListResponse{}
-	_body, _err := client.QueryMigrateRegionListWithOptions(request, headers, runtime)
+	_result = &QueryMigrateEcuListResponse{}
+	_body, _err := client.QueryMigrateEcuListWithOptions(request, headers, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -33373,11 +38381,11 @@ func (client *Client) QueryMigrateRegionListWithOptions(request *QueryMigrateReg
 	return _result, _err
 }
 
-func (client *Client) QueryRegionConfig() (_result *QueryRegionConfigResponse, _err error) {
+func (client *Client) QueryMigrateRegionList(request *QueryMigrateRegionListRequest) (_result *QueryMigrateRegionListResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
-	_result = &QueryRegionConfigResponse{}
-	_body, _err := client.QueryRegionConfigWithOptions(headers, runtime)
+	_result = &QueryMigrateRegionListResponse{}
+	_body, _err := client.QueryMigrateRegionListWithOptions(request, headers, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -33409,11 +38417,11 @@ func (client *Client) QueryRegionConfigWithOptions(headers map[string]*string, r
 	return _result, _err
 }
 
-func (client *Client) QuerySlsLogStoreList(request *QuerySlsLogStoreListRequest) (_result *QuerySlsLogStoreListResponse, _err error) {
+func (client *Client) QueryRegionConfig() (_result *QueryRegionConfigResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
-	_result = &QuerySlsLogStoreListResponse{}
-	_body, _err := client.QuerySlsLogStoreListWithOptions(request, headers, runtime)
+	_result = &QueryRegionConfigResponse{}
+	_body, _err := client.QueryRegionConfigWithOptions(headers, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -33467,11 +38475,11 @@ func (client *Client) QuerySlsLogStoreListWithOptions(request *QuerySlsLogStoreL
 	return _result, _err
 }
 
-func (client *Client) ResetApplication(request *ResetApplicationRequest) (_result *ResetApplicationResponse, _err error) {
+func (client *Client) QuerySlsLogStoreList(request *QuerySlsLogStoreListRequest) (_result *QuerySlsLogStoreListResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
-	_result = &ResetApplicationResponse{}
-	_body, _err := client.ResetApplicationWithOptions(request, headers, runtime)
+	_result = &QuerySlsLogStoreListResponse{}
+	_body, _err := client.QuerySlsLogStoreListWithOptions(request, headers, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -33517,11 +38525,11 @@ func (client *Client) ResetApplicationWithOptions(request *ResetApplicationReque
 	return _result, _err
 }
 
-func (client *Client) RestartApplication(request *RestartApplicationRequest) (_result *RestartApplicationResponse, _err error) {
+func (client *Client) ResetApplication(request *ResetApplicationRequest) (_result *ResetApplicationResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
-	_result = &RestartApplicationResponse{}
-	_body, _err := client.RestartApplicationWithOptions(request, headers, runtime)
+	_result = &ResetApplicationResponse{}
+	_body, _err := client.ResetApplicationWithOptions(request, headers, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -33567,11 +38575,11 @@ func (client *Client) RestartApplicationWithOptions(request *RestartApplicationR
 	return _result, _err
 }
 
-func (client *Client) RestartK8sApplication(request *RestartK8sApplicationRequest) (_result *RestartK8sApplicationResponse, _err error) {
+func (client *Client) RestartApplication(request *RestartApplicationRequest) (_result *RestartApplicationResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
-	_result = &RestartK8sApplicationResponse{}
-	_body, _err := client.RestartK8sApplicationWithOptions(request, headers, runtime)
+	_result = &RestartApplicationResponse{}
+	_body, _err := client.RestartApplicationWithOptions(request, headers, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -33617,11 +38625,11 @@ func (client *Client) RestartK8sApplicationWithOptions(request *RestartK8sApplic
 	return _result, _err
 }
 
-func (client *Client) RetryChangeOrderTask(request *RetryChangeOrderTaskRequest) (_result *RetryChangeOrderTaskResponse, _err error) {
+func (client *Client) RestartK8sApplication(request *RestartK8sApplicationRequest) (_result *RestartK8sApplicationResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
-	_result = &RetryChangeOrderTaskResponse{}
-	_body, _err := client.RetryChangeOrderTaskWithOptions(request, headers, runtime)
+	_result = &RestartK8sApplicationResponse{}
+	_body, _err := client.RestartK8sApplicationWithOptions(request, headers, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -33667,11 +38675,11 @@ func (client *Client) RetryChangeOrderTaskWithOptions(request *RetryChangeOrderT
 	return _result, _err
 }
 
-func (client *Client) RollbackApplication(request *RollbackApplicationRequest) (_result *RollbackApplicationResponse, _err error) {
+func (client *Client) RetryChangeOrderTask(request *RetryChangeOrderTaskRequest) (_result *RetryChangeOrderTaskResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
-	_result = &RollbackApplicationResponse{}
-	_body, _err := client.RollbackApplicationWithOptions(request, headers, runtime)
+	_result = &RetryChangeOrderTaskResponse{}
+	_body, _err := client.RetryChangeOrderTaskWithOptions(request, headers, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -33729,11 +38737,11 @@ func (client *Client) RollbackApplicationWithOptions(request *RollbackApplicatio
 	return _result, _err
 }
 
-func (client *Client) RollbackChangeOrder(request *RollbackChangeOrderRequest) (_result *RollbackChangeOrderResponse, _err error) {
+func (client *Client) RollbackApplication(request *RollbackApplicationRequest) (_result *RollbackApplicationResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
-	_result = &RollbackChangeOrderResponse{}
-	_body, _err := client.RollbackChangeOrderWithOptions(request, headers, runtime)
+	_result = &RollbackApplicationResponse{}
+	_body, _err := client.RollbackApplicationWithOptions(request, headers, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -33775,11 +38783,11 @@ func (client *Client) RollbackChangeOrderWithOptions(request *RollbackChangeOrde
 	return _result, _err
 }
 
-func (client *Client) ScaleInApplication(request *ScaleInApplicationRequest) (_result *ScaleInApplicationResponse, _err error) {
+func (client *Client) RollbackChangeOrder(request *RollbackChangeOrderRequest) (_result *RollbackChangeOrderResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
-	_result = &ScaleInApplicationResponse{}
-	_body, _err := client.ScaleInApplicationWithOptions(request, headers, runtime)
+	_result = &RollbackChangeOrderResponse{}
+	_body, _err := client.RollbackChangeOrderWithOptions(request, headers, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -33829,11 +38837,11 @@ func (client *Client) ScaleInApplicationWithOptions(request *ScaleInApplicationR
 	return _result, _err
 }
 
-func (client *Client) ScaleK8sApplication(request *ScaleK8sApplicationRequest) (_result *ScaleK8sApplicationResponse, _err error) {
+func (client *Client) ScaleInApplication(request *ScaleInApplicationRequest) (_result *ScaleInApplicationResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
-	_result = &ScaleK8sApplicationResponse{}
-	_body, _err := client.ScaleK8sApplicationWithOptions(request, headers, runtime)
+	_result = &ScaleInApplicationResponse{}
+	_body, _err := client.ScaleInApplicationWithOptions(request, headers, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -33883,11 +38891,11 @@ func (client *Client) ScaleK8sApplicationWithOptions(request *ScaleK8sApplicatio
 	return _result, _err
 }
 
-func (client *Client) ScaleOutApplication(request *ScaleOutApplicationRequest) (_result *ScaleOutApplicationResponse, _err error) {
+func (client *Client) ScaleK8sApplication(request *ScaleK8sApplicationRequest) (_result *ScaleK8sApplicationResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
-	_result = &ScaleOutApplicationResponse{}
-	_body, _err := client.ScaleOutApplicationWithOptions(request, headers, runtime)
+	_result = &ScaleK8sApplicationResponse{}
+	_body, _err := client.ScaleK8sApplicationWithOptions(request, headers, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -33937,11 +38945,11 @@ func (client *Client) ScaleOutApplicationWithOptions(request *ScaleOutApplicatio
 	return _result, _err
 }
 
-func (client *Client) ScaleoutApplicationWithNewInstances(request *ScaleoutApplicationWithNewInstancesRequest) (_result *ScaleoutApplicationWithNewInstancesResponse, _err error) {
+func (client *Client) ScaleOutApplication(request *ScaleOutApplicationRequest) (_result *ScaleOutApplicationResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
-	_result = &ScaleoutApplicationWithNewInstancesResponse{}
-	_body, _err := client.ScaleoutApplicationWithNewInstancesWithOptions(request, headers, runtime)
+	_result = &ScaleOutApplicationResponse{}
+	_body, _err := client.ScaleOutApplicationWithOptions(request, headers, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -33949,6 +38957,15 @@ func (client *Client) ScaleoutApplicationWithNewInstances(request *ScaleoutAppli
 	return _result, _err
 }
 
+/**
+ * ## Limits
+ * Assume that the auto scaling feature is configured and enabled for an application. When an auto scale-in is triggered for the application, the ECS instances that are purchased by calling this operation are removed first.
+ *
+ * @param request ScaleoutApplicationWithNewInstancesRequest
+ * @param headers map
+ * @param runtime runtime options for this request RuntimeOptions
+ * @return ScaleoutApplicationWithNewInstancesResponse
+ */
 func (client *Client) ScaleoutApplicationWithNewInstancesWithOptions(request *ScaleoutApplicationWithNewInstancesRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *ScaleoutApplicationWithNewInstancesResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -34031,11 +39048,18 @@ func (client *Client) ScaleoutApplicationWithNewInstancesWithOptions(request *Sc
 	return _result, _err
 }
 
-func (client *Client) StartApplication(request *StartApplicationRequest) (_result *StartApplicationResponse, _err error) {
+/**
+ * ## Limits
+ * Assume that the auto scaling feature is configured and enabled for an application. When an auto scale-in is triggered for the application, the ECS instances that are purchased by calling this operation are removed first.
+ *
+ * @param request ScaleoutApplicationWithNewInstancesRequest
+ * @return ScaleoutApplicationWithNewInstancesResponse
+ */
+func (client *Client) ScaleoutApplicationWithNewInstances(request *ScaleoutApplicationWithNewInstancesRequest) (_result *ScaleoutApplicationWithNewInstancesResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
-	_result = &StartApplicationResponse{}
-	_body, _err := client.StartApplicationWithOptions(request, headers, runtime)
+	_result = &ScaleoutApplicationWithNewInstancesResponse{}
+	_body, _err := client.ScaleoutApplicationWithNewInstancesWithOptions(request, headers, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -34081,11 +39105,11 @@ func (client *Client) StartApplicationWithOptions(request *StartApplicationReque
 	return _result, _err
 }
 
-func (client *Client) StartK8sAppPrecheck(request *StartK8sAppPrecheckRequest) (_result *StartK8sAppPrecheckResponse, _err error) {
+func (client *Client) StartApplication(request *StartApplicationRequest) (_result *StartApplicationResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
-	_result = &StartK8sAppPrecheckResponse{}
-	_body, _err := client.StartK8sAppPrecheckWithOptions(request, headers, runtime)
+	_result = &StartApplicationResponse{}
+	_body, _err := client.StartApplicationWithOptions(request, headers, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -34113,6 +39137,10 @@ func (client *Client) StartK8sAppPrecheckWithOptions(request *StartK8sAppPrechec
 
 	if !tea.BoolValue(util.IsUnset(request.ClusterId)) {
 		query["ClusterId"] = request.ClusterId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ComponentIds)) {
+		query["ComponentIds"] = request.ComponentIds
 	}
 
 	if !tea.BoolValue(util.IsUnset(request.ConfigMountDescs)) {
@@ -34171,6 +39199,10 @@ func (client *Client) StartK8sAppPrecheckWithOptions(request *StartK8sAppPrechec
 		query["PvcMountDescs"] = request.PvcMountDescs
 	}
 
+	if !tea.BoolValue(util.IsUnset(request.RegionId)) {
+		query["RegionId"] = request.RegionId
+	}
+
 	if !tea.BoolValue(util.IsUnset(request.Replicas)) {
 		query["Replicas"] = request.Replicas
 	}
@@ -34211,11 +39243,11 @@ func (client *Client) StartK8sAppPrecheckWithOptions(request *StartK8sAppPrechec
 	return _result, _err
 }
 
-func (client *Client) StartK8sApplication(request *StartK8sApplicationRequest) (_result *StartK8sApplicationResponse, _err error) {
+func (client *Client) StartK8sAppPrecheck(request *StartK8sAppPrecheckRequest) (_result *StartK8sAppPrecheckResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
-	_result = &StartK8sApplicationResponse{}
-	_body, _err := client.StartK8sApplicationWithOptions(request, headers, runtime)
+	_result = &StartK8sAppPrecheckResponse{}
+	_body, _err := client.StartK8sAppPrecheckWithOptions(request, headers, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -34265,11 +39297,11 @@ func (client *Client) StartK8sApplicationWithOptions(request *StartK8sApplicatio
 	return _result, _err
 }
 
-func (client *Client) StopApplication(request *StopApplicationRequest) (_result *StopApplicationResponse, _err error) {
+func (client *Client) StartK8sApplication(request *StartK8sApplicationRequest) (_result *StartK8sApplicationResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
-	_result = &StopApplicationResponse{}
-	_body, _err := client.StopApplicationWithOptions(request, headers, runtime)
+	_result = &StartK8sApplicationResponse{}
+	_body, _err := client.StartK8sApplicationWithOptions(request, headers, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -34315,11 +39347,11 @@ func (client *Client) StopApplicationWithOptions(request *StopApplicationRequest
 	return _result, _err
 }
 
-func (client *Client) StopK8sApplication(request *StopK8sApplicationRequest) (_result *StopK8sApplicationResponse, _err error) {
+func (client *Client) StopApplication(request *StopApplicationRequest) (_result *StopApplicationResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
-	_result = &StopK8sApplicationResponse{}
-	_body, _err := client.StopK8sApplicationWithOptions(request, headers, runtime)
+	_result = &StopApplicationResponse{}
+	_body, _err := client.StopApplicationWithOptions(request, headers, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -34365,11 +39397,11 @@ func (client *Client) StopK8sApplicationWithOptions(request *StopK8sApplicationR
 	return _result, _err
 }
 
-func (client *Client) SwitchAdvancedMonitoring(request *SwitchAdvancedMonitoringRequest) (_result *SwitchAdvancedMonitoringResponse, _err error) {
+func (client *Client) StopK8sApplication(request *StopK8sApplicationRequest) (_result *StopK8sApplicationResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
-	_result = &SwitchAdvancedMonitoringResponse{}
-	_body, _err := client.SwitchAdvancedMonitoringWithOptions(request, headers, runtime)
+	_result = &StopK8sApplicationResponse{}
+	_body, _err := client.StopK8sApplicationWithOptions(request, headers, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -34377,6 +39409,14 @@ func (client *Client) SwitchAdvancedMonitoring(request *SwitchAdvancedMonitoring
 	return _result, _err
 }
 
+/**
+ * To call the SwitchAdvancedMonitoring operation, you must make sure that the version of Enterprise Distributed Application Service (EDAS) SDK for Java or Python is 3.15.2 or later.
+ *
+ * @param request SwitchAdvancedMonitoringRequest
+ * @param headers map
+ * @param runtime runtime options for this request RuntimeOptions
+ * @return SwitchAdvancedMonitoringResponse
+ */
 func (client *Client) SwitchAdvancedMonitoringWithOptions(request *SwitchAdvancedMonitoringRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *SwitchAdvancedMonitoringResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -34415,11 +39455,17 @@ func (client *Client) SwitchAdvancedMonitoringWithOptions(request *SwitchAdvance
 	return _result, _err
 }
 
-func (client *Client) SynchronizeResource(request *SynchronizeResourceRequest) (_result *SynchronizeResourceResponse, _err error) {
+/**
+ * To call the SwitchAdvancedMonitoring operation, you must make sure that the version of Enterprise Distributed Application Service (EDAS) SDK for Java or Python is 3.15.2 or later.
+ *
+ * @param request SwitchAdvancedMonitoringRequest
+ * @return SwitchAdvancedMonitoringResponse
+ */
+func (client *Client) SwitchAdvancedMonitoring(request *SwitchAdvancedMonitoringRequest) (_result *SwitchAdvancedMonitoringResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
-	_result = &SynchronizeResourceResponse{}
-	_body, _err := client.SynchronizeResourceWithOptions(request, headers, runtime)
+	_result = &SwitchAdvancedMonitoringResponse{}
+	_body, _err := client.SwitchAdvancedMonitoringWithOptions(request, headers, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -34427,6 +39473,14 @@ func (client *Client) SynchronizeResource(request *SynchronizeResourceRequest) (
 	return _result, _err
 }
 
+/**
+ * If you call this operation to synchronize ECS resource information, all instance data is synchronized from ECS. If you have more than 100 ECS instances, we recommend that you do not frequently call this operation.
+ *
+ * @param request SynchronizeResourceRequest
+ * @param headers map
+ * @param runtime runtime options for this request RuntimeOptions
+ * @return SynchronizeResourceResponse
+ */
 func (client *Client) SynchronizeResourceWithOptions(request *SynchronizeResourceRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *SynchronizeResourceResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -34465,11 +39519,17 @@ func (client *Client) SynchronizeResourceWithOptions(request *SynchronizeResourc
 	return _result, _err
 }
 
-func (client *Client) TagResources(request *TagResourcesRequest) (_result *TagResourcesResponse, _err error) {
+/**
+ * If you call this operation to synchronize ECS resource information, all instance data is synchronized from ECS. If you have more than 100 ECS instances, we recommend that you do not frequently call this operation.
+ *
+ * @param request SynchronizeResourceRequest
+ * @return SynchronizeResourceResponse
+ */
+func (client *Client) SynchronizeResource(request *SynchronizeResourceRequest) (_result *SynchronizeResourceResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
-	_result = &TagResourcesResponse{}
-	_body, _err := client.TagResourcesWithOptions(request, headers, runtime)
+	_result = &SynchronizeResourceResponse{}
+	_body, _err := client.SynchronizeResourceWithOptions(request, headers, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -34523,11 +39583,11 @@ func (client *Client) TagResourcesWithOptions(request *TagResourcesRequest, head
 	return _result, _err
 }
 
-func (client *Client) TransformClusterMember(request *TransformClusterMemberRequest) (_result *TransformClusterMemberResponse, _err error) {
+func (client *Client) TagResources(request *TagResourcesRequest) (_result *TagResourcesResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
-	_result = &TransformClusterMemberResponse{}
-	_body, _err := client.TransformClusterMemberWithOptions(request, headers, runtime)
+	_result = &TagResourcesResponse{}
+	_body, _err := client.TagResourcesWithOptions(request, headers, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -34535,6 +39595,15 @@ func (client *Client) TransformClusterMember(request *TransformClusterMemberRequ
 	return _result, _err
 }
 
+/**
+ * ## Limits
+ * When you call this operation to import an ECS instance, the operating system of the ECS instance is reinstalled. After the operating system is reinstalled, all data of the ECS instance is deleted. You must set a logon password for the ECS instance. Make sure that no important data exists on or data has been backed up for the ECS instance that you want to import.
+ *
+ * @param request TransformClusterMemberRequest
+ * @param headers map
+ * @param runtime runtime options for this request RuntimeOptions
+ * @return TransformClusterMemberResponse
+ */
 func (client *Client) TransformClusterMemberWithOptions(request *TransformClusterMemberRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *TransformClusterMemberResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -34577,11 +39646,18 @@ func (client *Client) TransformClusterMemberWithOptions(request *TransformCluste
 	return _result, _err
 }
 
-func (client *Client) UnbindK8sSlb(request *UnbindK8sSlbRequest) (_result *UnbindK8sSlbResponse, _err error) {
+/**
+ * ## Limits
+ * When you call this operation to import an ECS instance, the operating system of the ECS instance is reinstalled. After the operating system is reinstalled, all data of the ECS instance is deleted. You must set a logon password for the ECS instance. Make sure that no important data exists on or data has been backed up for the ECS instance that you want to import.
+ *
+ * @param request TransformClusterMemberRequest
+ * @return TransformClusterMemberResponse
+ */
+func (client *Client) TransformClusterMember(request *TransformClusterMemberRequest) (_result *TransformClusterMemberResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
-	_result = &UnbindK8sSlbResponse{}
-	_body, _err := client.UnbindK8sSlbWithOptions(request, headers, runtime)
+	_result = &TransformClusterMemberResponse{}
+	_body, _err := client.TransformClusterMemberWithOptions(request, headers, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -34635,11 +39711,11 @@ func (client *Client) UnbindK8sSlbWithOptions(request *UnbindK8sSlbRequest, head
 	return _result, _err
 }
 
-func (client *Client) UnbindSlb(request *UnbindSlbRequest) (_result *UnbindSlbResponse, _err error) {
+func (client *Client) UnbindK8sSlb(request *UnbindK8sSlbRequest) (_result *UnbindK8sSlbResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
-	_result = &UnbindSlbResponse{}
-	_body, _err := client.UnbindSlbWithOptions(request, headers, runtime)
+	_result = &UnbindK8sSlbResponse{}
+	_body, _err := client.UnbindK8sSlbWithOptions(request, headers, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -34693,11 +39769,11 @@ func (client *Client) UnbindSlbWithOptions(request *UnbindSlbRequest, headers ma
 	return _result, _err
 }
 
-func (client *Client) UntagResources(request *UntagResourcesRequest) (_result *UntagResourcesResponse, _err error) {
+func (client *Client) UnbindSlb(request *UnbindSlbRequest) (_result *UnbindSlbResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
-	_result = &UntagResourcesResponse{}
-	_body, _err := client.UntagResourcesWithOptions(request, headers, runtime)
+	_result = &UnbindSlbResponse{}
+	_body, _err := client.UnbindSlbWithOptions(request, headers, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -34755,11 +39831,11 @@ func (client *Client) UntagResourcesWithOptions(request *UntagResourcesRequest, 
 	return _result, _err
 }
 
-func (client *Client) UpdateAccountInfo(request *UpdateAccountInfoRequest) (_result *UpdateAccountInfoResponse, _err error) {
+func (client *Client) UntagResources(request *UntagResourcesRequest) (_result *UntagResourcesResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
-	_result = &UpdateAccountInfoResponse{}
-	_body, _err := client.UpdateAccountInfoWithOptions(request, headers, runtime)
+	_result = &UntagResourcesResponse{}
+	_body, _err := client.UntagResourcesWithOptions(request, headers, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -34809,11 +39885,11 @@ func (client *Client) UpdateAccountInfoWithOptions(request *UpdateAccountInfoReq
 	return _result, _err
 }
 
-func (client *Client) UpdateApplicationBaseInfo(request *UpdateApplicationBaseInfoRequest) (_result *UpdateApplicationBaseInfoResponse, _err error) {
+func (client *Client) UpdateAccountInfo(request *UpdateAccountInfoRequest) (_result *UpdateAccountInfoResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
-	_result = &UpdateApplicationBaseInfoResponse{}
-	_body, _err := client.UpdateApplicationBaseInfoWithOptions(request, headers, runtime)
+	_result = &UpdateAccountInfoResponse{}
+	_body, _err := client.UpdateAccountInfoWithOptions(request, headers, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -34867,11 +39943,11 @@ func (client *Client) UpdateApplicationBaseInfoWithOptions(request *UpdateApplic
 	return _result, _err
 }
 
-func (client *Client) UpdateApplicationScalingRule(request *UpdateApplicationScalingRuleRequest) (_result *UpdateApplicationScalingRuleResponse, _err error) {
+func (client *Client) UpdateApplicationBaseInfo(request *UpdateApplicationBaseInfoRequest) (_result *UpdateApplicationBaseInfoResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
-	_result = &UpdateApplicationScalingRuleResponse{}
-	_body, _err := client.UpdateApplicationScalingRuleWithOptions(request, headers, runtime)
+	_result = &UpdateApplicationBaseInfoResponse{}
+	_body, _err := client.UpdateApplicationBaseInfoWithOptions(request, headers, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -34887,6 +39963,10 @@ func (client *Client) UpdateApplicationScalingRuleWithOptions(request *UpdateApp
 	query := map[string]interface{}{}
 	if !tea.BoolValue(util.IsUnset(request.AppId)) {
 		query["AppId"] = request.AppId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ScalingBehaviour)) {
+		query["ScalingBehaviour"] = request.ScalingBehaviour
 	}
 
 	if !tea.BoolValue(util.IsUnset(request.ScalingRuleEnable)) {
@@ -34937,11 +40017,11 @@ func (client *Client) UpdateApplicationScalingRuleWithOptions(request *UpdateApp
 	return _result, _err
 }
 
-func (client *Client) UpdateConfigTemplate(request *UpdateConfigTemplateRequest) (_result *UpdateConfigTemplateResponse, _err error) {
+func (client *Client) UpdateApplicationScalingRule(request *UpdateApplicationScalingRuleRequest) (_result *UpdateApplicationScalingRuleResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
-	_result = &UpdateConfigTemplateResponse{}
-	_body, _err := client.UpdateConfigTemplateWithOptions(request, headers, runtime)
+	_result = &UpdateApplicationScalingRuleResponse{}
+	_body, _err := client.UpdateApplicationScalingRuleWithOptions(request, headers, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -34999,11 +40079,11 @@ func (client *Client) UpdateConfigTemplateWithOptions(request *UpdateConfigTempl
 	return _result, _err
 }
 
-func (client *Client) UpdateContainer(request *UpdateContainerRequest) (_result *UpdateContainerResponse, _err error) {
+func (client *Client) UpdateConfigTemplate(request *UpdateConfigTemplateRequest) (_result *UpdateConfigTemplateResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
-	_result = &UpdateContainerResponse{}
-	_body, _err := client.UpdateContainerWithOptions(request, headers, runtime)
+	_result = &UpdateConfigTemplateResponse{}
+	_body, _err := client.UpdateConfigTemplateWithOptions(request, headers, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -35049,11 +40129,11 @@ func (client *Client) UpdateContainerWithOptions(request *UpdateContainerRequest
 	return _result, _err
 }
 
-func (client *Client) UpdateContainerConfiguration(request *UpdateContainerConfigurationRequest) (_result *UpdateContainerConfigurationResponse, _err error) {
+func (client *Client) UpdateContainer(request *UpdateContainerRequest) (_result *UpdateContainerResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
-	_result = &UpdateContainerConfigurationResponse{}
-	_body, _err := client.UpdateContainerConfigurationWithOptions(request, headers, runtime)
+	_result = &UpdateContainerResponse{}
+	_body, _err := client.UpdateContainerWithOptions(request, headers, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -35119,11 +40199,11 @@ func (client *Client) UpdateContainerConfigurationWithOptions(request *UpdateCon
 	return _result, _err
 }
 
-func (client *Client) UpdateHealthCheckUrl(request *UpdateHealthCheckUrlRequest) (_result *UpdateHealthCheckUrlResponse, _err error) {
+func (client *Client) UpdateContainerConfiguration(request *UpdateContainerConfigurationRequest) (_result *UpdateContainerConfigurationResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
-	_result = &UpdateHealthCheckUrlResponse{}
-	_body, _err := client.UpdateHealthCheckUrlWithOptions(request, headers, runtime)
+	_result = &UpdateContainerConfigurationResponse{}
+	_body, _err := client.UpdateContainerConfigurationWithOptions(request, headers, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -35169,11 +40249,11 @@ func (client *Client) UpdateHealthCheckUrlWithOptions(request *UpdateHealthCheck
 	return _result, _err
 }
 
-func (client *Client) UpdateHookConfiguration(request *UpdateHookConfigurationRequest) (_result *UpdateHookConfigurationResponse, _err error) {
+func (client *Client) UpdateHealthCheckUrl(request *UpdateHealthCheckUrlRequest) (_result *UpdateHealthCheckUrlResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
-	_result = &UpdateHookConfigurationResponse{}
-	_body, _err := client.UpdateHookConfigurationWithOptions(request, headers, runtime)
+	_result = &UpdateHealthCheckUrlResponse{}
+	_body, _err := client.UpdateHealthCheckUrlWithOptions(request, headers, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -35223,11 +40303,11 @@ func (client *Client) UpdateHookConfigurationWithOptions(request *UpdateHookConf
 	return _result, _err
 }
 
-func (client *Client) UpdateJvmConfiguration(request *UpdateJvmConfigurationRequest) (_result *UpdateJvmConfigurationResponse, _err error) {
+func (client *Client) UpdateHookConfiguration(request *UpdateHookConfigurationRequest) (_result *UpdateHookConfigurationResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
-	_result = &UpdateJvmConfigurationResponse{}
-	_body, _err := client.UpdateJvmConfigurationWithOptions(request, headers, runtime)
+	_result = &UpdateHookConfigurationResponse{}
+	_body, _err := client.UpdateHookConfigurationWithOptions(request, headers, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -35289,11 +40369,11 @@ func (client *Client) UpdateJvmConfigurationWithOptions(request *UpdateJvmConfig
 	return _result, _err
 }
 
-func (client *Client) UpdateK8sApplicationBaseInfo(request *UpdateK8sApplicationBaseInfoRequest) (_result *UpdateK8sApplicationBaseInfoResponse, _err error) {
+func (client *Client) UpdateJvmConfiguration(request *UpdateJvmConfigurationRequest) (_result *UpdateJvmConfigurationResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
-	_result = &UpdateK8sApplicationBaseInfoResponse{}
-	_body, _err := client.UpdateK8sApplicationBaseInfoWithOptions(request, headers, runtime)
+	_result = &UpdateJvmConfigurationResponse{}
+	_body, _err := client.UpdateJvmConfigurationWithOptions(request, headers, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -35351,11 +40431,11 @@ func (client *Client) UpdateK8sApplicationBaseInfoWithOptions(request *UpdateK8s
 	return _result, _err
 }
 
-func (client *Client) UpdateK8sApplicationConfig(request *UpdateK8sApplicationConfigRequest) (_result *UpdateK8sApplicationConfigResponse, _err error) {
+func (client *Client) UpdateK8sApplicationBaseInfo(request *UpdateK8sApplicationBaseInfoRequest) (_result *UpdateK8sApplicationBaseInfoResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
-	_result = &UpdateK8sApplicationConfigResponse{}
-	_body, _err := client.UpdateK8sApplicationConfigWithOptions(request, headers, runtime)
+	_result = &UpdateK8sApplicationBaseInfoResponse{}
+	_body, _err := client.UpdateK8sApplicationBaseInfoWithOptions(request, headers, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -35437,11 +40517,11 @@ func (client *Client) UpdateK8sApplicationConfigWithOptions(request *UpdateK8sAp
 	return _result, _err
 }
 
-func (client *Client) UpdateK8sConfigMap(request *UpdateK8sConfigMapRequest) (_result *UpdateK8sConfigMapResponse, _err error) {
+func (client *Client) UpdateK8sApplicationConfig(request *UpdateK8sApplicationConfigRequest) (_result *UpdateK8sApplicationConfigResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
-	_result = &UpdateK8sConfigMapResponse{}
-	_body, _err := client.UpdateK8sConfigMapWithOptions(request, headers, runtime)
+	_result = &UpdateK8sApplicationConfigResponse{}
+	_body, _err := client.UpdateK8sApplicationConfigWithOptions(request, headers, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -35495,11 +40575,11 @@ func (client *Client) UpdateK8sConfigMapWithOptions(request *UpdateK8sConfigMapR
 	return _result, _err
 }
 
-func (client *Client) UpdateK8sIngressRule(request *UpdateK8sIngressRuleRequest) (_result *UpdateK8sIngressRuleResponse, _err error) {
+func (client *Client) UpdateK8sConfigMap(request *UpdateK8sConfigMapRequest) (_result *UpdateK8sConfigMapResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
-	_result = &UpdateK8sIngressRuleResponse{}
-	_body, _err := client.UpdateK8sIngressRuleWithOptions(request, headers, runtime)
+	_result = &UpdateK8sConfigMapResponse{}
+	_body, _err := client.UpdateK8sConfigMapWithOptions(request, headers, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -35513,12 +40593,20 @@ func (client *Client) UpdateK8sIngressRuleWithOptions(request *UpdateK8sIngressR
 		return _result, _err
 	}
 	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.Annotations)) {
+		query["Annotations"] = request.Annotations
+	}
+
 	if !tea.BoolValue(util.IsUnset(request.ClusterId)) {
 		query["ClusterId"] = request.ClusterId
 	}
 
 	if !tea.BoolValue(util.IsUnset(request.IngressConf)) {
 		query["IngressConf"] = request.IngressConf
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Labels)) {
+		query["Labels"] = request.Labels
 	}
 
 	if !tea.BoolValue(util.IsUnset(request.Name)) {
@@ -35553,11 +40641,11 @@ func (client *Client) UpdateK8sIngressRuleWithOptions(request *UpdateK8sIngressR
 	return _result, _err
 }
 
-func (client *Client) UpdateK8sResource(request *UpdateK8sResourceRequest) (_result *UpdateK8sResourceResponse, _err error) {
+func (client *Client) UpdateK8sIngressRule(request *UpdateK8sIngressRuleRequest) (_result *UpdateK8sIngressRuleResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
-	_result = &UpdateK8sResourceResponse{}
-	_body, _err := client.UpdateK8sResourceWithOptions(request, headers, runtime)
+	_result = &UpdateK8sIngressRuleResponse{}
+	_body, _err := client.UpdateK8sIngressRuleWithOptions(request, headers, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -35565,6 +40653,14 @@ func (client *Client) UpdateK8sResource(request *UpdateK8sResourceRequest) (_res
 	return _result, _err
 }
 
+/**
+ * > You can update only Deployments.
+ *
+ * @param request UpdateK8sResourceRequest
+ * @param headers map
+ * @param runtime runtime options for this request RuntimeOptions
+ * @return UpdateK8sResourceResponse
+ */
 func (client *Client) UpdateK8sResourceWithOptions(request *UpdateK8sResourceRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *UpdateK8sResourceResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -35607,11 +40703,17 @@ func (client *Client) UpdateK8sResourceWithOptions(request *UpdateK8sResourceReq
 	return _result, _err
 }
 
-func (client *Client) UpdateK8sSecret(request *UpdateK8sSecretRequest) (_result *UpdateK8sSecretResponse, _err error) {
+/**
+ * > You can update only Deployments.
+ *
+ * @param request UpdateK8sResourceRequest
+ * @return UpdateK8sResourceResponse
+ */
+func (client *Client) UpdateK8sResource(request *UpdateK8sResourceRequest) (_result *UpdateK8sResourceResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
-	_result = &UpdateK8sSecretResponse{}
-	_body, _err := client.UpdateK8sSecretWithOptions(request, headers, runtime)
+	_result = &UpdateK8sResourceResponse{}
+	_body, _err := client.UpdateK8sResourceWithOptions(request, headers, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -35681,11 +40783,11 @@ func (client *Client) UpdateK8sSecretWithOptions(request *UpdateK8sSecretRequest
 	return _result, _err
 }
 
-func (client *Client) UpdateK8sService(request *UpdateK8sServiceRequest) (_result *UpdateK8sServiceResponse, _err error) {
+func (client *Client) UpdateK8sSecret(request *UpdateK8sSecretRequest) (_result *UpdateK8sSecretResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
-	_result = &UpdateK8sServiceResponse{}
-	_body, _err := client.UpdateK8sServiceWithOptions(request, headers, runtime)
+	_result = &UpdateK8sSecretResponse{}
+	_body, _err := client.UpdateK8sSecretWithOptions(request, headers, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -35743,11 +40845,11 @@ func (client *Client) UpdateK8sServiceWithOptions(request *UpdateK8sServiceReque
 	return _result, _err
 }
 
-func (client *Client) UpdateK8sSlb(request *UpdateK8sSlbRequest) (_result *UpdateK8sSlbResponse, _err error) {
+func (client *Client) UpdateK8sService(request *UpdateK8sServiceRequest) (_result *UpdateK8sServiceResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
-	_result = &UpdateK8sSlbResponse{}
-	_body, _err := client.UpdateK8sSlbWithOptions(request, headers, runtime)
+	_result = &UpdateK8sServiceResponse{}
+	_body, _err := client.UpdateK8sServiceWithOptions(request, headers, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -35829,11 +40931,11 @@ func (client *Client) UpdateK8sSlbWithOptions(request *UpdateK8sSlbRequest, head
 	return _result, _err
 }
 
-func (client *Client) UpdateRole(request *UpdateRoleRequest) (_result *UpdateRoleResponse, _err error) {
+func (client *Client) UpdateK8sSlb(request *UpdateK8sSlbRequest) (_result *UpdateK8sSlbResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
-	_result = &UpdateRoleResponse{}
-	_body, _err := client.UpdateRoleWithOptions(request, headers, runtime)
+	_result = &UpdateK8sSlbResponse{}
+	_body, _err := client.UpdateK8sSlbWithOptions(request, headers, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -35879,11 +40981,11 @@ func (client *Client) UpdateRoleWithOptions(request *UpdateRoleRequest, headers 
 	return _result, _err
 }
 
-func (client *Client) UpdateSlsLogStore(request *UpdateSlsLogStoreRequest) (_result *UpdateSlsLogStoreResponse, _err error) {
+func (client *Client) UpdateRole(request *UpdateRoleRequest) (_result *UpdateRoleResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
-	_result = &UpdateSlsLogStoreResponse{}
-	_body, _err := client.UpdateSlsLogStoreWithOptions(request, headers, runtime)
+	_result = &UpdateRoleResponse{}
+	_body, _err := client.UpdateRoleWithOptions(request, headers, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -35929,11 +41031,11 @@ func (client *Client) UpdateSlsLogStoreWithOptions(request *UpdateSlsLogStoreReq
 	return _result, _err
 }
 
-func (client *Client) UpdateSwimmingLane(request *UpdateSwimmingLaneRequest) (_result *UpdateSwimmingLaneResponse, _err error) {
+func (client *Client) UpdateSlsLogStore(request *UpdateSlsLogStoreRequest) (_result *UpdateSlsLogStoreResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
-	_result = &UpdateSwimmingLaneResponse{}
-	_body, _err := client.UpdateSwimmingLaneWithOptions(request, headers, runtime)
+	_result = &UpdateSlsLogStoreResponse{}
+	_body, _err := client.UpdateSlsLogStoreWithOptions(request, headers, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -35991,11 +41093,11 @@ func (client *Client) UpdateSwimmingLaneWithOptions(request *UpdateSwimmingLaneR
 	return _result, _err
 }
 
-func (client *Client) UpdateSwimmingLaneGroup(request *UpdateSwimmingLaneGroupRequest) (_result *UpdateSwimmingLaneGroupResponse, _err error) {
+func (client *Client) UpdateSwimmingLane(request *UpdateSwimmingLaneRequest) (_result *UpdateSwimmingLaneResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
-	_result = &UpdateSwimmingLaneGroupResponse{}
-	_body, _err := client.UpdateSwimmingLaneGroupWithOptions(request, headers, runtime)
+	_result = &UpdateSwimmingLaneResponse{}
+	_body, _err := client.UpdateSwimmingLaneWithOptions(request, headers, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -36046,5 +41148,17 @@ func (client *Client) UpdateSwimmingLaneGroupWithOptions(request *UpdateSwimming
 		return _result, _err
 	}
 	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) UpdateSwimmingLaneGroup(request *UpdateSwimmingLaneGroupRequest) (_result *UpdateSwimmingLaneGroupResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	headers := make(map[string]*string)
+	_result = &UpdateSwimmingLaneGroupResponse{}
+	_body, _err := client.UpdateSwimmingLaneGroupWithOptions(request, headers, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
 	return _result, _err
 }
