@@ -12,6 +12,29 @@ import (
 	"github.com/alibabacloud-go/tea/tea"
 )
 
+type GetQeIdentityRequest struct {
+	AcsHost     *string `json:"AcsHost,omitempty" xml:"AcsHost,omitempty"`
+	ClientVpcId *string `json:"ClientVpcId,omitempty" xml:"ClientVpcId,omitempty"`
+}
+
+func (s GetQeIdentityRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetQeIdentityRequest) GoString() string {
+	return s.String()
+}
+
+func (s *GetQeIdentityRequest) SetAcsHost(v string) *GetQeIdentityRequest {
+	s.AcsHost = &v
+	return s
+}
+
+func (s *GetQeIdentityRequest) SetClientVpcId(v string) *GetQeIdentityRequest {
+	s.ClientVpcId = &v
+	return s
+}
+
 type GetQeIdentityResponse struct {
 	Headers    map[string]*string `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
 	StatusCode *int32             `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
@@ -38,6 +61,29 @@ func (s *GetQeIdentityResponse) SetStatusCode(v int32) *GetQeIdentityResponse {
 
 func (s *GetQeIdentityResponse) SetBody(v string) *GetQeIdentityResponse {
 	s.Body = &v
+	return s
+}
+
+type GetQveIdentityRequest struct {
+	AcsHost     *string `json:"AcsHost,omitempty" xml:"AcsHost,omitempty"`
+	ClientVpcId *string `json:"ClientVpcId,omitempty" xml:"ClientVpcId,omitempty"`
+}
+
+func (s GetQveIdentityRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetQveIdentityRequest) GoString() string {
+	return s.String()
+}
+
+func (s *GetQveIdentityRequest) SetAcsHost(v string) *GetQveIdentityRequest {
+	s.AcsHost = &v
+	return s
+}
+
+func (s *GetQveIdentityRequest) SetClientVpcId(v string) *GetQveIdentityRequest {
+	s.ClientVpcId = &v
 	return s
 }
 
@@ -71,7 +117,9 @@ func (s *GetQveIdentityResponse) SetBody(v string) *GetQveIdentityResponse {
 }
 
 type GetTcbInfoRequest struct {
-	Fmspc *string `json:"fmspc,omitempty" xml:"fmspc,omitempty"`
+	AcsHost     *string `json:"AcsHost,omitempty" xml:"AcsHost,omitempty"`
+	ClientVpcId *string `json:"ClientVpcId,omitempty" xml:"ClientVpcId,omitempty"`
+	Fmspc       *string `json:"fmspc,omitempty" xml:"fmspc,omitempty"`
 }
 
 func (s GetTcbInfoRequest) String() string {
@@ -80,6 +128,16 @@ func (s GetTcbInfoRequest) String() string {
 
 func (s GetTcbInfoRequest) GoString() string {
 	return s.String()
+}
+
+func (s *GetTcbInfoRequest) SetAcsHost(v string) *GetTcbInfoRequest {
+	s.AcsHost = &v
+	return s
+}
+
+func (s *GetTcbInfoRequest) SetClientVpcId(v string) *GetTcbInfoRequest {
+	s.ClientVpcId = &v
+	return s
 }
 
 func (s *GetTcbInfoRequest) SetFmspc(v string) *GetTcbInfoRequest {
@@ -117,7 +175,9 @@ func (s *GetTcbInfoResponse) SetBody(v string) *GetTcbInfoResponse {
 }
 
 type PckCrlRequest struct {
-	Ca *string `json:"ca,omitempty" xml:"ca,omitempty"`
+	AcsHost     *string `json:"AcsHost,omitempty" xml:"AcsHost,omitempty"`
+	ClientVpcId *string `json:"ClientVpcId,omitempty" xml:"ClientVpcId,omitempty"`
+	Ca          *string `json:"ca,omitempty" xml:"ca,omitempty"`
 }
 
 func (s PckCrlRequest) String() string {
@@ -126,6 +186,16 @@ func (s PckCrlRequest) String() string {
 
 func (s PckCrlRequest) GoString() string {
 	return s.String()
+}
+
+func (s *PckCrlRequest) SetAcsHost(v string) *PckCrlRequest {
+	s.AcsHost = &v
+	return s
+}
+
+func (s *PckCrlRequest) SetClientVpcId(v string) *PckCrlRequest {
+	s.ClientVpcId = &v
+	return s
 }
 
 func (s *PckCrlRequest) SetCa(v string) *PckCrlRequest {
@@ -162,6 +232,29 @@ func (s *PckCrlResponse) SetBody(v string) *PckCrlResponse {
 	return s
 }
 
+type RootCaCrlRequest struct {
+	AcsHost     *string `json:"AcsHost,omitempty" xml:"AcsHost,omitempty"`
+	ClientVpcId *string `json:"ClientVpcId,omitempty" xml:"ClientVpcId,omitempty"`
+}
+
+func (s RootCaCrlRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s RootCaCrlRequest) GoString() string {
+	return s.String()
+}
+
+func (s *RootCaCrlRequest) SetAcsHost(v string) *RootCaCrlRequest {
+	s.AcsHost = &v
+	return s
+}
+
+func (s *RootCaCrlRequest) SetClientVpcId(v string) *RootCaCrlRequest {
+	s.ClientVpcId = &v
+	return s
+}
+
 type RootCaCrlResponse struct {
 	Headers    map[string]*string `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
 	StatusCode *int32             `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
@@ -192,6 +285,8 @@ func (s *RootCaCrlResponse) SetBody(v string) *RootCaCrlResponse {
 }
 
 type SimplePackagePckCertRequest struct {
+	AcsHost       *string `json:"AcsHost,omitempty" xml:"AcsHost,omitempty"`
+	ClientVpcId   *string `json:"ClientVpcId,omitempty" xml:"ClientVpcId,omitempty"`
 	Cpusvn        *string `json:"cpusvn,omitempty" xml:"cpusvn,omitempty"`
 	EncryptedPpid *string `json:"encrypted_ppid,omitempty" xml:"encrypted_ppid,omitempty"`
 	Pceid         *string `json:"pceid,omitempty" xml:"pceid,omitempty"`
@@ -205,6 +300,16 @@ func (s SimplePackagePckCertRequest) String() string {
 
 func (s SimplePackagePckCertRequest) GoString() string {
 	return s.String()
+}
+
+func (s *SimplePackagePckCertRequest) SetAcsHost(v string) *SimplePackagePckCertRequest {
+	s.AcsHost = &v
+	return s
+}
+
+func (s *SimplePackagePckCertRequest) SetClientVpcId(v string) *SimplePackagePckCertRequest {
+	s.ClientVpcId = &v
+	return s
 }
 
 func (s *SimplePackagePckCertRequest) SetCpusvn(v string) *SimplePackagePckCertRequest {
@@ -309,9 +414,23 @@ func (client *Client) GetEndpoint(productId *string, regionId *string, endpointR
 	return _result, _err
 }
 
-func (client *Client) GetQeIdentityWithOptions(headers map[string]*string, runtime *util.RuntimeOptions) (_result *GetQeIdentityResponse, _err error) {
+func (client *Client) GetQeIdentityWithOptions(request *GetQeIdentityRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *GetQeIdentityResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.AcsHost)) {
+		query["AcsHost"] = request.AcsHost
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ClientVpcId)) {
+		query["ClientVpcId"] = request.ClientVpcId
+	}
+
 	req := &openapi.OpenApiRequest{
 		Headers: headers,
+		Query:   openapiutil.Query(query),
 	}
 	params := &openapi.Params{
 		Action:      tea.String("GetQeIdentity"),
@@ -333,11 +452,11 @@ func (client *Client) GetQeIdentityWithOptions(headers map[string]*string, runti
 	return _result, _err
 }
 
-func (client *Client) GetQeIdentity() (_result *GetQeIdentityResponse, _err error) {
+func (client *Client) GetQeIdentity(request *GetQeIdentityRequest) (_result *GetQeIdentityResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
 	_result = &GetQeIdentityResponse{}
-	_body, _err := client.GetQeIdentityWithOptions(headers, runtime)
+	_body, _err := client.GetQeIdentityWithOptions(request, headers, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -345,9 +464,23 @@ func (client *Client) GetQeIdentity() (_result *GetQeIdentityResponse, _err erro
 	return _result, _err
 }
 
-func (client *Client) GetQveIdentityWithOptions(headers map[string]*string, runtime *util.RuntimeOptions) (_result *GetQveIdentityResponse, _err error) {
+func (client *Client) GetQveIdentityWithOptions(request *GetQveIdentityRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *GetQveIdentityResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.AcsHost)) {
+		query["AcsHost"] = request.AcsHost
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ClientVpcId)) {
+		query["ClientVpcId"] = request.ClientVpcId
+	}
+
 	req := &openapi.OpenApiRequest{
 		Headers: headers,
+		Query:   openapiutil.Query(query),
 	}
 	params := &openapi.Params{
 		Action:      tea.String("GetQveIdentity"),
@@ -369,11 +502,11 @@ func (client *Client) GetQveIdentityWithOptions(headers map[string]*string, runt
 	return _result, _err
 }
 
-func (client *Client) GetQveIdentity() (_result *GetQveIdentityResponse, _err error) {
+func (client *Client) GetQveIdentity(request *GetQveIdentityRequest) (_result *GetQveIdentityResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
 	_result = &GetQveIdentityResponse{}
-	_body, _err := client.GetQveIdentityWithOptions(headers, runtime)
+	_body, _err := client.GetQveIdentityWithOptions(request, headers, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -387,6 +520,14 @@ func (client *Client) GetTcbInfoWithOptions(request *GetTcbInfoRequest, headers 
 		return _result, _err
 	}
 	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.AcsHost)) {
+		query["AcsHost"] = request.AcsHost
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ClientVpcId)) {
+		query["ClientVpcId"] = request.ClientVpcId
+	}
+
 	if !tea.BoolValue(util.IsUnset(request.Fmspc)) {
 		query["fmspc"] = request.Fmspc
 	}
@@ -433,6 +574,14 @@ func (client *Client) PckCrlWithOptions(request *PckCrlRequest, headers map[stri
 		return _result, _err
 	}
 	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.AcsHost)) {
+		query["AcsHost"] = request.AcsHost
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ClientVpcId)) {
+		query["ClientVpcId"] = request.ClientVpcId
+	}
+
 	if !tea.BoolValue(util.IsUnset(request.Ca)) {
 		query["ca"] = request.Ca
 	}
@@ -473,9 +622,23 @@ func (client *Client) PckCrl(request *PckCrlRequest) (_result *PckCrlResponse, _
 	return _result, _err
 }
 
-func (client *Client) RootCaCrlWithOptions(headers map[string]*string, runtime *util.RuntimeOptions) (_result *RootCaCrlResponse, _err error) {
+func (client *Client) RootCaCrlWithOptions(request *RootCaCrlRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *RootCaCrlResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.AcsHost)) {
+		query["AcsHost"] = request.AcsHost
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ClientVpcId)) {
+		query["ClientVpcId"] = request.ClientVpcId
+	}
+
 	req := &openapi.OpenApiRequest{
 		Headers: headers,
+		Query:   openapiutil.Query(query),
 	}
 	params := &openapi.Params{
 		Action:      tea.String("RootCaCrl"),
@@ -497,11 +660,11 @@ func (client *Client) RootCaCrlWithOptions(headers map[string]*string, runtime *
 	return _result, _err
 }
 
-func (client *Client) RootCaCrl() (_result *RootCaCrlResponse, _err error) {
+func (client *Client) RootCaCrl(request *RootCaCrlRequest) (_result *RootCaCrlResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
 	_result = &RootCaCrlResponse{}
-	_body, _err := client.RootCaCrlWithOptions(headers, runtime)
+	_body, _err := client.RootCaCrlWithOptions(request, headers, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -515,6 +678,14 @@ func (client *Client) SimplePackagePckCertWithOptions(request *SimplePackagePckC
 		return _result, _err
 	}
 	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.AcsHost)) {
+		query["AcsHost"] = request.AcsHost
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ClientVpcId)) {
+		query["ClientVpcId"] = request.ClientVpcId
+	}
+
 	if !tea.BoolValue(util.IsUnset(request.Cpusvn)) {
 		query["cpusvn"] = request.Cpusvn
 	}
