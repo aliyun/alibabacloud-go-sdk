@@ -6579,11 +6579,12 @@ func (s *ListFaceEntitiesResponse) SetBody(v *ListFaceEntitiesResponseBody) *Lis
 }
 
 type MergeImageFaceRequest struct {
-	AddWatermark *bool                              `json:"AddWatermark,omitempty" xml:"AddWatermark,omitempty"`
-	ImageURL     *string                            `json:"ImageURL,omitempty" xml:"ImageURL,omitempty"`
-	MergeInfos   []*MergeImageFaceRequestMergeInfos `json:"MergeInfos,omitempty" xml:"MergeInfos,omitempty" type:"Repeated"`
-	ModelVersion *string                            `json:"ModelVersion,omitempty" xml:"ModelVersion,omitempty"`
-	TemplateId   *string                            `json:"TemplateId,omitempty" xml:"TemplateId,omitempty"`
+	AddWatermark  *bool                              `json:"AddWatermark,omitempty" xml:"AddWatermark,omitempty"`
+	ImageURL      *string                            `json:"ImageURL,omitempty" xml:"ImageURL,omitempty"`
+	MergeInfos    []*MergeImageFaceRequestMergeInfos `json:"MergeInfos,omitempty" xml:"MergeInfos,omitempty" type:"Repeated"`
+	ModelVersion  *string                            `json:"ModelVersion,omitempty" xml:"ModelVersion,omitempty"`
+	TemplateId    *string                            `json:"TemplateId,omitempty" xml:"TemplateId,omitempty"`
+	WatermarkType *string                            `json:"WatermarkType,omitempty" xml:"WatermarkType,omitempty"`
 }
 
 func (s MergeImageFaceRequest) String() string {
@@ -6619,6 +6620,11 @@ func (s *MergeImageFaceRequest) SetTemplateId(v string) *MergeImageFaceRequest {
 	return s
 }
 
+func (s *MergeImageFaceRequest) SetWatermarkType(v string) *MergeImageFaceRequest {
+	s.WatermarkType = &v
+	return s
+}
+
 type MergeImageFaceRequestMergeInfos struct {
 	ImageURL       *string `json:"ImageURL,omitempty" xml:"ImageURL,omitempty"`
 	TemplateFaceID *string `json:"TemplateFaceID,omitempty" xml:"TemplateFaceID,omitempty"`
@@ -6648,6 +6654,7 @@ type MergeImageFaceAdvanceRequest struct {
 	MergeInfos     []*MergeImageFaceAdvanceRequestMergeInfos `json:"MergeInfos,omitempty" xml:"MergeInfos,omitempty" type:"Repeated"`
 	ModelVersion   *string                                   `json:"ModelVersion,omitempty" xml:"ModelVersion,omitempty"`
 	TemplateId     *string                                   `json:"TemplateId,omitempty" xml:"TemplateId,omitempty"`
+	WatermarkType  *string                                   `json:"WatermarkType,omitempty" xml:"WatermarkType,omitempty"`
 }
 
 func (s MergeImageFaceAdvanceRequest) String() string {
@@ -6680,6 +6687,11 @@ func (s *MergeImageFaceAdvanceRequest) SetModelVersion(v string) *MergeImageFace
 
 func (s *MergeImageFaceAdvanceRequest) SetTemplateId(v string) *MergeImageFaceAdvanceRequest {
 	s.TemplateId = &v
+	return s
+}
+
+func (s *MergeImageFaceAdvanceRequest) SetWatermarkType(v string) *MergeImageFaceAdvanceRequest {
+	s.WatermarkType = &v
 	return s
 }
 
@@ -14903,6 +14915,10 @@ func (client *Client) MergeImageFaceWithOptions(request *MergeImageFaceRequest, 
 
 	if !tea.BoolValue(util.IsUnset(request.TemplateId)) {
 		body["TemplateId"] = request.TemplateId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.WatermarkType)) {
+		body["WatermarkType"] = request.WatermarkType
 	}
 
 	req := &openapi.OpenApiRequest{
