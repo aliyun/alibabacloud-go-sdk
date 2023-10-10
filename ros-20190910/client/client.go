@@ -892,15 +892,16 @@ type CreateStackRequest struct {
 	//
 	// For more information, see [Ensure idempotence](~~134212~~).
 	ClientToken *string `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
-	// The option for the stack after the stack is created. Valid values:
+	// The creation option for the stack. Valid values:
 	//
-	// *   KeepStackOnCreationComplete (default): retains the stack and its resources after the stack is created. In this case, your stack quota in ROS is consumed.
-	// *   AbandonStackOnCreationComplete: deletes the stack, but retains its resources after the stack is created. In this case, your stack quota in ROS is not consumed. If the stack fails to be created, the stack is retained.
-	// *   AbandonStackOnCreationRollbackComplete: deletes the stack when its resources are rolled back after the stack fails to be created. In this case, your stack quota in ROS is not consumed. In other rollback scenarios, the stack is retained.
+	// *   KeepStackOnCreationComplete (default): After the stack is created, the stack and its resources are retained. The quota for the maximum number of stacks that can be created in ROS is consumed.
+	// *   AbandonStackOnCreationComplete: After the stack is created, the stack is deleted, but its resources are retained. The quota for the maximum number of stacks that can be created in ROS is not consumed. If the stack fails to be created, the stack is retained.
+	// *   AbandonStackOnCreationRollbackComplete: When the resources of the stack are rolled back after the stack fails to be created, the stack is deleted. The quota for the maximum number of stacks that can be created in ROS is not consumed. In other rollback scenarios, the stack is retained.
+	// *   ManuallyPay: When you create the stack, you must manually pay for the subscription resources that are used. The following resource types support manual payment: `ALIYUN::ECS::InstanceGroup`, `ALIYUN::RDS::DBInstance`, `ALIYUN::SLB::LoadBalancer`, `ALIYUN::VPC::EIP`, and `ALIYUN::VPC::VpnGateway`.
 	//
-	// > You can specify only one of CreateOption and CreateOptions.
+	// >  You can specify only one of CreateOption and CreateOptions.
 	CreateOption *string `json:"CreateOption,omitempty" xml:"CreateOption,omitempty"`
-	// The options for the stack after the stack is created.
+	// The creation options for the stack.
 	CreateOptions []*string `json:"CreateOptions,omitempty" xml:"CreateOptions,omitempty" type:"Repeated"`
 	// Specifies whether to enable deletion protection for the stack. Valid values:
 	//
@@ -1265,7 +1266,7 @@ type CreateStackGroupRequest struct {
 	//
 	// > You must specify this parameter if PermissionModel is set to SERVICE_MANAGED.
 	AutoDeployment *CreateStackGroupRequestAutoDeployment `json:"AutoDeployment,omitempty" xml:"AutoDeployment,omitempty" type:"Struct"`
-	// 资源栈组选项列表，最大长度为1。
+	// The options for the stack group. You can specify up to one option.
 	Capabilities []*string `json:"Capabilities,omitempty" xml:"Capabilities,omitempty" type:"Repeated"`
 	// The client token that is used to ensure the idempotence of the request. You can use the client to generate the token, but you must make sure that the token is unique among different requests.\
 	// The token can contain letters, digits, underscores (\_), and hyphens (-) and cannot exceed 64 characters in length.\
@@ -1511,7 +1512,7 @@ type CreateStackGroupShrinkRequest struct {
 	//
 	// > You must specify this parameter if PermissionModel is set to SERVICE_MANAGED.
 	AutoDeploymentShrink *string `json:"AutoDeployment,omitempty" xml:"AutoDeployment,omitempty"`
-	// 资源栈组选项列表，最大长度为1。
+	// The options for the stack group. You can specify up to one option.
 	Capabilities []*string `json:"Capabilities,omitempty" xml:"Capabilities,omitempty" type:"Repeated"`
 	// The client token that is used to ensure the idempotence of the request. You can use the client to generate the token, but you must make sure that the token is unique among different requests.\
 	// The token can contain letters, digits, underscores (\_), and hyphens (-) and cannot exceed 64 characters in length.\
@@ -2387,7 +2388,8 @@ type CreateTemplateScratchRequest struct {
 	// The region ID of the scenario.
 	//
 	// You can call the [DescribeRegions](~~131035~~) operation to query the most recent region list.
-	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	RegionId        *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	ResourceGroupId *string `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
 	// The source resource group.
 	SourceResourceGroup *CreateTemplateScratchRequestSourceResourceGroup `json:"SourceResourceGroup,omitempty" xml:"SourceResourceGroup,omitempty" type:"Struct"`
 	// The source resources.
@@ -2439,6 +2441,11 @@ func (s *CreateTemplateScratchRequest) SetPreferenceParameters(v []*CreateTempla
 
 func (s *CreateTemplateScratchRequest) SetRegionId(v string) *CreateTemplateScratchRequest {
 	s.RegionId = &v
+	return s
+}
+
+func (s *CreateTemplateScratchRequest) SetResourceGroupId(v string) *CreateTemplateScratchRequest {
+	s.ResourceGroupId = &v
 	return s
 }
 
@@ -2629,7 +2636,8 @@ type CreateTemplateScratchShrinkRequest struct {
 	// The region ID of the scenario.
 	//
 	// You can call the [DescribeRegions](~~131035~~) operation to query the most recent region list.
-	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	RegionId        *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	ResourceGroupId *string `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
 	// The source resource group.
 	SourceResourceGroupShrink *string `json:"SourceResourceGroup,omitempty" xml:"SourceResourceGroup,omitempty"`
 	// The source resources.
@@ -2681,6 +2689,11 @@ func (s *CreateTemplateScratchShrinkRequest) SetPreferenceParametersShrink(v str
 
 func (s *CreateTemplateScratchShrinkRequest) SetRegionId(v string) *CreateTemplateScratchShrinkRequest {
 	s.RegionId = &v
+	return s
+}
+
+func (s *CreateTemplateScratchShrinkRequest) SetResourceGroupId(v string) *CreateTemplateScratchShrinkRequest {
+	s.ResourceGroupId = &v
 	return s
 }
 
@@ -3520,8 +3533,10 @@ func (s *DeleteTemplateScratchResponse) SetBody(v *DeleteTemplateScratchResponse
 }
 
 type DeregisterResourceTypeRequest struct {
+	// The resource type.
 	ResourceType *string `json:"ResourceType,omitempty" xml:"ResourceType,omitempty"`
-	VersionId    *string `json:"VersionId,omitempty" xml:"VersionId,omitempty"`
+	// The version ID. If you want to delete a version of the resource type, you must specify this parameter.
+	VersionId *string `json:"VersionId,omitempty" xml:"VersionId,omitempty"`
 }
 
 func (s DeregisterResourceTypeRequest) String() string {
@@ -3543,6 +3558,7 @@ func (s *DeregisterResourceTypeRequest) SetVersionId(v string) *DeregisterResour
 }
 
 type DeregisterResourceTypeResponseBody struct {
+	// The request ID.
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -4296,7 +4312,8 @@ type GenerateTemplateByScratchRequest struct {
 	//
 	// For more information about how to query the IDs of scenarios, see [ListTemplateScratches](~~363050~~).
 	TemplateScratchId *string `json:"TemplateScratchId,omitempty" xml:"TemplateScratchId,omitempty"`
-	TemplateType      *string `json:"TemplateType,omitempty" xml:"TemplateType,omitempty"`
+	// The type of the template that Resource Orchestration Service (ROS) generates. ROS can generate templates of the ROS and Terraform types. Default value: ROS.
+	TemplateType *string `json:"TemplateType,omitempty" xml:"TemplateType,omitempty"`
 }
 
 func (s GenerateTemplateByScratchRequest) String() string {
@@ -4547,14 +4564,15 @@ func (s *GenerateTemplatePolicyResponseBodyPolicy) SetVersion(v string) *Generat
 
 type GenerateTemplatePolicyResponseBodyPolicyStatement struct {
 	// The operations that are performed on the specified resource.
-	Action    []*string              `json:"Action,omitempty" xml:"Action,omitempty" type:"Repeated"`
+	Action []*string `json:"Action,omitempty" xml:"Action,omitempty" type:"Repeated"`
+	// The condition that is required for the policy to take effect.
 	Condition map[string]interface{} `json:"Condition,omitempty" xml:"Condition,omitempty"`
 	// The effect of the statement. Valid values:
 	//
 	// *   Allow
 	// *   Deny
 	Effect *string `json:"Effect,omitempty" xml:"Effect,omitempty"`
-	// The object that the statement covers. An asterisk (\*) indicates all resources.
+	// The objects that the statement covers. An asterisk (\*) indicates all resources.
 	Resource *string `json:"Resource,omitempty" xml:"Resource,omitempty"`
 }
 
@@ -5190,7 +5208,8 @@ type GetFeatureDetailsResponseBodyTemplateScratchSupportedResourceTypes struct {
 	//
 	// - true
 	// - false
-	SourceTagSupported *bool `json:"SourceTagSupported,omitempty" xml:"SourceTagSupported,omitempty"`
+	SourceTagSupported            *bool     `json:"SourceTagSupported,omitempty" xml:"SourceTagSupported,omitempty"`
+	SupportedTemplateScratchTypes []*string `json:"SupportedTemplateScratchTypes,omitempty" xml:"SupportedTemplateScratchTypes,omitempty" type:"Repeated"`
 }
 
 func (s GetFeatureDetailsResponseBodyTemplateScratchSupportedResourceTypes) String() string {
@@ -5223,6 +5242,11 @@ func (s *GetFeatureDetailsResponseBodyTemplateScratchSupportedResourceTypes) Set
 
 func (s *GetFeatureDetailsResponseBodyTemplateScratchSupportedResourceTypes) SetSourceTagSupported(v bool) *GetFeatureDetailsResponseBodyTemplateScratchSupportedResourceTypes {
 	s.SourceTagSupported = &v
+	return s
+}
+
+func (s *GetFeatureDetailsResponseBodyTemplateScratchSupportedResourceTypes) SetSupportedTemplateScratchTypes(v []*string) *GetFeatureDetailsResponseBodyTemplateScratchSupportedResourceTypes {
+	s.SupportedTemplateScratchTypes = v
 	return s
 }
 
@@ -5411,7 +5435,10 @@ func (s *GetFeatureDetailsResponse) SetBody(v *GetFeatureDetailsResponseBody) *G
 type GetResourceTypeRequest struct {
 	// The ID of the request.
 	ResourceType *string `json:"ResourceType,omitempty" xml:"ResourceType,omitempty"`
-	VersionId    *string `json:"VersionId,omitempty" xml:"VersionId,omitempty"`
+	// The version ID. If you want to query a specific version of the resource type, you must specify this parameter. If you do not specify this parameter, only the resource type is queried.
+	//
+	// > This parameter is supported only for modules.
+	VersionId *string `json:"VersionId,omitempty" xml:"VersionId,omitempty"`
 }
 
 func (s GetResourceTypeRequest) String() string {
@@ -5434,19 +5461,42 @@ func (s *GetResourceTypeRequest) SetVersionId(v string) *GetResourceTypeRequest 
 
 type GetResourceTypeResponseBody struct {
 	// The type of the resource.
-	Attributes       map[string]interface{} `json:"Attributes,omitempty" xml:"Attributes,omitempty"`
-	CreateTime       *string                `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
-	DefaultVersionId *string                `json:"DefaultVersionId,omitempty" xml:"DefaultVersionId,omitempty"`
-	Description      *string                `json:"Description,omitempty" xml:"Description,omitempty"`
-	EntityType       *string                `json:"EntityType,omitempty" xml:"EntityType,omitempty"`
-	IsDefaultVersion *bool                  `json:"IsDefaultVersion,omitempty" xml:"IsDefaultVersion,omitempty"`
-	LatestVersionId  *string                `json:"LatestVersionId,omitempty" xml:"LatestVersionId,omitempty"`
+	Attributes map[string]interface{} `json:"Attributes,omitempty" xml:"Attributes,omitempty"`
+	// The creation time. The time follows the ISO 8601 standard in the YYYY-MM-DDThh:mm:ss format. The time is displayed in UTC.
+	CreateTime *string `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
+	// The default version ID.
+	//
+	// > This parameter is returned only if the resource type is queried.
+	DefaultVersionId *string `json:"DefaultVersionId,omitempty" xml:"DefaultVersionId,omitempty"`
+	// The description of the resource type.
+	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
+	// The entity type. Valid values:
+	//
+	// *   Resource: regular resource. For more information, see [Resources](~~28863~~).
+	// *   DataSource: DataSource resource. For more information, see [DataSource resources](~~404753~~).
+	// *   module: module.
+	EntityType *string `json:"EntityType,omitempty" xml:"EntityType,omitempty"`
+	// Indicates whether the version is the default version. Valid values:
+	//
+	// *   true
+	// *   false
+	//
+	// > This parameter is returned only if a specific version of the resource type is queried.
+	IsDefaultVersion *bool `json:"IsDefaultVersion,omitempty" xml:"IsDefaultVersion,omitempty"`
+	// The latest version ID.
+	//
+	// > This parameter is returned only if the resource type is queried.
+	LatestVersionId *string `json:"LatestVersionId,omitempty" xml:"LatestVersionId,omitempty"`
 	// Indicates whether the resource supports drift detection. Default value: false. Valid values:
 	//
 	// *   true: Drift detection is supported.
 	// *   false: Drift detection is not supported.
 	Properties map[string]interface{} `json:"Properties,omitempty" xml:"Properties,omitempty"`
-	Provider   *string                `json:"Provider,omitempty" xml:"Provider,omitempty"`
+	// The provider of the resource type. Valid values:
+	//
+	// *   ROS: The resource type is provided by Resource Orchestration Service (ROS).
+	// *   Self: The resource type is provided by you.
+	Provider *string `json:"Provider,omitempty" xml:"Provider,omitempty"`
 	// The attributes of the resource.
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	// The properties of the resource.
@@ -5460,10 +5510,17 @@ type GetResourceTypeResponseBody struct {
 	//
 	// *   Resource: resources other than DataSource resources. For more information, see [Resources](~~28863~~).
 	// *   DataSource: DataSource resources.
-	SupportScratchDetection *bool   `json:"SupportScratchDetection,omitempty" xml:"SupportScratchDetection,omitempty"`
-	TemplateBody            *string `json:"TemplateBody,omitempty" xml:"TemplateBody,omitempty"`
-	TotalVersionCount       *int32  `json:"TotalVersionCount,omitempty" xml:"TotalVersionCount,omitempty"`
-	UpdateTime              *string `json:"UpdateTime,omitempty" xml:"UpdateTime,omitempty"`
+	SupportScratchDetection *bool `json:"SupportScratchDetection,omitempty" xml:"SupportScratchDetection,omitempty"`
+	// The template content in the module.
+	//
+	// > This parameter is returned only if a specific version of the resource type is queried.
+	TemplateBody *string `json:"TemplateBody,omitempty" xml:"TemplateBody,omitempty"`
+	// The total number of versions.
+	//
+	// > This parameter is returned only if the resource type is queried.
+	TotalVersionCount *int32 `json:"TotalVersionCount,omitempty" xml:"TotalVersionCount,omitempty"`
+	// The update time. The time follows the ISO 8601 standard in the YYYY-MM-DDThh:mm:ss format. The time is displayed in UTC.
+	UpdateTime *string `json:"UpdateTime,omitempty" xml:"UpdateTime,omitempty"`
 }
 
 func (s GetResourceTypeResponseBody) String() string {
@@ -5585,7 +5642,10 @@ func (s *GetResourceTypeResponse) SetBody(v *GetResourceTypeResponseBody) *GetRe
 
 type GetResourceTypeTemplateRequest struct {
 	ResourceType *string `json:"ResourceType,omitempty" xml:"ResourceType,omitempty"`
-	VersionId    *string `json:"VersionId,omitempty" xml:"VersionId,omitempty"`
+	// The version ID. If you want to query a specific version of the resource type, you must specify this parameter. If you do not specify this parameter, only the resource type is queried.
+	//
+	// > This parameter is supported only for modules.
+	VersionId *string `json:"VersionId,omitempty" xml:"VersionId,omitempty"`
 }
 
 func (s GetResourceTypeTemplateRequest) String() string {
@@ -5607,9 +5667,13 @@ func (s *GetResourceTypeTemplateRequest) SetVersionId(v string) *GetResourceType
 }
 
 type GetResourceTypeTemplateResponseBody struct {
-	RequestId       *string                `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	TemplateBody    map[string]interface{} `json:"TemplateBody,omitempty" xml:"TemplateBody,omitempty"`
-	TemplateContent *string                `json:"TemplateContent,omitempty" xml:"TemplateContent,omitempty"`
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The structure that contains the template body. The template body must be 1 to 51,200 bytes in length. For more information, see [Template syntax](~~28857~~).
+	//
+	// > We recommend that use TemplateContent instead of TemplateBody.
+	TemplateBody map[string]interface{} `json:"TemplateBody,omitempty" xml:"TemplateBody,omitempty"`
+	// The JSON-formatted structure of the template body. For more information, see [Template syntax](~~28857~~).
+	TemplateContent *string `json:"TemplateContent,omitempty" xml:"TemplateContent,omitempty"`
 }
 
 func (s GetResourceTypeTemplateResponseBody) String() string {
@@ -6126,6 +6190,9 @@ func (s *GetStackRequest) SetStackId(v string) *GetStackRequest {
 }
 
 type GetStackResponseBody struct {
+	// The number of resources on which drift detection is performed.
+	//
+	// >  This parameter is returned only if the drift detection on the stack is successful.
 	CheckedStackResourceCount *int32 `json:"CheckedStackResourceCount,omitempty" xml:"CheckedStackResourceCount,omitempty"`
 	// The time when the stack was created. The time follows the ISO 8601 standard in the YYYY-MM-DDThh:mm:ss format. The time is displayed in UTC.
 	CreateTime *string `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
@@ -6148,8 +6215,11 @@ type GetStackResponseBody struct {
 	// The description of the web UI in the ROS console.
 	Interface *string `json:"Interface,omitempty" xml:"Interface,omitempty"`
 	// The logs of the stack.
-	Log                          *GetStackResponseBodyLog `json:"Log,omitempty" xml:"Log,omitempty" type:"Struct"`
-	NotCheckedStackResourceCount *int32                   `json:"NotCheckedStackResourceCount,omitempty" xml:"NotCheckedStackResourceCount,omitempty"`
+	Log *GetStackResponseBodyLog `json:"Log,omitempty" xml:"Log,omitempty" type:"Struct"`
+	// The number of resources on which drift detection is not performed.
+	//
+	// >  This parameter is returned only if the drift detection on the stack is successful.
+	NotCheckedStackResourceCount *int32 `json:"NotCheckedStackResourceCount,omitempty" xml:"NotCheckedStackResourceCount,omitempty"`
 	// The callback URLs that are used to receive stack events.
 	NotificationURLs []*string `json:"NotificationURLs,omitempty" xml:"NotificationURLs,omitempty" type:"Repeated"`
 	// The additional information that is displayed when an error occurs on a stack operation.
@@ -6518,7 +6588,7 @@ func (s *GetStackResponseBodyLogResourceLogs) SetResourceName(v string) *GetStac
 type GetStackResponseBodyLogResourceLogsLogs struct {
 	// The content of a resource log.
 	Content *string `json:"Content,omitempty" xml:"Content,omitempty"`
-	// The keywords.
+	// The keywords of a resource log.
 	Keys []*string `json:"Keys,omitempty" xml:"Keys,omitempty" type:"Repeated"`
 }
 
@@ -6541,12 +6611,12 @@ func (s *GetStackResponseBodyLogResourceLogsLogs) SetKeys(v []*string) *GetStack
 }
 
 type GetStackResponseBodyLogTerraformLogs struct {
-	// The name of a Terraform command that is run. Valid values:
+	// The name of the Terraform command that is run. Valid values:
 	//
-	// - apply
-	// - plan
-	// - destroy
-	// - version
+	// *   apply
+	// *   plan
+	// *   destroy
+	// *   version
 	//
 	// For more information about Terraform commands, see [Basic CLI Features](https://www.terraform.io/cli/commands).
 	Command *string `json:"Command,omitempty" xml:"Command,omitempty"`
@@ -6554,8 +6624,8 @@ type GetStackResponseBodyLogTerraformLogs struct {
 	Content *string `json:"Content,omitempty" xml:"Content,omitempty"`
 	// The output stream. Valid values:
 	//
-	// - stdout: the standard output stream.
-	// - stderr: the standard error stream.
+	// *   stdout: standard output stream
+	// *   stderr: standard error stream
 	Stream *string `json:"Stream,omitempty" xml:"Stream,omitempty"`
 }
 
@@ -6730,9 +6800,9 @@ type GetStackResponseBodyResourceProgressInProgressResourceDetails struct {
 	ProgressTargetValue *float32 `json:"ProgressTargetValue,omitempty" xml:"ProgressTargetValue,omitempty"`
 	// The current progress value of the resource.
 	ProgressValue *float32 `json:"ProgressValue,omitempty" xml:"ProgressValue,omitempty"`
-	// The name of the resource.
+	// The resource name.
 	ResourceName *string `json:"ResourceName,omitempty" xml:"ResourceName,omitempty"`
-	// The type of the resource.
+	// The resource type.
 	ResourceType *string `json:"ResourceType,omitempty" xml:"ResourceType,omitempty"`
 }
 
@@ -6992,7 +7062,7 @@ func (s *GetStackGroupRequest) SetStackGroupName(v string) *GetStackGroupRequest
 type GetStackGroupResponseBody struct {
 	// The details of the stack group.
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// The ID of the stack group.
+	// Details of the stack group.
 	StackGroup *GetStackGroupResponseBodyStackGroup `json:"StackGroup,omitempty" xml:"StackGroup,omitempty" type:"Struct"`
 }
 
@@ -7060,8 +7130,11 @@ type GetStackGroupResponseBodyStackGroup struct {
 	StackGroupName *string `json:"StackGroupName,omitempty" xml:"StackGroupName,omitempty"`
 	// The name of the RAM role that is specified for the administrator account in Resource Orchestration Service (ROS) when you create the self-managed stack group. If this parameter is not specified, the default value AliyunROSStackGroupAdministrationRole is returned.
 	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
-	// The details of the last drift detection that was performed on the stack group.
-	TemplateBody    *string `json:"TemplateBody,omitempty" xml:"TemplateBody,omitempty"`
+	// The structure that contains the template body.
+	//
+	// > We recommend that you use TemplateContent instead of TemplateBody.
+	TemplateBody *string `json:"TemplateBody,omitempty" xml:"TemplateBody,omitempty"`
+	// The JSON-formatted structure that contains the template body. For more information, see [Template syntax](~~28857~~).
 	TemplateContent *string `json:"TemplateContent,omitempty" xml:"TemplateContent,omitempty"`
 }
 
@@ -7178,9 +7251,9 @@ func (s *GetStackGroupResponseBodyStackGroupAutoDeployment) SetRetainStacksOnAcc
 }
 
 type GetStackGroupResponseBodyStackGroupParameters struct {
-	// The value of the parameter.
+	// The name of the parameter.
 	ParameterKey *string `json:"ParameterKey,omitempty" xml:"ParameterKey,omitempty"`
-	// The description of the stack group.
+	// The value of the parameter.
 	ParameterValue *string `json:"ParameterValue,omitempty" xml:"ParameterValue,omitempty"`
 }
 
@@ -8112,7 +8185,8 @@ type GetStackResourceResponseBody struct {
 	// The time follows the ISO 8601 standard in the YYYY-MM-DDThh:mm:ss format. The time is displayed in UTC.
 	LogicalResourceId *string `json:"LogicalResourceId,omitempty" xml:"LogicalResourceId,omitempty"`
 	// The list of the resource properties.
-	Metadata   map[string]interface{}                  `json:"Metadata,omitempty" xml:"Metadata,omitempty"`
+	Metadata map[string]interface{} `json:"Metadata,omitempty" xml:"Metadata,omitempty"`
+	// The information about the modules from which the resource is created. This parameter is returned only if the resource is created from modules.
 	ModuleInfo *GetStackResourceResponseBodyModuleInfo `json:"ModuleInfo,omitempty" xml:"ModuleInfo,omitempty" type:"Struct"`
 	// The metadata.
 	PhysicalResourceId *string `json:"PhysicalResourceId,omitempty" xml:"PhysicalResourceId,omitempty"`
@@ -8232,8 +8306,18 @@ func (s *GetStackResourceResponseBody) SetUpdateTime(v string) *GetStackResource
 }
 
 type GetStackResourceResponseBodyModuleInfo struct {
+	// The concatenated logical IDs of one or more modules that contain the resource. The modules are listed from the outermost layer and separated by forward slashes (`/`).
+	//
+	// In the following example, the resource is created from Module B nested within Parent Module A:
+	//
+	// `moduleA/moduleB`
 	LogicalIdHierarchy *string `json:"LogicalIdHierarchy,omitempty" xml:"LogicalIdHierarchy,omitempty"`
-	TypeHierarchy      *string `json:"TypeHierarchy,omitempty" xml:"TypeHierarchy,omitempty"`
+	// The concatenated types of one or more modules that contain the resource. The module types are listed from the outermost layer and separated by forward slashes (`/`).
+	//
+	// In the following example, the resource is created from a module of the `MODULE::ROS::Child::Example` type that is nested within a parent module of the `MODULE::ROS::Parent::Example` type:
+	//
+	// `MODULE::ROS::Parent::Example/MODULE::ROS::Child::Example`
+	TypeHierarchy *string `json:"TypeHierarchy,omitempty" xml:"TypeHierarchy,omitempty"`
 }
 
 func (s GetStackResourceResponseBodyModuleInfo) String() string {
@@ -9145,26 +9229,27 @@ type GetTemplateParameterConstraintsResponseBodyParameterConstraints struct {
 	// *   NotSupport: The value of this parameter cannot be queried.
 	// *   QueryError: This parameter failed to be queried.
 	//
-	// >  If the AllowedValues parameter is not returned, the Behavior and BehaviorReason parameters are returned.
+	// > If AllowedValues is not returned, Behavior and BehaviorReason are returned.
 	Behavior *string `json:"Behavior,omitempty" xml:"Behavior,omitempty"`
 	// The reason why the behavior of the parameter is returned.
 	BehaviorReason *string `json:"BehaviorReason,omitempty" xml:"BehaviorReason,omitempty"`
 	// The values that do not conform to the parameter constraints.
 	//
-	// >  If the `AllowedValues` parameter is returned, the `IllegalValueByParameterConstraints` and `IllegalValueByRules` parameters are returned at the same time.
+	// > If AllowedValues is returned, IllegalValueByParameterConstraints and IllegalValueByRules are returned at the same time.
 	IllegalValueByParameterConstraints []interface{} `json:"IllegalValueByParameterConstraints,omitempty" xml:"IllegalValueByParameterConstraints,omitempty" type:"Repeated"`
 	// The values that do not match the rules in the template.
 	//
-	// >  If the `AllowedValues` parameter is returned, the `IllegalValueByParameterConstraints` and `IllegalValueByRules` parameters are returned at the same time.
+	// > If AllowedValues is returned, IllegalValueByParameterConstraints and IllegalValueByRules are returned at the same time.
 	IllegalValueByRules []interface{} `json:"IllegalValueByRules,omitempty" xml:"IllegalValueByRules,omitempty" type:"Repeated"`
-	// The unsupported resources in the template.
+	// The unsupported resource in the template.
 	NotSupportResources []*GetTemplateParameterConstraintsResponseBodyParameterConstraintsNotSupportResources `json:"NotSupportResources,omitempty" xml:"NotSupportResources,omitempty" type:"Repeated"`
+	// The original constraint information.
 	OriginalConstraints []*GetTemplateParameterConstraintsResponseBodyParameterConstraintsOriginalConstraints `json:"OriginalConstraints,omitempty" xml:"OriginalConstraints,omitempty" type:"Repeated"`
 	// The name of the parameter.
 	ParameterKey *string `json:"ParameterKey,omitempty" xml:"ParameterKey,omitempty"`
-	// The error details that are returned if the request fails.
+	// The error that is returned when the request fails.
 	QueryErrors []*GetTemplateParameterConstraintsResponseBodyParameterConstraintsQueryErrors `json:"QueryErrors,omitempty" xml:"QueryErrors,omitempty" type:"Repeated"`
-	// The type of the parameter.
+	// The data type of the parameter.
 	Type *string `json:"Type,omitempty" xml:"Type,omitempty"`
 }
 
@@ -9235,8 +9320,6 @@ type GetTemplateParameterConstraintsResponseBodyParameterConstraintsNotSupportRe
 	// The name of the resource property.
 	PropertyName *string `json:"PropertyName,omitempty" xml:"PropertyName,omitempty"`
 	// The resource type.
-	//
-	// You can call the [ListResourceTypes](~~133957~~) operation to query the resource type.
 	ResourceType *string `json:"ResourceType,omitempty" xml:"ResourceType,omitempty"`
 }
 
@@ -9259,10 +9342,14 @@ func (s *GetTemplateParameterConstraintsResponseBodyParameterConstraintsNotSuppo
 }
 
 type GetTemplateParameterConstraintsResponseBodyParameterConstraintsOriginalConstraints struct {
+	// The values of the parameter.
 	AllowedValues []interface{} `json:"AllowedValues,omitempty" xml:"AllowedValues,omitempty" type:"Repeated"`
-	PropertyName  *string       `json:"PropertyName,omitempty" xml:"PropertyName,omitempty"`
-	ResourceName  *string       `json:"ResourceName,omitempty" xml:"ResourceName,omitempty"`
-	ResourceType  *string       `json:"ResourceType,omitempty" xml:"ResourceType,omitempty"`
+	// The name of the resource property.
+	PropertyName *string `json:"PropertyName,omitempty" xml:"PropertyName,omitempty"`
+	// The name of the resource that is defined in the template.
+	ResourceName *string `json:"ResourceName,omitempty" xml:"ResourceName,omitempty"`
+	// The resource type.
+	ResourceType *string `json:"ResourceType,omitempty" xml:"ResourceType,omitempty"`
 }
 
 func (s GetTemplateParameterConstraintsResponseBodyParameterConstraintsOriginalConstraints) String() string {
@@ -9296,7 +9383,7 @@ func (s *GetTemplateParameterConstraintsResponseBodyParameterConstraintsOriginal
 type GetTemplateParameterConstraintsResponseBodyParameterConstraintsQueryErrors struct {
 	// The error message.
 	ErrorMessage *string `json:"ErrorMessage,omitempty" xml:"ErrorMessage,omitempty"`
-	// The name of the resource.
+	// The resource name.
 	ResourceName *string `json:"ResourceName,omitempty" xml:"ResourceName,omitempty"`
 	// The resource type.
 	ResourceType *string `json:"ResourceType,omitempty" xml:"ResourceType,omitempty"`
@@ -9597,6 +9684,7 @@ type GetTemplateScratchResponseBodyTemplateScratch struct {
 	LogicalIdStrategy *string `json:"LogicalIdStrategy,omitempty" xml:"LogicalIdStrategy,omitempty"`
 	// The preference parameters of the scenario.
 	PreferenceParameters []*GetTemplateScratchResponseBodyTemplateScratchPreferenceParameters `json:"PreferenceParameters,omitempty" xml:"PreferenceParameters,omitempty" type:"Repeated"`
+	ResourceGroupId      *string                                                              `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
 	// The source resource group.
 	SourceResourceGroup *GetTemplateScratchResponseBodyTemplateScratchSourceResourceGroup `json:"SourceResourceGroup,omitempty" xml:"SourceResourceGroup,omitempty" type:"Struct"`
 	// The source resources.
@@ -9662,6 +9750,11 @@ func (s *GetTemplateScratchResponseBodyTemplateScratch) SetLogicalIdStrategy(v s
 
 func (s *GetTemplateScratchResponseBodyTemplateScratch) SetPreferenceParameters(v []*GetTemplateScratchResponseBodyTemplateScratchPreferenceParameters) *GetTemplateScratchResponseBodyTemplateScratch {
 	s.PreferenceParameters = v
+	return s
+}
+
+func (s *GetTemplateScratchResponseBodyTemplateScratch) SetResourceGroupId(v string) *GetTemplateScratchResponseBodyTemplateScratch {
+	s.ResourceGroupId = &v
 	return s
 }
 
@@ -10422,12 +10515,22 @@ func (s *ListChangeSetsResponse) SetBody(v *ListChangeSetsResponseBody) *ListCha
 }
 
 type ListResourceTypeRegistrationsRequest struct {
-	EntityType     *string `json:"EntityType,omitempty" xml:"EntityType,omitempty"`
-	PageNumber     *int32  `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
-	PageSize       *int32  `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	// The entity type. Set the value to Module.
+	EntityType *string `json:"EntityType,omitempty" xml:"EntityType,omitempty"`
+	// The page number. Pages start from page 1. Default value: 1.
+	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
+	// The number of entries per page. Valid values: 1 to 50. Default value: 10.
+	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	// The ID of the registration record.
 	RegistrationId *string `json:"RegistrationId,omitempty" xml:"RegistrationId,omitempty"`
-	ResourceType   *string `json:"ResourceType,omitempty" xml:"ResourceType,omitempty"`
-	Status         *string `json:"Status,omitempty" xml:"Status,omitempty"`
+	// The resource type. The resource type can contain letters, digits, colons (:), and asterisks (\*). You can use an asterisk (\*) to perform a fuzzy match.
+	ResourceType *string `json:"ResourceType,omitempty" xml:"ResourceType,omitempty"`
+	// The registration state. Valid values:
+	//
+	// *   IN_PROGRESS
+	// *   COMPLETE
+	// *   FAILED
+	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
 }
 
 func (s ListResourceTypeRegistrationsRequest) String() string {
@@ -10469,10 +10572,14 @@ func (s *ListResourceTypeRegistrationsRequest) SetStatus(v string) *ListResource
 }
 
 type ListResourceTypeRegistrationsResponseBody struct {
-	PageNumber    *int32                                                    `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
+	// The page number.
+	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
+	// The registration records.
 	Registrations []*ListResourceTypeRegistrationsResponseBodyRegistrations `json:"Registrations,omitempty" xml:"Registrations,omitempty" type:"Repeated"`
-	RequestId     *string                                                   `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	TotalCount    *int32                                                    `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
+	// The request ID.
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The total number of registration records.
+	TotalCount *int32 `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
 }
 
 func (s ListResourceTypeRegistrationsResponseBody) String() string {
@@ -10504,13 +10611,24 @@ func (s *ListResourceTypeRegistrationsResponseBody) SetTotalCount(v int32) *List
 }
 
 type ListResourceTypeRegistrationsResponseBodyRegistrations struct {
-	CreateTime     *string `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
-	EntityType     *string `json:"EntityType,omitempty" xml:"EntityType,omitempty"`
+	// The time when the version was created. The time is displayed in UTC. The time follows the ISO 8601 standard in the YYYY-MM-DDThh:mm:ss format.
+	CreateTime *string `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
+	// The entity type. Only Module may be returned.
+	EntityType *string `json:"EntityType,omitempty" xml:"EntityType,omitempty"`
+	// The ID of the registration record.
 	RegistrationId *string `json:"RegistrationId,omitempty" xml:"RegistrationId,omitempty"`
-	ResourceType   *string `json:"ResourceType,omitempty" xml:"ResourceType,omitempty"`
-	Status         *string `json:"Status,omitempty" xml:"Status,omitempty"`
-	StatusReason   *string `json:"StatusReason,omitempty" xml:"StatusReason,omitempty"`
-	VersionId      *string `json:"VersionId,omitempty" xml:"VersionId,omitempty"`
+	// The resource type.
+	ResourceType *string `json:"ResourceType,omitempty" xml:"ResourceType,omitempty"`
+	// The registration state. Valid values:
+	//
+	// *   IN_PROGRESS
+	// *   COMPLETE
+	// *   FAILED
+	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
+	// The reason for the state.
+	StatusReason *string `json:"StatusReason,omitempty" xml:"StatusReason,omitempty"`
+	// The version ID.
+	VersionId *string `json:"VersionId,omitempty" xml:"VersionId,omitempty"`
 }
 
 func (s ListResourceTypeRegistrationsResponseBodyRegistrations) String() string {
@@ -10586,6 +10704,7 @@ func (s *ListResourceTypeRegistrationsResponse) SetBody(v *ListResourceTypeRegis
 }
 
 type ListResourceTypeVersionsRequest struct {
+	// The resource type.
 	ResourceType *string `json:"ResourceType,omitempty" xml:"ResourceType,omitempty"`
 }
 
@@ -10603,7 +10722,9 @@ func (s *ListResourceTypeVersionsRequest) SetResourceType(v string) *ListResourc
 }
 
 type ListResourceTypeVersionsResponseBody struct {
-	RequestId            *string                                                     `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The request ID.
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The versions of the resource types.
 	ResourceTypeVersions []*ListResourceTypeVersionsResponseBodyResourceTypeVersions `json:"ResourceTypeVersions,omitempty" xml:"ResourceTypeVersions,omitempty" type:"Repeated"`
 }
 
@@ -10626,14 +10747,28 @@ func (s *ListResourceTypeVersionsResponseBody) SetResourceTypeVersions(v []*List
 }
 
 type ListResourceTypeVersionsResponseBodyResourceTypeVersions struct {
-	CreateTime       *string `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
-	Description      *string `json:"Description,omitempty" xml:"Description,omitempty"`
-	EntityType       *string `json:"EntityType,omitempty" xml:"EntityType,omitempty"`
-	IsDefaultVersion *bool   `json:"IsDefaultVersion,omitempty" xml:"IsDefaultVersion,omitempty"`
-	Provider         *string `json:"Provider,omitempty" xml:"Provider,omitempty"`
-	ResourceType     *string `json:"ResourceType,omitempty" xml:"ResourceType,omitempty"`
-	UpdateTime       *string `json:"UpdateTime,omitempty" xml:"UpdateTime,omitempty"`
-	VersionId        *string `json:"VersionId,omitempty" xml:"VersionId,omitempty"`
+	// The time when the version was created. The time is displayed in UTC. The time follows the ISO 8601 standard in the YYYY-MM-DDThh:mm:ss format.
+	CreateTime *string `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
+	// The description of the version.
+	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
+	// The entity type. Only Module may be returned.
+	EntityType *string `json:"EntityType,omitempty" xml:"EntityType,omitempty"`
+	// Indicates whether the version is the default version. Valid values:
+	//
+	// *   true
+	// *   false
+	IsDefaultVersion *bool `json:"IsDefaultVersion,omitempty" xml:"IsDefaultVersion,omitempty"`
+	// The provider of the resource type. Valid values:
+	//
+	// *   ROS: ROS
+	// *   Self: yourself
+	Provider *string `json:"Provider,omitempty" xml:"Provider,omitempty"`
+	// The resource type.
+	ResourceType *string `json:"ResourceType,omitempty" xml:"ResourceType,omitempty"`
+	// The time when the version was updated. The time is displayed in UTC. The time follows the ISO 8601 standard in the YYYY-MM-DDThh:mm:ss format.
+	UpdateTime *string `json:"UpdateTime,omitempty" xml:"UpdateTime,omitempty"`
+	// The version ID.
+	VersionId *string `json:"VersionId,omitempty" xml:"VersionId,omitempty"`
 }
 
 func (s ListResourceTypeVersionsResponseBodyResourceTypeVersions) String() string {
@@ -10714,9 +10849,19 @@ func (s *ListResourceTypeVersionsResponse) SetBody(v *ListResourceTypeVersionsRe
 }
 
 type ListResourceTypesRequest struct {
-	// The array of resource types.
-	EntityType   *string `json:"EntityType,omitempty" xml:"EntityType,omitempty"`
-	Provider     *string `json:"Provider,omitempty" xml:"Provider,omitempty"`
+	// The entity type. Valid values:
+	//
+	// *   All: all types of resources.
+	// *   Resource (default): regular resources. For more information, see [Resources](~~28863~~).
+	// *   DataSource: DataSource resources. For more information, see [DataSource resources](~~404753~~).
+	// *   Module: modules.
+	EntityType *string `json:"EntityType,omitempty" xml:"EntityType,omitempty"`
+	// The provider of the resource type. Valid values:
+	//
+	// *   ROS (default): The resource type is provided by Resource Orchestration Service (ROS).
+	// *   Self: The resource type is provided by you.
+	Provider *string `json:"Provider,omitempty" xml:"Provider,omitempty"`
+	// The resource type. The resource type can contain letters, digits, colons (:), and asterisks (\*). You can use an asterisk (\*) to perform a fuzzy match.
 	ResourceType *string `json:"ResourceType,omitempty" xml:"ResourceType,omitempty"`
 }
 
@@ -10744,7 +10889,8 @@ func (s *ListResourceTypesRequest) SetResourceType(v string) *ListResourceTypesR
 }
 
 type ListResourceTypesResponseBody struct {
-	RequestId             *string                                               `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The resource type summaries.
 	ResourceTypeSummaries []*ListResourceTypesResponseBodyResourceTypeSummaries `json:"ResourceTypeSummaries,omitempty" xml:"ResourceTypeSummaries,omitempty" type:"Repeated"`
 	// The array of resource types.
 	ResourceTypes []*string `json:"ResourceTypes,omitempty" xml:"ResourceTypes,omitempty" type:"Repeated"`
@@ -10774,15 +10920,31 @@ func (s *ListResourceTypesResponseBody) SetResourceTypes(v []*string) *ListResou
 }
 
 type ListResourceTypesResponseBodyResourceTypeSummaries struct {
-	CreateTime        *string `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
-	DefaultVersionId  *string `json:"DefaultVersionId,omitempty" xml:"DefaultVersionId,omitempty"`
-	Description       *string `json:"Description,omitempty" xml:"Description,omitempty"`
-	EntityType        *string `json:"EntityType,omitempty" xml:"EntityType,omitempty"`
-	LatestVersionId   *string `json:"LatestVersionId,omitempty" xml:"LatestVersionId,omitempty"`
-	Provider          *string `json:"Provider,omitempty" xml:"Provider,omitempty"`
-	ResourceType      *string `json:"ResourceType,omitempty" xml:"ResourceType,omitempty"`
-	TotalVersionCount *int32  `json:"TotalVersionCount,omitempty" xml:"TotalVersionCount,omitempty"`
-	UpdateTime        *string `json:"UpdateTime,omitempty" xml:"UpdateTime,omitempty"`
+	// The creation time. The time is displayed in UTC. The time follows the ISO 8601 standard in the YYYY-MM-DDThh:mm:ss format.
+	CreateTime *string `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
+	// The ID of the default version.
+	DefaultVersionId *string `json:"DefaultVersionId,omitempty" xml:"DefaultVersionId,omitempty"`
+	// The description of the resource type.
+	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
+	// The entity type. Valid values:
+	//
+	// *   Resource: regular resources.
+	// *   DataSource: DataSource resources.
+	// *   Module: modules.
+	EntityType *string `json:"EntityType,omitempty" xml:"EntityType,omitempty"`
+	// The ID of the latest version.
+	LatestVersionId *string `json:"LatestVersionId,omitempty" xml:"LatestVersionId,omitempty"`
+	// The provider of the resource type. Valid values:
+	//
+	// *   ROS: The resource type is provided by ROS.
+	// *   Self: The resource type is provided by you.
+	Provider *string `json:"Provider,omitempty" xml:"Provider,omitempty"`
+	// The resource type.
+	ResourceType *string `json:"ResourceType,omitempty" xml:"ResourceType,omitempty"`
+	// The number of versions.
+	TotalVersionCount *int32 `json:"TotalVersionCount,omitempty" xml:"TotalVersionCount,omitempty"`
+	// The update time. The time is displayed in UTC. The time follows the ISO 8601 standard in the YYYY-MM-DDThh:mm:ss format.
+	UpdateTime *string `json:"UpdateTime,omitempty" xml:"UpdateTime,omitempty"`
 }
 
 func (s ListResourceTypesResponseBodyResourceTypeSummaries) String() string {
@@ -12350,9 +12512,11 @@ func (s *ListStackResourceDriftsRequest) SetStackId(v string) *ListStackResource
 }
 
 type ListStackResourceDriftsResponseBody struct {
+	// The query token returned in this call.
 	NextToken *string `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
+	// The ID of the request.
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// The property differences of the resource.
+	// The resource drifts.
 	ResourceDrifts []*ListStackResourceDriftsResponseBodyResourceDrifts `json:"ResourceDrifts,omitempty" xml:"ResourceDrifts,omitempty" type:"Repeated"`
 }
 
@@ -12380,27 +12544,30 @@ func (s *ListStackResourceDriftsResponseBody) SetResourceDrifts(v []*ListStackRe
 }
 
 type ListStackResourceDriftsResponseBodyResourceDrifts struct {
+	// The actual JSON-formatted resource properties.
 	ActualProperties *string `json:"ActualProperties,omitempty" xml:"ActualProperties,omitempty"`
-	// The expected value of the resource property as defined in the template.
+	// The time when the drift detection operation was performed on the resource.
 	DriftDetectionTime *string `json:"DriftDetectionTime,omitempty" xml:"DriftDetectionTime,omitempty"`
-	// The query token value returned in this call.
+	// The JSON-formatted resource properties that are defined in the template.
 	ExpectedProperties *string `json:"ExpectedProperties,omitempty" xml:"ExpectedProperties,omitempty"`
-	// The actual value of the resource property.
-	LogicalResourceId *string                                                      `json:"LogicalResourceId,omitempty" xml:"LogicalResourceId,omitempty"`
-	ModuleInfo        *ListStackResourceDriftsResponseBodyResourceDriftsModuleInfo `json:"ModuleInfo,omitempty" xml:"ModuleInfo,omitempty" type:"Struct"`
-	// The path of the resource property.
+	// The logical ID of the resource. The logical ID indicates the name of the resource that is defined in the template.
+	LogicalResourceId *string `json:"LogicalResourceId,omitempty" xml:"LogicalResourceId,omitempty"`
+	// The information about the modules from which the resource was created. This parameter is returned only if the resource is created from modules.
+	ModuleInfo *ListStackResourceDriftsResponseBodyResourceDriftsModuleInfo `json:"ModuleInfo,omitempty" xml:"ModuleInfo,omitempty" type:"Struct"`
+	// The physical ID of the resource.
 	PhysicalResourceId *string `json:"PhysicalResourceId,omitempty" xml:"PhysicalResourceId,omitempty"`
-	// http://ros.aliyun-inc.com:8080/V2/ListStackResourceDrifts
+	// The property drifts of the resource.
 	PropertyDifferences []*ListStackResourceDriftsResponseBodyResourceDriftsPropertyDifferences `json:"PropertyDifferences,omitempty" xml:"PropertyDifferences,omitempty" type:"Repeated"`
-	// The ID of the request.
-	ResourceDriftStatus *string `json:"ResourceDriftStatus,omitempty" xml:"ResourceDriftStatus,omitempty"`
-	// The actual resource properties in JSON format.
-	ResourceType *string `json:"ResourceType,omitempty" xml:"ResourceType,omitempty"`
-	// The drift type of the resource property. Valid values:
+	// The drift state of the resource. Valid values:
 	//
-	// *   ADD: The value has been added to a resource property whose data type was Array or List.
-	// *   REMOVE: The property has been deleted from the current resource configuration.
-	// *   NOT_EQUAL: The current property value differs from the expected value defined in the stack template.
+	// *   DELETED: The actual configuration of the resource differs from its expected template configuration because the resource is deleted.
+	// *   MODIFIED: The actual configuration of the resource differs from its expected template configuration.
+	// *   NOT_CHECKED: Resource Orchestration Service (ROS) has not checked whether the actual configuration of the resource differs from its expected template configuration.
+	// *   IN_SYNC: The actual configuration of the resource matches its expected template configuration.
+	ResourceDriftStatus *string `json:"ResourceDriftStatus,omitempty" xml:"ResourceDriftStatus,omitempty"`
+	// The resource type.
+	ResourceType *string `json:"ResourceType,omitempty" xml:"ResourceType,omitempty"`
+	// The stack ID.
 	StackId *string `json:"StackId,omitempty" xml:"StackId,omitempty"`
 }
 
@@ -12463,8 +12630,18 @@ func (s *ListStackResourceDriftsResponseBodyResourceDrifts) SetStackId(v string)
 }
 
 type ListStackResourceDriftsResponseBodyResourceDriftsModuleInfo struct {
+	// The concatenated logical IDs of one or more modules that contain the resource. The modules are listed from the outermost layer and separated by forward slashes (`/`).
+	//
+	// In the following example, the resource is created from Module B nested within Parent Module A:
+	//
+	// `moduleA/moduleB`
 	LogicalIdHierarchy *string `json:"LogicalIdHierarchy,omitempty" xml:"LogicalIdHierarchy,omitempty"`
-	TypeHierarchy      *string `json:"TypeHierarchy,omitempty" xml:"TypeHierarchy,omitempty"`
+	// The concatenated types of one or more modules that contain the resource. The module types are listed from the outermost layer and separated by forward slashes (`/`).
+	//
+	// In the following example, the resource is created from a module of the `MODULE::ROS::Child::Example` type that is nested within a parent module of the `MODULE::ROS::Parent::Example` type:
+	//
+	// `MODULE::ROS::Parent::Example/MODULE::ROS::Child::Example`
+	TypeHierarchy *string `json:"TypeHierarchy,omitempty" xml:"TypeHierarchy,omitempty"`
 }
 
 func (s ListStackResourceDriftsResponseBodyResourceDriftsModuleInfo) String() string {
@@ -12486,13 +12663,17 @@ func (s *ListStackResourceDriftsResponseBodyResourceDriftsModuleInfo) SetTypeHie
 }
 
 type ListStackResourceDriftsResponseBodyResourceDriftsPropertyDifferences struct {
-	// __null__
+	// The actual value of the resource property.
 	ActualValue *string `json:"ActualValue,omitempty" xml:"ActualValue,omitempty"`
-	// __null__
+	// The drift type of the resource property. Valid values:
+	//
+	// *   ADD: The value is added to a resource property whose data type is Array or List.
+	// *   REMOVE: The property is deleted from the current resource configuration.
+	// *   NOT_EQUAL: The current property value differs from the expected value that is defined in the stack template.
 	DifferenceType *string `json:"DifferenceType,omitempty" xml:"DifferenceType,omitempty"`
-	// ListStackResourceDrifts
+	// The expected value of the resource property that is defined in the template.
 	ExpectedValue *string `json:"ExpectedValue,omitempty" xml:"ExpectedValue,omitempty"`
-	// __null__
+	// The path of the resource property.
 	PropertyPath *string `json:"PropertyPath,omitempty" xml:"PropertyPath,omitempty"`
 }
 
@@ -12581,24 +12762,7 @@ func (s *ListStackResourcesRequest) SetStackId(v string) *ListStackResourcesRequ
 type ListStackResourcesResponseBody struct {
 	// Details about resources.
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// The status of the resource. Valid values:
-	//
-	// *   INIT_COMPLETE: The resource is in the pending creation state.
-	// *   CREATE_COMPLETE: The resource is created.
-	// *   CREATE_FAILED: The resource fails to be created.
-	// *   CREATE_IN_PROGRESS: The resource is being created.
-	// *   UPDATE_IN_PROGRESS: The resource is being updated.
-	// *   UPDATE_FAILED: The resource fails to be updated.
-	// *   UPDATE_COMPLETE: The resource is updated.
-	// *   DELETE_IN_PROGRESS: The resource is being deleted.
-	// *   DELETE_FAILED: The resource fails to be deleted.
-	// *   DELETE_COMPLETE: The resource is deleted.
-	// *   CHECK_IN_PROGRESS: The resource is being validated.
-	// *   CHECK_FAILED: The resource fails to be validated.
-	// *   CHECK_COMPLETE: The resource is validated.
-	// *   IMPORT_IN_PROGRESS: The resource is being imported.
-	// *   IMPORT_FAILED: The resource fails to be imported.
-	// *   IMPORT_COMPLETE: The resource is imported.
+	// The resources.
 	Resources []*ListStackResourcesResponseBodyResources `json:"Resources,omitempty" xml:"Resources,omitempty" type:"Repeated"`
 }
 
@@ -12621,34 +12785,52 @@ func (s *ListStackResourcesResponseBody) SetResources(v []*ListStackResourcesRes
 }
 
 type ListStackResourcesResponseBodyResources struct {
-	// The name of the stack.
-	//
-	// The name can be up to 255 characters in length, and can contain digits, letters, hyphens (-), and underscores (\_). The name must start with a digit or letter.
+	// The time when the resource was created. The time is displayed in UTC. The time follows the ISO 8601 standard in the YYYY-MM-DDThh:mm:ss format.
 	CreateTime *string `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
-	// The type of the resource.
+	// The time when the most recent successful drift detection was performed on the stack.
 	DriftDetectionTime *string `json:"DriftDetectionTime,omitempty" xml:"DriftDetectionTime,omitempty"`
-	// The time when the resource was updated. The time follows the ISO 8601 standard in the YYYY-MM-DDThh:mm:ss format. The time is displayed in UTC.
-	LogicalResourceId *string                                            `json:"LogicalResourceId,omitempty" xml:"LogicalResourceId,omitempty"`
-	ModuleInfo        *ListStackResourcesResponseBodyResourcesModuleInfo `json:"ModuleInfo,omitempty" xml:"ModuleInfo,omitempty" type:"Struct"`
-	// The most recent point in time when a successful drift detection operation was performed.
+	// The logical ID of the resource. The logical ID is the resource name that is defined in the template.
+	LogicalResourceId *string `json:"LogicalResourceId,omitempty" xml:"LogicalResourceId,omitempty"`
+	// The information about the modules from which the resource is created. This parameter is returned only if the resource is created from modules.
+	ModuleInfo *ListStackResourcesResponseBodyResourcesModuleInfo `json:"ModuleInfo,omitempty" xml:"ModuleInfo,omitempty" type:"Struct"`
+	// The physical ID of the resource.
 	PhysicalResourceId *string `json:"PhysicalResourceId,omitempty" xml:"PhysicalResourceId,omitempty"`
-	// The reason why the resource is in a specific state.
-	ResourceDriftStatus *string `json:"ResourceDriftStatus,omitempty" xml:"ResourceDriftStatus,omitempty"`
-	// The drift status of the resource in the most recent successful drift detection. Valid values:
+	// The drift state of the resource in the most recent successful drift detection. Valid values:
 	//
 	// *   DELETED: The actual configuration of the resource differs from its expected template configuration because the resource is deleted.
 	// *   MODIFIED: The actual configuration of the resource differs from its expected template configuration.
-	// *   NOT_CHECKED: ROS did not check whether the actual configuration of the resource differs from its expected template configuration.
+	// *   NOT_CHECKED: Resource Orchestration Service (ROS) has not checked whether the actual configuration of the resource differs from its expected template configuration.
 	// *   IN_SYNC: The actual configuration of the resource matches its expected template configuration.
+	ResourceDriftStatus *string `json:"ResourceDriftStatus,omitempty" xml:"ResourceDriftStatus,omitempty"`
+	// The resource type.
 	ResourceType *string `json:"ResourceType,omitempty" xml:"ResourceType,omitempty"`
-	// The physical ID of the resource.
-	StackId   *string `json:"StackId,omitempty" xml:"StackId,omitempty"`
+	// The stack ID.
+	StackId *string `json:"StackId,omitempty" xml:"StackId,omitempty"`
+	// The stack name.\
+	// The name can be up to 255 characters in length, and can contain digits, letters, hyphens (-), and underscores (\_). It must start with a digit or letter.
 	StackName *string `json:"StackName,omitempty" xml:"StackName,omitempty"`
-	// The logical ID of the resource. The logical ID is the resource name that is defined in the template.
+	// The state of the resource. Valid values:
+	//
+	// *   INIT_COMPLETE: The resource is pending to be created.
+	// *   CREATE_COMPLETE: The resource is created.
+	// *   CREATE_FAILED: The resource failed to be created.
+	// *   CREATE_IN_PROGRESS: The resource is being created.
+	// *   UPDATE_IN_PROGRESS: The resource is being updated.
+	// *   UPDATE_FAILED: The resource failed to be updated.
+	// *   UPDATE_COMPLETE: The resource is updated.
+	// *   DELETE_IN_PROGRESS: The resource is being deleted.
+	// *   DELETE_FAILED: The resource failed to be deleted.
+	// *   DELETE_COMPLETE: The resource is deleted.
+	// *   CHECK_IN_PROGRESS: The resource is being validated.
+	// *   CHECK_FAILED: The resource failed to be validated.
+	// *   CHECK_COMPLETE: The resource is validated.
+	// *   IMPORT_IN_PROGRESS: The resource is being imported.
+	// *   IMPORT_FAILED: The resource failed to be imported.
+	// *   IMPORT_COMPLETE: The resource is imported.
 	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
-	// The time when the resource was created. The time follows the ISO 8601 standard in the YYYY-MM-DDThh:mm:ss format. The time is displayed in UTC.
+	// The reason why the resource is in its current state.
 	StatusReason *string `json:"StatusReason,omitempty" xml:"StatusReason,omitempty"`
-	// The ID of the stack.
+	// The time when the resource was updated. The time is displayed in UTC. The time follows the ISO 8601 standard in the YYYY-MM-DDThh:mm:ss format.
 	UpdateTime *string `json:"UpdateTime,omitempty" xml:"UpdateTime,omitempty"`
 }
 
@@ -12721,8 +12903,18 @@ func (s *ListStackResourcesResponseBodyResources) SetUpdateTime(v string) *ListS
 }
 
 type ListStackResourcesResponseBodyResourcesModuleInfo struct {
+	// The concatenated logical IDs of one or more modules that contain the resource. The modules are listed from the outermost layer and separated by forward slashes (`/`).
+	//
+	// In the following example, the resource is created from Module B nested within Parent Module A:
+	//
+	// `moduleA/moduleB`
 	LogicalIdHierarchy *string `json:"LogicalIdHierarchy,omitempty" xml:"LogicalIdHierarchy,omitempty"`
-	TypeHierarchy      *string `json:"TypeHierarchy,omitempty" xml:"TypeHierarchy,omitempty"`
+	// The concatenated types of one or more modules that contain the resource. The module types are listed from the outermost layer and separated by forward slashes (`/`).
+	//
+	// In the following example, the resource is created from a module of the `MODULE::ROS::Child::Example` type that is nested within a parent module of the `MODULE::ROS::Parent::Example` type:
+	//
+	// `MODULE::ROS::Parent::Example/MODULE::ROS::Child::Example`
+	TypeHierarchy *string `json:"TypeHierarchy,omitempty" xml:"TypeHierarchy,omitempty"`
 }
 
 func (s ListStackResourcesResponseBodyResourcesModuleInfo) String() string {
@@ -13647,7 +13839,8 @@ type ListTemplateScratchesRequest struct {
 	// The region ID of the scenario.
 	//
 	// You can call the [DescribeRegions](~~131035~~) operation to query the most recent region list.
-	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	RegionId        *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	ResourceGroupId *string `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
 	// The status of the scenario. Valid values:
 	//
 	// *   GENERATE_IN_PROGRESS: The scenario is being created.
@@ -13685,6 +13878,11 @@ func (s *ListTemplateScratchesRequest) SetPageSize(v int32) *ListTemplateScratch
 
 func (s *ListTemplateScratchesRequest) SetRegionId(v string) *ListTemplateScratchesRequest {
 	s.RegionId = &v
+	return s
+}
+
+func (s *ListTemplateScratchesRequest) SetResourceGroupId(v string) *ListTemplateScratchesRequest {
+	s.ResourceGroupId = &v
 	return s
 }
 
@@ -13800,6 +13998,7 @@ type ListTemplateScratchesResponseBodyTemplateScratches struct {
 	LogicalIdStrategy *string `json:"LogicalIdStrategy,omitempty" xml:"LogicalIdStrategy,omitempty"`
 	// The preference parameters of the scenario.
 	PreferenceParameters []*ListTemplateScratchesResponseBodyTemplateScratchesPreferenceParameters `json:"PreferenceParameters,omitempty" xml:"PreferenceParameters,omitempty" type:"Repeated"`
+	ResourceGroupId      *string                                                                   `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
 	// The source resource group.
 	SourceResourceGroup *ListTemplateScratchesResponseBodyTemplateScratchesSourceResourceGroup `json:"SourceResourceGroup,omitempty" xml:"SourceResourceGroup,omitempty" type:"Struct"`
 	// The source resources.
@@ -13857,6 +14056,11 @@ func (s *ListTemplateScratchesResponseBodyTemplateScratches) SetLogicalIdStrateg
 
 func (s *ListTemplateScratchesResponseBodyTemplateScratches) SetPreferenceParameters(v []*ListTemplateScratchesResponseBodyTemplateScratchesPreferenceParameters) *ListTemplateScratchesResponseBodyTemplateScratches {
 	s.PreferenceParameters = v
+	return s
+}
+
+func (s *ListTemplateScratchesResponseBodyTemplateScratches) SetResourceGroupId(v string) *ListTemplateScratchesResponseBodyTemplateScratches {
+	s.ResourceGroupId = &v
 	return s
 }
 
@@ -15122,12 +15326,30 @@ func (s *PreviewStackResponse) SetBody(v *PreviewStackResponseBody) *PreviewStac
 }
 
 type RegisterResourceTypeRequest struct {
-	ClientToken  *string `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
-	Description  *string `json:"Description,omitempty" xml:"Description,omitempty"`
-	EntityType   *string `json:"EntityType,omitempty" xml:"EntityType,omitempty"`
+	// The client token that is used to ensure the idempotence of the request. You can use the client to generate the token, but you must make sure that the token is unique among different requests.\
+	// The token can be up to 64 characters in length, and can contain letters, digits, hyphens (-), and underscores (\_).\
+	// For more information, see [Ensure idempotence](~~134212~~).
+	ClientToken *string `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
+	// The description of the resource type. The description can be up to 512 characters in length.
+	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
+	// The entity type. Set the value to Module.
+	EntityType *string `json:"EntityType,omitempty" xml:"EntityType,omitempty"`
+	// The resource type.
 	ResourceType *string `json:"ResourceType,omitempty" xml:"ResourceType,omitempty"`
+	// The structure that contains the template body. The template body must be 1 to 524,288 bytes in length. The template body is used as the module content. If the length of the template body exceeds the upper limit, we recommend that you add parameters to the HTTP POST request body to prevent request failures caused by excessively long URLs.
+	//
+	//
+	// > - This parameter takes effect only when EntityType is set to Module.
+	// > - You can specify only one of the TemplateBody and TemplateURL parameters.
 	TemplateBody *string `json:"TemplateBody,omitempty" xml:"TemplateBody,omitempty"`
-	TemplateURL  *string `json:"TemplateURL,omitempty" xml:"TemplateURL,omitempty"`
+	// The URL of the file that contains the template body. The URL must point to a template that is located on an HTTP or HTTPS web server or in an Object Storage Service (OSS) bucket, such as oss://ros/template/demo or oss://ros/template/demo?RegionId=cn-hangzhou. The template body can be up to 524,288 bytes in length. The template body is used as the module content.
+	//
+	// > - If you do not specify the region ID of the OSS bucket, the value of RegionId is used.
+	// > -  This parameter takes effect only when EntityType is set to Module.
+	// > -  You can specify only one of the TemplateBody and TemplateURL parameters.
+	//
+	// The URL can be up to 1,024 bytes in length.
+	TemplateURL *string `json:"TemplateURL,omitempty" xml:"TemplateURL,omitempty"`
 }
 
 func (s RegisterResourceTypeRequest) String() string {
@@ -15169,8 +15391,10 @@ func (s *RegisterResourceTypeRequest) SetTemplateURL(v string) *RegisterResource
 }
 
 type RegisterResourceTypeResponseBody struct {
+	// The ID of the registration record. You can call the [ListResourceTypeRegistrations](~~2330740~~) operation to query registration records.
 	RegistrationId *string `json:"RegistrationId,omitempty" xml:"RegistrationId,omitempty"`
-	RequestId      *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The request ID.
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
 func (s RegisterResourceTypeResponseBody) String() string {
@@ -15307,10 +15531,18 @@ func (s *SetDeletionProtectionResponse) SetBody(v *SetDeletionProtectionResponse
 }
 
 type SetResourceTypeRequest struct {
+	// The ID of the default version. You can use this parameter to specify the default version of the resource type.
+	//
+	// > You can specify only one of the VersionId and DefaultVersionId parameters.
 	DefaultVersionId *string `json:"DefaultVersionId,omitempty" xml:"DefaultVersionId,omitempty"`
-	Description      *string `json:"Description,omitempty" xml:"Description,omitempty"`
-	ResourceType     *string `json:"ResourceType,omitempty" xml:"ResourceType,omitempty"`
-	VersionId        *string `json:"VersionId,omitempty" xml:"VersionId,omitempty"`
+	// The description of the resource type or resource type version. The description can be up to 512 characters in length.
+	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
+	// The resource type.
+	ResourceType *string `json:"ResourceType,omitempty" xml:"ResourceType,omitempty"`
+	// The version ID. If you want to modify a version of the resource type, you must specify this parameter. If you do not specify this parameter, only the resource type is modified.
+	//
+	// > You can specify only one of the VersionId and DefaultVersionId parameters.
+	VersionId *string `json:"VersionId,omitempty" xml:"VersionId,omitempty"`
 }
 
 func (s SetResourceTypeRequest) String() string {
@@ -15342,6 +15574,7 @@ func (s *SetResourceTypeRequest) SetVersionId(v string) *SetResourceTypeRequest 
 }
 
 type SetResourceTypeResponseBody struct {
+	// The request ID.
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -17704,7 +17937,8 @@ type UpdateTemplateScratchRequest struct {
 	// The region ID of the scenario.
 	//
 	// You can call the [DescribeRegions](~~131035~~) operation to query the most recent region list.
-	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	RegionId        *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	ResourceGroupId *string `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
 	// The source resource group.
 	SourceResourceGroup *UpdateTemplateScratchRequestSourceResourceGroup `json:"SourceResourceGroup,omitempty" xml:"SourceResourceGroup,omitempty" type:"Struct"`
 	// The source resources.
@@ -17750,6 +17984,11 @@ func (s *UpdateTemplateScratchRequest) SetPreferenceParameters(v []*UpdateTempla
 
 func (s *UpdateTemplateScratchRequest) SetRegionId(v string) *UpdateTemplateScratchRequest {
 	s.RegionId = &v
+	return s
+}
+
+func (s *UpdateTemplateScratchRequest) SetResourceGroupId(v string) *UpdateTemplateScratchRequest {
+	s.ResourceGroupId = &v
 	return s
 }
 
@@ -17911,7 +18150,8 @@ type UpdateTemplateScratchShrinkRequest struct {
 	// The region ID of the scenario.
 	//
 	// You can call the [DescribeRegions](~~131035~~) operation to query the most recent region list.
-	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	RegionId        *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	ResourceGroupId *string `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
 	// The source resource group.
 	SourceResourceGroupShrink *string `json:"SourceResourceGroup,omitempty" xml:"SourceResourceGroup,omitempty"`
 	// The source resources.
@@ -17957,6 +18197,11 @@ func (s *UpdateTemplateScratchShrinkRequest) SetPreferenceParametersShrink(v str
 
 func (s *UpdateTemplateScratchShrinkRequest) SetRegionId(v string) *UpdateTemplateScratchShrinkRequest {
 	s.RegionId = &v
+	return s
+}
+
+func (s *UpdateTemplateScratchShrinkRequest) SetResourceGroupId(v string) *UpdateTemplateScratchShrinkRequest {
+	s.ResourceGroupId = &v
 	return s
 }
 
@@ -19363,6 +19608,10 @@ func (client *Client) CreateTemplateScratchWithOptions(tmpReq *CreateTemplateScr
 		query["RegionId"] = request.RegionId
 	}
 
+	if !tea.BoolValue(util.IsUnset(request.ResourceGroupId)) {
+		query["ResourceGroupId"] = request.ResourceGroupId
+	}
+
 	if !tea.BoolValue(util.IsUnset(request.SourceResourceGroupShrink)) {
 		query["SourceResourceGroup"] = request.SourceResourceGroupShrink
 	}
@@ -19850,6 +20099,17 @@ func (client *Client) DeleteTemplateScratch(request *DeleteTemplateScratchReques
 	return _result, _err
 }
 
+/**
+ * *   If you delete a resource type, you can no longer use the resource type in Resource Orchestration Service (ROS).
+ * *   If you delete a version of a resource type, you can no longer use the version in ROS.
+ * *   If a resource type has only one version, you can delete the version by calling the operation. If a resource type has more than one version, you must manually delete the remaining versions.
+ * *   When a resource type has more than one version, you cannot delete the default version by calling the operation.
+ * *   When a resource type has only one version, you can delete the resource type and the version by calling the operation.
+ *
+ * @param request DeregisterResourceTypeRequest
+ * @param runtime runtime options for this request RuntimeOptions
+ * @return DeregisterResourceTypeResponse
+ */
 func (client *Client) DeregisterResourceTypeWithOptions(request *DeregisterResourceTypeRequest, runtime *util.RuntimeOptions) (_result *DeregisterResourceTypeResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -19887,6 +20147,16 @@ func (client *Client) DeregisterResourceTypeWithOptions(request *DeregisterResou
 	return _result, _err
 }
 
+/**
+ * *   If you delete a resource type, you can no longer use the resource type in Resource Orchestration Service (ROS).
+ * *   If you delete a version of a resource type, you can no longer use the version in ROS.
+ * *   If a resource type has only one version, you can delete the version by calling the operation. If a resource type has more than one version, you must manually delete the remaining versions.
+ * *   When a resource type has more than one version, you cannot delete the default version by calling the operation.
+ * *   When a resource type has only one version, you can delete the resource type and the version by calling the operation.
+ *
+ * @param request DeregisterResourceTypeRequest
+ * @return DeregisterResourceTypeResponse
+ */
 func (client *Client) DeregisterResourceType(request *DeregisterResourceTypeRequest) (_result *DeregisterResourceTypeResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &DeregisterResourceTypeResponse{}
@@ -22891,6 +23161,10 @@ func (client *Client) ListTemplateScratchesWithOptions(request *ListTemplateScra
 		query["RegionId"] = request.RegionId
 	}
 
+	if !tea.BoolValue(util.IsUnset(request.ResourceGroupId)) {
+		query["ResourceGroupId"] = request.ResourceGroupId
+	}
+
 	if !tea.BoolValue(util.IsUnset(request.Status)) {
 		query["Status"] = request.Status
 	}
@@ -23257,6 +23531,14 @@ func (client *Client) PreviewStack(request *PreviewStackRequest) (_result *Previ
 	return _result, _err
 }
 
+/**
+ * *   Versions increase from v1.
+ * *   If you create a new resource type, v1 is used as the default version of the resource type. You can call the SetResourceType operation to change the default version of a resource type.
+ *
+ * @param request RegisterResourceTypeRequest
+ * @param runtime runtime options for this request RuntimeOptions
+ * @return RegisterResourceTypeResponse
+ */
 func (client *Client) RegisterResourceTypeWithOptions(request *RegisterResourceTypeRequest, runtime *util.RuntimeOptions) (_result *RegisterResourceTypeResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -23312,6 +23594,13 @@ func (client *Client) RegisterResourceTypeWithOptions(request *RegisterResourceT
 	return _result, _err
 }
 
+/**
+ * *   Versions increase from v1.
+ * *   If you create a new resource type, v1 is used as the default version of the resource type. You can call the SetResourceType operation to change the default version of a resource type.
+ *
+ * @param request RegisterResourceTypeRequest
+ * @return RegisterResourceTypeResponse
+ */
 func (client *Client) RegisterResourceType(request *RegisterResourceTypeRequest) (_result *RegisterResourceTypeResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &RegisterResourceTypeResponse{}
@@ -24464,6 +24753,10 @@ func (client *Client) UpdateTemplateScratchWithOptions(tmpReq *UpdateTemplateScr
 
 	if !tea.BoolValue(util.IsUnset(request.RegionId)) {
 		query["RegionId"] = request.RegionId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ResourceGroupId)) {
+		query["ResourceGroupId"] = request.ResourceGroupId
 	}
 
 	if !tea.BoolValue(util.IsUnset(request.SourceResourceGroupShrink)) {
