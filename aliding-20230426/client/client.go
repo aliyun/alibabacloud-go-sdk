@@ -18575,8 +18575,9 @@ type QueryLiveInfoResponseBody struct {
 	Duration         *int64  `json:"duration,omitempty" xml:"duration,omitempty"`
 	EndTime          *int64  `json:"endTime,omitempty" xml:"endTime,omitempty"`
 	Introduction     *string `json:"introduction,omitempty" xml:"introduction,omitempty"`
-	LiveId           *int32  `json:"liveId,omitempty" xml:"liveId,omitempty"`
+	LiveId           *string `json:"liveId,omitempty" xml:"liveId,omitempty"`
 	LivePlayUrl      *string `json:"livePlayUrl,omitempty" xml:"livePlayUrl,omitempty"`
+	LiveStatus       *int32  `json:"liveStatus,omitempty" xml:"liveStatus,omitempty"`
 	PlaybackDuration *int64  `json:"playbackDuration,omitempty" xml:"playbackDuration,omitempty"`
 	// requestId
 	RequestId      *string `json:"requestId,omitempty" xml:"requestId,omitempty"`
@@ -18614,13 +18615,18 @@ func (s *QueryLiveInfoResponseBody) SetIntroduction(v string) *QueryLiveInfoResp
 	return s
 }
 
-func (s *QueryLiveInfoResponseBody) SetLiveId(v int32) *QueryLiveInfoResponseBody {
+func (s *QueryLiveInfoResponseBody) SetLiveId(v string) *QueryLiveInfoResponseBody {
 	s.LiveId = &v
 	return s
 }
 
 func (s *QueryLiveInfoResponseBody) SetLivePlayUrl(v string) *QueryLiveInfoResponseBody {
 	s.LivePlayUrl = &v
+	return s
+}
+
+func (s *QueryLiveInfoResponseBody) SetLiveStatus(v int32) *QueryLiveInfoResponseBody {
+	s.LiveStatus = &v
 	return s
 }
 

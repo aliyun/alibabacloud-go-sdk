@@ -1,4 +1,4 @@
-module github.com/alibabacloud-go/aliding-20230426
+module github.com/alibabacloud-go/aliding-20230426/v2
 
 go 1.15
 
