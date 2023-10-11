@@ -287,6 +287,156 @@ func (s *ChangeResourceGroupResponse) SetBody(v *ChangeResourceGroupResponseBody
 	return s
 }
 
+type ClearPairDrillRequest struct {
+	DrillId  *string `json:"DrillId,omitempty" xml:"DrillId,omitempty"`
+	PairId   *string `json:"PairId,omitempty" xml:"PairId,omitempty"`
+	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+}
+
+func (s ClearPairDrillRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ClearPairDrillRequest) GoString() string {
+	return s.String()
+}
+
+func (s *ClearPairDrillRequest) SetDrillId(v string) *ClearPairDrillRequest {
+	s.DrillId = &v
+	return s
+}
+
+func (s *ClearPairDrillRequest) SetPairId(v string) *ClearPairDrillRequest {
+	s.PairId = &v
+	return s
+}
+
+func (s *ClearPairDrillRequest) SetRegionId(v string) *ClearPairDrillRequest {
+	s.RegionId = &v
+	return s
+}
+
+type ClearPairDrillResponseBody struct {
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+}
+
+func (s ClearPairDrillResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ClearPairDrillResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *ClearPairDrillResponseBody) SetRequestId(v string) *ClearPairDrillResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+type ClearPairDrillResponse struct {
+	Headers    map[string]*string          `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                      `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *ClearPairDrillResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s ClearPairDrillResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ClearPairDrillResponse) GoString() string {
+	return s.String()
+}
+
+func (s *ClearPairDrillResponse) SetHeaders(v map[string]*string) *ClearPairDrillResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *ClearPairDrillResponse) SetStatusCode(v int32) *ClearPairDrillResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *ClearPairDrillResponse) SetBody(v *ClearPairDrillResponseBody) *ClearPairDrillResponse {
+	s.Body = v
+	return s
+}
+
+type ClearReplicaGroupDrillRequest struct {
+	DrillId  *string `json:"DrillId,omitempty" xml:"DrillId,omitempty"`
+	GroupId  *string `json:"GroupId,omitempty" xml:"GroupId,omitempty"`
+	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+}
+
+func (s ClearReplicaGroupDrillRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ClearReplicaGroupDrillRequest) GoString() string {
+	return s.String()
+}
+
+func (s *ClearReplicaGroupDrillRequest) SetDrillId(v string) *ClearReplicaGroupDrillRequest {
+	s.DrillId = &v
+	return s
+}
+
+func (s *ClearReplicaGroupDrillRequest) SetGroupId(v string) *ClearReplicaGroupDrillRequest {
+	s.GroupId = &v
+	return s
+}
+
+func (s *ClearReplicaGroupDrillRequest) SetRegionId(v string) *ClearReplicaGroupDrillRequest {
+	s.RegionId = &v
+	return s
+}
+
+type ClearReplicaGroupDrillResponseBody struct {
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+}
+
+func (s ClearReplicaGroupDrillResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ClearReplicaGroupDrillResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *ClearReplicaGroupDrillResponseBody) SetRequestId(v string) *ClearReplicaGroupDrillResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+type ClearReplicaGroupDrillResponse struct {
+	Headers    map[string]*string                  `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                              `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *ClearReplicaGroupDrillResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s ClearReplicaGroupDrillResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ClearReplicaGroupDrillResponse) GoString() string {
+	return s.String()
+}
+
+func (s *ClearReplicaGroupDrillResponse) SetHeaders(v map[string]*string) *ClearReplicaGroupDrillResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *ClearReplicaGroupDrillResponse) SetStatusCode(v int32) *ClearReplicaGroupDrillResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *ClearReplicaGroupDrillResponse) SetBody(v *ClearReplicaGroupDrillResponseBody) *ClearReplicaGroupDrillResponse {
+	s.Body = v
+	return s
+}
+
 type CreateDedicatedBlockStorageClusterRequest struct {
 	// The ID of the zone in which to create the dedicated block storage cluster. You can call the [DescribeZones](~~25610~~) operation to query the most recent zone list.
 	Azone *string `json:"Azone,omitempty" xml:"Azone,omitempty"`
@@ -3460,6 +3610,188 @@ func (s *DescribeLensServiceStatusResponse) SetBody(v *DescribeLensServiceStatus
 	return s
 }
 
+type DescribePairDrillsRequest struct {
+	DrillId    *string `json:"DrillId,omitempty" xml:"DrillId,omitempty"`
+	MaxResults *int64  `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
+	NextToken  *string `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
+	PageNumber *int32  `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
+	PageSize   *int32  `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	PairId     *string `json:"PairId,omitempty" xml:"PairId,omitempty"`
+	RegionId   *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+}
+
+func (s DescribePairDrillsRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribePairDrillsRequest) GoString() string {
+	return s.String()
+}
+
+func (s *DescribePairDrillsRequest) SetDrillId(v string) *DescribePairDrillsRequest {
+	s.DrillId = &v
+	return s
+}
+
+func (s *DescribePairDrillsRequest) SetMaxResults(v int64) *DescribePairDrillsRequest {
+	s.MaxResults = &v
+	return s
+}
+
+func (s *DescribePairDrillsRequest) SetNextToken(v string) *DescribePairDrillsRequest {
+	s.NextToken = &v
+	return s
+}
+
+func (s *DescribePairDrillsRequest) SetPageNumber(v int32) *DescribePairDrillsRequest {
+	s.PageNumber = &v
+	return s
+}
+
+func (s *DescribePairDrillsRequest) SetPageSize(v int32) *DescribePairDrillsRequest {
+	s.PageSize = &v
+	return s
+}
+
+func (s *DescribePairDrillsRequest) SetPairId(v string) *DescribePairDrillsRequest {
+	s.PairId = &v
+	return s
+}
+
+func (s *DescribePairDrillsRequest) SetRegionId(v string) *DescribePairDrillsRequest {
+	s.RegionId = &v
+	return s
+}
+
+type DescribePairDrillsResponseBody struct {
+	Drills     []*DescribePairDrillsResponseBodyDrills `json:"Drills,omitempty" xml:"Drills,omitempty" type:"Repeated"`
+	NextToken  *string                                 `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
+	PageNumber *int32                                  `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
+	PageSize   *int32                                  `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	RequestId  *string                                 `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	TotalCount *int64                                  `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
+}
+
+func (s DescribePairDrillsResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribePairDrillsResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *DescribePairDrillsResponseBody) SetDrills(v []*DescribePairDrillsResponseBodyDrills) *DescribePairDrillsResponseBody {
+	s.Drills = v
+	return s
+}
+
+func (s *DescribePairDrillsResponseBody) SetNextToken(v string) *DescribePairDrillsResponseBody {
+	s.NextToken = &v
+	return s
+}
+
+func (s *DescribePairDrillsResponseBody) SetPageNumber(v int32) *DescribePairDrillsResponseBody {
+	s.PageNumber = &v
+	return s
+}
+
+func (s *DescribePairDrillsResponseBody) SetPageSize(v int32) *DescribePairDrillsResponseBody {
+	s.PageSize = &v
+	return s
+}
+
+func (s *DescribePairDrillsResponseBody) SetRequestId(v string) *DescribePairDrillsResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *DescribePairDrillsResponseBody) SetTotalCount(v int64) *DescribePairDrillsResponseBody {
+	s.TotalCount = &v
+	return s
+}
+
+type DescribePairDrillsResponseBodyDrills struct {
+	DrillDiskId     *string `json:"DrillDiskId,omitempty" xml:"DrillDiskId,omitempty"`
+	DrillDiskStatus *string `json:"DrillDiskStatus,omitempty" xml:"DrillDiskStatus,omitempty"`
+	DrillId         *string `json:"DrillId,omitempty" xml:"DrillId,omitempty"`
+	RecoverPoint    *int64  `json:"RecoverPoint,omitempty" xml:"RecoverPoint,omitempty"`
+	StartAt         *int64  `json:"StartAt,omitempty" xml:"StartAt,omitempty"`
+	Status          *string `json:"Status,omitempty" xml:"Status,omitempty"`
+	StatusMessage   *string `json:"StatusMessage,omitempty" xml:"StatusMessage,omitempty"`
+}
+
+func (s DescribePairDrillsResponseBodyDrills) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribePairDrillsResponseBodyDrills) GoString() string {
+	return s.String()
+}
+
+func (s *DescribePairDrillsResponseBodyDrills) SetDrillDiskId(v string) *DescribePairDrillsResponseBodyDrills {
+	s.DrillDiskId = &v
+	return s
+}
+
+func (s *DescribePairDrillsResponseBodyDrills) SetDrillDiskStatus(v string) *DescribePairDrillsResponseBodyDrills {
+	s.DrillDiskStatus = &v
+	return s
+}
+
+func (s *DescribePairDrillsResponseBodyDrills) SetDrillId(v string) *DescribePairDrillsResponseBodyDrills {
+	s.DrillId = &v
+	return s
+}
+
+func (s *DescribePairDrillsResponseBodyDrills) SetRecoverPoint(v int64) *DescribePairDrillsResponseBodyDrills {
+	s.RecoverPoint = &v
+	return s
+}
+
+func (s *DescribePairDrillsResponseBodyDrills) SetStartAt(v int64) *DescribePairDrillsResponseBodyDrills {
+	s.StartAt = &v
+	return s
+}
+
+func (s *DescribePairDrillsResponseBodyDrills) SetStatus(v string) *DescribePairDrillsResponseBodyDrills {
+	s.Status = &v
+	return s
+}
+
+func (s *DescribePairDrillsResponseBodyDrills) SetStatusMessage(v string) *DescribePairDrillsResponseBodyDrills {
+	s.StatusMessage = &v
+	return s
+}
+
+type DescribePairDrillsResponse struct {
+	Headers    map[string]*string              `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                          `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *DescribePairDrillsResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s DescribePairDrillsResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribePairDrillsResponse) GoString() string {
+	return s.String()
+}
+
+func (s *DescribePairDrillsResponse) SetHeaders(v map[string]*string) *DescribePairDrillsResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *DescribePairDrillsResponse) SetStatusCode(v int32) *DescribePairDrillsResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *DescribePairDrillsResponse) SetBody(v *DescribePairDrillsResponseBody) *DescribePairDrillsResponse {
+	s.Body = v
+	return s
+}
+
 type DescribeRegionsRequest struct {
 	// The language in which the regions and zones are named. This parameter corresponds to the `LocalName` response parameter. Valid values:
 	//
@@ -3625,6 +3957,217 @@ func (s *DescribeRegionsResponse) SetStatusCode(v int32) *DescribeRegionsRespons
 }
 
 func (s *DescribeRegionsResponse) SetBody(v *DescribeRegionsResponseBody) *DescribeRegionsResponse {
+	s.Body = v
+	return s
+}
+
+type DescribeReplicaGroupDrillsRequest struct {
+	DrillId    *string `json:"DrillId,omitempty" xml:"DrillId,omitempty"`
+	GroupId    *string `json:"GroupId,omitempty" xml:"GroupId,omitempty"`
+	MaxResults *int32  `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
+	NextToken  *string `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
+	PageNumber *int32  `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
+	PageSize   *int32  `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	RegionId   *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+}
+
+func (s DescribeReplicaGroupDrillsRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeReplicaGroupDrillsRequest) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeReplicaGroupDrillsRequest) SetDrillId(v string) *DescribeReplicaGroupDrillsRequest {
+	s.DrillId = &v
+	return s
+}
+
+func (s *DescribeReplicaGroupDrillsRequest) SetGroupId(v string) *DescribeReplicaGroupDrillsRequest {
+	s.GroupId = &v
+	return s
+}
+
+func (s *DescribeReplicaGroupDrillsRequest) SetMaxResults(v int32) *DescribeReplicaGroupDrillsRequest {
+	s.MaxResults = &v
+	return s
+}
+
+func (s *DescribeReplicaGroupDrillsRequest) SetNextToken(v string) *DescribeReplicaGroupDrillsRequest {
+	s.NextToken = &v
+	return s
+}
+
+func (s *DescribeReplicaGroupDrillsRequest) SetPageNumber(v int32) *DescribeReplicaGroupDrillsRequest {
+	s.PageNumber = &v
+	return s
+}
+
+func (s *DescribeReplicaGroupDrillsRequest) SetPageSize(v int32) *DescribeReplicaGroupDrillsRequest {
+	s.PageSize = &v
+	return s
+}
+
+func (s *DescribeReplicaGroupDrillsRequest) SetRegionId(v string) *DescribeReplicaGroupDrillsRequest {
+	s.RegionId = &v
+	return s
+}
+
+type DescribeReplicaGroupDrillsResponseBody struct {
+	Drills     []*DescribeReplicaGroupDrillsResponseBodyDrills `json:"Drills,omitempty" xml:"Drills,omitempty" type:"Repeated"`
+	NextToken  *string                                         `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
+	PageNumber *int32                                          `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
+	PageSize   *int32                                          `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	RequestId  *string                                         `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	TotalCount *int64                                          `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
+}
+
+func (s DescribeReplicaGroupDrillsResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeReplicaGroupDrillsResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeReplicaGroupDrillsResponseBody) SetDrills(v []*DescribeReplicaGroupDrillsResponseBodyDrills) *DescribeReplicaGroupDrillsResponseBody {
+	s.Drills = v
+	return s
+}
+
+func (s *DescribeReplicaGroupDrillsResponseBody) SetNextToken(v string) *DescribeReplicaGroupDrillsResponseBody {
+	s.NextToken = &v
+	return s
+}
+
+func (s *DescribeReplicaGroupDrillsResponseBody) SetPageNumber(v int32) *DescribeReplicaGroupDrillsResponseBody {
+	s.PageNumber = &v
+	return s
+}
+
+func (s *DescribeReplicaGroupDrillsResponseBody) SetPageSize(v int32) *DescribeReplicaGroupDrillsResponseBody {
+	s.PageSize = &v
+	return s
+}
+
+func (s *DescribeReplicaGroupDrillsResponseBody) SetRequestId(v string) *DescribeReplicaGroupDrillsResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *DescribeReplicaGroupDrillsResponseBody) SetTotalCount(v int64) *DescribeReplicaGroupDrillsResponseBody {
+	s.TotalCount = &v
+	return s
+}
+
+type DescribeReplicaGroupDrillsResponseBodyDrills struct {
+	DrillId       *string                                                  `json:"DrillId,omitempty" xml:"DrillId,omitempty"`
+	GroupId       *string                                                  `json:"GroupId,omitempty" xml:"GroupId,omitempty"`
+	PairsInfo     []*DescribeReplicaGroupDrillsResponseBodyDrillsPairsInfo `json:"PairsInfo,omitempty" xml:"PairsInfo,omitempty" type:"Repeated"`
+	RecoverPoint  *int64                                                   `json:"RecoverPoint,omitempty" xml:"RecoverPoint,omitempty"`
+	StartAt       *int64                                                   `json:"StartAt,omitempty" xml:"StartAt,omitempty"`
+	Status        *string                                                  `json:"Status,omitempty" xml:"Status,omitempty"`
+	StatusMessage *string                                                  `json:"StatusMessage,omitempty" xml:"StatusMessage,omitempty"`
+}
+
+func (s DescribeReplicaGroupDrillsResponseBodyDrills) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeReplicaGroupDrillsResponseBodyDrills) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeReplicaGroupDrillsResponseBodyDrills) SetDrillId(v string) *DescribeReplicaGroupDrillsResponseBodyDrills {
+	s.DrillId = &v
+	return s
+}
+
+func (s *DescribeReplicaGroupDrillsResponseBodyDrills) SetGroupId(v string) *DescribeReplicaGroupDrillsResponseBodyDrills {
+	s.GroupId = &v
+	return s
+}
+
+func (s *DescribeReplicaGroupDrillsResponseBodyDrills) SetPairsInfo(v []*DescribeReplicaGroupDrillsResponseBodyDrillsPairsInfo) *DescribeReplicaGroupDrillsResponseBodyDrills {
+	s.PairsInfo = v
+	return s
+}
+
+func (s *DescribeReplicaGroupDrillsResponseBodyDrills) SetRecoverPoint(v int64) *DescribeReplicaGroupDrillsResponseBodyDrills {
+	s.RecoverPoint = &v
+	return s
+}
+
+func (s *DescribeReplicaGroupDrillsResponseBodyDrills) SetStartAt(v int64) *DescribeReplicaGroupDrillsResponseBodyDrills {
+	s.StartAt = &v
+	return s
+}
+
+func (s *DescribeReplicaGroupDrillsResponseBodyDrills) SetStatus(v string) *DescribeReplicaGroupDrillsResponseBodyDrills {
+	s.Status = &v
+	return s
+}
+
+func (s *DescribeReplicaGroupDrillsResponseBodyDrills) SetStatusMessage(v string) *DescribeReplicaGroupDrillsResponseBodyDrills {
+	s.StatusMessage = &v
+	return s
+}
+
+type DescribeReplicaGroupDrillsResponseBodyDrillsPairsInfo struct {
+	DrillDiskId     *string `json:"DrillDiskId,omitempty" xml:"DrillDiskId,omitempty"`
+	DrillDiskStatus *string `json:"DrillDiskStatus,omitempty" xml:"DrillDiskStatus,omitempty"`
+	PairId          *string `json:"PairId,omitempty" xml:"PairId,omitempty"`
+}
+
+func (s DescribeReplicaGroupDrillsResponseBodyDrillsPairsInfo) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeReplicaGroupDrillsResponseBodyDrillsPairsInfo) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeReplicaGroupDrillsResponseBodyDrillsPairsInfo) SetDrillDiskId(v string) *DescribeReplicaGroupDrillsResponseBodyDrillsPairsInfo {
+	s.DrillDiskId = &v
+	return s
+}
+
+func (s *DescribeReplicaGroupDrillsResponseBodyDrillsPairsInfo) SetDrillDiskStatus(v string) *DescribeReplicaGroupDrillsResponseBodyDrillsPairsInfo {
+	s.DrillDiskStatus = &v
+	return s
+}
+
+func (s *DescribeReplicaGroupDrillsResponseBodyDrillsPairsInfo) SetPairId(v string) *DescribeReplicaGroupDrillsResponseBodyDrillsPairsInfo {
+	s.PairId = &v
+	return s
+}
+
+type DescribeReplicaGroupDrillsResponse struct {
+	Headers    map[string]*string                      `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                                  `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *DescribeReplicaGroupDrillsResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s DescribeReplicaGroupDrillsResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeReplicaGroupDrillsResponse) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeReplicaGroupDrillsResponse) SetHeaders(v map[string]*string) *DescribeReplicaGroupDrillsResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *DescribeReplicaGroupDrillsResponse) SetStatusCode(v int32) *DescribeReplicaGroupDrillsResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *DescribeReplicaGroupDrillsResponse) SetBody(v *DescribeReplicaGroupDrillsResponseBody) *DescribeReplicaGroupDrillsResponse {
 	s.Body = v
 	return s
 }
@@ -4811,6 +5354,168 @@ func (s *StartDiskReplicaPairResponse) SetBody(v *StartDiskReplicaPairResponseBo
 	return s
 }
 
+type StartPairDrillRequest struct {
+	ClientToken *string `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
+	PairId      *string `json:"PairId,omitempty" xml:"PairId,omitempty"`
+	RegionId    *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+}
+
+func (s StartPairDrillRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s StartPairDrillRequest) GoString() string {
+	return s.String()
+}
+
+func (s *StartPairDrillRequest) SetClientToken(v string) *StartPairDrillRequest {
+	s.ClientToken = &v
+	return s
+}
+
+func (s *StartPairDrillRequest) SetPairId(v string) *StartPairDrillRequest {
+	s.PairId = &v
+	return s
+}
+
+func (s *StartPairDrillRequest) SetRegionId(v string) *StartPairDrillRequest {
+	s.RegionId = &v
+	return s
+}
+
+type StartPairDrillResponseBody struct {
+	DrillId   *string `json:"DrillId,omitempty" xml:"DrillId,omitempty"`
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+}
+
+func (s StartPairDrillResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s StartPairDrillResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *StartPairDrillResponseBody) SetDrillId(v string) *StartPairDrillResponseBody {
+	s.DrillId = &v
+	return s
+}
+
+func (s *StartPairDrillResponseBody) SetRequestId(v string) *StartPairDrillResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+type StartPairDrillResponse struct {
+	Headers    map[string]*string          `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                      `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *StartPairDrillResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s StartPairDrillResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s StartPairDrillResponse) GoString() string {
+	return s.String()
+}
+
+func (s *StartPairDrillResponse) SetHeaders(v map[string]*string) *StartPairDrillResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *StartPairDrillResponse) SetStatusCode(v int32) *StartPairDrillResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *StartPairDrillResponse) SetBody(v *StartPairDrillResponseBody) *StartPairDrillResponse {
+	s.Body = v
+	return s
+}
+
+type StartReplicaGroupDrillRequest struct {
+	ClientToken *string `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
+	GroupId     *string `json:"GroupId,omitempty" xml:"GroupId,omitempty"`
+	RegionId    *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+}
+
+func (s StartReplicaGroupDrillRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s StartReplicaGroupDrillRequest) GoString() string {
+	return s.String()
+}
+
+func (s *StartReplicaGroupDrillRequest) SetClientToken(v string) *StartReplicaGroupDrillRequest {
+	s.ClientToken = &v
+	return s
+}
+
+func (s *StartReplicaGroupDrillRequest) SetGroupId(v string) *StartReplicaGroupDrillRequest {
+	s.GroupId = &v
+	return s
+}
+
+func (s *StartReplicaGroupDrillRequest) SetRegionId(v string) *StartReplicaGroupDrillRequest {
+	s.RegionId = &v
+	return s
+}
+
+type StartReplicaGroupDrillResponseBody struct {
+	DrillId   *string `json:"DrillId,omitempty" xml:"DrillId,omitempty"`
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+}
+
+func (s StartReplicaGroupDrillResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s StartReplicaGroupDrillResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *StartReplicaGroupDrillResponseBody) SetDrillId(v string) *StartReplicaGroupDrillResponseBody {
+	s.DrillId = &v
+	return s
+}
+
+func (s *StartReplicaGroupDrillResponseBody) SetRequestId(v string) *StartReplicaGroupDrillResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+type StartReplicaGroupDrillResponse struct {
+	Headers    map[string]*string                  `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                              `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *StartReplicaGroupDrillResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s StartReplicaGroupDrillResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s StartReplicaGroupDrillResponse) GoString() string {
+	return s.String()
+}
+
+func (s *StartReplicaGroupDrillResponse) SetHeaders(v map[string]*string) *StartReplicaGroupDrillResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *StartReplicaGroupDrillResponse) SetStatusCode(v int32) *StartReplicaGroupDrillResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *StartReplicaGroupDrillResponse) SetBody(v *StartReplicaGroupDrillResponseBody) *StartReplicaGroupDrillResponse {
+	s.Body = v
+	return s
+}
+
 type StopDiskMonitorRequest struct {
 	// The IDs of the disks for which you want to disable near real-time monitoring.
 	DiskIds []*string `json:"DiskIds,omitempty" xml:"DiskIds,omitempty" type:"Repeated"`
@@ -5560,6 +6265,110 @@ func (client *Client) ChangeResourceGroup(request *ChangeResourceGroupRequest) (
 	runtime := &util.RuntimeOptions{}
 	_result = &ChangeResourceGroupResponse{}
 	_body, _err := client.ChangeResourceGroupWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) ClearPairDrillWithOptions(request *ClearPairDrillRequest, runtime *util.RuntimeOptions) (_result *ClearPairDrillResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.DrillId)) {
+		query["DrillId"] = request.DrillId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.PairId)) {
+		query["PairId"] = request.PairId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.RegionId)) {
+		query["RegionId"] = request.RegionId
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("ClearPairDrill"),
+		Version:     tea.String("2021-07-30"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &ClearPairDrillResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) ClearPairDrill(request *ClearPairDrillRequest) (_result *ClearPairDrillResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &ClearPairDrillResponse{}
+	_body, _err := client.ClearPairDrillWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) ClearReplicaGroupDrillWithOptions(request *ClearReplicaGroupDrillRequest, runtime *util.RuntimeOptions) (_result *ClearReplicaGroupDrillResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.DrillId)) {
+		query["DrillId"] = request.DrillId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.GroupId)) {
+		query["GroupId"] = request.GroupId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.RegionId)) {
+		query["RegionId"] = request.RegionId
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("ClearReplicaGroupDrill"),
+		Version:     tea.String("2021-07-30"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &ClearReplicaGroupDrillResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) ClearReplicaGroupDrill(request *ClearReplicaGroupDrillRequest) (_result *ClearReplicaGroupDrillResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &ClearReplicaGroupDrillResponse{}
+	_body, _err := client.ClearReplicaGroupDrillWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -6760,6 +7569,74 @@ func (client *Client) DescribeLensServiceStatus() (_result *DescribeLensServiceS
 	return _result, _err
 }
 
+func (client *Client) DescribePairDrillsWithOptions(request *DescribePairDrillsRequest, runtime *util.RuntimeOptions) (_result *DescribePairDrillsResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.DrillId)) {
+		query["DrillId"] = request.DrillId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.MaxResults)) {
+		query["MaxResults"] = request.MaxResults
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.NextToken)) {
+		query["NextToken"] = request.NextToken
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.PageNumber)) {
+		query["PageNumber"] = request.PageNumber
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.PageSize)) {
+		query["PageSize"] = request.PageSize
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.PairId)) {
+		query["PairId"] = request.PairId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.RegionId)) {
+		query["RegionId"] = request.RegionId
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("DescribePairDrills"),
+		Version:     tea.String("2021-07-30"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &DescribePairDrillsResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) DescribePairDrills(request *DescribePairDrillsRequest) (_result *DescribePairDrillsResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &DescribePairDrillsResponse{}
+	_body, _err := client.DescribePairDrillsWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
 func (client *Client) DescribeRegionsWithOptions(request *DescribeRegionsRequest, runtime *util.RuntimeOptions) (_result *DescribeRegionsResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -6805,6 +7682,74 @@ func (client *Client) DescribeRegions(request *DescribeRegionsRequest) (_result 
 	runtime := &util.RuntimeOptions{}
 	_result = &DescribeRegionsResponse{}
 	_body, _err := client.DescribeRegionsWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) DescribeReplicaGroupDrillsWithOptions(request *DescribeReplicaGroupDrillsRequest, runtime *util.RuntimeOptions) (_result *DescribeReplicaGroupDrillsResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.DrillId)) {
+		query["DrillId"] = request.DrillId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.GroupId)) {
+		query["GroupId"] = request.GroupId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.MaxResults)) {
+		query["MaxResults"] = request.MaxResults
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.NextToken)) {
+		query["NextToken"] = request.NextToken
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.PageNumber)) {
+		query["PageNumber"] = request.PageNumber
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.PageSize)) {
+		query["PageSize"] = request.PageSize
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.RegionId)) {
+		query["RegionId"] = request.RegionId
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("DescribeReplicaGroupDrills"),
+		Version:     tea.String("2021-07-30"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &DescribeReplicaGroupDrillsResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) DescribeReplicaGroupDrills(request *DescribeReplicaGroupDrillsRequest) (_result *DescribeReplicaGroupDrillsResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &DescribeReplicaGroupDrillsResponse{}
+	_body, _err := client.DescribeReplicaGroupDrillsWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -7673,6 +8618,110 @@ func (client *Client) StartDiskReplicaPair(request *StartDiskReplicaPairRequest)
 	runtime := &util.RuntimeOptions{}
 	_result = &StartDiskReplicaPairResponse{}
 	_body, _err := client.StartDiskReplicaPairWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) StartPairDrillWithOptions(request *StartPairDrillRequest, runtime *util.RuntimeOptions) (_result *StartPairDrillResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.ClientToken)) {
+		query["ClientToken"] = request.ClientToken
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.PairId)) {
+		query["PairId"] = request.PairId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.RegionId)) {
+		query["RegionId"] = request.RegionId
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("StartPairDrill"),
+		Version:     tea.String("2021-07-30"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &StartPairDrillResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) StartPairDrill(request *StartPairDrillRequest) (_result *StartPairDrillResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &StartPairDrillResponse{}
+	_body, _err := client.StartPairDrillWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) StartReplicaGroupDrillWithOptions(request *StartReplicaGroupDrillRequest, runtime *util.RuntimeOptions) (_result *StartReplicaGroupDrillResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.ClientToken)) {
+		query["ClientToken"] = request.ClientToken
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.GroupId)) {
+		query["GroupId"] = request.GroupId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.RegionId)) {
+		query["RegionId"] = request.RegionId
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("StartReplicaGroupDrill"),
+		Version:     tea.String("2021-07-30"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &StartReplicaGroupDrillResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) StartReplicaGroupDrill(request *StartReplicaGroupDrillRequest) (_result *StartReplicaGroupDrillResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &StartReplicaGroupDrillResponse{}
+	_body, _err := client.StartReplicaGroupDrillWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
