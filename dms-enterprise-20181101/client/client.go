@@ -2567,16 +2567,18 @@ func (s *CreateDataArchiveOrderRequest) SetTid(v int64) *CreateDataArchiveOrderR
 }
 
 type CreateDataArchiveOrderRequestParam struct {
-	ArchiveMethod    *string                                            `json:"ArchiveMethod,omitempty" xml:"ArchiveMethod,omitempty"`
-	DbSchema         *string                                            `json:"DbSchema,omitempty" xml:"DbSchema,omitempty"`
-	Logic            *bool                                              `json:"Logic,omitempty" xml:"Logic,omitempty"`
-	OrderAfter       []*string                                          `json:"OrderAfter,omitempty" xml:"OrderAfter,omitempty" type:"Repeated"`
-	RunMethod        *string                                            `json:"RunMethod,omitempty" xml:"RunMethod,omitempty"`
-	SourceDatabaseId *int64                                             `json:"SourceDatabaseId,omitempty" xml:"SourceDatabaseId,omitempty"`
-	TableIncludes    []*CreateDataArchiveOrderRequestParamTableIncludes `json:"TableIncludes,omitempty" xml:"TableIncludes,omitempty" type:"Repeated"`
-	TableMapping     []*string                                          `json:"TableMapping,omitempty" xml:"TableMapping,omitempty" type:"Repeated"`
-	TargetInstanceId *string                                            `json:"TargetInstanceId,omitempty" xml:"TargetInstanceId,omitempty"`
-	Variables        []*string                                          `json:"Variables,omitempty" xml:"Variables,omitempty" type:"Repeated"`
+	ArchiveMethod      *string                                            `json:"ArchiveMethod,omitempty" xml:"ArchiveMethod,omitempty"`
+	CronStr            *string                                            `json:"CronStr,omitempty" xml:"CronStr,omitempty"`
+	Logic              *bool                                              `json:"Logic,omitempty" xml:"Logic,omitempty"`
+	OrderAfter         []*string                                          `json:"OrderAfter,omitempty" xml:"OrderAfter,omitempty" type:"Repeated"`
+	RunMethod          *string                                            `json:"RunMethod,omitempty" xml:"RunMethod,omitempty"`
+	SourceCatalogName  *string                                            `json:"SourceCatalogName,omitempty" xml:"SourceCatalogName,omitempty"`
+	SourceInstanceName *string                                            `json:"SourceInstanceName,omitempty" xml:"SourceInstanceName,omitempty"`
+	SourceSchemaName   *string                                            `json:"SourceSchemaName,omitempty" xml:"SourceSchemaName,omitempty"`
+	TableIncludes      []*CreateDataArchiveOrderRequestParamTableIncludes `json:"TableIncludes,omitempty" xml:"TableIncludes,omitempty" type:"Repeated"`
+	TableMapping       []*string                                          `json:"TableMapping,omitempty" xml:"TableMapping,omitempty" type:"Repeated"`
+	TargetInstanceHost *string                                            `json:"TargetInstanceHost,omitempty" xml:"TargetInstanceHost,omitempty"`
+	Variables          []*CreateDataArchiveOrderRequestParamVariables     `json:"Variables,omitempty" xml:"Variables,omitempty" type:"Repeated"`
 }
 
 func (s CreateDataArchiveOrderRequestParam) String() string {
@@ -2592,8 +2594,8 @@ func (s *CreateDataArchiveOrderRequestParam) SetArchiveMethod(v string) *CreateD
 	return s
 }
 
-func (s *CreateDataArchiveOrderRequestParam) SetDbSchema(v string) *CreateDataArchiveOrderRequestParam {
-	s.DbSchema = &v
+func (s *CreateDataArchiveOrderRequestParam) SetCronStr(v string) *CreateDataArchiveOrderRequestParam {
+	s.CronStr = &v
 	return s
 }
 
@@ -2612,8 +2614,18 @@ func (s *CreateDataArchiveOrderRequestParam) SetRunMethod(v string) *CreateDataA
 	return s
 }
 
-func (s *CreateDataArchiveOrderRequestParam) SetSourceDatabaseId(v int64) *CreateDataArchiveOrderRequestParam {
-	s.SourceDatabaseId = &v
+func (s *CreateDataArchiveOrderRequestParam) SetSourceCatalogName(v string) *CreateDataArchiveOrderRequestParam {
+	s.SourceCatalogName = &v
+	return s
+}
+
+func (s *CreateDataArchiveOrderRequestParam) SetSourceInstanceName(v string) *CreateDataArchiveOrderRequestParam {
+	s.SourceInstanceName = &v
+	return s
+}
+
+func (s *CreateDataArchiveOrderRequestParam) SetSourceSchemaName(v string) *CreateDataArchiveOrderRequestParam {
+	s.SourceSchemaName = &v
 	return s
 }
 
@@ -2627,12 +2639,12 @@ func (s *CreateDataArchiveOrderRequestParam) SetTableMapping(v []*string) *Creat
 	return s
 }
 
-func (s *CreateDataArchiveOrderRequestParam) SetTargetInstanceId(v string) *CreateDataArchiveOrderRequestParam {
-	s.TargetInstanceId = &v
+func (s *CreateDataArchiveOrderRequestParam) SetTargetInstanceHost(v string) *CreateDataArchiveOrderRequestParam {
+	s.TargetInstanceHost = &v
 	return s
 }
 
-func (s *CreateDataArchiveOrderRequestParam) SetVariables(v []*string) *CreateDataArchiveOrderRequestParam {
+func (s *CreateDataArchiveOrderRequestParam) SetVariables(v []*CreateDataArchiveOrderRequestParamVariables) *CreateDataArchiveOrderRequestParam {
 	s.Variables = v
 	return s
 }
@@ -2657,6 +2669,29 @@ func (s *CreateDataArchiveOrderRequestParamTableIncludes) SetTableName(v string)
 
 func (s *CreateDataArchiveOrderRequestParamTableIncludes) SetTableWhere(v string) *CreateDataArchiveOrderRequestParamTableIncludes {
 	s.TableWhere = &v
+	return s
+}
+
+type CreateDataArchiveOrderRequestParamVariables struct {
+	Name    *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	Pattern *string `json:"Pattern,omitempty" xml:"Pattern,omitempty"`
+}
+
+func (s CreateDataArchiveOrderRequestParamVariables) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateDataArchiveOrderRequestParamVariables) GoString() string {
+	return s.String()
+}
+
+func (s *CreateDataArchiveOrderRequestParamVariables) SetName(v string) *CreateDataArchiveOrderRequestParamVariables {
+	s.Name = &v
+	return s
+}
+
+func (s *CreateDataArchiveOrderRequestParamVariables) SetPattern(v string) *CreateDataArchiveOrderRequestParamVariables {
+	s.Pattern = &v
 	return s
 }
 
