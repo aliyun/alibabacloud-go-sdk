@@ -15246,6 +15246,128 @@ func (s *GetDatabaseExportOrderDetailResponse) SetBody(v *GetDatabaseExportOrder
 	return s
 }
 
+type GetDbExportDownloadURLRequest struct {
+	OrderId *int64 `json:"OrderId,omitempty" xml:"OrderId,omitempty"`
+	Tid     *int64 `json:"Tid,omitempty" xml:"Tid,omitempty"`
+}
+
+func (s GetDbExportDownloadURLRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetDbExportDownloadURLRequest) GoString() string {
+	return s.String()
+}
+
+func (s *GetDbExportDownloadURLRequest) SetOrderId(v int64) *GetDbExportDownloadURLRequest {
+	s.OrderId = &v
+	return s
+}
+
+func (s *GetDbExportDownloadURLRequest) SetTid(v int64) *GetDbExportDownloadURLRequest {
+	s.Tid = &v
+	return s
+}
+
+type GetDbExportDownloadURLResponseBody struct {
+	DownloadURLResult *GetDbExportDownloadURLResponseBodyDownloadURLResult `json:"DownloadURLResult,omitempty" xml:"DownloadURLResult,omitempty" type:"Struct"`
+	ErrorCode         *string                                              `json:"ErrorCode,omitempty" xml:"ErrorCode,omitempty"`
+	ErrorMessage      *string                                              `json:"ErrorMessage,omitempty" xml:"ErrorMessage,omitempty"`
+	RequestId         *string                                              `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	Success           *bool                                                `json:"Success,omitempty" xml:"Success,omitempty"`
+}
+
+func (s GetDbExportDownloadURLResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetDbExportDownloadURLResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *GetDbExportDownloadURLResponseBody) SetDownloadURLResult(v *GetDbExportDownloadURLResponseBodyDownloadURLResult) *GetDbExportDownloadURLResponseBody {
+	s.DownloadURLResult = v
+	return s
+}
+
+func (s *GetDbExportDownloadURLResponseBody) SetErrorCode(v string) *GetDbExportDownloadURLResponseBody {
+	s.ErrorCode = &v
+	return s
+}
+
+func (s *GetDbExportDownloadURLResponseBody) SetErrorMessage(v string) *GetDbExportDownloadURLResponseBody {
+	s.ErrorMessage = &v
+	return s
+}
+
+func (s *GetDbExportDownloadURLResponseBody) SetRequestId(v string) *GetDbExportDownloadURLResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *GetDbExportDownloadURLResponseBody) SetSuccess(v bool) *GetDbExportDownloadURLResponseBody {
+	s.Success = &v
+	return s
+}
+
+type GetDbExportDownloadURLResponseBodyDownloadURLResult struct {
+	HasResult  *bool   `json:"HasResult,omitempty" xml:"HasResult,omitempty"`
+	TipMessage *string `json:"TipMessage,omitempty" xml:"TipMessage,omitempty"`
+	URL        *string `json:"URL,omitempty" xml:"URL,omitempty"`
+}
+
+func (s GetDbExportDownloadURLResponseBodyDownloadURLResult) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetDbExportDownloadURLResponseBodyDownloadURLResult) GoString() string {
+	return s.String()
+}
+
+func (s *GetDbExportDownloadURLResponseBodyDownloadURLResult) SetHasResult(v bool) *GetDbExportDownloadURLResponseBodyDownloadURLResult {
+	s.HasResult = &v
+	return s
+}
+
+func (s *GetDbExportDownloadURLResponseBodyDownloadURLResult) SetTipMessage(v string) *GetDbExportDownloadURLResponseBodyDownloadURLResult {
+	s.TipMessage = &v
+	return s
+}
+
+func (s *GetDbExportDownloadURLResponseBodyDownloadURLResult) SetURL(v string) *GetDbExportDownloadURLResponseBodyDownloadURLResult {
+	s.URL = &v
+	return s
+}
+
+type GetDbExportDownloadURLResponse struct {
+	Headers    map[string]*string                  `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                              `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *GetDbExportDownloadURLResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s GetDbExportDownloadURLResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetDbExportDownloadURLResponse) GoString() string {
+	return s.String()
+}
+
+func (s *GetDbExportDownloadURLResponse) SetHeaders(v map[string]*string) *GetDbExportDownloadURLResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *GetDbExportDownloadURLResponse) SetStatusCode(v int32) *GetDbExportDownloadURLResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *GetDbExportDownloadURLResponse) SetBody(v *GetDbExportDownloadURLResponseBody) *GetDbExportDownloadURLResponse {
+	s.Body = v
+	return s
+}
+
 type GetInstanceRequest struct {
 	// The endpoint of the database instance. You can call the [ListInstances](~~141936~~) operation to obtain the endpoint.
 	Host *string `json:"Host,omitempty" xml:"Host,omitempty"`
@@ -17361,6 +17483,7 @@ func (s *GetOrderBaseInfoResponseBody) SetSuccess(v bool) *GetOrderBaseInfoRespo
 }
 
 type GetOrderBaseInfoResponseBodyOrderBaseInfo struct {
+	AttachmentKey *string `json:"AttachmentKey,omitempty" xml:"AttachmentKey,omitempty"`
 	// The remarks of the ticket.
 	Comment *string `json:"Comment,omitempty" xml:"Comment,omitempty"`
 	// The applicant.
@@ -17372,7 +17495,8 @@ type GetOrderBaseInfoResponseBodyOrderBaseInfo struct {
 	// The time when the ticket was last modified.
 	LastModifyTime *string `json:"LastModifyTime,omitempty" xml:"LastModifyTime,omitempty"`
 	// The ID of the ticket.
-	OrderId *int64 `json:"OrderId,omitempty" xml:"OrderId,omitempty"`
+	OrderId              *int64  `json:"OrderId,omitempty" xml:"OrderId,omitempty"`
+	OriginAttachmentName *string `json:"OriginAttachmentName,omitempty" xml:"OriginAttachmentName,omitempty"`
 	// The type of the ticket. For more information about the value of this parameter, see the request parameters of the [CreateOrder](~~465865~~) operation.
 	PluginType *string `json:"PluginType,omitempty" xml:"PluginType,omitempty"`
 	// The IDs of the operators that are related to the ticket.
@@ -17405,6 +17529,11 @@ func (s GetOrderBaseInfoResponseBodyOrderBaseInfo) GoString() string {
 	return s.String()
 }
 
+func (s *GetOrderBaseInfoResponseBodyOrderBaseInfo) SetAttachmentKey(v string) *GetOrderBaseInfoResponseBodyOrderBaseInfo {
+	s.AttachmentKey = &v
+	return s
+}
+
 func (s *GetOrderBaseInfoResponseBodyOrderBaseInfo) SetComment(v string) *GetOrderBaseInfoResponseBodyOrderBaseInfo {
 	s.Comment = &v
 	return s
@@ -17432,6 +17561,11 @@ func (s *GetOrderBaseInfoResponseBodyOrderBaseInfo) SetLastModifyTime(v string) 
 
 func (s *GetOrderBaseInfoResponseBodyOrderBaseInfo) SetOrderId(v int64) *GetOrderBaseInfoResponseBodyOrderBaseInfo {
 	s.OrderId = &v
+	return s
+}
+
+func (s *GetOrderBaseInfoResponseBodyOrderBaseInfo) SetOriginAttachmentName(v string) *GetOrderBaseInfoResponseBodyOrderBaseInfo {
+	s.OriginAttachmentName = &v
 	return s
 }
 
@@ -47256,6 +47390,54 @@ func (client *Client) GetDatabaseExportOrderDetail(request *GetDatabaseExportOrd
 	runtime := &util.RuntimeOptions{}
 	_result = &GetDatabaseExportOrderDetailResponse{}
 	_body, _err := client.GetDatabaseExportOrderDetailWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) GetDbExportDownloadURLWithOptions(request *GetDbExportDownloadURLRequest, runtime *util.RuntimeOptions) (_result *GetDbExportDownloadURLResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.OrderId)) {
+		query["OrderId"] = request.OrderId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Tid)) {
+		query["Tid"] = request.Tid
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("GetDbExportDownloadURL"),
+		Version:     tea.String("2018-11-01"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &GetDbExportDownloadURLResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) GetDbExportDownloadURL(request *GetDbExportDownloadURLRequest) (_result *GetDbExportDownloadURLResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &GetDbExportDownloadURLResponse{}
+	_body, _err := client.GetDbExportDownloadURLWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
