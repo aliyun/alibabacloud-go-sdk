@@ -1429,7 +1429,7 @@ type CreateServerGroupRequest struct {
 	// *   **true**
 	// *   **false** (default)
 	ConnectionDrainEnabled *bool `json:"ConnectionDrainEnabled,omitempty" xml:"ConnectionDrainEnabled,omitempty"`
-	// The timeout period of connection draining. Unit: seconds. Valid values: **10** to **900**.
+	// The timeout period of connection draining. Unit: seconds. Valid values: **0** to **900**.
 	ConnectionDrainTimeout *int32 `json:"ConnectionDrainTimeout,omitempty" xml:"ConnectionDrainTimeout,omitempty"`
 	// Specifies whether to perform a dry run, without performing the actual request. Valid values:
 	//
