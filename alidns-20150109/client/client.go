@@ -8728,6 +8728,7 @@ func (s *DescribeDnsProductInstanceRequest) SetUserClientIp(v string) *DescribeD
 }
 
 type DescribeDnsProductInstanceResponseBody struct {
+	AutoRenewal *bool `json:"AutoRenewal,omitempty" xml:"AutoRenewal,omitempty"`
 	// The number of times that you can change the domain names that are bound to the paid Alibaba Cloud DNS instance. This parameter applies to Alibaba Cloud DNS instances of the custom edition.
 	BindCount *int64 `json:"BindCount,omitempty" xml:"BindCount,omitempty"`
 	// The number of domain names that can be bound to the paid Alibaba Cloud DNS instance. This parameter applies to Alibaba Cloud DNS instances of Personal Edition, Enterprise Standard Edition, and Enterprise Ultimate Edition.
@@ -8815,6 +8816,11 @@ func (s DescribeDnsProductInstanceResponseBody) String() string {
 
 func (s DescribeDnsProductInstanceResponseBody) GoString() string {
 	return s.String()
+}
+
+func (s *DescribeDnsProductInstanceResponseBody) SetAutoRenewal(v bool) *DescribeDnsProductInstanceResponseBody {
+	s.AutoRenewal = &v
+	return s
 }
 
 func (s *DescribeDnsProductInstanceResponseBody) SetBindCount(v int64) *DescribeDnsProductInstanceResponseBody {
