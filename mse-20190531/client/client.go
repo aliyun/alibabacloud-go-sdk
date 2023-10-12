@@ -759,11 +759,16 @@ func (s *RulesValueRulesDubboArgumentItems) SetValue(v interface{}) *RulesValueR
 }
 
 type DataValue struct {
-	UserId    *string `json:"UserId,omitempty" xml:"UserId,omitempty"`
-	RegionId  *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	// The ID of the user to which the application belongs.
+	UserId *string `json:"UserId,omitempty" xml:"UserId,omitempty"`
+	// The region where the application resides.
+	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	// The microservice namespace where the application resides.
 	Namespace *string `json:"Namespace,omitempty" xml:"Namespace,omitempty"`
-	AppName   *string `json:"AppName,omitempty" xml:"AppName,omitempty"`
-	AppId     *string `json:"AppId,omitempty" xml:"AppId,omitempty"`
+	// The application name.
+	AppName *string `json:"AppName,omitempty" xml:"AppName,omitempty"`
+	// The application ID.
+	AppId *string `json:"AppId,omitempty" xml:"AppId,omitempty"`
 }
 
 func (s DataValue) String() string {
@@ -959,18 +964,20 @@ type AddAuthResourceRequest struct {
 	// *   en: English
 	AcceptLanguage *string `json:"AcceptLanguage,omitempty" xml:"AcceptLanguage,omitempty"`
 	// The ID of the authorization record.
-	AuthId                 *int64                                          `json:"AuthId,omitempty" xml:"AuthId,omitempty"`
+	AuthId *int64 `json:"AuthId,omitempty" xml:"AuthId,omitempty"`
+	// The authentication resource headers.
 	AuthResourceHeaderList []*AddAuthResourceRequestAuthResourceHeaderList `json:"AuthResourceHeaderList,omitempty" xml:"AuthResourceHeaderList,omitempty" type:"Repeated"`
 	// The domain ID.
 	DomainId *int64 `json:"DomainId,omitempty" xml:"DomainId,omitempty"`
 	// The unique ID of the gateway.
 	GatewayUniqueId *string `json:"GatewayUniqueId,omitempty" xml:"GatewayUniqueId,omitempty"`
-	IgnoreCase      *bool   `json:"IgnoreCase,omitempty" xml:"IgnoreCase,omitempty"`
-	// The matching type.
+	// Specifies whether the matching is not case-sensitive. Default value: true.
+	IgnoreCase *bool `json:"IgnoreCase,omitempty" xml:"IgnoreCase,omitempty"`
+	// The matching type. Valid values:
 	//
-	// *   exact: exact matching
-	// *   prefix: prefix matching
-	// *   regex: regular expression matching
+	// *   EQUAL
+	// *   PRE
+	// *   ERGULAR
 	MatchType *string `json:"MatchType,omitempty" xml:"MatchType,omitempty"`
 	// The path.
 	Path *string `json:"Path,omitempty" xml:"Path,omitempty"`
@@ -1025,9 +1032,86 @@ func (s *AddAuthResourceRequest) SetPath(v string) *AddAuthResourceRequest {
 }
 
 type AddAuthResourceRequestAuthResourceHeaderList struct {
-	HeaderKey    *string `json:"HeaderKey,omitempty" xml:"HeaderKey,omitempty"`
+	// The parameter of the HTTP header.
+	HeaderKey *string `json:"HeaderKey,omitempty" xml:"HeaderKey,omitempty"`
+	// The header matching mode.
+	//
+	// Valid values:
+	//
+	// *   SUFFIX
+	//
+	//     <!-- -->
+	//
+	//     <!-- -->
+	//
+	//     <!-- -->
+	//
+	// *   EXIST
+	//
+	//     <!-- -->
+	//
+	//     <!-- -->
+	//
+	//     <!-- -->
+	//
+	// *   PREFIX
+	//
+	//     <!-- -->
+	//
+	//     <!-- -->
+	//
+	//     <!-- -->
+	//
+	// *   EQUAL
+	//
+	//     <!-- -->
+	//
+	//     <!-- -->
+	//
+	//     <!-- -->
+	//
+	// *   EXCLUDE
+	//
+	//     <!-- -->
+	//
+	//     <!-- -->
+	//
+	//     <!-- -->
+	//
+	// *   NOT_EQUAL
+	//
+	//     <!-- -->
+	//
+	//     <!-- -->
+	//
+	//     <!-- -->
+	//
+	// *   NOT_EXIST
+	//
+	//     <!-- -->
+	//
+	//     <!-- -->
+	//
+	//     <!-- -->
+	//
+	// *   REGREX
+	//
+	//     <!-- -->
+	//
+	//     <!-- -->
+	//
+	//     <!-- -->
+	//
+	// *   INCLUDE
+	//
+	//     <!-- -->
+	//
+	//     <!-- -->
+	//
+	//     <!-- -->
 	HeaderMethod *string `json:"HeaderMethod,omitempty" xml:"HeaderMethod,omitempty"`
-	HeaderValue  *string `json:"HeaderValue,omitempty" xml:"HeaderValue,omitempty"`
+	// The parameter value of the HTTP header.
+	HeaderValue *string `json:"HeaderValue,omitempty" xml:"HeaderValue,omitempty"`
 }
 
 func (s AddAuthResourceRequestAuthResourceHeaderList) String() string {
@@ -1060,18 +1144,20 @@ type AddAuthResourceShrinkRequest struct {
 	// *   en: English
 	AcceptLanguage *string `json:"AcceptLanguage,omitempty" xml:"AcceptLanguage,omitempty"`
 	// The ID of the authorization record.
-	AuthId                       *int64  `json:"AuthId,omitempty" xml:"AuthId,omitempty"`
+	AuthId *int64 `json:"AuthId,omitempty" xml:"AuthId,omitempty"`
+	// The authentication resource headers.
 	AuthResourceHeaderListShrink *string `json:"AuthResourceHeaderList,omitempty" xml:"AuthResourceHeaderList,omitempty"`
 	// The domain ID.
 	DomainId *int64 `json:"DomainId,omitempty" xml:"DomainId,omitempty"`
 	// The unique ID of the gateway.
 	GatewayUniqueId *string `json:"GatewayUniqueId,omitempty" xml:"GatewayUniqueId,omitempty"`
-	IgnoreCase      *bool   `json:"IgnoreCase,omitempty" xml:"IgnoreCase,omitempty"`
-	// The matching type.
+	// Specifies whether the matching is not case-sensitive. Default value: true.
+	IgnoreCase *bool `json:"IgnoreCase,omitempty" xml:"IgnoreCase,omitempty"`
+	// The matching type. Valid values:
 	//
-	// *   exact: exact matching
-	// *   prefix: prefix matching
-	// *   regex: regular expression matching
+	// *   EQUAL
+	// *   PRE
+	// *   ERGULAR
 	MatchType *string `json:"MatchType,omitempty" xml:"MatchType,omitempty"`
 	// The path.
 	Path *string `json:"Path,omitempty" xml:"Path,omitempty"`
@@ -1220,7 +1306,7 @@ type AddBlackWhiteListRequest struct {
 	Content *string `json:"Content,omitempty" xml:"Content,omitempty"`
 	// The unique ID of the gateway.
 	GatewayUniqueId *string `json:"GatewayUniqueId,omitempty" xml:"GatewayUniqueId,omitempty"`
-	// Specifies whether to create a whitelist.
+	// The whitelist. Default value: No.
 	IsWhite *bool `json:"IsWhite,omitempty" xml:"IsWhite,omitempty"`
 	// The name.
 	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
@@ -1228,7 +1314,11 @@ type AddBlackWhiteListRequest struct {
 	Note *string `json:"Note,omitempty" xml:"Note,omitempty"`
 	// The resource IDs in the JSON format.
 	ResourceIdJsonList *string `json:"ResourceIdJsonList,omitempty" xml:"ResourceIdJsonList,omitempty"`
-	// The resource type to which the blacklist or whitelist applies.
+	// The effective scope of the blacklist or whitelist. Valid values:
+	//
+	// *   GATEWAY
+	// *   DOMAIN
+	// *   ROUTE
 	ResourceType *string `json:"ResourceType,omitempty" xml:"ResourceType,omitempty"`
 	// The status of the blacklist.
 	//
@@ -1383,9 +1473,38 @@ func (s *AddBlackWhiteListResponse) SetBody(v *AddBlackWhiteListResponseBody) *A
 }
 
 type AddGatewayRequest struct {
-	// The data structure.
+	// The language of the response. Valid values:
+	//
+	// *   zh: Chinese
+	// *   en: English
 	AcceptLanguage *string `json:"AcceptLanguage,omitempty" xml:"AcceptLanguage,omitempty"`
-	// 付费类型。
+	// The billing method.
+	//
+	// Valid values:
+	//
+	// *   PREPAY
+	//
+	//     <!-- -->
+	//
+	//     :
+	//
+	//     <!-- -->
+	//
+	//     the subscription billing method
+	//
+	//     <!-- -->
+	//
+	// *   POSTPAY
+	//
+	//     <!-- -->
+	//
+	//     :
+	//
+	//     <!-- -->
+	//
+	//     the pay-as-you-go billing method
+	//
+	//     <!-- -->
 	ChargeType *string `json:"ChargeType,omitempty" xml:"ChargeType,omitempty"`
 	// Specifies whether to activate Tracing Analysis.
 	EnableHardwareAcceleration *bool `json:"EnableHardwareAcceleration,omitempty" xml:"EnableHardwareAcceleration,omitempty"`
@@ -1397,8 +1516,17 @@ type AddGatewayRequest struct {
 	EnterpriseSecurityGroup *bool `json:"EnterpriseSecurityGroup,omitempty" xml:"EnterpriseSecurityGroup,omitempty"`
 	// The ID of the secondary vSwitch.
 	InternetSlbSpec *string `json:"InternetSlbSpec,omitempty" xml:"InternetSlbSpec,omitempty"`
+	// 网关产品类型：
+	// - mse_pro：传统实例
+	// - mse_serverless：Serverless
+	MserVersion *string `json:"MserVersion,omitempty" xml:"MserVersion,omitempty"`
 	// The ID of the region.
 	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// 购买Serverless实例时指定NLB的网络类型：
+	// - pubnet：公网
+	// - privatenet：私网
+	// - privatepubnet：公网+私网
+	NlbNetworkType *string `json:"NlbNetworkType,omitempty" xml:"NlbNetworkType,omitempty"`
 	// The specifications of the internal-facing Server Load Balancer (SLB) instance. Valid values:
 	//
 	// *   slb.s1.small
@@ -1417,25 +1545,27 @@ type AddGatewayRequest struct {
 	// *   slb.s3.medium
 	// *   slb.s3.large
 	Replica *int32 `json:"Replica,omitempty" xml:"Replica,omitempty"`
-	// 扩展字段。
+	// The extended field.
 	RequestPars *string `json:"RequestPars,omitempty" xml:"RequestPars,omitempty"`
 	// The language of the response. Valid values:
 	//
 	// *   zh: Chinese
 	// *   en: English
 	ResourceGroupId *string `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
-	// The ID of the virtual private cloud (VPC).
+	// The specifications of the internal-facing Server Load Balancer (SLB) instance. Valid values:
+	//
+	// *   slb.s1.small
+	// *   slb.s2.small
+	// *   slb.s2.medium
+	// *   slb.s3.small
+	// *   slb.s3.medium
+	// *   slb.s3.large
 	SlbSpec *string `json:"SlbSpec,omitempty" xml:"SlbSpec,omitempty"`
 	// The number of nodes.
 	Spec *string `json:"Spec,omitempty" xml:"Spec,omitempty"`
 	// The tag object.
 	Tag []*AddGatewayRequestTag `json:"Tag,omitempty" xml:"Tag,omitempty" type:"Repeated"`
-	// The node specifications. Valid values:
-	//
-	// *   MSE_GTW\_16\_32\_200\_c(16C32G)
-	// *   MSE_GTW\_2\_4\_200\_c(2C4G)
-	// *   MSE_GTW\_4\_8\_200\_c(4C8G)
-	// *   MSE_GTW\_8\_16\_200\_c(8C16G)
+	// The ID of the primary vSwitch.
 	VSwitchId *string `json:"VSwitchId,omitempty" xml:"VSwitchId,omitempty"`
 	// Specifies whether to use an advanced security group.
 	VSwitchId2 *string `json:"VSwitchId2,omitempty" xml:"VSwitchId2,omitempty"`
@@ -1443,7 +1573,7 @@ type AddGatewayRequest struct {
 	Vpc *string `json:"Vpc,omitempty" xml:"Vpc,omitempty"`
 	// Specifies whether to activate Log Service.
 	XtraceRatio *string `json:"XtraceRatio,omitempty" xml:"XtraceRatio,omitempty"`
-	// 可用区信息。
+	// The details of the zone.
 	ZoneInfo []*AddGatewayRequestZoneInfo `json:"ZoneInfo,omitempty" xml:"ZoneInfo,omitempty" type:"Repeated"`
 }
 
@@ -1490,8 +1620,18 @@ func (s *AddGatewayRequest) SetInternetSlbSpec(v string) *AddGatewayRequest {
 	return s
 }
 
+func (s *AddGatewayRequest) SetMserVersion(v string) *AddGatewayRequest {
+	s.MserVersion = &v
+	return s
+}
+
 func (s *AddGatewayRequest) SetName(v string) *AddGatewayRequest {
 	s.Name = &v
+	return s
+}
+
+func (s *AddGatewayRequest) SetNlbNetworkType(v string) *AddGatewayRequest {
+	s.NlbNetworkType = &v
 	return s
 }
 
@@ -1581,9 +1721,9 @@ func (s *AddGatewayRequestTag) SetValue(v string) *AddGatewayRequestTag {
 }
 
 type AddGatewayRequestZoneInfo struct {
-	// 交换机ID。
+	// The vSwitch ID.
 	VSwitchId *string `json:"VSwitchId,omitempty" xml:"VSwitchId,omitempty"`
-	// 可用区ID。
+	// The zone ID.
 	ZoneId *string `json:"ZoneId,omitempty" xml:"ZoneId,omitempty"`
 }
 
@@ -1606,9 +1746,38 @@ func (s *AddGatewayRequestZoneInfo) SetZoneId(v string) *AddGatewayRequestZoneIn
 }
 
 type AddGatewayShrinkRequest struct {
-	// The data structure.
+	// The language of the response. Valid values:
+	//
+	// *   zh: Chinese
+	// *   en: English
 	AcceptLanguage *string `json:"AcceptLanguage,omitempty" xml:"AcceptLanguage,omitempty"`
-	// 付费类型。
+	// The billing method.
+	//
+	// Valid values:
+	//
+	// *   PREPAY
+	//
+	//     <!-- -->
+	//
+	//     :
+	//
+	//     <!-- -->
+	//
+	//     the subscription billing method
+	//
+	//     <!-- -->
+	//
+	// *   POSTPAY
+	//
+	//     <!-- -->
+	//
+	//     :
+	//
+	//     <!-- -->
+	//
+	//     the pay-as-you-go billing method
+	//
+	//     <!-- -->
 	ChargeType *string `json:"ChargeType,omitempty" xml:"ChargeType,omitempty"`
 	// Specifies whether to activate Tracing Analysis.
 	EnableHardwareAcceleration *bool `json:"EnableHardwareAcceleration,omitempty" xml:"EnableHardwareAcceleration,omitempty"`
@@ -1620,8 +1789,17 @@ type AddGatewayShrinkRequest struct {
 	EnterpriseSecurityGroup *bool `json:"EnterpriseSecurityGroup,omitempty" xml:"EnterpriseSecurityGroup,omitempty"`
 	// The ID of the secondary vSwitch.
 	InternetSlbSpec *string `json:"InternetSlbSpec,omitempty" xml:"InternetSlbSpec,omitempty"`
+	// 网关产品类型：
+	// - mse_pro：传统实例
+	// - mse_serverless：Serverless
+	MserVersion *string `json:"MserVersion,omitempty" xml:"MserVersion,omitempty"`
 	// The ID of the region.
 	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// 购买Serverless实例时指定NLB的网络类型：
+	// - pubnet：公网
+	// - privatenet：私网
+	// - privatepubnet：公网+私网
+	NlbNetworkType *string `json:"NlbNetworkType,omitempty" xml:"NlbNetworkType,omitempty"`
 	// The specifications of the internal-facing Server Load Balancer (SLB) instance. Valid values:
 	//
 	// *   slb.s1.small
@@ -1640,25 +1818,27 @@ type AddGatewayShrinkRequest struct {
 	// *   slb.s3.medium
 	// *   slb.s3.large
 	Replica *int32 `json:"Replica,omitempty" xml:"Replica,omitempty"`
-	// 扩展字段。
+	// The extended field.
 	RequestPars *string `json:"RequestPars,omitempty" xml:"RequestPars,omitempty"`
 	// The language of the response. Valid values:
 	//
 	// *   zh: Chinese
 	// *   en: English
 	ResourceGroupId *string `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
-	// The ID of the virtual private cloud (VPC).
+	// The specifications of the internal-facing Server Load Balancer (SLB) instance. Valid values:
+	//
+	// *   slb.s1.small
+	// *   slb.s2.small
+	// *   slb.s2.medium
+	// *   slb.s3.small
+	// *   slb.s3.medium
+	// *   slb.s3.large
 	SlbSpec *string `json:"SlbSpec,omitempty" xml:"SlbSpec,omitempty"`
 	// The number of nodes.
 	Spec *string `json:"Spec,omitempty" xml:"Spec,omitempty"`
 	// The tag object.
 	Tag []*AddGatewayShrinkRequestTag `json:"Tag,omitempty" xml:"Tag,omitempty" type:"Repeated"`
-	// The node specifications. Valid values:
-	//
-	// *   MSE_GTW\_16\_32\_200\_c(16C32G)
-	// *   MSE_GTW\_2\_4\_200\_c(2C4G)
-	// *   MSE_GTW\_4\_8\_200\_c(4C8G)
-	// *   MSE_GTW\_8\_16\_200\_c(8C16G)
+	// The ID of the primary vSwitch.
 	VSwitchId *string `json:"VSwitchId,omitempty" xml:"VSwitchId,omitempty"`
 	// Specifies whether to use an advanced security group.
 	VSwitchId2 *string `json:"VSwitchId2,omitempty" xml:"VSwitchId2,omitempty"`
@@ -1666,7 +1846,7 @@ type AddGatewayShrinkRequest struct {
 	Vpc *string `json:"Vpc,omitempty" xml:"Vpc,omitempty"`
 	// Specifies whether to activate Log Service.
 	XtraceRatio *string `json:"XtraceRatio,omitempty" xml:"XtraceRatio,omitempty"`
-	// 可用区信息。
+	// The details of the zone.
 	ZoneInfoShrink *string `json:"ZoneInfo,omitempty" xml:"ZoneInfo,omitempty"`
 }
 
@@ -1713,8 +1893,18 @@ func (s *AddGatewayShrinkRequest) SetInternetSlbSpec(v string) *AddGatewayShrink
 	return s
 }
 
+func (s *AddGatewayShrinkRequest) SetMserVersion(v string) *AddGatewayShrinkRequest {
+	s.MserVersion = &v
+	return s
+}
+
 func (s *AddGatewayShrinkRequest) SetName(v string) *AddGatewayShrinkRequest {
 	s.Name = &v
+	return s
+}
+
+func (s *AddGatewayShrinkRequest) SetNlbNetworkType(v string) *AddGatewayShrinkRequest {
+	s.NlbNetworkType = &v
 	return s
 }
 
@@ -2302,55 +2492,19 @@ type AddGatewayRouteRequest struct {
 	// *   zh: Chinese
 	// *   en: English
 	AcceptLanguage *string `json:"AcceptLanguage,omitempty" xml:"AcceptLanguage,omitempty"`
-	// The destination service type.
-	//
-	// Enumeration values:
-	//
-	// *   VersionOriented
-	//
-	//     <!-- -->
-	//
-	//     <!-- -->
-	//
-	//     <!-- -->
-	//
-	// *   Multiple
-	//
-	//     <!-- -->
-	//
-	//     <!-- -->
-	//
-	//     <!-- -->
+	// The type of the destination service. Valid values:
 	//
 	// *   Single
-	//
-	//     <!-- -->
-	//
-	//     <!-- -->
-	//
-	//     <!-- -->
-	//
-	// *   Mock\"\"
-	//
-	//     <!-- -->
-	//
-	//     <!-- -->
-	//
-	//     <!-- -->
-	//
+	// *   Multiple
+	// *   VersionOriented
+	// *   Mock
 	// *   Redirect
-	//
-	//     <!-- -->
-	//
-	//     <!-- -->
-	//
-	//     <!-- -->
 	DestinationType *string `json:"DestinationType,omitempty" xml:"DestinationType,omitempty"`
 	// The mock response configuration.
 	DirectResponseJSON *AddGatewayRouteRequestDirectResponseJSON `json:"DirectResponseJSON,omitempty" xml:"DirectResponseJSON,omitempty" type:"Struct"`
 	// The domain ID.
 	DomainId *int64 `json:"DomainId,omitempty" xml:"DomainId,omitempty"`
-	// The list of domain IDs.
+	// The domain IDs.
 	DomainIdListJSON *string `json:"DomainIdListJSON,omitempty" xml:"DomainIdListJSON,omitempty"`
 	// Specifies whether to activate Web Application Firewall (WAF).
 	EnableWaf *bool `json:"EnableWaf,omitempty" xml:"EnableWaf,omitempty"`
@@ -2982,55 +3136,19 @@ type AddGatewayRouteShrinkRequest struct {
 	// *   zh: Chinese
 	// *   en: English
 	AcceptLanguage *string `json:"AcceptLanguage,omitempty" xml:"AcceptLanguage,omitempty"`
-	// The destination service type.
-	//
-	// Enumeration values:
-	//
-	// *   VersionOriented
-	//
-	//     <!-- -->
-	//
-	//     <!-- -->
-	//
-	//     <!-- -->
-	//
-	// *   Multiple
-	//
-	//     <!-- -->
-	//
-	//     <!-- -->
-	//
-	//     <!-- -->
+	// The type of the destination service. Valid values:
 	//
 	// *   Single
-	//
-	//     <!-- -->
-	//
-	//     <!-- -->
-	//
-	//     <!-- -->
-	//
-	// *   Mock\"\"
-	//
-	//     <!-- -->
-	//
-	//     <!-- -->
-	//
-	//     <!-- -->
-	//
+	// *   Multiple
+	// *   VersionOriented
+	// *   Mock
 	// *   Redirect
-	//
-	//     <!-- -->
-	//
-	//     <!-- -->
-	//
-	//     <!-- -->
 	DestinationType *string `json:"DestinationType,omitempty" xml:"DestinationType,omitempty"`
 	// The mock response configuration.
 	DirectResponseJSONShrink *string `json:"DirectResponseJSON,omitempty" xml:"DirectResponseJSON,omitempty"`
 	// The domain ID.
 	DomainId *int64 `json:"DomainId,omitempty" xml:"DomainId,omitempty"`
-	// The list of domain IDs.
+	// The domain IDs.
 	DomainIdListJSON *string `json:"DomainIdListJSON,omitempty" xml:"DomainIdListJSON,omitempty"`
 	// Specifies whether to activate Web Application Firewall (WAF).
 	EnableWaf *bool `json:"EnableWaf,omitempty" xml:"EnableWaf,omitempty"`
@@ -3402,8 +3520,9 @@ type AddGatewaySlbRequest struct {
 	// *   PRIVATE_NET: VPC
 	Type *string `json:"Type,omitempty" xml:"Type,omitempty"`
 	// The ID of the HTTP virtual service group.
-	VServerGroupId *string                             `json:"VServerGroupId,omitempty" xml:"VServerGroupId,omitempty"`
-	VServiceList   []*AddGatewaySlbRequestVServiceList `json:"VServiceList,omitempty" xml:"VServiceList,omitempty" type:"Repeated"`
+	VServerGroupId *string `json:"VServerGroupId,omitempty" xml:"VServerGroupId,omitempty"`
+	// The SLB monitoring information.
+	VServiceList []*AddGatewaySlbRequestVServiceList `json:"VServiceList,omitempty" xml:"VServiceList,omitempty" type:"Repeated"`
 }
 
 func (s AddGatewaySlbRequest) String() string {
@@ -3465,9 +3584,16 @@ func (s *AddGatewaySlbRequest) SetVServiceList(v []*AddGatewaySlbRequestVService
 }
 
 type AddGatewaySlbRequestVServiceList struct {
-	Port             *int32  `json:"Port,omitempty" xml:"Port,omitempty"`
-	Protocol         *string `json:"Protocol,omitempty" xml:"Protocol,omitempty"`
-	VServerGroupId   *string `json:"VServerGroupId,omitempty" xml:"VServerGroupId,omitempty"`
+	// The port number.
+	Port *int32 `json:"Port,omitempty" xml:"Port,omitempty"`
+	// The protocol type. Valid values:
+	//
+	// *   HTTP
+	// *   HTTPS
+	Protocol *string `json:"Protocol,omitempty" xml:"Protocol,omitempty"`
+	// The ID of the virtual server group.
+	VServerGroupId *string `json:"VServerGroupId,omitempty" xml:"VServerGroupId,omitempty"`
+	// The name of the virtual server group.
 	VServerGroupName *string `json:"VServerGroupName,omitempty" xml:"VServerGroupName,omitempty"`
 }
 
@@ -3523,7 +3649,8 @@ type AddGatewaySlbShrinkRequest struct {
 	// *   PRIVATE_NET: VPC
 	Type *string `json:"Type,omitempty" xml:"Type,omitempty"`
 	// The ID of the HTTP virtual service group.
-	VServerGroupId     *string `json:"VServerGroupId,omitempty" xml:"VServerGroupId,omitempty"`
+	VServerGroupId *string `json:"VServerGroupId,omitempty" xml:"VServerGroupId,omitempty"`
+	// The SLB monitoring information.
 	VServiceListShrink *string `json:"VServiceList,omitempty" xml:"VServiceList,omitempty"`
 }
 
@@ -4492,7 +4619,11 @@ func (s *AddSecurityGroupRuleResponse) SetBody(v *AddSecurityGroupRuleResponseBo
 }
 
 type AddServiceSourceRequest struct {
-	// The return value.
+	// The language of the response. Valid values:
+	//
+	// *   zh-CN (default): Chinese
+	// *   en-US: English
+	// *   ja: Japanese
 	AcceptLanguage *string `json:"AcceptLanguage,omitempty" xml:"AcceptLanguage,omitempty"`
 	// Specifies whether to monitor Ingress classes.
 	Address *string `json:"Address,omitempty" xml:"Address,omitempty"`
@@ -4506,9 +4637,15 @@ type AddServiceSourceRequest struct {
 	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
 	// The HTTP status code returned.
 	PathList []*string `json:"PathList,omitempty" xml:"PathList,omitempty" type:"Repeated"`
-	// Specifies whether to enable Ingress.
+	// The service source.
+	//
+	// *   K8s: ACK cluster
+	// *   NACOS: MSE Nacos instance
 	Source *string `json:"Source,omitempty" xml:"Source,omitempty"`
-	// The unique ID of the gateway.
+	// The type of the service source.
+	//
+	// *   K8s: Container Service for Kubernetes (ACK) cluster
+	// *   NACOS: Nacos instance
 	Type *string `json:"Type,omitempty" xml:"Type,omitempty"`
 }
 
@@ -4609,7 +4746,11 @@ func (s *AddServiceSourceRequestIngressOptionsRequest) SetWatchNamespace(v strin
 }
 
 type AddServiceSourceShrinkRequest struct {
-	// The return value.
+	// The language of the response. Valid values:
+	//
+	// *   zh-CN (default): Chinese
+	// *   en-US: English
+	// *   ja: Japanese
 	AcceptLanguage *string `json:"AcceptLanguage,omitempty" xml:"AcceptLanguage,omitempty"`
 	// Specifies whether to monitor Ingress classes.
 	Address *string `json:"Address,omitempty" xml:"Address,omitempty"`
@@ -4623,9 +4764,15 @@ type AddServiceSourceShrinkRequest struct {
 	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
 	// The HTTP status code returned.
 	PathListShrink *string `json:"PathList,omitempty" xml:"PathList,omitempty"`
-	// Specifies whether to enable Ingress.
+	// The service source.
+	//
+	// *   K8s: ACK cluster
+	// *   NACOS: MSE Nacos instance
 	Source *string `json:"Source,omitempty" xml:"Source,omitempty"`
-	// The unique ID of the gateway.
+	// The type of the service source.
+	//
+	// *   K8s: Container Service for Kubernetes (ACK) cluster
+	// *   NACOS: Nacos instance
 	Type *string `json:"Type,omitempty" xml:"Type,omitempty"`
 }
 
@@ -4892,10 +5039,12 @@ type ApplyTagPoliciesRequest struct {
 	AcceptLanguage *string `json:"AcceptLanguage,omitempty" xml:"AcceptLanguage,omitempty"`
 	// Deprecated
 	// The ID of the application.
-	AppId   *string `json:"AppId,omitempty" xml:"AppId,omitempty"`
+	AppId *string `json:"AppId,omitempty" xml:"AppId,omitempty"`
+	// The name of the application.
 	AppName *string `json:"AppName,omitempty" xml:"AppName,omitempty"`
 	// Specifies whether to enable the routing rule.
-	Enable    *bool   `json:"Enable,omitempty" xml:"Enable,omitempty"`
+	Enable *bool `json:"Enable,omitempty" xml:"Enable,omitempty"`
+	// The Microservices Engine (MSE) namespace to which the application belongs.
 	Namespace *string `json:"Namespace,omitempty" xml:"Namespace,omitempty"`
 	// Optional. The ID of the namespace.
 	NamespaceId *string `json:"NamespaceId,omitempty" xml:"NamespaceId,omitempty"`
@@ -4961,10 +5110,12 @@ type ApplyTagPoliciesShrinkRequest struct {
 	AcceptLanguage *string `json:"AcceptLanguage,omitempty" xml:"AcceptLanguage,omitempty"`
 	// Deprecated
 	// The ID of the application.
-	AppId   *string `json:"AppId,omitempty" xml:"AppId,omitempty"`
+	AppId *string `json:"AppId,omitempty" xml:"AppId,omitempty"`
+	// The name of the application.
 	AppName *string `json:"AppName,omitempty" xml:"AppName,omitempty"`
 	// Specifies whether to enable the routing rule.
-	Enable    *bool   `json:"Enable,omitempty" xml:"Enable,omitempty"`
+	Enable *bool `json:"Enable,omitempty" xml:"Enable,omitempty"`
+	// The Microservices Engine (MSE) namespace to which the application belongs.
 	Namespace *string `json:"Namespace,omitempty" xml:"Namespace,omitempty"`
 	// Optional. The ID of the namespace.
 	NamespaceId *string `json:"NamespaceId,omitempty" xml:"NamespaceId,omitempty"`
@@ -5064,10 +5215,10 @@ func (s *ApplyTagPoliciesResponseBody) SetSuccess(v bool) *ApplyTagPoliciesRespo
 type ApplyTagPoliciesResponseBodyData struct {
 	// Indicates whether the field is the primary key.
 	CarryData *bool `json:"CarryData,omitempty" xml:"CarryData,omitempty"`
-	// Indicates whether the routing rule is enabled.
+	// Indicates whether the rule is enabled. Valid values:
 	//
-	// *   `true`: enabled
-	// *   `false`: disabled
+	// *   `true`: The rule is enabled.
+	// *   `false`: The rule is disabled.
 	Enable *bool `json:"Enable,omitempty" xml:"Enable,omitempty"`
 	// The ID of the primary key.
 	Id *int64 `json:"Id,omitempty" xml:"Id,omitempty"`
@@ -5077,7 +5228,7 @@ type ApplyTagPoliciesResponseBodyData struct {
 	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
 	// The rate.
 	Rate *int32 `json:"Rate,omitempty" xml:"Rate,omitempty"`
-	// Indicates whether the routing rule is deleted.
+	// Indicates whether the routing rule was deleted.
 	Remove *bool `json:"Remove,omitempty" xml:"Remove,omitempty"`
 	// The details of the routing rule.
 	Rules *string `json:"Rules,omitempty" xml:"Rules,omitempty"`
@@ -5175,7 +5326,10 @@ func (s *ApplyTagPoliciesResponse) SetBody(v *ApplyTagPoliciesResponseBody) *App
 }
 
 type CloneNacosConfigRequest struct {
-	// The HTTP status code returned.
+	// The language of the response. Valid values:
+	//
+	// *   zh: Chinese
+	// *   en: English
 	AcceptLanguage *string `json:"AcceptLanguage,omitempty" xml:"AcceptLanguage,omitempty"`
 	// The data structure.
 	Ids *string `json:"Ids,omitempty" xml:"Ids,omitempty"`
@@ -5685,21 +5839,83 @@ func (s *CreateApplicationResponse) SetBody(v *CreateApplicationResponseBody) *C
 }
 
 type CreateCircuitBreakerRuleRequest struct {
-	AcceptLanguage            *string  `json:"AcceptLanguage,omitempty" xml:"AcceptLanguage,omitempty"`
-	AppId                     *string  `json:"AppId,omitempty" xml:"AppId,omitempty"`
-	AppName                   *string  `json:"AppName,omitempty" xml:"AppName,omitempty"`
-	Enable                    *bool    `json:"Enable,omitempty" xml:"Enable,omitempty"`
-	HalfOpenBaseAmountPerStep *int32   `json:"HalfOpenBaseAmountPerStep,omitempty" xml:"HalfOpenBaseAmountPerStep,omitempty"`
-	HalfOpenRecoveryStepNum   *int32   `json:"HalfOpenRecoveryStepNum,omitempty" xml:"HalfOpenRecoveryStepNum,omitempty"`
-	MaxAllowedRtMs            *int32   `json:"MaxAllowedRtMs,omitempty" xml:"MaxAllowedRtMs,omitempty"`
-	MinRequestAmount          *int32   `json:"MinRequestAmount,omitempty" xml:"MinRequestAmount,omitempty"`
-	Namespace                 *string  `json:"Namespace,omitempty" xml:"Namespace,omitempty"`
-	RegionId                  *string  `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	Resource                  *string  `json:"Resource,omitempty" xml:"Resource,omitempty"`
-	RetryTimeoutMs            *int32   `json:"RetryTimeoutMs,omitempty" xml:"RetryTimeoutMs,omitempty"`
-	StatIntervalMs            *int32   `json:"StatIntervalMs,omitempty" xml:"StatIntervalMs,omitempty"`
-	Strategy                  *int32   `json:"Strategy,omitempty" xml:"Strategy,omitempty"`
-	Threshold                 *float32 `json:"Threshold,omitempty" xml:"Threshold,omitempty"`
+	// The language of the response. Valid values:
+	//
+	// *   zh: Chinese
+	// *   en: English
+	AcceptLanguage *string `json:"AcceptLanguage,omitempty" xml:"AcceptLanguage,omitempty"`
+	// The ID of the application.
+	AppId *string `json:"AppId,omitempty" xml:"AppId,omitempty"`
+	// The application name.
+	AppName *string `json:"AppName,omitempty" xml:"AppName,omitempty"`
+	// Specifies whether to enable the rule.
+	//
+	// Valid values:
+	//
+	// *   true
+	//
+	//     <!-- -->
+	//
+	//     <!-- -->
+	//
+	//     <!-- -->
+	//
+	// *   false
+	//
+	//     <!-- -->
+	//
+	//     <!-- -->
+	//
+	//     <!-- -->
+	Enable *bool `json:"Enable,omitempty" xml:"Enable,omitempty"`
+	// The minimum number of requests that can be passed in each step after circuit breaking recovers. Default value: 1.
+	HalfOpenBaseAmountPerStep *int32 `json:"HalfOpenBaseAmountPerStep,omitempty" xml:"HalfOpenBaseAmountPerStep,omitempty"`
+	// The number of circuit breaking recovery steps. Default value: 1.
+	HalfOpenRecoveryStepNum *int32 `json:"HalfOpenRecoveryStepNum,omitempty" xml:"HalfOpenRecoveryStepNum,omitempty"`
+	// The maximum response time (RT). Unit: milliseconds. If the RT of a request is greater than the value of this parameter, a slow call is counted. If you set Strategy to 0, you must specify this parameter.
+	MaxAllowedRtMs *int32 `json:"MaxAllowedRtMs,omitempty" xml:"MaxAllowedRtMs,omitempty"`
+	// The minimum number of requests to trigger circuit breaking. If the number of requests in the current time window is less than the value of this parameter, circuit breaking is not triggered even if the circuit breaking rule is met. Default value: 10.
+	MinRequestAmount *int32 `json:"MinRequestAmount,omitempty" xml:"MinRequestAmount,omitempty"`
+	// The microservice namespace to which the application belongs.
+	Namespace *string `json:"Namespace,omitempty" xml:"Namespace,omitempty"`
+	// The region in which the instance resides.
+	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	// The name of the interface to which the rule applies. The interface name must be the same as the name on the interface details page in the console.
+	Resource *string `json:"Resource,omitempty" xml:"Resource,omitempty"`
+	// The period in which circuit breaking is implemented. Unit: milliseconds. If circuit breaking is implemented on the requests for the route, the calls to all the requests for the route fail in the configured circuit breaking period. The value must be an integral multiple of 1,000. Default value: 10000. This value indicates 10 seconds.
+	RetryTimeoutMs *int32 `json:"RetryTimeoutMs,omitempty" xml:"RetryTimeoutMs,omitempty"`
+	// The length of the time window. Unit: milliseconds. The valid range is from 1 second to 120 minutes. The default value is 20000. This value indicates 20 seconds.
+	StatIntervalMs *int32 `json:"StatIntervalMs,omitempty" xml:"StatIntervalMs,omitempty"`
+	// The threshold type.
+	//
+	// Valid values:
+	//
+	// *   0
+	//
+	//     <!-- -->
+	//
+	//     :
+	//
+	//     <!-- -->
+	//
+	//     slow call proportion
+	//
+	//     <!-- -->
+	//
+	// *   1
+	//
+	//     <!-- -->
+	//
+	//     :
+	//
+	//     <!-- -->
+	//
+	//     abnormal proportion
+	//
+	//     <!-- -->
+	Strategy *int32 `json:"Strategy,omitempty" xml:"Strategy,omitempty"`
+	// A percentage threshold for triggering circuit breaking. Valid values: 0-1. These values represent 0% to 100%.
+	Threshold *float32 `json:"Threshold,omitempty" xml:"Threshold,omitempty"`
 }
 
 func (s CreateCircuitBreakerRuleRequest) String() string {
@@ -5786,11 +6002,34 @@ func (s *CreateCircuitBreakerRuleRequest) SetThreshold(v float32) *CreateCircuit
 }
 
 type CreateCircuitBreakerRuleResponseBody struct {
-	Code      *string                                   `json:"Code,omitempty" xml:"Code,omitempty"`
-	Data      *CreateCircuitBreakerRuleResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
-	Message   *string                                   `json:"Message,omitempty" xml:"Message,omitempty"`
-	RequestId *string                                   `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	Success   *bool                                     `json:"Success,omitempty" xml:"Success,omitempty"`
+	// The response code returned.
+	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	// The details of the rule.
+	Data *CreateCircuitBreakerRuleResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
+	// The message returned.
+	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// The request ID.
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// Indicates whether the request was successful.
+	//
+	// Valid values:
+	//
+	// *   true
+	//
+	//     <!-- -->
+	//
+	//     <!-- -->
+	//
+	//     <!-- -->
+	//
+	// *   false
+	//
+	//     <!-- -->
+	//
+	//     <!-- -->
+	//
+	//     <!-- -->
+	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
 }
 
 func (s CreateCircuitBreakerRuleResponseBody) String() string {
@@ -5827,21 +6066,62 @@ func (s *CreateCircuitBreakerRuleResponseBody) SetSuccess(v bool) *CreateCircuit
 }
 
 type CreateCircuitBreakerRuleResponseBodyData struct {
-	AppId                     *string  `json:"AppId,omitempty" xml:"AppId,omitempty"`
-	AppName                   *string  `json:"AppName,omitempty" xml:"AppName,omitempty"`
-	Enable                    *bool    `json:"Enable,omitempty" xml:"Enable,omitempty"`
-	HalfOpenBaseAmountPerStep *int32   `json:"HalfOpenBaseAmountPerStep,omitempty" xml:"HalfOpenBaseAmountPerStep,omitempty"`
-	HalfOpenRecoveryStepNum   *int32   `json:"HalfOpenRecoveryStepNum,omitempty" xml:"HalfOpenRecoveryStepNum,omitempty"`
-	Id                        *int64   `json:"Id,omitempty" xml:"Id,omitempty"`
-	MaxAllowedRtMs            *int32   `json:"MaxAllowedRtMs,omitempty" xml:"MaxAllowedRtMs,omitempty"`
-	MinRequestAmount          *int32   `json:"MinRequestAmount,omitempty" xml:"MinRequestAmount,omitempty"`
-	Namespace                 *string  `json:"Namespace,omitempty" xml:"Namespace,omitempty"`
-	RegionId                  *string  `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	Resource                  *string  `json:"Resource,omitempty" xml:"Resource,omitempty"`
-	RetryTimeoutMs            *int32   `json:"RetryTimeoutMs,omitempty" xml:"RetryTimeoutMs,omitempty"`
-	StatIntervalMs            *int32   `json:"StatIntervalMs,omitempty" xml:"StatIntervalMs,omitempty"`
-	Strategy                  *int32   `json:"Strategy,omitempty" xml:"Strategy,omitempty"`
-	Threshold                 *float32 `json:"Threshold,omitempty" xml:"Threshold,omitempty"`
+	// The ID of the application.
+	AppId *string `json:"AppId,omitempty" xml:"AppId,omitempty"`
+	// The name of the application.
+	AppName *string `json:"AppName,omitempty" xml:"AppName,omitempty"`
+	// Indicates whether the rule is enabled.
+	Enable *bool `json:"Enable,omitempty" xml:"Enable,omitempty"`
+	// The minimum number of requests that can be passed in each step after circuit breaking recovers.
+	HalfOpenBaseAmountPerStep *int32 `json:"HalfOpenBaseAmountPerStep,omitempty" xml:"HalfOpenBaseAmountPerStep,omitempty"`
+	// The number of circuit breaking recovery steps.
+	HalfOpenRecoveryStepNum *int32 `json:"HalfOpenRecoveryStepNum,omitempty" xml:"HalfOpenRecoveryStepNum,omitempty"`
+	// The ID of the rule.
+	Id *int64 `json:"Id,omitempty" xml:"Id,omitempty"`
+	// The maximum response time (RT). Unit: milliseconds. If the RT of a request is greater than the value of this parameter, a slow call is counted. If you set Strategy to 0, you must specify this parameter.
+	MaxAllowedRtMs *int32 `json:"MaxAllowedRtMs,omitempty" xml:"MaxAllowedRtMs,omitempty"`
+	// The minimum number of requests to trigger circuit breaking. If the number of requests in the current time window is less than the value of this parameter, circuit breaking is not triggered even if the circuit breaking rule is met.
+	MinRequestAmount *int32 `json:"MinRequestAmount,omitempty" xml:"MinRequestAmount,omitempty"`
+	// The microservice namespace to which the application belongs.
+	Namespace *string `json:"Namespace,omitempty" xml:"Namespace,omitempty"`
+	// The region in which the instance resides.
+	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	// The name of the interface to which the rule is applicable. The interface name must be the same as the name on the interface details page in the console.
+	Resource *string `json:"Resource,omitempty" xml:"Resource,omitempty"`
+	// The period in which circuit breaking is implemented. Unit: milliseconds. If circuit breaking is implemented on the requests for the route, the calls to all the requests for the route fail in the configured circuit breaking period.
+	RetryTimeoutMs *int32 `json:"RetryTimeoutMs,omitempty" xml:"RetryTimeoutMs,omitempty"`
+	// The length of the time window. Unit: milliseconds. The valid range is from 1 second to 120 minutes.
+	StatIntervalMs *int32 `json:"StatIntervalMs,omitempty" xml:"StatIntervalMs,omitempty"`
+	// The threshold type.
+	//
+	// Valid values:
+	//
+	// *   0
+	//
+	//     <!-- -->
+	//
+	//     :
+	//
+	//     <!-- -->
+	//
+	//     Slow call ratio
+	//
+	//     <!-- -->
+	//
+	// *   1
+	//
+	//     <!-- -->
+	//
+	//     :
+	//
+	//     <!-- -->
+	//
+	//     Abnormal proportion
+	//
+	//     <!-- -->
+	Strategy *int32 `json:"Strategy,omitempty" xml:"Strategy,omitempty"`
+	// A percentage threshold for triggering circuit breaking. Valid values: 0-1. These values represent 0% to 100%.
+	Threshold *float32 `json:"Threshold,omitempty" xml:"Threshold,omitempty"`
 }
 
 func (s CreateCircuitBreakerRuleResponseBodyData) String() string {
@@ -5962,7 +6242,34 @@ type CreateClusterRequest struct {
 	// *   zh: Chinese
 	// *   en: English
 	AcceptLanguage *string `json:"AcceptLanguage,omitempty" xml:"AcceptLanguage,omitempty"`
-	ChargeType     *string `json:"ChargeType,omitempty" xml:"ChargeType,omitempty"`
+	// The billing method.
+	//
+	// Valid values:
+	//
+	// *   PREPAY
+	//
+	//     <!-- -->
+	//
+	//     :
+	//
+	//     <!-- -->
+	//
+	//     the subscription billing method
+	//
+	//     <!-- -->
+	//
+	// *   POSTPAY
+	//
+	//     <!-- -->
+	//
+	//     :
+	//
+	//     <!-- -->
+	//
+	//     the pay-as-you-go billing method
+	//
+	//     <!-- -->
+	ChargeType *string `json:"ChargeType,omitempty" xml:"ChargeType,omitempty"`
 	// The engine specifications. Valid values:
 	//
 	// \[Professional Edition]
@@ -5998,12 +6305,13 @@ type CreateClusterRequest struct {
 	// *   eni
 	ConnectionType *string `json:"ConnectionType,omitempty" xml:"ConnectionType,omitempty"`
 	// Deprecated
-	// The disk type. Valid values:
+	// The type of the disk. Valid values:
 	//
 	// *   alicloud-disk-ssd
 	// *   alicloud-disk-essd-pl1
-	DiskType   *string `json:"DiskType,omitempty" xml:"DiskType,omitempty"`
-	EipEnabled *bool   `json:"EipEnabled,omitempty" xml:"EipEnabled,omitempty"`
+	DiskType *string `json:"DiskType,omitempty" xml:"DiskType,omitempty"`
+	// Specifies whether to enable Internet access (Elastic IP Address) if ConnectionType is set to `single_eni`.
+	EipEnabled *bool `json:"EipEnabled,omitempty" xml:"EipEnabled,omitempty"`
 	// The number of nodes in the instance. Valid values: 1 to 9.
 	//
 	// \[Professional Edition]
@@ -6014,12 +6322,12 @@ type CreateClusterRequest struct {
 	//
 	// *   Only one node can be deployed for an instance.
 	InstanceCount *int32 `json:"InstanceCount,omitempty" xml:"InstanceCount,omitempty"`
-	// The name of the instance.
+	// The name of the MSE instance.
 	InstanceName *string `json:"InstanceName,omitempty" xml:"InstanceName,omitempty"`
-	// Set this parameter unless otherwise specified. Valid values:
+	// Configure this parameter unless otherwise specified. Valid values:
 	//
 	// *   `mse_pro`: Professional Edition
-	// *   `mse_dev`: Developer Edition
+	// *   `mse_dev`: Developer Edition.
 	MseVersion *string `json:"MseVersion,omitempty" xml:"MseVersion,omitempty"`
 	// The network type of the MSE instance. Valid values:
 	//
@@ -6032,8 +6340,8 @@ type CreateClusterRequest struct {
 	// *   `slb.s1.small`
 	// *   `slb.s3.medium`
 	PrivateSlbSpecification *string `json:"PrivateSlbSpecification,omitempty" xml:"PrivateSlbSpecification,omitempty"`
-	// The public bandwidth. Unit: Mbit/s.\
-	// Valid values: 0 to 5000. The value 0 indicates no access to the Internet.
+	// The public bandwidth. Unit: Mbit/s. This parameter is required.\
+	// Valid values: 0 to 5000. A value of 0 indicates no access to the Internet.
 	PubNetworkFlow *string `json:"PubNetworkFlow,omitempty" xml:"PubNetworkFlow,omitempty"`
 	// Deprecated
 	// The specifications of the Internet-facing Server Load Balancer (SLB) instance. Valid values:
@@ -6052,7 +6360,13 @@ type CreateClusterRequest struct {
 	// The extended request parameters in the JSON format.
 	RequestPars *string `json:"RequestPars,omitempty" xml:"RequestPars,omitempty"`
 	// The ID of the resource group. For the details of resource groups, see [View basic information of a resource group](~~457230~~).
-	ResourceGroupId   *string `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
+	ResourceGroupId *string `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
+	// The type of the security group to which the instance belongs. This parameter is valid only when the ConnectionType parameter is set to `single_eni`.
+	//
+	// Valid values:
+	//
+	// *   enterprise
+	// *   normal
 	SecurityGroupType *string `json:"SecurityGroupType,omitempty" xml:"SecurityGroupType,omitempty"`
 	// The list of the tags that you want to add.
 	Tag []*CreateClusterRequestTag `json:"Tag,omitempty" xml:"Tag,omitempty" type:"Repeated"`
@@ -6503,16 +6817,73 @@ func (s *CreateEngineNamespaceResponse) SetBody(v *CreateEngineNamespaceResponse
 }
 
 type CreateFlowRuleRequest struct {
-	AcceptLanguage    *string `json:"AcceptLanguage,omitempty" xml:"AcceptLanguage,omitempty"`
-	AppId             *string `json:"AppId,omitempty" xml:"AppId,omitempty"`
-	AppName           *string `json:"AppName,omitempty" xml:"AppName,omitempty"`
-	ControlBehavior   *int32  `json:"ControlBehavior,omitempty" xml:"ControlBehavior,omitempty"`
-	Enable            *bool   `json:"Enable,omitempty" xml:"Enable,omitempty"`
-	MaxQueueingTimeMs *int32  `json:"MaxQueueingTimeMs,omitempty" xml:"MaxQueueingTimeMs,omitempty"`
-	Namespace         *string `json:"Namespace,omitempty" xml:"Namespace,omitempty"`
-	RegionId          *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	Resource          *string `json:"Resource,omitempty" xml:"Resource,omitempty"`
-	Threshold         *int32  `json:"Threshold,omitempty" xml:"Threshold,omitempty"`
+	// The language of the response. Valid values:
+	//
+	// *   zh: Chinese
+	// *   en: English
+	AcceptLanguage *string `json:"AcceptLanguage,omitempty" xml:"AcceptLanguage,omitempty"`
+	// The application ID.
+	AppId *string `json:"AppId,omitempty" xml:"AppId,omitempty"`
+	// The application name.
+	AppName *string `json:"AppName,omitempty" xml:"AppName,omitempty"`
+	// The throttling effect.
+	//
+	// Valid values:
+	//
+	// *   0
+	//
+	//     <!-- -->
+	//
+	//     :
+	//
+	//     <!-- -->
+	//
+	//     fast failure
+	//
+	//     <!-- -->
+	//
+	// *   2
+	//
+	//     <!-- -->
+	//
+	//     :
+	//
+	//     <!-- -->
+	//
+	//     in queue
+	//
+	//     <!-- -->
+	ControlBehavior *int32 `json:"ControlBehavior,omitempty" xml:"ControlBehavior,omitempty"`
+	// Specifies whether to enable the rule.
+	//
+	// Valid values:
+	//
+	// *   true
+	//
+	//     <!-- -->
+	//
+	//     <!-- -->
+	//
+	//     <!-- -->
+	//
+	// *   false
+	//
+	//     <!-- -->
+	//
+	//     <!-- -->
+	//
+	//     <!-- -->
+	Enable *bool `json:"Enable,omitempty" xml:"Enable,omitempty"`
+	// The timeout period. Unit: milliseconds. This value is required if the ControlBehavior parameter is set to 2.
+	MaxQueueingTimeMs *int32 `json:"MaxQueueingTimeMs,omitempty" xml:"MaxQueueingTimeMs,omitempty"`
+	// The namespace.
+	Namespace *string `json:"Namespace,omitempty" xml:"Namespace,omitempty"`
+	// The region in which the instance resides.
+	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	// The name of the API resource.
+	Resource *string `json:"Resource,omitempty" xml:"Resource,omitempty"`
+	// The throttling threshold.
+	Threshold *int32 `json:"Threshold,omitempty" xml:"Threshold,omitempty"`
 }
 
 func (s CreateFlowRuleRequest) String() string {
@@ -6574,11 +6945,34 @@ func (s *CreateFlowRuleRequest) SetThreshold(v int32) *CreateFlowRuleRequest {
 }
 
 type CreateFlowRuleResponseBody struct {
-	Code      *string                         `json:"Code,omitempty" xml:"Code,omitempty"`
-	Data      *CreateFlowRuleResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
-	Message   *string                         `json:"Message,omitempty" xml:"Message,omitempty"`
-	RequestId *string                         `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	Success   *bool                           `json:"Success,omitempty" xml:"Success,omitempty"`
+	// The response code.
+	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	// The data returned.
+	Data *CreateFlowRuleResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
+	// The error message returned.
+	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// The request ID.
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// Indicates whether the request was successful.
+	//
+	// Valid values:
+	//
+	// *   true
+	//
+	//     <!-- -->
+	//
+	//     <!-- -->
+	//
+	//     <!-- -->
+	//
+	// *   false
+	//
+	//     <!-- -->
+	//
+	//     <!-- -->
+	//
+	//     <!-- -->
+	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
 }
 
 func (s CreateFlowRuleResponseBody) String() string {
@@ -6615,17 +7009,70 @@ func (s *CreateFlowRuleResponseBody) SetSuccess(v bool) *CreateFlowRuleResponseB
 }
 
 type CreateFlowRuleResponseBodyData struct {
-	AppId           *string `json:"AppId,omitempty" xml:"AppId,omitempty"`
-	AppName         *string `json:"AppName,omitempty" xml:"AppName,omitempty"`
-	ControlBehavior *int32  `json:"ControlBehavior,omitempty" xml:"ControlBehavior,omitempty"`
-	Enable          *bool   `json:"Enable,omitempty" xml:"Enable,omitempty"`
-	// ID。
-	Id                *int64   `json:"Id,omitempty" xml:"Id,omitempty"`
-	MaxQueueingTimeMs *int32   `json:"MaxQueueingTimeMs,omitempty" xml:"MaxQueueingTimeMs,omitempty"`
-	Namespace         *string  `json:"Namespace,omitempty" xml:"Namespace,omitempty"`
-	RegionId          *string  `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	Resource          *string  `json:"Resource,omitempty" xml:"Resource,omitempty"`
-	Threshold         *float32 `json:"Threshold,omitempty" xml:"Threshold,omitempty"`
+	// The application ID.
+	AppId *string `json:"AppId,omitempty" xml:"AppId,omitempty"`
+	// The application name.
+	AppName *string `json:"AppName,omitempty" xml:"AppName,omitempty"`
+	// The throttling effect.
+	//
+	// Valid values:
+	//
+	// *   0
+	//
+	//     <!-- -->
+	//
+	//     :
+	//
+	//     <!-- -->
+	//
+	//     fast failure
+	//
+	//     <!-- -->
+	//
+	// *   2
+	//
+	//     <!-- -->
+	//
+	//     :
+	//
+	//     <!-- -->
+	//
+	//     in queue
+	//
+	//     <!-- -->
+	ControlBehavior *int32 `json:"ControlBehavior,omitempty" xml:"ControlBehavior,omitempty"`
+	// Indicates whether the rule is enabled.
+	//
+	// Valid values:
+	//
+	// *   true
+	//
+	//     <!-- -->
+	//
+	//     <!-- -->
+	//
+	//     <!-- -->
+	//
+	// *   false
+	//
+	//     <!-- -->
+	//
+	//     <!-- -->
+	//
+	//     <!-- -->
+	Enable *bool `json:"Enable,omitempty" xml:"Enable,omitempty"`
+	// The ID.
+	Id *int64 `json:"Id,omitempty" xml:"Id,omitempty"`
+	// The timeout period for queuing when the value of ControlBehavior is set to 2. Unit: milliseconds.
+	MaxQueueingTimeMs *int32 `json:"MaxQueueingTimeMs,omitempty" xml:"MaxQueueingTimeMs,omitempty"`
+	// The namespace.
+	Namespace *string `json:"Namespace,omitempty" xml:"Namespace,omitempty"`
+	// The region ID.
+	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	// The name of the API resource.
+	Resource *string `json:"Resource,omitempty" xml:"Resource,omitempty"`
+	// The throttling threshold.
+	Threshold *float32 `json:"Threshold,omitempty" xml:"Threshold,omitempty"`
 }
 
 func (s CreateFlowRuleResponseBodyData) String() string {
@@ -6718,8 +7165,8 @@ func (s *CreateFlowRuleResponse) SetBody(v *CreateFlowRuleResponseBody) *CreateF
 type CreateMseServiceApplicationRequest struct {
 	// The language of the response. Valid values:
 	//
-	// *   zh: Chinese.
-	// *   en: English.
+	// *   zh: Chinese
+	// *   en: English
 	AcceptLanguage *string `json:"AcceptLanguage,omitempty" xml:"AcceptLanguage,omitempty"`
 	// The name of the application.
 	AppName *string `json:"AppName,omitempty" xml:"AppName,omitempty"`
@@ -6742,7 +7189,7 @@ type CreateMseServiceApplicationRequest struct {
 	Region *string `json:"Region,omitempty" xml:"Region,omitempty"`
 	// Specifies whether to enable the Sentinel-compatible mode.
 	SentinelEnable *string `json:"SentinelEnable,omitempty" xml:"SentinelEnable,omitempty"`
-	// The source.
+	// The service source.
 	Source *string `json:"Source,omitempty" xml:"Source,omitempty"`
 	// Specifies whether to enable switching.
 	SwitchEnable *string `json:"SwitchEnable,omitempty" xml:"SwitchEnable,omitempty"`
@@ -7144,7 +7591,10 @@ func (s *CreateNacosConfigResponse) SetBody(v *CreateNacosConfigResponseBody) *C
 }
 
 type CreateNacosInstanceRequest struct {
-	// The HTTP status code returned.
+	// The language of the response. Valid values:
+	//
+	// *   zh: Chinese
+	// *   en: English
 	AcceptLanguage *string `json:"AcceptLanguage,omitempty" xml:"AcceptLanguage,omitempty"`
 	// The port number of the Nacos instance.
 	ClusterName *string `json:"ClusterName,omitempty" xml:"ClusterName,omitempty"`
@@ -7486,20 +7936,16 @@ func (s *CreateNacosServiceResponse) SetBody(v *CreateNacosServiceResponseBody) 
 }
 
 type CreateOrUpdateSwimmingLaneRequest struct {
-	// The language of the response. Valid values:****
-	//
-	// *   **zh-CN**: Chinese
-	// *   **en-US**: English
-	//
-	// > Default value: **zh-CN**.
+	// The language of the response. Valid values: zh and en. Default value: zh. The value zh indicates Chinese, and the value en indicates English.
 	AcceptLanguage *string `json:"AcceptLanguage,omitempty" xml:"AcceptLanguage,omitempty"`
 	// Specifies whether to enable the lane.
 	Enable *bool `json:"Enable,omitempty" xml:"Enable,omitempty"`
 	// Specifies whether to configure a routing rule for the lane. If an Ingress gateway is used, this parameter is not required.
 	EnableRules *bool `json:"EnableRules,omitempty" xml:"EnableRules,omitempty"`
 	// The JSON string.
-	EntryRule                    *string                                                        `json:"EntryRule,omitempty" xml:"EntryRule,omitempty"`
-	EntryRules                   []*CreateOrUpdateSwimmingLaneRequestEntryRules                 `json:"EntryRules,omitempty" xml:"EntryRules,omitempty" type:"Repeated"`
+	EntryRule  *string                                        `json:"EntryRule,omitempty" xml:"EntryRule,omitempty"`
+	EntryRules []*CreateOrUpdateSwimmingLaneRequestEntryRules `json:"EntryRules,omitempty" xml:"EntryRules,omitempty" type:"Repeated"`
+	// The information about the routing rule for the gateway. This parameter is required when a cloud-native gateway is used as the ingress.
 	GatewaySwimmingLaneRouteJson *CreateOrUpdateSwimmingLaneRequestGatewaySwimmingLaneRouteJson `json:"GatewaySwimmingLaneRouteJson,omitempty" xml:"GatewaySwimmingLaneRouteJson,omitempty" type:"Struct"`
 	// The language of the response. Valid values:****
 	//
@@ -7508,9 +7954,9 @@ type CreateOrUpdateSwimmingLaneRequest struct {
 	//
 	// > Default value: **zh-CN**.
 	GroupId *int64 `json:"GroupId,omitempty" xml:"GroupId,omitempty"`
-	// The ID of the primary key. A value -1 specifies a request that is used to create a lane. A value greater than 0 specifies a request that is used to modify a lane.
+	// The ID of the primary key. The value -1 indicates a request that is used to create a lane. A value greater than 0 indicates a request that is used to modify a lane.
 	Id *int64 `json:"Id,omitempty" xml:"Id,omitempty"`
-	// The name of the MSE namespace.
+	// The name of the lane.
 	Name      *string `json:"Name,omitempty" xml:"Name,omitempty"`
 	Namespace *string `json:"Namespace,omitempty" xml:"Namespace,omitempty"`
 	// The ID of the region.
@@ -7694,10 +8140,14 @@ func (s *CreateOrUpdateSwimmingLaneRequestEntryRulesRestItems) SetValue(v string
 }
 
 type CreateOrUpdateSwimmingLaneRequestGatewaySwimmingLaneRouteJson struct {
-	Conditions      []*CreateOrUpdateSwimmingLaneRequestGatewaySwimmingLaneRouteJsonConditions `json:"Conditions,omitempty" xml:"Conditions,omitempty" type:"Repeated"`
-	GatewayId       *int64                                                                     `json:"GatewayId,omitempty" xml:"GatewayId,omitempty"`
-	GatewayUniqueId *string                                                                    `json:"GatewayUniqueId,omitempty" xml:"GatewayUniqueId,omitempty"`
-	RouteIdList     []*int64                                                                   `json:"RouteIdList,omitempty" xml:"RouteIdList,omitempty" type:"Repeated"`
+	// The matching conditions.
+	Conditions []*CreateOrUpdateSwimmingLaneRequestGatewaySwimmingLaneRouteJsonConditions `json:"Conditions,omitempty" xml:"Conditions,omitempty" type:"Repeated"`
+	// The ID of the gateway.
+	GatewayId *int64 `json:"GatewayId,omitempty" xml:"GatewayId,omitempty"`
+	// The unique ID of the gateway.
+	GatewayUniqueId *string `json:"GatewayUniqueId,omitempty" xml:"GatewayUniqueId,omitempty"`
+	// The route IDs.
+	RouteIdList []*int64 `json:"RouteIdList,omitempty" xml:"RouteIdList,omitempty" type:"Repeated"`
 }
 
 func (s CreateOrUpdateSwimmingLaneRequestGatewaySwimmingLaneRouteJson) String() string {
@@ -7729,9 +8179,20 @@ func (s *CreateOrUpdateSwimmingLaneRequestGatewaySwimmingLaneRouteJson) SetRoute
 }
 
 type CreateOrUpdateSwimmingLaneRequestGatewaySwimmingLaneRouteJsonConditions struct {
-	Cond  *string `json:"Cond,omitempty" xml:"Cond,omitempty"`
-	Name  *string `json:"Name,omitempty" xml:"Name,omitempty"`
-	Type  *string `json:"Type,omitempty" xml:"Type,omitempty"`
+	// The matching condition. Valid values:
+	//
+	// *   PRE: prefix matching
+	// *   EQUAL: exact matching
+	// *   ERGULAR: regular expression matching
+	Cond *string `json:"Cond,omitempty" xml:"Cond,omitempty"`
+	// The name of the parameter.
+	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// The type of the parameter. Valid values:
+	//
+	// *   header
+	// *   param
+	Type *string `json:"Type,omitempty" xml:"Type,omitempty"`
+	// The value of the parameter.
 	Value *string `json:"Value,omitempty" xml:"Value,omitempty"`
 }
 
@@ -7764,21 +8225,17 @@ func (s *CreateOrUpdateSwimmingLaneRequestGatewaySwimmingLaneRouteJsonConditions
 }
 
 type CreateOrUpdateSwimmingLaneShrinkRequest struct {
-	// The language of the response. Valid values:****
-	//
-	// *   **zh-CN**: Chinese
-	// *   **en-US**: English
-	//
-	// > Default value: **zh-CN**.
+	// The language of the response. Valid values: zh and en. Default value: zh. The value zh indicates Chinese, and the value en indicates English.
 	AcceptLanguage *string `json:"AcceptLanguage,omitempty" xml:"AcceptLanguage,omitempty"`
 	// Specifies whether to enable the lane.
 	Enable *bool `json:"Enable,omitempty" xml:"Enable,omitempty"`
 	// Specifies whether to configure a routing rule for the lane. If an Ingress gateway is used, this parameter is not required.
 	EnableRules *bool `json:"EnableRules,omitempty" xml:"EnableRules,omitempty"`
 	// The JSON string.
-	EntryRule                          *string                                              `json:"EntryRule,omitempty" xml:"EntryRule,omitempty"`
-	EntryRules                         []*CreateOrUpdateSwimmingLaneShrinkRequestEntryRules `json:"EntryRules,omitempty" xml:"EntryRules,omitempty" type:"Repeated"`
-	GatewaySwimmingLaneRouteJsonShrink *string                                              `json:"GatewaySwimmingLaneRouteJson,omitempty" xml:"GatewaySwimmingLaneRouteJson,omitempty"`
+	EntryRule  *string                                              `json:"EntryRule,omitempty" xml:"EntryRule,omitempty"`
+	EntryRules []*CreateOrUpdateSwimmingLaneShrinkRequestEntryRules `json:"EntryRules,omitempty" xml:"EntryRules,omitempty" type:"Repeated"`
+	// The information about the routing rule for the gateway. This parameter is required when a cloud-native gateway is used as the ingress.
+	GatewaySwimmingLaneRouteJsonShrink *string `json:"GatewaySwimmingLaneRouteJson,omitempty" xml:"GatewaySwimmingLaneRouteJson,omitempty"`
 	// The language of the response. Valid values:****
 	//
 	// *   **zh-CN**: Chinese
@@ -7786,9 +8243,9 @@ type CreateOrUpdateSwimmingLaneShrinkRequest struct {
 	//
 	// > Default value: **zh-CN**.
 	GroupId *int64 `json:"GroupId,omitempty" xml:"GroupId,omitempty"`
-	// The ID of the primary key. A value -1 specifies a request that is used to create a lane. A value greater than 0 specifies a request that is used to modify a lane.
+	// The ID of the primary key. The value -1 indicates a request that is used to create a lane. A value greater than 0 indicates a request that is used to modify a lane.
 	Id *int64 `json:"Id,omitempty" xml:"Id,omitempty"`
-	// The name of the MSE namespace.
+	// The name of the lane.
 	Name      *string `json:"Name,omitempty" xml:"Name,omitempty"`
 	Namespace *string `json:"Namespace,omitempty" xml:"Namespace,omitempty"`
 	// The ID of the region.
@@ -8881,10 +9338,14 @@ func (s *DeleteAuthResourceResponse) SetBody(v *DeleteAuthResourceResponseBody) 
 }
 
 type DeleteCircuitBreakerRulesRequest struct {
-	AcceptLanguage *string  `json:"AcceptLanguage,omitempty" xml:"AcceptLanguage,omitempty"`
-	AppName        *string  `json:"AppName,omitempty" xml:"AppName,omitempty"`
-	Ids            []*int64 `json:"Ids,omitempty" xml:"Ids,omitempty" type:"Repeated"`
-	Namespace      *string  `json:"Namespace,omitempty" xml:"Namespace,omitempty"`
+	// The language of the response. Valid values: zh and en. Default value: zh. The value zh indicates Chinese, and the value en indicates English.
+	AcceptLanguage *string `json:"AcceptLanguage,omitempty" xml:"AcceptLanguage,omitempty"`
+	// The name of the application.
+	AppName *string `json:"AppName,omitempty" xml:"AppName,omitempty"`
+	// The IDs of the rules that you want to delete.
+	Ids []*int64 `json:"Ids,omitempty" xml:"Ids,omitempty" type:"Repeated"`
+	// The microservice namespace to which the application belongs.
+	Namespace *string `json:"Namespace,omitempty" xml:"Namespace,omitempty"`
 }
 
 func (s DeleteCircuitBreakerRulesRequest) String() string {
@@ -8916,10 +9377,14 @@ func (s *DeleteCircuitBreakerRulesRequest) SetNamespace(v string) *DeleteCircuit
 }
 
 type DeleteCircuitBreakerRulesShrinkRequest struct {
+	// The language of the response. Valid values: zh and en. Default value: zh. The value zh indicates Chinese, and the value en indicates English.
 	AcceptLanguage *string `json:"AcceptLanguage,omitempty" xml:"AcceptLanguage,omitempty"`
-	AppName        *string `json:"AppName,omitempty" xml:"AppName,omitempty"`
-	IdsShrink      *string `json:"Ids,omitempty" xml:"Ids,omitempty"`
-	Namespace      *string `json:"Namespace,omitempty" xml:"Namespace,omitempty"`
+	// The name of the application.
+	AppName *string `json:"AppName,omitempty" xml:"AppName,omitempty"`
+	// The IDs of the rules that you want to delete.
+	IdsShrink *string `json:"Ids,omitempty" xml:"Ids,omitempty"`
+	// The microservice namespace to which the application belongs.
+	Namespace *string `json:"Namespace,omitempty" xml:"Namespace,omitempty"`
 }
 
 func (s DeleteCircuitBreakerRulesShrinkRequest) String() string {
@@ -8951,12 +9416,21 @@ func (s *DeleteCircuitBreakerRulesShrinkRequest) SetNamespace(v string) *DeleteC
 }
 
 type DeleteCircuitBreakerRulesResponseBody struct {
-	Code           *int32   `json:"Code,omitempty" xml:"Code,omitempty"`
-	Data           []*int64 `json:"Data,omitempty" xml:"Data,omitempty" type:"Repeated"`
-	HttpStatusCode *int32   `json:"HttpStatusCode,omitempty" xml:"HttpStatusCode,omitempty"`
-	Message        *string  `json:"Message,omitempty" xml:"Message,omitempty"`
-	RequestId      *string  `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	Success        *bool    `json:"Success,omitempty" xml:"Success,omitempty"`
+	// The response code.
+	Code *int32 `json:"Code,omitempty" xml:"Code,omitempty"`
+	// The IDs of the rules that were deleted.
+	Data []*int64 `json:"Data,omitempty" xml:"Data,omitempty" type:"Repeated"`
+	// The HTTP status code.
+	HttpStatusCode *int32 `json:"HttpStatusCode,omitempty" xml:"HttpStatusCode,omitempty"`
+	// The returned message.
+	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// The request ID.
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// Indicates whether the request was successful. Valid values:
+	//
+	// *   `true`: The request was successful.
+	// *   `false`: The request failed.
+	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
 }
 
 func (s DeleteCircuitBreakerRulesResponseBody) String() string {
@@ -9253,10 +9727,17 @@ func (s *DeleteEngineNamespaceResponse) SetBody(v *DeleteEngineNamespaceResponse
 }
 
 type DeleteFlowRulesRequest struct {
-	AcceptLanguage *string  `json:"AcceptLanguage,omitempty" xml:"AcceptLanguage,omitempty"`
-	AppName        *string  `json:"AppName,omitempty" xml:"AppName,omitempty"`
-	Ids            []*int64 `json:"Ids,omitempty" xml:"Ids,omitempty" type:"Repeated"`
-	Namespace      *string  `json:"Namespace,omitempty" xml:"Namespace,omitempty"`
+	// The language of the response. Valid values:
+	//
+	// *   zh: Chinese
+	// *   en: English
+	AcceptLanguage *string `json:"AcceptLanguage,omitempty" xml:"AcceptLanguage,omitempty"`
+	// The application name.
+	AppName *string `json:"AppName,omitempty" xml:"AppName,omitempty"`
+	// The IDs of the rules to be deleted.
+	Ids []*int64 `json:"Ids,omitempty" xml:"Ids,omitempty" type:"Repeated"`
+	// The microservice namespace to which the application belongs.
+	Namespace *string `json:"Namespace,omitempty" xml:"Namespace,omitempty"`
 }
 
 func (s DeleteFlowRulesRequest) String() string {
@@ -9288,10 +9769,17 @@ func (s *DeleteFlowRulesRequest) SetNamespace(v string) *DeleteFlowRulesRequest 
 }
 
 type DeleteFlowRulesShrinkRequest struct {
+	// The language of the response. Valid values:
+	//
+	// *   zh: Chinese
+	// *   en: English
 	AcceptLanguage *string `json:"AcceptLanguage,omitempty" xml:"AcceptLanguage,omitempty"`
-	AppName        *string `json:"AppName,omitempty" xml:"AppName,omitempty"`
-	IdsShrink      *string `json:"Ids,omitempty" xml:"Ids,omitempty"`
-	Namespace      *string `json:"Namespace,omitempty" xml:"Namespace,omitempty"`
+	// The application name.
+	AppName *string `json:"AppName,omitempty" xml:"AppName,omitempty"`
+	// The IDs of the rules to be deleted.
+	IdsShrink *string `json:"Ids,omitempty" xml:"Ids,omitempty"`
+	// The microservice namespace to which the application belongs.
+	Namespace *string `json:"Namespace,omitempty" xml:"Namespace,omitempty"`
 }
 
 func (s DeleteFlowRulesShrinkRequest) String() string {
@@ -9323,12 +9811,21 @@ func (s *DeleteFlowRulesShrinkRequest) SetNamespace(v string) *DeleteFlowRulesSh
 }
 
 type DeleteFlowRulesResponseBody struct {
-	Code           *int32   `json:"Code,omitempty" xml:"Code,omitempty"`
-	Data           []*int64 `json:"Data,omitempty" xml:"Data,omitempty" type:"Repeated"`
-	HttpStatusCode *int32   `json:"HttpStatusCode,omitempty" xml:"HttpStatusCode,omitempty"`
-	Message        *string  `json:"Message,omitempty" xml:"Message,omitempty"`
-	RequestId      *string  `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	Success        *bool    `json:"Success,omitempty" xml:"Success,omitempty"`
+	// The response code.
+	Code *int32 `json:"Code,omitempty" xml:"Code,omitempty"`
+	// The IDs of the rules that were deleted.
+	Data []*int64 `json:"Data,omitempty" xml:"Data,omitempty" type:"Repeated"`
+	// The HTTP status code.
+	HttpStatusCode *int32 `json:"HttpStatusCode,omitempty" xml:"HttpStatusCode,omitempty"`
+	// The returned message.
+	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// The request ID.
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// Indicates whether the request was successful. Valid values:
+	//
+	// *   `true`: The request was successful.
+	// *   `false`: The request failed.
+	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
 }
 
 func (s DeleteFlowRulesResponseBody) String() string {
@@ -10941,7 +11438,10 @@ func (s *DeleteMigrationTaskResponse) SetBody(v *DeleteMigrationTaskResponseBody
 }
 
 type DeleteNacosConfigRequest struct {
-	// The status code returned.
+	// The language of the response. Valid values:
+	//
+	// *   zh: Chinese
+	// *   en: English
 	AcceptLanguage *string `json:"AcceptLanguage,omitempty" xml:"AcceptLanguage,omitempty"`
 	// The error code returned if the request failed.
 	Beta *bool `json:"Beta,omitempty" xml:"Beta,omitempty"`
@@ -11512,6 +12012,7 @@ func (s *DeleteNacosServiceResponse) SetBody(v *DeleteNacosServiceResponseBody) 
 }
 
 type DeleteNamespaceRequest struct {
+	// The language in which you want to display the results. Valid values: zh and en. Default value: zh. The value zh indicates Chinese, and the value en indicates English.
 	AcceptLanguage *string `json:"AcceptLanguage,omitempty" xml:"AcceptLanguage,omitempty"`
 	Name           *string `json:"Name,omitempty" xml:"Name,omitempty"`
 	Region         *string `json:"Region,omitempty" xml:"Region,omitempty"`
@@ -11541,7 +12042,7 @@ func (s *DeleteNamespaceRequest) SetRegion(v string) *DeleteNamespaceRequest {
 }
 
 type DeleteNamespaceResponseBody struct {
-	// 错误码。
+	// The error code.
 	ErrorCode      *string `json:"ErrorCode,omitempty" xml:"ErrorCode,omitempty"`
 	HttpStatusCode *int32  `json:"HttpStatusCode,omitempty" xml:"HttpStatusCode,omitempty"`
 	Message        *string `json:"Message,omitempty" xml:"Message,omitempty"`
@@ -11937,7 +12438,7 @@ type DeleteSwimmingLaneRequest struct {
 	AcceptLanguage *string `json:"AcceptLanguage,omitempty" xml:"AcceptLanguage,omitempty"`
 	// The ID of the lane.
 	LaneId *int64 `json:"LaneId,omitempty" xml:"LaneId,omitempty"`
-	// MSE命名空间名字
+	// The name of the Microservices Engine (MSE) namespace.
 	Namespace *string `json:"Namespace,omitempty" xml:"Namespace,omitempty"`
 }
 
@@ -11965,7 +12466,7 @@ func (s *DeleteSwimmingLaneRequest) SetNamespace(v string) *DeleteSwimmingLaneRe
 }
 
 type DeleteSwimmingLaneResponseBody struct {
-	// The error code returned if the request failed.
+	// The error code.
 	ErrorCode *string `json:"ErrorCode,omitempty" xml:"ErrorCode,omitempty"`
 	// The error message returned.
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
@@ -12042,8 +12543,10 @@ type DeleteSwimmingLaneGroupRequest struct {
 	// *   en: English
 	AcceptLanguage *string `json:"AcceptLanguage,omitempty" xml:"AcceptLanguage,omitempty"`
 	// The ID of the lane group.
-	GroupId   *int64  `json:"GroupId,omitempty" xml:"GroupId,omitempty"`
-	Name      *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	GroupId *int64 `json:"GroupId,omitempty" xml:"GroupId,omitempty"`
+	// The name.
+	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// The name of the Microservices Engine (MSE) namespace.
 	Namespace *string `json:"Namespace,omitempty" xml:"Namespace,omitempty"`
 }
 
@@ -12078,7 +12581,7 @@ func (s *DeleteSwimmingLaneGroupRequest) SetNamespace(v string) *DeleteSwimmingL
 type DeleteSwimmingLaneGroupResponseBody struct {
 	// The details of the data.
 	Data interface{} `json:"Data,omitempty" xml:"Data,omitempty"`
-	// The error code returned if the request failed.
+	// The error code.
 	ErrorCode *string `json:"ErrorCode,omitempty" xml:"ErrorCode,omitempty"`
 	// The message returned.
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
@@ -12328,19 +12831,24 @@ type ExportNacosConfigRequest struct {
 	// *   zh: Chinese
 	// *   en: English
 	AcceptLanguage *string `json:"AcceptLanguage,omitempty" xml:"AcceptLanguage,omitempty"`
-	// The tag of the application.
+	// Deprecated
+	// The application tag.
 	AppName *string `json:"AppName,omitempty" xml:"AppName,omitempty"`
+	// Deprecated
 	// The ID of the data that you want to export.
 	//
 	// >
 	//
 	// *   Multiple export methods are supported.
+	//
 	// *   If you want to export a single configuration, you must leave the Ids parameter empty and specify the DataID and Group parameters.
 	DataId *string `json:"DataId,omitempty" xml:"DataId,omitempty"`
-	// The configuration group name and the ID of the data that you want to export. Separate multiple configurations with comma (,).
+	// The configuration group name and the ID of the configuration that you want to export. Separate multiple configurations with comma (,).
 	DataIds *string `json:"DataIds,omitempty" xml:"DataIds,omitempty"`
+	// Deprecated
 	// The name of the configuration group.
 	Group *string `json:"Group,omitempty" xml:"Group,omitempty"`
+	// Deprecated
 	// The ID of the primary key of a configuration item.
 	//
 	// >  - Multiple export methods are supported. You must specify this parameter if you want to export multiple configurations. - You can obtain the value of this parameter by calling the ListNacosConfigs operation. - If you specify this parameter, multiple configurations are exported. The DataId and Group parameters are invalid.
@@ -13040,8 +13548,10 @@ type GetAppMessageQueueRouteRequest struct {
 	// *   en: English
 	AcceptLanguage *string `json:"AcceptLanguage,omitempty" xml:"AcceptLanguage,omitempty"`
 	// The ID of the application.
-	AppId     *string `json:"AppId,omitempty" xml:"AppId,omitempty"`
-	AppName   *string `json:"AppName,omitempty" xml:"AppName,omitempty"`
+	AppId *string `json:"AppId,omitempty" xml:"AppId,omitempty"`
+	// The name of the application.
+	AppName *string `json:"AppName,omitempty" xml:"AppName,omitempty"`
+	// The name of the Microservices Engine (MSE) namespace.
 	Namespace *string `json:"Namespace,omitempty" xml:"Namespace,omitempty"`
 	// The region where the instance resides. Examples:
 	//
@@ -13089,7 +13599,7 @@ func (s *GetAppMessageQueueRouteRequest) SetRegion(v string) *GetAppMessageQueue
 type GetAppMessageQueueRouteResponseBody struct {
 	// The response code returned.
 	Code *int32 `json:"Code,omitempty" xml:"Code,omitempty"`
-	// The returned data.
+	// The data returned.
 	Data *GetAppMessageQueueRouteResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
 	// The HTTP status code returned.
 	HttpStatusCode *int32 `json:"HttpStatusCode,omitempty" xml:"HttpStatusCode,omitempty"`
@@ -13221,15 +13731,23 @@ func (s *GetAppMessageQueueRouteResponse) SetBody(v *GetAppMessageQueueRouteResp
 }
 
 type GetApplicationInstanceListRequest struct {
+	// The language in which you want to display the results. Valid values: zh and en. zh indicates Chinese, which is the default value. en indicates English.
 	AcceptLanguage *string `json:"AcceptLanguage,omitempty" xml:"AcceptLanguage,omitempty"`
 	// Deprecated
-	AppId      *string `json:"AppId,omitempty" xml:"AppId,omitempty"`
-	AppName    *string `json:"AppName,omitempty" xml:"AppName,omitempty"`
-	Namespace  *string `json:"Namespace,omitempty" xml:"Namespace,omitempty"`
-	PageNumber *int32  `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
-	PageSize   *int32  `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	Region     *string `json:"Region,omitempty" xml:"Region,omitempty"`
-	Tag        *string `json:"Tag,omitempty" xml:"Tag,omitempty"`
+	// The application ID.
+	AppId *string `json:"AppId,omitempty" xml:"AppId,omitempty"`
+	// The application name.
+	AppName *string `json:"AppName,omitempty" xml:"AppName,omitempty"`
+	// The Microservices Engine (MSE) namespace to which the application belongs.
+	Namespace *string `json:"Namespace,omitempty" xml:"Namespace,omitempty"`
+	// The page number. Pages start from page 1.
+	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
+	// The number of entries per page.
+	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	// The region.
+	Region *string `json:"Region,omitempty" xml:"Region,omitempty"`
+	// The tags that you want to add to nodes.
+	Tag *string `json:"Tag,omitempty" xml:"Tag,omitempty"`
 }
 
 func (s GetApplicationInstanceListRequest) String() string {
@@ -13281,6 +13799,7 @@ func (s *GetApplicationInstanceListRequest) SetTag(v string) *GetApplicationInst
 }
 
 type GetApplicationInstanceListResponseBody struct {
+	// The returned data.
 	Data *GetApplicationInstanceListResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
 }
 
@@ -13298,10 +13817,14 @@ func (s *GetApplicationInstanceListResponseBody) SetData(v *GetApplicationInstan
 }
 
 type GetApplicationInstanceListResponseBodyData struct {
-	PageNumber *int32                                              `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
-	PageSize   *int32                                              `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	Result     []*GetApplicationInstanceListResponseBodyDataResult `json:"Result,omitempty" xml:"Result,omitempty" type:"Repeated"`
-	TotalSize  *int32                                              `json:"TotalSize,omitempty" xml:"TotalSize,omitempty"`
+	// The page number. Pages start from page 1.
+	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
+	// The number of entries per page.
+	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	// The queried nodes.
+	Result []*GetApplicationInstanceListResponseBodyDataResult `json:"Result,omitempty" xml:"Result,omitempty" type:"Repeated"`
+	// The total number of nodes.
+	TotalSize *int32 `json:"TotalSize,omitempty" xml:"TotalSize,omitempty"`
 }
 
 func (s GetApplicationInstanceListResponseBodyData) String() string {
@@ -13333,8 +13856,11 @@ func (s *GetApplicationInstanceListResponseBodyData) SetTotalSize(v int32) *GetA
 }
 
 type GetApplicationInstanceListResponseBodyDataResult struct {
-	Ip   *string                                                 `json:"Ip,omitempty" xml:"Ip,omitempty"`
-	Port *string                                                 `json:"Port,omitempty" xml:"Port,omitempty"`
+	// The node IP address.
+	Ip *string `json:"Ip,omitempty" xml:"Ip,omitempty"`
+	// The application port.
+	Port *string `json:"Port,omitempty" xml:"Port,omitempty"`
+	// The node tags.
 	Tags []*GetApplicationInstanceListResponseBodyDataResultTags `json:"Tags,omitempty" xml:"Tags,omitempty" type:"Repeated"`
 }
 
@@ -13362,6 +13888,7 @@ func (s *GetApplicationInstanceListResponseBodyDataResult) SetTags(v []*GetAppli
 }
 
 type GetApplicationInstanceListResponseBodyDataResultTags struct {
+	// 标签值。
 	Tag *string `json:"Tag,omitempty" xml:"Tag,omitempty"`
 }
 
@@ -13499,7 +14026,7 @@ func (s *GetApplicationListRequest) SetSwitchEnable(v bool) *GetApplicationListR
 }
 
 type GetApplicationListResponseBody struct {
-	// The data structure.
+	// The details of the data.
 	Data *GetApplicationListResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
 	// The message returned.
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
@@ -13545,7 +14072,7 @@ type GetApplicationListResponseBodyData struct {
 	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
 	// The number of entries returned per page.
 	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	// The returned information.
+	// The data returned.
 	Result []*GetApplicationListResponseBodyDataResult `json:"Result,omitempty" xml:"Result,omitempty" type:"Repeated"`
 	// The total number of entries returned.
 	TotalSize *int32 `json:"TotalSize,omitempty" xml:"TotalSize,omitempty"`
@@ -13589,15 +14116,16 @@ type GetApplicationListResponseBodyDataResult struct {
 	// The number of instances.
 	InstancesNumber *int32 `json:"InstancesNumber,omitempty" xml:"InstancesNumber,omitempty"`
 	// The programming language of the application.
-	Language  *string `json:"Language,omitempty" xml:"Language,omitempty"`
+	Language *string `json:"Language,omitempty" xml:"Language,omitempty"`
+	// The microservice namespace to which the application belongs.
 	Namespace *string `json:"Namespace,omitempty" xml:"Namespace,omitempty"`
-	// The region ID of the instance.
+	// The region ID.
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 	// The source of the application.
 	Source *string `json:"Source,omitempty" xml:"Source,omitempty"`
 	// The status.
 	Status *int64 `json:"Status,omitempty" xml:"Status,omitempty"`
-	// The ID of the user.
+	// The user ID.
 	UserId *string `json:"UserId,omitempty" xml:"UserId,omitempty"`
 }
 
@@ -14162,11 +14690,17 @@ func (s *GetGatewayResponseBody) SetSuccess(v bool) *GetGatewayResponseBody {
 
 type GetGatewayResponseBodyData struct {
 	// The billing method, such as subscription or pay-as-you-go.
-	ChargeType     *string                                  `json:"ChargeType,omitempty" xml:"ChargeType,omitempty"`
-	Elastic        *bool                                    `json:"Elastic,omitempty" xml:"Elastic,omitempty"`
-	ElasticPolicy  *GetGatewayResponseBodyDataElasticPolicy `json:"ElasticPolicy,omitempty" xml:"ElasticPolicy,omitempty" type:"Struct"`
-	ElasticReplica *int32                                   `json:"ElasticReplica,omitempty" xml:"ElasticReplica,omitempty"`
-	ElasticType    *string                                  `json:"ElasticType,omitempty" xml:"ElasticType,omitempty"`
+	ChargeType *string `json:"ChargeType,omitempty" xml:"ChargeType,omitempty"`
+	// Indicates whether auto scale-out is enabled.
+	Elastic *bool `json:"Elastic,omitempty" xml:"Elastic,omitempty"`
+	// The auto scale-out policy.
+	ElasticPolicy *GetGatewayResponseBodyDataElasticPolicy `json:"ElasticPolicy,omitempty" xml:"ElasticPolicy,omitempty" type:"Struct"`
+	// The number of replicas that are automatically scaled out.
+	ElasticReplica *int32 `json:"ElasticReplica,omitempty" xml:"ElasticReplica,omitempty"`
+	// The type of auto scale-out. Valid value:
+	//
+	// *   CronHPA: scale-out by time
+	ElasticType *string `json:"ElasticType,omitempty" xml:"ElasticType,omitempty"`
 	// The time when the gateway expires.
 	EndDate *string `json:"EndDate,omitempty" xml:"EndDate,omitempty"`
 	// The unique ID of the gateway.
@@ -14200,8 +14734,9 @@ type GetGatewayResponseBodyData struct {
 	// The status of the gateway. Valid values: 0: The gateway is being created. 1: The gateway fails to be created. 2: The gateway is running. 3: The gateway is changing. 4: The gateway is scaling down. 6: The gateway is scaling up. 8: The gateway is being deleted. 10: The gateway is restarting. 11: The gateway is being rebuilt. 12: The gateway is updating. 13: The gateway fails to be updated.
 	Status *int32 `json:"Status,omitempty" xml:"Status,omitempty"`
 	// The description of the status.
-	StatusDesc   *string `json:"StatusDesc,omitempty" xml:"StatusDesc,omitempty"`
-	TotalReplica *int32  `json:"TotalReplica,omitempty" xml:"TotalReplica,omitempty"`
+	StatusDesc *string `json:"StatusDesc,omitempty" xml:"StatusDesc,omitempty"`
+	// The total number of replicas, including the number of replicas that are automatically scaled out.
+	TotalReplica *int32 `json:"TotalReplica,omitempty" xml:"TotalReplica,omitempty"`
 	// The ID of the VPC.
 	Vpc *string `json:"Vpc,omitempty" xml:"Vpc,omitempty"`
 	// The ID of the vSwitch.
@@ -14356,8 +14891,13 @@ func (s *GetGatewayResponseBodyData) SetXtraceDetails(v *GetGatewayResponseBodyD
 }
 
 type GetGatewayResponseBodyDataElasticPolicy struct {
-	ElasticType    *string                                                  `json:"ElasticType,omitempty" xml:"ElasticType,omitempty"`
-	MaxReplica     *int32                                                   `json:"MaxReplica,omitempty" xml:"MaxReplica,omitempty"`
+	// The type of auto scale-out. Valid value:
+	//
+	// *   CronHPA: scale-out by time
+	ElasticType *string `json:"ElasticType,omitempty" xml:"ElasticType,omitempty"`
+	// The maximum number of instances that are automatically scaled out. This parameter is used for horizontal scale-out.
+	MaxReplica *int32 `json:"MaxReplica,omitempty" xml:"MaxReplica,omitempty"`
+	// The policy of scale-out by time.
 	TimePolicyList []*GetGatewayResponseBodyDataElasticPolicyTimePolicyList `json:"TimePolicyList,omitempty" xml:"TimePolicyList,omitempty" type:"Repeated"`
 }
 
@@ -14385,9 +14925,12 @@ func (s *GetGatewayResponseBodyDataElasticPolicy) SetTimePolicyList(v []*GetGate
 }
 
 type GetGatewayResponseBodyDataElasticPolicyTimePolicyList struct {
-	DesiredReplica *int32  `json:"DesiredReplica,omitempty" xml:"DesiredReplica,omitempty"`
-	EndTime        *string `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
-	StartTime      *string `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
+	// The number of expected replicas.
+	DesiredReplica *int32 `json:"DesiredReplica,omitempty" xml:"DesiredReplica,omitempty"`
+	// The end time of auto scale-out.
+	EndTime *string `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
+	// The start time of auto scale-out.
+	StartTime *string `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
 }
 
 func (s GetGatewayResponseBodyDataElasticPolicyTimePolicyList) String() string {
@@ -14537,7 +15080,7 @@ func (s *GetGatewayAuthConsumerDetailRequest) SetId(v int64) *GetGatewayAuthCons
 type GetGatewayAuthConsumerDetailResponseBody struct {
 	// The status code. A value of 200 is returned if the request is successful.
 	Code *int32 `json:"Code,omitempty" xml:"Code,omitempty"`
-	// The data structure.
+	// The data returned.
 	Data *GetGatewayAuthConsumerDetailResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
 	// The dynamic part in the error message.
 	DynamicCode *string `json:"DynamicCode,omitempty" xml:"DynamicCode,omitempty"`
@@ -14628,9 +15171,9 @@ type GetGatewayAuthConsumerDetailResponseBodyData struct {
 	EncodeType *string `json:"EncodeType,omitempty" xml:"EncodeType,omitempty"`
 	// The unique ID of the gateway.
 	GatewayUniqueId *string `json:"GatewayUniqueId,omitempty" xml:"GatewayUniqueId,omitempty"`
-	// The creation time.
+	// The time when the consumer authentication record was created.
 	GmtCreate *string `json:"GmtCreate,omitempty" xml:"GmtCreate,omitempty"`
-	// The update time.
+	// The time when the consumer authentication record was modified.
 	GmtModified *string `json:"GmtModified,omitempty" xml:"GmtModified,omitempty"`
 	// The ID of the consumer.
 	Id *int64 `json:"Id,omitempty" xml:"Id,omitempty"`
@@ -14759,20 +15302,20 @@ func (s *GetGatewayAuthConsumerDetailResponseBodyData) SetType(v string) *GetGat
 }
 
 type GetGatewayAuthConsumerDetailResponseBodyDataResourceList struct {
-	// The ID of the consumer.
+	// The consumer ID.
 	ConsumerId *int64 `json:"ConsumerId,omitempty" xml:"ConsumerId,omitempty"`
 	// The unique ID of the gateway.
 	GatewayUniqueId *string `json:"GatewayUniqueId,omitempty" xml:"GatewayUniqueId,omitempty"`
-	// The creation time.
+	// The time when the resource associated with the consumer authentication record was created.
 	GmtCreate *string `json:"GmtCreate,omitempty" xml:"GmtCreate,omitempty"`
-	// The modification time.
+	// The time when the resource associated with the consumer authentication record was modified.
 	GmtModified *string `json:"GmtModified,omitempty" xml:"GmtModified,omitempty"`
 	// The ID of the authorized resource for the consumer.
 	Id *int64 `json:"Id,omitempty" xml:"Id,omitempty"`
-	// The resource authorization status. Valid values:
+	// The resource authorization state. Valid values:
 	//
-	// *   true: enabled
-	// *   false: disabled
+	// *   true: Resource authorization is enabled.
+	// *   false: Resource authorization is disabled.
 	ResourceStatus *bool `json:"ResourceStatus,omitempty" xml:"ResourceStatus,omitempty"`
 	// The ID of the route.
 	RouteId *int64 `json:"RouteId,omitempty" xml:"RouteId,omitempty"`
@@ -15179,8 +15722,8 @@ type GetGatewayOptionResponseBody struct {
 	Code *int32 `json:"Code,omitempty" xml:"Code,omitempty"`
 	// The detailed configurations of the gateway.
 	//
-	// *   **TraceDetails**: the sampling description of Tracing Analysis. Content: TraceEnabled indicates whether Tracing Analysis is activated. Sample indicates the sampling rate of Tracing Analysis.
-	// *   **LogConfigDetails**: the description of Log Service. Content: LogEnabled indicates whether Log Service is activated. ProjectName indicates the Log Service project to which logs are delivered. LogStoreName indicates the name of the Logstore.
+	// *   **TraceDetails**: the sampling description of Managed Service for OpenTelemetry. Content: TraceEnabled indicates whether Managed Service for OpenTelemetry is activated. Sample indicates the sampling rate of Managed Service for OpenTelemetry.
+	// *   **LogConfigDetails**: the description of Simple Log Service. Content: LogEnabled indicates whether Simple Log Service is activated. ProjectName indicates the Simple Log Service project to which logs are delivered. LogStoreName indicates the name of the Logstore.
 	// *   **EnableHardwareAcceleration**: indicates whether hardware acceleration is enabled.
 	// *   **DisableHttp2Alpn**: indicates whether the HTTP/2 protocol is disabled.
 	// *   **EnableWaf**: indicates whether Web Application Firewall (WAF) is enabled.
@@ -15386,7 +15929,8 @@ type GetGatewayRouteDetailResponseBodyData struct {
 	Fallback *bool `json:"Fallback,omitempty" xml:"Fallback,omitempty"`
 	// The information of the Fallback service.
 	FallbackServices []*GetGatewayRouteDetailResponseBodyDataFallbackServices `json:"FallbackServices,omitempty" xml:"FallbackServices,omitempty" type:"Repeated"`
-	FlowMirror       *GetGatewayRouteDetailResponseBodyDataFlowMirror         `json:"FlowMirror,omitempty" xml:"FlowMirror,omitempty" type:"Struct"`
+	// 流量镜像配置。
+	FlowMirror *GetGatewayRouteDetailResponseBodyDataFlowMirror `json:"FlowMirror,omitempty" xml:"FlowMirror,omitempty" type:"Struct"`
 	// The ID of the gateway.
 	GatewayId *int64 `json:"GatewayId,omitempty" xml:"GatewayId,omitempty"`
 	// The unique ID of the gateway.
@@ -15402,7 +15946,8 @@ type GetGatewayRouteDetailResponseBodyData struct {
 	// The ID.
 	Id *int64 `json:"Id,omitempty" xml:"Id,omitempty"`
 	// The name.
-	Name     *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// The routing policy in a JSON string.
 	Policies *string `json:"Policies,omitempty" xml:"Policies,omitempty"`
 	// The matching conditions.
 	Predicates *string `json:"Predicates,omitempty" xml:"Predicates,omitempty"`
@@ -15692,7 +16237,7 @@ func (s *GetGatewayRouteDetailResponseBodyDataDirectResponse) SetCode(v int32) *
 }
 
 type GetGatewayRouteDetailResponseBodyDataFallbackServices struct {
-	// The type of the protocol. Valid values:
+	// The protocol type.
 	AgreementType *string `json:"AgreementType,omitempty" xml:"AgreementType,omitempty"`
 	// The name of the group to which the service belongs.
 	GroupName *string `json:"GroupName,omitempty" xml:"GroupName,omitempty"`
@@ -15702,15 +16247,15 @@ type GetGatewayRouteDetailResponseBodyDataFallbackServices struct {
 	Namespace *string `json:"Namespace,omitempty" xml:"Namespace,omitempty"`
 	// The weight in the form of a percentage value.
 	Percent *int32 `json:"Percent,omitempty" xml:"Percent,omitempty"`
-	// The ID of the service.
+	// The service ID.
 	ServiceId *int64 `json:"ServiceId,omitempty" xml:"ServiceId,omitempty"`
-	// The name of a service.
+	// The service name.
 	ServiceName *string `json:"ServiceName,omitempty" xml:"ServiceName,omitempty"`
-	// The service port number.
+	// The port number of the service.
 	ServicePort *int32 `json:"ServicePort,omitempty" xml:"ServicePort,omitempty"`
-	// The type of the service source.
+	// The source type of the service.
 	SourceType *string `json:"SourceType,omitempty" xml:"SourceType,omitempty"`
-	// The version of a service.
+	// The service version.
 	Version *string `json:"Version,omitempty" xml:"Version,omitempty"`
 }
 
@@ -15773,10 +16318,18 @@ func (s *GetGatewayRouteDetailResponseBodyDataFallbackServices) SetVersion(v str
 }
 
 type GetGatewayRouteDetailResponseBodyDataFlowMirror struct {
-	Percentage        *int32  `json:"Percentage,omitempty" xml:"Percentage,omitempty"`
-	Port              *int32  `json:"Port,omitempty" xml:"Port,omitempty"`
-	Status            *string `json:"Status,omitempty" xml:"Status,omitempty"`
-	TargetServiceId   *int64  `json:"TargetServiceId,omitempty" xml:"TargetServiceId,omitempty"`
+	// 流量复制比例（%），取值0-100。
+	Percentage *int32 `json:"Percentage,omitempty" xml:"Percentage,omitempty"`
+	// 目标服务端口。
+	Port *int32 `json:"Port,omitempty" xml:"Port,omitempty"`
+	// 开启状态，取值：
+	//
+	// - on：开启
+	// - off：关闭
+	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
+	// 目标服务ID。
+	TargetServiceId *int64 `json:"TargetServiceId,omitempty" xml:"TargetServiceId,omitempty"`
+	// 目标服务名称。
 	TargetServiceName *string `json:"TargetServiceName,omitempty" xml:"TargetServiceName,omitempty"`
 }
 
@@ -15896,7 +16449,7 @@ type GetGatewayRouteDetailResponseBodyDataHeaderOpHeaderOpItems struct {
 	DirectionType *string `json:"DirectionType,omitempty" xml:"DirectionType,omitempty"`
 	// The header key.
 	Key *string `json:"Key,omitempty" xml:"Key,omitempty"`
-	// The operation type.
+	// The type of the operation.
 	OpType *string `json:"OpType,omitempty" xml:"OpType,omitempty"`
 	// The header value.
 	Value *string `json:"Value,omitempty" xml:"Value,omitempty"`
@@ -16043,7 +16596,7 @@ func (s *GetGatewayRouteDetailResponseBodyDataRoutePredicates) SetQueryPredicate
 type GetGatewayRouteDetailResponseBodyDataRoutePredicatesHeaderPredicates struct {
 	// The key of the request header.
 	Key *string `json:"Key,omitempty" xml:"Key,omitempty"`
-	// The type.
+	// The route type.
 	Type *string `json:"Type,omitempty" xml:"Type,omitempty"`
 	// The value of the request header.
 	Value *string `json:"Value,omitempty" xml:"Value,omitempty"`
@@ -16105,9 +16658,9 @@ func (s *GetGatewayRouteDetailResponseBodyDataRoutePredicatesPathPredicates) Set
 }
 
 type GetGatewayRouteDetailResponseBodyDataRoutePredicatesQueryPredicates struct {
-	// The name of the parameter.
+	// The parameter name.
 	Key *string `json:"Key,omitempty" xml:"Key,omitempty"`
-	// The type.
+	// The route type.
 	Type *string `json:"Type,omitempty" xml:"Type,omitempty"`
 	// The value of the parameter.
 	Value *string `json:"Value,omitempty" xml:"Value,omitempty"`
@@ -16137,25 +16690,25 @@ func (s *GetGatewayRouteDetailResponseBodyDataRoutePredicatesQueryPredicates) Se
 }
 
 type GetGatewayRouteDetailResponseBodyDataRouteServices struct {
-	// The type of the protocol. Valid values:
+	// The protocol type.
 	AgreementType *string `json:"AgreementType,omitempty" xml:"AgreementType,omitempty"`
-	// The name of the group to which a service belongs.
+	// The name of the group to which the service belongs.
 	GroupName *string `json:"GroupName,omitempty" xml:"GroupName,omitempty"`
-	// The name of a service.
+	// The service name.
 	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
 	// The namespace.
 	Namespace *string `json:"Namespace,omitempty" xml:"Namespace,omitempty"`
 	// The weight.
 	Percent *int32 `json:"Percent,omitempty" xml:"Percent,omitempty"`
-	// The ID of a service.
+	// The service ID.
 	ServiceId *int64 `json:"ServiceId,omitempty" xml:"ServiceId,omitempty"`
-	// The name of a service.
+	// The service name.
 	ServiceName *string `json:"ServiceName,omitempty" xml:"ServiceName,omitempty"`
-	// The service port number.
+	// The port number of the service.
 	ServicePort *int32 `json:"ServicePort,omitempty" xml:"ServicePort,omitempty"`
-	// The source type of a service.
+	// The source type of the service.
 	SourceType *string `json:"SourceType,omitempty" xml:"SourceType,omitempty"`
-	// The version of a service.
+	// The service version.
 	Version *string `json:"Version,omitempty" xml:"Version,omitempty"`
 }
 
@@ -16537,7 +17090,7 @@ func (s *GetGatewayServiceDetailResponseBodyData) SetVersions(v []*GetGatewaySer
 type GetGatewayServiceDetailResponseBodyDataLabelDetails struct {
 	// The tag.
 	Key *string `json:"Key,omitempty" xml:"Key,omitempty"`
-	// The key of the tag.
+	// The tag values.
 	Values []*string `json:"Values,omitempty" xml:"Values,omitempty" type:"Repeated"`
 }
 
@@ -16562,13 +17115,13 @@ func (s *GetGatewayServiceDetailResponseBodyDataLabelDetails) SetValues(v []*str
 type GetGatewayServiceDetailResponseBodyDataPortTrafficPolicyList struct {
 	// The unique ID of the gateway.
 	GatewayUniqueId *string `json:"GatewayUniqueId,omitempty" xml:"GatewayUniqueId,omitempty"`
-	// The creation time.
+	// The time when the service was created.
 	GmtCreate *string `json:"GmtCreate,omitempty" xml:"GmtCreate,omitempty"`
-	// The modification time.
+	// The time when the service was modified.
 	GmtModified *string `json:"GmtModified,omitempty" xml:"GmtModified,omitempty"`
 	// The ID of the port configuration.
 	Id *int64 `json:"Id,omitempty" xml:"Id,omitempty"`
-	// The ID of the service.
+	// The service ID.
 	ServiceId *int64 `json:"ServiceId,omitempty" xml:"ServiceId,omitempty"`
 	// The service port number.
 	ServicePort *int32 `json:"ServicePort,omitempty" xml:"ServicePort,omitempty"`
@@ -16652,7 +17205,7 @@ func (s *GetGatewayServiceDetailResponseBodyDataVersionDetails) SetServiceVersio
 }
 
 type GetGatewayServiceDetailResponseBodyDataVersionDetailsServiceVersion struct {
-	// The tag.
+	// The tags.
 	Labels []*GetGatewayServiceDetailResponseBodyDataVersionDetailsServiceVersionLabels `json:"Labels,omitempty" xml:"Labels,omitempty" type:"Repeated"`
 	// The version number.
 	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
@@ -16679,7 +17232,7 @@ func (s *GetGatewayServiceDetailResponseBodyDataVersionDetailsServiceVersion) Se
 type GetGatewayServiceDetailResponseBodyDataVersionDetailsServiceVersionLabels struct {
 	// The tag.
 	Key *string `json:"Key,omitempty" xml:"Key,omitempty"`
-	// The key of the tag.
+	// The tag value.
 	Value *string `json:"Value,omitempty" xml:"Value,omitempty"`
 }
 
@@ -16704,9 +17257,9 @@ func (s *GetGatewayServiceDetailResponseBodyDataVersionDetailsServiceVersionLabe
 type GetGatewayServiceDetailResponseBodyDataVersions struct {
 	// The tag.
 	Label *string `json:"Label,omitempty" xml:"Label,omitempty"`
-	// The type.
+	// The type of the service.
 	Type *string `json:"Type,omitempty" xml:"Type,omitempty"`
-	// The key of the tag.
+	// The tag value.
 	Value *string `json:"Value,omitempty" xml:"Value,omitempty"`
 }
 
@@ -16848,9 +17401,9 @@ type GetGovernanceKubernetesClusterResponseBodyData struct {
 	K8sVersion *string `json:"K8sVersion,omitempty" xml:"K8sVersion,omitempty"`
 	// The information of the namespace.
 	NamespaceInfos *string `json:"NamespaceInfos,omitempty" xml:"NamespaceInfos,omitempty"`
-	// The list of namespaces.
+	// The queried namespaces.
 	Namespaces []*GetGovernanceKubernetesClusterResponseBodyDataNamespaces `json:"Namespaces,omitempty" xml:"Namespaces,omitempty" type:"Repeated"`
-	// The time when the ack-onepilot component was started.
+	// The time when the pilot component was started.
 	PilotStartTime *string `json:"PilotStartTime,omitempty" xml:"PilotStartTime,omitempty"`
 	// The ID of the region in which the instance resides. The region is supported by MSE.
 	Region *string `json:"Region,omitempty" xml:"Region,omitempty"`
@@ -16907,8 +17460,9 @@ func (s *GetGovernanceKubernetesClusterResponseBodyData) SetUpdateTime(v string)
 }
 
 type GetGovernanceKubernetesClusterResponseBodyDataNamespaces struct {
+	// The name of the MSE namespace that you want to access.
 	MseNamespace *string `json:"MseNamespace,omitempty" xml:"MseNamespace,omitempty"`
-	// The name.
+	// The name of the namespace in the ACK cluster.
 	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
 }
 
@@ -17277,7 +17831,8 @@ type GetKubernetesSourceRequest struct {
 	AcceptLanguage *string `json:"AcceptLanguage,omitempty" xml:"AcceptLanguage,omitempty"`
 	// The unique ID of the gateway.
 	GatewayUniqueId *string `json:"GatewayUniqueId,omitempty" xml:"GatewayUniqueId,omitempty"`
-	IsAll           *bool   `json:"IsAll,omitempty" xml:"IsAll,omitempty"`
+	// Specifies whether to obtain the information about all Kubernetes clusters. If you set the value to false, only the information about unassociated clusters is obtained.
+	IsAll *bool `json:"IsAll,omitempty" xml:"IsAll,omitempty"`
 	// The ID of the virtual private cloud (VPC).
 	VpcId *string `json:"VpcId,omitempty" xml:"VpcId,omitempty"`
 }
@@ -17752,7 +18307,10 @@ func (s *GetMseFeatureSwitchResponse) SetBody(v *GetMseFeatureSwitchResponseBody
 }
 
 type GetMseSourceRequest struct {
-	// The data structure.
+	// The language of the response. Valid values:
+	//
+	// *   zh: Chinese
+	// *   en: English
 	AcceptLanguage *string `json:"AcceptLanguage,omitempty" xml:"AcceptLanguage,omitempty"`
 	// The MSE engine type. Valid values:
 	//
@@ -18142,7 +18700,10 @@ func (s *GetNacosConfigResponse) SetBody(v *GetNacosConfigResponseBody) *GetNaco
 }
 
 type GetNacosHistoryConfigRequest struct {
-	// The data structure.
+	// The language of the response. Valid values:
+	//
+	// *   zh: Chinese
+	// *   en: English
 	AcceptLanguage *string `json:"AcceptLanguage,omitempty" xml:"AcceptLanguage,omitempty"`
 	// The name of the group.
 	DataId *string `json:"DataId,omitempty" xml:"DataId,omitempty"`
@@ -18850,7 +19411,9 @@ func (s *GetPluginConfigResponse) SetBody(v *GetPluginConfigResponseBody) *GetPl
 }
 
 type GetPluginsRequest struct {
-	// The data returned.
+	// The language of the response. Valid values:
+	//
+	// zh: Chinese en: English
 	AcceptLanguage *string `json:"AcceptLanguage,omitempty" xml:"AcceptLanguage,omitempty"`
 	// Specifies whether to enable the plug-in.
 	Category *int32 `json:"Category,omitempty" xml:"Category,omitempty"`
@@ -18907,7 +19470,7 @@ func (s *GetPluginsRequest) SetName(v string) *GetPluginsRequest {
 type GetPluginsResponseBody struct {
 	// The error code returned if the request failed.
 	Code *int32 `json:"Code,omitempty" xml:"Code,omitempty"`
-	// The information about the plug-in.
+	// The data returned.
 	Data []*GetPluginsResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Repeated"`
 	// The dynamic error message.
 	DynamicCode *string `json:"DynamicCode,omitempty" xml:"DynamicCode,omitempty"`
@@ -18979,24 +19542,11 @@ func (s *GetPluginsResponseBody) SetSuccess(v bool) *GetPluginsResponseBody {
 }
 
 type GetPluginsResponseBodyData struct {
-	// The name of the plug-in.
-	Category *int32 `json:"Category,omitempty" xml:"Category,omitempty"`
-	// \# The configuration includes the fields required for checking, such as name, age, and friends. Sample configuration: name: John age: 18 friends: - David - Anne
-	ConfigCheck *string `json:"ConfigCheck,omitempty" xml:"ConfigCheck,omitempty"`
-	// The ID of the creator.
-	Id         *int64  `json:"Id,omitempty" xml:"Id,omitempty"`
-	MaxVersion *string `json:"MaxVersion,omitempty" xml:"MaxVersion,omitempty"`
-	Mode       *int32  `json:"Mode,omitempty" xml:"Mode,omitempty"`
-	// The version of the plug-in.
-	Name                     *string `json:"Name,omitempty" xml:"Name,omitempty"`
-	NewVersionPublishingFlag *bool   `json:"NewVersionPublishingFlag,omitempty" xml:"NewVersionPublishingFlag,omitempty"`
-	// The execution priority of the plug-in. A larger value indicates a higher priority.
-	Phase *int32 `json:"Phase,omitempty" xml:"Phase,omitempty"`
 	// The type of the plug-in. Valid values:
 	//
 	// 0: custom
 	//
-	// 1: permission authorization
+	// 1: permission authentication
 	//
 	// 2: security protection
 	//
@@ -19005,22 +19555,57 @@ type GetPluginsResponseBodyData struct {
 	// 4: traffic control
 	//
 	// 5: traffic observation
-	PrimaryUser *string `json:"PrimaryUser,omitempty" xml:"PrimaryUser,omitempty"`
+	Category *int32 `json:"Category,omitempty" xml:"Category,omitempty"`
 	// The information about the plug-in configuration used for checking.
+	ConfigCheck *string `json:"ConfigCheck,omitempty" xml:"ConfigCheck,omitempty"`
+	// The ID of the plug-in.
+	Id *int64 `json:"Id,omitempty" xml:"Id,omitempty"`
+	// The latest version of the plug-in.
+	MaxVersion *string `json:"MaxVersion,omitempty" xml:"MaxVersion,omitempty"`
+	// The plug-in language. Valid values:
+	//
+	// *   0: the WebAssembly plug-in
+	// *   2: the Lua plug-in
+	Mode *int32 `json:"Mode,omitempty" xml:"Mode,omitempty"`
+	// The name of the plug-in.
+	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// Indicates whether the latest version is being released.
+	NewVersionPublishingFlag *bool `json:"NewVersionPublishingFlag,omitempty" xml:"NewVersionPublishingFlag,omitempty"`
+	// The execution stage of the plug-in.
+	//
+	// *   0: default stage
+	// *   1: authorization stage
+	// *   2: authentication stage
+	// *   3: statistics stage
+	Phase *int32 `json:"Phase,omitempty" xml:"Phase,omitempty"`
+	// The ID of the creator.
+	PrimaryUser *string `json:"PrimaryUser,omitempty" xml:"PrimaryUser,omitempty"`
+	// The execution priority of the plug-in. A larger value indicates a higher priority.
 	Priority *int32 `json:"Priority,omitempty" xml:"Priority,omitempty"`
-	// The URL of the Object Storage Service (OSS) bucket that stores the WebAssembly plug-in.
-	PublishState *int32  `json:"PublishState,omitempty" xml:"PublishState,omitempty"`
-	Status       *string `json:"Status,omitempty" xml:"Status,omitempty"`
-	// This is a plug-in.
-	Summary *string `json:"Summary,omitempty" xml:"Summary,omitempty"`
-	// The summary of the plug-in.
-	Version *string `json:"Version,omitempty" xml:"Version,omitempty"`
-	// Indicates whether the plug-in is enabled.
+	// The release state of the plug-in. Valid values:
+	//
+	// *   0: The plug-in was released.
+	// *   1: The plug-in is being released.
+	// *   2: The plug-in failed to be released.
+	PublishState *int32 `json:"PublishState,omitempty" xml:"PublishState,omitempty"`
+	// Indicates whether the plug-in is enabled. Valid values:
 	//
 	// *   0: disabled
 	// *   1: enabled
+	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
+	// The summary of the plug-in.
+	Summary *string `json:"Summary,omitempty" xml:"Summary,omitempty"`
+	// The version of the plug-in.
+	Version *string `json:"Version,omitempty" xml:"Version,omitempty"`
+	// The URL of the Object Storage Service (OSS) bucket that stores the WebAssembly plug-in.
 	WasmFile *string `json:"WasmFile,omitempty" xml:"WasmFile,omitempty"`
-	// The publish status.
+	// The WebAssembly language. Valid values:
+	//
+	// *   0: C++
+	// *   1: TinyGo
+	// *   2: Rust
+	// *   3: AssemblyScript
+	// *   4: Zig
 	WasmLang *int32 `json:"WasmLang,omitempty" xml:"WasmLang,omitempty"`
 }
 
@@ -19411,16 +19996,26 @@ func (s *GetServiceListResponse) SetBody(v *GetServiceListResponseBody) *GetServ
 }
 
 type GetServiceListPageRequest struct {
+	// The language of the response. Valid values: zh and en. Default value: zh. The value zh indicates Chinese, and the value en indicates English.
 	AcceptLanguage *string `json:"AcceptLanguage,omitempty" xml:"AcceptLanguage,omitempty"`
-	AppId          *string `json:"AppId,omitempty" xml:"AppId,omitempty"`
-	AppName        *string `json:"AppName,omitempty" xml:"AppName,omitempty"`
-	Ip             *string `json:"Ip,omitempty" xml:"Ip,omitempty"`
-	Namespace      *string `json:"Namespace,omitempty" xml:"Namespace,omitempty"`
-	PageNumber     *int32  `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
-	PageSize       *int32  `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	Region         *string `json:"Region,omitempty" xml:"Region,omitempty"`
-	ServiceName    *string `json:"ServiceName,omitempty" xml:"ServiceName,omitempty"`
-	ServiceType    *string `json:"ServiceType,omitempty" xml:"ServiceType,omitempty"`
+	// The application ID.
+	AppId *string `json:"AppId,omitempty" xml:"AppId,omitempty"`
+	// 应用名字。
+	AppName *string `json:"AppName,omitempty" xml:"AppName,omitempty"`
+	// The IP address from which the query is initiated.
+	Ip *string `json:"Ip,omitempty" xml:"Ip,omitempty"`
+	// The name of the MSE namespace.
+	Namespace *string `json:"Namespace,omitempty" xml:"Namespace,omitempty"`
+	// The page number.
+	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
+	// The number of entries per page.
+	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	// The region ID.
+	Region *string `json:"Region,omitempty" xml:"Region,omitempty"`
+	// The service name.
+	ServiceName *string `json:"ServiceName,omitempty" xml:"ServiceName,omitempty"`
+	// The service type.
+	ServiceType *string `json:"ServiceType,omitempty" xml:"ServiceType,omitempty"`
 }
 
 func (s GetServiceListPageRequest) String() string {
@@ -19482,10 +20077,14 @@ func (s *GetServiceListPageRequest) SetServiceType(v string) *GetServiceListPage
 }
 
 type GetServiceListPageResponseBody struct {
-	Data      *GetServiceListPageResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
-	Message   *string                             `json:"Message,omitempty" xml:"Message,omitempty"`
-	RequestId *string                             `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	Success   *bool                               `json:"Success,omitempty" xml:"Success,omitempty"`
+	// The response to the request.
+	Data *GetServiceListPageResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
+	// The request information.
+	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// The request ID.
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// Indicates whether the request was successful.
+	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
 }
 
 func (s GetServiceListPageResponseBody) String() string {
@@ -19517,10 +20116,14 @@ func (s *GetServiceListPageResponseBody) SetSuccess(v bool) *GetServiceListPageR
 }
 
 type GetServiceListPageResponseBodyData struct {
-	PageNumber *string                                     `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
-	PageSize   *string                                     `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	Result     []*GetServiceListPageResponseBodyDataResult `json:"Result,omitempty" xml:"Result,omitempty" type:"Repeated"`
-	TotalSize  *string                                     `json:"TotalSize,omitempty" xml:"TotalSize,omitempty"`
+	// The page number.
+	PageNumber *string `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
+	// The number of entries per page.
+	PageSize *string `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	// The data on the current page.
+	Result []*GetServiceListPageResponseBodyDataResult `json:"Result,omitempty" xml:"Result,omitempty" type:"Repeated"`
+	// The total number of entries returned.
+	TotalSize *string `json:"TotalSize,omitempty" xml:"TotalSize,omitempty"`
 }
 
 func (s GetServiceListPageResponseBodyData) String() string {
@@ -19552,13 +20155,20 @@ func (s *GetServiceListPageResponseBodyData) SetTotalSize(v string) *GetServiceL
 }
 
 type GetServiceListPageResponseBodyDataResult struct {
-	AppId         *string `json:"AppId,omitempty" xml:"AppId,omitempty"`
-	AppName       *string `json:"AppName,omitempty" xml:"AppName,omitempty"`
+	// The application ID.
+	AppId *string `json:"AppId,omitempty" xml:"AppId,omitempty"`
+	// The application name.
+	AppName *string `json:"AppName,omitempty" xml:"AppName,omitempty"`
+	// The time when the service was last updated.
 	GmtModifyTime *string `json:"GmtModifyTime,omitempty" xml:"GmtModifyTime,omitempty"`
-	Group         *string `json:"Group,omitempty" xml:"Group,omitempty"`
-	InstanceNum   *int32  `json:"InstanceNum,omitempty" xml:"InstanceNum,omitempty"`
-	ServiceName   *string `json:"ServiceName,omitempty" xml:"ServiceName,omitempty"`
-	Version       *string `json:"Version,omitempty" xml:"Version,omitempty"`
+	// The group to which the service belongs.
+	Group *string `json:"Group,omitempty" xml:"Group,omitempty"`
+	// The number of service nodes.
+	InstanceNum *int32 `json:"InstanceNum,omitempty" xml:"InstanceNum,omitempty"`
+	// The service name.
+	ServiceName *string `json:"ServiceName,omitempty" xml:"ServiceName,omitempty"`
+	// The service version.
+	Version *string `json:"Version,omitempty" xml:"Version,omitempty"`
 }
 
 func (s GetServiceListPageResponseBodyDataResult) String() string {
@@ -19634,7 +20244,10 @@ func (s *GetServiceListPageResponse) SetBody(v *GetServiceListPageResponseBody) 
 }
 
 type GetServiceListenersRequest struct {
-	// The data structure.
+	// The language of the response. Valid values:
+	//
+	// *   zh: Chinese
+	// *   en: English
 	AcceptLanguage *string `json:"AcceptLanguage,omitempty" xml:"AcceptLanguage,omitempty"`
 	// The ID of the instance to which the service belongs.
 	//
@@ -20220,7 +20833,8 @@ type GetTagsBySwimmingLaneGroupIdRequest struct {
 	// *   en: English
 	AcceptLanguage *string `json:"AcceptLanguage,omitempty" xml:"AcceptLanguage,omitempty"`
 	// The ID of the lane group.
-	GroupId   *int64  `json:"GroupId,omitempty" xml:"GroupId,omitempty"`
+	GroupId *int64 `json:"GroupId,omitempty" xml:"GroupId,omitempty"`
+	// The name of the Microservices Engine (MSE) namespace that you want to query.
 	Namespace *string `json:"Namespace,omitempty" xml:"Namespace,omitempty"`
 }
 
@@ -20248,7 +20862,7 @@ func (s *GetTagsBySwimmingLaneGroupIdRequest) SetNamespace(v string) *GetTagsByS
 }
 
 type GetTagsBySwimmingLaneGroupIdResponseBody struct {
-	// The details of the data.
+	// The data of the tag.
 	Data []*string `json:"Data,omitempty" xml:"Data,omitempty" type:"Repeated"`
 	// The error code returned if the request failed.
 	ErrorCode *string `json:"ErrorCode,omitempty" xml:"ErrorCode,omitempty"`
@@ -20494,7 +21108,10 @@ func (s *GetZookeeperDataImportUrlResponse) SetBody(v *GetZookeeperDataImportUrl
 }
 
 type ImportNacosConfigRequest struct {
-	// The data structure.
+	// The language of the response. Valid values:
+	//
+	// *   zh: Chinese
+	// *   en: English
 	AcceptLanguage *string `json:"AcceptLanguage,omitempty" xml:"AcceptLanguage,omitempty"`
 	// The language of the response. Valid values:
 	//
@@ -20505,13 +21122,33 @@ type ImportNacosConfigRequest struct {
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
 	// The policy.
 	NamespaceId *string `json:"NamespaceId,omitempty" xml:"NamespaceId,omitempty"`
-	// The URL of the file, which must be the URL generated by MSE. If the URL is not generated by MSE, a message stating that the required permissions on the API are not obtained is displayed. Perform the following steps to obtain the URL:
+	// The policy.
 	//
-	// 1\. Call the GetImportFileUrl operation to obtain the URL.
+	// Valid values:
 	//
-	// 2\. Upload the file to the OSS address returned by the GetImportFileUrl operation.
+	// *   ABORT
 	//
-	// 3\. Call the ImportNacosConfig operation to import the file.
+	//     <!-- -->
+	//
+	//     <!-- -->
+	//
+	//     <!-- -->
+	//
+	// *   OVERWRITE
+	//
+	//     <!-- -->
+	//
+	//     <!-- -->
+	//
+	//     <!-- -->
+	//
+	// *   SKIP
+	//
+	//     <!-- -->
+	//
+	//     <!-- -->
+	//
+	//     <!-- -->
 	Policy *string `json:"Policy,omitempty" xml:"Policy,omitempty"`
 }
 
@@ -21609,11 +22246,12 @@ func (s *ListAnsServiceClustersRequest) SetServiceName(v string) *ListAnsService
 }
 
 type ListAnsServiceClustersResponseBody struct {
-	// The details of the data.
+	// The data returned.
 	Data *ListAnsServiceClustersResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
 	// The error code returned if the request failed.
 	ErrorCode *string `json:"ErrorCode,omitempty" xml:"ErrorCode,omitempty"`
-	HttpCode  *string `json:"HttpCode,omitempty" xml:"HttpCode,omitempty"`
+	// The HTTP status code.
+	HttpCode *string `json:"HttpCode,omitempty" xml:"HttpCode,omitempty"`
 	// The message returned.
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
 	// The ID of the request.
@@ -21664,15 +22302,16 @@ func (s *ListAnsServiceClustersResponseBody) SetSuccess(v bool) *ListAnsServiceC
 }
 
 type ListAnsServiceClustersResponseBodyData struct {
+	// The information about the associated application for which Microservices Governance is enabled when the Source parameter is set to governance.
 	AppDetail *ListAnsServiceClustersResponseBodyDataAppDetail `json:"AppDetail,omitempty" xml:"AppDetail,omitempty" type:"Struct"`
-	// The information about the clusters.
+	// The cluster information.
 	Clusters []*ListAnsServiceClustersResponseBodyDataClusters `json:"Clusters,omitempty" xml:"Clusters,omitempty" type:"Repeated"`
 	// Indicates whether the service is a temporary service. Valid values:
 	//
 	// *   `true`: yes
 	// *   `false`: no
 	Ephemeral *bool `json:"Ephemeral,omitempty" xml:"Ephemeral,omitempty"`
-	// The name of the contact group.
+	// The service group to which the service belongs.
 	GroupName *string `json:"GroupName,omitempty" xml:"GroupName,omitempty"`
 	// The metadata of the service.
 	Metadata map[string]interface{} `json:"Metadata,omitempty" xml:"Metadata,omitempty"`
@@ -21682,7 +22321,12 @@ type ListAnsServiceClustersResponseBodyData struct {
 	ProtectThreshold *float32 `json:"ProtectThreshold,omitempty" xml:"ProtectThreshold,omitempty"`
 	// The election mode.
 	SelectorType *string `json:"SelectorType,omitempty" xml:"SelectorType,omitempty"`
-	Source       *string `json:"Source,omitempty" xml:"Source,omitempty"`
+	// The source type of the service. Valid values:
+	//
+	// *   console: The service was registered in the console.
+	// *   sdk: The service was registered by using the SDK.
+	// *   governance: The service was registered on Microservices Governance.
+	Source *string `json:"Source,omitempty" xml:"Source,omitempty"`
 }
 
 func (s ListAnsServiceClustersResponseBodyData) String() string {
@@ -21739,15 +22383,28 @@ func (s *ListAnsServiceClustersResponseBodyData) SetSource(v string) *ListAnsSer
 }
 
 type ListAnsServiceClustersResponseBodyDataAppDetail struct {
-	AppId               *string `json:"AppId,omitempty" xml:"AppId,omitempty"`
-	AppName             *string `json:"AppName,omitempty" xml:"AppName,omitempty"`
-	CheckInternal       *int32  `json:"CheckInternal,omitempty" xml:"CheckInternal,omitempty"`
-	CheckPath           *string `json:"CheckPath,omitempty" xml:"CheckPath,omitempty"`
-	CheckTimeout        *int32  `json:"CheckTimeout,omitempty" xml:"CheckTimeout,omitempty"`
-	CheckType           *string `json:"CheckType,omitempty" xml:"CheckType,omitempty"`
-	HealthyCheckTimes   *int32  `json:"HealthyCheckTimes,omitempty" xml:"HealthyCheckTimes,omitempty"`
-	Port                *int32  `json:"Port,omitempty" xml:"Port,omitempty"`
-	UnhealthyCheckTimes *int32  `json:"UnhealthyCheckTimes,omitempty" xml:"UnhealthyCheckTimes,omitempty"`
+	// The ID of the application for which Microservices Governance is enabled.
+	AppId *string `json:"AppId,omitempty" xml:"AppId,omitempty"`
+	// The name of the application for which Microservices Governance is enabled.
+	AppName *string `json:"AppName,omitempty" xml:"AppName,omitempty"`
+	// The health check interval. Unit: seconds.
+	CheckInternal *int32 `json:"CheckInternal,omitempty" xml:"CheckInternal,omitempty"`
+	// The path of the health check. This parameter is required only when the CheckType parameter is set to http.
+	CheckPath *string `json:"CheckPath,omitempty" xml:"CheckPath,omitempty"`
+	// The timeout period of the health check response. Unit: seconds.
+	CheckTimeout *int32 `json:"CheckTimeout,omitempty" xml:"CheckTimeout,omitempty"`
+	// The type of the health check. Valid values:
+	//
+	// *   connection: connection status check
+	// *   tcp: TCP connection check
+	// *   http: HTTP connection check
+	CheckType *string `json:"CheckType,omitempty" xml:"CheckType,omitempty"`
+	// The maximum number of health check retries when the instance state changes from unhealthy to healthy.
+	HealthyCheckTimes *int32 `json:"HealthyCheckTimes,omitempty" xml:"HealthyCheckTimes,omitempty"`
+	// The port number of the application for which Microservices Governance is enabled.
+	Port *int32 `json:"Port,omitempty" xml:"Port,omitempty"`
+	// The maximum number of health check retries when the instance state changes from healthy to unhealthy.
+	UnhealthyCheckTimes *int32 `json:"UnhealthyCheckTimes,omitempty" xml:"UnhealthyCheckTimes,omitempty"`
 }
 
 func (s ListAnsServiceClustersResponseBodyDataAppDetail) String() string {
@@ -21808,15 +22465,15 @@ type ListAnsServiceClustersResponseBodyDataClusters struct {
 	DefaultCheckPort *int32 `json:"DefaultCheckPort,omitempty" xml:"DefaultCheckPort,omitempty"`
 	// The default port.
 	DefaultPort *int32 `json:"DefaultPort,omitempty" xml:"DefaultPort,omitempty"`
-	// The type of health check.
+	// The type of the health check.
 	HealthCheckerType *string `json:"HealthCheckerType,omitempty" xml:"HealthCheckerType,omitempty"`
 	// The metadata of the cluster.
 	Metadata map[string]interface{} `json:"Metadata,omitempty" xml:"Metadata,omitempty"`
-	// The name of the cluster.
+	// The cluster name.
 	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
 	// The full name of the service.
 	ServiceName *string `json:"ServiceName,omitempty" xml:"ServiceName,omitempty"`
-	// Indicates whether an end-to-end health check is initiated by the server. This parameter is valid only if the service is a temporary service.
+	// Indicates whether an end-to-end health check was initiated by the server. This parameter is valid only if the service is not a temporary service.
 	UseIPPort4Check *bool `json:"UseIPPort4Check,omitempty" xml:"UseIPPort4Check,omitempty"`
 }
 
@@ -22158,7 +22815,8 @@ type ListAppBySwimmingLaneGroupTagRequest struct {
 	// *   en: English
 	AcceptLanguage *string `json:"AcceptLanguage,omitempty" xml:"AcceptLanguage,omitempty"`
 	// The ID of the lane group.
-	GroupId   *int64  `json:"GroupId,omitempty" xml:"GroupId,omitempty"`
+	GroupId *int64 `json:"GroupId,omitempty" xml:"GroupId,omitempty"`
+	// The name of the Microservices Engine (MSE) namespace that you want to query.
 	Namespace *string `json:"Namespace,omitempty" xml:"Namespace,omitempty"`
 	// The tag.
 	Tag *string `json:"Tag,omitempty" xml:"Tag,omitempty"`
@@ -22271,10 +22929,14 @@ func (s *ListAppBySwimmingLaneGroupTagResponse) SetBody(v *ListAppBySwimmingLane
 }
 
 type ListAppBySwimmingLaneGroupTagsRequest struct {
-	AcceptLanguage *string   `json:"AcceptLanguage,omitempty" xml:"AcceptLanguage,omitempty"`
-	GroupId        *int64    `json:"GroupId,omitempty" xml:"GroupId,omitempty"`
-	Namespace      *string   `json:"Namespace,omitempty" xml:"Namespace,omitempty"`
-	Tags           []*string `json:"Tags,omitempty" xml:"Tags,omitempty" type:"Repeated"`
+	// The language in which you want to display the results. Valid values: zh and en. zh indicates Chinese, which is the default value. en indicates English.
+	AcceptLanguage *string `json:"AcceptLanguage,omitempty" xml:"AcceptLanguage,omitempty"`
+	// The ID of the lane group.
+	GroupId *int64 `json:"GroupId,omitempty" xml:"GroupId,omitempty"`
+	// The name of the MSE namespace that you want to query.
+	Namespace *string `json:"Namespace,omitempty" xml:"Namespace,omitempty"`
+	// The tag based on which you want to list applications.
+	Tags []*string `json:"Tags,omitempty" xml:"Tags,omitempty" type:"Repeated"`
 }
 
 func (s ListAppBySwimmingLaneGroupTagsRequest) String() string {
@@ -22306,10 +22968,14 @@ func (s *ListAppBySwimmingLaneGroupTagsRequest) SetTags(v []*string) *ListAppByS
 }
 
 type ListAppBySwimmingLaneGroupTagsShrinkRequest struct {
+	// The language in which you want to display the results. Valid values: zh and en. zh indicates Chinese, which is the default value. en indicates English.
 	AcceptLanguage *string `json:"AcceptLanguage,omitempty" xml:"AcceptLanguage,omitempty"`
-	GroupId        *int64  `json:"GroupId,omitempty" xml:"GroupId,omitempty"`
-	Namespace      *string `json:"Namespace,omitempty" xml:"Namespace,omitempty"`
-	TagsShrink     *string `json:"Tags,omitempty" xml:"Tags,omitempty"`
+	// The ID of the lane group.
+	GroupId *int64 `json:"GroupId,omitempty" xml:"GroupId,omitempty"`
+	// The name of the MSE namespace that you want to query.
+	Namespace *string `json:"Namespace,omitempty" xml:"Namespace,omitempty"`
+	// The tag based on which you want to list applications.
+	TagsShrink *string `json:"Tags,omitempty" xml:"Tags,omitempty"`
 }
 
 func (s ListAppBySwimmingLaneGroupTagsShrinkRequest) String() string {
@@ -22341,11 +23007,16 @@ func (s *ListAppBySwimmingLaneGroupTagsShrinkRequest) SetTagsShrink(v string) *L
 }
 
 type ListAppBySwimmingLaneGroupTagsResponseBody struct {
-	Data      map[string][]*DataValue `json:"Data,omitempty" xml:"Data,omitempty"`
-	ErrorCode *string                 `json:"ErrorCode,omitempty" xml:"ErrorCode,omitempty"`
-	Message   *string                 `json:"Message,omitempty" xml:"Message,omitempty"`
-	RequestId *string                 `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	Success   *bool                   `json:"Success,omitempty" xml:"Success,omitempty"`
+	// The returned data.
+	Data map[string][]*DataValue `json:"Data,omitempty" xml:"Data,omitempty"`
+	// The error code.
+	ErrorCode *string `json:"ErrorCode,omitempty" xml:"ErrorCode,omitempty"`
+	// The additional request information.
+	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// The request ID.
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// Indicates whether the request was successful. Valid values:
+	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
 }
 
 func (s ListAppBySwimmingLaneGroupTagsResponseBody) String() string {
@@ -22421,7 +23092,7 @@ type ListApplicationsWithTagRulesRequest struct {
 	AppId *string `json:"AppId,omitempty" xml:"AppId,omitempty"`
 	// The name of the application.
 	AppName *string `json:"AppName,omitempty" xml:"AppName,omitempty"`
-	// 应用所属的MSE命名空间。
+	// The Microservices Engine (MSE) namespace to which the application belongs.
 	Namespace *string `json:"Namespace,omitempty" xml:"Namespace,omitempty"`
 	// The number of the page to return.
 	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
@@ -22538,7 +23209,7 @@ type ListApplicationsWithTagRulesResponseBodyData struct {
 	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
 	// The number of entries returned per page.
 	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	// The data structure.
+	// The data returned.
 	Result []*ListApplicationsWithTagRulesResponseBodyDataResult `json:"Result,omitempty" xml:"Result,omitempty" type:"Repeated"`
 	// The total number of entries returned.
 	TotalSize *int32 `json:"TotalSize,omitempty" xml:"TotalSize,omitempty"`
@@ -22575,13 +23246,16 @@ func (s *ListApplicationsWithTagRulesResponseBodyData) SetTotalSize(v int32) *Li
 type ListApplicationsWithTagRulesResponseBodyDataResult struct {
 	// The application ID.
 	AppId *string `json:"AppId,omitempty" xml:"AppId,omitempty"`
-	// The name of the application.
+	// The application name.
 	AppName *string `json:"AppName,omitempty" xml:"AppName,omitempty"`
-	// 应用所属的MSE命名空间。
+	// The MSE namespace to which the application belongs.
 	Namespace *string `json:"Namespace,omitempty" xml:"Namespace,omitempty"`
-	// The information about the rules.
+	// The details of the rule.
 	RouteRules []*ListApplicationsWithTagRulesResponseBodyDataResultRouteRules `json:"RouteRules,omitempty" xml:"RouteRules,omitempty" type:"Repeated"`
-	// The status of the route. Valid values: -0: disabled. -1: enabled.
+	// The route state. Valid values:
+	//
+	// *   0: disabled
+	// *   1: enabled
 	RouteStatus *int64 `json:"RouteStatus,omitempty" xml:"RouteStatus,omitempty"`
 }
 
@@ -22619,22 +23293,22 @@ func (s *ListApplicationsWithTagRulesResponseBodyDataResult) SetRouteStatus(v in
 }
 
 type ListApplicationsWithTagRulesResponseBodyDataResultRouteRules struct {
-	// Indicates whether the alert rule is enabled. Valid value:
+	// Indicates whether the alert rule is enabled. Valid values:
 	//
-	// *   `true`: enabled.
-	// *   `false`: disabled.
+	// *   `true`: enabled
+	// *   `false`: disabled
 	Enable *bool `json:"Enable,omitempty" xml:"Enable,omitempty"`
-	// The ID of the rule.
+	// The rule ID.
 	Id *int64 `json:"Id,omitempty" xml:"Id,omitempty"`
 	// The number of instances.
 	InstanceNum *int32 `json:"InstanceNum,omitempty" xml:"InstanceNum,omitempty"`
-	// The name of the rule.
+	// The rule name.
 	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
 	// The rate.
 	Rate *int32 `json:"Rate,omitempty" xml:"Rate,omitempty"`
 	// The details of the routing rule.
 	Rules *ListApplicationsWithTagRulesResponseBodyDataResultRouteRulesRules `json:"Rules,omitempty" xml:"Rules,omitempty" type:"Struct"`
-	// The status.
+	// The status of the application.
 	Status *int32 `json:"Status,omitempty" xml:"Status,omitempty"`
 	// The tag.
 	Tag *string `json:"Tag,omitempty" xml:"Tag,omitempty"`
@@ -23019,15 +23693,28 @@ func (s *ListApplicationsWithTagRulesResponse) SetBody(v *ListApplicationsWithTa
 }
 
 type ListAuthPolicyRequest struct {
+	// The language of the response. Valid values: zh-CN and en-US. Default value: zh-CN. The value zh-CN indicates Chinese and the value en-US indicates English.
 	AcceptLanguage *string `json:"AcceptLanguage,omitempty" xml:"AcceptLanguage,omitempty"`
-	AppId          *string `json:"AppId,omitempty" xml:"AppId,omitempty"`
-	Name           *string `json:"Name,omitempty" xml:"Name,omitempty"`
-	Namespace      *string `json:"Namespace,omitempty" xml:"Namespace,omitempty"`
-	PageNumber     *string `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
-	PageSize       *string `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	Protocol       *string `json:"Protocol,omitempty" xml:"Protocol,omitempty"`
-	Region         *string `json:"Region,omitempty" xml:"Region,omitempty"`
-	Source         *string `json:"Source,omitempty" xml:"Source,omitempty"`
+	// The application ID.
+	AppId *string `json:"AppId,omitempty" xml:"AppId,omitempty"`
+	// The name of the authentication rule.
+	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// The name of the Microservices Engine (MSE) namespace.
+	Namespace *string `json:"Namespace,omitempty" xml:"Namespace,omitempty"`
+	// The page number.
+	PageNumber *string `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
+	// The number of entries per page.
+	PageSize *string `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	// The protocol type. Valid values:
+	//
+	// *   **SPRING_CLOUD**
+	// *   **DUBBO**
+	// *   **istio**
+	Protocol *string `json:"Protocol,omitempty" xml:"Protocol,omitempty"`
+	// The region ID.
+	Region *string `json:"Region,omitempty" xml:"Region,omitempty"`
+	// The service source.
+	Source *string `json:"Source,omitempty" xml:"Source,omitempty"`
 }
 
 func (s ListAuthPolicyRequest) String() string {
@@ -23084,12 +23771,21 @@ func (s *ListAuthPolicyRequest) SetSource(v string) *ListAuthPolicyRequest {
 }
 
 type ListAuthPolicyResponseBody struct {
-	Code           *int32                          `json:"Code,omitempty" xml:"Code,omitempty"`
-	Data           *ListAuthPolicyResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
-	HttpStatusCode *int32                          `json:"HttpStatusCode,omitempty" xml:"HttpStatusCode,omitempty"`
-	Message        *string                         `json:"Message,omitempty" xml:"Message,omitempty"`
-	RequestId      *string                         `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	Success        *bool                           `json:"Success,omitempty" xml:"Success,omitempty"`
+	// The response code.
+	Code *int32 `json:"Code,omitempty" xml:"Code,omitempty"`
+	// The details of the data.
+	Data *ListAuthPolicyResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
+	// The HTTP status code.
+	HttpStatusCode *int32 `json:"HttpStatusCode,omitempty" xml:"HttpStatusCode,omitempty"`
+	// The returned message.
+	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// The request ID.
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// Indicates whether the request was successful. Valid values:
+	//
+	// *   `true`: The request was successful.
+	// *   `false`: The request failed.
+	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
 }
 
 func (s ListAuthPolicyResponseBody) String() string {
@@ -23131,10 +23827,14 @@ func (s *ListAuthPolicyResponseBody) SetSuccess(v bool) *ListAuthPolicyResponseB
 }
 
 type ListAuthPolicyResponseBodyData struct {
-	PageNumber *int32                                  `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
-	PageSize   *int32                                  `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	Result     []*ListAuthPolicyResponseBodyDataResult `json:"Result,omitempty" xml:"Result,omitempty" type:"Repeated"`
-	TotalSize  *int32                                  `json:"TotalSize,omitempty" xml:"TotalSize,omitempty"`
+	// The page number.
+	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
+	// The number of entries per page.
+	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	// The data returned.
+	Result []*ListAuthPolicyResponseBodyDataResult `json:"Result,omitempty" xml:"Result,omitempty" type:"Repeated"`
+	// The total number of entries.
+	TotalSize *int32 `json:"TotalSize,omitempty" xml:"TotalSize,omitempty"`
 }
 
 func (s ListAuthPolicyResponseBodyData) String() string {
@@ -23166,21 +23866,44 @@ func (s *ListAuthPolicyResponseBodyData) SetTotalSize(v int32) *ListAuthPolicyRe
 }
 
 type ListAuthPolicyResponseBodyDataResult struct {
-	AccountId *string                                         `json:"AccountId,omitempty" xml:"AccountId,omitempty"`
-	AppId     *string                                         `json:"AppId,omitempty" xml:"AppId,omitempty"`
-	AppName   *string                                         `json:"AppName,omitempty" xml:"AppName,omitempty"`
-	AuthRule  []*ListAuthPolicyResponseBodyDataResultAuthRule `json:"AuthRule,omitempty" xml:"AuthRule,omitempty" type:"Repeated"`
-	AuthType  *int32                                          `json:"AuthType,omitempty" xml:"AuthType,omitempty"`
-	Enable    *bool                                           `json:"Enable,omitempty" xml:"Enable,omitempty"`
-	// ID。
-	Id           *int32  `json:"Id,omitempty" xml:"Id,omitempty"`
+	// The ID of the Alibaba Cloud account to which the resource belongs.
+	AccountId *string `json:"AccountId,omitempty" xml:"AccountId,omitempty"`
+	// The application ID.
+	AppId *string `json:"AppId,omitempty" xml:"AppId,omitempty"`
+	// The application name.
+	AppName *string `json:"AppName,omitempty" xml:"AppName,omitempty"`
+	// The content of the service authentication rule.
+	AuthRule []*ListAuthPolicyResponseBodyDataResultAuthRule `json:"AuthRule,omitempty" xml:"AuthRule,omitempty" type:"Repeated"`
+	// The rule type. Valid values:
+	//
+	// *   0: by application
+	// *   1: by namespace
+	AuthType *int32 `json:"AuthType,omitempty" xml:"AuthType,omitempty"`
+	// Indicates whether the rule was enabled or disabled. Valid values:
+	//
+	// *   `true`: enabled
+	// *   `false`: disabled
+	Enable *bool `json:"Enable,omitempty" xml:"Enable,omitempty"`
+	// The rule ID.
+	Id *int32 `json:"Id,omitempty" xml:"Id,omitempty"`
+	// The namespace.
 	K8sNamespace *string `json:"K8sNamespace,omitempty" xml:"K8sNamespace,omitempty"`
-	Name         *string `json:"Name,omitempty" xml:"Name,omitempty"`
-	NamespaceId  *string `json:"NamespaceId,omitempty" xml:"NamespaceId,omitempty"`
-	Protocol     *string `json:"Protocol,omitempty" xml:"Protocol,omitempty"`
-	RegionId     *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	Source       *string `json:"Source,omitempty" xml:"Source,omitempty"`
-	Status       *int32  `json:"Status,omitempty" xml:"Status,omitempty"`
+	// The name of the authentication rule.
+	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// The namespace ID.
+	NamespaceId *string `json:"NamespaceId,omitempty" xml:"NamespaceId,omitempty"`
+	// The protocol type. Valid values:
+	//
+	// *   **SPRING_CLOUD**
+	// *   **DUBBO**
+	// *   **istio**
+	Protocol *string `json:"Protocol,omitempty" xml:"Protocol,omitempty"`
+	// The region ID.
+	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	// The source of the application.
+	Source *string `json:"Source,omitempty" xml:"Source,omitempty"`
+	// The status.
+	Status *int32 `json:"Status,omitempty" xml:"Status,omitempty"`
 }
 
 func (s ListAuthPolicyResponseBodyDataResult) String() string {
@@ -23262,12 +23985,21 @@ func (s *ListAuthPolicyResponseBodyDataResult) SetStatus(v int32) *ListAuthPolic
 }
 
 type ListAuthPolicyResponseBodyDataResultAuthRule struct {
-	AppIds        []*string                                           `json:"AppIds,omitempty" xml:"AppIds,omitempty" type:"Repeated"`
-	AuthType      *int32                                              `json:"AuthType,omitempty" xml:"AuthType,omitempty"`
-	Black         *bool                                               `json:"Black,omitempty" xml:"Black,omitempty"`
-	K8sNamespaces []*string                                           `json:"K8sNamespaces,omitempty" xml:"K8sNamespaces,omitempty" type:"Repeated"`
-	Method        *ListAuthPolicyResponseBodyDataResultAuthRuleMethod `json:"Method,omitempty" xml:"Method,omitempty" type:"Struct"`
-	Path          *string                                             `json:"Path,omitempty" xml:"Path,omitempty"`
+	// The IDs of applications.
+	AppIds []*string `json:"AppIds,omitempty" xml:"AppIds,omitempty" type:"Repeated"`
+	// The rule type. Valid values:
+	//
+	// *   0: by application
+	// *   1: by namespace
+	AuthType *int32 `json:"AuthType,omitempty" xml:"AuthType,omitempty"`
+	// Indicates whether the rule is a blacklist rule.
+	Black *bool `json:"Black,omitempty" xml:"Black,omitempty"`
+	// The queried namespaces.
+	K8sNamespaces []*string `json:"K8sNamespaces,omitempty" xml:"K8sNamespaces,omitempty" type:"Repeated"`
+	// The request method.
+	Method *ListAuthPolicyResponseBodyDataResultAuthRuleMethod `json:"Method,omitempty" xml:"Method,omitempty" type:"Struct"`
+	// The service path.
+	Path *string `json:"Path,omitempty" xml:"Path,omitempty"`
 }
 
 func (s ListAuthPolicyResponseBodyDataResultAuthRule) String() string {
@@ -23309,12 +24041,18 @@ func (s *ListAuthPolicyResponseBodyDataResultAuthRule) SetPath(v string) *ListAu
 }
 
 type ListAuthPolicyResponseBodyDataResultAuthRuleMethod struct {
-	Group          *string   `json:"Group,omitempty" xml:"Group,omitempty"`
-	Name           *string   `json:"Name,omitempty" xml:"Name,omitempty"`
+	// The group.
+	Group *string `json:"Group,omitempty" xml:"Group,omitempty"`
+	// The method name.
+	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// The types of request parameters.
 	ParameterTypes []*string `json:"ParameterTypes,omitempty" xml:"ParameterTypes,omitempty" type:"Repeated"`
-	ReturnType     *string   `json:"ReturnType,omitempty" xml:"ReturnType,omitempty"`
-	ServiceName    *string   `json:"ServiceName,omitempty" xml:"ServiceName,omitempty"`
-	Version        *string   `json:"Version,omitempty" xml:"Version,omitempty"`
+	// The type of the return value.
+	ReturnType *string `json:"ReturnType,omitempty" xml:"ReturnType,omitempty"`
+	// The service name.
+	ServiceName *string `json:"ServiceName,omitempty" xml:"ServiceName,omitempty"`
+	// The method version.
+	Version *string `json:"Version,omitempty" xml:"Version,omitempty"`
 }
 
 func (s ListAuthPolicyResponseBodyDataResultAuthRuleMethod) String() string {
@@ -23385,13 +24123,21 @@ func (s *ListAuthPolicyResponse) SetBody(v *ListAuthPolicyResponseBody) *ListAut
 }
 
 type ListCircuitBreakerRulesRequest struct {
-	AcceptLanguage    *string `json:"AcceptLanguage,omitempty" xml:"AcceptLanguage,omitempty"`
-	AppId             *string `json:"AppId,omitempty" xml:"AppId,omitempty"`
-	AppName           *string `json:"AppName,omitempty" xml:"AppName,omitempty"`
-	Namespace         *string `json:"Namespace,omitempty" xml:"Namespace,omitempty"`
-	PageIndex         *int32  `json:"PageIndex,omitempty" xml:"PageIndex,omitempty"`
-	PageSize          *int32  `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	Resource          *string `json:"Resource,omitempty" xml:"Resource,omitempty"`
+	// The language of the response. Valid values: zh-CN and en-US. Default value: zh-CN. The value zh-CN indicates Chinese, and the value en-US indicates English.
+	AcceptLanguage *string `json:"AcceptLanguage,omitempty" xml:"AcceptLanguage,omitempty"`
+	// The ID of the application.
+	AppId *string `json:"AppId,omitempty" xml:"AppId,omitempty"`
+	// The name of the application.
+	AppName *string `json:"AppName,omitempty" xml:"AppName,omitempty"`
+	// The microservice namespace to which the application belongs.
+	Namespace *string `json:"Namespace,omitempty" xml:"Namespace,omitempty"`
+	// The start page of the returned pages. Default value: 1.
+	PageIndex *int32 `json:"PageIndex,omitempty" xml:"PageIndex,omitempty"`
+	// The number of entries per page. Default value: 6.
+	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	// This parameter is used for exact match of circuit breaking rules.
+	Resource *string `json:"Resource,omitempty" xml:"Resource,omitempty"`
+	// This parameter is used for fuzzy match of circuit breaking rules.
 	ResourceSearchKey *string `json:"ResourceSearchKey,omitempty" xml:"ResourceSearchKey,omitempty"`
 }
 
@@ -23444,12 +24190,18 @@ func (s *ListCircuitBreakerRulesRequest) SetResourceSearchKey(v string) *ListCir
 }
 
 type ListCircuitBreakerRulesResponseBody struct {
-	Code           *int32                                   `json:"Code,omitempty" xml:"Code,omitempty"`
-	Data           *ListCircuitBreakerRulesResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
-	HttpStatusCode *int32                                   `json:"HttpStatusCode,omitempty" xml:"HttpStatusCode,omitempty"`
-	Message        *string                                  `json:"Message,omitempty" xml:"Message,omitempty"`
-	RequestId      *string                                  `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	Success        *bool                                    `json:"Success,omitempty" xml:"Success,omitempty"`
+	// The response code.
+	Code *int32 `json:"Code,omitempty" xml:"Code,omitempty"`
+	// The details of the rule.
+	Data *ListCircuitBreakerRulesResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
+	// The HTTP status code.
+	HttpStatusCode *int32 `json:"HttpStatusCode,omitempty" xml:"HttpStatusCode,omitempty"`
+	// The returned message.
+	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// The request ID.
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// Indicates whether the request was successful.
+	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
 }
 
 func (s ListCircuitBreakerRulesResponseBody) String() string {
@@ -23491,10 +24243,14 @@ func (s *ListCircuitBreakerRulesResponseBody) SetSuccess(v bool) *ListCircuitBre
 }
 
 type ListCircuitBreakerRulesResponseBodyData struct {
-	PageNumber *int32                                           `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
-	PageSize   *int32                                           `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	Result     []*ListCircuitBreakerRulesResponseBodyDataResult `json:"Result,omitempty" xml:"Result,omitempty" type:"Repeated"`
-	TotalSize  *int32                                           `json:"TotalSize,omitempty" xml:"TotalSize,omitempty"`
+	// The page number.
+	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
+	// The number of entries per page.
+	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	// The returned result.
+	Result []*ListCircuitBreakerRulesResponseBodyDataResult `json:"Result,omitempty" xml:"Result,omitempty" type:"Repeated"`
+	// The total number of pages.
+	TotalSize *int32 `json:"TotalSize,omitempty" xml:"TotalSize,omitempty"`
 }
 
 func (s ListCircuitBreakerRulesResponseBodyData) String() string {
@@ -23526,22 +24282,64 @@ func (s *ListCircuitBreakerRulesResponseBodyData) SetTotalSize(v int32) *ListCir
 }
 
 type ListCircuitBreakerRulesResponseBodyDataResult struct {
-	AppId                     *string  `json:"AppId,omitempty" xml:"AppId,omitempty"`
-	AppName                   *string  `json:"AppName,omitempty" xml:"AppName,omitempty"`
-	Enable                    *bool    `json:"Enable,omitempty" xml:"Enable,omitempty"`
-	FallbackObject            *string  `json:"FallbackObject,omitempty" xml:"FallbackObject,omitempty"`
-	HalfOpenBaseAmountPerStep *int32   `json:"HalfOpenBaseAmountPerStep,omitempty" xml:"HalfOpenBaseAmountPerStep,omitempty"`
-	HalfOpenRecoveryStepNum   *int32   `json:"HalfOpenRecoveryStepNum,omitempty" xml:"HalfOpenRecoveryStepNum,omitempty"`
-	MaxAllowedRtMs            *int32   `json:"MaxAllowedRtMs,omitempty" xml:"MaxAllowedRtMs,omitempty"`
-	MinRequestAmount          *int32   `json:"MinRequestAmount,omitempty" xml:"MinRequestAmount,omitempty"`
-	Namespace                 *string  `json:"Namespace,omitempty" xml:"Namespace,omitempty"`
-	RegionId                  *string  `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	Resource                  *string  `json:"Resource,omitempty" xml:"Resource,omitempty"`
-	RetryTimeoutMs            *int32   `json:"RetryTimeoutMs,omitempty" xml:"RetryTimeoutMs,omitempty"`
-	RuleId                    *int64   `json:"RuleId,omitempty" xml:"RuleId,omitempty"`
-	StatIntervalMs            *int32   `json:"StatIntervalMs,omitempty" xml:"StatIntervalMs,omitempty"`
-	Strategy                  *int32   `json:"Strategy,omitempty" xml:"Strategy,omitempty"`
-	Threshold                 *float32 `json:"Threshold,omitempty" xml:"Threshold,omitempty"`
+	// The ID of the application.
+	AppId *string `json:"AppId,omitempty" xml:"AppId,omitempty"`
+	// The name of the application.
+	AppName *string `json:"AppName,omitempty" xml:"AppName,omitempty"`
+	// Indicates whether the rule was enabled.
+	Enable *bool `json:"Enable,omitempty" xml:"Enable,omitempty"`
+	// The behavior that was bound to the rule.
+	FallbackObject *string `json:"FallbackObject,omitempty" xml:"FallbackObject,omitempty"`
+	// The minimum number of requests that can be passed in each step after circuit breaking recovers.
+	HalfOpenBaseAmountPerStep *int32 `json:"HalfOpenBaseAmountPerStep,omitempty" xml:"HalfOpenBaseAmountPerStep,omitempty"`
+	// The number of circuit breaking recovery steps.
+	HalfOpenRecoveryStepNum *int32 `json:"HalfOpenRecoveryStepNum,omitempty" xml:"HalfOpenRecoveryStepNum,omitempty"`
+	// The maximum response time (RT). Unit: milliseconds. If the RT of a request is greater than the value of this parameter, a slow call is counted. If you set Strategy to 0, you must specify this parameter.
+	MaxAllowedRtMs *int32 `json:"MaxAllowedRtMs,omitempty" xml:"MaxAllowedRtMs,omitempty"`
+	// The minimum number of requests to trigger circuit breaking. If the number of requests in the current time window is less than the value of this parameter, circuit breaking is not triggered even if the circuit breaking rule is met.
+	MinRequestAmount *int32 `json:"MinRequestAmount,omitempty" xml:"MinRequestAmount,omitempty"`
+	// The microservice namespace to which the application belongs.
+	Namespace *string `json:"Namespace,omitempty" xml:"Namespace,omitempty"`
+	// The region where the cluster resides.
+	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	// The name of the interface to which the rule is applicable. The interface name must be the same as the name on the interface details page in the console.
+	Resource *string `json:"Resource,omitempty" xml:"Resource,omitempty"`
+	// The period in which circuit breaking is implemented. Unit: milliseconds. If circuit breaking is implemented on the requests for the route, the calls to all the requests for the route fail in the configured circuit breaking period.
+	RetryTimeoutMs *int32 `json:"RetryTimeoutMs,omitempty" xml:"RetryTimeoutMs,omitempty"`
+	// The ID of the rule.
+	RuleId *int64 `json:"RuleId,omitempty" xml:"RuleId,omitempty"`
+	// The length of the time window. Unit: milliseconds. The valid range is from 1 second to 120 minutes.
+	StatIntervalMs *int32 `json:"StatIntervalMs,omitempty" xml:"StatIntervalMs,omitempty"`
+	// The threshold type.
+	//
+	// Valid values:
+	//
+	// *   0
+	//
+	//     <!-- -->
+	//
+	//     :
+	//
+	//     <!-- -->
+	//
+	//     slow call proportion
+	//
+	//     <!-- -->
+	//
+	// *   1
+	//
+	//     <!-- -->
+	//
+	//     :
+	//
+	//     <!-- -->
+	//
+	//     abnormal proportion
+	//
+	//     <!-- -->
+	Strategy *int32 `json:"Strategy,omitempty" xml:"Strategy,omitempty"`
+	// A percentage threshold for triggering circuit breaking. Valid values: 0-1. These values represent 0% to 100%.
+	Threshold *float32 `json:"Threshold,omitempty" xml:"Threshold,omitempty"`
 }
 
 func (s ListCircuitBreakerRulesResponseBodyDataResult) String() string {
@@ -23987,23 +24785,23 @@ type ListClusterHealthCheckTaskResponseBodyDataResult struct {
 	ClusterType *string `json:"ClusterType,omitempty" xml:"ClusterType,omitempty"`
 	// The time when the task was created.
 	CreateTime *string `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
-	// The ID.
+	// The serial number.
 	Id *int32 `json:"Id,omitempty" xml:"Id,omitempty"`
 	// A redundant parameter.
 	ImageVersion *string `json:"ImageVersion,omitempty" xml:"ImageVersion,omitempty"`
-	// The ID of the instance.
+	// The instance ID.
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	// The ID of the user to which the instance belongs.
+	// The ID of the user to which the cluster belongs.
 	PrimaryUser *string `json:"PrimaryUser,omitempty" xml:"PrimaryUser,omitempty"`
-	// The number of nodes in the instance.
+	// The number of nodes in the cluster.
 	Replica *string `json:"Replica,omitempty" xml:"Replica,omitempty"`
-	// The list of risk items.
+	// The risk items.
 	RiskList []*ListClusterHealthCheckTaskResponseBodyDataResultRiskList `json:"RiskList,omitempty" xml:"RiskList,omitempty" type:"Repeated"`
 	// The total score.
 	Score *int32 `json:"Score,omitempty" xml:"Score,omitempty"`
 	// The specifications.
 	Spec *string `json:"Spec,omitempty" xml:"Spec,omitempty"`
-	// The status of the task.
+	// The task state.
 	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
 	// The total number of check items.
 	TotalItem *int32 `json:"TotalItem,omitempty" xml:"TotalItem,omitempty"`
@@ -24011,7 +24809,7 @@ type ListClusterHealthCheckTaskResponseBodyDataResult struct {
 	TotalRisk *int32 `json:"TotalRisk,omitempty" xml:"TotalRisk,omitempty"`
 	// A redundant parameter.
 	Type *string `json:"Type,omitempty" xml:"Type,omitempty"`
-	// The last update time.
+	// The time when the task was last updated.
 	UpdateTime *string `json:"UpdateTime,omitempty" xml:"UpdateTime,omitempty"`
 	// The version number.
 	VersionCode *string `json:"VersionCode,omitempty" xml:"VersionCode,omitempty"`
@@ -24118,11 +24916,11 @@ func (s *ListClusterHealthCheckTaskResponseBodyDataResult) SetVersionCode(v stri
 type ListClusterHealthCheckTaskResponseBodyDataResultRiskList struct {
 	// The description.
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
-	// The ID.
+	// The instance ID.
 	Id *int32 `json:"Id,omitempty" xml:"Id,omitempty"`
 	// A redundant parameter.
 	Module *string `json:"Module,omitempty" xml:"Module,omitempty"`
-	// Indicates whether the risk item notification feature is disabled.
+	// Indicates whether the risk item notification feature is disabled. Valid values:
 	//
 	// *   true: disabled
 	// *   false: enabled
@@ -24131,7 +24929,7 @@ type ListClusterHealthCheckTaskResponseBodyDataResultRiskList struct {
 	NoticeFeature *bool `json:"NoticeFeature,omitempty" xml:"NoticeFeature,omitempty"`
 	// The ID of the user to which the cluster belongs.
 	PrimaryUser *string `json:"PrimaryUser,omitempty" xml:"PrimaryUser,omitempty"`
-	// The risk code.
+	// The code of the risk.
 	RiskCode *string `json:"RiskCode,omitempty" xml:"RiskCode,omitempty"`
 	// The severity of the risk. Valid values:
 	//
@@ -24782,31 +25580,31 @@ type ListClustersResponseBodyData struct {
 	CanUpdate *bool `json:"CanUpdate,omitempty" xml:"CanUpdate,omitempty"`
 	// The billing method, such as subscription or pay-as-you-go.
 	ChargeType *string `json:"ChargeType,omitempty" xml:"ChargeType,omitempty"`
-	// The alias of the instance.
+	// The alias of the cluster.
 	ClusterAliasName *string `json:"ClusterAliasName,omitempty" xml:"ClusterAliasName,omitempty"`
-	// The name of the instance.
+	// The name of the cluster.
 	ClusterName *string `json:"ClusterName,omitempty" xml:"ClusterName,omitempty"`
-	// The type of the instance. Valid values: ZooKeeper, Nacos-Ans, and Eureka.
+	// The type of the cluster. Valid values: ZooKeeper, Nacos-Ans, and Eureka.
 	ClusterType *string `json:"ClusterType,omitempty" xml:"ClusterType,omitempty"`
-	// The time when the instance was created.
+	// The time when the cluster was created.
 	CreateTime *string `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
-	// The time when the instance expires.
+	// The time when the cluster expires.
 	EndDate *string `json:"EndDate,omitempty" xml:"EndDate,omitempty"`
 	// The initialization status of the instance.
 	InitStatus *string `json:"InitStatus,omitempty" xml:"InitStatus,omitempty"`
-	// The number of instance nodes.
+	// The number of clusters.
 	InstanceCount *int64 `json:"InstanceCount,omitempty" xml:"InstanceCount,omitempty"`
-	// The ID of the instance
+	// The instance ID.
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
 	// The public IP address.
 	InternetAddress *string `json:"InternetAddress,omitempty" xml:"InternetAddress,omitempty"`
-	// The public endpoint of the instance.
+	// The public endpoint.
 	InternetDomain *string `json:"InternetDomain,omitempty" xml:"InternetDomain,omitempty"`
 	// The internal IP address.
 	IntranetAddress *string `json:"IntranetAddress,omitempty" xml:"IntranetAddress,omitempty"`
-	// The internal endpoint of the instance.
+	// The internal endpoint.
 	IntranetDomain *string `json:"IntranetDomain,omitempty" xml:"IntranetDomain,omitempty"`
-	// The edition of the instance.
+	// The edition of the cluster.
 	MseVersion *string `json:"MseVersion,omitempty" xml:"MseVersion,omitempty"`
 	// The ID of the resource group to which the instance belongs.
 	ResourceGroupId *string `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
@@ -24955,7 +25753,10 @@ func (s *ListClustersResponse) SetBody(v *ListClustersResponseBody) *ListCluster
 }
 
 type ListConfigTrackRequest struct {
-	// The data structure.
+	// The language of the response. Valid values:
+	//
+	// *   zh: Chinese
+	// *   en: English
 	AcceptLanguage *string `json:"AcceptLanguage,omitempty" xml:"AcceptLanguage,omitempty"`
 	// The name of the configuration group.
 	DataId *string `json:"DataId,omitempty" xml:"DataId,omitempty"`
@@ -26170,13 +26971,24 @@ func (s *ListExportZookeeperDataResponse) SetBody(v *ListExportZookeeperDataResp
 }
 
 type ListFlowRulesRequest struct {
-	AcceptLanguage    *string `json:"AcceptLanguage,omitempty" xml:"AcceptLanguage,omitempty"`
-	AppId             *string `json:"AppId,omitempty" xml:"AppId,omitempty"`
-	AppName           *string `json:"AppName,omitempty" xml:"AppName,omitempty"`
-	Namespace         *string `json:"Namespace,omitempty" xml:"Namespace,omitempty"`
-	PageIndex         *int32  `json:"PageIndex,omitempty" xml:"PageIndex,omitempty"`
-	PageSize          *int32  `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	Resource          *string `json:"Resource,omitempty" xml:"Resource,omitempty"`
+	// The language of the response. Valid values:
+	//
+	// *   zh: Chinese
+	// *   en: English
+	AcceptLanguage *string `json:"AcceptLanguage,omitempty" xml:"AcceptLanguage,omitempty"`
+	// The ID of the application.
+	AppId *string `json:"AppId,omitempty" xml:"AppId,omitempty"`
+	// The name of the application.
+	AppName *string `json:"AppName,omitempty" xml:"AppName,omitempty"`
+	// The namespace.
+	Namespace *string `json:"Namespace,omitempty" xml:"Namespace,omitempty"`
+	// The page number. Default value: 1.
+	PageIndex *int32 `json:"PageIndex,omitempty" xml:"PageIndex,omitempty"`
+	// The number of entries per page.
+	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	// The name of the resource.
+	Resource *string `json:"Resource,omitempty" xml:"Resource,omitempty"`
+	// The keyword that is used for the search.
 	ResourceSearchKey *string `json:"ResourceSearchKey,omitempty" xml:"ResourceSearchKey,omitempty"`
 }
 
@@ -26229,12 +27041,44 @@ func (s *ListFlowRulesRequest) SetResourceSearchKey(v string) *ListFlowRulesRequ
 }
 
 type ListFlowRulesResponseBody struct {
-	Code           *int32                         `json:"Code,omitempty" xml:"Code,omitempty"`
-	Data           *ListFlowRulesResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
-	HttpStatusCode *int32                         `json:"HttpStatusCode,omitempty" xml:"HttpStatusCode,omitempty"`
-	Message        *string                        `json:"Message,omitempty" xml:"Message,omitempty"`
-	RequestId      *string                        `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	Success        *bool                          `json:"Success,omitempty" xml:"Success,omitempty"`
+	// The HTTP status code.
+	Code *int32 `json:"Code,omitempty" xml:"Code,omitempty"`
+	// The details of the data.
+	Data *ListFlowRulesResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
+	// The HTTP status code.
+	HttpStatusCode *int32 `json:"HttpStatusCode,omitempty" xml:"HttpStatusCode,omitempty"`
+	// The returned message.
+	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// The request ID.
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// Indicates whether the request was successful.
+	//
+	// Valid values:
+	//
+	// *   true
+	//
+	//     <!-- -->
+	//
+	//     :
+	//
+	//     <!-- -->
+	//
+	//     The request was successful.
+	//
+	//     <!-- -->
+	//
+	// *   false
+	//
+	//     <!-- -->
+	//
+	//     :
+	//
+	//     <!-- -->
+	//
+	//     The request failed.
+	//
+	//     <!-- -->
+	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
 }
 
 func (s ListFlowRulesResponseBody) String() string {
@@ -26276,10 +27120,14 @@ func (s *ListFlowRulesResponseBody) SetSuccess(v bool) *ListFlowRulesResponseBod
 }
 
 type ListFlowRulesResponseBodyData struct {
-	PageNumber *int32                                 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
-	PageSize   *int32                                 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	Result     []*ListFlowRulesResponseBodyDataResult `json:"Result,omitempty" xml:"Result,omitempty" type:"Repeated"`
-	TotalSize  *int32                                 `json:"TotalSize,omitempty" xml:"TotalSize,omitempty"`
+	// The page number.
+	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
+	// The number of entries per page.
+	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	// The data returned.
+	Result []*ListFlowRulesResponseBodyDataResult `json:"Result,omitempty" xml:"Result,omitempty" type:"Repeated"`
+	// The total number of entries.
+	TotalSize *int32 `json:"TotalSize,omitempty" xml:"TotalSize,omitempty"`
 }
 
 func (s ListFlowRulesResponseBodyData) String() string {
@@ -26311,19 +27159,76 @@ func (s *ListFlowRulesResponseBodyData) SetTotalSize(v int32) *ListFlowRulesResp
 }
 
 type ListFlowRulesResponseBodyDataResult struct {
-	AppId             *string                `json:"AppId,omitempty" xml:"AppId,omitempty"`
-	AppName           *string                `json:"AppName,omitempty" xml:"AppName,omitempty"`
-	ControlBehavior   *int32                 `json:"ControlBehavior,omitempty" xml:"ControlBehavior,omitempty"`
-	Enable            *bool                  `json:"Enable,omitempty" xml:"Enable,omitempty"`
-	FallbackObject    *string                `json:"FallbackObject,omitempty" xml:"FallbackObject,omitempty"`
-	MaxQueueingTimeMs *int32                 `json:"MaxQueueingTimeMs,omitempty" xml:"MaxQueueingTimeMs,omitempty"`
-	MetricType        *int32                 `json:"MetricType,omitempty" xml:"MetricType,omitempty"`
-	Namespace         *string                `json:"Namespace,omitempty" xml:"Namespace,omitempty"`
-	RegionId          *string                `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	Resource          *string                `json:"Resource,omitempty" xml:"Resource,omitempty"`
-	RuleId            *int64                 `json:"RuleId,omitempty" xml:"RuleId,omitempty"`
-	Threshold         *float32               `json:"Threshold,omitempty" xml:"Threshold,omitempty"`
-	TrafficTags       map[string]interface{} `json:"TrafficTags,omitempty" xml:"TrafficTags,omitempty"`
+	// The ID of the application.
+	AppId *string `json:"AppId,omitempty" xml:"AppId,omitempty"`
+	// The name of the application.
+	AppName *string `json:"AppName,omitempty" xml:"AppName,omitempty"`
+	// The throttling effect.
+	//
+	// Valid values:
+	//
+	// *   0
+	//
+	//     <!-- -->
+	//
+	//     :
+	//
+	//     <!-- -->
+	//
+	//     fast failure
+	//
+	//     <!-- -->
+	//
+	// *   2
+	//
+	//     <!-- -->
+	//
+	//     :
+	//
+	//     <!-- -->
+	//
+	//     in queue
+	//
+	//     <!-- -->
+	ControlBehavior *int32 `json:"ControlBehavior,omitempty" xml:"ControlBehavior,omitempty"`
+	// Indicates whether the throttling rule was enabled.
+	//
+	// Valid values:
+	//
+	// *   true
+	//
+	//     <!-- -->
+	//
+	//     <!-- -->
+	//
+	//     <!-- -->
+	//
+	// *   false
+	//
+	//     <!-- -->
+	//
+	//     <!-- -->
+	//
+	//     <!-- -->
+	Enable *bool `json:"Enable,omitempty" xml:"Enable,omitempty"`
+	// The throttling behavior.
+	FallbackObject *string `json:"FallbackObject,omitempty" xml:"FallbackObject,omitempty"`
+	// The timeout period for queuing when the value of ControlBehavior is set to 2. Unit: milliseconds.
+	MaxQueueingTimeMs *int32 `json:"MaxQueueingTimeMs,omitempty" xml:"MaxQueueingTimeMs,omitempty"`
+	// The statistical dimension. The value 1 indicates the number of accepted requests.
+	MetricType *int32 `json:"MetricType,omitempty" xml:"MetricType,omitempty"`
+	// The namespace.
+	Namespace *string `json:"Namespace,omitempty" xml:"Namespace,omitempty"`
+	// The region ID.
+	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	// The name of the interface resource.
+	Resource *string `json:"Resource,omitempty" xml:"Resource,omitempty"`
+	// The ID of the rule.
+	RuleId *int64 `json:"RuleId,omitempty" xml:"RuleId,omitempty"`
+	// The throttling threshold.
+	Threshold *float32 `json:"Threshold,omitempty" xml:"Threshold,omitempty"`
+	// A reserved parameter.
+	TrafficTags map[string]interface{} `json:"TrafficTags,omitempty" xml:"TrafficTags,omitempty"`
 }
 
 func (s ListFlowRulesResponseBodyDataResult) String() string {
@@ -26603,7 +27508,7 @@ func (s *ListGatewayShrinkRequest) SetPageSize(v int32) *ListGatewayShrinkReques
 type ListGatewayResponseBody struct {
 	// The return value.
 	Code *int32 `json:"Code,omitempty" xml:"Code,omitempty"`
-	// The returned data.
+	// The data returned.
 	Data *ListGatewayResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
 	// The HTTP status code returned.
 	HttpStatusCode *int32 `json:"HttpStatusCode,omitempty" xml:"HttpStatusCode,omitempty"`
@@ -26661,7 +27566,7 @@ type ListGatewayResponseBodyData struct {
 	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
 	// The number of entries returned per page.
 	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	// The data entries returned.
+	// The data returned.
 	Result []*ListGatewayResponseBodyDataResult `json:"Result,omitempty" xml:"Result,omitempty" type:"Repeated"`
 	// The total number of entries returned.
 	TotalSize *int64 `json:"TotalSize,omitempty" xml:"TotalSize,omitempty"`
@@ -26711,37 +27616,39 @@ type ListGatewayResponseBodyDataResult struct {
 	ElasticPolicy     *ListGatewayResponseBodyDataResultElasticPolicy `json:"ElasticPolicy,omitempty" xml:"ElasticPolicy,omitempty" type:"Struct"`
 	ElasticReplica    *int32                                          `json:"ElasticReplica,omitempty" xml:"ElasticReplica,omitempty"`
 	ElasticType       *string                                         `json:"ElasticType,omitempty" xml:"ElasticType,omitempty"`
-	// The time when the subscription gateway expires.
+	// The time when the instance expires.
 	EndDate *string `json:"EndDate,omitempty" xml:"EndDate,omitempty"`
-	// The type of the gateway.
+	// The gateway type.
 	GatewayType *string `json:"GatewayType,omitempty" xml:"GatewayType,omitempty"`
 	// The unique ID of the gateway.
 	GatewayUniqueId *string `json:"GatewayUniqueId,omitempty" xml:"GatewayUniqueId,omitempty"`
 	// The version of the gateway.
 	GatewayVersion *string `json:"GatewayVersion,omitempty" xml:"GatewayVersion,omitempty"`
-	// The creation time.
+	// The time when the gateway was created.
 	GmtCreate *string `json:"GmtCreate,omitempty" xml:"GmtCreate,omitempty"`
-	// The modification time.
+	// The time when the gateway was modified.
 	GmtModified *string `json:"GmtModified,omitempty" xml:"GmtModified,omitempty"`
-	// The ID of the gateway.
+	// The gateway ID.
 	Id *int64 `json:"Id,omitempty" xml:"Id,omitempty"`
 	// The configurations.
 	InitConfig *ListGatewayResponseBodyDataResultInitConfig `json:"InitConfig,omitempty" xml:"InitConfig,omitempty" type:"Struct"`
-	// The ID of the instance.
+	// The instance ID.
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
 	// The details of the Internet-facing SLB instances.
 	InternetSlb []*ListGatewayResponseBodyDataResultInternetSlb `json:"InternetSlb,omitempty" xml:"InternetSlb,omitempty" type:"Repeated"`
 	// The latest version of the gateway.
-	LatestVersion *string `json:"LatestVersion,omitempty" xml:"LatestVersion,omitempty"`
-	// The tag of the instance.
-	MseTag *string `json:"MseTag,omitempty" xml:"MseTag,omitempty"`
-	// Indicates whether the gateway can be forcefully updated.
+	LatestVersion     *string                                             `json:"LatestVersion,omitempty" xml:"LatestVersion,omitempty"`
+	MaintenancePeriod *ListGatewayResponseBodyDataResultMaintenancePeriod `json:"MaintenancePeriod,omitempty" xml:"MaintenancePeriod,omitempty" type:"Struct"`
+	// The resource tag.
+	MseTag     *string `json:"MseTag,omitempty" xml:"MseTag,omitempty"`
+	MseVersion *string `json:"MseVersion,omitempty" xml:"MseVersion,omitempty"`
+	// Indicates whether the instance was forcefully upgraded.
 	MustUpgrade *bool `json:"MustUpgrade,omitempty" xml:"MustUpgrade,omitempty"`
-	// The name of the gateway.
+	// The gateway name.
 	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
-	// The information about the user.
+	// The user information.
 	PrimaryUser *string `json:"PrimaryUser,omitempty" xml:"PrimaryUser,omitempty"`
-	// The region ID.
+	// The region in which the gateway resides.
 	Region *string `json:"Region,omitempty" xml:"Region,omitempty"`
 	// The number of replicas.
 	Replica *int32 `json:"Replica,omitempty" xml:"Replica,omitempty"`
@@ -26749,33 +27656,33 @@ type ListGatewayResponseBodyDataResult struct {
 	ResourceGroupId *string `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
 	// Indicates whether rollbacks are allowed.
 	RollBack *bool `json:"RollBack,omitempty" xml:"RollBack,omitempty"`
-	// The details of the Server Load Balancer (SLB) instances.
+	// The details of Server Load Balancer (SLB) instances.
 	Slb []*ListGatewayResponseBodyDataResultSlb `json:"Slb,omitempty" xml:"Slb,omitempty" type:"Repeated"`
 	// The specifications of the gateway.
 	Spec *string `json:"Spec,omitempty" xml:"Spec,omitempty"`
-	// The gateway status.
+	// The gateway state. Valid values:
 	//
 	// *   0: The gateway is being created.
-	// *   1: The gateway fails to be created.
+	// *   1: The gateway failed to be created.
 	// *   2: The gateway is running.
-	// *   3: The gateway is changing.
+	// *   3: The gateway is being changed.
 	// *   4: The gateway is scaling down.
 	// *   6: The gateway is scaling up.
 	// *   8: The gateway is being deleted.
-	// *   9: The gateway is suspended and to be released.
+	// *   9: The gateway is suspended and is to be released.
 	// *   10: The gateway is restarting.
 	// *   11: The gateway is being rebuilt.
-	// *   12: The gateway is updating.
-	// *   13: The gateway fails to be updated.
+	// *   12: The gateway is being upgraded.
+	// *   13: The gateway failed to be upgraded.
 	Status *int32 `json:"Status,omitempty" xml:"Status,omitempty"`
-	// The description of the status.
+	// The description of the gateway state.
 	StatusDesc *string `json:"StatusDesc,omitempty" xml:"StatusDesc,omitempty"`
 	// Indicates whether WebAssembly (Wasm) is supported.
 	SupportWasm *bool `json:"SupportWasm,omitempty" xml:"SupportWasm,omitempty"`
 	// The tag.
 	Tag          *string `json:"Tag,omitempty" xml:"Tag,omitempty"`
 	TotalReplica *int32  `json:"TotalReplica,omitempty" xml:"TotalReplica,omitempty"`
-	// Indicates whether the gateway can be updated.
+	// Indicates whether the instance was upgraded.
 	Upgrade *bool   `json:"Upgrade,omitempty" xml:"Upgrade,omitempty"`
 	VpcId   *string `json:"VpcId,omitempty" xml:"VpcId,omitempty"`
 	// The ID of the secondary vSwitch.
@@ -26895,8 +27802,18 @@ func (s *ListGatewayResponseBodyDataResult) SetLatestVersion(v string) *ListGate
 	return s
 }
 
+func (s *ListGatewayResponseBodyDataResult) SetMaintenancePeriod(v *ListGatewayResponseBodyDataResultMaintenancePeriod) *ListGatewayResponseBodyDataResult {
+	s.MaintenancePeriod = v
+	return s
+}
+
 func (s *ListGatewayResponseBodyDataResult) SetMseTag(v string) *ListGatewayResponseBodyDataResult {
 	s.MseTag = &v
+	return s
+}
+
+func (s *ListGatewayResponseBodyDataResult) SetMseVersion(v string) *ListGatewayResponseBodyDataResult {
+	s.MseVersion = &v
 	return s
 }
 
@@ -27077,7 +27994,7 @@ func (s *ListGatewayResponseBodyDataResultInitConfig) SetSupportWaf(v bool) *Lis
 type ListGatewayResponseBodyDataResultInternetSlb struct {
 	// The mode of the SLB instance.
 	GatewaySlbMode *string `json:"GatewaySlbMode,omitempty" xml:"GatewaySlbMode,omitempty"`
-	// The status of the SLB instance.
+	// The state of the SLB instance.
 	GatewaySlbStatus *string `json:"GatewaySlbStatus,omitempty" xml:"GatewaySlbStatus,omitempty"`
 	// The traffic of the gateway.
 	InternetNetworkFlow *string `json:"InternetNetworkFlow,omitempty" xml:"InternetNetworkFlow,omitempty"`
@@ -27089,9 +28006,9 @@ type ListGatewayResponseBodyDataResultInternetSlb struct {
 	SlbPort *string `json:"SlbPort,omitempty" xml:"SlbPort,omitempty"`
 	// The specifications of the SLB instance.
 	SlbSpec *string `json:"SlbSpec,omitempty" xml:"SlbSpec,omitempty"`
-	// The description of the status.
+	// The description of the state.
 	StatusDesc *string `json:"StatusDesc,omitempty" xml:"StatusDesc,omitempty"`
-	// The type.
+	// The type of the SLB instance.
 	Type *string `json:"Type,omitempty" xml:"Type,omitempty"`
 }
 
@@ -27148,10 +28065,39 @@ func (s *ListGatewayResponseBodyDataResultInternetSlb) SetType(v string) *ListGa
 	return s
 }
 
+type ListGatewayResponseBodyDataResultMaintenancePeriod struct {
+	EndTime   *string `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
+	StartTime *string `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
+	TimeZone  *string `json:"TimeZone,omitempty" xml:"TimeZone,omitempty"`
+}
+
+func (s ListGatewayResponseBodyDataResultMaintenancePeriod) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListGatewayResponseBodyDataResultMaintenancePeriod) GoString() string {
+	return s.String()
+}
+
+func (s *ListGatewayResponseBodyDataResultMaintenancePeriod) SetEndTime(v string) *ListGatewayResponseBodyDataResultMaintenancePeriod {
+	s.EndTime = &v
+	return s
+}
+
+func (s *ListGatewayResponseBodyDataResultMaintenancePeriod) SetStartTime(v string) *ListGatewayResponseBodyDataResultMaintenancePeriod {
+	s.StartTime = &v
+	return s
+}
+
+func (s *ListGatewayResponseBodyDataResultMaintenancePeriod) SetTimeZone(v string) *ListGatewayResponseBodyDataResultMaintenancePeriod {
+	s.TimeZone = &v
+	return s
+}
+
 type ListGatewayResponseBodyDataResultSlb struct {
 	// The mode of the SLB instance.
 	GatewaySlbMode *string `json:"GatewaySlbMode,omitempty" xml:"GatewaySlbMode,omitempty"`
-	// The status of the SLB instance.
+	// The state of the SLB instance.
 	GatewaySlbStatus *string `json:"GatewaySlbStatus,omitempty" xml:"GatewaySlbStatus,omitempty"`
 	// The ID of the SLB instance.
 	SlbId *string `json:"SlbId,omitempty" xml:"SlbId,omitempty"`
@@ -27161,9 +28107,9 @@ type ListGatewayResponseBodyDataResultSlb struct {
 	SlbPort *string `json:"SlbPort,omitempty" xml:"SlbPort,omitempty"`
 	// The specifications of the SLB instance.
 	SlbSpec *string `json:"SlbSpec,omitempty" xml:"SlbSpec,omitempty"`
-	// The description of the status.
+	// The description of the state.
 	StatusDesc *string `json:"StatusDesc,omitempty" xml:"StatusDesc,omitempty"`
-	// The type.
+	// Indicates whether the instance was deployed on the public network or internal network.
 	Type *string `json:"Type,omitempty" xml:"Type,omitempty"`
 }
 
@@ -27859,7 +28805,7 @@ func (s *ListGatewayDomainRequest) SetType(v string) *ListGatewayDomainRequest {
 type ListGatewayDomainResponseBody struct {
 	// The status code returned.
 	Code *int32 `json:"Code,omitempty" xml:"Code,omitempty"`
-	// The data of the node.
+	// The details of the data.
 	Data []*ListGatewayDomainResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Repeated"`
 	// The HTTP status code returned.
 	HttpStatusCode *int32 `json:"HttpStatusCode,omitempty" xml:"HttpStatusCode,omitempty"`
@@ -27913,17 +28859,17 @@ func (s *ListGatewayDomainResponseBody) SetSuccess(v bool) *ListGatewayDomainRes
 }
 
 type ListGatewayDomainResponseBodyData struct {
-	// The expiration time.
+	// The time when the certificate expires.
 	CertBeforeDate *string `json:"CertBeforeDate,omitempty" xml:"CertBeforeDate,omitempty"`
-	// The ID of the certificate.
+	// The certificate ID.
 	CertIdentifier *string `json:"CertIdentifier,omitempty" xml:"CertIdentifier,omitempty"`
-	// The route comment (ingress).
+	// The route comment. This parameter is returned only in ingress scenarios.
 	Comment *ListGatewayDomainResponseBodyDataComment `json:"Comment,omitempty" xml:"Comment,omitempty" type:"Struct"`
-	// The ID of the gateway.
+	// The gateway ID.
 	GatewayId *int64 `json:"GatewayId,omitempty" xml:"GatewayId,omitempty"`
-	// The creation time.
+	// The time when the domain name was created.
 	GmtCreate *string `json:"GmtCreate,omitempty" xml:"GmtCreate,omitempty"`
-	// The update time.
+	// The time when the domain name was updated.
 	GmtModified *string `json:"GmtModified,omitempty" xml:"GmtModified,omitempty"`
 	// Indicates whether `HTTP/2` is enabled.
 	//
@@ -27931,7 +28877,7 @@ type ListGatewayDomainResponseBodyData struct {
 	// *   `close`: `HTTP/2` is disabled.
 	// *   `globalConfig`: Global configurations are used.
 	Http2 *string `json:"Http2,omitempty" xml:"Http2,omitempty"`
-	// The domain ID.
+	// The ID of the domain name.
 	Id *int64 `json:"Id,omitempty" xml:"Id,omitempty"`
 	// Indicates whether HTTPS is forcefully used.
 	MustHttps *bool `json:"MustHttps,omitempty" xml:"MustHttps,omitempty"`
@@ -27939,9 +28885,9 @@ type ListGatewayDomainResponseBodyData struct {
 	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
 	// The protocol.
 	Protocol *string `json:"Protocol,omitempty" xml:"Protocol,omitempty"`
-	// The status of the domain name. Valid values:
+	// The state of the domain name. Valid values:
 	//
-	// *   0: unpublish
+	// *   0: unpublished
 	// *   2: publishing
 	// *   3: published
 	// *   4: editing
@@ -27952,7 +28898,10 @@ type ListGatewayDomainResponseBodyData struct {
 	TlsMax *string `json:"TlsMax,omitempty" xml:"TlsMax,omitempty"`
 	// The minimum version of TLS.
 	TlsMin *string `json:"TlsMin,omitempty" xml:"TlsMin,omitempty"`
-	// The type.
+	// The type of the domain name source. Valid values:
+	//
+	// *   Op: console
+	// *   Ingress: MSE Ingress
 	Type *string `json:"Type,omitempty" xml:"Type,omitempty"`
 }
 
@@ -28040,7 +28989,7 @@ func (s *ListGatewayDomainResponseBodyData) SetType(v string) *ListGatewayDomain
 }
 
 type ListGatewayDomainResponseBodyDataComment struct {
-	// The status.
+	// The route status.
 	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
 }
 
@@ -30228,6 +31177,7 @@ type ListGatewaySlbResponseBodyData struct {
 	SlbIp *string `json:"SlbIp,omitempty" xml:"SlbIp,omitempty"`
 	// The port number of the SLB instance.
 	SlbPort *string `json:"SlbPort,omitempty" xml:"SlbPort,omitempty"`
+	SlbType *string `json:"SlbType,omitempty" xml:"SlbType,omitempty"`
 	// The description of the status.
 	StatusDesc *string `json:"StatusDesc,omitempty" xml:"StatusDesc,omitempty"`
 	// The type.
@@ -30308,6 +31258,11 @@ func (s *ListGatewaySlbResponseBodyData) SetSlbIp(v string) *ListGatewaySlbRespo
 
 func (s *ListGatewaySlbResponseBodyData) SetSlbPort(v string) *ListGatewaySlbResponseBodyData {
 	s.SlbPort = &v
+	return s
+}
+
+func (s *ListGatewaySlbResponseBodyData) SetSlbType(v string) *ListGatewaySlbResponseBodyData {
+	s.SlbType = &v
 	return s
 }
 
@@ -32046,11 +33001,11 @@ func (s *ListSSLCertResponseBody) SetSuccess(v bool) *ListSSLCertResponseBody {
 }
 
 type ListSSLCertResponseBodyData struct {
-	// The validation time.
+	// The time when the certificate expires. This value is a UNIX timestamp representing the number of milliseconds that have elapsed since January 1, 1970, 00:00:00 UTC.
 	AfterDate *string `json:"AfterDate,omitempty" xml:"AfterDate,omitempty"`
 	// The algorithm.
 	Algorithm *string `json:"Algorithm,omitempty" xml:"Algorithm,omitempty"`
-	// The expiration time.
+	// The time when the certificate took effect. This value is a UNIX timestamp representing the number of milliseconds that have elapsed since January 1, 1970, 00:00:00 UTC.
 	BeforeDate *string `json:"BeforeDate,omitempty" xml:"BeforeDate,omitempty"`
 	// The ID of the certificate.
 	CertIdentifier *string `json:"CertIdentifier,omitempty" xml:"CertIdentifier,omitempty"`
@@ -32058,11 +33013,11 @@ type ListSSLCertResponseBodyData struct {
 	CertName *string `json:"CertName,omitempty" xml:"CertName,omitempty"`
 	// The domain name with which the certificate is associated.
 	CommonName *string `json:"CommonName,omitempty" xml:"CommonName,omitempty"`
-	// The validation time.
+	// The time when the certificate expires. This value is a GMT timestamp.
 	GmtAfter *string `json:"GmtAfter,omitempty" xml:"GmtAfter,omitempty"`
-	// The expiration time.
+	// The time when the certificate took effect. This value is a GMT timestamp.
 	GmtBefore *string `json:"GmtBefore,omitempty" xml:"GmtBefore,omitempty"`
-	// The issuer.
+	// The issuer of the certificate.
 	Issuer *string `json:"Issuer,omitempty" xml:"Issuer,omitempty"`
 	// The SSL certificate.
 	Sans *string `json:"Sans,omitempty" xml:"Sans,omitempty"`
@@ -32395,17 +33350,17 @@ func (s *ListSecurityGroupRuleResponseBody) SetSuccess(v bool) *ListSecurityGrou
 }
 
 type ListSecurityGroupRuleResponseBodyData struct {
-	// The description of the rule.
+	// The rule description.
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
-	// The ID of the gateway.
+	// The gateway ID.
 	GatewayId *int64 `json:"GatewayId,omitempty" xml:"GatewayId,omitempty"`
 	// The unique ID of the gateway.
 	GatewayUniqueId *string `json:"GatewayUniqueId,omitempty" xml:"GatewayUniqueId,omitempty"`
-	// The creation time.
+	// The time when the instance was created.
 	GmtCreate *string `json:"GmtCreate,omitempty" xml:"GmtCreate,omitempty"`
-	// The last modification time.
+	// The time when the instance configuration was last modified.
 	GmtModified *string `json:"GmtModified,omitempty" xml:"GmtModified,omitempty"`
-	// The ID.
+	// The authorization record ID of the security group.
 	Id *string `json:"Id,omitempty" xml:"Id,omitempty"`
 	// The protocol type.
 	IpProtocol *string `json:"IpProtocol,omitempty" xml:"IpProtocol,omitempty"`
@@ -32505,6 +33460,7 @@ type ListServiceSourceRequest struct {
 	AcceptLanguage *string `json:"AcceptLanguage,omitempty" xml:"AcceptLanguage,omitempty"`
 	// The unique ID of the gateway.
 	GatewayUniqueId *string `json:"GatewayUniqueId,omitempty" xml:"GatewayUniqueId,omitempty"`
+	Source          *string `json:"Source,omitempty" xml:"Source,omitempty"`
 }
 
 func (s ListServiceSourceRequest) String() string {
@@ -32522,6 +33478,11 @@ func (s *ListServiceSourceRequest) SetAcceptLanguage(v string) *ListServiceSourc
 
 func (s *ListServiceSourceRequest) SetGatewayUniqueId(v string) *ListServiceSourceRequest {
 	s.GatewayUniqueId = &v
+	return s
+}
+
+func (s *ListServiceSourceRequest) SetSource(v string) *ListServiceSourceRequest {
+	s.Source = &v
 	return s
 }
 
@@ -33070,7 +34031,7 @@ func (s *ListZkTrackRequest) SetStartTs(v int64) *ListZkTrackRequest {
 type ListZkTrackResponseBody struct {
 	// The error code returned if the request failed.
 	ErrorCode *string `json:"ErrorCode,omitempty" xml:"ErrorCode,omitempty"`
-	// The HTTP status code returned.
+	// The HTTP status code.
 	HttpCode *string `json:"HttpCode,omitempty" xml:"HttpCode,omitempty"`
 	// The message returned.
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
@@ -33152,7 +34113,7 @@ type ListZkTrackResponseBodyTraces struct {
 	// *   persist
 	// *   ephemeral
 	DataType *string `json:"DataType,omitempty" xml:"DataType,omitempty"`
-	// The type of the event. Valid values: For tracks of the Notify type:
+	// The type of the event. For trajectory of the Notify type:
 	//
 	// *   NodeCreated
 	// *   NodeDeleted
@@ -33165,7 +34126,7 @@ type ListZkTrackResponseBodyTraces struct {
 	LogDate *string `json:"LogDate,omitempty" xml:"LogDate,omitempty"`
 	// The transaction size.
 	MultiSize *int64 `json:"MultiSize,omitempty" xml:"MultiSize,omitempty"`
-	// The operation type. For tracks of the Push type:
+	// The type of the operation. For trajectory of the Push type:
 	//
 	// *   Create
 	// *   Update
@@ -33173,7 +34134,7 @@ type ListZkTrackResponseBodyTraces struct {
 	// *   SetAcl
 	// *   Multi
 	//
-	// For tracks of the Pull type:
+	// For trajectory of the Pull type:
 	//
 	// *   GetData
 	// *   GetChild
@@ -33181,13 +34142,13 @@ type ListZkTrackResponseBodyTraces struct {
 	OpType *string `json:"OpType,omitempty" xml:"OpType,omitempty"`
 	// The path.
 	Path *string `json:"Path,omitempty" xml:"Path,omitempty"`
-	// The result.
+	// The returned result.
 	Result *string `json:"Result,omitempty" xml:"Result,omitempty"`
 	// The session ID.
 	SessionId *string `json:"SessionId,omitempty" xml:"SessionId,omitempty"`
-	// The timestamp (not available).
+	// The timestamp. It is not available.
 	Timestamp *string `json:"Timestamp,omitempty" xml:"Timestamp,omitempty"`
-	// The type of the track. Valid values:
+	// The type of the trajectory. Valid values:
 	//
 	// *   Push
 	// *   Pull
@@ -33195,7 +34156,7 @@ type ListZkTrackResponseBodyTraces struct {
 	TraceType *string `json:"TraceType,omitempty" xml:"TraceType,omitempty"`
 	// The time to live (TTL).
 	Ttl *int64 `json:"Ttl,omitempty" xml:"Ttl,omitempty"`
-	// Indicates whether to enable the monitoring feature.
+	// Indicates whether the monitoring feature is enabled.
 	Watch *bool `json:"Watch,omitempty" xml:"Watch,omitempty"`
 }
 
@@ -33766,14 +34727,11 @@ func (s *ModifyLosslessRuleRequest) SetWarmupTime(v int32) *ModifyLosslessRuleRe
 }
 
 type ModifyLosslessRuleResponseBody struct {
-	// 响应码。
-	Code *int32 `json:"Code,omitempty" xml:"Code,omitempty"`
-	// 返回数据。
+	Code *int32      `json:"Code,omitempty" xml:"Code,omitempty"`
 	Data interface{} `json:"Data,omitempty" xml:"Data,omitempty"`
 	// The error code returned if the request failed.
-	ErrorCode *string `json:"ErrorCode,omitempty" xml:"ErrorCode,omitempty"`
-	// HTTP状态码。
-	HttpStatusCode *int32 `json:"HttpStatusCode,omitempty" xml:"HttpStatusCode,omitempty"`
+	ErrorCode      *string `json:"ErrorCode,omitempty" xml:"ErrorCode,omitempty"`
+	HttpStatusCode *int32  `json:"HttpStatusCode,omitempty" xml:"HttpStatusCode,omitempty"`
 	// The message returned.
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
 	// The ID of the request.
@@ -34046,7 +35004,7 @@ func (s *OrderClusterHealthCheckRiskNoticeRequest) SetRiskCode(v string) *OrderC
 type OrderClusterHealthCheckRiskNoticeResponseBody struct {
 	// The status code. A value of 200 is returned if the request is successful.
 	Code *int32 `json:"Code,omitempty" xml:"Code,omitempty"`
-	// The data of the node.
+	// Indicates whether the subscription was successful.
 	Data *bool `json:"Data,omitempty" xml:"Data,omitempty"`
 	// The dynamic part in the error message.
 	DynamicCode *string `json:"DynamicCode,omitempty" xml:"DynamicCode,omitempty"`
@@ -34155,7 +35113,10 @@ func (s *OrderClusterHealthCheckRiskNoticeResponse) SetBody(v *OrderClusterHealt
 }
 
 type PullServicesRequest struct {
-	// The data structure.
+	// The language of the response. Valid values:
+	//
+	// *   zh: Chinese
+	// *   en: English
 	AcceptLanguage *string `json:"AcceptLanguage,omitempty" xml:"AcceptLanguage,omitempty"`
 	// The namespace.
 	GatewayUniqueId *string `json:"GatewayUniqueId,omitempty" xml:"GatewayUniqueId,omitempty"`
@@ -34397,7 +35358,7 @@ func (s *PutClusterHealthCheckTaskRequest) SetInstanceId(v string) *PutClusterHe
 type PutClusterHealthCheckTaskResponseBody struct {
 	// The status code. A value of 200 is returned if the request is successful.
 	Code *int32 `json:"Code,omitempty" xml:"Code,omitempty"`
-	// The returned message.
+	// The data returned.
 	Data *bool `json:"Data,omitempty" xml:"Data,omitempty"`
 	// The dynamic part in the error message.
 	DynamicCode *string `json:"DynamicCode,omitempty" xml:"DynamicCode,omitempty"`
@@ -34513,7 +35474,7 @@ type QueryAllSwimmingLaneRequest struct {
 	AcceptLanguage *string `json:"AcceptLanguage,omitempty" xml:"AcceptLanguage,omitempty"`
 	// The ID of the lane group.
 	GroupId *int64 `json:"GroupId,omitempty" xml:"GroupId,omitempty"`
-	// MSE命名空间名字
+	// The name of the MSE namespace.
 	Namespace *string `json:"Namespace,omitempty" xml:"Namespace,omitempty"`
 }
 
@@ -34543,9 +35504,9 @@ func (s *QueryAllSwimmingLaneRequest) SetNamespace(v string) *QueryAllSwimmingLa
 type QueryAllSwimmingLaneResponseBody struct {
 	// The details of the data.
 	Data []*QueryAllSwimmingLaneResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Repeated"`
-	// The error code returned if the request failed.
+	// The error code.
 	ErrorCode *string `json:"ErrorCode,omitempty" xml:"ErrorCode,omitempty"`
-	// The message returned.
+	// The returned message.
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
 	// The ID of the request.
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
@@ -34825,7 +35786,8 @@ type QueryAllSwimmingLaneGroupRequest struct {
 	// *   zh: Chinese
 	// *   en: English
 	AcceptLanguage *string `json:"AcceptLanguage,omitempty" xml:"AcceptLanguage,omitempty"`
-	Namespace      *string `json:"Namespace,omitempty" xml:"Namespace,omitempty"`
+	// The name of the Microservices Engine (MSE) namespace that you want to query.
+	Namespace *string `json:"Namespace,omitempty" xml:"Namespace,omitempty"`
 }
 
 func (s QueryAllSwimmingLaneGroupRequest) String() string {
@@ -35586,13 +36548,13 @@ func (s *QueryClusterDetailResponseBodyData) SetVpcId(v string) *QueryClusterDet
 }
 
 type QueryClusterDetailResponseBodyDataInstanceModels struct {
-	// The timestamp when the instance node was created.
+	// The timestamp when the instance was created.
 	CreationTimestamp *string `json:"CreationTimestamp,omitempty" xml:"CreationTimestamp,omitempty"`
-	// The health status of the instance node.
+	// The health status of the instance.
 	HealthStatus *string `json:"HealthStatus,omitempty" xml:"HealthStatus,omitempty"`
 	// The public IP address.
 	InternetIp *string `json:"InternetIp,omitempty" xml:"InternetIp,omitempty"`
-	// The IP address of the node.
+	// The IP address of the instance.
 	Ip *string `json:"Ip,omitempty" xml:"Ip,omitempty"`
 	// The name of the pod.
 	PodName *string `json:"PodName,omitempty" xml:"PodName,omitempty"`
@@ -35600,7 +36562,7 @@ type QueryClusterDetailResponseBodyDataInstanceModels struct {
 	Role *string `json:"Role,omitempty" xml:"Role,omitempty"`
 	// The single-thread IP address.
 	SingleTunnelVip *string `json:"SingleTunnelVip,omitempty" xml:"SingleTunnelVip,omitempty"`
-	// The zone.
+	// The zone ID.
 	Zone *string `json:"Zone,omitempty" xml:"Zone,omitempty"`
 }
 
@@ -35906,7 +36868,7 @@ func (s *QueryClusterInfoRequest) SetRequestPars(v string) *QueryClusterInfoRequ
 }
 
 type QueryClusterInfoResponseBody struct {
-	// The details of the data.
+	// The data returned.
 	Data *QueryClusterInfoResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
 	// The error code returned if the request failed.
 	ErrorCode *string `json:"ErrorCode,omitempty" xml:"ErrorCode,omitempty"`
@@ -35985,10 +36947,13 @@ type QueryClusterInfoResponseBodyData struct {
 	// A deprecated parameter.
 	DiskCapacity *int64 `json:"DiskCapacity,omitempty" xml:"DiskCapacity,omitempty"`
 	// A deprecated parameter.
-	DiskType      *string   `json:"DiskType,omitempty" xml:"DiskType,omitempty"`
-	EipInstanceId *string   `json:"EipInstanceId,omitempty" xml:"EipInstanceId,omitempty"`
-	EndDate       *string   `json:"EndDate,omitempty" xml:"EndDate,omitempty"`
-	ExpectZones   []*string `json:"ExpectZones,omitempty" xml:"ExpectZones,omitempty" type:"Repeated"`
+	DiskType *string `json:"DiskType,omitempty" xml:"DiskType,omitempty"`
+	// 弹性公网IP（EIP）的实例ID
+	EipInstanceId *string `json:"EipInstanceId,omitempty" xml:"EipInstanceId,omitempty"`
+	// 到期时间（包年包月）
+	EndDate *string `json:"EndDate,omitempty" xml:"EndDate,omitempty"`
+	// The zones to which the current cluster can be distributed.
+	ExpectZones []*string `json:"ExpectZones,omitempty" xml:"ExpectZones,omitempty" type:"Repeated"`
 	// The status of the instance.
 	HealthStatus *string `json:"HealthStatus,omitempty" xml:"HealthStatus,omitempty"`
 	// The time that is required to initialize the instance. Unit: milliseconds.
@@ -36012,7 +36977,8 @@ type QueryClusterInfoResponseBodyData struct {
 	// The internal endpoint.
 	IntranetDomain *string `json:"IntranetDomain,omitempty" xml:"IntranetDomain,omitempty"`
 	// The instance ports that are accessible over an internal network.
-	IntranetPort *string `json:"IntranetPort,omitempty" xml:"IntranetPort,omitempty"`
+	IntranetPort      *string                                            `json:"IntranetPort,omitempty" xml:"IntranetPort,omitempty"`
+	MaintenancePeriod *QueryClusterInfoResponseBodyDataMaintenancePeriod `json:"MaintenancePeriod,omitempty" xml:"MaintenancePeriod,omitempty" type:"Struct"`
 	// A deprecated parameter.
 	MemoryCapacity *int64 `json:"MemoryCapacity,omitempty" xml:"MemoryCapacity,omitempty"`
 	// The version of the instance.
@@ -36025,8 +36991,10 @@ type QueryClusterInfoResponseBodyData struct {
 	// Valid values: 0 to 5000. The value 0 indicates no access to the Internet.
 	PubNetworkFlow *string `json:"PubNetworkFlow,omitempty" xml:"PubNetworkFlow,omitempty"`
 	// The ID of the region.
-	RegionId          *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	SecurityGroupId   *string `json:"SecurityGroupId,omitempty" xml:"SecurityGroupId,omitempty"`
+	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	// ENI网络接入的安全组ID
+	SecurityGroupId *string `json:"SecurityGroupId,omitempty" xml:"SecurityGroupId,omitempty"`
+	// ENI网络接入的安全组类型
 	SecurityGroupType *string `json:"SecurityGroupType,omitempty" xml:"SecurityGroupType,omitempty"`
 	// The tag.
 	Tags map[string]interface{} `json:"Tags,omitempty" xml:"Tags,omitempty"`
@@ -36189,6 +37157,11 @@ func (s *QueryClusterInfoResponseBodyData) SetIntranetPort(v string) *QueryClust
 	return s
 }
 
+func (s *QueryClusterInfoResponseBodyData) SetMaintenancePeriod(v *QueryClusterInfoResponseBodyDataMaintenancePeriod) *QueryClusterInfoResponseBodyData {
+	s.MaintenancePeriod = v
+	return s
+}
+
 func (s *QueryClusterInfoResponseBodyData) SetMemoryCapacity(v int64) *QueryClusterInfoResponseBodyData {
 	s.MemoryCapacity = &v
 	return s
@@ -36308,6 +37281,29 @@ func (s *QueryClusterInfoResponseBodyDataInstanceModels) SetSingleTunnelVip(v st
 
 func (s *QueryClusterInfoResponseBodyDataInstanceModels) SetZone(v string) *QueryClusterInfoResponseBodyDataInstanceModels {
 	s.Zone = &v
+	return s
+}
+
+type QueryClusterInfoResponseBodyDataMaintenancePeriod struct {
+	EndTime   *string `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
+	StartTime *string `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
+}
+
+func (s QueryClusterInfoResponseBodyDataMaintenancePeriod) String() string {
+	return tea.Prettify(s)
+}
+
+func (s QueryClusterInfoResponseBodyDataMaintenancePeriod) GoString() string {
+	return s.String()
+}
+
+func (s *QueryClusterInfoResponseBodyDataMaintenancePeriod) SetEndTime(v string) *QueryClusterInfoResponseBodyDataMaintenancePeriod {
+	s.EndTime = &v
+	return s
+}
+
+func (s *QueryClusterInfoResponseBodyDataMaintenancePeriod) SetStartTime(v string) *QueryClusterInfoResponseBodyDataMaintenancePeriod {
+	s.StartTime = &v
 	return s
 }
 
@@ -36646,7 +37642,8 @@ type QueryConfigResponseBodyData struct {
 	// *   `true`: supported.
 	// *   `false`: not supported.
 	ConfigSecretSupported *bool `json:"ConfigSecretSupported,omitempty" xml:"ConfigSecretSupported,omitempty"`
-	EurekaSupported       *bool `json:"EurekaSupported,omitempty" xml:"EurekaSupported,omitempty"`
+	// Indicates whether access port 8761 was enabled for Eureka. If this port is disabled, applications cannot use the Eureka protocol for service registration and discovery.
+	EurekaSupported *bool `json:"EurekaSupported,omitempty" xml:"EurekaSupported,omitempty"`
 	// Indicates whether the time to live (TTL) configuration is enabled. This parameter is valid for ZooKeeper instances.
 	ExtendedTypesEnable *bool `json:"ExtendedTypesEnable,omitempty" xml:"ExtendedTypesEnable,omitempty"`
 	// The maximum connection duration of the instance. Unit: seconds. This parameter is valid for ZooKeeper instances.
@@ -36704,8 +37701,9 @@ type QueryConfigResponseBodyData struct {
 	// The frequency for generating snapshots. This parameter is valid for ZooKeeper instances.
 	SnapshotCount *string `json:"SnapshotCount,omitempty" xml:"SnapshotCount,omitempty"`
 	// The connection timeout period of the instance. This parameter is valid for ZooKeeper instances. Unit: seconds.
-	SyncLimit  *string `json:"SyncLimit,omitempty" xml:"SyncLimit,omitempty"`
-	TLSEnabled *bool   `json:"TLSEnabled,omitempty" xml:"TLSEnabled,omitempty"`
+	SyncLimit *string `json:"SyncLimit,omitempty" xml:"SyncLimit,omitempty"`
+	// MSE Nacos supports TLS transmission link encryption since version 2.1.2.1. Nacos clients must be upgraded to version 2.2.1 or later. After TLS is enabled, the system performance will decrease by about 10%. You must evaluate the system capacity. For more information about the relevant operations, see Nacos TLS transmission encryption.
+	TLSEnabled *bool `json:"TLSEnabled,omitempty" xml:"TLSEnabled,omitempty"`
 	// The time unit of the engine. This parameter is valid for ZooKeeper instances. Default value: 2000. Unit: milliseconds.
 	TickTime *string `json:"TickTime,omitempty" xml:"TickTime,omitempty"`
 	// The username of the user. This parameter is valid only if OpenSuperAcl is set to true.
@@ -37179,7 +38177,7 @@ func (s *QueryGovernanceKubernetesClusterRequest) SetPageSize(v int32) *QueryGov
 }
 
 type QueryGovernanceKubernetesClusterResponseBody struct {
-	// The response data.
+	// The data returned.
 	Data *QueryGovernanceKubernetesClusterResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
 	// The returned message.
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
@@ -37222,7 +38220,7 @@ type QueryGovernanceKubernetesClusterResponseBodyData struct {
 	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
 	// The number of entries returned per page.
 	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	// The data structure.
+	// The details of the data.
 	Result []*QueryGovernanceKubernetesClusterResponseBodyDataResult `json:"Result,omitempty" xml:"Result,omitempty" type:"Repeated"`
 	// The total number of clusters.
 	TotalSize *int32 `json:"TotalSize,omitempty" xml:"TotalSize,omitempty"`
@@ -37257,15 +38255,15 @@ func (s *QueryGovernanceKubernetesClusterResponseBodyData) SetTotalSize(v int32)
 }
 
 type QueryGovernanceKubernetesClusterResponseBodyDataResult struct {
-	// The ID of cluster.
+	// The ID of the cluster.
 	ClusterId *string `json:"ClusterId,omitempty" xml:"ClusterId,omitempty"`
 	// The name of the cluster.
 	ClusterName *string `json:"ClusterName,omitempty" xml:"ClusterName,omitempty"`
 	// The version of the cluster.
 	K8sVersion *string `json:"K8sVersion,omitempty" xml:"K8sVersion,omitempty"`
-	// The information of the namespace.
+	// The information about the namespace.
 	NamespaceInfos *string `json:"NamespaceInfos,omitempty" xml:"NamespaceInfos,omitempty"`
-	// The time when the ack-onepilot component was started.
+	// The time when the pilot component was started.
 	PilotStartTime *string `json:"PilotStartTime,omitempty" xml:"PilotStartTime,omitempty"`
 	// The region where the cluster resides.
 	Region *string `json:"Region,omitempty" xml:"Region,omitempty"`
@@ -37456,7 +38454,7 @@ func (s *QueryInstancesInfoResponseBody) SetSuccess(v bool) *QueryInstancesInfoR
 type QueryInstancesInfoResponseBodyData struct {
 	// The enabled port.
 	ClientPort *string `json:"ClientPort,omitempty" xml:"ClientPort,omitempty"`
-	// The creation time. The value of this parameter is a timestamp.
+	// The creation time.
 	CreationTimestamp *string `json:"CreationTimestamp,omitempty" xml:"CreationTimestamp,omitempty"`
 	// A reserved parameter.
 	HealthStatus *string `json:"HealthStatus,omitempty" xml:"HealthStatus,omitempty"`
@@ -37470,9 +38468,10 @@ type QueryInstancesInfoResponseBodyData struct {
 	Role *string `json:"Role,omitempty" xml:"Role,omitempty"`
 	// The internal IP address.
 	SingleTunnelVip *string `json:"SingleTunnelVip,omitempty" xml:"SingleTunnelVip,omitempty"`
-	// The zone.
-	Zone            *string `json:"Zone,omitempty" xml:"Zone,omitempty"`
-	ZoneDistributed *bool   `json:"ZoneDistributed,omitempty" xml:"ZoneDistributed,omitempty"`
+	// The zone ID.
+	Zone *string `json:"Zone,omitempty" xml:"Zone,omitempty"`
+	// Indicates whether all pods in the cluster are distributed in the specified zones.
+	ZoneDistributed *bool `json:"ZoneDistributed,omitempty" xml:"ZoneDistributed,omitempty"`
 }
 
 func (s QueryInstancesInfoResponseBodyData) String() string {
@@ -37563,7 +38562,10 @@ func (s *QueryInstancesInfoResponse) SetBody(v *QueryInstancesInfoResponseBody) 
 }
 
 type QueryMonitorRequest struct {
-	// The timestamp when the monitoring starts.
+	// The language of the response. Valid values:
+	//
+	// *   zh: Chinese
+	// *   en: English
 	AcceptLanguage *string `json:"AcceptLanguage,omitempty" xml:"AcceptLanguage,omitempty"`
 	// system error
 	EndTime *int64 `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
@@ -37735,6 +38737,7 @@ func (s *QueryMonitorResponse) SetBody(v *QueryMonitorResponseBody) *QueryMonito
 }
 
 type QueryNamespaceRequest struct {
+	// The language of the response. Valid values: zh and en. Default value: zh. The value zh which indicates Chinese, and the value en indicates English.
 	AcceptLanguage *string `json:"AcceptLanguage,omitempty" xml:"AcceptLanguage,omitempty"`
 	Name           *string `json:"Name,omitempty" xml:"Name,omitempty"`
 	Region         *string `json:"Region,omitempty" xml:"Region,omitempty"`
@@ -37764,8 +38767,9 @@ func (s *QueryNamespaceRequest) SetRegion(v string) *QueryNamespaceRequest {
 }
 
 type QueryNamespaceResponseBody struct {
+	// The data returned.
 	Data []*QueryNamespaceResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Repeated"`
-	// 错误码。
+	// The error code.
 	ErrorCode *string `json:"ErrorCode,omitempty" xml:"ErrorCode,omitempty"`
 	Message   *string `json:"Message,omitempty" xml:"Message,omitempty"`
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
@@ -37806,8 +38810,10 @@ func (s *QueryNamespaceResponseBody) SetSuccess(v bool) *QueryNamespaceResponseB
 }
 
 type QueryNamespaceResponseBodyData struct {
+	// The name of the namespace.
 	Namespace *string `json:"Namespace,omitempty" xml:"Namespace,omitempty"`
-	Region    *string `json:"Region,omitempty" xml:"Region,omitempty"`
+	// The region to which the namespace belongs.
+	Region *string `json:"Region,omitempty" xml:"Region,omitempty"`
 }
 
 func (s QueryNamespaceResponseBodyData) String() string {
@@ -37939,13 +38945,13 @@ type QuerySlbSpecResponseBodyData struct {
 	Id *int32 `json:"Id,omitempty" xml:"Id,omitempty"`
 	// The maximum number of connections.
 	MaxConnection *string `json:"MaxConnection,omitempty" xml:"MaxConnection,omitempty"`
-	// The name.
+	// The name of the instance.
 	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
-	// The maximum connections per second (CPS).
+	// The number of connections per second.
 	NewConnectionPerSecond *string `json:"NewConnectionPerSecond,omitempty" xml:"NewConnectionPerSecond,omitempty"`
 	// The number of queries per second (QPS).
 	Qps *string `json:"Qps,omitempty" xml:"Qps,omitempty"`
-	// The specifications.
+	// The specification of the instance.
 	Spec *string `json:"Spec,omitempty" xml:"Spec,omitempty"`
 }
 
@@ -38024,7 +39030,7 @@ type QuerySwimmingLaneByIdRequest struct {
 	AcceptLanguage *string `json:"AcceptLanguage,omitempty" xml:"AcceptLanguage,omitempty"`
 	// The ID of the lane.
 	LaneId *int64 `json:"LaneId,omitempty" xml:"LaneId,omitempty"`
-	// MSE命名空间名字
+	// The name of the Microservices Engine (MSE) namespace.
 	Namespace *string `json:"Namespace,omitempty" xml:"Namespace,omitempty"`
 }
 
@@ -38054,9 +39060,9 @@ func (s *QuerySwimmingLaneByIdRequest) SetNamespace(v string) *QuerySwimmingLane
 type QuerySwimmingLaneByIdResponseBody struct {
 	// The details of the data.
 	Data *QuerySwimmingLaneByIdResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
-	// The error code returned if the request failed.
+	// The error code.
 	ErrorCode *string `json:"ErrorCode,omitempty" xml:"ErrorCode,omitempty"`
-	// The message returned.
+	// The returned message.
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
 	// The ID of the request.
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
@@ -39478,16 +40484,30 @@ func (s *UpdateAclResponse) SetBody(v *UpdateAclResponseBody) *UpdateAclResponse
 }
 
 type UpdateAuthPolicyRequest struct {
+	// The language of the response. Valid values: zh-CN and en-US. Default value: zh-CN. The value zh-CN indicates Chinese, and the value en-US indicates English.
 	AcceptLanguage *string `json:"AcceptLanguage,omitempty" xml:"AcceptLanguage,omitempty"`
-	AppId          *string `json:"AppId,omitempty" xml:"AppId,omitempty"`
-	AuthRule       *string `json:"AuthRule,omitempty" xml:"AuthRule,omitempty"`
-	Enable         *string `json:"Enable,omitempty" xml:"Enable,omitempty"`
-	Id             *string `json:"Id,omitempty" xml:"Id,omitempty"`
-	K8sNamespace   *string `json:"K8sNamespace,omitempty" xml:"K8sNamespace,omitempty"`
-	Name           *string `json:"Name,omitempty" xml:"Name,omitempty"`
-	Protocol       *string `json:"Protocol,omitempty" xml:"Protocol,omitempty"`
-	Region         *string `json:"Region,omitempty" xml:"Region,omitempty"`
-	Source         *string `json:"Source,omitempty" xml:"Source,omitempty"`
+	// The application ID.
+	AppId *string `json:"AppId,omitempty" xml:"AppId,omitempty"`
+	// The content of the service authentication rule.
+	AuthRule *string `json:"AuthRule,omitempty" xml:"AuthRule,omitempty"`
+	// Specifies whether to enable the rule.
+	Enable *string `json:"Enable,omitempty" xml:"Enable,omitempty"`
+	// The rule ID.
+	Id *string `json:"Id,omitempty" xml:"Id,omitempty"`
+	// The ID of the ACK cluster namespace.
+	K8sNamespace *string `json:"K8sNamespace,omitempty" xml:"K8sNamespace,omitempty"`
+	// The name of the rule.
+	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// The protocol type. Valid values:
+	//
+	// *   **SPRING_CLOUD**
+	// *   **DUBBO**
+	// *   **istio**
+	Protocol *string `json:"Protocol,omitempty" xml:"Protocol,omitempty"`
+	// The region ID.
+	Region *string `json:"Region,omitempty" xml:"Region,omitempty"`
+	// The source for application access.
+	Source *string `json:"Source,omitempty" xml:"Source,omitempty"`
 }
 
 func (s UpdateAuthPolicyRequest) String() string {
@@ -39549,12 +40569,18 @@ func (s *UpdateAuthPolicyRequest) SetSource(v string) *UpdateAuthPolicyRequest {
 }
 
 type UpdateAuthPolicyResponseBody struct {
-	Code           *int32  `json:"Code,omitempty" xml:"Code,omitempty"`
-	Data           *string `json:"Data,omitempty" xml:"Data,omitempty"`
-	HttpStatusCode *int32  `json:"HttpStatusCode,omitempty" xml:"HttpStatusCode,omitempty"`
-	Message        *string `json:"Message,omitempty" xml:"Message,omitempty"`
-	RequestId      *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	Success        *bool   `json:"Success,omitempty" xml:"Success,omitempty"`
+	// The response code.
+	Code *int32 `json:"Code,omitempty" xml:"Code,omitempty"`
+	// The details of the data.
+	Data *string `json:"Data,omitempty" xml:"Data,omitempty"`
+	// The HTTP status code.
+	HttpStatusCode *int32 `json:"HttpStatusCode,omitempty" xml:"HttpStatusCode,omitempty"`
+	// The returned message.
+	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// The request ID.
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// Indicates whether the request was successful. Valid values: true: The request was successful. false: The request failed.
+	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
 }
 
 func (s UpdateAuthPolicyResponseBody) String() string {
@@ -39636,7 +40662,7 @@ type UpdateBlackWhiteListRequest struct {
 	GatewayUniqueId *string `json:"GatewayUniqueId,omitempty" xml:"GatewayUniqueId,omitempty"`
 	// The ID of the blacklist.
 	Id *int64 `json:"Id,omitempty" xml:"Id,omitempty"`
-	// Specifies whether to enable the whitelist.
+	// The whitelist. Default value: No.
 	IsWhite *bool `json:"IsWhite,omitempty" xml:"IsWhite,omitempty"`
 	// The name.
 	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
@@ -39801,20 +40827,78 @@ func (s *UpdateBlackWhiteListResponse) SetBody(v *UpdateBlackWhiteListResponseBo
 }
 
 type UpdateCircuitBreakerRuleRequest struct {
-	AcceptLanguage            *string  `json:"AcceptLanguage,omitempty" xml:"AcceptLanguage,omitempty"`
-	AppId                     *string  `json:"AppId,omitempty" xml:"AppId,omitempty"`
-	AppName                   *string  `json:"AppName,omitempty" xml:"AppName,omitempty"`
-	Enable                    *bool    `json:"Enable,omitempty" xml:"Enable,omitempty"`
-	HalfOpenBaseAmountPerStep *int32   `json:"HalfOpenBaseAmountPerStep,omitempty" xml:"HalfOpenBaseAmountPerStep,omitempty"`
-	HalfOpenRecoveryStepNum   *int32   `json:"HalfOpenRecoveryStepNum,omitempty" xml:"HalfOpenRecoveryStepNum,omitempty"`
-	MaxAllowedRtMs            *int32   `json:"MaxAllowedRtMs,omitempty" xml:"MaxAllowedRtMs,omitempty"`
-	MinRequestAmount          *int32   `json:"MinRequestAmount,omitempty" xml:"MinRequestAmount,omitempty"`
-	Namespace                 *string  `json:"Namespace,omitempty" xml:"Namespace,omitempty"`
-	RetryTimeoutMs            *int32   `json:"RetryTimeoutMs,omitempty" xml:"RetryTimeoutMs,omitempty"`
-	RuleId                    *int64   `json:"RuleId,omitempty" xml:"RuleId,omitempty"`
-	StatIntervalMs            *int32   `json:"StatIntervalMs,omitempty" xml:"StatIntervalMs,omitempty"`
-	Strategy                  *int32   `json:"Strategy,omitempty" xml:"Strategy,omitempty"`
-	Threshold                 *float32 `json:"Threshold,omitempty" xml:"Threshold,omitempty"`
+	// The language of the response. Valid values: zh-CN and en-US. Default value: zh-CN. The value zh-CN indicates Chinese, and the value en-US indicates English.
+	AcceptLanguage *string `json:"AcceptLanguage,omitempty" xml:"AcceptLanguage,omitempty"`
+	// The ID of the application.
+	AppId *string `json:"AppId,omitempty" xml:"AppId,omitempty"`
+	// The name of the application.
+	AppName *string `json:"AppName,omitempty" xml:"AppName,omitempty"`
+	// Specifies whether to enable the rule.
+	//
+	// Valid values:
+	//
+	// *   true
+	//
+	//     <!-- -->
+	//
+	//     <!-- -->
+	//
+	//     <!-- -->
+	//
+	// *   false
+	//
+	//     <!-- -->
+	//
+	//     <!-- -->
+	//
+	//     <!-- -->
+	Enable *bool `json:"Enable,omitempty" xml:"Enable,omitempty"`
+	// The minimum number of requests that can be passed in each step after circuit breaking recovers. Default value: 1.
+	HalfOpenBaseAmountPerStep *int32 `json:"HalfOpenBaseAmountPerStep,omitempty" xml:"HalfOpenBaseAmountPerStep,omitempty"`
+	// The number of circuit breaking recovery steps. Default value: 1.
+	HalfOpenRecoveryStepNum *int32 `json:"HalfOpenRecoveryStepNum,omitempty" xml:"HalfOpenRecoveryStepNum,omitempty"`
+	// The maximum response time (RT). Unit: milliseconds. If the RT of a request is greater than the value of this parameter, a slow call is counted. If you set Strategy to 0, you must specify this parameter.
+	MaxAllowedRtMs *int32 `json:"MaxAllowedRtMs,omitempty" xml:"MaxAllowedRtMs,omitempty"`
+	// The minimum number of requests to trigger circuit breaking. If the number of requests in the current time window is less than the value of this parameter, circuit breaking is not triggered even if the circuit breaking rule is met. Default value: 10.
+	MinRequestAmount *int32 `json:"MinRequestAmount,omitempty" xml:"MinRequestAmount,omitempty"`
+	// The microservice namespace to which the application belongs.
+	Namespace *string `json:"Namespace,omitempty" xml:"Namespace,omitempty"`
+	// The period in which circuit breaking is implemented. Unit: milliseconds. If circuit breaking is implemented on the requests for the route, the calls to all the requests for the route fail in the configured circuit breaking period. The value must be an integral multiple of 1,000. Default value: 10000. This value indicates 10 seconds.
+	RetryTimeoutMs *int32 `json:"RetryTimeoutMs,omitempty" xml:"RetryTimeoutMs,omitempty"`
+	// The rule ID.
+	RuleId *int64 `json:"RuleId,omitempty" xml:"RuleId,omitempty"`
+	// The length of the time window. Unit: milliseconds. The valid range is from 1 second to 120 minutes. The default value is 20000. This value indicates 20 seconds.
+	StatIntervalMs *int32 `json:"StatIntervalMs,omitempty" xml:"StatIntervalMs,omitempty"`
+	// The threshold type.
+	//
+	// Valid values:
+	//
+	// *   0
+	//
+	//     <!-- -->
+	//
+	//     :
+	//
+	//     <!-- -->
+	//
+	//     slow call proportion
+	//
+	//     <!-- -->
+	//
+	// *   1
+	//
+	//     <!-- -->
+	//
+	//     :
+	//
+	//     <!-- -->
+	//
+	//     abnormal proportion
+	//
+	//     <!-- -->
+	Strategy *int32 `json:"Strategy,omitempty" xml:"Strategy,omitempty"`
+	// A percentage threshold for triggering circuit breaking. Valid values: 0-1. These values represent 0% to 100%.
+	Threshold *float32 `json:"Threshold,omitempty" xml:"Threshold,omitempty"`
 }
 
 func (s UpdateCircuitBreakerRuleRequest) String() string {
@@ -39896,11 +40980,42 @@ func (s *UpdateCircuitBreakerRuleRequest) SetThreshold(v float32) *UpdateCircuit
 }
 
 type UpdateCircuitBreakerRuleResponseBody struct {
-	Code      *string                                   `json:"Code,omitempty" xml:"Code,omitempty"`
-	Data      *UpdateCircuitBreakerRuleResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
-	Message   *string                                   `json:"Message,omitempty" xml:"Message,omitempty"`
-	RequestId *string                                   `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	Success   *bool                                     `json:"Success,omitempty" xml:"Success,omitempty"`
+	// The response code.
+	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	// The details of the rule.
+	Data *UpdateCircuitBreakerRuleResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
+	// The returned message.
+	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// The request ID.
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// Indicates whether the request was successful.
+	//
+	// Valid values:
+	//
+	// *   true
+	//
+	//     <!-- -->
+	//
+	//     :
+	//
+	//     <!-- -->
+	//
+	//     The request was successful.
+	//
+	//     <!-- -->
+	//
+	// *   false
+	//
+	//     <!-- -->
+	//
+	//     :
+	//
+	//     <!-- -->
+	//
+	//     The request failed.
+	//
+	//     <!-- -->
+	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
 }
 
 func (s UpdateCircuitBreakerRuleResponseBody) String() string {
@@ -39937,20 +41052,60 @@ func (s *UpdateCircuitBreakerRuleResponseBody) SetSuccess(v bool) *UpdateCircuit
 }
 
 type UpdateCircuitBreakerRuleResponseBodyData struct {
-	AppId                     *string  `json:"AppId,omitempty" xml:"AppId,omitempty"`
-	AppName                   *string  `json:"AppName,omitempty" xml:"AppName,omitempty"`
-	Enable                    *bool    `json:"Enable,omitempty" xml:"Enable,omitempty"`
-	HalfOpenBaseAmountPerStep *int32   `json:"HalfOpenBaseAmountPerStep,omitempty" xml:"HalfOpenBaseAmountPerStep,omitempty"`
-	HalfOpenRecoveryStepNum   *int32   `json:"HalfOpenRecoveryStepNum,omitempty" xml:"HalfOpenRecoveryStepNum,omitempty"`
-	Id                        *int64   `json:"Id,omitempty" xml:"Id,omitempty"`
-	MaxAllowedRtMs            *int32   `json:"MaxAllowedRtMs,omitempty" xml:"MaxAllowedRtMs,omitempty"`
-	MinRequestAmount          *int32   `json:"MinRequestAmount,omitempty" xml:"MinRequestAmount,omitempty"`
-	Namespace                 *string  `json:"Namespace,omitempty" xml:"Namespace,omitempty"`
-	Resource                  *string  `json:"Resource,omitempty" xml:"Resource,omitempty"`
-	RetryTimeoutMs            *int32   `json:"RetryTimeoutMs,omitempty" xml:"RetryTimeoutMs,omitempty"`
-	StatIntervalMs            *int32   `json:"StatIntervalMs,omitempty" xml:"StatIntervalMs,omitempty"`
-	Strategy                  *int32   `json:"Strategy,omitempty" xml:"Strategy,omitempty"`
-	Threshold                 *float32 `json:"Threshold,omitempty" xml:"Threshold,omitempty"`
+	// The ID of the application.
+	AppId *string `json:"AppId,omitempty" xml:"AppId,omitempty"`
+	// The name of the application.
+	AppName *string `json:"AppName,omitempty" xml:"AppName,omitempty"`
+	// Indicates whether the rule is enabled.
+	Enable *bool `json:"Enable,omitempty" xml:"Enable,omitempty"`
+	// The minimum number of requests that can be passed in each step after circuit breaking recovers.
+	HalfOpenBaseAmountPerStep *int32 `json:"HalfOpenBaseAmountPerStep,omitempty" xml:"HalfOpenBaseAmountPerStep,omitempty"`
+	// The number of circuit breaking recovery steps.
+	HalfOpenRecoveryStepNum *int32 `json:"HalfOpenRecoveryStepNum,omitempty" xml:"HalfOpenRecoveryStepNum,omitempty"`
+	// The ID of the rule.
+	Id *int64 `json:"Id,omitempty" xml:"Id,omitempty"`
+	// The maximum RT. Unit: milliseconds. If the RT of a request is greater than the value of this parameter, a slow call is counted. If you set Strategy to 0, you must specify this parameter.
+	MaxAllowedRtMs *int32 `json:"MaxAllowedRtMs,omitempty" xml:"MaxAllowedRtMs,omitempty"`
+	// The minimum number of requests to trigger circuit breaking. If the number of requests in the current time window is less than the value of this parameter, circuit breaking is not triggered even if the circuit breaking rule is met.
+	MinRequestAmount *int32 `json:"MinRequestAmount,omitempty" xml:"MinRequestAmount,omitempty"`
+	// The microservice namespace to which the application belongs.
+	Namespace *string `json:"Namespace,omitempty" xml:"Namespace,omitempty"`
+	// The name of the interface to which the rule is applicable. The interface name must be the same as the name on the interface details page in the console.
+	Resource *string `json:"Resource,omitempty" xml:"Resource,omitempty"`
+	// The period in which circuit breaking is implemented. Unit: milliseconds. If circuit breaking is implemented on the requests for the route, the calls to all the requests for the route fail in the configured circuit breaking period.
+	RetryTimeoutMs *int32 `json:"RetryTimeoutMs,omitempty" xml:"RetryTimeoutMs,omitempty"`
+	// The length of the time window. Unit: milliseconds. The valid range is from 1 second to 120 minutes.
+	StatIntervalMs *int32 `json:"StatIntervalMs,omitempty" xml:"StatIntervalMs,omitempty"`
+	// The threshold type.
+	//
+	// Valid values:
+	//
+	// *   0
+	//
+	//     <!-- -->
+	//
+	//     :
+	//
+	//     <!-- -->
+	//
+	//     slow call proportion
+	//
+	//     <!-- -->
+	//
+	// *   1
+	//
+	//     <!-- -->
+	//
+	//     :
+	//
+	//     <!-- -->
+	//
+	//     abnormal proportion
+	//
+	//     <!-- -->
+	Strategy *int32 `json:"Strategy,omitempty" xml:"Strategy,omitempty"`
+	// A percentage threshold for triggering circuit breaking. Valid values: 0-1. These values represent 0% to 100%.
+	Threshold *float32 `json:"Threshold,omitempty" xml:"Threshold,omitempty"`
 }
 
 func (s UpdateCircuitBreakerRuleResponseBodyData) String() string {
@@ -40069,7 +41224,9 @@ type UpdateClusterRequest struct {
 	// The alias of the instance.
 	ClusterAliasName *string `json:"ClusterAliasName,omitempty" xml:"ClusterAliasName,omitempty"`
 	// The ID of the instance.
-	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	InstanceId           *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	MaintenanceEndTime   *string `json:"MaintenanceEndTime,omitempty" xml:"MaintenanceEndTime,omitempty"`
+	MaintenanceStartTime *string `json:"MaintenanceStartTime,omitempty" xml:"MaintenanceStartTime,omitempty"`
 	// The extended request parameters in the JSON format.
 	RequestPars *string `json:"RequestPars,omitempty" xml:"RequestPars,omitempty"`
 }
@@ -40094,6 +41251,16 @@ func (s *UpdateClusterRequest) SetClusterAliasName(v string) *UpdateClusterReque
 
 func (s *UpdateClusterRequest) SetInstanceId(v string) *UpdateClusterRequest {
 	s.InstanceId = &v
+	return s
+}
+
+func (s *UpdateClusterRequest) SetMaintenanceEndTime(v string) *UpdateClusterRequest {
+	s.MaintenanceEndTime = &v
+	return s
+}
+
+func (s *UpdateClusterRequest) SetMaintenanceStartTime(v string) *UpdateClusterRequest {
+	s.MaintenanceStartTime = &v
 	return s
 }
 
@@ -40823,15 +41990,71 @@ func (s *UpdateEngineNamespaceResponse) SetBody(v *UpdateEngineNamespaceResponse
 }
 
 type UpdateFlowRuleRequest struct {
-	AcceptLanguage    *string `json:"AcceptLanguage,omitempty" xml:"AcceptLanguage,omitempty"`
-	AppId             *string `json:"AppId,omitempty" xml:"AppId,omitempty"`
-	AppName           *string `json:"AppName,omitempty" xml:"AppName,omitempty"`
-	ControlBehavior   *int32  `json:"ControlBehavior,omitempty" xml:"ControlBehavior,omitempty"`
-	Enable            *bool   `json:"Enable,omitempty" xml:"Enable,omitempty"`
-	MaxQueueingTimeMs *int32  `json:"MaxQueueingTimeMs,omitempty" xml:"MaxQueueingTimeMs,omitempty"`
-	Namespace         *string `json:"Namespace,omitempty" xml:"Namespace,omitempty"`
-	RuleId            *int64  `json:"RuleId,omitempty" xml:"RuleId,omitempty"`
-	Threshold         *int32  `json:"Threshold,omitempty" xml:"Threshold,omitempty"`
+	// The language of the response. Valid values:
+	//
+	// *   zh: Chinese
+	// *   en: English
+	AcceptLanguage *string `json:"AcceptLanguage,omitempty" xml:"AcceptLanguage,omitempty"`
+	// The application ID.
+	AppId *string `json:"AppId,omitempty" xml:"AppId,omitempty"`
+	// The application name.
+	AppName *string `json:"AppName,omitempty" xml:"AppName,omitempty"`
+	// The throttling effect.
+	//
+	// Valid values:
+	//
+	// *   0
+	//
+	//     <!-- -->
+	//
+	//     :
+	//
+	//     <!-- -->
+	//
+	//     fast failure
+	//
+	//     <!-- -->
+	//
+	// *   2
+	//
+	//     <!-- -->
+	//
+	//     :
+	//
+	//     <!-- -->
+	//
+	//     in queue
+	//
+	//     <!-- -->
+	ControlBehavior *int32 `json:"ControlBehavior,omitempty" xml:"ControlBehavior,omitempty"`
+	// Specifies whether to enable the rule.
+	//
+	// Valid values:
+	//
+	// *   true
+	//
+	//     <!-- -->
+	//
+	//     <!-- -->
+	//
+	//     <!-- -->
+	//
+	// *   false
+	//
+	//     <!-- -->
+	//
+	//     <!-- -->
+	//
+	//     <!-- -->
+	Enable *bool `json:"Enable,omitempty" xml:"Enable,omitempty"`
+	// The timeout period. Unit: milliseconds. This parameter is required when the value of ControlBehavior is set to 2.
+	MaxQueueingTimeMs *int32 `json:"MaxQueueingTimeMs,omitempty" xml:"MaxQueueingTimeMs,omitempty"`
+	// The namespace.
+	Namespace *string `json:"Namespace,omitempty" xml:"Namespace,omitempty"`
+	// The rule ID.
+	RuleId *int64 `json:"RuleId,omitempty" xml:"RuleId,omitempty"`
+	// The throttling threshold.
+	Threshold *int32 `json:"Threshold,omitempty" xml:"Threshold,omitempty"`
 }
 
 func (s UpdateFlowRuleRequest) String() string {
@@ -40888,11 +42111,42 @@ func (s *UpdateFlowRuleRequest) SetThreshold(v int32) *UpdateFlowRuleRequest {
 }
 
 type UpdateFlowRuleResponseBody struct {
-	Code      *string                         `json:"Code,omitempty" xml:"Code,omitempty"`
-	Data      *UpdateFlowRuleResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
-	Message   *string                         `json:"Message,omitempty" xml:"Message,omitempty"`
-	RequestId *string                         `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	Success   *bool                           `json:"Success,omitempty" xml:"Success,omitempty"`
+	// The response code.
+	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	// The data of the node.
+	Data *UpdateFlowRuleResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
+	// The returned message.
+	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// The request ID.
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// Indicates whether the request was successful.
+	//
+	// Valid values:
+	//
+	// *   true
+	//
+	//     <!-- -->
+	//
+	//     :
+	//
+	//     <!-- -->
+	//
+	//     The request was successful.
+	//
+	//     <!-- -->
+	//
+	// *   false
+	//
+	//     <!-- -->
+	//
+	//     :
+	//
+	//     <!-- -->
+	//
+	//     The request failed.
+	//
+	//     <!-- -->
+	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
 }
 
 func (s UpdateFlowRuleResponseBody) String() string {
@@ -40929,15 +42183,68 @@ func (s *UpdateFlowRuleResponseBody) SetSuccess(v bool) *UpdateFlowRuleResponseB
 }
 
 type UpdateFlowRuleResponseBodyData struct {
-	AppId             *string  `json:"AppId,omitempty" xml:"AppId,omitempty"`
-	AppName           *string  `json:"AppName,omitempty" xml:"AppName,omitempty"`
-	ControlBehavior   *int32   `json:"ControlBehavior,omitempty" xml:"ControlBehavior,omitempty"`
-	Enable            *bool    `json:"Enable,omitempty" xml:"Enable,omitempty"`
-	Id                *int64   `json:"Id,omitempty" xml:"Id,omitempty"`
-	MaxQueueingTimeMs *int32   `json:"MaxQueueingTimeMs,omitempty" xml:"MaxQueueingTimeMs,omitempty"`
-	Namespace         *string  `json:"Namespace,omitempty" xml:"Namespace,omitempty"`
-	Resource          *string  `json:"Resource,omitempty" xml:"Resource,omitempty"`
-	Threshold         *float32 `json:"Threshold,omitempty" xml:"Threshold,omitempty"`
+	// The application ID.
+	AppId *string `json:"AppId,omitempty" xml:"AppId,omitempty"`
+	// The application name.
+	AppName *string `json:"AppName,omitempty" xml:"AppName,omitempty"`
+	// The throttling effect.
+	//
+	// Valid values:
+	//
+	// *   0
+	//
+	//     <!-- -->
+	//
+	//     :
+	//
+	//     <!-- -->
+	//
+	//     fast failure
+	//
+	//     <!-- -->
+	//
+	// *   2
+	//
+	//     <!-- -->
+	//
+	//     :
+	//
+	//     <!-- -->
+	//
+	//     in queue
+	//
+	//     <!-- -->
+	ControlBehavior *int32 `json:"ControlBehavior,omitempty" xml:"ControlBehavior,omitempty"`
+	// Indicates whether the rule was enabled.
+	//
+	// Valid value:
+	//
+	// *   true
+	//
+	//     <!-- -->
+	//
+	//     <!-- -->
+	//
+	//     <!-- -->
+	//
+	// *   false
+	//
+	//     <!-- -->
+	//
+	//     <!-- -->
+	//
+	//     <!-- -->
+	Enable *bool `json:"Enable,omitempty" xml:"Enable,omitempty"`
+	// The rule ID.
+	Id *int64 `json:"Id,omitempty" xml:"Id,omitempty"`
+	// The timeout period for queuing when the value of ControlBehavior is set to 2. Unit: milliseconds.
+	MaxQueueingTimeMs *int32 `json:"MaxQueueingTimeMs,omitempty" xml:"MaxQueueingTimeMs,omitempty"`
+	// The namespace.
+	Namespace *string `json:"Namespace,omitempty" xml:"Namespace,omitempty"`
+	// The name of the API resource.
+	Resource *string `json:"Resource,omitempty" xml:"Resource,omitempty"`
+	// The throttling threshold.
+	Threshold *float32 `json:"Threshold,omitempty" xml:"Threshold,omitempty"`
 }
 
 func (s UpdateFlowRuleResponseBodyData) String() string {
@@ -42072,11 +43379,11 @@ type UpdateGatewayOptionRequest struct {
 	GatewayId *int64 `json:"GatewayId,omitempty" xml:"GatewayId,omitempty"`
 	// The detailed configurations of the gateway.
 	//
-	// *   **TraceDetails**: the sampling description of Tracing Analysis. Content: TraceEnabled specifies whether to activate Tracing Analysis. Sample specifies the sampling rate of Tracing Analysis.
-	// *   **LogConfigDetails**: the description of Log Service. Content: LogEnabled specifies whether to activate Log Service. ProjectName specifies the Log Service project to which logs are delivered. LogStoreName specifies the name of the Logstore.
-	// *   **EnableHardwareAcceleration**: specifies whether to enable hardware acceleration.
-	// *   **DisableHttp2Alpn**: specifies whether to disable the HTTP/2 protocol.
-	// *   **EnableWaf**: specifies whether to activate Web Application Firewall (WAF).
+	// *   **TraceDetails**: the sampling description of Managed Service for OpenTelemetry. Content: TraceEnabled indicates whether Managed Service for OpenTelemetry is activated. Sample indicates the sampling rate of Managed Service for OpenTelemetry.
+	// *   **LogConfigDetails**: the description of Simple Log Service. Content: LogEnabled indicates whether Simple Log Service is activated. ProjectName indicates the Simple Log Service project to which logs are delivered. LogStoreName indicates the name of the Logstore.
+	// *   **EnableHardwareAcceleration**: indicates whether hardware acceleration is enabled.
+	// *   **DisableHttp2Alpn**: indicates whether the HTTP/2 protocol is disabled.
+	// *   **EnableWaf**: indicates whether Web Application Firewall (WAF) is enabled.
 	GatewayOption *GatewayOption `json:"GatewayOption,omitempty" xml:"GatewayOption,omitempty"`
 	// The unique ID of the gateway.
 	GatewayUniqueId *string `json:"GatewayUniqueId,omitempty" xml:"GatewayUniqueId,omitempty"`
@@ -42120,11 +43427,11 @@ type UpdateGatewayOptionShrinkRequest struct {
 	GatewayId *int64 `json:"GatewayId,omitempty" xml:"GatewayId,omitempty"`
 	// The detailed configurations of the gateway.
 	//
-	// *   **TraceDetails**: the sampling description of Tracing Analysis. Content: TraceEnabled specifies whether to activate Tracing Analysis. Sample specifies the sampling rate of Tracing Analysis.
-	// *   **LogConfigDetails**: the description of Log Service. Content: LogEnabled specifies whether to activate Log Service. ProjectName specifies the Log Service project to which logs are delivered. LogStoreName specifies the name of the Logstore.
-	// *   **EnableHardwareAcceleration**: specifies whether to enable hardware acceleration.
-	// *   **DisableHttp2Alpn**: specifies whether to disable the HTTP/2 protocol.
-	// *   **EnableWaf**: specifies whether to activate Web Application Firewall (WAF).
+	// *   **TraceDetails**: the sampling description of Managed Service for OpenTelemetry. Content: TraceEnabled indicates whether Managed Service for OpenTelemetry is activated. Sample indicates the sampling rate of Managed Service for OpenTelemetry.
+	// *   **LogConfigDetails**: the description of Simple Log Service. Content: LogEnabled indicates whether Simple Log Service is activated. ProjectName indicates the Simple Log Service project to which logs are delivered. LogStoreName indicates the name of the Logstore.
+	// *   **EnableHardwareAcceleration**: indicates whether hardware acceleration is enabled.
+	// *   **DisableHttp2Alpn**: indicates whether the HTTP/2 protocol is disabled.
+	// *   **EnableWaf**: indicates whether Web Application Firewall (WAF) is enabled.
 	GatewayOptionShrink *string `json:"GatewayOption,omitempty" xml:"GatewayOption,omitempty"`
 	// The unique ID of the gateway.
 	GatewayUniqueId *string `json:"GatewayUniqueId,omitempty" xml:"GatewayUniqueId,omitempty"`
@@ -42161,7 +43468,7 @@ func (s *UpdateGatewayOptionShrinkRequest) SetGatewayUniqueId(v string) *UpdateG
 type UpdateGatewayOptionResponseBody struct {
 	// The status code returned.
 	Code *int32 `json:"Code,omitempty" xml:"Code,omitempty"`
-	// The returned data.
+	// The data returned.
 	Data *GatewayOption `json:"Data,omitempty" xml:"Data,omitempty"`
 	// The HTTP status code returned.
 	HttpStatusCode *int32 `json:"HttpStatusCode,omitempty" xml:"HttpStatusCode,omitempty"`
@@ -43306,7 +44613,7 @@ func (s *UpdateGatewayRouteAuthResponse) SetBody(v *UpdateGatewayRouteAuthRespon
 type UpdateGatewayRouteCORSRequest struct {
 	// The language of the response. In compliance with [RFC 7231](https://tools.ietf.org/html/rfc7231), the backend service must return a response based on the language used by the user.
 	//
-	// *   No default value
+	// *   No default value.
 	// *   zh-CN: Chinese
 	// *   en-US: English
 	AcceptLanguage *string `json:"AcceptLanguage,omitempty" xml:"AcceptLanguage,omitempty"`
@@ -43423,7 +44730,7 @@ func (s *UpdateGatewayRouteCORSRequestCorsJSON) SetUnitNum(v int64) *UpdateGatew
 type UpdateGatewayRouteCORSShrinkRequest struct {
 	// The language of the response. In compliance with [RFC 7231](https://tools.ietf.org/html/rfc7231), the backend service must return a response based on the language used by the user.
 	//
-	// *   No default value
+	// *   No default value.
 	// *   zh-CN: Chinese
 	// *   en-US: English
 	AcceptLanguage *string `json:"AcceptLanguage,omitempty" xml:"AcceptLanguage,omitempty"`
@@ -45343,8 +46650,8 @@ func (s *UpdateGatewayServiceCheckResponse) SetBody(v *UpdateGatewayServiceCheck
 type UpdateGatewayServiceTrafficPolicyRequest struct {
 	// The language of the response. Valid values:
 	//
-	// *   **zh-CN**: Chinese
-	// *   **en-US**: English.
+	// *   **zh-CN** (default): Chinese
+	// *   **en-US**: English
 	AcceptLanguage *string `json:"AcceptLanguage,omitempty" xml:"AcceptLanguage,omitempty"`
 	// The ID of the gateway.
 	GatewayId *int64 `json:"GatewayId,omitempty" xml:"GatewayId,omitempty"`
@@ -45392,8 +46699,8 @@ func (s *UpdateGatewayServiceTrafficPolicyRequest) SetServiceId(v int64) *Update
 type UpdateGatewayServiceTrafficPolicyShrinkRequest struct {
 	// The language of the response. Valid values:
 	//
-	// *   **zh-CN**: Chinese
-	// *   **en-US**: English.
+	// *   **zh-CN** (default): Chinese
+	// *   **en-US**: English
 	AcceptLanguage *string `json:"AcceptLanguage,omitempty" xml:"AcceptLanguage,omitempty"`
 	// The ID of the gateway.
 	GatewayId *int64 `json:"GatewayId,omitempty" xml:"GatewayId,omitempty"`
@@ -47308,7 +48615,7 @@ type UpdateSSLCertResponseBody struct {
 	HttpStatusCode *int32 `json:"HttpStatusCode,omitempty" xml:"HttpStatusCode,omitempty"`
 	// The message returned.
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
-	// Id of the request
+	// The request ID.
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	// Indicates whether the request was successful. Valid values:
 	//
@@ -48261,8 +49568,16 @@ func (client *Client) AddGatewayWithOptions(tmpReq *AddGatewayRequest, runtime *
 		query["InternetSlbSpec"] = request.InternetSlbSpec
 	}
 
+	if !tea.BoolValue(util.IsUnset(request.MserVersion)) {
+		query["MserVersion"] = request.MserVersion
+	}
+
 	if !tea.BoolValue(util.IsUnset(request.Name)) {
 		query["Name"] = request.Name
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.NlbNetworkType)) {
+		query["NlbNetworkType"] = request.NlbNetworkType
 	}
 
 	if !tea.BoolValue(util.IsUnset(request.Region)) {
@@ -51278,7 +52593,7 @@ func (client *Client) DeleteNacosConfig(request *DeleteNacosConfigRequest) (_res
 }
 
 /**
- * > The operation is not provided in Nacos SDKs. For information about Nacos SDKs, see the [official documentation](https://nacos.io/zh-cn/docs/sdk.html).
+ * >  The current API operation is not provided in Nacos SDK. For more information about the Nacos-SDK API, see the [official documentation](https://nacos.io/zh-cn/docs/sdk.html).
  *
  * @param request DeleteNacosConfigsRequest
  * @param runtime runtime options for this request RuntimeOptions
@@ -51330,7 +52645,7 @@ func (client *Client) DeleteNacosConfigsWithOptions(request *DeleteNacosConfigsR
 }
 
 /**
- * > The operation is not provided in Nacos SDKs. For information about Nacos SDKs, see the [official documentation](https://nacos.io/zh-cn/docs/sdk.html).
+ * >  The current API operation is not provided in Nacos SDK. For more information about the Nacos-SDK API, see the [official documentation](https://nacos.io/zh-cn/docs/sdk.html).
  *
  * @param request DeleteNacosConfigsRequest
  * @return DeleteNacosConfigsResponse
@@ -56428,6 +57743,10 @@ func (client *Client) ListServiceSourceWithOptions(request *ListServiceSourceReq
 		query["GatewayUniqueId"] = request.GatewayUniqueId
 	}
 
+	if !tea.BoolValue(util.IsUnset(request.Source)) {
+		query["Source"] = request.Source
+	}
+
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
 	}
@@ -58640,6 +59959,14 @@ func (client *Client) UpdateClusterWithOptions(request *UpdateClusterRequest, ru
 		query["InstanceId"] = request.InstanceId
 	}
 
+	if !tea.BoolValue(util.IsUnset(request.MaintenanceEndTime)) {
+		query["MaintenanceEndTime"] = request.MaintenanceEndTime
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.MaintenanceStartTime)) {
+		query["MaintenanceStartTime"] = request.MaintenanceStartTime
+	}
+
 	if !tea.BoolValue(util.IsUnset(request.RequestPars)) {
 		query["RequestPars"] = request.RequestPars
 	}
@@ -58679,7 +60006,7 @@ func (client *Client) UpdateCluster(request *UpdateClusterRequest) (_result *Upd
 }
 
 /**
- * You can call this operation to update the number or specifications of nodes in a pay-as-you-go MSE instance. You are charged when you add nodes or upgrade node specifications. For more information, see \\[Pricing] (`~~1806469~~`).
+ * You can call this operation to update the number or specifications of nodes in a pay-as-you-go or subscription MSE instance. You are charged when you add nodes or upgrade node specifications. For more information, see "Pricing" (`~~1806469~~`).
  *
  * @param request UpdateClusterSpecRequest
  * @param runtime runtime options for this request RuntimeOptions
@@ -58739,7 +60066,7 @@ func (client *Client) UpdateClusterSpecWithOptions(request *UpdateClusterSpecReq
 }
 
 /**
- * You can call this operation to update the number or specifications of nodes in a pay-as-you-go MSE instance. You are charged when you add nodes or upgrade node specifications. For more information, see \\[Pricing] (`~~1806469~~`).
+ * You can call this operation to update the number or specifications of nodes in a pay-as-you-go or subscription MSE instance. You are charged when you add nodes or upgrade node specifications. For more information, see "Pricing" (`~~1806469~~`).
  *
  * @param request UpdateClusterSpecRequest
  * @return UpdateClusterSpecResponse
@@ -60276,7 +61603,7 @@ func (client *Client) UpdateGatewayServiceVersion(request *UpdateGatewayServiceV
 }
 
 /**
- * You can call this operation to update the number or specifications of nodes in a pay-as-you-go cloud-native gateway. You are charged when you add nodes or upgrade node specifications. For more information, see [Pricing](~~250950~~).
+ * You can call this operation to update the number of nodes or the specifications of nodes in a pay-as-you-go or subscription cloud-native gateway. If you add nodes or increase the specifications, you will incur fees. For more information, see [Pricing](~~250950~~).
  *
  * @param request UpdateGatewaySpecRequest
  * @param runtime runtime options for this request RuntimeOptions
@@ -60328,7 +61655,7 @@ func (client *Client) UpdateGatewaySpecWithOptions(request *UpdateGatewaySpecReq
 }
 
 /**
- * You can call this operation to update the number or specifications of nodes in a pay-as-you-go cloud-native gateway. You are charged when you add nodes or upgrade node specifications. For more information, see [Pricing](~~250950~~).
+ * You can call this operation to update the number of nodes or the specifications of nodes in a pay-as-you-go or subscription cloud-native gateway. If you add nodes or increase the specifications, you will incur fees. For more information, see [Pricing](~~250950~~).
  *
  * @param request UpdateGatewaySpecRequest
  * @return UpdateGatewaySpecResponse
@@ -60635,7 +61962,7 @@ func (client *Client) UpdateNacosCluster(request *UpdateNacosClusterRequest) (_r
 }
 
 /**
- * > The operation is not provided in Nacos SDKs. For information about Nacos SDKs, see the [official documentation](https://nacos.io/zh-cn/docs/sdk.html).
+ * >  The current API operation is not provided in Nacos SDK. For more information about Nacos SDK, see the [official documentation](https://nacos.io/zh-cn/docs/sdk.html).
  *
  * @param request UpdateNacosConfigRequest
  * @param runtime runtime options for this request RuntimeOptions
@@ -60723,7 +62050,7 @@ func (client *Client) UpdateNacosConfigWithOptions(request *UpdateNacosConfigReq
 }
 
 /**
- * > The operation is not provided in Nacos SDKs. For information about Nacos SDKs, see the [official documentation](https://nacos.io/zh-cn/docs/sdk.html).
+ * >  The current API operation is not provided in Nacos SDK. For more information about Nacos SDK, see the [official documentation](https://nacos.io/zh-cn/docs/sdk.html).
  *
  * @param request UpdateNacosConfigRequest
  * @return UpdateNacosConfigResponse
