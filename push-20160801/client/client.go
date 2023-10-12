@@ -1021,6 +1021,7 @@ type MassPushRequestPushTask struct {
 	AndroidBigPictureUrl             *string `json:"AndroidBigPictureUrl,omitempty" xml:"AndroidBigPictureUrl,omitempty"`
 	AndroidBigTitle                  *string `json:"AndroidBigTitle,omitempty" xml:"AndroidBigTitle,omitempty"`
 	AndroidExtParameters             *string `json:"AndroidExtParameters,omitempty" xml:"AndroidExtParameters,omitempty"`
+	AndroidHonorTargetUserType       *int32  `json:"AndroidHonorTargetUserType,omitempty" xml:"AndroidHonorTargetUserType,omitempty"`
 	AndroidHuaweiReceiptId           *string `json:"AndroidHuaweiReceiptId,omitempty" xml:"AndroidHuaweiReceiptId,omitempty"`
 	AndroidHuaweiTargetUserType      *int32  `json:"AndroidHuaweiTargetUserType,omitempty" xml:"AndroidHuaweiTargetUserType,omitempty"`
 	AndroidImageUrl                  *string `json:"AndroidImageUrl,omitempty" xml:"AndroidImageUrl,omitempty"`
@@ -1046,6 +1047,7 @@ type MassPushRequestPushTask struct {
 	AndroidPopupTitle                *string `json:"AndroidPopupTitle,omitempty" xml:"AndroidPopupTitle,omitempty"`
 	AndroidRemind                    *bool   `json:"AndroidRemind,omitempty" xml:"AndroidRemind,omitempty"`
 	AndroidRenderStyle               *string `json:"AndroidRenderStyle,omitempty" xml:"AndroidRenderStyle,omitempty"`
+	AndroidTargetUserType            *int32  `json:"AndroidTargetUserType,omitempty" xml:"AndroidTargetUserType,omitempty"`
 	AndroidVivoPushMode              *int32  `json:"AndroidVivoPushMode,omitempty" xml:"AndroidVivoPushMode,omitempty"`
 	// Deprecated
 	AndroidXiaoMiActivity *string `json:"AndroidXiaoMiActivity,omitempty" xml:"AndroidXiaoMiActivity,omitempty"`
@@ -1116,6 +1118,11 @@ func (s *MassPushRequestPushTask) SetAndroidBigTitle(v string) *MassPushRequestP
 
 func (s *MassPushRequestPushTask) SetAndroidExtParameters(v string) *MassPushRequestPushTask {
 	s.AndroidExtParameters = &v
+	return s
+}
+
+func (s *MassPushRequestPushTask) SetAndroidHonorTargetUserType(v int32) *MassPushRequestPushTask {
+	s.AndroidHonorTargetUserType = &v
 	return s
 }
 
@@ -1241,6 +1248,11 @@ func (s *MassPushRequestPushTask) SetAndroidRemind(v bool) *MassPushRequestPushT
 
 func (s *MassPushRequestPushTask) SetAndroidRenderStyle(v string) *MassPushRequestPushTask {
 	s.AndroidRenderStyle = &v
+	return s
+}
+
+func (s *MassPushRequestPushTask) SetAndroidTargetUserType(v int32) *MassPushRequestPushTask {
+	s.AndroidTargetUserType = &v
 	return s
 }
 
@@ -1489,6 +1501,7 @@ type PushRequest struct {
 	AndroidBigPictureUrl             *string `json:"AndroidBigPictureUrl,omitempty" xml:"AndroidBigPictureUrl,omitempty"`
 	AndroidBigTitle                  *string `json:"AndroidBigTitle,omitempty" xml:"AndroidBigTitle,omitempty"`
 	AndroidExtParameters             *string `json:"AndroidExtParameters,omitempty" xml:"AndroidExtParameters,omitempty"`
+	AndroidHonorTargetUserType       *int32  `json:"AndroidHonorTargetUserType,omitempty" xml:"AndroidHonorTargetUserType,omitempty"`
 	AndroidHuaweiReceiptId           *string `json:"AndroidHuaweiReceiptId,omitempty" xml:"AndroidHuaweiReceiptId,omitempty"`
 	AndroidHuaweiTargetUserType      *int32  `json:"AndroidHuaweiTargetUserType,omitempty" xml:"AndroidHuaweiTargetUserType,omitempty"`
 	AndroidImageUrl                  *string `json:"AndroidImageUrl,omitempty" xml:"AndroidImageUrl,omitempty"`
@@ -1514,6 +1527,7 @@ type PushRequest struct {
 	AndroidPopupTitle                *string `json:"AndroidPopupTitle,omitempty" xml:"AndroidPopupTitle,omitempty"`
 	AndroidRemind                    *bool   `json:"AndroidRemind,omitempty" xml:"AndroidRemind,omitempty"`
 	AndroidRenderStyle               *int32  `json:"AndroidRenderStyle,omitempty" xml:"AndroidRenderStyle,omitempty"`
+	AndroidTargetUserType            *int32  `json:"AndroidTargetUserType,omitempty" xml:"AndroidTargetUserType,omitempty"`
 	AndroidVivoPushMode              *int32  `json:"AndroidVivoPushMode,omitempty" xml:"AndroidVivoPushMode,omitempty"`
 	// Deprecated
 	AndroidXiaoMiActivity *string `json:"AndroidXiaoMiActivity,omitempty" xml:"AndroidXiaoMiActivity,omitempty"`
@@ -1590,6 +1604,11 @@ func (s *PushRequest) SetAndroidBigTitle(v string) *PushRequest {
 
 func (s *PushRequest) SetAndroidExtParameters(v string) *PushRequest {
 	s.AndroidExtParameters = &v
+	return s
+}
+
+func (s *PushRequest) SetAndroidHonorTargetUserType(v int32) *PushRequest {
+	s.AndroidHonorTargetUserType = &v
 	return s
 }
 
@@ -1715,6 +1734,11 @@ func (s *PushRequest) SetAndroidRemind(v bool) *PushRequest {
 
 func (s *PushRequest) SetAndroidRenderStyle(v int32) *PushRequest {
 	s.AndroidRenderStyle = &v
+	return s
+}
+
+func (s *PushRequest) SetAndroidTargetUserType(v int32) *PushRequest {
+	s.AndroidTargetUserType = &v
 	return s
 }
 
@@ -1971,12 +1995,13 @@ func (s *PushResponse) SetBody(v *PushResponseBody) *PushResponse {
 }
 
 type PushMessageToAndroidRequest struct {
-	AppKey      *int64  `json:"AppKey,omitempty" xml:"AppKey,omitempty"`
-	Body        *string `json:"Body,omitempty" xml:"Body,omitempty"`
-	JobKey      *string `json:"JobKey,omitempty" xml:"JobKey,omitempty"`
-	Target      *string `json:"Target,omitempty" xml:"Target,omitempty"`
-	TargetValue *string `json:"TargetValue,omitempty" xml:"TargetValue,omitempty"`
-	Title       *string `json:"Title,omitempty" xml:"Title,omitempty"`
+	AppKey       *int64  `json:"AppKey,omitempty" xml:"AppKey,omitempty"`
+	Body         *string `json:"Body,omitempty" xml:"Body,omitempty"`
+	JobKey       *string `json:"JobKey,omitempty" xml:"JobKey,omitempty"`
+	StoreOffline *bool   `json:"StoreOffline,omitempty" xml:"StoreOffline,omitempty"`
+	Target       *string `json:"Target,omitempty" xml:"Target,omitempty"`
+	TargetValue  *string `json:"TargetValue,omitempty" xml:"TargetValue,omitempty"`
+	Title        *string `json:"Title,omitempty" xml:"Title,omitempty"`
 }
 
 func (s PushMessageToAndroidRequest) String() string {
@@ -1999,6 +2024,11 @@ func (s *PushMessageToAndroidRequest) SetBody(v string) *PushMessageToAndroidReq
 
 func (s *PushMessageToAndroidRequest) SetJobKey(v string) *PushMessageToAndroidRequest {
 	s.JobKey = &v
+	return s
+}
+
+func (s *PushMessageToAndroidRequest) SetStoreOffline(v bool) *PushMessageToAndroidRequest {
+	s.StoreOffline = &v
 	return s
 }
 
@@ -2070,12 +2100,13 @@ func (s *PushMessageToAndroidResponse) SetBody(v *PushMessageToAndroidResponseBo
 }
 
 type PushMessageToiOSRequest struct {
-	AppKey      *int64  `json:"AppKey,omitempty" xml:"AppKey,omitempty"`
-	Body        *string `json:"Body,omitempty" xml:"Body,omitempty"`
-	JobKey      *string `json:"JobKey,omitempty" xml:"JobKey,omitempty"`
-	Target      *string `json:"Target,omitempty" xml:"Target,omitempty"`
-	TargetValue *string `json:"TargetValue,omitempty" xml:"TargetValue,omitempty"`
-	Title       *string `json:"Title,omitempty" xml:"Title,omitempty"`
+	AppKey       *int64  `json:"AppKey,omitempty" xml:"AppKey,omitempty"`
+	Body         *string `json:"Body,omitempty" xml:"Body,omitempty"`
+	JobKey       *string `json:"JobKey,omitempty" xml:"JobKey,omitempty"`
+	StoreOffline *bool   `json:"StoreOffline,omitempty" xml:"StoreOffline,omitempty"`
+	Target       *string `json:"Target,omitempty" xml:"Target,omitempty"`
+	TargetValue  *string `json:"TargetValue,omitempty" xml:"TargetValue,omitempty"`
+	Title        *string `json:"Title,omitempty" xml:"Title,omitempty"`
 }
 
 func (s PushMessageToiOSRequest) String() string {
@@ -2098,6 +2129,11 @@ func (s *PushMessageToiOSRequest) SetBody(v string) *PushMessageToiOSRequest {
 
 func (s *PushMessageToiOSRequest) SetJobKey(v string) *PushMessageToiOSRequest {
 	s.JobKey = &v
+	return s
+}
+
+func (s *PushMessageToiOSRequest) SetStoreOffline(v bool) *PushMessageToiOSRequest {
+	s.StoreOffline = &v
 	return s
 }
 
@@ -2173,6 +2209,7 @@ type PushNoticeToAndroidRequest struct {
 	Body          *string `json:"Body,omitempty" xml:"Body,omitempty"`
 	ExtParameters *string `json:"ExtParameters,omitempty" xml:"ExtParameters,omitempty"`
 	JobKey        *string `json:"JobKey,omitempty" xml:"JobKey,omitempty"`
+	StoreOffline  *bool   `json:"StoreOffline,omitempty" xml:"StoreOffline,omitempty"`
 	Target        *string `json:"Target,omitempty" xml:"Target,omitempty"`
 	TargetValue   *string `json:"TargetValue,omitempty" xml:"TargetValue,omitempty"`
 	Title         *string `json:"Title,omitempty" xml:"Title,omitempty"`
@@ -2203,6 +2240,11 @@ func (s *PushNoticeToAndroidRequest) SetExtParameters(v string) *PushNoticeToAnd
 
 func (s *PushNoticeToAndroidRequest) SetJobKey(v string) *PushNoticeToAndroidRequest {
 	s.JobKey = &v
+	return s
+}
+
+func (s *PushNoticeToAndroidRequest) SetStoreOffline(v bool) *PushNoticeToAndroidRequest {
+	s.StoreOffline = &v
 	return s
 }
 
@@ -2542,10 +2584,12 @@ func (s *QueryDeviceInfoResponseBody) SetRequestId(v string) *QueryDeviceInfoRes
 type QueryDeviceInfoResponseBodyDeviceInfo struct {
 	Account        *string `json:"Account,omitempty" xml:"Account,omitempty"`
 	Alias          *string `json:"Alias,omitempty" xml:"Alias,omitempty"`
+	Brand          *string `json:"Brand,omitempty" xml:"Brand,omitempty"`
 	DeviceId       *string `json:"DeviceId,omitempty" xml:"DeviceId,omitempty"`
 	DeviceToken    *string `json:"DeviceToken,omitempty" xml:"DeviceToken,omitempty"`
 	DeviceType     *string `json:"DeviceType,omitempty" xml:"DeviceType,omitempty"`
 	LastOnlineTime *string `json:"LastOnlineTime,omitempty" xml:"LastOnlineTime,omitempty"`
+	Model          *string `json:"Model,omitempty" xml:"Model,omitempty"`
 	Online         *bool   `json:"Online,omitempty" xml:"Online,omitempty"`
 	PhoneNumber    *string `json:"PhoneNumber,omitempty" xml:"PhoneNumber,omitempty"`
 	PushEnabled    *bool   `json:"PushEnabled,omitempty" xml:"PushEnabled,omitempty"`
@@ -2570,6 +2614,11 @@ func (s *QueryDeviceInfoResponseBodyDeviceInfo) SetAlias(v string) *QueryDeviceI
 	return s
 }
 
+func (s *QueryDeviceInfoResponseBodyDeviceInfo) SetBrand(v string) *QueryDeviceInfoResponseBodyDeviceInfo {
+	s.Brand = &v
+	return s
+}
+
 func (s *QueryDeviceInfoResponseBodyDeviceInfo) SetDeviceId(v string) *QueryDeviceInfoResponseBodyDeviceInfo {
 	s.DeviceId = &v
 	return s
@@ -2587,6 +2636,11 @@ func (s *QueryDeviceInfoResponseBodyDeviceInfo) SetDeviceType(v string) *QueryDe
 
 func (s *QueryDeviceInfoResponseBodyDeviceInfo) SetLastOnlineTime(v string) *QueryDeviceInfoResponseBodyDeviceInfo {
 	s.LastOnlineTime = &v
+	return s
+}
+
+func (s *QueryDeviceInfoResponseBodyDeviceInfo) SetModel(v string) *QueryDeviceInfoResponseBodyDeviceInfo {
+	s.Model = &v
 	return s
 }
 
@@ -4445,7 +4499,7 @@ func (client *Client) CheckCertificate(request *CheckCertificateRequest) (_resul
 }
 
 /**
- * @deprecated
+ * @deprecated : CheckDevice is deprecated, please use Push::2016-08-01::CheckDevices instead.
  *
  * @param request CheckDeviceRequest
  * @param runtime runtime options for this request RuntimeOptions
@@ -4490,7 +4544,7 @@ func (client *Client) CheckDeviceWithOptions(request *CheckDeviceRequest, runtim
 }
 
 /**
- * @deprecated
+ * @deprecated : CheckDevice is deprecated, please use Push::2016-08-01::CheckDevices instead.
  *
  * @param request CheckDeviceRequest
  * @return CheckDeviceResponse
@@ -4660,7 +4714,7 @@ func (client *Client) ContinuouslyPush(request *ContinuouslyPushRequest) (_resul
 }
 
 /**
- * @deprecated
+ * @deprecated : ListSummaryApps is deprecated, please use Mhub::2017-08-25::ListApps instead.
  *
  * @param request ListSummaryAppsRequest
  * @param runtime runtime options for this request RuntimeOptions
@@ -4690,7 +4744,7 @@ func (client *Client) ListSummaryAppsWithOptions(runtime *util.RuntimeOptions) (
 }
 
 /**
- * @deprecated
+ * @deprecated : ListSummaryApps is deprecated, please use Mhub::2017-08-25::ListApps instead.
  *
  * @return ListSummaryAppsResponse
  */
@@ -4826,6 +4880,10 @@ func (client *Client) PushWithOptions(request *PushRequest, runtime *util.Runtim
 		query["AndroidExtParameters"] = request.AndroidExtParameters
 	}
 
+	if !tea.BoolValue(util.IsUnset(request.AndroidHonorTargetUserType)) {
+		query["AndroidHonorTargetUserType"] = request.AndroidHonorTargetUserType
+	}
+
 	if !tea.BoolValue(util.IsUnset(request.AndroidHuaweiReceiptId)) {
 		query["AndroidHuaweiReceiptId"] = request.AndroidHuaweiReceiptId
 	}
@@ -4924,6 +4982,10 @@ func (client *Client) PushWithOptions(request *PushRequest, runtime *util.Runtim
 
 	if !tea.BoolValue(util.IsUnset(request.AndroidRenderStyle)) {
 		query["AndroidRenderStyle"] = request.AndroidRenderStyle
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.AndroidTargetUserType)) {
+		query["AndroidTargetUserType"] = request.AndroidTargetUserType
 	}
 
 	if !tea.BoolValue(util.IsUnset(request.AndroidVivoPushMode)) {
@@ -5138,6 +5200,10 @@ func (client *Client) PushMessageToAndroidWithOptions(request *PushMessageToAndr
 		query["JobKey"] = request.JobKey
 	}
 
+	if !tea.BoolValue(util.IsUnset(request.StoreOffline)) {
+		query["StoreOffline"] = request.StoreOffline
+	}
+
 	if !tea.BoolValue(util.IsUnset(request.Target)) {
 		query["Target"] = request.Target
 	}
@@ -5200,6 +5266,10 @@ func (client *Client) PushMessageToiOSWithOptions(request *PushMessageToiOSReque
 
 	if !tea.BoolValue(util.IsUnset(request.JobKey)) {
 		query["JobKey"] = request.JobKey
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.StoreOffline)) {
+		query["StoreOffline"] = request.StoreOffline
 	}
 
 	if !tea.BoolValue(util.IsUnset(request.Target)) {
@@ -5268,6 +5338,10 @@ func (client *Client) PushNoticeToAndroidWithOptions(request *PushNoticeToAndroi
 
 	if !tea.BoolValue(util.IsUnset(request.JobKey)) {
 		query["JobKey"] = request.JobKey
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.StoreOffline)) {
+		query["StoreOffline"] = request.StoreOffline
 	}
 
 	if !tea.BoolValue(util.IsUnset(request.Target)) {
