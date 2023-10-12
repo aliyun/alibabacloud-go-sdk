@@ -13,8 +13,10 @@ import (
 )
 
 type CancelExecutionRequest struct {
+	// The ID of the execution.
 	ExecutionId *string `json:"ExecutionId,omitempty" xml:"ExecutionId,omitempty"`
-	RegionId    *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	// The ID of the region.
+	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 }
 
 func (s CancelExecutionRequest) String() string {
@@ -36,6 +38,7 @@ func (s *CancelExecutionRequest) SetRegionId(v string) *CancelExecutionRequest {
 }
 
 type CancelExecutionResponseBody struct {
+	// The ID of the request.
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -266,6 +269,7 @@ func (s *ContinueDeployApplicationGroupResponse) SetBody(v *ContinueDeployApplic
 }
 
 type CreateApplicationRequest struct {
+	// The configurations of application alerts.
 	AlarmConfig *CreateApplicationRequestAlarmConfig `json:"AlarmConfig,omitempty" xml:"AlarmConfig,omitempty" type:"Struct"`
 	// The client token that is used to ensure the idempotence of the request.
 	ClientToken *string `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
@@ -277,6 +281,7 @@ type CreateApplicationRequest struct {
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 	// The ID of the resource group.
 	ResourceGroupId *string `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
+	ServiceId       *string `json:"ServiceId,omitempty" xml:"ServiceId,omitempty"`
 	// The tags.
 	Tags map[string]interface{} `json:"Tags,omitempty" xml:"Tags,omitempty"`
 }
@@ -319,15 +324,23 @@ func (s *CreateApplicationRequest) SetResourceGroupId(v string) *CreateApplicati
 	return s
 }
 
+func (s *CreateApplicationRequest) SetServiceId(v string) *CreateApplicationRequest {
+	s.ServiceId = &v
+	return s
+}
+
 func (s *CreateApplicationRequest) SetTags(v map[string]interface{}) *CreateApplicationRequest {
 	s.Tags = v
 	return s
 }
 
 type CreateApplicationRequestAlarmConfig struct {
-	ContactGroups  []*string `json:"ContactGroups,omitempty" xml:"ContactGroups,omitempty" type:"Repeated"`
-	HealthCheckUrl *string   `json:"HealthCheckUrl,omitempty" xml:"HealthCheckUrl,omitempty"`
-	TemplateIds    []*string `json:"TemplateIds,omitempty" xml:"TemplateIds,omitempty" type:"Repeated"`
+	// The alert contact groups.
+	ContactGroups []*string `json:"ContactGroups,omitempty" xml:"ContactGroups,omitempty" type:"Repeated"`
+	// The health check URL of the application.
+	HealthCheckUrl *string `json:"HealthCheckUrl,omitempty" xml:"HealthCheckUrl,omitempty"`
+	// The alert templates.
+	TemplateIds []*string `json:"TemplateIds,omitempty" xml:"TemplateIds,omitempty" type:"Repeated"`
 }
 
 func (s CreateApplicationRequestAlarmConfig) String() string {
@@ -354,6 +367,7 @@ func (s *CreateApplicationRequestAlarmConfig) SetTemplateIds(v []*string) *Creat
 }
 
 type CreateApplicationShrinkRequest struct {
+	// The configurations of application alerts.
 	AlarmConfigShrink *string `json:"AlarmConfig,omitempty" xml:"AlarmConfig,omitempty"`
 	// The client token that is used to ensure the idempotence of the request.
 	ClientToken *string `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
@@ -365,6 +379,7 @@ type CreateApplicationShrinkRequest struct {
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 	// The ID of the resource group.
 	ResourceGroupId *string `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
+	ServiceId       *string `json:"ServiceId,omitempty" xml:"ServiceId,omitempty"`
 	// The tags.
 	TagsShrink *string `json:"Tags,omitempty" xml:"Tags,omitempty"`
 }
@@ -404,6 +419,11 @@ func (s *CreateApplicationShrinkRequest) SetRegionId(v string) *CreateApplicatio
 
 func (s *CreateApplicationShrinkRequest) SetResourceGroupId(v string) *CreateApplicationShrinkRequest {
 	s.ResourceGroupId = &v
+	return s
+}
+
+func (s *CreateApplicationShrinkRequest) SetServiceId(v string) *CreateApplicationShrinkRequest {
+	s.ServiceId = &v
 	return s
 }
 
@@ -715,19 +735,108 @@ func (s *CreateApplicationGroupResponse) SetBody(v *CreateApplicationGroupRespon
 }
 
 type CreateOpsItemRequest struct {
-	Category        *string                `json:"Category,omitempty" xml:"Category,omitempty"`
-	ClientToken     *string                `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
-	DedupString     *string                `json:"DedupString,omitempty" xml:"DedupString,omitempty"`
-	Description     *string                `json:"Description,omitempty" xml:"Description,omitempty"`
-	Priority        *int32                 `json:"Priority,omitempty" xml:"Priority,omitempty"`
-	RegionId        *string                `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	ResourceGroupId *string                `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
-	Resources       *string                `json:"Resources,omitempty" xml:"Resources,omitempty"`
-	Severity        *string                `json:"Severity,omitempty" xml:"Severity,omitempty"`
-	Solutions       *string                `json:"Solutions,omitempty" xml:"Solutions,omitempty"`
-	Source          *string                `json:"Source,omitempty" xml:"Source,omitempty"`
-	Tags            map[string]interface{} `json:"Tags,omitempty" xml:"Tags,omitempty"`
-	Title           *string                `json:"Title,omitempty" xml:"Title,omitempty"`
+	// The category.
+	//
+	// Valid values:
+	//
+	// *   Availability
+	//
+	//     <!-- -->
+	//
+	//     <!-- -->
+	//
+	//     <!-- -->
+	//
+	// *   Performance
+	//
+	//     <!-- -->
+	//
+	//     <!-- -->
+	//
+	//     <!-- -->
+	//
+	// *   Security
+	//
+	//     <!-- -->
+	//
+	//     <!-- -->
+	//
+	//     <!-- -->
+	//
+	// *   Cost
+	//
+	//     <!-- -->
+	//
+	//     <!-- -->
+	//
+	//     <!-- -->
+	//
+	// *   Recovery
+	//
+	//     <!-- -->
+	//
+	//     <!-- -->
+	//
+	//     <!-- -->
+	Category *string `json:"Category,omitempty" xml:"Category,omitempty"`
+	// The client token that is used to ensure the idempotence of the request.
+	ClientToken *string `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
+	// The string to be deduplicated.
+	DedupString *string `json:"DedupString,omitempty" xml:"DedupString,omitempty"`
+	// The description of the operation.
+	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
+	// The priority. Valid values: 1 to 5. 1 indicates the highest priority.
+	Priority *int32 `json:"Priority,omitempty" xml:"Priority,omitempty"`
+	// The region ID.
+	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	// The ID of the resource group.
+	ResourceGroupId *string `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
+	// The Alibaba Cloud Resource Names (ARNs) of the associated resources.
+	Resources *string `json:"Resources,omitempty" xml:"Resources,omitempty"`
+	// The severity level.
+	//
+	// Valid values:
+	//
+	// *   High
+	//
+	//     <!-- -->
+	//
+	//     <!-- -->
+	//
+	//     <!-- -->
+	//
+	// *   Low
+	//
+	//     <!-- -->
+	//
+	//     <!-- -->
+	//
+	//     <!-- -->
+	//
+	// *   Medium
+	//
+	//     <!-- -->
+	//
+	//     <!-- -->
+	//
+	//     <!-- -->
+	//
+	// *   Critical
+	//
+	//     <!-- -->
+	//
+	//     <!-- -->
+	//
+	//     <!-- -->
+	Severity *string `json:"Severity,omitempty" xml:"Severity,omitempty"`
+	// The list of solutions.
+	Solutions *string `json:"Solutions,omitempty" xml:"Solutions,omitempty"`
+	// The source business.
+	Source *string `json:"Source,omitempty" xml:"Source,omitempty"`
+	// The tags.
+	Tags map[string]interface{} `json:"Tags,omitempty" xml:"Tags,omitempty"`
+	// The title of the O\&M item.
+	Title *string `json:"Title,omitempty" xml:"Title,omitempty"`
 }
 
 func (s CreateOpsItemRequest) String() string {
@@ -804,19 +913,108 @@ func (s *CreateOpsItemRequest) SetTitle(v string) *CreateOpsItemRequest {
 }
 
 type CreateOpsItemShrinkRequest struct {
-	Category        *string `json:"Category,omitempty" xml:"Category,omitempty"`
-	ClientToken     *string `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
-	DedupString     *string `json:"DedupString,omitempty" xml:"DedupString,omitempty"`
-	Description     *string `json:"Description,omitempty" xml:"Description,omitempty"`
-	Priority        *int32  `json:"Priority,omitempty" xml:"Priority,omitempty"`
-	RegionId        *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	// The category.
+	//
+	// Valid values:
+	//
+	// *   Availability
+	//
+	//     <!-- -->
+	//
+	//     <!-- -->
+	//
+	//     <!-- -->
+	//
+	// *   Performance
+	//
+	//     <!-- -->
+	//
+	//     <!-- -->
+	//
+	//     <!-- -->
+	//
+	// *   Security
+	//
+	//     <!-- -->
+	//
+	//     <!-- -->
+	//
+	//     <!-- -->
+	//
+	// *   Cost
+	//
+	//     <!-- -->
+	//
+	//     <!-- -->
+	//
+	//     <!-- -->
+	//
+	// *   Recovery
+	//
+	//     <!-- -->
+	//
+	//     <!-- -->
+	//
+	//     <!-- -->
+	Category *string `json:"Category,omitempty" xml:"Category,omitempty"`
+	// The client token that is used to ensure the idempotence of the request.
+	ClientToken *string `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
+	// The string to be deduplicated.
+	DedupString *string `json:"DedupString,omitempty" xml:"DedupString,omitempty"`
+	// The description of the operation.
+	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
+	// The priority. Valid values: 1 to 5. 1 indicates the highest priority.
+	Priority *int32 `json:"Priority,omitempty" xml:"Priority,omitempty"`
+	// The region ID.
+	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	// The ID of the resource group.
 	ResourceGroupId *string `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
-	Resources       *string `json:"Resources,omitempty" xml:"Resources,omitempty"`
-	Severity        *string `json:"Severity,omitempty" xml:"Severity,omitempty"`
-	Solutions       *string `json:"Solutions,omitempty" xml:"Solutions,omitempty"`
-	Source          *string `json:"Source,omitempty" xml:"Source,omitempty"`
-	TagsShrink      *string `json:"Tags,omitempty" xml:"Tags,omitempty"`
-	Title           *string `json:"Title,omitempty" xml:"Title,omitempty"`
+	// The Alibaba Cloud Resource Names (ARNs) of the associated resources.
+	Resources *string `json:"Resources,omitempty" xml:"Resources,omitempty"`
+	// The severity level.
+	//
+	// Valid values:
+	//
+	// *   High
+	//
+	//     <!-- -->
+	//
+	//     <!-- -->
+	//
+	//     <!-- -->
+	//
+	// *   Low
+	//
+	//     <!-- -->
+	//
+	//     <!-- -->
+	//
+	//     <!-- -->
+	//
+	// *   Medium
+	//
+	//     <!-- -->
+	//
+	//     <!-- -->
+	//
+	//     <!-- -->
+	//
+	// *   Critical
+	//
+	//     <!-- -->
+	//
+	//     <!-- -->
+	//
+	//     <!-- -->
+	Severity *string `json:"Severity,omitempty" xml:"Severity,omitempty"`
+	// The list of solutions.
+	Solutions *string `json:"Solutions,omitempty" xml:"Solutions,omitempty"`
+	// The source business.
+	Source *string `json:"Source,omitempty" xml:"Source,omitempty"`
+	// The tags.
+	TagsShrink *string `json:"Tags,omitempty" xml:"Tags,omitempty"`
+	// The title of the O\&M item.
+	Title *string `json:"Title,omitempty" xml:"Title,omitempty"`
 }
 
 func (s CreateOpsItemShrinkRequest) String() string {
@@ -893,8 +1091,10 @@ func (s *CreateOpsItemShrinkRequest) SetTitle(v string) *CreateOpsItemShrinkRequ
 }
 
 type CreateOpsItemResponseBody struct {
-	OpsItem   *CreateOpsItemResponseBodyOpsItem `json:"OpsItem,omitempty" xml:"OpsItem,omitempty" type:"Struct"`
-	RequestId *string                           `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The O\&M item.
+	OpsItem *CreateOpsItemResponseBodyOpsItem `json:"OpsItem,omitempty" xml:"OpsItem,omitempty" type:"Struct"`
+	// The ID of the request.
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
 func (s CreateOpsItemResponseBody) String() string {
@@ -916,23 +1116,40 @@ func (s *CreateOpsItemResponseBody) SetRequestId(v string) *CreateOpsItemRespons
 }
 
 type CreateOpsItemResponseBodyOpsItem struct {
-	Attributes      *string                `json:"Attributes,omitempty" xml:"Attributes,omitempty"`
-	Category        *string                `json:"Category,omitempty" xml:"Category,omitempty"`
-	CreateDate      *string                `json:"CreateDate,omitempty" xml:"CreateDate,omitempty"`
-	CreatedBy       *string                `json:"CreatedBy,omitempty" xml:"CreatedBy,omitempty"`
-	Description     *string                `json:"Description,omitempty" xml:"Description,omitempty"`
-	LastModifiedBy  *string                `json:"LastModifiedBy,omitempty" xml:"LastModifiedBy,omitempty"`
-	OpsItemId       *string                `json:"OpsItemId,omitempty" xml:"OpsItemId,omitempty"`
-	Priority        *int32                 `json:"Priority,omitempty" xml:"Priority,omitempty"`
-	ResourceGroupId *string                `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
-	Resources       *string                `json:"Resources,omitempty" xml:"Resources,omitempty"`
-	Severity        *string                `json:"Severity,omitempty" xml:"Severity,omitempty"`
-	Solutions       *string                `json:"Solutions,omitempty" xml:"Solutions,omitempty"`
-	Source          *string                `json:"Source,omitempty" xml:"Source,omitempty"`
-	Status          *string                `json:"Status,omitempty" xml:"Status,omitempty"`
-	Tags            map[string]interface{} `json:"Tags,omitempty" xml:"Tags,omitempty"`
-	Title           *string                `json:"Title,omitempty" xml:"Title,omitempty"`
-	UpdateDate      *string                `json:"UpdateDate,omitempty" xml:"UpdateDate,omitempty"`
+	// The information about the properties of the O\&M item.
+	Attributes *string `json:"Attributes,omitempty" xml:"Attributes,omitempty"`
+	// The category.
+	Category *string `json:"Category,omitempty" xml:"Category,omitempty"`
+	// The time when the O\&M item was created.
+	CreateDate *string `json:"CreateDate,omitempty" xml:"CreateDate,omitempty"`
+	// The user who created the OpsItem.
+	CreatedBy *string `json:"CreatedBy,omitempty" xml:"CreatedBy,omitempty"`
+	// The description.
+	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
+	// The user who modified the O\&M item.
+	LastModifiedBy *string `json:"LastModifiedBy,omitempty" xml:"LastModifiedBy,omitempty"`
+	// The ID of the O\&M item.
+	OpsItemId *string `json:"OpsItemId,omitempty" xml:"OpsItemId,omitempty"`
+	// The priority.
+	Priority *int32 `json:"Priority,omitempty" xml:"Priority,omitempty"`
+	// The ID of the resource group.
+	ResourceGroupId *string `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
+	// The ARN of the associated resource.
+	Resources *string `json:"Resources,omitempty" xml:"Resources,omitempty"`
+	// The severity level.
+	Severity *string `json:"Severity,omitempty" xml:"Severity,omitempty"`
+	// The solution.
+	Solutions *string `json:"Solutions,omitempty" xml:"Solutions,omitempty"`
+	// The source business.
+	Source *string `json:"Source,omitempty" xml:"Source,omitempty"`
+	// The status.
+	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
+	// The tags.
+	Tags map[string]interface{} `json:"Tags,omitempty" xml:"Tags,omitempty"`
+	// The title of the O\&M item.
+	Title *string `json:"Title,omitempty" xml:"Title,omitempty"`
+	// The time when the O\&M item was updated.
+	UpdateDate *string `json:"UpdateDate,omitempty" xml:"UpdateDate,omitempty"`
 }
 
 func (s CreateOpsItemResponseBodyOpsItem) String() string {
@@ -1373,9 +1590,11 @@ func (s *CreateParameterResponse) SetBody(v *CreateParameterResponseBody) *Creat
 
 type CreatePatchBaselineRequest struct {
 	// The rules of scanning and installing patches for the specified operating system.
-	ApprovalRules                    *string   `json:"ApprovalRules,omitempty" xml:"ApprovalRules,omitempty"`
-	ApprovedPatches                  []*string `json:"ApprovedPatches,omitempty" xml:"ApprovedPatches,omitempty" type:"Repeated"`
-	ApprovedPatchesEnableNonSecurity *bool     `json:"ApprovedPatchesEnableNonSecurity,omitempty" xml:"ApprovedPatchesEnableNonSecurity,omitempty"`
+	ApprovalRules *string `json:"ApprovalRules,omitempty" xml:"ApprovalRules,omitempty"`
+	// The approved patches.
+	ApprovedPatches []*string `json:"ApprovedPatches,omitempty" xml:"ApprovedPatches,omitempty" type:"Repeated"`
+	// Specifies whether the approved patch involves updates other than security-related updates.
+	ApprovedPatchesEnableNonSecurity *bool `json:"ApprovedPatchesEnableNonSecurity,omitempty" xml:"ApprovedPatchesEnableNonSecurity,omitempty"`
 	// The client token that is used to ensure the idempotence of the request.
 	ClientToken *string `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
 	// The description of the patch baseline.
@@ -1394,12 +1613,17 @@ type CreatePatchBaselineRequest struct {
 	// *   AlmaLinux
 	OperationSystem *string `json:"OperationSystem,omitempty" xml:"OperationSystem,omitempty"`
 	// The ID of the region in which you want to create a patch baseline.
-	RegionId              *string                           `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	RejectedPatches       []*string                         `json:"RejectedPatches,omitempty" xml:"RejectedPatches,omitempty" type:"Repeated"`
-	RejectedPatchesAction *string                           `json:"RejectedPatchesAction,omitempty" xml:"RejectedPatchesAction,omitempty"`
-	ResourceGroupId       *string                           `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
-	Sources               []*string                         `json:"Sources,omitempty" xml:"Sources,omitempty" type:"Repeated"`
-	Tags                  []*CreatePatchBaselineRequestTags `json:"Tags,omitempty" xml:"Tags,omitempty" type:"Repeated"`
+	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	// The rejected patches.
+	RejectedPatches []*string `json:"RejectedPatches,omitempty" xml:"RejectedPatches,omitempty" type:"Repeated"`
+	// The action of the rejected patch.
+	RejectedPatchesAction *string `json:"RejectedPatchesAction,omitempty" xml:"RejectedPatchesAction,omitempty"`
+	// The ID of the resource group.
+	ResourceGroupId *string `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
+	// The patch source configurations.
+	Sources []*string `json:"Sources,omitempty" xml:"Sources,omitempty" type:"Repeated"`
+	// The tags.
+	Tags []*CreatePatchBaselineRequestTags `json:"Tags,omitempty" xml:"Tags,omitempty" type:"Repeated"`
 }
 
 func (s CreatePatchBaselineRequest) String() string {
@@ -1476,7 +1700,9 @@ func (s *CreatePatchBaselineRequest) SetTags(v []*CreatePatchBaselineRequestTags
 }
 
 type CreatePatchBaselineRequestTags struct {
-	Key   *string `json:"Key,omitempty" xml:"Key,omitempty"`
+	// The key of the tag.
+	Key *string `json:"Key,omitempty" xml:"Key,omitempty"`
+	// The value of the tag.
 	Value *string `json:"Value,omitempty" xml:"Value,omitempty"`
 }
 
@@ -1500,9 +1726,11 @@ func (s *CreatePatchBaselineRequestTags) SetValue(v string) *CreatePatchBaseline
 
 type CreatePatchBaselineShrinkRequest struct {
 	// The rules of scanning and installing patches for the specified operating system.
-	ApprovalRules                    *string `json:"ApprovalRules,omitempty" xml:"ApprovalRules,omitempty"`
-	ApprovedPatchesShrink            *string `json:"ApprovedPatches,omitempty" xml:"ApprovedPatches,omitempty"`
-	ApprovedPatchesEnableNonSecurity *bool   `json:"ApprovedPatchesEnableNonSecurity,omitempty" xml:"ApprovedPatchesEnableNonSecurity,omitempty"`
+	ApprovalRules *string `json:"ApprovalRules,omitempty" xml:"ApprovalRules,omitempty"`
+	// The approved patches.
+	ApprovedPatchesShrink *string `json:"ApprovedPatches,omitempty" xml:"ApprovedPatches,omitempty"`
+	// Specifies whether the approved patch involves updates other than security-related updates.
+	ApprovedPatchesEnableNonSecurity *bool `json:"ApprovedPatchesEnableNonSecurity,omitempty" xml:"ApprovedPatchesEnableNonSecurity,omitempty"`
 	// The client token that is used to ensure the idempotence of the request.
 	ClientToken *string `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
 	// The description of the patch baseline.
@@ -1521,12 +1749,17 @@ type CreatePatchBaselineShrinkRequest struct {
 	// *   AlmaLinux
 	OperationSystem *string `json:"OperationSystem,omitempty" xml:"OperationSystem,omitempty"`
 	// The ID of the region in which you want to create a patch baseline.
-	RegionId              *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	// The rejected patches.
 	RejectedPatchesShrink *string `json:"RejectedPatches,omitempty" xml:"RejectedPatches,omitempty"`
+	// The action of the rejected patch.
 	RejectedPatchesAction *string `json:"RejectedPatchesAction,omitempty" xml:"RejectedPatchesAction,omitempty"`
-	ResourceGroupId       *string `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
-	SourcesShrink         *string `json:"Sources,omitempty" xml:"Sources,omitempty"`
-	TagsShrink            *string `json:"Tags,omitempty" xml:"Tags,omitempty"`
+	// The ID of the resource group.
+	ResourceGroupId *string `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
+	// The patch source configurations.
+	SourcesShrink *string `json:"Sources,omitempty" xml:"Sources,omitempty"`
+	// The tags.
+	TagsShrink *string `json:"Tags,omitempty" xml:"Tags,omitempty"`
 }
 
 func (s CreatePatchBaselineShrinkRequest) String() string {
@@ -1629,9 +1862,11 @@ func (s *CreatePatchBaselineResponseBody) SetRequestId(v string) *CreatePatchBas
 
 type CreatePatchBaselineResponseBodyPatchBaseline struct {
 	// The rules of scanning and installing patches for the specified operating system.
-	ApprovalRules                    *string   `json:"ApprovalRules,omitempty" xml:"ApprovalRules,omitempty"`
-	ApprovedPatches                  []*string `json:"ApprovedPatches,omitempty" xml:"ApprovedPatches,omitempty" type:"Repeated"`
-	ApprovedPatchesEnableNonSecurity *bool     `json:"ApprovedPatchesEnableNonSecurity,omitempty" xml:"ApprovedPatchesEnableNonSecurity,omitempty"`
+	ApprovalRules *string `json:"ApprovalRules,omitempty" xml:"ApprovalRules,omitempty"`
+	// The approved patches.
+	ApprovedPatches []*string `json:"ApprovedPatches,omitempty" xml:"ApprovedPatches,omitempty" type:"Repeated"`
+	// Indicates whether the approved patch involves updates other than security-related updates.
+	ApprovedPatchesEnableNonSecurity *bool `json:"ApprovedPatchesEnableNonSecurity,omitempty" xml:"ApprovedPatchesEnableNonSecurity,omitempty"`
 	// The creator of the patch baseline.
 	CreatedBy *string `json:"CreatedBy,omitempty" xml:"CreatedBy,omitempty"`
 	// The time when the patch baseline was created.
@@ -1643,14 +1878,19 @@ type CreatePatchBaselineResponseBodyPatchBaseline struct {
 	// The name of the patch baseline.
 	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
 	// The type of the operating system.
-	OperationSystem       *string   `json:"OperationSystem,omitempty" xml:"OperationSystem,omitempty"`
-	RejectedPatches       []*string `json:"RejectedPatches,omitempty" xml:"RejectedPatches,omitempty" type:"Repeated"`
-	RejectedPatchesAction *string   `json:"RejectedPatchesAction,omitempty" xml:"RejectedPatchesAction,omitempty"`
-	ResourceGroupId       *string   `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
+	OperationSystem *string `json:"OperationSystem,omitempty" xml:"OperationSystem,omitempty"`
+	// The rejected patches.
+	RejectedPatches []*string `json:"RejectedPatches,omitempty" xml:"RejectedPatches,omitempty" type:"Repeated"`
+	// The action of the rejected patch.
+	RejectedPatchesAction *string `json:"RejectedPatchesAction,omitempty" xml:"RejectedPatchesAction,omitempty"`
+	// The ID of the resource group.
+	ResourceGroupId *string `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
 	// The share type of the patch baseline.
-	ShareType *string                                             `json:"ShareType,omitempty" xml:"ShareType,omitempty"`
-	Sources   []*string                                           `json:"Sources,omitempty" xml:"Sources,omitempty" type:"Repeated"`
-	Tags      []*CreatePatchBaselineResponseBodyPatchBaselineTags `json:"Tags,omitempty" xml:"Tags,omitempty" type:"Repeated"`
+	ShareType *string `json:"ShareType,omitempty" xml:"ShareType,omitempty"`
+	// The patch source configurations.
+	Sources []*string `json:"Sources,omitempty" xml:"Sources,omitempty" type:"Repeated"`
+	// The tags.
+	Tags []*CreatePatchBaselineResponseBodyPatchBaselineTags `json:"Tags,omitempty" xml:"Tags,omitempty" type:"Repeated"`
 	// The Alibaba Cloud account that last modified the information about the patch baseline.
 	UpdatedBy *string `json:"UpdatedBy,omitempty" xml:"UpdatedBy,omitempty"`
 	// The time when the information about the patch baseline was last modified.
@@ -1751,7 +1991,9 @@ func (s *CreatePatchBaselineResponseBodyPatchBaseline) SetUpdatedDate(v string) 
 }
 
 type CreatePatchBaselineResponseBodyPatchBaselineTags struct {
-	TagKey   *string `json:"TagKey,omitempty" xml:"TagKey,omitempty"`
+	// The key of the tag.
+	TagKey *string `json:"TagKey,omitempty" xml:"TagKey,omitempty"`
+	// The value of the tag.
 	TagValue *string `json:"TagValue,omitempty" xml:"TagValue,omitempty"`
 }
 
@@ -3534,8 +3776,13 @@ func (s *DeployApplicationGroupResponse) SetBody(v *DeployApplicationGroupRespon
 }
 
 type DescribeRegionsRequest struct {
+	// The supported natural language. Valid values:
+	//
+	// *   zh-CN: Chinese
+	// *   en-US: English
 	AcceptLanguage *string `json:"AcceptLanguage,omitempty" xml:"AcceptLanguage,omitempty"`
-	RegionId       *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	// The region ID.
+	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 }
 
 func (s DescribeRegionsRequest) String() string {
@@ -3803,6 +4050,7 @@ type GetApplicationResponseBodyApplication struct {
 	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
 	// The ID of the resource group.
 	ResourceGroupId *string `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
+	ServiceId       *string `json:"ServiceId,omitempty" xml:"ServiceId,omitempty"`
 	// The tags.
 	Tags map[string]interface{} `json:"Tags,omitempty" xml:"Tags,omitempty"`
 	// The time when the application was updated.
@@ -3844,6 +4092,11 @@ func (s *GetApplicationResponseBodyApplication) SetName(v string) *GetApplicatio
 
 func (s *GetApplicationResponseBodyApplication) SetResourceGroupId(v string) *GetApplicationResponseBodyApplication {
 	s.ResourceGroupId = &v
+	return s
+}
+
+func (s *GetApplicationResponseBodyApplication) SetServiceId(v string) *GetApplicationResponseBodyApplication {
+	s.ServiceId = &v
 	return s
 }
 
@@ -4475,8 +4728,10 @@ func (s *GetInventorySchemaResponse) SetBody(v *GetInventorySchemaResponseBody) 
 }
 
 type GetOpsItemRequest struct {
+	// The O\&M item ID.
 	OpsItemId *string `json:"OpsItemId,omitempty" xml:"OpsItemId,omitempty"`
-	RegionId  *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	// The region ID.
+	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 }
 
 func (s GetOpsItemRequest) String() string {
@@ -4498,8 +4753,10 @@ func (s *GetOpsItemRequest) SetRegionId(v string) *GetOpsItemRequest {
 }
 
 type GetOpsItemResponseBody struct {
-	OpsItem   *GetOpsItemResponseBodyOpsItem `json:"OpsItem,omitempty" xml:"OpsItem,omitempty" type:"Struct"`
-	RequestId *string                        `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The information about the O\&M item.
+	OpsItem *GetOpsItemResponseBodyOpsItem `json:"OpsItem,omitempty" xml:"OpsItem,omitempty" type:"Struct"`
+	// The request ID.
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
 func (s GetOpsItemResponseBody) String() string {
@@ -4521,24 +4778,42 @@ func (s *GetOpsItemResponseBody) SetRequestId(v string) *GetOpsItemResponseBody 
 }
 
 type GetOpsItemResponseBodyOpsItem struct {
-	Attributes      map[string]interface{}   `json:"Attributes,omitempty" xml:"Attributes,omitempty"`
-	Category        *string                  `json:"Category,omitempty" xml:"Category,omitempty"`
-	CreateBy        *string                  `json:"CreateBy,omitempty" xml:"CreateBy,omitempty"`
-	CreateDate      *string                  `json:"CreateDate,omitempty" xml:"CreateDate,omitempty"`
-	DedupString     *string                  `json:"DedupString,omitempty" xml:"DedupString,omitempty"`
-	Description     *string                  `json:"Description,omitempty" xml:"Description,omitempty"`
-	LastModifiedBy  *string                  `json:"LastModifiedBy,omitempty" xml:"LastModifiedBy,omitempty"`
-	OpsItemId       *string                  `json:"OpsItemId,omitempty" xml:"OpsItemId,omitempty"`
-	Priority        *int32                   `json:"Priority,omitempty" xml:"Priority,omitempty"`
-	ResourceGroupId *string                  `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
-	Resources       []*string                `json:"Resources,omitempty" xml:"Resources,omitempty" type:"Repeated"`
-	Severity        *string                  `json:"Severity,omitempty" xml:"Severity,omitempty"`
-	Solutions       []map[string]interface{} `json:"Solutions,omitempty" xml:"Solutions,omitempty" type:"Repeated"`
-	Source          *string                  `json:"Source,omitempty" xml:"Source,omitempty"`
-	Status          *string                  `json:"Status,omitempty" xml:"Status,omitempty"`
-	Tags            map[string]interface{}   `json:"Tags,omitempty" xml:"Tags,omitempty"`
-	Title           *string                  `json:"Title,omitempty" xml:"Title,omitempty"`
-	UpdateDate      *string                  `json:"UpdateDate,omitempty" xml:"UpdateDate,omitempty"`
+	// The information about the attributes of the O\&M item.
+	Attributes map[string]interface{} `json:"Attributes,omitempty" xml:"Attributes,omitempty"`
+	// The category of the O\&M item.
+	Category *string `json:"Category,omitempty" xml:"Category,omitempty"`
+	// The user who created the O\&M item.
+	CreateBy *string `json:"CreateBy,omitempty" xml:"CreateBy,omitempty"`
+	// The time when the O\&M item was created.
+	CreateDate *string `json:"CreateDate,omitempty" xml:"CreateDate,omitempty"`
+	// The duplicated string.
+	DedupString *string `json:"DedupString,omitempty" xml:"DedupString,omitempty"`
+	// The description.
+	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
+	// The user who modified the O\&M item.
+	LastModifiedBy *string `json:"LastModifiedBy,omitempty" xml:"LastModifiedBy,omitempty"`
+	// The O\&M item ID.
+	OpsItemId *string `json:"OpsItemId,omitempty" xml:"OpsItemId,omitempty"`
+	// The priority of the O\&M item.
+	Priority *int32 `json:"Priority,omitempty" xml:"Priority,omitempty"`
+	// The ID of the resource group.
+	ResourceGroupId *string `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
+	// The Alibaba Cloud Resource Names (ARNs) of the associated resources.
+	Resources []*string `json:"Resources,omitempty" xml:"Resources,omitempty" type:"Repeated"`
+	// The severity level of the O\&M item.
+	Severity *string `json:"Severity,omitempty" xml:"Severity,omitempty"`
+	// The solutions to the O\&M item.
+	Solutions []map[string]interface{} `json:"Solutions,omitempty" xml:"Solutions,omitempty" type:"Repeated"`
+	// The source business of the O\&M item.
+	Source *string `json:"Source,omitempty" xml:"Source,omitempty"`
+	// The status of the O\&M item.
+	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
+	// The tags attached to the O\&M item.
+	Tags map[string]interface{} `json:"Tags,omitempty" xml:"Tags,omitempty"`
+	// The title of the O\&M item.
+	Title *string `json:"Title,omitempty" xml:"Title,omitempty"`
+	// The time when the O\&M item was updated.
+	UpdateDate *string `json:"UpdateDate,omitempty" xml:"UpdateDate,omitempty"`
 }
 
 func (s GetOpsItemResponseBodyOpsItem) String() string {
@@ -4871,7 +5146,9 @@ func (s *GetParameterResponse) SetBody(v *GetParameterResponseBody) *GetParamete
 }
 
 type GetParametersRequest struct {
-	Names    *string `json:"Names,omitempty" xml:"Names,omitempty"`
+	// The names of the common parameters.
+	Names *string `json:"Names,omitempty" xml:"Names,omitempty"`
+	// The ID of the region.
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 }
 
@@ -4894,9 +5171,12 @@ func (s *GetParametersRequest) SetRegionId(v string) *GetParametersRequest {
 }
 
 type GetParametersResponseBody struct {
-	InvalidParameters []*string                              `json:"InvalidParameters,omitempty" xml:"InvalidParameters,omitempty" type:"Repeated"`
-	Parameters        []*GetParametersResponseBodyParameters `json:"Parameters,omitempty" xml:"Parameters,omitempty" type:"Repeated"`
-	RequestId         *string                                `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// Invalid parameters.
+	InvalidParameters []*string `json:"InvalidParameters,omitempty" xml:"InvalidParameters,omitempty" type:"Repeated"`
+	// The information about the common parameters.
+	Parameters []*GetParametersResponseBodyParameters `json:"Parameters,omitempty" xml:"Parameters,omitempty" type:"Repeated"`
+	// The request ID.
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
 func (s GetParametersResponseBody) String() string {
@@ -4923,20 +5203,34 @@ func (s *GetParametersResponseBody) SetRequestId(v string) *GetParametersRespons
 }
 
 type GetParametersResponseBodyParameters struct {
-	Constraints      *string                `json:"Constraints,omitempty" xml:"Constraints,omitempty"`
-	CreatedBy        *string                `json:"CreatedBy,omitempty" xml:"CreatedBy,omitempty"`
-	CreatedDate      *string                `json:"CreatedDate,omitempty" xml:"CreatedDate,omitempty"`
-	Description      *string                `json:"Description,omitempty" xml:"Description,omitempty"`
-	Id               *string                `json:"Id,omitempty" xml:"Id,omitempty"`
-	Name             *string                `json:"Name,omitempty" xml:"Name,omitempty"`
-	ParameterVersion *int32                 `json:"ParameterVersion,omitempty" xml:"ParameterVersion,omitempty"`
-	ResourceGroupId  *string                `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
-	ShareType        *string                `json:"ShareType,omitempty" xml:"ShareType,omitempty"`
-	Tags             map[string]interface{} `json:"Tags,omitempty" xml:"Tags,omitempty"`
-	Type             *string                `json:"Type,omitempty" xml:"Type,omitempty"`
-	UpdatedBy        *string                `json:"UpdatedBy,omitempty" xml:"UpdatedBy,omitempty"`
-	UpdatedDate      *string                `json:"UpdatedDate,omitempty" xml:"UpdatedDate,omitempty"`
-	Value            *string                `json:"Value,omitempty" xml:"Value,omitempty"`
+	// The constraints of the common parameter.
+	Constraints *string `json:"Constraints,omitempty" xml:"Constraints,omitempty"`
+	// The user who created the common parameter.
+	CreatedBy *string `json:"CreatedBy,omitempty" xml:"CreatedBy,omitempty"`
+	// The time when the common parameter was created.
+	CreatedDate *string `json:"CreatedDate,omitempty" xml:"CreatedDate,omitempty"`
+	// The description of the common parameter.
+	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
+	// The ID of the common parameter.
+	Id *string `json:"Id,omitempty" xml:"Id,omitempty"`
+	// The name of the common parameter.
+	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// The version number of the common parameter.
+	ParameterVersion *int32 `json:"ParameterVersion,omitempty" xml:"ParameterVersion,omitempty"`
+	// The ID of the resource group.
+	ResourceGroupId *string `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
+	// The share type of the common parameter.
+	ShareType *string `json:"ShareType,omitempty" xml:"ShareType,omitempty"`
+	// The tags.
+	Tags map[string]interface{} `json:"Tags,omitempty" xml:"Tags,omitempty"`
+	// The type of the parameter.
+	Type *string `json:"Type,omitempty" xml:"Type,omitempty"`
+	// The user who updated the common parameter.
+	UpdatedBy *string `json:"UpdatedBy,omitempty" xml:"UpdatedBy,omitempty"`
+	// The time when the parameter was updated.
+	UpdatedDate *string `json:"UpdatedDate,omitempty" xml:"UpdatedDate,omitempty"`
+	// The value of the common parameter.
+	Value *string `json:"Value,omitempty" xml:"Value,omitempty"`
 }
 
 func (s GetParametersResponseBodyParameters) String() string {
@@ -5047,11 +5341,19 @@ func (s *GetParametersResponse) SetBody(v *GetParametersResponseBody) *GetParame
 }
 
 type GetParametersByPathRequest struct {
-	MaxResults *int32  `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
-	NextToken  *string `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
-	Path       *string `json:"Path,omitempty" xml:"Path,omitempty"`
-	Recursive  *bool   `json:"Recursive,omitempty" xml:"Recursive,omitempty"`
-	RegionId   *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	// The number of entries per page.
+	MaxResults *int32 `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
+	// A pagination token. It can be used in the next request to retrieve a new page of results.
+	NextToken *string `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
+	// The path of the parameter. For example, if the name of a parameter is /path/path1/Myparameter, the path of the parameter is /path/path1/.
+	Path *string `json:"Path,omitempty" xml:"Path,omitempty"`
+	// Specifies whether to recursively query encryption parameters from all levels of directories in the specified path. Valid values: true and false. For example, if you want to query the /secretParameter/mySecretParameter and /secretParameter/secretParameter 1/mySecretParameter parameters, the valid values specify the parameters to be returned.
+	//
+	// *   true: returns both of the /secretParameter/mySecretParameter and /secretParameter/secretParameter1/mySecretParameter parameters.
+	// *   false: returns only the /secretParameter/mySecretParameter parameter.
+	Recursive *bool `json:"Recursive,omitempty" xml:"Recursive,omitempty"`
+	// The ID of the region.
+	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 }
 
 func (s GetParametersByPathRequest) String() string {
@@ -5088,12 +5390,16 @@ func (s *GetParametersByPathRequest) SetRegionId(v string) *GetParametersByPathR
 }
 
 type GetParametersByPathResponseBody struct {
-	MaxResults *int32  `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
-	NextToken  *string `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
+	// The number of entries per page.
+	MaxResults *int32 `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
+	// A pagination token. It can be used in the next request to retrieve a new page of results.
+	NextToken *string `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
 	// The information about the common parameters.
 	Parameters []*GetParametersByPathResponseBodyParameters `json:"Parameters,omitempty" xml:"Parameters,omitempty" type:"Repeated"`
-	RequestId  *string                                      `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	TotalCount *int32                                       `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
+	// The ID of the request.
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The total number of returned entries.
+	TotalCount *int32 `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
 }
 
 func (s GetParametersByPathResponseBody) String() string {
@@ -5312,9 +5618,11 @@ func (s *GetPatchBaselineResponseBody) SetRequestId(v string) *GetPatchBaselineR
 
 type GetPatchBaselineResponseBodyPatchBaseline struct {
 	// The rules of scanning and installing patches for the specified operating system.
-	ApprovalRules                    *string   `json:"ApprovalRules,omitempty" xml:"ApprovalRules,omitempty"`
-	ApprovedPatches                  []*string `json:"ApprovedPatches,omitempty" xml:"ApprovedPatches,omitempty" type:"Repeated"`
-	ApprovedPatchesEnableNonSecurity *bool     `json:"ApprovedPatchesEnableNonSecurity,omitempty" xml:"ApprovedPatchesEnableNonSecurity,omitempty"`
+	ApprovalRules *string `json:"ApprovalRules,omitempty" xml:"ApprovalRules,omitempty"`
+	// The approved patches.
+	ApprovedPatches []*string `json:"ApprovedPatches,omitempty" xml:"ApprovedPatches,omitempty" type:"Repeated"`
+	// Indicates whether the approved patch involves updates other than security-related updates.
+	ApprovedPatchesEnableNonSecurity *bool `json:"ApprovedPatchesEnableNonSecurity,omitempty" xml:"ApprovedPatchesEnableNonSecurity,omitempty"`
 	// The creator of the patch baseline.
 	CreatedBy *string `json:"CreatedBy,omitempty" xml:"CreatedBy,omitempty"`
 	// The time when the patch baseline was created.
@@ -5328,14 +5636,19 @@ type GetPatchBaselineResponseBodyPatchBaseline struct {
 	// The name of the patch baseline.
 	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
 	// The type of the operating system.
-	OperationSystem       *string   `json:"OperationSystem,omitempty" xml:"OperationSystem,omitempty"`
-	RejectedPatches       []*string `json:"RejectedPatches,omitempty" xml:"RejectedPatches,omitempty" type:"Repeated"`
-	RejectedPatchesAction *string   `json:"RejectedPatchesAction,omitempty" xml:"RejectedPatchesAction,omitempty"`
-	ResourceGroupId       *string   `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
+	OperationSystem *string `json:"OperationSystem,omitempty" xml:"OperationSystem,omitempty"`
+	// The rejected patches.
+	RejectedPatches []*string `json:"RejectedPatches,omitempty" xml:"RejectedPatches,omitempty" type:"Repeated"`
+	// The action of the rejected patch.
+	RejectedPatchesAction *string `json:"RejectedPatchesAction,omitempty" xml:"RejectedPatchesAction,omitempty"`
+	// The ID of the resource group.
+	ResourceGroupId *string `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
 	// The share type of the patch baseline.
-	ShareType *string                                          `json:"ShareType,omitempty" xml:"ShareType,omitempty"`
-	Sources   []*string                                        `json:"Sources,omitempty" xml:"Sources,omitempty" type:"Repeated"`
-	Tags      []*GetPatchBaselineResponseBodyPatchBaselineTags `json:"Tags,omitempty" xml:"Tags,omitempty" type:"Repeated"`
+	ShareType *string `json:"ShareType,omitempty" xml:"ShareType,omitempty"`
+	// The patch source configurations.
+	Sources []*string `json:"Sources,omitempty" xml:"Sources,omitempty" type:"Repeated"`
+	// The tags.
+	Tags []*GetPatchBaselineResponseBodyPatchBaselineTags `json:"Tags,omitempty" xml:"Tags,omitempty" type:"Repeated"`
 	// The user who last modified the patch baseline.
 	UpdatedBy *string `json:"UpdatedBy,omitempty" xml:"UpdatedBy,omitempty"`
 	// The time when the patch baseline was last modified.
@@ -5441,7 +5754,9 @@ func (s *GetPatchBaselineResponseBodyPatchBaseline) SetUpdatedDate(v string) *Ge
 }
 
 type GetPatchBaselineResponseBodyPatchBaselineTags struct {
-	TagKey   *string `json:"TagKey,omitempty" xml:"TagKey,omitempty"`
+	// The key of the tag.
+	TagKey *string `json:"TagKey,omitempty" xml:"TagKey,omitempty"`
+	// The value of the tag.
 	TagValue *string `json:"TagValue,omitempty" xml:"TagValue,omitempty"`
 }
 
@@ -6150,6 +6465,7 @@ func (s *GetSecretParametersByPathResponse) SetBody(v *GetSecretParametersByPath
 }
 
 type GetServiceSettingsRequest struct {
+	// The ID of the region.
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 }
 
@@ -6167,7 +6483,9 @@ func (s *GetServiceSettingsRequest) SetRegionId(v string) *GetServiceSettingsReq
 }
 
 type GetServiceSettingsResponseBody struct {
-	RequestId       *string                                          `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The ID of the request.
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The information of service settings.
 	ServiceSettings []*GetServiceSettingsResponseBodyServiceSettings `json:"ServiceSettings,omitempty" xml:"ServiceSettings,omitempty" type:"Repeated"`
 }
 
@@ -6190,12 +6508,18 @@ func (s *GetServiceSettingsResponseBody) SetServiceSettings(v []*GetServiceSetti
 }
 
 type GetServiceSettingsResponseBodyServiceSettings struct {
-	DeliveryOssBucketName  *string `json:"DeliveryOssBucketName,omitempty" xml:"DeliveryOssBucketName,omitempty"`
-	DeliveryOssEnabled     *bool   `json:"DeliveryOssEnabled,omitempty" xml:"DeliveryOssEnabled,omitempty"`
-	DeliveryOssKeyPrefix   *string `json:"DeliveryOssKeyPrefix,omitempty" xml:"DeliveryOssKeyPrefix,omitempty"`
-	DeliverySlsEnabled     *bool   `json:"DeliverySlsEnabled,omitempty" xml:"DeliverySlsEnabled,omitempty"`
+	// The name of OSS bucket to deliver.
+	DeliveryOssBucketName *string `json:"DeliveryOssBucketName,omitempty" xml:"DeliveryOssBucketName,omitempty"`
+	// Whether to enable OSS delivery.
+	DeliveryOssEnabled *bool `json:"DeliveryOssEnabled,omitempty" xml:"DeliveryOssEnabled,omitempty"`
+	// The key prefix of OSS to deliver.
+	DeliveryOssKeyPrefix *string `json:"DeliveryOssKeyPrefix,omitempty" xml:"DeliveryOssKeyPrefix,omitempty"`
+	// Whether to enable SLS delivery.
+	DeliverySlsEnabled *bool `json:"DeliverySlsEnabled,omitempty" xml:"DeliverySlsEnabled,omitempty"`
+	// The name of SLS project to deliver.
 	DeliverySlsProjectName *string `json:"DeliverySlsProjectName,omitempty" xml:"DeliverySlsProjectName,omitempty"`
-	RdcEnterpriseId        *string `json:"RdcEnterpriseId,omitempty" xml:"RdcEnterpriseId,omitempty"`
+	// The id of RDC Enterprise.
+	RdcEnterpriseId *string `json:"RdcEnterpriseId,omitempty" xml:"RdcEnterpriseId,omitempty"`
 }
 
 func (s GetServiceSettingsResponseBodyServiceSettings) String() string {
@@ -6266,8 +6590,11 @@ func (s *GetServiceSettingsResponse) SetBody(v *GetServiceSettingsResponseBody) 
 }
 
 type GetTemplateRequest struct {
-	RegionId        *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	TemplateName    *string `json:"TemplateName,omitempty" xml:"TemplateName,omitempty"`
+	// The region ID.
+	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	// The name of the template. The name can be 1 to 200 characters in length and can contain letters, digits, hyphens (-), and underscores (\_). The name cannot start with ALIYUN, ACS, ALIBABA, or ALICLOUD.
+	TemplateName *string `json:"TemplateName,omitempty" xml:"TemplateName,omitempty"`
+	// The version of the template. The default value is the latest version of the template.
 	TemplateVersion *string `json:"TemplateVersion,omitempty" xml:"TemplateVersion,omitempty"`
 }
 
@@ -6295,9 +6622,12 @@ func (s *GetTemplateRequest) SetTemplateVersion(v string) *GetTemplateRequest {
 }
 
 type GetTemplateResponseBody struct {
-	Content   *string                          `json:"Content,omitempty" xml:"Content,omitempty"`
-	RequestId *string                          `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	Template  *GetTemplateResponseBodyTemplate `json:"Template,omitempty" xml:"Template,omitempty" type:"Struct"`
+	// The content of the template.
+	Content *string `json:"Content,omitempty" xml:"Content,omitempty"`
+	// The request ID.
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The metadata of the template.
+	Template *GetTemplateResponseBodyTemplate `json:"Template,omitempty" xml:"Template,omitempty" type:"Struct"`
 }
 
 func (s GetTemplateResponseBody) String() string {
@@ -6324,22 +6654,38 @@ func (s *GetTemplateResponseBody) SetTemplate(v *GetTemplateResponseBodyTemplate
 }
 
 type GetTemplateResponseBodyTemplate struct {
-	CreatedBy       *string                `json:"CreatedBy,omitempty" xml:"CreatedBy,omitempty"`
-	CreatedDate     *string                `json:"CreatedDate,omitempty" xml:"CreatedDate,omitempty"`
-	Description     *string                `json:"Description,omitempty" xml:"Description,omitempty"`
-	HasTrigger      *bool                  `json:"HasTrigger,omitempty" xml:"HasTrigger,omitempty"`
-	Hash            *string                `json:"Hash,omitempty" xml:"Hash,omitempty"`
-	ResourceGroupId *string                `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
-	ShareType       *string                `json:"ShareType,omitempty" xml:"ShareType,omitempty"`
-	Tags            map[string]interface{} `json:"Tags,omitempty" xml:"Tags,omitempty"`
-	TemplateFormat  *string                `json:"TemplateFormat,omitempty" xml:"TemplateFormat,omitempty"`
-	TemplateId      *string                `json:"TemplateId,omitempty" xml:"TemplateId,omitempty"`
-	TemplateName    *string                `json:"TemplateName,omitempty" xml:"TemplateName,omitempty"`
-	TemplateType    *string                `json:"TemplateType,omitempty" xml:"TemplateType,omitempty"`
-	TemplateVersion *string                `json:"TemplateVersion,omitempty" xml:"TemplateVersion,omitempty"`
-	UpdatedBy       *string                `json:"UpdatedBy,omitempty" xml:"UpdatedBy,omitempty"`
-	UpdatedDate     *string                `json:"UpdatedDate,omitempty" xml:"UpdatedDate,omitempty"`
-	VersionName     *string                `json:"VersionName,omitempty" xml:"VersionName,omitempty"`
+	// The creator of the template.
+	CreatedBy *string `json:"CreatedBy,omitempty" xml:"CreatedBy,omitempty"`
+	// The time when the template was created.
+	CreatedDate *string `json:"CreatedDate,omitempty" xml:"CreatedDate,omitempty"`
+	// The description of the template.
+	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
+	// Indicates whether the template was configured with a trigger.
+	HasTrigger *bool `json:"HasTrigger,omitempty" xml:"HasTrigger,omitempty"`
+	// The SHA-256 value of the template content.
+	Hash *string `json:"Hash,omitempty" xml:"Hash,omitempty"`
+	// The ID of the resource group.
+	ResourceGroupId *string `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
+	// The share type of the template. The share type of a user-created template is **Private**.
+	ShareType *string `json:"ShareType,omitempty" xml:"ShareType,omitempty"`
+	// The tag keys and values. The number of key-value pairs ranges from 1 to 20.
+	Tags map[string]interface{} `json:"Tags,omitempty" xml:"Tags,omitempty"`
+	// The format of the template. The system automatically determines whether the format is JSON or YAML.
+	TemplateFormat *string `json:"TemplateFormat,omitempty" xml:"TemplateFormat,omitempty"`
+	// The ID of the template.
+	TemplateId *string `json:"TemplateId,omitempty" xml:"TemplateId,omitempty"`
+	// The name of the template.
+	TemplateName *string `json:"TemplateName,omitempty" xml:"TemplateName,omitempty"`
+	// The type of the template.
+	TemplateType *string `json:"TemplateType,omitempty" xml:"TemplateType,omitempty"`
+	// The version of the template. The name of the version consists of the letter v and a number. The number starts from 1.
+	TemplateVersion *string `json:"TemplateVersion,omitempty" xml:"TemplateVersion,omitempty"`
+	// The user who last updated the template.
+	UpdatedBy *string `json:"UpdatedBy,omitempty" xml:"UpdatedBy,omitempty"`
+	// The time when the template was last updated.
+	UpdatedDate *string `json:"UpdatedDate,omitempty" xml:"UpdatedDate,omitempty"`
+	// The name of the version of the template.
+	VersionName *string `json:"VersionName,omitempty" xml:"VersionName,omitempty"`
 }
 
 func (s GetTemplateResponseBodyTemplate) String() string {
@@ -7464,7 +7810,8 @@ type ListExecutionsRequest struct {
 	// The type of the execution template. Valid values: Other, TimerTrigger, EventTrigger, and AlarmTrigger.
 	Category *string `json:"Category,omitempty" xml:"Category,omitempty"`
 	// The depth of execution. Valid values: RootDepth and FirstChildDepth. If you set this parameter to RootDepth, only the parent execution is returned. If you set this parameter to FirstChildDepth, only the child executions at the first level are returned. You can specify only one of the Depth and IncludeChildExecution parameters. We recommend that you specify Depth.
-	Depth       *string `json:"Depth,omitempty" xml:"Depth,omitempty"`
+	Depth *string `json:"Depth,omitempty" xml:"Depth,omitempty"`
+	// The description of the execution.
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
 	// The earliest end time. The executions that stop running at or later than the specified time are queried.
 	EndDateAfter *string `json:"EndDateAfter,omitempty" xml:"EndDateAfter,omitempty"`
@@ -7659,7 +8006,8 @@ type ListExecutionsShrinkRequest struct {
 	// The type of the execution template. Valid values: Other, TimerTrigger, EventTrigger, and AlarmTrigger.
 	Category *string `json:"Category,omitempty" xml:"Category,omitempty"`
 	// The depth of execution. Valid values: RootDepth and FirstChildDepth. If you set this parameter to RootDepth, only the parent execution is returned. If you set this parameter to FirstChildDepth, only the child executions at the first level are returned. You can specify only one of the Depth and IncludeChildExecution parameters. We recommend that you specify Depth.
-	Depth       *string `json:"Depth,omitempty" xml:"Depth,omitempty"`
+	Depth *string `json:"Depth,omitempty" xml:"Depth,omitempty"`
+	// The description of the execution.
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
 	// The earliest end time. The executions that stop running at or later than the specified time are queried.
 	EndDateAfter *string `json:"EndDateAfter,omitempty" xml:"EndDateAfter,omitempty"`
@@ -7908,9 +8256,11 @@ type ListExecutionsResponseBodyExecutions struct {
 	IsParent *bool `json:"IsParent,omitempty" xml:"IsParent,omitempty"`
 	// The time when the template was last successfully triggered.
 	LastSuccessfulTriggerTime *string `json:"LastSuccessfulTriggerTime,omitempty" xml:"LastSuccessfulTriggerTime,omitempty"`
-	LastTriggerOutputs        *string `json:"LastTriggerOutputs,omitempty" xml:"LastTriggerOutputs,omitempty"`
+	// The outputs of last trigger.
+	LastTriggerOutputs *string `json:"LastTriggerOutputs,omitempty" xml:"LastTriggerOutputs,omitempty"`
 	// The status of the execution after the template was last triggered.
-	LastTriggerStatus        *string `json:"LastTriggerStatus,omitempty" xml:"LastTriggerStatus,omitempty"`
+	LastTriggerStatus *string `json:"LastTriggerStatus,omitempty" xml:"LastTriggerStatus,omitempty"`
+	// The status message of last trigger.
 	LastTriggerStatusMessage *string `json:"LastTriggerStatusMessage,omitempty" xml:"LastTriggerStatusMessage,omitempty"`
 	// The time when the template was last successfully triggered.
 	LastTriggerTime *string `json:"LastTriggerTime,omitempty" xml:"LastTriggerTime,omitempty"`
@@ -8761,12 +9111,18 @@ func (s *ListInventoryEntriesResponse) SetBody(v *ListInventoryEntriesResponseBo
 }
 
 type ListOpsItemsRequest struct {
-	Filter       []*ListOpsItemsRequestFilter `json:"Filter,omitempty" xml:"Filter,omitempty" type:"Repeated"`
-	MaxResults   *int32                       `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
-	NextToken    *string                      `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
-	RegionId     *string                      `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	ResourceTags map[string]interface{}       `json:"ResourceTags,omitempty" xml:"ResourceTags,omitempty"`
-	Tags         map[string]interface{}       `json:"Tags,omitempty" xml:"Tags,omitempty"`
+	// The filter rules for the component.
+	Filter []*ListOpsItemsRequestFilter `json:"Filter,omitempty" xml:"Filter,omitempty" type:"Repeated"`
+	// The number of entries to return on each page. Valid values: 10 to 100. Default value: 50.
+	MaxResults *int32 `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
+	// The token that is used to retrieve the next page of results.
+	NextToken *string `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
+	// The region ID.
+	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	// The information about resource tags.
+	ResourceTags map[string]interface{} `json:"ResourceTags,omitempty" xml:"ResourceTags,omitempty"`
+	// The tags.
+	Tags map[string]interface{} `json:"Tags,omitempty" xml:"Tags,omitempty"`
 }
 
 func (s ListOpsItemsRequest) String() string {
@@ -8808,9 +9164,12 @@ func (s *ListOpsItemsRequest) SetTags(v map[string]interface{}) *ListOpsItemsReq
 }
 
 type ListOpsItemsRequestFilter struct {
-	Name     *string   `json:"Name,omitempty" xml:"Name,omitempty"`
-	Operator *string   `json:"Operator,omitempty" xml:"Operator,omitempty"`
-	Value    []*string `json:"Value,omitempty" xml:"Value,omitempty" type:"Repeated"`
+	// The parameter name of the filter.
+	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// The comparison operator that is used to filter property values.
+	Operator *string `json:"Operator,omitempty" xml:"Operator,omitempty"`
+	// The parameter values of the filter.
+	Value []*string `json:"Value,omitempty" xml:"Value,omitempty" type:"Repeated"`
 }
 
 func (s ListOpsItemsRequestFilter) String() string {
@@ -8837,12 +9196,18 @@ func (s *ListOpsItemsRequestFilter) SetValue(v []*string) *ListOpsItemsRequestFi
 }
 
 type ListOpsItemsShrinkRequest struct {
-	Filter             []*ListOpsItemsShrinkRequestFilter `json:"Filter,omitempty" xml:"Filter,omitempty" type:"Repeated"`
-	MaxResults         *int32                             `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
-	NextToken          *string                            `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
-	RegionId           *string                            `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	ResourceTagsShrink *string                            `json:"ResourceTags,omitempty" xml:"ResourceTags,omitempty"`
-	TagsShrink         *string                            `json:"Tags,omitempty" xml:"Tags,omitempty"`
+	// The filter rules for the component.
+	Filter []*ListOpsItemsShrinkRequestFilter `json:"Filter,omitempty" xml:"Filter,omitempty" type:"Repeated"`
+	// The number of entries to return on each page. Valid values: 10 to 100. Default value: 50.
+	MaxResults *int32 `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
+	// The token that is used to retrieve the next page of results.
+	NextToken *string `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
+	// The region ID.
+	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	// The information about resource tags.
+	ResourceTagsShrink *string `json:"ResourceTags,omitempty" xml:"ResourceTags,omitempty"`
+	// The tags.
+	TagsShrink *string `json:"Tags,omitempty" xml:"Tags,omitempty"`
 }
 
 func (s ListOpsItemsShrinkRequest) String() string {
@@ -8884,9 +9249,12 @@ func (s *ListOpsItemsShrinkRequest) SetTagsShrink(v string) *ListOpsItemsShrinkR
 }
 
 type ListOpsItemsShrinkRequestFilter struct {
-	Name     *string   `json:"Name,omitempty" xml:"Name,omitempty"`
-	Operator *string   `json:"Operator,omitempty" xml:"Operator,omitempty"`
-	Value    []*string `json:"Value,omitempty" xml:"Value,omitempty" type:"Repeated"`
+	// The parameter name of the filter.
+	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// The comparison operator that is used to filter property values.
+	Operator *string `json:"Operator,omitempty" xml:"Operator,omitempty"`
+	// The parameter values of the filter.
+	Value []*string `json:"Value,omitempty" xml:"Value,omitempty" type:"Repeated"`
 }
 
 func (s ListOpsItemsShrinkRequestFilter) String() string {
@@ -8913,11 +9281,16 @@ func (s *ListOpsItemsShrinkRequestFilter) SetValue(v []*string) *ListOpsItemsShr
 }
 
 type ListOpsItemsResponseBody struct {
-	MaxResults *int32                              `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
-	NextToken  *string                             `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
-	OpsItems   []*ListOpsItemsResponseBodyOpsItems `json:"OpsItems,omitempty" xml:"OpsItems,omitempty" type:"Repeated"`
-	RequestId  *string                             `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	TotalCount *int32                              `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
+	// The number of entries returned on each page.
+	MaxResults *int32 `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
+	// The pagination token that can be used in the next request to retrieve a new page of results.
+	NextToken *string `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
+	// The list of O\&M items.
+	OpsItems []*ListOpsItemsResponseBodyOpsItems `json:"OpsItems,omitempty" xml:"OpsItems,omitempty" type:"Repeated"`
+	// The request ID.
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The total number of entries returned.
+	TotalCount *int32 `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
 }
 
 func (s ListOpsItemsResponseBody) String() string {
@@ -8954,17 +9327,28 @@ func (s *ListOpsItemsResponseBody) SetTotalCount(v int32) *ListOpsItemsResponseB
 }
 
 type ListOpsItemsResponseBodyOpsItems struct {
-	Category   *string                `json:"Category,omitempty" xml:"Category,omitempty"`
-	CreateDate *string                `json:"CreateDate,omitempty" xml:"CreateDate,omitempty"`
-	OpsItemId  *string                `json:"OpsItemId,omitempty" xml:"OpsItemId,omitempty"`
-	Priority   *int32                 `json:"Priority,omitempty" xml:"Priority,omitempty"`
-	Resources  []*string              `json:"Resources,omitempty" xml:"Resources,omitempty" type:"Repeated"`
-	Severity   *string                `json:"Severity,omitempty" xml:"Severity,omitempty"`
-	Source     *string                `json:"Source,omitempty" xml:"Source,omitempty"`
-	Status     *string                `json:"Status,omitempty" xml:"Status,omitempty"`
-	Tags       map[string]interface{} `json:"Tags,omitempty" xml:"Tags,omitempty"`
-	Title      *string                `json:"Title,omitempty" xml:"Title,omitempty"`
-	UpdateDate *string                `json:"UpdateDate,omitempty" xml:"UpdateDate,omitempty"`
+	// The category.
+	Category *string `json:"Category,omitempty" xml:"Category,omitempty"`
+	// The time when the O\&M item was created.
+	CreateDate *string `json:"CreateDate,omitempty" xml:"CreateDate,omitempty"`
+	// The ID of the O\&M item.
+	OpsItemId *string `json:"OpsItemId,omitempty" xml:"OpsItemId,omitempty"`
+	// The priority.
+	Priority *int32 `json:"Priority,omitempty" xml:"Priority,omitempty"`
+	// The Alibaba Resource Names (ARNs) of the associated resources.
+	Resources []*string `json:"Resources,omitempty" xml:"Resources,omitempty" type:"Repeated"`
+	// The severity level.
+	Severity *string `json:"Severity,omitempty" xml:"Severity,omitempty"`
+	// The source business.
+	Source *string `json:"Source,omitempty" xml:"Source,omitempty"`
+	// The status of the O\&M item.
+	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
+	// The tags.
+	Tags map[string]interface{} `json:"Tags,omitempty" xml:"Tags,omitempty"`
+	// The title of the O\&M item.
+	Title *string `json:"Title,omitempty" xml:"Title,omitempty"`
+	// The time when the O\&M item was updated.
+	UpdateDate *string `json:"UpdateDate,omitempty" xml:"UpdateDate,omitempty"`
 }
 
 func (s ListOpsItemsResponseBodyOpsItems) String() string {
@@ -9262,18 +9646,41 @@ func (s *ListParameterVersionsResponse) SetBody(v *ListParameterVersionsResponse
 }
 
 type ListParametersRequest struct {
-	MaxResults      *int32                 `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
-	Name            *string                `json:"Name,omitempty" xml:"Name,omitempty"`
-	NextToken       *string                `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
-	Path            *string                `json:"Path,omitempty" xml:"Path,omitempty"`
-	Recursive       *bool                  `json:"Recursive,omitempty" xml:"Recursive,omitempty"`
-	RegionId        *string                `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	ResourceGroupId *string                `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
-	ShareType       *string                `json:"ShareType,omitempty" xml:"ShareType,omitempty"`
-	SortField       *string                `json:"SortField,omitempty" xml:"SortField,omitempty"`
-	SortOrder       *string                `json:"SortOrder,omitempty" xml:"SortOrder,omitempty"`
-	Tags            map[string]interface{} `json:"Tags,omitempty" xml:"Tags,omitempty"`
-	Type            *string                `json:"Type,omitempty" xml:"Type,omitempty"`
+	// The number of entries per page. Valid values: 10 to 100. Default value: 50.
+	MaxResults *int32 `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
+	// The name of the common parameter.
+	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// The pagination token that can be used in the next request to retrieve a new page of results.
+	NextToken *string `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
+	// The path of the parameter. For example, if the name of a parameter is /path/path1/Myparameter, the path of the parameter is /path/path1/.
+	Path *string `json:"Path,omitempty" xml:"Path,omitempty"`
+	// Specifies whether to query parameters from all levels of directories in the specified path. Default value: false.
+	Recursive *bool `json:"Recursive,omitempty" xml:"Recursive,omitempty"`
+	// The region ID.
+	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	// The resource group ID.
+	ResourceGroupId *string `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
+	// The share type of the common parameter. Valid values:
+	//
+	// *   Public
+	// *   Private
+	//
+	// Default value: Private.
+	ShareType *string `json:"ShareType,omitempty" xml:"ShareType,omitempty"`
+	// The field used to sort the query results. Valid values:
+	//
+	// *   Name
+	// *   CreatedDate
+	SortField *string `json:"SortField,omitempty" xml:"SortField,omitempty"`
+	// The order in which the entries are sorted. Valid values:
+	//
+	// *   Ascending
+	// *   Descending (Default)
+	SortOrder *string `json:"SortOrder,omitempty" xml:"SortOrder,omitempty"`
+	// The tags.
+	Tags map[string]interface{} `json:"Tags,omitempty" xml:"Tags,omitempty"`
+	// The data type of the common parameter.
+	Type *string `json:"Type,omitempty" xml:"Type,omitempty"`
 }
 
 func (s ListParametersRequest) String() string {
@@ -9345,18 +9752,41 @@ func (s *ListParametersRequest) SetType(v string) *ListParametersRequest {
 }
 
 type ListParametersShrinkRequest struct {
-	MaxResults      *int32  `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
-	Name            *string `json:"Name,omitempty" xml:"Name,omitempty"`
-	NextToken       *string `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
-	Path            *string `json:"Path,omitempty" xml:"Path,omitempty"`
-	Recursive       *bool   `json:"Recursive,omitempty" xml:"Recursive,omitempty"`
-	RegionId        *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	// The number of entries per page. Valid values: 10 to 100. Default value: 50.
+	MaxResults *int32 `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
+	// The name of the common parameter.
+	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// The pagination token that can be used in the next request to retrieve a new page of results.
+	NextToken *string `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
+	// The path of the parameter. For example, if the name of a parameter is /path/path1/Myparameter, the path of the parameter is /path/path1/.
+	Path *string `json:"Path,omitempty" xml:"Path,omitempty"`
+	// Specifies whether to query parameters from all levels of directories in the specified path. Default value: false.
+	Recursive *bool `json:"Recursive,omitempty" xml:"Recursive,omitempty"`
+	// The region ID.
+	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	// The resource group ID.
 	ResourceGroupId *string `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
-	ShareType       *string `json:"ShareType,omitempty" xml:"ShareType,omitempty"`
-	SortField       *string `json:"SortField,omitempty" xml:"SortField,omitempty"`
-	SortOrder       *string `json:"SortOrder,omitempty" xml:"SortOrder,omitempty"`
-	TagsShrink      *string `json:"Tags,omitempty" xml:"Tags,omitempty"`
-	Type            *string `json:"Type,omitempty" xml:"Type,omitempty"`
+	// The share type of the common parameter. Valid values:
+	//
+	// *   Public
+	// *   Private
+	//
+	// Default value: Private.
+	ShareType *string `json:"ShareType,omitempty" xml:"ShareType,omitempty"`
+	// The field used to sort the query results. Valid values:
+	//
+	// *   Name
+	// *   CreatedDate
+	SortField *string `json:"SortField,omitempty" xml:"SortField,omitempty"`
+	// The order in which the entries are sorted. Valid values:
+	//
+	// *   Ascending
+	// *   Descending (Default)
+	SortOrder *string `json:"SortOrder,omitempty" xml:"SortOrder,omitempty"`
+	// The tags.
+	TagsShrink *string `json:"Tags,omitempty" xml:"Tags,omitempty"`
+	// The data type of the common parameter.
+	Type *string `json:"Type,omitempty" xml:"Type,omitempty"`
 }
 
 func (s ListParametersShrinkRequest) String() string {
@@ -9428,11 +9858,16 @@ func (s *ListParametersShrinkRequest) SetType(v string) *ListParametersShrinkReq
 }
 
 type ListParametersResponseBody struct {
-	MaxResults *int32                                  `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
-	NextToken  *string                                 `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
+	// The number of entries per page. Valid values: 10 to 100. Default value: 50.
+	MaxResults *int32 `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
+	// A pagination token. It can be used in the next request to retrieve a new page of results.
+	NextToken *string `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
+	// The information about the common parameter.
 	Parameters []*ListParametersResponseBodyParameters `json:"Parameters,omitempty" xml:"Parameters,omitempty" type:"Repeated"`
-	RequestId  *string                                 `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	TotalCount *int32                                  `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
+	// The ID of the request.
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The total number of entries returned.
+	TotalCount *int32 `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
 }
 
 func (s ListParametersResponseBody) String() string {
@@ -9469,18 +9904,30 @@ func (s *ListParametersResponseBody) SetTotalCount(v int32) *ListParametersRespo
 }
 
 type ListParametersResponseBodyParameters struct {
-	CreatedBy        *string                `json:"CreatedBy,omitempty" xml:"CreatedBy,omitempty"`
-	CreatedDate      *string                `json:"CreatedDate,omitempty" xml:"CreatedDate,omitempty"`
-	Description      *string                `json:"Description,omitempty" xml:"Description,omitempty"`
-	Id               *string                `json:"Id,omitempty" xml:"Id,omitempty"`
-	Name             *string                `json:"Name,omitempty" xml:"Name,omitempty"`
-	ParameterVersion *string                `json:"ParameterVersion,omitempty" xml:"ParameterVersion,omitempty"`
-	ResourceGroupId  *string                `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
-	ShareType        *string                `json:"ShareType,omitempty" xml:"ShareType,omitempty"`
-	Tags             map[string]interface{} `json:"Tags,omitempty" xml:"Tags,omitempty"`
-	Type             *string                `json:"Type,omitempty" xml:"Type,omitempty"`
-	UpdatedBy        *string                `json:"UpdatedBy,omitempty" xml:"UpdatedBy,omitempty"`
-	UpdatedDate      *string                `json:"UpdatedDate,omitempty" xml:"UpdatedDate,omitempty"`
+	// The user who created the common parameter.
+	CreatedBy *string `json:"CreatedBy,omitempty" xml:"CreatedBy,omitempty"`
+	// The time when the common parameter was created.
+	CreatedDate *string `json:"CreatedDate,omitempty" xml:"CreatedDate,omitempty"`
+	// The description of the common parameter.
+	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
+	// The common parameter ID.
+	Id *string `json:"Id,omitempty" xml:"Id,omitempty"`
+	// The name of the common parameter.
+	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// The version number of the common parameter.
+	ParameterVersion *string `json:"ParameterVersion,omitempty" xml:"ParameterVersion,omitempty"`
+	// The resource group ID.
+	ResourceGroupId *string `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
+	// The share type of the common parameter.
+	ShareType *string `json:"ShareType,omitempty" xml:"ShareType,omitempty"`
+	// The tags added to the common parameter.
+	Tags map[string]interface{} `json:"Tags,omitempty" xml:"Tags,omitempty"`
+	// The data type of the common parameter.
+	Type *string `json:"Type,omitempty" xml:"Type,omitempty"`
+	// The user who updated the common parameter.
+	UpdatedBy *string `json:"UpdatedBy,omitempty" xml:"UpdatedBy,omitempty"`
+	// The time when the common parameter was updated.
+	UpdatedDate *string `json:"UpdatedDate,omitempty" xml:"UpdatedDate,omitempty"`
 }
 
 func (s ListParametersResponseBodyParameters) String() string {
@@ -9583,7 +10030,7 @@ func (s *ListParametersResponse) SetBody(v *ListParametersResponseBody) *ListPar
 type ListPatchBaselinesRequest struct {
 	// The approved patches.
 	ApprovedPatches []*string `json:"ApprovedPatches,omitempty" xml:"ApprovedPatches,omitempty" type:"Repeated"`
-	// Whether the approved patch includes updates other than security.
+	// Specifies whether the approved patch involves updates other than security-related updates.
 	ApprovedPatchesEnableNonSecurity *bool `json:"ApprovedPatchesEnableNonSecurity,omitempty" xml:"ApprovedPatchesEnableNonSecurity,omitempty"`
 	// The number of entries returned per page.
 	MaxResults *int32 `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
@@ -9603,14 +10050,15 @@ type ListPatchBaselinesRequest struct {
 	// *   AlmaLinux
 	OperationSystem *string `json:"OperationSystem,omitempty" xml:"OperationSystem,omitempty"`
 	// The ID of the region.
-	RegionId        *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	// The resource group ID.
 	ResourceGroupId *string `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
 	// The share type of the template. Valid values:
 	//
 	// *   **Public**
 	// *   **Private**
 	ShareType *string `json:"ShareType,omitempty" xml:"ShareType,omitempty"`
-	// The list of patch source configurations.
+	// The patch source configurations.
 	Sources []*string `json:"Sources,omitempty" xml:"Sources,omitempty" type:"Repeated"`
 	// The tags.
 	Tags []*ListPatchBaselinesRequestTags `json:"Tags,omitempty" xml:"Tags,omitempty" type:"Repeated"`
@@ -9680,9 +10128,9 @@ func (s *ListPatchBaselinesRequest) SetTags(v []*ListPatchBaselinesRequestTags) 
 }
 
 type ListPatchBaselinesRequestTags struct {
-	// The tag key.
+	// The key of the tag.
 	Key *string `json:"Key,omitempty" xml:"Key,omitempty"`
-	// The tag value.
+	// The value of the tag.
 	Value *string `json:"Value,omitempty" xml:"Value,omitempty"`
 }
 
@@ -9707,7 +10155,7 @@ func (s *ListPatchBaselinesRequestTags) SetValue(v string) *ListPatchBaselinesRe
 type ListPatchBaselinesShrinkRequest struct {
 	// The approved patches.
 	ApprovedPatchesShrink *string `json:"ApprovedPatches,omitempty" xml:"ApprovedPatches,omitempty"`
-	// Whether the approved patch includes updates other than security.
+	// Specifies whether the approved patch involves updates other than security-related updates.
 	ApprovedPatchesEnableNonSecurity *bool `json:"ApprovedPatchesEnableNonSecurity,omitempty" xml:"ApprovedPatchesEnableNonSecurity,omitempty"`
 	// The number of entries returned per page.
 	MaxResults *int32 `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
@@ -9727,14 +10175,15 @@ type ListPatchBaselinesShrinkRequest struct {
 	// *   AlmaLinux
 	OperationSystem *string `json:"OperationSystem,omitempty" xml:"OperationSystem,omitempty"`
 	// The ID of the region.
-	RegionId        *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	// The resource group ID.
 	ResourceGroupId *string `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
 	// The share type of the template. Valid values:
 	//
 	// *   **Public**
 	// *   **Private**
 	ShareType *string `json:"ShareType,omitempty" xml:"ShareType,omitempty"`
-	// The list of patch source configurations.
+	// The patch source configurations.
 	SourcesShrink *string `json:"Sources,omitempty" xml:"Sources,omitempty"`
 	// The tags.
 	TagsShrink *string `json:"Tags,omitempty" xml:"Tags,omitempty"`
@@ -9804,13 +10253,13 @@ func (s *ListPatchBaselinesShrinkRequest) SetTagsShrink(v string) *ListPatchBase
 }
 
 type ListPatchBaselinesResponseBody struct {
-	// The type of the operating system.
+	// The number of entries per page.
 	MaxResults *int32 `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
-	// gAAAAABfTgv5ewUWmNdJ3g7JVLvX70sPH90GZOVGC
+	// The token that is used to retrieve the next page of results.
 	NextToken *string `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
-	// Indicates whether the patch baseline is set as the default patch baseline.
+	// The patch baselines.
 	PatchBaselines []*ListPatchBaselinesResponseBodyPatchBaselines `json:"PatchBaselines,omitempty" xml:"PatchBaselines,omitempty" type:"Repeated"`
-	// The details of the patch baselines.
+	// The request ID.
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -9843,34 +10292,35 @@ func (s *ListPatchBaselinesResponseBody) SetRequestId(v string) *ListPatchBaseli
 }
 
 type ListPatchBaselinesResponseBodyPatchBaselines struct {
-	// 批准补丁的列表。
+	// The approved patches.
 	ApprovedPatches []*string `json:"ApprovedPatches,omitempty" xml:"ApprovedPatches,omitempty" type:"Repeated"`
-	// 批准补丁是否包括除安全性之外的更新
+	// Indicates whether the approved patch involves updates other than security-related updates.
 	ApprovedPatchesEnableNonSecurity *bool `json:"ApprovedPatchesEnableNonSecurity,omitempty" xml:"ApprovedPatchesEnableNonSecurity,omitempty"`
-	// The name of the patch baseline.
+	// The user who created the patch baseline.
 	CreatedBy *string `json:"CreatedBy,omitempty" xml:"CreatedBy,omitempty"`
-	// The ID of the patch baseline.
-	CreatedDate *string `json:"CreatedDate,omitempty" xml:"CreatedDate,omitempty"`
-	// The user who last modified the patch baseline.
-	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
-	// Queries the details of patch baselines.
-	Id *string `json:"Id,omitempty" xml:"Id,omitempty"`
-	// The time when the patch baseline was last modified.
-	IsDefault *bool `json:"IsDefault,omitempty" xml:"IsDefault,omitempty"`
-	// The share type of the patch baseline.
-	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
-	// The description of the patch baseline.
-	OperationSystem *string `json:"OperationSystem,omitempty" xml:"OperationSystem,omitempty"`
-	ResourceGroupId *string `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
-	// Queries the details of patch baselines.
-	ShareType *string `json:"ShareType,omitempty" xml:"ShareType,omitempty"`
-	// 补丁源配置列表。
-	Sources []*string `json:"Sources,omitempty" xml:"Sources,omitempty" type:"Repeated"`
-	// 标签。
-	Tags []*ListPatchBaselinesResponseBodyPatchBaselinesTags `json:"Tags,omitempty" xml:"Tags,omitempty" type:"Repeated"`
 	// The time when the patch baseline was created.
+	CreatedDate *string `json:"CreatedDate,omitempty" xml:"CreatedDate,omitempty"`
+	// The description of the patch baseline.
+	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
+	// The ID of the patch baseline.
+	Id *string `json:"Id,omitempty" xml:"Id,omitempty"`
+	// Indicates whether the patch baseline is set as the default patch baseline.
+	IsDefault *bool `json:"IsDefault,omitempty" xml:"IsDefault,omitempty"`
+	// The name of the patch baseline.
+	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// The type of the operating system.
+	OperationSystem *string `json:"OperationSystem,omitempty" xml:"OperationSystem,omitempty"`
+	// The resource group ID.
+	ResourceGroupId *string `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
+	// The share type of the patch baseline.
+	ShareType *string `json:"ShareType,omitempty" xml:"ShareType,omitempty"`
+	// The patch source configurations.
+	Sources []*string `json:"Sources,omitempty" xml:"Sources,omitempty" type:"Repeated"`
+	// The tags.
+	Tags []*ListPatchBaselinesResponseBodyPatchBaselinesTags `json:"Tags,omitempty" xml:"Tags,omitempty" type:"Repeated"`
+	// The user who last updated the patch baseline.
 	UpdatedBy *string `json:"UpdatedBy,omitempty" xml:"UpdatedBy,omitempty"`
-	// The creator of the patch baseline.
+	// The time when the patch baseline was updated.
 	UpdatedDate *string `json:"UpdatedDate,omitempty" xml:"UpdatedDate,omitempty"`
 }
 
@@ -9958,9 +10408,9 @@ func (s *ListPatchBaselinesResponseBodyPatchBaselines) SetUpdatedDate(v string) 
 }
 
 type ListPatchBaselinesResponseBodyPatchBaselinesTags struct {
-	// 标签键。
+	// The key of the tag.
 	TagKey *string `json:"TagKey,omitempty" xml:"TagKey,omitempty"`
-	// 标签值。
+	// The value of the tag.
 	TagValue *string `json:"TagValue,omitempty" xml:"TagValue,omitempty"`
 }
 
@@ -12013,6 +12463,32 @@ type ListTemplatesRequest struct {
 	// The name of the template. All templates whose names contain the specified template name are to be returned.
 	TemplateName *string `json:"TemplateName,omitempty" xml:"TemplateName,omitempty"`
 	// The type of the template.
+	//
+	// Valid values:
+	//
+	// *   Automation
+	//
+	//     <!-- -->
+	//
+	//     <!-- -->
+	//
+	//     <!-- -->
+	//
+	// *   State
+	//
+	//     <!-- -->
+	//
+	//     <!-- -->
+	//
+	//     <!-- -->
+	//
+	// *   Package
+	//
+	//     <!-- -->
+	//
+	//     <!-- -->
+	//
+	//     <!-- -->
 	TemplateType *string `json:"TemplateType,omitempty" xml:"TemplateType,omitempty"`
 }
 
@@ -12157,6 +12633,32 @@ type ListTemplatesShrinkRequest struct {
 	// The name of the template. All templates whose names contain the specified template name are to be returned.
 	TemplateName *string `json:"TemplateName,omitempty" xml:"TemplateName,omitempty"`
 	// The type of the template.
+	//
+	// Valid values:
+	//
+	// *   Automation
+	//
+	//     <!-- -->
+	//
+	//     <!-- -->
+	//
+	//     <!-- -->
+	//
+	// *   State
+	//
+	//     <!-- -->
+	//
+	//     <!-- -->
+	//
+	//     <!-- -->
+	//
+	// *   Package
+	//
+	//     <!-- -->
+	//
+	//     <!-- -->
+	//
+	//     <!-- -->
 	TemplateType *string `json:"TemplateType,omitempty" xml:"TemplateType,omitempty"`
 }
 
@@ -12623,7 +13125,7 @@ func (s *RegisterDefaultPatchBaselineRequest) SetRegionId(v string) *RegisterDef
 type RegisterDefaultPatchBaselineResponseBody struct {
 	// The details of the patch baseline.
 	PatchBaseline *RegisterDefaultPatchBaselineResponseBodyPatchBaseline `json:"PatchBaseline,omitempty" xml:"PatchBaseline,omitempty" type:"Struct"`
-	// The ID of the request.
+	// The request ID.
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -12658,8 +13160,9 @@ type RegisterDefaultPatchBaselineResponseBodyPatchBaseline struct {
 	Id *string `json:"Id,omitempty" xml:"Id,omitempty"`
 	// The name of the patch baseline.
 	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
-	// The type of the operating system.
+	// The operating system.
 	OperationSystem *string `json:"OperationSystem,omitempty" xml:"OperationSystem,omitempty"`
+	// The ID of the resource group.
 	ResourceGroupId *string `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
 	// The share type of the patch baseline.
 	ShareType *string `json:"ShareType,omitempty" xml:"ShareType,omitempty"`
@@ -12916,13 +13419,20 @@ func (s *SearchInventoryResponse) SetBody(v *SearchInventoryResponseBody) *Searc
 }
 
 type SetServiceSettingsRequest struct {
-	DeliveryOssBucketName  *string `json:"DeliveryOssBucketName,omitempty" xml:"DeliveryOssBucketName,omitempty"`
-	DeliveryOssEnabled     *bool   `json:"DeliveryOssEnabled,omitempty" xml:"DeliveryOssEnabled,omitempty"`
-	DeliveryOssKeyPrefix   *string `json:"DeliveryOssKeyPrefix,omitempty" xml:"DeliveryOssKeyPrefix,omitempty"`
-	DeliverySlsEnabled     *bool   `json:"DeliverySlsEnabled,omitempty" xml:"DeliverySlsEnabled,omitempty"`
+	// The name of OSS bucket to deliver.
+	DeliveryOssBucketName *string `json:"DeliveryOssBucketName,omitempty" xml:"DeliveryOssBucketName,omitempty"`
+	// Whether to enable OSS delivery.
+	DeliveryOssEnabled *bool `json:"DeliveryOssEnabled,omitempty" xml:"DeliveryOssEnabled,omitempty"`
+	// The key prefix of OSS to deliver.
+	DeliveryOssKeyPrefix *string `json:"DeliveryOssKeyPrefix,omitempty" xml:"DeliveryOssKeyPrefix,omitempty"`
+	// Whether to enable SLS delivery.
+	DeliverySlsEnabled *bool `json:"DeliverySlsEnabled,omitempty" xml:"DeliverySlsEnabled,omitempty"`
+	// The name of SLS project to deliver.
 	DeliverySlsProjectName *string `json:"DeliverySlsProjectName,omitempty" xml:"DeliverySlsProjectName,omitempty"`
-	RdcEnterpriseId        *string `json:"RdcEnterpriseId,omitempty" xml:"RdcEnterpriseId,omitempty"`
-	RegionId               *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	// The id of RDC Enterprise.
+	RdcEnterpriseId *string `json:"RdcEnterpriseId,omitempty" xml:"RdcEnterpriseId,omitempty"`
+	// The region ID.
+	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 }
 
 func (s SetServiceSettingsRequest) String() string {
@@ -12969,7 +13479,9 @@ func (s *SetServiceSettingsRequest) SetRegionId(v string) *SetServiceSettingsReq
 }
 
 type SetServiceSettingsResponseBody struct {
-	RequestId       *string                                          `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The ID of the request.
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The information of service settings.
 	ServiceSettings []*SetServiceSettingsResponseBodyServiceSettings `json:"ServiceSettings,omitempty" xml:"ServiceSettings,omitempty" type:"Repeated"`
 }
 
@@ -12992,12 +13504,18 @@ func (s *SetServiceSettingsResponseBody) SetServiceSettings(v []*SetServiceSetti
 }
 
 type SetServiceSettingsResponseBodyServiceSettings struct {
-	DeliveryOssBucketName  *string `json:"DeliveryOssBucketName,omitempty" xml:"DeliveryOssBucketName,omitempty"`
-	DeliveryOssEnabled     *bool   `json:"DeliveryOssEnabled,omitempty" xml:"DeliveryOssEnabled,omitempty"`
-	DeliveryOssKeyPrefix   *string `json:"DeliveryOssKeyPrefix,omitempty" xml:"DeliveryOssKeyPrefix,omitempty"`
-	DeliverySlsEnabled     *bool   `json:"DeliverySlsEnabled,omitempty" xml:"DeliverySlsEnabled,omitempty"`
+	// The name of OSS bucket to deliver.
+	DeliveryOssBucketName *string `json:"DeliveryOssBucketName,omitempty" xml:"DeliveryOssBucketName,omitempty"`
+	// Whether to enable OSS delivery.
+	DeliveryOssEnabled *bool `json:"DeliveryOssEnabled,omitempty" xml:"DeliveryOssEnabled,omitempty"`
+	// The key prefix of OSS to deliver.
+	DeliveryOssKeyPrefix *string `json:"DeliveryOssKeyPrefix,omitempty" xml:"DeliveryOssKeyPrefix,omitempty"`
+	// Whether to enable SLS delivery.
+	DeliverySlsEnabled *bool `json:"DeliverySlsEnabled,omitempty" xml:"DeliverySlsEnabled,omitempty"`
+	// The name of SLS project to deliver.
 	DeliverySlsProjectName *string `json:"DeliverySlsProjectName,omitempty" xml:"DeliverySlsProjectName,omitempty"`
-	RdcEnterpriseId        *string `json:"RdcEnterpriseId,omitempty" xml:"RdcEnterpriseId,omitempty"`
+	// The id of RDC Enterprise.
+	RdcEnterpriseId *string `json:"RdcEnterpriseId,omitempty" xml:"RdcEnterpriseId,omitempty"`
 }
 
 func (s SetServiceSettingsResponseBodyServiceSettings) String() string {
@@ -13982,8 +14500,10 @@ func (s *UntagResourcesResponse) SetBody(v *UntagResourcesResponseBody) *UntagRe
 }
 
 type UpdateApplicationRequest struct {
-	AlarmConfig                  *UpdateApplicationRequestAlarmConfig `json:"AlarmConfig,omitempty" xml:"AlarmConfig,omitempty" type:"Struct"`
-	DeleteAlarmRulesBeforeUpdate *bool                                `json:"DeleteAlarmRulesBeforeUpdate,omitempty" xml:"DeleteAlarmRulesBeforeUpdate,omitempty"`
+	// The configurations of application alerts.
+	AlarmConfig *UpdateApplicationRequestAlarmConfig `json:"AlarmConfig,omitempty" xml:"AlarmConfig,omitempty" type:"Struct"`
+	// Specifies whether to delete existing alert rules before applying the alert template. Default value: false.
+	DeleteAlarmRulesBeforeUpdate *bool `json:"DeleteAlarmRulesBeforeUpdate,omitempty" xml:"DeleteAlarmRulesBeforeUpdate,omitempty"`
 	// The description to be updated for the application.
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
 	// The application name.
@@ -14033,9 +14553,12 @@ func (s *UpdateApplicationRequest) SetTags(v map[string]interface{}) *UpdateAppl
 }
 
 type UpdateApplicationRequestAlarmConfig struct {
-	ContactGroups  []*string `json:"ContactGroups,omitempty" xml:"ContactGroups,omitempty" type:"Repeated"`
-	HealthCheckUrl *string   `json:"HealthCheckUrl,omitempty" xml:"HealthCheckUrl,omitempty"`
-	TemplateIds    []*string `json:"TemplateIds,omitempty" xml:"TemplateIds,omitempty" type:"Repeated"`
+	// The alert contact groups.
+	ContactGroups []*string `json:"ContactGroups,omitempty" xml:"ContactGroups,omitempty" type:"Repeated"`
+	// The health check URL of the application.
+	HealthCheckUrl *string `json:"HealthCheckUrl,omitempty" xml:"HealthCheckUrl,omitempty"`
+	// The alert templates.
+	TemplateIds []*string `json:"TemplateIds,omitempty" xml:"TemplateIds,omitempty" type:"Repeated"`
 }
 
 func (s UpdateApplicationRequestAlarmConfig) String() string {
@@ -14062,8 +14585,10 @@ func (s *UpdateApplicationRequestAlarmConfig) SetTemplateIds(v []*string) *Updat
 }
 
 type UpdateApplicationShrinkRequest struct {
-	AlarmConfigShrink            *string `json:"AlarmConfig,omitempty" xml:"AlarmConfig,omitempty"`
-	DeleteAlarmRulesBeforeUpdate *bool   `json:"DeleteAlarmRulesBeforeUpdate,omitempty" xml:"DeleteAlarmRulesBeforeUpdate,omitempty"`
+	// The configurations of application alerts.
+	AlarmConfigShrink *string `json:"AlarmConfig,omitempty" xml:"AlarmConfig,omitempty"`
+	// Specifies whether to delete existing alert rules before applying the alert template. Default value: false.
+	DeleteAlarmRulesBeforeUpdate *bool `json:"DeleteAlarmRulesBeforeUpdate,omitempty" xml:"DeleteAlarmRulesBeforeUpdate,omitempty"`
 	// The description to be updated for the application.
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
 	// The application name.
@@ -14389,9 +14914,11 @@ type UpdateExecutionRequest struct {
 	// The information about the parameters.
 	Parameters *string `json:"Parameters,omitempty" xml:"Parameters,omitempty"`
 	// The ID of the region.
-	RegionId        *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	// The resource group ID.
 	ResourceGroupId *string `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
-	Tags            *string `json:"Tags,omitempty" xml:"Tags,omitempty"`
+	// The tags of the execution.
+	Tags *string `json:"Tags,omitempty" xml:"Tags,omitempty"`
 }
 
 func (s UpdateExecutionRequest) String() string {
@@ -14485,21 +15012,36 @@ func (s *UpdateExecutionResponse) SetBody(v *UpdateExecutionResponseBody) *Updat
 }
 
 type UpdateOpsItemRequest struct {
-	Category        *string                `json:"Category,omitempty" xml:"Category,omitempty"`
-	ClientToken     *string                `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
-	DedupString     *string                `json:"DedupString,omitempty" xml:"DedupString,omitempty"`
-	Description     *string                `json:"Description,omitempty" xml:"Description,omitempty"`
-	OpsItemId       *string                `json:"OpsItemId,omitempty" xml:"OpsItemId,omitempty"`
-	Priority        *int32                 `json:"Priority,omitempty" xml:"Priority,omitempty"`
-	RegionId        *string                `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	ResourceGroupId *string                `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
-	Resources       *string                `json:"Resources,omitempty" xml:"Resources,omitempty"`
-	Severity        *string                `json:"Severity,omitempty" xml:"Severity,omitempty"`
-	Solutions       *string                `json:"Solutions,omitempty" xml:"Solutions,omitempty"`
-	Source          *string                `json:"Source,omitempty" xml:"Source,omitempty"`
-	Status          *string                `json:"Status,omitempty" xml:"Status,omitempty"`
-	Tags            map[string]interface{} `json:"Tags,omitempty" xml:"Tags,omitempty"`
-	Title           *string                `json:"Title,omitempty" xml:"Title,omitempty"`
+	// The category.
+	Category *string `json:"Category,omitempty" xml:"Category,omitempty"`
+	// The client token that is used to ensure the idempotence of the request.
+	ClientToken *string `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
+	// The string to be deduplicated.
+	DedupString *string `json:"DedupString,omitempty" xml:"DedupString,omitempty"`
+	// The description of the O\&M item.
+	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
+	// The ID of the O\&M item.
+	OpsItemId *string `json:"OpsItemId,omitempty" xml:"OpsItemId,omitempty"`
+	// The priority.
+	Priority *int32 `json:"Priority,omitempty" xml:"Priority,omitempty"`
+	// The region ID.
+	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	// The ID of the resource group.
+	ResourceGroupId *string `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
+	// The Alibaba Resource Names (ARNs) of the associated resources.
+	Resources *string `json:"Resources,omitempty" xml:"Resources,omitempty"`
+	// The severity level.
+	Severity *string `json:"Severity,omitempty" xml:"Severity,omitempty"`
+	// The list of solutions.
+	Solutions *string `json:"Solutions,omitempty" xml:"Solutions,omitempty"`
+	// The source business.
+	Source *string `json:"Source,omitempty" xml:"Source,omitempty"`
+	// The status.
+	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
+	// The tags.
+	Tags map[string]interface{} `json:"Tags,omitempty" xml:"Tags,omitempty"`
+	// The title of the O\&M item.
+	Title *string `json:"Title,omitempty" xml:"Title,omitempty"`
 }
 
 func (s UpdateOpsItemRequest) String() string {
@@ -14586,21 +15128,36 @@ func (s *UpdateOpsItemRequest) SetTitle(v string) *UpdateOpsItemRequest {
 }
 
 type UpdateOpsItemShrinkRequest struct {
-	Category        *string `json:"Category,omitempty" xml:"Category,omitempty"`
-	ClientToken     *string `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
-	DedupString     *string `json:"DedupString,omitempty" xml:"DedupString,omitempty"`
-	Description     *string `json:"Description,omitempty" xml:"Description,omitempty"`
-	OpsItemId       *string `json:"OpsItemId,omitempty" xml:"OpsItemId,omitempty"`
-	Priority        *int32  `json:"Priority,omitempty" xml:"Priority,omitempty"`
-	RegionId        *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	// The category.
+	Category *string `json:"Category,omitempty" xml:"Category,omitempty"`
+	// The client token that is used to ensure the idempotence of the request.
+	ClientToken *string `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
+	// The string to be deduplicated.
+	DedupString *string `json:"DedupString,omitempty" xml:"DedupString,omitempty"`
+	// The description of the O\&M item.
+	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
+	// The ID of the O\&M item.
+	OpsItemId *string `json:"OpsItemId,omitempty" xml:"OpsItemId,omitempty"`
+	// The priority.
+	Priority *int32 `json:"Priority,omitempty" xml:"Priority,omitempty"`
+	// The region ID.
+	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	// The ID of the resource group.
 	ResourceGroupId *string `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
-	Resources       *string `json:"Resources,omitempty" xml:"Resources,omitempty"`
-	Severity        *string `json:"Severity,omitempty" xml:"Severity,omitempty"`
-	Solutions       *string `json:"Solutions,omitempty" xml:"Solutions,omitempty"`
-	Source          *string `json:"Source,omitempty" xml:"Source,omitempty"`
-	Status          *string `json:"Status,omitempty" xml:"Status,omitempty"`
-	TagsShrink      *string `json:"Tags,omitempty" xml:"Tags,omitempty"`
-	Title           *string `json:"Title,omitempty" xml:"Title,omitempty"`
+	// The Alibaba Resource Names (ARNs) of the associated resources.
+	Resources *string `json:"Resources,omitempty" xml:"Resources,omitempty"`
+	// The severity level.
+	Severity *string `json:"Severity,omitempty" xml:"Severity,omitempty"`
+	// The list of solutions.
+	Solutions *string `json:"Solutions,omitempty" xml:"Solutions,omitempty"`
+	// The source business.
+	Source *string `json:"Source,omitempty" xml:"Source,omitempty"`
+	// The status.
+	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
+	// The tags.
+	TagsShrink *string `json:"Tags,omitempty" xml:"Tags,omitempty"`
+	// The title of the O\&M item.
+	Title *string `json:"Title,omitempty" xml:"Title,omitempty"`
 }
 
 func (s UpdateOpsItemShrinkRequest) String() string {
@@ -14687,8 +15244,10 @@ func (s *UpdateOpsItemShrinkRequest) SetTitle(v string) *UpdateOpsItemShrinkRequ
 }
 
 type UpdateOpsItemResponseBody struct {
-	OpsItem   *UpdateOpsItemResponseBodyOpsItem `json:"OpsItem,omitempty" xml:"OpsItem,omitempty" type:"Struct"`
-	RequestId *string                           `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The O\&M item.
+	OpsItem *UpdateOpsItemResponseBodyOpsItem `json:"OpsItem,omitempty" xml:"OpsItem,omitempty" type:"Struct"`
+	// The request ID.
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
 func (s UpdateOpsItemResponseBody) String() string {
@@ -14710,23 +15269,40 @@ func (s *UpdateOpsItemResponseBody) SetRequestId(v string) *UpdateOpsItemRespons
 }
 
 type UpdateOpsItemResponseBodyOpsItem struct {
-	Attributes      *string                `json:"Attributes,omitempty" xml:"Attributes,omitempty"`
-	Category        *string                `json:"Category,omitempty" xml:"Category,omitempty"`
-	CreateDate      *string                `json:"CreateDate,omitempty" xml:"CreateDate,omitempty"`
-	CreatedBy       *string                `json:"CreatedBy,omitempty" xml:"CreatedBy,omitempty"`
-	Description     *string                `json:"Description,omitempty" xml:"Description,omitempty"`
-	LastModifiedBy  *string                `json:"LastModifiedBy,omitempty" xml:"LastModifiedBy,omitempty"`
-	OpsItemId       *string                `json:"OpsItemId,omitempty" xml:"OpsItemId,omitempty"`
-	Priority        *int32                 `json:"Priority,omitempty" xml:"Priority,omitempty"`
-	ResourceGroupId *string                `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
-	Resources       []*string              `json:"Resources,omitempty" xml:"Resources,omitempty" type:"Repeated"`
-	Severity        *string                `json:"Severity,omitempty" xml:"Severity,omitempty"`
-	Solutions       []*string              `json:"Solutions,omitempty" xml:"Solutions,omitempty" type:"Repeated"`
-	Source          *string                `json:"Source,omitempty" xml:"Source,omitempty"`
-	Status          *string                `json:"Status,omitempty" xml:"Status,omitempty"`
-	Tags            map[string]interface{} `json:"Tags,omitempty" xml:"Tags,omitempty"`
-	Title           *string                `json:"Title,omitempty" xml:"Title,omitempty"`
-	UpdateDate      *string                `json:"UpdateDate,omitempty" xml:"UpdateDate,omitempty"`
+	// The information about the properties of the O\&M item.
+	Attributes *string `json:"Attributes,omitempty" xml:"Attributes,omitempty"`
+	// The category.
+	Category *string `json:"Category,omitempty" xml:"Category,omitempty"`
+	// The time when the O\&M item was created.
+	CreateDate *string `json:"CreateDate,omitempty" xml:"CreateDate,omitempty"`
+	// The user who created the patch baseline.
+	CreatedBy *string `json:"CreatedBy,omitempty" xml:"CreatedBy,omitempty"`
+	// The description.
+	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
+	// The user who modified the O\&M item.
+	LastModifiedBy *string `json:"LastModifiedBy,omitempty" xml:"LastModifiedBy,omitempty"`
+	// The ID of the O\&M item.
+	OpsItemId *string `json:"OpsItemId,omitempty" xml:"OpsItemId,omitempty"`
+	// The priority.
+	Priority *int32 `json:"Priority,omitempty" xml:"Priority,omitempty"`
+	// The ID of the resource group.
+	ResourceGroupId *string `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
+	// The ARNs of the associated resources.
+	Resources []*string `json:"Resources,omitempty" xml:"Resources,omitempty" type:"Repeated"`
+	// The severity level.
+	Severity *string `json:"Severity,omitempty" xml:"Severity,omitempty"`
+	// The list of solutions.
+	Solutions []*string `json:"Solutions,omitempty" xml:"Solutions,omitempty" type:"Repeated"`
+	// The source business.
+	Source *string `json:"Source,omitempty" xml:"Source,omitempty"`
+	// The status.
+	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
+	// The tags.
+	Tags map[string]interface{} `json:"Tags,omitempty" xml:"Tags,omitempty"`
+	// The title of the O\&M item.
+	Title *string `json:"Title,omitempty" xml:"Title,omitempty"`
+	// The time when the O\&M item was updated.
+	UpdateDate *string `json:"UpdateDate,omitempty" xml:"UpdateDate,omitempty"`
 }
 
 func (s UpdateOpsItemResponseBodyOpsItem) String() string {
@@ -15062,9 +15638,11 @@ func (s *UpdateParameterResponse) SetBody(v *UpdateParameterResponseBody) *Updat
 
 type UpdatePatchBaselineRequest struct {
 	// The rules of scanning and installing patches for the specified operating system.
-	ApprovalRules                    *string   `json:"ApprovalRules,omitempty" xml:"ApprovalRules,omitempty"`
-	ApprovedPatches                  []*string `json:"ApprovedPatches,omitempty" xml:"ApprovedPatches,omitempty" type:"Repeated"`
-	ApprovedPatchesEnableNonSecurity *bool     `json:"ApprovedPatchesEnableNonSecurity,omitempty" xml:"ApprovedPatchesEnableNonSecurity,omitempty"`
+	ApprovalRules *string `json:"ApprovalRules,omitempty" xml:"ApprovalRules,omitempty"`
+	// The approved patches.
+	ApprovedPatches []*string `json:"ApprovedPatches,omitempty" xml:"ApprovedPatches,omitempty" type:"Repeated"`
+	// Indicates whether the approved patch involves updates other than security-related updates.
+	ApprovedPatchesEnableNonSecurity *bool `json:"ApprovedPatchesEnableNonSecurity,omitempty" xml:"ApprovedPatchesEnableNonSecurity,omitempty"`
 	// The client token that is used to ensure the idempotence of the request.
 	ClientToken *string `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
 	// The description of the patch baseline.
@@ -15072,12 +15650,17 @@ type UpdatePatchBaselineRequest struct {
 	// The name of the patch baseline.
 	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
 	// The ID of the region.
-	RegionId              *string                           `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	RejectedPatches       []*string                         `json:"RejectedPatches,omitempty" xml:"RejectedPatches,omitempty" type:"Repeated"`
-	RejectedPatchesAction *string                           `json:"RejectedPatchesAction,omitempty" xml:"RejectedPatchesAction,omitempty"`
-	ResourceGroupId       *string                           `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
-	Sources               []*string                         `json:"Sources,omitempty" xml:"Sources,omitempty" type:"Repeated"`
-	Tags                  []*UpdatePatchBaselineRequestTags `json:"Tags,omitempty" xml:"Tags,omitempty" type:"Repeated"`
+	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	// The rejected patches.
+	RejectedPatches []*string `json:"RejectedPatches,omitempty" xml:"RejectedPatches,omitempty" type:"Repeated"`
+	// The action of the rejected patch.
+	RejectedPatchesAction *string `json:"RejectedPatchesAction,omitempty" xml:"RejectedPatchesAction,omitempty"`
+	// The ID of the resource group.
+	ResourceGroupId *string `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
+	// The patch source configurations.
+	Sources []*string `json:"Sources,omitempty" xml:"Sources,omitempty" type:"Repeated"`
+	// The tags.
+	Tags []*UpdatePatchBaselineRequestTags `json:"Tags,omitempty" xml:"Tags,omitempty" type:"Repeated"`
 }
 
 func (s UpdatePatchBaselineRequest) String() string {
@@ -15149,7 +15732,9 @@ func (s *UpdatePatchBaselineRequest) SetTags(v []*UpdatePatchBaselineRequestTags
 }
 
 type UpdatePatchBaselineRequestTags struct {
-	Key   *string `json:"Key,omitempty" xml:"Key,omitempty"`
+	// The key of the tag.
+	Key *string `json:"Key,omitempty" xml:"Key,omitempty"`
+	// The value of the tag.
 	Value *string `json:"Value,omitempty" xml:"Value,omitempty"`
 }
 
@@ -15173,9 +15758,11 @@ func (s *UpdatePatchBaselineRequestTags) SetValue(v string) *UpdatePatchBaseline
 
 type UpdatePatchBaselineShrinkRequest struct {
 	// The rules of scanning and installing patches for the specified operating system.
-	ApprovalRules                    *string `json:"ApprovalRules,omitempty" xml:"ApprovalRules,omitempty"`
-	ApprovedPatchesShrink            *string `json:"ApprovedPatches,omitempty" xml:"ApprovedPatches,omitempty"`
-	ApprovedPatchesEnableNonSecurity *bool   `json:"ApprovedPatchesEnableNonSecurity,omitempty" xml:"ApprovedPatchesEnableNonSecurity,omitempty"`
+	ApprovalRules *string `json:"ApprovalRules,omitempty" xml:"ApprovalRules,omitempty"`
+	// The approved patches.
+	ApprovedPatchesShrink *string `json:"ApprovedPatches,omitempty" xml:"ApprovedPatches,omitempty"`
+	// Indicates whether the approved patch involves updates other than security-related updates.
+	ApprovedPatchesEnableNonSecurity *bool `json:"ApprovedPatchesEnableNonSecurity,omitempty" xml:"ApprovedPatchesEnableNonSecurity,omitempty"`
 	// The client token that is used to ensure the idempotence of the request.
 	ClientToken *string `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
 	// The description of the patch baseline.
@@ -15183,12 +15770,17 @@ type UpdatePatchBaselineShrinkRequest struct {
 	// The name of the patch baseline.
 	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
 	// The ID of the region.
-	RegionId              *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	// The rejected patches.
 	RejectedPatchesShrink *string `json:"RejectedPatches,omitempty" xml:"RejectedPatches,omitempty"`
+	// The action of the rejected patch.
 	RejectedPatchesAction *string `json:"RejectedPatchesAction,omitempty" xml:"RejectedPatchesAction,omitempty"`
-	ResourceGroupId       *string `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
-	SourcesShrink         *string `json:"Sources,omitempty" xml:"Sources,omitempty"`
-	TagsShrink            *string `json:"Tags,omitempty" xml:"Tags,omitempty"`
+	// The ID of the resource group.
+	ResourceGroupId *string `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
+	// The patch source configurations.
+	SourcesShrink *string `json:"Sources,omitempty" xml:"Sources,omitempty"`
+	// The tags.
+	TagsShrink *string `json:"Tags,omitempty" xml:"Tags,omitempty"`
 }
 
 func (s UpdatePatchBaselineShrinkRequest) String() string {
@@ -15286,9 +15878,11 @@ func (s *UpdatePatchBaselineResponseBody) SetRequestId(v string) *UpdatePatchBas
 
 type UpdatePatchBaselineResponseBodyPatchBaseline struct {
 	// The rules of scanning and installing patches for the specified operating system.
-	ApprovalRules                    *string   `json:"ApprovalRules,omitempty" xml:"ApprovalRules,omitempty"`
-	ApprovedPatches                  []*string `json:"ApprovedPatches,omitempty" xml:"ApprovedPatches,omitempty" type:"Repeated"`
-	ApprovedPatchesEnableNonSecurity *bool     `json:"ApprovedPatchesEnableNonSecurity,omitempty" xml:"ApprovedPatchesEnableNonSecurity,omitempty"`
+	ApprovalRules *string `json:"ApprovalRules,omitempty" xml:"ApprovalRules,omitempty"`
+	// The approved patches.
+	ApprovedPatches []*string `json:"ApprovedPatches,omitempty" xml:"ApprovedPatches,omitempty" type:"Repeated"`
+	// Indicates whether the approved patch involves updates other than security-related updates.
+	ApprovedPatchesEnableNonSecurity *bool `json:"ApprovedPatchesEnableNonSecurity,omitempty" xml:"ApprovedPatchesEnableNonSecurity,omitempty"`
 	// The creator of the patch baseline.
 	CreatedBy *string `json:"CreatedBy,omitempty" xml:"CreatedBy,omitempty"`
 	// The time when the patch baseline was created.
@@ -15300,14 +15894,19 @@ type UpdatePatchBaselineResponseBodyPatchBaseline struct {
 	// The name of the patch baseline.
 	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
 	// The operating system.
-	OperationSystem       *string   `json:"OperationSystem,omitempty" xml:"OperationSystem,omitempty"`
-	RejectedPatches       []*string `json:"RejectedPatches,omitempty" xml:"RejectedPatches,omitempty" type:"Repeated"`
-	RejectedPatchesAction *string   `json:"RejectedPatchesAction,omitempty" xml:"RejectedPatchesAction,omitempty"`
-	ResourceGroupId       *string   `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
+	OperationSystem *string `json:"OperationSystem,omitempty" xml:"OperationSystem,omitempty"`
+	// The rejected patches.
+	RejectedPatches []*string `json:"RejectedPatches,omitempty" xml:"RejectedPatches,omitempty" type:"Repeated"`
+	// The action of the rejected patch.
+	RejectedPatchesAction *string `json:"RejectedPatchesAction,omitempty" xml:"RejectedPatchesAction,omitempty"`
+	// The ID of the resource group.
+	ResourceGroupId *string `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
 	// The share type of the patch baseline.
-	ShareType *string                                             `json:"ShareType,omitempty" xml:"ShareType,omitempty"`
-	Sources   []*string                                           `json:"Sources,omitempty" xml:"Sources,omitempty" type:"Repeated"`
-	Tags      []*UpdatePatchBaselineResponseBodyPatchBaselineTags `json:"Tags,omitempty" xml:"Tags,omitempty" type:"Repeated"`
+	ShareType *string `json:"ShareType,omitempty" xml:"ShareType,omitempty"`
+	// The patch source configurations.
+	Sources []*string `json:"Sources,omitempty" xml:"Sources,omitempty" type:"Repeated"`
+	// The tags.
+	Tags []*UpdatePatchBaselineResponseBodyPatchBaselineTags `json:"Tags,omitempty" xml:"Tags,omitempty" type:"Repeated"`
 	// The user who updated the patch baseline.
 	UpdatedBy *string `json:"UpdatedBy,omitempty" xml:"UpdatedBy,omitempty"`
 	// The time when the patch baseline was updated.
@@ -15408,7 +16007,9 @@ func (s *UpdatePatchBaselineResponseBodyPatchBaseline) SetUpdatedDate(v string) 
 }
 
 type UpdatePatchBaselineResponseBodyPatchBaselineTags struct {
-	TagKey   *string `json:"TagKey,omitempty" xml:"TagKey,omitempty"`
+	// The key of the tag.
+	TagKey *string `json:"TagKey,omitempty" xml:"TagKey,omitempty"`
+	// The value of the tag.
 	TagValue *string `json:"TagValue,omitempty" xml:"TagValue,omitempty"`
 }
 
@@ -16734,6 +17335,10 @@ func (client *Client) CreateApplicationWithOptions(tmpReq *CreateApplicationRequ
 
 	if !tea.BoolValue(util.IsUnset(request.ResourceGroupId)) {
 		query["ResourceGroupId"] = request.ResourceGroupId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ServiceId)) {
+		query["ServiceId"] = request.ServiceId
 	}
 
 	if !tea.BoolValue(util.IsUnset(request.TagsShrink)) {
