@@ -887,6 +887,117 @@ func (s *CreateChangeSetResponse) SetBody(v *CreateChangeSetResponseBody) *Creat
 	return s
 }
 
+type CreateDiagnosticRequest struct {
+	DiagnosticKey  *string `json:"DiagnosticKey,omitempty" xml:"DiagnosticKey,omitempty"`
+	DiagnosticType *string `json:"DiagnosticType,omitempty" xml:"DiagnosticType,omitempty"`
+	Product        *string `json:"Product,omitempty" xml:"Product,omitempty"`
+}
+
+func (s CreateDiagnosticRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateDiagnosticRequest) GoString() string {
+	return s.String()
+}
+
+func (s *CreateDiagnosticRequest) SetDiagnosticKey(v string) *CreateDiagnosticRequest {
+	s.DiagnosticKey = &v
+	return s
+}
+
+func (s *CreateDiagnosticRequest) SetDiagnosticType(v string) *CreateDiagnosticRequest {
+	s.DiagnosticType = &v
+	return s
+}
+
+func (s *CreateDiagnosticRequest) SetProduct(v string) *CreateDiagnosticRequest {
+	s.Product = &v
+	return s
+}
+
+type CreateDiagnosticResponseBody struct {
+	Code           *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	DiagnosticType *string `json:"DiagnosticType,omitempty" xml:"DiagnosticType,omitempty"`
+	HttpStatusCode *int32  `json:"HttpStatusCode,omitempty" xml:"HttpStatusCode,omitempty"`
+	Message        *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	ReportId       *string `json:"ReportId,omitempty" xml:"ReportId,omitempty"`
+	RequestId      *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	Success        *string `json:"Success,omitempty" xml:"Success,omitempty"`
+}
+
+func (s CreateDiagnosticResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateDiagnosticResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *CreateDiagnosticResponseBody) SetCode(v string) *CreateDiagnosticResponseBody {
+	s.Code = &v
+	return s
+}
+
+func (s *CreateDiagnosticResponseBody) SetDiagnosticType(v string) *CreateDiagnosticResponseBody {
+	s.DiagnosticType = &v
+	return s
+}
+
+func (s *CreateDiagnosticResponseBody) SetHttpStatusCode(v int32) *CreateDiagnosticResponseBody {
+	s.HttpStatusCode = &v
+	return s
+}
+
+func (s *CreateDiagnosticResponseBody) SetMessage(v string) *CreateDiagnosticResponseBody {
+	s.Message = &v
+	return s
+}
+
+func (s *CreateDiagnosticResponseBody) SetReportId(v string) *CreateDiagnosticResponseBody {
+	s.ReportId = &v
+	return s
+}
+
+func (s *CreateDiagnosticResponseBody) SetRequestId(v string) *CreateDiagnosticResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *CreateDiagnosticResponseBody) SetSuccess(v string) *CreateDiagnosticResponseBody {
+	s.Success = &v
+	return s
+}
+
+type CreateDiagnosticResponse struct {
+	Headers    map[string]*string            `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                        `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *CreateDiagnosticResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s CreateDiagnosticResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateDiagnosticResponse) GoString() string {
+	return s.String()
+}
+
+func (s *CreateDiagnosticResponse) SetHeaders(v map[string]*string) *CreateDiagnosticResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *CreateDiagnosticResponse) SetStatusCode(v int32) *CreateDiagnosticResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *CreateDiagnosticResponse) SetBody(v *CreateDiagnosticResponseBody) *CreateDiagnosticResponse {
+	s.Body = v
+	return s
+}
+
 type CreateStackRequest struct {
 	// The client token that is used to ensure the idempotence of the request. You can use the client to generate the token, but you must make sure that the token is unique among different requests. The token can be up to 64 characters in length, and can contain letters, digits, hyphens (-), and underscores (\_).
 	//
@@ -2871,6 +2982,93 @@ func (s *DeleteChangeSetResponse) SetStatusCode(v int32) *DeleteChangeSetRespons
 }
 
 func (s *DeleteChangeSetResponse) SetBody(v *DeleteChangeSetResponseBody) *DeleteChangeSetResponse {
+	s.Body = v
+	return s
+}
+
+type DeleteDiagnosticRequest struct {
+	ReportId *string `json:"ReportId,omitempty" xml:"ReportId,omitempty"`
+}
+
+func (s DeleteDiagnosticRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DeleteDiagnosticRequest) GoString() string {
+	return s.String()
+}
+
+func (s *DeleteDiagnosticRequest) SetReportId(v string) *DeleteDiagnosticRequest {
+	s.ReportId = &v
+	return s
+}
+
+type DeleteDiagnosticResponseBody struct {
+	Code           *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	HttpStatusCode *int32  `json:"HttpStatusCode,omitempty" xml:"HttpStatusCode,omitempty"`
+	Message        *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	RequestId      *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	Success        *string `json:"Success,omitempty" xml:"Success,omitempty"`
+}
+
+func (s DeleteDiagnosticResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DeleteDiagnosticResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *DeleteDiagnosticResponseBody) SetCode(v string) *DeleteDiagnosticResponseBody {
+	s.Code = &v
+	return s
+}
+
+func (s *DeleteDiagnosticResponseBody) SetHttpStatusCode(v int32) *DeleteDiagnosticResponseBody {
+	s.HttpStatusCode = &v
+	return s
+}
+
+func (s *DeleteDiagnosticResponseBody) SetMessage(v string) *DeleteDiagnosticResponseBody {
+	s.Message = &v
+	return s
+}
+
+func (s *DeleteDiagnosticResponseBody) SetRequestId(v string) *DeleteDiagnosticResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *DeleteDiagnosticResponseBody) SetSuccess(v string) *DeleteDiagnosticResponseBody {
+	s.Success = &v
+	return s
+}
+
+type DeleteDiagnosticResponse struct {
+	Headers    map[string]*string            `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                        `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *DeleteDiagnosticResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s DeleteDiagnosticResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DeleteDiagnosticResponse) GoString() string {
+	return s.String()
+}
+
+func (s *DeleteDiagnosticResponse) SetHeaders(v map[string]*string) *DeleteDiagnosticResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *DeleteDiagnosticResponse) SetStatusCode(v int32) *DeleteDiagnosticResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *DeleteDiagnosticResponse) SetBody(v *DeleteDiagnosticResponseBody) *DeleteDiagnosticResponse {
 	s.Body = v
 	return s
 }
@@ -4919,6 +5117,176 @@ func (s *GetChangeSetResponse) SetStatusCode(v int32) *GetChangeSetResponse {
 }
 
 func (s *GetChangeSetResponse) SetBody(v *GetChangeSetResponseBody) *GetChangeSetResponse {
+	s.Body = v
+	return s
+}
+
+type GetDiagnosticRequest struct {
+	ReportId *string `json:"ReportId,omitempty" xml:"ReportId,omitempty"`
+}
+
+func (s GetDiagnosticRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetDiagnosticRequest) GoString() string {
+	return s.String()
+}
+
+func (s *GetDiagnosticRequest) SetReportId(v string) *GetDiagnosticRequest {
+	s.ReportId = &v
+	return s
+}
+
+type GetDiagnosticResponseBody struct {
+	Code              *string                                    `json:"Code,omitempty" xml:"Code,omitempty"`
+	DiagnosticKey     *string                                    `json:"DiagnosticKey,omitempty" xml:"DiagnosticKey,omitempty"`
+	DiagnosticProduct *string                                    `json:"DiagnosticProduct,omitempty" xml:"DiagnosticProduct,omitempty"`
+	DiagnosticResult  *GetDiagnosticResponseBodyDiagnosticResult `json:"DiagnosticResult,omitempty" xml:"DiagnosticResult,omitempty" type:"Struct"`
+	DiagnosticTime    *string                                    `json:"DiagnosticTime,omitempty" xml:"DiagnosticTime,omitempty"`
+	HttpCode          *string                                    `json:"HttpCode,omitempty" xml:"HttpCode,omitempty"`
+	HttpStatusCode    *int32                                     `json:"HttpStatusCode,omitempty" xml:"HttpStatusCode,omitempty"`
+	Message           *string                                    `json:"Message,omitempty" xml:"Message,omitempty"`
+	Recommends        map[string]interface{}                     `json:"Recommends,omitempty" xml:"Recommends,omitempty"`
+	ReportId          *string                                    `json:"ReportId,omitempty" xml:"ReportId,omitempty"`
+	RequestId         *string                                    `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	Status            *string                                    `json:"Status,omitempty" xml:"Status,omitempty"`
+	StatusReason      *string                                    `json:"StatusReason,omitempty" xml:"StatusReason,omitempty"`
+	Success           *string                                    `json:"Success,omitempty" xml:"Success,omitempty"`
+}
+
+func (s GetDiagnosticResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetDiagnosticResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *GetDiagnosticResponseBody) SetCode(v string) *GetDiagnosticResponseBody {
+	s.Code = &v
+	return s
+}
+
+func (s *GetDiagnosticResponseBody) SetDiagnosticKey(v string) *GetDiagnosticResponseBody {
+	s.DiagnosticKey = &v
+	return s
+}
+
+func (s *GetDiagnosticResponseBody) SetDiagnosticProduct(v string) *GetDiagnosticResponseBody {
+	s.DiagnosticProduct = &v
+	return s
+}
+
+func (s *GetDiagnosticResponseBody) SetDiagnosticResult(v *GetDiagnosticResponseBodyDiagnosticResult) *GetDiagnosticResponseBody {
+	s.DiagnosticResult = v
+	return s
+}
+
+func (s *GetDiagnosticResponseBody) SetDiagnosticTime(v string) *GetDiagnosticResponseBody {
+	s.DiagnosticTime = &v
+	return s
+}
+
+func (s *GetDiagnosticResponseBody) SetHttpCode(v string) *GetDiagnosticResponseBody {
+	s.HttpCode = &v
+	return s
+}
+
+func (s *GetDiagnosticResponseBody) SetHttpStatusCode(v int32) *GetDiagnosticResponseBody {
+	s.HttpStatusCode = &v
+	return s
+}
+
+func (s *GetDiagnosticResponseBody) SetMessage(v string) *GetDiagnosticResponseBody {
+	s.Message = &v
+	return s
+}
+
+func (s *GetDiagnosticResponseBody) SetRecommends(v map[string]interface{}) *GetDiagnosticResponseBody {
+	s.Recommends = v
+	return s
+}
+
+func (s *GetDiagnosticResponseBody) SetReportId(v string) *GetDiagnosticResponseBody {
+	s.ReportId = &v
+	return s
+}
+
+func (s *GetDiagnosticResponseBody) SetRequestId(v string) *GetDiagnosticResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *GetDiagnosticResponseBody) SetStatus(v string) *GetDiagnosticResponseBody {
+	s.Status = &v
+	return s
+}
+
+func (s *GetDiagnosticResponseBody) SetStatusReason(v string) *GetDiagnosticResponseBody {
+	s.StatusReason = &v
+	return s
+}
+
+func (s *GetDiagnosticResponseBody) SetSuccess(v string) *GetDiagnosticResponseBody {
+	s.Success = &v
+	return s
+}
+
+type GetDiagnosticResponseBodyDiagnosticResult struct {
+	FailedResources   map[string]interface{} `json:"FailedResources,omitempty" xml:"FailedResources,omitempty"`
+	RosActionMessages map[string]interface{} `json:"RosActionMessages,omitempty" xml:"RosActionMessages,omitempty"`
+	StackMessages     map[string]interface{} `json:"StackMessages,omitempty" xml:"StackMessages,omitempty"`
+}
+
+func (s GetDiagnosticResponseBodyDiagnosticResult) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetDiagnosticResponseBodyDiagnosticResult) GoString() string {
+	return s.String()
+}
+
+func (s *GetDiagnosticResponseBodyDiagnosticResult) SetFailedResources(v map[string]interface{}) *GetDiagnosticResponseBodyDiagnosticResult {
+	s.FailedResources = v
+	return s
+}
+
+func (s *GetDiagnosticResponseBodyDiagnosticResult) SetRosActionMessages(v map[string]interface{}) *GetDiagnosticResponseBodyDiagnosticResult {
+	s.RosActionMessages = v
+	return s
+}
+
+func (s *GetDiagnosticResponseBodyDiagnosticResult) SetStackMessages(v map[string]interface{}) *GetDiagnosticResponseBodyDiagnosticResult {
+	s.StackMessages = v
+	return s
+}
+
+type GetDiagnosticResponse struct {
+	Headers    map[string]*string         `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                     `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *GetDiagnosticResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s GetDiagnosticResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetDiagnosticResponse) GoString() string {
+	return s.String()
+}
+
+func (s *GetDiagnosticResponse) SetHeaders(v map[string]*string) *GetDiagnosticResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *GetDiagnosticResponse) SetStatusCode(v int32) *GetDiagnosticResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *GetDiagnosticResponse) SetBody(v *GetDiagnosticResponseBody) *GetDiagnosticResponse {
 	s.Body = v
 	return s
 }
@@ -10510,6 +10878,164 @@ func (s *ListChangeSetsResponse) SetStatusCode(v int32) *ListChangeSetsResponse 
 }
 
 func (s *ListChangeSetsResponse) SetBody(v *ListChangeSetsResponseBody) *ListChangeSetsResponse {
+	s.Body = v
+	return s
+}
+
+type ListDiagnosticsRequest struct {
+	DiagnosticKey     *string `json:"DiagnosticKey,omitempty" xml:"DiagnosticKey,omitempty"`
+	DiagnosticProduct *string `json:"DiagnosticProduct,omitempty" xml:"DiagnosticProduct,omitempty"`
+	MaxResults        *string `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
+	NextToken         *string `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
+	Status            *string `json:"Status,omitempty" xml:"Status,omitempty"`
+}
+
+func (s ListDiagnosticsRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListDiagnosticsRequest) GoString() string {
+	return s.String()
+}
+
+func (s *ListDiagnosticsRequest) SetDiagnosticKey(v string) *ListDiagnosticsRequest {
+	s.DiagnosticKey = &v
+	return s
+}
+
+func (s *ListDiagnosticsRequest) SetDiagnosticProduct(v string) *ListDiagnosticsRequest {
+	s.DiagnosticProduct = &v
+	return s
+}
+
+func (s *ListDiagnosticsRequest) SetMaxResults(v string) *ListDiagnosticsRequest {
+	s.MaxResults = &v
+	return s
+}
+
+func (s *ListDiagnosticsRequest) SetNextToken(v string) *ListDiagnosticsRequest {
+	s.NextToken = &v
+	return s
+}
+
+func (s *ListDiagnosticsRequest) SetStatus(v string) *ListDiagnosticsRequest {
+	s.Status = &v
+	return s
+}
+
+type ListDiagnosticsResponseBody struct {
+	Diagnostics    []*ListDiagnosticsResponseBodyDiagnostics `json:"Diagnostics,omitempty" xml:"Diagnostics,omitempty" type:"Repeated"`
+	HttpStatusCode *int32                                    `json:"HttpStatusCode,omitempty" xml:"HttpStatusCode,omitempty"`
+	Message        *string                                   `json:"Message,omitempty" xml:"Message,omitempty"`
+	NextToken      *string                                   `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
+	RequestId      *string                                   `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	Success        *string                                   `json:"Success,omitempty" xml:"Success,omitempty"`
+}
+
+func (s ListDiagnosticsResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListDiagnosticsResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *ListDiagnosticsResponseBody) SetDiagnostics(v []*ListDiagnosticsResponseBodyDiagnostics) *ListDiagnosticsResponseBody {
+	s.Diagnostics = v
+	return s
+}
+
+func (s *ListDiagnosticsResponseBody) SetHttpStatusCode(v int32) *ListDiagnosticsResponseBody {
+	s.HttpStatusCode = &v
+	return s
+}
+
+func (s *ListDiagnosticsResponseBody) SetMessage(v string) *ListDiagnosticsResponseBody {
+	s.Message = &v
+	return s
+}
+
+func (s *ListDiagnosticsResponseBody) SetNextToken(v string) *ListDiagnosticsResponseBody {
+	s.NextToken = &v
+	return s
+}
+
+func (s *ListDiagnosticsResponseBody) SetRequestId(v string) *ListDiagnosticsResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *ListDiagnosticsResponseBody) SetSuccess(v string) *ListDiagnosticsResponseBody {
+	s.Success = &v
+	return s
+}
+
+type ListDiagnosticsResponseBodyDiagnostics struct {
+	CreateTime        *string `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
+	DiagnosticKey     *string `json:"DiagnosticKey,omitempty" xml:"DiagnosticKey,omitempty"`
+	DiagnosticProduct *string `json:"DiagnosticProduct,omitempty" xml:"DiagnosticProduct,omitempty"`
+	ReportId          *string `json:"ReportId,omitempty" xml:"ReportId,omitempty"`
+	Status            *string `json:"Status,omitempty" xml:"Status,omitempty"`
+}
+
+func (s ListDiagnosticsResponseBodyDiagnostics) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListDiagnosticsResponseBodyDiagnostics) GoString() string {
+	return s.String()
+}
+
+func (s *ListDiagnosticsResponseBodyDiagnostics) SetCreateTime(v string) *ListDiagnosticsResponseBodyDiagnostics {
+	s.CreateTime = &v
+	return s
+}
+
+func (s *ListDiagnosticsResponseBodyDiagnostics) SetDiagnosticKey(v string) *ListDiagnosticsResponseBodyDiagnostics {
+	s.DiagnosticKey = &v
+	return s
+}
+
+func (s *ListDiagnosticsResponseBodyDiagnostics) SetDiagnosticProduct(v string) *ListDiagnosticsResponseBodyDiagnostics {
+	s.DiagnosticProduct = &v
+	return s
+}
+
+func (s *ListDiagnosticsResponseBodyDiagnostics) SetReportId(v string) *ListDiagnosticsResponseBodyDiagnostics {
+	s.ReportId = &v
+	return s
+}
+
+func (s *ListDiagnosticsResponseBodyDiagnostics) SetStatus(v string) *ListDiagnosticsResponseBodyDiagnostics {
+	s.Status = &v
+	return s
+}
+
+type ListDiagnosticsResponse struct {
+	Headers    map[string]*string           `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                       `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *ListDiagnosticsResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s ListDiagnosticsResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListDiagnosticsResponse) GoString() string {
+	return s.String()
+}
+
+func (s *ListDiagnosticsResponse) SetHeaders(v map[string]*string) *ListDiagnosticsResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *ListDiagnosticsResponse) SetStatusCode(v int32) *ListDiagnosticsResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *ListDiagnosticsResponse) SetBody(v *ListDiagnosticsResponseBody) *ListDiagnosticsResponse {
 	s.Body = v
 	return s
 }
@@ -19075,6 +19601,58 @@ func (client *Client) CreateChangeSet(request *CreateChangeSetRequest) (_result 
 	return _result, _err
 }
 
+func (client *Client) CreateDiagnosticWithOptions(request *CreateDiagnosticRequest, runtime *util.RuntimeOptions) (_result *CreateDiagnosticResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.DiagnosticKey)) {
+		query["DiagnosticKey"] = request.DiagnosticKey
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.DiagnosticType)) {
+		query["DiagnosticType"] = request.DiagnosticType
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Product)) {
+		query["Product"] = request.Product
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("CreateDiagnostic"),
+		Version:     tea.String("2019-09-10"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &CreateDiagnosticResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) CreateDiagnostic(request *CreateDiagnosticRequest) (_result *CreateDiagnosticResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &CreateDiagnosticResponse{}
+	_body, _err := client.CreateDiagnosticWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
 /**
  * A stack is a collection of ROS resources that you can manage as a single unit. To create a collection of resources, you can create a stack. For more information about stacks, see [Overview](~~172973~~).\\
  * When you call the operation, take note of the following limits:
@@ -19740,6 +20318,50 @@ func (client *Client) DeleteChangeSet(request *DeleteChangeSetRequest) (_result 
 	runtime := &util.RuntimeOptions{}
 	_result = &DeleteChangeSetResponse{}
 	_body, _err := client.DeleteChangeSetWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) DeleteDiagnosticWithOptions(request *DeleteDiagnosticRequest, runtime *util.RuntimeOptions) (_result *DeleteDiagnosticResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.ReportId)) {
+		query["ReportId"] = request.ReportId
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("DeleteDiagnostic"),
+		Version:     tea.String("2019-09-10"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &DeleteDiagnosticResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) DeleteDiagnostic(request *DeleteDiagnosticRequest) (_result *DeleteDiagnosticResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &DeleteDiagnosticResponse{}
+	_body, _err := client.DeleteDiagnosticWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -20653,6 +21275,50 @@ func (client *Client) GetChangeSet(request *GetChangeSetRequest) (_result *GetCh
 	runtime := &util.RuntimeOptions{}
 	_result = &GetChangeSetResponse{}
 	_body, _err := client.GetChangeSetWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) GetDiagnosticWithOptions(request *GetDiagnosticRequest, runtime *util.RuntimeOptions) (_result *GetDiagnosticResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.ReportId)) {
+		query["ReportId"] = request.ReportId
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("GetDiagnostic"),
+		Version:     tea.String("2019-09-10"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &GetDiagnosticResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) GetDiagnostic(request *GetDiagnosticRequest) (_result *GetDiagnosticResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &GetDiagnosticResponse{}
+	_body, _err := client.GetDiagnosticWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -22063,6 +22729,66 @@ func (client *Client) ListChangeSets(request *ListChangeSetsRequest) (_result *L
 	runtime := &util.RuntimeOptions{}
 	_result = &ListChangeSetsResponse{}
 	_body, _err := client.ListChangeSetsWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) ListDiagnosticsWithOptions(request *ListDiagnosticsRequest, runtime *util.RuntimeOptions) (_result *ListDiagnosticsResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.DiagnosticKey)) {
+		query["DiagnosticKey"] = request.DiagnosticKey
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.DiagnosticProduct)) {
+		query["DiagnosticProduct"] = request.DiagnosticProduct
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.MaxResults)) {
+		query["MaxResults"] = request.MaxResults
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.NextToken)) {
+		query["NextToken"] = request.NextToken
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Status)) {
+		query["Status"] = request.Status
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("ListDiagnostics"),
+		Version:     tea.String("2019-09-10"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &ListDiagnosticsResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) ListDiagnostics(request *ListDiagnosticsRequest) (_result *ListDiagnosticsResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &ListDiagnosticsResponse{}
+	_body, _err := client.ListDiagnosticsWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
