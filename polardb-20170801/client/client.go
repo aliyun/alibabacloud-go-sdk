@@ -1040,6 +1040,117 @@ func (s *CreateBackupResponse) SetBody(v *CreateBackupResponseBody) *CreateBacku
 	return s
 }
 
+type CreateColdStorageInstanceRequest struct {
+	ClientToken                    *string `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
+	ColdStorageInstanceDescription *string `json:"ColdStorageInstanceDescription,omitempty" xml:"ColdStorageInstanceDescription,omitempty"`
+	DBClusterId                    *string `json:"DBClusterId,omitempty" xml:"DBClusterId,omitempty"`
+	OwnerAccount                   *string `json:"OwnerAccount,omitempty" xml:"OwnerAccount,omitempty"`
+	OwnerId                        *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
+	ResourceGroupId                *string `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
+	ResourceOwnerAccount           *string `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
+	ResourceOwnerId                *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
+}
+
+func (s CreateColdStorageInstanceRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateColdStorageInstanceRequest) GoString() string {
+	return s.String()
+}
+
+func (s *CreateColdStorageInstanceRequest) SetClientToken(v string) *CreateColdStorageInstanceRequest {
+	s.ClientToken = &v
+	return s
+}
+
+func (s *CreateColdStorageInstanceRequest) SetColdStorageInstanceDescription(v string) *CreateColdStorageInstanceRequest {
+	s.ColdStorageInstanceDescription = &v
+	return s
+}
+
+func (s *CreateColdStorageInstanceRequest) SetDBClusterId(v string) *CreateColdStorageInstanceRequest {
+	s.DBClusterId = &v
+	return s
+}
+
+func (s *CreateColdStorageInstanceRequest) SetOwnerAccount(v string) *CreateColdStorageInstanceRequest {
+	s.OwnerAccount = &v
+	return s
+}
+
+func (s *CreateColdStorageInstanceRequest) SetOwnerId(v int64) *CreateColdStorageInstanceRequest {
+	s.OwnerId = &v
+	return s
+}
+
+func (s *CreateColdStorageInstanceRequest) SetResourceGroupId(v string) *CreateColdStorageInstanceRequest {
+	s.ResourceGroupId = &v
+	return s
+}
+
+func (s *CreateColdStorageInstanceRequest) SetResourceOwnerAccount(v string) *CreateColdStorageInstanceRequest {
+	s.ResourceOwnerAccount = &v
+	return s
+}
+
+func (s *CreateColdStorageInstanceRequest) SetResourceOwnerId(v int64) *CreateColdStorageInstanceRequest {
+	s.ResourceOwnerId = &v
+	return s
+}
+
+type CreateColdStorageInstanceResponseBody struct {
+	ColdStorageInstanceId *string `json:"ColdStorageInstanceId,omitempty" xml:"ColdStorageInstanceId,omitempty"`
+	RequestId             *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+}
+
+func (s CreateColdStorageInstanceResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateColdStorageInstanceResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *CreateColdStorageInstanceResponseBody) SetColdStorageInstanceId(v string) *CreateColdStorageInstanceResponseBody {
+	s.ColdStorageInstanceId = &v
+	return s
+}
+
+func (s *CreateColdStorageInstanceResponseBody) SetRequestId(v string) *CreateColdStorageInstanceResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+type CreateColdStorageInstanceResponse struct {
+	Headers    map[string]*string                     `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                                 `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *CreateColdStorageInstanceResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s CreateColdStorageInstanceResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateColdStorageInstanceResponse) GoString() string {
+	return s.String()
+}
+
+func (s *CreateColdStorageInstanceResponse) SetHeaders(v map[string]*string) *CreateColdStorageInstanceResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *CreateColdStorageInstanceResponse) SetStatusCode(v int32) *CreateColdStorageInstanceResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *CreateColdStorageInstanceResponse) SetBody(v *CreateColdStorageInstanceResponseBody) *CreateColdStorageInstanceResponse {
+	s.Body = v
+	return s
+}
+
 type CreateDBClusterRequest struct {
 	// Specifies whether to enable the no-activity suspension feature. Default value: false. Valid values:
 	//
@@ -6994,7 +7105,8 @@ type DescribeDBClusterAttributeResponseBody struct {
 	//
 	// *   **Postpaid**: pay-as-you-go.
 	// *   **Prepaid**: subscription
-	PayType *string `json:"PayType,omitempty" xml:"PayType,omitempty"`
+	PayType         *string `json:"PayType,omitempty" xml:"PayType,omitempty"`
+	ProvisionedIops *string `json:"ProvisionedIops,omitempty" xml:"ProvisionedIops,omitempty"`
 	// The number of CPU cores for PolarProxy.
 	ProxyCpuCores *string `json:"ProxyCpuCores,omitempty" xml:"ProxyCpuCores,omitempty"`
 	// The type of the serverless PolarProxy. Valid value: AgileServerless.
@@ -7227,6 +7339,11 @@ func (s *DescribeDBClusterAttributeResponseBody) SetMaintainTime(v string) *Desc
 
 func (s *DescribeDBClusterAttributeResponseBody) SetPayType(v string) *DescribeDBClusterAttributeResponseBody {
 	s.PayType = &v
+	return s
+}
+
+func (s *DescribeDBClusterAttributeResponseBody) SetProvisionedIops(v string) *DescribeDBClusterAttributeResponseBody {
+	s.ProvisionedIops = &v
 	return s
 }
 
@@ -14007,19 +14124,27 @@ func (s *DescribeLogBackupPolicyRequest) SetResourceOwnerId(v int64) *DescribeLo
 }
 
 type DescribeLogBackupPolicyResponseBody struct {
-	// Indicates whether the log backup feature was enabled. Valid values:
+	// Indicates whether the log backup feature is enabled. Valid values:
 	//
-	// *   0: disabled.
-	// *   1: enabled. By default, the log backup feature is enabled and cannot be disabled.
-	EnableBackupLog                       *int32  `json:"EnableBackupLog,omitempty" xml:"EnableBackupLog,omitempty"`
-	LogBackupAnotherRegionRegion          *string `json:"LogBackupAnotherRegionRegion,omitempty" xml:"LogBackupAnotherRegionRegion,omitempty"`
+	// *   0: The log backup feature is disabled.
+	// *   1: The log backup feature is enabled. By default, the log backup feature is enabled and cannot be disabled.
+	EnableBackupLog *int32 `json:"EnableBackupLog,omitempty" xml:"EnableBackupLog,omitempty"`
+	// The region in which you want to store cross-region log backups. For more information about regions that support the cross-region backup feature, see [Overview](~~72672~~).
+	LogBackupAnotherRegionRegion *string `json:"LogBackupAnotherRegionRegion,omitempty" xml:"LogBackupAnotherRegionRegion,omitempty"`
+	// The retention period of cross-region log backups. Valid values:
+	//
+	// *   **0**: The cross-region backup feature is disabled.
+	// *   **30 to 7300**: Cross-region log backups are retained for 30 to 7,300 days.
+	// *   **-1**: The log backups are permanently retained.
+	//
+	// >  When you create a cluster, the default value of this parameter is **0**.
 	LogBackupAnotherRegionRetentionPeriod *string `json:"LogBackupAnotherRegionRetentionPeriod,omitempty" xml:"LogBackupAnotherRegionRetentionPeriod,omitempty"`
-	// The retention period of the logs. Valid values:
+	// The retention period of the log backups. Valid values:
 	//
-	// *   7 to 7300: The logs are retained for 7 to 7,300 days.
-	// *   \-1: The logs are permanently retained.
+	// *   3 to 7300: The log backups are retained for 3 to 7,300 days.
+	// *   \-1: The log backups are permanently retained.
 	LogBackupRetentionPeriod *int32 `json:"LogBackupRetentionPeriod,omitempty" xml:"LogBackupRetentionPeriod,omitempty"`
-	// The ID of the request.
+	// The request ID.
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -17579,6 +17704,135 @@ func (s *DisableDBClusterServerlessResponse) SetStatusCode(v int32) *DisableDBCl
 }
 
 func (s *DisableDBClusterServerlessResponse) SetBody(v *DisableDBClusterServerlessResponseBody) *DisableDBClusterServerlessResponse {
+	s.Body = v
+	return s
+}
+
+type EnableDBClusterServerlessRequest struct {
+	DBClusterId          *string `json:"DBClusterId,omitempty" xml:"DBClusterId,omitempty"`
+	OwnerAccount         *string `json:"OwnerAccount,omitempty" xml:"OwnerAccount,omitempty"`
+	OwnerId              *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
+	ResourceOwnerAccount *string `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
+	ResourceOwnerId      *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
+	ScaleApRoNumMax      *string `json:"ScaleApRoNumMax,omitempty" xml:"ScaleApRoNumMax,omitempty"`
+	ScaleApRoNumMin      *string `json:"ScaleApRoNumMin,omitempty" xml:"ScaleApRoNumMin,omitempty"`
+	ScaleMax             *string `json:"ScaleMax,omitempty" xml:"ScaleMax,omitempty"`
+	ScaleMin             *string `json:"ScaleMin,omitempty" xml:"ScaleMin,omitempty"`
+	ScaleRoNumMax        *string `json:"ScaleRoNumMax,omitempty" xml:"ScaleRoNumMax,omitempty"`
+	ScaleRoNumMin        *string `json:"ScaleRoNumMin,omitempty" xml:"ScaleRoNumMin,omitempty"`
+}
+
+func (s EnableDBClusterServerlessRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s EnableDBClusterServerlessRequest) GoString() string {
+	return s.String()
+}
+
+func (s *EnableDBClusterServerlessRequest) SetDBClusterId(v string) *EnableDBClusterServerlessRequest {
+	s.DBClusterId = &v
+	return s
+}
+
+func (s *EnableDBClusterServerlessRequest) SetOwnerAccount(v string) *EnableDBClusterServerlessRequest {
+	s.OwnerAccount = &v
+	return s
+}
+
+func (s *EnableDBClusterServerlessRequest) SetOwnerId(v int64) *EnableDBClusterServerlessRequest {
+	s.OwnerId = &v
+	return s
+}
+
+func (s *EnableDBClusterServerlessRequest) SetResourceOwnerAccount(v string) *EnableDBClusterServerlessRequest {
+	s.ResourceOwnerAccount = &v
+	return s
+}
+
+func (s *EnableDBClusterServerlessRequest) SetResourceOwnerId(v int64) *EnableDBClusterServerlessRequest {
+	s.ResourceOwnerId = &v
+	return s
+}
+
+func (s *EnableDBClusterServerlessRequest) SetScaleApRoNumMax(v string) *EnableDBClusterServerlessRequest {
+	s.ScaleApRoNumMax = &v
+	return s
+}
+
+func (s *EnableDBClusterServerlessRequest) SetScaleApRoNumMin(v string) *EnableDBClusterServerlessRequest {
+	s.ScaleApRoNumMin = &v
+	return s
+}
+
+func (s *EnableDBClusterServerlessRequest) SetScaleMax(v string) *EnableDBClusterServerlessRequest {
+	s.ScaleMax = &v
+	return s
+}
+
+func (s *EnableDBClusterServerlessRequest) SetScaleMin(v string) *EnableDBClusterServerlessRequest {
+	s.ScaleMin = &v
+	return s
+}
+
+func (s *EnableDBClusterServerlessRequest) SetScaleRoNumMax(v string) *EnableDBClusterServerlessRequest {
+	s.ScaleRoNumMax = &v
+	return s
+}
+
+func (s *EnableDBClusterServerlessRequest) SetScaleRoNumMin(v string) *EnableDBClusterServerlessRequest {
+	s.ScaleRoNumMin = &v
+	return s
+}
+
+type EnableDBClusterServerlessResponseBody struct {
+	DBClusterId *string `json:"DBClusterId,omitempty" xml:"DBClusterId,omitempty"`
+	RequestId   *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+}
+
+func (s EnableDBClusterServerlessResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s EnableDBClusterServerlessResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *EnableDBClusterServerlessResponseBody) SetDBClusterId(v string) *EnableDBClusterServerlessResponseBody {
+	s.DBClusterId = &v
+	return s
+}
+
+func (s *EnableDBClusterServerlessResponseBody) SetRequestId(v string) *EnableDBClusterServerlessResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+type EnableDBClusterServerlessResponse struct {
+	Headers    map[string]*string                     `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                                 `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *EnableDBClusterServerlessResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s EnableDBClusterServerlessResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s EnableDBClusterServerlessResponse) GoString() string {
+	return s.String()
+}
+
+func (s *EnableDBClusterServerlessResponse) SetHeaders(v map[string]*string) *EnableDBClusterServerlessResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *EnableDBClusterServerlessResponse) SetStatusCode(v int32) *EnableDBClusterServerlessResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *EnableDBClusterServerlessResponse) SetBody(v *EnableDBClusterServerlessResponseBody) *EnableDBClusterServerlessResponse {
 	s.Body = v
 	return s
 }
@@ -25859,6 +26113,78 @@ func (client *Client) CreateBackup(request *CreateBackupRequest) (_result *Creat
 	return _result, _err
 }
 
+func (client *Client) CreateColdStorageInstanceWithOptions(request *CreateColdStorageInstanceRequest, runtime *util.RuntimeOptions) (_result *CreateColdStorageInstanceResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.ClientToken)) {
+		query["ClientToken"] = request.ClientToken
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ColdStorageInstanceDescription)) {
+		query["ColdStorageInstanceDescription"] = request.ColdStorageInstanceDescription
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.DBClusterId)) {
+		query["DBClusterId"] = request.DBClusterId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.OwnerAccount)) {
+		query["OwnerAccount"] = request.OwnerAccount
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.OwnerId)) {
+		query["OwnerId"] = request.OwnerId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ResourceGroupId)) {
+		query["ResourceGroupId"] = request.ResourceGroupId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ResourceOwnerAccount)) {
+		query["ResourceOwnerAccount"] = request.ResourceOwnerAccount
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ResourceOwnerId)) {
+		query["ResourceOwnerId"] = request.ResourceOwnerId
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("CreateColdStorageInstance"),
+		Version:     tea.String("2017-08-01"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &CreateColdStorageInstanceResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) CreateColdStorageInstance(request *CreateColdStorageInstanceRequest) (_result *CreateColdStorageInstanceResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &CreateColdStorageInstanceResponse{}
+	_body, _err := client.CreateColdStorageInstanceWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
 func (client *Client) CreateDBClusterWithOptions(request *CreateDBClusterRequest, runtime *util.RuntimeOptions) (_result *CreateDBClusterResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -31815,6 +32141,90 @@ func (client *Client) DisableDBClusterServerless(request *DisableDBClusterServer
 	runtime := &util.RuntimeOptions{}
 	_result = &DisableDBClusterServerlessResponse{}
 	_body, _err := client.DisableDBClusterServerlessWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) EnableDBClusterServerlessWithOptions(request *EnableDBClusterServerlessRequest, runtime *util.RuntimeOptions) (_result *EnableDBClusterServerlessResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.DBClusterId)) {
+		query["DBClusterId"] = request.DBClusterId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.OwnerAccount)) {
+		query["OwnerAccount"] = request.OwnerAccount
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.OwnerId)) {
+		query["OwnerId"] = request.OwnerId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ResourceOwnerAccount)) {
+		query["ResourceOwnerAccount"] = request.ResourceOwnerAccount
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ResourceOwnerId)) {
+		query["ResourceOwnerId"] = request.ResourceOwnerId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ScaleApRoNumMax)) {
+		query["ScaleApRoNumMax"] = request.ScaleApRoNumMax
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ScaleApRoNumMin)) {
+		query["ScaleApRoNumMin"] = request.ScaleApRoNumMin
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ScaleMax)) {
+		query["ScaleMax"] = request.ScaleMax
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ScaleMin)) {
+		query["ScaleMin"] = request.ScaleMin
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ScaleRoNumMax)) {
+		query["ScaleRoNumMax"] = request.ScaleRoNumMax
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ScaleRoNumMin)) {
+		query["ScaleRoNumMin"] = request.ScaleRoNumMin
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("EnableDBClusterServerless"),
+		Version:     tea.String("2017-08-01"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &EnableDBClusterServerlessResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) EnableDBClusterServerless(request *EnableDBClusterServerlessRequest) (_result *EnableDBClusterServerlessResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &EnableDBClusterServerlessResponse{}
+	_body, _err := client.EnableDBClusterServerlessWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
