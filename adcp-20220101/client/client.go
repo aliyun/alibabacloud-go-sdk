@@ -3593,8 +3593,10 @@ func (s *GrantUserPermissionResponse) SetBody(v *GrantUserPermissionResponseBody
 }
 
 type GrantUserPermissionsRequest struct {
+	// The list of permissions that you want to grant to the RAM user.
 	Permissions []*GrantUserPermissionsRequestPermissions `json:"Permissions,omitempty" xml:"Permissions,omitempty" type:"Repeated"`
-	UserId      *string                                   `json:"UserId,omitempty" xml:"UserId,omitempty"`
+	// The ID of the RAM user.
+	UserId *string `json:"UserId,omitempty" xml:"UserId,omitempty"`
 }
 
 func (s GrantUserPermissionsRequest) String() string {
@@ -3616,11 +3618,24 @@ func (s *GrantUserPermissionsRequest) SetUserId(v string) *GrantUserPermissionsR
 }
 
 type GrantUserPermissionsRequestPermissions struct {
+	// The master instance ID.
+	//
+	// *   When the role_type parameter is set to all-clusters, set the parameter to an empty string.
 	ClusterId *string `json:"ClusterId,omitempty" xml:"ClusterId,omitempty"`
 	IsRamRole *bool   `json:"IsRamRole,omitempty" xml:"IsRamRole,omitempty"`
+	// The namespace to which the permissions are scoped. By default, this parameter is empty when you set RoleType to cluster.
 	Namespace *string `json:"Namespace,omitempty" xml:"Namespace,omitempty"`
-	RoleName  *string `json:"RoleName,omitempty" xml:"RoleName,omitempty"`
-	RoleType  *string `json:"RoleType,omitempty" xml:"RoleType,omitempty"`
+	// The predefined role that you want to assign. Valid values:
+	//
+	// *   admin: the administrator role.
+	// *   dev: the developer role.
+	RoleName *string `json:"RoleName,omitempty" xml:"RoleName,omitempty"`
+	// The authorization type. Valid values:
+	//
+	// *   cluster: specifies that the permissions are scoped to a master instance.
+	// *   namespace: specifies that the permissions are scoped to a namespace of a cluster.
+	// *   all-clusters: specifies that the permissions are scoped to all master instances.
+	RoleType *string `json:"RoleType,omitempty" xml:"RoleType,omitempty"`
 }
 
 func (s GrantUserPermissionsRequestPermissions) String() string {
@@ -3657,8 +3672,10 @@ func (s *GrantUserPermissionsRequestPermissions) SetRoleType(v string) *GrantUse
 }
 
 type GrantUserPermissionsShrinkRequest struct {
+	// The list of permissions that you want to grant to the RAM user.
 	PermissionsShrink *string `json:"Permissions,omitempty" xml:"Permissions,omitempty"`
-	UserId            *string `json:"UserId,omitempty" xml:"UserId,omitempty"`
+	// The ID of the RAM user.
+	UserId *string `json:"UserId,omitempty" xml:"UserId,omitempty"`
 }
 
 func (s GrantUserPermissionsShrinkRequest) String() string {
@@ -3680,6 +3697,7 @@ func (s *GrantUserPermissionsShrinkRequest) SetUserId(v string) *GrantUserPermis
 }
 
 type GrantUserPermissionsResponseBody struct {
+	// The request ID.
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -3726,42 +3744,76 @@ func (s *GrantUserPermissionsResponse) SetBody(v *GrantUserPermissionsResponseBo
 }
 
 type UpdateHubClusterFeatureRequest struct {
+	// The Internet access control list (ACL). This parameter takes effect only if PublicAccessEnabled is set to true.
 	AccessControlList []*string `json:"AccessControlList,omitempty" xml:"AccessControlList,omitempty" type:"Repeated"`
 	// The ID of the EIP.
-	ApiServerEipId    *string `json:"ApiServerEipId,omitempty" xml:"ApiServerEipId,omitempty"`
-	ArgoCDEnabled     *bool   `json:"ArgoCDEnabled,omitempty" xml:"ArgoCDEnabled,omitempty"`
-	ArgoCDHAEnabled   *bool   `json:"ArgoCDHAEnabled,omitempty" xml:"ArgoCDHAEnabled,omitempty"`
-	ArgoEventsEnabled *bool   `json:"ArgoEventsEnabled,omitempty" xml:"ArgoEventsEnabled,omitempty"`
-	ArgoServerEnabled *bool   `json:"ArgoServerEnabled,omitempty" xml:"ArgoServerEnabled,omitempty"`
+	ApiServerEipId *string `json:"ApiServerEipId,omitempty" xml:"ApiServerEipId,omitempty"`
+	// Specifies whether to enable Argo CD. This parameter takes effect only if Profile is set to XFlow. Valid values:
+	//
+	// *   true
+	// *   false
+	ArgoCDEnabled *bool `json:"ArgoCDEnabled,omitempty" xml:"ArgoCDEnabled,omitempty"`
+	// Specifies whether to enable high availability for Argo CD. Valid values:
+	//
+	// *   true
+	// *   false
+	ArgoCDHAEnabled *bool `json:"ArgoCDHAEnabled,omitempty" xml:"ArgoCDHAEnabled,omitempty"`
+	// Specifies whether to enable ArgoEvents. Valid values:
+	//
+	// - true
+	// - false
+	ArgoEventsEnabled *bool `json:"ArgoEventsEnabled,omitempty" xml:"ArgoEventsEnabled,omitempty"`
+	// Specifies whether to enable the workflow instance UI. This parameter takes effect only if Profile is set to XFlow. Valid values:
+	//
+	// *   true
+	// *   false
+	ArgoServerEnabled *bool `json:"ArgoServerEnabled,omitempty" xml:"ArgoServerEnabled,omitempty"`
 	// Specifies whether to enable the audit logging feature. Valid values:
 	//
 	// *   true: enables the audit logging feature.
 	// *   false: disables the audit logging feature.
 	AuditLogEnabled *bool `json:"AuditLogEnabled,omitempty" xml:"AuditLogEnabled,omitempty"`
-	// The ID of the cluster.
+	// The cluster ID.
 	ClusterId *string `json:"ClusterId,omitempty" xml:"ClusterId,omitempty"`
-	// Specifies whether to enable deletion protection for the cluster. After you enable deletion protection, you cannot delete the master instance in the console or by calling the DeleteHubCluster operation. Valid values:
+	// Specifies whether to enable the deletion protection feature for the cluster. After you enable the deletion protection feature for the cluster, you cannot delete the cluster in the console or by calling the DeleteHubCluster operation. Valid values:
 	//
-	// *   true: enables deletion protection for the cluster.
-	// *   false: disables deletion protection for the cluster. This is the default value.
+	// *   true
+	// *   false
+	//
+	// Default value: false.
 	DeletionProtection *bool `json:"DeletionProtection,omitempty" xml:"DeletionProtection,omitempty"`
-	// Specifies whether to enable Alibaba Cloud Service Mesh (ASM). Valid values:
+	// Specifies whether to enable Service Mesh (ASM). Valid values:
 	//
-	// true: enables ASM. false: disables ASM.
-	EnableMesh     *bool `json:"EnableMesh,omitempty" xml:"EnableMesh,omitempty"`
+	// *   true
+	// *   false
+	EnableMesh *bool `json:"EnableMesh,omitempty" xml:"EnableMesh,omitempty"`
+	MSEEnabled *bool `json:"MSEEnabled,omitempty" xml:"MSEEnabled,omitempty"`
+	// Specifies whether to enable the monitoring dashboard feature for the workflow instance. This parameter takes effect only if Profile is set to XFlow. Valid values:
+	//
+	// *   true
+	// *   false
 	MonitorEnabled *bool `json:"MonitorEnabled,omitempty" xml:"MonitorEnabled,omitempty"`
-	// The name of the cluster. The name must be 1 to 63 characters in length. It must start with a letter, and can contain letters, digits, underscores (\_), and hyphens (-).
+	// The name of the master instance. The name must be 1 to 63 characters in length. It must start with a letter, and can contain letters, digits, underscores (\_), and hyphens (-).
 	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
 	// The limit on the prices of containers in the workflow. This parameter takes effect only if the WorkflowScheduleMode parameter is set to cost-optimized.
-	PriceLimit          *string `json:"PriceLimit,omitempty" xml:"PriceLimit,omitempty"`
-	PublicAccessEnabled *bool   `json:"PublicAccessEnabled,omitempty" xml:"PublicAccessEnabled,omitempty"`
+	PriceLimit *string `json:"PriceLimit,omitempty" xml:"PriceLimit,omitempty"`
+	// Specifies whether to enable public domain name resolution in the Argo CD or Argo Workflow console. Valid values:
+	//
+	// *   true
+	// *   false
+	PublicAccessEnabled *bool `json:"PublicAccessEnabled,omitempty" xml:"PublicAccessEnabled,omitempty"`
 	// Specifies whether to associate an elastic IP address (EIP) with the API server. Valid values:
 	//
-	// *   true: associates an EIP with the API server. You can specify the ApiServerEipId parameter. If you do not specify the ApiServerEipId parameter, the system automatically creates an EIP.
+	// *   true: associates an EIP with the API server. You can specify ApiServerEipId. If you do not specify ApiServerEipId, the system automatically creates an EIP.
 	// *   false: disassociates an EIP from the API server.
-	PublicApiServerEnabled *bool     `json:"PublicApiServerEnabled,omitempty" xml:"PublicApiServerEnabled,omitempty"`
-	VSwitches              []*string `json:"VSwitches,omitempty" xml:"VSwitches,omitempty" type:"Repeated"`
-	WorkflowScheduleMode   *string   `json:"WorkflowScheduleMode,omitempty" xml:"WorkflowScheduleMode,omitempty"`
+	PublicApiServerEnabled *bool `json:"PublicApiServerEnabled,omitempty" xml:"PublicApiServerEnabled,omitempty"`
+	// The vSwitches.
+	VSwitches []*string `json:"VSwitches,omitempty" xml:"VSwitches,omitempty" type:"Repeated"`
+	// The scheduling mode of the workflow. This parameter takes effect only if Profile is set to XFlow. Valid values:
+	//
+	// *   cost-optimized: cost-prioritized scheduling mode.
+	// *   stock-optimized: inventory-prioritized scheduling mode.
+	WorkflowScheduleMode *string `json:"WorkflowScheduleMode,omitempty" xml:"WorkflowScheduleMode,omitempty"`
 }
 
 func (s UpdateHubClusterFeatureRequest) String() string {
@@ -3822,6 +3874,11 @@ func (s *UpdateHubClusterFeatureRequest) SetEnableMesh(v bool) *UpdateHubCluster
 	return s
 }
 
+func (s *UpdateHubClusterFeatureRequest) SetMSEEnabled(v bool) *UpdateHubClusterFeatureRequest {
+	s.MSEEnabled = &v
+	return s
+}
+
 func (s *UpdateHubClusterFeatureRequest) SetMonitorEnabled(v bool) *UpdateHubClusterFeatureRequest {
 	s.MonitorEnabled = &v
 	return s
@@ -3858,42 +3915,76 @@ func (s *UpdateHubClusterFeatureRequest) SetWorkflowScheduleMode(v string) *Upda
 }
 
 type UpdateHubClusterFeatureShrinkRequest struct {
+	// The Internet access control list (ACL). This parameter takes effect only if PublicAccessEnabled is set to true.
 	AccessControlListShrink *string `json:"AccessControlList,omitempty" xml:"AccessControlList,omitempty"`
 	// The ID of the EIP.
-	ApiServerEipId    *string `json:"ApiServerEipId,omitempty" xml:"ApiServerEipId,omitempty"`
-	ArgoCDEnabled     *bool   `json:"ArgoCDEnabled,omitempty" xml:"ArgoCDEnabled,omitempty"`
-	ArgoCDHAEnabled   *bool   `json:"ArgoCDHAEnabled,omitempty" xml:"ArgoCDHAEnabled,omitempty"`
-	ArgoEventsEnabled *bool   `json:"ArgoEventsEnabled,omitempty" xml:"ArgoEventsEnabled,omitempty"`
-	ArgoServerEnabled *bool   `json:"ArgoServerEnabled,omitempty" xml:"ArgoServerEnabled,omitempty"`
+	ApiServerEipId *string `json:"ApiServerEipId,omitempty" xml:"ApiServerEipId,omitempty"`
+	// Specifies whether to enable Argo CD. This parameter takes effect only if Profile is set to XFlow. Valid values:
+	//
+	// *   true
+	// *   false
+	ArgoCDEnabled *bool `json:"ArgoCDEnabled,omitempty" xml:"ArgoCDEnabled,omitempty"`
+	// Specifies whether to enable high availability for Argo CD. Valid values:
+	//
+	// *   true
+	// *   false
+	ArgoCDHAEnabled *bool `json:"ArgoCDHAEnabled,omitempty" xml:"ArgoCDHAEnabled,omitempty"`
+	// Specifies whether to enable ArgoEvents. Valid values:
+	//
+	// - true
+	// - false
+	ArgoEventsEnabled *bool `json:"ArgoEventsEnabled,omitempty" xml:"ArgoEventsEnabled,omitempty"`
+	// Specifies whether to enable the workflow instance UI. This parameter takes effect only if Profile is set to XFlow. Valid values:
+	//
+	// *   true
+	// *   false
+	ArgoServerEnabled *bool `json:"ArgoServerEnabled,omitempty" xml:"ArgoServerEnabled,omitempty"`
 	// Specifies whether to enable the audit logging feature. Valid values:
 	//
 	// *   true: enables the audit logging feature.
 	// *   false: disables the audit logging feature.
 	AuditLogEnabled *bool `json:"AuditLogEnabled,omitempty" xml:"AuditLogEnabled,omitempty"`
-	// The ID of the cluster.
+	// The cluster ID.
 	ClusterId *string `json:"ClusterId,omitempty" xml:"ClusterId,omitempty"`
-	// Specifies whether to enable deletion protection for the cluster. After you enable deletion protection, you cannot delete the master instance in the console or by calling the DeleteHubCluster operation. Valid values:
+	// Specifies whether to enable the deletion protection feature for the cluster. After you enable the deletion protection feature for the cluster, you cannot delete the cluster in the console or by calling the DeleteHubCluster operation. Valid values:
 	//
-	// *   true: enables deletion protection for the cluster.
-	// *   false: disables deletion protection for the cluster. This is the default value.
+	// *   true
+	// *   false
+	//
+	// Default value: false.
 	DeletionProtection *bool `json:"DeletionProtection,omitempty" xml:"DeletionProtection,omitempty"`
-	// Specifies whether to enable Alibaba Cloud Service Mesh (ASM). Valid values:
+	// Specifies whether to enable Service Mesh (ASM). Valid values:
 	//
-	// true: enables ASM. false: disables ASM.
-	EnableMesh     *bool `json:"EnableMesh,omitempty" xml:"EnableMesh,omitempty"`
+	// *   true
+	// *   false
+	EnableMesh *bool `json:"EnableMesh,omitempty" xml:"EnableMesh,omitempty"`
+	MSEEnabled *bool `json:"MSEEnabled,omitempty" xml:"MSEEnabled,omitempty"`
+	// Specifies whether to enable the monitoring dashboard feature for the workflow instance. This parameter takes effect only if Profile is set to XFlow. Valid values:
+	//
+	// *   true
+	// *   false
 	MonitorEnabled *bool `json:"MonitorEnabled,omitempty" xml:"MonitorEnabled,omitempty"`
-	// The name of the cluster. The name must be 1 to 63 characters in length. It must start with a letter, and can contain letters, digits, underscores (\_), and hyphens (-).
+	// The name of the master instance. The name must be 1 to 63 characters in length. It must start with a letter, and can contain letters, digits, underscores (\_), and hyphens (-).
 	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
 	// The limit on the prices of containers in the workflow. This parameter takes effect only if the WorkflowScheduleMode parameter is set to cost-optimized.
-	PriceLimit          *string `json:"PriceLimit,omitempty" xml:"PriceLimit,omitempty"`
-	PublicAccessEnabled *bool   `json:"PublicAccessEnabled,omitempty" xml:"PublicAccessEnabled,omitempty"`
+	PriceLimit *string `json:"PriceLimit,omitempty" xml:"PriceLimit,omitempty"`
+	// Specifies whether to enable public domain name resolution in the Argo CD or Argo Workflow console. Valid values:
+	//
+	// *   true
+	// *   false
+	PublicAccessEnabled *bool `json:"PublicAccessEnabled,omitempty" xml:"PublicAccessEnabled,omitempty"`
 	// Specifies whether to associate an elastic IP address (EIP) with the API server. Valid values:
 	//
-	// *   true: associates an EIP with the API server. You can specify the ApiServerEipId parameter. If you do not specify the ApiServerEipId parameter, the system automatically creates an EIP.
+	// *   true: associates an EIP with the API server. You can specify ApiServerEipId. If you do not specify ApiServerEipId, the system automatically creates an EIP.
 	// *   false: disassociates an EIP from the API server.
-	PublicApiServerEnabled *bool   `json:"PublicApiServerEnabled,omitempty" xml:"PublicApiServerEnabled,omitempty"`
-	VSwitchesShrink        *string `json:"VSwitches,omitempty" xml:"VSwitches,omitempty"`
-	WorkflowScheduleMode   *string `json:"WorkflowScheduleMode,omitempty" xml:"WorkflowScheduleMode,omitempty"`
+	PublicApiServerEnabled *bool `json:"PublicApiServerEnabled,omitempty" xml:"PublicApiServerEnabled,omitempty"`
+	// The vSwitches.
+	VSwitchesShrink *string `json:"VSwitches,omitempty" xml:"VSwitches,omitempty"`
+	// The scheduling mode of the workflow. This parameter takes effect only if Profile is set to XFlow. Valid values:
+	//
+	// *   cost-optimized: cost-prioritized scheduling mode.
+	// *   stock-optimized: inventory-prioritized scheduling mode.
+	WorkflowScheduleMode *string `json:"WorkflowScheduleMode,omitempty" xml:"WorkflowScheduleMode,omitempty"`
 }
 
 func (s UpdateHubClusterFeatureShrinkRequest) String() string {
@@ -3954,6 +4045,11 @@ func (s *UpdateHubClusterFeatureShrinkRequest) SetEnableMesh(v bool) *UpdateHubC
 	return s
 }
 
+func (s *UpdateHubClusterFeatureShrinkRequest) SetMSEEnabled(v bool) *UpdateHubClusterFeatureShrinkRequest {
+	s.MSEEnabled = &v
+	return s
+}
+
 func (s *UpdateHubClusterFeatureShrinkRequest) SetMonitorEnabled(v bool) *UpdateHubClusterFeatureShrinkRequest {
 	s.MonitorEnabled = &v
 	return s
@@ -3990,7 +4086,7 @@ func (s *UpdateHubClusterFeatureShrinkRequest) SetWorkflowScheduleMode(v string)
 }
 
 type UpdateHubClusterFeatureResponseBody struct {
-	// The ID of the request.
+	// The request ID.
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -5327,6 +5423,10 @@ func (client *Client) UpdateHubClusterFeatureWithOptions(tmpReq *UpdateHubCluste
 
 	if !tea.BoolValue(util.IsUnset(request.EnableMesh)) {
 		query["EnableMesh"] = request.EnableMesh
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.MSEEnabled)) {
+		query["MSEEnabled"] = request.MSEEnabled
 	}
 
 	if !tea.BoolValue(util.IsUnset(request.MonitorEnabled)) {
