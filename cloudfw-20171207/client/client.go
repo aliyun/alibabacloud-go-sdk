@@ -187,25 +187,147 @@ func (s *AddAddressBookResponse) SetBody(v *AddAddressBookResponseBody) *AddAddr
 }
 
 type AddControlPolicyRequest struct {
-	AclAction           *string   `json:"AclAction,omitempty" xml:"AclAction,omitempty"`
-	ApplicationName     *string   `json:"ApplicationName,omitempty" xml:"ApplicationName,omitempty"`
+	// The action that Cloud Firewall performs on the traffic. Valid values:
+	//
+	// *   **accept**: allows the traffic.
+	// *   **drop**: denies the traffic.
+	// *   **log**: monitors the traffic.
+	AclAction *string `json:"AclAction,omitempty" xml:"AclAction,omitempty"`
+	// The application type supported by the access control policy. Valid values:
+	//
+	// *   **FTP**
+	// *   **HTTP**
+	// *   **HTTPS**
+	// *   **Memcache**
+	// *   **MongoDB**
+	// *   **MQTT**
+	// *   **MySQL**
+	// *   **RDP**
+	// *   **Redis**
+	// *   **SMTP**
+	// *   **SMTPS**
+	// *   **SSH**
+	// *   **SSL_No_Cert**
+	// *   **SSL**
+	// *   **VNC**
+	// *   **ANY**
+	//
+	// > The value of this parameter is based on the value of Proto. If Proto is set to TCP, you can set ApplicationName to any valid value. If Proto is set to UDP, ICMP, or ANY, you can set ApplicationName only to ANY. You must specify at least one of the ApplicationNameList and ApplicationName parameters.
+	ApplicationName *string `json:"ApplicationName,omitempty" xml:"ApplicationName,omitempty"`
+	// The application types supported by the access control policy.
 	ApplicationNameList []*string `json:"ApplicationNameList,omitempty" xml:"ApplicationNameList,omitempty" type:"Repeated"`
-	Description         *string   `json:"Description,omitempty" xml:"Description,omitempty"`
-	DestPort            *string   `json:"DestPort,omitempty" xml:"DestPort,omitempty"`
-	DestPortGroup       *string   `json:"DestPortGroup,omitempty" xml:"DestPortGroup,omitempty"`
-	DestPortType        *string   `json:"DestPortType,omitempty" xml:"DestPortType,omitempty"`
-	Destination         *string   `json:"Destination,omitempty" xml:"Destination,omitempty"`
-	DestinationType     *string   `json:"DestinationType,omitempty" xml:"DestinationType,omitempty"`
-	Direction           *string   `json:"Direction,omitempty" xml:"Direction,omitempty"`
-	IpVersion           *string   `json:"IpVersion,omitempty" xml:"IpVersion,omitempty"`
-	Lang                *string   `json:"Lang,omitempty" xml:"Lang,omitempty"`
-	NewOrder            *string   `json:"NewOrder,omitempty" xml:"NewOrder,omitempty"`
-	Proto               *string   `json:"Proto,omitempty" xml:"Proto,omitempty"`
-	Release             *string   `json:"Release,omitempty" xml:"Release,omitempty"`
-	Source              *string   `json:"Source,omitempty" xml:"Source,omitempty"`
+	// The description of the access control policy.
+	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
+	// The destination port in the access control policy. Valid values:
+	//
+	// *   If Proto is set to ICMP, DestPort is automatically left empty.
+	//
+	// > If Proto is set to ICMP, access control does not take effect on the destination port.
+	//
+	// *   If Proto is set to TCP, UDP, or ANY and DestPortType is set to group, DestPort is empty.
+	//
+	// > If DestPortType is set to group, you do not need to specify the destination port number. All ports on which the access control policy takes effect are included in the destination port address book.
+	//
+	// *   If Proto is set to TCP, UDP, or ANY and DestPortType is set to port, the value of DestPort is the destination port number.
+	DestPort *string `json:"DestPort,omitempty" xml:"DestPort,omitempty"`
+	// The name of the destination port address book in the access control policy.
+	//
+	// > If DestPortType is set to group, you must specify the name of the destination port address book.
+	DestPortGroup *string `json:"DestPortGroup,omitempty" xml:"DestPortGroup,omitempty"`
+	// The type of the destination port in the access control policy.
+	//
+	// Valid values:
+	//
+	// *   **port**: port
+	// *   **group**: port address book
+	DestPortType *string `json:"DestPortType,omitempty" xml:"DestPortType,omitempty"`
+	// The destination address in the access control policy.
+	//
+	// Valid values:
+	//
+	// *   If DestinationType is set to net, the value of this parameter is a CIDR block.
+	//
+	//     Example: 1.2.XX.XX/24
+	//
+	// *   If DestinationType is set to group, the value of this parameter is an address book name.
+	//
+	//     Example: db_group
+	//
+	// *   If DestinationType is set to domain, the value of this parameter is a domain name.
+	//
+	//     Example: \*.aliyuncs.com
+	//
+	// *   If DestinationType is set to location, the value of this parameter is a location.
+	//
+	//     Example: \["BJ11", "ZB"]
+	Destination *string `json:"Destination,omitempty" xml:"Destination,omitempty"`
+	// The type of the destination address in the access control policy. Valid values:
+	//
+	// *   **net**: CIDR block
+	// *   **group**: address book
+	// *   **domain**: domain name
+	// *   **location**: location
+	DestinationType *string `json:"DestinationType,omitempty" xml:"DestinationType,omitempty"`
+	// The direction of the traffic to which the access control policy applies. Valid values:
+	//
+	// *   **in**: inbound traffic
+	// *   **out**: outbound traffic
+	Direction *string `json:"Direction,omitempty" xml:"Direction,omitempty"`
+	EndTime   *int64  `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
+	// The IP version supported by the access control policy.
+	//
+	// Valid values:
+	//
+	// *   **4**: IPv4
+	// *   **6**: IPv6
+	IpVersion *string `json:"IpVersion,omitempty" xml:"IpVersion,omitempty"`
+	// The language of the content within the request and response. Valid values:
+	//
+	// *   **zh**: Chinese (default)
+	// *   **en**: English
+	Lang *string `json:"Lang,omitempty" xml:"Lang,omitempty"`
+	// The priority of the access control policy. The priority value starts from 1. A smaller priority value indicates a higher priority.
+	NewOrder *string `json:"NewOrder,omitempty" xml:"NewOrder,omitempty"`
+	// The protocol type supported by the access control policy. Valid values:
+	//
+	// *   **ANY**
+	// *   **TCP**
+	// *   **UDP**
+	// *   **ICMP**
+	Proto *string `json:"Proto,omitempty" xml:"Proto,omitempty"`
+	// Specifies whether to enable the access control policy. By default, an access control policy is enabled after the policy is created. Valid values:
+	//
+	// *   **true**: enables the access control policy.
+	// *   **false**: disables the access control policy.
+	Release         *string  `json:"Release,omitempty" xml:"Release,omitempty"`
+	RepeatDays      []*int64 `json:"RepeatDays,omitempty" xml:"RepeatDays,omitempty" type:"Repeated"`
+	RepeatEndTime   *string  `json:"RepeatEndTime,omitempty" xml:"RepeatEndTime,omitempty"`
+	RepeatStartTime *string  `json:"RepeatStartTime,omitempty" xml:"RepeatStartTime,omitempty"`
+	RepeatType      *string  `json:"RepeatType,omitempty" xml:"RepeatType,omitempty"`
+	// The source address in the access control policy. Valid values:
+	//
+	// *   If SourceType is set to net, the value of this parameter is a CIDR block.
+	//
+	//     Example: 1.1.XX.XX/24
+	//
+	// *   If SourceType is set to group, the value of this parameter is an address book name.
+	//
+	//     Example: db_group
+	//
+	// *   If SourceType is set to location, the value of this parameter is a location.
+	//
+	//     Example: \["BJ11", "ZB"]
+	Source *string `json:"Source,omitempty" xml:"Source,omitempty"`
 	// Deprecated
-	SourceIp   *string `json:"SourceIp,omitempty" xml:"SourceIp,omitempty"`
+	// The source IP address of the request.
+	SourceIp *string `json:"SourceIp,omitempty" xml:"SourceIp,omitempty"`
+	// The type of the source address in the access control policy. Valid values:
+	//
+	// *   **net**: CIDR block
+	// *   **group**: address book
+	// *   **location**: location
 	SourceType *string `json:"SourceType,omitempty" xml:"SourceType,omitempty"`
+	StartTime  *int64  `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
 }
 
 func (s AddControlPolicyRequest) String() string {
@@ -266,6 +388,11 @@ func (s *AddControlPolicyRequest) SetDirection(v string) *AddControlPolicyReques
 	return s
 }
 
+func (s *AddControlPolicyRequest) SetEndTime(v int64) *AddControlPolicyRequest {
+	s.EndTime = &v
+	return s
+}
+
 func (s *AddControlPolicyRequest) SetIpVersion(v string) *AddControlPolicyRequest {
 	s.IpVersion = &v
 	return s
@@ -291,6 +418,26 @@ func (s *AddControlPolicyRequest) SetRelease(v string) *AddControlPolicyRequest 
 	return s
 }
 
+func (s *AddControlPolicyRequest) SetRepeatDays(v []*int64) *AddControlPolicyRequest {
+	s.RepeatDays = v
+	return s
+}
+
+func (s *AddControlPolicyRequest) SetRepeatEndTime(v string) *AddControlPolicyRequest {
+	s.RepeatEndTime = &v
+	return s
+}
+
+func (s *AddControlPolicyRequest) SetRepeatStartTime(v string) *AddControlPolicyRequest {
+	s.RepeatStartTime = &v
+	return s
+}
+
+func (s *AddControlPolicyRequest) SetRepeatType(v string) *AddControlPolicyRequest {
+	s.RepeatType = &v
+	return s
+}
+
 func (s *AddControlPolicyRequest) SetSource(v string) *AddControlPolicyRequest {
 	s.Source = &v
 	return s
@@ -306,8 +453,15 @@ func (s *AddControlPolicyRequest) SetSourceType(v string) *AddControlPolicyReque
 	return s
 }
 
+func (s *AddControlPolicyRequest) SetStartTime(v int64) *AddControlPolicyRequest {
+	s.StartTime = &v
+	return s
+}
+
 type AddControlPolicyResponseBody struct {
-	AclUuid   *string `json:"AclUuid,omitempty" xml:"AclUuid,omitempty"`
+	// The ID of the access control policy that is created on the Internet firewall.
+	AclUuid *string `json:"AclUuid,omitempty" xml:"AclUuid,omitempty"`
+	// The ID of the request.
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -620,6 +774,7 @@ type CreateNatFirewallControlPolicyRequest struct {
 	// *   **1**: Domain Name System (DNS)-based dynamic resolution
 	// *   **2**: FQDN and DNS-based dynamic resolution
 	DomainResolveType *int32 `json:"DomainResolveType,omitempty" xml:"DomainResolveType,omitempty"`
+	EndTime           *int64 `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
 	// The IP version supported by the access control policy. Valid values:
 	//
 	// *   **4**: IPv4 (default)
@@ -648,7 +803,11 @@ type CreateNatFirewallControlPolicyRequest struct {
 	//
 	// *   **true**
 	// *   **false**
-	Release *string `json:"Release,omitempty" xml:"Release,omitempty"`
+	Release         *string  `json:"Release,omitempty" xml:"Release,omitempty"`
+	RepeatDays      []*int64 `json:"RepeatDays,omitempty" xml:"RepeatDays,omitempty" type:"Repeated"`
+	RepeatEndTime   *string  `json:"RepeatEndTime,omitempty" xml:"RepeatEndTime,omitempty"`
+	RepeatStartTime *string  `json:"RepeatStartTime,omitempty" xml:"RepeatStartTime,omitempty"`
+	RepeatType      *string  `json:"RepeatType,omitempty" xml:"RepeatType,omitempty"`
 	// The source address in the access control policy.
 	//
 	// Valid values:
@@ -668,6 +827,7 @@ type CreateNatFirewallControlPolicyRequest struct {
 	// *   **net**: source CIDR block
 	// *   **group**: source address book
 	SourceType *string `json:"SourceType,omitempty" xml:"SourceType,omitempty"`
+	StartTime  *int64  `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
 }
 
 func (s CreateNatFirewallControlPolicyRequest) String() string {
@@ -728,6 +888,11 @@ func (s *CreateNatFirewallControlPolicyRequest) SetDomainResolveType(v int32) *C
 	return s
 }
 
+func (s *CreateNatFirewallControlPolicyRequest) SetEndTime(v int64) *CreateNatFirewallControlPolicyRequest {
+	s.EndTime = &v
+	return s
+}
+
 func (s *CreateNatFirewallControlPolicyRequest) SetIpVersion(v string) *CreateNatFirewallControlPolicyRequest {
 	s.IpVersion = &v
 	return s
@@ -758,6 +923,26 @@ func (s *CreateNatFirewallControlPolicyRequest) SetRelease(v string) *CreateNatF
 	return s
 }
 
+func (s *CreateNatFirewallControlPolicyRequest) SetRepeatDays(v []*int64) *CreateNatFirewallControlPolicyRequest {
+	s.RepeatDays = v
+	return s
+}
+
+func (s *CreateNatFirewallControlPolicyRequest) SetRepeatEndTime(v string) *CreateNatFirewallControlPolicyRequest {
+	s.RepeatEndTime = &v
+	return s
+}
+
+func (s *CreateNatFirewallControlPolicyRequest) SetRepeatStartTime(v string) *CreateNatFirewallControlPolicyRequest {
+	s.RepeatStartTime = &v
+	return s
+}
+
+func (s *CreateNatFirewallControlPolicyRequest) SetRepeatType(v string) *CreateNatFirewallControlPolicyRequest {
+	s.RepeatType = &v
+	return s
+}
+
 func (s *CreateNatFirewallControlPolicyRequest) SetSource(v string) *CreateNatFirewallControlPolicyRequest {
 	s.Source = &v
 	return s
@@ -765,6 +950,11 @@ func (s *CreateNatFirewallControlPolicyRequest) SetSource(v string) *CreateNatFi
 
 func (s *CreateNatFirewallControlPolicyRequest) SetSourceType(v string) *CreateNatFirewallControlPolicyRequest {
 	s.SourceType = &v
+	return s
+}
+
+func (s *CreateNatFirewallControlPolicyRequest) SetStartTime(v int64) *CreateNatFirewallControlPolicyRequest {
+	s.StartTime = &v
 	return s
 }
 
@@ -1197,10 +1387,25 @@ type CreateVpcFirewallCenConfigureRequest struct {
 	//
 	// *   **open**: After you create the VPC firewall, the VPC firewall is automatically enabled. This is the default value.
 	// *   **close**: After you create the VPC firewall, the VPC firewall is disabled. You can call the [ModifyVpcFirewallCenSwitchStatus](~~345780~~) operation to manually enable the VPC firewall.
-	FirewallSwitch           *string `json:"FirewallSwitch,omitempty" xml:"FirewallSwitch,omitempty"`
+	FirewallSwitch *string `json:"FirewallSwitch,omitempty" xml:"FirewallSwitch,omitempty"`
+	// The CIDR block of the vSwitch that is automatically created for the VPC firewall. You must specify a CIDR block for the Cloud_Firewall_VSWITCH VPC that is automatically created for the VPC firewall for traffic redirection. The CIDR block does not conflict with your network plan. The subnet mask of the CIDR block must be less than or equal to 29 bits in length. The CIDR block of the vSwitch must be within the network segment of the VPC.
+	//
+	// If you do not specify a value, the CIDR block 10.219.219.216/29 is automatically allocated.
+	//
+	// >  This parameter takes effect only when you create a VPC firewall for the first time in the current CEN instance and region.
 	FirewallVSwitchCidrBlock *string `json:"FirewallVSwitchCidrBlock,omitempty" xml:"FirewallVSwitchCidrBlock,omitempty"`
-	FirewallVpcCidrBlock     *string `json:"FirewallVpcCidrBlock,omitempty" xml:"FirewallVpcCidrBlock,omitempty"`
-	FirewallVpcZoneId        *string `json:"FirewallVpcZoneId,omitempty" xml:"FirewallVpcZoneId,omitempty"`
+	// The CIDR block of the VPC that is automatically created for the VPC firewall. You must specify a CIDR block for the Cloud_Firewall_VPC VPC that is automatically created for the VPC firewall for traffic redirection. The subnet mask of the CIDR block must be less than or equal to 28 bits in length.
+	//
+	// If you do not specify a value, the CIDR block 10.0.0.0/8 is automatically allocated.
+	//
+	// >  This parameter takes effect only when you create a VPC firewall for the first time in the current CEN instance and region.
+	FirewallVpcCidrBlock *string `json:"FirewallVpcCidrBlock,omitempty" xml:"FirewallVpcCidrBlock,omitempty"`
+	// The ID of the zone to which the vSwitch belongs. If your service is latency-sensitive, you can specify the same zone for the vSwitch of the firewall and the vSwitch of your business VPC to minimize latency.
+	//
+	// If you do not specify a value, a zone is automatically assigned for the vSwitch.
+	//
+	// >  This parameter takes effect only when you create a VPC firewall for the first time in the current CEN instance and region. For more information about zones that are supported by each region, see [Query zones](~~36064~~).
+	FirewallVpcZoneId *string `json:"FirewallVpcZoneId,omitempty" xml:"FirewallVpcZoneId,omitempty"`
 	// The language of the content within the request and response. Valid values:
 	//
 	// *   **zh**: Chinese (default)
@@ -1210,7 +1415,8 @@ type CreateVpcFirewallCenConfigureRequest struct {
 	MemberUid *string `json:"MemberUid,omitempty" xml:"MemberUid,omitempty"`
 	// The ID of the VPC for which you want to create the VPC firewall.
 	NetworkInstanceId *string `json:"NetworkInstanceId,omitempty" xml:"NetworkInstanceId,omitempty"`
-	VSwitchId         *string `json:"VSwitchId,omitempty" xml:"VSwitchId,omitempty"`
+	// The ID of the vSwitch that is used to associate with the elastic network interface (ENI) required by the VPC firewall.
+	VSwitchId *string `json:"VSwitchId,omitempty" xml:"VSwitchId,omitempty"`
 	// The instance name of the VPC firewall.
 	VpcFirewallName *string `json:"VpcFirewallName,omitempty" xml:"VpcFirewallName,omitempty"`
 	// The ID of the region to which the VPC belongs.
@@ -1540,6 +1746,7 @@ type CreateVpcFirewallControlPolicyRequest struct {
 	// - **group**: address book
 	// - **domain**: domain name
 	DestinationType *string `json:"DestinationType,omitempty" xml:"DestinationType,omitempty"`
+	EndTime         *int64  `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
 	// The language of the content within the request and response. Valid values:
 	//
 	// - **zh**: Chinese (default)
@@ -1562,7 +1769,11 @@ type CreateVpcFirewallControlPolicyRequest struct {
 	//
 	// - **true**: enables the access control policy.
 	// - **false**: disables the access control policy.
-	Release *string `json:"Release,omitempty" xml:"Release,omitempty"`
+	Release         *string  `json:"Release,omitempty" xml:"Release,omitempty"`
+	RepeatDays      []*int64 `json:"RepeatDays,omitempty" xml:"RepeatDays,omitempty" type:"Repeated"`
+	RepeatEndTime   *string  `json:"RepeatEndTime,omitempty" xml:"RepeatEndTime,omitempty"`
+	RepeatStartTime *string  `json:"RepeatStartTime,omitempty" xml:"RepeatStartTime,omitempty"`
+	RepeatType      *string  `json:"RepeatType,omitempty" xml:"RepeatType,omitempty"`
 	// The source address in the access control policy.
 	//
 	// - If SourceType is set to `net`, the value of Source must be a CIDR block.
@@ -1573,6 +1784,7 @@ type CreateVpcFirewallControlPolicyRequest struct {
 	// - **net**: CIDR block
 	// - **group**: address book
 	SourceType *string `json:"SourceType,omitempty" xml:"SourceType,omitempty"`
+	StartTime  *int64  `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
 	// The ID of the policy group in which you want to create the access control policy.
 	//
 	// - If a VPC firewall protects the traffic between two VPCs that are connected by using a CEN instance, the value of this parameter must be the ID of the CEN instance.
@@ -1635,6 +1847,11 @@ func (s *CreateVpcFirewallControlPolicyRequest) SetDestinationType(v string) *Cr
 	return s
 }
 
+func (s *CreateVpcFirewallControlPolicyRequest) SetEndTime(v int64) *CreateVpcFirewallControlPolicyRequest {
+	s.EndTime = &v
+	return s
+}
+
 func (s *CreateVpcFirewallControlPolicyRequest) SetLang(v string) *CreateVpcFirewallControlPolicyRequest {
 	s.Lang = &v
 	return s
@@ -1660,6 +1877,26 @@ func (s *CreateVpcFirewallControlPolicyRequest) SetRelease(v string) *CreateVpcF
 	return s
 }
 
+func (s *CreateVpcFirewallControlPolicyRequest) SetRepeatDays(v []*int64) *CreateVpcFirewallControlPolicyRequest {
+	s.RepeatDays = v
+	return s
+}
+
+func (s *CreateVpcFirewallControlPolicyRequest) SetRepeatEndTime(v string) *CreateVpcFirewallControlPolicyRequest {
+	s.RepeatEndTime = &v
+	return s
+}
+
+func (s *CreateVpcFirewallControlPolicyRequest) SetRepeatStartTime(v string) *CreateVpcFirewallControlPolicyRequest {
+	s.RepeatStartTime = &v
+	return s
+}
+
+func (s *CreateVpcFirewallControlPolicyRequest) SetRepeatType(v string) *CreateVpcFirewallControlPolicyRequest {
+	s.RepeatType = &v
+	return s
+}
+
 func (s *CreateVpcFirewallControlPolicyRequest) SetSource(v string) *CreateVpcFirewallControlPolicyRequest {
 	s.Source = &v
 	return s
@@ -1667,6 +1904,11 @@ func (s *CreateVpcFirewallControlPolicyRequest) SetSource(v string) *CreateVpcFi
 
 func (s *CreateVpcFirewallControlPolicyRequest) SetSourceType(v string) *CreateVpcFirewallControlPolicyRequest {
 	s.SourceType = &v
+	return s
+}
+
+func (s *CreateVpcFirewallControlPolicyRequest) SetStartTime(v int64) *CreateVpcFirewallControlPolicyRequest {
+	s.StartTime = &v
 	return s
 }
 
@@ -2738,7 +2980,7 @@ func (s *DescribeAddressBookResponse) SetBody(v *DescribeAddressBookResponseBody
 }
 
 type DescribeAssetListRequest struct {
-	// The number of the page to return.
+	// The page number. Valid values: 1 to 50.
 	CurrentPage *string `json:"CurrentPage,omitempty" xml:"CurrentPage,omitempty"`
 	// The IP version of the asset that is protected by Cloud Firewall. Valid values:
 	//
@@ -2751,9 +2993,14 @@ type DescribeAssetListRequest struct {
 	// *   **en**: English
 	Lang *string `json:"Lang,omitempty" xml:"Lang,omitempty"`
 	// The UID of the member that is added to Cloud Firewall.
-	MemberUid      *int64  `json:"MemberUid,omitempty" xml:"MemberUid,omitempty"`
+	MemberUid *int64 `json:"MemberUid,omitempty" xml:"MemberUid,omitempty"`
+	// The time when the asset was added. Valid values:
+	//
+	// *   **discovered in 1 hour**: within one hour.
+	// *   **discovered in 1 day**: within one day.
+	// *   **discovered in 7 days**: within seven days.
 	NewResourceTag *string `json:"NewResourceTag,omitempty" xml:"NewResourceTag,omitempty"`
-	// The number of entries to return on each page.
+	// The number of entries per page. Valid values: 1 to 50.
 	PageSize *string `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
 	// The region ID of your Cloud Firewall.
 	//
@@ -2909,13 +3156,14 @@ func (s *DescribeAssetListResponseBody) SetTotalCount(v int32) *DescribeAssetLis
 type DescribeAssetListResponseBodyAssets struct {
 	// The UID of the Alibaba Cloud account.
 	//
-	// > The value of this parameter indicates the management account to which the member is added.
+	// >  The value of this parameter indicates the management account to which the member is added.
 	AliUid *int64 `json:"AliUid,omitempty" xml:"AliUid,omitempty"`
-	// The instance ID of the asset.
+	// The ID of the cloud resource with which the asset is associated.
 	BindInstanceId *string `json:"BindInstanceId,omitempty" xml:"BindInstanceId,omitempty"`
 	// The instance name of the asset.
 	BindInstanceName *string `json:"BindInstanceName,omitempty" xml:"BindInstanceName,omitempty"`
-	CreateTimeStamp  *string `json:"CreateTimeStamp,omitempty" xml:"CreateTimeStamp,omitempty"`
+	// The timestamp when the asset is added to Cloud Firewall.
+	CreateTimeStamp *string `json:"CreateTimeStamp,omitempty" xml:"CreateTimeStamp,omitempty"`
 	// The public IP address of the server.
 	InternetAddress *string `json:"InternetAddress,omitempty" xml:"InternetAddress,omitempty"`
 	// The internal IP address of the server.
@@ -2927,10 +3175,15 @@ type DescribeAssetListResponseBodyAssets struct {
 	// *   **4**: IPv4
 	// *   **6**: IPv6
 	IpVersion *int32 `json:"IpVersion,omitempty" xml:"IpVersion,omitempty"`
-	// The UID of the member that is added to Cloud Firewall.
+	// The UID of the member.
 	MemberUid *int64 `json:"MemberUid,omitempty" xml:"MemberUid,omitempty"`
 	// The instance name of the asset that is protected by Cloud Firewall.
-	Name           *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// The time when the asset was added. Valid values:
+	//
+	// *   **discovered in 1 hour**: within one hour.
+	// *   **discovered in 1 day**: within one day.
+	// *   **discovered in 7 days**: within seven days.
 	NewResourceTag *string `json:"NewResourceTag,omitempty" xml:"NewResourceTag,omitempty"`
 	// The remarks of the asset. Valid values:
 	//
@@ -2939,17 +3192,17 @@ type DescribeAssetListResponseBodyAssets struct {
 	Note *string `json:"Note,omitempty" xml:"Note,omitempty"`
 	// The status of the firewall. Valid values:
 	//
-	// *   **open**: The firewall is enabled.
-	// *   **opening**: The firewall is being enabled.
-	// *   **closed**: The firewall is disabled.
-	// *   **closing**: The firewall is being disabled.
+	// *   **open**: enabled.
+	// *   **opening**: being enabled.
+	// *   **closed**: disabled.
+	// *   **closing**: being disabled.
 	ProtectStatus *string `json:"ProtectStatus,omitempty" xml:"ProtectStatus,omitempty"`
 	// The ID of the region in which the asset resides.
 	RegionID *string `json:"RegionID,omitempty" xml:"RegionID,omitempty"`
 	// Indicates whether the firewall is supported in the region in which the asset resides. Valid values:
 	//
-	// *   **enable**: supported
-	// *   **disable**: unsupported
+	// *   **enable**: yes
+	// *   **disable**: no
 	RegionStatus *string `json:"RegionStatus,omitempty" xml:"RegionStatus,omitempty"`
 	// The instance ID of the asset.
 	ResourceInstanceId *string `json:"ResourceInstanceId,omitempty" xml:"ResourceInstanceId,omitempty"`
@@ -2957,15 +3210,15 @@ type DescribeAssetListResponseBodyAssets struct {
 	//
 	// *   **BastionHostEgressIP**: the egress IP address of a bastion host
 	// *   **BastionHostIngressIP**: the ingress IP address of a bastion host
-	// *   **EcsEIP**: the EIP of an ECS instance
+	// *   **EcsEIP**: the elastic IP address (EIP) of an Elastic Compute Service (ECS) instance
 	// *   **EcsPublicIP**: the public IP address of an ECS instance
 	// *   **EIP**: the EIP
-	// *   **EniEIP**: the EIP of an ENI
+	// *   **EniEIP**: the EIP of an elastic network interface (ENI)
 	// *   **NatEIP**: the EIP of a NAT gateway
-	// *   **SlbEIP**: the EIP of an SLB instance
+	// *   **SlbEIP**: the EIP of a Server Load Balancer (SLB) instance
 	// *   **SlbPublicIP**: the public IP address of an SLB instance
 	// *   **NatPublicIP**: the public IP address of a NAT gateway
-	// *   **HAVIP**: the HAVIP
+	// *   **HAVIP**: the high-availability virtual IP address (HAVIP)
 	ResourceType *string `json:"ResourceType,omitempty" xml:"ResourceType,omitempty"`
 	// The risk level of the asset. Valid values:
 	//
@@ -2973,20 +3226,20 @@ type DescribeAssetListResponseBodyAssets struct {
 	// *   **middle**: medium
 	// *   **hight**: high
 	//
-	// > The value of this parameter is returned only when the UserType parameter is set to free.
+	// >  The value of this parameter is returned only when the UserType parameter is set to free.
 	RiskLevel *string `json:"RiskLevel,omitempty" xml:"RiskLevel,omitempty"`
 	// The status of the security group policy. Valid values:
 	//
-	// *   **pass**: delivered
-	// *   **block**: undelivered
+	// *   **pass**: applied
+	// *   **block**: not applied
 	// *   **unsupport**: unsupported
 	SgStatus *string `json:"SgStatus,omitempty" xml:"SgStatus,omitempty"`
-	// The time when the status of the security group policy was last checked. The value is a UNIX timestamp. Unit: seconds.
+	// The time when the status of the security group was last checked. The value is a UNIX timestamp. Unit: seconds.
 	SgStatusTime *int64 `json:"SgStatusTime,omitempty" xml:"SgStatusTime,omitempty"`
-	// The status of traffic redirection for the asset. Valid values:
+	// Indicates whether traffic redirection is supported for the asset. Valid values:
 	//
-	// *   **enable**: Traffic redirection is enabled.
-	// *   **disable**: Traffic redirection is disabled.
+	// *   **enable**: yes
+	// *   **disable**: no
 	SyncStatus *string `json:"SyncStatus,omitempty" xml:"SyncStatus,omitempty"`
 	// This parameter is deprecated.
 	Type *string `json:"Type,omitempty" xml:"Type,omitempty"`
@@ -3192,7 +3445,8 @@ type DescribeControlPolicyRequest struct {
 	//
 	// *   **true**: The access control policy is enabled.
 	// *   **false**: The access control policy is disabled.
-	Release *string `json:"Release,omitempty" xml:"Release,omitempty"`
+	Release    *string `json:"Release,omitempty" xml:"Release,omitempty"`
+	RepeatType *string `json:"RepeatType,omitempty" xml:"RepeatType,omitempty"`
 	// The source address in the access control policy. Fuzzy match is supported. The value of this parameter depends on the value of the SourceType parameter.
 	//
 	// *   If SourceType is set to `net`, the value of Source must be a CIDR block. Example: 192.0.XX.XX/24.
@@ -3263,6 +3517,11 @@ func (s *DescribeControlPolicyRequest) SetProto(v string) *DescribeControlPolicy
 
 func (s *DescribeControlPolicyRequest) SetRelease(v string) *DescribeControlPolicyRequest {
 	s.Release = &v
+	return s
+}
+
+func (s *DescribeControlPolicyRequest) SetRepeatType(v string) *DescribeControlPolicyRequest {
+	s.RepeatType = &v
 	return s
 }
 
@@ -3396,6 +3655,7 @@ type DescribeControlPolicyResponseBodyPolicys struct {
 	DnsResult *string `json:"DnsResult,omitempty" xml:"DnsResult,omitempty"`
 	// The timestamp of the DNS resolution result. The value is a UNIX timestamp. Unit: seconds.
 	DnsResultTime *int64 `json:"DnsResultTime,omitempty" xml:"DnsResultTime,omitempty"`
+	EndTime       *int64 `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
 	// The timestamp when the access control policy was last hit. The value is a UNIX timestamp. Unit: seconds.
 	HitLastTime *int64 `json:"HitLastTime,omitempty" xml:"HitLastTime,omitempty"`
 	// The number of hits for the access control policy.
@@ -3422,7 +3682,11 @@ type DescribeControlPolicyResponseBodyPolicys struct {
 	//
 	// *   **true**: The access control policy is enabled.
 	// *   **false**: The access control policy is disabled.
-	Release *string `json:"Release,omitempty" xml:"Release,omitempty"`
+	Release         *string  `json:"Release,omitempty" xml:"Release,omitempty"`
+	RepeatDays      []*int64 `json:"RepeatDays,omitempty" xml:"RepeatDays,omitempty" type:"Repeated"`
+	RepeatEndTime   *string  `json:"RepeatEndTime,omitempty" xml:"RepeatEndTime,omitempty"`
+	RepeatStartTime *string  `json:"RepeatStartTime,omitempty" xml:"RepeatStartTime,omitempty"`
+	RepeatType      *string  `json:"RepeatType,omitempty" xml:"RepeatType,omitempty"`
 	// The source address in the access control policy. Valid values:
 	//
 	// *   If **SourceType** is set to `net`, the value of Source is a CIDR block. Example: 192.0.XX.XX/24.
@@ -3449,6 +3713,7 @@ type DescribeControlPolicyResponseBodyPolicys struct {
 	//
 	// Quota that is consumed by an access control policy = Number of source CIDR blocks × Number of destination CIDR blocks, destination locations, or IP addresses that are resolved from destination domain names × Number of applications × Number of ports.
 	SpreadCnt *int32 `json:"SpreadCnt,omitempty" xml:"SpreadCnt,omitempty"`
+	StartTime *int64 `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
 }
 
 func (s DescribeControlPolicyResponseBodyPolicys) String() string {
@@ -3549,6 +3814,11 @@ func (s *DescribeControlPolicyResponseBodyPolicys) SetDnsResultTime(v int64) *De
 	return s
 }
 
+func (s *DescribeControlPolicyResponseBodyPolicys) SetEndTime(v int64) *DescribeControlPolicyResponseBodyPolicys {
+	s.EndTime = &v
+	return s
+}
+
 func (s *DescribeControlPolicyResponseBodyPolicys) SetHitLastTime(v int64) *DescribeControlPolicyResponseBodyPolicys {
 	s.HitLastTime = &v
 	return s
@@ -3584,6 +3854,26 @@ func (s *DescribeControlPolicyResponseBodyPolicys) SetRelease(v string) *Describ
 	return s
 }
 
+func (s *DescribeControlPolicyResponseBodyPolicys) SetRepeatDays(v []*int64) *DescribeControlPolicyResponseBodyPolicys {
+	s.RepeatDays = v
+	return s
+}
+
+func (s *DescribeControlPolicyResponseBodyPolicys) SetRepeatEndTime(v string) *DescribeControlPolicyResponseBodyPolicys {
+	s.RepeatEndTime = &v
+	return s
+}
+
+func (s *DescribeControlPolicyResponseBodyPolicys) SetRepeatStartTime(v string) *DescribeControlPolicyResponseBodyPolicys {
+	s.RepeatStartTime = &v
+	return s
+}
+
+func (s *DescribeControlPolicyResponseBodyPolicys) SetRepeatType(v string) *DescribeControlPolicyResponseBodyPolicys {
+	s.RepeatType = &v
+	return s
+}
+
 func (s *DescribeControlPolicyResponseBodyPolicys) SetSource(v string) *DescribeControlPolicyResponseBodyPolicys {
 	s.Source = &v
 	return s
@@ -3606,6 +3896,11 @@ func (s *DescribeControlPolicyResponseBodyPolicys) SetSourceType(v string) *Desc
 
 func (s *DescribeControlPolicyResponseBodyPolicys) SetSpreadCnt(v int32) *DescribeControlPolicyResponseBodyPolicys {
 	s.SpreadCnt = &v
+	return s
+}
+
+func (s *DescribeControlPolicyResponseBodyPolicys) SetStartTime(v int64) *DescribeControlPolicyResponseBodyPolicys {
+	s.StartTime = &v
 	return s
 }
 
@@ -4533,6 +4828,7 @@ type DescribeInternetTrafficTrendResponseBodyDataList struct {
 	OutPps       *int64 `json:"OutPps,omitempty" xml:"OutPps,omitempty"`
 	SessionCount *int64 `json:"SessionCount,omitempty" xml:"SessionCount,omitempty"`
 	Time         *int32 `json:"Time,omitempty" xml:"Time,omitempty"`
+	TotalBps     *int64 `json:"TotalBps,omitempty" xml:"TotalBps,omitempty"`
 }
 
 func (s DescribeInternetTrafficTrendResponseBodyDataList) String() string {
@@ -4585,6 +4881,11 @@ func (s *DescribeInternetTrafficTrendResponseBodyDataList) SetSessionCount(v int
 
 func (s *DescribeInternetTrafficTrendResponseBodyDataList) SetTime(v int32) *DescribeInternetTrafficTrendResponseBodyDataList {
 	s.Time = &v
+	return s
+}
+
+func (s *DescribeInternetTrafficTrendResponseBodyDataList) SetTotalBps(v int64) *DescribeInternetTrafficTrendResponseBodyDataList {
+	s.TotalBps = &v
 	return s
 }
 
@@ -5077,7 +5378,8 @@ type DescribeNatFirewallControlPolicyRequest struct {
 	//
 	// *   **true**
 	// *   **false**
-	Release *string `json:"Release,omitempty" xml:"Release,omitempty"`
+	Release    *string `json:"Release,omitempty" xml:"Release,omitempty"`
+	RepeatType *string `json:"RepeatType,omitempty" xml:"RepeatType,omitempty"`
 	// The source address in the access control policy. Fuzzy match is supported. The value of this parameter varies based on the value of the SourceType parameter.
 	//
 	// *   If SourceType is set to `net`, the value of Source must be a CIDR block. Example: 192.0.XX.XX/24.
@@ -5148,6 +5450,11 @@ func (s *DescribeNatFirewallControlPolicyRequest) SetProto(v string) *DescribeNa
 
 func (s *DescribeNatFirewallControlPolicyRequest) SetRelease(v string) *DescribeNatFirewallControlPolicyRequest {
 	s.Release = &v
+	return s
+}
+
+func (s *DescribeNatFirewallControlPolicyRequest) SetRepeatType(v string) *DescribeNatFirewallControlPolicyRequest {
+	s.RepeatType = &v
 	return s
 }
 
@@ -5245,6 +5552,7 @@ type DescribeNatFirewallControlPolicyResponseBodyPolicys struct {
 	// *   **2**: Domain Name System (DNS)-based
 	// *   **3**: FQDN and DNS-based
 	DomainResolveType *int32 `json:"DomainResolveType,omitempty" xml:"DomainResolveType,omitempty"`
+	EndTime           *int64 `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
 	// The times when the access control policy was last hit. The value is a timestamp. Unit: seconds.
 	HitLastTime *int64 `json:"HitLastTime,omitempty" xml:"HitLastTime,omitempty"`
 	// The number of hits for the access control policy.
@@ -5268,7 +5576,11 @@ type DescribeNatFirewallControlPolicyResponseBodyPolicys struct {
 	//
 	// *   **true**
 	// *   **false**
-	Release *string `json:"Release,omitempty" xml:"Release,omitempty"`
+	Release         *string  `json:"Release,omitempty" xml:"Release,omitempty"`
+	RepeatDays      []*int64 `json:"RepeatDays,omitempty" xml:"RepeatDays,omitempty" type:"Repeated"`
+	RepeatEndTime   *string  `json:"RepeatEndTime,omitempty" xml:"RepeatEndTime,omitempty"`
+	RepeatStartTime *string  `json:"RepeatStartTime,omitempty" xml:"RepeatStartTime,omitempty"`
+	RepeatType      *string  `json:"RepeatType,omitempty" xml:"RepeatType,omitempty"`
 	// The source address in the access control policy. Valid values:
 	//
 	// *   If **SourceType** is set to `net`, the value of Source is a CIDR block. Example: 192.0.XX.XX/24.
@@ -5287,6 +5599,7 @@ type DescribeNatFirewallControlPolicyResponseBodyPolicys struct {
 	SourceType *string `json:"SourceType,omitempty" xml:"SourceType,omitempty"`
 	// The total quota consumed by the returned access control policies, which is the sum of the quota consumed by each policy. The quota that is consumed by an access control policy is calculated based on the following formula: Quota that is consumed by an access control policy = Number of source CIDR blocks × Number of destination CIDR blocks, regions, or resolved domain names × *Number of applications* × Number of ports.
 	SpreadCnt *string `json:"SpreadCnt,omitempty" xml:"SpreadCnt,omitempty"`
+	StartTime *int64  `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
 }
 
 func (s DescribeNatFirewallControlPolicyResponseBodyPolicys) String() string {
@@ -5377,6 +5690,11 @@ func (s *DescribeNatFirewallControlPolicyResponseBodyPolicys) SetDomainResolveTy
 	return s
 }
 
+func (s *DescribeNatFirewallControlPolicyResponseBodyPolicys) SetEndTime(v int64) *DescribeNatFirewallControlPolicyResponseBodyPolicys {
+	s.EndTime = &v
+	return s
+}
+
 func (s *DescribeNatFirewallControlPolicyResponseBodyPolicys) SetHitLastTime(v int64) *DescribeNatFirewallControlPolicyResponseBodyPolicys {
 	s.HitLastTime = &v
 	return s
@@ -5412,6 +5730,26 @@ func (s *DescribeNatFirewallControlPolicyResponseBodyPolicys) SetRelease(v strin
 	return s
 }
 
+func (s *DescribeNatFirewallControlPolicyResponseBodyPolicys) SetRepeatDays(v []*int64) *DescribeNatFirewallControlPolicyResponseBodyPolicys {
+	s.RepeatDays = v
+	return s
+}
+
+func (s *DescribeNatFirewallControlPolicyResponseBodyPolicys) SetRepeatEndTime(v string) *DescribeNatFirewallControlPolicyResponseBodyPolicys {
+	s.RepeatEndTime = &v
+	return s
+}
+
+func (s *DescribeNatFirewallControlPolicyResponseBodyPolicys) SetRepeatStartTime(v string) *DescribeNatFirewallControlPolicyResponseBodyPolicys {
+	s.RepeatStartTime = &v
+	return s
+}
+
+func (s *DescribeNatFirewallControlPolicyResponseBodyPolicys) SetRepeatType(v string) *DescribeNatFirewallControlPolicyResponseBodyPolicys {
+	s.RepeatType = &v
+	return s
+}
+
 func (s *DescribeNatFirewallControlPolicyResponseBodyPolicys) SetSource(v string) *DescribeNatFirewallControlPolicyResponseBodyPolicys {
 	s.Source = &v
 	return s
@@ -5434,6 +5772,11 @@ func (s *DescribeNatFirewallControlPolicyResponseBodyPolicys) SetSourceType(v st
 
 func (s *DescribeNatFirewallControlPolicyResponseBodyPolicys) SetSpreadCnt(v string) *DescribeNatFirewallControlPolicyResponseBodyPolicys {
 	s.SpreadCnt = &v
+	return s
+}
+
+func (s *DescribeNatFirewallControlPolicyResponseBodyPolicys) SetStartTime(v int64) *DescribeNatFirewallControlPolicyResponseBodyPolicys {
+	s.StartTime = &v
 	return s
 }
 
@@ -6858,7 +7201,7 @@ type DescribeRiskEventGroupRequest struct {
 	DstNetworkInstanceId *string `json:"DstNetworkInstanceId,omitempty" xml:"DstNetworkInstanceId,omitempty"`
 	// The end of the time range to query. The value is a UNIX timestamp. Unit: seconds.
 	EndTime *string `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
-	// 入侵防御事件的名称。
+	// The name of the intrusion event.
 	EventName *string `json:"EventName,omitempty" xml:"EventName,omitempty"`
 	// The type of the firewall. Valid values:
 	//
@@ -7482,15 +7825,27 @@ func (s *DescribeRiskEventGroupResponse) SetBody(v *DescribeRiskEventGroupRespon
 }
 
 type DescribeRiskEventPayloadRequest struct {
-	DstIP        *string `json:"DstIP,omitempty" xml:"DstIP,omitempty"`
-	DstVpcId     *string `json:"DstVpcId,omitempty" xml:"DstVpcId,omitempty"`
-	EndTime      *string `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
+	// The destination IP address to query. If you specify this parameter, all intrusion events with the specified destination IP address are queried.
+	DstIP *string `json:"DstIP,omitempty" xml:"DstIP,omitempty"`
+	// The ID of the destination VPC to query. If you specify this parameter, all intrusion events that contain the specified ID of the destination VPC are queried.
+	DstVpcId *string `json:"DstVpcId,omitempty" xml:"DstVpcId,omitempty"`
+	// The end of the time range to query. The value is a timestamp. Unit: seconds.
+	EndTime *string `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
+	// The type of the firewall. Valid values:
+	//
+	// *   **VpcFirewall**: virtual private cloud (VPC) firewall
+	// *   **InternetFirewall** (default): Internet firewall
 	FirewallType *string `json:"FirewallType,omitempty" xml:"FirewallType,omitempty"`
-	PublicIP     *string `json:"PublicIP,omitempty" xml:"PublicIP,omitempty"`
-	SrcIP        *string `json:"SrcIP,omitempty" xml:"SrcIP,omitempty"`
-	SrcVpcId     *string `json:"SrcVpcId,omitempty" xml:"SrcVpcId,omitempty"`
-	StartTime    *string `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
-	UUID         *string `json:"UUID,omitempty" xml:"UUID,omitempty"`
+	// The public IP address. If you specify this parameter, all intrusion events that contain the specified public IP address are queried.
+	PublicIP *string `json:"PublicIP,omitempty" xml:"PublicIP,omitempty"`
+	// The source IP address to query. If you specify this parameter, all intrusion events from the specified source IP address are queried.
+	SrcIP *string `json:"SrcIP,omitempty" xml:"SrcIP,omitempty"`
+	// The ID of the source VPC to query. If you specify this parameter, all intrusion events that contain the specified ID of the source VPC are queried.
+	SrcVpcId *string `json:"SrcVpcId,omitempty" xml:"SrcVpcId,omitempty"`
+	// The beginning of the time range to query. The value is a timestamp. Unit: seconds.
+	StartTime *string `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
+	// The UUID of the intrusion event.
+	UUID *string `json:"UUID,omitempty" xml:"UUID,omitempty"`
 }
 
 func (s DescribeRiskEventPayloadRequest) String() string {
@@ -7547,17 +7902,32 @@ func (s *DescribeRiskEventPayloadRequest) SetUUID(v string) *DescribeRiskEventPa
 }
 
 type DescribeRiskEventPayloadResponseBody struct {
-	DstIP       *string `json:"DstIP,omitempty" xml:"DstIP,omitempty"`
-	DstPort     *int32  `json:"DstPort,omitempty" xml:"DstPort,omitempty"`
-	DstVpcId    *string `json:"DstVpcId,omitempty" xml:"DstVpcId,omitempty"`
-	Payload     *string `json:"Payload,omitempty" xml:"Payload,omitempty"`
-	PayloadLen  *int32  `json:"PayloadLen,omitempty" xml:"PayloadLen,omitempty"`
-	Proto       *string `json:"Proto,omitempty" xml:"Proto,omitempty"`
-	RealIp      *string `json:"RealIp,omitempty" xml:"RealIp,omitempty"`
-	RequestId   *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	SrcIP       *string `json:"SrcIP,omitempty" xml:"SrcIP,omitempty"`
-	SrcPort     *int32  `json:"SrcPort,omitempty" xml:"SrcPort,omitempty"`
-	SrcVpcId    *string `json:"SrcVpcId,omitempty" xml:"SrcVpcId,omitempty"`
+	// The destination IP address of the intrusion event.
+	DstIP *string `json:"DstIP,omitempty" xml:"DstIP,omitempty"`
+	// The destination port of the intrusion event.
+	DstPort *int32 `json:"DstPort,omitempty" xml:"DstPort,omitempty"`
+	// The destination VPC ID of the intrusion event.
+	DstVpcId *string `json:"DstVpcId,omitempty" xml:"DstVpcId,omitempty"`
+	// The attack payload of the intrusion event.
+	Payload *string `json:"Payload,omitempty" xml:"Payload,omitempty"`
+	// The length of the attack payload of the intrusion event.
+	PayloadLen *int32 `json:"PayloadLen,omitempty" xml:"PayloadLen,omitempty"`
+	// The protocol type of intrusion event. Valid values:
+	//
+	// *   **TCP**
+	// *   **UDP**
+	Proto *string `json:"Proto,omitempty" xml:"Proto,omitempty"`
+	// The HTTP X-Real-IP field.
+	RealIp *string `json:"RealIp,omitempty" xml:"RealIp,omitempty"`
+	// The request ID.
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The source IP address of the intrusion event.
+	SrcIP *string `json:"SrcIP,omitempty" xml:"SrcIP,omitempty"`
+	// The source port of the intrusion event.
+	SrcPort *int32 `json:"SrcPort,omitempty" xml:"SrcPort,omitempty"`
+	// The source VPC ID of the intrusion event.
+	SrcVpcId *string `json:"SrcVpcId,omitempty" xml:"SrcVpcId,omitempty"`
+	// The HTTP X-Forwarded-For field.
 	XForwardFor *string `json:"XForwardFor,omitempty" xml:"XForwardFor,omitempty"`
 }
 
@@ -8026,7 +8396,8 @@ type DescribeTrFirewallsV2DetailResponseBody struct {
 	// *   Creating
 	// *   Deleting
 	// *   Ready
-	FirewallStatus     *string `json:"FirewallStatus,omitempty" xml:"FirewallStatus,omitempty"`
+	FirewallStatus *string `json:"FirewallStatus,omitempty" xml:"FirewallStatus,omitempty"`
+	// The subnet CIDR block of the VPC in which the ENI of the firewall is stored in automatic mode.
 	FirewallSubnetCidr *string `json:"FirewallSubnetCidr,omitempty" xml:"FirewallSubnetCidr,omitempty"`
 	// The status of the VPC firewall. Valid values:
 	//
@@ -8040,7 +8411,8 @@ type DescribeTrFirewallsV2DetailResponseBody struct {
 	//
 	// > If you do not specify this parameter, VPC firewalls in all states are queried.
 	FirewallSwitchStatus *string `json:"FirewallSwitchStatus,omitempty" xml:"FirewallSwitchStatus,omitempty"`
-	FirewallVpcCidr      *string `json:"FirewallVpcCidr,omitempty" xml:"FirewallVpcCidr,omitempty"`
+	// The CIDR block that is allocated to the VPC created for the VPC firewall in automatic mode.
+	FirewallVpcCidr *string `json:"FirewallVpcCidr,omitempty" xml:"FirewallVpcCidr,omitempty"`
 	// The region ID of the transit router.
 	RegionNo *string `json:"RegionNo,omitempty" xml:"RegionNo,omitempty"`
 	// The request ID.
@@ -8049,9 +8421,11 @@ type DescribeTrFirewallsV2DetailResponseBody struct {
 	//
 	// *   **managed**: automatic mode
 	// *   **manual**: manual mode
-	RouteMode              *string `json:"RouteMode,omitempty" xml:"RouteMode,omitempty"`
+	RouteMode *string `json:"RouteMode,omitempty" xml:"RouteMode,omitempty"`
+	// The primary subnet CIDR block that the VPC uses to connect to the transit router in automatic mode.
 	TrAttachmentMasterCidr *string `json:"TrAttachmentMasterCidr,omitempty" xml:"TrAttachmentMasterCidr,omitempty"`
-	TrAttachmentSlaveCidr  *string `json:"TrAttachmentSlaveCidr,omitempty" xml:"TrAttachmentSlaveCidr,omitempty"`
+	// The secondary subnet CIDR block that the VPC uses to connect to the transit router in automatic mode.
+	TrAttachmentSlaveCidr *string `json:"TrAttachmentSlaveCidr,omitempty" xml:"TrAttachmentSlaveCidr,omitempty"`
 	// The ID of the transit router.
 	TransitRouterId *string `json:"TransitRouterId,omitempty" xml:"TransitRouterId,omitempty"`
 }
@@ -8179,17 +8553,45 @@ func (s *DescribeTrFirewallsV2DetailResponse) SetBody(v *DescribeTrFirewallsV2De
 }
 
 type DescribeTrFirewallsV2ListRequest struct {
-	CenId                *string `json:"CenId,omitempty" xml:"CenId,omitempty"`
-	CurrentPage          *int32  `json:"CurrentPage,omitempty" xml:"CurrentPage,omitempty"`
-	FirewallId           *string `json:"FirewallId,omitempty" xml:"FirewallId,omitempty"`
-	FirewallName         *string `json:"FirewallName,omitempty" xml:"FirewallName,omitempty"`
+	// The ID of the Cloud Enterprise Network (CEN) instance.
+	CenId *string `json:"CenId,omitempty" xml:"CenId,omitempty"`
+	// The page number. Default value: **1**.
+	CurrentPage *int32 `json:"CurrentPage,omitempty" xml:"CurrentPage,omitempty"`
+	// The instance ID of the VPC firewall.
+	FirewallId *string `json:"FirewallId,omitempty" xml:"FirewallId,omitempty"`
+	// The name of the VPC firewall.
+	FirewallName *string `json:"FirewallName,omitempty" xml:"FirewallName,omitempty"`
+	// The status of the VPC firewall. Valid values:
+	//
+	// *   **opened**: The VPC firewall is enabled.
+	// *   **closed**: The VPC firewall is disabled.
+	// *   **notconfigured**: The VPC firewall is not created.
+	// *   **configured**: The VPC firewall is created but is not enabled.
+	// *   **creating**: The VPC firewall is being created.
+	// *   **opening**: The VPC firewall is being enabled.
+	// *   **deleting**: The VPC firewall is being deleted.
+	//
+	// >  If you do not specify this parameter, VPC firewalls in all states are queried.
 	FirewallSwitchStatus *string `json:"FirewallSwitchStatus,omitempty" xml:"FirewallSwitchStatus,omitempty"`
-	Lang                 *string `json:"Lang,omitempty" xml:"Lang,omitempty"`
-	OwnerId              *string `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
-	PageSize             *int32  `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	RegionNo             *string `json:"RegionNo,omitempty" xml:"RegionNo,omitempty"`
-	RouteMode            *string `json:"RouteMode,omitempty" xml:"RouteMode,omitempty"`
-	TransitRouterId      *string `json:"TransitRouterId,omitempty" xml:"TransitRouterId,omitempty"`
+	// The language of the content within the response. Valid values:
+	//
+	// *   **zh**: Chinese (default)
+	// *   **en**: English
+	Lang    *string `json:"Lang,omitempty" xml:"Lang,omitempty"`
+	OwnerId *string `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
+	// The number of entries per page. Default value: 10.
+	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	// The region ID of the transit router.
+	RegionNo *string `json:"RegionNo,omitempty" xml:"RegionNo,omitempty"`
+	// The routing mode of the VPC firewall. Valid values:
+	//
+	// *   **managed**: automatic mode
+	// *   **manual**: manual mode
+	//
+	// >  If you do not specify this parameter, VPC firewalls in all routing modes are queried.
+	RouteMode *string `json:"RouteMode,omitempty" xml:"RouteMode,omitempty"`
+	// The ID of the transit router.
+	TransitRouterId *string `json:"TransitRouterId,omitempty" xml:"TransitRouterId,omitempty"`
 }
 
 func (s DescribeTrFirewallsV2ListRequest) String() string {
@@ -8256,8 +8658,11 @@ func (s *DescribeTrFirewallsV2ListRequest) SetTransitRouterId(v string) *Describ
 }
 
 type DescribeTrFirewallsV2ListResponseBody struct {
-	RequestId      *string                                                `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	TotalCount     *string                                                `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
+	// The request ID.
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The total number of entries returned.
+	TotalCount *string `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
+	// The VPC firewalls.
 	VpcTrFirewalls []*DescribeTrFirewallsV2ListResponseBodyVpcTrFirewalls `json:"VpcTrFirewalls,omitempty" xml:"VpcTrFirewalls,omitempty" type:"Repeated"`
 }
 
@@ -8285,21 +8690,59 @@ func (s *DescribeTrFirewallsV2ListResponseBody) SetVpcTrFirewalls(v []*DescribeT
 }
 
 type DescribeTrFirewallsV2ListResponseBodyVpcTrFirewalls struct {
-	CenId                *string                                                                 `json:"CenId,omitempty" xml:"CenId,omitempty"`
-	CenName              *string                                                                 `json:"CenName,omitempty" xml:"CenName,omitempty"`
-	FirewallId           *string                                                                 `json:"FirewallId,omitempty" xml:"FirewallId,omitempty"`
-	FirewallSwitchStatus *string                                                                 `json:"FirewallSwitchStatus,omitempty" xml:"FirewallSwitchStatus,omitempty"`
-	IpsConfig            *DescribeTrFirewallsV2ListResponseBodyVpcTrFirewallsIpsConfig           `json:"IpsConfig,omitempty" xml:"IpsConfig,omitempty" type:"Struct"`
-	OwnerId              *int64                                                                  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
-	PrecheckStatus       *string                                                                 `json:"PrecheckStatus,omitempty" xml:"PrecheckStatus,omitempty"`
-	ProtectedResource    *DescribeTrFirewallsV2ListResponseBodyVpcTrFirewallsProtectedResource   `json:"ProtectedResource,omitempty" xml:"ProtectedResource,omitempty" type:"Struct"`
-	RegionNo             *string                                                                 `json:"RegionNo,omitempty" xml:"RegionNo,omitempty"`
-	RegionStatus         *string                                                                 `json:"RegionStatus,omitempty" xml:"RegionStatus,omitempty"`
-	ResultCode           *string                                                                 `json:"ResultCode,omitempty" xml:"ResultCode,omitempty"`
-	RouteMode            *string                                                                 `json:"RouteMode,omitempty" xml:"RouteMode,omitempty"`
-	TransitRouterId      *string                                                                 `json:"TransitRouterId,omitempty" xml:"TransitRouterId,omitempty"`
-	UnprotectedResource  *DescribeTrFirewallsV2ListResponseBodyVpcTrFirewallsUnprotectedResource `json:"UnprotectedResource,omitempty" xml:"UnprotectedResource,omitempty" type:"Struct"`
-	VpcFirewallName      *string                                                                 `json:"VpcFirewallName,omitempty" xml:"VpcFirewallName,omitempty"`
+	// The ID of the CEN instance.
+	CenId *string `json:"CenId,omitempty" xml:"CenId,omitempty"`
+	// The name of the CEN instance.
+	CenName *string `json:"CenName,omitempty" xml:"CenName,omitempty"`
+	// The instance ID of the VPC firewall.
+	FirewallId *string `json:"FirewallId,omitempty" xml:"FirewallId,omitempty"`
+	// The status of the VPC firewall. Valid values:
+	//
+	// *   **opened**: The VPC firewall is enabled.
+	// *   **closed**: The VPC firewall is disabled.
+	// *   **notconfigured**: The VPC firewall is not created.
+	// *   **configured**: The VPC firewall is created but is not enabled.
+	// *   **creating**: The VPC firewall is being created.
+	// *   **opening**: The VPC firewall is being enabled.
+	// *   **deleting**: The VPC firewall is being deleted.
+	//
+	// >  If you do not specify this parameter, VPC firewalls in all states are queried.
+	FirewallSwitchStatus *string `json:"FirewallSwitchStatus,omitempty" xml:"FirewallSwitchStatus,omitempty"`
+	// The information about the intrusion prevention system (IPS) configuration.
+	IpsConfig *DescribeTrFirewallsV2ListResponseBodyVpcTrFirewallsIpsConfig `json:"IpsConfig,omitempty" xml:"IpsConfig,omitempty" type:"Struct"`
+	// The ID of the Alibaba Cloud account to which the VPC belongs.
+	OwnerId *int64 `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
+	// Indicates whether the VPC firewall can be automatically enabled. Valid values:
+	//
+	// *   **passed**: yes
+	// *   **failed**: no
+	// *   **unknown**
+	PrecheckStatus *string `json:"PrecheckStatus,omitempty" xml:"PrecheckStatus,omitempty"`
+	// The protected resources.
+	ProtectedResource *DescribeTrFirewallsV2ListResponseBodyVpcTrFirewallsProtectedResource `json:"ProtectedResource,omitempty" xml:"ProtectedResource,omitempty" type:"Struct"`
+	// The region ID of the transit router.
+	RegionNo *string `json:"RegionNo,omitempty" xml:"RegionNo,omitempty"`
+	// Indicates whether you can create a VPC firewall in a specified region. Valid values:
+	//
+	// *   **enable**: yes
+	// *   **disable**: no
+	RegionStatus *string `json:"RegionStatus,omitempty" xml:"RegionStatus,omitempty"`
+	// The result code of the operation that creates the VPC firewall. Valid values:
+	//
+	// *   **RegionDisable**: VPC Firewall is not supported in the region of the network instance. You cannot create a VPC firewall for the network instance.
+	// *   **Empty string**: You can create a VPC firewall for the network instance.
+	ResultCode *string `json:"ResultCode,omitempty" xml:"ResultCode,omitempty"`
+	// The routing mode of the VPC firewall. Valid values:
+	//
+	// *   **managed**: automatic mode
+	// *   **manual**: manual mode
+	RouteMode *string `json:"RouteMode,omitempty" xml:"RouteMode,omitempty"`
+	// The ID of the transit router.
+	TransitRouterId *string `json:"TransitRouterId,omitempty" xml:"TransitRouterId,omitempty"`
+	// The unprotected resources.
+	UnprotectedResource *DescribeTrFirewallsV2ListResponseBodyVpcTrFirewallsUnprotectedResource `json:"UnprotectedResource,omitempty" xml:"UnprotectedResource,omitempty" type:"Struct"`
+	// The instance name of the VPC firewall.
+	VpcFirewallName *string `json:"VpcFirewallName,omitempty" xml:"VpcFirewallName,omitempty"`
 }
 
 func (s DescribeTrFirewallsV2ListResponseBodyVpcTrFirewalls) String() string {
@@ -8386,9 +8829,21 @@ func (s *DescribeTrFirewallsV2ListResponseBodyVpcTrFirewalls) SetVpcFirewallName
 }
 
 type DescribeTrFirewallsV2ListResponseBodyVpcTrFirewallsIpsConfig struct {
-	BasicRules     *int32 `json:"BasicRules,omitempty" xml:"BasicRules,omitempty"`
+	// Indicates whether basic protection is enabled. Valid values:
+	//
+	// *   **1**: yes
+	// *   **0**: no
+	BasicRules *int32 `json:"BasicRules,omitempty" xml:"BasicRules,omitempty"`
+	// Indicates whether virtual patching is enabled. Valid values:
+	//
+	// *   **1**: yes
+	// *   **0**: no
 	EnableAllPatch *int32 `json:"EnableAllPatch,omitempty" xml:"EnableAllPatch,omitempty"`
-	RunMode        *int32 `json:"RunMode,omitempty" xml:"RunMode,omitempty"`
+	// The mode of the IPS. Valid values:
+	//
+	// *   **1**: block mode
+	// *   **0**: monitor mode
+	RunMode *int32 `json:"RunMode,omitempty" xml:"RunMode,omitempty"`
 }
 
 func (s DescribeTrFirewallsV2ListResponseBodyVpcTrFirewallsIpsConfig) String() string {
@@ -8415,11 +8870,16 @@ func (s *DescribeTrFirewallsV2ListResponseBodyVpcTrFirewallsIpsConfig) SetRunMod
 }
 
 type DescribeTrFirewallsV2ListResponseBodyVpcTrFirewallsProtectedResource struct {
-	Count      *int32    `json:"Count,omitempty" xml:"Count,omitempty"`
+	// The number of protected resources.
+	Count *int32 `json:"Count,omitempty" xml:"Count,omitempty"`
+	// The protected peer transit routers.
 	PeerTrList []*string `json:"PeerTrList,omitempty" xml:"PeerTrList,omitempty" type:"Repeated"`
-	VbrList    []*string `json:"VbrList,omitempty" xml:"VbrList,omitempty" type:"Repeated"`
-	VpcList    []*string `json:"VpcList,omitempty" xml:"VpcList,omitempty" type:"Repeated"`
-	VpnList    []*string `json:"VpnList,omitempty" xml:"VpnList,omitempty" type:"Repeated"`
+	// The protected virtual border routers (VBRs).
+	VbrList []*string `json:"VbrList,omitempty" xml:"VbrList,omitempty" type:"Repeated"`
+	// The protected VPCs.
+	VpcList []*string `json:"VpcList,omitempty" xml:"VpcList,omitempty" type:"Repeated"`
+	// The protected VPN gateways.
+	VpnList []*string `json:"VpnList,omitempty" xml:"VpnList,omitempty" type:"Repeated"`
 }
 
 func (s DescribeTrFirewallsV2ListResponseBodyVpcTrFirewallsProtectedResource) String() string {
@@ -8456,11 +8916,16 @@ func (s *DescribeTrFirewallsV2ListResponseBodyVpcTrFirewallsProtectedResource) S
 }
 
 type DescribeTrFirewallsV2ListResponseBodyVpcTrFirewallsUnprotectedResource struct {
-	Count      *int32    `json:"Count,omitempty" xml:"Count,omitempty"`
+	// The number of unprotected resources.
+	Count *int32 `json:"Count,omitempty" xml:"Count,omitempty"`
+	// The unprotected peer transit routers.
 	PeerTrList []*string `json:"PeerTrList,omitempty" xml:"PeerTrList,omitempty" type:"Repeated"`
-	VbrList    []*string `json:"VbrList,omitempty" xml:"VbrList,omitempty" type:"Repeated"`
-	VpcList    []*string `json:"VpcList,omitempty" xml:"VpcList,omitempty" type:"Repeated"`
-	VpnList    []*string `json:"VpnList,omitempty" xml:"VpnList,omitempty" type:"Repeated"`
+	// The unprotected VBRs.
+	VbrList []*string `json:"VbrList,omitempty" xml:"VbrList,omitempty" type:"Repeated"`
+	// The unprotected VPCs.
+	VpcList []*string `json:"VpcList,omitempty" xml:"VpcList,omitempty" type:"Repeated"`
+	// The unprotected VPN gateways.
+	VpnList []*string `json:"VpnList,omitempty" xml:"VpnList,omitempty" type:"Repeated"`
 }
 
 func (s DescribeTrFirewallsV2ListResponseBodyVpcTrFirewallsUnprotectedResource) String() string {
@@ -9157,8 +9622,9 @@ type DescribeVpcFirewallCenDetailResponseBody struct {
 	// *   **opened**: enabled
 	// *   **closed**: disabled
 	// *   **notconfigured**: not configured
-	FirewallSwitchStatus *string                                              `json:"FirewallSwitchStatus,omitempty" xml:"FirewallSwitchStatus,omitempty"`
-	FirewallVpc          *DescribeVpcFirewallCenDetailResponseBodyFirewallVpc `json:"FirewallVpc,omitempty" xml:"FirewallVpc,omitempty" type:"Struct"`
+	FirewallSwitchStatus *string `json:"FirewallSwitchStatus,omitempty" xml:"FirewallSwitchStatus,omitempty"`
+	// The VPC that is automatically created for the firewall.
+	FirewallVpc *DescribeVpcFirewallCenDetailResponseBodyFirewallVpc `json:"FirewallVpc,omitempty" xml:"FirewallVpc,omitempty" type:"Struct"`
 	// The details about the VPC.
 	LocalVpc *DescribeVpcFirewallCenDetailResponseBodyLocalVpc `json:"LocalVpc,omitempty" xml:"LocalVpc,omitempty" type:"Struct"`
 	// The ID of the request.
@@ -9213,12 +9679,21 @@ func (s *DescribeVpcFirewallCenDetailResponseBody) SetVpcFirewallName(v string) 
 }
 
 type DescribeVpcFirewallCenDetailResponseBodyFirewallVpc struct {
-	AllowConfiguration *int32  `json:"AllowConfiguration,omitempty" xml:"AllowConfiguration,omitempty"`
-	VpcCidr            *string `json:"VpcCidr,omitempty" xml:"VpcCidr,omitempty"`
-	VpcId              *string `json:"VpcId,omitempty" xml:"VpcId,omitempty"`
-	VswitchCidr        *string `json:"VswitchCidr,omitempty" xml:"VswitchCidr,omitempty"`
-	VswitchId          *string `json:"VswitchId,omitempty" xml:"VswitchId,omitempty"`
-	ZoneId             *string `json:"ZoneId,omitempty" xml:"ZoneId,omitempty"`
+	// Indicates whether you can specify a CIDR block when you create a VPC firewall for a Basic Edition transit router of a CEN instance. Valid values:
+	//
+	// *   **1**: yes
+	// *   **0**: no
+	AllowConfiguration *int32 `json:"AllowConfiguration,omitempty" xml:"AllowConfiguration,omitempty"`
+	// The CIDR block of the VPC.
+	VpcCidr *string `json:"VpcCidr,omitempty" xml:"VpcCidr,omitempty"`
+	// The VPC ID.
+	VpcId *string `json:"VpcId,omitempty" xml:"VpcId,omitempty"`
+	// The CIDR block of the vSwitch.
+	VswitchCidr *string `json:"VswitchCidr,omitempty" xml:"VswitchCidr,omitempty"`
+	// The vSwitch ID.
+	VswitchId *string `json:"VswitchId,omitempty" xml:"VswitchId,omitempty"`
+	// The zone ID.
+	ZoneId *string `json:"ZoneId,omitempty" xml:"ZoneId,omitempty"`
 }
 
 func (s DescribeVpcFirewallCenDetailResponseBodyFirewallVpc) String() string {
@@ -9266,7 +9741,7 @@ type DescribeVpcFirewallCenDetailResponseBodyLocalVpc struct {
 	AttachmentName *string `json:"AttachmentName,omitempty" xml:"AttachmentName,omitempty"`
 	// An array consisting of the CIDR blocks that are protected by the VPC firewall.
 	DefendCidrList []*string `json:"DefendCidrList,omitempty" xml:"DefendCidrList,omitempty" type:"Repeated"`
-	// An array that consists of the elastic network interfaces (ENIs).
+	// The Elastic Network Interfaces (ENIs).
 	EniList []*DescribeVpcFirewallCenDetailResponseBodyLocalVpcEniList `json:"EniList,omitempty" xml:"EniList,omitempty" type:"Repeated"`
 	// The ID of the specified vSwitch when the routing mode is manual.
 	ManualVSwitchId *string `json:"ManualVSwitchId,omitempty" xml:"ManualVSwitchId,omitempty"`
@@ -9403,7 +9878,8 @@ type DescribeVpcFirewallCenDetailResponseBodyLocalVpcEniList struct {
 	EniId *string `json:"EniId,omitempty" xml:"EniId,omitempty"`
 	// The private IP address of the ENI that belongs to the VPC.
 	EniPrivateIpAddress *string `json:"EniPrivateIpAddress,omitempty" xml:"EniPrivateIpAddress,omitempty"`
-	EniVSwitchId        *string `json:"EniVSwitchId,omitempty" xml:"EniVSwitchId,omitempty"`
+	// The ID of the vSwitch to which the ENI is connected.
+	EniVSwitchId *string `json:"EniVSwitchId,omitempty" xml:"EniVSwitchId,omitempty"`
 }
 
 func (s DescribeVpcFirewallCenDetailResponseBodyLocalVpcEniList) String() string {
@@ -9430,7 +9906,7 @@ func (s *DescribeVpcFirewallCenDetailResponseBodyLocalVpcEniList) SetEniVSwitchI
 }
 
 type DescribeVpcFirewallCenDetailResponseBodyLocalVpcVpcCidrTableList struct {
-	// An array that consists of the route entries for the VPC.
+	// The route entries for the VPC.
 	RouteEntryList []*DescribeVpcFirewallCenDetailResponseBodyLocalVpcVpcCidrTableListRouteEntryList `json:"RouteEntryList,omitempty" xml:"RouteEntryList,omitempty" type:"Repeated"`
 	// The route table ID of the VPC.
 	RouteTableId *string `json:"RouteTableId,omitempty" xml:"RouteTableId,omitempty"`
@@ -10064,7 +10540,8 @@ type DescribeVpcFirewallControlPolicyRequest struct {
 	//
 	// *   **true**: The access control policy is enabled.
 	// *   **false**: The access control policy is disabled.
-	Release *string `json:"Release,omitempty" xml:"Release,omitempty"`
+	Release    *string `json:"Release,omitempty" xml:"Release,omitempty"`
+	RepeatType *string `json:"RepeatType,omitempty" xml:"RepeatType,omitempty"`
 	// The source address in the access control policy. Fuzzy match is supported.
 	//
 	// > The value of this parameter can be a CIDR block or an address book name.
@@ -10133,6 +10610,11 @@ func (s *DescribeVpcFirewallControlPolicyRequest) SetProto(v string) *DescribeVp
 
 func (s *DescribeVpcFirewallControlPolicyRequest) SetRelease(v string) *DescribeVpcFirewallControlPolicyRequest {
 	s.Release = &v
+	return s
+}
+
+func (s *DescribeVpcFirewallControlPolicyRequest) SetRepeatType(v string) *DescribeVpcFirewallControlPolicyRequest {
+	s.RepeatType = &v
 	return s
 }
 
@@ -10207,6 +10689,7 @@ type DescribeVpcFirewallControlPolicyResponseBodyPolicys struct {
 	// *   **ANY**: all application types
 	ApplicationName     *string   `json:"ApplicationName,omitempty" xml:"ApplicationName,omitempty"`
 	ApplicationNameList []*string `json:"ApplicationNameList,omitempty" xml:"ApplicationNameList,omitempty" type:"Repeated"`
+	CreateTime          *int64    `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
 	// The description of the access control policy.
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
 	// The destination port in the access control policy.
@@ -10239,6 +10722,7 @@ type DescribeVpcFirewallControlPolicyResponseBodyPolicys struct {
 	// *   **group**: address book
 	// *   **domain**: domain name
 	DestinationType *string `json:"DestinationType,omitempty" xml:"DestinationType,omitempty"`
+	EndTime         *int64  `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
 	HitLastTime     *int64  `json:"HitLastTime,omitempty" xml:"HitLastTime,omitempty"`
 	// The number of hits for the access control policy.
 	HitTimes *int64 `json:"HitTimes,omitempty" xml:"HitTimes,omitempty"`
@@ -10260,7 +10744,11 @@ type DescribeVpcFirewallControlPolicyResponseBodyPolicys struct {
 	//
 	// *   **true**: The access control policy is enabled.
 	// *   **false**: The access control policy is disabled.
-	Release *string `json:"Release,omitempty" xml:"Release,omitempty"`
+	Release         *string  `json:"Release,omitempty" xml:"Release,omitempty"`
+	RepeatDays      []*int64 `json:"RepeatDays,omitempty" xml:"RepeatDays,omitempty" type:"Repeated"`
+	RepeatEndTime   *string  `json:"RepeatEndTime,omitempty" xml:"RepeatEndTime,omitempty"`
+	RepeatStartTime *string  `json:"RepeatStartTime,omitempty" xml:"RepeatStartTime,omitempty"`
+	RepeatType      *string  `json:"RepeatType,omitempty" xml:"RepeatType,omitempty"`
 	// The source address in the access control policy. Valid values:
 	//
 	// *   If **SourceType** is set to `net`, the value of this parameter is a CIDR block.
@@ -10275,6 +10763,8 @@ type DescribeVpcFirewallControlPolicyResponseBodyPolicys struct {
 	// *   **net**: CIDR block
 	// *   **group**: address book
 	SourceType *string `json:"SourceType,omitempty" xml:"SourceType,omitempty"`
+	SpreadCnt  *int64  `json:"SpreadCnt,omitempty" xml:"SpreadCnt,omitempty"`
+	StartTime  *int64  `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
 }
 
 func (s DescribeVpcFirewallControlPolicyResponseBodyPolicys) String() string {
@@ -10307,6 +10797,11 @@ func (s *DescribeVpcFirewallControlPolicyResponseBodyPolicys) SetApplicationName
 
 func (s *DescribeVpcFirewallControlPolicyResponseBodyPolicys) SetApplicationNameList(v []*string) *DescribeVpcFirewallControlPolicyResponseBodyPolicys {
 	s.ApplicationNameList = v
+	return s
+}
+
+func (s *DescribeVpcFirewallControlPolicyResponseBodyPolicys) SetCreateTime(v int64) *DescribeVpcFirewallControlPolicyResponseBodyPolicys {
+	s.CreateTime = &v
 	return s
 }
 
@@ -10355,6 +10850,11 @@ func (s *DescribeVpcFirewallControlPolicyResponseBodyPolicys) SetDestinationType
 	return s
 }
 
+func (s *DescribeVpcFirewallControlPolicyResponseBodyPolicys) SetEndTime(v int64) *DescribeVpcFirewallControlPolicyResponseBodyPolicys {
+	s.EndTime = &v
+	return s
+}
+
 func (s *DescribeVpcFirewallControlPolicyResponseBodyPolicys) SetHitLastTime(v int64) *DescribeVpcFirewallControlPolicyResponseBodyPolicys {
 	s.HitLastTime = &v
 	return s
@@ -10390,6 +10890,26 @@ func (s *DescribeVpcFirewallControlPolicyResponseBodyPolicys) SetRelease(v strin
 	return s
 }
 
+func (s *DescribeVpcFirewallControlPolicyResponseBodyPolicys) SetRepeatDays(v []*int64) *DescribeVpcFirewallControlPolicyResponseBodyPolicys {
+	s.RepeatDays = v
+	return s
+}
+
+func (s *DescribeVpcFirewallControlPolicyResponseBodyPolicys) SetRepeatEndTime(v string) *DescribeVpcFirewallControlPolicyResponseBodyPolicys {
+	s.RepeatEndTime = &v
+	return s
+}
+
+func (s *DescribeVpcFirewallControlPolicyResponseBodyPolicys) SetRepeatStartTime(v string) *DescribeVpcFirewallControlPolicyResponseBodyPolicys {
+	s.RepeatStartTime = &v
+	return s
+}
+
+func (s *DescribeVpcFirewallControlPolicyResponseBodyPolicys) SetRepeatType(v string) *DescribeVpcFirewallControlPolicyResponseBodyPolicys {
+	s.RepeatType = &v
+	return s
+}
+
 func (s *DescribeVpcFirewallControlPolicyResponseBodyPolicys) SetSource(v string) *DescribeVpcFirewallControlPolicyResponseBodyPolicys {
 	s.Source = &v
 	return s
@@ -10407,6 +10927,16 @@ func (s *DescribeVpcFirewallControlPolicyResponseBodyPolicys) SetSourceGroupType
 
 func (s *DescribeVpcFirewallControlPolicyResponseBodyPolicys) SetSourceType(v string) *DescribeVpcFirewallControlPolicyResponseBodyPolicys {
 	s.SourceType = &v
+	return s
+}
+
+func (s *DescribeVpcFirewallControlPolicyResponseBodyPolicys) SetSpreadCnt(v int64) *DescribeVpcFirewallControlPolicyResponseBodyPolicys {
+	s.SpreadCnt = &v
+	return s
+}
+
+func (s *DescribeVpcFirewallControlPolicyResponseBodyPolicys) SetStartTime(v int64) *DescribeVpcFirewallControlPolicyResponseBodyPolicys {
+	s.StartTime = &v
 	return s
 }
 
@@ -12286,6 +12816,7 @@ type ModifyControlPolicyRequest struct {
 	// *   **in**: inbound traffic
 	// *   **out**: outbound traffic
 	Direction *string `json:"Direction,omitempty" xml:"Direction,omitempty"`
+	EndTime   *int64  `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
 	// The language of the content within the request and response. Valid values:
 	//
 	// *   **zh**: Chinese (default)
@@ -12304,7 +12835,11 @@ type ModifyControlPolicyRequest struct {
 	//
 	// *   true: enabled
 	// *   false: disabled
-	Release *string `json:"Release,omitempty" xml:"Release,omitempty"`
+	Release         *string  `json:"Release,omitempty" xml:"Release,omitempty"`
+	RepeatDays      []*int64 `json:"RepeatDays,omitempty" xml:"RepeatDays,omitempty" type:"Repeated"`
+	RepeatEndTime   *string  `json:"RepeatEndTime,omitempty" xml:"RepeatEndTime,omitempty"`
+	RepeatStartTime *string  `json:"RepeatStartTime,omitempty" xml:"RepeatStartTime,omitempty"`
+	RepeatType      *string  `json:"RepeatType,omitempty" xml:"RepeatType,omitempty"`
 	// The source address in the access control policy.
 	//
 	// *   If **SourceType** is set to net, the value of **Source** is a CIDR block. Example: 1.2.XX.XX/24
@@ -12317,6 +12852,7 @@ type ModifyControlPolicyRequest struct {
 	// *   **group**: source address book
 	// *   **location**: source location
 	SourceType *string `json:"SourceType,omitempty" xml:"SourceType,omitempty"`
+	StartTime  *int64  `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
 }
 
 func (s ModifyControlPolicyRequest) String() string {
@@ -12382,6 +12918,11 @@ func (s *ModifyControlPolicyRequest) SetDirection(v string) *ModifyControlPolicy
 	return s
 }
 
+func (s *ModifyControlPolicyRequest) SetEndTime(v int64) *ModifyControlPolicyRequest {
+	s.EndTime = &v
+	return s
+}
+
 func (s *ModifyControlPolicyRequest) SetLang(v string) *ModifyControlPolicyRequest {
 	s.Lang = &v
 	return s
@@ -12397,6 +12938,26 @@ func (s *ModifyControlPolicyRequest) SetRelease(v string) *ModifyControlPolicyRe
 	return s
 }
 
+func (s *ModifyControlPolicyRequest) SetRepeatDays(v []*int64) *ModifyControlPolicyRequest {
+	s.RepeatDays = v
+	return s
+}
+
+func (s *ModifyControlPolicyRequest) SetRepeatEndTime(v string) *ModifyControlPolicyRequest {
+	s.RepeatEndTime = &v
+	return s
+}
+
+func (s *ModifyControlPolicyRequest) SetRepeatStartTime(v string) *ModifyControlPolicyRequest {
+	s.RepeatStartTime = &v
+	return s
+}
+
+func (s *ModifyControlPolicyRequest) SetRepeatType(v string) *ModifyControlPolicyRequest {
+	s.RepeatType = &v
+	return s
+}
+
 func (s *ModifyControlPolicyRequest) SetSource(v string) *ModifyControlPolicyRequest {
 	s.Source = &v
 	return s
@@ -12404,6 +12965,11 @@ func (s *ModifyControlPolicyRequest) SetSource(v string) *ModifyControlPolicyReq
 
 func (s *ModifyControlPolicyRequest) SetSourceType(v string) *ModifyControlPolicyRequest {
 	s.SourceType = &v
+	return s
+}
+
+func (s *ModifyControlPolicyRequest) SetStartTime(v int64) *ModifyControlPolicyRequest {
+	s.StartTime = &v
 	return s
 }
 
@@ -12902,6 +13468,7 @@ type ModifyNatFirewallControlPolicyRequest struct {
 	// *   **1**: Domain Name System (DNS)-based dynamic resolution
 	// *   **2**: FQDN and DNS-based dynamic resolution
 	DomainResolveType *string `json:"DomainResolveType,omitempty" xml:"DomainResolveType,omitempty"`
+	EndTime           *int64  `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
 	// The language of the content within the request and the response. Valid values:
 	//
 	// *   **zh**: Chinese (default)
@@ -12922,7 +13489,11 @@ type ModifyNatFirewallControlPolicyRequest struct {
 	//
 	// *   true: enabled
 	// *   false: disabled
-	Release *string `json:"Release,omitempty" xml:"Release,omitempty"`
+	Release         *string  `json:"Release,omitempty" xml:"Release,omitempty"`
+	RepeatDays      []*int64 `json:"RepeatDays,omitempty" xml:"RepeatDays,omitempty" type:"Repeated"`
+	RepeatEndTime   *string  `json:"RepeatEndTime,omitempty" xml:"RepeatEndTime,omitempty"`
+	RepeatStartTime *string  `json:"RepeatStartTime,omitempty" xml:"RepeatStartTime,omitempty"`
+	RepeatType      *string  `json:"RepeatType,omitempty" xml:"RepeatType,omitempty"`
 	// The source address in the access control policy.
 	//
 	// Valid values:
@@ -12942,6 +13513,7 @@ type ModifyNatFirewallControlPolicyRequest struct {
 	// *   **net**: CIDR block
 	// *   **group**: address book
 	SourceType *string `json:"SourceType,omitempty" xml:"SourceType,omitempty"`
+	StartTime  *int64  `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
 }
 
 func (s ModifyNatFirewallControlPolicyRequest) String() string {
@@ -13002,6 +13574,11 @@ func (s *ModifyNatFirewallControlPolicyRequest) SetDomainResolveType(v string) *
 	return s
 }
 
+func (s *ModifyNatFirewallControlPolicyRequest) SetEndTime(v int64) *ModifyNatFirewallControlPolicyRequest {
+	s.EndTime = &v
+	return s
+}
+
 func (s *ModifyNatFirewallControlPolicyRequest) SetLang(v string) *ModifyNatFirewallControlPolicyRequest {
 	s.Lang = &v
 	return s
@@ -13022,6 +13599,26 @@ func (s *ModifyNatFirewallControlPolicyRequest) SetRelease(v string) *ModifyNatF
 	return s
 }
 
+func (s *ModifyNatFirewallControlPolicyRequest) SetRepeatDays(v []*int64) *ModifyNatFirewallControlPolicyRequest {
+	s.RepeatDays = v
+	return s
+}
+
+func (s *ModifyNatFirewallControlPolicyRequest) SetRepeatEndTime(v string) *ModifyNatFirewallControlPolicyRequest {
+	s.RepeatEndTime = &v
+	return s
+}
+
+func (s *ModifyNatFirewallControlPolicyRequest) SetRepeatStartTime(v string) *ModifyNatFirewallControlPolicyRequest {
+	s.RepeatStartTime = &v
+	return s
+}
+
+func (s *ModifyNatFirewallControlPolicyRequest) SetRepeatType(v string) *ModifyNatFirewallControlPolicyRequest {
+	s.RepeatType = &v
+	return s
+}
+
 func (s *ModifyNatFirewallControlPolicyRequest) SetSource(v string) *ModifyNatFirewallControlPolicyRequest {
 	s.Source = &v
 	return s
@@ -13029,6 +13626,11 @@ func (s *ModifyNatFirewallControlPolicyRequest) SetSource(v string) *ModifyNatFi
 
 func (s *ModifyNatFirewallControlPolicyRequest) SetSourceType(v string) *ModifyNatFirewallControlPolicyRequest {
 	s.SourceType = &v
+	return s
+}
+
+func (s *ModifyNatFirewallControlPolicyRequest) SetStartTime(v int64) *ModifyNatFirewallControlPolicyRequest {
+	s.StartTime = &v
 	return s
 }
 
@@ -13980,6 +14582,7 @@ type ModifyVpcFirewallControlPolicyRequest struct {
 	// *   **group**: address book
 	// *   **domain**: domain name
 	DestinationType *string `json:"DestinationType,omitempty" xml:"DestinationType,omitempty"`
+	EndTime         *int64  `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
 	// The language of the content within the response.
 	//
 	// Valid values:
@@ -14000,7 +14603,11 @@ type ModifyVpcFirewallControlPolicyRequest struct {
 	//
 	// *   **true**: enables the access control policy.
 	// *   **false**: disables the access control policy.
-	Release *string `json:"Release,omitempty" xml:"Release,omitempty"`
+	Release         *string  `json:"Release,omitempty" xml:"Release,omitempty"`
+	RepeatDays      []*int64 `json:"RepeatDays,omitempty" xml:"RepeatDays,omitempty" type:"Repeated"`
+	RepeatEndTime   *string  `json:"RepeatEndTime,omitempty" xml:"RepeatEndTime,omitempty"`
+	RepeatStartTime *string  `json:"RepeatStartTime,omitempty" xml:"RepeatStartTime,omitempty"`
+	RepeatType      *string  `json:"RepeatType,omitempty" xml:"RepeatType,omitempty"`
 	// The source address in the access control policy.
 	//
 	// Valid values:
@@ -14020,6 +14627,7 @@ type ModifyVpcFirewallControlPolicyRequest struct {
 	// *   **net**: CIDR block
 	// *   **group**: address book
 	SourceType *string `json:"SourceType,omitempty" xml:"SourceType,omitempty"`
+	StartTime  *int64  `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
 	// The instance ID of the VPC firewall. You can call the [DescribeVpcFirewallAclGroupList](~~159760~~) operation to query the ID.
 	//
 	// *   If the VPC firewall is used to protect a CEN instance, the value of this parameter must be the ID of the CEN instance.
@@ -14090,6 +14698,11 @@ func (s *ModifyVpcFirewallControlPolicyRequest) SetDestinationType(v string) *Mo
 	return s
 }
 
+func (s *ModifyVpcFirewallControlPolicyRequest) SetEndTime(v int64) *ModifyVpcFirewallControlPolicyRequest {
+	s.EndTime = &v
+	return s
+}
+
 func (s *ModifyVpcFirewallControlPolicyRequest) SetLang(v string) *ModifyVpcFirewallControlPolicyRequest {
 	s.Lang = &v
 	return s
@@ -14105,6 +14718,26 @@ func (s *ModifyVpcFirewallControlPolicyRequest) SetRelease(v string) *ModifyVpcF
 	return s
 }
 
+func (s *ModifyVpcFirewallControlPolicyRequest) SetRepeatDays(v []*int64) *ModifyVpcFirewallControlPolicyRequest {
+	s.RepeatDays = v
+	return s
+}
+
+func (s *ModifyVpcFirewallControlPolicyRequest) SetRepeatEndTime(v string) *ModifyVpcFirewallControlPolicyRequest {
+	s.RepeatEndTime = &v
+	return s
+}
+
+func (s *ModifyVpcFirewallControlPolicyRequest) SetRepeatStartTime(v string) *ModifyVpcFirewallControlPolicyRequest {
+	s.RepeatStartTime = &v
+	return s
+}
+
+func (s *ModifyVpcFirewallControlPolicyRequest) SetRepeatType(v string) *ModifyVpcFirewallControlPolicyRequest {
+	s.RepeatType = &v
+	return s
+}
+
 func (s *ModifyVpcFirewallControlPolicyRequest) SetSource(v string) *ModifyVpcFirewallControlPolicyRequest {
 	s.Source = &v
 	return s
@@ -14112,6 +14745,11 @@ func (s *ModifyVpcFirewallControlPolicyRequest) SetSource(v string) *ModifyVpcFi
 
 func (s *ModifyVpcFirewallControlPolicyRequest) SetSourceType(v string) *ModifyVpcFirewallControlPolicyRequest {
 	s.SourceType = &v
+	return s
+}
+
+func (s *ModifyVpcFirewallControlPolicyRequest) SetStartTime(v int64) *ModifyVpcFirewallControlPolicyRequest {
+	s.StartTime = &v
 	return s
 }
 
@@ -14836,6 +15474,7 @@ func (s *PutEnableFwSwitchRequest) SetSourceIp(v string) *PutEnableFwSwitchReque
 }
 
 type PutEnableFwSwitchResponseBody struct {
+	// The status information of the asset when it is not synchronized to Cloud Firewall.
 	AbnormalResourceStatusList []*PutEnableFwSwitchResponseBodyAbnormalResourceStatusList `json:"AbnormalResourceStatusList,omitempty" xml:"AbnormalResourceStatusList,omitempty" type:"Repeated"`
 	// The ID of the request.
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
@@ -14860,9 +15499,16 @@ func (s *PutEnableFwSwitchResponseBody) SetRequestId(v string) *PutEnableFwSwitc
 }
 
 type PutEnableFwSwitchResponseBodyAbnormalResourceStatusList struct {
-	Msg      *string `json:"Msg,omitempty" xml:"Msg,omitempty"`
+	// The message displayed when the asset is not synchronized to Cloud Firewall. Valid values:
+	//
+	// *   cloudfirewall do not sync this ip address: This IP address is not synchronized to Cloud Firewall.
+	Msg *string `json:"Msg,omitempty" xml:"Msg,omitempty"`
+	// The IP address of the asset.
 	Resource *string `json:"Resource,omitempty" xml:"Resource,omitempty"`
-	Status   *string `json:"Status,omitempty" xml:"Status,omitempty"`
+	// The status of the asset when it is not synchronized to Cloud Firewall. Valid values:
+	//
+	// *   ip_not_sync: The asset is not synchronized.
+	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
 }
 
 func (s PutEnableFwSwitchResponseBodyAbnormalResourceStatusList) String() string {
@@ -15138,6 +15784,15 @@ func (client *Client) AddAddressBook(request *AddAddressBookRequest) (_result *A
 	return _result, _err
 }
 
+/**
+ * You can call the AddControlPolicy operation to create an access control policy to allow, block, or monitor traffic that reaches Cloud Firewall.
+ * ## Limits
+ * You can call this operation up to 10 times per second per account. If the number of the calls per second exceeds the limit, throttling is triggered. As a result, your business may be affected. We recommend that you take note of the limit when you call this operation.
+ *
+ * @param request AddControlPolicyRequest
+ * @param runtime runtime options for this request RuntimeOptions
+ * @return AddControlPolicyResponse
+ */
 func (client *Client) AddControlPolicyWithOptions(request *AddControlPolicyRequest, runtime *util.RuntimeOptions) (_result *AddControlPolicyResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -15184,6 +15839,10 @@ func (client *Client) AddControlPolicyWithOptions(request *AddControlPolicyReque
 		query["Direction"] = request.Direction
 	}
 
+	if !tea.BoolValue(util.IsUnset(request.EndTime)) {
+		query["EndTime"] = request.EndTime
+	}
+
 	if !tea.BoolValue(util.IsUnset(request.IpVersion)) {
 		query["IpVersion"] = request.IpVersion
 	}
@@ -15204,6 +15863,22 @@ func (client *Client) AddControlPolicyWithOptions(request *AddControlPolicyReque
 		query["Release"] = request.Release
 	}
 
+	if !tea.BoolValue(util.IsUnset(request.RepeatDays)) {
+		query["RepeatDays"] = request.RepeatDays
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.RepeatEndTime)) {
+		query["RepeatEndTime"] = request.RepeatEndTime
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.RepeatStartTime)) {
+		query["RepeatStartTime"] = request.RepeatStartTime
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.RepeatType)) {
+		query["RepeatType"] = request.RepeatType
+	}
+
 	if !tea.BoolValue(util.IsUnset(request.Source)) {
 		query["Source"] = request.Source
 	}
@@ -15214,6 +15889,10 @@ func (client *Client) AddControlPolicyWithOptions(request *AddControlPolicyReque
 
 	if !tea.BoolValue(util.IsUnset(request.SourceType)) {
 		query["SourceType"] = request.SourceType
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.StartTime)) {
+		query["StartTime"] = request.StartTime
 	}
 
 	req := &openapi.OpenApiRequest{
@@ -15239,6 +15918,14 @@ func (client *Client) AddControlPolicyWithOptions(request *AddControlPolicyReque
 	return _result, _err
 }
 
+/**
+ * You can call the AddControlPolicy operation to create an access control policy to allow, block, or monitor traffic that reaches Cloud Firewall.
+ * ## Limits
+ * You can call this operation up to 10 times per second per account. If the number of the calls per second exceeds the limit, throttling is triggered. As a result, your business may be affected. We recommend that you take note of the limit when you call this operation.
+ *
+ * @param request AddControlPolicyRequest
+ * @return AddControlPolicyResponse
+ */
 func (client *Client) AddControlPolicy(request *AddControlPolicyRequest) (_result *AddControlPolicyResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &AddControlPolicyResponse{}
@@ -15443,6 +16130,10 @@ func (client *Client) CreateNatFirewallControlPolicyWithOptions(request *CreateN
 		query["DomainResolveType"] = request.DomainResolveType
 	}
 
+	if !tea.BoolValue(util.IsUnset(request.EndTime)) {
+		query["EndTime"] = request.EndTime
+	}
+
 	if !tea.BoolValue(util.IsUnset(request.IpVersion)) {
 		query["IpVersion"] = request.IpVersion
 	}
@@ -15467,12 +16158,32 @@ func (client *Client) CreateNatFirewallControlPolicyWithOptions(request *CreateN
 		query["Release"] = request.Release
 	}
 
+	if !tea.BoolValue(util.IsUnset(request.RepeatDays)) {
+		query["RepeatDays"] = request.RepeatDays
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.RepeatEndTime)) {
+		query["RepeatEndTime"] = request.RepeatEndTime
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.RepeatStartTime)) {
+		query["RepeatStartTime"] = request.RepeatStartTime
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.RepeatType)) {
+		query["RepeatType"] = request.RepeatType
+	}
+
 	if !tea.BoolValue(util.IsUnset(request.Source)) {
 		query["Source"] = request.Source
 	}
 
 	if !tea.BoolValue(util.IsUnset(request.SourceType)) {
 		query["SourceType"] = request.SourceType
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.StartTime)) {
+		query["StartTime"] = request.StartTime
 	}
 
 	req := &openapi.OpenApiRequest{
@@ -15934,6 +16645,10 @@ func (client *Client) CreateVpcFirewallControlPolicyWithOptions(request *CreateV
 		query["DestinationType"] = request.DestinationType
 	}
 
+	if !tea.BoolValue(util.IsUnset(request.EndTime)) {
+		query["EndTime"] = request.EndTime
+	}
+
 	if !tea.BoolValue(util.IsUnset(request.Lang)) {
 		query["Lang"] = request.Lang
 	}
@@ -15954,12 +16669,32 @@ func (client *Client) CreateVpcFirewallControlPolicyWithOptions(request *CreateV
 		query["Release"] = request.Release
 	}
 
+	if !tea.BoolValue(util.IsUnset(request.RepeatDays)) {
+		query["RepeatDays"] = request.RepeatDays
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.RepeatEndTime)) {
+		query["RepeatEndTime"] = request.RepeatEndTime
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.RepeatStartTime)) {
+		query["RepeatStartTime"] = request.RepeatStartTime
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.RepeatType)) {
+		query["RepeatType"] = request.RepeatType
+	}
+
 	if !tea.BoolValue(util.IsUnset(request.Source)) {
 		query["Source"] = request.Source
 	}
 
 	if !tea.BoolValue(util.IsUnset(request.SourceType)) {
 		query["SourceType"] = request.SourceType
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.StartTime)) {
+		query["StartTime"] = request.StartTime
 	}
 
 	if !tea.BoolValue(util.IsUnset(request.VpcFirewallId)) {
@@ -16840,6 +17575,10 @@ func (client *Client) DescribeControlPolicyWithOptions(request *DescribeControlP
 		query["Release"] = request.Release
 	}
 
+	if !tea.BoolValue(util.IsUnset(request.RepeatType)) {
+		query["RepeatType"] = request.RepeatType
+	}
+
 	if !tea.BoolValue(util.IsUnset(request.Source)) {
 		query["Source"] = request.Source
 	}
@@ -17419,6 +18158,10 @@ func (client *Client) DescribeNatFirewallControlPolicyWithOptions(request *Descr
 
 	if !tea.BoolValue(util.IsUnset(request.Release)) {
 		query["Release"] = request.Release
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.RepeatType)) {
+		query["RepeatType"] = request.RepeatType
 	}
 
 	if !tea.BoolValue(util.IsUnset(request.Source)) {
@@ -18795,6 +19538,10 @@ func (client *Client) DescribeVpcFirewallControlPolicyWithOptions(request *Descr
 		query["Release"] = request.Release
 	}
 
+	if !tea.BoolValue(util.IsUnset(request.RepeatType)) {
+		query["RepeatType"] = request.RepeatType
+	}
+
 	if !tea.BoolValue(util.IsUnset(request.Source)) {
 		query["Source"] = request.Source
 	}
@@ -19423,6 +20170,10 @@ func (client *Client) ModifyControlPolicyWithOptions(request *ModifyControlPolic
 		query["Direction"] = request.Direction
 	}
 
+	if !tea.BoolValue(util.IsUnset(request.EndTime)) {
+		query["EndTime"] = request.EndTime
+	}
+
 	if !tea.BoolValue(util.IsUnset(request.Lang)) {
 		query["Lang"] = request.Lang
 	}
@@ -19435,12 +20186,32 @@ func (client *Client) ModifyControlPolicyWithOptions(request *ModifyControlPolic
 		query["Release"] = request.Release
 	}
 
+	if !tea.BoolValue(util.IsUnset(request.RepeatDays)) {
+		query["RepeatDays"] = request.RepeatDays
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.RepeatEndTime)) {
+		query["RepeatEndTime"] = request.RepeatEndTime
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.RepeatStartTime)) {
+		query["RepeatStartTime"] = request.RepeatStartTime
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.RepeatType)) {
+		query["RepeatType"] = request.RepeatType
+	}
+
 	if !tea.BoolValue(util.IsUnset(request.Source)) {
 		query["Source"] = request.Source
 	}
 
 	if !tea.BoolValue(util.IsUnset(request.SourceType)) {
 		query["SourceType"] = request.SourceType
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.StartTime)) {
+		query["StartTime"] = request.StartTime
 	}
 
 	req := &openapi.OpenApiRequest{
@@ -19816,6 +20587,10 @@ func (client *Client) ModifyNatFirewallControlPolicyWithOptions(request *ModifyN
 		query["DomainResolveType"] = request.DomainResolveType
 	}
 
+	if !tea.BoolValue(util.IsUnset(request.EndTime)) {
+		query["EndTime"] = request.EndTime
+	}
+
 	if !tea.BoolValue(util.IsUnset(request.Lang)) {
 		query["Lang"] = request.Lang
 	}
@@ -19832,12 +20607,32 @@ func (client *Client) ModifyNatFirewallControlPolicyWithOptions(request *ModifyN
 		query["Release"] = request.Release
 	}
 
+	if !tea.BoolValue(util.IsUnset(request.RepeatDays)) {
+		query["RepeatDays"] = request.RepeatDays
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.RepeatEndTime)) {
+		query["RepeatEndTime"] = request.RepeatEndTime
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.RepeatStartTime)) {
+		query["RepeatStartTime"] = request.RepeatStartTime
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.RepeatType)) {
+		query["RepeatType"] = request.RepeatType
+	}
+
 	if !tea.BoolValue(util.IsUnset(request.Source)) {
 		query["Source"] = request.Source
 	}
 
 	if !tea.BoolValue(util.IsUnset(request.SourceType)) {
 		query["SourceType"] = request.SourceType
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.StartTime)) {
+		query["StartTime"] = request.StartTime
 	}
 
 	req := &openapi.OpenApiRequest{
@@ -20483,6 +21278,10 @@ func (client *Client) ModifyVpcFirewallControlPolicyWithOptions(request *ModifyV
 		query["DestinationType"] = request.DestinationType
 	}
 
+	if !tea.BoolValue(util.IsUnset(request.EndTime)) {
+		query["EndTime"] = request.EndTime
+	}
+
 	if !tea.BoolValue(util.IsUnset(request.Lang)) {
 		query["Lang"] = request.Lang
 	}
@@ -20495,12 +21294,32 @@ func (client *Client) ModifyVpcFirewallControlPolicyWithOptions(request *ModifyV
 		query["Release"] = request.Release
 	}
 
+	if !tea.BoolValue(util.IsUnset(request.RepeatDays)) {
+		query["RepeatDays"] = request.RepeatDays
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.RepeatEndTime)) {
+		query["RepeatEndTime"] = request.RepeatEndTime
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.RepeatStartTime)) {
+		query["RepeatStartTime"] = request.RepeatStartTime
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.RepeatType)) {
+		query["RepeatType"] = request.RepeatType
+	}
+
 	if !tea.BoolValue(util.IsUnset(request.Source)) {
 		query["Source"] = request.Source
 	}
 
 	if !tea.BoolValue(util.IsUnset(request.SourceType)) {
 		query["SourceType"] = request.SourceType
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.StartTime)) {
+		query["StartTime"] = request.StartTime
 	}
 
 	if !tea.BoolValue(util.IsUnset(request.VpcFirewallId)) {
