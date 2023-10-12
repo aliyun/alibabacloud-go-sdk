@@ -8235,7 +8235,8 @@ type DescribeClusterResourcesResponseBody struct {
 	//
 	// *   1: The resource is created by ACK.
 	// *   0: The resource is an existing resource.
-	AutoCreate *int64 `json:"auto_create,omitempty" xml:"auto_create,omitempty"`
+	AutoCreate   *int64                                            `json:"auto_create,omitempty" xml:"auto_create,omitempty"`
+	Dependencies *DescribeClusterResourcesResponseBodyDependencies `json:"dependencies,omitempty" xml:"dependencies,omitempty" type:"Struct"`
 }
 
 func (s DescribeClusterResourcesResponseBody) String() string {
@@ -8278,6 +8279,40 @@ func (s *DescribeClusterResourcesResponseBody) SetState(v string) *DescribeClust
 
 func (s *DescribeClusterResourcesResponseBody) SetAutoCreate(v int64) *DescribeClusterResourcesResponseBody {
 	s.AutoCreate = &v
+	return s
+}
+
+func (s *DescribeClusterResourcesResponseBody) SetDependencies(v *DescribeClusterResourcesResponseBodyDependencies) *DescribeClusterResourcesResponseBody {
+	s.Dependencies = v
+	return s
+}
+
+type DescribeClusterResourcesResponseBodyDependencies struct {
+	ClusterId    *string `json:"cluster_id,omitempty" xml:"cluster_id,omitempty"`
+	ResourceType *string `json:"resource_type,omitempty" xml:"resource_type,omitempty"`
+	InstanceId   *string `json:"instance_id,omitempty" xml:"instance_id,omitempty"`
+}
+
+func (s DescribeClusterResourcesResponseBodyDependencies) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeClusterResourcesResponseBodyDependencies) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeClusterResourcesResponseBodyDependencies) SetClusterId(v string) *DescribeClusterResourcesResponseBodyDependencies {
+	s.ClusterId = &v
+	return s
+}
+
+func (s *DescribeClusterResourcesResponseBodyDependencies) SetResourceType(v string) *DescribeClusterResourcesResponseBodyDependencies {
+	s.ResourceType = &v
+	return s
+}
+
+func (s *DescribeClusterResourcesResponseBodyDependencies) SetInstanceId(v string) *DescribeClusterResourcesResponseBodyDependencies {
+	s.InstanceId = &v
 	return s
 }
 
