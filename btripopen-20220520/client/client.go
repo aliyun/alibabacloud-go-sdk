@@ -4358,23 +4358,24 @@ func (s *ApplyAddRequestHotelShare) SetType(v string) *ApplyAddRequestHotelShare
 }
 
 type ApplyAddRequestItineraryList struct {
-	ArrCity               *string `json:"arr_city,omitempty" xml:"arr_city,omitempty"`
-	ArrCityCode           *string `json:"arr_city_code,omitempty" xml:"arr_city_code,omitempty"`
-	ArrDate               *string `json:"arr_date,omitempty" xml:"arr_date,omitempty"`
-	CostCenterId          *int64  `json:"cost_center_id,omitempty" xml:"cost_center_id,omitempty"`
-	DepCity               *string `json:"dep_city,omitempty" xml:"dep_city,omitempty"`
-	DepCityCode           *string `json:"dep_city_code,omitempty" xml:"dep_city_code,omitempty"`
-	DepDate               *string `json:"dep_date,omitempty" xml:"dep_date,omitempty"`
-	InvoiceId             *int64  `json:"invoice_id,omitempty" xml:"invoice_id,omitempty"`
-	ItineraryId           *string `json:"itinerary_id,omitempty" xml:"itinerary_id,omitempty"`
-	NeedHotel             *bool   `json:"need_hotel,omitempty" xml:"need_hotel,omitempty"`
-	NeedTraffic           *bool   `json:"need_traffic,omitempty" xml:"need_traffic,omitempty"`
-	ProjectCode           *string `json:"project_code,omitempty" xml:"project_code,omitempty"`
-	ProjectTitle          *string `json:"project_title,omitempty" xml:"project_title,omitempty"`
-	ThirdPartInvoiceId    *string `json:"third_part_invoice_id,omitempty" xml:"third_part_invoice_id,omitempty"`
-	ThirdpartCostCenterId *string `json:"thirdpart_cost_center_id,omitempty" xml:"thirdpart_cost_center_id,omitempty"`
-	TrafficType           *int32  `json:"traffic_type,omitempty" xml:"traffic_type,omitempty"`
-	TripWay               *int32  `json:"trip_way,omitempty" xml:"trip_way,omitempty"`
+	ArrCity                 *string                                              `json:"arr_city,omitempty" xml:"arr_city,omitempty"`
+	ArrCityCode             *string                                              `json:"arr_city_code,omitempty" xml:"arr_city_code,omitempty"`
+	ArrDate                 *string                                              `json:"arr_date,omitempty" xml:"arr_date,omitempty"`
+	CostCenterId            *int64                                               `json:"cost_center_id,omitempty" xml:"cost_center_id,omitempty"`
+	DepCity                 *string                                              `json:"dep_city,omitempty" xml:"dep_city,omitempty"`
+	DepCityCode             *string                                              `json:"dep_city_code,omitempty" xml:"dep_city_code,omitempty"`
+	DepDate                 *string                                              `json:"dep_date,omitempty" xml:"dep_date,omitempty"`
+	InvoiceId               *int64                                               `json:"invoice_id,omitempty" xml:"invoice_id,omitempty"`
+	ItineraryId             *string                                              `json:"itinerary_id,omitempty" xml:"itinerary_id,omitempty"`
+	ItineraryTravelStandard *ApplyAddRequestItineraryListItineraryTravelStandard `json:"itinerary_travel_standard,omitempty" xml:"itinerary_travel_standard,omitempty" type:"Struct"`
+	NeedHotel               *bool                                                `json:"need_hotel,omitempty" xml:"need_hotel,omitempty"`
+	NeedTraffic             *bool                                                `json:"need_traffic,omitempty" xml:"need_traffic,omitempty"`
+	ProjectCode             *string                                              `json:"project_code,omitempty" xml:"project_code,omitempty"`
+	ProjectTitle            *string                                              `json:"project_title,omitempty" xml:"project_title,omitempty"`
+	ThirdPartInvoiceId      *string                                              `json:"third_part_invoice_id,omitempty" xml:"third_part_invoice_id,omitempty"`
+	ThirdpartCostCenterId   *string                                              `json:"thirdpart_cost_center_id,omitempty" xml:"thirdpart_cost_center_id,omitempty"`
+	TrafficType             *int32                                               `json:"traffic_type,omitempty" xml:"traffic_type,omitempty"`
+	TripWay                 *int32                                               `json:"trip_way,omitempty" xml:"trip_way,omitempty"`
 }
 
 func (s ApplyAddRequestItineraryList) String() string {
@@ -4430,6 +4431,11 @@ func (s *ApplyAddRequestItineraryList) SetItineraryId(v string) *ApplyAddRequest
 	return s
 }
 
+func (s *ApplyAddRequestItineraryList) SetItineraryTravelStandard(v *ApplyAddRequestItineraryListItineraryTravelStandard) *ApplyAddRequestItineraryList {
+	s.ItineraryTravelStandard = v
+	return s
+}
+
 func (s *ApplyAddRequestItineraryList) SetNeedHotel(v bool) *ApplyAddRequestItineraryList {
 	s.NeedHotel = &v
 	return s
@@ -4470,19 +4476,37 @@ func (s *ApplyAddRequestItineraryList) SetTripWay(v int32) *ApplyAddRequestItine
 	return s
 }
 
+type ApplyAddRequestItineraryListItineraryTravelStandard struct {
+	HotelAvailableNightsPerDay *int32 `json:"hotel_available_nights_per_day,omitempty" xml:"hotel_available_nights_per_day,omitempty"`
+}
+
+func (s ApplyAddRequestItineraryListItineraryTravelStandard) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ApplyAddRequestItineraryListItineraryTravelStandard) GoString() string {
+	return s.String()
+}
+
+func (s *ApplyAddRequestItineraryListItineraryTravelStandard) SetHotelAvailableNightsPerDay(v int32) *ApplyAddRequestItineraryListItineraryTravelStandard {
+	s.HotelAvailableNightsPerDay = &v
+	return s
+}
+
 type ApplyAddRequestItinerarySetList struct {
-	ArrDate               *string `json:"arr_date,omitempty" xml:"arr_date,omitempty"`
-	CityCodeSet           *string `json:"city_code_set,omitempty" xml:"city_code_set,omitempty"`
-	CitySet               *string `json:"city_set,omitempty" xml:"city_set,omitempty"`
-	CostCenterId          *int64  `json:"cost_center_id,omitempty" xml:"cost_center_id,omitempty"`
-	DepDate               *string `json:"dep_date,omitempty" xml:"dep_date,omitempty"`
-	InvoiceId             *int64  `json:"invoice_id,omitempty" xml:"invoice_id,omitempty"`
-	ItineraryId           *string `json:"itinerary_id,omitempty" xml:"itinerary_id,omitempty"`
-	ProjectCode           *string `json:"project_code,omitempty" xml:"project_code,omitempty"`
-	ProjectTitle          *string `json:"project_title,omitempty" xml:"project_title,omitempty"`
-	ThirdPartInvoiceId    *string `json:"third_part_invoice_id,omitempty" xml:"third_part_invoice_id,omitempty"`
-	ThirdpartCostCenterId *string `json:"thirdpart_cost_center_id,omitempty" xml:"thirdpart_cost_center_id,omitempty"`
-	TrafficType           *int32  `json:"traffic_type,omitempty" xml:"traffic_type,omitempty"`
+	ArrDate                 *string                                                 `json:"arr_date,omitempty" xml:"arr_date,omitempty"`
+	CityCodeSet             *string                                                 `json:"city_code_set,omitempty" xml:"city_code_set,omitempty"`
+	CitySet                 *string                                                 `json:"city_set,omitempty" xml:"city_set,omitempty"`
+	CostCenterId            *int64                                                  `json:"cost_center_id,omitempty" xml:"cost_center_id,omitempty"`
+	DepDate                 *string                                                 `json:"dep_date,omitempty" xml:"dep_date,omitempty"`
+	InvoiceId               *int64                                                  `json:"invoice_id,omitempty" xml:"invoice_id,omitempty"`
+	ItineraryId             *string                                                 `json:"itinerary_id,omitempty" xml:"itinerary_id,omitempty"`
+	ItineraryTravelStandard *ApplyAddRequestItinerarySetListItineraryTravelStandard `json:"itinerary_travel_standard,omitempty" xml:"itinerary_travel_standard,omitempty" type:"Struct"`
+	ProjectCode             *string                                                 `json:"project_code,omitempty" xml:"project_code,omitempty"`
+	ProjectTitle            *string                                                 `json:"project_title,omitempty" xml:"project_title,omitempty"`
+	ThirdPartInvoiceId      *string                                                 `json:"third_part_invoice_id,omitempty" xml:"third_part_invoice_id,omitempty"`
+	ThirdpartCostCenterId   *string                                                 `json:"thirdpart_cost_center_id,omitempty" xml:"thirdpart_cost_center_id,omitempty"`
+	TrafficType             *int32                                                  `json:"traffic_type,omitempty" xml:"traffic_type,omitempty"`
 }
 
 func (s ApplyAddRequestItinerarySetList) String() string {
@@ -4528,6 +4552,11 @@ func (s *ApplyAddRequestItinerarySetList) SetItineraryId(v string) *ApplyAddRequ
 	return s
 }
 
+func (s *ApplyAddRequestItinerarySetList) SetItineraryTravelStandard(v *ApplyAddRequestItinerarySetListItineraryTravelStandard) *ApplyAddRequestItinerarySetList {
+	s.ItineraryTravelStandard = v
+	return s
+}
+
 func (s *ApplyAddRequestItinerarySetList) SetProjectCode(v string) *ApplyAddRequestItinerarySetList {
 	s.ProjectCode = &v
 	return s
@@ -4550,6 +4579,23 @@ func (s *ApplyAddRequestItinerarySetList) SetThirdpartCostCenterId(v string) *Ap
 
 func (s *ApplyAddRequestItinerarySetList) SetTrafficType(v int32) *ApplyAddRequestItinerarySetList {
 	s.TrafficType = &v
+	return s
+}
+
+type ApplyAddRequestItinerarySetListItineraryTravelStandard struct {
+	HotelAvailableNightsPerDay *int32 `json:"hotel_available_nights_per_day,omitempty" xml:"hotel_available_nights_per_day,omitempty"`
+}
+
+func (s ApplyAddRequestItinerarySetListItineraryTravelStandard) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ApplyAddRequestItinerarySetListItineraryTravelStandard) GoString() string {
+	return s.String()
+}
+
+func (s *ApplyAddRequestItinerarySetListItineraryTravelStandard) SetHotelAvailableNightsPerDay(v int32) *ApplyAddRequestItinerarySetListItineraryTravelStandard {
+	s.HotelAvailableNightsPerDay = &v
 	return s
 }
 
@@ -5802,17 +5848,18 @@ func (s *ApplyListQueryResponseBodyModuleListExternalTravelerList) SetUserName(v
 }
 
 type ApplyListQueryResponseBodyModuleListItineraryList struct {
-	ArrCity        *string `json:"arr_city,omitempty" xml:"arr_city,omitempty"`
-	ArrDate        *string `json:"arr_date,omitempty" xml:"arr_date,omitempty"`
-	CostCenterName *string `json:"cost_center_name,omitempty" xml:"cost_center_name,omitempty"`
-	DepCity        *string `json:"dep_city,omitempty" xml:"dep_city,omitempty"`
-	DepDate        *string `json:"dep_date,omitempty" xml:"dep_date,omitempty"`
-	InvoiceName    *string `json:"invoice_name,omitempty" xml:"invoice_name,omitempty"`
-	ItineraryId    *string `json:"itinerary_id,omitempty" xml:"itinerary_id,omitempty"`
-	ProjectCode    *string `json:"project_code,omitempty" xml:"project_code,omitempty"`
-	ProjectTitle   *string `json:"project_title,omitempty" xml:"project_title,omitempty"`
-	TrafficType    *int32  `json:"traffic_type,omitempty" xml:"traffic_type,omitempty"`
-	TripWay        *int32  `json:"trip_way,omitempty" xml:"trip_way,omitempty"`
+	ArrCity              *string `json:"arr_city,omitempty" xml:"arr_city,omitempty"`
+	ArrDate              *string `json:"arr_date,omitempty" xml:"arr_date,omitempty"`
+	CostCenterName       *string `json:"cost_center_name,omitempty" xml:"cost_center_name,omitempty"`
+	DepCity              *string `json:"dep_city,omitempty" xml:"dep_city,omitempty"`
+	DepDate              *string `json:"dep_date,omitempty" xml:"dep_date,omitempty"`
+	InvoiceName          *string `json:"invoice_name,omitempty" xml:"invoice_name,omitempty"`
+	ItineraryId          *string `json:"itinerary_id,omitempty" xml:"itinerary_id,omitempty"`
+	ProjectCode          *string `json:"project_code,omitempty" xml:"project_code,omitempty"`
+	ProjectTitle         *string `json:"project_title,omitempty" xml:"project_title,omitempty"`
+	ThirdpartItineraryId *string `json:"thirdpart_itinerary_id,omitempty" xml:"thirdpart_itinerary_id,omitempty"`
+	TrafficType          *int32  `json:"traffic_type,omitempty" xml:"traffic_type,omitempty"`
+	TripWay              *int32  `json:"trip_way,omitempty" xml:"trip_way,omitempty"`
 }
 
 func (s ApplyListQueryResponseBodyModuleListItineraryList) String() string {
@@ -5868,6 +5915,11 @@ func (s *ApplyListQueryResponseBodyModuleListItineraryList) SetProjectTitle(v st
 	return s
 }
 
+func (s *ApplyListQueryResponseBodyModuleListItineraryList) SetThirdpartItineraryId(v string) *ApplyListQueryResponseBodyModuleListItineraryList {
+	s.ThirdpartItineraryId = &v
+	return s
+}
+
 func (s *ApplyListQueryResponseBodyModuleListItineraryList) SetTrafficType(v int32) *ApplyListQueryResponseBodyModuleListItineraryList {
 	s.TrafficType = &v
 	return s
@@ -5879,16 +5931,17 @@ func (s *ApplyListQueryResponseBodyModuleListItineraryList) SetTripWay(v int32) 
 }
 
 type ApplyListQueryResponseBodyModuleListItinerarySetList struct {
-	ArrDate        *string `json:"arr_date,omitempty" xml:"arr_date,omitempty"`
-	CityCodeSet    *string `json:"city_code_set,omitempty" xml:"city_code_set,omitempty"`
-	CitySet        *string `json:"city_set,omitempty" xml:"city_set,omitempty"`
-	CostCenterName *string `json:"cost_center_name,omitempty" xml:"cost_center_name,omitempty"`
-	DepDate        *string `json:"dep_date,omitempty" xml:"dep_date,omitempty"`
-	InvoiceName    *string `json:"invoice_name,omitempty" xml:"invoice_name,omitempty"`
-	ItineraryId    *string `json:"itinerary_id,omitempty" xml:"itinerary_id,omitempty"`
-	ProjectCode    *string `json:"project_code,omitempty" xml:"project_code,omitempty"`
-	ProjectTitle   *string `json:"project_title,omitempty" xml:"project_title,omitempty"`
-	TrafficType    *int32  `json:"traffic_type,omitempty" xml:"traffic_type,omitempty"`
+	ArrDate              *string `json:"arr_date,omitempty" xml:"arr_date,omitempty"`
+	CityCodeSet          *string `json:"city_code_set,omitempty" xml:"city_code_set,omitempty"`
+	CitySet              *string `json:"city_set,omitempty" xml:"city_set,omitempty"`
+	CostCenterName       *string `json:"cost_center_name,omitempty" xml:"cost_center_name,omitempty"`
+	DepDate              *string `json:"dep_date,omitempty" xml:"dep_date,omitempty"`
+	InvoiceName          *string `json:"invoice_name,omitempty" xml:"invoice_name,omitempty"`
+	ItineraryId          *string `json:"itinerary_id,omitempty" xml:"itinerary_id,omitempty"`
+	ProjectCode          *string `json:"project_code,omitempty" xml:"project_code,omitempty"`
+	ProjectTitle         *string `json:"project_title,omitempty" xml:"project_title,omitempty"`
+	ThirdpartItineraryId *string `json:"thirdpart_itinerary_id,omitempty" xml:"thirdpart_itinerary_id,omitempty"`
+	TrafficType          *int32  `json:"traffic_type,omitempty" xml:"traffic_type,omitempty"`
 }
 
 func (s ApplyListQueryResponseBodyModuleListItinerarySetList) String() string {
@@ -5941,6 +5994,11 @@ func (s *ApplyListQueryResponseBodyModuleListItinerarySetList) SetProjectCode(v 
 
 func (s *ApplyListQueryResponseBodyModuleListItinerarySetList) SetProjectTitle(v string) *ApplyListQueryResponseBodyModuleListItinerarySetList {
 	s.ProjectTitle = &v
+	return s
+}
+
+func (s *ApplyListQueryResponseBodyModuleListItinerarySetList) SetThirdpartItineraryId(v string) *ApplyListQueryResponseBodyModuleListItinerarySetList {
+	s.ThirdpartItineraryId = &v
 	return s
 }
 
@@ -6359,23 +6417,24 @@ func (s *ApplyModifyRequestHotelShare) SetType(v string) *ApplyModifyRequestHote
 }
 
 type ApplyModifyRequestItineraryList struct {
-	ArrCity               *string `json:"arr_city,omitempty" xml:"arr_city,omitempty"`
-	ArrCityCode           *string `json:"arr_city_code,omitempty" xml:"arr_city_code,omitempty"`
-	ArrDate               *string `json:"arr_date,omitempty" xml:"arr_date,omitempty"`
-	CostCenterId          *int64  `json:"cost_center_id,omitempty" xml:"cost_center_id,omitempty"`
-	DepCity               *string `json:"dep_city,omitempty" xml:"dep_city,omitempty"`
-	DepCityCode           *string `json:"dep_city_code,omitempty" xml:"dep_city_code,omitempty"`
-	DepDate               *string `json:"dep_date,omitempty" xml:"dep_date,omitempty"`
-	InvoiceId             *int64  `json:"invoice_id,omitempty" xml:"invoice_id,omitempty"`
-	ItineraryId           *string `json:"itinerary_id,omitempty" xml:"itinerary_id,omitempty"`
-	NeedHotel             *bool   `json:"need_hotel,omitempty" xml:"need_hotel,omitempty"`
-	NeedTraffic           *bool   `json:"need_traffic,omitempty" xml:"need_traffic,omitempty"`
-	ProjectCode           *string `json:"project_code,omitempty" xml:"project_code,omitempty"`
-	ProjectTitle          *string `json:"project_title,omitempty" xml:"project_title,omitempty"`
-	ThirdPartInvoiceId    *string `json:"third_part_invoice_id,omitempty" xml:"third_part_invoice_id,omitempty"`
-	ThirdpartCostCenterId *string `json:"thirdpart_cost_center_id,omitempty" xml:"thirdpart_cost_center_id,omitempty"`
-	TrafficType           *int32  `json:"traffic_type,omitempty" xml:"traffic_type,omitempty"`
-	TripWay               *int32  `json:"trip_way,omitempty" xml:"trip_way,omitempty"`
+	ArrCity                 *string                                                 `json:"arr_city,omitempty" xml:"arr_city,omitempty"`
+	ArrCityCode             *string                                                 `json:"arr_city_code,omitempty" xml:"arr_city_code,omitempty"`
+	ArrDate                 *string                                                 `json:"arr_date,omitempty" xml:"arr_date,omitempty"`
+	CostCenterId            *int64                                                  `json:"cost_center_id,omitempty" xml:"cost_center_id,omitempty"`
+	DepCity                 *string                                                 `json:"dep_city,omitempty" xml:"dep_city,omitempty"`
+	DepCityCode             *string                                                 `json:"dep_city_code,omitempty" xml:"dep_city_code,omitempty"`
+	DepDate                 *string                                                 `json:"dep_date,omitempty" xml:"dep_date,omitempty"`
+	InvoiceId               *int64                                                  `json:"invoice_id,omitempty" xml:"invoice_id,omitempty"`
+	ItineraryId             *string                                                 `json:"itinerary_id,omitempty" xml:"itinerary_id,omitempty"`
+	ItineraryTravelStandard *ApplyModifyRequestItineraryListItineraryTravelStandard `json:"itinerary_travel_standard,omitempty" xml:"itinerary_travel_standard,omitempty" type:"Struct"`
+	NeedHotel               *bool                                                   `json:"need_hotel,omitempty" xml:"need_hotel,omitempty"`
+	NeedTraffic             *bool                                                   `json:"need_traffic,omitempty" xml:"need_traffic,omitempty"`
+	ProjectCode             *string                                                 `json:"project_code,omitempty" xml:"project_code,omitempty"`
+	ProjectTitle            *string                                                 `json:"project_title,omitempty" xml:"project_title,omitempty"`
+	ThirdPartInvoiceId      *string                                                 `json:"third_part_invoice_id,omitempty" xml:"third_part_invoice_id,omitempty"`
+	ThirdpartCostCenterId   *string                                                 `json:"thirdpart_cost_center_id,omitempty" xml:"thirdpart_cost_center_id,omitempty"`
+	TrafficType             *int32                                                  `json:"traffic_type,omitempty" xml:"traffic_type,omitempty"`
+	TripWay                 *int32                                                  `json:"trip_way,omitempty" xml:"trip_way,omitempty"`
 }
 
 func (s ApplyModifyRequestItineraryList) String() string {
@@ -6431,6 +6490,11 @@ func (s *ApplyModifyRequestItineraryList) SetItineraryId(v string) *ApplyModifyR
 	return s
 }
 
+func (s *ApplyModifyRequestItineraryList) SetItineraryTravelStandard(v *ApplyModifyRequestItineraryListItineraryTravelStandard) *ApplyModifyRequestItineraryList {
+	s.ItineraryTravelStandard = v
+	return s
+}
+
 func (s *ApplyModifyRequestItineraryList) SetNeedHotel(v bool) *ApplyModifyRequestItineraryList {
 	s.NeedHotel = &v
 	return s
@@ -6471,19 +6535,37 @@ func (s *ApplyModifyRequestItineraryList) SetTripWay(v int32) *ApplyModifyReques
 	return s
 }
 
+type ApplyModifyRequestItineraryListItineraryTravelStandard struct {
+	HotelAvailableNightsPerDay *int32 `json:"hotel_available_nights_per_day,omitempty" xml:"hotel_available_nights_per_day,omitempty"`
+}
+
+func (s ApplyModifyRequestItineraryListItineraryTravelStandard) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ApplyModifyRequestItineraryListItineraryTravelStandard) GoString() string {
+	return s.String()
+}
+
+func (s *ApplyModifyRequestItineraryListItineraryTravelStandard) SetHotelAvailableNightsPerDay(v int32) *ApplyModifyRequestItineraryListItineraryTravelStandard {
+	s.HotelAvailableNightsPerDay = &v
+	return s
+}
+
 type ApplyModifyRequestItinerarySetList struct {
-	ArrDate               *string `json:"arr_date,omitempty" xml:"arr_date,omitempty"`
-	CityCodeSet           *string `json:"city_code_set,omitempty" xml:"city_code_set,omitempty"`
-	CitySet               *string `json:"city_set,omitempty" xml:"city_set,omitempty"`
-	CostCenterId          *int64  `json:"cost_center_id,omitempty" xml:"cost_center_id,omitempty"`
-	DepDate               *string `json:"dep_date,omitempty" xml:"dep_date,omitempty"`
-	InvoiceId             *int64  `json:"invoice_id,omitempty" xml:"invoice_id,omitempty"`
-	ItineraryId           *string `json:"itinerary_id,omitempty" xml:"itinerary_id,omitempty"`
-	ProjectCode           *string `json:"project_code,omitempty" xml:"project_code,omitempty"`
-	ProjectTitle          *string `json:"project_title,omitempty" xml:"project_title,omitempty"`
-	ThirdPartInvoiceId    *string `json:"third_part_invoice_id,omitempty" xml:"third_part_invoice_id,omitempty"`
-	ThirdpartCostCenterId *string `json:"thirdpart_cost_center_id,omitempty" xml:"thirdpart_cost_center_id,omitempty"`
-	TrafficType           *int32  `json:"traffic_type,omitempty" xml:"traffic_type,omitempty"`
+	ArrDate                 *string                                                    `json:"arr_date,omitempty" xml:"arr_date,omitempty"`
+	CityCodeSet             *string                                                    `json:"city_code_set,omitempty" xml:"city_code_set,omitempty"`
+	CitySet                 *string                                                    `json:"city_set,omitempty" xml:"city_set,omitempty"`
+	CostCenterId            *int64                                                     `json:"cost_center_id,omitempty" xml:"cost_center_id,omitempty"`
+	DepDate                 *string                                                    `json:"dep_date,omitempty" xml:"dep_date,omitempty"`
+	InvoiceId               *int64                                                     `json:"invoice_id,omitempty" xml:"invoice_id,omitempty"`
+	ItineraryId             *string                                                    `json:"itinerary_id,omitempty" xml:"itinerary_id,omitempty"`
+	ItineraryTravelStandard *ApplyModifyRequestItinerarySetListItineraryTravelStandard `json:"itinerary_travel_standard,omitempty" xml:"itinerary_travel_standard,omitempty" type:"Struct"`
+	ProjectCode             *string                                                    `json:"project_code,omitempty" xml:"project_code,omitempty"`
+	ProjectTitle            *string                                                    `json:"project_title,omitempty" xml:"project_title,omitempty"`
+	ThirdPartInvoiceId      *string                                                    `json:"third_part_invoice_id,omitempty" xml:"third_part_invoice_id,omitempty"`
+	ThirdpartCostCenterId   *string                                                    `json:"thirdpart_cost_center_id,omitempty" xml:"thirdpart_cost_center_id,omitempty"`
+	TrafficType             *int32                                                     `json:"traffic_type,omitempty" xml:"traffic_type,omitempty"`
 }
 
 func (s ApplyModifyRequestItinerarySetList) String() string {
@@ -6529,6 +6611,11 @@ func (s *ApplyModifyRequestItinerarySetList) SetItineraryId(v string) *ApplyModi
 	return s
 }
 
+func (s *ApplyModifyRequestItinerarySetList) SetItineraryTravelStandard(v *ApplyModifyRequestItinerarySetListItineraryTravelStandard) *ApplyModifyRequestItinerarySetList {
+	s.ItineraryTravelStandard = v
+	return s
+}
+
 func (s *ApplyModifyRequestItinerarySetList) SetProjectCode(v string) *ApplyModifyRequestItinerarySetList {
 	s.ProjectCode = &v
 	return s
@@ -6551,6 +6638,23 @@ func (s *ApplyModifyRequestItinerarySetList) SetThirdpartCostCenterId(v string) 
 
 func (s *ApplyModifyRequestItinerarySetList) SetTrafficType(v int32) *ApplyModifyRequestItinerarySetList {
 	s.TrafficType = &v
+	return s
+}
+
+type ApplyModifyRequestItinerarySetListItineraryTravelStandard struct {
+	HotelAvailableNightsPerDay *int32 `json:"hotel_available_nights_per_day,omitempty" xml:"hotel_available_nights_per_day,omitempty"`
+}
+
+func (s ApplyModifyRequestItinerarySetListItineraryTravelStandard) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ApplyModifyRequestItinerarySetListItineraryTravelStandard) GoString() string {
+	return s.String()
+}
+
+func (s *ApplyModifyRequestItinerarySetListItineraryTravelStandard) SetHotelAvailableNightsPerDay(v int32) *ApplyModifyRequestItinerarySetListItineraryTravelStandard {
+	s.HotelAvailableNightsPerDay = &v
 	return s
 }
 
@@ -7481,19 +7585,21 @@ func (s *ApplyQueryResponseBodyModuleHotelShare) SetType(v string) *ApplyQueryRe
 }
 
 type ApplyQueryResponseBodyModuleItineraryList struct {
-	ArrCity        *string `json:"arr_city,omitempty" xml:"arr_city,omitempty"`
-	ArrCityCode    *string `json:"arr_city_code,omitempty" xml:"arr_city_code,omitempty"`
-	ArrDate        *string `json:"arr_date,omitempty" xml:"arr_date,omitempty"`
-	CostCenterName *string `json:"cost_center_name,omitempty" xml:"cost_center_name,omitempty"`
-	DepCity        *string `json:"dep_city,omitempty" xml:"dep_city,omitempty"`
-	DepCityCode    *string `json:"dep_city_code,omitempty" xml:"dep_city_code,omitempty"`
-	DepDate        *string `json:"dep_date,omitempty" xml:"dep_date,omitempty"`
-	InvoiceName    *string `json:"invoice_name,omitempty" xml:"invoice_name,omitempty"`
-	ItineraryId    *string `json:"itinerary_id,omitempty" xml:"itinerary_id,omitempty"`
-	ProjectCode    *string `json:"project_code,omitempty" xml:"project_code,omitempty"`
-	ProjectTitle   *string `json:"project_title,omitempty" xml:"project_title,omitempty"`
-	TrafficType    *int32  `json:"traffic_type,omitempty" xml:"traffic_type,omitempty"`
-	TripWay        *int32  `json:"trip_way,omitempty" xml:"trip_way,omitempty"`
+	ArrCity                 *string                                                           `json:"arr_city,omitempty" xml:"arr_city,omitempty"`
+	ArrCityCode             *string                                                           `json:"arr_city_code,omitempty" xml:"arr_city_code,omitempty"`
+	ArrDate                 *string                                                           `json:"arr_date,omitempty" xml:"arr_date,omitempty"`
+	CostCenterName          *string                                                           `json:"cost_center_name,omitempty" xml:"cost_center_name,omitempty"`
+	DepCity                 *string                                                           `json:"dep_city,omitempty" xml:"dep_city,omitempty"`
+	DepCityCode             *string                                                           `json:"dep_city_code,omitempty" xml:"dep_city_code,omitempty"`
+	DepDate                 *string                                                           `json:"dep_date,omitempty" xml:"dep_date,omitempty"`
+	InvoiceName             *string                                                           `json:"invoice_name,omitempty" xml:"invoice_name,omitempty"`
+	ItineraryId             *string                                                           `json:"itinerary_id,omitempty" xml:"itinerary_id,omitempty"`
+	ItineraryTravelStandard *ApplyQueryResponseBodyModuleItineraryListItineraryTravelStandard `json:"itinerary_travel_standard,omitempty" xml:"itinerary_travel_standard,omitempty" type:"Struct"`
+	ProjectCode             *string                                                           `json:"project_code,omitempty" xml:"project_code,omitempty"`
+	ProjectTitle            *string                                                           `json:"project_title,omitempty" xml:"project_title,omitempty"`
+	ThirdpartItineraryId    *string                                                           `json:"thirdpart_itinerary_id,omitempty" xml:"thirdpart_itinerary_id,omitempty"`
+	TrafficType             *int32                                                            `json:"traffic_type,omitempty" xml:"traffic_type,omitempty"`
+	TripWay                 *int32                                                            `json:"trip_way,omitempty" xml:"trip_way,omitempty"`
 }
 
 func (s ApplyQueryResponseBodyModuleItineraryList) String() string {
@@ -7549,6 +7655,11 @@ func (s *ApplyQueryResponseBodyModuleItineraryList) SetItineraryId(v string) *Ap
 	return s
 }
 
+func (s *ApplyQueryResponseBodyModuleItineraryList) SetItineraryTravelStandard(v *ApplyQueryResponseBodyModuleItineraryListItineraryTravelStandard) *ApplyQueryResponseBodyModuleItineraryList {
+	s.ItineraryTravelStandard = v
+	return s
+}
+
 func (s *ApplyQueryResponseBodyModuleItineraryList) SetProjectCode(v string) *ApplyQueryResponseBodyModuleItineraryList {
 	s.ProjectCode = &v
 	return s
@@ -7556,6 +7667,11 @@ func (s *ApplyQueryResponseBodyModuleItineraryList) SetProjectCode(v string) *Ap
 
 func (s *ApplyQueryResponseBodyModuleItineraryList) SetProjectTitle(v string) *ApplyQueryResponseBodyModuleItineraryList {
 	s.ProjectTitle = &v
+	return s
+}
+
+func (s *ApplyQueryResponseBodyModuleItineraryList) SetThirdpartItineraryId(v string) *ApplyQueryResponseBodyModuleItineraryList {
+	s.ThirdpartItineraryId = &v
 	return s
 }
 
@@ -7569,17 +7685,36 @@ func (s *ApplyQueryResponseBodyModuleItineraryList) SetTripWay(v int32) *ApplyQu
 	return s
 }
 
+type ApplyQueryResponseBodyModuleItineraryListItineraryTravelStandard struct {
+	HotelAvailableNightsPerDay *int32 `json:"hotel_available_nights_per_day,omitempty" xml:"hotel_available_nights_per_day,omitempty"`
+}
+
+func (s ApplyQueryResponseBodyModuleItineraryListItineraryTravelStandard) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ApplyQueryResponseBodyModuleItineraryListItineraryTravelStandard) GoString() string {
+	return s.String()
+}
+
+func (s *ApplyQueryResponseBodyModuleItineraryListItineraryTravelStandard) SetHotelAvailableNightsPerDay(v int32) *ApplyQueryResponseBodyModuleItineraryListItineraryTravelStandard {
+	s.HotelAvailableNightsPerDay = &v
+	return s
+}
+
 type ApplyQueryResponseBodyModuleItinerarySetList struct {
-	ArrDate        *string `json:"arr_date,omitempty" xml:"arr_date,omitempty"`
-	CityCodeSet    *string `json:"city_code_set,omitempty" xml:"city_code_set,omitempty"`
-	CitySet        *string `json:"city_set,omitempty" xml:"city_set,omitempty"`
-	CostCenterName *string `json:"cost_center_name,omitempty" xml:"cost_center_name,omitempty"`
-	DepDate        *string `json:"dep_date,omitempty" xml:"dep_date,omitempty"`
-	InvoiceName    *string `json:"invoice_name,omitempty" xml:"invoice_name,omitempty"`
-	ItineraryId    *string `json:"itinerary_id,omitempty" xml:"itinerary_id,omitempty"`
-	ProjectCode    *string `json:"project_code,omitempty" xml:"project_code,omitempty"`
-	ProjectTitle   *string `json:"project_title,omitempty" xml:"project_title,omitempty"`
-	TrafficType    *int32  `json:"traffic_type,omitempty" xml:"traffic_type,omitempty"`
+	ArrDate                 *string                                                              `json:"arr_date,omitempty" xml:"arr_date,omitempty"`
+	CityCodeSet             *string                                                              `json:"city_code_set,omitempty" xml:"city_code_set,omitempty"`
+	CitySet                 *string                                                              `json:"city_set,omitempty" xml:"city_set,omitempty"`
+	CostCenterName          *string                                                              `json:"cost_center_name,omitempty" xml:"cost_center_name,omitempty"`
+	DepDate                 *string                                                              `json:"dep_date,omitempty" xml:"dep_date,omitempty"`
+	InvoiceName             *string                                                              `json:"invoice_name,omitempty" xml:"invoice_name,omitempty"`
+	ItineraryId             *string                                                              `json:"itinerary_id,omitempty" xml:"itinerary_id,omitempty"`
+	ItineraryTravelStandard *ApplyQueryResponseBodyModuleItinerarySetListItineraryTravelStandard `json:"itinerary_travel_standard,omitempty" xml:"itinerary_travel_standard,omitempty" type:"Struct"`
+	ProjectCode             *string                                                              `json:"project_code,omitempty" xml:"project_code,omitempty"`
+	ProjectTitle            *string                                                              `json:"project_title,omitempty" xml:"project_title,omitempty"`
+	ThirdpartItineraryId    *string                                                              `json:"thirdpart_itinerary_id,omitempty" xml:"thirdpart_itinerary_id,omitempty"`
+	TrafficType             *int32                                                               `json:"traffic_type,omitempty" xml:"traffic_type,omitempty"`
 }
 
 func (s ApplyQueryResponseBodyModuleItinerarySetList) String() string {
@@ -7625,6 +7760,11 @@ func (s *ApplyQueryResponseBodyModuleItinerarySetList) SetItineraryId(v string) 
 	return s
 }
 
+func (s *ApplyQueryResponseBodyModuleItinerarySetList) SetItineraryTravelStandard(v *ApplyQueryResponseBodyModuleItinerarySetListItineraryTravelStandard) *ApplyQueryResponseBodyModuleItinerarySetList {
+	s.ItineraryTravelStandard = v
+	return s
+}
+
 func (s *ApplyQueryResponseBodyModuleItinerarySetList) SetProjectCode(v string) *ApplyQueryResponseBodyModuleItinerarySetList {
 	s.ProjectCode = &v
 	return s
@@ -7635,8 +7775,30 @@ func (s *ApplyQueryResponseBodyModuleItinerarySetList) SetProjectTitle(v string)
 	return s
 }
 
+func (s *ApplyQueryResponseBodyModuleItinerarySetList) SetThirdpartItineraryId(v string) *ApplyQueryResponseBodyModuleItinerarySetList {
+	s.ThirdpartItineraryId = &v
+	return s
+}
+
 func (s *ApplyQueryResponseBodyModuleItinerarySetList) SetTrafficType(v int32) *ApplyQueryResponseBodyModuleItinerarySetList {
 	s.TrafficType = &v
+	return s
+}
+
+type ApplyQueryResponseBodyModuleItinerarySetListItineraryTravelStandard struct {
+	HotelAvailableNightsPerDay *int32 `json:"hotel_available_nights_per_day,omitempty" xml:"hotel_available_nights_per_day,omitempty"`
+}
+
+func (s ApplyQueryResponseBodyModuleItinerarySetListItineraryTravelStandard) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ApplyQueryResponseBodyModuleItinerarySetListItineraryTravelStandard) GoString() string {
+	return s.String()
+}
+
+func (s *ApplyQueryResponseBodyModuleItinerarySetListItineraryTravelStandard) SetHotelAvailableNightsPerDay(v int32) *ApplyQueryResponseBodyModuleItinerarySetListItineraryTravelStandard {
+	s.HotelAvailableNightsPerDay = &v
 	return s
 }
 
@@ -48556,23 +48718,30 @@ func (s *QueryReimbursementOrderResponseBody) SetTraceId(v string) *QueryReimbur
 }
 
 type QueryReimbursementOrderResponseBodyModule struct {
-	CompanyAmount      *string                                                  `json:"company_amount,omitempty" xml:"company_amount,omitempty"`
-	CompanyPayAmount   *string                                                  `json:"company_pay_amount,omitempty" xml:"company_pay_amount,omitempty"`
-	CorpId             *string                                                  `json:"corp_id,omitempty" xml:"corp_id,omitempty"`
-	Expenses           []*QueryReimbursementOrderResponseBodyModuleExpenses     `json:"expenses,omitempty" xml:"expenses,omitempty" type:"Repeated"`
-	GmtCreate          *string                                                  `json:"gmt_create,omitempty" xml:"gmt_create,omitempty"`
-	GmtModified        *string                                                  `json:"gmt_modified,omitempty" xml:"gmt_modified,omitempty"`
-	IsDeleted          *string                                                  `json:"is_deleted,omitempty" xml:"is_deleted,omitempty"`
-	Itineraries        []*QueryReimbursementOrderResponseBodyModuleItineraries  `json:"itineraries,omitempty" xml:"itineraries,omitempty" type:"Repeated"`
-	PaymentInfos       []*QueryReimbursementOrderResponseBodyModulePaymentInfos `json:"payment_infos,omitempty" xml:"payment_infos,omitempty" type:"Repeated"`
-	PersonalAmount     *string                                                  `json:"personal_amount,omitempty" xml:"personal_amount,omitempty"`
-	Reason             *string                                                  `json:"reason,omitempty" xml:"reason,omitempty"`
-	ReimbursementNo    *string                                                  `json:"reimbursement_no,omitempty" xml:"reimbursement_no,omitempty"`
-	Remark             *string                                                  `json:"remark,omitempty" xml:"remark,omitempty"`
-	Status             *string                                                  `json:"status,omitempty" xml:"status,omitempty"`
-	TravelThirdApplyId *string                                                  `json:"travel_third_apply_id,omitempty" xml:"travel_third_apply_id,omitempty"`
-	UserId             *string                                                  `json:"user_id,omitempty" xml:"user_id,omitempty"`
-	UserName           *string                                                  `json:"user_name,omitempty" xml:"user_name,omitempty"`
+	CompanyAmount             *string                                                  `json:"company_amount,omitempty" xml:"company_amount,omitempty"`
+	CompanyPayAmount          *string                                                  `json:"company_pay_amount,omitempty" xml:"company_pay_amount,omitempty"`
+	CorpId                    *string                                                  `json:"corp_id,omitempty" xml:"corp_id,omitempty"`
+	CostCenterCode            *string                                                  `json:"cost_center_code,omitempty" xml:"cost_center_code,omitempty"`
+	CostCenterName            *string                                                  `json:"cost_center_name,omitempty" xml:"cost_center_name,omitempty"`
+	Expenses                  []*QueryReimbursementOrderResponseBodyModuleExpenses     `json:"expenses,omitempty" xml:"expenses,omitempty" type:"Repeated"`
+	ExpensesCoverDeptId       *string                                                  `json:"expenses_cover_dept_id,omitempty" xml:"expenses_cover_dept_id,omitempty"`
+	ExpensesCoverDeptName     *string                                                  `json:"expenses_cover_dept_name,omitempty" xml:"expenses_cover_dept_name,omitempty"`
+	ExpensesCoverInvoiceTitle *string                                                  `json:"expenses_cover_invoice_title,omitempty" xml:"expenses_cover_invoice_title,omitempty"`
+	GmtCreate                 *string                                                  `json:"gmt_create,omitempty" xml:"gmt_create,omitempty"`
+	GmtModified               *string                                                  `json:"gmt_modified,omitempty" xml:"gmt_modified,omitempty"`
+	IsDeleted                 *string                                                  `json:"is_deleted,omitempty" xml:"is_deleted,omitempty"`
+	Itineraries               []*QueryReimbursementOrderResponseBodyModuleItineraries  `json:"itineraries,omitempty" xml:"itineraries,omitempty" type:"Repeated"`
+	PaymentInfos              []*QueryReimbursementOrderResponseBodyModulePaymentInfos `json:"payment_infos,omitempty" xml:"payment_infos,omitempty" type:"Repeated"`
+	PersonalAmount            *string                                                  `json:"personal_amount,omitempty" xml:"personal_amount,omitempty"`
+	ProjectCode               *string                                                  `json:"project_code,omitempty" xml:"project_code,omitempty"`
+	ProjectName               *string                                                  `json:"project_name,omitempty" xml:"project_name,omitempty"`
+	Reason                    *string                                                  `json:"reason,omitempty" xml:"reason,omitempty"`
+	ReimbursementNo           *string                                                  `json:"reimbursement_no,omitempty" xml:"reimbursement_no,omitempty"`
+	Remark                    *string                                                  `json:"remark,omitempty" xml:"remark,omitempty"`
+	Status                    *string                                                  `json:"status,omitempty" xml:"status,omitempty"`
+	TravelThirdApplyId        *string                                                  `json:"travel_third_apply_id,omitempty" xml:"travel_third_apply_id,omitempty"`
+	UserId                    *string                                                  `json:"user_id,omitempty" xml:"user_id,omitempty"`
+	UserName                  *string                                                  `json:"user_name,omitempty" xml:"user_name,omitempty"`
 }
 
 func (s QueryReimbursementOrderResponseBodyModule) String() string {
@@ -48598,8 +48767,33 @@ func (s *QueryReimbursementOrderResponseBodyModule) SetCorpId(v string) *QueryRe
 	return s
 }
 
+func (s *QueryReimbursementOrderResponseBodyModule) SetCostCenterCode(v string) *QueryReimbursementOrderResponseBodyModule {
+	s.CostCenterCode = &v
+	return s
+}
+
+func (s *QueryReimbursementOrderResponseBodyModule) SetCostCenterName(v string) *QueryReimbursementOrderResponseBodyModule {
+	s.CostCenterName = &v
+	return s
+}
+
 func (s *QueryReimbursementOrderResponseBodyModule) SetExpenses(v []*QueryReimbursementOrderResponseBodyModuleExpenses) *QueryReimbursementOrderResponseBodyModule {
 	s.Expenses = v
+	return s
+}
+
+func (s *QueryReimbursementOrderResponseBodyModule) SetExpensesCoverDeptId(v string) *QueryReimbursementOrderResponseBodyModule {
+	s.ExpensesCoverDeptId = &v
+	return s
+}
+
+func (s *QueryReimbursementOrderResponseBodyModule) SetExpensesCoverDeptName(v string) *QueryReimbursementOrderResponseBodyModule {
+	s.ExpensesCoverDeptName = &v
+	return s
+}
+
+func (s *QueryReimbursementOrderResponseBodyModule) SetExpensesCoverInvoiceTitle(v string) *QueryReimbursementOrderResponseBodyModule {
+	s.ExpensesCoverInvoiceTitle = &v
 	return s
 }
 
@@ -48630,6 +48824,16 @@ func (s *QueryReimbursementOrderResponseBodyModule) SetPaymentInfos(v []*QueryRe
 
 func (s *QueryReimbursementOrderResponseBodyModule) SetPersonalAmount(v string) *QueryReimbursementOrderResponseBodyModule {
 	s.PersonalAmount = &v
+	return s
+}
+
+func (s *QueryReimbursementOrderResponseBodyModule) SetProjectCode(v string) *QueryReimbursementOrderResponseBodyModule {
+	s.ProjectCode = &v
+	return s
+}
+
+func (s *QueryReimbursementOrderResponseBodyModule) SetProjectName(v string) *QueryReimbursementOrderResponseBodyModule {
+	s.ProjectName = &v
 	return s
 }
 
@@ -48743,6 +48947,7 @@ type QueryReimbursementOrderResponseBodyModuleExpensesExpenseCompositions struct
 	BillSettlementId *int64    `json:"bill_settlement_id,omitempty" xml:"bill_settlement_id,omitempty"`
 	CapitalDirection *string   `json:"capital_direction,omitempty" xml:"capital_direction,omitempty"`
 	FeeType          *string   `json:"fee_type,omitempty" xml:"fee_type,omitempty"`
+	OrderId          *string   `json:"order_id,omitempty" xml:"order_id,omitempty"`
 	Remark           *string   `json:"remark,omitempty" xml:"remark,omitempty"`
 	RemindTagList    []*string `json:"remind_tag_list,omitempty" xml:"remind_tag_list,omitempty" type:"Repeated"`
 	SettlementAmount *string   `json:"settlement_amount,omitempty" xml:"settlement_amount,omitempty"`
@@ -48770,6 +48975,11 @@ func (s *QueryReimbursementOrderResponseBodyModuleExpensesExpenseCompositions) S
 
 func (s *QueryReimbursementOrderResponseBodyModuleExpensesExpenseCompositions) SetFeeType(v string) *QueryReimbursementOrderResponseBodyModuleExpensesExpenseCompositions {
 	s.FeeType = &v
+	return s
+}
+
+func (s *QueryReimbursementOrderResponseBodyModuleExpensesExpenseCompositions) SetOrderId(v string) *QueryReimbursementOrderResponseBodyModuleExpensesExpenseCompositions {
+	s.OrderId = &v
 	return s
 }
 
