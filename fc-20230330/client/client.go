@@ -1147,6 +1147,7 @@ func (s *GPUConfig) SetGpuType(v string) *GPUConfig {
 }
 
 type GetResourceTagsOutput struct {
+	ResouceType *string            `json:"resouceType,omitempty" xml:"resouceType,omitempty"`
 	ResourceArn *string            `json:"resourceArn,omitempty" xml:"resourceArn,omitempty"`
 	Tags        map[string]*string `json:"tags" xml:"tags"`
 }
@@ -1157,6 +1158,11 @@ func (s GetResourceTagsOutput) String() string {
 
 func (s GetResourceTagsOutput) GoString() string {
 	return s.String()
+}
+
+func (s *GetResourceTagsOutput) SetResouceType(v string) *GetResourceTagsOutput {
+	s.ResouceType = &v
+	return s
 }
 
 func (s *GetResourceTagsOutput) SetResourceArn(v string) *GetResourceTagsOutput {
@@ -2085,6 +2091,7 @@ func (s *RegexRule) SetReplacement(v string) *RegexRule {
 }
 
 type Resource struct {
+	ResouceType *string            `json:"resouceType,omitempty" xml:"resouceType,omitempty"`
 	ResourceArn *string            `json:"resourceArn,omitempty" xml:"resourceArn,omitempty"`
 	Tags        map[string]*string `json:"tags" xml:"tags"`
 }
@@ -2095,6 +2102,11 @@ func (s Resource) String() string {
 
 func (s Resource) GoString() string {
 	return s.String()
+}
+
+func (s *Resource) SetResouceType(v string) *Resource {
+	s.ResouceType = &v
+	return s
 }
 
 func (s *Resource) SetResourceArn(v string) *Resource {
@@ -4375,8 +4387,9 @@ func (s *ListProvisionConfigsResponse) SetBody(v *ListProvisionConfigsOutput) *L
 }
 
 type ListTaggedResourcesRequest struct {
-	Limit     *int32  `json:"limit,omitempty" xml:"limit,omitempty"`
-	NextToken *string `json:"nextToken,omitempty" xml:"nextToken,omitempty"`
+	Limit        *int32  `json:"limit,omitempty" xml:"limit,omitempty"`
+	NextToken    *string `json:"nextToken,omitempty" xml:"nextToken,omitempty"`
+	ResourceType *string `json:"resourceType,omitempty" xml:"resourceType,omitempty"`
 }
 
 func (s ListTaggedResourcesRequest) String() string {
@@ -4394,6 +4407,11 @@ func (s *ListTaggedResourcesRequest) SetLimit(v int32) *ListTaggedResourcesReque
 
 func (s *ListTaggedResourcesRequest) SetNextToken(v string) *ListTaggedResourcesRequest {
 	s.NextToken = &v
+	return s
+}
+
+func (s *ListTaggedResourcesRequest) SetResourceType(v string) *ListTaggedResourcesRequest {
+	s.ResourceType = &v
 	return s
 }
 
@@ -5073,7 +5091,7 @@ func (client *Client) GetEndpoint(productId *string, regionId *string, endpointR
 }
 
 /**
- * 创建函数别名
+ * 创建函数别名。
  *
  * @param request CreateAliasRequest
  * @param headers map
@@ -5110,7 +5128,7 @@ func (client *Client) CreateAliasWithOptions(functionName *string, request *Crea
 }
 
 /**
- * 创建函数别名
+ * 创建函数别名。
  *
  * @param request CreateAliasRequest
  * @return CreateAliasResponse
@@ -5128,7 +5146,7 @@ func (client *Client) CreateAlias(functionName *string, request *CreateAliasRequ
 }
 
 /**
- * 创建自定义域名
+ * 创建自定义域名。
  *
  * @param request CreateCustomDomainRequest
  * @param headers map
@@ -5165,7 +5183,7 @@ func (client *Client) CreateCustomDomainWithOptions(request *CreateCustomDomainR
 }
 
 /**
- * 创建自定义域名
+ * 创建自定义域名。
  *
  * @param request CreateCustomDomainRequest
  * @return CreateCustomDomainResponse
@@ -5183,7 +5201,7 @@ func (client *Client) CreateCustomDomain(request *CreateCustomDomainRequest) (_r
 }
 
 /**
- * 创建函数
+ * 创建函数。
  *
  * @param request CreateFunctionRequest
  * @param headers map
@@ -5220,7 +5238,7 @@ func (client *Client) CreateFunctionWithOptions(request *CreateFunctionRequest, 
 }
 
 /**
- * 创建函数
+ * 创建函数。
  *
  * @param request CreateFunctionRequest
  * @return CreateFunctionResponse
@@ -5238,7 +5256,7 @@ func (client *Client) CreateFunction(request *CreateFunctionRequest) (_result *C
 }
 
 /**
- * 创建层版本
+ * 创建层版本。
  *
  * @param request CreateLayerVersionRequest
  * @param headers map
@@ -5275,7 +5293,7 @@ func (client *Client) CreateLayerVersionWithOptions(layerName *string, request *
 }
 
 /**
- * 创建层版本
+ * 创建层版本。
  *
  * @param request CreateLayerVersionRequest
  * @return CreateLayerVersionResponse
@@ -5293,7 +5311,7 @@ func (client *Client) CreateLayerVersion(layerName *string, request *CreateLayer
 }
 
 /**
- * 创建函数触发器
+ * 创建函数触发器。
  *
  * @param request CreateTriggerRequest
  * @param headers map
@@ -5330,7 +5348,7 @@ func (client *Client) CreateTriggerWithOptions(functionName *string, request *Cr
 }
 
 /**
- * 创建函数触发器
+ * 创建函数触发器。
  *
  * @param request CreateTriggerRequest
  * @return CreateTriggerResponse
@@ -5348,7 +5366,7 @@ func (client *Client) CreateTrigger(functionName *string, request *CreateTrigger
 }
 
 /**
- * 创建VPC绑定
+ * 创建VPC绑定。
  *
  * @param request CreateVpcBindingRequest
  * @param headers map
@@ -5385,7 +5403,7 @@ func (client *Client) CreateVpcBindingWithOptions(functionName *string, request 
 }
 
 /**
- * 创建VPC绑定
+ * 创建VPC绑定。
  *
  * @param request CreateVpcBindingRequest
  * @return CreateVpcBindingResponse
@@ -5403,7 +5421,7 @@ func (client *Client) CreateVpcBinding(functionName *string, request *CreateVpcB
 }
 
 /**
- * 删除函数别名
+ * 删除函数别名。
  *
  * @param headers map
  * @param runtime runtime options for this request RuntimeOptions
@@ -5434,7 +5452,7 @@ func (client *Client) DeleteAliasWithOptions(functionName *string, aliasName *st
 }
 
 /**
- * 删除函数别名
+ * 删除函数别名。
  *
  * @return DeleteAliasResponse
  */
@@ -5451,7 +5469,7 @@ func (client *Client) DeleteAlias(functionName *string, aliasName *string) (_res
 }
 
 /**
- * 删除函数异步调用配置
+ * 删除函数异步调用配置。
  *
  * @param request DeleteAsyncInvokeConfigRequest
  * @param headers map
@@ -5493,7 +5511,7 @@ func (client *Client) DeleteAsyncInvokeConfigWithOptions(functionName *string, r
 }
 
 /**
- * 删除函数异步调用配置
+ * 删除函数异步调用配置。
  *
  * @param request DeleteAsyncInvokeConfigRequest
  * @return DeleteAsyncInvokeConfigResponse
@@ -5511,7 +5529,7 @@ func (client *Client) DeleteAsyncInvokeConfig(functionName *string, request *Del
 }
 
 /**
- * 删除函数并发度配置
+ * 删除函数并发度配置。
  *
  * @param headers map
  * @param runtime runtime options for this request RuntimeOptions
@@ -5542,7 +5560,7 @@ func (client *Client) DeleteConcurrencyConfigWithOptions(functionName *string, h
 }
 
 /**
- * 删除函数并发度配置
+ * 删除函数并发度配置。
  *
  * @return DeleteConcurrencyConfigResponse
  */
@@ -5559,7 +5577,7 @@ func (client *Client) DeleteConcurrencyConfig(functionName *string) (_result *De
 }
 
 /**
- * 删除自定义域名
+ * 删除自定义域名。
  *
  * @param headers map
  * @param runtime runtime options for this request RuntimeOptions
@@ -5590,7 +5608,7 @@ func (client *Client) DeleteCustomDomainWithOptions(domainName *string, headers 
 }
 
 /**
- * 删除自定义域名
+ * 删除自定义域名。
  *
  * @return DeleteCustomDomainResponse
  */
@@ -5607,7 +5625,7 @@ func (client *Client) DeleteCustomDomain(domainName *string) (_result *DeleteCus
 }
 
 /**
- * 删除函数
+ * 删除函数。
  *
  * @param headers map
  * @param runtime runtime options for this request RuntimeOptions
@@ -5638,7 +5656,7 @@ func (client *Client) DeleteFunctionWithOptions(functionName *string, headers ma
 }
 
 /**
- * 删除函数
+ * 删除函数。
  *
  * @return DeleteFunctionResponse
  */
@@ -5655,7 +5673,7 @@ func (client *Client) DeleteFunction(functionName *string) (_result *DeleteFunct
 }
 
 /**
- * 删除函数版本
+ * 删除函数版本。
  *
  * @param headers map
  * @param runtime runtime options for this request RuntimeOptions
@@ -5686,7 +5704,7 @@ func (client *Client) DeleteFunctionVersionWithOptions(functionName *string, ver
 }
 
 /**
- * 删除函数版本
+ * 删除函数版本。
  *
  * @return DeleteFunctionVersionResponse
  */
@@ -5703,7 +5721,7 @@ func (client *Client) DeleteFunctionVersion(functionName *string, versionId *str
 }
 
 /**
- * 删除层版本
+ * 删除层版本。
  *
  * @param headers map
  * @param runtime runtime options for this request RuntimeOptions
@@ -5734,7 +5752,7 @@ func (client *Client) DeleteLayerVersionWithOptions(layerName *string, version *
 }
 
 /**
- * 删除层版本
+ * 删除层版本。
  *
  * @return DeleteLayerVersionResponse
  */
@@ -5751,7 +5769,7 @@ func (client *Client) DeleteLayerVersion(layerName *string, version *string) (_r
 }
 
 /**
- * 删除函数预留配置
+ * 删除函数预留配置。
  *
  * @param request DeleteProvisionConfigRequest
  * @param headers map
@@ -5793,7 +5811,7 @@ func (client *Client) DeleteProvisionConfigWithOptions(functionName *string, req
 }
 
 /**
- * 删除函数预留配置
+ * 删除函数预留配置。
  *
  * @param request DeleteProvisionConfigRequest
  * @return DeleteProvisionConfigResponse
@@ -5811,7 +5829,7 @@ func (client *Client) DeleteProvisionConfig(functionName *string, request *Delet
 }
 
 /**
- * 删除函数触发器
+ * 删除函数触发器。
  *
  * @param headers map
  * @param runtime runtime options for this request RuntimeOptions
@@ -5842,7 +5860,7 @@ func (client *Client) DeleteTriggerWithOptions(functionName *string, triggerName
 }
 
 /**
- * 删除函数触发器
+ * 删除函数触发器。
  *
  * @return DeleteTriggerResponse
  */
@@ -5859,7 +5877,7 @@ func (client *Client) DeleteTrigger(functionName *string, triggerName *string) (
 }
 
 /**
- * 删除VPC绑定
+ * 删除VPC绑定。
  *
  * @param headers map
  * @param runtime runtime options for this request RuntimeOptions
@@ -5890,7 +5908,7 @@ func (client *Client) DeleteVpcBindingWithOptions(functionName *string, vpcId *s
 }
 
 /**
- * 删除VPC绑定
+ * 删除VPC绑定。
  *
  * @return DeleteVpcBindingResponse
  */
@@ -5907,7 +5925,7 @@ func (client *Client) DeleteVpcBinding(functionName *string, vpcId *string) (_re
 }
 
 /**
- * 获取函数别名信息
+ * 获取函数别名信息。
  *
  * @param headers map
  * @param runtime runtime options for this request RuntimeOptions
@@ -5938,7 +5956,7 @@ func (client *Client) GetAliasWithOptions(functionName *string, aliasName *strin
 }
 
 /**
- * 获取函数别名信息
+ * 获取函数别名信息。
  *
  * @return GetAliasResponse
  */
@@ -5955,7 +5973,7 @@ func (client *Client) GetAlias(functionName *string, aliasName *string) (_result
 }
 
 /**
- * 获取函数异步调用配置
+ * 获取函数异步调用配置。
  *
  * @param request GetAsyncInvokeConfigRequest
  * @param headers map
@@ -5997,7 +6015,7 @@ func (client *Client) GetAsyncInvokeConfigWithOptions(functionName *string, requ
 }
 
 /**
- * 获取函数异步调用配置
+ * 获取函数异步调用配置。
  *
  * @param request GetAsyncInvokeConfigRequest
  * @return GetAsyncInvokeConfigResponse
@@ -6015,7 +6033,7 @@ func (client *Client) GetAsyncInvokeConfig(functionName *string, request *GetAsy
 }
 
 /**
- * 获取函数并发度配置
+ * 获取函数并发度配置。
  *
  * @param headers map
  * @param runtime runtime options for this request RuntimeOptions
@@ -6046,7 +6064,7 @@ func (client *Client) GetConcurrencyConfigWithOptions(functionName *string, head
 }
 
 /**
- * 获取函数并发度配置
+ * 获取函数并发度配置。
  *
  * @return GetConcurrencyConfigResponse
  */
@@ -6063,7 +6081,7 @@ func (client *Client) GetConcurrencyConfig(functionName *string) (_result *GetCo
 }
 
 /**
- * 获取自定义域名
+ * 获取自定义域名。
  *
  * @param headers map
  * @param runtime runtime options for this request RuntimeOptions
@@ -6094,7 +6112,7 @@ func (client *Client) GetCustomDomainWithOptions(domainName *string, headers map
 }
 
 /**
- * 获取自定义域名
+ * 获取自定义域名。
  *
  * @return GetCustomDomainResponse
  */
@@ -6111,7 +6129,7 @@ func (client *Client) GetCustomDomain(domainName *string) (_result *GetCustomDom
 }
 
 /**
- * 获取函数信息
+ * 获取函数信息。
  *
  * @param request GetFunctionRequest
  * @param headers map
@@ -6153,7 +6171,7 @@ func (client *Client) GetFunctionWithOptions(functionName *string, request *GetF
 }
 
 /**
- * 获取函数信息
+ * 获取函数信息。
  *
  * @param request GetFunctionRequest
  * @return GetFunctionResponse
@@ -6171,7 +6189,7 @@ func (client *Client) GetFunction(functionName *string, request *GetFunctionRequ
 }
 
 /**
- * 获取函数代码
+ * 获取函数代码。
  *
  * @param request GetFunctionCodeRequest
  * @param headers map
@@ -6213,7 +6231,7 @@ func (client *Client) GetFunctionCodeWithOptions(functionName *string, request *
 }
 
 /**
- * 获取函数代码
+ * 获取函数代码。
  *
  * @param request GetFunctionCodeRequest
  * @return GetFunctionCodeResponse
@@ -6231,7 +6249,7 @@ func (client *Client) GetFunctionCode(functionName *string, request *GetFunction
 }
 
 /**
- * 获取层版本
+ * 获取层版本。
  *
  * @param headers map
  * @param runtime runtime options for this request RuntimeOptions
@@ -6262,7 +6280,7 @@ func (client *Client) GetLayerVersionWithOptions(layerName *string, version *str
 }
 
 /**
- * 获取层版本
+ * 获取层版本。
  *
  * @return GetLayerVersionResponse
  */
@@ -6279,7 +6297,7 @@ func (client *Client) GetLayerVersion(layerName *string, version *string) (_resu
 }
 
 /**
- * 根据资源标识获取层版本
+ * 根据资源标识获取层版本。
  *
  * @param headers map
  * @param runtime runtime options for this request RuntimeOptions
@@ -6310,7 +6328,7 @@ func (client *Client) GetLayerVersionByArnWithOptions(arn *string, headers map[s
 }
 
 /**
- * 根据资源标识获取层版本
+ * 根据资源标识获取层版本。
  *
  * @return GetLayerVersionByArnResponse
  */
@@ -6327,7 +6345,7 @@ func (client *Client) GetLayerVersionByArn(arn *string) (_result *GetLayerVersio
 }
 
 /**
- * 获取函数预留配置
+ * 获取函数预留配置。
  *
  * @param request GetProvisionConfigRequest
  * @param headers map
@@ -6369,7 +6387,7 @@ func (client *Client) GetProvisionConfigWithOptions(functionName *string, reques
 }
 
 /**
- * 获取函数预留配置
+ * 获取函数预留配置。
  *
  * @param request GetProvisionConfigRequest
  * @return GetProvisionConfigResponse
@@ -6387,7 +6405,7 @@ func (client *Client) GetProvisionConfig(functionName *string, request *GetProvi
 }
 
 /**
- * 获取资源标签
+ * 获取资源标签。
  *
  * @param request GetResourceTagsRequest
  * @param headers map
@@ -6429,7 +6447,7 @@ func (client *Client) GetResourceTagsWithOptions(request *GetResourceTagsRequest
 }
 
 /**
- * 获取资源标签
+ * 获取资源标签。
  *
  * @param request GetResourceTagsRequest
  * @return GetResourceTagsResponse
@@ -6447,7 +6465,7 @@ func (client *Client) GetResourceTags(request *GetResourceTagsRequest) (_result 
 }
 
 /**
- * 获取函数触发器
+ * 获取函数触发器。
  *
  * @param headers map
  * @param runtime runtime options for this request RuntimeOptions
@@ -6478,7 +6496,7 @@ func (client *Client) GetTriggerWithOptions(functionName *string, triggerName *s
 }
 
 /**
- * 获取函数触发器
+ * 获取函数触发器。
  *
  * @return GetTriggerResponse
  */
@@ -6495,7 +6513,7 @@ func (client *Client) GetTrigger(functionName *string, triggerName *string) (_re
 }
 
 /**
- * 调用函数
+ * 调用函数。
  *
  * @param request InvokeFunctionRequest
  * @param headers InvokeFunctionHeaders
@@ -6585,7 +6603,7 @@ func (client *Client) InvokeFunctionWithOptions(functionName *string, request *I
 }
 
 /**
- * 调用函数
+ * 调用函数。
  *
  * @param request InvokeFunctionRequest
  * @return InvokeFunctionResponse
@@ -6603,7 +6621,7 @@ func (client *Client) InvokeFunction(functionName *string, request *InvokeFuncti
 }
 
 /**
- * 列出函数别名
+ * 列出函数别名。
  *
  * @param request ListAliasesRequest
  * @param headers map
@@ -6653,7 +6671,7 @@ func (client *Client) ListAliasesWithOptions(functionName *string, request *List
 }
 
 /**
- * 列出函数别名
+ * 列出函数别名。
  *
  * @param request ListAliasesRequest
  * @return ListAliasesResponse
@@ -6671,7 +6689,7 @@ func (client *Client) ListAliases(functionName *string, request *ListAliasesRequ
 }
 
 /**
- * 列出函数异步调用配置
+ * 列出函数异步调用配置。
  *
  * @param request ListAsyncInvokeConfigsRequest
  * @param headers map
@@ -6721,7 +6739,7 @@ func (client *Client) ListAsyncInvokeConfigsWithOptions(request *ListAsyncInvoke
 }
 
 /**
- * 列出函数异步调用配置
+ * 列出函数异步调用配置。
  *
  * @param request ListAsyncInvokeConfigsRequest
  * @return ListAsyncInvokeConfigsResponse
@@ -6739,7 +6757,7 @@ func (client *Client) ListAsyncInvokeConfigs(request *ListAsyncInvokeConfigsRequ
 }
 
 /**
- * 列出函数并发度配置
+ * 列出函数并发度配置。
  *
  * @param request ListConcurrencyConfigsRequest
  * @param headers map
@@ -6789,7 +6807,7 @@ func (client *Client) ListConcurrencyConfigsWithOptions(request *ListConcurrency
 }
 
 /**
- * 列出函数并发度配置
+ * 列出函数并发度配置。
  *
  * @param request ListConcurrencyConfigsRequest
  * @return ListConcurrencyConfigsResponse
@@ -6807,7 +6825,7 @@ func (client *Client) ListConcurrencyConfigs(request *ListConcurrencyConfigsRequ
 }
 
 /**
- * 列出自定义域名
+ * 列出自定义域名。
  *
  * @param request ListCustomDomainsRequest
  * @param headers map
@@ -6857,7 +6875,7 @@ func (client *Client) ListCustomDomainsWithOptions(request *ListCustomDomainsReq
 }
 
 /**
- * 列出自定义域名
+ * 列出自定义域名。
  *
  * @param request ListCustomDomainsRequest
  * @return ListCustomDomainsResponse
@@ -6875,7 +6893,7 @@ func (client *Client) ListCustomDomains(request *ListCustomDomainsRequest) (_res
 }
 
 /**
- * 列出函数版本
+ * 列出函数版本。
  *
  * @param request ListFunctionVersionsRequest
  * @param headers map
@@ -6925,7 +6943,7 @@ func (client *Client) ListFunctionVersionsWithOptions(functionName *string, requ
 }
 
 /**
- * 列出函数版本
+ * 列出函数版本。
  *
  * @param request ListFunctionVersionsRequest
  * @return ListFunctionVersionsResponse
@@ -6943,7 +6961,7 @@ func (client *Client) ListFunctionVersions(functionName *string, request *ListFu
 }
 
 /**
- * 列出函数
+ * 列出函数。
  *
  * @param request ListFunctionsRequest
  * @param headers map
@@ -6993,7 +7011,7 @@ func (client *Client) ListFunctionsWithOptions(request *ListFunctionsRequest, he
 }
 
 /**
- * 列出函数
+ * 列出函数。
  *
  * @param request ListFunctionsRequest
  * @return ListFunctionsResponse
@@ -7011,7 +7029,7 @@ func (client *Client) ListFunctions(request *ListFunctionsRequest) (_result *Lis
 }
 
 /**
- * 列出函数实例
+ * 列出函数实例。
  *
  * @param request ListInstancesRequest
  * @param headers map
@@ -7057,7 +7075,7 @@ func (client *Client) ListInstancesWithOptions(functionName *string, request *Li
 }
 
 /**
- * 列出函数实例
+ * 列出函数实例。
  *
  * @param request ListInstancesRequest
  * @return ListInstancesResponse
@@ -7075,7 +7093,7 @@ func (client *Client) ListInstances(functionName *string, request *ListInstances
 }
 
 /**
- * 列出层版本
+ * 列出层版本。
  *
  * @param request ListLayerVersionsRequest
  * @param headers map
@@ -7121,7 +7139,7 @@ func (client *Client) ListLayerVersionsWithOptions(layerName *string, request *L
 }
 
 /**
- * 列出层版本
+ * 列出层版本。
  *
  * @param request ListLayerVersionsRequest
  * @return ListLayerVersionsResponse
@@ -7139,7 +7157,7 @@ func (client *Client) ListLayerVersions(layerName *string, request *ListLayerVer
 }
 
 /**
- * 列出层
+ * 列出层。
  *
  * @param request ListLayersRequest
  * @param headers map
@@ -7197,7 +7215,7 @@ func (client *Client) ListLayersWithOptions(request *ListLayersRequest, headers 
 }
 
 /**
- * 列出层
+ * 列出层。
  *
  * @param request ListLayersRequest
  * @return ListLayersResponse
@@ -7215,7 +7233,7 @@ func (client *Client) ListLayers(request *ListLayersRequest) (_result *ListLayer
 }
 
 /**
- * 列出函数预留配置
+ * 列出函数预留配置。
  *
  * @param request ListProvisionConfigsRequest
  * @param headers map
@@ -7265,7 +7283,7 @@ func (client *Client) ListProvisionConfigsWithOptions(request *ListProvisionConf
 }
 
 /**
- * 列出函数预留配置
+ * 列出函数预留配置。
  *
  * @param request ListProvisionConfigsRequest
  * @return ListProvisionConfigsResponse
@@ -7283,7 +7301,7 @@ func (client *Client) ListProvisionConfigs(request *ListProvisionConfigsRequest)
 }
 
 /**
- * 列出具有标签的资源
+ * 列出具有标签的资源。
  *
  * @param request ListTaggedResourcesRequest
  * @param headers map
@@ -7302,6 +7320,10 @@ func (client *Client) ListTaggedResourcesWithOptions(request *ListTaggedResource
 
 	if !tea.BoolValue(util.IsUnset(request.NextToken)) {
 		query["nextToken"] = request.NextToken
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ResourceType)) {
+		query["resourceType"] = request.ResourceType
 	}
 
 	req := &openapi.OpenApiRequest{
@@ -7329,7 +7351,7 @@ func (client *Client) ListTaggedResourcesWithOptions(request *ListTaggedResource
 }
 
 /**
- * 列出具有标签的资源
+ * 列出具有标签的资源。
  *
  * @param request ListTaggedResourcesRequest
  * @return ListTaggedResourcesResponse
@@ -7347,7 +7369,7 @@ func (client *Client) ListTaggedResources(request *ListTaggedResourcesRequest) (
 }
 
 /**
- * 列出函数触发器
+ * 列出函数触发器。
  *
  * @param request ListTriggersRequest
  * @param headers map
@@ -7397,7 +7419,7 @@ func (client *Client) ListTriggersWithOptions(functionName *string, request *Lis
 }
 
 /**
- * 列出函数触发器
+ * 列出函数触发器。
  *
  * @param request ListTriggersRequest
  * @return ListTriggersResponse
@@ -7415,7 +7437,7 @@ func (client *Client) ListTriggers(functionName *string, request *ListTriggersRe
 }
 
 /**
- * 列出VPC绑定配置
+ * 列出VPC绑定配置。
  *
  * @param headers map
  * @param runtime runtime options for this request RuntimeOptions
@@ -7446,7 +7468,7 @@ func (client *Client) ListVpcBindingsWithOptions(functionName *string, headers m
 }
 
 /**
- * 列出VPC绑定配置
+ * 列出VPC绑定配置。
  *
  * @return ListVpcBindingsResponse
  */
@@ -7463,7 +7485,7 @@ func (client *Client) ListVpcBindings(functionName *string) (_result *ListVpcBin
 }
 
 /**
- * 发布函数版本
+ * 发布函数版本。
  *
  * @param request PublishFunctionVersionRequest
  * @param headers map
@@ -7500,7 +7522,7 @@ func (client *Client) PublishFunctionVersionWithOptions(functionName *string, re
 }
 
 /**
- * 发布函数版本
+ * 发布函数版本。
  *
  * @param request PublishFunctionVersionRequest
  * @return PublishFunctionVersionResponse
@@ -7518,7 +7540,7 @@ func (client *Client) PublishFunctionVersion(functionName *string, request *Publ
 }
 
 /**
- * 设置函数异步调用配置
+ * 设置函数异步调用配置。
  *
  * @param request PutAsyncInvokeConfigRequest
  * @param headers map
@@ -7561,7 +7583,7 @@ func (client *Client) PutAsyncInvokeConfigWithOptions(functionName *string, requ
 }
 
 /**
- * 设置函数异步调用配置
+ * 设置函数异步调用配置。
  *
  * @param request PutAsyncInvokeConfigRequest
  * @return PutAsyncInvokeConfigResponse
@@ -7579,7 +7601,7 @@ func (client *Client) PutAsyncInvokeConfig(functionName *string, request *PutAsy
 }
 
 /**
- * 设置函数并发度配置
+ * 设置函数并发度配置。
  *
  * @param request PutConcurrencyConfigRequest
  * @param headers map
@@ -7616,7 +7638,7 @@ func (client *Client) PutConcurrencyConfigWithOptions(functionName *string, requ
 }
 
 /**
- * 设置函数并发度配置
+ * 设置函数并发度配置。
  *
  * @param request PutConcurrencyConfigRequest
  * @return PutConcurrencyConfigResponse
@@ -7634,7 +7656,7 @@ func (client *Client) PutConcurrencyConfig(functionName *string, request *PutCon
 }
 
 /**
- * 设置层的访问权限
+ * 设置层的访问权限。
  *
  * @param request PutLayerACLRequest
  * @param headers map
@@ -7676,7 +7698,7 @@ func (client *Client) PutLayerACLWithOptions(layerName *string, request *PutLaye
 }
 
 /**
- * 设置层的访问权限
+ * 设置层的访问权限。
  *
  * @param request PutLayerACLRequest
  * @return PutLayerACLResponse
@@ -7694,7 +7716,7 @@ func (client *Client) PutLayerACL(layerName *string, request *PutLayerACLRequest
 }
 
 /**
- * 设置函数预留配置
+ * 设置函数预留配置。
  *
  * @param request PutProvisionConfigRequest
  * @param headers map
@@ -7737,7 +7759,7 @@ func (client *Client) PutProvisionConfigWithOptions(functionName *string, reques
 }
 
 /**
- * 设置函数预留配置
+ * 设置函数预留配置。
  *
  * @param request PutProvisionConfigRequest
  * @return PutProvisionConfigResponse
@@ -7755,7 +7777,7 @@ func (client *Client) PutProvisionConfig(functionName *string, request *PutProvi
 }
 
 /**
- * 设置资源标签
+ * 设置资源标签。
  *
  * @param request TagResourceRequest
  * @param headers map
@@ -7792,7 +7814,7 @@ func (client *Client) TagResourceWithOptions(request *TagResourceRequest, header
 }
 
 /**
- * 设置资源标签
+ * 设置资源标签。
  *
  * @param request TagResourceRequest
  * @return TagResourceResponse
@@ -7810,7 +7832,7 @@ func (client *Client) TagResource(request *TagResourceRequest) (_result *TagReso
 }
 
 /**
- * 删除资源标签
+ * 删除资源标签。
  *
  * @param request UntagResourceRequest
  * @param headers map
@@ -7860,7 +7882,7 @@ func (client *Client) UntagResourceWithOptions(request *UntagResourceRequest, he
 }
 
 /**
- * 删除资源标签
+ * 删除资源标签。
  *
  * @param request UntagResourceRequest
  * @return UntagResourceResponse
@@ -7878,7 +7900,7 @@ func (client *Client) UntagResource(request *UntagResourceRequest) (_result *Unt
 }
 
 /**
- * 更新函数别名
+ * 更新函数别名。
  *
  * @param request UpdateAliasRequest
  * @param headers map
@@ -7915,7 +7937,7 @@ func (client *Client) UpdateAliasWithOptions(functionName *string, aliasName *st
 }
 
 /**
- * 更新函数别名
+ * 更新函数别名。
  *
  * @param request UpdateAliasRequest
  * @return UpdateAliasResponse
@@ -7933,7 +7955,7 @@ func (client *Client) UpdateAlias(functionName *string, aliasName *string, reque
 }
 
 /**
- * 更新自定义域名
+ * 更新自定义域名。
  *
  * @param request UpdateCustomDomainRequest
  * @param headers map
@@ -7970,7 +7992,7 @@ func (client *Client) UpdateCustomDomainWithOptions(domainName *string, request 
 }
 
 /**
- * 更新自定义域名
+ * 更新自定义域名。
  *
  * @param request UpdateCustomDomainRequest
  * @return UpdateCustomDomainResponse
@@ -7988,7 +8010,7 @@ func (client *Client) UpdateCustomDomain(domainName *string, request *UpdateCust
 }
 
 /**
- * 更新函数
+ * 更新函数。
  *
  * @param request UpdateFunctionRequest
  * @param headers map
@@ -8025,7 +8047,7 @@ func (client *Client) UpdateFunctionWithOptions(functionName *string, request *U
 }
 
 /**
- * 更新函数
+ * 更新函数。
  *
  * @param request UpdateFunctionRequest
  * @return UpdateFunctionResponse
@@ -8043,7 +8065,7 @@ func (client *Client) UpdateFunction(functionName *string, request *UpdateFuncti
 }
 
 /**
- * 更新函数触发器
+ * 更新函数触发器。
  *
  * @param request UpdateTriggerRequest
  * @param headers map
@@ -8080,7 +8102,7 @@ func (client *Client) UpdateTriggerWithOptions(functionName *string, triggerName
 }
 
 /**
- * 更新函数触发器
+ * 更新函数触发器。
  *
  * @param request UpdateTriggerRequest
  * @return UpdateTriggerResponse
