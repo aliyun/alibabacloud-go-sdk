@@ -19295,7 +19295,8 @@ type DescribeDcdnUserDomainsByFuncRequest struct {
 	// *   **unconfig**: not enabled
 	FuncFilter *string `json:"FuncFilter,omitempty" xml:"FuncFilter,omitempty"`
 	// The ID of the feature. For more information about how to query feature IDs, see [Parameters for configuring features for domain names](~~410622~~). For example, the ID of the origin host feature (set_req_host_header) is 18.
-	FuncId *int32 `json:"FuncId,omitempty" xml:"FuncId,omitempty"`
+	FuncId    *int32  `json:"FuncId,omitempty" xml:"FuncId,omitempty"`
+	MatchType *string `json:"MatchType,omitempty" xml:"MatchType,omitempty"`
 	// The number of the page to return. Default value: **1**. Valid values: **1 to 100000**.
 	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
 	// The number of entries to return on each page. Default value: **20**. Valid values: **1 to 500**.
@@ -19324,6 +19325,11 @@ func (s *DescribeDcdnUserDomainsByFuncRequest) SetFuncFilter(v string) *Describe
 
 func (s *DescribeDcdnUserDomainsByFuncRequest) SetFuncId(v int32) *DescribeDcdnUserDomainsByFuncRequest {
 	s.FuncId = &v
+	return s
+}
+
+func (s *DescribeDcdnUserDomainsByFuncRequest) SetMatchType(v string) *DescribeDcdnUserDomainsByFuncRequest {
+	s.MatchType = &v
 	return s
 }
 
@@ -32503,7 +32509,7 @@ func (client *Client) DescribeDcdnCertificateDetail(request *DescribeDcdnCertifi
 }
 
 /**
- * @deprecated : DescribeDcdnCertificateList is deprecated, please use dcdn::2018-01-15::DescribeDcdnCertificateList instead.
+ * @deprecated : DescribeDcdnCertificateList is deprecated, please use dcdn::2018-01-15::DescribeDcdnSSLCertificateList instead.
  * > You can call this operation up to 30 times per second per account.
  *
  * @param request DescribeDcdnCertificateListRequest
@@ -32553,7 +32559,7 @@ func (client *Client) DescribeDcdnCertificateListWithOptions(request *DescribeDc
 }
 
 /**
- * @deprecated : DescribeDcdnCertificateList is deprecated, please use dcdn::2018-01-15::DescribeDcdnCertificateList instead.
+ * @deprecated : DescribeDcdnCertificateList is deprecated, please use dcdn::2018-01-15::DescribeDcdnSSLCertificateList instead.
  * > You can call this operation up to 30 times per second per account.
  *
  * @param request DescribeDcdnCertificateListRequest
@@ -38396,6 +38402,10 @@ func (client *Client) DescribeDcdnUserDomainsByFuncWithOptions(request *Describe
 
 	if !tea.BoolValue(util.IsUnset(request.FuncId)) {
 		query["FuncId"] = request.FuncId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.MatchType)) {
+		query["MatchType"] = request.MatchType
 	}
 
 	if !tea.BoolValue(util.IsUnset(request.PageNumber)) {
