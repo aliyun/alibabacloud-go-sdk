@@ -3175,6 +3175,216 @@ func (s *BindPrometheusGrafanaInstanceResponse) SetBody(v *BindPrometheusGrafana
 	return s
 }
 
+type BlockAlarmNotificationRequest struct {
+	AlarmId   *int64  `json:"AlarmId,omitempty" xml:"AlarmId,omitempty"`
+	HandlerId *int64  `json:"HandlerId,omitempty" xml:"HandlerId,omitempty"`
+	RegionId  *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	Timeout   *int64  `json:"Timeout,omitempty" xml:"Timeout,omitempty"`
+}
+
+func (s BlockAlarmNotificationRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s BlockAlarmNotificationRequest) GoString() string {
+	return s.String()
+}
+
+func (s *BlockAlarmNotificationRequest) SetAlarmId(v int64) *BlockAlarmNotificationRequest {
+	s.AlarmId = &v
+	return s
+}
+
+func (s *BlockAlarmNotificationRequest) SetHandlerId(v int64) *BlockAlarmNotificationRequest {
+	s.HandlerId = &v
+	return s
+}
+
+func (s *BlockAlarmNotificationRequest) SetRegionId(v string) *BlockAlarmNotificationRequest {
+	s.RegionId = &v
+	return s
+}
+
+func (s *BlockAlarmNotificationRequest) SetTimeout(v int64) *BlockAlarmNotificationRequest {
+	s.Timeout = &v
+	return s
+}
+
+type BlockAlarmNotificationResponseBody struct {
+	Code      *int64  `json:"Code,omitempty" xml:"Code,omitempty"`
+	Message   *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	Result    *bool   `json:"Result,omitempty" xml:"Result,omitempty"`
+	Success   *bool   `json:"Success,omitempty" xml:"Success,omitempty"`
+}
+
+func (s BlockAlarmNotificationResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s BlockAlarmNotificationResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *BlockAlarmNotificationResponseBody) SetCode(v int64) *BlockAlarmNotificationResponseBody {
+	s.Code = &v
+	return s
+}
+
+func (s *BlockAlarmNotificationResponseBody) SetMessage(v string) *BlockAlarmNotificationResponseBody {
+	s.Message = &v
+	return s
+}
+
+func (s *BlockAlarmNotificationResponseBody) SetRequestId(v string) *BlockAlarmNotificationResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *BlockAlarmNotificationResponseBody) SetResult(v bool) *BlockAlarmNotificationResponseBody {
+	s.Result = &v
+	return s
+}
+
+func (s *BlockAlarmNotificationResponseBody) SetSuccess(v bool) *BlockAlarmNotificationResponseBody {
+	s.Success = &v
+	return s
+}
+
+type BlockAlarmNotificationResponse struct {
+	Headers    map[string]*string                  `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                              `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *BlockAlarmNotificationResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s BlockAlarmNotificationResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s BlockAlarmNotificationResponse) GoString() string {
+	return s.String()
+}
+
+func (s *BlockAlarmNotificationResponse) SetHeaders(v map[string]*string) *BlockAlarmNotificationResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *BlockAlarmNotificationResponse) SetStatusCode(v int32) *BlockAlarmNotificationResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *BlockAlarmNotificationResponse) SetBody(v *BlockAlarmNotificationResponseBody) *BlockAlarmNotificationResponse {
+	s.Body = v
+	return s
+}
+
+type ChangeAlarmSeverityRequest struct {
+	AlarmId   *int64  `json:"AlarmId,omitempty" xml:"AlarmId,omitempty"`
+	HandlerId *int64  `json:"HandlerId,omitempty" xml:"HandlerId,omitempty"`
+	RegionId  *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	Severity  *string `json:"Severity,omitempty" xml:"Severity,omitempty"`
+}
+
+func (s ChangeAlarmSeverityRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ChangeAlarmSeverityRequest) GoString() string {
+	return s.String()
+}
+
+func (s *ChangeAlarmSeverityRequest) SetAlarmId(v int64) *ChangeAlarmSeverityRequest {
+	s.AlarmId = &v
+	return s
+}
+
+func (s *ChangeAlarmSeverityRequest) SetHandlerId(v int64) *ChangeAlarmSeverityRequest {
+	s.HandlerId = &v
+	return s
+}
+
+func (s *ChangeAlarmSeverityRequest) SetRegionId(v string) *ChangeAlarmSeverityRequest {
+	s.RegionId = &v
+	return s
+}
+
+func (s *ChangeAlarmSeverityRequest) SetSeverity(v string) *ChangeAlarmSeverityRequest {
+	s.Severity = &v
+	return s
+}
+
+type ChangeAlarmSeverityResponseBody struct {
+	Code      *int64  `json:"Code,omitempty" xml:"Code,omitempty"`
+	Message   *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	Result    *bool   `json:"Result,omitempty" xml:"Result,omitempty"`
+	Success   *bool   `json:"Success,omitempty" xml:"Success,omitempty"`
+}
+
+func (s ChangeAlarmSeverityResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ChangeAlarmSeverityResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *ChangeAlarmSeverityResponseBody) SetCode(v int64) *ChangeAlarmSeverityResponseBody {
+	s.Code = &v
+	return s
+}
+
+func (s *ChangeAlarmSeverityResponseBody) SetMessage(v string) *ChangeAlarmSeverityResponseBody {
+	s.Message = &v
+	return s
+}
+
+func (s *ChangeAlarmSeverityResponseBody) SetRequestId(v string) *ChangeAlarmSeverityResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *ChangeAlarmSeverityResponseBody) SetResult(v bool) *ChangeAlarmSeverityResponseBody {
+	s.Result = &v
+	return s
+}
+
+func (s *ChangeAlarmSeverityResponseBody) SetSuccess(v bool) *ChangeAlarmSeverityResponseBody {
+	s.Success = &v
+	return s
+}
+
+type ChangeAlarmSeverityResponse struct {
+	Headers    map[string]*string               `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                           `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *ChangeAlarmSeverityResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s ChangeAlarmSeverityResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ChangeAlarmSeverityResponse) GoString() string {
+	return s.String()
+}
+
+func (s *ChangeAlarmSeverityResponse) SetHeaders(v map[string]*string) *ChangeAlarmSeverityResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *ChangeAlarmSeverityResponse) SetStatusCode(v int32) *ChangeAlarmSeverityResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *ChangeAlarmSeverityResponse) SetBody(v *ChangeAlarmSeverityResponseBody) *ChangeAlarmSeverityResponse {
+	s.Body = v
+	return s
+}
+
 type ChangeResourceGroupRequest struct {
 	// The ID of the new resource group. You can view the available resource groups in the Resource Management console.
 	NewResourceGroupId *string `json:"NewResourceGroupId,omitempty" xml:"NewResourceGroupId,omitempty"`
@@ -3385,6 +3595,210 @@ func (s *CheckServiceStatusResponse) SetStatusCode(v int32) *CheckServiceStatusR
 }
 
 func (s *CheckServiceStatusResponse) SetBody(v *CheckServiceStatusResponseBody) *CheckServiceStatusResponse {
+	s.Body = v
+	return s
+}
+
+type ClaimAlarmRequest struct {
+	AlarmId   *int64  `json:"AlarmId,omitempty" xml:"AlarmId,omitempty"`
+	HandlerId *int64  `json:"HandlerId,omitempty" xml:"HandlerId,omitempty"`
+	RegionId  *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+}
+
+func (s ClaimAlarmRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ClaimAlarmRequest) GoString() string {
+	return s.String()
+}
+
+func (s *ClaimAlarmRequest) SetAlarmId(v int64) *ClaimAlarmRequest {
+	s.AlarmId = &v
+	return s
+}
+
+func (s *ClaimAlarmRequest) SetHandlerId(v int64) *ClaimAlarmRequest {
+	s.HandlerId = &v
+	return s
+}
+
+func (s *ClaimAlarmRequest) SetRegionId(v string) *ClaimAlarmRequest {
+	s.RegionId = &v
+	return s
+}
+
+type ClaimAlarmResponseBody struct {
+	Code      *int64  `json:"Code,omitempty" xml:"Code,omitempty"`
+	Message   *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	Result    *bool   `json:"Result,omitempty" xml:"Result,omitempty"`
+	Success   *bool   `json:"Success,omitempty" xml:"Success,omitempty"`
+}
+
+func (s ClaimAlarmResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ClaimAlarmResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *ClaimAlarmResponseBody) SetCode(v int64) *ClaimAlarmResponseBody {
+	s.Code = &v
+	return s
+}
+
+func (s *ClaimAlarmResponseBody) SetMessage(v string) *ClaimAlarmResponseBody {
+	s.Message = &v
+	return s
+}
+
+func (s *ClaimAlarmResponseBody) SetRequestId(v string) *ClaimAlarmResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *ClaimAlarmResponseBody) SetResult(v bool) *ClaimAlarmResponseBody {
+	s.Result = &v
+	return s
+}
+
+func (s *ClaimAlarmResponseBody) SetSuccess(v bool) *ClaimAlarmResponseBody {
+	s.Success = &v
+	return s
+}
+
+type ClaimAlarmResponse struct {
+	Headers    map[string]*string      `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                  `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *ClaimAlarmResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s ClaimAlarmResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ClaimAlarmResponse) GoString() string {
+	return s.String()
+}
+
+func (s *ClaimAlarmResponse) SetHeaders(v map[string]*string) *ClaimAlarmResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *ClaimAlarmResponse) SetStatusCode(v int32) *ClaimAlarmResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *ClaimAlarmResponse) SetBody(v *ClaimAlarmResponseBody) *ClaimAlarmResponse {
+	s.Body = v
+	return s
+}
+
+type CloseAlarmRequest struct {
+	AlarmId   *int64  `json:"AlarmId,omitempty" xml:"AlarmId,omitempty"`
+	HandlerId *int64  `json:"HandlerId,omitempty" xml:"HandlerId,omitempty"`
+	RegionId  *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	Solution  *string `json:"Solution,omitempty" xml:"Solution,omitempty"`
+}
+
+func (s CloseAlarmRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CloseAlarmRequest) GoString() string {
+	return s.String()
+}
+
+func (s *CloseAlarmRequest) SetAlarmId(v int64) *CloseAlarmRequest {
+	s.AlarmId = &v
+	return s
+}
+
+func (s *CloseAlarmRequest) SetHandlerId(v int64) *CloseAlarmRequest {
+	s.HandlerId = &v
+	return s
+}
+
+func (s *CloseAlarmRequest) SetRegionId(v string) *CloseAlarmRequest {
+	s.RegionId = &v
+	return s
+}
+
+func (s *CloseAlarmRequest) SetSolution(v string) *CloseAlarmRequest {
+	s.Solution = &v
+	return s
+}
+
+type CloseAlarmResponseBody struct {
+	Code      *int64  `json:"Code,omitempty" xml:"Code,omitempty"`
+	Message   *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	Result    *bool   `json:"Result,omitempty" xml:"Result,omitempty"`
+	Success   *bool   `json:"Success,omitempty" xml:"Success,omitempty"`
+}
+
+func (s CloseAlarmResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CloseAlarmResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *CloseAlarmResponseBody) SetCode(v int64) *CloseAlarmResponseBody {
+	s.Code = &v
+	return s
+}
+
+func (s *CloseAlarmResponseBody) SetMessage(v string) *CloseAlarmResponseBody {
+	s.Message = &v
+	return s
+}
+
+func (s *CloseAlarmResponseBody) SetRequestId(v string) *CloseAlarmResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *CloseAlarmResponseBody) SetResult(v bool) *CloseAlarmResponseBody {
+	s.Result = &v
+	return s
+}
+
+func (s *CloseAlarmResponseBody) SetSuccess(v bool) *CloseAlarmResponseBody {
+	s.Success = &v
+	return s
+}
+
+type CloseAlarmResponse struct {
+	Headers    map[string]*string      `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                  `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *CloseAlarmResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s CloseAlarmResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CloseAlarmResponse) GoString() string {
+	return s.String()
+}
+
+func (s *CloseAlarmResponse) SetHeaders(v map[string]*string) *CloseAlarmResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *CloseAlarmResponse) SetStatusCode(v int32) *CloseAlarmResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *CloseAlarmResponse) SetBody(v *CloseAlarmResponseBody) *CloseAlarmResponse {
 	s.Body = v
 	return s
 }
@@ -4072,6 +4486,7 @@ type CreateOrUpdateAlertRuleRequest struct {
 	// The metric type of the Application Monitoring or Browser Monitoring alert rule. For more information, see the following table.
 	MetricsType *string `json:"MetricsType,omitempty" xml:"MetricsType,omitempty"`
 	Notice      *string `json:"Notice,omitempty" xml:"Notice,omitempty"`
+	NotifyMode  *string `json:"NotifyMode,omitempty" xml:"NotifyMode,omitempty"`
 	// The notification policy.
 	//
 	// *   If you set this parameter to null, no notification policy is specified. After you create an alert rule, you can create a notification policy and specify match rules and match conditions. For example, you can specify the name of the alert rule as the match condition. When the alert rule is triggered, an alert event is generated and an alert notification is sent to the contacts or contact groups that are specified in the notification policy.
@@ -4196,6 +4611,11 @@ func (s *CreateOrUpdateAlertRuleRequest) SetMetricsType(v string) *CreateOrUpdat
 
 func (s *CreateOrUpdateAlertRuleRequest) SetNotice(v string) *CreateOrUpdateAlertRuleRequest {
 	s.Notice = &v
+	return s
+}
+
+func (s *CreateOrUpdateAlertRuleRequest) SetNotifyMode(v string) *CreateOrUpdateAlertRuleRequest {
+	s.NotifyMode = &v
 	return s
 }
 
@@ -27809,6 +28229,7 @@ type ListTraceAppsResponseBodyTraceApps struct {
 	CreateTime *int64 `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
 	// The labels of the application.
 	Labels    []*string `json:"Labels,omitempty" xml:"Labels,omitempty" type:"Repeated"`
+	Language  *string   `json:"Language,omitempty" xml:"Language,omitempty"`
 	Namespace *string   `json:"Namespace,omitempty" xml:"Namespace,omitempty"`
 	// The process identifier (PID) of the application.
 	Pid *string `json:"Pid,omitempty" xml:"Pid,omitempty"`
@@ -27868,6 +28289,11 @@ func (s *ListTraceAppsResponseBodyTraceApps) SetCreateTime(v int64) *ListTraceAp
 
 func (s *ListTraceAppsResponseBodyTraceApps) SetLabels(v []*string) *ListTraceAppsResponseBodyTraceApps {
 	s.Labels = v
+	return s
+}
+
+func (s *ListTraceAppsResponseBodyTraceApps) SetLanguage(v string) *ListTraceAppsResponseBodyTraceApps {
+	s.Language = &v
 	return s
 }
 
@@ -32356,9 +32782,10 @@ type SearchTracesByPageRequest struct {
 	EndTime *int64 `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
 	// The filter conditions.
 	ExclusionFilters []*SearchTracesByPageRequestExclusionFilters `json:"ExclusionFilters,omitempty" xml:"ExclusionFilters,omitempty" type:"Repeated"`
-	// 是否过滤错误的调用链。
-	// - `true`：过滤
-	// - `false`（默认）：不过滤
+	// Specifies whether to include the traces of abnormal calls.
+	//
+	// *   `true`: No
+	// *   `false` (default): Yes
 	IsError *bool `json:"IsError,omitempty" xml:"IsError,omitempty"`
 	// The minimum amount of time consumed by traces. Unit: milliseconds.
 	MinDuration *int64 `json:"MinDuration,omitempty" xml:"MinDuration,omitempty"`
@@ -32383,7 +32810,7 @@ type SearchTracesByPageRequest struct {
 	ServiceName *string `json:"ServiceName,omitempty" xml:"ServiceName,omitempty"`
 	// The beginning of the time range to query. Unit: milliseconds.
 	StartTime *int64 `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
-	// The list of tags.
+	// The tags.
 	Tags []*SearchTracesByPageRequestTags `json:"Tags,omitempty" xml:"Tags,omitempty" type:"Repeated"`
 }
 
@@ -32496,7 +32923,7 @@ type SearchTracesByPageRequestTags struct {
 	// *   traceId: the ID of the trace.
 	// *   serverApp: the name of the server application.
 	// *   clientApp: the name of the client application.
-	// *   service: the name of the operation.
+	// *   service: the name of the API operation.
 	// *   rpc: the type of the call.
 	// *   msOfSpan: the duration exceeds a specific value.
 	// *   clientIp: the IP address of the client.
@@ -37664,6 +38091,118 @@ func (client *Client) BindPrometheusGrafanaInstance(request *BindPrometheusGrafa
 	return _result, _err
 }
 
+func (client *Client) BlockAlarmNotificationWithOptions(request *BlockAlarmNotificationRequest, runtime *util.RuntimeOptions) (_result *BlockAlarmNotificationResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.AlarmId)) {
+		query["AlarmId"] = request.AlarmId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.HandlerId)) {
+		query["HandlerId"] = request.HandlerId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.RegionId)) {
+		query["RegionId"] = request.RegionId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Timeout)) {
+		query["Timeout"] = request.Timeout
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("BlockAlarmNotification"),
+		Version:     tea.String("2019-08-08"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &BlockAlarmNotificationResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) BlockAlarmNotification(request *BlockAlarmNotificationRequest) (_result *BlockAlarmNotificationResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &BlockAlarmNotificationResponse{}
+	_body, _err := client.BlockAlarmNotificationWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) ChangeAlarmSeverityWithOptions(request *ChangeAlarmSeverityRequest, runtime *util.RuntimeOptions) (_result *ChangeAlarmSeverityResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.AlarmId)) {
+		query["AlarmId"] = request.AlarmId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.HandlerId)) {
+		query["HandlerId"] = request.HandlerId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.RegionId)) {
+		query["RegionId"] = request.RegionId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Severity)) {
+		query["Severity"] = request.Severity
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("ChangeAlarmSeverity"),
+		Version:     tea.String("2019-08-08"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &ChangeAlarmSeverityResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) ChangeAlarmSeverity(request *ChangeAlarmSeverityRequest) (_result *ChangeAlarmSeverityResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &ChangeAlarmSeverityResponse{}
+	_body, _err := client.ChangeAlarmSeverityWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
 func (client *Client) ChangeResourceGroupWithOptions(request *ChangeResourceGroupRequest, runtime *util.RuntimeOptions) (_result *ChangeResourceGroupResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -37761,6 +38300,114 @@ func (client *Client) CheckServiceStatus(request *CheckServiceStatusRequest) (_r
 	runtime := &util.RuntimeOptions{}
 	_result = &CheckServiceStatusResponse{}
 	_body, _err := client.CheckServiceStatusWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) ClaimAlarmWithOptions(request *ClaimAlarmRequest, runtime *util.RuntimeOptions) (_result *ClaimAlarmResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.AlarmId)) {
+		query["AlarmId"] = request.AlarmId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.HandlerId)) {
+		query["HandlerId"] = request.HandlerId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.RegionId)) {
+		query["RegionId"] = request.RegionId
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("ClaimAlarm"),
+		Version:     tea.String("2019-08-08"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &ClaimAlarmResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) ClaimAlarm(request *ClaimAlarmRequest) (_result *ClaimAlarmResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &ClaimAlarmResponse{}
+	_body, _err := client.ClaimAlarmWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) CloseAlarmWithOptions(request *CloseAlarmRequest, runtime *util.RuntimeOptions) (_result *CloseAlarmResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.AlarmId)) {
+		query["AlarmId"] = request.AlarmId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.HandlerId)) {
+		query["HandlerId"] = request.HandlerId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.RegionId)) {
+		query["RegionId"] = request.RegionId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Solution)) {
+		query["Solution"] = request.Solution
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("CloseAlarm"),
+		Version:     tea.String("2019-08-08"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &CloseAlarmResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) CloseAlarm(request *CloseAlarmRequest) (_result *CloseAlarmResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &CloseAlarmResponse{}
+	_body, _err := client.CloseAlarmWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -38166,6 +38813,10 @@ func (client *Client) CreateOrUpdateAlertRuleWithOptions(request *CreateOrUpdate
 
 	if !tea.BoolValue(util.IsUnset(request.Notice)) {
 		body["Notice"] = request.Notice
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.NotifyMode)) {
+		body["NotifyMode"] = request.NotifyMode
 	}
 
 	if !tea.BoolValue(util.IsUnset(request.NotifyStrategy)) {
