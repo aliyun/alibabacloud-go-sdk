@@ -1130,6 +1130,81 @@ func (s *BatchUpdateCdnDomainResponse) SetBody(v *BatchUpdateCdnDomainResponseBo
 	return s
 }
 
+type CdnMigrateRegisterRequest struct {
+	DomainName *string `json:"DomainName,omitempty" xml:"DomainName,omitempty"`
+}
+
+func (s CdnMigrateRegisterRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CdnMigrateRegisterRequest) GoString() string {
+	return s.String()
+}
+
+func (s *CdnMigrateRegisterRequest) SetDomainName(v string) *CdnMigrateRegisterRequest {
+	s.DomainName = &v
+	return s
+}
+
+type CdnMigrateRegisterResponseBody struct {
+	DomainName *string `json:"DomainName,omitempty" xml:"DomainName,omitempty"`
+	RequestId  *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	Status     *string `json:"Status,omitempty" xml:"Status,omitempty"`
+}
+
+func (s CdnMigrateRegisterResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CdnMigrateRegisterResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *CdnMigrateRegisterResponseBody) SetDomainName(v string) *CdnMigrateRegisterResponseBody {
+	s.DomainName = &v
+	return s
+}
+
+func (s *CdnMigrateRegisterResponseBody) SetRequestId(v string) *CdnMigrateRegisterResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *CdnMigrateRegisterResponseBody) SetStatus(v string) *CdnMigrateRegisterResponseBody {
+	s.Status = &v
+	return s
+}
+
+type CdnMigrateRegisterResponse struct {
+	Headers    map[string]*string              `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                          `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *CdnMigrateRegisterResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s CdnMigrateRegisterResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CdnMigrateRegisterResponse) GoString() string {
+	return s.String()
+}
+
+func (s *CdnMigrateRegisterResponse) SetHeaders(v map[string]*string) *CdnMigrateRegisterResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *CdnMigrateRegisterResponse) SetStatusCode(v int32) *CdnMigrateRegisterResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *CdnMigrateRegisterResponse) SetBody(v *CdnMigrateRegisterResponseBody) *CdnMigrateRegisterResponse {
+	s.Body = v
+	return s
+}
+
 type ChangeCdnDomainToDcdnRequest struct {
 	DomainName    *string `json:"DomainName,omitempty" xml:"DomainName,omitempty"`
 	Operation     *string `json:"Operation,omitempty" xml:"Operation,omitempty"`
@@ -1219,6 +1294,180 @@ func (s *ChangeCdnDomainToDcdnResponse) SetStatusCode(v int32) *ChangeCdnDomainT
 }
 
 func (s *ChangeCdnDomainToDcdnResponse) SetBody(v *ChangeCdnDomainToDcdnResponseBody) *ChangeCdnDomainToDcdnResponse {
+	s.Body = v
+	return s
+}
+
+type CheckCdnDomainExistRequest struct {
+	DomainName    *string `json:"DomainName,omitempty" xml:"DomainName,omitempty"`
+	OwnerAccount  *string `json:"OwnerAccount,omitempty" xml:"OwnerAccount,omitempty"`
+	OwnerId       *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
+	SecurityToken *string `json:"SecurityToken,omitempty" xml:"SecurityToken,omitempty"`
+}
+
+func (s CheckCdnDomainExistRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CheckCdnDomainExistRequest) GoString() string {
+	return s.String()
+}
+
+func (s *CheckCdnDomainExistRequest) SetDomainName(v string) *CheckCdnDomainExistRequest {
+	s.DomainName = &v
+	return s
+}
+
+func (s *CheckCdnDomainExistRequest) SetOwnerAccount(v string) *CheckCdnDomainExistRequest {
+	s.OwnerAccount = &v
+	return s
+}
+
+func (s *CheckCdnDomainExistRequest) SetOwnerId(v int64) *CheckCdnDomainExistRequest {
+	s.OwnerId = &v
+	return s
+}
+
+func (s *CheckCdnDomainExistRequest) SetSecurityToken(v string) *CheckCdnDomainExistRequest {
+	s.SecurityToken = &v
+	return s
+}
+
+type CheckCdnDomainExistResponseBody struct {
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	Status    *string `json:"Status,omitempty" xml:"Status,omitempty"`
+}
+
+func (s CheckCdnDomainExistResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CheckCdnDomainExistResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *CheckCdnDomainExistResponseBody) SetRequestId(v string) *CheckCdnDomainExistResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *CheckCdnDomainExistResponseBody) SetStatus(v string) *CheckCdnDomainExistResponseBody {
+	s.Status = &v
+	return s
+}
+
+type CheckCdnDomainExistResponse struct {
+	Headers    map[string]*string               `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                           `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *CheckCdnDomainExistResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s CheckCdnDomainExistResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CheckCdnDomainExistResponse) GoString() string {
+	return s.String()
+}
+
+func (s *CheckCdnDomainExistResponse) SetHeaders(v map[string]*string) *CheckCdnDomainExistResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *CheckCdnDomainExistResponse) SetStatusCode(v int32) *CheckCdnDomainExistResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *CheckCdnDomainExistResponse) SetBody(v *CheckCdnDomainExistResponseBody) *CheckCdnDomainExistResponse {
+	s.Body = v
+	return s
+}
+
+type CheckCdnDomainICPRequest struct {
+	DomainName    *string `json:"DomainName,omitempty" xml:"DomainName,omitempty"`
+	OwnerAccount  *string `json:"OwnerAccount,omitempty" xml:"OwnerAccount,omitempty"`
+	OwnerId       *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
+	SecurityToken *string `json:"SecurityToken,omitempty" xml:"SecurityToken,omitempty"`
+}
+
+func (s CheckCdnDomainICPRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CheckCdnDomainICPRequest) GoString() string {
+	return s.String()
+}
+
+func (s *CheckCdnDomainICPRequest) SetDomainName(v string) *CheckCdnDomainICPRequest {
+	s.DomainName = &v
+	return s
+}
+
+func (s *CheckCdnDomainICPRequest) SetOwnerAccount(v string) *CheckCdnDomainICPRequest {
+	s.OwnerAccount = &v
+	return s
+}
+
+func (s *CheckCdnDomainICPRequest) SetOwnerId(v int64) *CheckCdnDomainICPRequest {
+	s.OwnerId = &v
+	return s
+}
+
+func (s *CheckCdnDomainICPRequest) SetSecurityToken(v string) *CheckCdnDomainICPRequest {
+	s.SecurityToken = &v
+	return s
+}
+
+type CheckCdnDomainICPResponseBody struct {
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	Status    *string `json:"Status,omitempty" xml:"Status,omitempty"`
+}
+
+func (s CheckCdnDomainICPResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CheckCdnDomainICPResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *CheckCdnDomainICPResponseBody) SetRequestId(v string) *CheckCdnDomainICPResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *CheckCdnDomainICPResponseBody) SetStatus(v string) *CheckCdnDomainICPResponseBody {
+	s.Status = &v
+	return s
+}
+
+type CheckCdnDomainICPResponse struct {
+	Headers    map[string]*string             `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                         `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *CheckCdnDomainICPResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s CheckCdnDomainICPResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CheckCdnDomainICPResponse) GoString() string {
+	return s.String()
+}
+
+func (s *CheckCdnDomainICPResponse) SetHeaders(v map[string]*string) *CheckCdnDomainICPResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *CheckCdnDomainICPResponse) SetStatusCode(v int32) *CheckCdnDomainICPResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *CheckCdnDomainICPResponse) SetBody(v *CheckCdnDomainICPResponseBody) *CheckCdnDomainICPResponse {
 	s.Body = v
 	return s
 }
@@ -2837,7 +3086,14 @@ func (s *DescribeCdnCertificateDetailResponse) SetBody(v *DescribeCdnCertificate
 }
 
 type DescribeCdnCertificateDetailByIdRequest struct {
-	CertId        *string `json:"CertId,omitempty" xml:"CertId,omitempty"`
+	// The ID of the certificate.
+	CertId *string `json:"CertId,omitempty" xml:"CertId,omitempty"`
+	// The region of the certificate. Valid values:
+	//
+	// *   **ap-southeast-1**: Singapore
+	// *   **cn-hangzhou**: China (Hangzhou)
+	//
+	// Default value: **cn-hangzhou**
 	CertRegion    *string `json:"CertRegion,omitempty" xml:"CertRegion,omitempty"`
 	OwnerId       *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
 	SecurityToken *string `json:"SecurityToken,omitempty" xml:"SecurityToken,omitempty"`
@@ -2872,10 +3128,15 @@ func (s *DescribeCdnCertificateDetailByIdRequest) SetSecurityToken(v string) *De
 }
 
 type DescribeCdnCertificateDetailByIdResponseBody struct {
-	Cert      *string `json:"Cert,omitempty" xml:"Cert,omitempty"`
-	CertId    *int64  `json:"CertId,omitempty" xml:"CertId,omitempty"`
-	CertName  *string `json:"CertName,omitempty" xml:"CertName,omitempty"`
-	Key       *string `json:"Key,omitempty" xml:"Key,omitempty"`
+	// The content of the certificate.
+	Cert *string `json:"Cert,omitempty" xml:"Cert,omitempty"`
+	// The ID of the certificate.
+	CertId *int64 `json:"CertId,omitempty" xml:"CertId,omitempty"`
+	// The name of the certificate.
+	CertName *string `json:"CertName,omitempty" xml:"CertName,omitempty"`
+	// The public key of the certificate.
+	Key *string `json:"Key,omitempty" xml:"Key,omitempty"`
+	// The ID of the request.
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -4363,6 +4624,238 @@ func (s *DescribeCdnDomainLogsResponse) SetBody(v *DescribeCdnDomainLogsResponse
 	return s
 }
 
+type DescribeCdnDomainLogsExTtlRequest struct {
+	DomainName *string `json:"DomainName,omitempty" xml:"DomainName,omitempty"`
+	EndTime    *string `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
+	PageNumber *int64  `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
+	PageSize   *int64  `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	StartTime  *string `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
+}
+
+func (s DescribeCdnDomainLogsExTtlRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeCdnDomainLogsExTtlRequest) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeCdnDomainLogsExTtlRequest) SetDomainName(v string) *DescribeCdnDomainLogsExTtlRequest {
+	s.DomainName = &v
+	return s
+}
+
+func (s *DescribeCdnDomainLogsExTtlRequest) SetEndTime(v string) *DescribeCdnDomainLogsExTtlRequest {
+	s.EndTime = &v
+	return s
+}
+
+func (s *DescribeCdnDomainLogsExTtlRequest) SetPageNumber(v int64) *DescribeCdnDomainLogsExTtlRequest {
+	s.PageNumber = &v
+	return s
+}
+
+func (s *DescribeCdnDomainLogsExTtlRequest) SetPageSize(v int64) *DescribeCdnDomainLogsExTtlRequest {
+	s.PageSize = &v
+	return s
+}
+
+func (s *DescribeCdnDomainLogsExTtlRequest) SetStartTime(v string) *DescribeCdnDomainLogsExTtlRequest {
+	s.StartTime = &v
+	return s
+}
+
+type DescribeCdnDomainLogsExTtlResponseBody struct {
+	DomainLogDetails *DescribeCdnDomainLogsExTtlResponseBodyDomainLogDetails `json:"DomainLogDetails,omitempty" xml:"DomainLogDetails,omitempty" type:"Struct"`
+	RequestId        *string                                                 `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+}
+
+func (s DescribeCdnDomainLogsExTtlResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeCdnDomainLogsExTtlResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeCdnDomainLogsExTtlResponseBody) SetDomainLogDetails(v *DescribeCdnDomainLogsExTtlResponseBodyDomainLogDetails) *DescribeCdnDomainLogsExTtlResponseBody {
+	s.DomainLogDetails = v
+	return s
+}
+
+func (s *DescribeCdnDomainLogsExTtlResponseBody) SetRequestId(v string) *DescribeCdnDomainLogsExTtlResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+type DescribeCdnDomainLogsExTtlResponseBodyDomainLogDetails struct {
+	DomainLogDetail []*DescribeCdnDomainLogsExTtlResponseBodyDomainLogDetailsDomainLogDetail `json:"DomainLogDetail,omitempty" xml:"DomainLogDetail,omitempty" type:"Repeated"`
+}
+
+func (s DescribeCdnDomainLogsExTtlResponseBodyDomainLogDetails) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeCdnDomainLogsExTtlResponseBodyDomainLogDetails) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeCdnDomainLogsExTtlResponseBodyDomainLogDetails) SetDomainLogDetail(v []*DescribeCdnDomainLogsExTtlResponseBodyDomainLogDetailsDomainLogDetail) *DescribeCdnDomainLogsExTtlResponseBodyDomainLogDetails {
+	s.DomainLogDetail = v
+	return s
+}
+
+type DescribeCdnDomainLogsExTtlResponseBodyDomainLogDetailsDomainLogDetail struct {
+	DomainName *string                                                                         `json:"DomainName,omitempty" xml:"DomainName,omitempty"`
+	LogCount   *int64                                                                          `json:"LogCount,omitempty" xml:"LogCount,omitempty"`
+	LogInfos   *DescribeCdnDomainLogsExTtlResponseBodyDomainLogDetailsDomainLogDetailLogInfos  `json:"LogInfos,omitempty" xml:"LogInfos,omitempty" type:"Struct"`
+	PageInfos  *DescribeCdnDomainLogsExTtlResponseBodyDomainLogDetailsDomainLogDetailPageInfos `json:"PageInfos,omitempty" xml:"PageInfos,omitempty" type:"Struct"`
+}
+
+func (s DescribeCdnDomainLogsExTtlResponseBodyDomainLogDetailsDomainLogDetail) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeCdnDomainLogsExTtlResponseBodyDomainLogDetailsDomainLogDetail) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeCdnDomainLogsExTtlResponseBodyDomainLogDetailsDomainLogDetail) SetDomainName(v string) *DescribeCdnDomainLogsExTtlResponseBodyDomainLogDetailsDomainLogDetail {
+	s.DomainName = &v
+	return s
+}
+
+func (s *DescribeCdnDomainLogsExTtlResponseBodyDomainLogDetailsDomainLogDetail) SetLogCount(v int64) *DescribeCdnDomainLogsExTtlResponseBodyDomainLogDetailsDomainLogDetail {
+	s.LogCount = &v
+	return s
+}
+
+func (s *DescribeCdnDomainLogsExTtlResponseBodyDomainLogDetailsDomainLogDetail) SetLogInfos(v *DescribeCdnDomainLogsExTtlResponseBodyDomainLogDetailsDomainLogDetailLogInfos) *DescribeCdnDomainLogsExTtlResponseBodyDomainLogDetailsDomainLogDetail {
+	s.LogInfos = v
+	return s
+}
+
+func (s *DescribeCdnDomainLogsExTtlResponseBodyDomainLogDetailsDomainLogDetail) SetPageInfos(v *DescribeCdnDomainLogsExTtlResponseBodyDomainLogDetailsDomainLogDetailPageInfos) *DescribeCdnDomainLogsExTtlResponseBodyDomainLogDetailsDomainLogDetail {
+	s.PageInfos = v
+	return s
+}
+
+type DescribeCdnDomainLogsExTtlResponseBodyDomainLogDetailsDomainLogDetailLogInfos struct {
+	LogInfoDetail []*DescribeCdnDomainLogsExTtlResponseBodyDomainLogDetailsDomainLogDetailLogInfosLogInfoDetail `json:"LogInfoDetail,omitempty" xml:"LogInfoDetail,omitempty" type:"Repeated"`
+}
+
+func (s DescribeCdnDomainLogsExTtlResponseBodyDomainLogDetailsDomainLogDetailLogInfos) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeCdnDomainLogsExTtlResponseBodyDomainLogDetailsDomainLogDetailLogInfos) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeCdnDomainLogsExTtlResponseBodyDomainLogDetailsDomainLogDetailLogInfos) SetLogInfoDetail(v []*DescribeCdnDomainLogsExTtlResponseBodyDomainLogDetailsDomainLogDetailLogInfosLogInfoDetail) *DescribeCdnDomainLogsExTtlResponseBodyDomainLogDetailsDomainLogDetailLogInfos {
+	s.LogInfoDetail = v
+	return s
+}
+
+type DescribeCdnDomainLogsExTtlResponseBodyDomainLogDetailsDomainLogDetailLogInfosLogInfoDetail struct {
+	EndTime   *string `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
+	LogName   *string `json:"LogName,omitempty" xml:"LogName,omitempty"`
+	LogPath   *string `json:"LogPath,omitempty" xml:"LogPath,omitempty"`
+	LogSize   *int64  `json:"LogSize,omitempty" xml:"LogSize,omitempty"`
+	StartTime *string `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
+}
+
+func (s DescribeCdnDomainLogsExTtlResponseBodyDomainLogDetailsDomainLogDetailLogInfosLogInfoDetail) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeCdnDomainLogsExTtlResponseBodyDomainLogDetailsDomainLogDetailLogInfosLogInfoDetail) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeCdnDomainLogsExTtlResponseBodyDomainLogDetailsDomainLogDetailLogInfosLogInfoDetail) SetEndTime(v string) *DescribeCdnDomainLogsExTtlResponseBodyDomainLogDetailsDomainLogDetailLogInfosLogInfoDetail {
+	s.EndTime = &v
+	return s
+}
+
+func (s *DescribeCdnDomainLogsExTtlResponseBodyDomainLogDetailsDomainLogDetailLogInfosLogInfoDetail) SetLogName(v string) *DescribeCdnDomainLogsExTtlResponseBodyDomainLogDetailsDomainLogDetailLogInfosLogInfoDetail {
+	s.LogName = &v
+	return s
+}
+
+func (s *DescribeCdnDomainLogsExTtlResponseBodyDomainLogDetailsDomainLogDetailLogInfosLogInfoDetail) SetLogPath(v string) *DescribeCdnDomainLogsExTtlResponseBodyDomainLogDetailsDomainLogDetailLogInfosLogInfoDetail {
+	s.LogPath = &v
+	return s
+}
+
+func (s *DescribeCdnDomainLogsExTtlResponseBodyDomainLogDetailsDomainLogDetailLogInfosLogInfoDetail) SetLogSize(v int64) *DescribeCdnDomainLogsExTtlResponseBodyDomainLogDetailsDomainLogDetailLogInfosLogInfoDetail {
+	s.LogSize = &v
+	return s
+}
+
+func (s *DescribeCdnDomainLogsExTtlResponseBodyDomainLogDetailsDomainLogDetailLogInfosLogInfoDetail) SetStartTime(v string) *DescribeCdnDomainLogsExTtlResponseBodyDomainLogDetailsDomainLogDetailLogInfosLogInfoDetail {
+	s.StartTime = &v
+	return s
+}
+
+type DescribeCdnDomainLogsExTtlResponseBodyDomainLogDetailsDomainLogDetailPageInfos struct {
+	PageIndex *int64 `json:"PageIndex,omitempty" xml:"PageIndex,omitempty"`
+	PageSize  *int64 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	Total     *int64 `json:"Total,omitempty" xml:"Total,omitempty"`
+}
+
+func (s DescribeCdnDomainLogsExTtlResponseBodyDomainLogDetailsDomainLogDetailPageInfos) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeCdnDomainLogsExTtlResponseBodyDomainLogDetailsDomainLogDetailPageInfos) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeCdnDomainLogsExTtlResponseBodyDomainLogDetailsDomainLogDetailPageInfos) SetPageIndex(v int64) *DescribeCdnDomainLogsExTtlResponseBodyDomainLogDetailsDomainLogDetailPageInfos {
+	s.PageIndex = &v
+	return s
+}
+
+func (s *DescribeCdnDomainLogsExTtlResponseBodyDomainLogDetailsDomainLogDetailPageInfos) SetPageSize(v int64) *DescribeCdnDomainLogsExTtlResponseBodyDomainLogDetailsDomainLogDetailPageInfos {
+	s.PageSize = &v
+	return s
+}
+
+func (s *DescribeCdnDomainLogsExTtlResponseBodyDomainLogDetailsDomainLogDetailPageInfos) SetTotal(v int64) *DescribeCdnDomainLogsExTtlResponseBodyDomainLogDetailsDomainLogDetailPageInfos {
+	s.Total = &v
+	return s
+}
+
+type DescribeCdnDomainLogsExTtlResponse struct {
+	Headers    map[string]*string                      `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                                  `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *DescribeCdnDomainLogsExTtlResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s DescribeCdnDomainLogsExTtlResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeCdnDomainLogsExTtlResponse) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeCdnDomainLogsExTtlResponse) SetHeaders(v map[string]*string) *DescribeCdnDomainLogsExTtlResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *DescribeCdnDomainLogsExTtlResponse) SetStatusCode(v int32) *DescribeCdnDomainLogsExTtlResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *DescribeCdnDomainLogsExTtlResponse) SetBody(v *DescribeCdnDomainLogsExTtlResponseBody) *DescribeCdnDomainLogsExTtlResponse {
+	s.Body = v
+	return s
+}
+
 type DescribeCdnDomainStagingConfigRequest struct {
 	// The accelerated domain name. You can specify only one domain name in each request.
 	DomainName *string `json:"DomainName,omitempty" xml:"DomainName,omitempty"`
@@ -4707,6 +5200,90 @@ func (s *DescribeCdnHttpsDomainListResponse) SetStatusCode(v int32) *DescribeCdn
 }
 
 func (s *DescribeCdnHttpsDomainListResponse) SetBody(v *DescribeCdnHttpsDomainListResponseBody) *DescribeCdnHttpsDomainListResponse {
+	s.Body = v
+	return s
+}
+
+type DescribeCdnMigrateRegisterStatusRequest struct {
+	// The accelerated domain name. You can specify only one domain name.
+	DomainName *string `json:"DomainName,omitempty" xml:"DomainName,omitempty"`
+}
+
+func (s DescribeCdnMigrateRegisterStatusRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeCdnMigrateRegisterStatusRequest) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeCdnMigrateRegisterStatusRequest) SetDomainName(v string) *DescribeCdnMigrateRegisterStatusRequest {
+	s.DomainName = &v
+	return s
+}
+
+type DescribeCdnMigrateRegisterStatusResponseBody struct {
+	// The accelerated domain name.
+	DomainName *string `json:"DomainName,omitempty" xml:"DomainName,omitempty"`
+	// The ID of the region.
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The registration status. Valid values:
+	//
+	// *   **not exist**
+	// *   **running**
+	// *   **succeed**
+	// *   **failed**
+	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
+}
+
+func (s DescribeCdnMigrateRegisterStatusResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeCdnMigrateRegisterStatusResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeCdnMigrateRegisterStatusResponseBody) SetDomainName(v string) *DescribeCdnMigrateRegisterStatusResponseBody {
+	s.DomainName = &v
+	return s
+}
+
+func (s *DescribeCdnMigrateRegisterStatusResponseBody) SetRequestId(v string) *DescribeCdnMigrateRegisterStatusResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *DescribeCdnMigrateRegisterStatusResponseBody) SetStatus(v string) *DescribeCdnMigrateRegisterStatusResponseBody {
+	s.Status = &v
+	return s
+}
+
+type DescribeCdnMigrateRegisterStatusResponse struct {
+	Headers    map[string]*string                            `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                                        `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *DescribeCdnMigrateRegisterStatusResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s DescribeCdnMigrateRegisterStatusResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeCdnMigrateRegisterStatusResponse) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeCdnMigrateRegisterStatusResponse) SetHeaders(v map[string]*string) *DescribeCdnMigrateRegisterStatusResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *DescribeCdnMigrateRegisterStatusResponse) SetStatusCode(v int32) *DescribeCdnMigrateRegisterStatusResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *DescribeCdnMigrateRegisterStatusResponse) SetBody(v *DescribeCdnMigrateRegisterStatusResponseBody) *DescribeCdnMigrateRegisterStatusResponse {
 	s.Body = v
 	return s
 }
@@ -5461,10 +6038,14 @@ func (s *DescribeCdnSMCertificateListResponse) SetBody(v *DescribeCdnSMCertifica
 }
 
 type DescribeCdnSSLCertificateListRequest struct {
-	DomainName    *string `json:"DomainName,omitempty" xml:"DomainName,omitempty"`
-	OwnerId       *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
-	PageNumber    *int64  `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
-	PageSize      *int64  `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	// The accelerated domain name. You can specify only one domain name in each request.
+	DomainName *string `json:"DomainName,omitempty" xml:"DomainName,omitempty"`
+	OwnerId    *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
+	// The page number. Default value: **1**.
+	PageNumber *int64 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
+	// The number of entries per page. Valid values: an integer from **1** to **1000**.
+	PageSize *int64 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	// The keyword that is used to query the certificate.
 	SearchKeyword *string `json:"SearchKeyword,omitempty" xml:"SearchKeyword,omitempty"`
 	SecurityToken *string `json:"SecurityToken,omitempty" xml:"SecurityToken,omitempty"`
 }
@@ -5508,8 +6089,10 @@ func (s *DescribeCdnSSLCertificateListRequest) SetSecurityToken(v string) *Descr
 }
 
 type DescribeCdnSSLCertificateListResponseBody struct {
+	// The list of certificates.
 	CertificateListModel *DescribeCdnSSLCertificateListResponseBodyCertificateListModel `json:"CertificateListModel,omitempty" xml:"CertificateListModel,omitempty" type:"Struct"`
-	RequestId            *string                                                        `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The ID of the request.
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
 func (s DescribeCdnSSLCertificateListResponseBody) String() string {
@@ -5531,10 +6114,14 @@ func (s *DescribeCdnSSLCertificateListResponseBody) SetRequestId(v string) *Desc
 }
 
 type DescribeCdnSSLCertificateListResponseBodyCertificateListModel struct {
-	CertList   *DescribeCdnSSLCertificateListResponseBodyCertificateListModelCertList `json:"CertList,omitempty" xml:"CertList,omitempty" type:"Struct"`
-	Count      *int32                                                                 `json:"Count,omitempty" xml:"Count,omitempty"`
-	PageNumber *int64                                                                 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
-	PageSize   *int64                                                                 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	// Details about each certificate.
+	CertList *DescribeCdnSSLCertificateListResponseBodyCertificateListModelCertList `json:"CertList,omitempty" xml:"CertList,omitempty" type:"Struct"`
+	// The number of certificates.
+	Count *int32 `json:"Count,omitempty" xml:"Count,omitempty"`
+	// The page number. Pages start from page 1. Default value: 1.
+	PageNumber *int64 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
+	// The number of entries per page. Valid values: an integer from 1 to 1000.
+	PageSize *int64 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
 }
 
 func (s DescribeCdnSSLCertificateListResponseBodyCertificateListModel) String() string {
@@ -5583,13 +6170,20 @@ func (s *DescribeCdnSSLCertificateListResponseBodyCertificateListModelCertList) 
 }
 
 type DescribeCdnSSLCertificateListResponseBodyCertificateListModelCertListCert struct {
-	CertId      *int64  `json:"CertId,omitempty" xml:"CertId,omitempty"`
-	CertName    *string `json:"CertName,omitempty" xml:"CertName,omitempty"`
-	CertRegion  *string `json:"CertRegion,omitempty" xml:"CertRegion,omitempty"`
-	Common      *string `json:"Common,omitempty" xml:"Common,omitempty"`
+	// The ID of the certificate.
+	CertId *int64 `json:"CertId,omitempty" xml:"CertId,omitempty"`
+	// The name of the certificate.
+	CertName *string `json:"CertName,omitempty" xml:"CertName,omitempty"`
+	// The region ID of the certificate. Valid values: **cn-hangzhou** and **ap-southeast-1**. Default value: **cn-hangzhou**.
+	CertRegion *string `json:"CertRegion,omitempty" xml:"CertRegion,omitempty"`
+	// The Common Name (CN) attribute of the certificate. In most cases, the CN is a domain name.
+	Common *string `json:"Common,omitempty" xml:"Common,omitempty"`
+	// The fingerprint of the certificate.
 	Fingerprint *string `json:"Fingerprint,omitempty" xml:"Fingerprint,omitempty"`
-	Issuer      *string `json:"Issuer,omitempty" xml:"Issuer,omitempty"`
-	LastTime    *int64  `json:"LastTime,omitempty" xml:"LastTime,omitempty"`
+	// The certificate authority (CA) that issued the certificate.
+	Issuer *string `json:"Issuer,omitempty" xml:"Issuer,omitempty"`
+	// The time when the certificate was last modified. Unit: milliseconds.
+	LastTime *int64 `json:"LastTime,omitempty" xml:"LastTime,omitempty"`
 }
 
 func (s DescribeCdnSSLCertificateListResponseBodyCertificateListModelCertListCert) String() string {
@@ -5660,6 +6254,122 @@ func (s *DescribeCdnSSLCertificateListResponse) SetStatusCode(v int32) *Describe
 }
 
 func (s *DescribeCdnSSLCertificateListResponse) SetBody(v *DescribeCdnSSLCertificateListResponseBody) *DescribeCdnSSLCertificateListResponse {
+	s.Body = v
+	return s
+}
+
+type DescribeCdnSecFuncInfoRequest struct {
+	Lang        *string `json:"Lang,omitempty" xml:"Lang,omitempty"`
+	SecFuncType *string `json:"SecFuncType,omitempty" xml:"SecFuncType,omitempty"`
+}
+
+func (s DescribeCdnSecFuncInfoRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeCdnSecFuncInfoRequest) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeCdnSecFuncInfoRequest) SetLang(v string) *DescribeCdnSecFuncInfoRequest {
+	s.Lang = &v
+	return s
+}
+
+func (s *DescribeCdnSecFuncInfoRequest) SetSecFuncType(v string) *DescribeCdnSecFuncInfoRequest {
+	s.SecFuncType = &v
+	return s
+}
+
+type DescribeCdnSecFuncInfoResponseBody struct {
+	Content     []*DescribeCdnSecFuncInfoResponseBodyContent `json:"Content,omitempty" xml:"Content,omitempty" type:"Repeated"`
+	Description *string                                      `json:"Description,omitempty" xml:"Description,omitempty"`
+	HttpStatus  *string                                      `json:"HttpStatus,omitempty" xml:"HttpStatus,omitempty"`
+	RequestId   *string                                      `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	RetCode     *string                                      `json:"RetCode,omitempty" xml:"RetCode,omitempty"`
+}
+
+func (s DescribeCdnSecFuncInfoResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeCdnSecFuncInfoResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeCdnSecFuncInfoResponseBody) SetContent(v []*DescribeCdnSecFuncInfoResponseBodyContent) *DescribeCdnSecFuncInfoResponseBody {
+	s.Content = v
+	return s
+}
+
+func (s *DescribeCdnSecFuncInfoResponseBody) SetDescription(v string) *DescribeCdnSecFuncInfoResponseBody {
+	s.Description = &v
+	return s
+}
+
+func (s *DescribeCdnSecFuncInfoResponseBody) SetHttpStatus(v string) *DescribeCdnSecFuncInfoResponseBody {
+	s.HttpStatus = &v
+	return s
+}
+
+func (s *DescribeCdnSecFuncInfoResponseBody) SetRequestId(v string) *DescribeCdnSecFuncInfoResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *DescribeCdnSecFuncInfoResponseBody) SetRetCode(v string) *DescribeCdnSecFuncInfoResponseBody {
+	s.RetCode = &v
+	return s
+}
+
+type DescribeCdnSecFuncInfoResponseBodyContent struct {
+	Label *string `json:"Label,omitempty" xml:"Label,omitempty"`
+	Value *string `json:"Value,omitempty" xml:"Value,omitempty"`
+}
+
+func (s DescribeCdnSecFuncInfoResponseBodyContent) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeCdnSecFuncInfoResponseBodyContent) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeCdnSecFuncInfoResponseBodyContent) SetLabel(v string) *DescribeCdnSecFuncInfoResponseBodyContent {
+	s.Label = &v
+	return s
+}
+
+func (s *DescribeCdnSecFuncInfoResponseBodyContent) SetValue(v string) *DescribeCdnSecFuncInfoResponseBodyContent {
+	s.Value = &v
+	return s
+}
+
+type DescribeCdnSecFuncInfoResponse struct {
+	Headers    map[string]*string                  `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                              `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *DescribeCdnSecFuncInfoResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s DescribeCdnSecFuncInfoResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeCdnSecFuncInfoResponse) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeCdnSecFuncInfoResponse) SetHeaders(v map[string]*string) *DescribeCdnSecFuncInfoResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *DescribeCdnSecFuncInfoResponse) SetStatusCode(v int32) *DescribeCdnSecFuncInfoResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *DescribeCdnSecFuncInfoResponse) SetBody(v *DescribeCdnSecFuncInfoResponseBody) *DescribeCdnSecFuncInfoResponse {
 	s.Body = v
 	return s
 }
@@ -24288,6 +24998,50 @@ func (client *Client) BatchUpdateCdnDomain(request *BatchUpdateCdnDomainRequest)
 	return _result, _err
 }
 
+func (client *Client) CdnMigrateRegisterWithOptions(request *CdnMigrateRegisterRequest, runtime *util.RuntimeOptions) (_result *CdnMigrateRegisterResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.DomainName)) {
+		query["DomainName"] = request.DomainName
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("CdnMigrateRegister"),
+		Version:     tea.String("2018-05-10"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &CdnMigrateRegisterResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) CdnMigrateRegister(request *CdnMigrateRegisterRequest) (_result *CdnMigrateRegisterResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &CdnMigrateRegisterResponse{}
+	_body, _err := client.CdnMigrateRegisterWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
 func (client *Client) ChangeCdnDomainToDcdnWithOptions(request *ChangeCdnDomainToDcdnRequest, runtime *util.RuntimeOptions) (_result *ChangeCdnDomainToDcdnResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -24341,6 +25095,118 @@ func (client *Client) ChangeCdnDomainToDcdn(request *ChangeCdnDomainToDcdnReques
 	runtime := &util.RuntimeOptions{}
 	_result = &ChangeCdnDomainToDcdnResponse{}
 	_body, _err := client.ChangeCdnDomainToDcdnWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) CheckCdnDomainExistWithOptions(request *CheckCdnDomainExistRequest, runtime *util.RuntimeOptions) (_result *CheckCdnDomainExistResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.DomainName)) {
+		query["DomainName"] = request.DomainName
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.OwnerAccount)) {
+		query["OwnerAccount"] = request.OwnerAccount
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.OwnerId)) {
+		query["OwnerId"] = request.OwnerId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.SecurityToken)) {
+		query["SecurityToken"] = request.SecurityToken
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("CheckCdnDomainExist"),
+		Version:     tea.String("2018-05-10"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &CheckCdnDomainExistResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) CheckCdnDomainExist(request *CheckCdnDomainExistRequest) (_result *CheckCdnDomainExistResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &CheckCdnDomainExistResponse{}
+	_body, _err := client.CheckCdnDomainExistWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) CheckCdnDomainICPWithOptions(request *CheckCdnDomainICPRequest, runtime *util.RuntimeOptions) (_result *CheckCdnDomainICPResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.DomainName)) {
+		query["DomainName"] = request.DomainName
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.OwnerAccount)) {
+		query["OwnerAccount"] = request.OwnerAccount
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.OwnerId)) {
+		query["OwnerId"] = request.OwnerId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.SecurityToken)) {
+		query["SecurityToken"] = request.SecurityToken
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("CheckCdnDomainICP"),
+		Version:     tea.String("2018-05-10"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &CheckCdnDomainICPResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) CheckCdnDomainICP(request *CheckCdnDomainICPRequest) (_result *CheckCdnDomainICPResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &CheckCdnDomainICPResponse{}
+	_body, _err := client.CheckCdnDomainICPWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -25524,12 +26390,14 @@ func (client *Client) DescribeCdnCertificateDetailById(request *DescribeCdnCerti
 }
 
 /**
+ * @deprecated : DescribeCdnCertificateList is deprecated, please use Cdn::2018-05-10::DescribeCdnSSLCertificateList instead.
  * > You can call this operation up to 30 times per second per account.
  *
  * @param request DescribeCdnCertificateListRequest
  * @param runtime runtime options for this request RuntimeOptions
  * @return DescribeCdnCertificateListResponse
  */
+// Deprecated
 func (client *Client) DescribeCdnCertificateListWithOptions(request *DescribeCdnCertificateListRequest, runtime *util.RuntimeOptions) (_result *DescribeCdnCertificateListResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -25572,11 +26440,13 @@ func (client *Client) DescribeCdnCertificateListWithOptions(request *DescribeCdn
 }
 
 /**
+ * @deprecated : DescribeCdnCertificateList is deprecated, please use Cdn::2018-05-10::DescribeCdnSSLCertificateList instead.
  * > You can call this operation up to 30 times per second per account.
  *
  * @param request DescribeCdnCertificateListRequest
  * @return DescribeCdnCertificateListResponse
  */
+// Deprecated
 func (client *Client) DescribeCdnCertificateList(request *DescribeCdnCertificateListRequest) (_result *DescribeCdnCertificateListResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &DescribeCdnCertificateListResponse{}
@@ -26032,6 +26902,66 @@ func (client *Client) DescribeCdnDomainLogs(request *DescribeCdnDomainLogsReques
 	return _result, _err
 }
 
+func (client *Client) DescribeCdnDomainLogsExTtlWithOptions(request *DescribeCdnDomainLogsExTtlRequest, runtime *util.RuntimeOptions) (_result *DescribeCdnDomainLogsExTtlResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.DomainName)) {
+		query["DomainName"] = request.DomainName
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.EndTime)) {
+		query["EndTime"] = request.EndTime
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.PageNumber)) {
+		query["PageNumber"] = request.PageNumber
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.PageSize)) {
+		query["PageSize"] = request.PageSize
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.StartTime)) {
+		query["StartTime"] = request.StartTime
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("DescribeCdnDomainLogsExTtl"),
+		Version:     tea.String("2018-05-10"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &DescribeCdnDomainLogsExTtlResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) DescribeCdnDomainLogsExTtl(request *DescribeCdnDomainLogsExTtlRequest) (_result *DescribeCdnDomainLogsExTtlResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &DescribeCdnDomainLogsExTtlResponse{}
+	_body, _err := client.DescribeCdnDomainLogsExTtlWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
 /**
  * > You can call this operation up to 30 times per second per account.
  *
@@ -26151,6 +27081,63 @@ func (client *Client) DescribeCdnHttpsDomainList(request *DescribeCdnHttpsDomain
 	runtime := &util.RuntimeOptions{}
 	_result = &DescribeCdnHttpsDomainListResponse{}
 	_body, _err := client.DescribeCdnHttpsDomainListWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+/**
+ * >  If a domain name is not transferred from Alibaba Cloud CDN to DCDN after it is registered in the routing center of DCDN, the registration information is retained for only one day.
+ *
+ * @param request DescribeCdnMigrateRegisterStatusRequest
+ * @param runtime runtime options for this request RuntimeOptions
+ * @return DescribeCdnMigrateRegisterStatusResponse
+ */
+func (client *Client) DescribeCdnMigrateRegisterStatusWithOptions(request *DescribeCdnMigrateRegisterStatusRequest, runtime *util.RuntimeOptions) (_result *DescribeCdnMigrateRegisterStatusResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.DomainName)) {
+		query["DomainName"] = request.DomainName
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("DescribeCdnMigrateRegisterStatus"),
+		Version:     tea.String("2018-05-10"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &DescribeCdnMigrateRegisterStatusResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+/**
+ * >  If a domain name is not transferred from Alibaba Cloud CDN to DCDN after it is registered in the routing center of DCDN, the registration information is retained for only one day.
+ *
+ * @param request DescribeCdnMigrateRegisterStatusRequest
+ * @return DescribeCdnMigrateRegisterStatusResponse
+ */
+func (client *Client) DescribeCdnMigrateRegisterStatus(request *DescribeCdnMigrateRegisterStatusRequest) (_result *DescribeCdnMigrateRegisterStatusResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &DescribeCdnMigrateRegisterStatusResponse{}
+	_body, _err := client.DescribeCdnMigrateRegisterStatusWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -26600,6 +27587,54 @@ func (client *Client) DescribeCdnSSLCertificateList(request *DescribeCdnSSLCerti
 	runtime := &util.RuntimeOptions{}
 	_result = &DescribeCdnSSLCertificateListResponse{}
 	_body, _err := client.DescribeCdnSSLCertificateListWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) DescribeCdnSecFuncInfoWithOptions(request *DescribeCdnSecFuncInfoRequest, runtime *util.RuntimeOptions) (_result *DescribeCdnSecFuncInfoResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.Lang)) {
+		query["Lang"] = request.Lang
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.SecFuncType)) {
+		query["SecFuncType"] = request.SecFuncType
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("DescribeCdnSecFuncInfo"),
+		Version:     tea.String("2018-05-10"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &DescribeCdnSecFuncInfoResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) DescribeCdnSecFuncInfo(request *DescribeCdnSecFuncInfoRequest) (_result *DescribeCdnSecFuncInfoResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &DescribeCdnSecFuncInfoResponse{}
+	_body, _err := client.DescribeCdnSecFuncInfoWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
