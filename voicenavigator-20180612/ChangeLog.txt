@@ -1,3 +1,6 @@
+2023-10-16 Version: v2.0.2
+- Generated golang 2018-06-12 for VoiceNavigator.
+
 2022-10-13 Version: v2.0.1
 - Generated golang 2018-06-12 for VoiceNavigator.
 

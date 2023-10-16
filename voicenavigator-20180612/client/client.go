@@ -13,9 +13,11 @@ import (
 )
 
 type AssociateChatbotInstanceRequest struct {
-	ChatbotInstanceId *string `json:"ChatbotInstanceId,omitempty" xml:"ChatbotInstanceId,omitempty"`
-	ChatbotName       *string `json:"ChatbotName,omitempty" xml:"ChatbotName,omitempty"`
-	InstanceId        *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	ChatbotInstanceId    *string `json:"ChatbotInstanceId,omitempty" xml:"ChatbotInstanceId,omitempty"`
+	ChatbotName          *string `json:"ChatbotName,omitempty" xml:"ChatbotName,omitempty"`
+	InstanceId           *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	NluServiceParamsJson *string `json:"NluServiceParamsJson,omitempty" xml:"NluServiceParamsJson,omitempty"`
+	UnionSource          *string `json:"UnionSource,omitempty" xml:"UnionSource,omitempty"`
 }
 
 func (s AssociateChatbotInstanceRequest) String() string {
@@ -38,6 +40,16 @@ func (s *AssociateChatbotInstanceRequest) SetChatbotName(v string) *AssociateCha
 
 func (s *AssociateChatbotInstanceRequest) SetInstanceId(v string) *AssociateChatbotInstanceRequest {
 	s.InstanceId = &v
+	return s
+}
+
+func (s *AssociateChatbotInstanceRequest) SetNluServiceParamsJson(v string) *AssociateChatbotInstanceRequest {
+	s.NluServiceParamsJson = &v
+	return s
+}
+
+func (s *AssociateChatbotInstanceRequest) SetUnionSource(v string) *AssociateChatbotInstanceRequest {
+	s.UnionSource = &v
 	return s
 }
 
@@ -298,10 +310,11 @@ func (s *BeginDialogueResponse) SetBody(v *BeginDialogueResponseBody) *BeginDial
 }
 
 type CollectedNumberRequest struct {
-	ConversationId  *string `json:"ConversationId,omitempty" xml:"ConversationId,omitempty"`
-	InstanceId      *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	InstanceOwnerId *int64  `json:"InstanceOwnerId,omitempty" xml:"InstanceOwnerId,omitempty"`
-	Number          *string `json:"Number,omitempty" xml:"Number,omitempty"`
+	AdditionalContext *string `json:"AdditionalContext,omitempty" xml:"AdditionalContext,omitempty"`
+	ConversationId    *string `json:"ConversationId,omitempty" xml:"ConversationId,omitempty"`
+	InstanceId        *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	InstanceOwnerId   *int64  `json:"InstanceOwnerId,omitempty" xml:"InstanceOwnerId,omitempty"`
+	Number            *string `json:"Number,omitempty" xml:"Number,omitempty"`
 }
 
 func (s CollectedNumberRequest) String() string {
@@ -310,6 +323,11 @@ func (s CollectedNumberRequest) String() string {
 
 func (s CollectedNumberRequest) GoString() string {
 	return s.String()
+}
+
+func (s *CollectedNumberRequest) SetAdditionalContext(v string) *CollectedNumberRequest {
+	s.AdditionalContext = &v
+	return s
 }
 
 func (s *CollectedNumberRequest) SetConversationId(v string) *CollectedNumberRequest {
@@ -502,9 +520,12 @@ func (s *CreateDownloadUrlResponse) SetBody(v *CreateDownloadUrlResponseBody) *C
 }
 
 type CreateInstanceRequest struct {
-	Concurrency *int64  `json:"Concurrency,omitempty" xml:"Concurrency,omitempty"`
-	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
-	Name        *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	Concurrency          *int64  `json:"Concurrency,omitempty" xml:"Concurrency,omitempty"`
+	Description          *string `json:"Description,omitempty" xml:"Description,omitempty"`
+	Name                 *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	NluServiceParamsJson *string `json:"NluServiceParamsJson,omitempty" xml:"NluServiceParamsJson,omitempty"`
+	UnionInstanceId      *string `json:"UnionInstanceId,omitempty" xml:"UnionInstanceId,omitempty"`
+	UnionSource          *string `json:"UnionSource,omitempty" xml:"UnionSource,omitempty"`
 }
 
 func (s CreateInstanceRequest) String() string {
@@ -527,6 +548,21 @@ func (s *CreateInstanceRequest) SetDescription(v string) *CreateInstanceRequest 
 
 func (s *CreateInstanceRequest) SetName(v string) *CreateInstanceRequest {
 	s.Name = &v
+	return s
+}
+
+func (s *CreateInstanceRequest) SetNluServiceParamsJson(v string) *CreateInstanceRequest {
+	s.NluServiceParamsJson = &v
+	return s
+}
+
+func (s *CreateInstanceRequest) SetUnionInstanceId(v string) *CreateInstanceRequest {
+	s.UnionInstanceId = &v
+	return s
+}
+
+func (s *CreateInstanceRequest) SetUnionSource(v string) *CreateInstanceRequest {
+	s.UnionSource = &v
 	return s
 }
 
@@ -1251,6 +1287,7 @@ func (s *DescribeInstanceRequest) SetInstanceId(v string) *DescribeInstanceReque
 }
 
 type DescribeInstanceResponseBody struct {
+	AbilityType          *string   `json:"AbilityType,omitempty" xml:"AbilityType,omitempty"`
 	ApplicableOperations []*string `json:"ApplicableOperations,omitempty" xml:"ApplicableOperations,omitempty" type:"Repeated"`
 	Concurrency          *int64    `json:"Concurrency,omitempty" xml:"Concurrency,omitempty"`
 	Description          *string   `json:"Description,omitempty" xml:"Description,omitempty"`
@@ -1258,8 +1295,11 @@ type DescribeInstanceResponseBody struct {
 	ModifyTime           *int64    `json:"ModifyTime,omitempty" xml:"ModifyTime,omitempty"`
 	ModifyUserName       *string   `json:"ModifyUserName,omitempty" xml:"ModifyUserName,omitempty"`
 	Name                 *string   `json:"Name,omitempty" xml:"Name,omitempty"`
+	NluServiceParamsJson *string   `json:"NluServiceParamsJson,omitempty" xml:"NluServiceParamsJson,omitempty"`
 	RequestId            *string   `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	Status               *string   `json:"Status,omitempty" xml:"Status,omitempty"`
+	UnionInstanceId      *string   `json:"UnionInstanceId,omitempty" xml:"UnionInstanceId,omitempty"`
+	UnionSource          *string   `json:"UnionSource,omitempty" xml:"UnionSource,omitempty"`
 }
 
 func (s DescribeInstanceResponseBody) String() string {
@@ -1268,6 +1308,11 @@ func (s DescribeInstanceResponseBody) String() string {
 
 func (s DescribeInstanceResponseBody) GoString() string {
 	return s.String()
+}
+
+func (s *DescribeInstanceResponseBody) SetAbilityType(v string) *DescribeInstanceResponseBody {
+	s.AbilityType = &v
+	return s
 }
 
 func (s *DescribeInstanceResponseBody) SetApplicableOperations(v []*string) *DescribeInstanceResponseBody {
@@ -1305,6 +1350,11 @@ func (s *DescribeInstanceResponseBody) SetName(v string) *DescribeInstanceRespon
 	return s
 }
 
+func (s *DescribeInstanceResponseBody) SetNluServiceParamsJson(v string) *DescribeInstanceResponseBody {
+	s.NluServiceParamsJson = &v
+	return s
+}
+
 func (s *DescribeInstanceResponseBody) SetRequestId(v string) *DescribeInstanceResponseBody {
 	s.RequestId = &v
 	return s
@@ -1312,6 +1362,16 @@ func (s *DescribeInstanceResponseBody) SetRequestId(v string) *DescribeInstanceR
 
 func (s *DescribeInstanceResponseBody) SetStatus(v string) *DescribeInstanceResponseBody {
 	s.Status = &v
+	return s
+}
+
+func (s *DescribeInstanceResponseBody) SetUnionInstanceId(v string) *DescribeInstanceResponseBody {
+	s.UnionInstanceId = &v
+	return s
+}
+
+func (s *DescribeInstanceResponseBody) SetUnionSource(v string) *DescribeInstanceResponseBody {
+	s.UnionSource = &v
 	return s
 }
 
@@ -1429,11 +1489,12 @@ type DescribeNavigationConfigResponseBodySilenceTimeoutConfig struct {
 	FinalAction       *string `json:"FinalAction,omitempty" xml:"FinalAction,omitempty"`
 	FinalActionParams *string `json:"FinalActionParams,omitempty" xml:"FinalActionParams,omitempty"`
 	FinalPrompt       *string `json:"FinalPrompt,omitempty" xml:"FinalPrompt,omitempty"`
-	IntentTrigger     *string `json:"IntentTrigger,omitempty" xml:"IntentTrigger,omitempty"`
-	Prompt            *string `json:"Prompt,omitempty" xml:"Prompt,omitempty"`
-	SourceType        *string `json:"SourceType,omitempty" xml:"SourceType,omitempty"`
-	Threshold         *int32  `json:"Threshold,omitempty" xml:"Threshold,omitempty"`
-	Timeout           *int64  `json:"Timeout,omitempty" xml:"Timeout,omitempty"`
+	// ""
+	IntentTrigger *string `json:"IntentTrigger,omitempty" xml:"IntentTrigger,omitempty"`
+	Prompt        *string `json:"Prompt,omitempty" xml:"Prompt,omitempty"`
+	SourceType    *string `json:"SourceType,omitempty" xml:"SourceType,omitempty"`
+	Threshold     *int32  `json:"Threshold,omitempty" xml:"Threshold,omitempty"`
+	Timeout       *int64  `json:"Timeout,omitempty" xml:"Timeout,omitempty"`
 }
 
 func (s DescribeNavigationConfigResponseBodySilenceTimeoutConfig) String() string {
@@ -2276,6 +2337,7 @@ type ExportConversationDetailsRequest struct {
 	CallingNumber       *string   `json:"CallingNumber,omitempty" xml:"CallingNumber,omitempty"`
 	InstanceId          *string   `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
 	Options             []*string `json:"Options,omitempty" xml:"Options,omitempty" type:"Repeated"`
+	Result              *int32    `json:"Result,omitempty" xml:"Result,omitempty"`
 	RoundsLeftRange     *int32    `json:"RoundsLeftRange,omitempty" xml:"RoundsLeftRange,omitempty"`
 	RoundsRightRange    *int32    `json:"RoundsRightRange,omitempty" xml:"RoundsRightRange,omitempty"`
 }
@@ -2310,6 +2372,11 @@ func (s *ExportConversationDetailsRequest) SetInstanceId(v string) *ExportConver
 
 func (s *ExportConversationDetailsRequest) SetOptions(v []*string) *ExportConversationDetailsRequest {
 	s.Options = v
+	return s
+}
+
+func (s *ExportConversationDetailsRequest) SetResult(v int32) *ExportConversationDetailsRequest {
+	s.Result = &v
 	return s
 }
 
@@ -2974,9 +3041,12 @@ func (s *GetRealTimeConcurrencyResponse) SetBody(v *GetRealTimeConcurrencyRespon
 }
 
 type ListChatbotInstancesRequest struct {
-	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	PageNumber *int32  `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
-	PageSize   *int32  `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	InstanceId           *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	NluServiceParamsJson *string `json:"NluServiceParamsJson,omitempty" xml:"NluServiceParamsJson,omitempty"`
+	NluServiceType       *string `json:"NluServiceType,omitempty" xml:"NluServiceType,omitempty"`
+	PageNumber           *int32  `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
+	PageSize             *int32  `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	UnionSource          *string `json:"UnionSource,omitempty" xml:"UnionSource,omitempty"`
 }
 
 func (s ListChatbotInstancesRequest) String() string {
@@ -2992,6 +3062,16 @@ func (s *ListChatbotInstancesRequest) SetInstanceId(v string) *ListChatbotInstan
 	return s
 }
 
+func (s *ListChatbotInstancesRequest) SetNluServiceParamsJson(v string) *ListChatbotInstancesRequest {
+	s.NluServiceParamsJson = &v
+	return s
+}
+
+func (s *ListChatbotInstancesRequest) SetNluServiceType(v string) *ListChatbotInstancesRequest {
+	s.NluServiceType = &v
+	return s
+}
+
 func (s *ListChatbotInstancesRequest) SetPageNumber(v int32) *ListChatbotInstancesRequest {
 	s.PageNumber = &v
 	return s
@@ -2999,6 +3079,11 @@ func (s *ListChatbotInstancesRequest) SetPageNumber(v int32) *ListChatbotInstanc
 
 func (s *ListChatbotInstancesRequest) SetPageSize(v int32) *ListChatbotInstancesRequest {
 	s.PageSize = &v
+	return s
+}
+
+func (s *ListChatbotInstancesRequest) SetUnionSource(v string) *ListChatbotInstancesRequest {
+	s.UnionSource = &v
 	return s
 }
 
@@ -3688,9 +3773,15 @@ func (s *ListDownloadTasksResponse) SetBody(v *ListDownloadTasksResponseBody) *L
 }
 
 type ListInstancesRequest struct {
+	InstanceIdListJsonString     *string `json:"InstanceIdListJsonString,omitempty" xml:"InstanceIdListJsonString,omitempty"`
+	Name                         *string `json:"Name,omitempty" xml:"Name,omitempty"`
 	NluServiceTypeListJsonString *string `json:"NluServiceTypeListJsonString,omitempty" xml:"NluServiceTypeListJsonString,omitempty"`
+	Number                       *string `json:"Number,omitempty" xml:"Number,omitempty"`
 	PageNumber                   *int32  `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
 	PageSize                     *int32  `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	Status                       *string `json:"Status,omitempty" xml:"Status,omitempty"`
+	UnionInstanceId              *string `json:"UnionInstanceId,omitempty" xml:"UnionInstanceId,omitempty"`
+	UnionSource                  *string `json:"UnionSource,omitempty" xml:"UnionSource,omitempty"`
 }
 
 func (s ListInstancesRequest) String() string {
@@ -3701,8 +3792,23 @@ func (s ListInstancesRequest) GoString() string {
 	return s.String()
 }
 
+func (s *ListInstancesRequest) SetInstanceIdListJsonString(v string) *ListInstancesRequest {
+	s.InstanceIdListJsonString = &v
+	return s
+}
+
+func (s *ListInstancesRequest) SetName(v string) *ListInstancesRequest {
+	s.Name = &v
+	return s
+}
+
 func (s *ListInstancesRequest) SetNluServiceTypeListJsonString(v string) *ListInstancesRequest {
 	s.NluServiceTypeListJsonString = &v
+	return s
+}
+
+func (s *ListInstancesRequest) SetNumber(v string) *ListInstancesRequest {
+	s.Number = &v
 	return s
 }
 
@@ -3713,6 +3819,21 @@ func (s *ListInstancesRequest) SetPageNumber(v int32) *ListInstancesRequest {
 
 func (s *ListInstancesRequest) SetPageSize(v int32) *ListInstancesRequest {
 	s.PageSize = &v
+	return s
+}
+
+func (s *ListInstancesRequest) SetStatus(v string) *ListInstancesRequest {
+	s.Status = &v
+	return s
+}
+
+func (s *ListInstancesRequest) SetUnionInstanceId(v string) *ListInstancesRequest {
+	s.UnionInstanceId = &v
+	return s
+}
+
+func (s *ListInstancesRequest) SetUnionSource(v string) *ListInstancesRequest {
+	s.UnionSource = &v
 	return s
 }
 
@@ -3760,12 +3881,17 @@ func (s *ListInstancesResponseBody) SetTotalCount(v int32) *ListInstancesRespons
 type ListInstancesResponseBodyInstances struct {
 	ApplicableOperations []*string `json:"ApplicableOperations,omitempty" xml:"ApplicableOperations,omitempty" type:"Repeated"`
 	Concurrency          *int64    `json:"Concurrency,omitempty" xml:"Concurrency,omitempty"`
+	CreateTime           *int64    `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
 	Description          *string   `json:"Description,omitempty" xml:"Description,omitempty"`
 	InstanceId           *string   `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
 	ModifyTime           *int64    `json:"ModifyTime,omitempty" xml:"ModifyTime,omitempty"`
 	ModifyUserName       *string   `json:"ModifyUserName,omitempty" xml:"ModifyUserName,omitempty"`
 	Name                 *string   `json:"Name,omitempty" xml:"Name,omitempty"`
+	NluServiceParamsJson *string   `json:"NluServiceParamsJson,omitempty" xml:"NluServiceParamsJson,omitempty"`
+	Numbers              []*string `json:"Numbers,omitempty" xml:"Numbers,omitempty" type:"Repeated"`
 	Status               *string   `json:"Status,omitempty" xml:"Status,omitempty"`
+	UnionInstanceId      *string   `json:"UnionInstanceId,omitempty" xml:"UnionInstanceId,omitempty"`
+	UnionSource          *string   `json:"UnionSource,omitempty" xml:"UnionSource,omitempty"`
 }
 
 func (s ListInstancesResponseBodyInstances) String() string {
@@ -3783,6 +3909,11 @@ func (s *ListInstancesResponseBodyInstances) SetApplicableOperations(v []*string
 
 func (s *ListInstancesResponseBodyInstances) SetConcurrency(v int64) *ListInstancesResponseBodyInstances {
 	s.Concurrency = &v
+	return s
+}
+
+func (s *ListInstancesResponseBodyInstances) SetCreateTime(v int64) *ListInstancesResponseBodyInstances {
+	s.CreateTime = &v
 	return s
 }
 
@@ -3811,8 +3942,28 @@ func (s *ListInstancesResponseBodyInstances) SetName(v string) *ListInstancesRes
 	return s
 }
 
+func (s *ListInstancesResponseBodyInstances) SetNluServiceParamsJson(v string) *ListInstancesResponseBodyInstances {
+	s.NluServiceParamsJson = &v
+	return s
+}
+
+func (s *ListInstancesResponseBodyInstances) SetNumbers(v []*string) *ListInstancesResponseBodyInstances {
+	s.Numbers = v
+	return s
+}
+
 func (s *ListInstancesResponseBodyInstances) SetStatus(v string) *ListInstancesResponseBodyInstances {
 	s.Status = &v
+	return s
+}
+
+func (s *ListInstancesResponseBodyInstances) SetUnionInstanceId(v string) *ListInstancesResponseBodyInstances {
+	s.UnionInstanceId = &v
+	return s
+}
+
+func (s *ListInstancesResponseBodyInstances) SetUnionSource(v string) *ListInstancesResponseBodyInstances {
+	s.UnionSource = &v
 	return s
 }
 
@@ -4901,6 +5052,14 @@ func (client *Client) AssociateChatbotInstanceWithOptions(request *AssociateChat
 		query["InstanceId"] = request.InstanceId
 	}
 
+	if !tea.BoolValue(util.IsUnset(request.NluServiceParamsJson)) {
+		query["NluServiceParamsJson"] = request.NluServiceParamsJson
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.UnionSource)) {
+		query["UnionSource"] = request.UnionSource
+	}
+
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
 	}
@@ -5065,6 +5224,10 @@ func (client *Client) CollectedNumberWithOptions(request *CollectedNumberRequest
 		return _result, _err
 	}
 	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.AdditionalContext)) {
+		query["AdditionalContext"] = request.AdditionalContext
+	}
+
 	if !tea.BoolValue(util.IsUnset(request.ConversationId)) {
 		query["ConversationId"] = request.ConversationId
 	}
@@ -5171,6 +5334,18 @@ func (client *Client) CreateInstanceWithOptions(request *CreateInstanceRequest, 
 
 	if !tea.BoolValue(util.IsUnset(request.Name)) {
 		query["Name"] = request.Name
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.NluServiceParamsJson)) {
+		query["NluServiceParamsJson"] = request.NluServiceParamsJson
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.UnionInstanceId)) {
+		query["UnionInstanceId"] = request.UnionInstanceId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.UnionSource)) {
+		query["UnionSource"] = request.UnionSource
 	}
 
 	req := &openapi.OpenApiRequest{
@@ -5979,6 +6154,10 @@ func (client *Client) ExportConversationDetailsWithOptions(request *ExportConver
 
 	if !tea.BoolValue(util.IsUnset(request.Options)) {
 		query["Options"] = request.Options
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Result)) {
+		query["Result"] = request.Result
 	}
 
 	if !tea.BoolValue(util.IsUnset(request.RoundsLeftRange)) {
