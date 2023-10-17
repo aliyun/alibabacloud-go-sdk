@@ -20468,6 +20468,104 @@ func (s *DescribeDcdnUserTagsResponse) SetBody(v *DescribeDcdnUserTagsResponseBo
 	return s
 }
 
+type DescribeDcdnUserVipsByDomainRequest struct {
+	Available  *string `json:"Available,omitempty" xml:"Available,omitempty"`
+	DomainName *string `json:"DomainName,omitempty" xml:"DomainName,omitempty"`
+}
+
+func (s DescribeDcdnUserVipsByDomainRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeDcdnUserVipsByDomainRequest) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeDcdnUserVipsByDomainRequest) SetAvailable(v string) *DescribeDcdnUserVipsByDomainRequest {
+	s.Available = &v
+	return s
+}
+
+func (s *DescribeDcdnUserVipsByDomainRequest) SetDomainName(v string) *DescribeDcdnUserVipsByDomainRequest {
+	s.DomainName = &v
+	return s
+}
+
+type DescribeDcdnUserVipsByDomainResponseBody struct {
+	DomainName *string                                       `json:"DomainName,omitempty" xml:"DomainName,omitempty"`
+	RequestId  *string                                       `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	Vips       *DescribeDcdnUserVipsByDomainResponseBodyVips `json:"Vips,omitempty" xml:"Vips,omitempty" type:"Struct"`
+}
+
+func (s DescribeDcdnUserVipsByDomainResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeDcdnUserVipsByDomainResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeDcdnUserVipsByDomainResponseBody) SetDomainName(v string) *DescribeDcdnUserVipsByDomainResponseBody {
+	s.DomainName = &v
+	return s
+}
+
+func (s *DescribeDcdnUserVipsByDomainResponseBody) SetRequestId(v string) *DescribeDcdnUserVipsByDomainResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *DescribeDcdnUserVipsByDomainResponseBody) SetVips(v *DescribeDcdnUserVipsByDomainResponseBodyVips) *DescribeDcdnUserVipsByDomainResponseBody {
+	s.Vips = v
+	return s
+}
+
+type DescribeDcdnUserVipsByDomainResponseBodyVips struct {
+	Vip []*string `json:"Vip,omitempty" xml:"Vip,omitempty" type:"Repeated"`
+}
+
+func (s DescribeDcdnUserVipsByDomainResponseBodyVips) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeDcdnUserVipsByDomainResponseBodyVips) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeDcdnUserVipsByDomainResponseBodyVips) SetVip(v []*string) *DescribeDcdnUserVipsByDomainResponseBodyVips {
+	s.Vip = v
+	return s
+}
+
+type DescribeDcdnUserVipsByDomainResponse struct {
+	Headers    map[string]*string                        `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                                    `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *DescribeDcdnUserVipsByDomainResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s DescribeDcdnUserVipsByDomainResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeDcdnUserVipsByDomainResponse) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeDcdnUserVipsByDomainResponse) SetHeaders(v map[string]*string) *DescribeDcdnUserVipsByDomainResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *DescribeDcdnUserVipsByDomainResponse) SetStatusCode(v int32) *DescribeDcdnUserVipsByDomainResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *DescribeDcdnUserVipsByDomainResponse) SetBody(v *DescribeDcdnUserVipsByDomainResponseBody) *DescribeDcdnUserVipsByDomainResponse {
+	s.Body = v
+	return s
+}
+
 type DescribeDcdnVerifyContentRequest struct {
 	// The domain name for which you want to query the ownership verification content. You can specify only one domain name in one request.
 	DomainName *string `json:"DomainName,omitempty" xml:"DomainName,omitempty"`
@@ -27177,6 +27275,7 @@ func (s *PutDcdnKvNamespaceResponse) SetBody(v *PutDcdnKvNamespaceResponseBody) 
 }
 
 type RefreshDcdnObjectCachesRequest struct {
+	Force *bool `json:"Force,omitempty" xml:"Force,omitempty"`
 	// The path of the objects that you want to refresh. Separate multiple URLs with line feed characters (\n) or a pair of carriage return and line feed characters (\r\n).
 	ObjectPath *string `json:"ObjectPath,omitempty" xml:"ObjectPath,omitempty"`
 	// The refresh type. Valid values:
@@ -27194,6 +27293,11 @@ func (s RefreshDcdnObjectCachesRequest) String() string {
 
 func (s RefreshDcdnObjectCachesRequest) GoString() string {
 	return s.String()
+}
+
+func (s *RefreshDcdnObjectCachesRequest) SetForce(v bool) *RefreshDcdnObjectCachesRequest {
+	s.Force = &v
+	return s
 }
 
 func (s *RefreshDcdnObjectCachesRequest) SetObjectPath(v string) *RefreshDcdnObjectCachesRequest {
@@ -38840,6 +38944,54 @@ func (client *Client) DescribeDcdnUserTags() (_result *DescribeDcdnUserTagsRespo
 	return _result, _err
 }
 
+func (client *Client) DescribeDcdnUserVipsByDomainWithOptions(request *DescribeDcdnUserVipsByDomainRequest, runtime *util.RuntimeOptions) (_result *DescribeDcdnUserVipsByDomainResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.Available)) {
+		query["Available"] = request.Available
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.DomainName)) {
+		query["DomainName"] = request.DomainName
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("DescribeDcdnUserVipsByDomain"),
+		Version:     tea.String("2018-01-15"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &DescribeDcdnUserVipsByDomainResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) DescribeDcdnUserVipsByDomain(request *DescribeDcdnUserVipsByDomainRequest) (_result *DescribeDcdnUserVipsByDomainResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &DescribeDcdnUserVipsByDomainResponse{}
+	_body, _err := client.DescribeDcdnUserVipsByDomainWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
 /**
  * > You can call this operation up to 100 times per second per account.
  *
@@ -42025,6 +42177,10 @@ func (client *Client) RefreshDcdnObjectCachesWithOptions(request *RefreshDcdnObj
 		return _result, _err
 	}
 	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.Force)) {
+		query["Force"] = request.Force
+	}
+
 	if !tea.BoolValue(util.IsUnset(request.ObjectPath)) {
 		query["ObjectPath"] = request.ObjectPath
 	}
