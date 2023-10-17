@@ -5282,7 +5282,8 @@ type DescribeDBInstanceAttributeResponseBodyDBInstancesDBInstance struct {
 	StorageType *string `json:"StorageType,omitempty" xml:"StorageType,omitempty"`
 	SyncPercent *string `json:"SyncPercent,omitempty" xml:"SyncPercent,omitempty"`
 	// The details of the instance tags.
-	Tags *DescribeDBInstanceAttributeResponseBodyDBInstancesDBInstanceTags `json:"Tags,omitempty" xml:"Tags,omitempty" type:"Struct"`
+	Tags             *DescribeDBInstanceAttributeResponseBodyDBInstancesDBInstanceTags `json:"Tags,omitempty" xml:"Tags,omitempty" type:"Struct"`
+	UseClusterBackup *bool                                                             `json:"UseClusterBackup,omitempty" xml:"UseClusterBackup,omitempty"`
 	// The instance ID.
 	//
 	// > This parameter is returned if the network type of the instance is VPC.
@@ -5535,6 +5536,11 @@ func (s *DescribeDBInstanceAttributeResponseBodyDBInstancesDBInstance) SetSyncPe
 
 func (s *DescribeDBInstanceAttributeResponseBodyDBInstancesDBInstance) SetTags(v *DescribeDBInstanceAttributeResponseBodyDBInstancesDBInstanceTags) *DescribeDBInstanceAttributeResponseBodyDBInstancesDBInstance {
 	s.Tags = v
+	return s
+}
+
+func (s *DescribeDBInstanceAttributeResponseBodyDBInstancesDBInstance) SetUseClusterBackup(v bool) *DescribeDBInstanceAttributeResponseBodyDBInstancesDBInstance {
+	s.UseClusterBackup = &v
 	return s
 }
 
@@ -9661,20 +9667,21 @@ func (s *DescribeParameterTemplatesResponse) SetBody(v *DescribeParameterTemplat
 }
 
 type DescribeParametersRequest struct {
-	// The type of the database account. Valid values:
+	// The role of the instance. Valid values:
 	//
-	// *   mongos: an account that can be used to log on to a mongos node.
-	// *   shard: an account that can be used to log on to a shard node.
+	// *   db: a shard node.
+	// *   cs: a Configserver node.
+	// *   mongos: a mongos node.
 	CharacterType *string `json:"CharacterType,omitempty" xml:"CharacterType,omitempty"`
-	// The ID of the instance
+	// The instance ID.
 	//
-	// > If you set this parameter to the ID of a sharded cluster instance, you must also specify the **NodeId** parameter.
+	// >  If you set this parameter to the ID of a sharded cluster instance, you must also specify the **NodeId** parameter.
 	DBInstanceId *string `json:"DBInstanceId,omitempty" xml:"DBInstanceId,omitempty"`
-	// terrform use
+	// The parameter that is available in the future.
 	ExtraParam *string `json:"ExtraParam,omitempty" xml:"ExtraParam,omitempty"`
 	// The ID of the mongos or shard node in the specified sharded cluster instance.
 	//
-	// > This parameter is valid when the **DBInstanceId** parameter is set to the ID of a sharded cluster instance.
+	// >  This parameter is valid only when you specify the **DBInstanceId** parameter to the ID of a sharded cluster instance.
 	NodeId               *string `json:"NodeId,omitempty" xml:"NodeId,omitempty"`
 	OwnerAccount         *string `json:"OwnerAccount,omitempty" xml:"OwnerAccount,omitempty"`
 	OwnerId              *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
@@ -9737,15 +9744,15 @@ func (s *DescribeParametersRequest) SetSecurityToken(v string) *DescribeParamete
 }
 
 type DescribeParametersResponseBody struct {
-	// The parameter settings in the configuration template.
+	// The settings of parameters that are being configured.
 	ConfigParameters *DescribeParametersResponseBodyConfigParameters `json:"ConfigParameters,omitempty" xml:"ConfigParameters,omitempty" type:"Struct"`
 	// The database engine of the instance. Default value: **mongodb**.
 	Engine *string `json:"Engine,omitempty" xml:"Engine,omitempty"`
-	// The version of the database engine.
+	// The database engine version of the instance.
 	EngineVersion *string `json:"EngineVersion,omitempty" xml:"EngineVersion,omitempty"`
-	// The ID of the request.
+	// The request ID.
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// The parameter settings for the running instance.
+	// The settings of the parameters that have taken effect.
 	RunningParameters *DescribeParametersResponseBodyRunningParameters `json:"RunningParameters,omitempty" xml:"RunningParameters,omitempty" type:"Struct"`
 }
 
@@ -9802,15 +9809,15 @@ func (s *DescribeParametersResponseBodyConfigParameters) SetParameter(v []*Descr
 type DescribeParametersResponseBodyConfigParametersParameter struct {
 	// The valid values of the parameter.
 	CheckingCode *string `json:"CheckingCode,omitempty" xml:"CheckingCode,omitempty"`
-	// Indicates whether a restart is required for parameter modifications to take effect.
+	// Indicates whether a restart is required for parameter modifications to take effect. Valid values:
 	//
 	// *   **false**: A restart is not required. Modifications take effect immediately.
 	// *   **true**: A restart is required for parameter modifications to take effect.
 	ForceRestart *bool `json:"ForceRestart,omitempty" xml:"ForceRestart,omitempty"`
-	// Indicates whether the parameter value can be changed.
+	// Indicates whether the parameter value can be modified. Valid values:
 	//
-	// *   **false**: The parameter value cannot be changed.
-	// *   **true**: The parameter value can be changed.
+	// *   **false**: The parameter value cannot be modified.
+	// *   **true**: The parameter value can be modified.
 	ModifiableStatus *bool `json:"ModifiableStatus,omitempty" xml:"ModifiableStatus,omitempty"`
 	// The description of the parameter.
 	ParameterDescription *string `json:"ParameterDescription,omitempty" xml:"ParameterDescription,omitempty"`
@@ -9876,23 +9883,23 @@ func (s *DescribeParametersResponseBodyRunningParameters) SetParameter(v []*Desc
 }
 
 type DescribeParametersResponseBodyRunningParametersParameter struct {
-	// 实例的角色类型，取值说明：
+	// The role of the instance. Valid values:
 	//
-	// - **db**：shard角色。
-	// - **cs**：config server角色。
-	// - **mongos**：mongos角色。
+	// *   **db**: a shard node.
+	// *   **cs**: a Configserver node.
+	// *   **mongos**: a mongos node.
 	CharacterType *string `json:"CharacterType,omitempty" xml:"CharacterType,omitempty"`
 	// The valid values of the parameter.
 	CheckingCode *string `json:"CheckingCode,omitempty" xml:"CheckingCode,omitempty"`
-	// Indicates whether a restart is required for parameter modifications to take effect.
+	// Indicates whether a restart is required for parameter modifications to take effect. Valid values:
 	//
 	// *   **false**: A restart is not required. Modifications take effect immediately.
 	// *   **true**: A restart is required for parameter modifications to take effect.
 	ForceRestart *string `json:"ForceRestart,omitempty" xml:"ForceRestart,omitempty"`
-	// Indicates whether the parameter value can be changed.
+	// Indicates whether the parameter value can be modified. Valid values:
 	//
-	// *   **false**: The parameter value cannot be changed.
-	// *   **true**: The parameter value can be changed.
+	// *   **false**: The parameter value cannot be modified.
+	// *   **true**: The parameter value can be modified.
 	ModifiableStatus *string `json:"ModifiableStatus,omitempty" xml:"ModifiableStatus,omitempty"`
 	// The description of the parameter.
 	ParameterDescription *string `json:"ParameterDescription,omitempty" xml:"ParameterDescription,omitempty"`
@@ -14755,6 +14762,7 @@ func (s *ModifyDBInstanceMonitorResponse) SetBody(v *ModifyDBInstanceMonitorResp
 }
 
 type ModifyDBInstanceNetExpireTimeRequest struct {
+	Category *string `json:"Category,omitempty" xml:"Category,omitempty"`
 	// The retention period of the original classic network address. Valid values: **14**, **30**, **60**, and** 120**. Unit: day.
 	ClassicExpendExpiredDays *int32 `json:"ClassicExpendExpiredDays,omitempty" xml:"ClassicExpendExpiredDays,omitempty"`
 	// The connection string of the instance
@@ -14774,6 +14782,11 @@ func (s ModifyDBInstanceNetExpireTimeRequest) String() string {
 
 func (s ModifyDBInstanceNetExpireTimeRequest) GoString() string {
 	return s.String()
+}
+
+func (s *ModifyDBInstanceNetExpireTimeRequest) SetCategory(v string) *ModifyDBInstanceNetExpireTimeRequest {
+	s.Category = &v
+	return s
 }
 
 func (s *ModifyDBInstanceNetExpireTimeRequest) SetClassicExpendExpiredDays(v int32) *ModifyDBInstanceNetExpireTimeRequest {
@@ -18939,6 +18952,10 @@ func (client *Client) CheckRecoveryConditionWithOptions(request *CheckRecoveryCo
 		query["SourceDBInstance"] = request.SourceDBInstance
 	}
 
+	if !tea.BoolValue(util.IsUnset(request.SourceDBInstance)) {
+		query["SourceDBInstance"] = request.SourceDBInstance
+	}
+
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
 	}
@@ -20855,6 +20872,10 @@ func (client *Client) DescribeBackupDBsWithOptions(request *DescribeBackupDBsReq
 
 	if !tea.BoolValue(util.IsUnset(request.SecurityToken)) {
 		query["SecurityToken"] = request.SecurityToken
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.SourceDBInstance)) {
+		query["SourceDBInstance"] = request.SourceDBInstance
 	}
 
 	if !tea.BoolValue(util.IsUnset(request.SourceDBInstance)) {
@@ -24623,6 +24644,10 @@ func (client *Client) ModifyDBInstanceNetExpireTimeWithOptions(request *ModifyDB
 		return _result, _err
 	}
 	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.Category)) {
+		query["Category"] = request.Category
+	}
+
 	if !tea.BoolValue(util.IsUnset(request.ClassicExpendExpiredDays)) {
 		query["ClassicExpendExpiredDays"] = request.ClassicExpendExpiredDays
 	}

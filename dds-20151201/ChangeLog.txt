@@ -1,3 +1,6 @@
+2023-10-17 Version: v4.1.6
+- Generated golang 2015-12-01 for Dds.
+
 2023-09-18 Version: v4.1.5
 - Generated golang 2015-12-01 for Dds.
 
