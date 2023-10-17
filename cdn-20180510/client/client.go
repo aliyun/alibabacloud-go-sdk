@@ -22549,6 +22549,7 @@ func (s *PushObjectCacheResponse) SetBody(v *PushObjectCacheResponseBody) *PushO
 }
 
 type RefreshObjectCachesRequest struct {
+	Force      *bool   `json:"Force,omitempty" xml:"Force,omitempty"`
 	ObjectPath *string `json:"ObjectPath,omitempty" xml:"ObjectPath,omitempty"`
 	// The type of the object that you want to refresh. Valid values:
 	//
@@ -22571,6 +22572,11 @@ func (s RefreshObjectCachesRequest) String() string {
 
 func (s RefreshObjectCachesRequest) GoString() string {
 	return s.String()
+}
+
+func (s *RefreshObjectCachesRequest) SetForce(v bool) *RefreshObjectCachesRequest {
+	s.Force = &v
+	return s
 }
 
 func (s *RefreshObjectCachesRequest) SetObjectPath(v string) *RefreshObjectCachesRequest {
@@ -34259,6 +34265,10 @@ func (client *Client) RefreshObjectCachesWithOptions(request *RefreshObjectCache
 		return _result, _err
 	}
 	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.Force)) {
+		query["Force"] = request.Force
+	}
+
 	if !tea.BoolValue(util.IsUnset(request.ObjectPath)) {
 		query["ObjectPath"] = request.ObjectPath
 	}
