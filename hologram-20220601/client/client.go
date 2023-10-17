@@ -13,23 +13,107 @@ import (
 )
 
 type CreateInstanceRequest struct {
-	AutoPay          *bool   `json:"autoPay,omitempty" xml:"autoPay,omitempty"`
-	AutoRenew        *bool   `json:"autoRenew,omitempty" xml:"autoRenew,omitempty"`
-	ChargeType       *string `json:"chargeType,omitempty" xml:"chargeType,omitempty"`
-	ColdStorageSize  *int64  `json:"coldStorageSize,omitempty" xml:"coldStorageSize,omitempty"`
-	Cpu              *int64  `json:"cpu,omitempty" xml:"cpu,omitempty"`
-	Duration         *int64  `json:"duration,omitempty" xml:"duration,omitempty"`
-	GatewayCount     *int64  `json:"gatewayCount,omitempty" xml:"gatewayCount,omitempty"`
-	InstanceName     *string `json:"instanceName,omitempty" xml:"instanceName,omitempty"`
-	InstanceType     *string `json:"instanceType,omitempty" xml:"instanceType,omitempty"`
+	// Specifies whether to enable auto-payment. Default value: true. Valid values:
+	//
+	// *   true
+	// *   false
+	//
+	// > The default value is true. If the balance of your account is insufficient, you can set this parameter to false. In this case, an unpaid order is generated. You can log on to the User Center to pay for the order.
+	AutoPay *bool `json:"autoPay,omitempty" xml:"autoPay,omitempty"`
+	// Specifies whether to enable monthly auto-renewal. Default value: false. Valid values:
+	//
+	// *   true
+	// *   false
+	AutoRenew *bool `json:"autoRenew,omitempty" xml:"autoRenew,omitempty"`
+	// The billing method of the instance. Valid values:
+	//
+	// *   PrePaid: subscription
+	// *   PostPaid: pay-as-you-go
+	//
+	// > This parameter is invalid for shared instances. Shared instances have fixed specifications and are pay-as-you-go instances.
+	ChargeType *string `json:"chargeType,omitempty" xml:"chargeType,omitempty"`
+	// The infrequent access (IA) storage space of the instance. Unit: GB.
+	//
+	// > This parameter is invalid for pay-as-you-go instances.
+	ColdStorageSize *int64 `json:"coldStorageSize,omitempty" xml:"coldStorageSize,omitempty"`
+	// The instance specifications. Valid values:
+	//
+	// *   8-core 32 GB (number of compute nodes: 1)
+	// *   16-core 64 GB (number of compute nodes: 1)
+	// *   32-core 128 GB (number of compute nodes: 2)
+	// *   64-core 256 GB (number of compute nodes: 4)
+	// *   96-core 384 GB (number of compute nodes: 6)
+	// *   128-core 512 GB (number of compute nodes: 8)
+	// *   Others
+	//
+	// >
+	//
+	// *   Set this parameter to the number of cores.
+	//
+	// *   If you want to set this parameter to specifications with more than 1,024 compute units (CUs), you must submit a ticket.
+	//
+	// *   If you want to purchase a shared instance, you do not need to configure this parameter.
+	//
+	// *   The specifications of 8-core 32 GB (number of compute nodes: 1) are for trial use only and cannot be used for production.
+	Cpu *int64 `json:"cpu,omitempty" xml:"cpu,omitempty"`
+	// The validity period of the instance that you want to purchase. For example, you can specify a validity period of two months.
+	//
+	// > You do not need to configure this parameter for pay-as-you-go instances.
+	Duration *int64 `json:"duration,omitempty" xml:"duration,omitempty"`
+	// The number of gateways. Valid values: 2 to 50.
+	//
+	// > This parameter is required only for virtual warehouse instances.
+	GatewayCount *int64 `json:"gatewayCount,omitempty" xml:"gatewayCount,omitempty"`
+	// The name of the Hologres instance that you want to purchase. The name must be 2 to 64 characters in length.
+	InstanceName *string `json:"instanceName,omitempty" xml:"instanceName,omitempty"`
+	// The type of the instance. Valid values:
+	//
+	// *   Standard: general-purpose instance
+	// *   Follower: read-only secondary instance
+	// *   Warehouse: virtual warehouse instance
+	// *   Shared: shared instance
+	InstanceType *string `json:"instanceType,omitempty" xml:"instanceType,omitempty"`
+	// The ID of the primary instance. This parameter is required for read-only secondary instances.
+	//
+	// > The primary instance and secondary instances must meet the following requirements:
+	//
+	// *   The primary instance is in the Running state.
+	//
+	// *   The primary instance and secondary instances are deployed in the same region.
+	//
+	// *   The primary instance and secondary instances are deployed in the same zone.
+	//
+	// *   Less than 10 secondary instances are associated with the primary instance.
+	//
+	// *   The primary and secondary instances belong to the same Alibaba Cloud account.
 	LeaderInstanceId *string `json:"leaderInstanceId,omitempty" xml:"leaderInstanceId,omitempty"`
-	PricingCycle     *string `json:"pricingCycle,omitempty" xml:"pricingCycle,omitempty"`
-	RegionId         *string `json:"regionId,omitempty" xml:"regionId,omitempty"`
-	ResourceGroupId  *string `json:"resourceGroupId,omitempty" xml:"resourceGroupId,omitempty"`
-	StorageSize      *int64  `json:"storageSize,omitempty" xml:"storageSize,omitempty"`
-	VSwitchId        *string `json:"vSwitchId,omitempty" xml:"vSwitchId,omitempty"`
-	VpcId            *string `json:"vpcId,omitempty" xml:"vpcId,omitempty"`
-	ZoneId           *string `json:"zoneId,omitempty" xml:"zoneId,omitempty"`
+	// The billing cycle. Valid values:
+	//
+	// *   Month
+	// *   Hour
+	//
+	// >
+	//
+	// *   This parameter can only be set to Month for subscription instances.
+	//
+	// *   This parameter can only be set to Hour for pay-as-you-go instances.
+	//
+	// *   By default, this parameter is set to Hour for shared instances.
+	PricingCycle *string `json:"pricingCycle,omitempty" xml:"pricingCycle,omitempty"`
+	// The ID of the region. You can go to the [OpenAPI Explorer](https://api.aliyun.com/product/Hologram) or the Usage notes section to view the ID of the region.
+	RegionId *string `json:"regionId,omitempty" xml:"regionId,omitempty"`
+	// The resource group. If you do not specify this parameter, the default resource group of the account is used.
+	ResourceGroupId *string `json:"resourceGroupId,omitempty" xml:"resourceGroupId,omitempty"`
+	// The standard storage space of the instance. Unit: GB.
+	//
+	// > This parameter is invalid for pay-as-you-go instances.
+	StorageSize *int64 `json:"storageSize,omitempty" xml:"storageSize,omitempty"`
+	// The ID of the vSwitch. The zone in which the vSwitch resides must be the same as the zone in which the instance resides.
+	VSwitchId *string `json:"vSwitchId,omitempty" xml:"vSwitchId,omitempty"`
+	// The ID of the virtual private cloud (VPC). The region in which the VPC resides must be the same as the region in which the Hologres instance resides.
+	VpcId *string `json:"vpcId,omitempty" xml:"vpcId,omitempty"`
+	// The ID of the zone. For more information about how to obtain the ID of the zone, see the Usage notes section.
+	ZoneId *string `json:"zoneId,omitempty" xml:"zoneId,omitempty"`
 }
 
 func (s CreateInstanceRequest) String() string {
@@ -126,11 +210,15 @@ func (s *CreateInstanceRequest) SetZoneId(v string) *CreateInstanceRequest {
 }
 
 type CreateInstanceResponseBody struct {
-	Data           *CreateInstanceResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
-	ErrorCode      *string                         `json:"ErrorCode,omitempty" xml:"ErrorCode,omitempty"`
-	ErrorMessage   *string                         `json:"ErrorMessage,omitempty" xml:"ErrorMessage,omitempty"`
-	HttpStatusCode *string                         `json:"HttpStatusCode,omitempty" xml:"HttpStatusCode,omitempty"`
-	// Id of the request
+	// The returned data.
+	Data *CreateInstanceResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
+	// The error code returned.
+	ErrorCode *string `json:"ErrorCode,omitempty" xml:"ErrorCode,omitempty"`
+	// The error message returned.
+	ErrorMessage *string `json:"ErrorMessage,omitempty" xml:"ErrorMessage,omitempty"`
+	// The HTTP status code.
+	HttpStatusCode *string `json:"HttpStatusCode,omitempty" xml:"HttpStatusCode,omitempty"`
+	// The ID of the request.
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -168,11 +256,19 @@ func (s *CreateInstanceResponseBody) SetRequestId(v string) *CreateInstanceRespo
 }
 
 type CreateInstanceResponseBodyData struct {
-	Code       *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	// The error code returned.
+	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	// The instance ID.
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	Message    *string `json:"Message,omitempty" xml:"Message,omitempty"`
-	OrderId    *string `json:"OrderId,omitempty" xml:"OrderId,omitempty"`
-	Success    *string `json:"Success,omitempty" xml:"Success,omitempty"`
+	// The error details.
+	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// The order ID.
+	OrderId *string `json:"OrderId,omitempty" xml:"OrderId,omitempty"`
+	// Indicates whether the instance was created.
+	//
+	// *   true
+	// *   false
+	Success *string `json:"Success,omitempty" xml:"Success,omitempty"`
 }
 
 func (s CreateInstanceResponseBodyData) String() string {
@@ -238,6 +334,7 @@ func (s *CreateInstanceResponse) SetBody(v *CreateInstanceResponseBody) *CreateI
 }
 
 type DeleteInstanceRequest struct {
+	// The ID of the region in which the Hologres instance resides.
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 }
 
@@ -255,13 +352,36 @@ func (s *DeleteInstanceRequest) SetRegionId(v string) *DeleteInstanceRequest {
 }
 
 type DeleteInstanceResponseBody struct {
-	Data           *bool   `json:"Data,omitempty" xml:"Data,omitempty"`
-	ErrorCode      *string `json:"ErrorCode,omitempty" xml:"ErrorCode,omitempty"`
-	ErrorMessage   *string `json:"ErrorMessage,omitempty" xml:"ErrorMessage,omitempty"`
+	// The returned result, which indicates whether the request was successful.
+	//
+	// Valid values:
+	//
+	// *   true
+	//
+	//     <!-- -->
+	//
+	//     <!-- -->
+	//
+	//     <!-- -->
+	//
+	// *   false
+	//
+	//     <!-- -->
+	//
+	//     <!-- -->
+	//
+	//     <!-- -->
+	Data *bool `json:"Data,omitempty" xml:"Data,omitempty"`
+	// The error code returned.
+	ErrorCode *string `json:"ErrorCode,omitempty" xml:"ErrorCode,omitempty"`
+	// The error message returned.
+	ErrorMessage *string `json:"ErrorMessage,omitempty" xml:"ErrorMessage,omitempty"`
+	// The HTTP status Code
 	HttpStatusCode *string `json:"HttpStatusCode,omitempty" xml:"HttpStatusCode,omitempty"`
-	// Id of the request
+	// The ID of the request.
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	Success   *bool   `json:"Success,omitempty" xml:"Success,omitempty"`
+	// Indicates whether the call was successful.
+	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
 }
 
 func (s DeleteInstanceResponseBody) String() string {
@@ -1524,8 +1644,15 @@ func (s *ListInstancesResponse) SetBody(v *ListInstancesResponseBody) *ListInsta
 }
 
 type RenewInstanceRequest struct {
-	AutoRenew *bool  `json:"autoRenew,omitempty" xml:"autoRenew,omitempty"`
-	Duration  *int32 `json:"duration,omitempty" xml:"duration,omitempty"`
+	// Specifies whether to enable monthly auto-renewal. The default value is false. Valid values:
+	//
+	// *   true
+	// *   false
+	//
+	// >  If you enable auto-renewal for an instance for which auto-renewal is enabled, an error is reported.
+	AutoRenew *bool `json:"autoRenew,omitempty" xml:"autoRenew,omitempty"`
+	// The renewal duration. Unit: month.
+	Duration *int32 `json:"duration,omitempty" xml:"duration,omitempty"`
 }
 
 func (s RenewInstanceRequest) String() string {
@@ -1547,13 +1674,18 @@ func (s *RenewInstanceRequest) SetDuration(v int32) *RenewInstanceRequest {
 }
 
 type RenewInstanceResponseBody struct {
-	Data           *RenewInstanceResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
-	ErrorCode      *string                        `json:"ErrorCode,omitempty" xml:"ErrorCode,omitempty"`
-	ErrorMessage   *string                        `json:"ErrorMessage,omitempty" xml:"ErrorMessage,omitempty"`
-	HttpStatusCode *string                        `json:"HttpStatusCode,omitempty" xml:"HttpStatusCode,omitempty"`
-	// Id of the request
+	// The returned data.
+	Data *RenewInstanceResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
+	// The error code returned.
+	ErrorCode *string `json:"ErrorCode,omitempty" xml:"ErrorCode,omitempty"`
+	// The error message returned.
+	ErrorMessage *string `json:"ErrorMessage,omitempty" xml:"ErrorMessage,omitempty"`
+	// The HTTP status code.
+	HttpStatusCode *string `json:"HttpStatusCode,omitempty" xml:"HttpStatusCode,omitempty"`
+	// The ID of the request.
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	Success   *string `json:"Success,omitempty" xml:"Success,omitempty"`
+	// The request result, which indicates whether the request was successful.
+	Success *string `json:"Success,omitempty" xml:"Success,omitempty"`
 }
 
 func (s RenewInstanceResponseBody) String() string {
@@ -1595,10 +1727,17 @@ func (s *RenewInstanceResponseBody) SetSuccess(v string) *RenewInstanceResponseB
 }
 
 type RenewInstanceResponseBodyData struct {
-	Code    *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	// The error code returned.
+	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	// The error details.
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// The ID of the order.
 	OrderId *string `json:"OrderId,omitempty" xml:"OrderId,omitempty"`
-	Success *bool   `json:"Success,omitempty" xml:"Success,omitempty"`
+	// Indicates whether the renewal was successful.
+	//
+	// *   true
+	// *   false
+	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
 }
 
 func (s RenewInstanceResponseBodyData) String() string {
@@ -1841,10 +1980,46 @@ func (s *ResumeInstanceResponse) SetBody(v *ResumeInstanceResponseBody) *ResumeI
 }
 
 type ScaleInstanceRequest struct {
-	ColdStorageSize *int64  `json:"coldStorageSize,omitempty" xml:"coldStorageSize,omitempty"`
-	Cpu             *int64  `json:"cpu,omitempty" xml:"cpu,omitempty"`
-	ScaleType       *string `json:"scaleType,omitempty" xml:"scaleType,omitempty"`
-	StorageSize     *int64  `json:"storageSize,omitempty" xml:"storageSize,omitempty"`
+	// The infrequent access (IA) storage space of the instance. Unit: GB.
+	//
+	// > This parameter is invalid for pay-as-you-go instances.
+	ColdStorageSize *int64 `json:"coldStorageSize,omitempty" xml:"coldStorageSize,omitempty"`
+	// The specifications of the instance. Valid values:
+	//
+	// *   8-core 32 GB (number of compute Nodes: 1)
+	// *   16-core 64 GB (number of compute nodes: 1)
+	// *   32-core 128 GB (number of compute nodes: 2)
+	// *   64-core 256 GB (number of compute nodes: 4)
+	// *   96-core 384 GB (number of compute nodes: 6)
+	// *   128-core 512 GB (number of compute nodes: 8)
+	// *   Others
+	//
+	// >
+	//
+	// *   Set this parameter to the number of cores.
+	//
+	// *   If you want to set this parameter to specifications with more than 1,024 compute units (CUs), you must submit a ticket.
+	//
+	// *   This parameter is invalid for shared instances.
+	//
+	// *   The specifications of 8-core 32 GB (number of compute nodes: 1) are for trial use only and cannot be used for production.
+	Cpu          *int64 `json:"cpu,omitempty" xml:"cpu,omitempty"`
+	GatewayCount *int64 `json:"gatewayCount,omitempty" xml:"gatewayCount,omitempty"`
+	// The specification change type. Valid values:
+	//
+	// *   UPGRADE
+	// *   DOWNGRADE
+	//
+	// >
+	//
+	// *   If you set this parameter to UPGRADE, the new specifications must be higher than the original specifications. You must configure at least one of the cpu, storageSize, and coldStorageSize parameters. If you leave a parameter empty, the related configuration remains unchanged.
+	//
+	// *   If you set this parameter to DOWNGRADE, the new specifications must be lower than the original specifications. You must configure at least one of the cpu, storageSize, and coldStorageSize parameters. If you leave a parameter empty, the related configuration remains unchanged.
+	ScaleType *string `json:"scaleType,omitempty" xml:"scaleType,omitempty"`
+	// The standard storage space of the instance. Unit: GB.
+	//
+	// > This parameter is invalid for pay-as-you-go instances.
+	StorageSize *int64 `json:"storageSize,omitempty" xml:"storageSize,omitempty"`
 }
 
 func (s ScaleInstanceRequest) String() string {
@@ -1865,6 +2040,11 @@ func (s *ScaleInstanceRequest) SetCpu(v int64) *ScaleInstanceRequest {
 	return s
 }
 
+func (s *ScaleInstanceRequest) SetGatewayCount(v int64) *ScaleInstanceRequest {
+	s.GatewayCount = &v
+	return s
+}
+
 func (s *ScaleInstanceRequest) SetScaleType(v string) *ScaleInstanceRequest {
 	s.ScaleType = &v
 	return s
@@ -1876,11 +2056,15 @@ func (s *ScaleInstanceRequest) SetStorageSize(v int64) *ScaleInstanceRequest {
 }
 
 type ScaleInstanceResponseBody struct {
-	Data           *ScaleInstanceResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
-	ErrorCode      *string                        `json:"ErrorCode,omitempty" xml:"ErrorCode,omitempty"`
-	ErrorMessage   *string                        `json:"ErrorMessage,omitempty" xml:"ErrorMessage,omitempty"`
-	HttpStatusCode *string                        `json:"HttpStatusCode,omitempty" xml:"HttpStatusCode,omitempty"`
-	// Id of the request
+	// The returned data.
+	Data *ScaleInstanceResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
+	// The error code returned.
+	ErrorCode *string `json:"ErrorCode,omitempty" xml:"ErrorCode,omitempty"`
+	// The error message returned.
+	ErrorMessage *string `json:"ErrorMessage,omitempty" xml:"ErrorMessage,omitempty"`
+	// The HTTP status code.
+	HttpStatusCode *string `json:"HttpStatusCode,omitempty" xml:"HttpStatusCode,omitempty"`
+	// The ID of the request.
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -1918,10 +2102,32 @@ func (s *ScaleInstanceResponseBody) SetRequestId(v string) *ScaleInstanceRespons
 }
 
 type ScaleInstanceResponseBodyData struct {
-	Code    *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	// The error code returned.
+	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	// The error details.
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// The ID of the order.
 	OrderId *string `json:"OrderId,omitempty" xml:"OrderId,omitempty"`
-	Success *bool   `json:"Success,omitempty" xml:"Success,omitempty"`
+	// Indicates whether the change to specifications was successful.
+	//
+	// Valid values:
+	//
+	// *   true
+	//
+	//     <!-- -->
+	//
+	//     <!-- -->
+	//
+	//     <!-- -->
+	//
+	// *   false
+	//
+	//     <!-- -->
+	//
+	//     <!-- -->
+	//
+	//     <!-- -->
+	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
 }
 
 func (s ScaleInstanceResponseBodyData) String() string {
@@ -2471,6 +2677,32 @@ func (client *Client) GetEndpoint(productId *string, regionId *string, endpointR
 	return _result, _err
 }
 
+/**
+ * > Before you call this operation, make sure that you understand the billing method and pricing of Hologres because this operation is charged.
+ * *   For more information about the billing details of Hologres, see [Pricing](https://www.alibabacloud.com/help/en/hologres/developer-reference/api-hologram-2022-06-01-createinstance).
+ * *   When you purchase a Hologres instance, you must specify the region and zone in which the Hologres instance resides. A region may correspond to multiple zones. Example:
+ * <!---->
+ *     cn-hangzhou: cn-hangzhou-h, cn-hangzhou-j
+ *        cn-shanghai: cn-shanghai-e, cn-shanghai-f
+ *        cn-beijing: cn-beijing-i, cn-beijing-g
+ *        cn-zhangjiakou: cn-zhangjiakou-b
+ *        cn-shenzhen: cn-shenzhen-e
+ *        cn-hongkong: cn-hongkong-b
+ *        cn-shanghai-finance-1: cn-shanghai-finance-1z
+ *        ap-northeast-1: ap-northeast-1a
+ *        ap-southeast-1: ap-southeast-1c
+ *        ap-southeast-3: ap-southeast-3b
+ *        ap-southeast-5: ap-southeast-5b
+ *        ap-south-1: ap-south-1b
+ *        eu-central-1: eu-central-1a
+ *        us-east-1: us-east-1a
+ *        us-west-1: us-west-1b
+ *
+ * @param request CreateInstanceRequest
+ * @param headers map
+ * @param runtime runtime options for this request RuntimeOptions
+ * @return CreateInstanceResponse
+ */
 func (client *Client) CreateInstanceWithOptions(request *CreateInstanceRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *CreateInstanceResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -2569,6 +2801,30 @@ func (client *Client) CreateInstanceWithOptions(request *CreateInstanceRequest, 
 	return _result, _err
 }
 
+/**
+ * > Before you call this operation, make sure that you understand the billing method and pricing of Hologres because this operation is charged.
+ * *   For more information about the billing details of Hologres, see [Pricing](https://www.alibabacloud.com/help/en/hologres/developer-reference/api-hologram-2022-06-01-createinstance).
+ * *   When you purchase a Hologres instance, you must specify the region and zone in which the Hologres instance resides. A region may correspond to multiple zones. Example:
+ * <!---->
+ *     cn-hangzhou: cn-hangzhou-h, cn-hangzhou-j
+ *        cn-shanghai: cn-shanghai-e, cn-shanghai-f
+ *        cn-beijing: cn-beijing-i, cn-beijing-g
+ *        cn-zhangjiakou: cn-zhangjiakou-b
+ *        cn-shenzhen: cn-shenzhen-e
+ *        cn-hongkong: cn-hongkong-b
+ *        cn-shanghai-finance-1: cn-shanghai-finance-1z
+ *        ap-northeast-1: ap-northeast-1a
+ *        ap-southeast-1: ap-southeast-1c
+ *        ap-southeast-3: ap-southeast-3b
+ *        ap-southeast-5: ap-southeast-5b
+ *        ap-south-1: ap-south-1b
+ *        eu-central-1: eu-central-1a
+ *        us-east-1: us-east-1a
+ *        us-west-1: us-west-1b
+ *
+ * @param request CreateInstanceRequest
+ * @return CreateInstanceResponse
+ */
 func (client *Client) CreateInstance(request *CreateInstanceRequest) (_result *CreateInstanceResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
@@ -2581,6 +2837,17 @@ func (client *Client) CreateInstance(request *CreateInstanceRequest) (_result *C
 	return _result, _err
 }
 
+/**
+ * > Before you call this operation, read the documentation and make sure that you understand the prerequisites and impacts of this operation.
+ * *   After you delete a Hologres instance, data and objects in the instance cannot be restored. Proceed with caution. For more information, see [Billing overview](https://www.alibabacloud.com/help/en/hologres/product-overview/billing-overview#section-h6a-x58-jc0).
+ * *   You can delete only pay-as-you-go instances.
+ * *   If you want to unsubscribe from a subscription instance, submit a ticket.[](https://help.aliyun.com/document_detail/150284.html#section-ogc-9vc-858)
+ *
+ * @param request DeleteInstanceRequest
+ * @param headers map
+ * @param runtime runtime options for this request RuntimeOptions
+ * @return DeleteInstanceResponse
+ */
 func (client *Client) DeleteInstanceWithOptions(instanceId *string, request *DeleteInstanceRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *DeleteInstanceResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -2615,6 +2882,15 @@ func (client *Client) DeleteInstanceWithOptions(instanceId *string, request *Del
 	return _result, _err
 }
 
+/**
+ * > Before you call this operation, read the documentation and make sure that you understand the prerequisites and impacts of this operation.
+ * *   After you delete a Hologres instance, data and objects in the instance cannot be restored. Proceed with caution. For more information, see [Billing overview](https://www.alibabacloud.com/help/en/hologres/product-overview/billing-overview#section-h6a-x58-jc0).
+ * *   You can delete only pay-as-you-go instances.
+ * *   If you want to unsubscribe from a subscription instance, submit a ticket.[](https://help.aliyun.com/document_detail/150284.html#section-ogc-9vc-858)
+ *
+ * @param request DeleteInstanceRequest
+ * @return DeleteInstanceResponse
+ */
 func (client *Client) DeleteInstance(instanceId *string, request *DeleteInstanceRequest) (_result *DeleteInstanceResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
@@ -2717,6 +2993,17 @@ func (client *Client) ListInstances(request *ListInstancesRequest) (_result *Lis
 	return _result, _err
 }
 
+/**
+ * > Before you call this operation, make sure that you understand the billing method and pricing of Hologres because this operation is charged.
+ * *   For more information about billing details of Hologres, see [Pricing](https://www.alibabacloud.com/help/en/hologres/product-overview/billing-overview).
+ * *   For more information about how to renew a Hologres instance, see [Manage renewals](https://www.alibabacloud.com/help/en/hologres/product-overview/manage-renewals?spm=a2c63.p38356.0.0.73f27c8d1Q0FUi).
+ * *   You can renew only subscription instances.
+ *
+ * @param request RenewInstanceRequest
+ * @param headers map
+ * @param runtime runtime options for this request RuntimeOptions
+ * @return RenewInstanceResponse
+ */
 func (client *Client) RenewInstanceWithOptions(instanceId *string, request *RenewInstanceRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *RenewInstanceResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -2755,6 +3042,15 @@ func (client *Client) RenewInstanceWithOptions(instanceId *string, request *Rene
 	return _result, _err
 }
 
+/**
+ * > Before you call this operation, make sure that you understand the billing method and pricing of Hologres because this operation is charged.
+ * *   For more information about billing details of Hologres, see [Pricing](https://www.alibabacloud.com/help/en/hologres/product-overview/billing-overview).
+ * *   For more information about how to renew a Hologres instance, see [Manage renewals](https://www.alibabacloud.com/help/en/hologres/product-overview/manage-renewals?spm=a2c63.p38356.0.0.73f27c8d1Q0FUi).
+ * *   You can renew only subscription instances.
+ *
+ * @param request RenewInstanceRequest
+ * @return RenewInstanceResponse
+ */
 func (client *Client) RenewInstance(instanceId *string, request *RenewInstanceRequest) (_result *RenewInstanceResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
@@ -2839,6 +3135,16 @@ func (client *Client) ResumeInstance(instanceId *string) (_result *ResumeInstanc
 	return _result, _err
 }
 
+/**
+ * > Before you call this operation, make sure that you understand the billing method and pricing of Hologres because this operation is charged.
+ * *   For more information about the billing details of Hologres, see [Billing overview](https://www.alibabacloud.com/help/en/hologres/product-overview/billing-overview).
+ * *   During the change of computing resource specifications of a Hologres instance, the instance is unavailable. During the change of storage resources of a Hologres instance, the instance can work normally. Do not frequently change instance specifications. For more information, see [Upgrade and downgrade instance specifications](https://www.alibabacloud.com/help/en/hologres/product-overview/upgrade-or-downgrade-instance-specifications?spm=a2c63.p38356.0.0.2bb57c8dbVt68U).
+ *
+ * @param request ScaleInstanceRequest
+ * @param headers map
+ * @param runtime runtime options for this request RuntimeOptions
+ * @return ScaleInstanceResponse
+ */
 func (client *Client) ScaleInstanceWithOptions(instanceId *string, request *ScaleInstanceRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *ScaleInstanceResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -2851,6 +3157,10 @@ func (client *Client) ScaleInstanceWithOptions(instanceId *string, request *Scal
 
 	if !tea.BoolValue(util.IsUnset(request.Cpu)) {
 		body["cpu"] = request.Cpu
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.GatewayCount)) {
+		body["gatewayCount"] = request.GatewayCount
 	}
 
 	if !tea.BoolValue(util.IsUnset(request.ScaleType)) {
@@ -2885,6 +3195,14 @@ func (client *Client) ScaleInstanceWithOptions(instanceId *string, request *Scal
 	return _result, _err
 }
 
+/**
+ * > Before you call this operation, make sure that you understand the billing method and pricing of Hologres because this operation is charged.
+ * *   For more information about the billing details of Hologres, see [Billing overview](https://www.alibabacloud.com/help/en/hologres/product-overview/billing-overview).
+ * *   During the change of computing resource specifications of a Hologres instance, the instance is unavailable. During the change of storage resources of a Hologres instance, the instance can work normally. Do not frequently change instance specifications. For more information, see [Upgrade and downgrade instance specifications](https://www.alibabacloud.com/help/en/hologres/product-overview/upgrade-or-downgrade-instance-specifications?spm=a2c63.p38356.0.0.2bb57c8dbVt68U).
+ *
+ * @param request ScaleInstanceRequest
+ * @return ScaleInstanceResponse
+ */
 func (client *Client) ScaleInstance(instanceId *string, request *ScaleInstanceRequest) (_result *ScaleInstanceResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
