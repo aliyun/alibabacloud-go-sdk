@@ -63,7 +63,8 @@ type CreateInstanceRequest struct {
 	// The number of gateways. Valid values: 2 to 50.
 	//
 	// > This parameter is required only for virtual warehouse instances.
-	GatewayCount *int64 `json:"gatewayCount,omitempty" xml:"gatewayCount,omitempty"`
+	GatewayCount     *int64  `json:"gatewayCount,omitempty" xml:"gatewayCount,omitempty"`
+	InitialDatabases *string `json:"initialDatabases,omitempty" xml:"initialDatabases,omitempty"`
 	// The name of the Hologres instance that you want to purchase. The name must be 2 to 64 characters in length.
 	InstanceName *string `json:"instanceName,omitempty" xml:"instanceName,omitempty"`
 	// The type of the instance. Valid values:
@@ -156,6 +157,11 @@ func (s *CreateInstanceRequest) SetDuration(v int64) *CreateInstanceRequest {
 
 func (s *CreateInstanceRequest) SetGatewayCount(v int64) *CreateInstanceRequest {
 	s.GatewayCount = &v
+	return s
+}
+
+func (s *CreateInstanceRequest) SetInitialDatabases(v string) *CreateInstanceRequest {
+	s.InitialDatabases = &v
 	return s
 }
 
@@ -2735,6 +2741,10 @@ func (client *Client) CreateInstanceWithOptions(request *CreateInstanceRequest, 
 
 	if !tea.BoolValue(util.IsUnset(request.GatewayCount)) {
 		body["gatewayCount"] = request.GatewayCount
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.InitialDatabases)) {
+		body["initialDatabases"] = request.InitialDatabases
 	}
 
 	if !tea.BoolValue(util.IsUnset(request.InstanceName)) {
