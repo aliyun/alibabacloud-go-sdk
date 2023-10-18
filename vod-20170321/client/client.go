@@ -13,7 +13,7 @@ import (
 )
 
 type AddAITemplateRequest struct {
-	// The detailed configurations of the AI template. The value is a JSON string.
+	// The detailed configurations of the AI template. The value must be a JSON string. For more information, see [AITemplateConfig](~~89863#title-vd3-499-o36~~).
 	TemplateConfig *string `json:"TemplateConfig,omitempty" xml:"TemplateConfig,omitempty"`
 	// The name of the AI template. The name can be up to 128 bytes in length.
 	TemplateName *string `json:"TemplateName,omitempty" xml:"TemplateName,omitempty"`
@@ -48,7 +48,7 @@ func (s *AddAITemplateRequest) SetTemplateType(v string) *AddAITemplateRequest {
 }
 
 type AddAITemplateResponseBody struct {
-	// The ID of the request.
+	// The request ID.
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	// The ID of the AI template.
 	TemplateId *string `json:"TemplateId,omitempty" xml:"TemplateId,omitempty"`
@@ -650,22 +650,23 @@ func (s *AddEditingProjectMaterialsResponse) SetBody(v *AddEditingProjectMateria
 }
 
 type AddTranscodeTemplateGroupRequest struct {
-	// The ID of the application. Default value: **app-1000000**. For more information, see [Overview](~~113600~~).
+	// The application ID. Default value: **app-1000000**. For more information, see [Use the multi-application service](~~113600~~).
 	AppId *string `json:"AppId,omitempty" xml:"AppId,omitempty"`
 	// The name of the transcoding template group.
 	//
-	// - The name can be up to 128 bytes in length.
-	// - The value must be encoded in UTF-8.
+	// *   The name can be up to 128 bytes in length.
+	// *   The value must be encoded in UTF-8.
 	//
-	// > You must set TranscodeTemplateGroupId or Name in the request.
+	// > You must specify TranscodeTemplateGroupId or Name in the request.
 	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
-	// The ID of the transcoding template group. If a transcoding template group ID is specified, you can add new transcoding templates to the template group.
+	// The ID of the transcoding template group. If a transcoding template group ID is specified, you can add transcoding templates to the template group.
 	//
-	// > You must set TranscodeTemplateGroupId or Name in the request.
+	// > You must specify TranscodeTemplateGroupId or Name in the request.
 	TranscodeTemplateGroupId *string `json:"TranscodeTemplateGroupId,omitempty" xml:"TranscodeTemplateGroupId,omitempty"`
-	// The configurations of the transcoding template. The value is a string in JSON format. For more information about the data structure, see [Basic structures](~~52839~~).
+	// The configurations of the transcoding template. The value is a string in JSON format. For more information about the data structure, see [TranscodeTemplate](~~52839~~).
 	//
-	// > If you do not specify this parameter, the transcoding job cannot be automatically created after you upload a video.
+	// > *   If you do not specify this parameter, the transcoding job cannot be automatically created after you upload a video.
+	// > *   If you do not need to set Width or Height, do not specify the corresponding parameter. You cannot set the value to an empty string, such as "Height":"".
 	TranscodeTemplateList *string `json:"TranscodeTemplateList,omitempty" xml:"TranscodeTemplateList,omitempty"`
 }
 
@@ -698,7 +699,7 @@ func (s *AddTranscodeTemplateGroupRequest) SetTranscodeTemplateList(v string) *A
 }
 
 type AddTranscodeTemplateGroupResponseBody struct {
-	// The ID of the request.
+	// The request ID.
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	// The ID of the transcoding template group.
 	TranscodeTemplateGroupId *string `json:"TranscodeTemplateGroupId,omitempty" xml:"TranscodeTemplateGroupId,omitempty"`
@@ -1139,21 +1140,25 @@ func (s *AddWatermarkResponse) SetBody(v *AddWatermarkResponseBody) *AddWatermar
 }
 
 type AttachAppPolicyToIdentityRequest struct {
-	// The ID of the application. Default value: **app-1000000**. For more information, see [Overview](~~113600~~).
-	// > This parameter is optional when the PolicyNames parameter is set to VODAppAdministratorAccess. This parameter is required when the PolicyNames parameter is set to other values.
+	// The ID of the application. Default value: **app-1000000**. For more information, see [Multi-application service](~~113600~~).
+	//
+	// > This parameter is optional only if you set the policy name to VODAppAdministratorAccess.
 	AppId *string `json:"AppId,omitempty" xml:"AppId,omitempty"`
-	// The name of the identity.
-	// *   Specifies the ID of the RAM user when the IdentityType parameter is set to RamUser.
-	// *   Specifies the name of the RAM role when the IdentityType parameter is set to RamRole.
+	// The ID of the RAM user or the name of the RAM role.
+	//
+	// *   Specify the ID of the RAM user when the IdentityType parameter is set to RamUser.
+	// *   Specify the name of the RAM role when the IdentityType parameter is set to RamRole.
 	IdentityName *string `json:"IdentityName,omitempty" xml:"IdentityName,omitempty"`
 	// The type of the identity. Valid values:
-	// *   **RamUser**: a RAM user.
-	// *   **RamRole**: a RAM role.
+	//
+	// *   **RamUser**: a RAM user
+	// *   **RamRole**: a RAM role
 	IdentityType *string `json:"IdentityType,omitempty" xml:"IdentityType,omitempty"`
-	// The name of the policy. Only system policies are supported. Separate multiple policies with commas (,). Valid values:
-	// *   **VODAppFullAccess**: authorizes an identity to manage all resources in an application.
-	// *   **VODAppReadOnlyAccess**: authorizes an identity to access all resources in an application in read-only mode.
-	// *   **VODAppAdministratorAccess**: assigns the application administrator role to an identity.
+	// The name of the policy. Only system policies are supported. Separate multiple policy names with commas (,). Valid values:
+	//
+	// *   **VODAppFullAccess**: permissions to manage all resources in an application.
+	// *   **VODAppReadOnlyAccess**: permissions to read all resources in an application.
+	// *   **VODAppAdministratorAccess**: permissions of the application administrator.
 	PolicyNames *string `json:"PolicyNames,omitempty" xml:"PolicyNames,omitempty"`
 }
 
@@ -1186,9 +1191,9 @@ func (s *AttachAppPolicyToIdentityRequest) SetPolicyNames(v string) *AttachAppPo
 }
 
 type AttachAppPolicyToIdentityResponseBody struct {
-	// The name of the policy that failed to be attached to the identity.
+	// The names of the policies that failed to be granted to the RAM user or RAM role.
 	FailedPolicyNames []*string `json:"FailedPolicyNames,omitempty" xml:"FailedPolicyNames,omitempty" type:"Repeated"`
-	// The name of the policy that was not found.
+	// The names of the policies that were not found.
 	NonExistPolicyNames []*string `json:"NonExistPolicyNames,omitempty" xml:"NonExistPolicyNames,omitempty" type:"Repeated"`
 	// The ID of the request.
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
@@ -1341,7 +1346,7 @@ func (s *BatchSetVodDomainConfigsResponse) SetBody(v *BatchSetVodDomainConfigsRe
 }
 
 type BatchStartVodDomainRequest struct {
-	// The domain name for CDN. Separate multiple domain names with commas (,).
+	// The accelerated domain name. Separate multiple domain names with commas (,).
 	DomainNames   *string `json:"DomainNames,omitempty" xml:"DomainNames,omitempty"`
 	OwnerId       *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
 	SecurityToken *string `json:"SecurityToken,omitempty" xml:"SecurityToken,omitempty"`
@@ -1418,7 +1423,7 @@ func (s *BatchStartVodDomainResponse) SetBody(v *BatchStartVodDomainResponseBody
 }
 
 type BatchStopVodDomainRequest struct {
-	// The domain name for CDN. Separate multiple domain names with commas (,).
+	// The accelerated domain name. Separate multiple domain names with commas (,).
 	DomainNames   *string `json:"DomainNames,omitempty" xml:"DomainNames,omitempty"`
 	OwnerId       *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
 	SecurityToken *string `json:"SecurityToken,omitempty" xml:"SecurityToken,omitempty"`
@@ -1588,14 +1593,15 @@ func (s *CancelUrlUploadJobsResponse) SetBody(v *CancelUrlUploadJobsResponseBody
 }
 
 type CreateAppInfoRequest struct {
-	// The name of the application, which must be unique.
+	// The name of the application. The application name must be unique.
 	//
-	// - The name can contain up to 128 characters in length, including Chinese letters, digits, and periods (.), dash (-), and at character (@).
-	// - The name can contain only UTF-8 characters.
+	// *   The name can contain letters, digits, periods (.), hyphens (-), and at signs (@). The name can be up to 128 characters in length.
+	// *   The value must be encoded in UTF-8.
 	AppName *string `json:"AppName,omitempty" xml:"AppName,omitempty"`
 	// The description of the application.
-	// - The description can contain up to 512 characters in length.
-	// - The description can contain only UTF-8 characters.
+	//
+	// *   The description can contain up to 512 characters in length.
+	// *   The value must be encoded in UTF-8.
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
 }
 
@@ -1672,6 +1678,8 @@ func (s *CreateAppInfoResponse) SetBody(v *CreateAppInfoResponseBody) *CreateApp
 }
 
 type CreateAuditRequest struct {
+	// The review content. You can specify up to **100** audio or video files in a request. The value must be converted to a string.\
+	// For more information about this parameter, see the **AuditContent** section of this topic.
 	AuditContent *string `json:"AuditContent,omitempty" xml:"AuditContent,omitempty"`
 }
 
@@ -1689,6 +1697,7 @@ func (s *CreateAuditRequest) SetAuditContent(v string) *CreateAuditRequest {
 }
 
 type CreateAuditResponseBody struct {
+	// The ID of the request.
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -1762,7 +1771,7 @@ type CreateUploadAttachedMediaRequest struct {
 	//
 	// *   Valid values for watermarks: **png, gif, apng, and mov**
 	// *   Valid values for subtitles: **srt, ass, stl, ttml, and vtt**
-	// *   Valid values for materials: **jpg, gif, png, mp4, mat, and zip**
+	// *   Valid values for materials: **jpg, gif, png, mp4, mat, zip, and apk**
 	MediaExt *string `json:"MediaExt,omitempty" xml:"MediaExt,omitempty"`
 	// The storage location. You can use one of the following methods to obtain the storage location:
 	//
@@ -1941,19 +1950,58 @@ func (s *CreateUploadAttachedMediaResponse) SetBody(v *CreateUploadAttachedMedia
 }
 
 type CreateUploadImageRequest struct {
-	AppId       *string `json:"AppId,omitempty" xml:"AppId,omitempty"`
-	CateId      *int64  `json:"CateId,omitempty" xml:"CateId,omitempty"`
-	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
-	ImageExt    *string `json:"ImageExt,omitempty" xml:"ImageExt,omitempty"`
-	ImageType   *string `json:"ImageType,omitempty" xml:"ImageType,omitempty"`
-	// 图片源文件名称。
+	// The ID of the application. Default value: **app-1000000**. For more information, see [Overview](~~113600~~).
+	AppId *string `json:"AppId,omitempty" xml:"AppId,omitempty"`
+	// The category ID of the image. You can use one of the following methods to obtain the category ID:
 	//
-	// > 必须带扩展名，且扩展名不区分大小写。
+	// *   Log on to the [ApsaraVideo VOD console](https://vod.console.aliyun.com). In the left-side navigation pane, choose **Configuration Management** > **Media Management** > **Categories**. On the Categories page, you can view the category ID of the image.
+	// *   Obtain the value of CateId from the response to the [AddCategory](~~56401~~) operation.
+	// *   Obtain the value of CateId from the response to the [GetCategories](~~56406~~) operation.
+	CateId *int64 `json:"CateId,omitempty" xml:"CateId,omitempty"`
+	// The description of the image.
+	//
+	// *   The description can be up to 1,024 characters in length.
+	// *   The value must be encoded in UTF-8.
+	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
+	// The file name extension of the image. Valid values:
+	//
+	// *   **png** (default)
+	// *   **jpg**
+	// *   **jpeg**
+	// *   **gif**
+	ImageExt *string `json:"ImageExt,omitempty" xml:"ImageExt,omitempty"`
+	// The type of the image. Valid values:
+	//
+	// *   **default**: the default image type.
+	// *   **cover**: the thumbnail.
+	//
+	// > You can manage only images of the **default** type in the ApsaraVideo VOD console.
+	ImageType *string `json:"ImageType,omitempty" xml:"ImageType,omitempty"`
+	// The name of the source file.
+	//
+	// > The name must contain a file name extension. The file name extension is not case-sensitive.
 	OriginalFileName *string `json:"OriginalFileName,omitempty" xml:"OriginalFileName,omitempty"`
-	StorageLocation  *string `json:"StorageLocation,omitempty" xml:"StorageLocation,omitempty"`
-	Tags             *string `json:"Tags,omitempty" xml:"Tags,omitempty"`
-	Title            *string `json:"Title,omitempty" xml:"Title,omitempty"`
-	UserData         *string `json:"UserData,omitempty" xml:"UserData,omitempty"`
+	// The storage address. Perform the following operations to obtain the storage address: Log on to the [ApsaraVideo VOD console](https://vod.console.aliyun.com). In the left-side navigation pane, choose **Configuration Management** > **Media Management** > **Storage**. On the Storage page, view the storage address.
+	//
+	// > If you specify a storage address, media files are uploaded to the specified address.
+	StorageLocation *string `json:"StorageLocation,omitempty" xml:"StorageLocation,omitempty"`
+	// The tags of the image. The following rules apply:
+	//
+	// *   Each tag can be up to 32 characters in length.
+	// *   You can specify a maximum of 16 tags for an image.
+	// *   Separate multiple tags with commas (,).
+	// *   The value must be encoded in UTF-8.
+	Tags *string `json:"Tags,omitempty" xml:"Tags,omitempty"`
+	// The title of the image. The following rules apply:
+	//
+	// *   The title can be up to 128 characters in length.
+	// *   The value must be encoded in UTF-8.
+	Title *string `json:"Title,omitempty" xml:"Title,omitempty"`
+	// The custom configurations, including callback configurations and upload acceleration configurations. The value must be a JSON string. For more information, see the "UserData: specifies the custom configurations for media upload" section of the [Request parameters](~~86952~~) topic.
+	//
+	// > *   The callback configurations take effect only after you specify the HTTP callback URL and select specific callback events in the ApsaraVideo VOD console. For more information about how to configure HTTP callback settings in the ApsaraVideo VOD console, see [Configure callback settings](~~86071~~).
+	// >*   If you want to enable the upload acceleration feature, [submit a request on Yida](https://yida.alibaba-inc.com/o/ticketapply). For more information, see [Overview](~~55396~~).
+	UserData *string `json:"UserData,omitempty" xml:"UserData,omitempty"`
 }
 
 func (s CreateUploadImageRequest) String() string {
@@ -2015,12 +2063,24 @@ func (s *CreateUploadImageRequest) SetUserData(v string) *CreateUploadImageReque
 }
 
 type CreateUploadImageResponseBody struct {
-	FileURL       *string `json:"FileURL,omitempty" xml:"FileURL,omitempty"`
-	ImageId       *string `json:"ImageId,omitempty" xml:"ImageId,omitempty"`
-	ImageURL      *string `json:"ImageURL,omitempty" xml:"ImageURL,omitempty"`
-	RequestId     *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The OSS URL of the file. The URL does not contain the information used for URL signing. You can specify FileUrl when you call the [AddWatermark](~~98617~~) operation.
+	FileURL *string `json:"FileURL,omitempty" xml:"FileURL,omitempty"`
+	// The ID of the image file.
+	ImageId *string `json:"ImageId,omitempty" xml:"ImageId,omitempty"`
+	// The URL of the image.
+	//
+	// > If the returned URL is inaccessible from a browser and the HTTP 403 status code is returned, the URL signing feature in ApsaraVideo VOD is enabled. To resolve this issue, you can disable the [URL signing](~~86090~~) feature or [generate a signed URL](~~57007~~).
+	ImageURL *string `json:"ImageURL,omitempty" xml:"ImageURL,omitempty"`
+	// The ID of the request.
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The upload URL.
+	//
+	// > The returned upload URL is a Base64-encoded URL. You must decode the Base64-encoded URL before you use an SDK or call an API operation to upload auxiliary media assets. You need to parse UploadAddress only if you use the OSS SDK or call an OSS API operation to upload auxiliary media assets.
 	UploadAddress *string `json:"UploadAddress,omitempty" xml:"UploadAddress,omitempty"`
-	UploadAuth    *string `json:"UploadAuth,omitempty" xml:"UploadAuth,omitempty"`
+	// The upload credential.
+	//
+	// > The returned upload credential is a Base64-encoded value. You must decode the Base64-encoded credential before you use an SDK or call an API operation to upload auxiliary media assets. You need to parse UploadAuth only if you use the OSS SDK or call an OSS API operation to upload auxiliary media assets.
+	UploadAuth *string `json:"UploadAuth,omitempty" xml:"UploadAuth,omitempty"`
 }
 
 func (s CreateUploadImageResponseBody) String() string {
@@ -2140,7 +2200,6 @@ type CreateUploadVideoRequest struct {
 	// The custom configurations such as callback configurations and upload acceleration configurations. The value must be a JSON string. For more information, see [Request parameters](~~86952~~).
 	//
 	// > *   The callback configurations take effect only after you specify the HTTP callback URL and select specific callback events in the ApsaraVideo VOD console. For more information about how to configure HTTP callback settings in the ApsaraVideo VOD console, see [Configure callback settings](~~86071~~).
-	//
 	// >*   If you want to enable the upload acceleration feature, [submit a request on Yida](https://yida.alibaba-inc.com/o/ticketapply). For more information, see [Overview](~~55396~~).
 	UserData *string `json:"UserData,omitempty" xml:"UserData,omitempty"`
 	// The ID of the workflow. To view the ID of the workflow, log on to the [ApsaraVideo VOD console](https://vod.console.aliyun.com). In the left-side navigation pane, choose **Configuration Management** > **Media Processing** > **Workflows**.
@@ -2459,8 +2518,8 @@ func (s *DeleteAIImageInfosResponse) SetBody(v *DeleteAIImageInfosResponseBody) 
 type DeleteAITemplateRequest struct {
 	// The ID of the AI template. You can use one of the following methods to obtain the ID of the AI template:
 	//
-	// *   Call the [AddAITemplate](~~102930~~) operation to add an AI template if no AI template exists. The value of TemplateId from the response is the ID of the AI template.
-	// *   Call the [ListAITemplate](~~102936~~) operation if the template already exists. The value of TemplateId from the response is the ID of the AI template.
+	// *   Call the [AddAITemplate](~~102930~~) operation to add an AI template if no AI template exists. The value of TemplateId in the response is the ID of the AI template.
+	// *   Call the [ListAITemplate](~~102936~~) operation if the template already exists. The value of TemplateId in the response is the ID of the AI template.
 	TemplateId *string `json:"TemplateId,omitempty" xml:"TemplateId,omitempty"`
 }
 
@@ -2478,7 +2537,7 @@ func (s *DeleteAITemplateRequest) SetTemplateId(v string) *DeleteAITemplateReque
 }
 
 type DeleteAITemplateResponseBody struct {
-	// The ID of the request.
+	// The request ID.
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	// The ID of the AI template.
 	TemplateId *string `json:"TemplateId,omitempty" xml:"TemplateId,omitempty"`
@@ -2812,8 +2871,9 @@ func (s *DeleteDynamicImageResponse) SetBody(v *DeleteDynamicImageResponseBody) 
 }
 
 type DeleteEditingProjectRequest struct {
-	OwnerAccount         *string `json:"OwnerAccount,omitempty" xml:"OwnerAccount,omitempty"`
-	OwnerId              *string `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
+	OwnerAccount *string `json:"OwnerAccount,omitempty" xml:"OwnerAccount,omitempty"`
+	OwnerId      *string `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
+	// The ID of the online editing project. Separate multiple IDs with commas (,).
 	ProjectIds           *string `json:"ProjectIds,omitempty" xml:"ProjectIds,omitempty"`
 	ResourceOwnerAccount *string `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
 	ResourceOwnerId      *string `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
@@ -2853,6 +2913,7 @@ func (s *DeleteEditingProjectRequest) SetResourceOwnerId(v string) *DeleteEditin
 }
 
 type DeleteEditingProjectResponseBody struct {
+	// The ID of the request.
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -3000,30 +3061,37 @@ func (s *DeleteEditingProjectMaterialsResponse) SetBody(v *DeleteEditingProjectM
 type DeleteImageRequest struct {
 	// The method that is used to delete images. Valid values:
 	//
-	// *   **ImageURL**: Delete the specified image based on the image URL.
-	// *   **ImageId**: Delete the specified image based on the image ID.
-	// *   **VideoId**: Delete the image that is associated with a video ID.
+	// *   **ImageURL**: deletes images based on URLs.
+	// *   **ImageId**: deletes images based on image IDs.
+	// *   **VideoId**: deletes images associated with a video based on the video ID.
 	DeleteImageType *string `json:"DeleteImageType,omitempty" xml:"DeleteImageType,omitempty"`
-	// The ID of the image.
+	// The ID of the image file. You can specify multiple image IDs. Separate multiple IDs with commas (,). You can use one of the following methods to obtain the image ID:
 	//
-	// *   This parameter only takes effect when the **DeleteImageType** parameter is set to **ImageId**. In this case, you must set this parameter.
-	// *   Separate multiple IDs with commas (,).
+	// *   Log on to the [ApsaraVideo VOD console](https://vod.console.aliyun.com). In the left-side navigation pane, choose **Media Files** > **Image** to view the image ID. This method is applicable to images that are uploaded by using the ApsaraVideo VOD console.
+	// *   Obtain the value of the ImageId parameter from the response to the [CreateUploadImage](~~55619~~) operation.
+	// *   Obtain the value of the ImageId parameter from the response to the [SearchMedia](~~86044~~) operation after you upload images.
+	//
+	// > This parameter is required only if you set **DeleteImageType** to **ImageId**.
 	ImageIds *string `json:"ImageIds,omitempty" xml:"ImageIds,omitempty"`
-	// The type of the image. This parameter only takes effect when the **DeleteImageType** parameter is set to **VideoId**. In this case, you must set this parameter. Valid values:
+	// The type of images that you want to delete. The images are associated with the video. This parameter is required only if you set **DeleteImageType** to **VideoId**. Valid values:
 	//
 	// *   **CoverSnapshot**: thumbnail snapshot.
 	// *   **NormalSnapshot**: normal snapshot.
 	// *   **SpriteSnapshot**: sprite snapshot.
 	// *   **SpriteOriginSnapshot**: sprite source snapshot.
-	// *   **All**: images of all the preceding types. If this parameter is not set to All, you can specify multiple types and separate them with commas (,).
+	// *   **All**: images of all the preceding types. If this parameter is not set to All, you can specify multiple types and separate the types with commas (,).
 	ImageType *string `json:"ImageType,omitempty" xml:"ImageType,omitempty"`
-	// The URL of the image.
+	// The URL of the image. You can obtain the value of ImageURL from the response to the [CreateUploadImage](~~55619~~) operation. You can specify multiple URLs. Separate multiple URLs with commas (,).
 	//
-	// *   This parameter only takes effect when the **DeleteImageType** parameter is set to **ImageURL**. In this case, you must set this parameter.
-	// *   Encode multiple image URLs and separate them with commas (,).
-	// *   The use of special characters in image URLs may lead to the failure to delete the images. To prevent such failure, you must encode the image URLs before you concatenate them into a string with commas (,).
+	// > This parameter is required only if you set **DeleteImageType** to **ImageURL**.
 	ImageURLs *string `json:"ImageURLs,omitempty" xml:"ImageURLs,omitempty"`
-	// The ID of the video. This parameter only takes effect when the **DeleteImageType** parameter is set to **VideoId**. In this case, you must set this parameter.
+	// The ID of the video file. You can use one of the following methods to obtain the video ID:
+	//
+	// *   Log on to the [ApsaraVideo VOD](https://vod.console.aliyun.com) console. In the left-side navigation pane, choose **Media Files** > **Audio/Video**. On the Video and Audio page, view the ID of the media file. This method is applicable to files that are uploaded by using the ApsaraVideo VOD console.
+	// *   Obtain the value of the VideoId parameter from the response to the [CreateUploadVideo](~~55407~~) operation.
+	// *   Obtain the value of the VideoId parameter from the response to the [SearchMedia](~~86044~~) operation after you upload media files.
+	//
+	// > This parameter is required only if you set **DeleteImageType** to **VideoId**.
 	VideoId *string `json:"VideoId,omitempty" xml:"VideoId,omitempty"`
 }
 
@@ -3424,17 +3492,18 @@ func (s *DeleteStreamResponse) SetBody(v *DeleteStreamResponseBody) *DeleteStrea
 }
 
 type DeleteTranscodeTemplateGroupRequest struct {
-	// Specifies whether to forcibly delete the entire transcoding template group. Valid values:
+	// Specifies whether to forcibly delete the transcoding template group. Valid values:
 	//
-	// *   **true**: deletes the entire transcoding template group and its transcoding templates.
-	// *   **false**: removes the specified transcoding templates from the transcoding template group. This is the default value.
+	// *   **true**: deletes the transcoding template group and all the transcoding templates in the group.
+	// *   **false** (default): deletes only the specified transcoding templates from the transcoding template group.
 	ForceDelGroup *string `json:"ForceDelGroup,omitempty" xml:"ForceDelGroup,omitempty"`
 	// The ID of the transcoding template group.
 	TranscodeTemplateGroupId *string `json:"TranscodeTemplateGroupId,omitempty" xml:"TranscodeTemplateGroupId,omitempty"`
-	// The IDs of the transcoding templates that you want to remove.
+	// The IDs of the transcoding templates that you want to delete.
 	//
 	// *   Separate multiple IDs with commas (,).
 	// *   You can specify a maximum of 10 IDs.
+	// *   This parameter is required if you set ForceDelGroup to false or leave ForceDelGroup empty.
 	TranscodeTemplateIds *string `json:"TranscodeTemplateIds,omitempty" xml:"TranscodeTemplateIds,omitempty"`
 }
 
@@ -3462,7 +3531,7 @@ func (s *DeleteTranscodeTemplateGroupRequest) SetTranscodeTemplateIds(v string) 
 }
 
 type DeleteTranscodeTemplateGroupResponseBody struct {
-	// The IDs of transcoding templates that were not found when the system removed transcoding templates based on the IDs.
+	// The IDs of transcoding templates that were not found.
 	NonExistTranscodeTemplateIds []*string `json:"NonExistTranscodeTemplateIds,omitempty" xml:"NonExistTranscodeTemplateIds,omitempty" type:"Repeated"`
 	// The ID of the request.
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
@@ -4254,7 +4323,7 @@ func (s *DescribePlayUserTotalRequest) SetStartTime(v string) *DescribePlayUserT
 type DescribePlayUserTotalResponseBody struct {
 	// The ID of the request.
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// The statistics on total playback each day.
+	// The daily playback statistics.
 	UserPlayStatisTotals *DescribePlayUserTotalResponseBodyUserPlayStatisTotals `json:"UserPlayStatisTotals,omitempty" xml:"UserPlayStatisTotals,omitempty" type:"Struct"`
 }
 
@@ -4294,7 +4363,7 @@ func (s *DescribePlayUserTotalResponseBodyUserPlayStatisTotals) SetUserPlayStati
 }
 
 type DescribePlayUserTotalResponseBodyUserPlayStatisTotalsUserPlayStatisTotal struct {
-	// The date when the statistics were generated. The date follows the *yyyy-MM-dd* format.
+	// The date. The date is displayed in the *yyyy-MM-dd* format.
 	Date *string `json:"Date,omitempty" xml:"Date,omitempty"`
 	// The total playback duration. Unit: milliseconds.
 	PlayDuration *string `json:"PlayDuration,omitempty" xml:"PlayDuration,omitempty"`
@@ -4342,9 +4411,9 @@ func (s *DescribePlayUserTotalResponseBodyUserPlayStatisTotalsUserPlayStatisTota
 type DescribePlayUserTotalResponseBodyUserPlayStatisTotalsUserPlayStatisTotalUV struct {
 	// The total number of unique visitors who use ApsaraVideo Player SDK for Android.
 	Android *string `json:"Android,omitempty" xml:"Android,omitempty"`
-	// The total number of unique visitors who use ApsaraVideo Player SDK for Flash.
+	// The total number of unique visitors who use the Flash player.
 	Flash *string `json:"Flash,omitempty" xml:"Flash,omitempty"`
-	// The total number of unique visitors who use ApsaraVideo Player SDK for HTML5.
+	// The total number of unique visitors who use the HTML5 player.
 	HTML5 *string `json:"HTML5,omitempty" xml:"HTML5,omitempty"`
 	// The total number of unique visitors who use ApsaraVideo Player SDK for iOS.
 	IOS *string `json:"iOS,omitempty" xml:"iOS,omitempty"`
@@ -4379,13 +4448,13 @@ func (s *DescribePlayUserTotalResponseBodyUserPlayStatisTotalsUserPlayStatisTota
 }
 
 type DescribePlayUserTotalResponseBodyUserPlayStatisTotalsUserPlayStatisTotalVV struct {
-	// The total number of video views that is collected for videos that are played by using ApsaraVideo Player SDK for Android.
+	// The total number of video views played by using ApsaraVideo Player SDK for Android.
 	Android *string `json:"Android,omitempty" xml:"Android,omitempty"`
-	// The total number of video views that is collected for videos that are played by using ApsaraVideo Player SDK for Flash.
+	// The total number of video views played by using the Flash player.
 	Flash *string `json:"Flash,omitempty" xml:"Flash,omitempty"`
-	// The total number of video views that is collected for videos that are played by using ApsaraVideo Player SDK for HTML5.
+	// The total number of video views played by using the HTML5 player.
 	HTML5 *string `json:"HTML5,omitempty" xml:"HTML5,omitempty"`
-	// The total number of video views that is collected for videos that are played by using ApsaraVideo Player SDK for iOS.
+	// The total number of video views played by using ApsaraVideo Player SDK for iOS.
 	IOS *string `json:"iOS,omitempty" xml:"iOS,omitempty"`
 }
 
@@ -4452,7 +4521,7 @@ type DescribePlayVideoStatisRequest struct {
 	OwnerId *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
 	// The beginning of the time range to query. Specify the time in the ISO 8601 standard in the *yyyy-MM-dd*T*HH:mm:ss*Z format. The time must be in UTC.
 	StartTime *string `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
-	// The ID of the video.
+	// The video ID.
 	VideoId *string `json:"VideoId,omitempty" xml:"VideoId,omitempty"`
 }
 
@@ -4485,7 +4554,7 @@ func (s *DescribePlayVideoStatisRequest) SetVideoId(v string) *DescribePlayVideo
 }
 
 type DescribePlayVideoStatisResponseBody struct {
-	// The ID of the request.
+	// The request ID.
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	// The daily playback statistics on the video.
 	VideoPlayStatisDetails *DescribePlayVideoStatisResponseBodyVideoPlayStatisDetails `json:"VideoPlayStatisDetails,omitempty" xml:"VideoPlayStatisDetails,omitempty" type:"Struct"`
@@ -4527,13 +4596,13 @@ func (s *DescribePlayVideoStatisResponseBodyVideoPlayStatisDetails) SetVideoPlay
 }
 
 type DescribePlayVideoStatisResponseBodyVideoPlayStatisDetailsVideoPlayStatisDetail struct {
-	// The date when the statistics were generated. The date follows the *yyyy-MM-dd* format.
+	// The date. The date is displayed in the *yyyy-MM-dd* format.
 	Date *string `json:"Date,omitempty" xml:"Date,omitempty"`
-	// The playback duration. Unit: milliseconds.
+	// The playback duration. Unit: millisecond.
 	PlayDuration *string `json:"PlayDuration,omitempty" xml:"PlayDuration,omitempty"`
 	// The distribution of the playback duration.
 	PlayRange *string `json:"PlayRange,omitempty" xml:"PlayRange,omitempty"`
-	// The title of the video.
+	// The video title.
 	Title *string `json:"Title,omitempty" xml:"Title,omitempty"`
 	// The number of unique visitors.
 	UV *string `json:"UV,omitempty" xml:"UV,omitempty"`
@@ -5232,6 +5301,7 @@ func (s *DescribeVodDomainBpsDataResponse) SetBody(v *DescribeVodDomainBpsDataRe
 }
 
 type DescribeVodDomainCertificateInfoRequest struct {
+	// The accelerated domain name.
 	DomainName *string `json:"DomainName,omitempty" xml:"DomainName,omitempty"`
 	OwnerId    *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
 }
@@ -5255,8 +5325,10 @@ func (s *DescribeVodDomainCertificateInfoRequest) SetOwnerId(v int64) *DescribeV
 }
 
 type DescribeVodDomainCertificateInfoResponseBody struct {
+	// The certificate information about the domain name.
 	CertInfos *DescribeVodDomainCertificateInfoResponseBodyCertInfos `json:"CertInfos,omitempty" xml:"CertInfos,omitempty" type:"Struct"`
-	RequestId *string                                                `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The ID of the request.
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
 func (s DescribeVodDomainCertificateInfoResponseBody) String() string {
@@ -5295,15 +5367,41 @@ func (s *DescribeVodDomainCertificateInfoResponseBodyCertInfos) SetCertInfo(v []
 }
 
 type DescribeVodDomainCertificateInfoResponseBodyCertInfosCertInfo struct {
-	CertDomainName          *string `json:"CertDomainName,omitempty" xml:"CertDomainName,omitempty"`
-	CertExpireTime          *string `json:"CertExpireTime,omitempty" xml:"CertExpireTime,omitempty"`
-	CertLife                *string `json:"CertLife,omitempty" xml:"CertLife,omitempty"`
-	CertName                *string `json:"CertName,omitempty" xml:"CertName,omitempty"`
-	CertOrg                 *string `json:"CertOrg,omitempty" xml:"CertOrg,omitempty"`
-	CertType                *string `json:"CertType,omitempty" xml:"CertType,omitempty"`
-	DomainName              *string `json:"DomainName,omitempty" xml:"DomainName,omitempty"`
+	// The domain name that matches the certificate.
+	CertDomainName *string `json:"CertDomainName,omitempty" xml:"CertDomainName,omitempty"`
+	// The time at which the certificate expires. The time follows the ISO 8601 standard in the *yyyy-MM-dd*T*HH:mm:ss*Z format. The time is displayed in UTC.
+	CertExpireTime *string `json:"CertExpireTime,omitempty" xml:"CertExpireTime,omitempty"`
+	// The validity period of the certificate. Unit: months or years.
+	CertLife *string `json:"CertLife,omitempty" xml:"CertLife,omitempty"`
+	// The name of the certificate.
+	CertName *string `json:"CertName,omitempty" xml:"CertName,omitempty"`
+	// The certificate authority (CA) that issued the certificate.
+	CertOrg *string `json:"CertOrg,omitempty" xml:"CertOrg,omitempty"`
+	// The type of the certificate. Valid values:
+	//
+	// *   **free**: a free certificate.
+	// *   **cas**: a certificate that is purchased from Certificate Management Service.
+	// *   **upload**: a user-uploaded certificate.
+	CertType *string `json:"CertType,omitempty" xml:"CertType,omitempty"`
+	// The accelerated domain name.
+	DomainName *string `json:"DomainName,omitempty" xml:"DomainName,omitempty"`
+	// Indicates whether the SSL certificate is enabled.
+	//
+	// *   **on**
+	// *   **off**
 	ServerCertificateStatus *string `json:"ServerCertificateStatus,omitempty" xml:"ServerCertificateStatus,omitempty"`
-	Status                  *string `json:"Status,omitempty" xml:"Status,omitempty"`
+	// The status of the certificate. Valid values:
+	//
+	// *   **success**: The certificate is in effect.
+	// *   **checking**: The system is checking whether the domain name is added to ApsaraVideo VOD.
+	// *   **cname_error**: The domain name is not added to ApsaraVideo VOD.
+	// *   **domain_invalid**: The domain name contains invalid characters.
+	// *   **unsupport_wildcard**: The domain name is a wildcard domain name. Wildcard domain names are not supported.
+	// *   **applying**: The certificate application is in progress.
+	// *   **failed**: The certificate application failed.
+	//
+	// > A value is returned for this parameter only if `free` is returned for `CertType`. If a value other than free is returned for CertType, an empty string is returned for this parameter.
+	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
 }
 
 func (s DescribeVodDomainCertificateInfoResponseBodyCertInfosCertInfo) String() string {
@@ -5391,7 +5489,7 @@ func (s *DescribeVodDomainCertificateInfoResponse) SetBody(v *DescribeVodDomainC
 type DescribeVodDomainConfigsRequest struct {
 	// The domain name for CDN.
 	DomainName *string `json:"DomainName,omitempty" xml:"DomainName,omitempty"`
-	// The name of the feature. Separate multiple names with commas (,). For more information, see the **Feature description** section.
+	// The feature name. Separate multiple names with commas (,). For more information, see **Feature description**.
 	FunctionNames *string `json:"FunctionNames,omitempty" xml:"FunctionNames,omitempty"`
 	OwnerId       *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
 	SecurityToken *string `json:"SecurityToken,omitempty" xml:"SecurityToken,omitempty"`
@@ -5428,7 +5526,7 @@ func (s *DescribeVodDomainConfigsRequest) SetSecurityToken(v string) *DescribeVo
 type DescribeVodDomainConfigsResponseBody struct {
 	// The configurations of the domain name.
 	DomainConfigs *DescribeVodDomainConfigsResponseBodyDomainConfigs `json:"DomainConfigs,omitempty" xml:"DomainConfigs,omitempty" type:"Struct"`
-	// The ID of the request.
+	// The request ID.
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -5468,17 +5566,18 @@ func (s *DescribeVodDomainConfigsResponseBodyDomainConfigs) SetDomainConfig(v []
 }
 
 type DescribeVodDomainConfigsResponseBodyDomainConfigsDomainConfig struct {
-	// The ID of the configuration.
+	// The configuration ID.
 	ConfigId *string `json:"ConfigId,omitempty" xml:"ConfigId,omitempty"`
-	// The parameters of each feature.
+	// The feature parameters.
 	FunctionArgs *DescribeVodDomainConfigsResponseBodyDomainConfigsDomainConfigFunctionArgs `json:"FunctionArgs,omitempty" xml:"FunctionArgs,omitempty" type:"Struct"`
-	// The name of the function.
+	// The feature name.
 	FunctionName *string `json:"FunctionName,omitempty" xml:"FunctionName,omitempty"`
-	// The status of the configuration. Valid values:
-	// - **success**
-	// - **testing**
-	// - **failed**
-	// - **configuring**
+	// The configuration status. Valid values:
+	//
+	// *   **success**
+	// *   **testing**
+	// *   **failed**
+	// *   **configuring**
 	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
 }
 
@@ -5528,9 +5627,9 @@ func (s *DescribeVodDomainConfigsResponseBodyDomainConfigsDomainConfigFunctionAr
 }
 
 type DescribeVodDomainConfigsResponseBodyDomainConfigsDomainConfigFunctionArgsFunctionArg struct {
-	// The name of the parameter.
+	// The parameter name.
 	ArgName *string `json:"ArgName,omitempty" xml:"ArgName,omitempty"`
-	// The value of the parameter.
+	// The parameter value.
 	ArgValue *string `json:"ArgValue,omitempty" xml:"ArgValue,omitempty"`
 }
 
@@ -5842,19 +5941,19 @@ func (s *DescribeVodDomainDetailResponse) SetBody(v *DescribeVodDomainDetailResp
 type DescribeVodDomainLogRequest struct {
 	// The domain name.
 	//
-	// > You can specify only one domain name in each query.
+	// >  You can specify only one domain name in each query.
 	DomainName *string `json:"DomainName,omitempty" xml:"DomainName,omitempty"`
-	// The end of the time range to query. The end time must be later than the start time. The time range that is specified by the StartTime and EndTime parameters cannot exceed one year. Specify the time in the ISO 8601 standard in the *yyyy-MM-dd*T*HH:mm:ss*Z format. The time must be in UTC.
+	// The end of the time range to query. The end time must be later than the start time. The maximum time range that can be specified is one year. Specify the time in the ISO 8601 standard in the `yyyy-MM-ddTHH:mm:ssZ` format. The time must be in UTC.
 	EndTime *string `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
 	OwnerId *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
-	// The number of the page to return. Default value: **1**.
+	// The page number. Default value: **1**.
 	PageNumber *int64 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
-	// The number of entries to return on each page.
+	// The number of entries per page.
 	//
-	// *   Default value: **300.**
-	// *   Maximum value: **1000.**
+	// *   Default value: **300**.
+	// *   Valid values: **1 to 1000**.
 	PageSize *int64 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	// The start of the time range to query. Specify the time in the ISO 8601 standard in the *yyyy-MM-dd*T*HH:mm:ss*Z format. The time must be in UTC.
+	// The beginning of the time range to query. Specify the time in the ISO 8601 standard in the `yyyy-MM-ddTHH:mm:ssZ` format. The time must be in UTC.
 	StartTime *string `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
 }
 
@@ -5897,9 +5996,9 @@ func (s *DescribeVodDomainLogRequest) SetStartTime(v string) *DescribeVodDomainL
 }
 
 type DescribeVodDomainLogResponseBody struct {
-	// The detailed data of Alibaba Cloud CDN logs.
+	// The details of CDN logs.
 	DomainLogDetails *DescribeVodDomainLogResponseBodyDomainLogDetails `json:"DomainLogDetails,omitempty" xml:"DomainLogDetails,omitempty" type:"Struct"`
-	// The ID of the request.
+	// The request ID.
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -5943,9 +6042,9 @@ type DescribeVodDomainLogResponseBodyDomainLogDetailsDomainLogDetail struct {
 	DomainName *string `json:"DomainName,omitempty" xml:"DomainName,omitempty"`
 	// The total number of entries returned on the current page.
 	LogCount *int64 `json:"LogCount,omitempty" xml:"LogCount,omitempty"`
-	// The detailed information about Alibaba Cloud CDN logs.
+	// The queried CDN logs.
 	LogInfos *DescribeVodDomainLogResponseBodyDomainLogDetailsDomainLogDetailLogInfos `json:"LogInfos,omitempty" xml:"LogInfos,omitempty" type:"Struct"`
-	// The pagination settings of Alibaba Cloud CDN logs.
+	// The pagination information.
 	PageInfos *DescribeVodDomainLogResponseBodyDomainLogDetailsDomainLogDetailPageInfos `json:"PageInfos,omitempty" xml:"PageInfos,omitempty" type:"Struct"`
 }
 
@@ -5995,7 +6094,7 @@ func (s *DescribeVodDomainLogResponseBodyDomainLogDetailsDomainLogDetailLogInfos
 }
 
 type DescribeVodDomainLogResponseBodyDomainLogDetailsDomainLogDetailLogInfosLogInfoDetail struct {
-	// The end of the time range in which data was queried. The time follows the ISO 8601 standard in the *yyyy-MM-dd*T*HH:mm:ss*Z format. The time is displayed in UTC.
+	// The end of the time range during which data was queried. The time follows the ISO 8601 standard in the `yyyy-MM-ddTHH:mm:ssZ` format. The time is displayed in UTC.
 	EndTime *string `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
 	// The name of the log file.
 	LogName *string `json:"LogName,omitempty" xml:"LogName,omitempty"`
@@ -6003,7 +6102,7 @@ type DescribeVodDomainLogResponseBodyDomainLogDetailsDomainLogDetailLogInfosLogI
 	LogPath *string `json:"LogPath,omitempty" xml:"LogPath,omitempty"`
 	// The size of the log file.
 	LogSize *int64 `json:"LogSize,omitempty" xml:"LogSize,omitempty"`
-	// The beginning of the time range in which data was queried. The time follows the ISO 8601 standard in the *yyyy-MM-dd*T*HH:mm:ss*Z format. The time is displayed in UTC.
+	// The beginning of the time range during which data was queried. The time follows the ISO 8601 standard in the `yyyy-MM-ddTHH:mm:ssZ` format. The time is displayed in UTC.
 	StartTime *string `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
 }
 
@@ -6041,9 +6140,9 @@ func (s *DescribeVodDomainLogResponseBodyDomainLogDetailsDomainLogDetailLogInfos
 }
 
 type DescribeVodDomainLogResponseBodyDomainLogDetailsDomainLogDetailPageInfos struct {
-	// The page number of the returned page.
+	// The page number.
 	PageNumber *int64 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
-	// The number of entries returned per page.
+	// The number of entries per page.
 	PageSize *int64 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
 	// The total number of entries returned.
 	Total *int64 `json:"Total,omitempty" xml:"Total,omitempty"`
@@ -6102,11 +6201,25 @@ func (s *DescribeVodDomainLogResponse) SetBody(v *DescribeVodDomainLogResponseBo
 }
 
 type DescribeVodDomainSrcBpsDataRequest struct {
+	// The accelerated domain name. You can specify a maximum of 500 domain names in a request. Separate multiple domain names with commas (,). If you specify multiple domain names in a request, aggregation results are returned.
+	//
+	// If you leave this parameter empty, the origin bandwidth data for all accelerated domain names is queried by default.
 	DomainName *string `json:"DomainName,omitempty" xml:"DomainName,omitempty"`
-	EndTime    *string `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
-	Interval   *string `json:"Interval,omitempty" xml:"Interval,omitempty"`
-	OwnerId    *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
-	StartTime  *string `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
+	// The end of the time range to query. The end time must be later than the start time. Specify the time in the yyyy-MM-ddTHH:mm:ssZ format. The time must be in UTC.
+	EndTime *string `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
+	// The time interval between the data entries to return. Unit: seconds. Valid values:
+	//
+	// *   **300**: 5 minutes
+	// *   **3600**: 1 hour
+	// *   **86400**: 1 day
+	//
+	// > The time granularity supported by the Interval parameter varies based on the time range per query specified by using `StartTime` and `EndTime`. For more information, see the **Time granularity** section of this topic.
+	Interval *string `json:"Interval,omitempty" xml:"Interval,omitempty"`
+	OwnerId  *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
+	// The beginning of the time range to query. Specify the time in the yyyy-MM-ddTHH:mm:ssZ format. The time must be in UTC.
+	//
+	// If you leave this parameter empty, the origin bandwidth data that is generated in the last 24 hours is queried by default.
+	StartTime *string `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
 }
 
 func (s DescribeVodDomainSrcBpsDataRequest) String() string {
@@ -6143,12 +6256,18 @@ func (s *DescribeVodDomainSrcBpsDataRequest) SetStartTime(v string) *DescribeVod
 }
 
 type DescribeVodDomainSrcBpsDataResponseBody struct {
-	DataInterval          *string                                                       `json:"DataInterval,omitempty" xml:"DataInterval,omitempty"`
-	DomainName            *string                                                       `json:"DomainName,omitempty" xml:"DomainName,omitempty"`
-	EndTime               *string                                                       `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
-	RequestId             *string                                                       `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The time interval between the entries returned. Unit: seconds.
+	DataInterval *string `json:"DataInterval,omitempty" xml:"DataInterval,omitempty"`
+	// The accelerated domain name.
+	DomainName *string `json:"DomainName,omitempty" xml:"DomainName,omitempty"`
+	// The end of the time range during which data was queried.
+	EndTime *string `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
+	// The ID of the request.
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// Details about the origin bandwidth data returned at each time interval. Unit: bit/s.
 	SrcBpsDataPerInterval *DescribeVodDomainSrcBpsDataResponseBodySrcBpsDataPerInterval `json:"SrcBpsDataPerInterval,omitempty" xml:"SrcBpsDataPerInterval,omitempty" type:"Struct"`
-	StartTime             *string                                                       `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
+	// The start of the time range during which data was queried.
+	StartTime *string `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
 }
 
 func (s DescribeVodDomainSrcBpsDataResponseBody) String() string {
@@ -6207,9 +6326,12 @@ func (s *DescribeVodDomainSrcBpsDataResponseBodySrcBpsDataPerInterval) SetDataMo
 }
 
 type DescribeVodDomainSrcBpsDataResponseBodySrcBpsDataPerIntervalDataModule struct {
+	// The bandwidth values of origin HTTPS requests.
 	HttpsValue *string `json:"HttpsValue,omitempty" xml:"HttpsValue,omitempty"`
-	TimeStamp  *string `json:"TimeStamp,omitempty" xml:"TimeStamp,omitempty"`
-	Value      *string `json:"Value,omitempty" xml:"Value,omitempty"`
+	// The timestamp of the returned data. The time follows the ISO 8601 standard in the yyyy-MM-ddTHH:mm:ssZ format. The time is displayed in UTC.
+	TimeStamp *string `json:"TimeStamp,omitempty" xml:"TimeStamp,omitempty"`
+	// The bandwidth value at each time interval.
+	Value *string `json:"Value,omitempty" xml:"Value,omitempty"`
 }
 
 func (s DescribeVodDomainSrcBpsDataResponseBodySrcBpsDataPerIntervalDataModule) String() string {
@@ -6265,11 +6387,25 @@ func (s *DescribeVodDomainSrcBpsDataResponse) SetBody(v *DescribeVodDomainSrcBps
 }
 
 type DescribeVodDomainSrcTrafficDataRequest struct {
+	// The accelerated domain name. You can specify a maximum of 500 domain names in a request. Separate multiple domain names with commas (,). If you specify multiple domain names in a request, aggregation results are returned.
+	//
+	// If you leave this parameter empty, the origin traffic data for all accelerated domain names is queried by default.
 	DomainName *string `json:"DomainName,omitempty" xml:"DomainName,omitempty"`
-	EndTime    *string `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
-	Interval   *string `json:"Interval,omitempty" xml:"Interval,omitempty"`
-	OwnerId    *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
-	StartTime  *string `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
+	// The end of the time range to query. The end time must be later than the start time. Specify the time in the yyyy-MM-ddTHH:mm:ssZ format. The time must be in UTC.
+	EndTime *string `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
+	// The time interval between the data entries to return. Unit: seconds. Valid values:
+	//
+	// *   **300**: 5 minutes
+	// *   **3600**: 1 hour
+	// *   **86400**: 1 day
+	//
+	// > The time granularity supported by the Interval parameter varies based on the time range per query specified by using `StartTime` and `EndTime`. For more information, see the **Time granularity** section of this topic.
+	Interval *string `json:"Interval,omitempty" xml:"Interval,omitempty"`
+	OwnerId  *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
+	// The beginning of the time range to query. Specify the time in the yyyy-MM-ddTHH:mm:ssZ format. The time must be in UTC.
+	//
+	// If you leave this parameter empty, the origin traffic data that is generated in the last 24 hours is queried by default.
+	StartTime *string `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
 }
 
 func (s DescribeVodDomainSrcTrafficDataRequest) String() string {
@@ -6306,13 +6442,20 @@ func (s *DescribeVodDomainSrcTrafficDataRequest) SetStartTime(v string) *Describ
 }
 
 type DescribeVodDomainSrcTrafficDataResponseBody struct {
-	DataInterval              *string                                                               `json:"DataInterval,omitempty" xml:"DataInterval,omitempty"`
-	DomainName                *string                                                               `json:"DomainName,omitempty" xml:"DomainName,omitempty"`
-	EndTime                   *string                                                               `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
-	RequestId                 *string                                                               `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The time interval between the entries returned. Unit: seconds.
+	DataInterval *string `json:"DataInterval,omitempty" xml:"DataInterval,omitempty"`
+	// The accelerated domain name.
+	DomainName *string `json:"DomainName,omitempty" xml:"DomainName,omitempty"`
+	// The end of the time range during which data was queried. The time follows the ISO 8601 standard in the *yyyy-MM-dd*T*HH:mm:ss*Z format. The time is displayed in UTC.
+	EndTime *string `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
+	// The ID of the request.
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// Details about the origin traffic returned at each time interval. Unit: bytes.
 	SrcTrafficDataPerInterval *DescribeVodDomainSrcTrafficDataResponseBodySrcTrafficDataPerInterval `json:"SrcTrafficDataPerInterval,omitempty" xml:"SrcTrafficDataPerInterval,omitempty" type:"Struct"`
-	StartTime                 *string                                                               `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
-	TotalTraffic              *string                                                               `json:"TotalTraffic,omitempty" xml:"TotalTraffic,omitempty"`
+	// The start of the time range during which data was queried. The time follows the ISO 8601 standard in the *yyyy-MM-dd*T*HH:mm:ss*Z format. The time is displayed in UTC.
+	StartTime *string `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
+	// The total traffic. Unit: bytes.
+	TotalTraffic *string `json:"TotalTraffic,omitempty" xml:"TotalTraffic,omitempty"`
 }
 
 func (s DescribeVodDomainSrcTrafficDataResponseBody) String() string {
@@ -6376,9 +6519,12 @@ func (s *DescribeVodDomainSrcTrafficDataResponseBodySrcTrafficDataPerInterval) S
 }
 
 type DescribeVodDomainSrcTrafficDataResponseBodySrcTrafficDataPerIntervalDataModule struct {
+	// The amount of traffic generated by origin HTTPS requests.
 	HttpsValue *string `json:"HttpsValue,omitempty" xml:"HttpsValue,omitempty"`
-	TimeStamp  *string `json:"TimeStamp,omitempty" xml:"TimeStamp,omitempty"`
-	Value      *string `json:"Value,omitempty" xml:"Value,omitempty"`
+	// The timestamp of the returned data. The time follows the ISO 8601 standard in the *yyyy-MM-dd*T*HH:mm:ss*Z format. The time is displayed in UTC.
+	TimeStamp *string `json:"TimeStamp,omitempty" xml:"TimeStamp,omitempty"`
+	// The traffic value at each time interval.
+	Value *string `json:"Value,omitempty" xml:"Value,omitempty"`
 }
 
 func (s DescribeVodDomainSrcTrafficDataResponseBodySrcTrafficDataPerIntervalDataModule) String() string {
@@ -6665,10 +6811,10 @@ func (s *DescribeVodDomainTrafficDataResponse) SetBody(v *DescribeVodDomainTraff
 }
 
 type DescribeVodDomainUsageDataRequest struct {
-	// The region where you want to query data. Default value: CN. Valid values:
+	// The region in which you want to query data. Default value: CN. Valid values:
 	//
-	// *   **CN**: Chinese mainland
-	// *   **OverSeas**: outside the Chinese mainland
+	// *   **CN**: the Chinese mainland.
+	// *   **OverSeas**: outside the Chinese mainland.
 	Area *string `json:"Area,omitempty" xml:"Area,omitempty"`
 	// The accelerated domain name. If you leave this parameter empty, the merged data of all your accelerated domain names is returned. Separate multiple accelerated domain names with commas (,).
 	DomainName *string `json:"DomainName,omitempty" xml:"DomainName,omitempty"`
@@ -9798,7 +9944,7 @@ type GetAITemplateResponseBodyTemplateInfo struct {
 	// *   **System**
 	// *   **Custom**
 	Source *string `json:"Source,omitempty" xml:"Source,omitempty"`
-	// The detailed configurations of the AI template. The value is a JSON string.
+	// The detailed configurations of the AI template. The value is a JSON string. For more information, see [AITemplateConfig](~~89863#title-vd3-499-o36~~).
 	TemplateConfig *string `json:"TemplateConfig,omitempty" xml:"TemplateConfig,omitempty"`
 	// The ID of the AI template.
 	TemplateId *string `json:"TemplateId,omitempty" xml:"TemplateId,omitempty"`
@@ -11020,7 +11166,7 @@ type GetDefaultAITemplateResponseBodyTemplateInfo struct {
 	// *   **System**
 	// *   **Custom**
 	Source *string `json:"Source,omitempty" xml:"Source,omitempty"`
-	// The detailed configurations of the AI template. The value is a JSON string.
+	// The detailed configurations of the AI template. The value is a JSON string. For more information, see [AITemplateConfig](~~89863#title-vd3-499-o36~~).
 	TemplateConfig *string `json:"TemplateConfig,omitempty" xml:"TemplateConfig,omitempty"`
 	// The ID of the AI template.
 	TemplateId *string `json:"TemplateId,omitempty" xml:"TemplateId,omitempty"`
@@ -11103,6 +11249,158 @@ func (s *GetDefaultAITemplateResponse) SetStatusCode(v int32) *GetDefaultAITempl
 }
 
 func (s *GetDefaultAITemplateResponse) SetBody(v *GetDefaultAITemplateResponseBody) *GetDefaultAITemplateResponse {
+	s.Body = v
+	return s
+}
+
+type GetDigitalWatermarkExtractResultRequest struct {
+	ExtractType          *string `json:"ExtractType,omitempty" xml:"ExtractType,omitempty"`
+	JobId                *string `json:"JobId,omitempty" xml:"JobId,omitempty"`
+	MediaId              *string `json:"MediaId,omitempty" xml:"MediaId,omitempty"`
+	OwnerAccount         *string `json:"OwnerAccount,omitempty" xml:"OwnerAccount,omitempty"`
+	OwnerId              *string `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
+	ResourceOwnerAccount *string `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
+	ResourceOwnerId      *string `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
+}
+
+func (s GetDigitalWatermarkExtractResultRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetDigitalWatermarkExtractResultRequest) GoString() string {
+	return s.String()
+}
+
+func (s *GetDigitalWatermarkExtractResultRequest) SetExtractType(v string) *GetDigitalWatermarkExtractResultRequest {
+	s.ExtractType = &v
+	return s
+}
+
+func (s *GetDigitalWatermarkExtractResultRequest) SetJobId(v string) *GetDigitalWatermarkExtractResultRequest {
+	s.JobId = &v
+	return s
+}
+
+func (s *GetDigitalWatermarkExtractResultRequest) SetMediaId(v string) *GetDigitalWatermarkExtractResultRequest {
+	s.MediaId = &v
+	return s
+}
+
+func (s *GetDigitalWatermarkExtractResultRequest) SetOwnerAccount(v string) *GetDigitalWatermarkExtractResultRequest {
+	s.OwnerAccount = &v
+	return s
+}
+
+func (s *GetDigitalWatermarkExtractResultRequest) SetOwnerId(v string) *GetDigitalWatermarkExtractResultRequest {
+	s.OwnerId = &v
+	return s
+}
+
+func (s *GetDigitalWatermarkExtractResultRequest) SetResourceOwnerAccount(v string) *GetDigitalWatermarkExtractResultRequest {
+	s.ResourceOwnerAccount = &v
+	return s
+}
+
+func (s *GetDigitalWatermarkExtractResultRequest) SetResourceOwnerId(v string) *GetDigitalWatermarkExtractResultRequest {
+	s.ResourceOwnerId = &v
+	return s
+}
+
+type GetDigitalWatermarkExtractResultResponseBody struct {
+	AiExtractResultList []*GetDigitalWatermarkExtractResultResponseBodyAiExtractResultList `json:"AiExtractResultList,omitempty" xml:"AiExtractResultList,omitempty" type:"Repeated"`
+	RequestId           *string                                                            `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+}
+
+func (s GetDigitalWatermarkExtractResultResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetDigitalWatermarkExtractResultResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *GetDigitalWatermarkExtractResultResponseBody) SetAiExtractResultList(v []*GetDigitalWatermarkExtractResultResponseBodyAiExtractResultList) *GetDigitalWatermarkExtractResultResponseBody {
+	s.AiExtractResultList = v
+	return s
+}
+
+func (s *GetDigitalWatermarkExtractResultResponseBody) SetRequestId(v string) *GetDigitalWatermarkExtractResultResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+type GetDigitalWatermarkExtractResultResponseBodyAiExtractResultList struct {
+	CreateTime    *string `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
+	ErrorMessage  *string `json:"ErrorMessage,omitempty" xml:"ErrorMessage,omitempty"`
+	JobId         *string `json:"JobId,omitempty" xml:"JobId,omitempty"`
+	ModifyTime    *string `json:"ModifyTime,omitempty" xml:"ModifyTime,omitempty"`
+	Status        *string `json:"Status,omitempty" xml:"Status,omitempty"`
+	WaterMarkText *string `json:"WaterMarkText,omitempty" xml:"WaterMarkText,omitempty"`
+}
+
+func (s GetDigitalWatermarkExtractResultResponseBodyAiExtractResultList) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetDigitalWatermarkExtractResultResponseBodyAiExtractResultList) GoString() string {
+	return s.String()
+}
+
+func (s *GetDigitalWatermarkExtractResultResponseBodyAiExtractResultList) SetCreateTime(v string) *GetDigitalWatermarkExtractResultResponseBodyAiExtractResultList {
+	s.CreateTime = &v
+	return s
+}
+
+func (s *GetDigitalWatermarkExtractResultResponseBodyAiExtractResultList) SetErrorMessage(v string) *GetDigitalWatermarkExtractResultResponseBodyAiExtractResultList {
+	s.ErrorMessage = &v
+	return s
+}
+
+func (s *GetDigitalWatermarkExtractResultResponseBodyAiExtractResultList) SetJobId(v string) *GetDigitalWatermarkExtractResultResponseBodyAiExtractResultList {
+	s.JobId = &v
+	return s
+}
+
+func (s *GetDigitalWatermarkExtractResultResponseBodyAiExtractResultList) SetModifyTime(v string) *GetDigitalWatermarkExtractResultResponseBodyAiExtractResultList {
+	s.ModifyTime = &v
+	return s
+}
+
+func (s *GetDigitalWatermarkExtractResultResponseBodyAiExtractResultList) SetStatus(v string) *GetDigitalWatermarkExtractResultResponseBodyAiExtractResultList {
+	s.Status = &v
+	return s
+}
+
+func (s *GetDigitalWatermarkExtractResultResponseBodyAiExtractResultList) SetWaterMarkText(v string) *GetDigitalWatermarkExtractResultResponseBodyAiExtractResultList {
+	s.WaterMarkText = &v
+	return s
+}
+
+type GetDigitalWatermarkExtractResultResponse struct {
+	Headers    map[string]*string                            `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                                        `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *GetDigitalWatermarkExtractResultResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s GetDigitalWatermarkExtractResultResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetDigitalWatermarkExtractResultResponse) GoString() string {
+	return s.String()
+}
+
+func (s *GetDigitalWatermarkExtractResultResponse) SetHeaders(v map[string]*string) *GetDigitalWatermarkExtractResultResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *GetDigitalWatermarkExtractResultResponse) SetStatusCode(v int32) *GetDigitalWatermarkExtractResultResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *GetDigitalWatermarkExtractResultResponse) SetBody(v *GetDigitalWatermarkExtractResultResponseBody) *GetDigitalWatermarkExtractResultResponse {
 	s.Body = v
 	return s
 }
@@ -14429,8 +14727,8 @@ type GetMessageCallbackResponseBodyMessageCallback struct {
 	AuthKey *string `json:"AuthKey,omitempty" xml:"AuthKey,omitempty"`
 	// Indicates whether callback authentication is enabled. This parameter is returned only for HTTP callbacks. Valid values:
 	//
-	// *   **on**: indicates that authentication is enabled.
-	// *   **off**: indicates that authentication is disabled.
+	// *   **on**
+	// *   **off**
 	AuthSwitch *string `json:"AuthSwitch,omitempty" xml:"AuthSwitch,omitempty"`
 	// The callback method. Valid values:
 	//
@@ -14441,9 +14739,9 @@ type GetMessageCallbackResponseBodyMessageCallback struct {
 	CallbackURL *string `json:"CallbackURL,omitempty" xml:"CallbackURL,omitempty"`
 	// The type of the callback event.
 	EventTypeList *string `json:"EventTypeList,omitempty" xml:"EventTypeList,omitempty"`
-	// The public endpoint of Message Service (MNS). This parameter is returned only for MNS callbacks.
+	// The public endpoint of MNS. This parameter is returned only for MNS callbacks.
 	MnsEndpoint *string `json:"MnsEndpoint,omitempty" xml:"MnsEndpoint,omitempty"`
-	// The name of the MNS queue. This parameter is returned only for MNS callbacks.
+	// The name of the Message Service (MNS) queue. This parameter is returned only for MNS callbacks.
 	MnsQueueName *string `json:"MnsQueueName,omitempty" xml:"MnsQueueName,omitempty"`
 }
 
@@ -15134,7 +15432,8 @@ type GetPlayInfoRequest struct {
 	// *   **AUTO**: adaptive bitrate
 	//
 	// > By default, ApsaraVideo VOD returns video streams in all preceding qualities. However, video streams for adaptive bitrate streaming are returned only if the PackageSetting parameter is specified in the transcoding template. For more information, see the [PackageSetting parameter in the TranscodeTemplate](~~52839~~) table.
-	Definition *string `json:"Definition,omitempty" xml:"Definition,omitempty"`
+	Definition           *string `json:"Definition,omitempty" xml:"Definition,omitempty"`
+	DigitalWatermarkType *string `json:"DigitalWatermarkType,omitempty" xml:"DigitalWatermarkType,omitempty"`
 	// The format of the media stream. Separate multiple formats with commas (,). Valid values:
 	//
 	// *   **mp4**
@@ -15152,7 +15451,6 @@ type GetPlayInfoRequest struct {
 	// The custom playback configuration. The value is a JSON string. For more information, see [PlayConfig](~~86952~~).
 	//
 	// >-   If you do not specify PlayConfig or `PlayDomain` in PlayConfig, the default domain name configured in ApsaraVideo VOD is used in this operation. If no default domain name is configured, the domain names are queried in reverse chronological order based on the time when the domain names were modified. The domain name that was last modified is used as the streaming domain name. To prevent domain name issues, we recommend that you specify the default streaming domain name. You can log on to the [ApsaraVideo VOD console](https://vod.console.aliyun.com) and choose **Configuration Management** > **Media Management** > **Storage** > **Manage** > **Origin Domain Name** to set the default streaming domain name.
-	//
 	// >-   If the `EncryptType` parameter in PlayConfig is set to `AliyunVoDEncryption`, the playback URL of the stream encrypted by using proprietary cryptography is not returned to ensure video security. If you want to return such URL, you must set the `ResultType` parameter to `Multiple`.
 	PlayConfig *string `json:"PlayConfig,omitempty" xml:"PlayConfig,omitempty"`
 	// The CDN reauthentication configuration. The value is a JSON string. If CDN reauthentication is enabled, you can use this parameter to specify the UID and rand fields for URL authentication. For more information, see [URL authentication](~~57007~~).
@@ -15169,6 +15467,7 @@ type GetPlayInfoRequest struct {
 	//
 	// By default, video and audio streams are returned.
 	StreamType *string `json:"StreamType,omitempty" xml:"StreamType,omitempty"`
+	Trace      *string `json:"Trace,omitempty" xml:"Trace,omitempty"`
 	// The ID of the media file. You can specify only one ID. You can use one of the following methods to obtain the media ID:
 	//
 	// *   Log on to the [ApsaraVideo VOD](https://vod.console.aliyun.com) console. In the left-side navigation pane, choose **Media Files** > **Audio/Video**. On the Video and Audio page, you can view the ID of the audio or video file. This method is applicable to files that are uploaded by using the ApsaraVideo VOD console.
@@ -15200,6 +15499,11 @@ func (s *GetPlayInfoRequest) SetDefinition(v string) *GetPlayInfoRequest {
 	return s
 }
 
+func (s *GetPlayInfoRequest) SetDigitalWatermarkType(v string) *GetPlayInfoRequest {
+	s.DigitalWatermarkType = &v
+	return s
+}
+
 func (s *GetPlayInfoRequest) SetFormats(v string) *GetPlayInfoRequest {
 	s.Formats = &v
 	return s
@@ -15227,6 +15531,11 @@ func (s *GetPlayInfoRequest) SetResultType(v string) *GetPlayInfoRequest {
 
 func (s *GetPlayInfoRequest) SetStreamType(v string) *GetPlayInfoRequest {
 	s.StreamType = &v
+	return s
+}
+
+func (s *GetPlayInfoRequest) SetTrace(v string) *GetPlayInfoRequest {
+	s.Trace = &v
 	return s
 }
 
@@ -15289,9 +15598,9 @@ type GetPlayInfoResponseBodyPlayInfoListPlayInfo struct {
 	BitDepth *int32 `json:"BitDepth,omitempty" xml:"BitDepth,omitempty"`
 	// The bitrate of the media stream. Unit: Kbit/s.
 	Bitrate *string `json:"Bitrate,omitempty" xml:"Bitrate,omitempty"`
-	// The time when the audio or video file was created. The time follows the ISO 8601 standard in the *yyyy-MM-dd*T*HH:mm:ss*Z format. The time is displayed in UTC.
+	// The creation time. The time follows the ISO 8601 standard in the *yyyy-MM-dd*T*hh:mm:ss*Z format. The time is displayed in UTC.
 	CreationTime *string `json:"CreationTime,omitempty" xml:"CreationTime,omitempty"`
-	// The quality of the video stream. Valid values:
+	// The quality of the media stream. Valid values:
 	//
 	// *   **FD**: low definition
 	// *   **LD**: standard definition
@@ -15306,17 +15615,17 @@ type GetPlayInfoResponseBodyPlayInfoListPlayInfo struct {
 	Definition *string `json:"Definition,omitempty" xml:"Definition,omitempty"`
 	// The duration of the media stream. Unit: seconds.
 	Duration *string `json:"Duration,omitempty" xml:"Duration,omitempty"`
-	// Indicates whether the video stream was encrypted. Valid values:
+	// Indicates whether the media stream was encrypted. Valid values:
 	//
 	// *   **0**: no
-	// *   **1**: yes
+	// *   **1**: yes.
 	Encrypt *int64 `json:"Encrypt,omitempty" xml:"Encrypt,omitempty"`
 	// The encryption type of the media stream. Valid values:
 	//
 	// *   **AliyunVoDEncryption**: Alibaba Cloud proprietary cryptography
 	// *   **HLSEncryption**: HTTP Live Streaming (HLS) encryption
 	//
-	// > If the encryption type is **AliyunVoDEncryption**, only ApsaraVideo Player SDK can be used to play videos.
+	// >  If the encryption type is AliyunVoDEncryption, only ApsaraVideo Player SDK can be used to play videos.
 	EncryptType *string `json:"EncryptType,omitempty" xml:"EncryptType,omitempty"`
 	// The format of the media stream.
 	//
@@ -15334,21 +15643,23 @@ type GetPlayInfoResponseBodyPlayInfoListPlayInfo struct {
 	// *   HDRVivid
 	// *   SDR+
 	HDRType *string `json:"HDRType,omitempty" xml:"HDRType,omitempty"`
-	// The height of the media stream. Unit: pixels.
-	Height *int64 `json:"Height,omitempty" xml:"Height,omitempty"`
-	// The ID of the media transcoding job. This ID uniquely identifies a media stream.
-	JobId *string `json:"JobId,omitempty" xml:"JobId,omitempty"`
+	// The height of the media stream. Unit: pixel.
+	Height *int64  `json:"Height,omitempty" xml:"Height,omitempty"`
+	JobExt *string `json:"JobExt,omitempty" xml:"JobExt,omitempty"`
+	// The job ID for transcoding the media stream. This ID uniquely identifies a media stream.
+	JobId   *string `json:"JobId,omitempty" xml:"JobId,omitempty"`
+	JobType *int32  `json:"JobType,omitempty" xml:"JobType,omitempty"`
 	// The update time. The time follows the ISO 8601 standard in the *yyyy-MM-dd*T*HH:mm:ss*Z format. The time is displayed in UTC.
 	ModificationTime *string `json:"ModificationTime,omitempty" xml:"ModificationTime,omitempty"`
 	// The type of Narrowband HD transcoding. Valid values:
 	//
-	// *   **0**: regular
+	// *   **0**: normal transcoding
 	// *   **1.0**: Narrowband HD 1.0
 	// *   **2.0**: Narrowband HD 2.0
 	//
 	// This parameter is returned only when a quality that is available in the built-in Narrowband HD 1.0 transcoding template is specified. For more information, see the [Definition parameter in the TranscodeTemplate](~~52839~~) table.
 	NarrowBandType *string `json:"NarrowBandType,omitempty" xml:"NarrowBandType,omitempty"`
-	// The playback URL of the video stream.
+	// The playback URL of the media stream.
 	PlayURL *string `json:"PlayURL,omitempty" xml:"PlayURL,omitempty"`
 	// The size of the media stream. Unit: bytes.
 	Size *int64 `json:"Size,omitempty" xml:"Size,omitempty"`
@@ -15363,7 +15674,7 @@ type GetPlayInfoResponseBodyPlayInfoListPlayInfo struct {
 	StreamType *string `json:"StreamType,omitempty" xml:"StreamType,omitempty"`
 	// The ID of the watermark that is associated with the media stream.
 	WatermarkId *string `json:"WatermarkId,omitempty" xml:"WatermarkId,omitempty"`
-	// The width of the media stream. Unit: pixels.
+	// The width of the media stream. Unit: pixel.
 	Width *int64 `json:"Width,omitempty" xml:"Width,omitempty"`
 }
 
@@ -15430,8 +15741,18 @@ func (s *GetPlayInfoResponseBodyPlayInfoListPlayInfo) SetHeight(v int64) *GetPla
 	return s
 }
 
+func (s *GetPlayInfoResponseBodyPlayInfoListPlayInfo) SetJobExt(v string) *GetPlayInfoResponseBodyPlayInfoListPlayInfo {
+	s.JobExt = &v
+	return s
+}
+
 func (s *GetPlayInfoResponseBodyPlayInfoListPlayInfo) SetJobId(v string) *GetPlayInfoResponseBodyPlayInfoListPlayInfo {
 	s.JobId = &v
+	return s
+}
+
+func (s *GetPlayInfoResponseBodyPlayInfoListPlayInfo) SetJobType(v int32) *GetPlayInfoResponseBodyPlayInfoListPlayInfo {
+	s.JobType = &v
 	return s
 }
 
@@ -16327,7 +16648,8 @@ type GetTranscodeTemplateGroupResponseBodyTranscodeTemplateGroupTranscodeTemplat
 	// The clipping configurations of the video. The value is a JSON-formatted string. For example, you can set this parameter if you want to extract 5 seconds of content from a video to generate a new video.
 	Clip *string `json:"Clip,omitempty" xml:"Clip,omitempty"`
 	// The format of the container used to encapsulate audio and video streams. The value is a JSON-formatted string.
-	Container *string `json:"Container,omitempty" xml:"Container,omitempty"`
+	Container     *string `json:"Container,omitempty" xml:"Container,omitempty"`
+	CopyrightMark *string `json:"CopyrightMark,omitempty" xml:"CopyrightMark,omitempty"`
 	// Valid values for the definition of a common transcoding template:
 	// *   **LD**: low definition.
 	// *   **SD**: standard definition.
@@ -16362,6 +16684,7 @@ type GetTranscodeTemplateGroupResponseBodyTranscodeTemplateGroupTranscodeTemplat
 	SubtitleList *string `json:"SubtitleList,omitempty" xml:"SubtitleList,omitempty"`
 	// The name of the transcoding template.
 	TemplateName *string `json:"TemplateName,omitempty" xml:"TemplateName,omitempty"`
+	TraceMark    *string `json:"TraceMark,omitempty" xml:"TraceMark,omitempty"`
 	// The conditional transcoding configurations. This parameter can be used if you want to determine the basic logic based on the bitrate and resolution of the mezzanine file before the video is transcoded. The value is a JSON-formatted string.
 	TransConfig *string `json:"TransConfig,omitempty" xml:"TransConfig,omitempty"`
 	// The custom output path of transcoded files.
@@ -16402,6 +16725,11 @@ func (s *GetTranscodeTemplateGroupResponseBodyTranscodeTemplateGroupTranscodeTem
 	return s
 }
 
+func (s *GetTranscodeTemplateGroupResponseBodyTranscodeTemplateGroupTranscodeTemplateList) SetCopyrightMark(v string) *GetTranscodeTemplateGroupResponseBodyTranscodeTemplateGroupTranscodeTemplateList {
+	s.CopyrightMark = &v
+	return s
+}
+
 func (s *GetTranscodeTemplateGroupResponseBodyTranscodeTemplateGroupTranscodeTemplateList) SetDefinition(v string) *GetTranscodeTemplateGroupResponseBodyTranscodeTemplateGroupTranscodeTemplateList {
 	s.Definition = &v
 	return s
@@ -16434,6 +16762,11 @@ func (s *GetTranscodeTemplateGroupResponseBodyTranscodeTemplateGroupTranscodeTem
 
 func (s *GetTranscodeTemplateGroupResponseBodyTranscodeTemplateGroupTranscodeTemplateList) SetTemplateName(v string) *GetTranscodeTemplateGroupResponseBodyTranscodeTemplateGroupTranscodeTemplateList {
 	s.TemplateName = &v
+	return s
+}
+
+func (s *GetTranscodeTemplateGroupResponseBodyTranscodeTemplateGroupTranscodeTemplateList) SetTraceMark(v string) *GetTranscodeTemplateGroupResponseBodyTranscodeTemplateGroupTranscodeTemplateList {
+	s.TraceMark = &v
 	return s
 }
 
@@ -18068,14 +18401,14 @@ func (s *GetWatermarkResponseBody) SetWatermarkInfo(v *GetWatermarkResponseBodyW
 type GetWatermarkResponseBodyWatermarkInfo struct {
 	// The ID of the application.
 	AppId *string `json:"AppId,omitempty" xml:"AppId,omitempty"`
-	// The time when the watermark was added. The time follows the ISO 8601 standard in the *yyyy-MM-dd*T*HH:mm:ss*Z format. The time is displayed in UTC.
+	// The time when the watermark was created. The time follows the ISO 8601 standard in the *yyyy-MM-dd*T*HH:mm:ss*Z format. The time is displayed in UTC.
 	CreationTime *string `json:"CreationTime,omitempty" xml:"CreationTime,omitempty"`
-	// The Object Storage Service (OSS) URL or Content Delivery Network (CDN) URL of the watermark file. A text watermark does not have a file URL.
+	// The Object Storage Service (OSS) URL or CDN URL of the watermark file. A text watermark does not have a file URL.
 	FileUrl *string `json:"FileUrl,omitempty" xml:"FileUrl,omitempty"`
 	// Indicates whether the watermark is the default one. Valid values:
 	//
-	// *   **Default**: The watermark is the default one.
-	// *   **NotDefault**: The watermark is not the default one.
+	// *   **Default**
+	// *   **NotDefault**
 	IsDefault *string `json:"IsDefault,omitempty" xml:"IsDefault,omitempty"`
 	// The name of the watermark.
 	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
@@ -18084,7 +18417,7 @@ type GetWatermarkResponseBodyWatermarkInfo struct {
 	// *   **Image**
 	// *   **Text**
 	Type *string `json:"Type,omitempty" xml:"Type,omitempty"`
-	// The configurations such as the position and effect of the text watermark or image watermark. The value is a JSON-formatted string. For more information about the data structure, see the "WatermarkConfig" section of the [Media processing parameters](~~98618~~) topic.
+	// The configuration information such as the position and effect about the text watermark or image watermark. The value is a JSON string. For more information about the data structure, see the "WatermarkConfig: specifies the watermark configurations" section of the [Parameters for media processing](~~98618~~) topic.
 	WatermarkConfig *string `json:"WatermarkConfig,omitempty" xml:"WatermarkConfig,omitempty"`
 	// The ID of the watermark.
 	WatermarkId *string `json:"WatermarkId,omitempty" xml:"WatermarkId,omitempty"`
@@ -18355,7 +18688,7 @@ func (s *ListAIJobRequest) SetResourceOwnerId(v string) *ListAIJobRequest {
 }
 
 type ListAIJobResponseBody struct {
-	// The information about the jobs.
+	// The list of jobs.
 	AIJobList *ListAIJobResponseBodyAIJobList `json:"AIJobList,omitempty" xml:"AIJobList,omitempty" type:"Struct"`
 	// The IDs of the jobs that do not exist.
 	NonExistAIJobIds *ListAIJobResponseBodyNonExistAIJobIds `json:"NonExistAIJobIds,omitempty" xml:"NonExistAIJobIds,omitempty" type:"Struct"`
@@ -18406,29 +18739,29 @@ func (s *ListAIJobResponseBodyAIJobList) SetAIJob(v []*ListAIJobResponseBodyAIJo
 type ListAIJobResponseBodyAIJobListAIJob struct {
 	// The error code. This parameter is returned if the value of Status is fail.
 	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
-	// The time when the job is complete. The time follows the ISO 8601 standard in the *yyyy-MM-dd*T*HH:mm:ss*Z format. The time is displayed in UTC.
+	// The time when the job was complete. The time follows the ISO 8601 standard in the *yyyy-MM-dd*T*HH:mm:ss*Z format. The time is displayed in UTC.
 	CompleteTime *string `json:"CompleteTime,omitempty" xml:"CompleteTime,omitempty"`
 	// The time when the job was created. The time follows the ISO 8601 standard in the *yyyy-MM-dd*T*HH:mm:ss*Z format. The time is displayed in UTC.
 	CreationTime *string `json:"CreationTime,omitempty" xml:"CreationTime,omitempty"`
-	// The returned data. The value is a JSON string.
+	// The returned data. The value is a JSON string. For more information, see [AITemplateConfig](~~89863~~).
 	Data *string `json:"Data,omitempty" xml:"Data,omitempty"`
-	// The ID of the job.
+	// The job ID.
 	JobId *string `json:"JobId,omitempty" xml:"JobId,omitempty"`
-	// The ID of the video.
+	// The ID of the video file.
 	MediaId *string `json:"MediaId,omitempty" xml:"MediaId,omitempty"`
 	// The error message. This parameter is returned if the value of Status is fail.
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
 	// The status of the job. Valid values:
 	//
-	// *   **success**: The job is complete.
+	// *   **success**: The job is successful.
 	// *   **fail**: The job failed.
 	// *   **init**: The job is being initialized.
 	// *   **Processing**: The job is in progress.
 	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
 	// The type of the job. Valid values:
 	//
-	// *   **AIMediaDNA**: The media fingerprinting job.
-	// *   **AIVideoTag**: The smart tagging job.
+	// *   **AIMediaDNA**: video fingerprinting
+	// *   **AIVideoTag**: smart tagging
 	Type *string `json:"Type,omitempty" xml:"Type,omitempty"`
 }
 
@@ -18592,8 +18925,7 @@ type ListAITemplateResponseBodyTemplateInfoList struct {
 	// *   **System**
 	// *   **Custom**
 	Source *string `json:"Source,omitempty" xml:"Source,omitempty"`
-	// The detailed configurations of the AI template. The value is a JSON string.
-	// <props="china">For more information, see [AITemplateConfig](~~89863~~#title-vd3-499-o36).</props>
+	// The detailed configurations of the AI template. The value is a JSON string. For more information, see [AITemplateConfig](~~89863#title-vd3-499-o36~~).
 	TemplateConfig *string `json:"TemplateConfig,omitempty" xml:"TemplateConfig,omitempty"`
 	// The ID of the AI template.
 	TemplateId *string `json:"TemplateId,omitempty" xml:"TemplateId,omitempty"`
@@ -19003,7 +19335,7 @@ func (s *ListAppPoliciesForIdentityResponse) SetBody(v *ListAppPoliciesForIdenti
 }
 
 type ListAuditSecurityIpRequest struct {
-	// The name of the review security group where you want to query IP addresses. If you do not set this parameter, IP addresses in all review security groups are queried.
+	// The name of the review security group in which you want to query IP addresses. If you do not specify this parameter, IP addresses in all review security groups are queried.
 	SecurityGroupName *string `json:"SecurityGroupName,omitempty" xml:"SecurityGroupName,omitempty"`
 }
 
@@ -19021,7 +19353,7 @@ func (s *ListAuditSecurityIpRequest) SetSecurityGroupName(v string) *ListAuditSe
 }
 
 type ListAuditSecurityIpResponseBody struct {
-	// The ID of the request.
+	// The request ID.
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	// The details of the review security group.
 	SecurityIpList []*ListAuditSecurityIpResponseBodySecurityIpList `json:"SecurityIpList,omitempty" xml:"SecurityIpList,omitempty" type:"Repeated"`
@@ -20400,15 +20732,15 @@ func (s *ListWatermarkResponse) SetBody(v *ListWatermarkResponseBody) *ListWater
 }
 
 type MoveAppResourceRequest struct {
-	// The ID of the resource. You can specify a maximum of 20 IDs at a time. Separate them with commas (,).
+	// The resource ID. You can specify a maximum of 20 IDs at a time. Separate multiple IDs with commas (,).
 	ResourceIds *string `json:"ResourceIds,omitempty" xml:"ResourceIds,omitempty"`
-	// The type of the resource. Valid values:
+	// The resource type. Valid values:
 	//
-	// *   **video**
-	// *   **image**
-	// *   **attached**
+	// *   **video**: video files.
+	// *   **image**: image files.
+	// *   **attached**: auxiliary media assets.
 	ResourceType *string `json:"ResourceType,omitempty" xml:"ResourceType,omitempty"`
-	// The ID of the application to which resources are migrated. Default value: **app-1000000**. For more information, see [Overview](~~113600~~).
+	// The ID of the application to which resources are migrated. Default value: **app-1000000**. For more information, see [Use the multi-application service](~~113600~~).
 	TargetAppId *string `json:"TargetAppId,omitempty" xml:"TargetAppId,omitempty"`
 }
 
@@ -20436,11 +20768,11 @@ func (s *MoveAppResourceRequest) SetTargetAppId(v string) *MoveAppResourceReques
 }
 
 type MoveAppResourceResponseBody struct {
-	// The ID of the resource that failed to be migrated.
+	// The IDs of the resources that failed to be migrated.
 	FailedResourceIds []*string `json:"FailedResourceIds,omitempty" xml:"FailedResourceIds,omitempty" type:"Repeated"`
-	// The ID of the resource that was not found.
+	// The IDs of the resources that were not found.
 	NonExistResourceIds []*string `json:"NonExistResourceIds,omitempty" xml:"NonExistResourceIds,omitempty" type:"Repeated"`
-	// The ID of the request.
+	// The request ID.
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -20585,22 +20917,27 @@ type ProduceEditingProjectVideoRequest struct {
 	CoverURL *string `json:"CoverURL,omitempty" xml:"CoverURL,omitempty"`
 	// The description of the online editing project.
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
-	// The metadata of the produced video, in JSON format. For more information about the structure, see [MediaMetadata](~~52839~~).
+	// The video metadata. The value must be in JSON format. For more information about the parameter structure, see [MediaMetadata](~~52839#title_rtf_ry5\_gjp~~).
 	MediaMetadata *string `json:"MediaMetadata,omitempty" xml:"MediaMetadata,omitempty"`
 	OwnerId       *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
-	// The configuration of video production, in JSON format. For more information about the structure, see [ProduceConfig](~~52839~~).
+	// The configuration of video production. The value must be in JSON format. For more information about the parameter structure, see [ProduceConfig](~~52839#title_ybl\_7cs_y7d~~).
+	//
+	// > The StorageLocation field is required if you create an online editing project in a region other than the China (Shanghai) region.
 	ProduceConfig *string `json:"ProduceConfig,omitempty" xml:"ProduceConfig,omitempty"`
-	// The ID of the online editing project.
+	// The ID of the online editing project. You can use one of the following methods to obtain the ID of the online editing project:
+	//
+	// *   Log on to the [ApsaraVideo VOD console](https://vod.console.aliyun.com). In the left-side navigation pane, choose **Production Center** > **Video Editing** to view the ID of the online editing project.
+	// *   Obtain the value of ProjectId from the response to the [AddEditingProject](~~69048~~) operation.
 	ProjectId            *string `json:"ProjectId,omitempty" xml:"ProjectId,omitempty"`
 	ResourceOwnerAccount *string `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
 	ResourceOwnerId      *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
-	// The timeline of the online editing project, in JSON format. For more information about the structure, see [Timeline](~~52839~~).
+	// The timeline of the online editing project. The value must be in JSON format. For more information about the parameter structure, see [Timeline](~~52839#07bc7fe0f2xuh~~).
 	Timeline *string `json:"Timeline,omitempty" xml:"Timeline,omitempty"`
 	// The title of the online editing project.
 	Title *string `json:"Title,omitempty" xml:"Title,omitempty"`
-	// The custom configuration, such as the callback configuration. The value is a JSON-formatted string. For more information about the structure, see [UserData](~~86952~~).
+	// The custom configurations, such as the callback configuration. The value must be a JSON string. For more information about the parameter structure, see [UserData](~~86952#title_vz7\_xzs\_0c5~~).
 	//
-	// > To use the MessageCallback parameter, you must set an HTTP callback URL and select a callback event type in the ApsaraVideo VOD console. Otherwise, the callback configuration does not take effect.
+	// > The callback configurations take effect only after you specify an HTTP URL for receiving callback notifications and select the event types in the ApsaraVideo VOD console.
 	UserData *string `json:"UserData,omitempty" xml:"UserData,omitempty"`
 }
 
@@ -20670,8 +21007,8 @@ func (s *ProduceEditingProjectVideoRequest) SetUserData(v string) *ProduceEditin
 type ProduceEditingProjectVideoResponseBody struct {
 	// The ID of the produced video.
 	//
-	// > *   This operation returns the ID of the produced video in synchronous mode.
-	// > *   If this operation returns the MediaId parameter, the video production task is being asynchronously processed.
+	// > *   This parameter is returned for each request.
+	// > *   If a value is returned for this parameter, the video production task is being asynchronously processed.
 	MediaId *string `json:"MediaId,omitempty" xml:"MediaId,omitempty"`
 	// The ID of the online editing project.
 	ProjectId *string `json:"ProjectId,omitempty" xml:"ProjectId,omitempty"`
@@ -21014,12 +21351,12 @@ func (s *RefreshUploadVideoResponse) SetBody(v *RefreshUploadVideoResponseBody) 
 }
 
 type RefreshVodObjectCachesRequest struct {
-	// The path of the resource to be refreshed. Separate multiple paths with line breaks (\n or \r\n).
+	// The URL of the file to be prefetched. Separate multiple URLs with line breaks (\n or \r\n).
 	ObjectPath *string `json:"ObjectPath,omitempty" xml:"ObjectPath,omitempty"`
-	// The granularity of the resources to be refreshed. Valid values:
+	// The type of the object that you want to refresh. Valid values:
 	//
-	// *   **File**: refreshes one or more files. This is the default value.
-	// *   **Directory**: refreshes the files under one or more directories.
+	// *   **File** (default): refreshes files.
+	// *   **Directory**: refreshes the files in specified directories.
 	ObjectType    *string `json:"ObjectType,omitempty" xml:"ObjectType,omitempty"`
 	OwnerId       *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
 	SecurityToken *string `json:"SecurityToken,omitempty" xml:"SecurityToken,omitempty"`
@@ -21056,7 +21393,7 @@ func (s *RefreshVodObjectCachesRequest) SetSecurityToken(v string) *RefreshVodOb
 type RefreshVodObjectCachesResponseBody struct {
 	// The ID of the refresh task. Separate multiple task IDs with commas (,).
 	RefreshTaskId *string `json:"RefreshTaskId,omitempty" xml:"RefreshTaskId,omitempty"`
-	// The ID of the request.
+	// The request ID.
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -21256,16 +21593,16 @@ type RestoreMediaRequest struct {
 	MediaIds *string `json:"MediaIds,omitempty" xml:"MediaIds,omitempty"`
 	// The number of days during which media assets remain in the restored state. Default value: 1. The maximum validity period of a restored Archive media asset is 7 days and the maximum validity period of a restored Cold Archive media asset is 365 days.
 	RestoreDays *string `json:"RestoreDays,omitempty" xml:"RestoreDays,omitempty"`
-	// The restoration priority. This parameter is required only when you restore a Cold Archive media asset. Valid values:
+	// The restoration priority. This parameter is required only when you restore a Cold Archive media file. Valid values:
 	//
-	// *   **Expedited**
-	// *   **Standard**
-	// *   **Bulk**
+	// *   **Expedited**: The file is restored within 1 hour.
+	// *   **Standard**: The file is restored within 2 to 5 hours.
+	// *   **Bulk**: The file is restored within 5 to 12 hours.
 	RestoreTier *string `json:"RestoreTier,omitempty" xml:"RestoreTier,omitempty"`
-	// The restore range. Valid values:
+	// The modification range. Valid values:
 	//
-	// *   **All**: restores all media assets including the source file, transcoded streams, and snapshots.
-	// *   **SourceFile**: restores only the source file.
+	// *   **All**: restores all resources, including the source files and transcoded streams.
+	// *   **SourceFile**: restores only the source files.
 	Scope *string `json:"Scope,omitempty" xml:"Scope,omitempty"`
 }
 
@@ -22926,8 +23263,8 @@ func (s *SetCrossdomainContentResponse) SetBody(v *SetCrossdomainContentResponse
 type SetDefaultAITemplateRequest struct {
 	// The ID of the AI template. You can use one of the following methods to obtain the ID of the AI template:
 	//
-	// *   Call the [AddAITemplate](~~102930~~) operation to add an AI template if no AI template exists. The value of TemplateId from the response is the ID of the AI template.
-	// *   Call the [ListAITemplate](~~102936~~) operation if the template already exists. The value of TemplateId from the response is the ID of the AI template.
+	// *   Call the [AddAITemplate](~~102930~~) operation to add an AI template if no AI template exists. The value of TemplateId in the response is the ID of the AI template.
+	// *   Call the [ListAITemplate](~~102936~~) operation if the template already exists. The value of TemplateId in the response is the ID of the AI template.
 	TemplateId *string `json:"TemplateId,omitempty" xml:"TemplateId,omitempty"`
 }
 
@@ -22945,7 +23282,7 @@ func (s *SetDefaultAITemplateRequest) SetTemplateId(v string) *SetDefaultAITempl
 }
 
 type SetDefaultAITemplateResponseBody struct {
-	// The ID of the request.
+	// The request ID.
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	// The ID of the AI template.
 	TemplateId *string `json:"TemplateId,omitempty" xml:"TemplateId,omitempty"`
@@ -23588,8 +23925,7 @@ func (s *SubmitAIImageAuditJobResponse) SetBody(v *SubmitAIImageAuditJobResponse
 type SubmitAIImageJobRequest struct {
 	// The ID of the pipeline that is used for the AI processing job.
 	//
-	// <props="china">> This parameter is optional if you have specified a default pipeline ID. If you need to submit image AI processing jobs in a batch to a specific pipeline, [submit a ticket](https://smartservice.console.aliyun.com/service/create-ticket?product=vod) to contact Alibaba Cloud technical support.</props>
-	// <props="intl">> This parameter is optional if you have specified a default pipeline ID. If you need to submit image AI processing jobs in a batch to a specific pipeline, [submit a ticket](https://workorder-intl.console.aliyun.com/?spm=5176.12672711.top-nav.ditem-sub.3cd51fa3WvRsjz#/ticket/add/?productId=1270) to contact Alibaba Cloud technical support.</props>
+	// >  This parameter is optional if you have specified a default pipeline ID. If you need to submit image AI processing jobs in a batch to a specific pipeline, [submit a ticket](https://yida.alibaba-inc.com/o/ticketapply) to contact Alibaba Cloud technical support.
 	AIPipelineId *string `json:"AIPipelineId,omitempty" xml:"AIPipelineId,omitempty"`
 	// The ID of the AI template. You can use one of the following methods to obtain the ID:
 	//
@@ -23719,7 +24055,14 @@ func (s *SubmitAIImageJobResponse) SetBody(v *SubmitAIImageJobResponseBody) *Sub
 }
 
 type SubmitAIJobRequest struct {
-	// The configurations of the AI job. The value is a JSON string.
+	// The configurations of the AI job. The value must be a JSON string.
+	//
+	// *   If `Types` is set to `AIVideoTag`, you can configure `AnalyseTypes` for `Config` to set the analysis algorithm of a smart tagging job. Valid values:
+	//
+	//     *   ASR: speech recognition.
+	//     *   OCR: image optical character recognition (OCR).
+	//
+	// *   If `Types` is set to `AIMediaDNA`, you can configure `DNADBId` for `Config` to set the ID of the media fingerprint library for video fingerprinting jobs.
 	Config *string `json:"Config,omitempty" xml:"Config,omitempty"`
 	// The ID of the video. You can use one of the following methods to obtain the ID:
 	//
@@ -24005,6 +24348,105 @@ func (s *SubmitAIMediaAuditJobResponse) SetStatusCode(v int32) *SubmitAIMediaAud
 }
 
 func (s *SubmitAIMediaAuditJobResponse) SetBody(v *SubmitAIMediaAuditJobResponseBody) *SubmitAIMediaAuditJobResponse {
+	s.Body = v
+	return s
+}
+
+type SubmitDigitalWatermarkExtractJobRequest struct {
+	ExtractType          *string `json:"ExtractType,omitempty" xml:"ExtractType,omitempty"`
+	MediaId              *string `json:"MediaId,omitempty" xml:"MediaId,omitempty"`
+	OwnerAccount         *string `json:"OwnerAccount,omitempty" xml:"OwnerAccount,omitempty"`
+	OwnerId              *string `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
+	ResourceOwnerAccount *string `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
+	ResourceOwnerId      *string `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
+}
+
+func (s SubmitDigitalWatermarkExtractJobRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s SubmitDigitalWatermarkExtractJobRequest) GoString() string {
+	return s.String()
+}
+
+func (s *SubmitDigitalWatermarkExtractJobRequest) SetExtractType(v string) *SubmitDigitalWatermarkExtractJobRequest {
+	s.ExtractType = &v
+	return s
+}
+
+func (s *SubmitDigitalWatermarkExtractJobRequest) SetMediaId(v string) *SubmitDigitalWatermarkExtractJobRequest {
+	s.MediaId = &v
+	return s
+}
+
+func (s *SubmitDigitalWatermarkExtractJobRequest) SetOwnerAccount(v string) *SubmitDigitalWatermarkExtractJobRequest {
+	s.OwnerAccount = &v
+	return s
+}
+
+func (s *SubmitDigitalWatermarkExtractJobRequest) SetOwnerId(v string) *SubmitDigitalWatermarkExtractJobRequest {
+	s.OwnerId = &v
+	return s
+}
+
+func (s *SubmitDigitalWatermarkExtractJobRequest) SetResourceOwnerAccount(v string) *SubmitDigitalWatermarkExtractJobRequest {
+	s.ResourceOwnerAccount = &v
+	return s
+}
+
+func (s *SubmitDigitalWatermarkExtractJobRequest) SetResourceOwnerId(v string) *SubmitDigitalWatermarkExtractJobRequest {
+	s.ResourceOwnerId = &v
+	return s
+}
+
+type SubmitDigitalWatermarkExtractJobResponseBody struct {
+	JobId     *string `json:"JobId,omitempty" xml:"JobId,omitempty"`
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+}
+
+func (s SubmitDigitalWatermarkExtractJobResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s SubmitDigitalWatermarkExtractJobResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *SubmitDigitalWatermarkExtractJobResponseBody) SetJobId(v string) *SubmitDigitalWatermarkExtractJobResponseBody {
+	s.JobId = &v
+	return s
+}
+
+func (s *SubmitDigitalWatermarkExtractJobResponseBody) SetRequestId(v string) *SubmitDigitalWatermarkExtractJobResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+type SubmitDigitalWatermarkExtractJobResponse struct {
+	Headers    map[string]*string                            `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                                        `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *SubmitDigitalWatermarkExtractJobResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s SubmitDigitalWatermarkExtractJobResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s SubmitDigitalWatermarkExtractJobResponse) GoString() string {
+	return s.String()
+}
+
+func (s *SubmitDigitalWatermarkExtractJobResponse) SetHeaders(v map[string]*string) *SubmitDigitalWatermarkExtractJobResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *SubmitDigitalWatermarkExtractJobResponse) SetStatusCode(v int32) *SubmitDigitalWatermarkExtractJobResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *SubmitDigitalWatermarkExtractJobResponse) SetBody(v *SubmitDigitalWatermarkExtractJobResponseBody) *SubmitDigitalWatermarkExtractJobResponse {
 	s.Body = v
 	return s
 }
@@ -24718,7 +25160,7 @@ func (s *SubmitWorkflowJobResponse) SetBody(v *SubmitWorkflowJobResponseBody) *S
 }
 
 type UpdateAITemplateRequest struct {
-	// The detailed configurations of the AI template. The value is a JSON string.
+	// The detailed configurations of the AI template. The value is a JSON string. For more information, see [AITemplateConfig](~~89863#title-vd3-499-o36~~).
 	TemplateConfig *string `json:"TemplateConfig,omitempty" xml:"TemplateConfig,omitempty"`
 	// The ID of the AI template. You can use one of the following methods to obtain the ID:
 	//
@@ -25260,11 +25702,11 @@ func (s *UpdateImageInfosResponse) SetBody(v *UpdateImageInfosResponseBody) *Upd
 }
 
 type UpdateMediaStorageClassRequest struct {
-	// The ID of the media asset. You can specify a maximum of 20 IDs. Separate multiple IDs with commas (,). You can use one of the following methods to obtain the ID:
+	// The media asset ID. You can specify a maximum of 20 IDs. Separate multiple IDs with commas (,). You can use one of the following methods to obtain the ID:
 	//
 	// *   Log on to the [ApsaraVideo VOD](https://vod.console.aliyun.com) console. In the left-side navigation pane, choose **Media Files** > **Audio/Video**. On the Video and Audio page, you can view the ID of the media asset. This method is applicable to files that are uploaded by using the ApsaraVideo VOD console.
-	// *   Obtain the value of VideoId from the response to the [CreateUploadVideo](~~55407~~) operation that you call to upload media assets.
-	// *   Obtain the value of VideoId from the response to the [SearchMedia](~~86044~~) operation that you call to query the media ID after the media asset is uploaded.
+	// *   Obtain the value of the VideoId parameter from the response to the [CreateUploadVideo](~~55407~~) operation that you call to upload media assets.
+	// *   Obtain the value of the VideoId parameter from the response to the [SearchMedia](~~86044~~) operation that you call to query the media ID after the media asset is uploaded.
 	MediaIds *string `json:"MediaIds,omitempty" xml:"MediaIds,omitempty"`
 	// The restoration priority. This parameter is required only when you restore a Cold Archive media asset. Valid values:
 	//
@@ -25274,7 +25716,7 @@ type UpdateMediaStorageClassRequest struct {
 	RestoreTier *string `json:"RestoreTier,omitempty" xml:"RestoreTier,omitempty"`
 	// The modification range. Valid values:
 	//
-	// *   **All**: modifies the storage classes of all resources including the source files, transcoded streams, and snapshots.
+	// *   **All**: modifies the storage classes of all resources including the source files and transcoded streams.
 	// *   **SourceFile**: modifies the storage classes of only the source files. The storage class of other resources is Standard.
 	Scope *string `json:"Scope,omitempty" xml:"Scope,omitempty"`
 	// The storage class to which you want to modify. Valid values:
@@ -26574,7 +27016,8 @@ func (client *Client) GetEndpoint(productId *string, regionId *string, endpointR
 }
 
 /**
- * Before you add an AI template for automated review and smart thumbnail tasks, make sure that [automated review](https://ai.aliyun.com/vi/censor) and [smart thumbnail](https://ai.aliyun.com/vi/cover) are enabled.
+ * *   Regions that support this operation: **China (Beijing)**, **China (Shanghai)**, and **Singapore**.
+ * *   Before you add an AI template for automated review and smart thumbnail tasks, make sure that [automated review](https://ai.aliyun.com/vi/censor) and [smart thumbnail](https://ai.aliyun.com/vi/cover) are enabled.
  *
  * @param request AddAITemplateRequest
  * @param runtime runtime options for this request RuntimeOptions
@@ -26622,7 +27065,8 @@ func (client *Client) AddAITemplateWithOptions(request *AddAITemplateRequest, ru
 }
 
 /**
- * Before you add an AI template for automated review and smart thumbnail tasks, make sure that [automated review](https://ai.aliyun.com/vi/censor) and [smart thumbnail](https://ai.aliyun.com/vi/cover) are enabled.
+ * *   Regions that support this operation: **China (Beijing)**, **China (Shanghai)**, and **Singapore**.
+ * *   Before you add an AI template for automated review and smart thumbnail tasks, make sure that [automated review](https://ai.aliyun.com/vi/censor) and [smart thumbnail](https://ai.aliyun.com/vi/cover) are enabled.
  *
  * @param request AddAITemplateRequest
  * @return AddAITemplateResponse
@@ -26848,12 +27292,14 @@ func (client *Client) AddEditingProjectMaterials(request *AddEditingProjectMater
 }
 
 /**
- * - You cannot perform custom operations on transcoding template groups that are **locked** in the ApsaraVideo VOD console. To manage these transcoding template groups, submit a ticket to contact Alibaba Cloud technical support.
- * - An Object Storage Service (OSS) bucket is required to store files that are used for transcoding. You can create a transcoding template group only after ApsaraVideo VOD has allocated a bucket to you. You can activate the bucket on the Storage page in the ApsaraVideo VOD console.
- * - You cannot add transcoding templates to the **No Transcoding** template group.
- * - You can create a maximum of 20 transcoding template groups.
- * - You can add a maximum of 20 transcoding templates to a transcoding template group.
- * - If you need to generate an URL for adaptive bitrate streaming, you can add a maximum of 10 video packaging templates to a transcoding template group. If you add more than 10 video packaging templates, URLs of the video transcoded based on the video packaging templates are generated but the URL for adaptive bitrate streaming is not generated.
+ * *   You cannot perform custom operations on transcoding template groups that are **locked** in the ApsaraVideo VOD console. You can call the [GetTranscodeTemplateGroup](~~GetTranscodeTemplateGroup~~) operation to query the information about a transcoding template group and check whether the transcoding template group is locked based on the value of the Locked parameter. You can call the [UpdateTranscodeTemplateGroup](~~UpdateTranscodeTemplateGroup~~) operation to unlock a transcoding template group if it is locked. Then, you can perform custom operations on the transcoding template group.
+ * *   An Object Storage Service (OSS) bucket is required to store files that are used for transcoding. You cannot create a transcoding template group if no bucket is available. To activate a bucket, perform the following operations: Log on to the ApsaraVideo VOD console. In the left-side navigation pane, choose **Configuration Management > Media Management > Storage**. On the **Storage** page, activate the bucket that is allocated by ApsaraVideo VOD.
+ * *   You cannot add transcoding templates to the **No Transcoding** template group.
+ * *   You can create a maximum of 20 transcoding template groups.
+ * *   You can add a maximum of 20 transcoding templates to a transcoding template group.
+ * *   If you want to generate a URL for adaptive bitrate streaming, you can add video packaging templates to a transcoding template group. You can add a maximum of 10 video packaging templates to a transcoding template group. If you add more than 10 video packaging templates, URLs of the video transcoded based on the video packaging templates are generated but the URL for adaptive bitrate streaming is not generated.
+ * ### QPS limits
+ * You can call this operation up to five times per second per account. Requests that exceed this limit are dropped and you will experience service interruptions. We recommend that you take note of this limit when you call this operation. For more information, see [QPS limits](~~342790~~).
  *
  * @param request AddTranscodeTemplateGroupRequest
  * @param runtime runtime options for this request RuntimeOptions
@@ -26905,12 +27351,14 @@ func (client *Client) AddTranscodeTemplateGroupWithOptions(request *AddTranscode
 }
 
 /**
- * - You cannot perform custom operations on transcoding template groups that are **locked** in the ApsaraVideo VOD console. To manage these transcoding template groups, submit a ticket to contact Alibaba Cloud technical support.
- * - An Object Storage Service (OSS) bucket is required to store files that are used for transcoding. You can create a transcoding template group only after ApsaraVideo VOD has allocated a bucket to you. You can activate the bucket on the Storage page in the ApsaraVideo VOD console.
- * - You cannot add transcoding templates to the **No Transcoding** template group.
- * - You can create a maximum of 20 transcoding template groups.
- * - You can add a maximum of 20 transcoding templates to a transcoding template group.
- * - If you need to generate an URL for adaptive bitrate streaming, you can add a maximum of 10 video packaging templates to a transcoding template group. If you add more than 10 video packaging templates, URLs of the video transcoded based on the video packaging templates are generated but the URL for adaptive bitrate streaming is not generated.
+ * *   You cannot perform custom operations on transcoding template groups that are **locked** in the ApsaraVideo VOD console. You can call the [GetTranscodeTemplateGroup](~~GetTranscodeTemplateGroup~~) operation to query the information about a transcoding template group and check whether the transcoding template group is locked based on the value of the Locked parameter. You can call the [UpdateTranscodeTemplateGroup](~~UpdateTranscodeTemplateGroup~~) operation to unlock a transcoding template group if it is locked. Then, you can perform custom operations on the transcoding template group.
+ * *   An Object Storage Service (OSS) bucket is required to store files that are used for transcoding. You cannot create a transcoding template group if no bucket is available. To activate a bucket, perform the following operations: Log on to the ApsaraVideo VOD console. In the left-side navigation pane, choose **Configuration Management > Media Management > Storage**. On the **Storage** page, activate the bucket that is allocated by ApsaraVideo VOD.
+ * *   You cannot add transcoding templates to the **No Transcoding** template group.
+ * *   You can create a maximum of 20 transcoding template groups.
+ * *   You can add a maximum of 20 transcoding templates to a transcoding template group.
+ * *   If you want to generate a URL for adaptive bitrate streaming, you can add video packaging templates to a transcoding template group. You can add a maximum of 10 video packaging templates to a transcoding template group. If you add more than 10 video packaging templates, URLs of the video transcoded based on the video packaging templates are generated but the URL for adaptive bitrate streaming is not generated.
+ * ### QPS limits
+ * You can call this operation up to five times per second per account. Requests that exceed this limit are dropped and you will experience service interruptions. We recommend that you take note of this limit when you call this operation. For more information, see [QPS limits](~~342790~~).
  *
  * @param request AddTranscodeTemplateGroupRequest
  * @return AddTranscodeTemplateGroupResponse
@@ -27162,7 +27610,7 @@ func (client *Client) AddWatermark(request *AddWatermarkRequest) (_result *AddWa
 }
 
 /**
- * > You can grant a maximum of 10 application permissions to a RAM user or RAM role.
+ * > You can grant a RAM user or RAM role permissions to access up to 10 applications.
  *
  * @param request AttachAppPolicyToIdentityRequest
  * @param runtime runtime options for this request RuntimeOptions
@@ -27214,7 +27662,7 @@ func (client *Client) AttachAppPolicyToIdentityWithOptions(request *AttachAppPol
 }
 
 /**
- * > You can grant a maximum of 10 application permissions to a RAM user or RAM role.
+ * > You can grant a RAM user or RAM role permissions to access up to 10 applications.
  *
  * @param request AttachAppPolicyToIdentityRequest
  * @return AttachAppPolicyToIdentityResponse
@@ -27304,8 +27752,8 @@ func (client *Client) BatchSetVodDomainConfigs(request *BatchSetVodDomainConfigs
 }
 
 /**
- * > *   This operation is available only in the **China (Shanghai)** region.
- * > *   If the domain name that you want to enable is invalid or your Alibaba Cloud account has overdue payments, you cannot call this operation to enable the domain name.
+ * *   This operation is available only in the **China (Shanghai)** region.
+ * *   If the domain name that you want to enable is invalid or your Alibaba Cloud account has overdue payments, you cannot call this operation to enable the domain name.
  *
  * @param request BatchStartVodDomainRequest
  * @param runtime runtime options for this request RuntimeOptions
@@ -27353,8 +27801,8 @@ func (client *Client) BatchStartVodDomainWithOptions(request *BatchStartVodDomai
 }
 
 /**
- * > *   This operation is available only in the **China (Shanghai)** region.
- * > *   If the domain name that you want to enable is invalid or your Alibaba Cloud account has overdue payments, you cannot call this operation to enable the domain name.
+ * *   This operation is available only in the **China (Shanghai)** region.
+ * *   If the domain name that you want to enable is invalid or your Alibaba Cloud account has overdue payments, you cannot call this operation to enable the domain name.
  *
  * @param request BatchStartVodDomainRequest
  * @return BatchStartVodDomainResponse
@@ -27371,8 +27819,8 @@ func (client *Client) BatchStartVodDomain(request *BatchStartVodDomainRequest) (
 }
 
 /**
- * > *   This operation is available only in the **China (Shanghai)** region.
- * > *   After you disable a domain name for CDN, the information about the domain name is retained. The system automatically reroutes all the requests that are destined for the domain name for CDN to the origin server.
+ * *   This operation is available only in the **China (Shanghai)** region.
+ * *   After you disable an accelerated domain name, the information about the domain name is retained. The system automatically reroutes all the requests that are destined for the domain name to the origin server.
  *
  * @param request BatchStopVodDomainRequest
  * @param runtime runtime options for this request RuntimeOptions
@@ -27420,8 +27868,8 @@ func (client *Client) BatchStopVodDomainWithOptions(request *BatchStopVodDomainR
 }
 
 /**
- * > *   This operation is available only in the **China (Shanghai)** region.
- * > *   After you disable a domain name for CDN, the information about the domain name is retained. The system automatically reroutes all the requests that are destined for the domain name for CDN to the origin server.
+ * *   This operation is available only in the **China (Shanghai)** region.
+ * *   After you disable an accelerated domain name, the information about the domain name is retained. The system automatically reroutes all the requests that are destined for the domain name to the origin server.
  *
  * @param request BatchStopVodDomainRequest
  * @return BatchStopVodDomainResponse
@@ -27501,7 +27949,9 @@ func (client *Client) CancelUrlUploadJobs(request *CancelUrlUploadJobsRequest) (
 }
 
 /**
- * You can create a maximum of 10 applications within an Alibaba Cloud account. For more information, see [Overview](https://www.alibabacloud.com/help/en/apsaravideo-for-vod/latest/overview-1).
+ * You can create up to 10 applications within an Alibaba Cloud account. For more information, see [Multi-application service](~~113600~~).
+ * ### QPS limits
+ * You can call this operation up to 50 times per second per account. Requests that exceed this limit are dropped and you will experience service interruptions. We recommend that you take note of this limit when you call this operation. For more information, see [QPS limits on API operations in ApsaraVideo VOD](~~342790~~).
  *
  * @param request CreateAppInfoRequest
  * @param runtime runtime options for this request RuntimeOptions
@@ -27545,7 +27995,9 @@ func (client *Client) CreateAppInfoWithOptions(request *CreateAppInfoRequest, ru
 }
 
 /**
- * You can create a maximum of 10 applications within an Alibaba Cloud account. For more information, see [Overview](https://www.alibabacloud.com/help/en/apsaravideo-for-vod/latest/overview-1).
+ * You can create up to 10 applications within an Alibaba Cloud account. For more information, see [Multi-application service](~~113600~~).
+ * ### QPS limits
+ * You can call this operation up to 50 times per second per account. Requests that exceed this limit are dropped and you will experience service interruptions. We recommend that you take note of this limit when you call this operation. For more information, see [QPS limits on API operations in ApsaraVideo VOD](~~342790~~).
  *
  * @param request CreateAppInfoRequest
  * @return CreateAppInfoResponse
@@ -27707,9 +28159,10 @@ func (client *Client) CreateUploadAttachedMedia(request *CreateUploadAttachedMed
 }
 
 /**
- * The custom configurations. For example, you can specify callback configurations and upload acceleration configurations. The value is a JSON string. For more information, see the "UserData: specifies the custom configurations for media upload" section of the [Request parameters](~~86952~~) topic.
- * > *   The callback configurations take effect only after you specify the HTTP callback URL and select specific callback events in the ApsaraVideo VOD console. For more information about how to configure HTTP callback settings in the ApsaraVideo VOD console, see [Configure callback settings](~~86071~~).
- * > *   To use the upload acceleration feature, submit a [ticket](https://ticket-intl.console.aliyun.com/#/ticket/createIndex) to enable this feature. For more information, see [Overview](~~55396~~).
+ * *   You must obtain a URL and a credential before you upload an image to ApsaraVideo VOD. ApsaraVideo VOD provides multiple upload methods. You can upload files by using server upload SDKs, client upload SDKs, URLs, Object Storage Service (OSS) API, or OSS SDKs. Each upload method has different requirements for obtaining upload URLs and credentials. For more information, see the "Usage notes" section of the [Upload URLs and credentials](~~55397~~) topic.
+ * *   You cannot refresh the upload URL or credential when you upload images. If the image upload credential expires, you can call this operation to obtain a new upload URL and credential. By default, the validity period of an image upload credential is 3,000 seconds.
+ * *   You can call the [CreateUploadAttachedMedia](~~98467~~) operation to upload image watermarks.
+ * *   You can configure a callback for [ImageUploadComplete](~~91968~~) to receive notifications about the image upload status.
  *
  * @param request CreateUploadImageRequest
  * @param runtime runtime options for this request RuntimeOptions
@@ -27785,9 +28238,10 @@ func (client *Client) CreateUploadImageWithOptions(request *CreateUploadImageReq
 }
 
 /**
- * The custom configurations. For example, you can specify callback configurations and upload acceleration configurations. The value is a JSON string. For more information, see the "UserData: specifies the custom configurations for media upload" section of the [Request parameters](~~86952~~) topic.
- * > *   The callback configurations take effect only after you specify the HTTP callback URL and select specific callback events in the ApsaraVideo VOD console. For more information about how to configure HTTP callback settings in the ApsaraVideo VOD console, see [Configure callback settings](~~86071~~).
- * > *   To use the upload acceleration feature, submit a [ticket](https://ticket-intl.console.aliyun.com/#/ticket/createIndex) to enable this feature. For more information, see [Overview](~~55396~~).
+ * *   You must obtain a URL and a credential before you upload an image to ApsaraVideo VOD. ApsaraVideo VOD provides multiple upload methods. You can upload files by using server upload SDKs, client upload SDKs, URLs, Object Storage Service (OSS) API, or OSS SDKs. Each upload method has different requirements for obtaining upload URLs and credentials. For more information, see the "Usage notes" section of the [Upload URLs and credentials](~~55397~~) topic.
+ * *   You cannot refresh the upload URL or credential when you upload images. If the image upload credential expires, you can call this operation to obtain a new upload URL and credential. By default, the validity period of an image upload credential is 3,000 seconds.
+ * *   You can call the [CreateUploadAttachedMedia](~~98467~~) operation to upload image watermarks.
+ * *   You can configure a callback for [ImageUploadComplete](~~91968~~) to receive notifications about the image upload status.
  *
  * @param request CreateUploadImageRequest
  * @return CreateUploadImageResponse
@@ -27807,7 +28261,7 @@ func (client *Client) CreateUploadImage(request *CreateUploadImageRequest) (_res
  * *   You can call this operation to obtain upload URLs and credentials for video and audio files. For more information, see [Upload URLs and credentials](~~55397~~).
  * *   You can call this operation only to obtain the upload URLs and credentials for media files and create media assets in ApsaraVideo VOD. You cannot call this operation to upload media files. For more information about how to upload media files by calling API operations, see [Upload media files by calling API operations](~~476208~~).
  * *   If the upload credential expires, call the [RefreshUploadVideo](~~55408~~) operation to obtain a new upload credential. The default validity period of an upload credential is 3,000 seconds.
- * *   You can configure a callback to receive an [event notification](~~55396~~) when an audio or video file is uploaded. Alternatively, after you upload an audio or video file, you can call the [GetMezzanineInfo](~~59624~~) operation to determine whether the upload is successful based on the file status in the response.
+ * *   You can configure a callback to receive an [event notification](~~55396~~) when an audio or video file is uploaded. Alternatively, after you upload an audio or video file, you can call the [GetMezzanineInfo](~~59624~~) operation to determine whether the upload is successful based on the value of the Status response parameter.
  * *   The VideoId parameter that is returned after you call this operation can be used for media processing or lifecycle management of media assets.
  * *   You must obtain a URL and a credential before you upload a media file to ApsaraVideo VOD. ApsaraVideo VOD supports multiple upload methods. Each method has different requirements on upload URLs and credentials. For more information, see [Upload URLs and credentials](~~55397~~).
  *
@@ -27896,7 +28350,7 @@ func (client *Client) CreateUploadVideoWithOptions(request *CreateUploadVideoReq
  * *   You can call this operation to obtain upload URLs and credentials for video and audio files. For more information, see [Upload URLs and credentials](~~55397~~).
  * *   You can call this operation only to obtain the upload URLs and credentials for media files and create media assets in ApsaraVideo VOD. You cannot call this operation to upload media files. For more information about how to upload media files by calling API operations, see [Upload media files by calling API operations](~~476208~~).
  * *   If the upload credential expires, call the [RefreshUploadVideo](~~55408~~) operation to obtain a new upload credential. The default validity period of an upload credential is 3,000 seconds.
- * *   You can configure a callback to receive an [event notification](~~55396~~) when an audio or video file is uploaded. Alternatively, after you upload an audio or video file, you can call the [GetMezzanineInfo](~~59624~~) operation to determine whether the upload is successful based on the file status in the response.
+ * *   You can configure a callback to receive an [event notification](~~55396~~) when an audio or video file is uploaded. Alternatively, after you upload an audio or video file, you can call the [GetMezzanineInfo](~~59624~~) operation to determine whether the upload is successful based on the value of the Status response parameter.
  * *   The VideoId parameter that is returned after you call this operation can be used for media processing or lifecycle management of media assets.
  * *   You must obtain a URL and a credential before you upload a media file to ApsaraVideo VOD. ApsaraVideo VOD supports multiple upload methods. Each method has different requirements on upload URLs and credentials. For more information, see [Upload URLs and credentials](~~55397~~).
  *
@@ -27975,11 +28429,8 @@ func (client *Client) DecryptKMSDataKey(request *DecryptKMSDataKeyRequest) (_res
 }
 
 /**
- * This operation deletes only information about images that are submitted for AI processing. The image files are not deleted.
- * - The smart thumbnail feature is not supported. You cannot call this operation.
- * - This operation deletes only information about images that are submitted for AI processing. The image files are not deleted.
- * ### QPS limit
- * You can call this operation up to 100 times per second per account. Requests that exceed this limit are dropped and you will experience service interruptions. We recommend that you take note of this limit when you call this operation. For more information, see [QPS limits on API operations in ApsaraVideo VoD](~~342790~~).
+ * *   Regions that support this operation: **China (Beijing)** and **China (Shanghai)**.
+ * *   This operation deletes only information about images that are submitted for AI processing. The image files are not deleted.
  *
  * @param request DeleteAIImageInfosRequest
  * @param runtime runtime options for this request RuntimeOptions
@@ -28019,11 +28470,8 @@ func (client *Client) DeleteAIImageInfosWithOptions(request *DeleteAIImageInfosR
 }
 
 /**
- * This operation deletes only information about images that are submitted for AI processing. The image files are not deleted.
- * - The smart thumbnail feature is not supported. You cannot call this operation.
- * - This operation deletes only information about images that are submitted for AI processing. The image files are not deleted.
- * ### QPS limit
- * You can call this operation up to 100 times per second per account. Requests that exceed this limit are dropped and you will experience service interruptions. We recommend that you take note of this limit when you call this operation. For more information, see [QPS limits on API operations in ApsaraVideo VoD](~~342790~~).
+ * *   Regions that support this operation: **China (Beijing)** and **China (Shanghai)**.
+ * *   This operation deletes only information about images that are submitted for AI processing. The image files are not deleted.
  *
  * @param request DeleteAIImageInfosRequest
  * @return DeleteAIImageInfosResponse
@@ -28040,7 +28488,8 @@ func (client *Client) DeleteAIImageInfos(request *DeleteAIImageInfosRequest) (_r
 }
 
 /**
- * You cannot delete an AI template that is set as the default template.
+ * *   Regions that support this operation: **China (Beijing)**, **China (Shanghai)**, and **Singapore**.
+ * *   You cannot delete an AI template that is set as the default template.
  *
  * @param request DeleteAITemplateRequest
  * @param runtime runtime options for this request RuntimeOptions
@@ -28080,7 +28529,8 @@ func (client *Client) DeleteAITemplateWithOptions(request *DeleteAITemplateReque
 }
 
 /**
- * You cannot delete an AI template that is set as the default template.
+ * *   Regions that support this operation: **China (Beijing)**, **China (Shanghai)**, and **Singapore**.
+ * *   You cannot delete an AI template that is set as the default template.
  *
  * @param request DeleteAITemplateRequest
  * @return DeleteAITemplateResponse
@@ -28330,6 +28780,15 @@ func (client *Client) DeleteDynamicImage(request *DeleteDynamicImageRequest) (_r
 	return _result, _err
 }
 
+/**
+ * You can call this operation to delete multiple online editing projects at a time.
+ * ### QPS limits
+ * You can call this operation up to 20 times per second per account. Requests that exceed this limit are dropped and you may experience service interruptions. We recommend that you take note of this limit when you call this operation. For more information, see [QPS limits on API operations in ApsaraVideo VOD](~~342790~~).
+ *
+ * @param request DeleteEditingProjectRequest
+ * @param runtime runtime options for this request RuntimeOptions
+ * @return DeleteEditingProjectResponse
+ */
 func (client *Client) DeleteEditingProjectWithOptions(request *DeleteEditingProjectRequest, runtime *util.RuntimeOptions) (_result *DeleteEditingProjectResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -28379,6 +28838,14 @@ func (client *Client) DeleteEditingProjectWithOptions(request *DeleteEditingProj
 	return _result, _err
 }
 
+/**
+ * You can call this operation to delete multiple online editing projects at a time.
+ * ### QPS limits
+ * You can call this operation up to 20 times per second per account. Requests that exceed this limit are dropped and you may experience service interruptions. We recommend that you take note of this limit when you call this operation. For more information, see [QPS limits on API operations in ApsaraVideo VOD](~~342790~~).
+ *
+ * @param request DeleteEditingProjectRequest
+ * @return DeleteEditingProjectResponse
+ */
 func (client *Client) DeleteEditingProject(request *DeleteEditingProjectRequest) (_result *DeleteEditingProjectResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &DeleteEditingProjectResponse{}
@@ -28459,7 +28926,10 @@ func (client *Client) DeleteEditingProjectMaterials(request *DeleteEditingProjec
 }
 
 /**
- * > This operation irreversibly deletes image mezzanine files. Deleted images cannot be recovered. If some images are cached in Content Delivery Network (CDN), the image URLs do not immediately become invalid.
+ * *   After you call this operation to delete an image, the source file is permanently deleted and cannot be recovered. If some images are cached on Alibaba Cloud CDN points of presence (POPs), the image URLs do not immediately become invalid.
+ * *   You can call this operation to delete uploaded images and video snapshots.
+ * ### QPS limits
+ * You can call this operation up to 50 times per second per account. Requests that exceed this limit are dropped and you will experience service interruptions. We recommend that you take note of this limit when you call this operation. For more information, see [QPS limits on API operations in ApsaraVideo VOD](~~342790~~).
  *
  * @param request DeleteImageRequest
  * @param runtime runtime options for this request RuntimeOptions
@@ -28515,7 +28985,10 @@ func (client *Client) DeleteImageWithOptions(request *DeleteImageRequest, runtim
 }
 
 /**
- * > This operation irreversibly deletes image mezzanine files. Deleted images cannot be recovered. If some images are cached in Content Delivery Network (CDN), the image URLs do not immediately become invalid.
+ * *   After you call this operation to delete an image, the source file is permanently deleted and cannot be recovered. If some images are cached on Alibaba Cloud CDN points of presence (POPs), the image URLs do not immediately become invalid.
+ * *   You can call this operation to delete uploaded images and video snapshots.
+ * ### QPS limits
+ * You can call this operation up to 50 times per second per account. Requests that exceed this limit are dropped and you will experience service interruptions. We recommend that you take note of this limit when you call this operation. For more information, see [QPS limits on API operations in ApsaraVideo VOD](~~342790~~).
  *
  * @param request DeleteImageRequest
  * @return DeleteImageResponse
@@ -28771,9 +29244,8 @@ func (client *Client) DeleteStream(request *DeleteStreamRequest) (_result *Delet
 }
 
 /**
- * *   You cannot remove the default transcoding template. You can remove it only after it is no longer specified as the default.
- * *   For security purposes, you cannot add, modify, or remove transcoding templates in a transcoding template group that is locked in the ApsaraVideo VOD console. To manage such transcoding template groups, contact the ApsaraVideo VOD technical support.
- * *   You can call the GetTranscodeTemplateGroup operation to query the configurations of a transcoding template group and check whether the transcoding template group is locked by using the response parameter Locked.
+ * *   You cannot call this operation to delete the default transcoding template. You can delete the transcoding template when it is no longer specified as the default one.
+ * *   For security purposes, you cannot add, modify, or delete transcoding templates in a transcoding template group that is locked. To check whether a transcoding template group is locked, call the [GetTranscodeTemplateGroup](~~GetTranscodeTemplateGroup~~) operation and obtain the Locked parameter from the response. To modify transcoding templates within a locked transcoding template group, you must call the [UpdateTranscodeTemplateGroup](~~UpdateTranscodeTemplateGroup~~) operation to unlock the transcoding template group first.
  *
  * @param request DeleteTranscodeTemplateGroupRequest
  * @param runtime runtime options for this request RuntimeOptions
@@ -28821,9 +29293,8 @@ func (client *Client) DeleteTranscodeTemplateGroupWithOptions(request *DeleteTra
 }
 
 /**
- * *   You cannot remove the default transcoding template. You can remove it only after it is no longer specified as the default.
- * *   For security purposes, you cannot add, modify, or remove transcoding templates in a transcoding template group that is locked in the ApsaraVideo VOD console. To manage such transcoding template groups, contact the ApsaraVideo VOD technical support.
- * *   You can call the GetTranscodeTemplateGroup operation to query the configurations of a transcoding template group and check whether the transcoding template group is locked by using the response parameter Locked.
+ * *   You cannot call this operation to delete the default transcoding template. You can delete the transcoding template when it is no longer specified as the default one.
+ * *   For security purposes, you cannot add, modify, or delete transcoding templates in a transcoding template group that is locked. To check whether a transcoding template group is locked, call the [GetTranscodeTemplateGroup](~~GetTranscodeTemplateGroup~~) operation and obtain the Locked parameter from the response. To modify transcoding templates within a locked transcoding template group, you must call the [UpdateTranscodeTemplateGroup](~~UpdateTranscodeTemplateGroup~~) operation to unlock the transcoding template group first.
  *
  * @param request DeleteTranscodeTemplateGroupRequest
  * @return DeleteTranscodeTemplateGroupResponse
@@ -29302,10 +29773,10 @@ func (client *Client) DescribePlayUserAvg(request *DescribePlayUserAvgRequest) (
 }
 
 /**
- * > *   This operation is available only in the **China (Shanghai)** region.
- * > *   You can call this operation to query only playback statistics collected on videos that are played by using ApsaraVideo Player SDKs.
- * > *   Playback statistics for the previous day are generated at 09:00 on the current day, in UTC+8.
- * > *   You can query data that is generated since January 1, 2018. The maximum time range to query is 180 days.
+ * *   This operation is available only in the **China (Shanghai)** region.
+ * *   You can call this operation to query only playback statistics collected on videos that are played by using ApsaraVideo Player SDKs.
+ * *   Playback statistics for the current day are generated at 09:00 (UTC+8) on the next day.
+ * *   You can query data that is generated since January 1, 2018. The maximum time range to query is 180 days.
  *
  * @param request DescribePlayUserTotalRequest
  * @param runtime runtime options for this request RuntimeOptions
@@ -29353,10 +29824,10 @@ func (client *Client) DescribePlayUserTotalWithOptions(request *DescribePlayUser
 }
 
 /**
- * > *   This operation is available only in the **China (Shanghai)** region.
- * > *   You can call this operation to query only playback statistics collected on videos that are played by using ApsaraVideo Player SDKs.
- * > *   Playback statistics for the previous day are generated at 09:00 on the current day, in UTC+8.
- * > *   You can query data that is generated since January 1, 2018. The maximum time range to query is 180 days.
+ * *   This operation is available only in the **China (Shanghai)** region.
+ * *   You can call this operation to query only playback statistics collected on videos that are played by using ApsaraVideo Player SDKs.
+ * *   Playback statistics for the current day are generated at 09:00 (UTC+8) on the next day.
+ * *   You can query data that is generated since January 1, 2018. The maximum time range to query is 180 days.
  *
  * @param request DescribePlayUserTotalRequest
  * @return DescribePlayUserTotalResponse
@@ -29373,10 +29844,10 @@ func (client *Client) DescribePlayUserTotal(request *DescribePlayUserTotalReques
 }
 
 /**
- * > *   This operation is available only in the **China (Shanghai)** region.
- * > *   You can call this operation to query only playback statistics collected on videos that are played by using ApsaraVideo Player SDKs.
- * > *   Playback statistics for the previous day are generated at 09:00 on the current day, in UTC+8.
- * > *   You can query only data in the last 730 days. The maximum time range to query is 180 days.
+ * *   This operation is available only in the **China (Shanghai)** region.
+ * *   You can call this operation to query only playback statistics collected on videos that are played by using ApsaraVideo Player SDKs.
+ * *   Playback statistics for the current day are generated at 09:00 (UTC+8) on the next day.
+ * *   You can query only data in the last 730 days. The maximum time range to query is 180 days.
  *
  * @param request DescribePlayVideoStatisRequest
  * @param runtime runtime options for this request RuntimeOptions
@@ -29428,10 +29899,10 @@ func (client *Client) DescribePlayVideoStatisWithOptions(request *DescribePlayVi
 }
 
 /**
- * > *   This operation is available only in the **China (Shanghai)** region.
- * > *   You can call this operation to query only playback statistics collected on videos that are played by using ApsaraVideo Player SDKs.
- * > *   Playback statistics for the previous day are generated at 09:00 on the current day, in UTC+8.
- * > *   You can query only data in the last 730 days. The maximum time range to query is 180 days.
+ * *   This operation is available only in the **China (Shanghai)** region.
+ * *   You can call this operation to query only playback statistics collected on videos that are played by using ApsaraVideo Player SDKs.
+ * *   Playback statistics for the current day are generated at 09:00 (UTC+8) on the next day.
+ * *   You can query only data in the last 730 days. The maximum time range to query is 180 days.
  *
  * @param request DescribePlayVideoStatisRequest
  * @return DescribePlayVideoStatisResponse
@@ -29668,6 +30139,13 @@ func (client *Client) DescribeVodDomainBpsData(request *DescribeVodDomainBpsData
 	return _result, _err
 }
 
+/**
+ * > This operation is available only in the **China (Shanghai)** region.
+ *
+ * @param request DescribeVodDomainCertificateInfoRequest
+ * @param runtime runtime options for this request RuntimeOptions
+ * @return DescribeVodDomainCertificateInfoResponse
+ */
 func (client *Client) DescribeVodDomainCertificateInfoWithOptions(request *DescribeVodDomainCertificateInfoRequest, runtime *util.RuntimeOptions) (_result *DescribeVodDomainCertificateInfoResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -29705,6 +30183,12 @@ func (client *Client) DescribeVodDomainCertificateInfoWithOptions(request *Descr
 	return _result, _err
 }
 
+/**
+ * > This operation is available only in the **China (Shanghai)** region.
+ *
+ * @param request DescribeVodDomainCertificateInfoRequest
+ * @return DescribeVodDomainCertificateInfoResponse
+ */
 func (client *Client) DescribeVodDomainCertificateInfo(request *DescribeVodDomainCertificateInfoRequest) (_result *DescribeVodDomainCertificateInfoResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &DescribeVodDomainCertificateInfoResponse{}
@@ -29851,11 +30335,12 @@ func (client *Client) DescribeVodDomainDetail(request *DescribeVodDomainDetailRe
 }
 
 /**
- * ## Usage note
  * *   This operation is available only in the **China (Shanghai)** region.
  * *   For more information about the log format and latency, see [Download logs](~~86099~~).
- * *   If you specify neither the StartTime parameter nor the EndTime parameter, the log data in the last 24 hours is queried.
- * *   You can specify both the StartTime and EndTime parameters to query the log data that is generated in the specified duration.
+ * *   If you specify neither StartTime nor EndTime, the log data in the previous 24 hours is queried.
+ * *   You can specify both StartTime and EndTime to query the log data that is generated in the specified time range.
+ * ### [](#qps)QPS limits
+ * You can call this operation up to 100 times per second per account. Requests that exceed this limit are dropped and you will experience service interruptions. We recommend that you take note of this limit when you call this operation. For more information, see [QPS limits on API operations](~~342790~~).
  *
  * @param request DescribeVodDomainLogRequest
  * @param runtime runtime options for this request RuntimeOptions
@@ -29915,11 +30400,12 @@ func (client *Client) DescribeVodDomainLogWithOptions(request *DescribeVodDomain
 }
 
 /**
- * ## Usage note
  * *   This operation is available only in the **China (Shanghai)** region.
  * *   For more information about the log format and latency, see [Download logs](~~86099~~).
- * *   If you specify neither the StartTime parameter nor the EndTime parameter, the log data in the last 24 hours is queried.
- * *   You can specify both the StartTime and EndTime parameters to query the log data that is generated in the specified duration.
+ * *   If you specify neither StartTime nor EndTime, the log data in the previous 24 hours is queried.
+ * *   You can specify both StartTime and EndTime to query the log data that is generated in the specified time range.
+ * ### [](#qps)QPS limits
+ * You can call this operation up to 100 times per second per account. Requests that exceed this limit are dropped and you will experience service interruptions. We recommend that you take note of this limit when you call this operation. For more information, see [QPS limits on API operations](~~342790~~).
  *
  * @param request DescribeVodDomainLogRequest
  * @return DescribeVodDomainLogResponse
@@ -29935,6 +30421,23 @@ func (client *Client) DescribeVodDomainLog(request *DescribeVodDomainLogRequest)
 	return _result, _err
 }
 
+/**
+ * * This operation is available only in the **China (Shanghai)** region.
+ * * ApsaraVideo VOD stores the origin bandwidth data for 90 days before the data is deleted.
+ * * If you do not set the `StartTime` or `EndTime` parameter, the request returns the data collected in the last 24 hours. If you set both the `StartTime` and `EndTime` parameters, the request returns the data collected within the specified time range.
+ * * You can specify a maximum of 500 domain names in a request. Separate multiple domain names with commas (,). If you specify multiple domain names in a request, aggregation results are returned.
+ * ### Time granularity
+ * The time granularity supported by the Interval parameter varies based on the time range per query specified by using `StartTime` and `EndTime`. The following table describes the time period within which historical data is available and the data delay.
+ * |Time granularity|Time range per query (days)|Historical data available (days)|Data delay|
+ * |---|---|---|---|
+ * |5 minutes|(0, 3\\]|93|15 minutes|
+ * |1 hour|(3, 31\\]|186|4 hours|
+ * |1 day|(31, 366\\]|366|04:00 on the next day|
+ *
+ * @param request DescribeVodDomainSrcBpsDataRequest
+ * @param runtime runtime options for this request RuntimeOptions
+ * @return DescribeVodDomainSrcBpsDataResponse
+ */
 func (client *Client) DescribeVodDomainSrcBpsDataWithOptions(request *DescribeVodDomainSrcBpsDataRequest, runtime *util.RuntimeOptions) (_result *DescribeVodDomainSrcBpsDataResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -29984,6 +30487,22 @@ func (client *Client) DescribeVodDomainSrcBpsDataWithOptions(request *DescribeVo
 	return _result, _err
 }
 
+/**
+ * * This operation is available only in the **China (Shanghai)** region.
+ * * ApsaraVideo VOD stores the origin bandwidth data for 90 days before the data is deleted.
+ * * If you do not set the `StartTime` or `EndTime` parameter, the request returns the data collected in the last 24 hours. If you set both the `StartTime` and `EndTime` parameters, the request returns the data collected within the specified time range.
+ * * You can specify a maximum of 500 domain names in a request. Separate multiple domain names with commas (,). If you specify multiple domain names in a request, aggregation results are returned.
+ * ### Time granularity
+ * The time granularity supported by the Interval parameter varies based on the time range per query specified by using `StartTime` and `EndTime`. The following table describes the time period within which historical data is available and the data delay.
+ * |Time granularity|Time range per query (days)|Historical data available (days)|Data delay|
+ * |---|---|---|---|
+ * |5 minutes|(0, 3\\]|93|15 minutes|
+ * |1 hour|(3, 31\\]|186|4 hours|
+ * |1 day|(31, 366\\]|366|04:00 on the next day|
+ *
+ * @param request DescribeVodDomainSrcBpsDataRequest
+ * @return DescribeVodDomainSrcBpsDataResponse
+ */
 func (client *Client) DescribeVodDomainSrcBpsData(request *DescribeVodDomainSrcBpsDataRequest) (_result *DescribeVodDomainSrcBpsDataResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &DescribeVodDomainSrcBpsDataResponse{}
@@ -29995,6 +30514,23 @@ func (client *Client) DescribeVodDomainSrcBpsData(request *DescribeVodDomainSrcB
 	return _result, _err
 }
 
+/**
+ * * This operation is available only in the **China (Shanghai)** region.
+ * * ApsaraVideo VOD stores the origin traffic data for 90 days before the data is deleted.
+ * * If you do not set the `StartTime` or `EndTime` parameter, the request returns the data collected in the last 24 hours. If you set both the `StartTime` and `EndTime` parameters, the request returns the data collected within the specified time range.
+ * * You can specify a maximum of 500 domain names in a request. Separate multiple domain names with commas (,). If you specify multiple domain names in a request, aggregation results are returned.
+ * ### Time granularity
+ * The time granularity supported by the Interval parameter varies based on the time range per query specified by using `StartTime` and `EndTime`. The following table describes the time period within which historical data is available and the data delay.
+ * |Time granularity|Time range per query (days)|Historical data available (days)|Data delay|
+ * |---|---|---|---|
+ * |5 minutes|(0, 3\\]|93|15 minutes|
+ * |1 hour|(3, 31\\]|186|4 hours|
+ * |1 day|(31, 366\\]|366|04:00 on the next day|
+ *
+ * @param request DescribeVodDomainSrcTrafficDataRequest
+ * @param runtime runtime options for this request RuntimeOptions
+ * @return DescribeVodDomainSrcTrafficDataResponse
+ */
 func (client *Client) DescribeVodDomainSrcTrafficDataWithOptions(request *DescribeVodDomainSrcTrafficDataRequest, runtime *util.RuntimeOptions) (_result *DescribeVodDomainSrcTrafficDataResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -30044,6 +30580,22 @@ func (client *Client) DescribeVodDomainSrcTrafficDataWithOptions(request *Descri
 	return _result, _err
 }
 
+/**
+ * * This operation is available only in the **China (Shanghai)** region.
+ * * ApsaraVideo VOD stores the origin traffic data for 90 days before the data is deleted.
+ * * If you do not set the `StartTime` or `EndTime` parameter, the request returns the data collected in the last 24 hours. If you set both the `StartTime` and `EndTime` parameters, the request returns the data collected within the specified time range.
+ * * You can specify a maximum of 500 domain names in a request. Separate multiple domain names with commas (,). If you specify multiple domain names in a request, aggregation results are returned.
+ * ### Time granularity
+ * The time granularity supported by the Interval parameter varies based on the time range per query specified by using `StartTime` and `EndTime`. The following table describes the time period within which historical data is available and the data delay.
+ * |Time granularity|Time range per query (days)|Historical data available (days)|Data delay|
+ * |---|---|---|---|
+ * |5 minutes|(0, 3\\]|93|15 minutes|
+ * |1 hour|(3, 31\\]|186|4 hours|
+ * |1 day|(31, 366\\]|366|04:00 on the next day|
+ *
+ * @param request DescribeVodDomainSrcTrafficDataRequest
+ * @return DescribeVodDomainSrcTrafficDataResponse
+ */
 func (client *Client) DescribeVodDomainSrcTrafficData(request *DescribeVodDomainSrcTrafficDataRequest) (_result *DescribeVodDomainSrcTrafficDataResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &DescribeVodDomainSrcTrafficDataResponse{}
@@ -30803,11 +31355,9 @@ func (client *Client) GenerateKMSDataKey(request *GenerateKMSDataKeyRequest) (_r
 }
 
 /**
- * Call the [SubmitAIImageJob](~~SubmitAIImageJob~~) operation to submit image AI processing jobs before you call this operation to query image AI processing jobs. You can query a maximum of 10 jobs of image AI processing in one request.
- * - The smart thumbnail feature is not supported. You cannot call this operation.
- * - Call the [SubmitAIImageJob](~~SubmitAIImageJob~~) operation to submit image AI processing jobs before you call this operation to query image AI processing jobs. You can query a maximum of 10 jobs of image AI processing in one request.
- * ### QPS limit
- * You can call this operation up to 30 times per second per account. Requests that exceed this limit are dropped and you will experience service interruptions. We recommend that you take note of this limit when you call this operation. For more information, see [QPS limits on API operations in ApsaraVideo VoD](~~342790~~).
+ * *   Regions that support this operation: **China (Beijing)** and **China (Shanghai)**.
+ * *   Call the [SubmitAIImageJob](~~SubmitAIImageJob~~) operation to submit image AI processing jobs before you call this operation to query image AI processing jobs.
+ * *   You can query a maximum of 10 jobs of image AI processing in one request.
  *
  * @param request GetAIImageJobsRequest
  * @param runtime runtime options for this request RuntimeOptions
@@ -30863,11 +31413,9 @@ func (client *Client) GetAIImageJobsWithOptions(request *GetAIImageJobsRequest, 
 }
 
 /**
- * Call the [SubmitAIImageJob](~~SubmitAIImageJob~~) operation to submit image AI processing jobs before you call this operation to query image AI processing jobs. You can query a maximum of 10 jobs of image AI processing in one request.
- * - The smart thumbnail feature is not supported. You cannot call this operation.
- * - Call the [SubmitAIImageJob](~~SubmitAIImageJob~~) operation to submit image AI processing jobs before you call this operation to query image AI processing jobs. You can query a maximum of 10 jobs of image AI processing in one request.
- * ### QPS limit
- * You can call this operation up to 30 times per second per account. Requests that exceed this limit are dropped and you will experience service interruptions. We recommend that you take note of this limit when you call this operation. For more information, see [QPS limits on API operations in ApsaraVideo VoD](~~342790~~).
+ * *   Regions that support this operation: **China (Beijing)** and **China (Shanghai)**.
+ * *   Call the [SubmitAIImageJob](~~SubmitAIImageJob~~) operation to submit image AI processing jobs before you call this operation to query image AI processing jobs.
+ * *   You can query a maximum of 10 jobs of image AI processing in one request.
  *
  * @param request GetAIImageJobsRequest
  * @return GetAIImageJobsResponse
@@ -30941,9 +31489,8 @@ func (client *Client) GetAIMediaAuditJob(request *GetAIMediaAuditJobRequest) (_r
 }
 
 /**
- * Before you call this operation to query the details of an AI template, you must obtain the ID of the AI template.
- * ### QPS limit
- * You can call this operation up to five times per second per account. Requests that exceed this limit are dropped and you will experience service interruptions. We recommend that you take note of this limit when you call this operation. For more information, see [QPS limit on API operations](~~342790~~).
+ * *   Regions that support this operation: **China (Beijing)**, **China (Shanghai)**, and **Singapore**.
+ * *   Before you call this operation to query details of an AI template, you must obtain the ID of the AI template.
  *
  * @param request GetAITemplateRequest
  * @param runtime runtime options for this request RuntimeOptions
@@ -30983,9 +31530,8 @@ func (client *Client) GetAITemplateWithOptions(request *GetAITemplateRequest, ru
 }
 
 /**
- * Before you call this operation to query the details of an AI template, you must obtain the ID of the AI template.
- * ### QPS limit
- * You can call this operation up to five times per second per account. Requests that exceed this limit are dropped and you will experience service interruptions. We recommend that you take note of this limit when you call this operation. For more information, see [QPS limit on API operations](~~342790~~).
+ * *   Regions that support this operation: **China (Beijing)**, **China (Shanghai)**, and **Singapore**.
+ * *   Before you call this operation to query details of an AI template, you must obtain the ID of the AI template.
  *
  * @param request GetAITemplateRequest
  * @return GetAITemplateResponse
@@ -31002,10 +31548,8 @@ func (client *Client) GetAITemplate(request *GetAITemplateRequest) (_result *Get
 }
 
 /**
- * - The smart tagging feature is not supported. You cannot call this operation.
- * - You can obtain the smart tagging results by using the video ID.
- * ### QPS limit
- * You can call this operation up to 10 times per second per account. Requests that exceed this limit are dropped and you will experience service interruptions. We recommend that you take note of this limit when you call this operation. For more information, see [QPS limits on API operations in ApsaraVideo VoD](~~342790~~).
+ * *   Regions that support this operation: **China (Beijing)**, **China (Shanghai)**, and **Singapore**.
+ * *   You can obtain the smart tagging results by using the video ID.
  *
  * @param request GetAIVideoTagResultRequest
  * @param runtime runtime options for this request RuntimeOptions
@@ -31061,10 +31605,8 @@ func (client *Client) GetAIVideoTagResultWithOptions(request *GetAIVideoTagResul
 }
 
 /**
- * - The smart tagging feature is not supported. You cannot call this operation.
- * - You can obtain the smart tagging results by using the video ID.
- * ### QPS limit
- * You can call this operation up to 10 times per second per account. Requests that exceed this limit are dropped and you will experience service interruptions. We recommend that you take note of this limit when you call this operation. For more information, see [QPS limits on API operations in ApsaraVideo VoD](~~342790~~).
+ * *   Regions that support this operation: **China (Beijing)**, **China (Shanghai)**, and **Singapore**.
+ * *   You can obtain the smart tagging results by using the video ID.
  *
  * @param request GetAIVideoTagResultRequest
  * @return GetAIVideoTagResultResponse
@@ -31306,9 +31848,8 @@ func (client *Client) GetCategories(request *GetCategoriesRequest) (_result *Get
 }
 
 /**
- * You can query information only about the default AI template for automated review.
- * ### QPS limit
- * You can call this operation up to 10 times per second per account. Requests that exceed this limit are dropped and you will experience service interruptions. We recommend that you take note of this limit when you call this operation. For more information, see [QPS limit on API operations](~~342790~~).
+ * *   Regions that support this operation: **China (Beijing)**, **China (Shanghai)**, and **Singapore**.
+ * *   You can query information only about the default AI template for automated review.
  *
  * @param request GetDefaultAITemplateRequest
  * @param runtime runtime options for this request RuntimeOptions
@@ -31348,9 +31889,8 @@ func (client *Client) GetDefaultAITemplateWithOptions(request *GetDefaultAITempl
 }
 
 /**
- * You can query information only about the default AI template for automated review.
- * ### QPS limit
- * You can call this operation up to 10 times per second per account. Requests that exceed this limit are dropped and you will experience service interruptions. We recommend that you take note of this limit when you call this operation. For more information, see [QPS limit on API operations](~~342790~~).
+ * *   Regions that support this operation: **China (Beijing)**, **China (Shanghai)**, and **Singapore**.
+ * *   You can query information only about the default AI template for automated review.
  *
  * @param request GetDefaultAITemplateRequest
  * @return GetDefaultAITemplateResponse
@@ -31359,6 +31899,74 @@ func (client *Client) GetDefaultAITemplate(request *GetDefaultAITemplateRequest)
 	runtime := &util.RuntimeOptions{}
 	_result = &GetDefaultAITemplateResponse{}
 	_body, _err := client.GetDefaultAITemplateWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) GetDigitalWatermarkExtractResultWithOptions(request *GetDigitalWatermarkExtractResultRequest, runtime *util.RuntimeOptions) (_result *GetDigitalWatermarkExtractResultResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.ExtractType)) {
+		query["ExtractType"] = request.ExtractType
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.JobId)) {
+		query["JobId"] = request.JobId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.MediaId)) {
+		query["MediaId"] = request.MediaId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.OwnerAccount)) {
+		query["OwnerAccount"] = request.OwnerAccount
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.OwnerId)) {
+		query["OwnerId"] = request.OwnerId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ResourceOwnerAccount)) {
+		query["ResourceOwnerAccount"] = request.ResourceOwnerAccount
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ResourceOwnerId)) {
+		query["ResourceOwnerId"] = request.ResourceOwnerId
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("GetDigitalWatermarkExtractResult"),
+		Version:     tea.String("2017-03-21"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &GetDigitalWatermarkExtractResultResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) GetDigitalWatermarkExtractResult(request *GetDigitalWatermarkExtractResultRequest) (_result *GetDigitalWatermarkExtractResultResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &GetDigitalWatermarkExtractResultResponse{}
+	_body, _err := client.GetDigitalWatermarkExtractResultWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -31857,9 +32465,7 @@ func (client *Client) GetMediaAuditResultTimeline(request *GetMediaAuditResultTi
 }
 
 /**
- * This operation is available only in the Singapore (Singapore) region.
- * ### QPS limit
- * You can call this operation up to 20 times per second per account. Requests that exceed this limit are dropped and you will experience service interruptions. We recommend that you take note of this limit when you call this operation. For more information, see [QPS limit](~~342790~~).
+ * Regions that support this operation: **China (Beijing)**, **China (Shanghai)**, and **Singapore**.
  *
  * @param request GetMediaDNAResultRequest
  * @param runtime runtime options for this request RuntimeOptions
@@ -31915,9 +32521,7 @@ func (client *Client) GetMediaDNAResultWithOptions(request *GetMediaDNAResultReq
 }
 
 /**
- * This operation is available only in the Singapore (Singapore) region.
- * ### QPS limit
- * You can call this operation up to 20 times per second per account. Requests that exceed this limit are dropped and you will experience service interruptions. We recommend that you take note of this limit when you call this operation. For more information, see [QPS limit](~~342790~~).
+ * Regions that support this operation: **China (Beijing)**, **China (Shanghai)**, and **Singapore**.
  *
  * @param request GetMediaDNAResultRequest
  * @return GetMediaDNAResultResponse
@@ -31991,7 +32595,7 @@ func (client *Client) GetMediaRefreshJobs(request *GetMediaRefreshJobsRequest) (
 }
 
 /**
- * > For more information, see [Overview](~~55627~~).
+ * > For more information, see [Event notification](~~55627~~).
  *
  * @param request GetMessageCallbackRequest
  * @param runtime runtime options for this request RuntimeOptions
@@ -32035,7 +32639,7 @@ func (client *Client) GetMessageCallbackWithOptions(request *GetMessageCallbackR
 }
 
 /**
- * > For more information, see [Overview](~~55627~~).
+ * > For more information, see [Event notification](~~55627~~).
  *
  * @param request GetMessageCallbackRequest
  * @return GetMessageCallbackResponse
@@ -32147,6 +32751,10 @@ func (client *Client) GetPlayInfoWithOptions(request *GetPlayInfoRequest, runtim
 		query["Definition"] = request.Definition
 	}
 
+	if !tea.BoolValue(util.IsUnset(request.DigitalWatermarkType)) {
+		query["DigitalWatermarkType"] = request.DigitalWatermarkType
+	}
+
 	if !tea.BoolValue(util.IsUnset(request.Formats)) {
 		query["Formats"] = request.Formats
 	}
@@ -32169,6 +32777,10 @@ func (client *Client) GetPlayInfoWithOptions(request *GetPlayInfoRequest, runtim
 
 	if !tea.BoolValue(util.IsUnset(request.StreamType)) {
 		query["StreamType"] = request.StreamType
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Trace)) {
+		query["Trace"] = request.Trace
 	}
 
 	if !tea.BoolValue(util.IsUnset(request.VideoId)) {
@@ -32897,11 +33509,8 @@ func (client *Client) GetWatermark(request *GetWatermarkRequest) (_result *GetWa
 }
 
 /**
- * You can call this operation to query AI processing results about images of a specified video. Images of different videos cannot be queried in one request.
- * - The smart thumbnail feature is not supported. You cannot call this operation.
- * - You can call this operation to query AI processing results about images of a specified video. Images of different videos cannot be queried in one request.
- * ### QPS limit
- * You can call this operation up to 100 times per second per account. Requests that exceed this limit are dropped and you will experience service interruptions. We recommend that you take note of this limit when you call this operation. For more information, see [QPS limits on API operations in ApsaraVideo VoD](~~342790~~).
+ * *   Regions that support this operation: **China (Beijing)** and **China (Shanghai)**.
+ * *   You can call this operation to query AI processing results about images of a specified video. Images of different videos cannot be queried in one request.
  *
  * @param request ListAIImageInfoRequest
  * @param runtime runtime options for this request RuntimeOptions
@@ -32941,11 +33550,8 @@ func (client *Client) ListAIImageInfoWithOptions(request *ListAIImageInfoRequest
 }
 
 /**
- * You can call this operation to query AI processing results about images of a specified video. Images of different videos cannot be queried in one request.
- * - The smart thumbnail feature is not supported. You cannot call this operation.
- * - You can call this operation to query AI processing results about images of a specified video. Images of different videos cannot be queried in one request.
- * ### QPS limit
- * You can call this operation up to 100 times per second per account. Requests that exceed this limit are dropped and you will experience service interruptions. We recommend that you take note of this limit when you call this operation. For more information, see [QPS limits on API operations in ApsaraVideo VoD](~~342790~~).
+ * *   Regions that support this operation: **China (Beijing)** and **China (Shanghai)**.
+ * *   You can call this operation to query AI processing results about images of a specified video. Images of different videos cannot be queried in one request.
  *
  * @param request ListAIImageInfoRequest
  * @return ListAIImageInfoResponse
@@ -32962,7 +33568,8 @@ func (client *Client) ListAIImageInfo(request *ListAIImageInfoRequest) (_result 
 }
 
 /**
- * You can call this operation to query video fingerprinting jobs and smart tagging jobs.
+ * *   Regions that support this operation: **China (Beijing)**, **China (Shanghai)**, and **Singapore**.
+ * *   You can call this operation to query video fingerprinting jobs and smart tagging jobs.
  *
  * @param request ListAIJobRequest
  * @param runtime runtime options for this request RuntimeOptions
@@ -33018,7 +33625,8 @@ func (client *Client) ListAIJobWithOptions(request *ListAIJobRequest, runtime *u
 }
 
 /**
- * You can call this operation to query video fingerprinting jobs and smart tagging jobs.
+ * *   Regions that support this operation: **China (Beijing)**, **China (Shanghai)**, and **Singapore**.
+ * *   You can call this operation to query video fingerprinting jobs and smart tagging jobs.
  *
  * @param request ListAIJobRequest
  * @return ListAIJobResponse
@@ -33035,9 +33643,8 @@ func (client *Client) ListAIJob(request *ListAIJobRequest) (_result *ListAIJobRe
 }
 
 /**
- * You can call this operation to query AI templates of a specified type.
- * ### QPS limit
- * You can call this operation up to five times per second per account. Requests that exceed this limit are dropped and you will experience service interruptions. We recommend that you take note of this limit when you call this operation. For more information, see [QPS limit on API operations](~~342790~~).
+ * *   Regions that support this operation: **China (Beijing)**, **China (Shanghai)**, and **Singapore**.
+ * *   You can call this operation to query AI templates of a specified type.
  *
  * @param request ListAITemplateRequest
  * @param runtime runtime options for this request RuntimeOptions
@@ -33077,9 +33684,8 @@ func (client *Client) ListAITemplateWithOptions(request *ListAITemplateRequest, 
 }
 
 /**
- * You can call this operation to query AI templates of a specified type.
- * ### QPS limit
- * You can call this operation up to five times per second per account. Requests that exceed this limit are dropped and you will experience service interruptions. We recommend that you take note of this limit when you call this operation. For more information, see [QPS limit on API operations](~~342790~~).
+ * *   Regions that support this operation: **China (Beijing)**, **China (Shanghai)**, and **Singapore**.
+ * *   You can call this operation to query AI templates of a specified type.
  *
  * @param request ListAITemplateRequest
  * @return ListAITemplateResponse
@@ -33818,13 +34424,16 @@ func (client *Client) PreloadVodObjectCaches(request *PreloadVodObjectCachesRequ
 
 /**
  * *   This operation returns only the submission result of a video production task. When the submission result is returned, video production may still be in progress. After a video production task is submitted, the task is queued in the background for asynchronous processing.
- * *   The mezzanine files that are referenced in the timeline of an online editing project can be materials from media assets or videos in the media library.
- * *   Videos are produced based on the ProjectId and Timeline parameters. Take note of the following items when you specify the parameters:
- * *   You must specify at least one of the ProjectId and Timeline parameters. Otherwise, video production fails.
- * *   If you specify only the Timeline parameter, the system automatically creates an online editing project with the specified timeline. Then, the system obtains the mezzanine files that are referenced in the timeline and produces a video from the mezzanine files.
- * *   If you specify only the ProjectId parameter, the system obtains the latest timeline of the specified project and produces a video based on the timeline.
- *  *   If you specify both the ProjectId and Timeline parameters, the system produces a video based on the specified timeline and updates the timeline and mezzanine files for the specified online editing project. If you specify other parameters, the system also updates related settings for the online editing project.
- *  *   You can apply effects to the video to be produced. For more information, see [Special effects](~~69082~~).
+ * *   The source files that are used in the timeline of an online editing project can be materials directly uploaded to the online project or selected from the media asset library.
+ * *   Videos are produced based on ProjectId and Timeline. The following rules apply when you specify the parameters:
+ *     *   You must specify at least one of the ProjectId and Timeline parameters. Otherwise, video production fails.
+ *     *   If you specify only the Timeline parameter, the system automatically creates an online editing project based on the specified timeline. Then, the system uses the source files specified in the timeline to produce videos.
+ *     *   If you specify only the ProjectId parameter, the system obtains the latest timeline data of the specified project to produce videos.
+ *     *   If you specify both the ProjectId and Timeline parameters, the system produces videos based on the specified timeline and updates the timeline data for the specified online editing project. You can also specify other parameters to update the corresponding information about the online editing project.
+ * *   After a video is produced, the video is automatically uploaded to ApsaraVideo VOD. Then, the **ProduceMediaComplete** and **FileUploadComplete** event notifications are sent to you. After the produced video is transcoded, the **StreamTranscodeComplete** and **TranscodeComplete** event notifications are sent to you.
+ * *   You can add special effects to the video. For more information, see [Special effects](~~69082~~).
+ * ### QPS limits
+ * You can call this operation up to 50 times per second per account. Requests that exceed this limit are dropped and you will experience service interruptions. We recommend that you take note of this limit when you call this operation. For more information, see [QPS limits on API operations in ApsaraVideo VOD](~~342790~~).
  *
  * @param request ProduceEditingProjectVideoRequest
  * @param runtime runtime options for this request RuntimeOptions
@@ -33905,13 +34514,16 @@ func (client *Client) ProduceEditingProjectVideoWithOptions(request *ProduceEdit
 
 /**
  * *   This operation returns only the submission result of a video production task. When the submission result is returned, video production may still be in progress. After a video production task is submitted, the task is queued in the background for asynchronous processing.
- * *   The mezzanine files that are referenced in the timeline of an online editing project can be materials from media assets or videos in the media library.
- * *   Videos are produced based on the ProjectId and Timeline parameters. Take note of the following items when you specify the parameters:
- * *   You must specify at least one of the ProjectId and Timeline parameters. Otherwise, video production fails.
- * *   If you specify only the Timeline parameter, the system automatically creates an online editing project with the specified timeline. Then, the system obtains the mezzanine files that are referenced in the timeline and produces a video from the mezzanine files.
- * *   If you specify only the ProjectId parameter, the system obtains the latest timeline of the specified project and produces a video based on the timeline.
- *  *   If you specify both the ProjectId and Timeline parameters, the system produces a video based on the specified timeline and updates the timeline and mezzanine files for the specified online editing project. If you specify other parameters, the system also updates related settings for the online editing project.
- *  *   You can apply effects to the video to be produced. For more information, see [Special effects](~~69082~~).
+ * *   The source files that are used in the timeline of an online editing project can be materials directly uploaded to the online project or selected from the media asset library.
+ * *   Videos are produced based on ProjectId and Timeline. The following rules apply when you specify the parameters:
+ *     *   You must specify at least one of the ProjectId and Timeline parameters. Otherwise, video production fails.
+ *     *   If you specify only the Timeline parameter, the system automatically creates an online editing project based on the specified timeline. Then, the system uses the source files specified in the timeline to produce videos.
+ *     *   If you specify only the ProjectId parameter, the system obtains the latest timeline data of the specified project to produce videos.
+ *     *   If you specify both the ProjectId and Timeline parameters, the system produces videos based on the specified timeline and updates the timeline data for the specified online editing project. You can also specify other parameters to update the corresponding information about the online editing project.
+ * *   After a video is produced, the video is automatically uploaded to ApsaraVideo VOD. Then, the **ProduceMediaComplete** and **FileUploadComplete** event notifications are sent to you. After the produced video is transcoded, the **StreamTranscodeComplete** and **TranscodeComplete** event notifications are sent to you.
+ * *   You can add special effects to the video. For more information, see [Special effects](~~69082~~).
+ * ### QPS limits
+ * You can call this operation up to 50 times per second per account. Requests that exceed this limit are dropped and you will experience service interruptions. We recommend that you take note of this limit when you call this operation. For more information, see [QPS limits on API operations in ApsaraVideo VOD](~~342790~~).
  *
  * @param request ProduceEditingProjectVideoRequest
  * @return ProduceEditingProjectVideoResponse
@@ -34094,9 +34706,9 @@ func (client *Client) RefreshUploadVideo(request *RefreshUploadVideoRequest) (_r
 }
 
 /**
- * > *   This operation is available only in the **China (Shanghai)** region.
- * > *   You can submit a maximum of 2,000 requests to refresh resources based on URLs and 100 requests to refresh resources based on directories each day by using an Alibaba Cloud account.
- * > *   You can call the [RefreshVodObjectCaches](~~69215~~) operation to refresh content and the [PreloadVodObjectCaches](~~69211~~) operation to prefetch content.
+ * *   This operation is available only in the **China (Shanghai)** region.
+ * *   You can submit a maximum of 2,000 requests to refresh resources based on URLs and 100 requests to refresh resources based on directories each day by using an Alibaba Cloud account.
+ * *   You can call the [RefreshVodObjectCaches](~~69215~~) operation to refresh content and the [PreloadVodObjectCaches](~~69211~~) operation to prefetch content.
  *
  * @param request RefreshVodObjectCachesRequest
  * @param runtime runtime options for this request RuntimeOptions
@@ -34148,9 +34760,9 @@ func (client *Client) RefreshVodObjectCachesWithOptions(request *RefreshVodObjec
 }
 
 /**
- * > *   This operation is available only in the **China (Shanghai)** region.
- * > *   You can submit a maximum of 2,000 requests to refresh resources based on URLs and 100 requests to refresh resources based on directories each day by using an Alibaba Cloud account.
- * > *   You can call the [RefreshVodObjectCaches](~~69215~~) operation to refresh content and the [PreloadVodObjectCaches](~~69211~~) operation to prefetch content.
+ * *   This operation is available only in the **China (Shanghai)** region.
+ * *   You can submit a maximum of 2,000 requests to refresh resources based on URLs and 100 requests to refresh resources based on directories each day by using an Alibaba Cloud account.
+ * *   You can call the [RefreshVodObjectCaches](~~69215~~) operation to refresh content and the [PreloadVodObjectCaches](~~69211~~) operation to prefetch content.
  *
  * @param request RefreshVodObjectCachesRequest
  * @return RefreshVodObjectCachesResponse
@@ -34242,7 +34854,7 @@ func (client *Client) RegisterMedia(request *RegisterMediaRequest) (_result *Reg
 }
 
 /**
- * You can call this operation to restore only Archive and Cold Archive media assets. You need to send a callback notification to the user after media assets are restored. You cannot restore or process media assets that are being restored.
+ * You can call this operation to restore only Archive and Cold Archive audio and video files. You can access the audio and video files after the files are restored. You cannot change the storage class of an audio or video file that is being restored. You are charged for the retrieval traffic generated during restoration. After a Cold Archive audio or video file is restored, a Standard replica of the file is generated for access. You are charged for the storage of the replica before the file returns to the frozen state.
  *
  * @param request RestoreMediaRequest
  * @param runtime runtime options for this request RuntimeOptions
@@ -34294,7 +34906,7 @@ func (client *Client) RestoreMediaWithOptions(request *RestoreMediaRequest, runt
 }
 
 /**
- * You can call this operation to restore only Archive and Cold Archive media assets. You need to send a callback notification to the user after media assets are restored. You cannot restore or process media assets that are being restored.
+ * You can call this operation to restore only Archive and Cold Archive audio and video files. You can access the audio and video files after the files are restored. You cannot change the storage class of an audio or video file that is being restored. You are charged for the retrieval traffic generated during restoration. After a Cold Archive audio or video file is restored, a Standard replica of the file is generated for access. You are charged for the storage of the replica before the file returns to the frozen state.
  *
  * @param request RestoreMediaRequest
  * @return RestoreMediaResponse
@@ -34632,7 +35244,8 @@ func (client *Client) SetCrossdomainContent(request *SetCrossdomainContentReques
 }
 
 /**
- * Before you can call this operation to specify an AI template as the default template, you must obtain the ID of the AI template. You cannot delete an AI template after you specify it as the default template.
+ * *   Regions that support this operation: **China (Beijing)**, **China (Shanghai)**, and **Singapore**.
+ * *   Before you can call this operation to specify an AI template as the default template, you must obtain the ID of the AI template. You cannot delete an AI template that is set as the default template.
  *
  * @param request SetDefaultAITemplateRequest
  * @param runtime runtime options for this request RuntimeOptions
@@ -34672,7 +35285,8 @@ func (client *Client) SetDefaultAITemplateWithOptions(request *SetDefaultAITempl
 }
 
 /**
- * Before you can call this operation to specify an AI template as the default template, you must obtain the ID of the AI template. You cannot delete an AI template after you specify it as the default template.
+ * *   Regions that support this operation: **China (Beijing)**, **China (Shanghai)**, and **Singapore**.
+ * *   Before you can call this operation to specify an AI template as the default template, you must obtain the ID of the AI template. You cannot delete an AI template that is set as the default template.
  *
  * @param request SetDefaultAITemplateRequest
  * @return SetDefaultAITemplateResponse
@@ -35081,11 +35695,8 @@ func (client *Client) SubmitAIImageAuditJob(request *SubmitAIImageAuditJobReques
 }
 
 /**
- * After you call this operation, you can call the [GetAIImageJobs](~~GetAIImageJobs~~) operation to query the AI processing result of the job.
- * - The smart thumbnail feature is not supported. You cannot call this operation.
- * - After you call this operation, you can call the [GetAIImageJobs](~~GetAIImageJobs~~) operation to query the job execution result.
- * ### QPS limit
- * You can call this operation up to 30 times per second per account. Requests that exceed this limit are dropped and you will experience service interruptions. We recommend that you take note of this limit when you call this operation. For more information, see [QPS limits on API operations in ApsaraVideo VoD](~~342790~~).
+ * *   Regions that support this operation: **China (Beijing)** and **China (Shanghai)**.
+ * *   After you call this operation, you can call the [GetAIImageJobs](~~186923~~) operation to query the job execution result.
  *
  * @param request SubmitAIImageJobRequest
  * @param runtime runtime options for this request RuntimeOptions
@@ -35153,11 +35764,8 @@ func (client *Client) SubmitAIImageJobWithOptions(request *SubmitAIImageJobReque
 }
 
 /**
- * After you call this operation, you can call the [GetAIImageJobs](~~GetAIImageJobs~~) operation to query the AI processing result of the job.
- * - The smart thumbnail feature is not supported. You cannot call this operation.
- * - After you call this operation, you can call the [GetAIImageJobs](~~GetAIImageJobs~~) operation to query the job execution result.
- * ### QPS limit
- * You can call this operation up to 30 times per second per account. Requests that exceed this limit are dropped and you will experience service interruptions. We recommend that you take note of this limit when you call this operation. For more information, see [QPS limits on API operations in ApsaraVideo VoD](~~342790~~).
+ * *   Regions that support this operation: **China (Beijing)** and **China (Shanghai)**.
+ * *   After you call this operation, you can call the [GetAIImageJobs](~~186923~~) operation to query the job execution result.
  *
  * @param request SubmitAIImageJobRequest
  * @return SubmitAIImageJobResponse
@@ -35174,11 +35782,10 @@ func (client *Client) SubmitAIImageJob(request *SubmitAIImageJobRequest) (_resul
 }
 
 /**
- * *   AI jobs include smart tagging jobs and video fingerprinting jobs. You must activate the AI service before you call this operation to submit AI jobs.
- * *   If this is the first time you use the video fingerprinting feature, you must submit a ticket to apply for using the media fingerprint library for free. Otherwise, the video fingerprinting feature will be affected.
- * *   After you submit an AI job, ApsaraVideo VOD asynchronously processes the job. The operation may return a response before the job is complete.
- * ### QPS limits
- * You can call this operation up to 30 times per second per account. Requests that exceed this limit are dropped and you will experience service interruptions. We recommend that you take note of this limit when you call this operation. For more information, see [QPS limits on API operations in ApsaraVideo VoD](~~342790~~).
+ * *   Regions that support the video fingerprinting feature: **China (Beijing)**, **China (Shanghai)**, and **Singapore**. Regions that support the smart tagging feature: **China (Beijing)** and **China (Shanghai)**.
+ * *   You need to enable the video fingerprinting feature or the smart tagging feature before you can call this operation to submit jobs. For more information, see [Video AI](~~101148~~).
+ * *   If this is the first time you use the video fingerprinting feature, you must [submit a ticket](https://yida.alibaba-inc.com/o/ticketapply) to apply for using the media fingerprint library for free. Otherwise, the video fingerprinting feature will be affected.
+ * *   After you submit an AI job, ApsaraVideo VOD asynchronously processes the job. The operation may return a response before the job is complete. You can configure the [Event Notification](~~55627~~) feature and set the callback event to **AI Processing Completed**. After you receive the event notification, you can query the execution result of the AI job.
  *
  * @param request SubmitAIJobRequest
  * @param runtime runtime options for this request RuntimeOptions
@@ -35246,11 +35853,10 @@ func (client *Client) SubmitAIJobWithOptions(request *SubmitAIJobRequest, runtim
 }
 
 /**
- * *   AI jobs include smart tagging jobs and video fingerprinting jobs. You must activate the AI service before you call this operation to submit AI jobs.
- * *   If this is the first time you use the video fingerprinting feature, you must submit a ticket to apply for using the media fingerprint library for free. Otherwise, the video fingerprinting feature will be affected.
- * *   After you submit an AI job, ApsaraVideo VOD asynchronously processes the job. The operation may return a response before the job is complete.
- * ### QPS limits
- * You can call this operation up to 30 times per second per account. Requests that exceed this limit are dropped and you will experience service interruptions. We recommend that you take note of this limit when you call this operation. For more information, see [QPS limits on API operations in ApsaraVideo VoD](~~342790~~).
+ * *   Regions that support the video fingerprinting feature: **China (Beijing)**, **China (Shanghai)**, and **Singapore**. Regions that support the smart tagging feature: **China (Beijing)** and **China (Shanghai)**.
+ * *   You need to enable the video fingerprinting feature or the smart tagging feature before you can call this operation to submit jobs. For more information, see [Video AI](~~101148~~).
+ * *   If this is the first time you use the video fingerprinting feature, you must [submit a ticket](https://yida.alibaba-inc.com/o/ticketapply) to apply for using the media fingerprint library for free. Otherwise, the video fingerprinting feature will be affected.
+ * *   After you submit an AI job, ApsaraVideo VOD asynchronously processes the job. The operation may return a response before the job is complete. You can configure the [Event Notification](~~55627~~) feature and set the callback event to **AI Processing Completed**. After you receive the event notification, you can query the execution result of the AI job.
  *
  * @param request SubmitAIJobRequest
  * @return SubmitAIJobResponse
@@ -35319,6 +35925,70 @@ func (client *Client) SubmitAIMediaAuditJob(request *SubmitAIMediaAuditJobReques
 	runtime := &util.RuntimeOptions{}
 	_result = &SubmitAIMediaAuditJobResponse{}
 	_body, _err := client.SubmitAIMediaAuditJobWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) SubmitDigitalWatermarkExtractJobWithOptions(request *SubmitDigitalWatermarkExtractJobRequest, runtime *util.RuntimeOptions) (_result *SubmitDigitalWatermarkExtractJobResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.ExtractType)) {
+		query["ExtractType"] = request.ExtractType
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.MediaId)) {
+		query["MediaId"] = request.MediaId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.OwnerAccount)) {
+		query["OwnerAccount"] = request.OwnerAccount
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.OwnerId)) {
+		query["OwnerId"] = request.OwnerId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ResourceOwnerAccount)) {
+		query["ResourceOwnerAccount"] = request.ResourceOwnerAccount
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ResourceOwnerId)) {
+		query["ResourceOwnerId"] = request.ResourceOwnerId
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("SubmitDigitalWatermarkExtractJob"),
+		Version:     tea.String("2017-03-21"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &SubmitDigitalWatermarkExtractJobResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) SubmitDigitalWatermarkExtractJob(request *SubmitDigitalWatermarkExtractJobRequest) (_result *SubmitDigitalWatermarkExtractJobResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &SubmitDigitalWatermarkExtractJobResponse{}
+	_body, _err := client.SubmitDigitalWatermarkExtractJobWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -35398,9 +36068,7 @@ func (client *Client) SubmitDynamicImageJob(request *SubmitDynamicImageJobReques
 }
 
 /**
- * This operation is available only in the Singapore (Singapore) region.
- * ### QPS limit
- * You can call this operation up to 10 times per second per account. Requests that exceed this limit are dropped and you will experience service interruptions. We recommend that you take note of this limit when you call this operation. For more information, see QPS limit.
+ * Regions that support this operation: **China (Beijing)**, **China (Shanghai)**, and **Singapore**.
  *
  * @param request SubmitMediaDNADeleteJobRequest
  * @param runtime runtime options for this request RuntimeOptions
@@ -35456,9 +36124,7 @@ func (client *Client) SubmitMediaDNADeleteJobWithOptions(request *SubmitMediaDNA
 }
 
 /**
- * This operation is available only in the Singapore (Singapore) region.
- * ### QPS limit
- * You can call this operation up to 10 times per second per account. Requests that exceed this limit are dropped and you will experience service interruptions. We recommend that you take note of this limit when you call this operation. For more information, see QPS limit.
+ * Regions that support this operation: **China (Beijing)**, **China (Shanghai)**, and **Singapore**.
  *
  * @param request SubmitMediaDNADeleteJobRequest
  * @return SubmitMediaDNADeleteJobResponse
@@ -35762,9 +36428,8 @@ func (client *Client) SubmitWorkflowJob(request *SubmitWorkflowJobRequest) (_res
 }
 
 /**
- * After you call the [AddAITemplate](~~102930~~) to add an AI template, you can call this operation to modify the AI template.
- * ### QPS limit
- * You can call this operation up to five times per second per account. Requests that exceed this limit are dropped and you will experience service interruptions. We recommend that you take note of this limit when you call this operation. For more information, see [QPS limit on API operations](~~342790~~).
+ * *   Regions that support this operation: **China (Beijing)**, **China (Shanghai)**, and **Singapore**.
+ * *   After you call the [AddAITemplate](~~102930~~) operation to add an AI template, you can call this operation to modify the AI template.
  *
  * @param request UpdateAITemplateRequest
  * @param runtime runtime options for this request RuntimeOptions
@@ -35812,9 +36477,8 @@ func (client *Client) UpdateAITemplateWithOptions(request *UpdateAITemplateReque
 }
 
 /**
- * After you call the [AddAITemplate](~~102930~~) to add an AI template, you can call this operation to modify the AI template.
- * ### QPS limit
- * You can call this operation up to five times per second per account. Requests that exceed this limit are dropped and you will experience service interruptions. We recommend that you take note of this limit when you call this operation. For more information, see [QPS limit on API operations](~~342790~~).
+ * *   Regions that support this operation: **China (Beijing)**, **China (Shanghai)**, and **Singapore**.
+ * *   After you call the [AddAITemplate](~~102930~~) operation to add an AI template, you can call this operation to modify the AI template.
  *
  * @param request UpdateAITemplateRequest
  * @return UpdateAITemplateResponse
@@ -36127,7 +36791,10 @@ func (client *Client) UpdateImageInfos(request *UpdateImageInfosRequest) (_resul
 }
 
 /**
- * You can call this operation to modify the storage classes of Standard and Infrequent Access (IA) media assets in real time. To modify the storage class of an Archive or Cold Archive media asset, the media asset must be restored first. After the storage class is modified, you need to send a callback notification to the user. To modify the storage class of a Cold Archive media asset, you must specify the restoration priority. By default, the restoration priority is set to Standard. Media assets whose storage classes are being modified cannot be used or processed.
+ * UpdateMediaStorageClass is an asynchronous operation. You can call this operation to modify the storage classes of media assets. After the storage class is modified, a callback notification is sent.
+ * If the storage class of a media asset is Archive or Cold Archive, the media asset is automatically restored when you call this operation. After the media asset is restored, the storage class is modified. To restore the media asset, you do not need to call the RestoreMedia operation. To modify the storage class of a Cold Archive media asset, you must specify the restoration priority. By default, the restoration priority is set to Standard.
+ * Media assets whose storage classes are being modified cannot be used or processed.
+ * The media assets that are not of the Standard storage class have a limit on storage duration. If the storage duration does not meet the following requirements, you cannot change the storage classes: Infrequent Access (IA) media assets or source files are stored for at least 30 days, Archive media assets or source files are stored for at least 60 days, and Cold Archive media assets or source files are stored for at least 180 days.
  *
  * @param request UpdateMediaStorageClassRequest
  * @param runtime runtime options for this request RuntimeOptions
@@ -36179,7 +36846,10 @@ func (client *Client) UpdateMediaStorageClassWithOptions(request *UpdateMediaSto
 }
 
 /**
- * You can call this operation to modify the storage classes of Standard and Infrequent Access (IA) media assets in real time. To modify the storage class of an Archive or Cold Archive media asset, the media asset must be restored first. After the storage class is modified, you need to send a callback notification to the user. To modify the storage class of a Cold Archive media asset, you must specify the restoration priority. By default, the restoration priority is set to Standard. Media assets whose storage classes are being modified cannot be used or processed.
+ * UpdateMediaStorageClass is an asynchronous operation. You can call this operation to modify the storage classes of media assets. After the storage class is modified, a callback notification is sent.
+ * If the storage class of a media asset is Archive or Cold Archive, the media asset is automatically restored when you call this operation. After the media asset is restored, the storage class is modified. To restore the media asset, you do not need to call the RestoreMedia operation. To modify the storage class of a Cold Archive media asset, you must specify the restoration priority. By default, the restoration priority is set to Standard.
+ * Media assets whose storage classes are being modified cannot be used or processed.
+ * The media assets that are not of the Standard storage class have a limit on storage duration. If the storage duration does not meet the following requirements, you cannot change the storage classes: Infrequent Access (IA) media assets or source files are stored for at least 30 days, Archive media assets or source files are stored for at least 60 days, and Cold Archive media assets or source files are stored for at least 180 days.
  *
  * @param request UpdateMediaStorageClassRequest
  * @return UpdateMediaStorageClassResponse
