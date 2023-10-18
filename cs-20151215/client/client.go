@@ -14043,7 +14043,8 @@ type ModifyClusterRequest struct {
 	// The maintenance window of the cluster. This parameter takes effect only in ACK Pro clusters.
 	MaintenanceWindow *MaintenanceWindow `json:"maintenance_window,omitempty" xml:"maintenance_window,omitempty"`
 	// The ID of the resource group to which the cluster belongs.
-	ResourceGroupId *string `json:"resource_group_id,omitempty" xml:"resource_group_id,omitempty"`
+	ResourceGroupId     *string                                  `json:"resource_group_id,omitempty" xml:"resource_group_id,omitempty"`
+	SystemEventsLogging *ModifyClusterRequestSystemEventsLogging `json:"system_events_logging,omitempty" xml:"system_events_logging,omitempty" type:"Struct"`
 }
 
 func (s ModifyClusterRequest) String() string {
@@ -14106,6 +14107,34 @@ func (s *ModifyClusterRequest) SetMaintenanceWindow(v *MaintenanceWindow) *Modif
 
 func (s *ModifyClusterRequest) SetResourceGroupId(v string) *ModifyClusterRequest {
 	s.ResourceGroupId = &v
+	return s
+}
+
+func (s *ModifyClusterRequest) SetSystemEventsLogging(v *ModifyClusterRequestSystemEventsLogging) *ModifyClusterRequest {
+	s.SystemEventsLogging = v
+	return s
+}
+
+type ModifyClusterRequestSystemEventsLogging struct {
+	Enabled        *bool   `json:"enabled,omitempty" xml:"enabled,omitempty"`
+	LoggingProject *string `json:"logging_project,omitempty" xml:"logging_project,omitempty"`
+}
+
+func (s ModifyClusterRequestSystemEventsLogging) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ModifyClusterRequestSystemEventsLogging) GoString() string {
+	return s.String()
+}
+
+func (s *ModifyClusterRequestSystemEventsLogging) SetEnabled(v bool) *ModifyClusterRequestSystemEventsLogging {
+	s.Enabled = &v
+	return s
+}
+
+func (s *ModifyClusterRequestSystemEventsLogging) SetLoggingProject(v string) *ModifyClusterRequestSystemEventsLogging {
+	s.LoggingProject = &v
 	return s
 }
 
@@ -21887,6 +21916,10 @@ func (client *Client) ModifyClusterWithOptions(ClusterId *string, request *Modif
 
 	if !tea.BoolValue(util.IsUnset(request.ResourceGroupId)) {
 		body["resource_group_id"] = request.ResourceGroupId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.SystemEventsLogging)) {
+		body["system_events_logging"] = request.SystemEventsLogging
 	}
 
 	req := &openapi.OpenApiRequest{
