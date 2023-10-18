@@ -1,3 +1,6 @@
+2023-10-18 Version: v4.1.2
+- Generated golang 2018-05-10 for Cdn.
+
 2023-10-17 Version: v4.1.1
 - Generated golang 2018-05-10 for Cdn.
 
