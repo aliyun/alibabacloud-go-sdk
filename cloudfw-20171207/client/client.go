@@ -1043,8 +1043,10 @@ type CreateTrFirewallV2Request struct {
 	RouteMode *string `json:"RouteMode,omitempty" xml:"RouteMode,omitempty"`
 	// The primary subnet CIDR block that the VPC uses to connect to the transit router in automatic mode.
 	TrAttachmentMasterCidr *string `json:"TrAttachmentMasterCidr,omitempty" xml:"TrAttachmentMasterCidr,omitempty"`
+	TrAttachmentMasterZone *string `json:"TrAttachmentMasterZone,omitempty" xml:"TrAttachmentMasterZone,omitempty"`
 	// The secondary subnet CIDR block that the VPC uses to connect to the transit router in automatic mode.
 	TrAttachmentSlaveCidr *string `json:"TrAttachmentSlaveCidr,omitempty" xml:"TrAttachmentSlaveCidr,omitempty"`
+	TrAttachmentSlaveZone *string `json:"TrAttachmentSlaveZone,omitempty" xml:"TrAttachmentSlaveZone,omitempty"`
 	// The ID of the transit router.
 	TransitRouterId *string `json:"TransitRouterId,omitempty" xml:"TransitRouterId,omitempty"`
 }
@@ -1112,8 +1114,18 @@ func (s *CreateTrFirewallV2Request) SetTrAttachmentMasterCidr(v string) *CreateT
 	return s
 }
 
+func (s *CreateTrFirewallV2Request) SetTrAttachmentMasterZone(v string) *CreateTrFirewallV2Request {
+	s.TrAttachmentMasterZone = &v
+	return s
+}
+
 func (s *CreateTrFirewallV2Request) SetTrAttachmentSlaveCidr(v string) *CreateTrFirewallV2Request {
 	s.TrAttachmentSlaveCidr = &v
+	return s
+}
+
+func (s *CreateTrFirewallV2Request) SetTrAttachmentSlaveZone(v string) *CreateTrFirewallV2Request {
+	s.TrAttachmentSlaveZone = &v
 	return s
 }
 
@@ -2712,6 +2724,146 @@ func (s *DeleteVpcFirewallControlPolicyResponse) SetStatusCode(v int32) *DeleteV
 }
 
 func (s *DeleteVpcFirewallControlPolicyResponse) SetBody(v *DeleteVpcFirewallControlPolicyResponseBody) *DeleteVpcFirewallControlPolicyResponse {
+	s.Body = v
+	return s
+}
+
+type DescribeACLProtectTrendRequest struct {
+	EndTime   *string `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
+	Lang      *string `json:"Lang,omitempty" xml:"Lang,omitempty"`
+	SourceIp  *string `json:"SourceIp,omitempty" xml:"SourceIp,omitempty"`
+	StartTime *string `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
+}
+
+func (s DescribeACLProtectTrendRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeACLProtectTrendRequest) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeACLProtectTrendRequest) SetEndTime(v string) *DescribeACLProtectTrendRequest {
+	s.EndTime = &v
+	return s
+}
+
+func (s *DescribeACLProtectTrendRequest) SetLang(v string) *DescribeACLProtectTrendRequest {
+	s.Lang = &v
+	return s
+}
+
+func (s *DescribeACLProtectTrendRequest) SetSourceIp(v string) *DescribeACLProtectTrendRequest {
+	s.SourceIp = &v
+	return s
+}
+
+func (s *DescribeACLProtectTrendRequest) SetStartTime(v string) *DescribeACLProtectTrendRequest {
+	s.StartTime = &v
+	return s
+}
+
+type DescribeACLProtectTrendResponseBody struct {
+	InProtectCnt       *int64                                          `json:"InProtectCnt,omitempty" xml:"InProtectCnt,omitempty"`
+	InterVPCProtectCnt *int64                                          `json:"InterVPCProtectCnt,omitempty" xml:"InterVPCProtectCnt,omitempty"`
+	Interval           *int32                                          `json:"Interval,omitempty" xml:"Interval,omitempty"`
+	OutProtectCnt      *int64                                          `json:"OutProtectCnt,omitempty" xml:"OutProtectCnt,omitempty"`
+	RequestId          *string                                         `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	TotalProtectCnt    *int64                                          `json:"TotalProtectCnt,omitempty" xml:"TotalProtectCnt,omitempty"`
+	TrendList          []*DescribeACLProtectTrendResponseBodyTrendList `json:"TrendList,omitempty" xml:"TrendList,omitempty" type:"Repeated"`
+}
+
+func (s DescribeACLProtectTrendResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeACLProtectTrendResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeACLProtectTrendResponseBody) SetInProtectCnt(v int64) *DescribeACLProtectTrendResponseBody {
+	s.InProtectCnt = &v
+	return s
+}
+
+func (s *DescribeACLProtectTrendResponseBody) SetInterVPCProtectCnt(v int64) *DescribeACLProtectTrendResponseBody {
+	s.InterVPCProtectCnt = &v
+	return s
+}
+
+func (s *DescribeACLProtectTrendResponseBody) SetInterval(v int32) *DescribeACLProtectTrendResponseBody {
+	s.Interval = &v
+	return s
+}
+
+func (s *DescribeACLProtectTrendResponseBody) SetOutProtectCnt(v int64) *DescribeACLProtectTrendResponseBody {
+	s.OutProtectCnt = &v
+	return s
+}
+
+func (s *DescribeACLProtectTrendResponseBody) SetRequestId(v string) *DescribeACLProtectTrendResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *DescribeACLProtectTrendResponseBody) SetTotalProtectCnt(v int64) *DescribeACLProtectTrendResponseBody {
+	s.TotalProtectCnt = &v
+	return s
+}
+
+func (s *DescribeACLProtectTrendResponseBody) SetTrendList(v []*DescribeACLProtectTrendResponseBodyTrendList) *DescribeACLProtectTrendResponseBody {
+	s.TrendList = v
+	return s
+}
+
+type DescribeACLProtectTrendResponseBodyTrendList struct {
+	ProtectCnt *int32 `json:"ProtectCnt,omitempty" xml:"ProtectCnt,omitempty"`
+	Time       *int64 `json:"Time,omitempty" xml:"Time,omitempty"`
+}
+
+func (s DescribeACLProtectTrendResponseBodyTrendList) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeACLProtectTrendResponseBodyTrendList) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeACLProtectTrendResponseBodyTrendList) SetProtectCnt(v int32) *DescribeACLProtectTrendResponseBodyTrendList {
+	s.ProtectCnt = &v
+	return s
+}
+
+func (s *DescribeACLProtectTrendResponseBodyTrendList) SetTime(v int64) *DescribeACLProtectTrendResponseBodyTrendList {
+	s.Time = &v
+	return s
+}
+
+type DescribeACLProtectTrendResponse struct {
+	Headers    map[string]*string                   `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                               `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *DescribeACLProtectTrendResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s DescribeACLProtectTrendResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeACLProtectTrendResponse) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeACLProtectTrendResponse) SetHeaders(v map[string]*string) *DescribeACLProtectTrendResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *DescribeACLProtectTrendResponse) SetStatusCode(v int32) *DescribeACLProtectTrendResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *DescribeACLProtectTrendResponse) SetBody(v *DescribeACLProtectTrendResponseBody) *DescribeACLProtectTrendResponse {
 	s.Body = v
 	return s
 }
@@ -16276,8 +16428,16 @@ func (client *Client) CreateTrFirewallV2WithOptions(request *CreateTrFirewallV2R
 		query["TrAttachmentMasterCidr"] = request.TrAttachmentMasterCidr
 	}
 
+	if !tea.BoolValue(util.IsUnset(request.TrAttachmentMasterZone)) {
+		query["TrAttachmentMasterZone"] = request.TrAttachmentMasterZone
+	}
+
 	if !tea.BoolValue(util.IsUnset(request.TrAttachmentSlaveCidr)) {
 		query["TrAttachmentSlaveCidr"] = request.TrAttachmentSlaveCidr
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.TrAttachmentSlaveZone)) {
+		query["TrAttachmentSlaveZone"] = request.TrAttachmentSlaveZone
 	}
 
 	if !tea.BoolValue(util.IsUnset(request.TransitRouterId)) {
@@ -17315,6 +17475,66 @@ func (client *Client) DeleteVpcFirewallControlPolicy(request *DeleteVpcFirewallC
 	runtime := &util.RuntimeOptions{}
 	_result = &DeleteVpcFirewallControlPolicyResponse{}
 	_body, _err := client.DeleteVpcFirewallControlPolicyWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) DescribeACLProtectTrendWithOptions(request *DescribeACLProtectTrendRequest, runtime *util.RuntimeOptions) (_result *DescribeACLProtectTrendResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.EndTime)) {
+		query["EndTime"] = request.EndTime
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Lang)) {
+		query["Lang"] = request.Lang
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Lang)) {
+		query["Lang"] = request.Lang
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.SourceIp)) {
+		query["SourceIp"] = request.SourceIp
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.StartTime)) {
+		query["StartTime"] = request.StartTime
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("DescribeACLProtectTrend"),
+		Version:     tea.String("2017-12-07"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &DescribeACLProtectTrendResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) DescribeACLProtectTrend(request *DescribeACLProtectTrendRequest) (_result *DescribeACLProtectTrendResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &DescribeACLProtectTrendResponse{}
+	_body, _err := client.DescribeACLProtectTrendWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
