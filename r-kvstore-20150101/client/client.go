@@ -2556,8 +2556,9 @@ func (s *DeleteAccountResponse) SetBody(v *DeleteAccountResponseBody) *DeleteAcc
 }
 
 type DeleteInstanceRequest struct {
-	GlobalInstanceId *string `json:"GlobalInstanceId,omitempty" xml:"GlobalInstanceId,omitempty"`
 	// The ID of the distributed instance to which the instance belongs. This parameter is applicable to only China site (aliyun.com).
+	GlobalInstanceId *string `json:"GlobalInstanceId,omitempty" xml:"GlobalInstanceId,omitempty"`
+	// The ID of the instance that you want to release.
 	InstanceId           *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
 	OwnerAccount         *string `json:"OwnerAccount,omitempty" xml:"OwnerAccount,omitempty"`
 	OwnerId              *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
@@ -2610,6 +2611,7 @@ func (s *DeleteInstanceRequest) SetSecurityToken(v string) *DeleteInstanceReques
 }
 
 type DeleteInstanceResponseBody struct {
+	// The ID of the request.
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -3717,7 +3719,12 @@ type DescribeAvailableResourceRequest struct {
 	// The ID of the instance.
 	//
 	// > This parameter is available and required only if the **OrderType** parameter is set to **UPGRADE** or **DOWNGRADE**.
-	InstanceId    *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	// Redis产品系列，取值如下：
+	//
+	// - **professional**：标准版，支持单副本、主备、读写分离、集群四种架构，扩展性强。
+	//  <props="china">
+	// -  **economical**：仅支持主备架构，具有价格优势，更多信息请参见[经济版实例](~~2489678~~)。</props>
 	InstanceScene *string `json:"InstanceScene,omitempty" xml:"InstanceScene,omitempty"`
 	// The ID of the data node for which you want to query available resources that can be created. You can call the [DescribeLogicInstanceTopology](~~94665~~) operation to query the ID of the data node. Remove the number sign (`#`) and the content that follows the number sign. For example, retain only r-bp10noxlhcoim2\*\*\*\*-db-0.
 	//
@@ -6883,6 +6890,7 @@ func (s *DescribeEngineVersionRequest) SetSecurityToken(v string) *DescribeEngin
 }
 
 type DescribeEngineVersionResponseBody struct {
+	DBLatestMinorVersion *DescribeEngineVersionResponseBodyDBLatestMinorVersion `json:"DBLatestMinorVersion,omitempty" xml:"DBLatestMinorVersion,omitempty" type:"Struct"`
 	// The release notes for the minor version of the instance, including the release date, minor version number, release type such as new feature, and description.
 	DBVersionRelease *string `json:"DBVersionRelease,omitempty" xml:"DBVersionRelease,omitempty"`
 	// Indicates whether the instance major version can be upgraded. Valid values:
@@ -6900,7 +6908,8 @@ type DescribeEngineVersionResponseBody struct {
 	// > To update the minor version, call the [ModifyInstanceMinorVersion](~~129381~~) operation.
 	EnableUpgradeMinorVersion *bool `json:"EnableUpgradeMinorVersion,omitempty" xml:"EnableUpgradeMinorVersion,omitempty"`
 	// The database engine of the instance. Valid values: **redis** and **memcache**.
-	Engine *string `json:"Engine,omitempty" xml:"Engine,omitempty"`
+	Engine            *string `json:"Engine,omitempty" xml:"Engine,omitempty"`
+	IsAutoUpgradeOpen *string `json:"IsAutoUpgradeOpen,omitempty" xml:"IsAutoUpgradeOpen,omitempty"`
 	// Indicates whether the instance uses the latest minor version. Valid values:
 	//
 	// *   **true**
@@ -6915,7 +6924,8 @@ type DescribeEngineVersionResponseBody struct {
 	// The major version of the instance.
 	MajorVersion *string `json:"MajorVersion,omitempty" xml:"MajorVersion,omitempty"`
 	// The minor version of the instance.
-	MinorVersion *string `json:"MinorVersion,omitempty" xml:"MinorVersion,omitempty"`
+	MinorVersion            *string                                                   `json:"MinorVersion,omitempty" xml:"MinorVersion,omitempty"`
+	ProxyLatestMinorVersion *DescribeEngineVersionResponseBodyProxyLatestMinorVersion `json:"ProxyLatestMinorVersion,omitempty" xml:"ProxyLatestMinorVersion,omitempty" type:"Struct"`
 	// The minor version of proxy nodes.
 	//
 	// > This parameter is returned only for cluster and read/write splitting instances.
@@ -6936,6 +6946,11 @@ func (s DescribeEngineVersionResponseBody) GoString() string {
 	return s.String()
 }
 
+func (s *DescribeEngineVersionResponseBody) SetDBLatestMinorVersion(v *DescribeEngineVersionResponseBodyDBLatestMinorVersion) *DescribeEngineVersionResponseBody {
+	s.DBLatestMinorVersion = v
+	return s
+}
+
 func (s *DescribeEngineVersionResponseBody) SetDBVersionRelease(v string) *DescribeEngineVersionResponseBody {
 	s.DBVersionRelease = &v
 	return s
@@ -6953,6 +6968,11 @@ func (s *DescribeEngineVersionResponseBody) SetEnableUpgradeMinorVersion(v bool)
 
 func (s *DescribeEngineVersionResponseBody) SetEngine(v string) *DescribeEngineVersionResponseBody {
 	s.Engine = &v
+	return s
+}
+
+func (s *DescribeEngineVersionResponseBody) SetIsAutoUpgradeOpen(v string) *DescribeEngineVersionResponseBody {
+	s.IsAutoUpgradeOpen = &v
 	return s
 }
 
@@ -6986,6 +7006,11 @@ func (s *DescribeEngineVersionResponseBody) SetMinorVersion(v string) *DescribeE
 	return s
 }
 
+func (s *DescribeEngineVersionResponseBody) SetProxyLatestMinorVersion(v *DescribeEngineVersionResponseBodyProxyLatestMinorVersion) *DescribeEngineVersionResponseBody {
+	s.ProxyLatestMinorVersion = v
+	return s
+}
+
 func (s *DescribeEngineVersionResponseBody) SetProxyMinorVersion(v string) *DescribeEngineVersionResponseBody {
 	s.ProxyMinorVersion = &v
 	return s
@@ -6998,6 +7023,226 @@ func (s *DescribeEngineVersionResponseBody) SetProxyVersionRelease(v string) *De
 
 func (s *DescribeEngineVersionResponseBody) SetRequestId(v string) *DescribeEngineVersionResponseBody {
 	s.RequestId = &v
+	return s
+}
+
+type DescribeEngineVersionResponseBodyDBLatestMinorVersion struct {
+	Level          *string                                                              `json:"Level,omitempty" xml:"Level,omitempty"`
+	MinorVersion   *string                                                              `json:"MinorVersion,omitempty" xml:"MinorVersion,omitempty"`
+	VersionRelease *DescribeEngineVersionResponseBodyDBLatestMinorVersionVersionRelease `json:"VersionRelease,omitempty" xml:"VersionRelease,omitempty" type:"Struct"`
+}
+
+func (s DescribeEngineVersionResponseBodyDBLatestMinorVersion) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeEngineVersionResponseBodyDBLatestMinorVersion) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeEngineVersionResponseBodyDBLatestMinorVersion) SetLevel(v string) *DescribeEngineVersionResponseBodyDBLatestMinorVersion {
+	s.Level = &v
+	return s
+}
+
+func (s *DescribeEngineVersionResponseBodyDBLatestMinorVersion) SetMinorVersion(v string) *DescribeEngineVersionResponseBodyDBLatestMinorVersion {
+	s.MinorVersion = &v
+	return s
+}
+
+func (s *DescribeEngineVersionResponseBodyDBLatestMinorVersion) SetVersionRelease(v *DescribeEngineVersionResponseBodyDBLatestMinorVersionVersionRelease) *DescribeEngineVersionResponseBodyDBLatestMinorVersion {
+	s.VersionRelease = v
+	return s
+}
+
+type DescribeEngineVersionResponseBodyDBLatestMinorVersionVersionRelease struct {
+	ReleaseInfo         *DescribeEngineVersionResponseBodyDBLatestMinorVersionVersionReleaseReleaseInfo `json:"ReleaseInfo,omitempty" xml:"ReleaseInfo,omitempty" type:"Struct"`
+	VersionChangesLevel *string                                                                         `json:"VersionChangesLevel,omitempty" xml:"VersionChangesLevel,omitempty"`
+}
+
+func (s DescribeEngineVersionResponseBodyDBLatestMinorVersionVersionRelease) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeEngineVersionResponseBodyDBLatestMinorVersionVersionRelease) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeEngineVersionResponseBodyDBLatestMinorVersionVersionRelease) SetReleaseInfo(v *DescribeEngineVersionResponseBodyDBLatestMinorVersionVersionReleaseReleaseInfo) *DescribeEngineVersionResponseBodyDBLatestMinorVersionVersionRelease {
+	s.ReleaseInfo = v
+	return s
+}
+
+func (s *DescribeEngineVersionResponseBodyDBLatestMinorVersionVersionRelease) SetVersionChangesLevel(v string) *DescribeEngineVersionResponseBodyDBLatestMinorVersionVersionRelease {
+	s.VersionChangesLevel = &v
+	return s
+}
+
+type DescribeEngineVersionResponseBodyDBLatestMinorVersionVersionReleaseReleaseInfo struct {
+	ReleaseInfoList []*DescribeEngineVersionResponseBodyDBLatestMinorVersionVersionReleaseReleaseInfoReleaseInfoList `json:"ReleaseInfoList,omitempty" xml:"ReleaseInfoList,omitempty" type:"Repeated"`
+}
+
+func (s DescribeEngineVersionResponseBodyDBLatestMinorVersionVersionReleaseReleaseInfo) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeEngineVersionResponseBodyDBLatestMinorVersionVersionReleaseReleaseInfo) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeEngineVersionResponseBodyDBLatestMinorVersionVersionReleaseReleaseInfo) SetReleaseInfoList(v []*DescribeEngineVersionResponseBodyDBLatestMinorVersionVersionReleaseReleaseInfoReleaseInfoList) *DescribeEngineVersionResponseBodyDBLatestMinorVersionVersionReleaseReleaseInfo {
+	s.ReleaseInfoList = v
+	return s
+}
+
+type DescribeEngineVersionResponseBodyDBLatestMinorVersionVersionReleaseReleaseInfoReleaseInfoList struct {
+	CreateTime     *string `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
+	Level          *string `json:"Level,omitempty" xml:"Level,omitempty"`
+	ReleaseNote    *string `json:"ReleaseNote,omitempty" xml:"ReleaseNote,omitempty"`
+	ReleaseNoteEn  *string `json:"ReleaseNoteEn,omitempty" xml:"ReleaseNoteEn,omitempty"`
+	ReleaseVersion *string `json:"ReleaseVersion,omitempty" xml:"ReleaseVersion,omitempty"`
+}
+
+func (s DescribeEngineVersionResponseBodyDBLatestMinorVersionVersionReleaseReleaseInfoReleaseInfoList) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeEngineVersionResponseBodyDBLatestMinorVersionVersionReleaseReleaseInfoReleaseInfoList) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeEngineVersionResponseBodyDBLatestMinorVersionVersionReleaseReleaseInfoReleaseInfoList) SetCreateTime(v string) *DescribeEngineVersionResponseBodyDBLatestMinorVersionVersionReleaseReleaseInfoReleaseInfoList {
+	s.CreateTime = &v
+	return s
+}
+
+func (s *DescribeEngineVersionResponseBodyDBLatestMinorVersionVersionReleaseReleaseInfoReleaseInfoList) SetLevel(v string) *DescribeEngineVersionResponseBodyDBLatestMinorVersionVersionReleaseReleaseInfoReleaseInfoList {
+	s.Level = &v
+	return s
+}
+
+func (s *DescribeEngineVersionResponseBodyDBLatestMinorVersionVersionReleaseReleaseInfoReleaseInfoList) SetReleaseNote(v string) *DescribeEngineVersionResponseBodyDBLatestMinorVersionVersionReleaseReleaseInfoReleaseInfoList {
+	s.ReleaseNote = &v
+	return s
+}
+
+func (s *DescribeEngineVersionResponseBodyDBLatestMinorVersionVersionReleaseReleaseInfoReleaseInfoList) SetReleaseNoteEn(v string) *DescribeEngineVersionResponseBodyDBLatestMinorVersionVersionReleaseReleaseInfoReleaseInfoList {
+	s.ReleaseNoteEn = &v
+	return s
+}
+
+func (s *DescribeEngineVersionResponseBodyDBLatestMinorVersionVersionReleaseReleaseInfoReleaseInfoList) SetReleaseVersion(v string) *DescribeEngineVersionResponseBodyDBLatestMinorVersionVersionReleaseReleaseInfoReleaseInfoList {
+	s.ReleaseVersion = &v
+	return s
+}
+
+type DescribeEngineVersionResponseBodyProxyLatestMinorVersion struct {
+	Level          *string                                                                 `json:"Level,omitempty" xml:"Level,omitempty"`
+	MinorVersion   *string                                                                 `json:"MinorVersion,omitempty" xml:"MinorVersion,omitempty"`
+	VersionRelease *DescribeEngineVersionResponseBodyProxyLatestMinorVersionVersionRelease `json:"VersionRelease,omitempty" xml:"VersionRelease,omitempty" type:"Struct"`
+}
+
+func (s DescribeEngineVersionResponseBodyProxyLatestMinorVersion) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeEngineVersionResponseBodyProxyLatestMinorVersion) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeEngineVersionResponseBodyProxyLatestMinorVersion) SetLevel(v string) *DescribeEngineVersionResponseBodyProxyLatestMinorVersion {
+	s.Level = &v
+	return s
+}
+
+func (s *DescribeEngineVersionResponseBodyProxyLatestMinorVersion) SetMinorVersion(v string) *DescribeEngineVersionResponseBodyProxyLatestMinorVersion {
+	s.MinorVersion = &v
+	return s
+}
+
+func (s *DescribeEngineVersionResponseBodyProxyLatestMinorVersion) SetVersionRelease(v *DescribeEngineVersionResponseBodyProxyLatestMinorVersionVersionRelease) *DescribeEngineVersionResponseBodyProxyLatestMinorVersion {
+	s.VersionRelease = v
+	return s
+}
+
+type DescribeEngineVersionResponseBodyProxyLatestMinorVersionVersionRelease struct {
+	ReleaseInfo         *DescribeEngineVersionResponseBodyProxyLatestMinorVersionVersionReleaseReleaseInfo `json:"ReleaseInfo,omitempty" xml:"ReleaseInfo,omitempty" type:"Struct"`
+	VersionChangesLevel *string                                                                            `json:"VersionChangesLevel,omitempty" xml:"VersionChangesLevel,omitempty"`
+}
+
+func (s DescribeEngineVersionResponseBodyProxyLatestMinorVersionVersionRelease) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeEngineVersionResponseBodyProxyLatestMinorVersionVersionRelease) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeEngineVersionResponseBodyProxyLatestMinorVersionVersionRelease) SetReleaseInfo(v *DescribeEngineVersionResponseBodyProxyLatestMinorVersionVersionReleaseReleaseInfo) *DescribeEngineVersionResponseBodyProxyLatestMinorVersionVersionRelease {
+	s.ReleaseInfo = v
+	return s
+}
+
+func (s *DescribeEngineVersionResponseBodyProxyLatestMinorVersionVersionRelease) SetVersionChangesLevel(v string) *DescribeEngineVersionResponseBodyProxyLatestMinorVersionVersionRelease {
+	s.VersionChangesLevel = &v
+	return s
+}
+
+type DescribeEngineVersionResponseBodyProxyLatestMinorVersionVersionReleaseReleaseInfo struct {
+	ReleaseInfoList []*DescribeEngineVersionResponseBodyProxyLatestMinorVersionVersionReleaseReleaseInfoReleaseInfoList `json:"ReleaseInfoList,omitempty" xml:"ReleaseInfoList,omitempty" type:"Repeated"`
+}
+
+func (s DescribeEngineVersionResponseBodyProxyLatestMinorVersionVersionReleaseReleaseInfo) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeEngineVersionResponseBodyProxyLatestMinorVersionVersionReleaseReleaseInfo) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeEngineVersionResponseBodyProxyLatestMinorVersionVersionReleaseReleaseInfo) SetReleaseInfoList(v []*DescribeEngineVersionResponseBodyProxyLatestMinorVersionVersionReleaseReleaseInfoReleaseInfoList) *DescribeEngineVersionResponseBodyProxyLatestMinorVersionVersionReleaseReleaseInfo {
+	s.ReleaseInfoList = v
+	return s
+}
+
+type DescribeEngineVersionResponseBodyProxyLatestMinorVersionVersionReleaseReleaseInfoReleaseInfoList struct {
+	CreateTime     *string `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
+	Level          *string `json:"Level,omitempty" xml:"Level,omitempty"`
+	ReleaseNote    *string `json:"ReleaseNote,omitempty" xml:"ReleaseNote,omitempty"`
+	ReleaseNoteEn  *string `json:"ReleaseNoteEn,omitempty" xml:"ReleaseNoteEn,omitempty"`
+	ReleaseVersion *string `json:"ReleaseVersion,omitempty" xml:"ReleaseVersion,omitempty"`
+}
+
+func (s DescribeEngineVersionResponseBodyProxyLatestMinorVersionVersionReleaseReleaseInfoReleaseInfoList) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeEngineVersionResponseBodyProxyLatestMinorVersionVersionReleaseReleaseInfoReleaseInfoList) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeEngineVersionResponseBodyProxyLatestMinorVersionVersionReleaseReleaseInfoReleaseInfoList) SetCreateTime(v string) *DescribeEngineVersionResponseBodyProxyLatestMinorVersionVersionReleaseReleaseInfoReleaseInfoList {
+	s.CreateTime = &v
+	return s
+}
+
+func (s *DescribeEngineVersionResponseBodyProxyLatestMinorVersionVersionReleaseReleaseInfoReleaseInfoList) SetLevel(v string) *DescribeEngineVersionResponseBodyProxyLatestMinorVersionVersionReleaseReleaseInfoReleaseInfoList {
+	s.Level = &v
+	return s
+}
+
+func (s *DescribeEngineVersionResponseBodyProxyLatestMinorVersionVersionReleaseReleaseInfoReleaseInfoList) SetReleaseNote(v string) *DescribeEngineVersionResponseBodyProxyLatestMinorVersionVersionReleaseReleaseInfoReleaseInfoList {
+	s.ReleaseNote = &v
+	return s
+}
+
+func (s *DescribeEngineVersionResponseBodyProxyLatestMinorVersionVersionReleaseReleaseInfoReleaseInfoList) SetReleaseNoteEn(v string) *DescribeEngineVersionResponseBodyProxyLatestMinorVersionVersionReleaseReleaseInfoReleaseInfoList {
+	s.ReleaseNoteEn = &v
+	return s
+}
+
+func (s *DescribeEngineVersionResponseBodyProxyLatestMinorVersionVersionReleaseReleaseInfoReleaseInfoList) SetReleaseVersion(v string) *DescribeEngineVersionResponseBodyProxyLatestMinorVersionVersionReleaseReleaseInfoReleaseInfoList {
+	s.ReleaseVersion = &v
 	return s
 }
 
@@ -8162,7 +8407,9 @@ type DescribeInstanceAttributeResponseBodyInstancesDBInstanceAttribute struct {
 	// The number of shards. This parameter is available only for instances that are purchased on the China site (aliyun.com).
 	//
 	// This parameter is returned only when the instance is a [cluster instance](~~52228~~) that uses cloud disks.
-	ShardCount *int32 `json:"ShardCount,omitempty" xml:"ShardCount,omitempty"`
+	ShardCount  *int32  `json:"ShardCount,omitempty" xml:"ShardCount,omitempty"`
+	Storage     *string `json:"Storage,omitempty" xml:"Storage,omitempty"`
+	StorageType *string `json:"StorageType,omitempty" xml:"StorageType,omitempty"`
 	// Details of the tags.
 	Tags *DescribeInstanceAttributeResponseBodyInstancesDBInstanceAttributeTags `json:"Tags,omitempty" xml:"Tags,omitempty" type:"Struct"`
 	// The ID of the vSwitch.
@@ -8405,6 +8652,16 @@ func (s *DescribeInstanceAttributeResponseBodyInstancesDBInstanceAttribute) SetS
 
 func (s *DescribeInstanceAttributeResponseBodyInstancesDBInstanceAttribute) SetShardCount(v int32) *DescribeInstanceAttributeResponseBodyInstancesDBInstanceAttribute {
 	s.ShardCount = &v
+	return s
+}
+
+func (s *DescribeInstanceAttributeResponseBodyInstancesDBInstanceAttribute) SetStorage(v string) *DescribeInstanceAttributeResponseBodyInstancesDBInstanceAttribute {
+	s.Storage = &v
+	return s
+}
+
+func (s *DescribeInstanceAttributeResponseBodyInstancesDBInstanceAttribute) SetStorageType(v string) *DescribeInstanceAttributeResponseBodyInstancesDBInstanceAttribute {
+	s.StorageType = &v
 	return s
 }
 
@@ -10455,6 +10712,7 @@ type DescribeLogicInstanceTopologyResponseBody struct {
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
 	// The detailed proxy information, including information about proxy nodes.
 	RedisProxyList *DescribeLogicInstanceTopologyResponseBodyRedisProxyList `json:"RedisProxyList,omitempty" xml:"RedisProxyList,omitempty" type:"Struct"`
+	// Details of data shards, including node information such as NodeInfo.
 	RedisShardList *DescribeLogicInstanceTopologyResponseBodyRedisShardList `json:"RedisShardList,omitempty" xml:"RedisShardList,omitempty" type:"Struct"`
 	// The ID of the request.
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
@@ -10506,13 +10764,13 @@ func (s *DescribeLogicInstanceTopologyResponseBodyRedisProxyList) SetNodeInfo(v 
 }
 
 type DescribeLogicInstanceTopologyResponseBodyRedisProxyListNodeInfo struct {
-	// The bandwidth throttling of the node. Unit: MB/s.
+	// The maximum bandwidth of the node. Unit: Mbit/s.
 	Bandwidth *string `json:"Bandwidth,omitempty" xml:"Bandwidth,omitempty"`
 	// The storage capacity of the node. Unit: MB.
 	Capacity *string `json:"Capacity,omitempty" xml:"Capacity,omitempty"`
 	// The maximum number of connections.
 	Connection *string `json:"Connection,omitempty" xml:"Connection,omitempty"`
-	// The ID of the node.
+	// The node ID.
 	NodeId *string `json:"NodeId,omitempty" xml:"NodeId,omitempty"`
 	// The node type. Valid values:
 	//
@@ -10572,11 +10830,23 @@ func (s *DescribeLogicInstanceTopologyResponseBodyRedisShardList) SetNodeInfo(v 
 }
 
 type DescribeLogicInstanceTopologyResponseBodyRedisShardListNodeInfo struct {
-	Bandwidth       *string `json:"Bandwidth,omitempty" xml:"Bandwidth,omitempty"`
-	Capacity        *string `json:"Capacity,omitempty" xml:"Capacity,omitempty"`
-	Connection      *string `json:"Connection,omitempty" xml:"Connection,omitempty"`
-	NodeId          *string `json:"NodeId,omitempty" xml:"NodeId,omitempty"`
-	NodeType        *string `json:"NodeType,omitempty" xml:"NodeType,omitempty"`
+	// The maximum bandwidth of the node. Unit: Mbit/s.
+	Bandwidth *string `json:"Bandwidth,omitempty" xml:"Bandwidth,omitempty"`
+	// The storage capacity of the node. Unit: MB.
+	Capacity *string `json:"Capacity,omitempty" xml:"Capacity,omitempty"`
+	// The maximum number of connections.
+	Connection *string `json:"Connection,omitempty" xml:"Connection,omitempty"`
+	// The node ID.
+	NodeId *string `json:"NodeId,omitempty" xml:"NodeId,omitempty"`
+	// The node type. Valid values:
+	//
+	// *   **proxy**: proxy node
+	// *   **db**: data node
+	NodeType *string `json:"NodeType,omitempty" xml:"NodeType,omitempty"`
+	// The type of the child instance. Valid values:
+	//
+	// *   **master**: master node
+	// *   **readonly**: read-only instance
 	SubInstanceType *string `json:"SubInstanceType,omitempty" xml:"SubInstanceType,omitempty"`
 }
 
@@ -11727,7 +11997,8 @@ type DescribePriceResponseBodyOrder struct {
 	// The original price of the order.
 	OriginalAmount *string `json:"OriginalAmount,omitempty" xml:"OriginalAmount,omitempty"`
 	// Details about promotion rule IDs.
-	RuleIds *DescribePriceResponseBodyOrderRuleIds `json:"RuleIds,omitempty" xml:"RuleIds,omitempty" type:"Struct"`
+	RuleIds          *DescribePriceResponseBodyOrderRuleIds `json:"RuleIds,omitempty" xml:"RuleIds,omitempty" type:"Struct"`
+	ShowDiscountInfo *bool                                  `json:"ShowDiscountInfo,omitempty" xml:"ShowDiscountInfo,omitempty"`
 	// The transaction price of the order.
 	TradeAmount *string `json:"TradeAmount,omitempty" xml:"TradeAmount,omitempty"`
 }
@@ -11767,6 +12038,11 @@ func (s *DescribePriceResponseBodyOrder) SetOriginalAmount(v string) *DescribePr
 
 func (s *DescribePriceResponseBodyOrder) SetRuleIds(v *DescribePriceResponseBodyOrderRuleIds) *DescribePriceResponseBodyOrder {
 	s.RuleIds = v
+	return s
+}
+
+func (s *DescribePriceResponseBodyOrder) SetShowDiscountInfo(v bool) *DescribePriceResponseBodyOrder {
+	s.ShowDiscountInfo = &v
 	return s
 }
 
@@ -14879,16 +15155,31 @@ func (s *LockDBInstanceWriteResponse) SetBody(v *LockDBInstanceWriteResponseBody
 }
 
 type MigrateToOtherZoneRequest struct {
-	DBInstanceId         *string `json:"DBInstanceId,omitempty" xml:"DBInstanceId,omitempty"`
+	// The ID of the ApsaraDB for Redis instance.
+	DBInstanceId *string `json:"DBInstanceId,omitempty" xml:"DBInstanceId,omitempty"`
+	// Specifies the time when the database is switched after data is migrated. Valid values:
+	//
+	// *   **Immediately**: immediately switched after the data is migrated.
+	// *   **MaintainTime**: switched within the maintenance window.
+	//
+	// >  Default value: **Immediately**.
 	EffectiveTime        *string `json:"EffectiveTime,omitempty" xml:"EffectiveTime,omitempty"`
 	OwnerAccount         *string `json:"OwnerAccount,omitempty" xml:"OwnerAccount,omitempty"`
 	OwnerId              *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
 	ResourceOwnerAccount *string `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
 	ResourceOwnerId      *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
-	SecondaryZoneId      *string `json:"SecondaryZoneId,omitempty" xml:"SecondaryZoneId,omitempty"`
-	SecurityToken        *string `json:"SecurityToken,omitempty" xml:"SecurityToken,omitempty"`
-	VSwitchId            *string `json:"VSwitchId,omitempty" xml:"VSwitchId,omitempty"`
-	ZoneId               *string `json:"ZoneId,omitempty" xml:"ZoneId,omitempty"`
+	// The ID of the destination secondary zone. You can call the [DescribeZones](~~DescribeZones~~) operation to query zone IDs.
+	//
+	// >  You can specify this parameter to deploy the master node and replica node in different zones to implement zone-disaster recovery. This helps withstand data center-level breakdowns.
+	SecondaryZoneId *string `json:"SecondaryZoneId,omitempty" xml:"SecondaryZoneId,omitempty"`
+	SecurityToken   *string `json:"SecurityToken,omitempty" xml:"SecurityToken,omitempty"`
+	// The ID of the vSwitch.
+	//
+	// > *   The vSwitch must be deployed in the zone that is specified by the ZoneId parameter.
+	// > *   If the network type of the instance is VPC, this parameter is required.
+	VSwitchId *string `json:"VSwitchId,omitempty" xml:"VSwitchId,omitempty"`
+	// The ID of the destination primary zone. You can call the [DescribeZones](~~94527~~) operation to query zone IDs.
+	ZoneId *string `json:"ZoneId,omitempty" xml:"ZoneId,omitempty"`
 }
 
 func (s MigrateToOtherZoneRequest) String() string {
@@ -14950,6 +15241,7 @@ func (s *MigrateToOtherZoneRequest) SetZoneId(v string) *MigrateToOtherZoneReque
 }
 
 type MigrateToOtherZoneResponseBody struct {
+	// The ID of the request.
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -18539,9 +18831,12 @@ func (s *RestartInstanceRequest) SetUpgradeMinorVersion(v bool) *RestartInstance
 }
 
 type RestartInstanceResponseBody struct {
+	// The ID of the instance.
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	RequestId  *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	TaskId     *string `json:"TaskId,omitempty" xml:"TaskId,omitempty"`
+	// The ID of the request.
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The ID of the task.
+	TaskId *string `json:"TaskId,omitempty" xml:"TaskId,omitempty"`
 }
 
 func (s RestartInstanceResponseBody) String() string {
@@ -25961,7 +26256,9 @@ func (client *Client) LockDBInstanceWrite(request *LockDBInstanceWriteRequest) (
 }
 
 /**
- * The ID of the request.
+ * For more information about how to migrate an instance across zones in the ApsaraDB for Redis console, see [Migrate an instance across zones](~~106272~~).
+ * > *   If the network type of an ApsaraDB for Redis instance is switched from classic network to Virtual Private Cloud (VPC), and the endpoint of the classic network is retained, you can migrate the instance across zones only after the classic network endpoint is released upon expiration.
+ * > *   After the data is migrated, the endpoint of an instance remains unchanged. However, the virtual IP address (VIP) is changed. We recommend that you use the endpoint instead of the VIP to connect to the instance.
  *
  * @param request MigrateToOtherZoneRequest
  * @param runtime runtime options for this request RuntimeOptions
@@ -26037,7 +26334,9 @@ func (client *Client) MigrateToOtherZoneWithOptions(request *MigrateToOtherZoneR
 }
 
 /**
- * The ID of the request.
+ * For more information about how to migrate an instance across zones in the ApsaraDB for Redis console, see [Migrate an instance across zones](~~106272~~).
+ * > *   If the network type of an ApsaraDB for Redis instance is switched from classic network to Virtual Private Cloud (VPC), and the endpoint of the classic network is retained, you can migrate the instance across zones only after the classic network endpoint is released upon expiration.
+ * > *   After the data is migrated, the endpoint of an instance remains unchanged. However, the virtual IP address (VIP) is changed. We recommend that you use the endpoint instead of the VIP to connect to the instance.
  *
  * @param request MigrateToOtherZoneRequest
  * @return MigrateToOtherZoneResponse
