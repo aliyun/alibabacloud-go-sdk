@@ -1343,7 +1343,8 @@ type CreateEciScalingConfigurationRequest struct {
 	// *   EntryLevel: shared instance type. Instances of this level are the most cost-effective but may not provide stable computing performance in a consistent manner. Instances of this level are suitable for business scenarios in which the CPU utilization is low. For more information, see [Shared instance families](~~108489~~).
 	// *   EnterpriseLevel: Instances of this level provide stable performance and dedicated resources, and are suitable for business scenarios that require high stability. For more information, see [Instance family](~~25378~~).
 	// *   CreditEntryLevel: This value is valid only for burstable instances. CPU credits are used to ensure computing performance. Instances of this level are suitable for scenarios in which the CPU utilization is low but may fluctuate in specific cases. For more information, see the [Overview](~~59977~~) topic of burstable instances.
-	InstanceFamilyLevel *string `json:"InstanceFamilyLevel,omitempty" xml:"InstanceFamilyLevel,omitempty"`
+	InstanceFamilyLevel *string   `json:"InstanceFamilyLevel,omitempty" xml:"InstanceFamilyLevel,omitempty"`
+	InstanceTypes       []*string `json:"InstanceTypes,omitempty" xml:"InstanceTypes,omitempty" type:"Repeated"`
 	// The number of IPv6 addresses.
 	Ipv6AddressCount *int32 `json:"Ipv6AddressCount,omitempty" xml:"Ipv6AddressCount,omitempty"`
 	// The weight of the elastic container instance as a backend server. Valid values: 1 to 100.
@@ -1538,6 +1539,11 @@ func (s *CreateEciScalingConfigurationRequest) SetInitContainers(v []*CreateEciS
 
 func (s *CreateEciScalingConfigurationRequest) SetInstanceFamilyLevel(v string) *CreateEciScalingConfigurationRequest {
 	s.InstanceFamilyLevel = &v
+	return s
+}
+
+func (s *CreateEciScalingConfigurationRequest) SetInstanceTypes(v []*string) *CreateEciScalingConfigurationRequest {
+	s.InstanceTypes = v
 	return s
 }
 
@@ -7761,7 +7767,8 @@ type DescribeEciScalingConfigurationsResponseBodyScalingConfigurations struct {
 	// Indicates whether the root file system is read-only. The only valid value is true.
 	InitContainers []*DescribeEciScalingConfigurationsResponseBodyScalingConfigurationsInitContainers `json:"InitContainers,omitempty" xml:"InitContainers,omitempty" type:"Repeated"`
 	// 5292
-	InstanceFamilyLevel *string `json:"InstanceFamilyLevel,omitempty" xml:"InstanceFamilyLevel,omitempty"`
+	InstanceFamilyLevel *string   `json:"InstanceFamilyLevel,omitempty" xml:"InstanceFamilyLevel,omitempty"`
+	InstanceTypes       []*string `json:"InstanceTypes,omitempty" xml:"InstanceTypes,omitempty" type:"Repeated"`
 	// The bandwidth of the EIP. Default value: 5 Mbit/s.
 	Ipv6AddressCount *int32 `json:"Ipv6AddressCount,omitempty" xml:"Ipv6AddressCount,omitempty"`
 	// The instance family level, which is used to filter the range of instance types that meet the requirements. This parameter takes effect when the `CostOptimization` parameter is set to true. Valid values:
@@ -7957,6 +7964,11 @@ func (s *DescribeEciScalingConfigurationsResponseBodyScalingConfigurations) SetI
 
 func (s *DescribeEciScalingConfigurationsResponseBodyScalingConfigurations) SetInstanceFamilyLevel(v string) *DescribeEciScalingConfigurationsResponseBodyScalingConfigurations {
 	s.InstanceFamilyLevel = &v
+	return s
+}
+
+func (s *DescribeEciScalingConfigurationsResponseBodyScalingConfigurations) SetInstanceTypes(v []*string) *DescribeEciScalingConfigurationsResponseBodyScalingConfigurations {
+	s.InstanceTypes = v
 	return s
 }
 
@@ -11565,6 +11577,7 @@ type DescribeScalingGroupsResponseBodyScalingGroups struct {
 	StoppedCapacity                     *int32                                                                   `json:"StoppedCapacity,omitempty" xml:"StoppedCapacity,omitempty"`
 	SuspendedProcesses                  []*string                                                                `json:"SuspendedProcesses,omitempty" xml:"SuspendedProcesses,omitempty" type:"Repeated"`
 	SystemSuspended                     *bool                                                                    `json:"SystemSuspended,omitempty" xml:"SystemSuspended,omitempty"`
+	Tags                                []*DescribeScalingGroupsResponseBodyScalingGroupsTags                    `json:"Tags,omitempty" xml:"Tags,omitempty" type:"Repeated"`
 	TotalCapacity                       *int32                                                                   `json:"TotalCapacity,omitempty" xml:"TotalCapacity,omitempty"`
 	TotalInstanceCount                  *int32                                                                   `json:"TotalInstanceCount,omitempty" xml:"TotalInstanceCount,omitempty"`
 	VServerGroups                       []*DescribeScalingGroupsResponseBodyScalingGroupsVServerGroups           `json:"VServerGroups,omitempty" xml:"VServerGroups,omitempty" type:"Repeated"`
@@ -11836,6 +11849,11 @@ func (s *DescribeScalingGroupsResponseBodyScalingGroups) SetSystemSuspended(v bo
 	return s
 }
 
+func (s *DescribeScalingGroupsResponseBodyScalingGroups) SetTags(v []*DescribeScalingGroupsResponseBodyScalingGroupsTags) *DescribeScalingGroupsResponseBodyScalingGroups {
+	s.Tags = v
+	return s
+}
+
 func (s *DescribeScalingGroupsResponseBodyScalingGroups) SetTotalCapacity(v int32) *DescribeScalingGroupsResponseBodyScalingGroups {
 	s.TotalCapacity = &v
 	return s
@@ -11979,6 +11997,29 @@ func (s *DescribeScalingGroupsResponseBodyScalingGroupsServerGroups) SetType(v s
 
 func (s *DescribeScalingGroupsResponseBodyScalingGroupsServerGroups) SetWeight(v int32) *DescribeScalingGroupsResponseBodyScalingGroupsServerGroups {
 	s.Weight = &v
+	return s
+}
+
+type DescribeScalingGroupsResponseBodyScalingGroupsTags struct {
+	TagKey   *string `json:"TagKey,omitempty" xml:"TagKey,omitempty"`
+	TagValue *string `json:"TagValue,omitempty" xml:"TagValue,omitempty"`
+}
+
+func (s DescribeScalingGroupsResponseBodyScalingGroupsTags) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeScalingGroupsResponseBodyScalingGroupsTags) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeScalingGroupsResponseBodyScalingGroupsTags) SetTagKey(v string) *DescribeScalingGroupsResponseBodyScalingGroupsTags {
+	s.TagKey = &v
+	return s
+}
+
+func (s *DescribeScalingGroupsResponseBodyScalingGroupsTags) SetTagValue(v string) *DescribeScalingGroupsResponseBodyScalingGroupsTags {
+	s.TagValue = &v
 	return s
 }
 
@@ -15594,7 +15635,8 @@ type ModifyEciScalingConfigurationRequest struct {
 	// *   EntryLevel: shared instance type. Instances of this level are the most cost-effective but may not provide stable computing performance in a consistent manner. Instances of this level are suitable for business scenarios in which the CPU utilization is low. For more information, see [Shared instance families](~~108489~~).
 	// *   EnterpriseLevel: Instances of this level provide stable performance and dedicated resources, and are suitable for business scenarios that require high stability. For more information, see [Instance family](~~25378~~).
 	// *   CreditEntryLevel: This value is valid only for burstable instances. CPU credits are used to ensure computing performance. Instances of this level are suitable for scenarios in which the CPU utilization is low but may fluctuate in specific cases. For more information, see the [Overview](~~59977~~) topic of burstable instances.
-	InstanceFamilyLevel *string `json:"InstanceFamilyLevel,omitempty" xml:"InstanceFamilyLevel,omitempty"`
+	InstanceFamilyLevel *string   `json:"InstanceFamilyLevel,omitempty" xml:"InstanceFamilyLevel,omitempty"`
+	InstanceTypes       []*string `json:"InstanceTypes,omitempty" xml:"InstanceTypes,omitempty" type:"Repeated"`
 	// The number of IPv6 addresses.
 	Ipv6AddressCount *int32 `json:"Ipv6AddressCount,omitempty" xml:"Ipv6AddressCount,omitempty"`
 	// The weight of the elastic container instance as a backend server. Valid values: 1 to 100.
@@ -15789,6 +15831,11 @@ func (s *ModifyEciScalingConfigurationRequest) SetInitContainers(v []*ModifyEciS
 
 func (s *ModifyEciScalingConfigurationRequest) SetInstanceFamilyLevel(v string) *ModifyEciScalingConfigurationRequest {
 	s.InstanceFamilyLevel = &v
+	return s
+}
+
+func (s *ModifyEciScalingConfigurationRequest) SetInstanceTypes(v []*string) *ModifyEciScalingConfigurationRequest {
+	s.InstanceTypes = v
 	return s
 }
 
@@ -19327,7 +19374,8 @@ type ModifyScalingGroupRequest struct {
 	//
 	// *   true: enables deletion protection for the scaling group. This way, the scaling group cannot be deleted.
 	// *   false: disables deletion protection for the scaling group.
-	DesiredCapacity *int32 `json:"DesiredCapacity,omitempty" xml:"DesiredCapacity,omitempty"`
+	DesiredCapacity        *int32 `json:"DesiredCapacity,omitempty" xml:"DesiredCapacity,omitempty"`
+	DisableDesiredCapacity *bool  `json:"DisableDesiredCapacity,omitempty" xml:"DisableDesiredCapacity,omitempty"`
 	// The scaling policy for the multi-zone scaling group that contains ECS instances. Valid values:
 	//
 	// *   PRIORITY: ECS instances are scaled based on the vSwitch priority. The first vSwitch specified by using the VSwitchIds parameter has the highest priority. Auto Scaling preferentially scales instances in the zone where the vSwitch that has the highest priority resides. If the scaling fails, Auto Scaling scales instances in the zone where the vSwitch that has the next highest priority resides.
@@ -19452,6 +19500,11 @@ func (s *ModifyScalingGroupRequest) SetDefaultCooldown(v int32) *ModifyScalingGr
 
 func (s *ModifyScalingGroupRequest) SetDesiredCapacity(v int32) *ModifyScalingGroupRequest {
 	s.DesiredCapacity = &v
+	return s
+}
+
+func (s *ModifyScalingGroupRequest) SetDisableDesiredCapacity(v bool) *ModifyScalingGroupRequest {
+	s.DisableDesiredCapacity = &v
 	return s
 }
 
@@ -22343,6 +22396,10 @@ func (client *Client) CreateEciScalingConfigurationWithOptions(request *CreateEc
 
 	if !tea.BoolValue(util.IsUnset(request.InstanceFamilyLevel)) {
 		query["InstanceFamilyLevel"] = request.InstanceFamilyLevel
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.InstanceTypes)) {
+		query["InstanceTypes"] = request.InstanceTypes
 	}
 
 	if !tea.BoolValue(util.IsUnset(request.Ipv6AddressCount)) {
@@ -26483,6 +26540,10 @@ func (client *Client) ModifyEciScalingConfigurationWithOptions(request *ModifyEc
 		query["InstanceFamilyLevel"] = request.InstanceFamilyLevel
 	}
 
+	if !tea.BoolValue(util.IsUnset(request.InstanceTypes)) {
+		query["InstanceTypes"] = request.InstanceTypes
+	}
+
 	if !tea.BoolValue(util.IsUnset(request.Ipv6AddressCount)) {
 		query["Ipv6AddressCount"] = request.Ipv6AddressCount
 	}
@@ -27051,6 +27112,10 @@ func (client *Client) ModifyScalingGroupWithOptions(request *ModifyScalingGroupR
 
 	if !tea.BoolValue(util.IsUnset(request.DesiredCapacity)) {
 		query["DesiredCapacity"] = request.DesiredCapacity
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.DisableDesiredCapacity)) {
+		query["DisableDesiredCapacity"] = request.DisableDesiredCapacity
 	}
 
 	if !tea.BoolValue(util.IsUnset(request.GroupDeletionProtection)) {
