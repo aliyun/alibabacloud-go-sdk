@@ -13431,6 +13431,7 @@ func (s *DetachDBInstancesResponse) SetBody(v *DetachDBInstancesResponseBody) *D
 }
 
 type DetachInstancesRequest struct {
+	ClientToken             *string   `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
 	DecreaseDesiredCapacity *bool     `json:"DecreaseDesiredCapacity,omitempty" xml:"DecreaseDesiredCapacity,omitempty"`
 	DetachOption            *string   `json:"DetachOption,omitempty" xml:"DetachOption,omitempty"`
 	InstanceIds             []*string `json:"InstanceIds,omitempty" xml:"InstanceIds,omitempty" type:"Repeated"`
@@ -13448,6 +13449,11 @@ func (s DetachInstancesRequest) String() string {
 
 func (s DetachInstancesRequest) GoString() string {
 	return s.String()
+}
+
+func (s *DetachInstancesRequest) SetClientToken(v string) *DetachInstancesRequest {
+	s.ClientToken = &v
+	return s
 }
 
 func (s *DetachInstancesRequest) SetDecreaseDesiredCapacity(v bool) *DetachInstancesRequest {
@@ -20393,6 +20399,7 @@ func (s *RecordLifecycleActionHeartbeatResponse) SetBody(v *RecordLifecycleActio
 }
 
 type RemoveInstancesRequest struct {
+	ClientToken             *string   `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
 	DecreaseDesiredCapacity *bool     `json:"DecreaseDesiredCapacity,omitempty" xml:"DecreaseDesiredCapacity,omitempty"`
 	InstanceIds             []*string `json:"InstanceIds,omitempty" xml:"InstanceIds,omitempty" type:"Repeated"`
 	OwnerAccount            *string   `json:"OwnerAccount,omitempty" xml:"OwnerAccount,omitempty"`
@@ -20410,6 +20417,11 @@ func (s RemoveInstancesRequest) String() string {
 
 func (s RemoveInstancesRequest) GoString() string {
 	return s.String()
+}
+
+func (s *RemoveInstancesRequest) SetClientToken(v string) *RemoveInstancesRequest {
+	s.ClientToken = &v
+	return s
 }
 
 func (s *RemoveInstancesRequest) SetDecreaseDesiredCapacity(v bool) *RemoveInstancesRequest {
@@ -25315,6 +25327,10 @@ func (client *Client) DetachInstancesWithOptions(request *DetachInstancesRequest
 		return _result, _err
 	}
 	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.ClientToken)) {
+		query["ClientToken"] = request.ClientToken
+	}
+
 	if !tea.BoolValue(util.IsUnset(request.DecreaseDesiredCapacity)) {
 		query["DecreaseDesiredCapacity"] = request.DecreaseDesiredCapacity
 	}
@@ -27622,6 +27638,10 @@ func (client *Client) RemoveInstancesWithOptions(request *RemoveInstancesRequest
 		return _result, _err
 	}
 	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.ClientToken)) {
+		query["ClientToken"] = request.ClientToken
+	}
+
 	if !tea.BoolValue(util.IsUnset(request.DecreaseDesiredCapacity)) {
 		query["DecreaseDesiredCapacity"] = request.DecreaseDesiredCapacity
 	}
