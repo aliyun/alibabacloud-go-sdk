@@ -334,23 +334,23 @@ func (s *AddBgpNetworkResponse) SetBody(v *AddBgpNetworkResponseBody) *AddBgpNet
 }
 
 type AddCommonBandwidthPackageIpRequest struct {
-	// The ID of the EIP bandwidth plan.
+	// The ID of the Internet Shared Bandwidth instance.
 	BandwidthPackageId *string `json:"BandwidthPackageId,omitempty" xml:"BandwidthPackageId,omitempty"`
 	// The client token that is used to ensure the idempotence of the request.
 	//
-	// You can use the client to generate the value, but you must make sure that it is unique among different requests. The client token can contain only ASCII characters.
+	// You can use the client to generate the token, but you must make sure that the token is unique among different requests. The token can contain only ASCII characters.
 	//
-	// >  If you do not set this parameter, the system uses **RequestId** as **ClientToken**. The value of **RequestId** for each API request may be different.
+	// >  If you do not specify this parameter, the system automatically uses the **request ID** as the **client token**. The **request ID** may be different for each request.
 	ClientToken *string `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
-	// The ID of the EIP.
+	// The EIP ID.
 	//
-	// You can call the [DescribeEipAddresses](~~36018~~) operation to query the most recent region list.
+	// You can call the [DescribeEipAddresses](~~36018~~) operation to query EIP IDs.
 	IpInstanceId *string `json:"IpInstanceId,omitempty" xml:"IpInstanceId,omitempty"`
-	// The type of IP address. Set the value to **EIP** to associate an EIP with the EIP bandwidth plan.
+	// The type of the IP address. Set the value to **EIP** to associate EIPs with the Internet Shared Bandwidth instance.
 	IpType       *string `json:"IpType,omitempty" xml:"IpType,omitempty"`
 	OwnerAccount *string `json:"OwnerAccount,omitempty" xml:"OwnerAccount,omitempty"`
 	OwnerId      *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
-	// The region ID of the EIP bandwidth plan.
+	// The region ID of the Internet Shared Bandwidth instance.
 	//
 	// You can call the [DescribeRegions](~~36063~~) operation to query the most recent region list.
 	RegionId             *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
@@ -412,7 +412,7 @@ func (s *AddCommonBandwidthPackageIpRequest) SetResourceOwnerId(v int64) *AddCom
 }
 
 type AddCommonBandwidthPackageIpResponseBody struct {
-	// The ID of the request.
+	// The request ID.
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -459,20 +459,23 @@ func (s *AddCommonBandwidthPackageIpResponse) SetBody(v *AddCommonBandwidthPacka
 }
 
 type AddCommonBandwidthPackageIpsRequest struct {
-	// The ID of the EIP bandwidth plan.
+	// The ID of the Internet Shared Bandwidth instance.
 	BandwidthPackageId *string `json:"BandwidthPackageId,omitempty" xml:"BandwidthPackageId,omitempty"`
 	// The client token that is used to ensure the idempotence of the request.
 	//
-	// You can use the client to generate the value, but you must make sure that it is unique among different requests. The client token can contain only ASCII characters.
+	// You can use the client to generate the token, but you must make sure that the token is unique among different requests. The token can contain only ASCII characters.
 	//
-	// >  If you do not set this parameter, the system uses **RequestId** as **ClientToken**. **RequestId** may be different for each API request.
-	ClientToken   *string   `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
+	// >  If you do not specify this parameter, the system automatically uses the **request ID** as the **client token**. The **request ID** may be different for each request.
+	ClientToken *string `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
+	// The list of EIPs that you want to associate with the Internet Shared Bandwidth instance.
+	//
+	// You can specify at most 10 EIP IDs at a time.
 	IpInstanceIds []*string `json:"IpInstanceIds,omitempty" xml:"IpInstanceIds,omitempty" type:"Repeated"`
-	// The type of IP address. Set the value to **EIP** to associate EIPs with the EIP bandwidth plan.
+	// The type of the IP address. Set the value to **EIP** to associate EIPs with the Internet Shared Bandwidth instance.
 	IpType       *string `json:"IpType,omitempty" xml:"IpType,omitempty"`
 	OwnerAccount *string `json:"OwnerAccount,omitempty" xml:"OwnerAccount,omitempty"`
 	OwnerId      *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
-	// The region ID of the EIP bandwidth plan.
+	// The region ID of the Internet Shared Bandwidth instance.
 	//
 	// You can call the [DescribeRegions](~~36063~~) operation to query the most recent region list.
 	RegionId             *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
@@ -534,7 +537,7 @@ func (s *AddCommonBandwidthPackageIpsRequest) SetResourceOwnerId(v int64) *AddCo
 }
 
 type AddCommonBandwidthPackageIpsResponseBody struct {
-	// The ID of the request.
+	// The request ID.
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -946,14 +949,14 @@ func (s *AddPublicIpAddressPoolCidrBlockResponse) SetBody(v *AddPublicIpAddressP
 type AddSourcesToTrafficMirrorSessionRequest struct {
 	// The client token that is used to ensure the idempotence of the request.
 	//
-	// You can use the client to generate the value, but you must make sure that it is unique among different requests. The client token can contain only ASCII characters.
+	// You can use the client to generate the token, but you must make sure that the token is unique among different requests. The token can contain only ASCII characters.
 	//
-	// >  If you do not set this parameter, the system uses **RequestId** as **ClientToken**. **RequestId** may be different for each API request.
+	// >  If you do not specify this parameter, the system automatically uses the **request ID** as the **client token**. The **request ID** may be different for each request.
 	ClientToken *string `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
-	// Specifies whether to check the request without performing the operation. Valid values:
+	// Specifies whether to perform only a dry run, without performing the actual request. Valid values:
 	//
-	// *   **true**: checks the request without performing the operation. The system checks the required parameters, request format, and limits. If the request fails the check, an error message is returned. If the request passes the check, the `DryRunOperation` error code is returned.
-	// *   **false** (default): sends the request. After the request passes the check, the operation is performed.
+	// *   **true**: performs only a dry run. The system checks the request for potential issues, including missing parameter values, incorrect request syntax, and service limits. If the request fails dry run, an error message is returned. If the request passes the dry run, the `DryRunOperation` error code is returned.
+	// *   **false** (default): performs a dry run and performs the actual request. If the request passes the dry run, a 2xx HTTP status code is returned and the operation is performed.
 	DryRun       *bool   `json:"DryRun,omitempty" xml:"DryRun,omitempty"`
 	OwnerAccount *string `json:"OwnerAccount,omitempty" xml:"OwnerAccount,omitempty"`
 	OwnerId      *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
@@ -966,7 +969,8 @@ type AddSourcesToTrafficMirrorSessionRequest struct {
 	ResourceOwnerAccount *string `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
 	ResourceOwnerId      *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
 	// The ID of the traffic mirror session.
-	TrafficMirrorSessionId *string   `json:"TrafficMirrorSessionId,omitempty" xml:"TrafficMirrorSessionId,omitempty"`
+	TrafficMirrorSessionId *string `json:"TrafficMirrorSessionId,omitempty" xml:"TrafficMirrorSessionId,omitempty"`
+	// The ID of the traffic mirror source. You can specify only an elastic network interface (ENI) as the traffic mirror source. The default value of **N** is **1**, which indicates that you can add only one traffic mirror source to a traffic mirror session.
 	TrafficMirrorSourceIds []*string `json:"TrafficMirrorSourceIds,omitempty" xml:"TrafficMirrorSourceIds,omitempty" type:"Repeated"`
 }
 
@@ -1024,7 +1028,7 @@ func (s *AddSourcesToTrafficMirrorSessionRequest) SetTrafficMirrorSourceIds(v []
 }
 
 type AddSourcesToTrafficMirrorSessionResponseBody struct {
-	// The ID of the request.
+	// The request ID.
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -1071,50 +1075,50 @@ func (s *AddSourcesToTrafficMirrorSessionResponse) SetBody(v *AddSourcesToTraffi
 }
 
 type AllocateEipAddressRequest struct {
-	// The promotion code. Ignore this parameter.
+	// The promotion code. This parameter is not required.
 	ActivityId *int64 `json:"ActivityId,omitempty" xml:"ActivityId,omitempty"`
-	// Specifies whether to enable automatic payment. Default value: false. Valid values:
+	// Specifies whether to enable automatic payment. Valid values:
 	//
-	// *   **false**: disables automatic payment. This is the default value. If you select this option, you must go to the Order Center to complete the payment after an order is generated.
-	// *   **true**: enables automatic payment. Payments are automatically completed.
+	// *   **false** (default): The automatic payment is disabled. If you select this option, you must go to the Order Center to complete the payment after an order is generated.
+	// *   **true**: The automatic payment is enabled. Payments are automatically complete after an order is generated.
 	//
-	// When **InstanceChargeType** is set to **PrePaid**, this parameter is required. When **InstanceChargeType** is set to **PostPaid**, this parameter is not required.
+	// If **InstanceChargeType** is set to **PrePaid**, this parameter is required. If **InstanceChargeType** is set to **PostPaid**, this parameter is not required.
 	AutoPay *bool `json:"AutoPay,omitempty" xml:"AutoPay,omitempty"`
 	// The maximum bandwidth of the EIP. Unit: Mbit/s.
 	//
-	// *   When **InstanceChargeType** is set to **PostPaid** and **InternetChargeType** is set to **PayByBandwidth**, valid values for **Bandwidth** are **1** to **500**.
-	// *   When **InstanceChargeType** is set to **PostPaid** and **InternetChargeType** is set to **PayByTraffic**, valid values for **Bandwidth** are **1** to **200**.
-	// *   When **InstanceChargeType** is set to **PrePaid**, valid values for **Bandwidth** are **1** to **1000**.
+	// *   Valid values when **InstanceChargeType** is set to **PostPaid** and **InternetChargeType** is set to **PayByBandwidth**: **1** to **500**.****
+	// *   Valid values when **InstanceChargeType** is set to **PostPaid** and **InternetChargeType** is set to **PayByTraffic**: **1** to **200**.****
+	// *   Valid values when **InstanceChargeType** is set to **PrePaid**: **1** to **1000**.****
 	//
 	// Default value: **5**. Unit: Mbit/s.
 	Bandwidth *string `json:"Bandwidth,omitempty" xml:"Bandwidth,omitempty"`
 	// The client token that is used to ensure the idempotence of the request.
 	//
-	// You can use the client to generate the token, but you must make sure that the token is unique among different requests. The **token** can contain only ASCII characters.
+	// You can use the client to generate a token, but you must make sure that the token is unique among different requests. The **client token** can contain only ASCII characters.
 	//
-	// >  If you do not set this parameter, the system automatically uses the value of **RequestId** as the value of **ClientToken**. The value of **RequestId** for each API request is different.
+	// >  If you do not specify this parameter, the system automatically uses the value of **RequestId** as the **client token**. The value of **RequestId** is different for each API request.
 	ClientToken *string `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
 	// The description of the EIP.
 	//
-	// The description must be 2 to 256 characters in length. It must start with a letter but cannot start with `http://` or `https://`.
+	// The description must be 2 to 256 characters in length. The description must start with a letter but cannot start with `http://` or `https://`.
 	//
-	// >  This parameter is unavailable when you create a subscription EIP.
+	// >  You cannot specify this parameter if you create a subscription EIP.
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
 	// The line type. Valid values:
 	//
-	// *   **BGP** (default): BGP (Multi-ISP) lines All regions support BGP (Multi-ISP) EIPs.
-	// *   **BGP_PRO**: BGP (Multi-ISP) Pro lines Only the following regions support BGP (Multi-ISP) Pro lines: China (Hong Kong), Singapore, Malaysia (Kuala Lumpur), Philippines (Manila), Indonesia (Jakarta), and Thailand (Bangkok).
+	// *   **BGP** (default): BGP (Multi-ISP) All regions support BGP (Multi-ISP) EIPs.
+	// *   **BGP_PRO**: BGP (Multi-ISP) Pro Only the following regions support BGP (Multi-ISP) Pro lines: China (Hong Kong), Singapore, Japan (Tokyo), Malaysia (Kuala Lumpur), Philippines (Manila), Indonesia (Jakarta), and Thailand (Bangkok).
 	//
-	// For more information about BGP (Multi-ISP) and BGP (Multi-ISP) Pro, see [EIP line types](~~32321~~).
+	// For more information about BGP (Multi-ISP) and BGP (Multi-ISP) Pro, see the "Line types" section of [What is EIP?](~~32321~~)
 	//
 	// *   If you are allowed to use single-ISP bandwidth, you can also choose one of the following values:
 	//
-	//     *   **ChinaTelecom**: China Telecom
-	//     *   **ChinaUnicom**: China Unicom
-	//     *   **ChinaMobile**: China Mobile
-	//     *   **ChinaTelecom_L2**: China Telecom L2
-	//     *   **ChinaUnicom_L2**: China Unicom L2
-	//     *   **ChinaMobile_L2**: China Mobile L2
+	//     *   **ChinaTelecom**
+	//     *   **ChinaUnicom**
+	//     *   **ChinaMobile**
+	//     *   **ChinaTelecom_L2**
+	//     *   **ChinaUnicom_L2**
+	//     *   **ChinaMobile_L2**
 	//
 	// *   If your services are deployed in China East 1 Finance, this parameter is required and you must set the value to **BGP_FinanceCloud**.
 	ISP *string `json:"ISP,omitempty" xml:"ISP,omitempty"`
@@ -1123,60 +1127,77 @@ type AllocateEipAddressRequest struct {
 	// *   **PrePaid**: subscription
 	// *   **PostPaid** (default): pay-as-you-go
 	//
-	// When **InstanceChargeType** is set to **PrePaid**, set **InternetChargeType** to **PayByBandwidth**. When **InstanceChargeType** is set to **PostPaid**, set **InternetChargeType** to **PayByBandwidth** or **PayByTraffic**.
+	// If **InstanceChargeType** is set to **PrePaid**, set **InternetChargeType** to **PayByBandwidth**. If **InstanceChargeType** is set to **PostPaid**, set **InternetChargeType** to **PayByBandwidth** or **PayByTraffic**.
 	InstanceChargeType *string `json:"InstanceChargeType,omitempty" xml:"InstanceChargeType,omitempty"`
-	InstanceId         *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	// The EIP ID.
+	//
+	// Specify **IpAddress** or **InstanceId**. If you leave both parameters empty, the system randomly allocates an EIP.
+	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
 	// The metering method of the EIP. Valid values:
 	//
 	// *   **PayByBandwidth** (default): pay-by-bandwidth
 	// *   **PayByTraffic**: pay-by-data-transfer
 	//
-	// When **InstanceChargeType** is set to **PrePaid**, you must set **InternetChargeType** to **PayByBandwidth**.
+	// If **InstanceChargeType** is set to **PrePaid**, set **InternetChargeType** to **PayByBandwidth**.
 	//
-	// When **InstanceChargeType** is set to **PostPaid**, set **InternetChargeType** to **PayByBandwidth** or **PayByTraffic**.
+	// If **InstanceChargeType** is set to **PostPaid**, set **InternetChargeType** to **PayByBandwidth** or **PayByTraffic**.
 	InternetChargeType *string `json:"InternetChargeType,omitempty" xml:"InternetChargeType,omitempty"`
-	IpAddress          *string `json:"IpAddress,omitempty" xml:"IpAddress,omitempty"`
-	// The name of the EIP.
+	// The IP address of the EIP that you want to request.
 	//
-	// The name must be 1 to 128 characters in length, and can contain letters, digits, periods (.), underscores (\_), and hyphens (-). It must start with a letter.
+	// Specify **IpAddress** or **InstanceId**. If you leave both parameters empty, the system randomly allocates an EIP.
+	IpAddress *string `json:"IpAddress,omitempty" xml:"IpAddress,omitempty"`
+	// The EIP name.
 	//
-	// >  This parameter is unavailable when you create a subscription EIP.
+	// The name must be 1 to 128 characters in length and start with a letter, and can contain letters, digits, periods (.), underscores (\_), and hyphens (-).
+	//
+	// >  You cannot specify this parameter if you create a subscription EIP.
 	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
-	// The network type. Set the value to **public**, which specifies the Internet.
+	// The network type. Default value: **public**.
 	Netmode      *string `json:"Netmode,omitempty" xml:"Netmode,omitempty"`
 	OwnerAccount *string `json:"OwnerAccount,omitempty" xml:"OwnerAccount,omitempty"`
 	OwnerId      *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
-	// The subscription duration of the instance.
+	// The subscription duration of the EIP.
 	//
-	// When **PricingCycle** is set to **Month**, set **Period** to a value from **1** to **9**.
+	// Valid values when **PricingCycle** is set to **Month**: **1** to **9**.****
 	//
-	// When **PricingCycle** is set to **Year**, set **Period** to a value from **1** to **5**.
+	// Valid values when **PricingCycle** is set to **Year**: **1** to **5**.****
 	//
-	// This parameter is required when **InstanceChargeType** is set to **PrePaid**. This parameter is optional when **InstanceChargeType** is set to **PostPaid**.
+	// This parameter must be specified when **InstanceChargeType** is set to **PrePaid**. This parameter is optional when **InstanceChargeType** is set to **PostPaid**.
 	Period *int32 `json:"Period,omitempty" xml:"Period,omitempty"`
 	// The billing cycle of the subscription EIP. Valid values:
 	//
-	// *   **Month** (default): The EIP is billed on a monthly basis.
-	// *   **Year**: The EIP is billed on an annual basis.
+	// *   **Month** (default)
+	// *   **Year**
 	//
-	// When **InstanceChargeType** is set to **PrePaid**, this parameter is required. When **InstanceChargeType** is set to **PostPaid**, this parameter is not required.
+	// If **InstanceChargeType** is set to **PrePaid**, this parameter is required. If **InstanceChargeType** is set to **PostPaid**, this parameter is not required.
 	PricingCycle *string `json:"PricingCycle,omitempty" xml:"PricingCycle,omitempty"`
 	// The ID of the IP address pool.
 	//
 	// The EIP is allocated from the IP address pool.
 	//
-	// You cannot use the IP address pool feature by default. To use the IP address pool feature, apply for the privilege in the Quota Center console. For more information, see [Request a quota increase in the Quota Center console](~~108213~~).
+	// By default, the IP address pool feature is unavailable. To use the IP address pool, apply for the privilege in the Quota Center console. For more information, see the "Request a quota increase in the Quota Center console" section in [Manage EIP quotas](~~108213~~).
 	PublicIpAddressPoolId *string `json:"PublicIpAddressPoolId,omitempty" xml:"PublicIpAddressPoolId,omitempty"`
 	// The ID of the region to which the EIP belongs.
 	//
-	// You can call the [DescribeRegions](~~36063~~) operation to query the most recent region list.
+	// You can call the [DescribeRegions](~~36063~~) operation to query the region ID.
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 	// The ID of the resource group.
-	ResourceGroupId         *string   `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
-	ResourceOwnerAccount    *string   `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
-	ResourceOwnerId         *int64    `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
+	ResourceGroupId      *string `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
+	ResourceOwnerAccount *string `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
+	ResourceOwnerId      *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
+	// The editions of Anti-DDoS.
+	//
+	// *   If you do not specify this parameter, Anti-DDoS Origin Basic is used.
+	// *   If you set the parameter to **AntiDDoS_Enhanced**, Anti-DDoS Pro/Premium is used.
+	//
+	// You can specify up to 10 editions of Anti-DDoS.
 	SecurityProtectionTypes []*string `json:"SecurityProtectionTypes,omitempty" xml:"SecurityProtectionTypes,omitempty" type:"Repeated"`
-	Zone                    *string   `json:"Zone,omitempty" xml:"Zone,omitempty"`
+	// The zone of the EIP.
+	//
+	// When the service type of the IP address pool specified by **PublicIpAddressPoolId** is CloudBox, the default value is the zone of the IP address pool.
+	//
+	// For more information, see [ListPublicIpAddressPools](~~429433~~).
+	Zone *string `json:"Zone,omitempty" xml:"Zone,omitempty"`
 }
 
 func (s AllocateEipAddressRequest) String() string {
@@ -1303,13 +1324,13 @@ func (s *AllocateEipAddressRequest) SetZone(v string) *AllocateEipAddressRequest
 }
 
 type AllocateEipAddressResponseBody struct {
-	// The ID of the EIP.
+	// The EIP ID.
 	AllocationId *string `json:"AllocationId,omitempty" xml:"AllocationId,omitempty"`
 	// The EIP that is allocated. This parameter is returned only when **InstanceChargeType** is set to **PostPaid**.
 	EipAddress *string `json:"EipAddress,omitempty" xml:"EipAddress,omitempty"`
-	// The ID of the order. This parameter is returned only when **InstanceChargeType** is set to **PrePaid**.
+	// The order ID. This parameter is returned only when **InstanceChargeType** is set to **PrePaid**.
 	OrderId *int64 `json:"OrderId,omitempty" xml:"OrderId,omitempty"`
-	// The ID of the request.
+	// The request ID.
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	// The ID of the resource group. This parameter is returned only when **InstanceChargeType** is set to **PostPaid**.
 	ResourceGroupId *string `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
@@ -1378,105 +1399,111 @@ func (s *AllocateEipAddressResponse) SetBody(v *AllocateEipAddressResponseBody) 
 }
 
 type AllocateEipAddressProRequest struct {
-	// Specifies whether to enable automatic payment. Valid values:
+	// Specifies whether to enable automatic payment. Default value: true. Valid values:
 	//
-	// *   **false**: disables automatic payment. After an order is generated, you must go to the Order Center to complete the payment.
-	// *   **true**: enabled. Payments are automatically completed.
+	// *   **false**: Automatic payment is disabled. After an order is generated, you must go to the Order Center to complete the payment.
+	// *   **true**: Automatic payment is enabled. After an order is generated, the payment is automatically completed.
 	//
-	// When **InstanceChargeType** is set to **PrePaid**, this parameter is required. When **InstanceChargeType** is set to **PostPaid**, this parameter is not required.
+	// This parameter is required if **InstanceChargeType** is set to **PrePaid**. This parameter is optional if **InstanceChargeType** is set to **PostPaid**.
 	AutoPay *bool `json:"AutoPay,omitempty" xml:"AutoPay,omitempty"`
-	// The maximum bandwidth of the specified EIP. Unit: Mbit/s.
+	// The maximum bandwidth of the EIP. Unit: Mbit/s.
 	//
-	// *   When **InstanceChargeType** is set to **PostPaid** and **InternetChargeType** is set to **PayByBandwidth**, valid values for **Bandwidth** are **1** to **500**.
-	// *   When **InstanceChargeType** is set to **PostPaid** and **InternetChargeType** is set to **PayByTraffic**, valid values for **Bandwidth** are **1** to **200**.
-	// *   When **InstanceChargeType** is set to **PrePaid**, valid values for **Bandwidth** are **1** to **1000**.
+	// *   Valid values when **InstanceChargeType** is set to **PostPaid** and **InternetChargeType** is set to **PayByBandwidth**: **1** to **500**.****
+	// *   Valid values when **InstanceChargeType** is set to **PostPaid** and **InternetChargeType** is set to **PayByTraffic**: **1** to **200**.****
+	// *   Valid values when **InstanceChargeType** is set to **PrePaid**: **1** to **1000**.****
 	//
 	// Default value: **5**. Unit: Mbit/s.
 	Bandwidth *string `json:"Bandwidth,omitempty" xml:"Bandwidth,omitempty"`
 	// The client token that is used to ensure the idempotence of the request.
 	//
-	// You can use the client to generate the token, but you must make sure that the token is unique among different requests. The token can contain only ASCII characters.
+	// You can use the client to generate a token, but you must make sure that the token is unique among different requests. The token can contain only ASCII characters.
 	//
-	// >  If you do not set this parameter, **ClientToken** is set to the value of **RequestId**. The value of **RequestId** for each API request may be different.
+	// >  If you do not specify this parameter, the system automatically uses the **request ID** as the **client token**. The **request ID** may be different for each request.
 	ClientToken *string `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
 	// The line type. Valid values:
 	//
-	// *   **BGP** (default): BGP (Multi-ISP) lines All regions support BGP (Multi-ISP) EIPs.
-	// *   **BGP_PRO**: BGP (Multi-ISP) Pro lines Only the following regions support BGP (Multi-ISP) Pro lines: China (Hong Kong), Singapore, Malaysia (Kuala Lumpur), Philippines (Manila), Indonesia (Jakarta), and Thailand (Bangkok).
+	// *   **BGP** (default): BGP (Multi-ISP) line The BGP (Multi-ISP) line is supported in all regions.
+	// *   **BGP_PRO**: BGP (Multi-ISP) Pro line The BGP (Multi-ISP) Pro line is supported in the China (Hong Kong), Singapore, Malaysia (Kuala Lumpur), Philippines (Manila), Indonesia (Jakarta), and Thailand (Bangkok) regions.
 	//
-	// For more information about BGP (Multi-ISP) and BGP (Multi-ISP) Pro, see [EIP line types](~~32321~~).
+	// For more information about the BGP (Multi-ISP) line and BGP (Multi-ISP) Pro line, see the "Line types" section of [What is EIP?](~~32321~~)
 	//
 	// *   If you are allowed to use single-ISP bandwidth, you can also choose one of the following values:
 	//
-	//     *   **ChinaTelecom**: China Telecom
-	//     *   **ChinaUnicom**: China Unicom
-	//     *   **ChinaMobile**: China Mobile
-	//     *   **ChinaTelecom_L2**: China Telecom L2
-	//     *   **ChinaUnicom_L2**: China Unicom L2
-	//     *   **ChinaMobile_L2**: China Mobile L2
+	//     *   **ChinaTelecom**
+	//     *   **ChinaUnicom**
+	//     *   **ChinaMobile**
+	//     *   **ChinaTelecom_L2**
+	//     *   **ChinaUnicom_L2**
+	//     *   **ChinaMobile_L2**
 	//
-	// *   If your services are deployed in China East 1 Finance, this parameter is required and you must set the value to **BGP_FinanceCloud**.
+	// *   If your services are deployed in China East 1 Finance, this parameter is required and you must set the parameter to **BGP_FinanceCloud**.
 	ISP *string `json:"ISP,omitempty" xml:"ISP,omitempty"`
-	// The billing method of the specified EIP. Valid values:
+	// The billing method of the EIP. Valid values:
 	//
 	// *   **PrePaid**: subscription
 	// *   **PostPaid** (default): pay-as-you-go
 	//
-	// When **InstanceChargeType** is set to **PrePaid**, you must set **InternetChargeType** to **PayByBandwidth**.
+	// Set the value of **InternetChargeType** to **PayByBandwidth** if **InstanceChargeType** is set to **PrePaid**.
 	//
-	// When **InstanceChargeType** is set to **PostPaid**, you must set **InternetChargeType** to **PayByBandwidth** or **PayByTraffic**.
+	// Valid values when **InstanceChargeType** is set to **PostPaid**: **PayByBandwidth** or **PayByTraffic**.
 	InstanceChargeType *string `json:"InstanceChargeType,omitempty" xml:"InstanceChargeType,omitempty"`
-	// The ID of the EIP.
+	// The EIP ID.
 	//
-	// Set **IpAddress** or **InstanceId**. If you leave both parameters empty, the system randomly allocates an EIP.
+	// Specify **IpAddress** or **InstanceId**. If you leave both parameters empty, the system randomly allocates an EIP.
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	// The metering method of the specified EIP. Valid values:
+	// The metering method of the EIP. Valid values:
 	//
-	// *   **PayByBandwidth** (default): pay-by-bandwidth
-	// *   **PayByTraffic**: pay-by-data-transfer
+	// *   **PayByBandwidth** (default)
+	// *   **PayByTraffic**
 	//
-	// When **InstanceChargeType** is set to **PrePaid**, you must set **InternetChargeType** to **PayByBandwidth**.
+	// Set the value of **InternetChargeType** to **PayByBandwidth** if **InstanceChargeType** is set to **PrePaid**.
 	//
-	// When **InstanceChargeType** is set to **PostPaid**, you must set **InternetChargeType** to **PayByBandwidth** or **PayByTraffic**.
+	// Valid values when **InstanceChargeType** is set to **PostPaid**: **PayByBandwidth** or **PayByTraffic**.
 	InternetChargeType *string `json:"InternetChargeType,omitempty" xml:"InternetChargeType,omitempty"`
-	// The IP address of the EIP that you want to request.
+	// The IP address of the EIP.
 	//
-	// Set **IpAddress** or **InstanceId**. If you leave both parameters empty, the system randomly allocates an EIP.
+	// Specify **IpAddress** or **InstanceId**. If you leave both parameters empty, the system randomly allocates an EIP.
 	IpAddress *string `json:"IpAddress,omitempty" xml:"IpAddress,omitempty"`
-	// The network type. Set the value to **public**, which specifies the Internet.
+	// The network type. By default, this value is set to **public**, which specifies the public network type.
 	Netmode      *string `json:"Netmode,omitempty" xml:"Netmode,omitempty"`
 	OwnerAccount *string `json:"OwnerAccount,omitempty" xml:"OwnerAccount,omitempty"`
 	OwnerId      *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
-	// The subscription duration of the bandwidth plan.
+	// The subscription duration.
 	//
-	// *   If **PricingCycle** is set to **Month**, set **Period** to a value from **1 to 9**.
-	// *   If **PricingCycle** is set to **Year**, set **Period** to a value from **1 to 3**.
+	// *   Valid values when **PricingCycle** is set to **Month**: **1 to 9**.****
+	// *   Valid values when **PricingCycle** is set to **Year**: **1 to 3**.****
 	//
-	// When **InstanceChargeType** is set to **PrePaid**, this parameter is required.
+	// This parameter is required if **InstanceChargeType** is set to **PrePaid**.
 	//
-	// Ignore this parameter when **InstanceChargeType** is set to **PostPaid**.
+	// Leave this parameter empty if **InstanceChargeType** is set to **PostPaid**.
 	Period *int32 `json:"Period,omitempty" xml:"Period,omitempty"`
 	// The billing cycle of the subscription EIP. Valid values:
 	//
-	// *   **Month** (default): The EIP is billed on a monthly basis.
-	// *   **Year**: The EIP is billed on an annual basis.
+	// *   **Month** (default)
+	// *   **Year**
 	//
-	// When **InstanceChargeType** is set to **PrePaid**, this parameter is required. When **InstanceChargeType** is set to **PostPaid**, this parameter is not required.
+	// This parameter is required if **InstanceChargeType** is set to **PrePaid**. This parameter is optional if **InstanceChargeType** is set to **PostPaid**.
 	PricingCycle *string `json:"PricingCycle,omitempty" xml:"PricingCycle,omitempty"`
 	// The ID of the IP address pool.
 	//
 	// The EIP is allocated from the IP address pool.
 	//
-	// You cannot use the IP address pool feature by default. To use this feature, apply for the privilege in the Quota Center console. For more information, see [Request a quota increase in the Quota Center console](~~108213~~).
+	// By default, you cannot use the IP address pool. To use this feature, apply for the privilege in the Quota Center console. For more information, see the "Request a quota increase in the Quota Center console" section of [Manage EIP quotas](~~108213~~).
 	PublicIpAddressPoolId *string `json:"PublicIpAddressPoolId,omitempty" xml:"PublicIpAddressPoolId,omitempty"`
-	// The ID of the region where you want to request a specified EIP.
+	// The ID of the region to which the EIP belongs.
 	//
-	// You can call the [DescribeRegions](~~36063~~) operation to query the most recent region list.
+	// You can call the [DescribeRegions](~~36063~~) operation to query the region ID.
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 	// The ID of the resource group to which the EIP belongs.
-	ResourceGroupId         *string   `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
-	ResourceOwnerAccount    *string   `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
-	ResourceOwnerId         *int64    `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
+	ResourceGroupId      *string `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
+	ResourceOwnerAccount *string `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
+	ResourceOwnerId      *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
+	// The editions of Anti-DDoS.
+	//
+	// *   If you do not specify this parameter, Anti-DDoS Origin Basic is used.
+	// *   If you set the parameter to **AntiDDoS_Enhanced**, Anti-DDoS Pro/Premium is used.
+	//
+	// You can configure Anti-DDoS editions for up to 10 EIPs.
 	SecurityProtectionTypes []*string `json:"SecurityProtectionTypes,omitempty" xml:"SecurityProtectionTypes,omitempty" type:"Repeated"`
 }
 
@@ -1584,15 +1611,15 @@ func (s *AllocateEipAddressProRequest) SetSecurityProtectionTypes(v []*string) *
 }
 
 type AllocateEipAddressProResponseBody struct {
-	// The ID of the specified EIP.
+	// The EIP ID.
 	AllocationId *string `json:"AllocationId,omitempty" xml:"AllocationId,omitempty"`
-	// The IP address of the requested EIP.
+	// The IP address that is allocated to the EIP. This parameter is returned only when **InstanceChargeType** is set to **PostPaid**.
 	EipAddress *string `json:"EipAddress,omitempty" xml:"EipAddress,omitempty"`
-	// The order number. This parameter is returned only when **InstanceChargeType** is set to **PrePaid**.
+	// The order ID. This parameter is returned only when **InstanceChargeType** is set to **PrePaid**.
 	OrderId *int64 `json:"OrderId,omitempty" xml:"OrderId,omitempty"`
-	// The ID of the request.
+	// The request ID.
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// The ID of the resource group.
+	// The ID of the resource group. This parameter is returned only when **InstanceChargeType** is set to **PostPaid**.
 	ResourceGroupId *string `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
 }
 
@@ -1659,66 +1686,67 @@ func (s *AllocateEipAddressProResponse) SetBody(v *AllocateEipAddressProResponse
 }
 
 type AllocateEipSegmentAddressRequest struct {
-	// The maximum bandwidth of the EIP. Unit: Mbit/s.
+	// The maximum bandwidth of the contiguous EIP group. Unit: Mbit/s.
 	//
-	// *   When **InstanceChargeType** is set to **PostPaid** and **InternetChargeType** is set to **PayByBandwidth**, the valid values for **Bandwidth** are **1** to **500**.
-	// *   When **InstanceChargeType** is set to **PostPaid** and **InternetChargeType** is set to **PayByTraffic**, the valid values for **Bandwidth** are **1** to **200**.
-	// *   When **InstanceChargeType** is set to **PrePaid**, the valid values for **Bandwidth** are **1** to **1000**.
+	// *   Valid values when **InstanceChargeType** is set to **PostPaid** and **InternetChargeType** is set to **PayByBandwidth**: **1** to **500**.****
+	// *   Valid values when **InstanceChargeType** is set to **PostPaid** and **InternetChargeType** is set to **PayByTraffic**: **1** to **200**.****
+	// *   Valid values when **InstanceChargeType** is set to **PrePaid**: **1** to **1000**.****
 	//
 	// Default value: **5**. Unit: Mbit/s.
 	Bandwidth *string `json:"Bandwidth,omitempty" xml:"Bandwidth,omitempty"`
 	// The client token that is used to ensure the idempotence of the request.
 	//
-	// You can use the client to generate the token, but you must make sure that the token is unique among all requests. The **client token** can contain only ASCII characters.
+	// You can use the client to generate a token, but you must make sure that the token is unique among different requests. **ClientToken** can contain only ASCII characters.
 	//
-	// >  If you do not specify this parameter, the system uses **RequestId** as **ClientToken**. The value of **RequestId** for each API request may be different.
+	// >  If you do not specify this parameter, the system automatically uses the **request ID** as the **client token**. The **request ID** may be different for each request.
 	ClientToken *string `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
-	// The subnet mask length of the contiguous EIPs. Valid values:
+	// The subnet mask of the contiguous EIP group. Valid values:
 	//
-	// - **28**: applies for 16 contiguous EIPs in each call.
-	// - **27**: applies for 32 contiguous EIPs in each call.
-	// - **26**: applies for 64 contiguous EIPs each call.
-	// - **25**: applies for 128 contiguous EIPs in each call.
-	// - **24**: applies for 256 contiguous EIPs in each call.
+	// *   **28**: applies for 16 contiguous EIPs in each call.
+	// *   **27**: applies for 32 contiguous EIPs in each call.
+	// *   **26**: applies for 64 contiguous EIPs in each call.
+	// *   **25**: applies for 128 contiguous EIPs in each call.
+	// *   **24**: applies for 256 contiguous EIPs in each call.
 	//
-	// >  The number of contiguous EIPs allocated by the system may be less than the requested number because one, three, or four EIPs may be reserved.
+	// >  Some IP address are reserved for specific purposes. Therefore, the actual number of the contiguous EIPs may be one, three, or four less than the expected number.
 	EipMask *string `json:"EipMask,omitempty" xml:"EipMask,omitempty"`
-	// The metering method of the contiguous EIPs. Valid values:
+	// The metering method of the contiguous EIP group. Valid values:
 	//
-	// *   **PayByBandwidth** (default): pay-by-bandwidth
-	// *   **PayByTraffic**: pay-by-data-transfer
+	// *   **PayByBandwidth** (default)
+	// *   **PayByTraffic**
 	InternetChargeType *string `json:"InternetChargeType,omitempty" xml:"InternetChargeType,omitempty"`
 	// The line type. Valid values:
 	//
-	// *   **BGP** (default): BGP (Multi-ISP) lines All regions support BGP (Multi-ISP) EIPs.
-	// *   **BGP_PRO**: BGP (Multi-ISP) Pro lines. Only the following regions support BGP (Multi-ISP) Pro lines: China (Hong Kong), Singapore, Malaysia (Kuala Lumpur), Philippines (Manila), Indonesia (Jakarta), and Thailand (Bangkok).
+	// *   **BGP** (default): BGP (Multi-ISP) line The BGP (Multi-ISP) line is supported in all regions.
+	// *   **BGP_PRO**: BGP (Multi-ISP) Pro line BGP (Multi-ISP) Pro line is supported only in the China (Hong Kong), Singapore, Japan (Tokyo), Malaysia (Kuala Lumpur), Philippines (Manila), Indonesia (Jakarta), and Thailand (Bangkok) regions.
 	//
-	// For more information about BGP (Multi-ISP) and BGP (Multi-ISP) Pro, see [EIP line types](~~32321~~).
+	// For more information about the BGP (Multi-ISP) line and BGP (Multi-ISP) Pro line, see [EIP line types](~~32321~~).
 	//
-	// If you are allowed to use single-ISP bandwidth, you can also choose one of the following values:
+	// If you are allowed to use single-ISP bandwidth, you can also use one of the following values:
 	//
-	// *   **ChinaTelecom**: China Telecom
-	// *   **ChinaUnicom**: China Unicom
-	// *   **ChinaMobile**: China Mobile
-	// *   **ChinaTelecom_L2**: China Telecom L2
-	// *   **ChinaUnicom_L2**: China Unicom L2
-	// *   **ChinaMobile_L2**: China Mobile L2
+	// *   **ChinaTelecom**
+	// *   **ChinaUnicom**
+	// *   **ChinaMobile**
+	// *   **ChinaTelecom_L2**
+	// *   **ChinaUnicom_L2**
+	// *   **ChinaMobile_L2**
 	//
-	// If your services are deployed in China East 1 Finance, this parameter is required and you must set the value to **BGP_FinanceCloud**.
+	// If your services are deployed in China East 1 Finance, this parameter is required and you must set the parameter to **BGP_FinanceCloud**.
 	Isp *string `json:"Isp,omitempty" xml:"Isp,omitempty"`
-	// Set the value to **public**, which specifies the Internet.
+	// The network type. Set the value to **public**, which specifies the public network type.
 	Netmode      *string `json:"Netmode,omitempty" xml:"Netmode,omitempty"`
 	OwnerAccount *string `json:"OwnerAccount,omitempty" xml:"OwnerAccount,omitempty"`
 	OwnerId      *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
-	// The region ID of the contiguous EIPs.
+	// The ID of the region in which the contiguous EIP group resides.
 	//
-	// You can call the [DescribeRegions](~~36063~~) operation to query the most recent region list.
+	// You can call the [DescribeRegions](~~36063~~) operation to query the region ID.
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	// The ID of the resource group.
+	// The resource group ID.
 	ResourceGroupId      *string `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
 	ResourceOwnerAccount *string `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
 	ResourceOwnerId      *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
-	Zone                 *string `json:"Zone,omitempty" xml:"Zone,omitempty"`
+	// The zone of the contiguous EIP group.
+	Zone *string `json:"Zone,omitempty" xml:"Zone,omitempty"`
 }
 
 func (s AllocateEipSegmentAddressRequest) String() string {
@@ -1797,7 +1825,7 @@ func (s *AllocateEipSegmentAddressRequest) SetZone(v string) *AllocateEipSegment
 type AllocateEipSegmentAddressResponseBody struct {
 	// The ID of the contiguous EIP group.
 	EipSegmentInstanceId *string `json:"EipSegmentInstanceId,omitempty" xml:"EipSegmentInstanceId,omitempty"`
-	// The ID of the request.
+	// The request ID.
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -1849,18 +1877,18 @@ func (s *AllocateEipSegmentAddressResponse) SetBody(v *AllocateEipSegmentAddress
 }
 
 type AllocateIpv6InternetBandwidthRequest struct {
-	// The Internet bandwidth that you want to purchase for the IPv6 gateway. Valid values: **1 to 5000**. Unit: Mbit/s.
+	// The Internet bandwidth of the IPv6 gateway. Unit: Mbit/s. Valid values: **1 to 5000**.
 	Bandwidth *int32 `json:"Bandwidth,omitempty" xml:"Bandwidth,omitempty"`
 	// The client token that is used to ensure the idempotence of the request.
 	//
-	// You can use the client to generate the value, but you must ensure that the value is unique among all requests. ClientToken can contain only ASCII characters.
+	// You can use the client to generate the token, but you must make sure that the token is unique among different requests. The token can contain only ASCII characters.
 	//
-	// >  If you do not set this parameter, **ClientToken** is set to the value of **RequestId**. The value of **RequestId** may be different for each API request.
+	// >  If you do not specify this parameter, the system automatically uses the **request ID** as the **client token**. The **request ID** may be different for each request.
 	ClientToken *string `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
-	// The metering method of the Internet bandwidth of the IPv6 gateway. Valid values:
+	// The metering method of the Internet bandwidth for the IPv6 address. Valid values:
 	//
-	// *   **PayByTraffic**: the pay-by-data-transfer metering method
-	// *   **PayByBandwidth**: the pay-by-bandwidth metering method
+	// *   **PayByTraffic**: pay-by-data-transfer
+	// *   **PayByBandwidth** (default): pay-by-bandwidth
 	InternetChargeType *string `json:"InternetChargeType,omitempty" xml:"InternetChargeType,omitempty"`
 	// The ID of the IPv6 address.
 	Ipv6AddressId *string `json:"Ipv6AddressId,omitempty" xml:"Ipv6AddressId,omitempty"`
@@ -1868,7 +1896,7 @@ type AllocateIpv6InternetBandwidthRequest struct {
 	Ipv6GatewayId *string `json:"Ipv6GatewayId,omitempty" xml:"Ipv6GatewayId,omitempty"`
 	OwnerAccount  *string `json:"OwnerAccount,omitempty" xml:"OwnerAccount,omitempty"`
 	OwnerId       *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
-	// The ID of the region where the IPv6 gateway is deployed. You can call the [DescribeRegions](~~36063~~) operation to obtain the region ID.
+	// The ID of the region where the IPv6 gateway is deployed. You can call the [DescribeRegions](~~36063~~) operation to query the most recent region list.
 	RegionId             *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 	ResourceOwnerAccount *string `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
 	ResourceOwnerId      *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
@@ -1937,7 +1965,7 @@ type AllocateIpv6InternetBandwidthResponseBody struct {
 	InternetBandwidthId *string `json:"InternetBandwidthId,omitempty" xml:"InternetBandwidthId,omitempty"`
 	// The ID of the IPv6 address.
 	Ipv6AddressId *string `json:"Ipv6AddressId,omitempty" xml:"Ipv6AddressId,omitempty"`
-	// The ID of the request.
+	// The request ID.
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -2353,54 +2381,54 @@ type AssociateEipAddressRequest struct {
 	AllocationId *string `json:"AllocationId,omitempty" xml:"AllocationId,omitempty"`
 	// The client token that is used to ensure the idempotence of the request.
 	//
-	// You can use the client to generate the value, but you must make sure that it is unique among different requests. ClientToken can contain only ASCII characters.
+	// You can use the client to generate a token, but you must make sure that the token is unique among different requests. The token can contain only ASCII characters.
 	//
-	// >  If you do not set this parameter, the system sets **ClientToken** to the value of **RequestId**. The value of **RequestId** for each API request may be different.
+	// >  If you do not specify this parameter, the system automatically uses the **request ID** as the **client token**. The **request ID** may be different for each request.
 	ClientToken *string `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
 	// The ID of the instance with which you want to associate the EIP.
 	//
 	// You can enter the ID of a NAT gateway, CLB instance, ECS instance, secondary ENI, HAVIP, or IP address.
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	// The region ID of the instance with which you want to associate the EIP.
+	// The ID of the region in which the instance with which you want to associate the EIP resides.
 	//
-	// >  This parameter is required only when the EIP is associated with a shared-bandwidth Global Accelerator (GA) instance.
+	// >  This parameter is required only when the EIP is added to a shared Global Accelerator (GA) instance.
 	InstanceRegionId *string `json:"InstanceRegionId,omitempty" xml:"InstanceRegionId,omitempty"`
-	// The type of instance with which you want to associate the EIP. Valid values:
+	// The type of the instance with which you want to associate the EIP. Valid values:
 	//
-	// *   **Nat**: a NAT gateway
-	// *   **SlbInstance**: a CLB instance
-	// *   **EcsInstance** (default): an ECS instance in a VPC
-	// *   **NetworkInterface**: a secondary ENI
-	// *   **HaVip**: an HAVIP
-	// *   **IpAddress**: an IP address
+	// *   **Nat**: NAT gateway
+	// *   **SlbInstance**: CLB instance
+	// *   **EcsInstance** (default): ECS instance
+	// *   **NetworkInterface**: secondary ENI
+	// *   **HaVip**: HAVIP
+	// *   **IpAddress**: IP address
 	//
-	// >  If you do not set this parameter, the type of the instance with which you want to associate the EIP is **EcsInstance**. If the type of the instance with which you want to associate the EIP is not **EcsInstance**, this parameter is required.
+	// >  The default value is **EcsInstance**. If the instance with which you want to associate the EIP is not an ECS instance, this parameter is required.
 	InstanceType *string `json:"InstanceType,omitempty" xml:"InstanceType,omitempty"`
 	// The association mode. Valid values:
 	//
 	// *   **NAT** (default): NAT mode
 	// *   **MULTI_BINDED**: multi-EIP-to-ENI mode
-	// *   **BINDED**: cut-through mode
+	// *   **BINDED**: cut-network interface controller mode
 	//
 	// >  This parameter is required only when **InstanceType** is set to **NetworkInterface**.
 	Mode         *string `json:"Mode,omitempty" xml:"Mode,omitempty"`
 	OwnerAccount *string `json:"OwnerAccount,omitempty" xml:"OwnerAccount,omitempty"`
 	OwnerId      *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
-	// An IP address in the CIDR block of the vSwitch.
+	// The IP address in the CIDR block of the vSwitch.
 	//
-	// If you do not set this parameter, the system allocates a private IP address based on the VPC ID and vSwitch ID.
+	// If you leave this parameter empty, the system allocates a private IP address based on the VPC ID and vSwitch ID.
 	PrivateIpAddress *string `json:"PrivateIpAddress,omitempty" xml:"PrivateIpAddress,omitempty"`
 	// The ID of the region to which the EIP belongs.
 	//
-	// You can call the [DescribeRegions](~~36063~~) operation to query the most recent region list.
+	// You can call the [DescribeRegions](~~36063~~) operation to query the region ID.
 	RegionId             *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 	ResourceOwnerAccount *string `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
 	ResourceOwnerId      *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
-	// The ID of the VPC that has IPv4 gateways enabled and that is deployed in the same region as the EIP.
+	// The ID of the VPC in which an IPv4 gateway is created. The VPC and the EIP must be in the same region.
 	//
 	// When you associate an EIP with an IP address, the system can enable the IP address to access the Internet based on VPC route configurations.
 	//
-	// >  This parameter is required if **InstanceType** is set to **IpAddress**. In this case, the EIP is associated with an IP address.
+	// >  This parameter is required if **InstanceType** is set to **IpAddress**, which indicates that the EIP is to be associated with an IP address.
 	VpcId *string `json:"VpcId,omitempty" xml:"VpcId,omitempty"`
 }
 
@@ -2478,7 +2506,7 @@ func (s *AssociateEipAddressRequest) SetVpcId(v string) *AssociateEipAddressRequ
 }
 
 type AssociateEipAddressResponseBody struct {
-	// The ID of the request.
+	// The request ID.
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -2525,30 +2553,31 @@ func (s *AssociateEipAddressResponse) SetBody(v *AssociateEipAddressResponseBody
 }
 
 type AssociateEipAddressBatchRequest struct {
-	// The ID of the instance to be associated with EIPs.
+	// The ID of the instance with which you want to associate the EIPs.
 	//
 	// The instance can be a NAT gateway or a secondary ENI.
 	BindedInstanceId *string `json:"BindedInstanceId,omitempty" xml:"BindedInstanceId,omitempty"`
-	// The type of instance with which you want to associate the EIPs. Valid values:
+	// The type of the instance with which you want to associate the EIPs. Valid values:
 	//
-	// *   **Nat**: a NAT gateway
-	// *   **NetworkInterface**: a secondary ENI
+	// *   **Nat**: NAT gateway
+	// *   **NetworkInterface**: secondary ENI
 	BindedInstanceType *string `json:"BindedInstanceType,omitempty" xml:"BindedInstanceType,omitempty"`
 	// The client token that is used to ensure the idempotence of the request.
 	//
-	// You can use the client to generate the value, but you must make sure that it is unique among all requests. The token can only contain ASCII characters.
+	// You can use the client to generate a token, but you must make sure that the token is unique among different requests. The token can contain only ASCII characters.
 	//
-	// >  If you do not specify this parameter, the system automatically uses **RequestId** as **ClientToken**. **RequestId** might be different for each API request.
-	ClientToken *string   `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
+	// >  If you do not specify this parameter, the system automatically uses the **request ID** as the **client token**. The **request ID** may be different for each request.
+	ClientToken *string `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
+	// The EIPs to be associated with the instance.
+	//
+	// You must enter at least one EIP. You can enter up to 50 EIPs.
 	InstanceIds []*string `json:"InstanceIds,omitempty" xml:"InstanceIds,omitempty" type:"Repeated"`
 	// The association mode. Set the value to **MULTI_BINDED**, which specifies the Multi-EIP-to-ENI mode.
 	//
-	// This parameter is required only if **InstanceType** is set to **NetworkInterface**.
+	// This parameter is required only when **BindedInstanceType** is set to **NetworkInterface**.
 	Mode    *string `json:"Mode,omitempty" xml:"Mode,omitempty"`
 	OwnerId *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
-	// The ID of the region to which the EIPs belong.
-	//
-	// You can call the [DescribeRegions](~~36063~~) operation to obtain the region ID.
+	// The ID of the region to which the EIPs belong. You can call the [DescribeRegions](~~36063~~) operation to query the region ID.
 	RegionId             *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 	ResourceOwnerAccount *string `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
 	ResourceOwnerId      *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
@@ -2608,7 +2637,7 @@ func (s *AssociateEipAddressBatchRequest) SetResourceOwnerId(v int64) *Associate
 }
 
 type AssociateEipAddressBatchResponseBody struct {
-	// The ID of the request.
+	// The request ID.
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -2650,126 +2679,6 @@ func (s *AssociateEipAddressBatchResponse) SetStatusCode(v int32) *AssociateEipA
 }
 
 func (s *AssociateEipAddressBatchResponse) SetBody(v *AssociateEipAddressBatchResponseBody) *AssociateEipAddressBatchResponse {
-	s.Body = v
-	return s
-}
-
-type AssociateGlobalAccelerationInstanceRequest struct {
-	// The ID of the backend server.
-	BackendServerId *string `json:"BackendServerId,omitempty" xml:"BackendServerId,omitempty"`
-	// The region of the backend server. The region must belong to the service area of the GA instance.
-	BackendServerRegionId *string `json:"BackendServerRegionId,omitempty" xml:"BackendServerRegionId,omitempty"`
-	// The backend server type. Valid values:
-	//
-	// *   **EcsInstance** (default): ECS instance
-	// *   **SlbInstance**: SLB instance
-	BackendServerType *string `json:"BackendServerType,omitempty" xml:"BackendServerType,omitempty"`
-	// The ID of the GA instance.
-	GlobalAccelerationInstanceId *string `json:"GlobalAccelerationInstanceId,omitempty" xml:"GlobalAccelerationInstanceId,omitempty"`
-	OwnerAccount                 *string `json:"OwnerAccount,omitempty" xml:"OwnerAccount,omitempty"`
-	OwnerId                      *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
-	// The region ID of the GA instance. You can call the [DescribeRegions](~~36063~~) operation to query the most recent region list.
-	RegionId             *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	ResourceOwnerAccount *string `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
-	ResourceOwnerId      *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
-}
-
-func (s AssociateGlobalAccelerationInstanceRequest) String() string {
-	return tea.Prettify(s)
-}
-
-func (s AssociateGlobalAccelerationInstanceRequest) GoString() string {
-	return s.String()
-}
-
-func (s *AssociateGlobalAccelerationInstanceRequest) SetBackendServerId(v string) *AssociateGlobalAccelerationInstanceRequest {
-	s.BackendServerId = &v
-	return s
-}
-
-func (s *AssociateGlobalAccelerationInstanceRequest) SetBackendServerRegionId(v string) *AssociateGlobalAccelerationInstanceRequest {
-	s.BackendServerRegionId = &v
-	return s
-}
-
-func (s *AssociateGlobalAccelerationInstanceRequest) SetBackendServerType(v string) *AssociateGlobalAccelerationInstanceRequest {
-	s.BackendServerType = &v
-	return s
-}
-
-func (s *AssociateGlobalAccelerationInstanceRequest) SetGlobalAccelerationInstanceId(v string) *AssociateGlobalAccelerationInstanceRequest {
-	s.GlobalAccelerationInstanceId = &v
-	return s
-}
-
-func (s *AssociateGlobalAccelerationInstanceRequest) SetOwnerAccount(v string) *AssociateGlobalAccelerationInstanceRequest {
-	s.OwnerAccount = &v
-	return s
-}
-
-func (s *AssociateGlobalAccelerationInstanceRequest) SetOwnerId(v int64) *AssociateGlobalAccelerationInstanceRequest {
-	s.OwnerId = &v
-	return s
-}
-
-func (s *AssociateGlobalAccelerationInstanceRequest) SetRegionId(v string) *AssociateGlobalAccelerationInstanceRequest {
-	s.RegionId = &v
-	return s
-}
-
-func (s *AssociateGlobalAccelerationInstanceRequest) SetResourceOwnerAccount(v string) *AssociateGlobalAccelerationInstanceRequest {
-	s.ResourceOwnerAccount = &v
-	return s
-}
-
-func (s *AssociateGlobalAccelerationInstanceRequest) SetResourceOwnerId(v int64) *AssociateGlobalAccelerationInstanceRequest {
-	s.ResourceOwnerId = &v
-	return s
-}
-
-type AssociateGlobalAccelerationInstanceResponseBody struct {
-	// The request ID.
-	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-}
-
-func (s AssociateGlobalAccelerationInstanceResponseBody) String() string {
-	return tea.Prettify(s)
-}
-
-func (s AssociateGlobalAccelerationInstanceResponseBody) GoString() string {
-	return s.String()
-}
-
-func (s *AssociateGlobalAccelerationInstanceResponseBody) SetRequestId(v string) *AssociateGlobalAccelerationInstanceResponseBody {
-	s.RequestId = &v
-	return s
-}
-
-type AssociateGlobalAccelerationInstanceResponse struct {
-	Headers    map[string]*string                               `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                                           `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *AssociateGlobalAccelerationInstanceResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
-}
-
-func (s AssociateGlobalAccelerationInstanceResponse) String() string {
-	return tea.Prettify(s)
-}
-
-func (s AssociateGlobalAccelerationInstanceResponse) GoString() string {
-	return s.String()
-}
-
-func (s *AssociateGlobalAccelerationInstanceResponse) SetHeaders(v map[string]*string) *AssociateGlobalAccelerationInstanceResponse {
-	s.Headers = v
-	return s
-}
-
-func (s *AssociateGlobalAccelerationInstanceResponse) SetStatusCode(v int32) *AssociateGlobalAccelerationInstanceResponse {
-	s.StatusCode = &v
-	return s
-}
-
-func (s *AssociateGlobalAccelerationInstanceResponse) SetBody(v *AssociateGlobalAccelerationInstanceResponseBody) *AssociateGlobalAccelerationInstanceResponse {
 	s.Body = v
 	return s
 }
@@ -3233,9 +3142,9 @@ func (s *AssociatePhysicalConnectionToVirtualBorderRouterResponse) SetBody(v *As
 type AssociateRouteTableRequest struct {
 	// The client token that is used to ensure the idempotence of the request.
 	//
-	// You can use the client to generate the value, but you must make sure that it is unique among all requests. The token can contain only ASCII characters.
+	// You can use the client to generate the token, but you must make sure that the token is unique among different requests. The token can contain only ASCII characters.
 	//
-	// >  If you do not specify this parameter, **ClientToken** is set to the value of **RequestId**. **RequestId** might be different for each API request.
+	// >  If you do not specify this parameter, the system automatically uses the **request ID** as the **client token**. The **request ID** may be different for each request.
 	ClientToken  *string `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
 	OwnerAccount *string `json:"OwnerAccount,omitempty" xml:"OwnerAccount,omitempty"`
 	OwnerId      *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
@@ -3300,7 +3209,7 @@ func (s *AssociateRouteTableRequest) SetVSwitchId(v string) *AssociateRouteTable
 }
 
 type AssociateRouteTableResponseBody struct {
-	// The ID of the request.
+	// The request ID.
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -3475,13 +3384,13 @@ func (s *AssociateRouteTableWithGatewayResponse) SetBody(v *AssociateRouteTableW
 }
 
 type AssociateRouteTablesWithVpcGatewayEndpointRequest struct {
-	// The client token that is used to ensure the idempotence of the request. You can use the client to generate a client token. Make sure that a unique client token is used for each request. The **client token** can contain only ASCII characters and cannot exceed 64 characters in length.
+	// The client token that is used to ensure the idempotence of the request. You can use the client to generate a client token. Make sure that a unique client token is used for each request. The **token** can contain only ASCII characters and cannot exceed 64 characters in length.
 	//
-	// >  If you do not set this parameter, the system uses **RequestId** as **ClientToken**. The value of **RequestId** of each API request may be different.
+	// >  If you do not specify this parameter, the system automatically uses the **request ID** as the **client token**. The **request ID** may be different for each request.
 	ClientToken *string `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
-	// Specifies whether to perform a dry run. Valid values:
+	// Specifies whether to perform only a dry run, without performing the actual request. Valid values:
 	//
-	// *   **true**: performs a dry run. The system checks your AccessKey pair, the RAM user permissions, and the required parameters. If the request fails the dry run, an error message is returned. If the request passes the dry run, the `DryRunOperation` error code is returned.
+	// *   **true**: performs only a dry run. The system checks your AccessKey pair, the RAM user permissions, and the required parameters. If the request fails the dry run, the DryRunOperation error code is returned. If the request passes the dry run, the `DryRunOperation` error code is returned.
 	// *   **false** (default): performs a dry run and sends the request. If the request passes the dry run, a 2xx HTTP status code is returned and the operation is performed.
 	DryRun *bool `json:"DryRun,omitempty" xml:"DryRun,omitempty"`
 	// The ID of the gateway endpoint to be associated with the route table.
@@ -3491,10 +3400,11 @@ type AssociateRouteTablesWithVpcGatewayEndpointRequest struct {
 	// The region ID of the gateway endpoint.
 	//
 	// You can call the [DescribeRegions](~~36063~~) operation to query the most recent region list.
-	RegionId             *string   `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	ResourceOwnerAccount *string   `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
-	ResourceOwnerId      *int64    `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
-	RouteTableIds        []*string `json:"RouteTableIds,omitempty" xml:"RouteTableIds,omitempty" type:"Repeated"`
+	RegionId             *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	ResourceOwnerAccount *string `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
+	ResourceOwnerId      *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
+	// The ID of the route table. Valid values of **N** are **1** to **20**, which specifies that you can associate a gateway endpoint with at most 20 route tables at a time.
+	RouteTableIds []*string `json:"RouteTableIds,omitempty" xml:"RouteTableIds,omitempty" type:"Repeated"`
 }
 
 func (s AssociateRouteTablesWithVpcGatewayEndpointRequest) String() string {
@@ -3551,7 +3461,7 @@ func (s *AssociateRouteTablesWithVpcGatewayEndpointRequest) SetRouteTableIds(v [
 }
 
 type AssociateRouteTablesWithVpcGatewayEndpointResponseBody struct {
-	// The ID of the request.
+	// The request ID.
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -3598,46 +3508,47 @@ func (s *AssociateRouteTablesWithVpcGatewayEndpointResponse) SetBody(v *Associat
 }
 
 type AssociateVpcCidrBlockRequest struct {
-	// The IPv6 CIDR block.
+	// The IPv6 CIDR block to be added.
 	//
-	// >  You must set one of the **SecondaryCidrBlock** and **Ipv6CidrBlock** parameters.
+	// >  You must and can specify only one of **SecondaryCidrBlock** and **Ipv6CidrBlock**.
 	IPv6CidrBlock *string `json:"IPv6CidrBlock,omitempty" xml:"IPv6CidrBlock,omitempty"`
-	// The IP version. Valid values:
+	// The version of the IP address. Valid values:
 	//
-	// *   **IPV4**: IPv4
-	// *   **IPV6**: IPv6. If you set **IpVersion** to **IPV6** and do not set **SecondaryCidrBlock**, you can add IPv6 CIDR blocks to the VPC.
-	IpVersion  *string `json:"IpVersion,omitempty" xml:"IpVersion,omitempty"`
+	// *   **IPV4**: the IPv4 address.
+	// *   **IPV6**: the IPv6 address. If you set **IpVersion** to **IPV6** and do not specify **SecondaryCidrBlock**, you can add a secondary IPv6 CIDR block to the VPC.
+	IpVersion *string `json:"IpVersion,omitempty" xml:"IpVersion,omitempty"`
+	// The ID of the IP Address Manager (IPAM) pool that contains IPv4 addresses.
 	IpamPoolId *string `json:"IpamPoolId,omitempty" xml:"IpamPoolId,omitempty"`
 	// The type of the IPv6 CIDR block. Valid values:
 	//
-	// *   **BGP** (default): Alibaba Cloud Border Gateway Protocol (BGP) IPv6
-	// *   **ChinaMobile**: China Mobile (single line)
-	// *   **ChinaUnicom**: China Unicom (single line)
-	// *   **ChinaTelecom**: China Telecom (single line)
+	// *   **BGP** (default)
+	// *   **ChinaMobile**
+	// *   **ChinaUnicom**
+	// *   **ChinaTelecom**
 	//
-	// >  If your Alibaba Cloud account is allowed to use single-ISP bandwidth, valid values are: **ChinaTelecom**, **ChinaUnicom**, and **ChinaMobile**.
+	// >  If your Alibaba Cloud account is allowed to activate single-ISP bandwidth, you can set this parameter to **ChinaTelecom**, **ChinaUnicom**, or **ChinaMobile**.
 	Ipv6Isp      *string `json:"Ipv6Isp,omitempty" xml:"Ipv6Isp,omitempty"`
 	OwnerAccount *string `json:"OwnerAccount,omitempty" xml:"OwnerAccount,omitempty"`
 	OwnerId      *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
 	// The region ID of the VPC to which you want to add a secondary CIDR block.
 	//
-	// You can call the [DescribeRegions](~~36063~~) operation to query the most recent region list.
+	// You can call the [DescribeRegions](~~36063~~) operation to query the region ID.
 	RegionId             *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 	ResourceOwnerAccount *string `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
 	ResourceOwnerId      *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
-	// The secondary IPv4 CIDR block. Take note of the following requirements:
+	// The IPv4 CIDR block to be added. Take note of the following requirements:
 	//
-	// *   You can specify one of the following standard IPv4 CIDR blocks or their subnets as the secondary IPv4 CIDR block: 192.168.0.0/16, 172.16.0.0/12, and 10.0.0.0/8.
+	// *   You can specify one of the following standard IPv4 CIDR blocks or their subnets as the secondary IPv4 CIDR block of the VPC: 192.168.0.0/16, 172.16.0.0/12, and 10.0.0.0/8.
 	// *   You can also use a custom CIDR block other than 100.64.0.0/10, 224.0.0.0/4, 127.0.0.0/8, 169.254.0.0/16, or their subnets as the secondary IPv4 CIDR block of the VPC.
 	//
-	// In addition, the following requirements must be met:
+	// The CIDR block must meet the following requirements:
 	//
 	// *   The CIDR block cannot start with 0. The subnet mask must be 8 to 28 bits in length.
-	// *   The secondary CIDR block cannot overlap with the primary CIDR block or an existing secondary CIDR block.
+	// *   The CIDR block cannot overlap with the primary CIDR block or an existing secondary CIDR block of the VPC.
 	//
-	// >  You must set one of the **SecondaryCidrBlock** and **Ipv6CidrBlock** parameters.
+	// >  You must and can specify only one of **SecondaryCidrBlock** and **Ipv6CidrBlock**.
 	SecondaryCidrBlock *string `json:"SecondaryCidrBlock,omitempty" xml:"SecondaryCidrBlock,omitempty"`
-	// The ID of the VPC.
+	// The ID of the VPC to which you want to add a secondary CIDR block.
 	VpcId *string `json:"VpcId,omitempty" xml:"VpcId,omitempty"`
 }
 
@@ -3705,7 +3616,7 @@ func (s *AssociateVpcCidrBlockRequest) SetVpcId(v string) *AssociateVpcCidrBlock
 }
 
 type AssociateVpcCidrBlockResponseBody struct {
-	// The ID of the request.
+	// The request ID.
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -4924,7 +4835,7 @@ func (s *ConnectRouterInterfaceRequest) SetRouterInterfaceId(v string) *ConnectR
 }
 
 type ConnectRouterInterfaceResponseBody struct {
-	// The ID of the request.
+	// The request ID.
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -5527,60 +5438,64 @@ func (s *CreateBgpPeerResponse) SetBody(v *CreateBgpPeerResponseBody) *CreateBgp
 }
 
 type CreateCommonBandwidthPackageRequest struct {
-	// The maximum bandwidth of the EIP bandwidth plan.
+	// The maximum bandwidth of the Internet Shared Bandwidth instance. Unit: Mbit/s.
 	//
-	// Valid values: **1** to **1000**. Unit: Mbit/s.
+	// Valid values: **1** to **1000**. Default value: **1**.
 	Bandwidth *int32 `json:"Bandwidth,omitempty" xml:"Bandwidth,omitempty"`
 	// The client token that is used to ensure the idempotence of the request.
 	//
-	// You can use the client to generate the value, but you must make sure that it is unique among different requests. The token can contain only ASCII characters.
+	// You can use the client to generate a token, but you must make sure that the token is unique among different requests. The client token can contain only ASCII characters.
 	//
-	// >  If you do not set this parameter, the system automatically sets the **ClientToken** parameter to the value of **RequestId**. The value of **RequestId** may be different for each API request.
+	// >  If you do not specify this parameter, the system automatically uses the value of **RequestId** as the **client token**. The value of **RequestId** is different for each API request.
 	ClientToken *string `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
-	// The description of the EIP bandwidth plan.
+	// The description of the Internet Shared Bandwidth instance.
 	//
-	// The description must be 2 to 256 characters in length. It must start with a letter but cannot start with `http://` or `https://`.
+	// The description must be 2 to 256 characters in length. The description must start with a letter but cannot start with `http://` or `https://`.
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
 	// The line type. Valid values:
 	//
-	// *   **BGP**: BGP (Multi-ISP) lines. BGP (Multi-ISP) lines are available in all regions.
-	// *   **BGP_PRO**: BGP (Multi-ISP) Pro lines. BGP (Multi-ISP) Pro is available only in the China (Hong Kong), Singapore, Philippines (Manila), Malaysia (Kuala Lumpur), Indonesia (Jakarta), and Thailand (Bangkok) regions.
+	// *   **BGP**: BGP (Multi-ISP) All regions support BGP (Multi-ISP).
+	// *   **BGP_PRO**: BGP (Multi-ISP) Pro Only the following regions support BGP (Multi-ISP) Pro lines: China (Hong Kong), Singapore, Japan (Tokyo), Philippines (Manila), Malaysia (Kuala Lumpur), Indonesia (Jakarta), and Thailand (Bangkok).
 	//
 	// If you are allowed to use single-ISP bandwidth, you can also choose one of the following values:
 	//
-	// *   **ChinaTelecom**: China Telecom
-	// *   **ChinaUnicom**: China Unicom
-	// *   **ChinaMobile**: China Mobile
-	// *   **ChinaTelecom_L2**: China Telecom L2
-	// *   **ChinaUnicom_L2**: China Unicom L2
-	// *   **ChinaMobile_L2**: China Mobile L2
+	// *   **ChinaTelecom**
+	// *   **ChinaUnicom**
+	// *   **ChinaMobile**
+	// *   **ChinaTelecom_L2**
+	// *   **ChinaUnicom_L2**
+	// *   **ChinaMobile_L2**
 	//
-	// If your services are deployed in China East 1 Finance, you must set this parameter to **BGP_FinanceCloud**.
+	// If your services are deployed in China East 1 Finance, this parameter is required and you must set the value to **BGP_FinanceCloud**.
 	ISP *string `json:"ISP,omitempty" xml:"ISP,omitempty"`
-	// The billing method of the EIP bandwidth plan. Set the value to **PayByTraffic**, which refers to the pay-by-data-transfer metering method.
+	// The billing method of the Internet Shared Bandwidth instance. Valid values: **PayByTraffic**: pay-by-data-transfer
 	InternetChargeType *string `json:"InternetChargeType,omitempty" xml:"InternetChargeType,omitempty"`
-	// The name of the EIP bandwidth plan.
+	// The name of the Internet Shared Bandwidth instance.
 	//
-	// The name must be 2 to 128 characters in length, and can contain letters, digits, underscores (\_), and hyphens (-). The name must start with a letter.
+	// The name must be 2 to 128 characters in length and start with a letter, and can contain letters, digits, underscores (\_), and hyphens (-).
 	Name         *string `json:"Name,omitempty" xml:"Name,omitempty"`
 	OwnerAccount *string `json:"OwnerAccount,omitempty" xml:"OwnerAccount,omitempty"`
 	OwnerId      *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
 	// The percentage of the minimum bandwidth commitment. Set the parameter to **20**.
 	//
-	// >  This parameter is available only on the Alibaba Cloud China site.
+	// >  This parameter is supported only on the Alibaba Cloud China site.
 	Ratio *int32 `json:"Ratio,omitempty" xml:"Ratio,omitempty"`
-	// The region ID of the EIP bandwidth plan.
+	// The region ID of the Internet Shared Bandwidth instance.
 	//
-	// You can call the [DescribeRegions](~~36063~~) operation to obtain the region ID.
+	// You can call the [DescribeRegions](~~36063~~) operation to query the region ID.
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 	// The ID of the resource group.
-	ResourceGroupId         *string   `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
-	ResourceOwnerAccount    *string   `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
-	ResourceOwnerId         *int64    `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
-	SecurityProtectionTypes []*string `json:"SecurityProtectionTypes,omitempty" xml:"SecurityProtectionTypes,omitempty" type:"Repeated"`
-	// The zone of the EIP bandwidth plan.
+	ResourceGroupId      *string `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
+	ResourceOwnerAccount *string `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
+	ResourceOwnerId      *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
+	// The editions of Anti-DDoS.
 	//
-	// You do not need to set this parameter.
+	// *   If you do not specify this parameter, Anti-DDoS Origin Basic is used.
+	// *   If you set the parameter to **AntiDDoS_Enhanced**, Anti-DDoS Pro/Premium is used.
+	//
+	// You can specify up to 10 editions of Anti-DDoS.
+	SecurityProtectionTypes []*string `json:"SecurityProtectionTypes,omitempty" xml:"SecurityProtectionTypes,omitempty" type:"Repeated"`
+	// The zone of the Internet Shared Bandwidth instance. This parameter must be specified when you create an Internet Shared Bandwidth instance for a cloud box.
 	Zone *string `json:"Zone,omitempty" xml:"Zone,omitempty"`
 }
 
@@ -5668,9 +5583,9 @@ func (s *CreateCommonBandwidthPackageRequest) SetZone(v string) *CreateCommonBan
 }
 
 type CreateCommonBandwidthPackageResponseBody struct {
-	// The ID of the EIP bandwidth plan.
+	// The ID of the Internet Shared Bandwidth instance.
 	BandwidthPackageId *string `json:"BandwidthPackageId,omitempty" xml:"BandwidthPackageId,omitempty"`
-	// The ID of the request.
+	// The request ID.
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	// The ID of the resource group.
 	ResourceGroupId *string `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
@@ -7061,37 +6976,37 @@ func (s *CreateForwardEntryResponse) SetBody(v *CreateForwardEntryResponseBody) 
 type CreateFullNatEntryRequest struct {
 	// The backend IP address to be modified in FULLNAT address translation.
 	AccessIp *string `json:"AccessIp,omitempty" xml:"AccessIp,omitempty"`
-	// The backend port to be modified in FULLNAT port mapping. Valid values: **1** to **65535**.
+	// The backend port to be modified in the mapping of FULLNAT port. Valid values: **1** to **65535**.
 	AccessPort *string `json:"AccessPort,omitempty" xml:"AccessPort,omitempty"`
 	// The client token that is used to ensure the idempotence of the request.
 	//
-	// You can use the client to generate the value, but you must make sure that it is unique among different requests. The client token can contain only ASCII characters.
+	// You can use the client to generate a value, and you must make sure that each request has a unique token value. The client token can contain only ASCII characters.
 	//
-	// >  If you do not set this parameter, **ClientToken** is set to the value of **RequestId**. The value of **RequestId** for each API request may be different.
+	// >  If you do not specify this parameter, the system automatically uses the value of **RequestId** as the value of **ClientToken**. The **request ID** may be different for each request.
 	ClientToken *string `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
-	// Specifies whether only to precheck this request. Valid values:
+	// Specifies whether to only precheck this request. Valid values:
 	//
-	// *   **true**: prechecks the request but does not add the FULLNAT entry. The system checks your AccessKey pair, the RAM user permissions, and the required parameters. If the request fails the precheck, an error code is returned. If the request passes the check, the `DryRunOperation` error code is returned.
-	// *   **false**: sends the API request. After the request passes the precheck, a 2XX HTTP status code is returned and the FULLNAT entry is added. This is the default value.
+	// *   **true**: prechecks the request without adding the FULLNAT entry. The system checks whether your AccessKey pair is valid, whether RAM users are granted required permissions, and whether the required parameters are set. If the request fails to pass the precheck, an error code is returned. If the request passes the precheck, the `DryRunOperation` error code is returned.
+	// *   **false**: sends the API request. This is the default value. After the request passes the precheck, a 2XX HTTP status code is returned and the FULLNAT entry is added.
 	DryRun *bool `json:"DryRun,omitempty" xml:"DryRun,omitempty"`
 	// The description of the FULLNAT entry.
 	//
 	// This parameter is optional. If you enter a description, the description must be 2 to 256 characters in length, and cannot start with `http://` or `https://`.
 	FullNatEntryDescription *string `json:"FullNatEntryDescription,omitempty" xml:"FullNatEntryDescription,omitempty"`
-	// The name of the FULLNAT entry. The name must be 2 to 128 characters in length. It must start with a letter but cannot start with http:// or https://.
+	// The FULLNAT entry name. The name must be 2 to 128 characters in length. It must start with a letter but cannot start with http:// or https://.
 	FullNatEntryName *string `json:"FullNatEntryName,omitempty" xml:"FullNatEntryName,omitempty"`
 	// The ID of the FULLNAT table to which the FULLNAT entry belongs.
 	FullNatTableId *string `json:"FullNatTableId,omitempty" xml:"FullNatTableId,omitempty"`
 	// The protocol of the packets that are forwarded by the port. Valid values:
 	//
-	// *   **TCP**: forwards TCP packets.
-	// *   **UDP**: forwards UDP packets.
+	// *   **TCP**
+	// *   **UDP**
 	IpProtocol *string `json:"IpProtocol,omitempty" xml:"IpProtocol,omitempty"`
 	// The NAT IP address that provides address translation.
 	NatIp *string `json:"NatIp,omitempty" xml:"NatIp,omitempty"`
-	// The frontend port to be modified in FULLNAT port mapping. Valid values: **1** to **65535**.
+	// The frontend port to be modified in the mapping of FULLNAT port. Valid values: **1** to **65535**.
 	NatIpPort *string `json:"NatIpPort,omitempty" xml:"NatIpPort,omitempty"`
-	// The ID of the elastic network interface (ENI).
+	// The elastic network interface (ENI) ID.
 	NetworkInterfaceId *string `json:"NetworkInterfaceId,omitempty" xml:"NetworkInterfaceId,omitempty"`
 	OwnerAccount       *string `json:"OwnerAccount,omitempty" xml:"OwnerAccount,omitempty"`
 	OwnerId            *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
@@ -7192,9 +7107,9 @@ func (s *CreateFullNatEntryRequest) SetResourceOwnerId(v int64) *CreateFullNatEn
 }
 
 type CreateFullNatEntryResponseBody struct {
-	// The ID of the FULLNAT entry.
+	// The FULLNAT entry ID.
 	FullNatEntryId *string `json:"FullNatEntryId,omitempty" xml:"FullNatEntryId,omitempty"`
-	// The ID of the request.
+	// The request ID.
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -7432,10 +7347,11 @@ type CreateHaVipRequest struct {
 	// The region ID of the HAVIP. You can call the [DescribeRegions](~~36063~~) operation to query the most recent region list.
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 	// The ID of the resource group to which the HAVIP belongs.
-	ResourceGroupId      *string                  `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
-	ResourceOwnerAccount *string                  `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
-	ResourceOwnerId      *int64                   `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
-	Tag                  []*CreateHaVipRequestTag `json:"Tag,omitempty" xml:"Tag,omitempty" type:"Repeated"`
+	ResourceGroupId      *string `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
+	ResourceOwnerAccount *string `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
+	ResourceOwnerId      *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
+	// The tag of the resource.
+	Tag []*CreateHaVipRequestTag `json:"Tag,omitempty" xml:"Tag,omitempty" type:"Repeated"`
 	// The ID of the vSwitch to which the HAVIP belongs.
 	VSwitchId *string `json:"VSwitchId,omitempty" xml:"VSwitchId,omitempty"`
 }
@@ -7509,7 +7425,13 @@ func (s *CreateHaVipRequest) SetVSwitchId(v string) *CreateHaVipRequest {
 }
 
 type CreateHaVipRequestTag struct {
-	Key   *string `json:"Key,omitempty" xml:"Key,omitempty"`
+	// The key of tag N to add to the resource. You can specify up to 20 tag keys. The tag key cannot be an empty string.
+	//
+	// The tag key can be up to 128 characters in length. It cannot start with `aliyun` or `acs:`, and cannot contain `http://` or `https://`.
+	Key *string `json:"Key,omitempty" xml:"Key,omitempty"`
+	// The value of tag N to add to the resource. You can specify up to 20 tag values. The tag value can be an empty string.
+	//
+	// The tag value can be up to 128 characters in length, but cannot contain `http://` or `https://`. The tag value cannot start with `aliyun` or `acs:`.
 	Value *string `json:"Value,omitempty" xml:"Value,omitempty"`
 }
 
@@ -7588,6 +7510,339 @@ func (s *CreateHaVipResponse) SetStatusCode(v int32) *CreateHaVipResponse {
 }
 
 func (s *CreateHaVipResponse) SetBody(v *CreateHaVipResponseBody) *CreateHaVipResponse {
+	s.Body = v
+	return s
+}
+
+type CreateHighReliablePhysicalConnectionRequest struct {
+	AcceptLanguage         *string                                              `json:"AcceptLanguage,omitempty" xml:"AcceptLanguage,omitempty"`
+	ApList                 []*CreateHighReliablePhysicalConnectionRequestApList `json:"ApList,omitempty" xml:"ApList,omitempty" type:"Repeated"`
+	ClientToken            *string                                              `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
+	DeviceAdvancedCapacity []*string                                            `json:"DeviceAdvancedCapacity,omitempty" xml:"DeviceAdvancedCapacity,omitempty" type:"Repeated"`
+	DryRun                 *string                                              `json:"DryRun,omitempty" xml:"DryRun,omitempty"`
+	HighReliableType       *string                                              `json:"HighReliableType,omitempty" xml:"HighReliableType,omitempty"`
+	OwnerAccount           *string                                              `json:"OwnerAccount,omitempty" xml:"OwnerAccount,omitempty"`
+	OwnerId                *int64                                               `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
+	PortType               *string                                              `json:"PortType,omitempty" xml:"PortType,omitempty"`
+	RegionId               *string                                              `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	ResourceGroupId        *string                                              `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
+	ResourceOwnerAccount   *string                                              `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
+	ResourceOwnerId        *int64                                               `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
+	Tag                    []*CreateHighReliablePhysicalConnectionRequestTag    `json:"Tag,omitempty" xml:"Tag,omitempty" type:"Repeated"`
+}
+
+func (s CreateHighReliablePhysicalConnectionRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateHighReliablePhysicalConnectionRequest) GoString() string {
+	return s.String()
+}
+
+func (s *CreateHighReliablePhysicalConnectionRequest) SetAcceptLanguage(v string) *CreateHighReliablePhysicalConnectionRequest {
+	s.AcceptLanguage = &v
+	return s
+}
+
+func (s *CreateHighReliablePhysicalConnectionRequest) SetApList(v []*CreateHighReliablePhysicalConnectionRequestApList) *CreateHighReliablePhysicalConnectionRequest {
+	s.ApList = v
+	return s
+}
+
+func (s *CreateHighReliablePhysicalConnectionRequest) SetClientToken(v string) *CreateHighReliablePhysicalConnectionRequest {
+	s.ClientToken = &v
+	return s
+}
+
+func (s *CreateHighReliablePhysicalConnectionRequest) SetDeviceAdvancedCapacity(v []*string) *CreateHighReliablePhysicalConnectionRequest {
+	s.DeviceAdvancedCapacity = v
+	return s
+}
+
+func (s *CreateHighReliablePhysicalConnectionRequest) SetDryRun(v string) *CreateHighReliablePhysicalConnectionRequest {
+	s.DryRun = &v
+	return s
+}
+
+func (s *CreateHighReliablePhysicalConnectionRequest) SetHighReliableType(v string) *CreateHighReliablePhysicalConnectionRequest {
+	s.HighReliableType = &v
+	return s
+}
+
+func (s *CreateHighReliablePhysicalConnectionRequest) SetOwnerAccount(v string) *CreateHighReliablePhysicalConnectionRequest {
+	s.OwnerAccount = &v
+	return s
+}
+
+func (s *CreateHighReliablePhysicalConnectionRequest) SetOwnerId(v int64) *CreateHighReliablePhysicalConnectionRequest {
+	s.OwnerId = &v
+	return s
+}
+
+func (s *CreateHighReliablePhysicalConnectionRequest) SetPortType(v string) *CreateHighReliablePhysicalConnectionRequest {
+	s.PortType = &v
+	return s
+}
+
+func (s *CreateHighReliablePhysicalConnectionRequest) SetRegionId(v string) *CreateHighReliablePhysicalConnectionRequest {
+	s.RegionId = &v
+	return s
+}
+
+func (s *CreateHighReliablePhysicalConnectionRequest) SetResourceGroupId(v string) *CreateHighReliablePhysicalConnectionRequest {
+	s.ResourceGroupId = &v
+	return s
+}
+
+func (s *CreateHighReliablePhysicalConnectionRequest) SetResourceOwnerAccount(v string) *CreateHighReliablePhysicalConnectionRequest {
+	s.ResourceOwnerAccount = &v
+	return s
+}
+
+func (s *CreateHighReliablePhysicalConnectionRequest) SetResourceOwnerId(v int64) *CreateHighReliablePhysicalConnectionRequest {
+	s.ResourceOwnerId = &v
+	return s
+}
+
+func (s *CreateHighReliablePhysicalConnectionRequest) SetTag(v []*CreateHighReliablePhysicalConnectionRequestTag) *CreateHighReliablePhysicalConnectionRequest {
+	s.Tag = v
+	return s
+}
+
+type CreateHighReliablePhysicalConnectionRequestApList struct {
+	AccessPointId *string `json:"AccessPointId,omitempty" xml:"AccessPointId,omitempty"`
+	Bandwidth     *int64  `json:"Bandwidth,omitempty" xml:"Bandwidth,omitempty"`
+	CircuitCode   *string `json:"CircuitCode,omitempty" xml:"CircuitCode,omitempty"`
+	Description   *string `json:"Description,omitempty" xml:"Description,omitempty"`
+	LineOperator  *string `json:"LineOperator,omitempty" xml:"LineOperator,omitempty"`
+	Name          *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	PeerLocation  *string `json:"PeerLocation,omitempty" xml:"PeerLocation,omitempty"`
+	PortNum       *int32  `json:"PortNum,omitempty" xml:"PortNum,omitempty"`
+	RegionId      *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	Type          *string `json:"Type,omitempty" xml:"Type,omitempty"`
+}
+
+func (s CreateHighReliablePhysicalConnectionRequestApList) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateHighReliablePhysicalConnectionRequestApList) GoString() string {
+	return s.String()
+}
+
+func (s *CreateHighReliablePhysicalConnectionRequestApList) SetAccessPointId(v string) *CreateHighReliablePhysicalConnectionRequestApList {
+	s.AccessPointId = &v
+	return s
+}
+
+func (s *CreateHighReliablePhysicalConnectionRequestApList) SetBandwidth(v int64) *CreateHighReliablePhysicalConnectionRequestApList {
+	s.Bandwidth = &v
+	return s
+}
+
+func (s *CreateHighReliablePhysicalConnectionRequestApList) SetCircuitCode(v string) *CreateHighReliablePhysicalConnectionRequestApList {
+	s.CircuitCode = &v
+	return s
+}
+
+func (s *CreateHighReliablePhysicalConnectionRequestApList) SetDescription(v string) *CreateHighReliablePhysicalConnectionRequestApList {
+	s.Description = &v
+	return s
+}
+
+func (s *CreateHighReliablePhysicalConnectionRequestApList) SetLineOperator(v string) *CreateHighReliablePhysicalConnectionRequestApList {
+	s.LineOperator = &v
+	return s
+}
+
+func (s *CreateHighReliablePhysicalConnectionRequestApList) SetName(v string) *CreateHighReliablePhysicalConnectionRequestApList {
+	s.Name = &v
+	return s
+}
+
+func (s *CreateHighReliablePhysicalConnectionRequestApList) SetPeerLocation(v string) *CreateHighReliablePhysicalConnectionRequestApList {
+	s.PeerLocation = &v
+	return s
+}
+
+func (s *CreateHighReliablePhysicalConnectionRequestApList) SetPortNum(v int32) *CreateHighReliablePhysicalConnectionRequestApList {
+	s.PortNum = &v
+	return s
+}
+
+func (s *CreateHighReliablePhysicalConnectionRequestApList) SetRegionId(v string) *CreateHighReliablePhysicalConnectionRequestApList {
+	s.RegionId = &v
+	return s
+}
+
+func (s *CreateHighReliablePhysicalConnectionRequestApList) SetType(v string) *CreateHighReliablePhysicalConnectionRequestApList {
+	s.Type = &v
+	return s
+}
+
+type CreateHighReliablePhysicalConnectionRequestTag struct {
+	Key   *string `json:"Key,omitempty" xml:"Key,omitempty"`
+	Value *string `json:"Value,omitempty" xml:"Value,omitempty"`
+}
+
+func (s CreateHighReliablePhysicalConnectionRequestTag) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateHighReliablePhysicalConnectionRequestTag) GoString() string {
+	return s.String()
+}
+
+func (s *CreateHighReliablePhysicalConnectionRequestTag) SetKey(v string) *CreateHighReliablePhysicalConnectionRequestTag {
+	s.Key = &v
+	return s
+}
+
+func (s *CreateHighReliablePhysicalConnectionRequestTag) SetValue(v string) *CreateHighReliablePhysicalConnectionRequestTag {
+	s.Value = &v
+	return s
+}
+
+type CreateHighReliablePhysicalConnectionResponseBody struct {
+	ErrorInfoList          *CreateHighReliablePhysicalConnectionResponseBodyErrorInfoList          `json:"ErrorInfoList,omitempty" xml:"ErrorInfoList,omitempty" type:"Struct"`
+	PhysicalConnectionList *CreateHighReliablePhysicalConnectionResponseBodyPhysicalConnectionList `json:"PhysicalConnectionList,omitempty" xml:"PhysicalConnectionList,omitempty" type:"Struct"`
+	RequestId              *string                                                                 `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+}
+
+func (s CreateHighReliablePhysicalConnectionResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateHighReliablePhysicalConnectionResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *CreateHighReliablePhysicalConnectionResponseBody) SetErrorInfoList(v *CreateHighReliablePhysicalConnectionResponseBodyErrorInfoList) *CreateHighReliablePhysicalConnectionResponseBody {
+	s.ErrorInfoList = v
+	return s
+}
+
+func (s *CreateHighReliablePhysicalConnectionResponseBody) SetPhysicalConnectionList(v *CreateHighReliablePhysicalConnectionResponseBodyPhysicalConnectionList) *CreateHighReliablePhysicalConnectionResponseBody {
+	s.PhysicalConnectionList = v
+	return s
+}
+
+func (s *CreateHighReliablePhysicalConnectionResponseBody) SetRequestId(v string) *CreateHighReliablePhysicalConnectionResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+type CreateHighReliablePhysicalConnectionResponseBodyErrorInfoList struct {
+	ErrorInfoList []*CreateHighReliablePhysicalConnectionResponseBodyErrorInfoListErrorInfoList `json:"errorInfoList,omitempty" xml:"errorInfoList,omitempty" type:"Repeated"`
+}
+
+func (s CreateHighReliablePhysicalConnectionResponseBodyErrorInfoList) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateHighReliablePhysicalConnectionResponseBodyErrorInfoList) GoString() string {
+	return s.String()
+}
+
+func (s *CreateHighReliablePhysicalConnectionResponseBodyErrorInfoList) SetErrorInfoList(v []*CreateHighReliablePhysicalConnectionResponseBodyErrorInfoListErrorInfoList) *CreateHighReliablePhysicalConnectionResponseBodyErrorInfoList {
+	s.ErrorInfoList = v
+	return s
+}
+
+type CreateHighReliablePhysicalConnectionResponseBodyErrorInfoListErrorInfoList struct {
+	ErrorCode    *string `json:"ErrorCode,omitempty" xml:"ErrorCode,omitempty"`
+	ErrorMessage *string `json:"ErrorMessage,omitempty" xml:"ErrorMessage,omitempty"`
+	InstanceId   *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+}
+
+func (s CreateHighReliablePhysicalConnectionResponseBodyErrorInfoListErrorInfoList) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateHighReliablePhysicalConnectionResponseBodyErrorInfoListErrorInfoList) GoString() string {
+	return s.String()
+}
+
+func (s *CreateHighReliablePhysicalConnectionResponseBodyErrorInfoListErrorInfoList) SetErrorCode(v string) *CreateHighReliablePhysicalConnectionResponseBodyErrorInfoListErrorInfoList {
+	s.ErrorCode = &v
+	return s
+}
+
+func (s *CreateHighReliablePhysicalConnectionResponseBodyErrorInfoListErrorInfoList) SetErrorMessage(v string) *CreateHighReliablePhysicalConnectionResponseBodyErrorInfoListErrorInfoList {
+	s.ErrorMessage = &v
+	return s
+}
+
+func (s *CreateHighReliablePhysicalConnectionResponseBodyErrorInfoListErrorInfoList) SetInstanceId(v string) *CreateHighReliablePhysicalConnectionResponseBodyErrorInfoListErrorInfoList {
+	s.InstanceId = &v
+	return s
+}
+
+type CreateHighReliablePhysicalConnectionResponseBodyPhysicalConnectionList struct {
+	PhysicalConnectionList []*CreateHighReliablePhysicalConnectionResponseBodyPhysicalConnectionListPhysicalConnectionList `json:"physicalConnectionList,omitempty" xml:"physicalConnectionList,omitempty" type:"Repeated"`
+}
+
+func (s CreateHighReliablePhysicalConnectionResponseBodyPhysicalConnectionList) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateHighReliablePhysicalConnectionResponseBodyPhysicalConnectionList) GoString() string {
+	return s.String()
+}
+
+func (s *CreateHighReliablePhysicalConnectionResponseBodyPhysicalConnectionList) SetPhysicalConnectionList(v []*CreateHighReliablePhysicalConnectionResponseBodyPhysicalConnectionListPhysicalConnectionList) *CreateHighReliablePhysicalConnectionResponseBodyPhysicalConnectionList {
+	s.PhysicalConnectionList = v
+	return s
+}
+
+type CreateHighReliablePhysicalConnectionResponseBodyPhysicalConnectionListPhysicalConnectionList struct {
+	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	RegionNo   *string `json:"RegionNo,omitempty" xml:"RegionNo,omitempty"`
+}
+
+func (s CreateHighReliablePhysicalConnectionResponseBodyPhysicalConnectionListPhysicalConnectionList) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateHighReliablePhysicalConnectionResponseBodyPhysicalConnectionListPhysicalConnectionList) GoString() string {
+	return s.String()
+}
+
+func (s *CreateHighReliablePhysicalConnectionResponseBodyPhysicalConnectionListPhysicalConnectionList) SetInstanceId(v string) *CreateHighReliablePhysicalConnectionResponseBodyPhysicalConnectionListPhysicalConnectionList {
+	s.InstanceId = &v
+	return s
+}
+
+func (s *CreateHighReliablePhysicalConnectionResponseBodyPhysicalConnectionListPhysicalConnectionList) SetRegionNo(v string) *CreateHighReliablePhysicalConnectionResponseBodyPhysicalConnectionListPhysicalConnectionList {
+	s.RegionNo = &v
+	return s
+}
+
+type CreateHighReliablePhysicalConnectionResponse struct {
+	Headers    map[string]*string                                `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                                            `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *CreateHighReliablePhysicalConnectionResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s CreateHighReliablePhysicalConnectionResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateHighReliablePhysicalConnectionResponse) GoString() string {
+	return s.String()
+}
+
+func (s *CreateHighReliablePhysicalConnectionResponse) SetHeaders(v map[string]*string) *CreateHighReliablePhysicalConnectionResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *CreateHighReliablePhysicalConnectionResponse) SetStatusCode(v int32) *CreateHighReliablePhysicalConnectionResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *CreateHighReliablePhysicalConnectionResponse) SetBody(v *CreateHighReliablePhysicalConnectionResponseBody) *CreateHighReliablePhysicalConnectionResponse {
 	s.Body = v
 	return s
 }
@@ -8073,51 +8328,51 @@ func (s *CreateIPv6TranslatorEntryResponse) SetBody(v *CreateIPv6TranslatorEntry
 }
 
 type CreateIpsecServerRequest struct {
-	// The client CIDR block. It refers to the CIDR block that is used to allocate an IP address to the client.
+	// The client CIDR block from which an IP address is allocated to the virtual network interface controller (NIC) of the client.
 	//
-	// >  The client CIDR block must not overlap with the CIDR block of the virtual private cloud (VPC).
+	// >  The client CIDR block must not overlap with the CIDR blocks of the VPC.
 	ClientIpPool *string `json:"ClientIpPool,omitempty" xml:"ClientIpPool,omitempty"`
 	// The client token that is used to ensure the idempotence of the request.
 	//
-	// You can use the client to generate the value, but you must make sure that it is unique among different requests. ClientToken can contain only ASCII characters.
+	// You can use the client to generate a value, and you must make sure that each request has a unique token value. The client token can contain only ASCII characters.
 	//
-	// >  If you do not set this parameter, **ClientToken** is set to the value of **RequestId**. The value of **RequestId** may be different for each API request.
+	// >  If you do not specify this parameter, the system automatically uses the value of **RequestId** as the value of **ClientToken**. The **request ID** may be different for each request.
 	ClientToken *string `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
-	// Specifies whether to check the request without performing the operation. Valid values:
+	// Specifies whether to only precheck this request. Valid values:
 	//
-	// *   **true**: only prechecks the request. After the request passes the precheck, the system does not create the IPsec server. The system checks the required parameters, the request format, and the service limits. If the request fails the precheck, an error code is returned. If the request passes the precheck, the `DryRunOperation` error code is returned.
-	// *   **false** (default): prechecks the request. After the request passes the precheck, the system creates the IPsec server.
+	// *   **true**: prechecks the request without creating the IPsec server. The system checks the required parameters, request format, and service limits. If the request fails to pass the precheck, an error code is returned. If the request passes the precheck, the `DryRunOperation` error code is returned.
+	// *   **false** (default): sends the request. This is the default value. If the request passes the precheck, the system creates the IPsec server.
 	DryRun *string `json:"DryRun,omitempty" xml:"DryRun,omitempty"`
-	// Specifies whether you want the configuration to immediately take effect. Valid values:
+	// Specify whether to start connection negotiations immediately. Valid values:
 	//
-	// *   **true**: initiates negotiations after the configuration is completed.
-	// *   **false** (default): initiates negotiations when inbound traffic is detected.
+	// *   **true**: immediately initiates negotiations after the configuration is complete.
+	// *   **false** (default): initiates negotiations when inbound traffic is detected. This is the default value.
 	EffectImmediately *bool `json:"EffectImmediately,omitempty" xml:"EffectImmediately,omitempty"`
-	// The configuration of Phase 1 negotiations. Valid values:
+	// The configuration of Phase 1 negotiation. Valid values:
 	//
 	// *   **IkeVersion**: the IKE version. Valid values: **ikev1** and **ikev2**. Default value: **ikev2**.
 	// *   **IkeMode**: the IKE negotiation mode. Default value: **main**.
-	// *   **IkeEncAlg**: the encryption algorithm that is used in Phase 1 negotiations. Default value: **aes**.
-	// *   **IkeAuthAlg**: the authentication algorithm that is used in Phase 1 negotiations. Default value: **sha1**.
-	// *   **IkePfs**: the Diffie-Hellman key exchange algorithm that is used in Phase 1 negotiations. Default value: **group2**.
-	// *   **IkeLifetime**: the security association (SA) lifetime determined by Phase 1 negotiations. Unit: seconds. Valid values: **0** to **86400**. Default value: **86400**.
+	// *   **IkeEncAlg**: the encryption algorithm that is used in Phase 1 negotiation. Default value: **aes**.
+	// *   **IkeAuthAlg**: the authentication algorithm that is used in Phase 1 negotiation. Default value: **sha1**.
+	// *   **IkePfs**: the Diffie-Hellman key exchange algorithm that is used in Phase 1 negotiation. Default value: **group2**.
+	// *   **IkeLifetime**: the security association (SA) lifetime determined by Phase 1 negotiation. Unit: seconds. Valid values: **0** to **86400**. Default value: **86400**.
 	// *   **LocalId**: the identifier of the IPsec server. The value can be a fully qualified domain name (FQDN) or an IP address. The default value is the public IP address of the VPN gateway.
-	// *   **RemoteId**: the identifier of the peer. The value can be an FQDN or an IP address. By default, this parameter is not specified.
+	// *   **RemoteId**: the peer identifier. The value can be an FQDN or an IP address. The default value is empty.
 	IkeConfig *string `json:"IkeConfig,omitempty" xml:"IkeConfig,omitempty"`
-	// The name of the IPsec server.
+	// The IPsec server name.
 	//
 	// The name must be 1 to 100 characters in length and cannot start with `http://` or `https://`.
 	IpSecServerName *string `json:"IpSecServerName,omitempty" xml:"IpSecServerName,omitempty"`
-	// The configuration of Phase 2 negotiations. Valid values:
+	// The configuration of Phase 2 negotiation. Valid values:
 	//
-	// *   **IpsecEncAlg**: the encryption algorithm that is used in Phase 2 negotiations. Default value: **aes**.
-	// *   **IpsecAuthAlg**: the authentication algorithm that is used in Phase 2 negotiations. Default value: **sha1**.
-	// *   **IpsecPfs**: forwards packets of all protocols. The Diffie-Hellman key exchange algorithm used in Phase 2 negotiations. Default value: **group2**.
-	// *   **IpsecLifetime**: the SA lifetime determined by Phase 2 negotiations. Unit: seconds. Valid values: **0** to **86400**. Default value: **86400**.
+	// *   **IpsecEncAlg**: the encryption algorithm that is used in Phase 2 negotiation. Default value: **aes**.
+	// *   **IpsecAuthAlg**: the authentication algorithm that is used in Phase 2 negotiation. Default value: **sha1**.
+	// *   **IpsecPfs**: forwards packets of all protocols. The Diffie-Hellman key exchange algorithm that is used in Phase 2 negotiation. Default value: **group2**.
+	// *   **IpsecLifetime**: the SA lifetime determined by Phase 2 negotiation. Unit: seconds. Valid values: **0** to **86400**. Default value: **86400**.
 	IpsecConfig *string `json:"IpsecConfig,omitempty" xml:"IpsecConfig,omitempty"`
-	// The local CIDR blocks, which refer to the CIDR blocks on the virtual private cloud (VPC) side.
+	// The local CIDR blocks, which are the CIDR blocks of the virtual private cloud (VPC) for the client to access.
 	//
-	// Separate multiple CIDR blocks with commas (,). Example: 192.168.1.0/24,192.168.2.0/24.
+	// Multiple CIDR blocks are separated with commas (,). Example: 192.168.1.0/24,192.168.2.0/24.
 	LocalSubnet *string `json:"LocalSubnet,omitempty" xml:"LocalSubnet,omitempty"`
 	// The pre-shared key.
 	//
@@ -8125,7 +8380,7 @@ type CreateIpsecServerRequest struct {
 	//
 	// If you do not specify a pre-shared key, the system randomly generates a 16-character string as the pre-shared key. You can call the [ListIpsecServers](~~205453~~) operation to query the pre-shared keys that are generated by the system.
 	//
-	// >  The pre-shared key of the IPsec server must be the same as the authentication key of the client. Otherwise, a connection cannot be established between the IPsec server and the client.
+	// >  The pre-shared key of the IPsec server must be the same as the client key. Otherwise, the IPsec server cannot be connected to the client.
 	Psk *string `json:"Psk,omitempty" xml:"Psk,omitempty"`
 	// Specifies whether to enable pre-shared key authentication. If you set the value to **true**, pre-shared key authentication is enabled.
 	PskEnabled *bool `json:"PskEnabled,omitempty" xml:"PskEnabled,omitempty"`
@@ -8208,13 +8463,13 @@ type CreateIpsecServerResponseBody struct {
 	//
 	// T is used as a delimiter. Z indicates that the time is in UTC.
 	CreationTime *string `json:"CreationTime,omitempty" xml:"CreationTime,omitempty"`
-	// The ID of the IPsec server.
+	// The IPsec server ID.
 	IpsecServerId *string `json:"IpsecServerId,omitempty" xml:"IpsecServerId,omitempty"`
-	// The name of the IPsec server.
+	// The IPsec server name.
 	IpsecServerName *string `json:"IpsecServerName,omitempty" xml:"IpsecServerName,omitempty"`
 	// The ID of the region where the VPN gateway is deployed.
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	// The ID of the request.
+	// The request ID.
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	// The ID of the VPN gateway.
 	VpnGatewayId *string `json:"VpnGatewayId,omitempty" xml:"VpnGatewayId,omitempty"`
@@ -8479,9 +8734,9 @@ func (s *CreateIpv4GatewayResponse) SetBody(v *CreateIpv4GatewayResponseBody) *C
 type CreateIpv6EgressOnlyRuleRequest struct {
 	// The client token that is used to ensure the idempotence of the request.
 	//
-	// You can use the client to generate the value, but you must make sure that the value is unique among different requests. The token can contain only ASCII characters and cannot exceed 64 characters in length.
+	// You can use the client to generate a token, but you must make sure that the token is unique among different requests. The token can contain only ASCII characters and cannot exceed 64 characters in length.
 	//
-	// >  If you do not specify this parameter, the system automatically uses the request ID as the client token. The value of RequestId for each API request may be different.
+	// >  If you do not specify this parameter, the system automatically uses the value of RequestId as the client token. The value of RequestId is different for each API request.
 	ClientToken *string `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
 	// The description of the egress-only rule.
 	//
@@ -8491,7 +8746,7 @@ type CreateIpv6EgressOnlyRuleRequest struct {
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
 	// The type of the instance for which you want to create an egress-only rule.
 	//
-	// Set the value to **Ipv6Address** (default). This value specifies the IPv6 address type.
+	// Default value: **Ipv6Address**
 	InstanceType *string `json:"InstanceType,omitempty" xml:"InstanceType,omitempty"`
 	// The ID of the IPv6 gateway.
 	Ipv6GatewayId *string `json:"Ipv6GatewayId,omitempty" xml:"Ipv6GatewayId,omitempty"`
@@ -8501,9 +8756,9 @@ type CreateIpv6EgressOnlyRuleRequest struct {
 	Name         *string `json:"Name,omitempty" xml:"Name,omitempty"`
 	OwnerAccount *string `json:"OwnerAccount,omitempty" xml:"OwnerAccount,omitempty"`
 	OwnerId      *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
-	// The region ID of the IPv6 gateway.
+	// The ID of the region in which the IPv6 gateway is deployed.
 	//
-	// You can call the [DescribeRegions](~~36063~~) operation to query the most recent region list.
+	// You can call the [DescribeRegions](~~36063~~) operation to query the region ID.
 	RegionId             *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 	ResourceOwnerAccount *string `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
 	ResourceOwnerId      *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
@@ -8575,7 +8830,7 @@ func (s *CreateIpv6EgressOnlyRuleRequest) SetResourceOwnerId(v int64) *CreateIpv
 type CreateIpv6EgressOnlyRuleResponseBody struct {
 	// The ID of the egress-only rule.
 	Ipv6EgressRuleId *string `json:"Ipv6EgressRuleId,omitempty" xml:"Ipv6EgressRuleId,omitempty"`
-	// The ID of the request.
+	// The request ID.
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -9978,7 +10233,8 @@ type CreatePhysicalConnectionRequest struct {
 	// The description of the Express Connect circuit.
 	//
 	// The description must be 2 to 256 characters in length. The description must start with a letter but cannot start with `http://` or `https://`.
-	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
+	Description            *string   `json:"Description,omitempty" xml:"Description,omitempty"`
+	DeviceAdvancedCapacity []*string `json:"DeviceAdvancedCapacity,omitempty" xml:"DeviceAdvancedCapacity,omitempty" type:"Repeated"`
 	// The connectivity provider of the Express Connect circuit. Valid values:
 	//
 	// *   **CT**: China Telecom
@@ -10052,6 +10308,11 @@ func (s *CreatePhysicalConnectionRequest) SetClientToken(v string) *CreatePhysic
 
 func (s *CreatePhysicalConnectionRequest) SetDescription(v string) *CreatePhysicalConnectionRequest {
 	s.Description = &v
+	return s
+}
+
+func (s *CreatePhysicalConnectionRequest) SetDeviceAdvancedCapacity(v []*string) *CreatePhysicalConnectionRequest {
+	s.DeviceAdvancedCapacity = v
 	return s
 }
 
@@ -10545,54 +10806,60 @@ func (s *CreatePhysicalConnectionSetupOrderResponse) SetBody(v *CreatePhysicalCo
 }
 
 type CreatePublicIpAddressPoolRequest struct {
+	// The service type of the IP address pool. Valid values:
+	//
+	// *   **CloudBox** Only cloud box users can select this type.
+	// *   **Default**: This is the default value.
 	BizType *string `json:"BizType,omitempty" xml:"BizType,omitempty"`
-	// The client token that you want to use to ensure the idempotence of the request.
+	// The client token that is used to ensure the idempotence of the request.
 	//
-	// You can use the client to generate the value, but you must make sure that the value is unique among all requests. ClientToken can contain only ASCII characters.
+	// You can use the client to generate a value, and you must make sure that each request has a unique token value. The client token can contain only ASCII characters.
 	//
-	// >  If you do not specify this parameter, the system uses **RequestId** as **ClientToken**. The value of **RequestId** for each API request may be different.
+	// >  If you do not specify this parameter, the system automatically uses the value of **RequestId** as the value of **ClientToken**. The value of **RequestId** for each API request is different.
 	ClientToken *string `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
 	// The description of the IP address pool.
 	//
 	// This parameter is optional. The description must be 2 to 256 characters in length, and cannot start with http:// or https://.
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
-	// Specifies whether to perform a dry run. Valid values:
+	// Specifies whether to precheck only this request. Valid values:
 	//
-	// *   **true**: performs a dry run. The system checks the required parameters, request syntax, and limits. If the request fails the dry run, an error message is returned. If the request passes the dry run, the `DryRunOperation` error code is returned.
-	// *   **false** (default): performs a dry run and sends the request. If the request passes the dry run, a 2xx HTTP status code is returned and the operation is performed.
+	// *   **true**: prechecks the request without creating an IP address pool. The system checks the required parameters, request format, and service limits. If the request fails to pass the precheck, an error code is returned. If the request passes the precheck, the `DryRunOperation` error code is returned.
+	// *   **false**: sends the request. This is the default value. If the request passes the precheck, a 2xx HTTP status code is returned and the IP address pool is created.
 	DryRun *bool `json:"DryRun,omitempty" xml:"DryRun,omitempty"`
 	// The line type. Valid values:
 	//
-	// *   **BGP** (default): BGP (Multi-ISP) lines.
-	// *   **BGP_PRO**: BGP (Multi-ISP) Pro lines
+	// *   **BGP** (default)
+	// *   **BGP_PRO**
 	//
-	// For more information about BGP (Multi-ISP) and BGP (Multi-ISP) Pro, see [EIP line types](~~32321~~).
+	// For more information about BGP (Multi-ISP) lines and BGP (Multi-ISP) Pro lines, see the "Line types" section in the [What is EIP?](~~32321~~) topic.
 	//
-	// *   If you are allowed to use single-ISP bandwidth, you can also choose one of the following values:
+	// *   If you are allowed to use single-ISP bandwidth, you can also use one of the following values:
 	//
-	//     *   **ChinaTelecom**: China Telecom
-	//     *   **ChinaUnicom**: China Unicom
-	//     *   **ChinaMobile**: China Mobile
-	//     *   **ChinaTelecom_L2**: China Telecom L2
-	//     *   **ChinaUnicom_L2**: China Unicom L2
-	//     *   **ChinaMobile_L2**: China Mobile L2
+	//     *   **ChinaTelecom**
+	//     *   **ChinaUnicom**
+	//     *   **ChinaMobile**
+	//     *   **ChinaTelecom_L2**
+	//     *   **ChinaUnicom_L2**
+	//     *   **ChinaMobile_L2**
 	//
 	// *   If your services are deployed in China East 1 Finance, this parameter is required and you must set the value to **BGP_FinanceCloud**.
 	Isp *string `json:"Isp,omitempty" xml:"Isp,omitempty"`
 	// The name of the IP address pool.
 	//
-	// This parameter is optional. The name must be 1 to 128 characters in length, and can contain digits, periods (.), underscores (\_), and hyphens (-). The name must start with a letter but cannot start with `http://` or `https://`.
+	// This parameter is optional. The name must be 1 to 128 characters in length and can contain digits, periods (.), underscores (\_), and hyphens (-). The name must start with a letter but cannot start with `http://` or `https://`.
 	Name         *string `json:"Name,omitempty" xml:"Name,omitempty"`
 	OwnerAccount *string `json:"OwnerAccount,omitempty" xml:"OwnerAccount,omitempty"`
 	OwnerId      *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
 	// The ID of the region where you want to create the IP address pool.
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 	// The ID of the resource group to which the IP address pool belongs.
-	ResourceGroupId      *string                                `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
-	ResourceOwnerAccount *string                                `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
-	ResourceOwnerId      *int64                                 `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
-	Tag                  []*CreatePublicIpAddressPoolRequestTag `json:"Tag,omitempty" xml:"Tag,omitempty" type:"Repeated"`
-	Zones                []*string                              `json:"Zones,omitempty" xml:"Zones,omitempty" type:"Repeated"`
+	ResourceGroupId      *string `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
+	ResourceOwnerAccount *string `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
+	ResourceOwnerId      *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
+	// The tag of the resource.
+	Tag []*CreatePublicIpAddressPoolRequestTag `json:"Tag,omitempty" xml:"Tag,omitempty" type:"Repeated"`
+	// The zone of the IP address pool. If you set **BizType** to **CloudBox**, this parameter is required.
+	Zones []*string `json:"Zones,omitempty" xml:"Zones,omitempty" type:"Repeated"`
 }
 
 func (s CreatePublicIpAddressPoolRequest) String() string {
@@ -10674,7 +10941,13 @@ func (s *CreatePublicIpAddressPoolRequest) SetZones(v []*string) *CreatePublicIp
 }
 
 type CreatePublicIpAddressPoolRequestTag struct {
-	Key   *string `json:"Key,omitempty" xml:"Key,omitempty"`
+	// The tag key of the resource. You can specify up to 20 tag keys. The tag key cannot be an empty string.
+	//
+	// A tag key can be up to 128 characters in length. It cannot start with `aliyun` or `acs:`, and cannot contain `http://` or `https://`.
+	Key *string `json:"Key,omitempty" xml:"Key,omitempty"`
+	// The tag value of the resource. You can specify up to 20 tag values. The tag value can be an empty string.
+	//
+	// The tag value can be up to 128 characters in length. It cannot start with `aliyun` or `acs:`, and cannot contain `http://` or `https://`.
 	Value *string `json:"Value,omitempty" xml:"Value,omitempty"`
 }
 
@@ -10699,7 +10972,7 @@ func (s *CreatePublicIpAddressPoolRequestTag) SetValue(v string) *CreatePublicIp
 type CreatePublicIpAddressPoolResponseBody struct {
 	// The ID of the IP address pool.
 	PulbicIpAddressPoolId *string `json:"PulbicIpAddressPoolId,omitempty" xml:"PulbicIpAddressPoolId,omitempty"`
-	// The ID of the request.
+	// The request ID.
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	// The ID of the resource group to which the IP address pool belongs.
 	ResourceGroupId *string `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
@@ -11751,32 +12024,54 @@ func (s *CreateRouterInterfaceResponse) SetBody(v *CreateRouterInterfaceResponse
 type CreateSnatEntryRequest struct {
 	// The client token that is used to ensure the idempotence of the request.
 	//
-	// You can use the client to generate the value, but you must make sure that it is unique among different requests. `The token can contain only ASCII characters.`
+	// You can use the client to generate the token, but you must make sure that the token is unique among different requests. The `client token` can contain only ASCII characters.
 	//
-	// >  If you do not set this parameter, **ClientToken** is set to the value of **RequestId**. The value of **RequestId** for each API request may be different.
+	// **
+	//
+	// **Description** If you do not specify this parameter, the system automatically uses the **request ID** as the **client token**. The **request ID** may be different for each request.
 	ClientToken *string `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
 	// Specifies whether to enable EIP affinity. Valid values:
 	//
 	// *   **0**: no
 	// *   **1**: yes
 	//
-	// >  If EIP affinity is enabled and the SNAT entry is associated with multiple EIPs, a client uses the same EIP to access the Internet. Otherwise, the client uses an EIP selected from the associated EIPs to access the Internet.
+	// **
+	//
+	// **Description** After you enable EIP affinity, if multiple EIPs are associated with an SNAT entry, each client uses one EIP to access the Internet. If EIP affinity is disabled, each client uses a random EIP to access the Internet.
 	EipAffinity  *int32  `json:"EipAffinity,omitempty" xml:"EipAffinity,omitempty"`
 	OwnerAccount *string `json:"OwnerAccount,omitempty" xml:"OwnerAccount,omitempty"`
 	OwnerId      *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
-	// The ID of the region where the NAT gateway is deployed.
+	// The region ID of the NAT gateway.
 	//
 	// You can call the [DescribeRegions](~~36063~~) operation to query the most recent region list.
+	//
+	// Valid values:
+	//
+	// *   ap-northeast-2-pop
+	//
+	//     <!-- -->
+	//
+	//     :
+	//
+	//     <!-- -->
+	//
+	//     ap-northeast-2-pop
+	//
+	//     <!-- -->
+	//
+	//     .
 	RegionId             *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 	ResourceOwnerAccount *string `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
 	ResourceOwnerId      *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
-	// Enter a name for the SNAT entry.
+	// The name of the SNAT entry.
 	//
 	// The name must be 2 to 128 characters in length. It must start with a letter but cannot start with `http://` or `https://`.
 	SnatEntryName *string `json:"SnatEntryName,omitempty" xml:"SnatEntryName,omitempty"`
 	// *   The EIPs in the SNAT entry when you add an SNAT entry to an Internet NAT gateway. Separate EIPs with commas (,).
 	//
-	// >  If you select multiple EIPs to create an SNAT address pool, connections are hashed to these EIPs. Network traffic may not be evenly distributed to the EIPs because the amount of traffic that passes through each connection varies. We recommend that you associate these EIPs with the same EIP bandwidth plan to prevent service interruptions due to the bandwidth limit of an individual EIP.
+	// **
+	//
+	// **Description** If you specify multiple EIPs in the SNAT IP address pool, the service connection is allocated to multiple EIPs by using the hashing algorithm. The traffic of each EIP may be different. Therefore, we recommend that you associate the EIPs with an Internet Shared Bandwidth instance to prevent service interruptions caused by bandwidth exhaustion.
 	//
 	// *   When you add an SNAT entry to a VPC NAT gateway, this parameter specifies the NAT IP address in the SNAT entry.
 	SnatIp *string `json:"SnatIp,omitempty" xml:"SnatIp,omitempty"`
@@ -11795,7 +12090,7 @@ type CreateSnatEntryRequest struct {
 	//
 	// If **SnatIp** is set to multiple EIPs, the ECS instance randomly selects an EIP specified in the **SnatIp** parameter to access the Internet.
 	//
-	// You cannot set this parameter and **SourceVSwtichId** at the same time. If the **SourceVSwitchId** parameter is set, you cannot set the **SourceCIDR** parameter. If the **SourceCIDR** parameter is set, you cannot set the **SourceVSwitchId** parameter.
+	// You cannot specify this parameter and **SourceVSwtichId** at the same time. If **SourceVSwitchId** is specified, you cannot specify **SourceCIDR**. If **SourceCIDR** is specified, you cannot specify **SourceVSwitchId**.
 	SourceCIDR *string `json:"SourceCIDR,omitempty" xml:"SourceCIDR,omitempty"`
 	// The ID of the vSwitch.
 	//
@@ -11873,7 +12168,7 @@ func (s *CreateSnatEntryRequest) SetSourceVSwitchId(v string) *CreateSnatEntryRe
 }
 
 type CreateSnatEntryResponseBody struct {
-	// The ID of the request.
+	// The request ID.
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	// The ID of the SNAT entry.
 	SnatEntryId *string `json:"SnatEntryId,omitempty" xml:"SnatEntryId,omitempty"`
@@ -12059,65 +12354,65 @@ func (s *CreateSslVpnClientCertResponse) SetBody(v *CreateSslVpnClientCertRespon
 }
 
 type CreateSslVpnServerRequest struct {
-	// The encryption algorithm that is used in the SSL-VPN connection. Valid values:
+	// The encryption algorithm that is used for the SSL-VPN connection. Valid values:
 	//
-	// *   **AES-128-CBC** (default): AES-128-CBC
-	// *   **AES-192-CBC**: AES-192-CBC
-	// *   **AES-256-CBC**: AES-256-CBC
-	// *   **none**: does not use an encryption algorithm.
+	// *   **AES-128-CBC** (default)
+	// *   **AES-192-CBC**
+	// *   **AES-256-CBC**
+	// *   **none**
 	Cipher *string `json:"Cipher,omitempty" xml:"Cipher,omitempty"`
 	// The client CIDR block.
 	//
-	// The CIDR block that is allocated to the virtual network interface of the client. It is not the CIDR block where the client resides.
+	// The client CIDR block from which an IP address is allocated to the virtual network interface controller (NIC) of the client. It is not the CIDR block where the client resides.
 	//
-	// When the client accesses the destination network through an SSL-VPN connection, the VPN gateway allocates an IP address from the client CIDR block to the client.
+	// When the client accesses the local virtual private cloud (VPC) by using an SSL-VPN connection, the VPN gateway allocates an IP address from the client CIDR block to the client.
 	//
-	// >  This CIDR block cannot conflict with the CIDR block specified by **LocalSubnet**.
+	// >  This CIDR block cannot overlap with the CIDR block specified by **LocalSubnet**.
 	ClientIpPool *string `json:"ClientIpPool,omitempty" xml:"ClientIpPool,omitempty"`
 	// The client token that is used to ensure the idempotence of the request.
 	//
-	// You can use the client to generate the value, but you must make sure that it is unique among different requests. ClientToken can contain only ASCII characters.
+	// You can use the client to generate a value, and you must make sure that each request has a unique token value. The client token can contain only ASCII characters.
 	//
-	// >  If you do not set this parameter, **ClientToken** is set to the value of **RequestId**. The value of **RequestId** may be different for each API request.
+	// >  If you do not specify this parameter, the system automatically uses the value of **RequestId** as the value of **ClientToken**. The **request ID** may be different for each request.
 	ClientToken *string `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
 	// Specifies whether to enable data compression. Valid values:
 	//
-	// *   **true**: yes
-	// *   **false** (default): no
+	// *   **true**
+	// *   **false** (default)
 	Compress *bool `json:"Compress,omitempty" xml:"Compress,omitempty"`
 	// Specifies whether to enable two-factor authentication. Valid values:
 	//
-	// *   **true**: yes
-	// *   **false** (default): no
+	// *   **true**
+	// *   **false** (default):
 	//
-	// >  To enable two-factor authentication, make sure that the VPN gateway was created after 00:00:00 (UTC+8), March 5, 2020. Otherwise, two-factor authentication is not supported.
+	// >  If you want to use the two-factor authentication feature, you must make sure that your VPN gateway is created after 00:00:00, March 5, 2020. Otherwise, the two-factor authentication feature is not supported.
 	EnableMultiFactorAuth *bool `json:"EnableMultiFactorAuth,omitempty" xml:"EnableMultiFactorAuth,omitempty"`
-	// The ID of the IDaaS instance.
+	// The Identity as a Service (IDaaS) instance ID.
 	IDaaSInstanceId *string `json:"IDaaSInstanceId,omitempty" xml:"IDaaSInstanceId,omitempty"`
 	// The ID of the region where the IDaaS instance is created.
 	IDaaSRegionId *string `json:"IDaaSRegionId,omitempty" xml:"IDaaSRegionId,omitempty"`
 	// The local CIDR block.
 	//
-	// The CIDR block to be accessed by the client through the SSL-VPN connection.
+	// The CIDR block to be accessed by the client by using the SSL-VPN connection.
 	//
-	// This value can be the CIDR block of a virtual private cloud (VPC), a vSwitch, a data center that is connected to a VPC through an Express Connect circuit, or Object Storage Service (OSS).
+	// This value can be the CIDR block of a VPC, a vSwitch, a data center that is connected to a VPC by using an Express Connect circuit, or an Alibaba Cloud service such as Object Storage Service (OSS).
 	LocalSubnet *string `json:"LocalSubnet,omitempty" xml:"LocalSubnet,omitempty"`
-	// The name of the SSL server.
+	// The SSL server name.
 	//
-	// The name must be 1 to 100 characters in length, and cannot start with `http://` or `https://`.
+	// The name must be 1 to 100 characters in length and cannot start with `http://` or `https://`.
 	Name         *string `json:"Name,omitempty" xml:"Name,omitempty"`
 	OwnerAccount *string `json:"OwnerAccount,omitempty" xml:"OwnerAccount,omitempty"`
 	OwnerId      *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
-	// The port used by the SSL server. Default value: **1194**. The following ports cannot be used:
+	// The port that is used by the SSL server. Default value: **1194**. The following ports cannot be used:
 	//
 	// **22, 2222, 22222, 9000, 9001, 9002, 7505, 80, 443, 53, 68, 123, 4510, 4560, 500, and 4500**.
 	Port *int32 `json:"Port,omitempty" xml:"Port,omitempty"`
 	// The protocol that is used by the SSL server. Valid values:
 	//
-	// *   **TCP**: TCP
-	// *   **UDP** (default): UDP
+	// *   **TCP**
+	// *   **UDP** (default)
 	Proto *string `json:"Proto,omitempty" xml:"Proto,omitempty"`
-	// The ID of the region where the VPN gateway is created.
+	// The region ID of the VPN gateway.
 	//
 	// You can call the [DescribeRegions](~~36063~~) operation to query the most recent region list.
 	RegionId             *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
@@ -12221,9 +12516,9 @@ func (s *CreateSslVpnServerRequest) SetVpnGatewayId(v string) *CreateSslVpnServe
 }
 
 type CreateSslVpnServerResponseBody struct {
-	// The name of the SSL server.
+	// The SSL server name.
 	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
-	// The ID of the request.
+	// The request ID.
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	// The ID of the SSL server.
 	SslVpnServerId *string `json:"SslVpnServerId,omitempty" xml:"SslVpnServerId,omitempty"`
@@ -12302,10 +12597,11 @@ type CreateTrafficMirrorFilterRequest struct {
 	// You can call the [DescribeRegions](~~36063~~) operation to query the most recent region list. For more information about regions that support traffic mirroring, see [Overview of traffic mirroring](~~207513~~).
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 	// The ID of the resource group to which the mirrored traffic belongs.
-	ResourceGroupId      *string                                `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
-	ResourceOwnerAccount *string                                `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
-	ResourceOwnerId      *int64                                 `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
-	Tag                  []*CreateTrafficMirrorFilterRequestTag `json:"Tag,omitempty" xml:"Tag,omitempty" type:"Repeated"`
+	ResourceGroupId      *string `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
+	ResourceOwnerAccount *string `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
+	ResourceOwnerId      *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
+	// The tags.
+	Tag []*CreateTrafficMirrorFilterRequestTag `json:"Tag,omitempty" xml:"Tag,omitempty" type:"Repeated"`
 	// The description of the filter.
 	//
 	// The description must be 1 to 256 characters in length and cannot start with `http://` or `https://`.
@@ -12538,7 +12834,13 @@ func (s *CreateTrafficMirrorFilterRequestIngressRules) SetSourcePortRange(v stri
 }
 
 type CreateTrafficMirrorFilterRequestTag struct {
-	Key   *string `json:"Key,omitempty" xml:"Key,omitempty"`
+	// The key of tag N to add to the resource. The tag key can be up to 128 characters in length and cannot contain `http://` or `https://`. The tag key cannot start with `acs:` or `aliyun`.
+	//
+	// You can add up to 20 tags in each call.
+	Key *string `json:"Key,omitempty" xml:"Key,omitempty"`
+	// The value of tag N that is added to the resource. You can specify up to 20 tag values. The tag value can be an empty string.
+	//
+	// The value can be up to 128 characters in length and can contain letters, digits, periods (.), underscores (\_), and hyphens (-). The value must start with a letter but cannot start with `aliyun` or `acs:`. The value cannot contain `http://` or `https://`.
 	Value *string `json:"Value,omitempty" xml:"Value,omitempty"`
 }
 
@@ -13106,7 +13408,11 @@ func (s *CreateTrafficMirrorSessionRequest) SetVirtualNetworkId(v int32) *Create
 }
 
 type CreateTrafficMirrorSessionRequestTag struct {
-	Key   *string `json:"Key,omitempty" xml:"Key,omitempty"`
+	// The key of the tag. You can specify up to 20 tag keys. The tag key cannot be an empty string.
+	//
+	// The tag key can be up to 128 characters in length and cannot contain `http://` or `https://`. The tag key cannot start with `acs:` or `aliyun`.
+	Key *string `json:"Key,omitempty" xml:"Key,omitempty"`
+	// The tag value. The format of Tag.N.Value when you call the operation. Valid values of N: 1 to 20. It cannot be an empty string. It can be up to 128 characters in length and cannot start with acs: or aliyun. It cannot contain http:// or https://.
 	Value *string `json:"Value,omitempty" xml:"Value,omitempty"`
 }
 
@@ -13534,9 +13840,9 @@ func (s *CreateVbrHaResponse) SetBody(v *CreateVbrHaResponseBody) *CreateVbrHaRe
 type CreateVcoRouteEntryRequest struct {
 	// The client token that is used to ensure the idempotence of the request.
 	//
-	// You can use the client to generate the value, but you must make sure that it is unique among all requests. The token can contain only ASCII characters.
+	// You can use the client to generate the token, but you must make sure that the token is unique among different requests. The client token can contain only ASCII characters.
 	//
-	// >  If you do not set this parameter, **ClientToken** is set to the value of **RequestId**. The value of **RequestId** for each API request may be different.
+	// >  If you do not specify this parameter, the system automatically uses the **request ID** as the **client token**. The **request ID** may be different for each request.
 	ClientToken *string `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
 	// The description of the destination-based route.
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
@@ -13545,7 +13851,7 @@ type CreateVcoRouteEntryRequest struct {
 	// The tunneling protocol. Set the value to **Ipsec**, which specifies the IPsec tunneling protocol.
 	OverlayMode  *string `json:"OverlayMode,omitempty" xml:"OverlayMode,omitempty"`
 	OwnerAccount *string `json:"OwnerAccount,omitempty" xml:"OwnerAccount,omitempty"`
-	// The region ID of the IPsec-VPN connection.
+	// The ID of the region where the IPsec-VPN connection is established.
 	//
 	// You can call the [DescribeRegions](~~36063~~) operation to query the most recent region list.
 	RegionId             *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
@@ -13628,7 +13934,7 @@ func (s *CreateVcoRouteEntryRequest) SetWeight(v int32) *CreateVcoRouteEntryRequ
 type CreateVcoRouteEntryResponseBody struct {
 	// The timestamp when the destination-based route was created. Unit: milliseconds.
 	//
-	// This value is a UNIX timestamp representing the number of milliseconds that have elapsed since the epoch time January 1, 1970, 00:00:00 UTC.
+	// This value is a UNIX timestamp representing the number of milliseconds that have elapsed since January 1, 1970, 00:00:00 UTC.
 	CreateTime *int64 `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
 	// The description of the destination-based route.
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
@@ -13638,7 +13944,7 @@ type CreateVcoRouteEntryResponseBody struct {
 	//
 	// The value is set to **Ipsec**, which indicates the IPsec tunneling protocol.
 	OverlayMode *string `json:"OverlayMode,omitempty" xml:"OverlayMode,omitempty"`
-	// The ID of the request.
+	// The request ID.
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	// The destination CIDR block of the destination-based route.
 	RouteDest *string `json:"RouteDest,omitempty" xml:"RouteDest,omitempty"`
@@ -13648,7 +13954,7 @@ type CreateVcoRouteEntryResponseBody struct {
 	State *string `json:"State,omitempty" xml:"State,omitempty"`
 	// The ID of the IPsec-VPN connection.
 	VpnConnectionId *string `json:"VpnConnectionId,omitempty" xml:"VpnConnectionId,omitempty"`
-	// The weight of the destination-based route.
+	// The weight of the destination-based route. Valid values:
 	//
 	// *   **0**: a low priority
 	// *   **100**: a high priority
@@ -14212,35 +14518,36 @@ type CreateVpcRequest struct {
 	CidrBlock *string `json:"CidrBlock,omitempty" xml:"CidrBlock,omitempty"`
 	// The client token that is used to ensure the idempotence of the request.
 	//
-	// You can use the client to generate the value, but you must ensure that it is unique among all requests. ClientToken can contain only ASCII characters.
+	// You can use the client to generate the token, but you must make sure that the token is unique among different requests. The token can contain only ASCII characters.
 	//
-	// >  If you do not set this parameter, **ClientToken** is set to the value of **RequestId**. The value of **RequestId** for each API request may be different.
+	// >  If you do not specify this parameter, the system automatically uses the **request ID** as the **client token**. The **request ID** may be different for each request.
 	ClientToken *string `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
 	// The description of the VPC.
 	//
 	// The description must be 1 to 256 characters in length and cannot start with `http://` or `https://`.
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
-	// Specifies whether to perform a dry run. Valid values:
+	// Specifies whether to perform a dry run, without performing the actual request. Valid values:
 	//
-	// *   **true**: performs a dry run. The system checks the required parameters, request syntax, and limits. If the request fails the dry run, an error message is returned. If the request passes the dry run, the `DryRunOperation` error code is returned.
-	// *   **false** (default): performs a dry run and sends the request. If the request passes the dry run, a 2xx HTTP status code is returned and the operation is performed.
+	// *   **true**: performs only a dry run. The system checks the request for potential issues, including missing parameter values, incorrect request syntax, and service limits. If the request fails the dry run, an error code is returned. If the request passes the dry run, the `DryRunOperation` error code is returned.
+	// *   **false** (default): performs a dry run and performs the actual request. If the request passes the dry run, a 2xx HTTP status code is returned and the operation is performed.
 	DryRun *bool `json:"DryRun,omitempty" xml:"DryRun,omitempty"`
 	// Specifies whether to enable IPv6. Valid values:
 	//
-	// *   **false** (default): no
-	// *   **true**: yes
-	EnableIpv6     *bool   `json:"EnableIpv6,omitempty" xml:"EnableIpv6,omitempty"`
+	// *   **false** (default)
+	// *   **true**
+	EnableIpv6 *bool `json:"EnableIpv6,omitempty" xml:"EnableIpv6,omitempty"`
+	// The ID of the IP Address Manager (IPAM) pool of the IPv4 type.
 	Ipv4IpamPoolId *string `json:"Ipv4IpamPoolId,omitempty" xml:"Ipv4IpamPoolId,omitempty"`
-	// The IPv6 CIDR blocks of the VPC.
+	// The IPv6 CIDR block of the VPC.
 	Ipv6CidrBlock *string `json:"Ipv6CidrBlock,omitempty" xml:"Ipv6CidrBlock,omitempty"`
-	// The type of the IPv6 CIDR block. Valid values:
+	// The type of the IPv6 CIDR block of the VPC. Valid values:
 	//
-	// *   **BGP** (default): Alibaba Cloud Border Gateway Protocol (BGP)
-	// *   **ChinaMobile**: China Mobile (single ISP).
-	// *   **ChinaUnicom**: China Unicom (single ISP).
-	// *   **ChinaTelecom**: China Telecom (single ISP).
+	// *   **BGP** (default)
+	// *   **ChinaMobile**
+	// *   **ChinaUnicom**
+	// *   **ChinaTelecom**
 	//
-	// >  If your Alibaba Cloud account is allowed to use single-ISP bandwidth, you can set this parameter to **ChinaTelecom**, **ChinaUnicom**, or **ChinaMobile**.
+	// >  If you are allowed to use single-ISP bandwidth, you can set the value to **ChinaTelecom**, **ChinaUnicom**, or **ChinaMobile**.
 	Ipv6Isp      *string `json:"Ipv6Isp,omitempty" xml:"Ipv6Isp,omitempty"`
 	OwnerAccount *string `json:"OwnerAccount,omitempty" xml:"OwnerAccount,omitempty"`
 	OwnerId      *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
@@ -14251,10 +14558,11 @@ type CreateVpcRequest struct {
 	// The ID of the resource group.
 	//
 	// For more information about resource groups, see [What is a resource group?](~~94475~~)
-	ResourceGroupId      *string                `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
-	ResourceOwnerAccount *string                `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
-	ResourceOwnerId      *int64                 `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
-	Tag                  []*CreateVpcRequestTag `json:"Tag,omitempty" xml:"Tag,omitempty" type:"Repeated"`
+	ResourceGroupId      *string `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
+	ResourceOwnerAccount *string `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
+	ResourceOwnerId      *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
+	// The tag of the resource.
+	Tag []*CreateVpcRequestTag `json:"Tag,omitempty" xml:"Tag,omitempty" type:"Repeated"`
 	// The user CIDR block. Separate user CIDR blocks with commas (,). You can specify up to three user CIDR blocks.
 	//
 	// For more information about user CIDR blocks, see the `What is a user CIDR block?` section in [VPC FAQ](~~185311~~).
@@ -14359,7 +14667,13 @@ func (s *CreateVpcRequest) SetVpcName(v string) *CreateVpcRequest {
 }
 
 type CreateVpcRequestTag struct {
-	Key   *string `json:"Key,omitempty" xml:"Key,omitempty"`
+	// The key of tag N to add to the resource. You can specify at most 20 tag keys. The tag key cannot be an empty string.
+	//
+	// The tag key can be at most 128 characters in length. It cannot start with `aliyun` or `acs:`, and cannot contain `http://` or `https://`.
+	Key *string `json:"Key,omitempty" xml:"Key,omitempty"`
+	// The value of tag N to add to the resource. You can specify at most 20 tag values. The tag value can be an empty string.
+	//
+	// The tag value can be up to 128 characters in length, but cannot contain `http://` or `https://`. The tag value cannot start with `aliyun` or `acs:`.
 	Value *string `json:"Value,omitempty" xml:"Value,omitempty"`
 }
 
@@ -14382,9 +14696,9 @@ func (s *CreateVpcRequestTag) SetValue(v string) *CreateVpcRequestTag {
 }
 
 type CreateVpcResponseBody struct {
-	// The ID of the request.
+	// The request ID.
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// The ID of the resource group.
+	// The resource group ID.
 	ResourceGroupId *string `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
 	// The ID of the route table that is automatically created by the system after the VPC is created.
 	RouteTableId *string `json:"RouteTableId,omitempty" xml:"RouteTableId,omitempty"`
@@ -14457,14 +14771,18 @@ func (s *CreateVpcResponse) SetBody(v *CreateVpcResponseBody) *CreateVpcResponse
 }
 
 type CreateVpcGatewayEndpointRequest struct {
-	// The client token that is used to ensure the idempotence of the request. You can use the client to generate the token, but you must make sure that the token is unique among different requests. **ClientToken** can contain only ASCII characters and cannot exceed 64 characters in length.
+	// The client token that is used to ensure the idempotence of the request.
 	//
-	// >  If you do not set this parameter, the system uses **RequestId** as **ClientToken**. The value of **RequestId** of each API request may be different.
+	// You can use the client to generate the token, but you must make sure that the token is unique among different requests. The token can contain only ASCII characters.
+	//
+	// >
+	//
+	// If you do not specify this parameter, the system automatically uses the **request ID** as the **client token**. The **request ID** may be different for each request.
 	ClientToken *string `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
-	// Specifies whether to perform a dry run. Valid values:
+	// Specifies whether to perform only a dry run, without performing the actual request. Valid values:
 	//
-	// *   **true**: performs a dry run. The system checks your AccessKey pair, the RAM user permissions, and the required parameters If the request fails the dry run, the corresponding error message is returned. If the request passes the dry run, the `DryRunOperation` error code is returned.
-	// *   **false** (default): performs a dry run and sends the request. If the request passes the dry run, a 2xx HTTP status code is returned and the operation is performed.
+	// *   **true**: performs only a dry run. The system checks the request for potential issues, including missing parameter values, incorrect request syntax, and service limits. If the request fails the dry run, an error message is returned. If the request passes the dry run, the `DryRunOperation` error code is returned.
+	// *   **false** (default): performs a dry run and performs the actual request. If the request passes the dry run, a 2xx HTTP status code is returned and the operation is performed.
 	DryRun *bool `json:"DryRun,omitempty" xml:"DryRun,omitempty"`
 	// The description of the gateway endpoint.
 	//
@@ -14483,7 +14801,8 @@ type CreateVpcGatewayEndpointRequest struct {
 	// The region ID of the gateway endpoint.
 	//
 	// You can call the [DescribeRegions](~~36063~~) operation to query the most recent region list.
-	RegionId             *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	// The ID of the resource group to which the gateway endpoint belongs.
 	ResourceGroupId      *string `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
 	ResourceOwnerAccount *string `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
 	ResourceOwnerId      *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
@@ -14575,7 +14894,13 @@ func (s *CreateVpcGatewayEndpointRequest) SetVpcId(v string) *CreateVpcGatewayEn
 }
 
 type CreateVpcGatewayEndpointRequestTag struct {
-	Key   *string `json:"Key,omitempty" xml:"Key,omitempty"`
+	// The key of tag N to add to the resource. You can specify at most 20 tag keys. The tag key cannot be an empty string.
+	//
+	// A tag key can be at most 128 characters in length. It cannot start with `aliyun` or `acs:`, and cannot contain `http://` or `https://`.
+	Key *string `json:"Key,omitempty" xml:"Key,omitempty"`
+	// The value of tag N to add to the resource. You can specify at most 20 tag values. The tag value can be an empty string.
+	//
+	// A tag value can be up to 128 characters in length, and cannot contain `http://` or `https://`. The tag value cannot start with `aliyun` or `acs:`.
 	Value *string `json:"Value,omitempty" xml:"Value,omitempty"`
 }
 
@@ -14598,14 +14923,15 @@ func (s *CreateVpcGatewayEndpointRequestTag) SetValue(v string) *CreateVpcGatewa
 }
 
 type CreateVpcGatewayEndpointResponseBody struct {
-	// The time when the gateway endpoint was created. The time follows the ISO 8601 standard in the YYYY-MM-DDThh:mm:ssZ format. The time must be in UTC.
+	// The time when the gateway endpoint was created. The time follows the ISO 8601 standard in the YYYY-MM-DDThh:mm:ssZ format. The time is displayed in UTC.
 	CreationTime *string `json:"CreationTime,omitempty" xml:"CreationTime,omitempty"`
 	// The ID of the gateway endpoint.
 	EndpointId *string `json:"EndpointId,omitempty" xml:"EndpointId,omitempty"`
 	// The name of the gateway endpoint.
 	EndpointName *string `json:"EndpointName,omitempty" xml:"EndpointName,omitempty"`
-	// The ID of the request.
-	RequestId       *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The request ID.
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The ID of the resource group to which the gateway endpoint belongs.
 	ResourceGroupId *string `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
 	// The name of the endpoint service.
 	ServiceName *string `json:"ServiceName,omitempty" xml:"ServiceName,omitempty"`
@@ -15028,14 +15354,10 @@ type CreateVpnAttachmentRequest struct {
 	//
 	// *   **BgpConfig.EnableBgp**: specifies whether to enable BGP. Valid values: **true** and **false**. Default value: false.
 	// *   **BgpConfig.LocalAsn**: the ASN on the Alibaba Cloud side. Valid values: **1** to **4294967295**. Default value: **45104**.
-	// *   **BgpConfig.TunnelCidr**: the CIDR block of the IPsec tunnel. The CIDR block must fall within 169.254.0.0/16. The subnet mask of the CIDR block must be 30 bits in length.
-	// *   **LocalBgpIp**: the BGP IP address on the Alibaba Cloud side. This IP address must fall within the CIDR block of the IPsec tunnel.
-	//
-	// >
-	//
-	// *   Before you configure BGP, we recommend that you learn about how BGP works and its limits. For more information, see Notice of BGP dynamic routing.
-	//
-	// *   We recommend that you use a private ASN to establish a connection with Alibaba Cloud over BGP. Refer to the relevant documentation for the private ASN range.
+	// *   **BgpConfig.TunnelCidr**: the CIDR block of the IPsec tunnel. The CIDR block must belong to 169.254.0.0/16. The subnet mask of the CIDR block must be 30 bits in length.
+	// *   **LocalBgpIp:** the BGP IP address on the Alibaba Cloud side. This IP address must fall within the CIDR block of the IPsec tunnel.
+	//  >- Before you configure BGP, we recommend that you learn about how BGP works and the limits. For more information, see [BGP dynamic routing ](~~170235~~).
+	//  >- We recommend that you use a private ASN to establish a connection with Alibaba Cloud over BGP. Refer to the relevant documentation for the private ASN range.
 	BgpConfig *string `json:"BgpConfig,omitempty" xml:"BgpConfig,omitempty"`
 	// The client token that is used to ensure the idempotence of the request.
 	//
@@ -15064,32 +15386,33 @@ type CreateVpnAttachmentRequest struct {
 	//
 	// *   **HealthCheckConfig.enable**: specifies whether to enable health checks. Valid values: **true** and **false**. Default value: false.
 	//
-	// *   **HealthCheckConfig.dip**: the destination IP address that is used for health checks. Enter the IP address on the data center side that the VPC can communicate with through the IPsec-VPN connection.
+	// *   **HealthCheckConfig.dip**: the destination IP address configured for health checks. Enter the IP address on the data center side that the VPC can communicate with through the IPsec-VPN connection.
 	//
-	// *   **HealthCheckConfig.sip**: the source IP address that is used for health checks. Enter the IP address on the VPC side that the data center can communicate with through the IPsec-VPN connection.
+	// *   **HealthCheckConfig.sip**: the source IP address configured for health checks. Enter the IP address on the VPC side that the data center can communicate with through the IPsec-VPN connection.
 	//
-	// *   **HealthCheckConfig.interval**: the interval between two consecutive health checks. Unit: seconds. Default value: **3**.
+	// *   **HealthCheckConfig.interval**: the time interval of health check retries. Unit: seconds. Default value: **3**.
 	//
 	// *   **HealthCheckConfig.retry**: the maximum number of health check retries. Default value: **3**.
 	//
 	// *   **HealthCheckConfig.Policy**: specifies whether to withdraw published routes when health checks fail. Valid values:
 	//
-	//         - **revoke_route**(default): revokes published routes.
-	//           - **reserve_route**: does not revoke published routes.
+	//     *   **revoke_route** (default): withdraws published routes.
+	//     *   **reserve_route**: does not withdraw published routes.
 	HealthCheckConfig *string `json:"HealthCheckConfig,omitempty" xml:"HealthCheckConfig,omitempty"`
 	// The configuration of Phase 1 negotiations:
 	//
-	// *   **IkeConfig.Psk**: The pre-shared key that is used for authentication between the VPN gateway and the data center. The key must be 1 to 100 characters in length.
+	// *   **IkeConfig.Psk**: The pre-shared key that is used for authentication between the VPN gateway and the data center.
 	//
-	//         If you do not specify a pre-shared key, the system generates a random 16-character string as the pre-shared key. You can call the DescribeVpnConnection operation to query the pre-shared key generated by the system.
+	//     *   It must be 1 to 100 characters in length, and can contain letters, digits, and the following characters: ``~!`@#$%^&*()_-+={}[]|;:\",.<>/?``
+	//     *   If you do not specify a pre-shared key, the system generates a random 16-character string as the pre-shared key. You can call the [DescribeVpnConnection](~~120374~~) operation to query the pre-shared key that is generated by the system.
 	//
-	//           The pre-shared key of the IPsec-VPN connection must be the same as the authentication key of the data center. Otherwise, the connection between the data center and the VPN gateway cannot be established.
+	//     >The pre-shared key of the IPsec-VPN connection must be the same as the authentication key of the data center. Otherwise, a connection cannot be established between the data center and the VPN gateway.
 	//
 	// *   **IkeConfig.IkeVersion**: the IKE version. Valid values: **ikev1** and **ikev2**. Default value: **ikev1**.
 	//
 	// *   **IkeConfig.IkeMode**: the negotiation mode. Valid values: **main** and **aggressive**. Default value: **main**.
 	//
-	// *   **IkeConfig.IkeEncAlg**: the encryption algorithm that is used in Phase 1 negotiations. Valid values: **aes**, **aes192**, **aes256**, **des**, and **3des**. Default value: **aes**.
+	// *   **IkeConfig.IkeEncAlg:** the encryption algorithm that is used in Phase 1 negotiations. Valid values: **aes**, **aes192**, **aes256**, **des**, and **3des**. Default value: **aes**.
 	//
 	// *   **IkeConfig.IkeAuthAlg**: the authentication algorithm that is used in Phase 1 negotiations. Valid values: **md5**, **sha1**, **sha256**, **sha384**, and **sha512**. Default value: **md5**.
 	//
@@ -15393,19 +15716,20 @@ type CreateVpnConnectionRequest struct {
 	// *   **true** (default)
 	// *   **false**
 	AutoConfigRoute *bool `json:"AutoConfigRoute,omitempty" xml:"AutoConfigRoute,omitempty"`
-	// The Border Gateway Protocol (BGP) configuration:
+	// The Border Gateway Protocol (BGP) configurations:
 	//
 	// *   **BgpConfig.EnableBgp**: specifies whether to enable BGP. Valid values: **true** and **false**. Default value: false.
-	// *   **BgpConfig.LocalAsn**: the ASN on the Alibaba Cloud side. Valid values: **1** to **4294967295**. Default value: **45104**.
-	// *   **BgpConfig.TunnelCidr**: the CIDR block of the IPsec tunnel. The CIDR block must fall within 169.254.0.0/16. The subnet mask of the CIDR block must be 30 bits in length.
-	// *   **LocalBgpIp**: the BGP IP address on the Alibaba Cloud side. This IP address must fall within the CIDR block of the IPsec tunnel.
 	//
-	// >
+	// *   **BgpConfig.LocalAsn**: the autonomous system number (ASN) on the Alibaba Cloud side. Valid values: **1** to **4294967295**. Default value: **45104**.
 	//
-	// *   This parameter is required when the VPN gateway has dynamic BGP enabled.
+	// *   **BgpConfig.TunnelCidr**: the CIDR block of the IPsec tunnel. The CIDR block must fall within the 169.254.0.0/16 range. The subnet mask of the CIDR block must be 30 bits in length.
 	//
-	// *   Before you configure BGP, we recommend that you learn about how BGP works and its limits. For more information, see [VPN Gateway supports BGP dynamic routing](~~170235~~).
-	// *   We recommend that you use a private ASN to establish a connection with Alibaba Cloud over BGP. Refer to the relevant documentation for the private ASN range.
+	//     The CIDR block of an IPsec tunnel associated with a VPN gateway must be unique.
+	//
+	// *   **LocalBgpIp**: the BGP address on the Alibaba Cloud side. This IP address must fall within the CIDR block range of the IPsec tunnel.
+	//
+	// > *   Before you configure BGP, we recommend that you learn about how BGP works and its limits. For more information, see [VPN Gateway supports BGP dynamic routing](~~170235~~).
+	// >*   We recommend that you use a private ASN to establish a connection with Alibaba Cloud over BGP. For information about the range of private ASNs, see the relevant documentation.
 	BgpConfig *string `json:"BgpConfig,omitempty" xml:"BgpConfig,omitempty"`
 	// The client token that is used to ensure the idempotence of the request.
 	//
@@ -15414,6 +15738,8 @@ type CreateVpnConnectionRequest struct {
 	// > If you do not specify this parameter, the system automatically uses the **request ID** as the **client token**. The **request ID** may be different for each request.
 	ClientToken *string `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
 	// The ID of the customer gateway.
+	//
+	// >  If the VPN gateway supports only the single-tunnel mode, this parameter is required.
 	CustomerGatewayId *string `json:"CustomerGatewayId,omitempty" xml:"CustomerGatewayId,omitempty"`
 	// Specify whether to immediately start IPsec negotiations after the configuration takes effect. Valid values:
 	//
@@ -15430,7 +15756,7 @@ type CreateVpnConnectionRequest struct {
 	// *   **true** (default) After NAT traversal is enabled, the initiator does not check the UDP ports during IKE negotiations and can automatically discover NAT gateway devices along the VPN tunnel.
 	// *   **false**
 	EnableNatTraversal *bool `json:"EnableNatTraversal,omitempty" xml:"EnableNatTraversal,omitempty"`
-	// Specifies whether to enable the BGP feature for the tunnel. Valid values: **true** and **false**. Default value: **false**.
+	// Specifies whether to enable the BGP feature for the tunnel. Valid values: **true** and **false**. Default value: false.
 	EnableTunnelsBgp *bool `json:"EnableTunnelsBgp,omitempty" xml:"EnableTunnelsBgp,omitempty"`
 	// The health check configuration:
 	//
@@ -15440,40 +15766,57 @@ type CreateVpnConnectionRequest struct {
 	// *   **HealthCheckConfig.interval**: the time interval of health check retries. Unit: seconds. Default value: **3**.
 	// *   **HealthCheckConfig.retry**: the maximum number of health check retries. Default value: **3**.
 	HealthCheckConfig *string `json:"HealthCheckConfig,omitempty" xml:"HealthCheckConfig,omitempty"`
-	// The configuration of Phase 1 negotiations:
+	// The configurations of Phase 1 negotiations:
 	//
-	// *   **IkeConfig.Psk**: The pre-shared key that is used for authentication between the VPN gateway and the data center. The key must be 1 to 100 characters in length.
+	// *   **IkeConfig.Psk**: The pre-shared key that is used for authentication between the VPN gateway and the on-premises database.
 	//
-	//         If you do not specify a pre-shared key, the system generates a random 16-character string as the pre-shared key. You can call the DescribeVpnConnection operation to query the pre-shared key generated by the system.
+	//     *   The key must be 1 to 100 characters in length and can contain digits, letters, and the following characters: ``~!\`@#$%^&*()_-+={}[]|;:\",.<>/?``
 	//
-	//           The pre-shared key of the IPsec-VPN connection must be the same as the authentication key of the data center. Otherwise, the connection between the data center and the VPN gateway cannot be established.
+	//     *   If you do not specify a pre-shared key, the system generates a random 16-character string as the pre-shared key. You can call the [DescribeVpnConnection](~~120374~~) operation to query the pre-shared key that is generated by the system.
+	//        >The pre-shared key of the IPsec-VPN connection must be the same as the authentication key of the on-premises database. Otherwise, the on-premises database and the VPN gateway cannot establish a connection.
 	//
-	// *   **IkeConfig.IkeVersion**: the IKE version. Valid values: **ikev1** and **ikev2**. Default value: **ikev1**.
+	// *   **IkeConfig.IkeVersion**: the version of the Internet Key Exchange (IKE) protocol. Valid values: **ikev1** and **ikev2**. Default value: **ikev1**.
 	//
-	// *   **IkeConfig.IkeMode**: the negotiation mode of IKEv1. Valid values: **main** and **aggressive**. Default value: **main**.
+	//     Compared with IKEv1, IKEv2 simplifies the security association (SA) negotiation process and is more suitable for scenarios in which multiple CIDR blocks are used.
 	//
-	// *   **IkeConfig.IkeEncAlg**: the encryption algorithm that is used in Phase 1 negotiations. Valid values: **aes**, **aes192**, **aes256**, **des**, and **3des**. Default value: **aes**.
+	// *   **IkeConfig.IkeMode**: the negotiation mode of IKE. Valid values: **main** and **aggressive**. Default value: **main**.
 	//
-	// *   **IkeConfig.IkeAuthAlg**: the authentication algorithm that is used in Phase 1 negotiations. Valid values: **md5**, **sha1**, **sha256**, **sha384**, and **sha512**. Default value: **md5**.
+	//     *   **main:** This mode offers higher security during negotiations.
+	//     *   **aggressive:** This mode is faster and has a higher success rate.
 	//
-	// *   **IkeConfig.IkePfs**: The Diffie-Hellman (DH) key exchange algorithm that is used in Phase 1 negotiations. Valid values: **group1**, **group2**, **group5**, and **group14**. Default value: **group2**.
+	// *   **IkeConfig.IkeEncAlg**: the encryption algorithm that is used in Phase 1 negotiations.
+	//
+	//     Valid values: **aes**, **aes192**, **aes256**, **des**, and **3des**. Default value: **aes**.
+	//
+	// *   **IkeConfig.IkeAuthAlg**: the authentication algorithm that is used in Phase 1 negotiations.
+	//
+	//     Valid values: **md5**, **sha1**, **sha256**, **sha384**, and **sha512**. Default value: **md5**.
+	//
+	// *   **IkeConfig.IkePfs**: the Diffie-Hellman (DH) key exchange algorithm that is used in Phase 1 negotiations. Valid values: **group1**, **group2**, **group5**, and **group14**. Default value: **group2**.
 	//
 	// *   **IkeConfig.IkeLifetime**: the SA lifetime determined by Phase 1 negotiations. Unit: seconds. Valid values: **0** to **86400**. Default value: **86400**.
 	//
-	// *   **IkeConfig.LocalId**: the identifier of the VPN gateway. The identifier of the VPN gateway cannot exceed 100 characters in length. The default value is the IP address of the VPN gateway.
+	// *   **IkeConfig.LocalId**: the identifier of the VPN gateway. The value can be up to 100 characters in length. The default value is the IP address of the VPN gateway.
 	//
-	// *   **IkeConfig.RemoteId**: the identifier of the customer gateway. The identifier of the customer gateway cannot exceed 100 characters in length. The default value is the IP address of the customer gateway.
+	// *   **IkeConfig.RemoteId**: the identifier of the customer gateway. The value can be up to 100 characters in length. The default value is the IP address of the customer gateway.
 	IkeConfig *string `json:"IkeConfig,omitempty" xml:"IkeConfig,omitempty"`
 	// The configurations of Phase 2 negotiations:
 	//
-	// *   **IpsecConfig.IpsecEncAlg**: the encryption algorithm that is used in Phase 2 negotiations. Valid values: **aes**, **aes192**, **aes256**, **des**, and **3des**. Default value: **aes**.
-	// *   **IpsecConfig. IpsecAuthAlg**: the authentication algorithm that is used in Phase 2 negotiations. Valid values: **md5**, **sha1**, **sha256**, **sha384**, and **sha512**. Default value: **md5**.
-	// *   **IpsecConfig. IpsecPfs**: the Diffie-Hellman key exchange algorithm that is used in Phase 2 negotiations. Valid values: **disabled**, **group1**, **group2**, **group5**, and **group14**. Default value: **group2**.
+	// *   **IpsecConfig.IpsecEncAlg**: the encryption algorithm that is used in Phase 2 negotiations.
+	//
+	//     Valid values: **aes**, **aes192**, **aes256**, **des**, and **3des**. Default value: **aes**.
+	//
+	// *   **IpsecConfig. IpsecAuthAlg**: the authentication algorithm that is used in Phase 2 negotiations.
+	//
+	//     Valid values: **md5**, **sha1**, **sha256**, **sha384**, and **sha512**. Default value: **md5**.
+	//
+	// *   **IpsecConfig. IpsecPfs**: the DH key exchange algorithm that is used in Phase 2 negotiations. Valid values: **disabled**, **group1**, **group2**, **group5**, and **group14**. Default value: **group2**.
+	//
 	// *   **IpsecConfig. IpsecLifetime**: the SA lifetime that is determined by Phase 2 negotiations. Unit: seconds. Valid values: **0** to **86400**. Default value: **86400**.
 	IpsecConfig *string `json:"IpsecConfig,omitempty" xml:"IpsecConfig,omitempty"`
-	// The CIDR block on the virtual private cloud (VPC) side. The CIDR block is used in Phase 2 negotiations.
+	// The CIDR block of the virtual private cloud (VPC) that needs to communicate with the on-premises database. The CIDR block is used in Phase 2 negotiations.
 	//
-	// Separate CIDR blocks with commas (,). Example: 192.168.1.0/24,192.168.2.0/24.
+	// Separate multiple CIDR blocks with commas (,). Example: 192.168.1.0/24,192.168.2.0/24.
 	//
 	// The following routing modes are supported:
 	//
@@ -15488,14 +15831,14 @@ type CreateVpnConnectionRequest struct {
 	OwnerId      *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
 	// The ID of the region where the IPsec-VPN connection is created. You can call the [DescribeRegions](~~36063~~) operation to query the most recent region list.
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	// The peer CA certificate when a ShangMi (SM) VPN gateway is used to establish the IPsec-VPN connection.
+	// The certificate authority (CA) certificate. If the VPN gateway is of the ShangMi (SM) type, you need to configure a CA certificate for the peer gateway device.
 	//
-	// *   This parameter is required when an SM VPN gateway is used to establish the IPsec-VPN connection.
-	// *   You can ignore this parameter when a standard VPN gateway is used to create the IPsec-VPN connection.
+	// *   If an SM VPN gateway is used to create the IPsec-VPN connection, this parameter is required.
+	// *   If a standard VPN gateway is used to create the IPsec-VPN connection, leave this parameter empty.
 	RemoteCaCertificate *string `json:"RemoteCaCertificate,omitempty" xml:"RemoteCaCertificate,omitempty"`
-	// The CIDR block on the data center side. This CIDR block is used in Phase 2 negotiations.
+	// The CIDR block of the on-premises database that needs to communicate with the VPC. The CIDR block is used in Phase 2 negotiations.
 	//
-	// Separate CIDR blocks with commas (,). Example: 192.168.3.0/24,192.168.4.0/24.
+	// Separate multiple CIDR blocks with commas (,). Example: 192.168.3.0/24,192.168.4.0/24.
 	//
 	// The following routing modes are supported:
 	//
@@ -15510,7 +15853,9 @@ type CreateVpnConnectionRequest struct {
 	//
 	// Each tag key corresponds to one tag value. You can specify up to 20 tag values in each call.
 	Tags []*CreateVpnConnectionRequestTags `json:"Tags,omitempty" xml:"Tags,omitempty" type:"Repeated"`
-	// TunnelOptionsSpecification parameters are supported by dual-tunnel IPsec-VPN gateways. You can modify both the active and standby tunnels of the IPsec-VPN connection.
+	// The tunnel configurations.
+	//
+	// If the VPN gateway supports the dual-tunnel mode, you must configure the active tunnel and standby tunnel by specifying **TunnelOptionsSpecification**. Each IPsec-VPN connection supports only one active tunnel and one standby tunnel.
 	TunnelOptionsSpecification []*CreateVpnConnectionRequestTunnelOptionsSpecification `json:"TunnelOptionsSpecification,omitempty" xml:"TunnelOptionsSpecification,omitempty" type:"Repeated"`
 	// The ID of the VPN gateway.
 	VpnGatewayId *string `json:"VpnGatewayId,omitempty" xml:"VpnGatewayId,omitempty"`
@@ -15675,35 +16020,36 @@ func (s *CreateVpnConnectionRequestTags) SetValue(v string) *CreateVpnConnection
 type CreateVpnConnectionRequestTunnelOptionsSpecification struct {
 	// The ID of the customer gateway associated with the tunnel.
 	//
-	// > - This parameter is required if the VPN gateway supports the dual-tunnel mode.
-	// > - If the VPN gateway supports the dual-tunnel mode, you need to configure the active tunnel and standby tunnel by specifying the parameters in the **TunnelOptionsSpecification** array. Each IPsec-VPN connection supports only one active tunnel and one standby tunnel.
-	CustomerGatewayId *string `json:"CustomerGatewayId,omitempty" xml:"CustomerGatewayId,omitempty"`
-	// Specifies whether to enable the DPD feature for the tunnel. Valid values:
 	//
-	// - **true** (default): The initiator of the IPsec-VPN connection sends DPD packets to verify the existence and availability of the peer. If no feedback is received from the peer within a specified period of time, the connection fails. ISAKMP SAs and IPsec SAs are deleted. The IPsec tunnel is also deleted.
-	// - **false**
+	//
+	// > *   This parameter is required if the VPN gateway supports the dual-tunnel mode.
+	// > *   If the VPN gateway supports the dual-tunnel mode, you must configure the active tunnel and standby tunnel by specifying **TunnelOptionsSpecification**. Each IPsec-VPN connection supports only one active tunnel and one standby tunnel.
+	CustomerGatewayId *string `json:"CustomerGatewayId,omitempty" xml:"CustomerGatewayId,omitempty"`
+	// Specifies whether to enable the Dead Peer Detection (DPD) feature for the tunnel. Valid values:
+	//
+	// *   **true** (default): The DPD feature is enabled. The initiator of the IPsec-VPN connection sends DPD packets to verify the existence and availability of the peer. If no feedback is received from the peer within a specified period of time, the connection fails. ISAKMP SAs and IPsec SAs are deleted. The IPsec tunnel is also deleted.
+	// *   **false**: The DPD feature is disabled. The initiator of the IPsec-VPN connection does not send DPD packets.
 	EnableDpd *bool `json:"EnableDpd,omitempty" xml:"EnableDpd,omitempty"`
 	// Specifies whether to enable NAT traversal for the tunnel. Valid values:
 	//
-	// - **true** (default): After NAT traversal is enabled, the verification process for the peer UDP port is deleted from IKE negotiations. In addition, the NAT gateway in the tunnel can be found.
-	//
-	// - **false**: no
+	// *   **true** (default): NAT traversal is enabled. After NAT traversal is enabled, the verification process for the peer UDP port is deleted from IKE negotiations. In addition, the NAT gateway in the tunnel can be found.
+	// *   **false**: NAT traversal is disabled.
 	EnableNatTraversal *bool `json:"EnableNatTraversal,omitempty" xml:"EnableNatTraversal,omitempty"`
-	// If the VPN gateway is of the SM type, you need to configure a CA certificate for the peer gateway device.
+	// The CA certificate. If the VPN gateway is of the SM type, you must configure a CA certificate for the peer gateway device.
 	//
-	// - This parameter is required for an SM VPN gateway.
-	// - You can ignore this parameter when a standard VPN gateway is used to create the IPsec-VPN connection.
+	// *   If an SM VPN gateway is used to create the IPsec-VPN connection, this parameter is required.
+	// *   If a standard VPN gateway is used to create the IPsec-VPN connection, leave this parameter empty.
 	RemoteCaCertificate *string `json:"RemoteCaCertificate,omitempty" xml:"RemoteCaCertificate,omitempty"`
-	// The tunnel role. Valid values:
+	// The role of the tunnel. Valid values:
 	//
-	// - **master**
-	// - **slave**
+	// *   **master**: The tunnel is the active tunnel.
+	// *   **slave**: The tunnel is the standby tunnel.
 	Role *string `json:"Role,omitempty" xml:"Role,omitempty"`
-	// The BGP configurations.
+	// The BGP configurations for the tunnel.
 	TunnelBgpConfig *CreateVpnConnectionRequestTunnelOptionsSpecificationTunnelBgpConfig `json:"TunnelBgpConfig,omitempty" xml:"TunnelBgpConfig,omitempty" type:"Struct"`
-	// The configuration of Phase 1 negotiations.
+	// The configurations of Phase 1 negotiations.
 	TunnelIkeConfig *CreateVpnConnectionRequestTunnelOptionsSpecificationTunnelIkeConfig `json:"TunnelIkeConfig,omitempty" xml:"TunnelIkeConfig,omitempty" type:"Struct"`
-	// The configuration of Phase 2 negotiations.
+	// The configurations of Phase 2 negotiations.
 	TunnelIpsecConfig *CreateVpnConnectionRequestTunnelOptionsSpecificationTunnelIpsecConfig `json:"TunnelIpsecConfig,omitempty" xml:"TunnelIpsecConfig,omitempty" type:"Struct"`
 }
 
@@ -15756,17 +16102,17 @@ func (s *CreateVpnConnectionRequestTunnelOptionsSpecification) SetTunnelIpsecCon
 }
 
 type CreateVpnConnectionRequestTunnelOptionsSpecificationTunnelBgpConfig struct {
-	// The autonomous system number (ASN) on the Alibaba Cloud side. Valid values: **1** to **4294967295**. Default value: **45104**.
+	// The ASN on the Alibaba Cloud side. Valid values: **1** to **4294967295**. Default value: **45104**.
 	//
-	// > - After you enable BGP for the IPsec-VPN connection, you need to set **EnableTunnelsBgp** to true.
-	// > - Before you configure BGP, we recommend that you learn about how BGP works and its limits. For more information, see [VPN Gateway supports BGP dynamic routing](~~170235~~).
-	// > - We recommend that you use a private ASN to establish a connection with Alibaba Cloud over BGP. Refer to the relevant documentation for the private ASN range.
+	// > *   If you set **EnableTunnelsBgp** to **true**, this parameter is required.
+	// > *   Before you configure BGP, we recommend that you learn about how BGP works and its limits. For more information, see [VPN Gateway supports BGP dynamic routing](~~170235~~).
+	// > *   We recommend that you use a private ASN to establish a connection with Alibaba Cloud over BGP. For information about the range of private ASNs, see the relevant documentation.
 	LocalAsn *int64 `json:"LocalAsn,omitempty" xml:"LocalAsn,omitempty"`
-	// The BGP address on the Alibaba Cloud side. The address is an IP address that falls within the BGP CIDR block.
+	// The BGP address on the Alibaba Cloud side. The address is an IP address that falls within the BGP CIDR block range.
 	LocalBgpIp *string `json:"LocalBgpIp,omitempty" xml:"LocalBgpIp,omitempty"`
-	// The BGP CIDR block of the tunnel. The CIDR block must belong to 169.254.0.0/16. The subnet mask of the CIDR block must be 30 bits in length.
+	// The BGP CIDR block of the tunnel. The CIDR block must fall within the 169.254.0.0/16 range. The subnet mask of the CIDR block must be 30 bits in length.
 	//
-	// >The BGP CIDR block of each tunnel on a VPN gateway must be unique.
+	// >  The BGP CIDR block of a tunnel associated with a VPN gateway must be unique.
 	TunnelCidr *string `json:"TunnelCidr,omitempty" xml:"TunnelCidr,omitempty"`
 }
 
@@ -15796,53 +16142,42 @@ func (s *CreateVpnConnectionRequestTunnelOptionsSpecificationTunnelBgpConfig) Se
 type CreateVpnConnectionRequestTunnelOptionsSpecificationTunnelIkeConfig struct {
 	// The authentication algorithm that is used in Phase 1 negotiations.
 	//
-	// <props="intl"><ph>Valid values: **md5**, **sha1**, **sha256**, **sha384**, **sha512**. Default value: **md5**. </ph></props>
-	//
-	// <props="china"><ph>如果VPN网关实例类型为普通型，则取值：**md5**、**sha1**、**sha256**、**sha384**、**sha512**。默认值：**md5**。</ph></props>
-	//
-	// <props="china"><ph>如果VPN网关实例类型为国密型，则取值为**sm3**（默认值）。</ph></props>
+	// Valid values: **md5**, **sha1**, **sha256**, **sha384**, and **sha512**. Default value: **md5**.
 	IkeAuthAlg *string `json:"IkeAuthAlg,omitempty" xml:"IkeAuthAlg,omitempty"`
 	// The encryption algorithm that is used in Phase 1 negotiations.
 	//
-	// <props="intl"><ph>Valid values: **aes**, **aes192**, **aes256**, **des**, **3des**. Default value: **aes**. </ph></props>
-	//
-	// <props="china"><ph>如果VPN网关实例类型为普通型，则取值为**aes**、**aes192**、**aes256**、**des**或**3des**。默认值：**aes**。</ph></props>
-	//
-	// <props="china"><ph>如果VPN网关实例类型为国密型，则取值为**sm4**（默认值）。</ph></props>
+	// Valid values: **aes**, **aes192**, **aes256**, **des**, and **3des**. Default value: **aes**.
 	IkeEncAlg *string `json:"IkeEncAlg,omitempty" xml:"IkeEncAlg,omitempty"`
 	// The SA lifetime that is determined by Phase 1 negotiations. Unit: seconds.
 	//
 	// Valid values: **0** to **86400**. Default value: **86400**.
 	IkeLifetime *int64 `json:"IkeLifetime,omitempty" xml:"IkeLifetime,omitempty"`
-	// The IKE negotiation mode. Valid values: **main** and **aggressive**. Default value: **main**.
+	// The negotiation mode of IKE. Valid values: **main** and **aggressive**. Default value: **main**.
 	//
-	// - **main**: This mode offers higher security during negotiations.
-	// - **aggressive**: This mode is faster and has a higher success rate.
-	//
-	// <props="china"><ph>如果VPN网关实例类型为国密型，则协商模式仅支持**main**。</ph></props>
+	// *   **main**: This mode offers higher security during negotiations.
+	// *   **aggressive**: This mode is faster and has a higher success rate.
 	IkeMode *string `json:"IkeMode,omitempty" xml:"IkeMode,omitempty"`
-	// The Diffie-Hellman key exchange algorithm that is used in Phase 1 negotiations.
-	// Default value: **group2**. Valid values: **group1**, **group2**, **group5**, and **group14**.
+	// The DH key exchange algorithm that is used in Phase 1 negotiations. Default value: **group2**.\
+	// Valid values: **group1**, **group2**, **group5**, and **group14**.
 	IkePfs *string `json:"IkePfs,omitempty" xml:"IkePfs,omitempty"`
-	// The IKE version. Valid values: **ikev1** and **ikev2**. Default value: **ikev1**.
-	// Compared with IKEv1, IKEv2 simplifies the SA negotiation process and is more suitable for scenarios in which multiple CIDR blocks are used.
+	// The version of the IKE protocol. Valid values: **ikev1** and **ikev2**. Default value: **ikev1**.
 	//
-	// <props="china"><ph>如果VPN网关实例类型为国密型，则IKE版本仅支持**ikev1**。</ph></props>
+	// Compared with IKEv1, IKEv2 simplifies the SA negotiation process and is more suitable for scenarios in which multiple CIDR blocks are used.
 	IkeVersion *string `json:"IkeVersion,omitempty" xml:"IkeVersion,omitempty"`
-	// The identifier on the Alibaba Cloud side, which is used in Phase 1 negotiations.
-	// The description can be up to 100 characters in length. The default identifier is the tunnel IP address.
-	// You can set **LocalId** to a fully qualified domain name (FQDN). In this case, we recommend that you set Negotiation Mode to **aggressive**.
+	// The identifier on the Alibaba Cloud side, which is used in Phase 1 negotiations. The value can be up to 100 characters in length. The default identifier is the IP address of the tunnel.
+	//
+	// You can set **LocalId** to a fully qualified domain name (FQDN). In this case, we recommend that you set IkeMode to **aggressive**.
 	LocalId *string `json:"LocalId,omitempty" xml:"LocalId,omitempty"`
 	// The pre-shared key, which is used for identity authentication between the tunnel and the tunnel peer.
 	//
-	// - The key must be 1 to 100 characters in length and can contain digits, letters, and the following characters: ```~!\`@#$%^&*()_-+={}[]|;:\",.<>/?```
-	// - If you do not specify a pre-shared key, the system generates a random 16-character string as the pre-shared key. You can call the [DescribeVpnConnection](~~120374~~) operation to query the pre-shared key that is generated by the system.
+	//    - The key must be 1 to 100 characters in length and can contain digits, letters, and the following characters: ```~!\`@#$%^&*()_-+={}[]|;:\",.<>/?```
+	//    - If you do not specify a pre-shared key, the system generates a random 16-character string as the pre-shared key. You can call the DescribeVpnConnection (~~120374~~) operation to query the pre-shared key that is generated by the system.
 	//
-	// > Make sure that the tunnel and peer use the same pre-shared key. Otherwise, tunnel communication cannot be established.
+	//    > The pre-shared key of the tunnel and that of the tunnel peer must be the same. Otherwise, the system cannot establish the tunnel.
 	Psk *string `json:"Psk,omitempty" xml:"Psk,omitempty"`
-	// The identifier of the tunnel peer, which is used in Phase 1 negotiations.
-	// The description can be up to 100 characters in length. The default identifier is the IP address of the customer gateway.
-	// You can set **RemoteId** to an FQDN. In this case, we recommend that you set Negotiation Mode to **aggressive**.
+	// The identifier of the tunnel peer, which is used in Phase 1 negotiations. The value can be up to 100 characters in length. The default identifier is the IP address of the customer gateway associated with the tunnel.
+	//
+	// You can set **RemoteId** to an FQDN. In this case, we recommend that you set IkeMode to **aggressive**.
 	RemoteId *string `json:"RemoteId,omitempty" xml:"RemoteId,omitempty"`
 }
 
@@ -15900,27 +16235,19 @@ func (s *CreateVpnConnectionRequestTunnelOptionsSpecificationTunnelIkeConfig) Se
 }
 
 type CreateVpnConnectionRequestTunnelOptionsSpecificationTunnelIpsecConfig struct {
-	// The authentication algorithm that was used in Phase 2 negotiations.
+	// The authentication algorithm that is used in Phase 2 negotiations.
 	//
-	// <props="intl"><ph>Valid values: **md5**, **sha1**, **sha256**, **sha384**, **sha512**. Default value: **md5**. </ph></props>
-	//
-	// <props="china"><ph>如果VPN网关实例类型为普通型，则取值：**md5**、**sha1**、**sha256**、**sha384**、**sha512**。默认值：**md5**。</ph></props>
-	//
-	// <props="china"><ph>如果VPN网关实例类型为国密型，则取值为**sm3**（默认值）。</ph></props>
+	// Valid values: **md5**, **sha1**, **sha256**, **sha384**, and **sha512**. Default value: **md5**.
 	IpsecAuthAlg *string `json:"IpsecAuthAlg,omitempty" xml:"IpsecAuthAlg,omitempty"`
 	// The encryption algorithm that is used in Phase 2 negotiations.
 	//
-	// <props="intl"><ph>Valid values: **aes**, **aes192**, **aes256**, **des**, **3des**. Default value: **aes**. </ph></props>
-	//
-	// <props="china"><ph>如果VPN网关实例类型为普通型，则取值为**aes**、**aes192**、**aes256**、**des**或**3des**。默认值：**aes**。</ph></props>
-	//
-	// <props="china"><ph>如果VPN网关实例类型为国密型，则取值为**sm4**（默认值）。</ph></props>
+	// Valid values: **aes**, **aes192**, **aes256**, **des**, and **3des**. Default value: **aes**.
 	IpsecEncAlg *string `json:"IpsecEncAlg,omitempty" xml:"IpsecEncAlg,omitempty"`
 	// The SA lifetime that is determined by Phase 2 negotiations. Unit: seconds.
 	//
 	// Valid values: **0** to **86400**. Default value: **86400**.
 	IpsecLifetime *int64 `json:"IpsecLifetime,omitempty" xml:"IpsecLifetime,omitempty"`
-	// The Diffie-Hellman key exchange algorithm that is used in Phase 2 negotiations. Default value: **group2**.
+	// The DH key exchange algorithm that is used in Phase 2 negotiations. Default value: **group2**.
 	//
 	// Valid values: **disabled**, **group1**, **group2**, **group5**, and **group14**.
 	IpsecPfs *string `json:"IpsecPfs,omitempty" xml:"IpsecPfs,omitempty"`
@@ -16039,18 +16366,17 @@ type CreateVpnGatewayRequest struct {
 	Bandwidth *int32 `json:"Bandwidth,omitempty" xml:"Bandwidth,omitempty"`
 	// The client token that is used to ensure the idempotence of the request.
 	//
-	// You can use the client to generate the token, but you must make sure that the token is unique among different requests. The token can contain only ASCII characters.
+	// You can use the client to generate a value, and you must make sure that each request has a unique token value. The client token can contain only ASCII characters.
 	//
-	// > If you do not specify this parameter, the system automatically uses the **request ID** as the **client token**. The **request ID** may be different for each request.
+	// >  If you do not specify this parameter, the system automatically uses the value of **RequestId** as the value of **ClientToken**. The value of **RequestId** for each API request is different.
 	ClientToken *string `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
 	// The second vSwitch with which you want to associate the VPN gateway.
 	//
-	// -  If you call this operation in a region that supports the dual-tunnel mode, this parameter is required.
-	// - You need to specify two vSwitches in different zones from the VPC associated with the VPN gateway to implement disaster recovery across zones.
-	// - For a region that supports only one zone, disaster recovery across zones is not supported. We recommend that you specify two vSwitches in the zone to implement high availability. You can specify the same vSwitch.
+	// *   If you call this operation in a region that supports the IPsec-VPN connections in dual-tunnel mode, this parameter is required.
+	// *   You need to specify two vSwitches in different zones in the virtual private cloud (VPC) that is associated with the VPN gateway to implement disaster recovery across zones.
+	// *   For a region that supports only one zone, disaster recovery across zones is not supported. We recommend that you specify two vSwitches in the zone to implement high availability. You can specify the same vSwitch.
 	//
-	//
-	// > For more information about the regions and zones that support the dual-tunnel mode, see [Upgrade a VPN gateway to enable the dual-tunnel mode](~~2358946~~).
+	// For more information about the regions and zones that support the IPsec-VPN connections in dual-tunnel mode, see [IPsec-VPN connections support the dual-tunnel mode](~~2358946~~).
 	DisasterRecoveryVSwitchId *string `json:"DisasterRecoveryVSwitchId,omitempty" xml:"DisasterRecoveryVSwitchId,omitempty"`
 	// Specifies whether to enable the IPsec-VPN feature. Valid values:
 	//
@@ -16064,11 +16390,11 @@ type CreateVpnGatewayRequest struct {
 	EnableSsl *bool `json:"EnableSsl,omitempty" xml:"EnableSsl,omitempty"`
 	// The billing method of the VPN gateway. Set the value to **POSTPAY**, which specifies the pay-as-you-go billing method.
 	//
-	// >  This parameter is required when you create a VPN gateway.
+	// > This parameter is required when you create a VPN gateway.
 	InstanceChargeType *string `json:"InstanceChargeType,omitempty" xml:"InstanceChargeType,omitempty"`
 	// The name of the VPN gateway. The default value is the ID of the VPN gateway.
 	//
-	// The name must be 1 to 100 characters in length and cannot start with `http://` or `https://`.
+	// The name must be 2 to 100 characters in length and cannot start with `http://` or `https://`. It must start with a letter and can contain letters, digits, underscores (\_), hyphens (-), and periods (.). Other special characters are not supported.
 	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
 	// The network type of the VPN gateway. Valid values:
 	//
@@ -16085,11 +16411,14 @@ type CreateVpnGatewayRequest struct {
 	ResourceOwnerId      *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
 	// The maximum number of clients that can be connected at the same time. Valid values: **5** (default), **10**, **20**, **50**, **100**, **200**, **500**, and **1000**.
 	SslConnections *int32 `json:"SslConnections,omitempty" xml:"SslConnections,omitempty"`
-	// The ID of the vSwitch to which the VPN gateway belongs.
+	// The vSwitch with which you want to associate the VPN gateway.
+	//
+	// *   If you call this operation in a region that supports the IPsec-VPN connections in dual-tunnel mode, this parameter is required. You must specify a vSwitch and specify **DisasterRecoveryVSwitchId**.
+	// *   If you call this operation in a region that supports the IPsec-VPN connections in single-tunnel mode and do not specify a vSwitch, the system automatically specifies a vSwitch.
 	VSwitchId *string `json:"VSwitchId,omitempty" xml:"VSwitchId,omitempty"`
 	// The ID of the virtual private cloud (VPC) where you want to create the VPN gateway.
 	VpcId *string `json:"VpcId,omitempty" xml:"VpcId,omitempty"`
-	// The type of the VPN gateway.
+	// The type of the VPN gateway. Valid values:
 	//
 	// Set the value to **Normal** (default), which specifies a standard NAT gateway.
 	VpnType *string `json:"VpnType,omitempty" xml:"VpnType,omitempty"`
@@ -16271,9 +16600,9 @@ func (s *CreateVpnGatewayResponse) SetBody(v *CreateVpnGatewayResponseBody) *Cre
 type CreateVpnPbrRouteEntryRequest struct {
 	// The client token that is used to ensure the idempotence of the request.
 	//
-	// You can use the client to generate the value, but you must make sure that the value is unique among different requests. The client token can contain only ASCII characters.
+	// You can use the client to generate a token, but you must make sure that the token is unique among different requests. The client token can contain only ASCII characters.
 	//
-	// >  If you do not set this parameter, **ClientToken** is set to the value of **RequestId**. The value of **RequestId** may be different for each API request.
+	// >  If you do not specify this parameter, the system automatically uses the request ID as the client token.******** ****The request ID may be different for each request.
 	ClientToken *string `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
 	// The description of the policy-based route.
 	//
@@ -16288,15 +16617,13 @@ type CreateVpnPbrRouteEntryRequest struct {
 	// The priority of the policy-based route. Valid values: **1** to **100**. Default value: **10**.
 	//
 	// A smaller value indicates a higher priority.
-	//
-	// >  Only some VPN gateways in specific regions allow you to configure priorities for policy-based routes. For more information about the regions, see [Match rules of policy-based routes](~~110777~~).
 	Priority *int32 `json:"Priority,omitempty" xml:"Priority,omitempty"`
 	// Specifies whether to advertise the policy-based route to a virtual private cloud (VPC) route table. Valid values:
 	//
-	// *   **true**: yes
-	// *   **false**: no
+	// *   **true**
+	// *   **false**
 	PublishVpc *bool `json:"PublishVpc,omitempty" xml:"PublishVpc,omitempty"`
-	// The ID of the region where the VPN gateway is created. You can call the [DescribeRegions](~~36063~~) operation to query the most recent region list.
+	// The region ID of the VPN gateway. You can call the [DescribeRegions](~~36063~~) operation to query the most recent region list.
 	RegionId             *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 	ResourceOwnerAccount *string `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
 	ResourceOwnerId      *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
@@ -16304,18 +16631,18 @@ type CreateVpnPbrRouteEntryRequest struct {
 	RouteDest *string `json:"RouteDest,omitempty" xml:"RouteDest,omitempty"`
 	// The source CIDR block of the policy-based route.
 	RouteSource *string `json:"RouteSource,omitempty" xml:"RouteSource,omitempty"`
-	// The ID of the VPN gateway.
+	// The VPN gateway ID.
 	VpnGatewayId *string `json:"VpnGatewayId,omitempty" xml:"VpnGatewayId,omitempty"`
 	// The weight of the policy-based route.
 	//
-	// If you use the same VPN gateway to establish active/standby IPsec-VPN connections, you can configure route weights to specify which connection is active. A value of 100 specifies the active connection while a value of 0 specifies the standby connection.
+	// If you use the same VPN gateway to establish active/standby IPsec-VPN connections, you can configure route weights to specify which connection is active. A value of 100 specifies the active connection, whereas a value of 0 specifies the standby connection.
 	//
-	// You can configure health checks to automatically check the connection connectivity. If the active connection is down, the standby connection automatically takes over. For more information, see [CreateVpnConnection](~~120391~~).
+	// You can configure health checks to automatically check the connectivity of IPsec-VPN connections. If the active connection is down, the standby connection automatically takes over. For more information, see [CreateVpnConnection](~~120391~~).
 	//
 	// *   **100**: The IPsec-VPN connection associated with the policy-based route serves as an active connection.
 	// *   **0**: The IPsec-VPN connection associated with the policy-based route serves as a standby connection.
 	//
-	// >  When you specify the active or standby connection, the primary route and secondary route must use the same source CIDR block and destination CIDR block.
+	// >  If you specify active/standby IPsec-VPN connections, the active policy-based route and the standby policy-based route must have the same source and destination CIDR blocks.
 	Weight *int32 `json:"Weight,omitempty" xml:"Weight,omitempty"`
 }
 
@@ -16403,19 +16730,19 @@ func (s *CreateVpnPbrRouteEntryRequest) SetWeight(v int32) *CreateVpnPbrRouteEnt
 }
 
 type CreateVpnPbrRouteEntryResponseBody struct {
-	// The timestamp generated when the policy-based route was created. Unit: milliseconds.
+	// The time when the policy-based route was created.
 	//
-	// This value is a UNIX timestamp representing the number of milliseconds that have elapsed since the epoch time January 1, 1970, 00:00:00 UTC.
+	// This value is a UNIX timestamp representing the number of milliseconds that have elapsed since January 1, 1970, 00:00:00 UTC.
 	CreateTime *int64 `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
 	// The description of the policy-based route.
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
 	// The next hop of the policy-based route.
 	NextHop *string `json:"NextHop,omitempty" xml:"NextHop,omitempty"`
-	// The tunneling protocol. The value is set to **Ipsec**, which indicates the IPsec tunneling protocol.
+	// The tunneling protocol. The value is **Ipsec**.
 	OverlayMode *string `json:"OverlayMode,omitempty" xml:"OverlayMode,omitempty"`
 	// The priority of the policy-based route.
 	Priority *int32 `json:"Priority,omitempty" xml:"Priority,omitempty"`
-	// The ID of the request.
+	// The request ID.
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	// The destination CIDR block of the policy-based route.
 	RouteDest *string `json:"RouteDest,omitempty" xml:"RouteDest,omitempty"`
@@ -16426,9 +16753,9 @@ type CreateVpnPbrRouteEntryResponseBody struct {
 	// *   **published**: advertised to the VPC route table.
 	// *   **normal**: not advertised to the VPC route table.
 	State *string `json:"State,omitempty" xml:"State,omitempty"`
-	// The ID of the VPN gateway.
+	// The VPN gateway ID.
 	VpnInstanceId *string `json:"VpnInstanceId,omitempty" xml:"VpnInstanceId,omitempty"`
-	// The weight of the policy-based route.
+	// The weight of the policy-based route. Valid values:
 	//
 	// *   **100**: The IPsec-VPN connection associated with the policy-based route serves as an active connection.
 	// *   **0**: The IPsec-VPN connection associated with the policy-based route serves as a standby connection.
@@ -16530,9 +16857,9 @@ func (s *CreateVpnPbrRouteEntryResponse) SetBody(v *CreateVpnPbrRouteEntryRespon
 type CreateVpnRouteEntryRequest struct {
 	// The client token that is used to ensure the idempotence of the request.
 	//
-	// You can use the client to generate the value, but you must make sure that the value is unique among different requests. The client token can contain only ASCII characters.
+	// You can use the client to generate the token, but you must make sure that the token is unique among different requests. The client token can contain only ASCII characters.
 	//
-	// >  If you do not specify this parameter, the system automatically uses **RequestId** as **ClientToken**. The value of **RequestId** may be different for each API request.
+	// >  If you do not specify this parameter, the system automatically uses the **request ID** as the **client token**. The **request ID** may be different for each request.
 	ClientToken *string `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
 	// The description of the destination-based route.
 	//
@@ -16540,14 +16867,14 @@ type CreateVpnRouteEntryRequest struct {
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
 	// The next hop of the destination-based route.
 	NextHop *string `json:"NextHop,omitempty" xml:"NextHop,omitempty"`
-	// The tunneling protocol. Set the value to **Ipsec**.
+	// The tunneling protocol. The value is set to **Ipsec**, which indicates the IPsec tunneling protocol.
 	OverlayMode  *string `json:"OverlayMode,omitempty" xml:"OverlayMode,omitempty"`
 	OwnerAccount *string `json:"OwnerAccount,omitempty" xml:"OwnerAccount,omitempty"`
 	OwnerId      *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
 	// Specifies whether to advertise the destination-based route to a virtual private cloud (VPC) route table. Valid values:
 	//
-	// *   **true**: yes
-	// *   **false**: no
+	// *   **true**
+	// *   **false**
 	PublishVpc *bool `json:"PublishVpc,omitempty" xml:"PublishVpc,omitempty"`
 	// The ID of the region where the VPN gateway is created.
 	//
@@ -16650,7 +16977,7 @@ type CreateVpnRouteEntryResponseBody struct {
 	NextHop *string `json:"NextHop,omitempty" xml:"NextHop,omitempty"`
 	// The tunneling protocol. The value is set to **Ipsec**, which indicates the IPsec tunneling protocol.
 	OverlayMode *string `json:"OverlayMode,omitempty" xml:"OverlayMode,omitempty"`
-	// The ID of the request.
+	// The request ID.
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	// The destination CIDR block of the destination-based route.
 	RouteDest *string `json:"RouteDest,omitempty" xml:"RouteDest,omitempty"`
@@ -18495,14 +18822,14 @@ func (s *DeleteIPv6TranslatorEntryResponse) SetBody(v *DeleteIPv6TranslatorEntry
 type DeleteIpsecServerRequest struct {
 	// The client token that is used to ensure the idempotence of the request.
 	//
-	// You can use the client to generate the value, but you must make sure that it is unique among different requests. The client token can contain only ASCII characters.
+	// You can use the client to generate the token, but you must make sure that the token is unique among different requests. The client token can contain only ASCII characters.
 	//
-	// >  If you do not set this parameter, **ClientToken** is set to the value of **RequestId**. The value of **RequestId** may be different for each API request.
+	// >  If you do not specify this parameter, the system automatically uses the **request ID** as the **client token**. The **request ID** may be different for each request.
 	ClientToken *string `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
-	// Specifies whether only to precheck this request. Valid values:
+	// Specifies whether to perform only a dry run, without performing the actual request. Valid values:
 	//
-	// *   **true**: only prechecks the request. After the request passes the precheck, the system does not delete the IPsec server. The system checks the required parameters, the request format, and the service limits. If the request fails the precheck, an error code is returned. If the request passes the precheck, the `DryRunOperation` error code is returned.
-	// *   **false** (default): prechecks the request. After the request passes the precheck, the system deletes the IPsec server.
+	// *   **true**: performs only a dry run. The system checks the request for potential issues, including missing parameter values, incorrect request syntax, and service limits. If the request fails the dry run, an error message is returned. If the request passes the dry run, the `DryRunOperation` error code is returned.
+	// *   **false** (default): performs a dry run and performs the actual request. If the request passes the dry run, a 2xx HTTP status code is returned and the operation is performed.
 	DryRun *string `json:"DryRun,omitempty" xml:"DryRun,omitempty"`
 	// The ID of the IPsec server.
 	IpsecServerId *string `json:"IpsecServerId,omitempty" xml:"IpsecServerId,omitempty"`
@@ -18539,7 +18866,7 @@ func (s *DeleteIpsecServerRequest) SetRegionId(v string) *DeleteIpsecServerReque
 }
 
 type DeleteIpsecServerResponseBody struct {
-	// The ID of the request.
+	// The request ID.
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -18707,9 +19034,9 @@ func (s *DeleteIpv4GatewayResponse) SetBody(v *DeleteIpv4GatewayResponseBody) *D
 type DeleteIpv6EgressOnlyRuleRequest struct {
 	// The client token that is used to ensure the idempotence of the request.
 	//
-	// You can use the client to generate a value, but you must make sure that the value is unique among all requests. The token can contain only ASCII characters.
+	// You can use the client to generate a token, but you must make sure that the token is unique among different requests. The client token can contain only ASCII characters.
 	//
-	// >  If you do not specify this parameter, the system uses **RequestId** as **ClientToken**. **RequestId** might be different for each API request.
+	// >  If you do not specify this parameter, the system automatically uses the value of **RequestId** as the **client token**. The value of **RequestId** is different for each API request.
 	ClientToken *string `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
 	// The ID of the egress-only rule that you want to delete.
 	Ipv6EgressOnlyRuleId *string `json:"Ipv6EgressOnlyRuleId,omitempty" xml:"Ipv6EgressOnlyRuleId,omitempty"`
@@ -18765,7 +19092,7 @@ func (s *DeleteIpv6EgressOnlyRuleRequest) SetResourceOwnerId(v int64) *DeleteIpv
 }
 
 type DeleteIpv6EgressOnlyRuleResponseBody struct {
-	// The ID of the request.
+	// The request ID.
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -19596,12 +19923,12 @@ func (s *DeletePhysicalConnectionResponse) SetBody(v *DeletePhysicalConnectionRe
 type DeletePublicIpAddressPoolRequest struct {
 	// The client token that is used to ensure the idempotence of the request.
 	//
-	// You can use the client to generate the value, but you must make sure that it is unique among different requests. The client token can contain only ASCII characters.
+	// You can use the client to generate the token, but you must make sure that the token is unique among different requests. The token can contain only ASCII characters.
 	ClientToken *string `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
-	// Specifies whether to perform a dry run. Valid values:
+	// Specifies whether to perform a dry run, without performing the actual request. Valid values:
 	//
-	// *   **true**: performs a dry run. The system checks the required parameters, request syntax, and limits. If the request fails the dry run, an error message is returned. If the request passes the dry run, the `DryRunOperation` error code is returned.
-	// *   **false** (default): performs a dry run and sends the request. If the request passes the dry run, a 2xx HTTP status code is returned and the operation is performed.
+	// *   **true**: performs only a dry run. The system checks the request for potential issues, including missing parameter values, incorrect request syntax, and service limits. If the request fails the dry run, an error message is returned. If the request passes the dry run, the `DryRunOperation` error code is returned.
+	// *   **false** (default): performs a dry run and performs the actual request. If the request passes the dry run, a 2xx HTTP status code is returned and the operation is performed.
 	DryRun       *bool   `json:"DryRun,omitempty" xml:"DryRun,omitempty"`
 	OwnerAccount *string `json:"OwnerAccount,omitempty" xml:"OwnerAccount,omitempty"`
 	OwnerId      *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
@@ -19662,7 +19989,7 @@ func (s *DeletePublicIpAddressPoolRequest) SetResourceOwnerId(v int64) *DeletePu
 }
 
 type DeletePublicIpAddressPoolResponseBody struct {
-	// The ID of the request.
+	// The request ID.
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -20518,9 +20845,9 @@ func (s *DeleteSnatEntryResponse) SetBody(v *DeleteSnatEntryResponseBody) *Delet
 type DeleteSslVpnClientCertRequest struct {
 	// The client token that is used to ensure the idempotence of the request.
 	//
-	// You can use the client to generate the value, but you must make sure that it is unique among different requests. The client token can contain only ASCII characters.
+	// You can use the client to generate the token, but you must make sure that the token is unique among different requests. The client token can contain only ASCII characters.
 	//
-	// >  If you do not set this parameter, the system automatically uses **RequestId** as **ClientToken**. **RequestId** of each API request may be different.
+	// >  If you do not specify this parameter, the system automatically uses the **request ID** as the **client token**. The **request ID** may be different for each request.
 	ClientToken  *string `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
 	OwnerAccount *string `json:"OwnerAccount,omitempty" xml:"OwnerAccount,omitempty"`
 	OwnerId      *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
@@ -20578,7 +20905,7 @@ func (s *DeleteSslVpnClientCertRequest) SetSslVpnClientCertId(v string) *DeleteS
 }
 
 type DeleteSslVpnClientCertResponseBody struct {
-	// The ID of the request.
+	// The request ID.
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -20627,13 +20954,13 @@ func (s *DeleteSslVpnClientCertResponse) SetBody(v *DeleteSslVpnClientCertRespon
 type DeleteSslVpnServerRequest struct {
 	// The client token that is used to ensure the idempotence of the request.
 	//
-	// You can use the client to generate the value, but you must make sure that it is unique among different requests. The client token can contain only ASCII characters.
+	// You can use the client to generate the token, but you must make sure that the token is unique among different requests. The client token can contain only ASCII characters.
 	//
-	// >  If you do not set this parameter, the system automatically uses **RequestId** as **ClientToken**. **RequestId** of each API request may be different.
+	// >  If you do not specify this parameter, the system automatically uses the **request ID** as the **client token**. The **request ID** may be different for each request.
 	ClientToken  *string `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
 	OwnerAccount *string `json:"OwnerAccount,omitempty" xml:"OwnerAccount,omitempty"`
 	OwnerId      *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
-	// The ID of the region where the SSL servers are created.
+	// The region ID of the SSL server.
 	//
 	// You can call the [DescribeRegions](~~36063~~) operation to query the most recent region list.
 	RegionId             *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
@@ -20687,7 +21014,7 @@ func (s *DeleteSslVpnServerRequest) SetSslVpnServerId(v string) *DeleteSslVpnSer
 }
 
 type DeleteSslVpnServerResponseBody struct {
-	// The ID of the request.
+	// The request ID.
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -21389,16 +21716,16 @@ func (s *DeleteVbrHaResponse) SetBody(v *DeleteVbrHaResponseBody) *DeleteVbrHaRe
 type DeleteVcoRouteEntryRequest struct {
 	// The client token that is used to ensure the idempotence of the request.
 	//
-	// You can use the client to generate the value, but you must make sure that it is unique among different requests. The client token can contain only ASCII characters.
+	// You can use the client to generate the token, but you must make sure that the token is unique among different requests. The client token can contain only ASCII characters.
 	//
-	// >  If you do not set this parameter, the system automatically uses **RequestId** as **ClientToken**. **RequestId** of each API request may be different.
+	// >  If you do not specify this parameter, the system automatically uses the **request ID** as the **client token**. The **request ID** may be different for each request.
 	ClientToken *string `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
 	// The next hop of the destination-based route that you want to delete.
 	NextHop *string `json:"NextHop,omitempty" xml:"NextHop,omitempty"`
 	// The tunneling protocol. Set the value to **Ipsec**, which specifies the IPsec tunneling protocol.
 	OverlayMode  *string `json:"OverlayMode,omitempty" xml:"OverlayMode,omitempty"`
 	OwnerAccount *string `json:"OwnerAccount,omitempty" xml:"OwnerAccount,omitempty"`
-	// The ID of the region to which the IPsec-VPN connection belongs.
+	// The ID of the region where the IPsec-VPN connection is established.
 	//
 	// You can call the [DescribeRegions](~~36063~~) operation to query the most recent region list.
 	RegionId             *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
@@ -21406,7 +21733,7 @@ type DeleteVcoRouteEntryRequest struct {
 	ResourceOwnerId      *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
 	// The destination CIDR block of the destination-based route that you want to delete.
 	RouteDest *string `json:"RouteDest,omitempty" xml:"RouteDest,omitempty"`
-	// The ID of the IPsec-VPN connection.
+	// The ID of the IPsec-VPN attachment.
 	VpnConnectionId *string `json:"VpnConnectionId,omitempty" xml:"VpnConnectionId,omitempty"`
 	// The weight of the destination-based route that you want to delete. Valid values:
 	//
@@ -21474,7 +21801,7 @@ func (s *DeleteVcoRouteEntryRequest) SetWeight(v int32) *DeleteVcoRouteEntryRequ
 }
 
 type DeleteVcoRouteEntryResponseBody struct {
-	// The ID of the request.
+	// The request ID.
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -21987,12 +22314,12 @@ func (s *DeleteVpcPrefixListResponse) SetBody(v *DeleteVpcPrefixListResponseBody
 type DeleteVpnAttachmentRequest struct {
 	// The client token that is used to ensure the idempotence of the request.
 	//
-	// You can use the client to generate the value, but you must make sure that it is unique among different requests. ClientToken can contain only ASCII characters.
+	// You can use the client to generate the token, but you must make sure that the token is unique among different requests. The client token can contain only ASCII characters.
 	//
-	// >  If you do not set this parameter, the system automatically uses **RequestId** as **ClientToken**. **RequestId** of each API request may be different.
+	// >  If you do not specify this parameter, the system automatically uses the **request ID** as the **client token**. The **request ID** may be different for each request.
 	ClientToken  *string `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
 	OwnerAccount *string `json:"OwnerAccount,omitempty" xml:"OwnerAccount,omitempty"`
-	// The ID of the region to which the IPsec-VPN connection belongs.
+	// The ID of the region where the IPsec-VPN connection is established.
 	//
 	// You can call the [DescribeRegions](~~36063~~) operation to query the most recent region list.
 	RegionId             *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
@@ -22041,16 +22368,16 @@ func (s *DeleteVpnAttachmentRequest) SetVpnConnectionId(v string) *DeleteVpnAtta
 }
 
 type DeleteVpnAttachmentResponseBody struct {
-	// The status code returned for the operation. A value of **200** indicates that the operation is performed.
+	// The status code returned by the current operation. **200** indicates that the operation is successful.
 	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
-	// The information returned for the operation.
+	// The information returned by the current operation.
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
-	// The ID of the request.
+	// The request ID.
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// Indicates whether the operation is performed.
+	// Indicates whether the current operation is successful.
 	//
-	// *   **true**: yes
-	// *   **false**: no
+	// *   **true**
+	// *   **false**
 	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
 }
 
@@ -22114,13 +22441,13 @@ func (s *DeleteVpnAttachmentResponse) SetBody(v *DeleteVpnAttachmentResponseBody
 type DeleteVpnConnectionRequest struct {
 	// The client token that is used to ensure the idempotence of the request.
 	//
-	// You can use the client to generate the value, but you must make sure that it is unique among different requests. The client token can contain only ASCII characters.
+	// You can use the client to generate the token, but you must make sure that the token is unique among different requests. The client token can contain only ASCII characters.
 	//
-	// >  If you do not set this parameter, the system automatically uses **RequestId** as **ClientToken**. **RequestId** of each API request may be different.
+	// >  If you do not specify this parameter, the system automatically uses the **request ID** as the **client token**. The **request ID** may be different for each request.
 	ClientToken  *string `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
 	OwnerAccount *string `json:"OwnerAccount,omitempty" xml:"OwnerAccount,omitempty"`
 	OwnerId      *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
-	// The region ID of the IPsec-VPN connection.
+	// The ID of the region where the IPsec-VPN connection is created.
 	//
 	// You can call the [DescribeRegions](~~36063~~) operation to query the most recent region list.
 	RegionId             *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
@@ -22174,7 +22501,7 @@ func (s *DeleteVpnConnectionRequest) SetVpnConnectionId(v string) *DeleteVpnConn
 }
 
 type DeleteVpnConnectionResponseBody struct {
-	// The ID of the request.
+	// The request ID.
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -22332,9 +22659,9 @@ func (s *DeleteVpnGatewayResponse) SetBody(v *DeleteVpnGatewayResponseBody) *Del
 type DeleteVpnPbrRouteEntryRequest struct {
 	// The client token that is used to ensure the idempotence of the request.
 	//
-	// You can use the client to generate the value, but you must make sure that the value is unique among different requests. The client token can contain only ASCII characters.
+	// You can use the client to generate the token, but you must make sure that the token is unique among different requests. The client token can contain only ASCII characters.
 	//
-	// >  If you do not specify this parameter, the system automatically uses **RequestId** as **ClientToken**. The value of **RequestId** may be different for each API request.
+	// >  If you do not specify this parameter, the system automatically uses the **request ID** as the **client token**. The **request ID** may be different for each request.
 	ClientToken *string `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
 	// The next hop of the policy-based route.
 	NextHop *string `json:"NextHop,omitempty" xml:"NextHop,omitempty"`
@@ -22348,7 +22675,7 @@ type DeleteVpnPbrRouteEntryRequest struct {
 	//
 	// *   If the route was assigned a priority, this parameter is optional.
 	//
-	//     If you set this parameter, set the value to the priority that was assigned to the route. Otherwise, the operation fails.
+	//         If you specify this parameter, set the value to the priority configured for the policy-based route. Otherwise, the operation cannot be performed.
 	Priority *int32 `json:"Priority,omitempty" xml:"Priority,omitempty"`
 	// The ID of the region where the VPN gateway is created. You can call the [DescribeRegions](~~36063~~) operation to query the most recent region list.
 	RegionId             *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
@@ -22438,7 +22765,7 @@ func (s *DeleteVpnPbrRouteEntryRequest) SetWeight(v int32) *DeleteVpnPbrRouteEnt
 }
 
 type DeleteVpnPbrRouteEntryResponseBody struct {
-	// The ID of the request.
+	// The request ID.
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -22487,13 +22814,13 @@ func (s *DeleteVpnPbrRouteEntryResponse) SetBody(v *DeleteVpnPbrRouteEntryRespon
 type DeleteVpnRouteEntryRequest struct {
 	// The client token that is used to ensure the idempotence of the request.
 	//
-	// You can use the client to generate the value, but you must make sure that it is unique among different requests. The client token can contain only ASCII characters.
+	// You can use the client to generate the token, but you must make sure that the token is unique among different requests. The client token can contain only ASCII characters.
 	//
-	// >  If you do not set this parameter, **ClientToken** is set to the value of **RequestId**. The value of **RequestId** may be different for each API request.
+	// >  If you do not specify this parameter, the system automatically uses the **request ID** as the **client token**. The **request ID** may be different for each request.
 	ClientToken *string `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
 	// The next hop of the destination-based route.
 	NextHop *string `json:"NextHop,omitempty" xml:"NextHop,omitempty"`
-	// The tunnel protocol. Set the value to **Ipsec**.
+	// The tunneling protocol. Set the value to **Ipsec**.
 	OverlayMode  *string `json:"OverlayMode,omitempty" xml:"OverlayMode,omitempty"`
 	OwnerAccount *string `json:"OwnerAccount,omitempty" xml:"OwnerAccount,omitempty"`
 	OwnerId      *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
@@ -22576,7 +22903,7 @@ func (s *DeleteVpnRouteEntryRequest) SetWeight(v int32) *DeleteVpnRouteEntryRequ
 }
 
 type DeleteVpnRouteEntryResponseBody struct {
-	// The ID of the request.
+	// The request ID.
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -23867,29 +24194,29 @@ func (s *DescribeBgpPeersResponse) SetBody(v *DescribeBgpPeersResponseBody) *Des
 }
 
 type DescribeCommonBandwidthPackagesRequest struct {
-	// The ID of the EIP bandwidth plan.
+	// The ID of the Internet Shared Bandwidth instance.
 	BandwidthPackageId *string `json:"BandwidthPackageId,omitempty" xml:"BandwidthPackageId,omitempty"`
-	// Specifies whether to perform a dry run. Valid values:
+	// Specifies whether to perform a dry run, without performing the actual request. Valid values:
 	//
-	// *   **true**: performs a dry run. The system checks the required parameters, request syntax, and instance status. If the request fails the dry run, an error message is returned. If the request passes the dry run, the `DryRunOperation` error code is returned.
-	// *   **false**: performs a dry run and sends the request. If the request passes the dry run, an HTTP 2xx status code is returned and the operation is performed. This is the default value.
+	// *   **true**: performs only a dry run. The system checks the request for potential issues, including missing parameter values, incorrect request syntax, and instance status. If the request fails the dry run, an error message is returned. If the request passes the dry run, the `DryRunOperation` error code is returned.
+	// *   **false** (default): performs a dry run and performs the actual request. If the request passes the dry run, a 2xx HTTP status code is returned and the operation is performed.
 	DryRun *bool `json:"DryRun,omitempty" xml:"DryRun,omitempty"`
 	// Specifies whether to return the information about pending orders. Valid values:
 	//
-	// *   **false**: does not return the information about pending orders. This is the default value.
-	// *   **true**: returns the information about pending orders.
+	// *   **false** (default)
+	// *   **true**
 	IncludeReservationData *bool `json:"IncludeReservationData,omitempty" xml:"IncludeReservationData,omitempty"`
-	// The name of the EIP bandwidth plan.
+	// The name of the Internet Shared Bandwidth instance.
 	Name         *string `json:"Name,omitempty" xml:"Name,omitempty"`
 	OwnerAccount *string `json:"OwnerAccount,omitempty" xml:"OwnerAccount,omitempty"`
 	OwnerId      *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
-	// The number of the page to return. Default value: **1**.
+	// The page number. Default value: **1**.
 	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
-	// The number of entries to return on each page. Maximum value: **50**. Default value: **10**.
+	// The number of entries per page. Valid values: **1 to 50**. Default value: **10**.
 	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	// The region ID of the EIP bandwidth plan.
+	// The ID of the region where the Internet Shared Bandwidth instance resides.
 	//
-	// You can call the [DescribeRegions](~~36063~~) operation to obtain the region ID.
+	// You can call the [DescribeRegions](~~36063~~) operation to query the region ID.
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 	// The ID of the resource group.
 	ResourceGroupId      *string `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
@@ -23897,10 +24224,11 @@ type DescribeCommonBandwidthPackagesRequest struct {
 	ResourceOwnerId      *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
 	// Specifies whether to enable Anti-DDoS Pro/Premium. Valid values:
 	//
-	// *   **false**: disables Anti-DDoS Pro/Premium. This is the default value.
-	// *   **true**: enables Anti-DDoS Pro/Premium.
-	SecurityProtectionEnabled *bool                                        `json:"SecurityProtectionEnabled,omitempty" xml:"SecurityProtectionEnabled,omitempty"`
-	Tag                       []*DescribeCommonBandwidthPackagesRequestTag `json:"Tag,omitempty" xml:"Tag,omitempty" type:"Repeated"`
+	// *   **false** (default)
+	// *   **true**
+	SecurityProtectionEnabled *bool `json:"SecurityProtectionEnabled,omitempty" xml:"SecurityProtectionEnabled,omitempty"`
+	// The tags to add to the Internet Shared Bandwidth instance.
+	Tag []*DescribeCommonBandwidthPackagesRequestTag `json:"Tag,omitempty" xml:"Tag,omitempty" type:"Repeated"`
 }
 
 func (s DescribeCommonBandwidthPackagesRequest) String() string {
@@ -23982,7 +24310,13 @@ func (s *DescribeCommonBandwidthPackagesRequest) SetTag(v []*DescribeCommonBandw
 }
 
 type DescribeCommonBandwidthPackagesRequestTag struct {
-	Key   *string `json:"Key,omitempty" xml:"Key,omitempty"`
+	// The tag key to add to the Internet Shared Bandwidth instance. You can specify up to 20 tag keys. The tag key cannot be an empty string.
+	//
+	// The tag key can be up to 128 characters in length. It cannot start with `aliyun` or `acs:`, and cannot contain `http://` or `https://`.
+	Key *string `json:"Key,omitempty" xml:"Key,omitempty"`
+	// The tag value to add to the Internet Shared Bandwidth instance. You can specify up to 20 tag values. The tag value can be an empty string.
+	//
+	// The tag value can be up to 128 characters in length. It cannot start with `aliyun` or `acs:`, and cannot contain `http://` or `https://`.
 	Value *string `json:"Value,omitempty" xml:"Value,omitempty"`
 }
 
@@ -24005,13 +24339,13 @@ func (s *DescribeCommonBandwidthPackagesRequestTag) SetValue(v string) *Describe
 }
 
 type DescribeCommonBandwidthPackagesResponseBody struct {
-	// The details of the EIP bandwidth plan.
+	// The details of the Internet Shared Bandwidth instance.
 	CommonBandwidthPackages *DescribeCommonBandwidthPackagesResponseBodyCommonBandwidthPackages `json:"CommonBandwidthPackages,omitempty" xml:"CommonBandwidthPackages,omitempty" type:"Struct"`
-	// The number of the returned page.
+	// The page number.
 	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
-	// The number of entries returned per page.
+	// The number of entries per page.
 	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	// The ID of the request.
+	// The request ID.
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	// The total number of entries returned.
 	TotalCount *int32 `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
@@ -24068,100 +24402,106 @@ func (s *DescribeCommonBandwidthPackagesResponseBodyCommonBandwidthPackages) Set
 }
 
 type DescribeCommonBandwidthPackagesResponseBodyCommonBandwidthPackagesCommonBandwidthPackage struct {
-	// The maximum bandwidth of the EIP bandwidth plan. Unit: Mbit/s.
+	// The maximum bandwidth of the Internet Shared Bandwidth instance. Unit: Mbit/s.
 	Bandwidth *string `json:"Bandwidth,omitempty" xml:"Bandwidth,omitempty"`
-	// The ID of the EIP bandwidth plan.
+	// The ID of the Internet Shared Bandwidth instance.
 	BandwidthPackageId *string `json:"BandwidthPackageId,omitempty" xml:"BandwidthPackageId,omitempty"`
-	BizType            *string `json:"BizType,omitempty" xml:"BizType,omitempty"`
-	// The service state of the EIP bandwidth plan.
+	// The service type of the Internet Shared Bandwidth instance. Valid values:
 	//
-	// *   **Normal**: The EIP bandwidth plan works as expected.
-	// *   **FinancialLocked**: The EIP bandwidth plan has an overdue payment.
-	// *   **Unactivated**: The EIP bandwidth plan is not activated.
+	// *   **CloudBox** The cloud box. Only cloud box users can select this type.
+	// *   **Default** (default): The general service type.
+	BizType *string `json:"BizType,omitempty" xml:"BizType,omitempty"`
+	// The service status of the Internet Shared Bandwidth instance. Valid values:
+	//
+	// *   **Normal**: The Internet Shared Bandwidth instance runs as expected.
+	// *   **FinancialLocked**: An overdue payment occurs in the Internet Shared Bandwidth instance
+	// *   **Unactivated**: The Internet Shared Bandwidth instance is not activated.
 	BusinessStatus *string `json:"BusinessStatus,omitempty" xml:"BusinessStatus,omitempty"`
-	// The time when the EIP bandwidth plan was created. The time is displayed in the `YYYY-MM-DDThh:mm:ssZ` format.
+	// The time when the Internet Shared Bandwidth instance was created. The time is displayed in the `YYYY-MM-DDThh:mm:ssZ` format.
 	CreationTime *string `json:"CreationTime,omitempty" xml:"CreationTime,omitempty"`
-	// Indicates whether deletion protection was enabled.
+	// Indicates whether deletion protection is enabled. Valid values:
 	//
-	// *   **true**: Deletion protection was enabled.
-	// *   **false**: Deletion protection was disabled.
+	// *   **true**
+	// *   **false**
 	DeletionProtection *bool `json:"DeletionProtection,omitempty" xml:"DeletionProtection,omitempty"`
-	// The description of the EIP bandwidth plan.
+	// The description of the Internet Shared Bandwidth instance.
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
-	// The time when the EIP bandwidth plan expired. The time is displayed in the `YYYY-MM-DDThh:mm:ssZ` format.
+	// The time when the Internet Shared Bandwidth instance expired. The time is displayed in the `YYYY-MM-DDThh:mm:ssZ` format.
 	ExpiredTime *string `json:"ExpiredTime,omitempty" xml:"ExpiredTime,omitempty"`
-	// Indicates whether the information about pending orders was returned.
+	// Indicates whether the information about pending orders is returned. Valid values:
 	//
-	// *   **false**: The information about pending orders was not returned.
-	// *   **true**: The information about pending orders was returned.
+	// *   **false**
+	// *   **true**
 	HasReservationData *string `json:"HasReservationData,omitempty" xml:"HasReservationData,omitempty"`
-	// The line type.
+	// The line type. Valid values:
 	//
-	// *   **BGP**: BGP (Multi-ISP) lines. BGP (Multi-ISP) lines are available in all regions.
-	// *   **BGP_PRO**: BGP (Multi-ISP) Pro lines. BGP (Multi-ISP) Pro lines are available only in the China (Hong Kong), Singapore, Philippines (Manila), Malaysia (Kuala Lumpur), Indonesia (Jakarta), and Thailand (Bangkok) regions.
+	// *   **BGP**: BGP (Multi-ISP) line The BGP (Multi-ISP) line is supported in all regions.
+	// *   **BGP_PRO**: BGP (Multi-ISP) Pro line The BGP (Multi-ISP) Pro line is supported in the China (Hong Kong), Singapore (Singapore), Japan (Tokyo), Philippines (Manila), Malaysia (Kuala Lumpur), Indonesia (Jakarta), and Thailand (Bangkok) regions.
 	//
 	// If you are allowed to use single-ISP bandwidth, one of the following values is returned:
 	//
-	// *   **ChinaTelecom**: China Telecom
-	// *   **ChinaUnicom**: China Unicom
-	// *   **ChinaMobile**: China Mobile
-	// *   **ChinaTelecom_L2**: China Telecom L2
-	// *   **ChinaUnicom_L2**: China Unicom L2
-	// *   **ChinaMobile_L2**: China Mobile L2
+	// *   **ChinaTelecom**
+	// *   **ChinaUnicom**
+	// *   **ChinaMobile**
+	// *   **ChinaTelecom_L2**
+	// *   **ChinaUnicom_L2**
+	// *   **ChinaMobile_L2**
 	//
 	// If your services are deployed in China East 1 Finance, **BGP_FinanceCloud** is returned.
 	ISP *string `json:"ISP,omitempty" xml:"ISP,omitempty"`
-	// The billing method of the EIP bandwidth plan.
+	// The billing method of the Internet Shared Bandwidth instance. Valid value:
 	//
-	// **PostPaid**: the pay-as-you-go billing method
+	// **PostPaid**: pay-as-you-go
 	InstanceChargeType *string `json:"InstanceChargeType,omitempty" xml:"InstanceChargeType,omitempty"`
-	// The metering method of the EIP bandwidth plan.
+	// The metering method of the Internet Shared Bandwidth instance. Valid value:
 	//
-	// **PayByTraffic**: the pay-by-data-transfer metering method.
+	// **PayByTraffic**
 	InternetChargeType *string `json:"InternetChargeType,omitempty" xml:"InternetChargeType,omitempty"`
-	// The name of the EIP bandwidth plan.
+	// The name of the Internet Shared Bandwidth instance.
 	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
-	// The elastic IP addresses (EIPs) associated with the EIP bandwidth plan.
+	// The elastic IP addresses (EIPs) that are associated with the Internet Shared Bandwidth instance.
 	PublicIpAddresses *DescribeCommonBandwidthPackagesResponseBodyCommonBandwidthPackagesCommonBandwidthPackagePublicIpAddresses `json:"PublicIpAddresses,omitempty" xml:"PublicIpAddresses,omitempty" type:"Struct"`
-	// The percentage of the minimum bandwidth commitment. **20** is returned.
+	// The percentage of the minimum bandwidth commitment. Only **20** is returned.
 	//
-	// >  This parameter is available only on the Alibaba Cloud China site.
+	// >  This parameter is supported only on the Alibaba Cloud China site.
 	Ratio *int32 `json:"Ratio,omitempty" xml:"Ratio,omitempty"`
-	// The region ID of the EIP bandwidth plan.
+	// The ID of the region where the Internet Shared Bandwidth instance resides.
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 	// The time when the renewal took effect. The time is displayed in the `YYYY-MM-DDThh:mm:ssZ` format.
 	ReservationActiveTime *string `json:"ReservationActiveTime,omitempty" xml:"ReservationActiveTime,omitempty"`
-	// The new maximum bandwidth. Unit: Mbit/s.
+	// The new maximum bandwidth after the configurations are changed. Unit: Mbit/s.
 	ReservationBandwidth *string `json:"ReservationBandwidth,omitempty" xml:"ReservationBandwidth,omitempty"`
-	// The new metering method.
+	// The metering method after the configurations are changed. Valid value:
 	//
-	// **PayByTraffic**: the pay-by-data-transfer metering method
+	// **PayByTraffic**
 	ReservationInternetChargeType *string `json:"ReservationInternetChargeType,omitempty" xml:"ReservationInternetChargeType,omitempty"`
-	// The renewal method.
+	// The renewal method. Valid values:
 	//
-	// *   **RENEWCHANGE**: renewal with an upgrade or a downgrade
-	// *   **TEMP_UPGRADE**: temporary upgrade
-	// *   **UPGRADE**: upgrade
+	// *   **RENEWCHANGE**: renewal with a specification change
+	// *   **TEMP_UPGRADE**: renewal with a temporary upgrade
+	// *   **UPGRADE**: renewal with an upgrade
 	ReservationOrderType *string `json:"ReservationOrderType,omitempty" xml:"ReservationOrderType,omitempty"`
 	// The ID of the resource group.
 	ResourceGroupId *string `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
-	// The edition of Anti-DDoS.
+	// The editions of Anti-DDoS.
 	//
-	// - If this parameter is empty, it indicates that Anti-DDoS Origin Basic was enabled.
-	// - If **AntiDDoS_Enhanced** is returned, it indicates that Anti-DDoS Pro/Premium was enabled.
+	// *   If this parameter is empty, Anti-DDoS Origin Basic is enabled.
+	// *   If **AntiDDoS_Enhanced** is returned, Anti-DDoS Pro/Premium is enabled.
 	SecurityProtectionTypes *DescribeCommonBandwidthPackagesResponseBodyCommonBandwidthPackagesCommonBandwidthPackageSecurityProtectionTypes `json:"SecurityProtectionTypes,omitempty" xml:"SecurityProtectionTypes,omitempty" type:"Struct"`
-	// Indicates whether the EIP bandwidth plan was created by the service account.
+	// Indicates whether the resource is created by the service account. Valid values:
 	//
-	// *   **0**: The EIP bandwidth plan was not created by the service account.
-	// *   **1**: The EIP bandwidth plan was created by the service account.
+	// *   **0**: The resource is not created by the service account.
+	// *   **1**: The resource is created by the service account.
 	ServiceManaged *int32 `json:"ServiceManaged,omitempty" xml:"ServiceManaged,omitempty"`
-	// The status of the EIP bandwidth plan. Valid values:
+	// The status of the Internet Shared Bandwidth instance. Valid values:
 	//
-	// *   **Available**: The EIP bandwidth plan is available.
-	// *   **Modifying**: The EIP bandwidth plan is being modified.
-	Status *string                                                                                       `json:"Status,omitempty" xml:"Status,omitempty"`
-	Tags   *DescribeCommonBandwidthPackagesResponseBodyCommonBandwidthPackagesCommonBandwidthPackageTags `json:"Tags,omitempty" xml:"Tags,omitempty" type:"Struct"`
-	Zone   *string                                                                                       `json:"Zone,omitempty" xml:"Zone,omitempty"`
+	// *   **Available**: The Internet Shared Bandwidth instance is available.
+	// *   **Modifying**: The Internet Shared Bandwidth instance is being modified.
+	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
+	// The tag that is added to the Internet Shared Bandwidth instance.
+	Tags *DescribeCommonBandwidthPackagesResponseBodyCommonBandwidthPackagesCommonBandwidthPackageTags `json:"Tags,omitempty" xml:"Tags,omitempty" type:"Struct"`
+	// The zone of the Internet Shared Bandwidth instance. This parameter is returned only when BizType is set to CloudBox. If BizType is set to Default, an empty value is returned.
+	Zone *string `json:"Zone,omitempty" xml:"Zone,omitempty"`
 }
 
 func (s DescribeCommonBandwidthPackagesResponseBodyCommonBandwidthPackagesCommonBandwidthPackage) String() string {
@@ -24322,10 +24662,10 @@ func (s *DescribeCommonBandwidthPackagesResponseBodyCommonBandwidthPackagesCommo
 type DescribeCommonBandwidthPackagesResponseBodyCommonBandwidthPackagesCommonBandwidthPackagePublicIpAddressesPublicIpAddresse struct {
 	// The ID of the EIP.
 	AllocationId *string `json:"AllocationId,omitempty" xml:"AllocationId,omitempty"`
-	// Indicates whether the EIP is associated with the EIP bandwidth plan.
+	// Indicates whether the EIP is associated with the Internet Shared Bandwidth instance. Valid values:
 	//
-	// *   **BINDED**: The EIP is associated with the EIP bandwidth plan.
-	// *   **BINDING**: The EIP is being associated with the EIP bandwidth plan.
+	// *   **BINDED**
+	// *   **BINDING**
 	BandwidthPackageIpRelationStatus *string `json:"BandwidthPackageIpRelationStatus,omitempty" xml:"BandwidthPackageIpRelationStatus,omitempty"`
 	// The public IP address.
 	IpAddress *string `json:"IpAddress,omitempty" xml:"IpAddress,omitempty"`
@@ -24389,7 +24729,9 @@ func (s *DescribeCommonBandwidthPackagesResponseBodyCommonBandwidthPackagesCommo
 }
 
 type DescribeCommonBandwidthPackagesResponseBodyCommonBandwidthPackagesCommonBandwidthPackageTagsTag struct {
-	Key   *string `json:"Key,omitempty" xml:"Key,omitempty"`
+	// The tag key that is added to the Internet Shared Bandwidth instance.
+	Key *string `json:"Key,omitempty" xml:"Key,omitempty"`
+	// The tag value that is added to the Internet Shared Bandwidth instance.
 	Value *string `json:"Value,omitempty" xml:"Value,omitempty"`
 }
 
@@ -25187,38 +25529,38 @@ type DescribeEipAddressesRequest struct {
 	Filter []*DescribeEipAddressesRequestFilter `json:"Filter,omitempty" xml:"Filter,omitempty" type:"Repeated"`
 	// The ID of the EIP that you want to query.
 	//
-	// You can enter up to 50 IDs of EIPs. Separate multiple IDs with commas (,).
+	// You can specify up to 50 EIP IDs. Separate multiple IDs with commas (,).
 	//
-	// >  If both the **EipAddress** and **AllocationId** parameters are set, you can enter up to 50 IDs of EIPs in **AllocationId**, and enter up to 50 IP addresses of EIPs in **EipAddress**.
+	// >  If both **EipAddress** and **AllocationId** are specified, you can specify up to 50 EIP IDs for **AllocationId**, and specify up to 50 EIPs for **EipAddress**.
 	AllocationId *string `json:"AllocationId,omitempty" xml:"AllocationId,omitempty"`
-	// The ID of the cloud resource.
+	// The ID of the instance associated with the EIP.
 	AssociatedInstanceId *string `json:"AssociatedInstanceId,omitempty" xml:"AssociatedInstanceId,omitempty"`
 	// The type of the cloud resource with which you want to associate the EIP. Valid values:
 	//
-	// *   **EcsInstance** (default): an Elastic Compute Service (ECS) instance in a virtual private cloud (VPC)
-	// *   **SlbInstance**: a Server Load Balancer (SLB) instance in a VPC
-	// *   **Nat**: a NAT gateway
-	// *   **HaVip**: a high-availability virtual IP address (HAVIP)
-	// *   **NetworkInterface**: a secondary ENI
-	// *   **IpAddress**: an IP address
+	// *   **EcsInstance** (default): an Elastic Compute Service (ECS) instance in a virtual private cloud (VPC).
+	// *   **SlbInstance**: a Server Load Balancer (SLB) instance in a VPC.
+	// *   **Nat**: a NAT gateway.
+	// *   **HaVip**: a high-availability virtual IP address (HAVIP).
+	// *   **NetworkInterface**: a secondary elastic network interface (ENI).
+	// *   **IpAddress**: an IP address.
 	//
-	// >  You can associate only one EIP with each ECS instance, SLB instance, HAVIP, or IP address. You can associate multiple EIPs with each NAT gateway. The number of EIPs that you can associate with a secondary ENI depends on the association mode. For more information, see [EIP overview](~~72125~~).
+	// >  You can associate only one EIP with each ECS instance, SLB instance, HAVIP, or IP address. You can associate multiple EIPs with each NAT gateway. The number of EIPs that you can associate with a secondary ENI depends on the association mode. For more information, see [Associate EIPs with and disassociate EIPs from cloud resources](~~72125~~).
 	AssociatedInstanceType *string `json:"AssociatedInstanceType,omitempty" xml:"AssociatedInstanceType,omitempty"`
 	// The billing method of the EIP. Valid values:
 	//
-	// *   **PostPaid**: pay-as-you-go
-	// *   **PrePaid**: subscription
+	// *   **PostPaid**: pay-as-you-go.
+	// *   **PrePaid**: subscription.
 	ChargeType *string `json:"ChargeType,omitempty" xml:"ChargeType,omitempty"`
-	// Specifies whether to perform a dry run. Valid values:
+	// Specifies whether to perform only a dry run, without performing the actual request. Valid values:
 	//
-	// *   **true**: performs a dry run. The system checks the required parameters, request syntax, and limits. If the request fails the dry run, an error message is returned. If the request passes the dry run, the `DryRunOperation` error code is returned.
-	// *   **false** (default): performs a dry run and sends the request. If the request passes the dry run, a 2xx HTTP status code is returned and the operation is performed.
+	// *   **true**: performs only a dry run. The system checks the request for potential issues, including missing parameter values, incorrect request syntax, and service limits. If the request fails the dry run, an error message is returned. If the request passes the dry run, the `DryRunOperation` error code is returned.
+	// *   **false** (default): performs a dry run and performs the actual request. If the request passes the dry run, a 2xx HTTP status code is returned and the operation is performed.
 	DryRun *bool `json:"DryRun,omitempty" xml:"DryRun,omitempty"`
-	// The IP address of the EIP that you want to query.
+	// The EIP that you want to query.
 	//
-	// You can enter up to 50 IP addresses of EIPs. Separate multiple IP addresses with commas (,).
+	// You can specify up to 50 EIPs. Separate multiple EIPs with commas (,).
 	//
-	// >  If both the **EipAddress** and **AllocationId** parameters are set, you can enter up to 50 IP addresses of EIPs in **EipAddress**, and enter up to 50 IDs of EIPs in **AllocationId**.
+	// >  If both **EipAddress** and **AllocationId** are specified, you can specify up to 50 EIPs for **EipAddress**, and specify up to 50 EIP IDs for **AllocationId**.
 	EipAddress *string `json:"EipAddress,omitempty" xml:"EipAddress,omitempty"`
 	// The name of the EIP.
 	//
@@ -25226,26 +25568,26 @@ type DescribeEipAddressesRequest struct {
 	EipName *string `json:"EipName,omitempty" xml:"EipName,omitempty"`
 	// The line type. Valid values:
 	//
-	// *   **BGP** (default): BGP (Multi-ISP) lines. All regions support BGP (Multi-ISP) EIPs.
-	// *   **BGP_PRO**: BGP (Multi-ISP) Pro lines. Only the following regions support BGP (Multi-ISP) Pro lines: China (Hong Kong), Singapore, Malaysia (Kuala Lumpur), Philippines (Manila), Indonesia (Jakarta), and Thailand (Bangkok).
+	// *   **BGP** (default): Border Gateway Protocol (BGP) (Multi-ISP) lines. All regions support BGP (Multi-ISP) EIPs.
+	// *   **BGP_PRO**: BGP (Multi-ISP) Pro lines. Only the following regions support BGP (Multi-ISP) Pro lines: China (Hong Kong), Singapore, Japan (Tokyo), Malaysia (Kuala Lumpur), Philippines (Manila), Indonesia (Jakarta), and Thailand (Bangkok).
 	//
-	// For more information about BGP (Multi-ISP) and BGP (Multi-ISP) Pro, see [EIP line types](~~32321~~).
+	// For more information about BGP (Multi-ISP) and BGP (Multi-ISP) Pro, see the [Line types](~~32321~~) section of the "What is EIP?" topic.
 	//
-	// If you are allowed to use single-ISP bandwidth, you can also choose one of the following values:
+	// If you are allowed to use single-ISP bandwidth, you can also use one of the following values:
 	//
-	// *   **ChinaTelecom**: China Telecom
-	// *   **ChinaUnicom**: China Unicom
-	// *   **ChinaMobile**: China Mobile
-	// *   **ChinaTelecom_L2**: China Telecom L2
-	// *   **ChinaUnicom_L2**: China Unicom L2
-	// *   **ChinaMobile_L2**: China Mobile L2
+	// *   **ChinaTelecom**
+	// *   **ChinaUnicom**
+	// *   **ChinaMobile**
+	// *   **ChinaTelecom_L2**
+	// *   **ChinaUnicom_L2**
+	// *   **ChinaMobile_L2**
 	//
-	// If your services are deployed in China East 1 Finance, you must set this parameter to **BGP_FinanceCloud**.
+	// If your services are deployed in China East 1 Finance, this parameter is required and you must set the value to **BGP_FinanceCloud**.
 	ISP *string `json:"ISP,omitempty" xml:"ISP,omitempty"`
 	// Specifies whether to return information about pending orders. Valid values:
 	//
-	// *   **false** (default): does not return information about pending orders.
-	// *   **true**: returns information about pending orders.
+	// *   **false** (default)
+	// *   **true**
 	IncludeReservationData *bool `json:"IncludeReservationData,omitempty" xml:"IncludeReservationData,omitempty"`
 	// The reason why the EIP is locked. Valid values:
 	//
@@ -25254,36 +25596,37 @@ type DescribeEipAddressesRequest struct {
 	LockReason   *string `json:"LockReason,omitempty" xml:"LockReason,omitempty"`
 	OwnerAccount *string `json:"OwnerAccount,omitempty" xml:"OwnerAccount,omitempty"`
 	OwnerId      *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
-	// The number of the page to return. Default value: **1**.
+	// The page number. Default value: **1**.
 	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
-	// The number of entries to return on each page. Maximum value: **100**. Default value: **10**.
+	// The number of entries per page. Valid values: 1 to **100**. Default value: **10**.
 	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
 	// The IP address pool to which the EIP that you want to query belongs.
 	PublicIpAddressPoolId *string `json:"PublicIpAddressPoolId,omitempty" xml:"PublicIpAddressPoolId,omitempty"`
 	// The region ID of the EIP.
 	//
-	// You can call the [DescribeRegions](~~36063~~) operation to query the most recent region list.
+	// You can call the [DescribeRegions](~~36063~~) operation to query the region ID.
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	// The ID of the resource group to which the EIPs belong.
+	// The ID of the resource group to which the EIP belongs.
 	ResourceGroupId      *string `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
 	ResourceOwnerAccount *string `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
 	ResourceOwnerId      *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
 	// Specifies whether to enable Anti-DDoS Pro/Premium. Valid values:
 	//
-	// *   **false** (default): no
-	// *   **true**: yes
+	// *   **false** (default)
+	// *   **true**
 	SecurityProtectionEnabled *bool `json:"SecurityProtectionEnabled,omitempty" xml:"SecurityProtectionEnabled,omitempty"`
-	// The IDs of the contiguous EIPs.
+	// The ID of the contiguous EIP group.
 	SegmentInstanceId *string `json:"SegmentInstanceId,omitempty" xml:"SegmentInstanceId,omitempty"`
-	// The status of the EIP. Valid values:
+	// The state of the EIP. Valid values:
 	//
-	// *   **Associating**: being associated
-	// *   **Unassociating**: being disassociated
-	// *   **InUse**: allocated
-	// *   **Available**: available
-	// *   **Releasing**: being released
-	Status *string                           `json:"Status,omitempty" xml:"Status,omitempty"`
-	Tag    []*DescribeEipAddressesRequestTag `json:"Tag,omitempty" xml:"Tag,omitempty" type:"Repeated"`
+	// *   **Associating**
+	// *   **Unassociating**
+	// *   **InUse**
+	// *   **Available**
+	// *   **Releasing**
+	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
+	// The tags used to filter EIPs.
+	Tag []*DescribeEipAddressesRequestTag `json:"Tag,omitempty" xml:"Tag,omitempty" type:"Repeated"`
 }
 
 func (s DescribeEipAddressesRequest) String() string {
@@ -25415,9 +25758,9 @@ func (s *DescribeEipAddressesRequest) SetTag(v []*DescribeEipAddressesRequestTag
 }
 
 type DescribeEipAddressesRequestFilter struct {
-	// The filter key used to query resources. Set the value to **CreationStartTime**, which indicates the time when the system started to create the resource.
+	// The filter key used to query resources. Set the value to **CreationStartTime**, which specifies the time when the system started to create the resource.
 	Key *string `json:"Key,omitempty" xml:"Key,omitempty"`
-	// The filter value used to query resources. Specify the time in the ISO 8601 standard in `YYYY-MM-DDThh:mmZ` format. The time must be in UTC.
+	// The filter value used to query resources. Specify the time in the ISO 8601 standard in the `YYYY-MM-DDThh:mmZ` format. The time must be in Coordinated Universal Time (UTC).
 	Value *string `json:"Value,omitempty" xml:"Value,omitempty"`
 }
 
@@ -25440,7 +25783,13 @@ func (s *DescribeEipAddressesRequestFilter) SetValue(v string) *DescribeEipAddre
 }
 
 type DescribeEipAddressesRequestTag struct {
-	Key   *string `json:"Key,omitempty" xml:"Key,omitempty"`
+	// The key of the tag. You can specify up to 20 tag keys. The tag key cannot be an empty string.
+	//
+	// The tag key can be up to 128 characters in length and cannot contain `http://` or `https://`. The tag key cannot start with `acs:` or `aliyun`.
+	Key *string `json:"Key,omitempty" xml:"Key,omitempty"`
+	// The value of the tag. You can specify up to 20 tag values. The tag value can be an empty string.
+	//
+	// The tag value can be up to 128 characters in length and cannot contain `http://` or `https://`. The tag value cannot start with `acs:` or `aliyun`.
 	Value *string `json:"Value,omitempty" xml:"Value,omitempty"`
 }
 
@@ -25463,13 +25812,13 @@ func (s *DescribeEipAddressesRequestTag) SetValue(v string) *DescribeEipAddresse
 }
 
 type DescribeEipAddressesResponseBody struct {
-	// The details about the EIP.
+	// The details about the EIPs.
 	EipAddresses *DescribeEipAddressesResponseBodyEipAddresses `json:"EipAddresses,omitempty" xml:"EipAddresses,omitempty" type:"Struct"`
-	// The page number of the returned page.
+	// The page number.
 	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
-	// The number of entries returned per page.
+	// The number of entries per page.
 	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	// The ID of the request.
+	// The request ID.
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	// The total number of entries returned.
 	TotalCount *int32 `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
@@ -25528,63 +25877,67 @@ func (s *DescribeEipAddressesResponseBodyEipAddresses) SetEipAddress(v []*Descri
 type DescribeEipAddressesResponseBodyEipAddressesEipAddress struct {
 	// The ID of the EIP.
 	AllocationId *string `json:"AllocationId,omitempty" xml:"AllocationId,omitempty"`
-	// The time when the EIP was created. The time is displayed in `YYYY-MM-DDThh:mm:ssZ` format.
+	// The time when the EIP was created. The time follows the ISO 8601 standard in the `YYYY-MM-DDThh:mm:ssZ` format.
 	AllocationTime *string `json:"AllocationTime,omitempty" xml:"AllocationTime,omitempty"`
 	// The maximum bandwidth of the EIP. Unit: Mbit/s.
 	Bandwidth *string `json:"Bandwidth,omitempty" xml:"Bandwidth,omitempty"`
-	// The maximum bandwidth of the EIP bandwidth plan with which the EIP is associated. Unit: Mbit/s.
+	// The maximum bandwidth of the Internet Shared Bandwidth instance with which the EIP is associated. Unit: Mbit/s.
 	BandwidthPackageBandwidth *string `json:"BandwidthPackageBandwidth,omitempty" xml:"BandwidthPackageBandwidth,omitempty"`
-	// The ID of the EIP bandwidth plan.
+	// The ID of the Internet Shared Bandwidth instance.
 	BandwidthPackageId *string `json:"BandwidthPackageId,omitempty" xml:"BandwidthPackageId,omitempty"`
-	// The type of the bandwidth. Only **CommonBandwidthPackage** (EIP Bandwidth Plan) is returned.
+	// The type of the bandwidth. Only **CommonBandwidthPackage** may be returned, which indicates Internet Shared Bandwidth.
 	BandwidthPackageType *string `json:"BandwidthPackageType,omitempty" xml:"BandwidthPackageType,omitempty"`
-	BizType              *string `json:"BizType,omitempty" xml:"BizType,omitempty"`
-	// The service status of the EIP. Valid values:
+	// The service type. Valid values:
 	//
-	// *   **Normal**: active
-	// *   **FinancialLocked**: locked
+	// *   **CloudBox** Only cloud box users can select this type.
+	// *   **Default** (default)
+	BizType *string `json:"BizType,omitempty" xml:"BizType,omitempty"`
+	// The service state of the EIP. Valid values:
+	//
+	// *   **Normal**
+	// *   **FinancialLocked**
 	BusinessStatus *string `json:"BusinessStatus,omitempty" xml:"BusinessStatus,omitempty"`
 	// The billing method of the EIP. Valid values:
 	//
-	// *   **PostPaid**: pay-as-you-go
-	// *   **PrePaid**: subscription
+	// *   **PostPaid**: pay-as-you-go.
+	// *   **PrePaid**: subscription.
 	ChargeType *string `json:"ChargeType,omitempty" xml:"ChargeType,omitempty"`
 	// Indicates whether deletion protection is enabled. Valid values:
 	//
-	// *   **true**: enabled
-	// *   **false**: disabled
+	// *   **true**
+	// *   **false**
 	DeletionProtection *bool `json:"DeletionProtection,omitempty" xml:"DeletionProtection,omitempty"`
 	// The description of the EIP.
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
-	// The maximum bandwidth of the EIP when it is not associated with an EIP bandwidth plan. Unit: Mbit/s.
+	// The maximum bandwidth of the EIP when it is not associated with an Internet Shared Bandwidth instance. Unit: Mbit/s.
 	EipBandwidth *string `json:"EipBandwidth,omitempty" xml:"EipBandwidth,omitempty"`
-	// The time when the EIP expires. The time is displayed in `YYYY-MM-DDThh:mm:ssZ` format.
+	// The time when the EIP expires. The time follows the ISO 8601 standard in the `YYYY-MM-DDThh:mm:ssZ` format.
 	ExpiredTime *string `json:"ExpiredTime,omitempty" xml:"ExpiredTime,omitempty"`
 	// Indicates whether fine-grained monitoring is enabled for the EIP. Valid values:
 	//
-	// *   **false**: no
-	// *   **true**: yes
+	// *   **false**
+	// *   **true**
 	HDMonitorStatus *string `json:"HDMonitorStatus,omitempty" xml:"HDMonitorStatus,omitempty"`
-	// Indicates whether renewal data is included.
+	// Indicates whether renewal data is included. Valid values:
 	//
-	// *   **false**: no
-	// *   **true**: yes This parameter returns **true** only when the **IncludeReservationData** parameter is set to **true** and some orders have not taken effect.
+	// *   **false**
+	// *   **true** A value of **true** is returned only when **IncludeReservationData** is set to **true** and some orders have not taken effect.
 	HasReservationData *string `json:"HasReservationData,omitempty" xml:"HasReservationData,omitempty"`
-	// The line type.
+	// The line type. Valid values:
 	//
-	// *   **BGP**: BGP (Multi-ISP). All regions support BGP (Multi-ISP) EIPs.
-	// *   **BGP_PRO**: BGP (Multi-ISP) Pro lines. Only the following regions support BGP (Multi-ISP) Pro lines: China (Hong Kong), Singapore, Malaysia (Kuala Lumpur), Philippines (Manila), Indonesia (Jakarta), and Thailand (Bangkok).
+	// *   **BGP**: BGP (Multi-ISP) lines. All regions support BGP (Multi-ISP) EIPs.
+	// *   **BGP_PRO**: BGP (Multi-ISP) Pro lines. Only the following regions support BGP (Multi-ISP) Pro lines: China (Hong Kong), Singapore, Japan (Tokyo), Malaysia (Kuala Lumpur), Philippines (Manila), Indonesia (Jakarta), and Thailand (Bangkok).
 	//
-	// For more information about BGP (Multi-ISP) and BGP (Multi-ISP) Pro, see [EIP line types](~~32321~~).
+	// For more information about BGP (Multi-ISP) and BGP (Multi-ISP) Pro, see the [Line types](~~32321~~) section of the "What is EIP?" topic.
 	//
-	// If you are allowed to use single-ISP bandwidth, one of the following values is returned:
+	// If you are allowed to use single-ISP bandwidth, one of the following values may be returned:
 	//
-	// *   **ChinaTelecom**: China Telecom
-	// *   **ChinaUnicom**: China Unicom
-	// *   **ChinaMobile**: China Mobile
-	// *   **ChinaTelecom_L2**: China Telecom L2
-	// *   **ChinaUnicom_L2**: China Unicom L2
-	// *   **ChinaMobile_L2**: China Mobile L2
+	// *   **ChinaTelecom**
+	// *   **ChinaUnicom**
+	// *   **ChinaMobile**
+	// *   **ChinaTelecom_L2**
+	// *   **ChinaUnicom_L2**
+	// *   **ChinaMobile_L2**
 	//
 	// If your services are deployed in China East 1 Finance, **BGP_FinanceCloud** is returned.
 	ISP *string `json:"ISP,omitempty" xml:"ISP,omitempty"`
@@ -25594,85 +25947,85 @@ type DescribeEipAddressesResponseBodyEipAddressesEipAddress struct {
 	InstanceRegionId *string `json:"InstanceRegionId,omitempty" xml:"InstanceRegionId,omitempty"`
 	// The type of the associated instance. Valid values:
 	//
-	// *   **EcsInstance**: an ECS instance in a VPC
-	// *   **SlbInstance**: an SLB instance in a VPC
-	// *   **Nat**: a NAT gateway
-	// *   **HaVip**: an HAVIP
-	// *   **NetworkInterface**: a secondary ENI
-	// *   **IpAddress**: an IP address
+	// *   **EcsInstance**: an ECS instance in a VPC.
+	// *   **SlbInstance**: an SLB instance in a VPC.
+	// *   **Nat**: a NAT gateway.
+	// *   **HaVip**: an HAVIP.
+	// *   **NetworkInterface**: a secondary ENI.
+	// *   **IpAddress**: an IP address.
 	InstanceType *string `json:"InstanceType,omitempty" xml:"InstanceType,omitempty"`
 	// The metering method of the EIP. Valid values:
 	//
-	// *   **PayByBandwidth**: pay-by-bandwidth
-	// *   **PayByTraffic**: pay-by-data-transfer
+	// *   **PayByBandwidth**: pay-by-bandwidth.
+	// *   **PayByTraffic**: pay-by-traffic.
 	InternetChargeType *string `json:"InternetChargeType,omitempty" xml:"InternetChargeType,omitempty"`
-	// The IP address of the EIP.
+	// The EIP.
 	IpAddress *string `json:"IpAddress,omitempty" xml:"IpAddress,omitempty"`
 	// The name of the EIP.
 	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
-	// The network type. The value is set to **public**, which indicates the Internet.
+	// The network type. Only **public** may be returned.
 	Netmode *string `json:"Netmode,omitempty" xml:"Netmode,omitempty"`
-	// The details about the locked EIPs.
+	// The details about the locked EIP.
 	OperationLocks *DescribeEipAddressesResponseBodyEipAddressesEipAddressOperationLocks `json:"OperationLocks,omitempty" xml:"OperationLocks,omitempty" type:"Struct"`
 	// The ID of the IP address pool to which the EIP belongs.
 	PublicIpAddressPoolId *string `json:"PublicIpAddressPoolId,omitempty" xml:"PublicIpAddressPoolId,omitempty"`
 	// The region ID of the EIP.
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	// The time when the renewal takes effect. The time is displayed in `YYYY-MM-DDThh:mm:ssZ` format.
+	// The time when the renewal took effect. The time follows the ISO 8601 standard in the `YYYY-MM-DDThh:mm:ssZ` format.
 	ReservationActiveTime *string `json:"ReservationActiveTime,omitempty" xml:"ReservationActiveTime,omitempty"`
-	// The bandwidth after the renewal takes effect. Unit: Mbit/s.
+	// The maximum bandwidth after the renewal takes effect. Unit: Mbit/s.
 	ReservationBandwidth *string `json:"ReservationBandwidth,omitempty" xml:"ReservationBandwidth,omitempty"`
 	// The metering method that is used after the renewal takes effect. Valid values:
 	//
-	// *   **PayByBandwidth**: pay-by-bandwidth
-	// *   **PayByTraffic**: pay-by-data-transfer
+	// *   **PayByBandwidth**: pay-by-bandwidth.
+	// *   **PayByTraffic**: pay-by-traffic.
 	ReservationInternetChargeType *string `json:"ReservationInternetChargeType,omitempty" xml:"ReservationInternetChargeType,omitempty"`
 	// The type of the renewal order. Valid values:
 	//
-	// *   **RENEWCHANGE**: renewal with an upgrade or a downgrade
-	// *   **TEMP_UPGRADE**: temporary upgrade
-	// *   **UPGRADE**: upgrade
+	// *   **RENEWCHANGE**: renewal with an upgrade or a downgrade.
+	// *   **TEMP_UPGRADE**: temporary upgrade.
+	// *   **UPGRADE**: upgrade.
 	ReservationOrderType *string `json:"ReservationOrderType,omitempty" xml:"ReservationOrderType,omitempty"`
 	// The ID of the resource group.
 	ResourceGroupId *string `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
 	// Indicates whether level-2 throttling is configured. Valid values:
 	//
-	// *   **true**: yes
-	// *   **false**: no
+	// *   **true**
+	// *   **false**
 	SecondLimited *bool `json:"SecondLimited,omitempty" xml:"SecondLimited,omitempty"`
 	// The edition of Anti-DDoS.
 	//
-	// - If an empty value is returned, it indicates that Anti-DDoS Origin Basic is used.
-	// - If **AntiDDoS_Enhanced** is returned, it indicates that Anti-DDoS Pro/Premium is used.
+	// *   If an empty value is returned, it indicates that Anti-DDoS Origin Basic is used.
+	// *   If **AntiDDoS_Enhanced** is returned, it indicates that Anti-DDoS Pro/Premium is used.
 	SecurityProtectionTypes *DescribeEipAddressesResponseBodyEipAddressesEipAddressSecurityProtectionTypes `json:"SecurityProtectionTypes,omitempty" xml:"SecurityProtectionTypes,omitempty" type:"Struct"`
-	// The IDs of contiguous EIPs.
+	// The ID of the contiguous EIP group.
 	//
-	// This value is returned only when you query contiguous EIP groups.
+	// This value is returned only when you query contiguous EIPs.
 	SegmentInstanceId *string `json:"SegmentInstanceId,omitempty" xml:"SegmentInstanceId,omitempty"`
-	// Indicates whether the resource is created by the service account.
+	// Indicates whether the resource is created by the service account. Valid values:
 	//
-	// *   **0**: no
-	// *   **1**: yes
+	// *   **0**: The resource is not created by the service account.
+	// *   **1**: The resource is created by the service account.
 	ServiceManaged *int32 `json:"ServiceManaged,omitempty" xml:"ServiceManaged,omitempty"`
-	// The status of the EIP. Valid values:
+	// The state of the EIP. Valid values:
 	//
-	// *   **Associating**: being associated
-	// *   **Unassociating**: being disassociated
-	// *   **InUse**: allocated
-	// *   **Available**: available
-	// *   **Releasing**: being released
+	// *   **Associating**
+	// *   **Unassociating**
+	// *   **InUse**
+	// *   **Available**
+	// *   **Releasing**
 	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
-	// The tag list of the EIP.
+	// The tags of the EIP.
 	Tags *DescribeEipAddressesResponseBodyEipAddressesEipAddressTags `json:"Tags,omitempty" xml:"Tags,omitempty" type:"Struct"`
-	// The ID of the VPC that has IPv4 gateways enabled and that is deployed in the same region as the EIP.
+	// The ID of the VPC in which an IPv4 gateway is created and that is deployed in the same region as the EIP.
 	//
 	// When you associate an EIP with an IP address, the system can enable the IP address to access the Internet based on VPC route configurations.
 	//
-	// >  This parameter is returned if **InstanceType** is set to **IpAddress**. In this case, the EIP is associated with an IP address.
+	// >  This parameter is returned if the value of **InstanceType** is **IpAddress**. In this case, the EIP is associated with an IP address.
 	VpcId *string `json:"VpcId,omitempty" xml:"VpcId,omitempty"`
 	// The zone of the EIP.
 	//
-	// This parameter is returned only if your account is included in the whitelist.
+	// This parameter is returned only when the service type is CloudBox.
 	Zone *string `json:"Zone,omitempty" xml:"Zone,omitempty"`
 }
 
@@ -26174,7 +26527,7 @@ func (s *DescribeEipGatewayInfoResponse) SetBody(v *DescribeEipGatewayInfoRespon
 type DescribeEipMonitorDataRequest struct {
 	// The ID of the EIP.
 	AllocationId *string `json:"AllocationId,omitempty" xml:"AllocationId,omitempty"`
-	// The end of the time range to query. The time must be in UTC. Specify the time in the ISO 8601 standard in `YYYY-MM-DDThh:mm:ssZ` format. For example, `2013-01-10T12:00:00Z` specifies 20:00:00 (UTC+8) on January 10, 2013.
+	// The end of the time range to query. The time must be in UTC. Specify the time in the ISO 8601 standard in the `YYYY-MM-DDThh:mm:ssZ` format. For example, `2013-01-10T12:00:00Z` specifies 20:00:00 (UTC+8) on January 10, 2013.
 	//
 	// If the value of seconds (ss) is not 00, the end time is automatically rounded up to the next minute.
 	EndTime      *string `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
@@ -26185,9 +26538,7 @@ type DescribeEipMonitorDataRequest struct {
 	// *   If the value of **(EndTime** - **StartTime**)/**Period** is greater than 200, a maximum of 200 monitoring data entries are returned at a time.
 	// *   If the value of (**EndTime** - **StartTime**)/**Period** is less than or equal to 200, only the monitoring data collected between the start time and end time is returned.
 	Period *int32 `json:"Period,omitempty" xml:"Period,omitempty"`
-	// The ID of the region to which the EIP belongs.
-	//
-	// You can call the [DescribeRegions](~~36063~~) operation to query available regions.
+	// The ID of the region to which the EIP belongs. You can call the [DescribeRegions](~~36063~~) operation to query the most recent region list.
 	RegionId             *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 	ResourceOwnerAccount *string `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
 	ResourceOwnerId      *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
@@ -26253,7 +26604,7 @@ func (s *DescribeEipMonitorDataRequest) SetStartTime(v string) *DescribeEipMonit
 type DescribeEipMonitorDataResponseBody struct {
 	// The detailed information about the monitoring data of the EIP.
 	EipMonitorDatas *DescribeEipMonitorDataResponseBodyEipMonitorDatas `json:"EipMonitorDatas,omitempty" xml:"EipMonitorDatas,omitempty" type:"Struct"`
-	// The ID of the request.
+	// The request ID.
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -26376,15 +26727,15 @@ func (s *DescribeEipMonitorDataResponse) SetBody(v *DescribeEipMonitorDataRespon
 type DescribeEipSegmentRequest struct {
 	// The client token that is used to ensure the idempotence of the request.
 	//
-	// You can use the client to generate the value, but you must make sure that it is unique among different requests. The client token can contain only ASCII characters.
+	// You can use the client to generate the token, but you must make sure that the token is unique among different requests. The token can contain only ASCII characters.
 	//
-	// >  If you do not set this parameter, the system uses **RequestId** as **ClientToken**. **RequestId** may be different for each API request.
+	// >  If you do not specify this parameter, the system automatically uses the **request ID** as the **client token**. The **request ID** may be different for each request.
 	ClientToken  *string `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
 	OwnerAccount *string `json:"OwnerAccount,omitempty" xml:"OwnerAccount,omitempty"`
 	OwnerId      *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
-	// The number of the page to return. Default value: **1**.
+	// The page number. Default value: **1**.
 	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
-	// The number of entries to return on each page. Maximum value: **50**. Default value: **10**.
+	// The number of entries per page. Maximum value: **50**. Default value: **10**.
 	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
 	// The ID of the region to which the contiguous EIP group belongs. You can call the [DescribeRegions](~~36063~~) operation to query the most recent region list.
 	RegionId             *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
@@ -26450,13 +26801,13 @@ func (s *DescribeEipSegmentRequest) SetSegmentInstanceId(v string) *DescribeEipS
 type DescribeEipSegmentResponseBody struct {
 	// The details of the contiguous EIP group.
 	EipSegments *DescribeEipSegmentResponseBodyEipSegments `json:"EipSegments,omitempty" xml:"EipSegments,omitempty" type:"Struct"`
-	// The page number of the returned page.
+	// The page number.
 	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
-	// The number of entries returned per page.
+	// The number of entries per page.
 	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	// The ID of the request.
+	// The request ID.
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// The number of entries returned.
+	// The total number of entries returned.
 	TotalCount *int32 `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
 }
 
@@ -26511,7 +26862,7 @@ func (s *DescribeEipSegmentResponseBodyEipSegments) SetEipSegment(v []*DescribeE
 }
 
 type DescribeEipSegmentResponseBodyEipSegmentsEipSegment struct {
-	// The time when the contiguous EIP group was created. The time is displayed in the ISO 8601 standard in the yyyy-MM-ddTHH:mm:ssZ format. The time is in UTC.
+	// The time when the contiguous EIP group was created. The time follows the ISO 8601 standard in the yyyy-MM-ddTHH:mm:ssZ format. The time is displayed in UTC.
 	CreationTime *string `json:"CreationTime,omitempty" xml:"CreationTime,omitempty"`
 	// The description of the contiguous EIP group.
 	Descritpion *string `json:"Descritpion,omitempty" xml:"Descritpion,omitempty"`
@@ -26525,13 +26876,14 @@ type DescribeEipSegmentResponseBodyEipSegmentsEipSegment struct {
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 	// The CIDR block and mask of the contiguous EIP group.
 	Segment *string `json:"Segment,omitempty" xml:"Segment,omitempty"`
-	// The status of the contiguous EIP group.
+	// The status of the contiguous EIP group. Valid values:
 	//
-	// *   **Allocating**: being allocated
-	// *   **Allocated**: allocated
-	// *   **Releasing**: being released
+	// *   **Allocating**
+	// *   **Allocated**
+	// *   **Releasing**
 	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
-	Zone   *string `json:"Zone,omitempty" xml:"Zone,omitempty"`
+	// The zone of the contiguous EIP group.
+	Zone *string `json:"Zone,omitempty" xml:"Zone,omitempty"`
 }
 
 func (s DescribeEipSegmentResponseBodyEipSegmentsEipSegment) String() string {
@@ -26619,13 +26971,13 @@ func (s *DescribeEipSegmentResponse) SetBody(v *DescribeEipSegmentResponseBody) 
 type DescribeFlowLogsRequest struct {
 	// The description of the flow log.
 	//
-	// The description must be 1 to 256 characters in length and cannot start with `http://` or `https://`.
+	// The description must be 1 to 256 characters in length, and cannot start with `http://` or `https://`.
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
 	// The ID of the flow log.
 	FlowLogId *string `json:"FlowLogId,omitempty" xml:"FlowLogId,omitempty"`
 	// The name of the flow log.
 	//
-	// The name must be 1 to 128 characters in length and cannot start with `http://` or `https://`.
+	// The name must be 1 to 128 characters in length, and cannot start with `http://` or `https://`.
 	FlowLogName *string `json:"FlowLogName,omitempty" xml:"FlowLogName,omitempty"`
 	// The Logstore that stores the captured traffic data.
 	LogStoreName *string `json:"LogStoreName,omitempty" xml:"LogStoreName,omitempty"`
@@ -26647,7 +26999,7 @@ type DescribeFlowLogsRequest struct {
 	ResourceId           *string `json:"ResourceId,omitempty" xml:"ResourceId,omitempty"`
 	ResourceOwnerAccount *string `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
 	ResourceOwnerId      *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
-	// The type of the resource from which traffic is captured. Valid values:
+	// The type of resource from which traffic is captured. Valid values:
 	//
 	// *   **NetworkInterface**: elastic network interface (ENI)
 	// *   **VSwitch**: all ENIs in a vSwitch
@@ -26655,9 +27007,9 @@ type DescribeFlowLogsRequest struct {
 	ResourceType *string `json:"ResourceType,omitempty" xml:"ResourceType,omitempty"`
 	// The status of the flow log. Valid values:
 	//
-	// *   **Active**: enabled
-	// *   **Activating**: being enabled
-	// *   **Inactive**: disabled
+	// *   **Active**
+	// *   **Activating**
+	// *   **Inactive**
 	Status *string                        `json:"Status,omitempty" xml:"Status,omitempty"`
 	Tags   []*DescribeFlowLogsRequestTags `json:"Tags,omitempty" xml:"Tags,omitempty" type:"Repeated"`
 	// The type of traffic that is captured. Valid values:
@@ -26774,13 +27126,13 @@ func (s *DescribeFlowLogsRequest) SetVpcId(v string) *DescribeFlowLogsRequest {
 }
 
 type DescribeFlowLogsRequestTags struct {
-	// The tag key. You can specify at most 20 tag keys. The tag key cannot be an empty string.
+	// The key of tag N to add to the resource. You can specify at most 20 tag keys. The tag key cannot be an empty string.
 	//
-	// The key cannot exceed 64 characters in length, and can contain digits, periods (.), underscores (\_), and hyphens (-). The key must start with a letter but cannot start with `aliyun` or `acs:`. The key cannot contain `http://` or `https://`.
+	// The tag key can be at most 128 characters in length. It cannot start with `aliyun` or `acs:`, and cannot contain `http://` or `https://`.
 	Key *string `json:"Key,omitempty" xml:"Key,omitempty"`
-	// The tag value. You can specify at most 20 tag values. The tag value can be an empty string.
+	// The value of tag N to add to the resource. You can specify at most 20 tag values. The tag value can be an empty string.
 	//
-	// The tag value cannot exceed 128 characters in length, and can contain digits, periods (.), underscores (\_), and hyphens (-). It must start with a letter but cannot start with `aliyun` or `acs:`. It cannot contain `http://` or `https://`.
+	// The tag value can be up to 128 characters in length and cannot start with `acs:` or `aliyun`. The tag value cannot contain `http://` or `https://`.
 	Value *string `json:"Value,omitempty" xml:"Value,omitempty"`
 }
 
@@ -26807,14 +27159,14 @@ type DescribeFlowLogsResponseBody struct {
 	FlowLogs *DescribeFlowLogsResponseBodyFlowLogs `json:"FlowLogs,omitempty" xml:"FlowLogs,omitempty" type:"Struct"`
 	// The number of the returned page.
 	PageNumber *string `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
-	// The number of entries returned per page.
+	// The number of entries per page.
 	PageSize *string `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	// The ID of the request.
+	// The request ID.
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	// Indicates whether the operation is successful. Valid values:
 	//
-	// *   **true**: yes
-	// *   **false**: no
+	// *   **true**
+	// *   **false**
 	Success *string `json:"Success,omitempty" xml:"Success,omitempty"`
 	// The number of flow logs that are queried.
 	TotalCount *string `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
@@ -26876,19 +27228,27 @@ func (s *DescribeFlowLogsResponseBodyFlowLogs) SetFlowLog(v []*DescribeFlowLogsR
 }
 
 type DescribeFlowLogsResponseBodyFlowLogsFlowLog struct {
-	// The sampling interval of the flow log. Unit: seconds.
+	// The sampling interval of the flow log. Unit: minutes.
 	AggregationInterval *int32 `json:"AggregationInterval,omitempty" xml:"AggregationInterval,omitempty"`
 	// The business status of the flow log. Valid values:
 	//
-	// *   **Normal**: active
-	// *   **FinancialLocked**: locked due to overdue payments
+	// *   **Normal**
+	// *   **FinancialLocked**
 	BusinessStatus *string `json:"BusinessStatus,omitempty" xml:"BusinessStatus,omitempty"`
 	// The time when the flow log was created.
 	CreationTime *string `json:"CreationTime,omitempty" xml:"CreationTime,omitempty"`
 	// The description of the flow log.
-	Description                *string `json:"Description,omitempty" xml:"Description,omitempty"`
+	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
+	// If the flow log failed to be delivered, you can troubleshoot based on the following error messages that may be returned:
+	//
+	// *   **UnavaliableTarget**: The Logstore of SLS is unavailable and cannot receive logs. Check whether the Logstore is available.
+	// *   **ProjectNotExist**: The project of SLS does not exist. We recommend that you delete the project and create a new one.
+	// *   **UnknownError**: An internal error occurred. Try again later.
 	FlowLogDeliverErrorMessage *string `json:"FlowLogDeliverErrorMessage,omitempty" xml:"FlowLogDeliverErrorMessage,omitempty"`
-	FlowLogDeliverStatus       *string `json:"FlowLogDeliverStatus,omitempty" xml:"FlowLogDeliverStatus,omitempty"`
+	// Indicates whether the flow log is delivered. Valid values:
+	// - **SUCCESS**
+	// - **FAILED**
+	FlowLogDeliverStatus *string `json:"FlowLogDeliverStatus,omitempty" xml:"FlowLogDeliverStatus,omitempty"`
 	// The ID of the flow log.
 	FlowLogId *string `json:"FlowLogId,omitempty" xml:"FlowLogId,omitempty"`
 	// The name of the flow log.
@@ -26905,31 +27265,31 @@ type DescribeFlowLogsResponseBodyFlowLogsFlowLog struct {
 	ResourceId *string `json:"ResourceId,omitempty" xml:"ResourceId,omitempty"`
 	// The type of the resource from which traffic is captured. Valid values:
 	//
-	// *   **NetworkInterface**: an ENI
+	// *   **NetworkInterface**: ENI
 	// *   **VSwitch**: all ENIs in a vSwitch
 	// *   **VPC**: all ENIs in a VPC
 	ResourceType *string `json:"ResourceType,omitempty" xml:"ResourceType,omitempty"`
 	// The hosting type of the cloud service.
 	//
 	// *   This parameter can be empty, which indicates that the flow log is created by the user.
-	// *   If this parameter is not empty, the value is fixed as **sls**. The value sls indicates that the flow log is created in the Log Service console.
+	// *   If this parameter is not empty, the value is set to **sls**. The value sls indicates that the flow log is created in the Simple Log Service (SLS) console.
 	//
-	// >  A flow log that is created in the Log Service console can be displayed in the VPC list. However, you cannot modify, start, stop, or delete the flow log in the VPC console. If you want to manage the flow log, you can log on to the [Log Service console](https://sls.console.aliyun.com) and perform required operations.
+	// > A flow log that is created in the SLS console can be displayed in the VPC list. However, you cannot modify, start, stop, or delete the flow log in the VPC console. If you want to manage the flow log, you can log on to the [SLS console](https://sls.console.aliyun.com) and perform required operations.
 	ServiceType *string `json:"ServiceType,omitempty" xml:"ServiceType,omitempty"`
 	// The status of the flow log. Valid values:
 	//
-	// *   **Active**: enabled
-	// *   **Activating**: being enabled
-	// *   **Inactive**: disabled
+	// *   **Active**
+	// *   **Activating**
+	// *   **Inactive**
 	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
-	// An array that consists of the details of the returned tags.
+	// The list of tags.
 	Tags *DescribeFlowLogsResponseBodyFlowLogsFlowLogTags `json:"Tags,omitempty" xml:"Tags,omitempty" type:"Struct"`
-	// The scope of the traffic that you want to capture. Valid values:
+	// The sampling scope of the traffic that is collected. Valid values:
 	//
 	// *   **all** (default value): all traffic
 	// *   **internetGateway**: Internet traffic
 	//
-	// >  By default, the traffic path feature is unavailable. To use this feature, [submit a ticket](https://workorder-intl.console.aliyun.com/?spm=5176.11182188.console-base-top.dworkorder.18ae4882n3v6ZW#/ticket/createIndex).
+	// > By default, the traffic path feature is unavailable. To use this feature, [submit a ticket](https://workorder-intl.console.aliyun.com/?spm=5176.11182188.console-base-top.dworkorder.18ae4882n3v6ZW#/ticket/createIndex).
 	TrafficPath *DescribeFlowLogsResponseBodyFlowLogsFlowLogTrafficPath `json:"TrafficPath,omitempty" xml:"TrafficPath,omitempty" type:"Struct"`
 	// The type of traffic that is captured by the flow log. Valid values:
 	//
@@ -27060,9 +27420,9 @@ func (s *DescribeFlowLogsResponseBodyFlowLogsFlowLogTags) SetTag(v []*DescribeFl
 }
 
 type DescribeFlowLogsResponseBodyFlowLogsFlowLogTagsTag struct {
-	// The tag key.
+	// The key of tag N.
 	Key *string `json:"Key,omitempty" xml:"Key,omitempty"`
-	// The tag value.
+	// The value of tag N.
 	Value *string `json:"Value,omitempty" xml:"Value,omitempty"`
 }
 
@@ -27150,7 +27510,9 @@ type DescribeForwardTableEntriesRequest struct {
 	ForwardEntryName *string `json:"ForwardEntryName,omitempty" xml:"ForwardEntryName,omitempty"`
 	// The ID of the DNAT table.
 	//
-	// >  You must set at least one of the **ForwardTableId** and **NatGatewayId** parameters.
+	// **
+	//
+	// **Description** You must specify at least one of **ForwardTableId** and **NatGatewayId**.
 	ForwardTableId *string `json:"ForwardTableId,omitempty" xml:"ForwardTableId,omitempty"`
 	// The private IP address.
 	//
@@ -27162,21 +27524,23 @@ type DescribeForwardTableEntriesRequest struct {
 	InternalPort *string `json:"InternalPort,omitempty" xml:"InternalPort,omitempty"`
 	// The protocol. Valid values:
 	//
-	// *   **TCP**: The NAT gateway forwards TCP packets.
-	// *   **UDP**: The NAT gateway forwards UDP packets.
-	// *   **Any**: The NAT gateway forwards packets of all protocols.
+	// *   **TCP**
+	// *   **UDP**
+	// *   **Any**
 	IpProtocol *string `json:"IpProtocol,omitempty" xml:"IpProtocol,omitempty"`
 	// The ID of the NAT gateway.
 	//
-	// >  You must set at least one of the **ForwardTableId** and **NatGatewayId** parameters.
+	// **
+	//
+	// **Description** You must specify at least one of **ForwardTableId** and **NatGatewayId**.
 	NatGatewayId *string `json:"NatGatewayId,omitempty" xml:"NatGatewayId,omitempty"`
 	OwnerAccount *string `json:"OwnerAccount,omitempty" xml:"OwnerAccount,omitempty"`
 	OwnerId      *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
-	// The page number of the page to return. Default value: **1**.
+	// The page number. Default value: **1**.
 	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
-	// The number of entries to return on each page. Maximum value: **50**. Default value: **10**.
+	// The number of entries per page. Maximum value: **50**. Default value: **10**.
 	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	// The region ID of the NAT gateway.
+	// The ID of the region where you want to create the NAT gateway.
 	//
 	// You can call the [DescribeRegions](~~36063~~) operation to query the most recent region list.
 	RegionId             *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
@@ -27275,11 +27639,11 @@ func (s *DescribeForwardTableEntriesRequest) SetResourceOwnerId(v int64) *Descri
 type DescribeForwardTableEntriesResponseBody struct {
 	// The details of DNAT entries.
 	ForwardTableEntries *DescribeForwardTableEntriesResponseBodyForwardTableEntries `json:"ForwardTableEntries,omitempty" xml:"ForwardTableEntries,omitempty" type:"Struct"`
-	// The page number of the returned page.
+	// The page number.
 	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
-	// The number of entries returned per page.
+	// The number of entries per page.
 	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	// The ID of the request.
+	// The request ID.
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	// The number of entries returned.
 	TotalCount *int32 `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
@@ -27358,16 +27722,17 @@ type DescribeForwardTableEntriesResponseBodyForwardTableEntriesForwardTableEntry
 	InternalPort *string `json:"InternalPort,omitempty" xml:"InternalPort,omitempty"`
 	// The protocol. Valid values:
 	//
-	// *   **TCP**: The NAT gateway forwards TCP packets.
-	// *   **UDP**: The NAT gateway forwards UDP packets.
-	// *   **Any**: The NAT gateway forwards packets of all protocols.
-	IpProtocol   *string `json:"IpProtocol,omitempty" xml:"IpProtocol,omitempty"`
+	// *   **TCP**
+	// *   **UDP**
+	// *   **Any**
+	IpProtocol *string `json:"IpProtocol,omitempty" xml:"IpProtocol,omitempty"`
+	// The ID of the NAT gateway to which the DNAT entry belongs.
 	NatGatewayId *string `json:"NatGatewayId,omitempty" xml:"NatGatewayId,omitempty"`
 	// The status of the DNAT entry. Valid values:
 	//
-	// *   **Pending**: being created or modified
-	// *   **Available**: available
-	// *   **Deleting**: being deleted
+	// *   **Pending**
+	// *   **Available**
+	// *   **Deleting**
 	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
 }
 
@@ -28567,15 +28932,15 @@ func (s *DescribeHaVipsResponse) SetBody(v *DescribeHaVipsResponseBody) *Describ
 }
 
 type DescribeHighDefinitionMonitorLogAttributeRequest struct {
-	// The ID of the fine-grained monitoring instance.
+	// The ID of the instance whose fine-grained monitoring configurations you want to query.
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	// The ID of the instance. Set the value to **EIP**.
+	// The type of the instance. Set the value to **EIP**.
 	InstanceType *string `json:"InstanceType,omitempty" xml:"InstanceType,omitempty"`
 	OwnerAccount *string `json:"OwnerAccount,omitempty" xml:"OwnerAccount,omitempty"`
 	OwnerId      *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
-	// The ID of the region where the instance is deployed.
+	// The region ID of the instance.
 	//
-	// You can call the [DescribeRegions](~~36063~~) operation to query the most recent region list.
+	// You can call the [DescribeRegions](~~DescribeRegions~~) operation to query the most recent region list.
 	RegionId             *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 	ResourceOwnerAccount *string `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
 	ResourceOwnerId      *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
@@ -28625,20 +28990,20 @@ func (s *DescribeHighDefinitionMonitorLogAttributeRequest) SetResourceOwnerId(v 
 }
 
 type DescribeHighDefinitionMonitorLogAttributeResponseBody struct {
-	// The ID of the fine-grained monitoring instance.
+	// The ID of the instance whose fine-grained monitoring configurations you want to query.
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	// The type of the monitoring instance that is queried. The value is set to **EIP**.
+	// The type of instance for which you want to query fine-grained monitoring. Only **EIP** may be returned.
 	InstanceType *string `json:"InstanceType,omitempty" xml:"InstanceType,omitempty"`
-	// The name of the log project of Log Service.
+	// The name of the project.
 	LogProject *string `json:"LogProject,omitempty" xml:"LogProject,omitempty"`
-	// The name of the Logstore of Log Service.
+	// The name of the Logstore.
 	LogStore *string `json:"LogStore,omitempty" xml:"LogStore,omitempty"`
-	// The ID of the request.
+	// The request ID.
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	// Indicates whether the operation is performed. Valid values:
 	//
-	// *   **true**: The operation is performed.
-	// *   **false**: The operation is not performed.
+	// *   **true**
+	// *   **false**
 	Success *string `json:"Success,omitempty" xml:"Success,omitempty"`
 }
 
@@ -29822,10 +30187,14 @@ type DescribeIpv6AddressesRequest struct {
 	//
 	// Set the value to **EcsInstance**, which specifies an Elastic Compute Service (ECS) instance in a virtual private cloud (VPC). This is the default value.
 	AssociatedInstanceType *string `json:"AssociatedInstanceType,omitempty" xml:"AssociatedInstanceType,omitempty"`
-	IncludeReservationData *bool   `json:"IncludeReservationData,omitempty" xml:"IncludeReservationData,omitempty"`
+	// Specifies whether to return information about pending orders. Valid values:
+	//
+	// *   **false** (default)
+	// *   **true**
+	IncludeReservationData *bool `json:"IncludeReservationData,omitempty" xml:"IncludeReservationData,omitempty"`
 	// The IPv6 address that you want to query.
 	Ipv6Address *string `json:"Ipv6Address,omitempty" xml:"Ipv6Address,omitempty"`
-	// The ID of the IPv6 address that you want to query. You can enter at most 20 IPv6 IDs in each API request. Separate IPv6 IDs with commas (,).
+	// The ID of the IPv6 address that you want to query. You can enter at most 20 IPv6 address IDs in each API request. Separate IPv6 address IDs with commas (,).
 	Ipv6AddressId *string `json:"Ipv6AddressId,omitempty" xml:"Ipv6AddressId,omitempty"`
 	// The ID of the Internet bandwidth that you purchased for the IPv6 address.
 	Ipv6InternetBandwidthId *string `json:"Ipv6InternetBandwidthId,omitempty" xml:"Ipv6InternetBandwidthId,omitempty"`
@@ -29835,8 +30204,8 @@ type DescribeIpv6AddressesRequest struct {
 	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
 	// The type of communication supported by the IPv6 address. Valid values:
 	//
-	// *   **Private**: communication within private networks
-	// *   **Public**: communication over the Internet
+	// *   **Private**
+	// *   **Public**
 	NetworkType  *string `json:"NetworkType,omitempty" xml:"NetworkType,omitempty"`
 	OwnerAccount *string `json:"OwnerAccount,omitempty" xml:"OwnerAccount,omitempty"`
 	OwnerId      *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
@@ -29950,13 +30319,13 @@ func (s *DescribeIpv6AddressesRequest) SetVpcId(v string) *DescribeIpv6Addresses
 type DescribeIpv6AddressesResponseBody struct {
 	// The details about the IPv6 addresses.
 	Ipv6Addresses *DescribeIpv6AddressesResponseBodyIpv6Addresses `json:"Ipv6Addresses,omitempty" xml:"Ipv6Addresses,omitempty" type:"Struct"`
-	// The number of the returned page. Default value: **1**.
+	// The page number of the returned page. Default value: **1**.
 	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
-	// The number of entries returned on each page. Maximum value: **50**. Default value: **10**.
+	// The number of entries returned per page. Maximum value: **50**. Default value: **10**.
 	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	// The ID of the request.
+	// The request ID.
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// The total number of entries returned.
+	// The number of returned entries.
 	TotalCount *int32 `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
 }
 
@@ -30017,7 +30386,7 @@ type DescribeIpv6AddressesResponseBodyIpv6AddressesIpv6Address struct {
 	AssociatedInstanceId *string `json:"AssociatedInstanceId,omitempty" xml:"AssociatedInstanceId,omitempty"`
 	// The type of the instance that is assigned the IPv6 address.
 	AssociatedInstanceType *string `json:"AssociatedInstanceType,omitempty" xml:"AssociatedInstanceType,omitempty"`
-	// The IPv6 address.
+	// The IPv6 address of the instance.
 	Ipv6Address *string `json:"Ipv6Address,omitempty" xml:"Ipv6Address,omitempty"`
 	// The ID of the IPv6 address.
 	Ipv6AddressId *string `json:"Ipv6AddressId,omitempty" xml:"Ipv6AddressId,omitempty"`
@@ -30029,15 +30398,15 @@ type DescribeIpv6AddressesResponseBodyIpv6AddressesIpv6Address struct {
 	Ipv6InternetBandwidth *DescribeIpv6AddressesResponseBodyIpv6AddressesIpv6AddressIpv6InternetBandwidth `json:"Ipv6InternetBandwidth,omitempty" xml:"Ipv6InternetBandwidth,omitempty" type:"Struct"`
 	// The service provider of the IPv6 address. Valid values:
 	//
-	// *   **BGP**: Alibaba Cloud Border Gateway Protocol (BGP) IPv6. This is the default value.
-	// *   **ChinaMobile**: China Mobile (single ISP).
-	// *   **ChinaUnicom**: China Unicom (single ISP).
-	// *   **ChinaTelecom**: China Telecom (single ISP).
+	// *   **BGP** (default)
+	// *   **ChinaMobile**
+	// *   **ChinaUnicom**
+	// *   **ChinaTelecom**
 	Ipv6Isp *string `json:"Ipv6Isp,omitempty" xml:"Ipv6Isp,omitempty"`
 	// The type of communication supported by the IPv6 address. Valid values:
 	//
-	// *   **Private**: communication within private networks
-	// *   **Public**: communication over the Internet
+	// *   **Private**
+	// *   **Public**
 	NetworkType *string `json:"NetworkType,omitempty" xml:"NetworkType,omitempty"`
 	// The maximum bandwidth value of the IPv6 address.
 	//
@@ -30047,8 +30416,8 @@ type DescribeIpv6AddressesResponseBodyIpv6AddressesIpv6Address struct {
 	RealBandwidth *int32 `json:"RealBandwidth,omitempty" xml:"RealBandwidth,omitempty"`
 	// The status of the IPv6 address. Valid values:
 	//
-	// *   **Pending**: being configured
-	// *   **Available**: available
+	// *   **Pending**
+	// *   **Available**
 	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
 	// The ID of the vSwitch to which the IPv6 address belongs.
 	VSwitchId *string `json:"VSwitchId,omitempty" xml:"VSwitchId,omitempty"`
@@ -30139,14 +30508,18 @@ type DescribeIpv6AddressesResponseBodyIpv6AddressesIpv6AddressIpv6InternetBandwi
 	Bandwidth *int32 `json:"Bandwidth,omitempty" xml:"Bandwidth,omitempty"`
 	// The status of the Internet bandwidth of the IPv6 address. Valid values:
 	//
-	// *   **Normal**: normal
-	// *   **FinancialLocked**: locked due to overdue payments
-	// *   **SecurityLocked**: locked due to security reasons
-	BusinessStatus     *string `json:"BusinessStatus,omitempty" xml:"BusinessStatus,omitempty"`
-	HasReservationData *bool   `json:"HasReservationData,omitempty" xml:"HasReservationData,omitempty"`
-	// The billing method of the Internet bandwidth of the IPv6 address. Valid values:
+	// *   **Normal**
+	// *   **FinancialLocked**
+	// *   **SecurityLocked**
+	BusinessStatus *string `json:"BusinessStatus,omitempty" xml:"BusinessStatus,omitempty"`
+	// Indicates whether renewal data is included.
 	//
-	// **PostPaid**: pay-as-you-go
+	// *   **false**
+	// *   **true** This parameter returns **true** only if **IncludeReservationData** is set to **true** and some orders have not taken effect.
+	HasReservationData *bool `json:"HasReservationData,omitempty" xml:"HasReservationData,omitempty"`
+	// The billing method of the Internet bandwidth of the IPv6 address.
+	//
+	// Only **PostPaid** may be returned, which indicates the pay-as-you-go billing method.
 	InstanceChargeType *string `json:"InstanceChargeType,omitempty" xml:"InstanceChargeType,omitempty"`
 	// The billing method of the Internet bandwidth of the IPv6 address. Valid values:
 	//
@@ -30154,11 +30527,18 @@ type DescribeIpv6AddressesResponseBodyIpv6AddressesIpv6AddressIpv6InternetBandwi
 	// *   **PayByBandwidth**: pay-by-bandwidth
 	InternetChargeType *string `json:"InternetChargeType,omitempty" xml:"InternetChargeType,omitempty"`
 	// The instance ID of the Internet bandwidth of the IPv6 address.
-	Ipv6InternetBandwidthId       *string `json:"Ipv6InternetBandwidthId,omitempty" xml:"Ipv6InternetBandwidthId,omitempty"`
-	ReservationActiveTime         *string `json:"ReservationActiveTime,omitempty" xml:"ReservationActiveTime,omitempty"`
-	ReservationBandwidth          *int64  `json:"ReservationBandwidth,omitempty" xml:"ReservationBandwidth,omitempty"`
+	Ipv6InternetBandwidthId *string `json:"Ipv6InternetBandwidthId,omitempty" xml:"Ipv6InternetBandwidthId,omitempty"`
+	// The time when the renewal took effect. The time is displayed in the `YYYY-MM-DDThh:mm:ssZ` format.
+	ReservationActiveTime *string `json:"ReservationActiveTime,omitempty" xml:"ReservationActiveTime,omitempty"`
+	// The maximum bandwidth after the renewal takes effect. Unit: Mbit/s.
+	ReservationBandwidth *int64 `json:"ReservationBandwidth,omitempty" xml:"ReservationBandwidth,omitempty"`
+	// The metering method that is used after the renewal takes effect.
+	//
+	// *   **PayByTraffic**: pay-by-data-transfer
+	// *   **PayByBandwidth**: pay-by-bandwidth
 	ReservationInternetChargeType *string `json:"ReservationInternetChargeType,omitempty" xml:"ReservationInternetChargeType,omitempty"`
-	ReservationOrderType          *string `json:"ReservationOrderType,omitempty" xml:"ReservationOrderType,omitempty"`
+	// The type of the renewal order. Only **RENEW** may be returned, which indicates that the order is placed for service renewal.
+	ReservationOrderType *string `json:"ReservationOrderType,omitempty" xml:"ReservationOrderType,omitempty"`
 }
 
 func (s DescribeIpv6AddressesResponseBodyIpv6AddressesIpv6AddressIpv6InternetBandwidth) String() string {
@@ -30720,23 +31100,22 @@ type DescribeIpv6GatewaysRequest struct {
 	Ipv6GatewayId *string `json:"Ipv6GatewayId,omitempty" xml:"Ipv6GatewayId,omitempty"`
 	// The name of the IPv6 gateway.
 	//
-	// The name must be 2 to 256 characters in length, and can contain letters, digits, periods (.), underscores (\_), and hyphens (-). The name must start with a letter. It cannot start with `http://` or `https://`.
+	// The name must be 2 to 256 characters in length, and can contain letters, digits, periods (.), underscores (\_), and hyphens (-). The name must start with a letter and cannot start with `http://` or `https://`.
 	Name         *string `json:"Name,omitempty" xml:"Name,omitempty"`
 	OwnerAccount *string `json:"OwnerAccount,omitempty" xml:"OwnerAccount,omitempty"`
 	OwnerId      *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
-	// The number of the page to return.
+	// The page number.
 	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
-	// The number of entries to return on each page.
+	// The number of entries per page.
 	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	// The ID of the region where the IPv6 gateway is deployed.
-	//
-	// >  IPv6 gateways are available in the following regions: China (Qingdao), China (Beijing), China (Zhangjiakou), China (Hohhot), China (Ulanqab), China (Hangzhou), China (Shanghai), China (Shenzhen), China (Heyuan), China (Guangzhou), China (Chengdu), China (Hong Kong), Philippines (Manila), Singapore, US (Virginia), and Germany (Frankfurt).
+	// The ID of the region in which the IPv6 gateway is deployed. You can call the [DescribeRegions](~~36063~~) operation to query the region ID.
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 	// The ID of the resource group.
-	ResourceGroupId      *string                            `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
-	ResourceOwnerAccount *string                            `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
-	ResourceOwnerId      *int64                             `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
-	Tags                 []*DescribeIpv6GatewaysRequestTags `json:"Tags,omitempty" xml:"Tags,omitempty" type:"Repeated"`
+	ResourceGroupId      *string `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
+	ResourceOwnerAccount *string `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
+	ResourceOwnerId      *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
+	// The information about the tags.
+	Tags []*DescribeIpv6GatewaysRequestTags `json:"Tags,omitempty" xml:"Tags,omitempty" type:"Repeated"`
 	// The ID of the virtual private cloud (VPC) to which the IPv6 gateway belongs.
 	VpcId *string `json:"VpcId,omitempty" xml:"VpcId,omitempty"`
 }
@@ -30810,17 +31189,13 @@ func (s *DescribeIpv6GatewaysRequest) SetVpcId(v string) *DescribeIpv6GatewaysRe
 }
 
 type DescribeIpv6GatewaysRequestTags struct {
-	// The key of the tag. The tag key cannot be an empty string.
+	// The tag keys of the resources. You can specify up to 20 tag keys. The tag key cannot be an empty string.
 	//
-	// It must be 1 to 64 characters in length, and cannot contain `http://` or `https://`. It cannot start with `aliyun` or `acs:`.
-	//
-	// You can specify at most 20 tag keys in each call.
+	// The tag key can be up to 128 characters in length. It cannot start with `aliyun` or `acs:`, and cannot contain `http://` or `https://`.
 	Key *string `json:"Key,omitempty" xml:"Key,omitempty"`
-	// The value of the tag.
+	// The tag values of the resources. You can specify up to 20 tag values. The tag value can be an empty string.
 	//
-	// The tag value can be an empty string and must be 1 to 128 characters in length. It cannot start with `aliyun` or `acs:`, and cannot contain `http://` or `https://`.
-	//
-	// Each tag key corresponds to one tag value. You can specify at most 20 tag values in each call.
+	// The tag value can be up to 128 characters in length, and cannot contain `http://` or `https://`. The tag value cannot start with `aliyun` or `acs:`.
 	Value *string `json:"Value,omitempty" xml:"Value,omitempty"`
 }
 
@@ -30843,13 +31218,13 @@ func (s *DescribeIpv6GatewaysRequestTags) SetValue(v string) *DescribeIpv6Gatewa
 }
 
 type DescribeIpv6GatewaysResponseBody struct {
-	// The details about the IPv6 gateways.
+	// The information about the IPv6 gateway.
 	Ipv6Gateways *DescribeIpv6GatewaysResponseBodyIpv6Gateways `json:"Ipv6Gateways,omitempty" xml:"Ipv6Gateways,omitempty" type:"Struct"`
-	// The number of the returned page.
+	// The page number.
 	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
-	// The number of entries returned per page.
+	// The number of entries per page.
 	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	// The ID of the request.
+	// The request ID.
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	// The total number of entries returned.
 	TotalCount *int32 `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
@@ -30909,7 +31284,7 @@ type DescribeIpv6GatewaysResponseBodyIpv6GatewaysIpv6Gateway struct {
 	// The state of the IPv6 gateway. Valid values:
 	//
 	// *   **Normal**: The IPv6 gateway runs as expected.
-	// *   **FinancialLocked**: The IPv6 gateway is locked due to overdue payments.
+	// *   **FinancialLocked:** The IPv6 gateway is locked due to overdue payments.
 	BusinessStatus *string `json:"BusinessStatus,omitempty" xml:"BusinessStatus,omitempty"`
 	// The time when the IPv6 gateway was created.
 	CreationTime *string `json:"CreationTime,omitempty" xml:"CreationTime,omitempty"`
@@ -30919,22 +31294,22 @@ type DescribeIpv6GatewaysResponseBodyIpv6GatewaysIpv6Gateway struct {
 	ExpiredTime *string `json:"ExpiredTime,omitempty" xml:"ExpiredTime,omitempty"`
 	// The billing method of the IPv6 gateway.
 	//
-	// The value is set to **PostPaid**. This value indicates the pay-as-you-go billing method.
+	// Only **PostPaid** may be returned, which indicates that the IPv6 gateway uses the pay-as-you-go billing method.
 	InstanceChargeType *string `json:"InstanceChargeType,omitempty" xml:"InstanceChargeType,omitempty"`
 	// The ID of the IPv6 gateway.
 	Ipv6GatewayId *string `json:"Ipv6GatewayId,omitempty" xml:"Ipv6GatewayId,omitempty"`
 	// The name of the IPv6 gateway.
 	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
-	// The region ID of the IPv6 gateway.
+	// The ID of the region in which the IPv6 gateway is deployed.
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 	// The ID of the resource group.
 	ResourceGroupId *string `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
-	// The state of the IPv6 gateway. Valid values:
+	// The status of the IPv6 gateway. Valid values:
 	//
 	// *   **Pending**: The IPv6 gateway is being configured.
 	// *   **Available**: The IPv6 gateway is available.
 	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
-	// The list of tags.
+	// The information about the tags.
 	Tags *DescribeIpv6GatewaysResponseBodyIpv6GatewaysIpv6GatewayTags `json:"Tags,omitempty" xml:"Tags,omitempty" type:"Struct"`
 	// The ID of the VPC to which the IPv6 gateway belongs.
 	VpcId *string `json:"VpcId,omitempty" xml:"VpcId,omitempty"`
@@ -31026,9 +31401,9 @@ func (s *DescribeIpv6GatewaysResponseBodyIpv6GatewaysIpv6GatewayTags) SetTag(v [
 }
 
 type DescribeIpv6GatewaysResponseBodyIpv6GatewaysIpv6GatewayTagsTag struct {
-	// The key of the tag.
+	// The tag key.
 	Key *string `json:"Key,omitempty" xml:"Key,omitempty"`
-	// The value of the tag.
+	// The tag value.
 	Value *string `json:"Value,omitempty" xml:"Value,omitempty"`
 }
 
@@ -33892,15 +34267,13 @@ func (s *DescribePhysicalConnectionsResponse) SetBody(v *DescribePhysicalConnect
 type DescribePublicIpAddressRequest struct {
 	OwnerAccount *string `json:"OwnerAccount,omitempty" xml:"OwnerAccount,omitempty"`
 	OwnerId      *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
-	// The number of the page to return. Default value: **1**.
+	// The page number. Default value: **1**.
 	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
-	// The number of entries to return on each page.
+	// The number of entries per page.
 	//
 	// Valid values: **1** to **100**. Default value: **100**.
 	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	// The region that you want to query.
-	//
-	// You can call the [DescribeRegions](~~36063~~) operation to query the most recent region list.
+	// The region that you want to query. You can call the [DescribeRegions](~~36063~~) operation to query the most recent region list.
 	RegionId             *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 	ResourceOwnerAccount *string `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
 	ResourceOwnerId      *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
@@ -33950,26 +34323,26 @@ func (s *DescribePublicIpAddressRequest) SetResourceOwnerId(v int64) *DescribePu
 }
 
 type DescribePublicIpAddressResponseBody struct {
-	// The HTTP status code.
+	// The HTTP status codes returned.
 	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
-	// The response message.
+	// The response messages.
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
-	// The page number of the returned page.
+	// The page number.
 	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
-	// The number of entries returned per page.
+	// The number of entries per page.
 	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
 	// The range of the public IP addresses of the VPC in the region.
 	PublicIpAddress []*string `json:"PublicIpAddress,omitempty" xml:"PublicIpAddress,omitempty" type:"Repeated"`
 	// The ID of the region to which the public IP addresses belong.
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	// The ID of the request.
+	// The request ID.
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	// Indicates whether the call is successful. Valid values:
 	//
-	// *   **true**: yes
-	// *   **false**: no
+	// *   **true**
+	// *   **false**
 	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
-	// The total number of entries returned.
+	// The number of returned entries.
 	TotalCount *int32 `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
 }
 
@@ -36850,15 +37223,15 @@ func (s *DescribeServerRelatedGlobalAccelerationInstancesResponse) SetBody(v *De
 type DescribeSnatTableEntriesRequest struct {
 	// The ID of the NAT gateway.
 	//
-	// >  You must set at least one of the **SnatTableId** and **NatGatewayId** parameters.
+	// >  You must specify at least one of **SnatTableId** and **NatGatewayId**.
 	NatGatewayId *string `json:"NatGatewayId,omitempty" xml:"NatGatewayId,omitempty"`
 	OwnerAccount *string `json:"OwnerAccount,omitempty" xml:"OwnerAccount,omitempty"`
 	OwnerId      *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
-	// The number of the page to return. Default value: **1**.
+	// The page number. Default value: **1**.
 	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
-	// The number of entries to return on each page. Maximum value: **50**. Default value: **10**.
+	// The number of entries per page. Maximum value: **50**. Default value: **10**.
 	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	// The region ID of the NAT gateway.
+	// The ID of the region where you want to create the NAT gateway.
 	//
 	// You can call the [DescribeRegions](~~36063~~) operation to query the most recent region list.
 	RegionId             *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
@@ -36875,7 +37248,7 @@ type DescribeSnatTableEntriesRequest struct {
 	SnatIp *string `json:"SnatIp,omitempty" xml:"SnatIp,omitempty"`
 	// The ID of the SNAT table.
 	//
-	// >  You must set at least one of the **SnatTableId** and **NatGatewayId** parameters.
+	// >  You must specify at least one of **SnatTableId** and **NatGatewayId**.
 	SnatTableId *string `json:"SnatTableId,omitempty" xml:"SnatTableId,omitempty"`
 	// The source CIDR block specified in the SNAT entry.
 	SourceCIDR *string `json:"SourceCIDR,omitempty" xml:"SourceCIDR,omitempty"`
@@ -36965,15 +37338,15 @@ func (s *DescribeSnatTableEntriesRequest) SetSourceVSwitchId(v string) *Describe
 }
 
 type DescribeSnatTableEntriesResponseBody struct {
-	// The page number of the returned page.
+	// The number of the returned page.
 	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
-	// The number of entries returned per page.
+	// The number of entries per page.
 	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	// The ID of the request.
+	// The request ID.
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// The details of the SNAT entries.
+	// Details of SNAT entries.
 	SnatTableEntries *DescribeSnatTableEntriesResponseBodySnatTableEntries `json:"SnatTableEntries,omitempty" xml:"SnatTableEntries,omitempty" type:"Struct"`
-	// The number of entries returned.
+	// The number of returned entries.
 	TotalCount *int32 `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
 }
 
@@ -37028,6 +37401,7 @@ func (s *DescribeSnatTableEntriesResponseBodySnatTableEntries) SetSnatTableEntry
 }
 
 type DescribeSnatTableEntriesResponseBodySnatTableEntriesSnatTableEntry struct {
+	// The ID of the NAT gateway to which the SNAT entry belongs.
 	NatGatewayId *string `json:"NatGatewayId,omitempty" xml:"NatGatewayId,omitempty"`
 	// The ID of the SNAT entry.
 	SnatEntryId *string `json:"SnatEntryId,omitempty" xml:"SnatEntryId,omitempty"`
@@ -37045,9 +37419,9 @@ type DescribeSnatTableEntriesResponseBodySnatTableEntriesSnatTableEntry struct {
 	SourceVSwitchId *string `json:"SourceVSwitchId,omitempty" xml:"SourceVSwitchId,omitempty"`
 	// The status of the SNAT entry. Valid values:
 	//
-	// *   **Pending**: being created or modified
-	// *   **Available**: available
-	// *   **Deleting**: being deleted
+	// *   **Pending**
+	// *   **Available**
+	// *   **Deleting**
 	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
 }
 
@@ -37551,11 +37925,13 @@ func (s *DescribeSslVpnClientCertsResponse) SetBody(v *DescribeSslVpnClientCerts
 type DescribeSslVpnClientsRequest struct {
 	OwnerAccount *string `json:"OwnerAccount,omitempty" xml:"OwnerAccount,omitempty"`
 	OwnerId      *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
-	// The number of the page to return. Default value: **1**.
+	// The page number. Default value: **1**.
 	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
-	// The number of entries to return on each page. Valid values: **1** to **50**. Default value: **10**.
+	// The number of entries per page. Valid values: **1** to **50**. Default value: **10**.
 	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	// The region ID of the VPN gateway. You can call the [DescribeRegions](~~36063~~) operation to query the most recent region list.
+	// The region ID of the VPN gateway.
+	//
+	// You can call the [DescribeRegions](~~36063~~) operation to query the most recent region list.
 	RegionId             *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 	ResourceOwnerAccount *string `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
 	ResourceOwnerId      *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
@@ -37614,15 +37990,15 @@ func (s *DescribeSslVpnClientsRequest) SetVpnGatewayId(v string) *DescribeSslVpn
 type DescribeSslVpnClientsResponseBody struct {
 	// The list of clients.
 	ClientInfoList []*DescribeSslVpnClientsResponseBodyClientInfoList `json:"ClientInfoList,omitempty" xml:"ClientInfoList,omitempty" type:"Repeated"`
-	// The number of the returned page.
+	// The page number.
 	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
-	// The number of entries returned per page.
+	// The number of entries per page.
 	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	// The region ID of the VPN gateway.
+	// The region ID.
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	// The ID of the request.
+	// The request ID.
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// The number of entries returned.
+	// The number of returned entries.
 	TotalCount *int32 `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
 	// The ID of the VPN gateway.
 	VpnGatewayId *string `json:"VpnGatewayId,omitempty" xml:"VpnGatewayId,omitempty"`
@@ -37674,9 +38050,11 @@ func (s *DescribeSslVpnClientsResponseBody) SetVpnGatewayId(v string) *DescribeS
 type DescribeSslVpnClientsResponseBodyClientInfoList struct {
 	// The SSL client certificate used by the client.
 	//
-	// > If the client uses two-factor authentication to establish an SSL-VPN connection to Alibaba Cloud, the value is the username of the client.
+	// >  If the client uses two-factor authentication to establish an SSL-VPN connection to Alibaba Cloud, the return value is the username of the client.
 	CommonName *string `json:"CommonName,omitempty" xml:"CommonName,omitempty"`
-	// The timestamp that indicates when the client connected to Alibaba Cloud through an SSL-VPN connection. Unit: milliseconds. This value is a UNIX timestamp representing the number of milliseconds that have elapsed since the epoch time January 1, 1970, 00:00:00 UTC.
+	// The timestamp that indicates when the client connected to Alibaba Cloud through an SSL-VPN connection. Unit: milliseconds.
+	//
+	// This value is a UNIX timestamp representing the number of milliseconds that have elapsed since January 1, 1970, 00:00:00 UTC.
 	ConnectedTime *int64 `json:"ConnectedTime,omitempty" xml:"ConnectedTime,omitempty"`
 	// The actual public IP address used by the client when the client established an SSL-VPN connection to Alibaba Cloud.
 	Ip *string `json:"Ip,omitempty" xml:"Ip,omitempty"`
@@ -37688,7 +38066,9 @@ type DescribeSslVpnClientsResponseBodyClientInfoList struct {
 	ReceiveBytes *int64 `json:"ReceiveBytes,omitempty" xml:"ReceiveBytes,omitempty"`
 	// The amount of data transferred from the VPN gateway to the client through the SSL-VPN connection. Unit: bytes.
 	SendBytes *int64 `json:"SendBytes,omitempty" xml:"SendBytes,omitempty"`
-	// The status of the SSL-VPN connection. The value is set to **online**, which indicates that the client has connected to Alibaba Cloud through an SSL-VPN connection.
+	// The status of the SSL-VPN connection.
+	//
+	// The value is set to **online**, which indicates that the client has connected to Alibaba Cloud through an SSL-VPN connection.
 	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
 }
 
@@ -42643,7 +43023,7 @@ func (s *DescribeVpnAttachmentsResponse) SetBody(v *DescribeVpnAttachmentsRespon
 type DescribeVpnConnectionRequest struct {
 	OwnerAccount *string `json:"OwnerAccount,omitempty" xml:"OwnerAccount,omitempty"`
 	OwnerId      *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
-	// The ID of the region where the IPsec-VPN connection is established.
+	// The ID of the region where the IPsec-VPN connection is created.
 	//
 	// You can call the [DescribeRegions](~~36063~~) operation to query the most recent region list.
 	RegionId             *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
@@ -42694,78 +43074,78 @@ func (s *DescribeVpnConnectionRequest) SetVpnConnectionId(v string) *DescribeVpn
 type DescribeVpnConnectionResponseBody struct {
 	// The ID of the CEN instance to which the transit router belongs.
 	AttachInstanceId *string `json:"AttachInstanceId,omitempty" xml:"AttachInstanceId,omitempty"`
-	// The type of resource that is associated with the IPsec-VPN connection. Valid values:
+	// The type of the resource that is associated with the IPsec-VPN connection. Valid values:
 	//
 	// *   **CEN**: indicates that the IPsec-VPN connection is associated with a transit router of a Cloud Enterprise Network (CEN) instance.
-	// *   **NO_ASSOCIATED**: indicates that the IPsec-VPN connection is not associated with a resource.
+	// *   **NO_ASSOCIATED**: indicates that the IPsec-VPN connection is not associated with any resource.
 	// *   **VPNGW**: indicates that the IPsec-VPN connection is associated with a VPN gateway.
 	AttachType *string `json:"AttachType,omitempty" xml:"AttachType,omitempty"`
-	// The timestamp that indicates when the IPsec-VPN connection was established. Unit: milliseconds.
+	// The timestamp generated when the IPsec-VPN connection was established. Unit: milliseconds.
 	//
 	// This value is a UNIX timestamp representing the number of milliseconds that have elapsed since the epoch time January 1, 1970, 00:00:00 UTC.
 	CreateTime *int64 `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
 	// Indicates whether the IPsec-VPN connection is associated with a transit router that belongs to another Alibaba Cloud account. Valid values:
 	//
-	// *   **true**: yes
-	// *   **false**: no
+	// *   **true**
+	// *   **false**
 	CrossAccountAuthorized *bool `json:"CrossAccountAuthorized,omitempty" xml:"CrossAccountAuthorized,omitempty"`
-	// The ID of the customer gateway.
+	// The ID of the customer gateway associated with the IPsec-VPN connection.
 	CustomerGatewayId *string `json:"CustomerGatewayId,omitempty" xml:"CustomerGatewayId,omitempty"`
-	// Indicates whether IPsec negotiations immediately start.
+	// Indicates whether IPsec negotiations immediately start after the configuration takes effect. Valid values:
 	//
 	// *   **true**: Negotiations are reinitiated after the configuration is changed.
-	// *   **false**: Negotiations are reinitiated when traffic is detected.
+	// *   **false**: Negotiations are reinitiated after traffic is detected.
 	EffectImmediately *bool `json:"EffectImmediately,omitempty" xml:"EffectImmediately,omitempty"`
-	// Indicates whether dead peer detection (DPD) is enabled.
+	// Indicates whether the dead peer detection (DPD) feature is enabled for the IPsec-VPN connection. Valid values:
 	//
-	// *   **false**: disabled
-	// *   **true**: enabled
+	// *   **false**
+	// *   **true**
 	//
-	// After you enable DPD, the initiator of the IPsec-VPN connection sends DPD packets to check the existence and availability of the peer. If no response is received from the peer within a specified period of time, the connection fails. Then, the ISAKMP SA, IPsec SA, and IPsec tunnel are deleted.
+	// After you enable the DPD feature, the initiator of the IPsec-VPN connection sends DPD packets to check the existence and availability of the peer. If no response is received from the peer within a specified period of time, the connection fails. Then, the ISAKMP security association (SA), IPsec SA, and IPsec tunnel are deleted.
 	EnableDpd *bool `json:"EnableDpd,omitempty" xml:"EnableDpd,omitempty"`
-	// Indicates whether NAT traversal is enabled. Valid values:
+	// Indicates whether NAT traversal is enabled for the IPsec-VPN connection. Valid values:
 	//
-	// *   **true**: NAT traversal is enabled.
-	// *   **false**: NAT traversal is disabled.
+	// *   **true**
+	// *   **false**
 	//
-	// After NAT traversal is enabled, the initiator does not check the UDP ports during IKE negotiations and can automatically discover NAT gateway devices along the VPN tunnel.
+	// After NAT traversal is enabled, the initiator does not check the UDP ports during IKE negotiations and can automatically discover NAT gateway devices along the IPsec tunnel.
 	EnableNatTraversal *bool `json:"EnableNatTraversal,omitempty" xml:"EnableNatTraversal,omitempty"`
-	// The BGP status of the tunnel. Valid values:
+	// Indicates whether BGP is enabled for the tunnel. Valid values:
 	//
-	// - **true**
-	// - **false**
+	// *   **true**
+	// *   **false**
 	EnableTunnelsBgp *bool `json:"EnableTunnelsBgp,omitempty" xml:"EnableTunnelsBgp,omitempty"`
-	// The configurations of Phase 1 negotiations.
+	// The configuration of Phase 1 negotiations.
 	IkeConfig *DescribeVpnConnectionResponseBodyIkeConfig `json:"IkeConfig,omitempty" xml:"IkeConfig,omitempty" type:"Struct"`
 	// The gateway IP address of the IPsec-VPN connection.
 	InternetIp *string `json:"InternetIp,omitempty" xml:"InternetIp,omitempty"`
-	// The configuration of phase 2 negotiations.
+	// The configuration of Phase 2 negotiations.
 	IpsecConfig *DescribeVpnConnectionResponseBodyIpsecConfig `json:"IpsecConfig,omitempty" xml:"IpsecConfig,omitempty" type:"Struct"`
 	// The CIDR block on the Alibaba Cloud side.
 	//
-	// CIDR blocks are separated with commas (,).
+	// Multiple CIDR blocks are separated by commas (,).
 	LocalSubnet *string `json:"LocalSubnet,omitempty" xml:"LocalSubnet,omitempty"`
 	// The name of the IPsec-VPN connection.
 	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
 	// The network type of the IPsec-VPN connection. Valid values:
 	//
-	// *   **public**: an encrypted connection over the Internet.
-	// *   **private**: an encrypted connection over private networks.
+	// *   **public**: an encrypted connection over the Internet
+	// *   **private**: an encrypted connection over private networks
 	NetworkType *string `json:"NetworkType,omitempty" xml:"NetworkType,omitempty"`
-	// The CA certificate of the peer.
+	// The certificate authority (CA) certificate of the peer.
 	RemoteCaCertificate *string `json:"RemoteCaCertificate,omitempty" xml:"RemoteCaCertificate,omitempty"`
 	// The CIDR block on the data center side.
 	//
-	// CIDR blocks are separated with commas (,).
+	// Multiple CIDR blocks are separated by commas (,).
 	RemoteSubnet *string `json:"RemoteSubnet,omitempty" xml:"RemoteSubnet,omitempty"`
-	// The ID of the request.
+	// The request ID.
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	// The bandwidth specification of the IPsec-VPN connection. Unit: **Mbit/s**.
 	Spec *string `json:"Spec,omitempty" xml:"Spec,omitempty"`
-	// The association status of the IPsec-VPN connection. Valid values:
+	// The association state of the IPsec-VPN connection. Valid values:
 	//
 	// *   **active**: The IPsec-VPN connection is associated with a VPN gateway.
-	// *   **init**: The IPsec-VPN connection is not associated with a resource and is being initialized.
+	// *   **init**: The IPsec-VPN connection is not associated with any resource and is being initialized.
 	// *   **attaching**: The IPsec-VPN connection is being associated with a transit router.
 	// *   **attached**: The IPsec-VPN connection is associated with a transit router.
 	// *   **detaching**: The IPsec-VPN connection is being disassociated from a transit router.
@@ -42775,12 +43155,12 @@ type DescribeVpnConnectionResponseBody struct {
 	// *   **Upgrading**: The IPsec-VPN connection is being upgraded.
 	// *   **deleted**: The IPsec-VPN connection is deleted.
 	State *string `json:"State,omitempty" xml:"State,omitempty"`
-	// The status of the IPsec-VPN connection. Valid values:
+	// The state of the IPsec-VPN connection. Valid values:
 	//
 	// *   **ike_sa_not_established**: Phase 1 negotiations failed.
-	// *   **ike_sa_established**: Phase 1 negotiations were successful.
+	// *   **ike_sa_established**: Phase 1 negotiations succeeded.
 	// *   **ipsec_sa_not_established**: Phase 2 negotiations failed.
-	// *   **ipsec_sa_established**: Phase 2 negotiations were successful.
+	// *   **ipsec_sa_established**: Phase 2 negotiations succeeded.
 	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
 	// The list of tags added to the IPsec-VPN connection.
 	Tags *DescribeVpnConnectionResponseBodyTags `json:"Tags,omitempty" xml:"Tags,omitempty" type:"Struct"`
@@ -42788,11 +43168,13 @@ type DescribeVpnConnectionResponseBody struct {
 	TransitRouterId *string `json:"TransitRouterId,omitempty" xml:"TransitRouterId,omitempty"`
 	// The name of the transit router.
 	TransitRouterName *string `json:"TransitRouterName,omitempty" xml:"TransitRouterName,omitempty"`
-	// The tunnel configuration of the IPsec-VPN connection. Parameters in** TunnelOptionsSpecification** are returned only if you query IPsec-VPN connections in dual-tunnel mode.
+	// The tunnel configuration of the IPsec-VPN connection.
+	//
+	// Parameters in **TunnelOptionsSpecification** are returned only if you query IPsec-VPN connections in dual-tunnel mode.
 	TunnelOptionsSpecification *DescribeVpnConnectionResponseBodyTunnelOptionsSpecification `json:"TunnelOptionsSpecification,omitempty" xml:"TunnelOptionsSpecification,omitempty" type:"Struct"`
-	// The information about health checks.
+	// The health check information about the IPsec-VPN connection.
 	VcoHealthCheck *DescribeVpnConnectionResponseBodyVcoHealthCheck `json:"VcoHealthCheck,omitempty" xml:"VcoHealthCheck,omitempty" type:"Struct"`
-	// The configurations of the BGP routing protocol.
+	// The Border Gateway Protocol (BGP) configuration of the IPsec-VPN connection.
 	VpnBgpConfig *DescribeVpnConnectionResponseBodyVpnBgpConfig `json:"VpnBgpConfig,omitempty" xml:"VpnBgpConfig,omitempty" type:"Struct"`
 	// The ID of the IPsec-VPN connection.
 	VpnConnectionId *string `json:"VpnConnectionId,omitempty" xml:"VpnConnectionId,omitempty"`
@@ -42800,7 +43182,7 @@ type DescribeVpnConnectionResponseBody struct {
 	VpnGatewayId *string `json:"VpnGatewayId,omitempty" xml:"VpnGatewayId,omitempty"`
 	// The ID of the zone where the IPsec-VPN connection is deployed.
 	//
-	// You can call [DescribeZones](~~36064~~) to query zone IDs.
+	// You can call [DescribeZones](~~36064~~) to query zone IDs and mapping between zone IDs and zone names.
 	ZoneNo *string `json:"ZoneNo,omitempty" xml:"ZoneNo,omitempty"`
 }
 
@@ -42963,18 +43345,18 @@ func (s *DescribeVpnConnectionResponseBody) SetZoneNo(v string) *DescribeVpnConn
 }
 
 type DescribeVpnConnectionResponseBodyIkeConfig struct {
-	// The IKE authentication algorithm.
+	// The authentication algorithm in the IKE phase.
 	IkeAuthAlg *string `json:"IkeAuthAlg,omitempty" xml:"IkeAuthAlg,omitempty"`
-	// The IKE encryption algorithm.
+	// The encryption algorithm in the IKE phase.
 	IkeEncAlg *string `json:"IkeEncAlg,omitempty" xml:"IkeEncAlg,omitempty"`
-	// The IKE lifetime. Unit: seconds.
+	// The lifetime in the IKE phase. Unit: seconds.
 	IkeLifetime *int64 `json:"IkeLifetime,omitempty" xml:"IkeLifetime,omitempty"`
 	// The IKE negotiation mode.
 	//
 	// *   **main**: This mode offers higher security during negotiations.
 	// *   **aggressive**: This mode is faster and has a higher success rate.
 	IkeMode *string `json:"IkeMode,omitempty" xml:"IkeMode,omitempty"`
-	// The DH group.
+	// The Diffie-Hellman (DH) group in the IKE phase.
 	IkePfs *string `json:"IkePfs,omitempty" xml:"IkePfs,omitempty"`
 	// The version of the IKE protocol.
 	//
@@ -42983,11 +43365,11 @@ type DescribeVpnConnectionResponseBodyIkeConfig struct {
 	//
 	// Compared with IKEv1, IKEv2 simplifies the SA negotiation process and is more suitable for scenarios in which multiple CIDR blocks are used.
 	IkeVersion *string `json:"IkeVersion,omitempty" xml:"IkeVersion,omitempty"`
-	// The identifier on the data center side.
+	// The identifier of the IPsec-VPN connection on the Alibaba Cloud side.
 	LocalId *string `json:"LocalId,omitempty" xml:"LocalId,omitempty"`
 	// The pre-shared key.
 	Psk *string `json:"Psk,omitempty" xml:"Psk,omitempty"`
-	// The identifier on the Alibaba Cloud side.
+	// The identifier of the IPsec-VPN connection on the data center side.
 	RemoteId *string `json:"RemoteId,omitempty" xml:"RemoteId,omitempty"`
 }
 
@@ -43045,13 +43427,13 @@ func (s *DescribeVpnConnectionResponseBodyIkeConfig) SetRemoteId(v string) *Desc
 }
 
 type DescribeVpnConnectionResponseBodyIpsecConfig struct {
-	// The IPsec authentication algorithm.
+	// The authentication algorithm in the IPsec phase.
 	IpsecAuthAlg *string `json:"IpsecAuthAlg,omitempty" xml:"IpsecAuthAlg,omitempty"`
-	// The IPsec encryption algorithm.
+	// The encryption algorithm in the IPsec phase.
 	IpsecEncAlg *string `json:"IpsecEncAlg,omitempty" xml:"IpsecEncAlg,omitempty"`
-	// The IPsec lifetime. Unit: seconds.
+	// The lifetime in the IPsec phase. Unit: seconds.
 	IpsecLifetime *int64 `json:"IpsecLifetime,omitempty" xml:"IpsecLifetime,omitempty"`
-	// The DH group.
+	// The DH group in the IPsec phase.
 	IpsecPfs *string `json:"IpsecPfs,omitempty" xml:"IpsecPfs,omitempty"`
 }
 
@@ -43101,9 +43483,9 @@ func (s *DescribeVpnConnectionResponseBodyTags) SetTag(v []*DescribeVpnConnectio
 }
 
 type DescribeVpnConnectionResponseBodyTagsTag struct {
-	// The tag key.
+	// The tag key of the IPsec-VPN connection.
 	Key *string `json:"Key,omitempty" xml:"Key,omitempty"`
-	// The tag value.
+	// The tag value of the IPsec-VPN connection.
 	Value *string `json:"Value,omitempty" xml:"Value,omitempty"`
 }
 
@@ -43145,47 +43527,51 @@ func (s *DescribeVpnConnectionResponseBodyTunnelOptionsSpecification) SetTunnelO
 type DescribeVpnConnectionResponseBodyTunnelOptionsSpecificationTunnelOptions struct {
 	// The ID of the customer gateway associated with the tunnel.
 	CustomerGatewayId *string `json:"CustomerGatewayId,omitempty" xml:"CustomerGatewayId,omitempty"`
-	// Indicates whether DPD is enabled for the tunnel. Valid values:
+	// Indicates whether the DPD feature is enabled for the tunnel. Valid values:
 	//
-	// - **false**
-	// - **true**
+	// *   **false**
+	// *   **true**
 	EnableDpd *string `json:"EnableDpd,omitempty" xml:"EnableDpd,omitempty"`
-	// Indicates whether NAT traversal is enabled for the tunnel.
+	// Indicates whether NAT traversal is enabled for the tunnel. Valid values:
 	//
-	// - **false**
-	// - **true**
+	// *   **false**
+	// *   **true**
 	EnableNatTraversal *string `json:"EnableNatTraversal,omitempty" xml:"EnableNatTraversal,omitempty"`
 	// The tunnel IP address.
 	InternetIp *string `json:"InternetIp,omitempty" xml:"InternetIp,omitempty"`
-	// The CA certificate of the tunnel peer. This parameter is returned only if the VPN gateway is of the ShangMi (SM) type.
+	// The CA certificate of the tunnel peer.
+	//
+	// This parameter is returned only if the VPN gateway is of the ShangMi (SM) type.
 	RemoteCaCertificate *string `json:"RemoteCaCertificate,omitempty" xml:"RemoteCaCertificate,omitempty"`
 	// The tunnel role. Valid values:
 	//
-	// - **master**
-	// - **slave**
+	// *   **master**: The tunnel is an active tunnel.
+	// *   **slave**: The tunnel is a standby tunnel.
 	Role *string `json:"Role,omitempty" xml:"Role,omitempty"`
 	// The tunnel status. Valid values:
 	//
-	// - **active**
-	// - **updating**
-	// - **deleting**
+	// *   **active**
+	// *   **updating**
+	// *   **deleted**
 	State *string `json:"State,omitempty" xml:"State,omitempty"`
-	// The status of the IPsec-VPN connection. Valid values:
+	// The state of the IPsec-VPN connection. Valid values:
 	//
 	// *   **ike_sa_not_established**: Phase 1 negotiations failed.
-	// *   **ike_sa_established**: Phase 1 negotiations were successful.
+	// *   **ike_sa_established**: Phase 1 negotiations succeeded.
 	// *   **ipsec_sa_not_established**: Phase 2 negotiations failed.
-	// *   **ipsec_sa_established**: Phase 2 negotiations were successful.
+	// *   **ipsec_sa_established**: Phase 2 negotiations succeeded.
 	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
-	// The BGP configurations.
+	// The BGP configuration.
 	TunnelBgpConfig *DescribeVpnConnectionResponseBodyTunnelOptionsSpecificationTunnelOptionsTunnelBgpConfig `json:"TunnelBgpConfig,omitempty" xml:"TunnelBgpConfig,omitempty" type:"Struct"`
 	// The tunnel ID.
 	TunnelId *string `json:"TunnelId,omitempty" xml:"TunnelId,omitempty"`
-	// The configurations of Phase 1 negotiations.
+	// The configuration of Phase 1 negotiations.
 	TunnelIkeConfig *DescribeVpnConnectionResponseBodyTunnelOptionsSpecificationTunnelOptionsTunnelIkeConfig `json:"TunnelIkeConfig,omitempty" xml:"TunnelIkeConfig,omitempty" type:"Struct"`
-	// The configurations of Phase 2 negotiations.
+	// The configuration of Phase 2 negotiations.
 	TunnelIpsecConfig *DescribeVpnConnectionResponseBodyTunnelOptionsSpecificationTunnelOptionsTunnelIpsecConfig `json:"TunnelIpsecConfig,omitempty" xml:"TunnelIpsecConfig,omitempty" type:"Struct"`
-	// The zone where the tunnel is deployed. You can call [DescribeZones](~~36064~~) to query zone IDs.
+	// The zone of the tunnel.
+	//
+	// You can call [DescribeZones](~~36064~~) to query zone IDs and mapping between zone IDs and zone names.
 	ZoneNo *string `json:"ZoneNo,omitempty" xml:"ZoneNo,omitempty"`
 }
 
@@ -43263,18 +43649,18 @@ func (s *DescribeVpnConnectionResponseBodyTunnelOptionsSpecificationTunnelOption
 }
 
 type DescribeVpnConnectionResponseBodyTunnelOptionsSpecificationTunnelOptionsTunnelBgpConfig struct {
-	// The negotiation status of BGP. Valid values:
+	// The negotiation state of BGP. Valid values:
 	//
-	// - **success**
-	// - **false**
+	// *   **success**: normal
+	// *   **false**: abnormal
 	BgpStatus *string `json:"BgpStatus,omitempty" xml:"BgpStatus,omitempty"`
-	// The ASN on the Alibaba Cloud side.
+	// The ASN of the tunnel on the Alibaba Cloud side.
 	LocalAsn *string `json:"LocalAsn,omitempty" xml:"LocalAsn,omitempty"`
-	// The BGP IP address on the Alibaba Cloud side.
+	// The BGP IP address of the tunnel on the Alibaba Cloud side.
 	LocalBgpIp *string `json:"LocalBgpIp,omitempty" xml:"LocalBgpIp,omitempty"`
-	// The peer ASN.
+	// The ASN of the tunnel peer.
 	PeerAsn *string `json:"PeerAsn,omitempty" xml:"PeerAsn,omitempty"`
-	// The peer BGP IP address.
+	// The BGP IP address of the tunnel peer.
 	PeerBgpIp *string `json:"PeerBgpIp,omitempty" xml:"PeerBgpIp,omitempty"`
 	// The BGP CIDR block of the tunnel.
 	TunnelCidr *string `json:"TunnelCidr,omitempty" xml:"TunnelCidr,omitempty"`
@@ -43325,20 +43711,20 @@ type DescribeVpnConnectionResponseBodyTunnelOptionsSpecificationTunnelOptionsTun
 	IkeEncAlg *string `json:"IkeEncAlg,omitempty" xml:"IkeEncAlg,omitempty"`
 	// The lifetime in the IKE phase. Unit: seconds.
 	IkeLifetime *string `json:"IkeLifetime,omitempty" xml:"IkeLifetime,omitempty"`
-	// The IKE negotiation mode. Valid values:
+	// The IKE negotiation mode.
 	//
-	// - **main**: This mode offers higher security during negotiations.
-	// - **aggressive**: This mode is faster and has a higher success rate.
+	// *   **main**: This mode offers higher security during negotiations.
+	// *   **aggressive**: This mode is faster and has a higher success rate.
 	IkeMode *string `json:"IkeMode,omitempty" xml:"IkeMode,omitempty"`
 	// The DH group in the IKE phase.
 	IkePfs *string `json:"IkePfs,omitempty" xml:"IkePfs,omitempty"`
-	// The IKE version.
+	// The version of the IKE protocol.
 	IkeVersion *string `json:"IkeVersion,omitempty" xml:"IkeVersion,omitempty"`
-	// The identifier on the Alibaba Cloud side.
+	// The identifier of the tunnel on the Alibaba Cloud side.
 	LocalId *string `json:"LocalId,omitempty" xml:"LocalId,omitempty"`
 	// The pre-shared key.
 	Psk *string `json:"Psk,omitempty" xml:"Psk,omitempty"`
-	// The peer identifier.
+	// The identifier of the tunnel peer.
 	RemoteId *string `json:"RemoteId,omitempty" xml:"RemoteId,omitempty"`
 }
 
@@ -43437,25 +43823,25 @@ func (s *DescribeVpnConnectionResponseBodyTunnelOptionsSpecificationTunnelOption
 type DescribeVpnConnectionResponseBodyVcoHealthCheck struct {
 	// The destination IP address.
 	Dip *string `json:"Dip,omitempty" xml:"Dip,omitempty"`
-	// Indicates whether health checks are enabled.
+	// Indicates whether the health check feature is enabled for the IPsec-VPN connection. Valid values:
 	//
-	// *   **false**: disabled
-	// *   **true**: enabled
+	// *   **false**
+	// *   **true**
 	Enable *string `json:"Enable,omitempty" xml:"Enable,omitempty"`
-	// The interval of health check retries. Unit: seconds.
+	// The interval between two consecutive health checks. Unit: seconds.
 	Interval *int32 `json:"Interval,omitempty" xml:"Interval,omitempty"`
-	// Indicates whether advertised routes are withdrawn when the health check fails.
+	// Indicates whether advertised routes are withdrawn when the health check fails. Valid values:
 	//
-	// *   **revoke_route**: published routes are withdrawn.
-	// *   **reserve_route**: published routes are not withdrawn.
+	// *   **revoke_route**: Advertised routes are withdrawn.
+	// *   **reserve_route**: Advertised routes are not withdrawn.
 	Policy *string `json:"Policy,omitempty" xml:"Policy,omitempty"`
 	// The maximum number of health check retries.
 	Retry *int32 `json:"Retry,omitempty" xml:"Retry,omitempty"`
 	// The source IP address.
 	Sip *string `json:"Sip,omitempty" xml:"Sip,omitempty"`
-	// The status of the health check.
+	// The state of the health check. Valid values:
 	//
-	// *   **failed**: abnormal
+	// *   **failed**
 	// *   **success**: normal
 	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
 }
@@ -43506,10 +43892,10 @@ func (s *DescribeVpnConnectionResponseBodyVcoHealthCheck) SetStatus(v string) *D
 type DescribeVpnConnectionResponseBodyVpnBgpConfig struct {
 	// The authentication key of the BGP routing protocol.
 	AuthKey *string `json:"AuthKey,omitempty" xml:"AuthKey,omitempty"`
-	// The status of the BGP routing protocol. Valid values:
+	// Indicates whether BGP is enabled. Valid values:
 	//
-	// *   **true**: enabled
-	// *   **false**: disabled
+	// *   **true**
+	// *   **false**
 	EnableBgp *string `json:"EnableBgp,omitempty" xml:"EnableBgp,omitempty"`
 	// The ASN on the Alibaba Cloud side.
 	LocalAsn *int64 `json:"LocalAsn,omitempty" xml:"LocalAsn,omitempty"`
@@ -43519,12 +43905,12 @@ type DescribeVpnConnectionResponseBodyVpnBgpConfig struct {
 	PeerAsn *int64 `json:"PeerAsn,omitempty" xml:"PeerAsn,omitempty"`
 	// The BGP IP address of the peer.
 	PeerBgpIp *string `json:"PeerBgpIp,omitempty" xml:"PeerBgpIp,omitempty"`
-	// The negotiation status of the BGP routing protocol.
+	// The negotiation state of the BGP routing protocol. Valid values:
 	//
 	// *   **success**: normal
-	// *   **failed**: abnormal
+	// *   **failed**
 	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
-	// The CIDR block of the IPsec tunnel. The CIDR block belongs to 169.254.0.0/16. The mask of the CIDR block is 30 bits in length.
+	// The BGP CIDR block of the IPsec-VPN connection. The CIDR block falls within 169.254.0.0/16. The subnet mask of the CIDR block must be 30 bits in length.
 	TunnelCidr *string `json:"TunnelCidr,omitempty" xml:"TunnelCidr,omitempty"`
 }
 
@@ -43940,7 +44326,7 @@ type DescribeVpnConnectionsResponseBody struct {
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	// The total number of entries returned.
 	TotalCount *int32 `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
-	// The tag value.
+	// The information about the IPsec-VPN connection.
 	VpnConnections *DescribeVpnConnectionsResponseBodyVpnConnections `json:"VpnConnections,omitempty" xml:"VpnConnections,omitempty" type:"Struct"`
 }
 
@@ -43997,80 +44383,80 @@ func (s *DescribeVpnConnectionsResponseBodyVpnConnections) SetVpnConnection(v []
 type DescribeVpnConnectionsResponseBodyVpnConnectionsVpnConnection struct {
 	// The ID of the CEN instance to which the transit router belongs.
 	AttachInstanceId *string `json:"AttachInstanceId,omitempty" xml:"AttachInstanceId,omitempty"`
-	// The type of resource that is associated with the IPsec-VPN connection. Valid values:
+	// The type of the resource that is associated with the IPsec-VPN connection. Valid values:
 	//
 	// *   **CEN**: indicates that the IPsec-VPN connection is associated with a transit router of a Cloud Enterprise Network (CEN) instance.
-	// *   **NO_ASSOCIATED**: indicates that the IPsec-VPN connection is not associated with a resource.
+	// *   **NO_ASSOCIATED**: indicates that the IPsec-VPN connection is not associated with any resource.
 	// *   **VPNGW**: indicates that the IPsec-VPN connection is associated with a VPN gateway.
 	AttachType *string `json:"AttachType,omitempty" xml:"AttachType,omitempty"`
-	// The timestamp that indicates the time when the IPsec-VPN connection was established. Unit: milliseconds.
+	// The timestamp generated when the IPsec-VPN connection was established. Unit: milliseconds.
 	//
 	// This value is a UNIX timestamp representing the number of milliseconds that have elapsed since the epoch time January 1, 1970, 00:00:00 UTC.
 	CreateTime *int64 `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
 	// Indicates whether the IPsec-VPN connection is associated with a transit router that belongs to another Alibaba Cloud account. Valid values:
 	//
-	// *   **true**: yes
-	// *   **false**: no
+	// *   **true**
+	// *   **false**
 	CrossAccountAuthorized *bool `json:"CrossAccountAuthorized,omitempty" xml:"CrossAccountAuthorized,omitempty"`
-	// The ID of the customer gateway.
+	// The ID of the customer gateway associated with the IPsec-VPN connection.
 	CustomerGatewayId *string `json:"CustomerGatewayId,omitempty" xml:"CustomerGatewayId,omitempty"`
-	// Indicates whether IPsec negotiations immediately start.
+	// Indicates whether IPsec negotiations immediately start after the configuration takes effect. Valid values:
 	//
-	// *   **true**: Negotiations are re-initiated after the configuration is changed.
-	// *   **false**: Negotiations are re-initiated when traffic is detected.
+	// *   **true**: Negotiations are reinitiated after the configuration is changed.
+	// *   **false**: Negotiations are reinitiated after traffic is detected.
 	EffectImmediately *bool `json:"EffectImmediately,omitempty" xml:"EffectImmediately,omitempty"`
-	// Indicates whether dead peer detection (DPD) is enabled. Valid values:
+	// Indicates whether the dead peer detection (DPD) feature is enabled for the IPsec-VPN connection. Valid values:
 	//
-	// *   **true**: enabled.
+	// *   **true**: The DPD feature is enabled.
 	//
-	//     The initiator of the IPsec-VPN connection sends DPD packets to verify the existence and availability of the peer. If no feedback is received from the peer within a specified period of time, the connection fails. ISAKMP SA and IPsec SA are deleted. The security tunnel is also deleted.
+	//     The initiator of the IPsec-VPN connection sends DPD packets to check the existence and availability of the peer. If no feedback is received from the peer within a specific period of time, the connection fails. Then, the ISAKMP security association (SA), IPsec SA, and IPsec tunnel are deleted.
 	//
-	// *   **false**: disabled. The IPsec initiator does not send DPD packets.
+	// *   **false**: The DPD feature is disabled. The initiator of the IPsec-VPN connection does not send DPD packets.
 	EnableDpd *bool `json:"EnableDpd,omitempty" xml:"EnableDpd,omitempty"`
-	// Indicates whether NAT traversal is enabled. Valid values:
+	// Indicates whether NAT traversal is enabled for the IPsec-VPN connection. Valid values:
 	//
-	// *   **true**: enabled
+	// *   **true**
 	//
 	//     After NAT traversal is enabled, the initiator does not check the UDP ports during IKE negotiations and can automatically discover NAT gateway devices along the IPsec tunnel.
 	//
-	// *   **false**: disabled
+	// *   **false**
 	EnableNatTraversal *bool `json:"EnableNatTraversal,omitempty" xml:"EnableNatTraversal,omitempty"`
-	// The BGP status of the tunnel. Valid values:
+	// Indicates whether BGP is enabled for the tunnel. Valid values:
 	//
-	// - **false**
-	// - **true**
+	// *   **true**
+	// *   **false**
 	EnableTunnelsBgp *bool `json:"EnableTunnelsBgp,omitempty" xml:"EnableTunnelsBgp,omitempty"`
-	// The configurations of phase 1 negotiations.
+	// The configuration of Phase 1 negotiations.
 	IkeConfig *DescribeVpnConnectionsResponseBodyVpnConnectionsVpnConnectionIkeConfig `json:"IkeConfig,omitempty" xml:"IkeConfig,omitempty" type:"Struct"`
 	// The gateway IP address of the IPsec-VPN connection.
 	//
-	// >  This parameter is returned only when the IPsec-VPN connection is associated with a transit router.
+	// >  This parameter is returned only if the IPsec-VPN connection is associated with a transit router.
 	InternetIp *string `json:"InternetIp,omitempty" xml:"InternetIp,omitempty"`
-	// The configuration of phase 2 negotiations.
+	// The configuration of Phase 2 negotiations.
 	IpsecConfig *DescribeVpnConnectionsResponseBodyVpnConnectionsVpnConnectionIpsecConfig `json:"IpsecConfig,omitempty" xml:"IpsecConfig,omitempty" type:"Struct"`
 	// The CIDR block on the Alibaba Cloud side.
 	//
-	// CIDR blocks are separated by commas (,).
+	// Multiple CIDR blocks are separated by commas (,).
 	LocalSubnet *string `json:"LocalSubnet,omitempty" xml:"LocalSubnet,omitempty"`
 	// The name of the IPsec-VPN connection.
 	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
 	// The network type of the IPsec-VPN connection. Valid values:
 	//
-	// *   **public**: an encrypted connection over the Internet.
-	// *   **private**: an encrypted connection over private networks.
+	// *   **public**: an encrypted connection over the Internet
+	// *   **private**: an encrypted connection over private networks
 	NetworkType *string `json:"NetworkType,omitempty" xml:"NetworkType,omitempty"`
-	// The CA certificate of the peer.
+	// The certificate authority (CA) certificate of the peer.
 	RemoteCaCertificate *string `json:"RemoteCaCertificate,omitempty" xml:"RemoteCaCertificate,omitempty"`
 	// The CIDR block on the data center side.
 	//
-	// CIDR blocks are separated by commas (,).
+	// Multiple CIDR blocks are separated by commas (,).
 	RemoteSubnet *string `json:"RemoteSubnet,omitempty" xml:"RemoteSubnet,omitempty"`
 	// The bandwidth specification of the IPsec-VPN connection. Unit: **Mbit/s**.
 	Spec *string `json:"Spec,omitempty" xml:"Spec,omitempty"`
-	// The status of the IPsec-VPN connection. Valid values:
+	// The association state of the IPsec-VPN connection. Valid values:
 	//
 	// *   **active**: The IPsec-VPN connection is associated with a VPN gateway.
-	// *   **init**: The IPsec-VPN connection is not associated with a resource and is being initialized.
+	// *   **init**: The IPsec-VPN connection is not associated with any resource and is being initialized.
 	// *   **attaching**: The IPsec-VPN connection is being associated with a transit router.
 	// *   **attached**: The IPsec-VPN connection is associated with a transit router.
 	// *   **detaching**: The IPsec-VPN connection is being disassociated from a transit router.
@@ -44080,7 +44466,7 @@ type DescribeVpnConnectionsResponseBodyVpnConnectionsVpnConnection struct {
 	// *   **Upgrading**: The IPsec-VPN connection is being upgraded.
 	// *   **deleted**: The IPsec-VPN connection is deleted.
 	State *string `json:"State,omitempty" xml:"State,omitempty"`
-	// The status of the IPsec-VPN connection. Valid values:
+	// The state of the IPsec-VPN connection. Valid values:
 	//
 	// *   **ike_sa_not_established**: Phase 1 negotiations failed.
 	// *   **ike_sa_established**: Phase 1 negotiations succeeded.
@@ -44097,9 +44483,9 @@ type DescribeVpnConnectionsResponseBodyVpnConnectionsVpnConnection struct {
 	//
 	// Parameters in **TunnelOptionsSpecification** are returned only if you query IPsec-VPN connections in dual-tunnel mode.
 	TunnelOptionsSpecification *DescribeVpnConnectionsResponseBodyVpnConnectionsVpnConnectionTunnelOptionsSpecification `json:"TunnelOptionsSpecification,omitempty" xml:"TunnelOptionsSpecification,omitempty" type:"Struct"`
-	// The health check configurations.
+	// The health check configuration of the IPsec-VPN connection.
 	VcoHealthCheck *DescribeVpnConnectionsResponseBodyVpnConnectionsVpnConnectionVcoHealthCheck `json:"VcoHealthCheck,omitempty" xml:"VcoHealthCheck,omitempty" type:"Struct"`
-	// The configurations of the BGP routing protocol.
+	// The BGP configuration of the IPsec-VPN connection.
 	VpnBgpConfig *DescribeVpnConnectionsResponseBodyVpnConnectionsVpnConnectionVpnBgpConfig `json:"VpnBgpConfig,omitempty" xml:"VpnBgpConfig,omitempty" type:"Struct"`
 	// The ID of the IPsec-VPN connection.
 	VpnConnectionId *string `json:"VpnConnectionId,omitempty" xml:"VpnConnectionId,omitempty"`
@@ -44256,18 +44642,18 @@ func (s *DescribeVpnConnectionsResponseBodyVpnConnectionsVpnConnection) SetVpnGa
 }
 
 type DescribeVpnConnectionsResponseBodyVpnConnectionsVpnConnectionIkeConfig struct {
-	// The IKE authentication algorithm.
+	// The authentication algorithm in the IKE phase.
 	IkeAuthAlg *string `json:"IkeAuthAlg,omitempty" xml:"IkeAuthAlg,omitempty"`
-	// The IKE encryption algorithm.
+	// The encryption algorithm in the IKE phase.
 	IkeEncAlg *string `json:"IkeEncAlg,omitempty" xml:"IkeEncAlg,omitempty"`
-	// The IKE lifetime. Unit: seconds.
+	// The lifetime in the IKE phase. Unit: seconds.
 	IkeLifetime *int64 `json:"IkeLifetime,omitempty" xml:"IkeLifetime,omitempty"`
 	// The IKE negotiation mode.
 	//
 	// *   **main**: This mode offers higher security during negotiations.
 	// *   **aggressive**: This mode is faster and has a higher success rate.
 	IkeMode *string `json:"IkeMode,omitempty" xml:"IkeMode,omitempty"`
-	// The DH group.
+	// The Diffie-Hellman (DH) group in the IKE phase.
 	IkePfs *string `json:"IkePfs,omitempty" xml:"IkePfs,omitempty"`
 	// The version of the IKE protocol.
 	//
@@ -44276,11 +44662,11 @@ type DescribeVpnConnectionsResponseBodyVpnConnectionsVpnConnectionIkeConfig stru
 	//
 	// Compared with IKEv1, IKEv2 simplifies the SA negotiation process and is more suitable for scenarios in which multiple CIDR blocks are used.
 	IkeVersion *string `json:"IkeVersion,omitempty" xml:"IkeVersion,omitempty"`
-	// The identifier on the data center side.
+	// The identifier of the IPsec-VPN connection on the data center side.
 	LocalId *string `json:"LocalId,omitempty" xml:"LocalId,omitempty"`
 	// The pre-shared key.
 	Psk *string `json:"Psk,omitempty" xml:"Psk,omitempty"`
-	// The identifier on the Alibaba Cloud side.
+	// The identifier of the IPsec-VPN connection on the Alibaba Cloud side.
 	RemoteId *string `json:"RemoteId,omitempty" xml:"RemoteId,omitempty"`
 }
 
@@ -44338,13 +44724,13 @@ func (s *DescribeVpnConnectionsResponseBodyVpnConnectionsVpnConnectionIkeConfig)
 }
 
 type DescribeVpnConnectionsResponseBodyVpnConnectionsVpnConnectionIpsecConfig struct {
-	// The IPsec authentication algorithm.
+	// The authentication algorithm in the IPsec phase.
 	IpsecAuthAlg *string `json:"IpsecAuthAlg,omitempty" xml:"IpsecAuthAlg,omitempty"`
-	// The IPsec encryption algorithm.
+	// The encryption algorithm in the IPsec phase.
 	IpsecEncAlg *string `json:"IpsecEncAlg,omitempty" xml:"IpsecEncAlg,omitempty"`
-	// The IPsec lifetime. Unit: seconds.
+	// The lifetime in the IPsec phase. Unit: seconds.
 	IpsecLifetime *int64 `json:"IpsecLifetime,omitempty" xml:"IpsecLifetime,omitempty"`
-	// The DH group.
+	// The DH group in the IPsec phase.
 	IpsecPfs *string `json:"IpsecPfs,omitempty" xml:"IpsecPfs,omitempty"`
 }
 
@@ -44394,9 +44780,9 @@ func (s *DescribeVpnConnectionsResponseBodyVpnConnectionsVpnConnectionTag) SetTa
 }
 
 type DescribeVpnConnectionsResponseBodyVpnConnectionsVpnConnectionTagTag struct {
-	// The tag key.
+	// The tag key of the IPsec-VPN connection.
 	Key *string `json:"Key,omitempty" xml:"Key,omitempty"`
-	// The tag value.
+	// The tag value of the IPsec-VPN connection.
 	Value *string `json:"Value,omitempty" xml:"Value,omitempty"`
 }
 
@@ -44438,15 +44824,15 @@ func (s *DescribeVpnConnectionsResponseBodyVpnConnectionsVpnConnectionTunnelOpti
 type DescribeVpnConnectionsResponseBodyVpnConnectionsVpnConnectionTunnelOptionsSpecificationTunnelOptions struct {
 	// The ID of the customer gateway associated with the tunnel.
 	CustomerGatewayId *string `json:"CustomerGatewayId,omitempty" xml:"CustomerGatewayId,omitempty"`
-	// Indicates whether DPD is enabled for the tunnel. Valid values:
+	// Indicates whether the DPD feature is enabled for the tunnel. Valid values:
 	//
-	// - **false**
-	// - **true**
+	// *   **false**
+	// *   **true**
 	EnableDpd *string `json:"EnableDpd,omitempty" xml:"EnableDpd,omitempty"`
 	// Indicates whether NAT traversal is enabled for the tunnel. Valid values:
 	//
-	// - **false**
-	// - **true**
+	// *   **false**
+	// *   **true**
 	EnableNatTraversal *string `json:"EnableNatTraversal,omitempty" xml:"EnableNatTraversal,omitempty"`
 	// The tunnel IP address.
 	InternetIp *string `json:"InternetIp,omitempty" xml:"InternetIp,omitempty"`
@@ -44456,20 +44842,21 @@ type DescribeVpnConnectionsResponseBodyVpnConnectionsVpnConnectionTunnelOptionsS
 	RemoteCaCertificate *string `json:"RemoteCaCertificate,omitempty" xml:"RemoteCaCertificate,omitempty"`
 	// The tunnel role. Valid values:
 	//
-	// - **master**
-	// - **slave**
+	// *   **master**: The tunnel is an active tunnel.
+	// *   **slave**: The tunnel is a standby tunnel.
 	Role *string `json:"Role,omitempty" xml:"Role,omitempty"`
 	// The tunnel status. Valid values:
-	// - **active**
-	// - **updating**
-	// - **deleting**
+	//
+	// *   **active**
+	// *   **updating**
+	// *   **deleted**
 	State *string `json:"State,omitempty" xml:"State,omitempty"`
-	// The status of the IPsec-VPN connection. Valid values:
+	// The state of the IPsec-VPN connection. Valid values:
 	//
 	// *   **ike_sa_not_established**: Phase 1 negotiations failed.
-	// *   **ike_sa_established**: Phase 1 negotiations were successful.
+	// *   **ike_sa_established**: Phase 1 negotiations succeeded.
 	// *   **ipsec_sa_not_established**: Phase 2 negotiations failed.
-	// *   **ipsec_sa_established**: Phase 2 negotiations were successful.
+	// *   **ipsec_sa_established**: Phase 2 negotiations succeeded.
 	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
 	// The BGP configuration.
 	TunnelBgpConfig *DescribeVpnConnectionsResponseBodyVpnConnectionsVpnConnectionTunnelOptionsSpecificationTunnelOptionsTunnelBgpConfig `json:"TunnelBgpConfig,omitempty" xml:"TunnelBgpConfig,omitempty" type:"Struct"`
@@ -44557,18 +44944,18 @@ func (s *DescribeVpnConnectionsResponseBodyVpnConnectionsVpnConnectionTunnelOpti
 }
 
 type DescribeVpnConnectionsResponseBodyVpnConnectionsVpnConnectionTunnelOptionsSpecificationTunnelOptionsTunnelBgpConfig struct {
-	// The negotiation status of BGP. Valid values:
+	// The negotiation state of BGP. Valid values:
 	//
-	// - **success**
-	// - **false**
+	// *   **success**: normal
+	// *   **false**: abnormal
 	BgpStatus *string `json:"BgpStatus,omitempty" xml:"BgpStatus,omitempty"`
-	// The ASN on the Alibaba Cloud side.
+	// The ASN of the tunnel on the Alibaba Cloud side.
 	LocalAsn *string `json:"LocalAsn,omitempty" xml:"LocalAsn,omitempty"`
-	// The BGP IP address on the Alibaba Cloud side.
+	// The BGP IP address of the tunnel on the Alibaba Cloud side.
 	LocalBgpIp *string `json:"LocalBgpIp,omitempty" xml:"LocalBgpIp,omitempty"`
-	// The peer ASN.
+	// The ASN of the tunnel peer.
 	PeerAsn *string `json:"PeerAsn,omitempty" xml:"PeerAsn,omitempty"`
-	// The peer BGP IP address.
+	// The BGP IP address of the tunnel peer.
 	PeerBgpIp *string `json:"PeerBgpIp,omitempty" xml:"PeerBgpIp,omitempty"`
 	// The BGP CIDR block of the tunnel.
 	TunnelCidr *string `json:"TunnelCidr,omitempty" xml:"TunnelCidr,omitempty"`
@@ -44621,18 +45008,18 @@ type DescribeVpnConnectionsResponseBodyVpnConnectionsVpnConnectionTunnelOptionsS
 	IkeLifetime *string `json:"IkeLifetime,omitempty" xml:"IkeLifetime,omitempty"`
 	// The IKE negotiation mode.
 	//
-	// - **main**: This mode offers higher security during negotiations.
-	// - **aggressive**: This mode is faster and has a higher success rate.
+	// *   **main**: This mode offers higher security during negotiations.
+	// *   **aggressive**: This mode is faster and has a higher success rate.
 	IkeMode *string `json:"IkeMode,omitempty" xml:"IkeMode,omitempty"`
 	// The DH group in the IKE phase.
 	IkePfs *string `json:"IkePfs,omitempty" xml:"IkePfs,omitempty"`
-	// The IKE version.
+	// The version of the IKE protocol.
 	IkeVersion *string `json:"IkeVersion,omitempty" xml:"IkeVersion,omitempty"`
-	// The identifier on the Alibaba Cloud side.
+	// The identifier of the tunnel on the Alibaba Cloud side.
 	LocalId *string `json:"LocalId,omitempty" xml:"LocalId,omitempty"`
 	// The pre-shared key.
 	Psk *string `json:"Psk,omitempty" xml:"Psk,omitempty"`
-	// The peer identifier.
+	// The identifier of the tunnel peer.
 	RemoteId *string `json:"RemoteId,omitempty" xml:"RemoteId,omitempty"`
 }
 
@@ -44731,23 +45118,23 @@ func (s *DescribeVpnConnectionsResponseBodyVpnConnectionsVpnConnectionTunnelOpti
 type DescribeVpnConnectionsResponseBodyVpnConnectionsVpnConnectionVcoHealthCheck struct {
 	// The destination IP address.
 	Dip *string `json:"Dip,omitempty" xml:"Dip,omitempty"`
-	// Indicates whether health checks are enabled.
+	// Indicates whether the health check feature is enabled.
 	//
-	// *   **true**: yes
-	// *   **false**: no
+	// *   **true**
+	// *   **false**
 	Enable *string `json:"Enable,omitempty" xml:"Enable,omitempty"`
 	// The interval between two consecutive health checks. Unit: seconds.
 	Interval *int32 `json:"Interval,omitempty" xml:"Interval,omitempty"`
-	// Indicates whether advertised routes are withdrawn when the health check fails.
+	// Indicates whether advertised routes are withdrawn when the health check fails. Valid values:
 	//
-	// *   **revoke_route**: yes
-	// *   **reserve_route**: no
+	// *   **revoke_route**: Advertised routes are withdrawn.
+	// *   **reserve_route**: Advertised routes are not withdrawn.
 	Policy *string `json:"Policy,omitempty" xml:"Policy,omitempty"`
 	// The maximum number of health check retries.
 	Retry *int32 `json:"Retry,omitempty" xml:"Retry,omitempty"`
 	// The source IP address.
 	Sip *string `json:"Sip,omitempty" xml:"Sip,omitempty"`
-	// The status of the health check.
+	// The state of the health check. Valid values:
 	//
 	// *   **success**: normal
 	// *   **failed**: abnormal
@@ -44808,12 +45195,12 @@ type DescribeVpnConnectionsResponseBodyVpnConnectionsVpnConnectionVpnBgpConfig s
 	PeerAsn *int64 `json:"PeerAsn,omitempty" xml:"PeerAsn,omitempty"`
 	// The BGP IP address of the peer.
 	PeerBgpIp *string `json:"PeerBgpIp,omitempty" xml:"PeerBgpIp,omitempty"`
-	// The negotiation status of the BGP routing protocol. Valid values:
+	// The negotiation state of the BGP routing protocol. Valid values:
 	//
 	// *   **success**: normal
 	// *   **false**: abnormal
 	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
-	// The CIDR block of the IPsec tunnel. The CIDR block falls within 169.254.0.0/16. The mask of the CIDR block is 30 bits in length.
+	// The BGP CIDR block of the IPsec-VPN connection. The CIDR block falls within 169.254.0.0/16. The subnet mask of the CIDR block must be 30 bits in length.
 	TunnelCidr *string `json:"TunnelCidr,omitempty" xml:"TunnelCidr,omitempty"`
 }
 
@@ -45092,7 +45479,7 @@ func (s *DescribeVpnCrossAccountAuthorizationsResponse) SetBody(v *DescribeVpnCr
 }
 
 type DescribeVpnGatewayRequest struct {
-	// Specifies whether to return information about pending orders. Valid values:
+	// Specifies whether to include the data about pending orders. Valid values:
 	//
 	// *   **false** (default)
 	// *   **true**
@@ -45174,6 +45561,7 @@ type DescribeVpnGatewayResponseBody struct {
 	// The description of the VPN gateway.
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
 	// The second IP address assigned by the system to create an IPsec-VPN connection.
+	//
 	// This parameter is returned only when the VPN gateway supports the dual-tunnel mode.
 	DisasterRecoveryInternetIp *string `json:"DisasterRecoveryInternetIp,omitempty" xml:"DisasterRecoveryInternetIp,omitempty"`
 	// The ID of the second vSwitch associated with the VPN gateway.
@@ -45189,10 +45577,11 @@ type DescribeVpnGatewayResponseBody struct {
 	//
 	// This value is a UNIX timestamp representing the number of milliseconds that have elapsed since the epoch time January 1, 1970, 00:00:00 UTC.
 	EndTime *int64 `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
-	// - If the VPN gateway supports IPsec-VPN connections in single-tunnel mode, the address is the IP address of the VPN gateway and can be used to create an IPsec-VPN connection or an SSL-VPN connection.
-	// - If the VPN gateway supports IPsec-VPN connections in dual-tunnel mode, the address is the first IP address used to create an IPsec-VPN connection. The address cannot be used to create an SSL-VPN connection.
+	// *   If the VPN gateway supports IPsec-VPN connections in single-tunnel mode, the address is the IP address of the VPN gateway and can be used to create an IPsec-VPN connection or an SSL-VPN connection.
 	//
-	// If the VPN gateway supports IPsec-VPN connections in dual-tunnel mode, the system assigns two IP addresses to the VPN gateway to create two encrypted tunnels.
+	// *   If the VPN gateway supports IPsec-VPN connections in dual-tunnel mode, the address is the first IP address used to create an IPsec-VPN connection. The address cannot be used to create an SSL-VPN connection.
+	//
+	//     If the VPN gateway supports IPsec-VPN connections in dual-tunnel mode, the system assigns two IP addresses to the VPN gateway to create two encrypted tunnels.
 	InternetIp *string `json:"InternetIp,omitempty" xml:"InternetIp,omitempty"`
 	// Indicates whether the IPsec-VPN feature is enabled. Valid values:
 	//
@@ -45504,7 +45893,7 @@ func (s *DescribeVpnGatewayResponseBodyTags) SetTag(v []*DescribeVpnGatewayRespo
 }
 
 type DescribeVpnGatewayResponseBodyTagsTag struct {
-	// The tag key
+	// The tag key.
 	Key *string `json:"Key,omitempty" xml:"Key,omitempty"`
 	// The tag value.
 	Value *string `json:"Value,omitempty" xml:"Value,omitempty"`
@@ -45715,9 +46104,7 @@ type DescribeVpnGatewaysResponseBody struct {
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	// The number of entries returned.
 	TotalCount *int32 `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
-	// If the order type is **TEMP_UPGRADE** (temporary upgrade), this parameter specifies the time when the temporary upgrade expires.
-	//
-	// If the order type is **RENEWCHANGE** (renewal with a specification change) or **RENEW** (renewal), this parameter indicates the time when the renewal or renewal with a specification change takes effect.
+	// The information about VPN gateways.
 	VpnGateways *DescribeVpnGatewaysResponseBodyVpnGateways `json:"VpnGateways,omitempty" xml:"VpnGateways,omitempty" type:"Struct"`
 }
 
@@ -45774,21 +46161,21 @@ func (s *DescribeVpnGatewaysResponseBodyVpnGateways) SetVpnGateway(v []*Describe
 type DescribeVpnGatewaysResponseBodyVpnGatewaysVpnGateway struct {
 	// Indicates whether BGP routes are automatically advertised to the VPC. Valid values:
 	//
-	// *   **true**: yes
-	// *   **false**: no
+	// *   **true**
+	// *   **false**
 	AutoPropagate *bool `json:"AutoPropagate,omitempty" xml:"AutoPropagate,omitempty"`
 	// The payment status of the VPN gateway.
 	//
-	// *   **Normal:** The VPN gateway is running as expected.
-	// *   **FinancialLocked**: The VPN gateway is locked due to overdue payments.
+	// *   **Normal**
+	// *   **FinancialLocked**
 	BusinessStatus *string `json:"BusinessStatus,omitempty" xml:"BusinessStatus,omitempty"`
 	// The billing method of the VPN gateway.
 	//
-	// The value is set to **POSTPAY**, which indicates the pay-as-you-go billing method.
+	// The value is fixed as **POSTPAY**, which indicates the pay-as-you-go billing method.
 	ChargeType *string `json:"ChargeType,omitempty" xml:"ChargeType,omitempty"`
 	// The timestamp when the VPN gateway was created. Unit: milliseconds.
 	//
-	// This value is a UNIX timestamp representing the number of milliseconds that have elapsed since the epoch time January 1, 1970, 00:00:00 UTC.
+	// This value is a UNIX timestamp representing the number of milliseconds that have elapsed since January 1, 1970, 00:00:00 UTC.
 	CreateTime *int64 `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
 	// The description of the VPN gateway.
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
@@ -45800,33 +46187,34 @@ type DescribeVpnGatewaysResponseBodyVpnGatewaysVpnGateway struct {
 	//
 	// This parameter is returned only when the VPN gateway supports the dual-tunnel mode.
 	DisasterRecoveryVSwitchId *string `json:"DisasterRecoveryVSwitchId,omitempty" xml:"DisasterRecoveryVSwitchId,omitempty"`
-	// The BGP status of the VPN gateway.
+	// Indicates whether BGP is enabled for the VPN gateway.
 	//
-	// *   **true**: enabled
-	// *   **false**: disabled
+	// *   **true**
+	// *   **false**
 	EnableBgp *bool `json:"EnableBgp,omitempty" xml:"EnableBgp,omitempty"`
 	// The timestamp when the VPN gateway expires. Unit: milliseconds.
 	//
-	// This value is a UNIX timestamp representing the number of milliseconds that have elapsed since the epoch time January 1, 1970, 00:00:00 UTC.
+	// This value is a UNIX timestamp representing the number of milliseconds that have elapsed since January 1, 1970, 00:00:00 UTC.
 	EndTime *int64 `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
-	// - If the VPN gateway supports IPsec-VPN connections in single-tunnel mode, the address is the IP address of the VPN gateway and can be used to create an IPsec-VPN connection or an SSL-VPN connection.
-	// - If the VPN gateway supports IPsec-VPN connections in dual-tunnel mode, the address is the first IP address used to create an IPsec-VPN connection. The address cannot be used to create an SSL-VPN connection.
+	// *   If the VPN gateway supports IPsec-VPN connections in single-tunnel mode, the address is the IP address of the VPN gateway and can be used to create an IPsec-VPN connection or an SSL-VPN connection.
 	//
-	// If the VPN gateway supports IPsec-VPN connections in dual-tunnel mode, the system assigns two IP addresses to the VPN gateway to create two encrypted tunnels.
+	// *   If the VPN gateway supports IPsec-VPN connections in dual-tunnel mode, the address is the first IP address used to create an IPsec-VPN connection. The address cannot be used to create an SSL-VPN connection.
+	//
+	//     If the VPN gateway supports IPsec-VPN connections in dual-tunnel mode, the system assigns two IP addresses to the VPN gateway to create two encrypted tunnels.
 	InternetIp *string `json:"InternetIp,omitempty" xml:"InternetIp,omitempty"`
 	// Indicates whether IPsec-VPN is enabled for the VPN gateway.
 	//
-	// *   **enable**: enabled
-	// *   **disable**: disabled
+	// *   **enable**
+	// *   **disable**
 	IpsecVpn *string `json:"IpsecVpn,omitempty" xml:"IpsecVpn,omitempty"`
 	// The name of the VPN gateway.
 	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
 	// The network type of the VPN gateway.
 	//
-	// *   **public**: public VPN gateway
-	// *   **private**: private VPN gateway
+	// *   **public**
+	// *   **private**
 	NetworkType *string `json:"NetworkType,omitempty" xml:"NetworkType,omitempty"`
-	// The information about the pending orders.
+	// The information about pending orders.
 	//
 	// >  This parameter is returned only when **IncludeReservationData** is set to **true**.
 	ReservationData *DescribeVpnGatewaysResponseBodyVpnGatewaysVpnGatewayReservationData `json:"ReservationData,omitempty" xml:"ReservationData,omitempty" type:"Struct"`
@@ -45836,55 +46224,58 @@ type DescribeVpnGatewaysResponseBodyVpnGatewaysVpnGateway struct {
 	SslMaxConnections *int64 `json:"SslMaxConnections,omitempty" xml:"SslMaxConnections,omitempty"`
 	// Indicates whether SSL-VPN is enabled for the VPN gateway.
 	//
-	// *   **enable**: enabled
-	// *   **disable**: disabled
+	// *   **enable**
+	// *   **disable**
 	SslVpn *string `json:"SslVpn,omitempty" xml:"SslVpn,omitempty"`
 	// The IP address of the SSL-VPN connection.
 	//
 	// This parameter is returned only when the VPN gateway is a public VPN gateway and supports only the single-tunnel mode. In addition, the VPN gateway must have the SSL-VPN feature enabled.
 	SslVpnInternetIp *string `json:"SslVpnInternetIp,omitempty" xml:"SslVpnInternetIp,omitempty"`
-	// The status of the pending order.
+	// The status of the VPN gateway. Valid values:
 	//
-	// *   **1**: indicates that the order for renewal or the order for renewal with a specification change has not taken effect.
-	// *   **2**: indicates that the order for a temporary upgrade has taken effect. After the temporary upgrade expires, the system restores the VPN gateway to its previous specifications. In this case, **ReservationIpsec**, **ReservationMaxConnections**, **ReservationSpec**, and **ReservationSsl** indicate the previous specification.
+	// *   **init**
+	// *   **provisioning**
+	// *   **active**
+	// *   **updating**
+	// *   **deleting**
 	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
 	// The automatically generated tag of the VPN gateway.
 	//
 	// *   **VpnEnableBgp**: indicates whether the VPN gateway supports BGP. Valid values:
 	//
-	//     *   **true**: yes
-	//     *   **false**: no
+	//     *   **true**
+	//     *   **false**
 	//
 	// *   **VisuallySsl**: indicates whether the VPN gateway allows you to view information about connected SSL clients.
 	//
-	//     *   **true**: yes
-	//     *   **false**: no
+	//     *   **true**
+	//     *   **false**
 	//
 	// *   **PbrPriority**: indicates whether the VPN gateway allows you to configure priorities for policy-based routes.
 	//
-	//     *   **true**: yes
-	//     *   **false**: no
+	//     *   **true**
+	//     *   **false**
 	//
 	// *   **VpnNewImage**: indicates whether the VPN gateway is upgraded.
 	//
-	//     *   **true**: yes
-	//     *   **false**: no
+	//     *   **true**
+	//     *   **false**
 	//
-	// *   **description**: the description of the VPN gateway. This parameter is for internal system use only.
+	// *   **description**
 	//
-	// *   **VpnVersion**: the version of the VPN gateway.
+	// *   **VpnVersion**
 	Tag *string `json:"Tag,omitempty" xml:"Tag,omitempty"`
-	// The list of tags added to the VPN gateway.
+	// The tags to be added to the VPN gateway.
 	Tags *DescribeVpnGatewaysResponseBodyVpnGatewaysVpnGatewayTags `json:"Tags,omitempty" xml:"Tags,omitempty" type:"Struct"`
 	// The ID of the vSwitch to which the VPN gateway belongs.
 	VSwitchId *string `json:"VSwitchId,omitempty" xml:"VSwitchId,omitempty"`
-	// The ID of the VPC to which the VPN gateway belongs.
+	// The ID of the virtual private cloud (VPC) to which the VPN gateway belongs.
 	VpcId *string `json:"VpcId,omitempty" xml:"VpcId,omitempty"`
 	// The ID of the VPN gateway.
 	VpnGatewayId *string `json:"VpnGatewayId,omitempty" xml:"VpnGatewayId,omitempty"`
 	// The type of the VPN gateway.
 	//
-	// The value is set to **Normal**, which indicates a standard NAT gateway.
+	// Only **Normal** may be returned, which indicates a standard NAT gateway.
 	VpnType *string `json:"VpnType,omitempty" xml:"VpnType,omitempty"`
 }
 
@@ -46024,32 +46415,32 @@ func (s *DescribeVpnGatewaysResponseBodyVpnGatewaysVpnGateway) SetVpnType(v stri
 type DescribeVpnGatewaysResponseBodyVpnGatewaysVpnGatewayReservationData struct {
 	// If the order type is **TEMP_UPGRADE** (temporary upgrade), this parameter specifies the time when the temporary upgrade expires.
 	//
-	// If the order type is **RENEWCHANGE** (renewal with an upgrade or a downgrade) or **RENEW** (renewal), this parameter indicates the time when the renewal or renewal with an upgrade or a downgrade takes effect.
+	// If the order type is **RENEWCHANGE** (renewal with a specification change) or **RENEW** (renewal), this parameter indicates the time when the renewal or renewal with a specification change takes effect.
 	ReservationEndTime *string `json:"ReservationEndTime,omitempty" xml:"ReservationEndTime,omitempty"`
 	// The IPsec-VPN status of the order that has not taken effect. Valid values:
 	//
-	// - **enable**: enabled
-	// - **disable**: disabled
+	// *   **enable**
+	// *   **disable**
 	ReservationIpsec *string `json:"ReservationIpsec,omitempty" xml:"ReservationIpsec,omitempty"`
 	// The maximum number of concurrent SSL-VPN connections of the pending order.
 	ReservationMaxConnections *int32 `json:"ReservationMaxConnections,omitempty" xml:"ReservationMaxConnections,omitempty"`
 	// The type of the order that has not taken effect. Valid values:
 	//
-	// - **RENEWCHANGE**: renewal with a specification change
-	// - **TEMP_UPGRADE**: temporary upgrade
-	// - **RENEW**: renewal
+	// *   **RENEWCHANGE**: renewal with a specification change
+	// *   **TEMP_UPGRADE**: temporary upgrade
+	// *   **RENEW**: renewal
 	ReservationOrderType *string `json:"ReservationOrderType,omitempty" xml:"ReservationOrderType,omitempty"`
-	// The bandwidth specification of the order that has not taken effect. Unit: Mbit/s.
+	// The bandwidth of the pending order. Unit: Mbit/s.
 	ReservationSpec *string `json:"ReservationSpec,omitempty" xml:"ReservationSpec,omitempty"`
 	// The SSL-VPN status of the order that has not taken effect. Valid values:
 	//
-	// - **enable**: enabled
-	// - **disable**: disabled
+	// *   **enable**
+	// *   **disable**
 	ReservationSsl *string `json:"ReservationSsl,omitempty" xml:"ReservationSsl,omitempty"`
-	// The status of the pending order.
+	// The status of the order that has not taken effect.
 	//
-	// - **1**: indicates that the order for renewal or the order for renewal with a specification change has not taken effect.
-	// - **2**: indicates that the order for a temporary upgrade has taken effect. After the temporary upgrade expires, the system restores the VPN gateway to its previous specifications. In this case, **ReservationIpsec**, **ReservationMaxConnections**, **ReservationSpec**, and **ReservationSsl** indicate the previous specification.
+	// *   **1**: indicates that the order is an order for renewal or renewal with a specification change and the order has not taken effect.
+	// *   **2**: indicates that the order is an order for temporary upgrade and the order has taken effect. After the temporary upgrade expires, the system restores the VPN gateway to its previous specifications. In this case, **ReservationIpsec**, **ReservationMaxConnections**, **ReservationSpec**, and **ReservationSsl** indicate the previous specification.
 	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
 }
 
@@ -46114,9 +46505,9 @@ func (s *DescribeVpnGatewaysResponseBodyVpnGatewaysVpnGatewayTags) SetTag(v []*D
 }
 
 type DescribeVpnGatewaysResponseBodyVpnGatewaysVpnGatewayTagsTag struct {
-	// The tag key.
+	// The key of tag N added to the resource.
 	Key *string `json:"Key,omitempty" xml:"Key,omitempty"`
-	// The tag value.
+	// The value of tag N added to the resource.
 	Value *string `json:"Value,omitempty" xml:"Value,omitempty"`
 }
 
@@ -47171,9 +47562,9 @@ func (s *DetachDhcpOptionsSetFromVpcResponse) SetBody(v *DetachDhcpOptionsSetFro
 type DiagnoseVpnGatewayRequest struct {
 	// The client token that is used to ensure the idempotence of the request.
 	//
-	// You can use the client to generate the value, but you must make sure that it is unique among different requests. ClientToken can contain only ASCII characters.
+	// You can use the client to generate the token, but you must make sure that the token is unique among different requests. The client token can contain only ASCII characters.
 	//
-	// >  If you do not set this parameter, ClientToken is set to the value of RequestId. The ID of each request may be different.
+	// >  If you do not specify this parameter, the system automatically uses the request ID as the client token. The request ID may be different for each request.
 	ClientToken *string `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
 	// The configuration when you check the connectivity of the IPsec-VPN connection. Valid values:
 	//
@@ -47233,9 +47624,9 @@ func (s *DiagnoseVpnGatewayRequest) SetVpnGatewayId(v string) *DiagnoseVpnGatewa
 }
 
 type DiagnoseVpnGatewayResponseBody struct {
-	// The ID of the diagnostic operation.
+	// The ID of the diagnostic.
 	DiagnoseId *string `json:"DiagnoseId,omitempty" xml:"DiagnoseId,omitempty"`
-	// The ID of the request.
+	// The request ID.
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -47730,7 +48121,7 @@ func (s *DissociateRouteTablesFromVpcGatewayEndpointResponse) SetBody(v *Dissoci
 type DissociateVpnGatewayWithCertificateRequest struct {
 	// The certificate ID.
 	//
-	// > The certificate ID is generated after the SSL certificate is associated with the VPN gateway. It is not the ID of the SSL certificate. You can call [ListVpnCertificateAssociations](~~203359~~) to query certificate IDs.
+	// >  The certificate ID refers to the ID generated after the SSL certificate is associated with a VPN gateway. It is not the ID of the certificate itself. You can call [ListVpnCertificateAssociations](~~448813~~) to query certificate IDs.
 	CertificateId *string `json:"CertificateId,omitempty" xml:"CertificateId,omitempty"`
 	// The certificate type. Valid values:
 	//
@@ -47844,7 +48235,7 @@ func (s *DissociateVpnGatewayWithCertificateResponse) SetBody(v *DissociateVpnGa
 type DownloadVpnConnectionConfigRequest struct {
 	OwnerAccount *string `json:"OwnerAccount,omitempty" xml:"OwnerAccount,omitempty"`
 	OwnerId      *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
-	// The ID of the region where you want to create the IPsec-VPN connection.
+	// The ID of the region where the IPsec-VPN connection is created.
 	//
 	// You can call the [DescribeRegions](~~36063~~) operation to query the most recent region list.
 	RegionId             *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
@@ -47893,9 +48284,9 @@ func (s *DownloadVpnConnectionConfigRequest) SetVpnConnectionId(v string) *Downl
 }
 
 type DownloadVpnConnectionConfigResponseBody struct {
-	// The ID of the request.
+	// The request ID.
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// The configuration of the IPsec-VPN connection.
+	// The configurations of the peer gateway device.
 	VpnConnectionConfig *DownloadVpnConnectionConfigResponseBodyVpnConnectionConfig `json:"VpnConnectionConfig,omitempty" xml:"VpnConnectionConfig,omitempty" type:"Struct"`
 }
 
@@ -47918,19 +48309,21 @@ func (s *DownloadVpnConnectionConfigResponseBody) SetVpnConnectionConfig(v *Down
 }
 
 type DownloadVpnConnectionConfigResponseBodyVpnConnectionConfig struct {
-	// The IKE configuration.
+	// The configurations of Phase 1 negotiations.
 	IkeConfig *DownloadVpnConnectionConfigResponseBodyVpnConnectionConfigIkeConfig `json:"IkeConfig,omitempty" xml:"IkeConfig,omitempty" type:"Struct"`
-	// The configuration of the IPsec-VPN connection.
+	// The configurations of Phase 2 negotiations.
 	IpsecConfig *DownloadVpnConnectionConfigResponseBodyVpnConnectionConfigIpsecConfig `json:"IpsecConfig,omitempty" xml:"IpsecConfig,omitempty" type:"Struct"`
-	// The identifier of the VPN gateway.
-	Local *string `json:"Local,omitempty" xml:"Local,omitempty"`
-	// The CIDR block on the virtual private cloud (VPC) side.
-	LocalSubnet *string `json:"LocalSubnet,omitempty" xml:"LocalSubnet,omitempty"`
 	// The identifier of the customer gateway.
-	Remote *string `json:"Remote,omitempty" xml:"Remote,omitempty"`
+	Local *string `json:"Local,omitempty" xml:"Local,omitempty"`
 	// The CIDR block on the data center side.
+	LocalSubnet *string `json:"LocalSubnet,omitempty" xml:"LocalSubnet,omitempty"`
+	// The identifier of the VPN gateway.
+	Remote *string `json:"Remote,omitempty" xml:"Remote,omitempty"`
+	// The CIDR block on the virtual private cloud (VPC) side.
 	RemoteSubnet *string `json:"RemoteSubnet,omitempty" xml:"RemoteSubnet,omitempty"`
-	// The tunnel configuration of the peer gateway device. Parameters in TunnelsConfig are returned only if the IPsec-VPN connection is in dual-tunnel mode.
+	// The tunnel configurations of the peer gateway device.
+	//
+	// The parameters in **TunnelsConfig** are returned only when the IPsec-VPN connection supports the dual-tunnel mode.
 	TunnelsConfig *DownloadVpnConnectionConfigResponseBodyVpnConnectionConfigTunnelsConfig `json:"TunnelsConfig,omitempty" xml:"TunnelsConfig,omitempty" type:"Struct"`
 }
 
@@ -47978,23 +48371,26 @@ func (s *DownloadVpnConnectionConfigResponseBodyVpnConnectionConfig) SetTunnelsC
 }
 
 type DownloadVpnConnectionConfigResponseBodyVpnConnectionConfigIkeConfig struct {
-	// The IKE authentication algorithm. Valid values: **sha1** and **MD5**.
+	// The authentication algorithm in the IKE phase.
 	IkeAuthAlg *string `json:"IkeAuthAlg,omitempty" xml:"IkeAuthAlg,omitempty"`
-	// The IKE encryption algorithm.
+	// The encryption algorithm in the IKE phase.
 	IkeEncAlg *string `json:"IkeEncAlg,omitempty" xml:"IkeEncAlg,omitempty"`
-	// The IKE lifetime. Unit: seconds.
+	// The lifetime in the IKE phase. Unit: seconds.
 	IkeLifetime *int64 `json:"IkeLifetime,omitempty" xml:"IkeLifetime,omitempty"`
-	// The IKE mode. Valid values: **main** and **aggressive**. The **main** mode offers higher security. If NAT traversal is enabled, we recommend that you use the **aggressive** mode.
+	// The IKE negotiation mode. Valid values:
+	//
+	// *   **main**: This mode offers higher security during negotiations.
+	// *   **aggressive**: This mode is faster and has a higher success rate.
 	IkeMode *string `json:"IkeMode,omitempty" xml:"IkeMode,omitempty"`
-	// The DH group.
+	// The DH group in the IKE phase.
 	IkePfs *string `json:"IkePfs,omitempty" xml:"IkePfs,omitempty"`
 	// The IKE version.
 	IkeVersion *string `json:"IkeVersion,omitempty" xml:"IkeVersion,omitempty"`
-	// The local ID. The default value is the IP address of the VPN gateway. You can specify the value as an IP address or in the FQDN format.
+	// The identifier of the customer gateway. FQDN and IP formats are supported. The default value is the IP address of the customer gateway.
 	LocalId *string `json:"LocalId,omitempty" xml:"LocalId,omitempty"`
 	// The pre-shared key.
 	Psk *string `json:"Psk,omitempty" xml:"Psk,omitempty"`
-	// The peer ID. The default value is the IP address of the customer gateway. You can specify the value as an IP address or in the fully qualified domain name (FQDN) format.
+	// The identifier of the VPN gateway. FQDN and IP formats are supported. The default value is the IP address of the VPN gateway.
 	RemoteId *string `json:"RemoteId,omitempty" xml:"RemoteId,omitempty"`
 }
 
@@ -48052,13 +48448,13 @@ func (s *DownloadVpnConnectionConfigResponseBodyVpnConnectionConfigIkeConfig) Se
 }
 
 type DownloadVpnConnectionConfigResponseBodyVpnConnectionConfigIpsecConfig struct {
-	// The IPsec authentication algorithm. Valid values: **sha1** and **md5**.
+	// The authentication algorithm in the IPsec phase.
 	IpsecAuthAlg *string `json:"IpsecAuthAlg,omitempty" xml:"IpsecAuthAlg,omitempty"`
-	// The IPsec encryption algorithm.
+	// The encryption algorithm in the IPsec phase.
 	IpsecEncAlg *string `json:"IpsecEncAlg,omitempty" xml:"IpsecEncAlg,omitempty"`
-	// The IPsec lifetime. Unit: seconds.
+	// The lifetime in the IPsec phase. Unit: seconds.
 	IpsecLifetime *int64 `json:"IpsecLifetime,omitempty" xml:"IpsecLifetime,omitempty"`
-	// The DH group.
+	// The DH group in the IPsec phase.
 	IpsecPfs *string `json:"IpsecPfs,omitempty" xml:"IpsecPfs,omitempty"`
 }
 
@@ -48162,8 +48558,8 @@ type DownloadVpnConnectionConfigResponseBodyVpnConnectionConfigTunnelsConfigTunn
 	IkeLifetime *int64 `json:"IkeLifetime,omitempty" xml:"IkeLifetime,omitempty"`
 	// The IKE negotiation mode. Valid values:
 	//
-	// - **main**: This mode offers higher security during negotiations.
-	// - **aggressive**: This mode is faster and has a higher success rate.
+	// *   **main**: This mode offers higher security during negotiations.
+	// *   **aggressive**: This mode is faster and has a higher success rate.
 	IkeMode *string `json:"IkeMode,omitempty" xml:"IkeMode,omitempty"`
 	// The DH group in the IKE phase.
 	IkePfs *string `json:"IkePfs,omitempty" xml:"IkePfs,omitempty"`
@@ -50066,7 +50462,7 @@ func (s *GetVpcGatewayEndpointAttributeRequest) SetResourceOwnerId(v int64) *Get
 }
 
 type GetVpcGatewayEndpointAttributeResponseBody struct {
-	// The time when the endpoint was created. The time follows the ISO 8601 standard in UTC in the YYYY-MM-DDThh:mm:ssZ format.
+	// The time when the endpoint was created. The time follows the ISO 8601 standard in the YYYY-MM-DDThh:mm:ssZ format. The time is displayed in UTC.
 	CreationTime *string `json:"CreationTime,omitempty" xml:"CreationTime,omitempty"`
 	// The description of the gateway endpoint.
 	EndpointDescription *string `json:"EndpointDescription,omitempty" xml:"EndpointDescription,omitempty"`
@@ -50076,23 +50472,25 @@ type GetVpcGatewayEndpointAttributeResponseBody struct {
 	EndpointName *string `json:"EndpointName,omitempty" xml:"EndpointName,omitempty"`
 	// The status of the gateway endpoint. Valid values:
 	//
-	// *   **Creating**: being created
-	// *   **Created**: created
-	// *   **Modifying**: being modified
-	// *   **Associating**: being associated
-	// *   **Dissociating**: being disassociated
-	// *   **Deleting**: being deleted
+	// *   **Creating**
+	// *   **Created**
+	// *   **Modifying**
+	// *   **Associating**
+	// *   **Dissociating**
+	// *   **Deleting**
 	EndpointStatus *string `json:"EndpointStatus,omitempty" xml:"EndpointStatus,omitempty"`
 	// The access policy for the cloud service.
 	PolicyDocument *string `json:"PolicyDocument,omitempty" xml:"PolicyDocument,omitempty"`
-	// The ID of the request.
-	RequestId       *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The request ID.
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The ID of the resource group to which the gateway endpoint belongs.
 	ResourceGroupId *string `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
 	// The ID of the route table associated with the gateway endpoint.
 	RouteTables []*string `json:"RouteTables,omitempty" xml:"RouteTables,omitempty" type:"Repeated"`
 	// The name of the endpoint service.
-	ServiceName *string                                           `json:"ServiceName,omitempty" xml:"ServiceName,omitempty"`
-	Tags        []*GetVpcGatewayEndpointAttributeResponseBodyTags `json:"Tags,omitempty" xml:"Tags,omitempty" type:"Repeated"`
+	ServiceName *string `json:"ServiceName,omitempty" xml:"ServiceName,omitempty"`
+	// The tag list.
+	Tags []*GetVpcGatewayEndpointAttributeResponseBodyTags `json:"Tags,omitempty" xml:"Tags,omitempty" type:"Repeated"`
 	// The ID of the virtual private cloud (VPC) to which the gateway endpoint belongs.
 	VpcId *string `json:"VpcId,omitempty" xml:"VpcId,omitempty"`
 }
@@ -50166,7 +50564,9 @@ func (s *GetVpcGatewayEndpointAttributeResponseBody) SetVpcId(v string) *GetVpcG
 }
 
 type GetVpcGatewayEndpointAttributeResponseBodyTags struct {
-	Key   *string `json:"Key,omitempty" xml:"Key,omitempty"`
+	// The key of tag N added to the resource.
+	Key *string `json:"Key,omitempty" xml:"Key,omitempty"`
+	// The value of tag N added to the resource.
 	Value *string `json:"Value,omitempty" xml:"Value,omitempty"`
 }
 
@@ -50809,17 +51209,19 @@ func (s *GetVpcRouteEntrySummaryResponse) SetBody(v *GetVpcRouteEntrySummaryResp
 type GetVpnGatewayDiagnoseResultRequest struct {
 	// The client token that is used to ensure the idempotence of the request.
 	//
-	// You can use the client to generate the value, but you must make sure that it is unique among different requests. ClientToken can contain only ASCII characters.
+	// You can use the client to generate the token, but you must make sure that the token is unique among different requests. The client token can contain only ASCII characters.
 	//
-	// >  If you do not set this parameter, ClientToken is set to the value of RequestId. The ID of each request may be different.
+	// **
+	//
+	// **Description** If you do not specify this parameter, the system automatically uses the request ID as the client token. The request ID may be different for each request.
 	ClientToken *string `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
-	// The ID of the diagnostic.
+	// The ID of the diagnostic operation.
 	//
 	// When you call the [DiagnoseVpnGateway](~~469751~~) operation, the system returns a corresponding ID.
 	DiagnoseId *string `json:"DiagnoseId,omitempty" xml:"DiagnoseId,omitempty"`
 	// The region ID of the VPN gateway.
 	//
-	// You can call the [DescribeRegions](~~36063~~) operation to obtain the region ID.
+	// You can call the [DescribeRegions](~~36063~~) operation to query the most recent region list.
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 	// The ID of the VPN gateway.
 	VpnGatewayId *string `json:"VpnGatewayId,omitempty" xml:"VpnGatewayId,omitempty"`
@@ -50856,7 +51258,7 @@ func (s *GetVpnGatewayDiagnoseResultRequest) SetVpnGatewayId(v string) *GetVpnGa
 type GetVpnGatewayDiagnoseResultResponseBody struct {
 	// The time when the diagnostic started.
 	//
-	// The time follows the ISO8601 standard in the `YYYY-MM-DDThh:mm:ssZ` format. The time is displayed in UTC.
+	// The time follows the ISO8601 standard in the `yyyy-MM-ddTHH:mm:ssZ` format. The time is displayed in UTC.
 	BeginTime *string `json:"BeginTime,omitempty" xml:"BeginTime,omitempty"`
 	// The ID of the diagnostic.
 	DiagnoseId *string `json:"DiagnoseId,omitempty" xml:"DiagnoseId,omitempty"`
@@ -50864,11 +51266,11 @@ type GetVpnGatewayDiagnoseResultResponseBody struct {
 	DiagnoseResult []*GetVpnGatewayDiagnoseResultResponseBodyDiagnoseResult `json:"DiagnoseResult,omitempty" xml:"DiagnoseResult,omitempty" type:"Repeated"`
 	// The timestamp when the system finishes diagnosing the item.
 	//
-	// The time follows the ISO8601 standard in the `YYYY-MM-DDThh:mm:ssZ` format. The time is displayed in UTC.
+	// The time follows the ISO8601 standard in the `yyyy-MM-ddTHH:mm:ssZ` format. The time is displayed in UTC.
 	FinishTime *string `json:"FinishTime,omitempty" xml:"FinishTime,omitempty"`
 	// The number of diagnostic items that have been diagnosed.
 	FinishedCount *int32 `json:"FinishedCount,omitempty" xml:"FinishedCount,omitempty"`
-	// The ID of the request.
+	// The request ID.
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	// The ID of the resource that is diagnosed.
 	ResourceInstanceId *string `json:"ResourceInstanceId,omitempty" xml:"ResourceInstanceId,omitempty"`
@@ -54571,46 +54973,49 @@ func (s *ListPublicIpAddressPoolCidrBlocksResponse) SetBody(v *ListPublicIpAddre
 }
 
 type ListPublicIpAddressPoolsRequest struct {
-	// Specifies whether to perform a dry run. Valid values:
+	// Specifies whether to perform a dry run, without performing the actual request. Valid values:
 	//
-	// *   **true**: performs a dry run. The system checks the required parameters, request syntax, and limits. If the request fails the dry run, an error message is returned. If the request passes the dry run, the `DryRunOperation` error code is returned.
-	// *   **false** (default): performs a dry run and sends the request. If the request passes the dry run, an HTTP 2xx status code is returned and the operation is performed.
+	// *   **true**: performs only a dry run. The system checks the request for potential issues, including missing parameter values, incorrect request syntax, and service limits. If the request fails the dry run, an error message is returned. If the request passes the dry run, the `DryRunOperation` error code is returned.
+	// *   **false**(default): performs a dry run and performs the actual request. If the request passes the dry run, a 2xx HTTP status code is returned and the operation is performed.
 	DryRun *bool `json:"DryRun,omitempty" xml:"DryRun,omitempty"`
 	// The line type. Valid values:
 	//
-	// *   **BGP** (default): BGP (Multi-ISP) lines
-	// *   **BGP_PRO**: BGP (Multi-ISP) Pro lines
+	// *   **BGP** (default): BGP (Multi-ISP) line
+	// *   **BGP_PRO**: BGP (Multi-ISP) Pro line
 	//
-	// For more information about BGP (Multi-ISP) and BGP (Multi-ISP) Pro, see [EIP line types](~~32321~~).
+	// For more information about the BGP (Multi-ISP) line and BGP (Multi-ISP) Pro line, see the "Line types" section of [What is EIP?](~~32321~~)
 	//
 	// If you are allowed to use single-ISP bandwidth, you can also choose one of the following values:
 	//
-	// *   **ChinaTelecom**: China Telecom
-	// *   **ChinaUnicom**: China Unicom
-	// *   **ChinaMobile**: China Mobile
-	// *   **ChinaTelecom_L2**: China Telecom L2
-	// *   **ChinaUnicom_L2**: China Unicom L2
-	// *   **ChinaMobile_L2**: China Mobile L2
+	// *   **ChinaTelecom**
+	// *   **ChinaUnicom**
+	// *   **ChinaMobile**
+	// *   **ChinaTelecom_L2**
+	// *   **ChinaUnicom_L2**
+	// *   **ChinaMobile_L2**
 	//
-	// If your services are deployed in China East 1 Finance, this parameter is required and you must set the value to **BGP_FinanceCloud**.
+	// If your services are deployed in China East 1 Finance, this parameter is required and you must set the parameter to **BGP_FinanceCloud**.
 	Isp *string `json:"Isp,omitempty" xml:"Isp,omitempty"`
 	// The maximum number of entries to return. Valid values: **10** to **100**. Default value: **10**.
 	MaxResults *int32 `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
 	// The name of the IP address pool.
 	//
-	// This parameter is optional. The name must be 1 to 128 characters in length, and can contain digits, periods (.), underscores (\_), and hyphens (-). The name must start with a letter but cannot start with `http://` or `https://`.
+	// If you enter a name, the name must be 1 to 128 characters in length and can contain digits, periods (.), underscores (\_), and hyphens (-). The name must start with a letter but cannot start with `http://` or `https://`.
 	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
-	// The token that determines the start point of the next query. Valid values:
+	// The pagination token that is used in the next request to retrieve a new page of results.
 	//
-	// *   If this is your first query and no subsequent queries are to be sent, ignore this parameter.
-	// *   If a subsequent query is to be sent, set the parameter to the value of NextToken that is returned from the last call.
-	NextToken              *string   `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
-	OwnerAccount           *string   `json:"OwnerAccount,omitempty" xml:"OwnerAccount,omitempty"`
-	OwnerId                *int64    `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
+	// *   You do not need to specify this parameter for the first request.
+	// *   You must specify the token that is obtained from the previous query as the value of NextToken.
+	NextToken    *string `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
+	OwnerAccount *string `json:"OwnerAccount,omitempty" xml:"OwnerAccount,omitempty"`
+	OwnerId      *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
+	// The IDs of the IP address pool.
+	//
+	// You can enter up to 100 IDs.
 	PublicIpAddressPoolIds []*string `json:"PublicIpAddressPoolIds,omitempty" xml:"PublicIpAddressPoolIds,omitempty" type:"Repeated"`
-	// The ID of the region where you want to query IP address pools.
+	// The ID of the region in which the IP address pool that you want to query resides.
 	//
-	// You can call the [DescribeRegions](~~36063~~) operation to query the most recent region list.
+	// You can call the [DescribeRegions](~~36063~~) operation to query the region ID.
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 	// The ID of the resource group to which the IP address pool belongs.
 	ResourceGroupId      *string `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
@@ -54618,11 +55023,12 @@ type ListPublicIpAddressPoolsRequest struct {
 	ResourceOwnerId      *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
 	// The status of the IP address pool. Valid values:
 	//
-	// *   **Created**: The IP address pool is available.
-	// *   **Deleting**: The IP address pool is being deleted.
-	// *   **Modifying**: The IP address pool is being modified.
-	Status *string                                `json:"Status,omitempty" xml:"Status,omitempty"`
-	Tags   []*ListPublicIpAddressPoolsRequestTags `json:"Tags,omitempty" xml:"Tags,omitempty" type:"Repeated"`
+	// *   **Created**
+	// *   **Deleting**
+	// *   **Modifying**
+	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
+	// The tags to add to the resource.
+	Tags []*ListPublicIpAddressPoolsRequestTags `json:"Tags,omitempty" xml:"Tags,omitempty" type:"Repeated"`
 }
 
 func (s ListPublicIpAddressPoolsRequest) String() string {
@@ -54704,13 +55110,13 @@ func (s *ListPublicIpAddressPoolsRequest) SetTags(v []*ListPublicIpAddressPoolsR
 }
 
 type ListPublicIpAddressPoolsRequestTags struct {
-	// The key of the tag. You can specify at most 20 tag keys. The tag key cannot be an empty string.
+	// The tag key to add to the resource. You can specify up to 20 tag keys. The tag key cannot be an empty string.
 	//
-	// The key cannot exceed 64 characters in length, and can contain digits, periods (.), underscores (\_), and hyphens (-). The key must start with a letter but cannot start with `aliyun` or `acs:`. The key cannot contain `http://` or `https://`.
+	// The tag key can be up to 128 characters in length. It cannot start with `aliyun` or `acs:`, and cannot contain `http://` or `https://`.
 	Key *string `json:"Key,omitempty" xml:"Key,omitempty"`
-	// The value of the tag. You can specify at most 20 tag values. The tag value can be an empty string.
+	// The tag value to add to the resource. You can specify up to 20 tag values. The tag value can be an empty string.
 	//
-	// The tag value cannot exceed 128 characters in length, and can contain digits, periods (.), underscores (\_), and hyphens (-). The key must start with a letter but cannot start with `aliyun` or `acs:`. The key cannot contain `http://` or `https://`.
+	// The tag key can be up to 128 characters in length. It cannot start with `aliyun` or `acs:` and cannot contain `http://` or `https://`.
 	Value *string `json:"Value,omitempty" xml:"Value,omitempty"`
 }
 
@@ -54733,16 +55139,16 @@ func (s *ListPublicIpAddressPoolsRequestTags) SetValue(v string) *ListPublicIpAd
 }
 
 type ListPublicIpAddressPoolsResponseBody struct {
-	// The token that determines the start point of the next query. Valid values:
+	// A pagination token. It can be used in the next request to retrieve a new page of results.
 	//
-	// *   If **NextToken** is returned, it indicates that no additional results exist.
-	// *   If **NextToken** is returned, the value indicates the token that is used for the next query.
+	// *   If **NextToken** is empty, no next page exists.
+	// *   If a value is returned for **NextToken**, the value is used to retrieve a new page of results.
 	NextToken *string `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
-	// The total number of entries returned.
+	// The IP address pools.
 	PublicIpAddressPoolList []*ListPublicIpAddressPoolsResponseBodyPublicIpAddressPoolList `json:"PublicIpAddressPoolList,omitempty" xml:"PublicIpAddressPoolList,omitempty" type:"Repeated"`
-	// The ID of the request.
+	// The request ID.
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// The maximum number of entries returned.
+	// The total number of entries returned.
 	TotalCount *int32 `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
 }
 
@@ -54775,63 +55181,72 @@ func (s *ListPublicIpAddressPoolsResponseBody) SetTotalCount(v int32) *ListPubli
 }
 
 type ListPublicIpAddressPoolsResponseBodyPublicIpAddressPoolList struct {
+	// The service type of the IP address pool. Valid values:
+	//
+	// *   **CloudBox**: the cloud box service type. Only cloud box users can select this type.
+	// *   **Default** (default): the general service type.
 	BizType *string `json:"BizType,omitempty" xml:"BizType,omitempty"`
-	// The region ID of the IP address pool.
+	// The time when the IP address pool was created. The time is displayed in the `YYYY-MM-DDThh:mm:ssZ` format.
 	CreationTime *string `json:"CreationTime,omitempty" xml:"CreationTime,omitempty"`
-	// The status of the IP address pool. Valid values:
-	//
-	// *   **Created**: The IP address pool is available.
-	// *   **Deleting**: The IP address pool is being deleted.
-	// *   **Modifying**: The IP address pool is being modified.
+	// The information about the IP address pool.
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
-	// The number of occupied IP addresses in the public IP address pool.
-	IpAddressRemaining *bool `json:"IpAddressRemaining,omitempty" xml:"IpAddressRemaining,omitempty"`
-	// The time when the IP address pool was created. The time is displayed in `YYYY-MM-DDThh:mm:ssZ` format.
-	Isp *string `json:"Isp,omitempty" xml:"Isp,omitempty"`
-	// The line type.
-	//
-	// *   **BGP**: BGP (Multi-ISP) lines
-	// *   **BGP_PRO**: BGP (Multi-ISP) Pro lines
-	//
-	// For more information about BGP (Multi-ISP) and BGP (Multi-ISP) Pro, see [EIP line types](~~32321~~).
-	//
-	// If you are allowed to use single-ISP bandwidth, one of the following values is returned:
-	//
-	// *   **ChinaTelecom**: China Telecom
-	// *   **ChinaUnicom**: China Unicom
-	// *   **ChinaMobile**: China Mobile
-	// *   **ChinaTelecom_L2**: China Telecom L2
-	// *   **ChinaUnicom_L2**: China Unicom L2
-	// *   **ChinaMobile_L2**: China Mobile L2
-	//
-	// If your services are deployed in China East 1 Finance, **BGP_FinanceCloud** is returned.
-	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
 	// Indicates whether the IP address pool has idle IP addresses. Valid values:
 	//
-	// *   **true**: yes
-	// *   **false**: no
+	// *   **true**
+	// *   **false**
+	IpAddressRemaining *bool `json:"IpAddressRemaining,omitempty" xml:"IpAddressRemaining,omitempty"`
+	// The line type. Valid values:
+	//
+	// *   **BGP**: BGP (Multi-ISP) line
+	// *   **BGP_PRO**: BGP (Multi-ISP) Pro line
+	//
+	// For more information about the BGP (Multi-ISP) line and BGP (Multi-ISP) Pro line, see the "Line types" section of [What is EIP?](~~32321~~)
+	//
+	// If you are allowed to use single-ISP bandwidth, one of the following values may be returned:
+	//
+	// *   **ChinaTelecom**
+	// *   **ChinaUnicom**
+	// *   **ChinaMobile**
+	// *   **ChinaTelecom_L2**
+	// *   **ChinaUnicom_L2**
+	// *   **ChinaMobile_L2**
+	//
+	// If your services are deployed in China East 1 Finance, **BGP_FinanceCloud** is returned.
+	Isp *string `json:"Isp,omitempty" xml:"Isp,omitempty"`
+	// The name of the IP address pool.
+	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// The Alibaba Cloud account to which the IP address pool belongs.
 	OwnerId *int64 `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
-	// The list of IP address pools.
-	PublicIpAddressPoolId *string `json:"PublicIpAddressPoolId,omitempty" xml:"PublicIpAddressPoolId,omitempty"`
 	// The ID of the IP address pool.
+	PublicIpAddressPoolId *string `json:"PublicIpAddressPoolId,omitempty" xml:"PublicIpAddressPoolId,omitempty"`
+	// The ID of the region in which the IP address pool that you want to query resides.
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	// The ID of the resource group to which the IP address pool belongs.
+	ResourceGroupId *string `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
 	// Indicates whether the IP address pool is shared.
 	//
-	// *   **Shared**: The IP address pool is shared.
+	// *   Only **Shared** may be returned.
 	// *   An empty value indicates that the IP address pool is not shared.
-	ResourceGroupId *string `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
-	// The Alibaba Cloud account to which the IP address pool belongs.
 	ShareType *string `json:"ShareType,omitempty" xml:"ShareType,omitempty"`
-	// The name of the IP address pool.
+	// The status of the IP address pool. Valid values:
+	//
+	// *   **Created**
+	// *   **Deleting**
+	// *   **Modifying**
 	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
-	// The ID of the resource group to which the IP address pool belongs.
+	// The tags.
 	Tags []*ListPublicIpAddressPoolsResponseBodyPublicIpAddressPoolListTags `json:"Tags,omitempty" xml:"Tags,omitempty" type:"Repeated"`
-	// The description of the IP address pool.
-	TotalIpNum *int32 `json:"TotalIpNum,omitempty" xml:"TotalIpNum,omitempty"`
 	// The total number of IP addresses in the public IP address pool.
-	UsedIpNum *int32    `json:"UsedIpNum,omitempty" xml:"UsedIpNum,omitempty"`
-	UserType  *bool     `json:"UserType,omitempty" xml:"UserType,omitempty"`
-	Zones     []*string `json:"Zones,omitempty" xml:"Zones,omitempty" type:"Repeated"`
+	TotalIpNum *int32 `json:"TotalIpNum,omitempty" xml:"TotalIpNum,omitempty"`
+	// The number of occupied IP addresses in the public IP address pool.
+	UsedIpNum *int32 `json:"UsedIpNum,omitempty" xml:"UsedIpNum,omitempty"`
+	// The user type. Valid values:
+	//
+	// *   **admin**: administrator. An administrator can delete, modify, and query IP address pools and allocate elastic IP addresses (EIPs) to IP address pools.
+	// *   **user**: regular user. A regular user can only allocate EIPs to IP address pools and query IP address pools. A regular user cannot modify or delete IP address pools.
+	UserType *bool `json:"UserType,omitempty" xml:"UserType,omitempty"`
+	// The zones of the IP address pool. This parameter is returned only when BizType is set to CloudBox.
+	Zones []*string `json:"Zones,omitempty" xml:"Zones,omitempty" type:"Repeated"`
 }
 
 func (s ListPublicIpAddressPoolsResponseBodyPublicIpAddressPoolList) String() string {
@@ -54928,9 +55343,9 @@ func (s *ListPublicIpAddressPoolsResponseBodyPublicIpAddressPoolList) SetZones(v
 }
 
 type ListPublicIpAddressPoolsResponseBodyPublicIpAddressPoolListTags struct {
-	// The list of tags.
+	// The tag key.
 	Key *string `json:"Key,omitempty" xml:"Key,omitempty"`
-	// The key of the tag.
+	// The tag value.
 	Value *string `json:"Value,omitempty" xml:"Value,omitempty"`
 }
 
@@ -55470,10 +55885,10 @@ type ListTrafficMirrorFiltersRequest struct {
 	//
 	// Valid values: **1** to **100**. Default value: **10**.
 	MaxResults *int32 `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
-	// The token that is used for the next query. Valid values:
+	// The pagination token that is used in the next request to retrieve a new page of results. Valid values:
 	//
-	// *   If this is your first query and no next queries are to be sent, ignore this parameter.
-	// *   If a next query is to be performed, set the value to the NextToken value returned in the last call to the ListListenerCertificates operation.
+	// *   You do not need to specify this parameter for the first request.
+	// *   You must specify the token that is obtained from the previous query as the value of NextToken.
 	NextToken    *string `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
 	OwnerAccount *string `json:"OwnerAccount,omitempty" xml:"OwnerAccount,omitempty"`
 	OwnerId      *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
@@ -55555,13 +55970,13 @@ func (s *ListTrafficMirrorFiltersRequest) SetTrafficMirrorFilterName(v string) *
 }
 
 type ListTrafficMirrorFiltersRequestTags struct {
-	// The tag key. You can specify at most 20 tag keys. The tag key cannot be an empty string.
+	// The key of tag N to add to the resource. You can specify at most 20 tag keys. The tag key cannot be an empty string.
 	//
-	// The key cannot exceed 64 characters in length, and can contain digits, periods (.), underscores (\_), and hyphens (-). The key must start with a letter but cannot start with `aliyun` or `acs:`. The key cannot contain `http://` or `https://`.
+	// The tag key can be at most 128 characters in length. It cannot start with `aliyun` or `acs:`, and cannot contain `http://` or `https://`.
 	Key *string `json:"Key,omitempty" xml:"Key,omitempty"`
-	// The tag value. You can specify at most 20 tag values. The tag value can be an empty string.
+	// The value of tag N to add to the resource. You can specify at most 20 tag values. The tag value can be an empty string.
 	//
-	// The tag value cannot exceed 128 characters in length, and can contain digits, periods (.), underscores (\_), and hyphens (-). It must start with a letter but cannot start with `aliyun` or `acs:`. It cannot contain `http://` or `https://`.
+	// The tag value can be up to 128 characters in length and cannot start with `acs:` or `aliyun`. The tag value cannot contain `http://` or `https://`.
 	Value *string `json:"Value,omitempty" xml:"Value,omitempty"`
 }
 
@@ -55584,14 +55999,16 @@ func (s *ListTrafficMirrorFiltersRequestTags) SetValue(v string) *ListTrafficMir
 }
 
 type ListTrafficMirrorFiltersResponseBody struct {
-	Count      *int32 `json:"Count,omitempty" xml:"Count,omitempty"`
+	// The number of entries returned.
+	Count *int32 `json:"Count,omitempty" xml:"Count,omitempty"`
+	// The maximum number of entries returned.
 	MaxResults *int32 `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
-	// The token that is used for the next query. Valid values:
+	// A pagination token. It can be used in the next request to retrieve a new page of results. Valid values:
 	//
-	// *   If no value is returned for **NextToken**, no next queries are sent.
-	// *   If the return value of **NextToken** is not empty, the value indicates the token that is used for the next query.
+	// *   If **NextToken** is empty, no next page exists.
+	// *   If a value is returned for **NextToken**, the value is the token that is used for the next query.
 	NextToken *string `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
-	// The ID of the request.
+	// The request ID.
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	// The number of entries returned.
 	TotalCount *string `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
@@ -55648,7 +56065,7 @@ type ListTrafficMirrorFiltersResponseBodyTrafficMirrorFilters struct {
 	Tags []*ListTrafficMirrorFiltersResponseBodyTrafficMirrorFiltersTags `json:"Tags,omitempty" xml:"Tags,omitempty" type:"Repeated"`
 	// The description of the filter.
 	TrafficMirrorFilterDescription *string `json:"TrafficMirrorFilterDescription,omitempty" xml:"TrafficMirrorFilterDescription,omitempty"`
-	// The ID of the filter.
+	// The ID of the traffic mirror filter.
 	TrafficMirrorFilterId *string `json:"TrafficMirrorFilterId,omitempty" xml:"TrafficMirrorFilterId,omitempty"`
 	// The name of the filter.
 	TrafficMirrorFilterName *string `json:"TrafficMirrorFilterName,omitempty" xml:"TrafficMirrorFilterName,omitempty"`
@@ -55712,8 +56129,8 @@ func (s *ListTrafficMirrorFiltersResponseBodyTrafficMirrorFilters) SetTrafficMir
 type ListTrafficMirrorFiltersResponseBodyTrafficMirrorFiltersEgressRules struct {
 	// The action of the outbound rule. Valid values:
 	//
-	// *   **accept**: collects network traffic.
-	// *   **drop**: does not collect network traffic.
+	// *   **accept**
+	// *   **drop**
 	Action *string `json:"Action,omitempty" xml:"Action,omitempty"`
 	// The destination CIDR block of the outbound traffic.
 	DestinationCidrBlock *string `json:"DestinationCidrBlock,omitempty" xml:"DestinationCidrBlock,omitempty"`
@@ -55723,10 +56140,10 @@ type ListTrafficMirrorFiltersResponseBodyTrafficMirrorFiltersEgressRules struct 
 	Priority *int32 `json:"Priority,omitempty" xml:"Priority,omitempty"`
 	// The protocol that is used by the outbound traffic to be mirrored. Valid values:
 	//
-	// *   **ALL**: all protocols
-	// *   **ICMP**: ICMP
-	// *   **TCP**: TCP
-	// *   **UDP**: UDP
+	// *   **ALL**
+	// *   **ICMP**
+	// *   **TCP**
+	// *   **UDP**
 	Protocol *string `json:"Protocol,omitempty" xml:"Protocol,omitempty"`
 	// The source CIDR block of the outbound traffic.
 	SourceCidrBlock *string `json:"SourceCidrBlock,omitempty" xml:"SourceCidrBlock,omitempty"`
@@ -55734,8 +56151,8 @@ type ListTrafficMirrorFiltersResponseBodyTrafficMirrorFiltersEgressRules struct 
 	SourcePortRange *string `json:"SourcePortRange,omitempty" xml:"SourcePortRange,omitempty"`
 	// The direction of the network traffic. Valid values:
 	//
-	// *   **egress**: outbound
-	// *   **ingress**: inbound
+	// *   **egress**
+	// *   **ingress**
 	TrafficDirection *string `json:"TrafficDirection,omitempty" xml:"TrafficDirection,omitempty"`
 	// The ID of the filter associated with the outbound rule.
 	TrafficMirrorFilterId *string `json:"TrafficMirrorFilterId,omitempty" xml:"TrafficMirrorFilterId,omitempty"`
@@ -55816,8 +56233,8 @@ func (s *ListTrafficMirrorFiltersResponseBodyTrafficMirrorFiltersEgressRules) Se
 type ListTrafficMirrorFiltersResponseBodyTrafficMirrorFiltersIngressRules struct {
 	// The action of the inbound rule. Valid values:
 	//
-	// *   **accept**: accepts network traffic.
-	// *   **drop**: does not collect network traffic.
+	// *   **accept**
+	// *   **drop**
 	Action *string `json:"Action,omitempty" xml:"Action,omitempty"`
 	// The destination CIDR block of the inbound traffic.
 	DestinationCidrBlock *string `json:"DestinationCidrBlock,omitempty" xml:"DestinationCidrBlock,omitempty"`
@@ -55827,10 +56244,10 @@ type ListTrafficMirrorFiltersResponseBodyTrafficMirrorFiltersIngressRules struct
 	Priority *int32 `json:"Priority,omitempty" xml:"Priority,omitempty"`
 	// The protocol that is used by the inbound traffic to be mirrored. Valid values:
 	//
-	// *   **ALL**: all protocols
-	// *   **ICMP**: ICMP
-	// *   **TCP**: TCP
-	// *   **UDP**: UDP
+	// *   **ALL**
+	// *   **ICMP**
+	// *   **TCP**
+	// *   **UDP**
 	Protocol *string `json:"Protocol,omitempty" xml:"Protocol,omitempty"`
 	// The source CIDR block of the inbound traffic.
 	SourceCidrBlock *string `json:"SourceCidrBlock,omitempty" xml:"SourceCidrBlock,omitempty"`
@@ -55838,8 +56255,8 @@ type ListTrafficMirrorFiltersResponseBodyTrafficMirrorFiltersIngressRules struct
 	SourcePortRange *string `json:"SourcePortRange,omitempty" xml:"SourcePortRange,omitempty"`
 	// The direction of the network traffic. Valid values:
 	//
-	// *   **egress**: outbound
-	// *   **ingress**: inbound
+	// *   **egress**
+	// *   **ingress**
 	TrafficDirection *string `json:"TrafficDirection,omitempty" xml:"TrafficDirection,omitempty"`
 	// The ID of the filter associated with the inbound rule.
 	TrafficMirrorFilterId *string `json:"TrafficMirrorFilterId,omitempty" xml:"TrafficMirrorFilterId,omitempty"`
@@ -55918,9 +56335,9 @@ func (s *ListTrafficMirrorFiltersResponseBodyTrafficMirrorFiltersIngressRules) S
 }
 
 type ListTrafficMirrorFiltersResponseBodyTrafficMirrorFiltersTags struct {
-	// The tag key.
+	// The key of tag N.
 	Key *string `json:"Key,omitempty" xml:"Key,omitempty"`
-	// The tag value.
+	// The value of tag N.
 	Value *string `json:"Value,omitempty" xml:"Value,omitempty"`
 }
 
@@ -56956,8 +57373,9 @@ type ListVpcEndpointServicesByEndUserResponseBody struct {
 	// The ID of the request.
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	// The list of entries returned.
-	Services   []*ListVpcEndpointServicesByEndUserResponseBodyServices `json:"Services,omitempty" xml:"Services,omitempty" type:"Repeated"`
-	TotalCount *string                                                 `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
+	Services []*ListVpcEndpointServicesByEndUserResponseBodyServices `json:"Services,omitempty" xml:"Services,omitempty" type:"Repeated"`
+	// The total number of entries returned.
+	TotalCount *string `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
 }
 
 func (s ListVpcEndpointServicesByEndUserResponseBody) String() string {
@@ -57004,8 +57422,8 @@ type ListVpcEndpointServicesByEndUserResponseBodyServices struct {
 	ServiceName *string `json:"ServiceName,omitempty" xml:"ServiceName,omitempty"`
 	// Indicate whether the endpoint service supports the access policy. Valid values:
 	//
-	// *   **false**: no
-	// *   **true**: yes
+	// *   **false**
+	// *   **true**
 	SupportPolicy *bool `json:"SupportPolicy,omitempty" xml:"SupportPolicy,omitempty"`
 }
 
@@ -57078,25 +57496,27 @@ type ListVpcGatewayEndpointsRequest struct {
 	//
 	// The name must be 1 to 128 characters in length.
 	EndpointName *string `json:"EndpointName,omitempty" xml:"EndpointName,omitempty"`
-	// The number of entries to return per page. Valid values: **1** to **100**. Default value: **20**.
+	// The number of entries per page. Valid values: **1** to **100**. Default value: **20**.
 	MaxResults *int64 `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
-	// The token that is used for the next query. Valid values:
+	// The pagination token that is used in the next request to retrieve a new page of results. Valid values:
 	//
-	// *   If this is your first query and no next queries are to be sent, ignore this parameter.
-	// *   If a next query is to be performed, set the value to the NextToken value returned in the last call to the ListListenerCertificates operation.
+	// *   You do not need to specify this parameter for the first request.
+	// *   If a value is returned for NextToken, specify the value in the next request to retrieve a new page of results.
 	NextToken    *string `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
 	OwnerAccount *string `json:"OwnerAccount,omitempty" xml:"OwnerAccount,omitempty"`
 	OwnerId      *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
 	// The region ID of the gateway endpoint.
 	//
 	// You can call the [DescribeRegions](~~36063~~) operation to query the most recent region list.
-	RegionId             *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	// The ID of the resource group to which the gateway endpoint belongs.
 	ResourceGroupId      *string `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
 	ResourceOwnerAccount *string `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
 	ResourceOwnerId      *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
 	// The name of the endpoint service.
-	ServiceName *string                               `json:"ServiceName,omitempty" xml:"ServiceName,omitempty"`
-	Tags        []*ListVpcGatewayEndpointsRequestTags `json:"Tags,omitempty" xml:"Tags,omitempty" type:"Repeated"`
+	ServiceName *string `json:"ServiceName,omitempty" xml:"ServiceName,omitempty"`
+	// The tag list.
+	Tags []*ListVpcGatewayEndpointsRequestTags `json:"Tags,omitempty" xml:"Tags,omitempty" type:"Repeated"`
 }
 
 func (s ListVpcGatewayEndpointsRequest) String() string {
@@ -57168,7 +57588,13 @@ func (s *ListVpcGatewayEndpointsRequest) SetTags(v []*ListVpcGatewayEndpointsReq
 }
 
 type ListVpcGatewayEndpointsRequestTags struct {
-	Key   *string `json:"Key,omitempty" xml:"Key,omitempty"`
+	// The key of tag N added to the resource. You can specify at most 20 tag keys. It cannot be an empty string.
+	//
+	// The key cannot exceed 64 characters in length, and can contain digits, periods (.), underscores (\_), and hyphens (-). The key must start with a letter but cannot start with `aliyun` or `acs:`. The key cannot contain `http://` or `https://`.
+	Key *string `json:"Key,omitempty" xml:"Key,omitempty"`
+	// The value of tag N added to the resource. You can specify at most 20 tag values. The tag value can be an empty string.
+	//
+	// The tag value cannot exceed 128 characters in length, and can contain digits, periods (.), underscores (\_), and hyphens (-). The key must start with a letter but cannot start with `aliyun` or `acs:`. The key cannot contain `http://` or `https://`.
 	Value *string `json:"Value,omitempty" xml:"Value,omitempty"`
 }
 
@@ -57193,16 +57619,16 @@ func (s *ListVpcGatewayEndpointsRequestTags) SetValue(v string) *ListVpcGatewayE
 type ListVpcGatewayEndpointsResponseBody struct {
 	// The list of gateway endpoints.
 	Endpoints []*ListVpcGatewayEndpointsResponseBodyEndpoints `json:"Endpoints,omitempty" xml:"Endpoints,omitempty" type:"Repeated"`
-	// The number of entries returned per page.
+	// The number of entries per page.
 	MaxResults *int64 `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
-	// The token that is used for the next query. Valid values:
+	// A pagination token. It can be used in the next request to retrieve a new page of results. Valid values:
 	//
 	// *   If no value is returned for **NextToken**, no next queries are sent.
-	// *   If **NextToken** is not empty, the value indicates the token that is used for the next query.
+	// *   If a value is returned for **NextToken**, the value can be used in the next request to retrieve a new page of results.
 	NextToken *string `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
-	// The ID of the request.
+	// The request ID.
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// The total number of entries returned.
+	// The number of entries returned.
 	TotalCount *int64 `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
 }
 
@@ -57242,7 +57668,7 @@ func (s *ListVpcGatewayEndpointsResponseBody) SetTotalCount(v int64) *ListVpcGat
 type ListVpcGatewayEndpointsResponseBodyEndpoints struct {
 	// The ID of the route table associated with the gateway endpoint.
 	AssociatedRouteTables []*string `json:"AssociatedRouteTables,omitempty" xml:"AssociatedRouteTables,omitempty" type:"Repeated"`
-	// The time when the endpoint was created. The time follows the ISO 8601 standard in the YYYY-MM-DDThh:mm:ssZ format. The time must be in UTC.
+	// The time when the endpoint was created. The time follows the ISO 8601 standard in the YYYY-MM-DDThh:mm:ssZ format. The time is displayed in UTC.
 	CreationTime *string `json:"CreationTime,omitempty" xml:"CreationTime,omitempty"`
 	// The description of the gateway endpoint.
 	EndpointDescription *string `json:"EndpointDescription,omitempty" xml:"EndpointDescription,omitempty"`
@@ -57262,11 +57688,13 @@ type ListVpcGatewayEndpointsResponseBodyEndpoints struct {
 	// The access policy for the cloud service.
 	//
 	// For more information about the syntax and structure of the access policy, see [Policy syntax and structure](~~93739~~).
-	PolicyDocument  *string `json:"PolicyDocument,omitempty" xml:"PolicyDocument,omitempty"`
+	PolicyDocument *string `json:"PolicyDocument,omitempty" xml:"PolicyDocument,omitempty"`
+	// The ID of the resource group to which the gateway endpoint belongs.
 	ResourceGroupId *string `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
 	// The name of the endpoint service.
-	ServiceName *string                                             `json:"ServiceName,omitempty" xml:"ServiceName,omitempty"`
-	Tags        []*ListVpcGatewayEndpointsResponseBodyEndpointsTags `json:"Tags,omitempty" xml:"Tags,omitempty" type:"Repeated"`
+	ServiceName *string `json:"ServiceName,omitempty" xml:"ServiceName,omitempty"`
+	// The tag list.
+	Tags []*ListVpcGatewayEndpointsResponseBodyEndpointsTags `json:"Tags,omitempty" xml:"Tags,omitempty" type:"Repeated"`
 	// The ID of the virtual private cloud (VPC) to which the gateway endpoint belongs.
 	VpcId *string `json:"VpcId,omitempty" xml:"VpcId,omitempty"`
 }
@@ -57335,7 +57763,9 @@ func (s *ListVpcGatewayEndpointsResponseBodyEndpoints) SetVpcId(v string) *ListV
 }
 
 type ListVpcGatewayEndpointsResponseBodyEndpointsTags struct {
-	Key   *string `json:"Key,omitempty" xml:"Key,omitempty"`
+	// The key of tag N added to the resource.
+	Key *string `json:"Key,omitempty" xml:"Key,omitempty"`
+	// The value of tag N added to the resource.
 	Value *string `json:"Value,omitempty" xml:"Value,omitempty"`
 }
 
@@ -57501,13 +57931,13 @@ func (s *ListVpnCertificateAssociationsResponseBody) SetVpnCertificateRelations(
 }
 
 type ListVpnCertificateAssociationsResponseBodyVpnCertificateRelations struct {
-	// The time when the certificate was associated.
+	// The time when the Anycast EIP was associated.
 	//
-	// The time follows the ISO8601 standard in the YYYY-MM-DDThh:mmZ format. The time is displayed in UTC.
+	// The time follows the ISO 8601 standard in the YYYY-MM-DDThh:mm:ssZ format. The time is displayed in UTC.
 	AssociationTime *string `json:"AssociationTime,omitempty" xml:"AssociationTime,omitempty"`
 	// The certificate ID.
 	CertificateId *string `json:"CertificateId,omitempty" xml:"CertificateId,omitempty"`
-	// The certificate type.
+	// The type of the certificate.
 	//
 	// *   **Encryption**
 	// *   **Signature**
@@ -58020,15 +58450,15 @@ func (s *ModifyCommonBandwidthPackageAttributeResponse) SetBody(v *ModifyCommonB
 }
 
 type ModifyCommonBandwidthPackageIpBandwidthRequest struct {
-	// The maximum bandwidth for the EIP. This value cannot be larger than the maximum bandwidth of the EIP bandwidth plan. Unit: Mbit/s.
+	// The maximum bandwidth for the EIP. This value cannot be larger than the maximum bandwidth of the Internet Shared Bandwidth instance. Unit: Mbit/s.
 	Bandwidth *string `json:"Bandwidth,omitempty" xml:"Bandwidth,omitempty"`
-	// The ID of the EIP bandwidth plan.
+	// The ID of the Internet Shared Bandwidth instance.
 	BandwidthPackageId *string `json:"BandwidthPackageId,omitempty" xml:"BandwidthPackageId,omitempty"`
-	// The ID of the EIP that is associated with the EIP bandwidth plan.
+	// The ID of the EIP that is associated with the Internet Shared Bandwidth instance.
 	EipId        *string `json:"EipId,omitempty" xml:"EipId,omitempty"`
 	OwnerAccount *string `json:"OwnerAccount,omitempty" xml:"OwnerAccount,omitempty"`
 	OwnerId      *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
-	// The region ID of the EIP bandwidth plan. You can call the [DescribeRegions](~~36063~~) operation to query the most recent region list.
+	// The region ID of the Internet Shared Bandwidth instance. You can call the [DescribeRegions](~~36063~~) operation to query the most recent region list.
 	RegionId             *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 	ResourceOwnerAccount *string `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
 	ResourceOwnerId      *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
@@ -58083,7 +58513,7 @@ func (s *ModifyCommonBandwidthPackageIpBandwidthRequest) SetResourceOwnerId(v in
 }
 
 type ModifyCommonBandwidthPackageIpBandwidthResponseBody struct {
-	// The ID of the request.
+	// The request ID.
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -58130,15 +58560,15 @@ func (s *ModifyCommonBandwidthPackageIpBandwidthResponse) SetBody(v *ModifyCommo
 }
 
 type ModifyCommonBandwidthPackageSpecRequest struct {
-	// The maximum bandwidth of the EIP bandwidth plan. Unit: Mbit/s.
+	// The maximum bandwidth of the Internet Shared Bandwidth instance. Unit: Mbit/s.
 	//
 	// Valid values: **1** to **1000**.
 	Bandwidth *string `json:"Bandwidth,omitempty" xml:"Bandwidth,omitempty"`
-	// The ID of the EIP bandwidth plan.
+	// The ID of the Internet Shared Bandwidth instance.
 	BandwidthPackageId *string `json:"BandwidthPackageId,omitempty" xml:"BandwidthPackageId,omitempty"`
 	OwnerAccount       *string `json:"OwnerAccount,omitempty" xml:"OwnerAccount,omitempty"`
 	OwnerId            *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
-	// The region ID of the EIP bandwidth plan.
+	// The region ID of the Internet Shared Bandwidth instance.
 	//
 	// You can call the [DescribeRegions](~~36063~~) operation to query the most recent region list.
 	RegionId             *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
@@ -58190,7 +58620,7 @@ func (s *ModifyCommonBandwidthPackageSpecRequest) SetResourceOwnerId(v int64) *M
 }
 
 type ModifyCommonBandwidthPackageSpecResponseBody struct {
-	// The ID of the request.
+	// The request ID.
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -58243,9 +58673,9 @@ type ModifyCustomerGatewayAttributeRequest struct {
 	AuthKey *string `json:"AuthKey,omitempty" xml:"AuthKey,omitempty"`
 	// The client token that is used to ensure the idempotence of the request.
 	//
-	// You can use the client to generate the value, but you must make sure that it is unique among different requests. ClientToken can contain only ASCII characters.
+	// You can use the client to generate the token, but you must make sure that the token is unique among different requests. The client token can contain only ASCII characters.
 	//
-	// >  If you do not set this parameter, **ClientToken** is set to the value of **RequestId**. The value of **RequestId** may be different for each API request.
+	// >  If you do not specify this parameter, the system automatically uses the **request ID** as the **client token**. The **request ID** may be different for each request.
 	ClientToken *string `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
 	// The ID of the customer gateway.
 	CustomerGatewayId *string `json:"CustomerGatewayId,omitempty" xml:"CustomerGatewayId,omitempty"`
@@ -58259,7 +58689,7 @@ type ModifyCustomerGatewayAttributeRequest struct {
 	Name         *string `json:"Name,omitempty" xml:"Name,omitempty"`
 	OwnerAccount *string `json:"OwnerAccount,omitempty" xml:"OwnerAccount,omitempty"`
 	OwnerId      *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
-	// The ID of the region where the NAT gateway is deployed.
+	// The ID of the region where the customer gateway is deployed.
 	//
 	// You can call the [DescribeRegions](~~36063~~) operation to query the most recent region list.
 	RegionId             *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
@@ -58336,7 +58766,7 @@ type ModifyCustomerGatewayAttributeResponseBody struct {
 	IpAddress *string `json:"IpAddress,omitempty" xml:"IpAddress,omitempty"`
 	// The name of the customer gateway.
 	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
-	// The ID of the request.
+	// The request ID.
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -58417,7 +58847,7 @@ type ModifyEipAddressAttributeRequest struct {
 	Bandwidth *string `json:"Bandwidth,omitempty" xml:"Bandwidth,omitempty"`
 	// The new description of the EIP.
 	//
-	// The description must be 2 to 256 characters in length. It must start with a letter but cannot start with `http://` or `https://`.
+	// The description must be 2 to 256 characters in length and start with a letter. The description cannot start with `http://` or `https://`.
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
 	// The new name of the EIP.
 	//
@@ -58487,7 +58917,7 @@ func (s *ModifyEipAddressAttributeRequest) SetResourceOwnerId(v int64) *ModifyEi
 }
 
 type ModifyEipAddressAttributeResponseBody struct {
-	// The ID of the request.
+	// The request ID.
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -60275,13 +60705,13 @@ func (s *ModifyIPv6TranslatorEntryResponse) SetBody(v *ModifyIPv6TranslatorEntry
 type ModifyIpv6AddressAttributeRequest struct {
 	// The description of the IPv6 address.
 	//
-	// It must be 2 to 256 characters in length, and can contain letters, digits, periods (.), underscores (\_), and hyphens (-). It must start with a letter. The name must start with a letter but cannot start with `http://` or `https://`.
+	// It must be 2 to 256 characters in length, and can contain letters, digits, periods (.), underscores (\_), and hyphens (-). It must start with a letter. The name must start with a letter and cannot start with `http://` or `https://`.
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
 	// The ID of the IPv6 address.
 	Ipv6AddressId *string `json:"Ipv6AddressId,omitempty" xml:"Ipv6AddressId,omitempty"`
 	// The name of the IPv6 address.
 	//
-	// The name must be 2 to 128 characters in length, and can contain letters, digits, periods (.), underscores (\_), and hyphens (-). The name must start with a letter. The name must start with a letter but cannot start with `http://` or `https://`.
+	// The name must be 2 to 128 characters in length, and can contain letters, digits, periods (.), underscores (\_), and hyphens (-). The name must start with a letter. The name must start with a letter and cannot start with `http://` or `https://`.
 	Name         *string `json:"Name,omitempty" xml:"Name,omitempty"`
 	OwnerAccount *string `json:"OwnerAccount,omitempty" xml:"OwnerAccount,omitempty"`
 	OwnerId      *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
@@ -60340,7 +60770,7 @@ func (s *ModifyIpv6AddressAttributeRequest) SetResourceOwnerId(v int64) *ModifyI
 }
 
 type ModifyIpv6AddressAttributeResponseBody struct {
-	// The ID of the request.
+	// The request ID.
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -60498,138 +60928,26 @@ func (s *ModifyIpv6GatewayAttributeResponse) SetBody(v *ModifyIpv6GatewayAttribu
 	return s
 }
 
-type ModifyIpv6GatewaySpecRequest struct {
-	// The client token that is used to ensure the idempotence of the request.
-	//
-	// You can use the client to generate the value, but you must make sure that the value is unique among different requests. The client token can contain only ASCII characters and cannot exceed 64 characters in length.
-	ClientToken *string `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
-	// The ID of the IPv6 gateway.
-	Ipv6GatewayId *string `json:"Ipv6GatewayId,omitempty" xml:"Ipv6GatewayId,omitempty"`
-	OwnerAccount  *string `json:"OwnerAccount,omitempty" xml:"OwnerAccount,omitempty"`
-	OwnerId       *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
-	// The ID of the region where the IPv6 gateway is deployed. You can call the [DescribeRegions](~~36063~~) operation to query the available regions.
-	RegionId             *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	ResourceOwnerAccount *string `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
-	ResourceOwnerId      *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
-	// This parameter is no longer used because no specifications options are available for the IPv6 gateway.
-	Spec *string `json:"Spec,omitempty" xml:"Spec,omitempty"`
-}
-
-func (s ModifyIpv6GatewaySpecRequest) String() string {
-	return tea.Prettify(s)
-}
-
-func (s ModifyIpv6GatewaySpecRequest) GoString() string {
-	return s.String()
-}
-
-func (s *ModifyIpv6GatewaySpecRequest) SetClientToken(v string) *ModifyIpv6GatewaySpecRequest {
-	s.ClientToken = &v
-	return s
-}
-
-func (s *ModifyIpv6GatewaySpecRequest) SetIpv6GatewayId(v string) *ModifyIpv6GatewaySpecRequest {
-	s.Ipv6GatewayId = &v
-	return s
-}
-
-func (s *ModifyIpv6GatewaySpecRequest) SetOwnerAccount(v string) *ModifyIpv6GatewaySpecRequest {
-	s.OwnerAccount = &v
-	return s
-}
-
-func (s *ModifyIpv6GatewaySpecRequest) SetOwnerId(v int64) *ModifyIpv6GatewaySpecRequest {
-	s.OwnerId = &v
-	return s
-}
-
-func (s *ModifyIpv6GatewaySpecRequest) SetRegionId(v string) *ModifyIpv6GatewaySpecRequest {
-	s.RegionId = &v
-	return s
-}
-
-func (s *ModifyIpv6GatewaySpecRequest) SetResourceOwnerAccount(v string) *ModifyIpv6GatewaySpecRequest {
-	s.ResourceOwnerAccount = &v
-	return s
-}
-
-func (s *ModifyIpv6GatewaySpecRequest) SetResourceOwnerId(v int64) *ModifyIpv6GatewaySpecRequest {
-	s.ResourceOwnerId = &v
-	return s
-}
-
-func (s *ModifyIpv6GatewaySpecRequest) SetSpec(v string) *ModifyIpv6GatewaySpecRequest {
-	s.Spec = &v
-	return s
-}
-
-type ModifyIpv6GatewaySpecResponseBody struct {
-	// The ID of the request.
-	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-}
-
-func (s ModifyIpv6GatewaySpecResponseBody) String() string {
-	return tea.Prettify(s)
-}
-
-func (s ModifyIpv6GatewaySpecResponseBody) GoString() string {
-	return s.String()
-}
-
-func (s *ModifyIpv6GatewaySpecResponseBody) SetRequestId(v string) *ModifyIpv6GatewaySpecResponseBody {
-	s.RequestId = &v
-	return s
-}
-
-type ModifyIpv6GatewaySpecResponse struct {
-	Headers    map[string]*string                 `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                             `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *ModifyIpv6GatewaySpecResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
-}
-
-func (s ModifyIpv6GatewaySpecResponse) String() string {
-	return tea.Prettify(s)
-}
-
-func (s ModifyIpv6GatewaySpecResponse) GoString() string {
-	return s.String()
-}
-
-func (s *ModifyIpv6GatewaySpecResponse) SetHeaders(v map[string]*string) *ModifyIpv6GatewaySpecResponse {
-	s.Headers = v
-	return s
-}
-
-func (s *ModifyIpv6GatewaySpecResponse) SetStatusCode(v int32) *ModifyIpv6GatewaySpecResponse {
-	s.StatusCode = &v
-	return s
-}
-
-func (s *ModifyIpv6GatewaySpecResponse) SetBody(v *ModifyIpv6GatewaySpecResponseBody) *ModifyIpv6GatewaySpecResponse {
-	s.Body = v
-	return s
-}
-
 type ModifyIpv6InternetBandwidthRequest struct {
-	// The Internet bandwidth for the IPv6 CIDR block. Valid values: **1** to **5000**. Unit: Mbit/s.
+	// The Internet bandwidth for the IPv6 CIDR block. Unit: Mbit/s. Valid values: **1** to **5000**.
 	Bandwidth *int64 `json:"Bandwidth,omitempty" xml:"Bandwidth,omitempty"`
 	// The client token that is used to ensure the idempotence of the request.
 	//
-	// You can use the client to generate the value, but you must ensure that the value is unique among all requests. ClientToken can contain only ASCII characters.
+	// You can use the client to generate the token, but you must make sure that the token is unique among different requests. The token can contain only ASCII characters.
 	//
-	// >  If you do not set this parameter, **ClientToken** is set to the value of **RequestId**. The value of **RequestId** may be different for each API request.
+	// >  If you do not specify this parameter, the system automatically uses the **request ID** as the **client token**. The **request ID** may be different for each request.
 	ClientToken *string `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
 	// The ID of the IPv6 address.
 	//
-	// >  You must set one of the **Ipv6AddressId** and **Ipv6InternetBandwidthId** parameters.
+	// >  You must specify one of **Ipv6AddressId** and **Ipv6InternetBandwidthId**.
 	Ipv6AddressId *string `json:"Ipv6AddressId,omitempty" xml:"Ipv6AddressId,omitempty"`
-	// The ID of the Internet bandwidth that you purchase for the IPv6 CIDR block.
+	// The ID of the Internet bandwidth that you purchased for the IPv6 CIDR block.
 	//
-	// >  You must set one of the **Ipv6AddressId** and **Ipv6InternetBandwidthId** parameters.
+	// >  You must specify one of **Ipv6AddressId** and **Ipv6InternetBandwidthId**.
 	Ipv6InternetBandwidthId *string `json:"Ipv6InternetBandwidthId,omitempty" xml:"Ipv6InternetBandwidthId,omitempty"`
 	OwnerAccount            *string `json:"OwnerAccount,omitempty" xml:"OwnerAccount,omitempty"`
 	OwnerId                 *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
-	// The ID of the region where the IPv6 gateway is deployed. You can call the [DescribeRegions](~~36063~~) operation to obtain the region ID.
+	// The ID of the region where the IPv6 gateway is deployed. You can call the [DescribeRegions](~~36063~~) operation to query the most recent region list.
 	RegionId             *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 	ResourceOwnerAccount *string `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
 	ResourceOwnerId      *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
@@ -60689,7 +61007,7 @@ func (s *ModifyIpv6InternetBandwidthRequest) SetResourceOwnerId(v int64) *Modify
 }
 
 type ModifyIpv6InternetBandwidthResponseBody struct {
-	// The ID of the request.
+	// The request ID.
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -61832,26 +62150,26 @@ func (s *ModifyRouteTableAttributesResponse) SetBody(v *ModifyRouteTableAttribut
 type ModifyRouterInterfaceAttributeRequest struct {
 	// Specifies whether to delete the health check IP addresses configured on the router interface. Valid values:
 	//
-	// *   **true**: yes
-	// *   **false** (default): no
+	// *   **true**
+	// *   **false** (default)
 	DeleteHealthCheckIp *bool `json:"DeleteHealthCheckIp,omitempty" xml:"DeleteHealthCheckIp,omitempty"`
 	// The description of the router interface.
 	//
 	// The value must be 2 to 256 characters in length. It must start with a letter but cannot start with `http://` or `https://`.
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
-	// The rate of the heath check. Unit: milliseconds. The recommended value is **2000**. This value specifies the interval at which probe packets are sent during a health check.
+	// The rate of health checks. Unit: milliseconds. The recommended value is **2000**. This value specifies the interval at which probe packets are sent during a health check.
 	//
 	// In this example, **HcThreshold** is set to **8** and **HcRate** is set to **2000**. In this example, probe packets are sent from **HealthCheckSourceIp** (source address) to **HealthCheckTargetIp** (destination address) every 2,000 seconds. If no response is returned for eight consecutive times, the health check fails.
 	HcRate *int32 `json:"HcRate,omitempty" xml:"HcRate,omitempty"`
-	// The health check threshold. Unit: packets. We recommend that you set the value to **8**. This value specifies the number of probe packets that are sent during a health check.
+	// The healthy threshold. Unit: packets. We recommend that you set the value to **8**. This value specifies the number of probe packets that are sent during a health check.
 	HcThreshold *int32 `json:"HcThreshold,omitempty" xml:"HcThreshold,omitempty"`
 	// The source IP address that is used to perform health checks. The source IP address must be an idle IP address of the local virtual private cloud (VPC).
 	//
-	// >  You can set this parameter if an Express Connect circuit is used.
+	// >  You can set this parameter when an Express Connect circuit is used.
 	HealthCheckSourceIp *string `json:"HealthCheckSourceIp,omitempty" xml:"HealthCheckSourceIp,omitempty"`
 	// The destination IP address that is used to perform health checks.
 	//
-	// >  This parameter is required when the **HealthCheckSourceIp** parameter is set.
+	// >  This parameter is required when **HealthCheckSourceIp** is specified.
 	HealthCheckTargetIp *string `json:"HealthCheckTargetIp,omitempty" xml:"HealthCheckTargetIp,omitempty"`
 	// The name of the router interface.
 	//
@@ -61865,11 +62183,11 @@ type ModifyRouterInterfaceAttributeRequest struct {
 	OppositeRouterId *string `json:"OppositeRouterId,omitempty" xml:"OppositeRouterId,omitempty"`
 	// The type of router to which the peer router interface belongs. Valid values:
 	//
-	// *   **VRouter**: vRouter
-	// *   **VBR** (default): virtual border router (VBR)
+	// *   **VRouter**
+	// *   **VBR** (default)
 	OppositeRouterType *string `json:"OppositeRouterType,omitempty" xml:"OppositeRouterType,omitempty"`
 	OwnerId            *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
-	// The ID of the region to which the router interface belongs.
+	// The region ID of the router interface.
 	//
 	// You can call the [DescribeRegions](~~36063~~) operation to query the most recent region list.
 	RegionId             *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
@@ -61968,7 +62286,7 @@ func (s *ModifyRouterInterfaceAttributeRequest) SetRouterInterfaceId(v string) *
 }
 
 type ModifyRouterInterfaceAttributeResponseBody struct {
-	// The ID of the request.
+	// The request ID.
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -62434,30 +62752,30 @@ func (s *ModifySslVpnClientCertResponse) SetBody(v *ModifySslVpnClientCertRespon
 }
 
 type ModifySslVpnServerRequest struct {
-	// The encryption algorithm that is used by the SSL server. Valid values:
+	// The encryption algorithm that is used in the SSL-VPN connection. Valid values:
 	//
-	// *   **AES-128-CBC** (default): AES-128-CBC
-	// *   **AES-192-CBC**: AES-192-CBC
-	// *   **AES-256-CBC**: AES-256-CBC
-	// *   **none**: does not use an encryption algorithm.
+	// *   **AES-128-CBC** (default)
+	// *   **AES-192-CBC**
+	// *   **AES-256-CBC**
+	// *   **none**
 	Cipher *string `json:"Cipher,omitempty" xml:"Cipher,omitempty"`
 	// The client IP address pool.
 	ClientIpPool *string `json:"ClientIpPool,omitempty" xml:"ClientIpPool,omitempty"`
 	// The client token that is used to ensure the idempotence of the request.
 	//
-	// You can use the client to generate the value, but you must make sure that it is unique among different requests. ClientToken can contain only ASCII characters.
+	// You can use the client to generate the token, but you must make sure that the token is unique among different requests. The token can contain only ASCII characters.
 	//
-	// >  If you do not set this parameter, **ClientToken** is set to the value of **RequestId**. The value of **RequestId** may be different for each API request.
+	// >  If you do not specify this parameter, the system automatically uses the **request ID** as the **client token**. The **request ID** may be different for each request.
 	ClientToken *string `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
 	// Specifies whether to enable data compression. Valid values:
 	//
-	// *   **true** (default): yes
-	// *   **false**: no
+	// *   **true** (default)
+	// *   **false**
 	Compress *bool `json:"Compress,omitempty" xml:"Compress,omitempty"`
 	// Specifies whether to enable two-factor authentication.
 	//
-	// *   **true**: yes
-	// *   **false** (default): no
+	// *   **true**
+	// *   **false** (default)
 	EnableMultiFactorAuth *bool `json:"EnableMultiFactorAuth,omitempty" xml:"EnableMultiFactorAuth,omitempty"`
 	// The ID of the Identity as a Service (IDaaS) instance.
 	IDaaSInstanceId *string `json:"IDaaSInstanceId,omitempty" xml:"IDaaSInstanceId,omitempty"`
@@ -62477,10 +62795,10 @@ type ModifySslVpnServerRequest struct {
 	Port *int32 `json:"Port,omitempty" xml:"Port,omitempty"`
 	// The protocol that is used by the SSL server. Valid values:
 	//
-	// *   **TCP**: TCP
-	// *   **UDP** (default): UDP
+	// *   **TCP**
+	// *   **UDP** (default)
 	Proto *string `json:"Proto,omitempty" xml:"Proto,omitempty"`
-	// The ID of the region where the VPN gateway is created.
+	// The region ID of the VPN gateway.
 	//
 	// You can call the [DescribeRegions](~~36063~~) operation to query the most recent region list.
 	RegionId             *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
@@ -62596,8 +62914,8 @@ type ModifySslVpnServerResponseBody struct {
 	CreateTime *int64 `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
 	// Indicates whether two-factor authentication is enabled.
 	//
-	// *   **true**: enabled
-	// *   **false** (default): disabled
+	// *   **true**
+	// *   **false** (default)
 	EnableMultiFactorAuth *bool `json:"EnableMultiFactorAuth,omitempty" xml:"EnableMultiFactorAuth,omitempty"`
 	// The ID of the IDaaS instance.
 	IDaaSInstanceId *string `json:"IDaaSInstanceId,omitempty" xml:"IDaaSInstanceId,omitempty"`
@@ -62615,7 +62933,7 @@ type ModifySslVpnServerResponseBody struct {
 	Proto *string `json:"Proto,omitempty" xml:"Proto,omitempty"`
 	// The ID of the region where the SSL server is created.
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	// The ID of the request.
+	// The request ID.
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	// The ID of the SSL server.
 	SslVpnServerId *string `json:"SslVpnServerId,omitempty" xml:"SslVpnServerId,omitempty"`
@@ -62746,13 +63064,17 @@ func (s *ModifySslVpnServerResponse) SetBody(v *ModifySslVpnServerResponseBody) 
 }
 
 type ModifyTunnelAttributeRequest struct {
-	// The client token that is used to ensure the idempotence of the request. You can use the client to generate the token, but you must make sure that the token is unique among different requests. The token can contain only ASCII characters.
+	// The client token that is used to ensure the idempotence of the request.
 	//
-	// > If you do not specify this parameter, the system automatically uses the **request ID** as the **client token**. The **request ID** may be different for each request.
+	// You can use the client to generate a token, but you must make sure that the token is unique among different requests. The client token can contain only ASCII characters.
+	//
+	// >  If you do not specify this parameter, the system automatically uses the value of **RequestId** as the **client token**. The value of **RequestId** is different for each API request.
 	ClientToken  *string `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
 	OwnerAccount *string `json:"OwnerAccount,omitempty" xml:"OwnerAccount,omitempty"`
 	OwnerId      *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
-	// The region ID of the IPsec connection. You can call the [DescribeRegions](~~36063~~) operation to query the most recent list of regions.
+	// The ID of the region in which the IPsec connection is established.
+	//
+	// You can call the [DescribeRegions](~~36063~~) operation to query the region ID.
 	RegionId             *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 	ResourceOwnerAccount *string `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
 	ResourceOwnerId      *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
@@ -62819,24 +63141,24 @@ func (s *ModifyTunnelAttributeRequest) SetVpnConnectionId(v string) *ModifyTunne
 
 type ModifyTunnelAttributeRequestTunnelOptionsSpecification struct {
 	// Specifies whether to enable the dead peer detection (DPD) feature. Valid values:
-	// - **true**: DPD is enabled. The IPsec initiator sends DPD packets to verify the existence and availability of the IPsec peer. If no response is received from the peer within a specified period of time, the IPsec peer is considered disconnected. Then, the ISAKMP SA, IPsec SA, and IPsec tunnel are deleted.
 	//
-	// - **false**: DPD is disabled. The IPsec initiator does not send DPD packets.
+	// *   **true**: DPD is enabled. The IPsec initiator sends DPD packets to verify the existence and availability of the IPsec peer. If no response is received from the peer within a specified period of time, the IPsec peer is considered disconnected. Then, the ISAKMP SA, IPsec SA, and IPsec tunnel are deleted.
+	// *   **false**: DPD is disabled. The IPsec initiator does not send DPD packets.
 	EnableDpd *bool `json:"EnableDpd,omitempty" xml:"EnableDpd,omitempty"`
 	// Specifies whether to enable NAT traversal. Valid values:
 	//
-	// - **true**
-	//
-	//     After NAT traversal is enabled, the initiator does not check the UDP ports during IKE negotiations and can automatically discover NAT gateway devices along the IPsec tunnel.
-	// - **false**
+	// *   **true**: NAT traversal is enabled. After NAT traversal is enabled, the initiator does not check the UDP ports during Internet Key Exchange (IKE) negotiations and can automatically discover NAT gateway devices along the IPsec-VPN tunnel.
+	// *   **false**: NAT traversal is disabled.
 	EnableNatTraversal *bool `json:"EnableNatTraversal,omitempty" xml:"EnableNatTraversal,omitempty"`
-	// If you want to attach the IPsec connection to a VPN gateway that uses a ShangMi (SM) certificate, set the value to the peer CA certificate.
+	// The peer certificate authority (CA) certificate when you want to attach the IPsec connection to a virtual private network (VPN) gateway that uses a ShangMi (SM) certificate.
 	RemoteCaCertificate *string `json:"RemoteCaCertificate,omitempty" xml:"RemoteCaCertificate,omitempty"`
-	// The BGP configurations.
+	// The Border Gateway Protocol (BGP) configurations of the tunnel.
+	//
+	// If the BGP feature is not enabled for the tunnel, you must call the [ModifyVpnConnectionAttribute](~~120381~~) operation to enable the BGP feature for the tunnel and configure BGP.
 	TunnelBgpConfig *ModifyTunnelAttributeRequestTunnelOptionsSpecificationTunnelBgpConfig `json:"TunnelBgpConfig,omitempty" xml:"TunnelBgpConfig,omitempty" type:"Struct"`
-	// The IKE settings for Phase 1 negotiations.
+	// The configurations of IKE Phase 1.
 	TunnelIkeConfig *ModifyTunnelAttributeRequestTunnelOptionsSpecificationTunnelIkeConfig `json:"TunnelIkeConfig,omitempty" xml:"TunnelIkeConfig,omitempty" type:"Struct"`
-	// The IPsec settings for Phase 2 negotiations.
+	// The configurations of IPsec Phase 2.
 	TunnelIpsecConfig *ModifyTunnelAttributeRequestTunnelOptionsSpecificationTunnelIpsecConfig `json:"TunnelIpsecConfig,omitempty" xml:"TunnelIpsecConfig,omitempty" type:"Struct"`
 }
 
@@ -62883,7 +63205,9 @@ type ModifyTunnelAttributeRequestTunnelOptionsSpecificationTunnelBgpConfig struc
 	LocalAsn *int64 `json:"LocalAsn,omitempty" xml:"LocalAsn,omitempty"`
 	// The BGP IP address of the tunnel. The IP address must fall into the **CIDR block** of the tunnel.
 	LocalBgpIp *string `json:"LocalBgpIp,omitempty" xml:"LocalBgpIp,omitempty"`
-	// The CIDR block of the tunnel. The CIDR block must fall into 169.254.0.0/16. The subnet mask of the CIDR block must be 30 bits in length.
+	// The CIDR block of the tunnel.
+	//
+	// The CIDR block must fall into 169.254.0.0/16. The subnet mask of the CIDR block must be 30 bits in length.
 	TunnelCidr *string `json:"TunnelCidr,omitempty" xml:"TunnelCidr,omitempty"`
 }
 
@@ -62911,36 +63235,35 @@ func (s *ModifyTunnelAttributeRequestTunnelOptionsSpecificationTunnelBgpConfig) 
 }
 
 type ModifyTunnelAttributeRequestTunnelOptionsSpecificationTunnelIkeConfig struct {
-	// The authentication algorithm that is used in Phase 1 negotiations.
+	// The authentication algorithm that is used in IKE Phase 1 negotiations.
 	//
-	// - If the IPsec connection is attached to a standard VPN gateway, the valid values are **md5**, **sha1**, **sha256**, **sha384**, and **sha512**.
-	// - If the IPsec connection is attached to a VPN gateway that uses an SM certificate, set the value to **sm3**.
+	// *   Valid values when the IPsec connection is attached to a standard VPN gateway: **md5**, **sha1**, **sha256**, **sha384**, and **sha512**.
+	// *   Valid values when the IPsec connection is attached to a VPN gateway that uses an SM certificate: **sm3**.
 	IkeAuthAlg *string `json:"IkeAuthAlg,omitempty" xml:"IkeAuthAlg,omitempty"`
-	// The encryption algorithm that is used in Phase 1 negotiations.
+	// The encryption algorithm that is used in IKE Phase 1 negotiations.
 	//
-	// - If the IPsec connection is attached to a standard VPN gateway, the valid values are **aes**, **aes192**, **sha256**, **des**, and **3des**.
-	// - If the IPsec connection is attached to a VPN gateway that uses an SM certificate, set the value to **sm4**.
+	// *   Valid values when the IPsec connection is attached to a standard VPN gateway: **aes**, **aes192**, **sha256**, **des**, and **3des**.
+	// *   Valid values when the IPsec connection is attached to a VPN gateway that uses an SM certificate: **sm4**.
 	IkeEncAlg *string `json:"IkeEncAlg,omitempty" xml:"IkeEncAlg,omitempty"`
-	// The SA lifetime that is determined by Phase 1 negotiations. Unit: seconds. Valid values: **0** to **86400**.
+	// The SA lifetime that is used in IKE Phase 1 negotiations. Unit: seconds. Valid values: **0 to 86400**.
 	IkeLifetime *int64 `json:"IkeLifetime,omitempty" xml:"IkeLifetime,omitempty"`
 	// The IKE negotiation mode. Valid values:
 	//
-	// - **main**: This mode offers higher security during negotiations.
-	// - **aggressive**: This mode is faster and has a higher success rate.
+	// *   **main:** This mode offers higher security during negotiations.
+	// *   **aggressive:** This mode is faster and has a higher success rate.
 	IkeMode *string `json:"IkeMode,omitempty" xml:"IkeMode,omitempty"`
-	// The Diffie-Hellman key exchange algorithm that is used in Phase 1 negotiations. Valid values: **group1**, **group2**, **group5**, and **group14**.
+	// The Diffie-Hellman (DH) key exchange algorithm that is used in IKE Phase 1 negotiations. Valid values: **group1**, **group2**, **group5**, and **group14**.
 	IkePfs *string `json:"IkePfs,omitempty" xml:"IkePfs,omitempty"`
-	// The version of the IKE protocol. Valid values: **ikev1** and **ikev2**.
+	// The IKE version. Valid values: **ikev1** and **ikev2**.
 	IkeVersion *string `json:"IkeVersion,omitempty" xml:"IkeVersion,omitempty"`
 	// The tunnel identifier. The identifier can be up to 100 characters in length, and supports fully qualified domain names (FQDNs) and IP addresses. The default identifier is the tunnel IP address.
 	LocalId *string `json:"LocalId,omitempty" xml:"LocalId,omitempty"`
 	// The pre-shared key that is used to verify identities between the tunnel and peer.
 	//
+	// *   It must be 1 to 100 characters in length, and can contain letters, digits, and the following characters: ``~!`@#$%^&*()_-+={}[]|;:\",.<>/?``
+	// *   If you do not specify a pre-shared key, the system generates a random 16-character string as the pre-shared key. You can call the [DescribeVpnConnection](~~120374~~) operation to query the pre-shared key that is generated by the system.
 	//
-	// - The key must be 1 to 100 characters in length, and can contain digits, letters, and the following characters: ```~!`@#$%^&*()_-+={}[]|;:\",.<>/?```
-	// - If you do not specify a pre-shared key, the system generates a random 16-bit string as the pre-shared key. You can call the DescribeVpnConnection operation to query the pre-shared key that is generated by the system.
-	//
-	// > The tunnel and the peer must use the same pre-shared key. Otherwise, tunnel communication cannot be established.
+	// >  The pre-shared key that is configured for the tunnel and the tunnel peer must be the same. Otherwise, the system cannot establish the tunnel.
 	Psk *string `json:"Psk,omitempty" xml:"Psk,omitempty"`
 	// The peer identifier. The identifier can be up to 100 characters in length, and supports FQDNs and IP addresses. The default identifier is the IP address of the customer gateway associated with the tunnel.
 	RemoteId *string `json:"RemoteId,omitempty" xml:"RemoteId,omitempty"`
@@ -63000,19 +63323,19 @@ func (s *ModifyTunnelAttributeRequestTunnelOptionsSpecificationTunnelIkeConfig) 
 }
 
 type ModifyTunnelAttributeRequestTunnelOptionsSpecificationTunnelIpsecConfig struct {
-	// The authentication algorithm that is used in Phase 2 negotiations.
+	// The authentication algorithm that is used in IPsec Phase 2 negotiations.
 	//
-	// - If the IPsec connection is attached to a standard VPN gateway, the valid values are **md5**, **sha1**, **sha256**, **sha384,** and **sha512**.
-	// - If the IPsec connection is attached to a VPN gateway that uses an SM certificate, set the value to **sm3**.
+	// *   Valid values when the IPsec connection is attached to a standard VPN gateway: **md5**, **sha1**, **sha256**, **sha384**, and **sha512**.
+	// *   Valid values when the IPsec connection is attached to a VPN gateway that uses an SM certificate: **sm3**.
 	IpsecAuthAlg *string `json:"IpsecAuthAlg,omitempty" xml:"IpsecAuthAlg,omitempty"`
-	// The encryption algorithm that is used in Phase 2 negotiations.
+	// The encryption algorithm that is used in IPsec Phase 2 negotiations.
 	//
-	// - If the IPsec connection is attached to a standard VPN gateway, the valid values are **aes**, **aes192**, **sha256**, **des**, and **3des**.
-	// - If the IPsec connection is attached to a VPN gateway that uses an SM certificate, set the value to **sm4**.
+	// *   Valid values when the IPsec connection is attached to a standard VPN gateway: **aes**, **aes192**, **sha256**, **des**, and **3des**.
+	// *   Valid values when the IPsec connection is attached to a VPN gateway that uses an SM certificate: **sm4**.
 	IpsecEncAlg *string `json:"IpsecEncAlg,omitempty" xml:"IpsecEncAlg,omitempty"`
-	// The SA lifetime that is determined by Phase 2 negotiations. Unit: seconds. Valid values: **0** to **86400**.
+	// The SA lifetime that is used in IPsec Phase 2 negotiations. Unit: seconds. Valid values: **0 to 86400**.
 	IpsecLifetime *int64 `json:"IpsecLifetime,omitempty" xml:"IpsecLifetime,omitempty"`
-	// The Diffie-Hellman key exchange algorithm that is used in Phase 2 negotiations. Valid values: **disabled**, **group1**, **group2**, **group5**, and **group14**.
+	// The DH key exchange algorithm that is used in IPsec Phase 2 negotiations. Valid values: **disabled**, **group1**, **group2**, **group5**, and **group14**.
 	IpsecPfs *string `json:"IpsecPfs,omitempty" xml:"IpsecPfs,omitempty"`
 }
 
@@ -63049,38 +63372,38 @@ type ModifyTunnelAttributeResponseBody struct {
 	CustomerGatewayId *string `json:"CustomerGatewayId,omitempty" xml:"CustomerGatewayId,omitempty"`
 	// Indicates whether DPD is enabled. Valid values:
 	//
-	// - **true**
-	// - **false**
+	// *   **false**
+	// *   **true**
 	EnableDpd *bool `json:"EnableDpd,omitempty" xml:"EnableDpd,omitempty"`
-	// Indicates whether BAT traversal is enabled. Valid values:
+	// Indicates whether NAT traversal is enabled. Valid values:
 	//
-	// - **true**
-	// - **false**
+	// *   **false**
+	// *   **true**
 	EnableNatTraversal *bool `json:"EnableNatTraversal,omitempty" xml:"EnableNatTraversal,omitempty"`
 	// The tunnel IP address.
 	InternetIp *string `json:"InternetIp,omitempty" xml:"InternetIp,omitempty"`
-	// The peer CA certificate when a ShangMi (SM) VPN gateway is associated with the IPsec connection.
+	// The peer CA certificate when a VPN gateway that uses an SM certificate is used to create the IPsec connection.
 	RemoteCaCertificate *string `json:"RemoteCaCertificate,omitempty" xml:"RemoteCaCertificate,omitempty"`
 	// The request ID.
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	// The tunnel role. Valid values:
 	//
-	// - **master**
-	// - **slave**
+	// *   **master**
+	// *   **slave**
 	Role *string `json:"Role,omitempty" xml:"Role,omitempty"`
 	// The tunnel status. Valid values:
 	//
-	// - **active**
-	// - **updating**
-	// - d**eleting**
+	// *   **active**
+	// *   **updating**
+	// *   **deleting**
 	State *string `json:"State,omitempty" xml:"State,omitempty"`
-	// The BGP configurations.
+	// The BGP configuration.
 	TunnelBgpConfig *ModifyTunnelAttributeResponseBodyTunnelBgpConfig `json:"TunnelBgpConfig,omitempty" xml:"TunnelBgpConfig,omitempty" type:"Struct"`
 	// The tunnel ID.
 	TunnelId *string `json:"TunnelId,omitempty" xml:"TunnelId,omitempty"`
-	// The IKE settings for Phase 1 negotiations.
+	// The configurations of IKE Phase 1.
 	TunnelIkeConfig *ModifyTunnelAttributeResponseBodyTunnelIkeConfig `json:"TunnelIkeConfig,omitempty" xml:"TunnelIkeConfig,omitempty" type:"Struct"`
-	// The IPsec settings for Phase 2 negotiations.
+	// The configurations of IPsec Phase 2.
 	TunnelIpsecConfig *ModifyTunnelAttributeResponseBodyTunnelIpsecConfig `json:"TunnelIpsecConfig,omitempty" xml:"TunnelIpsecConfig,omitempty" type:"Struct"`
 	// The tunnel zone.
 	ZoneNo *string `json:"ZoneNo,omitempty" xml:"ZoneNo,omitempty"`
@@ -63160,10 +63483,10 @@ func (s *ModifyTunnelAttributeResponseBody) SetZoneNo(v string) *ModifyTunnelAtt
 }
 
 type ModifyTunnelAttributeResponseBodyTunnelBgpConfig struct {
-	// Indicates whether BGP is enabled. Valid values:
+	// Indicates whether the BGP feature is enabled. Valid values:
 	//
-	// - **true**
-	// - **false**
+	// *   **true**
+	// *   **false**
 	EnableBgp *bool `json:"EnableBgp,omitempty" xml:"EnableBgp,omitempty"`
 	// The local ASN.
 	LocalAsn *int64 `json:"LocalAsn,omitempty" xml:"LocalAsn,omitempty"`
@@ -63224,19 +63547,19 @@ type ModifyTunnelAttributeResponseBodyTunnelIkeConfig struct {
 	IkeLifetime *int64 `json:"IkeLifetime,omitempty" xml:"IkeLifetime,omitempty"`
 	// The IKE negotiation mode. Valid values:
 	//
-	// - **main**: This mode offers higher security during negotiations.
-	// - **aggressive**: This mode is faster and has a higher success rate.
+	// *   **main:** This mode offers higher security during negotiations.
+	// *   **aggressive:** This mode is faster and has a higher success rate.
 	IkeMode *string `json:"IkeMode,omitempty" xml:"IkeMode,omitempty"`
-	// The Diffie-Hellman group.
+	// The DH group.
 	IkePfs *string `json:"IkePfs,omitempty" xml:"IkePfs,omitempty"`
-	// The version of the IKE protocol.
+	// The IKE version. Valid values:
 	//
-	// - **ikev1**
-	// - **ikev2**
+	// *   **ikev1**
+	// *   **ikev2**
 	//
 	// Compared with IKEv1, IKEv2 simplifies the SA negotiation process and is more suitable for scenarios in which multiple CIDR blocks are used.
 	IkeVersion *string `json:"IkeVersion,omitempty" xml:"IkeVersion,omitempty"`
-	// The tunnel identifier. The identifier supports FQDNs and IP addresses. The default identifier is the tunnel IP address.
+	// The tunnel identifier. The identifier supports FQDNs and IP addresses. The default value is the tunnel IP address.
 	LocalId *string `json:"LocalId,omitempty" xml:"LocalId,omitempty"`
 	// The pre-shared key.
 	Psk *string `json:"Psk,omitempty" xml:"Psk,omitempty"`
@@ -63304,7 +63627,7 @@ type ModifyTunnelAttributeResponseBodyTunnelIpsecConfig struct {
 	IpsecEncAlg *string `json:"IpsecEncAlg,omitempty" xml:"IpsecEncAlg,omitempty"`
 	// The IPsec lifetime. Unit: seconds.
 	IpsecLifetime *int64 `json:"IpsecLifetime,omitempty" xml:"IpsecLifetime,omitempty"`
-	// The Diffie-Hellman group.
+	// The DH group.
 	IpsecPfs *string `json:"IpsecPfs,omitempty" xml:"IpsecPfs,omitempty"`
 }
 
@@ -63626,9 +63949,9 @@ func (s *ModifyVSwitchAttributeResponse) SetBody(v *ModifyVSwitchAttributeRespon
 type ModifyVcoRouteEntryWeightRequest struct {
 	// The client token that is used to ensure the idempotence of the request.
 	//
-	// You can use the client to generate the value, but you must make sure that it is unique among all requests. The token can contain only ASCII characters.
+	// You can use the client to generate the token, but you must make sure that the token is unique among different requests. The client token can contain only ASCII characters.
 	//
-	// >  If you do not set this parameter, **ClientToken** is set to the value of **RequestId**. The value of **RequestId** for each API request may be different.
+	// >  If you do not specify this parameter, the system automatically uses the **request ID** as the **client token**. The **request ID** may be different for each request.
 	ClientToken *string `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
 	// The new weight of the destination-based route that you want to modify. Valid values:
 	//
@@ -63640,7 +63963,7 @@ type ModifyVcoRouteEntryWeightRequest struct {
 	// The tunneling protocol. Set the value to **Ipsec**, which specifies the IPsec tunneling protocol.
 	OverlayMode  *string `json:"OverlayMode,omitempty" xml:"OverlayMode,omitempty"`
 	OwnerAccount *string `json:"OwnerAccount,omitempty" xml:"OwnerAccount,omitempty"`
-	// The ID of the region to which the IPsec-VPN connection belongs.
+	// The ID of the region where the IPsec-VPN connection is established.
 	//
 	// You can call the [DescribeRegions](~~36063~~) operation to query the most recent region list.
 	RegionId             *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
@@ -63721,7 +64044,7 @@ func (s *ModifyVcoRouteEntryWeightRequest) SetWeight(v int32) *ModifyVcoRouteEnt
 }
 
 type ModifyVcoRouteEntryWeightResponseBody struct {
-	// The ID of the request.
+	// The request ID.
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -64394,99 +64717,101 @@ func (s *ModifyVpcPrefixListResponse) SetBody(v *ModifyVpcPrefixListResponseBody
 type ModifyVpnAttachmentAttributeRequest struct {
 	// Specifies whether to automatically configure routes. Valid values:
 	//
-	// *   **true:** automatically configures routes.
-	// *   **false:** does not automatically configure routes.
+	// *   **true**
+	// *   **false**
 	AutoConfigRoute *bool `json:"AutoConfigRoute,omitempty" xml:"AutoConfigRoute,omitempty"`
-	// The Border Gateway Protocol (BGP) configurations:
+	// The Border Gateway Protocol (BGP) configuration:
 	//
-	// *   **BgpConfig.EnableBgp:** specifies whether to enable BGP. Valid values:
+	// *   **BgpConfig.EnableBgp**: specifies whether to enable BGP. Valid values:
 	//
-	//     *   **true:** enables BGP.
-	//     *   **false:** disables BGP.
+	//     *   **true**
+	//     *   **false**
 	//
-	// *   **BgpConfig.LocalAsn:** the autonomous system number (ASN) on the Alibaba Cloud side. Valid values: **1** to **4294967295**.
+	// *   **BgpConfig.LocalAsn**: the autonomous system number (ASN) on the Alibaba Cloud side. Valid values: **1** to **4294967295**.
 	//
-	// *   **BgpConfig.TunnelCidr:** the CIDR block of the IPsec tunnel. The CIDR block must belong to 169.254.0.0/16. The subnet mask of the CIDR block must be 30 bits in length.
+	// *   **BgpConfig.TunnelCidr:** the CIDR block of the IPsec tunnel. The CIDR block falls within 169.254.0.0/16. The subnet mask of the CIDR block must be 30 bits in length.
 	//
 	// *   **LocalBgpIp:** the BGP IP address on the Alibaba Cloud side. This IP address must fall within the CIDR block of the IPsec tunnel.
 	//
-	// >
-	// *   Before you configure BGP, we recommend that you learn about how BGP works and the limits. For more information, see [VPN Gateway supports BGP dynamic routing](~~170235~~).
-	// *   We recommend that you use a private ASN to establish a connection to Alibaba Cloud over BGP. Refer to the relevant documentation for the private ASN range.
+	// >*   Before you configure BGP, we recommend that you learn how BGP dynamic routing works and the limits of using BGP dynamic routing. For more information, see [VPN Gateway supports BGP dynamic routing](~~170235~~).
+	// >*   We recommend that you use a private ASN to establish a connection with Alibaba Cloud over BGP. Refer to the relevant documentation for the private ASN range.
 	BgpConfig *string `json:"BgpConfig,omitempty" xml:"BgpConfig,omitempty"`
-	// The client token that you want to use to ensure the idempotence of the request.
+	// The client token that is used to ensure the idempotence of the request.
 	//
 	// You can use the client to generate the token, but you must make sure that the token is unique among different requests. The token can contain only ASCII characters.
 	//
-	// >  If you do not specify this parameter, the system uses the value of **RequestId** as the value of **ClientToken**. The value of the **RequestId** parameter may be different for each API request.
+	// >  If you do not specify this parameter, the system automatically uses the value of **RequestId** as the value of **ClientToken**. The **request ID** may be different for each request.
 	ClientToken *string `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
-	// The customer gateways to be associated with the IPsec-VPN connections.
+	// The customer gateway associated with the IPsec-VPN connection.
 	CustomerGatewayId *string `json:"CustomerGatewayId,omitempty" xml:"CustomerGatewayId,omitempty"`
-	// Specifies whether to immediately start IPsec negotiations after the configuration is complete. Valid values:
+	// Specifies whether to immediately start IPsec negotiations after the configuration takes effect. Valid values:
 	//
-	// *   **true:** immediately starts IPsec negotiations after the configuration is complete.
-	// *   **false:** starts IPsec negotiations when inbound traffic is detected.
+	// *   **true**: immediately starts IPsec negotiations after the configuration is complete.
+	// *   **false**: starts IPsec negotiations when inbound traffic is detected.
 	EffectImmediately *bool `json:"EffectImmediately,omitempty" xml:"EffectImmediately,omitempty"`
 	// Specifies whether to enable the dead peer detection (DPD) feature. Valid values:
 	//
-	// *   **true:** enables the DPD feature. The initiator of the IPsec-VPN connection sends DPD packets to verify the peer is active. If no feedback is received from the peer within a specified period of time, the connection fails, and ISAKMP SA, IPsec SA, and security tunnel are deleted.
-	// *   **false:** disables the DPD feature. The initiator of the IPsec-VPN connection does not send DPD packets.
+	// *   **true**: enables the DPD feature. The initiator of the IPsec-VPN connection sends DPD packets to check the existence and availability of the peer. If no feedback is received from the peer within a specific period of time, the connection fails. Then, the ISAKMP SA, IPsec SA, and IPsec tunnel are deleted.
+	// *   **false**: disables the DPD feature. The initiator of the IPsec-VPN connection does not send DPD packets.
 	EnableDpd *bool `json:"EnableDpd,omitempty" xml:"EnableDpd,omitempty"`
 	// Specifies whether to enable NAT traversal. Valid values:
 	//
-	// *   **true:** enables NAT traversal. After NAT traversal is enabled, the initiator does not check the UDP ports during IKE negotiations and can automatically discover NAT gateway devices along the IPsec tunnel.
-	// *   **false:** disables NAT traversal.
+	// *   **true** After NAT traversal is enabled, the initiator does not check the UDP ports during IKE negotiations and can automatically discover NAT gateway devices along the IPsec tunnel.
+	// *   **false**
 	EnableNatTraversal *bool `json:"EnableNatTraversal,omitempty" xml:"EnableNatTraversal,omitempty"`
-	// The health check configurations:
+	// The health check configuration:
 	//
-	// *   **HealthCheckConfig.enable:** specifies whether to enable the health check feature. Valid values:
+	// *   **HealthCheckConfig.enable**: specifies whether to enable the health check feature. Valid values:
 	//
-	//     *   **true:** enables the health check feature.
-	//     *   **false:** disables the health check feature.
+	//     *   **true**
+	//     *   **false**
 	//
-	// *   **HealthCheckConfig.dip:** the destination IP address that is used for health checks. Enter the IP address on the data center side that the VPC can communicate with through the IPsec-VPN connection.
+	// *   **HealthCheckConfig.dip**: the destination IP address that is used for health checks. Enter the IP address of the data center with which the VPC can communicate based on the IPsec-VPN connection.
 	//
-	// *   **HealthCheckConfig.sip:** the source IP address that is used for health checks. Enter the IP address on the VPC side that the data center can communicate with through the IPsec-VPN connection.
+	// *   **HealthCheckConfig.sip**: the source IP address that is used for health checks. Enter the IP address of the VPC with which the data center can communicate based on the IPsec-VPN connection.
 	//
-	// *   **HealthCheckConfig.interval:** the interval between two consecutive health checks. Unit: seconds.
+	// *   **HealthCheckConfig.interval**: the interval between two consecutive health checks. Unit: seconds.
 	//
-	// *   **HealthCheckConfig.retry:** the maximum number of health check retries.
+	// *   **HealthCheckConfig.retry**: the maximum number of health check retries.
 	//
-	// *   **HealthCheckConfig.Policy:** specifies whether to withdraw published routes when health checks fail. Valid values:
+	// *   **HealthCheckConfig.Policy**: specifies whether to withdraw advertised routes when health checks fail. Valid values:
 	//
-	//     *   **revoke_route:** withdraw published routes when health checks fail.
-	//     *   **reserve_route:** does not withdraw published routes when health checks fail.
+	//     - **revoke_route**: withdraws advertised routes.
+	//     - **reserve_route**: does not withdraw advertised routes.
 	HealthCheckConfig *string `json:"HealthCheckConfig,omitempty" xml:"HealthCheckConfig,omitempty"`
-	// The configurations of Phase 1 negotiations:
+	// The configuration of Phase 1 negotiations:
 	//
-	// *   **IkeConfig.Psk:** The pre-shared key that is used for authentication between the VPN gateway and the data center. The key must be 1 to 100 characters in length.
+	// *   **IkeConfig.Psk**: The pre-shared key that is used for authentication between the VPN gateway and the data center.
 	//
-	//     The pre-shared key of the IPsec-VPN connection must be the same as the authentication key of the data center. Otherwise, you cannot establish a connection between the data center and the VPN gateway.
+	//     *   The pre-shared key must be 1 to 100 characters in length and can contain letters, digits, and the following characters: ``~ ! ` @ # $ % ^ & * () _ - + = {} [] | ; : \" , . < > / ?``
+	//     *   If you do not specify a pre-shared key, the system generates a random 16-character string as the pre-shared key. You can call the [DescribeVpnConnection](~~120374~~) operation to query the pre-shared key that is generated by the system.
 	//
-	// *   **IkeConfig.IkeVersion:** the version of the IKE protocol. Valid values: **ikev1** and **ikev2**.
+	//     >The pre-shared key of the IPsec-VPN connection must be the same as the authentication key of the data center. Otherwise, you cannot establish a connection between the data center and the VPN gateway.
 	//
-	// *   **IkeConfig.IkeMode:** the negotiation mode. Valid values: **main** and **aggressive**.
+	// *   **IkeConfig.IkeVersion**: the Internet Key Exchange (IKE) version. Valid values: **ikev1** and **ikev2**.
 	//
-	// *   **IkeConfig.IkeEncAlg:** the encryption algorithm that is used in Phase 1 negotiations. Valid values: **aes**, **aes192**, **aes256**, **des**, and **3des**.
+	// *   **IkeConfig.IkeMode**: the negotiation mode. Valid values: **main** and **aggressive**.
 	//
-	// *   **IkeConfig.IkeAuthAlg:** the authentication algorithm that is used in Phase 1 negotiations. Valid values: **md5**, **sha1**, **sha256**, **sha384**, and **sha512**.
+	// *   **IkeConfig.IkeEncAlg**: the encryption algorithm that is used in Phase 1 negotiations. Valid values: **aes**, **aes192**, **aes256**, **des**, and **3des**.
 	//
-	// *   **IkeConfig.IkePfs:** the Diffie-Hellman key exchange algorithm that is used in Phase 1 negotiations. Valid values: **group1**, **group2**, **group5**, and **group14**.
+	// *   **IkeConfig.IkeAuthAlg**: the authentication algorithm that is used in Phase 1 negotiations. Valid values: **md5**, **sha1**, **sha256**, **sha384**, and **sha512**.
 	//
-	// *   **IkeConfig.IkeLifetime:** the security association (SA) lifetime that is determined by Phase 1 negotiations. Unit: seconds. Valid values: **0** to **86400**.
+	// *   **IkeConfig.IkePfs**: the Diffie-Hellman (DH) key exchange algorithm that is used in Phase 1 negotiations. Valid values: **group1**, **group2**, **group5**, and **group14**.
 	//
-	// *   **IkeConfig.LocalIdIPsec:** the identifier on the Alibaba Cloud side. The identifier cannot exceed 100 characters in length.
+	// *   **IkeConfig.IkeLifetime**: the security association (SA) lifetime determined by Phase 1 negotiations. Unit: seconds. Valid values: **0** to **86400**.
 	//
-	// *   **IkeConfig.RemoteId:** the identifier on the data center side. The identifier cannot exceed 100 characters in length.
+	// *   **IkeConfig.LocalIdIPsec**: the identifier of the IPsec-VPN connection on the Alibaba Cloud side. The identifier can be up to 100 characters in length.
+	//
+	// *   **IkeConfig.RemoteId**: the identifier of the IPsec-VPN connection on the data center side. The identifier can be up to 100 characters in length.
 	IkeConfig *string `json:"IkeConfig,omitempty" xml:"IkeConfig,omitempty"`
-	// The configurations of Phase 2 negotiations:
+	// The configuration of Phase 2 negotiations:
 	//
 	// *   **IpsecConfig.IpsecEncAlg:** the encryption algorithm that is used in Phase 2 negotiations. Valid values: **aes**, **aes192**, **aes256**, **des**, and **3des**.
 	// *   **IpsecConfig. IpsecAuthAlg:** the authentication algorithm that is used in Phase 2 negotiations. Valid values: **md5**, **sha1**, **sha256**, **sha384**, and **sha512**.
-	// *   **IpsecConfig. IpsecPfs:** the Diffie-Hellman key exchange algorithm that is used in Phase 2 negotiations. Valid values: **disabled**, **group1**, **group2**, **group5**, and **group14**.
-	// *   **IpsecConfig. IpsecLifetime:** the SA lifetime that is determined by Phase 2 negotiations. Unit: seconds. Valid values: **0** to **86400**.
+	// *   **IpsecConfig. IpsecPfs:** the DH key exchange algorithm that is used in Phase 2 negotiations. Valid values: **disabled**, **group1**, **group2**, **group5**, and **group14**.
+	// *   **IpsecConfig. IpsecLifetime**: the SA lifetime determined by Phase 2 negotiations. Unit: seconds. Valid values: **0** to **86400**.
 	IpsecConfig *string `json:"IpsecConfig,omitempty" xml:"IpsecConfig,omitempty"`
-	// The CIDR block on the VPC side. The CIDR block is used in Phase 2 negotiations.
+	// The CIDR block of the virtual private cloud (VPC) that communicates with the data center. The CIDR block is used in Phase 2 negotiations.
 	//
 	// Separate multiple CIDR blocks with commas (,). Example: 192.168.1.0/24,192.168.2.0/24.
 	//
@@ -64501,17 +64826,17 @@ type ModifyVpnAttachmentAttributeRequest struct {
 	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
 	// The network type of the IPsec-VPN connection. Valid values:
 	//
-	// *   **public:** an encrypted connection over the Internet.
-	// *   **private:** an encrypted connection over private networks.
+	// *   **public**: an encrypted connection over the Internet
+	// *   **private**: an encrypted connection over private networks
 	NetworkType  *string `json:"NetworkType,omitempty" xml:"NetworkType,omitempty"`
 	OwnerAccount *string `json:"OwnerAccount,omitempty" xml:"OwnerAccount,omitempty"`
-	// The ID of the region to which the IPsec-VPN connection belongs.
+	// The ID of the region in which the IPsec-VPN connection is established.
 	//
-	// You can call the [DescribeRegions](~~36063~~) operation to query the IDs of available regions.
+	// You can call the [DescribeRegions](~~36063~~) operation to query the most recent region list.
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 	// The peer CA certificate when a ShangMi (SM) VPN gateway is used to create the IPsec-VPN connection.
 	RemoteCaCert *string `json:"RemoteCaCert,omitempty" xml:"RemoteCaCert,omitempty"`
-	// The CIDR block on the data center side. This CIDR block is used in Phase 2 negotiations.
+	// The CIDR block of the data center that communicates with the VPC. This CIDR block is used in Phase 2 negotiations.
 	//
 	// Separate multiple CIDR blocks with commas (,). Example: 192.168.3.0/24,192.168.4.0/24.
 	//
@@ -64637,11 +64962,11 @@ func (s *ModifyVpnAttachmentAttributeRequest) SetVpnConnectionId(v string) *Modi
 type ModifyVpnAttachmentAttributeResponseBody struct {
 	// The ID of the Cloud Enterprise Network (CEN) instance to which the transit router associated with the IPsec-VPN connection belongs.
 	AttachInstanceId *string `json:"AttachInstanceId,omitempty" xml:"AttachInstanceId,omitempty"`
-	// The type of resource that is associated with the IPsec-VPN connection.
+	// The type of the resource that is associated with the IPsec-VPN connection. Valid values:
 	//
-	// *   **CEN:** indicates that the IPsec-VPN connection is associated with a transit router.
-	// *   **VPNGW:** indicates that the IPsec-VPN connection is associated with a VPN gateway.
-	// *   **NO_ASSOCIATED:** indicates that the IPsec-VPN connection is not associated with any resource.
+	// *   **CEN**: The IPsec-VPN connection is associated with a transit router.
+	// *   **VPNGW**: The IPsec-VPN connection is associated with a VPN gateway.
+	// *   **NO_ASSOCIATED**: The IPsec-VPN connection is not associated with any resource.
 	AttachType *string `json:"AttachType,omitempty" xml:"AttachType,omitempty"`
 	// The timestamp generated when the IPsec-VPN connection was established. Unit: milliseconds.
 	//
@@ -64651,52 +64976,52 @@ type ModifyVpnAttachmentAttributeResponseBody struct {
 	CustomerGatewayId *string `json:"CustomerGatewayId,omitempty" xml:"CustomerGatewayId,omitempty"`
 	// The description of the IPsec-VPN connection.
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
-	// Indicates whether IPsec negotiations immediately start after the configuration is complete. Valid values:
+	// Indicates whether IPsec negotiations immediately start after the configuration takes effect. Valid values:
 	//
-	// *   **true:** IPsec negotiations immediately start after the configuration is complete.
-	// *   **false:** IPsec negotiations start when inbound traffic is detected.
+	// *   **true**
+	// *   **false**
 	EffectImmediately *bool `json:"EffectImmediately,omitempty" xml:"EffectImmediately,omitempty"`
-	// Indicates whether the DPD feature is enabled for the IPsec-VPN connection.
+	// Indicates whether the DPD feature is enabled for the IPsec-VPN connection. Valid values:
 	//
-	// *   **true:** The DPD feature is enabled.
-	// *   **false:** The DPD feature is disabled.
+	// *   **true**
+	// *   **false**
 	EnableDpd *bool `json:"EnableDpd,omitempty" xml:"EnableDpd,omitempty"`
-	// Indicates whether NAT traversal is enabled for the IPsec-VPN connection.
+	// Indicates whether NAT traversal is enabled for the IPsec-VPN connection. Valid values:
 	//
-	// *   **true:** NAT traversal is enabled.
-	// *   **false:** NAT traversal is disabled.
+	// *   **true**
+	// *   **false**
 	EnableNatTraversal *bool `json:"EnableNatTraversal,omitempty" xml:"EnableNatTraversal,omitempty"`
-	// The configurations of Phase 1 negotiations.
+	// The configuration of Phase 1 negotiations.
 	IkeConfig *ModifyVpnAttachmentAttributeResponseBodyIkeConfig `json:"IkeConfig,omitempty" xml:"IkeConfig,omitempty" type:"Struct"`
-	// The configurations of Phase 2 negotiations.
+	// The configuration of Phase 2 negotiations.
 	IpsecConfig *ModifyVpnAttachmentAttributeResponseBodyIpsecConfig `json:"IpsecConfig,omitempty" xml:"IpsecConfig,omitempty" type:"Struct"`
-	// The CIDR block on the VPC side.
+	// The CIDR block of the VPC with which the data center can communicate.
 	LocalSubnet *string `json:"LocalSubnet,omitempty" xml:"LocalSubnet,omitempty"`
 	// The name of the IPsec-VPN connection.
 	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
-	// The network type of the IPsec-VPN connection.
+	// The network type of the IPsec-VPN connection. Valid values:
 	//
-	// *   **public:** Internet.
-	// *   **private:** private networks.
+	// *   **public**: an encrypted connection over the Internet
+	// *   **private**: an encrypted connection over private networks
 	NetworkType *string `json:"NetworkType,omitempty" xml:"NetworkType,omitempty"`
-	// The CIDR block on the data center side.
+	// The CIDR block of the data center with which the VPC can communicate.
 	RemoteSubnet *string `json:"RemoteSubnet,omitempty" xml:"RemoteSubnet,omitempty"`
-	// The ID of the request.
+	// The request ID.
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	// The bandwidth specification of the IPsec-VPN connection.
 	//
-	// **M** in the response indicates **Mbit/s**.
+	// A value of **M** in the response indicates **Mbit/s**.
 	Spec *string `json:"Spec,omitempty" xml:"Spec,omitempty"`
-	// The status of the IPsec-VPN connection.
+	// The state of the IPsec-VPN connection. Valid values:
 	//
-	// *   **ike_sa_not_established:** Phase 1 negotiations failed.
-	// *   **ike_sa_established:** Phase 1 negotiations were successful.
-	// *   **ipsec_sa_not_established:** Phase 2 negotiations failed.
-	// *   **ipsec_sa_established:** Phase 2 negotiations were successful.
+	// *   **ike_sa_not_established**: Phase 1 negotiations failed.
+	// *   **ike_sa_established**: Phase 1 negotiations succeeded.
+	// *   **ipsec_sa_not_established**: Phase 2 negotiations failed.
+	// *   **ipsec_sa_established**: Phase 2 negotiations succeeded.
 	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
-	// The health check configurations of the IPsec-VPN connection.
+	// The health check configuration of the IPsec-VPN connection.
 	VcoHealthCheck *ModifyVpnAttachmentAttributeResponseBodyVcoHealthCheck `json:"VcoHealthCheck,omitempty" xml:"VcoHealthCheck,omitempty" type:"Struct"`
-	// The BGP configurations of the IPsec-VPN connection.
+	// The BGP configuration of the IPsec-VPN connection.
 	VpnBgpConfig *ModifyVpnAttachmentAttributeResponseBodyVpnBgpConfig `json:"VpnBgpConfig,omitempty" xml:"VpnBgpConfig,omitempty" type:"Struct"`
 	// The ID of the IPsec-VPN connection.
 	VpnConnectionId *string `json:"VpnConnectionId,omitempty" xml:"VpnConnectionId,omitempty"`
@@ -64818,25 +65143,25 @@ func (s *ModifyVpnAttachmentAttributeResponseBody) SetVpnGatewayId(v string) *Mo
 }
 
 type ModifyVpnAttachmentAttributeResponseBodyIkeConfig struct {
-	// The authentication algorithm that was used in Phase 1 negotiations.
+	// The authentication algorithm that is used in Phase 1 negotiations.
 	IkeAuthAlg *string `json:"IkeAuthAlg,omitempty" xml:"IkeAuthAlg,omitempty"`
-	// The encryption algorithm that was used in Phase 1 negotiations.
+	// The encryption algorithm that is used in Phase 1 negotiations.
 	IkeEncAlg *string `json:"IkeEncAlg,omitempty" xml:"IkeEncAlg,omitempty"`
-	// The SA lifetime that was determined by Phase 1 negotiations. Unit: seconds.
+	// The SA lifetime that is determined by Phase 1 negotiations. Unit: seconds.
 	IkeLifetime *int64 `json:"IkeLifetime,omitempty" xml:"IkeLifetime,omitempty"`
 	// The negotiation mode.
 	IkeMode *string `json:"IkeMode,omitempty" xml:"IkeMode,omitempty"`
-	// The Diffie-Hellman key exchange algorithm that was used in Phase 1 negotiations.
+	// The DH key exchange algorithm that is used in Phase 1 negotiations.
 	IkePfs *string `json:"IkePfs,omitempty" xml:"IkePfs,omitempty"`
 	// The version of the IKE protocol.
 	IkeVersion *string `json:"IkeVersion,omitempty" xml:"IkeVersion,omitempty"`
-	// The identifier on the Alibaba Cloud side.
+	// The identifier of the IPsec-VPN connection on the Alibaba Cloud side.
 	LocalId *string `json:"LocalId,omitempty" xml:"LocalId,omitempty"`
-	// The pre-shared key that was used for identity authentication between the VPN gateway and the data center.
+	// The pre-shared key that is used for identity authentication between the VPN gateway and the data center.
 	//
 	// >  The pre-shared key of the IPsec-VPN connection must be the same as the authentication key of the data center. Otherwise, you cannot establish a connection between the data center and the VPN gateway.
 	Psk *string `json:"Psk,omitempty" xml:"Psk,omitempty"`
-	// The identifier on the data center side.
+	// The identifier of the IPsec-VPN connection on the data center side.
 	RemoteId *string `json:"RemoteId,omitempty" xml:"RemoteId,omitempty"`
 }
 
@@ -64894,13 +65219,13 @@ func (s *ModifyVpnAttachmentAttributeResponseBodyIkeConfig) SetRemoteId(v string
 }
 
 type ModifyVpnAttachmentAttributeResponseBodyIpsecConfig struct {
-	// The authentication algorithm that was used in Phase 2 negotiations.
+	// The authentication algorithm that is used in Phase 2 negotiations.
 	IpsecAuthAlg *string `json:"IpsecAuthAlg,omitempty" xml:"IpsecAuthAlg,omitempty"`
-	// The encryption algorithm that was used in Phase 2 negotiations.
+	// The encryption algorithm that is used in Phase 2 negotiations.
 	IpsecEncAlg *string `json:"IpsecEncAlg,omitempty" xml:"IpsecEncAlg,omitempty"`
-	// The SA lifetime that was determined by Phase 2 negotiations. Unit: seconds.
+	// The SA lifetime that is determined by Phase 2 negotiations. Unit: seconds.
 	IpsecLifetime *int64 `json:"IpsecLifetime,omitempty" xml:"IpsecLifetime,omitempty"`
-	// The Diffie-Hellman key exchange algorithm that was used in Phase 2 negotiations.
+	// The DH key exchange algorithm that is used in Phase 2 negotiations.
 	IpsecPfs *string `json:"IpsecPfs,omitempty" xml:"IpsecPfs,omitempty"`
 }
 
@@ -64933,23 +65258,23 @@ func (s *ModifyVpnAttachmentAttributeResponseBodyIpsecConfig) SetIpsecPfs(v stri
 }
 
 type ModifyVpnAttachmentAttributeResponseBodyVcoHealthCheck struct {
-	// The destination IP address that was used for health checks.
+	// The destination IP address that is used for health checks.
 	Dip *string `json:"Dip,omitempty" xml:"Dip,omitempty"`
-	// Indicates whether the health check feature is enabled for the IPsec-VPN connection.
+	// Indicates whether the health check feature is enabled for the IPsec-VPN connection. Valid values:
 	//
-	// *   **true:** The health check feature is enabled.
-	// *   **false:** The health check feature is disabled.
+	// *   **true**
+	// *   **false**
 	Enable *string `json:"Enable,omitempty" xml:"Enable,omitempty"`
 	// The interval between two consecutive health check retries. Unit: seconds.
 	Interval *int32 `json:"Interval,omitempty" xml:"Interval,omitempty"`
-	// Indicates whether published routes are withdrawn when the health check fails.
+	// Indicates whether advertised routes are withdrawn when the health check fails. Valid values:
 	//
-	// *   **revoke_route:** Published routes were withdrawn when the health check failed.
-	// *   **reserve_route:** Published routes were not withdrawn when the health check failed.
+	// *   **revoke_route**: Advertised routes are withdrawn.
+	// *   **reserve_route**: Advertised routes are not withdrawn.
 	Policy *string `json:"Policy,omitempty" xml:"Policy,omitempty"`
 	// The maximum number of health check retries.
 	Retry *int32 `json:"Retry,omitempty" xml:"Retry,omitempty"`
-	// The source IP address that was used for health checks.
+	// The source IP address that is used for health checks.
 	Sip *string `json:"Sip,omitempty" xml:"Sip,omitempty"`
 }
 
@@ -64992,10 +65317,10 @@ func (s *ModifyVpnAttachmentAttributeResponseBodyVcoHealthCheck) SetSip(v string
 }
 
 type ModifyVpnAttachmentAttributeResponseBodyVpnBgpConfig struct {
-	// Indicates whether BGP is enabled for the IPsec-VPN connection.
+	// Indicates whether BGP is enabled for the IPsec-VPN connection. Valid values:
 	//
-	// *   **true:** BGP is enabled.
-	// *   **false:** BGP is disabled.
+	// *   **true**
+	// *   **false**
 	EnableBgp *string `json:"EnableBgp,omitempty" xml:"EnableBgp,omitempty"`
 	// The ASN on the Alibaba Cloud side.
 	LocalAsn *int64 `json:"LocalAsn,omitempty" xml:"LocalAsn,omitempty"`
@@ -65005,10 +65330,10 @@ type ModifyVpnAttachmentAttributeResponseBodyVpnBgpConfig struct {
 	PeerAsn *int64 `json:"PeerAsn,omitempty" xml:"PeerAsn,omitempty"`
 	// The BGP IP address on the data center side.
 	PeerBgpIp *string `json:"PeerBgpIp,omitempty" xml:"PeerBgpIp,omitempty"`
-	// The negotiation status of BGP.
+	// The negotiation state of BGP. Valid values:
 	//
-	// *   **success:** normal.
-	// *   **false:** abnormal.
+	// *   **success**: normal
+	// *   **false**: abnormal
 	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
 	// The CIDR block of the IPsec tunnel.
 	TunnelCidr *string `json:"TunnelCidr,omitempty" xml:"TunnelCidr,omitempty"`
@@ -65089,84 +65414,119 @@ func (s *ModifyVpnAttachmentAttributeResponse) SetBody(v *ModifyVpnAttachmentAtt
 type ModifyVpnConnectionAttributeRequest struct {
 	// Specifies whether to automatically advertise routes. Valid values:
 	//
-	// *   **true:** automatically advertise routes.
-	// *   **false:** does not automatically advertise routes.
+	// *   **true**
+	// *   **false**
 	AutoConfigRoute *bool `json:"AutoConfigRoute,omitempty" xml:"AutoConfigRoute,omitempty"`
-	// The Border Gateway Protocol (BGP) configurations:
+	// You can specify this parameter if you modify the configuration of a single-tunnel IPsec-VPN connection.
+	//
+	// The Border Gateway Protocol (BGP) configuration:
 	//
 	// *   **BgpConfig.EnableBgp:** specifies whether to enable BGP. Valid values: **true** and **false**.
-	// *   **BgpConfig.LocalAsn:** the autonomous system number (ASN) on the Alibaba Cloud side. Valid values: **1** to **4294967295**.
-	// *   **BgpConfig.TunnelCidr:** the CIDR block of the IPsec tunnel. The CIDR block must belong to 169.254.0.0/16. The subnet mask of the CIDR block must be 30 bits in length.
-	// *   **LocalBgpIp:** the BGP IP address on the Alibaba Cloud side. This IP address must fall within the CIDR block of the IPsec tunnel.
 	//
-	// >
-	// *   This parameter is required when the VPN gateway has dynamic BGP enabled.
-	// *   Before you configure BGP, we recommend that you learn about how BGP works and the limits. For more information, see [VPN Gateway supports BGP dynamic routing](~~170235~~).
-	// *   We recommend that you use a private ASN to establish a connection to Alibaba Cloud over BGP. Refer to the relevant documentation for the private ASN range.
+	// *   **BgpConfig.LocalAsn**: the autonomous system number (ASN) on the Alibaba Cloud side. Valid values: **1** to **4294967295**.
+	//
+	// *   **BgpConfig.TunnelCidr:** the CIDR block of the IPsec tunnel. The CIDR block falls within 169.254.0.0/16. The subnet mask of the CIDR block must be 30 bits in length.
+	//
+	//     >The CIDR block of the IPsec tunnel of each IPsec-VPN connection must be unique on a VPN gateway.
+	//
+	// *   **LocalBgpIp**: the BGP IP address on the Alibaba Cloud side. This IP address must fall within the CIDR block of the IPsec tunnel.
+	//
+	// > *   This parameter is required when the VPN gateway has dynamic BGP enabled.
+	// >*   Before you configure BGP, we recommend that you learn how BGP dynamic routing works and the limits of using BGP dynamic routing. For more information, see [VPN Gateway supports BGP dynamic routing](~~170235~~).
+	// >*   We recommend that you use a private ASN to establish a connection with Alibaba Cloud over BGP. Refer to the relevant documentation for the private ASN range.
 	BgpConfig *string `json:"BgpConfig,omitempty" xml:"BgpConfig,omitempty"`
-	// The client token that you want to use to ensure the idempotence of the request.
+	// The client token that is used to ensure the idempotence of the request.
 	//
 	// You can use the client to generate the token, but you must make sure that the token is unique among different requests. The token can contain only ASCII characters.
 	//
-	// >  If you do not specify this parameter, the system uses the value of **RequestId** as the value of **ClientToken**. The value of the **RequestId** parameter may be different for each API request.
+	// >  If you do not specify this parameter, the system automatically uses the value of **RequestId** as the value of **ClientToken**. The **request ID** may be different for each request.
 	ClientToken *string `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
 	// Specifies whether to immediately start IPsec negotiations after the configuration takes effect. Valid values:
 	//
-	// *   **true:** immediately starts IPsec negotiations after the configuration takes effect.
-	// *   **false:** starts IPsec negotiations when inbound traffic is detected.
+	// *   **true**: immediately starts IPsec negotiations after the configuration takes effect.
+	// *   **false**: IPsec negotiations start when inbound traffic is detected.
 	EffectImmediately *bool `json:"EffectImmediately,omitempty" xml:"EffectImmediately,omitempty"`
+	// You can specify this parameter if you modify the configuration of a single-tunnel IPsec-VPN connection.
+	//
 	// Specifies whether to enable the dead peer detection (DPD) feature. Valid values:
 	//
-	// *   **true:** enables the DPD feature. The initiator of the IPsec-VPN connection sends DPD packets to verify the peer is active. If no feedback is received from the peer within a specified period of time, the connection fails, and ISAKMP SA, IPsec SA, and security tunnel are deleted.
-	// *   **false:** disables the DPD feature. The initiator of the IPsec-VPN connection does not send DPD packets.
+	// *   **true:**: enables the DPD feature. The initiator of the IPsec-VPN connection sends DPD packets to check the existence and availability of the peer. If no feedback is received from the peer within a specific period of time, the connection fails. Then, the ISAKMP SA, IPsec SA, and IPsec tunnel are deleted.
+	// *   **false**: disables the DPD feature. The initiator of the IPsec-VPN connection does not send DPD packets.
 	EnableDpd *bool `json:"EnableDpd,omitempty" xml:"EnableDpd,omitempty"`
+	// You can specify this parameter if you modify the configuration of a single-tunnel IPsec-VPN connection.
+	//
 	// Specifies whether to enable NAT traversal. Valid values:
 	//
-	// *   **true:** enables NAT traversal. After NAT traversal is enabled, the initiator does not check the UDP ports during IKE negotiations and can automatically discover NAT gateway devices along the IPsec tunnel.
-	// *   **false:** disables NAT traversal.
+	// *   **true** After NAT traversal is enabled, the initiator does not check the UDP ports during IKE negotiations and can automatically discover NAT gateway devices along the IPsec tunnel.
+	// *   **false**
 	EnableNatTraversal *bool `json:"EnableNatTraversal,omitempty" xml:"EnableNatTraversal,omitempty"`
-	// This parameter is supported by dual-tunnel IPsec-VPN connections. Specifies whether to enable BGP for the tunnel. Valid values: **true** and **false**.
+	// You can specify this parameter if you modify the configuration of a dual-tunnel IPsec-VPN connection.
+	//
+	// Specifies whether to enable BGP for the tunnel. Valid values: **true** and **false**.
 	EnableTunnelsBgp *bool `json:"EnableTunnelsBgp,omitempty" xml:"EnableTunnelsBgp,omitempty"`
-	// The health check configurations:
+	// You can specify this parameter if you modify the configuration of a single-tunnel IPsec-VPN connection.
 	//
-	// *   **HealthCheckConfig.enable:** specifies whether to enable the health check feature. Valid values: **true** and **false**.
-	// *   **HealthCheckConfig.dip:** the destination IP address that is used for health checks.
-	// *   **HealthCheckConfig.sip:** the source IP address that is used for health checks.
-	// *   **HealthCheckConfig.interval:** the interval between two consecutive health checks. Unit: seconds.
-	// *   **HealthCheckConfig.retry:** the maximum number of health check retries.
+	// The health check configuration:
+	//
+	// *   **HealthCheckConfig.enable**: specifies whether to enable health checks. Valid values: **true** and **false**.
+	// *   **HealthCheckConfig.dip**: the destination IP address that is used for health checks.
+	// *   **HealthCheckConfig.sip**: the source IP address that is used for health checks.
+	// *   **HealthCheckConfig.interval**: the interval between two consecutive health checks. Unit: seconds.
+	// *   **HealthCheckConfig.retry**: the maximum number of health check retries.
 	HealthCheckConfig *string `json:"HealthCheckConfig,omitempty" xml:"HealthCheckConfig,omitempty"`
-	// The configurations of Phase 1 negotiations:
+	// You can specify this parameter if you modify the configuration of a single-tunnel IPsec-VPN connection.
 	//
-	// *   **IkeConfig.Psk:** The pre-shared key that is used for authentication between the VPN gateway and the data center. The key must be 1 to 100 characters in length.
+	// The configuration of Phase 1 negotiations:
 	//
-	//     If you do not specify a pre-shared key, the system generates a random 16-bit string as the pre-shared key. You can call the [DescribeVpnConnection](~~120374~~) operation to query the pre-shared key that is generated by the system.
+	// *   **IkeConfig.Psk**: The pre-shared key that is used for authentication between the VPN gateway and the data center.
 	//
-	// > The pre-shared key of the IPsec-VPN connection must be the same as the authentication key of the data center. Otherwise, you cannot establish a connection between the data center and the VPN gateway.
+	//     *   The pre-shared key must be 1 to 100 characters in length and can contain letters, digits, and the following characters: ``~!`@#$%^&*()_-+={}[]|;:\",.<>/?``
+	//     *   If you do not specify a pre-shared key, the system generates a random 16-character string as the pre-shared key. You can call the [DescribeVpnConnection](~~120374~~) operation to query the pre-shared key that is generated by the system.
 	//
-	// *   **IkeConfig.IkeVersion:** the version of the IKE protocol. Valid values: **ikev1** and **ikev2**.
+	//     >The pre-shared key of the IPsec-VPN connection must be the same as the authentication key of the data center. Otherwise, you cannot establish a connection between the data center and the VPN gateway.
 	//
-	// *   **IkeConfig.IkeMode:** the negotiation mode of IKE V1. Valid values: **main** and **aggressive**.
+	// *   **IkeConfig.IkeVersion**: the version of the IKE protocol. Valid values: **ikev1** and **ikev2**.
 	//
-	// *   **IkeConfig.IkeEncAlg:** the encryption algorithm that is used in Phase 1 negotiations. Valid values: **aes**, **aes192**, **aes256**, **des**, and **3des**.
+	//     Compared with IKEv1, IKEv2 simplifies the security association (SA) negotiation process and is more suitable for scenarios in which multiple CIDR blocks are used.
 	//
-	// *   **IkeConfig.IkeAuthAlg:** the authentication algorithm that is used in Phase 1 negotiations. Valid values: **md5**, **sha1**, **sha256**, **sha384**, and **sha512**.
+	// *   **IkeConfig.IkeMode**: the negotiation mode of IKE. Valid values: **main** and **aggressive**.
 	//
-	// *   **IkeConfig.IkePfs:** the Diffie-Hellman key exchange algorithm that is used in Phase 1 negotiations. Valid values: **group1**, **group2**, **group5**, and **group14**.
+	//     *   **main**: This mode offers higher security during negotiations.
+	//     *   **aggressive**: This mode is faster and has a higher success rate.
 	//
-	// *   **IkeConfig.IkeLifetime:** the security association (SA) lifetime that is determined by Phase 1 negotiations. Unit: seconds. Valid values: **0 to 86400**.
+	// *   **IkeConfig.IkeEncAlg**: the encryption algorithm that is used in Phase 1 negotiations.
 	//
-	// *   **IkeConfig.LocalId:** the identifier of the VPN gateway. The identifier cannot exceed 100 characters in length. The default value is the IP address of the VPN gateway.
+	//     Valid values: **aes**, **aes192**, **aes256**, **des**, and **3des**.
 	//
-	// *   **IkeConfig.RemoteId:** the identifier of the customer gateway. The identifier cannot exceed 100 characters in length. The default value is the IP address of the customer gateway.
+	// *   **IkeConfig.IkeAuthAlg**: the authentication algorithm that is used in Phase 1 negotiations.
+	//
+	//     Valid values: **md5**, **sha1**, **sha256**, **sha384**, and **sha512**.
+	//
+	// *   **IkeConfig.IkePfs**: The Diffie-Hellman (DH) key exchange algorithm that is used in Phase 1 negotiations. Valid values: **group1**, **group2**, **group5**, and **group14**.
+	//
+	// *   **IkeConfig.IkeLifetime**: the SA lifetime that is determined by Phase 1 negotiations. Unit: seconds. Valid values: **0 to 86400**.
+	//
+	// *   **IkeConfig.LocalId**: the identifier of the VPN gateway. The identifier can be up to 100 characters in length. The default value is the IP address of the VPN gateway.
+	//
+	// *   **IkeConfig.RemoteId**: the identifier of the customer gateway. The identifier can be up to 100 characters in length. The default value is the IP address of the customer gateway.
 	IkeConfig *string `json:"IkeConfig,omitempty" xml:"IkeConfig,omitempty"`
-	// The configurations of Phase 2 negotiations:
+	// You can specify this parameter if you modify the configuration of a single-tunnel IPsec-VPN connection.
 	//
-	// *   **IpsecConfig.IpsecEncAlg:** the encryption algorithm that is used in Phase 2 negotiations. Valid values: **aes**, **aes192**, **aes256**, **des**, and **3des**.
-	// *   **IpsecConfig. IpsecAuthAlg:** the authentication algorithm that is used in Phase 2 negotiations. Valid values: **md5**, **sha1**, **sha256**, **sha384**, and **sha512**.
-	// *   **IpsecConfig. IpsecPfs:** the Diffie-Hellman key exchange algorithm that is used in Phase 1 negotiations. If you specify this parameter, packets of all protocols are forwarded. Valid values: **disabled**, **group1**, **group2**, **group5**, and **group14**.
+	// The configuration of Phase 2 negotiations:
+	//
+	// *   **IpsecConfig.IpsecEncAlg**: the encryption algorithm that is used in Phase 2 negotiations.
+	//
+	//     Valid values: **aes**, **aes192**, **aes256**, **des**, and **3des**.
+	//
+	// *   **IpsecConfig. IpsecAuthAlg**: the authentication algorithm that is used in Phase 2 negotiations.
+	//
+	//     Valid values: **md5**, **sha1**, **sha256**, **sha384**, and **sha512**.
+	//
+	// *   **IpsecConfig. IpsecPfs**: the DH key exchange algorithm that is used in Phase 1 negotiations. If you specify this parameter, packets of all protocols are forwarded. Valid values: **disabled**, **group1**, **group2**, **group5**, and **group14**.
+	//
 	// *   **IpsecConfig. IpsecLifetime:** the SA lifetime that is determined by Phase 2 negotiations. Unit: seconds. Valid values: **0 to 86400**.
 	IpsecConfig *string `json:"IpsecConfig,omitempty" xml:"IpsecConfig,omitempty"`
-	// The CIDR block on the virtual private cloud (VPC) side. The CIDR block is used in Phase 2 negotiations.
+	// The CIDR block used to connect the virtual private cloud (VPC) to the data center. The CIDR block is used in Phase 2 negotiations.
 	//
 	// Separate multiple CIDR blocks with commas (,). Example: 192.168.1.0/24,192.168.2.0/24.
 	//
@@ -65181,14 +65541,15 @@ type ModifyVpnConnectionAttributeRequest struct {
 	Name         *string `json:"Name,omitempty" xml:"Name,omitempty"`
 	OwnerAccount *string `json:"OwnerAccount,omitempty" xml:"OwnerAccount,omitempty"`
 	OwnerId      *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
-	// The ID of the region where the IPsec-VPN connection is established.
+	// The ID of the region in which the IPsec-VPN connection is created.
 	//
-	// You can call the [DescribeRegions](~~36063~~) operation to query the IDs of available regions.
+	// You can call the [DescribeRegions](~~36063~~) operation to query the most recent region list.
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	// The peer CA certificate when a ShangMi (SM) VPN gateway is used to establish the IPsec-VPN connection.
+	// You can specify this parameter if you modify the configuration of a single-tunnel IPsec-VPN connection.
 	//
-	// *   This parameter is required when an SM VPN gateway is used to establish the IPsec-VPN connection.
-	// *   You can ignore this parameter when a standard VPN gateway is used to establish the IPsec-VPN connection.
+	// If the VPN gateway uses a ShangMi (SM) certificate, you can modify the CA certificate used by the IPsec peer.
+	//
+	// If the VPN gateway does not use an SM certificate, you cannot specify this parameter.
 	RemoteCaCertificate *string `json:"RemoteCaCertificate,omitempty" xml:"RemoteCaCertificate,omitempty"`
 	// The CIDR block on the data center side. This CIDR block is used in Phase 2 negotiations.
 	//
@@ -65201,7 +65562,9 @@ type ModifyVpnConnectionAttributeRequest struct {
 	RemoteSubnet         *string `json:"RemoteSubnet,omitempty" xml:"RemoteSubnet,omitempty"`
 	ResourceOwnerAccount *string `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
 	ResourceOwnerId      *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
-	// **TunnelOptionsSpecification** parameters are supported by dual-tunnel IPsec-VPN gateways. You can modify both the active and standby tunnels of the IPsec-VPN connection.
+	// The IPsec tunnel configuration to be modified.
+	//
+	// You can specify **TunnelOptionsSpecification** parameters if you modify the configuration of a dual-tunnel IPsec-VPN connection. You can modify both the active and standby tunnels of the IPsec-VPN connection.
 	TunnelOptionsSpecification []*ModifyVpnConnectionAttributeRequestTunnelOptionsSpecification `json:"TunnelOptionsSpecification,omitempty" xml:"TunnelOptionsSpecification,omitempty" type:"Repeated"`
 	// The ID of the IPsec-VPN connection.
 	VpnConnectionId *string `json:"VpnConnectionId,omitempty" xml:"VpnConnectionId,omitempty"`
@@ -65321,21 +65684,24 @@ func (s *ModifyVpnConnectionAttributeRequest) SetVpnConnectionId(v string) *Modi
 }
 
 type ModifyVpnConnectionAttributeRequestTunnelOptionsSpecification struct {
-	// Specifies whether to enable DPD for the tunnel. Valid values:
+	// Specifies whether to enable the DPD feature for the tunnel. Valid values:
 	//
-	// - **true**: enables the DPD feature. The initiator of the IPsec-VPN connection sends DPD packets to verify the existence and availability of the peer. If no feedback is received from the peer within a specified period of time, the connection fails. ISAKMP SA and IPsec SA are deleted. The security tunnel is also deleted.
-	// - **false**: disables DPD. The IPsec initiator does not send DPD packets.
+	// *   **true:**: enables the DPD feature. The initiator of the IPsec-VPN connection sends DPD packets to check the existence and availability of the peer. If no feedback is received from the peer within a specific period of time, the connection fails. Then, the ISAKMP SA, IPsec SA, and IPsec tunnel are deleted.
+	// *   **false**: disables the DPD feature. The initiator of the IPsec-VPN connection does not send DPD packets.
 	EnableDpd *bool `json:"EnableDpd,omitempty" xml:"EnableDpd,omitempty"`
 	// Specifies whether to enable NAT traversal for the tunnel. Valid values:
 	//
-	// - **true**: yes After NAT traversal is enabled, the initiator does not check the UDP ports during IKE negotiations and can automatically discover NAT gateway devices along the IPsec tunnel.
-	// - **false**: disables NAT traversal.
+	// *   **true** After NAT traversal is enabled, the initiator does not check the UDP ports during IKE negotiations and can automatically discover NAT gateway devices along the IPsec tunnel.
+	// *   **false**
 	EnableNatTraversal *bool `json:"EnableNatTraversal,omitempty" xml:"EnableNatTraversal,omitempty"`
 	// If the VPN gateway uses an SM certificate, you can modify the CA certificate used by the IPsec peer.
-	// If the VPN gateway does not use an SM certificate, this parameter is not supported.
+	//
+	// If the VPN gateway does not use an SM certificate, you cannot specify this parameter.
 	RemoteCaCertificate *string `json:"RemoteCaCertificate,omitempty" xml:"RemoteCaCertificate,omitempty"`
-	// The BGP configurations.
+	// The BGP configuration to be modified for the IPsec tunnel.
 	TunnelBgpConfig *ModifyVpnConnectionAttributeRequestTunnelOptionsSpecificationTunnelBgpConfig `json:"TunnelBgpConfig,omitempty" xml:"TunnelBgpConfig,omitempty" type:"Struct"`
+	// You can specify **TunnelOptionsSpecification** parameters if you modify the configuration of a dual-tunnel IPsec-VPN connection. You can modify both the active and standby tunnels of the IPsec-VPN connection.
+	//
 	// The tunnel ID.
 	TunnelId *string `json:"TunnelId,omitempty" xml:"TunnelId,omitempty"`
 	// The configuration of Phase 1 negotiations.
@@ -65388,17 +65754,17 @@ func (s *ModifyVpnConnectionAttributeRequestTunnelOptionsSpecification) SetTunne
 }
 
 type ModifyVpnConnectionAttributeRequestTunnelOptionsSpecificationTunnelBgpConfig struct {
-	// The local ASN (Alibaba Cloud side). Valid values: **1 ** to **4294967295**. Default value: **45104**.
+	// The ASN of the tunnel on the Alibaba Cloud side. Valid values: **1** to **4294967295**. Default value: **45104**.
 	//
-	// > - You can set or modify this parameter if BGP is enabled for the IPsecVPN connection (**EnableTunnelsBgp** is set to **true**).
-	// > - Before you configure BGP, we recommend that you learn about how BGP works and its limits. For more information, see [VPN Gateway supports BGP dynamic routing](~~170235~~).
-	// > - We recommend that you use a private ASN to establish a connection with Alibaba Cloud over BGP. Refer to the relevant documentation for the private ASN range.
+	// > *   You can specify or modify this parameter if **EnableTunnelsBgp** is set to **true**. This indicateds that BGP is enabled for the IPsec-VPN connection.
+	// >*   Before you configure BGP, we recommend that you learn how BGP dynamic routing works and the limits of using BGP dynamic routing. For more information, see [VPN Gateway supports BGP dynamic routing](~~170235~~).
+	// >*   We recommend that you use a private ASN to establish a connection with Alibaba Cloud over BGP. Refer to the relevant documentation for the private ASN range.
 	LocalAsn *int64 `json:"LocalAsn,omitempty" xml:"LocalAsn,omitempty"`
-	// The local BGP address (Alibaba Cloud side). The BGP address is an IP address that falls into the BGP CIDR block.
+	// The BGP IP address of the tunnel on the Alibaba Cloud side. The address is an IP address that falls within the BGP CIDR block.
 	LocalBgpIp *string `json:"LocalBgpIp,omitempty" xml:"LocalBgpIp,omitempty"`
-	// The BGP CIDR block. The CIDR block must fall within 169.254.0.0/16. The subnet mask of the CIDR block must be 30 bits in length.
+	// The BGP CIDR block of the tunnel. The CIDR block falls within 169.254.0.0/16. The subnet mask of the CIDR block must be 30 bits in length.
 	//
-	// > The BGP CIDR block of each tunnel on a VPN gateway must be unique.
+	// >  The BGP CIDR block of each tunnel must be unique on a VPN gateway.
 	TunnelCidr *string `json:"TunnelCidr,omitempty" xml:"TunnelCidr,omitempty"`
 }
 
@@ -65428,47 +65794,39 @@ func (s *ModifyVpnConnectionAttributeRequestTunnelOptionsSpecificationTunnelBgpC
 type ModifyVpnConnectionAttributeRequestTunnelOptionsSpecificationTunnelIkeConfig struct {
 	// The authentication algorithm that is used in Phase 1 negotiations.
 	//
-	// <props="intl"><ph>Valid values: **md5**,**sha1**,**sha256**,**sha384**,**sha512**.</ph></props>
-	//
-	// <props="china"><ph>如果VPN网关实例类型为普通型，则取值：**md5**、**sha1**、**sha256**、**sha384**、**sha512**。</ph></props>
-	//
-	// <props="china"><ph>如果VPN网关实例类型为国密型，则仅取值：**sm3**。</ph></props>
+	// Valid values: **md5**, **sha1**, **sha256**, **sha384**, and **sha512**.
 	IkeAuthAlg *string `json:"IkeAuthAlg,omitempty" xml:"IkeAuthAlg,omitempty"`
 	// The encryption algorithm that is used in Phase 1 negotiations.
 	//
-	// <props="intl"><ph>Valid values: **aes**,**aes192**,**aes256**,**des**或**3des**.</ph></props>
-	//
-	// <props="china"><ph>如果VPN网关实例类型为普通型，则取值为**aes**、**aes192**、**aes256**、**des**或**3des**。</ph></props>
-	//
-	// <props="china"><ph>如果VPN网关实例类型为国密型，则仅取值：**sm4**。</ph></props>
+	// Valid values: **aes**, **aes192**, **aes256**, **des**, and **3des**.
 	IkeEncAlg *string `json:"IkeEncAlg,omitempty" xml:"IkeEncAlg,omitempty"`
 	// The SA lifetime that is determined by Phase 1 negotiations. Unit: seconds. Valid values: **0** to **86400**.
 	IkeLifetime *int64 `json:"IkeLifetime,omitempty" xml:"IkeLifetime,omitempty"`
 	// The IKE negotiation mode. Valid values:
 	//
-	// - **main**: This mode offers higher security during negotiations.
-	// - **aggressive**: This mode is faster and has a higher success rate.
-	//
-	// <props="china"><ph>如果VPN网关实例类型为国密型，则协商模式仅支持**main**。</ph></props>
+	// *   **main**: This mode offers higher security during negotiations.
+	// *   **aggressive**: This mode is faster and has a higher success rate.
 	IkeMode *string `json:"IkeMode,omitempty" xml:"IkeMode,omitempty"`
 	// The DH key exchange algorithm that is used in Phase 1 negotiations. Valid values: **group1**, **group2**, **group5**, and **group14**.
 	IkePfs *string `json:"IkePfs,omitempty" xml:"IkePfs,omitempty"`
-	// The version of the IKE protocol. Valid values: **ikev1** and **ikev2**. Compared with IKEv1, IKEv2 simplifies the SA negotiation process and is more suitable for scenarios in which multiple CIDR blocks are used.
+	// The version of the IKE protocol. Valid values: **ikev1** and **ikev2**.
 	//
-	// <props="china"><ph>如果VPN网关实例类型为国密型，则IKE版本仅支持**ikev1**。</ph></props>
+	// Compared with IKEv1, IKEv2 simplifies the SA negotiation process and is more suitable for scenarios in which multiple CIDR blocks are used.
 	IkeVersion *string `json:"IkeVersion,omitempty" xml:"IkeVersion,omitempty"`
-	// The local identifier (Alibaba Cloud side) used for Phase 1 negotiation. The identifier cannot exceed 100 characters in length. The default identifier is the tunnel IP address.
-	//  You can set **LocalId **to a fully qualified domain name (FQDN). In this case, we recommend that you set Negotiation Mode to **aggressive**.
+	// The identifier of the tunnel on the Alibaba Cloud side, which is used in Phase 1 negotiations. The identifier can be up to 100 characters in length. The default identifier is the tunnel IP address.
+	//
+	// You can set **LocalId** to a fully qualified domain name (FQDN). In this case, we recommend that you set Negotiation Mode to **aggressive**.
 	LocalId *string `json:"LocalId,omitempty" xml:"LocalId,omitempty"`
-	// The pre-shared key that is used for authentication between the tunnel and peer.
+	// The pre-shared key, which is used for identity authentication between the tunnel and the tunnel peer.
 	//
-	// - It must be 1 to 100 characters in length, and can contain letters, digits, and the following characters: ```~!\`@#$%^&*()_-+={}[]|;:\",.<>/?```
-	// - If you do not specify a pre-shared key, the system generates a random 16-bit string as the pre-shared key. You can call the [DescribeVpnConnection](~~120374~~) operation to query the pre-shared key that is generated by the system.
+	// *   The pre-shared key must be 1 to 100 characters in length and can contain letters, digits, and the following characters: ``~!\`@#$%^&*()_-+={}[]|;:\",.<>/?``
+	// *   If you do not specify a pre-shared key, the system generates a random 16-character string as the pre-shared key. You can call the [DescribeVpnConnection](~~120374~~) operation to query the pre-shared key that is generated by the system.
 	//
-	// > Make sure that the tunnels and peers use the same pre-shared key. Otherwise, tunnel communication cannot be established.
+	// >  The tunnel and the tunnel peer must use the same pre-shared key. Otherwise, the tunnel cannot be built.
 	Psk *string `json:"Psk,omitempty" xml:"Psk,omitempty"`
-	// The peer identifier used for Phase 1 negotiation. The identifier cannot exceed 100 characters in length.
-	// The default identifier is the IP address of the customer gateway. You can set **RemoteId** to an FQDN. In this case, we recommend that you set Negotiation Mode to **aggressive**.
+	// The identifier of the tunnel peer, which is used in Phase 1 negotiations. The identifier can be up to 100 characters in length. The default identifier is the IP address of the customer gateway.
+	//
+	// You can set **RemoteId** to an FQDN. In this case, we recommend that you set Negotiation Mode to **aggressive**.
 	RemoteId *string `json:"RemoteId,omitempty" xml:"RemoteId,omitempty"`
 }
 
@@ -65526,25 +65884,19 @@ func (s *ModifyVpnConnectionAttributeRequestTunnelOptionsSpecificationTunnelIkeC
 }
 
 type ModifyVpnConnectionAttributeRequestTunnelOptionsSpecificationTunnelIpsecConfig struct {
-	// The authentication algorithm that was used in Phase 2 negotiations.
+	// The authentication algorithm that is used in Phase 2 negotiations.
 	//
-	// <props="intl"><ph>Valid values: **md5**,**sha1**,**sha256**,**sha384**,**sha512**.</ph></props>
-	//
-	// <props="china"><ph>如果VPN网关实例类型为普通型，则取值：**md5**、**sha1**、**sha256**、**sha384**、**sha512**。</ph></props>
-	//
-	// <props="china"><ph>如果VPN网关实例类型为国密型，则仅取值：**sm3**。</ph></props>
+	// Valid values: **md5**, **sha1**, **sha256**, **sha384**, and **sha512**.
 	IpsecAuthAlg *string `json:"IpsecAuthAlg,omitempty" xml:"IpsecAuthAlg,omitempty"`
 	// The encryption algorithm that is used in Phase 2 negotiations.
 	//
-	// <props="intl"><ph>Valid values: **aes**,**aes192**,**aes256**,**des**或**3des**.</ph></props>
-	//
-	// <props="china"><ph>如果VPN网关实例类型为普通型，则取值为**aes**、**aes192**、**aes256**、**des**或**3des**。</ph></props>
-	//
-	// <props="china"><ph>如果VPN网关实例类型为国密型，则仅取值：**sm4**。</ph></props>
+	// Valid values: **aes**, **aes192**, **aes256**, **des**, and **3des**.
 	IpsecEncAlg *string `json:"IpsecEncAlg,omitempty" xml:"IpsecEncAlg,omitempty"`
 	// The SA lifetime that is determined by Phase 2 negotiations. Unit: seconds. Valid values: **0** to **86400**.
 	IpsecLifetime *int32 `json:"IpsecLifetime,omitempty" xml:"IpsecLifetime,omitempty"`
-	// The DH key exchange algorithm that is used in Phase 2 negotiations. Valid values: **disabled**, **group1**, **group2**, **group5**, and **group14**.
+	// The DH key exchange algorithm that is used in Phase 2 negotiations.
+	//
+	// Valid values: **disabled**, **group1**, **group2**, **group5**, and **group14**.
 	IpsecPfs *string `json:"IpsecPfs,omitempty" xml:"IpsecPfs,omitempty"`
 }
 
@@ -65581,34 +65933,45 @@ type ModifyVpnConnectionAttributeResponseBody struct {
 	//
 	// This value is a UNIX timestamp representing the number of milliseconds that have elapsed since the epoch time January 1, 1970, 00:00:00 UTC.
 	CreateTime *int64 `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
-	// The ID of the customer gateway.
+	// The ID of the customer gateway associated with the IPsec-VPN connection.
+	//
+	// This parameter is returned only for single-tunnel IPsec-VPN connections.
 	CustomerGatewayId *string `json:"CustomerGatewayId,omitempty" xml:"CustomerGatewayId,omitempty"`
 	// The description of the IPsec-VPN connection.
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
 	// Indicates whether IPsec negotiations immediately start after the configuration takes effect. Valid values:
 	//
-	// *   **true:** IPsec negotiations immediately start after the configuration takes effect.
-	// *   **false:** IPsec negotiations start when inbound traffic is detected.
+	// *   **true**: IPsec negotiations immediately start after the configuration takes effect.
+	// *   **false**: IPsec negotiations start when inbound traffic is detected.
 	EffectImmediately *bool `json:"EffectImmediately,omitempty" xml:"EffectImmediately,omitempty"`
-	// Indicates whether DPD is enabled. Valid values:
+	// Indicates whether the DPD feature is enabled for the IPsec-VPN connection. Valid values:
 	//
-	// *   **false:** The DPD feature is disabled.
-	// *   **true:** The DPD feature is enabled.
+	// *   **false**
+	// *   **true**
+	//
+	// This parameter is returned only for single-tunnel IPsec-VPN connections.
 	EnableDpd *bool `json:"EnableDpd,omitempty" xml:"EnableDpd,omitempty"`
-	// Indicates whether NAT traversal is enabled. Valid values:
+	// Indicates whether NAT traversal is enabled for the IPsec-VPN connection. Valid values: Valid values:
 	//
-	// *   **false:** NAT traversal is disabled.
-	// *   **true:** NAT traversal is enabled.
+	// *   **false**
+	// *   **true**
+	//
+	// This parameter is returned only for single-tunnel IPsec-VPN connections.
 	EnableNatTraversal *bool `json:"EnableNatTraversal,omitempty" xml:"EnableNatTraversal,omitempty"`
 	// Indicates whether BGP is enabled for the tunnel. Valid values:
-	// - **true**
-	// - **false**
+	//
+	// *   **true**
+	// *   **false**
 	//
 	// This parameter is returned only by dual-tunnel IPsec-VPN connections.
 	EnableTunnelsBgp *bool `json:"EnableTunnelsBgp,omitempty" xml:"EnableTunnelsBgp,omitempty"`
-	// The configurations of Phase 1 negotiations.
+	// The configuration of Phase 1 negotiations.
+	//
+	// **IkeConfig** parameters are returned only for single-tunnel IPsec-VPN connections.
 	IkeConfig *ModifyVpnConnectionAttributeResponseBodyIkeConfig `json:"IkeConfig,omitempty" xml:"IkeConfig,omitempty" type:"Struct"`
-	// The configurations of Phase 2 negotiations.
+	// The configuration of Phase 2 negotiations.
+	//
+	// **IpsecConfig** parameters are returned only for single-tunnel IPsec-VPN connections.
 	IpsecConfig *ModifyVpnConnectionAttributeResponseBodyIpsecConfig `json:"IpsecConfig,omitempty" xml:"IpsecConfig,omitempty" type:"Struct"`
 	// The CIDR block on the VPC side.
 	LocalSubnet *string `json:"LocalSubnet,omitempty" xml:"LocalSubnet,omitempty"`
@@ -65616,15 +65979,19 @@ type ModifyVpnConnectionAttributeResponseBody struct {
 	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
 	// The CIDR block on the data center side.
 	RemoteSubnet *string `json:"RemoteSubnet,omitempty" xml:"RemoteSubnet,omitempty"`
-	// The ID of the request.
+	// The request ID.
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// The tunnel configurations of the IPsec-VPN connection.
+	// The tunnel configuration of the IPsec-VPN connection.
 	//
 	// **TunnelOptionsSpecification** parameters are returned only for dual-tunnel IPsec-VPN connections.
 	TunnelOptionsSpecification *ModifyVpnConnectionAttributeResponseBodyTunnelOptionsSpecification `json:"TunnelOptionsSpecification,omitempty" xml:"TunnelOptionsSpecification,omitempty" type:"Struct"`
-	// The health check configurations.
+	// The health check configuration.
+	//
+	// **VcoHealthCheck** parameters are returned only for single-tunnel IPsec-VPN connections.
 	VcoHealthCheck *ModifyVpnConnectionAttributeResponseBodyVcoHealthCheck `json:"VcoHealthCheck,omitempty" xml:"VcoHealthCheck,omitempty" type:"Struct"`
-	// The BGP configurations.
+	// The BGP configuration.
+	//
+	// **VpnBgpConfig** parameters are returned only for single-tunnel IPsec-VPN connections.
 	VpnBgpConfig *ModifyVpnConnectionAttributeResponseBodyVpnBgpConfig `json:"VpnBgpConfig,omitempty" xml:"VpnBgpConfig,omitempty" type:"Struct"`
 	// The ID of the IPsec-VPN connection.
 	VpnConnectionId *string `json:"VpnConnectionId,omitempty" xml:"VpnConnectionId,omitempty"`
@@ -65731,18 +66098,18 @@ func (s *ModifyVpnConnectionAttributeResponseBody) SetVpnGatewayId(v string) *Mo
 }
 
 type ModifyVpnConnectionAttributeResponseBodyIkeConfig struct {
-	// The IKE authentication algorithm.
+	// The authentication algorithm in the IKE phase.
 	IkeAuthAlg *string `json:"IkeAuthAlg,omitempty" xml:"IkeAuthAlg,omitempty"`
-	// The IKE encryption algorithm.
+	// The encryption algorithm in the IKE phase.
 	IkeEncAlg *string `json:"IkeEncAlg,omitempty" xml:"IkeEncAlg,omitempty"`
-	// The IKE lifetime. Unit: seconds.
+	// The lifetime in the IKE phase. Unit: seconds.
 	IkeLifetime *int64 `json:"IkeLifetime,omitempty" xml:"IkeLifetime,omitempty"`
-	// The IKE negotiation mode. Valid values:
+	// The IKE negotiation mode.
 	//
-	// *   **main:** This mode offers higher security during negotiations.
-	// *   **aggressive:** This mode is faster and has a higher success rate.
+	// *   **main**: This mode offers higher security during negotiations.
+	// *   **aggressive**: This mode is faster and has a higher success rate.
 	IkeMode *string `json:"IkeMode,omitempty" xml:"IkeMode,omitempty"`
-	// The Diffie-Hellman group.
+	// The DH group in the IKE phase.
 	IkePfs *string `json:"IkePfs,omitempty" xml:"IkePfs,omitempty"`
 	// The version of the IKE protocol.
 	//
@@ -65755,7 +66122,7 @@ type ModifyVpnConnectionAttributeResponseBodyIkeConfig struct {
 	LocalId *string `json:"LocalId,omitempty" xml:"LocalId,omitempty"`
 	// The pre-shared key.
 	Psk *string `json:"Psk,omitempty" xml:"Psk,omitempty"`
-	// The identifier on the data center side. The default value is the IP address of the customer gateway. The value can be a fully qualified domain name (FQDN) or an IP address.
+	// The identifier on the data center side. The default value is the IP address of the customer gateway. The value can be a FQDN or an IP address.
 	RemoteId *string `json:"RemoteId,omitempty" xml:"RemoteId,omitempty"`
 }
 
@@ -65813,13 +66180,13 @@ func (s *ModifyVpnConnectionAttributeResponseBodyIkeConfig) SetRemoteId(v string
 }
 
 type ModifyVpnConnectionAttributeResponseBodyIpsecConfig struct {
-	// The IPsec authentication algorithm.
+	// The authentication algorithm in the IPsec phase.
 	IpsecAuthAlg *string `json:"IpsecAuthAlg,omitempty" xml:"IpsecAuthAlg,omitempty"`
-	// The IPsec encryption algorithm.
+	// The encryption algorithm in the IPsec phase.
 	IpsecEncAlg *string `json:"IpsecEncAlg,omitempty" xml:"IpsecEncAlg,omitempty"`
-	// The IPsec lifetime. Unit: seconds.
+	// The lifetime in the IPsec phase. Unit: seconds.
 	IpsecLifetime *int64 `json:"IpsecLifetime,omitempty" xml:"IpsecLifetime,omitempty"`
-	// The Diffie-Hellman group.
+	// The DH group in the IPsec phase.
 	IpsecPfs *string `json:"IpsecPfs,omitempty" xml:"IpsecPfs,omitempty"`
 }
 
@@ -65869,36 +66236,36 @@ func (s *ModifyVpnConnectionAttributeResponseBodyTunnelOptionsSpecification) Set
 }
 
 type ModifyVpnConnectionAttributeResponseBodyTunnelOptionsSpecificationTunnelOptions struct {
-	// The ID of the customer gateway that is associated with the tunnel.
+	// The ID of the customer gateway associated with the tunnel.
 	CustomerGatewayId *string `json:"CustomerGatewayId,omitempty" xml:"CustomerGatewayId,omitempty"`
-	// Indicates whether DPD is enabled for the tunnel. Valid values:
+	// Indicates whether the DPD feature is enabled for the tunnel. Valid values:
 	//
-	// - **false**
-	// - **true**
+	// *   **false**
+	// *   **true**
 	EnableDpd *bool `json:"EnableDpd,omitempty" xml:"EnableDpd,omitempty"`
 	// Indicates whether NAT traversal is enabled for the tunnel. Valid values:
 	//
-	// - **false**
-	// - **true**
+	// *   **false**
+	// *   **true**
 	EnableNatTraversal *bool `json:"EnableNatTraversal,omitempty" xml:"EnableNatTraversal,omitempty"`
 	// The IP address on the Alibaba Cloud side.
 	InternetIp *string `json:"InternetIp,omitempty" xml:"InternetIp,omitempty"`
-	// The CA certificate used by the IPsec peer.
+	// The CA certificate of the tunnel peer.
 	//
-	// This parameter is returned only by VPN gateways that use SM certificates.
+	// This parameter is returned only if the VPN gateway is of the SM type.
 	RemoteCaCertificate *string `json:"RemoteCaCertificate,omitempty" xml:"RemoteCaCertificate,omitempty"`
 	// The tunnel role. Valid values:
 	//
-	// - **master**
-	// - **slave**
+	// *   **master**: The tunnel is an active tunnel.
+	// *   **slave**: The tunnel is a standby tunnel.
 	Role *string `json:"Role,omitempty" xml:"Role,omitempty"`
 	// The tunnel status. Valid values:
 	//
-	// - **active**
-	// - **updating**
-	// - **deleting**
+	// *   **active**
+	// *   **updating**
+	// *   **deleting**
 	State *string `json:"State,omitempty" xml:"State,omitempty"`
-	// The BGP configurations.
+	// The BGP configuration.
 	TunnelBgpConfig *ModifyVpnConnectionAttributeResponseBodyTunnelOptionsSpecificationTunnelOptionsTunnelBgpConfig `json:"TunnelBgpConfig,omitempty" xml:"TunnelBgpConfig,omitempty" type:"Struct"`
 	// The tunnel ID.
 	TunnelId *string `json:"TunnelId,omitempty" xml:"TunnelId,omitempty"`
@@ -65979,13 +66346,13 @@ func (s *ModifyVpnConnectionAttributeResponseBodyTunnelOptionsSpecificationTunne
 }
 
 type ModifyVpnConnectionAttributeResponseBodyTunnelOptionsSpecificationTunnelOptionsTunnelBgpConfig struct {
-	// The local ASN (Alibaba Cloud side).
+	// The ASN of the tunnel on the Alibaba Cloud side.
 	LocalAsn *int64 `json:"LocalAsn,omitempty" xml:"LocalAsn,omitempty"`
-	// The local BGP address (Alibaba Cloud side).
+	// The BGP IP address of the tunnel on the Alibaba Cloud side.
 	LocalBgpIp *string `json:"LocalBgpIp,omitempty" xml:"LocalBgpIp,omitempty"`
-	// The peer ASN.
+	// The ASN of the tunnel peer.
 	PeerAsn *int64 `json:"PeerAsn,omitempty" xml:"PeerAsn,omitempty"`
-	// The peer BGP address.
+	// The BGP IP address of the tunnel peer.
 	PeerBgpIp *string `json:"PeerBgpIp,omitempty" xml:"PeerBgpIp,omitempty"`
 	// The BGP CIDR block of the tunnel.
 	TunnelCidr *string `json:"TunnelCidr,omitempty" xml:"TunnelCidr,omitempty"`
@@ -66025,7 +66392,7 @@ func (s *ModifyVpnConnectionAttributeResponseBodyTunnelOptionsSpecificationTunne
 }
 
 type ModifyVpnConnectionAttributeResponseBodyTunnelOptionsSpecificationTunnelOptionsTunnelIkeConfig struct {
-	// The algorithm in the IKE phase.
+	// The authentication algorithm in the IKE phase.
 	IkeAuthAlg *string `json:"IkeAuthAlg,omitempty" xml:"IkeAuthAlg,omitempty"`
 	// The encryption algorithm in the IKE phase.
 	IkeEncAlg *string `json:"IkeEncAlg,omitempty" xml:"IkeEncAlg,omitempty"`
@@ -66033,18 +66400,18 @@ type ModifyVpnConnectionAttributeResponseBodyTunnelOptionsSpecificationTunnelOpt
 	IkeLifetime *int64 `json:"IkeLifetime,omitempty" xml:"IkeLifetime,omitempty"`
 	// The IKE negotiation mode.
 	//
-	// - **main**: This mode offers higher security during negotiations.
-	// - **aggressive**: This mode is faster and has a higher success rate.
+	// *   **main**: This mode offers higher security during negotiations.
+	// *   **aggressive**: This mode is faster and has a higher success rate.
 	IkeMode *string `json:"IkeMode,omitempty" xml:"IkeMode,omitempty"`
 	// The DH group in the IKE phase.
 	IkePfs *string `json:"IkePfs,omitempty" xml:"IkePfs,omitempty"`
 	// The version of the IKE protocol.
 	IkeVersion *string `json:"IkeVersion,omitempty" xml:"IkeVersion,omitempty"`
-	// The local identifier (Alibaba Cloud side).
+	// The identifier of the tunnel on the Alibaba Cloud side.
 	LocalId *string `json:"LocalId,omitempty" xml:"LocalId,omitempty"`
 	// The pre-shared key.
 	Psk *string `json:"Psk,omitempty" xml:"Psk,omitempty"`
-	// The peer identifier.
+	// The identifier of the tunnel peer.
 	RemoteId *string `json:"RemoteId,omitempty" xml:"RemoteId,omitempty"`
 }
 
@@ -66141,18 +66508,18 @@ func (s *ModifyVpnConnectionAttributeResponseBodyTunnelOptionsSpecificationTunne
 }
 
 type ModifyVpnConnectionAttributeResponseBodyVcoHealthCheck struct {
-	// The destination IP address that was used for health checks.
+	// The destination IP address.
 	Dip *string `json:"Dip,omitempty" xml:"Dip,omitempty"`
-	// Indicates whether the health check feature is enabled. Valid values:
+	// Indicates whether the health check feature is enabled for the IPsec-VPN connection.
 	//
-	// *   **true:** The health check feature is enabled.
-	// *   **false:** The health check feature is disabled.
+	// *   **true**
+	// *   **false**
 	Enable *string `json:"Enable,omitempty" xml:"Enable,omitempty"`
-	// The interval between two consecutive health check retries. Unit: seconds.
+	// The interval between two consecutive health checks. Unit: seconds.
 	Interval *int32 `json:"Interval,omitempty" xml:"Interval,omitempty"`
 	// The maximum number of health check retries.
 	Retry *int32 `json:"Retry,omitempty" xml:"Retry,omitempty"`
-	// The source IP address that was used for health checks.
+	// The source IP address that is used for health checks.
 	Sip *string `json:"Sip,omitempty" xml:"Sip,omitempty"`
 }
 
@@ -66192,8 +66559,8 @@ func (s *ModifyVpnConnectionAttributeResponseBodyVcoHealthCheck) SetSip(v string
 type ModifyVpnConnectionAttributeResponseBodyVpnBgpConfig struct {
 	// Indicates whether BGP is enabled. Valid values:
 	//
-	// *   **true:** BGP is enabled.
-	// *   **false:** BGP is disabled.
+	// *   **true**
+	// *   **false**
 	EnableBgp *string `json:"EnableBgp,omitempty" xml:"EnableBgp,omitempty"`
 	// The ASN on the Alibaba Cloud side.
 	LocalAsn *int32 `json:"LocalAsn,omitempty" xml:"LocalAsn,omitempty"`
@@ -66201,14 +66568,14 @@ type ModifyVpnConnectionAttributeResponseBodyVpnBgpConfig struct {
 	LocalBgpIp *string `json:"LocalBgpIp,omitempty" xml:"LocalBgpIp,omitempty"`
 	// The ASN on the data center side.
 	PeerAsn *int32 `json:"PeerAsn,omitempty" xml:"PeerAsn,omitempty"`
-	// The BGP IP address on the data center side.
+	// The BGP IP address of the data center.
 	PeerBgpIp *string `json:"PeerBgpIp,omitempty" xml:"PeerBgpIp,omitempty"`
-	// The negotiation status of BGP. Valid values:
+	// The negotiation state of BGP. Valid values:
 	//
-	// *   **success:** normal.
-	// *   **false:** abnormal.
+	// *   **success**: normal
+	// *   **false**: abnormal
 	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
-	// The CIDR block of the IPsec tunnel.
+	// The BGP CIDR block of the IPsec-VPN connection.
 	TunnelCidr *string `json:"TunnelCidr,omitempty" xml:"TunnelCidr,omitempty"`
 }
 
@@ -66287,14 +66654,14 @@ func (s *ModifyVpnConnectionAttributeResponse) SetBody(v *ModifyVpnConnectionAtt
 type ModifyVpnGatewayAttributeRequest struct {
 	// Specifies whether to automatically advertise BGP routes to the virtual private cloud (VPC). Valid values:
 	//
-	// *   **true:** yes.
-	// *   **false:** no.
+	// *   **true**
+	// *   **false**
 	AutoPropagate *bool `json:"AutoPropagate,omitempty" xml:"AutoPropagate,omitempty"`
 	// The client token that is used to ensure the idempotence of the request.
 	//
-	// You can use the client to generate the value, but you must ensure that it is unique among all requests. ClientToken can contain only ASCII characters.
+	// You can use the client to generate the token, but you must make sure that the token is unique among different requests. The client token can contain only ASCII characters.
 	//
-	// >  If you do not specify this parameter, the system automatically uses the request ID as the client token. The value of RequestId may be different for each API request.
+	// >  If you do not specify this parameter, the system automatically uses the request ID as the client token. The request ID may be different for each request.
 	ClientToken *string `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
 	// The new description of the VPN gateway.
 	//
@@ -66302,7 +66669,7 @@ type ModifyVpnGatewayAttributeRequest struct {
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
 	// The new name of the VPN gateway.
 	//
-	// The name must be 1 to 100 characters in length, and cannot start with `http://` or `https://`.
+	// The name must be 2 to 100 characters in length and cannot start with `http://` or `https://`. It must start with a letter and can contain letters, digits, underscores (\_), hyphens (-), and periods (.). Other characters are not supported.
 	Name         *string `json:"Name,omitempty" xml:"Name,omitempty"`
 	OwnerAccount *string `json:"OwnerAccount,omitempty" xml:"OwnerAccount,omitempty"`
 	OwnerId      *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
@@ -66375,55 +66742,66 @@ func (s *ModifyVpnGatewayAttributeRequest) SetVpnGatewayId(v string) *ModifyVpnG
 type ModifyVpnGatewayAttributeResponseBody struct {
 	// Indicates whether BGP routes are automatically advertised to the VPC. Valid values:
 	//
-	// *   **true:** yes.
-	// *   **false:** no.
+	// *   **true**
+	// *   **false**
 	AutoPropagate *bool `json:"AutoPropagate,omitempty" xml:"AutoPropagate,omitempty"`
 	// The payment status of the VPN gateway. Valid values:
 	//
-	// *   **Normal:** The VPN gateway is running as expected.
-	// *   **FinancialLocked:** The VPN gateway is locked due to overdue payments.
+	// *   **Normal**
+	// *   **FinancialLocked**
 	BusinessStatus *string `json:"BusinessStatus,omitempty" xml:"BusinessStatus,omitempty"`
-	// The timestamp is generated when the VPN gateway was created. Unit: milliseconds.
+	// The time when the VPN gateway was created. Unit: milliseconds.
 	//
-	// This value is a UNIX timestamp representing the number of milliseconds that have elapsed since the epoch time January 1, 1970, 00:00:00 UTC.
+	// This value is a UNIX timestamp representing the number of milliseconds that have elapsed since January 1, 1970, 00:00:00 UTC.
 	CreateTime *int64 `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
 	// The description of the VPN gateway.
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
-	// The second IP address assigned by the system to create an IPsec-VPN connection. This parameter is returned only when the VPN gateway supports the dual-tunnel mode.
-	DisasterRecoveryInternetIp *string `json:"DisasterRecoveryInternetIp,omitempty" xml:"DisasterRecoveryInternetIp,omitempty"`
-	// The ID of the second vSwitch associated with the VPN gateway. This parameter is returned only when the VPN gateway supports the dual-tunnel mode.
-	DisasterRecoveryVSwitchId *string `json:"DisasterRecoveryVSwitchId,omitempty" xml:"DisasterRecoveryVSwitchId,omitempty"`
-	// The BGP status of the VPN gateway. Valid values:
+	// The second IP address assigned by the system to create an IPsec-VPN connection.
 	//
-	// *   **true:** enabled.
-	// *   **false:** disabled.
+	// This parameter is returned only when the VPN gateway supports the dual-tunnel mode.
+	DisasterRecoveryInternetIp *string `json:"DisasterRecoveryInternetIp,omitempty" xml:"DisasterRecoveryInternetIp,omitempty"`
+	// The ID of the second vSwitch associated with the VPN gateway.
+	//
+	// This parameter is returned only when the VPN gateway supports the dual-tunnel mode.
+	DisasterRecoveryVSwitchId *string `json:"DisasterRecoveryVSwitchId,omitempty" xml:"DisasterRecoveryVSwitchId,omitempty"`
+	// Indicates whether BGP is enabled for the VPN gateway. Valid values:
+	//
+	// *   **true**
+	// *   **false**
 	EnableBgp *bool `json:"EnableBgp,omitempty" xml:"EnableBgp,omitempty"`
-	// The timestamp generated when the VPN gateway expires. Unit: milliseconds.
+	// The time when the VPN gateway expires. Unit: milliseconds.
 	//
 	// This value is a UNIX timestamp representing the number of milliseconds that have elapsed since the epoch time January 1, 1970, 00:00:00 UTC.
 	EndTime *int64 `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
-	// - If the VPN gateway supports IPsec-VPN connections in single-tunnel mode, the address is the IP address of the VPN gateway and can be used to create an IPsec-VPN connection or an SSL-VPN connection.
-	// - If the VPN gateway supports IPsec-VPN connections in dual-tunnel mode, the address is the first IP address used to create an IPsec-VPN connection. The address cannot be used to create an SSL-VPN connection. If the VPN gateway supports IPsec-VPN connections in dual-tunnel mode, the system assigns two IP addresses to the VPN gateway to create two encrypted tunnels.
+	// *   If the VPN gateway supports IPsec-VPN connections in single-tunnel mode, the address is the IP address of the VPN gateway and can be used to create an IPsec-VPN connection or an SSL-VPN connection.
+	//
+	// *   If the VPN gateway supports IPsec-VPN connections in dual-tunnel mode, the address is the first IP address used to create an IPsec-VPN connection. The address cannot be used to create an SSL-VPN connection.
+	//
+	//     If the VPN gateway supports IPsec-VPN connections in dual-tunnel mode, the system assigns two IP addresses to the VPN gateway to create two encrypted tunnels.
 	InternetIp *string `json:"InternetIp,omitempty" xml:"InternetIp,omitempty"`
-	// The private IP address of the VPN gateway.
+	// The IP address of the VPN gateway.
+	//
+	// This parameter is returned only when the VPN gateway is a private VPN gateway and supports only the single-tunnel mode.
 	IntranetIp *string `json:"IntranetIp,omitempty" xml:"IntranetIp,omitempty"`
 	// The name of the VPN gateway.
 	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
-	// The ID of the request.
+	// The request ID.
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	// The maximum bandwidth of the VPN gateway. Unit: Mbit/s.
 	Spec *string `json:"Spec,omitempty" xml:"Spec,omitempty"`
-	// The IP address of the SSL-VPN connection. This parameter is returned only when the VPN gateway is a public VPN gateway and supports only the single-tunnel mode. In addition, the VPN gateway must have the SSL-VPN feature enabled.
+	// The IP address of the SSL-VPN connection.
+	//
+	// This parameter is returned only when the VPN gateway is a public VPN gateway and supports only the single-tunnel mode. In addition, the VPN gateway must have the SSL-VPN feature enabled.
 	SslVpnInternetIp *string `json:"SslVpnInternetIp,omitempty" xml:"SslVpnInternetIp,omitempty"`
 	// The status of the VPN gateway. Valid values:
 	//
-	// *   **init:** The VPN gateway is being initialized.
-	// *   **provisioning:** The VPN gateway is being prepared.
-	// *   **active:** The VPN gateway is ready.
-	// *   **updating:** The VPN gateway is being updated.
-	// *   **deleting:** The VPN gateway is being deleted.
+	// *   **init**
+	// *   **provisioning**
+	// *   **active**
+	// *   **updating**
+	// *   **deleting**
 	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
-	// The ID of the vSwitch to which the VPN gateway belongs.
+	// The ID of the vSwitch associated with the VPN gateway.
 	VSwitchId *string `json:"VSwitchId,omitempty" xml:"VSwitchId,omitempty"`
 	// The ID of the VPC to which the VPN gateway belongs.
 	VpcId *string `json:"VpcId,omitempty" xml:"VpcId,omitempty"`
@@ -66561,9 +66939,9 @@ func (s *ModifyVpnGatewayAttributeResponse) SetBody(v *ModifyVpnGatewayAttribute
 type ModifyVpnPbrRouteEntryAttributeRequest struct {
 	// The client token that is used to ensure the idempotence of the request.
 	//
-	// You can use the client to generate the value, but you must make sure that it is unique among different requests. The token can contain only ASCII characters.
+	// You can use the client to generate the token, but you must make sure that the token is unique among different requests. The client token can contain only ASCII characters.
 	//
-	// >  If you do not set this parameter, the system sets **ClientToken** to the value of **RequestId**. The value of **RequestId** may be different for each API request.
+	// >  If you do not specify this parameter, the system automatically uses the **request ID** as the **client token**. The **request ID** may be different for each request.
 	ClientToken *string `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
 	// The new priority of the policy-based route. Valid values: **1** to **100**.
 	//
@@ -66684,7 +67062,7 @@ func (s *ModifyVpnPbrRouteEntryAttributeRequest) SetWeight(v int32) *ModifyVpnPb
 }
 
 type ModifyVpnPbrRouteEntryAttributeResponseBody struct {
-	// The ID of the request.
+	// The request ID.
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -66733,9 +67111,9 @@ func (s *ModifyVpnPbrRouteEntryAttributeResponse) SetBody(v *ModifyVpnPbrRouteEn
 type ModifyVpnPbrRouteEntryPriorityRequest struct {
 	// The client token that is used to ensure the idempotence of the request.
 	//
-	// You can use the client to generate the value, but you must make sure that it is unique among different requests. The token can contain only ASCII characters.
+	// You can use the client to generate the token, but you must make sure that the token is unique among different requests. The client token can contain only ASCII characters.
 	//
-	// >  If you do not set this parameter, the system sets **ClientToken** to the value of **RequestId**. The value of **RequestId** may be different for each API request.
+	// >  If you do not specify this parameter, the system automatically uses the **request ID** as the **client token**. The **request ID** may be different for each request.
 	ClientToken *string `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
 	// The new priority of the policy-based route. Valid values: **1** to **100**.
 	//
@@ -66761,7 +67139,7 @@ type ModifyVpnPbrRouteEntryPriorityRequest struct {
 	RouteSource *string `json:"RouteSource,omitempty" xml:"RouteSource,omitempty"`
 	// The ID of the VPN gateway.
 	VpnGatewayId *string `json:"VpnGatewayId,omitempty" xml:"VpnGatewayId,omitempty"`
-	// The weight of the policy-based route.
+	// The weight of the policy-based route. Valid values:
 	Weight *int32 `json:"Weight,omitempty" xml:"Weight,omitempty"`
 }
 
@@ -66839,7 +67217,7 @@ func (s *ModifyVpnPbrRouteEntryPriorityRequest) SetWeight(v int32) *ModifyVpnPbr
 }
 
 type ModifyVpnPbrRouteEntryPriorityResponseBody struct {
-	// The ID of the request.
+	// The request ID.
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -66888,9 +67266,9 @@ func (s *ModifyVpnPbrRouteEntryPriorityResponse) SetBody(v *ModifyVpnPbrRouteEnt
 type ModifyVpnPbrRouteEntryWeightRequest struct {
 	// The client token that is used to ensure the idempotence of the request.
 	//
-	// You can use the client to generate the value, but you must make sure that the value is unique among different requests. The client token can contain only ASCII characters.
+	// You can use the client to generate the token, but you must make sure that the token is unique among different requests. The client token can contain only ASCII characters.
 	//
-	// >  If you do not set this parameter, **ClientToken** is set to the value of **RequestId**. The value of **RequestId** may be different for each API request.
+	// >  If you do not specify this parameter, the system automatically uses the **request ID** as the **client token**. The **request ID** may be different for each request.
 	ClientToken *string `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
 	// The new weight of the policy-based route. Valid values:
 	//
@@ -66899,7 +67277,7 @@ type ModifyVpnPbrRouteEntryWeightRequest struct {
 	NewWeight *int32 `json:"NewWeight,omitempty" xml:"NewWeight,omitempty"`
 	// The next hop of the policy-based route.
 	NextHop *string `json:"NextHop,omitempty" xml:"NextHop,omitempty"`
-	// The tunneling protocol. Set the value to **Ipsec**.
+	// The tunneling protocol. The value is set to **Ipsec**, which indicates the IPsec tunneling protocol.
 	OverlayMode  *string `json:"OverlayMode,omitempty" xml:"OverlayMode,omitempty"`
 	OwnerAccount *string `json:"OwnerAccount,omitempty" xml:"OwnerAccount,omitempty"`
 	OwnerId      *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
@@ -66909,7 +67287,7 @@ type ModifyVpnPbrRouteEntryWeightRequest struct {
 	//
 	// *   If the route was assigned a priority, this parameter is optional.
 	//
-	//     If you set this parameter, set the value to the priority that was assigned to the route. Otherwise, the operation fails.
+	//         If you specify this parameter, set the value to the priority that was assigned to the policy-based route. Otherwise, the operation fails.
 	Priority *int32 `json:"Priority,omitempty" xml:"Priority,omitempty"`
 	// The ID of the region where the VPN gateway is created. You can call the [DescribeRegions](~~36063~~) operation to query the most recent region list.
 	RegionId             *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
@@ -67007,7 +67385,7 @@ func (s *ModifyVpnPbrRouteEntryWeightRequest) SetWeight(v int32) *ModifyVpnPbrRo
 }
 
 type ModifyVpnPbrRouteEntryWeightResponseBody struct {
-	// The ID of the request.
+	// The request ID.
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -67056,9 +67434,9 @@ func (s *ModifyVpnPbrRouteEntryWeightResponse) SetBody(v *ModifyVpnPbrRouteEntry
 type ModifyVpnRouteEntryWeightRequest struct {
 	// The client token that is used to ensure the idempotence of the request.
 	//
-	// You can use the client to generate the value, but you must make sure that it is unique among different requests. The client token can contain only ASCII characters.
+	// You can use the client to generate the token, but you must make sure that the token is unique among different requests. The client token can contain only ASCII characters.
 	//
-	// >  If you do not set this parameter, the system automatically uses **RequestId** as **ClientToken**. **RequestId** of each API request may be different.
+	// >  If you do not specify this parameter, the system automatically uses the **request ID** as the **client token**. The **request ID** may be different for each request.
 	ClientToken *string `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
 	// The new weight that you want to set for the destination-based route. Valid values:
 	//
@@ -67155,7 +67533,7 @@ func (s *ModifyVpnRouteEntryWeightRequest) SetWeight(v int32) *ModifyVpnRouteEnt
 }
 
 type ModifyVpnRouteEntryWeightResponseBody struct {
-	// The ID of the request.
+	// The request ID.
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -67202,9 +67580,9 @@ func (s *ModifyVpnRouteEntryWeightResponse) SetBody(v *ModifyVpnRouteEntryWeight
 }
 
 type MoveResourceGroupRequest struct {
-	// The ID of the resource group to which the cloud resource is to be moved.
+	// The ID of the resource group to which you want to move the resource.
 	//
-	// >  You can use resource groups to manage resources owned by your Alibaba Cloud account. Resource groups simplify the resource and permission management of your Alibaba Cloud account. For more information, see [What is resource management?](~~94475~~).
+	// >  You can use resource groups to facilitate resource grouping and permission management for an Alibaba Cloud. For more information, see [What is resource management?](~~94475~~)
 	NewResourceGroupId *string `json:"NewResourceGroupId,omitempty" xml:"NewResourceGroupId,omitempty"`
 	OwnerAccount       *string `json:"OwnerAccount,omitempty" xml:"OwnerAccount,omitempty"`
 	OwnerId            *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
@@ -67212,15 +67590,25 @@ type MoveResourceGroupRequest struct {
 	//
 	// You can call the [DescribeRegions](~~36063~~) operation to query the most recent region list.
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	// The ID of the instance that you want to move.
+	// The resource ID.
 	ResourceId           *string `json:"ResourceId,omitempty" xml:"ResourceId,omitempty"`
 	ResourceOwnerAccount *string `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
 	ResourceOwnerId      *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
-	// The type of the resource. Valid values:
+	// The type of the resource for which you want to modify the resource group. Valid values:
 	//
-	// *   **vpc**: a virtual private cloud (VPC)
-	// *   **eip**: an elastic IP address (EIP)
-	// *   **bandwidthpackage**: an EIP bandwidth plan
+	// *   **Vpc**
+	// *   **Eip**
+	// *   **BandwidthPackage**
+	// *   **PrefixList**
+	// *   **PublicIpAddressPool**
+	// *   **FlowLog**
+	// *   **HaVip**
+	// *   **TrafficMirrorFilter**
+	// *   **TrafficMirrorSession**
+	// *   **IPv4Gateway**
+	// *   **IPv6Gateway**
+	// *   **DhcpOptionsSet**
+	// *   **GatewayEndpoint**
 	ResourceType *string `json:"ResourceType,omitempty" xml:"ResourceType,omitempty"`
 }
 
@@ -67273,7 +67661,7 @@ func (s *MoveResourceGroupRequest) SetResourceType(v string) *MoveResourceGroupR
 }
 
 type MoveResourceGroupResponseBody struct {
-	// The ID of the request.
+	// The request ID.
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -67635,9 +68023,9 @@ func (s *OpenTrafficMirrorServiceResponse) SetBody(v *OpenTrafficMirrorServiceRe
 type PublishVpnRouteEntryRequest struct {
 	// The client token that is used to ensure the idempotence of the request.
 	//
-	// You can use the client to generate the value, but you must make sure that it is unique among different requests. The token can contain only ASCII characters and cannot exceed 64 characters in length.
+	// You can use the client to generate the token, but you must make sure that the token is unique among different requests. The token can contain only ASCII characters and cannot exceed 64 characters in length.
 	//
-	// >  If you do not set this parameter, **ClientToken** is set to the value of **RequestId**. The value of **RequestId** may be different for each API request.
+	// >  If you do not specify this parameter, the system automatically uses the **request ID** as the **client token**. The **request ID** may be different for each request.
 	ClientToken *string `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
 	// The next hop of the VPN gateway route.
 	NextHop      *string `json:"NextHop,omitempty" xml:"NextHop,omitempty"`
@@ -67645,8 +68033,8 @@ type PublishVpnRouteEntryRequest struct {
 	OwnerId      *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
 	// Specifies whether to advertise the VPN gateway route to the VPC route table. Valid values:
 	//
-	// *   **true**: yes
-	// *   **false**: no
+	// *   **true**
+	// *   **false**
 	PublishVpc *bool `json:"PublishVpc,omitempty" xml:"PublishVpc,omitempty"`
 	// The ID of the region where the VPN gateway is created.
 	//
@@ -67729,7 +68117,7 @@ func (s *PublishVpnRouteEntryRequest) SetVpnGatewayId(v string) *PublishVpnRoute
 }
 
 type PublishVpnRouteEntryResponseBody struct {
-	// The ID of the request.
+	// The request ID.
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -68027,7 +68415,7 @@ func (s *ReleaseEipAddressRequest) SetResourceOwnerId(v int64) *ReleaseEipAddres
 }
 
 type ReleaseEipAddressResponseBody struct {
-	// The ID of the request.
+	// The request ID.
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -68183,21 +68571,21 @@ func (s *ReleaseEipSegmentAddressResponse) SetBody(v *ReleaseEipSegmentAddressRe
 }
 
 type RemoveCommonBandwidthPackageIpRequest struct {
-	// The ID of the EIP bandwidth plan.
+	// The ID of the Internet Shared Bandwidth instance.
 	BandwidthPackageId *string `json:"BandwidthPackageId,omitempty" xml:"BandwidthPackageId,omitempty"`
 	// The client token that is used to ensure the idempotence of the request.
 	//
-	// You can use the client to generate the value, but you must make sure that it is unique among different requests. ClientToken can contain only ASCII characters.
+	// You can use the client to generate the token, but you must make sure that the token is unique among different requests. The client token can contain only ASCII characters.
 	//
-	// >  If you do not set this parameter, the system automatically uses **RequestId** as **ClientToken**. **RequestId** may be different for each API request.
+	// >  If you do not specify this parameter, the system automatically uses the **request ID** as the **client token**. The **request ID** may be different for each request.
 	ClientToken *string `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
-	// The ID of the EIP.
+	// The EIP ID.
 	//
-	// You can call the [DescribeEipAddresses](~~36018~~) operation to query the most recent region list.
+	// You can call the [DescribeEipAddresses](~~36018~~) operation to query EIP IDs.
 	IpInstanceId *string `json:"IpInstanceId,omitempty" xml:"IpInstanceId,omitempty"`
 	OwnerAccount *string `json:"OwnerAccount,omitempty" xml:"OwnerAccount,omitempty"`
 	OwnerId      *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
-	// The region ID of the EIP bandwidth plan.
+	// The region ID of the Internet Shared Bandwidth instance.
 	//
 	// You can call the [DescribeRegions](~~36063~~) operation to query the most recent region list.
 	RegionId             *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
@@ -68254,7 +68642,7 @@ func (s *RemoveCommonBandwidthPackageIpRequest) SetResourceOwnerId(v int64) *Rem
 }
 
 type RemoveCommonBandwidthPackageIpResponseBody struct {
-	// The ID of the request.
+	// The request ID.
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -71332,20 +71720,20 @@ func (s *UpdateDhcpOptionsSetAttributeResponse) SetBody(v *UpdateDhcpOptionsSetA
 type UpdateGatewayRouteTableEntryAttributeRequest struct {
 	// The client token that is used to ensure the idempotence of the request.
 	//
-	// You can use the client to generate the value, but you must make sure that it is unique among all requests. The client token can contain only ASCII characters.
+	// You can use the client to generate a value, and you must make sure that each request has a unique token value. The client token can contain only ASCII characters.
 	//
-	// >  If you do not specify this parameter, the system automatically uses the value of **RequestId** as the value of **ClientToken**. The value of **RequestId** may be different for each API request.
+	// >  If you do not specify this parameter, the system automatically uses the value of **RequestId** as the value of **ClientToken**. The **request ID** may be different for each request.
 	ClientToken *string `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
 	// The description of the gateway route table.
 	//
 	// The description must be 2 to 256 characters in length. The description must start with a letter but cannot start with `http://` or `https://`.
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
-	// The destination CIDR block of the route entry.
+	// The destination CIDR block of the route entry in the gateway route table.
 	DestinationCidrBlock *string `json:"DestinationCidrBlock,omitempty" xml:"DestinationCidrBlock,omitempty"`
-	// Specifies whether to check the request without performing the operation. Valid values:
+	// Specifies whether to precheck only this request. Valid values:
 	//
-	// *   **true**: checks the request but does not modify the route entry. The system checks the required parameters, request syntax, and limits. If the request fails to pass the check, an error message is returned. If the request passes the check, the `DryRunOperation` error code is returned.
-	// *   **false** (default): sends the request. If the request passes the check, a 2xx HTTP status code is returned and the route entry is modified.
+	// *   **true**: prechecks the request without modifying the gateway route table. The system checks the required parameters, request format, and service limits. If the request fails to pass the precheck, an error code is returned. If the request passes the precheck, the `DryRunOperation` error code is returned.
+	// *   **false**: sends the request. This is the default value. If the request passes the precheck, a 2xx HTTP status code is returned and the gateway route table is modified.
 	DryRun *bool `json:"DryRun,omitempty" xml:"DryRun,omitempty"`
 	// The ID of the gateway route table that you want to modify.
 	IPv4GatewayRouteTableId *string `json:"IPv4GatewayRouteTableId,omitempty" xml:"IPv4GatewayRouteTableId,omitempty"`
@@ -71353,19 +71741,19 @@ type UpdateGatewayRouteTableEntryAttributeRequest struct {
 	//
 	// The name must be 2 to 128 characters in length and can contain letter, digits, periods (.), underscores (\_), and hyphens (-). The name must start with a letter.
 	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
-	// The next hop ID of the route entry after the route entry is modified.
+	// The new next hop ID of the route entry.
 	//
-	// *   If you set **NextHopType** to **Instance**, specify an ECS instance ID for the **NextHopId** parameter.
-	// *   If you set **NextHopType** to **NetworkInterface**, specify an ENI ID for the **NextHopId** parameter.
-	// *   If you set **NextHopType** to **Local**, leave the **NextHopId** parameter empty, which specifies a local next hop.
+	// *   If you set **NextHopType** to **Instance**, specify an ECS instance ID for **NextHopId**.
+	// *   If you set **NextHopType** to **NetworkInterface**, specify an ENI ID for **NextHopId**.
+	// *   If you set **NextHopType** to **Local**, leave **NextHopId** empty. This indicates a local next hop.
 	//
-	// >  If you want to modify a route entry whose next hop type is **Instance** or **NetworkInterface**, you must first change the value of the **NextHopType** parameter to **Local**. Then, change the value of **NextHopType** to **Instance** or **NetworkInterface** and specify the **NextHopId** parameter. When you modify a route entry whose next hop type is Instance or NetworkInterface, you cannot directly specify a different ENI ID or ECS instance ID for the NextHopId parameter.
+	// >  If the value of NextHopType is **Instance** or **NetworkInterface**, and you want to modify the next hop, you must set **NextHopType** to **Local** first. Then, set **NextHopType** to **Instance** or **NetworkInterface** and specify **NextHopId** based on your requirements. If the next hop type of a route entry is Instance or NetworkInterface, you cannot directly specify a different ENI ID or ECS instance ID for the NextHopId parameter.
 	NextHopId *string `json:"NextHopId,omitempty" xml:"NextHopId,omitempty"`
-	// The next hop type of the route entry after the route entry is modified. Valid values:
+	// The new next hop type of the route entry. Valid values:
 	//
-	// *   **EcsInstance**: an Elastic Compute Service (ECS) instance
-	// *   **NetworkInterface**: an elastic network interface (ENI)
-	// *   **Local**: a local next hop
+	// *   **EcsInstance**: an Elastic Compute Service (ECS) instance.
+	// *   **NetworkInterface**: an elastic network interface (ENI).
+	// *   **Local**: a local next hop.
 	NextHopType  *string `json:"NextHopType,omitempty" xml:"NextHopType,omitempty"`
 	OwnerAccount *string `json:"OwnerAccount,omitempty" xml:"OwnerAccount,omitempty"`
 	OwnerId      *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
@@ -71451,7 +71839,7 @@ func (s *UpdateGatewayRouteTableEntryAttributeRequest) SetResourceOwnerId(v int6
 }
 
 type UpdateGatewayRouteTableEntryAttributeResponseBody struct {
-	// The ID of the request.
+	// The request ID.
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -71498,61 +71886,61 @@ func (s *UpdateGatewayRouteTableEntryAttributeResponse) SetBody(v *UpdateGateway
 }
 
 type UpdateIpsecServerRequest struct {
-	// The client CIDR block. It refers to the CIDR block that is used to allocate an IP address to the client.
+	// The client CIDR block from which an IP address is allocated to the virtual network interface controller (NIC) of the client.
 	//
-	// >  The client CIDR block must not overlap with the CIDR block of the virtual private cloud (VPC).
+	// >  The client CIDR block must not overlap with the CIDR blocks of the VPC.
 	ClientIpPool *string `json:"ClientIpPool,omitempty" xml:"ClientIpPool,omitempty"`
 	// The client token that is used to ensure the idempotence of the request.
 	//
-	// You can use the client to generate the value, but you must make sure that it is unique among different requests. ClientToken can contain only ASCII characters.
+	// You can use the client to generate a value, and you must make sure that each request has a unique token value. The client token can contain only ASCII characters.
 	//
-	// >  If you do not set this parameter, **ClientToken** is set to the value of **RequestId**. The value of **RequestId** may be different for each API request.
+	// >  If you do not specify this parameter, the system automatically uses the value of **RequestId** as the value of **ClientToken**. The **request ID** may be different for each request.
 	ClientToken *string `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
-	// Specifies whether to precheck the request without performing the operation. Valid values:
+	// Specifies whether to only precheck this request. Valid values:
 	//
-	// *   **true**: only prechecks the request. After the request passes the precheck, the system does not modify the configurations of the IPsec server. The system checks whether the required parameters are set, whether the values are in valid formats, and the service limits. If the request fails to pass the precheck, a corresponding error code is returned. If the request passes the precheck, the `DryRunOperation` error code is returned.
-	// *   **false** (default): prechecks the request. After the request passes the precheck, the system modifies the configurations of the IPsec server.
+	// *   **true**: prechecks the request without modifying the configurations of the IPsec server. The system checks the required parameters, request format, and service limits. If the request fails to pass the precheck, an error code is returned. If the request passes the precheck, the `DryRunOperation` error code is returned.
+	// *   **false**: sends the request. This is the default value. If the request passes the precheck, the system modifies the configurations of the IPsec server.
 	DryRun *string `json:"DryRun,omitempty" xml:"DryRun,omitempty"`
-	// Specifies whether to delete the current IPsec tunnel and reinitiate negotiations. Valid values:
+	// Specifies whether to delete the current IPsec tunnel and initiate negotiations again. Valid values:
 	//
-	// *   **true**: starts the negotiation immediately after the configuration is completed.
-	// *   **false** (default): initiates negotiations when inbound traffic is detected.
+	// *   **true**: immediately initiates negotiations after the configuration is complete.
+	// *   **false**: initiates negotiations when inbound traffic is detected. This is the default value.
 	EffectImmediately *bool `json:"EffectImmediately,omitempty" xml:"EffectImmediately,omitempty"`
-	// The configuration of Phase 1 negotiations. Valid values:
+	// The configuration of Phase 1 negotiation. Valid values:
 	//
 	// *   **IkeVersion**: the IKE version. Valid values: **ikev1** and **ikev2**. Default value: **ikev2**.
 	// *   **IkeMode**: the IKE negotiation mode. Default value: **main**.
-	// *   **IkeEncAlg**: the encryption algorithm that is used in Phase 1 negotiations. Default value: **aes**.
-	// *   **IkeAuthAlg**: the authentication algorithm that is used in Phase 1 negotiations. Default value: **sha1**.
-	// *   **IkePfs**: the Diffie-Hellman key exchange algorithm that is used in Phase 1 negotiations. Default value: **group2**.
-	// *   **IkeLifetime**: the SA lifetime determined by Phase 1 negotiations. Unit: seconds. Valid values: **0** to **86400**. Default value: **86400**.
-	// *   **LocalId**: the ID of the IPsec server. The value can be a fully qualified domain name (FQDN) or an IP address. By default, the ID of the IPsec server is the public IP address of the VPN gateway.
-	// *   **RemoteId**: the identifier of the customer gateway. The value can be an FQDN or an IP address. By default, this parameter is not specified.
+	// *   **IkeEncAlg**: the encryption algorithm that is used in Phase 1 negotiation. Default value: **aes**.
+	// *   **IkeAuthAlg**: the authentication algorithm that is used in Phase 1 negotiation. Default value: **sha1**.
+	// *   **IkePfs**: the Diffie-Hellman key exchange algorithm that is used in Phase 1 negotiation. Default value: **group2**.
+	// *   **IkeLifetime**: the security association (SA) lifetime determined by Phase 1 negotiation. Unit: seconds. Valid values: **0** to **86400**. Default value: **86400**.
+	// *   **LocalId**: the identifier of the IPsec server. The value can be a fully qualified domain name (FQDN) or an IP address. The default value is the public IP address of the VPN gateway.
+	// *   **RemoteId**: the peer identifier. The value can be an FQDN or an IP address. The default value is empty.
 	IkeConfig *string `json:"IkeConfig,omitempty" xml:"IkeConfig,omitempty"`
-	// The configuration of Phase 2 negotiations. Valid values:
+	// The configuration of Phase 2 negotiation. Valid values:
 	//
-	// *   **IpsecEncAlg**: the encryption algorithm that is used in Phase 2 negotiations. Default value: **aes**.
-	// *   **IpsecAuthAlg**: the authentication algorithm that is used in Phase 2 negotiations. Default value: **sha1**.
-	// *   **IpsecPfs**: forwards packets of all protocols. The Diffie-Hellman key exchange algorithm used in Phase 2 negotiations. Default value: **group2**.
-	// *   **IpsecLifetime**: the SA lifetime determined by Phase 2 negotiations. Unit: seconds. Valid values: **0** to **86400**. Default value: **86400**.
+	// *   **IpsecEncAlg**: the encryption algorithm that is used in Phase 2 negotiation. Default value: **aes**.
+	// *   **IpsecAuthAlg**: the authentication algorithm that is used in Phase 2 negotiation. Default value: **sha1**.
+	// *   **IpsecPfs**: forwards packets of all protocols. The Diffie-Hellman key exchange algorithm that is used in Phase 2 negotiation. Default value: **group2**.
+	// *   **IpsecLifetime**: the SA lifetime determined by Phase 2 negotiation. Unit: seconds. Valid values: **0** to **86400**. Default value: **86400**.
 	IpsecConfig *string `json:"IpsecConfig,omitempty" xml:"IpsecConfig,omitempty"`
-	// The ID of the IPsec server.
+	// The IPsec server ID.
 	IpsecServerId *string `json:"IpsecServerId,omitempty" xml:"IpsecServerId,omitempty"`
-	// The name of the IPsec server.
+	// The IPsec server name.
 	//
-	// The name must be 1 to 100 characters in length, and cannot start with `http://` or `https://`.
+	// The name must be 1 to 100 characters in length and cannot start with `http://` or `https://`.
 	IpsecServerName *string `json:"IpsecServerName,omitempty" xml:"IpsecServerName,omitempty"`
-	// The local CIDR blocks, which refer to the CIDR blocks on the virtual private cloud (VPC) side.
+	// The local CIDR blocks, which are the CIDR blocks of the virtual private cloud (VPC) for the client to access.
 	//
-	// Separate multiple CIDR blocks with commas (,). Example: 192.168.1.0/24,192.168.2.0/24.
+	// Multiple CIDR blocks are separated with commas (,). Example: 192.168.1.0/24,192.168.2.0/24.
 	LocalSubnet *string `json:"LocalSubnet,omitempty" xml:"LocalSubnet,omitempty"`
 	// The pre-shared key.
 	//
-	// Enter the pre-shared key that is used for identity authentication between the IPsec server and the client. The key must be 1 to 100 characters in length.
+	// The pre-shared key is used for identity authentication between the IPsec server and the client. The key must be 1 to 100 characters in length.
 	//
 	// If you do not specify a pre-shared key, the system randomly generates a 16-character string as the pre-shared key. You can call the [ListIpsecServers](~~205453~~) operation to query the pre-shared keys that are generated by the system.
 	//
-	// >  The pre-shared key of the IPsec server must be the same as the authentication key of the client. Otherwise, a connection cannot be established between the IPsec server and the client.
+	// >  The pre-shared key of the IPsec server must be the same as the client key. Otherwise, the IPsec server cannot be connected to the client.
 	Psk *string `json:"Psk,omitempty" xml:"Psk,omitempty"`
 	// Specifies whether to enable pre-shared key authentication. If you set the value to **true**, pre-shared key authentication is enabled.
 	PskEnabled *bool `json:"PskEnabled,omitempty" xml:"PskEnabled,omitempty"`
@@ -71631,7 +72019,7 @@ func (s *UpdateIpsecServerRequest) SetRegionId(v string) *UpdateIpsecServerReque
 }
 
 type UpdateIpsecServerResponseBody struct {
-	// The ID of the request.
+	// The request ID.
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -71680,14 +72068,14 @@ func (s *UpdateIpsecServerResponse) SetBody(v *UpdateIpsecServerResponseBody) *U
 type UpdateIpv4GatewayAttributeRequest struct {
 	// The client token that is used to ensure the idempotence of the request.
 	//
-	// You can use the client to generate the value, but you must make sure that it is unique among different requests. The client token can contain only ASCII characters.
+	// You can use the client to generate the token, but you must make sure that the token is unique among different requests. The client token can contain only ASCII characters.
 	//
-	// >  If you do not set this parameter, the system uses **RequestId** as **ClientToken**. **RequestId** may be different for each API request.
+	// >  If you do not specify this parameter, the system automatically uses the **request ID** as the **client token**. The **request ID** may be different for each request.
 	ClientToken *string `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
-	// Specifies whether to check the request without performing the operation. Valid values:
+	// Specifies whether to perform only a dry run, without performing the actual request. Valid values:
 	//
-	// *   **true**: checks the request without performing the operation. The system checks the required parameters, request syntax, and limits. If the request fails the check, an error message is returned. If the request passes the check, the `DryRunOperation` error code is returned.
-	// *   **false** (default): sends the request. If the request passes the check, a 2xx HTTP status code is returned and the operation is performed.
+	// *   **true**: performs only a dry run. The system checks the request for potential issues, including missing parameter values, incorrect request syntax, and service limits. If the request fails the dry run, an error message is returned. If the request passes the dry run, the `DryRunOperation` error code is returned.
+	// *   **false** (default): performs a dry run and performs the actual request. If the request passes the dry run, a 2xx HTTP status code is returned and the operation is performed.
 	DryRun *bool `json:"DryRun,omitempty" xml:"DryRun,omitempty"`
 	// The new description of the IPv4 gateway.
 	Ipv4GatewayDescription *string `json:"Ipv4GatewayDescription,omitempty" xml:"Ipv4GatewayDescription,omitempty"`
@@ -71764,7 +72152,7 @@ func (s *UpdateIpv4GatewayAttributeRequest) SetResourceOwnerId(v int64) *UpdateI
 }
 
 type UpdateIpv4GatewayAttributeResponseBody struct {
-	// The ID of the request.
+	// The request ID.
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -71813,15 +72201,15 @@ func (s *UpdateIpv4GatewayAttributeResponse) SetBody(v *UpdateIpv4GatewayAttribu
 type UpdateNatGatewayNatTypeRequest struct {
 	// The client token that is used to ensure the idempotence of the request.
 	//
-	// You can use the client to generate the value, but you must make sure that it is unique among different requests. The client token can contain only ASCII characters.
+	// You can use the client to generate a value, and you must make sure that each request has a unique token value. The client token can contain only ASCII characters.
 	//
-	// >  If you do not set this parameter, **ClientToken** is set to the value of **RequestId**. The value of **RequestId** for each API request may be different.
+	// >  If you do not specify this parameter, the system automatically uses the value of **RequestId** as the value of **ClientToken**. The **request ID** may be different for each request.
 	ClientToken *string `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
-	// Specifies whether only to precheck this request. Valid values:
+	// Specifies whether to only precheck this request. Valid values:
 	//
-	// **true**: prechecks the request but does not upgrade the Internet NAT gateway. The system checks your AccessKey pair, the Resource Access Management (RAM) user permissions, and the required parameters. If the request fails the precheck, an error message is returned. If the request passes the precheck, the `DryRunOperation` error code is returned.
+	// **true**: prechecks the request without upgrading the Internet NAT gateway. The system checks whether your AccessKey pair is valid, whether RAM users are granted required permissions, and whether the required parameters are set. If the request fails to pass the precheck, an error code is returned. If the request passes the precheck, the `DryRunOperation` error code is returned.
 	//
-	// **false** (default): If the request passes the precheck, a 2XX HTTP status code is returned and the standard NAT gateway is upgraded.
+	// **false**: sends the API request. This is the default value. After the request passes the precheck, a 2XX HTTP status code is returned and the Internet NAT gateway is upgraded.
 	DryRun *bool `json:"DryRun,omitempty" xml:"DryRun,omitempty"`
 	// The ID of the standard NAT gateway to be upgraded.
 	NatGatewayId *string `json:"NatGatewayId,omitempty" xml:"NatGatewayId,omitempty"`
@@ -71837,7 +72225,7 @@ type UpdateNatGatewayNatTypeRequest struct {
 	ResourceOwnerId      *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
 	// The vSwitch to which the enhanced Internet NAT gateway belongs.
 	//
-	// >  If you do not set this parameter, the system creates an Internet NAT gateway in a random vSwitch of a virtual private cloud (VPC).
+	// >  If you do not set this parameter, the system generates an Internet NAT gateway in a random vSwitch of a virtual private cloud (VPC).
 	VSwitchId *string `json:"VSwitchId,omitempty" xml:"VSwitchId,omitempty"`
 }
 
@@ -71900,7 +72288,7 @@ func (s *UpdateNatGatewayNatTypeRequest) SetVSwitchId(v string) *UpdateNatGatewa
 }
 
 type UpdateNatGatewayNatTypeResponseBody struct {
-	// The ID of the request.
+	// The request ID.
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -72254,22 +72642,22 @@ func (s *UpdateNetworkAclEntriesResponse) SetBody(v *UpdateNetworkAclEntriesResp
 type UpdatePublicIpAddressPoolAttributeRequest struct {
 	// The client token that is used to ensure the idempotence of the request.
 	//
-	// You can use the client to generate the value, but you must make sure that it is unique among different requests. The token can contain only ASCII characters.
+	// You can use the client to generate the token, but you must make sure that the token is unique among different requests. The token can contain only ASCII characters.
 	//
-	// >  If you do not specify this parameter, the system uses **RequestId** as **ClientToken**. The value of **RequestId** may be different for each API request.
+	// >  If you do not specify this parameter, the system automatically uses the **request ID** as the **client token**. The **request ID** may be different for each request.
 	ClientToken *string `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
 	// The description of the IP address pool.
 	//
 	// This parameter is optional. If you enter a description, the description must be 2 to 256 characters in length, and cannot start with http:// or https://.
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
-	// Specifies whether to perform a dry run. Valid values:
+	// Specifies whether to perform a dry run, without performing the actual request. Valid values:
 	//
-	// *   **true**: performs a dry run. The system checks the required parameters, request syntax, and limits. If the request fails the dry run, an error message is returned. If the request passes the dry run, the `DryRunOperation` error code is returned.
-	// *   **false** (default): performs a dry run and sends the request. If the request passes the dry run, a 2xx HTTP status code is returned and the operation is performed.
+	// *   **true**: performs only a dry run. The system checks the request for potential issues, including missing parameter values, incorrect request syntax, and service limits. If the request fails the dry run, an error message is returned. If the request passes the dry run, the `DryRunOperation` error code is returned.
+	// *   **false** (default): performs a dry run and performs the actual request. If the request passes the dry run, a 2xx HTTP status code is returned and the operation is performed.
 	DryRun *bool `json:"DryRun,omitempty" xml:"DryRun,omitempty"`
 	// The name of the IP address pool.
 	//
-	// This parameter is optional. If you enter a name, the name must be 1 to 128 characters in length and can contain digits, periods (.), underscores (\_), and hyphens (-). The name must start with a letter but cannot start with `http://` or `https://`.
+	// This parameter is optional. The name must be 1 to 128 characters in length, and can contain digits, periods (.), underscores (\_), and hyphens (-). The name must start with a letter but cannot start with `http://` or `https://`.
 	Name         *string `json:"Name,omitempty" xml:"Name,omitempty"`
 	OwnerAccount *string `json:"OwnerAccount,omitempty" xml:"OwnerAccount,omitempty"`
 	OwnerId      *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
@@ -72340,7 +72728,7 @@ func (s *UpdatePublicIpAddressPoolAttributeRequest) SetResourceOwnerId(v int64) 
 }
 
 type UpdatePublicIpAddressPoolAttributeResponseBody struct {
-	// The ID of the request.
+	// The request ID.
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -72706,48 +73094,51 @@ func (s *UpdateTrafficMirrorFilterRuleAttributeResponse) SetBody(v *UpdateTraffi
 type UpdateTrafficMirrorSessionAttributeRequest struct {
 	// The client token that is used to ensure the idempotence of the request.
 	//
-	// You can use the client to generate the value, but you must make sure that it is unique among different requests. The token can contain only ASCII characters.
+	// You can use the client to generate the token, but you must make sure that the token is unique among different requests. The token can contain only ASCII characters.
 	//
-	// >  If you do not specify this parameter, the system uses **RequestId** as **ClientToken**. **RequestId** may be different for each API request.
+	// >  If you do not specify this parameter, the system automatically uses the **request ID** as the **client token**. The **request ID** may be different for each request.
 	ClientToken *string `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
-	// Specifies whether to precheck the request without performing the operation. Valid values:
+	// Specifies whether to perform a dry run. Valid values:
 	//
-	// *   **true**: checks the request without performing the operation. The system prechecks the required parameters, request syntax, and limits. If the request fails the precheck, an error message is returned. If the request passes the precheck, the `DryRunOperation` error code is returned.
+	// *   **true**: performs a dry run, without performing the actual request. The system checks the request for potential issues, including missing parameter values, incorrect request syntax, and service limits. If the request fails the dry run, an error message is returned. If the request passes the dry run, the `DryRunOperation` error code is returned.
 	// *   **false**: sends the request. If the request passes the check, a 2xx HTTP status code is returned and the operation is performed. This is the default value.
 	DryRun *bool `json:"DryRun,omitempty" xml:"DryRun,omitempty"`
-	// Specifies whether to enable the traffic mirror session.
+	// Specifies whether to enable the traffic mirror session. Valid values:
 	//
-	// *   **false**: disables the traffic mirror session. This is the default value.
-	// *   **true**: enables the traffic mirror session.
+	// *   **false** (default)
+	// *   **true**
 	Enabled      *bool   `json:"Enabled,omitempty" xml:"Enabled,omitempty"`
 	OwnerAccount *string `json:"OwnerAccount,omitempty" xml:"OwnerAccount,omitempty"`
 	OwnerId      *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
-	PacketLength *int32  `json:"PacketLength,omitempty" xml:"PacketLength,omitempty"`
-	// The priority of the traffic mirror session. Valid values: **1** to **32766**.
+	// The maximum transmission unit (MTU).
 	//
-	// A smaller value specifies a higher priority. You cannot specify identical priorities for traffic mirror sessions that are created in the same region by using the same account.
+	// Valid values: **64 to 9600**. Default value: **1500**.
+	PacketLength *int32 `json:"PacketLength,omitempty" xml:"PacketLength,omitempty"`
+	// The new priority of the traffic mirror session. Valid values: **1** to **32766**.
+	//
+	// A smaller value indicates a higher priority. You cannot specify identical priorities for traffic mirror sessions that are created in the same region by using the same account.
 	Priority *int32 `json:"Priority,omitempty" xml:"Priority,omitempty"`
-	// The region ID of the traffic mirror session. You can call the [DescribeRegions](~~36063~~) operation to query the most recent region list. For more information about regions that support traffic mirroring, see [Overview of traffic mirroring](~~207513~~).
+	// The region ID of the traffic mirror session. You can call the [DescribeRegions](~~36063~~) operation to query the most recent region list. For more information about the regions that support traffic mirroring, see [Overview of traffic mirroring](~~207513~~).
 	RegionId             *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 	ResourceOwnerAccount *string `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
 	ResourceOwnerId      *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
 	// The ID of the traffic mirror filter.
 	TrafficMirrorFilterId *string `json:"TrafficMirrorFilterId,omitempty" xml:"TrafficMirrorFilterId,omitempty"`
-	// The description of the traffic mirror session.
+	// The new description of the traffic mirror session.
 	//
 	// The description must be 1 to 256 characters in length and cannot start with `http://` or `https://`.
 	TrafficMirrorSessionDescription *string `json:"TrafficMirrorSessionDescription,omitempty" xml:"TrafficMirrorSessionDescription,omitempty"`
 	// The ID of the traffic mirror session.
 	TrafficMirrorSessionId *string `json:"TrafficMirrorSessionId,omitempty" xml:"TrafficMirrorSessionId,omitempty"`
-	// The name of the traffic mirror session.
+	// The new name of the traffic mirror session.
 	//
-	// The name must be 1 to 128 characters in length and cannot start with `http://` or `https://`.
+	// The name must be 1 to 128 characters in length, and cannot start with `http://` or `https://`.
 	TrafficMirrorSessionName *string `json:"TrafficMirrorSessionName,omitempty" xml:"TrafficMirrorSessionName,omitempty"`
 	// The ID of the traffic mirror destination.
 	TrafficMirrorTargetId *string `json:"TrafficMirrorTargetId,omitempty" xml:"TrafficMirrorTargetId,omitempty"`
-	// The type of the traffic mirror destination. Valid values:
+	// The new type of the traffic mirror destination. Valid values:
 	//
-	// *   **NetworkInterface**: an ENI
+	// *   **NetworkInterface**: an elastic network interface (ENI)
 	// *   **SLB**: an internal-facing Server Load Balancer (SLB) instance
 	TrafficMirrorTargetType *string `json:"TrafficMirrorTargetType,omitempty" xml:"TrafficMirrorTargetType,omitempty"`
 	// The VXLAN network identifier (VNI) that is used to distinguish different mirrored traffic. Valid values: **0** to **16777215**.
@@ -72850,7 +73241,7 @@ func (s *UpdateTrafficMirrorSessionAttributeRequest) SetVirtualNetworkId(v int32
 }
 
 type UpdateTrafficMirrorSessionAttributeResponseBody struct {
-	// The ID of the request.
+	// The request ID.
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -73768,13 +74159,14 @@ func (client *Client) AddBgpNetwork(request *AddBgpNetworkRequest) (_result *Add
 }
 
 /**
- * *   When you call this operation to associate an EIP with an EIP bandwidth plan, make sure that the EIP meets the following requirements:
+ * Before you call this operation, take note of the following items:
+ * *   When you call this operation to associate an EIP with an Internet Shared Bandwidth instance, make sure that the EIP meets the following requirements:
  *     *   The EIP uses the pay-as-you-go billing method.
- *     *   The EIP and the EIP bandwidth plan belong to the same region.
- *     *   The line type of the EIP is the same as that of the EIP bandwidth plan.
- * *   The **AddCommonBandwidthPackageIp** operation is asynchronous. After you send the request, the system returns a request ID. However, the operation is still being performed in the system background. You can call the [DescribeCommonBandwidthPackages](~~120309~~) operation to query the status of an EIP bandwidth plan:
- *     *   If the EIP bandwidth plan is in the **BINDING** state, the EIP is being associated with the EIP bandwidth plan. In this state, you can only query the EIP bandwidth plan and cannot perform other operations.
- *     *   If the EIP bandwidth plan is in the **BINDED** state, the EIP is associated with the EIP bandwidth plan.
+ *     *   The EIP and the Internet Shared Bandwidth instance belong to the same region.
+ *     *   The line type of the EIPs is the same as that of the Internet Shared Bandwidth instance.
+ * *   **AddCommonBandwidthPackageIp** is an asynchronous operation. After a request is sent, the system returns a request ID and runs the task in the background. You can call the [DescribeCommonBandwidthPackages](~~120309~~) operation to query the status of the operation.
+ *     *   If the Internet Shared Bandwidth instance is in the **BINDING** state, the EIP is being associated with the Internet Shared Bandwidth instance. In this state, you can only query the Internet Shared Bandwidth instance and cannot perform other operations.
+ *     *   If the Internet Shared Bandwidth instance is in the **BINDED** state, the EIP is associated with the Internet Shared Bandwidth instance.
  *
  * @param request AddCommonBandwidthPackageIpRequest
  * @param runtime runtime options for this request RuntimeOptions
@@ -73846,13 +74238,14 @@ func (client *Client) AddCommonBandwidthPackageIpWithOptions(request *AddCommonB
 }
 
 /**
- * *   When you call this operation to associate an EIP with an EIP bandwidth plan, make sure that the EIP meets the following requirements:
+ * Before you call this operation, take note of the following items:
+ * *   When you call this operation to associate an EIP with an Internet Shared Bandwidth instance, make sure that the EIP meets the following requirements:
  *     *   The EIP uses the pay-as-you-go billing method.
- *     *   The EIP and the EIP bandwidth plan belong to the same region.
- *     *   The line type of the EIP is the same as that of the EIP bandwidth plan.
- * *   The **AddCommonBandwidthPackageIp** operation is asynchronous. After you send the request, the system returns a request ID. However, the operation is still being performed in the system background. You can call the [DescribeCommonBandwidthPackages](~~120309~~) operation to query the status of an EIP bandwidth plan:
- *     *   If the EIP bandwidth plan is in the **BINDING** state, the EIP is being associated with the EIP bandwidth plan. In this state, you can only query the EIP bandwidth plan and cannot perform other operations.
- *     *   If the EIP bandwidth plan is in the **BINDED** state, the EIP is associated with the EIP bandwidth plan.
+ *     *   The EIP and the Internet Shared Bandwidth instance belong to the same region.
+ *     *   The line type of the EIPs is the same as that of the Internet Shared Bandwidth instance.
+ * *   **AddCommonBandwidthPackageIp** is an asynchronous operation. After a request is sent, the system returns a request ID and runs the task in the background. You can call the [DescribeCommonBandwidthPackages](~~120309~~) operation to query the status of the operation.
+ *     *   If the Internet Shared Bandwidth instance is in the **BINDING** state, the EIP is being associated with the Internet Shared Bandwidth instance. In this state, you can only query the Internet Shared Bandwidth instance and cannot perform other operations.
+ *     *   If the Internet Shared Bandwidth instance is in the **BINDED** state, the EIP is associated with the Internet Shared Bandwidth instance.
  *
  * @param request AddCommonBandwidthPackageIpRequest
  * @return AddCommonBandwidthPackageIpResponse
@@ -73869,13 +74262,13 @@ func (client *Client) AddCommonBandwidthPackageIp(request *AddCommonBandwidthPac
 }
 
 /**
- * *   When you call this operation to associate EIPs with an EIP bandwidth plan, make sure that the EIPs meet the following requirements:
+ * *   When you call this operation to associate EIPs with an Internet Shared Bandwidth instance, make sure that the EIPs meet the following requirements:
  *     *   The EIPs use the pay-as-you-go billing method.
- *     *   The EIPs and the EIP bandwidth plan belong to the same region.
- *     *   The line type of the EIPs is the same as that of the EIP bandwidth plan.
- * *   The **AddCommonBandwidthPackageIps** operation is asynchronous. After you send the request, the system returns a request ID. However, the operation is still being performed in the system background. You can call the [DescribeCommonBandwidthPackages](~~120309~~) operation to query the status of an EIP bandwidth plan:
- *     *   If the EIP bandwidth plan is in the **BINDING** state, the EIPs are being associated with the EIP bandwidth plan. In this state, you can only query the EIP bandwidth plan and cannot perform other operations.
- *     *   If the EIP bandwidth plan is in the **BINDED** state, the EIPs are associated with the EIP bandwidth plan.
+ *     *   The EIPs and the Internet Shared Bandwidth instance belong to the same region.
+ *     *   The line type of the EIPs is the same as that of the Internet Shared Bandwidth instance.
+ * *   **AddCommonBandwidthPackageIps** is an asynchronous operation. After a request is sent, the system returns a request ID and runs the task in the background. You can call the [DescribeCommonBandwidthPackages](~~120309~~) operation to query the status of the task.
+ *     *   If the Internet Shared Bandwidth instance is in the **BINDING** state, the EIPs are being associated with the Internet Shared Bandwidth instance. In this state, you can only query the Internet Shared Bandwidth instance and cannot perform other operations.
+ *     *   If the Internet Shared Bandwidth instance is in the **BINDED** state, the EIPs are associated with the Internet Shared Bandwidth instance.
  *
  * @param request AddCommonBandwidthPackageIpsRequest
  * @param runtime runtime options for this request RuntimeOptions
@@ -73947,13 +74340,13 @@ func (client *Client) AddCommonBandwidthPackageIpsWithOptions(request *AddCommon
 }
 
 /**
- * *   When you call this operation to associate EIPs with an EIP bandwidth plan, make sure that the EIPs meet the following requirements:
+ * *   When you call this operation to associate EIPs with an Internet Shared Bandwidth instance, make sure that the EIPs meet the following requirements:
  *     *   The EIPs use the pay-as-you-go billing method.
- *     *   The EIPs and the EIP bandwidth plan belong to the same region.
- *     *   The line type of the EIPs is the same as that of the EIP bandwidth plan.
- * *   The **AddCommonBandwidthPackageIps** operation is asynchronous. After you send the request, the system returns a request ID. However, the operation is still being performed in the system background. You can call the [DescribeCommonBandwidthPackages](~~120309~~) operation to query the status of an EIP bandwidth plan:
- *     *   If the EIP bandwidth plan is in the **BINDING** state, the EIPs are being associated with the EIP bandwidth plan. In this state, you can only query the EIP bandwidth plan and cannot perform other operations.
- *     *   If the EIP bandwidth plan is in the **BINDED** state, the EIPs are associated with the EIP bandwidth plan.
+ *     *   The EIPs and the Internet Shared Bandwidth instance belong to the same region.
+ *     *   The line type of the EIPs is the same as that of the Internet Shared Bandwidth instance.
+ * *   **AddCommonBandwidthPackageIps** is an asynchronous operation. After a request is sent, the system returns a request ID and runs the task in the background. You can call the [DescribeCommonBandwidthPackages](~~120309~~) operation to query the status of the task.
+ *     *   If the Internet Shared Bandwidth instance is in the **BINDING** state, the EIPs are being associated with the Internet Shared Bandwidth instance. In this state, you can only query the Internet Shared Bandwidth instance and cannot perform other operations.
+ *     *   If the Internet Shared Bandwidth instance is in the **BINDED** state, the EIPs are associated with the Internet Shared Bandwidth instance.
  *
  * @param request AddCommonBandwidthPackageIpsRequest
  * @return AddCommonBandwidthPackageIpsResponse
@@ -74230,9 +74623,9 @@ func (client *Client) AddPublicIpAddressPoolCidrBlock(request *AddPublicIpAddres
 }
 
 /**
- * *   The **AddSourcesToTrafficMirrorSession** operation is asynchronous. After you send the request, the system returns a request ID. However, the operation is still being performed in the system background. You can call the [ListTrafficMirrorSessions](~~261367~~) operation to query the status of a traffic mirror session:
+ * *   **AddSourcesToTrafficMirrorSession** is an asynchronous operation. After a request is sent, the system returns a request ID and runs the task in the background. You can call the [ListTrafficMirrorSessions](~~261367~~) operation to query the status of the task.
  *     *   If the traffic mirror session is in the **Modifying** state, the traffic mirror source is being added to the traffic mirror session.
- *     *   If the traffic mirror session is in the **Created** state, the traffic mirror source is being added to the traffic mirror session.
+ *     *   If the traffic mirror session is in the **Created** state, the traffic mirror source is added to the traffic mirror session.
  * *   You cannot repeatedly call the **AddSourcesToTrafficMirrorSession** operation to add a traffic mirror source to a traffic mirror session within the specified period of time.
  *
  * @param request AddSourcesToTrafficMirrorSessionRequest
@@ -74305,9 +74698,9 @@ func (client *Client) AddSourcesToTrafficMirrorSessionWithOptions(request *AddSo
 }
 
 /**
- * *   The **AddSourcesToTrafficMirrorSession** operation is asynchronous. After you send the request, the system returns a request ID. However, the operation is still being performed in the system background. You can call the [ListTrafficMirrorSessions](~~261367~~) operation to query the status of a traffic mirror session:
+ * *   **AddSourcesToTrafficMirrorSession** is an asynchronous operation. After a request is sent, the system returns a request ID and runs the task in the background. You can call the [ListTrafficMirrorSessions](~~261367~~) operation to query the status of the task.
  *     *   If the traffic mirror session is in the **Modifying** state, the traffic mirror source is being added to the traffic mirror session.
- *     *   If the traffic mirror session is in the **Created** state, the traffic mirror source is being added to the traffic mirror session.
+ *     *   If the traffic mirror session is in the **Created** state, the traffic mirror source is added to the traffic mirror session.
  * *   You cannot repeatedly call the **AddSourcesToTrafficMirrorSession** operation to add a traffic mirror source to a traffic mirror session within the specified period of time.
  *
  * @param request AddSourcesToTrafficMirrorSessionRequest
@@ -74325,8 +74718,8 @@ func (client *Client) AddSourcesToTrafficMirrorSession(request *AddSourcesToTraf
 }
 
 /**
- * Before you call this operation, make sure that you understand the billing methods and pricing of EIPs. For more information, see [Billing overview](~~122035~~).
- * After you call this operation, the system randomly allocates an EIP that is in the **Available** state in the specified region. EIPs support only ICMP, TCP, and UDP at the transport layer. IGMP and SCTP are not supported.
+ * Before you call this operation, make sure that you are familiar with the billing methods and pricing of EIPs. For more information, see [Billing overview](~~122035~~).
+ * After you call this operation, the system randomly allocates an EIP that is in the **Available** state in the specified region. EIPs support only the ICMP, TCP, and UDP transport layer protocols. The IGMP and SCTP protocols are not supported.
  *
  * @param request AllocateEipAddressRequest
  * @param runtime runtime options for this request RuntimeOptions
@@ -74454,8 +74847,8 @@ func (client *Client) AllocateEipAddressWithOptions(request *AllocateEipAddressR
 }
 
 /**
- * Before you call this operation, make sure that you understand the billing methods and pricing of EIPs. For more information, see [Billing overview](~~122035~~).
- * After you call this operation, the system randomly allocates an EIP that is in the **Available** state in the specified region. EIPs support only ICMP, TCP, and UDP at the transport layer. IGMP and SCTP are not supported.
+ * Before you call this operation, make sure that you are familiar with the billing methods and pricing of EIPs. For more information, see [Billing overview](~~122035~~).
+ * After you call this operation, the system randomly allocates an EIP that is in the **Available** state in the specified region. EIPs support only the ICMP, TCP, and UDP transport layer protocols. The IGMP and SCTP protocols are not supported.
  *
  * @param request AllocateEipAddressRequest
  * @return AllocateEipAddressResponse
@@ -74588,9 +74981,9 @@ func (client *Client) AllocateEipAddressPro(request *AllocateEipAddressProReques
 }
 
 /**
- * **AllocateEipSegmentAddress** is an asynchronous operation. After you send a request, the system returns a request ID and runs the task in the background. You can call the [DescribeEipSegment](/help/en/elastic-ip-address/latest/156063) operation to query the status of a contiguous EIP group:
- * - If the contiguous EIP group is in the **Allocating** state, the EIPs are being allocated. In this case, you can only perform the query operation and cannot perform other operations.
- * - If the contiguous EIP group is in the **Allocated** state, the EIPs are allocated.
+ * **AllocateEipSegmentAddress** is an asynchronous operation. After a request is sent, the system returns the ID of a contiguous EIP group and runs the task in the background. You can call the [DescribeEipSegment](~~156063~~) operation to query the status of the task.
+ * *   If the contiguous EIP group is in the **Allocating** state, the EIPs are being allocated. In this case, you can only perform the query operation and cannot perform other operations.
+ * *   If the contiguous EIP group is in the **Allocated** state, the EIPs are allocated.
  *
  * @param request AllocateEipSegmentAddressRequest
  * @param runtime runtime options for this request RuntimeOptions
@@ -74678,9 +75071,9 @@ func (client *Client) AllocateEipSegmentAddressWithOptions(request *AllocateEipS
 }
 
 /**
- * **AllocateEipSegmentAddress** is an asynchronous operation. After you send a request, the system returns a request ID and runs the task in the background. You can call the [DescribeEipSegment](/help/en/elastic-ip-address/latest/156063) operation to query the status of a contiguous EIP group:
- * - If the contiguous EIP group is in the **Allocating** state, the EIPs are being allocated. In this case, you can only perform the query operation and cannot perform other operations.
- * - If the contiguous EIP group is in the **Allocated** state, the EIPs are allocated.
+ * **AllocateEipSegmentAddress** is an asynchronous operation. After a request is sent, the system returns the ID of a contiguous EIP group and runs the task in the background. You can call the [DescribeEipSegment](~~156063~~) operation to query the status of the task.
+ * *   If the contiguous EIP group is in the **Allocating** state, the EIPs are being allocated. In this case, you can only perform the query operation and cannot perform other operations.
+ * *   If the contiguous EIP group is in the **Allocated** state, the EIPs are allocated.
  *
  * @param request AllocateEipSegmentAddressRequest
  * @return AllocateEipSegmentAddressResponse
@@ -74697,7 +75090,7 @@ func (client *Client) AllocateEipSegmentAddress(request *AllocateEipSegmentAddre
 }
 
 /**
- * You cannot call the **AllocateIpv6InternetBandwidth** operation to purchase Internet bandwidth for an IPv6 gateway at the same time.
+ * You cannot repeatedly call the **AllocateIpv6InternetBandwidth** operation within a specific time period.
  *
  * @param request AllocateIpv6InternetBandwidthRequest
  * @param runtime runtime options for this request RuntimeOptions
@@ -74777,7 +75170,7 @@ func (client *Client) AllocateIpv6InternetBandwidthWithOptions(request *Allocate
 }
 
 /**
- * You cannot call the **AllocateIpv6InternetBandwidth** operation to purchase Internet bandwidth for an IPv6 gateway at the same time.
+ * You cannot repeatedly call the **AllocateIpv6InternetBandwidth** operation within a specific time period.
  *
  * @param request AllocateIpv6InternetBandwidthRequest
  * @return AllocateIpv6InternetBandwidthResponse
@@ -74992,10 +75385,10 @@ func (client *Client) ApplyPhysicalConnectionLOA(request *ApplyPhysicalConnectio
 
 /**
  * *   You can associate an EIP with an Elastic Compute Service (ECS) instance, a Classic Load Balancer (CLB) instance, a secondary elastic network interface (ENI), a NAT gateway, or a high-availability virtual IP address (HAVIP) in the same region. The ECS instance and CLB instance must be deployed in a virtual private cloud (VPC).
- * *   **AssociateEipAddress** is an asynchronous operation. After you send a request, the system returns a request ID and runs the task in the background. You can call the [DescribeEipAddresses](~~120193~~) operation to query the status of an EIP.
+ * *   **AssociateEipAddress** is an asynchronous operation. After you send a request, the system returns a request ID and runs the task in the background. You can call the [DescribeEipAddresses](~~120193~~) operation to query the status of the task.
  *     *   If the EIP is in the **Associating** state, the EIP is being associated. In this state, you can only query the EIP and cannot perform other operations.
  *     *   If the EIP is in the **InUse** state, the EIP is associated.
- * *   You cannot repeatedly call **AssociateEipAddress** to associate an EIP with an instance within the specified period of time.
+ * *   You cannot call the **AssociateEipAddress** operation to associate an EIP with multiple instances at a time.
  *
  * @param request AssociateEipAddressRequest
  * @param runtime runtime options for this request RuntimeOptions
@@ -75084,10 +75477,10 @@ func (client *Client) AssociateEipAddressWithOptions(request *AssociateEipAddres
 
 /**
  * *   You can associate an EIP with an Elastic Compute Service (ECS) instance, a Classic Load Balancer (CLB) instance, a secondary elastic network interface (ENI), a NAT gateway, or a high-availability virtual IP address (HAVIP) in the same region. The ECS instance and CLB instance must be deployed in a virtual private cloud (VPC).
- * *   **AssociateEipAddress** is an asynchronous operation. After you send a request, the system returns a request ID and runs the task in the background. You can call the [DescribeEipAddresses](~~120193~~) operation to query the status of an EIP.
+ * *   **AssociateEipAddress** is an asynchronous operation. After you send a request, the system returns a request ID and runs the task in the background. You can call the [DescribeEipAddresses](~~120193~~) operation to query the status of the task.
  *     *   If the EIP is in the **Associating** state, the EIP is being associated. In this state, you can only query the EIP and cannot perform other operations.
  *     *   If the EIP is in the **InUse** state, the EIP is associated.
- * *   You cannot repeatedly call **AssociateEipAddress** to associate an EIP with an instance within the specified period of time.
+ * *   You cannot call the **AssociateEipAddress** operation to associate an EIP with multiple instances at a time.
  *
  * @param request AssociateEipAddressRequest
  * @return AssociateEipAddressResponse
@@ -75104,11 +75497,11 @@ func (client *Client) AssociateEipAddress(request *AssociateEipAddressRequest) (
 }
 
 /**
- * *   You can call the **AssociateEipAddressBatch** operation to associate EIPs with a NAT gateway or a secondary elastic network interface (ENI) in the same region. For more information about how to associate EIPs with other instances, see [AssociateEipAddress](~~120195~~).
- * *   The **AssociateEipAddressBatch** operation is asynchronous. After you send the request, the system returns a request ID. However, the operation is still being performed in the system background. You can call the [DescribeEipAddresses](~~120193~~) operation to query the status of an EIP.
- *     *   If the EIP is in the **Associating** state, the EIP is being associated. In this state, you can only query the EIP and cannot perform other operations.
+ * *   You can call the **AssociateEipAddressBatch** operation to associate EIPs with an instance in the same region. The instance must be a NAT gateway or a secondary elastic network interface (ENI). For more information about how to associate EIPs with other instances, see [AssociateEipAddress](~~120195~~).
+ * *   **AssociateEipAddressBatch** is an asynchronous operation. After a request is sent, the system returns a request ID and runs the task in the background. You can call the [DescribeEipAddresses](~~120193~~) operation to query the status of the task.
+ *     *   If the EIP is in the **Associating** state, the EIP is being associated. You can only query the EIP and cannot perform other operations.
  *     *   If the EIP is in the **InUse** state, the EIP is associated.
- * *   You cannot repeatedly call **AssociateEipAddressBatch** to associate an EIP with an instance within the specified period of time.
+ * *   You cannot call the **AssociateEipAddressBatch** operation to associate an EIP with multiple instances at a time.
  *
  * @param request AssociateEipAddressBatchRequest
  * @param runtime runtime options for this request RuntimeOptions
@@ -75184,11 +75577,11 @@ func (client *Client) AssociateEipAddressBatchWithOptions(request *AssociateEipA
 }
 
 /**
- * *   You can call the **AssociateEipAddressBatch** operation to associate EIPs with a NAT gateway or a secondary elastic network interface (ENI) in the same region. For more information about how to associate EIPs with other instances, see [AssociateEipAddress](~~120195~~).
- * *   The **AssociateEipAddressBatch** operation is asynchronous. After you send the request, the system returns a request ID. However, the operation is still being performed in the system background. You can call the [DescribeEipAddresses](~~120193~~) operation to query the status of an EIP.
- *     *   If the EIP is in the **Associating** state, the EIP is being associated. In this state, you can only query the EIP and cannot perform other operations.
+ * *   You can call the **AssociateEipAddressBatch** operation to associate EIPs with an instance in the same region. The instance must be a NAT gateway or a secondary elastic network interface (ENI). For more information about how to associate EIPs with other instances, see [AssociateEipAddress](~~120195~~).
+ * *   **AssociateEipAddressBatch** is an asynchronous operation. After a request is sent, the system returns a request ID and runs the task in the background. You can call the [DescribeEipAddresses](~~120193~~) operation to query the status of the task.
+ *     *   If the EIP is in the **Associating** state, the EIP is being associated. You can only query the EIP and cannot perform other operations.
  *     *   If the EIP is in the **InUse** state, the EIP is associated.
- * *   You cannot repeatedly call **AssociateEipAddressBatch** to associate an EIP with an instance within the specified period of time.
+ * *   You cannot call the **AssociateEipAddressBatch** operation to associate an EIP with multiple instances at a time.
  *
  * @param request AssociateEipAddressBatchRequest
  * @return AssociateEipAddressBatchResponse
@@ -75197,115 +75590,6 @@ func (client *Client) AssociateEipAddressBatch(request *AssociateEipAddressBatch
 	runtime := &util.RuntimeOptions{}
 	_result = &AssociateEipAddressBatchResponse{}
 	_body, _err := client.AssociateEipAddressBatchWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
-	return _result, _err
-}
-
-/**
- * ## Usage notes
- * When you call this operation, take note of the following items:
- * *   You can specify only an Elastic Compute Service (ECS) instance in a virtual private cloud (VPC) or a Server Load Balancer (SLB) instance as a backend server.
- * *   You can associate each GA instance with only one backend server.
- * *   You can associate multiple GA instances with the same backend server.
- * *   The backend server and the GA instance must belong to the same Alibaba Cloud account.
- * *   The region of the backend server must belong to the service area of the GA instance.
- * *   You can call this operation to associate only a dedicated-bandwidth GA instance with a backend server.
- * To associate a shared-bandwidth GA instance with a backend server, perform the following operations:
- * 1.  Associate an elastic IP address (EIP) with the shared-bandwidth GA instance: For more information, see [AddGlobalAccelerationInstanceIp](~~86045~~).
- * 2.  Associate the EIP with a backend server. For more information, see [AssociateEipAddress](~~120195~~). When you call AssociateEipAddress, specify **InstanceRegionId**.
- *
- * @param request AssociateGlobalAccelerationInstanceRequest
- * @param runtime runtime options for this request RuntimeOptions
- * @return AssociateGlobalAccelerationInstanceResponse
- */
-func (client *Client) AssociateGlobalAccelerationInstanceWithOptions(request *AssociateGlobalAccelerationInstanceRequest, runtime *util.RuntimeOptions) (_result *AssociateGlobalAccelerationInstanceResponse, _err error) {
-	_err = util.ValidateModel(request)
-	if _err != nil {
-		return _result, _err
-	}
-	query := map[string]interface{}{}
-	if !tea.BoolValue(util.IsUnset(request.BackendServerId)) {
-		query["BackendServerId"] = request.BackendServerId
-	}
-
-	if !tea.BoolValue(util.IsUnset(request.BackendServerRegionId)) {
-		query["BackendServerRegionId"] = request.BackendServerRegionId
-	}
-
-	if !tea.BoolValue(util.IsUnset(request.BackendServerType)) {
-		query["BackendServerType"] = request.BackendServerType
-	}
-
-	if !tea.BoolValue(util.IsUnset(request.GlobalAccelerationInstanceId)) {
-		query["GlobalAccelerationInstanceId"] = request.GlobalAccelerationInstanceId
-	}
-
-	if !tea.BoolValue(util.IsUnset(request.OwnerAccount)) {
-		query["OwnerAccount"] = request.OwnerAccount
-	}
-
-	if !tea.BoolValue(util.IsUnset(request.OwnerId)) {
-		query["OwnerId"] = request.OwnerId
-	}
-
-	if !tea.BoolValue(util.IsUnset(request.RegionId)) {
-		query["RegionId"] = request.RegionId
-	}
-
-	if !tea.BoolValue(util.IsUnset(request.ResourceOwnerAccount)) {
-		query["ResourceOwnerAccount"] = request.ResourceOwnerAccount
-	}
-
-	if !tea.BoolValue(util.IsUnset(request.ResourceOwnerId)) {
-		query["ResourceOwnerId"] = request.ResourceOwnerId
-	}
-
-	req := &openapi.OpenApiRequest{
-		Query: openapiutil.Query(query),
-	}
-	params := &openapi.Params{
-		Action:      tea.String("AssociateGlobalAccelerationInstance"),
-		Version:     tea.String("2016-04-28"),
-		Protocol:    tea.String("HTTPS"),
-		Pathname:    tea.String("/"),
-		Method:      tea.String("POST"),
-		AuthType:    tea.String("AK"),
-		Style:       tea.String("RPC"),
-		ReqBodyType: tea.String("formData"),
-		BodyType:    tea.String("json"),
-	}
-	_result = &AssociateGlobalAccelerationInstanceResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
-}
-
-/**
- * ## Usage notes
- * When you call this operation, take note of the following items:
- * *   You can specify only an Elastic Compute Service (ECS) instance in a virtual private cloud (VPC) or a Server Load Balancer (SLB) instance as a backend server.
- * *   You can associate each GA instance with only one backend server.
- * *   You can associate multiple GA instances with the same backend server.
- * *   The backend server and the GA instance must belong to the same Alibaba Cloud account.
- * *   The region of the backend server must belong to the service area of the GA instance.
- * *   You can call this operation to associate only a dedicated-bandwidth GA instance with a backend server.
- * To associate a shared-bandwidth GA instance with a backend server, perform the following operations:
- * 1.  Associate an elastic IP address (EIP) with the shared-bandwidth GA instance: For more information, see [AddGlobalAccelerationInstanceIp](~~86045~~).
- * 2.  Associate the EIP with a backend server. For more information, see [AssociateEipAddress](~~120195~~). When you call AssociateEipAddress, specify **InstanceRegionId**.
- *
- * @param request AssociateGlobalAccelerationInstanceRequest
- * @return AssociateGlobalAccelerationInstanceResponse
- */
-func (client *Client) AssociateGlobalAccelerationInstance(request *AssociateGlobalAccelerationInstanceRequest) (_result *AssociateGlobalAccelerationInstanceResponse, _err error) {
-	runtime := &util.RuntimeOptions{}
-	_result = &AssociateGlobalAccelerationInstanceResponse{}
-	_body, _err := client.AssociateGlobalAccelerationInstanceWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -75620,7 +75904,7 @@ func (client *Client) AssociatePhysicalConnectionToVirtualBorderRouter(request *
 }
 
 /**
- * The **AssociateRouteTable** operation is asynchronous. After you send the request, the system returns a request ID. However, the operation is still being performed in the system background. You can call the [DescribeVSwitchAttributes](~~94567~~) operation to query the status of a vSwitch:
+ * **AssociateRouteTable** is an asynchronous operation. After a request is sent, the system returns a request ID and runs the task in the background. You can call the [DescribeVSwitchAttributes](~~94567~~) operation to query the status of the task:
  * *   If the vSwitch is in the **Pending** state, the route table is being associated with the vSwitch.
  * *   If the vSwitch is in the **Available** state, the route table is associated with the vSwitch.
  *
@@ -75694,7 +75978,7 @@ func (client *Client) AssociateRouteTableWithOptions(request *AssociateRouteTabl
 }
 
 /**
- * The **AssociateRouteTable** operation is asynchronous. After you send the request, the system returns a request ID. However, the operation is still being performed in the system background. You can call the [DescribeVSwitchAttributes](~~94567~~) operation to query the status of a vSwitch:
+ * **AssociateRouteTable** is an asynchronous operation. After a request is sent, the system returns a request ID and runs the task in the background. You can call the [DescribeVSwitchAttributes](~~94567~~) operation to query the status of the task:
  * *   If the vSwitch is in the **Pending** state, the route table is being associated with the vSwitch.
  * *   If the vSwitch is in the **Available** state, the route table is associated with the vSwitch.
  *
@@ -75800,7 +76084,7 @@ func (client *Client) AssociateRouteTableWithGateway(request *AssociateRouteTabl
  * *   The route table cannot be shared.
  * *   You cannot associate a gateway endpoint with a virtual border router (VBR) route table.
  * *   You can associate a gateway endpoint with at most 20 route tables at a time.
- * *   **AssociateRouteTablesWithVpcGatewayEndpoint** is an asynchronous operation. After you send a request, the system returns a request ID and runs the task in the background. You can call the [GetVpcGatewayEndpointAttribute](~~311017~~) operation to query whether a route table is associated with a gateway endpoint.
+ * *   **AssociateRouteTablesWithVpcGatewayEndpoint** is an asynchronous operation. After a request is sent, the system returns a request ID and runs the task in the background. You can call the [GetVpcGatewayEndpointAttribute](~~311017~~) operation to query whether a route table is associated with a gateway endpoint.
  *     *   If the **Associating** status is returned, the route table is being associated with the gateway endpoint.
  *     *   If the **Created** status is returned, the route table is associated with the gateway endpoint.
  * *   You cannot repeatedly call the **AssociateRouteTablesWithVpcGatewayEndpoint** operation within a specific period of time.
@@ -75882,7 +76166,7 @@ func (client *Client) AssociateRouteTablesWithVpcGatewayEndpointWithOptions(requ
  * *   The route table cannot be shared.
  * *   You cannot associate a gateway endpoint with a virtual border router (VBR) route table.
  * *   You can associate a gateway endpoint with at most 20 route tables at a time.
- * *   **AssociateRouteTablesWithVpcGatewayEndpoint** is an asynchronous operation. After you send a request, the system returns a request ID and runs the task in the background. You can call the [GetVpcGatewayEndpointAttribute](~~311017~~) operation to query whether a route table is associated with a gateway endpoint.
+ * *   **AssociateRouteTablesWithVpcGatewayEndpoint** is an asynchronous operation. After a request is sent, the system returns a request ID and runs the task in the background. You can call the [GetVpcGatewayEndpointAttribute](~~311017~~) operation to query whether a route table is associated with a gateway endpoint.
  *     *   If the **Associating** status is returned, the route table is being associated with the gateway endpoint.
  *     *   If the **Created** status is returned, the route table is associated with the gateway endpoint.
  * *   You cannot repeatedly call the **AssociateRouteTablesWithVpcGatewayEndpoint** operation within a specific period of time.
@@ -75902,9 +76186,10 @@ func (client *Client) AssociateRouteTablesWithVpcGatewayEndpoint(request *Associ
 }
 
 /**
- * *   The following list describes the limits on the maximum number of secondary CIDR blocks that can be added:
- *     *   You can add up to five secondary IPv4 CIDR blocks to each VPC.
- *     *   You can add up to three secondary IPv6 CIDR blocks to each VPC.
+ * ## [](#)
+ * *   Take note of the following limits:
+ *     *   Each VPC can contain up to five secondary IPv4 CIDR blocks.
+ *     *   Each VPC can contain up to three secondary IPv6 CIDR blocks.
  * *   You cannot repeatedly call the **AssociateVpcCidrBlock** operation to add secondary CIDR blocks to a VPC within the specified period of time.
  *
  * @param request AssociateVpcCidrBlockRequest
@@ -75989,9 +76274,10 @@ func (client *Client) AssociateVpcCidrBlockWithOptions(request *AssociateVpcCidr
 }
 
 /**
- * *   The following list describes the limits on the maximum number of secondary CIDR blocks that can be added:
- *     *   You can add up to five secondary IPv4 CIDR blocks to each VPC.
- *     *   You can add up to three secondary IPv6 CIDR blocks to each VPC.
+ * ## [](#)
+ * *   Take note of the following limits:
+ *     *   Each VPC can contain up to five secondary IPv4 CIDR blocks.
+ *     *   Each VPC can contain up to three secondary IPv6 CIDR blocks.
  * *   You cannot repeatedly call the **AssociateVpcCidrBlock** operation to add secondary CIDR blocks to a VPC within the specified period of time.
  *
  * @param request AssociateVpcCidrBlockRequest
@@ -76013,12 +76299,11 @@ func (client *Client) AssociateVpcCidrBlock(request *AssociateVpcCidrBlockReques
  * *   You can associate only VPN gateways of the ShangMi (SM) type with SSL certificates. You need to associate a VPN gateway of the SM type with two SSL certificates, one as the encryption certificate and the other as the signature certificate.
  * *   The SSL certificates must use the SM algorithm.
  * *   You cannot specify one SSL certificate as both the encryption certificate and signature certificate for one VPN gateway.
- * *   The first time you associate a VPN gateway of the SM type with an SSL certificate, the system automatically creates the AliyunServiceRoleForVPNCertificate service-linked role. In addition, the system adds the AliyunServiceRolePolicyForVPNCertificate policy to the role, which allows the VPN gateway to access other cloud resources. For more information, see [AliyunServiceRoleForVPNCertificate](~~203323~~).
  * *   **AssociateVpnGatewayWithCertificate** is an asynchronous operation. After a request is sent, the system returns a request ID and runs the task in the background. You can call the [DescribeVpnGateway](~~73720~~) operation to query the status of the task.
  *     *   If the VPN gateway is in the **updating** state, the SSL certificate is being associated.
  *     *   If the VPN gateway is in the **active** state, the SSL certificate is being associated.
  * *   You cannot call **AssociateVpnGatewayWithCertificate** within a specific period of time.
- * ## Prerequisites
+ * ## [](#)Prerequisites
  * Make sure that you have two SSL certificates that use the SM algorithm in the Certificate Management Service console. For more information about SSL certificates, see [What is Certificate Management Service?](~~28535~~).
  *
  * @param request AssociateVpnGatewayWithCertificateRequest
@@ -76083,12 +76368,11 @@ func (client *Client) AssociateVpnGatewayWithCertificateWithOptions(request *Ass
  * *   You can associate only VPN gateways of the ShangMi (SM) type with SSL certificates. You need to associate a VPN gateway of the SM type with two SSL certificates, one as the encryption certificate and the other as the signature certificate.
  * *   The SSL certificates must use the SM algorithm.
  * *   You cannot specify one SSL certificate as both the encryption certificate and signature certificate for one VPN gateway.
- * *   The first time you associate a VPN gateway of the SM type with an SSL certificate, the system automatically creates the AliyunServiceRoleForVPNCertificate service-linked role. In addition, the system adds the AliyunServiceRolePolicyForVPNCertificate policy to the role, which allows the VPN gateway to access other cloud resources. For more information, see [AliyunServiceRoleForVPNCertificate](~~203323~~).
  * *   **AssociateVpnGatewayWithCertificate** is an asynchronous operation. After a request is sent, the system returns a request ID and runs the task in the background. You can call the [DescribeVpnGateway](~~73720~~) operation to query the status of the task.
  *     *   If the VPN gateway is in the **updating** state, the SSL certificate is being associated.
  *     *   If the VPN gateway is in the **active** state, the SSL certificate is being associated.
  * *   You cannot call **AssociateVpnGatewayWithCertificate** within a specific period of time.
- * ## Prerequisites
+ * ## [](#)Prerequisites
  * Make sure that you have two SSL certificates that use the SM algorithm in the Certificate Management Service console. For more information about SSL certificates, see [What is Certificate Management Service?](~~28535~~).
  *
  * @param request AssociateVpnGatewayWithCertificateRequest
@@ -76791,7 +77075,7 @@ func (client *Client) ConfirmPhysicalConnection(request *ConfirmPhysicalConnecti
 
 /**
  * After you call this operation, the router interface enters the **Connecting** state. When the connection is established, it enters the **Active** state.
- * When you call this operation, take note of the following rules:
+ * When you call this operation, take note of the following items:
  * *   Only an initiator router interface in the **Idle** state can initiate a connection.
  * *   You can create only one pair of connected router interfaces between two routers.
  * *   You cannot initiate a connection if your Alibaba Cloud account has a router interface with overdue payments.
@@ -76851,7 +77135,7 @@ func (client *Client) ConnectRouterInterfaceWithOptions(request *ConnectRouterIn
 
 /**
  * After you call this operation, the router interface enters the **Connecting** state. When the connection is established, it enters the **Active** state.
- * When you call this operation, take note of the following rules:
+ * When you call this operation, take note of the following items:
  * *   Only an initiator router interface in the **Idle** state can initiate a connection.
  * *   You can create only one pair of connected router interfaces between two routers.
  * *   You cannot initiate a connection if your Alibaba Cloud account has a router interface with overdue payments.
@@ -78116,10 +78400,10 @@ func (client *Client) CreateForwardEntry(request *CreateForwardEntryRequest) (_r
 }
 
 /**
- * *   **CreateFullNatEntry** is an asynchronous operation. After you make a request, a FULLNAT entry ID is returned but the specified FULLNAT entry is not added. The system adds the entry in the background. You can call the [ListFullNatEntries](~~348779~~) operation to query the status of a FULLNAT entry.
- *     *   If the FULLNAT entry is in the **Pending** state, the system is adding the FULLNAT entry. You can only query the status of the FULLNAT entry, but cannot perform other operations.
+ * *   **CreateFullNatEntry** is an asynchronous operation. After you send a request to call this operation, the system returns a FULLNAT entry and the FULLNAT entry is being added in the backend. You can call the [ListFullNatEntries](~~348779~~) operation to query the status of a FULLNAT entry.
+ *     *   If the FULLNAT entry is in the **Creating** state, the system is adding the FULLNAT entry. You can only query the status of the FULLNAT entry, but cannot perform other operations.
  *     *   If the FULLNAT entry is in the **Available** state, the FULLNAT entry is added.
- * *   You cannot repeatedly call the **CreateFullNatEntry** operation to add a FULLNAT entry to the FULLNAT table within the specified period of time.
+ * *   You cannot repeatedly call the **CreateFullNatEntry** operation for the same VPN gateway within the specified period of time.
  *
  * @param request CreateFullNatEntryRequest
  * @param runtime runtime options for this request RuntimeOptions
@@ -78219,10 +78503,10 @@ func (client *Client) CreateFullNatEntryWithOptions(request *CreateFullNatEntryR
 }
 
 /**
- * *   **CreateFullNatEntry** is an asynchronous operation. After you make a request, a FULLNAT entry ID is returned but the specified FULLNAT entry is not added. The system adds the entry in the background. You can call the [ListFullNatEntries](~~348779~~) operation to query the status of a FULLNAT entry.
- *     *   If the FULLNAT entry is in the **Pending** state, the system is adding the FULLNAT entry. You can only query the status of the FULLNAT entry, but cannot perform other operations.
+ * *   **CreateFullNatEntry** is an asynchronous operation. After you send a request to call this operation, the system returns a FULLNAT entry and the FULLNAT entry is being added in the backend. You can call the [ListFullNatEntries](~~348779~~) operation to query the status of a FULLNAT entry.
+ *     *   If the FULLNAT entry is in the **Creating** state, the system is adding the FULLNAT entry. You can only query the status of the FULLNAT entry, but cannot perform other operations.
  *     *   If the FULLNAT entry is in the **Available** state, the FULLNAT entry is added.
- * *   You cannot repeatedly call the **CreateFullNatEntry** operation to add a FULLNAT entry to the FULLNAT table within the specified period of time.
+ * *   You cannot repeatedly call the **CreateFullNatEntry** operation for the same VPN gateway within the specified period of time.
  *
  * @param request CreateFullNatEntryRequest
  * @return CreateFullNatEntryResponse
@@ -78338,7 +78622,7 @@ func (client *Client) CreateGlobalAccelerationInstance(request *CreateGlobalAcce
 }
 
 /**
- * **CreateHaVip** is an asynchronous operation. After you send the request, the system returns a request ID and runs the task in the background. You can call the [DescribeHaVips](~~114611~~) operation to query the status of an HAVIP:
+ * **CreateHaVip** is an asynchronous operation. After a request is sent, the system returns a request ID and runs the task in the background. You can call the [DescribeHaVips](~~114611~~) operation to query the status of the task:
  * *   If the HAVIP is in the **Creating** state, the HAVIP is being created.
  * *   If the HAVIP is in the **Available** state, the HAVIP is created.
  *
@@ -78424,7 +78708,7 @@ func (client *Client) CreateHaVipWithOptions(request *CreateHaVipRequest, runtim
 }
 
 /**
- * **CreateHaVip** is an asynchronous operation. After you send the request, the system returns a request ID and runs the task in the background. You can call the [DescribeHaVips](~~114611~~) operation to query the status of an HAVIP:
+ * **CreateHaVip** is an asynchronous operation. After a request is sent, the system returns a request ID and runs the task in the background. You can call the [DescribeHaVips](~~114611~~) operation to query the status of the task:
  * *   If the HAVIP is in the **Creating** state, the HAVIP is being created.
  * *   If the HAVIP is in the **Available** state, the HAVIP is created.
  *
@@ -78435,6 +78719,106 @@ func (client *Client) CreateHaVip(request *CreateHaVipRequest) (_result *CreateH
 	runtime := &util.RuntimeOptions{}
 	_result = &CreateHaVipResponse{}
 	_body, _err := client.CreateHaVipWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) CreateHighReliablePhysicalConnectionWithOptions(request *CreateHighReliablePhysicalConnectionRequest, runtime *util.RuntimeOptions) (_result *CreateHighReliablePhysicalConnectionResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.AcceptLanguage)) {
+		query["AcceptLanguage"] = request.AcceptLanguage
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ApList)) {
+		query["ApList"] = request.ApList
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ClientToken)) {
+		query["ClientToken"] = request.ClientToken
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ClientToken)) {
+		query["ClientToken"] = request.ClientToken
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.DeviceAdvancedCapacity)) {
+		query["DeviceAdvancedCapacity"] = request.DeviceAdvancedCapacity
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.DryRun)) {
+		query["DryRun"] = request.DryRun
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.HighReliableType)) {
+		query["HighReliableType"] = request.HighReliableType
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.OwnerAccount)) {
+		query["OwnerAccount"] = request.OwnerAccount
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.OwnerId)) {
+		query["OwnerId"] = request.OwnerId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.PortType)) {
+		query["PortType"] = request.PortType
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.RegionId)) {
+		query["RegionId"] = request.RegionId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ResourceGroupId)) {
+		query["ResourceGroupId"] = request.ResourceGroupId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ResourceOwnerAccount)) {
+		query["ResourceOwnerAccount"] = request.ResourceOwnerAccount
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ResourceOwnerId)) {
+		query["ResourceOwnerId"] = request.ResourceOwnerId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Tag)) {
+		query["Tag"] = request.Tag
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("CreateHighReliablePhysicalConnection"),
+		Version:     tea.String("2016-04-28"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &CreateHighReliablePhysicalConnectionResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) CreateHighReliablePhysicalConnection(request *CreateHighReliablePhysicalConnectionRequest) (_result *CreateHighReliablePhysicalConnectionResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &CreateHighReliablePhysicalConnectionResponse{}
+	_body, _err := client.CreateHighReliablePhysicalConnectionWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -78753,10 +79137,10 @@ func (client *Client) CreateIPv6TranslatorEntry(request *CreateIPv6TranslatorEnt
 
 /**
  * *   Before you create an IPsec server, you must create a VPN gateway and enable the SSL-VPN feature for the VPN gateway. For more information, see [CreateVpnGateway](~~120363~~).
- * *   The **CreateIpsecServer** operation is asynchronous. After you send the request, the system returns a request ID. However, the operation is still being performed in the system background. You can call the [DescribeVpnGateway](~~73720~~) operation to query the status of a VPN gateway.
+ * *   **CreateIpsecServer** is an asynchronous operation. After you send a request to call this operation, the system returns a request ID and the IPsec server is being created in the backend. You can call [DescribeVpnGateway](~~73720~~) to query the status of a VPN gateway.
  *     *   If the VPN gateway is in the **updating** state, the IPsec server is being created.
  *     *   If the VPN gateway is in the **active** state, the IPsec server is created.
- * *   You cannot repeatedly call **CreateIpsecServer** to create an IPsec server for a VPN gateway within the specified period of time.
+ * *   You cannot repeatedly call the **CreateIpsecServer** operation for the same VPN gateway within the specified period of time.
  *
  * @param request CreateIpsecServerRequest
  * @param runtime runtime options for this request RuntimeOptions
@@ -78841,10 +79225,10 @@ func (client *Client) CreateIpsecServerWithOptions(request *CreateIpsecServerReq
 
 /**
  * *   Before you create an IPsec server, you must create a VPN gateway and enable the SSL-VPN feature for the VPN gateway. For more information, see [CreateVpnGateway](~~120363~~).
- * *   The **CreateIpsecServer** operation is asynchronous. After you send the request, the system returns a request ID. However, the operation is still being performed in the system background. You can call the [DescribeVpnGateway](~~73720~~) operation to query the status of a VPN gateway.
+ * *   **CreateIpsecServer** is an asynchronous operation. After you send a request to call this operation, the system returns a request ID and the IPsec server is being created in the backend. You can call [DescribeVpnGateway](~~73720~~) to query the status of a VPN gateway.
  *     *   If the VPN gateway is in the **updating** state, the IPsec server is being created.
  *     *   If the VPN gateway is in the **active** state, the IPsec server is created.
- * *   You cannot repeatedly call **CreateIpsecServer** to create an IPsec server for a VPN gateway within the specified period of time.
+ * *   You cannot repeatedly call the **CreateIpsecServer** operation for the same VPN gateway within the specified period of time.
  *
  * @param request CreateIpsecServerRequest
  * @return CreateIpsecServerResponse
@@ -78972,7 +79356,7 @@ func (client *Client) CreateIpv4Gateway(request *CreateIpv4GatewayRequest) (_res
 }
 
 /**
- * *   The **CreateIpv6EgressOnlyRule** operation is asynchronous. After you send the request, the system returns a request ID. However, the operation is still being performed in the system background. You can call the [DescribeIpv6EgressOnlyRules](~~102208~~) operation to query the status of an egress-only rule.
+ * *   **CreateIpv6EgressOnlyRule** is an asynchronous operation. After a request is sent, the system returns a request ID and creates the rule in the background. You can call the [DescribeIpv6EgressOnlyRules](~~102208~~) operation to query the status of the task.
  *     *   If the egress-only rule is in the **Creating** state, the egress-only rule is being created.
  *     *   If the egress-only rule is in the **Created** state, the egress-only rule is created.
  * *   You cannot repeatedly call the **CreateIpv6EgressOnlyRule** operation to add egress-only rules for an IPv6 address within the specified period of time.
@@ -79059,7 +79443,7 @@ func (client *Client) CreateIpv6EgressOnlyRuleWithOptions(request *CreateIpv6Egr
 }
 
 /**
- * *   The **CreateIpv6EgressOnlyRule** operation is asynchronous. After you send the request, the system returns a request ID. However, the operation is still being performed in the system background. You can call the [DescribeIpv6EgressOnlyRules](~~102208~~) operation to query the status of an egress-only rule.
+ * *   **CreateIpv6EgressOnlyRule** is an asynchronous operation. After a request is sent, the system returns a request ID and creates the rule in the background. You can call the [DescribeIpv6EgressOnlyRules](~~102208~~) operation to query the status of the task.
  *     *   If the egress-only rule is in the **Creating** state, the egress-only rule is being created.
  *     *   If the egress-only rule is in the **Created** state, the egress-only rule is created.
  * *   You cannot repeatedly call the **CreateIpv6EgressOnlyRule** operation to add egress-only rules for an IPv6 address within the specified period of time.
@@ -79668,6 +80052,10 @@ func (client *Client) CreatePhysicalConnectionWithOptions(request *CreatePhysica
 		query["Description"] = request.Description
 	}
 
+	if !tea.BoolValue(util.IsUnset(request.DeviceAdvancedCapacity)) {
+		query["DeviceAdvancedCapacity"] = request.DeviceAdvancedCapacity
+	}
+
 	if !tea.BoolValue(util.IsUnset(request.LineOperator)) {
 		query["LineOperator"] = request.LineOperator
 	}
@@ -79953,8 +80341,7 @@ func (client *Client) CreatePhysicalConnectionSetupOrder(request *CreatePhysical
 }
 
 /**
- * ## Limits
- * By default, the IP address pool feature is unavailable. You can apply for the privilege to use the **IP address pool feature** on the Quota Center page. For more information, see [Request a quota increase in the Quota Center console](~~108213~~).
+ * By default, the IP address pool feature is unavailable. You can apply for the privilege to use the **IP address pool feature** in the Quota Center console. For more information, see the "Request a quota increase in the Quota Center console" section in the [Manage EIP quotas](~~108213~~) topic.
  *
  * @param request CreatePublicIpAddressPoolRequest
  * @param runtime runtime options for this request RuntimeOptions
@@ -80046,8 +80433,7 @@ func (client *Client) CreatePublicIpAddressPoolWithOptions(request *CreatePublic
 }
 
 /**
- * ## Limits
- * By default, the IP address pool feature is unavailable. You can apply for the privilege to use the **IP address pool feature** on the Quota Center page. For more information, see [Request a quota increase in the Quota Center console](~~108213~~).
+ * By default, the IP address pool feature is unavailable. You can apply for the privilege to use the **IP address pool feature** in the Quota Center console. For more information, see the "Request a quota increase in the Quota Center console" section in the [Manage EIP quotas](~~108213~~) topic.
  *
  * @param request CreatePublicIpAddressPoolRequest
  * @return CreatePublicIpAddressPoolResponse
@@ -80612,13 +80998,13 @@ func (client *Client) CreateRouterInterface(request *CreateRouterInterfaceReques
 }
 
 /**
- * You can call this operation to add SNAT entries to Internet NAT gateways and Virtual Private Cloud (VPC) NAT gateways. In this topic, a NAT gateway refers to both gateway types.
+ * You can call this operation to add SNAT entries to Internet NAT gateways and Virtual Private Cloud (VPC) NAT gateways. In this topic, a **NAT gateway** refers to both gateway types.
  * Before you call this operation, take note of the following limits:
- * *   **CreateSnatEntry** is an asynchronous operation. After you make a request, an SNAT entry ID is returned but the specified SNAT entry is not added. The system adds the entry in the background. You can call the [DescribeSnatTableEntries](~~42677~~) operation to query the status of the SNAT entry.
+ * *   **CreateSnatEntry** is an asynchronous operation. After a request is sent, the system returns a request ID and runs the task in the background. You can call the [DescribeSnatTableEntries](~~42677~~) operation to query the status of the task.
  *     *   If the SNAT entry is in the **Pending** state, the system is adding the SNAT entry. You can only query the status of the SNAT entry, but cannot perform other operations.
  *     *   If the SNAT entry is in the **Available** state, the SNAT entry is added.
  * *   You cannot repeatedly call the **CreateSnatEntry** operation to add an SNAT entry to an SNAT table within the specified period of time.
- * *   The vSwitch and Elastic Compute Service (ECS) instance specified in an SNAT entry must be created in the virtual private cloud (VPC) where the NAT gateway is deployed.
+ * *   The vSwitch and Elastic Compute Service (ECS) instance specified in an SNAT entry must be created in the VPC where the NAT gateway is deployed.
  * *   Each vSwitch or ECS instance can be specified in only one SNAT entry.
  * *   If a high-availability virtual IP address (HAVIP) exists in a vSwitch, you cannot create SNAT entries.
  *
@@ -80704,13 +81090,13 @@ func (client *Client) CreateSnatEntryWithOptions(request *CreateSnatEntryRequest
 }
 
 /**
- * You can call this operation to add SNAT entries to Internet NAT gateways and Virtual Private Cloud (VPC) NAT gateways. In this topic, a NAT gateway refers to both gateway types.
+ * You can call this operation to add SNAT entries to Internet NAT gateways and Virtual Private Cloud (VPC) NAT gateways. In this topic, a **NAT gateway** refers to both gateway types.
  * Before you call this operation, take note of the following limits:
- * *   **CreateSnatEntry** is an asynchronous operation. After you make a request, an SNAT entry ID is returned but the specified SNAT entry is not added. The system adds the entry in the background. You can call the [DescribeSnatTableEntries](~~42677~~) operation to query the status of the SNAT entry.
+ * *   **CreateSnatEntry** is an asynchronous operation. After a request is sent, the system returns a request ID and runs the task in the background. You can call the [DescribeSnatTableEntries](~~42677~~) operation to query the status of the task.
  *     *   If the SNAT entry is in the **Pending** state, the system is adding the SNAT entry. You can only query the status of the SNAT entry, but cannot perform other operations.
  *     *   If the SNAT entry is in the **Available** state, the SNAT entry is added.
  * *   You cannot repeatedly call the **CreateSnatEntry** operation to add an SNAT entry to an SNAT table within the specified period of time.
- * *   The vSwitch and Elastic Compute Service (ECS) instance specified in an SNAT entry must be created in the virtual private cloud (VPC) where the NAT gateway is deployed.
+ * *   The vSwitch and Elastic Compute Service (ECS) instance specified in an SNAT entry must be created in the VPC where the NAT gateway is deployed.
  * *   Each vSwitch or ECS instance can be specified in only one SNAT entry.
  * *   If a high-availability virtual IP address (HAVIP) exists in a vSwitch, you cannot create SNAT entries.
  *
@@ -80801,7 +81187,7 @@ func (client *Client) CreateSslVpnClientCert(request *CreateSslVpnClientCertRequ
 }
 
 /**
- * *   The **CreateSslVpnServer** operation is asynchronous. After you send the request, the system returns a request ID, but the operation is still being performed in the system background. You can call the [DescribeVpnGateway](~~73720~~) operation to query the status of the associated VPN gateway and determine whether the SSL server is created.
+ * *   **CreateSslVpnServer** is an asynchronous operation. After you send a request to call this operation, the system returns a request ID and the SSL server is still being created in the backend. You can call the [DescribeVpnGateway](~~73720~~) operation to query the status of a VPN gateway.
  *     *   If the VPN gateway is in the **updating** state, the SSL server is being created.
  *     *   If the VPN gateway is in the **active** state, the SSL server is created.
  * *   You cannot repeatedly call the **CreateSslVpnServer** operation for the same VPN gateway within the specified period of time.
@@ -80908,7 +81294,7 @@ func (client *Client) CreateSslVpnServerWithOptions(request *CreateSslVpnServerR
 }
 
 /**
- * *   The **CreateSslVpnServer** operation is asynchronous. After you send the request, the system returns a request ID, but the operation is still being performed in the system background. You can call the [DescribeVpnGateway](~~73720~~) operation to query the status of the associated VPN gateway and determine whether the SSL server is created.
+ * *   **CreateSslVpnServer** is an asynchronous operation. After you send a request to call this operation, the system returns a request ID and the SSL server is still being created in the backend. You can call the [DescribeVpnGateway](~~73720~~) operation to query the status of a VPN gateway.
  *     *   If the VPN gateway is in the **updating** state, the SSL server is being created.
  *     *   If the VPN gateway is in the **active** state, the SSL server is created.
  * *   You cannot repeatedly call the **CreateSslVpnServer** operation for the same VPN gateway within the specified period of time.
@@ -81484,7 +81870,7 @@ func (client *Client) CreateVbrHa(request *CreateVbrHaRequest) (_result *CreateV
 /**
  * *   You cannot create a destination-based route whose destination CIDR block is 0.0.0.0/0.
  * *   Do not add a route whose destination CIDR block is 100.64.0.0/10, a subset of 100.64.0.0/10, or a CIDR block that contains 100.64.0.0/10. If such a route is added, the status of the IPsec-VPN connection cannot be displayed in the console or IPsec negotiations fail.
- * *   **CreateVcoRouteEntry** is an asynchronous operation. After you send a request, the system returns a request ID and runs the task in the background. You can call the [DescribeVpnConnection](~~53046~~) operation to query the status of a route based on the status of the associated IPsec-VPN connection.
+ * *   **CreateVcoRouteEntry** is an asynchronous operation. After you send a request, the system returns a request ID and runs the task in the background. You can call the [DescribeVpnConnection](~~53046~~) operation to query the status of the task.
  *     *   If the IPsec-VPN connection is in the **updating** state, the route is being created.
  *     *   If the IPsec-VPN connection is in the **attached** state, the route is created.
  * *   You cannot repeatedly call **CreateVcoRouteEntry** to create a route for the same IPsec-VPN connection within the specified period of time.
@@ -81569,7 +81955,7 @@ func (client *Client) CreateVcoRouteEntryWithOptions(request *CreateVcoRouteEntr
 /**
  * *   You cannot create a destination-based route whose destination CIDR block is 0.0.0.0/0.
  * *   Do not add a route whose destination CIDR block is 100.64.0.0/10, a subset of 100.64.0.0/10, or a CIDR block that contains 100.64.0.0/10. If such a route is added, the status of the IPsec-VPN connection cannot be displayed in the console or IPsec negotiations fail.
- * *   **CreateVcoRouteEntry** is an asynchronous operation. After you send a request, the system returns a request ID and runs the task in the background. You can call the [DescribeVpnConnection](~~53046~~) operation to query the status of a route based on the status of the associated IPsec-VPN connection.
+ * *   **CreateVcoRouteEntry** is an asynchronous operation. After you send a request, the system returns a request ID and runs the task in the background. You can call the [DescribeVpnConnection](~~53046~~) operation to query the status of the task.
  *     *   If the IPsec-VPN connection is in the **updating** state, the route is being created.
  *     *   If the IPsec-VPN connection is in the **attached** state, the route is created.
  * *   You cannot repeatedly call **CreateVcoRouteEntry** to create a route for the same IPsec-VPN connection within the specified period of time.
@@ -81831,16 +82217,16 @@ func (client *Client) CreateVirtualPhysicalConnection(request *CreateVirtualPhys
 }
 
 /**
- * When you call this operation, take note of the following rules:
+ * When you call this operation, take note of the following items:
  * *   You can specify only one CIDR block for each VPC.
  * *   After you create a VPC, you cannot change its CIDR block. However, you can add secondary IPv4 CIDR blocks to the VPC.
  * *   In each VPC, cloud services can use a maximum of 60,000 private IP addresses. You cannot increase the quota.
  * *   After you create a VPC, a vRouter and a route table are automatically created.
- * *   At most three user CIDR blocks can be added to a VPC. If a user CIDR block includes another user CIDR block, the one with the shorter subnet mask takes effect. For example, if 10.0.0.0/8 and 10.1.0.0/16 are specified, only 10.0.0.0/8 takes effect.
- * *   The **CreateVpc** operation is asynchronous. After you send a request, the system returns a request ID and runs the task in the background. You can call the [DescribeVpcAttribute](~~94565~~) operation to query the status of a VPC:
+ * *   At most three user CIDR blocks can be added to a VPC. If a user CIDR block includes another user CIDR block, the one with the shorter subnet mask takes effect. For example, if both 10.0.0.0/8 and 10.1.0.0/16 are specified, only 10.0.0.0/8 takes effect.
+ * *   **CreateVpc** is an asynchronous operation. After a request is sent, the system returns a request ID and runs the task in the background. You can call the [DescribeVpcAttribute](~~94565~~) operation to query the status of the task:
  *     *   If the VPC is in the **Creating** state, the VPC is being created.
  *     *   If the VPC is in the **Created** state, the VPC is created.
- * *   You cannot repeatedly call the **CreateVpc** operation to create default VPCs within the specified period of time. However, you can repeatedly call this operation to create custom VPCs within the specified period of time.
+ * *   You cannot repeatedly call the **DeleteRouteEntry** operation to create default VPCs within a specific time period. However, you can repeatedly call this operation to create custom VPCs within a specific time period.
  *
  * @param request CreateVpcRequest
  * @param runtime runtime options for this request RuntimeOptions
@@ -81944,16 +82330,16 @@ func (client *Client) CreateVpcWithOptions(request *CreateVpcRequest, runtime *u
 }
 
 /**
- * When you call this operation, take note of the following rules:
+ * When you call this operation, take note of the following items:
  * *   You can specify only one CIDR block for each VPC.
  * *   After you create a VPC, you cannot change its CIDR block. However, you can add secondary IPv4 CIDR blocks to the VPC.
  * *   In each VPC, cloud services can use a maximum of 60,000 private IP addresses. You cannot increase the quota.
  * *   After you create a VPC, a vRouter and a route table are automatically created.
- * *   At most three user CIDR blocks can be added to a VPC. If a user CIDR block includes another user CIDR block, the one with the shorter subnet mask takes effect. For example, if 10.0.0.0/8 and 10.1.0.0/16 are specified, only 10.0.0.0/8 takes effect.
- * *   The **CreateVpc** operation is asynchronous. After you send a request, the system returns a request ID and runs the task in the background. You can call the [DescribeVpcAttribute](~~94565~~) operation to query the status of a VPC:
+ * *   At most three user CIDR blocks can be added to a VPC. If a user CIDR block includes another user CIDR block, the one with the shorter subnet mask takes effect. For example, if both 10.0.0.0/8 and 10.1.0.0/16 are specified, only 10.0.0.0/8 takes effect.
+ * *   **CreateVpc** is an asynchronous operation. After a request is sent, the system returns a request ID and runs the task in the background. You can call the [DescribeVpcAttribute](~~94565~~) operation to query the status of the task:
  *     *   If the VPC is in the **Creating** state, the VPC is being created.
  *     *   If the VPC is in the **Created** state, the VPC is created.
- * *   You cannot repeatedly call the **CreateVpc** operation to create default VPCs within the specified period of time. However, you can repeatedly call this operation to create custom VPCs within the specified period of time.
+ * *   You cannot repeatedly call the **DeleteRouteEntry** operation to create default VPCs within a specific time period. However, you can repeatedly call this operation to create custom VPCs within a specific time period.
  *
  * @param request CreateVpcRequest
  * @return CreateVpcResponse
@@ -81969,16 +82355,6 @@ func (client *Client) CreateVpc(request *CreateVpcRequest) (_result *CreateVpcRe
 	return _result, _err
 }
 
-/**
- * *   **CreateVpcGatewayEndpoint** is an asynchronous operation. After you send a request, the system returns an **EndpointId** and runs the task in the background. You can call the [GetDhcpOptionsSet](~~189208~~) operation to query the status of a gateway endpoint.
- *     *   If the gateway endpoint is in the **Creating** state, the gateway endpoint is being created.
- *     *   If the gateway endpoint is in the **Created** state, the gateway endpoint is created.
- * *   You cannot repeatedly call the **CreateVpcGatewayEndpoint** operation for the same endpoint service within the specified period of time.
- *
- * @param request CreateVpcGatewayEndpointRequest
- * @param runtime runtime options for this request RuntimeOptions
- * @return CreateVpcGatewayEndpointResponse
- */
 func (client *Client) CreateVpcGatewayEndpointWithOptions(request *CreateVpcGatewayEndpointRequest, runtime *util.RuntimeOptions) (_result *CreateVpcGatewayEndpointResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -82064,15 +82440,6 @@ func (client *Client) CreateVpcGatewayEndpointWithOptions(request *CreateVpcGate
 	return _result, _err
 }
 
-/**
- * *   **CreateVpcGatewayEndpoint** is an asynchronous operation. After you send a request, the system returns an **EndpointId** and runs the task in the background. You can call the [GetDhcpOptionsSet](~~189208~~) operation to query the status of a gateway endpoint.
- *     *   If the gateway endpoint is in the **Creating** state, the gateway endpoint is being created.
- *     *   If the gateway endpoint is in the **Created** state, the gateway endpoint is created.
- * *   You cannot repeatedly call the **CreateVpcGatewayEndpoint** operation for the same endpoint service within the specified period of time.
- *
- * @param request CreateVpcGatewayEndpointRequest
- * @return CreateVpcGatewayEndpointResponse
- */
 func (client *Client) CreateVpcGatewayEndpoint(request *CreateVpcGatewayEndpointRequest) (_result *CreateVpcGatewayEndpointResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &CreateVpcGatewayEndpointResponse{}
@@ -82278,7 +82645,7 @@ func (client *Client) CreateVpconnFromVbr(request *CreateVpconnFromVbrRequest) (
 
 /**
  * By default, an IPsec-VPN connection created by calling the `CreateVpnAttachment` operation is not associated with a resource. You can associate an IPsec-VPN connection with a transit router by calling the [CreateTransitRouterVpnAttachment](~~443993~~) operation.
- * ### Prerequisites
+ * ###  Prerequisites
  * Before you create an IPsec-VPN connection, make sure that you created a customer gateway in the region where you want to create the IPsec-VPN connection. For more information, see [CreateCustomerGateway](~~120368~~).
  * If you want to add BGP configurations to an IPsec-VPN connection, make sure that an autonomous system number (ASN) is assigned to the customer gateway.
  *
@@ -82397,7 +82764,7 @@ func (client *Client) CreateVpnAttachmentWithOptions(request *CreateVpnAttachmen
 
 /**
  * By default, an IPsec-VPN connection created by calling the `CreateVpnAttachment` operation is not associated with a resource. You can associate an IPsec-VPN connection with a transit router by calling the [CreateTransitRouterVpnAttachment](~~443993~~) operation.
- * ### Prerequisites
+ * ###  Prerequisites
  * Before you create an IPsec-VPN connection, make sure that you created a customer gateway in the region where you want to create the IPsec-VPN connection. For more information, see [CreateCustomerGateway](~~120368~~).
  * If you want to add BGP configurations to an IPsec-VPN connection, make sure that an autonomous system number (ASN) is assigned to the customer gateway.
  *
@@ -82416,10 +82783,14 @@ func (client *Client) CreateVpnAttachment(request *CreateVpnAttachmentRequest) (
 }
 
 /**
+ * *   If the VPN gateway supports the dual-tunnel mode, you can specify the following parameters in addition to the required parameters when you call `CreateVpnConnection`:
+ *     **ClientToken**, **Name**, **EffectImmediately**, **AutoConfigRoute**, **Tags**, **TunnelOptionsSpecification**, and **EnableTunnelsBgp**.
+ * *   If the VPN gateway supports only the single-tunnel mode, you can specify the following parameters in addition to the required parameters when you call `CreateVpnConnection`:
+ *     **ClientToken**, **CustomerGatewayId**, **Name**, **EffectImmediately**, **IkeConfig**, **IpsecConfig**, **HealthCheckConfig**, **AutoConfigRoute**, **EnableDpd**, **EnableNatTraversal**, **BgpConfig**, **RemoteCaCertificate**, and **Tags**.
  * *   **CreateVpnConnection** is an asynchronous operation. After a request is sent, the system returns a request ID and runs the task in the background. You can call [DescribeVpnGateway](~~73720~~) to query the status of the task.
  *     *   If the VPN gateway is in the **updating** state, the IPsec-VPN connection is being created.
  *     *   If the VPN gateway is in the **active** state, the IPsec-VPN connection is created.
- * *   You cannot repeatedly call **CreateVpnConnection** to create an IPsec-VPN connection on a VPN gateway within the specified period of time.
+ * *   You cannot call **CreateVpnConnection** to create multiple IPsec-VPN connections associated with a VPN gateway at the same time.
  *
  * @param request CreateVpnConnectionRequest
  * @param runtime runtime options for this request RuntimeOptions
@@ -82552,10 +82923,14 @@ func (client *Client) CreateVpnConnectionWithOptions(request *CreateVpnConnectio
 }
 
 /**
+ * *   If the VPN gateway supports the dual-tunnel mode, you can specify the following parameters in addition to the required parameters when you call `CreateVpnConnection`:
+ *     **ClientToken**, **Name**, **EffectImmediately**, **AutoConfigRoute**, **Tags**, **TunnelOptionsSpecification**, and **EnableTunnelsBgp**.
+ * *   If the VPN gateway supports only the single-tunnel mode, you can specify the following parameters in addition to the required parameters when you call `CreateVpnConnection`:
+ *     **ClientToken**, **CustomerGatewayId**, **Name**, **EffectImmediately**, **IkeConfig**, **IpsecConfig**, **HealthCheckConfig**, **AutoConfigRoute**, **EnableDpd**, **EnableNatTraversal**, **BgpConfig**, **RemoteCaCertificate**, and **Tags**.
  * *   **CreateVpnConnection** is an asynchronous operation. After a request is sent, the system returns a request ID and runs the task in the background. You can call [DescribeVpnGateway](~~73720~~) to query the status of the task.
  *     *   If the VPN gateway is in the **updating** state, the IPsec-VPN connection is being created.
  *     *   If the VPN gateway is in the **active** state, the IPsec-VPN connection is created.
- * *   You cannot repeatedly call **CreateVpnConnection** to create an IPsec-VPN connection on a VPN gateway within the specified period of time.
+ * *   You cannot call **CreateVpnConnection** to create multiple IPsec-VPN connections associated with a VPN gateway at the same time.
  *
  * @param request CreateVpnConnectionRequest
  * @return CreateVpnConnectionResponse
@@ -82572,10 +82947,11 @@ func (client *Client) CreateVpnConnection(request *CreateVpnConnectionRequest) (
 }
 
 /**
- * *   Before you create a VPN gateway, we recommend that you understand its limits. For more information, see [Limits on VPN gateways](~~65290~~).
- * *   The **CreateVpnGateway** operation is asynchronous. After you send the request, the system returns a request ID. However, the operation is still being performed in the system background. You can call [DescribeVpnGateway](~~73720~~) to query the status of a VPN gateway.
+ * *   Before you create a VPN gateway, we recommend that you know more about the limits of VPN gateways. For more information, see the [Limits](~~65290~~) section in the "Create and manage a VPN gateway" topic.
+ * *   VPN gateways in some regions support only IPsec-VPN connections in dual-tunnel mode. If you call `CreateVpnGateway` in these regions, you must specify **VSwitchId** and **DisasterRecoveryVSwitchId** in addition to the required parameters. For more information about the regions and zones that support the IPsec-VPN connections in dual-tunnel mode, see [IPsec-VPN connections support the dual-tunnel mode](~~2358946~~).
+ * *   **CreateVpnGateway** is an asynchronous operation. After you send a request to call this operation, the system returns a request ID and the endpoint service is being created in the backend. You can call [DescribeVpnGateway](~~73720~~) to query the status of a VPN gateway.
  *     *   If the VPN gateway is in the **provisioning** state, the VPN gateway is being created.
- *     *   If a VPN gateway is in the **active** state, the VPN gateway has been created.
+ *     *   If the VPN gateway is in the **active** state, the VPN gateway is created.
  *
  * @param request CreateVpnGatewayRequest
  * @param runtime runtime options for this request RuntimeOptions
@@ -82687,10 +83063,11 @@ func (client *Client) CreateVpnGatewayWithOptions(request *CreateVpnGatewayReque
 }
 
 /**
- * *   Before you create a VPN gateway, we recommend that you understand its limits. For more information, see [Limits on VPN gateways](~~65290~~).
- * *   The **CreateVpnGateway** operation is asynchronous. After you send the request, the system returns a request ID. However, the operation is still being performed in the system background. You can call [DescribeVpnGateway](~~73720~~) to query the status of a VPN gateway.
+ * *   Before you create a VPN gateway, we recommend that you know more about the limits of VPN gateways. For more information, see the [Limits](~~65290~~) section in the "Create and manage a VPN gateway" topic.
+ * *   VPN gateways in some regions support only IPsec-VPN connections in dual-tunnel mode. If you call `CreateVpnGateway` in these regions, you must specify **VSwitchId** and **DisasterRecoveryVSwitchId** in addition to the required parameters. For more information about the regions and zones that support the IPsec-VPN connections in dual-tunnel mode, see [IPsec-VPN connections support the dual-tunnel mode](~~2358946~~).
+ * *   **CreateVpnGateway** is an asynchronous operation. After you send a request to call this operation, the system returns a request ID and the endpoint service is being created in the backend. You can call [DescribeVpnGateway](~~73720~~) to query the status of a VPN gateway.
  *     *   If the VPN gateway is in the **provisioning** state, the VPN gateway is being created.
- *     *   If a VPN gateway is in the **active** state, the VPN gateway has been created.
+ *     *   If the VPN gateway is in the **active** state, the VPN gateway is created.
  *
  * @param request CreateVpnGatewayRequest
  * @return CreateVpnGatewayResponse
@@ -82707,12 +83084,12 @@ func (client *Client) CreateVpnGateway(request *CreateVpnGatewayRequest) (_resul
 }
 
 /**
- * *   Before you call this operation, we recommend that you learn about the match rules of policy-based routes and limits on policy-based routes. For more information, see [Work with policy-based routes](~~110777~~).
+ * *   Before you call this operation, make sure that you are familiar with the match rules of and limits on policy-based routes. For more information, see [Manage policy-based routes](~~110777~~).
  * *   Before you create a policy-based route, make sure that an IPsec-VPN connection is created. For more information, see [CreateVpnConnection](~~120391~~).
- * *   **CreateVpnPbrRouteEntry** is an asynchronous operation. After you send the request, the route information is returned but the operation is still being performed in the background. You can call [DescribeVpnGateway](~~73720~~) to query the status of a VPN gateway.
- *     *   If a VPN gateway is in the **updating** state, the policy-based route entry is being created.
- *     *   If a VPN gateway is in the **active** state, the policy-based route entry is created.
- * *   You cannot repeatedly call **CreateVpnPbrRouteEntry** to create a policy-based route for a VPN gateway within the specified period of time.
+ * *   **CreateVpnPbrRouteEntry** is an asynchronous operation. After a request is sent, the system returns a request ID and runs the task in the background. You can call the [DescribeVpnGateway](~~73720~~) operation to query the status of the VPN gateway.
+ *     *   If the VPN gateway is in the **updating** state, the policy-based route is being created.
+ *     *   If the VPN gateway is in the **active** state, the policy-based route is created.
+ * *   You cannot call the **CreateVpnPbrRouteEntry** operation to create multiple policy-based routes for a VPN gateway at a time.
  *
  * @param request CreateVpnPbrRouteEntryRequest
  * @param runtime runtime options for this request RuntimeOptions
@@ -82808,12 +83185,12 @@ func (client *Client) CreateVpnPbrRouteEntryWithOptions(request *CreateVpnPbrRou
 }
 
 /**
- * *   Before you call this operation, we recommend that you learn about the match rules of policy-based routes and limits on policy-based routes. For more information, see [Work with policy-based routes](~~110777~~).
+ * *   Before you call this operation, make sure that you are familiar with the match rules of and limits on policy-based routes. For more information, see [Manage policy-based routes](~~110777~~).
  * *   Before you create a policy-based route, make sure that an IPsec-VPN connection is created. For more information, see [CreateVpnConnection](~~120391~~).
- * *   **CreateVpnPbrRouteEntry** is an asynchronous operation. After you send the request, the route information is returned but the operation is still being performed in the background. You can call [DescribeVpnGateway](~~73720~~) to query the status of a VPN gateway.
- *     *   If a VPN gateway is in the **updating** state, the policy-based route entry is being created.
- *     *   If a VPN gateway is in the **active** state, the policy-based route entry is created.
- * *   You cannot repeatedly call **CreateVpnPbrRouteEntry** to create a policy-based route for a VPN gateway within the specified period of time.
+ * *   **CreateVpnPbrRouteEntry** is an asynchronous operation. After a request is sent, the system returns a request ID and runs the task in the background. You can call the [DescribeVpnGateway](~~73720~~) operation to query the status of the VPN gateway.
+ *     *   If the VPN gateway is in the **updating** state, the policy-based route is being created.
+ *     *   If the VPN gateway is in the **active** state, the policy-based route is created.
+ * *   You cannot call the **CreateVpnPbrRouteEntry** operation to create multiple policy-based routes for a VPN gateway at a time.
  *
  * @param request CreateVpnPbrRouteEntryRequest
  * @return CreateVpnPbrRouteEntryResponse
@@ -82830,7 +83207,7 @@ func (client *Client) CreateVpnPbrRouteEntry(request *CreateVpnPbrRouteEntryRequ
 }
 
 /**
- * *   **CreateVpnRouteEntry** is an asynchronous operation. After you call the operation, the route configurations are returned but the operation is still being performed in the background. You can call [DescribeVpnGateway](~~73720~~) to query the status of a destination-based route entry.
+ * *   **CreateVpnRouteEntry** is an asynchronous operation. After a request is sent, the system returns a request ID and runs the task in the background. You can call [DescribeVpnGateway](~~73720~~) to query the status of the task.
  *     *   If a VPN gateway is in the **updating** state, the destination-based route entry is being created.
  *     *   If a VPN gateway is in the **active** state, the destination-based route entry has been created.
  * *   You cannot repeatedly call **CreateVpnRouteEntry** to create a destination-based route entry for a VPN gateway within the specified period of time.
@@ -82921,7 +83298,7 @@ func (client *Client) CreateVpnRouteEntryWithOptions(request *CreateVpnRouteEntr
 }
 
 /**
- * *   **CreateVpnRouteEntry** is an asynchronous operation. After you call the operation, the route configurations are returned but the operation is still being performed in the background. You can call [DescribeVpnGateway](~~73720~~) to query the status of a destination-based route entry.
+ * *   **CreateVpnRouteEntry** is an asynchronous operation. After a request is sent, the system returns a request ID and runs the task in the background. You can call [DescribeVpnGateway](~~73720~~) to query the status of the task.
  *     *   If a VPN gateway is in the **updating** state, the destination-based route entry is being created.
  *     *   If a VPN gateway is in the **active** state, the destination-based route entry has been created.
  * *   You cannot repeatedly call **CreateVpnRouteEntry** to create a destination-based route entry for a VPN gateway within the specified period of time.
@@ -84219,9 +84596,9 @@ func (client *Client) DeleteIPv6TranslatorEntry(request *DeleteIPv6TranslatorEnt
 }
 
 /**
- * *   The **DeleteIpsecServer** operation is asynchronous. After you send the request, the system returns a request ID. However, the operation is still being performed in the system background. You can call [DescribeVpnGateway](~~73720~~) to query the status of a VPN gateway.
+ * *   **DeleteIpsecServer** is an asynchronous operation. After a request is sent, the system returns a request ID and runs the task in the background. You can call [DescribeVpnGateway](~~73720~~) to query the status of the task.
  *     *   If a VPN gateway is in the **updating** state, the IPsec server is being deleted.
- *     *   If a VPN gateway is in the **active** state, the IPsec server has been deleted.
+ *     *   If a VPN gateway is in the **active** state, the IPsec server is deleted.
  * *   You cannot repeatedly call **DeleteIpsecServer** to delete an IPsec server from a VPN gateway within the specified period of time.
  *
  * @param request DeleteIpsecServerRequest
@@ -84274,9 +84651,9 @@ func (client *Client) DeleteIpsecServerWithOptions(request *DeleteIpsecServerReq
 }
 
 /**
- * *   The **DeleteIpsecServer** operation is asynchronous. After you send the request, the system returns a request ID. However, the operation is still being performed in the system background. You can call [DescribeVpnGateway](~~73720~~) to query the status of a VPN gateway.
+ * *   **DeleteIpsecServer** is an asynchronous operation. After a request is sent, the system returns a request ID and runs the task in the background. You can call [DescribeVpnGateway](~~73720~~) to query the status of the task.
  *     *   If a VPN gateway is in the **updating** state, the IPsec server is being deleted.
- *     *   If a VPN gateway is in the **active** state, the IPsec server has been deleted.
+ *     *   If a VPN gateway is in the **active** state, the IPsec server is deleted.
  * *   You cannot repeatedly call **DeleteIpsecServer** to delete an IPsec server from a VPN gateway within the specified period of time.
  *
  * @param request DeleteIpsecServerRequest
@@ -84391,10 +84768,10 @@ func (client *Client) DeleteIpv4Gateway(request *DeleteIpv4GatewayRequest) (_res
 }
 
 /**
- * *   **DeleteIpv6EgressOnlyRule** is an asynchronous operation. After you send a request, the system returns a request ID. However, the operation is still being performed in the system background. You can call the [DescribeIpv6EgressOnlyRules](~~102208~~) operation to query whether the egress-only rule is deleted.
- *     *   If the egress-only rule is in the **Deleting** state, it indicates that the egress-only rule is being deleted.
- *     *   If you cannot query the egress-only rule, it indicates that the egress-only rule is deleted.
- * *   You cannot call the **DeleteIpv6EgressOnlyRule** operation to delete an egress-only rule again when the rule is being deleted.
+ * *   **DeleteIpv6EgressOnlyRule** is an asynchronous operation. After a request is sent, the system returns a request ID and runs the task in the background. You can call the [DescribeIpv6EgressOnlyRules](~~102208~~) operation to query the status of the task.
+ *     *   If the egress-only rule is in the **Deleting** state, the egress-only rule is being deleted.
+ *     *   If you cannot query the egress-only rule, the egress-only rule is deleted.
+ * *   You cannot call the **DeleteIpv6EgressOnlyRule** operation to delete an egress-only rule within the specified period of time.
  *
  * @param request DeleteIpv6EgressOnlyRuleRequest
  * @param runtime runtime options for this request RuntimeOptions
@@ -84462,10 +84839,10 @@ func (client *Client) DeleteIpv6EgressOnlyRuleWithOptions(request *DeleteIpv6Egr
 }
 
 /**
- * *   **DeleteIpv6EgressOnlyRule** is an asynchronous operation. After you send a request, the system returns a request ID. However, the operation is still being performed in the system background. You can call the [DescribeIpv6EgressOnlyRules](~~102208~~) operation to query whether the egress-only rule is deleted.
- *     *   If the egress-only rule is in the **Deleting** state, it indicates that the egress-only rule is being deleted.
- *     *   If you cannot query the egress-only rule, it indicates that the egress-only rule is deleted.
- * *   You cannot call the **DeleteIpv6EgressOnlyRule** operation to delete an egress-only rule again when the rule is being deleted.
+ * *   **DeleteIpv6EgressOnlyRule** is an asynchronous operation. After a request is sent, the system returns a request ID and runs the task in the background. You can call the [DescribeIpv6EgressOnlyRules](~~102208~~) operation to query the status of the task.
+ *     *   If the egress-only rule is in the **Deleting** state, the egress-only rule is being deleted.
+ *     *   If you cannot query the egress-only rule, the egress-only rule is deleted.
+ * *   You cannot call the **DeleteIpv6EgressOnlyRule** operation to delete an egress-only rule within the specified period of time.
  *
  * @param request DeleteIpv6EgressOnlyRuleRequest
  * @return DeleteIpv6EgressOnlyRuleResponse
@@ -85099,12 +85476,12 @@ func (client *Client) DeletePhysicalConnection(request *DeletePhysicalConnection
 }
 
 /**
- * *   The **DeletePublicIpAddressPool** operation is asynchronous. After you send the request, the system returns a request ID. However, the operation is still being performed in the system background. You can call the [ListPublicIpAddressPools](~~429433~~) operation to query the status of an IP address pool:
+ * Before you call this operation, take note of the following items:
+ * *   Before you delete an IP address pool, make sure that no IP address in the pool is being used.
+ * *   **DeletePublicIpAddressPool** is an asynchronous operation. After a request is sent, the system returns a request ID and runs the task in the background. You can call the [ListPublicIpAddressPools](~~429433~~) operation to query the status of the task.
  *     *   If the IP address pool is in the **Deleting** state, the IP address pool is being deleted. In this state. you can only query the IP address pool and cannot perform other operations.
  *     *   If you cannot query the IP address pool, the IP address pool is deleted.
  * *   You cannot repeatedly call the **DeletePublicIpAddressPool** operation to delete an IP address pool within the specified period of time.
- * ## Prerequisites
- * Before you delete an IP address pool, make sure that no IP address in the pool is being used.
  *
  * @param request DeletePublicIpAddressPoolRequest
  * @param runtime runtime options for this request RuntimeOptions
@@ -85172,12 +85549,12 @@ func (client *Client) DeletePublicIpAddressPoolWithOptions(request *DeletePublic
 }
 
 /**
- * *   The **DeletePublicIpAddressPool** operation is asynchronous. After you send the request, the system returns a request ID. However, the operation is still being performed in the system background. You can call the [ListPublicIpAddressPools](~~429433~~) operation to query the status of an IP address pool:
+ * Before you call this operation, take note of the following items:
+ * *   Before you delete an IP address pool, make sure that no IP address in the pool is being used.
+ * *   **DeletePublicIpAddressPool** is an asynchronous operation. After a request is sent, the system returns a request ID and runs the task in the background. You can call the [ListPublicIpAddressPools](~~429433~~) operation to query the status of the task.
  *     *   If the IP address pool is in the **Deleting** state, the IP address pool is being deleted. In this state. you can only query the IP address pool and cannot perform other operations.
  *     *   If you cannot query the IP address pool, the IP address pool is deleted.
  * *   You cannot repeatedly call the **DeletePublicIpAddressPool** operation to delete an IP address pool within the specified period of time.
- * ## Prerequisites
- * Before you delete an IP address pool, make sure that no IP address in the pool is being used.
  *
  * @param request DeletePublicIpAddressPoolRequest
  * @return DeletePublicIpAddressPoolResponse
@@ -85756,7 +86133,7 @@ func (client *Client) DeleteSnatEntry(request *DeleteSnatEntryRequest) (_result 
 }
 
 /**
- * *   The **DeleteSslVpnClientCert** operation is asynchronous. After you send a request, the system returns a request ID. However, the operation is still being performed in the system background. You can call [DescribeVpnGateway](~~73720~~) to query the status of a VPN gateway associated with an SSL server. You can check whether an SSL client certificate is deleted based on the status of the VPN gateway.
+ * *   **DeleteSslVpnClientCert** is an asynchronous operation. After a request is sent, the system returns a request ID and runs the task in the background. You can call [DescribeVpnGateway](~~73720~~) to query the status of the task.
  *     *   If the VPN gateway is in the **updating** state, the SSL client certificate is being deleted.
  *     *   If the VPN gateway is in the **active** state, the SSL client certificate is deleted.
  * *   You cannot repeatedly call **DeleteSslVpnClientCert** to delete an SSL client certificate from the same VPN gateway within the specified period of time.
@@ -85823,7 +86200,7 @@ func (client *Client) DeleteSslVpnClientCertWithOptions(request *DeleteSslVpnCli
 }
 
 /**
- * *   The **DeleteSslVpnClientCert** operation is asynchronous. After you send a request, the system returns a request ID. However, the operation is still being performed in the system background. You can call [DescribeVpnGateway](~~73720~~) to query the status of a VPN gateway associated with an SSL server. You can check whether an SSL client certificate is deleted based on the status of the VPN gateway.
+ * *   **DeleteSslVpnClientCert** is an asynchronous operation. After a request is sent, the system returns a request ID and runs the task in the background. You can call [DescribeVpnGateway](~~73720~~) to query the status of the task.
  *     *   If the VPN gateway is in the **updating** state, the SSL client certificate is being deleted.
  *     *   If the VPN gateway is in the **active** state, the SSL client certificate is deleted.
  * *   You cannot repeatedly call **DeleteSslVpnClientCert** to delete an SSL client certificate from the same VPN gateway within the specified period of time.
@@ -85843,7 +86220,7 @@ func (client *Client) DeleteSslVpnClientCert(request *DeleteSslVpnClientCertRequ
 }
 
 /**
- * *   The **DeleteSslVpnServer** operation is asynchronous. After you send a request, the system returns a request ID. However, the operation is still being performed in the system background. You can call the [DescribeVpnGateway](~~73720~~) operation to query the status of an SSL server based on the status of the associated VPN gateway.
+ * *   **DeleteSslVpnServer** is an asynchronous operation. After a request is sent, the system returns a request ID and runs the task in the background. You can call the [DescribeVpnGateway](~~73720~~) operation to query the status of the task.
  *     *   If the VPN gateway is in the **updating** state, the SSL server is being deleted.
  *     *   If the VPN gateway is in the **active** state, the SSL server is deleted.
  * *   You cannot repeatedly call the **DeleteSslVpnServer** operation to delete an SSL server from the same VPN gateway within the specified period of time.
@@ -85910,7 +86287,7 @@ func (client *Client) DeleteSslVpnServerWithOptions(request *DeleteSslVpnServerR
 }
 
 /**
- * *   The **DeleteSslVpnServer** operation is asynchronous. After you send a request, the system returns a request ID. However, the operation is still being performed in the system background. You can call the [DescribeVpnGateway](~~73720~~) operation to query the status of an SSL server based on the status of the associated VPN gateway.
+ * *   **DeleteSslVpnServer** is an asynchronous operation. After a request is sent, the system returns a request ID and runs the task in the background. You can call the [DescribeVpnGateway](~~73720~~) operation to query the status of the task.
  *     *   If the VPN gateway is in the **updating** state, the SSL server is being deleted.
  *     *   If the VPN gateway is in the **active** state, the SSL server is deleted.
  * *   You cannot repeatedly call the **DeleteSslVpnServer** operation to delete an SSL server from the same VPN gateway within the specified period of time.
@@ -86430,10 +86807,10 @@ func (client *Client) DeleteVbrHa(request *DeleteVbrHaRequest) (_result *DeleteV
 }
 
 /**
- * *   The **DeleteVcoRouteEntry** operation is asynchronous. After you send the request, the system returns a request ID. However, the operation is still being performed in the system background. You can call the [DescribeVpnConnection](~~53046~~) operation to query the status of a route based on the status of the associated IPsec-VPN connection.
+ * *   **DeleteVcoRouteEntry** is an asynchronous operation. After a request is sent, the system returns a request ID and runs the task in the background. You can call the [DescribeVpnConnection](~~53046~~) operation to query the status of the task.
  *     *   If the IPsec-VPN connection is in the **updating** state, the route is being deleted.
  *     *   If the IPsec-VPN connection is in the **attached** state, the route is deleted.
- * *   You cannot repeatedly call the **DeleteVcoRouteEntry** operation to delete a route from the same IPsec-VPN connection within the specified period of time.
+ * *   You cannot repeatedly call the **DeleteVcoRouteEntry** operation within a specific time period.
  *
  * @param request DeleteVcoRouteEntryRequest
  * @param runtime runtime options for this request RuntimeOptions
@@ -86509,10 +86886,10 @@ func (client *Client) DeleteVcoRouteEntryWithOptions(request *DeleteVcoRouteEntr
 }
 
 /**
- * *   The **DeleteVcoRouteEntry** operation is asynchronous. After you send the request, the system returns a request ID. However, the operation is still being performed in the system background. You can call the [DescribeVpnConnection](~~53046~~) operation to query the status of a route based on the status of the associated IPsec-VPN connection.
+ * *   **DeleteVcoRouteEntry** is an asynchronous operation. After a request is sent, the system returns a request ID and runs the task in the background. You can call the [DescribeVpnConnection](~~53046~~) operation to query the status of the task.
  *     *   If the IPsec-VPN connection is in the **updating** state, the route is being deleted.
  *     *   If the IPsec-VPN connection is in the **attached** state, the route is deleted.
- * *   You cannot repeatedly call the **DeleteVcoRouteEntry** operation to delete a route from the same IPsec-VPN connection within the specified period of time.
+ * *   You cannot repeatedly call the **DeleteVcoRouteEntry** operation within a specific time period.
  *
  * @param request DeleteVcoRouteEntryRequest
  * @return DeleteVcoRouteEntryResponse
@@ -86951,7 +87328,7 @@ func (client *Client) DeleteVpnAttachment(request *DeleteVpnAttachmentRequest) (
 }
 
 /**
- * *   The **DeleteVpnConnection** operation is asynchronous. After you send the request, the system returns a request ID. However, the operation is still being performed in the system background. You can call the [DescribeVpnGateway](~~73720~~) operation to query the status of a VPN gateway.
+ * *   **DeleteVpnConnection** is an asynchronous operation. After a request is sent, the system returns a request ID and runs the task in the background. You can call the [DescribeVpnGateway](~~73720~~) operation to query the status of the task.
  *     *   If the VPN gateway is in the **updating** state, the IPsec-VPN connection is being deleted.
  *     *   If the VPN gateway is in the **active** state, the IPsec-VPN connection is deleted.
  * *   You cannot repeatedly call **DeleteVpnConnection** to delete an IPsec-VPN connection from the same VPN gateway within the specified period of time.
@@ -87019,7 +87396,7 @@ func (client *Client) DeleteVpnConnectionWithOptions(request *DeleteVpnConnectio
 }
 
 /**
- * *   The **DeleteVpnConnection** operation is asynchronous. After you send the request, the system returns a request ID. However, the operation is still being performed in the system background. You can call the [DescribeVpnGateway](~~73720~~) operation to query the status of a VPN gateway.
+ * *   **DeleteVpnConnection** is an asynchronous operation. After a request is sent, the system returns a request ID and runs the task in the background. You can call the [DescribeVpnGateway](~~73720~~) operation to query the status of the task.
  *     *   If the VPN gateway is in the **updating** state, the IPsec-VPN connection is being deleted.
  *     *   If the VPN gateway is in the **active** state, the IPsec-VPN connection is deleted.
  * *   You cannot repeatedly call **DeleteVpnConnection** to delete an IPsec-VPN connection from the same VPN gateway within the specified period of time.
@@ -87121,7 +87498,7 @@ func (client *Client) DeleteVpnGateway(request *DeleteVpnGatewayRequest) (_resul
 }
 
 /**
- * *   The **DeleteVpnPbrRouteEntry** operation is asynchronous. After you call the operation, the request ID is returned but the operation is still being performed in the system background. You can call [DescribeVpnGateway](~~73720~~) to query the status of a VPN gateway.
+ * *   **DeleteVpnPbrRouteEntry** is an asynchronous operation. After a request is sent, the system returns a request ID and runs the task in the background. You can call [DescribeVpnGateway](~~73720~~) to query the status of the task.
  *     *   If a VPN gateway is in the **updating** state, the policy-based route is being deleted.
  *     *   If a VPN gateway is in the **active** state, the policy-based route has been deleted.
  * *   You cannot repeatedly call **DeleteVpnPbrRouteEntry** to delete a policy-based route within the specified period of time.
@@ -87212,7 +87589,7 @@ func (client *Client) DeleteVpnPbrRouteEntryWithOptions(request *DeleteVpnPbrRou
 }
 
 /**
- * *   The **DeleteVpnPbrRouteEntry** operation is asynchronous. After you call the operation, the request ID is returned but the operation is still being performed in the system background. You can call [DescribeVpnGateway](~~73720~~) to query the status of a VPN gateway.
+ * *   **DeleteVpnPbrRouteEntry** is an asynchronous operation. After a request is sent, the system returns a request ID and runs the task in the background. You can call [DescribeVpnGateway](~~73720~~) to query the status of the task.
  *     *   If a VPN gateway is in the **updating** state, the policy-based route is being deleted.
  *     *   If a VPN gateway is in the **active** state, the policy-based route has been deleted.
  * *   You cannot repeatedly call **DeleteVpnPbrRouteEntry** to delete a policy-based route within the specified period of time.
@@ -87232,9 +87609,9 @@ func (client *Client) DeleteVpnPbrRouteEntry(request *DeleteVpnPbrRouteEntryRequ
 }
 
 /**
- * *   The **DeleteRouteEntry** operation is asynchronous. After you send the request, the system returns a request ID but the operation is still being performed in the system background. You can call [DescribeVpnGateway](~~73720~~) to query the status of a VPN gateway.
+ * *   **DeleteVpnRouteEntry** is an asynchronous operation. After a request is sent, the system returns a request ID and runs the task in the background. You can call [DescribeVpnGateway](~~73720~~) to query the status of the task.
  *     *   If a VPN gateway is in the **updating** state, the destination-based route is being deleted.
- *     *   If the VPN gateway is in the **active** state, the destination-based route has been deleted.
+ *     *   If the VPN gateway is in the **active** state, the destination-based route is deleted.
  * *   You cannot repeatedly call **DeleteVpnRouteEntry** to delete a destination-based route from a VPN gateway within the specified period of time.
  *
  * @param request DeleteVpnRouteEntryRequest
@@ -87315,9 +87692,9 @@ func (client *Client) DeleteVpnRouteEntryWithOptions(request *DeleteVpnRouteEntr
 }
 
 /**
- * *   The **DeleteRouteEntry** operation is asynchronous. After you send the request, the system returns a request ID but the operation is still being performed in the system background. You can call [DescribeVpnGateway](~~73720~~) to query the status of a VPN gateway.
+ * *   **DeleteVpnRouteEntry** is an asynchronous operation. After a request is sent, the system returns a request ID and runs the task in the background. You can call [DescribeVpnGateway](~~73720~~) to query the status of the task.
  *     *   If a VPN gateway is in the **updating** state, the destination-based route is being deleted.
- *     *   If the VPN gateway is in the **active** state, the destination-based route has been deleted.
+ *     *   If the VPN gateway is in the **active** state, the destination-based route is deleted.
  * *   You cannot repeatedly call **DeleteVpnRouteEntry** to delete a destination-based route from a VPN gateway within the specified period of time.
  *
  * @param request DeleteVpnRouteEntryRequest
@@ -88024,7 +88401,7 @@ func (client *Client) DescribeEcGrantRelation(request *DescribeEcGrantRelationRe
 }
 
 /**
- * You can call this operation to query the information about EIPs in a specified region, including the maximum bandwidth, billing methods, and associated instances.
+ * You can call this operation to query information about EIPs in a region, including maximum bandwidth, billing methods, and associated instances.
  *
  * @param request DescribeEipAddressesRequest
  * @param runtime runtime options for this request RuntimeOptions
@@ -88156,7 +88533,7 @@ func (client *Client) DescribeEipAddressesWithOptions(request *DescribeEipAddres
 }
 
 /**
- * You can call this operation to query the information about EIPs in a specified region, including the maximum bandwidth, billing methods, and associated instances.
+ * You can call this operation to query information about EIPs in a region, including maximum bandwidth, billing methods, and associated instances.
  *
  * @param request DescribeEipAddressesRequest
  * @return DescribeEipAddressesResponse
@@ -91133,7 +91510,8 @@ func (client *Client) DescribeSslVpnClientCerts(request *DescribeSslVpnClientCer
 }
 
 /**
- * If your VPN gateway was created before December 10, 2022, you must upgrade your VPN gateway to the latest version before you can view connection information about SSL clients. For more information, see Upgrade a VPN gateway. If your VPN gateway was created after December 10, 2022, you can view connection information about SSL clients by default.
+ * If your VPN gateway was created before December 10, 2022, you must upgrade your VPN gateway to the latest version before you can view connection information about SSL clients. For more information, see [Upgrade a VPN gateway](~~303968~~).
+ * If your VPN gateway was created after December 10, 2022, you can view connection information about SSL clients by default.
  *
  * @param request DescribeSslVpnClientsRequest
  * @param runtime runtime options for this request RuntimeOptions
@@ -91201,7 +91579,8 @@ func (client *Client) DescribeSslVpnClientsWithOptions(request *DescribeSslVpnCl
 }
 
 /**
- * If your VPN gateway was created before December 10, 2022, you must upgrade your VPN gateway to the latest version before you can view connection information about SSL clients. For more information, see Upgrade a VPN gateway. If your VPN gateway was created after December 10, 2022, you can view connection information about SSL clients by default.
+ * If your VPN gateway was created before December 10, 2022, you must upgrade your VPN gateway to the latest version before you can view connection information about SSL clients. For more information, see [Upgrade a VPN gateway](~~303968~~).
+ * If your VPN gateway was created after December 10, 2022, you can view connection information about SSL clients by default.
  *
  * @param request DescribeSslVpnClientsRequest
  * @return DescribeSslVpnClientsResponse
@@ -94742,7 +95121,7 @@ func (client *Client) GetVpcRouteEntrySummary(request *GetVpcRouteEntrySummaryRe
 }
 
 /**
- * When you call the **GetVpnGatewayDiagnoseResult** operation, you must set one of the **DiagnoseId** and **VpnGatewayId** parameters.
+ * When you call the **GetVpnGatewayDiagnoseResult** operation, you must specify one of **DiagnoseId** and **VpnGatewayId**.
  *
  * @param request GetVpnGatewayDiagnoseResultRequest
  * @param runtime runtime options for this request RuntimeOptions
@@ -94794,7 +95173,7 @@ func (client *Client) GetVpnGatewayDiagnoseResultWithOptions(request *GetVpnGate
 }
 
 /**
- * When you call the **GetVpnGatewayDiagnoseResult** operation, you must set one of the **DiagnoseId** and **VpnGatewayId** parameters.
+ * When you call the **GetVpnGatewayDiagnoseResult** operation, you must specify one of **DiagnoseId** and **VpnGatewayId**.
  *
  * @param request GetVpnGatewayDiagnoseResultRequest
  * @return GetVpnGatewayDiagnoseResultResponse
@@ -97084,11 +97463,11 @@ func (client *Client) ModifyCommonBandwidthPackageAttribute(request *ModifyCommo
 }
 
 /**
- * You can call the **ModifyCommonBandwidthPackageIpBandwidth** operation to set the maximum bandwidth of an EIP that is associated with an EIP bandwidth plan. This prevents an EIP from exhausting the bandwidth resources of an EIP bandwidth plan.
- * For example, two EIPs are associated with an EIP bandwidth plan whose maximum bandwidth is 800 Mbit/s. In this case, you can set the maximum bandwidth of one EIP to 500 Mbit/s and that of the other EIP to 400 Mbit/s. After you set the maximum bandwidth values, the first EIP cannot consume bandwidth higher than 500 Mbit/s. The second EIP cannot consume bandwidth higher than 400 Mbit/s.
+ * You can call the **ModifyCommonBandwidthPackageIpBandwidth** operation to set the maximum bandwidth of an EIP that is associated with an Internet Shared Bandwidth instance. This prevents an EIP from exhausting the bandwidth resources of an Internet Shared Bandwidth instance.
+ * For example, two EIPs are associated with an Internet Shared Bandwidth instance whose maximum bandwidth is 800 Mbit/s. In this case, you can set the maximum bandwidth of one EIP to 500 Mbit/s and that of the other EIP to 400 Mbit/s. After you set the maximum bandwidth values, the first EIP cannot consume bandwidth higher than 500 Mbit/s. The second EIP cannot consume bandwidth higher than 400 Mbit/s.
  * When you call this operation, take note of the following items:
  * *   This operation is valid only for EIPs that are associated with Elastic Compute Service (ECS) instances. This operation is invalid for EIPs that are associated with Server Load Balancer (SLB) instances, NAT gateways, secondary elastic network interfaces (ENIs), or high-availability virtual IP addresses (HAVIPs).
- * *   This operation is in public preview. You can call this operation to set the maximum bandwidth of EIPs only if the EIPs are associated with an EIP bandwidth plan. The feature is not supported in the console.
+ * *   This operation is in public preview. You can call this operation to set the maximum bandwidth of EIPs only if the EIPs are associated with an Internet Shared Bandwidth instance. The feature is not supported in the console.
  * *   You cannot repeatedly call this operation to set the maximum bandwidth of an EIP within the specified period of time.
  *
  * @param request ModifyCommonBandwidthPackageIpBandwidthRequest
@@ -97157,11 +97536,11 @@ func (client *Client) ModifyCommonBandwidthPackageIpBandwidthWithOptions(request
 }
 
 /**
- * You can call the **ModifyCommonBandwidthPackageIpBandwidth** operation to set the maximum bandwidth of an EIP that is associated with an EIP bandwidth plan. This prevents an EIP from exhausting the bandwidth resources of an EIP bandwidth plan.
- * For example, two EIPs are associated with an EIP bandwidth plan whose maximum bandwidth is 800 Mbit/s. In this case, you can set the maximum bandwidth of one EIP to 500 Mbit/s and that of the other EIP to 400 Mbit/s. After you set the maximum bandwidth values, the first EIP cannot consume bandwidth higher than 500 Mbit/s. The second EIP cannot consume bandwidth higher than 400 Mbit/s.
+ * You can call the **ModifyCommonBandwidthPackageIpBandwidth** operation to set the maximum bandwidth of an EIP that is associated with an Internet Shared Bandwidth instance. This prevents an EIP from exhausting the bandwidth resources of an Internet Shared Bandwidth instance.
+ * For example, two EIPs are associated with an Internet Shared Bandwidth instance whose maximum bandwidth is 800 Mbit/s. In this case, you can set the maximum bandwidth of one EIP to 500 Mbit/s and that of the other EIP to 400 Mbit/s. After you set the maximum bandwidth values, the first EIP cannot consume bandwidth higher than 500 Mbit/s. The second EIP cannot consume bandwidth higher than 400 Mbit/s.
  * When you call this operation, take note of the following items:
  * *   This operation is valid only for EIPs that are associated with Elastic Compute Service (ECS) instances. This operation is invalid for EIPs that are associated with Server Load Balancer (SLB) instances, NAT gateways, secondary elastic network interfaces (ENIs), or high-availability virtual IP addresses (HAVIPs).
- * *   This operation is in public preview. You can call this operation to set the maximum bandwidth of EIPs only if the EIPs are associated with an EIP bandwidth plan. The feature is not supported in the console.
+ * *   This operation is in public preview. You can call this operation to set the maximum bandwidth of EIPs only if the EIPs are associated with an Internet Shared Bandwidth instance. The feature is not supported in the console.
  * *   You cannot repeatedly call this operation to set the maximum bandwidth of an EIP within the specified period of time.
  *
  * @param request ModifyCommonBandwidthPackageIpBandwidthRequest
@@ -97179,10 +97558,11 @@ func (client *Client) ModifyCommonBandwidthPackageIpBandwidth(request *ModifyCom
 }
 
 /**
- * *   The **ModifyCommonBandwidthPackageSpec** operation is asynchronous. After you send the request, the system returns a request ID. However, the operation is still being performed in the system background. You can call the [DescribeCommonBandwidthPackages](~~120309~~) operation to query the status of an EIP bandwidth plan:
- *     *   If the EIP bandwidth plan is in the **Modifying** state, the maximum bandwidth of the EIP bandwidth plan is being modified. In this state, you can only query the EIP bandwidth plan and cannot perform other operations.
- *     *   If the EIP bandwidth plan is in the **Available** state, the maximum bandwidth of the EIP bandwidth plan is modified.
- * *   You cannot repeatedly call the **ModifyCommonBandwidthPackageSpec** operation to modify the maximum bandwidth of an EIP bandwidth plan within the specified period of time.
+ * Before you call this operation, take note of the following items:
+ * *   **ModifyCommonBandwidthPackageSpec** is an asynchronous operation. After a request is sent, the system returns a request ID and runs the task in the background. You can call the [DescribeCommonBandwidthPackages](~~120309~~) operation to query the status of the task.
+ *     *   If the Internet Shared Bandwidth instance is in the **Modifying** state, the maximum bandwidth of the Internet Shared Bandwidth instance is being modified. In this state, you can only query the Internet Shared Bandwidth instance and cannot perform other operations.
+ *     *   If the Internet Shared Bandwidth instance is in the **Available** state, the maximum bandwidth of the Internet Shared Bandwidth instance is modified.
+ * *   You cannot repeatedly call the **ModifyCommonBandwidthPackageSpec** operation to modify the maximum bandwidth of an Internet Shared Bandwidth instance within the specified period of time.
  *
  * @param request ModifyCommonBandwidthPackageSpecRequest
  * @param runtime runtime options for this request RuntimeOptions
@@ -97246,10 +97626,11 @@ func (client *Client) ModifyCommonBandwidthPackageSpecWithOptions(request *Modif
 }
 
 /**
- * *   The **ModifyCommonBandwidthPackageSpec** operation is asynchronous. After you send the request, the system returns a request ID. However, the operation is still being performed in the system background. You can call the [DescribeCommonBandwidthPackages](~~120309~~) operation to query the status of an EIP bandwidth plan:
- *     *   If the EIP bandwidth plan is in the **Modifying** state, the maximum bandwidth of the EIP bandwidth plan is being modified. In this state, you can only query the EIP bandwidth plan and cannot perform other operations.
- *     *   If the EIP bandwidth plan is in the **Available** state, the maximum bandwidth of the EIP bandwidth plan is modified.
- * *   You cannot repeatedly call the **ModifyCommonBandwidthPackageSpec** operation to modify the maximum bandwidth of an EIP bandwidth plan within the specified period of time.
+ * Before you call this operation, take note of the following items:
+ * *   **ModifyCommonBandwidthPackageSpec** is an asynchronous operation. After a request is sent, the system returns a request ID and runs the task in the background. You can call the [DescribeCommonBandwidthPackages](~~120309~~) operation to query the status of the task.
+ *     *   If the Internet Shared Bandwidth instance is in the **Modifying** state, the maximum bandwidth of the Internet Shared Bandwidth instance is being modified. In this state, you can only query the Internet Shared Bandwidth instance and cannot perform other operations.
+ *     *   If the Internet Shared Bandwidth instance is in the **Available** state, the maximum bandwidth of the Internet Shared Bandwidth instance is modified.
+ * *   You cannot repeatedly call the **ModifyCommonBandwidthPackageSpec** operation to modify the maximum bandwidth of an Internet Shared Bandwidth instance within the specified period of time.
  *
  * @param request ModifyCommonBandwidthPackageSpecRequest
  * @return ModifyCommonBandwidthPackageSpecResponse
@@ -97266,9 +97647,9 @@ func (client *Client) ModifyCommonBandwidthPackageSpec(request *ModifyCommonBand
 }
 
 /**
- * *   When you call **ModifyCustomerGatewayAttribute**, if a value is assigned to **AuthKey**, the operation is asynchronous. After you call the operation, the information about the customer gateway is returned but the operation is still being performed in the system background. You can call [DescribeVpnGateway](~~73720~~) to query the status of a customer gateway.
+ * *   When you call **ModifyCustomerGatewayAttribute**, if a value is assigned to **AuthKey**, the operation is asynchronous. After a request is sent, the system returns a request ID and runs the task in the background. You can call [DescribeVpnGateway](~~73720~~) to query the status of the task.
  *     *   If a VPN gateway is in the **updating** state, the configurations are being modified.
- *     *   If a VPN gateway is in the **active** state, the configurations have been modified.
+ *     *   If a VPN gateway is in the **active** state, the configurations are modified.
  * *   When you call **ModifyCustomerGatewayAttribute**, if no value is assigned to **AuthKey**, the operation is synchronous.
  * *   You cannot repeatedly call **ModifyCustomerGatewayAttribute** to modify the configurations of a customer gateway within the specified period of time.
  *
@@ -97346,9 +97727,9 @@ func (client *Client) ModifyCustomerGatewayAttributeWithOptions(request *ModifyC
 }
 
 /**
- * *   When you call **ModifyCustomerGatewayAttribute**, if a value is assigned to **AuthKey**, the operation is asynchronous. After you call the operation, the information about the customer gateway is returned but the operation is still being performed in the system background. You can call [DescribeVpnGateway](~~73720~~) to query the status of a customer gateway.
+ * *   When you call **ModifyCustomerGatewayAttribute**, if a value is assigned to **AuthKey**, the operation is asynchronous. After a request is sent, the system returns a request ID and runs the task in the background. You can call [DescribeVpnGateway](~~73720~~) to query the status of the task.
  *     *   If a VPN gateway is in the **updating** state, the configurations are being modified.
- *     *   If a VPN gateway is in the **active** state, the configurations have been modified.
+ *     *   If a VPN gateway is in the **active** state, the configurations are modified.
  * *   When you call **ModifyCustomerGatewayAttribute**, if no value is assigned to **AuthKey**, the operation is synchronous.
  * *   You cannot repeatedly call **ModifyCustomerGatewayAttribute** to modify the configurations of a customer gateway within the specified period of time.
  *
@@ -98762,96 +99143,7 @@ func (client *Client) ModifyIpv6GatewayAttribute(request *ModifyIpv6GatewayAttri
 }
 
 /**
- * You cannot repeatedly call the **ModifyIpv6GatewaySpec** operation to change the specification of an IPv6 gateway within the specified period of time.
- *
- * @param request ModifyIpv6GatewaySpecRequest
- * @param runtime runtime options for this request RuntimeOptions
- * @return ModifyIpv6GatewaySpecResponse
- */
-func (client *Client) ModifyIpv6GatewaySpecWithOptions(request *ModifyIpv6GatewaySpecRequest, runtime *util.RuntimeOptions) (_result *ModifyIpv6GatewaySpecResponse, _err error) {
-	_err = util.ValidateModel(request)
-	if _err != nil {
-		return _result, _err
-	}
-	query := map[string]interface{}{}
-	if !tea.BoolValue(util.IsUnset(request.ClientToken)) {
-		query["ClientToken"] = request.ClientToken
-	}
-
-	if !tea.BoolValue(util.IsUnset(request.Ipv6GatewayId)) {
-		query["Ipv6GatewayId"] = request.Ipv6GatewayId
-	}
-
-	if !tea.BoolValue(util.IsUnset(request.OwnerAccount)) {
-		query["OwnerAccount"] = request.OwnerAccount
-	}
-
-	if !tea.BoolValue(util.IsUnset(request.OwnerId)) {
-		query["OwnerId"] = request.OwnerId
-	}
-
-	if !tea.BoolValue(util.IsUnset(request.RegionId)) {
-		query["RegionId"] = request.RegionId
-	}
-
-	if !tea.BoolValue(util.IsUnset(request.RegionId)) {
-		query["RegionId"] = request.RegionId
-	}
-
-	if !tea.BoolValue(util.IsUnset(request.ResourceOwnerAccount)) {
-		query["ResourceOwnerAccount"] = request.ResourceOwnerAccount
-	}
-
-	if !tea.BoolValue(util.IsUnset(request.ResourceOwnerId)) {
-		query["ResourceOwnerId"] = request.ResourceOwnerId
-	}
-
-	if !tea.BoolValue(util.IsUnset(request.Spec)) {
-		query["Spec"] = request.Spec
-	}
-
-	req := &openapi.OpenApiRequest{
-		Query: openapiutil.Query(query),
-	}
-	params := &openapi.Params{
-		Action:      tea.String("ModifyIpv6GatewaySpec"),
-		Version:     tea.String("2016-04-28"),
-		Protocol:    tea.String("HTTPS"),
-		Pathname:    tea.String("/"),
-		Method:      tea.String("POST"),
-		AuthType:    tea.String("AK"),
-		Style:       tea.String("RPC"),
-		ReqBodyType: tea.String("formData"),
-		BodyType:    tea.String("json"),
-	}
-	_result = &ModifyIpv6GatewaySpecResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
-}
-
-/**
- * You cannot repeatedly call the **ModifyIpv6GatewaySpec** operation to change the specification of an IPv6 gateway within the specified period of time.
- *
- * @param request ModifyIpv6GatewaySpecRequest
- * @return ModifyIpv6GatewaySpecResponse
- */
-func (client *Client) ModifyIpv6GatewaySpec(request *ModifyIpv6GatewaySpecRequest) (_result *ModifyIpv6GatewaySpecResponse, _err error) {
-	runtime := &util.RuntimeOptions{}
-	_result = &ModifyIpv6GatewaySpecResponse{}
-	_body, _err := client.ModifyIpv6GatewaySpecWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
-	return _result, _err
-}
-
-/**
- * You cannot call the **ModifyIpv6InternetBandwidth** operation to modify the Internet bandwidth value of an IPv6 CIDR block at the same time.
+ * You cannot repeatedly call the **ModifyIpv6InternetBandwidth** operation to modify the Internet bandwidth value of an IPv6 CIDR block within the specified period of time.
  *
  * @param request ModifyIpv6InternetBandwidthRequest
  * @param runtime runtime options for this request RuntimeOptions
@@ -98927,7 +99219,7 @@ func (client *Client) ModifyIpv6InternetBandwidthWithOptions(request *ModifyIpv6
 }
 
 /**
- * You cannot call the **ModifyIpv6InternetBandwidth** operation to modify the Internet bandwidth value of an IPv6 CIDR block at the same time.
+ * You cannot repeatedly call the **ModifyIpv6InternetBandwidth** operation to modify the Internet bandwidth value of an IPv6 CIDR block within the specified period of time.
  *
  * @param request ModifyIpv6InternetBandwidthRequest
  * @return ModifyIpv6InternetBandwidthResponse
@@ -100074,10 +100366,10 @@ func (client *Client) ModifySslVpnClientCert(request *ModifySslVpnClientCertRequ
 }
 
 /**
- * *   If you modify only the **name** of the SSL server, the operation is synchronous. If you also modify other configurations, the operation is asynchronous.
- * *   When **ModifySslVpnServer** is an asynchronous operation, the system returns the request ID but the operation is still being performed in the system background. You can call [DescribeVpnGateway](~~73720~~) to query the status of a VPN gateway.
+ * *   If you only modify the **name** of the SSL server, the operation is synchronous. If you also modify other configurations, the operation is asynchronous.
+ * *   When **ModifySslVpnServer** is an asynchronous operation, the system returns a request ID and runs the task in the background. You can call [DescribeVpnGateway](~~73720~~) to query the status of the task.
  *     *   If a VPN gateway is in the **updating** state, the configurations of the SSL server are being modified.
- *     *   If a VPN gateway is in the **active** state, the configurations of the SSL server have been modified.
+ *     *   If a VPN gateway is in the **active** state, the configurations of the SSL server are modified.
  * *   You cannot repeatedly call **ModifySslVpnServer** to modify the configurations of an SSL server within the specified period of time.
  *
  * @param request ModifySslVpnServerRequest
@@ -100182,10 +100474,10 @@ func (client *Client) ModifySslVpnServerWithOptions(request *ModifySslVpnServerR
 }
 
 /**
- * *   If you modify only the **name** of the SSL server, the operation is synchronous. If you also modify other configurations, the operation is asynchronous.
- * *   When **ModifySslVpnServer** is an asynchronous operation, the system returns the request ID but the operation is still being performed in the system background. You can call [DescribeVpnGateway](~~73720~~) to query the status of a VPN gateway.
+ * *   If you only modify the **name** of the SSL server, the operation is synchronous. If you also modify other configurations, the operation is asynchronous.
+ * *   When **ModifySslVpnServer** is an asynchronous operation, the system returns a request ID and runs the task in the background. You can call [DescribeVpnGateway](~~73720~~) to query the status of the task.
  *     *   If a VPN gateway is in the **updating** state, the configurations of the SSL server are being modified.
- *     *   If a VPN gateway is in the **active** state, the configurations of the SSL server have been modified.
+ *     *   If a VPN gateway is in the **active** state, the configurations of the SSL server are modified.
  * *   You cannot repeatedly call **ModifySslVpnServer** to modify the configurations of an SSL server within the specified period of time.
  *
  * @param request ModifySslVpnServerRequest
@@ -100467,7 +100759,7 @@ func (client *Client) ModifyVSwitchAttribute(request *ModifyVSwitchAttributeRequ
 }
 
 /**
- * *   **ModifyVcoRouteEntryWeight** is an asynchronous operation. After you send a request, the system returns a request ID and runs the task in the background. You can call the [DescribeVpnConnection](~~53046~~) operation to query the status of the associated IPsec-VPN connection and determine whether the weight of the specified destination-based route is modified.
+ * *   **ModifyVcoRouteEntryWeight** is an asynchronous operation. After a request is sent, the system returns a request ID and runs the task in the background. You can call the [DescribeVpnConnection](~~53046~~) operation to query the status of the associated IPsec-VPN connection and determine whether the weight of the specified destination-based route is modified.
  *     *   If the IPsec-VPN connection is in the **updating** state, the weight of the destination-based route is being modified.
  *     *   If the IPsec-VPN connection is in the **attached** state, the weight of the destination-based route is modified.
  * *   You cannot repeatedly call the **ModifyVcoRouteEntryWeight** operation for the same IPsec-VPN connection within the specified period of time.
@@ -100550,7 +100842,7 @@ func (client *Client) ModifyVcoRouteEntryWeightWithOptions(request *ModifyVcoRou
 }
 
 /**
- * *   **ModifyVcoRouteEntryWeight** is an asynchronous operation. After you send a request, the system returns a request ID and runs the task in the background. You can call the [DescribeVpnConnection](~~53046~~) operation to query the status of the associated IPsec-VPN connection and determine whether the weight of the specified destination-based route is modified.
+ * *   **ModifyVcoRouteEntryWeight** is an asynchronous operation. After a request is sent, the system returns a request ID and runs the task in the background. You can call the [DescribeVpnConnection](~~53046~~) operation to query the status of the associated IPsec-VPN connection and determine whether the weight of the specified destination-based route is modified.
  *     *   If the IPsec-VPN connection is in the **updating** state, the weight of the destination-based route is being modified.
  *     *   If the IPsec-VPN connection is in the **attached** state, the weight of the destination-based route is modified.
  * *   You cannot repeatedly call the **ModifyVcoRouteEntryWeight** operation for the same IPsec-VPN connection within the specified period of time.
@@ -100939,9 +101231,9 @@ func (client *Client) ModifyVpcPrefixList(request *ModifyVpcPrefixListRequest) (
 }
 
 /**
- * *   **ModifyVpnAttachmentAttribute** is an asynchronous operation. After you send a request, the system returns a request ID and runs the task in the background. You can call the [DescribeVpnConnection](~~53046~~) operation to query the status of an IPsec-VPN connection.
- *     *   If the IPsec-VPN connection is in the **updating** state, it indicates that the IPsec-VPN connection is being modified.
- *     *   If the IPsec-VPN connection is in the **attached** state, it indicates that the IPsec-VPN connection is modified.
+ * *   **ModifyVpnAttachmentAttribute** is an asynchronous operation. After a request is sent, the system returns a request ID and runs the task to modify the configuration of an IPsec-VPN connection in the background. You can call the [DescribeVpnConnection](~~53046~~) operation to query the status of the task.
+ *     *   If the IPsec-VPN connection is in the **updating** state, the configuration of the IPsec-VPN connection is being modified.
+ *     *   If the IPsec-VPN connection is in the **attached** state, the configuration of the IPsec-VPN connection is modified.
  * *   You cannot call the **ModifyVpnAttachmentAttribute** operation again on the same IPsec-VPN connection before the previous operation is complete.
  * *   When you call the **ModifyVpnAttachmentAttribute** operation, take note of the following items:
  *     *   If the IPsec-VPN connection is associated with a transit router, you cannot change the type of the gateway connected to the IPsec-VPN connection.
@@ -101061,9 +101353,9 @@ func (client *Client) ModifyVpnAttachmentAttributeWithOptions(request *ModifyVpn
 }
 
 /**
- * *   **ModifyVpnAttachmentAttribute** is an asynchronous operation. After you send a request, the system returns a request ID and runs the task in the background. You can call the [DescribeVpnConnection](~~53046~~) operation to query the status of an IPsec-VPN connection.
- *     *   If the IPsec-VPN connection is in the **updating** state, it indicates that the IPsec-VPN connection is being modified.
- *     *   If the IPsec-VPN connection is in the **attached** state, it indicates that the IPsec-VPN connection is modified.
+ * *   **ModifyVpnAttachmentAttribute** is an asynchronous operation. After a request is sent, the system returns a request ID and runs the task to modify the configuration of an IPsec-VPN connection in the background. You can call the [DescribeVpnConnection](~~53046~~) operation to query the status of the task.
+ *     *   If the IPsec-VPN connection is in the **updating** state, the configuration of the IPsec-VPN connection is being modified.
+ *     *   If the IPsec-VPN connection is in the **attached** state, the configuration of the IPsec-VPN connection is modified.
  * *   You cannot call the **ModifyVpnAttachmentAttribute** operation again on the same IPsec-VPN connection before the previous operation is complete.
  * *   When you call the **ModifyVpnAttachmentAttribute** operation, take note of the following items:
  *     *   If the IPsec-VPN connection is associated with a transit router, you cannot change the type of the gateway connected to the IPsec-VPN connection.
@@ -101084,10 +101376,14 @@ func (client *Client) ModifyVpnAttachmentAttribute(request *ModifyVpnAttachmentA
 }
 
 /**
- * *   **ModifyVpnConnectionAttribute** is an asynchronous operation. After you send a request, the system returns a request ID and runs the task in the background. You can call the [DescribeVpnGateway](~~73720~~) operation to query the status of the VPN gateway. The status of the VPN gateway indicates whether the IPsec-VPN connection is modified.
- *     *   If the VPN gateway is in the **updating** state, it indicates that the IPsec-VPN connection is being modified.
- *     *   If the VPN gateway is in the **active** state, it indicates that the IPsec-VPN connection is modified.
- * *   You cannot call the **ModifyVpnConnectionAttribute** operation again on the same VPN gateway to modify the configuration of an IPsec-VPN connection before the previous operation is complete.
+ * *   If you want to modify a IPsec-VPN connection in dual-tunnel mode, call the `ModifyVpnConnectionAttribute` operation. You can modify the required parameters and the following request parameters:
+ *     **ClientToken**, **Name**, **LocalSubnet**, **RemoteSubnet**, **EffectImmediately**, **AutoConfigRoute**, **TunnelOptionsSpecification**, and **EnableTunnelsBgp**.
+ * *   If you want to modify a IPsec-VPN connection in single-tunnel mode, call the `ModifyVpnConnectionAttribute` operation. You can modify the required parameters and the following request parameters:
+ *     **ClientToken**, **Name**, **LocalSubnet**, **RemoteSubnet**, **EffectImmediately**, **IkeConfig**, **IpsecConfig**, **HealthCheckConfig**, **AutoConfigRoute**, **EnableDpd**, **EnableNatTraversal**, **BgpConfig**, and **RemoteCaCertificate**.
+ * *   **ModifyVpnConnectionAttribute** is an asynchronous operation. After a request is sent, the system returns a request ID and modifies the configuration of the IPsec-VPN connection in the backend. You can call the [DescribeVpnGateway](~~73720~~) operation to query the status of a VPN gateway.
+ *     *   If the VPN gateway is in the **updating** state, the configuration of the IPsec-VPN connection is being modified.
+ *     *   If the VPN gateway is in the **active** state, the configuration of the IPsec-VPN connection is modified.
+ * *   You cannot repeatedly call the **ModifyVpnConnectionAttribute** operation for the same VPN gateway within the specified period of time.
  *
  * @param request ModifyVpnConnectionAttributeRequest
  * @param runtime runtime options for this request RuntimeOptions
@@ -101212,10 +101508,14 @@ func (client *Client) ModifyVpnConnectionAttributeWithOptions(request *ModifyVpn
 }
 
 /**
- * *   **ModifyVpnConnectionAttribute** is an asynchronous operation. After you send a request, the system returns a request ID and runs the task in the background. You can call the [DescribeVpnGateway](~~73720~~) operation to query the status of the VPN gateway. The status of the VPN gateway indicates whether the IPsec-VPN connection is modified.
- *     *   If the VPN gateway is in the **updating** state, it indicates that the IPsec-VPN connection is being modified.
- *     *   If the VPN gateway is in the **active** state, it indicates that the IPsec-VPN connection is modified.
- * *   You cannot call the **ModifyVpnConnectionAttribute** operation again on the same VPN gateway to modify the configuration of an IPsec-VPN connection before the previous operation is complete.
+ * *   If you want to modify a IPsec-VPN connection in dual-tunnel mode, call the `ModifyVpnConnectionAttribute` operation. You can modify the required parameters and the following request parameters:
+ *     **ClientToken**, **Name**, **LocalSubnet**, **RemoteSubnet**, **EffectImmediately**, **AutoConfigRoute**, **TunnelOptionsSpecification**, and **EnableTunnelsBgp**.
+ * *   If you want to modify a IPsec-VPN connection in single-tunnel mode, call the `ModifyVpnConnectionAttribute` operation. You can modify the required parameters and the following request parameters:
+ *     **ClientToken**, **Name**, **LocalSubnet**, **RemoteSubnet**, **EffectImmediately**, **IkeConfig**, **IpsecConfig**, **HealthCheckConfig**, **AutoConfigRoute**, **EnableDpd**, **EnableNatTraversal**, **BgpConfig**, and **RemoteCaCertificate**.
+ * *   **ModifyVpnConnectionAttribute** is an asynchronous operation. After a request is sent, the system returns a request ID and modifies the configuration of the IPsec-VPN connection in the backend. You can call the [DescribeVpnGateway](~~73720~~) operation to query the status of a VPN gateway.
+ *     *   If the VPN gateway is in the **updating** state, the configuration of the IPsec-VPN connection is being modified.
+ *     *   If the VPN gateway is in the **active** state, the configuration of the IPsec-VPN connection is modified.
+ * *   You cannot repeatedly call the **ModifyVpnConnectionAttribute** operation for the same VPN gateway within the specified period of time.
  *
  * @param request ModifyVpnConnectionAttributeRequest
  * @return ModifyVpnConnectionAttributeResponse
@@ -101232,9 +101532,9 @@ func (client *Client) ModifyVpnConnectionAttribute(request *ModifyVpnConnectionA
 }
 
 /**
- * *   **ModifyVpnGatewayAttribute** is an asynchronous operation. After you send the request, the information about the VPN gateway is returned but the operation is still being performed in the system background. You can call the [DescribeVpnGateway](~~73720~~) operation to query the status of a VPN gateway.
- *     *   If a VPN gateway is in the **updating** state, the VPN gateway is being modified.
- *     *   If a VPN gateway is in the **active** state, the VPN gateway has been modified.
+ * *   **ModifyVpnGatewayAttribute** is an asynchronous operation. After a request is sent, the system returns a request ID and runs the task in the background. You can call [DescribeVpnGateway](~~73720~~) to query the status of the task.
+ *     *   If the VPN gateway is in the **updating** state, the VPN gateway is being modified.
+ *     *   If the VPN gateway is in the **active** state, the VPN gateway is modified.
  * *   You cannot repeatedly call **ModifyVpnGatewayAttribute** to modify a VPN gateway within the specified period of time.
  *
  * @param request ModifyVpnGatewayAttributeRequest
@@ -101311,9 +101611,9 @@ func (client *Client) ModifyVpnGatewayAttributeWithOptions(request *ModifyVpnGat
 }
 
 /**
- * *   **ModifyVpnGatewayAttribute** is an asynchronous operation. After you send the request, the information about the VPN gateway is returned but the operation is still being performed in the system background. You can call the [DescribeVpnGateway](~~73720~~) operation to query the status of a VPN gateway.
- *     *   If a VPN gateway is in the **updating** state, the VPN gateway is being modified.
- *     *   If a VPN gateway is in the **active** state, the VPN gateway has been modified.
+ * *   **ModifyVpnGatewayAttribute** is an asynchronous operation. After a request is sent, the system returns a request ID and runs the task in the background. You can call [DescribeVpnGateway](~~73720~~) to query the status of the task.
+ *     *   If the VPN gateway is in the **updating** state, the VPN gateway is being modified.
+ *     *   If the VPN gateway is in the **active** state, the VPN gateway is modified.
  * *   You cannot repeatedly call **ModifyVpnGatewayAttribute** to modify a VPN gateway within the specified period of time.
  *
  * @param request ModifyVpnGatewayAttributeRequest
@@ -101336,9 +101636,9 @@ func (client *Client) ModifyVpnGatewayAttribute(request *ModifyVpnGatewayAttribu
  *     *   If you want to modify only the priority of a policy-based route, call [ModifyVpnPbrRouteEntryPriority](~~466870~~).
  *     *   If a policy-based route does not support priorities, you can only call [ModifyVpnPbrRouteEntryWeight](~~127249~~) to modify its weight.
  * *   The **ModifyVpnPbrRouteEntryAttribute** operation is asynchronous. After you send a request, the system returns a request ID, but the operation is still being performed in the system background. You can call [DescribeVpnGateway](~~73720~~) to query the status of a VPN gateway.
- *     *   If the VPN gateway is in the **updating** state, the policy-based route is being created.
- *     *   If the VPN gateway is in the **active** state, the policy-based route is created.
- * *   You cannot repeatedly call the **ModifyVpnPbrRouteEntryAttribute** operation for the same VPN gateway within the specified period of time
+ *     *   If a VPN gateway is in the **updating** state, the policy-based route entry is being modified.
+ *     *   If a VPN gateway is in the **active** state, the policy-based route entry is modified.
+ * *   You cannot repeatedly call the **ModifyVpnPbrRouteEntryAttribute** operation for the same VPN gateway within the specified period of time.
  *
  * @param request ModifyVpnPbrRouteEntryAttributeRequest
  * @param runtime runtime options for this request RuntimeOptions
@@ -101435,9 +101735,9 @@ func (client *Client) ModifyVpnPbrRouteEntryAttributeWithOptions(request *Modify
  *     *   If you want to modify only the priority of a policy-based route, call [ModifyVpnPbrRouteEntryPriority](~~466870~~).
  *     *   If a policy-based route does not support priorities, you can only call [ModifyVpnPbrRouteEntryWeight](~~127249~~) to modify its weight.
  * *   The **ModifyVpnPbrRouteEntryAttribute** operation is asynchronous. After you send a request, the system returns a request ID, but the operation is still being performed in the system background. You can call [DescribeVpnGateway](~~73720~~) to query the status of a VPN gateway.
- *     *   If the VPN gateway is in the **updating** state, the policy-based route is being created.
- *     *   If the VPN gateway is in the **active** state, the policy-based route is created.
- * *   You cannot repeatedly call the **ModifyVpnPbrRouteEntryAttribute** operation for the same VPN gateway within the specified period of time
+ *     *   If a VPN gateway is in the **updating** state, the policy-based route entry is being modified.
+ *     *   If a VPN gateway is in the **active** state, the policy-based route entry is modified.
+ * *   You cannot repeatedly call the **ModifyVpnPbrRouteEntryAttribute** operation for the same VPN gateway within the specified period of time.
  *
  * @param request ModifyVpnPbrRouteEntryAttributeRequest
  * @return ModifyVpnPbrRouteEntryAttributeResponse
@@ -101454,8 +101754,8 @@ func (client *Client) ModifyVpnPbrRouteEntryAttribute(request *ModifyVpnPbrRoute
 }
 
 /**
- * *   The **ModifyVpnPbrRouteEntryPriority** operation is asynchronous. After you send a request, the system returns a request ID, but the operation is still being performed in the system background. You can call [DescribeVpnGateway](~~73720~~) to query the status of a VPN gateway.
- *     *   If the VPN gateway is in the **updating** state, the policy-based route is being created.
+ * *   **ModifyVpnPbrRouteEntryPriority** is an asynchronous operation. After a request is sent, the system returns a request ID and runs the task in the background. You can call [DescribeVpnGateway](~~73720~~) to query the status of the task.
+ *     *   If a VPN gateway is in the **updating** state, the policy-based route entry is being modified.
  *     *   If the VPN gateway is in the **active** state, the policy-based route is created.
  * *   You cannot repeatedly call the **ModifyVpnPbrRouteEntryPriority** operation for the same VPN gateway within the specified period of time.
  *
@@ -101545,8 +101845,8 @@ func (client *Client) ModifyVpnPbrRouteEntryPriorityWithOptions(request *ModifyV
 }
 
 /**
- * *   The **ModifyVpnPbrRouteEntryPriority** operation is asynchronous. After you send a request, the system returns a request ID, but the operation is still being performed in the system background. You can call [DescribeVpnGateway](~~73720~~) to query the status of a VPN gateway.
- *     *   If the VPN gateway is in the **updating** state, the policy-based route is being created.
+ * *   **ModifyVpnPbrRouteEntryPriority** is an asynchronous operation. After a request is sent, the system returns a request ID and runs the task in the background. You can call [DescribeVpnGateway](~~73720~~) to query the status of the task.
+ *     *   If a VPN gateway is in the **updating** state, the policy-based route entry is being modified.
  *     *   If the VPN gateway is in the **active** state, the policy-based route is created.
  * *   You cannot repeatedly call the **ModifyVpnPbrRouteEntryPriority** operation for the same VPN gateway within the specified period of time.
  *
@@ -101565,7 +101865,7 @@ func (client *Client) ModifyVpnPbrRouteEntryPriority(request *ModifyVpnPbrRouteE
 }
 
 /**
- * *   The **ModifyVpnPbrRouteEntryWeight** operation is asynchronous. After you send a request, the system returns a request ID, but the operation is still being performed in the system background. You can call [DescribeVpnGateway](~~73720~~) to query the status of a VPN gateway.
+ * *   **ModifyVpnPbrRouteEntryWeight** is an asynchronous operation. After a request is sent, the system returns a request ID and runs the task in the background. You can call [DescribeVpnGateway](~~73720~~) to query the status of the task.
  *     *   If a VPN gateway is in the **updating** state, the policy-based route entry is being modified.
  *     *   If a VPN gateway is in the **active** state, the policy-based route entry is modified.
  * *   You cannot repeatedly call the **ModifyVpnPbrRouteEntryWeight** operation for the same VPN gateway within the specified period of time.
@@ -101660,7 +101960,7 @@ func (client *Client) ModifyVpnPbrRouteEntryWeightWithOptions(request *ModifyVpn
 }
 
 /**
- * *   The **ModifyVpnPbrRouteEntryWeight** operation is asynchronous. After you send a request, the system returns a request ID, but the operation is still being performed in the system background. You can call [DescribeVpnGateway](~~73720~~) to query the status of a VPN gateway.
+ * *   **ModifyVpnPbrRouteEntryWeight** is an asynchronous operation. After a request is sent, the system returns a request ID and runs the task in the background. You can call [DescribeVpnGateway](~~73720~~) to query the status of the task.
  *     *   If a VPN gateway is in the **updating** state, the policy-based route entry is being modified.
  *     *   If a VPN gateway is in the **active** state, the policy-based route entry is modified.
  * *   You cannot repeatedly call the **ModifyVpnPbrRouteEntryWeight** operation for the same VPN gateway within the specified period of time.
@@ -101680,7 +101980,7 @@ func (client *Client) ModifyVpnPbrRouteEntryWeight(request *ModifyVpnPbrRouteEnt
 }
 
 /**
- * *   The **ModifyVpnRouteEntryWeight** operation is asynchronous. After you send a request, the system returns a request ID, but the operation is still being performed in the system background. You can call [DescribeVpnGateway](~~73720~~) to query the status of a VPN gateway.
+ * *   **ModifyVpnRouteEntryWeight** is an asynchronous operation. After a request is sent, the system returns a request ID and runs the task in the background. You can call [DescribeVpnGateway](~~73720~~) to query the status of the task.
  *     *   If the VPN gateway is in the **updating** state, the weight of the destination-based route is being modified.
  *     *   If the VPN gateway is in the **active** state, the weight of the destination-based route is modified.
  * *   You cannot repeatedly call the **ModifyVpnRouteEntryWeight** operation to modify the weight of destination-based route for the same VPN gateway within the specified period of time.
@@ -101767,7 +102067,7 @@ func (client *Client) ModifyVpnRouteEntryWeightWithOptions(request *ModifyVpnRou
 }
 
 /**
- * *   The **ModifyVpnRouteEntryWeight** operation is asynchronous. After you send a request, the system returns a request ID, but the operation is still being performed in the system background. You can call [DescribeVpnGateway](~~73720~~) to query the status of a VPN gateway.
+ * *   **ModifyVpnRouteEntryWeight** is an asynchronous operation. After a request is sent, the system returns a request ID and runs the task in the background. You can call [DescribeVpnGateway](~~73720~~) to query the status of the task.
  *     *   If the VPN gateway is in the **updating** state, the weight of the destination-based route is being modified.
  *     *   If the VPN gateway is in the **active** state, the weight of the destination-based route is modified.
  * *   You cannot repeatedly call the **ModifyVpnRouteEntryWeight** operation to modify the weight of destination-based route for the same VPN gateway within the specified period of time.
@@ -102323,11 +102623,11 @@ func (client *Client) RecoverVirtualBorderRouter(request *RecoverVirtualBorderRo
 }
 
 /**
- * Before you call this operation, take note of the following limits:
+ * Before you call this operation, take note of the following items:
  * *   Before you release an EIP, make sure that the EIP meets the following requirements:
  *     *   You can release only an EIP that is in the **Available** state.
  *     *   You can release only a pay-as-you-go EIP. You cannot release a subscription EIP.
- * *   The **ReleaseEipAddress** operation is asynchronous. After you send the request, the system returns a request ID. However, the operation is still being performed in the system background. You can call the [DescribeEipAddresses](~~120193~~) operation to query the status of an EIP:
+ * *   **ReleaseEipAddress** is an asynchronous operation. After a request is sent, the system returns a request ID and runs the task in the background. You can call the [DescribeEipAddresses](~~120193~~) operation to query the status of the task:
  *     *   If the EIP is in the **Releasing** state, the EIP is being released. In this state, you can only query the EIP and cannot perform other operations.
  *     *   If you cannot query the EIP, the EIP is released.
  * *   You cannot repeatedly call the **ReleaseEipAddress** operation to release an EIP within the specified period of time.
@@ -102390,11 +102690,11 @@ func (client *Client) ReleaseEipAddressWithOptions(request *ReleaseEipAddressReq
 }
 
 /**
- * Before you call this operation, take note of the following limits:
+ * Before you call this operation, take note of the following items:
  * *   Before you release an EIP, make sure that the EIP meets the following requirements:
  *     *   You can release only an EIP that is in the **Available** state.
  *     *   You can release only a pay-as-you-go EIP. You cannot release a subscription EIP.
- * *   The **ReleaseEipAddress** operation is asynchronous. After you send the request, the system returns a request ID. However, the operation is still being performed in the system background. You can call the [DescribeEipAddresses](~~120193~~) operation to query the status of an EIP:
+ * *   **ReleaseEipAddress** is an asynchronous operation. After a request is sent, the system returns a request ID and runs the task in the background. You can call the [DescribeEipAddresses](~~120193~~) operation to query the status of the task:
  *     *   If the EIP is in the **Releasing** state, the EIP is being released. In this state, you can only query the EIP and cannot perform other operations.
  *     *   If you cannot query the EIP, the EIP is released.
  * *   You cannot repeatedly call the **ReleaseEipAddress** operation to release an EIP within the specified period of time.
@@ -102911,8 +103211,6 @@ func (client *Client) ReplaceVpcDhcpOptionsSet(request *ReplaceVpcDhcpOptionsSet
  *     *   If the prefix list is in the **ModifyFailed** state, the prefix list fails to be re-applied.
  *     *   If the prefix list is in the **Created** state, the prefix list is re-applied.
  * *   After you call the **RetryVpcPrefixListAssociation** operation to re-apply a prefix list, you cannot call the operation again until the current task is complete.
- * ## Scenarios
- * A prefix list can be successfully modified if the following requirements are met: CIDR blocks are valid, CIDR blocks do not conflict, and the number of CIDR blocks does not exceed the maximum number of CIDR blocks supported by the prefix list. If issues occur on the resource that references the prefix list, the reference may fail. The issues include the number of prefix list entries exceeding the quota or CIDR blocks conflicting with existing routes. After you resolve the issues, you can call the **RetryVpcPrefixListAssociation** operation to re-apply the prefix list.
  *
  * @param request RetryVpcPrefixListAssociationRequest
  * @param runtime runtime options for this request RuntimeOptions
@@ -102994,8 +103292,6 @@ func (client *Client) RetryVpcPrefixListAssociationWithOptions(request *RetryVpc
  *     *   If the prefix list is in the **ModifyFailed** state, the prefix list fails to be re-applied.
  *     *   If the prefix list is in the **Created** state, the prefix list is re-applied.
  * *   After you call the **RetryVpcPrefixListAssociation** operation to re-apply a prefix list, you cannot call the operation again until the current task is complete.
- * ## Scenarios
- * A prefix list can be successfully modified if the following requirements are met: CIDR blocks are valid, CIDR blocks do not conflict, and the number of CIDR blocks does not exceed the maximum number of CIDR blocks supported by the prefix list. If issues occur on the resource that references the prefix list, the reference may fail. The issues include the number of prefix list entries exceeding the quota or CIDR blocks conflicting with existing routes. After you resolve the issues, you can call the **RetryVpcPrefixListAssociation** operation to re-apply the prefix list.
  *
  * @param request RetryVpcPrefixListAssociationRequest
  * @return RetryVpcPrefixListAssociationResponse
@@ -104702,10 +104998,10 @@ func (client *Client) UpdateGatewayRouteTableEntryAttribute(request *UpdateGatew
 
 /**
  * *   If you modify only the **IpsecServerName** parameter, this operation is synchronous. If you modify parameters other than **IpsecServerName**, this operation is asynchronous.
- * *   When the **UpdateIpsecServer** operation is asynchronous, the system returns a request ID after you send the request. However, the operation is still being performed in the system background. You can call [DescribeVpnGateway](~~73720~~) to query the status of a VPN gateway.
+ * *   When the **UpdateIpsecServer** operation is asynchronous, the system returns a request ID after you send a request to call this operation and the IPsec server is being modified in the backend. You can call [DescribeVpnGateway](~~73720~~) to query the status of a VPN gateway.
  *     *   If the VPN gateway is in the **updating** state, the configuration of the IPsec server is being modified.
  *     *   If the VPN gateway is in the **active** state, the configuration of the IPsec server is modified.
- * *   You cannot repeatedly call **UpdateIpsecServer** to modify the configuration of an IPsec server of the same VPN gateway within the specified period of time.
+ * *   You cannot repeatedly call the **UpdateIpsecServer** operation for the same VPN gateway within the specified period of time.
  *
  * @param request UpdateIpsecServerRequest
  * @param runtime runtime options for this request RuntimeOptions
@@ -104790,10 +105086,10 @@ func (client *Client) UpdateIpsecServerWithOptions(request *UpdateIpsecServerReq
 
 /**
  * *   If you modify only the **IpsecServerName** parameter, this operation is synchronous. If you modify parameters other than **IpsecServerName**, this operation is asynchronous.
- * *   When the **UpdateIpsecServer** operation is asynchronous, the system returns a request ID after you send the request. However, the operation is still being performed in the system background. You can call [DescribeVpnGateway](~~73720~~) to query the status of a VPN gateway.
+ * *   When the **UpdateIpsecServer** operation is asynchronous, the system returns a request ID after you send a request to call this operation and the IPsec server is being modified in the backend. You can call [DescribeVpnGateway](~~73720~~) to query the status of a VPN gateway.
  *     *   If the VPN gateway is in the **updating** state, the configuration of the IPsec server is being modified.
  *     *   If the VPN gateway is in the **active** state, the configuration of the IPsec server is modified.
- * *   You cannot repeatedly call **UpdateIpsecServer** to modify the configuration of an IPsec server of the same VPN gateway within the specified period of time.
+ * *   You cannot repeatedly call the **UpdateIpsecServer** operation for the same VPN gateway within the specified period of time.
  *
  * @param request UpdateIpsecServerRequest
  * @return UpdateIpsecServerResponse
@@ -104908,13 +105204,13 @@ func (client *Client) UpdateIpv4GatewayAttribute(request *UpdateIpv4GatewayAttri
 
 /**
  * Before you call this operation, take note of the following limits:
- * *   **UpdateNatGatewayNatType** is an asynchronous operation. After you make a request, the ID of the request is returned but the NAT gateway is not upgraded. The system upgrades the NAT gateway in the background. You can call the GetNatGatewayConvertStatus operation to query the upgrade progress of a NAT gateway. For more information, see [GetNatGatewayConvertStatus](~~184744~~).
- *     *   If a NAT gateway is in the **processing** state, it indicates that the NAT gateway is being upgraded. You can only query the state of the NAT gateway but cannot perform other operations.
- *     *   If a NAT gateway is in the **successful** state, it indicates that the NAT gateway is upgraded.
- *     *   If a NAT gateway is in the **failed** state, it indicates that the system failed to upgrade the NAT gateway.
- * *   You cannot repeatedly call the **UpdateNatGatewayNatType** operation to upgrade a NAT gateway within the specified period of time.
+ * *   **UpdateNatGatewayNatType** is an asynchronous operation. After you send a request to call this operation, the system returns a request ID and the NAT gateway is still being upgraded in the backend. You can call the GetNatGatewayConvertStatus operation to query the upgrade progress of a NAT gateway. For more information, see [GetNatGatewayConvertStatus](~~184744~~).
+ *     *   If the NAT gateway is in the **processing** state, the NAT gateway is being upgraded. You can only query the status of the NAT gateway but cannot perform other operations.
+ *     *   If the NAT gateway is in the **successful** state, the NAT gateway is upgraded.
+ *     *   If the NAT gateway is in the **failed** state, the system failed to upgrade the NAT gateway.
+ * *   You cannot repeatedly call the **UpdateNatGatewayNatType** operation for the same VPN gateway within the specified period of time.
  * *   The billing method and billable items remain the same after the upgrade.
- * *   It takes about 5 minutes to upgrade a standard NAT gateway to an enhanced NAT gateway. During the upgrade, transient connections may occur once or twice. You can determine whether to enable automatic reconnection or use manual reconnection based on your business requirements.
+ * *   It takes about five minutes to upgrade a standard NAT gateway to an enhanced NAT gateway. During the upgrade, transient connection errors may occur once or twice. The service can be recovered by reconnection. You can determine whether to enable automatic reconnection or use manual reconnection based on your business requirements.
  * *   You can only upgrade standard NAT gateways to enhanced NAT gateways. You are not allowed to downgrade enhanced NAT gateways to standard NAT gateways.
  *
  * @param request UpdateNatGatewayNatTypeRequest
@@ -104996,13 +105292,13 @@ func (client *Client) UpdateNatGatewayNatTypeWithOptions(request *UpdateNatGatew
 
 /**
  * Before you call this operation, take note of the following limits:
- * *   **UpdateNatGatewayNatType** is an asynchronous operation. After you make a request, the ID of the request is returned but the NAT gateway is not upgraded. The system upgrades the NAT gateway in the background. You can call the GetNatGatewayConvertStatus operation to query the upgrade progress of a NAT gateway. For more information, see [GetNatGatewayConvertStatus](~~184744~~).
- *     *   If a NAT gateway is in the **processing** state, it indicates that the NAT gateway is being upgraded. You can only query the state of the NAT gateway but cannot perform other operations.
- *     *   If a NAT gateway is in the **successful** state, it indicates that the NAT gateway is upgraded.
- *     *   If a NAT gateway is in the **failed** state, it indicates that the system failed to upgrade the NAT gateway.
- * *   You cannot repeatedly call the **UpdateNatGatewayNatType** operation to upgrade a NAT gateway within the specified period of time.
+ * *   **UpdateNatGatewayNatType** is an asynchronous operation. After you send a request to call this operation, the system returns a request ID and the NAT gateway is still being upgraded in the backend. You can call the GetNatGatewayConvertStatus operation to query the upgrade progress of a NAT gateway. For more information, see [GetNatGatewayConvertStatus](~~184744~~).
+ *     *   If the NAT gateway is in the **processing** state, the NAT gateway is being upgraded. You can only query the status of the NAT gateway but cannot perform other operations.
+ *     *   If the NAT gateway is in the **successful** state, the NAT gateway is upgraded.
+ *     *   If the NAT gateway is in the **failed** state, the system failed to upgrade the NAT gateway.
+ * *   You cannot repeatedly call the **UpdateNatGatewayNatType** operation for the same VPN gateway within the specified period of time.
  * *   The billing method and billable items remain the same after the upgrade.
- * *   It takes about 5 minutes to upgrade a standard NAT gateway to an enhanced NAT gateway. During the upgrade, transient connections may occur once or twice. You can determine whether to enable automatic reconnection or use manual reconnection based on your business requirements.
+ * *   It takes about five minutes to upgrade a standard NAT gateway to an enhanced NAT gateway. During the upgrade, transient connection errors may occur once or twice. The service can be recovered by reconnection. You can determine whether to enable automatic reconnection or use manual reconnection based on your business requirements.
  * *   You can only upgrade standard NAT gateways to enhanced NAT gateways. You are not allowed to downgrade enhanced NAT gateways to standard NAT gateways.
  *
  * @param request UpdateNatGatewayNatTypeRequest
@@ -105428,10 +105724,11 @@ func (client *Client) UpdateTrafficMirrorFilterRuleAttribute(request *UpdateTraf
 }
 
 /**
- * *   The **UpdateTrafficMirrorSessionAttribute** operation is asynchronous. After you send a request, the system returns the request ID. However, the operation is still being performed in the system background. You can call the [ListTrafficMirrorSessions](~~261367~~) operation to query the status of a traffic mirror session.
+ * ## Usage notes
+ * *   **UpdateTrafficMirrorSessionAttribute** is an asynchronous operation. After a request is sent, the system returns a request ID and runs the task in the background. You can call the [ListTrafficMirrorSessions](~~261367~~) operation to query the status of the task.
  *     *   If the traffic mirror session is in the **Modifying** state, the configuration of the traffic mirror session is being modified.
  *     *   If the traffic mirror session is in the **Created** state, the configuration of the traffic mirror session is modified.
- * *   After you call the **UpdateTrafficMirrorSessionAttribute** operation to modify the configuration of a traffic mirror session, you cannot call the operation again to modify the configuration of the traffic mirror session until the previous modification task is complete.
+ * *   You cannot repeatedly call the **UpdateTrafficMirrorSessionAttribute** operation within a specific period of time.
  *
  * @param request UpdateTrafficMirrorSessionAttributeRequest
  * @param runtime runtime options for this request RuntimeOptions
@@ -105535,10 +105832,11 @@ func (client *Client) UpdateTrafficMirrorSessionAttributeWithOptions(request *Up
 }
 
 /**
- * *   The **UpdateTrafficMirrorSessionAttribute** operation is asynchronous. After you send a request, the system returns the request ID. However, the operation is still being performed in the system background. You can call the [ListTrafficMirrorSessions](~~261367~~) operation to query the status of a traffic mirror session.
+ * ## Usage notes
+ * *   **UpdateTrafficMirrorSessionAttribute** is an asynchronous operation. After a request is sent, the system returns a request ID and runs the task in the background. You can call the [ListTrafficMirrorSessions](~~261367~~) operation to query the status of the task.
  *     *   If the traffic mirror session is in the **Modifying** state, the configuration of the traffic mirror session is being modified.
  *     *   If the traffic mirror session is in the **Created** state, the configuration of the traffic mirror session is modified.
- * *   After you call the **UpdateTrafficMirrorSessionAttribute** operation to modify the configuration of a traffic mirror session, you cannot call the operation again to modify the configuration of the traffic mirror session until the previous modification task is complete.
+ * *   You cannot repeatedly call the **UpdateTrafficMirrorSessionAttribute** operation within a specific period of time.
  *
  * @param request UpdateTrafficMirrorSessionAttributeRequest
  * @return UpdateTrafficMirrorSessionAttributeResponse
@@ -105691,7 +105989,7 @@ func (client *Client) UpdateVirtualPhysicalConnection(request *UpdateVirtualPhys
 }
 
 /**
- * *   **UpdateVpcGatewayEndpointAttribute** is an asynchronous operation. After you send a request, the system returns a **request ID** and runs the task in the background. You can call the [GetVpcGatewayEndpointAttribute](~~311017~~) operation to query the status of a gateway endpoint.
+ * *   **UpdateVpcGatewayEndpointAttribute** is an asynchronous operation. After a request is sent, the system returns a **request ID** and runs the task in the background. You can call the [GetVpcGatewayEndpointAttribute](~~311017~~) operation to query the status of the task.
  *     *   If the gateway endpoint is in the **Updating** state, it is being modified.
  *     *   If the gateway endpoint is in the **Created** state, it is modified.
  * *   You cannot call the **UpdateVpcGatewayEndpointAttribute** operation within a specific period of time.
@@ -105774,7 +106072,7 @@ func (client *Client) UpdateVpcGatewayEndpointAttributeWithOptions(request *Upda
 }
 
 /**
- * *   **UpdateVpcGatewayEndpointAttribute** is an asynchronous operation. After you send a request, the system returns a **request ID** and runs the task in the background. You can call the [GetVpcGatewayEndpointAttribute](~~311017~~) operation to query the status of a gateway endpoint.
+ * *   **UpdateVpcGatewayEndpointAttribute** is an asynchronous operation. After a request is sent, the system returns a **request ID** and runs the task in the background. You can call the [GetVpcGatewayEndpointAttribute](~~311017~~) operation to query the status of the task.
  *     *   If the gateway endpoint is in the **Updating** state, it is being modified.
  *     *   If the gateway endpoint is in the **Created** state, it is modified.
  * *   You cannot call the **UpdateVpcGatewayEndpointAttribute** operation within a specific period of time.
