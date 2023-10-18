@@ -2060,62 +2060,73 @@ func (s *CreateAccountResponse) SetBody(v *CreateAccountResponseBody) *CreateAcc
 }
 
 type CreateDBClusterRequest struct {
-	BackupSetId *string `json:"BackupSetId,omitempty" xml:"BackupSetId,omitempty"`
-	// The reserved computing resources. Unit: ACUs. Valid values: 0 to 4096. The value must be in increments of 16 ACUs. Each ACU is equivalent to 1 core and 4 GB memory.
+	// The ID of the backup set that you want to use to restore data.
 	//
-	// >  You must specify a value with the unit for this parameter.
+	// >  You can call the [DescribeBackups](~~612318~~) operation to query the backup sets of the cluster.
+	BackupSetId *string `json:"BackupSetId,omitempty" xml:"BackupSetId,omitempty"`
+	// The amount of reserved computing resources. Unit: ACUs. Valid values: 0 to 4096. The value must be in increments of 16 ACUs. Each ACU is equivalent to 1 core and 4 GB memory.
+	//
+	// >  This parameter must be specified with a unit.
 	ComputeResource *string `json:"ComputeResource,omitempty" xml:"ComputeResource,omitempty"`
 	// The description of the cluster.
 	//
 	// *   The description cannot start with `http://` or `https://`.
-	// *   The description must be 2 to 256 characters in length.
+	// *   The description must be 2 to 256 characters in length
 	DBClusterDescription *string `json:"DBClusterDescription,omitempty" xml:"DBClusterDescription,omitempty"`
 	// The network type of the cluster. Only **VPC** is supported.
 	DBClusterNetworkType *string `json:"DBClusterNetworkType,omitempty" xml:"DBClusterNetworkType,omitempty"`
 	// The version of the cluster. Set the value to **5.0**.
 	DBClusterVersion *string `json:"DBClusterVersion,omitempty" xml:"DBClusterVersion,omitempty"`
-	// Specifies whether to distribute all the reserved computing resources to the default resource group user_default. Default value: true. Valid values:
+	// Specifies whether to allocate all reserved computing resources to the user_default resource group. Valid values:
 	//
-	// *   **true**: distributes all the reserved computing resources to the default resource group.
-	// *   **false**: does not distribute all the reserved computing resources to the default resource group.
+	// *   **true** (default)
+	// *   **false**
 	EnableDefaultResourcePool *bool `json:"EnableDefaultResourcePool,omitempty" xml:"EnableDefaultResourcePool,omitempty"`
 	// The billing method of the cluster. Valid values:
 	//
-	// *   **Postpaid**: pay-as-you-go
-	// *   **Prepaid**: subscription
+	// *   **Postpaid**: pay-as-you-go.
+	// *   **Prepaid**: subscription.
 	PayType *string `json:"PayType,omitempty" xml:"PayType,omitempty"`
 	// The subscription type of the subscription cluster. Valid values:
 	//
-	// *   **Year**: subscription on a yearly basis
-	// *   **Month**: subscription on a monthly basis
+	// *   **Year**: subscription on a yearly basis.
+	// *   **Month**: subscription on a monthly basis.
 	//
-	// >  This parameter is required when PayType is set to Prepaid.
+	// >  This parameter must be specified when PayType is set to Prepaid.
 	Period *string `json:"Period,omitempty" xml:"Period,omitempty"`
-	// The ID of the region in which to create the cluster.
+	// The region ID.
 	//
 	// >  You can call the [DescribeRegions](~~454314~~) operation to query the most recent region list.
-	RegionId          *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	ResourceGroupId   *string `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
-	RestoreToTime     *string `json:"RestoreToTime,omitempty" xml:"RestoreToTime,omitempty"`
-	RestoreType       *string `json:"RestoreType,omitempty" xml:"RestoreType,omitempty"`
+	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	// The resource group ID.
+	ResourceGroupId *string `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
+	// The point in time to which you want to restore data from the backup set.
+	RestoreToTime *string `json:"RestoreToTime,omitempty" xml:"RestoreToTime,omitempty"`
+	// The method that you want to use to restore data. Valid values:
+	//
+	// *   **backup**: restores data from a backup set. You must also specify the **BackupSetId** and **SourceDBClusterId** parameters.
+	// *   **timepoint**: restores data to a point in time. You must also specify the **RestoreToTime** and **SourceDBClusterId** parameters.
+	RestoreType *string `json:"RestoreType,omitempty" xml:"RestoreType,omitempty"`
+	// The ID of the source AnalyticDB for MySQL Data Warehouse Edition cluster. If you want to restore a Data Lakehouse Edition cluster from a Data Warehouse Edition cluster, you must specify this parameter.
 	SourceDbClusterId *string `json:"SourceDbClusterId,omitempty" xml:"SourceDbClusterId,omitempty"`
-	// The reserved storage resources. Unit: AnalyticDB Compute Units (ACUs). Valid values: 0 to 2064. The value must be in increments of 24 ACUs. Each ACU is equivalent to 1 core and 4 GB memory.
+	// The amount of reserved storage resources. Unit: AnalyticDB compute units (ACUs). Valid values: 0 to 2064. The value must be in increments of 24 ACUs. Each ACU is equivalent to 1 core and 4 GB memory.
 	//
-	// >  You must specify a value with the unit for this parameter.
-	StorageResource *string                      `json:"StorageResource,omitempty" xml:"StorageResource,omitempty"`
-	Tag             []*CreateDBClusterRequestTag `json:"Tag,omitempty" xml:"Tag,omitempty" type:"Repeated"`
-	// The subscription duration of the subscription cluster. Valid values:
+	// >  This parameter must be specified with a unit.
+	StorageResource *string `json:"StorageResource,omitempty" xml:"StorageResource,omitempty"`
+	// The tags to add to the cluster.
+	Tag []*CreateDBClusterRequestTag `json:"Tag,omitempty" xml:"Tag,omitempty" type:"Repeated"`
+	// The subscription duration of the subscription cluster.
 	//
-	// *   Valid values when **Period** is set to Year: 1 to 3 (integer)
-	// *   Valid values when **Period** is set to Month: 1 to 9 (integer)
+	// *   Valid values when **Period** is set to Year: 1 to 3 (integer).
+	// *   Valid values when **Period** is set to Month: 1 to 9 (integer).
 	//
-	// >  This parameter is required when PayType is set to **Prepaid**.
+	// >  This parameter must be specified when PayType is set to **Prepaid**.
 	UsedTime *string `json:"UsedTime,omitempty" xml:"UsedTime,omitempty"`
 	// The virtual private cloud (VPC) ID of the cluster.
 	VPCId *string `json:"VPCId,omitempty" xml:"VPCId,omitempty"`
 	// The vSwitch ID of the cluster.
 	VSwitchId *string `json:"VSwitchId,omitempty" xml:"VSwitchId,omitempty"`
-	// The zone ID of the cluster.
+	// The zone ID.
 	//
 	// >  You can call the [DescribeRegions](~~454314~~) operation to query the most recent zone list.
 	ZoneId *string `json:"ZoneId,omitempty" xml:"ZoneId,omitempty"`
@@ -2225,7 +2236,13 @@ func (s *CreateDBClusterRequest) SetZoneId(v string) *CreateDBClusterRequest {
 }
 
 type CreateDBClusterRequestTag struct {
-	Key   *string `json:"Key,omitempty" xml:"Key,omitempty"`
+	// The key of tag N to add to the cluster. You can use tags to filter clusters. Valid values of N: 1 to 20. The values that you specify for N must be unique and consecutive integers that start from 1. Each value of `Tag.N.Key` is paired with a value of `Tag.N.Value`.
+	//
+	// >  The tag key can be up to 64 characters in length and cannot start with `aliyun`, `acs:`, `http://`, or `https://`.
+	Key *string `json:"Key,omitempty" xml:"Key,omitempty"`
+	// The value of tag N to add to the cluster. You can use tags to filter clusters. Valid values of N: 1 to 20. The values that you specify for N must be unique and consecutive integers that start from 1. Each value of `Tag.N.Key` is paired with a value of `Tag.N.Value`.
+	//
+	// >  The tag value can be up to 64 characters in length and cannot start with `aliyun`, `acs:`, `http://`, or `https://`.
 	Value *string `json:"Value,omitempty" xml:"Value,omitempty"`
 }
 
@@ -2250,11 +2267,11 @@ func (s *CreateDBClusterRequestTag) SetValue(v string) *CreateDBClusterRequestTa
 type CreateDBClusterResponseBody struct {
 	// The ID of the AnalyticDB for MySQL Data Lakehouse Edition (V3.0) cluster.
 	DBClusterId *string `json:"DBClusterId,omitempty" xml:"DBClusterId,omitempty"`
-	// The ID of the order.
+	// The order ID.
 	OrderId *string `json:"OrderId,omitempty" xml:"OrderId,omitempty"`
-	// The ID of the request.
+	// The request ID.
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// The ID of the default resource group.
+	// The default resource group ID.
 	ResourceGroupId *string `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
 }
 
@@ -6331,6 +6348,7 @@ type DescribeDBClusterAttributeResponseBodyItemsDBCluster struct {
 	StorageResource *string `json:"StorageResource,omitempty" xml:"StorageResource,omitempty"`
 	// The total amount of storage resources in the cluster. Each ACU is equivalent to 1 core and 4 GB memory.
 	StorageResourceTotal *string                                                   `json:"StorageResourceTotal,omitempty" xml:"StorageResourceTotal,omitempty"`
+	SupportedFeatures    map[string]*string                                        `json:"SupportedFeatures,omitempty" xml:"SupportedFeatures,omitempty"`
 	Tags                 *DescribeDBClusterAttributeResponseBodyItemsDBClusterTags `json:"Tags,omitempty" xml:"Tags,omitempty" type:"Struct"`
 	// Indicates whether Elastic Network Interface (ENI) is enabled. Valid values:
 	//
@@ -6480,6 +6498,11 @@ func (s *DescribeDBClusterAttributeResponseBodyItemsDBCluster) SetStorageResourc
 
 func (s *DescribeDBClusterAttributeResponseBodyItemsDBCluster) SetStorageResourceTotal(v string) *DescribeDBClusterAttributeResponseBodyItemsDBCluster {
 	s.StorageResourceTotal = &v
+	return s
+}
+
+func (s *DescribeDBClusterAttributeResponseBodyItemsDBCluster) SetSupportedFeatures(v map[string]*string) *DescribeDBClusterAttributeResponseBodyItemsDBCluster {
+	s.SupportedFeatures = v
 	return s
 }
 
@@ -10223,9 +10246,14 @@ func (s *DescribeSchemasResponse) SetBody(v *DescribeSchemasResponseBody) *Descr
 }
 
 type DescribeSparkCodeLogRequest struct {
+	// The ID of the AnalyticDB for MySQL Data Lakehouse Edition (V3.0) cluster.
+	//
+	// > You can call the [DescribeDBClusters](~~454250~~) operation to query the IDs of all AnalyticDB for MySQL Data Lakehouse Edition (V3.0) clusters within a region.
 	DBClusterId *string `json:"DBClusterId,omitempty" xml:"DBClusterId,omitempty"`
-	JobId       *int64  `json:"JobId,omitempty" xml:"JobId,omitempty"`
-	RegionId    *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	// The ID of the Spark job.
+	JobId *int64 `json:"JobId,omitempty" xml:"JobId,omitempty"`
+	// The region ID of the cluster.
+	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 }
 
 func (s DescribeSparkCodeLogRequest) String() string {
@@ -10252,10 +10280,20 @@ func (s *DescribeSparkCodeLogRequest) SetRegionId(v string) *DescribeSparkCodeLo
 }
 
 type DescribeSparkCodeLogResponseBody struct {
-	Log       *string `json:"Log,omitempty" xml:"Log,omitempty"`
-	Message   *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// The content of the log.
+	Log *string `json:"Log,omitempty" xml:"Log,omitempty"`
+	// The returned message.
+	//
+	// *   If the request was successful, **Success** is returned.
+	// *   If the request failed, an error message is returned.
+	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// The request ID.
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	Success   *bool   `json:"Success,omitempty" xml:"Success,omitempty"`
+	// Indicates whether the request was successful. Valid values:
+	//
+	// *   **true**
+	// *   **false**
+	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
 }
 
 func (s DescribeSparkCodeLogResponseBody) String() string {
@@ -10316,9 +10354,14 @@ func (s *DescribeSparkCodeLogResponse) SetBody(v *DescribeSparkCodeLogResponseBo
 }
 
 type DescribeSparkCodeOutputRequest struct {
+	// The ID of the AnalyticDB for MySQL Data Lakehouse Edition (V3.0) cluster.
+	//
+	// > You can call the [DescribeDBClusters](~~612397~~) operation to query the IDs of all AnalyticDB for MySQL Data Lakehouse Edition (V3.0) clusters within a region.
 	DBClusterId *string `json:"DBClusterId,omitempty" xml:"DBClusterId,omitempty"`
-	JobId       *int64  `json:"JobId,omitempty" xml:"JobId,omitempty"`
-	RegionId    *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	// The ID of the Spark job.
+	JobId *int64 `json:"JobId,omitempty" xml:"JobId,omitempty"`
+	// The region ID of the cluster.
+	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 }
 
 func (s DescribeSparkCodeOutputRequest) String() string {
@@ -10345,10 +10388,20 @@ func (s *DescribeSparkCodeOutputRequest) SetRegionId(v string) *DescribeSparkCod
 }
 
 type DescribeSparkCodeOutputResponseBody struct {
-	Message   *string `json:"Message,omitempty" xml:"Message,omitempty"`
-	Output    *string `json:"Output,omitempty" xml:"Output,omitempty"`
+	// The returned message.
+	//
+	// *   If the request was successful, **Success** is returned.
+	// *   If the request failed, an error message is returned.
+	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// The execution result, which is in the format of JSON objects.
+	Output *string `json:"Output,omitempty" xml:"Output,omitempty"`
+	// The request ID.
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	Success   *bool   `json:"Success,omitempty" xml:"Success,omitempty"`
+	// Indicates whether the request was successful. Valid values:
+	//
+	// *   **true**
+	// *   **false**
+	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
 }
 
 func (s DescribeSparkCodeOutputResponseBody) String() string {
@@ -10409,9 +10462,14 @@ func (s *DescribeSparkCodeOutputResponse) SetBody(v *DescribeSparkCodeOutputResp
 }
 
 type DescribeSparkCodeWebUiRequest struct {
+	// The ID of the AnalyticDB for MySQL Data Lakehouse Edition (V3.0) cluster.
+	//
+	// > You can call the [DescribeDBClusters](~~129857~~) operation to query the IDs of all AnalyticDB for MySQL Data Lakehouse Edition (V3.0) clusters within a region.
 	DBClusterId *string `json:"DBClusterId,omitempty" xml:"DBClusterId,omitempty"`
-	JobId       *int64  `json:"JobId,omitempty" xml:"JobId,omitempty"`
-	RegionId    *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	// The ID of the Spark job.
+	JobId *int64 `json:"JobId,omitempty" xml:"JobId,omitempty"`
+	// The region ID of the cluster.
+	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 }
 
 func (s DescribeSparkCodeWebUiRequest) String() string {
@@ -10438,10 +10496,20 @@ func (s *DescribeSparkCodeWebUiRequest) SetRegionId(v string) *DescribeSparkCode
 }
 
 type DescribeSparkCodeWebUiResponseBody struct {
-	Message   *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// The returned message.
+	//
+	// *   If the request was successful, **SUCCESS** is returned.
+	// *   If the request failed, an error message is returned.
+	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// The request ID.
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	Success   *bool   `json:"Success,omitempty" xml:"Success,omitempty"`
-	Url       *string `json:"Url,omitempty" xml:"Url,omitempty"`
+	// Indicates whether the request was successful. Valid values:
+	//
+	// *   **true**
+	// *   **false**
+	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
+	// The URL of the web UI for the Spark application.
+	Url *string `json:"Url,omitempty" xml:"Url,omitempty"`
 }
 
 func (s DescribeSparkCodeWebUiResponseBody) String() string {
