@@ -25881,6 +25881,87 @@ func (s *GetDcdnKvResponse) SetBody(v *GetDcdnKvResponseBody) *GetDcdnKvResponse
 	return s
 }
 
+type GetDcdnKvStatusRequest struct {
+	Key       *string `json:"Key,omitempty" xml:"Key,omitempty"`
+	Namespace *string `json:"Namespace,omitempty" xml:"Namespace,omitempty"`
+}
+
+func (s GetDcdnKvStatusRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetDcdnKvStatusRequest) GoString() string {
+	return s.String()
+}
+
+func (s *GetDcdnKvStatusRequest) SetKey(v string) *GetDcdnKvStatusRequest {
+	s.Key = &v
+	return s
+}
+
+func (s *GetDcdnKvStatusRequest) SetNamespace(v string) *GetDcdnKvStatusRequest {
+	s.Namespace = &v
+	return s
+}
+
+type GetDcdnKvStatusResponseBody struct {
+	Complete  *bool   `json:"Complete,omitempty" xml:"Complete,omitempty"`
+	Expire    *string `json:"Expire,omitempty" xml:"Expire,omitempty"`
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+}
+
+func (s GetDcdnKvStatusResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetDcdnKvStatusResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *GetDcdnKvStatusResponseBody) SetComplete(v bool) *GetDcdnKvStatusResponseBody {
+	s.Complete = &v
+	return s
+}
+
+func (s *GetDcdnKvStatusResponseBody) SetExpire(v string) *GetDcdnKvStatusResponseBody {
+	s.Expire = &v
+	return s
+}
+
+func (s *GetDcdnKvStatusResponseBody) SetRequestId(v string) *GetDcdnKvStatusResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+type GetDcdnKvStatusResponse struct {
+	Headers    map[string]*string           `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                       `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *GetDcdnKvStatusResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s GetDcdnKvStatusResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetDcdnKvStatusResponse) GoString() string {
+	return s.String()
+}
+
+func (s *GetDcdnKvStatusResponse) SetHeaders(v map[string]*string) *GetDcdnKvStatusResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *GetDcdnKvStatusResponse) SetStatusCode(v int32) *GetDcdnKvStatusResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *GetDcdnKvStatusResponse) SetBody(v *GetDcdnKvStatusResponseBody) *GetDcdnKvStatusResponse {
+	s.Body = v
+	return s
+}
+
 type ListDcdnKvRequest struct {
 	// The name of the namespace.
 	Namespace *string `json:"Namespace,omitempty" xml:"Namespace,omitempty"`
@@ -41302,6 +41383,54 @@ func (client *Client) GetDcdnKv(request *GetDcdnKvRequest) (_result *GetDcdnKvRe
 	runtime := &util.RuntimeOptions{}
 	_result = &GetDcdnKvResponse{}
 	_body, _err := client.GetDcdnKvWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) GetDcdnKvStatusWithOptions(request *GetDcdnKvStatusRequest, runtime *util.RuntimeOptions) (_result *GetDcdnKvStatusResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.Key)) {
+		query["Key"] = request.Key
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Namespace)) {
+		query["Namespace"] = request.Namespace
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("GetDcdnKvStatus"),
+		Version:     tea.String("2018-01-15"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &GetDcdnKvStatusResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) GetDcdnKvStatus(request *GetDcdnKvStatusRequest) (_result *GetDcdnKvStatusResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &GetDcdnKvStatusResponse{}
+	_body, _err := client.GetDcdnKvStatusWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
