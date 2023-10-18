@@ -556,7 +556,7 @@ type CreateDomainRequestListen struct {
 	// *   **2:** strong cipher suites. You can select this value only if you set **TLSVersion** to **tlsv1.2**.
 	// *   **99:** custom cipher suites.
 	CipherSuite *int32 `json:"CipherSuite,omitempty" xml:"CipherSuite,omitempty"`
-	// The custom cipher suites.
+	// The custom cipher suite that you want to add.
 	CustomCiphers []*string `json:"CustomCiphers,omitempty" xml:"CustomCiphers,omitempty" type:"Repeated"`
 	// Specifies whether to support TLS 1.3. This parameter is available only if you specify **HttpsPorts**. Valid values:
 	//
@@ -568,14 +568,14 @@ type CreateDomainRequestListen struct {
 	// *   **true**
 	// *   **false** (default)
 	ExclusiveIp *bool `json:"ExclusiveIp,omitempty" xml:"ExclusiveIp,omitempty"`
-	// Specifies whether to enable the HTTP to HTTPS redirection feature. This parameter is available only if you specify HttpsPorts and leave HttpPorts empty. Valid values:
+	// Specifies whether to enable HTTP to HTTPS redirection. This parameter is available only if you specify HttpsPorts and leave HttpPorts empty. Valid values:
 	//
 	// *   **true**
 	// *   **false**
 	FocusHttps *bool `json:"FocusHttps,omitempty" xml:"FocusHttps,omitempty"`
 	// Specifies whether to enable HTTP/2. This parameter is available only if you specify **HttpsPorts**. Valid values:
 	//
-	// *   true
+	// *   **true**
 	// *   **false** (default)
 	Http2Enabled *bool `json:"Http2Enabled,omitempty" xml:"Http2Enabled,omitempty"`
 	// The HTTP listener port.
@@ -589,7 +589,7 @@ type CreateDomainRequestListen struct {
 	IPv6Enabled *bool `json:"IPv6Enabled,omitempty" xml:"IPv6Enabled,omitempty"`
 	// The type of the protection resource. Valid values:
 	//
-	// *   **share:** shared cluster. This is the default value.
+	// *   **share:** a shared cluster. This is the default value.
 	// *   **gslb:** shared cluster-based intelligent load balancing.
 	ProtectionResource *string `json:"ProtectionResource,omitempty" xml:"ProtectionResource,omitempty"`
 	// Specifies whether to allow access only from SM certificate-based clients. This parameter is available only if you set SM2Enabled to true.
@@ -599,7 +599,7 @@ type CreateDomainRequestListen struct {
 	SM2AccessOnly *bool `json:"SM2AccessOnly,omitempty" xml:"SM2AccessOnly,omitempty"`
 	// The ID of the SM certificate that you want to add. This parameter is available only if you set SM2Enabled to true.
 	SM2CertId *string `json:"SM2CertId,omitempty" xml:"SM2CertId,omitempty"`
-	// Specifies whether to enable the SM certificate.
+	// Specifies whether to enable the ShangMi (SM) certificate.
 	SM2Enabled *bool `json:"SM2Enabled,omitempty" xml:"SM2Enabled,omitempty"`
 	// The version of the Transport Layer Security (TLS) protocol. This parameter is available only if you specify **HttpsPorts**. Valid values:
 	//
@@ -613,7 +613,7 @@ type CreateDomainRequestListen struct {
 	// *   **1:** WAF reads the first value of the X-Forwarded-For (XFF) header field as the IP address of the client.
 	// *   **2:** WAF reads the value of a custom header field as the IP address of the client.
 	XffHeaderMode *int32 `json:"XffHeaderMode,omitempty" xml:"XffHeaderMode,omitempty"`
-	// The custom header field that you want WAF to use to obtain the IP address of a client.
+	// The custom header field that you want WAF to use to obtain the actual IP address of a client.
 	XffHeaders []*string `json:"XffHeaders,omitempty" xml:"XffHeaders,omitempty" type:"Repeated"`
 }
 
@@ -711,7 +711,7 @@ func (s *CreateDomainRequestListen) SetXffHeaders(v []*string) *CreateDomainRequ
 }
 
 type CreateDomainRequestRedirect struct {
-	// The back-to-origin IP addresses or domain names.
+	// The IP addresses or domain names of the origin server.
 	Backends []*string `json:"Backends,omitempty" xml:"Backends,omitempty" type:"Repeated"`
 	// Specifies whether to enable the public cloud disaster recovery feature. Valid values:
 	//
@@ -734,7 +734,7 @@ type CreateDomainRequestRedirect struct {
 	//
 	// > This parameter specifies the number of reused persistent connections after you enable the persistent connection feature.
 	KeepaliveRequests *int32 `json:"KeepaliveRequests,omitempty" xml:"KeepaliveRequests,omitempty"`
-	// The timeout period of persistent connections that are in the Idle state. Unit: seconds. Valid values: 1 to 60. Default value: 15.
+	// The timeout period of persistent connections that are in the Idle state. Valid values: 1 to 60. Default value: 15. Unit: seconds.
 	//
 	// > This parameter specifies the period of time during which a reused persistent connection is allowed to remain in the Idle state before the persistent connection is released.
 	KeepaliveTimeout *int32 `json:"KeepaliveTimeout,omitempty" xml:"KeepaliveTimeout,omitempty"`
@@ -746,16 +746,16 @@ type CreateDomainRequestRedirect struct {
 	Loadbalance *string `json:"Loadbalance,omitempty" xml:"Loadbalance,omitempty"`
 	// The read timeout period. Unit: seconds. Valid values: 1 to 3600.
 	ReadTimeout *int32 `json:"ReadTimeout,omitempty" xml:"ReadTimeout,omitempty"`
-	// The key-value pairs that you want to use to mark the requests that pass through the WAF instance.
+	// The key-value pairs that you want to use to label the requests that pass through the WAF instance.
 	//
-	// WAF adds the key-value pairs to the request headers. This way, the requests that pass through WAF are identified.
+	// WAF automatically adds the key-value pairs to request headers. This way, the backend service can identify requests that pass through WAF.
 	RequestHeaders []*CreateDomainRequestRedirectRequestHeaders `json:"RequestHeaders,omitempty" xml:"RequestHeaders,omitempty" type:"Repeated"`
 	// Specifies whether WAF retries to forward requests when the requests fail to be forwarded to the origin server. Valid values:
 	//
 	// *   **true** (default)
 	// *   **false**
 	Retry *bool `json:"Retry,omitempty" xml:"Retry,omitempty"`
-	// The forwarding rules that you want to configure for the domain name that you want to add to WAF in hybrid cloud mode. Set this parameter to a string that consists of JSON arrays. Each element in a JSON array is a JSON struct that contains the following fields:
+	// The forwarding rules that you want to configure for the domain name that you want to add to WAF in hybrid cloud mode. Set the value to a string that consists of JSON arrays. Each element in a JSON array is a JSON struct that contains the following fields:
 	//
 	// *   **rs:** The back-to-origin IP addresses or CNAMEs. The value must be of the ARRAY type.
 	// *   **location:** The name of the protection node. The value must be of the STRING type.
@@ -766,9 +766,9 @@ type CreateDomainRequestRedirect struct {
 	// *   **true**
 	// *   **false** (default)
 	SniEnabled *bool `json:"SniEnabled,omitempty" xml:"SniEnabled,omitempty"`
-	// The value of the custom SNI field. If you do not specify this parameter, the value of the **Host** field in the request header is used. If you want WAF to use an SNI field value that is different from the value of the Host field in back-to-origin requests, you can specify a custom value for the SNI field.
+	// The value of the SNI field. If you do not specify this parameter, the **Host** field value in the request header is used. If you want WAF to use an SNI field value that is different from the Host field value in back-to-origin requests, you can specify a custom value for the SNI field.
 	//
-	// > This parameter is available only if you set **SniEnabled** to **true**.
+	// > You must specify this parameter only if you set **SniEnabled** to **true**.
 	SniHost *string `json:"SniHost,omitempty" xml:"SniHost,omitempty"`
 	// The write timeout period. Unit: seconds. Valid values: 1 to 3600.
 	WriteTimeout *int32 `json:"WriteTimeout,omitempty" xml:"WriteTimeout,omitempty"`
@@ -1814,7 +1814,7 @@ type DescribeDefenseResourcesRequest struct {
 	ResourceManagerResourceGroupId *string `json:"ResourceManagerResourceGroupId,omitempty" xml:"ResourceManagerResourceGroupId,omitempty"`
 	// The source IP address of the request. The value of this parameter is specified by the system.
 	SourceIp *string `json:"SourceIp,omitempty" xml:"SourceIp,omitempty"`
-	// The tag of the resource. You can specify up to 20 tags.
+	// The tags of the resources that you want to query. You can specify up to 20 tags.
 	Tag []*DescribeDefenseResourcesRequestTag `json:"Tag,omitempty" xml:"Tag,omitempty" type:"Repeated"`
 }
 
@@ -1894,7 +1894,7 @@ func (s *DescribeDefenseResourcesRequestTag) SetValue(v string) *DescribeDefense
 type DescribeDefenseResourcesResponseBody struct {
 	// The ID of the request.
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// An array of protected objects.
+	// The protected objects.
 	Resources []*DescribeDefenseResourcesResponseBodyResources `json:"Resources,omitempty" xml:"Resources,omitempty" type:"Repeated"`
 	// The total number of entries that are returned.
 	TotalCount *int64 `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
@@ -1924,29 +1924,26 @@ func (s *DescribeDefenseResourcesResponseBody) SetTotalCount(v int64) *DescribeD
 }
 
 type DescribeDefenseResourcesResponseBodyResources struct {
-	// 跟踪cookie开关状态。
+	// The status of the tracking cookie.
 	//
-	// - **0**：表示关闭。
-	//
-	// - **1**：表示开启。
+	// *   **0:** disabled.
+	// *   **1:** enabled.
 	AcwCookieStatus *int32 `json:"AcwCookieStatus,omitempty" xml:"AcwCookieStatus,omitempty"`
-	// 跟踪cookie的secure属性状态。
+	// The status of the secure attribute of the tracking cookie.
 	//
-	// - **0**：表示关闭。
-	//
-	// - **1**：表示开启。
+	// *   **0:** disabled.
+	// *   **1:** enabled.
 	AcwSecureStatus *int32 `json:"AcwSecureStatus,omitempty" xml:"AcwSecureStatus,omitempty"`
-	// 滑块cookie的secure属性状态。
+	// The status of the secure attribute of the slider verification cookie.
 	//
-	// - **0**：表示关闭。
-	//
-	// - **1**：表示开启。
+	// *   **0:** disabled.
+	// *   **1:** enabled.
 	AcwV3SecureStatus *int32 `json:"AcwV3SecureStatus,omitempty" xml:"AcwV3SecureStatus,omitempty"`
-	// An array of custom XFF headers that are used to identify the originating IP addresses of clients. If the value of the XffStatus parameter is 1 and the CustomHeaders field is left empty, the first IP address in the XFF header is the originating IP address of the client.
+	// The custom XFF headers that are used to identify the originating IP addresses of clients. If the value of XffStatus is 1 and CustomHeaders is left empty, the first IP address in the XFF header is the originating IP address of the client.
 	CustomHeaders []*string `json:"CustomHeaders,omitempty" xml:"CustomHeaders,omitempty" type:"Repeated"`
 	// The description of the protected object.
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
-	// The description of the protected object. Different key-value pairs in a map indicate different properties of the protected object.
+	// The details of the protected object. Different key-value pairs in a map indicate different properties of the protected object.
 	Detail map[string]interface{} `json:"Detail,omitempty" xml:"Detail,omitempty"`
 	// The creation time of the protected object. Unit: seconds.
 	GmtCreate *int64 `json:"GmtCreate,omitempty" xml:"GmtCreate,omitempty"`
@@ -2697,8 +2694,9 @@ type DescribeDomainDetailResponseBody struct {
 	// The ID of the request.
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	// The ID of the resource group.
-	ResourceManagerResourceGroupId *string                                        `json:"ResourceManagerResourceGroupId,omitempty" xml:"ResourceManagerResourceGroupId,omitempty"`
-	SM2CertDetail                  *DescribeDomainDetailResponseBodySM2CertDetail `json:"SM2CertDetail,omitempty" xml:"SM2CertDetail,omitempty" type:"Struct"`
+	ResourceManagerResourceGroupId *string `json:"ResourceManagerResourceGroupId,omitempty" xml:"ResourceManagerResourceGroupId,omitempty"`
+	// The information about the SM certificate.
+	SM2CertDetail *DescribeDomainDetailResponseBodySM2CertDetail `json:"SM2CertDetail,omitempty" xml:"SM2CertDetail,omitempty" type:"Struct"`
 	// The status of the domain name. Valid values:
 	//
 	// *   **1:** The domain name is in a normal state.
@@ -3095,7 +3093,7 @@ func (s *DescribeDomainDetailResponseBodyRedirect) SetWriteTimeout(v int32) *Des
 }
 
 type DescribeDomainDetailResponseBodyRedirectBackends struct {
-	// The back-to-origin IP address or domain name.
+	// The IP address or domain name of the origin server.
 	Backend *string `json:"Backend,omitempty" xml:"Backend,omitempty"`
 }
 
@@ -3138,12 +3136,18 @@ func (s *DescribeDomainDetailResponseBodyRedirectRequestHeaders) SetValue(v stri
 }
 
 type DescribeDomainDetailResponseBodySM2CertDetail struct {
-	CommonName *string   `json:"CommonName,omitempty" xml:"CommonName,omitempty"`
-	EndTime    *int64    `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
-	Id         *string   `json:"Id,omitempty" xml:"Id,omitempty"`
-	Name       *string   `json:"Name,omitempty" xml:"Name,omitempty"`
-	Sans       []*string `json:"Sans,omitempty" xml:"Sans,omitempty" type:"Repeated"`
-	StartTime  *int64    `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
+	// The domain name of your website.
+	CommonName *string `json:"CommonName,omitempty" xml:"CommonName,omitempty"`
+	// The end of the validity period of the SSL certificate. This value is a UNIX timestamp representing the number of milliseconds that have elapsed since January 1, 1970, 00:00:00 UTC.
+	EndTime *int64 `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
+	// The ID of the SSL certificate.
+	Id *string `json:"Id,omitempty" xml:"Id,omitempty"`
+	// The name of the SSL certificate.
+	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// All domain names that are bound to the certificate.
+	Sans []*string `json:"Sans,omitempty" xml:"Sans,omitempty" type:"Repeated"`
+	// The beginning of the validity period of the SSL certificate. This value is a UNIX timestamp representing the number of milliseconds that have elapsed since January 1, 1970, 00:00:00 UTC.
+	StartTime *int64 `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
 }
 
 func (s DescribeDomainDetailResponseBodySM2CertDetail) String() string {
@@ -5002,10 +5006,8 @@ type DescribeInstanceResponseBody struct {
 	EndTime *int64 `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
 	// Indicates whether the WAF instance has overdue payments. Valid values:
 	//
-	// *   **0:** The WAF instance has overdue payments.
-	// *   **1:** The WAF instance does not have overdue payments.
-	//
-	// >  This parameter is returned only when the value of the **PayType** parameter is **POSTPAY**.
+	// *   **0**: The WAF instance does not have overdue payments.
+	// *   **1**: The WAF instance has overdue payments.
 	InDebt *string `json:"InDebt,omitempty" xml:"InDebt,omitempty"`
 	// The ID of the WAF instance.
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
@@ -6794,7 +6796,8 @@ type DescribeRuleHitsTopRuleIdRequest struct {
 	// The ID of the Web Application Firewall (WAF) instance.
 	//
 	// >  You can call the [DescribeInstance](~~433756~~) operation to query the ID of the WAF instance.
-	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	InstanceId      *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	IsGroupResource *string `json:"IsGroupResource,omitempty" xml:"IsGroupResource,omitempty"`
 	// The region where the WAF instance resides. Valid values:
 	//
 	// *   **cn-hangzhou:** the Chinese mainland.
@@ -6831,6 +6834,11 @@ func (s *DescribeRuleHitsTopRuleIdRequest) SetEndTimestamp(v string) *DescribeRu
 
 func (s *DescribeRuleHitsTopRuleIdRequest) SetInstanceId(v string) *DescribeRuleHitsTopRuleIdRequest {
 	s.InstanceId = &v
+	return s
+}
+
+func (s *DescribeRuleHitsTopRuleIdRequest) SetIsGroupResource(v string) *DescribeRuleHitsTopRuleIdRequest {
+	s.IsGroupResource = &v
 	return s
 }
 
@@ -11623,6 +11631,10 @@ func (client *Client) DescribeRuleHitsTopRuleIdWithOptions(request *DescribeRule
 
 	if !tea.BoolValue(util.IsUnset(request.InstanceId)) {
 		query["InstanceId"] = request.InstanceId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.IsGroupResource)) {
+		query["IsGroupResource"] = request.IsGroupResource
 	}
 
 	if !tea.BoolValue(util.IsUnset(request.RegionId)) {
