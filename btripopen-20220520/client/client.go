@@ -9020,14 +9020,15 @@ type CarBillSettlementQueryResponseBodyModuleDataList struct {
 	SubOrderId            *string  `json:"sub_order_id,omitempty" xml:"sub_order_id,omitempty"`
 	SupplementApplyId     *string  `json:"supplement_apply_id,omitempty" xml:"supplement_apply_id,omitempty"`
 	// 税率
-	TaxRate          *string `json:"tax_rate,omitempty" xml:"tax_rate,omitempty"`
-	ThirdItineraryId *string `json:"third_itinerary_id,omitempty" xml:"third_itinerary_id,omitempty"`
-	TimeType         *string `json:"time_type,omitempty" xml:"time_type,omitempty"`
-	TravelerId       *string `json:"traveler_id,omitempty" xml:"traveler_id,omitempty"`
-	TravelerJobNo    *string `json:"traveler_job_no,omitempty" xml:"traveler_job_no,omitempty"`
-	TravelerName     *string `json:"traveler_name,omitempty" xml:"traveler_name,omitempty"`
-	UserConfirmDesc  *string `json:"user_confirm_desc,omitempty" xml:"user_confirm_desc,omitempty"`
-	VoucherType      *int32  `json:"voucher_type,omitempty" xml:"voucher_type,omitempty"`
+	TaxRate                *string `json:"tax_rate,omitempty" xml:"tax_rate,omitempty"`
+	ThirdItineraryId       *string `json:"third_itinerary_id,omitempty" xml:"third_itinerary_id,omitempty"`
+	TimeType               *string `json:"time_type,omitempty" xml:"time_type,omitempty"`
+	TravelerId             *string `json:"traveler_id,omitempty" xml:"traveler_id,omitempty"`
+	TravelerJobNo          *string `json:"traveler_job_no,omitempty" xml:"traveler_job_no,omitempty"`
+	TravelerMemberTypeName *string `json:"traveler_member_type_name,omitempty" xml:"traveler_member_type_name,omitempty"`
+	TravelerName           *string `json:"traveler_name,omitempty" xml:"traveler_name,omitempty"`
+	UserConfirmDesc        *string `json:"user_confirm_desc,omitempty" xml:"user_confirm_desc,omitempty"`
+	VoucherType            *int32  `json:"voucher_type,omitempty" xml:"voucher_type,omitempty"`
 }
 
 func (s CarBillSettlementQueryResponseBodyModuleDataList) String() string {
@@ -9380,6 +9381,11 @@ func (s *CarBillSettlementQueryResponseBodyModuleDataList) SetTravelerId(v strin
 
 func (s *CarBillSettlementQueryResponseBodyModuleDataList) SetTravelerJobNo(v string) *CarBillSettlementQueryResponseBodyModuleDataList {
 	s.TravelerJobNo = &v
+	return s
+}
+
+func (s *CarBillSettlementQueryResponseBodyModuleDataList) SetTravelerMemberTypeName(v string) *CarBillSettlementQueryResponseBodyModuleDataList {
+	s.TravelerMemberTypeName = &v
 	return s
 }
 
@@ -12224,8 +12230,7 @@ type CostCenterSaveResponseBody struct {
 	Module    *CostCenterSaveResponseBodyModule `json:"module,omitempty" xml:"module,omitempty" type:"Struct"`
 	RequestId *string                           `json:"requestId,omitempty" xml:"requestId,omitempty"`
 	Success   *bool                             `json:"success,omitempty" xml:"success,omitempty"`
-	// traceId
-	TraceId *string `json:"traceId,omitempty" xml:"traceId,omitempty"`
+	TraceId   *string                           `json:"traceId,omitempty" xml:"traceId,omitempty"`
 }
 
 func (s CostCenterSaveResponseBody) String() string {
@@ -14256,15 +14261,16 @@ type FlightBillSettlementQueryResponseBodyModuleDataList struct {
 	SettlementType         *string  `json:"settlement_type,omitempty" xml:"settlement_type,omitempty"`
 	Status                 *int32   `json:"status,omitempty" xml:"status,omitempty"`
 	// 税率
-	TaxRate          *string  `json:"tax_rate,omitempty" xml:"tax_rate,omitempty"`
-	ThirdItineraryId *string  `json:"third_itinerary_id,omitempty" xml:"third_itinerary_id,omitempty"`
-	TicketId         *string  `json:"ticket_id,omitempty" xml:"ticket_id,omitempty"`
-	Trade            *string  `json:"trade,omitempty" xml:"trade,omitempty"`
-	TravelerId       *string  `json:"traveler_id,omitempty" xml:"traveler_id,omitempty"`
-	TravelerJobNo    *string  `json:"traveler_job_no,omitempty" xml:"traveler_job_no,omitempty"`
-	TravelerName     *string  `json:"traveler_name,omitempty" xml:"traveler_name,omitempty"`
-	UpgradeCost      *float64 `json:"upgrade_cost,omitempty" xml:"upgrade_cost,omitempty"`
-	VoucherType      *int32   `json:"voucher_type,omitempty" xml:"voucher_type,omitempty"`
+	TaxRate                *string  `json:"tax_rate,omitempty" xml:"tax_rate,omitempty"`
+	ThirdItineraryId       *string  `json:"third_itinerary_id,omitempty" xml:"third_itinerary_id,omitempty"`
+	TicketId               *string  `json:"ticket_id,omitempty" xml:"ticket_id,omitempty"`
+	Trade                  *string  `json:"trade,omitempty" xml:"trade,omitempty"`
+	TravelerId             *string  `json:"traveler_id,omitempty" xml:"traveler_id,omitempty"`
+	TravelerJobNo          *string  `json:"traveler_job_no,omitempty" xml:"traveler_job_no,omitempty"`
+	TravelerMemberTypeName *string  `json:"traveler_member_type_name,omitempty" xml:"traveler_member_type_name,omitempty"`
+	TravelerName           *string  `json:"traveler_name,omitempty" xml:"traveler_name,omitempty"`
+	UpgradeCost            *float64 `json:"upgrade_cost,omitempty" xml:"upgrade_cost,omitempty"`
+	VoucherType            *int32   `json:"voucher_type,omitempty" xml:"voucher_type,omitempty"`
 }
 
 func (s FlightBillSettlementQueryResponseBodyModuleDataList) String() string {
@@ -14712,6 +14718,11 @@ func (s *FlightBillSettlementQueryResponseBodyModuleDataList) SetTravelerId(v st
 
 func (s *FlightBillSettlementQueryResponseBodyModuleDataList) SetTravelerJobNo(v string) *FlightBillSettlementQueryResponseBodyModuleDataList {
 	s.TravelerJobNo = &v
+	return s
+}
+
+func (s *FlightBillSettlementQueryResponseBodyModuleDataList) SetTravelerMemberTypeName(v string) *FlightBillSettlementQueryResponseBodyModuleDataList {
+	s.TravelerMemberTypeName = &v
 	return s
 }
 
@@ -15912,15 +15923,12 @@ func (s *FlightCreateOrderV2ShrinkRequest) SetTravelersShrink(v string) *FlightC
 }
 
 type FlightCreateOrderV2ResponseBody struct {
-	Code    *string `json:"code,omitempty" xml:"code,omitempty"`
-	Message *string `json:"message,omitempty" xml:"message,omitempty"`
-	// module
-	Module *FlightCreateOrderV2ResponseBodyModule `json:"module,omitempty" xml:"module,omitempty" type:"Struct"`
-	// requestId
-	RequestId *string `json:"requestId,omitempty" xml:"requestId,omitempty"`
-	Success   *bool   `json:"success,omitempty" xml:"success,omitempty"`
-	// traceId
-	TraceId *string `json:"traceId,omitempty" xml:"traceId,omitempty"`
+	Code      *string                                `json:"code,omitempty" xml:"code,omitempty"`
+	Message   *string                                `json:"message,omitempty" xml:"message,omitempty"`
+	Module    *FlightCreateOrderV2ResponseBodyModule `json:"module,omitempty" xml:"module,omitempty" type:"Struct"`
+	RequestId *string                                `json:"requestId,omitempty" xml:"requestId,omitempty"`
+	Success   *bool                                  `json:"success,omitempty" xml:"success,omitempty"`
+	TraceId   *string                                `json:"traceId,omitempty" xml:"traceId,omitempty"`
 }
 
 func (s FlightCreateOrderV2ResponseBody) String() string {
@@ -37905,15 +37913,17 @@ type HotelBillSettlementQueryResponseBodyModuleDataList struct {
 	SettlementGrantFee *float64 `json:"settlement_grant_fee,omitempty" xml:"settlement_grant_fee,omitempty"`
 	SettlementTime     *string  `json:"settlement_time,omitempty" xml:"settlement_time,omitempty"`
 	SettlementType     *string  `json:"settlement_type,omitempty" xml:"settlement_type,omitempty"`
+	Star               *string  `json:"star,omitempty" xml:"star,omitempty"`
 	Status             *int32   `json:"status,omitempty" xml:"status,omitempty"`
 	// 税率
-	TaxRate          *string `json:"tax_rate,omitempty" xml:"tax_rate,omitempty"`
-	ThirdItineraryId *string `json:"third_itinerary_id,omitempty" xml:"third_itinerary_id,omitempty"`
-	TotalNights      *int32  `json:"total_nights,omitempty" xml:"total_nights,omitempty"`
-	TravelerId       *string `json:"traveler_id,omitempty" xml:"traveler_id,omitempty"`
-	TravelerJobNo    *string `json:"traveler_job_no,omitempty" xml:"traveler_job_no,omitempty"`
-	TravelerName     *string `json:"traveler_name,omitempty" xml:"traveler_name,omitempty"`
-	VoucherType      *int32  `json:"voucher_type,omitempty" xml:"voucher_type,omitempty"`
+	TaxRate                *string `json:"tax_rate,omitempty" xml:"tax_rate,omitempty"`
+	ThirdItineraryId       *string `json:"third_itinerary_id,omitempty" xml:"third_itinerary_id,omitempty"`
+	TotalNights            *int32  `json:"total_nights,omitempty" xml:"total_nights,omitempty"`
+	TravelerId             *string `json:"traveler_id,omitempty" xml:"traveler_id,omitempty"`
+	TravelerJobNo          *string `json:"traveler_job_no,omitempty" xml:"traveler_job_no,omitempty"`
+	TravelerMemberTypeName *string `json:"traveler_member_type_name,omitempty" xml:"traveler_member_type_name,omitempty"`
+	TravelerName           *string `json:"traveler_name,omitempty" xml:"traveler_name,omitempty"`
+	VoucherType            *int32  `json:"voucher_type,omitempty" xml:"voucher_type,omitempty"`
 }
 
 func (s HotelBillSettlementQueryResponseBodyModuleDataList) String() string {
@@ -38244,6 +38254,11 @@ func (s *HotelBillSettlementQueryResponseBodyModuleDataList) SetSettlementType(v
 	return s
 }
 
+func (s *HotelBillSettlementQueryResponseBodyModuleDataList) SetStar(v string) *HotelBillSettlementQueryResponseBodyModuleDataList {
+	s.Star = &v
+	return s
+}
+
 func (s *HotelBillSettlementQueryResponseBodyModuleDataList) SetStatus(v int32) *HotelBillSettlementQueryResponseBodyModuleDataList {
 	s.Status = &v
 	return s
@@ -38271,6 +38286,11 @@ func (s *HotelBillSettlementQueryResponseBodyModuleDataList) SetTravelerId(v str
 
 func (s *HotelBillSettlementQueryResponseBodyModuleDataList) SetTravelerJobNo(v string) *HotelBillSettlementQueryResponseBodyModuleDataList {
 	s.TravelerJobNo = &v
+	return s
+}
+
+func (s *HotelBillSettlementQueryResponseBodyModuleDataList) SetTravelerMemberTypeName(v string) *HotelBillSettlementQueryResponseBodyModuleDataList {
+	s.TravelerMemberTypeName = &v
 	return s
 }
 
@@ -43430,6 +43450,583 @@ func (s *HotelOrderQueryResponse) SetStatusCode(v int32) *HotelOrderQueryRespons
 }
 
 func (s *HotelOrderQueryResponse) SetBody(v *HotelOrderQueryResponseBody) *HotelOrderQueryResponse {
+	s.Body = v
+	return s
+}
+
+type HotelPricePullHeaders struct {
+	CommonHeaders      map[string]*string `json:"commonHeaders,omitempty" xml:"commonHeaders,omitempty"`
+	XAcsBtripCorpToken *string            `json:"x-acs-btrip-corp-token,omitempty" xml:"x-acs-btrip-corp-token,omitempty"`
+}
+
+func (s HotelPricePullHeaders) String() string {
+	return tea.Prettify(s)
+}
+
+func (s HotelPricePullHeaders) GoString() string {
+	return s.String()
+}
+
+func (s *HotelPricePullHeaders) SetCommonHeaders(v map[string]*string) *HotelPricePullHeaders {
+	s.CommonHeaders = v
+	return s
+}
+
+func (s *HotelPricePullHeaders) SetXAcsBtripCorpToken(v string) *HotelPricePullHeaders {
+	s.XAcsBtripCorpToken = &v
+	return s
+}
+
+type HotelPricePullRequest struct {
+	BtripUserId *string   `json:"btrip_user_id,omitempty" xml:"btrip_user_id,omitempty"`
+	CheckIn     *string   `json:"check_in,omitempty" xml:"check_in,omitempty"`
+	CheckOut    *string   `json:"check_out,omitempty" xml:"check_out,omitempty"`
+	CityCode    *int32    `json:"city_code,omitempty" xml:"city_code,omitempty"`
+	HotelIds    []*string `json:"hotel_ids,omitempty" xml:"hotel_ids,omitempty" type:"Repeated"`
+	PaymentType *int32    `json:"payment_type,omitempty" xml:"payment_type,omitempty"`
+}
+
+func (s HotelPricePullRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s HotelPricePullRequest) GoString() string {
+	return s.String()
+}
+
+func (s *HotelPricePullRequest) SetBtripUserId(v string) *HotelPricePullRequest {
+	s.BtripUserId = &v
+	return s
+}
+
+func (s *HotelPricePullRequest) SetCheckIn(v string) *HotelPricePullRequest {
+	s.CheckIn = &v
+	return s
+}
+
+func (s *HotelPricePullRequest) SetCheckOut(v string) *HotelPricePullRequest {
+	s.CheckOut = &v
+	return s
+}
+
+func (s *HotelPricePullRequest) SetCityCode(v int32) *HotelPricePullRequest {
+	s.CityCode = &v
+	return s
+}
+
+func (s *HotelPricePullRequest) SetHotelIds(v []*string) *HotelPricePullRequest {
+	s.HotelIds = v
+	return s
+}
+
+func (s *HotelPricePullRequest) SetPaymentType(v int32) *HotelPricePullRequest {
+	s.PaymentType = &v
+	return s
+}
+
+type HotelPricePullShrinkRequest struct {
+	BtripUserId    *string `json:"btrip_user_id,omitempty" xml:"btrip_user_id,omitempty"`
+	CheckIn        *string `json:"check_in,omitempty" xml:"check_in,omitempty"`
+	CheckOut       *string `json:"check_out,omitempty" xml:"check_out,omitempty"`
+	CityCode       *int32  `json:"city_code,omitempty" xml:"city_code,omitempty"`
+	HotelIdsShrink *string `json:"hotel_ids,omitempty" xml:"hotel_ids,omitempty"`
+	PaymentType    *int32  `json:"payment_type,omitempty" xml:"payment_type,omitempty"`
+}
+
+func (s HotelPricePullShrinkRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s HotelPricePullShrinkRequest) GoString() string {
+	return s.String()
+}
+
+func (s *HotelPricePullShrinkRequest) SetBtripUserId(v string) *HotelPricePullShrinkRequest {
+	s.BtripUserId = &v
+	return s
+}
+
+func (s *HotelPricePullShrinkRequest) SetCheckIn(v string) *HotelPricePullShrinkRequest {
+	s.CheckIn = &v
+	return s
+}
+
+func (s *HotelPricePullShrinkRequest) SetCheckOut(v string) *HotelPricePullShrinkRequest {
+	s.CheckOut = &v
+	return s
+}
+
+func (s *HotelPricePullShrinkRequest) SetCityCode(v int32) *HotelPricePullShrinkRequest {
+	s.CityCode = &v
+	return s
+}
+
+func (s *HotelPricePullShrinkRequest) SetHotelIdsShrink(v string) *HotelPricePullShrinkRequest {
+	s.HotelIdsShrink = &v
+	return s
+}
+
+func (s *HotelPricePullShrinkRequest) SetPaymentType(v int32) *HotelPricePullShrinkRequest {
+	s.PaymentType = &v
+	return s
+}
+
+type HotelPricePullResponseBody struct {
+	Code      *string                           `json:"code,omitempty" xml:"code,omitempty"`
+	Message   *string                           `json:"message,omitempty" xml:"message,omitempty"`
+	Module    *HotelPricePullResponseBodyModule `json:"module,omitempty" xml:"module,omitempty" type:"Struct"`
+	RequestId *string                           `json:"request_id,omitempty" xml:"request_id,omitempty"`
+	Success   *bool                             `json:"success,omitempty" xml:"success,omitempty"`
+	// traceId
+	TraceId *string `json:"traceId,omitempty" xml:"traceId,omitempty"`
+}
+
+func (s HotelPricePullResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s HotelPricePullResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *HotelPricePullResponseBody) SetCode(v string) *HotelPricePullResponseBody {
+	s.Code = &v
+	return s
+}
+
+func (s *HotelPricePullResponseBody) SetMessage(v string) *HotelPricePullResponseBody {
+	s.Message = &v
+	return s
+}
+
+func (s *HotelPricePullResponseBody) SetModule(v *HotelPricePullResponseBodyModule) *HotelPricePullResponseBody {
+	s.Module = v
+	return s
+}
+
+func (s *HotelPricePullResponseBody) SetRequestId(v string) *HotelPricePullResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *HotelPricePullResponseBody) SetSuccess(v bool) *HotelPricePullResponseBody {
+	s.Success = &v
+	return s
+}
+
+func (s *HotelPricePullResponseBody) SetTraceId(v string) *HotelPricePullResponseBody {
+	s.TraceId = &v
+	return s
+}
+
+type HotelPricePullResponseBodyModule struct {
+	HotelPriceInfos []*HotelPricePullResponseBodyModuleHotelPriceInfos `json:"hotel_price_infos,omitempty" xml:"hotel_price_infos,omitempty" type:"Repeated"`
+}
+
+func (s HotelPricePullResponseBodyModule) String() string {
+	return tea.Prettify(s)
+}
+
+func (s HotelPricePullResponseBodyModule) GoString() string {
+	return s.String()
+}
+
+func (s *HotelPricePullResponseBodyModule) SetHotelPriceInfos(v []*HotelPricePullResponseBodyModuleHotelPriceInfos) *HotelPricePullResponseBodyModule {
+	s.HotelPriceInfos = v
+	return s
+}
+
+type HotelPricePullResponseBodyModuleHotelPriceInfos struct {
+	Address   *string                                                 `json:"address,omitempty" xml:"address,omitempty"`
+	HotelId   *string                                                 `json:"hotel_id,omitempty" xml:"hotel_id,omitempty"`
+	HotelName *string                                                 `json:"hotel_name,omitempty" xml:"hotel_name,omitempty"`
+	Rooms     []*HotelPricePullResponseBodyModuleHotelPriceInfosRooms `json:"rooms,omitempty" xml:"rooms,omitempty" type:"Repeated"`
+	SearchId  *string                                                 `json:"search_id,omitempty" xml:"search_id,omitempty"`
+}
+
+func (s HotelPricePullResponseBodyModuleHotelPriceInfos) String() string {
+	return tea.Prettify(s)
+}
+
+func (s HotelPricePullResponseBodyModuleHotelPriceInfos) GoString() string {
+	return s.String()
+}
+
+func (s *HotelPricePullResponseBodyModuleHotelPriceInfos) SetAddress(v string) *HotelPricePullResponseBodyModuleHotelPriceInfos {
+	s.Address = &v
+	return s
+}
+
+func (s *HotelPricePullResponseBodyModuleHotelPriceInfos) SetHotelId(v string) *HotelPricePullResponseBodyModuleHotelPriceInfos {
+	s.HotelId = &v
+	return s
+}
+
+func (s *HotelPricePullResponseBodyModuleHotelPriceInfos) SetHotelName(v string) *HotelPricePullResponseBodyModuleHotelPriceInfos {
+	s.HotelName = &v
+	return s
+}
+
+func (s *HotelPricePullResponseBodyModuleHotelPriceInfos) SetRooms(v []*HotelPricePullResponseBodyModuleHotelPriceInfosRooms) *HotelPricePullResponseBodyModuleHotelPriceInfos {
+	s.Rooms = v
+	return s
+}
+
+func (s *HotelPricePullResponseBodyModuleHotelPriceInfos) SetSearchId(v string) *HotelPricePullResponseBodyModuleHotelPriceInfos {
+	s.SearchId = &v
+	return s
+}
+
+type HotelPricePullResponseBodyModuleHotelPriceInfosRooms struct {
+	Area           *string                                                      `json:"area,omitempty" xml:"area,omitempty"`
+	Bed            *string                                                      `json:"bed,omitempty" xml:"bed,omitempty"`
+	BedTypeString  *string                                                      `json:"bed_type_string,omitempty" xml:"bed_type_string,omitempty"`
+	Facility       *string                                                      `json:"facility,omitempty" xml:"facility,omitempty"`
+	Floor          *string                                                      `json:"floor,omitempty" xml:"floor,omitempty"`
+	MaxOccupancy   *int32                                                       `json:"max_occupancy,omitempty" xml:"max_occupancy,omitempty"`
+	NetworkService *string                                                      `json:"network_service,omitempty" xml:"network_service,omitempty"`
+	Pics           []*string                                                    `json:"pics,omitempty" xml:"pics,omitempty" type:"Repeated"`
+	Rates          []*HotelPricePullResponseBodyModuleHotelPriceInfosRoomsRates `json:"rates,omitempty" xml:"rates,omitempty" type:"Repeated"`
+	RoomId         *string                                                      `json:"room_id,omitempty" xml:"room_id,omitempty"`
+	RoomName       *string                                                      `json:"room_name,omitempty" xml:"room_name,omitempty"`
+	Status         *int32                                                       `json:"status,omitempty" xml:"status,omitempty"`
+	WindowType     *string                                                      `json:"window_type,omitempty" xml:"window_type,omitempty"`
+}
+
+func (s HotelPricePullResponseBodyModuleHotelPriceInfosRooms) String() string {
+	return tea.Prettify(s)
+}
+
+func (s HotelPricePullResponseBodyModuleHotelPriceInfosRooms) GoString() string {
+	return s.String()
+}
+
+func (s *HotelPricePullResponseBodyModuleHotelPriceInfosRooms) SetArea(v string) *HotelPricePullResponseBodyModuleHotelPriceInfosRooms {
+	s.Area = &v
+	return s
+}
+
+func (s *HotelPricePullResponseBodyModuleHotelPriceInfosRooms) SetBed(v string) *HotelPricePullResponseBodyModuleHotelPriceInfosRooms {
+	s.Bed = &v
+	return s
+}
+
+func (s *HotelPricePullResponseBodyModuleHotelPriceInfosRooms) SetBedTypeString(v string) *HotelPricePullResponseBodyModuleHotelPriceInfosRooms {
+	s.BedTypeString = &v
+	return s
+}
+
+func (s *HotelPricePullResponseBodyModuleHotelPriceInfosRooms) SetFacility(v string) *HotelPricePullResponseBodyModuleHotelPriceInfosRooms {
+	s.Facility = &v
+	return s
+}
+
+func (s *HotelPricePullResponseBodyModuleHotelPriceInfosRooms) SetFloor(v string) *HotelPricePullResponseBodyModuleHotelPriceInfosRooms {
+	s.Floor = &v
+	return s
+}
+
+func (s *HotelPricePullResponseBodyModuleHotelPriceInfosRooms) SetMaxOccupancy(v int32) *HotelPricePullResponseBodyModuleHotelPriceInfosRooms {
+	s.MaxOccupancy = &v
+	return s
+}
+
+func (s *HotelPricePullResponseBodyModuleHotelPriceInfosRooms) SetNetworkService(v string) *HotelPricePullResponseBodyModuleHotelPriceInfosRooms {
+	s.NetworkService = &v
+	return s
+}
+
+func (s *HotelPricePullResponseBodyModuleHotelPriceInfosRooms) SetPics(v []*string) *HotelPricePullResponseBodyModuleHotelPriceInfosRooms {
+	s.Pics = v
+	return s
+}
+
+func (s *HotelPricePullResponseBodyModuleHotelPriceInfosRooms) SetRates(v []*HotelPricePullResponseBodyModuleHotelPriceInfosRoomsRates) *HotelPricePullResponseBodyModuleHotelPriceInfosRooms {
+	s.Rates = v
+	return s
+}
+
+func (s *HotelPricePullResponseBodyModuleHotelPriceInfosRooms) SetRoomId(v string) *HotelPricePullResponseBodyModuleHotelPriceInfosRooms {
+	s.RoomId = &v
+	return s
+}
+
+func (s *HotelPricePullResponseBodyModuleHotelPriceInfosRooms) SetRoomName(v string) *HotelPricePullResponseBodyModuleHotelPriceInfosRooms {
+	s.RoomName = &v
+	return s
+}
+
+func (s *HotelPricePullResponseBodyModuleHotelPriceInfosRooms) SetStatus(v int32) *HotelPricePullResponseBodyModuleHotelPriceInfosRooms {
+	s.Status = &v
+	return s
+}
+
+func (s *HotelPricePullResponseBodyModuleHotelPriceInfosRooms) SetWindowType(v string) *HotelPricePullResponseBodyModuleHotelPriceInfosRooms {
+	s.WindowType = &v
+	return s
+}
+
+type HotelPricePullResponseBodyModuleHotelPriceInfosRoomsRates struct {
+	Breakfast              *string                                                                          `json:"breakfast,omitempty" xml:"breakfast,omitempty"`
+	BreakfastCount         *int32                                                                           `json:"breakfast_count,omitempty" xml:"breakfast_count,omitempty"`
+	BtripHotelCancelPolicy *HotelPricePullResponseBodyModuleHotelPriceInfosRoomsRatesBtripHotelCancelPolicy `json:"btrip_hotel_cancel_policy,omitempty" xml:"btrip_hotel_cancel_policy,omitempty" type:"Struct"`
+	CancelPolicyDesc       *string                                                                          `json:"cancel_policy_desc,omitempty" xml:"cancel_policy_desc,omitempty"`
+	CompanyAassist         *string                                                                          `json:"company_aassist,omitempty" xml:"company_aassist,omitempty"`
+	CurrencyCode           *string                                                                          `json:"currency_code,omitempty" xml:"currency_code,omitempty"`
+	InstantConfirm         *bool                                                                            `json:"instant_confirm,omitempty" xml:"instant_confirm,omitempty"`
+	ItemId                 *string                                                                          `json:"item_id,omitempty" xml:"item_id,omitempty"`
+	MaxAdvHours            *int32                                                                           `json:"max_adv_hours,omitempty" xml:"max_adv_hours,omitempty"`
+	MaxDays                *int32                                                                           `json:"max_days,omitempty" xml:"max_days,omitempty"`
+	MinAdvHours            *int32                                                                           `json:"min_adv_hours,omitempty" xml:"min_adv_hours,omitempty"`
+	MinDays                *int32                                                                           `json:"min_days,omitempty" xml:"min_days,omitempty"`
+	Nod                    *int32                                                                           `json:"nod,omitempty" xml:"nod,omitempty"`
+	Nop                    *int32                                                                           `json:"nop,omitempty" xml:"nop,omitempty"`
+	PaymentType            *int32                                                                           `json:"payment_type,omitempty" xml:"payment_type,omitempty"`
+	Price                  *int64                                                                           `json:"price,omitempty" xml:"price,omitempty"`
+	PromotionInfo          *string                                                                          `json:"promotion_info,omitempty" xml:"promotion_info,omitempty"`
+	Quota                  *int32                                                                           `json:"quota,omitempty" xml:"quota,omitempty"`
+	RateDailys             []*HotelPricePullResponseBodyModuleHotelPriceInfosRoomsRatesRateDailys           `json:"rate_dailys,omitempty" xml:"rate_dailys,omitempty" type:"Repeated"`
+	RateId                 *string                                                                          `json:"rate_id,omitempty" xml:"rate_id,omitempty"`
+	RatePlanName           *string                                                                          `json:"rate_plan_name,omitempty" xml:"rate_plan_name,omitempty"`
+	RpId                   *string                                                                          `json:"rp_id,omitempty" xml:"rp_id,omitempty"`
+	SellerId               *string                                                                          `json:"seller_id,omitempty" xml:"seller_id,omitempty"`
+	SupportSpecialInvoice  *bool                                                                            `json:"support_special_invoice,omitempty" xml:"support_special_invoice,omitempty"`
+}
+
+func (s HotelPricePullResponseBodyModuleHotelPriceInfosRoomsRates) String() string {
+	return tea.Prettify(s)
+}
+
+func (s HotelPricePullResponseBodyModuleHotelPriceInfosRoomsRates) GoString() string {
+	return s.String()
+}
+
+func (s *HotelPricePullResponseBodyModuleHotelPriceInfosRoomsRates) SetBreakfast(v string) *HotelPricePullResponseBodyModuleHotelPriceInfosRoomsRates {
+	s.Breakfast = &v
+	return s
+}
+
+func (s *HotelPricePullResponseBodyModuleHotelPriceInfosRoomsRates) SetBreakfastCount(v int32) *HotelPricePullResponseBodyModuleHotelPriceInfosRoomsRates {
+	s.BreakfastCount = &v
+	return s
+}
+
+func (s *HotelPricePullResponseBodyModuleHotelPriceInfosRoomsRates) SetBtripHotelCancelPolicy(v *HotelPricePullResponseBodyModuleHotelPriceInfosRoomsRatesBtripHotelCancelPolicy) *HotelPricePullResponseBodyModuleHotelPriceInfosRoomsRates {
+	s.BtripHotelCancelPolicy = v
+	return s
+}
+
+func (s *HotelPricePullResponseBodyModuleHotelPriceInfosRoomsRates) SetCancelPolicyDesc(v string) *HotelPricePullResponseBodyModuleHotelPriceInfosRoomsRates {
+	s.CancelPolicyDesc = &v
+	return s
+}
+
+func (s *HotelPricePullResponseBodyModuleHotelPriceInfosRoomsRates) SetCompanyAassist(v string) *HotelPricePullResponseBodyModuleHotelPriceInfosRoomsRates {
+	s.CompanyAassist = &v
+	return s
+}
+
+func (s *HotelPricePullResponseBodyModuleHotelPriceInfosRoomsRates) SetCurrencyCode(v string) *HotelPricePullResponseBodyModuleHotelPriceInfosRoomsRates {
+	s.CurrencyCode = &v
+	return s
+}
+
+func (s *HotelPricePullResponseBodyModuleHotelPriceInfosRoomsRates) SetInstantConfirm(v bool) *HotelPricePullResponseBodyModuleHotelPriceInfosRoomsRates {
+	s.InstantConfirm = &v
+	return s
+}
+
+func (s *HotelPricePullResponseBodyModuleHotelPriceInfosRoomsRates) SetItemId(v string) *HotelPricePullResponseBodyModuleHotelPriceInfosRoomsRates {
+	s.ItemId = &v
+	return s
+}
+
+func (s *HotelPricePullResponseBodyModuleHotelPriceInfosRoomsRates) SetMaxAdvHours(v int32) *HotelPricePullResponseBodyModuleHotelPriceInfosRoomsRates {
+	s.MaxAdvHours = &v
+	return s
+}
+
+func (s *HotelPricePullResponseBodyModuleHotelPriceInfosRoomsRates) SetMaxDays(v int32) *HotelPricePullResponseBodyModuleHotelPriceInfosRoomsRates {
+	s.MaxDays = &v
+	return s
+}
+
+func (s *HotelPricePullResponseBodyModuleHotelPriceInfosRoomsRates) SetMinAdvHours(v int32) *HotelPricePullResponseBodyModuleHotelPriceInfosRoomsRates {
+	s.MinAdvHours = &v
+	return s
+}
+
+func (s *HotelPricePullResponseBodyModuleHotelPriceInfosRoomsRates) SetMinDays(v int32) *HotelPricePullResponseBodyModuleHotelPriceInfosRoomsRates {
+	s.MinDays = &v
+	return s
+}
+
+func (s *HotelPricePullResponseBodyModuleHotelPriceInfosRoomsRates) SetNod(v int32) *HotelPricePullResponseBodyModuleHotelPriceInfosRoomsRates {
+	s.Nod = &v
+	return s
+}
+
+func (s *HotelPricePullResponseBodyModuleHotelPriceInfosRoomsRates) SetNop(v int32) *HotelPricePullResponseBodyModuleHotelPriceInfosRoomsRates {
+	s.Nop = &v
+	return s
+}
+
+func (s *HotelPricePullResponseBodyModuleHotelPriceInfosRoomsRates) SetPaymentType(v int32) *HotelPricePullResponseBodyModuleHotelPriceInfosRoomsRates {
+	s.PaymentType = &v
+	return s
+}
+
+func (s *HotelPricePullResponseBodyModuleHotelPriceInfosRoomsRates) SetPrice(v int64) *HotelPricePullResponseBodyModuleHotelPriceInfosRoomsRates {
+	s.Price = &v
+	return s
+}
+
+func (s *HotelPricePullResponseBodyModuleHotelPriceInfosRoomsRates) SetPromotionInfo(v string) *HotelPricePullResponseBodyModuleHotelPriceInfosRoomsRates {
+	s.PromotionInfo = &v
+	return s
+}
+
+func (s *HotelPricePullResponseBodyModuleHotelPriceInfosRoomsRates) SetQuota(v int32) *HotelPricePullResponseBodyModuleHotelPriceInfosRoomsRates {
+	s.Quota = &v
+	return s
+}
+
+func (s *HotelPricePullResponseBodyModuleHotelPriceInfosRoomsRates) SetRateDailys(v []*HotelPricePullResponseBodyModuleHotelPriceInfosRoomsRatesRateDailys) *HotelPricePullResponseBodyModuleHotelPriceInfosRoomsRates {
+	s.RateDailys = v
+	return s
+}
+
+func (s *HotelPricePullResponseBodyModuleHotelPriceInfosRoomsRates) SetRateId(v string) *HotelPricePullResponseBodyModuleHotelPriceInfosRoomsRates {
+	s.RateId = &v
+	return s
+}
+
+func (s *HotelPricePullResponseBodyModuleHotelPriceInfosRoomsRates) SetRatePlanName(v string) *HotelPricePullResponseBodyModuleHotelPriceInfosRoomsRates {
+	s.RatePlanName = &v
+	return s
+}
+
+func (s *HotelPricePullResponseBodyModuleHotelPriceInfosRoomsRates) SetRpId(v string) *HotelPricePullResponseBodyModuleHotelPriceInfosRoomsRates {
+	s.RpId = &v
+	return s
+}
+
+func (s *HotelPricePullResponseBodyModuleHotelPriceInfosRoomsRates) SetSellerId(v string) *HotelPricePullResponseBodyModuleHotelPriceInfosRoomsRates {
+	s.SellerId = &v
+	return s
+}
+
+func (s *HotelPricePullResponseBodyModuleHotelPriceInfosRoomsRates) SetSupportSpecialInvoice(v bool) *HotelPricePullResponseBodyModuleHotelPriceInfosRoomsRates {
+	s.SupportSpecialInvoice = &v
+	return s
+}
+
+type HotelPricePullResponseBodyModuleHotelPriceInfosRoomsRatesBtripHotelCancelPolicy struct {
+	BtripHotelCancelPolicyInfoDTOList []*HotelPricePullResponseBodyModuleHotelPriceInfosRoomsRatesBtripHotelCancelPolicyBtripHotelCancelPolicyInfoDTOList `json:"btrip_hotel_cancel_policy_info_d_t_o_list,omitempty" xml:"btrip_hotel_cancel_policy_info_d_t_o_list,omitempty" type:"Repeated"`
+	CancelPolicyType                  *int32                                                                                                              `json:"cancel_policy_type,omitempty" xml:"cancel_policy_type,omitempty"`
+}
+
+func (s HotelPricePullResponseBodyModuleHotelPriceInfosRoomsRatesBtripHotelCancelPolicy) String() string {
+	return tea.Prettify(s)
+}
+
+func (s HotelPricePullResponseBodyModuleHotelPriceInfosRoomsRatesBtripHotelCancelPolicy) GoString() string {
+	return s.String()
+}
+
+func (s *HotelPricePullResponseBodyModuleHotelPriceInfosRoomsRatesBtripHotelCancelPolicy) SetBtripHotelCancelPolicyInfoDTOList(v []*HotelPricePullResponseBodyModuleHotelPriceInfosRoomsRatesBtripHotelCancelPolicyBtripHotelCancelPolicyInfoDTOList) *HotelPricePullResponseBodyModuleHotelPriceInfosRoomsRatesBtripHotelCancelPolicy {
+	s.BtripHotelCancelPolicyInfoDTOList = v
+	return s
+}
+
+func (s *HotelPricePullResponseBodyModuleHotelPriceInfosRoomsRatesBtripHotelCancelPolicy) SetCancelPolicyType(v int32) *HotelPricePullResponseBodyModuleHotelPriceInfosRoomsRatesBtripHotelCancelPolicy {
+	s.CancelPolicyType = &v
+	return s
+}
+
+type HotelPricePullResponseBodyModuleHotelPriceInfosRoomsRatesBtripHotelCancelPolicyBtripHotelCancelPolicyInfoDTOList struct {
+	Hour  *int64 `json:"hour,omitempty" xml:"hour,omitempty"`
+	Value *int64 `json:"value,omitempty" xml:"value,omitempty"`
+}
+
+func (s HotelPricePullResponseBodyModuleHotelPriceInfosRoomsRatesBtripHotelCancelPolicyBtripHotelCancelPolicyInfoDTOList) String() string {
+	return tea.Prettify(s)
+}
+
+func (s HotelPricePullResponseBodyModuleHotelPriceInfosRoomsRatesBtripHotelCancelPolicyBtripHotelCancelPolicyInfoDTOList) GoString() string {
+	return s.String()
+}
+
+func (s *HotelPricePullResponseBodyModuleHotelPriceInfosRoomsRatesBtripHotelCancelPolicyBtripHotelCancelPolicyInfoDTOList) SetHour(v int64) *HotelPricePullResponseBodyModuleHotelPriceInfosRoomsRatesBtripHotelCancelPolicyBtripHotelCancelPolicyInfoDTOList {
+	s.Hour = &v
+	return s
+}
+
+func (s *HotelPricePullResponseBodyModuleHotelPriceInfosRoomsRatesBtripHotelCancelPolicyBtripHotelCancelPolicyInfoDTOList) SetValue(v int64) *HotelPricePullResponseBodyModuleHotelPriceInfosRoomsRatesBtripHotelCancelPolicyBtripHotelCancelPolicyInfoDTOList {
+	s.Value = &v
+	return s
+}
+
+type HotelPricePullResponseBodyModuleHotelPriceInfosRoomsRatesRateDailys struct {
+	DiscountPrice      *int64  `json:"discount_price,omitempty" xml:"discount_price,omitempty"`
+	LastDiscountsPrice *int64  `json:"last_discounts_price,omitempty" xml:"last_discounts_price,omitempty"`
+	Price              *int64  `json:"price,omitempty" xml:"price,omitempty"`
+	StartDate          *string `json:"start_date,omitempty" xml:"start_date,omitempty"`
+}
+
+func (s HotelPricePullResponseBodyModuleHotelPriceInfosRoomsRatesRateDailys) String() string {
+	return tea.Prettify(s)
+}
+
+func (s HotelPricePullResponseBodyModuleHotelPriceInfosRoomsRatesRateDailys) GoString() string {
+	return s.String()
+}
+
+func (s *HotelPricePullResponseBodyModuleHotelPriceInfosRoomsRatesRateDailys) SetDiscountPrice(v int64) *HotelPricePullResponseBodyModuleHotelPriceInfosRoomsRatesRateDailys {
+	s.DiscountPrice = &v
+	return s
+}
+
+func (s *HotelPricePullResponseBodyModuleHotelPriceInfosRoomsRatesRateDailys) SetLastDiscountsPrice(v int64) *HotelPricePullResponseBodyModuleHotelPriceInfosRoomsRatesRateDailys {
+	s.LastDiscountsPrice = &v
+	return s
+}
+
+func (s *HotelPricePullResponseBodyModuleHotelPriceInfosRoomsRatesRateDailys) SetPrice(v int64) *HotelPricePullResponseBodyModuleHotelPriceInfosRoomsRatesRateDailys {
+	s.Price = &v
+	return s
+}
+
+func (s *HotelPricePullResponseBodyModuleHotelPriceInfosRoomsRatesRateDailys) SetStartDate(v string) *HotelPricePullResponseBodyModuleHotelPriceInfosRoomsRatesRateDailys {
+	s.StartDate = &v
+	return s
+}
+
+type HotelPricePullResponse struct {
+	Headers    map[string]*string          `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                      `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *HotelPricePullResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s HotelPricePullResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s HotelPricePullResponse) GoString() string {
+	return s.String()
+}
+
+func (s *HotelPricePullResponse) SetHeaders(v map[string]*string) *HotelPricePullResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *HotelPricePullResponse) SetStatusCode(v int32) *HotelPricePullResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *HotelPricePullResponse) SetBody(v *HotelPricePullResponseBody) *HotelPricePullResponse {
 	s.Body = v
 	return s
 }
@@ -52988,6 +53585,7 @@ type TrainBillSettlementQueryResponseBodyModuleDataList struct {
 	OrderPrice         *float64 `json:"order_price,omitempty" xml:"order_price,omitempty"`
 	OverApplyId        *string  `json:"over_apply_id,omitempty" xml:"over_apply_id,omitempty"`
 	PrimaryId          *int64   `json:"primary_id,omitempty" xml:"primary_id,omitempty"`
+	PrintTicketPrice   *float64 `json:"print_ticket_price,omitempty" xml:"print_ticket_price,omitempty"`
 	ProjectCode        *string  `json:"project_code,omitempty" xml:"project_code,omitempty"`
 	ProjectName        *string  `json:"project_name,omitempty" xml:"project_name,omitempty"`
 	RefundFee          *float64 `json:"refund_fee,omitempty" xml:"refund_fee,omitempty"`
@@ -53005,18 +53603,19 @@ type TrainBillSettlementQueryResponseBodyModuleDataList struct {
 	ShortTicketNo      *string  `json:"short_ticket_no,omitempty" xml:"short_ticket_no,omitempty"`
 	Status             *int32   `json:"status,omitempty" xml:"status,omitempty"`
 	// 税率
-	TaxRate              *string  `json:"tax_rate,omitempty" xml:"tax_rate,omitempty"`
-	ThirdItineraryId     *string  `json:"third_itinerary_id,omitempty" xml:"third_itinerary_id,omitempty"`
-	TicketCorpPayPrice   *string  `json:"ticket_corp_pay_price,omitempty" xml:"ticket_corp_pay_price,omitempty"`
-	TicketNo             *string  `json:"ticket_no,omitempty" xml:"ticket_no,omitempty"`
-	TicketPersonPayPrice *string  `json:"ticket_person_pay_price,omitempty" xml:"ticket_person_pay_price,omitempty"`
-	TicketPrice          *float64 `json:"ticket_price,omitempty" xml:"ticket_price,omitempty"`
-	TrainNo              *string  `json:"train_no,omitempty" xml:"train_no,omitempty"`
-	TrainType            *string  `json:"train_type,omitempty" xml:"train_type,omitempty"`
-	TravelerId           *string  `json:"traveler_id,omitempty" xml:"traveler_id,omitempty"`
-	TravelerJobNo        *string  `json:"traveler_job_no,omitempty" xml:"traveler_job_no,omitempty"`
-	TravelerName         *string  `json:"traveler_name,omitempty" xml:"traveler_name,omitempty"`
-	VoucherType          *int32   `json:"voucher_type,omitempty" xml:"voucher_type,omitempty"`
+	TaxRate                *string  `json:"tax_rate,omitempty" xml:"tax_rate,omitempty"`
+	ThirdItineraryId       *string  `json:"third_itinerary_id,omitempty" xml:"third_itinerary_id,omitempty"`
+	TicketCorpPayPrice     *string  `json:"ticket_corp_pay_price,omitempty" xml:"ticket_corp_pay_price,omitempty"`
+	TicketNo               *string  `json:"ticket_no,omitempty" xml:"ticket_no,omitempty"`
+	TicketPersonPayPrice   *string  `json:"ticket_person_pay_price,omitempty" xml:"ticket_person_pay_price,omitempty"`
+	TicketPrice            *float64 `json:"ticket_price,omitempty" xml:"ticket_price,omitempty"`
+	TrainNo                *string  `json:"train_no,omitempty" xml:"train_no,omitempty"`
+	TrainType              *string  `json:"train_type,omitempty" xml:"train_type,omitempty"`
+	TravelerId             *string  `json:"traveler_id,omitempty" xml:"traveler_id,omitempty"`
+	TravelerJobNo          *string  `json:"traveler_job_no,omitempty" xml:"traveler_job_no,omitempty"`
+	TravelerMemberTypeName *string  `json:"traveler_member_type_name,omitempty" xml:"traveler_member_type_name,omitempty"`
+	TravelerName           *string  `json:"traveler_name,omitempty" xml:"traveler_name,omitempty"`
+	VoucherType            *int32   `json:"voucher_type,omitempty" xml:"voucher_type,omitempty"`
 }
 
 func (s TrainBillSettlementQueryResponseBodyModuleDataList) String() string {
@@ -53237,6 +53836,11 @@ func (s *TrainBillSettlementQueryResponseBodyModuleDataList) SetPrimaryId(v int6
 	return s
 }
 
+func (s *TrainBillSettlementQueryResponseBodyModuleDataList) SetPrintTicketPrice(v float64) *TrainBillSettlementQueryResponseBodyModuleDataList {
+	s.PrintTicketPrice = &v
+	return s
+}
+
 func (s *TrainBillSettlementQueryResponseBodyModuleDataList) SetProjectCode(v string) *TrainBillSettlementQueryResponseBodyModuleDataList {
 	s.ProjectCode = &v
 	return s
@@ -53364,6 +53968,11 @@ func (s *TrainBillSettlementQueryResponseBodyModuleDataList) SetTravelerId(v str
 
 func (s *TrainBillSettlementQueryResponseBodyModuleDataList) SetTravelerJobNo(v string) *TrainBillSettlementQueryResponseBodyModuleDataList {
 	s.TravelerJobNo = &v
+	return s
+}
+
+func (s *TrainBillSettlementQueryResponseBodyModuleDataList) SetTravelerMemberTypeName(v string) *TrainBillSettlementQueryResponseBodyModuleDataList {
+	s.TravelerMemberTypeName = &v
 	return s
 }
 
@@ -64152,6 +64761,87 @@ func (client *Client) HotelOrderQuery(request *HotelOrderQueryRequest) (_result 
 	headers := &HotelOrderQueryHeaders{}
 	_result = &HotelOrderQueryResponse{}
 	_body, _err := client.HotelOrderQueryWithOptions(request, headers, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) HotelPricePullWithOptions(tmpReq *HotelPricePullRequest, headers *HotelPricePullHeaders, runtime *util.RuntimeOptions) (_result *HotelPricePullResponse, _err error) {
+	_err = util.ValidateModel(tmpReq)
+	if _err != nil {
+		return _result, _err
+	}
+	request := &HotelPricePullShrinkRequest{}
+	openapiutil.Convert(tmpReq, request)
+	if !tea.BoolValue(util.IsUnset(tmpReq.HotelIds)) {
+		request.HotelIdsShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.HotelIds, tea.String("hotel_ids"), tea.String("json"))
+	}
+
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.BtripUserId)) {
+		query["btrip_user_id"] = request.BtripUserId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.CheckIn)) {
+		query["check_in"] = request.CheckIn
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.CheckOut)) {
+		query["check_out"] = request.CheckOut
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.CityCode)) {
+		query["city_code"] = request.CityCode
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.HotelIdsShrink)) {
+		query["hotel_ids"] = request.HotelIdsShrink
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.PaymentType)) {
+		query["payment_type"] = request.PaymentType
+	}
+
+	realHeaders := make(map[string]*string)
+	if !tea.BoolValue(util.IsUnset(headers.CommonHeaders)) {
+		realHeaders = headers.CommonHeaders
+	}
+
+	if !tea.BoolValue(util.IsUnset(headers.XAcsBtripCorpToken)) {
+		realHeaders["x-acs-btrip-corp-token"] = util.ToJSONString(headers.XAcsBtripCorpToken)
+	}
+
+	req := &openapi.OpenApiRequest{
+		Headers: realHeaders,
+		Query:   openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("HotelPricePull"),
+		Version:     tea.String("2022-05-20"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/dtb-hotel/v1/prices/action/pull"),
+		Method:      tea.String("GET"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("ROA"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &HotelPricePullResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) HotelPricePull(request *HotelPricePullRequest) (_result *HotelPricePullResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	headers := &HotelPricePullHeaders{}
+	_result = &HotelPricePullResponse{}
+	_body, _err := client.HotelPricePullWithOptions(request, headers, runtime)
 	if _err != nil {
 		return _result, _err
 	}
