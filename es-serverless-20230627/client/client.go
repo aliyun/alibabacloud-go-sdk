@@ -20,8 +20,10 @@ type CreateAppRequest struct {
 	// 应用备注
 	Description *string                    `json:"description,omitempty" xml:"description,omitempty"`
 	Network     []*CreateAppRequestNetwork `json:"network,omitempty" xml:"network,omitempty" type:"Repeated"`
+	QuotaInfo   *CreateAppRequestQuotaInfo `json:"quotaInfo,omitempty" xml:"quotaInfo,omitempty" type:"Struct"`
 	RegionId    *string                    `json:"regionId,omitempty" xml:"regionId,omitempty"`
 	Version     *string                    `json:"version,omitempty" xml:"version,omitempty"`
+	DryRun      *bool                      `json:"dryRun,omitempty" xml:"dryRun,omitempty"`
 }
 
 func (s CreateAppRequest) String() string {
@@ -57,6 +59,11 @@ func (s *CreateAppRequest) SetNetwork(v []*CreateAppRequestNetwork) *CreateAppRe
 	return s
 }
 
+func (s *CreateAppRequest) SetQuotaInfo(v *CreateAppRequestQuotaInfo) *CreateAppRequest {
+	s.QuotaInfo = v
+	return s
+}
+
 func (s *CreateAppRequest) SetRegionId(v string) *CreateAppRequest {
 	s.RegionId = &v
 	return s
@@ -64,6 +71,11 @@ func (s *CreateAppRequest) SetRegionId(v string) *CreateAppRequest {
 
 func (s *CreateAppRequest) SetVersion(v string) *CreateAppRequest {
 	s.Version = &v
+	return s
+}
+
+func (s *CreateAppRequest) SetDryRun(v bool) *CreateAppRequest {
+	s.DryRun = &v
 	return s
 }
 
@@ -168,6 +180,35 @@ func (s *CreateAppRequestNetworkWhiteIpGroup) SetGroupName(v string) *CreateAppR
 
 func (s *CreateAppRequestNetworkWhiteIpGroup) SetIps(v []*string) *CreateAppRequestNetworkWhiteIpGroup {
 	s.Ips = v
+	return s
+}
+
+type CreateAppRequestQuotaInfo struct {
+	AppType *string `json:"appType,omitempty" xml:"appType,omitempty"`
+	Cu      *int32  `json:"cu,omitempty" xml:"cu,omitempty"`
+	Storage *int32  `json:"storage,omitempty" xml:"storage,omitempty"`
+}
+
+func (s CreateAppRequestQuotaInfo) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateAppRequestQuotaInfo) GoString() string {
+	return s.String()
+}
+
+func (s *CreateAppRequestQuotaInfo) SetAppType(v string) *CreateAppRequestQuotaInfo {
+	s.AppType = &v
+	return s
+}
+
+func (s *CreateAppRequestQuotaInfo) SetCu(v int32) *CreateAppRequestQuotaInfo {
+	s.Cu = &v
+	return s
+}
+
+func (s *CreateAppRequestQuotaInfo) SetStorage(v int32) *CreateAppRequestQuotaInfo {
+	s.Storage = &v
 	return s
 }
 
@@ -1153,6 +1194,11 @@ func (client *Client) CreateAppWithOptions(request *CreateAppRequest, headers ma
 	if _err != nil {
 		return _result, _err
 	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.DryRun)) {
+		query["dryRun"] = request.DryRun
+	}
+
 	body := map[string]interface{}{}
 	if !tea.BoolValue(util.IsUnset(request.AppName)) {
 		body["appName"] = request.AppName
@@ -1174,6 +1220,10 @@ func (client *Client) CreateAppWithOptions(request *CreateAppRequest, headers ma
 		body["network"] = request.Network
 	}
 
+	if !tea.BoolValue(util.IsUnset(request.QuotaInfo)) {
+		body["quotaInfo"] = request.QuotaInfo
+	}
+
 	if !tea.BoolValue(util.IsUnset(request.RegionId)) {
 		body["regionId"] = request.RegionId
 	}
@@ -1184,6 +1234,7 @@ func (client *Client) CreateAppWithOptions(request *CreateAppRequest, headers ma
 
 	req := &openapi.OpenApiRequest{
 		Headers: headers,
+		Query:   openapiutil.Query(query),
 		Body:    openapiutil.ParseToMap(body),
 	}
 	params := &openapi.Params{
