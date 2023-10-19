@@ -2408,7 +2408,8 @@ type CreateAuthorityTemplateResponseBody struct {
 	//
 	// *   **true**: The request was successful.
 	// *   **false**: The request failed.
-	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
+	Success *bool  `json:"Success,omitempty" xml:"Success,omitempty"`
+	Tid     *int64 `json:"Tid,omitempty" xml:"Tid,omitempty"`
 }
 
 func (s CreateAuthorityTemplateResponseBody) String() string {
@@ -2441,6 +2442,11 @@ func (s *CreateAuthorityTemplateResponseBody) SetRequestId(v string) *CreateAuth
 
 func (s *CreateAuthorityTemplateResponseBody) SetSuccess(v bool) *CreateAuthorityTemplateResponseBody {
 	s.Success = &v
+	return s
+}
+
+func (s *CreateAuthorityTemplateResponseBody) SetTid(v int64) *CreateAuthorityTemplateResponseBody {
+	s.Tid = &v
 	return s
 }
 
@@ -10266,7 +10272,8 @@ type GetAuthorityTemplateResponseBody struct {
 	//
 	// *   **true**: The request was successful.
 	// *   **false**: The request failed.
-	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
+	Success *bool  `json:"Success,omitempty" xml:"Success,omitempty"`
+	Tid     *int64 `json:"Tid,omitempty" xml:"Tid,omitempty"`
 }
 
 func (s GetAuthorityTemplateResponseBody) String() string {
@@ -10299,6 +10306,11 @@ func (s *GetAuthorityTemplateResponseBody) SetRequestId(v string) *GetAuthorityT
 
 func (s *GetAuthorityTemplateResponseBody) SetSuccess(v bool) *GetAuthorityTemplateResponseBody {
 	s.Success = &v
+	return s
+}
+
+func (s *GetAuthorityTemplateResponseBody) SetTid(v int64) *GetAuthorityTemplateResponseBody {
+	s.Tid = &v
 	return s
 }
 
@@ -10512,7 +10524,8 @@ type GetAuthorityTemplateItemResponseBody struct {
 	//
 	// *   **true**: The request was successful.
 	// *   **false**: The request failed.
-	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
+	Success *bool  `json:"Success,omitempty" xml:"Success,omitempty"`
+	Tid     *int64 `json:"Tid,omitempty" xml:"Tid,omitempty"`
 }
 
 func (s GetAuthorityTemplateItemResponseBody) String() string {
@@ -10545,6 +10558,11 @@ func (s *GetAuthorityTemplateItemResponseBody) SetRequestId(v string) *GetAuthor
 
 func (s *GetAuthorityTemplateItemResponseBody) SetSuccess(v bool) *GetAuthorityTemplateItemResponseBody {
 	s.Success = &v
+	return s
+}
+
+func (s *GetAuthorityTemplateItemResponseBody) SetTid(v int64) *GetAuthorityTemplateItemResponseBody {
+	s.Tid = &v
 	return s
 }
 
@@ -39723,7 +39741,8 @@ type UpdateAuthorityTemplateResponseBody struct {
 	//
 	// *   **true**: The request was successful.
 	// *   **false**: The request failed.
-	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
+	Success *bool  `json:"Success,omitempty" xml:"Success,omitempty"`
+	Tid     *int64 `json:"Tid,omitempty" xml:"Tid,omitempty"`
 }
 
 func (s UpdateAuthorityTemplateResponseBody) String() string {
@@ -39756,6 +39775,11 @@ func (s *UpdateAuthorityTemplateResponseBody) SetRequestId(v string) *UpdateAuth
 
 func (s *UpdateAuthorityTemplateResponseBody) SetSuccess(v bool) *UpdateAuthorityTemplateResponseBody {
 	s.Success = &v
+	return s
+}
+
+func (s *UpdateAuthorityTemplateResponseBody) SetTid(v int64) *UpdateAuthorityTemplateResponseBody {
+	s.Tid = &v
 	return s
 }
 
