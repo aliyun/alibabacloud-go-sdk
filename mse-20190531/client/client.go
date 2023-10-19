@@ -1516,16 +1516,18 @@ type AddGatewayRequest struct {
 	EnterpriseSecurityGroup *bool `json:"EnterpriseSecurityGroup,omitempty" xml:"EnterpriseSecurityGroup,omitempty"`
 	// The ID of the secondary vSwitch.
 	InternetSlbSpec *string `json:"InternetSlbSpec,omitempty" xml:"InternetSlbSpec,omitempty"`
-	// 网关产品类型：
-	// - mse_pro：传统实例
-	// - mse_serverless：Serverless
+	// The MSE instance type. Valid values:
+	//
+	// *   mse_pro: ordinary instance.
+	// *   mse_serverless: serverless instance.
 	MserVersion *string `json:"MserVersion,omitempty" xml:"MserVersion,omitempty"`
 	// The ID of the region.
 	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
-	// 购买Serverless实例时指定NLB的网络类型：
-	// - pubnet：公网
-	// - privatenet：私网
-	// - privatepubnet：公网+私网
+	// The network type of the Network Load Balancer (NLB) instance when the serverless NLB instance is purchased. Valid values:
+	//
+	// *   pubnet
+	// *   privatenet
+	// *   privatepubnet
 	NlbNetworkType *string `json:"NlbNetworkType,omitempty" xml:"NlbNetworkType,omitempty"`
 	// The specifications of the internal-facing Server Load Balancer (SLB) instance. Valid values:
 	//
@@ -1536,14 +1538,7 @@ type AddGatewayRequest struct {
 	// *   slb.s3.medium
 	// *   slb.s3.large
 	Region *string `json:"Region,omitempty" xml:"Region,omitempty"`
-	// The specifications of the Internet-facing SLB instance. Valid values:
-	//
-	// *   slb.s1.small
-	// *   slb.s2.small
-	// *   slb.s2.medium
-	// *   slb.s3.small
-	// *   slb.s3.medium
-	// *   slb.s3.large
+	// The number of nodes.
 	Replica *int32 `json:"Replica,omitempty" xml:"Replica,omitempty"`
 	// The extended field.
 	RequestPars *string `json:"RequestPars,omitempty" xml:"RequestPars,omitempty"`
@@ -1561,7 +1556,12 @@ type AddGatewayRequest struct {
 	// *   slb.s3.medium
 	// *   slb.s3.large
 	SlbSpec *string `json:"SlbSpec,omitempty" xml:"SlbSpec,omitempty"`
-	// The number of nodes.
+	// The node specifications. Valid values:
+	//
+	// *   MSE_GTW\_16\_32\_200\_c(16C32G)
+	// *   MSE_GTW\_2\_4\_200\_c(2C4G)
+	// *   MSE_GTW\_4\_8\_200\_c(4C8G)
+	// *   MSE_GTW\_8\_16\_200\_c(8C16G)
 	Spec *string `json:"Spec,omitempty" xml:"Spec,omitempty"`
 	// The tag object.
 	Tag []*AddGatewayRequestTag `json:"Tag,omitempty" xml:"Tag,omitempty" type:"Repeated"`
@@ -1789,16 +1789,18 @@ type AddGatewayShrinkRequest struct {
 	EnterpriseSecurityGroup *bool `json:"EnterpriseSecurityGroup,omitempty" xml:"EnterpriseSecurityGroup,omitempty"`
 	// The ID of the secondary vSwitch.
 	InternetSlbSpec *string `json:"InternetSlbSpec,omitempty" xml:"InternetSlbSpec,omitempty"`
-	// 网关产品类型：
-	// - mse_pro：传统实例
-	// - mse_serverless：Serverless
+	// The MSE instance type. Valid values:
+	//
+	// *   mse_pro: ordinary instance.
+	// *   mse_serverless: serverless instance.
 	MserVersion *string `json:"MserVersion,omitempty" xml:"MserVersion,omitempty"`
 	// The ID of the region.
 	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
-	// 购买Serverless实例时指定NLB的网络类型：
-	// - pubnet：公网
-	// - privatenet：私网
-	// - privatepubnet：公网+私网
+	// The network type of the Network Load Balancer (NLB) instance when the serverless NLB instance is purchased. Valid values:
+	//
+	// *   pubnet
+	// *   privatenet
+	// *   privatepubnet
 	NlbNetworkType *string `json:"NlbNetworkType,omitempty" xml:"NlbNetworkType,omitempty"`
 	// The specifications of the internal-facing Server Load Balancer (SLB) instance. Valid values:
 	//
@@ -1809,14 +1811,7 @@ type AddGatewayShrinkRequest struct {
 	// *   slb.s3.medium
 	// *   slb.s3.large
 	Region *string `json:"Region,omitempty" xml:"Region,omitempty"`
-	// The specifications of the Internet-facing SLB instance. Valid values:
-	//
-	// *   slb.s1.small
-	// *   slb.s2.small
-	// *   slb.s2.medium
-	// *   slb.s3.small
-	// *   slb.s3.medium
-	// *   slb.s3.large
+	// The number of nodes.
 	Replica *int32 `json:"Replica,omitempty" xml:"Replica,omitempty"`
 	// The extended field.
 	RequestPars *string `json:"RequestPars,omitempty" xml:"RequestPars,omitempty"`
@@ -1834,7 +1829,12 @@ type AddGatewayShrinkRequest struct {
 	// *   slb.s3.medium
 	// *   slb.s3.large
 	SlbSpec *string `json:"SlbSpec,omitempty" xml:"SlbSpec,omitempty"`
-	// The number of nodes.
+	// The node specifications. Valid values:
+	//
+	// *   MSE_GTW\_16\_32\_200\_c(16C32G)
+	// *   MSE_GTW\_2\_4\_200\_c(2C4G)
+	// *   MSE_GTW\_4\_8\_200\_c(4C8G)
+	// *   MSE_GTW\_8\_16\_200\_c(8C16G)
 	Spec *string `json:"Spec,omitempty" xml:"Spec,omitempty"`
 	// The tag object.
 	Tag []*AddGatewayShrinkRequestTag `json:"Tag,omitempty" xml:"Tag,omitempty" type:"Repeated"`
@@ -23153,7 +23153,7 @@ func (s *ListApplicationsWithTagRulesRequest) SetSource(v string) *ListApplicati
 }
 
 type ListApplicationsWithTagRulesResponseBody struct {
-	// The details of the data.
+	// The response parameters.
 	Data *ListApplicationsWithTagRulesResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
 	// The HTTP status code returned.
 	HttpStatusCode *int32 `json:"HttpStatusCode,omitempty" xml:"HttpStatusCode,omitempty"`
@@ -23209,7 +23209,7 @@ type ListApplicationsWithTagRulesResponseBodyData struct {
 	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
 	// The number of entries returned per page.
 	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	// The data returned.
+	// The returned data.
 	Result []*ListApplicationsWithTagRulesResponseBodyDataResult `json:"Result,omitempty" xml:"Result,omitempty" type:"Repeated"`
 	// The total number of entries returned.
 	TotalSize *int32 `json:"TotalSize,omitempty" xml:"TotalSize,omitempty"`
@@ -23250,7 +23250,7 @@ type ListApplicationsWithTagRulesResponseBodyDataResult struct {
 	AppName *string `json:"AppName,omitempty" xml:"AppName,omitempty"`
 	// The MSE namespace to which the application belongs.
 	Namespace *string `json:"Namespace,omitempty" xml:"Namespace,omitempty"`
-	// The details of the rule.
+	// The queried rules.
 	RouteRules []*ListApplicationsWithTagRulesResponseBodyDataResultRouteRules `json:"RouteRules,omitempty" xml:"RouteRules,omitempty" type:"Repeated"`
 	// The route state. Valid values:
 	//
@@ -23295,8 +23295,8 @@ func (s *ListApplicationsWithTagRulesResponseBodyDataResult) SetRouteStatus(v in
 type ListApplicationsWithTagRulesResponseBodyDataResultRouteRules struct {
 	// Indicates whether the alert rule is enabled. Valid values:
 	//
-	// *   `true`: enabled
-	// *   `false`: disabled
+	// *   `true`
+	// *   `false`
 	Enable *bool `json:"Enable,omitempty" xml:"Enable,omitempty"`
 	// The rule ID.
 	Id *int64 `json:"Id,omitempty" xml:"Id,omitempty"`
@@ -23308,7 +23308,7 @@ type ListApplicationsWithTagRulesResponseBodyDataResultRouteRules struct {
 	Rate *int32 `json:"Rate,omitempty" xml:"Rate,omitempty"`
 	// The details of the routing rule.
 	Rules *ListApplicationsWithTagRulesResponseBodyDataResultRouteRulesRules `json:"Rules,omitempty" xml:"Rules,omitempty" type:"Struct"`
-	// The status of the application.
+	// The status.
 	Status *int32 `json:"Status,omitempty" xml:"Status,omitempty"`
 	// The tag.
 	Tag *string `json:"Tag,omitempty" xml:"Tag,omitempty"`
@@ -25603,7 +25603,8 @@ type ListClustersResponseBodyData struct {
 	// The internal IP address.
 	IntranetAddress *string `json:"IntranetAddress,omitempty" xml:"IntranetAddress,omitempty"`
 	// The internal endpoint.
-	IntranetDomain *string `json:"IntranetDomain,omitempty" xml:"IntranetDomain,omitempty"`
+	IntranetDomain    *string                                        `json:"IntranetDomain,omitempty" xml:"IntranetDomain,omitempty"`
+	MaintenancePeriod *ListClustersResponseBodyDataMaintenancePeriod `json:"MaintenancePeriod,omitempty" xml:"MaintenancePeriod,omitempty" type:"Struct"`
 	// The edition of the cluster.
 	MseVersion *string `json:"MseVersion,omitempty" xml:"MseVersion,omitempty"`
 	// The ID of the resource group to which the instance belongs.
@@ -25698,6 +25699,11 @@ func (s *ListClustersResponseBodyData) SetIntranetDomain(v string) *ListClusters
 	return s
 }
 
+func (s *ListClustersResponseBodyData) SetMaintenancePeriod(v *ListClustersResponseBodyDataMaintenancePeriod) *ListClustersResponseBodyData {
+	s.MaintenancePeriod = v
+	return s
+}
+
 func (s *ListClustersResponseBodyData) SetMseVersion(v string) *ListClustersResponseBodyData {
 	s.MseVersion = &v
 	return s
@@ -25720,6 +25726,29 @@ func (s *ListClustersResponseBodyData) SetVersionCode(v string) *ListClustersRes
 
 func (s *ListClustersResponseBodyData) SetVpcId(v string) *ListClustersResponseBodyData {
 	s.VpcId = &v
+	return s
+}
+
+type ListClustersResponseBodyDataMaintenancePeriod struct {
+	EndTime   *string `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
+	StartTime *string `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
+}
+
+func (s ListClustersResponseBodyDataMaintenancePeriod) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListClustersResponseBodyDataMaintenancePeriod) GoString() string {
+	return s.String()
+}
+
+func (s *ListClustersResponseBodyDataMaintenancePeriod) SetEndTime(v string) *ListClustersResponseBodyDataMaintenancePeriod {
+	s.EndTime = &v
+	return s
+}
+
+func (s *ListClustersResponseBodyDataMaintenancePeriod) SetStartTime(v string) *ListClustersResponseBodyDataMaintenancePeriod {
+	s.StartTime = &v
 	return s
 }
 
@@ -27610,12 +27639,19 @@ type ListGatewayResponseBodyDataResult struct {
 	// The billing method.
 	ChargeType *string `json:"ChargeType,omitempty" xml:"ChargeType,omitempty"`
 	// The current version of the gateway.
-	CurrentVersion    *string                                         `json:"CurrentVersion,omitempty" xml:"CurrentVersion,omitempty"`
-	Elastic           *bool                                           `json:"Elastic,omitempty" xml:"Elastic,omitempty"`
-	ElasticInstanceId *string                                         `json:"ElasticInstanceId,omitempty" xml:"ElasticInstanceId,omitempty"`
-	ElasticPolicy     *ListGatewayResponseBodyDataResultElasticPolicy `json:"ElasticPolicy,omitempty" xml:"ElasticPolicy,omitempty" type:"Struct"`
-	ElasticReplica    *int32                                          `json:"ElasticReplica,omitempty" xml:"ElasticReplica,omitempty"`
-	ElasticType       *string                                         `json:"ElasticType,omitempty" xml:"ElasticType,omitempty"`
+	CurrentVersion *string `json:"CurrentVersion,omitempty" xml:"CurrentVersion,omitempty"`
+	// Indicates whether auto scale-out is enabled.
+	Elastic *bool `json:"Elastic,omitempty" xml:"Elastic,omitempty"`
+	// The ID of the elastic gateway. This parameter is returned if auto scale-out is used.
+	ElasticInstanceId *string `json:"ElasticInstanceId,omitempty" xml:"ElasticInstanceId,omitempty"`
+	// The auto scale-out policy.
+	ElasticPolicy *ListGatewayResponseBodyDataResultElasticPolicy `json:"ElasticPolicy,omitempty" xml:"ElasticPolicy,omitempty" type:"Struct"`
+	// The number of replicas that are automatically scaled out.
+	ElasticReplica *int32 `json:"ElasticReplica,omitempty" xml:"ElasticReplica,omitempty"`
+	// The type of auto scale-out. Valid value:
+	//
+	// *   CronHPA: scale-out by time
+	ElasticType *string `json:"ElasticType,omitempty" xml:"ElasticType,omitempty"`
 	// The time when the instance expires.
 	EndDate *string `json:"EndDate,omitempty" xml:"EndDate,omitempty"`
 	// The gateway type.
@@ -27648,11 +27684,11 @@ type ListGatewayResponseBodyDataResult struct {
 	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
 	// The user information.
 	PrimaryUser *string `json:"PrimaryUser,omitempty" xml:"PrimaryUser,omitempty"`
-	// The region in which the gateway resides.
+	// The region ID.
 	Region *string `json:"Region,omitempty" xml:"Region,omitempty"`
 	// The number of replicas.
 	Replica *int32 `json:"Replica,omitempty" xml:"Replica,omitempty"`
-	// The ID of the resource group.
+	// The resource group ID.
 	ResourceGroupId *string `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
 	// Indicates whether rollbacks are allowed.
 	RollBack *bool `json:"RollBack,omitempty" xml:"RollBack,omitempty"`
@@ -27666,8 +27702,8 @@ type ListGatewayResponseBodyDataResult struct {
 	// *   1: The gateway failed to be created.
 	// *   2: The gateway is running.
 	// *   3: The gateway is being changed.
-	// *   4: The gateway is scaling down.
-	// *   6: The gateway is scaling up.
+	// *   4: The gateway is scaling in.
+	// *   6: The gateway is scaling out.
 	// *   8: The gateway is being deleted.
 	// *   9: The gateway is suspended and is to be released.
 	// *   10: The gateway is restarting.
@@ -27680,11 +27716,13 @@ type ListGatewayResponseBodyDataResult struct {
 	// Indicates whether WebAssembly (Wasm) is supported.
 	SupportWasm *bool `json:"SupportWasm,omitempty" xml:"SupportWasm,omitempty"`
 	// The tag.
-	Tag          *string `json:"Tag,omitempty" xml:"Tag,omitempty"`
-	TotalReplica *int32  `json:"TotalReplica,omitempty" xml:"TotalReplica,omitempty"`
+	Tag *string `json:"Tag,omitempty" xml:"Tag,omitempty"`
+	// The total number of replicas, including the number of replicas that are automatically scaled out.
+	TotalReplica *int32 `json:"TotalReplica,omitempty" xml:"TotalReplica,omitempty"`
 	// Indicates whether the instance was upgraded.
-	Upgrade *bool   `json:"Upgrade,omitempty" xml:"Upgrade,omitempty"`
-	VpcId   *string `json:"VpcId,omitempty" xml:"VpcId,omitempty"`
+	Upgrade *bool `json:"Upgrade,omitempty" xml:"Upgrade,omitempty"`
+	// The ID of the virtual private cloud (VPC) to which the gateway belongs.
+	VpcId *string `json:"VpcId,omitempty" xml:"VpcId,omitempty"`
 	// The ID of the secondary vSwitch.
 	Vswitch2 *string `json:"Vswitch2,omitempty" xml:"Vswitch2,omitempty"`
 }
@@ -27903,9 +27941,15 @@ func (s *ListGatewayResponseBodyDataResult) SetVswitch2(v string) *ListGatewayRe
 }
 
 type ListGatewayResponseBodyDataResultElasticPolicy struct {
-	Elastic        *bool                                                           `json:"Elastic,omitempty" xml:"Elastic,omitempty"`
-	ElasticType    *string                                                         `json:"ElasticType,omitempty" xml:"ElasticType,omitempty"`
-	MaxReplica     *int32                                                          `json:"MaxReplica,omitempty" xml:"MaxReplica,omitempty"`
+	// Indicates whether auto scale-out is enabled.
+	Elastic *bool `json:"Elastic,omitempty" xml:"Elastic,omitempty"`
+	// The type of auto scale-out. Valid value:
+	//
+	// *   CronHPA: scale-out by time
+	ElasticType *string `json:"ElasticType,omitempty" xml:"ElasticType,omitempty"`
+	// The maximum number of instances that are automatically scaled out. This parameter is used for horizontal scale-out.
+	MaxReplica *int32 `json:"MaxReplica,omitempty" xml:"MaxReplica,omitempty"`
+	// The time policy list for auto scale-out.
 	TimePolicyList []*ListGatewayResponseBodyDataResultElasticPolicyTimePolicyList `json:"TimePolicyList,omitempty" xml:"TimePolicyList,omitempty" type:"Repeated"`
 }
 
@@ -27938,9 +27982,12 @@ func (s *ListGatewayResponseBodyDataResultElasticPolicy) SetTimePolicyList(v []*
 }
 
 type ListGatewayResponseBodyDataResultElasticPolicyTimePolicyList struct {
-	DesiredReplica *int32  `json:"DesiredReplica,omitempty" xml:"DesiredReplica,omitempty"`
-	EndTime        *string `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
-	StartTime      *string `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
+	// The expected number of replicas for auto scale-out.
+	DesiredReplica *int32 `json:"DesiredReplica,omitempty" xml:"DesiredReplica,omitempty"`
+	// The end time of auto scale-out.
+	EndTime *string `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
+	// The start time of auto scale-out.
+	StartTime *string `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
 }
 
 func (s ListGatewayResponseBodyDataResultElasticPolicyTimePolicyList) String() string {
@@ -28109,7 +28156,10 @@ type ListGatewayResponseBodyDataResultSlb struct {
 	SlbSpec *string `json:"SlbSpec,omitempty" xml:"SlbSpec,omitempty"`
 	// The description of the state.
 	StatusDesc *string `json:"StatusDesc,omitempty" xml:"StatusDesc,omitempty"`
-	// Indicates whether the instance was deployed on the public network or internal network.
+	// The network type. Valid values:
+	//
+	// *   PUB_NET
+	// *   PRIVATE_NET
 	Type *string `json:"Type,omitempty" xml:"Type,omitempty"`
 }
 
@@ -37642,6 +37692,7 @@ type QueryConfigResponseBodyData struct {
 	// *   `true`: supported.
 	// *   `false`: not supported.
 	ConfigSecretSupported *bool `json:"ConfigSecretSupported,omitempty" xml:"ConfigSecretSupported,omitempty"`
+	ConsoleUIEnabled      *bool `json:"ConsoleUIEnabled,omitempty" xml:"ConsoleUIEnabled,omitempty"`
 	// Indicates whether access port 8761 was enabled for Eureka. If this port is disabled, applications cannot use the Eureka protocol for service registration and discovery.
 	EurekaSupported *bool `json:"EurekaSupported,omitempty" xml:"EurekaSupported,omitempty"`
 	// Indicates whether the time to live (TTL) configuration is enabled. This parameter is valid for ZooKeeper instances.
@@ -37755,6 +37806,11 @@ func (s *QueryConfigResponseBodyData) SetConfigSecretEnabled(v bool) *QueryConfi
 
 func (s *QueryConfigResponseBodyData) SetConfigSecretSupported(v bool) *QueryConfigResponseBodyData {
 	s.ConfigSecretSupported = &v
+	return s
+}
+
+func (s *QueryConfigResponseBodyData) SetConsoleUIEnabled(v bool) *QueryConfigResponseBodyData {
+	s.ConsoleUIEnabled = &v
 	return s
 }
 
@@ -41525,8 +41581,9 @@ type UpdateConfigRequest struct {
 	// > Before you configure this parameter, you must call the QueryConfig operation to obtain the ConfigSecretSupported parameter value to check whether the instance supports configuration encryption.
 	ConfigSecretEnabled *bool `json:"ConfigSecretEnabled,omitempty" xml:"ConfigSecretEnabled,omitempty"`
 	// The format of the configuration. Supported formats include TEXT, JSON, XML, and HTML.
-	ConfigType      *string `json:"ConfigType,omitempty" xml:"ConfigType,omitempty"`
-	EurekaSupported *bool   `json:"EurekaSupported,omitempty" xml:"EurekaSupported,omitempty"`
+	ConfigType       *string `json:"ConfigType,omitempty" xml:"ConfigType,omitempty"`
+	ConsoleUIEnabled *bool   `json:"ConsoleUIEnabled,omitempty" xml:"ConsoleUIEnabled,omitempty"`
+	EurekaSupported  *bool   `json:"EurekaSupported,omitempty" xml:"EurekaSupported,omitempty"`
 	// Specifies whether to enable the time to live (TTL) configuration. This parameter is valid for ZooKeeper instances.
 	ExtendedTypesEnable *string `json:"ExtendedTypesEnable,omitempty" xml:"ExtendedTypesEnable,omitempty"`
 	// The maximum connection duration of the instance. This parameter is valid for ZooKeeper instances. Unit: seconds.
@@ -41620,6 +41677,11 @@ func (s *UpdateConfigRequest) SetConfigSecretEnabled(v bool) *UpdateConfigReques
 
 func (s *UpdateConfigRequest) SetConfigType(v string) *UpdateConfigRequest {
 	s.ConfigType = &v
+	return s
+}
+
+func (s *UpdateConfigRequest) SetConsoleUIEnabled(v bool) *UpdateConfigRequest {
+	s.ConsoleUIEnabled = &v
 	return s
 }
 
@@ -46406,18 +46468,33 @@ func (s *UpdateGatewayRouteWafStatusResponse) SetBody(v *UpdateGatewayRouteWafSt
 }
 
 type UpdateGatewayServiceCheckRequest struct {
-	AcceptLanguage     *string  `json:"AcceptLanguage,omitempty" xml:"AcceptLanguage,omitempty"`
-	Check              *bool    `json:"Check,omitempty" xml:"Check,omitempty"`
-	ExpectedStatuses   []*int32 `json:"ExpectedStatuses,omitempty" xml:"ExpectedStatuses,omitempty" type:"Repeated"`
-	GatewayUniqueId    *string  `json:"GatewayUniqueId,omitempty" xml:"GatewayUniqueId,omitempty"`
-	HealthyThreshold   *int32   `json:"HealthyThreshold,omitempty" xml:"HealthyThreshold,omitempty"`
-	HttpHost           *string  `json:"HttpHost,omitempty" xml:"HttpHost,omitempty"`
-	HttpPath           *string  `json:"HttpPath,omitempty" xml:"HttpPath,omitempty"`
-	Interval           *int32   `json:"Interval,omitempty" xml:"Interval,omitempty"`
-	Protocol           *string  `json:"Protocol,omitempty" xml:"Protocol,omitempty"`
-	ServiceId          *string  `json:"ServiceId,omitempty" xml:"ServiceId,omitempty"`
-	Timeout            *int32   `json:"Timeout,omitempty" xml:"Timeout,omitempty"`
-	UnhealthyThreshold *int32   `json:"UnhealthyThreshold,omitempty" xml:"UnhealthyThreshold,omitempty"`
+	// The language in which you want to display the results. Valid values: zh and en. zh indicates Chinese, which is the default value. en indicates English.
+	AcceptLanguage *string `json:"AcceptLanguage,omitempty" xml:"AcceptLanguage,omitempty"`
+	// Specifies whether to enable the health check.
+	Check *bool `json:"Check,omitempty" xml:"Check,omitempty"`
+	// The expected status code, which is required if the health check protocol is HTTP.
+	ExpectedStatuses []*int32 `json:"ExpectedStatuses,omitempty" xml:"ExpectedStatuses,omitempty" type:"Repeated"`
+	// The unique ID of the gateway.
+	GatewayUniqueId *string `json:"GatewayUniqueId,omitempty" xml:"GatewayUniqueId,omitempty"`
+	// The healthy threshold of the health check.
+	HealthyThreshold *int32 `json:"HealthyThreshold,omitempty" xml:"HealthyThreshold,omitempty"`
+	// The health check domain name, which is optional if the health check protocol is HTTP.
+	HttpHost *string `json:"HttpHost,omitempty" xml:"HttpHost,omitempty"`
+	// The health check path, which is required if the health check protocol is HTTP.
+	HttpPath *string `json:"HttpPath,omitempty" xml:"HttpPath,omitempty"`
+	// The interval at which the health check is performed.
+	Interval *int32 `json:"Interval,omitempty" xml:"Interval,omitempty"`
+	// The health check protocol. Valid values:
+	//
+	// *   HTTP
+	// *   TCP
+	Protocol *string `json:"Protocol,omitempty" xml:"Protocol,omitempty"`
+	// The ID of the service.
+	ServiceId *string `json:"ServiceId,omitempty" xml:"ServiceId,omitempty"`
+	// The timeout period of responses to the health check. Unit: seconds.
+	Timeout *int32 `json:"Timeout,omitempty" xml:"Timeout,omitempty"`
+	// The unhealthy threshold of the health check.
+	UnhealthyThreshold *int32 `json:"UnhealthyThreshold,omitempty" xml:"UnhealthyThreshold,omitempty"`
 }
 
 func (s UpdateGatewayServiceCheckRequest) String() string {
@@ -46489,18 +46566,33 @@ func (s *UpdateGatewayServiceCheckRequest) SetUnhealthyThreshold(v int32) *Updat
 }
 
 type UpdateGatewayServiceCheckShrinkRequest struct {
-	AcceptLanguage         *string `json:"AcceptLanguage,omitempty" xml:"AcceptLanguage,omitempty"`
-	Check                  *bool   `json:"Check,omitempty" xml:"Check,omitempty"`
+	// The language in which you want to display the results. Valid values: zh and en. zh indicates Chinese, which is the default value. en indicates English.
+	AcceptLanguage *string `json:"AcceptLanguage,omitempty" xml:"AcceptLanguage,omitempty"`
+	// Specifies whether to enable the health check.
+	Check *bool `json:"Check,omitempty" xml:"Check,omitempty"`
+	// The expected status code, which is required if the health check protocol is HTTP.
 	ExpectedStatusesShrink *string `json:"ExpectedStatuses,omitempty" xml:"ExpectedStatuses,omitempty"`
-	GatewayUniqueId        *string `json:"GatewayUniqueId,omitempty" xml:"GatewayUniqueId,omitempty"`
-	HealthyThreshold       *int32  `json:"HealthyThreshold,omitempty" xml:"HealthyThreshold,omitempty"`
-	HttpHost               *string `json:"HttpHost,omitempty" xml:"HttpHost,omitempty"`
-	HttpPath               *string `json:"HttpPath,omitempty" xml:"HttpPath,omitempty"`
-	Interval               *int32  `json:"Interval,omitempty" xml:"Interval,omitempty"`
-	Protocol               *string `json:"Protocol,omitempty" xml:"Protocol,omitempty"`
-	ServiceId              *string `json:"ServiceId,omitempty" xml:"ServiceId,omitempty"`
-	Timeout                *int32  `json:"Timeout,omitempty" xml:"Timeout,omitempty"`
-	UnhealthyThreshold     *int32  `json:"UnhealthyThreshold,omitempty" xml:"UnhealthyThreshold,omitempty"`
+	// The unique ID of the gateway.
+	GatewayUniqueId *string `json:"GatewayUniqueId,omitempty" xml:"GatewayUniqueId,omitempty"`
+	// The healthy threshold of the health check.
+	HealthyThreshold *int32 `json:"HealthyThreshold,omitempty" xml:"HealthyThreshold,omitempty"`
+	// The health check domain name, which is optional if the health check protocol is HTTP.
+	HttpHost *string `json:"HttpHost,omitempty" xml:"HttpHost,omitempty"`
+	// The health check path, which is required if the health check protocol is HTTP.
+	HttpPath *string `json:"HttpPath,omitempty" xml:"HttpPath,omitempty"`
+	// The interval at which the health check is performed.
+	Interval *int32 `json:"Interval,omitempty" xml:"Interval,omitempty"`
+	// The health check protocol. Valid values:
+	//
+	// *   HTTP
+	// *   TCP
+	Protocol *string `json:"Protocol,omitempty" xml:"Protocol,omitempty"`
+	// The ID of the service.
+	ServiceId *string `json:"ServiceId,omitempty" xml:"ServiceId,omitempty"`
+	// The timeout period of responses to the health check. Unit: seconds.
+	Timeout *int32 `json:"Timeout,omitempty" xml:"Timeout,omitempty"`
+	// The unhealthy threshold of the health check.
+	UnhealthyThreshold *int32 `json:"UnhealthyThreshold,omitempty" xml:"UnhealthyThreshold,omitempty"`
 }
 
 func (s UpdateGatewayServiceCheckShrinkRequest) String() string {
@@ -46572,12 +46664,18 @@ func (s *UpdateGatewayServiceCheckShrinkRequest) SetUnhealthyThreshold(v int32) 
 }
 
 type UpdateGatewayServiceCheckResponseBody struct {
-	Code           *int32  `json:"Code,omitempty" xml:"Code,omitempty"`
-	Data           *int64  `json:"Data,omitempty" xml:"Data,omitempty"`
-	HttpStatusCode *int32  `json:"HttpStatusCode,omitempty" xml:"HttpStatusCode,omitempty"`
-	Message        *string `json:"Message,omitempty" xml:"Message,omitempty"`
-	RequestId      *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	Success        *bool   `json:"Success,omitempty" xml:"Success,omitempty"`
+	// The response code. The status code 200 indicates that the request was successful.
+	Code *int32 `json:"Code,omitempty" xml:"Code,omitempty"`
+	// The service ID of the operation.
+	Data *int64 `json:"Data,omitempty" xml:"Data,omitempty"`
+	// The HTTP status code returned.
+	HttpStatusCode *int32 `json:"HttpStatusCode,omitempty" xml:"HttpStatusCode,omitempty"`
+	// The message returned.
+	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// The request ID.
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// Indicates whether the request was successful. Valid values: true and false.
+	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
 }
 
 func (s UpdateGatewayServiceCheckResponseBody) String() string {
@@ -60114,6 +60212,10 @@ func (client *Client) UpdateConfigWithOptions(request *UpdateConfigRequest, runt
 
 	if !tea.BoolValue(util.IsUnset(request.ConfigType)) {
 		query["ConfigType"] = request.ConfigType
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ConsoleUIEnabled)) {
+		query["ConsoleUIEnabled"] = request.ConsoleUIEnabled
 	}
 
 	if !tea.BoolValue(util.IsUnset(request.EurekaSupported)) {
