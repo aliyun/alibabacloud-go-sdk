@@ -346,7 +346,7 @@ type AddCommonBandwidthPackageIpRequest struct {
 	//
 	// You can call the [DescribeEipAddresses](~~36018~~) operation to query EIP IDs.
 	IpInstanceId *string `json:"IpInstanceId,omitempty" xml:"IpInstanceId,omitempty"`
-	// The type of the IP address. Set the value to **EIP** to associate EIPs with the Internet Shared Bandwidth instance.
+	// The type of IP address. Set the value to **EIP** to associate EIPs with the Internet Shared Bandwidth instance.
 	IpType       *string `json:"IpType,omitempty" xml:"IpType,omitempty"`
 	OwnerAccount *string `json:"OwnerAccount,omitempty" xml:"OwnerAccount,omitempty"`
 	OwnerId      *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
@@ -471,13 +471,13 @@ type AddCommonBandwidthPackageIpsRequest struct {
 	//
 	// You can specify at most 10 EIP IDs at a time.
 	IpInstanceIds []*string `json:"IpInstanceIds,omitempty" xml:"IpInstanceIds,omitempty" type:"Repeated"`
-	// The type of the IP address. Set the value to **EIP** to associate EIPs with the Internet Shared Bandwidth instance.
+	// The type of the IP address. Set the value to **EIP** to associate EIPs with the EIP bandwidth plan.
 	IpType       *string `json:"IpType,omitempty" xml:"IpType,omitempty"`
 	OwnerAccount *string `json:"OwnerAccount,omitempty" xml:"OwnerAccount,omitempty"`
 	OwnerId      *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
 	// The region ID of the Internet Shared Bandwidth instance.
 	//
-	// You can call the [DescribeRegions](~~36063~~) operation to query the most recent region list.
+	// You can call the [DescribeRegions](~~448570~~) operation to query the most recent region list.
 	RegionId             *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 	ResourceOwnerAccount *string `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
 	ResourceOwnerId      *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
@@ -5676,6 +5676,7 @@ type CreateCustomerGatewayRequest struct {
 	//
 	// You can call the [DescribeRegions](~~36063~~) operation to query the most recent region list.
 	RegionId             *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	ResourceGroupId      *string `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
 	ResourceOwnerAccount *string `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
 	ResourceOwnerId      *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
 	// The tag value.
@@ -5736,6 +5737,11 @@ func (s *CreateCustomerGatewayRequest) SetOwnerId(v int64) *CreateCustomerGatewa
 
 func (s *CreateCustomerGatewayRequest) SetRegionId(v string) *CreateCustomerGatewayRequest {
 	s.RegionId = &v
+	return s
+}
+
+func (s *CreateCustomerGatewayRequest) SetResourceGroupId(v string) *CreateCustomerGatewayRequest {
+	s.ResourceGroupId = &v
 	return s
 }
 
@@ -15465,6 +15471,7 @@ type CreateVpnAttachmentRequest struct {
 	// *   If you set **LocalSubnet** and **RemoteSubnet** to 0.0.0.0/0, the routing mode of the IPsec-VPN connection is set to Destination Routing Mode.
 	// *   If you set **LocalSubnet** and **RemoteSubnet** to specific CIDR blocks, the routing mode of the IPsec-VPN connection is set to Protected Data Flows.
 	RemoteSubnet         *string `json:"RemoteSubnet,omitempty" xml:"RemoteSubnet,omitempty"`
+	ResourceGroupId      *string `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
 	ResourceOwnerAccount *string `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
 	ResourceOwnerId      *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
 	// The tag value.
@@ -15565,6 +15572,11 @@ func (s *CreateVpnAttachmentRequest) SetRemoteCaCert(v string) *CreateVpnAttachm
 
 func (s *CreateVpnAttachmentRequest) SetRemoteSubnet(v string) *CreateVpnAttachmentRequest {
 	s.RemoteSubnet = &v
+	return s
+}
+
+func (s *CreateVpnAttachmentRequest) SetResourceGroupId(v string) *CreateVpnAttachmentRequest {
+	s.ResourceGroupId = &v
 	return s
 }
 
@@ -16407,6 +16419,7 @@ type CreateVpnGatewayRequest struct {
 	Period *int32 `json:"Period,omitempty" xml:"Period,omitempty"`
 	// The region ID of the VPN gateway. You can call the [DescribeRegions](~~36063~~) operation to query the most recent region list.
 	RegionId             *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	ResourceGroupId      *string `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
 	ResourceOwnerAccount *string `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
 	ResourceOwnerId      *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
 	// The maximum number of clients that can be connected at the same time. Valid values: **5** (default), **10**, **20**, **50**, **100**, **200**, **500**, and **1000**.
@@ -16494,6 +16507,11 @@ func (s *CreateVpnGatewayRequest) SetPeriod(v int32) *CreateVpnGatewayRequest {
 
 func (s *CreateVpnGatewayRequest) SetRegionId(v string) *CreateVpnGatewayRequest {
 	s.RegionId = &v
+	return s
+}
+
+func (s *CreateVpnGatewayRequest) SetResourceGroupId(v string) *CreateVpnGatewayRequest {
+	s.ResourceGroupId = &v
 	return s
 }
 
@@ -24851,7 +24869,8 @@ type DescribeCustomerGatewayResponseBody struct {
 	// The name of the customer gateway.
 	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
 	// The ID of the request.
-	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	RequestId       *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	ResourceGroupId *string `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
 	// The list of tags added to the customer gateway.
 	Tags *DescribeCustomerGatewayResponseBodyTags `json:"Tags,omitempty" xml:"Tags,omitempty" type:"Struct"`
 }
@@ -24901,6 +24920,11 @@ func (s *DescribeCustomerGatewayResponseBody) SetName(v string) *DescribeCustome
 
 func (s *DescribeCustomerGatewayResponseBody) SetRequestId(v string) *DescribeCustomerGatewayResponseBody {
 	s.RequestId = &v
+	return s
+}
+
+func (s *DescribeCustomerGatewayResponseBody) SetResourceGroupId(v string) *DescribeCustomerGatewayResponseBody {
+	s.ResourceGroupId = &v
 	return s
 }
 
@@ -24995,6 +25019,7 @@ type DescribeCustomerGatewaysRequest struct {
 	//
 	// You can call the [DescribeRegions](~~36063~~) operation to query the most recent region list.
 	RegionId             *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	ResourceGroupId      *string `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
 	ResourceOwnerAccount *string `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
 	ResourceOwnerId      *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
 	// The tag value.
@@ -25040,6 +25065,11 @@ func (s *DescribeCustomerGatewaysRequest) SetPageSize(v int32) *DescribeCustomer
 
 func (s *DescribeCustomerGatewaysRequest) SetRegionId(v string) *DescribeCustomerGatewaysRequest {
 	s.RegionId = &v
+	return s
+}
+
+func (s *DescribeCustomerGatewaysRequest) SetResourceGroupId(v string) *DescribeCustomerGatewaysRequest {
+	s.ResourceGroupId = &v
 	return s
 }
 
@@ -25170,7 +25200,8 @@ type DescribeCustomerGatewaysResponseBodyCustomerGatewaysCustomerGateway struct 
 	// The public IP address of the gateway device in the data center.
 	IpAddress *string `json:"IpAddress,omitempty" xml:"IpAddress,omitempty"`
 	// The name of the customer gateway.
-	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	Name            *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	ResourceGroupId *string `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
 	// The list of tags added to the customer gateway.
 	Tags *DescribeCustomerGatewaysResponseBodyCustomerGatewaysCustomerGatewayTags `json:"Tags,omitempty" xml:"Tags,omitempty" type:"Struct"`
 }
@@ -25215,6 +25246,11 @@ func (s *DescribeCustomerGatewaysResponseBodyCustomerGatewaysCustomerGateway) Se
 
 func (s *DescribeCustomerGatewaysResponseBodyCustomerGatewaysCustomerGateway) SetName(v string) *DescribeCustomerGatewaysResponseBodyCustomerGatewaysCustomerGateway {
 	s.Name = &v
+	return s
+}
+
+func (s *DescribeCustomerGatewaysResponseBodyCustomerGatewaysCustomerGateway) SetResourceGroupId(v string) *DescribeCustomerGatewaysResponseBodyCustomerGatewaysCustomerGateway {
+	s.ResourceGroupId = &v
 	return s
 }
 
@@ -37573,7 +37609,8 @@ type DescribeSslVpnClientCertResponseBody struct {
 	// The ID of the region where the SSL client certificate is created.
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 	// The request ID.
-	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	RequestId       *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	ResourceGroupId *string `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
 	// The ID of the SSL client certificate.
 	SslVpnClientCertId *string `json:"SslVpnClientCertId,omitempty" xml:"SslVpnClientCertId,omitempty"`
 	// The ID of the SSL server.
@@ -37639,6 +37676,11 @@ func (s *DescribeSslVpnClientCertResponseBody) SetRequestId(v string) *DescribeS
 	return s
 }
 
+func (s *DescribeSslVpnClientCertResponseBody) SetResourceGroupId(v string) *DescribeSslVpnClientCertResponseBody {
+	s.ResourceGroupId = &v
+	return s
+}
+
 func (s *DescribeSslVpnClientCertResponseBody) SetSslVpnClientCertId(v string) *DescribeSslVpnClientCertResponseBody {
 	s.SslVpnClientCertId = &v
 	return s
@@ -37696,6 +37738,7 @@ type DescribeSslVpnClientCertsRequest struct {
 	//
 	// You can call the [DescribeRegions](~~36063~~) operation to query the most recent region list.
 	RegionId             *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	ResourceGroupId      *string `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
 	ResourceOwnerAccount *string `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
 	ResourceOwnerId      *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
 	// The ID of the SSL client certificate.
@@ -37739,6 +37782,11 @@ func (s *DescribeSslVpnClientCertsRequest) SetPageSize(v int32) *DescribeSslVpnC
 
 func (s *DescribeSslVpnClientCertsRequest) SetRegionId(v string) *DescribeSslVpnClientCertsRequest {
 	s.RegionId = &v
+	return s
+}
+
+func (s *DescribeSslVpnClientCertsRequest) SetResourceGroupId(v string) *DescribeSslVpnClientCertsRequest {
+	s.ResourceGroupId = &v
 	return s
 }
 
@@ -37837,7 +37885,8 @@ type DescribeSslVpnClientCertsResponseBodySslVpnClientCertKeysSslVpnClientCertKe
 	// The name of the SSL client certificate.
 	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
 	// The region where the SSL client certificate is created.
-	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	RegionId        *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	ResourceGroupId *string `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
 	// The ID of the SSL client certificate.
 	SslVpnClientCertId *string `json:"SslVpnClientCertId,omitempty" xml:"SslVpnClientCertId,omitempty"`
 	// The ID of the SSL server.
@@ -37875,6 +37924,11 @@ func (s *DescribeSslVpnClientCertsResponseBodySslVpnClientCertKeysSslVpnClientCe
 
 func (s *DescribeSslVpnClientCertsResponseBodySslVpnClientCertKeysSslVpnClientCertKey) SetRegionId(v string) *DescribeSslVpnClientCertsResponseBodySslVpnClientCertKeysSslVpnClientCertKey {
 	s.RegionId = &v
+	return s
+}
+
+func (s *DescribeSslVpnClientCertsResponseBodySslVpnClientCertKeysSslVpnClientCertKey) SetResourceGroupId(v string) *DescribeSslVpnClientCertsResponseBodySslVpnClientCertKeysSslVpnClientCertKey {
+	s.ResourceGroupId = &v
 	return s
 }
 
@@ -38164,6 +38218,7 @@ type DescribeSslVpnServersRequest struct {
 	//
 	// You can call the [DescribeRegions](~~36063~~) operation to query the most recent region list.
 	RegionId             *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	ResourceGroupId      *string `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
 	ResourceOwnerAccount *string `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
 	ResourceOwnerId      *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
 	// The ID of the SSL-VPN server.
@@ -38207,6 +38262,11 @@ func (s *DescribeSslVpnServersRequest) SetPageSize(v int32) *DescribeSslVpnServe
 
 func (s *DescribeSslVpnServersRequest) SetRegionId(v string) *DescribeSslVpnServersRequest {
 	s.RegionId = &v
+	return s
+}
+
+func (s *DescribeSslVpnServersRequest) SetResourceGroupId(v string) *DescribeSslVpnServersRequest {
+	s.ResourceGroupId = &v
 	return s
 }
 
@@ -38329,7 +38389,8 @@ type DescribeSslVpnServersResponseBodySslVpnServersSslVpnServer struct {
 	// The protocol that is used by the SSL server.
 	Proto *string `json:"Proto,omitempty" xml:"Proto,omitempty"`
 	// The ID of the region where the SSL server is created.
-	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	RegionId        *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	ResourceGroupId *string `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
 	// The ID of the SSL server.
 	SslVpnServerId *string `json:"SslVpnServerId,omitempty" xml:"SslVpnServerId,omitempty"`
 	// The ID of the VPN gateway.
@@ -38416,6 +38477,11 @@ func (s *DescribeSslVpnServersResponseBodySslVpnServersSslVpnServer) SetProto(v 
 
 func (s *DescribeSslVpnServersResponseBodySslVpnServersSslVpnServer) SetRegionId(v string) *DescribeSslVpnServersResponseBodySslVpnServersSslVpnServer {
 	s.RegionId = &v
+	return s
+}
+
+func (s *DescribeSslVpnServersResponseBodySslVpnServersSslVpnServer) SetResourceGroupId(v string) *DescribeSslVpnServersResponseBodySslVpnServersSslVpnServer {
+	s.ResourceGroupId = &v
 	return s
 }
 
@@ -43139,7 +43205,8 @@ type DescribeVpnConnectionResponseBody struct {
 	// Multiple CIDR blocks are separated by commas (,).
 	RemoteSubnet *string `json:"RemoteSubnet,omitempty" xml:"RemoteSubnet,omitempty"`
 	// The request ID.
-	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	RequestId       *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	ResourceGroupId *string `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
 	// The bandwidth specification of the IPsec-VPN connection. Unit: **Mbit/s**.
 	Spec *string `json:"Spec,omitempty" xml:"Spec,omitempty"`
 	// The association state of the IPsec-VPN connection. Valid values:
@@ -43281,6 +43348,11 @@ func (s *DescribeVpnConnectionResponseBody) SetRemoteSubnet(v string) *DescribeV
 
 func (s *DescribeVpnConnectionResponseBody) SetRequestId(v string) *DescribeVpnConnectionResponseBody {
 	s.RequestId = &v
+	return s
+}
+
+func (s *DescribeVpnConnectionResponseBody) SetResourceGroupId(v string) *DescribeVpnConnectionResponseBody {
+	s.ResourceGroupId = &v
 	return s
 }
 
@@ -44207,6 +44279,7 @@ type DescribeVpnConnectionsRequest struct {
 	//
 	// You can call the [DescribeRegions](~~36063~~) operation to query the most recent region list.
 	RegionId             *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	ResourceGroupId      *string `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
 	ResourceOwnerAccount *string `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
 	ResourceOwnerId      *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
 	// The tag value.
@@ -44256,6 +44329,11 @@ func (s *DescribeVpnConnectionsRequest) SetPageSize(v int32) *DescribeVpnConnect
 
 func (s *DescribeVpnConnectionsRequest) SetRegionId(v string) *DescribeVpnConnectionsRequest {
 	s.RegionId = &v
+	return s
+}
+
+func (s *DescribeVpnConnectionsRequest) SetResourceGroupId(v string) *DescribeVpnConnectionsRequest {
+	s.ResourceGroupId = &v
 	return s
 }
 
@@ -44450,7 +44528,8 @@ type DescribeVpnConnectionsResponseBodyVpnConnectionsVpnConnection struct {
 	// The CIDR block on the data center side.
 	//
 	// Multiple CIDR blocks are separated by commas (,).
-	RemoteSubnet *string `json:"RemoteSubnet,omitempty" xml:"RemoteSubnet,omitempty"`
+	RemoteSubnet    *string `json:"RemoteSubnet,omitempty" xml:"RemoteSubnet,omitempty"`
+	ResourceGroupId *string `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
 	// The bandwidth specification of the IPsec-VPN connection. Unit: **Mbit/s**.
 	Spec *string `json:"Spec,omitempty" xml:"Spec,omitempty"`
 	// The association state of the IPsec-VPN connection. Valid values:
@@ -44583,6 +44662,11 @@ func (s *DescribeVpnConnectionsResponseBodyVpnConnectionsVpnConnection) SetRemot
 
 func (s *DescribeVpnConnectionsResponseBodyVpnConnectionsVpnConnection) SetRemoteSubnet(v string) *DescribeVpnConnectionsResponseBodyVpnConnectionsVpnConnection {
 	s.RemoteSubnet = &v
+	return s
+}
+
+func (s *DescribeVpnConnectionsResponseBodyVpnConnectionsVpnConnection) SetResourceGroupId(v string) *DescribeVpnConnectionsResponseBodyVpnConnectionsVpnConnection {
+	s.ResourceGroupId = &v
 	return s
 }
 
@@ -45601,6 +45685,7 @@ type DescribeVpnGatewayResponseBody struct {
 	//
 	// > This set of parameters is returned only when **IncludeReservationData** is set to **true**.
 	ReservationData *DescribeVpnGatewayResponseBodyReservationData `json:"ReservationData,omitempty" xml:"ReservationData,omitempty" type:"Struct"`
+	ResourceGroupId *string                                        `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
 	// The maximum bandwidth of the VPN gateway. Unit: Mbit/s.
 	Spec *string `json:"Spec,omitempty" xml:"Spec,omitempty"`
 	// The maximum number of concurrent SSL-VPN connections.
@@ -45742,6 +45827,11 @@ func (s *DescribeVpnGatewayResponseBody) SetRequestId(v string) *DescribeVpnGate
 
 func (s *DescribeVpnGatewayResponseBody) SetReservationData(v *DescribeVpnGatewayResponseBodyReservationData) *DescribeVpnGatewayResponseBody {
 	s.ReservationData = v
+	return s
+}
+
+func (s *DescribeVpnGatewayResponseBody) SetResourceGroupId(v string) *DescribeVpnGatewayResponseBody {
+	s.ResourceGroupId = &v
 	return s
 }
 
@@ -45967,6 +46057,7 @@ type DescribeVpnGatewaysRequest struct {
 	//
 	// You can call the [DescribeRegions](~~36063~~) operation to query the most recent region list.
 	RegionId             *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	ResourceGroupId      *string `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
 	ResourceOwnerAccount *string `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
 	ResourceOwnerId      *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
 	// The status of the VPN gateway. Valid values:
@@ -46029,6 +46120,11 @@ func (s *DescribeVpnGatewaysRequest) SetPageSize(v int32) *DescribeVpnGatewaysRe
 
 func (s *DescribeVpnGatewaysRequest) SetRegionId(v string) *DescribeVpnGatewaysRequest {
 	s.RegionId = &v
+	return s
+}
+
+func (s *DescribeVpnGatewaysRequest) SetResourceGroupId(v string) *DescribeVpnGatewaysRequest {
+	s.ResourceGroupId = &v
 	return s
 }
 
@@ -46218,6 +46314,7 @@ type DescribeVpnGatewaysResponseBodyVpnGatewaysVpnGateway struct {
 	//
 	// >  This parameter is returned only when **IncludeReservationData** is set to **true**.
 	ReservationData *DescribeVpnGatewaysResponseBodyVpnGatewaysVpnGatewayReservationData `json:"ReservationData,omitempty" xml:"ReservationData,omitempty" type:"Struct"`
+	ResourceGroupId *string                                                              `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
 	// The maximum bandwidth of the VPN gateway. **M** indicates Mbit/s.
 	Spec *string `json:"Spec,omitempty" xml:"Spec,omitempty"`
 	// The number of SSL-VPN connections supported by the VPN gateway.
@@ -46354,6 +46451,11 @@ func (s *DescribeVpnGatewaysResponseBodyVpnGatewaysVpnGateway) SetNetworkType(v 
 
 func (s *DescribeVpnGatewaysResponseBodyVpnGatewaysVpnGateway) SetReservationData(v *DescribeVpnGatewaysResponseBodyVpnGatewaysVpnGatewayReservationData) *DescribeVpnGatewaysResponseBodyVpnGatewaysVpnGateway {
 	s.ReservationData = v
+	return s
+}
+
+func (s *DescribeVpnGatewaysResponseBodyVpnGatewaysVpnGateway) SetResourceGroupId(v string) *DescribeVpnGatewaysResponseBodyVpnGatewaysVpnGateway {
+	s.ResourceGroupId = &v
 	return s
 }
 
@@ -53207,7 +53309,8 @@ type ListIpsecServersRequest struct {
 	// The ID of the region where the IPsec server is created.
 	//
 	// You can call the [DescribeRegions](~~36063~~) operation to query the most recent region list.
-	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	RegionId        *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	ResourceGroupId *string `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
 	// The ID of the VPN gateway.
 	VpnGatewayId *string `json:"VpnGatewayId,omitempty" xml:"VpnGatewayId,omitempty"`
 }
@@ -53242,6 +53345,11 @@ func (s *ListIpsecServersRequest) SetNextToken(v string) *ListIpsecServersReques
 
 func (s *ListIpsecServersRequest) SetRegionId(v string) *ListIpsecServersRequest {
 	s.RegionId = &v
+	return s
+}
+
+func (s *ListIpsecServersRequest) SetResourceGroupId(v string) *ListIpsecServersRequest {
+	s.ResourceGroupId = &v
 	return s
 }
 
@@ -53341,7 +53449,8 @@ type ListIpsecServersResponseBodyIpsecServers struct {
 	// Indicates whether pre-shared key authentication is enabled. Pre-shared key authentication is enabled only when the value is set to **true**.
 	PskEnabled *bool `json:"PskEnabled,omitempty" xml:"PskEnabled,omitempty"`
 	// The ID of the region where the IPsec server is created.
-	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	RegionId        *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	ResourceGroupId *string `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
 	// The ID of the VPN gateway.
 	VpnGatewayId *string `json:"VpnGatewayId,omitempty" xml:"VpnGatewayId,omitempty"`
 }
@@ -53431,6 +53540,11 @@ func (s *ListIpsecServersResponseBodyIpsecServers) SetPskEnabled(v bool) *ListIp
 
 func (s *ListIpsecServersResponseBodyIpsecServers) SetRegionId(v string) *ListIpsecServersResponseBodyIpsecServers {
 	s.RegionId = &v
+	return s
+}
+
+func (s *ListIpsecServersResponseBodyIpsecServers) SetResourceGroupId(v string) *ListIpsecServersResponseBodyIpsecServers {
+	s.ResourceGroupId = &v
 	return s
 }
 
@@ -58767,7 +58881,8 @@ type ModifyCustomerGatewayAttributeResponseBody struct {
 	// The name of the customer gateway.
 	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
 	// The request ID.
-	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	RequestId       *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	ResourceGroupId *string `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
 }
 
 func (s ModifyCustomerGatewayAttributeResponseBody) String() string {
@@ -58805,6 +58920,11 @@ func (s *ModifyCustomerGatewayAttributeResponseBody) SetName(v string) *ModifyCu
 
 func (s *ModifyCustomerGatewayAttributeResponseBody) SetRequestId(v string) *ModifyCustomerGatewayAttributeResponseBody {
 	s.RequestId = &v
+	return s
+}
+
+func (s *ModifyCustomerGatewayAttributeResponseBody) SetResourceGroupId(v string) *ModifyCustomerGatewayAttributeResponseBody {
+	s.ResourceGroupId = &v
 	return s
 }
 
@@ -62934,7 +63054,8 @@ type ModifySslVpnServerResponseBody struct {
 	// The ID of the region where the SSL server is created.
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 	// The request ID.
-	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	RequestId       *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	ResourceGroupId *string `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
 	// The ID of the SSL server.
 	SslVpnServerId *string `json:"SslVpnServerId,omitempty" xml:"SslVpnServerId,omitempty"`
 	// The ID of the VPN gateway.
@@ -63021,6 +63142,11 @@ func (s *ModifySslVpnServerResponseBody) SetRegionId(v string) *ModifySslVpnServ
 
 func (s *ModifySslVpnServerResponseBody) SetRequestId(v string) *ModifySslVpnServerResponseBody {
 	s.RequestId = &v
+	return s
+}
+
+func (s *ModifySslVpnServerResponseBody) SetResourceGroupId(v string) *ModifySslVpnServerResponseBody {
+	s.ResourceGroupId = &v
 	return s
 }
 
@@ -65007,7 +65133,8 @@ type ModifyVpnAttachmentAttributeResponseBody struct {
 	// The CIDR block of the data center with which the VPC can communicate.
 	RemoteSubnet *string `json:"RemoteSubnet,omitempty" xml:"RemoteSubnet,omitempty"`
 	// The request ID.
-	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	RequestId       *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	ResourceGroupId *string `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
 	// The bandwidth specification of the IPsec-VPN connection.
 	//
 	// A value of **M** in the response indicates **Mbit/s**.
@@ -65109,6 +65236,11 @@ func (s *ModifyVpnAttachmentAttributeResponseBody) SetRemoteSubnet(v string) *Mo
 
 func (s *ModifyVpnAttachmentAttributeResponseBody) SetRequestId(v string) *ModifyVpnAttachmentAttributeResponseBody {
 	s.RequestId = &v
+	return s
+}
+
+func (s *ModifyVpnAttachmentAttributeResponseBody) SetResourceGroupId(v string) *ModifyVpnAttachmentAttributeResponseBody {
+	s.ResourceGroupId = &v
 	return s
 }
 
@@ -65698,6 +65830,7 @@ type ModifyVpnConnectionAttributeRequestTunnelOptionsSpecification struct {
 	//
 	// If the VPN gateway does not use an SM certificate, you cannot specify this parameter.
 	RemoteCaCertificate *string `json:"RemoteCaCertificate,omitempty" xml:"RemoteCaCertificate,omitempty"`
+	Role                *string `json:"Role,omitempty" xml:"Role,omitempty"`
 	// The BGP configuration to be modified for the IPsec tunnel.
 	TunnelBgpConfig *ModifyVpnConnectionAttributeRequestTunnelOptionsSpecificationTunnelBgpConfig `json:"TunnelBgpConfig,omitempty" xml:"TunnelBgpConfig,omitempty" type:"Struct"`
 	// You can specify **TunnelOptionsSpecification** parameters if you modify the configuration of a dual-tunnel IPsec-VPN connection. You can modify both the active and standby tunnels of the IPsec-VPN connection.
@@ -65730,6 +65863,11 @@ func (s *ModifyVpnConnectionAttributeRequestTunnelOptionsSpecification) SetEnabl
 
 func (s *ModifyVpnConnectionAttributeRequestTunnelOptionsSpecification) SetRemoteCaCertificate(v string) *ModifyVpnConnectionAttributeRequestTunnelOptionsSpecification {
 	s.RemoteCaCertificate = &v
+	return s
+}
+
+func (s *ModifyVpnConnectionAttributeRequestTunnelOptionsSpecification) SetRole(v string) *ModifyVpnConnectionAttributeRequestTunnelOptionsSpecification {
+	s.Role = &v
 	return s
 }
 
@@ -65980,7 +66118,8 @@ type ModifyVpnConnectionAttributeResponseBody struct {
 	// The CIDR block on the data center side.
 	RemoteSubnet *string `json:"RemoteSubnet,omitempty" xml:"RemoteSubnet,omitempty"`
 	// The request ID.
-	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	RequestId       *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	ResourceGroupId *string `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
 	// The tunnel configuration of the IPsec-VPN connection.
 	//
 	// **TunnelOptionsSpecification** parameters are returned only for dual-tunnel IPsec-VPN connections.
@@ -66069,6 +66208,11 @@ func (s *ModifyVpnConnectionAttributeResponseBody) SetRemoteSubnet(v string) *Mo
 
 func (s *ModifyVpnConnectionAttributeResponseBody) SetRequestId(v string) *ModifyVpnConnectionAttributeResponseBody {
 	s.RequestId = &v
+	return s
+}
+
+func (s *ModifyVpnConnectionAttributeResponseBody) SetResourceGroupId(v string) *ModifyVpnConnectionAttributeResponseBody {
+	s.ResourceGroupId = &v
 	return s
 }
 
@@ -66786,7 +66930,8 @@ type ModifyVpnGatewayAttributeResponseBody struct {
 	// The name of the VPN gateway.
 	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
 	// The request ID.
-	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	RequestId       *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	ResourceGroupId *string `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
 	// The maximum bandwidth of the VPN gateway. Unit: Mbit/s.
 	Spec *string `json:"Spec,omitempty" xml:"Spec,omitempty"`
 	// The IP address of the SSL-VPN connection.
@@ -66874,6 +67019,11 @@ func (s *ModifyVpnGatewayAttributeResponseBody) SetName(v string) *ModifyVpnGate
 
 func (s *ModifyVpnGatewayAttributeResponseBody) SetRequestId(v string) *ModifyVpnGatewayAttributeResponseBody {
 	s.RequestId = &v
+	return s
+}
+
+func (s *ModifyVpnGatewayAttributeResponseBody) SetResourceGroupId(v string) *ModifyVpnGatewayAttributeResponseBody {
+	s.ResourceGroupId = &v
 	return s
 }
 
@@ -69772,7 +69922,7 @@ func (s *SecondApplyPhysicalConnectionLOAResponse) SetBody(v *SecondApplyPhysica
 type SetHighDefinitionMonitorLogStatusRequest struct {
 	// The ID of the instance for which you want to configure fine-grained monitoring.
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	// The type of the instance. Set the value to **EIP**.
+	// The instance type. Set the value to **EIP**.
 	InstanceType *string `json:"InstanceType,omitempty" xml:"InstanceType,omitempty"`
 	// The name of the Simple Log Service (SLS) project.
 	LogProject *string `json:"LogProject,omitempty" xml:"LogProject,omitempty"`
@@ -74264,11 +74414,11 @@ func (client *Client) AddCommonBandwidthPackageIp(request *AddCommonBandwidthPac
 /**
  * *   When you call this operation to associate EIPs with an Internet Shared Bandwidth instance, make sure that the EIPs meet the following requirements:
  *     *   The EIPs use the pay-as-you-go billing method.
- *     *   The EIPs and the Internet Shared Bandwidth instance belong to the same region.
+ *     *   The EIP and the Internet Shared Bandwidth instance belong to the same region.
  *     *   The line type of the EIPs is the same as that of the Internet Shared Bandwidth instance.
- * *   **AddCommonBandwidthPackageIps** is an asynchronous operation. After a request is sent, the system returns a request ID and runs the task in the background. You can call the [DescribeCommonBandwidthPackages](~~120309~~) operation to query the status of the task.
- *     *   If the Internet Shared Bandwidth instance is in the **BINDING** state, the EIPs are being associated with the Internet Shared Bandwidth instance. In this state, you can only query the Internet Shared Bandwidth instance and cannot perform other operations.
- *     *   If the Internet Shared Bandwidth instance is in the **BINDED** state, the EIPs are associated with the Internet Shared Bandwidth instance.
+ * *   **AddCommonBandwidthPackageIps** is an asynchronous operation. After a request is sent, the system returns a request ID and runs the task in the background. You can call the [DescribeCommonBandwidthPackages](~~DescribeCommonBandwidthPackages~~) operation to query the status of the task.
+ *     *   If the Internet Shared Bandwidth instance is in the **BINDING** state, the EIP is being associated with the Internet Shared Bandwidth instance. In this state, you can only query the Internet Shared Bandwidth instance and cannot perform other operations.
+ *     *   If the Internet Shared Bandwidth instance is in the **BINDED** state, the EIP is associated with the Internet Shared Bandwidth instance.
  *
  * @param request AddCommonBandwidthPackageIpsRequest
  * @param runtime runtime options for this request RuntimeOptions
@@ -74342,11 +74492,11 @@ func (client *Client) AddCommonBandwidthPackageIpsWithOptions(request *AddCommon
 /**
  * *   When you call this operation to associate EIPs with an Internet Shared Bandwidth instance, make sure that the EIPs meet the following requirements:
  *     *   The EIPs use the pay-as-you-go billing method.
- *     *   The EIPs and the Internet Shared Bandwidth instance belong to the same region.
+ *     *   The EIP and the Internet Shared Bandwidth instance belong to the same region.
  *     *   The line type of the EIPs is the same as that of the Internet Shared Bandwidth instance.
- * *   **AddCommonBandwidthPackageIps** is an asynchronous operation. After a request is sent, the system returns a request ID and runs the task in the background. You can call the [DescribeCommonBandwidthPackages](~~120309~~) operation to query the status of the task.
- *     *   If the Internet Shared Bandwidth instance is in the **BINDING** state, the EIPs are being associated with the Internet Shared Bandwidth instance. In this state, you can only query the Internet Shared Bandwidth instance and cannot perform other operations.
- *     *   If the Internet Shared Bandwidth instance is in the **BINDED** state, the EIPs are associated with the Internet Shared Bandwidth instance.
+ * *   **AddCommonBandwidthPackageIps** is an asynchronous operation. After a request is sent, the system returns a request ID and runs the task in the background. You can call the [DescribeCommonBandwidthPackages](~~DescribeCommonBandwidthPackages~~) operation to query the status of the task.
+ *     *   If the Internet Shared Bandwidth instance is in the **BINDING** state, the EIP is being associated with the Internet Shared Bandwidth instance. In this state, you can only query the Internet Shared Bandwidth instance and cannot perform other operations.
+ *     *   If the Internet Shared Bandwidth instance is in the **BINDED** state, the EIP is associated with the Internet Shared Bandwidth instance.
  *
  * @param request AddCommonBandwidthPackageIpsRequest
  * @return AddCommonBandwidthPackageIpsResponse
@@ -77683,6 +77833,10 @@ func (client *Client) CreateCustomerGatewayWithOptions(request *CreateCustomerGa
 
 	if !tea.BoolValue(util.IsUnset(request.RegionId)) {
 		query["RegionId"] = request.RegionId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ResourceGroupId)) {
+		query["ResourceGroupId"] = request.ResourceGroupId
 	}
 
 	if !tea.BoolValue(util.IsUnset(request.ResourceOwnerAccount)) {
@@ -82727,6 +82881,10 @@ func (client *Client) CreateVpnAttachmentWithOptions(request *CreateVpnAttachmen
 		query["RemoteSubnet"] = request.RemoteSubnet
 	}
 
+	if !tea.BoolValue(util.IsUnset(request.ResourceGroupId)) {
+		query["ResourceGroupId"] = request.ResourceGroupId
+	}
+
 	if !tea.BoolValue(util.IsUnset(request.ResourceOwnerAccount)) {
 		query["ResourceOwnerAccount"] = request.ResourceOwnerAccount
 	}
@@ -83013,6 +83171,10 @@ func (client *Client) CreateVpnGatewayWithOptions(request *CreateVpnGatewayReque
 
 	if !tea.BoolValue(util.IsUnset(request.RegionId)) {
 		query["RegionId"] = request.RegionId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ResourceGroupId)) {
+		query["ResourceGroupId"] = request.ResourceGroupId
 	}
 
 	if !tea.BoolValue(util.IsUnset(request.ResourceOwnerAccount)) {
@@ -88294,6 +88456,10 @@ func (client *Client) DescribeCustomerGatewaysWithOptions(request *DescribeCusto
 		query["RegionId"] = request.RegionId
 	}
 
+	if !tea.BoolValue(util.IsUnset(request.ResourceGroupId)) {
+		query["ResourceGroupId"] = request.ResourceGroupId
+	}
+
 	if !tea.BoolValue(util.IsUnset(request.ResourceOwnerAccount)) {
 		query["ResourceOwnerAccount"] = request.ResourceOwnerAccount
 	}
@@ -91459,6 +91625,10 @@ func (client *Client) DescribeSslVpnClientCertsWithOptions(request *DescribeSslV
 		query["RegionId"] = request.RegionId
 	}
 
+	if !tea.BoolValue(util.IsUnset(request.ResourceGroupId)) {
+		query["ResourceGroupId"] = request.ResourceGroupId
+	}
+
 	if !tea.BoolValue(util.IsUnset(request.ResourceOwnerAccount)) {
 		query["ResourceOwnerAccount"] = request.ResourceOwnerAccount
 	}
@@ -91624,6 +91794,10 @@ func (client *Client) DescribeSslVpnServersWithOptions(request *DescribeSslVpnSe
 
 	if !tea.BoolValue(util.IsUnset(request.RegionId)) {
 		query["RegionId"] = request.RegionId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ResourceGroupId)) {
+		query["ResourceGroupId"] = request.ResourceGroupId
 	}
 
 	if !tea.BoolValue(util.IsUnset(request.ResourceOwnerAccount)) {
@@ -92917,6 +93091,10 @@ func (client *Client) DescribeVpnConnectionsWithOptions(request *DescribeVpnConn
 		query["RegionId"] = request.RegionId
 	}
 
+	if !tea.BoolValue(util.IsUnset(request.ResourceGroupId)) {
+		query["ResourceGroupId"] = request.ResourceGroupId
+	}
+
 	if !tea.BoolValue(util.IsUnset(request.ResourceOwnerAccount)) {
 		query["ResourceOwnerAccount"] = request.ResourceOwnerAccount
 	}
@@ -93143,6 +93321,10 @@ func (client *Client) DescribeVpnGatewaysWithOptions(request *DescribeVpnGateway
 
 	if !tea.BoolValue(util.IsUnset(request.RegionId)) {
 		query["RegionId"] = request.RegionId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ResourceGroupId)) {
+		query["ResourceGroupId"] = request.ResourceGroupId
 	}
 
 	if !tea.BoolValue(util.IsUnset(request.ResourceOwnerAccount)) {
@@ -95889,6 +96071,10 @@ func (client *Client) ListIpsecServersWithOptions(request *ListIpsecServersReque
 
 	if !tea.BoolValue(util.IsUnset(request.RegionId)) {
 		query["RegionId"] = request.RegionId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ResourceGroupId)) {
+		query["ResourceGroupId"] = request.ResourceGroupId
 	}
 
 	if !tea.BoolValue(util.IsUnset(request.VpnGatewayId)) {
