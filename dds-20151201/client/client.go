@@ -6729,8 +6729,11 @@ func (s *DescribeDBInstanceTDEInfoRequest) SetSecurityToken(v string) *DescribeD
 }
 
 type DescribeDBInstanceTDEInfoResponseBody struct {
-	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	TDEStatus *string `json:"TDEStatus,omitempty" xml:"TDEStatus,omitempty"`
+	EncryptionKey *string `json:"EncryptionKey,omitempty" xml:"EncryptionKey,omitempty"`
+	EncryptorName *string `json:"EncryptorName,omitempty" xml:"EncryptorName,omitempty"`
+	RequestId     *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	RoleARN       *string `json:"RoleARN,omitempty" xml:"RoleARN,omitempty"`
+	TDEStatus     *string `json:"TDEStatus,omitempty" xml:"TDEStatus,omitempty"`
 }
 
 func (s DescribeDBInstanceTDEInfoResponseBody) String() string {
@@ -6741,8 +6744,23 @@ func (s DescribeDBInstanceTDEInfoResponseBody) GoString() string {
 	return s.String()
 }
 
+func (s *DescribeDBInstanceTDEInfoResponseBody) SetEncryptionKey(v string) *DescribeDBInstanceTDEInfoResponseBody {
+	s.EncryptionKey = &v
+	return s
+}
+
+func (s *DescribeDBInstanceTDEInfoResponseBody) SetEncryptorName(v string) *DescribeDBInstanceTDEInfoResponseBody {
+	s.EncryptorName = &v
+	return s
+}
+
 func (s *DescribeDBInstanceTDEInfoResponseBody) SetRequestId(v string) *DescribeDBInstanceTDEInfoResponseBody {
 	s.RequestId = &v
+	return s
+}
+
+func (s *DescribeDBInstanceTDEInfoResponseBody) SetRoleARN(v string) *DescribeDBInstanceTDEInfoResponseBody {
+	s.RoleARN = &v
 	return s
 }
 
