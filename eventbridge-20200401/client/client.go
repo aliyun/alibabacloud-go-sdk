@@ -850,13 +850,13 @@ type CreateEventSourceRequest struct {
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
 	// The name of the event bus with which the event source is associated.
 	EventBusName *string `json:"EventBusName,omitempty" xml:"EventBusName,omitempty"`
-	// Then name of the event source.
+	// The name of the event source.
 	EventSourceName *string `json:"EventSourceName,omitempty" xml:"EventSourceName,omitempty"`
 	// The parameters that are configured if the event source is HTTP events.
 	SourceHttpEventParameters *CreateEventSourceRequestSourceHttpEventParameters `json:"SourceHttpEventParameters,omitempty" xml:"SourceHttpEventParameters,omitempty" type:"Struct"`
 	// The parameters that are configured if the event source is Message Queue for Apache Kafka.
 	SourceKafkaParameters *CreateEventSourceRequestSourceKafkaParameters `json:"SourceKafkaParameters,omitempty" xml:"SourceKafkaParameters,omitempty" type:"Struct"`
-	// The parameters that are configured if the event source is Message Service (MNS).
+	// The parameters that are configured if the event source is Message Service (MNS). If you specify MNS as the event source, you must configure RegionId, IsBase64Decode, and QueueName.
 	SourceMNSParameters *CreateEventSourceRequestSourceMNSParameters `json:"SourceMNSParameters,omitempty" xml:"SourceMNSParameters,omitempty" type:"Struct"`
 	// The parameters that are configured if the event source is Message Queue for RabbitMQ.
 	SourceRabbitMQParameters *CreateEventSourceRequestSourceRabbitMQParameters `json:"SourceRabbitMQParameters,omitempty" xml:"SourceRabbitMQParameters,omitempty" type:"Struct"`
@@ -927,15 +927,33 @@ func (s *CreateEventSourceRequest) SetSourceScheduledEventParameters(v *CreateEv
 }
 
 type CreateEventSourceRequestSourceHttpEventParameters struct {
-	// The CIDR blocks that are used for security settings. This parameter is required only if you set SecurityConfig to ip. You can enter CIDR blocks or IP addresses.
+	// The CIDR block that is used for security settings. This parameter is required only if you set SecurityConfig to ip. You can enter a CIDR block or an IP address.
 	Ip []*string `json:"Ip,omitempty" xml:"Ip,omitempty" type:"Repeated"`
-	// The HTTP request method that is supported by the generated webhook URL. You can select multiple values. Valid values: GET GET, POST, PUT, PATCH, DELETE, HEAD, OPTIONS, TRACE, and CONNECT.
+	// The HTTP request method supported by the generated webhook URL. You can select multiple values. Valid values:
+	//
+	// *   GET
+	// *   POST
+	// *   PUT
+	// *   PATCH
+	// *   DELETE
+	// *   HEAD
+	// *   OPTIONS
+	// *   TRACE
+	// *   CONNECT
 	Method []*string `json:"Method,omitempty" xml:"Method,omitempty" type:"Repeated"`
-	// The security domain names. This parameter is required only if you set SecurityConfig to referer. You can enter domain names.
+	// The security domain name. This parameter is required only if you set SecurityConfig to referer. You can enter a domain name.
 	Referer []*string `json:"Referer,omitempty" xml:"Referer,omitempty" type:"Repeated"`
-	// The security settings. Valid values: none: No configuration is required. ip: CIDR blocks. referer: security domain names.
+	// The type of security settings. Valid values:
+	//
+	// *   none: No configuration is required.
+	// *   ip: CIDR block.
+	// *   referer: security domain name.
 	SecurityConfig *string `json:"SecurityConfig,omitempty" xml:"SecurityConfig,omitempty"`
-	// The protocol type that is supported by the generated webhook URL. Valid values: HTTP, HTTPS, and HTTP\&HTTPS.
+	// The protocol type that is supported by the generated webhook URL. Valid values:
+	//
+	// *   HTTP
+	// *   HTTPS
+	// *   HTTP\&HTTPS
 	Type *string `json:"Type,omitempty" xml:"Type,omitempty"`
 }
 
@@ -979,19 +997,19 @@ type CreateEventSourceRequestSourceKafkaParameters struct {
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
 	// The maximum number of consumers.
 	MaximumTasks *int32 `json:"MaximumTasks,omitempty" xml:"MaximumTasks,omitempty"`
-	// The network. Valid values: Default and PublicNetwork.
+	// The network. Valid values: Default and PublicNetwork. Default value: Default. The value PublicNetwork indicates a self-managed network.
 	Network *string `json:"Network,omitempty" xml:"Network,omitempty"`
 	// The consumer offset.
 	OffsetReset *string `json:"OffsetReset,omitempty" xml:"OffsetReset,omitempty"`
 	// The ID of the region where the Message Queue for Apache Kafka instance resides.
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	// The ID of the security group to which the Message Queue for Apache Kafka instance belongs. This parameter is required if you set Network to PublicNetwork.
+	// The ID of the security group to which the Message Queue for Apache Kafka instance belongs. This parameter is required only if you set Network to PublicNetwork.
 	SecurityGroupId *string `json:"SecurityGroupId,omitempty" xml:"SecurityGroupId,omitempty"`
-	// The name of the topic in the Message Queue for Apache Kafka instance.
+	// The name of the topic on the Message Queue for Apache Kafka instance.
 	Topic *string `json:"Topic,omitempty" xml:"Topic,omitempty"`
-	// The ID of the vSwitch with which the Message Queue for Apache Kafka instance is associated. This parameter is required if you set Network to PublicNetwork.
+	// The ID of the vSwitch with which the Message Queue for Apache Kafka instance is associated. This parameter is required only if you set Network to PublicNetwork.
 	VSwitchIds *string `json:"VSwitchIds,omitempty" xml:"VSwitchIds,omitempty"`
-	// The ID of the VPC in which the Message Queue for Apache Kafka instance resides. This parameter is required if you set Network to PublicNetwork.
+	// The ID of the VPC in which the Message Queue for Apache Kafka instance resides. This parameter is required only if you set Network to PublicNetwork.
 	VpcId *string `json:"VpcId,omitempty" xml:"VpcId,omitempty"`
 }
 
@@ -1054,11 +1072,11 @@ func (s *CreateEventSourceRequestSourceKafkaParameters) SetVpcId(v string) *Crea
 }
 
 type CreateEventSourceRequestSourceMNSParameters struct {
-	// Specifies whether to enable Base64 decoding. Default value: true.
+	// Specifies whether to enable Base64 decoding. Valid values: true and false.
 	IsBase64Decode *bool `json:"IsBase64Decode,omitempty" xml:"IsBase64Decode,omitempty"`
 	// The name of the MNS queue.
 	QueueName *string `json:"QueueName,omitempty" xml:"QueueName,omitempty"`
-	// The region where the MNS queue resides.
+	// The region where the MNS queue resides. Valid values: cn-qingdao, cn-beijing, cn-zhangjiakou, cn-huhehaote, cn-wulanchabu, cn-hangzhou, cn-shanghai, cn-shenzhen, cn-guangzhou, cn-chengdu, cn-hongkong, ap-southeast-1, ap-southeast-2, ap-southeast-3, ap-southeast-5, ap-northeast-1, eu-central-1, us-west-1, us-east-1, ap-south-1, me-east-1, and cn-north-2-gov-1.
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 }
 
@@ -1088,11 +1106,11 @@ func (s *CreateEventSourceRequestSourceMNSParameters) SetRegionId(v string) *Cre
 type CreateEventSourceRequestSourceRabbitMQParameters struct {
 	// The ID of the Message Queue for RabbitMQ instance. For more information, see Limits.
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	// The name of the queue in the Message Queue for RabbitMQ instance. For more information, see Limits.
+	// The name of the queue on the Message Queue for RabbitMQ instance. For more information, see [Limits](~~163289~~).
 	QueueName *string `json:"QueueName,omitempty" xml:"QueueName,omitempty"`
 	// The ID of the region where the Message Queue for RabbitMQ instance resides.
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	// The vhost name of the Message Queue for RabbitMQ instance. For more information, see Limits.
+	// The name of the vhost of the Message Queue for RabbitMQ instance. For more information, see [Limits](~~163289~~).
 	VirtualHostName *string `json:"VirtualHostName,omitempty" xml:"VirtualHostName,omitempty"`
 }
 
@@ -1125,38 +1143,40 @@ func (s *CreateEventSourceRequestSourceRabbitMQParameters) SetVirtualHostName(v 
 }
 
 type CreateEventSourceRequestSourceRocketMQParameters struct {
+	// The authentication type. You can set this parameter to ACL or leave this parameter empty.
 	AuthType *string `json:"AuthType,omitempty" xml:"AuthType,omitempty"`
-	// The ID of the consumer group in the Message Queue for Apache RocketMQ instance.
-	GroupID          *string `json:"GroupID,omitempty" xml:"GroupID,omitempty"`
+	// The ID of the consumer group on the Message Queue for Apache RocketMQ instance.
+	GroupID *string `json:"GroupID,omitempty" xml:"GroupID,omitempty"`
+	// The endpoint that is used to access the Message Queue for Apache RocketMQ instance.
 	InstanceEndpoint *string `json:"InstanceEndpoint,omitempty" xml:"InstanceEndpoint,omitempty"`
-	// The ID of the Message Queue for Apache RocketMQ instance. For more information, see Limits.
+	// The ID of the Message Queue for Apache RocketMQ instance. For more information, see [Limits](~~163289~~).
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
 	// None.
-	InstanceNetwork  *string `json:"InstanceNetwork,omitempty" xml:"InstanceNetwork,omitempty"`
+	InstanceNetwork *string `json:"InstanceNetwork,omitempty" xml:"InstanceNetwork,omitempty"`
+	// The password that is used to access the Message Queue for Apache RocketMQ instance.
 	InstancePassword *string `json:"InstancePassword,omitempty" xml:"InstancePassword,omitempty"`
 	// The ID of the security group to which the Message Queue for Apache RocketMQ instance belongs.
 	InstanceSecurityGroupId *string `json:"InstanceSecurityGroupId,omitempty" xml:"InstanceSecurityGroupId,omitempty"`
 	// The type of the Message Queue for Apache RocketMQ instance. Valid values:
 	//
-	//
-	// - Cloud\_4: Message Queue for Apache RocketMQ 4.0 instances.
-	//
-	//  - Cloud\_5: Message Queue for Apache RocketMQ 5.0 instances.
-	InstanceType     *string `json:"InstanceType,omitempty" xml:"InstanceType,omitempty"`
+	// *   Cloud\_4: Message Queue for Apache RocketMQ 4.0 instance.
+	// *   Cloud\_5: Message Queue for Apache RocketMQ 5.0 instance.
+	InstanceType *string `json:"InstanceType,omitempty" xml:"InstanceType,omitempty"`
+	// The username that is used to access the Message Queue for Apache RocketMQ instance.
 	InstanceUsername *string `json:"InstanceUsername,omitempty" xml:"InstanceUsername,omitempty"`
 	// The ID of the vSwitch with which the Message Queue for Apache RocketMQ instance is associated.
 	InstanceVSwitchIds *string `json:"InstanceVSwitchIds,omitempty" xml:"InstanceVSwitchIds,omitempty"`
 	// The ID of the virtual private cloud (VPC) in which the Message Queue for Apache RocketMQ instance resides.
 	InstanceVpcId *string `json:"InstanceVpcId,omitempty" xml:"InstanceVpcId,omitempty"`
-	// The offset from which messages are consumed. Valid values: CONSUME_FROM_LAST_OFFSET: Messages are consumed from the latest offset. CONSUME_FROM_FIRST_OFFSET: Messages are consumed from the earliest offset. CONSUME_FROM_TIMESTAMP: Messages are consumed from the offset at the specified point in time. Default value: CONSUME_FROM_LAST_OFFSET.
+	// The offset from which message consumption starts. Valid values: CONSUME_FROM_LAST_OFFSET: Start message consumption from the latest offset. CONSUME_FROM_FIRST_OFFSET: Start message consumption from the earliest offset. CONSUME_FROM_TIMESTAMP: Start message consumption from the offset at the specified point in time. Default value: CONSUME_FROM_LAST_OFFSET.
 	Offset *string `json:"Offset,omitempty" xml:"Offset,omitempty"`
-	// The region in which the Message Queue for Apache RocketMQ instance resides.
+	// The region where the Message Queue for Apache RocketMQ instance resides.
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	// The tags that are used to filter messages.
+	// The tag that is used to filter messages.
 	Tag *string `json:"Tag,omitempty" xml:"Tag,omitempty"`
 	// The timestamp that specifies the time from which messages are consumed. This parameter is valid only if you set Offset to CONSUME_FROM_TIMESTAMP.
 	Timestamp *int64 `json:"Timestamp,omitempty" xml:"Timestamp,omitempty"`
-	// The name of the topic in the Message Queue for Apache RocketMQ instance. For more information, see Limits.
+	// The name of the topic on the Message Queue for Apache RocketMQ instance. For more information, see [Limits](~~163289~~).
 	Topic *string `json:"Topic,omitempty" xml:"Topic,omitempty"`
 }
 
@@ -1288,11 +1308,11 @@ func (s *CreateEventSourceRequestSourceSLSParameters) SetRoleName(v string) *Cre
 }
 
 type CreateEventSourceRequestSourceScheduledEventParameters struct {
-	// The Cron expression.
+	// The cron expression.
 	Schedule *string `json:"Schedule,omitempty" xml:"Schedule,omitempty"`
-	// The time zone in which the Cron expression is executed.
-	TimeZone *string                `json:"TimeZone,omitempty" xml:"TimeZone,omitempty"`
-	UserData map[string]interface{} `json:"UserData,omitempty" xml:"UserData,omitempty"`
+	// The time zone in which the cron expression is executed.
+	TimeZone *string `json:"TimeZone,omitempty" xml:"TimeZone,omitempty"`
+	UserData *string `json:"UserData,omitempty" xml:"UserData,omitempty"`
 }
 
 func (s CreateEventSourceRequestSourceScheduledEventParameters) String() string {
@@ -1313,8 +1333,8 @@ func (s *CreateEventSourceRequestSourceScheduledEventParameters) SetTimeZone(v s
 	return s
 }
 
-func (s *CreateEventSourceRequestSourceScheduledEventParameters) SetUserData(v map[string]interface{}) *CreateEventSourceRequestSourceScheduledEventParameters {
-	s.UserData = v
+func (s *CreateEventSourceRequestSourceScheduledEventParameters) SetUserData(v string) *CreateEventSourceRequestSourceScheduledEventParameters {
+	s.UserData = &v
 	return s
 }
 
@@ -1323,13 +1343,13 @@ type CreateEventSourceShrinkRequest struct {
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
 	// The name of the event bus with which the event source is associated.
 	EventBusName *string `json:"EventBusName,omitempty" xml:"EventBusName,omitempty"`
-	// Then name of the event source.
+	// The name of the event source.
 	EventSourceName *string `json:"EventSourceName,omitempty" xml:"EventSourceName,omitempty"`
 	// The parameters that are configured if the event source is HTTP events.
 	SourceHttpEventParametersShrink *string `json:"SourceHttpEventParameters,omitempty" xml:"SourceHttpEventParameters,omitempty"`
 	// The parameters that are configured if the event source is Message Queue for Apache Kafka.
 	SourceKafkaParametersShrink *string `json:"SourceKafkaParameters,omitempty" xml:"SourceKafkaParameters,omitempty"`
-	// The parameters that are configured if the event source is Message Service (MNS).
+	// The parameters that are configured if the event source is Message Service (MNS). If you specify MNS as the event source, you must configure RegionId, IsBase64Decode, and QueueName.
 	SourceMNSParametersShrink *string `json:"SourceMNSParameters,omitempty" xml:"SourceMNSParameters,omitempty"`
 	// The parameters that are configured if the event source is Message Queue for RabbitMQ.
 	SourceRabbitMQParametersShrink *string `json:"SourceRabbitMQParameters,omitempty" xml:"SourceRabbitMQParameters,omitempty"`
@@ -1400,7 +1420,10 @@ func (s *CreateEventSourceShrinkRequest) SetSourceScheduledEventParametersShrink
 }
 
 type CreateEventSourceResponseBody struct {
-	// The returned response code. The value Success indicates that the request is successful. Other values indicate that the request failed. For more information about error codes, see Error codes.
+	// The returned response code. Valid values:
+	//
+	// *   Success: The request is successful.
+	// *   Other codes: The request failed. For more information about error codes, see Error codes.
 	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
 	// The returned data.
 	Data *CreateEventSourceResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
@@ -1408,7 +1431,7 @@ type CreateEventSourceResponseBody struct {
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
 	// The request ID.
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// Indicates whether the request is successful. Valid values: true and false.
+	// Indicates whether the operation is successful. The value true indicates that the operation is successful.
 	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
 }
 
@@ -1446,7 +1469,7 @@ func (s *CreateEventSourceResponseBody) SetSuccess(v bool) *CreateEventSourceRes
 }
 
 type CreateEventSourceResponseBodyData struct {
-	// The ARN of the event source.
+	// The Alibaba Cloud Resource Name (ARN) of the resource.
 	EventSourceARN *string `json:"EventSourceARN,omitempty" xml:"EventSourceARN,omitempty"`
 }
 
@@ -8713,10 +8736,19 @@ func (s *GetEventStreamingResponseBodyDataSourceSourceRabbitMQParameters) SetVir
 }
 
 type GetEventStreamingResponseBodyDataSourceSourceRocketMQParameters struct {
+	AuthType *string `json:"AuthType,omitempty" xml:"AuthType,omitempty"`
 	// The ID of the consumer group in the Message Queue for Apache RocketMQ instance.
-	GroupID *string `json:"GroupID,omitempty" xml:"GroupID,omitempty"`
+	GroupID          *string `json:"GroupID,omitempty" xml:"GroupID,omitempty"`
+	InstanceEndpoint *string `json:"InstanceEndpoint,omitempty" xml:"InstanceEndpoint,omitempty"`
 	// The ID of the Message Queue for Apache RocketMQ instance.
-	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	InstanceId              *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	InstanceNetwork         *string `json:"InstanceNetwork,omitempty" xml:"InstanceNetwork,omitempty"`
+	InstancePassword        *string `json:"InstancePassword,omitempty" xml:"InstancePassword,omitempty"`
+	InstanceSecurityGroupId *string `json:"InstanceSecurityGroupId,omitempty" xml:"InstanceSecurityGroupId,omitempty"`
+	InstanceType            *string `json:"InstanceType,omitempty" xml:"InstanceType,omitempty"`
+	InstanceUsername        *string `json:"InstanceUsername,omitempty" xml:"InstanceUsername,omitempty"`
+	InstanceVSwitchIds      *string `json:"InstanceVSwitchIds,omitempty" xml:"InstanceVSwitchIds,omitempty"`
+	InstanceVpcId           *string `json:"InstanceVpcId,omitempty" xml:"InstanceVpcId,omitempty"`
 	// The consumer offset of messages. Valid values: CONSUME_FROM_LAST_OFFSET: Start consumption from the latest offset. CONSUME_FROM_FIRST_OFFSET: Start consumption from the earliest offset. CONSUME_FROM_TIMESTAMP: Start consumption from the offset at the specified point in time.
 	Offset *string `json:"Offset,omitempty" xml:"Offset,omitempty"`
 	// The region ID of the Message Queue for Apache RocketMQ instance.
@@ -8737,13 +8769,58 @@ func (s GetEventStreamingResponseBodyDataSourceSourceRocketMQParameters) GoStrin
 	return s.String()
 }
 
+func (s *GetEventStreamingResponseBodyDataSourceSourceRocketMQParameters) SetAuthType(v string) *GetEventStreamingResponseBodyDataSourceSourceRocketMQParameters {
+	s.AuthType = &v
+	return s
+}
+
 func (s *GetEventStreamingResponseBodyDataSourceSourceRocketMQParameters) SetGroupID(v string) *GetEventStreamingResponseBodyDataSourceSourceRocketMQParameters {
 	s.GroupID = &v
 	return s
 }
 
+func (s *GetEventStreamingResponseBodyDataSourceSourceRocketMQParameters) SetInstanceEndpoint(v string) *GetEventStreamingResponseBodyDataSourceSourceRocketMQParameters {
+	s.InstanceEndpoint = &v
+	return s
+}
+
 func (s *GetEventStreamingResponseBodyDataSourceSourceRocketMQParameters) SetInstanceId(v string) *GetEventStreamingResponseBodyDataSourceSourceRocketMQParameters {
 	s.InstanceId = &v
+	return s
+}
+
+func (s *GetEventStreamingResponseBodyDataSourceSourceRocketMQParameters) SetInstanceNetwork(v string) *GetEventStreamingResponseBodyDataSourceSourceRocketMQParameters {
+	s.InstanceNetwork = &v
+	return s
+}
+
+func (s *GetEventStreamingResponseBodyDataSourceSourceRocketMQParameters) SetInstancePassword(v string) *GetEventStreamingResponseBodyDataSourceSourceRocketMQParameters {
+	s.InstancePassword = &v
+	return s
+}
+
+func (s *GetEventStreamingResponseBodyDataSourceSourceRocketMQParameters) SetInstanceSecurityGroupId(v string) *GetEventStreamingResponseBodyDataSourceSourceRocketMQParameters {
+	s.InstanceSecurityGroupId = &v
+	return s
+}
+
+func (s *GetEventStreamingResponseBodyDataSourceSourceRocketMQParameters) SetInstanceType(v string) *GetEventStreamingResponseBodyDataSourceSourceRocketMQParameters {
+	s.InstanceType = &v
+	return s
+}
+
+func (s *GetEventStreamingResponseBodyDataSourceSourceRocketMQParameters) SetInstanceUsername(v string) *GetEventStreamingResponseBodyDataSourceSourceRocketMQParameters {
+	s.InstanceUsername = &v
+	return s
+}
+
+func (s *GetEventStreamingResponseBodyDataSourceSourceRocketMQParameters) SetInstanceVSwitchIds(v string) *GetEventStreamingResponseBodyDataSourceSourceRocketMQParameters {
+	s.InstanceVSwitchIds = &v
+	return s
+}
+
+func (s *GetEventStreamingResponseBodyDataSourceSourceRocketMQParameters) SetInstanceVpcId(v string) *GetEventStreamingResponseBodyDataSourceSourceRocketMQParameters {
+	s.InstanceVpcId = &v
 	return s
 }
 
@@ -12313,13 +12390,22 @@ func (s *ListEventStreamingsResponseBodyDataEventStreamingsSourceSourceRabbitMQP
 }
 
 type ListEventStreamingsResponseBodyDataEventStreamingsSourceSourceRocketMQParameters struct {
-	GroupID    *string `json:"GroupID,omitempty" xml:"GroupID,omitempty"`
-	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	Offset     *string `json:"Offset,omitempty" xml:"Offset,omitempty"`
-	RegionId   *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	Tag        *string `json:"Tag,omitempty" xml:"Tag,omitempty"`
-	Timestamp  *int64  `json:"Timestamp,omitempty" xml:"Timestamp,omitempty"`
-	Topic      *string `json:"Topic,omitempty" xml:"Topic,omitempty"`
+	AuthType                *string `json:"AuthType,omitempty" xml:"AuthType,omitempty"`
+	GroupID                 *string `json:"GroupID,omitempty" xml:"GroupID,omitempty"`
+	InstanceEndpoint        *string `json:"InstanceEndpoint,omitempty" xml:"InstanceEndpoint,omitempty"`
+	InstanceId              *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	InstanceNetwork         *string `json:"InstanceNetwork,omitempty" xml:"InstanceNetwork,omitempty"`
+	InstancePassword        *string `json:"InstancePassword,omitempty" xml:"InstancePassword,omitempty"`
+	InstanceSecurityGroupId *string `json:"InstanceSecurityGroupId,omitempty" xml:"InstanceSecurityGroupId,omitempty"`
+	InstanceType            *string `json:"InstanceType,omitempty" xml:"InstanceType,omitempty"`
+	InstanceUsername        *string `json:"InstanceUsername,omitempty" xml:"InstanceUsername,omitempty"`
+	InstanceVSwitchIds      *string `json:"InstanceVSwitchIds,omitempty" xml:"InstanceVSwitchIds,omitempty"`
+	InstanceVpcId           *string `json:"InstanceVpcId,omitempty" xml:"InstanceVpcId,omitempty"`
+	Offset                  *string `json:"Offset,omitempty" xml:"Offset,omitempty"`
+	RegionId                *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	Tag                     *string `json:"Tag,omitempty" xml:"Tag,omitempty"`
+	Timestamp               *int64  `json:"Timestamp,omitempty" xml:"Timestamp,omitempty"`
+	Topic                   *string `json:"Topic,omitempty" xml:"Topic,omitempty"`
 }
 
 func (s ListEventStreamingsResponseBodyDataEventStreamingsSourceSourceRocketMQParameters) String() string {
@@ -12330,13 +12416,58 @@ func (s ListEventStreamingsResponseBodyDataEventStreamingsSourceSourceRocketMQPa
 	return s.String()
 }
 
+func (s *ListEventStreamingsResponseBodyDataEventStreamingsSourceSourceRocketMQParameters) SetAuthType(v string) *ListEventStreamingsResponseBodyDataEventStreamingsSourceSourceRocketMQParameters {
+	s.AuthType = &v
+	return s
+}
+
 func (s *ListEventStreamingsResponseBodyDataEventStreamingsSourceSourceRocketMQParameters) SetGroupID(v string) *ListEventStreamingsResponseBodyDataEventStreamingsSourceSourceRocketMQParameters {
 	s.GroupID = &v
 	return s
 }
 
+func (s *ListEventStreamingsResponseBodyDataEventStreamingsSourceSourceRocketMQParameters) SetInstanceEndpoint(v string) *ListEventStreamingsResponseBodyDataEventStreamingsSourceSourceRocketMQParameters {
+	s.InstanceEndpoint = &v
+	return s
+}
+
 func (s *ListEventStreamingsResponseBodyDataEventStreamingsSourceSourceRocketMQParameters) SetInstanceId(v string) *ListEventStreamingsResponseBodyDataEventStreamingsSourceSourceRocketMQParameters {
 	s.InstanceId = &v
+	return s
+}
+
+func (s *ListEventStreamingsResponseBodyDataEventStreamingsSourceSourceRocketMQParameters) SetInstanceNetwork(v string) *ListEventStreamingsResponseBodyDataEventStreamingsSourceSourceRocketMQParameters {
+	s.InstanceNetwork = &v
+	return s
+}
+
+func (s *ListEventStreamingsResponseBodyDataEventStreamingsSourceSourceRocketMQParameters) SetInstancePassword(v string) *ListEventStreamingsResponseBodyDataEventStreamingsSourceSourceRocketMQParameters {
+	s.InstancePassword = &v
+	return s
+}
+
+func (s *ListEventStreamingsResponseBodyDataEventStreamingsSourceSourceRocketMQParameters) SetInstanceSecurityGroupId(v string) *ListEventStreamingsResponseBodyDataEventStreamingsSourceSourceRocketMQParameters {
+	s.InstanceSecurityGroupId = &v
+	return s
+}
+
+func (s *ListEventStreamingsResponseBodyDataEventStreamingsSourceSourceRocketMQParameters) SetInstanceType(v string) *ListEventStreamingsResponseBodyDataEventStreamingsSourceSourceRocketMQParameters {
+	s.InstanceType = &v
+	return s
+}
+
+func (s *ListEventStreamingsResponseBodyDataEventStreamingsSourceSourceRocketMQParameters) SetInstanceUsername(v string) *ListEventStreamingsResponseBodyDataEventStreamingsSourceSourceRocketMQParameters {
+	s.InstanceUsername = &v
+	return s
+}
+
+func (s *ListEventStreamingsResponseBodyDataEventStreamingsSourceSourceRocketMQParameters) SetInstanceVSwitchIds(v string) *ListEventStreamingsResponseBodyDataEventStreamingsSourceSourceRocketMQParameters {
+	s.InstanceVSwitchIds = &v
+	return s
+}
+
+func (s *ListEventStreamingsResponseBodyDataEventStreamingsSourceSourceRocketMQParameters) SetInstanceVpcId(v string) *ListEventStreamingsResponseBodyDataEventStreamingsSourceSourceRocketMQParameters {
+	s.InstanceVpcId = &v
 	return s
 }
 
@@ -12952,10 +13083,14 @@ func (s *ListTargetsResponse) SetBody(v *ListTargetsResponseBody) *ListTargetsRe
 }
 
 type ListUserDefinedEventSourcesRequest struct {
+	// The name of the event bus.
 	EventBusName *string `json:"EventBusName,omitempty" xml:"EventBusName,omitempty"`
-	Limit        *int32  `json:"Limit,omitempty" xml:"Limit,omitempty"`
-	NamePrefix   *string `json:"NamePrefix,omitempty" xml:"NamePrefix,omitempty"`
-	NextToken    *string `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
+	// The maximum number of entries to be returned in a call. You can use this parameter and NextToken to implement paging. Note: Up to 100 entries can be returned in a call.
+	Limit *int32 `json:"Limit,omitempty" xml:"Limit,omitempty"`
+	// The name of the event source.
+	NamePrefix *string `json:"NamePrefix,omitempty" xml:"NamePrefix,omitempty"`
+	// If you configure Limit and excess return values exist, this parameter is returned.
+	NextToken *string `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
 }
 
 func (s ListUserDefinedEventSourcesRequest) String() string {
@@ -12987,7 +13122,10 @@ func (s *ListUserDefinedEventSourcesRequest) SetNextToken(v string) *ListUserDef
 }
 
 type ListUserDefinedEventSourcesResponseBody struct {
-	// The returned response code. The value Success indicates that the request is successful.
+	// The returned response code. Valid values:
+	//
+	// *   Success: The request is successful.
+	// *   Other codes: The request failed. For more information about error codes, see Error codes.
 	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
 	// The returned data.
 	Data *ListUserDefinedEventSourcesResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
@@ -12995,7 +13133,7 @@ type ListUserDefinedEventSourcesResponseBody struct {
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
 	// The request ID.
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// Indicates whether the operation is successful. Valid values: true and false.
+	// Indicates whether the operation is successful. The value true indicates that the operation is successful.
 	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
 }
 
@@ -13033,7 +13171,7 @@ func (s *ListUserDefinedEventSourcesResponseBody) SetSuccess(v bool) *ListUserDe
 }
 
 type ListUserDefinedEventSourcesResponseBodyData struct {
-	// The security domain names. This parameter is required only if SecurityConfig is set to referer. You can enter domain names.
+	// The event sources.
 	EventSourceList []*ListUserDefinedEventSourcesResponseBodyDataEventSourceList `json:"EventSourceList,omitempty" xml:"EventSourceList,omitempty" type:"Repeated"`
 }
 
@@ -13055,7 +13193,7 @@ type ListUserDefinedEventSourcesResponseBodyDataEventSourceList struct {
 	Arn *string `json:"Arn,omitempty" xml:"Arn,omitempty"`
 	// The timestamp that indicates when the event source was created.
 	Ctime *float32 `json:"Ctime,omitempty" xml:"Ctime,omitempty"`
-	// The name of the event bus.
+	// The name of the queried event bus.
 	EventBusName *string `json:"EventBusName,omitempty" xml:"EventBusName,omitempty"`
 	// The type of the event resource.
 	ExternalSourceType *string `json:"ExternalSourceType,omitempty" xml:"ExternalSourceType,omitempty"`
@@ -13063,19 +13201,21 @@ type ListUserDefinedEventSourcesResponseBodyDataEventSourceList struct {
 	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
 	// The parameters that are returned if the event source is HTTP events.
 	SourceHttpEventParameters *ListUserDefinedEventSourcesResponseBodyDataEventSourceListSourceHttpEventParameters `json:"SourceHttpEventParameters,omitempty" xml:"SourceHttpEventParameters,omitempty" type:"Struct"`
-	SourceKafkaParameters     *ListUserDefinedEventSourcesResponseBodyDataEventSourceListSourceKafkaParameters     `json:"SourceKafkaParameters,omitempty" xml:"SourceKafkaParameters,omitempty" type:"Struct"`
+	// The parameters that are returned if the event source is Message Queue for Apache Kafka.
+	SourceKafkaParameters *ListUserDefinedEventSourcesResponseBodyDataEventSourceListSourceKafkaParameters `json:"SourceKafkaParameters,omitempty" xml:"SourceKafkaParameters,omitempty" type:"Struct"`
 	// The parameters that are returned if the event source is Message Service (MNS).
 	SourceMNSParameters *ListUserDefinedEventSourcesResponseBodyDataEventSourceListSourceMNSParameters `json:"SourceMNSParameters,omitempty" xml:"SourceMNSParameters,omitempty" type:"Struct"`
 	// The parameters that are returned if the event source is Message Queue for RabbitMQ.
 	SourceRabbitMQParameters *ListUserDefinedEventSourcesResponseBodyDataEventSourceListSourceRabbitMQParameters `json:"SourceRabbitMQParameters,omitempty" xml:"SourceRabbitMQParameters,omitempty" type:"Struct"`
 	// The parameters that are returned if the event source is Message Queue for Apache RocketMQ.
 	SourceRocketMQParameters *ListUserDefinedEventSourcesResponseBodyDataEventSourceListSourceRocketMQParameters `json:"SourceRocketMQParameters,omitempty" xml:"SourceRocketMQParameters,omitempty" type:"Struct"`
-	// The parameters that are configured if the event source is Log Service.
-	SourceSLSParameters            *ListUserDefinedEventSourcesResponseBodyDataEventSourceListSourceSLSParameters            `json:"SourceSLSParameters,omitempty" xml:"SourceSLSParameters,omitempty" type:"Struct"`
+	// The parameters that are returned if the event source is Simple Log Service.
+	SourceSLSParameters *ListUserDefinedEventSourcesResponseBodyDataEventSourceListSourceSLSParameters `json:"SourceSLSParameters,omitempty" xml:"SourceSLSParameters,omitempty" type:"Struct"`
+	// The parameters that are returned if the event source is scheduled events.
 	SourceScheduledEventParameters *ListUserDefinedEventSourcesResponseBodyDataEventSourceListSourceScheduledEventParameters `json:"SourceScheduledEventParameters,omitempty" xml:"SourceScheduledEventParameters,omitempty" type:"Struct"`
-	// The status of the queried event source. Valid value: Activated.
+	// The status of the queried event source. The returned value Activated indicates that the event source is activated.
 	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
-	// The type of the queried event source. Valid value: UserDefined: custom event source.
+	// The type of the queried event source. The returned value UserDefined indicates the event source is a custom event source.
 	Type *string `json:"Type,omitempty" xml:"Type,omitempty"`
 }
 
@@ -13158,17 +13298,37 @@ func (s *ListUserDefinedEventSourcesResponseBodyDataEventSourceList) SetType(v s
 }
 
 type ListUserDefinedEventSourcesResponseBodyDataEventSourceListSourceHttpEventParameters struct {
-	// The CIDR blocks that are used for security settings. This parameter is required only if SecurityConfig is set to ip. You can enter CIDR blocks or IP addresses.
+	// The CIDR block that is used for security settings. This parameter is required only if SecurityConfig is set to ip. You can enter a CIDR block or an IP address.
 	Ip []*string `json:"Ip,omitempty" xml:"Ip,omitempty" type:"Repeated"`
-	// The HTTP request method supported by the generated webhook URL. You can select multiple values. Valid values: GET POST PUT PATCH DELETE HEAD OPTIONS TRACE GET, POST, PUT, PATCH, DELETE, HEAD, OPTIONS, TRACE, and CONNECT.
-	Method           []*string `json:"Method,omitempty" xml:"Method,omitempty" type:"Repeated"`
+	// The HTTP request method supported by the generated webhook URL. You can select multiple values. Valid values:
+	//
+	// *   GET
+	// *   POST
+	// *   PUT
+	// *   PATCH
+	// *   DELETE
+	// *   HEAD
+	// *   OPTIONS
+	// *   TRACE
+	// *   CONNECT
+	Method []*string `json:"Method,omitempty" xml:"Method,omitempty" type:"Repeated"`
+	// The Internet request URL.
 	PublicWebHookUrl []*string `json:"PublicWebHookUrl,omitempty" xml:"PublicWebHookUrl,omitempty" type:"Repeated"`
-	// The security domain names. This parameter is required only if SecurityConfig is set to referer. You can enter domain names.
+	// The security domain name. This parameter is required only if SecurityConfig is set to referer. You can enter a domain name.
 	Referer []*string `json:"Referer,omitempty" xml:"Referer,omitempty" type:"Repeated"`
-	// The type of security settings. Valid values: none: No configuration is required. ip: CIDR blocks. referer: security domain names.
+	// The type of security settings. Valid values:
+	//
+	// *   none: No configuration is required.
+	// *   ip: CIDR block.
+	// *   referer: security domain name.
 	SecurityConfig *string `json:"SecurityConfig,omitempty" xml:"SecurityConfig,omitempty"`
-	// The protocol type that is supported by the generated webhook URL. Valid values: HTTP HTTPS HTTP, HTTPS, and HTTP&HTTPS.
-	Type          *string   `json:"Type,omitempty" xml:"Type,omitempty"`
+	// The protocol type that is supported by the generated webhook URL. Valid values:
+	//
+	// *   HTTP
+	// *   HTTPS
+	// *   HTTP\&HTTPS
+	Type *string `json:"Type,omitempty" xml:"Type,omitempty"`
+	// The internal request URL.
 	VpcWebHookUrl []*string `json:"VpcWebHookUrl,omitempty" xml:"VpcWebHookUrl,omitempty" type:"Repeated"`
 }
 
@@ -13216,16 +13376,26 @@ func (s *ListUserDefinedEventSourcesResponseBodyDataEventSourceListSourceHttpEve
 }
 
 type ListUserDefinedEventSourcesResponseBodyDataEventSourceListSourceKafkaParameters struct {
-	ConsumerGroup   *string `json:"ConsumerGroup,omitempty" xml:"ConsumerGroup,omitempty"`
-	InstanceId      *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	MaximumTasks    *int32  `json:"MaximumTasks,omitempty" xml:"MaximumTasks,omitempty"`
-	Network         *string `json:"Network,omitempty" xml:"Network,omitempty"`
-	OffsetReset     *string `json:"OffsetReset,omitempty" xml:"OffsetReset,omitempty"`
-	RegionId        *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	// The ID of the consumer group that subscribes to the topic.
+	ConsumerGroup *string `json:"ConsumerGroup,omitempty" xml:"ConsumerGroup,omitempty"`
+	// The ID of the Message Queue for Apache Kafka instance.
+	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	// The maximum number of consumers.
+	MaximumTasks *int32 `json:"MaximumTasks,omitempty" xml:"MaximumTasks,omitempty"`
+	// The network. Valid values: Default and PublicNetwork. Default value: Default. The value PublicNetwork indicates a self-managed network.
+	Network *string `json:"Network,omitempty" xml:"Network,omitempty"`
+	// The consumer offset.
+	OffsetReset *string `json:"OffsetReset,omitempty" xml:"OffsetReset,omitempty"`
+	// The ID of the region where the Message Queue for Apache Kafka instance resides.
+	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	// The ID of the security group to which the Message Queue for Apache Kafka instance belongs.
 	SecurityGroupId *string `json:"SecurityGroupId,omitempty" xml:"SecurityGroupId,omitempty"`
-	Topic           *string `json:"Topic,omitempty" xml:"Topic,omitempty"`
-	VSwitchIds      *string `json:"VSwitchIds,omitempty" xml:"VSwitchIds,omitempty"`
-	VpcId           *string `json:"VpcId,omitempty" xml:"VpcId,omitempty"`
+	// The topic name.
+	Topic *string `json:"Topic,omitempty" xml:"Topic,omitempty"`
+	// The ID of the vSwitch with which the Message Queue for Apache Kafka instance is associated.
+	VSwitchIds *string `json:"VSwitchIds,omitempty" xml:"VSwitchIds,omitempty"`
+	// The ID of the VPC to which the Message Queue for Apache Kafka instance belongs.
+	VpcId *string `json:"VpcId,omitempty" xml:"VpcId,omitempty"`
 }
 
 func (s ListUserDefinedEventSourcesResponseBodyDataEventSourceListSourceKafkaParameters) String() string {
@@ -13289,7 +13459,7 @@ func (s *ListUserDefinedEventSourcesResponseBodyDataEventSourceListSourceKafkaPa
 type ListUserDefinedEventSourcesResponseBodyDataEventSourceListSourceMNSParameters struct {
 	// Indicates whether Base64 decoding is enabled. By default, Base64 decoding is enabled.
 	IsBase64Decode *bool `json:"IsBase64Decode,omitempty" xml:"IsBase64Decode,omitempty"`
-	// The name of the queue in MNS.
+	// The name of the MNS queue.
 	QueueName *string `json:"QueueName,omitempty" xml:"QueueName,omitempty"`
 	// The region where the MNS queue resides.
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
@@ -13319,13 +13489,13 @@ func (s *ListUserDefinedEventSourcesResponseBodyDataEventSourceListSourceMNSPara
 }
 
 type ListUserDefinedEventSourcesResponseBodyDataEventSourceListSourceRabbitMQParameters struct {
-	// The ID of the Message Queue for RabbitMQ instance. For more information, see Limits.
+	// The ID of the Message Queue for RabbitMQ instance. For more information, see [Limits](~~163289~~).
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	// The name of the queue in the Message Queue for RabbitMQ instance. For more information, see Limits.
+	// The name of the queue on the Message Queue for RabbitMQ instance. For more information, see [Limits](~~163289~~).
 	QueueName *string `json:"QueueName,omitempty" xml:"QueueName,omitempty"`
 	// The ID of the region where the Message Queue for RabbitMQ instance resides.
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	// The vhost name of the Message Queue for RabbitMQ instance. For more information, see Limits.
+	// The name of the vhost of the Message Queue for RabbitMQ instance. For more information, see [Limits](~~163289~~).
 	VirtualHostName *string `json:"VirtualHostName,omitempty" xml:"VirtualHostName,omitempty"`
 }
 
@@ -13358,26 +13528,33 @@ func (s *ListUserDefinedEventSourcesResponseBodyDataEventSourceListSourceRabbitM
 }
 
 type ListUserDefinedEventSourcesResponseBodyDataEventSourceListSourceRocketMQParameters struct {
+	// The authentication type. This parameter can be set to ACL or left empty.
 	AuthType *string `json:"AuthType,omitempty" xml:"AuthType,omitempty"`
-	// The ID of the consumer group in the Message Queue for Apache RocketMQ instance.
-	GroupId          *string `json:"GroupId,omitempty" xml:"GroupId,omitempty"`
+	// The ID of the consumer group on the Message Queue for Apache RocketMQ instance.
+	GroupId *string `json:"GroupId,omitempty" xml:"GroupId,omitempty"`
+	// The endpoint that is used to access the Message Queue for Apache RocketMQ instance.
 	InstanceEndpoint *string `json:"InstanceEndpoint,omitempty" xml:"InstanceEndpoint,omitempty"`
-	// The ID of the Message Queue for Apache RocketMQ instance. For more information, see Limits.
-	InstanceId              *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	InstanceNetwork         *string `json:"InstanceNetwork,omitempty" xml:"InstanceNetwork,omitempty"`
-	InstancePassword        *string `json:"InstancePassword,omitempty" xml:"InstancePassword,omitempty"`
+	// The ID of the Message Queue for Apache RocketMQ instance. For more information, see [Limits](~~163289~~).
+	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	// The network that is used by the Message Queue for Apache RocketMQ instance.
+	InstanceNetwork *string `json:"InstanceNetwork,omitempty" xml:"InstanceNetwork,omitempty"`
+	// The password that is used to access the Message Queue for Apache RocketMQ instance.
+	InstancePassword *string `json:"InstancePassword,omitempty" xml:"InstancePassword,omitempty"`
+	// The ID of the security group to which the Message Queue for Apache RocketMQ instance belongs.
 	InstanceSecurityGroupId *string `json:"InstanceSecurityGroupId,omitempty" xml:"InstanceSecurityGroupId,omitempty"`
-	InstanceType            *string `json:"InstanceType,omitempty" xml:"InstanceType,omitempty"`
-	InstanceUsername        *string `json:"InstanceUsername,omitempty" xml:"InstanceUsername,omitempty"`
-	InstanceVSwitchIds      *string `json:"InstanceVSwitchIds,omitempty" xml:"InstanceVSwitchIds,omitempty"`
-	InstanceVpcId           *string `json:"InstanceVpcId,omitempty" xml:"InstanceVpcId,omitempty"`
+	// The instance type. Valid values: CLOUD\_4, CLOUD\_5, and SELF_BUILT. The value CLOUD\_4 indicates that the instance is a Message Queue for Apache RocketMQ 4.0 instance. The value CLOUD\_5 indicates that the instance is a Message Queue for Apache RocketMQ 5.0 instance. The value SELF_BUILT indicates that the instance is a self-managed RocketMQ instance.
+	InstanceType *string `json:"InstanceType,omitempty" xml:"InstanceType,omitempty"`
+	// The username that is used to access the Message Queue for Apache RocketMQ instance.
+	InstanceUsername *string `json:"InstanceUsername,omitempty" xml:"InstanceUsername,omitempty"`
+	// The ID of the vSwitch with which the Message Queue for Apache RocketMQ instance is associated.
+	InstanceVSwitchIds *string `json:"InstanceVSwitchIds,omitempty" xml:"InstanceVSwitchIds,omitempty"`
+	// The ID of the virtual private cloud (VPC) to which the Message Queue for Apache RocketMQ instance belongs.
+	InstanceVpcId *string `json:"InstanceVpcId,omitempty" xml:"InstanceVpcId,omitempty"`
 	// The offset from which messages are consumed. Valid values:
 	//
-	// - CONSUME_FROM_LAST_OFFSET: Messages are consumed from the latest offset.
-	//
-	// - CONSUME_FROM_FIRST_OFFSET: Messages are consumed from the earliest offset.
-	//
-	// - CONSUME_FROM_TIMESTAMP: Messages are consumed from the offset at the specified point in time.
+	// *   CONSUME_FROM_LAST_OFFSET: Messages are consumed from the latest offset.
+	// *   CONSUME_FROM_FIRST_OFFSET: Messages are consumed from the earliest offset.
+	// *   CONSUME_FROM_TIMESTAMP: Messages are consumed from the offset at the specified point in time.
 	//
 	// Default value: CONSUME_FROM_LAST_OFFSET.
 	Offset *string `json:"Offset,omitempty" xml:"Offset,omitempty"`
@@ -13387,7 +13564,7 @@ type ListUserDefinedEventSourcesResponseBodyDataEventSourceListSourceRocketMQPar
 	Tag *string `json:"Tag,omitempty" xml:"Tag,omitempty"`
 	// The timestamp that indicates the time from which messages are consumed. This parameter is valid only if Offset is set to CONSUME_FROM_TIMESTAMP.
 	Timestamp *float32 `json:"Timestamp,omitempty" xml:"Timestamp,omitempty"`
-	// The name of the topic in Message Queue for Apache RocketMQ instance. For more information, see Limits.
+	// The name of the topic on the Message Queue for Apache RocketMQ instance. For more information, see [Limits](~~163289~~).
 	Topic *string `json:"Topic,omitempty" xml:"Topic,omitempty"`
 }
 
@@ -13480,13 +13657,13 @@ func (s *ListUserDefinedEventSourcesResponseBodyDataEventSourceListSourceRocketM
 }
 
 type ListUserDefinedEventSourcesResponseBodyDataEventSourceListSourceSLSParameters struct {
-	// The consumer offset. The value begin indicates the earliest offset, and the value end indicates the latest offset. You can also specify a time in seconds to start consumption.
+	// The consumer offset. The value begin indicates the earliest offset, and the value end indicates the latest offset. You can also specify a time in seconds to start message consumption.
 	ConsumePosition *string `json:"ConsumePosition,omitempty" xml:"ConsumePosition,omitempty"`
-	// The Log Service Logstore.
+	// The Simple Log Service Logstore.
 	LogStore *string `json:"LogStore,omitempty" xml:"LogStore,omitempty"`
-	// The Log Service project.
+	// The Simple Log Service project.
 	Project *string `json:"Project,omitempty" xml:"Project,omitempty"`
-	// The role name. If you want to authorize EventBridge to use this role to read logs in Log Service, you must select Alibaba Cloud Service for Selected Trusted Entity and EventBridge for Select Trusted Service when you create the role in the Resource Access Management (RAM) console. For information about the permission policy of this role, see Create a custom event source of the Log Service type.
+	// The role name. If you want to authorize EventBridge to use this role to read logs in Simple Log Service, you must select Alibaba Cloud Service for Selected Trusted Entity and EventBridge for Select Trusted Service when you create the role in the Resource Access Management (RAM) console. For information about the permission policy of this role, see Create a custom event source of the Log Service type.
 	RoleName *string `json:"RoleName,omitempty" xml:"RoleName,omitempty"`
 }
 
@@ -13519,8 +13696,11 @@ func (s *ListUserDefinedEventSourcesResponseBodyDataEventSourceListSourceSLSPara
 }
 
 type ListUserDefinedEventSourcesResponseBodyDataEventSourceListSourceScheduledEventParameters struct {
+	// The cron expression.
 	Schedule *string `json:"Schedule,omitempty" xml:"Schedule,omitempty"`
+	// The time zone in which the cron expression is executed.
 	TimeZone *string `json:"TimeZone,omitempty" xml:"TimeZone,omitempty"`
+	UserData *string `json:"UserData,omitempty" xml:"UserData,omitempty"`
 }
 
 func (s ListUserDefinedEventSourcesResponseBodyDataEventSourceListSourceScheduledEventParameters) String() string {
@@ -13538,6 +13718,11 @@ func (s *ListUserDefinedEventSourcesResponseBodyDataEventSourceListSourceSchedul
 
 func (s *ListUserDefinedEventSourcesResponseBodyDataEventSourceListSourceScheduledEventParameters) SetTimeZone(v string) *ListUserDefinedEventSourcesResponseBodyDataEventSourceListSourceScheduledEventParameters {
 	s.TimeZone = &v
+	return s
+}
+
+func (s *ListUserDefinedEventSourcesResponseBodyDataEventSourceListSourceScheduledEventParameters) SetUserData(v string) *ListUserDefinedEventSourcesResponseBodyDataEventSourceListSourceScheduledEventParameters {
+	s.UserData = &v
 	return s
 }
 
@@ -15656,7 +15841,7 @@ func (s *UpdateEventBusResponse) SetBody(v *UpdateEventBusResponseBody) *UpdateE
 type UpdateEventSourceRequest struct {
 	// The description of the event source.
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
-	// The associated event bus.
+	// The event bus with which the event source is associated.
 	EventBusName *string `json:"EventBusName,omitempty" xml:"EventBusName,omitempty"`
 	// The name of the event source.
 	EventSourceName *string `json:"EventSourceName,omitempty" xml:"EventSourceName,omitempty"`
@@ -15735,15 +15920,33 @@ func (s *UpdateEventSourceRequest) SetSourceScheduledEventParameters(v *UpdateEv
 }
 
 type UpdateEventSourceRequestSourceHttpEventParameters struct {
-	// The CIDR blocks used for security settings. This parameter is required only if you set SecurityConfig to ip. You can enter CIDR blocks or IP addresses.
+	// The CIDR block that is used for security settings. This parameter is required only if SecurityConfig is set to ip. You can enter a CIDR block or an IP address.
 	Ip []*string `json:"Ip,omitempty" xml:"Ip,omitempty" type:"Repeated"`
-	// The HTTP request method supported by the generated webhook URL. You can select multiple values. Valid values: GET POST PUT PATCH DELETE HEAD OPTIONS TRACE CONNECT
+	// The HTTP request method supported by the generated webhook URL. You can select multiple values. Valid values:
+	//
+	// *   GET
+	// *   POST
+	// *   PUT
+	// *   PATCH
+	// *   DELETE
+	// *   HEAD
+	// *   OPTIONS
+	// *   TRACE
+	// *   CONNECT
 	Method []*string `json:"Method,omitempty" xml:"Method,omitempty" type:"Repeated"`
-	// The security domain names. This parameter is required only if SecurityConfig is set to referer. You can enter domain names.
+	// The security domain name. This parameter is required only if SecurityConfig is set to referer. You can enter a domain name.
 	Referer []*string `json:"Referer,omitempty" xml:"Referer,omitempty" type:"Repeated"`
-	// The type of security settings. Valid values: none: No configuration is required. ip: CIDR blocks. referer: security domain names.
+	// The type of security settings. Valid values:
+	//
+	// *   none: No configuration is required.
+	// *   ip: CIDR block.
+	// *   referer: security domain name.
 	SecurityConfig *string `json:"SecurityConfig,omitempty" xml:"SecurityConfig,omitempty"`
-	// The protocol type supported by the generated webhook URL. Valid values: HTTP HTTPS HTTP\&HTTPS
+	// The protocol type that is supported by the generated webhook URL. Valid values:
+	//
+	// *   HTTP
+	// *   HTTPS
+	// *   HTTP\&HTTPS
 	Type *string `json:"Type,omitempty" xml:"Type,omitempty"`
 }
 
@@ -15783,23 +15986,23 @@ func (s *UpdateEventSourceRequestSourceHttpEventParameters) SetType(v string) *U
 type UpdateEventSourceRequestSourceKafkaParameters struct {
 	// The ID of the consumer group that subscribes to the topic.
 	ConsumerGroup *string `json:"ConsumerGroup,omitempty" xml:"ConsumerGroup,omitempty"`
-	// The instance ID.
+	// The ID of the Message Queue for Apache Kafka instance.
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	// The concurrency quota, which is the number of consumers.
+	// The maximum number of consumers.
 	MaximumTasks *int32 `json:"MaximumTasks,omitempty" xml:"MaximumTasks,omitempty"`
-	// The network. Valid values: Default and PublicNetwork.
+	// The network. Valid values: Default and PublicNetwork. Default value: Default. The value PublicNetwork indicates a self-managed network.
 	Network *string `json:"Network,omitempty" xml:"Network,omitempty"`
 	// The consumer offset.
 	OffsetReset *string `json:"OffsetReset,omitempty" xml:"OffsetReset,omitempty"`
-	// The region ID.
+	// The ID of the region where the Message Queue for Apache Kafka instance resides.
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	// The ID of the security group to which the Message Queue for Apache Kafka instance belongs. This parameter is required if you set Network to PublicNetwork.
+	// The ID of the security group to which the Message Queue for Apache Kafka instance belongs. This parameter is required only if you set Network to PublicNetwork.
 	SecurityGroupId *string `json:"SecurityGroupId,omitempty" xml:"SecurityGroupId,omitempty"`
-	// The topic name.
+	// The name of the topic on the Message Queue for Apache Kafka instance.
 	Topic *string `json:"Topic,omitempty" xml:"Topic,omitempty"`
-	// The ID of the vSwitch with which the Message Queue for Apache Kafka instance is associated. This parameter is required if you set Network to PublicNetwork.
+	// The ID of the vSwitch with which the Message Queue for Apache Kafka instance is associated. This parameter is required only if you set Network to PublicNetwork.
 	VSwitchIds *string `json:"VSwitchIds,omitempty" xml:"VSwitchIds,omitempty"`
-	// The ID of the VPC in which the Message Queue for Apache Kafka instance resides. This parameter is required if you set Network to PublicNetwork.
+	// The ID of the VPC in which the Message Queue for Apache Kafka instance resides. This parameter is required only if you set Network to PublicNetwork.
 	VpcId *string `json:"VpcId,omitempty" xml:"VpcId,omitempty"`
 }
 
@@ -15862,7 +16065,7 @@ func (s *UpdateEventSourceRequestSourceKafkaParameters) SetVpcId(v string) *Upda
 }
 
 type UpdateEventSourceRequestSourceMNSParameters struct {
-	// Specifies whether to enable Base64 decoding. Default value: true.
+	// Indicates whether Base64 decoding is enabled. By default, Base64 decoding is enabled.
 	IsBase64Decode *bool `json:"IsBase64Decode,omitempty" xml:"IsBase64Decode,omitempty"`
 	// The name of the MNS queue.
 	QueueName *string `json:"QueueName,omitempty" xml:"QueueName,omitempty"`
@@ -15894,13 +16097,13 @@ func (s *UpdateEventSourceRequestSourceMNSParameters) SetRegionId(v string) *Upd
 }
 
 type UpdateEventSourceRequestSourceRabbitMQParameters struct {
-	// The ID of the Message Queue for RabbitMQ instance. For more information, see Limits.
+	// The ID of the Message Queue for RabbitMQ instance. For more information, see [Limits](~~163289~~).
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	// The name of the queue in the Message Queue for RabbitMQ instance. For more information, see Limits.
+	// The name of the queue on the Message Queue for RabbitMQ instance. For more information, see [Limits](~~163289~~).
 	QueueName *string `json:"QueueName,omitempty" xml:"QueueName,omitempty"`
 	// The ID of the region where the Message Queue for RabbitMQ instance resides.
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	// The vhost name of the Message Queue for RabbitMQ instance. For more information, see Limits.
+	// The name of the vhost of the Message Queue for RabbitMQ instance. For more information, see [Limits](~~163289~~).
 	VirtualHostName *string `json:"VirtualHostName,omitempty" xml:"VirtualHostName,omitempty"`
 }
 
@@ -15933,37 +16136,46 @@ func (s *UpdateEventSourceRequestSourceRabbitMQParameters) SetVirtualHostName(v 
 }
 
 type UpdateEventSourceRequestSourceRocketMQParameters struct {
+	// The authentication type. You can set this parameter to ACL or leave this parameter empty.
 	AuthType *string `json:"AuthType,omitempty" xml:"AuthType,omitempty"`
-	// The ID of the consumer group in the Message Queue for Apache RocketMQ instance.
-	GroupID          *string `json:"GroupID,omitempty" xml:"GroupID,omitempty"`
+	// The ID of the consumer group on the Message Queue for Apache RocketMQ instance.
+	GroupID *string `json:"GroupID,omitempty" xml:"GroupID,omitempty"`
+	// The endpoint that is used to access the Message Queue for Apache RocketMQ instance.
 	InstanceEndpoint *string `json:"InstanceEndpoint,omitempty" xml:"InstanceEndpoint,omitempty"`
-	// The ID of the Message Queue for Apache RocketMQ instance. For more information, see Limits.
+	// The ID of the Message Queue for Apache RocketMQ instance. For more information, see [Limits](~~163289~~).
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	// None
-	InstanceNetwork  *string `json:"InstanceNetwork,omitempty" xml:"InstanceNetwork,omitempty"`
+	// None.
+	InstanceNetwork *string `json:"InstanceNetwork,omitempty" xml:"InstanceNetwork,omitempty"`
+	// The password that is used to access the Message Queue for Apache RocketMQ instance.
 	InstancePassword *string `json:"InstancePassword,omitempty" xml:"InstancePassword,omitempty"`
 	// The ID of the security group to which the Message Queue for Apache RocketMQ instance belongs.
 	InstanceSecurityGroupId *string `json:"InstanceSecurityGroupId,omitempty" xml:"InstanceSecurityGroupId,omitempty"`
 	// The type of the Message Queue for Apache RocketMQ instance. Valid values:
 	//
-	// - Cloud\_4: Message Queue for Apache RocketMQ 4.0 instances.
-	//
-	// - Cloud\_5: Message Queue for Apache RocketMQ 5.0 instances.
-	InstanceType     *string `json:"InstanceType,omitempty" xml:"InstanceType,omitempty"`
+	// *   Cloud\_4: Message Queue for Apache RocketMQ 4.0 instance.
+	// *   Cloud\_5: Message Queue for Apache RocketMQ 5.0 instance.
+	InstanceType *string `json:"InstanceType,omitempty" xml:"InstanceType,omitempty"`
+	// The username that is used to access the Message Queue for Apache RocketMQ instance.
 	InstanceUsername *string `json:"InstanceUsername,omitempty" xml:"InstanceUsername,omitempty"`
 	// The ID of the vSwitch with which the Message Queue for Apache RocketMQ instance is associated.
 	InstanceVSwitchIds *string `json:"InstanceVSwitchIds,omitempty" xml:"InstanceVSwitchIds,omitempty"`
 	// The ID of the virtual private cloud (VPC) in which the Message Queue for Apache RocketMQ instance resides.
 	InstanceVpcId *string `json:"InstanceVpcId,omitempty" xml:"InstanceVpcId,omitempty"`
-	// The consumer offset of the message. Valid values: CONSUME_FROM_LAST_OFFSET: Start consumption from the latest offset. CONSUME_FROM_FIRST_OFFSET: Start consumption from the earliest offset. CONSUME_FROM_TIMESTAMP: Start consumption from the offset at the specified point in time. Default value: CONSUME_FROM_LAST_OFFSET.
+	// The offset from which message consumption starts. Valid values:
+	//
+	// *   CONSUME_FROM_LAST_OFFSET: Start message consumption from the latest offset.
+	// *   CONSUME_FROM_FIRST_OFFSET: Start message consumption from the earliest offset.
+	// *   CONSUME_FROM_TIMESTAMP: Start message consumption from the offset at the specified point in time.
+	//
+	// Default value: CONSUME_FROM_LAST_OFFSET.
 	Offset *string `json:"Offset,omitempty" xml:"Offset,omitempty"`
-	// The region in which the Message Queue for Apache RocketMQ instance resides.
+	// The region where the Message Queue for Apache RocketMQ instance resides.
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	// The tags that are used to filter messages.
+	// The tag that is used to filter messages.
 	Tag *string `json:"Tag,omitempty" xml:"Tag,omitempty"`
-	// The timestamp of the offset from which consumption starts. This parameter is valid only if you set the Offset parameter to CONSUME_FROM_TIMESTAMP.
+	// The timestamp that specifies the time from which messages are consumed. This parameter is valid only if you set Offset to CONSUME_FROM_TIMESTAMP.
 	Timestamp *int64 `json:"Timestamp,omitempty" xml:"Timestamp,omitempty"`
-	// The name of the topic in the Message Queue for Apache RocketMQ instance. For more information, see Limits.
+	// The name of the topic on the Message Queue for Apache RocketMQ instance. For more information, see [Limits](~~163289~~).
 	Topic *string `json:"Topic,omitempty" xml:"Topic,omitempty"`
 }
 
@@ -16095,10 +16307,11 @@ func (s *UpdateEventSourceRequestSourceSLSParameters) SetRoleName(v string) *Upd
 }
 
 type UpdateEventSourceRequestSourceScheduledEventParameters struct {
-	// The Cron expression.
+	// The cron expression.
 	Schedule *string `json:"Schedule,omitempty" xml:"Schedule,omitempty"`
-	// The time zone in which the Cron expression is executed.
+	// The time zone in which the cron expression is executed.
 	TimeZone *string `json:"TimeZone,omitempty" xml:"TimeZone,omitempty"`
+	UserData *string `json:"UserData,omitempty" xml:"UserData,omitempty"`
 }
 
 func (s UpdateEventSourceRequestSourceScheduledEventParameters) String() string {
@@ -16119,10 +16332,15 @@ func (s *UpdateEventSourceRequestSourceScheduledEventParameters) SetTimeZone(v s
 	return s
 }
 
+func (s *UpdateEventSourceRequestSourceScheduledEventParameters) SetUserData(v string) *UpdateEventSourceRequestSourceScheduledEventParameters {
+	s.UserData = &v
+	return s
+}
+
 type UpdateEventSourceShrinkRequest struct {
 	// The description of the event source.
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
-	// The associated event bus.
+	// The event bus with which the event source is associated.
 	EventBusName *string `json:"EventBusName,omitempty" xml:"EventBusName,omitempty"`
 	// The name of the event source.
 	EventSourceName *string `json:"EventSourceName,omitempty" xml:"EventSourceName,omitempty"`
@@ -16201,7 +16419,10 @@ func (s *UpdateEventSourceShrinkRequest) SetSourceScheduledEventParametersShrink
 }
 
 type UpdateEventSourceResponseBody struct {
-	// The status code. The code 200 indicates that the request is successful. Other codes indicate that the call failed. For more information about error codes, see Error codes.
+	// The returned response code. Valid values:
+	//
+	// *   Success: The request is successful.
+	// *   Other codes: The request failed. For more information about error codes, see Error codes.
 	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
 	// The result of the operation.
 	Data *bool `json:"Data,omitempty" xml:"Data,omitempty"`
@@ -16209,7 +16430,7 @@ type UpdateEventSourceResponseBody struct {
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
 	// The request ID.
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// Indicates whether the request is successful. Valid values: true and false.
+	// Indicates whether the operation is successful. The value true indicates that the operation is successful.
 	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
 }
 
@@ -18349,10 +18570,19 @@ func (s *UpdateEventStreamingRequestSourceSourceRabbitMQParameters) SetVirtualHo
 }
 
 type UpdateEventStreamingRequestSourceSourceRocketMQParameters struct {
+	AuthType *string `json:"AuthType,omitempty" xml:"AuthType,omitempty"`
 	// The ID of the consumer group in the Message Queue for Apache RocketMQ instance.
-	GroupID *string `json:"GroupID,omitempty" xml:"GroupID,omitempty"`
+	GroupID          *string `json:"GroupID,omitempty" xml:"GroupID,omitempty"`
+	InstanceEndpoint *string `json:"InstanceEndpoint,omitempty" xml:"InstanceEndpoint,omitempty"`
 	// The ID of the Message Queue for Apache RocketMQ instance.
-	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	InstanceId              *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	InstanceNetwork         *string `json:"InstanceNetwork,omitempty" xml:"InstanceNetwork,omitempty"`
+	InstancePassword        *string `json:"InstancePassword,omitempty" xml:"InstancePassword,omitempty"`
+	InstanceSecurityGroupId *string `json:"InstanceSecurityGroupId,omitempty" xml:"InstanceSecurityGroupId,omitempty"`
+	InstanceType            *string `json:"InstanceType,omitempty" xml:"InstanceType,omitempty"`
+	InstanceUsername        *string `json:"InstanceUsername,omitempty" xml:"InstanceUsername,omitempty"`
+	InstanceVSwitchIds      *string `json:"InstanceVSwitchIds,omitempty" xml:"InstanceVSwitchIds,omitempty"`
+	InstanceVpcId           *string `json:"InstanceVpcId,omitempty" xml:"InstanceVpcId,omitempty"`
 	// The consumer offset of the message. Valid values: CONSUME_FROM_LAST_OFFSET: consumes messages from the latest offset. CONSUME_FROM_FIRST_OFFSET: consumes messages from the earliest offset. CONSUME_FROM_TIMESTAMP: consumes messages from the offset at the specified point in time. Default value: CONSUME_FROM_LAST_OFFSET.
 	Offset *string `json:"Offset,omitempty" xml:"Offset,omitempty"`
 	// The ID of the region where the Message Queue for Apache RocketMQ instance resides.
@@ -18373,13 +18603,58 @@ func (s UpdateEventStreamingRequestSourceSourceRocketMQParameters) GoString() st
 	return s.String()
 }
 
+func (s *UpdateEventStreamingRequestSourceSourceRocketMQParameters) SetAuthType(v string) *UpdateEventStreamingRequestSourceSourceRocketMQParameters {
+	s.AuthType = &v
+	return s
+}
+
 func (s *UpdateEventStreamingRequestSourceSourceRocketMQParameters) SetGroupID(v string) *UpdateEventStreamingRequestSourceSourceRocketMQParameters {
 	s.GroupID = &v
 	return s
 }
 
+func (s *UpdateEventStreamingRequestSourceSourceRocketMQParameters) SetInstanceEndpoint(v string) *UpdateEventStreamingRequestSourceSourceRocketMQParameters {
+	s.InstanceEndpoint = &v
+	return s
+}
+
 func (s *UpdateEventStreamingRequestSourceSourceRocketMQParameters) SetInstanceId(v string) *UpdateEventStreamingRequestSourceSourceRocketMQParameters {
 	s.InstanceId = &v
+	return s
+}
+
+func (s *UpdateEventStreamingRequestSourceSourceRocketMQParameters) SetInstanceNetwork(v string) *UpdateEventStreamingRequestSourceSourceRocketMQParameters {
+	s.InstanceNetwork = &v
+	return s
+}
+
+func (s *UpdateEventStreamingRequestSourceSourceRocketMQParameters) SetInstancePassword(v string) *UpdateEventStreamingRequestSourceSourceRocketMQParameters {
+	s.InstancePassword = &v
+	return s
+}
+
+func (s *UpdateEventStreamingRequestSourceSourceRocketMQParameters) SetInstanceSecurityGroupId(v string) *UpdateEventStreamingRequestSourceSourceRocketMQParameters {
+	s.InstanceSecurityGroupId = &v
+	return s
+}
+
+func (s *UpdateEventStreamingRequestSourceSourceRocketMQParameters) SetInstanceType(v string) *UpdateEventStreamingRequestSourceSourceRocketMQParameters {
+	s.InstanceType = &v
+	return s
+}
+
+func (s *UpdateEventStreamingRequestSourceSourceRocketMQParameters) SetInstanceUsername(v string) *UpdateEventStreamingRequestSourceSourceRocketMQParameters {
+	s.InstanceUsername = &v
+	return s
+}
+
+func (s *UpdateEventStreamingRequestSourceSourceRocketMQParameters) SetInstanceVSwitchIds(v string) *UpdateEventStreamingRequestSourceSourceRocketMQParameters {
+	s.InstanceVSwitchIds = &v
+	return s
+}
+
+func (s *UpdateEventStreamingRequestSourceSourceRocketMQParameters) SetInstanceVpcId(v string) *UpdateEventStreamingRequestSourceSourceRocketMQParameters {
+	s.InstanceVpcId = &v
 	return s
 }
 
