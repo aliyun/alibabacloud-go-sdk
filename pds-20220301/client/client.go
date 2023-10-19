@@ -452,6 +452,266 @@ func (s *AudioPreviewPlayInfoOfflineAudioList) SetUrl(v string) *AudioPreviewPla
 	return s
 }
 
+type AuthenticationInfo struct {
+	AuthenticationDisplayName *string `json:"authentication_display_name,omitempty" xml:"authentication_display_name,omitempty"`
+	AuthenticationType        *string `json:"authentication_type,omitempty" xml:"authentication_type,omitempty"`
+	Extra                     *string `json:"extra,omitempty" xml:"extra,omitempty"`
+	Identity                  *string `json:"identity,omitempty" xml:"identity,omitempty"`
+}
+
+func (s AuthenticationInfo) String() string {
+	return tea.Prettify(s)
+}
+
+func (s AuthenticationInfo) GoString() string {
+	return s.String()
+}
+
+func (s *AuthenticationInfo) SetAuthenticationDisplayName(v string) *AuthenticationInfo {
+	s.AuthenticationDisplayName = &v
+	return s
+}
+
+func (s *AuthenticationInfo) SetAuthenticationType(v string) *AuthenticationInfo {
+	s.AuthenticationType = &v
+	return s
+}
+
+func (s *AuthenticationInfo) SetExtra(v string) *AuthenticationInfo {
+	s.Extra = &v
+	return s
+}
+
+func (s *AuthenticationInfo) SetIdentity(v string) *AuthenticationInfo {
+	s.Identity = &v
+	return s
+}
+
+type BaseAssignmentResponse struct {
+	AssociatedRoleTagId *string   `json:"associated_role_tag_id,omitempty" xml:"associated_role_tag_id,omitempty"`
+	CreatedAt           *string   `json:"created_at,omitempty" xml:"created_at,omitempty"`
+	Creator             *string   `json:"creator,omitempty" xml:"creator,omitempty"`
+	DisinheritSubGroup  *bool     `json:"disinherit_sub_group,omitempty" xml:"disinherit_sub_group,omitempty"`
+	DomainId            *string   `json:"domain_id,omitempty" xml:"domain_id,omitempty"`
+	Identity            *Identity `json:"identity,omitempty" xml:"identity,omitempty"`
+	ManageResourceId    *string   `json:"manage_resource_id,omitempty" xml:"manage_resource_id,omitempty"`
+	ManageResourceType  *string   `json:"manage_resource_type,omitempty" xml:"manage_resource_type,omitempty"`
+	RoleId              *string   `json:"role_id,omitempty" xml:"role_id,omitempty"`
+	UpdatedAt           *string   `json:"updated_at,omitempty" xml:"updated_at,omitempty"`
+}
+
+func (s BaseAssignmentResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s BaseAssignmentResponse) GoString() string {
+	return s.String()
+}
+
+func (s *BaseAssignmentResponse) SetAssociatedRoleTagId(v string) *BaseAssignmentResponse {
+	s.AssociatedRoleTagId = &v
+	return s
+}
+
+func (s *BaseAssignmentResponse) SetCreatedAt(v string) *BaseAssignmentResponse {
+	s.CreatedAt = &v
+	return s
+}
+
+func (s *BaseAssignmentResponse) SetCreator(v string) *BaseAssignmentResponse {
+	s.Creator = &v
+	return s
+}
+
+func (s *BaseAssignmentResponse) SetDisinheritSubGroup(v bool) *BaseAssignmentResponse {
+	s.DisinheritSubGroup = &v
+	return s
+}
+
+func (s *BaseAssignmentResponse) SetDomainId(v string) *BaseAssignmentResponse {
+	s.DomainId = &v
+	return s
+}
+
+func (s *BaseAssignmentResponse) SetIdentity(v *Identity) *BaseAssignmentResponse {
+	s.Identity = v
+	return s
+}
+
+func (s *BaseAssignmentResponse) SetManageResourceId(v string) *BaseAssignmentResponse {
+	s.ManageResourceId = &v
+	return s
+}
+
+func (s *BaseAssignmentResponse) SetManageResourceType(v string) *BaseAssignmentResponse {
+	s.ManageResourceType = &v
+	return s
+}
+
+func (s *BaseAssignmentResponse) SetRoleId(v string) *BaseAssignmentResponse {
+	s.RoleId = &v
+	return s
+}
+
+func (s *BaseAssignmentResponse) SetUpdatedAt(v string) *BaseAssignmentResponse {
+	s.UpdatedAt = &v
+	return s
+}
+
+type BaseDomainResponse struct {
+	CreatedAt                  *string            `json:"created_at,omitempty" xml:"created_at,omitempty"`
+	Description                *string            `json:"description,omitempty" xml:"description,omitempty"`
+	DomainId                   *string            `json:"domain_id,omitempty" xml:"domain_id,omitempty"`
+	DomainName                 *string            `json:"domain_name,omitempty" xml:"domain_name,omitempty"`
+	InitDriveEnable            *bool              `json:"init_drive_enable,omitempty" xml:"init_drive_enable,omitempty"`
+	InitDriveSize              *int64             `json:"init_drive_size,omitempty" xml:"init_drive_size,omitempty"`
+	ParentDomainId             *string            `json:"parent_domain_id,omitempty" xml:"parent_domain_id,omitempty"`
+	PublishedAppAccessStrategy *AppAccessStrategy `json:"published_app_access_strategy,omitempty" xml:"published_app_access_strategy,omitempty"`
+	ShareLinkEnabled           *bool              `json:"share_link_enabled,omitempty" xml:"share_link_enabled,omitempty"`
+	SizeQuota                  *int64             `json:"size_quota,omitempty" xml:"size_quota,omitempty"`
+	SizeQuotaUsed              *int64             `json:"size_quota_used,omitempty" xml:"size_quota_used,omitempty"`
+	Status                     *int64             `json:"status,omitempty" xml:"status,omitempty"`
+	UpdatedAt                  *string            `json:"updated_at,omitempty" xml:"updated_at,omitempty"`
+	UsedSize                   *int64             `json:"used_size,omitempty" xml:"used_size,omitempty"`
+}
+
+func (s BaseDomainResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s BaseDomainResponse) GoString() string {
+	return s.String()
+}
+
+func (s *BaseDomainResponse) SetCreatedAt(v string) *BaseDomainResponse {
+	s.CreatedAt = &v
+	return s
+}
+
+func (s *BaseDomainResponse) SetDescription(v string) *BaseDomainResponse {
+	s.Description = &v
+	return s
+}
+
+func (s *BaseDomainResponse) SetDomainId(v string) *BaseDomainResponse {
+	s.DomainId = &v
+	return s
+}
+
+func (s *BaseDomainResponse) SetDomainName(v string) *BaseDomainResponse {
+	s.DomainName = &v
+	return s
+}
+
+func (s *BaseDomainResponse) SetInitDriveEnable(v bool) *BaseDomainResponse {
+	s.InitDriveEnable = &v
+	return s
+}
+
+func (s *BaseDomainResponse) SetInitDriveSize(v int64) *BaseDomainResponse {
+	s.InitDriveSize = &v
+	return s
+}
+
+func (s *BaseDomainResponse) SetParentDomainId(v string) *BaseDomainResponse {
+	s.ParentDomainId = &v
+	return s
+}
+
+func (s *BaseDomainResponse) SetPublishedAppAccessStrategy(v *AppAccessStrategy) *BaseDomainResponse {
+	s.PublishedAppAccessStrategy = v
+	return s
+}
+
+func (s *BaseDomainResponse) SetShareLinkEnabled(v bool) *BaseDomainResponse {
+	s.ShareLinkEnabled = &v
+	return s
+}
+
+func (s *BaseDomainResponse) SetSizeQuota(v int64) *BaseDomainResponse {
+	s.SizeQuota = &v
+	return s
+}
+
+func (s *BaseDomainResponse) SetSizeQuotaUsed(v int64) *BaseDomainResponse {
+	s.SizeQuotaUsed = &v
+	return s
+}
+
+func (s *BaseDomainResponse) SetStatus(v int64) *BaseDomainResponse {
+	s.Status = &v
+	return s
+}
+
+func (s *BaseDomainResponse) SetUpdatedAt(v string) *BaseDomainResponse {
+	s.UpdatedAt = &v
+	return s
+}
+
+func (s *BaseDomainResponse) SetUsedSize(v int64) *BaseDomainResponse {
+	s.UsedSize = &v
+	return s
+}
+
+type BaseRoleMemberResponse struct {
+	AssignmentList []*BaseAssignmentResponse `json:"assignment_list,omitempty" xml:"assignment_list,omitempty" type:"Repeated"`
+	CreatedAt      *string                   `json:"created_at,omitempty" xml:"created_at,omitempty"`
+	Creator        *string                   `json:"creator,omitempty" xml:"creator,omitempty"`
+	DomainId       *string                   `json:"domain_id,omitempty" xml:"domain_id,omitempty"`
+	Identity       *Identity                 `json:"identity,omitempty" xml:"identity,omitempty"`
+	IdentityName   *string                   `json:"identity_name,omitempty" xml:"identity_name,omitempty"`
+	IsAdmin        *bool                     `json:"is_admin,omitempty" xml:"is_admin,omitempty"`
+	SubdomainId    *string                   `json:"subdomain_id,omitempty" xml:"subdomain_id,omitempty"`
+}
+
+func (s BaseRoleMemberResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s BaseRoleMemberResponse) GoString() string {
+	return s.String()
+}
+
+func (s *BaseRoleMemberResponse) SetAssignmentList(v []*BaseAssignmentResponse) *BaseRoleMemberResponse {
+	s.AssignmentList = v
+	return s
+}
+
+func (s *BaseRoleMemberResponse) SetCreatedAt(v string) *BaseRoleMemberResponse {
+	s.CreatedAt = &v
+	return s
+}
+
+func (s *BaseRoleMemberResponse) SetCreator(v string) *BaseRoleMemberResponse {
+	s.Creator = &v
+	return s
+}
+
+func (s *BaseRoleMemberResponse) SetDomainId(v string) *BaseRoleMemberResponse {
+	s.DomainId = &v
+	return s
+}
+
+func (s *BaseRoleMemberResponse) SetIdentity(v *Identity) *BaseRoleMemberResponse {
+	s.Identity = v
+	return s
+}
+
+func (s *BaseRoleMemberResponse) SetIdentityName(v string) *BaseRoleMemberResponse {
+	s.IdentityName = &v
+	return s
+}
+
+func (s *BaseRoleMemberResponse) SetIsAdmin(v bool) *BaseRoleMemberResponse {
+	s.IsAdmin = &v
+	return s
+}
+
+func (s *BaseRoleMemberResponse) SetSubdomainId(v string) *BaseRoleMemberResponse {
+	s.SubdomainId = &v
+	return s
+}
+
 type BenefitPkgDeliveryInfo struct {
 	Amount      *int64  `json:"amount,omitempty" xml:"amount,omitempty"`
 	CreatedAt   *string `json:"created_at,omitempty" xml:"created_at,omitempty"`
@@ -653,6 +913,570 @@ func (s CsiCondition) GoString() string {
 
 func (s *CsiCondition) SetFileDataPunish(v *Condition) *CsiCondition {
 	s.FileDataPunish = v
+	return s
+}
+
+type CssCreateOrderParam struct {
+	AgentId             *string                 `json:"agentId,omitempty" xml:"agentId,omitempty"`
+	AutoPay             *bool                   `json:"autoPay,omitempty" xml:"autoPay,omitempty"`
+	AutoUseCoupon       *bool                   `json:"autoUseCoupon,omitempty" xml:"autoUseCoupon,omitempty"`
+	Bid                 *string                 `json:"bid,omitempty" xml:"bid,omitempty"`
+	BuyerId             *int64                  `json:"buyerId,omitempty" xml:"buyerId,omitempty"`
+	Certificate         *string                 `json:"certificate,omitempty" xml:"certificate,omitempty"`
+	ChildId             *int64                  `json:"childId,omitempty" xml:"childId,omitempty"`
+	CilentIp            *string                 `json:"cilentIp,omitempty" xml:"cilentIp,omitempty"`
+	Commodities         []*CssInstanceCommodity `json:"commodities,omitempty" xml:"commodities,omitempty" type:"Repeated"`
+	CreaterNick         *string                 `json:"createrNick,omitempty" xml:"createrNick,omitempty"`
+	CssAuthRequestParam interface{}             `json:"cssAuthRequestParam,omitempty" xml:"cssAuthRequestParam,omitempty"`
+	FromApp             *string                 `json:"fromApp,omitempty" xml:"fromApp,omitempty"`
+	Language            *string                 `json:"language,omitempty" xml:"language,omitempty"`
+	MarketType          *int64                  `json:"marketType,omitempty" xml:"marketType,omitempty"`
+	Memo                *string                 `json:"memo,omitempty" xml:"memo,omitempty"`
+	OrderOrigin         *string                 `json:"orderOrigin,omitempty" xml:"orderOrigin,omitempty"`
+	OrderParams         map[string]*string      `json:"orderParams,omitempty" xml:"orderParams,omitempty"`
+	PayerId             *int64                  `json:"payerId,omitempty" xml:"payerId,omitempty"`
+	PlanGroupId         *int64                  `json:"planGroupId,omitempty" xml:"planGroupId,omitempty"`
+	PlanId              *int64                  `json:"planId,omitempty" xml:"planId,omitempty"`
+	PlanInstanceId      *string                 `json:"planInstanceId,omitempty" xml:"planInstanceId,omitempty"`
+	PromotionCode       *string                 `json:"promotionCode,omitempty" xml:"promotionCode,omitempty"`
+	PromotionInputParam interface{}             `json:"promotionInputParam,omitempty" xml:"promotionInputParam,omitempty"`
+	RequestId           *string                 `json:"requestId,omitempty" xml:"requestId,omitempty"`
+	SkipChannel         *bool                   `json:"skipChannel,omitempty" xml:"skipChannel,omitempty"`
+	Token               *string                 `json:"token,omitempty" xml:"token,omitempty"`
+	TransientAccess     interface{}             `json:"transientAccess,omitempty" xml:"transientAccess,omitempty"`
+	UmidToken           *string                 `json:"umidToken,omitempty" xml:"umidToken,omitempty"`
+	UserId              *int64                  `json:"userId,omitempty" xml:"userId,omitempty"`
+}
+
+func (s CssCreateOrderParam) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CssCreateOrderParam) GoString() string {
+	return s.String()
+}
+
+func (s *CssCreateOrderParam) SetAgentId(v string) *CssCreateOrderParam {
+	s.AgentId = &v
+	return s
+}
+
+func (s *CssCreateOrderParam) SetAutoPay(v bool) *CssCreateOrderParam {
+	s.AutoPay = &v
+	return s
+}
+
+func (s *CssCreateOrderParam) SetAutoUseCoupon(v bool) *CssCreateOrderParam {
+	s.AutoUseCoupon = &v
+	return s
+}
+
+func (s *CssCreateOrderParam) SetBid(v string) *CssCreateOrderParam {
+	s.Bid = &v
+	return s
+}
+
+func (s *CssCreateOrderParam) SetBuyerId(v int64) *CssCreateOrderParam {
+	s.BuyerId = &v
+	return s
+}
+
+func (s *CssCreateOrderParam) SetCertificate(v string) *CssCreateOrderParam {
+	s.Certificate = &v
+	return s
+}
+
+func (s *CssCreateOrderParam) SetChildId(v int64) *CssCreateOrderParam {
+	s.ChildId = &v
+	return s
+}
+
+func (s *CssCreateOrderParam) SetCilentIp(v string) *CssCreateOrderParam {
+	s.CilentIp = &v
+	return s
+}
+
+func (s *CssCreateOrderParam) SetCommodities(v []*CssInstanceCommodity) *CssCreateOrderParam {
+	s.Commodities = v
+	return s
+}
+
+func (s *CssCreateOrderParam) SetCreaterNick(v string) *CssCreateOrderParam {
+	s.CreaterNick = &v
+	return s
+}
+
+func (s *CssCreateOrderParam) SetCssAuthRequestParam(v interface{}) *CssCreateOrderParam {
+	s.CssAuthRequestParam = v
+	return s
+}
+
+func (s *CssCreateOrderParam) SetFromApp(v string) *CssCreateOrderParam {
+	s.FromApp = &v
+	return s
+}
+
+func (s *CssCreateOrderParam) SetLanguage(v string) *CssCreateOrderParam {
+	s.Language = &v
+	return s
+}
+
+func (s *CssCreateOrderParam) SetMarketType(v int64) *CssCreateOrderParam {
+	s.MarketType = &v
+	return s
+}
+
+func (s *CssCreateOrderParam) SetMemo(v string) *CssCreateOrderParam {
+	s.Memo = &v
+	return s
+}
+
+func (s *CssCreateOrderParam) SetOrderOrigin(v string) *CssCreateOrderParam {
+	s.OrderOrigin = &v
+	return s
+}
+
+func (s *CssCreateOrderParam) SetOrderParams(v map[string]*string) *CssCreateOrderParam {
+	s.OrderParams = v
+	return s
+}
+
+func (s *CssCreateOrderParam) SetPayerId(v int64) *CssCreateOrderParam {
+	s.PayerId = &v
+	return s
+}
+
+func (s *CssCreateOrderParam) SetPlanGroupId(v int64) *CssCreateOrderParam {
+	s.PlanGroupId = &v
+	return s
+}
+
+func (s *CssCreateOrderParam) SetPlanId(v int64) *CssCreateOrderParam {
+	s.PlanId = &v
+	return s
+}
+
+func (s *CssCreateOrderParam) SetPlanInstanceId(v string) *CssCreateOrderParam {
+	s.PlanInstanceId = &v
+	return s
+}
+
+func (s *CssCreateOrderParam) SetPromotionCode(v string) *CssCreateOrderParam {
+	s.PromotionCode = &v
+	return s
+}
+
+func (s *CssCreateOrderParam) SetPromotionInputParam(v interface{}) *CssCreateOrderParam {
+	s.PromotionInputParam = v
+	return s
+}
+
+func (s *CssCreateOrderParam) SetRequestId(v string) *CssCreateOrderParam {
+	s.RequestId = &v
+	return s
+}
+
+func (s *CssCreateOrderParam) SetSkipChannel(v bool) *CssCreateOrderParam {
+	s.SkipChannel = &v
+	return s
+}
+
+func (s *CssCreateOrderParam) SetToken(v string) *CssCreateOrderParam {
+	s.Token = &v
+	return s
+}
+
+func (s *CssCreateOrderParam) SetTransientAccess(v interface{}) *CssCreateOrderParam {
+	s.TransientAccess = v
+	return s
+}
+
+func (s *CssCreateOrderParam) SetUmidToken(v string) *CssCreateOrderParam {
+	s.UmidToken = &v
+	return s
+}
+
+func (s *CssCreateOrderParam) SetUserId(v int64) *CssCreateOrderParam {
+	s.UserId = &v
+	return s
+}
+
+type CssInstanceCommodity struct {
+	ActivityId                   *int64                  `json:"activityId,omitempty" xml:"activityId,omitempty"`
+	AliyunProduceCode            *string                 `json:"aliyunProduceCode,omitempty" xml:"aliyunProduceCode,omitempty"`
+	ChargeType                   *string                 `json:"chargeType,omitempty" xml:"chargeType,omitempty"`
+	CommodityCode                *string                 `json:"commodityCode,omitempty" xml:"commodityCode,omitempty"`
+	Components                   []*CssInstanceComponent `json:"components,omitempty" xml:"components,omitempty" type:"Repeated"`
+	Duration                     *int64                  `json:"duration,omitempty" xml:"duration,omitempty"`
+	InstanceId                   *string                 `json:"instanceId,omitempty" xml:"instanceId,omitempty"`
+	IsFree                       *bool                   `json:"isFree,omitempty" xml:"isFree,omitempty"`
+	IsPrePayPostCharge           *bool                   `json:"isPrePayPostCharge,omitempty" xml:"isPrePayPostCharge,omitempty"`
+	IsRenewChange                *bool                   `json:"isRenewChange,omitempty" xml:"isRenewChange,omitempty"`
+	IsSyncToSubscription         *bool                   `json:"isSyncToSubscription,omitempty" xml:"isSyncToSubscription,omitempty"`
+	OrderParams                  map[string]*string      `json:"orderParams,omitempty" xml:"orderParams,omitempty"`
+	OrderType                    *string                 `json:"orderType,omitempty" xml:"orderType,omitempty"`
+	PlanItemId                   *int64                  `json:"planItemId,omitempty" xml:"planItemId,omitempty"`
+	PricingCycle                 *string                 `json:"pricingCycle,omitempty" xml:"pricingCycle,omitempty"`
+	Quantity                     *int64                  `json:"quantity,omitempty" xml:"quantity,omitempty"`
+	RedeemNoList                 []*string               `json:"redeemNoList,omitempty" xml:"redeemNoList,omitempty" type:"Repeated"`
+	RedeemOrderType              *string                 `json:"redeemOrderType,omitempty" xml:"redeemOrderType,omitempty"`
+	RefundSpecCode               *string                 `json:"refundSpecCode,omitempty" xml:"refundSpecCode,omitempty"`
+	SpecCode                     *string                 `json:"specCode,omitempty" xml:"specCode,omitempty"`
+	SpecUpgradeOriginSpecCodes   []*string               `json:"specUpgradeOriginSpecCodes,omitempty" xml:"specUpgradeOriginSpecCodes,omitempty" type:"Repeated"`
+	SpecifyStartDate             *int64                  `json:"specifyStartDate,omitempty" xml:"specifyStartDate,omitempty"`
+	UpgradeInquireFinancialValue *bool                   `json:"upgradeInquireFinancialValue,omitempty" xml:"upgradeInquireFinancialValue,omitempty"`
+}
+
+func (s CssInstanceCommodity) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CssInstanceCommodity) GoString() string {
+	return s.String()
+}
+
+func (s *CssInstanceCommodity) SetActivityId(v int64) *CssInstanceCommodity {
+	s.ActivityId = &v
+	return s
+}
+
+func (s *CssInstanceCommodity) SetAliyunProduceCode(v string) *CssInstanceCommodity {
+	s.AliyunProduceCode = &v
+	return s
+}
+
+func (s *CssInstanceCommodity) SetChargeType(v string) *CssInstanceCommodity {
+	s.ChargeType = &v
+	return s
+}
+
+func (s *CssInstanceCommodity) SetCommodityCode(v string) *CssInstanceCommodity {
+	s.CommodityCode = &v
+	return s
+}
+
+func (s *CssInstanceCommodity) SetComponents(v []*CssInstanceComponent) *CssInstanceCommodity {
+	s.Components = v
+	return s
+}
+
+func (s *CssInstanceCommodity) SetDuration(v int64) *CssInstanceCommodity {
+	s.Duration = &v
+	return s
+}
+
+func (s *CssInstanceCommodity) SetInstanceId(v string) *CssInstanceCommodity {
+	s.InstanceId = &v
+	return s
+}
+
+func (s *CssInstanceCommodity) SetIsFree(v bool) *CssInstanceCommodity {
+	s.IsFree = &v
+	return s
+}
+
+func (s *CssInstanceCommodity) SetIsPrePayPostCharge(v bool) *CssInstanceCommodity {
+	s.IsPrePayPostCharge = &v
+	return s
+}
+
+func (s *CssInstanceCommodity) SetIsRenewChange(v bool) *CssInstanceCommodity {
+	s.IsRenewChange = &v
+	return s
+}
+
+func (s *CssInstanceCommodity) SetIsSyncToSubscription(v bool) *CssInstanceCommodity {
+	s.IsSyncToSubscription = &v
+	return s
+}
+
+func (s *CssInstanceCommodity) SetOrderParams(v map[string]*string) *CssInstanceCommodity {
+	s.OrderParams = v
+	return s
+}
+
+func (s *CssInstanceCommodity) SetOrderType(v string) *CssInstanceCommodity {
+	s.OrderType = &v
+	return s
+}
+
+func (s *CssInstanceCommodity) SetPlanItemId(v int64) *CssInstanceCommodity {
+	s.PlanItemId = &v
+	return s
+}
+
+func (s *CssInstanceCommodity) SetPricingCycle(v string) *CssInstanceCommodity {
+	s.PricingCycle = &v
+	return s
+}
+
+func (s *CssInstanceCommodity) SetQuantity(v int64) *CssInstanceCommodity {
+	s.Quantity = &v
+	return s
+}
+
+func (s *CssInstanceCommodity) SetRedeemNoList(v []*string) *CssInstanceCommodity {
+	s.RedeemNoList = v
+	return s
+}
+
+func (s *CssInstanceCommodity) SetRedeemOrderType(v string) *CssInstanceCommodity {
+	s.RedeemOrderType = &v
+	return s
+}
+
+func (s *CssInstanceCommodity) SetRefundSpecCode(v string) *CssInstanceCommodity {
+	s.RefundSpecCode = &v
+	return s
+}
+
+func (s *CssInstanceCommodity) SetSpecCode(v string) *CssInstanceCommodity {
+	s.SpecCode = &v
+	return s
+}
+
+func (s *CssInstanceCommodity) SetSpecUpgradeOriginSpecCodes(v []*string) *CssInstanceCommodity {
+	s.SpecUpgradeOriginSpecCodes = v
+	return s
+}
+
+func (s *CssInstanceCommodity) SetSpecifyStartDate(v int64) *CssInstanceCommodity {
+	s.SpecifyStartDate = &v
+	return s
+}
+
+func (s *CssInstanceCommodity) SetUpgradeInquireFinancialValue(v bool) *CssInstanceCommodity {
+	s.UpgradeInquireFinancialValue = &v
+	return s
+}
+
+type CssInstanceComponent struct {
+	ComponentCode    *string                `json:"componentCode,omitempty" xml:"componentCode,omitempty"`
+	ComponentName    *string                `json:"componentName,omitempty" xml:"componentName,omitempty"`
+	GlobalKey        *string                `json:"globalKey,omitempty" xml:"globalKey,omitempty"`
+	InstanceProperty []*CssInstanceProperty `json:"instanceProperty,omitempty" xml:"instanceProperty,omitempty" type:"Repeated"`
+	ModuleAttrStatus *int64                 `json:"moduleAttrStatus,omitempty" xml:"moduleAttrStatus,omitempty"`
+	Tag              *string                `json:"tag,omitempty" xml:"tag,omitempty"`
+}
+
+func (s CssInstanceComponent) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CssInstanceComponent) GoString() string {
+	return s.String()
+}
+
+func (s *CssInstanceComponent) SetComponentCode(v string) *CssInstanceComponent {
+	s.ComponentCode = &v
+	return s
+}
+
+func (s *CssInstanceComponent) SetComponentName(v string) *CssInstanceComponent {
+	s.ComponentName = &v
+	return s
+}
+
+func (s *CssInstanceComponent) SetGlobalKey(v string) *CssInstanceComponent {
+	s.GlobalKey = &v
+	return s
+}
+
+func (s *CssInstanceComponent) SetInstanceProperty(v []*CssInstanceProperty) *CssInstanceComponent {
+	s.InstanceProperty = v
+	return s
+}
+
+func (s *CssInstanceComponent) SetModuleAttrStatus(v int64) *CssInstanceComponent {
+	s.ModuleAttrStatus = &v
+	return s
+}
+
+func (s *CssInstanceComponent) SetTag(v string) *CssInstanceComponent {
+	s.Tag = &v
+	return s
+}
+
+type CssInstanceProperty struct {
+	Code      *string `json:"code,omitempty" xml:"code,omitempty"`
+	GlobalKey *string `json:"globalKey,omitempty" xml:"globalKey,omitempty"`
+	Name      *string `json:"name,omitempty" xml:"name,omitempty"`
+	Unit      *string `json:"unit,omitempty" xml:"unit,omitempty"`
+	Value     *string `json:"value,omitempty" xml:"value,omitempty"`
+}
+
+func (s CssInstanceProperty) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CssInstanceProperty) GoString() string {
+	return s.String()
+}
+
+func (s *CssInstanceProperty) SetCode(v string) *CssInstanceProperty {
+	s.Code = &v
+	return s
+}
+
+func (s *CssInstanceProperty) SetGlobalKey(v string) *CssInstanceProperty {
+	s.GlobalKey = &v
+	return s
+}
+
+func (s *CssInstanceProperty) SetName(v string) *CssInstanceProperty {
+	s.Name = &v
+	return s
+}
+
+func (s *CssInstanceProperty) SetUnit(v string) *CssInstanceProperty {
+	s.Unit = &v
+	return s
+}
+
+func (s *CssInstanceProperty) SetValue(v string) *CssInstanceProperty {
+	s.Value = &v
+	return s
+}
+
+type CssProduce struct {
+	Bid         *string        `json:"bid,omitempty" xml:"bid,omitempty"`
+	BuyerId     *int64         `json:"buyerId,omitempty" xml:"buyerId,omitempty"`
+	ChildId     *int64         `json:"childId,omitempty" xml:"childId,omitempty"`
+	FromApp     *string        `json:"fromApp,omitempty" xml:"fromApp,omitempty"`
+	OrderId     *int64         `json:"orderId,omitempty" xml:"orderId,omitempty"`
+	PayerId     *int64         `json:"payerId,omitempty" xml:"payerId,omitempty"`
+	Purchases   []*CssPurchase `json:"purchases,omitempty" xml:"purchases,omitempty" type:"Repeated"`
+	RequestId   *string        `json:"requestId,omitempty" xml:"requestId,omitempty"`
+	SkipChannel *bool          `json:"skipChannel,omitempty" xml:"skipChannel,omitempty"`
+	Token       *string        `json:"token,omitempty" xml:"token,omitempty"`
+	UserId      *int64         `json:"userId,omitempty" xml:"userId,omitempty"`
+}
+
+func (s CssProduce) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CssProduce) GoString() string {
+	return s.String()
+}
+
+func (s *CssProduce) SetBid(v string) *CssProduce {
+	s.Bid = &v
+	return s
+}
+
+func (s *CssProduce) SetBuyerId(v int64) *CssProduce {
+	s.BuyerId = &v
+	return s
+}
+
+func (s *CssProduce) SetChildId(v int64) *CssProduce {
+	s.ChildId = &v
+	return s
+}
+
+func (s *CssProduce) SetFromApp(v string) *CssProduce {
+	s.FromApp = &v
+	return s
+}
+
+func (s *CssProduce) SetOrderId(v int64) *CssProduce {
+	s.OrderId = &v
+	return s
+}
+
+func (s *CssProduce) SetPayerId(v int64) *CssProduce {
+	s.PayerId = &v
+	return s
+}
+
+func (s *CssProduce) SetPurchases(v []*CssPurchase) *CssProduce {
+	s.Purchases = v
+	return s
+}
+
+func (s *CssProduce) SetRequestId(v string) *CssProduce {
+	s.RequestId = &v
+	return s
+}
+
+func (s *CssProduce) SetSkipChannel(v bool) *CssProduce {
+	s.SkipChannel = &v
+	return s
+}
+
+func (s *CssProduce) SetToken(v string) *CssProduce {
+	s.Token = &v
+	return s
+}
+
+func (s *CssProduce) SetUserId(v int64) *CssProduce {
+	s.UserId = &v
+	return s
+}
+
+type CssPurchase struct {
+	ChargeType         *string                 `json:"chargeType,omitempty" xml:"chargeType,omitempty"`
+	CommodityCode      *string                 `json:"commodityCode,omitempty" xml:"commodityCode,omitempty"`
+	EndDate            *int64                  `json:"endDate,omitempty" xml:"endDate,omitempty"`
+	GmtCreate          *int64                  `json:"gmtCreate,omitempty" xml:"gmtCreate,omitempty"`
+	InstanceComponents []*CssInstanceComponent `json:"instanceComponents,omitempty" xml:"instanceComponents,omitempty" type:"Repeated"`
+	InstanceId         *string                 `json:"instanceId,omitempty" xml:"instanceId,omitempty"`
+	OrderType          *string                 `json:"orderType,omitempty" xml:"orderType,omitempty"`
+	PurchaseParams     map[string]*string      `json:"purchaseParams,omitempty" xml:"purchaseParams,omitempty"`
+	StartDate          *int64                  `json:"startDate,omitempty" xml:"startDate,omitempty"`
+}
+
+func (s CssPurchase) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CssPurchase) GoString() string {
+	return s.String()
+}
+
+func (s *CssPurchase) SetChargeType(v string) *CssPurchase {
+	s.ChargeType = &v
+	return s
+}
+
+func (s *CssPurchase) SetCommodityCode(v string) *CssPurchase {
+	s.CommodityCode = &v
+	return s
+}
+
+func (s *CssPurchase) SetEndDate(v int64) *CssPurchase {
+	s.EndDate = &v
+	return s
+}
+
+func (s *CssPurchase) SetGmtCreate(v int64) *CssPurchase {
+	s.GmtCreate = &v
+	return s
+}
+
+func (s *CssPurchase) SetInstanceComponents(v []*CssInstanceComponent) *CssPurchase {
+	s.InstanceComponents = v
+	return s
+}
+
+func (s *CssPurchase) SetInstanceId(v string) *CssPurchase {
+	s.InstanceId = &v
+	return s
+}
+
+func (s *CssPurchase) SetOrderType(v string) *CssPurchase {
+	s.OrderType = &v
+	return s
+}
+
+func (s *CssPurchase) SetPurchaseParams(v map[string]*string) *CssPurchase {
+	s.PurchaseParams = v
+	return s
+}
+
+func (s *CssPurchase) SetStartDate(v int64) *CssPurchase {
+	s.StartDate = &v
 	return s
 }
 
@@ -1000,36 +1824,37 @@ func (s *FaceThumbnail) SetFaceThumbnail(v string) *FaceThumbnail {
 }
 
 type File struct {
-	Category          *string                `json:"category,omitempty" xml:"category,omitempty"`
-	ContentHash       *string                `json:"content_hash,omitempty" xml:"content_hash,omitempty"`
-	ContentHashName   *string                `json:"content_hash_name,omitempty" xml:"content_hash_name,omitempty"`
-	ContentType       *string                `json:"content_type,omitempty" xml:"content_type,omitempty"`
-	Crc64Hash         *string                `json:"crc64_hash,omitempty" xml:"crc64_hash,omitempty"`
-	CreatedAt         *string                `json:"created_at,omitempty" xml:"created_at,omitempty"`
-	Description       *string                `json:"description,omitempty" xml:"description,omitempty"`
-	DomainId          *string                `json:"domain_id,omitempty" xml:"domain_id,omitempty"`
-	DownloadUrl       *string                `json:"download_url,omitempty" xml:"download_url,omitempty"`
-	DriveId           *string                `json:"drive_id,omitempty" xml:"drive_id,omitempty"`
-	FileExtension     *string                `json:"file_extension,omitempty" xml:"file_extension,omitempty"`
-	FileId            *string                `json:"file_id,omitempty" xml:"file_id,omitempty"`
-	Hidden            *bool                  `json:"hidden,omitempty" xml:"hidden,omitempty"`
-	InvestigationInfo *FileInvestigationInfo `json:"investigation_info,omitempty" xml:"investigation_info,omitempty" type:"Struct"`
-	Labels            []*string              `json:"labels,omitempty" xml:"labels,omitempty" type:"Repeated"`
-	LocalCreatedAt    *string                `json:"local_created_at,omitempty" xml:"local_created_at,omitempty"`
-	LocalModifiedAt   *string                `json:"local_modified_at,omitempty" xml:"local_modified_at,omitempty"`
-	Name              *string                `json:"name,omitempty" xml:"name,omitempty"`
-	ParentFileId      *string                `json:"parent_file_id,omitempty" xml:"parent_file_id,omitempty"`
-	RevisionId        *string                `json:"revision_id,omitempty" xml:"revision_id,omitempty"`
-	Size              *int64                 `json:"size,omitempty" xml:"size,omitempty"`
-	Starred           *bool                  `json:"starred,omitempty" xml:"starred,omitempty"`
-	Status            *string                `json:"status,omitempty" xml:"status,omitempty"`
-	Thumbnail         *string                `json:"thumbnail,omitempty" xml:"thumbnail,omitempty"`
-	ThumbnailUrls     map[string]*string     `json:"thumbnail_urls,omitempty" xml:"thumbnail_urls,omitempty"`
-	TrashedAt         *string                `json:"trashed_at,omitempty" xml:"trashed_at,omitempty"`
-	Type              *string                `json:"type,omitempty" xml:"type,omitempty"`
-	UpdatedAt         *string                `json:"updated_at,omitempty" xml:"updated_at,omitempty"`
-	UploadId          *string                `json:"upload_id,omitempty" xml:"upload_id,omitempty"`
-	UserTags          map[string]*string     `json:"user_tags,omitempty" xml:"user_tags,omitempty"`
+	Category           *string                `json:"category,omitempty" xml:"category,omitempty"`
+	ContentHash        *string                `json:"content_hash,omitempty" xml:"content_hash,omitempty"`
+	ContentHashName    *string                `json:"content_hash_name,omitempty" xml:"content_hash_name,omitempty"`
+	ContentType        *string                `json:"content_type,omitempty" xml:"content_type,omitempty"`
+	Crc64Hash          *string                `json:"crc64_hash,omitempty" xml:"crc64_hash,omitempty"`
+	CreatedAt          *string                `json:"created_at,omitempty" xml:"created_at,omitempty"`
+	Description        *string                `json:"description,omitempty" xml:"description,omitempty"`
+	DomainId           *string                `json:"domain_id,omitempty" xml:"domain_id,omitempty"`
+	DownloadUrl        *string                `json:"download_url,omitempty" xml:"download_url,omitempty"`
+	DriveId            *string                `json:"drive_id,omitempty" xml:"drive_id,omitempty"`
+	FileExtension      *string                `json:"file_extension,omitempty" xml:"file_extension,omitempty"`
+	FileId             *string                `json:"file_id,omitempty" xml:"file_id,omitempty"`
+	Hidden             *bool                  `json:"hidden,omitempty" xml:"hidden,omitempty"`
+	InvestigationInfo  *FileInvestigationInfo `json:"investigation_info,omitempty" xml:"investigation_info,omitempty" type:"Struct"`
+	Labels             []*string              `json:"labels,omitempty" xml:"labels,omitempty" type:"Repeated"`
+	LocalCreatedAt     *string                `json:"local_created_at,omitempty" xml:"local_created_at,omitempty"`
+	LocalModifiedAt    *string                `json:"local_modified_at,omitempty" xml:"local_modified_at,omitempty"`
+	Name               *string                `json:"name,omitempty" xml:"name,omitempty"`
+	ParentFileId       *string                `json:"parent_file_id,omitempty" xml:"parent_file_id,omitempty"`
+	RevisionId         *string                `json:"revision_id,omitempty" xml:"revision_id,omitempty"`
+	Size               *int64                 `json:"size,omitempty" xml:"size,omitempty"`
+	Starred            *bool                  `json:"starred,omitempty" xml:"starred,omitempty"`
+	Status             *string                `json:"status,omitempty" xml:"status,omitempty"`
+	Thumbnail          *string                `json:"thumbnail,omitempty" xml:"thumbnail,omitempty"`
+	ThumbnailUrls      map[string]*string     `json:"thumbnail_urls,omitempty" xml:"thumbnail_urls,omitempty"`
+	TrashedAt          *string                `json:"trashed_at,omitempty" xml:"trashed_at,omitempty"`
+	Type               *string                `json:"type,omitempty" xml:"type,omitempty"`
+	UpdatedAt          *string                `json:"updated_at,omitempty" xml:"updated_at,omitempty"`
+	UploadId           *string                `json:"upload_id,omitempty" xml:"upload_id,omitempty"`
+	UserTags           map[string]*string     `json:"user_tags,omitempty" xml:"user_tags,omitempty"`
+	VideoMediaMetadata *VideoMediaMetadata    `json:"video_media_metadata,omitempty" xml:"video_media_metadata,omitempty"`
 }
 
 func (s File) String() string {
@@ -1187,6 +2012,11 @@ func (s *File) SetUploadId(v string) *File {
 
 func (s *File) SetUserTags(v map[string]*string) *File {
 	s.UserTags = v
+	return s
+}
+
+func (s *File) SetVideoMediaMetadata(v *VideoMediaMetadata) *File {
+	s.VideoMediaMetadata = v
 	return s
 }
 
@@ -2030,6 +2860,77 @@ func (s *LocationDateCluster) SetUpdatedAt(v string) *LocationDateCluster {
 	return s
 }
 
+type Membership struct {
+	CreatedAt   *int64  `json:"created_at,omitempty" xml:"created_at,omitempty"`
+	Creator     *string `json:"creator,omitempty" xml:"creator,omitempty"`
+	Description *string `json:"description,omitempty" xml:"description,omitempty"`
+	DomainId    *string `json:"domain_id,omitempty" xml:"domain_id,omitempty"`
+	GroupId     *string `json:"group_id,omitempty" xml:"group_id,omitempty"`
+	MemberRole  *string `json:"member_role,omitempty" xml:"member_role,omitempty"`
+	MemberType  *string `json:"member_type,omitempty" xml:"member_type,omitempty"`
+	SubGroupId  *string `json:"sub_group_id,omitempty" xml:"sub_group_id,omitempty"`
+	UpdatedAt   *int64  `json:"updated_at,omitempty" xml:"updated_at,omitempty"`
+	UserId      *string `json:"user_id,omitempty" xml:"user_id,omitempty"`
+}
+
+func (s Membership) String() string {
+	return tea.Prettify(s)
+}
+
+func (s Membership) GoString() string {
+	return s.String()
+}
+
+func (s *Membership) SetCreatedAt(v int64) *Membership {
+	s.CreatedAt = &v
+	return s
+}
+
+func (s *Membership) SetCreator(v string) *Membership {
+	s.Creator = &v
+	return s
+}
+
+func (s *Membership) SetDescription(v string) *Membership {
+	s.Description = &v
+	return s
+}
+
+func (s *Membership) SetDomainId(v string) *Membership {
+	s.DomainId = &v
+	return s
+}
+
+func (s *Membership) SetGroupId(v string) *Membership {
+	s.GroupId = &v
+	return s
+}
+
+func (s *Membership) SetMemberRole(v string) *Membership {
+	s.MemberRole = &v
+	return s
+}
+
+func (s *Membership) SetMemberType(v string) *Membership {
+	s.MemberType = &v
+	return s
+}
+
+func (s *Membership) SetSubGroupId(v string) *Membership {
+	s.SubGroupId = &v
+	return s
+}
+
+func (s *Membership) SetUpdatedAt(v int64) *Membership {
+	s.UpdatedAt = &v
+	return s
+}
+
+func (s *Membership) SetUserId(v string) *Membership {
+	s.UserId = &v
+	return s
+}
+
 type NameCheckResult struct {
 	ExistFileId   *string `json:"exist_file_id,omitempty" xml:"exist_file_id,omitempty"`
 	ExistFileType *string `json:"exist_file_type,omitempty" xml:"exist_file_type,omitempty"`
@@ -2050,6 +2951,100 @@ func (s *NameCheckResult) SetExistFileId(v string) *NameCheckResult {
 
 func (s *NameCheckResult) SetExistFileType(v string) *NameCheckResult {
 	s.ExistFileType = &v
+	return s
+}
+
+type Permission struct {
+	ActionList   []*PermissionActionList `json:"action_list,omitempty" xml:"action_list,omitempty" type:"Repeated"`
+	Collection   *string                 `json:"collection,omitempty" xml:"collection,omitempty"`
+	Condition    *PermissionCondition    `json:"condition,omitempty" xml:"condition,omitempty"`
+	CreatedAt    *int64                  `json:"created_at,omitempty" xml:"created_at,omitempty"`
+	Effect       *string                 `json:"effect,omitempty" xml:"effect,omitempty"`
+	IdentityId   *string                 `json:"identity_id,omitempty" xml:"identity_id,omitempty"`
+	IdentityType *string                 `json:"identity_type,omitempty" xml:"identity_type,omitempty"`
+	Resource     *string                 `json:"resource,omitempty" xml:"resource,omitempty"`
+	ResourceType *string                 `json:"resource_type,omitempty" xml:"resource_type,omitempty"`
+	UpdatedAt    *int64                  `json:"updated_at,omitempty" xml:"updated_at,omitempty"`
+	UserTags     []*string               `json:"user_tags,omitempty" xml:"user_tags,omitempty" type:"Repeated"`
+}
+
+func (s Permission) String() string {
+	return tea.Prettify(s)
+}
+
+func (s Permission) GoString() string {
+	return s.String()
+}
+
+func (s *Permission) SetActionList(v []*PermissionActionList) *Permission {
+	s.ActionList = v
+	return s
+}
+
+func (s *Permission) SetCollection(v string) *Permission {
+	s.Collection = &v
+	return s
+}
+
+func (s *Permission) SetCondition(v *PermissionCondition) *Permission {
+	s.Condition = v
+	return s
+}
+
+func (s *Permission) SetCreatedAt(v int64) *Permission {
+	s.CreatedAt = &v
+	return s
+}
+
+func (s *Permission) SetEffect(v string) *Permission {
+	s.Effect = &v
+	return s
+}
+
+func (s *Permission) SetIdentityId(v string) *Permission {
+	s.IdentityId = &v
+	return s
+}
+
+func (s *Permission) SetIdentityType(v string) *Permission {
+	s.IdentityType = &v
+	return s
+}
+
+func (s *Permission) SetResource(v string) *Permission {
+	s.Resource = &v
+	return s
+}
+
+func (s *Permission) SetResourceType(v string) *Permission {
+	s.ResourceType = &v
+	return s
+}
+
+func (s *Permission) SetUpdatedAt(v int64) *Permission {
+	s.UpdatedAt = &v
+	return s
+}
+
+func (s *Permission) SetUserTags(v []*string) *Permission {
+	s.UserTags = v
+	return s
+}
+
+type PermissionActionList struct {
+	Action *string `json:"action,omitempty" xml:"action,omitempty"`
+}
+
+func (s PermissionActionList) String() string {
+	return tea.Prettify(s)
+}
+
+func (s PermissionActionList) GoString() string {
+	return s.String()
+}
+
+func (s *PermissionActionList) SetAction(v string) *PermissionActionList {
+	s.Action = &v
 	return s
 }
 
@@ -2153,6 +3148,100 @@ func (s PermissionConditionStringNotLike) GoString() string {
 
 func (s *PermissionConditionStringNotLike) SetVpcId(v []*string) *PermissionConditionStringNotLike {
 	s.VpcId = v
+	return s
+}
+
+type PunishRule struct {
+	ActionCode  *string `json:"action_code,omitempty" xml:"action_code,omitempty"`
+	EndsAt      *string `json:"ends_at,omitempty" xml:"ends_at,omitempty"`
+	Impermanent *bool   `json:"impermanent,omitempty" xml:"impermanent,omitempty"`
+	StartsAt    *string `json:"starts_at,omitempty" xml:"starts_at,omitempty"`
+}
+
+func (s PunishRule) String() string {
+	return tea.Prettify(s)
+}
+
+func (s PunishRule) GoString() string {
+	return s.String()
+}
+
+func (s *PunishRule) SetActionCode(v string) *PunishRule {
+	s.ActionCode = &v
+	return s
+}
+
+func (s *PunishRule) SetEndsAt(v string) *PunishRule {
+	s.EndsAt = &v
+	return s
+}
+
+func (s *PunishRule) SetImpermanent(v bool) *PunishRule {
+	s.Impermanent = &v
+	return s
+}
+
+func (s *PunishRule) SetStartsAt(v string) *PunishRule {
+	s.StartsAt = &v
+	return s
+}
+
+type RefundNoticeParam struct {
+	Aliuid            *int64             `json:"aliuid,omitempty" xml:"aliuid,omitempty"`
+	AliyunProduceCode *string            `json:"aliyunProduceCode,omitempty" xml:"aliyunProduceCode,omitempty"`
+	CommodityCode     *string            `json:"commodityCode,omitempty" xml:"commodityCode,omitempty"`
+	InstanceId        *string            `json:"instanceId,omitempty" xml:"instanceId,omitempty"`
+	NewExpireTime     interface{}        `json:"newExpireTime,omitempty" xml:"newExpireTime,omitempty"`
+	OrderIds          []*int64           `json:"orderIds,omitempty" xml:"orderIds,omitempty" type:"Repeated"`
+	RefundParamMap    map[string]*string `json:"refundParamMap,omitempty" xml:"refundParamMap,omitempty"`
+	RefundType        *string            `json:"refundType,omitempty" xml:"refundType,omitempty"`
+}
+
+func (s RefundNoticeParam) String() string {
+	return tea.Prettify(s)
+}
+
+func (s RefundNoticeParam) GoString() string {
+	return s.String()
+}
+
+func (s *RefundNoticeParam) SetAliuid(v int64) *RefundNoticeParam {
+	s.Aliuid = &v
+	return s
+}
+
+func (s *RefundNoticeParam) SetAliyunProduceCode(v string) *RefundNoticeParam {
+	s.AliyunProduceCode = &v
+	return s
+}
+
+func (s *RefundNoticeParam) SetCommodityCode(v string) *RefundNoticeParam {
+	s.CommodityCode = &v
+	return s
+}
+
+func (s *RefundNoticeParam) SetInstanceId(v string) *RefundNoticeParam {
+	s.InstanceId = &v
+	return s
+}
+
+func (s *RefundNoticeParam) SetNewExpireTime(v interface{}) *RefundNoticeParam {
+	s.NewExpireTime = v
+	return s
+}
+
+func (s *RefundNoticeParam) SetOrderIds(v []*int64) *RefundNoticeParam {
+	s.OrderIds = v
+	return s
+}
+
+func (s *RefundNoticeParam) SetRefundParamMap(v map[string]*string) *RefundNoticeParam {
+	s.RefundParamMap = v
+	return s
+}
+
+func (s *RefundNoticeParam) SetRefundType(v string) *RefundNoticeParam {
+	s.RefundType = &v
 	return s
 }
 
@@ -2290,6 +3379,71 @@ func (s *Revision) SetUpdatedAt(v string) *Revision {
 
 func (s *Revision) SetUrl(v string) *Revision {
 	s.Url = &v
+	return s
+}
+
+type Role struct {
+	CreatedAt          *int64        `json:"created_at,omitempty" xml:"created_at,omitempty"`
+	Creator            *string       `json:"creator,omitempty" xml:"creator,omitempty"`
+	Description        *string       `json:"description,omitempty" xml:"description,omitempty"`
+	ManageResourceType *string       `json:"manage_resource_type,omitempty" xml:"manage_resource_type,omitempty"`
+	Name               *string       `json:"name,omitempty" xml:"name,omitempty"`
+	Permissions        []*Permission `json:"permissions,omitempty" xml:"permissions,omitempty" type:"Repeated"`
+	RoleId             *string       `json:"role_id,omitempty" xml:"role_id,omitempty"`
+	Status             *string       `json:"status,omitempty" xml:"status,omitempty"`
+	UpdatedAt          *int64        `json:"updated_at,omitempty" xml:"updated_at,omitempty"`
+}
+
+func (s Role) String() string {
+	return tea.Prettify(s)
+}
+
+func (s Role) GoString() string {
+	return s.String()
+}
+
+func (s *Role) SetCreatedAt(v int64) *Role {
+	s.CreatedAt = &v
+	return s
+}
+
+func (s *Role) SetCreator(v string) *Role {
+	s.Creator = &v
+	return s
+}
+
+func (s *Role) SetDescription(v string) *Role {
+	s.Description = &v
+	return s
+}
+
+func (s *Role) SetManageResourceType(v string) *Role {
+	s.ManageResourceType = &v
+	return s
+}
+
+func (s *Role) SetName(v string) *Role {
+	s.Name = &v
+	return s
+}
+
+func (s *Role) SetPermissions(v []*Permission) *Role {
+	s.Permissions = v
+	return s
+}
+
+func (s *Role) SetRoleId(v string) *Role {
+	s.RoleId = &v
+	return s
+}
+
+func (s *Role) SetStatus(v string) *Role {
+	s.Status = &v
+	return s
+}
+
+func (s *Role) SetUpdatedAt(v int64) *Role {
+	s.UpdatedAt = &v
 	return s
 }
 
@@ -3143,9 +4297,40 @@ func (s *UserTag) SetKey(v string) *UserTag {
 	return s
 }
 
-type VideoMediaMetadata struct {
+type VideoMediaAudioStream struct {
+	BitRate  *string `json:"bit_rate,omitempty" xml:"bit_rate,omitempty"`
+	CodeName *string `json:"code_name,omitempty" xml:"code_name,omitempty"`
 	Duration *string `json:"duration,omitempty" xml:"duration,omitempty"`
-	TakenAt  *string `json:"taken_at,omitempty" xml:"taken_at,omitempty"`
+}
+
+func (s VideoMediaAudioStream) String() string {
+	return tea.Prettify(s)
+}
+
+func (s VideoMediaAudioStream) GoString() string {
+	return s.String()
+}
+
+func (s *VideoMediaAudioStream) SetBitRate(v string) *VideoMediaAudioStream {
+	s.BitRate = &v
+	return s
+}
+
+func (s *VideoMediaAudioStream) SetCodeName(v string) *VideoMediaAudioStream {
+	s.CodeName = &v
+	return s
+}
+
+func (s *VideoMediaAudioStream) SetDuration(v string) *VideoMediaAudioStream {
+	s.Duration = &v
+	return s
+}
+
+type VideoMediaMetadata struct {
+	Height                *int64                   `json:"height,omitempty" xml:"height,omitempty"`
+	VideoMediaAudioStream []*VideoMediaAudioStream `json:"video_media_audio_stream,omitempty" xml:"video_media_audio_stream,omitempty" type:"Repeated"`
+	VideoMediaVideoStream []*VideoMediaVideoStream `json:"video_media_video_stream,omitempty" xml:"video_media_video_stream,omitempty" type:"Repeated"`
+	Width                 *int64                   `json:"width,omitempty" xml:"width,omitempty"`
 }
 
 func (s VideoMediaMetadata) String() string {
@@ -3156,13 +4341,58 @@ func (s VideoMediaMetadata) GoString() string {
 	return s.String()
 }
 
-func (s *VideoMediaMetadata) SetDuration(v string) *VideoMediaMetadata {
+func (s *VideoMediaMetadata) SetHeight(v int64) *VideoMediaMetadata {
+	s.Height = &v
+	return s
+}
+
+func (s *VideoMediaMetadata) SetVideoMediaAudioStream(v []*VideoMediaAudioStream) *VideoMediaMetadata {
+	s.VideoMediaAudioStream = v
+	return s
+}
+
+func (s *VideoMediaMetadata) SetVideoMediaVideoStream(v []*VideoMediaVideoStream) *VideoMediaMetadata {
+	s.VideoMediaVideoStream = v
+	return s
+}
+
+func (s *VideoMediaMetadata) SetWidth(v int64) *VideoMediaMetadata {
+	s.Width = &v
+	return s
+}
+
+type VideoMediaVideoStream struct {
+	Bitrate    *string `json:"bitrate,omitempty" xml:"bitrate,omitempty"`
+	CodeName   *string `json:"code_name,omitempty" xml:"code_name,omitempty"`
+	Duration   *string `json:"duration,omitempty" xml:"duration,omitempty"`
+	FrameCount *string `json:"frame_count,omitempty" xml:"frame_count,omitempty"`
+}
+
+func (s VideoMediaVideoStream) String() string {
+	return tea.Prettify(s)
+}
+
+func (s VideoMediaVideoStream) GoString() string {
+	return s.String()
+}
+
+func (s *VideoMediaVideoStream) SetBitrate(v string) *VideoMediaVideoStream {
+	s.Bitrate = &v
+	return s
+}
+
+func (s *VideoMediaVideoStream) SetCodeName(v string) *VideoMediaVideoStream {
+	s.CodeName = &v
+	return s
+}
+
+func (s *VideoMediaVideoStream) SetDuration(v string) *VideoMediaVideoStream {
 	s.Duration = &v
 	return s
 }
 
-func (s *VideoMediaMetadata) SetTakenAt(v string) *VideoMediaMetadata {
-	s.TakenAt = &v
+func (s *VideoMediaVideoStream) SetFrameCount(v string) *VideoMediaVideoStream {
+	s.FrameCount = &v
 	return s
 }
 
@@ -3640,6 +4870,41 @@ func (s *ViewFileInvestigationInfo) SetStatus(v int64) *ViewFileInvestigationInf
 
 func (s *ViewFileInvestigationInfo) SetSuggestion(v string) *ViewFileInvestigationInfo {
 	s.Suggestion = &v
+	return s
+}
+
+type WatermarkConfig struct {
+	DisplayAccessUserName       *bool `json:"display_access_user_name,omitempty" xml:"display_access_user_name,omitempty"`
+	DisplayShareLinkCreatorName *bool `json:"display_shareLink_creator_name,omitempty" xml:"display_shareLink_creator_name,omitempty"`
+	EnableDocPreview            *bool `json:"enable_doc_preview,omitempty" xml:"enable_doc_preview,omitempty"`
+	EnableOnPreview             *bool `json:"enable_on_preview,omitempty" xml:"enable_on_preview,omitempty"`
+}
+
+func (s WatermarkConfig) String() string {
+	return tea.Prettify(s)
+}
+
+func (s WatermarkConfig) GoString() string {
+	return s.String()
+}
+
+func (s *WatermarkConfig) SetDisplayAccessUserName(v bool) *WatermarkConfig {
+	s.DisplayAccessUserName = &v
+	return s
+}
+
+func (s *WatermarkConfig) SetDisplayShareLinkCreatorName(v bool) *WatermarkConfig {
+	s.DisplayShareLinkCreatorName = &v
+	return s
+}
+
+func (s *WatermarkConfig) SetEnableDocPreview(v bool) *WatermarkConfig {
+	s.EnableDocPreview = &v
+	return s
+}
+
+func (s *WatermarkConfig) SetEnableOnPreview(v bool) *WatermarkConfig {
+	s.EnableOnPreview = &v
 	return s
 }
 
@@ -4950,8 +6215,9 @@ func (s *CreateFileRequest) SetVideoMediaMetadata(v *VideoMediaMetadata) *Create
 }
 
 type CreateFileRequestPartInfoList struct {
-	ContentMd5 *string `json:"content_md5,omitempty" xml:"content_md5,omitempty"`
-	PartNumber *int32  `json:"part_number,omitempty" xml:"part_number,omitempty"`
+	ContentMd5      *string                                       `json:"content_md5,omitempty" xml:"content_md5,omitempty"`
+	ParallelSha1Ctx *CreateFileRequestPartInfoListParallelSha1Ctx `json:"parallel_sha1_ctx,omitempty" xml:"parallel_sha1_ctx,omitempty" type:"Struct"`
+	PartNumber      *int32                                        `json:"part_number,omitempty" xml:"part_number,omitempty"`
 }
 
 func (s CreateFileRequestPartInfoList) String() string {
@@ -4967,8 +6233,36 @@ func (s *CreateFileRequestPartInfoList) SetContentMd5(v string) *CreateFileReque
 	return s
 }
 
+func (s *CreateFileRequestPartInfoList) SetParallelSha1Ctx(v *CreateFileRequestPartInfoListParallelSha1Ctx) *CreateFileRequestPartInfoList {
+	s.ParallelSha1Ctx = v
+	return s
+}
+
 func (s *CreateFileRequestPartInfoList) SetPartNumber(v int32) *CreateFileRequestPartInfoList {
 	s.PartNumber = &v
+	return s
+}
+
+type CreateFileRequestPartInfoListParallelSha1Ctx struct {
+	H          []*int64 `json:"h,omitempty" xml:"h,omitempty" type:"Repeated"`
+	PartOffset *int64   `json:"part_offset,omitempty" xml:"part_offset,omitempty"`
+}
+
+func (s CreateFileRequestPartInfoListParallelSha1Ctx) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateFileRequestPartInfoListParallelSha1Ctx) GoString() string {
+	return s.String()
+}
+
+func (s *CreateFileRequestPartInfoListParallelSha1Ctx) SetH(v []*int64) *CreateFileRequestPartInfoListParallelSha1Ctx {
+	s.H = v
+	return s
+}
+
+func (s *CreateFileRequestPartInfoListParallelSha1Ctx) SetPartOffset(v int64) *CreateFileRequestPartInfoListParallelSha1Ctx {
+	s.PartOffset = &v
 	return s
 }
 
@@ -5203,6 +6497,129 @@ func (s *CreateIdentityToBenefitPkgMappingResponse) SetHeaders(v map[string]*str
 
 func (s *CreateIdentityToBenefitPkgMappingResponse) SetStatusCode(v int32) *CreateIdentityToBenefitPkgMappingResponse {
 	s.StatusCode = &v
+	return s
+}
+
+type CreateOrderRequest struct {
+	AutoPay    *bool   `json:"auto_pay,omitempty" xml:"auto_pay,omitempty"`
+	AutoRenew  *bool   `json:"auto_renew,omitempty" xml:"auto_renew,omitempty"`
+	Code       *string `json:"code,omitempty" xml:"code,omitempty"`
+	InstanceId *string `json:"instance_id,omitempty" xml:"instance_id,omitempty"`
+	OrderType  *string `json:"order_type,omitempty" xml:"order_type,omitempty"`
+	Package    *string `json:"package,omitempty" xml:"package,omitempty"`
+	Period     *int64  `json:"period,omitempty" xml:"period,omitempty"`
+	PeriodUnit *string `json:"period_unit,omitempty" xml:"period_unit,omitempty"`
+	TotalSize  *int64  `json:"total_size,omitempty" xml:"total_size,omitempty"`
+	UserCount  *int64  `json:"user_count,omitempty" xml:"user_count,omitempty"`
+}
+
+func (s CreateOrderRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateOrderRequest) GoString() string {
+	return s.String()
+}
+
+func (s *CreateOrderRequest) SetAutoPay(v bool) *CreateOrderRequest {
+	s.AutoPay = &v
+	return s
+}
+
+func (s *CreateOrderRequest) SetAutoRenew(v bool) *CreateOrderRequest {
+	s.AutoRenew = &v
+	return s
+}
+
+func (s *CreateOrderRequest) SetCode(v string) *CreateOrderRequest {
+	s.Code = &v
+	return s
+}
+
+func (s *CreateOrderRequest) SetInstanceId(v string) *CreateOrderRequest {
+	s.InstanceId = &v
+	return s
+}
+
+func (s *CreateOrderRequest) SetOrderType(v string) *CreateOrderRequest {
+	s.OrderType = &v
+	return s
+}
+
+func (s *CreateOrderRequest) SetPackage(v string) *CreateOrderRequest {
+	s.Package = &v
+	return s
+}
+
+func (s *CreateOrderRequest) SetPeriod(v int64) *CreateOrderRequest {
+	s.Period = &v
+	return s
+}
+
+func (s *CreateOrderRequest) SetPeriodUnit(v string) *CreateOrderRequest {
+	s.PeriodUnit = &v
+	return s
+}
+
+func (s *CreateOrderRequest) SetTotalSize(v int64) *CreateOrderRequest {
+	s.TotalSize = &v
+	return s
+}
+
+func (s *CreateOrderRequest) SetUserCount(v int64) *CreateOrderRequest {
+	s.UserCount = &v
+	return s
+}
+
+type CreateOrderResponseBody struct {
+	InstanceId *string `json:"instance_id,omitempty" xml:"instance_id,omitempty"`
+	OrderId    *string `json:"order_id,omitempty" xml:"order_id,omitempty"`
+}
+
+func (s CreateOrderResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateOrderResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *CreateOrderResponseBody) SetInstanceId(v string) *CreateOrderResponseBody {
+	s.InstanceId = &v
+	return s
+}
+
+func (s *CreateOrderResponseBody) SetOrderId(v string) *CreateOrderResponseBody {
+	s.OrderId = &v
+	return s
+}
+
+type CreateOrderResponse struct {
+	Headers    map[string]*string       `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                   `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *CreateOrderResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s CreateOrderResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateOrderResponse) GoString() string {
+	return s.String()
+}
+
+func (s *CreateOrderResponse) SetHeaders(v map[string]*string) *CreateOrderResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *CreateOrderResponse) SetStatusCode(v int32) *CreateOrderResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *CreateOrderResponse) SetBody(v *CreateOrderResponseBody) *CreateOrderResponse {
+	s.Body = v
 	return s
 }
 
@@ -5532,7 +6949,7 @@ type CreateUserRequest struct {
 	Phone         *string                           `json:"phone,omitempty" xml:"phone,omitempty"`
 	Role          *string                           `json:"role,omitempty" xml:"role,omitempty"`
 	Status        *string                           `json:"status,omitempty" xml:"status,omitempty"`
-	UserData      *string                           `json:"user_data,omitempty" xml:"user_data,omitempty"`
+	UserData      map[string]interface{}            `json:"user_data,omitempty" xml:"user_data,omitempty"`
 	UserId        *string                           `json:"user_id,omitempty" xml:"user_id,omitempty"`
 	UserName      *string                           `json:"user_name,omitempty" xml:"user_name,omitempty"`
 }
@@ -5585,8 +7002,8 @@ func (s *CreateUserRequest) SetStatus(v string) *CreateUserRequest {
 	return s
 }
 
-func (s *CreateUserRequest) SetUserData(v string) *CreateUserRequest {
-	s.UserData = &v
+func (s *CreateUserRequest) SetUserData(v map[string]interface{}) *CreateUserRequest {
+	s.UserData = v
 	return s
 }
 
@@ -5618,21 +7035,21 @@ func (s *CreateUserRequestGroupInfoList) SetGroupId(v string) *CreateUserRequest
 }
 
 type CreateUserResponseBody struct {
-	Avatar         *string            `json:"avatar,omitempty" xml:"avatar,omitempty"`
-	CreatedAt      *int64             `json:"created_at,omitempty" xml:"created_at,omitempty"`
-	Creator        *string            `json:"creator,omitempty" xml:"creator,omitempty"`
-	DefaultDriveId *string            `json:"default_drive_id,omitempty" xml:"default_drive_id,omitempty"`
-	Description    *string            `json:"description,omitempty" xml:"description,omitempty"`
-	DomainId       *string            `json:"domain_id,omitempty" xml:"domain_id,omitempty"`
-	Email          *string            `json:"email,omitempty" xml:"email,omitempty"`
-	NickName       *string            `json:"nick_name,omitempty" xml:"nick_name,omitempty"`
-	Phone          *string            `json:"phone,omitempty" xml:"phone,omitempty"`
-	Role           *string            `json:"role,omitempty" xml:"role,omitempty"`
-	Status         *string            `json:"status,omitempty" xml:"status,omitempty"`
-	UpdatedAt      *int64             `json:"updated_at,omitempty" xml:"updated_at,omitempty"`
-	UserData       map[string]*string `json:"user_data,omitempty" xml:"user_data,omitempty"`
-	UserId         *string            `json:"user_id,omitempty" xml:"user_id,omitempty"`
-	UserName       *string            `json:"user_name,omitempty" xml:"user_name,omitempty"`
+	Avatar         *string                `json:"avatar,omitempty" xml:"avatar,omitempty"`
+	CreatedAt      *int64                 `json:"created_at,omitempty" xml:"created_at,omitempty"`
+	Creator        *string                `json:"creator,omitempty" xml:"creator,omitempty"`
+	DefaultDriveId *string                `json:"default_drive_id,omitempty" xml:"default_drive_id,omitempty"`
+	Description    *string                `json:"description,omitempty" xml:"description,omitempty"`
+	DomainId       *string                `json:"domain_id,omitempty" xml:"domain_id,omitempty"`
+	Email          *string                `json:"email,omitempty" xml:"email,omitempty"`
+	NickName       *string                `json:"nick_name,omitempty" xml:"nick_name,omitempty"`
+	Phone          *string                `json:"phone,omitempty" xml:"phone,omitempty"`
+	Role           *string                `json:"role,omitempty" xml:"role,omitempty"`
+	Status         *string                `json:"status,omitempty" xml:"status,omitempty"`
+	UpdatedAt      *int64                 `json:"updated_at,omitempty" xml:"updated_at,omitempty"`
+	UserData       map[string]interface{} `json:"user_data,omitempty" xml:"user_data,omitempty"`
+	UserId         *string                `json:"user_id,omitempty" xml:"user_id,omitempty"`
+	UserName       *string                `json:"user_name,omitempty" xml:"user_name,omitempty"`
 }
 
 func (s CreateUserResponseBody) String() string {
@@ -5703,7 +7120,7 @@ func (s *CreateUserResponseBody) SetUpdatedAt(v int64) *CreateUserResponseBody {
 	return s
 }
 
-func (s *CreateUserResponseBody) SetUserData(v map[string]*string) *CreateUserResponseBody {
+func (s *CreateUserResponseBody) SetUserData(v map[string]interface{}) *CreateUserResponseBody {
 	s.UserData = v
 	return s
 }
@@ -7118,11 +8535,12 @@ func (s *GetDriveResponse) SetBody(v *Drive) *GetDriveResponse {
 }
 
 type GetFileRequest struct {
-	DriveId      *string `json:"drive_id,omitempty" xml:"drive_id,omitempty"`
-	Fields       *string `json:"fields,omitempty" xml:"fields,omitempty"`
-	FileId       *string `json:"file_id,omitempty" xml:"file_id,omitempty"`
-	ShareId      *string `json:"share_id,omitempty" xml:"share_id,omitempty"`
-	UrlExpireSec *int32  `json:"url_expire_sec,omitempty" xml:"url_expire_sec,omitempty"`
+	DriveId            *string                  `json:"drive_id,omitempty" xml:"drive_id,omitempty"`
+	Fields             *string                  `json:"fields,omitempty" xml:"fields,omitempty"`
+	FileId             *string                  `json:"file_id,omitempty" xml:"file_id,omitempty"`
+	ShareId            *string                  `json:"share_id,omitempty" xml:"share_id,omitempty"`
+	ThumbnailProcesses map[string]*ImageProcess `json:"thumbnail_processes,omitempty" xml:"thumbnail_processes,omitempty"`
+	UrlExpireSec       *int32                   `json:"url_expire_sec,omitempty" xml:"url_expire_sec,omitempty"`
 }
 
 func (s GetFileRequest) String() string {
@@ -7150,6 +8568,11 @@ func (s *GetFileRequest) SetFileId(v string) *GetFileRequest {
 
 func (s *GetFileRequest) SetShareId(v string) *GetFileRequest {
 	s.ShareId = &v
+	return s
+}
+
+func (s *GetFileRequest) SetThumbnailProcesses(v map[string]*ImageProcess) *GetFileRequest {
+	s.ThumbnailProcesses = v
 	return s
 }
 
@@ -10503,6 +11926,123 @@ func (s *MoveFileResponse) SetBody(v *MoveFileResponseBody) *MoveFileResponse {
 	return s
 }
 
+type QueryOrderPriceRequest struct {
+	Code       *string `json:"code,omitempty" xml:"code,omitempty"`
+	InstanceId *string `json:"instance_id,omitempty" xml:"instance_id,omitempty"`
+	OrderType  *string `json:"order_type,omitempty" xml:"order_type,omitempty"`
+	Package    *string `json:"package,omitempty" xml:"package,omitempty"`
+	Period     *int64  `json:"period,omitempty" xml:"period,omitempty"`
+	PeriodUnit *string `json:"period_unit,omitempty" xml:"period_unit,omitempty"`
+	TotalSize  *int64  `json:"total_size,omitempty" xml:"total_size,omitempty"`
+	UserCount  *int64  `json:"user_count,omitempty" xml:"user_count,omitempty"`
+}
+
+func (s QueryOrderPriceRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s QueryOrderPriceRequest) GoString() string {
+	return s.String()
+}
+
+func (s *QueryOrderPriceRequest) SetCode(v string) *QueryOrderPriceRequest {
+	s.Code = &v
+	return s
+}
+
+func (s *QueryOrderPriceRequest) SetInstanceId(v string) *QueryOrderPriceRequest {
+	s.InstanceId = &v
+	return s
+}
+
+func (s *QueryOrderPriceRequest) SetOrderType(v string) *QueryOrderPriceRequest {
+	s.OrderType = &v
+	return s
+}
+
+func (s *QueryOrderPriceRequest) SetPackage(v string) *QueryOrderPriceRequest {
+	s.Package = &v
+	return s
+}
+
+func (s *QueryOrderPriceRequest) SetPeriod(v int64) *QueryOrderPriceRequest {
+	s.Period = &v
+	return s
+}
+
+func (s *QueryOrderPriceRequest) SetPeriodUnit(v string) *QueryOrderPriceRequest {
+	s.PeriodUnit = &v
+	return s
+}
+
+func (s *QueryOrderPriceRequest) SetTotalSize(v int64) *QueryOrderPriceRequest {
+	s.TotalSize = &v
+	return s
+}
+
+func (s *QueryOrderPriceRequest) SetUserCount(v int64) *QueryOrderPriceRequest {
+	s.UserCount = &v
+	return s
+}
+
+type QueryOrderPriceResponseBody struct {
+	DiscountPrice *float64 `json:"discount_price,omitempty" xml:"discount_price,omitempty"`
+	OriginalPrice *float64 `json:"original_price,omitempty" xml:"original_price,omitempty"`
+	TradePrice    *float64 `json:"trade_price,omitempty" xml:"trade_price,omitempty"`
+}
+
+func (s QueryOrderPriceResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s QueryOrderPriceResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *QueryOrderPriceResponseBody) SetDiscountPrice(v float64) *QueryOrderPriceResponseBody {
+	s.DiscountPrice = &v
+	return s
+}
+
+func (s *QueryOrderPriceResponseBody) SetOriginalPrice(v float64) *QueryOrderPriceResponseBody {
+	s.OriginalPrice = &v
+	return s
+}
+
+func (s *QueryOrderPriceResponseBody) SetTradePrice(v float64) *QueryOrderPriceResponseBody {
+	s.TradePrice = &v
+	return s
+}
+
+type QueryOrderPriceResponse struct {
+	Headers    map[string]*string           `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                       `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *QueryOrderPriceResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s QueryOrderPriceResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s QueryOrderPriceResponse) GoString() string {
+	return s.String()
+}
+
+func (s *QueryOrderPriceResponse) SetHeaders(v map[string]*string) *QueryOrderPriceResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *QueryOrderPriceResponse) SetStatusCode(v int32) *QueryOrderPriceResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *QueryOrderPriceResponse) SetBody(v *QueryOrderPriceResponseBody) *QueryOrderPriceResponse {
+	s.Body = v
+	return s
+}
+
 type RemoveFaceGroupFileRequest struct {
 	DriveId     *string `json:"drive_id,omitempty" xml:"drive_id,omitempty"`
 	FaceGroupId *string `json:"face_group_id,omitempty" xml:"face_group_id,omitempty"`
@@ -11043,10 +12583,11 @@ func (s *SearchAddressGroupsResponse) SetBody(v *SearchAddressGroupsResponseBody
 }
 
 type SearchDomainsRequest struct {
-	Limit   *int64  `json:"limit,omitempty" xml:"limit,omitempty"`
-	Marker  *string `json:"marker,omitempty" xml:"marker,omitempty"`
-	Name    *string `json:"name,omitempty" xml:"name,omitempty"`
-	OrderBy *string `json:"order_by,omitempty" xml:"order_by,omitempty"`
+	InstanceId *string `json:"instance_id,omitempty" xml:"instance_id,omitempty"`
+	Limit      *int64  `json:"limit,omitempty" xml:"limit,omitempty"`
+	Marker     *string `json:"marker,omitempty" xml:"marker,omitempty"`
+	Name       *string `json:"name,omitempty" xml:"name,omitempty"`
+	OrderBy    *string `json:"order_by,omitempty" xml:"order_by,omitempty"`
 }
 
 func (s SearchDomainsRequest) String() string {
@@ -11055,6 +12596,11 @@ func (s SearchDomainsRequest) String() string {
 
 func (s SearchDomainsRequest) GoString() string {
 	return s.String()
+}
+
+func (s *SearchDomainsRequest) SetInstanceId(v string) *SearchDomainsRequest {
+	s.InstanceId = &v
+	return s
 }
 
 func (s *SearchDomainsRequest) SetLimit(v int64) *SearchDomainsRequest {
@@ -11223,12 +12769,38 @@ func (s *SearchDriveResponse) SetBody(v *SearchDriveResponseBody) *SearchDriveRe
 }
 
 type SearchFileRequest struct {
-	DriveId          *string `json:"drive_id,omitempty" xml:"drive_id,omitempty"`
-	Limit            *int32  `json:"limit,omitempty" xml:"limit,omitempty"`
-	Marker           *string `json:"marker,omitempty" xml:"marker,omitempty"`
-	OrderBy          *string `json:"order_by,omitempty" xml:"order_by,omitempty"`
-	Query            *string `json:"query,omitempty" xml:"query,omitempty"`
-	ReturnTotalCount *bool   `json:"return_total_count,omitempty" xml:"return_total_count,omitempty"`
+	// The drive ID.
+	DriveId *string `json:"drive_id,omitempty" xml:"drive_id,omitempty"`
+	Fields  *string `json:"fields,omitempty" xml:"fields,omitempty"`
+	// The maximum number of results to return. Valid values: 1 to 100.
+	//
+	// The number of returned results must be less than or equal to the specified number.
+	Limit *int32 `json:"limit,omitempty" xml:"limit,omitempty"`
+	// The pagination token that is used in the next request to retrieve a new page of results. You do not need to specify this parameter for the first request. You must specify the token that is obtained from the previous query as the value of marker.\
+	// By default, this parameter is left empty.
+	Marker *string `json:"marker,omitempty" xml:"marker,omitempty"`
+	// The field by which to sort the returned results. Default value: created_at. Valid values:
+	//
+	// *   created_at: sorts the results by the time when the file was created.
+	// *   updated_at: sorts the results by the time when the file was modified.
+	// *   size: sorts the results by the size of the file.
+	// *   name: sorts the results by the name of the file.
+	//
+	// The order in which you want to sort the returned results. Valid values:
+	//
+	// *   ASC: sorts the results in ascending order.
+	// *   DESC: sorts the results in descending order.
+	//
+	// You must specify this parameter in the \<field name> \<ASC or DESC> format. Separate multiple field names with commas (,). A preceding field has a higher priority than a following field. Examples:
+	//
+	// *   If you want to sort the results based on the file name in ascending order, set this parameter to "name ASC".
+	// *   If you want to sort the results based on the creation time in descending order, set this parameter to "created_at DESC".
+	// *   If you want to sort the results based on the creation time in descending order first, and then sort the results based on the file name in ascending order if the creation time is the same, set this parameter to "created_at DESC,name ASC".
+	OrderBy *string `json:"order_by,omitempty" xml:"order_by,omitempty"`
+	// The search condition. Fuzzy searches based on the file name or directory name are supported. The search condition can be up to 4,096 characters in length.
+	Query *string `json:"query,omitempty" xml:"query,omitempty"`
+	// Specifies whether to return the total number of retrieved files.
+	ReturnTotalCount *bool `json:"return_total_count,omitempty" xml:"return_total_count,omitempty"`
 }
 
 func (s SearchFileRequest) String() string {
@@ -11241,6 +12813,11 @@ func (s SearchFileRequest) GoString() string {
 
 func (s *SearchFileRequest) SetDriveId(v string) *SearchFileRequest {
 	s.DriveId = &v
+	return s
+}
+
+func (s *SearchFileRequest) SetFields(v string) *SearchFileRequest {
+	s.Fields = &v
 	return s
 }
 
@@ -11270,9 +12847,12 @@ func (s *SearchFileRequest) SetReturnTotalCount(v bool) *SearchFileRequest {
 }
 
 type SearchFileResponseBody struct {
-	Items      []*File `json:"items,omitempty" xml:"items,omitempty" type:"Repeated"`
+	// The information about the files.
+	Items []*File `json:"items,omitempty" xml:"items,omitempty" type:"Repeated"`
+	// A pagination token. It can be used in the next request to retrieve a new page of results. If next_marker is empty, no next page exists.
 	NextMarker *string `json:"next_marker,omitempty" xml:"next_marker,omitempty"`
-	TotalCount *int64  `json:"total_count,omitempty" xml:"total_count,omitempty"`
+	// The total number of retrieved files.
+	TotalCount *int64 `json:"total_count,omitempty" xml:"total_count,omitempty"`
 }
 
 func (s SearchFileResponseBody) String() string {
@@ -14101,6 +15681,88 @@ func (client *Client) CreateIdentityToBenefitPkgMapping(request *CreateIdentityT
 	return _result, _err
 }
 
+func (client *Client) CreateOrderWithOptions(request *CreateOrderRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *CreateOrderResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	body := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.AutoPay)) {
+		body["auto_pay"] = request.AutoPay
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.AutoRenew)) {
+		body["auto_renew"] = request.AutoRenew
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Code)) {
+		body["code"] = request.Code
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.InstanceId)) {
+		body["instance_id"] = request.InstanceId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.OrderType)) {
+		body["order_type"] = request.OrderType
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Package)) {
+		body["package"] = request.Package
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Period)) {
+		body["period"] = request.Period
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.PeriodUnit)) {
+		body["period_unit"] = request.PeriodUnit
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.TotalSize)) {
+		body["total_size"] = request.TotalSize
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.UserCount)) {
+		body["user_count"] = request.UserCount
+	}
+
+	req := &openapi.OpenApiRequest{
+		Headers: headers,
+		Body:    openapiutil.ParseToMap(body),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("CreateOrder"),
+		Version:     tea.String("2022-03-01"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/v2/domain/create_order"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("ROA"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &CreateOrderResponse{}
+	_body, _err := client.Execute(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) CreateOrder(request *CreateOrderRequest) (_result *CreateOrderResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	headers := make(map[string]*string)
+	_result = &CreateOrderResponse{}
+	_body, _err := client.CreateOrderWithOptions(request, headers, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
 func (client *Client) CreateShareLinkWithOptions(request *CreateShareLinkRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *CreateShareLinkResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -15465,6 +17127,10 @@ func (client *Client) GetFileWithOptions(request *GetFileRequest, headers map[st
 
 	if !tea.BoolValue(util.IsUnset(request.ShareId)) {
 		body["share_id"] = request.ShareId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ThumbnailProcesses)) {
+		body["thumbnail_processes"] = request.ThumbnailProcesses
 	}
 
 	if !tea.BoolValue(util.IsUnset(request.UrlExpireSec)) {
@@ -17621,6 +19287,80 @@ func (client *Client) MoveFile(request *MoveFileRequest) (_result *MoveFileRespo
 	return _result, _err
 }
 
+func (client *Client) QueryOrderPriceWithOptions(request *QueryOrderPriceRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *QueryOrderPriceResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	body := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.Code)) {
+		body["code"] = request.Code
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.InstanceId)) {
+		body["instance_id"] = request.InstanceId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.OrderType)) {
+		body["order_type"] = request.OrderType
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Package)) {
+		body["package"] = request.Package
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Period)) {
+		body["period"] = request.Period
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.PeriodUnit)) {
+		body["period_unit"] = request.PeriodUnit
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.TotalSize)) {
+		body["total_size"] = request.TotalSize
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.UserCount)) {
+		body["user_count"] = request.UserCount
+	}
+
+	req := &openapi.OpenApiRequest{
+		Headers: headers,
+		Body:    openapiutil.ParseToMap(body),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("QueryOrderPrice"),
+		Version:     tea.String("2022-03-01"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/v2/domain/query_order_price"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("ROA"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &QueryOrderPriceResponse{}
+	_body, _err := client.Execute(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) QueryOrderPrice(request *QueryOrderPriceRequest) (_result *QueryOrderPriceResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	headers := make(map[string]*string)
+	_result = &QueryOrderPriceResponse{}
+	_body, _err := client.QueryOrderPriceWithOptions(request, headers, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
 func (client *Client) RemoveFaceGroupFileWithOptions(request *RemoveFaceGroupFileRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *RemoveFaceGroupFileResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -18021,6 +19761,10 @@ func (client *Client) SearchDomainsWithOptions(request *SearchDomainsRequest, he
 		return _result, _err
 	}
 	body := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.InstanceId)) {
+		body["instance_id"] = request.InstanceId
+	}
+
 	if !tea.BoolValue(util.IsUnset(request.Limit)) {
 		body["limit"] = request.Limit
 	}
@@ -18143,6 +19887,10 @@ func (client *Client) SearchFileWithOptions(request *SearchFileRequest, headers 
 	body := map[string]interface{}{}
 	if !tea.BoolValue(util.IsUnset(request.DriveId)) {
 		body["drive_id"] = request.DriveId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Fields)) {
+		body["fields"] = request.Fields
 	}
 
 	if !tea.BoolValue(util.IsUnset(request.Limit)) {
