@@ -2644,6 +2644,7 @@ func (s *CreateTemplateScratchRequestSourceResourceGroup) SetResourceTypeFilter(
 }
 
 type CreateTemplateScratchRequestSourceResources struct {
+	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 	// The ID of the resource.
 	ResourceId *string `json:"ResourceId,omitempty" xml:"ResourceId,omitempty"`
 	// The type of the resource.
@@ -2656,6 +2657,11 @@ func (s CreateTemplateScratchRequestSourceResources) String() string {
 
 func (s CreateTemplateScratchRequestSourceResources) GoString() string {
 	return s.String()
+}
+
+func (s *CreateTemplateScratchRequestSourceResources) SetRegionId(v string) *CreateTemplateScratchRequestSourceResources {
+	s.RegionId = &v
+	return s
 }
 
 func (s *CreateTemplateScratchRequestSourceResources) SetResourceId(v string) *CreateTemplateScratchRequestSourceResources {
@@ -13491,80 +13497,45 @@ func (s *ListStackResourcesResponse) SetBody(v *ListStackResourcesResponseBody) 
 }
 
 type ListStacksRequest struct {
-	// The reason why the stack is in its current state.
+	// 按创建时间查询，创建时间区间的终止点。按照[ISO 8601](~~25696~~)标准表示，并需要使用UTC +0时间，格式为yyyy-MM-ddTHH:mm:ssZ。
 	EndTime *string `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
-	// The tags.
+	// The page number.
+	//
+	// Pages start from page 1.
+	//
+	// Default value: 1.
 	PageNumber *int64 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
-	// The state N of the stack. Valid values:
-	//
-	// *   CREATE_IN_PROGRESS: The stack is being created.
-	// *   CREATE_FAILED: The stack fails to be created.
-	// *   CREATE_COMPLETE: The stack is created.
-	// *   UPDATE_IN_PROGRESS: The stack is being updated.
-	// *   UPDATE_FAILED: The stack fails to be updated.
-	// *   UPDATE_COMPLETE: The stack is updated.
-	// *   DELETE_IN_PROGRESS: The stack is being deleted.
-	// *   DELETE_FAILED: The stack fails to be deleted.
-	// *   CREATE_ROLLBACK_IN_PROGRESS: The resources are being rolled back after the stack fails to be created.
-	// *   CREATE_ROLLBACK_FAILED: The resources fail to be rolled back after the stack fails to be created.
-	// *   CREATE_ROLLBACK_COMPLETE: The resources are rolled back after the stack fails to be created.
-	// *   ROLLBACK_IN_PROGRESS: The resources of the stack are being rolled back.
-	// *   ROLLBACK_FAILED: The resources of the stack fail to be rolled back.
-	// *   ROLLBACK_COMPLETE: The resources of the stack are rolled back.
-	// *   CHECK_IN_PROGRESS: The stack is being validated.
-	// *   CHECK_FAILED: The stack fails to be validated.
-	// *   CHECK_COMPLETE: The stack is validated.
-	// *   REVIEW_IN_PROGRESS: The stack is being reviewed.
-	// *   IMPORT_CREATE_IN_PROGRESS: The stack is being created by using imported resources.
-	// *   IMPORT_CREATE_FAILED: The stack fails to be created by using imported resources.
-	// *   IMPORT_CREATE_COMPLETE: The stack is created by using imported resources.
-	// *   IMPORT_CREATE_ROLLBACK_IN_PROGRESS: The resources are being rolled back after the stack fails to be created by using imported resources.
-	// *   IMPORT_CREATE_ROLLBACK_FAILED: The resources fail to be rolled back after the stack fails to be created by using imported resources.
-	// *   IMPORT_CREATE_ROLLBACK_COMPLETE: The resources are rolled back after the stack fails to be created by using imported resources.
-	// *   IMPORT_UPDATE_IN_PROGRESS: The stack is being updated by using imported resources.
-	// *   IMPORT_UPDATE_FAILED: The stack fails to be updated by using imported resources.
-	// *   IMPORT_UPDATE_COMPLETE: The stack is updated by using imported resources.
-	// *   IMPORT_UPDATE_ROLLBACK_IN_PROGRESS: The resources are being rolled back after the stack fails to be updated by using imported resources.
-	// *   IMPORT_UPDATE_ROLLBACK_FAILED: The resources fail to be rolled back after the stack fails to be updated by using imported resources.
-	// *   IMPORT_UPDATE_ROLLBACK_COMPLETE: The resources are rolled back after the stack fails to be updated by using imported resources.
-	PageSize *int64 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	// The name of stack N.
-	ParentStackId *string `json:"ParentStackId,omitempty" xml:"ParentStackId,omitempty"`
-	// The name of stack N.
-	//
-	// The name can be up to 255 characters in length, and can contain digits, letters, hyphens (-), and underscores (\_). The name must start with a digit or letter. You can use the wildcard character (∗) for fuzzy search.
-	//
-	// Valid values of N: 1 to 5.
-	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	// The list of stacks.
-	ResourceGroupId *string `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
-	// The key of tag N of the stack.
-	//
-	// Valid values of N: 1 to 20.
-	ShowNestedStack *bool `json:"ShowNestedStack,omitempty" xml:"ShowNestedStack,omitempty"`
-	// The value of tag N of the stack.
-	//
-	// Valid values of N: 1 to 20.
-	StackId *string `json:"StackId,omitempty" xml:"StackId,omitempty"`
-	// The state of the stack.
-	StackIds []*string `json:"StackIds,omitempty" xml:"StackIds,omitempty" type:"Repeated"`
-	// The ID of stack N.
-	//
-	// You can specify one or more IDs to query one or more stacks at the same time.
-	//
-	// Valid values of N: 1 to 10.
-	StackName []*string `json:"StackName,omitempty" xml:"StackName,omitempty" type:"Repeated"`
-	// The time when the last successful drift detection was performed on the stack.
-	StartTime *string `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
-	// The ID of the resource group.
-	//
-	// For more information about resource groups, see the "Resource Group" section of the [What is Resource Management?](~~94475~~) topic.
-	Status []*string `json:"Status,omitempty" xml:"Status,omitempty" type:"Repeated"`
-	// The number of entries returned per page.
+	// The number of entries per page.
 	//
 	// Maximum value: 50.
 	//
 	// Default value: 10.
+	PageSize *int64 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	// The ID of the parent stack.
+	ParentStackId *string `json:"ParentStackId,omitempty" xml:"ParentStackId,omitempty"`
+	// The region ID of the stack. You can call the [DescribeRegions](~~131035~~) operation to query the most recent region list.
+	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	// The ID of the resource group.\
+	// For more information about resource groups, see the "Resource Group" section of the [What is Resource Management?](~~94475~~) topic.
+	ResourceGroupId *string `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
+	// Specifies whether to return nested stacks. Valid values:
+	//
+	// *   true
+	// *   false (default)
+	//
+	// > If you specify ParentStackId, you must set ShowNestedStack to true.
+	ShowNestedStack *bool `json:"ShowNestedStack,omitempty" xml:"ShowNestedStack,omitempty"`
+	// The stack ID. You can specify this parameter to query only the stack ID. If you want to query the detailed information about the stack, call the GetStack operation.
+	StackId *string `json:"StackId,omitempty" xml:"StackId,omitempty"`
+	// The IDs of the stacks.
+	StackIds []*string `json:"StackIds,omitempty" xml:"StackIds,omitempty" type:"Repeated"`
+	// The names of the stacks.
+	StackName []*string `json:"StackName,omitempty" xml:"StackName,omitempty" type:"Repeated"`
+	// 按创建时间查询，创建时间区间的起始点。按照[ISO 8601](~~25696~~)标准表示，并需要使用UTC +0时间，格式为yyyy-MM-ddTHH:mm:ssZ。
+	StartTime *string `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
+	// The status of the stack.
+	Status []*string `json:"Status,omitempty" xml:"Status,omitempty" type:"Repeated"`
+	// The tags of the stack.
 	Tag []*ListStacksRequestTag `json:"Tag,omitempty" xml:"Tag,omitempty" type:"Repeated"`
 }
 
@@ -13642,9 +13613,11 @@ func (s *ListStacksRequest) SetTag(v []*ListStacksRequestTag) *ListStacksRequest
 }
 
 type ListStacksRequestTag struct {
-	// The ID of the request.
+	// The key of tag N.\
+	// Valid values of N: 1 to 20.
 	Key *string `json:"Key,omitempty" xml:"Key,omitempty"`
-	// The page number of the returned page.
+	// The value of tag N.\
+	// Valid values of N: 1 to 20.
 	Value *string `json:"Value,omitempty" xml:"Value,omitempty"`
 }
 
@@ -13667,18 +13640,19 @@ func (s *ListStacksRequestTag) SetValue(v string) *ListStacksRequestTag {
 }
 
 type ListStacksResponseBody struct {
-	// The tag key of the stack.
+	// The page number.
 	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
-	// Indicates whether rollback is disabled when the stack fails to be created. Default value: false. Valid values:
+	// The number of entries per page.
 	//
-	// *   true
-	// *   false
+	// Maximum value: 50.
+	//
+	// Default value: 10.
 	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	// The tags of the stack.
+	// The request ID.
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// The tag value of the stack.
+	// The stacks.
 	Stacks []*ListStacksResponseBodyStacks `json:"Stacks,omitempty" xml:"Stacks,omitempty" type:"Repeated"`
-	// The time when the stack was created. The time follows the ISO 8601 standard in the YYYY-MM-DDThh:mm:ss format. The time is displayed in UTC.
+	// The total number of stacks.
 	TotalCount *int32 `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
 }
 
@@ -13716,48 +13690,57 @@ func (s *ListStacksResponseBody) SetTotalCount(v int32) *ListStacksResponseBody 
 }
 
 type ListStacksResponseBodyStacks struct {
-	// The ID of the stack.
+	// The time when the stack was created. The time follows the ISO 8601 standard in the YYYY-MM-DDThh:mm:ss format. The time is displayed in UTC.
 	CreateTime         *string `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
 	DeletionProtection *string `json:"DeletionProtection,omitempty" xml:"DeletionProtection,omitempty"`
-	// The state of the stack on which the last successful drift detection was performed. Valid values:
+	// Indicates whether rollback is disabled when the stack fails to be created. Valid values:
 	//
-	// *   DRIFTED: Drift detection is being performed on the stack.
+	// *   true
+	// *   false (default)
+	DisableRollback *bool `json:"DisableRollback,omitempty" xml:"DisableRollback,omitempty"`
+	// The time when the most recent successful drift detection was performed on the stack.
+	DriftDetectionTime *string `json:"DriftDetectionTime,omitempty" xml:"DriftDetectionTime,omitempty"`
+	// The supplementary information that is returned when an error occurs on a stack operation.
+	//
+	// > This parameter is returned only if an error occurs on a stack operation. The system returns at least one sub-property. For example, an error occurred when an API operation of another Alibaba Cloud service was called.
+	OperationInfo *ListStacksResponseBodyStacksOperationInfo `json:"OperationInfo,omitempty" xml:"OperationInfo,omitempty" type:"Struct"`
+	// The ID of the parent stack.
+	ParentStackId *string `json:"ParentStackId,omitempty" xml:"ParentStackId,omitempty"`
+	// The region ID of the stack. You can call the [DescribeRegions](~~131035~~) operation to query the most recent region list.
+	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	// The ID of the resource group.
+	ResourceGroupId *string `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
+	// Indicates whether the stack is a managed stack. Valid values:
+	//
+	// *   true
+	// *   false
+	ServiceManaged *bool `json:"ServiceManaged,omitempty" xml:"ServiceManaged,omitempty"`
+	// The name of the service to which the managed stack belongs.
+	ServiceName *string `json:"ServiceName,omitempty" xml:"ServiceName,omitempty"`
+	// The state of the stack on which the most recent successful drift detection was performed. Valid values:
+	//
+	// *   DRIFTED: The stack has drifted.
 	// *   NOT_CHECKED: No successful drift detection is performed on the stack.
 	// *   IN_SYNC: The stack is being synchronized.
-	DisableRollback *bool `json:"DisableRollback,omitempty" xml:"DisableRollback,omitempty"`
-	// The region ID of the stack. You can call the [DescribeRegions](~~131035~~) operation to query the most recent region list.
-	DriftDetectionTime *string                                    `json:"DriftDetectionTime,omitempty" xml:"DriftDetectionTime,omitempty"`
-	OperationInfo      *ListStacksResponseBodyStacksOperationInfo `json:"OperationInfo,omitempty" xml:"OperationInfo,omitempty" type:"Struct"`
-	// The error message.
-	ParentStackId *string `json:"ParentStackId,omitempty" xml:"ParentStackId,omitempty"`
-	// The error code.
-	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	// The logical ID of the resource on which an operation fails to be performed.
-	ResourceGroupId *string `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
-	ServiceManaged  *bool   `json:"ServiceManaged,omitempty" xml:"ServiceManaged,omitempty"`
-	ServiceName     *string `json:"ServiceName,omitempty" xml:"ServiceName,omitempty"`
-	// The name of the API operation that belongs to another Alibaba Cloud service.
 	StackDriftStatus *string `json:"StackDriftStatus,omitempty" xml:"StackDriftStatus,omitempty"`
-	// The ID of the request that is initiated to call the API operation of another Alibaba Cloud service.
+	// The stack ID.
 	StackId *string `json:"StackId,omitempty" xml:"StackId,omitempty"`
-	// The name of the service to which the managed stack belongs.
+	// The stack name.
 	StackName *string `json:"StackName,omitempty" xml:"StackName,omitempty"`
-	// The type of the resource on which an operation fails to be performed.
-	StackType *string `json:"StackType,omitempty" xml:"StackType,omitempty"`
-	// The name of the stack.
-	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
-	// The ID of the parent stack.
-	StatusReason *string `json:"StatusReason,omitempty" xml:"StatusReason,omitempty"`
-	// The type of the stack. Valid values:
+	// The stack type. Valid values:
 	//
-	// *   ROS: ROS stack. The stack is created by using a Resource Orchestration Service (ROS) template.
+	// *   ROS: Resource Orchestration Service (ROS) stack. The stack is created by using a ROS template.
 	// *   Terraform: Terraform stack. The stack is created by using a Terraform template.
+	StackType *string `json:"StackType,omitempty" xml:"StackType,omitempty"`
+	// The state of the stack.
+	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
+	// The reason why the stack is in its current state.
+	StatusReason *string `json:"StatusReason,omitempty" xml:"StatusReason,omitempty"`
+	// The tags of the stack.
 	Tags []*ListStacksResponseBodyStacksTags `json:"Tags,omitempty" xml:"Tags,omitempty" type:"Repeated"`
-	// The supplementary information that is returned when an operation fails to be performed on the stack.
-	//
-	// >  This parameter is returned if an operation fails to be performed on the stack. The system returns at least one sub-property. Example: An error occurred when the API operation of another Alibaba Cloud service was called.
-	TimeoutInMinutes *int32 `json:"TimeoutInMinutes,omitempty" xml:"TimeoutInMinutes,omitempty"`
 	// The timeout period that is allowed to create the stack. Unit: minutes.
+	TimeoutInMinutes *int32 `json:"TimeoutInMinutes,omitempty" xml:"TimeoutInMinutes,omitempty"`
+	// The time when the stack was updated. The time follows the ISO 8601 standard in the YYYY-MM-DDThh:mm:ss format. The time is displayed in UTC.
 	UpdateTime *string `json:"UpdateTime,omitempty" xml:"UpdateTime,omitempty"`
 }
 
@@ -13865,12 +13848,18 @@ func (s *ListStacksResponseBodyStacks) SetUpdateTime(v string) *ListStacksRespon
 }
 
 type ListStacksResponseBodyStacksOperationInfo struct {
-	Action            *string `json:"Action,omitempty" xml:"Action,omitempty"`
-	Code              *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	// The name of the API operation that belongs to another Alibaba Cloud service.
+	Action *string `json:"Action,omitempty" xml:"Action,omitempty"`
+	// The error code.
+	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	// The logical ID of the resource on which the operation error occurred.
 	LogicalResourceId *string `json:"LogicalResourceId,omitempty" xml:"LogicalResourceId,omitempty"`
-	Message           *string `json:"Message,omitempty" xml:"Message,omitempty"`
-	RequestId         *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	ResourceType      *string `json:"ResourceType,omitempty" xml:"ResourceType,omitempty"`
+	// The error message.
+	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// The ID of the request that is initiated to call the API operation of another Alibaba Cloud service.
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The type of the resource on which the operation error occurred.
+	ResourceType *string `json:"ResourceType,omitempty" xml:"ResourceType,omitempty"`
 }
 
 func (s ListStacksResponseBodyStacksOperationInfo) String() string {
@@ -13912,12 +13901,9 @@ func (s *ListStacksResponseBodyStacksOperationInfo) SetResourceType(v string) *L
 }
 
 type ListStacksResponseBodyStacksTags struct {
-	// The ID of the resource group.
+	// The key of the tag.
 	Key *string `json:"Key,omitempty" xml:"Key,omitempty"`
-	// Indicates whether the stack is a managed stack. Valid values:
-	//
-	// *   true
-	// *   false
+	// The value of the tag.
 	Value *string `json:"Value,omitempty" xml:"Value,omitempty"`
 }
 
@@ -23539,10 +23525,8 @@ func (client *Client) ListStackResources(request *ListStackResourcesRequest) (_r
 }
 
 /**
- * Specifies whether to return nested stacks. Default value: false. Valid values:
- * *   true
- * *   false
- * > If the ParentStackId parameter is specified, you must set the ShowNestedStack parameter to true.
+ * ###
+ * This topic provides an example on how to query a list of stacks. In this example, the stacks that are deployed in the China (Hangzhou) region are queried.
  *
  * @param request ListStacksRequest
  * @param runtime runtime options for this request RuntimeOptions
@@ -23630,10 +23614,8 @@ func (client *Client) ListStacksWithOptions(request *ListStacksRequest, runtime 
 }
 
 /**
- * Specifies whether to return nested stacks. Default value: false. Valid values:
- * *   true
- * *   false
- * > If the ParentStackId parameter is specified, you must set the ShowNestedStack parameter to true.
+ * ###
+ * This topic provides an example on how to query a list of stacks. In this example, the stacks that are deployed in the China (Hangzhou) region are queried.
  *
  * @param request ListStacksRequest
  * @return ListStacksResponse
