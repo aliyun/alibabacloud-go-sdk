@@ -4968,6 +4968,481 @@ func (s *DescribeInstanceBillResponse) SetBody(v *DescribeInstanceBillResponseBo
 	return s
 }
 
+type DescribeInstanceDeductAmortizedCostByAmortizationPeriodRequest struct {
+	BillOwnerIdList  []*string `json:"BillOwnerIdList,omitempty" xml:"BillOwnerIdList,omitempty" type:"Repeated"`
+	BillUserIdList   []*string `json:"BillUserIdList,omitempty" xml:"BillUserIdList,omitempty" type:"Repeated"`
+	BillingCycle     *string   `json:"BillingCycle,omitempty" xml:"BillingCycle,omitempty"`
+	CostUnitCode     *string   `json:"CostUnitCode,omitempty" xml:"CostUnitCode,omitempty"`
+	InstanceIdList   []*string `json:"InstanceIdList,omitempty" xml:"InstanceIdList,omitempty" type:"Repeated"`
+	MaxResults       *int32    `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
+	NextToken        *string   `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
+	ProductCode      *string   `json:"ProductCode,omitempty" xml:"ProductCode,omitempty"`
+	ProductDetail    *string   `json:"ProductDetail,omitempty" xml:"ProductDetail,omitempty"`
+	SubscriptionType *string   `json:"SubscriptionType,omitempty" xml:"SubscriptionType,omitempty"`
+}
+
+func (s DescribeInstanceDeductAmortizedCostByAmortizationPeriodRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeInstanceDeductAmortizedCostByAmortizationPeriodRequest) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeInstanceDeductAmortizedCostByAmortizationPeriodRequest) SetBillOwnerIdList(v []*string) *DescribeInstanceDeductAmortizedCostByAmortizationPeriodRequest {
+	s.BillOwnerIdList = v
+	return s
+}
+
+func (s *DescribeInstanceDeductAmortizedCostByAmortizationPeriodRequest) SetBillUserIdList(v []*string) *DescribeInstanceDeductAmortizedCostByAmortizationPeriodRequest {
+	s.BillUserIdList = v
+	return s
+}
+
+func (s *DescribeInstanceDeductAmortizedCostByAmortizationPeriodRequest) SetBillingCycle(v string) *DescribeInstanceDeductAmortizedCostByAmortizationPeriodRequest {
+	s.BillingCycle = &v
+	return s
+}
+
+func (s *DescribeInstanceDeductAmortizedCostByAmortizationPeriodRequest) SetCostUnitCode(v string) *DescribeInstanceDeductAmortizedCostByAmortizationPeriodRequest {
+	s.CostUnitCode = &v
+	return s
+}
+
+func (s *DescribeInstanceDeductAmortizedCostByAmortizationPeriodRequest) SetInstanceIdList(v []*string) *DescribeInstanceDeductAmortizedCostByAmortizationPeriodRequest {
+	s.InstanceIdList = v
+	return s
+}
+
+func (s *DescribeInstanceDeductAmortizedCostByAmortizationPeriodRequest) SetMaxResults(v int32) *DescribeInstanceDeductAmortizedCostByAmortizationPeriodRequest {
+	s.MaxResults = &v
+	return s
+}
+
+func (s *DescribeInstanceDeductAmortizedCostByAmortizationPeriodRequest) SetNextToken(v string) *DescribeInstanceDeductAmortizedCostByAmortizationPeriodRequest {
+	s.NextToken = &v
+	return s
+}
+
+func (s *DescribeInstanceDeductAmortizedCostByAmortizationPeriodRequest) SetProductCode(v string) *DescribeInstanceDeductAmortizedCostByAmortizationPeriodRequest {
+	s.ProductCode = &v
+	return s
+}
+
+func (s *DescribeInstanceDeductAmortizedCostByAmortizationPeriodRequest) SetProductDetail(v string) *DescribeInstanceDeductAmortizedCostByAmortizationPeriodRequest {
+	s.ProductDetail = &v
+	return s
+}
+
+func (s *DescribeInstanceDeductAmortizedCostByAmortizationPeriodRequest) SetSubscriptionType(v string) *DescribeInstanceDeductAmortizedCostByAmortizationPeriodRequest {
+	s.SubscriptionType = &v
+	return s
+}
+
+type DescribeInstanceDeductAmortizedCostByAmortizationPeriodResponseBody struct {
+	Code      *string                                                                  `json:"Code,omitempty" xml:"Code,omitempty"`
+	Data      *DescribeInstanceDeductAmortizedCostByAmortizationPeriodResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
+	Message   *string                                                                  `json:"Message,omitempty" xml:"Message,omitempty"`
+	RequestId *string                                                                  `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	Success   *bool                                                                    `json:"Success,omitempty" xml:"Success,omitempty"`
+}
+
+func (s DescribeInstanceDeductAmortizedCostByAmortizationPeriodResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeInstanceDeductAmortizedCostByAmortizationPeriodResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeInstanceDeductAmortizedCostByAmortizationPeriodResponseBody) SetCode(v string) *DescribeInstanceDeductAmortizedCostByAmortizationPeriodResponseBody {
+	s.Code = &v
+	return s
+}
+
+func (s *DescribeInstanceDeductAmortizedCostByAmortizationPeriodResponseBody) SetData(v *DescribeInstanceDeductAmortizedCostByAmortizationPeriodResponseBodyData) *DescribeInstanceDeductAmortizedCostByAmortizationPeriodResponseBody {
+	s.Data = v
+	return s
+}
+
+func (s *DescribeInstanceDeductAmortizedCostByAmortizationPeriodResponseBody) SetMessage(v string) *DescribeInstanceDeductAmortizedCostByAmortizationPeriodResponseBody {
+	s.Message = &v
+	return s
+}
+
+func (s *DescribeInstanceDeductAmortizedCostByAmortizationPeriodResponseBody) SetRequestId(v string) *DescribeInstanceDeductAmortizedCostByAmortizationPeriodResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *DescribeInstanceDeductAmortizedCostByAmortizationPeriodResponseBody) SetSuccess(v bool) *DescribeInstanceDeductAmortizedCostByAmortizationPeriodResponseBody {
+	s.Success = &v
+	return s
+}
+
+type DescribeInstanceDeductAmortizedCostByAmortizationPeriodResponseBodyData struct {
+	AccountID   *string                                                                         `json:"AccountID,omitempty" xml:"AccountID,omitempty"`
+	AccountName *string                                                                         `json:"AccountName,omitempty" xml:"AccountName,omitempty"`
+	Items       []*DescribeInstanceDeductAmortizedCostByAmortizationPeriodResponseBodyDataItems `json:"Items,omitempty" xml:"Items,omitempty" type:"Repeated"`
+	MaxResults  *int32                                                                          `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
+	NextToken   *string                                                                         `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
+	TotalCount  *int32                                                                          `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
+}
+
+func (s DescribeInstanceDeductAmortizedCostByAmortizationPeriodResponseBodyData) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeInstanceDeductAmortizedCostByAmortizationPeriodResponseBodyData) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeInstanceDeductAmortizedCostByAmortizationPeriodResponseBodyData) SetAccountID(v string) *DescribeInstanceDeductAmortizedCostByAmortizationPeriodResponseBodyData {
+	s.AccountID = &v
+	return s
+}
+
+func (s *DescribeInstanceDeductAmortizedCostByAmortizationPeriodResponseBodyData) SetAccountName(v string) *DescribeInstanceDeductAmortizedCostByAmortizationPeriodResponseBodyData {
+	s.AccountName = &v
+	return s
+}
+
+func (s *DescribeInstanceDeductAmortizedCostByAmortizationPeriodResponseBodyData) SetItems(v []*DescribeInstanceDeductAmortizedCostByAmortizationPeriodResponseBodyDataItems) *DescribeInstanceDeductAmortizedCostByAmortizationPeriodResponseBodyData {
+	s.Items = v
+	return s
+}
+
+func (s *DescribeInstanceDeductAmortizedCostByAmortizationPeriodResponseBodyData) SetMaxResults(v int32) *DescribeInstanceDeductAmortizedCostByAmortizationPeriodResponseBodyData {
+	s.MaxResults = &v
+	return s
+}
+
+func (s *DescribeInstanceDeductAmortizedCostByAmortizationPeriodResponseBodyData) SetNextToken(v string) *DescribeInstanceDeductAmortizedCostByAmortizationPeriodResponseBodyData {
+	s.NextToken = &v
+	return s
+}
+
+func (s *DescribeInstanceDeductAmortizedCostByAmortizationPeriodResponseBodyData) SetTotalCount(v int32) *DescribeInstanceDeductAmortizedCostByAmortizationPeriodResponseBodyData {
+	s.TotalCount = &v
+	return s
+}
+
+type DescribeInstanceDeductAmortizedCostByAmortizationPeriodResponseBodyDataItems struct {
+	AmortizationPeriod                   *string  `json:"AmortizationPeriod,omitempty" xml:"AmortizationPeriod,omitempty"`
+	AmortizationPeriodDay                *string  `json:"AmortizationPeriodDay,omitempty" xml:"AmortizationPeriodDay,omitempty"`
+	AmortizationStatus                   *string  `json:"AmortizationStatus,omitempty" xml:"AmortizationStatus,omitempty"`
+	BillAccountID                        *int64   `json:"BillAccountID,omitempty" xml:"BillAccountID,omitempty"`
+	BillAccountName                      *string  `json:"BillAccountName,omitempty" xml:"BillAccountName,omitempty"`
+	BillOwnerID                          *int64   `json:"BillOwnerID,omitempty" xml:"BillOwnerID,omitempty"`
+	BillOwnerName                        *string  `json:"BillOwnerName,omitempty" xml:"BillOwnerName,omitempty"`
+	BizType                              *string  `json:"BizType,omitempty" xml:"BizType,omitempty"`
+	ConsumePeriod                        *string  `json:"ConsumePeriod,omitempty" xml:"ConsumePeriod,omitempty"`
+	CostUnit                             *string  `json:"CostUnit,omitempty" xml:"CostUnit,omitempty"`
+	CostUnitCode                         *string  `json:"CostUnitCode,omitempty" xml:"CostUnitCode,omitempty"`
+	CurrentAmortizationDeductedByCoupons *float64 `json:"CurrentAmortizationDeductedByCoupons,omitempty" xml:"CurrentAmortizationDeductedByCoupons,omitempty"`
+	CurrentAmortizationInvoiceDiscount   *float64 `json:"CurrentAmortizationInvoiceDiscount,omitempty" xml:"CurrentAmortizationInvoiceDiscount,omitempty"`
+	CurrentAmortizationPretaxAmount      *float64 `json:"CurrentAmortizationPretaxAmount,omitempty" xml:"CurrentAmortizationPretaxAmount,omitempty"`
+	CurrentAmortizationPretaxGrossAmount *float64 `json:"CurrentAmortizationPretaxGrossAmount,omitempty" xml:"CurrentAmortizationPretaxGrossAmount,omitempty"`
+	CurrentAmortizationRoundDownDiscount *float64 `json:"CurrentAmortizationRoundDownDiscount,omitempty" xml:"CurrentAmortizationRoundDownDiscount,omitempty"`
+	DeductedByCoupons                    *float64 `json:"DeductedByCoupons,omitempty" xml:"DeductedByCoupons,omitempty"`
+	InstanceConfig                       *string  `json:"InstanceConfig,omitempty" xml:"InstanceConfig,omitempty"`
+	InstanceID                           *string  `json:"InstanceID,omitempty" xml:"InstanceID,omitempty"`
+	InternetIP                           *string  `json:"InternetIP,omitempty" xml:"InternetIP,omitempty"`
+	IntranetIP                           *string  `json:"IntranetIP,omitempty" xml:"IntranetIP,omitempty"`
+	InvoiceDiscount                      *float64 `json:"InvoiceDiscount,omitempty" xml:"InvoiceDiscount,omitempty"`
+	PretaxAmount                         *float64 `json:"PretaxAmount,omitempty" xml:"PretaxAmount,omitempty"`
+	PretaxGrossAmount                    *float64 `json:"PretaxGrossAmount,omitempty" xml:"PretaxGrossAmount,omitempty"`
+	ProductCode                          *string  `json:"ProductCode,omitempty" xml:"ProductCode,omitempty"`
+	ProductDetail                        *string  `json:"ProductDetail,omitempty" xml:"ProductDetail,omitempty"`
+	ProductDetailCode                    *string  `json:"ProductDetailCode,omitempty" xml:"ProductDetailCode,omitempty"`
+	ProductName                          *string  `json:"ProductName,omitempty" xml:"ProductName,omitempty"`
+	ReferFrInstanceID                    *string  `json:"ReferFrInstanceID,omitempty" xml:"ReferFrInstanceID,omitempty"`
+	ReferFrOwnerID                       *string  `json:"ReferFrOwnerID,omitempty" xml:"ReferFrOwnerID,omitempty"`
+	ReferFrProductDetailCode             *string  `json:"ReferFrProductDetailCode,omitempty" xml:"ReferFrProductDetailCode,omitempty"`
+	Region                               *string  `json:"Region,omitempty" xml:"Region,omitempty"`
+	ResourceGroup                        *string  `json:"ResourceGroup,omitempty" xml:"ResourceGroup,omitempty"`
+	RoundDownDiscount                    *float64 `json:"RoundDownDiscount,omitempty" xml:"RoundDownDiscount,omitempty"`
+	SplitAccountName                     *string  `json:"SplitAccountName,omitempty" xml:"SplitAccountName,omitempty"`
+	SplitItemID                          *string  `json:"SplitItemID,omitempty" xml:"SplitItemID,omitempty"`
+	SplitItemName                        *string  `json:"SplitItemName,omitempty" xml:"SplitItemName,omitempty"`
+	SplitProductDetail                   *string  `json:"SplitProductDetail,omitempty" xml:"SplitProductDetail,omitempty"`
+	SubscriptionType                     *string  `json:"SubscriptionType,omitempty" xml:"SubscriptionType,omitempty"`
+	Tag                                  *string  `json:"Tag,omitempty" xml:"Tag,omitempty"`
+	UnusedAmortizationDeductedByCoupons  *float64 `json:"UnusedAmortizationDeductedByCoupons,omitempty" xml:"UnusedAmortizationDeductedByCoupons,omitempty"`
+	UnusedAmortizationInvoiceDiscount    *float64 `json:"UnusedAmortizationInvoiceDiscount,omitempty" xml:"UnusedAmortizationInvoiceDiscount,omitempty"`
+	UnusedAmortizationPretaxAmount       *float64 `json:"UnusedAmortizationPretaxAmount,omitempty" xml:"UnusedAmortizationPretaxAmount,omitempty"`
+	UnusedAmortizationPretaxGrossAmount  *float64 `json:"UnusedAmortizationPretaxGrossAmount,omitempty" xml:"UnusedAmortizationPretaxGrossAmount,omitempty"`
+	UnusedAmortizationRoundDownDiscount  *float64 `json:"UnusedAmortizationRoundDownDiscount,omitempty" xml:"UnusedAmortizationRoundDownDiscount,omitempty"`
+	Zone                                 *string  `json:"Zone,omitempty" xml:"Zone,omitempty"`
+}
+
+func (s DescribeInstanceDeductAmortizedCostByAmortizationPeriodResponseBodyDataItems) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeInstanceDeductAmortizedCostByAmortizationPeriodResponseBodyDataItems) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeInstanceDeductAmortizedCostByAmortizationPeriodResponseBodyDataItems) SetAmortizationPeriod(v string) *DescribeInstanceDeductAmortizedCostByAmortizationPeriodResponseBodyDataItems {
+	s.AmortizationPeriod = &v
+	return s
+}
+
+func (s *DescribeInstanceDeductAmortizedCostByAmortizationPeriodResponseBodyDataItems) SetAmortizationPeriodDay(v string) *DescribeInstanceDeductAmortizedCostByAmortizationPeriodResponseBodyDataItems {
+	s.AmortizationPeriodDay = &v
+	return s
+}
+
+func (s *DescribeInstanceDeductAmortizedCostByAmortizationPeriodResponseBodyDataItems) SetAmortizationStatus(v string) *DescribeInstanceDeductAmortizedCostByAmortizationPeriodResponseBodyDataItems {
+	s.AmortizationStatus = &v
+	return s
+}
+
+func (s *DescribeInstanceDeductAmortizedCostByAmortizationPeriodResponseBodyDataItems) SetBillAccountID(v int64) *DescribeInstanceDeductAmortizedCostByAmortizationPeriodResponseBodyDataItems {
+	s.BillAccountID = &v
+	return s
+}
+
+func (s *DescribeInstanceDeductAmortizedCostByAmortizationPeriodResponseBodyDataItems) SetBillAccountName(v string) *DescribeInstanceDeductAmortizedCostByAmortizationPeriodResponseBodyDataItems {
+	s.BillAccountName = &v
+	return s
+}
+
+func (s *DescribeInstanceDeductAmortizedCostByAmortizationPeriodResponseBodyDataItems) SetBillOwnerID(v int64) *DescribeInstanceDeductAmortizedCostByAmortizationPeriodResponseBodyDataItems {
+	s.BillOwnerID = &v
+	return s
+}
+
+func (s *DescribeInstanceDeductAmortizedCostByAmortizationPeriodResponseBodyDataItems) SetBillOwnerName(v string) *DescribeInstanceDeductAmortizedCostByAmortizationPeriodResponseBodyDataItems {
+	s.BillOwnerName = &v
+	return s
+}
+
+func (s *DescribeInstanceDeductAmortizedCostByAmortizationPeriodResponseBodyDataItems) SetBizType(v string) *DescribeInstanceDeductAmortizedCostByAmortizationPeriodResponseBodyDataItems {
+	s.BizType = &v
+	return s
+}
+
+func (s *DescribeInstanceDeductAmortizedCostByAmortizationPeriodResponseBodyDataItems) SetConsumePeriod(v string) *DescribeInstanceDeductAmortizedCostByAmortizationPeriodResponseBodyDataItems {
+	s.ConsumePeriod = &v
+	return s
+}
+
+func (s *DescribeInstanceDeductAmortizedCostByAmortizationPeriodResponseBodyDataItems) SetCostUnit(v string) *DescribeInstanceDeductAmortizedCostByAmortizationPeriodResponseBodyDataItems {
+	s.CostUnit = &v
+	return s
+}
+
+func (s *DescribeInstanceDeductAmortizedCostByAmortizationPeriodResponseBodyDataItems) SetCostUnitCode(v string) *DescribeInstanceDeductAmortizedCostByAmortizationPeriodResponseBodyDataItems {
+	s.CostUnitCode = &v
+	return s
+}
+
+func (s *DescribeInstanceDeductAmortizedCostByAmortizationPeriodResponseBodyDataItems) SetCurrentAmortizationDeductedByCoupons(v float64) *DescribeInstanceDeductAmortizedCostByAmortizationPeriodResponseBodyDataItems {
+	s.CurrentAmortizationDeductedByCoupons = &v
+	return s
+}
+
+func (s *DescribeInstanceDeductAmortizedCostByAmortizationPeriodResponseBodyDataItems) SetCurrentAmortizationInvoiceDiscount(v float64) *DescribeInstanceDeductAmortizedCostByAmortizationPeriodResponseBodyDataItems {
+	s.CurrentAmortizationInvoiceDiscount = &v
+	return s
+}
+
+func (s *DescribeInstanceDeductAmortizedCostByAmortizationPeriodResponseBodyDataItems) SetCurrentAmortizationPretaxAmount(v float64) *DescribeInstanceDeductAmortizedCostByAmortizationPeriodResponseBodyDataItems {
+	s.CurrentAmortizationPretaxAmount = &v
+	return s
+}
+
+func (s *DescribeInstanceDeductAmortizedCostByAmortizationPeriodResponseBodyDataItems) SetCurrentAmortizationPretaxGrossAmount(v float64) *DescribeInstanceDeductAmortizedCostByAmortizationPeriodResponseBodyDataItems {
+	s.CurrentAmortizationPretaxGrossAmount = &v
+	return s
+}
+
+func (s *DescribeInstanceDeductAmortizedCostByAmortizationPeriodResponseBodyDataItems) SetCurrentAmortizationRoundDownDiscount(v float64) *DescribeInstanceDeductAmortizedCostByAmortizationPeriodResponseBodyDataItems {
+	s.CurrentAmortizationRoundDownDiscount = &v
+	return s
+}
+
+func (s *DescribeInstanceDeductAmortizedCostByAmortizationPeriodResponseBodyDataItems) SetDeductedByCoupons(v float64) *DescribeInstanceDeductAmortizedCostByAmortizationPeriodResponseBodyDataItems {
+	s.DeductedByCoupons = &v
+	return s
+}
+
+func (s *DescribeInstanceDeductAmortizedCostByAmortizationPeriodResponseBodyDataItems) SetInstanceConfig(v string) *DescribeInstanceDeductAmortizedCostByAmortizationPeriodResponseBodyDataItems {
+	s.InstanceConfig = &v
+	return s
+}
+
+func (s *DescribeInstanceDeductAmortizedCostByAmortizationPeriodResponseBodyDataItems) SetInstanceID(v string) *DescribeInstanceDeductAmortizedCostByAmortizationPeriodResponseBodyDataItems {
+	s.InstanceID = &v
+	return s
+}
+
+func (s *DescribeInstanceDeductAmortizedCostByAmortizationPeriodResponseBodyDataItems) SetInternetIP(v string) *DescribeInstanceDeductAmortizedCostByAmortizationPeriodResponseBodyDataItems {
+	s.InternetIP = &v
+	return s
+}
+
+func (s *DescribeInstanceDeductAmortizedCostByAmortizationPeriodResponseBodyDataItems) SetIntranetIP(v string) *DescribeInstanceDeductAmortizedCostByAmortizationPeriodResponseBodyDataItems {
+	s.IntranetIP = &v
+	return s
+}
+
+func (s *DescribeInstanceDeductAmortizedCostByAmortizationPeriodResponseBodyDataItems) SetInvoiceDiscount(v float64) *DescribeInstanceDeductAmortizedCostByAmortizationPeriodResponseBodyDataItems {
+	s.InvoiceDiscount = &v
+	return s
+}
+
+func (s *DescribeInstanceDeductAmortizedCostByAmortizationPeriodResponseBodyDataItems) SetPretaxAmount(v float64) *DescribeInstanceDeductAmortizedCostByAmortizationPeriodResponseBodyDataItems {
+	s.PretaxAmount = &v
+	return s
+}
+
+func (s *DescribeInstanceDeductAmortizedCostByAmortizationPeriodResponseBodyDataItems) SetPretaxGrossAmount(v float64) *DescribeInstanceDeductAmortizedCostByAmortizationPeriodResponseBodyDataItems {
+	s.PretaxGrossAmount = &v
+	return s
+}
+
+func (s *DescribeInstanceDeductAmortizedCostByAmortizationPeriodResponseBodyDataItems) SetProductCode(v string) *DescribeInstanceDeductAmortizedCostByAmortizationPeriodResponseBodyDataItems {
+	s.ProductCode = &v
+	return s
+}
+
+func (s *DescribeInstanceDeductAmortizedCostByAmortizationPeriodResponseBodyDataItems) SetProductDetail(v string) *DescribeInstanceDeductAmortizedCostByAmortizationPeriodResponseBodyDataItems {
+	s.ProductDetail = &v
+	return s
+}
+
+func (s *DescribeInstanceDeductAmortizedCostByAmortizationPeriodResponseBodyDataItems) SetProductDetailCode(v string) *DescribeInstanceDeductAmortizedCostByAmortizationPeriodResponseBodyDataItems {
+	s.ProductDetailCode = &v
+	return s
+}
+
+func (s *DescribeInstanceDeductAmortizedCostByAmortizationPeriodResponseBodyDataItems) SetProductName(v string) *DescribeInstanceDeductAmortizedCostByAmortizationPeriodResponseBodyDataItems {
+	s.ProductName = &v
+	return s
+}
+
+func (s *DescribeInstanceDeductAmortizedCostByAmortizationPeriodResponseBodyDataItems) SetReferFrInstanceID(v string) *DescribeInstanceDeductAmortizedCostByAmortizationPeriodResponseBodyDataItems {
+	s.ReferFrInstanceID = &v
+	return s
+}
+
+func (s *DescribeInstanceDeductAmortizedCostByAmortizationPeriodResponseBodyDataItems) SetReferFrOwnerID(v string) *DescribeInstanceDeductAmortizedCostByAmortizationPeriodResponseBodyDataItems {
+	s.ReferFrOwnerID = &v
+	return s
+}
+
+func (s *DescribeInstanceDeductAmortizedCostByAmortizationPeriodResponseBodyDataItems) SetReferFrProductDetailCode(v string) *DescribeInstanceDeductAmortizedCostByAmortizationPeriodResponseBodyDataItems {
+	s.ReferFrProductDetailCode = &v
+	return s
+}
+
+func (s *DescribeInstanceDeductAmortizedCostByAmortizationPeriodResponseBodyDataItems) SetRegion(v string) *DescribeInstanceDeductAmortizedCostByAmortizationPeriodResponseBodyDataItems {
+	s.Region = &v
+	return s
+}
+
+func (s *DescribeInstanceDeductAmortizedCostByAmortizationPeriodResponseBodyDataItems) SetResourceGroup(v string) *DescribeInstanceDeductAmortizedCostByAmortizationPeriodResponseBodyDataItems {
+	s.ResourceGroup = &v
+	return s
+}
+
+func (s *DescribeInstanceDeductAmortizedCostByAmortizationPeriodResponseBodyDataItems) SetRoundDownDiscount(v float64) *DescribeInstanceDeductAmortizedCostByAmortizationPeriodResponseBodyDataItems {
+	s.RoundDownDiscount = &v
+	return s
+}
+
+func (s *DescribeInstanceDeductAmortizedCostByAmortizationPeriodResponseBodyDataItems) SetSplitAccountName(v string) *DescribeInstanceDeductAmortizedCostByAmortizationPeriodResponseBodyDataItems {
+	s.SplitAccountName = &v
+	return s
+}
+
+func (s *DescribeInstanceDeductAmortizedCostByAmortizationPeriodResponseBodyDataItems) SetSplitItemID(v string) *DescribeInstanceDeductAmortizedCostByAmortizationPeriodResponseBodyDataItems {
+	s.SplitItemID = &v
+	return s
+}
+
+func (s *DescribeInstanceDeductAmortizedCostByAmortizationPeriodResponseBodyDataItems) SetSplitItemName(v string) *DescribeInstanceDeductAmortizedCostByAmortizationPeriodResponseBodyDataItems {
+	s.SplitItemName = &v
+	return s
+}
+
+func (s *DescribeInstanceDeductAmortizedCostByAmortizationPeriodResponseBodyDataItems) SetSplitProductDetail(v string) *DescribeInstanceDeductAmortizedCostByAmortizationPeriodResponseBodyDataItems {
+	s.SplitProductDetail = &v
+	return s
+}
+
+func (s *DescribeInstanceDeductAmortizedCostByAmortizationPeriodResponseBodyDataItems) SetSubscriptionType(v string) *DescribeInstanceDeductAmortizedCostByAmortizationPeriodResponseBodyDataItems {
+	s.SubscriptionType = &v
+	return s
+}
+
+func (s *DescribeInstanceDeductAmortizedCostByAmortizationPeriodResponseBodyDataItems) SetTag(v string) *DescribeInstanceDeductAmortizedCostByAmortizationPeriodResponseBodyDataItems {
+	s.Tag = &v
+	return s
+}
+
+func (s *DescribeInstanceDeductAmortizedCostByAmortizationPeriodResponseBodyDataItems) SetUnusedAmortizationDeductedByCoupons(v float64) *DescribeInstanceDeductAmortizedCostByAmortizationPeriodResponseBodyDataItems {
+	s.UnusedAmortizationDeductedByCoupons = &v
+	return s
+}
+
+func (s *DescribeInstanceDeductAmortizedCostByAmortizationPeriodResponseBodyDataItems) SetUnusedAmortizationInvoiceDiscount(v float64) *DescribeInstanceDeductAmortizedCostByAmortizationPeriodResponseBodyDataItems {
+	s.UnusedAmortizationInvoiceDiscount = &v
+	return s
+}
+
+func (s *DescribeInstanceDeductAmortizedCostByAmortizationPeriodResponseBodyDataItems) SetUnusedAmortizationPretaxAmount(v float64) *DescribeInstanceDeductAmortizedCostByAmortizationPeriodResponseBodyDataItems {
+	s.UnusedAmortizationPretaxAmount = &v
+	return s
+}
+
+func (s *DescribeInstanceDeductAmortizedCostByAmortizationPeriodResponseBodyDataItems) SetUnusedAmortizationPretaxGrossAmount(v float64) *DescribeInstanceDeductAmortizedCostByAmortizationPeriodResponseBodyDataItems {
+	s.UnusedAmortizationPretaxGrossAmount = &v
+	return s
+}
+
+func (s *DescribeInstanceDeductAmortizedCostByAmortizationPeriodResponseBodyDataItems) SetUnusedAmortizationRoundDownDiscount(v float64) *DescribeInstanceDeductAmortizedCostByAmortizationPeriodResponseBodyDataItems {
+	s.UnusedAmortizationRoundDownDiscount = &v
+	return s
+}
+
+func (s *DescribeInstanceDeductAmortizedCostByAmortizationPeriodResponseBodyDataItems) SetZone(v string) *DescribeInstanceDeductAmortizedCostByAmortizationPeriodResponseBodyDataItems {
+	s.Zone = &v
+	return s
+}
+
+type DescribeInstanceDeductAmortizedCostByAmortizationPeriodResponse struct {
+	Headers    map[string]*string                                                   `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                                                               `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *DescribeInstanceDeductAmortizedCostByAmortizationPeriodResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s DescribeInstanceDeductAmortizedCostByAmortizationPeriodResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeInstanceDeductAmortizedCostByAmortizationPeriodResponse) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeInstanceDeductAmortizedCostByAmortizationPeriodResponse) SetHeaders(v map[string]*string) *DescribeInstanceDeductAmortizedCostByAmortizationPeriodResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *DescribeInstanceDeductAmortizedCostByAmortizationPeriodResponse) SetStatusCode(v int32) *DescribeInstanceDeductAmortizedCostByAmortizationPeriodResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *DescribeInstanceDeductAmortizedCostByAmortizationPeriodResponse) SetBody(v *DescribeInstanceDeductAmortizedCostByAmortizationPeriodResponseBody) *DescribeInstanceDeductAmortizedCostByAmortizationPeriodResponse {
+	s.Body = v
+	return s
+}
+
 type DescribePricingModuleRequest struct {
 	OwnerId *int64 `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
 	// The service code. You can query the service code by calling the **QueryProductList** operation.
@@ -6326,19 +6801,21 @@ func (s *DescribeProductAmortizedCostByConsumePeriodResponse) SetBody(v *Describ
 }
 
 type DescribeResourceCoverageDetailRequest struct {
-	// The status code.
+	// The ID of the account for which you want to query coverage details. If you do not set this parameter, the data of the current Alibaba Cloud account and its RAM users is queried. To query the data of a RAM user, specify the ID of the RAM user.
 	BillOwnerId *int64 `json:"BillOwnerId,omitempty" xml:"BillOwnerId,omitempty"`
-	// The name and billing method of the service.
+	// The end of the time range to query. The end is excluded from the time range. If you do not set this parameter, the end time is the current time. Specify the time in the format of yyyy-MM-dd HH:mm:ss.
 	EndPeriod *string `json:"EndPeriod,omitempty" xml:"EndPeriod,omitempty"`
-	// The zone.
+	// The maximum number of entries to return. Default value: 20. Maximum value: 300.
 	MaxResults *int32 `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
-	// The token of the next page.
+	// The token that is used to retrieve the next page of results. You do not need to set this parameter if you query coverage details within a specific time range for the first time. The response returns a token that you can use to query coverage details that are displayed on the next page. If a null value is returned for the NextToken parameter, no more coverage details can be queried.
 	NextToken *string `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
-	// The total amount of resources consumed.
+	// The time granularity at which coverage details are queried. Valid values: MONTH, DAY, and HOUR.
 	PeriodType *string `json:"PeriodType,omitempty" xml:"PeriodType,omitempty"`
-	// The operation that you want to perform. Set the value to DescribeResourceCoverageDetail.
+	// The type of deduction plans whose coverage details are queried. Valid values: RI and SCU.
 	ResourceType *string `json:"ResourceType,omitempty" xml:"ResourceType,omitempty"`
-	// The ID of the account.
+	// The beginning of the time range to query.
+	//
+	// The beginning is included in the time range. Specify the time in the format of yyyy-MM-dd HH:mm:ss.
 	StartPeriod *string `json:"StartPeriod,omitempty" xml:"StartPeriod,omitempty"`
 }
 
@@ -6386,15 +6863,15 @@ func (s *DescribeResourceCoverageDetailRequest) SetStartPeriod(v string) *Descri
 }
 
 type DescribeResourceCoverageDetailResponseBody struct {
-	// The end of the time range in which the coverage details were queried.
+	// The status code.
 	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
-	// The ID of the account for which you want to query coverage details. If you do not set this parameter, the data of the current Alibaba Cloud account and its RAM users is queried. To query the data of a RAM user, specify the ID of the RAM user.
+	// The returned data.
 	Data *DescribeResourceCoverageDetailResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
-	// The maximum number of entries to return. Default value: 20. Maximum value: 300.
-	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
 	// The message returned.
+	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// The ID of the request.
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// The amount of the bill.
+	// Indicates whether the operation was successful.
 	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
 }
 
@@ -6432,15 +6909,13 @@ func (s *DescribeResourceCoverageDetailResponseBody) SetSuccess(v bool) *Describ
 }
 
 type DescribeResourceCoverageDetailResponseBodyData struct {
-	// The code of the region.
-	Items []*DescribeResourceCoverageDetailResponseBodyDataItems `json:"Items,omitempty" xml:"Items,omitempty" type:"Repeated"`
 	// The data entries.
+	Items []*DescribeResourceCoverageDetailResponseBodyDataItems `json:"Items,omitempty" xml:"Items,omitempty" type:"Repeated"`
+	// The number of entries returned on the current page.
 	MaxResults *int32 `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
-	// The beginning of the time range to query.
-	//
-	// The beginning is included in the time range. Specify the time in the format of yyyy-MM-dd HH:mm:ss.
+	// The token of the next page.
 	NextToken *string `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
-	// The ID of a pay-as-you-go instance.
+	// The total number of entries returned.
 	TotalCount *int32 `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
 }
 
@@ -6473,42 +6948,45 @@ func (s *DescribeResourceCoverageDetailResponseBodyData) SetTotalCount(v int32) 
 }
 
 type DescribeResourceCoverageDetailResponseBodyDataItems struct {
-	// The type of deduction plans whose coverage details are queried. Valid values: RI and SCU.
-	CapacityUnit *string `json:"CapacityUnit,omitempty" xml:"CapacityUnit,omitempty"`
-	// The returned data.
-	CommodityCode *string `json:"CommodityCode,omitempty" xml:"CommodityCode,omitempty"`
-	// The time granularity at which coverage details are queried. Valid values: MONTH, DAY, and HOUR.
-	CommodityName *string `json:"CommodityName,omitempty" xml:"CommodityName,omitempty"`
-	// The total number of entries returned.
-	CoveragePercentage *float32 `json:"CoveragePercentage,omitempty" xml:"CoveragePercentage,omitempty"`
-	// The specifications of a deduction plan.
-	Currency *string `json:"Currency,omitempty" xml:"Currency,omitempty"`
 	// The unit that is used to measure the resources deducted from deduction plans.
-	DeductQuantity *float32 `json:"DeductQuantity,omitempty" xml:"DeductQuantity,omitempty"`
-	// The beginning of the time range in which the coverage details were queried.
-	EndTime *string `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
+	CapacityUnit *string `json:"CapacityUnit,omitempty" xml:"CapacityUnit,omitempty"`
 	// The code of the service.
-	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	// The name of the service.
-	InstanceSpec *string `json:"InstanceSpec,omitempty" xml:"InstanceSpec,omitempty"`
+	CommodityCode *string `json:"CommodityCode,omitempty" xml:"CommodityCode,omitempty"`
+	// The name and billing method of the service.
+	CommodityName *string `json:"CommodityName,omitempty" xml:"CommodityName,omitempty"`
 	// The coverage rate of a deduction plan.
-	PaymentAmount *float32 `json:"PaymentAmount,omitempty" xml:"PaymentAmount,omitempty"`
-	ProductCode   *string  `json:"ProductCode,omitempty" xml:"ProductCode,omitempty"`
-	// The region.
-	ProductName *string `json:"ProductName,omitempty" xml:"ProductName,omitempty"`
-	// The ID of the request.
-	Region *string `json:"Region,omitempty" xml:"Region,omitempty"`
-	// The end of the time range to query. The end is excluded from the time range. If you do not set this parameter, the end time is the current time. Specify the time in the format of yyyy-MM-dd HH:mm:ss.
-	RegionNo *string `json:"RegionNo,omitempty" xml:"RegionNo,omitempty"`
-	// The token that is used to retrieve the next page of results. You do not need to set this parameter if you query coverage details within a specific time range for the first time. The response returns a token that you can use to query coverage details that are displayed on the next page. If a null value is returned for the NextToken parameter, no more coverage details can be queried.
-	StartTime *string `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
-	// The username of the account.
-	TotalQuantity *float32 `json:"TotalQuantity,omitempty" xml:"TotalQuantity,omitempty"`
-	// The code of the zone.
-	UserId   *string `json:"UserId,omitempty" xml:"UserId,omitempty"`
-	UserName *string `json:"UserName,omitempty" xml:"UserName,omitempty"`
-	Zone     *string `json:"Zone,omitempty" xml:"Zone,omitempty"`
+	CoveragePercentage *float32 `json:"CoveragePercentage,omitempty" xml:"CoveragePercentage,omitempty"`
 	// The currency in which deduction plans were priced.
+	Currency *string `json:"Currency,omitempty" xml:"Currency,omitempty"`
+	// The amount of the resources deducted from a deduction plan.
+	DeductQuantity *float32 `json:"DeductQuantity,omitempty" xml:"DeductQuantity,omitempty"`
+	// The end of the time range in which the coverage details were queried.
+	EndTime *string `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
+	// The ID of a pay-as-you-go instance.
+	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	// The specifications of a deduction plan.
+	InstanceSpec *string `json:"InstanceSpec,omitempty" xml:"InstanceSpec,omitempty"`
+	// The amount of the bill.
+	PaymentAmount *float32 `json:"PaymentAmount,omitempty" xml:"PaymentAmount,omitempty"`
+	// The code of the service.
+	ProductCode *string `json:"ProductCode,omitempty" xml:"ProductCode,omitempty"`
+	// The name of the service.
+	ProductName *string `json:"ProductName,omitempty" xml:"ProductName,omitempty"`
+	// The region.
+	Region *string `json:"Region,omitempty" xml:"Region,omitempty"`
+	// The code of the region.
+	RegionNo *string `json:"RegionNo,omitempty" xml:"RegionNo,omitempty"`
+	// The beginning of the time range in which the coverage details were queried.
+	StartTime *string `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
+	// The total amount of resources consumed.
+	TotalQuantity *float32 `json:"TotalQuantity,omitempty" xml:"TotalQuantity,omitempty"`
+	// The ID of the account.
+	UserId *string `json:"UserId,omitempty" xml:"UserId,omitempty"`
+	// The username of the account.
+	UserName *string `json:"UserName,omitempty" xml:"UserName,omitempty"`
+	// The code of the zone.
+	Zone *string `json:"Zone,omitempty" xml:"Zone,omitempty"`
+	// The zone.
 	ZoneName *string `json:"ZoneName,omitempty" xml:"ZoneName,omitempty"`
 }
 
@@ -6650,15 +7128,15 @@ func (s *DescribeResourceCoverageDetailResponse) SetBody(v *DescribeResourceCove
 }
 
 type DescribeResourceCoverageTotalRequest struct {
-	// The time granularity at which total coverage data is queried. Valid values: MONTH, DAY, and HOUR.
+	// The ID of the account for which you want to query total coverage data. If you do not set this parameter, the data of the current Alibaba Cloud account and its RAM users is queried. To query the data of a RAM user, specify the ID of the RAM user.
 	BillOwnerId *int64 `json:"BillOwnerId,omitempty" xml:"BillOwnerId,omitempty"`
-	// The information about the coverage rate of deduction plans within a period.
-	EndPeriod *string `json:"EndPeriod,omitempty" xml:"EndPeriod,omitempty"`
 	// The end of the time range to query. The end is excluded from the time range. If you do not set this parameter, the end time is the current time. Specify the time in the format of yyyy-MM-dd HH:mm:ss.
+	EndPeriod *string `json:"EndPeriod,omitempty" xml:"EndPeriod,omitempty"`
+	// The time granularity at which total coverage data is queried. Valid values: MONTH, DAY, and HOUR.
 	PeriodType *string `json:"PeriodType,omitempty" xml:"PeriodType,omitempty"`
-	// The status code.
+	// The type of deduction plans whose total coverage data is queried. Valid values: RI and SCU.
 	ResourceType *string `json:"ResourceType,omitempty" xml:"ResourceType,omitempty"`
-	// The total amount of the resources deducted from deduction plans.
+	// The beginning of the time range to query. The beginning is included in the time range. Specify the time in the format of yyyy-MM-dd HH:mm:ss.
 	StartPeriod *string `json:"StartPeriod,omitempty" xml:"StartPeriod,omitempty"`
 }
 
@@ -6696,15 +7174,15 @@ func (s *DescribeResourceCoverageTotalRequest) SetStartPeriod(v string) *Describ
 }
 
 type DescribeResourceCoverageTotalResponseBody struct {
-	// The operation that you want to perform. Set the value to DescribeResourceCoverageTotal.
+	// The status code.
 	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
-	// The information about the total coverage data of deduction plans.
+	// The returned data.
 	Data *DescribeResourceCoverageTotalResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
-	// The type of deduction plans whose total coverage data is queried. Valid values: RI and SCU.
+	// The message returned.
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
-	// The coverage rate of deduction plans within the specified period.
+	// The ID of the request.
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// The beginning of the time range to query. The beginning is included in the time range. Specify the time in the format of yyyy-MM-dd HH:mm:ss.
+	// Indicates whether the operation was successful.
 	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
 }
 
@@ -6742,9 +7220,9 @@ func (s *DescribeResourceCoverageTotalResponseBody) SetSuccess(v bool) *Describe
 }
 
 type DescribeResourceCoverageTotalResponseBodyData struct {
-	// The ID of the account for which you want to query total coverage data. If you do not set this parameter, the data of the current Alibaba Cloud account and its RAM users is queried. To query the data of a RAM user, specify the ID of the RAM user.
+	// The information about the coverage rate of deduction plans within a period.
 	PeriodCoverage []*DescribeResourceCoverageTotalResponseBodyDataPeriodCoverage `json:"PeriodCoverage,omitempty" xml:"PeriodCoverage,omitempty" type:"Repeated"`
-	// The unit that is used to measure the resources deducted from deduction plans.
+	// The information about the total coverage data of deduction plans.
 	TotalCoverage *DescribeResourceCoverageTotalResponseBodyDataTotalCoverage `json:"TotalCoverage,omitempty" xml:"TotalCoverage,omitempty" type:"Struct"`
 }
 
@@ -6767,9 +7245,11 @@ func (s *DescribeResourceCoverageTotalResponseBodyData) SetTotalCoverage(v *Desc
 }
 
 type DescribeResourceCoverageTotalResponseBodyDataPeriodCoverage struct {
-	// The returned data.
+	// The coverage rate of deduction plans within the specified period.
 	CoveragePercentage *float32 `json:"CoveragePercentage,omitempty" xml:"CoveragePercentage,omitempty"`
-	// The ID of the request.
+	// The period.
+	//
+	// The value is in the format of yyyyMMddHH.
 	Period *string `json:"Period,omitempty" xml:"Period,omitempty"`
 }
 
@@ -6792,11 +7272,14 @@ func (s *DescribeResourceCoverageTotalResponseBodyDataPeriodCoverage) SetPeriod(
 }
 
 type DescribeResourceCoverageTotalResponseBodyDataTotalCoverage struct {
-	// Queries the total coverage data of reserved instances (RIs) or storage capacity units (SCUs).
-	CapacityUnit       *string  `json:"CapacityUnit,omitempty" xml:"CapacityUnit,omitempty"`
+	// The unit that is used to measure the resources deducted from deduction plans.
+	CapacityUnit *string `json:"CapacityUnit,omitempty" xml:"CapacityUnit,omitempty"`
+	// The total coverage rate of deduction plans.
 	CoveragePercentage *float32 `json:"CoveragePercentage,omitempty" xml:"CoveragePercentage,omitempty"`
-	DeductQuantity     *float32 `json:"DeductQuantity,omitempty" xml:"DeductQuantity,omitempty"`
-	TotalQuantity      *float32 `json:"TotalQuantity,omitempty" xml:"TotalQuantity,omitempty"`
+	// The total amount of the resources deducted from deduction plans.
+	DeductQuantity *float32 `json:"DeductQuantity,omitempty" xml:"DeductQuantity,omitempty"`
+	// The total amount of resources consumed.
+	TotalQuantity *float32 `json:"TotalQuantity,omitempty" xml:"TotalQuantity,omitempty"`
 }
 
 func (s DescribeResourceCoverageTotalResponseBodyDataTotalCoverage) String() string {
@@ -6857,6 +7340,7 @@ func (s *DescribeResourceCoverageTotalResponse) SetBody(v *DescribeResourceCover
 }
 
 type DescribeResourcePackageProductRequest struct {
+	// The code of the service.
 	ProductCode *string `json:"ProductCode,omitempty" xml:"ProductCode,omitempty"`
 }
 
@@ -6874,12 +7358,18 @@ func (s *DescribeResourcePackageProductRequest) SetProductCode(v string) *Descri
 }
 
 type DescribeResourcePackageProductResponseBody struct {
-	Code      *string                                         `json:"Code,omitempty" xml:"Code,omitempty"`
-	Data      *DescribeResourcePackageProductResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
-	Message   *string                                         `json:"Message,omitempty" xml:"Message,omitempty"`
-	OrderId   *int64                                          `json:"OrderId,omitempty" xml:"OrderId,omitempty"`
-	RequestId *string                                         `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	Success   *bool                                           `json:"Success,omitempty" xml:"Success,omitempty"`
+	// The status code returned.
+	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	// The data returned.
+	Data *DescribeResourcePackageProductResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
+	// The message returned.
+	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// The ID of the order.
+	OrderId *int64 `json:"OrderId,omitempty" xml:"OrderId,omitempty"`
+	// The ID of the request.
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// Indicates whether the request is successful.
+	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
 }
 
 func (s DescribeResourcePackageProductResponseBody) String() string {
@@ -6921,6 +7411,7 @@ func (s *DescribeResourcePackageProductResponseBody) SetSuccess(v bool) *Describ
 }
 
 type DescribeResourcePackageProductResponseBodyData struct {
+	// The details about the resource plans.
 	ResourcePackages *DescribeResourcePackageProductResponseBodyDataResourcePackages `json:"ResourcePackages,omitempty" xml:"ResourcePackages,omitempty" type:"Struct"`
 }
 
@@ -6955,10 +7446,14 @@ func (s *DescribeResourcePackageProductResponseBodyDataResourcePackages) SetReso
 }
 
 type DescribeResourcePackageProductResponseBodyDataResourcePackagesResourcePackage struct {
-	Name         *string                                                                                    `json:"Name,omitempty" xml:"Name,omitempty"`
+	// The name of the resource plan.
+	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// The types of the resource plans.
 	PackageTypes *DescribeResourcePackageProductResponseBodyDataResourcePackagesResourcePackagePackageTypes `json:"PackageTypes,omitempty" xml:"PackageTypes,omitempty" type:"Struct"`
-	ProductCode  *string                                                                                    `json:"ProductCode,omitempty" xml:"ProductCode,omitempty"`
-	ProductType  *string                                                                                    `json:"ProductType,omitempty" xml:"ProductType,omitempty"`
+	// The code of the service.
+	ProductCode *string `json:"ProductCode,omitempty" xml:"ProductCode,omitempty"`
+	// The type of the service.
+	ProductType *string `json:"ProductType,omitempty" xml:"ProductType,omitempty"`
 }
 
 func (s DescribeResourcePackageProductResponseBodyDataResourcePackagesResourcePackage) String() string {
@@ -7007,9 +7502,13 @@ func (s *DescribeResourcePackageProductResponseBodyDataResourcePackagesResourceP
 }
 
 type DescribeResourcePackageProductResponseBodyDataResourcePackagesResourcePackagePackageTypesPackageType struct {
-	Code           *string                                                                                                             `json:"Code,omitempty" xml:"Code,omitempty"`
-	Name           *string                                                                                                             `json:"Name,omitempty" xml:"Name,omitempty"`
-	Properties     *DescribeResourcePackageProductResponseBodyDataResourcePackagesResourcePackagePackageTypesPackageTypeProperties     `json:"Properties,omitempty" xml:"Properties,omitempty" type:"Struct"`
+	// The code of the resource plan.
+	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	// The name of the resource plan type.
+	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// The properties of the resource plan.
+	Properties *DescribeResourcePackageProductResponseBodyDataResourcePackagesResourcePackagePackageTypesPackageTypeProperties `json:"Properties,omitempty" xml:"Properties,omitempty" type:"Struct"`
+	// The specifications of the resource plan.
 	Specifications *DescribeResourcePackageProductResponseBodyDataResourcePackagesResourcePackagePackageTypesPackageTypeSpecifications `json:"Specifications,omitempty" xml:"Specifications,omitempty" type:"Struct"`
 }
 
@@ -7059,7 +7558,9 @@ func (s *DescribeResourcePackageProductResponseBodyDataResourcePackagesResourceP
 }
 
 type DescribeResourcePackageProductResponseBodyDataResourcePackagesResourcePackagePackageTypesPackageTypePropertiesProperty struct {
-	Name  *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// The name of the property.
+	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// The value of the property.
 	Value *string `json:"Value,omitempty" xml:"Value,omitempty"`
 }
 
@@ -7099,9 +7600,12 @@ func (s *DescribeResourcePackageProductResponseBodyDataResourcePackagesResourceP
 }
 
 type DescribeResourcePackageProductResponseBodyDataResourcePackagesResourcePackagePackageTypesPackageTypeSpecificationsSpecification struct {
+	// The validity periods available for the resource plan.
 	AvailableDurations *DescribeResourcePackageProductResponseBodyDataResourcePackagesResourcePackagePackageTypesPackageTypeSpecificationsSpecificationAvailableDurations `json:"AvailableDurations,omitempty" xml:"AvailableDurations,omitempty" type:"Struct"`
-	Name               *string                                                                                                                                            `json:"Name,omitempty" xml:"Name,omitempty"`
-	Value              *string                                                                                                                                            `json:"Value,omitempty" xml:"Value,omitempty"`
+	// The name of the specification.
+	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// The value of the specification.
+	Value *string `json:"Value,omitempty" xml:"Value,omitempty"`
 }
 
 func (s DescribeResourcePackageProductResponseBodyDataResourcePackagesResourcePackagePackageTypesPackageTypeSpecificationsSpecification) String() string {
@@ -7145,9 +7649,17 @@ func (s *DescribeResourcePackageProductResponseBodyDataResourcePackagesResourceP
 }
 
 type DescribeResourcePackageProductResponseBodyDataResourcePackagesResourcePackagePackageTypesPackageTypeSpecificationsSpecificationAvailableDurationsAvailableDuration struct {
-	Name  *string `json:"Name,omitempty" xml:"Name,omitempty"`
-	Unit  *string `json:"Unit,omitempty" xml:"Unit,omitempty"`
-	Value *int32  `json:"Value,omitempty" xml:"Value,omitempty"`
+	// The name of the validity period.
+	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// The unit of the validity period for the resource plan. Valid values:
+	//
+	// *   Month
+	// *   Year
+	//
+	// Default value: Month.
+	Unit *string `json:"Unit,omitempty" xml:"Unit,omitempty"`
+	// The value of the validity period.
+	Value *int32 `json:"Value,omitempty" xml:"Value,omitempty"`
 }
 
 func (s DescribeResourcePackageProductResponseBodyDataResourcePackagesResourcePackagePackageTypesPackageTypeSpecificationsSpecificationAvailableDurationsAvailableDuration) String() string {
@@ -7548,11 +8060,16 @@ func (s *DescribeResourceUsageDetailResponse) SetBody(v *DescribeResourceUsageDe
 }
 
 type DescribeResourceUsageTotalRequest struct {
-	BillOwnerId  *int64  `json:"BillOwnerId,omitempty" xml:"BillOwnerId,omitempty"`
-	EndPeriod    *string `json:"EndPeriod,omitempty" xml:"EndPeriod,omitempty"`
-	PeriodType   *string `json:"PeriodType,omitempty" xml:"PeriodType,omitempty"`
+	// The ID of the account whose data you want to query. If you do not specify this parameter, the data of the current account and its linked accounts is queried. To query the data of a linked account, specify the ID of the linked account. You can specify only one account ID.
+	BillOwnerId *int64 `json:"BillOwnerId,omitempty" xml:"BillOwnerId,omitempty"`
+	// The end of the time range to query. Specify the time in the yyyy-MM-dd HH:mm:ss format. The specified time is excluded from the time range. If you do not specify this parameter, this parameter is set to the current time.
+	EndPeriod *string `json:"EndPeriod,omitempty" xml:"EndPeriod,omitempty"`
+	// The time granularity at which the data is queried. Valid values: MONTH, DAY, and HOUR.
+	PeriodType *string `json:"PeriodType,omitempty" xml:"PeriodType,omitempty"`
+	// The type of the resource plan. Valid values: RI and SCU.
 	ResourceType *string `json:"ResourceType,omitempty" xml:"ResourceType,omitempty"`
-	StartPeriod  *string `json:"StartPeriod,omitempty" xml:"StartPeriod,omitempty"`
+	// The beginning of the time range to query. Specify the time in the yyyy-MM-dd HH:mm:ss format. The specified time is included in the time range.
+	StartPeriod *string `json:"StartPeriod,omitempty" xml:"StartPeriod,omitempty"`
 }
 
 func (s DescribeResourceUsageTotalRequest) String() string {
@@ -7589,15 +8106,15 @@ func (s *DescribeResourceUsageTotalRequest) SetStartPeriod(v string) *DescribeRe
 }
 
 type DescribeResourceUsageTotalResponseBody struct {
-	// The total savings.
+	// The response code.
 	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
-	// The usage of deduction plans within the specified period.
+	// The queried data.
 	Data *DescribeResourceUsageTotalResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
-	// The total costs of pay-as-you-go instances.
+	// The returned message. If the request was successful, a success message is returned. If the request failed, an error message is returned.
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
-	// The status code.
+	// The request ID.
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// The operation that you want to perform. Set the value to DescribeResourceUsageTotal.
+	// Indicates whether the request was successful.
 	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
 }
 
@@ -7635,9 +8152,9 @@ func (s *DescribeResourceUsageTotalResponseBody) SetSuccess(v bool) *DescribeRes
 }
 
 type DescribeResourceUsageTotalResponseBodyData struct {
-	// The total potential savings.
+	// The usage of resource plans in the specified period.
 	PeriodCoverage []*DescribeResourceUsageTotalResponseBodyDataPeriodCoverage `json:"PeriodCoverage,omitempty" xml:"PeriodCoverage,omitempty" type:"Repeated"`
-	// The total usage of deduction plans.
+	// The total usage of resource plans.
 	TotalUsage *DescribeResourceUsageTotalResponseBodyDataTotalUsage `json:"TotalUsage,omitempty" xml:"TotalUsage,omitempty" type:"Struct"`
 }
 
@@ -7660,9 +8177,9 @@ func (s *DescribeResourceUsageTotalResponseBodyData) SetTotalUsage(v *DescribeRe
 }
 
 type DescribeResourceUsageTotalResponseBodyDataPeriodCoverage struct {
-	// The returned data.
+	// The period.
 	Period *string `json:"Period,omitempty" xml:"Period,omitempty"`
-	// The fee of purchased deduction plans.
+	// The usage of resource plans.
 	UsagePercentage *float32 `json:"UsagePercentage,omitempty" xml:"UsagePercentage,omitempty"`
 }
 
@@ -7685,12 +8202,15 @@ func (s *DescribeResourceUsageTotalResponseBodyDataPeriodCoverage) SetUsagePerce
 }
 
 type DescribeResourceUsageTotalResponseBodyDataTotalUsage struct {
-	// The ID of the request.
-	PostpaidCost       *float32 `json:"PostpaidCost,omitempty" xml:"PostpaidCost,omitempty"`
+	// The total costs of pay-as-you-go instances.
+	PostpaidCost *float32 `json:"PostpaidCost,omitempty" xml:"PostpaidCost,omitempty"`
+	// The total potential savings.
 	PotentialSavedCost *float32 `json:"PotentialSavedCost,omitempty" xml:"PotentialSavedCost,omitempty"`
-	ReservationCost    *float32 `json:"ReservationCost,omitempty" xml:"ReservationCost,omitempty"`
-	// Queries the total usage data of reserved instances (RIs) or storage capacity units (SCUs).
-	SavedCost       *float32 `json:"SavedCost,omitempty" xml:"SavedCost,omitempty"`
+	// The fee of purchased resource plans.
+	ReservationCost *float32 `json:"ReservationCost,omitempty" xml:"ReservationCost,omitempty"`
+	// The total savings.
+	SavedCost *float32 `json:"SavedCost,omitempty" xml:"SavedCost,omitempty"`
+	// The total usage of resource plans.
 	UsagePercentage *float32 `json:"UsagePercentage,omitempty" xml:"UsagePercentage,omitempty"`
 }
 
@@ -7757,17 +8277,17 @@ func (s *DescribeResourceUsageTotalResponse) SetBody(v *DescribeResourceUsageTot
 }
 
 type DescribeSavingsPlansCoverageDetailRequest struct {
-	// The status code.
-	BillOwnerId *int64 `json:"BillOwnerId,omitempty" xml:"BillOwnerId,omitempty"`
-	// The time granularity at which coverage details are queried. Valid values: MONTH, DAY, and HOUR.
-	EndPeriod *string `json:"EndPeriod,omitempty" xml:"EndPeriod,omitempty"`
 	// The ID of the account for which you want to query coverage details. If you do not set this parameter, the data of the current Alibaba Cloud account and its RAM users is queried. To query the data of a RAM user, specify the ID of the RAM user.
-	MaxResults *int32 `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
-	// The token that is used to retrieve the next page of results. You do not need to set this parameter if you query coverage details within a specific time range for the first time. The response returns a token that you can use to query coverage details that are displayed on the next page. If a null value is returned for the NextToken parameter, no more coverage details can be queried.
-	PeriodType *string `json:"PeriodType,omitempty" xml:"PeriodType,omitempty"`
+	BillOwnerId *int64 `json:"BillOwnerId,omitempty" xml:"BillOwnerId,omitempty"`
 	// The end of the time range to query. The end is excluded from the time range. If you do not set this parameter, the end time is the current time. Specify the time in the format of yyyy-MM-dd HH:mm:ss.
-	StartPeriod *string `json:"StartPeriod,omitempty" xml:"StartPeriod,omitempty"`
+	EndPeriod *string `json:"EndPeriod,omitempty" xml:"EndPeriod,omitempty"`
 	// The maximum number of entries to return. Default value: 20. Maximum value: 300.
+	MaxResults *int32 `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
+	// The time granularity at which coverage details are queried. Valid values: MONTH, DAY, and HOUR.
+	PeriodType *string `json:"PeriodType,omitempty" xml:"PeriodType,omitempty"`
+	// The beginning of the time range to query. The beginning is included in the time range. Specify the time in the format of yyyy-MM-dd HH:mm:ss.
+	StartPeriod *string `json:"StartPeriod,omitempty" xml:"StartPeriod,omitempty"`
+	// The token that is used to retrieve the next page of results. You do not need to set this parameter if you query coverage details within a specific time range for the first time. The response returns a token that you can use to query coverage details that are displayed on the next page. If a null value is returned for the NextToken parameter, no more coverage details can be queried.
 	Token *string `json:"Token,omitempty" xml:"Token,omitempty"`
 }
 
@@ -7810,15 +8330,15 @@ func (s *DescribeSavingsPlansCoverageDetailRequest) SetToken(v string) *Describe
 }
 
 type DescribeSavingsPlansCoverageDetailResponseBody struct {
-	// The message returned.
+	// The status code.
 	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
-	// The total number of entries.
-	Data *DescribeSavingsPlansCoverageDetailResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
-	// The ID of the request.
-	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
-	// Indicates whether the operation was successful.
-	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	// The return data.
+	Data *DescribeSavingsPlansCoverageDetailResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
+	// The message returned.
+	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// The ID of the request.
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// Indicates whether the operation was successful.
 	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
 }
 
@@ -7856,11 +8376,11 @@ func (s *DescribeSavingsPlansCoverageDetailResponseBody) SetSuccess(v bool) *Des
 }
 
 type DescribeSavingsPlansCoverageDetailResponseBodyData struct {
-	// The ID of the account.
-	Items []*DescribeSavingsPlansCoverageDetailResponseBodyDataItems `json:"Items,omitempty" xml:"Items,omitempty" type:"Repeated"`
 	// The data entries.
-	NextToken *string `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
+	Items []*DescribeSavingsPlansCoverageDetailResponseBodyDataItems `json:"Items,omitempty" xml:"Items,omitempty" type:"Repeated"`
 	// The token of the next page.
+	NextToken *string `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
+	// The total number of entries.
 	TotalCount *int32 `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
 }
 
@@ -7888,28 +8408,30 @@ func (s *DescribeSavingsPlansCoverageDetailResponseBodyData) SetTotalCount(v int
 }
 
 type DescribeSavingsPlansCoverageDetailResponseBodyDataItems struct {
-	// The region.
-	CoveragePercentage *float32 `json:"CoveragePercentage,omitempty" xml:"CoveragePercentage,omitempty"`
-	// The specifications.
-	Currency *string `json:"Currency,omitempty" xml:"Currency,omitempty"`
-	// The start time.
-	DeductAmount *float32 `json:"DeductAmount,omitempty" xml:"DeductAmount,omitempty"`
-	EndPeriod    *string  `json:"EndPeriod,omitempty" xml:"EndPeriod,omitempty"`
-	// The currency.
-	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	// The pay-as-you-go cost.
-	InstanceSpec *string `json:"InstanceSpec,omitempty" xml:"InstanceSpec,omitempty"`
 	// The coverage.
-	PostpaidCost *float32 `json:"PostpaidCost,omitempty" xml:"PostpaidCost,omitempty"`
+	CoveragePercentage *float32 `json:"CoveragePercentage,omitempty" xml:"CoveragePercentage,omitempty"`
+	// The currency.
+	Currency *string `json:"Currency,omitempty" xml:"Currency,omitempty"`
 	// The deducted amount.
-	Region *string `json:"Region,omitempty" xml:"Region,omitempty"`
-	// The total expenditure.
-	StartPeriod *string `json:"StartPeriod,omitempty" xml:"StartPeriod,omitempty"`
-	// The username of the account.
-	TotalAmount *float32 `json:"TotalAmount,omitempty" xml:"TotalAmount,omitempty"`
-	// The ID of the instance.
-	UserId *int64 `json:"UserId,omitempty" xml:"UserId,omitempty"`
+	DeductAmount *float32 `json:"DeductAmount,omitempty" xml:"DeductAmount,omitempty"`
 	// The end time.
+	EndPeriod *string `json:"EndPeriod,omitempty" xml:"EndPeriod,omitempty"`
+	// The ID of the instance.
+	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	// The specifications.
+	InstanceSpec *string `json:"InstanceSpec,omitempty" xml:"InstanceSpec,omitempty"`
+	OwnerId      *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
+	// The pay-as-you-go cost.
+	PostpaidCost *float32 `json:"PostpaidCost,omitempty" xml:"PostpaidCost,omitempty"`
+	// The region.
+	Region *string `json:"Region,omitempty" xml:"Region,omitempty"`
+	// The start time.
+	StartPeriod *string `json:"StartPeriod,omitempty" xml:"StartPeriod,omitempty"`
+	// The total expenditure.
+	TotalAmount *float32 `json:"TotalAmount,omitempty" xml:"TotalAmount,omitempty"`
+	// The ID of the account.
+	UserId *int64 `json:"UserId,omitempty" xml:"UserId,omitempty"`
+	// The username of the account.
 	UserName *string `json:"UserName,omitempty" xml:"UserName,omitempty"`
 }
 
@@ -7948,6 +8470,11 @@ func (s *DescribeSavingsPlansCoverageDetailResponseBodyDataItems) SetInstanceId(
 
 func (s *DescribeSavingsPlansCoverageDetailResponseBodyDataItems) SetInstanceSpec(v string) *DescribeSavingsPlansCoverageDetailResponseBodyDataItems {
 	s.InstanceSpec = &v
+	return s
+}
+
+func (s *DescribeSavingsPlansCoverageDetailResponseBodyDataItems) SetOwnerId(v int64) *DescribeSavingsPlansCoverageDetailResponseBodyDataItems {
+	s.OwnerId = &v
 	return s
 }
 
@@ -8011,13 +8538,13 @@ func (s *DescribeSavingsPlansCoverageDetailResponse) SetBody(v *DescribeSavingsP
 }
 
 type DescribeSavingsPlansCoverageTotalRequest struct {
-	// The status code.
-	BillOwnerId *int64 `json:"BillOwnerId,omitempty" xml:"BillOwnerId,omitempty"`
-	// The time granularity at which coverage summary are queried. Valid values: MONTH, DAY, and HOUR.
-	EndPeriod *string `json:"EndPeriod,omitempty" xml:"EndPeriod,omitempty"`
 	// The ID of the account for which you want to query coverage summary. If you do not set this parameter, the data of the current Alibaba Cloud account and its RAM users is queried. To query the data of a RAM user, specify the ID of the RAM user.
-	PeriodType *string `json:"PeriodType,omitempty" xml:"PeriodType,omitempty"`
+	BillOwnerId *int64 `json:"BillOwnerId,omitempty" xml:"BillOwnerId,omitempty"`
 	// The end of the time range to query. The end is excluded from the time range. If you do not set this parameter, the end time is the current time. Specify the time in the format of yyyy-MM-dd HH:mm:ss.
+	EndPeriod *string `json:"EndPeriod,omitempty" xml:"EndPeriod,omitempty"`
+	// The time granularity at which coverage summary are queried. Valid values: MONTH, DAY, and HOUR.
+	PeriodType *string `json:"PeriodType,omitempty" xml:"PeriodType,omitempty"`
+	// The beginning of the time range to query. The beginning is included in the time range. Specify the time in the format of yyyy-MM-dd HH:mm:ss.
 	StartPeriod *string `json:"StartPeriod,omitempty" xml:"StartPeriod,omitempty"`
 }
 
@@ -8050,15 +8577,15 @@ func (s *DescribeSavingsPlansCoverageTotalRequest) SetStartPeriod(v string) *Des
 }
 
 type DescribeSavingsPlansCoverageTotalResponseBody struct {
-	// The message returned.
+	// The status code.
 	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
-	// The coverage in different periods.
-	Data *DescribeSavingsPlansCoverageTotalResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
-	// The ID of the request.
-	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
-	// Indicates whether the operation was successful.
-	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	// The return data.
+	Data *DescribeSavingsPlansCoverageTotalResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
+	// The message returned.
+	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// The ID of the request.
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// Indicates whether the operation was successful.
 	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
 }
 
@@ -8096,9 +8623,9 @@ func (s *DescribeSavingsPlansCoverageTotalResponseBody) SetSuccess(v bool) *Desc
 }
 
 type DescribeSavingsPlansCoverageTotalResponseBodyData struct {
-	// The coverage.
+	// The coverage in different periods.
 	PeriodCoverage []*DescribeSavingsPlansCoverageTotalResponseBodyDataPeriodCoverage `json:"PeriodCoverage,omitempty" xml:"PeriodCoverage,omitempty" type:"Repeated"`
-	// The total coverage.
+	// The coverage summary.
 	TotalCoverage *DescribeSavingsPlansCoverageTotalResponseBodyDataTotalCoverage `json:"TotalCoverage,omitempty" xml:"TotalCoverage,omitempty" type:"Struct"`
 }
 
@@ -8121,11 +8648,11 @@ func (s *DescribeSavingsPlansCoverageTotalResponseBodyData) SetTotalCoverage(v *
 }
 
 type DescribeSavingsPlansCoverageTotalResponseBodyDataPeriodCoverage struct {
+	// The coverage.
+	Percentage *float32 `json:"Percentage,omitempty" xml:"Percentage,omitempty"`
 	// The period.
 	//
 	// The value is in the format of yyyyMMddHH.
-	Percentage *float32 `json:"Percentage,omitempty" xml:"Percentage,omitempty"`
-	// The coverage summary.
 	Period *string `json:"Period,omitempty" xml:"Period,omitempty"`
 }
 
@@ -8148,9 +8675,9 @@ func (s *DescribeSavingsPlansCoverageTotalResponseBodyDataPeriodCoverage) SetPer
 }
 
 type DescribeSavingsPlansCoverageTotalResponseBodyDataTotalCoverage struct {
-	// The total deducted amount.
+	// The total coverage.
 	CoveragePercentage *float32 `json:"CoveragePercentage,omitempty" xml:"CoveragePercentage,omitempty"`
-	// Queries the coverage summary of savings plans.
+	// The total deducted amount.
 	DeductAmount *float32 `json:"DeductAmount,omitempty" xml:"DeductAmount,omitempty"`
 }
 
@@ -8466,13 +8993,13 @@ func (s *DescribeSavingsPlansUsageDetailResponse) SetBody(v *DescribeSavingsPlan
 }
 
 type DescribeSavingsPlansUsageTotalRequest struct {
-	// The total amount of the savings plan.
+	// The ID of the account for which you want to query usage summary. If you do not set this parameter, the data of the current Alibaba Cloud account and its RAM users is queried. To query the data of a RAM user, specify the ID of the RAM user.
 	BillOwnerId *int64 `json:"BillOwnerId,omitempty" xml:"BillOwnerId,omitempty"`
-	// The usage summary.
+	// The end of the time range to query. The end is excluded from the time range. If you do not set this parameter, the end time is the current time. Specify the time in the format of yyyy-MM-dd HH:mm:ss.
 	EndPeriod *string `json:"EndPeriod,omitempty" xml:"EndPeriod,omitempty"`
-	// The amount that is saved.
+	// The time granularity at which usage summary are queried. Valid values: MONTH, DAY, and HOUR.
 	PeriodType *string `json:"PeriodType,omitempty" xml:"PeriodType,omitempty"`
-	// The usage.
+	// The beginning of the time range to query. The beginning is included in the time range. Specify the time in the format of yyyy-MM-dd HH:mm:ss.
 	StartPeriod *string `json:"StartPeriod,omitempty" xml:"StartPeriod,omitempty"`
 }
 
@@ -8505,11 +9032,16 @@ func (s *DescribeSavingsPlansUsageTotalRequest) SetStartPeriod(v string) *Descri
 }
 
 type DescribeSavingsPlansUsageTotalResponseBody struct {
-	Code      *string                                         `json:"Code,omitempty" xml:"Code,omitempty"`
-	Data      *DescribeSavingsPlansUsageTotalResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
-	Message   *string                                         `json:"Message,omitempty" xml:"Message,omitempty"`
-	RequestId *string                                         `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	Success   *bool                                           `json:"Success,omitempty" xml:"Success,omitempty"`
+	// The status code.
+	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	// The return data.
+	Data *DescribeSavingsPlansUsageTotalResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
+	// The message returned.
+	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// The ID of the request.
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// Indicates whether the operation was successful.
+	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
 }
 
 func (s DescribeSavingsPlansUsageTotalResponseBody) String() string {
@@ -8546,8 +9078,10 @@ func (s *DescribeSavingsPlansUsageTotalResponseBody) SetSuccess(v bool) *Describ
 }
 
 type DescribeSavingsPlansUsageTotalResponseBodyData struct {
+	// The usage in different periods.
 	PeriodCoverage []*DescribeSavingsPlansUsageTotalResponseBodyDataPeriodCoverage `json:"PeriodCoverage,omitempty" xml:"PeriodCoverage,omitempty" type:"Repeated"`
-	TotalUsage     *DescribeSavingsPlansUsageTotalResponseBodyDataTotalUsage       `json:"TotalUsage,omitempty" xml:"TotalUsage,omitempty" type:"Struct"`
+	// The usage summary.
+	TotalUsage *DescribeSavingsPlansUsageTotalResponseBodyDataTotalUsage `json:"TotalUsage,omitempty" xml:"TotalUsage,omitempty" type:"Struct"`
 }
 
 func (s DescribeSavingsPlansUsageTotalResponseBodyData) String() string {
@@ -8569,8 +9103,12 @@ func (s *DescribeSavingsPlansUsageTotalResponseBodyData) SetTotalUsage(v *Descri
 }
 
 type DescribeSavingsPlansUsageTotalResponseBodyDataPeriodCoverage struct {
+	// The usage.
 	Percentage *float32 `json:"Percentage,omitempty" xml:"Percentage,omitempty"`
-	Period     *string  `json:"Period,omitempty" xml:"Period,omitempty"`
+	// The period.
+	//
+	// The value is in the format of yyyyMMddHH.
+	Period *string `json:"Period,omitempty" xml:"Period,omitempty"`
 }
 
 func (s DescribeSavingsPlansUsageTotalResponseBodyDataPeriodCoverage) String() string {
@@ -8592,9 +9130,13 @@ func (s *DescribeSavingsPlansUsageTotalResponseBodyDataPeriodCoverage) SetPeriod
 }
 
 type DescribeSavingsPlansUsageTotalResponseBodyDataTotalUsage struct {
-	PoolValue       *float32 `json:"PoolValue,omitempty" xml:"PoolValue,omitempty"`
-	PostpaidCost    *float32 `json:"PostpaidCost,omitempty" xml:"PostpaidCost,omitempty"`
-	SavedCost       *float32 `json:"SavedCost,omitempty" xml:"SavedCost,omitempty"`
+	// The total amount of the savings plan.
+	PoolValue *float32 `json:"PoolValue,omitempty" xml:"PoolValue,omitempty"`
+	// The pay-as-you-go cost.
+	PostpaidCost *float32 `json:"PostpaidCost,omitempty" xml:"PostpaidCost,omitempty"`
+	// The amount that is saved.
+	SavedCost *float32 `json:"SavedCost,omitempty" xml:"SavedCost,omitempty"`
+	// The total usage.
 	UsagePercentage *float32 `json:"UsagePercentage,omitempty" xml:"UsagePercentage,omitempty"`
 }
 
@@ -8656,19 +9198,36 @@ func (s *DescribeSavingsPlansUsageTotalResponse) SetBody(v *DescribeSavingsPlans
 }
 
 type DescribeSplitItemBillRequest struct {
-	BillOwnerId      *int64                                   `json:"BillOwnerId,omitempty" xml:"BillOwnerId,omitempty"`
-	BillingCycle     *string                                  `json:"BillingCycle,omitempty" xml:"BillingCycle,omitempty"`
-	BillingDate      *string                                  `json:"BillingDate,omitempty" xml:"BillingDate,omitempty"`
-	Granularity      *string                                  `json:"Granularity,omitempty" xml:"Granularity,omitempty"`
-	InstanceID       *string                                  `json:"InstanceID,omitempty" xml:"InstanceID,omitempty"`
-	MaxResults       *int32                                   `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
-	NextToken        *string                                  `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
-	OwnerId          *int64                                   `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
-	ProductCode      *string                                  `json:"ProductCode,omitempty" xml:"ProductCode,omitempty"`
-	ProductType      *string                                  `json:"ProductType,omitempty" xml:"ProductType,omitempty"`
-	SplitItemID      *string                                  `json:"SplitItemID,omitempty" xml:"SplitItemID,omitempty"`
-	SubscriptionType *string                                  `json:"SubscriptionType,omitempty" xml:"SubscriptionType,omitempty"`
-	TagFilter        []*DescribeSplitItemBillRequestTagFilter `json:"TagFilter,omitempty" xml:"TagFilter,omitempty" type:"Repeated"`
+	// The ID of the member. If you specify this parameter, the bills of the member are queried. If you do not specify this parameter, the bills of the current account are queried by default.
+	BillOwnerId *int64 `json:"BillOwnerId,omitempty" xml:"BillOwnerId,omitempty"`
+	// The billing cycle. Specify the parameter in the YYYY-MM format.
+	BillingCycle *string `json:"BillingCycle,omitempty" xml:"BillingCycle,omitempty"`
+	// The billing date. This parameter is required only when the Granularity parameter is set to DAILY. Format: YYYY-MM-DD.
+	BillingDate *string `json:"BillingDate,omitempty" xml:"BillingDate,omitempty"`
+	// The granularity at which bills are queried. Valid values:
+	//
+	// *   MONTHLY: queries bills on a monthly basis. The data that you query is the same as the data that is queried by billing cycles in the Split Bill module of the User Center console.
+	// *   DAILY: queries bills on a daily basis. The data that you query is the same as the data that is queried by days in the Split Bill module of the User Center console.
+	//
+	// If you specify DAILY for this parameter, the BillingDate parameter is required.
+	Granularity *string `json:"Granularity,omitempty" xml:"Granularity,omitempty"`
+	// The ID of the instance.
+	InstanceID *string `json:"InstanceID,omitempty" xml:"InstanceID,omitempty"`
+	// The maximum number of entries to query. Default value: 20. Maximum value: 300.
+	MaxResults *int32 `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
+	// The token that is used for the next query. The parameter must be left empty or set to the value of the NextToken parameter returned in the last call. Otherwise, an error is returned. If the parameter is left empty, the data is queried from the first entry.
+	NextToken *string `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
+	OwnerId   *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
+	// The code of the service.
+	ProductCode *string `json:"ProductCode,omitempty" xml:"ProductCode,omitempty"`
+	// The type of the service.
+	ProductType *string `json:"ProductType,omitempty" xml:"ProductType,omitempty"`
+	// The ID of the split item.
+	SplitItemID *string `json:"SplitItemID,omitempty" xml:"SplitItemID,omitempty"`
+	// The billing method. Valid values: Subscription: the subscription billing method. PayAsYouGo: the pay-as-you-go billing method. This parameter must be used with the ProductCode parameter.
+	SubscriptionType *string `json:"SubscriptionType,omitempty" xml:"SubscriptionType,omitempty"`
+	// The tags that are used to filter split bills. You can specify multiple tag values. If you specify multiple tag values, split bills that match one of the tag values are queried.
+	TagFilter []*DescribeSplitItemBillRequestTagFilter `json:"TagFilter,omitempty" xml:"TagFilter,omitempty" type:"Repeated"`
 }
 
 func (s DescribeSplitItemBillRequest) String() string {
@@ -8745,7 +9304,16 @@ func (s *DescribeSplitItemBillRequest) SetTagFilter(v []*DescribeSplitItemBillRe
 }
 
 type DescribeSplitItemBillRequestTagFilter struct {
-	TagKey    *string   `json:"TagKey,omitempty" xml:"TagKey,omitempty"`
+	// The TagFilter.N parameter is used to query bills that match a specified tag. The value of the TagFilter.N parameter must be a key-value pair. The tag key must be 1 to 128 characters in length. Valid values of N: 1 to 20.
+	//
+	// *   If only the TagFilter.N.TagKey parameter is specified, all bills associated with the tag key are queried.
+	// *   If you specify multiple tag key-value pairs at the same time, bills that meet any one of the tag key-value pairs are queried.
+	// *   If the tags added to resources change, you can query only the bills that are generated within the period in which the tags and resources are associated.
+	TagKey *string `json:"TagKey,omitempty" xml:"TagKey,omitempty"`
+	// You can specify the TagValues.N parameter to query bills that match the specified tag value. The value of the TagValues.N parameter must be a string. The tag value must be 1 to 128 characters in length. Valid values of N: 1 to 20.
+	//
+	// *   If you specify the TagValues.N parameter, the TagFilter.N.TagKey parameter is required. Otherwise, the error message InvalidParameter.TagValues is returned.
+	// *   If you specify multiple tag values, split bills that match one of the tag values are queried.
 	TagValues []*string `json:"TagValues,omitempty" xml:"TagValues,omitempty" type:"Repeated"`
 }
 
@@ -8768,11 +9336,16 @@ func (s *DescribeSplitItemBillRequestTagFilter) SetTagValues(v []*string) *Descr
 }
 
 type DescribeSplitItemBillResponseBody struct {
-	Code      *string                                `json:"Code,omitempty" xml:"Code,omitempty"`
-	Data      *DescribeSplitItemBillResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
-	Message   *string                                `json:"Message,omitempty" xml:"Message,omitempty"`
-	RequestId *string                                `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	Success   *bool                                  `json:"Success,omitempty" xml:"Success,omitempty"`
+	// The status code.
+	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	// The data returned.
+	Data *DescribeSplitItemBillResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
+	// The error message returned.
+	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// The ID of the request.
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// Indicates whether the request was successful.
+	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
 }
 
 func (s DescribeSplitItemBillResponseBody) String() string {
@@ -8809,13 +9382,20 @@ func (s *DescribeSplitItemBillResponseBody) SetSuccess(v bool) *DescribeSplitIte
 }
 
 type DescribeSplitItemBillResponseBodyData struct {
-	AccountID    *string                                       `json:"AccountID,omitempty" xml:"AccountID,omitempty"`
-	AccountName  *string                                       `json:"AccountName,omitempty" xml:"AccountName,omitempty"`
-	BillingCycle *string                                       `json:"BillingCycle,omitempty" xml:"BillingCycle,omitempty"`
-	Items        []*DescribeSplitItemBillResponseBodyDataItems `json:"Items,omitempty" xml:"Items,omitempty" type:"Repeated"`
-	MaxResults   *int32                                        `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
-	NextToken    *string                                       `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
-	TotalCount   *int32                                        `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
+	// The ID of the account.
+	AccountID *string `json:"AccountID,omitempty" xml:"AccountID,omitempty"`
+	// The ID of the account.
+	AccountName *string `json:"AccountName,omitempty" xml:"AccountName,omitempty"`
+	// The billing cycle. Format: YYYY-MM.
+	BillingCycle *string `json:"BillingCycle,omitempty" xml:"BillingCycle,omitempty"`
+	// The details of the bill.
+	Items []*DescribeSplitItemBillResponseBodyDataItems `json:"Items,omitempty" xml:"Items,omitempty" type:"Repeated"`
+	// The maximum number of entries returned.
+	MaxResults *int32 `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
+	// The token used for the next query. If this parameter is empty, all the results are returned. When you perform the next query, you must set the NextToken parameter to this value.
+	NextToken *string `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
+	// The total number of entries returned.
+	TotalCount *int32 `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
 }
 
 func (s DescribeSplitItemBillResponseBodyData) String() string {
@@ -8862,60 +9442,114 @@ func (s *DescribeSplitItemBillResponseBodyData) SetTotalCount(v int32) *Describe
 }
 
 type DescribeSplitItemBillResponseBodyDataItems struct {
-	AdjustAmount              *float32 `json:"AdjustAmount,omitempty" xml:"AdjustAmount,omitempty"`
-	BillAccountID             *string  `json:"BillAccountID,omitempty" xml:"BillAccountID,omitempty"`
-	BillAccountName           *string  `json:"BillAccountName,omitempty" xml:"BillAccountName,omitempty"`
-	BillingDate               *string  `json:"BillingDate,omitempty" xml:"BillingDate,omitempty"`
-	BillingItem               *string  `json:"BillingItem,omitempty" xml:"BillingItem,omitempty"`
-	BillingItemCode           *string  `json:"BillingItemCode,omitempty" xml:"BillingItemCode,omitempty"`
-	BillingType               *string  `json:"BillingType,omitempty" xml:"BillingType,omitempty"`
-	BizType                   *string  `json:"BizType,omitempty" xml:"BizType,omitempty"`
-	CashAmount                *float32 `json:"CashAmount,omitempty" xml:"CashAmount,omitempty"`
-	CommodityCode             *string  `json:"CommodityCode,omitempty" xml:"CommodityCode,omitempty"`
-	CostUnit                  *string  `json:"CostUnit,omitempty" xml:"CostUnit,omitempty"`
-	Currency                  *string  `json:"Currency,omitempty" xml:"Currency,omitempty"`
-	DeductedByCashCoupons     *float32 `json:"DeductedByCashCoupons,omitempty" xml:"DeductedByCashCoupons,omitempty"`
-	DeductedByCoupons         *float32 `json:"DeductedByCoupons,omitempty" xml:"DeductedByCoupons,omitempty"`
-	DeductedByPrepaidCard     *float32 `json:"DeductedByPrepaidCard,omitempty" xml:"DeductedByPrepaidCard,omitempty"`
-	DeductedByResourcePackage *string  `json:"DeductedByResourcePackage,omitempty" xml:"DeductedByResourcePackage,omitempty"`
-	InstanceConfig            *string  `json:"InstanceConfig,omitempty" xml:"InstanceConfig,omitempty"`
-	InstanceID                *string  `json:"InstanceID,omitempty" xml:"InstanceID,omitempty"`
-	InstanceSpec              *string  `json:"InstanceSpec,omitempty" xml:"InstanceSpec,omitempty"`
-	InternetIP                *string  `json:"InternetIP,omitempty" xml:"InternetIP,omitempty"`
-	IntranetIP                *string  `json:"IntranetIP,omitempty" xml:"IntranetIP,omitempty"`
-	InvoiceDiscount           *float32 `json:"InvoiceDiscount,omitempty" xml:"InvoiceDiscount,omitempty"`
-	Item                      *string  `json:"Item,omitempty" xml:"Item,omitempty"`
-	ItemName                  *string  `json:"ItemName,omitempty" xml:"ItemName,omitempty"`
-	ListPrice                 *string  `json:"ListPrice,omitempty" xml:"ListPrice,omitempty"`
-	ListPriceUnit             *string  `json:"ListPriceUnit,omitempty" xml:"ListPriceUnit,omitempty"`
-	NickName                  *string  `json:"NickName,omitempty" xml:"NickName,omitempty"`
-	OutstandingAmount         *float32 `json:"OutstandingAmount,omitempty" xml:"OutstandingAmount,omitempty"`
-	OwnerID                   *string  `json:"OwnerID,omitempty" xml:"OwnerID,omitempty"`
-	PaymentAmount             *float32 `json:"PaymentAmount,omitempty" xml:"PaymentAmount,omitempty"`
-	PipCode                   *string  `json:"PipCode,omitempty" xml:"PipCode,omitempty"`
-	PretaxAmount              *float32 `json:"PretaxAmount,omitempty" xml:"PretaxAmount,omitempty"`
-	PretaxGrossAmount         *float32 `json:"PretaxGrossAmount,omitempty" xml:"PretaxGrossAmount,omitempty"`
-	ProductCode               *string  `json:"ProductCode,omitempty" xml:"ProductCode,omitempty"`
-	ProductDetail             *string  `json:"ProductDetail,omitempty" xml:"ProductDetail,omitempty"`
-	ProductName               *string  `json:"ProductName,omitempty" xml:"ProductName,omitempty"`
-	ProductType               *string  `json:"ProductType,omitempty" xml:"ProductType,omitempty"`
-	Region                    *string  `json:"Region,omitempty" xml:"Region,omitempty"`
-	ResourceGroup             *string  `json:"ResourceGroup,omitempty" xml:"ResourceGroup,omitempty"`
-	ServicePeriod             *string  `json:"ServicePeriod,omitempty" xml:"ServicePeriod,omitempty"`
-	ServicePeriodUnit         *string  `json:"ServicePeriodUnit,omitempty" xml:"ServicePeriodUnit,omitempty"`
-	SplitAccountID            *string  `json:"SplitAccountID,omitempty" xml:"SplitAccountID,omitempty"`
-	SplitAccountName          *string  `json:"SplitAccountName,omitempty" xml:"SplitAccountName,omitempty"`
-	SplitBillingCycle         *string  `json:"SplitBillingCycle,omitempty" xml:"SplitBillingCycle,omitempty"`
-	SplitBillingDate          *string  `json:"SplitBillingDate,omitempty" xml:"SplitBillingDate,omitempty"`
-	SplitCommodityCode        *string  `json:"SplitCommodityCode,omitempty" xml:"SplitCommodityCode,omitempty"`
-	SplitItemID               *string  `json:"SplitItemID,omitempty" xml:"SplitItemID,omitempty"`
-	SplitItemName             *string  `json:"SplitItemName,omitempty" xml:"SplitItemName,omitempty"`
-	SplitProductDetail        *string  `json:"SplitProductDetail,omitempty" xml:"SplitProductDetail,omitempty"`
-	SubscriptionType          *string  `json:"SubscriptionType,omitempty" xml:"SubscriptionType,omitempty"`
-	Tag                       *string  `json:"Tag,omitempty" xml:"Tag,omitempty"`
-	Usage                     *string  `json:"Usage,omitempty" xml:"Usage,omitempty"`
-	UsageUnit                 *string  `json:"UsageUnit,omitempty" xml:"UsageUnit,omitempty"`
-	Zone                      *string  `json:"Zone,omitempty" xml:"Zone,omitempty"`
+	// The amount deducted with credit refund.
+	AdjustAmount *float32 `json:"AdjustAmount,omitempty" xml:"AdjustAmount,omitempty"`
+	// The ID of the account to which the bill belongs.
+	BillAccountID *string `json:"BillAccountID,omitempty" xml:"BillAccountID,omitempty"`
+	// The name of the account to which the bill belongs.
+	BillAccountName *string `json:"BillAccountName,omitempty" xml:"BillAccountName,omitempty"`
+	// The billing date. Format: YYYY-MM-DD. This parameter is not supported.
+	BillingDate *string `json:"BillingDate,omitempty" xml:"BillingDate,omitempty"`
+	// The billable item.
+	BillingItem *string `json:"BillingItem,omitempty" xml:"BillingItem,omitempty"`
+	// The code of the billable item.
+	BillingItemCode *string `json:"BillingItemCode,omitempty" xml:"BillingItemCode,omitempty"`
+	// The billing method.
+	BillingType *string `json:"BillingType,omitempty" xml:"BillingType,omitempty"`
+	// The type of the business.
+	BizType *string `json:"BizType,omitempty" xml:"BizType,omitempty"`
+	// The amount paid in cash. The amount deducted with credit refund is not included.
+	CashAmount *float32 `json:"CashAmount,omitempty" xml:"CashAmount,omitempty"`
+	// The code of the commodity. The code is the same as that displayed in the Split Bill module of the User Center console.
+	CommodityCode *string `json:"CommodityCode,omitempty" xml:"CommodityCode,omitempty"`
+	// The cost center.
+	CostUnit *string `json:"CostUnit,omitempty" xml:"CostUnit,omitempty"`
+	// The type of currency. Valid values: CNY, USD, and JPY.
+	Currency *string `json:"Currency,omitempty" xml:"Currency,omitempty"`
+	// The amount deducted with vouchers.
+	DeductedByCashCoupons *float32 `json:"DeductedByCashCoupons,omitempty" xml:"DeductedByCashCoupons,omitempty"`
+	// The amount deducted with coupons.
+	DeductedByCoupons *float32 `json:"DeductedByCoupons,omitempty" xml:"DeductedByCoupons,omitempty"`
+	// The amount deducted with prepaid cards.
+	DeductedByPrepaidCard *float32 `json:"DeductedByPrepaidCard,omitempty" xml:"DeductedByPrepaidCard,omitempty"`
+	// The amount deducted with resource plans.
+	DeductedByResourcePackage *string `json:"DeductedByResourcePackage,omitempty" xml:"DeductedByResourcePackage,omitempty"`
+	// The configurations of the instance.
+	InstanceConfig *string `json:"InstanceConfig,omitempty" xml:"InstanceConfig,omitempty"`
+	// The ID of the instance.
+	InstanceID *string `json:"InstanceID,omitempty" xml:"InstanceID,omitempty"`
+	// The type of the instance.
+	InstanceSpec *string `json:"InstanceSpec,omitempty" xml:"InstanceSpec,omitempty"`
+	// The public IP address.
+	InternetIP *string `json:"InternetIP,omitempty" xml:"InternetIP,omitempty"`
+	// The private IP address.
+	IntranetIP *string `json:"IntranetIP,omitempty" xml:"IntranetIP,omitempty"`
+	// The discount amount.
+	InvoiceDiscount *float32 `json:"InvoiceDiscount,omitempty" xml:"InvoiceDiscount,omitempty"`
+	// The type of the bill. Valid values: SubscriptionOrder: the subscription bill. PayAsYouGoBill: the pay-as-you-go bill. Refund: the refund. Adjustment: the adjustment bill.
+	Item *string `json:"Item,omitempty" xml:"Item,omitempty"`
+	// The name of the split item.
+	ItemName *string `json:"ItemName,omitempty" xml:"ItemName,omitempty"`
+	// The unit price.
+	ListPrice *string `json:"ListPrice,omitempty" xml:"ListPrice,omitempty"`
+	// The unit of the unit price.
+	ListPriceUnit *string `json:"ListPriceUnit,omitempty" xml:"ListPriceUnit,omitempty"`
+	// The name of the instance.
+	NickName *string `json:"NickName,omitempty" xml:"NickName,omitempty"`
+	// The amount that is unsettled.
+	OutstandingAmount *float32 `json:"OutstandingAmount,omitempty" xml:"OutstandingAmount,omitempty"`
+	// The ID of the account that owns the resource. This parameter is returned in multi-account scenario.
+	OwnerID *string `json:"OwnerID,omitempty" xml:"OwnerID,omitempty"`
+	// The amount paid in cash. The amount deducted with credit refund is included.
+	PaymentAmount *float32 `json:"PaymentAmount,omitempty" xml:"PaymentAmount,omitempty"`
+	// The code of the service. The code is the same as that displayed in the Split Bill module of the User Center console.
+	PipCode *string `json:"PipCode,omitempty" xml:"PipCode,omitempty"`
+	// The pretax amount.
+	PretaxAmount *float32 `json:"PretaxAmount,omitempty" xml:"PretaxAmount,omitempty"`
+	// The pretax gross amount.
+	PretaxGrossAmount *float32 `json:"PretaxGrossAmount,omitempty" xml:"PretaxGrossAmount,omitempty"`
+	// The code of the service.
+	ProductCode *string `json:"ProductCode,omitempty" xml:"ProductCode,omitempty"`
+	// The details of the service.
+	ProductDetail *string `json:"ProductDetail,omitempty" xml:"ProductDetail,omitempty"`
+	// The name of the service.
+	ProductName *string `json:"ProductName,omitempty" xml:"ProductName,omitempty"`
+	// The type of the service.
+	ProductType *string `json:"ProductType,omitempty" xml:"ProductType,omitempty"`
+	// The ID of the region.
+	Region *string `json:"Region,omitempty" xml:"Region,omitempty"`
+	// The ID of the resource group.
+	ResourceGroup *string `json:"ResourceGroup,omitempty" xml:"ResourceGroup,omitempty"`
+	// The duration of the service.
+	ServicePeriod *string `json:"ServicePeriod,omitempty" xml:"ServicePeriod,omitempty"`
+	// The unit of the service duration.
+	ServicePeriodUnit *string `json:"ServicePeriodUnit,omitempty" xml:"ServicePeriodUnit,omitempty"`
+	// The ID of the account to which the split bill belongs.
+	SplitAccountID *string `json:"SplitAccountID,omitempty" xml:"SplitAccountID,omitempty"`
+	// The name of the account to which the split item belongs.
+	SplitAccountName *string `json:"SplitAccountName,omitempty" xml:"SplitAccountName,omitempty"`
+	// The billing cycle in which the bill is split.
+	SplitBillingCycle *string `json:"SplitBillingCycle,omitempty" xml:"SplitBillingCycle,omitempty"`
+	// The day on which the bill is split.
+	SplitBillingDate *string `json:"SplitBillingDate,omitempty" xml:"SplitBillingDate,omitempty"`
+	// The code of the split item.
+	SplitCommodityCode *string `json:"SplitCommodityCode,omitempty" xml:"SplitCommodityCode,omitempty"`
+	// The ID of the split item.
+	SplitItemID *string `json:"SplitItemID,omitempty" xml:"SplitItemID,omitempty"`
+	// The name of the split item.
+	SplitItemName *string `json:"SplitItemName,omitempty" xml:"SplitItemName,omitempty"`
+	// The details of the service.
+	SplitProductDetail *string `json:"SplitProductDetail,omitempty" xml:"SplitProductDetail,omitempty"`
+	// The billing method. Valid values: Subscription: the subscription billing method. PayAsYouGo: the pay-as-you-go billing method.
+	SubscriptionType *string `json:"SubscriptionType,omitempty" xml:"SubscriptionType,omitempty"`
+	// The tag of the resource. If tags added to resources change, the bills generated during the period in which resources and tags are associated are returned.
+	Tag *string `json:"Tag,omitempty" xml:"Tag,omitempty"`
+	// The amount of resource usage.
+	Usage *string `json:"Usage,omitempty" xml:"Usage,omitempty"`
+	// The unit of usage.
+	UsageUnit *string `json:"UsageUnit,omitempty" xml:"UsageUnit,omitempty"`
+	// The zone.
+	Zone *string `json:"Zone,omitempty" xml:"Zone,omitempty"`
 }
 
 func (s DescribeSplitItemBillResponseBodyDataItems) String() string {
@@ -11907,32 +12541,25 @@ func (s *QueryAccountBalanceResponse) SetBody(v *QueryAccountBalanceResponseBody
 }
 
 type QueryAccountBillRequest struct {
-	// The ID of the member. If you specify a value for this parameter, you can query the bills of the specified member. If you leave this parameter empty, the bills of the current account are queried by default.
-	BillOwnerId *int64 `json:"BillOwnerId,omitempty" xml:"BillOwnerId,omitempty"`
-	// The billing cycle. Format: YYYY-MM.
-	BillingCycle *string `json:"BillingCycle,omitempty" xml:"BillingCycle,omitempty"`
-	// The billing date. This parameter is required only if the Granularity parameter is set to DAILY. Format: YYYY-MM-DD.
-	BillingDate *string `json:"BillingDate,omitempty" xml:"BillingDate,omitempty"`
-	// The granularity at which bills are queried. Valid values:
-	//
-	// *   MONTHLY: queries bills by month. The data queried is consistent with the data that is displayed for the specified billing cycle on the Billing Details tab of the Bill Details page in User Center.
-	// *   DAILY: queries bills by day. The data queried is consistent with the data that is displayed for the specified day on the Billing Details tab of the Bill Details page in User Center.
-	//
-	// You must set the BillingDate parameter before you can set the Granularity parameter to DAILY.
-	Granularity *string `json:"Granularity,omitempty" xml:"Granularity,omitempty"`
 	// Specifies whether to summarize bills based on service codes. Valid values:
 	//
 	// *   true: summarizes bills based on service codes.
 	// *   false: does not summarize bills based on service codes.
 	//
 	// Default value: false.
+	BillOwnerId  *int64  `json:"BillOwnerId,omitempty" xml:"BillOwnerId,omitempty"`
+	BillingCycle *string `json:"BillingCycle,omitempty" xml:"BillingCycle,omitempty"`
+	// The ID of the member. If you specify a value for this parameter, you can query the bills of the specified member. If you leave this parameter empty, the bills of the current account are queried by default.
+	BillingDate *string `json:"BillingDate,omitempty" xml:"BillingDate,omitempty"`
+	// The code of the service.
+	Granularity *string `json:"Granularity,omitempty" xml:"Granularity,omitempty"`
+	// The number of the page to return. Default value: 1.
 	IsGroupByProduct *bool  `json:"IsGroupByProduct,omitempty" xml:"IsGroupByProduct,omitempty"`
 	OwnerID          *int64 `json:"OwnerID,omitempty" xml:"OwnerID,omitempty"`
-	// The number of the page to return. Default value: 1.
-	PageNum *int32 `json:"PageNum,omitempty" xml:"PageNum,omitempty"`
-	// The number of entries to return on each page. Default value: 20. Maximum value: 300.
+	PageNum          *int32 `json:"PageNum,omitempty" xml:"PageNum,omitempty"`
+	// The billing cycle. Format: YYYY-MM.
 	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	// The code of the service.
+	// The number of entries to return on each page. Default value: 20. Maximum value: 300.
 	ProductCode *string `json:"ProductCode,omitempty" xml:"ProductCode,omitempty"`
 }
 
@@ -11990,15 +12617,20 @@ func (s *QueryAccountBillRequest) SetProductCode(v string) *QueryAccountBillRequ
 }
 
 type QueryAccountBillResponseBody struct {
-	// The status code returned.
+	// The granularity at which bills are queried. Valid values:
+	//
+	// *   MONTHLY: queries bills by month. The data queried is consistent with the data that is displayed for the specified billing cycle on the Billing Details tab of the Bill Details page in User Center.
+	// *   DAILY: queries bills by day. The data queried is consistent with the data that is displayed for the specified day on the Billing Details tab of the Bill Details page in User Center.
+	//
+	// You must set the BillingDate parameter before you can set the Granularity parameter to DAILY.
 	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
-	// The data returned.
-	Data *QueryAccountBillResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
-	// The message returned.
-	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
 	// The ID of the request.
+	Data *QueryAccountBillResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
+	// The billing date. This parameter is required only if the Granularity parameter is set to DAILY. Format: YYYY-MM-DD.
+	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// The status code returned.
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// Indicates whether the request is successful.
+	// The message returned.
 	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
 }
 
@@ -12036,19 +12668,19 @@ func (s *QueryAccountBillResponseBody) SetSuccess(v bool) *QueryAccountBillRespo
 }
 
 type QueryAccountBillResponseBodyData struct {
-	// The ID of your Alibaba Cloud account.
-	AccountID *string `json:"AccountID,omitempty" xml:"AccountID,omitempty"`
-	// The name of the Alibaba Cloud account.
-	AccountName *string `json:"AccountName,omitempty" xml:"AccountName,omitempty"`
-	// The billing cycle. Format: YYYY-MM.
-	BillingCycle *string `json:"BillingCycle,omitempty" xml:"BillingCycle,omitempty"`
-	// The details of the bills.
-	Items *QueryAccountBillResponseBodyDataItems `json:"Items,omitempty" xml:"Items,omitempty" type:"Struct"`
 	// The page number of the returned page.
-	PageNum *int32 `json:"PageNum,omitempty" xml:"PageNum,omitempty"`
+	AccountID *string `json:"AccountID,omitempty" xml:"AccountID,omitempty"`
 	// The number of entries returned per page.
-	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	AccountName *string `json:"AccountName,omitempty" xml:"AccountName,omitempty"`
+	// The data returned.
+	BillingCycle *string `json:"BillingCycle,omitempty" xml:"BillingCycle,omitempty"`
 	// The total number of returned entries.
+	Items *QueryAccountBillResponseBodyDataItems `json:"Items,omitempty" xml:"Items,omitempty" type:"Struct"`
+	// Indicates whether the request is successful.
+	PageNum *int32 `json:"PageNum,omitempty" xml:"PageNum,omitempty"`
+	// The billing cycle. Format: YYYY-MM.
+	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	// The ID of your Alibaba Cloud account.
 	TotalCount *int32 `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
 }
 
@@ -12113,60 +12745,14 @@ func (s *QueryAccountBillResponseBodyDataItems) SetItem(v []*QueryAccountBillRes
 }
 
 type QueryAccountBillResponseBodyDataItemsItem struct {
-	// The amount deducted by using credit refunds.
-	AdjustAmount *float32 `json:"AdjustAmount,omitempty" xml:"AdjustAmount,omitempty"`
-	// The ID of the account to which the bill belongs.
-	BillAccountID *string `json:"BillAccountID,omitempty" xml:"BillAccountID,omitempty"`
-	// The name of the account to which the bill belongs.
-	BillAccountName *string `json:"BillAccountName,omitempty" xml:"BillAccountName,omitempty"`
 	// The billing date.
-	BillingDate *string `json:"BillingDate,omitempty" xml:"BillingDate,omitempty"`
-	// The business type.
-	BizType *string `json:"BizType,omitempty" xml:"BizType,omitempty"`
-	// The amount paid in cash. The amount that was deducted by using credit refunds is not included.
-	CashAmount *float32 `json:"CashAmount,omitempty" xml:"CashAmount,omitempty"`
-	// The cost center.
-	CostUnit *string `json:"CostUnit,omitempty" xml:"CostUnit,omitempty"`
-	// The type of the currency. Valid values:
-	//
-	// *   CNY
-	// *   USD
-	// *   JPY
-	Currency *string `json:"Currency,omitempty" xml:"Currency,omitempty"`
-	// The amount deducted by using vouchers.
-	DeductedByCashCoupons *float32 `json:"DeductedByCashCoupons,omitempty" xml:"DeductedByCashCoupons,omitempty"`
-	// The amount deducted by using coupons.
-	DeductedByCoupons *float32 `json:"DeductedByCoupons,omitempty" xml:"DeductedByCoupons,omitempty"`
+	AdjustAmount *float32 `json:"AdjustAmount,omitempty" xml:"AdjustAmount,omitempty"`
 	// The amount deducted by using prepaid cards.
-	DeductedByPrepaidCard *float32 `json:"DeductedByPrepaidCard,omitempty" xml:"DeductedByPrepaidCard,omitempty"`
-	// The discount amount.
-	InvoiceDiscount *float32 `json:"InvoiceDiscount,omitempty" xml:"InvoiceDiscount,omitempty"`
-	// The unsettled amount or the amount settled with credits.
-	OutstandingAmount *float32 `json:"OutstandingAmount,omitempty" xml:"OutstandingAmount,omitempty"`
-	// The ID of the member.
-	OwnerID *string `json:"OwnerID,omitempty" xml:"OwnerID,omitempty"`
+	BillAccountID *string `json:"BillAccountID,omitempty" xml:"BillAccountID,omitempty"`
 	// The name of the member.
-	OwnerName *string `json:"OwnerName,omitempty" xml:"OwnerName,omitempty"`
-	// The amount paid in cash. The amount that was deducted by using credit refunds is included.
-	PaymentAmount *float32 `json:"PaymentAmount,omitempty" xml:"PaymentAmount,omitempty"`
+	BillAccountName *string `json:"BillAccountName,omitempty" xml:"BillAccountName,omitempty"`
 	// The code of the service. The service code is consistent with that displayed in User Center.
-	PipCode *string `json:"PipCode,omitempty" xml:"PipCode,omitempty"`
-	// The pretax amount.
-	PretaxAmount *float32 `json:"PretaxAmount,omitempty" xml:"PretaxAmount,omitempty"`
-	// The pretax gross amount.
-	PretaxGrossAmount *float32 `json:"PretaxGrossAmount,omitempty" xml:"PretaxGrossAmount,omitempty"`
-	// The code of the service.
-	//
-	// **
-	//
-	// ****A value is returned only if the **IsGroupByProduct **parameter is set to true.
-	ProductCode *string `json:"ProductCode,omitempty" xml:"ProductCode,omitempty"`
-	// The name of the service.
-	//
-	// **
-	//
-	// ****A value is returned only if the **IsGroupByProduct **parameter is set to true.
-	ProductName *string `json:"ProductName,omitempty" xml:"ProductName,omitempty"`
+	BillingDate *string `json:"BillingDate,omitempty" xml:"BillingDate,omitempty"`
 	// The billing method. Valid values:
 	//
 	// *   Subscription: the subscription billing method
@@ -12175,6 +12761,48 @@ type QueryAccountBillResponseBodyDataItemsItem struct {
 	// **
 	//
 	// ****A value is returned only if the IsGroupByProduct parameter is set to true.
+	BizType *string `json:"BizType,omitempty" xml:"BizType,omitempty"`
+	// Not allocated
+	CashAmount *float32 `json:"CashAmount,omitempty" xml:"CashAmount,omitempty"`
+	// The discount amount.
+	CostUnit *string `json:"CostUnit,omitempty" xml:"CostUnit,omitempty"`
+	// The amount deducted by using credit refunds.
+	Currency *string `json:"Currency,omitempty" xml:"Currency,omitempty"`
+	// The name of the account to which the bill belongs.
+	DeductedByCashCoupons *float32 `json:"DeductedByCashCoupons,omitempty" xml:"DeductedByCashCoupons,omitempty"`
+	// The ID of the member.
+	DeductedByCoupons *float32 `json:"DeductedByCoupons,omitempty" xml:"DeductedByCoupons,omitempty"`
+	// The business type.
+	DeductedByPrepaidCard *float32 `json:"DeductedByPrepaidCard,omitempty" xml:"DeductedByPrepaidCard,omitempty"`
+	// The ID of the account to which the bill belongs.
+	InvoiceDiscount *float32 `json:"InvoiceDiscount,omitempty" xml:"InvoiceDiscount,omitempty"`
+	// The amount paid in cash. The amount that was deducted by using credit refunds is included.
+	OutstandingAmount *float32 `json:"OutstandingAmount,omitempty" xml:"OutstandingAmount,omitempty"`
+	// The amount deducted by using vouchers.
+	OwnerID *string `json:"OwnerID,omitempty" xml:"OwnerID,omitempty"`
+	// The name of the service.
+	//
+	// **
+	//
+	// ****A value is returned only if the **IsGroupByProduct **parameter is set to true.
+	OwnerName *string `json:"OwnerName,omitempty" xml:"OwnerName,omitempty"`
+	// The amount deducted by using coupons.
+	PaymentAmount *float32 `json:"PaymentAmount,omitempty" xml:"PaymentAmount,omitempty"`
+	// The name of the Alibaba Cloud account.
+	PipCode *string `json:"PipCode,omitempty" xml:"PipCode,omitempty"`
+	// The details of the bills.
+	PretaxAmount *float32 `json:"PretaxAmount,omitempty" xml:"PretaxAmount,omitempty"`
+	// The cost center.
+	PretaxGrossAmount *float32 `json:"PretaxGrossAmount,omitempty" xml:"PretaxGrossAmount,omitempty"`
+	// The pretax gross amount.
+	ProductCode *string `json:"ProductCode,omitempty" xml:"ProductCode,omitempty"`
+	// The pretax amount.
+	ProductName *string `json:"ProductName,omitempty" xml:"ProductName,omitempty"`
+	// The type of the currency. Valid values:
+	//
+	// *   CNY
+	// *   USD
+	// *   JPY
 	SubscriptionType *string `json:"SubscriptionType,omitempty" xml:"SubscriptionType,omitempty"`
 }
 
@@ -14288,7 +14916,7 @@ func (s *QueryBillOverviewResponse) SetBody(v *QueryBillOverviewResponseBody) *Q
 type QueryBillToOSSSubscriptionResponseBody struct {
 	// The status code returned.
 	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
-	// The data returned.
+	// The returned data.
 	Data *QueryBillToOSSSubscriptionResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
 	// The message returned.
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
@@ -14336,7 +14964,7 @@ type QueryBillToOSSSubscriptionResponseBodyData struct {
 	AccountID *string `json:"AccountID,omitempty" xml:"AccountID,omitempty"`
 	// The name of the account used to perform the query.
 	AccountName *string `json:"AccountName,omitempty" xml:"AccountName,omitempty"`
-	// The details of the subscribed bills.
+	// The details of the subscribed bill.
 	Items *QueryBillToOSSSubscriptionResponseBodyDataItems `json:"Items,omitempty" xml:"Items,omitempty" type:"Struct"`
 }
 
@@ -14381,21 +15009,27 @@ func (s *QueryBillToOSSSubscriptionResponseBodyDataItems) SetItem(v []*QueryBill
 }
 
 type QueryBillToOSSSubscriptionResponseBodyDataItemsItem struct {
-	// The owner ID of the OSS bucket.
+	// The owner ID of the Object Storage Service (OSS) bucket.
 	BucketOwnerId *int64 `json:"BucketOwnerId,omitempty" xml:"BucketOwnerId,omitempty"`
-	// The directory of the OSS bucket.
-	BucketPath      *string `json:"BucketPath,omitempty" xml:"BucketPath,omitempty"`
-	RowLimitPerFile *int32  `json:"RowLimitPerFile,omitempty" xml:"RowLimitPerFile,omitempty"`
+	// The path in the OSS bucket.
+	BucketPath *string `json:"BucketPath,omitempty" xml:"BucketPath,omitempty"`
+	// The maximum number of data rows in a single file. If the number of data rows in a bill exceeds the upper limit, the bill is split into multiple files. Then, multiple files are merged and compressed into a package.
+	RowLimitPerFile *int32 `json:"RowLimitPerFile,omitempty" xml:"RowLimitPerFile,omitempty"`
 	// The ID of the OSS bucket that stores the subscribed bill.
 	SubscribeBucket *string `json:"SubscribeBucket,omitempty" xml:"SubscribeBucket,omitempty"`
 	// The code of the language.
+	//
+	// Valid values:
+	//
+	// *   en: English
+	// *   zh: Chinese
 	SubscribeLanguage *string `json:"SubscribeLanguage,omitempty" xml:"SubscribeLanguage,omitempty"`
 	// The time when the subscribed bill was stored in the OSS bucket. The time is displayed in the YYYY-MM-DD hh:mm:ss format.
 	SubscribeTime *string `json:"SubscribeTime,omitempty" xml:"SubscribeTime,omitempty"`
 	// The type of the subscribed bill. Valid values:
 	//
-	// *   BillingItemDetailForBillingPeriod: bill of a billable item
-	// *   InstanceDetailForBillingPeriod: bill of an instance
+	// *   BillingItemDetailForBillingPeriod: the bill of a billable item.
+	// *   InstanceDetailForBillingPeriod: the bill of an instance.
 	SubscribeType *string `json:"SubscribeType,omitempty" xml:"SubscribeType,omitempty"`
 }
 
@@ -20619,20 +21253,23 @@ func (s *QueryResourcePackageInstancesResponse) SetBody(v *QueryResourcePackageI
 }
 
 type QuerySavingsPlansDeductLogRequest struct {
+	// The end of the time range to query. Specify the time in the format of yyyy-MM-dd HH:mm:ss.
+	EndTime *string `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
+	// The ID of the instance.
+	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
 	// The type of the instance ID based on which the data is queried. Valid values:
 	//
 	// *   spn: queries data based on the ID of the savings plan instance.
 	// *   product: queries data based on the ID of the cloud service instance.
-	EndTime *string `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
-	// The message returned.
-	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	// The error code.
 	InstanceType *string `json:"InstanceType,omitempty" xml:"InstanceType,omitempty"`
-	// The end of the billing cycle for which the fee is deducted.
+	// The language of the return data. Valid values:
+	//
+	// *   ZH: Chinese
+	// *   EN: English
 	Locale *string `json:"Locale,omitempty" xml:"Locale,omitempty"`
-	// The ID of the instance.
+	// The number of the page to return.
 	PageNum *int32 `json:"PageNum,omitempty" xml:"PageNum,omitempty"`
-	// The operation that you want to perform. Set the value to QuerySavingsPlansDeductLog.
+	// The number of entries to return on each page.
 	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
 	// The beginning of the time range to query. Specify the time in the format of yyyy-MM-dd HH:mm:ss.
 	StartTime *string `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
@@ -20682,18 +21319,15 @@ func (s *QuerySavingsPlansDeductLogRequest) SetStartTime(v string) *QuerySavings
 }
 
 type QuerySavingsPlansDeductLogResponseBody struct {
-	// The number of entries returned per page.
+	// The error code.
 	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
-	// The type of the savings plan. Valid values:
-	//
-	// *   universal: general-purpose
-	// *   ecs: ECS compute
-	Data *QuerySavingsPlansDeductLogResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
-	// The ID of the savings plan instance.
-	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
-	// The deduction details.
-	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	// The return data.
+	Data *QuerySavingsPlansDeductLogResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
+	// The message returned.
+	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// The ID of the request.
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// Indicates whether the operation was successful.
 	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
 }
 
@@ -20731,16 +21365,13 @@ func (s *QuerySavingsPlansDeductLogResponseBody) SetSuccess(v bool) *QuerySaving
 }
 
 type QuerySavingsPlansDeductLogResponseBodyData struct {
-	// The deduction rate.
+	// The deduction details.
 	Items []*QuerySavingsPlansDeductLogResponseBodyDataItems `json:"Items,omitempty" xml:"Items,omitempty" type:"Repeated"`
-	// The number of entries to return on each page.
+	// The page number of the returned page.
 	PageNum *int32 `json:"PageNum,omitempty" xml:"PageNum,omitempty"`
-	// The language of the return data. Valid values:
-	//
-	// *   ZH: Chinese
-	// *   EN: English
+	// The number of entries returned per page.
 	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	// The end of the time range to query. Specify the time in the format of yyyy-MM-dd HH:mm:ss.
+	// The total number of entries.
 	TotalCount *int32 `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
 }
 
@@ -20773,25 +21404,31 @@ func (s *QuerySavingsPlansDeductLogResponseBodyData) SetTotalCount(v int32) *Que
 }
 
 type QuerySavingsPlansDeductLogResponseBodyDataItems struct {
-	// The total number of entries.
-	BillModule      *string `json:"BillModule,omitempty" xml:"BillModule,omitempty"`
-	DeductCommodity *string `json:"DeductCommodity,omitempty" xml:"DeductCommodity,omitempty"`
-	DeductFee       *string `json:"DeductFee,omitempty" xml:"DeductFee,omitempty"`
-	// The ID of the request.
-	DeductInstanceId *string `json:"DeductInstanceId,omitempty" xml:"DeductInstanceId,omitempty"`
-	DeductRate       *string `json:"DeductRate,omitempty" xml:"DeductRate,omitempty"`
 	// The billable item for which the fee is deducted.
-	DiscountRate *string `json:"DiscountRate,omitempty" xml:"DiscountRate,omitempty"`
-	// The page number of the returned page.
-	EndTime *string `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
+	BillModule *string `json:"BillModule,omitempty" xml:"BillModule,omitempty"`
 	// The service for which the fee is deducted.
+	DeductCommodity *string `json:"DeductCommodity,omitempty" xml:"DeductCommodity,omitempty"`
+	// The deducted amount.
+	DeductFee *string `json:"DeductFee,omitempty" xml:"DeductFee,omitempty"`
+	// The ID of the instance for which the fee is deducted.
+	DeductInstanceId *string `json:"DeductInstanceId,omitempty" xml:"DeductInstanceId,omitempty"`
+	// The deduction rate.
+	DeductRate *string `json:"DeductRate,omitempty" xml:"DeductRate,omitempty"`
+	// The discount used for the current deduction.
+	DiscountRate *string `json:"DiscountRate,omitempty" xml:"DiscountRate,omitempty"`
+	// The end of the billing cycle for which the fee is deducted.
+	EndTime *string `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
+	// The ID of the savings plan instance.
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
 	OwnerId    *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
-	// The ID of the instance for which the fee is deducted.
+	// The type of the savings plan. Valid values:
+	//
+	// *   universal: general-purpose
+	// *   ecs: ECS compute
 	SavingsType *string `json:"SavingsType,omitempty" xml:"SavingsType,omitempty"`
 	// The beginning of the billing cycle for which the fee is deducted. The time is in the format of yyyy-MM-dd HH:mm:ss.
 	StartTime *string `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
-	// The number of the page to return.
+	// The ID of the user.
 	UserId *int64 `json:"UserId,omitempty" xml:"UserId,omitempty"`
 }
 
@@ -21158,20 +21795,28 @@ func (s *QuerySavingsPlansDiscountResponse) SetBody(v *QuerySavingsPlansDiscount
 }
 
 type QuerySavingsPlansInstanceRequest struct {
-	// The number of entries returned per page.
-	EndTime *string `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
 	// The end of the time range to query. Specify the time in the format of yyyy-MM-dd HH:mm:ss.
+	EndTime *string `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
+	// The ID of the savings plan instance.
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	// The beginning of the time range to query. Specify the time in the format of yyyy-MM-dd HH:mm:ss.
+	// The language of the return data. Valid values:
+	//
+	// *   ZH: Chinese
+	// *   EN: English
 	Locale *string `json:"Locale,omitempty" xml:"Locale,omitempty"`
-	// The message returned.
+	// The number of the page to return.
 	PageNum *int32 `json:"PageNum,omitempty" xml:"PageNum,omitempty"`
-	// The time when the instance expires. The time is in the format of yyyy-MM-dd HH:mm:ss.
-	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
 	// The number of entries to return on each page.
-	StartTime *string                                `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
-	Status    *string                                `json:"Status,omitempty" xml:"Status,omitempty"`
-	Tag       []*QuerySavingsPlansInstanceRequestTag `json:"Tag,omitempty" xml:"Tag,omitempty" type:"Repeated"`
+	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	// The beginning of the time range to query. Specify the time in the format of yyyy-MM-dd HH:mm:ss.
+	StartTime *string `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
+	// The status of the Instance.
+	//
+	// *  NORMAL
+	// * RELEASE
+	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
+	// The tags.
+	Tag []*QuerySavingsPlansInstanceRequestTag `json:"Tag,omitempty" xml:"Tag,omitempty" type:"Repeated"`
 }
 
 func (s QuerySavingsPlansInstanceRequest) String() string {
@@ -21223,9 +21868,9 @@ func (s *QuerySavingsPlansInstanceRequest) SetTag(v []*QuerySavingsPlansInstance
 }
 
 type QuerySavingsPlansInstanceRequestTag struct {
-	// The ID of the savings plan instance.
+	// The key of the tag to query.
 	Key *string `json:"Key,omitempty" xml:"Key,omitempty"`
-	// The instance family information. For an instance of the Elastic Compute Service (ECS) compute type, the value indicates the ECS instance family or the ECS instance family package.
+	// The value of the tag to query.
 	Value *string `json:"Value,omitempty" xml:"Value,omitempty"`
 }
 
@@ -21248,15 +21893,15 @@ func (s *QuerySavingsPlansInstanceRequestTag) SetValue(v string) *QuerySavingsPl
 }
 
 type QuerySavingsPlansInstanceResponseBody struct {
-	// The prepaid amount.
+	// The error code.
 	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
-	// The commitment.
-	Data *QuerySavingsPlansInstanceResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
-	// The details about the instances.
-	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
 	// The return data.
+	Data *QuerySavingsPlansInstanceResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
+	// The message returned.
+	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// The ID of the request.
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// The region.
+	// Indicates whether the operation was successful.
 	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
 }
 
@@ -21294,19 +21939,13 @@ func (s *QuerySavingsPlansInstanceResponseBody) SetSuccess(v bool) *QuerySavings
 }
 
 type QuerySavingsPlansInstanceResponseBodyData struct {
-	// The number of the page to return.
+	// The details about the instances.
 	Items []*QuerySavingsPlansInstanceResponseBodyDataItems `json:"Items,omitempty" xml:"Items,omitempty" type:"Repeated"`
-	// The type of the savings plan. Valid values:
-	//
-	// *   universal: general-purpose
-	// *   ecs: ECS compute
+	// The page number of the returned page.
 	PageNum *int32 `json:"PageNum,omitempty" xml:"PageNum,omitempty"`
-	// The key of the tag to query.
+	// The number of entries returned per page.
 	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	// The language of the return data. Valid values:
-	//
-	// *   ZH: Chinese
-	// *   EN: English
+	// The total number of entries.
 	TotalCount *int32 `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
 }
 
@@ -21346,47 +21985,52 @@ type QuerySavingsPlansInstanceResponseBodyDataItems struct {
 	// *   beAllocated
 	AllocationStatus *string `json:"AllocationStatus,omitempty" xml:"AllocationStatus,omitempty"`
 	CommodityCode    *string `json:"CommodityCode,omitempty" xml:"CommodityCode,omitempty"`
-	// The status of the instance. Valid values:
-	//
-	// *   NORMAL: normal
-	// *   LIMIT: stopped due to overdue payment
-	// *   RELEASE: released
+	// The currency. Valid values: CNY and USD.
 	Currency         *string `json:"Currency,omitempty" xml:"Currency,omitempty"`
 	CurrentPoolValue *string `json:"CurrentPoolValue,omitempty" xml:"CurrentPoolValue,omitempty"`
 	Cycle            *string `json:"Cycle,omitempty" xml:"Cycle,omitempty"`
 	DeductCycleType  *string `json:"DeductCycleType,omitempty" xml:"DeductCycleType,omitempty"`
-	// The ID of the savings plan instance.
+	// The time when the instance expires. The time is in the format of yyyy-MM-dd HH:mm:ss.
 	EndTime      *string `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
 	EndTimestamp *int64  `json:"EndTimestamp,omitempty" xml:"EndTimestamp,omitempty"`
-	// The value of the tag.
+	// The instance family information. For an instance of the Elastic Compute Service (ECS) compute type, the value indicates the ECS instance family or the ECS instance family package.
 	InstanceFamily *string `json:"InstanceFamily,omitempty" xml:"InstanceFamily,omitempty"`
-	// The time when the instance takes effect. The time is in the format of yyyy-MM-dd HH:mm:ss.
+	// The ID of the savings plan instance.
 	InstanceId          *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
 	LastBillTotalUsage  *string `json:"LastBillTotalUsage,omitempty" xml:"LastBillTotalUsage,omitempty"`
 	LastBillUtilization *string `json:"LastBillUtilization,omitempty" xml:"LastBillUtilization,omitempty"`
-	PayMode             *string `json:"PayMode,omitempty" xml:"PayMode,omitempty"`
-	// The total amount that is saved.
-	PoolValue *string `json:"PoolValue,omitempty" xml:"PoolValue,omitempty"`
-	// The page number of the returned page.
-	PrepayFee *string `json:"PrepayFee,omitempty" xml:"PrepayFee,omitempty"`
-	// The total number of entries.
-	Region        *string `json:"Region,omitempty" xml:"Region,omitempty"`
-	RestPoolValue *string `json:"RestPoolValue,omitempty" xml:"RestPoolValue,omitempty"`
-	// The key of the tag.
-	SavingsType *string `json:"SavingsType,omitempty" xml:"SavingsType,omitempty"`
 	// The payment type. Valid values:
 	//
 	// *   total: All Upfront
 	// *   half: Partial Upfront
 	// *   zero: No Upfront
+	PayMode *string `json:"PayMode,omitempty" xml:"PayMode,omitempty"`
+	// The commitment.
+	PoolValue *string `json:"PoolValue,omitempty" xml:"PoolValue,omitempty"`
+	// The prepaid amount.
+	PrepayFee *string `json:"PrepayFee,omitempty" xml:"PrepayFee,omitempty"`
+	// The region.
+	Region        *string `json:"Region,omitempty" xml:"Region,omitempty"`
+	RestPoolValue *string `json:"RestPoolValue,omitempty" xml:"RestPoolValue,omitempty"`
+	// The type of the savings plan. Valid values:
+	//
+	// *   universal: general-purpose
+	// *   ecs: ECS compute
+	SavingsType *string `json:"SavingsType,omitempty" xml:"SavingsType,omitempty"`
+	// The time when the instance takes effect. The time is in the format of yyyy-MM-dd HH:mm:ss.
 	StartTime      *string `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
 	StartTimestamp *int64  `json:"StartTimestamp,omitempty" xml:"StartTimestamp,omitempty"`
-	// The value of the tag to query.
-	Status *string                                               `json:"Status,omitempty" xml:"Status,omitempty"`
-	Tags   []*QuerySavingsPlansInstanceResponseBodyDataItemsTags `json:"Tags,omitempty" xml:"Tags,omitempty" type:"Repeated"`
-	// The ID of the request.
+	// The status of the instance. Valid values:
+	//
+	// *   NORMAL: normal
+	// *   LIMIT: stopped due to overdue payment
+	// *   RELEASE: released
+	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
+	// The details about the tags.
+	Tags []*QuerySavingsPlansInstanceResponseBodyDataItemsTags `json:"Tags,omitempty" xml:"Tags,omitempty" type:"Repeated"`
+	// The total amount that is saved.
 	TotalSave *string `json:"TotalSave,omitempty" xml:"TotalSave,omitempty"`
-	// The currency. Valid values: CNY and USD.
+	// The total usage.
 	Utilization *string `json:"Utilization,omitempty" xml:"Utilization,omitempty"`
 }
 
@@ -21519,7 +22163,9 @@ func (s *QuerySavingsPlansInstanceResponseBodyDataItems) SetUtilization(v string
 }
 
 type QuerySavingsPlansInstanceResponseBodyDataItemsTags struct {
-	Key   *string `json:"Key,omitempty" xml:"Key,omitempty"`
+	// The key of the tag.
+	Key *string `json:"Key,omitempty" xml:"Key,omitempty"`
+	// The value of the tag.
 	Value *string `json:"Value,omitempty" xml:"Value,omitempty"`
 }
 
@@ -23554,6 +24200,7 @@ func (s *RelieveAccountRelationResponse) SetBody(v *RelieveAccountRelationRespon
 type RenewChangeInstanceRequest struct {
 	ClientToken *string                                `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
 	InstanceId  *string                                `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	OwnerId     *int64                                 `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
 	Parameter   []*RenewChangeInstanceRequestParameter `json:"Parameter,omitempty" xml:"Parameter,omitempty" type:"Repeated"`
 	ProductCode *string                                `json:"ProductCode,omitempty" xml:"ProductCode,omitempty"`
 	ProductType *string                                `json:"ProductType,omitempty" xml:"ProductType,omitempty"`
@@ -23575,6 +24222,11 @@ func (s *RenewChangeInstanceRequest) SetClientToken(v string) *RenewChangeInstan
 
 func (s *RenewChangeInstanceRequest) SetInstanceId(v string) *RenewChangeInstanceRequest {
 	s.InstanceId = &v
+	return s
+}
+
+func (s *RenewChangeInstanceRequest) SetOwnerId(v int64) *RenewChangeInstanceRequest {
+	s.OwnerId = &v
 	return s
 }
 
@@ -24941,13 +25593,31 @@ func (s *SetResellerUserStatusResponse) SetBody(v *SetResellerUserStatusResponse
 }
 
 type SubscribeBillToOSSRequest struct {
-	BeginBillingCycle       *string `json:"BeginBillingCycle,omitempty" xml:"BeginBillingCycle,omitempty"`
-	BucketOwnerId           *int64  `json:"BucketOwnerId,omitempty" xml:"BucketOwnerId,omitempty"`
-	BucketPath              *string `json:"BucketPath,omitempty" xml:"BucketPath,omitempty"`
+	// The initial billing cycle from which bills start to be pushed. After you subscribe to the bills, the system automatically pushes the data that is generated from the initial billing cycle to the current time. If the SubscribeType parameter is set to MonthBill, this parameter is invalid. Historical data is not pushed again. The data generated within the last year can be pushed.
+	BeginBillingCycle *string `json:"BeginBillingCycle,omitempty" xml:"BeginBillingCycle,omitempty"`
+	// The owner ID of the OSS bucket that stores the bills. This parameter is required if you are a bidder or reseller and want to push data to an OSS bucket of a member account. In this case, you must specify this account as the account used to call this operation and grant the AliyunConsumeDump2OSSRole permission to this account. If you are a regular user, you do not need to set this parameter. By default, your account is used to call this operation.
+	BucketOwnerId *int64 `json:"BucketOwnerId,omitempty" xml:"BucketOwnerId,omitempty"`
+	// The path of the OSS bucket.
+	BucketPath *string `json:"BucketPath,omitempty" xml:"BucketPath,omitempty"`
+	// The type of the account whose bills are to be pushed if multi-tier accounts are involved. Valid values:
+	//
+	// *   MA: the master account and a non-managed member account in Finance Cloud
+	// *   ACP1: a member account of a virtual network operator (VNO)
+	//
+	// Default value: MA.
 	MultAccountRelSubscribe *string `json:"MultAccountRelSubscribe,omitempty" xml:"MultAccountRelSubscribe,omitempty"`
 	RowLimitPerFile         *int32  `json:"RowLimitPerFile,omitempty" xml:"RowLimitPerFile,omitempty"`
-	SubscribeBucket         *string `json:"SubscribeBucket,omitempty" xml:"SubscribeBucket,omitempty"`
-	SubscribeType           *string `json:"SubscribeType,omitempty" xml:"SubscribeType,omitempty"`
+	// The OSS bucket that stores the bills to which you want to subscribe.
+	SubscribeBucket *string `json:"SubscribeBucket,omitempty" xml:"SubscribeBucket,omitempty"`
+	// The type of the bill to which you want to subscribe. Valid values:
+	//
+	// *   BillingItemDetailForBillingPeriod: detailed bills of billable items
+	// *   InstanceDetailForBillingPeriod: detailed bills of instances
+	// *   BillingItemDetailMonthly: billable item-based bills summarized by billing cycle
+	// *   InstanceDetailMonthly: instance-based bills summarized by billing cycle
+	// *   SplitItemDetailDaily: split bills summarized by day
+	// *   MonthBill: monthly bills in the PDF format. You can subscribe to the monthly PDF bills only of the master account.
+	SubscribeType *string `json:"SubscribeType,omitempty" xml:"SubscribeType,omitempty"`
 }
 
 func (s SubscribeBillToOSSRequest) String() string {
@@ -24994,10 +25664,14 @@ func (s *SubscribeBillToOSSRequest) SetSubscribeType(v string) *SubscribeBillToO
 }
 
 type SubscribeBillToOSSResponseBody struct {
-	Code      *string `json:"Code,omitempty" xml:"Code,omitempty"`
-	Message   *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// The status code returned.
+	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	// The message returned.
+	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// The ID of the request.
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	Success   *bool   `json:"Success,omitempty" xml:"Success,omitempty"`
+	// Indicates whether the request is successful.
+	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
 }
 
 func (s SubscribeBillToOSSResponseBody) String() string {
@@ -27074,6 +27748,86 @@ func (client *Client) DescribeInstanceBill(request *DescribeInstanceBillRequest)
 	return _result, _err
 }
 
+func (client *Client) DescribeInstanceDeductAmortizedCostByAmortizationPeriodWithOptions(request *DescribeInstanceDeductAmortizedCostByAmortizationPeriodRequest, runtime *util.RuntimeOptions) (_result *DescribeInstanceDeductAmortizedCostByAmortizationPeriodResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	body := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.BillOwnerIdList)) {
+		body["BillOwnerIdList"] = request.BillOwnerIdList
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.BillUserIdList)) {
+		body["BillUserIdList"] = request.BillUserIdList
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.BillingCycle)) {
+		body["BillingCycle"] = request.BillingCycle
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.CostUnitCode)) {
+		body["CostUnitCode"] = request.CostUnitCode
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.InstanceIdList)) {
+		body["InstanceIdList"] = request.InstanceIdList
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.MaxResults)) {
+		body["MaxResults"] = request.MaxResults
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.NextToken)) {
+		body["NextToken"] = request.NextToken
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ProductCode)) {
+		body["ProductCode"] = request.ProductCode
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ProductDetail)) {
+		body["ProductDetail"] = request.ProductDetail
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.SubscriptionType)) {
+		body["SubscriptionType"] = request.SubscriptionType
+	}
+
+	req := &openapi.OpenApiRequest{
+		Body: openapiutil.ParseToMap(body),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("DescribeInstanceDeductAmortizedCostByAmortizationPeriod"),
+		Version:     tea.String("2017-12-14"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &DescribeInstanceDeductAmortizedCostByAmortizationPeriodResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) DescribeInstanceDeductAmortizedCostByAmortizationPeriod(request *DescribeInstanceDeductAmortizedCostByAmortizationPeriodRequest) (_result *DescribeInstanceDeductAmortizedCostByAmortizationPeriodResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &DescribeInstanceDeductAmortizedCostByAmortizationPeriodResponse{}
+	_body, _err := client.DescribeInstanceDeductAmortizedCostByAmortizationPeriodWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
 func (client *Client) DescribePricingModuleWithOptions(request *DescribePricingModuleRequest, runtime *util.RuntimeOptions) (_result *DescribePricingModuleResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -27304,7 +28058,9 @@ func (client *Client) DescribeProductAmortizedCostByConsumePeriod(request *Descr
 }
 
 /**
- * The amount of the resources deducted from a deduction plan.
+ * 1\\. The queried coverage details are the same as those displayed in the table on the Coverage tab of the Manage Reserved Instances page in the Billing Management console.
+ * 2\\. You can call this operation to query the coverage details of RIs or SCUs.
+ * 3\\. You can call this operation to query coverage details at an hourly, daily, or monthly granularity.
  *
  * @param request DescribeResourceCoverageDetailRequest
  * @param runtime runtime options for this request RuntimeOptions
@@ -27368,7 +28124,9 @@ func (client *Client) DescribeResourceCoverageDetailWithOptions(request *Describ
 }
 
 /**
- * The amount of the resources deducted from a deduction plan.
+ * 1\\. The queried coverage details are the same as those displayed in the table on the Coverage tab of the Manage Reserved Instances page in the Billing Management console.
+ * 2\\. You can call this operation to query the coverage details of RIs or SCUs.
+ * 3\\. You can call this operation to query coverage details at an hourly, daily, or monthly granularity.
  *
  * @param request DescribeResourceCoverageDetailRequest
  * @return DescribeResourceCoverageDetailResponse
@@ -27385,7 +28143,8 @@ func (client *Client) DescribeResourceCoverageDetail(request *DescribeResourceCo
 }
 
 /**
- * Indicates whether the operation was successful.
+ * The queried total coverage data is the same as the aggregated data displayed on the Coverage tab of the Manage Reserved Instances page in the Billing Management console.
+ * You can call this operation to query the total coverage data of RIs or SCUs.
  *
  * @param request DescribeResourceCoverageTotalRequest
  * @param runtime runtime options for this request RuntimeOptions
@@ -27441,7 +28200,8 @@ func (client *Client) DescribeResourceCoverageTotalWithOptions(request *Describe
 }
 
 /**
- * Indicates whether the operation was successful.
+ * The queried total coverage data is the same as the aggregated data displayed on the Coverage tab of the Manage Reserved Instances page in the Billing Management console.
+ * You can call this operation to query the total coverage data of RIs or SCUs.
  *
  * @param request DescribeResourceCoverageTotalRequest
  * @return DescribeResourceCoverageTotalResponse
@@ -27870,7 +28630,9 @@ func (client *Client) DescribeSavingsPlansUsageTotal(request *DescribeSavingsPla
 }
 
 /**
- * The code of the service.
+ * *   The data that you query by calling this operation is the same as the data that is queried by billing cycles in the Split Bill module of Cost Allocation.
+ * *   You can query split bills that were generated within the last 12 months by calling this operation.
+ * *   You can query split bills only after you enable the [Split Bill](https://usercenter2.aliyun.com/finance/split-bill) service in the User Center console.
  *
  * @param request DescribeSplitItemBillRequest
  * @param runtime runtime options for this request RuntimeOptions
@@ -27958,7 +28720,9 @@ func (client *Client) DescribeSplitItemBillWithOptions(request *DescribeSplitIte
 }
 
 /**
- * The code of the service.
+ * *   The data that you query by calling this operation is the same as the data that is queried by billing cycles in the Split Bill module of Cost Allocation.
+ * *   You can query split bills that were generated within the last 12 months by calling this operation.
+ * *   You can query split bills only after you enable the [Split Bill](https://usercenter2.aliyun.com/finance/split-bill) service in the User Center console.
  *
  * @param request DescribeSplitItemBillRequest
  * @return DescribeSplitItemBillResponse
@@ -31383,6 +32147,10 @@ func (client *Client) RenewChangeInstanceWithOptions(request *RenewChangeInstanc
 		query["InstanceId"] = request.InstanceId
 	}
 
+	if !tea.BoolValue(util.IsUnset(request.OwnerId)) {
+		query["OwnerId"] = request.OwnerId
+	}
+
 	if !tea.BoolValue(util.IsUnset(request.Parameter)) {
 		query["Parameter"] = request.Parameter
 	}
@@ -32021,6 +32789,39 @@ func (client *Client) SetResellerUserStatus(request *SetResellerUserStatusReques
 	return _result, _err
 }
 
+/**
+ * Before you call this operation, take note of the following items:
+ * *   You can subscribe to only one type of bill at a time.
+ * *   The bills generated on the previous day are pushed on a daily basis the next day after you subscribe to the bills. The full-data bills for the previous month are pushed on the fourth day of each month. The monthly bills in the PDF format for the previous month are pushed on the fourth day of each month.
+ * *   The daily bills may be delayed. The delayed bills are pushed the next day after they are generated. The delayed bills may include the bills that should have been pushed on the previous day. We recommend that you query the full-data bills for the previous month at the beginning of each month.
+ * *   The bill subscriber must have the [AliyunConsumeDump2OSSRole](https://ram.console.aliyun.com/#/role/authorize?request=%7B%22Requests%22:%20%7B%22request1%22:%20%7B%22RoleName%22:%20%22AliyunConsumeDump2OSSRole%22,%20%22TemplateId%22:%20%22Dump2OSSRole%22%7D%7D,%20%22ReturnUrl%22:%20%22https:%2F%2Fusercenter2.aliyun.com%22,%20%22Service%22:%20%22Consume%22%7D) permission.
+ * *   The SubscribeBillToOSS operation has the same functionality as the Save Expense Details to OSS Bucket feature in User Center.
+ * *   To subscribe to the bills stored in an OSS bucket, make sure that the directory name specified for the OSS bucket conforms to the following naming rules:
+ * 1.  1.  The directory name can contain only UTF-8 characters and cannot contain emoticons.
+ * 2.  2.  Forward slashes (/) are used to separate paths and can be used to create subdirectories with ease. The directory name cannot start with a forward slash (/), a backslash (\\\\), or consecutive forward slashes (/).
+ * 3.  3.  The name of a subdirectory cannot be set to two consecutive periods (..).
+ * 4.  4.  The directory name must be 1 to 254 characters in length.
+ * *   File names:
+ *     *   **BillingItemDetailForBillingPeriod** (Detailed bills of billable items)
+ *         *   File name format for a daily push: `UID_BillingItemDetail_YYYYMMDD`. Example: `169**_BillingItemDetail_20190310`.
+ *         *   File name format for a full-data push at the beginning of the next month: `UID_BillingItemDetail_YYYYMM`. Example: `169**_BillingItemDetail_201903`.
+ *     *   **InstanceDetailForBillingPeriod** (Detailed bills of instances)
+ *         *   File name format for a daily push: `UID_InstanceDetail_YYYYMMDD`. Example: `169**_InstanceDetail_20190310`.
+ *         *   File name format for a full-data push at the beginning of the next month: `UID_InstanceDetail_YYYYMM`. Example: `169**_InstanceDetail_201903`.
+ *     *   **InstanceDetailMonthly** (Instance-based bills summarized by billing cycle)
+ *         *   File name format for a daily push: `UID_InstanceDetailMonthly_YYYYMM`. Example: `169**_InstanceDetailMonthly_201903`. A bill of this type contains the full data generated from the beginning of the month to the current day, and is updated every day until the fourth day of the next month.
+ *     *   **BillingItemDetailMonthly** (Billable item-based bills summarized by billing cycle)
+ *         *   File name format for a daily push: `UID_BillingItemDetailMonthly_YYYYMM`. Example: `169**_BillingItemDetailMonthly_201903`. A bill of this type contains the full data generated from the beginning of the month to the current day, and is updated every day until the fourth day of the next month.
+ *     *   **SplitItemDetailDaily** (Split bills summarized by day)
+ *         *   File name format for a daily push: `UID_SplitItemDetailDaily_YYYYMM`. Example: `169**_SplitItemDetailDaily_201903`. A bill of this type contains the full data generated from the beginning of the month to the current day, and is updated every day until the fourth day of the next month.
+ *     *   **MonthBill** (Monthly bill in the PDF format)
+ *         *   File name format for a monthly push: `UID_MonthBill_YYYYMM`. Example: `169**_MonthBill_201903`. The bill for the previous month is pushed on the fourth day of each month.
+ * *   The bills of the MonthBill type are PDF files, whereas the bills of other types are CSV files. If the number of data rows in a bill exceeds a threshold, the bill is automatically split into multiple CSV files. Then, the multiple CSV files are automatically merged and compressed into a ZIP file that has the same name format as the original file.
+ *
+ * @param request SubscribeBillToOSSRequest
+ * @param runtime runtime options for this request RuntimeOptions
+ * @return SubscribeBillToOSSResponse
+ */
 func (client *Client) SubscribeBillToOSSWithOptions(request *SubscribeBillToOSSRequest, runtime *util.RuntimeOptions) (_result *SubscribeBillToOSSResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -32078,6 +32879,38 @@ func (client *Client) SubscribeBillToOSSWithOptions(request *SubscribeBillToOSSR
 	return _result, _err
 }
 
+/**
+ * Before you call this operation, take note of the following items:
+ * *   You can subscribe to only one type of bill at a time.
+ * *   The bills generated on the previous day are pushed on a daily basis the next day after you subscribe to the bills. The full-data bills for the previous month are pushed on the fourth day of each month. The monthly bills in the PDF format for the previous month are pushed on the fourth day of each month.
+ * *   The daily bills may be delayed. The delayed bills are pushed the next day after they are generated. The delayed bills may include the bills that should have been pushed on the previous day. We recommend that you query the full-data bills for the previous month at the beginning of each month.
+ * *   The bill subscriber must have the [AliyunConsumeDump2OSSRole](https://ram.console.aliyun.com/#/role/authorize?request=%7B%22Requests%22:%20%7B%22request1%22:%20%7B%22RoleName%22:%20%22AliyunConsumeDump2OSSRole%22,%20%22TemplateId%22:%20%22Dump2OSSRole%22%7D%7D,%20%22ReturnUrl%22:%20%22https:%2F%2Fusercenter2.aliyun.com%22,%20%22Service%22:%20%22Consume%22%7D) permission.
+ * *   The SubscribeBillToOSS operation has the same functionality as the Save Expense Details to OSS Bucket feature in User Center.
+ * *   To subscribe to the bills stored in an OSS bucket, make sure that the directory name specified for the OSS bucket conforms to the following naming rules:
+ * 1.  1.  The directory name can contain only UTF-8 characters and cannot contain emoticons.
+ * 2.  2.  Forward slashes (/) are used to separate paths and can be used to create subdirectories with ease. The directory name cannot start with a forward slash (/), a backslash (\\\\), or consecutive forward slashes (/).
+ * 3.  3.  The name of a subdirectory cannot be set to two consecutive periods (..).
+ * 4.  4.  The directory name must be 1 to 254 characters in length.
+ * *   File names:
+ *     *   **BillingItemDetailForBillingPeriod** (Detailed bills of billable items)
+ *         *   File name format for a daily push: `UID_BillingItemDetail_YYYYMMDD`. Example: `169**_BillingItemDetail_20190310`.
+ *         *   File name format for a full-data push at the beginning of the next month: `UID_BillingItemDetail_YYYYMM`. Example: `169**_BillingItemDetail_201903`.
+ *     *   **InstanceDetailForBillingPeriod** (Detailed bills of instances)
+ *         *   File name format for a daily push: `UID_InstanceDetail_YYYYMMDD`. Example: `169**_InstanceDetail_20190310`.
+ *         *   File name format for a full-data push at the beginning of the next month: `UID_InstanceDetail_YYYYMM`. Example: `169**_InstanceDetail_201903`.
+ *     *   **InstanceDetailMonthly** (Instance-based bills summarized by billing cycle)
+ *         *   File name format for a daily push: `UID_InstanceDetailMonthly_YYYYMM`. Example: `169**_InstanceDetailMonthly_201903`. A bill of this type contains the full data generated from the beginning of the month to the current day, and is updated every day until the fourth day of the next month.
+ *     *   **BillingItemDetailMonthly** (Billable item-based bills summarized by billing cycle)
+ *         *   File name format for a daily push: `UID_BillingItemDetailMonthly_YYYYMM`. Example: `169**_BillingItemDetailMonthly_201903`. A bill of this type contains the full data generated from the beginning of the month to the current day, and is updated every day until the fourth day of the next month.
+ *     *   **SplitItemDetailDaily** (Split bills summarized by day)
+ *         *   File name format for a daily push: `UID_SplitItemDetailDaily_YYYYMM`. Example: `169**_SplitItemDetailDaily_201903`. A bill of this type contains the full data generated from the beginning of the month to the current day, and is updated every day until the fourth day of the next month.
+ *     *   **MonthBill** (Monthly bill in the PDF format)
+ *         *   File name format for a monthly push: `UID_MonthBill_YYYYMM`. Example: `169**_MonthBill_201903`. The bill for the previous month is pushed on the fourth day of each month.
+ * *   The bills of the MonthBill type are PDF files, whereas the bills of other types are CSV files. If the number of data rows in a bill exceeds a threshold, the bill is automatically split into multiple CSV files. Then, the multiple CSV files are automatically merged and compressed into a ZIP file that has the same name format as the original file.
+ *
+ * @param request SubscribeBillToOSSRequest
+ * @return SubscribeBillToOSSResponse
+ */
 func (client *Client) SubscribeBillToOSS(request *SubscribeBillToOSSRequest) (_result *SubscribeBillToOSSResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &SubscribeBillToOSSResponse{}
