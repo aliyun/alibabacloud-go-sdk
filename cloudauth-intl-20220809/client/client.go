@@ -3057,6 +3057,8 @@ func (s *FraudResultCallBackResponse) SetBody(v *FraudResultCallBackResponseBody
 
 type InitializeRequest struct {
 	Authorize         *string `json:"Authorize,omitempty" xml:"Authorize,omitempty"`
+	CallbackToken     *string `json:"CallbackToken,omitempty" xml:"CallbackToken,omitempty"`
+	CallbackUrl       *string `json:"CallbackUrl,omitempty" xml:"CallbackUrl,omitempty"`
 	Crop              *string `json:"Crop,omitempty" xml:"Crop,omitempty"`
 	DocScanMode       *string `json:"DocScanMode,omitempty" xml:"DocScanMode,omitempty"`
 	DocType           *string `json:"DocType,omitempty" xml:"DocType,omitempty"`
@@ -3090,6 +3092,16 @@ func (s InitializeRequest) GoString() string {
 
 func (s *InitializeRequest) SetAuthorize(v string) *InitializeRequest {
 	s.Authorize = &v
+	return s
+}
+
+func (s *InitializeRequest) SetCallbackToken(v string) *InitializeRequest {
+	s.CallbackToken = &v
+	return s
+}
+
+func (s *InitializeRequest) SetCallbackUrl(v string) *InitializeRequest {
+	s.CallbackUrl = &v
 	return s
 }
 
@@ -4389,6 +4401,14 @@ func (client *Client) InitializeWithOptions(request *InitializeRequest, runtime 
 	query := map[string]interface{}{}
 	if !tea.BoolValue(util.IsUnset(request.Authorize)) {
 		query["Authorize"] = request.Authorize
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.CallbackToken)) {
+		query["CallbackToken"] = request.CallbackToken
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.CallbackUrl)) {
+		query["CallbackUrl"] = request.CallbackUrl
 	}
 
 	if !tea.BoolValue(util.IsUnset(request.Crop)) {
