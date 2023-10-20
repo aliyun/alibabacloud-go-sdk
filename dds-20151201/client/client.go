@@ -4965,6 +4965,447 @@ func (s *DescribeBackupsResponse) SetBody(v *DescribeBackupsResponseBody) *Descr
 	return s
 }
 
+type DescribeClusterBackupsRequest struct {
+	BackupId               *string `json:"BackupId,omitempty" xml:"BackupId,omitempty"`
+	DBInstanceId           *string `json:"DBInstanceId,omitempty" xml:"DBInstanceId,omitempty"`
+	EndTime                *string `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
+	IsOnlyGetClusterBackUp *bool   `json:"IsOnlyGetClusterBackUp,omitempty" xml:"IsOnlyGetClusterBackUp,omitempty"`
+	OwnerAccount           *string `json:"OwnerAccount,omitempty" xml:"OwnerAccount,omitempty"`
+	OwnerId                *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
+	PageNo                 *int32  `json:"PageNo,omitempty" xml:"PageNo,omitempty"`
+	PageSize               *int32  `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	ResourceOwnerAccount   *string `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
+	ResourceOwnerId        *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
+	SecurityToken          *string `json:"SecurityToken,omitempty" xml:"SecurityToken,omitempty"`
+	StartTime              *string `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
+}
+
+func (s DescribeClusterBackupsRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeClusterBackupsRequest) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeClusterBackupsRequest) SetBackupId(v string) *DescribeClusterBackupsRequest {
+	s.BackupId = &v
+	return s
+}
+
+func (s *DescribeClusterBackupsRequest) SetDBInstanceId(v string) *DescribeClusterBackupsRequest {
+	s.DBInstanceId = &v
+	return s
+}
+
+func (s *DescribeClusterBackupsRequest) SetEndTime(v string) *DescribeClusterBackupsRequest {
+	s.EndTime = &v
+	return s
+}
+
+func (s *DescribeClusterBackupsRequest) SetIsOnlyGetClusterBackUp(v bool) *DescribeClusterBackupsRequest {
+	s.IsOnlyGetClusterBackUp = &v
+	return s
+}
+
+func (s *DescribeClusterBackupsRequest) SetOwnerAccount(v string) *DescribeClusterBackupsRequest {
+	s.OwnerAccount = &v
+	return s
+}
+
+func (s *DescribeClusterBackupsRequest) SetOwnerId(v int64) *DescribeClusterBackupsRequest {
+	s.OwnerId = &v
+	return s
+}
+
+func (s *DescribeClusterBackupsRequest) SetPageNo(v int32) *DescribeClusterBackupsRequest {
+	s.PageNo = &v
+	return s
+}
+
+func (s *DescribeClusterBackupsRequest) SetPageSize(v int32) *DescribeClusterBackupsRequest {
+	s.PageSize = &v
+	return s
+}
+
+func (s *DescribeClusterBackupsRequest) SetResourceOwnerAccount(v string) *DescribeClusterBackupsRequest {
+	s.ResourceOwnerAccount = &v
+	return s
+}
+
+func (s *DescribeClusterBackupsRequest) SetResourceOwnerId(v int64) *DescribeClusterBackupsRequest {
+	s.ResourceOwnerId = &v
+	return s
+}
+
+func (s *DescribeClusterBackupsRequest) SetSecurityToken(v string) *DescribeClusterBackupsRequest {
+	s.SecurityToken = &v
+	return s
+}
+
+func (s *DescribeClusterBackupsRequest) SetStartTime(v string) *DescribeClusterBackupsRequest {
+	s.StartTime = &v
+	return s
+}
+
+type DescribeClusterBackupsResponseBody struct {
+	ClusterBackups []*DescribeClusterBackupsResponseBodyClusterBackups `json:"ClusterBackups,omitempty" xml:"ClusterBackups,omitempty" type:"Repeated"`
+	MaxResults     *int32                                              `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
+	PageNumber     *int32                                              `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
+	PageSize       *int32                                              `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	RequestId      *string                                             `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+}
+
+func (s DescribeClusterBackupsResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeClusterBackupsResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeClusterBackupsResponseBody) SetClusterBackups(v []*DescribeClusterBackupsResponseBodyClusterBackups) *DescribeClusterBackupsResponseBody {
+	s.ClusterBackups = v
+	return s
+}
+
+func (s *DescribeClusterBackupsResponseBody) SetMaxResults(v int32) *DescribeClusterBackupsResponseBody {
+	s.MaxResults = &v
+	return s
+}
+
+func (s *DescribeClusterBackupsResponseBody) SetPageNumber(v int32) *DescribeClusterBackupsResponseBody {
+	s.PageNumber = &v
+	return s
+}
+
+func (s *DescribeClusterBackupsResponseBody) SetPageSize(v int32) *DescribeClusterBackupsResponseBody {
+	s.PageSize = &v
+	return s
+}
+
+func (s *DescribeClusterBackupsResponseBody) SetRequestId(v string) *DescribeClusterBackupsResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+type DescribeClusterBackupsResponseBodyClusterBackups struct {
+	Backups                []*DescribeClusterBackupsResponseBodyClusterBackupsBackups `json:"Backups,omitempty" xml:"Backups,omitempty" type:"Repeated"`
+	ClusterBackupEndTime   *string                                                    `json:"ClusterBackupEndTime,omitempty" xml:"ClusterBackupEndTime,omitempty"`
+	ClusterBackupId        *string                                                    `json:"ClusterBackupId,omitempty" xml:"ClusterBackupId,omitempty"`
+	ClusterBackupMode      *string                                                    `json:"ClusterBackupMode,omitempty" xml:"ClusterBackupMode,omitempty"`
+	ClusterBackupSize      *string                                                    `json:"ClusterBackupSize,omitempty" xml:"ClusterBackupSize,omitempty"`
+	ClusterBackupStartTime *string                                                    `json:"ClusterBackupStartTime,omitempty" xml:"ClusterBackupStartTime,omitempty"`
+	ClusterBackupStatus    *string                                                    `json:"ClusterBackupStatus,omitempty" xml:"ClusterBackupStatus,omitempty"`
+	ExtraInfo              *DescribeClusterBackupsResponseBodyClusterBackupsExtraInfo `json:"ExtraInfo,omitempty" xml:"ExtraInfo,omitempty" type:"Struct"`
+	IsAvail                *int32                                                     `json:"IsAvail,omitempty" xml:"IsAvail,omitempty"`
+	Progress               *string                                                    `json:"Progress,omitempty" xml:"Progress,omitempty"`
+}
+
+func (s DescribeClusterBackupsResponseBodyClusterBackups) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeClusterBackupsResponseBodyClusterBackups) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeClusterBackupsResponseBodyClusterBackups) SetBackups(v []*DescribeClusterBackupsResponseBodyClusterBackupsBackups) *DescribeClusterBackupsResponseBodyClusterBackups {
+	s.Backups = v
+	return s
+}
+
+func (s *DescribeClusterBackupsResponseBodyClusterBackups) SetClusterBackupEndTime(v string) *DescribeClusterBackupsResponseBodyClusterBackups {
+	s.ClusterBackupEndTime = &v
+	return s
+}
+
+func (s *DescribeClusterBackupsResponseBodyClusterBackups) SetClusterBackupId(v string) *DescribeClusterBackupsResponseBodyClusterBackups {
+	s.ClusterBackupId = &v
+	return s
+}
+
+func (s *DescribeClusterBackupsResponseBodyClusterBackups) SetClusterBackupMode(v string) *DescribeClusterBackupsResponseBodyClusterBackups {
+	s.ClusterBackupMode = &v
+	return s
+}
+
+func (s *DescribeClusterBackupsResponseBodyClusterBackups) SetClusterBackupSize(v string) *DescribeClusterBackupsResponseBodyClusterBackups {
+	s.ClusterBackupSize = &v
+	return s
+}
+
+func (s *DescribeClusterBackupsResponseBodyClusterBackups) SetClusterBackupStartTime(v string) *DescribeClusterBackupsResponseBodyClusterBackups {
+	s.ClusterBackupStartTime = &v
+	return s
+}
+
+func (s *DescribeClusterBackupsResponseBodyClusterBackups) SetClusterBackupStatus(v string) *DescribeClusterBackupsResponseBodyClusterBackups {
+	s.ClusterBackupStatus = &v
+	return s
+}
+
+func (s *DescribeClusterBackupsResponseBodyClusterBackups) SetExtraInfo(v *DescribeClusterBackupsResponseBodyClusterBackupsExtraInfo) *DescribeClusterBackupsResponseBodyClusterBackups {
+	s.ExtraInfo = v
+	return s
+}
+
+func (s *DescribeClusterBackupsResponseBodyClusterBackups) SetIsAvail(v int32) *DescribeClusterBackupsResponseBodyClusterBackups {
+	s.IsAvail = &v
+	return s
+}
+
+func (s *DescribeClusterBackupsResponseBodyClusterBackups) SetProgress(v string) *DescribeClusterBackupsResponseBodyClusterBackups {
+	s.Progress = &v
+	return s
+}
+
+type DescribeClusterBackupsResponseBodyClusterBackupsBackups struct {
+	BackupDownloadURL         *string `json:"BackupDownloadURL,omitempty" xml:"BackupDownloadURL,omitempty"`
+	BackupEndTime             *string `json:"BackupEndTime,omitempty" xml:"BackupEndTime,omitempty"`
+	BackupId                  *string `json:"BackupId,omitempty" xml:"BackupId,omitempty"`
+	BackupIntranetDownloadURL *string `json:"BackupIntranetDownloadURL,omitempty" xml:"BackupIntranetDownloadURL,omitempty"`
+	BackupName                *string `json:"BackupName,omitempty" xml:"BackupName,omitempty"`
+	BackupSize                *string `json:"BackupSize,omitempty" xml:"BackupSize,omitempty"`
+	BackupStartTime           *string `json:"BackupStartTime,omitempty" xml:"BackupStartTime,omitempty"`
+	BackupStatus              *string `json:"BackupStatus,omitempty" xml:"BackupStatus,omitempty"`
+	InstanceName              *string `json:"InstanceName,omitempty" xml:"InstanceName,omitempty"`
+	IsAvail                   *string `json:"IsAvail,omitempty" xml:"IsAvail,omitempty"`
+}
+
+func (s DescribeClusterBackupsResponseBodyClusterBackupsBackups) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeClusterBackupsResponseBodyClusterBackupsBackups) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeClusterBackupsResponseBodyClusterBackupsBackups) SetBackupDownloadURL(v string) *DescribeClusterBackupsResponseBodyClusterBackupsBackups {
+	s.BackupDownloadURL = &v
+	return s
+}
+
+func (s *DescribeClusterBackupsResponseBodyClusterBackupsBackups) SetBackupEndTime(v string) *DescribeClusterBackupsResponseBodyClusterBackupsBackups {
+	s.BackupEndTime = &v
+	return s
+}
+
+func (s *DescribeClusterBackupsResponseBodyClusterBackupsBackups) SetBackupId(v string) *DescribeClusterBackupsResponseBodyClusterBackupsBackups {
+	s.BackupId = &v
+	return s
+}
+
+func (s *DescribeClusterBackupsResponseBodyClusterBackupsBackups) SetBackupIntranetDownloadURL(v string) *DescribeClusterBackupsResponseBodyClusterBackupsBackups {
+	s.BackupIntranetDownloadURL = &v
+	return s
+}
+
+func (s *DescribeClusterBackupsResponseBodyClusterBackupsBackups) SetBackupName(v string) *DescribeClusterBackupsResponseBodyClusterBackupsBackups {
+	s.BackupName = &v
+	return s
+}
+
+func (s *DescribeClusterBackupsResponseBodyClusterBackupsBackups) SetBackupSize(v string) *DescribeClusterBackupsResponseBodyClusterBackupsBackups {
+	s.BackupSize = &v
+	return s
+}
+
+func (s *DescribeClusterBackupsResponseBodyClusterBackupsBackups) SetBackupStartTime(v string) *DescribeClusterBackupsResponseBodyClusterBackupsBackups {
+	s.BackupStartTime = &v
+	return s
+}
+
+func (s *DescribeClusterBackupsResponseBodyClusterBackupsBackups) SetBackupStatus(v string) *DescribeClusterBackupsResponseBodyClusterBackupsBackups {
+	s.BackupStatus = &v
+	return s
+}
+
+func (s *DescribeClusterBackupsResponseBodyClusterBackupsBackups) SetInstanceName(v string) *DescribeClusterBackupsResponseBodyClusterBackupsBackups {
+	s.InstanceName = &v
+	return s
+}
+
+func (s *DescribeClusterBackupsResponseBodyClusterBackupsBackups) SetIsAvail(v string) *DescribeClusterBackupsResponseBodyClusterBackupsBackups {
+	s.IsAvail = &v
+	return s
+}
+
+type DescribeClusterBackupsResponseBodyClusterBackupsExtraInfo struct {
+	RegistryFromHistory *string `json:"RegistryFromHistory,omitempty" xml:"RegistryFromHistory,omitempty"`
+}
+
+func (s DescribeClusterBackupsResponseBodyClusterBackupsExtraInfo) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeClusterBackupsResponseBodyClusterBackupsExtraInfo) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeClusterBackupsResponseBodyClusterBackupsExtraInfo) SetRegistryFromHistory(v string) *DescribeClusterBackupsResponseBodyClusterBackupsExtraInfo {
+	s.RegistryFromHistory = &v
+	return s
+}
+
+type DescribeClusterBackupsResponse struct {
+	Headers    map[string]*string                  `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                              `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *DescribeClusterBackupsResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s DescribeClusterBackupsResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeClusterBackupsResponse) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeClusterBackupsResponse) SetHeaders(v map[string]*string) *DescribeClusterBackupsResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *DescribeClusterBackupsResponse) SetStatusCode(v int32) *DescribeClusterBackupsResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *DescribeClusterBackupsResponse) SetBody(v *DescribeClusterBackupsResponseBody) *DescribeClusterBackupsResponse {
+	s.Body = v
+	return s
+}
+
+type DescribeClusterRecoverTimeRequest struct {
+	DBInstanceId         *string `json:"DBInstanceId,omitempty" xml:"DBInstanceId,omitempty"`
+	OwnerAccount         *string `json:"OwnerAccount,omitempty" xml:"OwnerAccount,omitempty"`
+	OwnerId              *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
+	ResourceOwnerAccount *string `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
+	ResourceOwnerId      *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
+	SecurityToken        *string `json:"SecurityToken,omitempty" xml:"SecurityToken,omitempty"`
+}
+
+func (s DescribeClusterRecoverTimeRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeClusterRecoverTimeRequest) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeClusterRecoverTimeRequest) SetDBInstanceId(v string) *DescribeClusterRecoverTimeRequest {
+	s.DBInstanceId = &v
+	return s
+}
+
+func (s *DescribeClusterRecoverTimeRequest) SetOwnerAccount(v string) *DescribeClusterRecoverTimeRequest {
+	s.OwnerAccount = &v
+	return s
+}
+
+func (s *DescribeClusterRecoverTimeRequest) SetOwnerId(v int64) *DescribeClusterRecoverTimeRequest {
+	s.OwnerId = &v
+	return s
+}
+
+func (s *DescribeClusterRecoverTimeRequest) SetResourceOwnerAccount(v string) *DescribeClusterRecoverTimeRequest {
+	s.ResourceOwnerAccount = &v
+	return s
+}
+
+func (s *DescribeClusterRecoverTimeRequest) SetResourceOwnerId(v int64) *DescribeClusterRecoverTimeRequest {
+	s.ResourceOwnerId = &v
+	return s
+}
+
+func (s *DescribeClusterRecoverTimeRequest) SetSecurityToken(v string) *DescribeClusterRecoverTimeRequest {
+	s.SecurityToken = &v
+	return s
+}
+
+type DescribeClusterRecoverTimeResponseBody struct {
+	// Id of the request
+	RequestId     *string                                                `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	RestoreRanges []*DescribeClusterRecoverTimeResponseBodyRestoreRanges `json:"RestoreRanges,omitempty" xml:"RestoreRanges,omitempty" type:"Repeated"`
+}
+
+func (s DescribeClusterRecoverTimeResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeClusterRecoverTimeResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeClusterRecoverTimeResponseBody) SetRequestId(v string) *DescribeClusterRecoverTimeResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *DescribeClusterRecoverTimeResponseBody) SetRestoreRanges(v []*DescribeClusterRecoverTimeResponseBodyRestoreRanges) *DescribeClusterRecoverTimeResponseBody {
+	s.RestoreRanges = v
+	return s
+}
+
+type DescribeClusterRecoverTimeResponseBodyRestoreRanges struct {
+	RestoreBeginTime *string `json:"RestoreBeginTime,omitempty" xml:"RestoreBeginTime,omitempty"`
+	RestoreEndTime   *string `json:"RestoreEndTime,omitempty" xml:"RestoreEndTime,omitempty"`
+	RestoreType      *string `json:"RestoreType,omitempty" xml:"RestoreType,omitempty"`
+}
+
+func (s DescribeClusterRecoverTimeResponseBodyRestoreRanges) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeClusterRecoverTimeResponseBodyRestoreRanges) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeClusterRecoverTimeResponseBodyRestoreRanges) SetRestoreBeginTime(v string) *DescribeClusterRecoverTimeResponseBodyRestoreRanges {
+	s.RestoreBeginTime = &v
+	return s
+}
+
+func (s *DescribeClusterRecoverTimeResponseBodyRestoreRanges) SetRestoreEndTime(v string) *DescribeClusterRecoverTimeResponseBodyRestoreRanges {
+	s.RestoreEndTime = &v
+	return s
+}
+
+func (s *DescribeClusterRecoverTimeResponseBodyRestoreRanges) SetRestoreType(v string) *DescribeClusterRecoverTimeResponseBodyRestoreRanges {
+	s.RestoreType = &v
+	return s
+}
+
+type DescribeClusterRecoverTimeResponse struct {
+	Headers    map[string]*string                      `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                                  `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *DescribeClusterRecoverTimeResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s DescribeClusterRecoverTimeResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeClusterRecoverTimeResponse) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeClusterRecoverTimeResponse) SetHeaders(v map[string]*string) *DescribeClusterRecoverTimeResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *DescribeClusterRecoverTimeResponse) SetStatusCode(v int32) *DescribeClusterRecoverTimeResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *DescribeClusterRecoverTimeResponse) SetBody(v *DescribeClusterRecoverTimeResponseBody) *DescribeClusterRecoverTimeResponse {
+	s.Body = v
+	return s
+}
+
 type DescribeDBInstanceAttributeRequest struct {
 	// The instance ID.
 	DBInstanceId *string `json:"DBInstanceId,omitempty" xml:"DBInstanceId,omitempty"`
@@ -17923,6 +18364,105 @@ func (s *TagResourcesResponse) SetBody(v *TagResourcesResponseBody) *TagResource
 	return s
 }
 
+type TransferClusterBackupRequest struct {
+	DBInstanceId         *string `json:"DBInstanceId,omitempty" xml:"DBInstanceId,omitempty"`
+	OwnerAccount         *string `json:"OwnerAccount,omitempty" xml:"OwnerAccount,omitempty"`
+	OwnerId              *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
+	ResourceOwnerAccount *string `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
+	ResourceOwnerId      *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
+	SecurityToken        *string `json:"SecurityToken,omitempty" xml:"SecurityToken,omitempty"`
+}
+
+func (s TransferClusterBackupRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s TransferClusterBackupRequest) GoString() string {
+	return s.String()
+}
+
+func (s *TransferClusterBackupRequest) SetDBInstanceId(v string) *TransferClusterBackupRequest {
+	s.DBInstanceId = &v
+	return s
+}
+
+func (s *TransferClusterBackupRequest) SetOwnerAccount(v string) *TransferClusterBackupRequest {
+	s.OwnerAccount = &v
+	return s
+}
+
+func (s *TransferClusterBackupRequest) SetOwnerId(v int64) *TransferClusterBackupRequest {
+	s.OwnerId = &v
+	return s
+}
+
+func (s *TransferClusterBackupRequest) SetResourceOwnerAccount(v string) *TransferClusterBackupRequest {
+	s.ResourceOwnerAccount = &v
+	return s
+}
+
+func (s *TransferClusterBackupRequest) SetResourceOwnerId(v int64) *TransferClusterBackupRequest {
+	s.ResourceOwnerId = &v
+	return s
+}
+
+func (s *TransferClusterBackupRequest) SetSecurityToken(v string) *TransferClusterBackupRequest {
+	s.SecurityToken = &v
+	return s
+}
+
+type TransferClusterBackupResponseBody struct {
+	AlreadyDone *string `json:"AlreadyDone,omitempty" xml:"AlreadyDone,omitempty"`
+	RequestId   *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+}
+
+func (s TransferClusterBackupResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s TransferClusterBackupResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *TransferClusterBackupResponseBody) SetAlreadyDone(v string) *TransferClusterBackupResponseBody {
+	s.AlreadyDone = &v
+	return s
+}
+
+func (s *TransferClusterBackupResponseBody) SetRequestId(v string) *TransferClusterBackupResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+type TransferClusterBackupResponse struct {
+	Headers    map[string]*string                 `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                             `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *TransferClusterBackupResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s TransferClusterBackupResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s TransferClusterBackupResponse) GoString() string {
+	return s.String()
+}
+
+func (s *TransferClusterBackupResponse) SetHeaders(v map[string]*string) *TransferClusterBackupResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *TransferClusterBackupResponse) SetStatusCode(v int32) *TransferClusterBackupResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *TransferClusterBackupResponse) SetBody(v *TransferClusterBackupResponseBody) *TransferClusterBackupResponse {
+	s.Body = v
+	return s
+}
+
 type TransformInstanceChargeTypeRequest struct {
 	// Specifies whether to enable automatic payment. Valid values:
 	//
@@ -21092,6 +21632,134 @@ func (client *Client) DescribeBackups(request *DescribeBackupsRequest) (_result 
 	runtime := &util.RuntimeOptions{}
 	_result = &DescribeBackupsResponse{}
 	_body, _err := client.DescribeBackupsWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) DescribeClusterBackupsWithOptions(request *DescribeClusterBackupsRequest, runtime *util.RuntimeOptions) (_result *DescribeClusterBackupsResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.BackupId)) {
+		query["BackupId"] = request.BackupId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.DBInstanceId)) {
+		query["DBInstanceId"] = request.DBInstanceId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.EndTime)) {
+		query["EndTime"] = request.EndTime
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.IsOnlyGetClusterBackUp)) {
+		query["IsOnlyGetClusterBackUp"] = request.IsOnlyGetClusterBackUp
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.OwnerAccount)) {
+		query["OwnerAccount"] = request.OwnerAccount
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.OwnerId)) {
+		query["OwnerId"] = request.OwnerId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.PageNo)) {
+		query["PageNo"] = request.PageNo
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.PageSize)) {
+		query["PageSize"] = request.PageSize
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ResourceOwnerAccount)) {
+		query["ResourceOwnerAccount"] = request.ResourceOwnerAccount
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ResourceOwnerId)) {
+		query["ResourceOwnerId"] = request.ResourceOwnerId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.SecurityToken)) {
+		query["SecurityToken"] = request.SecurityToken
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.StartTime)) {
+		query["StartTime"] = request.StartTime
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("DescribeClusterBackups"),
+		Version:     tea.String("2015-12-01"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &DescribeClusterBackupsResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) DescribeClusterBackups(request *DescribeClusterBackupsRequest) (_result *DescribeClusterBackupsResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &DescribeClusterBackupsResponse{}
+	_body, _err := client.DescribeClusterBackupsWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) DescribeClusterRecoverTimeWithOptions(request *DescribeClusterRecoverTimeRequest, runtime *util.RuntimeOptions) (_result *DescribeClusterRecoverTimeResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := openapiutil.Query(util.ToMap(request))
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("DescribeClusterRecoverTime"),
+		Version:     tea.String("2015-12-01"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("GET"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &DescribeClusterRecoverTimeResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) DescribeClusterRecoverTime(request *DescribeClusterRecoverTimeRequest) (_result *DescribeClusterRecoverTimeResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &DescribeClusterRecoverTimeResponse{}
+	_body, _err := client.DescribeClusterRecoverTimeWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -26828,6 +27496,70 @@ func (client *Client) TagResources(request *TagResourcesRequest) (_result *TagRe
 	runtime := &util.RuntimeOptions{}
 	_result = &TagResourcesResponse{}
 	_body, _err := client.TagResourcesWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) TransferClusterBackupWithOptions(request *TransferClusterBackupRequest, runtime *util.RuntimeOptions) (_result *TransferClusterBackupResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.DBInstanceId)) {
+		query["DBInstanceId"] = request.DBInstanceId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.OwnerAccount)) {
+		query["OwnerAccount"] = request.OwnerAccount
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.OwnerId)) {
+		query["OwnerId"] = request.OwnerId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ResourceOwnerAccount)) {
+		query["ResourceOwnerAccount"] = request.ResourceOwnerAccount
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ResourceOwnerId)) {
+		query["ResourceOwnerId"] = request.ResourceOwnerId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.SecurityToken)) {
+		query["SecurityToken"] = request.SecurityToken
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("TransferClusterBackup"),
+		Version:     tea.String("2015-12-01"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &TransferClusterBackupResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) TransferClusterBackup(request *TransferClusterBackupRequest) (_result *TransferClusterBackupResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &TransferClusterBackupResponse{}
+	_body, _err := client.TransferClusterBackupWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
