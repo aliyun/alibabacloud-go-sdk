@@ -12230,7 +12230,8 @@ type CostCenterSaveResponseBody struct {
 	Module    *CostCenterSaveResponseBodyModule `json:"module,omitempty" xml:"module,omitempty" type:"Struct"`
 	RequestId *string                           `json:"requestId,omitempty" xml:"requestId,omitempty"`
 	Success   *bool                             `json:"success,omitempty" xml:"success,omitempty"`
-	TraceId   *string                           `json:"traceId,omitempty" xml:"traceId,omitempty"`
+	// traceId
+	TraceId *string `json:"traceId,omitempty" xml:"traceId,omitempty"`
 }
 
 func (s CostCenterSaveResponseBody) String() string {
@@ -14230,6 +14231,7 @@ type FlightBillSettlementQueryResponseBodyModuleDataList struct {
 	InsuranceFee           *float64 `json:"insurance_fee,omitempty" xml:"insurance_fee,omitempty"`
 	InsuranceNumber        *string  `json:"insurance_number,omitempty" xml:"insurance_number,omitempty"`
 	InvoiceTitle           *string  `json:"invoice_title,omitempty" xml:"invoice_title,omitempty"`
+	ItemType               *string  `json:"item_type,omitempty" xml:"item_type,omitempty"`
 	ItineraryNum           *string  `json:"itinerary_num,omitempty" xml:"itinerary_num,omitempty"`
 	ItineraryPrice         *float64 `json:"itinerary_price,omitempty" xml:"itinerary_price,omitempty"`
 	Mileage                *string  `json:"mileage,omitempty" xml:"mileage,omitempty"`
@@ -14271,6 +14273,7 @@ type FlightBillSettlementQueryResponseBodyModuleDataList struct {
 	TravelerName           *string  `json:"traveler_name,omitempty" xml:"traveler_name,omitempty"`
 	UpgradeCost            *float64 `json:"upgrade_cost,omitempty" xml:"upgrade_cost,omitempty"`
 	VoucherType            *int32   `json:"voucher_type,omitempty" xml:"voucher_type,omitempty"`
+	VoyageName             *string  `json:"voyage_name,omitempty" xml:"voyage_name,omitempty"`
 }
 
 func (s FlightBillSettlementQueryResponseBodyModuleDataList) String() string {
@@ -14541,6 +14544,11 @@ func (s *FlightBillSettlementQueryResponseBodyModuleDataList) SetInvoiceTitle(v 
 	return s
 }
 
+func (s *FlightBillSettlementQueryResponseBodyModuleDataList) SetItemType(v string) *FlightBillSettlementQueryResponseBodyModuleDataList {
+	s.ItemType = &v
+	return s
+}
+
 func (s *FlightBillSettlementQueryResponseBodyModuleDataList) SetItineraryNum(v string) *FlightBillSettlementQueryResponseBodyModuleDataList {
 	s.ItineraryNum = &v
 	return s
@@ -14738,6 +14746,11 @@ func (s *FlightBillSettlementQueryResponseBodyModuleDataList) SetUpgradeCost(v f
 
 func (s *FlightBillSettlementQueryResponseBodyModuleDataList) SetVoucherType(v int32) *FlightBillSettlementQueryResponseBodyModuleDataList {
 	s.VoucherType = &v
+	return s
+}
+
+func (s *FlightBillSettlementQueryResponseBodyModuleDataList) SetVoyageName(v string) *FlightBillSettlementQueryResponseBodyModuleDataList {
+	s.VoyageName = &v
 	return s
 }
 
@@ -15923,12 +15936,15 @@ func (s *FlightCreateOrderV2ShrinkRequest) SetTravelersShrink(v string) *FlightC
 }
 
 type FlightCreateOrderV2ResponseBody struct {
-	Code      *string                                `json:"code,omitempty" xml:"code,omitempty"`
-	Message   *string                                `json:"message,omitempty" xml:"message,omitempty"`
-	Module    *FlightCreateOrderV2ResponseBodyModule `json:"module,omitempty" xml:"module,omitempty" type:"Struct"`
-	RequestId *string                                `json:"requestId,omitempty" xml:"requestId,omitempty"`
-	Success   *bool                                  `json:"success,omitempty" xml:"success,omitempty"`
-	TraceId   *string                                `json:"traceId,omitempty" xml:"traceId,omitempty"`
+	Code    *string `json:"code,omitempty" xml:"code,omitempty"`
+	Message *string `json:"message,omitempty" xml:"message,omitempty"`
+	// module
+	Module *FlightCreateOrderV2ResponseBodyModule `json:"module,omitempty" xml:"module,omitempty" type:"Struct"`
+	// requestId
+	RequestId *string `json:"requestId,omitempty" xml:"requestId,omitempty"`
+	Success   *bool   `json:"success,omitempty" xml:"success,omitempty"`
+	// traceId
+	TraceId *string `json:"traceId,omitempty" xml:"traceId,omitempty"`
 }
 
 func (s FlightCreateOrderV2ResponseBody) String() string {
@@ -37204,6 +37220,7 @@ func (s *GroupUserSaveRequest) SetUserName(v string) *GroupUserSaveRequest {
 
 type GroupUserSaveRequestSubCorpIdList struct {
 	DepartIds     []*string `json:"depart_ids,omitempty" xml:"depart_ids,omitempty" type:"Repeated"`
+	Email         *string   `json:"email,omitempty" xml:"email,omitempty"`
 	LeaveStatus   *int32    `json:"leave_status,omitempty" xml:"leave_status,omitempty"`
 	ManagerUserId *string   `json:"manager_user_id,omitempty" xml:"manager_user_id,omitempty"`
 	PositionLevel *string   `json:"position_level,omitempty" xml:"position_level,omitempty"`
@@ -37220,6 +37237,11 @@ func (s GroupUserSaveRequestSubCorpIdList) GoString() string {
 
 func (s *GroupUserSaveRequestSubCorpIdList) SetDepartIds(v []*string) *GroupUserSaveRequestSubCorpIdList {
 	s.DepartIds = v
+	return s
+}
+
+func (s *GroupUserSaveRequestSubCorpIdList) SetEmail(v string) *GroupUserSaveRequestSubCorpIdList {
+	s.Email = &v
 	return s
 }
 
