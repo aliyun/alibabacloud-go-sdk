@@ -1,3 +1,6 @@
+2023-10-21 Version: v2.0.15
+- Generated golang 2017-09-12 for Cbn.
+
 2023-09-12 Version: v2.0.14
 - Generated golang 2017-09-12 for Cbn.
 
