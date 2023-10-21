@@ -13290,8 +13290,9 @@ type DescribeAppAttributesRequest struct {
 	// The name of the app.
 	AppName *string `json:"AppName,omitempty" xml:"AppName,omitempty"`
 	// Specifies whether to enable tag verification.
-	EnableTagAuth *bool   `json:"EnableTagAuth,omitempty" xml:"EnableTagAuth,omitempty"`
-	Extend        *string `json:"Extend,omitempty" xml:"Extend,omitempty"`
+	EnableTagAuth *bool `json:"EnableTagAuth,omitempty" xml:"EnableTagAuth,omitempty"`
+	// Extended Fields.
+	Extend *string `json:"Extend,omitempty" xml:"Extend,omitempty"`
 	// The number of the page to return. Pages start from page 1. Default value: 1.
 	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
 	// The number of entries to return on each page. Maximum value: 100. Default value: 10.
@@ -13374,7 +13375,7 @@ type DescribeAppAttributesRequestTag struct {
 	//
 	// N can be an integer from 1 to 20.``
 	Key *string `json:"Key,omitempty" xml:"Key,omitempty"`
-	// The key of the tag.
+	// The value of the tag.
 	//
 	// N can be an integer from 1 to 20.``
 	Value *string `json:"Value,omitempty" xml:"Value,omitempty"`
@@ -13470,7 +13471,8 @@ type DescribeAppAttributesResponseBodyAppsAppAttribute struct {
 	CreatedTime *string `json:"CreatedTime,omitempty" xml:"CreatedTime,omitempty"`
 	// The description of the app.
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
-	Extend      *string `json:"Extend,omitempty" xml:"Extend,omitempty"`
+	// Extended Fields.
+	Extend *string `json:"Extend,omitempty" xml:"Extend,omitempty"`
 	// The modification time (UTC) of the app.
 	ModifiedTime *string `json:"ModifiedTime,omitempty" xml:"ModifiedTime,omitempty"`
 	// The tags.
@@ -30625,6 +30627,7 @@ func (s *SetAccessControlListAttributeResponse) SetBody(v *SetAccessControlListA
 type SetApiProductsAuthoritiesRequest struct {
 	ApiProductIds []*string `json:"ApiProductIds,omitempty" xml:"ApiProductIds,omitempty" type:"Repeated"`
 	AppId         *int64    `json:"AppId,omitempty" xml:"AppId,omitempty"`
+	AuthValidTime *string   `json:"AuthValidTime,omitempty" xml:"AuthValidTime,omitempty"`
 	Description   *string   `json:"Description,omitempty" xml:"Description,omitempty"`
 	SecurityToken *string   `json:"SecurityToken,omitempty" xml:"SecurityToken,omitempty"`
 }
@@ -30647,6 +30650,11 @@ func (s *SetApiProductsAuthoritiesRequest) SetAppId(v int64) *SetApiProductsAuth
 	return s
 }
 
+func (s *SetApiProductsAuthoritiesRequest) SetAuthValidTime(v string) *SetApiProductsAuthoritiesRequest {
+	s.AuthValidTime = &v
+	return s
+}
+
 func (s *SetApiProductsAuthoritiesRequest) SetDescription(v string) *SetApiProductsAuthoritiesRequest {
 	s.Description = &v
 	return s
@@ -30660,6 +30668,7 @@ func (s *SetApiProductsAuthoritiesRequest) SetSecurityToken(v string) *SetApiPro
 type SetApiProductsAuthoritiesShrinkRequest struct {
 	ApiProductIdsShrink *string `json:"ApiProductIds,omitempty" xml:"ApiProductIds,omitempty"`
 	AppId               *int64  `json:"AppId,omitempty" xml:"AppId,omitempty"`
+	AuthValidTime       *string `json:"AuthValidTime,omitempty" xml:"AuthValidTime,omitempty"`
 	Description         *string `json:"Description,omitempty" xml:"Description,omitempty"`
 	SecurityToken       *string `json:"SecurityToken,omitempty" xml:"SecurityToken,omitempty"`
 }
@@ -30679,6 +30688,11 @@ func (s *SetApiProductsAuthoritiesShrinkRequest) SetApiProductIdsShrink(v string
 
 func (s *SetApiProductsAuthoritiesShrinkRequest) SetAppId(v int64) *SetApiProductsAuthoritiesShrinkRequest {
 	s.AppId = &v
+	return s
+}
+
+func (s *SetApiProductsAuthoritiesShrinkRequest) SetAuthValidTime(v string) *SetApiProductsAuthoritiesShrinkRequest {
+	s.AuthValidTime = &v
 	return s
 }
 
@@ -44064,6 +44078,10 @@ func (client *Client) SetApiProductsAuthoritiesWithOptions(tmpReq *SetApiProduct
 
 	if !tea.BoolValue(util.IsUnset(request.AppId)) {
 		query["AppId"] = request.AppId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.AuthValidTime)) {
+		query["AuthValidTime"] = request.AuthValidTime
 	}
 
 	if !tea.BoolValue(util.IsUnset(request.Description)) {
