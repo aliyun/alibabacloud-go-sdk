@@ -1960,30 +1960,32 @@ func (s *AddTagsResponse) SetBody(v *AddTagsResponseBody) *AddTagsResponse {
 }
 
 type ApplyMetricRuleTemplateRequest struct {
-	// The error message returned.
-	ApplyMode *string `json:"ApplyMode,omitempty" xml:"ApplyMode,omitempty"`
-	// The callback URL to which a POST request is sent when an alert is triggered based on the alert rule.
-	EnableEndTime *int64 `json:"EnableEndTime,omitempty" xml:"EnableEndTime,omitempty"`
 	// The mode in which the alert template is applied. Valid values:
 	//
 	// *   GROUP_INSTANCE_FIRST: The metrics in the application group take precedence. If a metric specified in the alert template does not exist in the application group, the system does not generate an alert rule for the metric based on the alert template.
 	// *   ALARM_TEMPLATE_FIRST: The metrics specified in the alert template take precedence. If a metric specified in the alert template does not exist in the application group, the system still generates an alert rule for the metric based on the alert template.
-	EnableStartTime *int64 `json:"EnableStartTime,omitempty" xml:"EnableStartTime,omitempty"`
+	ApplyMode *string `json:"ApplyMode,omitempty" xml:"ApplyMode,omitempty"`
+	// The end of the time period during which the alert rule is effective. Valid values: 00 to 23. A value of 00 indicates 00:59 and a value of 23 indicates 23:59.
+	EnableEndTime *int64 `json:"EnableEndTime,omitempty" xml:"EnableEndTime,omitempty"`
 	// The beginning of the time period during which the alert rule is effective. Valid values: 00 to 23. A value of 00 indicates 00:00 and a value of 23 indicates 23:00.
+	EnableStartTime *int64 `json:"EnableStartTime,omitempty" xml:"EnableStartTime,omitempty"`
+	// The ID of the application group to which the alert template is applied.
+	//
+	// For more information about how to query the ID of an application group, see [DescribeMonitorGroups](~~115032~~).
 	GroupId *int64 `json:"GroupId,omitempty" xml:"GroupId,omitempty"`
-	// The response code.
-	//
-	// >  The HTTP status code 200 indicates that the call succeeds.
-	NotifyLevel *int64 `json:"NotifyLevel,omitempty" xml:"NotifyLevel,omitempty"`
-	// The ID of the alert template.
-	//
-	// For more information about how to query the IDs of alert templates, see [DescribeMetricRuleTemplateList](~~114982~~).
-	SilenceTime *int64 `json:"SilenceTime,omitempty" xml:"SilenceTime,omitempty"`
 	// The alert notification method. Valid values:
 	//
 	// Set the value to 4. A value of 4 indicates that alert notifications are sent by using TradeManager and DingTalk chatbots.
+	NotifyLevel *int64 `json:"NotifyLevel,omitempty" xml:"NotifyLevel,omitempty"`
+	// The mute period during which notifications are not repeatedly sent for an alert. Unit: seconds. Default value: 86400.
+	//
+	// >  Only one alert notification is sent during each mute period even if the metric value exceeds the alert threshold several times.
+	SilenceTime *int64 `json:"SilenceTime,omitempty" xml:"SilenceTime,omitempty"`
+	// The ID of the alert template.
+	//
+	// For more information about how to query the IDs of alert templates, see [DescribeMetricRuleTemplateList](~~114982~~).
 	TemplateIds *string `json:"TemplateIds,omitempty" xml:"TemplateIds,omitempty"`
-	// The ID of the request.
+	// The callback URL to which a POST request is sent when an alert is triggered based on the alert rule.
 	Webhook *string `json:"Webhook,omitempty" xml:"Webhook,omitempty"`
 }
 
@@ -2036,20 +2038,20 @@ func (s *ApplyMetricRuleTemplateRequest) SetWebhook(v string) *ApplyMetricRuleTe
 }
 
 type ApplyMetricRuleTemplateResponseBody struct {
+	// The response code.
+	//
+	// >  The HTTP status code 200 indicates that the call succeeds.
+	Code *int32 `json:"Code,omitempty" xml:"Code,omitempty"`
+	// The error message returned.
+	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// The ID of the request.
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The resources that are affected by the alert rule.
+	Resource *ApplyMetricRuleTemplateResponseBodyResource `json:"Resource,omitempty" xml:"Resource,omitempty" type:"Struct"`
 	// Indicates whether the call succeeds. Valid values:
 	//
 	// *   true: The call succeeds.
 	// *   false: The call fails.
-	Code *int32 `json:"Code,omitempty" xml:"Code,omitempty"`
-	// The resources that are affected by the alert rule.
-	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
-	// The ID of the application group to which the alert template is applied.
-	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// The response code.
-	//
-	// >  The HTTP status code 200 indicates that the call succeeds.
-	Resource *ApplyMetricRuleTemplateResponseBodyResource `json:"Resource,omitempty" xml:"Resource,omitempty" type:"Struct"`
-	// The details of the generated alert rule.
 	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
 }
 
@@ -2087,12 +2089,9 @@ func (s *ApplyMetricRuleTemplateResponseBody) SetSuccess(v bool) *ApplyMetricRul
 }
 
 type ApplyMetricRuleTemplateResponseBodyResource struct {
-	// Indicates whether the call succeeds. Valid values:
-	//
-	// *   true: The call succeeds.
-	// *   false: The call fails.
+	// The details of the generated alert rule.
 	AlertResults []*ApplyMetricRuleTemplateResponseBodyResourceAlertResults `json:"AlertResults,omitempty" xml:"AlertResults,omitempty" type:"Repeated"`
-	// The returned information.
+	// The ID of the application group to which the alert template is applied.
 	GroupId *int64 `json:"GroupId,omitempty" xml:"GroupId,omitempty"`
 }
 
@@ -2115,14 +2114,20 @@ func (s *ApplyMetricRuleTemplateResponseBodyResource) SetGroupId(v int64) *Apply
 }
 
 type ApplyMetricRuleTemplateResponseBodyResourceAlertResults struct {
-	// The name of the alert rule.
+	// The response code.
+	//
+	// >  The HTTP status code 200 indicates that the call succeeds.
 	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
-	// The ID of the alert rule.
+	// The returned information.
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
-	RuleId  *string `json:"RuleId,omitempty" xml:"RuleId,omitempty"`
-	// For more information about common request parameters, see [Common parameters](~~199331~~).
+	// The ID of the alert rule.
+	RuleId *string `json:"RuleId,omitempty" xml:"RuleId,omitempty"`
+	// The name of the alert rule.
 	RuleName *string `json:"RuleName,omitempty" xml:"RuleName,omitempty"`
-	// In this example, the `700****` alert template is applied to the `123456` application group. For the generated alert rule, the ID is `applyTemplate8ab74c6b-9f27-47ab-8841-de01dc08****`, and the name is `test123`.
+	// Indicates whether the call succeeds. Valid values:
+	//
+	// *   true: The call succeeds.
+	// *   false: The call fails.
 	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
 }
 
@@ -2212,21 +2217,29 @@ func (s *BatchCreateInstantSiteMonitorRequest) SetTaskList(v []*BatchCreateInsta
 }
 
 type BatchCreateInstantSiteMonitorRequestTaskList struct {
-	// The HTTP status code.
+	// The URL or IP address that is monitored by the task.
 	//
-	// >  The status code 200 indicates that the call was successful.
+	// >  You must create at least one site monitoring task. You must specify all of the `Address`, `TaskName`, and `TaskType` parameters in each request.
 	Address *string `json:"Address,omitempty" xml:"Address,omitempty"`
-	// The ID of the site monitoring task.
-	IspCities *string `json:"IspCities,omitempty" xml:"IspCities,omitempty"`
 	// The detection points. If you leave this parameter empty, the system randomly selects three detection points.
 	//
 	// The value is a `JSON array`. Example: `{"city":"546","isp":"465"},{"city":"572","isp":"465"},{"city":"738","isp":"465"}`. The values of the city field indicate Beijing, Hangzhou, and Qingdao.
 	//
 	// For information about how to obtain detection points, see [DescribeSiteMonitorISPCityList](~~115045~~).
+	IspCities *string `json:"IspCities,omitempty" xml:"IspCities,omitempty"`
+	// The extended options of the protocol that is used by the site monitoring task. The options vary based on the protocol.
 	OptionsJson *string `json:"OptionsJson,omitempty" xml:"OptionsJson,omitempty"`
-	// The operation that you want to perform. Set the value to **BatchCreateInstantSiteMonitor**.
-	TaskName *string `json:"TaskName,omitempty" xml:"TaskName,omitempty"`
 	// The name of the site monitoring task.
+	//
+	// The name must be 4 to 100 characters in length, and can contain letters, digits, and underscores (\_).
+	//
+	// >  You must create at least one site monitoring task. You must specify all of the `Address`, `TaskName`, and `TaskType` parameters in each request.
+	TaskName *string `json:"TaskName,omitempty" xml:"TaskName,omitempty"`
+	// The type of the site monitoring task.
+	//
+	// Valid values: HTTP, PING, TCP, UDP, DNS, SMTP, POP3, and FTP.
+	//
+	// >  You must create at least one site monitoring task. You must specify all of the `Address`, `TaskName`, and `TaskType` parameters in each request.
 	TaskType *string `json:"TaskType,omitempty" xml:"TaskType,omitempty"`
 }
 
@@ -2264,18 +2277,20 @@ func (s *BatchCreateInstantSiteMonitorRequestTaskList) SetTaskType(v string) *Ba
 }
 
 type BatchCreateInstantSiteMonitorResponseBody struct {
+	// The HTTP status code.
+	//
+	// >  The status code 200 indicates that the call was successful.
 	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
-	// The ID of the request.
-	Data []*BatchCreateInstantSiteMonitorResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Repeated"`
-	// The type of the site monitoring task.
-	//
-	// Valid values: HTTP, PING, TCP, UDP, DNS, SMTP, POP3, and FTP.
-	//
-	// >  You must create at least one site monitoring task. You must specify all of the `Address`, `TaskName`, and `TaskType` parameters in each request.
-	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
-	// The returned message.
-	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	// The information about the site monitoring task.
+	Data []*BatchCreateInstantSiteMonitorResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Repeated"`
+	// The returned message.
+	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// The ID of the request.
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// Indicates whether the call was successful. Valid values:
+	//
+	// *   true: The call was successful.
+	// *   false: The call failed.
 	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
 }
 
@@ -2313,8 +2328,9 @@ func (s *BatchCreateInstantSiteMonitorResponseBody) SetSuccess(v bool) *BatchCre
 }
 
 type BatchCreateInstantSiteMonitorResponseBodyData struct {
+	// The ID of the site monitoring task.
 	TaskId *string `json:"TaskId,omitempty" xml:"TaskId,omitempty"`
-	// For more information about common request parameters, see [Common parameters](~~199331~~).
+	// The name of the site monitoring task.
 	TaskName *string `json:"TaskName,omitempty" xml:"TaskName,omitempty"`
 }
 
@@ -3102,15 +3118,38 @@ func (s *CreateCmsSmspackageOrderResponse) SetBody(v *CreateCmsSmspackageOrderRe
 }
 
 type CreateDynamicTagGroupRequest struct {
-	ContactGroupList           []*string                                   `json:"ContactGroupList,omitempty" xml:"ContactGroupList,omitempty" type:"Repeated"`
-	EnableInstallAgent         *bool                                       `json:"EnableInstallAgent,omitempty" xml:"EnableInstallAgent,omitempty"`
-	EnableSubscribeEvent       *bool                                       `json:"EnableSubscribeEvent,omitempty" xml:"EnableSubscribeEvent,omitempty"`
-	MatchExpress               []*CreateDynamicTagGroupRequestMatchExpress `json:"MatchExpress,omitempty" xml:"MatchExpress,omitempty" type:"Repeated"`
-	MatchExpressFilterRelation *string                                     `json:"MatchExpressFilterRelation,omitempty" xml:"MatchExpressFilterRelation,omitempty"`
-	RegionId                   *string                                     `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	TagKey                     *string                                     `json:"TagKey,omitempty" xml:"TagKey,omitempty"`
-	TagRegionId                *string                                     `json:"TagRegionId,omitempty" xml:"TagRegionId,omitempty"`
-	TemplateIdList             []*string                                   `json:"TemplateIdList,omitempty" xml:"TemplateIdList,omitempty" type:"Repeated"`
+	// The relationship between the conditional expressions for the tag values of the cloud resources. Valid values:
+	//
+	// *   and (default)
+	// *   or
+	ContactGroupList []*string `json:"ContactGroupList,omitempty" xml:"ContactGroupList,omitempty" type:"Repeated"`
+	// The ID of the region to which the tags belong.
+	EnableInstallAgent *bool `json:"EnableInstallAgent,omitempty" xml:"EnableInstallAgent,omitempty"`
+	// The keys of the tags that are used to create the application group. If a specified key is attached to multiple resources, the resources that have the same key-value pair are added to the same group.
+	EnableSubscribeEvent *bool `json:"EnableSubscribeEvent,omitempty" xml:"EnableSubscribeEvent,omitempty"`
+	// Specifies whether the CloudMonitor agent is automatically installed for the application group. CloudMonitor determines whether to automatically install the CloudMonitor agent for the hosts in an application group based on the value of this parameter. Valid values:
+	//
+	// *   true: The CloudMonitor agent is automatically installed.
+	// *   false (default): The CloudMonitor agent is not automatically installed.
+	MatchExpress []*CreateDynamicTagGroupRequestMatchExpress `json:"MatchExpress,omitempty" xml:"MatchExpress,omitempty" type:"Repeated"`
+	// Specifies whether the application group automatically subscribes to event notifications. If events whose severity level is critical or warning occur on resources in an application group, CloudMonitor sends alert notifications. Valid values:
+	//
+	// *   true: The application group automatically subscribes to event notifications.
+	// *   false (default): The application group does not automatically subscribe to event notifications.
+	MatchExpressFilterRelation *string `json:"MatchExpressFilterRelation,omitempty" xml:"MatchExpressFilterRelation,omitempty"`
+	RegionId                   *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	// The alert contact groups. Valid values of N: 1 to 100. The alert notifications of the application group are sent to the alert contacts that belong to the specified alert contact groups.
+	//
+	// An alert contact group can contain one or more alert contacts. For information about how to create alert contacts and alert contact groups, see [PutContact](~~114923~~) and [PutContactGroup](~~114929~~). For information about how to obtain alert contact groups, see [DescribeContactGroupList](~~114922~~).
+	TagKey *string `json:"TagKey,omitempty" xml:"TagKey,omitempty"`
+	// The tag keys of the cloud resources.
+	//
+	// For more information about how to obtain tag keys, see [DescribeTagKeyList](~~145558~~).
+	TagRegionId *string `json:"TagRegionId,omitempty" xml:"TagRegionId,omitempty"`
+	// The IDs of the alert templates.
+	//
+	// For more information about how to query alert template IDs, see [DescribeMetricRuleTemplateList](~~114982~~).
+	TemplateIdList []*string `json:"TemplateIdList,omitempty" xml:"TemplateIdList,omitempty" type:"Repeated"`
 }
 
 func (s CreateDynamicTagGroupRequest) String() string {
@@ -3167,8 +3206,13 @@ func (s *CreateDynamicTagGroupRequest) SetTemplateIdList(v []*string) *CreateDyn
 }
 
 type CreateDynamicTagGroupRequestMatchExpress struct {
-	TagName               *string `json:"TagName,omitempty" xml:"TagName,omitempty"`
-	TagValue              *string `json:"TagValue,omitempty" xml:"TagValue,omitempty"`
+	// The tag values of the cloud resources. In this example, set the value of N to 1.
+	//
+	// >  If you set the `MatchExpress.N.TagValueMatchFunction` parameter, you must also set the `MatchExpress.N.TagValue` parameter.
+	TagName *string `json:"TagName,omitempty" xml:"TagName,omitempty"`
+	// The ID of the region to which the tags belong.
+	TagValue *string `json:"TagValue,omitempty" xml:"TagValue,omitempty"`
+	// The error message.
 	TagValueMatchFunction *string `json:"TagValueMatchFunction,omitempty" xml:"TagValueMatchFunction,omitempty"`
 }
 
@@ -3196,11 +3240,21 @@ func (s *CreateDynamicTagGroupRequestMatchExpress) SetTagValueMatchFunction(v st
 }
 
 type CreateDynamicTagGroupResponseBody struct {
-	Code      *string `json:"Code,omitempty" xml:"Code,omitempty"`
-	Id        *string `json:"Id,omitempty" xml:"Id,omitempty"`
-	Message   *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// The status code.
+	//
+	// > The status code 200 indicates that the request was successful.
+	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	// The ID of the tag matching rule.
+	Id *string `json:"Id,omitempty" xml:"Id,omitempty"`
+	// The error message.
+	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// The request ID.
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	Success   *bool   `json:"Success,omitempty" xml:"Success,omitempty"`
+	// Indicates whether the request was successful. Valid values:
+	//
+	// *   true
+	// *   false
+	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
 }
 
 func (s CreateDynamicTagGroupResponseBody) String() string {
@@ -3266,6 +3320,9 @@ func (s *CreateDynamicTagGroupResponse) SetBody(v *CreateDynamicTagGroupResponse
 }
 
 type CreateGroupMetricRulesRequest struct {
+	// The ID of the application group.
+	//
+	// For information about how to obtain the ID of an application group, see [DescribeMonitorGroups](~~115032~~).
 	GroupId          *int64                                           `json:"GroupId,omitempty" xml:"GroupId,omitempty"`
 	GroupMetricRules []*CreateGroupMetricRulesRequestGroupMetricRules `json:"GroupMetricRules,omitempty" xml:"GroupMetricRules,omitempty" type:"Repeated"`
 	RegionId         *string                                          `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
@@ -3295,23 +3352,188 @@ func (s *CreateGroupMetricRulesRequest) SetRegionId(v string) *CreateGroupMetric
 }
 
 type CreateGroupMetricRulesRequestGroupMetricRules struct {
-	Escalations         *CreateGroupMetricRulesRequestGroupMetricRulesEscalations `json:"Escalations,omitempty" xml:"Escalations,omitempty" type:"Struct"`
-	Category            *string                                                   `json:"Category,omitempty" xml:"Category,omitempty"`
-	ContactGroups       *string                                                   `json:"ContactGroups,omitempty" xml:"ContactGroups,omitempty"`
-	Dimensions          *string                                                   `json:"Dimensions,omitempty" xml:"Dimensions,omitempty"`
-	EffectiveInterval   *string                                                   `json:"EffectiveInterval,omitempty" xml:"EffectiveInterval,omitempty"`
-	EmailSubject        *string                                                   `json:"EmailSubject,omitempty" xml:"EmailSubject,omitempty"`
-	Interval            *string                                                   `json:"Interval,omitempty" xml:"Interval,omitempty"`
-	Labels              []*CreateGroupMetricRulesRequestGroupMetricRulesLabels    `json:"Labels,omitempty" xml:"Labels,omitempty" type:"Repeated"`
-	MetricName          *string                                                   `json:"MetricName,omitempty" xml:"MetricName,omitempty"`
-	Namespace           *string                                                   `json:"Namespace,omitempty" xml:"Namespace,omitempty"`
-	NoDataPolicy        *string                                                   `json:"NoDataPolicy,omitempty" xml:"NoDataPolicy,omitempty"`
-	NoEffectiveInterval *string                                                   `json:"NoEffectiveInterval,omitempty" xml:"NoEffectiveInterval,omitempty"`
-	Period              *string                                                   `json:"Period,omitempty" xml:"Period,omitempty"`
-	RuleId              *string                                                   `json:"RuleId,omitempty" xml:"RuleId,omitempty"`
-	RuleName            *string                                                   `json:"RuleName,omitempty" xml:"RuleName,omitempty"`
-	SilenceTime         *int32                                                    `json:"SilenceTime,omitempty" xml:"SilenceTime,omitempty"`
-	Webhook             *string                                                   `json:"Webhook,omitempty" xml:"Webhook,omitempty"`
+	Escalations *CreateGroupMetricRulesRequestGroupMetricRulesEscalations `json:"Escalations,omitempty" xml:"Escalations,omitempty" type:"Struct"`
+	// The name of the cloud service. Valid values of N: 1 to 200. Valid value:
+	//
+	// *   PolarDB: PolarDB
+	// *   NewBGPDDoS: Anti-DDoS Pro
+	// *   IoTDevice: IoT Platform
+	// *   DRDS: Distributed Relational Database Service (DRDS)
+	// *   VS: Video Surveillance System
+	// *   AMQP: Alibaba Cloud Message Queue for AMQP
+	// *   ADS: AnalyticDB
+	// *   APIGateway: API Gateway
+	// *   InternetSharedBandwidth: EIP Bandwidth Plan
+	// *   CDN: Alibaba Cloud Content Delivery Network (CDN)
+	// *   CEN: Cloud Enterprise Network (CEN)
+	// *   DCDN: Dynamic Route for CDN (DCDN)
+	// *   DDoS: Anti-DDoS
+	// *   ECS: Elastic Compute Service (ECS)
+	// *   DirectMail: Direct Mail
+	// *   Elasticsearch: Elasticsearch
+	// *   EMR: E-MapReduce (EMR)
+	// *   ESS: Auto Scaling
+	// *   FunctionCompute: Function Compute
+	// *   RealtimeCompute: Realtime Compute for Apache Flink
+	// *   GlobalAcceleration: Global Accelerator (GA)
+	// *   Hbase: ApsaraDB for HBase
+	// *   TSDB: Time Series Database (TSDB)
+	// *   IPv6trans: IPv6 Translation Service
+	// *   Kafka: Message Queue for Apache Kafka
+	// *   Kubernetes: Container Service for Kubernetes (ACK)
+	// *   KVstore: ApsaraDB for Redis
+	// *   MNS: Message Service (MNS)
+	// *   MongoDB: ApsaraDB for MongoDB
+	// *   MQ: Message Queue
+	// *   NAT: NAT Gateway
+	// *   OpenAd: Open Ad
+	// *   OpenSearch: Open Search
+	// *   OSS: Object Storage Service (OSS)
+	// *   PCDN: P2P CDN
+	// *   petadata: HybridDB for MySQL
+	// *   RDS: ApsaraDB RDS
+	// *   SCDN: Secure CDN
+	// *   SLB: Server Load Balancer (SLB)
+	// *   SLS: Log Service
+	// *   VideoLive: ApsaraVideo Live
+	// *   VOD: ApsaraVideo VOD
+	// *   EIP: Elastic IP Address (EIP)
+	// *   VPN: VPN Gateway
+	// *   AIRec: Artificial Intelligence Recommendation
+	// *   GPDB: AnalyticDB for PostgreSQL
+	// *   DBS: Database Backup (DBS)
+	// *   SAG: Smart Access Gateway (SAG)
+	// *   Memcache: ApsaraDB for Memcache
+	// *   IOT_EDGE: Link IoT Edge
+	// *   OCS: ApsaraDB for Memcache (previous version)
+	// *   VPC: Express Connect
+	// *   EHPC: Elastic High Performance Computing (E-HPC)
+	// *   MPS: ApsaraVideo Media Processing
+	// *   ENS: Edge Node Service (ENS)
+	// *   MaxCompute_Prepay: MaxCompute
+	// *   IoT_Kubernetes: Edge Application Hosting
+	// *   CMS: CloudMonitor
+	// *   batchcomputenew: Batch Compute
+	// *   HBaseUE: ApsaraDB for HBase Performance-enhanced Edition
+	// *   UIS: Ultimate Internet Service (UIS)
+	// *   nls: Intelligent Speech Interaction
+	// *   ots: Tablestore
+	// *   NAS: Apsara File Storage NAS
+	// *   ECI: Elastic Container Instance (ECI)
+	// *   OpenAPI: OpenAPI Explorer
+	// *   pvtzpost: Alibaba Cloud DNS PrivateZone
+	// *   blinkonk8s: Flink on Kubernetes
+	// *   FunctionFlow: Serverless Workflow (SWF)
+	// *   SMC: Server Migration Center (SMC)
+	// *   ddosbgp: Anti-DDoS Origin
+	// *   baas: Blockchain as a Service
+	// *   privatelink: PrivateLink
+	// *   cds: ApsaraDB for Cassandra
+	// *   DDH: Dedicated Host
+	// *   RocketMQ: Message Queue for Apache RocketMQ
+	// *   ECC: Express Cloud Connect
+	// *   hbaseserverless: ApsaraDB for HBase Serverless Edition
+	// *   mns_tmp: Message Service
+	// *   hdr: Hybrid Disaster Recovery (HDR)
+	// *   hbr: Hybrid Backup Recovery (HBR)
+	// *   ADB: AnalyticDB for MySQL V3.0
+	// *   tag: Tag Service
+	// *   GDB: Graph Database
+	// *   WAF: Web Application Firewall (WAF)
+	// *   hcs_sgw: Cloud Storage Gateway (CSG)
+	// *   ipv6gateway: IPv6 Gateway
+	// *   RDS_SAR: ApsaraDB Exclusive Host Group
+	// *   learn: Machine Learning Platform for AI
+	// *   ROS: Resource Orchestration Service (ROS)
+	// *   OOS: Operation Orchestration Service (OOS)
+	// *   bds: Data Synchronization for HBase
+	// *   cfw: Cloud Firewall
+	// *   ddosDip: Anti-DDoS Premium
+	// *   datahub: DataHub
+	// *   hologres: Hologres
+	// *   ExpressConnect: Express Connect
+	// *   dbfs: Database File System (DBFS)
+	// *   clickhouse: ApsaraDB for ClickHouse
+	// *   k8s: Container Service for Kubernetes (ACK)
+	// *   DTS: Data Transmission Service (DTS)
+	// *   AnycastEIP: Anycast Elastic IP Address
+	// *   Lindorm: ApsaraDB for Lindorm
+	// *   config: Cloud Config
+	// *   spark: Databricks DataInsight (DDI)
+	// *   serverless: Serverless App Engine (SAE)
+	// *   alb: Application Load Balancer (ALB)
+	// *   oceanbase: ApsaraDB for OceanBase
+	// *   KMS: Key Management Service (KMS)
+	// *   lvwang: Content Moderation
+	// *   LinkVisual: LinkVisual
+	// *   tair: ApsaraDB for Redis Enhanced Edition (Tair)
+	// *   dlf: Data Lake Formation (DLF)
+	// *   networkmonitor: Site Monitoring
+	// *   pnc: Physical Network Change
+	// *   AIS: Alibaba Cloud Infrastructure
+	// *   cloudgame: Cloud Gaming Platform
+	// *   RTC: Real-Time Communication
+	// *   cloudbox: CloudBox
+	// *   actiontrail: ActionTrail
+	// *   cc: Cloud Connector
+	// *   disk: Elastic Block Storage (EBS)
+	// *   easygene: Genomics Computing Platform
+	// *   cloudphone: Elastic Cloud Phone
+	// *   BMS: Bare Metal Management Service
+	// *   swas: Simple Application Server
+	// *   AvailabilityMonitoring: Availability Monitoring of CloudMonitor
+	Category *string `json:"Category,omitempty" xml:"Category,omitempty"`
+	// The alert contact groups. Valid values of N: 1 to 200.
+	//
+	// For information about how to obtain alert contact groups, see [DescribeContactGroupList](~~114922~~).
+	ContactGroups *string `json:"ContactGroups,omitempty" xml:"ContactGroups,omitempty"`
+	// The dimension of the alert rule. Valid values of N: 1 to 200.
+	//
+	// Set the value to a set of key-value pairs, for example, `userId:120886317861****` or `instanceId:i-m5e1qg6uo38rztr4****`.
+	Dimensions *string `json:"Dimensions,omitempty" xml:"Dimensions,omitempty"`
+	// The time period during which the alert rule is effective. Valid values of N: 1 to 200.
+	EffectiveInterval *string `json:"EffectiveInterval,omitempty" xml:"EffectiveInterval,omitempty"`
+	// The subject of the alert notification email. Valid values of N: 1 to 200.
+	EmailSubject *string `json:"EmailSubject,omitempty" xml:"EmailSubject,omitempty"`
+	// The interval at which CloudMonitor checks whether the alert rule is triggered. Valid values of N: 1 to 200.
+	//
+	// Unit: seconds. The default value is the lowest frequency at which the metric is polled.
+	//
+	// >  We recommend that you set the interval to the data aggregation period. If the interval is shorter than the data aggregation period, alerts cannot be triggered due to insufficient data.
+	Interval *string                                                `json:"Interval,omitempty" xml:"Interval,omitempty"`
+	Labels   []*CreateGroupMetricRulesRequestGroupMetricRulesLabels `json:"Labels,omitempty" xml:"Labels,omitempty" type:"Repeated"`
+	// The name of the metric. Valid values of N: 1 to 200.
+	//
+	// For information about how to obtain the name of a metric, see [DescribeMetricMetaList](~~98846~~) or [Appendix 1: Metrics](~~163515~~).
+	MetricName *string `json:"MetricName,omitempty" xml:"MetricName,omitempty"`
+	// The namespace of the cloud service. Valid values of N: 1 to 200.
+	//
+	// For information about how to obtain the namespace of a cloud service, see [DescribeMetricMetaList](~~98846~~) or [Appendix 1: Metrics](~~163515~~).
+	Namespace *string `json:"Namespace,omitempty" xml:"Namespace,omitempty"`
+	// The method that is used to handle alerts when no monitoring data is found. Valid values of N: 1 to 200. Valid value:
+	//
+	// *   KEEP_LAST_STATE (default value): No operation is performed.
+	// *   INSUFFICIENT_DATA: An alert whose content is "Insufficient data" is triggered.
+	// *   OK: The alert rule has no active alerts.
+	NoDataPolicy *string `json:"NoDataPolicy,omitempty" xml:"NoDataPolicy,omitempty"`
+	// The time period during which the alert rule is ineffective. Valid values of N: 1 to 200.
+	NoEffectiveInterval *string `json:"NoEffectiveInterval,omitempty" xml:"NoEffectiveInterval,omitempty"`
+	// The aggregation period of the metric data. Valid values of N: 1 to 200.
+	//
+	// Set the `Period` parameter to an integral multiple of 60. Unit: seconds. Default value: 300.
+	Period *string `json:"Period,omitempty" xml:"Period,omitempty"`
+	// The ID of the alert rule. Valid values of N: 1 to 200.
+	RuleId *string `json:"RuleId,omitempty" xml:"RuleId,omitempty"`
+	// The name of the alert rule. Valid values of N: 1 to 200.
+	RuleName *string `json:"RuleName,omitempty" xml:"RuleName,omitempty"`
+	// The mute period during which new alerts are not sent even if the trigger conditions are met. Valid values of N: 1 to 200.
+	//
+	// Unit: seconds. Default value: 86400. Minimum value: 3600.
+	SilenceTime *int32 `json:"SilenceTime,omitempty" xml:"SilenceTime,omitempty"`
+	// The callback URL. Valid values of N: 1 to 200.
+	//
+	// The callback URL must be accessible over the Internet. CloudMonitor pushes an alert notification to the specified callback URL by sending an HTTP POST request. Only the HTTP protocol is supported.
+	Webhook *string `json:"Webhook,omitempty" xml:"Webhook,omitempty"`
 }
 
 func (s CreateGroupMetricRulesRequestGroupMetricRules) String() string {
@@ -3578,7 +3800,13 @@ func (s *CreateGroupMetricRulesRequestGroupMetricRulesEscalationsWarn) SetTimes(
 }
 
 type CreateGroupMetricRulesRequestGroupMetricRulesLabels struct {
-	Key   *string `json:"Key,omitempty" xml:"Key,omitempty"`
+	// The tag key of the alert rule. The specified tag is contained in alert notifications.
+	//
+	// Valid values of N: 1 to 200.
+	Key *string `json:"Key,omitempty" xml:"Key,omitempty"`
+	// The tag value of the alert rule. The specified tag is contained in alert notifications.
+	//
+	// Valid values of N: 1 to 200.
 	Value *string `json:"Value,omitempty" xml:"Value,omitempty"`
 }
 
@@ -3601,11 +3829,21 @@ func (s *CreateGroupMetricRulesRequestGroupMetricRulesLabels) SetValue(v string)
 }
 
 type CreateGroupMetricRulesResponseBody struct {
-	Code      *int32                                       `json:"Code,omitempty" xml:"Code,omitempty"`
-	Message   *string                                      `json:"Message,omitempty" xml:"Message,omitempty"`
-	RequestId *string                                      `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The HTTP status code.
+	//
+	// >  The status code 200 indicates that the call is successful.
+	Code *int32 `json:"Code,omitempty" xml:"Code,omitempty"`
+	// The error message.
+	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// The ID of the request.
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The details of the alert rules.
 	Resources *CreateGroupMetricRulesResponseBodyResources `json:"Resources,omitempty" xml:"Resources,omitempty" type:"Struct"`
-	Success   *bool                                        `json:"Success,omitempty" xml:"Success,omitempty"`
+	// Indicates whether the call is successful. Valid value:
+	//
+	// - true: The call is successful.
+	// - false: The call fails.
+	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
 }
 
 func (s CreateGroupMetricRulesResponseBody) String() string {
@@ -3659,11 +3897,21 @@ func (s *CreateGroupMetricRulesResponseBodyResources) SetAlertResult(v []*Create
 }
 
 type CreateGroupMetricRulesResponseBodyResourcesAlertResult struct {
-	Code     *int32  `json:"Code,omitempty" xml:"Code,omitempty"`
-	Message  *string `json:"Message,omitempty" xml:"Message,omitempty"`
-	RuleId   *string `json:"RuleId,omitempty" xml:"RuleId,omitempty"`
+	// The status code that is returned for the alert rule.
+	//
+	// >  The status code 200 indicates that the call is successful.
+	Code *int32 `json:"Code,omitempty" xml:"Code,omitempty"`
+	// The error message that is returned for the alert rule.
+	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// The ID of the alert rule.
+	RuleId *string `json:"RuleId,omitempty" xml:"RuleId,omitempty"`
+	// The name of the alert rule.
 	RuleName *string `json:"RuleName,omitempty" xml:"RuleName,omitempty"`
-	Success  *bool   `json:"Success,omitempty" xml:"Success,omitempty"`
+	// Indicates whether the alert rule was created. Valid value:
+	//
+	// - true: The alert rule was created.
+	// - false: The alert rule failed to be created.
+	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
 }
 
 func (s CreateGroupMetricRulesResponseBodyResourcesAlertResult) String() string {
@@ -4564,8 +4812,13 @@ func (s *CreateHostAvailabilityResponse) SetBody(v *CreateHostAvailabilityRespon
 }
 
 type CreateHybridMonitorNamespaceRequest struct {
-	// The returned message.
+	// The description of the namespace.
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
+	// The name of the namespace.
+	//
+	// The name can contain lowercase letters, digits, and hyphens (-).
+	Namespace *string `json:"Namespace,omitempty" xml:"Namespace,omitempty"`
+	RegionId  *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 	// The data retention period of the namespace. Valid values:
 	//
 	// *   cms.s1.large: 15 days
@@ -4576,9 +4829,6 @@ type CreateHybridMonitorNamespaceRequest struct {
 	// *   cms.s1.12xlarge: 376 days
 	//
 	// For information about the pricing for different retention periods, see the **Pricing** section in [Billing of the dashboard feature](~~223532~~).
-	Namespace *string `json:"Namespace,omitempty" xml:"Namespace,omitempty"`
-	RegionId  *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	// The ID of the request.
 	Spec *string `json:"Spec,omitempty" xml:"Spec,omitempty"`
 }
 
@@ -4611,12 +4861,17 @@ func (s *CreateHybridMonitorNamespaceRequest) SetSpec(v string) *CreateHybridMon
 }
 
 type CreateHybridMonitorNamespaceResponseBody struct {
-	// The operation that you want to perform. Set the value to **CreateHybridMonitorNamespace**.
+	// The returned message.
 	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
-	// For more information about common request parameters, see [Common parameters](~~199331~~).
-	Message   *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// The error message.
+	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// The ID of the request.
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	Success   *string `json:"Success,omitempty" xml:"Success,omitempty"`
+	// Indicates whether the call was successful. Valid values:
+	//
+	// *   true: The call was successful.
+	// *   false: The call failed.
+	Success *string `json:"Success,omitempty" xml:"Success,omitempty"`
 }
 
 func (s CreateHybridMonitorNamespaceResponseBody) String() string {
@@ -4677,13 +4932,16 @@ func (s *CreateHybridMonitorNamespaceResponse) SetBody(v *CreateHybridMonitorNam
 }
 
 type CreateHybridMonitorSLSGroupRequest struct {
-	RegionId       *string                                             `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	SLSGroupConfig []*CreateHybridMonitorSLSGroupRequestSLSGroupConfig `json:"SLSGroupConfig,omitempty" xml:"SLSGroupConfig,omitempty" type:"Repeated"`
-	// The operation that you want to perform. Set the value to **CreateHybridMonitorSLSGroup**.
-	SLSGroupDescription *string `json:"SLSGroupDescription,omitempty" xml:"SLSGroupDescription,omitempty"`
-	// The HTTP status code.
+	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	// The configurations of the Logstore group.
 	//
-	// >  The status code 200 indicates that the call is successful.
+	// Valid values of N: 1 to 25.
+	SLSGroupConfig []*CreateHybridMonitorSLSGroupRequestSLSGroupConfig `json:"SLSGroupConfig,omitempty" xml:"SLSGroupConfig,omitempty" type:"Repeated"`
+	// The description of the Logstore group.
+	SLSGroupDescription *string `json:"SLSGroupDescription,omitempty" xml:"SLSGroupDescription,omitempty"`
+	// The name of the Logstore group.
+	//
+	// The name must be 2 to 32 characters in length and can contain uppercase letters, lowercase letters, digits, and underscores (\_). The name must start with a letter.
 	SLSGroupName *string `json:"SLSGroupName,omitempty" xml:"SLSGroupName,omitempty"`
 }
 
@@ -4716,23 +4974,25 @@ func (s *CreateHybridMonitorSLSGroupRequest) SetSLSGroupName(v string) *CreateHy
 }
 
 type CreateHybridMonitorSLSGroupRequestSLSGroupConfig struct {
-	// The name of the Logstore group.
+	// The Logstore.
 	//
-	// The name must be 2 to 32 characters in length and can contain uppercase letters, lowercase letters, digits, and underscores (\_). The name must start with a letter.
+	// Valid values of N: 1 to 25.
 	SLSLogstore *string `json:"SLSLogstore,omitempty" xml:"SLSLogstore,omitempty"`
-	// The IDs of the member accounts.
+	// The Simple Log Service project.
 	//
 	// Valid values of N: 1 to 25.
-	//
-	// If you call API operations by using a management account, you can connect the Alibaba Cloud services that are activated for a member account in Resource Directory to Hybrid Cloud Monitoring. You can use Resource Directory to monitor Alibaba Cloud services across enterprise accounts.
-	//
-	// >  If a member uses CloudMonitor for the first time, you must make sure that the service-linked role AliyunServiceRoleForCloudMonitor is attached to the member. For more information, see [Manage the service-linked role for CloudMonitor](~~170423~~).
 	SLSProject *string `json:"SLSProject,omitempty" xml:"SLSProject,omitempty"`
-	// The error message.
-	SLSRegion *string `json:"SLSRegion,omitempty" xml:"SLSRegion,omitempty"`
-	// The Logstores.
+	// The region ID.
 	//
 	// Valid values of N: 1 to 25.
+	SLSRegion *string `json:"SLSRegion,omitempty" xml:"SLSRegion,omitempty"`
+	// The member ID.
+	//
+	// Valid values of N: 1 to 25.
+	//
+	// If you call this operation by using the management account of a resource directory, you can connect the Alibaba Cloud services that are activated for all members in the resource directory to Hybrid Cloud Monitoring. You can use the resource directory to monitor Alibaba Cloud services across enterprise accounts.
+	//
+	// > If a member uses CloudMonitor for the first time, you must make sure that the service-linked role AliyunServiceRoleForCloudMonitor is attached to the member. For more information, see [Manage the service-linked role for CloudMonitor](~~170423~~).
 	SLSUserId *string `json:"SLSUserId,omitempty" xml:"SLSUserId,omitempty"`
 }
 
@@ -4765,12 +5025,19 @@ func (s *CreateHybridMonitorSLSGroupRequestSLSGroupConfig) SetSLSUserId(v string
 }
 
 type CreateHybridMonitorSLSGroupResponseBody struct {
-	// The ID of the request.
+	// The HTTP status code.
+	//
+	// > The status code 200 indicates that the request was successful.
 	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
-	// For more information about common request parameters, see [Common parameters](~~199331~~).
-	Message   *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// The error message.
+	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// The request ID.
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	Success   *string `json:"Success,omitempty" xml:"Success,omitempty"`
+	// Indicates whether the request was successful. Valid values:
+	//
+	// *   true
+	// *   false
+	Success *string `json:"Success,omitempty" xml:"Success,omitempty"`
 }
 
 func (s CreateHybridMonitorSLSGroupResponseBody) String() string {
@@ -4832,41 +5099,6 @@ func (s *CreateHybridMonitorSLSGroupResponse) SetBody(v *CreateHybridMonitorSLSG
 
 type CreateHybridMonitorTaskRequest struct {
 	AttachLabels []*CreateHybridMonitorTaskRequestAttachLabels `json:"AttachLabels,omitempty" xml:"AttachLabels,omitempty" type:"Repeated"`
-	// The error message.
-	CollectInterval *string `json:"CollectInterval,omitempty" xml:"CollectInterval,omitempty"`
-	// The type of the collection target.
-	//
-	// *   If the `TaskType` parameter is set to `aliyun_fc`, enter `aliyun_fc`.
-	// *   If the `TaskType` parameter is set to `aliyun_sls`, enter the name of the Logstore group.
-	CollectTargetType *string `json:"CollectTargetType,omitempty" xml:"CollectTargetType,omitempty"`
-	// The tag value of the metric.
-	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
-	// The conditions that are used to filter logs imported from Log Service.
-	GroupId *string `json:"GroupId,omitempty" xml:"GroupId,omitempty"`
-	// The extended field that specifies the result of basic operations that are performed on aggregation results.
-	Namespace *string `json:"Namespace,omitempty" xml:"Namespace,omitempty"`
-	RegionId  *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	// The tag key of the metric.
-	SLSProcessConfig *CreateHybridMonitorTaskRequestSLSProcessConfig `json:"SLSProcessConfig,omitempty" xml:"SLSProcessConfig,omitempty" type:"Struct"`
-	// The method that is used to filter logs imported from Log Service. Valid values:
-	//
-	// *   `contain`: contains
-	// *   `notContain`: does not contain
-	// *   `>`: greater than
-	// *   `<`: less than
-	// *   `=`: equal to
-	// *   `! =`: not equal to
-	// *   `>=`: greater than or equal to
-	// *   `<=`: less than or equal to
-	TargetUserId *string `json:"TargetUserId,omitempty" xml:"TargetUserId,omitempty"`
-	// The ID of the metric import task.
-	TargetUserIdList *string `json:"TargetUserIdList,omitempty" xml:"TargetUserIdList,omitempty"`
-	// The HTTP status code.
-	//
-	// >  The status code 200 indicates that the call was successful.
-	TaskName *string `json:"TaskName,omitempty" xml:"TaskName,omitempty"`
-	// The operation that you want to perform. Set the value to **CreateHybridMonitorTask**.
-	TaskType *string `json:"TaskType,omitempty" xml:"TaskType,omitempty"`
 	// The interval at which metrics are collected. Valid values:
 	//
 	// *   15
@@ -4875,6 +5107,78 @@ type CreateHybridMonitorTaskRequest struct {
 	// Unit: seconds.
 	//
 	// >  This parameter is required only if the `TaskType` parameter is set to `aliyun_sls`.
+	CollectInterval *string `json:"CollectInterval,omitempty" xml:"CollectInterval,omitempty"`
+	// The type of the collection target.
+	//
+	// *   If the `TaskType` parameter is set to `aliyun_fc`, enter `aliyun_fc`.
+	// *   If the `TaskType` parameter is set to `aliyun_sls`, enter the name of the Logstore group.
+	CollectTargetType *string `json:"CollectTargetType,omitempty" xml:"CollectTargetType,omitempty"`
+	// The description of the metric import task.
+	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
+	// The ID of the application group.
+	//
+	// For information about how to obtain the ID of an application group, see [DescribeMonitorGroups](~~115032~~).
+	//
+	// >  This parameter is required only if the `TaskType` parameter is set to `aliyun_sls`.
+	GroupId *string `json:"GroupId,omitempty" xml:"GroupId,omitempty"`
+	// The name of the namespace.
+	//
+	// For information about how to obtain the name of a namespace, see [DescribeHybridMonitorNamespaceList](~~428880~~).
+	Namespace *string `json:"Namespace,omitempty" xml:"Namespace,omitempty"`
+	RegionId  *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	// The configurations of the logs that are imported from Log Service.
+	//
+	// >  This parameter is required only if the `TaskType` parameter is set to `aliyun_sls`.
+	SLSProcessConfig *CreateHybridMonitorTaskRequestSLSProcessConfig `json:"SLSProcessConfig,omitempty" xml:"SLSProcessConfig,omitempty" type:"Struct"`
+	// The ID of the member account.
+	//
+	// If you call API operations by using a management account, you can connect the Alibaba Cloud services that are activated for a member account in a resource directory to Hybrid Cloud Monitoring. You can use the resource directory to monitor Alibaba Cloud services across enterprise accounts.
+	//
+	// >  This parameter is required only if the `TaskType` parameter is set to `aliyun_fc`.
+	TargetUserId *string `json:"TargetUserId,omitempty" xml:"TargetUserId,omitempty"`
+	// The IDs of the member accounts. Separate multiple member account IDs with commas (,).
+	//
+	// >  This parameter is required only if you call this operation by using the management account.
+	TargetUserIdList *string `json:"TargetUserIdList,omitempty" xml:"TargetUserIdList,omitempty"`
+	// The name of the metric import task.
+	//
+	// *   If the `TaskType` parameter is set to `aliyun_fc`, enter the name of the metric import task.
+	// *   If the `TaskType` parameter is set to `aliyun_sls`, enter the name of the metric for logs imported from Log Service.
+	TaskName *string `json:"TaskName,omitempty" xml:"TaskName,omitempty"`
+	// Specifies whether to create a metric import task for an Alibaba Cloud service or create a metric for logs imported from Log Service. Valid values:
+	//
+	// *   aliyun_fc: creates a metric import task for an Alibaba Cloud service
+	// *   aliyun_sls: creates a metric for logs imported from Log Service
+	TaskType *string `json:"TaskType,omitempty" xml:"TaskType,omitempty"`
+	// The configuration file of the Alibaba Cloud service that you want to monitor by using Hybrid Cloud Monitoring.
+	//
+	// *   namespace: the namespace of the Alibaba Cloud service. For information about how to query the namespace of an Alibaba Cloud service, see [DescribeMetricMetaList](~~98846~~).
+	// *   metric_list: the metrics of the Alibaba Cloud service. For information about how to query the metrics of an Alibaba Cloud service, see [DescribeMetricMetaList](~~98846~~).
+	//
+	// The following code shows a sample configuration file:
+	//
+	// ```
+	//
+	// products:
+	// - namespace: acs_ecs_dashboard
+	//   metric_info:
+	//   - metric_list:
+	//     - cpu_total
+	//     - cpu_idle
+	//     - diskusage_utilization
+	//     - CPUUtilization
+	//     - DiskReadBPS
+	//     - InternetOut
+	//     - IntranetOut
+	//     - cpu_system
+	// - namespace: acs_rds_dashboard
+	//   metric_info:
+	//   - metric_list:
+	//     - MySQL_QPS
+	//     - MySQL_TPS
+	// ```
+	//
+	// >  This parameter is required only if the `TaskType` parameter is set to `aliyun_fc`.
 	YARMConfig *string `json:"YARMConfig,omitempty" xml:"YARMConfig,omitempty"`
 }
 
@@ -4952,11 +5256,9 @@ func (s *CreateHybridMonitorTaskRequest) SetYARMConfig(v string) *CreateHybridMo
 }
 
 type CreateHybridMonitorTaskRequestAttachLabels struct {
-	// The conditions that are used to filter logs imported from Log Service.
+	// The tag key of the metric.
 	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
-	// The name of the namespace.
-	//
-	// For information about how to obtain the name of a namespace, see [DescribeHybridMonitorNamespaceList](~~428880~~).
+	// The tag value of the metric.
 	Value *string `json:"Value,omitempty" xml:"Value,omitempty"`
 }
 
@@ -4979,15 +5281,11 @@ func (s *CreateHybridMonitorTaskRequestAttachLabels) SetValue(v string) *CreateH
 }
 
 type CreateHybridMonitorTaskRequestSLSProcessConfig struct {
-	// The name of the key that is used to aggregate logs imported from Log Service.
-	Express []*CreateHybridMonitorTaskRequestSLSProcessConfigExpress `json:"Express,omitempty" xml:"Express,omitempty" type:"Repeated"`
 	// The extended fields that specify the results of basic operations that are performed on aggregation results.
+	Express []*CreateHybridMonitorTaskRequestSLSProcessConfigExpress `json:"Express,omitempty" xml:"Express,omitempty" type:"Repeated"`
+	// The conditions that are used to filter logs imported from Log Service.
 	Filter *CreateHybridMonitorTaskRequestSLSProcessConfigFilter `json:"Filter,omitempty" xml:"Filter,omitempty" type:"Struct"`
-	// The ID of the application group.
-	//
-	// For information about how to obtain the ID of an application group, see [DescribeMonitorGroups](~~115032~~).
-	//
-	// >  This parameter is required only if the `TaskType` parameter is set to `aliyun_sls`.
+	// The dimension based on which data is aggregated. This parameter is equivalent to the GROUP BY clause in SQL.
 	GroupBy    []*CreateHybridMonitorTaskRequestSLSProcessConfigGroupBy    `json:"GroupBy,omitempty" xml:"GroupBy,omitempty" type:"Repeated"`
 	Statistics []*CreateHybridMonitorTaskRequestSLSProcessConfigStatistics `json:"Statistics,omitempty" xml:"Statistics,omitempty" type:"Repeated"`
 }
@@ -5021,12 +5319,9 @@ func (s *CreateHybridMonitorTaskRequestSLSProcessConfig) SetStatistics(v []*Crea
 }
 
 type CreateHybridMonitorTaskRequestSLSProcessConfigExpress struct {
-	// The value of the key that is used to filter logs imported from Log Service.
+	// The alias of the extended field that specifies the result of basic operations that are performed on aggregation results.
 	Alias *string `json:"Alias,omitempty" xml:"Alias,omitempty"`
-	// Specifies whether to create a metric import task for an Alibaba Cloud service or create a metric for logs imported from Log Service. Valid values:
-	//
-	// *   aliyun_fc: creates a metric import task for an Alibaba Cloud service
-	// *   aliyun_sls: creates a metric for logs imported from Log Service
+	// The extended field that specifies the result of basic operations that are performed on aggregation results.
 	Express *string `json:"Express,omitempty" xml:"Express,omitempty"`
 }
 
@@ -5049,14 +5344,12 @@ func (s *CreateHybridMonitorTaskRequestSLSProcessConfigExpress) SetExpress(v str
 }
 
 type CreateHybridMonitorTaskRequestSLSProcessConfigFilter struct {
+	// The conditions that are used to filter logs imported from Log Service.
+	Filters []*CreateHybridMonitorTaskRequestSLSProcessConfigFilterFilters `json:"Filters,omitempty" xml:"Filters,omitempty" type:"Repeated"`
 	// The relationship between multiple filter conditions. Valid values:
 	//
 	// *   and (default value): Logs are processed only if all filter conditions are met.
 	// *   or: Logs are processed if one of the filter conditions is met.
-	Filters []*CreateHybridMonitorTaskRequestSLSProcessConfigFilterFilters `json:"Filters,omitempty" xml:"Filters,omitempty" type:"Repeated"`
-	// The configurations of the logs that are imported from Log Service.
-	//
-	// >  This parameter is required only if the `TaskType` parameter is set to `aliyun_sls`.
 	Relation *string `json:"Relation,omitempty" xml:"Relation,omitempty"`
 }
 
@@ -5079,42 +5372,20 @@ func (s *CreateHybridMonitorTaskRequestSLSProcessConfigFilter) SetRelation(v str
 }
 
 type CreateHybridMonitorTaskRequestSLSProcessConfigFilterFilters struct {
-	// The description of the metric import task.
+	// The method that is used to filter logs imported from Log Service. Valid values:
+	//
+	// *   `contain`: contains
+	// *   `notContain`: does not contain
+	// *   `>`: greater than
+	// *   `<`: less than
+	// *   `=`: equal to
+	// *   `! =`: not equal to
+	// *   `>=`: greater than or equal to
+	// *   `<=`: less than or equal to
 	Operator *string `json:"Operator,omitempty" xml:"Operator,omitempty"`
-	// The configuration file of the Alibaba Cloud service that you want to monitor by using Hybrid Cloud Monitoring.
-	//
-	// *   namespace: the namespace of the Alibaba Cloud service. For information about how to query the namespace of an Alibaba Cloud service, see [DescribeMetricMetaList](~~98846~~).
-	// *   metric_list: the metrics of the Alibaba Cloud service. For information about how to query the metrics of an Alibaba Cloud service, see [DescribeMetricMetaList](~~98846~~).
-	//
-	// The following code shows a sample configuration file:
-	//
-	// ```
-	//
-	// products:
-	// - namespace: acs_ecs_dashboard
-	//   metric_info:
-	//   - metric_list:
-	//     - cpu_total
-	//     - cpu_idle
-	//     - diskusage_utilization
-	//     - CPUUtilization
-	//     - DiskReadBPS
-	//     - InternetOut
-	//     - IntranetOut
-	//     - cpu_system
-	// - namespace: acs_rds_dashboard
-	//   metric_info:
-	//   - metric_list:
-	//     - MySQL_QPS
-	//     - MySQL_TPS
-	// ```
-	//
-	// >  This parameter is required only if the `TaskType` parameter is set to `aliyun_fc`.
+	// The name of the key that is used to filter logs imported from Log Service.
 	SLSKeyName *string `json:"SLSKeyName,omitempty" xml:"SLSKeyName,omitempty"`
-	// The name of the metric import task.
-	//
-	// *   If the `TaskType` parameter is set to `aliyun_fc`, enter the name of the metric import task.
-	// *   If the `TaskType` parameter is set to `aliyun_sls`, enter the name of the metric for logs imported from Log Service.
+	// The value of the key that is used to filter logs imported from Log Service.
 	Value *string `json:"Value,omitempty" xml:"Value,omitempty"`
 }
 
@@ -5142,15 +5413,9 @@ func (s *CreateHybridMonitorTaskRequestSLSProcessConfigFilterFilters) SetValue(v
 }
 
 type CreateHybridMonitorTaskRequestSLSProcessConfigGroupBy struct {
-	// The ID of the member account.
-	//
-	// If you call API operations by using a management account, you can connect the Alibaba Cloud services that are activated for a member account in a resource directory to Hybrid Cloud Monitoring. You can use the resource directory to monitor Alibaba Cloud services across enterprise accounts.
-	//
-	// >  This parameter is required only if the `TaskType` parameter is set to `aliyun_fc`.
+	// The alias of the aggregation result.
 	Alias *string `json:"Alias,omitempty" xml:"Alias,omitempty"`
-	// The IDs of the member accounts. Separate multiple member account IDs with commas (,).
-	//
-	// >  This parameter is required only if you call this operation by using the management account.
+	// The name of the key that is used to aggregate logs imported from Log Service.
 	SLSKeyName *string `json:"SLSKeyName,omitempty" xml:"SLSKeyName,omitempty"`
 }
 
@@ -5214,14 +5479,21 @@ func (s *CreateHybridMonitorTaskRequestSLSProcessConfigStatistics) SetSLSKeyName
 }
 
 type CreateHybridMonitorTaskResponseBody struct {
-	// The alias of the aggregation result.
+	// The HTTP status code.
+	//
+	// >  The status code 200 indicates that the call was successful.
 	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
-	// The ID of the request.
+	// The error message.
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
-	// For more information about common request parameters, see [Common parameters](~~199331~~).
+	// The ID of the request.
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	Success   *string `json:"Success,omitempty" xml:"Success,omitempty"`
-	TaskId    *int64  `json:"TaskId,omitempty" xml:"TaskId,omitempty"`
+	// Indicates whether the call was successful. Valid values:
+	//
+	// *   true: The call was successful.
+	// *   false: The call failed.
+	Success *string `json:"Success,omitempty" xml:"Success,omitempty"`
+	// The ID of the metric import task.
+	TaskId *int64 `json:"TaskId,omitempty" xml:"TaskId,omitempty"`
 }
 
 func (s CreateHybridMonitorTaskResponseBody) String() string {
@@ -5680,18 +5952,16 @@ func (s *CreateMetricRuleBlackListResponse) SetBody(v *CreateMetricRuleBlackList
 }
 
 type CreateMetricRuleResourcesRequest struct {
-	// The resources to be associated with the alert rule. The value is a JSON array.
-	//
-	// >  You can add up to 100 resources each time. An alert rule can be associated with up to 3,000 resources.
-	Overwrite *string `json:"Overwrite,omitempty" xml:"Overwrite,omitempty"`
-	// The HTTP status code.
-	//
-	// >  The status code 200 indicates that the call was successful.
-	Resources *string `json:"Resources,omitempty" xml:"Resources,omitempty"`
 	// Specifies whether to overwrite the existing data. Valid values:
 	//
 	// *   true: The resources submitted this time will overwrite the previous associated resources.
 	// *   false: The resources submitted this time will not overwrite the previous associated resources. The associated resources after submission include the previous associated resources and the resources submitted this time.
+	Overwrite *string `json:"Overwrite,omitempty" xml:"Overwrite,omitempty"`
+	// The resources to be associated with the alert rule. The value is a JSON array.
+	//
+	// >  You can add up to 100 resources each time. An alert rule can be associated with up to 3,000 resources.
+	Resources *string `json:"Resources,omitempty" xml:"Resources,omitempty"`
+	// The ID of the alert rule.
 	RuleId *string `json:"RuleId,omitempty" xml:"RuleId,omitempty"`
 }
 
@@ -5719,13 +5989,16 @@ func (s *CreateMetricRuleResourcesRequest) SetRuleId(v string) *CreateMetricRule
 }
 
 type CreateMetricRuleResourcesResponseBody struct {
-	// The returned message.
+	// The HTTP status code.
+	//
+	// >  The status code 200 indicates that the call was successful.
 	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
-	// The ID of the request.
+	// The returned message.
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
-	// Indicates whether the call was successful. The value true indicates a success. The value false indicates a failure.
+	// The ID of the request.
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	Success   *bool   `json:"Success,omitempty" xml:"Success,omitempty"`
+	// Indicates whether the call was successful. The value true indicates a success. The value false indicates a failure.
+	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
 }
 
 func (s CreateMetricRuleResourcesResponseBody) String() string {
@@ -6131,13 +6404,11 @@ func (s *CreateMetricRuleTemplateResponse) SetBody(v *CreateMetricRuleTemplateRe
 }
 
 type CreateMonitorAgentProcessRequest struct {
-	// The user who launches the process.
-	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
 	// The ID of the instance.
+	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	// The name of the process.
 	ProcessName *string `json:"ProcessName,omitempty" xml:"ProcessName,omitempty"`
-	// The HTTP status code.
-	//
-	// >  The status code 200 indicates that the call was successful.
+	// The user who launches the process.
 	ProcessUser *string `json:"ProcessUser,omitempty" xml:"ProcessUser,omitempty"`
 	RegionId    *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 }
@@ -6171,17 +6442,20 @@ func (s *CreateMonitorAgentProcessRequest) SetRegionId(v string) *CreateMonitorA
 }
 
 type CreateMonitorAgentProcessResponseBody struct {
-	// The error message.
+	// The HTTP status code.
+	//
+	// >  The status code 200 indicates that the call was successful.
 	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
-	Id   *int64  `json:"Id,omitempty" xml:"Id,omitempty"`
-	// The ID of the request.
+	// The ID of the process.
+	Id *int64 `json:"Id,omitempty" xml:"Id,omitempty"`
+	// The error message.
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// The ID of the request.
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	// Indicates whether the call was successful. Valid values:
 	//
 	// *   true: The call was successful.
 	// *   false: The call failed.
-	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// The ID of the process.
 	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
 }
 
@@ -6248,9 +6522,11 @@ func (s *CreateMonitorAgentProcessResponse) SetBody(v *CreateMonitorAgentProcess
 }
 
 type CreateMonitorGroupRequest struct {
-	// The ID of the request.
+	// The alert groups that receive alert notifications for the application group. The alarm notifications for the application group are sent to the alert contacts in the alarm groups.
+	//
+	// >  An alert group is a group of one or more alert contacts. For more information about how to create alert contacts and alert groups, see [PutContact](~~114923~~) and [PutContactGroup](~~114929~~).
 	ContactGroups *string `json:"ContactGroups,omitempty" xml:"ContactGroups,omitempty"`
-	// The error message.
+	// The name of the application group.
 	GroupName *string `json:"GroupName,omitempty" xml:"GroupName,omitempty"`
 	RegionId  *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 }
@@ -6279,18 +6555,21 @@ func (s *CreateMonitorGroupRequest) SetRegionId(v string) *CreateMonitorGroupReq
 }
 
 type CreateMonitorGroupResponseBody struct {
-	// The ID of the application group.
+	// The response code.
+	//
+	// >  The value 200 indicates that the call was successful.
 	Code *int32 `json:"Code,omitempty" xml:"Code,omitempty"`
-	// For more information about common request parameters, see [Common parameters](~~199331~~).
+	// The ID of the application group.
 	GroupId *int64 `json:"GroupId,omitempty" xml:"GroupId,omitempty"`
+	// The error message.
+	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// The ID of the request.
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	// Indicates whether the call was successful. Valid values:
 	//
 	// *   true: The call was successful.
 	// *   false: The call failed.
-	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
-	// In this example, the application group named `ECS_Group` is created.
-	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	Success   *bool   `json:"Success,omitempty" xml:"Success,omitempty"`
+	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
 }
 
 func (s CreateMonitorGroupResponseBody) String() string {
@@ -6503,8 +6782,9 @@ func (s *CreateMonitorGroupByResourceGroupIdResponse) SetBody(v *CreateMonitorGr
 }
 
 type CreateMonitorGroupInstancesRequest struct {
-	// The ID of the instance.
-	GroupId   *string                                        `json:"GroupId,omitempty" xml:"GroupId,omitempty"`
+	// The ID of the application group.
+	GroupId *string `json:"GroupId,omitempty" xml:"GroupId,omitempty"`
+	// The instances that you want to add to the application group.
 	Instances []*CreateMonitorGroupInstancesRequestInstances `json:"Instances,omitempty" xml:"Instances,omitempty" type:"Repeated"`
 	RegionId  *string                                        `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 }
@@ -6533,15 +6813,15 @@ func (s *CreateMonitorGroupInstancesRequest) SetRegionId(v string) *CreateMonito
 }
 
 type CreateMonitorGroupInstancesRequestInstances struct {
-	// The HTTP status code.
+	// The abbreviation of the Alibaba Cloud service name.
 	//
-	// >  The status code 200 indicates that the call was successful.
+	// To obtain the abbreviation of an Alibaba Cloud service name, call the [DescribeProjectMeta](~~114916~~) operation. The `metricCategory` tag in the `Labels` response parameter indicates the abbreviation of the Alibaba Cloud service name.
 	Category *string `json:"Category,omitempty" xml:"Category,omitempty"`
-	// The ID of the request.
+	// The instance ID.
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	// The name of the instance.
+	// The instance name.
 	InstanceName *string `json:"InstanceName,omitempty" xml:"InstanceName,omitempty"`
-	// The operation that you want to perform. Set the value to **CreateMonitorGroupInstances**.
+	// The region ID of the instance.
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 }
 
@@ -6574,11 +6854,19 @@ func (s *CreateMonitorGroupInstancesRequestInstances) SetRegionId(v string) *Cre
 }
 
 type CreateMonitorGroupInstancesResponseBody struct {
-	// For more information about common request parameters, see [Common parameters](~~199331~~).
-	Code      *int32  `json:"Code,omitempty" xml:"Code,omitempty"`
-	Message   *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// The status code.
+	//
+	// > The status code 200 indicates that the request was successful.
+	Code *int32 `json:"Code,omitempty" xml:"Code,omitempty"`
+	// The error message.
+	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// The request ID.
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	Success   *bool   `json:"Success,omitempty" xml:"Success,omitempty"`
+	// Indicates whether the request was successful. Valid values:
+	//
+	// *   true
+	// *   false
+	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
 }
 
 func (s CreateMonitorGroupInstancesResponseBody) String() string {
@@ -6639,18 +6927,18 @@ func (s *CreateMonitorGroupInstancesResponse) SetBody(v *CreateMonitorGroupInsta
 }
 
 type CreateMonitorGroupNotifyPolicyRequest struct {
-	// The ID of the request.
-	EndTime *int64 `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
-	// The HTTP status code.
-	//
-	// >  The HTTP status code 200 indicates that the call succeeds.
-	GroupId *string `json:"GroupId,omitempty" xml:"GroupId,omitempty"`
 	// The timestamp that indicates the end time of the validity period for the policy.
 	//
 	// This value is a UNIX timestamp that represents the number of milliseconds that have elapsed since January 1, 1970, 00:00:00 UTC.
+	EndTime *int64 `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
+	// The ID of the application group.
+	GroupId *string `json:"GroupId,omitempty" xml:"GroupId,omitempty"`
+	// The type of the policy. Valid value: PauseNotify.
 	PolicyType *string `json:"PolicyType,omitempty" xml:"PolicyType,omitempty"`
 	RegionId   *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	// The error message.
+	// The timestamp that indicates the start time of the validity period for the policy.
+	//
+	// This value is a UNIX timestamp that represents the number of milliseconds that have elapsed since January 1, 1970, 00:00:00 UTC.
 	StartTime *int64 `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
 }
 
@@ -6688,19 +6976,20 @@ func (s *CreateMonitorGroupNotifyPolicyRequest) SetStartTime(v int64) *CreateMon
 }
 
 type CreateMonitorGroupNotifyPolicyResponseBody struct {
-	// The number of entries that are returned.
+	// The HTTP status code.
+	//
+	// >  The HTTP status code 200 indicates that the call succeeds.
 	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	// The error message.
+	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// The ID of the request.
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The number of entries that are returned.
+	Result *int32 `json:"Result,omitempty" xml:"Result,omitempty"`
 	// Indicates whether the call succeeds. Valid values:
 	//
 	// *   true: The call succeeds.
 	// *   false: The call fails.
-	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
-	// If the policy is valid, no alert notifications are sent for the application group.
-	//
-	// This topic describes how to create the `PauseNotify` policy to pause alert notifications for the `7301****` application group. The StartTime parameter is set to `1622949300000` and the EndTime parameter is set to `1623208500000`. This indicates that the policy is valid from `2021-06-06 11:15:00 UTC+8` to `2021-06-09 11:15:00 UTC+8`.
-	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// For more information about common request parameters, see [Common parameters](~~199331~~).
-	Result  *int32  `json:"Result,omitempty" xml:"Result,omitempty"`
 	Success *string `json:"Success,omitempty" xml:"Success,omitempty"`
 }
 
@@ -6767,13 +7056,11 @@ func (s *CreateMonitorGroupNotifyPolicyResponse) SetBody(v *CreateMonitorGroupNo
 }
 
 type CreateMonitoringAgentProcessRequest struct {
-	// The user who launches the process.
-	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
 	// The ID of the instance.
+	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	// The name of the process.
 	ProcessName *string `json:"ProcessName,omitempty" xml:"ProcessName,omitempty"`
-	// The HTTP status code.
-	//
-	// >  The status code 200 indicates that the call was successful.
+	// The user who launches the process.
 	ProcessUser *string `json:"ProcessUser,omitempty" xml:"ProcessUser,omitempty"`
 	RegionId    *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 }
@@ -6807,17 +7094,20 @@ func (s *CreateMonitoringAgentProcessRequest) SetRegionId(v string) *CreateMonit
 }
 
 type CreateMonitoringAgentProcessResponseBody struct {
-	// The error message.
+	// The HTTP status code.
+	//
+	// >  The status code 200 indicates that the call was successful.
 	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
-	Id   *int64  `json:"Id,omitempty" xml:"Id,omitempty"`
-	// The ID of the request.
+	// The ID of the process.
+	Id *int64 `json:"Id,omitempty" xml:"Id,omitempty"`
+	// The error message.
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// The ID of the request.
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	// Indicates whether the call was successful. Valid values:
 	//
 	// *   true: The call was successful.
 	// *   false: The call failed.
-	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// The ID of the process.
 	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
 }
 
@@ -7416,7 +7706,7 @@ func (s *CursorResponse) SetBody(v *CursorResponseBody) *CursorResponse {
 }
 
 type DeleteContactRequest struct {
-	// test-01
+	// The name of the alert contact.
 	ContactName *string `json:"ContactName,omitempty" xml:"ContactName,omitempty"`
 }
 
@@ -7434,13 +7724,15 @@ func (s *DeleteContactRequest) SetContactName(v string) *DeleteContactRequest {
 }
 
 type DeleteContactResponseBody struct {
-	// The returned message.
+	// The HTTP status code.
+	//
+	// >  The status code 200 indicates that the call was successful.
 	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
-	// The ID of the request.
+	// The returned message.
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
-	// Indicates whether the call was successful. The value true indicates a success. The value false indicates a failure.
+	// The ID of the request.
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// Deletes an alert contact.
+	// Indicates whether the call was successful. The value true indicates a success. The value false indicates a failure.
 	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
 }
 
@@ -7502,9 +7794,7 @@ func (s *DeleteContactResponse) SetBody(v *DeleteContactResponseBody) *DeleteCon
 }
 
 type DeleteContactGroupRequest struct {
-	// The HTTP status code.
-	//
-	// >  The status code 200 indicates that the call was successful.
+	// The name of the alert group.
 	ContactGroupName *string `json:"ContactGroupName,omitempty" xml:"ContactGroupName,omitempty"`
 }
 
@@ -7522,12 +7812,16 @@ func (s *DeleteContactGroupRequest) SetContactGroupName(v string) *DeleteContact
 }
 
 type DeleteContactGroupResponseBody struct {
-	// The ID of the request.
+	// The HTTP status code.
+	//
+	// >  The status code 200 indicates that the call was successful.
 	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
-	// Indicates whether the call was successful. The value true indicates a success. The value false indicates a failure.
-	Message   *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// The returned message.
+	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// The ID of the request.
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	Success   *bool   `json:"Success,omitempty" xml:"Success,omitempty"`
+	// Indicates whether the call was successful. The value true indicates a success. The value false indicates a failure.
+	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
 }
 
 func (s DeleteContactGroupResponseBody) String() string {
@@ -7801,7 +8095,7 @@ func (s *DeleteDynamicTagGroupResponse) SetBody(v *DeleteDynamicTagGroupResponse
 type DeleteEventRuleTargetsRequest struct {
 	Ids      []*string `json:"Ids,omitempty" xml:"Ids,omitempty" type:"Repeated"`
 	RegionId *string   `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	// The ID of the target. Valid values of N: 1 to 20.
+	// The name of the event-triggered alert rule.
 	RuleName *string `json:"RuleName,omitempty" xml:"RuleName,omitempty"`
 }
 
@@ -7829,13 +8123,15 @@ func (s *DeleteEventRuleTargetsRequest) SetRuleName(v string) *DeleteEventRuleTa
 }
 
 type DeleteEventRuleTargetsResponseBody struct {
-	// The returned message.
+	// The HTTP status code.
+	//
+	// >  The status code 200 indicates that the call was successful.
 	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
-	// The ID of the request.
+	// The returned message.
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
-	// Indicates whether the call was successful. The value true indicates a success. The value false indicates a failure.
+	// The ID of the request.
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// Deletes the targets to which alert notifications are sent based on an event-triggered alert rule.
+	// Indicates whether the call was successful. The value true indicates a success. The value false indicates a failure.
 	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
 }
 
@@ -7914,13 +8210,15 @@ func (s *DeleteEventRulesRequest) SetRuleNames(v []*string) *DeleteEventRulesReq
 }
 
 type DeleteEventRulesResponseBody struct {
-	// The returned message.
+	// The HTTP status code.
+	//
+	// >  The status code 200 indicates that the call was successful.
 	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
-	// The ID of the request.
+	// The returned message.
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
-	// Indicates whether the call was successful. The value true indicates a success. The value false indicates a failure.
+	// The ID of the request.
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// Deletes one or more event-triggered alert rules.
+	// Indicates whether the call was successful. The value true indicates a success. The value false indicates a failure.
 	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
 }
 
@@ -8176,11 +8474,9 @@ func (s *DeleteExporterRuleResponse) SetBody(v *DeleteExporterRuleResponseBody) 
 }
 
 type DeleteGroupMonitoringAgentProcessRequest struct {
-	// The ID of the process monitoring task.
+	// The ID of the application group.
 	GroupId *string `json:"GroupId,omitempty" xml:"GroupId,omitempty"`
-	// The HTTP status code.
-	//
-	// >  The status code 200 indicates that the call was successful.
+	// The ID of the process monitoring task.
 	Id       *string `json:"Id,omitempty" xml:"Id,omitempty"`
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 }
@@ -8209,16 +8505,19 @@ func (s *DeleteGroupMonitoringAgentProcessRequest) SetRegionId(v string) *Delete
 }
 
 type DeleteGroupMonitoringAgentProcessResponseBody struct {
-	// The returned message.
+	// The HTTP status code.
+	//
+	// >  The status code 200 indicates that the call was successful.
 	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
-	// The ID of the request.
+	// The returned message.
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// The ID of the request.
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	// Indicates whether the call was successful. Valid values:
 	//
 	// *   true: The call was successful.
 	// *   false: The call failed.
-	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	Success   *bool   `json:"Success,omitempty" xml:"Success,omitempty"`
+	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
 }
 
 func (s DeleteGroupMonitoringAgentProcessResponseBody) String() string {
@@ -8302,13 +8601,15 @@ func (s *DeleteHostAvailabilityRequest) SetRegionId(v string) *DeleteHostAvailab
 }
 
 type DeleteHostAvailabilityResponseBody struct {
-	// The returned message.
+	// The HTTP status code.
+	//
+	// >  The status code 200 indicates that the call was successful.
 	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
-	// The ID of the request.
+	// The returned message.
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
-	// Indicates whether the call was successful. The value true indicates a success. The value false indicates a failure.
+	// The ID of the request.
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// Deletes one or more availability monitoring tasks.
+	// Indicates whether the call was successful. The value true indicates a success. The value false indicates a failure.
 	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
 }
 
@@ -8370,7 +8671,9 @@ func (s *DeleteHostAvailabilityResponse) SetBody(v *DeleteHostAvailabilityRespon
 }
 
 type DeleteHybridMonitorNamespaceRequest struct {
-	// The ID of the request.
+	// The name of the namespace.
+	//
+	// For information about how to obtain the name of a namespace, see [DescribeHybridMonitorNamespaceList](~~428880~~).
 	Namespace *string `json:"Namespace,omitempty" xml:"Namespace,omitempty"`
 	RegionId  *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 }
@@ -8394,12 +8697,17 @@ func (s *DeleteHybridMonitorNamespaceRequest) SetRegionId(v string) *DeleteHybri
 }
 
 type DeleteHybridMonitorNamespaceResponseBody struct {
-	// The operation that you want to perform. Set the value to **DeleteHybridMonitorNamespace**.
+	// The returned message.
 	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
-	// For more information about common request parameters, see [Common parameters](~~199331~~).
-	Message   *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// The error message.
+	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// The request ID.
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	Success   *string `json:"Success,omitempty" xml:"Success,omitempty"`
+	// Indicates whether the request was successful. Valid values:
+	//
+	// *   true
+	// *   false
+	Success *string `json:"Success,omitempty" xml:"Success,omitempty"`
 }
 
 func (s DeleteHybridMonitorNamespaceResponseBody) String() string {
@@ -8680,9 +8988,7 @@ func (s *DeleteHybridMonitorTaskResponse) SetBody(v *DeleteHybridMonitorTaskResp
 }
 
 type DeleteLogMonitorRequest struct {
-	// The HTTP status code.
-	//
-	// >  The status code 200 indicates that the call was successful.
+	// The ID returned by Log Service.
 	LogId    *int64  `json:"LogId,omitempty" xml:"LogId,omitempty"`
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 }
@@ -8706,16 +9012,19 @@ func (s *DeleteLogMonitorRequest) SetRegionId(v string) *DeleteLogMonitorRequest
 }
 
 type DeleteLogMonitorResponseBody struct {
-	// The returned message.
+	// The HTTP status code.
+	//
+	// >  The status code 200 indicates that the call was successful.
 	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
-	// The ID of the request.
+	// The returned message.
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// The ID of the request.
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	// Indicates whether the call was successful. Valid values:
 	//
 	// *   true: The call was successful.
 	// *   false: The call failed.
-	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	Success   *bool   `json:"Success,omitempty" xml:"Success,omitempty"`
+	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
 }
 
 func (s DeleteLogMonitorResponseBody) String() string {
@@ -8884,11 +9193,9 @@ func (s *DeleteMetricRuleBlackListResponse) SetBody(v *DeleteMetricRuleBlackList
 }
 
 type DeleteMetricRuleResourcesRequest struct {
-	// The HTTP status code.
-	//
-	// >  The status code 200 indicates that the call was successful.
-	Resources *string `json:"Resources,omitempty" xml:"Resources,omitempty"`
 	// The resources to be disassociated from the alert rule.
+	Resources *string `json:"Resources,omitempty" xml:"Resources,omitempty"`
+	// The ID of the alert rule.
 	RuleId *string `json:"RuleId,omitempty" xml:"RuleId,omitempty"`
 }
 
@@ -8911,16 +9218,19 @@ func (s *DeleteMetricRuleResourcesRequest) SetRuleId(v string) *DeleteMetricRule
 }
 
 type DeleteMetricRuleResourcesResponseBody struct {
-	// The returned message.
+	// The HTTP status code.
+	//
+	// >  The status code 200 indicates that the call was successful.
 	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
-	// The ID of the request.
+	// The returned message.
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// The ID of the request.
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	// Indicates whether the call was successful. Valid values:
 	//
 	// *   true: The call was successful.
 	// *   false: The call failed.
-	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	Success   *bool   `json:"Success,omitempty" xml:"Success,omitempty"`
+	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
 }
 
 func (s DeleteMetricRuleResourcesResponseBody) String() string {
@@ -9130,9 +9440,7 @@ func (s *DeleteMetricRuleTargetsResponse) SetBody(v *DeleteMetricRuleTargetsResp
 
 type DeleteMetricRuleTemplateRequest struct {
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	// The HTTP status code.
-	//
-	// >  The status code 200 indicates that the call was successful.
+	// The ID of the alert template.
 	TemplateId *string `json:"TemplateId,omitempty" xml:"TemplateId,omitempty"`
 }
 
@@ -9155,15 +9463,17 @@ func (s *DeleteMetricRuleTemplateRequest) SetTemplateId(v string) *DeleteMetricR
 }
 
 type DeleteMetricRuleTemplateResponseBody struct {
-	// The returned message.
+	// The HTTP status code.
+	//
+	// >  The status code 200 indicates that the call was successful.
 	Code *int32 `json:"Code,omitempty" xml:"Code,omitempty"`
-	// The ID of the request.
+	// The returned message.
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
-	// Indicates whether the call was successful. The value true indicates a success. The value false indicates a failure.
+	// The ID of the request.
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// The ID of the template.
-	Resource *DeleteMetricRuleTemplateResponseBodyResource `json:"Resource,omitempty" xml:"Resource,omitempty" type:"Struct"`
 	// The information about the alert template.
+	Resource *DeleteMetricRuleTemplateResponseBodyResource `json:"Resource,omitempty" xml:"Resource,omitempty" type:"Struct"`
+	// Indicates whether the call was successful. The value true indicates a success. The value false indicates a failure.
 	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
 }
 
@@ -9201,6 +9511,7 @@ func (s *DeleteMetricRuleTemplateResponseBody) SetSuccess(v bool) *DeleteMetricR
 }
 
 type DeleteMetricRuleTemplateResponseBodyResource struct {
+	// The ID of the template.
 	TemplateId *string `json:"TemplateId,omitempty" xml:"TemplateId,omitempty"`
 }
 
@@ -9270,16 +9581,18 @@ func (s *DeleteMetricRulesRequest) SetRegionId(v string) *DeleteMetricRulesReque
 }
 
 type DeleteMetricRulesResponseBody struct {
-	// The returned message.
+	// The status code.
+	//
+	// >  The status code 200 indicates a success.
 	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
-	// The ID of the request.
+	// The returned message.
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// The ID of the request.
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	// Indicates whether the operation was successful. Valid values:
 	//
 	// *   true: successful.
 	// *   false: failed.
-	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// Deletes one or more alert rules.
 	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
 }
 
@@ -9341,9 +9654,7 @@ func (s *DeleteMetricRulesResponse) SetBody(v *DeleteMetricRulesResponseBody) *D
 }
 
 type DeleteMonitorGroupRequest struct {
-	// The HTTP status code.
-	//
-	// >  The status code 200 indicates that the call was successful.
+	// The ID of the application group.
 	GroupId  *int64  `json:"GroupId,omitempty" xml:"GroupId,omitempty"`
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 }
@@ -9367,15 +9678,17 @@ func (s *DeleteMonitorGroupRequest) SetRegionId(v string) *DeleteMonitorGroupReq
 }
 
 type DeleteMonitorGroupResponseBody struct {
-	// The returned message.
+	// The HTTP status code.
+	//
+	// >  The status code 200 indicates that the call was successful.
 	Code *int32 `json:"Code,omitempty" xml:"Code,omitempty"`
-	// The name of the application group.
-	Group *DeleteMonitorGroupResponseBodyGroup `json:"Group,omitempty" xml:"Group,omitempty" type:"Struct"`
-	// The ID of the request.
-	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
-	// Indicates whether the call was successful. The value true indicates a success. The value false indicates a failure.
-	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	// The deleted application group.
+	Group *DeleteMonitorGroupResponseBodyGroup `json:"Group,omitempty" xml:"Group,omitempty" type:"Struct"`
+	// The returned message.
+	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// The ID of the request.
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// Indicates whether the call was successful. The value true indicates a success. The value false indicates a failure.
 	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
 }
 
@@ -9413,9 +9726,9 @@ func (s *DeleteMonitorGroupResponseBody) SetSuccess(v bool) *DeleteMonitorGroupR
 }
 
 type DeleteMonitorGroupResponseBodyGroup struct {
-	// The name of the alert group.
-	ContactGroups *DeleteMonitorGroupResponseBodyGroupContactGroups `json:"ContactGroups,omitempty" xml:"ContactGroups,omitempty" type:"Struct"`
 	// The alert groups that receive alert notifications for the application group.
+	ContactGroups *DeleteMonitorGroupResponseBodyGroupContactGroups `json:"ContactGroups,omitempty" xml:"ContactGroups,omitempty" type:"Struct"`
+	// The name of the application group.
 	GroupName *string `json:"GroupName,omitempty" xml:"GroupName,omitempty"`
 }
 
@@ -9455,7 +9768,7 @@ func (s *DeleteMonitorGroupResponseBodyGroupContactGroups) SetContactGroup(v []*
 }
 
 type DeleteMonitorGroupResponseBodyGroupContactGroupsContactGroup struct {
-	// Deletes an application group.
+	// The name of the alert group.
 	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
 }
 
@@ -9502,11 +9815,9 @@ func (s *DeleteMonitorGroupResponse) SetBody(v *DeleteMonitorGroupResponseBody) 
 }
 
 type DeleteMonitorGroupDynamicRuleRequest struct {
-	// The HTTP status code.
-	//
-	// >  The status code 200 indicates that the call was successful.
-	Category *string `json:"Category,omitempty" xml:"Category,omitempty"`
 	// The service to which the rule applies. Valid values: ecs, rds, and slb.
+	Category *string `json:"Category,omitempty" xml:"Category,omitempty"`
+	// The ID of the application group.
 	GroupId  *int64  `json:"GroupId,omitempty" xml:"GroupId,omitempty"`
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 }
@@ -9535,13 +9846,16 @@ func (s *DeleteMonitorGroupDynamicRuleRequest) SetRegionId(v string) *DeleteMoni
 }
 
 type DeleteMonitorGroupDynamicRuleResponseBody struct {
-	// The returned message.
+	// The HTTP status code.
+	//
+	// >  The status code 200 indicates that the call was successful.
 	Code *int32 `json:"Code,omitempty" xml:"Code,omitempty"`
-	// The ID of the request.
+	// The returned message.
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
-	// Indicates whether the call was successful. The value true indicates a success. The value false indicates a failure.
+	// The ID of the request.
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	Success   *bool   `json:"Success,omitempty" xml:"Success,omitempty"`
+	// Indicates whether the call was successful. The value true indicates a success. The value false indicates a failure.
+	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
 }
 
 func (s DeleteMonitorGroupDynamicRuleResponseBody) String() string {
@@ -9602,12 +9916,6 @@ func (s *DeleteMonitorGroupDynamicRuleResponse) SetBody(v *DeleteMonitorGroupDyn
 }
 
 type DeleteMonitorGroupInstancesRequest struct {
-	// The HTTP status code.
-	//
-	// >  The status code 200 indicates that the call was successful.
-	Category *string `json:"Category,omitempty" xml:"Category,omitempty"`
-	// The instances to be removed from the application group. Separate multiple instances with commas (,). You can remove a maximum of 20 instances from an application group at a time.
-	GroupId *int64 `json:"GroupId,omitempty" xml:"GroupId,omitempty"`
 	// The abbreviation of the service name. Valid values:
 	//
 	// *   ECS: Elastic Compute Service (ECS) instances provided by Alibaba Cloud and hosts not provided by Alibaba Cloud
@@ -9645,6 +9953,10 @@ type DeleteMonitorGroupInstancesRequest struct {
 	// *   SHAREBANDWIDTHPACKAGES: EIP Bandwidth Plan
 	// *   SLS: Log Service
 	// *   VPN: VPN Gateway
+	Category *string `json:"Category,omitempty" xml:"Category,omitempty"`
+	// The ID of the application group.
+	GroupId *int64 `json:"GroupId,omitempty" xml:"GroupId,omitempty"`
+	// The instances to be removed from the application group. Separate multiple instances with commas (,). You can remove a maximum of 20 instances from an application group at a time.
 	InstanceIdList *string `json:"InstanceIdList,omitempty" xml:"InstanceIdList,omitempty"`
 	RegionId       *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 }
@@ -9678,13 +9990,16 @@ func (s *DeleteMonitorGroupInstancesRequest) SetRegionId(v string) *DeleteMonito
 }
 
 type DeleteMonitorGroupInstancesResponseBody struct {
-	// The returned message.
+	// The HTTP status code.
+	//
+	// >  The status code 200 indicates that the call was successful.
 	Code *int32 `json:"Code,omitempty" xml:"Code,omitempty"`
-	// The ID of the request.
+	// The returned message.
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
-	// Indicates whether the call was successful. The value true indicates a success. The value false indicates a failure.
+	// The ID of the request.
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	Success   *bool   `json:"Success,omitempty" xml:"Success,omitempty"`
+	// Indicates whether the call was successful. The value true indicates a success. The value false indicates a failure.
+	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
 }
 
 func (s DeleteMonitorGroupInstancesResponseBody) String() string {
@@ -9973,15 +10288,13 @@ func (s *DeleteMonitoringAgentProcessResponse) SetBody(v *DeleteMonitoringAgentP
 }
 
 type DeleteSiteMonitorsRequest struct {
-	// The HTTP status code.
-	//
-	// >  The status code 200 indicates that the call was successful.
-	IsDeleteAlarms *bool   `json:"IsDeleteAlarms,omitempty" xml:"IsDeleteAlarms,omitempty"`
-	RegionId       *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 	// Specifies whether to delete the alert rules configured for the site monitoring tasks. Valid values:
 	//
 	// *   true (default value)
 	// *   false
+	IsDeleteAlarms *bool   `json:"IsDeleteAlarms,omitempty" xml:"IsDeleteAlarms,omitempty"`
+	RegionId       *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	// The IDs of the site monitoring tasks that you want to delete. Separate multiple task IDs with commas (,).
 	TaskIds *string `json:"TaskIds,omitempty" xml:"TaskIds,omitempty"`
 }
 
@@ -10009,14 +10322,18 @@ func (s *DeleteSiteMonitorsRequest) SetTaskIds(v string) *DeleteSiteMonitorsRequ
 }
 
 type DeleteSiteMonitorsResponseBody struct {
+	// The HTTP status code.
+	//
+	// >  The status code 200 indicates that the call was successful.
+	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
 	// The information about the site monitoring tasks that were deleted.
-	Code *string                             `json:"Code,omitempty" xml:"Code,omitempty"`
 	Data *DeleteSiteMonitorsResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
-	// The ID of the request.
+	// The returned message. If the call was successful, the value success is returned. If the call failed, an error message such as `TaskId not found` is returned.
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
-	// Deletes one or more site monitoring tasks.
+	// The ID of the request.
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	Success   *string `json:"Success,omitempty" xml:"Success,omitempty"`
+	// Indicates whether the call was successful. The value true indicates success. The value false indicates failure.
+	Success *string `json:"Success,omitempty" xml:"Success,omitempty"`
 }
 
 func (s DeleteSiteMonitorsResponseBody) String() string {
@@ -10053,6 +10370,7 @@ func (s *DeleteSiteMonitorsResponseBody) SetSuccess(v string) *DeleteSiteMonitor
 }
 
 type DeleteSiteMonitorsResponseBodyData struct {
+	// The number of the site monitoring tasks that were deleted.
 	Count *int32 `json:"count,omitempty" xml:"count,omitempty"`
 }
 
@@ -10099,9 +10417,19 @@ func (s *DeleteSiteMonitorsResponse) SetBody(v *DeleteSiteMonitorsResponseBody) 
 }
 
 type DescribeActiveMetricRuleListRequest struct {
-	// The HTTP status code.
+	// The abbreviation of the service name. The following services support one-click alert:
 	//
-	// >  The status code 200 indicates that the call was successful.
+	// *   ecs: Elastic Compute Service (ECS)
+	// *   rds: ApsaraDB for RDS
+	// *   slb: Server Load Balancer (SLB)
+	// *   redis_standard: ApsaraDB for Redis of the standard architecture
+	// *   redis_sharding: ApsaraDB for Redis of the cluster architecture
+	// *   redis_splitrw: ApsaraDB for Redis of the read/write splitting architecture
+	// *   mongodb: ApsaraDB for MongoDB of the replica set architecture
+	// *   mongodb_sharding: ApsaraDB for MongoDB of the sharded cluster architecture
+	// *   hbase: ApsaraDB for HBase
+	// *   elasticsearch: Elasticsearch
+	// *   opensearch: Open Search
 	Product *string `json:"Product,omitempty" xml:"Product,omitempty"`
 }
 
@@ -10119,20 +10447,22 @@ func (s *DescribeActiveMetricRuleListRequest) SetProduct(v string) *DescribeActi
 }
 
 type DescribeActiveMetricRuleListResponseBody struct {
-	// The mute period during which new alerts are not sent even if the trigger conditions are met. Unit: seconds. Default value: 86400.
+	// The details of the alert rules.
 	AlertList *DescribeActiveMetricRuleListResponseBodyAlertList `json:"AlertList,omitempty" xml:"AlertList,omitempty" type:"Struct"`
-	// The returned message.
+	// The HTTP status code.
+	//
+	// >  The status code 200 indicates that the call was successful.
 	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
-	// The mute period during which new alerts are not sent even if the trigger conditions are met. Unit: seconds. Default value: 86400.
+	// The details of the alert rules.
 	Datapoints *DescribeActiveMetricRuleListResponseBodyDatapoints `json:"Datapoints,omitempty" xml:"Datapoints,omitempty" type:"Struct"`
-	// The ID of the request.
+	// The returned message.
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// The ID of the request.
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	// Indicates whether the call was successful. Valid values:
 	//
 	// *   true: The call was successful.
 	// *   false: The call failed.
-	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// The details of the alert rules.
 	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
 }
 
@@ -10192,6 +10522,14 @@ func (s *DescribeActiveMetricRuleListResponseBodyAlertList) SetAlert(v []*Descri
 }
 
 type DescribeActiveMetricRuleListResponseBodyAlertListAlert struct {
+	// The status of the alert rule. Valid values:
+	//
+	// *   OK: The alert rule has no active alert.
+	// *   ALARM: The alert rule has at least one active alert.
+	// *   INSUFFICIENT_DATA: The alert rule has no data.
+	AlertState *string `json:"AlertState,omitempty" xml:"AlertState,omitempty"`
+	// The alert group that receives alert notifications.
+	ContactGroups *string `json:"ContactGroups,omitempty" xml:"ContactGroups,omitempty"`
 	// The dimensions that specify the resources for which you want to query monitoring data.
 	//
 	// The value is a collection of key-value pairs. A typical key-value pair is `instanceId:XXXXXX`.
@@ -10201,42 +10539,34 @@ type DescribeActiveMetricRuleListResponseBodyAlertListAlert struct {
 	// The key and value can contain letters, digits, periods (.), hyphens (-), underscores (\_), forward slashes (/), and backslashes (\\).
 	//
 	// >  Dimensions must be organized in a JSON string and follow the required order.
-	AlertState *string `json:"AlertState,omitempty" xml:"AlertState,omitempty"`
-	// The namespace of the service. For more information, see [Appendix 1: Metrics](~~163515~~).
-	ContactGroups *string `json:"ContactGroups,omitempty" xml:"ContactGroups,omitempty"`
+	Dimensions *string `json:"Dimensions,omitempty" xml:"Dimensions,omitempty"`
+	// The time period during which the alert rule is effective.
+	EffectiveInterval *string `json:"EffectiveInterval,omitempty" xml:"EffectiveInterval,omitempty"`
 	// Indicates whether the alert rule is enabled. Valid values:
 	//
 	// *   true: The alert rule is enabled.
 	// *   false: The alert rule is disabled.
-	Dimensions *string `json:"Dimensions,omitempty" xml:"Dimensions,omitempty"`
-	// The time period during which the alert rule is ineffective.
-	EffectiveInterval *string `json:"EffectiveInterval,omitempty" xml:"EffectiveInterval,omitempty"`
-	// The resources that are associated with the alert rule. A one-click alert rule is associated with all resources. The return value is fixed.
 	EnableState *bool `json:"EnableState,omitempty" xml:"EnableState,omitempty"`
-	// The condition for triggering info-level alerts.
+	// The conditions for triggering different levels of alerts.
 	Escalations *DescribeActiveMetricRuleListResponseBodyAlertListAlertEscalations `json:"Escalations,omitempty" xml:"Escalations,omitempty" type:"Struct"`
 	MailSubject *string                                                            `json:"MailSubject,omitempty" xml:"MailSubject,omitempty"`
-	// The callback URL.
-	MetricName *string `json:"MetricName,omitempty" xml:"MetricName,omitempty"`
-	// The time period during which the alert rule is effective.
-	Namespace *string `json:"Namespace,omitempty" xml:"Namespace,omitempty"`
-	// The name of the alert rule.
-	NoEffectiveInterval *string `json:"NoEffectiveInterval,omitempty" xml:"NoEffectiveInterval,omitempty"`
-	// The status of the alert rule. Valid values:
-	//
-	// *   OK: The alert rule has no active alert.
-	// *   ALARM: The alert rule has at least one active alert.
-	// *   INSUFFICIENT_DATA: The alert rule has no data.
-	Period *string `json:"Period,omitempty" xml:"Period,omitempty"`
-	// The conditions for triggering different levels of alerts.
-	Resources *string `json:"Resources,omitempty" xml:"Resources,omitempty"`
-	// The aggregation period of the monitoring data. Unit: seconds. The default value is the minimum aggregation period, indicating that the metric is polled at the highest frequency. Typically, you do not need to specify the minimum aggregation period.
-	RuleId *string `json:"RuleId,omitempty" xml:"RuleId,omitempty"`
-	// The ID of the alert rule.
-	RuleName *string `json:"RuleName,omitempty" xml:"RuleName,omitempty"`
 	// The name of the metric.
+	MetricName *string `json:"MetricName,omitempty" xml:"MetricName,omitempty"`
+	// The namespace of the service. For more information, see [Appendix 1: Metrics](~~163515~~).
+	Namespace *string `json:"Namespace,omitempty" xml:"Namespace,omitempty"`
+	// The time period during which the alert rule is ineffective.
+	NoEffectiveInterval *string `json:"NoEffectiveInterval,omitempty" xml:"NoEffectiveInterval,omitempty"`
+	// The aggregation period of the monitoring data. Unit: seconds. The default value is the minimum aggregation period, indicating that the metric is polled at the highest frequency. Typically, you do not need to specify the minimum aggregation period.
+	Period *string `json:"Period,omitempty" xml:"Period,omitempty"`
+	// The resources that are associated with the alert rule. A one-click alert rule is associated with all resources. The return value is fixed.
+	Resources *string `json:"Resources,omitempty" xml:"Resources,omitempty"`
+	// The ID of the alert rule.
+	RuleId *string `json:"RuleId,omitempty" xml:"RuleId,omitempty"`
+	// The name of the alert rule.
+	RuleName *string `json:"RuleName,omitempty" xml:"RuleName,omitempty"`
+	// The mute period during which new alerts are not sent even if the trigger conditions are met. Unit: seconds. Default value: 86400.
 	SilenceTime *string `json:"SilenceTime,omitempty" xml:"SilenceTime,omitempty"`
-	// The alert group that receives alert notifications.
+	// The callback URL.
 	Webhook *string `json:"Webhook,omitempty" xml:"Webhook,omitempty"`
 }
 
@@ -10329,47 +10659,11 @@ func (s *DescribeActiveMetricRuleListResponseBodyAlertListAlert) SetWebhook(v st
 }
 
 type DescribeActiveMetricRuleListResponseBodyAlertListAlertEscalations struct {
-	// The comparison operator of the threshold for critical-level alerts. Valid values:
-	//
-	// *   GreaterThanOrEqualToThreshold: greater than or equal to the threshold
-	// *   GreaterThanThreshold: greater than the threshold
-	// *   LessThanOrEqualToThreshold: less than or equal to the threshold
-	// *   LessThanThreshold: less than the threshold
-	// *   NotEqualToThreshold: not equal to the threshold
-	// *   GreaterThanYesterday: greater than the metric value at the same time yesterday
-	// *   LessThanYesterday: less than the metric value at the same time yesterday
-	// *   GreaterThanLastWeek: greater than the metric value at the same time last week
-	// *   LessThanLastWeek: less than the metric value at the same time last week
-	// *   GreaterThanLastPeriod: greater than the metric value in the last monitoring cycle
-	// *   LessThanLastPeriod: less than the metric value in the last monitoring cycle
+	// The condition for triggering critical-level alerts.
 	Critical *DescribeActiveMetricRuleListResponseBodyAlertListAlertEscalationsCritical `json:"Critical,omitempty" xml:"Critical,omitempty" type:"Struct"`
-	// The comparison operator of the threshold for info-level alerts. Valid values:
-	//
-	// *   GreaterThanOrEqualToThreshold: greater than or equal to the threshold
-	// *   GreaterThanThreshold: greater than the threshold
-	// *   LessThanOrEqualToThreshold: less than or equal to the threshold
-	// *   LessThanThreshold: less than the threshold
-	// *   NotEqualToThreshold: not equal to the threshold
-	// *   GreaterThanYesterday: greater than the metric value at the same time yesterday
-	// *   LessThanYesterday: less than the metric value at the same time yesterday
-	// *   GreaterThanLastWeek: greater than the metric value at the same time last week
-	// *   LessThanLastWeek: less than the metric value at the same time last week
-	// *   GreaterThanLastPeriod: greater than the metric value in the last monitoring cycle
-	// *   LessThanLastPeriod: less than the metric value in the last monitoring cycle
+	// The condition for triggering info-level alerts.
 	Info *DescribeActiveMetricRuleListResponseBodyAlertListAlertEscalationsInfo `json:"Info,omitempty" xml:"Info,omitempty" type:"Struct"`
-	// The comparison operator of the threshold for critical-level alerts. Valid values:
-	//
-	// *   GreaterThanOrEqualToThreshold: greater than or equal to the threshold
-	// *   GreaterThanThreshold: greater than the threshold
-	// *   LessThanOrEqualToThreshold: less than or equal to the threshold
-	// *   LessThanThreshold: less than the threshold
-	// *   NotEqualToThreshold: not equal to the threshold
-	// *   GreaterThanYesterday: greater than the metric value at the same time yesterday
-	// *   LessThanYesterday: less than the metric value at the same time yesterday
-	// *   GreaterThanLastWeek: greater than the metric value at the same time last week
-	// *   LessThanLastWeek: less than the metric value at the same time last week
-	// *   GreaterThanLastPeriod: greater than the metric value in the last monitoring cycle
-	// *   LessThanLastPeriod: less than the metric value in the last monitoring cycle
+	// The condition for triggering warn-level alerts.
 	Warn *DescribeActiveMetricRuleListResponseBodyAlertListAlertEscalationsWarn `json:"Warn,omitempty" xml:"Warn,omitempty" type:"Struct"`
 }
 
@@ -10397,13 +10691,25 @@ func (s *DescribeActiveMetricRuleListResponseBodyAlertListAlertEscalations) SetW
 }
 
 type DescribeActiveMetricRuleListResponseBodyAlertListAlertEscalationsCritical struct {
-	// The consecutive number of times for which the metric value meets the alert condition before a Critical-level alert is triggered.
+	// The comparison operator of the threshold for critical-level alerts. Valid values:
+	//
+	// *   GreaterThanOrEqualToThreshold: greater than or equal to the threshold
+	// *   GreaterThanThreshold: greater than the threshold
+	// *   LessThanOrEqualToThreshold: less than or equal to the threshold
+	// *   LessThanThreshold: less than the threshold
+	// *   NotEqualToThreshold: not equal to the threshold
+	// *   GreaterThanYesterday: greater than the metric value at the same time yesterday
+	// *   LessThanYesterday: less than the metric value at the same time yesterday
+	// *   GreaterThanLastWeek: greater than the metric value at the same time last week
+	// *   LessThanLastWeek: less than the metric value at the same time last week
+	// *   GreaterThanLastPeriod: greater than the metric value in the last monitoring cycle
+	// *   LessThanLastPeriod: less than the metric value in the last monitoring cycle
 	ComparisonOperator *string `json:"ComparisonOperator,omitempty" xml:"ComparisonOperator,omitempty"`
-	// Queries details about one-click alert rules.
-	Statistics *string `json:"Statistics,omitempty" xml:"Statistics,omitempty"`
 	// The statistical aggregation method for critical-level alerts.
-	Threshold *string `json:"Threshold,omitempty" xml:"Threshold,omitempty"`
+	Statistics *string `json:"Statistics,omitempty" xml:"Statistics,omitempty"`
 	// The threshold for critical-level alerts.
+	Threshold *string `json:"Threshold,omitempty" xml:"Threshold,omitempty"`
+	// The consecutive number of times for which the metric value meets the alert condition before a Critical-level alert is triggered.
 	Times *string `json:"Times,omitempty" xml:"Times,omitempty"`
 }
 
@@ -10436,13 +10742,25 @@ func (s *DescribeActiveMetricRuleListResponseBodyAlertListAlertEscalationsCritic
 }
 
 type DescribeActiveMetricRuleListResponseBodyAlertListAlertEscalationsInfo struct {
-	// The consecutive number of times for which the metric value meets the alert condition before an info-level alert is triggered.
+	// The comparison operator of the threshold for info-level alerts. Valid values:
+	//
+	// *   GreaterThanOrEqualToThreshold: greater than or equal to the threshold
+	// *   GreaterThanThreshold: greater than the threshold
+	// *   LessThanOrEqualToThreshold: less than or equal to the threshold
+	// *   LessThanThreshold: less than the threshold
+	// *   NotEqualToThreshold: not equal to the threshold
+	// *   GreaterThanYesterday: greater than the metric value at the same time yesterday
+	// *   LessThanYesterday: less than the metric value at the same time yesterday
+	// *   GreaterThanLastWeek: greater than the metric value at the same time last week
+	// *   LessThanLastWeek: less than the metric value at the same time last week
+	// *   GreaterThanLastPeriod: greater than the metric value in the last monitoring cycle
+	// *   LessThanLastPeriod: less than the metric value in the last monitoring cycle
 	ComparisonOperator *string `json:"ComparisonOperator,omitempty" xml:"ComparisonOperator,omitempty"`
-	// The condition for triggering warn-level alerts.
-	Statistics *string `json:"Statistics,omitempty" xml:"Statistics,omitempty"`
 	// The statistical aggregation method for info-level alerts.
-	Threshold *string `json:"Threshold,omitempty" xml:"Threshold,omitempty"`
+	Statistics *string `json:"Statistics,omitempty" xml:"Statistics,omitempty"`
 	// The threshold for info-level alerts.
+	Threshold *string `json:"Threshold,omitempty" xml:"Threshold,omitempty"`
+	// The consecutive number of times for which the metric value meets the alert condition before an info-level alert is triggered.
 	Times *string `json:"Times,omitempty" xml:"Times,omitempty"`
 }
 
@@ -10475,13 +10793,25 @@ func (s *DescribeActiveMetricRuleListResponseBodyAlertListAlertEscalationsInfo) 
 }
 
 type DescribeActiveMetricRuleListResponseBodyAlertListAlertEscalationsWarn struct {
-	// The consecutive number of times for which the metric value meets the alert condition before a warn-level alert is triggered.
+	// The comparison operator of the threshold for critical-level alerts. Valid values:
+	//
+	// *   GreaterThanOrEqualToThreshold: greater than or equal to the threshold
+	// *   GreaterThanThreshold: greater than the threshold
+	// *   LessThanOrEqualToThreshold: less than or equal to the threshold
+	// *   LessThanThreshold: less than the threshold
+	// *   NotEqualToThreshold: not equal to the threshold
+	// *   GreaterThanYesterday: greater than the metric value at the same time yesterday
+	// *   LessThanYesterday: less than the metric value at the same time yesterday
+	// *   GreaterThanLastWeek: greater than the metric value at the same time last week
+	// *   LessThanLastWeek: less than the metric value at the same time last week
+	// *   GreaterThanLastPeriod: greater than the metric value in the last monitoring cycle
+	// *   LessThanLastPeriod: less than the metric value in the last monitoring cycle
 	ComparisonOperator *string `json:"ComparisonOperator,omitempty" xml:"ComparisonOperator,omitempty"`
-	// The condition for triggering critical-level alerts.
-	Statistics *string `json:"Statistics,omitempty" xml:"Statistics,omitempty"`
 	// The statistical aggregation method for warn-level alerts.
-	Threshold *string `json:"Threshold,omitempty" xml:"Threshold,omitempty"`
+	Statistics *string `json:"Statistics,omitempty" xml:"Statistics,omitempty"`
 	// The threshold of warn-level alerts.
+	Threshold *string `json:"Threshold,omitempty" xml:"Threshold,omitempty"`
+	// The consecutive number of times for which the metric value meets the alert condition before a warn-level alert is triggered.
 	Times *string `json:"Times,omitempty" xml:"Times,omitempty"`
 }
 
@@ -10531,20 +10861,6 @@ func (s *DescribeActiveMetricRuleListResponseBodyDatapoints) SetAlarm(v []*Descr
 }
 
 type DescribeActiveMetricRuleListResponseBodyDatapointsAlarm struct {
-	// The beginning of the time period during which the alert rule is effective. Unit: hours. For example, the value 23 indicates `23:59:59`.
-	ComparisonOperator *string `json:"ComparisonOperator,omitempty" xml:"ComparisonOperator,omitempty"`
-	// The namespace of the service. For more information, see [Appendix 1: Metrics](~~163515~~).
-	ContactGroups *string `json:"ContactGroups,omitempty" xml:"ContactGroups,omitempty"`
-	// The details of the alert rules.
-	Enable *string `json:"Enable,omitempty" xml:"Enable,omitempty"`
-	// The end of the time period during which the alert rule is effective. Unit: hours. For example, the value 00 indicates `00:00:00`.
-	EndTime *string `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
-	// The callback URL.
-	EvaluationCount *string `json:"EvaluationCount,omitempty" xml:"EvaluationCount,omitempty"`
-	// The consecutive number of times for which the metric value meets the alert condition before an alert is triggered.
-	MetricName *string `json:"MetricName,omitempty" xml:"MetricName,omitempty"`
-	// The name of the alert rule.
-	Namespace *string `json:"Namespace,omitempty" xml:"Namespace,omitempty"`
 	// The comparison operator that is used in the alert rule. Valid values:
 	//
 	// *   `>`
@@ -10553,25 +10869,39 @@ type DescribeActiveMetricRuleListResponseBodyDatapointsAlarm struct {
 	// *   `<=`
 	// *   `=`
 	// *   `=`
-	Period *string `json:"Period,omitempty" xml:"Period,omitempty"`
-	// The aggregation period of the monitoring data. Unit: seconds. The default value is the minimum aggregation period, indicating that the metric is polled at the highest frequency. Typically, you do not need to specify the minimum aggregation period.
-	RuleId *string `json:"RuleId,omitempty" xml:"RuleId,omitempty"`
-	// The ID of the alert rule.
-	RuleName *string `json:"RuleName,omitempty" xml:"RuleName,omitempty"`
-	// The name of the metric.
-	SilenceTime *string `json:"SilenceTime,omitempty" xml:"SilenceTime,omitempty"`
-	// The threshold of the metric value.
-	StartTime *string `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
+	ComparisonOperator *string `json:"ComparisonOperator,omitempty" xml:"ComparisonOperator,omitempty"`
 	// The alert group that receives alert notifications.
-	State *string `json:"State,omitempty" xml:"State,omitempty"`
+	ContactGroups *string `json:"ContactGroups,omitempty" xml:"ContactGroups,omitempty"`
 	// Indicates whether the alert rule is enabled. Valid values:
 	//
 	// *   true: The alert rule is enabled.
 	// *   false: The alert rule is disabled.
-	Statistics *string `json:"Statistics,omitempty" xml:"Statistics,omitempty"`
-	// The statistical aggregation method.
-	Threshold *string `json:"Threshold,omitempty" xml:"Threshold,omitempty"`
+	Enable *string `json:"Enable,omitempty" xml:"Enable,omitempty"`
+	// The beginning of the time period during which the alert rule is effective. Unit: hours. For example, the value 23 indicates `23:59:59`.
+	EndTime *string `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
+	// The consecutive number of times for which the metric value meets the alert condition before an alert is triggered.
+	EvaluationCount *string `json:"EvaluationCount,omitempty" xml:"EvaluationCount,omitempty"`
+	// The name of the metric.
+	MetricName *string `json:"MetricName,omitempty" xml:"MetricName,omitempty"`
+	// The namespace of the service. For more information, see [Appendix 1: Metrics](~~163515~~).
+	Namespace *string `json:"Namespace,omitempty" xml:"Namespace,omitempty"`
+	// The aggregation period of the monitoring data. Unit: seconds. The default value is the minimum aggregation period, indicating that the metric is polled at the highest frequency. Typically, you do not need to specify the minimum aggregation period.
+	Period *string `json:"Period,omitempty" xml:"Period,omitempty"`
+	// The ID of the alert rule.
+	RuleId *string `json:"RuleId,omitempty" xml:"RuleId,omitempty"`
+	// The name of the alert rule.
+	RuleName *string `json:"RuleName,omitempty" xml:"RuleName,omitempty"`
+	// The mute period during which new alerts are not sent even if the trigger conditions are met. Unit: seconds. Default value: 86400.
+	SilenceTime *string `json:"SilenceTime,omitempty" xml:"SilenceTime,omitempty"`
+	// The end of the time period during which the alert rule is effective. Unit: hours. For example, the value 00 indicates `00:00:00`.
+	StartTime *string `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
 	// Indicates whether the alert rule is enabled.
+	State *string `json:"State,omitempty" xml:"State,omitempty"`
+	// The statistical aggregation method.
+	Statistics *string `json:"Statistics,omitempty" xml:"Statistics,omitempty"`
+	// The threshold of the metric value.
+	Threshold *string `json:"Threshold,omitempty" xml:"Threshold,omitempty"`
+	// The callback URL.
 	Webhook *string `json:"Webhook,omitempty" xml:"Webhook,omitempty"`
 }
 
@@ -11767,58 +12097,60 @@ func (s *DescribeAlertLogHistogramResponse) SetBody(v *DescribeAlertLogHistogram
 }
 
 type DescribeAlertLogListRequest struct {
-	// The start timestamp of the alert logs to be queried. Unit: milliseconds.
-	ContactGroup *string `json:"ContactGroup,omitempty" xml:"ContactGroup,omitempty"`
 	// The alert contact group.
+	ContactGroup *string `json:"ContactGroup,omitempty" xml:"ContactGroup,omitempty"`
+	// The end timestamp of the alert logs to be queried. Unit: milliseconds.
 	EndTime *int64 `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
-	// The alert information in a JSON string.
+	// The dimension based on which data is aggregated. This parameter is equivalent to the GROUP BY clause in SQL. Valid values:
+	//
+	// *   `product`: aggregates data by cloud service.
+	// *   `level`: aggregates data by alert level.
+	// *   `groupId`: aggregates data by application group.
+	// *   `contactGroup`: aggregates data by alert contact group.
+	// *   `product,metricName`: aggregates data both by cloud service and by metric.
 	GroupBy *string `json:"GroupBy,omitempty" xml:"GroupBy,omitempty"`
-	// The operation that you want to perform. Set the value to **DescribeAlertLogList**.
+	// The ID of the application group.
 	GroupId *string `json:"GroupId,omitempty" xml:"GroupId,omitempty"`
-	// The name of the blacklist policy.
+	// The statistical period of alert logs. Unit: minutes.
 	LastMin *string `json:"LastMin,omitempty" xml:"LastMin,omitempty"`
-	// The webhook URLs of alert contacts.
-	Level *string `json:"Level,omitempty" xml:"Level,omitempty"`
-	// The message returned for the alert callback.
-	MetricName *string `json:"MetricName,omitempty" xml:"MetricName,omitempty"`
-	// Indicates whether the call was successful.
-	//
-	// *   true: The call was successful.
-	// *   false: The call failed.
-	Namespace *string `json:"Namespace,omitempty" xml:"Namespace,omitempty"`
-	// The HTTP status code.
-	//
-	// >  The status code 200 indicates that the call was successful.
-	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
 	// The severity level and notification methods of the alert. Valid values:
 	//
 	// *   P4: Alert notifications are sent by using emails and DingTalk chatbots.
-	//
-	// <!---->
-	//
 	// *   OK: No alert is generated.
+	Level *string `json:"Level,omitempty" xml:"Level,omitempty"`
+	// The metric name.
+	//
+	// > For more information about the metrics of different cloud services, see [Appendix 1: Metrics](~~163515~~).
+	MetricName *string `json:"MetricName,omitempty" xml:"MetricName,omitempty"`
+	// The namespace of the cloud service.
+	//
+	// > For more information about the namespaces of different cloud services, see [Appendix 1: Metrics](~~163515~~).
+	Namespace *string `json:"Namespace,omitempty" xml:"Namespace,omitempty"`
+	// The page number. Default value: 1.
+	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
+	// The number of entries per page. Default value: 10.
 	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	// The email addresses of alert contacts.
+	// The abbreviation of the cloud service name.
 	Product  *string `json:"Product,omitempty" xml:"Product,omitempty"`
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	// The phone numbers of alert contacts that can receive alert text messages.
-	//
-	// >  This parameter can be returned only on the China site (aliyun.com).
+	// The ID of the alert rule. For more information about how to query the ID of an alert rule, see [DescribeMetricRuleList](~~114941~~).
 	RuleId *string `json:"RuleId,omitempty" xml:"RuleId,omitempty"`
-	// The identifier of the cloud service. Valid values:
-	//
-	// *   If the cloud service is provided by Alibaba Cloud, the abbreviation of the service name is returned. Example: ECS.
-	// *   If the cloud service is not provided by Alibaba Cloud, a value in the `acs_Service keyword` format is returned. Example: acs_networkmonitor.
+	// The name of the alert rule.
 	RuleName *string `json:"RuleName,omitempty" xml:"RuleName,omitempty"`
-	// The ID of the log.
+	// The search keyword that is used to query alert logs.
 	SearchKey *string `json:"SearchKey,omitempty" xml:"SearchKey,omitempty"`
-	// The sending results of alert notifications.
+	// The status of the alert. Valid values:
+	//
+	// *   0: The alert is triggered or cleared.
+	// *   1: The alert is ineffective.
+	// *   2: The alert is muted.
+	// *   3: The host is restarting.
+	// *   4: No alert notification is sent.
+	//
+	// If the value of the SendStatus parameter is 0, the value P4 of the Level parameter indicates a triggered alert and the value OK indicates a cleared alert.
 	SendStatus *string `json:"SendStatus,omitempty" xml:"SendStatus,omitempty"`
 	SourceType *string `json:"SourceType,omitempty" xml:"SourceType,omitempty"`
-	// Indicates whether the alert level was changed. Valid values:
-	//
-	// *   `P4->OK`: The alert level was changed from P4 to OK.
-	// *   `P4->P4`: The alert level was still P4.
+	// The start timestamp of the alert logs to be queried. Unit: milliseconds.
 	StartTime *int64 `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
 }
 
@@ -11921,21 +12253,24 @@ func (s *DescribeAlertLogListRequest) SetStartTime(v int64) *DescribeAlertLogLis
 }
 
 type DescribeAlertLogListResponseBody struct {
-	// The status code of the alert callback.
+	// The queried alert logs.
 	AlertLogList []*DescribeAlertLogListResponseBodyAlertLogList `json:"AlertLogList,omitempty" xml:"AlertLogList,omitempty" type:"Repeated"`
-	// The extended fields.
-	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
-	// The end timestamp of the alert logs to be queried. Unit: milliseconds.
-	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
-	// The DingTalk chatbots of alert contacts.
-	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
-	// The name of the metric.
+	// The HTTP status code.
 	//
-	// >  For more information about the metrics of different cloud services, see [Appendix 1: Metrics](~~163515~~).
+	// > The status code 200 indicates that the request was successful.
+	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	// The error message.
+	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// The page number.
+	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
+	// The number of entries per page.
 	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	// The name of the alert rule.
+	// The request ID.
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// The timestamp that was generated when the alert was triggered. Unit: milliseconds.
+	// Indicates whether the request was successful. Valid values:
+	//
+	// *   true
+	// *   false
 	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
 }
 
@@ -11983,98 +12318,92 @@ func (s *DescribeAlertLogListResponseBody) SetSuccess(v bool) *DescribeAlertLogL
 }
 
 type DescribeAlertLogListResponseBodyAlertLogList struct {
-	// The details of the blacklist policy.
+	// The timestamp that was generated when the alert was triggered. Unit: milliseconds.
 	AlertTime *string `json:"AlertTime,omitempty" xml:"AlertTime,omitempty"`
-	// The dimension based on which data is aggregated. This parameter is equivalent to the GROUP BY clause in SQL. Valid values:
-	//
-	// *   `product`: aggregates data by cloud service.
-	// *   `level`: aggregates data by alert level.
-	// *   `groupId`: aggregates data by application group.
-	// *   `contactGroup`: aggregates data by alert contact group.
-	// *   `product,metricName`: aggregates data both by cloud service and by metric.
+	// The details of the blacklist policy.
 	BlackListDetail *string `json:"BlackListDetail,omitempty" xml:"BlackListDetail,omitempty"`
-	// The number of entries to return on each page. Default value: 10.
+	// The name of the blacklist policy.
 	BlackListName *string `json:"BlackListName,omitempty" xml:"BlackListName,omitempty"`
-	// The category of the alert notification method. Valid values:
-	//
-	// *   Mail: email
-	// *   ALIIM: TradeManager
-	// *   SMS: text message
-	// *   CALL: phone call
-	// *   DING: DingTalk chatbot
-	// *   Merged: alert merging
+	// The ID of the blacklist policy.
 	BlackListUUID *string `json:"BlackListUUID,omitempty" xml:"BlackListUUID,omitempty"`
-	// The name of the extended field.
+	// The TradeManager IDs of the alert contacts.
+	//
+	// > This parameter is valid only on the China site (aliyun.com).
 	ContactALIIWWList []*string `json:"ContactALIIWWList,omitempty" xml:"ContactALIIWWList,omitempty" type:"Repeated"`
-	// The abbreviation of the Alibaba Cloud service name.
+	// The DingTalk chatbots of the alert contacts.
 	ContactDingList []*string `json:"ContactDingList,omitempty" xml:"ContactDingList,omitempty" type:"Repeated"`
-	// The alert notification method.
+	// The alert contact groups.
 	ContactGroups []*string `json:"ContactGroups,omitempty" xml:"ContactGroups,omitempty" type:"Repeated"`
-	// The callback URL.
+	// The email addresses of the alert contacts.
 	ContactMailList []*string `json:"ContactMailList,omitempty" xml:"ContactMailList,omitempty" type:"Repeated"`
-	// The name of the resource.
+	// The phone numbers of the alert contacts that receive alert phone calls.
+	//
+	// > This parameter is valid only on the China site (aliyun.com).
 	ContactOnCallList []*string `json:"ContactOnCallList,omitempty" xml:"ContactOnCallList,omitempty" type:"Repeated"`
-	// The statistical period of alert logs. Unit: minutes.
+	// The phone numbers of the alert contacts that receive alert text messages.
+	//
+	// > This parameter is valid only on the China site (aliyun.com).
 	ContactSMSList []*string `json:"ContactSMSList,omitempty" xml:"ContactSMSList,omitempty" type:"Repeated"`
+	// The dimensions of the resource that triggered alerts.
+	Dimensions []*DescribeAlertLogListResponseBodyAlertLogListDimensions `json:"Dimensions,omitempty" xml:"Dimensions,omitempty" type:"Repeated"`
+	// The webhook URLs of the alert contacts.
+	DingdingWebhookList []*string `json:"DingdingWebhookList,omitempty" xml:"DingdingWebhookList,omitempty" type:"Repeated"`
+	// The alert rule based on which the alert is triggered.
+	Escalation *DescribeAlertLogListResponseBodyAlertLogListEscalation `json:"Escalation,omitempty" xml:"Escalation,omitempty" type:"Struct"`
+	// The event name.
+	EventName *string `json:"EventName,omitempty" xml:"EventName,omitempty"`
+	// The extended fields.
+	ExtendedInfo []*DescribeAlertLogListResponseBodyAlertLogListExtendedInfo `json:"ExtendedInfo,omitempty" xml:"ExtendedInfo,omitempty" type:"Repeated"`
+	// The ID of the application group.
+	GroupId *string `json:"GroupId,omitempty" xml:"GroupId,omitempty"`
+	// The name of the application group.
+	GroupName *string `json:"GroupName,omitempty" xml:"GroupName,omitempty"`
+	// The resource ID.
+	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	// The resource name.
+	InstanceName *string `json:"InstanceName,omitempty" xml:"InstanceName,omitempty"`
+	// The severity level and notification methods of the alert. Valid values:
+	//
+	// *   P4: Alert notifications are sent by using emails and DingTalk chatbots.
+	// *   OK: No alert is generated.
+	Level *string `json:"Level,omitempty" xml:"Level,omitempty"`
+	// Indicates whether the alert level was changed. Valid values:
+	//
+	// *   `P4->OK`: The alert level was changed from P4 to OK.
+	// *   `P4->P4`: The alert level was still P4.
+	LevelChange *string `json:"LevelChange,omitempty" xml:"LevelChange,omitempty"`
+	// The log ID.
+	LogId *string `json:"LogId,omitempty" xml:"LogId,omitempty"`
+	// The alert information in a JSON string.
+	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// The metric name.
+	MetricName *string `json:"MetricName,omitempty" xml:"MetricName,omitempty"`
+	// The namespace of the cloud service.
+	Namespace *string `json:"Namespace,omitempty" xml:"Namespace,omitempty"`
+	// The identifier of the cloud service. Valid values:
+	//
+	// *   If the cloud service is provided by Alibaba Cloud, the abbreviation of the service name is returned. Example: ECS.
+	// *   If the cloud service is not provided by Alibaba Cloud, a value in the `acs_Service keyword` format is returned. Example: acs_networkmonitor.
+	Product *string `json:"Product,omitempty" xml:"Product,omitempty"`
+	// The ID of the alert rule.
+	RuleId *string `json:"RuleId,omitempty" xml:"RuleId,omitempty"`
+	// The name of the alert rule.
+	RuleName *string `json:"RuleName,omitempty" xml:"RuleName,omitempty"`
+	// The details of the alert notification method.
+	SendDetail *DescribeAlertLogListResponseBodyAlertLogListSendDetail `json:"SendDetail,omitempty" xml:"SendDetail,omitempty" type:"Struct"`
+	// The sending results of alert notifications.
+	SendResultList []*DescribeAlertLogListResponseBodyAlertLogListSendResultList `json:"SendResultList,omitempty" xml:"SendResultList,omitempty" type:"Repeated"`
 	// The status of the alert. Valid values:
 	//
 	// *   0: The alert is triggered or cleared.
 	// *   1: The alert is ineffective.
-	// *   2: The alert is muted and not triggered in a specified period.
+	// *   2: The alert is muted.
 	// *   3: The host is restarting.
 	// *   4: No alert notification is sent.
 	//
 	// If the value of the SendStatus parameter is 0, the value P4 of the Level parameter indicates a triggered alert and the value OK indicates a cleared alert.
-	Dimensions []*DescribeAlertLogListResponseBodyAlertLogListDimensions `json:"Dimensions,omitempty" xml:"Dimensions,omitempty" type:"Repeated"`
-	// The ID of the application group.
-	DingdingWebhookList []*string                                               `json:"DingdingWebhookList,omitempty" xml:"DingdingWebhookList,omitempty" type:"Repeated"`
-	Escalation          *DescribeAlertLogListResponseBodyAlertLogListEscalation `json:"Escalation,omitempty" xml:"Escalation,omitempty" type:"Struct"`
-	// The number of the page to return. Default value: 1.
-	EventName *string `json:"EventName,omitempty" xml:"EventName,omitempty"`
-	// The sending results of alert notifications.
-	ExtendedInfo []*DescribeAlertLogListResponseBodyAlertLogListExtendedInfo `json:"ExtendedInfo,omitempty" xml:"ExtendedInfo,omitempty" type:"Repeated"`
-	// The number of entries returned per page.
-	GroupId *string `json:"GroupId,omitempty" xml:"GroupId,omitempty"`
-	// The ID of the alert rule.
-	GroupName *string `json:"GroupName,omitempty" xml:"GroupName,omitempty"`
-	// The alert contact group.
-	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	// The list of callback URLs.
-	InstanceName *string `json:"InstanceName,omitempty" xml:"InstanceName,omitempty"`
-	// The HTTP status code.
-	//
-	// *   If the value of the `Channel` parameter is `WEBHOOK`, the status code is 200 or 500.
-	// *   If the value of the `Channel` parameter is `MAIL`, `SMS`, `SLS`, `ONCALL`, `FC`, or `MNS`, this parameter is empty or not returned.
-	Level *string `json:"Level,omitempty" xml:"Level,omitempty"`
-	// The key of the dimension.
-	LevelChange *string `json:"LevelChange,omitempty" xml:"LevelChange,omitempty"`
-	LogId       *string `json:"LogId,omitempty" xml:"LogId,omitempty"`
-	// The name of the alert rule.
-	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
-	// The name of the metric.
-	MetricName *string `json:"MetricName,omitempty" xml:"MetricName,omitempty"`
-	// The dimensions of the resource that triggered alerts.
-	Namespace *string `json:"Namespace,omitempty" xml:"Namespace,omitempty"`
-	// Indicates whether the alert notifications are sent.
-	//
-	// *   If the alert notifications are sent, the value "success" is returned.
-	// *   If the configuration is invalid, no alert notification is sent and an error code is returned.
-	Product *string `json:"Product,omitempty" xml:"Product,omitempty"`
-	// The phone numbers of alert contacts that can receive alert phone calls.
-	//
-	// >  This parameter can be returned only on the China site (aliyun.com).
-	RuleId *string `json:"RuleId,omitempty" xml:"RuleId,omitempty"`
-	// The ID of the resource.
-	RuleName *string `json:"RuleName,omitempty" xml:"RuleName,omitempty"`
-	// The namespace of the cloud service.
-	//
-	// >  For more information about the namespaces of different cloud services, see [Appendix 1: Metrics](~~163515~~).
-	SendDetail *DescribeAlertLogListResponseBodyAlertLogListSendDetail `json:"SendDetail,omitempty" xml:"SendDetail,omitempty" type:"Struct"`
-	// The details of the returned results.
-	SendResultList []*DescribeAlertLogListResponseBodyAlertLogListSendResultList `json:"SendResultList,omitempty" xml:"SendResultList,omitempty" type:"Repeated"`
-	// The value of the dimension.
 	SendStatus *string `json:"SendStatus,omitempty" xml:"SendStatus,omitempty"`
-	// The value of the extended field.
+	// The callback URLs.
 	WebhookList []*DescribeAlertLogListResponseBodyAlertLogListWebhookList `json:"WebhookList,omitempty" xml:"WebhookList,omitempty" type:"Repeated"`
 }
 
@@ -12247,9 +12576,9 @@ func (s *DescribeAlertLogListResponseBodyAlertLogList) SetWebhookList(v []*Descr
 }
 
 type DescribeAlertLogListResponseBodyAlertLogListDimensions struct {
-	// The list of sending results that are categorized by notification method.
+	// The key of the dimension.
 	Key *string `json:"Key,omitempty" xml:"Key,omitempty"`
-	// The ID of the blacklist policy.
+	// The value of the dimension.
 	Value *string `json:"Value,omitempty" xml:"Value,omitempty"`
 }
 
@@ -12272,9 +12601,17 @@ func (s *DescribeAlertLogListResponseBodyAlertLogListDimensions) SetValue(v stri
 }
 
 type DescribeAlertLogListResponseBodyAlertLogListEscalation struct {
+	// The description of the alert rule.
+	//
+	// > The content of the alert rule. If the metric value meets the alert condition, an alert is triggered.
 	Expression *string `json:"Expression,omitempty" xml:"Expression,omitempty"`
-	Level      *string `json:"Level,omitempty" xml:"Level,omitempty"`
-	Times      *int32  `json:"Times,omitempty" xml:"Times,omitempty"`
+	// The severity level and notification methods of the alert. Valid values:
+	//
+	// *   P4: Alert notifications are sent by using emails and DingTalk chatbots.
+	// *   OK: No alert is generated.
+	Level *string `json:"Level,omitempty" xml:"Level,omitempty"`
+	// The consecutive number of times for which the metric value meets the alert condition before an alert is triggered.
+	Times *int32 `json:"Times,omitempty" xml:"Times,omitempty"`
 }
 
 func (s DescribeAlertLogListResponseBodyAlertLogListEscalation) String() string {
@@ -12301,17 +12638,9 @@ func (s *DescribeAlertLogListResponseBodyAlertLogListEscalation) SetTimes(v int3
 }
 
 type DescribeAlertLogListResponseBodyAlertLogListExtendedInfo struct {
-	// The name of the event.
+	// The name of the extended field.
 	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
-	// The method that is used to send alert notifications. Valid values:
-	//
-	// *   MAIL: email
-	// *   SMS: text message
-	// *   WEBHOOK: alert callback
-	// *   SLS: Log Service
-	// *   ONCALL: phone call
-	// *   FC: Function Compute
-	// *   MNS: Message Service queue
+	// The value of the extended field.
 	Value *string `json:"Value,omitempty" xml:"Value,omitempty"`
 }
 
@@ -12334,9 +12663,12 @@ func (s *DescribeAlertLogListResponseBodyAlertLogListExtendedInfo) SetValue(v st
 }
 
 type DescribeAlertLogListResponseBodyAlertLogListSendDetail struct {
-	// The namespace of the cloud service.
+	// The list of sending results that are categorized by notification method.
 	ChannelResultList []*DescribeAlertLogListResponseBodyAlertLogListSendDetailChannelResultList `json:"ChannelResultList,omitempty" xml:"ChannelResultList,omitempty" type:"Repeated"`
-	// The alert logs.
+	// Indicates whether the alert notifications are sent.
+	//
+	// *   If the alert notifications are sent, the value "success" is returned.
+	// *   If the configuration is invalid, no alert notification is sent and an error code is returned.
 	ResultCode *string `json:"ResultCode,omitempty" xml:"ResultCode,omitempty"`
 }
 
@@ -12359,9 +12691,17 @@ func (s *DescribeAlertLogListResponseBodyAlertLogListSendDetail) SetResultCode(v
 }
 
 type DescribeAlertLogListResponseBodyAlertLogListSendDetailChannelResultList struct {
-	// The queried resources.
+	// The method that is used to send alert notifications. Valid values:
+	//
+	// *   MAIL: email
+	// *   SMS: text message
+	// *   WEBHOOK: alert callback
+	// *   SLS: Simple Log Service
+	// *   ONCALL: phone call
+	// *   FC: Function Compute
+	// *   MNS: Message Service queue
 	Channel *string `json:"Channel,omitempty" xml:"Channel,omitempty"`
-	// The details about the sending results of alert notifications.
+	// The sending results of alert notifications.
 	ResultList []*DescribeAlertLogListResponseBodyAlertLogListSendDetailChannelResultListResultList `json:"ResultList,omitempty" xml:"ResultList,omitempty" type:"Repeated"`
 }
 
@@ -12384,23 +12724,21 @@ func (s *DescribeAlertLogListResponseBodyAlertLogListSendDetailChannelResultList
 }
 
 type DescribeAlertLogListResponseBodyAlertLogListSendDetailChannelResultListResultList struct {
-	// The severity level and notification methods of the alert. Valid values:
+	// The HTTP status code.
 	//
-	// *   P4: Alert notifications are sent by using emails and DingTalk chatbots.
-	//
-	// <!---->
-	//
-	// *   OK: No alert is generated.
+	// *   If the value of the `Channel` parameter is `WEBHOOK`, the status code is 200 or 500.
+	// *   If the value of the `Channel` parameter is `MAIL`, `SMS`, `SLS`, `ONCALL`, `FC`, or `MNS`, this parameter is empty or not returned.
 	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
-	// The name of the application group.
+	// The details of the returned results.
 	Detail *string `json:"Detail,omitempty" xml:"Detail,omitempty"`
-	// The ID of the alert rule.
-	//
-	// For information about how to obtain the ID of an alert rule, see [DescribeMetricRuleList](~~114941~~).
+	// The request ID returned when CloudMonitor calls another cloud service.
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// The page number of the returned page.
+	// Indicates whether the request was successful. Valid values:
+	//
+	// *   true
+	// *   false
 	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
-	// The ID of the request.
+	// The queried resources.
 	NotifyTargetList []*string `json:"notifyTargetList,omitempty" xml:"notifyTargetList,omitempty" type:"Repeated"`
 }
 
@@ -12438,8 +12776,16 @@ func (s *DescribeAlertLogListResponseBodyAlertLogListSendDetailChannelResultList
 }
 
 type DescribeAlertLogListResponseBodyAlertLogListSendResultList struct {
-	// For more information about common request parameters, see [Common parameters](~~199331~~).
-	Key   *string   `json:"Key,omitempty" xml:"Key,omitempty"`
+	// The category of the alert notification method. Valid values:
+	//
+	// *   Mail: email
+	// *   ALIIM: TradeManager
+	// *   SMS: text message
+	// *   CALL: phone call
+	// *   DING: DingTalk chatbot
+	// *   Merged: alert merging
+	Key *string `json:"Key,omitempty" xml:"Key,omitempty"`
+	// The alert notification methods.
 	Value []*string `json:"Value,omitempty" xml:"Value,omitempty" type:"Repeated"`
 }
 
@@ -12462,11 +12808,11 @@ func (s *DescribeAlertLogListResponseBodyAlertLogListSendResultList) SetValue(v 
 }
 
 type DescribeAlertLogListResponseBodyAlertLogListWebhookList struct {
-	// The search keyword that is used to query alert logs.
+	// The status code of the alert callback.
 	Code *string `json:"code,omitempty" xml:"code,omitempty"`
-	// The error message.
+	// The message returned for the alert callback.
 	Message *string `json:"message,omitempty" xml:"message,omitempty"`
-	// The request ID returned when CloudMonitor calls another cloud service.
+	// The callback URL.
 	Url *string `json:"url,omitempty" xml:"url,omitempty"`
 }
 
@@ -12523,6 +12869,7 @@ func (s *DescribeAlertLogListResponse) SetBody(v *DescribeAlertLogListResponseBo
 }
 
 type DescribeAlertingMetricRuleResourcesRequest struct {
+	AlertBeforeTime *string `json:"AlertBeforeTime,omitempty" xml:"AlertBeforeTime,omitempty"`
 	// The dimensions that specify the resources whose monitoring data you want to query.
 	Dimensions *string `json:"Dimensions,omitempty" xml:"Dimensions,omitempty"`
 	// The ID of the application group. For information about how to obtain the ID of an application group, see [DescribeMonitorGroups](~~115032~~).
@@ -12550,6 +12897,11 @@ func (s DescribeAlertingMetricRuleResourcesRequest) String() string {
 
 func (s DescribeAlertingMetricRuleResourcesRequest) GoString() string {
 	return s.String()
+}
+
+func (s *DescribeAlertingMetricRuleResourcesRequest) SetAlertBeforeTime(v string) *DescribeAlertingMetricRuleResourcesRequest {
+	s.AlertBeforeTime = &v
+	return s
 }
 
 func (s *DescribeAlertingMetricRuleResourcesRequest) SetDimensions(v string) *DescribeAlertingMetricRuleResourcesRequest {
@@ -13051,11 +13403,9 @@ func (s *DescribeAlertingMetricRuleResourcesResponse) SetBody(v *DescribeAlertin
 }
 
 type DescribeContactGroupListRequest struct {
-	// The HTTP status code.
-	//
-	// >  The status code 200 indicates that the call was successful.
-	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
 	// The number of the page to return.
+	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
+	// The number of entries to return on each page.
 	PageSize *int32  `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 }
@@ -13084,22 +13434,24 @@ func (s *DescribeContactGroupListRequest) SetRegionId(v string) *DescribeContact
 }
 
 type DescribeContactGroupListResponseBody struct {
-	// The returned message.
+	// The HTTP status code.
+	//
+	// >  The status code 200 indicates that the call was successful.
 	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
-	// The description of the alert group.
-	ContactGroupList *DescribeContactGroupListResponseBodyContactGroupList `json:"ContactGroupList,omitempty" xml:"ContactGroupList,omitempty" type:"Struct"`
 	// The information about alert groups that were queried.
-	ContactGroups *DescribeContactGroupListResponseBodyContactGroups `json:"ContactGroups,omitempty" xml:"ContactGroups,omitempty" type:"Struct"`
-	// The ID of the request.
-	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
-	// The total number of the returned entries.
-	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	ContactGroupList *DescribeContactGroupListResponseBodyContactGroupList `json:"ContactGroupList,omitempty" xml:"ContactGroupList,omitempty" type:"Struct"`
 	// The names of alert groups.
-	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
+	ContactGroups *DescribeContactGroupListResponseBodyContactGroups `json:"ContactGroups,omitempty" xml:"ContactGroups,omitempty" type:"Struct"`
+	// The returned message.
+	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// The ID of the request.
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	// Indicates whether the call was successful. Valid values:
 	//
 	// *   true: The call was successful.
 	// *   false: The call failed.
+	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
+	// The total number of the returned entries.
 	Total *int32 `json:"Total,omitempty" xml:"Total,omitempty"`
 }
 
@@ -13164,27 +13516,27 @@ func (s *DescribeContactGroupListResponseBodyContactGroupList) SetContactGroup(v
 }
 
 type DescribeContactGroupListResponseBodyContactGroupListContactGroup struct {
-	// Queries alert groups.
+	// The alert contacts in the alert group.
 	Contacts *DescribeContactGroupListResponseBodyContactGroupListContactGroupContacts `json:"Contacts,omitempty" xml:"Contacts,omitempty" type:"Struct"`
+	// The time when the alert group was created. This value is a UNIX timestamp that represents the number of milliseconds that have elapsed since January 1, 1970, 00:00:00 UTC.
+	CreateTime *int64 `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
+	// The description of the alert group.
+	Describe *string `json:"Describe,omitempty" xml:"Describe,omitempty"`
+	// Indicates whether the alert group subscribes to weekly reports. Valid values:
+	//
+	// *   true: The alert group subscribes to weekly reports.
+	// *   false: The alert group does not subscribe to weekly reports.
+	EnableSubscribed *bool `json:"EnableSubscribed,omitempty" xml:"EnableSubscribed,omitempty"`
 	// Indicates whether the alert group can subscribe to weekly reports. Valid values:
 	//
 	// *   true: The alert group can subscribe to weekly reports.
 	// *   false: The alert group cannot subscribe to weekly reports.
 	//
 	// >  The weekly report subscription feature is only available for Alibaba Cloud accounts with more than five Elastic Compute Service (ECS) instances.
-	CreateTime *int64 `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
-	// The time when the alert group was modified. This value is a UNIX timestamp that represents the number of milliseconds that have elapsed since January 1, 1970, 00:00:00 UTC.
-	Describe *string `json:"Describe,omitempty" xml:"Describe,omitempty"`
-	// The alert contacts in the alert group.
-	EnableSubscribed *bool `json:"EnableSubscribed,omitempty" xml:"EnableSubscribed,omitempty"`
-	// The name of the alert group.
 	EnabledWeeklyReport *bool `json:"EnabledWeeklyReport,omitempty" xml:"EnabledWeeklyReport,omitempty"`
-	// Indicates whether the alert group subscribes to weekly reports. Valid values:
-	//
-	// *   true: The alert group subscribes to weekly reports.
-	// *   false: The alert group does not subscribe to weekly reports.
+	// The name of the alert group.
 	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
-	// The time when the alert group was created. This value is a UNIX timestamp that represents the number of milliseconds that have elapsed since January 1, 1970, 00:00:00 UTC.
+	// The time when the alert group was modified. This value is a UNIX timestamp that represents the number of milliseconds that have elapsed since January 1, 1970, 00:00:00 UTC.
 	UpdateTime *int64 `json:"UpdateTime,omitempty" xml:"UpdateTime,omitempty"`
 }
 
@@ -13295,23 +13647,24 @@ func (s *DescribeContactGroupListResponse) SetBody(v *DescribeContactGroupListRe
 }
 
 type DescribeContactListRequest struct {
-	// The status of the TradeManager ID.
+	// The alert notification method. Valid values:
 	//
-	// Valid value: OK. The value OK indicates that the TradeManager ID is valid and can receive alert notifications.
-	//
-	// >  This parameter can be returned only on the China site (aliyun.com).
+	// *   Mail: emails
+	// *   DingWebHook: DingTalk chatbots
 	ChanelType *string `json:"ChanelType,omitempty" xml:"ChanelType,omitempty"`
-	// The error message.
-	ChanelValue *string `json:"ChanelValue,omitempty" xml:"ChanelValue,omitempty"`
 	// The value specified for the alert notification method.
 	//
 	// >  This parameter is required only if you set the `ChanelType` parameter to `Mail`.
+	ChanelValue *string `json:"ChanelValue,omitempty" xml:"ChanelValue,omitempty"`
+	// The name of the alert contact.
 	ContactName *string `json:"ContactName,omitempty" xml:"ContactName,omitempty"`
-	// The operation that you want to perform. Set the value to **DescribeContactList**.
-	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
-	// The HTTP status code.
+	// The number of the page to return.
 	//
-	// >  The status code 200 indicates that the call was successful.
+	// Default value: 1.
+	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
+	// The number of entries to return on each page.
+	//
+	// Default value: 100.
 	PageSize *int32  `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 }
@@ -13355,25 +13708,20 @@ func (s *DescribeContactListRequest) SetRegionId(v string) *DescribeContactListR
 }
 
 type DescribeContactListResponseBody struct {
-	// The description of the alert contact.
+	// The HTTP status code.
+	//
+	// >  The status code 200 indicates that the call was successful.
 	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
-	// The status of the phone number. Valid values:
-	//
-	// *   PENDING: The phone number is not activated. Alert notifications can be sent to the phone number by using text messages only after the phone number is activated.
-	// *   OK: The phone number is activated and can receive alert notifications.
-	//
-	// >  This parameter can be returned only on the China site (aliyun.com).
+	// The alert contacts.
 	Contacts *DescribeContactListResponseBodyContacts `json:"Contacts,omitempty" xml:"Contacts,omitempty" type:"Struct"`
-	// The language in which the alert information is displayed. Valid values:
-	//
-	// *   zh-cn: simplified Chinese
-	// *   en: English
+	// The error message.
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
-	// The number of entries to return on each page.
-	//
-	// Default value: 100.
+	// The ID of the request.
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// The TradeManager ID of the alert contact.
+	// Indicates whether the call was successful. Valid values:
+	//
+	// *   true: The call was successful.
+	// *   false: The call failed.
 	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
 	// The total number of returned entries.
 	Total *int32 `json:"Total,omitempty" xml:"Total,omitempty"`
@@ -13435,30 +13783,30 @@ func (s *DescribeContactListResponseBodyContacts) SetContact(v []*DescribeContac
 }
 
 type DescribeContactListResponseBodyContactsContact struct {
-	// The status of the email address. Valid values:
-	//
-	// *   PENDING: The email address is not activated. Alert notifications can be sent to the email address only after the email address is activated.
-	// *   OK: The email address is activated and can receive alert notifications.
+	// The alert notification method.
 	Channels *DescribeContactListResponseBodyContactsContactChannels `json:"Channels,omitempty" xml:"Channels,omitempty" type:"Struct"`
 	// The status of the alert notification method. Valid values: PENDING and OK.
 	//
 	// The email address must be activated after it is added as the value specified for the alert notification method. The value PENDING indicates that the email address is not activated. The value OK indicates that the email address is activated.
 	ChannelsState *DescribeContactListResponseBodyContactsContactChannelsState `json:"ChannelsState,omitempty" xml:"ChannelsState,omitempty" type:"Struct"`
-	// The alert notification method.
+	// The alert contact groups.
 	ContactGroups *DescribeContactListResponseBodyContactsContactContactGroups `json:"ContactGroups,omitempty" xml:"ContactGroups,omitempty" type:"Struct"`
-	// The name of the alert contact.
-	CreateTime *int64 `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
-	// The alert contacts.
-	Desc *string `json:"Desc,omitempty" xml:"Desc,omitempty"`
 	// The timestamp when the alert contact was created.
 	//
 	// Unit: milliseconds.
-	Lang *string `json:"Lang,omitempty" xml:"Lang,omitempty"`
-	// The number of the page to return.
+	CreateTime *int64 `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
+	// The description of the alert contact.
+	Desc *string `json:"Desc,omitempty" xml:"Desc,omitempty"`
+	// The language in which the alert information is displayed. Valid values:
 	//
-	// Default value: 1.
+	// *   zh-cn: simplified Chinese
+	// *   en: English
+	Lang *string `json:"Lang,omitempty" xml:"Lang,omitempty"`
+	// The name of the alert contact.
 	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
-	// The email address of the alert contact.
+	// The timestamp when the alert contact was updated.
+	//
+	// Unit: milliseconds.
 	UpdateTime *int64 `json:"UpdateTime,omitempty" xml:"UpdateTime,omitempty"`
 }
 
@@ -13511,18 +13859,13 @@ func (s *DescribeContactListResponseBodyContactsContact) SetUpdateTime(v int64) 
 }
 
 type DescribeContactListResponseBodyContactsContactChannels struct {
-	// The alert notification method. Valid values:
-	//
-	// *   Mail: emails
-	// *   DingWebHook: DingTalk chatbots
+	// The TradeManager ID of the alert contact.
 	AliIM *string `json:"AliIM,omitempty" xml:"AliIM,omitempty"`
-	// The timestamp when the alert contact was updated.
-	//
-	// Unit: milliseconds.
+	// The webhook URL of the DingTalk chatbot.
 	DingWebHook *string `json:"DingWebHook,omitempty" xml:"DingWebHook,omitempty"`
-	// The alert contact groups.
+	// The email address of the alert contact.
 	Mail *string `json:"Mail,omitempty" xml:"Mail,omitempty"`
-	// The ID of the request.
+	// The phone number of the alert contact.
 	SMS *string `json:"SMS,omitempty" xml:"SMS,omitempty"`
 }
 
@@ -13555,14 +13898,28 @@ func (s *DescribeContactListResponseBodyContactsContactChannels) SetSMS(v string
 }
 
 type DescribeContactListResponseBodyContactsContactChannelsState struct {
-	// Queries alert contacts.
-	AliIM       *string `json:"AliIM,omitempty" xml:"AliIM,omitempty"`
-	DingWebHook *string `json:"DingWebHook,omitempty" xml:"DingWebHook,omitempty"`
+	// The status of the TradeManager ID.
+	//
+	// Valid value: OK. The value OK indicates that the TradeManager ID is valid and can receive alert notifications.
+	//
+	// >  This parameter can be returned only on the China site (aliyun.com).
+	AliIM *string `json:"AliIM,omitempty" xml:"AliIM,omitempty"`
 	// The status of the DingTalk chatbot.
 	//
 	// Valid value: OK. The value OK indicates that the DingTalk chatbot is normal and alert notifications can be received in a DingTalk group.
+	DingWebHook *string `json:"DingWebHook,omitempty" xml:"DingWebHook,omitempty"`
+	// The status of the email address. Valid values:
+	//
+	// *   PENDING: The email address is not activated. Alert notifications can be sent to the email address only after the email address is activated.
+	// *   OK: The email address is activated and can receive alert notifications.
 	Mail *string `json:"Mail,omitempty" xml:"Mail,omitempty"`
-	SMS  *string `json:"SMS,omitempty" xml:"SMS,omitempty"`
+	// The status of the phone number. Valid values:
+	//
+	// *   PENDING: The phone number is not activated. Alert notifications can be sent to the phone number by using text messages only after the phone number is activated.
+	// *   OK: The phone number is activated and can receive alert notifications.
+	//
+	// >  This parameter can be returned only on the China site (aliyun.com).
+	SMS *string `json:"SMS,omitempty" xml:"SMS,omitempty"`
 }
 
 func (s DescribeContactListResponseBodyContactsContactChannelsState) String() string {
@@ -13640,9 +13997,7 @@ func (s *DescribeContactListResponse) SetBody(v *DescribeContactListResponseBody
 }
 
 type DescribeContactListByContactGroupRequest struct {
-	// The HTTP status code.
-	//
-	// >  The status code 200 indicates that the call was successful.
+	// The name of the alert group.
 	ContactGroupName *string `json:"ContactGroupName,omitempty" xml:"ContactGroupName,omitempty"`
 	RegionId         *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 }
@@ -13666,18 +14021,20 @@ func (s *DescribeContactListByContactGroupRequest) SetRegionId(v string) *Descri
 }
 
 type DescribeContactListByContactGroupResponseBody struct {
-	// The error message.
+	// The HTTP status code.
+	//
+	// >  The status code 200 indicates that the call was successful.
 	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
-	// The time when the alert contact was modified.
+	// The alert group.
 	Contacts *DescribeContactListByContactGroupResponseBodyContacts `json:"Contacts,omitempty" xml:"Contacts,omitempty" type:"Struct"`
-	// The ID of the request.
+	// The error message.
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// The ID of the request.
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	// Indicates whether the call was successful. Valid values:
 	//
 	// *   true: The call was successful.
 	// *   false: The call failed.
-	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// The alert group.
 	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
 }
 
@@ -13732,15 +14089,15 @@ func (s *DescribeContactListByContactGroupResponseBodyContacts) SetContact(v []*
 }
 
 type DescribeContactListByContactGroupResponseBodyContactsContact struct {
-	// The email address of the alert contact.
-	Channels *DescribeContactListByContactGroupResponseBodyContactsContactChannels `json:"Channels,omitempty" xml:"Channels,omitempty" type:"Struct"`
-	// The description of the alert contact.
-	CreateTime *int64 `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
 	// The alert notification targets.
-	Desc *string `json:"Desc,omitempty" xml:"Desc,omitempty"`
+	Channels *DescribeContactListByContactGroupResponseBodyContactsContactChannels `json:"Channels,omitempty" xml:"Channels,omitempty" type:"Struct"`
 	// The time when the alert contact was created.
-	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	CreateTime *int64 `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
+	// The description of the alert contact.
+	Desc *string `json:"Desc,omitempty" xml:"Desc,omitempty"`
 	// The name of the alert contact.
+	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// The time when the alert contact was modified.
 	UpdateTime *int64 `json:"UpdateTime,omitempty" xml:"UpdateTime,omitempty"`
 }
 
@@ -13778,17 +14135,17 @@ func (s *DescribeContactListByContactGroupResponseBodyContactsContact) SetUpdate
 }
 
 type DescribeContactListByContactGroupResponseBodyContactsContactChannels struct {
-	// The webhook URL of the DingTalk chatbot.
-	AliIM *string `json:"AliIM,omitempty" xml:"AliIM,omitempty"`
-	// The phone number of the alert contact.
-	//
-	// >  This parameter can be returned only on the China site (aliyun.com).
-	DingWebHook *string `json:"DingWebHook,omitempty" xml:"DingWebHook,omitempty"`
 	// The TradeManager ID of the alert contact.
 	//
 	// >  This parameter can be returned only on the China site (aliyun.com).
+	AliIM *string `json:"AliIM,omitempty" xml:"AliIM,omitempty"`
+	// The webhook URL of the DingTalk chatbot.
+	DingWebHook *string `json:"DingWebHook,omitempty" xml:"DingWebHook,omitempty"`
+	// The email address of the alert contact.
 	Mail *string `json:"Mail,omitempty" xml:"Mail,omitempty"`
-	// Queries the alert contacts in an alert group.
+	// The phone number of the alert contact.
+	//
+	// >  This parameter can be returned only on the China site (aliyun.com).
 	SMS *string `json:"SMS,omitempty" xml:"SMS,omitempty"`
 }
 
@@ -13850,29 +14207,27 @@ func (s *DescribeContactListByContactGroupResponse) SetBody(v *DescribeContactLi
 }
 
 type DescribeCustomEventAttributeRequest struct {
-	// The number of the page to return.
+	// The end of the time range to query.
+	//
+	// This value is a UNIX timestamp representing the number of milliseconds that have elapsed since the epoch time January 1, 1970, 00:00:00 UTC.
 	EndTime *string `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
-	// The ID of the application group.
+	// The ID of the custom event.
 	EventId *string `json:"EventId,omitempty" xml:"EventId,omitempty"`
+	// The ID of the application group.
+	GroupId *string `json:"GroupId,omitempty" xml:"GroupId,omitempty"`
+	// The name of the custom event.
+	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// The number of the page to return.
+	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
+	// The number of entries to return on each page.
+	PageSize *int32  `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 	// The keywords that are contained in the content of the custom event to query. You can use a logical operator between keywords.
 	//
 	// *   If you need to query the custom event whose content contains a and b, set the value to a and b.
 	// *   If you need to query the custom event whose content contains a or b, set the value to a or b.
-	GroupId *string `json:"GroupId,omitempty" xml:"GroupId,omitempty"`
-	// The ID of the custom event.
-	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
-	// The number of entries to return on each page.
-	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
-	// The HTTP status code.
-	//
-	// >  The status code 200 indicates that the call was successful.
-	PageSize *int32  `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	// The beginning of the time range to query.
-	//
-	// This value is a UNIX timestamp representing the number of milliseconds that have elapsed since the epoch time January 1, 1970, 00:00:00 UTC.
 	SearchKeywords *string `json:"SearchKeywords,omitempty" xml:"SearchKeywords,omitempty"`
-	// The end of the time range to query.
+	// The beginning of the time range to query.
 	//
 	// This value is a UNIX timestamp representing the number of milliseconds that have elapsed since the epoch time January 1, 1970, 00:00:00 UTC.
 	StartTime *string `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
@@ -13932,20 +14287,20 @@ func (s *DescribeCustomEventAttributeRequest) SetStartTime(v string) *DescribeCu
 }
 
 type DescribeCustomEventAttributeResponseBody struct {
-	// The returned message.
-	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
-	// The time when the custom event occurred.
+	// The HTTP status code.
 	//
-	// This value is a UNIX timestamp representing the number of milliseconds that have elapsed since the epoch time January 1, 1970, 00:00:00 UTC.
+	// >  The status code 200 indicates that the call was successful.
+	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	// The details of the custom event.
 	CustomEvents *DescribeCustomEventAttributeResponseBodyCustomEvents `json:"CustomEvents,omitempty" xml:"CustomEvents,omitempty" type:"Struct"`
-	// The ID of the request.
+	// The returned message.
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// The ID of the request.
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	// Indicates whether the call was successful. Valid values:
 	//
 	// *   true: The call was successful.
 	// *   false: The call failed.
-	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// The details of the custom event.
 	Success *string `json:"Success,omitempty" xml:"Success,omitempty"`
 }
 
@@ -14000,15 +14355,17 @@ func (s *DescribeCustomEventAttributeResponseBodyCustomEvents) SetCustomEvent(v 
 }
 
 type DescribeCustomEventAttributeResponseBodyCustomEventsCustomEvent struct {
-	// The ID of the custom event.
-	Content *string `json:"Content,omitempty" xml:"Content,omitempty"`
 	// The content of the custom event.
-	GroupId *string `json:"GroupId,omitempty" xml:"GroupId,omitempty"`
-	// Queries the details of a custom event occurred in a specified time period.
-	Id *string `json:"Id,omitempty" xml:"Id,omitempty"`
+	Content *string `json:"Content,omitempty" xml:"Content,omitempty"`
 	// The ID of the application group.
-	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	GroupId *string `json:"GroupId,omitempty" xml:"GroupId,omitempty"`
+	// The ID of the custom event.
+	Id *string `json:"Id,omitempty" xml:"Id,omitempty"`
 	// The name of the custom event.
+	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// The time when the custom event occurred.
+	//
+	// This value is a UNIX timestamp representing the number of milliseconds that have elapsed since the epoch time January 1, 1970, 00:00:00 UTC.
 	Time *string `json:"Time,omitempty" xml:"Time,omitempty"`
 }
 
@@ -14075,27 +14432,25 @@ func (s *DescribeCustomEventAttributeResponse) SetBody(v *DescribeCustomEventAtt
 }
 
 type DescribeCustomEventCountRequest struct {
-	// The returned message. If the call was successful, the value success is returned. If the call failed, an error message is returned.
+	// The end of the time range to query.
+	//
+	// This value is a UNIX timestamp representing the number of milliseconds that have elapsed since the epoch time January 1, 1970, 00:00:00 UTC.
 	EndTime *string `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
+	// The ID of the custom event.
+	EventId *string `json:"EventId,omitempty" xml:"EventId,omitempty"`
+	// The ID of the application group.
+	GroupId *string `json:"GroupId,omitempty" xml:"GroupId,omitempty"`
+	// The name of the custom event.
+	Name     *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 	// The keywords that are contained in the content of the custom event to query. You can use a logical operator between keywords.
 	//
 	// *   If you need to query the custom event whose content contains a and b, set the value to a and b.
 	// *   If you need to query the custom event whose content contains a or b, set the value to a or b.
-	EventId *string `json:"EventId,omitempty" xml:"EventId,omitempty"`
+	SearchKeywords *string `json:"SearchKeywords,omitempty" xml:"SearchKeywords,omitempty"`
 	// The beginning of the time range to query.
 	//
 	// This value is a UNIX timestamp representing the number of milliseconds that have elapsed since the epoch time January 1, 1970, 00:00:00 UTC.
-	GroupId *string `json:"GroupId,omitempty" xml:"GroupId,omitempty"`
-	// The ID of the application group.
-	Name     *string `json:"Name,omitempty" xml:"Name,omitempty"`
-	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	// The end of the time range to query.
-	//
-	// This value is a UNIX timestamp representing the number of milliseconds that have elapsed since the epoch time January 1, 1970, 00:00:00 UTC.
-	SearchKeywords *string `json:"SearchKeywords,omitempty" xml:"SearchKeywords,omitempty"`
-	// The HTTP status code.
-	//
-	// >  The status code 200 indicates that the call was successful.
 	StartTime *string `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
 }
 
@@ -14143,17 +14498,17 @@ func (s *DescribeCustomEventCountRequest) SetStartTime(v string) *DescribeCustom
 }
 
 type DescribeCustomEventCountResponseBody struct {
-	// The ID of the request.
-	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
-	// The number of times that the custom event occurred in the specified time period.
-	CustomEventCounts *DescribeCustomEventCountResponseBodyCustomEventCounts `json:"CustomEventCounts,omitempty" xml:"CustomEventCounts,omitempty" type:"Struct"`
-	// Indicates whether the call was successful. The value true indicates a success. The value false indicates a failure.
-	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
-	// The details of the custom event.
-	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// The time when the custom event occurred.
+	// The HTTP status code.
 	//
-	// This value is a UNIX timestamp representing the number of milliseconds that have elapsed since the epoch time January 1, 1970, 00:00:00 UTC.
+	// >  The status code 200 indicates that the call was successful.
+	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	// The details of the custom event.
+	CustomEventCounts *DescribeCustomEventCountResponseBodyCustomEventCounts `json:"CustomEventCounts,omitempty" xml:"CustomEventCounts,omitempty" type:"Struct"`
+	// The returned message. If the call was successful, the value success is returned. If the call failed, an error message is returned.
+	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// The ID of the request.
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// Indicates whether the call was successful. The value true indicates a success. The value false indicates a failure.
 	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
 }
 
@@ -14208,11 +14563,13 @@ func (s *DescribeCustomEventCountResponseBodyCustomEventCounts) SetCustomEventCo
 }
 
 type DescribeCustomEventCountResponseBodyCustomEventCountsCustomEventCount struct {
-	// Queries the number of times that a custom event occurred in a specified time period.
-	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
-	// >  This operation counts the number of times that a custom event occurred for each service.
-	Num *int32 `json:"Num,omitempty" xml:"Num,omitempty"`
 	// The name of the custom event.
+	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// The number of times that the custom event occurred in the specified time period.
+	Num *int32 `json:"Num,omitempty" xml:"Num,omitempty"`
+	// The time when the custom event occurred.
+	//
+	// This value is a UNIX timestamp representing the number of milliseconds that have elapsed since the epoch time January 1, 1970, 00:00:00 UTC.
 	Time *int64 `json:"Time,omitempty" xml:"Time,omitempty"`
 }
 
@@ -14269,31 +14626,29 @@ func (s *DescribeCustomEventCountResponse) SetBody(v *DescribeCustomEventCountRe
 }
 
 type DescribeCustomEventHistogramRequest struct {
-	// The HTTP status code.
+	// The end of the time range to query.
 	//
-	// >  The status code 200 indicates that the call was successful.
+	// This value is a UNIX timestamp representing the number of milliseconds that have elapsed since the epoch time January 1, 1970, 00:00:00 UTC.
 	EndTime *string `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
-	// The ID of the application group.
-	EventId *string `json:"EventId,omitempty" xml:"EventId,omitempty"`
-	// The keywords that are contained in the content of the custom event to query. You can use a logical operator between keywords.
-	//
-	// *   If you need to query the custom event whose content contains a and b, set the value to a and b.
-	// *   If you need to query the custom event whose content contains a or b, set the value to a or b.
-	GroupId *string `json:"GroupId,omitempty" xml:"GroupId,omitempty"`
 	// The ID of the custom event.
-	Level *string `json:"Level,omitempty" xml:"Level,omitempty"`
+	EventId *string `json:"EventId,omitempty" xml:"EventId,omitempty"`
+	// The ID of the application group.
+	GroupId *string `json:"GroupId,omitempty" xml:"GroupId,omitempty"`
 	// The level of the custom event. Valid values:
 	//
 	// *   CRITICAL
 	// *   WARN
 	// *   INFO
+	Level *string `json:"Level,omitempty" xml:"Level,omitempty"`
+	// The name of the custom event.
 	Name     *string `json:"Name,omitempty" xml:"Name,omitempty"`
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	// The beginning of the time range to query.
+	// The keywords that are contained in the content of the custom event to query. You can use a logical operator between keywords.
 	//
-	// This value is a UNIX timestamp representing the number of milliseconds that have elapsed since the epoch time January 1, 1970, 00:00:00 UTC.
+	// *   If you need to query the custom event whose content contains a and b, set the value to a and b.
+	// *   If you need to query the custom event whose content contains a or b, set the value to a or b.
 	SearchKeywords *string `json:"SearchKeywords,omitempty" xml:"SearchKeywords,omitempty"`
-	// The end of the time range to query.
+	// The beginning of the time range to query.
 	//
 	// This value is a UNIX timestamp representing the number of milliseconds that have elapsed since the epoch time January 1, 1970, 00:00:00 UTC.
 	StartTime *string `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
@@ -14348,17 +14703,17 @@ func (s *DescribeCustomEventHistogramRequest) SetStartTime(v string) *DescribeCu
 }
 
 type DescribeCustomEventHistogramResponseBody struct {
-	// The returned message. If the call was successful, the value success is returned. If the call failed, an error message is returned.
-	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
-	// The end of an interval.
+	// The HTTP status code.
 	//
-	// This value is a UNIX timestamp representing the number of milliseconds that have elapsed since the epoch time January 1, 1970, 00:00:00 UTC.
-	EventHistograms *DescribeCustomEventHistogramResponseBodyEventHistograms `json:"EventHistograms,omitempty" xml:"EventHistograms,omitempty" type:"Struct"`
-	// The ID of the request.
-	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
-	// Indicates whether the call was successful. The value true indicates a success. The value false indicates a failure.
-	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// >  The status code 200 indicates that the call was successful.
+	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
 	// The information about the number of times that the custom event occurred during each interval of a time period.
+	EventHistograms *DescribeCustomEventHistogramResponseBodyEventHistograms `json:"EventHistograms,omitempty" xml:"EventHistograms,omitempty" type:"Struct"`
+	// The returned message. If the call was successful, the value success is returned. If the call failed, an error message is returned.
+	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// The ID of the request.
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// Indicates whether the call was successful. The value true indicates a success. The value false indicates a failure.
 	Success *string `json:"Success,omitempty" xml:"Success,omitempty"`
 }
 
@@ -14413,13 +14768,15 @@ func (s *DescribeCustomEventHistogramResponseBodyEventHistograms) SetEventHistog
 }
 
 type DescribeCustomEventHistogramResponseBodyEventHistogramsEventHistogram struct {
-	// Queries the number of times that a custom event occurred during each interval of a time period.
+	// The information about the number of times that the custom event occurred during an interval of a time period.
 	Count *int64 `json:"Count,omitempty" xml:"Count,omitempty"`
-	// The beginning of an interval.
+	// The end of an interval.
 	//
 	// This value is a UNIX timestamp representing the number of milliseconds that have elapsed since the epoch time January 1, 1970, 00:00:00 UTC.
 	EndTime *int64 `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
-	// The information about the number of times that the custom event occurred during an interval of a time period.
+	// The beginning of an interval.
+	//
+	// This value is a UNIX timestamp representing the number of milliseconds that have elapsed since the epoch time January 1, 1970, 00:00:00 UTC.
 	StartTime *int64 `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
 }
 
@@ -14476,23 +14833,23 @@ func (s *DescribeCustomEventHistogramResponse) SetBody(v *DescribeCustomEventHis
 }
 
 type DescribeCustomMetricListRequest struct {
-	// The number of entries to return on each page.
-	//
-	// Pages start from page 1. Default value: 10.
+	// The dimensions that specify the resources for which you want to query custom metrics.
 	Dimension *string `json:"Dimension,omitempty" xml:"Dimension,omitempty"`
-	// The MD5 value of the HTTP request body. The MD5 value is a 128-bit hash value used to verify the uniqueness of the reported custom metrics.
-	GroupId *string `json:"GroupId,omitempty" xml:"GroupId,omitempty"`
-	// The HTTP status code.
+	// The ID of the application group.
 	//
-	// >  The value 200 indicates that the call is successful.
+	// For more information, see [DescribeMonitorGroups](~~115032~~).
+	GroupId *string `json:"GroupId,omitempty" xml:"GroupId,omitempty"`
+	// The MD5 value of the HTTP request body. The MD5 value is a 128-bit hash value used to verify the uniqueness of the reported custom metrics.
 	Md5 *string `json:"Md5,omitempty" xml:"Md5,omitempty"`
+	// The name of the custom metric.
+	MetricName *string `json:"MetricName,omitempty" xml:"MetricName,omitempty"`
 	// The number of the page to return.
 	//
 	// Pages start from page 1. Default value: 1.
-	MetricName *string `json:"MetricName,omitempty" xml:"MetricName,omitempty"`
-	// The returned message.
 	PageNumber *string `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
-	// The ID of the request.
+	// The number of entries to return on each page.
+	//
+	// Pages start from page 1. Default value: 10.
 	PageSize *string `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 }
@@ -14541,13 +14898,16 @@ func (s *DescribeCustomMetricListRequest) SetRegionId(v string) *DescribeCustomM
 }
 
 type DescribeCustomMetricListResponseBody struct {
-	// The reported custom metrics that are found in the query.
+	// The HTTP status code.
+	//
+	// >  The value 200 indicates that the call is successful.
 	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
-	// >  You can call the DescribeMetricList operation to query the metrics of a cloud service. For more information, see [DescribeMetricList](~~51936~~).
+	// The returned message.
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
-	// For more information about common request parameters, see [Common parameters](~~199331~~).
+	// The ID of the request.
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	Result    *string `json:"Result,omitempty" xml:"Result,omitempty"`
+	// The reported custom metrics that are found in the query.
+	Result *string `json:"Result,omitempty" xml:"Result,omitempty"`
 }
 
 func (s DescribeCustomMetricListResponseBody) String() string {
@@ -14608,19 +14968,25 @@ func (s *DescribeCustomMetricListResponse) SetBody(v *DescribeCustomMetricListRe
 }
 
 type DescribeDynamicTagRuleListRequest struct {
-	// The total number of returned entries.
+	// The ID of the tag rule.
 	DynamicTagRuleId *string `json:"DynamicTagRuleId,omitempty" xml:"DynamicTagRuleId,omitempty"`
-	// The ID of the region to which the tags belong.
+	// The number of the page to return.
+	//
+	// Pages start from page 1. Default value: 1.
 	PageNumber *string `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
-	// The conditional expressions used to create an application group based on the tag.
-	PageSize *string `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	// The error message.
-	TagKey *string `json:"TagKey,omitempty" xml:"TagKey,omitempty"`
 	// The number of entries to return on each page.
 	//
 	// Minimum value: 1. Default value: 30.
+	PageSize *string `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	// The tag key.
+	//
+	// For more information about how to obtain a tag key, see [DescribeTagKeyList](~~145558~~).
+	TagKey *string `json:"TagKey,omitempty" xml:"TagKey,omitempty"`
+	// The ID of the region to which the tags belong.
 	TagRegionId *string `json:"TagRegionId,omitempty" xml:"TagRegionId,omitempty"`
-	// The ID of the tag rule.
+	// The tag value.
+	//
+	// For more information about how to obtain a tag value, see [DescribeTagKeyList](~~145557~~).
 	TagValue *string `json:"TagValue,omitempty" xml:"TagValue,omitempty"`
 }
 
@@ -14663,35 +15029,26 @@ func (s *DescribeDynamicTagRuleListRequest) SetTagValue(v string) *DescribeDynam
 }
 
 type DescribeDynamicTagRuleListResponseBody struct {
-	// The tag value.
+	// The HTTP status code.
 	//
-	// The `TagValue` and `TagValueMatchFunction` parameters must be used in pairs.
+	// >  The status code 200 indicates that the call was successful.
 	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
-	// The tag value.
-	//
-	// For more information about how to obtain a tag value, see [DescribeTagKeyList](~~145557~~).
+	// The error message.
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
-	// The status of adding instances that meet the tag rule to the application group. Valid values:
-	//
-	// *   `RUNNING`
-	// *   `FINISH`
+	// The page number of the returned page.
 	PageNumber *string `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
-	// The ID of the region to which the tags belong.
+	// The number of entries returned per page.
 	PageSize *string `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	// The logical operator that is used between conditional expressions. Valid values:
-	//
-	// *   `and`
-	// *   `or`
-	//
-	// >  Only one logical operator can be used in a request.
+	// The ID of the request.
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// The tag key.
+	// Indicates whether the call was successful. Valid values:
 	//
-	// For more information about how to obtain a tag key, see [DescribeTagKeyList](~~145558~~).
+	// *   true: The call was successful.
+	// *   false: The call failed.
 	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
-	// The ID of the tag rule.
-	TagGroupList *DescribeDynamicTagRuleListResponseBodyTagGroupList `json:"TagGroupList,omitempty" xml:"TagGroupList,omitempty" type:"Struct"`
 	// The tag rules of application groups.
+	TagGroupList *DescribeDynamicTagRuleListResponseBodyTagGroupList `json:"TagGroupList,omitempty" xml:"TagGroupList,omitempty" type:"Struct"`
+	// The total number of returned entries.
 	Total *int32 `json:"Total,omitempty" xml:"Total,omitempty"`
 }
 
@@ -14761,21 +15118,29 @@ func (s *DescribeDynamicTagRuleListResponseBodyTagGroupList) SetTagGroup(v []*De
 }
 
 type DescribeDynamicTagRuleListResponseBodyTagGroupListTagGroup struct {
-	ContactGroupList *DescribeDynamicTagRuleListResponseBodyTagGroupListTagGroupContactGroupList `json:"ContactGroupList,omitempty" xml:"ContactGroupList,omitempty" type:"Struct"`
-	// The tag key.
-	DynamicTagRuleId *string `json:"DynamicTagRuleId,omitempty" xml:"DynamicTagRuleId,omitempty"`
-	// The ID of the request.
-	MatchExpress *DescribeDynamicTagRuleListResponseBodyTagGroupListTagGroupMatchExpress `json:"MatchExpress,omitempty" xml:"MatchExpress,omitempty" type:"Struct"`
-	// The number of the page to return.
-	//
-	// Pages start from page 1. Default value: 1.
-	MatchExpressFilterRelation *string `json:"MatchExpressFilterRelation,omitempty" xml:"MatchExpressFilterRelation,omitempty"`
-	// The page number of the returned page.
-	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 	// The alert contact group.
+	ContactGroupList *DescribeDynamicTagRuleListResponseBodyTagGroupListTagGroupContactGroupList `json:"ContactGroupList,omitempty" xml:"ContactGroupList,omitempty" type:"Struct"`
+	// The ID of the tag rule.
+	DynamicTagRuleId *string `json:"DynamicTagRuleId,omitempty" xml:"DynamicTagRuleId,omitempty"`
+	// The conditional expressions used to create an application group based on the tag.
+	MatchExpress *DescribeDynamicTagRuleListResponseBodyTagGroupListTagGroupMatchExpress `json:"MatchExpress,omitempty" xml:"MatchExpress,omitempty" type:"Struct"`
+	// The logical operator that is used between conditional expressions. Valid values:
+	//
+	// *   `and`
+	// *   `or`
+	//
+	// >  Only one logical operator can be used in a request.
+	MatchExpressFilterRelation *string `json:"MatchExpressFilterRelation,omitempty" xml:"MatchExpressFilterRelation,omitempty"`
+	// The ID of the region to which the tags belong.
+	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	// The status of adding instances that meet the tag rule to the application group. Valid values:
+	//
+	// *   `RUNNING`
+	// *   `FINISH`
 	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
-	// The number of entries returned per page.
-	TagKey         *string                                                                   `json:"TagKey,omitempty" xml:"TagKey,omitempty"`
+	// The tag key.
+	TagKey *string `json:"TagKey,omitempty" xml:"TagKey,omitempty"`
+	// The IDs of the alert templates.
 	TemplateIdList *DescribeDynamicTagRuleListResponseBodyTagGroupListTagGroupTemplateIdList `json:"TemplateIdList,omitempty" xml:"TemplateIdList,omitempty" type:"Struct"`
 }
 
@@ -14862,10 +15227,20 @@ func (s *DescribeDynamicTagRuleListResponseBodyTagGroupListTagGroupMatchExpress)
 }
 
 type DescribeDynamicTagRuleListResponseBodyTagGroupListTagGroupMatchExpressMatchExpress struct {
+	// The tag key.
 	TagKey *string `json:"TagKey,omitempty" xml:"TagKey,omitempty"`
-	// For more information about common request parameters, see [Common parameters](~~199331~~).
+	// The tag value.
+	//
+	// The `TagValue` and `TagValueMatchFunction` parameters must be used in pairs.
 	TagValue *string `json:"TagValue,omitempty" xml:"TagValue,omitempty"`
-	// Queries tag rules.
+	// The method that is used to match tag values. Valid values:
+	//
+	// *   all: includes all
+	// *   startWith: starts with a prefix
+	// *   endWith: ends with a suffix
+	// *   contains: contains
+	// *   notContains: does not contain
+	// *   equals: equals
 	TagValueMatchFunction *string `json:"TagValueMatchFunction,omitempty" xml:"TagValueMatchFunction,omitempty"`
 }
 
@@ -15278,19 +15653,18 @@ func (s *DescribeEventRuleAttributeResponse) SetBody(v *DescribeEventRuleAttribu
 }
 
 type DescribeEventRuleListRequest struct {
-	// The operation that you want to perform. Set the value to DescribeEventRuleList.
+	// The ID of the application group.
 	GroupId  *string `json:"GroupId,omitempty" xml:"GroupId,omitempty"`
 	IsEnable *bool   `json:"IsEnable,omitempty" xml:"IsEnable,omitempty"`
-	// The HTTP status code.
-	//
-	// >  The status code 200 indicates that the call was successful.
+	// The prefix in the name of the event-triggered alert rule.
 	NamePrefix *string `json:"NamePrefix,omitempty" xml:"NamePrefix,omitempty"`
-	// The description of the event-triggered alert rule.
-	PageNumber *string `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
-	// The status of the event-triggered alert rule. Valid values:
+	// The number of the page to return.
 	//
-	// *   ENABLED: enabled
-	// *   DISABLED: disabled
+	// Pages start from page 1. Default value: 1.
+	PageNumber *string `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
+	// The number of entries to return on each page.
+	//
+	// A minimum of one entry can be returned on each page. Default value: 10.
 	PageSize *string `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 }
@@ -15334,19 +15708,22 @@ func (s *DescribeEventRuleListRequest) SetRegionId(v string) *DescribeEventRuleL
 }
 
 type DescribeEventRuleListResponseBody struct {
-	// The prefix in the name of the event-triggered alert rule.
-	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
-	// The number of the page to return.
+	// The HTTP status code.
 	//
-	// Pages start from page 1. Default value: 1.
-	EventRules *DescribeEventRuleListResponseBodyEventRules `json:"EventRules,omitempty" xml:"EventRules,omitempty" type:"Struct"`
+	// >  The status code 200 indicates that the call was successful.
+	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
 	// The event-triggered alert rules.
+	EventRules *DescribeEventRuleListResponseBodyEventRules `json:"EventRules,omitempty" xml:"EventRules,omitempty" type:"Struct"`
+	// The error message.
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
-	// The name of the event-triggered alert rule.
+	// The ID of the request.
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// The total number of returned entries.
+	// Indicates whether the call was successful. Valid values:
+	//
+	// *   true: The call was successful.
+	// *   false: The call failed.
 	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
-	// The list of event names.
+	// The total number of returned entries.
 	Total *int32 `json:"Total,omitempty" xml:"Total,omitempty"`
 }
 
@@ -15406,27 +15783,25 @@ func (s *DescribeEventRuleListResponseBodyEventRules) SetEventRule(v []*Describe
 }
 
 type DescribeEventRuleListResponseBodyEventRulesEventRule struct {
-	// The filter keyword.
+	// The description of the event-triggered alert rule.
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
-	// The ID of the application group.
-	EventPattern *DescribeEventRuleListResponseBodyEventRulesEventRuleEventPattern `json:"EventPattern,omitempty" xml:"EventPattern,omitempty" type:"Struct"`
 	// The mode of the event-triggered alert rule.
+	EventPattern *DescribeEventRuleListResponseBodyEventRulesEventRuleEventPattern `json:"EventPattern,omitempty" xml:"EventPattern,omitempty" type:"Struct"`
+	// The type of the event. Valid values:
+	//
+	// - SYSTEM: system event
+	// - CUSTOM: custom event
 	EventType *string `json:"EventType,omitempty" xml:"EventType,omitempty"`
-	// The number of entries to return on each page.
-	//
-	// A minimum of one entry can be returned on each page. Default value: 10.
+	// The ID of the application group.
 	GroupId *string `json:"GroupId,omitempty" xml:"GroupId,omitempty"`
-	// The relationship between multiple keywords in a condition. Valid values:
+	// The name of the event-triggered alert rule.
+	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// The mute period during which new alerts are not sent even if the trigger conditions are met.
+	SilenceTime *int64 `json:"SilenceTime,omitempty" xml:"SilenceTime,omitempty"`
+	// The status of the event-triggered alert rule. Valid values:
 	//
-	// *   OR: The relationship between keywords is OR.
-	// *   NOT: The keyword is excluded. The value NOT indicates that all events that do not contain the keywords are matched.
-	Name        *string `json:"Name,omitempty" xml:"Name,omitempty"`
-	SilenceTime *int64  `json:"SilenceTime,omitempty" xml:"SilenceTime,omitempty"`
-	// The level of the event. Valid values:
-	//
-	// *   CRITICAL: critical
-	// *   WARN: warning
-	// *   INFO: information
+	// *   ENABLED: enabled
+	// *   DISABLED: disabled
 	State *string `json:"State,omitempty" xml:"State,omitempty"`
 }
 
@@ -15491,20 +15866,25 @@ func (s *DescribeEventRuleListResponseBodyEventRulesEventRuleEventPattern) SetEv
 }
 
 type DescribeEventRuleListResponseBodyEventRulesEventRuleEventPatternEventPattern struct {
-	// The ID of the request.
+	// The custom filter condition. If an event contains a specified keyword, the event triggers an alert.
 	CustomFilters *string `json:"CustomFilters,omitempty" xml:"CustomFilters,omitempty"`
-	// The keywords that are used to match events.
-	EventTypeList *DescribeEventRuleListResponseBodyEventRulesEventRuleEventPatternEventPatternEventTypeList `json:"EventTypeList,omitempty" xml:"EventTypeList,omitempty" type:"Struct"`
-	// Queries event-triggered alert rules.
-	KeywordFilter *DescribeEventRuleListResponseBodyEventRulesEventRuleEventPatternEventPatternKeywordFilter `json:"KeywordFilter,omitempty" xml:"KeywordFilter,omitempty" type:"Struct"`
 	// The type of the event-triggered alert rule.
 	//
 	// `*` indicates all types of alert rules.
+	EventTypeList *DescribeEventRuleListResponseBodyEventRulesEventRuleEventPatternEventPatternEventTypeList `json:"EventTypeList,omitempty" xml:"EventTypeList,omitempty" type:"Struct"`
+	// The filter keyword.
+	KeywordFilter *DescribeEventRuleListResponseBodyEventRulesEventRuleEventPatternEventPatternKeywordFilter `json:"KeywordFilter,omitempty" xml:"KeywordFilter,omitempty" type:"Struct"`
+	// The level of the event. Valid values:
+	//
+	// *   CRITICAL: critical
+	// *   WARN: warning
+	// *   INFO: information
 	LevelList *DescribeEventRuleListResponseBodyEventRulesEventRuleEventPatternEventPatternLevelList `json:"LevelList,omitempty" xml:"LevelList,omitempty" type:"Struct"`
-	// Indicates that logs are filtered based on the specified SQL statement. If the specified conditions are met, an alert is triggered.
+	// The list of event names.
 	NameList *DescribeEventRuleListResponseBodyEventRulesEventRuleEventPatternEventPatternNameList `json:"NameList,omitempty" xml:"NameList,omitempty" type:"Struct"`
-	// The ID of the application group.
-	Product   *string `json:"Product,omitempty" xml:"Product,omitempty"`
+	// The abbreviation of the service name.
+	Product *string `json:"Product,omitempty" xml:"Product,omitempty"`
+	// Indicates that logs are filtered based on the specified SQL statement. If the specified conditions are met, an alert is triggered.
 	SQLFilter *string `json:"SQLFilter,omitempty" xml:"SQLFilter,omitempty"`
 }
 
@@ -15569,8 +15949,13 @@ func (s *DescribeEventRuleListResponseBodyEventRulesEventRuleEventPatternEventPa
 }
 
 type DescribeEventRuleListResponseBodyEventRulesEventRuleEventPatternEventPatternKeywordFilter struct {
+	// The keywords that are used to match events.
 	Keywords *DescribeEventRuleListResponseBodyEventRulesEventRuleEventPatternEventPatternKeywordFilterKeywords `json:"Keywords,omitempty" xml:"Keywords,omitempty" type:"Struct"`
-	Relation *string                                                                                            `json:"Relation,omitempty" xml:"Relation,omitempty"`
+	// The relationship between multiple keywords in a condition. Valid values:
+	//
+	// *   OR: The relationship between keywords is OR.
+	// *   NOT: The keyword is excluded. The value NOT indicates that all events that do not contain the keywords are matched.
+	Relation *string `json:"Relation,omitempty" xml:"Relation,omitempty"`
 }
 
 func (s DescribeEventRuleListResponseBodyEventRulesEventRuleEventPatternEventPatternKeywordFilter) String() string {
@@ -15673,7 +16058,7 @@ func (s *DescribeEventRuleListResponse) SetBody(v *DescribeEventRuleListResponse
 
 type DescribeEventRuleTargetListRequest struct {
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	// The name of the alert group.
+	// The name of the event-triggered alert rule.
 	RuleName *string `json:"RuleName,omitempty" xml:"RuleName,omitempty"`
 }
 
@@ -15696,20 +16081,25 @@ func (s *DescribeEventRuleTargetListRequest) SetRuleName(v string) *DescribeEven
 }
 
 type DescribeEventRuleTargetListResponseBody struct {
-	// The alert notification methods. Valid values:
+	// The HTTP status code.
 	//
-	// 4: Alert notifications are sent by using DingTalk chatbots and emails.
+	// >  The status code 200 indicates that the call was successful.
 	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
-	// For more information about common request parameters, see [Common parameters](~~199331~~).
-	ContactParameters *DescribeEventRuleTargetListResponseBodyContactParameters `json:"ContactParameters,omitempty" xml:"ContactParameters,omitempty" type:"Struct"`
-	FcParameters      *DescribeEventRuleTargetListResponseBodyFcParameters      `json:"FcParameters,omitempty" xml:"FcParameters,omitempty" type:"Struct"`
 	// The information about the recipients if alert notifications are sent to the alert contacts of an alert contact group.
-	Message           *string                                                   `json:"Message,omitempty" xml:"Message,omitempty"`
-	MnsParameters     *DescribeEventRuleTargetListResponseBodyMnsParameters     `json:"MnsParameters,omitempty" xml:"MnsParameters,omitempty" type:"Struct"`
+	ContactParameters *DescribeEventRuleTargetListResponseBodyContactParameters `json:"ContactParameters,omitempty" xml:"ContactParameters,omitempty" type:"Struct"`
+	// The information about the recipients in Function Compute.
+	FcParameters *DescribeEventRuleTargetListResponseBodyFcParameters `json:"FcParameters,omitempty" xml:"FcParameters,omitempty" type:"Struct"`
+	// The error message.
+	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// The information about the recipients in Message Service (MNS).
+	MnsParameters *DescribeEventRuleTargetListResponseBodyMnsParameters `json:"MnsParameters,omitempty" xml:"MnsParameters,omitempty" type:"Struct"`
+	// The information about the recipients in OpenAPI Explorer.
 	OpenApiParameters *DescribeEventRuleTargetListResponseBodyOpenApiParameters `json:"OpenApiParameters,omitempty" xml:"OpenApiParameters,omitempty" type:"Struct"`
 	// The ID of the request.
-	RequestId         *string                                                   `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	SlsParameters     *DescribeEventRuleTargetListResponseBodySlsParameters     `json:"SlsParameters,omitempty" xml:"SlsParameters,omitempty" type:"Struct"`
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The information about the recipients in Log Service.
+	SlsParameters *DescribeEventRuleTargetListResponseBodySlsParameters `json:"SlsParameters,omitempty" xml:"SlsParameters,omitempty" type:"Struct"`
+	// The information about the recipients if alert notifications are sent by sending a request to a callback URL.
 	WebhookParameters *DescribeEventRuleTargetListResponseBodyWebhookParameters `json:"WebhookParameters,omitempty" xml:"WebhookParameters,omitempty" type:"Struct"`
 }
 
@@ -15784,10 +16174,14 @@ func (s *DescribeEventRuleTargetListResponseBodyContactParameters) SetContactPar
 }
 
 type DescribeEventRuleTargetListResponseBodyContactParametersContactParameter struct {
-	// Queries the details of an event-triggered alert rule.
+	// The name of the alert group.
 	ContactGroupName *string `json:"ContactGroupName,omitempty" xml:"ContactGroupName,omitempty"`
-	Id               *string `json:"Id,omitempty" xml:"Id,omitempty"`
-	Level            *string `json:"Level,omitempty" xml:"Level,omitempty"`
+	// The ID of the recipient.
+	Id *string `json:"Id,omitempty" xml:"Id,omitempty"`
+	// The alert notification methods. Valid values:
+	//
+	// 4: Alert notifications are sent by using DingTalk chatbots and emails.
+	Level *string `json:"Level,omitempty" xml:"Level,omitempty"`
 }
 
 func (s DescribeEventRuleTargetListResponseBodyContactParametersContactParameter) String() string {
@@ -15831,11 +16225,24 @@ func (s *DescribeEventRuleTargetListResponseBodyFcParameters) SetFCParameter(v [
 }
 
 type DescribeEventRuleTargetListResponseBodyFcParametersFCParameter struct {
-	Arn          *string `json:"Arn,omitempty" xml:"Arn,omitempty"`
+	// The Alibaba Cloud Resource Name (ARN) of the function.
+	//
+	// Format: `arn:acs:${Service}:${Region}:${Account}:${ResourceType}/${ResourceId}`. Fields:
+	//
+	// - Service: the code of an Alibaba Cloud service
+	// - Region: the region ID
+	// - Account: the ID of an Alibaba Cloud account
+	// - ResourceType: the resource type
+	// - ResourceId: the resource ID
+	Arn *string `json:"Arn,omitempty" xml:"Arn,omitempty"`
+	// The name of the function.
 	FunctionName *string `json:"FunctionName,omitempty" xml:"FunctionName,omitempty"`
-	Id           *string `json:"Id,omitempty" xml:"Id,omitempty"`
-	Region       *string `json:"Region,omitempty" xml:"Region,omitempty"`
-	ServiceName  *string `json:"ServiceName,omitempty" xml:"ServiceName,omitempty"`
+	// The ID of the recipient.
+	Id *string `json:"Id,omitempty" xml:"Id,omitempty"`
+	// The region where Function Compute is deployed.
+	Region *string `json:"Region,omitempty" xml:"Region,omitempty"`
+	// The name of the Function Compute service.
+	ServiceName *string `json:"ServiceName,omitempty" xml:"ServiceName,omitempty"`
 }
 
 func (s DescribeEventRuleTargetListResponseBodyFcParametersFCParameter) String() string {
@@ -15889,11 +16296,24 @@ func (s *DescribeEventRuleTargetListResponseBodyMnsParameters) SetMnsParameter(v
 }
 
 type DescribeEventRuleTargetListResponseBodyMnsParametersMnsParameter struct {
-	Arn    *string `json:"Arn,omitempty" xml:"Arn,omitempty"`
-	Id     *string `json:"Id,omitempty" xml:"Id,omitempty"`
-	Queue  *string `json:"Queue,omitempty" xml:"Queue,omitempty"`
+	// The ARN of the MNS queue.
+	//
+	// Format: `arn:acs:${Service}:${Region}:${Account}:${ResourceType}/${ResourceId}`. Fields:
+	//
+	// - Service: the code of an Alibaba Cloud service
+	// - Region: the region ID
+	// - Account: the ID of an Alibaba Cloud account
+	// - ResourceType: the resource type
+	// - ResourceId: the resource ID
+	Arn *string `json:"Arn,omitempty" xml:"Arn,omitempty"`
+	// The ID of the recipient.
+	Id *string `json:"Id,omitempty" xml:"Id,omitempty"`
+	// The name of the MNS queue.
+	Queue *string `json:"Queue,omitempty" xml:"Queue,omitempty"`
+	// The region where MNS is deployed.
 	Region *string `json:"Region,omitempty" xml:"Region,omitempty"`
-	Topic  *string `json:"Topic,omitempty" xml:"Topic,omitempty"`
+	// The MNS topic.
+	Topic *string `json:"Topic,omitempty" xml:"Topic,omitempty"`
 }
 
 func (s DescribeEventRuleTargetListResponseBodyMnsParametersMnsParameter) String() string {
@@ -15947,12 +16367,34 @@ func (s *DescribeEventRuleTargetListResponseBodyOpenApiParameters) SetOpenApiPar
 }
 
 type DescribeEventRuleTargetListResponseBodyOpenApiParametersOpenApiParameters struct {
-	Action  *string `json:"Action,omitempty" xml:"Action,omitempty"`
-	Arn     *string `json:"Arn,omitempty" xml:"Arn,omitempty"`
-	Id      *string `json:"Id,omitempty" xml:"Id,omitempty"`
+	// The name of the API operation.
+	Action *string `json:"Action,omitempty" xml:"Action,omitempty"`
+	// The ARN of the API operation.
+	//
+	// Format: `arn:acs:${Service}:${Region}:${Account}:${ResourceType}/${ResourceId}`. Fields:
+	//
+	// - Service: the code of an Alibaba Cloud service
+	// - Region: the region ID
+	// - Account: the ID of an Alibaba Cloud account
+	// - ResourceType: the resource type
+	// - ResourceId: the resource ID The ARN of the Log Service Logstore.
+	//
+	// Format: `arn:acs:${Service}:${Region}:${Account}:${ResourceType}/${ResourceId}`. Fields:
+	// - Service: the code of an Alibaba Cloud service
+	// - Region: the region ID
+	// - Account: the ID of an Alibaba Cloud account
+	// - ResourceType: the resource type
+	// - ResourceId: the resource ID
+	Arn *string `json:"Arn,omitempty" xml:"Arn,omitempty"`
+	// The ID of the recipient.
+	Id *string `json:"Id,omitempty" xml:"Id,omitempty"`
+	// The ID of the cloud service to which the API operation belongs.
 	Product *string `json:"Product,omitempty" xml:"Product,omitempty"`
-	Region  *string `json:"Region,omitempty" xml:"Region,omitempty"`
-	Role    *string `json:"Role,omitempty" xml:"Role,omitempty"`
+	// The region where the resource resides.
+	Region *string `json:"Region,omitempty" xml:"Region,omitempty"`
+	// The name of the role.
+	Role *string `json:"Role,omitempty" xml:"Role,omitempty"`
+	// The version of the API.
 	Version *string `json:"Version,omitempty" xml:"Version,omitempty"`
 }
 
@@ -16017,11 +16459,24 @@ func (s *DescribeEventRuleTargetListResponseBodySlsParameters) SetSlsParameter(v
 }
 
 type DescribeEventRuleTargetListResponseBodySlsParametersSlsParameter struct {
-	Arn      *string `json:"Arn,omitempty" xml:"Arn,omitempty"`
-	Id       *string `json:"Id,omitempty" xml:"Id,omitempty"`
+	// The ARN of the Log Service Logstore.
+	//
+	// Format: `arn:acs:${Service}:${Region}:${Account}:${ResourceType}/${ResourceId}`. Fields:
+	//
+	// - Service: the code of an Alibaba Cloud service
+	// - Region: the region ID
+	// - Account: the ID of an Alibaba Cloud account
+	// - ResourceType: the resource type
+	// - ResourceId: the resource ID
+	Arn *string `json:"Arn,omitempty" xml:"Arn,omitempty"`
+	// The ID of the recipient.
+	Id *string `json:"Id,omitempty" xml:"Id,omitempty"`
+	// The name of the Logstore.
 	LogStore *string `json:"LogStore,omitempty" xml:"LogStore,omitempty"`
-	Project  *string `json:"Project,omitempty" xml:"Project,omitempty"`
-	Region   *string `json:"Region,omitempty" xml:"Region,omitempty"`
+	// The name of the project.
+	Project *string `json:"Project,omitempty" xml:"Project,omitempty"`
+	// The ID of the region where the Log Service project resides.
+	Region *string `json:"Region,omitempty" xml:"Region,omitempty"`
 }
 
 func (s DescribeEventRuleTargetListResponseBodySlsParametersSlsParameter) String() string {
@@ -16075,10 +16530,14 @@ func (s *DescribeEventRuleTargetListResponseBodyWebhookParameters) SetWebhookPar
 }
 
 type DescribeEventRuleTargetListResponseBodyWebhookParametersWebhookParameter struct {
-	Id       *string `json:"Id,omitempty" xml:"Id,omitempty"`
-	Method   *string `json:"Method,omitempty" xml:"Method,omitempty"`
+	// The ID of the recipient.
+	Id *string `json:"Id,omitempty" xml:"Id,omitempty"`
+	// The HTTP request method. Valid values: GET and POST.
+	Method *string `json:"Method,omitempty" xml:"Method,omitempty"`
+	// The protocol type.
 	Protocol *string `json:"Protocol,omitempty" xml:"Protocol,omitempty"`
-	Url      *string `json:"Url,omitempty" xml:"Url,omitempty"`
+	// The callback URL.
+	Url *string `json:"Url,omitempty" xml:"Url,omitempty"`
 }
 
 func (s DescribeEventRuleTargetListResponseBodyWebhookParametersWebhookParameter) String() string {
@@ -16361,9 +16820,9 @@ func (s *DescribeExporterOutputListResponse) SetBody(v *DescribeExporterOutputLi
 }
 
 type DescribeExporterRuleListRequest struct {
-	// The number of the page to return. Default value: 1.
+	// The page number. Default value: 1.
 	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
-	// The number of entries to return on each page. Default value: 1000.
+	// The number of entries per page. Default value: 1000.
 	PageSize *int32  `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 }
@@ -16600,13 +17059,13 @@ func (s *DescribeExporterRuleListResponse) SetBody(v *DescribeExporterRuleListRe
 }
 
 type DescribeGroupMonitoringAgentProcessRequest struct {
-	// The number of the page to return. Default value: 1.
+	// The ID of the application group.
 	GroupId *string `json:"GroupId,omitempty" xml:"GroupId,omitempty"`
-	// The ID of the request.
+	// The number of the page to return. Default value: 1.
 	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
-	// Indicates whether the call was successful. The value true indicates a success. The value false indicates a failure.
-	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
 	// The number of entries to return on each page. Default value: 10.
+	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	// The name of the process monitoring task.
 	ProcessName *string `json:"ProcessName,omitempty" xml:"ProcessName,omitempty"`
 	RegionId    *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 }
@@ -16645,23 +17104,23 @@ func (s *DescribeGroupMonitoringAgentProcessRequest) SetRegionId(v string) *Desc
 }
 
 type DescribeGroupMonitoringAgentProcessResponseBody struct {
-	// The number of the returned page. Default value: 1.
-	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
-	// The number of entries returned on each page. Default value: 10.
-	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
-	// The total number of entries returned.
-	PageNumber *string `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
-	// The process monitoring tasks created for the application group.
-	PageSize *string `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	// The ID of the process monitoring task.
-	Processes *DescribeGroupMonitoringAgentProcessResponseBodyProcesses `json:"Processes,omitempty" xml:"Processes,omitempty" type:"Struct"`
 	// The HTTP status code.
 	//
 	// >  The status code 200 indicates that the call was successful.
-	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
 	// The returned message.
+	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// The number of the returned page. Default value: 1.
+	PageNumber *string `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
+	// The number of entries returned on each page. Default value: 10.
+	PageSize *string `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	// The process monitoring tasks created for the application group.
+	Processes *DescribeGroupMonitoringAgentProcessResponseBodyProcesses `json:"Processes,omitempty" xml:"Processes,omitempty" type:"Struct"`
+	// The ID of the request.
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// Indicates whether the call was successful. The value true indicates a success. The value false indicates a failure.
 	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
-	// The name of the process monitoring task.
+	// The total number of entries returned.
 	Total *string `json:"Total,omitempty" xml:"Total,omitempty"`
 }
 
@@ -16731,21 +17190,17 @@ func (s *DescribeGroupMonitoringAgentProcessResponseBodyProcesses) SetProcess(v 
 }
 
 type DescribeGroupMonitoringAgentProcessResponseBodyProcessesProcess struct {
-	// The duration of the mute period during which new alerts are not sent even if the trigger conditions are met. Unit: seconds. Minimum value: 3600, which is equivalent to one hour. Default value: 86400, which is equivalent to one day.
-	//
-	// >  Only one alert notification is sent during each mute period even if the metric value consecutively exceeds the alert threshold several times.
+	// The configurations of the alert rule.
 	AlertConfig *DescribeGroupMonitoringAgentProcessResponseBodyProcessesProcessAlertConfig `json:"AlertConfig,omitempty" xml:"AlertConfig,omitempty" type:"Struct"`
 	GroupId     *string                                                                     `json:"GroupId,omitempty" xml:"GroupId,omitempty"`
-	// The keyword used to match the instance name.
+	// The ID of the process monitoring task.
 	Id *string `json:"Id,omitempty" xml:"Id,omitempty"`
-	// The criteria based on which the instances are matched.
-	//
-	// >  Set the value to `name`, indicating that the instances are matched based on instance name.
-	MatchExpress               *DescribeGroupMonitoringAgentProcessResponseBodyProcessesProcessMatchExpress `json:"MatchExpress,omitempty" xml:"MatchExpress,omitempty" type:"Struct"`
-	MatchExpressFilterRelation *string                                                                      `json:"MatchExpressFilterRelation,omitempty" xml:"MatchExpressFilterRelation,omitempty"`
 	// The conditional expressions used to match the instances.
 	//
 	// >  Only the instances that meet the conditional expressions are monitored by the process monitoring task.
+	MatchExpress               *DescribeGroupMonitoringAgentProcessResponseBodyProcessesProcessMatchExpress `json:"MatchExpress,omitempty" xml:"MatchExpress,omitempty" type:"Struct"`
+	MatchExpressFilterRelation *string                                                                      `json:"MatchExpressFilterRelation,omitempty" xml:"MatchExpressFilterRelation,omitempty"`
+	// The name of the process monitoring task.
 	ProcessName *string `json:"ProcessName,omitempty" xml:"ProcessName,omitempty"`
 }
 
@@ -16805,30 +17260,44 @@ func (s *DescribeGroupMonitoringAgentProcessResponseBodyProcessesProcessAlertCon
 }
 
 type DescribeGroupMonitoringAgentProcessResponseBodyProcessesProcessAlertConfigAlertConfig struct {
-	// The callback URL to which a POST request is sent when an alert is triggered based on the alert rule.
-	ComparisonOperator *string `json:"ComparisonOperator,omitempty" xml:"ComparisonOperator,omitempty"`
-	// The method used to calculate metric values that trigger alerts.
-	EffectiveInterval *string `json:"EffectiveInterval,omitempty" xml:"EffectiveInterval,omitempty"`
-	// The time period during which the alert rule is effective.
-	EscalationsLevel *string `json:"EscalationsLevel,omitempty" xml:"EscalationsLevel,omitempty"`
-	// The threshold for triggering alerts.
-	NoEffectiveInterval *string `json:"NoEffectiveInterval,omitempty" xml:"NoEffectiveInterval,omitempty"`
-	// The number of times for which the threshold can be consecutively exceeded.
+	// The comparison operator of the threshold for critical-level alerts. Valid values:
 	//
-	// >  A metric triggers an alert only after the metric value reaches the threshold consecutively for the specified times.
-	SilenceTime *string `json:"SilenceTime,omitempty" xml:"SilenceTime,omitempty"`
-	// Queries the process monitoring tasks for an application group.
-	Statistics *string                                                                                          `json:"Statistics,omitempty" xml:"Statistics,omitempty"`
-	TargetList *DescribeGroupMonitoringAgentProcessResponseBodyProcessesProcessAlertConfigAlertConfigTargetList `json:"TargetList,omitempty" xml:"TargetList,omitempty" type:"Struct"`
-	// You can create a process monitoring task to monitor all or the specified Elastic Compute Service (ECS) instances in an application group and set alert rules for the process monitoring task.
-	Threshold *string `json:"Threshold,omitempty" xml:"Threshold,omitempty"`
-	// The time period during which the alert rule is ineffective.
-	Times *string `json:"Times,omitempty" xml:"Times,omitempty"`
+	// *   GreaterThanOrEqualToThreshold: greater than or equal to the threshold
+	// *   GreaterThanThreshold: greater than the threshold
+	// *   LessThanOrEqualToThreshold: less than or equal to the threshold
+	// *   LessThanThreshold: less than the threshold
+	// *   NotEqualToThreshold: not equal to the threshold
+	// *   GreaterThanYesterday: greater than the metric value at the same time yesterday
+	// *   LessThanYesterday: less than the metric value at the same time yesterday
+	// *   GreaterThanLastWeek: greater than the metric value at the same time last week
+	// *   LessThanLastWeek: less than the metric value at the same time last week
+	// *   GreaterThanLastPeriod: greater than the metric value in the last monitoring cycle
+	// *   LessThanLastPeriod: less than the metric value in the last monitoring cycle
+	ComparisonOperator *string `json:"ComparisonOperator,omitempty" xml:"ComparisonOperator,omitempty"`
+	// The time period during which the alert rule is effective.
+	EffectiveInterval *string `json:"EffectiveInterval,omitempty" xml:"EffectiveInterval,omitempty"`
 	// The level of the alert. Valid values:
 	//
 	// *   critical
 	// *   warn
 	// *   info
+	EscalationsLevel *string `json:"EscalationsLevel,omitempty" xml:"EscalationsLevel,omitempty"`
+	// The time period during which the alert rule is ineffective.
+	NoEffectiveInterval *string `json:"NoEffectiveInterval,omitempty" xml:"NoEffectiveInterval,omitempty"`
+	// The duration of the mute period during which new alerts are not sent even if the trigger conditions are met. Unit: seconds. Minimum value: 3600, which is equivalent to one hour. Default value: 86400, which is equivalent to one day.
+	//
+	// >  Only one alert notification is sent during each mute period even if the metric value consecutively exceeds the alert threshold several times.
+	SilenceTime *string `json:"SilenceTime,omitempty" xml:"SilenceTime,omitempty"`
+	// The method used to calculate metric values that trigger alerts.
+	Statistics *string                                                                                          `json:"Statistics,omitempty" xml:"Statistics,omitempty"`
+	TargetList *DescribeGroupMonitoringAgentProcessResponseBodyProcessesProcessAlertConfigAlertConfigTargetList `json:"TargetList,omitempty" xml:"TargetList,omitempty" type:"Struct"`
+	// The threshold for triggering alerts.
+	Threshold *string `json:"Threshold,omitempty" xml:"Threshold,omitempty"`
+	// The number of times for which the threshold can be consecutively exceeded.
+	//
+	// >  A metric triggers an alert only after the metric value reaches the threshold consecutively for the specified times.
+	Times *string `json:"Times,omitempty" xml:"Times,omitempty"`
+	// The callback URL to which a POST request is sent when an alert is triggered based on the alert rule.
 	Webhook *string `json:"Webhook,omitempty" xml:"Webhook,omitempty"`
 }
 
@@ -16960,22 +17429,6 @@ func (s *DescribeGroupMonitoringAgentProcessResponseBodyProcessesProcessMatchExp
 }
 
 type DescribeGroupMonitoringAgentProcessResponseBodyProcessesProcessMatchExpressMatchExpress struct {
-	// The comparison operator of the threshold for critical-level alerts. Valid values:
-	//
-	// *   GreaterThanOrEqualToThreshold: greater than or equal to the threshold
-	// *   GreaterThanThreshold: greater than the threshold
-	// *   LessThanOrEqualToThreshold: less than or equal to the threshold
-	// *   LessThanThreshold: less than the threshold
-	// *   NotEqualToThreshold: not equal to the threshold
-	// *   GreaterThanYesterday: greater than the metric value at the same time yesterday
-	// *   LessThanYesterday: less than the metric value at the same time yesterday
-	// *   GreaterThanLastWeek: greater than the metric value at the same time last week
-	// *   LessThanLastWeek: less than the metric value at the same time last week
-	// *   GreaterThanLastPeriod: greater than the metric value in the last monitoring cycle
-	// *   LessThanLastPeriod: less than the metric value in the last monitoring cycle
-	Function *string `json:"Function,omitempty" xml:"Function,omitempty"`
-	// The configurations of the alert rule.
-	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
 	// The method used to match the instances. Default value: all. Valid values:
 	//
 	// *   all
@@ -16986,6 +17439,12 @@ type DescribeGroupMonitoringAgentProcessResponseBodyProcessesProcessMatchExpress
 	// *   equals
 	//
 	// >  The matched instances are monitored by the process monitoring task.
+	Function *string `json:"Function,omitempty" xml:"Function,omitempty"`
+	// The criteria based on which the instances are matched.
+	//
+	// >  Set the value to `name`, indicating that the instances are matched based on instance name.
+	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// The keyword used to match the instance name.
 	Value *string `json:"Value,omitempty" xml:"Value,omitempty"`
 }
 
@@ -17042,24 +17501,22 @@ func (s *DescribeGroupMonitoringAgentProcessResponse) SetBody(v *DescribeGroupMo
 }
 
 type DescribeHostAvailabilityListRequest struct {
-	// The ID of the request.
+	// The ID of the application group.
 	GroupId *int64 `json:"GroupId,omitempty" xml:"GroupId,omitempty"`
+	// The ID of the availability monitoring task.
+	Id *int64 `json:"Id,omitempty" xml:"Id,omitempty"`
+	// The IDs of the availability monitoring tasks. Separate multiple IDs with commas (,).
+	Ids *string `json:"Ids,omitempty" xml:"Ids,omitempty"`
 	// The number of the page to return.
 	//
 	// Pages start from page 1. Default value: 1.
-	Id *int64 `json:"Id,omitempty" xml:"Id,omitempty"`
+	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
 	// The number of entries to return on each page.
 	//
 	// Default value: 10.
-	Ids *string `json:"Ids,omitempty" xml:"Ids,omitempty"`
-	// The HTTP status code.
-	//
-	// >  The value 200 indicates that the call was successful.
-	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
-	// The error message.
 	PageSize *int32  `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	// The ID of the application group.
+	// The name of the availability monitoring task.
 	TaskName *string `json:"TaskName,omitempty" xml:"TaskName,omitempty"`
 }
 
@@ -17107,24 +17564,22 @@ func (s *DescribeHostAvailabilityListRequest) SetTaskName(v string) *DescribeHos
 }
 
 type DescribeHostAvailabilityListResponseBody struct {
+	// The HTTP status code.
+	//
+	// >  The value 200 indicates that the call was successful.
+	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	// The error message.
+	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// The ID of the request.
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	// Indicates whether the call was successful. Valid values:
 	//
 	// *   true: The call was successful.
 	// *   false: The call failed.
-	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
-	// The total number of returned entries.
-	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
-	// The details of the availability monitoring tasks.
-	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// The type of the availability monitoring task. Valid values:
-	//
-	// *   PING
-	// *   TELNET
-	// *   HTTP
 	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
-	// The ID of the application group.
+	// The details of the availability monitoring tasks.
 	TaskList *DescribeHostAvailabilityListResponseBodyTaskList `json:"TaskList,omitempty" xml:"TaskList,omitempty" type:"Struct"`
-	// The name of the application group.
+	// The total number of returned entries.
 	Total *int32 `json:"Total,omitempty" xml:"Total,omitempty"`
 }
 
@@ -17184,39 +17639,35 @@ func (s *DescribeHostAvailabilityListResponseBodyTaskList) SetNodeTaskConfig(v [
 }
 
 type DescribeHostAvailabilityListResponseBodyTaskListNodeTaskConfig struct {
-	// The beginning of the time period during which the alert rule is effective. Valid values: 0 to 23.
-	//
-	// For example, if the `AlertConfig.StartTime` parameter is set to 0 and the `AlertConfig.EndTime` parameter is set to 22, the alert rule is effective from 00:00:00 to 22:00:00.
-	//
-	// >  Alert notifications are sent based on the specified threshold only if the alert rule is effective.
+	// The configurations of the alert rule.
 	AlertConfig *DescribeHostAvailabilityListResponseBodyTaskListNodeTaskConfigAlertConfig `json:"AlertConfig,omitempty" xml:"AlertConfig,omitempty" type:"Struct"`
-	// The ECS instances that are monitored.
-	Disabled *bool `json:"Disabled,omitempty" xml:"Disabled,omitempty"`
-	// The range of instances that are monitored by the availability monitoring task. Valid values:
-	//
-	// *   GROUP: All ECS instances in the application group are monitored.
-	// *   GROUP_SPEC_INSTANCE: Specified ECS instances in the application group are monitored.
-	GroupId *int64 `json:"GroupId,omitempty" xml:"GroupId,omitempty"`
 	// Indicates whether the availability monitoring task is disabled. Valid values:
 	//
 	// *   true: The availability monitoring task is disabled.
 	// *   false: The availability monitoring task is enabled.
+	Disabled *bool `json:"Disabled,omitempty" xml:"Disabled,omitempty"`
+	// The ID of the application group.
+	GroupId *int64 `json:"GroupId,omitempty" xml:"GroupId,omitempty"`
+	// The name of the application group.
 	GroupName *string `json:"GroupName,omitempty" xml:"GroupName,omitempty"`
-	// The HTTP request method. Valid values:
-	//
-	// *   GET
-	// *   POST
-	// *   HEAD
-	Id *int64 `json:"Id,omitempty" xml:"Id,omitempty"`
-	// The interval at which detection requests are sent. Unit: seconds.
-	Instances *DescribeHostAvailabilityListResponseBodyTaskListNodeTaskConfigInstances `json:"Instances,omitempty" xml:"Instances,omitempty" type:"Struct"`
 	// The ID of the availability monitoring task.
-	TaskName *string `json:"TaskName,omitempty" xml:"TaskName,omitempty"`
-	// The URI that you want to monitor. If the TaskType parameter is set to HTTP, this parameter is required.
-	TaskOption *DescribeHostAvailabilityListResponseBodyTaskListNodeTaskConfigTaskOption `json:"TaskOption,omitempty" xml:"TaskOption,omitempty" type:"Struct"`
-	// The optional parameters of the availability monitoring task.
-	TaskScope *string `json:"TaskScope,omitempty" xml:"TaskScope,omitempty"`
+	Id *int64 `json:"Id,omitempty" xml:"Id,omitempty"`
+	// The ECS instances that are monitored.
+	Instances *DescribeHostAvailabilityListResponseBodyTaskListNodeTaskConfigInstances `json:"Instances,omitempty" xml:"Instances,omitempty" type:"Struct"`
 	// The name of the availability monitoring task.
+	TaskName *string `json:"TaskName,omitempty" xml:"TaskName,omitempty"`
+	// The optional parameters of the availability monitoring task.
+	TaskOption *DescribeHostAvailabilityListResponseBodyTaskListNodeTaskConfigTaskOption `json:"TaskOption,omitempty" xml:"TaskOption,omitempty" type:"Struct"`
+	// The range of instances that are monitored by the availability monitoring task. Valid values:
+	//
+	// *   GROUP: All ECS instances in the application group are monitored.
+	// *   GROUP_SPEC_INSTANCE: Specified ECS instances in the application group are monitored.
+	TaskScope *string `json:"TaskScope,omitempty" xml:"TaskScope,omitempty"`
+	// The type of the availability monitoring task. Valid values:
+	//
+	// *   PING
+	// *   TELNET
+	// *   HTTP
 	TaskType *string `json:"TaskType,omitempty" xml:"TaskType,omitempty"`
 }
 
@@ -17279,34 +17730,30 @@ func (s *DescribeHostAvailabilityListResponseBodyTaskListNodeTaskConfig) SetTask
 }
 
 type DescribeHostAvailabilityListResponseBodyTaskListNodeTaskConfigAlertConfig struct {
+	// The end of the time period during which the alert rule is effective. Valid values: 0 to 23.
+	//
+	// For example, if the `AlertConfig.StartTime` parameter is set to 0 and the `AlertConfig.EndTime` parameter is set to 22, the alert rule is effective from 00:00:00 to 22:00:00.
+	//
+	// >  Alert notifications are sent based on the specified threshold only if the alert rule is effective.
+	EndTime *int32 `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
+	// The trigger conditions of the alert rule.
+	EscalationList *DescribeHostAvailabilityListResponseBodyTaskListNodeTaskConfigAlertConfigEscalationList `json:"EscalationList,omitempty" xml:"EscalationList,omitempty" type:"Struct"`
 	// The alert notification methods. Valid values:
 	//
 	// 0: Alert notifications are sent by using emails and DingTalk chatbots.
-	EndTime *int32 `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
-	// The comparison operator that is used in the alert rule. Valid values:
-	//
-	// *   `>`
-	// *   `>=`
-	// *   `<`
-	// *   `<=`
-	// *   `=`
-	EscalationList *DescribeHostAvailabilityListResponseBodyTaskListNodeTaskConfigAlertConfigEscalationList `json:"EscalationList,omitempty" xml:"EscalationList,omitempty" type:"Struct"`
-	// The name of the metric. Valid values:
-	//
-	// *   HttpStatus: HTTP status code
-	// *   HttpLatency: HTTP response time
-	// *   TelnetStatus: Telnet status code
-	// *   TelnetLatency: Telnet response time
-	// *   PingLostRate: Ping packet loss rate
 	NotifyType *int32 `json:"NotifyType,omitempty" xml:"NotifyType,omitempty"`
+	// The mute period during which new alerts are not sent even if the trigger conditions are met. Unit: seconds. Default value: 86400.
+	SilenceTime *int32 `json:"SilenceTime,omitempty" xml:"SilenceTime,omitempty"`
+	// The beginning of the time period during which the alert rule is effective. Valid values: 0 to 23.
+	//
+	// For example, if the `AlertConfig.StartTime` parameter is set to 0 and the `AlertConfig.EndTime` parameter is set to 22, the alert rule is effective from 00:00:00 to 22:00:00.
+	//
+	// >  Alert notifications are sent based on the specified threshold only if the alert rule is effective.
+	StartTime  *int32                                                                               `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
+	TargetList *DescribeHostAvailabilityListResponseBodyTaskListNodeTaskConfigAlertConfigTargetList `json:"TargetList,omitempty" xml:"TargetList,omitempty" type:"Struct"`
 	// The callback URL.
 	//
 	// CloudMonitor pushes an alert notification to the specified callback URL by sending an HTTP POST request. Only the HTTP protocol is supported.
-	SilenceTime *int32 `json:"SilenceTime,omitempty" xml:"SilenceTime,omitempty"`
-	// The trigger conditions of the alert rule.
-	StartTime  *int32                                                                               `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
-	TargetList *DescribeHostAvailabilityListResponseBodyTaskListNodeTaskConfigAlertConfigTargetList `json:"TargetList,omitempty" xml:"TargetList,omitempty" type:"Struct"`
-	// The alert threshold.
 	WebHook *string `json:"WebHook,omitempty" xml:"WebHook,omitempty"`
 }
 
@@ -17371,8 +17818,6 @@ func (s *DescribeHostAvailabilityListResponseBodyTaskListNodeTaskConfigAlertConf
 }
 
 type DescribeHostAvailabilityListResponseBodyTaskListNodeTaskConfigAlertConfigEscalationListEscalationList struct {
-	// For more information about common request parameters, see [Common parameters](~~199331~~).
-	Aggregate *string `json:"Aggregate,omitempty" xml:"Aggregate,omitempty"`
 	// The method used to calculate metric values that trigger alerts. Valid values:
 	//
 	// *   Value: the value of the HTTP status code
@@ -17380,12 +17825,26 @@ type DescribeHostAvailabilityListResponseBodyTaskListNodeTaskConfigAlertConfigEs
 	// *   Value: the value of the Telnet status code
 	// *   TelnetLatency: the average Telnet response time
 	// *   Average: the average Ping packet loss rate
+	Aggregate *string `json:"Aggregate,omitempty" xml:"Aggregate,omitempty"`
+	// The name of the metric. Valid values:
+	//
+	// *   HttpStatus: HTTP status code
+	// *   HttpLatency: HTTP response time
+	// *   TelnetStatus: Telnet status code
+	// *   TelnetLatency: Telnet response time
+	// *   PingLostRate: Ping packet loss rate
 	MetricName *string `json:"MetricName,omitempty" xml:"MetricName,omitempty"`
-	// This topic provides an example to show how to query all the availability monitoring tasks of your Alibaba Cloud account. The sample responses indicate that the account has one availability monitoring task named `ecs_instance`.
+	// The comparison operator that is used in the alert rule. Valid values:
+	//
+	// *   `>`
+	// *   `>=`
+	// *   `<`
+	// *   `<=`
+	// *   `=`
 	Operator *string `json:"Operator,omitempty" xml:"Operator,omitempty"`
-	// Queries availability monitoring tasks.
-	Times *string `json:"Times,omitempty" xml:"Times,omitempty"`
 	// The consecutive number of times for which the metric value is measured before an alert is triggered.
+	Times *string `json:"Times,omitempty" xml:"Times,omitempty"`
+	// The alert threshold.
 	Value *string `json:"Value,omitempty" xml:"Value,omitempty"`
 }
 
@@ -17492,28 +17951,28 @@ func (s *DescribeHostAvailabilityListResponseBodyTaskListNodeTaskConfigInstances
 }
 
 type DescribeHostAvailabilityListResponseBodyTaskListNodeTaskConfigTaskOption struct {
-	// The mute period during which new alerts are not sent even if the trigger conditions are met. Unit: seconds. Default value: 86400.
-	HttpKeyword *string `json:"HttpKeyword,omitempty" xml:"HttpKeyword,omitempty"`
-	// The domain name or IP address that you want to monitor.
-	HttpMethod *string `json:"HttpMethod,omitempty" xml:"HttpMethod,omitempty"`
-	// The end of the time period during which the alert rule is effective. Valid values: 0 to 23.
-	//
-	// For example, if the `AlertConfig.StartTime` parameter is set to 0 and the `AlertConfig.EndTime` parameter is set to 22, the alert rule is effective from 00:00:00 to 22:00:00.
-	//
-	// >  Alert notifications are sent based on the specified threshold only if the alert rule is effective.
-	HttpNegative *bool `json:"HttpNegative,omitempty" xml:"HttpNegative,omitempty"`
-	// The configurations of the alert rule.
-	HttpPostContent *string `json:"HttpPostContent,omitempty" xml:"HttpPostContent,omitempty"`
 	// The response to the HTTP request.
-	HttpResponseCharset *string `json:"HttpResponseCharset,omitempty" xml:"HttpResponseCharset,omitempty"`
-	// The content of the HTTP POST request.
-	HttpURI *string `json:"HttpURI,omitempty" xml:"HttpURI,omitempty"`
-	// The character set that is used in the HTTP response.
-	Interval *int32 `json:"Interval,omitempty" xml:"Interval,omitempty"`
+	HttpKeyword *string `json:"HttpKeyword,omitempty" xml:"HttpKeyword,omitempty"`
+	// The HTTP request method. Valid values:
+	//
+	// *   GET
+	// *   POST
+	// *   HEAD
+	HttpMethod *string `json:"HttpMethod,omitempty" xml:"HttpMethod,omitempty"`
 	// The method to trigger an alert. The alert can be triggered based on whether the specified alert rule is included in the response body. Valid values:
 	//
 	// *   true: If the HTTP response body includes the alert rule, an alert is triggered.
 	// *   false: If the HTTP response does not include the alert rule, an alert is triggered.
+	HttpNegative *bool `json:"HttpNegative,omitempty" xml:"HttpNegative,omitempty"`
+	// The content of the HTTP POST request.
+	HttpPostContent *string `json:"HttpPostContent,omitempty" xml:"HttpPostContent,omitempty"`
+	// The character set that is used in the HTTP response.
+	HttpResponseCharset *string `json:"HttpResponseCharset,omitempty" xml:"HttpResponseCharset,omitempty"`
+	// The URI that you want to monitor. If the TaskType parameter is set to HTTP, this parameter is required.
+	HttpURI *string `json:"HttpURI,omitempty" xml:"HttpURI,omitempty"`
+	// The interval at which detection requests are sent. Unit: seconds.
+	Interval *int32 `json:"Interval,omitempty" xml:"Interval,omitempty"`
+	// The domain name or IP address that you want to monitor.
 	TelnetOrPingHost *string `json:"TelnetOrPingHost,omitempty" xml:"TelnetOrPingHost,omitempty"`
 }
 
@@ -17595,20 +18054,26 @@ func (s *DescribeHostAvailabilityListResponse) SetBody(v *DescribeHostAvailabili
 }
 
 type DescribeHybridMonitorDataListRequest struct {
-	// The interval at which monitoring data is collected.
+	// The timestamp that specifies the end of the time range to query.
 	//
 	// Unit: seconds.
 	End *int64 `json:"End,omitempty" xml:"End,omitempty"`
-	// The HTTP status code.
+	// The name of the namespace.
 	//
-	// >  The status code 200 indicates that the call is successful.
+	// For information about how to obtain the name of a namespace, see [DescribeHybridMonitorNamespaceList](~~428880~~).
 	Namespace *string `json:"Namespace,omitempty" xml:"Namespace,omitempty"`
-	// The error message.
+	// The interval at which monitoring data is collected.
+	//
+	// Unit: seconds.
 	Period *string `json:"Period,omitempty" xml:"Period,omitempty"`
-	// The operation that you want to perform. Set the value to **DescribeHybridMonitorDataList**.
+	// The name of the metric.
+	//
+	// >  PromQL statements are supported.
 	PromSQL  *string `json:"PromSQL,omitempty" xml:"PromSQL,omitempty"`
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	// The metric values that are collected at different timestamps.
+	// The timestamp that specifies the beginning of the time range to query.
+	//
+	// Unit: seconds.
 	Start *int64 `json:"Start,omitempty" xml:"Start,omitempty"`
 }
 
@@ -17651,19 +18116,20 @@ func (s *DescribeHybridMonitorDataListRequest) SetStart(v int64) *DescribeHybrid
 }
 
 type DescribeHybridMonitorDataListResponseBody struct {
-	// The name of the metric.
+	// The HTTP status code.
+	//
+	// >  The status code 200 indicates that the call is successful.
 	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
-	// The returned monitoring data.
+	// The error message.
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
-	// The name of the namespace.
-	//
-	// For information about how to obtain the name of a namespace, see [DescribeHybridMonitorNamespaceList](~~428880~~).
+	// The ID of the request.
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// The timestamp that indicates the time when the metric value is collected.
+	// Indicates whether the call is successful. Valid values:
 	//
-	// Unit: seconds.
+	// *   true: The call is successful.
+	// *   false: The call fails.
 	Success *string `json:"Success,omitempty" xml:"Success,omitempty"`
-	// The metric value.
+	// The returned monitoring data.
 	TimeSeries []*DescribeHybridMonitorDataListResponseBodyTimeSeries `json:"TimeSeries,omitempty" xml:"TimeSeries,omitempty" type:"Repeated"`
 }
 
@@ -17703,9 +18169,9 @@ func (s *DescribeHybridMonitorDataListResponseBody) SetTimeSeries(v []*DescribeH
 type DescribeHybridMonitorDataListResponseBodyTimeSeries struct {
 	// The tags of the time dimension.
 	Labels []*DescribeHybridMonitorDataListResponseBodyTimeSeriesLabels `json:"Labels,omitempty" xml:"Labels,omitempty" type:"Repeated"`
-	// The tag value.
+	// The name of the metric.
 	MetricName *string `json:"MetricName,omitempty" xml:"MetricName,omitempty"`
-	// For more information about common request parameters, see [Common parameters](~~199331~~).
+	// The metric values that are collected at different timestamps.
 	Values []*DescribeHybridMonitorDataListResponseBodyTimeSeriesValues `json:"Values,omitempty" xml:"Values,omitempty" type:"Repeated"`
 }
 
@@ -17733,11 +18199,9 @@ func (s *DescribeHybridMonitorDataListResponseBodyTimeSeries) SetValues(v []*Des
 }
 
 type DescribeHybridMonitorDataListResponseBodyTimeSeriesLabels struct {
-	// The timestamp that specifies the end of the time range to query.
-	//
-	// Unit: seconds.
+	// The tag key.
 	K *string `json:"K,omitempty" xml:"K,omitempty"`
-	// The ID of the request.
+	// The tag value.
 	V *string `json:"V,omitempty" xml:"V,omitempty"`
 }
 
@@ -17760,8 +18224,12 @@ func (s *DescribeHybridMonitorDataListResponseBodyTimeSeriesLabels) SetV(v strin
 }
 
 type DescribeHybridMonitorDataListResponseBodyTimeSeriesValues struct {
+	// The timestamp that indicates the time when the metric value is collected.
+	//
+	// Unit: seconds.
 	Ts *string `json:"Ts,omitempty" xml:"Ts,omitempty"`
-	V  *string `json:"V,omitempty" xml:"V,omitempty"`
+	// The metric value.
+	V *string `json:"V,omitempty" xml:"V,omitempty"`
 }
 
 func (s DescribeHybridMonitorDataListResponseBodyTimeSeriesValues) String() string {
@@ -17812,19 +18280,25 @@ func (s *DescribeHybridMonitorDataListResponse) SetBody(v *DescribeHybridMonitor
 }
 
 type DescribeHybridMonitorNamespaceListRequest struct {
+	// The keyword that is used to search for namespaces.
+	Keyword *string `json:"Keyword,omitempty" xml:"Keyword,omitempty"`
+	// The name of the namespace.
+	//
+	// The name can contain uppercase letters, lowercase letters, digits, and hyphens (-).
+	Namespace *string `json:"Namespace,omitempty" xml:"Namespace,omitempty"`
+	// The number of the page to return.
+	//
+	// Pages start from page 1. Default value: 1.
+	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
+	// The number of entries to return on each page.
+	//
+	// A minimum of 1 entry can be returned on each page. Default value: 10.
+	PageSize *int32  `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 	// Specifies whether to return the configuration details of metric import tasks for Alibaba Cloud services and the number of metric import tasks for third-party services. Valid values:
 	//
 	// *   true
 	// *   false (default value)
-	Keyword *string `json:"Keyword,omitempty" xml:"Keyword,omitempty"`
-	// The error message.
-	Namespace *string `json:"Namespace,omitempty" xml:"Namespace,omitempty"`
-	// The operation that you want to perform. Set the value to **DescribeHybridMonitorNamespaceList**.
-	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
-	// The returned message.
-	PageSize *int32  `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	// The details of the namespaces.
 	ShowTaskStatistic *bool `json:"ShowTaskStatistic,omitempty" xml:"ShowTaskStatistic,omitempty"`
 }
 
@@ -17867,25 +18341,24 @@ func (s *DescribeHybridMonitorNamespaceListRequest) SetShowTaskStatistic(v bool)
 }
 
 type DescribeHybridMonitorNamespaceListResponseBody struct {
-	// The account that is used to create the namespace.
+	// The returned message.
 	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
-	// The metrics.
+	// The details of the namespaces.
 	DescribeHybridMonitorNamespace []*DescribeHybridMonitorNamespaceListResponseBodyDescribeHybridMonitorNamespace `json:"DescribeHybridMonitorNamespace,omitempty" xml:"DescribeHybridMonitorNamespace,omitempty" type:"Repeated"`
-	// The ID of the namespace.
+	// The error message.
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
-	// The timestamp that was generated when the namespace was last modified.
+	// The page number of the returned page.
 	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
-	// The total number of returned entries.
+	// The number of entries returned per page.
 	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	// The number of entries to return on each page.
-	//
-	// A minimum of 1 entry can be returned on each page. Default value: 10.
+	// The ID of the request.
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// The namespace for the Alibaba Cloud service.
-	Success *string `json:"Success,omitempty" xml:"Success,omitempty"`
-	// The number of the page to return.
+	// Indicates whether the call was successful. Valid values:
 	//
-	// Pages start from page 1. Default value: 1.
+	// *   true: The call was successful.
+	// *   false: The call failed.
+	Success *string `json:"Success,omitempty" xml:"Success,omitempty"`
+	// The total number of returned entries.
 	Total *int32 `json:"Total,omitempty" xml:"Total,omitempty"`
 }
 
@@ -17938,28 +18411,28 @@ func (s *DescribeHybridMonitorNamespaceListResponseBody) SetTotal(v int32) *Desc
 }
 
 type DescribeHybridMonitorNamespaceListResponseBodyDescribeHybridMonitorNamespace struct {
+	// The configuration details of metric import tasks for Alibaba Cloud services.
+	AliyunProductMetricList []*DescribeHybridMonitorNamespaceListResponseBodyDescribeHybridMonitorNamespaceAliyunProductMetricList `json:"AliyunProductMetricList,omitempty" xml:"AliyunProductMetricList,omitempty" type:"Repeated"`
+	// The timestamp that was generated when the namespace was created.
+	//
+	// Unit: milliseconds.
+	CreateTime *string `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
+	// The description of the namespace.
+	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
+	// The details of the data retention period.
+	Detail *DescribeHybridMonitorNamespaceListResponseBodyDescribeHybridMonitorNamespaceDetail `json:"Detail,omitempty" xml:"Detail,omitempty" type:"Struct"`
+	// The ID of the namespace.
+	Id *string `json:"Id,omitempty" xml:"Id,omitempty"`
 	// Indicates whether the namespace is deleted. Valid values:
 	//
 	// *   0: The namespace is not deleted.
 	// *   1: The namespace is deleted.
-	AliyunProductMetricList []*DescribeHybridMonitorNamespaceListResponseBodyDescribeHybridMonitorNamespaceAliyunProductMetricList `json:"AliyunProductMetricList,omitempty" xml:"AliyunProductMetricList,omitempty" type:"Repeated"`
-	// The keyword that is used to search for namespaces.
-	CreateTime *string `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
-	// The number of metric import tasks for third-party services.
-	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
-	// The name of the namespace.
-	//
-	// The name can contain uppercase letters, lowercase letters, digits, and hyphens (-).
-	Detail *DescribeHybridMonitorNamespaceListResponseBodyDescribeHybridMonitorNamespaceDetail `json:"Detail,omitempty" xml:"Detail,omitempty" type:"Struct"`
-	// The list of metrics for the Alibaba Cloud service.
-	Id *string `json:"Id,omitempty" xml:"Id,omitempty"`
-	// The details of the data retention period.
 	IsDelete *int32 `json:"IsDelete,omitempty" xml:"IsDelete,omitempty"`
-	// The name of the namespace.
+	// The timestamp that was generated when the namespace was last modified.
 	ModifyTime *string `json:"ModifyTime,omitempty" xml:"ModifyTime,omitempty"`
-	// The configuration details of metric import tasks for Alibaba Cloud services.
+	// The name of the namespace.
 	Namespace *string `json:"Namespace,omitempty" xml:"Namespace,omitempty"`
-	// The number of entries returned per page.
+	// The number of metric import tasks for third-party services.
 	NotAliyunTaskNumber *int64 `json:"NotAliyunTaskNumber,omitempty" xml:"NotAliyunTaskNumber,omitempty"`
 }
 
@@ -18019,7 +18492,7 @@ func (s *DescribeHybridMonitorNamespaceListResponseBodyDescribeHybridMonitorName
 type DescribeHybridMonitorNamespaceListResponseBodyDescribeHybridMonitorNamespaceAliyunProductMetricList struct {
 	// The list of namespaces.
 	NamespaceList []*DescribeHybridMonitorNamespaceListResponseBodyDescribeHybridMonitorNamespaceAliyunProductMetricListNamespaceList `json:"NamespaceList,omitempty" xml:"NamespaceList,omitempty" type:"Repeated"`
-	// The ID of the request.
+	// The account that is used to create the namespace.
 	UserId     *int64  `json:"UserId,omitempty" xml:"UserId,omitempty"`
 	YAMLConfig *string `json:"YAMLConfig,omitempty" xml:"YAMLConfig,omitempty"`
 }
@@ -18048,11 +18521,9 @@ func (s *DescribeHybridMonitorNamespaceListResponseBodyDescribeHybridMonitorName
 }
 
 type DescribeHybridMonitorNamespaceListResponseBodyDescribeHybridMonitorNamespaceAliyunProductMetricListNamespaceList struct {
-	// For more information about common request parameters, see [Common parameters](~~199331~~).
+	// The list of metrics for the Alibaba Cloud service.
 	MetricList []*DescribeHybridMonitorNamespaceListResponseBodyDescribeHybridMonitorNamespaceAliyunProductMetricListNamespaceListMetricList `json:"MetricList,omitempty" xml:"MetricList,omitempty" type:"Repeated"`
-	// The interval at which metrics are collected.
-	//
-	// Unit: seconds.
+	// The namespace for the Alibaba Cloud service.
 	Namespace *string `json:"Namespace,omitempty" xml:"Namespace,omitempty"`
 }
 
@@ -18075,8 +18546,12 @@ func (s *DescribeHybridMonitorNamespaceListResponseBodyDescribeHybridMonitorName
 }
 
 type DescribeHybridMonitorNamespaceListResponseBodyDescribeHybridMonitorNamespaceAliyunProductMetricListNamespaceListMetricList struct {
-	List   []*string `json:"List,omitempty" xml:"List,omitempty" type:"Repeated"`
-	Period *int64    `json:"Period,omitempty" xml:"Period,omitempty"`
+	// The metrics.
+	List []*string `json:"List,omitempty" xml:"List,omitempty" type:"Repeated"`
+	// The interval at which metrics are collected.
+	//
+	// Unit: seconds.
+	Period *int64 `json:"Period,omitempty" xml:"Period,omitempty"`
 }
 
 func (s DescribeHybridMonitorNamespaceListResponseBodyDescribeHybridMonitorNamespaceAliyunProductMetricListNamespaceListMetricList) String() string {
@@ -18098,7 +18573,14 @@ func (s *DescribeHybridMonitorNamespaceListResponseBodyDescribeHybridMonitorName
 }
 
 type DescribeHybridMonitorNamespaceListResponseBodyDescribeHybridMonitorNamespaceDetail struct {
-	// The page number of the returned page.
+	// The data retention period. Valid values:
+	//
+	// *   cms.s1.large: Data is stored for 15 days.
+	// *   cms.s1.xlarge: Data is stored for 32 days.
+	// *   cms.s1.2xlarge: Data is stored for 63 days.
+	// *   cms.s1.3xlarge: Data is stored for 93 days.
+	// *   cms.s1.6xlarge: Data is stored for 185 days.
+	// *   cms.s1.12xlarge: Data is stored for 376 days.
 	Spec *string `json:"Spec,omitempty" xml:"Spec,omitempty"`
 }
 
@@ -19103,9 +19585,9 @@ func (s *DescribeHybridMonitorTaskListResponse) SetBody(v *DescribeHybridMonitor
 }
 
 type DescribeLogMonitorAttributeRequest struct {
-	// The HTTP status code.
+	// The name of the log monitoring metric. Exact match is supported.
 	//
-	// >  The status code 200 indicates that the call was successful.
+	// For more information, see [Appendix 1: Metrics](~~163515~~).
 	MetricName *string `json:"MetricName,omitempty" xml:"MetricName,omitempty"`
 	RegionId   *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 }
@@ -19129,21 +19611,20 @@ func (s *DescribeLogMonitorAttributeRequest) SetRegionId(v string) *DescribeLogM
 }
 
 type DescribeLogMonitorAttributeResponseBody struct {
-	// The returned message. If the call was successful, the value success is returned. If the call failed, an error message is returned.
-	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
-	// The logical operator that is used between log filter conditions. The ValueFilter and ValueFilterRelation parameters are used in pair. Valid values:
+	// The HTTP status code.
 	//
-	// *   and
-	// *   or
+	// >  The status code 200 indicates that the call was successful.
+	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	// The details of the log monitoring metric.
 	LogMonitor *DescribeLogMonitorAttributeResponseBodyLogMonitor `json:"LogMonitor,omitempty" xml:"LogMonitor,omitempty" type:"Struct"`
-	// The ID of the request.
+	// The returned message. If the call was successful, the value success is returned. If the call failed, an error message is returned.
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// The ID of the request.
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	// Indicates whether the call was successful. Valid values:
 	//
 	// *   true: The call was successful.
 	// *   false: The call failed.
-	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// The details of the log monitoring metric.
 	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
 }
 
@@ -19181,34 +19662,40 @@ func (s *DescribeLogMonitorAttributeResponseBody) SetSuccess(v bool) *DescribeLo
 }
 
 type DescribeLogMonitorAttributeResponseBodyLogMonitor struct {
-	// The maximum value.
-	Aggregates []*DescribeLogMonitorAttributeResponseBodyLogMonitorAggregates `json:"Aggregates,omitempty" xml:"Aggregates,omitempty" type:"Repeated"`
-	// The name of the Log Service project.
-	GmtCreate *int64 `json:"GmtCreate,omitempty" xml:"GmtCreate,omitempty"`
-	// The ID returned by Log Service.
-	GroupId  *int64    `json:"GroupId,omitempty" xml:"GroupId,omitempty"`
-	Groupbys []*string `json:"Groupbys,omitempty" xml:"Groupbys,omitempty" type:"Repeated"`
-	// The extended field. The extended field allows you to perform basic operations on the aggregation results.
-	//
-	// Assume that you have calculated TotalNumber and 5XXNumber by aggregating the data. TotalNumber indicates the total number of HTTP requests, and 5XXNumber indicates the number of HTTP requests whose status code is greater than 499. You can calculate the server error rate by adding the following formula to the extended field: 5XXNumber/TotalNumber\*100.
-	LogId *int64 `json:"LogId,omitempty" xml:"LogId,omitempty"`
-	// The ID of the region where the Log Service Logstore resides.
-	MetricExpress *string `json:"MetricExpress,omitempty" xml:"MetricExpress,omitempty"`
-	// The ID of the application group.
-	MetricName *string `json:"MetricName,omitempty" xml:"MetricName,omitempty"`
-	// The name of the log monitoring metric. For more information, see [Appendix 1: Metrics](~~163515~~).
-	SlsLogstore *string `json:"SlsLogstore,omitempty" xml:"SlsLogstore,omitempty"`
 	// The aggregate functions.
-	SlsProject *string `json:"SlsProject,omitempty" xml:"SlsProject,omitempty"`
+	Aggregates []*DescribeLogMonitorAttributeResponseBodyLogMonitorAggregates `json:"Aggregates,omitempty" xml:"Aggregates,omitempty" type:"Repeated"`
 	// The time when the log monitoring metric was created.
 	//
 	// This value is a UNIX timestamp representing the number of milliseconds that have elapsed since the epoch time January 1, 1970, 00:00:00 UTC.
-	SlsRegionId *string `json:"SlsRegionId,omitempty" xml:"SlsRegionId,omitempty"`
+	GmtCreate *int64 `json:"GmtCreate,omitempty" xml:"GmtCreate,omitempty"`
+	// The ID of the application group.
+	GroupId *int64 `json:"GroupId,omitempty" xml:"GroupId,omitempty"`
 	// The dimension based on which the data is grouped. This parameter is equivalent to the GROUP BY clause in SQL statements. If no dimension is specified, all data is aggregated based on the aggregate function.
-	Tumblingwindows []*string `json:"Tumblingwindows,omitempty" xml:"Tumblingwindows,omitempty" type:"Repeated"`
-	// The name of the log field used for matching in the filter condition.
-	ValueFilter []*DescribeLogMonitorAttributeResponseBodyLogMonitorValueFilter `json:"ValueFilter,omitempty" xml:"ValueFilter,omitempty" type:"Repeated"`
+	Groupbys []*string `json:"Groupbys,omitempty" xml:"Groupbys,omitempty" type:"Repeated"`
+	// The ID returned by Log Service.
+	LogId *int64 `json:"LogId,omitempty" xml:"LogId,omitempty"`
+	// The extended field. The extended field allows you to perform basic operations on the aggregation results.
+	//
+	// Assume that you have calculated TotalNumber and 5XXNumber by aggregating the data. TotalNumber indicates the total number of HTTP requests, and 5XXNumber indicates the number of HTTP requests whose status code is greater than 499. You can calculate the server error rate by adding the following formula to the extended field: 5XXNumber/TotalNumber\*100.
+	MetricExpress *string `json:"MetricExpress,omitempty" xml:"MetricExpress,omitempty"`
+	// The name of the log monitoring metric. For more information, see [Appendix 1: Metrics](~~163515~~).
+	MetricName *string `json:"MetricName,omitempty" xml:"MetricName,omitempty"`
 	// The name of the Log Service Logstore.
+	SlsLogstore *string `json:"SlsLogstore,omitempty" xml:"SlsLogstore,omitempty"`
+	// The name of the Log Service project.
+	SlsProject *string `json:"SlsProject,omitempty" xml:"SlsProject,omitempty"`
+	// The ID of the region where the Log Service Logstore resides.
+	SlsRegionId *string `json:"SlsRegionId,omitempty" xml:"SlsRegionId,omitempty"`
+	// The size of the tumbling window for calculation. Unit: seconds. The system performs an aggregation for each tumbling window.
+	Tumblingwindows []*string `json:"Tumblingwindows,omitempty" xml:"Tumblingwindows,omitempty" type:"Repeated"`
+	// The condition that is used to filter logs. The ValueFilter and ValueFilterRelation parameters are used in pair. The filter condition is equivalent to the WHERE clause in SQL statements.
+	//
+	// If no filter condition is specified, all logs are processed. Assume that logs contain the Level field, which may be set to Error. If you need to calculate the number of times that logs of the Error level appear every minute, you can set the filter condition to Level=Error and count the number of logs that meet this condition.
+	ValueFilter []*DescribeLogMonitorAttributeResponseBodyLogMonitorValueFilter `json:"ValueFilter,omitempty" xml:"ValueFilter,omitempty" type:"Repeated"`
+	// The logical operator that is used between log filter conditions. The ValueFilter and ValueFilterRelation parameters are used in pair. Valid values:
+	//
+	// *   and
+	// *   or
 	ValueFilterRelation *string `json:"ValueFilterRelation,omitempty" xml:"ValueFilterRelation,omitempty"`
 }
 
@@ -19286,16 +19773,10 @@ func (s *DescribeLogMonitorAttributeResponseBodyLogMonitor) SetValueFilterRelati
 }
 
 type DescribeLogMonitorAttributeResponseBodyLogMonitorAggregates struct {
-	// The name of the field in logs.
-	Alias *string `json:"Alias,omitempty" xml:"Alias,omitempty"`
-	// The condition that is used to filter logs. The ValueFilter and ValueFilterRelation parameters are used in pair. The filter condition is equivalent to the WHERE clause in SQL statements.
-	//
-	// If no filter condition is specified, all logs are processed. Assume that logs contain the Level field, which may be set to Error. If you need to calculate the number of times that logs of the Error level appear every minute, you can set the filter condition to Level=Error and count the number of logs that meet this condition.
-	FieldName *string `json:"FieldName,omitempty" xml:"FieldName,omitempty"`
 	// The alias of the aggregate function.
-	Function *string `json:"Function,omitempty" xml:"Function,omitempty"`
-	// The minimum value.
-	Max *string `json:"Max,omitempty" xml:"Max,omitempty"`
+	Alias *string `json:"Alias,omitempty" xml:"Alias,omitempty"`
+	// The name of the field in logs.
+	FieldName *string `json:"FieldName,omitempty" xml:"FieldName,omitempty"`
 	// The function that is used to aggregate the monitoring data of logs within an aggregation period. Valid values:
 	//
 	// *   count: counts the number.
@@ -19306,6 +19787,10 @@ type DescribeLogMonitorAttributeResponseBodyLogMonitorAggregates struct {
 	// *   countps: calculates the counted number of the specified field divided by the total number of seconds of the aggregation period.
 	// *   sumps: calculates the total value of the specified field divided by the total number of seconds of the aggregation period.
 	// *   distinct: counts the number of logs where the specified field appears within the aggregation period.
+	Function *string `json:"Function,omitempty" xml:"Function,omitempty"`
+	// The maximum value.
+	Max *string `json:"Max,omitempty" xml:"Max,omitempty"`
+	// The minimum value.
 	Min *string `json:"Min,omitempty" xml:"Min,omitempty"`
 }
 
@@ -19343,10 +19828,8 @@ func (s *DescribeLogMonitorAttributeResponseBodyLogMonitorAggregates) SetMin(v s
 }
 
 type DescribeLogMonitorAttributeResponseBodyLogMonitorValueFilter struct {
-	// The field value to be matched in the filter condition.
+	// The name of the log field used for matching in the filter condition.
 	Key *string `json:"Key,omitempty" xml:"Key,omitempty"`
-	// The size of the tumbling window for calculation. Unit: seconds. The system performs an aggregation for each tumbling window.
-	Operator *string `json:"Operator,omitempty" xml:"Operator,omitempty"`
 	// The method that is used to match the field value. Valid values:
 	//
 	// *   `contain`
@@ -19355,6 +19838,8 @@ type DescribeLogMonitorAttributeResponseBodyLogMonitorValueFilter struct {
 	// *   `<`: less than
 	// *   `>=`: greater than or equal to
 	// *   `<=`: less than or equal to
+	Operator *string `json:"Operator,omitempty" xml:"Operator,omitempty"`
+	// The field value to be matched in the filter condition.
 	Value *string `json:"Value,omitempty" xml:"Value,omitempty"`
 }
 
@@ -19411,14 +19896,14 @@ func (s *DescribeLogMonitorAttributeResponse) SetBody(v *DescribeLogMonitorAttri
 }
 
 type DescribeLogMonitorListRequest struct {
-	// The ID of the request.
+	// The ID of the application group.
 	GroupId *int64 `json:"GroupId,omitempty" xml:"GroupId,omitempty"`
-	// The number of entries to return on each page. Default value: 10
+	// The number of the page to return.
 	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
-	// The keyword that is used to search for log monitoring metrics. Fuzzy match is supported.
+	// The number of entries to return on each page. Default value: 10
 	PageSize *int32  `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	// The ID of the application group.
+	// The keyword that is used to search for log monitoring metrics. Fuzzy match is supported.
 	SearchValue *string `json:"SearchValue,omitempty" xml:"SearchValue,omitempty"`
 }
 
@@ -19456,29 +19941,26 @@ func (s *DescribeLogMonitorListRequest) SetSearchValue(v string) *DescribeLogMon
 }
 
 type DescribeLogMonitorListResponseBody struct {
-	// The returned message.
-	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
-	// The logical operator that is used between log filter conditions. The ValueFilter and ValueFilterRelation parameters are used in pair. Valid values:
+	// The HTTP status code.
 	//
-	// *   and
-	// *   or
+	// >  The status code 200 indicates that the call was successful.
+	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	// The log monitoring metrics.
 	LogMonitorList []*DescribeLogMonitorListResponseBodyLogMonitorList `json:"LogMonitorList,omitempty" xml:"LogMonitorList,omitempty" type:"Repeated"`
-	// The number of entries returned on each page.
+	// The returned message.
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
-	// The total number of the returned entries.
-	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
 	// The number of the returned page.
+	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
+	// The number of entries returned on each page.
 	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	// The ID of the request.
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	// Indicates whether the call was successful. Valid values:
 	//
 	// *   true: The call was successful.
 	// *   false: The call failed.
-	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// The HTTP status code.
-	//
-	// >  The status code 200 indicates that the call was successful.
 	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
-	// The log monitoring metrics.
+	// The total number of the returned entries.
 	Total *int64 `json:"Total,omitempty" xml:"Total,omitempty"`
 }
 
@@ -19531,27 +20013,30 @@ func (s *DescribeLogMonitorListResponseBody) SetTotal(v int64) *DescribeLogMonit
 }
 
 type DescribeLogMonitorListResponseBodyLogMonitorList struct {
-	// The name of the Log Service project.
-	GmtCreate *int64 `json:"GmtCreate,omitempty" xml:"GmtCreate,omitempty"`
-	// The ID returned by Log Service.
-	GroupId *int64 `json:"GroupId,omitempty" xml:"GroupId,omitempty"`
-	// The ID of the region where the Log Service Logstore resides.
-	LogId *int64 `json:"LogId,omitempty" xml:"LogId,omitempty"`
-	// The ID of the application group.
-	MetricName *string `json:"MetricName,omitempty" xml:"MetricName,omitempty"`
-	// The name of the log monitoring metric. For more information, see [Appendix 1: Metrics](~~163515~~).
-	SlsLogstore *string `json:"SlsLogstore,omitempty" xml:"SlsLogstore,omitempty"`
-	// The condition that is used to filter logs. The ValueFilter and ValueFilterRelation parameters are used in pair. The filter condition is equivalent to the WHERE clause in SQL statements.
-	//
-	// If no filter condition is specified, all logs are processed. Assume that logs contain the Level field, which may be set to Error. If you need to calculate the number of times that logs of the Error level appear every minute, you can set the filter condition to Level=Error and count the number of logs that meet this condition.
-	SlsProject *string `json:"SlsProject,omitempty" xml:"SlsProject,omitempty"`
 	// The time when the log monitoring metric was created.
 	//
 	// This value is a UNIX timestamp representing the number of milliseconds that have elapsed since the epoch time January 1, 1970, 00:00:00 UTC.
-	SlsRegionId *string `json:"SlsRegionId,omitempty" xml:"SlsRegionId,omitempty"`
-	// The name of the log field used for matching in the filter condition.
-	ValueFilter []*DescribeLogMonitorListResponseBodyLogMonitorListValueFilter `json:"ValueFilter,omitempty" xml:"ValueFilter,omitempty" type:"Repeated"`
+	GmtCreate *int64 `json:"GmtCreate,omitempty" xml:"GmtCreate,omitempty"`
+	// The ID of the application group.
+	GroupId *int64 `json:"GroupId,omitempty" xml:"GroupId,omitempty"`
+	// The ID returned by Log Service.
+	LogId *int64 `json:"LogId,omitempty" xml:"LogId,omitempty"`
+	// The name of the log monitoring metric. For more information, see [Appendix 1: Metrics](~~163515~~).
+	MetricName *string `json:"MetricName,omitempty" xml:"MetricName,omitempty"`
 	// The name of the Log Service Logstore.
+	SlsLogstore *string `json:"SlsLogstore,omitempty" xml:"SlsLogstore,omitempty"`
+	// The name of the Log Service project.
+	SlsProject *string `json:"SlsProject,omitempty" xml:"SlsProject,omitempty"`
+	// The ID of the region where the Log Service Logstore resides.
+	SlsRegionId *string `json:"SlsRegionId,omitempty" xml:"SlsRegionId,omitempty"`
+	// The condition that is used to filter logs. The ValueFilter and ValueFilterRelation parameters are used in pair. The filter condition is equivalent to the WHERE clause in SQL statements.
+	//
+	// If no filter condition is specified, all logs are processed. Assume that logs contain the Level field, which may be set to Error. If you need to calculate the number of times that logs of the Error level appear every minute, you can set the filter condition to Level=Error and count the number of logs that meet this condition.
+	ValueFilter []*DescribeLogMonitorListResponseBodyLogMonitorListValueFilter `json:"ValueFilter,omitempty" xml:"ValueFilter,omitempty" type:"Repeated"`
+	// The logical operator that is used between log filter conditions. The ValueFilter and ValueFilterRelation parameters are used in pair. Valid values:
+	//
+	// *   and
+	// *   or
 	ValueFilterRelation *string `json:"ValueFilterRelation,omitempty" xml:"ValueFilterRelation,omitempty"`
 }
 
@@ -19609,9 +20094,8 @@ func (s *DescribeLogMonitorListResponseBodyLogMonitorList) SetValueFilterRelatio
 }
 
 type DescribeLogMonitorListResponseBodyLogMonitorListValueFilter struct {
-	// The field value to be matched in the filter condition.
-	Key      *string `json:"Key,omitempty" xml:"Key,omitempty"`
-	Operator *string `json:"Operator,omitempty" xml:"Operator,omitempty"`
+	// The name of the log field used for matching in the filter condition.
+	Key *string `json:"Key,omitempty" xml:"Key,omitempty"`
 	// The method that is used to match the field value. Valid values:
 	//
 	// *   contain
@@ -19620,6 +20104,8 @@ type DescribeLogMonitorListResponseBodyLogMonitorListValueFilter struct {
 	// *   `<`: less than
 	// *   `>=`: greater than or equal to
 	// *   `<=`: less than or equal to
+	Operator *string `json:"Operator,omitempty" xml:"Operator,omitempty"`
+	// The field value to be matched in the filter condition.
 	Value *string `json:"Value,omitempty" xml:"Value,omitempty"`
 }
 
@@ -19676,6 +20162,57 @@ func (s *DescribeLogMonitorListResponse) SetBody(v *DescribeLogMonitorListRespon
 }
 
 type DescribeMetricDataRequest struct {
+	// The dimensions that specify the resources whose monitoring data you want to query.
+	//
+	// Set the value to a collection of key-value pairs. A typical key-value pair is `instanceId:i-2ze2d6j5uhg20x47****`.
+	//
+	// >  You can query a maximum of 50 instances in a single request.
+	Dimensions *string `json:"Dimensions,omitempty" xml:"Dimensions,omitempty"`
+	// The end of the time range to query.
+	//
+	// *   If the `StartTime` and `EndTime` parameters are not specified, the monitoring data of the last statistical period is queried.``
+	//
+	// *   If the `StartTime` and `EndTime` parameters are specified, the monitoring data of the last statistical period in the specified time range is queried.```` The following examples demonstrate how to determine the period in which monitoring data is queried:
+	//
+	//     *   If you set the `Period` parameter to 15, the specified time range must be less than or equal to 20 minutes. For example, if you set the StartTime parameter to 2021-05-08 08:10:00 and the EndTime parameter to 2021-05-08 08:30:00, the monitoring data of the last 15 seconds in the time range is queried.
+	//     *   If you set the `Period` parameter to 60 or 900, the specified time range must be less than or equal to 2 hours. For example, if you set the Period parameter to 60, the StartTime parameter to 2021-05-08 08:00:00, and the EndTime parameter to 2021-05-08 10:00:00, the monitoring data of the last 60 seconds in the time range is queried.
+	//     *   If you set the `Period` parameter to 3600, the specified time range must be less than or equal to two days. For example, if you set the StartTime parameter to 2021-05-08 08:00:00 and the EndTime parameter to 2021-05-10 08:00:00, the monitoring data of the last 3,600 seconds in the time range is queried.
+	//
+	// The following formats are supported:
+	//
+	// *   UNIX timestamp: the number of milliseconds that have elapsed since 00:00:00 Thursday, January 1, 1970
+	// *   UTC time: the UTC time that follows the YYYY-MM-DDThh:mm:ssZ format
+	//
+	// >  We recommend that you use UNIX timestamps to prevent time zone-related issues.
+	EndTime *string `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
+	// The expression that is used to compute the query results in real time.
+	//
+	// >  Only the `groupby` expression is supported. This expression is similar to the `GROUP BY` statement that is used in databases.
+	Express *string `json:"Express,omitempty" xml:"Express,omitempty"`
+	// The number of entries to return on each page.
+	//
+	// Default value: 1000.
+	//
+	// >  The maximum value of the Length parameter in a request is 1440.
+	Length *string `json:"Length,omitempty" xml:"Length,omitempty"`
+	// The metric that is used to monitor the cloud service.
+	//
+	// For more information about the metrics of different cloud services, see [Appendix 1: Metrics](~~163515~~).
+	MetricName *string `json:"MetricName,omitempty" xml:"MetricName,omitempty"`
+	// The namespace of the cloud service.
+	//
+	// For more information about the namespaces of cloud services, see [Appendix 1: Metrics](~~163515~~).
+	Namespace *string `json:"Namespace,omitempty" xml:"Namespace,omitempty"`
+	// The statistical period of the metric.
+	//
+	// Valid values: 15, 60, 900, and 3600.
+	//
+	// Unit: seconds.
+	//
+	// > - If this parameter is not specified, monitoring data is queried based on the period in which metric values are reported.
+	// > - For more information about the statistical period of a metric that is specified by the `MetricName` parameter, see [Appendix 1: Metrics](~~163515~~).
+	Period   *string `json:"Period,omitempty" xml:"Period,omitempty"`
+	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 	// The beginning of the time range to query.
 	//
 	// *   If the `StartTime` and `EndTime` parameters are not specified, the monitoring data of the last statistical period is queried.``
@@ -19694,46 +20231,6 @@ type DescribeMetricDataRequest struct {
 	// >
 	// *   You must set the `StartTime` parameter to a point in time that is later than 00:00:00 Thursday, January 1, 1970. Otherwise, this parameter is invalid.
 	// *   We recommend that you use UNIX timestamps to prevent time zone-related issues.
-	Dimensions *string `json:"Dimensions,omitempty" xml:"Dimensions,omitempty"`
-	// The namespace of the cloud service.
-	//
-	// For more information about the namespaces of cloud services, see [Appendix 1: Metrics](~~163515~~).
-	EndTime *string `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
-	// The statistical period of the monitoring data.
-	//
-	// Valid values: 15, 60, 900, and 3600.
-	//
-	// Unit: seconds.
-	Express *string `json:"Express,omitempty" xml:"Express,omitempty"`
-	// The ID of the request.
-	Length *string `json:"Length,omitempty" xml:"Length,omitempty"`
-	// The end of the time range to query.
-	//
-	// *   If the `StartTime` and `EndTime` parameters are not specified, the monitoring data of the last statistical period is queried.``
-	//
-	// *   If the `StartTime` and `EndTime` parameters are specified, the monitoring data of the last statistical period in the specified time range is queried.```` The following examples demonstrate how to determine the period in which monitoring data is queried:
-	//
-	//     *   If you set the `Period` parameter to 15, the specified time range must be less than or equal to 20 minutes. For example, if you set the StartTime parameter to 2021-05-08 08:10:00 and the EndTime parameter to 2021-05-08 08:30:00, the monitoring data of the last 15 seconds in the time range is queried.
-	//     *   If you set the `Period` parameter to 60 or 900, the specified time range must be less than or equal to 2 hours. For example, if you set the Period parameter to 60, the StartTime parameter to 2021-05-08 08:00:00, and the EndTime parameter to 2021-05-08 10:00:00, the monitoring data of the last 60 seconds in the time range is queried.
-	//     *   If you set the `Period` parameter to 3600, the specified time range must be less than or equal to two days. For example, if you set the StartTime parameter to 2021-05-08 08:00:00 and the EndTime parameter to 2021-05-10 08:00:00, the monitoring data of the last 3,600 seconds in the time range is queried.
-	//
-	// The following formats are supported:
-	//
-	// *   UNIX timestamp: the number of milliseconds that have elapsed since 00:00:00 Thursday, January 1, 1970
-	// *   UTC time: the UTC time that follows the YYYY-MM-DDThh:mm:ssZ format
-	//
-	// >  We recommend that you use UNIX timestamps to prevent time zone-related issues.
-	MetricName *string `json:"MetricName,omitempty" xml:"MetricName,omitempty"`
-	// The operation that you want to perform. Set the value to **DescribeMetricData**.
-	Namespace *string `json:"Namespace,omitempty" xml:"Namespace,omitempty"`
-	// The error message.
-	Period   *string `json:"Period,omitempty" xml:"Period,omitempty"`
-	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	// The dimensions that specify the resources whose monitoring data you want to query.
-	//
-	// Set the value to a collection of key-value pairs. A typical key-value pair is `instanceId:i-2ze2d6j5uhg20x47****`.
-	//
-	// >  You can query a maximum of 50 instances in a single request.
 	StartTime *string `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
 }
 
@@ -19791,17 +20288,26 @@ func (s *DescribeMetricDataRequest) SetStartTime(v string) *DescribeMetricDataRe
 }
 
 type DescribeMetricDataResponseBody struct {
+	// The HTTP status code.
+	//
+	// >  The status code 200 indicates that the call was successful.
+	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
 	// The monitoring data. The value includes the following fields:
 	//
 	// *   `timestamp`: the timestamp when the alert was triggered.
 	// *   `userId`: the ID of the user for which the alert was triggered.
 	// *   `instanceId`: the ID of the instance for which the alert was triggered.
 	// *   `Minimum`, `Average`, and `Maximum`: the aggregation methods.
-	Code       *string `json:"Code,omitempty" xml:"Code,omitempty"`
 	Datapoints *string `json:"Datapoints,omitempty" xml:"Datapoints,omitempty"`
-	// For more information about common request parameters, see [Common parameters](~~199331~~).
-	Message   *string `json:"Message,omitempty" xml:"Message,omitempty"`
-	Period    *string `json:"Period,omitempty" xml:"Period,omitempty"`
+	// The error message.
+	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// The statistical period of the monitoring data.
+	//
+	// Valid values: 15, 60, 900, and 3600.
+	//
+	// Unit: seconds.
+	Period *string `json:"Period,omitempty" xml:"Period,omitempty"`
+	// The ID of the request.
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -20071,42 +20577,52 @@ func (s *DescribeMetricLastResponse) SetBody(v *DescribeMetricLastResponseBody) 
 }
 
 type DescribeMetricListRequest struct {
-	// The expression that is used to compute the query results in real time.
-	//
-	// >  Only the groupby expression is supported. This expression is similar to the GROUP BY statement that is used in databases.
-	Dimensions *string `json:"Dimensions,omitempty" xml:"Dimensions,omitempty"`
 	// The dimensions that specify the resources whose monitoring data you want to query.
 	//
 	// Set the value to a collection of key-value pairs. A typical key-value pair is `instanceId:i-2ze2d6j5uhg20x47****`.
 	//
 	// >  You can query a maximum of 50 instances in a single request.
+	Dimensions *string `json:"Dimensions,omitempty" xml:"Dimensions,omitempty"`
+	// The end of the time range to query. The following formats are supported:
+	//
+	// *   UNIX timestamp: the number of milliseconds that have elapsed since 00:00:00 Thursday, January 1, 1970
+	// *   UTC time: the UTC time that follows the YYYY-MM-DDThh:mm:ssZ format
 	EndTime *string `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
-	// The interval at which the monitoring data is queried. Unit: seconds. Valid values: 60, 300, and 900.
+	// The expression that is used to compute the query results in real time.
+	//
+	// >  Only the groupby expression is supported. This expression is similar to the GROUP BY statement that is used in databases.
 	Express *string `json:"Express,omitempty" xml:"Express,omitempty"`
+	// The number of entries to return on each page.
+	//
+	// >  The maximum value of the Length parameter in a request is 1440.
+	Length *string `json:"Length,omitempty" xml:"Length,omitempty"`
+	// The name of the metric.
+	//
+	// For more information about metric names, see [Appendix 1: Metrics](~~163515~~).
+	MetricName *string `json:"MetricName,omitempty" xml:"MetricName,omitempty"`
+	// The namespace of the cloud service. Format: acs_service name.
+	//
+	// For more information about the namespaces of cloud services, see [Appendix 1: Metrics](~~163515~~).
+	Namespace *string `json:"Namespace,omitempty" xml:"Namespace,omitempty"`
+	// The paging token.
+	//
+	// >  If this parameter is not specified, the data on the first page is returned. A return value other than Null of this parameter indicates that not all entries have been returned. You can use this value as an input parameter to obtain entries on the next page. The value Null indicates that all query results have been returned.
+	NextToken *string `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
+	// The interval at which the monitoring data is queried.
+	//
+	// Valid values: 60, 300, and 900.
+	//
+	// Unit: seconds.
+	//
+	// >  Configure this parameter based on your business scenario.
+	Period   *string `json:"Period,omitempty" xml:"Period,omitempty"`
+	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 	// The beginning of the time range to query. The following formats are supported:
 	//
 	// *   UNIX timestamp: the number of milliseconds that have elapsed since 00:00:00 Thursday, January 1, 1970
 	// *   UTC time: the UTC time that follows the YYYY-MM-DDThh:mm:ssZ format
 	//
 	// >  The specified period includes the end time and excludes the start time. The start time must be earlier than the end time.
-	Length *string `json:"Length,omitempty" xml:"Length,omitempty"`
-	// The operation that you want to perform. Set the value to **DescribeMetricList**.
-	MetricName *string `json:"MetricName,omitempty" xml:"MetricName,omitempty"`
-	// The HTTP status code.
-	//
-	// >  The status code 200 indicates that the call was successful.
-	Namespace *string `json:"Namespace,omitempty" xml:"Namespace,omitempty"`
-	// The namespace of the cloud service. Format: acs_service name.
-	//
-	// For more information about the namespaces of cloud services, see [Appendix 1: Metrics](~~163515~~).
-	NextToken *string `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
-	// The end of the time range to query. The following formats are supported:
-	//
-	// *   UNIX timestamp: the number of milliseconds that have elapsed since 00:00:00 Thursday, January 1, 1970
-	// *   UTC time: the UTC time that follows the YYYY-MM-DDThh:mm:ssZ format
-	Period   *string `json:"Period,omitempty" xml:"Period,omitempty"`
-	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	// The error message.
 	StartTime *string `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
 }
 
@@ -20169,16 +20685,24 @@ func (s *DescribeMetricListRequest) SetStartTime(v string) *DescribeMetricListRe
 }
 
 type DescribeMetricListResponseBody struct {
+	// The HTTP status code.
+	//
+	// >  The status code 200 indicates that the call was successful.
 	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
-	// Queries the monitoring data of a metric for a specified cloud service.
-	Datapoints *string `json:"Datapoints,omitempty" xml:"Datapoints,omitempty"`
-	Message    *string `json:"Message,omitempty" xml:"Message,omitempty"`
-	// The ID of the request.
-	NextToken *string `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
-	Period    *string `json:"Period,omitempty" xml:"Period,omitempty"`
 	// The monitoring data.
+	Datapoints *string `json:"Datapoints,omitempty" xml:"Datapoints,omitempty"`
+	// The error message.
+	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// The paging token.
+	NextToken *string `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
+	// The interval at which the monitoring data is queried. Unit: seconds. Valid values: 60, 300, and 900.
+	Period *string `json:"Period,omitempty" xml:"Period,omitempty"`
+	// The ID of the request.
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// For more information about common request parameters, see [Common parameters](~~199331~~).
+	// Indicates whether the call was successful. Valid values:
+	//
+	// *   true: The call was successful.
+	// *   false: The call failed.
 	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
 }
 
@@ -20255,17 +20779,26 @@ func (s *DescribeMetricListResponse) SetBody(v *DescribeMetricListResponseBody) 
 }
 
 type DescribeMetricMetaListRequest struct {
-	// The page to return. Default value: 1
-	Labels *string `json:"Labels,omitempty" xml:"Labels,omitempty"`
-	// The number of entries to return on each page. Default value: 30.
-	MetricName *string `json:"MetricName,omitempty" xml:"MetricName,omitempty"`
-	// The name of the metric. For more information, see [Appendix 1: Metrics](~~163515~~).
-	Namespace *string `json:"Namespace,omitempty" xml:"Namespace,omitempty"`
-	// The response code.
+	// The tags for filtering metrics. Specify a JSON string.
 	//
-	// >  The HTTP 200 code indicates that the request was successful.
+	// Format:`[{"name":"tag name","value":"tag value"},{"name":"tag name","value":"tag value"}]`. The following tags are available:
+	//
+	// *   metricCategory: the category of the metric.
+	// *   alertEnable: specifies whether to report alerts for the metric.
+	// *   alertUnit: the suggested unit of the metric value in alerts.
+	// *   unitFactor: the factor for metric unit conversion.
+	// *   minAlertPeriod: the minimum time interval to report a new alert.
+	// *   productCategory: the category of the service.
+	Labels *string `json:"Labels,omitempty" xml:"Labels,omitempty"`
+	// The name of the metric. For more information, see [Appendix 1: Metrics](~~163515~~).
+	MetricName *string `json:"MetricName,omitempty" xml:"MetricName,omitempty"`
+	// The namespace of the service.
+	//
+	// For more information, see [Appendix 1: Metrics](~~163515~~).
+	Namespace *string `json:"Namespace,omitempty" xml:"Namespace,omitempty"`
+	// The page to return. Default value: 1
 	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
-	// The error message.
+	// The number of entries to return on each page. Default value: 30.
 	PageSize *int32  `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 }
@@ -20309,17 +20842,19 @@ func (s *DescribeMetricMetaListRequest) SetRegionId(v string) *DescribeMetricMet
 }
 
 type DescribeMetricMetaListResponseBody struct {
-	// The ID of the request.
+	// The response code.
+	//
+	// >  The HTTP 200 code indicates that the request was successful.
 	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
-	// The total number of returned records.
+	// The error message.
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
-	// Indicates whether the request was successful. The value true indicates success. The value false indicates failure.
+	// The ID of the request.
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// The description of the metric.
-	Resources *DescribeMetricMetaListResponseBodyResources `json:"Resources,omitempty" xml:"Resources,omitempty" type:"Struct"`
-	// The name of the metric.
-	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
 	// The configuration of the metric.
+	Resources *DescribeMetricMetaListResponseBodyResources `json:"Resources,omitempty" xml:"Resources,omitempty" type:"Struct"`
+	// Indicates whether the request was successful. The value true indicates success. The value false indicates failure.
+	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
+	// The total number of returned records.
 	TotalCount *string `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
 }
 
@@ -20379,12 +20914,10 @@ func (s *DescribeMetricMetaListResponseBodyResources) SetResource(v []*DescribeM
 }
 
 type DescribeMetricMetaListResponseBodyResourcesResource struct {
-	// The unit of the metric.
+	// The description of the metric.
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
-	// The statistical period of the metric. Multiple statistical periods are separated with commas (,).
-	Dimensions *string `json:"Dimensions,omitempty" xml:"Dimensions,omitempty"`
 	// The dimensions of the metric. Multiple dimensions are separated with commas (,).
-	Labels *string `json:"Labels,omitempty" xml:"Labels,omitempty"`
+	Dimensions *string `json:"Dimensions,omitempty" xml:"Dimensions,omitempty"`
 	// The tags of the metric, including one or more JSON strings. Format: `[{"name":"tag name","value":"tag value"}]`. The `name` can be repeated.
 	//
 	// The following tags are available:
@@ -20395,13 +20928,16 @@ type DescribeMetricMetaListResponseBodyResourcesResource struct {
 	// *   unitFactor: the factor for metric unit conversion.
 	// *   minAlertPeriod: the minimum time interval to report a new alert.
 	// *   productCategory: the category of the service.
+	Labels *string `json:"Labels,omitempty" xml:"Labels,omitempty"`
+	// The name of the metric.
 	MetricName *string `json:"MetricName,omitempty" xml:"MetricName,omitempty"`
-	// The statistical method. Multiple statistic methods are separated with commas (,).
-	Namespace *string `json:"Namespace,omitempty" xml:"Namespace,omitempty"`
-	// This operation is usually used with DescribeMetricList and DescribeMetricLast. For more information, see [DescribeMetricList](~~51936~~) and [DescribeMetricLast](~~51939~~).
-	Periods    *string `json:"Periods,omitempty" xml:"Periods,omitempty"`
-	Statistics *string `json:"Statistics,omitempty" xml:"Statistics,omitempty"`
 	// The namespace of the service. The value is usually in the format of acs_Service.
+	Namespace *string `json:"Namespace,omitempty" xml:"Namespace,omitempty"`
+	// The statistical period of the metric. Multiple statistical periods are separated with commas (,).
+	Periods *string `json:"Periods,omitempty" xml:"Periods,omitempty"`
+	// The statistical method. Multiple statistic methods are separated with commas (,).
+	Statistics *string `json:"Statistics,omitempty" xml:"Statistics,omitempty"`
+	// The unit of the metric.
 	Unit *string `json:"Unit,omitempty" xml:"Unit,omitempty"`
 }
 
@@ -20817,11 +21353,9 @@ func (s *DescribeMetricRuleBlackListResponse) SetBody(v *DescribeMetricRuleBlack
 }
 
 type DescribeMetricRuleCountRequest struct {
-	// The HTTP status code.
-	//
-	// >  The status code 200 indicates that the call was successful.
-	MetricName *string `json:"MetricName,omitempty" xml:"MetricName,omitempty"`
 	// The name of the metric. For more information, see [Appendix 1: Metrics](~~163515~~).
+	MetricName *string `json:"MetricName,omitempty" xml:"MetricName,omitempty"`
+	// The namespace of the service. For more information, see [Appendix 1: Metrics](~~163515~~).
 	Namespace *string `json:"Namespace,omitempty" xml:"Namespace,omitempty"`
 	RegionId  *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 }
@@ -20850,18 +21384,20 @@ func (s *DescribeMetricRuleCountRequest) SetRegionId(v string) *DescribeMetricRu
 }
 
 type DescribeMetricRuleCountResponseBody struct {
-	// The returned message.
+	// The HTTP status code.
+	//
+	// >  The status code 200 indicates that the call was successful.
 	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
-	// The ID of the request.
+	// The returned message.
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
-	// The number of alert rules without active alerts.
+	// The number of alert rules in each state.
 	MetricRuleCount *DescribeMetricRuleCountResponseBodyMetricRuleCount `json:"MetricRuleCount,omitempty" xml:"MetricRuleCount,omitempty" type:"Struct"`
+	// The ID of the request.
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	// Indicates whether the call was successful. Valid values:
 	//
 	// *   true: The call was successful.
 	// *   false: The call failed.
-	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// The number of alert rules in each state.
 	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
 }
 
@@ -20899,14 +21435,15 @@ func (s *DescribeMetricRuleCountResponseBody) SetSuccess(v bool) *DescribeMetric
 }
 
 type DescribeMetricRuleCountResponseBodyMetricRuleCount struct {
-	Alarm *int32 `json:"Alarm,omitempty" xml:"Alarm,omitempty"`
-	// The total number of alert rules.
-	Disable *int32 `json:"Disable,omitempty" xml:"Disable,omitempty"`
-	// The number of disabled alert rules.
-	Nodata *int32 `json:"Nodata,omitempty" xml:"Nodata,omitempty"`
-	// The number of alert rules without data.
-	Ok *int32 `json:"Ok,omitempty" xml:"Ok,omitempty"`
 	// The number of alert rules with active alerts.
+	Alarm *int32 `json:"Alarm,omitempty" xml:"Alarm,omitempty"`
+	// The number of disabled alert rules.
+	Disable *int32 `json:"Disable,omitempty" xml:"Disable,omitempty"`
+	// The number of alert rules without data.
+	Nodata *int32 `json:"Nodata,omitempty" xml:"Nodata,omitempty"`
+	// The number of alert rules without active alerts.
+	Ok *int32 `json:"Ok,omitempty" xml:"Ok,omitempty"`
+	// The total number of alert rules.
 	Total *int32 `json:"Total,omitempty" xml:"Total,omitempty"`
 }
 
@@ -21892,22 +22429,20 @@ func (s *DescribeMetricRuleTargetsRequest) SetRuleId(v string) *DescribeMetricRu
 }
 
 type DescribeMetricRuleTargetsResponseBody struct {
-	// The Alibaba Cloud Resource Name (ARN) of the resource. Format: `acs:{Service name abbreviation}:{regionId}:{userId}:/{Resource type}/{Resource name}/message`. Example: `acs:mns:cn-hangzhou:120886317861****:/queues/test123/message`. Fields:
-	//
-	// *   {Service name abbreviation}: the abbreviation of the service name. Valid value: mns.
-	// *   {userId}: the ID of the Alibaba Cloud account.
-	// *   {regionId}: the region ID of the message queue or topic.
-	// *   {Resource type}`: the type of the resource for which alerts are triggered. Valid values: - **queues** - **topics** {Resource name}: the name of the resource. - If the resource type is set to **queues**, the resource name is the name of the message queue. - If the resource type is set to **topics**, the resource name is the name of the topic.`
-	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
-	// The ID of the resource for which alerts are triggered.
-	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
 	// The HTTP status code.
 	//
 	// >  The status code 200 indicates that the call was successful.
-	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	// The error message.
+	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
 	// The ID of the request.
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// Indicates whether the call was successful. Valid values:
+	//
+	// *   true: The call was successful.
+	// *   false: The call failed.
 	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
-	// The operation that you want to perform. Set the value to **DescribeMetricRuleTargets**.
+	// The information about the resource for which alerts are triggered.
 	Targets *DescribeMetricRuleTargetsResponseBodyTargets `json:"Targets,omitempty" xml:"Targets,omitempty" type:"Struct"`
 }
 
@@ -21962,12 +22497,23 @@ func (s *DescribeMetricRuleTargetsResponseBodyTargets) SetTarget(v []*DescribeMe
 }
 
 type DescribeMetricRuleTargetsResponseBodyTargetsTarget struct {
-	// Queries the resources that are associated with a specified alert rule.
+	// The Alibaba Cloud Resource Name (ARN) of the resource. Format: `acs:{Service name abbreviation}:{regionId}:{userId}:/{Resource type}/{Resource name}/message`. Example: `acs:mns:cn-hangzhou:120886317861****:/queues/test123/message`. Fields:
+	//
+	// *   {Service name abbreviation}: the abbreviation of the service name. Valid value: mns.
+	// *   {userId}: the ID of the Alibaba Cloud account.
+	// *   {regionId}: the region ID of the message queue or topic.
+	// *   {Resource type}`: the type of the resource for which alerts are triggered. Valid values: - **queues** - **topics** {Resource name}: the name of the resource. - If the resource type is set to **queues**, the resource name is the name of the message queue. - If the resource type is set to **topics**, the resource name is the name of the topic.`
 	Arn *string `json:"Arn,omitempty" xml:"Arn,omitempty"`
-	// For more information about common request parameters, see [Common parameters](~~199331~~).
-	Id         *string `json:"Id,omitempty" xml:"Id,omitempty"`
+	// The ID of the resource for which alerts are triggered.
+	Id *string `json:"Id,omitempty" xml:"Id,omitempty"`
+	// The parameters of the alert callback. The parameters are in the JSON format.
 	JsonParams *string `json:"JsonParams,omitempty" xml:"JsonParams,omitempty"`
-	Level      *string `json:"Level,omitempty" xml:"Level,omitempty"`
+	// The level of the alert. Valid values:
+	//
+	// *   INFO: information
+	// *   WARN: warning
+	// *   CRITICAL: critical
+	Level *string `json:"Level,omitempty" xml:"Level,omitempty"`
 }
 
 func (s DescribeMetricRuleTargetsResponseBodyTargetsTarget) String() string {
@@ -22028,12 +22574,14 @@ func (s *DescribeMetricRuleTargetsResponse) SetBody(v *DescribeMetricRuleTargets
 }
 
 type DescribeMetricRuleTemplateAttributeRequest struct {
-	// The HTTP status code.
+	// The name of the alert template. You must specify at least one of the `Name` and `TemplateId` parameters.
 	//
-	// >  The status code 200 indicates that the call is successful.
+	// For more information about how to query the names of alert templates, see [DescribeMetricRuleTemplateList](~~114982~~).
 	Name     *string `json:"Name,omitempty" xml:"Name,omitempty"`
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	// The error message.
+	// The ID of the alert template. You must specify at least one of the `Name` and `TemplateId` parameters.
+	//
+	// For more information about how to query the IDs of alert templates, see [DescribeMetricRuleTemplateList](~~114982~~).
 	TemplateId *string `json:"TemplateId,omitempty" xml:"TemplateId,omitempty"`
 }
 
@@ -22061,18 +22609,20 @@ func (s *DescribeMetricRuleTemplateAttributeRequest) SetTemplateId(v string) *De
 }
 
 type DescribeMetricRuleTemplateAttributeResponseBody struct {
-	// The ID of the request.
+	// The HTTP status code.
+	//
+	// >  The status code 200 indicates that the call is successful.
 	Code *int32 `json:"Code,omitempty" xml:"Code,omitempty"`
+	// The error message.
+	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// The ID of the request.
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The details of the alert template.
+	Resource *DescribeMetricRuleTemplateAttributeResponseBodyResource `json:"Resource,omitempty" xml:"Resource,omitempty" type:"Struct"`
 	// Indicates whether the call is successful. Valid values:
 	//
 	// *   true: The call is successful.
 	// *   false: The call fails.
-	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
-	// The details of the alert template.
-	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// The version of the alert template.
-	Resource *DescribeMetricRuleTemplateAttributeResponseBodyResource `json:"Resource,omitempty" xml:"Resource,omitempty" type:"Struct"`
-	// The name of the alert template.
 	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
 }
 
@@ -22110,14 +22660,14 @@ func (s *DescribeMetricRuleTemplateAttributeResponseBody) SetSuccess(v bool) *De
 }
 
 type DescribeMetricRuleTemplateAttributeResponseBodyResource struct {
-	// The callback URL to which a request is sent when an alert is triggered.
+	// The list of alert templates.
 	AlertTemplates *DescribeMetricRuleTemplateAttributeResponseBodyResourceAlertTemplates `json:"AlertTemplates,omitempty" xml:"AlertTemplates,omitempty" type:"Struct"`
 	Description    *string                                                                `json:"Description,omitempty" xml:"Description,omitempty"`
-	// The ID of the alert template.
+	// The name of the alert template.
 	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
-	// The list of alert templates.
+	// The version of the alert template.
 	RestVersion *string `json:"RestVersion,omitempty" xml:"RestVersion,omitempty"`
-	// The dimension of the alert. It is an extended field.
+	// The ID of the alert template.
 	TemplateId *string `json:"TemplateId,omitempty" xml:"TemplateId,omitempty"`
 }
 
@@ -22172,37 +22722,26 @@ func (s *DescribeMetricRuleTemplateAttributeResponseBodyResourceAlertTemplates) 
 }
 
 type DescribeMetricRuleTemplateAttributeResponseBodyResourceAlertTemplatesAlertTemplate struct {
-	// The name of the alert rule.
+	// The abbreviation of the cloud service name.
 	Category *string `json:"Category,omitempty" xml:"Category,omitempty"`
-	// The comparison operator that is used to compare the metric value with the threshold. Valid values:
-	//
-	// *   GreaterThanOrEqualToThreshold: greater than or equal to the threshold
-	// *   GreaterThanThreshold: greater than the threshold
-	// *   LessThanOrEqualToThreshold: less than or equal to the threshold
-	// *   LessThanThreshold: less than the threshold
-	// *   NotEqualToThreshold: not equal to the threshold
-	// *   GreaterThanYesterday: greater than the metric value at the same time yesterday
-	// *   LessThanYesterday: less than the metric value at the same time yesterday
-	// *   GreaterThanLastWeek: greater than the metric value at the same time last week
-	// *   LessThanLastWeek: less than the metric value at the same time last week
-	// *   GreaterThanLastPeriod: greater than the metric value in the last monitoring cycle
-	// *   LessThanLastPeriod: less than the metric value in the last monitoring cycle
+	// The threshold and the alert level.
 	Escalations *DescribeMetricRuleTemplateAttributeResponseBodyResourceAlertTemplatesAlertTemplateEscalations `json:"Escalations,omitempty" xml:"Escalations,omitempty" type:"Struct"`
-	Labels      *DescribeMetricRuleTemplateAttributeResponseBodyResourceAlertTemplatesAlertTemplateLabels      `json:"Labels,omitempty" xml:"Labels,omitempty" type:"Struct"`
-	MetricName  *string                                                                                        `json:"MetricName,omitempty" xml:"MetricName,omitempty"`
+	// 报警模板标签。
+	Labels     *DescribeMetricRuleTemplateAttributeResponseBodyResourceAlertTemplatesAlertTemplateLabels `json:"Labels,omitempty" xml:"Labels,omitempty" type:"Struct"`
+	MetricName *string                                                                                   `json:"MetricName,omitempty" xml:"MetricName,omitempty"`
+	// The namespace of the cloud service.
+	Namespace *string `json:"Namespace,omitempty" xml:"Namespace,omitempty"`
 	// The processing method of alerts when no monitoring data is found. Valid values:
 	//
 	// *   KEEP_LAST_STATE (default value): No operation is performed.
 	// *   INSUFFICIENT_DATA: An alert whose content is "Insufficient data" is triggered.
 	// *   OK: The alert rule has no active alerts.
-	Namespace *string `json:"Namespace,omitempty" xml:"Namespace,omitempty"`
-	// The threshold and the alert level.
 	NoDataPolicy *string `json:"NoDataPolicy,omitempty" xml:"NoDataPolicy,omitempty"`
-	// The conditions for triggering Info-level alerts.
+	// The name of the alert rule.
 	RuleName *string `json:"RuleName,omitempty" xml:"RuleName,omitempty"`
-	// The namespace of the cloud service.
+	// The dimension of the alert. It is an extended field.
 	Selector *string `json:"Selector,omitempty" xml:"Selector,omitempty"`
-	// The abbreviation of the cloud service name.
+	// The callback URL to which a request is sent when an alert is triggered.
 	Webhook *string `json:"Webhook,omitempty" xml:"Webhook,omitempty"`
 }
 
@@ -22260,11 +22799,11 @@ func (s *DescribeMetricRuleTemplateAttributeResponseBodyResourceAlertTemplatesAl
 }
 
 type DescribeMetricRuleTemplateAttributeResponseBodyResourceAlertTemplatesAlertTemplateEscalations struct {
-	// The consecutive number of times for which the metric value meets the alert condition before a Critical-level alert is triggered.
+	// The conditions for triggering Critical-level alerts.
 	Critical *DescribeMetricRuleTemplateAttributeResponseBodyResourceAlertTemplatesAlertTemplateEscalationsCritical `json:"Critical,omitempty" xml:"Critical,omitempty" type:"Struct"`
-	// The consecutive number of times for which the metric value meets the alert condition before an Info-level alert is triggered.
+	// The conditions for triggering Info-level alerts.
 	Info *DescribeMetricRuleTemplateAttributeResponseBodyResourceAlertTemplatesAlertTemplateEscalationsInfo `json:"Info,omitempty" xml:"Info,omitempty" type:"Struct"`
-	// The consecutive number of times for which the metric value meets the alert condition before a Warn-level alert is triggered.
+	// The conditions for triggering Warn-level alerts.
 	Warn *DescribeMetricRuleTemplateAttributeResponseBodyResourceAlertTemplatesAlertTemplateEscalationsWarn `json:"Warn,omitempty" xml:"Warn,omitempty" type:"Struct"`
 }
 
@@ -22292,15 +22831,27 @@ func (s *DescribeMetricRuleTemplateAttributeResponseBodyResourceAlertTemplatesAl
 }
 
 type DescribeMetricRuleTemplateAttributeResponseBodyResourceAlertTemplatesAlertTemplateEscalationsCritical struct {
-	// The threshold for Critical-level alerts.
+	// The comparison operator that is used to compare the metric value with the threshold. Valid values:
+	//
+	// *   GreaterThanOrEqualToThreshold: greater than or equal to the threshold
+	// *   GreaterThanThreshold: greater than the threshold
+	// *   LessThanOrEqualToThreshold: less than or equal to the threshold
+	// *   LessThanThreshold: less than the threshold
+	// *   NotEqualToThreshold: not equal to the threshold
+	// *   GreaterThanYesterday: greater than the metric value at the same time yesterday
+	// *   LessThanYesterday: less than the metric value at the same time yesterday
+	// *   GreaterThanLastWeek: greater than the metric value at the same time last week
+	// *   LessThanLastWeek: less than the metric value at the same time last week
+	// *   GreaterThanLastPeriod: greater than the metric value in the last monitoring cycle
+	// *   LessThanLastPeriod: less than the metric value in the last monitoring cycle
 	ComparisonOperator *string `json:"ComparisonOperator,omitempty" xml:"ComparisonOperator,omitempty"`
-	// For more information about common request parameters, see [Common parameters](~~199331~~).
-	Statistics *string `json:"Statistics,omitempty" xml:"Statistics,omitempty"`
-	// This topic provides an example to show how to query the details of an alert template whose ID is `70****`.
-	Threshold *string `json:"Threshold,omitempty" xml:"Threshold,omitempty"`
 	// The statistical method for Critical-level alerts.
 	//
 	// The value of the `Statistics` parameter varies with the cloud service. For more information, see [Appendix 1: Metrics](~~163515~~).
+	Statistics *string `json:"Statistics,omitempty" xml:"Statistics,omitempty"`
+	// The threshold for Critical-level alerts.
+	Threshold *string `json:"Threshold,omitempty" xml:"Threshold,omitempty"`
+	// The consecutive number of times for which the metric value meets the alert condition before a Critical-level alert is triggered.
 	Times *int32 `json:"Times,omitempty" xml:"Times,omitempty"`
 }
 
@@ -22333,8 +22884,6 @@ func (s *DescribeMetricRuleTemplateAttributeResponseBodyResourceAlertTemplatesAl
 }
 
 type DescribeMetricRuleTemplateAttributeResponseBodyResourceAlertTemplatesAlertTemplateEscalationsInfo struct {
-	// The threshold for Info-level alerts.
-	ComparisonOperator *string `json:"ComparisonOperator,omitempty" xml:"ComparisonOperator,omitempty"`
 	// The comparison operator that is used to compare the metric value with the threshold. Valid values:
 	//
 	// *   GreaterThanOrEqualToThreshold: greater than or equal to the threshold
@@ -22348,12 +22897,14 @@ type DescribeMetricRuleTemplateAttributeResponseBodyResourceAlertTemplatesAlertT
 	// *   LessThanLastWeek: less than the metric value at the same time last week
 	// *   GreaterThanLastPeriod: greater than the metric value in the last monitoring cycle
 	// *   LessThanLastPeriod: less than the metric value in the last monitoring cycle
-	Statistics *string `json:"Statistics,omitempty" xml:"Statistics,omitempty"`
-	// The conditions for triggering Warn-level alerts.
-	Threshold *string `json:"Threshold,omitempty" xml:"Threshold,omitempty"`
+	ComparisonOperator *string `json:"ComparisonOperator,omitempty" xml:"ComparisonOperator,omitempty"`
 	// The statistical method for Info-level alerts.
 	//
 	// The value of the `Statistics` parameter varies with the cloud service. For more information, see [Appendix 1: Metrics](~~163515~~).
+	Statistics *string `json:"Statistics,omitempty" xml:"Statistics,omitempty"`
+	// The threshold for Info-level alerts.
+	Threshold *string `json:"Threshold,omitempty" xml:"Threshold,omitempty"`
+	// The consecutive number of times for which the metric value meets the alert condition before an Info-level alert is triggered.
 	Times *int32 `json:"Times,omitempty" xml:"Times,omitempty"`
 }
 
@@ -22386,8 +22937,6 @@ func (s *DescribeMetricRuleTemplateAttributeResponseBodyResourceAlertTemplatesAl
 }
 
 type DescribeMetricRuleTemplateAttributeResponseBodyResourceAlertTemplatesAlertTemplateEscalationsWarn struct {
-	// The threshold for Warn-level alerts.
-	ComparisonOperator *string `json:"ComparisonOperator,omitempty" xml:"ComparisonOperator,omitempty"`
 	// The comparison operator that is used to compare the metric value with the threshold. Valid values:
 	//
 	// *   GreaterThanOrEqualToThreshold: greater than or equal to the threshold
@@ -22401,12 +22950,14 @@ type DescribeMetricRuleTemplateAttributeResponseBodyResourceAlertTemplatesAlertT
 	// *   LessThanLastWeek: less than the metric value at the same time last week
 	// *   GreaterThanLastPeriod: greater than the metric value in the last monitoring cycle
 	// *   LessThanLastPeriod: less than the metric value in the last monitoring cycle
-	Statistics *string `json:"Statistics,omitempty" xml:"Statistics,omitempty"`
-	// The conditions for triggering Critical-level alerts.
-	Threshold *string `json:"Threshold,omitempty" xml:"Threshold,omitempty"`
+	ComparisonOperator *string `json:"ComparisonOperator,omitempty" xml:"ComparisonOperator,omitempty"`
 	// The statistical method for Warn-level alerts.
 	//
 	// The value of the `Statistics` parameter varies with the cloud service. For more information, see [Appendix 1: Metrics](~~163515~~).
+	Statistics *string `json:"Statistics,omitempty" xml:"Statistics,omitempty"`
+	// The threshold for Warn-level alerts.
+	Threshold *string `json:"Threshold,omitempty" xml:"Threshold,omitempty"`
+	// The consecutive number of times for which the metric value meets the alert condition before a Warn-level alert is triggered.
 	Times *int32 `json:"Times,omitempty" xml:"Times,omitempty"`
 }
 
@@ -22456,7 +23007,9 @@ func (s *DescribeMetricRuleTemplateAttributeResponseBodyResourceAlertTemplatesAl
 }
 
 type DescribeMetricRuleTemplateAttributeResponseBodyResourceAlertTemplatesAlertTemplateLabelsLabels struct {
-	Key   *string `json:"Key,omitempty" xml:"Key,omitempty"`
+	// 报警模板的标签键。
+	Key *string `json:"Key,omitempty" xml:"Key,omitempty"`
+	// 报警模板的标签值。
 	Value *string `json:"Value,omitempty" xml:"Value,omitempty"`
 }
 
@@ -23453,24 +24006,33 @@ func (s *DescribeMonitorGroupDynamicRulesResponse) SetBody(v *DescribeMonitorGro
 }
 
 type DescribeMonitorGroupInstanceAttributeRequest struct {
-	// The keyword that is used to search for resources.
-	Category *string `json:"Category,omitempty" xml:"Category,omitempty"`
-	// The HTTP status code.
-	//
-	// >  The status code 200 indicates that the call was successful.
-	GroupId *int64 `json:"GroupId,omitempty" xml:"GroupId,omitempty"`
-	// The ID of the application group.
-	InstanceIds *string `json:"InstanceIds,omitempty" xml:"InstanceIds,omitempty"`
-	// The ID of the vSwitch to which the instance belongs.
-	Keyword *string `json:"Keyword,omitempty" xml:"Keyword,omitempty"`
-	// The operation that you want to perform. Set the value to **DescribeMonitorGroupInstanceAttribute**.
-	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
 	// The abbreviation of the Alibaba Cloud service name.
 	//
 	// To obtain the abbreviation of an Alibaba Cloud service name, call the [DescribeProjectMeta](~~114916~~) operation. The `metricCategory` tag in the `Labels` response parameter indicates the abbreviation of the Alibaba Cloud service name.
+	Category *string `json:"Category,omitempty" xml:"Category,omitempty"`
+	// The ID of the application group.
+	GroupId *int64 `json:"GroupId,omitempty" xml:"GroupId,omitempty"`
+	// The ID of the resource. Separate multiple resource IDs with commas (,). You can query the details about a maximum of 20 resources in each request.
+	InstanceIds *string `json:"InstanceIds,omitempty" xml:"InstanceIds,omitempty"`
+	// The keyword that is used to search for resources.
+	Keyword *string `json:"Keyword,omitempty" xml:"Keyword,omitempty"`
+	// The number of the page to return.
+	//
+	// Valid values: 1 to 1000000000.
+	//
+	// Default value: 1.
+	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
+	// The number of entries to return on each page.
+	//
+	// Valid values: 1 to 1000000000.
+	//
+	// Default value: 10.
 	PageSize *int32  `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	// The error message.
+	// Specifies whether to return the total number of resources in the specified application group. Valid values:
+	//
+	// *   true (default value)
+	// *   false
 	Total *bool `json:"Total,omitempty" xml:"Total,omitempty"`
 }
 
@@ -23523,29 +24085,26 @@ func (s *DescribeMonitorGroupInstanceAttributeRequest) SetTotal(v bool) *Describ
 }
 
 type DescribeMonitorGroupInstanceAttributeResponseBody struct {
-	// The information about the virtual private cloud (VPC).
+	// The HTTP status code.
+	//
+	// >  The status code 200 indicates that the call was successful.
 	Code *int32 `json:"Code,omitempty" xml:"Code,omitempty"`
-	// The number of the page to return.
-	//
-	// Valid values: 1 to 1000000000.
-	//
-	// Default value: 1.
+	// The error message.
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
-	// The ID of the VPC.
+	// The page number of the returned page.
 	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
-	// The number of entries to return on each page.
-	//
-	// Valid values: 1 to 1000000000.
-	//
-	// Default value: 10.
+	// The total number of returned pages.
 	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	// The dimensions of the resource that is associated with the application group.
+	// The ID of the request.
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// The ID of the instance.
+	// The resources that are associated with the application group.
 	Resources *DescribeMonitorGroupInstanceAttributeResponseBodyResources `json:"Resources,omitempty" xml:"Resources,omitempty" type:"Struct"`
-	// The total number of returned entries.
+	// Indicates whether the call was successful. Valid values:
+	//
+	// *   true: The call was successful.
+	// *   false: The call failed.
 	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
-	// The ID of the resource. Separate multiple resource IDs with commas (,). You can query the details about a maximum of 20 resources in each request.
+	// The total number of returned entries.
 	Total *int32 `json:"Total,omitempty" xml:"Total,omitempty"`
 }
 
@@ -23615,25 +24174,22 @@ func (s *DescribeMonitorGroupInstanceAttributeResponseBodyResources) SetResource
 }
 
 type DescribeMonitorGroupInstanceAttributeResponseBodyResourcesResource struct {
-	// The network type.
+	// The name of the cloud service.
 	Category *string `json:"Category,omitempty" xml:"Category,omitempty"`
-	// The total number of returned pages.
+	// The description of the resource.
 	Desc *string `json:"Desc,omitempty" xml:"Desc,omitempty"`
-	// The tag value.
+	// The dimensions of the resource that is associated with the application group.
 	Dimension *string `json:"Dimension,omitempty" xml:"Dimension,omitempty"`
-	// Specifies whether to return the total number of resources in the specified application group. Valid values:
-	//
-	// *   true (default value)
-	// *   false
+	// The ID of the instance.
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	// The resources that are associated with the application group.
+	// The name of the instance.
 	InstanceName *string `json:"InstanceName,omitempty" xml:"InstanceName,omitempty"`
-	// The page number of the returned page.
+	// The network type.
 	NetworkType *string                                                                   `json:"NetworkType,omitempty" xml:"NetworkType,omitempty"`
 	Region      *DescribeMonitorGroupInstanceAttributeResponseBodyResourcesResourceRegion `json:"Region,omitempty" xml:"Region,omitempty" type:"Struct"`
 	// The tags of the resource.
 	Tags *DescribeMonitorGroupInstanceAttributeResponseBodyResourcesResourceTags `json:"Tags,omitempty" xml:"Tags,omitempty" type:"Struct"`
-	// The ID of the request.
+	// The information about the virtual private cloud (VPC).
 	Vpc *DescribeMonitorGroupInstanceAttributeResponseBodyResourcesResourceVpc `json:"Vpc,omitempty" xml:"Vpc,omitempty" type:"Struct"`
 }
 
@@ -23731,9 +24287,9 @@ func (s *DescribeMonitorGroupInstanceAttributeResponseBodyResourcesResourceTags)
 }
 
 type DescribeMonitorGroupInstanceAttributeResponseBodyResourcesResourceTagsTag struct {
-	// The name of the instance.
+	// The tag key.
 	Key *string `json:"Key,omitempty" xml:"Key,omitempty"`
-	// The description of the resource.
+	// The tag value.
 	Value *string `json:"Value,omitempty" xml:"Value,omitempty"`
 }
 
@@ -23756,7 +24312,9 @@ func (s *DescribeMonitorGroupInstanceAttributeResponseBodyResourcesResourceTagsT
 }
 
 type DescribeMonitorGroupInstanceAttributeResponseBodyResourcesResourceVpc struct {
-	VpcInstanceId     *string `json:"VpcInstanceId,omitempty" xml:"VpcInstanceId,omitempty"`
+	// The ID of the VPC.
+	VpcInstanceId *string `json:"VpcInstanceId,omitempty" xml:"VpcInstanceId,omitempty"`
+	// The ID of the vSwitch to which the instance belongs.
 	VswitchInstanceId *string `json:"VswitchInstanceId,omitempty" xml:"VswitchInstanceId,omitempty"`
 }
 
@@ -24753,7 +25311,10 @@ func (s *DescribeMonitorGroupsResponse) SetBody(v *DescribeMonitorGroupsResponse
 
 type DescribeMonitorResourceQuotaAttributeRequest struct {
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	// The ID of the instance to be monitored.
+	// Specifies whether to return information about used quotas. Valid values:
+	//
+	// *   true (default): yes
+	// *   false: no
 	ShowUsed *bool `json:"ShowUsed,omitempty" xml:"ShowUsed,omitempty"`
 }
 
@@ -24776,13 +25337,15 @@ func (s *DescribeMonitorResourceQuotaAttributeRequest) SetShowUsed(v bool) *Desc
 }
 
 type DescribeMonitorResourceQuotaAttributeResponseBody struct {
-	// The quota of alert phone calls in your purchased resource plan. Unit: calls.
+	// The status code.
+	//
+	// > The status code 200 indicates that the request was successful.
 	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
-	// The used quota of the time series in custom monitoring in your purchased plan.
+	// The error message.
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
-	// The details about the quota of detection points that are provided by other carriers in site monitoring.
+	// The request ID.
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// The total quota of alert text messages.
+	// The details about the resource quotas of CloudMonitor.
 	ResourceQuota *DescribeMonitorResourceQuotaAttributeResponseBodyResourceQuota `json:"ResourceQuota,omitempty" xml:"ResourceQuota,omitempty" type:"Struct"`
 }
 
@@ -24815,35 +25378,37 @@ func (s *DescribeMonitorResourceQuotaAttributeResponseBody) SetResourceQuota(v *
 }
 
 type DescribeMonitorResourceQuotaAttributeResponseBodyResourceQuota struct {
-	// The details about the quota of API operation calls.
+	// The details about the quota of API calls.
 	Api *DescribeMonitorResourceQuotaAttributeResponseBodyResourceQuotaApi `json:"Api,omitempty" xml:"Api,omitempty" type:"Struct"`
-	// The quota of detection points that are provided by other carriers in site monitoring in your purchased plan.
+	// The details about the quota for custom monitoring.
 	CustomMonitor *DescribeMonitorResourceQuotaAttributeResponseBodyResourceQuotaCustomMonitor `json:"CustomMonitor,omitempty" xml:"CustomMonitor,omitempty" type:"Struct"`
-	// For more information about common request parameters, see [Common parameters](~~199331~~).
+	// The details about the quota of Hybrid Cloud Monitoring.
 	EnterpriseQuota *DescribeMonitorResourceQuotaAttributeResponseBodyResourceQuotaEnterpriseQuota `json:"EnterpriseQuota,omitempty" xml:"EnterpriseQuota,omitempty" type:"Struct"`
-	// The details about the quota of alert phone calls.
+	// The details about the quota for event monitoring.
 	EventMonitor *DescribeMonitorResourceQuotaAttributeResponseBodyResourceQuotaEventMonitor `json:"EventMonitor,omitempty" xml:"EventMonitor,omitempty" type:"Struct"`
-	// The total quota of detection points that are provided by Alibaba Cloud in site monitoring.
-	//
-	// >  The value indicates the maximum number of detection points provided by Alibaba Cloud that you can select for a site monitoring task.
+	// The time when the resource plan expires.
 	ExpireTime *string `json:"ExpireTime,omitempty" xml:"ExpireTime,omitempty"`
-	// The operation that you want to perform. Set the value to DescribeMonitorResourceQuotaAttribute.
+	// The ID of the resource plan.
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	// The total quota of site monitoring tasks.
+	// The details about the quota for log monitoring.
 	LogMonitor *DescribeMonitorResourceQuotaAttributeResponseBodyResourceQuotaLogMonitor `json:"LogMonitor,omitempty" xml:"LogMonitor,omitempty" type:"Struct"`
-	// The details about the quota of alert text messages.
+	// The details about the quota of alert phone calls.
 	Phone *DescribeMonitorResourceQuotaAttributeResponseBodyResourceQuotaPhone `json:"Phone,omitempty" xml:"Phone,omitempty" type:"Struct"`
-	// The used quota of detection points that are provided by other carriers in site monitoring in your purchased plan.
-	SMS *DescribeMonitorResourceQuotaAttributeResponseBodyResourceQuotaSMS `json:"SMS,omitempty" xml:"SMS,omitempty" type:"Struct"`
-	// The error message.
+	// The details about the quota of alert text messages.
+	SMS                *DescribeMonitorResourceQuotaAttributeResponseBodyResourceQuotaSMS                `json:"SMS,omitempty" xml:"SMS,omitempty" type:"Struct"`
+	SiteMonitorBrowser *DescribeMonitorResourceQuotaAttributeResponseBodyResourceQuotaSiteMonitorBrowser `json:"SiteMonitorBrowser,omitempty" xml:"SiteMonitorBrowser,omitempty" type:"Struct"`
+	// The details about the quota of ECS detection points for site monitoring.
 	SiteMonitorEcsProbe *DescribeMonitorResourceQuotaAttributeResponseBodyResourceQuotaSiteMonitorEcsProbe `json:"SiteMonitorEcsProbe,omitempty" xml:"SiteMonitorEcsProbe,omitempty" type:"Struct"`
-	// The total quota of API operation calls. Unit: 10,000 calls.
+	SiteMonitorMobile   *DescribeMonitorResourceQuotaAttributeResponseBodyResourceQuotaSiteMonitorMobile   `json:"SiteMonitorMobile,omitempty" xml:"SiteMonitorMobile,omitempty" type:"Struct"`
+	// The details about the quota of carrier detection points for site monitoring.
 	SiteMonitorOperatorProbe *DescribeMonitorResourceQuotaAttributeResponseBodyResourceQuotaSiteMonitorOperatorProbe `json:"SiteMonitorOperatorProbe,omitempty" xml:"SiteMonitorOperatorProbe,omitempty" type:"Struct"`
-	// The quota of site monitoring tasks in your purchased plan.
+	// The quota of site monitoring tasks.
 	SiteMonitorTask *DescribeMonitorResourceQuotaAttributeResponseBodyResourceQuotaSiteMonitorTask `json:"SiteMonitorTask,omitempty" xml:"SiteMonitorTask,omitempty" type:"Struct"`
-	// The HTTP status code.
+	// The current edition of CloudMonitor. Valid values:
 	//
-	// >  The HTTP status code 200 indicates that the call succeeds.
+	// *   free: Free Edition
+	// *   pro: Pro Edition
+	// *   cms_post: pay-as-you-go
 	SuitInfo *string `json:"SuitInfo,omitempty" xml:"SuitInfo,omitempty"`
 }
 
@@ -24900,8 +25465,18 @@ func (s *DescribeMonitorResourceQuotaAttributeResponseBodyResourceQuota) SetSMS(
 	return s
 }
 
+func (s *DescribeMonitorResourceQuotaAttributeResponseBodyResourceQuota) SetSiteMonitorBrowser(v *DescribeMonitorResourceQuotaAttributeResponseBodyResourceQuotaSiteMonitorBrowser) *DescribeMonitorResourceQuotaAttributeResponseBodyResourceQuota {
+	s.SiteMonitorBrowser = v
+	return s
+}
+
 func (s *DescribeMonitorResourceQuotaAttributeResponseBodyResourceQuota) SetSiteMonitorEcsProbe(v *DescribeMonitorResourceQuotaAttributeResponseBodyResourceQuotaSiteMonitorEcsProbe) *DescribeMonitorResourceQuotaAttributeResponseBodyResourceQuota {
 	s.SiteMonitorEcsProbe = v
+	return s
+}
+
+func (s *DescribeMonitorResourceQuotaAttributeResponseBodyResourceQuota) SetSiteMonitorMobile(v *DescribeMonitorResourceQuotaAttributeResponseBodyResourceQuotaSiteMonitorMobile) *DescribeMonitorResourceQuotaAttributeResponseBodyResourceQuota {
+	s.SiteMonitorMobile = v
 	return s
 }
 
@@ -24921,15 +25496,11 @@ func (s *DescribeMonitorResourceQuotaAttributeResponseBodyResourceQuota) SetSuit
 }
 
 type DescribeMonitorResourceQuotaAttributeResponseBodyResourceQuotaApi struct {
-	// The current edition of CloudMonitor. Valid values:
-	//
-	// *   free: free edition
-	// *   pro: Professional Edition
-	// *   cms_post: pay-as-you-go
+	// The total quota of API calls. Unit: 10,000 calls.
 	QuotaLimit *int32 `json:"QuotaLimit,omitempty" xml:"QuotaLimit,omitempty"`
-	// The used quota of API operation calls in your purchased plan. Unit: calls.
+	// The quota of API calls in your resource plan. Unit: 10,000 calls.
 	QuotaPackage *int32 `json:"QuotaPackage,omitempty" xml:"QuotaPackage,omitempty"`
-	// The quota of alert text messages in your purchased resource plan.
+	// The used quota of API calls in your resource plan. Unit: calls.
 	QuotaUsed *int32 `json:"QuotaUsed,omitempty" xml:"QuotaUsed,omitempty"`
 }
 
@@ -24957,11 +25528,11 @@ func (s *DescribeMonitorResourceQuotaAttributeResponseBodyResourceQuotaApi) SetQ
 }
 
 type DescribeMonitorResourceQuotaAttributeResponseBodyResourceQuotaCustomMonitor struct {
-	// The total quota of alert phone calls. Unit: calls.
+	// The total quota of the time series for custom monitoring.
 	QuotaLimit *int32 `json:"QuotaLimit,omitempty" xml:"QuotaLimit,omitempty"`
-	// The quota of site monitoring tasks.
+	// The quota of the time series for custom monitoring in your resource plan.
 	QuotaPackage *int32 `json:"QuotaPackage,omitempty" xml:"QuotaPackage,omitempty"`
-	// The total quota of events that can be reported in event monitoring. The total quota is the value that is multiplied by 10,000.
+	// The used quota of the time series for custom monitoring in your resource plan.
 	QuotaUsed *int32 `json:"QuotaUsed,omitempty" xml:"QuotaUsed,omitempty"`
 }
 
@@ -24989,8 +25560,10 @@ func (s *DescribeMonitorResourceQuotaAttributeResponseBodyResourceQuotaCustomMon
 }
 
 type DescribeMonitorResourceQuotaAttributeResponseBodyResourceQuotaEnterpriseQuota struct {
+	// The ID of the instance monitored by Hybrid Cloud Monitoring.
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	SuitInfo   *string `json:"SuitInfo,omitempty" xml:"SuitInfo,omitempty"`
+	// The description of Hybrid Cloud Monitoring.
+	SuitInfo *string `json:"SuitInfo,omitempty" xml:"SuitInfo,omitempty"`
 }
 
 func (s DescribeMonitorResourceQuotaAttributeResponseBodyResourceQuotaEnterpriseQuota) String() string {
@@ -25012,13 +25585,11 @@ func (s *DescribeMonitorResourceQuotaAttributeResponseBodyResourceQuotaEnterpris
 }
 
 type DescribeMonitorResourceQuotaAttributeResponseBodyResourceQuotaEventMonitor struct {
-	// The used quota of detection points that are provided by Alibaba Cloud in site monitoring in your purchased plan.
-	//
-	// >  The value indicates the total number of detection points provided by Alibaba Cloud that are used by existing site monitoring tasks.
+	// The total quota of events that can be reported in event monitoring. The total quota is the value that is multiplied by 10,000.
 	QuotaLimit *int32 `json:"QuotaLimit,omitempty" xml:"QuotaLimit,omitempty"`
-	// The details about the quota of custom monitoring.
+	// The quota of events that can be reported in event monitoring in your resource plan. The total quota is the value that is multiplied by 10,000.
 	QuotaPackage *int32 `json:"QuotaPackage,omitempty" xml:"QuotaPackage,omitempty"`
-	// The description of the instance.
+	// The used quota of events that can be reported in event monitoring in your resource plan. The total quota is the value that is multiplied by 10,000.
 	QuotaUsed *int32 `json:"QuotaUsed,omitempty" xml:"QuotaUsed,omitempty"`
 }
 
@@ -25046,11 +25617,11 @@ func (s *DescribeMonitorResourceQuotaAttributeResponseBodyResourceQuotaEventMoni
 }
 
 type DescribeMonitorResourceQuotaAttributeResponseBodyResourceQuotaLogMonitor struct {
-	// The used quota of events that can be reported in event monitoring in your purchased plan. The product of multiplying the value and 10,000 indicates the used quota.
+	// The total quota of processed log data in log monitoring. Unit: MB/min.
 	QuotaLimit *int32 `json:"QuotaLimit,omitempty" xml:"QuotaLimit,omitempty"`
-	// The details about the resource quotas of CloudMonitor.
+	// The quota of processed log data in log monitoring in your resource plan. Unit: MB/min.
 	QuotaPackage *int32 `json:"QuotaPackage,omitempty" xml:"QuotaPackage,omitempty"`
-	// The used quota of alert text messages in your purchased resource plan.
+	// The used quota of processed log data in log monitoring in your resource plan. Unit: MB/min.
 	QuotaUsed *int32 `json:"QuotaUsed,omitempty" xml:"QuotaUsed,omitempty"`
 }
 
@@ -25078,11 +25649,11 @@ func (s *DescribeMonitorResourceQuotaAttributeResponseBodyResourceQuotaLogMonito
 }
 
 type DescribeMonitorResourceQuotaAttributeResponseBodyResourceQuotaPhone struct {
-	// The quota of processed log data in log monitoring in your purchased plan. Unit: MB/min.
+	// The total quota of alert phone calls. Unit: calls.
 	QuotaLimit *int32 `json:"QuotaLimit,omitempty" xml:"QuotaLimit,omitempty"`
-	// The ID of the request.
+	// The quota of alert phone calls in your resource plan. Unit: calls.
 	QuotaPackage *int32 `json:"QuotaPackage,omitempty" xml:"QuotaPackage,omitempty"`
-	// The quota of API operation calls in your purchased plan. Unit: 10,000 calls.
+	// The used quota of alert phone calls in your resource plan. Unit: calls.
 	QuotaUsed *int32 `json:"QuotaUsed,omitempty" xml:"QuotaUsed,omitempty"`
 }
 
@@ -25110,11 +25681,11 @@ func (s *DescribeMonitorResourceQuotaAttributeResponseBodyResourceQuotaPhone) Se
 }
 
 type DescribeMonitorResourceQuotaAttributeResponseBodyResourceQuotaSMS struct {
-	// The details about the quota of detection points that are provided by Alibaba Cloud in site monitoring.
+	// The total quota of alert text messages.
 	QuotaLimit *int32 `json:"QuotaLimit,omitempty" xml:"QuotaLimit,omitempty"`
-	// The used quota of processed log data in log monitoring in your purchased plan. Unit: MB/min.
+	// The quota of alert text messages in your resource plan.
 	QuotaPackage *int32 `json:"QuotaPackage,omitempty" xml:"QuotaPackage,omitempty"`
-	// The quota of events that can be reported in event monitoring in your purchased plan. The quota of events that can be reported in event monitoring.
+	// The used quota of alert text messages in your resource plan.
 	QuotaUsed *int32 `json:"QuotaUsed,omitempty" xml:"QuotaUsed,omitempty"`
 }
 
@@ -25141,15 +25712,45 @@ func (s *DescribeMonitorResourceQuotaAttributeResponseBodyResourceQuotaSMS) SetQ
 	return s
 }
 
-type DescribeMonitorResourceQuotaAttributeResponseBodyResourceQuotaSiteMonitorEcsProbe struct {
-	// The used quota of site monitoring tasks in your purchased plan.
-	QuotaLimit *int32 `json:"QuotaLimit,omitempty" xml:"QuotaLimit,omitempty"`
-	// The quota of the time series in custom monitoring in your purchased plan.
+type DescribeMonitorResourceQuotaAttributeResponseBodyResourceQuotaSiteMonitorBrowser struct {
+	QuotaLimit   *int32 `json:"QuotaLimit,omitempty" xml:"QuotaLimit,omitempty"`
 	QuotaPackage *int32 `json:"QuotaPackage,omitempty" xml:"QuotaPackage,omitempty"`
-	// Specifies whether to return information about used quotas. Valid values:
+	QuotaUsed    *int32 `json:"QuotaUsed,omitempty" xml:"QuotaUsed,omitempty"`
+}
+
+func (s DescribeMonitorResourceQuotaAttributeResponseBodyResourceQuotaSiteMonitorBrowser) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeMonitorResourceQuotaAttributeResponseBodyResourceQuotaSiteMonitorBrowser) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeMonitorResourceQuotaAttributeResponseBodyResourceQuotaSiteMonitorBrowser) SetQuotaLimit(v int32) *DescribeMonitorResourceQuotaAttributeResponseBodyResourceQuotaSiteMonitorBrowser {
+	s.QuotaLimit = &v
+	return s
+}
+
+func (s *DescribeMonitorResourceQuotaAttributeResponseBodyResourceQuotaSiteMonitorBrowser) SetQuotaPackage(v int32) *DescribeMonitorResourceQuotaAttributeResponseBodyResourceQuotaSiteMonitorBrowser {
+	s.QuotaPackage = &v
+	return s
+}
+
+func (s *DescribeMonitorResourceQuotaAttributeResponseBodyResourceQuotaSiteMonitorBrowser) SetQuotaUsed(v int32) *DescribeMonitorResourceQuotaAttributeResponseBodyResourceQuotaSiteMonitorBrowser {
+	s.QuotaUsed = &v
+	return s
+}
+
+type DescribeMonitorResourceQuotaAttributeResponseBodyResourceQuotaSiteMonitorEcsProbe struct {
+	// The total quota of ECS detection points for site monitoring.
 	//
-	// *   true: to include information about used quotas. Default value: true.
-	// *   false: to exclude information about used quotas.
+	// > The value indicates the maximum number of ECS detection points that you can select for a site monitoring task.
+	QuotaLimit *int32 `json:"QuotaLimit,omitempty" xml:"QuotaLimit,omitempty"`
+	// The quota of ECS detection points for site monitoring in your resource plan.
+	QuotaPackage *int32 `json:"QuotaPackage,omitempty" xml:"QuotaPackage,omitempty"`
+	// The used quota of ECS detection points for site monitoring in your resource plan.
+	//
+	// > The value indicates the total number of ECS detection points that are used by existing site monitoring tasks.
 	QuotaUsed *int32 `json:"QuotaUsed,omitempty" xml:"QuotaUsed,omitempty"`
 }
 
@@ -25176,12 +25777,41 @@ func (s *DescribeMonitorResourceQuotaAttributeResponseBodyResourceQuotaSiteMonit
 	return s
 }
 
-type DescribeMonitorResourceQuotaAttributeResponseBodyResourceQuotaSiteMonitorOperatorProbe struct {
-	// The total quota of processed log data in log monitoring. Unit: MB/min.
-	QuotaLimit *int32 `json:"QuotaLimit,omitempty" xml:"QuotaLimit,omitempty"`
-	// The time when the plan expires.
+type DescribeMonitorResourceQuotaAttributeResponseBodyResourceQuotaSiteMonitorMobile struct {
+	QuotaLimit   *int32 `json:"QuotaLimit,omitempty" xml:"QuotaLimit,omitempty"`
 	QuotaPackage *int32 `json:"QuotaPackage,omitempty" xml:"QuotaPackage,omitempty"`
-	// The details about the quota of event monitoring.
+	QuotaUsed    *int32 `json:"QuotaUsed,omitempty" xml:"QuotaUsed,omitempty"`
+}
+
+func (s DescribeMonitorResourceQuotaAttributeResponseBodyResourceQuotaSiteMonitorMobile) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeMonitorResourceQuotaAttributeResponseBodyResourceQuotaSiteMonitorMobile) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeMonitorResourceQuotaAttributeResponseBodyResourceQuotaSiteMonitorMobile) SetQuotaLimit(v int32) *DescribeMonitorResourceQuotaAttributeResponseBodyResourceQuotaSiteMonitorMobile {
+	s.QuotaLimit = &v
+	return s
+}
+
+func (s *DescribeMonitorResourceQuotaAttributeResponseBodyResourceQuotaSiteMonitorMobile) SetQuotaPackage(v int32) *DescribeMonitorResourceQuotaAttributeResponseBodyResourceQuotaSiteMonitorMobile {
+	s.QuotaPackage = &v
+	return s
+}
+
+func (s *DescribeMonitorResourceQuotaAttributeResponseBodyResourceQuotaSiteMonitorMobile) SetQuotaUsed(v int32) *DescribeMonitorResourceQuotaAttributeResponseBodyResourceQuotaSiteMonitorMobile {
+	s.QuotaUsed = &v
+	return s
+}
+
+type DescribeMonitorResourceQuotaAttributeResponseBodyResourceQuotaSiteMonitorOperatorProbe struct {
+	// The total quota of carrier detection points for site monitoring.
+	QuotaLimit *int32 `json:"QuotaLimit,omitempty" xml:"QuotaLimit,omitempty"`
+	// The quota of carrier detection points for site monitoring in your resource plan.
+	QuotaPackage *int32 `json:"QuotaPackage,omitempty" xml:"QuotaPackage,omitempty"`
+	// The used quota of carrier detection points for site monitoring in your resource plan.
 	QuotaUsed *int32 `json:"QuotaUsed,omitempty" xml:"QuotaUsed,omitempty"`
 }
 
@@ -25209,11 +25839,11 @@ func (s *DescribeMonitorResourceQuotaAttributeResponseBodyResourceQuotaSiteMonit
 }
 
 type DescribeMonitorResourceQuotaAttributeResponseBodyResourceQuotaSiteMonitorTask struct {
-	// The total quota of the time series in custom monitoring.
+	// The total quota of site monitoring tasks.
 	QuotaLimit *int32 `json:"QuotaLimit,omitempty" xml:"QuotaLimit,omitempty"`
-	// The details about the quota.
+	// The quota of site monitoring tasks in your resource plan.
 	QuotaPackage *int32 `json:"QuotaPackage,omitempty" xml:"QuotaPackage,omitempty"`
-	// The ID of the purchased subscription plan.
+	// The used quota of site monitoring tasks in your resource plan.
 	QuotaUsed *int32 `json:"QuotaUsed,omitempty" xml:"QuotaUsed,omitempty"`
 }
 
@@ -25289,15 +25919,20 @@ func (s *DescribeMonitoringAgentAccessKeyRequest) SetRegionId(v string) *Describ
 type DescribeMonitoringAgentAccessKeyResponseBody struct {
 	// The AccessKey ID that is required to install the agent.
 	AccessKey *string `json:"AccessKey,omitempty" xml:"AccessKey,omitempty"`
-	Code      *int32  `json:"Code,omitempty" xml:"Code,omitempty"`
-	Message   *string `json:"Message,omitempty" xml:"Message,omitempty"`
-	// The ID of the request.
-	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// The HTTP status code.
+	// The status code.
 	//
-	// >  The status code 200 indicates that the call was successful.
+	// > The status code 200 indicates that the request was successful.
+	Code *int32 `json:"Code,omitempty" xml:"Code,omitempty"`
+	// The error message.
+	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// The request ID.
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The AccessKey secret that is required to install the agent.
 	SecretKey *string `json:"SecretKey,omitempty" xml:"SecretKey,omitempty"`
-	// The operation that you want to perform. Set the value to **DescribeMonitoringAgentAccessKey**.
+	// Indicates whether the request was successful. Valid values:
+	//
+	// *   true
+	// *   false
 	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
 }
 
@@ -25836,7 +26471,7 @@ func (s *DescribeMonitoringAgentHostsResponse) SetBody(v *DescribeMonitoringAgen
 }
 
 type DescribeMonitoringAgentProcessesRequest struct {
-	// The returned message.
+	// The ID of the instance.
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
 	RegionId   *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 }
@@ -25860,17 +26495,19 @@ func (s *DescribeMonitoringAgentProcessesRequest) SetRegionId(v string) *Describ
 }
 
 type DescribeMonitoringAgentProcessesResponseBody struct {
+	// The HTTP status code.
+	//
+	// >  The value 200 indicates that the call was successful.
+	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	// The returned message.
+	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// The information about the processes.
+	NodeProcesses *DescribeMonitoringAgentProcessesResponseBodyNodeProcesses `json:"NodeProcesses,omitempty" xml:"NodeProcesses,omitempty" type:"Struct"`
+	RequestId     *string                                                    `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	// Indicates whether the call was successful. Valid values:
 	//
 	// *   true: The call was successful.
 	// *   false: The call failed.
-	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
-	// The information about the processes.
-	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
-	// The ID of the process.
-	NodeProcesses *DescribeMonitoringAgentProcessesResponseBodyNodeProcesses `json:"NodeProcesses,omitempty" xml:"NodeProcesses,omitempty" type:"Struct"`
-	RequestId     *string                                                    `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// The name of the process.
 	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
 }
 
@@ -25925,21 +26562,19 @@ func (s *DescribeMonitoringAgentProcessesResponseBodyNodeProcesses) SetNodeProce
 }
 
 type DescribeMonitoringAgentProcessesResponseBodyNodeProcessesNodeProcess struct {
-	// The ID of the instance.
-	Command *string `json:"Command,omitempty" xml:"Command,omitempty"`
-	// The user who launched the process.
-	GroupId *string `json:"GroupId,omitempty" xml:"GroupId,omitempty"`
-	// For more information about common request parameters, see [Common parameters](~~199331~~).
-	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
 	// The command used to obtain the number of processes. Valid value: `number`.
 	//
 	// >  The `number` command obtains the number of processes that match the condition.
-	ProcessId *int64 `json:"ProcessId,omitempty" xml:"ProcessId,omitempty"`
+	Command *string `json:"Command,omitempty" xml:"Command,omitempty"`
 	// The ID of the application group.
+	GroupId *string `json:"GroupId,omitempty" xml:"GroupId,omitempty"`
+	// The ID of the instance.
+	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	// The ID of the process.
+	ProcessId *int64 `json:"ProcessId,omitempty" xml:"ProcessId,omitempty"`
+	// The name of the process.
 	ProcessName *string `json:"ProcessName,omitempty" xml:"ProcessName,omitempty"`
-	// >  Before you call this operation, call the CreateMonitoringAgentProcess operation to create processes. For more information, see [CreateMonitoringAgentProcess](~~114951~~~).
-	//
-	// This topic provides an example of how to query the processes of the `i-hp3hl3cx1pbahzy8****` instance. The response indicates the details of the `NGINX` and `HTTP` processes.
+	// The user who launched the process.
 	ProcessUser *string `json:"ProcessUser,omitempty" xml:"ProcessUser,omitempty"`
 }
 
@@ -26347,9 +26982,7 @@ func (s *DescribeMonitoringConfigResponse) SetBody(v *DescribeMonitoringConfigRe
 }
 
 type DescribeProductResourceTagKeyListRequest struct {
-	// The HTTP status code.
-	//
-	// >  The status code 200 indicates that the call was successful.
+	// The pagination cursor.
 	NextToken *string `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
 	RegionId  *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 }
@@ -26373,19 +27006,21 @@ func (s *DescribeProductResourceTagKeyListRequest) SetRegionId(v string) *Descri
 }
 
 type DescribeProductResourceTagKeyListResponseBody struct {
-	// The error message.
+	// The HTTP status code.
+	//
+	// >  The status code 200 indicates that the call was successful.
 	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	// The error message.
+	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
 	// The pagination cursor. If more entries are to be returned on the next page, a pagination cursor is returned.
 	//
 	// >  If the value of this parameter is not null, more entries are to be returned on the next page. You can use the returned pagination cursor as a request parameter to obtain entries on the next page. If the value of this parameter is null, all the entries have been returned.
-	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
-	// The ID of the request.
 	NextToken *string `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
-	// Indicates whether the call was successful. The value true indicates a success. The value false indicates a failure.
+	// The ID of the request.
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// The keys of tags.
+	// Indicates whether the call was successful. The value true indicates a success. The value false indicates a failure.
 	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
-	// >  If a tag is attached to multiple cloud resources in the region, the key of the tag is returned only once.
+	// The keys of tags.
 	TagKeys *DescribeProductResourceTagKeyListResponseBodyTagKeys `json:"TagKeys,omitempty" xml:"TagKeys,omitempty" type:"Struct"`
 }
 
@@ -26885,12 +27520,13 @@ func (s *DescribeProjectMetaResponse) SetBody(v *DescribeProjectMetaResponseBody
 }
 
 type DescribeSiteMonitorAttributeRequest struct {
-	// The ID of the request.
+	// Specifies whether to return the information of the alert rules that are configured for the site monitoring task. Valid values:
+	//
+	// *   true: The system returns the information of the alert rules that are configured for the site monitoring task.
+	// *   false (default): The system does not return the information of the alert rules that are configured for the site monitoring task.
 	IncludeAlert *bool   `json:"IncludeAlert,omitempty" xml:"IncludeAlert,omitempty"`
 	RegionId     *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	// The HTTP status code.
-	//
-	// >  The status code 200 indicates that the call was successful.
+	// The ID of the site monitoring task.
 	TaskId *string `json:"TaskId,omitempty" xml:"TaskId,omitempty"`
 }
 
@@ -26918,19 +27554,22 @@ func (s *DescribeSiteMonitorAttributeRequest) SetTaskId(v string) *DescribeSiteM
 }
 
 type DescribeSiteMonitorAttributeResponseBody struct {
-	// Indicates whether the call was successful. Valid values:
+	// The response code.
 	//
-	// *   true: The call was successful.
-	// *   false: The call failed.
-	Code    *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	// >  The status code 200 indicates that the request was successful.
+	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	// The returned message.
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
-	// The consecutive number of times for which the metric value is measured before an alert is triggered.
+	// The information of the alert rules that are configured for the site monitoring task.
 	MetricRules *DescribeSiteMonitorAttributeResponseBodyMetricRules `json:"MetricRules,omitempty" xml:"MetricRules,omitempty" type:"Struct"`
-	// The details of the site monitoring task.
+	// The request ID.
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// The interval at which the site monitoring task is executed. Unit: minutes. Valid values: 1, 5, 15, 30, and 60.
+	// The details of the site monitoring task.
 	SiteMonitors *DescribeSiteMonitorAttributeResponseBodySiteMonitors `json:"SiteMonitors,omitempty" xml:"SiteMonitors,omitempty" type:"Struct"`
-	// The protocol that is used by the site monitoring task. Valid values: HTTP, HTTPS, PING, TCP, UDP, DNS, SMTP, POP3, and FTP.
+	// Indicates whether the request was successful. Valid values:
+	//
+	// *   true
+	// *   false
 	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
 }
 
@@ -26990,39 +27629,14 @@ func (s *DescribeSiteMonitorAttributeResponseBodyMetricRules) SetMetricRule(v []
 }
 
 type DescribeSiteMonitorAttributeResponseBodyMetricRulesMetricRule struct {
-	// The alert threshold.
-	ActionEnable *string `json:"ActionEnable,omitempty" xml:"ActionEnable,omitempty"`
-	// The name of the alert rule.
-	AlarmActions *string `json:"AlarmActions,omitempty" xml:"AlarmActions,omitempty"`
-	// The dimension of the alert rule.
-	ComparisonOperator *string `json:"ComparisonOperator,omitempty" xml:"ComparisonOperator,omitempty"`
-	// The status of the alert. Valid values:
-	//
-	// *   OK: normal.
-	// *   ALARM: The alert is triggered.
-	Dimensions *string `json:"Dimensions,omitempty" xml:"Dimensions,omitempty"`
-	// The alert contact groups to which alert notifications are sent.
-	EvaluationCount *string `json:"EvaluationCount,omitempty" xml:"EvaluationCount,omitempty"`
 	// Indicates whether the alert rule is enabled. Valid values:
 	//
 	// *   true: The alert rule is enabled.
 	// *   false: The alert rule is disabled.
-	Expression *string `json:"Expression,omitempty" xml:"Expression,omitempty"`
-	// This topic provides an example on how to query the details of a site monitoring task whose ID is `cc641dff-c19d-45f3-ad0a-818a0c4f****`. The returned result indicates that the task name is `test123`, the address that is monitored by the task is `https://aliyun.com`, and the name of the carrier is `Alibaba`.
-	Level *string `json:"Level,omitempty" xml:"Level,omitempty"`
-	// The namespace of the cloud service.
-	MetricName *string `json:"MetricName,omitempty" xml:"MetricName,omitempty"`
+	ActionEnable *string `json:"ActionEnable,omitempty" xml:"ActionEnable,omitempty"`
 	// The alert contact group to which alert notifications are sent.
-	Namespace *string `json:"Namespace,omitempty" xml:"Namespace,omitempty"`
-	// The ID of the alert rule.
-	OkActions *string `json:"OkActions,omitempty" xml:"OkActions,omitempty"`
-	// The expression that is used to trigger alerts.
-	Period *string `json:"Period,omitempty" xml:"Period,omitempty"`
-	// The interval at which the monitoring data is queried. The value is the same as the interval at which metric data is reported. Unit: seconds.
-	//
-	// >  If you specify a statistical period for the alert rule, raw data is queried based on the statistical period.
-	RuleId *string `json:"RuleId,omitempty" xml:"RuleId,omitempty"`
-	// The comparison operator that is used in the alert rule. Valid values:
+	AlarmActions *string `json:"AlarmActions,omitempty" xml:"AlarmActions,omitempty"`
+	// The operator that is used to compare the metric value with the threshold in the alert rule. Valid values:
 	//
 	// *   `>=`
 	// *   `>`
@@ -27036,15 +27650,40 @@ type DescribeSiteMonitorAttributeResponseBodyMetricRulesMetricRule struct {
 	// *   LessThanLastWeek: less than the metric value at the same time last week
 	// *   GreaterThanLastPeriod: greater than the metric value in the last monitoring cycle
 	// *   LessThanLastPeriod: less than the metric value in the last monitoring cycle
-	RuleName *string `json:"RuleName,omitempty" xml:"RuleName,omitempty"`
-	// The severity of the alert. Valid values:
+	ComparisonOperator *string `json:"ComparisonOperator,omitempty" xml:"ComparisonOperator,omitempty"`
+	// The dimension of the alert rule.
+	Dimensions *string `json:"Dimensions,omitempty" xml:"Dimensions,omitempty"`
+	// The consecutive number of times for which the metric value meets the alert condition before an alert is triggered.
+	EvaluationCount *string `json:"EvaluationCount,omitempty" xml:"EvaluationCount,omitempty"`
+	// The expression that is used to trigger alerts.
+	Expression *string `json:"Expression,omitempty" xml:"Expression,omitempty"`
+	// The alert severity. Valid values:
 	//
 	// *   1: critical
 	// *   2: warning
 	// *   3: information
+	Level *string `json:"Level,omitempty" xml:"Level,omitempty"`
+	// The metric name.
+	MetricName *string `json:"MetricName,omitempty" xml:"MetricName,omitempty"`
+	// The namespace of the cloud service.
+	//
+	// The value is in the following format: acs_service name.
+	Namespace *string `json:"Namespace,omitempty" xml:"Namespace,omitempty"`
+	// The alert contact group that receives alert notifications.
+	OkActions *string `json:"OkActions,omitempty" xml:"OkActions,omitempty"`
+	// The time interval. The value is the same as the interval at which metric data is reported. Unit: seconds.
+	//
+	// >  If you specify a statistical period for the alert rule, data is queried based on the statistical period.
+	Period *string `json:"Period,omitempty" xml:"Period,omitempty"`
+	// The ID of the alert rule.
+	RuleId *string `json:"RuleId,omitempty" xml:"RuleId,omitempty"`
+	// The name of the alert rule.
+	RuleName *string `json:"RuleName,omitempty" xml:"RuleName,omitempty"`
+	// The alert status. Valid values:
+	//
+	// *   OK: The alert rule has no active alerts.
+	// *   ALARM: The alert rule has active alerts.
 	StateValue *string `json:"StateValue,omitempty" xml:"StateValue,omitempty"`
-	// For more information about common request parameters, see [Common parameters](~~199331~~).
-	Statistics *string `json:"Statistics,omitempty" xml:"Statistics,omitempty"`
 	// The statistical method of the alert rule. Valid values:
 	//
 	// *   Availability: the percentage of available detection points
@@ -27052,6 +27691,8 @@ type DescribeSiteMonitorAttributeResponseBodyMetricRulesMetricRule struct {
 	// *   ErrorCodeMaximum: a status code for an alert
 	// *   ErrorCodeMinimum: all status codes for a set of alerts
 	// *   Average: response time
+	Statistics *string `json:"Statistics,omitempty" xml:"Statistics,omitempty"`
+	// The alert threshold.
 	Threshold *string `json:"Threshold,omitempty" xml:"Threshold,omitempty"`
 }
 
@@ -27144,25 +27785,26 @@ func (s *DescribeSiteMonitorAttributeResponseBodyMetricRulesMetricRule) SetThres
 }
 
 type DescribeSiteMonitorAttributeResponseBodySiteMonitors struct {
-	// The information of detection points. The information includes the carriers that provide the detection points and the cities where the detection points reside.
+	// The URL that is monitored by the site monitoring task.
 	Address        *string                                                             `json:"Address,omitempty" xml:"Address,omitempty"`
 	AgentGroup     *string                                                             `json:"AgentGroup,omitempty" xml:"AgentGroup,omitempty"`
 	CustomSchedule *DescribeSiteMonitorAttributeResponseBodySiteMonitorsCustomSchedule `json:"CustomSchedule,omitempty" xml:"CustomSchedule,omitempty" type:"Struct"`
-	// The name of the site monitoring task.
+	// The interval at which the site monitoring task is executed. Unit: minutes. Valid values: 1, 5, 15, 30, and 60.
 	Interval *string `json:"Interval,omitempty" xml:"Interval,omitempty"`
-	// The name of the carrier.
-	IspCities  *DescribeSiteMonitorAttributeResponseBodySiteMonitorsIspCities  `json:"IspCities,omitempty" xml:"IspCities,omitempty" type:"Struct"`
+	// The information of detection points. The information includes the carriers that provide the detection points and the cities where the detection points reside.
+	IspCities *DescribeSiteMonitorAttributeResponseBodySiteMonitorsIspCities `json:"IspCities,omitempty" xml:"IspCities,omitempty" type:"Struct"`
+	// The extended options of the site monitoring task. The options vary based on the specified protocol. For more information, see [CreateSiteMonitor](~~115048~~).
 	OptionJson *DescribeSiteMonitorAttributeResponseBodySiteMonitorsOptionJson `json:"OptionJson,omitempty" xml:"OptionJson,omitempty" type:"Struct"`
-	// The ID of the city.
-	TaskId *string `json:"TaskId,omitempty" xml:"TaskId,omitempty"`
 	// The ID of the site monitoring task.
+	TaskId *string `json:"TaskId,omitempty" xml:"TaskId,omitempty"`
+	// The name of the site monitoring task.
 	TaskName *string `json:"TaskName,omitempty" xml:"TaskName,omitempty"`
-	// The address that is monitored by the site monitoring task.
-	TaskState *string `json:"TaskState,omitempty" xml:"TaskState,omitempty"`
 	// The status of the site monitoring task. Valid values:
 	//
 	// *   1: The task is enabled.
 	// *   2: The task is disabled.
+	TaskState *string `json:"TaskState,omitempty" xml:"TaskState,omitempty"`
+	// The protocol that is used by the site monitoring task. Valid values: HTTP, HTTPS, PING, TCP, UDP, DNS, SMTP, POP3, and FTP.
 	TaskType *string `json:"TaskType,omitempty" xml:"TaskType,omitempty"`
 }
 
@@ -27294,13 +27936,13 @@ func (s *DescribeSiteMonitorAttributeResponseBodySiteMonitorsIspCities) SetIspCi
 }
 
 type DescribeSiteMonitorAttributeResponseBodySiteMonitorsIspCitiesIspCity struct {
-	// The ID of the carrier.
+	// The city ID.
 	City *string `json:"City,omitempty" xml:"City,omitempty"`
-	// The name of the metric.
+	// The city name.
 	CityName *string `json:"CityName,omitempty" xml:"CityName,omitempty"`
-	// The information of the alert rules that are configured for the site monitoring task.
+	// The carrier ID.
 	Isp *string `json:"Isp,omitempty" xml:"Isp,omitempty"`
-	// The name of the city.
+	// The carrier name.
 	IspName *string `json:"IspName,omitempty" xml:"IspName,omitempty"`
 }
 
@@ -27333,49 +27975,103 @@ func (s *DescribeSiteMonitorAttributeResponseBodySiteMonitorsIspCitiesIspCity) S
 }
 
 type DescribeSiteMonitorAttributeResponseBodySiteMonitorsOptionJson struct {
-	Assertions                    *DescribeSiteMonitorAttributeResponseBodySiteMonitorsOptionJsonAssertions                    `json:"assertions,omitempty" xml:"assertions,omitempty" type:"Struct"`
-	Attempts                      *int64                                                                                       `json:"attempts,omitempty" xml:"attempts,omitempty"`
-	Authentication                *int32                                                                                       `json:"authentication,omitempty" xml:"authentication,omitempty"`
-	BlockedUrlList                *DescribeSiteMonitorAttributeResponseBodySiteMonitorsOptionJsonBlockedUrlList                `json:"blocked_url_list,omitempty" xml:"blocked_url_list,omitempty" type:"Struct"`
-	BrowserHeaders                *DescribeSiteMonitorAttributeResponseBodySiteMonitorsOptionJsonBrowserHeaders                `json:"browser_headers,omitempty" xml:"browser_headers,omitempty" type:"Struct"`
-	BrowserHosts                  *DescribeSiteMonitorAttributeResponseBodySiteMonitorsOptionJsonBrowserHosts                  `json:"browser_hosts,omitempty" xml:"browser_hosts,omitempty" type:"Struct"`
-	BrowserInfo                   *DescribeSiteMonitorAttributeResponseBodySiteMonitorsOptionJsonBrowserInfo                   `json:"browser_info,omitempty" xml:"browser_info,omitempty" type:"Struct"`
-	BrowserInsecure               *bool                                                                                        `json:"browser_insecure,omitempty" xml:"browser_insecure,omitempty"`
-	BrowserTaskVersion            *string                                                                                      `json:"browser_task_version,omitempty" xml:"browser_task_version,omitempty"`
-	Cookie                        *string                                                                                      `json:"cookie,omitempty" xml:"cookie,omitempty"`
-	DiagnosisMtr                  *bool                                                                                        `json:"diagnosis_mtr,omitempty" xml:"diagnosis_mtr,omitempty"`
-	DiagnosisPing                 *bool                                                                                        `json:"diagnosis_ping,omitempty" xml:"diagnosis_ping,omitempty"`
-	DnsHijackWhitelist            *string                                                                                      `json:"dns_hijack_whitelist,omitempty" xml:"dns_hijack_whitelist,omitempty"`
-	DnsMatchRule                  *string                                                                                      `json:"dns_match_rule,omitempty" xml:"dns_match_rule,omitempty"`
-	DnsServer                     *string                                                                                      `json:"dns_server,omitempty" xml:"dns_server,omitempty"`
-	DnsType                       *string                                                                                      `json:"dns_type,omitempty" xml:"dns_type,omitempty"`
-	ExpectExistString             *DescribeSiteMonitorAttributeResponseBodySiteMonitorsOptionJsonExpectExistString             `json:"expect_exist_string,omitempty" xml:"expect_exist_string,omitempty" type:"Struct"`
-	ExpectNonExistString          *DescribeSiteMonitorAttributeResponseBodySiteMonitorsOptionJsonExpectNonExistString          `json:"expect_non_exist_string,omitempty" xml:"expect_non_exist_string,omitempty" type:"Struct"`
-	ExpectValue                   *string                                                                                      `json:"expect_value,omitempty" xml:"expect_value,omitempty"`
-	FailureRate                   *float32                                                                                     `json:"failure_rate,omitempty" xml:"failure_rate,omitempty"`
-	Header                        *string                                                                                      `json:"header,omitempty" xml:"header,omitempty"`
-	HttpMethod                    *string                                                                                      `json:"http_method,omitempty" xml:"http_method,omitempty"`
-	IsBase64Encode                *string                                                                                      `json:"isBase64Encode,omitempty" xml:"isBase64Encode,omitempty"`
-	MatchRule                     *int32                                                                                       `json:"match_rule,omitempty" xml:"match_rule,omitempty"`
-	MinTlsVersion                 *string                                                                                      `json:"min_tls_version,omitempty" xml:"min_tls_version,omitempty"`
-	Password                      *string                                                                                      `json:"password,omitempty" xml:"password,omitempty"`
-	PingNum                       *int32                                                                                       `json:"ping_num,omitempty" xml:"ping_num,omitempty"`
-	PingPort                      *int32                                                                                       `json:"ping_port,omitempty" xml:"ping_port,omitempty"`
-	PingType                      *string                                                                                      `json:"ping_type,omitempty" xml:"ping_type,omitempty"`
-	Port                          *int32                                                                                       `json:"port,omitempty" xml:"port,omitempty"`
-	Protocol                      *string                                                                                      `json:"protocol,omitempty" xml:"protocol,omitempty"`
-	RequestContent                *string                                                                                      `json:"request_content,omitempty" xml:"request_content,omitempty"`
-	RequestFormat                 *string                                                                                      `json:"request_format,omitempty" xml:"request_format,omitempty"`
-	ResponseContent               *string                                                                                      `json:"response_content,omitempty" xml:"response_content,omitempty"`
-	ResponseFormat                *string                                                                                      `json:"response_format,omitempty" xml:"response_format,omitempty"`
-	RetryDelay                    *int32                                                                                       `json:"retry_delay,omitempty" xml:"retry_delay,omitempty"`
-	StrictMode                    *bool                                                                                        `json:"strict_mode,omitempty" xml:"strict_mode,omitempty"`
+	Assertions *DescribeSiteMonitorAttributeResponseBodySiteMonitorsOptionJsonAssertions `json:"assertions,omitempty" xml:"assertions,omitempty" type:"Struct"`
+	// The number of retries after a DNS failure occurred.
+	Attempts *int64 `json:"attempts,omitempty" xml:"attempts,omitempty"`
+	// Indicates whether the security authentication feature is enabled. Valid values:
+	//
+	// *   0: The feature is disabled.
+	// *   1: The feature is enabled.
+	Authentication     *int32                                                                        `json:"authentication,omitempty" xml:"authentication,omitempty"`
+	BlockedUrlList     *DescribeSiteMonitorAttributeResponseBodySiteMonitorsOptionJsonBlockedUrlList `json:"blocked_url_list,omitempty" xml:"blocked_url_list,omitempty" type:"Struct"`
+	BrowserHeaders     *DescribeSiteMonitorAttributeResponseBodySiteMonitorsOptionJsonBrowserHeaders `json:"browser_headers,omitempty" xml:"browser_headers,omitempty" type:"Struct"`
+	BrowserHosts       *DescribeSiteMonitorAttributeResponseBodySiteMonitorsOptionJsonBrowserHosts   `json:"browser_hosts,omitempty" xml:"browser_hosts,omitempty" type:"Struct"`
+	BrowserInfo        *DescribeSiteMonitorAttributeResponseBodySiteMonitorsOptionJsonBrowserInfo    `json:"browser_info,omitempty" xml:"browser_info,omitempty" type:"Struct"`
+	BrowserInsecure    *bool                                                                         `json:"browser_insecure,omitempty" xml:"browser_insecure,omitempty"`
+	BrowserTaskVersion *string                                                                       `json:"browser_task_version,omitempty" xml:"browser_task_version,omitempty"`
+	// The cookie of the HTTP request.
+	Cookie             *string `json:"cookie,omitempty" xml:"cookie,omitempty"`
+	DiagnosisMtr       *bool   `json:"diagnosis_mtr,omitempty" xml:"diagnosis_mtr,omitempty"`
+	DiagnosisPing      *bool   `json:"diagnosis_ping,omitempty" xml:"diagnosis_ping,omitempty"`
+	DnsHijackWhitelist *string `json:"dns_hijack_whitelist,omitempty" xml:"dns_hijack_whitelist,omitempty"`
+	// The relationship between the list of expected aliases or IP addresses and the list of DNS results. Valid values:
+	//
+	// *   IN_DNS: The list of expected values is a subset of the list of DNS results.
+	// *   DNS_IN: The list of DNS results is a subset of the list of expected values.
+	// *   EQUAL: The list of DNS results is the same as the list of expected values.
+	// *   ANY: The list of DNS results intersects with the list of expected values.
+	DnsMatchRule *string `json:"dns_match_rule,omitempty" xml:"dns_match_rule,omitempty"`
+	// The IP address of the DNS server.
+	//
+	// >  This parameter is returned only if the TaskType parameter is set to DNS.
+	DnsServer *string `json:"dns_server,omitempty" xml:"dns_server,omitempty"`
+	// The type of the DNS record. This parameter is returned only if the TaskType parameter is set to DNS. Valid values:
+	//
+	// *   A (default): a record that specifies an IP address related to the specified host name or domain name.
+	// *   CNAME: a record that maps multiple domain names to a domain name.
+	// *   NS: a record that specifies a DNS server used to parse domain names.
+	// *   MX: a record that links domain names to the address of a mail server.
+	// *   TXT: a record that stores the text information of host name or domain names. The text must be 1 to 512 bytes in length. The TXT record serves as a Sender Policy Framework (SPF) record to fight against spam.
+	DnsType              *string                                                                             `json:"dns_type,omitempty" xml:"dns_type,omitempty"`
+	ExpectExistString    *DescribeSiteMonitorAttributeResponseBodySiteMonitorsOptionJsonExpectExistString    `json:"expect_exist_string,omitempty" xml:"expect_exist_string,omitempty" type:"Struct"`
+	ExpectNonExistString *DescribeSiteMonitorAttributeResponseBodySiteMonitorsOptionJsonExpectNonExistString `json:"expect_non_exist_string,omitempty" xml:"expect_non_exist_string,omitempty" type:"Struct"`
+	// The domain name or alias to be parsed.
+	//
+	// >  This parameter is returned only if the TaskType parameter is set to DNS.
+	ExpectValue *string `json:"expect_value,omitempty" xml:"expect_value,omitempty"`
+	// The packet loss rate.
+	//
+	// >  This parameter is returned only if the TaskType parameter is set to PING.
+	FailureRate *float32 `json:"failure_rate,omitempty" xml:"failure_rate,omitempty"`
+	// The header of the HTTP request.
+	Header *string `json:"header,omitempty" xml:"header,omitempty"`
+	// The HTTP request method. Valid values:
+	//
+	// *   get
+	// *   post
+	// *   head
+	HttpMethod     *string `json:"http_method,omitempty" xml:"http_method,omitempty"`
+	IsBase64Encode *string `json:"isBase64Encode,omitempty" xml:"isBase64Encode,omitempty"`
+	// Indicates whether the alert rule is included. Valid values:
+	//
+	// *   0: The alert rule is included.
+	// *   1: The alert rule is excluded.
+	MatchRule     *int32  `json:"match_rule,omitempty" xml:"match_rule,omitempty"`
+	MinTlsVersion *string `json:"min_tls_version,omitempty" xml:"min_tls_version,omitempty"`
+	// The password of the SMTP, POP3, or FTP protocol.
+	Password *string `json:"password,omitempty" xml:"password,omitempty"`
+	// The heartbeat of the PING protocol.
+	PingNum  *int32  `json:"ping_num,omitempty" xml:"ping_num,omitempty"`
+	PingPort *int32  `json:"ping_port,omitempty" xml:"ping_port,omitempty"`
+	PingType *string `json:"ping_type,omitempty" xml:"ping_type,omitempty"`
+	// The port number of the TCP, UDP, SMTP, or POP3 protocol.
+	Port *int32 `json:"port,omitempty" xml:"port,omitempty"`
+	// The protocol that is used to send the request.
+	Protocol *string `json:"protocol,omitempty" xml:"protocol,omitempty"`
+	// The content of the HTTP request.
+	RequestContent *string `json:"request_content,omitempty" xml:"request_content,omitempty"`
+	// The format of the HTTP request. Valid values:
+	//
+	// *   hex: hexadecimal
+	// *   txt: text
+	RequestFormat *string `json:"request_format,omitempty" xml:"request_format,omitempty"`
+	// The response to the HTTP request.
+	ResponseContent *string `json:"response_content,omitempty" xml:"response_content,omitempty"`
+	// The format of the HTTP response. Valid values:
+	//
+	// *   hex: hexadecimal
+	// *   txt: text
+	ResponseFormat *string `json:"response_format,omitempty" xml:"response_format,omitempty"`
+	RetryDelay     *int32  `json:"retry_delay,omitempty" xml:"retry_delay,omitempty"`
+	StrictMode     *bool   `json:"strict_mode,omitempty" xml:"strict_mode,omitempty"`
+	// The timeout period. Unit: milliseconds.
 	TimeOut                       *int64                                                                                       `json:"time_out,omitempty" xml:"time_out,omitempty"`
 	TrafficHijackElementBlacklist *DescribeSiteMonitorAttributeResponseBodySiteMonitorsOptionJsonTrafficHijackElementBlacklist `json:"traffic_hijack_element_blacklist,omitempty" xml:"traffic_hijack_element_blacklist,omitempty" type:"Struct"`
 	TrafficHijackElementCount     *int32                                                                                       `json:"traffic_hijack_element_count,omitempty" xml:"traffic_hijack_element_count,omitempty"`
 	TrafficHijackElementWhitelist *DescribeSiteMonitorAttributeResponseBodySiteMonitorsOptionJsonTrafficHijackElementWhitelist `json:"traffic_hijack_element_whitelist,omitempty" xml:"traffic_hijack_element_whitelist,omitempty" type:"Struct"`
-	Username                      *string                                                                                      `json:"username,omitempty" xml:"username,omitempty"`
-	WaitTimeAfterCompletion       *int32                                                                                       `json:"waitTime_after_completion,omitempty" xml:"waitTime_after_completion,omitempty"`
+	// The username of the FTP, SMTP, or POP3 protocol.
+	Username                *string `json:"username,omitempty" xml:"username,omitempty"`
+	WaitTimeAfterCompletion *int32  `json:"waitTime_after_completion,omitempty" xml:"waitTime_after_completion,omitempty"`
 }
 
 func (s DescribeSiteMonitorAttributeResponseBodySiteMonitorsOptionJson) String() string {
@@ -27842,36 +28538,36 @@ func (s *DescribeSiteMonitorAttributeResponse) SetBody(v *DescribeSiteMonitorAtt
 }
 
 type DescribeSiteMonitorDataRequest struct {
-	// The interval at which monitoring data is returned. The value is an integral multiple of 60. Unit: seconds.
-	//
-	// >  The default value equals the minimum interval at which detection requests are sent to the monitored address.
-	EndTime *string `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
-	// The returned monitoring data.
-	Length *int32 `json:"Length,omitempty" xml:"Length,omitempty"`
-	// The beginning of the time range for the query. Supported formats:
-	//
-	// *   UNIX timestamp: The value is a UNIX timestamp representing the number of milliseconds that have elapsed since the epoch time January 1, 1970, 00:00:00 UTC.
-	// *   Time format: The value is in the YYYY-MM-DDThh:mm:ssZ format.
-	MetricName *string `json:"MetricName,omitempty" xml:"MetricName,omitempty"`
-	// The number of data points to return.
-	NextToken *string `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
-	// The pagination cursor.
-	Period   *string `json:"Period,omitempty" xml:"Period,omitempty"`
-	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 	// The end of the time range for the query. Supported formats:
 	//
 	// *   UNIX timestamp: The value is a UNIX timestamp representing the number of milliseconds that have elapsed since the epoch time January 1, 1970, 00:00:00 UTC.
 	// *   Time format: The value is in the YYYY-MM-DDThh:mm:ssZ format.
-	StartTime *string `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
-	// The type of the monitored object whose monitoring data is to be queried. Valid values:
-	//
-	// *   metric
-	// *   event
-	TaskId *string `json:"TaskId,omitempty" xml:"TaskId,omitempty"`
+	EndTime *string `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
+	// The number of data points to return.
+	Length *int32 `json:"Length,omitempty" xml:"Length,omitempty"`
 	// The name of the metric. Valid values:
 	//
 	// *   Availability
 	// *   ResponseTime
+	MetricName *string `json:"MetricName,omitempty" xml:"MetricName,omitempty"`
+	// The pagination cursor.
+	NextToken *string `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
+	// The interval at which monitoring data is returned. The value is an integral multiple of 60. Unit: seconds.
+	//
+	// >  The default value equals the minimum interval at which detection requests are sent to the monitored address.
+	Period   *string `json:"Period,omitempty" xml:"Period,omitempty"`
+	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	// The beginning of the time range for the query. Supported formats:
+	//
+	// *   UNIX timestamp: The value is a UNIX timestamp representing the number of milliseconds that have elapsed since the epoch time January 1, 1970, 00:00:00 UTC.
+	// *   Time format: The value is in the YYYY-MM-DDThh:mm:ssZ format.
+	StartTime *string `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
+	// The ID of the site monitoring task.
+	TaskId *string `json:"TaskId,omitempty" xml:"TaskId,omitempty"`
+	// The type of the monitored object whose monitoring data is to be queried. Valid values:
+	//
+	// *   metric
+	// *   event
 	Type *string `json:"Type,omitempty" xml:"Type,omitempty"`
 }
 
@@ -27929,45 +28625,19 @@ func (s *DescribeSiteMonitorDataRequest) SetType(v string) *DescribeSiteMonitorD
 }
 
 type DescribeSiteMonitorDataResponseBody struct {
-	// The returned message.
-	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
-	// The pagination cursor.
-	Data *string `json:"Data,omitempty" xml:"Data,omitempty"`
-	// The returned data contains a JSON string that may consist of several or all of the following parameters:
-	//
-	// *   Error4XXRate: the percentage of detection results with 4XX status codes.
-	// *   Error6XXRate: the percentage of detection results with 6XX status codes.
-	// *   Error5XXRate: the percentage of detection results with 5XX status codes.
-	// *   Error4XXNumber: the number of detection results with 4XX status codes.
-	// *   Error5XXNumber: the number of detection results with 5XX status codes.
-	// *   Error6XXNumber: the number of detection results with 6XX status codes.
-	// *   Over5totalTime: the percentage of detection requests to which the response time exceeds 5,000 ms.
-	// *   Over3totalTime: the percentage of detection requests to which the response time exceeds 3,000 ms.
-	// *   Over2totalTime: the percentage of detection requests to which the response time exceeds 2,000 ms.
-	// *   Over10FailureRate: the percentage of detection points whose failure rate of detection requests exceeds 10%.
-	// *   Over100FailureRate: the percentage of detection points whose failure rate of detection requests exceeds 99%.
-	// *   Over30FailureRate: the percentage of detection points whose failure rate of detection requests exceeds 30%.
-	// *   Over50FailureRate: the percentage of detection points whose failure rate of detection requests exceeds 50%.
-	// *   Over80FailureRate: the percentage of detection points whose failure rate of detection requests exceeds 80%.
-	// *   Over90FailureRate: the percentage of detection points whose failure rate of detection requests exceeds 90%.
-	// *   Over400NumberRate: the percentage of detection results with status codes that are greater than 400.
-	// *   Over400NumberRate: the percentage of detection results with status codes that are greater than 500.
-	// *   AvailableNumber: the number of detection results in which the status code is smaller than 400.
-	// *   UnavailableNumber: the number of detection results in which the status code is greater than 399.
-	// *   Availability: the percentage of detection results in which the status code is smaller than 400.
-	// *   Unavailability: the percentage of detection results in which the status code is greater than 399.
-	// *   ErrorCodeMaximum: the maximum error code in the detection results that were returned in a specific period. Assume that five status codes are returned in a minute after detection requests are sent from five detection points. The status code in four detection results is 200 and that in one detection result is 404. In this case, the maximum error code is 404.
-	// *   ErrorCodeMinimum: the minimum error code in the detection results returned in a monitoring period. Assume that five status codes are returned in a minute after detection requests are sent from five detection points. The status code in four detection results is 200 and that in one detection result is 404. In this case, the minimum error code is 200.
-	//
-	// >  We recommend that you use the AvailableNumber, UnavailableNumber, Availability, Unavailability, ErrorCodeMaximum, or ErrorCodeMinimum metric, whose value is easy to calculate.
-	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
-	// The ID of the request.
-	NextToken *string `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
-	// Indicates whether the call was successful. The value true indicates a success. The value false indicates a failure.
-	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	// The HTTP status code.
 	//
 	// >  The status code 200 indicates that the call was successful.
+	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	// The returned monitoring data.
+	Data *string `json:"Data,omitempty" xml:"Data,omitempty"`
+	// The returned message.
+	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// The pagination cursor.
+	NextToken *string `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
+	// The ID of the request.
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// Indicates whether the call was successful. The value true indicates a success. The value false indicates a failure.
 	Success *string `json:"Success,omitempty" xml:"Success,omitempty"`
 }
 
@@ -28340,23 +29010,23 @@ func (s *DescribeSiteMonitorISPCityListResponse) SetBody(v *DescribeSiteMonitorI
 }
 
 type DescribeSiteMonitorListRequest struct {
-	// The HTTP status code.
+	// The keyword to be matched.
 	//
-	// >  The status code 200 indicates that the call was successful.
+	// >  You can search for tasks by name or address. Fuzzy search is supported.
 	Keyword *string `json:"Keyword,omitempty" xml:"Keyword,omitempty"`
-	// The number of hops for the PING protocol.
+	// The number of the page to return. Default value: 1.
 	Page *int32 `json:"Page,omitempty" xml:"Page,omitempty"`
-	// The operation that you want to perform. Set the value to **DescribeSiteMonitorList**.
+	// The number of entries to return on each page. Default value: 10.
 	PageSize *int32  `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	// The parsing path of the assertion.
-	//
-	// *   If the assertion type is `body_json`, the path is `json path`.
-	// *   If the assertion type is `body_xml`, the path is `xml path`.
-	TaskId *string `json:"TaskId,omitempty" xml:"TaskId,omitempty"`
 	// The ID of the site monitoring task.
+	TaskId *string `json:"TaskId,omitempty" xml:"TaskId,omitempty"`
+	// The status of the task. Valid values:
+	//
+	// *   1: The task is enabled.
+	// *   2: The task is disabled.
 	TaskState *string `json:"TaskState,omitempty" xml:"TaskState,omitempty"`
-	// The time when the site monitoring task was updated.
+	// The protocol that is used by the site monitoring task. Valid values: HTTP, PING, TCP, UDP, DNS, SMTP, POP3, and FTP.
 	TaskType *string `json:"TaskType,omitempty" xml:"TaskType,omitempty"`
 }
 
@@ -28404,49 +29074,26 @@ func (s *DescribeSiteMonitorListRequest) SetTaskType(v string) *DescribeSiteMoni
 }
 
 type DescribeSiteMonitorListResponseBody struct {
-	// The numeric value or character used for matching.
+	// The HTTP status code.
+	//
+	// >  The status code 200 indicates that the call was successful.
 	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
-	// Indicates whether the DNS server of the carrier is used.
-	//
-	// *   true (default value): The DNS server of the carrier is used.
-	// *   false: The DNS server of the carrier is not used. The default DNS server or the specified DNS server is used.
+	// The returned message.
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
-	// Indicates whether the alert rule is included. Valid values:
-	//
-	// *   0: The alert rule is included.
-	// *   1: The alert rule is not included.
+	// The page number of the returned page.
 	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
-	// The domain name or IP address of the DNS server.
+	// The number of entries returned per page.
 	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	// Indicates whether ping requests are automatically sent to detect network latency if a detection task fails. Valid values:
-	//
-	// *   false (default value): Ping requests are not automatically sent to detect network latency if a detection task fails.
-	// *   true: Ping requests are automatically sent to detect network latency if a detection task fails.
+	// The ID of the request.
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// The type of the assertion. Valid values:
-	//
-	// *   response_time: checks whether the response time meets expectations.
-	// *   status_code: checks whether the HTTP status code meets expectations.
-	// *   header: checks whether the fields in the response header meet expectations.
-	// *   body_text: checks whether the content in the response body meets expectations by using text matching.
-	// *   body_json: checks whether the content in the response body meets expectations by using JSON parsing (JSONPath).
-	// *   body_xml: checks whether the content in the response body meets expectations by using XML parsing (XPath).
+	// The site monitoring tasks that are returned.
 	SiteMonitors *DescribeSiteMonitorListResponseBodySiteMonitors `json:"SiteMonitors,omitempty" xml:"SiteMonitors,omitempty" type:"Struct"`
-	// The comparison operator of the assertion. Valid values:
+	// Indicates whether the call was successful. Valid values:
 	//
-	// *   contains: contains
-	// *   doesNotContain: does not contain
-	// *   matches: matches regular expressions
-	// *   doesNotMatch: does not match regular expressions
-	// *   is: equal to a numeric value or matches a character
-	// *   isNot: not equal to
-	// *   lessThan: less than
-	// *   moreThan: greater than
+	// *   true: The call was successful.
+	// *   false: The call failed.
 	Success *string `json:"Success,omitempty" xml:"Success,omitempty"`
-	// Indicates whether redirects are followed if the status code 301 or 302 is returned. Valid values:
-	//
-	// *   true: Redirects are not followed.
-	// *   false (default value): Redirects are followed.
+	// The total number of returned entries.
 	TotalCount *int32 `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
 }
 
@@ -28516,39 +29163,27 @@ func (s *DescribeSiteMonitorListResponseBodySiteMonitors) SetSiteMonitor(v []*De
 }
 
 type DescribeSiteMonitorListResponseBodySiteMonitorsSiteMonitor struct {
-	// The site monitoring tasks that are returned.
+	// The URL or IP address that is monitored by the site monitoring task.
 	Address    *string `json:"Address,omitempty" xml:"Address,omitempty"`
 	AgentGroup *string `json:"AgentGroup,omitempty" xml:"AgentGroup,omitempty"`
-	// The keyword to be matched.
-	//
-	// >  You can search for tasks by name or address. Fuzzy search is supported.
+	// The time when the site monitoring task was created.
 	CreateTime *string `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
-	// The protocol type of DNS detection. Valid values:
-	//
-	// *   udp (default value)
-	// *   tcp
-	// *   tcp-tls
+	// The interval at which detection requests are sent. Unit: minutes.
 	Interval *string `json:"Interval,omitempty" xml:"Interval,omitempty"`
-	// The number of the page to return. Default value: 1.
+	// The extended options of the site monitoring task. The options vary based on the specified protocol. For more information, see [CreateSiteMonitor](~~115048~~).
 	OptionsJson *DescribeSiteMonitorListResponseBodySiteMonitorsSiteMonitorOptionsJson `json:"OptionsJson,omitempty" xml:"OptionsJson,omitempty" type:"Struct"`
-	// The HTTP request method. Valid values:
-	//
-	// *   get
-	// *   post
-	// *   head
+	// The ID of the site monitoring task.
 	TaskId *string `json:"TaskId,omitempty" xml:"TaskId,omitempty"`
-	// The number of times a failed detection request is retried.
+	// The name of the site monitoring task.
 	TaskName *string `json:"TaskName,omitempty" xml:"TaskName,omitempty"`
-	// Indicates whether MTR is automatically used to diagnose network issues if a task fails. Valid values:
+	// The status of the task. Valid values:
 	//
-	// *   false (default value): MTR is not automatically used to diagnose network issues if a task fails.
-	// *   true: MTR is automatically used to diagnose network issues if a task fails.
+	// *   1: The task is enabled.
+	// *   2: The task is disabled.
 	TaskState *string `json:"TaskState,omitempty" xml:"TaskState,omitempty"`
 	// The protocol that is used by the site monitoring task. Valid values: HTTP, PING, TCP, UDP, DNS, SMTP, POP3, and FTP.
 	TaskType *string `json:"TaskType,omitempty" xml:"TaskType,omitempty"`
-	// The packet loss rate.
-	//
-	// >  This parameter is returned only if the TaskType parameter is set to PING.
+	// The time when the site monitoring task was updated.
 	UpdateTime *string `json:"UpdateTime,omitempty" xml:"UpdateTime,omitempty"`
 }
 
@@ -28611,90 +29246,45 @@ func (s *DescribeSiteMonitorListResponseBodySiteMonitorsSiteMonitor) SetUpdateTi
 }
 
 type DescribeSiteMonitorListResponseBodySiteMonitorsSiteMonitorOptionsJson struct {
-	// The header of the HTTP request. An HTTP header is a key-value pair in which the key and the value are separated by a colon (:). The format is `key1:value1`. Each HTTP header occupies a line.
-	AcceptableResponseCode *string `json:"acceptable_response_code,omitempty" xml:"acceptable_response_code,omitempty"`
-	// The number of retries after a DNS failure occurred.
-	Assertions *DescribeSiteMonitorListResponseBodySiteMonitorsSiteMonitorOptionsJsonAssertions `json:"assertions,omitempty" xml:"assertions,omitempty" type:"Struct"`
-	// The username of the FTP, SMTP, or POP3 protocol.
-	Attempts *int64 `json:"attempts,omitempty" xml:"attempts,omitempty"`
-	// The status of the task. Valid values:
+	// The acceptable status code.
 	//
-	// *   1: The task is enabled.
-	// *   2: The task is disabled.
+	// >  We recommend that you configure assertions.
+	AcceptableResponseCode *string `json:"acceptable_response_code,omitempty" xml:"acceptable_response_code,omitempty"`
+	// The assertions.
+	Assertions *DescribeSiteMonitorListResponseBodySiteMonitorsSiteMonitorOptionsJsonAssertions `json:"assertions,omitempty" xml:"assertions,omitempty" type:"Struct"`
+	// The number of retries after a DNS failure occurred.
+	Attempts *int64 `json:"attempts,omitempty" xml:"attempts,omitempty"`
+	// Indicates whether the security authentication feature is enabled. Valid values:
+	//
+	// *   0: The feature is enabled.
+	// *   1: The feature is disabled.
 	Authentication *int32 `json:"authentication,omitempty" xml:"authentication,omitempty"`
-	// The page number of the returned page.
-	CertVerify *bool `json:"cert_verify,omitempty" xml:"cert_verify,omitempty"`
-	// The returned message.
-	Cookie *string `json:"cookie,omitempty" xml:"cookie,omitempty"`
-	// The extended options of the site monitoring task. The options vary based on the specified protocol. For more information, see [CreateSiteMonitor](~~115048~~).
-	DiagnosisMtr *bool `json:"diagnosis_mtr,omitempty" xml:"diagnosis_mtr,omitempty"`
-	// The cookie of the HTTP request.
-	DiagnosisPing *bool `json:"diagnosis_ping,omitempty" xml:"diagnosis_ping,omitempty"`
-	// The URL or IP address that is monitored by the site monitoring task.
-	DnsMatchRule *string `json:"dns_match_rule,omitempty" xml:"dns_match_rule,omitempty"`
 	// Indicates whether the certificate is verified. Valid values:
 	//
 	// *   false (default value): The certificate is not verified.
 	// *   true: The certificate is verified.
+	CertVerify *bool `json:"cert_verify,omitempty" xml:"cert_verify,omitempty"`
+	// The cookie of the HTTP request.
+	Cookie *string `json:"cookie,omitempty" xml:"cookie,omitempty"`
+	// Indicates whether MTR is automatically used to diagnose network issues if a task fails. Valid values:
+	//
+	// *   false (default value): MTR is not automatically used to diagnose network issues if a task fails.
+	// *   true: MTR is automatically used to diagnose network issues if a task fails.
+	DiagnosisMtr *bool `json:"diagnosis_mtr,omitempty" xml:"diagnosis_mtr,omitempty"`
+	// Indicates whether ping requests are automatically sent to detect network latency if a detection task fails. Valid values:
+	//
+	// *   false (default value): Ping requests are not automatically sent to detect network latency if a detection task fails.
+	// *   true: Ping requests are automatically sent to detect network latency if a detection task fails.
+	DiagnosisPing *bool `json:"diagnosis_ping,omitempty" xml:"diagnosis_ping,omitempty"`
+	// The relationship between the list of expected aliases or IP addresses and the list of DNS results. Valid values:
+	//
+	// *   IN_DNS: The list of expected values is a subset of the list of DNS results.
+	// *   DNS_IN: The list of DNS results is a subset of the list of expected values.
+	// *   EQUAL: The list of DNS results is the same as the list of expected values.
+	// *   ANY: The list of DNS results intersects with the list of expected values.
+	DnsMatchRule *string `json:"dns_match_rule,omitempty" xml:"dns_match_rule,omitempty"`
+	// The domain name or IP address of the DNS server.
 	DnsServer *string `json:"dns_server,omitempty" xml:"dns_server,omitempty"`
-	// Indicates whether the password is decoded by using the Base64 algorithm. Valid values:
-	//
-	// *   true: The password is decoded by using the Base64 algorithm.
-	// *   false (default value): The password is not decoded by using the Base64 algorithm.
-	DnsType *string `json:"dns_type,omitempty" xml:"dns_type,omitempty"`
-	// The format of the HTTP request. Valid values:
-	//
-	// *   hex: hexadecimal
-	// *   txt: text
-	EnableOperatorDns *bool `json:"enable_operator_dns,omitempty" xml:"enable_operator_dns,omitempty"`
-	// The response to the HTTP request.
-	//
-	// *   Hexadecimal format: If the request content is a byte string and cannot be represented in printable characters, you can convert the byte string to printable characters in the hexadecimal format. If you convert the byte string to printable characters in the hexadecimal format, one byte is converted to two hexadecimal characters. For example, (byte)1 is converted to `01` and (byte)27 is converted to `1B`. If the request content is a binary array in the Java format, for example, `{(byte)1, (byte)27}`, you can convert the binary array to `011b` or `011B`. Hexadecimal characters are not case-sensitive in site monitoring tasks. You can enter `011B` in the request content and set the request_format parameter to hex.
-	// *   Text format: Common text refers to strings that consist of printable characters.
-	FailureRate *float32 `json:"failure_rate,omitempty" xml:"failure_rate,omitempty"`
-	// The number of entries to return on each page. Default value: 10.
-	Header *string `json:"header,omitempty" xml:"header,omitempty"`
-	// The status of the task. Valid values:
-	//
-	// *   1: The task is enabled.
-	// *   2: The task is disabled.
-	HttpMethod *string `json:"http_method,omitempty" xml:"http_method,omitempty"`
-	// The time when the site monitoring task was created.
-	IsBase64Encode *string `json:"isBase64Encode,omitempty" xml:"isBase64Encode,omitempty"`
-	// The assertions.
-	MatchRule *int32 `json:"match_rule,omitempty" xml:"match_rule,omitempty"`
-	// The number of entries returned per page.
-	Password *string `json:"password,omitempty" xml:"password,omitempty"`
-	// The protocol that is used by the site monitoring task. Valid values: HTTP, PING, TCP, UDP, DNS, SMTP, POP3, and FTP.
-	PingNum *int32 `json:"ping_num,omitempty" xml:"ping_num,omitempty"`
-	// The interval at which detection requests are sent. Unit: minutes.
-	Port *int32 `json:"port,omitempty" xml:"port,omitempty"`
-	// The name of the site monitoring task.
-	Protocol *string `json:"protocol,omitempty" xml:"protocol,omitempty"`
-	// The ID of the site monitoring task.
-	ProxyProtocol *bool `json:"proxy_protocol,omitempty" xml:"proxy_protocol,omitempty"`
-	// The format of the HTTP response. Valid values:
-	//
-	// *   hex: hexadecimal
-	// *   txt: text
-	RequestContent *string `json:"request_content,omitempty" xml:"request_content,omitempty"`
-	// The acceptable status code.
-	//
-	// >  We recommend that you configure assertions.
-	RequestFormat *string `json:"request_format,omitempty" xml:"request_format,omitempty"`
-	// The total number of returned entries.
-	ResponseContent *string `json:"response_content,omitempty" xml:"response_content,omitempty"`
-	// The port number of the TCP, UDP, SMTP, or POP3 protocol.
-	ResponseFormat *string `json:"response_format,omitempty" xml:"response_format,omitempty"`
-	// The ID of the request.
-	RetryDelay *int32 `json:"retry_delay,omitempty" xml:"retry_delay,omitempty"`
-	// The password of the SMTP, POP3, or FTP protocol.
-	TimeOut *int64 `json:"time_out,omitempty" xml:"time_out,omitempty"`
-	// Indicates whether the PROXY protocol is enabled. Valid values:
-	//
-	// *   false (default value): The PROXY protocol is disabled.
-	// *   true: The PROXY protocol is enabled.
-	UnfollowRedirect *bool `json:"unfollow_redirect,omitempty" xml:"unfollow_redirect,omitempty"`
 	// The type of the DNS record. This parameter is returned only if the TaskType parameter is set to DNS. Valid values:
 	//
 	// *   A (default value): a record that specifies an IP address related to the specified host name or domain name.
@@ -28703,6 +29293,78 @@ type DescribeSiteMonitorListResponseBodySiteMonitorsSiteMonitorOptionsJson struc
 	// *   MX: a record that links domain names to the address of a mail server.
 	// *   TXT: a record that stores the text information of host name or domain names. The text must be 1 to 512 bytes in length. The TXT record serves as a Sender Policy Framework (SPF) record to fight against spam.
 	// *   AAAA: a record that maps a domain name to the relevant IPv6 address.
+	DnsType *string `json:"dns_type,omitempty" xml:"dns_type,omitempty"`
+	// Indicates whether the DNS server of the carrier is used.
+	//
+	// *   true (default value): The DNS server of the carrier is used.
+	// *   false: The DNS server of the carrier is not used. The default DNS server or the specified DNS server is used.
+	EnableOperatorDns *bool `json:"enable_operator_dns,omitempty" xml:"enable_operator_dns,omitempty"`
+	// The packet loss rate.
+	//
+	// >  This parameter is returned only if the TaskType parameter is set to PING.
+	FailureRate *float32 `json:"failure_rate,omitempty" xml:"failure_rate,omitempty"`
+	// The header of the HTTP request. An HTTP header is a key-value pair in which the key and the value are separated by a colon (:). The format is `key1:value1`. Each HTTP header occupies a line.
+	Header *string `json:"header,omitempty" xml:"header,omitempty"`
+	// The HTTP request method. Valid values:
+	//
+	// *   get
+	// *   post
+	// *   head
+	HttpMethod *string `json:"http_method,omitempty" xml:"http_method,omitempty"`
+	// Indicates whether the password is decoded by using the Base64 algorithm. Valid values:
+	//
+	// *   true: The password is decoded by using the Base64 algorithm.
+	// *   false (default value): The password is not decoded by using the Base64 algorithm.
+	IsBase64Encode *string `json:"isBase64Encode,omitempty" xml:"isBase64Encode,omitempty"`
+	// Indicates whether the alert rule is included. Valid values:
+	//
+	// *   0: The alert rule is included.
+	// *   1: The alert rule is not included.
+	MatchRule *int32 `json:"match_rule,omitempty" xml:"match_rule,omitempty"`
+	// The password of the SMTP, POP3, or FTP protocol.
+	Password *string `json:"password,omitempty" xml:"password,omitempty"`
+	// The number of hops for the PING protocol.
+	PingNum *int32 `json:"ping_num,omitempty" xml:"ping_num,omitempty"`
+	// The port number of the TCP, UDP, SMTP, or POP3 protocol.
+	Port *int32 `json:"port,omitempty" xml:"port,omitempty"`
+	// The protocol type of DNS detection. Valid values:
+	//
+	// *   udp (default value)
+	// *   tcp
+	// *   tcp-tls
+	Protocol *string `json:"protocol,omitempty" xml:"protocol,omitempty"`
+	// Indicates whether the PROXY protocol is enabled. Valid values:
+	//
+	// *   false (default value): The PROXY protocol is disabled.
+	// *   true: The PROXY protocol is enabled.
+	ProxyProtocol *bool `json:"proxy_protocol,omitempty" xml:"proxy_protocol,omitempty"`
+	// The content of the HTTP request.
+	RequestContent *string `json:"request_content,omitempty" xml:"request_content,omitempty"`
+	// The format of the HTTP request. Valid values:
+	//
+	// *   hex: hexadecimal
+	// *   txt: text
+	RequestFormat *string `json:"request_format,omitempty" xml:"request_format,omitempty"`
+	// The response to the HTTP request.
+	//
+	// *   Hexadecimal format: If the request content is a byte string and cannot be represented in printable characters, you can convert the byte string to printable characters in the hexadecimal format. If you convert the byte string to printable characters in the hexadecimal format, one byte is converted to two hexadecimal characters. For example, (byte)1 is converted to `01` and (byte)27 is converted to `1B`. If the request content is a binary array in the Java format, for example, `{(byte)1, (byte)27}`, you can convert the binary array to `011b` or `011B`. Hexadecimal characters are not case-sensitive in site monitoring tasks. You can enter `011B` in the request content and set the request_format parameter to hex.
+	// *   Text format: Common text refers to strings that consist of printable characters.
+	ResponseContent *string `json:"response_content,omitempty" xml:"response_content,omitempty"`
+	// The format of the HTTP response. Valid values:
+	//
+	// *   hex: hexadecimal
+	// *   txt: text
+	ResponseFormat *string `json:"response_format,omitempty" xml:"response_format,omitempty"`
+	// The number of times a failed detection request is retried.
+	RetryDelay *int32 `json:"retry_delay,omitempty" xml:"retry_delay,omitempty"`
+	// The timeout period. Unit: milliseconds.
+	TimeOut *int64 `json:"time_out,omitempty" xml:"time_out,omitempty"`
+	// Indicates whether redirects are followed if the status code 301 or 302 is returned. Valid values:
+	//
+	// *   true: Redirects are not followed.
+	// *   false (default value): Redirects are followed.
+	UnfollowRedirect *bool `json:"unfollow_redirect,omitempty" xml:"unfollow_redirect,omitempty"`
+	// The username of the FTP, SMTP, or POP3 protocol.
 	Username *string `json:"username,omitempty" xml:"username,omitempty"`
 }
 
@@ -28882,16 +29544,32 @@ func (s *DescribeSiteMonitorListResponseBodySiteMonitorsSiteMonitorOptionsJsonAs
 }
 
 type DescribeSiteMonitorListResponseBodySiteMonitorsSiteMonitorOptionsJsonAssertionsAssertions struct {
-	Operator *string `json:"operator,omitempty" xml:"operator,omitempty"`
-	// The relationship between the list of expected aliases or IP addresses and the list of DNS results. Valid values:
+	// The comparison operator of the assertion. Valid values:
 	//
-	// *   IN_DNS: The list of expected values is a subset of the list of DNS results.
-	// *   DNS_IN: The list of DNS results is a subset of the list of expected values.
-	// *   EQUAL: The list of DNS results is the same as the list of expected values.
-	// *   ANY: The list of DNS results intersects with the list of expected values.
+	// *   contains: contains
+	// *   doesNotContain: does not contain
+	// *   matches: matches regular expressions
+	// *   doesNotMatch: does not match regular expressions
+	// *   is: equal to a numeric value or matches a character
+	// *   isNot: not equal to
+	// *   lessThan: less than
+	// *   moreThan: greater than
+	Operator *string `json:"operator,omitempty" xml:"operator,omitempty"`
+	// The parsing path of the assertion.
+	//
+	// *   If the assertion type is `body_json`, the path is `json path`.
+	// *   If the assertion type is `body_xml`, the path is `xml path`.
 	Property *string `json:"property,omitempty" xml:"property,omitempty"`
-	Target   *string `json:"target,omitempty" xml:"target,omitempty"`
-	// For more information about common request parameters, see [Common parameters](~~199331~~).
+	// The numeric value or character used for matching.
+	Target *string `json:"target,omitempty" xml:"target,omitempty"`
+	// The type of the assertion. Valid values:
+	//
+	// *   response_time: checks whether the response time meets expectations.
+	// *   status_code: checks whether the HTTP status code meets expectations.
+	// *   header: checks whether the fields in the response header meet expectations.
+	// *   body_text: checks whether the content in the response body meets expectations by using text matching.
+	// *   body_json: checks whether the content in the response body meets expectations by using JSON parsing (JSONPath).
+	// *   body_xml: checks whether the content in the response body meets expectations by using XML parsing (XPath).
 	Type *string `json:"type,omitempty" xml:"type,omitempty"`
 }
 
@@ -29316,11 +29994,25 @@ func (s *DescribeSiteMonitorQuotaResponse) SetBody(v *DescribeSiteMonitorQuotaRe
 }
 
 type DescribeSiteMonitorStatisticsRequest struct {
+	// The name of the metric. Valid values:
+	//
+	// *   Availability
+	// *   ErrorRate
+	// *   ResponseTime
 	MetricName *string `json:"MetricName,omitempty" xml:"MetricName,omitempty"`
 	RegionId   *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	StartTime  *string `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
-	TaskId     *string `json:"TaskId,omitempty" xml:"TaskId,omitempty"`
-	TimeRange  *string `json:"TimeRange,omitempty" xml:"TimeRange,omitempty"`
+	// The timestamp that specifies the beginning of the time range to query.
+	//
+	// Unit: milliseconds. The default value is 1 hour ahead of the current time.
+	StartTime *string `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
+	// The ID of the site monitoring task.
+	//
+	// For more information about how to obtain the ID of a site monitoring task, see [DescribeSiteMonitorList](~~115052~~).
+	TaskId *string `json:"TaskId,omitempty" xml:"TaskId,omitempty"`
+	// The statistical period.
+	//
+	// Unit: minutes. Default value: 1440 (1 day). Maximum value: 43200 (30 days).
+	TimeRange *string `json:"TimeRange,omitempty" xml:"TimeRange,omitempty"`
 }
 
 func (s DescribeSiteMonitorStatisticsRequest) String() string {
@@ -29357,11 +30049,21 @@ func (s *DescribeSiteMonitorStatisticsRequest) SetTimeRange(v string) *DescribeS
 }
 
 type DescribeSiteMonitorStatisticsResponseBody struct {
-	Code      *string `json:"Code,omitempty" xml:"Code,omitempty"`
-	Data      *string `json:"Data,omitempty" xml:"Data,omitempty"`
-	Message   *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// The HTTP status code.
+	//
+	// >  The status code 200 indicates that the call is successful.
+	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	// The statistics of the specified metric.
+	Data *string `json:"Data,omitempty" xml:"Data,omitempty"`
+	// The returned message.
+	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// The ID of the request.
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	Success   *string `json:"Success,omitempty" xml:"Success,omitempty"`
+	// Indicates whether the call is successful. Valid values:
+	//
+	// *   true: The call is successful.
+	// *   false: The call fails.
+	Success *string `json:"Success,omitempty" xml:"Success,omitempty"`
 }
 
 func (s DescribeSiteMonitorStatisticsResponseBody) String() string {
@@ -29729,8 +30431,14 @@ func (s *DescribeSystemEventAttributeResponse) SetBody(v *DescribeSystemEventAtt
 }
 
 type DescribeSystemEventCountRequest struct {
-	// The ID of the request.
+	// The timestamp that specifies the end of the time range to query. Unit: milliseconds.
 	EndTime *string `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
+	// The type of the system event.
+	//
+	// You can call the DescribeSystemEventMetaList operation to obtain the value of the response parameter `EventType`. The value of the EventType parameter indicates the types of system events that occurred for all cloud services in your Alibaba Cloud account. For more information, see [DescribeSystemEventMetaList](~~114972~~).
+	EventType *string `json:"EventType,omitempty" xml:"EventType,omitempty"`
+	// The ID of the application group.
+	GroupId *string `json:"GroupId,omitempty" xml:"GroupId,omitempty"`
 	// The level of the system event. Valid values:
 	//
 	// *   Critical
@@ -29738,30 +30446,26 @@ type DescribeSystemEventCountRequest struct {
 	// *   Info
 	//
 	// You can call the DescribeSystemEventMetaList operation to obtain the value of the response parameter `Level`. The value of the Level parameter indicates the levels of system events that occurred for all cloud services in your Alibaba Cloud account. For more information, see [DescribeSystemEventMetaList](~~114972~~).
-	EventType *string `json:"EventType,omitempty" xml:"EventType,omitempty"`
-	// The timestamp that specifies the start of the time range to query. Unit: milliseconds.
-	GroupId *string `json:"GroupId,omitempty" xml:"GroupId,omitempty"`
-	// The ID of the application group.
 	Level *string `json:"Level,omitempty" xml:"Level,omitempty"`
-	// The status of the system event.
-	//
-	// You can call the DescribeSystemEventMetaList operation to obtain the value of the response parameter `Status`. The value of the Status parameter indicates the status of system events that occurred for all cloud services in your Alibaba Cloud account. For more information, see [DescribeSystemEventMetaList](~~114972~~).
-	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
 	// The name of the system event.
 	//
 	// You can call the DescribeSystemEventMetaList operation to obtain the value of the response parameter `Name`. The value of the Name parameter indicates the names of system events that occurred for all cloud services in your Alibaba Cloud account. For more information, see [DescribeSystemEventMetaList](~~114972~~).
+	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// The name of the cloud service in which the system event occurred.
+	//
+	// You can call the DescribeSystemEventMetaList operation to obtain the value of the response parameter `Product`. The value of the Product parameter indicates the names of all cloud services in which the system events of your Alibaba Cloud account occurred. For more information, see [DescribeSystemEventMetaList](~~114972~~).
 	Product  *string `json:"Product,omitempty" xml:"Product,omitempty"`
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	// The timestamp that specifies the end of the time range to query. Unit: milliseconds.
-	SearchKeywords *string `json:"SearchKeywords,omitempty" xml:"SearchKeywords,omitempty"`
-	// The HTTP status code.
-	//
-	// >  The status code 200 indicates that the call was successful.
-	StartTime *string `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
 	// The keywords that are used to search for the system event. You can use a logical operator to connect keywords. Valid values:
 	//
 	// *   If you want to search for the system event whose content contains a and b, set the value to `a and b`.
 	// *   If you want to search for the system event whose content contains a or b, set the value to `a or b`.
+	SearchKeywords *string `json:"SearchKeywords,omitempty" xml:"SearchKeywords,omitempty"`
+	// The timestamp that specifies the start of the time range to query. Unit: milliseconds.
+	StartTime *string `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
+	// The status of the system event.
+	//
+	// You can call the DescribeSystemEventMetaList operation to obtain the value of the response parameter `Status`. The value of the Status parameter indicates the status of system events that occurred for all cloud services in your Alibaba Cloud account. For more information, see [DescribeSystemEventMetaList](~~114972~~).
 	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
 }
 
@@ -29824,17 +30528,19 @@ func (s *DescribeSystemEventCountRequest) SetStatus(v string) *DescribeSystemEve
 }
 
 type DescribeSystemEventCountResponseBody struct {
+	// The HTTP status code.
+	//
+	// >  The status code 200 indicates that the call was successful.
+	Code    *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// The ID of the request.
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	// Indicates whether the call was successful. Valid values:
 	//
 	// *   true: The call was successful.
 	// *   false: The call failed.
-	Code    *string `json:"Code,omitempty" xml:"Code,omitempty"`
-	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
-	// The details of the system event.
-	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// The status of the system event.
 	Success *string `json:"Success,omitempty" xml:"Success,omitempty"`
-	// The timestamp when the system event occurred. Unit: milliseconds.
+	// The details of the system event.
 	SystemEventCounts *DescribeSystemEventCountResponseBodySystemEventCounts `json:"SystemEventCounts,omitempty" xml:"SystemEventCounts,omitempty" type:"Struct"`
 }
 
@@ -29889,31 +30595,31 @@ func (s *DescribeSystemEventCountResponseBodySystemEventCounts) SetSystemEventCo
 }
 
 type DescribeSystemEventCountResponseBodySystemEventCountsSystemEventCount struct {
-	// The ID of the region.
+	// The description of the system event.
 	Content *string `json:"Content,omitempty" xml:"Content,omitempty"`
-	// The name of the instance.
+	// The ID of the application group.
 	GroupId *string `json:"GroupId,omitempty" xml:"GroupId,omitempty"`
-	// The ID of the resource.
+	// The name of the instance.
 	InstanceName *string `json:"InstanceName,omitempty" xml:"InstanceName,omitempty"`
-	// This topic provides an example on how to query the number of times that a system event occurred for Elastic Compute Service (`ECS`). The returned result indicates that the number of times that the specified system event occurred is 3.
-	Level *string `json:"Level,omitempty" xml:"Level,omitempty"`
 	// The level of the system event. Valid values:
 	//
 	// *   Critical
 	// *   Warn
 	// *   Info
-	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	Level *string `json:"Level,omitempty" xml:"Level,omitempty"`
 	// The name of the system event.
-	Num *int64 `json:"Num,omitempty" xml:"Num,omitempty"`
+	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
 	// The number of times that the system event occurred.
-	Product *string `json:"Product,omitempty" xml:"Product,omitempty"`
-	// For more information about common request parameters, see [Common parameters](~~199331~~).
-	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	// The description of the system event.
-	ResourceId *string `json:"ResourceId,omitempty" xml:"ResourceId,omitempty"`
-	// The ID of the application group.
-	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
+	Num *int64 `json:"Num,omitempty" xml:"Num,omitempty"`
 	// The name of the cloud service in which the system event occurred.
+	Product *string `json:"Product,omitempty" xml:"Product,omitempty"`
+	// The ID of the region.
+	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	// The ID of the resource.
+	ResourceId *string `json:"ResourceId,omitempty" xml:"ResourceId,omitempty"`
+	// The status of the system event.
+	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
+	// The timestamp when the system event occurred. Unit: milliseconds.
 	Time *int64 `json:"Time,omitempty" xml:"Time,omitempty"`
 }
 
@@ -30557,16 +31263,18 @@ func (s *DescribeTagKeyListResponse) SetBody(v *DescribeTagKeyListResponseBody) 
 }
 
 type DescribeTagValueListRequest struct {
+	// The number of the page to return.
+	//
+	// Pages start from page 1. Default value: 1.
+	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
+	// The number of entries to return on each page.
+	//
+	// Valid values: 1 to 100. Pages start from page 1. Default value: 50.
+	PageSize *int32  `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 	// The key of the tag whose values you want to query.
 	//
 	// For more information about how to obtain a tag key, see [DescribeTagKeyList](~~145558~~).
-	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
-	// The HTTP status code.
-	//
-	// >  The value 200 indicates that the call was successful.
-	PageSize *int32  `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	// The error message.
 	TagKey *string `json:"TagKey,omitempty" xml:"TagKey,omitempty"`
 }
 
@@ -30599,18 +31307,20 @@ func (s *DescribeTagValueListRequest) SetTagKey(v string) *DescribeTagValueListR
 }
 
 type DescribeTagValueListResponseBody struct {
-	// The ID of the request.
+	// The HTTP status code.
+	//
+	// >  The value 200 indicates that the call was successful.
 	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	// The error message.
+	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// The ID of the request.
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	// Indicates whether the call was successful. Valid values:
 	//
 	// *   true: The call was successful.
 	// *   false: The call failed.
-	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
-	// The tag values returned.
-	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// This topic provides an example of how to query the tag values corresponding to `tagKey1`. The return results are `tagValue1` and `tagValue2`.
 	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
-	// For more information about common request parameters, see [Common parameters](~~199331~~).
+	// The tag values returned.
 	TagValues *DescribeTagValueListResponseBodyTagValues `json:"TagValues,omitempty" xml:"TagValues,omitempty" type:"Struct"`
 }
 
@@ -31372,9 +32082,19 @@ func (s *DisableSiteMonitorsResponse) SetBody(v *DisableSiteMonitorsResponseBody
 }
 
 type EnableActiveMetricRuleRequest struct {
-	// The HTTP status code.
+	// The cloud service for which you want to enable initiative alert. Valid values:
 	//
-	// >  The status code 200 indicates that the call was successful.
+	// *   ecs: Elastic Compute Service (ECS)
+	// *   rds: ApsaraDB RDS
+	// *   slb: Server Load Balancer (SLB)
+	// *   redis_standard: ApsaraDB for Redis of the standard architecture
+	// *   redis_sharding: ApsaraDB for Redis of the cluster architecture
+	// *   redis_splitrw: ApsaraDB for Redis of the read/write splitting architecture
+	// *   mongodb: ApsaraDB for MongoDB of the replica set architecture
+	// *   mongodb_sharding: ApsaraDB for MongoDB of the sharded cluster architecture
+	// *   hbase: ApsaraDB for HBase
+	// *   elasticsearch: Elasticsearch
+	// *   opensearch: OpenSearch
 	Product  *string `json:"Product,omitempty" xml:"Product,omitempty"`
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 }
@@ -31398,12 +32118,19 @@ func (s *EnableActiveMetricRuleRequest) SetRegionId(v string) *EnableActiveMetri
 }
 
 type EnableActiveMetricRuleResponseBody struct {
-	// The ID of the request.
+	// The HTTP status code.
+	//
+	// >  The status code 200 indicates that the call was successful.
 	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
-	// The operation that you want to perform. Set the value to **EnableActiveMetricRule**.
-	Message   *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// The error message.
+	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// The ID of the request.
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	Success   *bool   `json:"Success,omitempty" xml:"Success,omitempty"`
+	// Indicates whether the call was successful. Valid values:
+	//
+	// *   true: The call was successful.
+	// *   false: The call failed.
+	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
 }
 
 func (s EnableActiveMetricRuleResponseBody) String() string {
@@ -31994,11 +32721,18 @@ func (s *EnableSiteMonitorsResponse) SetBody(v *EnableSiteMonitorsResponseBody) 
 }
 
 type InstallMonitoringAgentRequest struct {
-	// The HTTP status code.
+	// Specifies whether to install the CloudMonitor agent. Valid values:
 	//
-	// >  The status code 200 indicates that the call was successful.
+	// *   true (default value): yes
+	// *   false: no
 	Force *bool `json:"Force,omitempty" xml:"Force,omitempty"`
-	// The ID of the request.
+	// Specifies whether to install the CloudMonitor agent on all ECS instances that belong to the current Alibaba Cloud account. Valid values:
+	//
+	// *   `onlyInstallNotHasAgent`: installs the latest version of the CloudMonitor agent only on ECS instances on which the agent is not installed.
+	// *   `onlyUpgradeAgent`: upgrades the CloudMonitor agent to the latest version only for ECS instances on which an earlier version of the agent is installed.
+	// *   `installAndUpgrade`: installs the latest version of the CloudMonitor agent on ECS instances on which the agent is not installed, and upgrades the CloudMonitor agent to the latest version for ECS instances on which an earlier version of the agent is installed.
+	//
+	// >  If you set the InstallCommand parameter, the `InstanceIds` parameter does not take effect.
 	InstallCommand *string   `json:"InstallCommand,omitempty" xml:"InstallCommand,omitempty"`
 	InstanceIds    []*string `json:"InstanceIds,omitempty" xml:"InstanceIds,omitempty" type:"Repeated"`
 	RegionId       *string   `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
@@ -32033,12 +32767,19 @@ func (s *InstallMonitoringAgentRequest) SetRegionId(v string) *InstallMonitoring
 }
 
 type InstallMonitoringAgentResponseBody struct {
-	// The operation that you want to perform. Set the value to **InstallMonitoringAgent**.
+	// The HTTP status code.
+	//
+	// >  The status code 200 indicates that the call was successful.
 	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
-	// For more information about common request parameters, see [Common parameters](~~199331~~).
-	Message   *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// The error message.
+	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// The ID of the request.
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	Success   *bool   `json:"Success,omitempty" xml:"Success,omitempty"`
+	// Indicates whether the call was successful. Valid values:
+	//
+	// *   true: The call was successful.
+	// *   false: The call failed.
+	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
 }
 
 func (s InstallMonitoringAgentResponseBody) String() string {
@@ -32102,23 +32843,13 @@ type ModifyGroupMonitoringAgentProcessRequest struct {
 	AlertConfig []*ModifyGroupMonitoringAgentProcessRequestAlertConfig `json:"AlertConfig,omitempty" xml:"AlertConfig,omitempty" type:"Repeated"`
 	// The ID of the application group.
 	GroupId *string `json:"GroupId,omitempty" xml:"GroupId,omitempty"`
-	// The statistical aggregation method that is used to calculate the metric values. Valid values of N: 1 to 200.
-	//
-	// >  Set the value to Average.
+	// The ID of the process monitoring task.
 	Id *string `json:"Id,omitempty" xml:"Id,omitempty"`
-	// The comparison operator that is used to compare the metric value with the threshold. Valid values of N: 1 to 200. Valid values:
+	// The logical operator used between conditional expressions that are used to match instances. Valid values:
 	//
-	// *   GreaterThanOrEqualToThreshold: greater than or equal to the threshold
-	// *   GreaterThanThreshold: greater than the threshold
-	// *   LessThanOrEqualToThreshold: less than or equal to the threshold
-	// *   LessThanThreshold: less than the threshold.
-	// *   NotEqualToThreshold: not equal to the threshold
-	// *   GreaterThanYesterday: greater than the metric value at the same time yesterday.
-	// *   LessThanYesterday: less than the metric value at the same time yesterday
-	// *   GreaterThanLastWeek: greater than the metric value at the same time last week
-	// *   LessThanLastWeek: less than the metric value at the same time last week
-	// *   GreaterThanLastPeriod: greater than the metric value in the last monitoring cycle
-	// *   LessThanLastPeriod: less than the metric value in the last monitoring cycle
+	// *   all
+	// *   and
+	// *   or
 	MatchExpressFilterRelation *string `json:"MatchExpressFilterRelation,omitempty" xml:"MatchExpressFilterRelation,omitempty"`
 	RegionId                   *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 }
@@ -32157,42 +32888,48 @@ func (s *ModifyGroupMonitoringAgentProcessRequest) SetRegionId(v string) *Modify
 }
 
 type ModifyGroupMonitoringAgentProcessRequestAlertConfig struct {
-	// The level of the alert. Valid values:
+	// The comparison operator that is used to compare the metric value with the threshold. Valid values of N: 1 to 200. Valid values:
 	//
-	// *   INFO: information
-	// *   WARN: warning
-	// *   CRITICAL: critical
+	// *   GreaterThanOrEqualToThreshold: greater than or equal to the threshold
+	// *   GreaterThanThreshold: greater than the threshold
+	// *   LessThanOrEqualToThreshold: less than or equal to the threshold
+	// *   LessThanThreshold: less than the threshold.
+	// *   NotEqualToThreshold: not equal to the threshold
+	// *   GreaterThanYesterday: greater than the metric value at the same time yesterday.
+	// *   LessThanYesterday: less than the metric value at the same time yesterday
+	// *   GreaterThanLastWeek: greater than the metric value at the same time last week
+	// *   LessThanLastWeek: less than the metric value at the same time last week
+	// *   GreaterThanLastPeriod: greater than the metric value in the last monitoring cycle
+	// *   LessThanLastPeriod: less than the metric value in the last monitoring cycle
 	ComparisonOperator *string `json:"ComparisonOperator,omitempty" xml:"ComparisonOperator,omitempty"`
-	// The error message.
-	EffectiveInterval *string `json:"EffectiveInterval,omitempty" xml:"EffectiveInterval,omitempty"`
 	// The time period during which the alert rule is effective. Valid values of N: 1 to 200.
-	EscalationsLevel *string `json:"EscalationsLevel,omitempty" xml:"EscalationsLevel,omitempty"`
-	// The ID of the process monitoring task.
-	NoEffectiveInterval *string `json:"NoEffectiveInterval,omitempty" xml:"NoEffectiveInterval,omitempty"`
-	// The logical operator used between conditional expressions that are used to match instances. Valid values:
-	//
-	// *   all
-	// *   and
-	// *   or
-	SilenceTime *string `json:"SilenceTime,omitempty" xml:"SilenceTime,omitempty"`
+	EffectiveInterval *string `json:"EffectiveInterval,omitempty" xml:"EffectiveInterval,omitempty"`
 	// The level of the alert. Valid values of N: 1 to 200. Valid values:
 	//
 	// *   critical (default value): critical
 	// *   warn: warning
 	// *   info: information
-	Statistics *string                                                          `json:"Statistics,omitempty" xml:"Statistics,omitempty"`
-	TargetList []*ModifyGroupMonitoringAgentProcessRequestAlertConfigTargetList `json:"TargetList,omitempty" xml:"TargetList,omitempty" type:"Repeated"`
+	EscalationsLevel *string `json:"EscalationsLevel,omitempty" xml:"EscalationsLevel,omitempty"`
+	// The time period during which the alert rule is ineffective. Valid values of N: 1 to 200.
+	NoEffectiveInterval *string `json:"NoEffectiveInterval,omitempty" xml:"NoEffectiveInterval,omitempty"`
 	// The mute period during which new alerts are not sent even if the trigger conditions are met. Valid values of N: 1 to 200.
 	//
 	// Unit: seconds. Minimum value: 3600, which is equivalent to one hour. Default value: 86400, which is equivalent to one day.
 	//
 	// >  Only one alert notification is sent during a mute period even if the metric value exceeds the alert threshold during consecutive checks.
-	Threshold *string `json:"Threshold,omitempty" xml:"Threshold,omitempty"`
-	// The operation that you want to perform. Set the value to **ModifyGroupMonitoringAgentProcess**.
-	Times *string `json:"Times,omitempty" xml:"Times,omitempty"`
-	// The HTTP status code.
+	SilenceTime *string `json:"SilenceTime,omitempty" xml:"SilenceTime,omitempty"`
+	// The statistical aggregation method that is used to calculate the metric values. Valid values of N: 1 to 200.
 	//
-	// >  The status code 200 indicates that the call was successful.
+	// >  Set the value to Average.
+	Statistics *string                                                          `json:"Statistics,omitempty" xml:"Statistics,omitempty"`
+	TargetList []*ModifyGroupMonitoringAgentProcessRequestAlertConfigTargetList `json:"TargetList,omitempty" xml:"TargetList,omitempty" type:"Repeated"`
+	// The alert threshold. Valid values of N: 1 to 200.
+	Threshold *string `json:"Threshold,omitempty" xml:"Threshold,omitempty"`
+	// The number of times for which the threshold can be consecutively exceeded. Valid values of N: 1 to 200. Default value: 3.
+	//
+	// >  A metric triggers an alert only after the metric value reaches the threshold consecutively for the specified times.
+	Times *string `json:"Times,omitempty" xml:"Times,omitempty"`
+	// The callback URL to which a POST request is sent when an alert is triggered based on the alert rule. Valid values of N: 1 to 200.
 	Webhook *string `json:"Webhook,omitempty" xml:"Webhook,omitempty"`
 }
 
@@ -32266,11 +33003,17 @@ type ModifyGroupMonitoringAgentProcessRequestAlertConfigTargetList struct {
 	// *   {regionId}: the region ID of the message queue or topic.
 	// *   {Resource type}`: the type of the resource for which alerts are triggered. Valid values: - **queues** - **topics** {Resource name}: the name of the resource. - If the resource type is set to **queues**, the resource name is the name of the message queue. - If the resource type is set to **topics**, the resource name is the name of the topic.`
 	Arn *string `json:"Arn,omitempty" xml:"Arn,omitempty"`
-	// The time period during which the alert rule is ineffective. Valid values of N: 1 to 200.
+	// The ID of the resource for which alerts are triggered.
+	//
+	// For information about how to obtain the ID of a resource for which alerts are triggered, see [DescribeMetricRuleTargets](~~121592~~).
 	Id *string `json:"Id,omitempty" xml:"Id,omitempty"`
-	// The alert threshold. Valid values of N: 1 to 200.
+	// The parameters of the alert callback. The parameters are in the JSON format.
 	JsonParams *string `json:"JsonParams,omitempty" xml:"JsonParams,omitempty"`
-	// The callback URL to which a POST request is sent when an alert is triggered based on the alert rule. Valid values of N: 1 to 200.
+	// The level of the alert. Valid values:
+	//
+	// *   INFO: information
+	// *   WARN: warning
+	// *   CRITICAL: critical
 	Level *string `json:"Level,omitempty" xml:"Level,omitempty"`
 }
 
@@ -32303,14 +33046,19 @@ func (s *ModifyGroupMonitoringAgentProcessRequestAlertConfigTargetList) SetLevel
 }
 
 type ModifyGroupMonitoringAgentProcessResponseBody struct {
-	// The number of times for which the threshold can be consecutively exceeded. Valid values of N: 1 to 200. Default value: 3.
+	// The HTTP status code.
 	//
-	// >  A metric triggers an alert only after the metric value reaches the threshold consecutively for the specified times.
+	// >  The status code 200 indicates that the call was successful.
 	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	// The error message.
+	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
 	// The ID of the request.
-	Message   *string `json:"Message,omitempty" xml:"Message,omitempty"`
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	Success   *bool   `json:"Success,omitempty" xml:"Success,omitempty"`
+	// Indicates whether the call was successful. Valid values:
+	//
+	// *   true: The call was successful.
+	// *   false: The call failed.
+	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
 }
 
 func (s ModifyGroupMonitoringAgentProcessResponseBody) String() string {
@@ -32905,21 +33653,25 @@ func (s *ModifyHostInfoResponse) SetBody(v *ModifyHostInfoResponseBody) *ModifyH
 }
 
 type ModifyHybridMonitorNamespaceRequest struct {
-	// Indicates whether the request was successful.
+	// The description of the namespace.
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
-	// The data retention period of the namespace. Valid values:
+	// The name of the namespace.
 	//
-	// *   cms.s1.large: 15 days
-	// *   cms.s1.xlarge: 32 days
-	// *   cms.s1.2xlarge: 63 days
-	// *   cms.s1.3xlarge: 93 days
-	// *   cms.s1.6xlarge: 185 days
-	// *   cms.s1.12xlarge: 376 days
+	// The name can contain letters, digits, and hyphens (-).
 	//
-	// For information about the pricing for different retention periods, see the **Pricing** section in [Billing of the dashboard feature](~~223532~~).
+	// For information about how to obtain the name of a namespace, see [DescribeHybridMonitorNamespaceList](~~428880~~).
 	Namespace *string `json:"Namespace,omitempty" xml:"Namespace,omitempty"`
 	RegionId  *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	// The ID of the request.
+	// The data retention period. Valid values:
+	//
+	// *   cms.s1.large: Data is stored for 15 days.
+	// *   cms.s1.xlarge: Data is stored for 32 days.
+	// *   cms.s1.2xlarge: Data is stored for 63 days.
+	// *   cms.s1.3xlarge: Data is stored for 93 days.
+	// *   cms.s1.6xlarge: Data is stored for 185 days.
+	// *   cms.s1.12xlarge: Data is stored for 376 days.
+	//
+	// For information about the pricing for different retention periods, see the **Pricing** section in [Billing of the dashboard feature](~~223532~~).
 	Spec *string `json:"Spec,omitempty" xml:"Spec,omitempty"`
 }
 
@@ -32952,12 +33704,17 @@ func (s *ModifyHybridMonitorNamespaceRequest) SetSpec(v string) *ModifyHybridMon
 }
 
 type ModifyHybridMonitorNamespaceResponseBody struct {
-	// The operation that you want to perform. Set the value to **ModifyHybridMonitorNamespace**.
+	// The returned message.
 	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
-	// For more information about common request parameters, see [Common parameters](~~199331~~).
-	Message   *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// The error message.
+	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// The request ID.
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	Success   *string `json:"Success,omitempty" xml:"Success,omitempty"`
+	// Indicates whether the request was successful. Valid values:
+	//
+	// *   true
+	// *   false
+	Success *string `json:"Success,omitempty" xml:"Success,omitempty"`
 }
 
 func (s ModifyHybridMonitorNamespaceResponseBody) String() string {
@@ -33018,13 +33775,16 @@ func (s *ModifyHybridMonitorNamespaceResponse) SetBody(v *ModifyHybridMonitorNam
 }
 
 type ModifyHybridMonitorSLSGroupRequest struct {
-	RegionId       *string                                             `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	SLSGroupConfig []*ModifyHybridMonitorSLSGroupRequestSLSGroupConfig `json:"SLSGroupConfig,omitempty" xml:"SLSGroupConfig,omitempty" type:"Repeated"`
-	// The operation that you want to perform. Set the value to **ModifyHybridMonitorSLSGroup**.
-	SLSGroupDescription *string `json:"SLSGroupDescription,omitempty" xml:"SLSGroupDescription,omitempty"`
-	// The HTTP status code.
+	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	// The configurations of the Logstore group.
 	//
-	// >  The status code 200 indicates that the call is successful.
+	// Valid values of N: 1 to 25.
+	SLSGroupConfig []*ModifyHybridMonitorSLSGroupRequestSLSGroupConfig `json:"SLSGroupConfig,omitempty" xml:"SLSGroupConfig,omitempty" type:"Repeated"`
+	// The description of the Logstore group.
+	SLSGroupDescription *string `json:"SLSGroupDescription,omitempty" xml:"SLSGroupDescription,omitempty"`
+	// The name of the Logstore group.
+	//
+	// For information about how to obtain the name of a Logstore group, see [DescribeHybridMonitorSLSGroup](~~429526~~).
 	SLSGroupName *string `json:"SLSGroupName,omitempty" xml:"SLSGroupName,omitempty"`
 }
 
@@ -33057,23 +33817,25 @@ func (s *ModifyHybridMonitorSLSGroupRequest) SetSLSGroupName(v string) *ModifyHy
 }
 
 type ModifyHybridMonitorSLSGroupRequestSLSGroupConfig struct {
-	// The name of the Logstore group.
+	// The Logstore.
 	//
-	// For information about how to obtain the name of a Logstore group, see [DescribeHybridMonitorSLSGroup](~~429526~~).
+	// Valid values of N: 1 to 25.
 	SLSLogstore *string `json:"SLSLogstore,omitempty" xml:"SLSLogstore,omitempty"`
-	// The IDs of the member accounts.
+	// The Simple Log Service project.
 	//
 	// Valid values of N: 1 to 25.
-	//
-	// If you call API operations by using a management account, you can connect the Alibaba Cloud services that are activated for a member account in Resource Directory to Hybrid Cloud Monitoring. You can use Resource Directory to monitor Alibaba Cloud services across enterprise accounts.
-	//
-	// >  If a member uses CloudMonitor for the first time, you must make sure that the service-linked role AliyunServiceRoleForCloudMonitor is attached to the member. For more information, see [Manage the service-linked role for CloudMonitor](~~170423~~).
 	SLSProject *string `json:"SLSProject,omitempty" xml:"SLSProject,omitempty"`
-	// The error message.
-	SLSRegion *string `json:"SLSRegion,omitempty" xml:"SLSRegion,omitempty"`
-	// The Logstores.
+	// The region ID.
 	//
 	// Valid values of N: 1 to 25.
+	SLSRegion *string `json:"SLSRegion,omitempty" xml:"SLSRegion,omitempty"`
+	// The member ID.
+	//
+	// Valid values of N: 1 to 25.
+	//
+	// If you call this operation by using the management account of a resource directory, you can connect the Alibaba Cloud services that are activated for all members in the resource directory to Hybrid Cloud Monitoring. You can use the resource directory to monitor Alibaba Cloud services across enterprise accounts.
+	//
+	// > If a member uses CloudMonitor for the first time, you must make sure that the service-linked role AliyunServiceRoleForCloudMonitor is attached to the member. For more information, see [Manage the service-linked role for CloudMonitor](~~170423~~).
 	SLSUserId *string `json:"SLSUserId,omitempty" xml:"SLSUserId,omitempty"`
 }
 
@@ -33106,12 +33868,19 @@ func (s *ModifyHybridMonitorSLSGroupRequestSLSGroupConfig) SetSLSUserId(v string
 }
 
 type ModifyHybridMonitorSLSGroupResponseBody struct {
-	// The ID of the request.
+	// The HTTP status code.
+	//
+	// > The status code 200 indicates that the request was successful.
 	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
-	// For more information about common request parameters, see [Common parameters](~~199331~~).
-	Message   *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// The error message.
+	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// The request ID.
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	Success   *string `json:"Success,omitempty" xml:"Success,omitempty"`
+	// Indicates whether the request was successful. Valid values:
+	//
+	// *   true
+	// *   false
+	Success *string `json:"Success,omitempty" xml:"Success,omitempty"`
 }
 
 func (s ModifyHybridMonitorSLSGroupResponseBody) String() string {
@@ -33559,44 +34328,51 @@ func (s *ModifyHybridMonitorTaskResponse) SetBody(v *ModifyHybridMonitorTaskResp
 }
 
 type ModifyMetricRuleBlackListRequest struct {
-	// The IDs of instances that belong to the specified cloud service. The value of this parameter is a JSON array.
-	//
-	// Valid values of N: 1 to 20.
+	// The category of the Alibaba Cloud service. For example, ApsaraDB for Redis includes the following categories: ApsaraDB for Redis (standard architecture), ApsaraDB for Redis (cluster architecture), and ApsaraDB for Redis (read/write splitting architecture). In this case, the valid values of this parameter for ApsaraDB for Redis include `kvstore_standard`, `kvstore_sharding`, and `kvstore_splitrw`.
 	Category *string `json:"Category,omitempty" xml:"Category,omitempty"`
-	// The ID of the application group. The value of this parameter is a JSON array.
+	// The time range within which the blacklist policy is effective. Take note of the following information:
 	//
-	// >  This parameter is required only if the `ScopeType` parameter is set to `GROUP`.
+	// *   If you do not configure this parameter, the blacklist policy is permanently effective.
+	//
+	// *   If you configure this parameter, the blacklist policy is effective only within the specified time range. Examples:
+	//
+	//     *   `03:00-04:59`: The blacklist policy is effective from 03:00 to 05:00 local time. 05:00 local time is excluded.
+	//     *   `03:00-04:59 UTC+0700`: The blacklist policy is effective from 03:00 to 05:00 (UTC+7). 05:00 (UTC+7) is excluded.
 	EffectiveTime *string `json:"EffectiveTime,omitempty" xml:"EffectiveTime,omitempty"`
-	// The error message.
+	// The timestamp when the blacklist policy expires.
+	//
+	// Unit: milliseconds.
 	EnableEndTime *string `json:"EnableEndTime,omitempty" xml:"EnableEndTime,omitempty"`
-	// The effective scope of the blacklist policy. Valid values:
-	//
-	// *   USER: The blacklist policy takes effect only for the current Alibaba Cloud account.
-	//
-	// *   GROUP: The blacklist policy takes effect only for the specified application group. This is the default value.
-	//
-	//     For information about how to obtain the ID of an application group, see [DescribeMonitorGroups](~~115032~~).
-	EnableStartTime *string `json:"EnableStartTime,omitempty" xml:"EnableStartTime,omitempty"`
-	// The namespace of the cloud service.
-	//
-	// For more information about the namespaces of different cloud services, see [Appendix 1: Metrics](~~163515~~).
-	Id        *string                                    `json:"Id,omitempty" xml:"Id,omitempty"`
-	Instances []*string                                  `json:"Instances,omitempty" xml:"Instances,omitempty" type:"Repeated"`
-	Metrics   []*ModifyMetricRuleBlackListRequestMetrics `json:"Metrics,omitempty" xml:"Metrics,omitempty" type:"Repeated"`
 	// The timestamp when the blacklist policy starts to take effect.
 	//
 	// Unit: milliseconds.
-	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
-	// The HTTP status code.
+	EnableStartTime *string `json:"EnableStartTime,omitempty" xml:"EnableStartTime,omitempty"`
+	// The ID of the blacklist policy.
 	//
-	// >  The status code 200 indicates that the call was successful.
+	// For information about how to obtain the ID of a blacklist policy, see [DescribeMetricRuleBlackList](~~457257~~).
+	Id *string `json:"Id,omitempty" xml:"Id,omitempty"`
+	// The IDs of the instances that belong to the specified cloud service.
+	Instances []*string `json:"Instances,omitempty" xml:"Instances,omitempty" type:"Repeated"`
+	// The metrics of the instance.
+	//
+	// *   If you do not configure this parameter, the blacklist policy applies to all metrics of the specified cloud service.
+	// *   If you configure this parameter, the blacklist policy applies only to the current metric.
+	Metrics []*ModifyMetricRuleBlackListRequestMetrics `json:"Metrics,omitempty" xml:"Metrics,omitempty" type:"Repeated"`
+	// The name of the blacklist policy.
+	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// The namespace of the cloud service.
+	//
+	// For more information about the namespaces of different cloud services, see [Appendix 1: Metrics](~~163515~~).
 	Namespace *string `json:"Namespace,omitempty" xml:"Namespace,omitempty"`
 	RegionId  *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	// The operation that you want to perform. Set the value to **ModifyMetricRuleBlackList**.
-	ScopeType *string `json:"ScopeType,omitempty" xml:"ScopeType,omitempty"`
-	// The extended dimension of the instance. For example, `{"device":"C:"}` specifies that the blacklist policy is applied to all C disks of the specified Elastic Compute Service (ECS) instance.
+	// The effective scope of the blacklist policy. Valid values:
 	//
-	// Valid values of N: 1 to 10
+	// *   USER: The blacklist policy takes effect only within the current Alibaba Cloud account.
+	// *   GROUP (default): The blacklist policy takes effect only within the specified application group. For information about how to obtain the ID of an application group, see [DescribeMonitorGroups](~~115032~~).
+	ScopeType *string `json:"ScopeType,omitempty" xml:"ScopeType,omitempty"`
+	// The IDs of the application groups. Specify a JSON array.
+	//
+	// > This parameter must be specified when `ScopeType` is set to `GROUP`.
 	ScopeValue *string `json:"ScopeValue,omitempty" xml:"ScopeValue,omitempty"`
 }
 
@@ -33669,11 +34445,13 @@ func (s *ModifyMetricRuleBlackListRequest) SetScopeValue(v string) *ModifyMetric
 }
 
 type ModifyMetricRuleBlackListRequestMetrics struct {
-	// The ID of the blacklist policy.
+	// The name of the metric.
 	//
-	// For information about how to obtain the ID of a blacklist policy, see [DescribeMetricRuleBlackList](~~457257~~).
+	// Valid values of N: 1 to 10.
 	MetricName *string `json:"MetricName,omitempty" xml:"MetricName,omitempty"`
-	// The categories of the Alibaba Cloud service. For example, ApsaraDB for Redis includes the following categories: ApsaraDB for Redis (standard architecture), ApsaraDB for Redis (cluster architecture), and ApsaraDB for Redis (read/write splitting architecture). In this case, the valid values of this parameter for ApsaraDB for Redis include `kvstore_standard`, `kvstore_sharding`, and `kvstore_splitrw`.
+	// The extended dimension of the instance. For example, `{"device":"C:"}` specifies that the blacklist policy is applied to all C disks of the specified Elastic Compute Service (ECS) instance.
+	//
+	// Valid values of N: 1 to 10.
 	Resource *string `json:"Resource,omitempty" xml:"Resource,omitempty"`
 }
 
@@ -33696,14 +34474,21 @@ func (s *ModifyMetricRuleBlackListRequestMetrics) SetResource(v string) *ModifyM
 }
 
 type ModifyMetricRuleBlackListResponseBody struct {
-	// The ID of the request.
-	Code  *string `json:"Code,omitempty" xml:"Code,omitempty"`
-	Count *string `json:"Count,omitempty" xml:"Count,omitempty"`
+	// The error code.
+	//
+	// > The status code 200 indicates that the request was successful.
+	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
 	// The number of blacklist policies that are modified.
+	Count *string `json:"Count,omitempty" xml:"Count,omitempty"`
+	// The error message.
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
-	// For more information about common request parameters, see [Common parameters](~~199331~~).
+	// The request ID.
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	Success   *bool   `json:"Success,omitempty" xml:"Success,omitempty"`
+	// Indicates whether the request was successful. Valid values:
+	//
+	// *   true
+	// *   false
+	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
 }
 
 func (s ModifyMetricRuleBlackListResponseBody) String() string {
@@ -33769,19 +34554,22 @@ func (s *ModifyMetricRuleBlackListResponse) SetBody(v *ModifyMetricRuleBlackList
 }
 
 type ModifyMetricRuleTemplateRequest struct {
+	// The details of the alert template.
 	AlertTemplates []*ModifyMetricRuleTemplateRequestAlertTemplates `json:"AlertTemplates,omitempty" xml:"AlertTemplates,omitempty" type:"Repeated"`
 	// The description of the alert template.
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
-	// The name of the alert rule. Valid values of N: 1 to 200.
+	// The name of the alert template.
+	//
+	// For information about how to obtain the name of an alert template, see [DescribeMetricRuleTemplateList](~~114982~~).
 	Name     *string `json:"Name,omitempty" xml:"Name,omitempty"`
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	// The HTTP status code.
+	// The version of the alert template. The version changes with the number of times that the alert template is modified.
 	//
-	// >  The status code 200 indicates that the call was successful.
+	// For information about how to obtain the version of an alert template, see [DescribeMetricRuleTemplateList](~~114982~~).
 	RestVersion *int64 `json:"RestVersion,omitempty" xml:"RestVersion,omitempty"`
-	// The callback URL. Valid values of N: 1 to 200.
+	// The ID of the alert template.
 	//
-	// The callback URL must be accessible over the Internet. CloudMonitor sends a POST request to push an alert notification to the callback URL that you specify. Only HTTP requests are supported.
+	// For information about how to obtain the ID of an alert template, see [DescribeMetricRuleTemplateList](~~114982~~).
 	TemplateId *int64 `json:"TemplateId,omitempty" xml:"TemplateId,omitempty"`
 }
 
@@ -33825,157 +34613,47 @@ func (s *ModifyMetricRuleTemplateRequest) SetTemplateId(v int64) *ModifyMetricRu
 
 type ModifyMetricRuleTemplateRequestAlertTemplates struct {
 	Escalations *ModifyMetricRuleTemplateRequestAlertTemplatesEscalations `json:"Escalations,omitempty" xml:"Escalations,omitempty" type:"Struct"`
-	// The statistical period of monitoring data. Valid values of N: 1 to 200.
+	// The abbreviation of the cloud service name.
 	//
-	// >  If the value is set to 300 seconds, the monitoring data is collected every 300 seconds. If the monitoring data is reported every 1 minute, the alert system calculates the average, maximum, and minimum values of the monitoring data of 5 minutes and checks whether the aggregated values exceed the threshold. To prevent unexpected alerts, we recommend that you set this parameter together with other parameters.
+	// Valid values of N: 1 to 200.
+	//
+	// For more information about how to obtain the abbreviation of a cloud service name, see `metricCategory` in the response parameter `Labels` of the [DescribeProjectMeta](~~114916~~) operation.
 	Category *string `json:"Category,omitempty" xml:"Category,omitempty"`
-	// The operation that you want to perform. Set the value to ModifyMetricRuleTemplate.
-	MetricName *string `json:"MetricName,omitempty" xml:"MetricName,omitempty"`
-	// The ID of the alert template.
+	// The metric name.
 	//
-	// For information about how to obtain the ID of an alert template, see [DescribeMetricRuleTemplateList](~~114982~~).
+	// Valid values of N: 1 to 200.
+	//
+	// For information about how to obtain metrics, see [DescribeMetricMetaList](~~98846~~) or [Appendix 1: Metrics](~~163515~~).
+	MetricName *string `json:"MetricName,omitempty" xml:"MetricName,omitempty"`
+	// The namespace of the cloud service.
+	//
+	// Valid values of N: 1 to 200.
+	//
+	// For information about how to obtain the namespace of a cloud service, see [DescribeMetricMetaList](~~98846~~) or [Appendix 1: Metrics](~~163515~~).
 	Namespace *string `json:"Namespace,omitempty" xml:"Namespace,omitempty"`
-	// The dimension of the alert. It is an extended field. Valid values of N: 1 to 200.
+	// The statistical period of the monitoring data.
+	//
+	// Valid values of N: 1 to 200.
+	//
+	// > If the value is set to 300 seconds, the monitoring data is collected every 300 seconds. If the monitoring data is reported every 1 minute, the alert system calculates the average, maximum, and minimum values of the monitoring data of 5 minutes and checks whether the aggregated values exceed the threshold. To prevent unexpected alerts, we recommend that you set this parameter together with other parameters.
+	Period *int32 `json:"Period,omitempty" xml:"Period,omitempty"`
+	// The name of the alert rule.
+	//
+	// Valid values of N: 1 to 200.
+	RuleName *string `json:"RuleName,omitempty" xml:"RuleName,omitempty"`
+	// The dimension of the alert. It is an extended field.
+	//
+	// Valid values of N: 1 to 200.
 	//
 	// For example, an alert template is applied to an application group, this parameter is set to `{"disk":"/"}`, and the MetricName parameter is set to `DiskUtilization`. In this case, the generated alert rule is applied to the root disk partition (`"/"`) of all instances in the application group to which the alert template is applied.
 	//
-	// >  For more information about the values of extended fields, see [DescribeMetricRuleTemplateAttribute](~~114979~~).
-	Period *int32 `json:"Period,omitempty" xml:"Period,omitempty"`
-	// The namespace of the cloud service. Valid values of N: 1 to 200.
-	//
-	// For information about how to obtain the namespace of a cloud service, see [DescribeMetricMetaList](~~98846~~) or [Appendix 1: Metrics](~~163515~~).
-	RuleName *string `json:"RuleName,omitempty" xml:"RuleName,omitempty"`
-	// The abbreviation of the service name. Valid values of N: 1 to 200. Valid values:
-	//
-	// *   PolarDB: PolarDB
-	// *   NewBGPDDoS: Anti-DDoS Pro
-	// *   IoTDevice: IoT Platform
-	// *   DRDS: PolarDB-X
-	// *   VS: Video Surveillance System
-	// *   AMQP: Alibaba Cloud Message Queue for AMQP
-	// *   ADS: AnalyticDB
-	// *   APIGateway: API Gateway
-	// *   InternetSharedBandwidth: EIP Bandwidth Plan
-	// *   CDN: Alibaba Cloud Content Delivery Network (CDN)
-	// *   CEN: Cloud Enterprise Network (CEN)
-	// *   DCDN: Dynamic Route for CDN (DCDN)
-	// *   DDoS: Anti-DDoS
-	// *   ECS: Elastic Compute Service (ECS)
-	// *   DirectMail: Direct Mail
-	// *   Elasticsearch: Elasticsearch
-	// *   EMR: E-MapReduce (EMR)
-	// *   ESS: Auto Scaling
-	// *   FunctionCompute: Function Compute
-	// *   RealtimeCompute: Realtime Compute for Apache Flink
-	// *   GlobalAcceleration: Global Accelerator (GA)
-	// *   Hbase: ApsaraDB for HBase
-	// *   TSDB: Time Series Database (TSDB)
-	// *   IPv6trans: IPv6 Translation Service
-	// *   Kafka: Message Queue for Apache Kafka
-	// *   Kubernetes: Container Service for Kubernetes (ACK)
-	// *   KVstore: ApsaraDB for Redis
-	// *   MNS: Message Service (MNS)
-	// *   MongoDB: ApsaraDB for MongoDB
-	// *   MQ: Message Queue
-	// *   NAT: NAT Gateway
-	// *   OpenAd: Open Ad
-	// *   OpenSearch: Open Search
-	// *   OSS: Object Storage Service (OSS)
-	// *   PCDN: P2P CDN
-	// *   petadata: HybridDB for MySQL
-	// *   RDS: ApsaraDB RDS
-	// *   SCDN: Secure CDN
-	// *   SLB: Server Load Balancer (SLB)
-	// *   SLS: Log Service
-	// *   VideoLive: ApsaraVideo Live
-	// *   VOD: ApsaraVideo VOD
-	// *   EIP: Elastic IP Address (EIP)
-	// *   VPN: VPN Gateway
-	// *   AIRec: Artificial Intelligence Recommendation (AIRec)
-	// *   GPDB: AnalyticDB for PostgreSQL
-	// *   DBS: Database Backup (DBS)
-	// *   SAG: Smart Access Gateway (SAG)
-	// *   Memcache: ApsaraDB for Memcache
-	// *   IOT_EDGE: Link IoT Edge
-	// *   OCS: ApsaraDB for Memcache (previous version)
-	// *   VPC: Express Connect
-	// *   EHPC: Elastic High Performance Computing (E-HPC)
-	// *   MPS: ApsaraVideo Media Processing (MPS)
-	// *   ENS: Edge Node Service (ENS)
-	// *   MaxCompute_Prepay: MaxCompute
-	// *   IoT_Kubernetes: Edge Application Hosting
-	// *   CMS: CloudMonitor
-	// *   batchcomputenew: Batch Compute
-	// *   HBaseUE: ApsaraDB for HBase Performance-enhanced Edition
-	// *   UIS: Ultimate Internet Service (UIS)
-	// *   nls: Intelligent Speech Interaction
-	// *   ots: Tablestore
-	// *   NAS: Apsara File Storage NAS
-	// *   ECI: Elastic Container Instance (ECI)
-	// *   OpenAPI: OpenAPI Explorer
-	// *   pvtzpost: Alibaba Cloud DNS PrivateZone
-	// *   blinkonk8s: Flink on Kubernetes
-	// *   FunctionFlow: Serverless Workflow (SWF)
-	// *   SMC: Server Migration Center (SMC)
-	// *   ddosbgp: Anti-DDoS Origin
-	// *   baas: Blockchain as a Service
-	// *   privatelink: PrivateLink
-	// *   cds: ApsaraDB for Cassandra
-	// *   DDH: Dedicated Host
-	// *   RocketMQ: Message Queue for Apache RocketMQ
-	// *   ECC: Express Cloud Connect
-	// *   hbaseserverless: ApsaraDB for HBase Serverless Edition
-	// *   mns_tmp: Message Service
-	// *   hdr: Hybrid Disaster Recovery (HDR)
-	// *   hbr: Hybrid Backup Recovery (HBR)
-	// *   ADB: AnalyticDB for MySQL V3.0
-	// *   tag: Tag Service
-	// *   GDB: Graph Database
-	// *   WAF: Web Application Firewall (WAF)
-	// *   hcs_sgw: Cloud Storage Gateway (CSG)
-	// *   ipv6gateway: IPv6 Gateway
-	// *   RDS_SAR: ApsaraDB Exclusive Host Group
-	// *   learn: Machine Learning Platform for AI
-	// *   ROS: Resource Orchestration Service (ROS)
-	// *   OOS: Operation Orchestration Service (OOS)
-	// *   bds: Data Synchronization for HBase
-	// *   cfw: Cloud Firewall
-	// *   ddosDip: Anti-DDoS Premium
-	// *   datahub: DataHub
-	// *   hologres: Hologres
-	// *   ExpressConnect: Express Connect
-	// *   dbfs: Database File System (DBFS)
-	// *   clickhouse: ApsaraDB for ClickHouse
-	// *   k8s: Container Service for Kubernetes (ACK)
-	// *   DTS: Data Transmission Service (DTS)
-	// *   AnycastEIP: Anycast Elastic IP Address
-	// *   Lindorm: ApsaraDB for Lindorm
-	// *   config: Cloud Config
-	// *   spark: Databricks DataInsight (DDI)
-	// *   serverless: Serverless App Engine (SAE)
-	// *   alb: Application Load Balancer (ALB)
-	// *   oceanbase: ApsaraDB for OceanBase
-	// *   KMS: Key Management Service (KMS)
-	// *   lvwang: Content Moderation
-	// *   LinkVisual: LinkVisual
-	// *   tair: ApsaraDB for Redis Enhanced Edition (Tair)
-	// *   dlf: Data Lake Formation (DLF)
-	// *   networkmonitor: Site Monitoring
-	// *   pnc: Physical Network Change
-	// *   AIS: Alibaba Cloud Infrastructure
-	// *   cloudgame: Cloud Gaming Platform
-	// *   RTC: Real-Time Communication
-	// *   cloudbox: CloudBox
-	// *   actiontrail: ActionTrail
-	// *   cc: Cloud Connector
-	// *   disk: Elastic Block Storage (EBS)
-	// *   easygene: Genomics Computing Platform
-	// *   cloudphone: Elastic Cloud Phone
-	// *   BMS: Bare Metal Management Service
-	// *   swas: Simple Application Server
-	// *   AvailabilityMonitoring: Availability Monitoring of CloudMonitor
+	// > For more information about the values of extended fields, see [DescribeMetricRuleTemplateAttribute](~~114979~~).
 	Selector *string `json:"Selector,omitempty" xml:"Selector,omitempty"`
-	// The error message.
+	// The callback URL.
+	//
+	// Valid values of N: 1 to 200.
+	//
+	// The callback URL must be accessible over the Internet. CloudMonitor pushes an alert notification to the specified callback URL by sending an HTTP POST request. Only the HTTP protocol is supported.
 	Webhook *string `json:"Webhook,omitempty" xml:"Webhook,omitempty"`
 }
 
@@ -34180,12 +34858,19 @@ func (s *ModifyMetricRuleTemplateRequestAlertTemplatesEscalationsWarn) SetTimes(
 }
 
 type ModifyMetricRuleTemplateResponseBody struct {
-	// The ID of the request.
+	// The HTTP status code.
+	//
+	// > The status code 200 indicates that the request was successful.
 	Code *int32 `json:"Code,omitempty" xml:"Code,omitempty"`
-	// For more information about common request parameters, see [Common parameters](~~199331~~).
-	Message   *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// The error message.
+	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// The request ID.
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	Success   *bool   `json:"Success,omitempty" xml:"Success,omitempty"`
+	// Indicates whether the request was successful. Valid values:
+	//
+	// *   true
+	// *   false
+	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
 }
 
 func (s ModifyMetricRuleTemplateResponseBody) String() string {
@@ -34357,7 +35042,7 @@ func (s *ModifyMonitorGroupResponse) SetBody(v *ModifyMonitorGroupResponseBody) 
 }
 
 type ModifyMonitorGroupInstancesRequest struct {
-	// The ID of the region where the instance resides. Valid values of N: 1 to 2000.
+	// The ID of the application group.
 	GroupId   *int64                                         `json:"GroupId,omitempty" xml:"GroupId,omitempty"`
 	Instances []*ModifyMonitorGroupInstancesRequestInstances `json:"Instances,omitempty" xml:"Instances,omitempty" type:"Repeated"`
 	RegionId  *string                                        `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
@@ -34387,15 +35072,85 @@ func (s *ModifyMonitorGroupInstancesRequest) SetRegionId(v string) *ModifyMonito
 }
 
 type ModifyMonitorGroupInstancesRequestInstances struct {
-	// The ID of the instance. Valid values of N: 1 to 2000.
-	Category *string `json:"Category,omitempty" xml:"Category,omitempty"`
-	// The name of the instance. Valid values of N: 1 to 2000.
-	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	// The ID of the application group.
-	InstanceName *string `json:"InstanceName,omitempty" xml:"InstanceName,omitempty"`
-	// The HTTP status code.
+	// The abbreviation of the name of the service to which the instances to be added to the application group belong. Valid values:
 	//
-	// >  The status code 200 indicates that the call was successful.
+	// *   ECS: Elastic Compute Service (ECS) instances provided by Alibaba Cloud and hosts not provided by Alibaba Cloud
+	//
+	// *   RDS: ApsaraDB for RDS
+	//
+	// *   ADS: AnalyticDB
+	//
+	// *   SLB: Server Load Balancer (SLB)
+	//
+	// *   VPC: Virtual Private Cloud (VPC)
+	//
+	// *   APIGATEWAY: API Gateway
+	//
+	// *   CDN: Alibaba Cloud Content Delivery Network (CDN)
+	//
+	// *   CS: Container Service for Swarm
+	//
+	// *   DCDN: Dynamic Route for CDN
+	//
+	// *   DDoS: Anti-DDoS Pro
+	//
+	// *   EIP: Elastic IP Address (EIP)
+	//
+	// *   ELASTICSEARCH: Elasticsearch
+	//
+	// *   EMR: E-MapReduce
+	//
+	// *   ESS: Auto Scaling
+	//
+	// *   HBASE: ApsaraDB for Hbase
+	//
+	// *   IOT_EDGE: IoT Edge
+	//
+	// *   K8S_POD: pods in Container Service for Kubernetes
+	//
+	// *   KVSTORE_SHARDING: ApsaraDB for Redis of the cluster architecture
+	//
+	// *   KVSTORE_SPLITRW: ApsaraDB for Redis of the read/write splitting architecture
+	//
+	// *   KVSTORE_STANDARD: ApsaraDB for Redis of the standard architecture
+	//
+	// *   MEMCACHE: ApsaraDB for Memcache
+	//
+	// *   MNS: Message Service (MNS)
+	//
+	// *   MONGODB: ApsaraDB for MongoDB of the replica set architecture
+	//
+	// *   MONGODB_CLUSTER: ApsaraDB for MongoDB of the cluster architecture
+	//
+	// *   MONGODB_SHARDING: ApsaraDB for MongoDB of the sharded cluster architecture
+	//
+	// *   MQ_TOPIC: MNS topics
+	//
+	// *   OCS: ApsaraDB for Memcache of earlier versions
+	//
+	// *   OPENSEARCH: Open Search
+	//
+	// *   OSS: Object Storage Service (OSS)
+	//
+	// *   POLARDB: PolarDB
+	//
+	// *   PETADATA: HybridDB for MySQL
+	//
+	// *   SCDN: Secure Content Delivery Network (SCDN)
+	//
+	// *   SHAREBANDWIDTHPACKAGES: EIP Bandwidth Plan
+	//
+	// *   SLS: Log Service
+	//
+	// *   VPN: VPN Gateway
+	//
+	//     Valid values of N: 1 to 2000.
+	Category *string `json:"Category,omitempty" xml:"Category,omitempty"`
+	// The ID of the instance. Valid values of N: 1 to 2000.
+	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	// The name of the instance. Valid values of N: 1 to 2000.
+	InstanceName *string `json:"InstanceName,omitempty" xml:"InstanceName,omitempty"`
+	// The ID of the region where the instance resides. Valid values of N: 1 to 2000.
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 }
 
@@ -34428,12 +35183,16 @@ func (s *ModifyMonitorGroupInstancesRequestInstances) SetRegionId(v string) *Mod
 }
 
 type ModifyMonitorGroupInstancesResponseBody struct {
-	// The ID of the request.
+	// The HTTP status code.
+	//
+	// >  The status code 200 indicates that the call was successful.
 	Code *int32 `json:"Code,omitempty" xml:"Code,omitempty"`
-	// The operation that you want to perform. Set the value to ModifyMonitorGroupInstances.
-	Message   *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// The returned message.
+	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// The ID of the request.
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	Success   *bool   `json:"Success,omitempty" xml:"Success,omitempty"`
+	// Indicates whether the call was successful. The value true indicates a success. The value false indicates a failure.
+	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
 }
 
 func (s ModifyMonitorGroupInstancesResponseBody) String() string {
@@ -34893,17 +35652,19 @@ func (s *PutContactResponse) SetBody(v *PutContactResponseBody) *PutContactRespo
 }
 
 type PutContactGroupRequest struct {
-	// The description of the alert contact group.
+	// The name of the alert contact group.
+	//
+	// For information about how to obtain the name of an alert contact group, see [DescribeContactGroupList](~~114922~~).
 	ContactGroupName *string   `json:"ContactGroupName,omitempty" xml:"ContactGroupName,omitempty"`
 	ContactNames     []*string `json:"ContactNames,omitempty" xml:"ContactNames,omitempty" type:"Repeated"`
+	// The description of the alert contact group.
+	Describe *string `json:"Describe,omitempty" xml:"Describe,omitempty"`
 	// Specifies whether to enable the weekly report subscription feature. Valid values:
 	//
 	// *   true: The weekly report subscription feature is enabled.
 	// *   false: The weekly report subscription feature is disabled.
 	//
 	// >  You can enable the weekly report subscription only for an Alibaba Cloud account that has at least five Elastic Compute Service (ECS) instances.
-	Describe *string `json:"Describe,omitempty" xml:"Describe,omitempty"`
-	// The name of the alert contact. Valid values of N: 1 to 100.
 	EnableSubscribed *bool `json:"EnableSubscribed,omitempty" xml:"EnableSubscribed,omitempty"`
 }
 
@@ -34936,16 +35697,18 @@ func (s *PutContactGroupRequest) SetEnableSubscribed(v bool) *PutContactGroupReq
 }
 
 type PutContactGroupResponseBody struct {
-	// The error message.
+	// The HTTP status code.
+	//
+	// >  The status code 200 indicates that the call was successful.
 	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
-	// The ID of the request.
+	// The error message.
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// The ID of the request.
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	// Indicates whether the call was successful. Valid values:
 	//
 	// *   true: The call was successful.
 	// *   false: The call failed.
-	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// This topic provides an example on how to create an alert contact group named `ECS_Group`.
 	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
 }
 
@@ -35030,8 +35793,14 @@ func (s *PutCustomEventRequest) SetRegionId(v string) *PutCustomEventRequest {
 }
 
 type PutCustomEventRequestEventInfo struct {
-	// The ID of the request.
+	// The content of the custom event. Valid values of N: 1 to 50.
 	Content *string `json:"Content,omitempty" xml:"Content,omitempty"`
+	// The name of the custom event. Valid values of N: 1 to 50.
+	EventName *string `json:"EventName,omitempty" xml:"EventName,omitempty"`
+	// The ID of the application group. Valid values of N: 0 to 50.
+	//
+	// Default value: 0. This value indicates that the custom event to be reported does not belong to any application group.
+	GroupId *string `json:"GroupId,omitempty" xml:"GroupId,omitempty"`
 	// The time when the custom event occurred.
 	//
 	// Format: `yyyyMMddTHHmmss.SSSZ`.
@@ -35039,12 +35808,6 @@ type PutCustomEventRequestEventInfo struct {
 	// Valid values of N: 1 to 50.
 	//
 	// >  You can also specify a UNIX timestamp. Example: 1552199984000. Unit: milliseconds.
-	EventName *string `json:"EventName,omitempty" xml:"EventName,omitempty"`
-	// The HTTP status code.
-	//
-	// >  The status code 200 indicates that the call was successful.
-	GroupId *string `json:"GroupId,omitempty" xml:"GroupId,omitempty"`
-	// The content of the custom event. Valid values of N: 1 to 50.
 	Time *string `json:"Time,omitempty" xml:"Time,omitempty"`
 }
 
@@ -35077,9 +35840,13 @@ func (s *PutCustomEventRequestEventInfo) SetTime(v string) *PutCustomEventReques
 }
 
 type PutCustomEventResponseBody struct {
-	// The operation that you want to perform. Set the value to **PutCustomEvent**.
-	Code      *string `json:"Code,omitempty" xml:"Code,omitempty"`
-	Message   *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// The HTTP status code.
+	//
+	// >  The status code 200 indicates that the call was successful.
+	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	// The returned message.
+	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// The ID of the request.
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -35136,35 +35903,35 @@ func (s *PutCustomEventResponse) SetBody(v *PutCustomEventResponseBody) *PutCust
 }
 
 type PutCustomEventRuleRequest struct {
-	// The callback URL to which a POST request is sent when an alert is triggered based on the alert rule.
-	ContactGroups *string `json:"ContactGroups,omitempty" xml:"ContactGroups,omitempty"`
-	// The cycle that is used to aggregate monitoring data of the custom event. Unit: seconds. Set the value to an integral multiple of 60. Default value: 300.
-	EffectiveInterval *string `json:"EffectiveInterval,omitempty" xml:"EffectiveInterval,omitempty"`
-	// The alert threshold.
-	EmailSubject *string `json:"EmailSubject,omitempty" xml:"EmailSubject,omitempty"`
 	// The alert contact group that receives alert notifications. Separate multiple contact groups with commas (,).
-	EventName *string `json:"EventName,omitempty" xml:"EventName,omitempty"`
-	// The ID of the alert rule.
-	//
-	// >  You can specify an existing ID to modify the corresponding alert rule or specify a new ID to create an alert rule.
-	GroupId *string `json:"GroupId,omitempty" xml:"GroupId,omitempty"`
-	// The HTTP status code.
-	//
-	// >  The value 200 indicates that the call was successful.
-	Level *string `json:"Level,omitempty" xml:"Level,omitempty"`
+	ContactGroups *string `json:"ContactGroups,omitempty" xml:"ContactGroups,omitempty"`
+	// The time period during which the alert rule is effective. Valid values: 00:00 to 23:59.
+	EffectiveInterval *string `json:"EffectiveInterval,omitempty" xml:"EffectiveInterval,omitempty"`
 	// The subject of the alert notification email.
-	Period *string `json:"Period,omitempty" xml:"Period,omitempty"`
-	// The name of the alert rule.
-	RuleId *string `json:"RuleId,omitempty" xml:"RuleId,omitempty"`
+	EmailSubject *string `json:"EmailSubject,omitempty" xml:"EmailSubject,omitempty"`
 	// The name of the custom event. For more information about how to obtain the event name, see [DescribeCustomEventAttribute](~~115262~~).
-	RuleName *string `json:"RuleName,omitempty" xml:"RuleName,omitempty"`
+	EventName *string `json:"EventName,omitempty" xml:"EventName,omitempty"`
+	// The ID of the application group. For more information about how to obtain the group ID, see [DescribeCustomEventAttribute](~~115262~~).
+	//
+	// >  The value 0 indicates that the reported custom event does not belong to any application Group.
+	GroupId *string `json:"GroupId,omitempty" xml:"GroupId,omitempty"`
 	// The level of the alert. Valid values:
 	//
 	// *   CRITICAL: critical issue
 	// *   WARN: warning
 	// *   INFO: information
+	Level *string `json:"Level,omitempty" xml:"Level,omitempty"`
+	// The cycle that is used to aggregate monitoring data of the custom event. Unit: seconds. Set the value to an integral multiple of 60. Default value: 300.
+	Period *string `json:"Period,omitempty" xml:"Period,omitempty"`
+	// The ID of the alert rule.
+	//
+	// >  You can specify an existing ID to modify the corresponding alert rule or specify a new ID to create an alert rule.
+	RuleId *string `json:"RuleId,omitempty" xml:"RuleId,omitempty"`
+	// The name of the alert rule.
+	RuleName *string `json:"RuleName,omitempty" xml:"RuleName,omitempty"`
+	// The alert threshold.
 	Threshold *string `json:"Threshold,omitempty" xml:"Threshold,omitempty"`
-	// The time period during which the alert rule is effective. Valid values: 00:00 to 23:59.
+	// The callback URL to which a POST request is sent when an alert is triggered based on the alert rule.
 	Webhook *string `json:"Webhook,omitempty" xml:"Webhook,omitempty"`
 }
 
@@ -35232,16 +35999,18 @@ func (s *PutCustomEventRuleRequest) SetWebhook(v string) *PutCustomEventRuleRequ
 }
 
 type PutCustomEventRuleResponseBody struct {
-	// The error message.
+	// The HTTP status code.
+	//
+	// >  The value 200 indicates that the call was successful.
 	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
-	// The ID of the request.
+	// The error message.
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// The ID of the request.
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	// Indicates whether the call was successful. Valid values:
 	//
 	// *   true: The call was successful.
 	// *   false: The call failed.
-	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// Before you call this operation, call the PutCustomEvent operation to report the monitoring data of the custom event. For more information, see [PutCustomEvent](~~115012~~).
 	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
 }
 
@@ -35326,33 +36095,41 @@ func (s *PutCustomMetricRequest) SetRegionId(v string) *PutCustomMetricRequest {
 }
 
 type PutCustomMetricRequestMetricList struct {
-	// The operation that you want to perform. Set the value to **PutCustomMetric**.
-	Dimensions *string `json:"Dimensions,omitempty" xml:"Dimensions,omitempty"`
-	// The HTTP status code.
+	// The dimensions that specify the resources whose monitoring data you want to query. Valid values of N: 1 to 21.
 	//
-	// >  The status code 200 indicates that the call was successful.
+	// Set the value to a collection of key-value pairs. Format:`{"Key":"Value"}`.
+	//
+	// The key or value must be 1 to 64 bytes in length. Excessive characters are truncated.
+	//
+	// The key or value can contain letters, digits, periods (.), hyphens (-), underscores (\_), forward slashes (/), and backslashes (\\).
+	//
+	// >  Dimensions must be formatted as a JSON string in a specified order.
+	Dimensions *string `json:"Dimensions,omitempty" xml:"Dimensions,omitempty"`
+	// The ID of the application group. Valid values of N: 1 to 21.
+	//
+	// >  If the metric does not belong to any application group, enter 0.
 	GroupId *string `json:"GroupId,omitempty" xml:"GroupId,omitempty"`
+	// The name of the metric. Valid values of N: 1 to 21. For more information, see [Appendix 1: Metrics](~~163515~~).
+	MetricName *string `json:"MetricName,omitempty" xml:"MetricName,omitempty"`
+	// The aggregation period. Valid values of N: 1 to 21. Unit: seconds. Valid values: 60 and 300.
+	//
+	// >  If the MetricList.N.Type parameter is set to 1, the MetricList.N.Period parameter is required.
+	Period *string `json:"Period,omitempty" xml:"Period,omitempty"`
+	// The timestamp when the metric data is generated. Valid values of N: 1 to 21. The timestamp can be in one of the following formats:
+	//
+	// *   The UTC timestamp that is in the YYYY-MM-DDThh:mm:ssZ format. Example: 20171012T132456.888+0800.
+	// *   The UNIX timestamp of the LONG type. Example: 1508136760000.
+	Time *string `json:"Time,omitempty" xml:"Time,omitempty"`
 	// The type of the reported data. Valid values of N: 1 to 21. Valid values:
 	//
 	// *   0: reports raw data
 	// *   1: reports aggregate data
 	//
 	// >  We recommend that you report aggregate data in both the aggregation periods of 60s and 300s. Otherwise, you cannot query monitoring data in a time span that is more than seven days.
-	MetricName *string `json:"MetricName,omitempty" xml:"MetricName,omitempty"`
-	// The aggregation period. Valid values of N: 1 to 21. Unit: seconds. Valid values: 60 and 300.
-	//
-	// >  If the MetricList.N.Type parameter is set to 1, the MetricList.N.Period parameter is required.
-	Period *string `json:"Period,omitempty" xml:"Period,omitempty"`
+	Type *string `json:"Type,omitempty" xml:"Type,omitempty"`
 	// The collection of metric values. Valid values of N: 1 to 21.
 	//
 	// >  If the MetricList.N.Type parameter is set to 0, the keys in this parameter must be set to the specified value. CloudMonitor aggregates raw data in each aggregation period to generate multiple statistical values, such as the maximum value, the count, and the total value.
-	Time *string `json:"Time,omitempty" xml:"Time,omitempty"`
-	// The timestamp when the metric data is generated. Valid values of N: 1 to 21. The timestamp can be in one of the following formats:
-	//
-	// *   The UTC timestamp that is in the YYYY-MM-DDThh:mm:ssZ format. Example: 20171012T132456.888+0800.
-	// *   The UNIX timestamp of the LONG type. Example: 1508136760000.
-	Type *string `json:"Type,omitempty" xml:"Type,omitempty"`
-	// The ID of the request.
 	Values *string `json:"Values,omitempty" xml:"Values,omitempty"`
 }
 
@@ -35400,9 +36177,13 @@ func (s *PutCustomMetricRequestMetricList) SetValues(v string) *PutCustomMetricR
 }
 
 type PutCustomMetricResponseBody struct {
-	// The name of the metric. Valid values of N: 1 to 21. For more information, see [Appendix 1: Metrics](~~163515~~).
-	Code      *string `json:"Code,omitempty" xml:"Code,omitempty"`
-	Message   *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// The HTTP status code.
+	//
+	// >  The status code 200 indicates that the call was successful.
+	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	// The error message.
+	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// The ID of the request.
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -35459,40 +36240,6 @@ func (s *PutCustomMetricResponse) SetBody(v *PutCustomMetricResponseBody) *PutCu
 }
 
 type PutCustomMetricRuleRequest struct {
-	// The HTTP status code.
-	//
-	// >  The value 200 indicates that the call was successful.
-	ComparisonOperator *string `json:"ComparisonOperator,omitempty" xml:"ComparisonOperator,omitempty"`
-	// The callback URL to which a POST request is sent when an alert is triggered based on the alert rule.
-	ContactGroups *string `json:"ContactGroups,omitempty" xml:"ContactGroups,omitempty"`
-	// The mute period during which notifications are not repeatedly sent for an alert. Unit: seconds. Default value: 86400. The default value indicates one day.
-	//
-	// >  Only one alert notification is sent during each mute period even if the metric value consecutively exceeds the alert threshold several times.
-	EffectiveInterval *string `json:"EffectiveInterval,omitempty" xml:"EffectiveInterval,omitempty"`
-	// The threshold of the metric value.
-	EmailSubject *string `json:"EmailSubject,omitempty" xml:"EmailSubject,omitempty"`
-	// The method that is used to calculate the metric values that trigger alerts.
-	EvaluationCount *int32 `json:"EvaluationCount,omitempty" xml:"EvaluationCount,omitempty"`
-	// The ID of the alert rule.
-	//
-	// >  You can specify an existing ID to modify the corresponding alert rule or specify a new ID to create an alert rule.
-	GroupId *string `json:"GroupId,omitempty" xml:"GroupId,omitempty"`
-	// The consecutive number of times for which the metric value is measured before an alert is triggered.
-	Level *string `json:"Level,omitempty" xml:"Level,omitempty"`
-	// The custom monitoring data to which the alert rule applies. The value includes the application group ID to which the custom monitoring data belongs and the dimension to which the metric belongs.
-	MetricName *string `json:"MetricName,omitempty" xml:"MetricName,omitempty"`
-	// The subject of the alert notification email.
-	Period *string `json:"Period,omitempty" xml:"Period,omitempty"`
-	// The alert group that receives alert notifications. Separate multiple alert groups with commas (,).
-	Resources *string `json:"Resources,omitempty" xml:"Resources,omitempty"`
-	// The name of the alert rule.
-	RuleId *string `json:"RuleId,omitempty" xml:"RuleId,omitempty"`
-	// The name of the metric.
-	//
-	// >  For more information about how to obtain the metric name, see [DescribeCustomMetricList](~~115005~~).
-	RuleName *string `json:"RuleName,omitempty" xml:"RuleName,omitempty"`
-	// The cycle that is used to aggregate custom monitoring data. Unit: seconds. Set the value to an integral multiple of 60. The original reporting cycle of custom monitoring data is used by default.
-	SilenceTime *int32 `json:"SilenceTime,omitempty" xml:"SilenceTime,omitempty"`
 	// The comparison operator before the threshold. Valid values:
 	//
 	// *   `>=`
@@ -35501,14 +36248,48 @@ type PutCustomMetricRuleRequest struct {
 	// *   `>`
 	// *   `<`
 	// *   `!=`
-	Statistics *string `json:"Statistics,omitempty" xml:"Statistics,omitempty"`
+	ComparisonOperator *string `json:"ComparisonOperator,omitempty" xml:"ComparisonOperator,omitempty"`
+	// The alert group that receives alert notifications. Separate multiple alert groups with commas (,).
+	ContactGroups *string `json:"ContactGroups,omitempty" xml:"ContactGroups,omitempty"`
+	// The time period during which the alert rule is effective. Valid values: 00:00 to 23:59.
+	EffectiveInterval *string `json:"EffectiveInterval,omitempty" xml:"EffectiveInterval,omitempty"`
+	// The subject of the alert notification email.
+	EmailSubject *string `json:"EmailSubject,omitempty" xml:"EmailSubject,omitempty"`
+	// The consecutive number of times for which the metric value is measured before an alert is triggered.
+	EvaluationCount *int32 `json:"EvaluationCount,omitempty" xml:"EvaluationCount,omitempty"`
+	// The ID of the application group to which the custom monitoring data belongs.
+	//
+	// >  The value 0 indicates that the reported custom monitoring data does not belong to an application group.
+	GroupId *string `json:"GroupId,omitempty" xml:"GroupId,omitempty"`
 	// The level of the alert. Valid values:
 	//
 	// *   CRITICAL
 	// *   WARN
 	// *   INFO
+	Level *string `json:"Level,omitempty" xml:"Level,omitempty"`
+	// The name of the metric.
+	//
+	// >  For more information about how to obtain the metric name, see [DescribeCustomMetricList](~~115005~~).
+	MetricName *string `json:"MetricName,omitempty" xml:"MetricName,omitempty"`
+	// The cycle that is used to aggregate custom monitoring data. Unit: seconds. Set the value to an integral multiple of 60. The original reporting cycle of custom monitoring data is used by default.
+	Period *string `json:"Period,omitempty" xml:"Period,omitempty"`
+	// The custom monitoring data to which the alert rule applies. The value includes the application group ID to which the custom monitoring data belongs and the dimension to which the metric belongs.
+	Resources *string `json:"Resources,omitempty" xml:"Resources,omitempty"`
+	// The ID of the alert rule.
+	//
+	// >  You can specify an existing ID to modify the corresponding alert rule or specify a new ID to create an alert rule.
+	RuleId *string `json:"RuleId,omitempty" xml:"RuleId,omitempty"`
+	// The name of the alert rule.
+	RuleName *string `json:"RuleName,omitempty" xml:"RuleName,omitempty"`
+	// The mute period during which notifications are not repeatedly sent for an alert. Unit: seconds. Default value: 86400. The default value indicates one day.
+	//
+	// >  Only one alert notification is sent during each mute period even if the metric value consecutively exceeds the alert threshold several times.
+	SilenceTime *int32 `json:"SilenceTime,omitempty" xml:"SilenceTime,omitempty"`
+	// The method that is used to calculate the metric values that trigger alerts.
+	Statistics *string `json:"Statistics,omitempty" xml:"Statistics,omitempty"`
+	// The threshold of the metric value.
 	Threshold *string `json:"Threshold,omitempty" xml:"Threshold,omitempty"`
-	// The time period during which the alert rule is effective. Valid values: 00:00 to 23:59.
+	// The callback URL to which a POST request is sent when an alert is triggered based on the alert rule.
 	Webhook *string `json:"Webhook,omitempty" xml:"Webhook,omitempty"`
 }
 
@@ -35601,16 +36382,18 @@ func (s *PutCustomMetricRuleRequest) SetWebhook(v string) *PutCustomMetricRuleRe
 }
 
 type PutCustomMetricRuleResponseBody struct {
-	// The returned message. If the call was successful, the return value is null. If the call failed, an error message is returned.
+	// The HTTP status code.
+	//
+	// >  The value 200 indicates that the call was successful.
 	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
-	// The ID of the request.
+	// The returned message. If the call was successful, the return value is null. If the call failed, an error message is returned.
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// The ID of the request.
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	// Indicates whether the call was successful. Valid values:
 	//
 	// *   true: The call was successful.
 	// *   false: The call failed.
-	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// Before you call this operation, call the PutCustomMetric operation to report custom monitoring data. For more information, see [PutCustomMetric](~~115004~~).
 	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
 }
 
@@ -35672,26 +36455,20 @@ func (s *PutCustomMetricRuleResponse) SetBody(v *PutCustomMetricRuleResponseBody
 }
 
 type PutEventRuleRequest struct {
-	// The operation that you want to perform. Set the value to **PutEventRule**.
+	// The description of the event-triggered alert rule.
 	Description  *string                            `json:"Description,omitempty" xml:"Description,omitempty"`
 	EventPattern []*PutEventRuleRequestEventPattern `json:"EventPattern,omitempty" xml:"EventPattern,omitempty" type:"Repeated"`
-	// The type of the cloud service. Valid values of N: 1 to 50.
+	// The type of the event-triggered alert rule. Valid values:
 	//
-	// >  You can call the DescribeSystemEventMetaList operation to query the cloud services that support event-triggered alerts. For more information, see [DescribeSystemEventMetaList](~~114972~~).
+	// *   SYSTEM: system event-triggered alert rule
+	// *   CUSTOM: custom event-triggered alert rule
 	EventType *string `json:"EventType,omitempty" xml:"EventType,omitempty"`
-	// The type of the event-triggered alert rule. Valid values of N: 1 to 50. Valid values:
-	//
-	// *   StatusNotification: fault notifications
-	// *   Exception: exceptions
-	// *   Maintenance: O\&M
-	// *   \*: all types
+	// The ID of the application group to which the event-triggered alert rule belongs.
 	GroupId  *string `json:"GroupId,omitempty" xml:"GroupId,omitempty"`
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	// The HTTP status code.
-	//
-	// >  The status code 200 indicates that the call was successful.
+	// The name of the event-triggered alert rule.
 	RuleName *string `json:"RuleName,omitempty" xml:"RuleName,omitempty"`
-	// The number of event-triggered alert rules that were created or modified.
+	// The mute period during which new alerts are not sent even if the trigger conditions are met. Unit: seconds.
 	SilenceTime *int64 `json:"SilenceTime,omitempty" xml:"SilenceTime,omitempty"`
 	// The status of the event-triggered alert rule. Valid values:
 	//
@@ -35749,16 +36526,18 @@ func (s *PutEventRuleRequest) SetState(v string) *PutEventRuleRequest {
 }
 
 type PutEventRuleRequestEventPattern struct {
-	// The SQL condition that is used to filter events. If the content of an event meets the specified SQL condition, an alert is automatically triggered.
-	//
-	// >  The syntax of SQL event filtering is consistent with the query syntax of Log Service.
+	// The keyword that is used to filter events. If the content of an event contains the specified keyword, an alert is automatically triggered.
 	CustomFilters *string   `json:"CustomFilters,omitempty" xml:"CustomFilters,omitempty"`
 	EventTypeList []*string `json:"EventTypeList,omitempty" xml:"EventTypeList,omitempty" type:"Repeated"`
 	LevelList     []*string `json:"LevelList,omitempty" xml:"LevelList,omitempty" type:"Repeated"`
 	NameList      []*string `json:"NameList,omitempty" xml:"NameList,omitempty" type:"Repeated"`
-	// The name of the event-triggered alert rule.
+	// The type of the cloud service. Valid values of N: 1 to 50.
+	//
+	// >  You can call the DescribeSystemEventMetaList operation to query the cloud services that support event-triggered alerts. For more information, see [DescribeSystemEventMetaList](~~114972~~).
 	Product *string `json:"Product,omitempty" xml:"Product,omitempty"`
-	// The description of the event-triggered alert rule.
+	// The SQL condition that is used to filter events. If the content of an event meets the specified SQL condition, an alert is automatically triggered.
+	//
+	// >  The syntax of SQL event filtering is consistent with the query syntax of Log Service.
 	SQLFilter  *string   `json:"SQLFilter,omitempty" xml:"SQLFilter,omitempty"`
 	StatusList []*string `json:"StatusList,omitempty" xml:"StatusList,omitempty" type:"Repeated"`
 }
@@ -35807,19 +36586,21 @@ func (s *PutEventRuleRequestEventPattern) SetStatusList(v []*string) *PutEventRu
 }
 
 type PutEventRuleResponseBody struct {
-	// The ID of the request.
-	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
-	// For more information about common request parameters, see [Common parameters](~~199331~~).
-	Data *string `json:"Data,omitempty" xml:"Data,omitempty"`
-	// The level of the event-triggered alert rule. Valid values of N: 1 to 50. Valid values:
+	// The HTTP status code.
 	//
-	// *   CRITICAL: critical
-	// *   WARN: warning
-	// *   INFO: information
-	// *   \*: all levels
-	Message   *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// >  The status code 200 indicates that the call was successful.
+	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	// The number of event-triggered alert rules that were created or modified.
+	Data *string `json:"Data,omitempty" xml:"Data,omitempty"`
+	// The error message.
+	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// The ID of the request.
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	Success   *bool   `json:"Success,omitempty" xml:"Success,omitempty"`
+	// Indicates whether the call was successful. Valid values:
+	//
+	// *   true: The call was successful.
+	// *   false: The call failed.
+	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
 }
 
 func (s PutEventRuleResponseBody) String() string {
@@ -35885,18 +36666,20 @@ func (s *PutEventRuleResponse) SetBody(v *PutEventRuleResponseBody) *PutEventRul
 }
 
 type PutEventRuleTargetsRequest struct {
+	// The information about the alert contact groups that receive alert notifications.
 	ContactParameters []*PutEventRuleTargetsRequestContactParameters `json:"ContactParameters,omitempty" xml:"ContactParameters,omitempty" type:"Repeated"`
-	FcParameters      []*PutEventRuleTargetsRequestFcParameters      `json:"FcParameters,omitempty" xml:"FcParameters,omitempty" type:"Repeated"`
-	MnsParameters     []*PutEventRuleTargetsRequestMnsParameters     `json:"MnsParameters,omitempty" xml:"MnsParameters,omitempty" type:"Repeated"`
+	// The information about the recipients in Function Compute.
+	FcParameters []*PutEventRuleTargetsRequestFcParameters `json:"FcParameters,omitempty" xml:"FcParameters,omitempty" type:"Repeated"`
+	// The information about the recipients in Message Service (MNS).
+	MnsParameters []*PutEventRuleTargetsRequestMnsParameters `json:"MnsParameters,omitempty" xml:"MnsParameters,omitempty" type:"Repeated"`
+	// The parameters of API callback notification.
 	OpenApiParameters []*PutEventRuleTargetsRequestOpenApiParameters `json:"OpenApiParameters,omitempty" xml:"OpenApiParameters,omitempty" type:"Repeated"`
 	RegionId          *string                                        `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	// The name of the protocol. Valid values of N: 1 to 5. Valid values:
-	//
-	// *   http
-	// *   telnet
-	// *   ping
-	RuleName          *string                                        `json:"RuleName,omitempty" xml:"RuleName,omitempty"`
-	SlsParameters     []*PutEventRuleTargetsRequestSlsParameters     `json:"SlsParameters,omitempty" xml:"SlsParameters,omitempty" type:"Repeated"`
+	// The name of the alert rule.
+	RuleName *string `json:"RuleName,omitempty" xml:"RuleName,omitempty"`
+	// The information about the recipients in Simple Log Service.
+	SlsParameters []*PutEventRuleTargetsRequestSlsParameters `json:"SlsParameters,omitempty" xml:"SlsParameters,omitempty" type:"Repeated"`
+	// The information about the callback URLs that are used to receive alert notifications.
 	WebhookParameters []*PutEventRuleTargetsRequestWebhookParameters `json:"WebhookParameters,omitempty" xml:"WebhookParameters,omitempty" type:"Repeated"`
 }
 
@@ -35949,13 +36732,13 @@ func (s *PutEventRuleTargetsRequest) SetWebhookParameters(v []*PutEventRuleTarge
 }
 
 type PutEventRuleTargetsRequestContactParameters struct {
-	// The operation that you want to perform. Set the value to **PutEventRuleTargets**.
+	// The name of the alert contact group. Valid values of N: 1 to 5.
 	ContactGroupName *string `json:"ContactGroupName,omitempty" xml:"ContactGroupName,omitempty"`
-	// The HTTP request method. Valid values of N: 1 to 5.
-	//
-	// Valid values: GET and POST.
+	// The ID of the recipient that receives alert notifications. Valid values of N: 1 to 5.
 	Id *string `json:"Id,omitempty" xml:"Id,omitempty"`
-	// The name of the event-triggered alert rule.
+	// The alert level and the corresponding notification methods. Valid values of N: 1 to 5. Valid values:
+	//
+	// 4: Alert notifications are sent by using DingTalk chatbots and emails.
 	Level *string `json:"Level,omitempty" xml:"Level,omitempty"`
 }
 
@@ -35983,15 +36766,13 @@ func (s *PutEventRuleTargetsRequestContactParameters) SetLevel(v string) *PutEve
 }
 
 type PutEventRuleTargetsRequestFcParameters struct {
-	// The number of resources that failed to be created or modified.
+	// The name of the function. Valid values of N: 1 to 5.
 	FunctionName *string `json:"FunctionName,omitempty" xml:"FunctionName,omitempty"`
-	// The HTTP status code.
-	//
-	// >  The status code 200 indicates that the call was successful.
+	// The ID of the recipient that receives alert notifications. Valid values of N: 1 to 5.
 	Id *string `json:"Id,omitempty" xml:"Id,omitempty"`
-	// The MNS topic.
+	// The region where Function Compute is deployed. Valid values of N: 1 to 5.
 	Region *string `json:"Region,omitempty" xml:"Region,omitempty"`
-	// The region where Log Service is deployed. Valid values of N: 1 to 5.
+	// The name of the Function Compute service. Valid values of N: 1 to 5.
 	ServiceName *string `json:"ServiceName,omitempty" xml:"ServiceName,omitempty"`
 }
 
@@ -36026,19 +36807,11 @@ func (s *PutEventRuleTargetsRequestFcParameters) SetServiceName(v string) *PutEv
 type PutEventRuleTargetsRequestMnsParameters struct {
 	// The ID of the recipient that receives alert notifications. Valid values of N: 1 to 5.
 	Id *string `json:"Id,omitempty" xml:"Id,omitempty"`
-	// The version of the API.
+	// The name of the MNS queue. Valid values of N: 1 to 5.
 	Queue *string `json:"Queue,omitempty" xml:"Queue,omitempty"`
-	// The ID of the recipient that receives alert notifications. Valid values of N: 1 to 5.
+	// The region where Message Service (MNS) is deployed. Valid values of N: 1 to 5.
 	Region *string `json:"Region,omitempty" xml:"Region,omitempty"`
-	// The Alibaba Cloud Resource Name (ARN) of the resource. Valid values of N: 1 to 5.
-	//
-	// Format: `arn:acs:${Service}:${Region}:${Account}:${ResourceType}/${ResourceId}`. Fields:
-	//
-	// *   Service: the code of a cloud service
-	// *   Region: the region ID
-	// *   Account: the ID of an Alibaba Cloud account
-	// *   ResourceType: the resource type
-	// *   ResourceId: the resource ID
+	// The MNS topic.
 	Topic *string `json:"Topic,omitempty" xml:"Topic,omitempty"`
 }
 
@@ -36071,21 +36844,27 @@ func (s *PutEventRuleTargetsRequestMnsParameters) SetTopic(v string) *PutEventRu
 }
 
 type PutEventRuleTargetsRequestOpenApiParameters struct {
-	// The ID of the recipient that receives alert notifications sent by an API callback.
+	// The API name.
 	Action *string `json:"Action,omitempty" xml:"Action,omitempty"`
-	// The error message.
+	// The Alibaba Cloud Resource Name (ARN) of the resource. Valid values of N: 1 to 5. Format: `arn:acs:${Service}:${Region}:${Account}:${ResourceType}/${ResourceId}`. Fields:
+	//
+	// *   Service: the code of a cloud service
+	// *   Region: the region ID
+	// *   Account: the ID of an Alibaba Cloud account
+	// *   ResourceType: the resource type
+	// *   ResourceId: the resource ID
 	Arn *string `json:"Arn,omitempty" xml:"Arn,omitempty"`
-	// The region where Function Compute is deployed. Valid values of N: 1 to 5.
+	// The ID of the recipient that receives alert notifications sent by an API callback.
 	Id *string `json:"Id,omitempty" xml:"Id,omitempty"`
-	// The region where Message Service (MNS) is deployed. Valid values of N: 1 to 5.
+	// The parameters of the alert callback. Specify the parameters in the JSON format.
 	JsonParams *string `json:"JsonParams,omitempty" xml:"JsonParams,omitempty"`
-	// The name of the Log Service project. Valid values of N: 1 to 5.
+	// The ID of the cloud service to which the API operation belongs.
 	Product *string `json:"Product,omitempty" xml:"Product,omitempty"`
-	// The callback URL. Valid values of N: 1 to 5.
+	// The region where the resource resides.
 	Region *string `json:"Region,omitempty" xml:"Region,omitempty"`
-	// This parameter is returned if the specified alert contact groups in the request failed to be created or modified.
+	// The name of the role.
 	Role *string `json:"Role,omitempty" xml:"Role,omitempty"`
-	// The name of the alert contact group.
+	// The version of the API.
 	Version *string `json:"Version,omitempty" xml:"Version,omitempty"`
 }
 
@@ -36138,13 +36917,13 @@ func (s *PutEventRuleTargetsRequestOpenApiParameters) SetVersion(v string) *PutE
 }
 
 type PutEventRuleTargetsRequestSlsParameters struct {
-	// The name of the alert contact group. Valid values of N: 1 to 5.
-	Id *string `json:"Id,omitempty" xml:"Id,omitempty"`
-	// The name of the Log Service Logstore. Valid values of N: 1 to 5.
-	LogStore *string `json:"LogStore,omitempty" xml:"LogStore,omitempty"`
-	// The parameters of the alert callback. The parameters are in the JSON format.
-	Project *string `json:"Project,omitempty" xml:"Project,omitempty"`
 	// The ID of the recipient that receives alert notifications. Valid values of N: 1 to 5.
+	Id *string `json:"Id,omitempty" xml:"Id,omitempty"`
+	// The name of the Simple Log Service Logstore. Valid values of N: 1 to 5.
+	LogStore *string `json:"LogStore,omitempty" xml:"LogStore,omitempty"`
+	// The name of the Simple Log Service project. Valid values of N: 1 to 5.
+	Project *string `json:"Project,omitempty" xml:"Project,omitempty"`
+	// The region where Simple Log Service is deployed. Valid values of N: 1 to 5.
 	Region *string `json:"Region,omitempty" xml:"Region,omitempty"`
 }
 
@@ -36177,15 +36956,19 @@ func (s *PutEventRuleTargetsRequestSlsParameters) SetRegion(v string) *PutEventR
 }
 
 type PutEventRuleTargetsRequestWebhookParameters struct {
-	// The alert notification methods. Valid values of N: 1 to 5. Valid values:
-	//
-	// 4: Alert notifications are sent by using DingTalk chatbots and emails.
+	// The ID of the recipient that receives alert notifications. Valid values of N: 1 to 5.
 	Id *string `json:"Id,omitempty" xml:"Id,omitempty"`
-	// The region where the resource resides.
+	// The HTTP request method. Valid values of N: 1 to 5.
+	//
+	// Valid values: GET and POST.
 	Method *string `json:"Method,omitempty" xml:"Method,omitempty"`
-	// The ID of the recipient.
+	// The name of the protocol. Valid values of N: 1 to 5. Valid values:
+	//
+	// *   http
+	// *   telnet
+	// *   ping
 	Protocol *string `json:"Protocol,omitempty" xml:"Protocol,omitempty"`
-	// The name of the function. Valid values of N: 1 to 5.
+	// The callback URL. Valid values of N: 1 to 5.
 	Url *string `json:"Url,omitempty" xml:"Url,omitempty"`
 }
 
@@ -36218,21 +37001,23 @@ func (s *PutEventRuleTargetsRequestWebhookParameters) SetUrl(v string) *PutEvent
 }
 
 type PutEventRuleTargetsResponseBody struct {
-	// The name of the API operation.
-	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
-	// The name of the queue. Valid values of N: 1 to 5.
-	FailedContactParameters *PutEventRuleTargetsResponseBodyFailedContactParameters `json:"FailedContactParameters,omitempty" xml:"FailedContactParameters,omitempty" type:"Struct"`
-	FailedFcParameters      *PutEventRuleTargetsResponseBodyFailedFcParameters      `json:"FailedFcParameters,omitempty" xml:"FailedFcParameters,omitempty" type:"Struct"`
-	FailedMnsParameters     *PutEventRuleTargetsResponseBodyFailedMnsParameters     `json:"FailedMnsParameters,omitempty" xml:"FailedMnsParameters,omitempty" type:"Struct"`
-	// The name of the Function Compute service. Valid values of N: 1 to 5.
-	FailedParameterCount *string `json:"FailedParameterCount,omitempty" xml:"FailedParameterCount,omitempty"`
-	// The ID of the recipient that receives alert notifications. Valid values of N: 1 to 5.
-	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
-	// The alert notification methods. Valid values:
+	// The HTTP status code.
 	//
-	// 4: Alert notifications are sent by using DingTalk chatbots and emails.
+	// >  The status code 200 indicates that the request was successful.
+	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	// This parameter is returned if the specified alert contact groups in the request failed to be created or modified.
+	FailedContactParameters *PutEventRuleTargetsResponseBodyFailedContactParameters `json:"FailedContactParameters,omitempty" xml:"FailedContactParameters,omitempty" type:"Struct"`
+	// This parameter is returned if the specified functions in the request failed to be created or modified in Function Compute.
+	FailedFcParameters *PutEventRuleTargetsResponseBodyFailedFcParameters `json:"FailedFcParameters,omitempty" xml:"FailedFcParameters,omitempty" type:"Struct"`
+	// This parameter is returned if the specified queues in the request failed to be created or modified in MNS.
+	FailedMnsParameters *PutEventRuleTargetsResponseBodyFailedMnsParameters `json:"FailedMnsParameters,omitempty" xml:"FailedMnsParameters,omitempty" type:"Struct"`
+	// The number of resources that failed to be created or modified.
+	FailedParameterCount *string `json:"FailedParameterCount,omitempty" xml:"FailedParameterCount,omitempty"`
+	// The error message.
+	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// The request ID.
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// The name of the role.
+	// Indicates whether the request was successful. Valid values: true and false.
 	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
 }
 
@@ -36302,10 +37087,14 @@ func (s *PutEventRuleTargetsResponseBodyFailedContactParameters) SetContactParam
 }
 
 type PutEventRuleTargetsResponseBodyFailedContactParametersContactParameter struct {
-	// The ID of the request.
+	// The name of the alert contact group.
 	ContactGroupName *string `json:"ContactGroupName,omitempty" xml:"ContactGroupName,omitempty"`
-	Id               *int32  `json:"Id,omitempty" xml:"Id,omitempty"`
-	Level            *string `json:"Level,omitempty" xml:"Level,omitempty"`
+	// The ID of the recipient.
+	Id *int32 `json:"Id,omitempty" xml:"Id,omitempty"`
+	// The alert level and the corresponding notification methods. Valid values:
+	//
+	// 4: Alert notifications are sent by using DingTalk chatbots and emails.
+	Level *string `json:"Level,omitempty" xml:"Level,omitempty"`
 }
 
 func (s PutEventRuleTargetsResponseBodyFailedContactParametersContactParameter) String() string {
@@ -36349,10 +37138,14 @@ func (s *PutEventRuleTargetsResponseBodyFailedFcParameters) SetFcParameter(v []*
 }
 
 type PutEventRuleTargetsResponseBodyFailedFcParametersFcParameter struct {
+	// The name of the function.
 	FunctionName *string `json:"FunctionName,omitempty" xml:"FunctionName,omitempty"`
-	Id           *int32  `json:"Id,omitempty" xml:"Id,omitempty"`
-	Region       *string `json:"Region,omitempty" xml:"Region,omitempty"`
-	ServiceName  *string `json:"ServiceName,omitempty" xml:"ServiceName,omitempty"`
+	// The ID of the recipient.
+	Id *int32 `json:"Id,omitempty" xml:"Id,omitempty"`
+	// The region ID.
+	Region *string `json:"Region,omitempty" xml:"Region,omitempty"`
+	// The name of the Function Compute service.
+	ServiceName *string `json:"ServiceName,omitempty" xml:"ServiceName,omitempty"`
 }
 
 func (s PutEventRuleTargetsResponseBodyFailedFcParametersFcParameter) String() string {
@@ -36401,8 +37194,11 @@ func (s *PutEventRuleTargetsResponseBodyFailedMnsParameters) SetMnsParameter(v [
 }
 
 type PutEventRuleTargetsResponseBodyFailedMnsParametersMnsParameter struct {
-	Id     *int32  `json:"Id,omitempty" xml:"Id,omitempty"`
-	Queue  *string `json:"Queue,omitempty" xml:"Queue,omitempty"`
+	// The ID of the recipient.
+	Id *int32 `json:"Id,omitempty" xml:"Id,omitempty"`
+	// The name of the MNS queue.
+	Queue *string `json:"Queue,omitempty" xml:"Queue,omitempty"`
+	// The region ID.
 	Region *string `json:"Region,omitempty" xml:"Region,omitempty"`
 }
 
@@ -37428,12 +38224,10 @@ func (s *PutHybridMonitorMetricDataResponse) SetBody(v *PutHybridMonitorMetricDa
 
 type PutLogMonitorRequest struct {
 	Aggregates []*PutLogMonitorRequestAggregates `json:"Aggregates,omitempty" xml:"Aggregates,omitempty" type:"Repeated"`
-	// The ID of the log monitoring metric.
+	// The ID of the application group.
 	GroupId  *string                         `json:"GroupId,omitempty" xml:"GroupId,omitempty"`
 	Groupbys []*PutLogMonitorRequestGroupbys `json:"Groupbys,omitempty" xml:"Groupbys,omitempty" type:"Repeated"`
-	// The HTTP status code.
-	//
-	// >  The status code 200 indicates that the call is successful.
+	// The ID of the log monitoring metric.
 	LogId *string `json:"LogId,omitempty" xml:"LogId,omitempty"`
 	// The extended field. The extended field allows you to perform basic operations on the aggregation results.
 	//
@@ -37445,29 +38239,26 @@ type PutLogMonitorRequest struct {
 	// *   errorPercent: the alias of the field generated in the calculation result. You can specify the alias as needed.
 	// *   5XXNumber/TotalNumber\*100: the calculation expression.
 	MetricExpress *string `json:"MetricExpress,omitempty" xml:"MetricExpress,omitempty"`
-	// The returned message.
-	//
-	// *   If the call is successful, the value `successful` is returned.
-	// *   If the call fails, an error message is returned. Example: `alias of aggreate must be set value.`
+	// The name of the metric. For more information about the metrics for cloud services, see [Appendix 1: Metrics](~~163515~~).
 	MetricName *string `json:"MetricName,omitempty" xml:"MetricName,omitempty"`
 	RegionId   *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	// The name of the metric. For more information about the metrics for cloud services, see [Appendix 1: Metrics](~~163515~~).
+	// The name of the Log Service Logstore.
 	SlsLogstore *string `json:"SlsLogstore,omitempty" xml:"SlsLogstore,omitempty"`
-	// The name of the field that is specified as the dimension. Valid values of N: 1 to 10.
+	// The name of the Log Service project.
 	SlsProject *string `json:"SlsProject,omitempty" xml:"SlsProject,omitempty"`
-	// The operation that you want to perform. Set the value to PutLogMonitor.
+	// The region in which the Log Service project resides.
 	SlsRegionId *string `json:"SlsRegionId,omitempty" xml:"SlsRegionId,omitempty"`
+	// The size of the tumbling window for calculation. Unit: seconds. CloudMonitor performs aggregation for each tumbling window.
+	Tumblingwindows *string `json:"Tumblingwindows,omitempty" xml:"Tumblingwindows,omitempty"`
+	// The unit.
+	Unit        *string                            `json:"Unit,omitempty" xml:"Unit,omitempty"`
+	ValueFilter []*PutLogMonitorRequestValueFilter `json:"ValueFilter,omitempty" xml:"ValueFilter,omitempty" type:"Repeated"`
 	// The logical operator that is used between log filter conditions. Valid values:
 	//
 	// *   and
 	// *   or
 	//
 	// >  The ValueFilterRelation and `ValueFilter.N.Key` parameters must be used in pair.
-	Tumblingwindows *string `json:"Tumblingwindows,omitempty" xml:"Tumblingwindows,omitempty"`
-	// The region in which the Log Service project resides.
-	Unit        *string                            `json:"Unit,omitempty" xml:"Unit,omitempty"`
-	ValueFilter []*PutLogMonitorRequestValueFilter `json:"ValueFilter,omitempty" xml:"ValueFilter,omitempty" type:"Repeated"`
-	// The field value to be matched in the filter condition. Valid values of N: 1 to 10.
 	ValueFilterRelation *string `json:"ValueFilterRelation,omitempty" xml:"ValueFilterRelation,omitempty"`
 }
 
@@ -37550,11 +38341,20 @@ func (s *PutLogMonitorRequest) SetValueFilterRelation(v string) *PutLogMonitorRe
 }
 
 type PutLogMonitorRequestAggregates struct {
-	// The name of the Log Service project.
-	Alias *string `json:"Alias,omitempty" xml:"Alias,omitempty"`
 	// The alias of the aggregate function. Valid values of N: 1 to 10.
+	Alias *string `json:"Alias,omitempty" xml:"Alias,omitempty"`
+	// The name of the field to be aggregated. Valid values of N: 1 to 10.
 	FieldName *string `json:"FieldName,omitempty" xml:"FieldName,omitempty"`
-	// The ID of the log monitoring metric.
+	// The function that is used to aggregate the monitoring data of logs within an aggregation period. Valid values of N: 1 to 10. Valid values:
+	//
+	// *   count: counts the number.
+	// *   sum: calculates the total value.
+	// *   avg: calculates the average value.
+	// *   max: selects the maximum value.
+	// *   min: selects the minimum value.
+	// *   countps: calculates the counted number of the specified field divided by the total number of seconds of the aggregation period.
+	// *   sumps: calculates the total value of the specified field divided by the total number of seconds of the aggregation period.
+	// *   distinct: counts the number of logs where the specified field appears within the aggregation period.
 	Function *string `json:"Function,omitempty" xml:"Function,omitempty"`
 }
 
@@ -37582,18 +38382,9 @@ func (s *PutLogMonitorRequestAggregates) SetFunction(v string) *PutLogMonitorReq
 }
 
 type PutLogMonitorRequestGroupbys struct {
-	// The function that is used to aggregate the monitoring data of logs within an aggregation period. Valid values of N: 1 to 10. Valid values:
-	//
-	// *   count: counts the number.
-	// *   sum: calculates the total value.
-	// *   avg: calculates the average value.
-	// *   max: selects the maximum value.
-	// *   min: selects the minimum value.
-	// *   countps: calculates the counted number of the specified field divided by the total number of seconds of the aggregation period.
-	// *   sumps: calculates the total value of the specified field divided by the total number of seconds of the aggregation period.
-	// *   distinct: counts the number of logs where the specified field appears within the aggregation period.
+	// The alias of the dimension based on which the data is grouped. Valid values of N: 1 to 10.
 	Alias *string `json:"Alias,omitempty" xml:"Alias,omitempty"`
-	// The ID of the application group.
+	// The name of the field that is specified as the dimension. Valid values of N: 1 to 10.
 	FieldName *string `json:"FieldName,omitempty" xml:"FieldName,omitempty"`
 }
 
@@ -37616,6 +38407,8 @@ func (s *PutLogMonitorRequestGroupbys) SetFieldName(v string) *PutLogMonitorRequ
 }
 
 type PutLogMonitorRequestValueFilter struct {
+	// The name of the log field that is used for matching in the filter condition. Valid values of N: 1 to 10.
+	Key *string `json:"Key,omitempty" xml:"Key,omitempty"`
 	// The method that is used to match the field value. Valid values of N: 1 to 10. Valid values:
 	//
 	// *   `contain`: contains
@@ -37624,10 +38417,8 @@ type PutLogMonitorRequestValueFilter struct {
 	// *   `<`: be less than
 	// *   `>=`: be greater than or equal to
 	// *   `<=`: be less than or equal to
-	Key *string `json:"Key,omitempty" xml:"Key,omitempty"`
-	// The size of the tumbling window for calculation. Unit: seconds. CloudMonitor performs aggregation for each tumbling window.
 	Operator *string `json:"Operator,omitempty" xml:"Operator,omitempty"`
-	// The alias of the dimension based on which the data is grouped. Valid values of N: 1 to 10.
+	// The field value to be matched in the filter condition. Valid values of N: 1 to 10.
 	Value *string `json:"Value,omitempty" xml:"Value,omitempty"`
 }
 
@@ -37655,14 +38446,24 @@ func (s *PutLogMonitorRequestValueFilter) SetValue(v string) *PutLogMonitorReque
 }
 
 type PutLogMonitorResponseBody struct {
-	// The name of the Log Service Logstore.
-	Code  *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	// The HTTP status code.
+	//
+	// >  The status code 200 indicates that the call is successful.
+	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	// The ID of the log monitoring metric.
 	LogId *string `json:"LogId,omitempty" xml:"LogId,omitempty"`
-	// The ID of the request.
+	// The returned message.
+	//
+	// *   If the call is successful, the value `successful` is returned.
+	// *   If the call fails, an error message is returned. Example: `alias of aggreate must be set value.`
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
-	// For more information about common request parameters, see [Common parameters](~~199331~~).
+	// The ID of the request.
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	Success   *bool   `json:"Success,omitempty" xml:"Success,omitempty"`
+	// Indicates whether the call is successful. Valid values:
+	//
+	// *   true: The call is successful.
+	// *   false: The call fails.
+	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
 }
 
 func (s PutLogMonitorResponseBody) String() string {
@@ -37729,7 +38530,9 @@ func (s *PutLogMonitorResponse) SetBody(v *PutLogMonitorResponseBody) *PutLogMon
 
 type PutMetricRuleTargetsRequest struct {
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	// The list of resources that failed to be created or modified.
+	// The ID of the alert rule.
+	//
+	// For information about how to obtain the ID of an alert rule, see [DescribeMetricRuleList](~~114941~~).
 	RuleId  *string                               `json:"RuleId,omitempty" xml:"RuleId,omitempty"`
 	Targets []*PutMetricRuleTargetsRequestTargets `json:"Targets,omitempty" xml:"Targets,omitempty" type:"Repeated"`
 }
@@ -37760,6 +38563,8 @@ func (s *PutMetricRuleTargetsRequest) SetTargets(v []*PutMetricRuleTargetsReques
 type PutMetricRuleTargetsRequestTargets struct {
 	// The ARN of the resource.
 	//
+	// For information about how to obtain the ARN of a resource, see [DescribeMetricRuleTargets](~~121592~~).
+	//
 	// Format: `acs:{Service name abbreviation}:{regionId}:{userId}:/{Resource type}/{Resource name}/message`. Example: `acs:mns:cn-hangzhou:120886317861****:/queues/test123/message`. Fields:
 	//
 	// *   {Service name abbreviation}: the abbreviation of the service name. Valid value: mns.
@@ -37771,11 +38576,13 @@ type PutMetricRuleTargetsRequestTargets struct {
 	//
 	// For information about how to obtain the ID of a resource for which alerts are triggered, see [DescribeMetricRuleTargets](~~121592~~).
 	Id *string `json:"Id,omitempty" xml:"Id,omitempty"`
-	// The ID of the resource for which alerts are triggered.
+	// The parameters of the alert callback. The parameters are in the JSON format.
 	JsonParams *string `json:"JsonParams,omitempty" xml:"JsonParams,omitempty"`
-	// The HTTP status code.
+	// The level of the alert. Valid values:
 	//
-	// >  The status code 200 indicates that the call was successful.
+	// *   INFO: information
+	// *   WARN: warning
+	// *   CRITICAL: critical
 	Level *string `json:"Level,omitempty" xml:"Level,omitempty"`
 }
 
@@ -37808,30 +38615,20 @@ func (s *PutMetricRuleTargetsRequestTargets) SetLevel(v string) *PutMetricRuleTa
 }
 
 type PutMetricRuleTargetsResponseBody struct {
-	// The operation that you want to perform. Set the value to **PutMetricRuleTargets**.
+	// The HTTP status code.
+	//
+	// >  The status code 200 indicates that the call was successful.
 	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
-	// The ARN of the resource.
-	//
-	// For information about how to obtain the ARN of a resource, see [DescribeMetricRuleTargets](~~121592~~).
-	//
-	// Format: `acs:{Service name abbreviation}:{regionId}:{userId}:/{Resource type}/{Resource name}/message`. Example: `acs:mns:cn-hangzhou:120886317861****:/queues/test123/message`. Fields:
-	//
-	// *   {Service name abbreviation}: the abbreviation of the service name. Valid value: mns.
-	// *   {userId}: the ID of the Alibaba Cloud account.
-	// *   {regionId}: the region ID of the message queue or topic.
-	// *   {Resource type}`: the type of the resource for which alerts are triggered. Valid values: - **queues** - **topics** {Resource name}: the name of the resource. - If the resource type is set to **queues**, the resource name is the name of the message queue. - If the resource type is set to **topics**, the resource name is the name of the topic.`
+	// The list of resources that failed to be created or modified.
 	FailData *PutMetricRuleTargetsResponseBodyFailData `json:"FailData,omitempty" xml:"FailData,omitempty" type:"Struct"`
 	// The error message.
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
-	// The ID of the alert rule.
-	//
-	// For information about how to obtain the ID of an alert rule, see [DescribeMetricRuleList](~~114941~~).
+	// The ID of the request.
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// The level of the alert. Valid values:
+	// Indicates whether the call was successful. Valid values:
 	//
-	// *   INFO: information
-	// *   WARN: warning
-	// *   CRITICAL: critical
+	// *   true: The call was successful.
+	// *   false: The call failed.
 	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
 }
 
@@ -37869,7 +38666,7 @@ func (s *PutMetricRuleTargetsResponseBody) SetSuccess(v bool) *PutMetricRuleTarg
 }
 
 type PutMetricRuleTargetsResponseBodyFailData struct {
-	// The ID of the request.
+	// The information about the resource for which alerts are triggered.
 	Targets *PutMetricRuleTargetsResponseBodyFailDataTargets `json:"Targets,omitempty" xml:"Targets,omitempty" type:"Struct"`
 }
 
@@ -37904,9 +38701,22 @@ func (s *PutMetricRuleTargetsResponseBodyFailDataTargets) SetTarget(v []*PutMetr
 }
 
 type PutMetricRuleTargetsResponseBodyFailDataTargetsTarget struct {
+	// The ARN of the resource.
+	//
+	// Format: `acs:{Service name abbreviation}:{regionId}:{userId}:/{Resource type}/{Resource name}/message`. Example: `acs:mns:cn-hangzhou:120886317861****:/queues/test123/message`. Fields:
+	//
+	// *   {Service name abbreviation}: the abbreviation of the service name. Valid value: mns.
+	// *   {userId}: the ID of the Alibaba Cloud account.
+	// *   {regionId}: the region ID of the message queue or topic.
+	// *   {Resource type}`: the type of the resource for which alerts are triggered. Valid values: - **queues** - **topics** {Resource name}: the name of the resource. - If the resource type is set to **queues**, the resource name is the name of the message queue. - If the resource type is set to **topics**, the resource name is the name of the topic.`
 	Arn *string `json:"Arn,omitempty" xml:"Arn,omitempty"`
-	// For more information about common request parameters, see [Common parameters](~~199331~~).
-	Id    *string `json:"Id,omitempty" xml:"Id,omitempty"`
+	// The ID of the resource for which alerts are triggered.
+	Id *string `json:"Id,omitempty" xml:"Id,omitempty"`
+	// The level of the alert. Valid values:
+	//
+	// *   INFO: information
+	// *   WARN: warning
+	// *   CRITICAL: critical
 	Level *string `json:"Level,omitempty" xml:"Level,omitempty"`
 }
 
@@ -37963,15 +38773,14 @@ func (s *PutMetricRuleTargetsResponse) SetBody(v *PutMetricRuleTargetsResponseBo
 }
 
 type PutMonitorGroupDynamicRuleRequest struct {
-	// The method that is used to filter instances. Valid values of N: 1 to 3. Valid values:
-	//
-	// *   contains: contains
-	// *   notContains: excludes
-	// *   startWith: starts with a prefix
-	// *   endWith: ends with a suffix
-	GroupId    *int64                                         `json:"GroupId,omitempty" xml:"GroupId,omitempty"`
-	GroupRules []*PutMonitorGroupDynamicRuleRequestGroupRules `json:"GroupRules,omitempty" xml:"GroupRules,omitempty" type:"Repeated"`
 	// The ID of the application group.
+	GroupId *int64 `json:"GroupId,omitempty" xml:"GroupId,omitempty"`
+	// None.
+	GroupRules []*PutMonitorGroupDynamicRuleRequestGroupRules `json:"GroupRules,omitempty" xml:"GroupRules,omitempty" type:"Repeated"`
+	// The mode for creating the alert rule. Valid values:
+	//
+	// *   true: creates asynchronously
+	// *   false (default): creates synchronously
 	IsAsync  *bool   `json:"IsAsync,omitempty" xml:"IsAsync,omitempty"`
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 }
@@ -38005,17 +38814,19 @@ func (s *PutMonitorGroupDynamicRuleRequest) SetRegionId(v string) *PutMonitorGro
 }
 
 type PutMonitorGroupDynamicRuleRequestGroupRules struct {
+	// The cloud service to which the alert rule is applied. Valid values of N: 1 to 3. Valid values:
+	//
+	// *   ecs: Elastic Compute Service (ECS)
+	// *   rds: ApsaraDB RDS
+	// *   slb: Server Load Balancer (SLB)
+	Category *string `json:"Category,omitempty" xml:"Category,omitempty"`
 	// The logical operator used between conditional expressions in the alert rule. Valid values of N: 1 to 3. Valid values:
 	//
 	// *   and: The instances that meet all the conditional expressions are automatically added to the application group.
 	// *   or: The instances that meet one of the conditional expressions are automatically added to the application group.
-	Category *string `json:"Category,omitempty" xml:"Category,omitempty"`
-	// The mode for creating the alert rule. Valid values:
-	//
-	// *   true: creates asynchronously
-	// *   false (default value): creates synchronously
-	FilterRelation *string                                               `json:"FilterRelation,omitempty" xml:"FilterRelation,omitempty"`
-	Filters        []*PutMonitorGroupDynamicRuleRequestGroupRulesFilters `json:"Filters,omitempty" xml:"Filters,omitempty" type:"Repeated"`
+	FilterRelation *string `json:"FilterRelation,omitempty" xml:"FilterRelation,omitempty"`
+	// None.
+	Filters []*PutMonitorGroupDynamicRuleRequestGroupRulesFilters `json:"Filters,omitempty" xml:"Filters,omitempty" type:"Repeated"`
 }
 
 func (s PutMonitorGroupDynamicRuleRequestGroupRules) String() string {
@@ -38042,13 +38853,18 @@ func (s *PutMonitorGroupDynamicRuleRequestGroupRules) SetFilters(v []*PutMonitor
 }
 
 type PutMonitorGroupDynamicRuleRequestGroupRulesFilters struct {
-	// The error message.
-	Function *string `json:"Function,omitempty" xml:"Function,omitempty"`
-	// The operation that you want to perform. Set the value to **PutMonitorGroupDynamicRule**.
-	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
-	// The HTTP status code.
+	// The method that is used to filter instances. Valid values of N: 1 to 3. Valid values:
 	//
-	// >  The status code 200 indicates that the call was successful.
+	// *   contains: contains
+	// *   notContains: does not contain
+	// *   startWith: starts with a prefix
+	// *   endWith: ends with a suffix
+	Function *string `json:"Function,omitempty" xml:"Function,omitempty"`
+	// The name of the field based on which instances are filtered. Valid values of N: 1 to 3.
+	//
+	// Only hostnames are supported. Example: hostName.
+	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// The value to be matched with the specified field. Valid values of N: 1 to 3.
 	Value *string `json:"Value,omitempty" xml:"Value,omitempty"`
 }
 
@@ -38076,12 +38892,19 @@ func (s *PutMonitorGroupDynamicRuleRequestGroupRulesFilters) SetValue(v string) 
 }
 
 type PutMonitorGroupDynamicRuleResponseBody struct {
-	// The ID of the request.
+	// The status code.
+	//
+	// > The status code 200 indicates that the request was successful.
 	Code *int32 `json:"Code,omitempty" xml:"Code,omitempty"`
-	// For more information about common request parameters, see [Common parameters](~~199331~~).
-	Message   *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// The error message.
+	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// The request ID.
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	Success   *bool   `json:"Success,omitempty" xml:"Success,omitempty"`
+	// Indicates whether the request was successful. Valid values:
+	//
+	// *   true
+	// *   false
+	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
 }
 
 func (s PutMonitorGroupDynamicRuleResponseBody) String() string {
@@ -38142,14 +38965,15 @@ func (s *PutMonitorGroupDynamicRuleResponse) SetBody(v *PutMonitorGroupDynamicRu
 }
 
 type PutMonitoringConfigRequest struct {
-	// Specifies whether to automatically install the CloudMonitor agent on new ECS instances. Valid values:
+	// Specifies whether to automatically install the CloudMonitor agent on existing Elastic Compute Service (ECS) instances. Valid values:
 	//
 	// *   true (default value)
 	// *   false
 	AutoInstall *bool `json:"AutoInstall,omitempty" xml:"AutoInstall,omitempty"`
-	// The HTTP status code.
+	// Specifies whether to automatically install the CloudMonitor agent on new ECS instances. Valid values:
 	//
-	// >  The status code 200 indicates that the call was successful.
+	// *   true (default value)
+	// *   false
 	EnableInstallAgentNewECS *bool   `json:"EnableInstallAgentNewECS,omitempty" xml:"EnableInstallAgentNewECS,omitempty"`
 	RegionId                 *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 }
@@ -38178,12 +39002,19 @@ func (s *PutMonitoringConfigRequest) SetRegionId(v string) *PutMonitoringConfigR
 }
 
 type PutMonitoringConfigResponseBody struct {
-	// The ID of the request.
+	// The HTTP status code.
+	//
+	// >  The status code 200 indicates that the call was successful.
 	Code *int32 `json:"Code,omitempty" xml:"Code,omitempty"`
-	// The operation that you want to perform. Set the value to **PutMonitoringConfig**.
-	Message   *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// The error message.
+	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// The ID of the request.
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	Success   *bool   `json:"Success,omitempty" xml:"Success,omitempty"`
+	// Indicates whether the call was successful. Valid values:
+	//
+	// *   true: The call was successful.
+	// *   false: The call failed.
+	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
 }
 
 func (s PutMonitoringConfigResponseBody) String() string {
@@ -39359,61 +40190,41 @@ func (s *PutResourceMetricRulesRequest) SetRules(v []*PutResourceMetricRulesRequ
 
 type PutResourceMetricRulesRequestRules struct {
 	Escalations *PutResourceMetricRulesRequestRulesEscalations `json:"Escalations,omitempty" xml:"Escalations,omitempty" type:"Struct"`
-	// The error message.
-	ContactGroups *string `json:"ContactGroups,omitempty" xml:"ContactGroups,omitempty"`
-	// The operation that you want to perform. Set the value to **PutResourceMetricRules**.
-	EffectiveInterval *string `json:"EffectiveInterval,omitempty" xml:"EffectiveInterval,omitempty"`
-	// The HTTP status code.
-	EmailSubject *string `json:"EmailSubject,omitempty" xml:"EmailSubject,omitempty"`
 	// The alert contact group. The alert notifications are sent to the alert contacts in the alert contact group.
 	//
 	// Valid values of N: 1 to 500.
 	//
 	// >  An alert contact group can contain one or more alert contacts. For information about how to create alert contacts and alert contact groups, see [PutContact](~~114923~~) and [PutContactGroup](~~114929~~).
-	Interval *string                                     `json:"Interval,omitempty" xml:"Interval,omitempty"`
-	Labels   []*PutResourceMetricRulesRequestRulesLabels `json:"Labels,omitempty" xml:"Labels,omitempty" type:"Repeated"`
-	// The HTTP status code.
-	//
-	// >  The status code 200 indicates that the call was successful.
-	MetricName *string `json:"MetricName,omitempty" xml:"MetricName,omitempty"`
-	// The name of the alert rule.
-	//
-	// Valid values of N: 1 to 500.
-	//
-	// You can specify a new name or the name of an existing alert rule. For information about how to query the name of an alert rule, see [DescribeMetricRuleList](~~114941~~).
-	//
-	// >  If you specify a new name, you create a threshold-triggered alert rule.
-	Namespace *string `json:"Namespace,omitempty" xml:"Namespace,omitempty"`
-	// Indicates whether the call was successful. Valid values:
-	//
-	// *   true: The call was successful.
-	// *   false: The call failed.
-	NoDataPolicy *string `json:"NoDataPolicy,omitempty" xml:"NoDataPolicy,omitempty"`
+	ContactGroups *string `json:"ContactGroups,omitempty" xml:"ContactGroups,omitempty"`
 	// The time period during which the alert rule is effective.
 	//
 	// Valid values of N: 1 to 500.
-	NoEffectiveInterval *string `json:"NoEffectiveInterval,omitempty" xml:"NoEffectiveInterval,omitempty"`
+	EffectiveInterval *string `json:"EffectiveInterval,omitempty" xml:"EffectiveInterval,omitempty"`
+	// The subject of the alert notification email.
+	//
+	// Valid values of N: 1 to 500.
+	EmailSubject *string `json:"EmailSubject,omitempty" xml:"EmailSubject,omitempty"`
+	// The interval at which the alert rule is executed.
+	//
+	// Unit: seconds.
+	//
+	// Valid values of N: 1 to 500.
+	//
+	// >  For information about how to query the statistical period of a metric, see [Appendix 1: Metrics](~~163515~~).
+	Interval *string                                     `json:"Interval,omitempty" xml:"Interval,omitempty"`
+	Labels   []*PutResourceMetricRulesRequestRulesLabels `json:"Labels,omitempty" xml:"Labels,omitempty" type:"Repeated"`
 	// The name of the metric.
 	//
 	// Valid values of N: 1 to 500.
 	//
 	// For information about how to query the name of a metric, see [Appendix 1: Metrics](~~163515~~).
-	Period *string `json:"Period,omitempty" xml:"Period,omitempty"`
-	// The statistical methods for Warn-level alerts. Valid values:
-	//
-	// *   Maximum: the maximum value
-	// *   Minimum: the minimum value
-	// *   Average: the average value
-	// *   Availability: the availability rate
+	MetricName *string `json:"MetricName,omitempty" xml:"MetricName,omitempty"`
+	// The namespace of the cloud service.
 	//
 	// Valid values of N: 1 to 500.
 	//
-	// >  You must set a collection of the Rules.N.Escalations.Critical.Statistics, Rules.N.Escalations.Critical.ComparisonOperator, Rules.N.Escalations.Critical.Threshold, and Rules.N.Escalations.Critical.Times parameters, a collection of the Rules.N.Escalations.Warn.Statistics, Rules.N.Escalations.Warn.ComparisonOperator, Rules.N.Escalations.Warn.Threshold, and Rules.N.Escalations.Warn.Times parameters, or a collection of the Rules.N.Escalations.Info.Statistics, Rules.N.Escalations.Info.ComparisonOperator, Rules.N.Escalations.Info.Threshold, and Rules.N.Escalations.Info.Times parameters.
-	Resources *string `json:"Resources,omitempty" xml:"Resources,omitempty"`
-	// The error message.
-	RuleId *string `json:"RuleId,omitempty" xml:"RuleId,omitempty"`
-	// The ID of the alert rule.
-	RuleName *string `json:"RuleName,omitempty" xml:"RuleName,omitempty"`
+	// For information about how to query the namespace of a cloud service, see [Appendix 1: Metrics](~~163515~~).
+	Namespace *string `json:"Namespace,omitempty" xml:"Namespace,omitempty"`
 	// The method that is used to handle alerts when no monitoring data is found. Valid values:
 	//
 	// *   KEEP_LAST_STATE (default value): No operation is performed.
@@ -39421,7 +40232,41 @@ type PutResourceMetricRulesRequestRules struct {
 	// *   OK: The status is considered normal.
 	//
 	// Valid values of N: 1 to 500.
-	SilenceTime *int32 `json:"SilenceTime,omitempty" xml:"SilenceTime,omitempty"`
+	NoDataPolicy *string `json:"NoDataPolicy,omitempty" xml:"NoDataPolicy,omitempty"`
+	// The time period during which the alert rule is ineffective.
+	//
+	// Valid values of N: 1 to 500.
+	NoEffectiveInterval *string `json:"NoEffectiveInterval,omitempty" xml:"NoEffectiveInterval,omitempty"`
+	// The statistical period of the metric.
+	//
+	// Unit: seconds. The default value is the interval at which the monitoring data of the metric is collected.
+	//
+	// Valid values of N: 1 to 500.
+	//
+	// >  For information about how to query the statistical period of a metric, see [Appendix 1: Metrics](~~163515~~).
+	Period *string `json:"Period,omitempty" xml:"Period,omitempty"`
+	// The information about the resource. Examples: `[{"instanceId":"i-uf6j91r34rnwawoo****"}]` and `[{"userId":"100931896542****"}]`.
+	//
+	// Valid values of N: 1 to 500.
+	//
+	// For more information about the supported dimensions that are used to query resources, see [Appendix 1: Metrics](~~163515~~).
+	Resources *string `json:"Resources,omitempty" xml:"Resources,omitempty"`
+	// The ID of the alert rule.
+	//
+	// Valid values of N: 1 to 500.
+	//
+	// You can specify a new ID or the ID of an existing alert rule. For information about how to query the ID of an alert rule, see [DescribeMetricRuleList](~~114941~~).
+	//
+	// >  If you specify a new ID, you create a threshold-triggered alert rule.
+	RuleId *string `json:"RuleId,omitempty" xml:"RuleId,omitempty"`
+	// The name of the alert rule.
+	//
+	// Valid values of N: 1 to 500.
+	//
+	// You can specify a new name or the name of an existing alert rule. For information about how to query the name of an alert rule, see [DescribeMetricRuleList](~~114941~~).
+	//
+	// >  If you specify a new name, you create a threshold-triggered alert rule.
+	RuleName *string `json:"RuleName,omitempty" xml:"RuleName,omitempty"`
 	// The mute period during which new alerts are not sent even if the trigger conditions are met.
 	//
 	// Unit: seconds. Default value: 86400.
@@ -39429,6 +40274,10 @@ type PutResourceMetricRulesRequestRules struct {
 	// Valid values of N: 1 to 500.
 	//
 	// >  If an alert is not cleared after the mute period ends, CloudMonitor resends an alert notification.
+	SilenceTime *int32 `json:"SilenceTime,omitempty" xml:"SilenceTime,omitempty"`
+	// The callback URL to which a POST request is sent when an alert is triggered based on the alert rule.
+	//
+	// Valid values of N: 1 to 500.
 	Webhook *string `json:"Webhook,omitempty" xml:"Webhook,omitempty"`
 }
 
@@ -39691,17 +40540,11 @@ func (s *PutResourceMetricRulesRequestRulesEscalationsWarn) SetTimes(v int32) *P
 }
 
 type PutResourceMetricRulesRequestRulesLabels struct {
-	// The interval at which the alert rule is executed.
-	//
-	// Unit: seconds.
-	//
-	// Valid values of N: 1 to 500.
-	//
-	// >  For information about how to query the statistical period of a metric, see [Appendix 1: Metrics](~~163515~~).
+	// The key of the tag.
 	Key *string `json:"Key,omitempty" xml:"Key,omitempty"`
-	// The subject of the alert notification email.
+	// The value of the tag.
 	//
-	// Valid values of N: 1 to 500.
+	// >  You can use a template parameter to specify a tag value. CloudMonitor replaces the value of the template parameter with an actual tag value.
 	Value *string `json:"Value,omitempty" xml:"Value,omitempty"`
 }
 
@@ -39724,23 +40567,20 @@ func (s *PutResourceMetricRulesRequestRulesLabels) SetValue(v string) *PutResour
 }
 
 type PutResourceMetricRulesResponseBody struct {
-	// The callback URL to which a POST request is sent when an alert is triggered based on the alert rule.
+	// The HTTP status code.
 	//
-	// Valid values of N: 1 to 500.
+	// >  The status code 200 indicates that the call was successful.
 	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
-	// The ID of the request.
+	// The alert rules that failed to be created for the resource.
 	FailedListResult *PutResourceMetricRulesResponseBodyFailedListResult `json:"FailedListResult,omitempty" xml:"FailedListResult,omitempty" type:"Struct"`
-	// The ID of the alert rule.
-	//
-	// Valid values of N: 1 to 500.
-	//
-	// You can specify a new ID or the ID of an existing alert rule. For information about how to query the ID of an alert rule, see [DescribeMetricRuleList](~~114941~~).
-	//
-	// >  If you specify a new ID, you create a threshold-triggered alert rule.
+	// The error message.
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
-	// The alert rule that failed to be created.
+	// The ID of the request.
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// The key of the tag.
+	// Indicates whether the call was successful. Valid values:
+	//
+	// *   true: The call was successful.
+	// *   false: The call failed.
 	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
 }
 
@@ -39795,15 +40635,9 @@ func (s *PutResourceMetricRulesResponseBodyFailedListResult) SetTarget(v []*PutR
 }
 
 type PutResourceMetricRulesResponseBodyFailedListResultTarget struct {
-	// The alert rules that failed to be created for the resource.
+	// The alert rule that failed to be created.
 	Result *PutResourceMetricRulesResponseBodyFailedListResultTargetResult `json:"Result,omitempty" xml:"Result,omitempty" type:"Struct"`
-	// The statistical period of the metric.
-	//
-	// Unit: seconds. The default value is the interval at which the monitoring data of the metric is collected.
-	//
-	// Valid values of N: 1 to 500.
-	//
-	// >  For information about how to query the statistical period of a metric, see [Appendix 1: Metrics](~~163515~~).
+	// The ID of the alert rule.
 	RuleId *string `json:"RuleId,omitempty" xml:"RuleId,omitempty"`
 }
 
@@ -39826,10 +40660,15 @@ func (s *PutResourceMetricRulesResponseBodyFailedListResultTarget) SetRuleId(v s
 }
 
 type PutResourceMetricRulesResponseBodyFailedListResultTargetResult struct {
-	// For more information about common request parameters, see [Common parameters](~~199331~~).
-	Code    *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	// The HTTP status code.
+	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	// The error message.
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
-	Success *bool   `json:"Success,omitempty" xml:"Success,omitempty"`
+	// Indicates whether the call was successful. Valid values:
+	//
+	// *   true: The call was successful.
+	// *   false: The call failed.
+	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
 }
 
 func (s PutResourceMetricRulesResponseBodyFailedListResultTargetResult) String() string {
@@ -40042,17 +40881,19 @@ func (s *RemoveTagsResponse) SetBody(v *RemoveTagsResponseBody) *RemoveTagsRespo
 }
 
 type SendDryRunSystemEventRequest struct {
-	// The operation that you want to perform. Set the value to SendDryRunSystemEvent.
-	EventContent *string `json:"EventContent,omitempty" xml:"EventContent,omitempty"`
-	// The ID of the application group.
-	EventName *string `json:"EventName,omitempty" xml:"EventName,omitempty"`
 	// The content of the system event.
 	//
 	// >  The value of this parameter is a JSON object. We recommend that you include the `product`, `resourceId`, and `regionId` fields in the JSON object.
-	GroupId *string `json:"GroupId,omitempty" xml:"GroupId,omitempty"`
+	EventContent *string `json:"EventContent,omitempty" xml:"EventContent,omitempty"`
 	// The name of the system event.
 	//
 	// >  For more information, see [DescribeSystemEventMetaList](~~114972~~).
+	EventName *string `json:"EventName,omitempty" xml:"EventName,omitempty"`
+	// The ID of the application group.
+	GroupId *string `json:"GroupId,omitempty" xml:"GroupId,omitempty"`
+	// The name of the cloud service.
+	//
+	// >  For information about the system events supported by Cloud Monitor for Alibaba Cloud services, see [System events](~~167388~~).
 	Product  *string `json:"Product,omitempty" xml:"Product,omitempty"`
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 }
@@ -40091,16 +40932,18 @@ func (s *SendDryRunSystemEventRequest) SetRegionId(v string) *SendDryRunSystemEv
 }
 
 type SendDryRunSystemEventResponseBody struct {
-	// The returned message.
+	// The HTTP status code.
+	//
+	// >  The status code 200 indicates that the call was successful.
 	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
-	// The ID of the request.
+	// The returned message.
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// The ID of the request.
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	// Indicates whether the call was successful. Valid values:
 	//
 	// *   true: The call was successful.
 	// *   false: The call failed.
-	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// This operation is used to test whether a system event can be triggered as expected. You can call this operation to simulate a system event and check whether an expected response is returned after an alert is triggered by the system event.
 	Success *string `json:"Success,omitempty" xml:"Success,omitempty"`
 }
 
@@ -40162,9 +41005,7 @@ func (s *SendDryRunSystemEventResponse) SetBody(v *SendDryRunSystemEventResponse
 }
 
 type UninstallMonitoringAgentRequest struct {
-	// The HTTP status code.
-	//
-	// >  The HTTP status code 200 indicates that the call was successful.
+	// The ID of the host.
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
 	RegionId   *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 }
@@ -40188,16 +41029,18 @@ func (s *UninstallMonitoringAgentRequest) SetRegionId(v string) *UninstallMonito
 }
 
 type UninstallMonitoringAgentResponseBody struct {
-	// The returned message.
+	// The HTTP status code.
+	//
+	// >  The HTTP status code 200 indicates that the call was successful.
 	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
-	// The ID of the request.
+	// The returned message.
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// The ID of the request.
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	// Indicates whether the call was successful. Valid values:
 	//
 	// *   true: The call was successful.
 	// *   false: The call failed.
-	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// >  This API operation is not applicable to ECS instances. To uninstall the agent from an ECS instance, see [Install and uninstall the Cloud Monitor agent](~~183482~~).
 	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
 }
 
@@ -40367,8 +41210,7 @@ func (client *Client) AddTags(request *AddTagsRequest) (_result *AddTagsResponse
 }
 
 /**
- * The ID of the application group to which the alert template is applied.
- * For more information about how to query the ID of an application group, see [DescribeMonitorGroups](~~115032~~).
+ * In this example, the `700****` alert template is applied to the `123456` application group. For the generated alert rule, the ID is `applyTemplate8ab74c6b-9f27-47ab-8841-de01dc08****`, and the name is `test123`.
  *
  * @param request ApplyMetricRuleTemplateRequest
  * @param runtime runtime options for this request RuntimeOptions
@@ -40436,8 +41278,7 @@ func (client *Client) ApplyMetricRuleTemplateWithOptions(request *ApplyMetricRul
 }
 
 /**
- * The ID of the application group to which the alert template is applied.
- * For more information about how to query the ID of an application group, see [DescribeMonitorGroups](~~115032~~).
+ * In this example, the `700****` alert template is applied to the `123456` application group. For the generated alert rule, the ID is `applyTemplate8ab74c6b-9f27-47ab-8841-de01dc08****`, and the name is `test123`.
  *
  * @param request ApplyMetricRuleTemplateRequest
  * @return ApplyMetricRuleTemplateResponse
@@ -40454,7 +41295,7 @@ func (client *Client) ApplyMetricRuleTemplate(request *ApplyMetricRuleTemplateRe
 }
 
 /**
- * The extended options of the protocol that is used by the site monitoring task. The options vary based on the protocol.
+ * This topic provides an example on how to create a site monitoring task named `HangZhou_ECS1`. The URL that is monitored by the task is `https://www.aliyun.com` and the type of the task is `HTTP`. The returned result shows that the site monitoring task is created. The name of the site monitoring task is `HangZhou_ECS1` and the task ID is `679fbe4f-b80b-4706-91b2-5427b43e****`.
  *
  * @param request BatchCreateInstantSiteMonitorRequest
  * @param runtime runtime options for this request RuntimeOptions
@@ -40494,7 +41335,7 @@ func (client *Client) BatchCreateInstantSiteMonitorWithOptions(request *BatchCre
 }
 
 /**
- * The extended options of the protocol that is used by the site monitoring task. The options vary based on the protocol.
+ * This topic provides an example on how to create a site monitoring task named `HangZhou_ECS1`. The URL that is monitored by the task is `https://www.aliyun.com` and the type of the task is `HTTP`. The returned result shows that the site monitoring task is created. The name of the site monitoring task is `HangZhou_ECS1` and the task ID is `679fbe4f-b80b-4706-91b2-5427b43e****`.
  *
  * @param request BatchCreateInstantSiteMonitorRequest
  * @return BatchCreateInstantSiteMonitorResponse
@@ -40891,9 +41732,8 @@ func (client *Client) CreateCmsSmspackageOrder(request *CreateCmsSmspackageOrder
 }
 
 /**
- * Specifies whether the application group automatically subscribes to event notifications. If events whose severity level is critical or warning occur on resources in an application group, CloudMonitor sends alert notifications. Valid values:
- * *   true: The application group automatically subscribes to event notifications.
- * *   false (default value): The application group does not automatically subscribe to event notifications.
+ * This operation is available for Elastic Compute Service (ECS), ApsaraDB RDS, and Server Load Balancer (SLB).
+ * This topic provides an example to show how to create an application group for resources whose tag key is `ecs_instance`. In this example, the alert contact group of the application group is `ECS_Group`.
  *
  * @param request CreateDynamicTagGroupRequest
  * @param runtime runtime options for this request RuntimeOptions
@@ -40961,9 +41801,8 @@ func (client *Client) CreateDynamicTagGroupWithOptions(request *CreateDynamicTag
 }
 
 /**
- * Specifies whether the application group automatically subscribes to event notifications. If events whose severity level is critical or warning occur on resources in an application group, CloudMonitor sends alert notifications. Valid values:
- * *   true: The application group automatically subscribes to event notifications.
- * *   false (default value): The application group does not automatically subscribe to event notifications.
+ * This operation is available for Elastic Compute Service (ECS), ApsaraDB RDS, and Server Load Balancer (SLB).
+ * This topic provides an example to show how to create an application group for resources whose tag key is `ecs_instance`. In this example, the alert contact group of the application group is `ECS_Group`.
  *
  * @param request CreateDynamicTagGroupRequest
  * @return CreateDynamicTagGroupResponse
@@ -40980,7 +41819,7 @@ func (client *Client) CreateDynamicTagGroup(request *CreateDynamicTagGroupReques
 }
 
 /**
- * The details of the alert rules.
+ * This topic provides an example to show how to create an alert rule for the `cpu_total` metric of Elastic Compute Service (ECS) in the `123456` application group. The ID of the alert rule is `456789`. The name of the alert rule is `ECS_Rule1`. The alert level is `Critical`. The statistical method is `Average`. The comparison operator is `GreaterThanOrEqualToThreshold`. The alert threshold is `90`. The number of alert retries is `3`. The response shows that the alert rule named `ECS_Rule1` is created.
  *
  * @param request CreateGroupMetricRulesRequest
  * @param runtime runtime options for this request RuntimeOptions
@@ -41024,7 +41863,7 @@ func (client *Client) CreateGroupMetricRulesWithOptions(request *CreateGroupMetr
 }
 
 /**
- * The details of the alert rules.
+ * This topic provides an example to show how to create an alert rule for the `cpu_total` metric of Elastic Compute Service (ECS) in the `123456` application group. The ID of the alert rule is `456789`. The name of the alert rule is `ECS_Rule1`. The alert level is `Critical`. The statistical method is `Average`. The comparison operator is `GreaterThanOrEqualToThreshold`. The alert threshold is `90`. The number of alert retries is `3`. The response shows that the alert rule named `ECS_Rule1` is created.
  *
  * @param request CreateGroupMetricRulesRequest
  * @return CreateGroupMetricRulesResponse
@@ -41190,9 +42029,8 @@ func (client *Client) CreateHostAvailability(request *CreateHostAvailabilityRequ
 }
 
 /**
- * Indicates whether the call was successful. Valid values:
- * *   true: The call was successful.
- * *   false: The call failed.
+ * ## Prerequisites
+ * Hybrid Cloud Monitoring is activated. For more information, see [Activate Hybrid Cloud Monitoring](~~250773~~).
  *
  * @param request CreateHybridMonitorNamespaceRequest
  * @param runtime runtime options for this request RuntimeOptions
@@ -41240,9 +42078,8 @@ func (client *Client) CreateHybridMonitorNamespaceWithOptions(request *CreateHyb
 }
 
 /**
- * Indicates whether the call was successful. Valid values:
- * *   true: The call was successful.
- * *   false: The call failed.
+ * ## Prerequisites
+ * Hybrid Cloud Monitoring is activated. For more information, see [Activate Hybrid Cloud Monitoring](~~250773~~).
  *
  * @param request CreateHybridMonitorNamespaceRequest
  * @return CreateHybridMonitorNamespaceResponse
@@ -41259,8 +42096,10 @@ func (client *Client) CreateHybridMonitorNamespace(request *CreateHybridMonitorN
 }
 
 /**
- * The Log Service projects.
- * Valid values of N: 1 to 25.
+ * # Prerequisites
+ * Simple Log Service is activated. A project and a Logstore are created in Simple Log Service. For more information, see [Getting Started](~~54604~~).
+ * # Description
+ * In this example, a Logstore group named `Logstore_test` is created. The region ID is `cn-hangzhou`. The project is `aliyun-project`. The Logstore is `Logstore-ECS`. The response shows that the Logstore group is created.
  *
  * @param request CreateHybridMonitorSLSGroupRequest
  * @param runtime runtime options for this request RuntimeOptions
@@ -41308,8 +42147,10 @@ func (client *Client) CreateHybridMonitorSLSGroupWithOptions(request *CreateHybr
 }
 
 /**
- * The Log Service projects.
- * Valid values of N: 1 to 25.
+ * # Prerequisites
+ * Simple Log Service is activated. A project and a Logstore are created in Simple Log Service. For more information, see [Getting Started](~~54604~~).
+ * # Description
+ * In this example, a Logstore group named `Logstore_test` is created. The region ID is `cn-hangzhou`. The project is `aliyun-project`. The Logstore is `Logstore-ECS`. The response shows that the Logstore group is created.
  *
  * @param request CreateHybridMonitorSLSGroupRequest
  * @return CreateHybridMonitorSLSGroupResponse
@@ -41326,7 +42167,9 @@ func (client *Client) CreateHybridMonitorSLSGroup(request *CreateHybridMonitorSL
 }
 
 /**
- * The dimension based on which data is aggregated. This parameter is equivalent to the GROUP BY clause in SQL.
+ * ## Prerequisites
+ * *   Hybrid Cloud Monitoring is activated. For more information, see [Activate Hybrid Cloud Monitoring](~~250773~~).
+ * *   If you want to create a metric for logs imported from Log Service, make sure that you have activated Log Service and created a project and a Logstore. For more information, see [Getting Started](~~54604~~).
  *
  * @param request CreateHybridMonitorTaskRequest
  * @param runtime runtime options for this request RuntimeOptions
@@ -41410,7 +42253,9 @@ func (client *Client) CreateHybridMonitorTaskWithOptions(request *CreateHybridMo
 }
 
 /**
- * The dimension based on which data is aggregated. This parameter is equivalent to the GROUP BY clause in SQL.
+ * ## Prerequisites
+ * *   Hybrid Cloud Monitoring is activated. For more information, see [Activate Hybrid Cloud Monitoring](~~250773~~).
+ * *   If you want to create a metric for logs imported from Log Service, make sure that you have activated Log Service and created a project and a Logstore. For more information, see [Getting Started](~~54604~~).
  *
  * @param request CreateHybridMonitorTaskRequest
  * @return CreateHybridMonitorTaskResponse
@@ -41759,7 +42604,7 @@ func (client *Client) CreateMonitorAgentProcess(request *CreateMonitorAgentProce
 }
 
 /**
- * The name of the application group.
+ * In this example, the application group named `ECS_Group` is created.
  *
  * @param request CreateMonitorGroupRequest
  * @param runtime runtime options for this request RuntimeOptions
@@ -41803,7 +42648,7 @@ func (client *Client) CreateMonitorGroupWithOptions(request *CreateMonitorGroupR
 }
 
 /**
- * The name of the application group.
+ * In this example, the application group named `ECS_Group` is created.
  *
  * @param request CreateMonitorGroupRequest
  * @return CreateMonitorGroupResponse
@@ -41897,8 +42742,8 @@ func (client *Client) CreateMonitorGroupByResourceGroupId(request *CreateMonitor
 }
 
 /**
- * The abbreviation of the Alibaba Cloud service name.
- * To obtain the abbreviation of an Alibaba Cloud service name, call the [DescribeProjectMeta](~~114916~~) operation. The `metricCategory` tag in the `Labels` response parameter indicates the abbreviation of the Alibaba Cloud service name.
+ * You can add a maximum of 1,000 instances to an application group at a time. You can add a maximum of 3,000 instances of an Alibaba Cloud service to an application group. The total number of instances that you can add to an application group is unlimited.
+ * In this example, an Elastic Compute Service (ECS) instance in the `China (Hangzhou)` region is added to the `3607****` application group. The instance ID is `i-2ze26xj5wwy12****` and the instance name is `test-instance-ecs`.
  *
  * @param request CreateMonitorGroupInstancesRequest
  * @param runtime runtime options for this request RuntimeOptions
@@ -41942,8 +42787,8 @@ func (client *Client) CreateMonitorGroupInstancesWithOptions(request *CreateMoni
 }
 
 /**
- * The abbreviation of the Alibaba Cloud service name.
- * To obtain the abbreviation of an Alibaba Cloud service name, call the [DescribeProjectMeta](~~114916~~) operation. The `metricCategory` tag in the `Labels` response parameter indicates the abbreviation of the Alibaba Cloud service name.
+ * You can add a maximum of 1,000 instances to an application group at a time. You can add a maximum of 3,000 instances of an Alibaba Cloud service to an application group. The total number of instances that you can add to an application group is unlimited.
+ * In this example, an Elastic Compute Service (ECS) instance in the `China (Hangzhou)` region is added to the `3607****` application group. The instance ID is `i-2ze26xj5wwy12****` and the instance name is `test-instance-ecs`.
  *
  * @param request CreateMonitorGroupInstancesRequest
  * @return CreateMonitorGroupInstancesResponse
@@ -41960,7 +42805,8 @@ func (client *Client) CreateMonitorGroupInstances(request *CreateMonitorGroupIns
 }
 
 /**
- * The type of the policy. Valid value: PauseNotify.
+ * If the policy is valid, no alert notifications are sent for the application group.
+ * This topic describes how to create the `PauseNotify` policy to pause alert notifications for the `7301****` application group. The StartTime parameter is set to `1622949300000` and the EndTime parameter is set to `1623208500000`. This indicates that the policy is valid from `2021-06-06 11:15:00 UTC+8` to `2021-06-09 11:15:00 UTC+8`.
  *
  * @param request CreateMonitorGroupNotifyPolicyRequest
  * @param runtime runtime options for this request RuntimeOptions
@@ -42012,7 +42858,8 @@ func (client *Client) CreateMonitorGroupNotifyPolicyWithOptions(request *CreateM
 }
 
 /**
- * The type of the policy. Valid value: PauseNotify.
+ * If the policy is valid, no alert notifications are sent for the application group.
+ * This topic describes how to create the `PauseNotify` policy to pause alert notifications for the `7301****` application group. The StartTime parameter is set to `1622949300000` and the EndTime parameter is set to `1623208500000`. This indicates that the policy is valid from `2021-06-06 11:15:00 UTC+8` to `2021-06-09 11:15:00 UTC+8`.
  *
  * @param request CreateMonitorGroupNotifyPolicyRequest
  * @return CreateMonitorGroupNotifyPolicyResponse
@@ -42719,9 +43566,8 @@ func (client *Client) DeleteHostAvailability(request *DeleteHostAvailabilityRequ
 }
 
 /**
- * Indicates whether the call was successful. Valid values:
- * *   true: The call was successful.
- * *   false: The call failed.
+ * > If a metric import task is created for metrics in a namespace, you cannot delete the namespace unless you delete the task first.
+ * This topic provides an example on how to delete a namespace named `aliyun`. The response shows that the namespace is deleted.
  *
  * @param request DeleteHybridMonitorNamespaceRequest
  * @param runtime runtime options for this request RuntimeOptions
@@ -42761,9 +43607,8 @@ func (client *Client) DeleteHybridMonitorNamespaceWithOptions(request *DeleteHyb
 }
 
 /**
- * Indicates whether the call was successful. Valid values:
- * *   true: The call was successful.
- * *   false: The call failed.
+ * > If a metric import task is created for metrics in a namespace, you cannot delete the namespace unless you delete the task first.
+ * This topic provides an example on how to delete a namespace named `aliyun`. The response shows that the namespace is deleted.
  *
  * @param request DeleteHybridMonitorNamespaceRequest
  * @return DeleteHybridMonitorNamespaceResponse
@@ -43849,9 +44694,7 @@ func (client *Client) DescribeAlertLogHistogram(request *DescribeAlertLogHistogr
 }
 
 /**
- * Indicates whether the call was successful. Valid values:
- * *   true: The call was successful.
- * *   false: The call failed.
+ * This topic provides an example to show how to query the alert logs of Elastic Compute Service (ECS) based on the `product` dimension.
  *
  * @param request DescribeAlertLogListRequest
  * @param runtime runtime options for this request RuntimeOptions
@@ -43955,9 +44798,7 @@ func (client *Client) DescribeAlertLogListWithOptions(request *DescribeAlertLogL
 }
 
 /**
- * Indicates whether the call was successful. Valid values:
- * *   true: The call was successful.
- * *   false: The call failed.
+ * This topic provides an example to show how to query the alert logs of Elastic Compute Service (ECS) based on the `product` dimension.
  *
  * @param request DescribeAlertLogListRequest
  * @return DescribeAlertLogListResponse
@@ -44238,7 +45079,7 @@ func (client *Client) DescribeCustomEventAttribute(request *DescribeCustomEventA
 }
 
 /**
- * The name of the custom event.
+ * >  This operation counts the number of times that a custom event occurred for each service.
  *
  * @param request DescribeCustomEventCountRequest
  * @param runtime runtime options for this request RuntimeOptions
@@ -44298,7 +45139,7 @@ func (client *Client) DescribeCustomEventCountWithOptions(request *DescribeCusto
 }
 
 /**
- * The name of the custom event.
+ * >  This operation counts the number of times that a custom event occurred for each service.
  *
  * @param request DescribeCustomEventCountRequest
  * @return DescribeCustomEventCountResponse
@@ -44383,8 +45224,7 @@ func (client *Client) DescribeCustomEventHistogram(request *DescribeCustomEventH
 }
 
 /**
- * The ID of the application group.
- * For more information, see [DescribeMonitorGroups](~~115032~~).
+ * >  You can call the DescribeMetricList operation to query the metrics of a cloud service. For more information, see [DescribeMetricList](~~51936~~).
  *
  * @param request DescribeCustomMetricListRequest
  * @param runtime runtime options for this request RuntimeOptions
@@ -44444,8 +45284,7 @@ func (client *Client) DescribeCustomMetricListWithOptions(request *DescribeCusto
 }
 
 /**
- * The ID of the application group.
- * For more information, see [DescribeMonitorGroups](~~115032~~).
+ * >  You can call the DescribeMetricList operation to query the metrics of a cloud service. For more information, see [DescribeMetricList](~~51936~~).
  *
  * @param request DescribeCustomMetricListRequest
  * @return DescribeCustomMetricListResponse
@@ -44462,8 +45301,7 @@ func (client *Client) DescribeCustomMetricList(request *DescribeCustomMetricList
 }
 
 /**
- * The HTTP status code.
- * >  The status code 200 indicates that the call was successful.
+ * This topic provides an example to show how to query tag rules that are related to `tagkey1`. The sample responses indicate that two tag rules are found. The rule IDs are `1536df65-a719-429d-8813-73cc40d7****` and `56e8cebb-b3d7-4a91-9880-78a8c84f****`.
  *
  * @param request DescribeDynamicTagRuleListRequest
  * @param runtime runtime options for this request RuntimeOptions
@@ -44523,8 +45361,7 @@ func (client *Client) DescribeDynamicTagRuleListWithOptions(request *DescribeDyn
 }
 
 /**
- * The HTTP status code.
- * >  The status code 200 indicates that the call was successful.
+ * This topic provides an example to show how to query tag rules that are related to `tagkey1`. The sample responses indicate that two tag rules are found. The rule IDs are `1536df65-a719-429d-8813-73cc40d7****` and `56e8cebb-b3d7-4a91-9880-78a8c84f****`.
  *
  * @param request DescribeDynamicTagRuleListRequest
  * @return DescribeDynamicTagRuleListResponse
@@ -44662,7 +45499,7 @@ func (client *Client) DescribeEventRuleList(request *DescribeEventRuleListReques
 }
 
 /**
- * The error message.
+ * This topic provides an example to show how to query the details of an event-triggered alert rule named `testRule`.
  *
  * @param request DescribeEventRuleTargetListRequest
  * @param runtime runtime options for this request RuntimeOptions
@@ -44702,7 +45539,7 @@ func (client *Client) DescribeEventRuleTargetListWithOptions(request *DescribeEv
 }
 
 /**
- * The error message.
+ * This topic provides an example to show how to query the details of an event-triggered alert rule named `testRule`.
  *
  * @param request DescribeEventRuleTargetListRequest
  * @return DescribeEventRuleTargetListResponse
@@ -44815,7 +45652,7 @@ func (client *Client) DescribeExporterRuleList(request *DescribeExporterRuleList
 }
 
 /**
- * The ID of the application group.
+ * You can create a process monitoring task to monitor all or the specified Elastic Compute Service (ECS) instances in an application group and set alert rules for the process monitoring task.
  *
  * @param request DescribeGroupMonitoringAgentProcessRequest
  * @param runtime runtime options for this request RuntimeOptions
@@ -44867,7 +45704,7 @@ func (client *Client) DescribeGroupMonitoringAgentProcessWithOptions(request *De
 }
 
 /**
- * The ID of the application group.
+ * You can create a process monitoring task to monitor all or the specified Elastic Compute Service (ECS) instances in an application group and set alert rules for the process monitoring task.
  *
  * @param request DescribeGroupMonitoringAgentProcessRequest
  * @return DescribeGroupMonitoringAgentProcessResponse
@@ -44884,7 +45721,7 @@ func (client *Client) DescribeGroupMonitoringAgentProcess(request *DescribeGroup
 }
 
 /**
- * The ID of the availability monitoring task.
+ * This topic provides an example to show how to query all the availability monitoring tasks of your Alibaba Cloud account. The sample responses indicate that the account has one availability monitoring task named `ecs_instance`.
  *
  * @param request DescribeHostAvailabilityListRequest
  * @param runtime runtime options for this request RuntimeOptions
@@ -44944,7 +45781,7 @@ func (client *Client) DescribeHostAvailabilityListWithOptions(request *DescribeH
 }
 
 /**
- * The ID of the availability monitoring task.
+ * This topic provides an example to show how to query all the availability monitoring tasks of your Alibaba Cloud account. The sample responses indicate that the account has one availability monitoring task named `ecs_instance`.
  *
  * @param request DescribeHostAvailabilityListRequest
  * @return DescribeHostAvailabilityListResponse
@@ -44961,7 +45798,8 @@ func (client *Client) DescribeHostAvailabilityList(request *DescribeHostAvailabi
 }
 
 /**
- * The tag key.
+ * ## Prerequisites
+ * Hybrid Cloud Monitoring is activated. For more information, see [Activate Hybrid Cloud Monitoring](~~250773~~).
  *
  * @param request DescribeHybridMonitorDataListRequest
  * @param runtime runtime options for this request RuntimeOptions
@@ -45017,7 +45855,8 @@ func (client *Client) DescribeHybridMonitorDataListWithOptions(request *Describe
 }
 
 /**
- * The tag key.
+ * ## Prerequisites
+ * Hybrid Cloud Monitoring is activated. For more information, see [Activate Hybrid Cloud Monitoring](~~250773~~).
  *
  * @param request DescribeHybridMonitorDataListRequest
  * @return DescribeHybridMonitorDataListResponse
@@ -45034,13 +45873,7 @@ func (client *Client) DescribeHybridMonitorDataList(request *DescribeHybridMonit
 }
 
 /**
- * The data retention period. Valid values:
- * *   cms.s1.large: Data is stored for 15 days.
- * *   cms.s1.xlarge: Data is stored for 32 days.
- * *   cms.s1.2xlarge: Data is stored for 63 days.
- * *   cms.s1.3xlarge: Data is stored for 93 days.
- * *   cms.s1.6xlarge: Data is stored for 185 days.
- * *   cms.s1.12xlarge: Data is stored for 376 days.
+ * In this example, all namespaces within the current account are queried. The response shows that the current account has only one namespace named `aliyun-test`.
  *
  * @param request DescribeHybridMonitorNamespaceListRequest
  * @param runtime runtime options for this request RuntimeOptions
@@ -45096,13 +45929,7 @@ func (client *Client) DescribeHybridMonitorNamespaceListWithOptions(request *Des
 }
 
 /**
- * The data retention period. Valid values:
- * *   cms.s1.large: Data is stored for 15 days.
- * *   cms.s1.xlarge: Data is stored for 32 days.
- * *   cms.s1.2xlarge: Data is stored for 63 days.
- * *   cms.s1.3xlarge: Data is stored for 93 days.
- * *   cms.s1.6xlarge: Data is stored for 185 days.
- * *   cms.s1.12xlarge: Data is stored for 376 days.
+ * In this example, all namespaces within the current account are queried. The response shows that the current account has only one namespace named `aliyun-test`.
  *
  * @param request DescribeHybridMonitorNamespaceListRequest
  * @return DescribeHybridMonitorNamespaceListResponse
@@ -45373,12 +46200,9 @@ func (client *Client) DescribeLogMonitorList(request *DescribeLogMonitorListRequ
 }
 
 /**
- * The statistical period of the metric.
- * Valid values: 15, 60, 900, and 3600.
- * Unit: seconds.
- * >
- * *   If this parameter is not specified, monitoring data is queried based on the period in which metric values are reported.
- * *   For more information about the statistical period of a metric that is specified by the `MetricName` parameter, see [Appendix 1: Metrics](~~163515~~).
+ * ## Limits
+ * Each API operation can be called up to 10 times per second. An Alibaba Cloud account and the RAM users within the account share the quota.
+ * >  Different from [DescribeMetricList](~~51936~~), the DescribeMetricData operation provides statistical features. You can set the `Dimension` parameter to {"instanceId": "i-abcdefgh12****"} to aggregate all data of your Alibaba Cloud account. This topic provides an example to show how to query the monitoring data of the `cpu_idle` metric for Elastic Compute Service (ECS). The namespace of ECS is `acs_ecs_dashboard`.
  *
  * @param request DescribeMetricDataRequest
  * @param runtime runtime options for this request RuntimeOptions
@@ -45446,12 +46270,9 @@ func (client *Client) DescribeMetricDataWithOptions(request *DescribeMetricDataR
 }
 
 /**
- * The statistical period of the metric.
- * Valid values: 15, 60, 900, and 3600.
- * Unit: seconds.
- * >
- * *   If this parameter is not specified, monitoring data is queried based on the period in which metric values are reported.
- * *   For more information about the statistical period of a metric that is specified by the `MetricName` parameter, see [Appendix 1: Metrics](~~163515~~).
+ * ## Limits
+ * Each API operation can be called up to 10 times per second. An Alibaba Cloud account and the RAM users within the account share the quota.
+ * >  Different from [DescribeMetricList](~~51936~~), the DescribeMetricData operation provides statistical features. You can set the `Dimension` parameter to {"instanceId": "i-abcdefgh12****"} to aggregate all data of your Alibaba Cloud account. This topic provides an example to show how to query the monitoring data of the `cpu_idle` metric for Elastic Compute Service (ECS). The namespace of ECS is `acs_ecs_dashboard`.
  *
  * @param request DescribeMetricDataRequest
  * @return DescribeMetricDataResponse
@@ -45573,8 +46394,9 @@ func (client *Client) DescribeMetricLast(request *DescribeMetricLastRequest) (_r
 }
 
 /**
- * The name of the metric.
- * For more information about metric names, see [Appendix 1: Metrics](~~163515~~).
+ * ## Limits
+ * Each API operation can be called up to 50 times per second. An Alibaba Cloud account and the RAM users within the account share the quota.
+ * >This topic provides an example to show how to query the monitoring data of the `cpu_idle` metric for Elastic Compute Service (ECS). The namespace of ECS is `acs_ecs_dashboard`. The returned result indicates that the monitoring data for the instance `i-abcdefgh12****` of the account `120886317861****` is queried at an interval of 60 seconds. The maximum, minimum, and average values of the metric are 100, 93.1, and 99.52.
  *
  * @param request DescribeMetricListRequest
  * @param runtime runtime options for this request RuntimeOptions
@@ -45646,8 +46468,9 @@ func (client *Client) DescribeMetricListWithOptions(request *DescribeMetricListR
 }
 
 /**
- * The name of the metric.
- * For more information about metric names, see [Appendix 1: Metrics](~~163515~~).
+ * ## Limits
+ * Each API operation can be called up to 50 times per second. An Alibaba Cloud account and the RAM users within the account share the quota.
+ * >This topic provides an example to show how to query the monitoring data of the `cpu_idle` metric for Elastic Compute Service (ECS). The namespace of ECS is `acs_ecs_dashboard`. The returned result indicates that the monitoring data for the instance `i-abcdefgh12****` of the account `120886317861****` is queried at an interval of 60 seconds. The maximum, minimum, and average values of the metric are 100, 93.1, and 99.52.
  *
  * @param request DescribeMetricListRequest
  * @return DescribeMetricListResponse
@@ -45664,8 +46487,7 @@ func (client *Client) DescribeMetricList(request *DescribeMetricListRequest) (_r
 }
 
 /**
- * The namespace of the service.
- * For more information, see [Appendix 1: Metrics](~~163515~~).
+ * This operation is usually used with DescribeMetricList and DescribeMetricLast. For more information, see [DescribeMetricList](~~51936~~) and [DescribeMetricLast](~~51939~~).
  *
  * @param request DescribeMetricMetaListRequest
  * @param runtime runtime options for this request RuntimeOptions
@@ -45721,8 +46543,7 @@ func (client *Client) DescribeMetricMetaListWithOptions(request *DescribeMetricM
 }
 
 /**
- * The namespace of the service.
- * For more information, see [Appendix 1: Metrics](~~163515~~).
+ * This operation is usually used with DescribeMetricList and DescribeMetricLast. For more information, see [DescribeMetricList](~~51936~~) and [DescribeMetricLast](~~51939~~).
  *
  * @param request DescribeMetricMetaListRequest
  * @return DescribeMetricMetaListResponse
@@ -45952,7 +46773,9 @@ func (client *Client) DescribeMetricRuleList(request *DescribeMetricRuleListRequ
 }
 
 /**
- * The parameters of the alert callback. The parameters are in the JSON format.
+ * ## Limit
+ * This operation supports only Message Service (MNS) resources.
+ * >This topic provides an example on how to query the resources that are associated with an alert rule whose ID is `ae06917_75a8c43178ab66****`.
  *
  * @param request DescribeMetricRuleTargetsRequest
  * @param runtime runtime options for this request RuntimeOptions
@@ -45992,7 +46815,9 @@ func (client *Client) DescribeMetricRuleTargetsWithOptions(request *DescribeMetr
 }
 
 /**
- * The parameters of the alert callback. The parameters are in the JSON format.
+ * ## Limit
+ * This operation supports only Message Service (MNS) resources.
+ * >This topic provides an example on how to query the resources that are associated with an alert rule whose ID is `ae06917_75a8c43178ab66****`.
  *
  * @param request DescribeMetricRuleTargetsRequest
  * @return DescribeMetricRuleTargetsResponse
@@ -46009,7 +46834,7 @@ func (client *Client) DescribeMetricRuleTargets(request *DescribeMetricRuleTarge
 }
 
 /**
- * The operation that you want to perform. Set the value to DescribeMetricRuleTemplateAttribute.
+ * This topic provides an example to show how to query the details of an alert template whose ID is `70****`.
  *
  * @param request DescribeMetricRuleTemplateAttributeRequest
  * @param runtime runtime options for this request RuntimeOptions
@@ -46053,7 +46878,7 @@ func (client *Client) DescribeMetricRuleTemplateAttributeWithOptions(request *De
 }
 
 /**
- * The operation that you want to perform. Set the value to DescribeMetricRuleTemplateAttribute.
+ * This topic provides an example to show how to query the details of an alert template whose ID is `70****`.
  *
  * @param request DescribeMetricRuleTemplateAttributeRequest
  * @return DescribeMetricRuleTemplateAttributeResponse
@@ -46847,7 +47672,8 @@ func (client *Client) DescribeMonitoringAgentHosts(request *DescribeMonitoringAg
 }
 
 /**
- * The operation that you want to perform. Set the value to DescribeMonitoringAgentProcesses.
+ * >  Before you call this operation, call the CreateMonitoringAgentProcess operation to create processes. For more information, see [CreateMonitoringAgentProcess](~~114951~~~).
+ * This topic provides an example of how to query the processes of the `i-hp3hl3cx1pbahzy8****` instance. The response indicates the details of the `NGINX` and `HTTP` processes.
  *
  * @param request DescribeMonitoringAgentProcessesRequest
  * @param runtime runtime options for this request RuntimeOptions
@@ -46887,7 +47713,8 @@ func (client *Client) DescribeMonitoringAgentProcessesWithOptions(request *Descr
 }
 
 /**
- * The operation that you want to perform. Set the value to DescribeMonitoringAgentProcesses.
+ * >  Before you call this operation, call the CreateMonitoringAgentProcess operation to create processes. For more information, see [CreateMonitoringAgentProcess](~~114951~~~).
+ * This topic provides an example of how to query the processes of the `i-hp3hl3cx1pbahzy8****` instance. The response indicates the details of the `NGINX` and `HTTP` processes.
  *
  * @param request DescribeMonitoringAgentProcessesRequest
  * @return DescribeMonitoringAgentProcessesResponse
@@ -47002,7 +47829,7 @@ func (client *Client) DescribeMonitoringConfig(request *DescribeMonitoringConfig
 }
 
 /**
- * The operation that you want to perform. Set the value to DescribeProductResourceTagKeyList.
+ * >  If a tag is attached to multiple cloud resources in the region, the key of the tag is returned only once.
  *
  * @param request DescribeProductResourceTagKeyListRequest
  * @param runtime runtime options for this request RuntimeOptions
@@ -47042,7 +47869,7 @@ func (client *Client) DescribeProductResourceTagKeyListWithOptions(request *Desc
 }
 
 /**
- * The operation that you want to perform. Set the value to DescribeProductResourceTagKeyList.
+ * >  If a tag is attached to multiple cloud resources in the region, the key of the tag is returned only once.
  *
  * @param request DescribeProductResourceTagKeyListRequest
  * @return DescribeProductResourceTagKeyListResponse
@@ -47161,7 +47988,7 @@ func (client *Client) DescribeProjectMeta(request *DescribeProjectMetaRequest) (
 }
 
 /**
- * The operation that you want to perform. Set the value to DescribeSiteMonitorAttribute.
+ * This topic provides an example on how to query the details of a site monitoring task whose ID is `cc641dff-c19d-45f3-ad0a-818a0c4f****`. The returned result indicates that the task name is `test123`, the URL that is monitored by the task is `https://aliyun.com`, and the name of the carrier is `Alibaba`.
  *
  * @param request DescribeSiteMonitorAttributeRequest
  * @param runtime runtime options for this request RuntimeOptions
@@ -47205,7 +48032,7 @@ func (client *Client) DescribeSiteMonitorAttributeWithOptions(request *DescribeS
 }
 
 /**
- * The operation that you want to perform. Set the value to DescribeSiteMonitorAttribute.
+ * This topic provides an example on how to query the details of a site monitoring task whose ID is `cc641dff-c19d-45f3-ad0a-818a0c4f****`. The returned result indicates that the task name is `test123`, the URL that is monitored by the task is `https://aliyun.com`, and the name of the carrier is `Alibaba`.
  *
  * @param request DescribeSiteMonitorAttributeRequest
  * @return DescribeSiteMonitorAttributeResponse
@@ -47367,7 +48194,7 @@ func (client *Client) DescribeSiteMonitorISPCityList(request *DescribeSiteMonito
 }
 
 /**
- * The content of the HTTP request.
+ * This topic provides an example on how to query all the site monitoring tasks of your Alibaba Cloud account. In this example, the returned result indicates that the Alibaba Cloud account has one site monitoring task named `HanZhou_ECS2`.
  *
  * @param request DescribeSiteMonitorListRequest
  * @param runtime runtime options for this request RuntimeOptions
@@ -47427,7 +48254,7 @@ func (client *Client) DescribeSiteMonitorListWithOptions(request *DescribeSiteMo
 }
 
 /**
- * The content of the HTTP request.
+ * This topic provides an example on how to query all the site monitoring tasks of your Alibaba Cloud account. In this example, the returned result indicates that the Alibaba Cloud account has one site monitoring task named `HanZhou_ECS2`.
  *
  * @param request DescribeSiteMonitorListRequest
  * @return DescribeSiteMonitorListResponse
@@ -47583,6 +48410,13 @@ func (client *Client) DescribeSiteMonitorQuota(request *DescribeSiteMonitorQuota
 	return _result, _err
 }
 
+/**
+ * This topic provides an example to show how to query the statistics of the `Availability` metric for a site monitoring task whose ID is `ef4cdc8b-9dc7-43e7-810e-f950e56c****`. The result indicates that the availability rate of the site is `100%`.
+ *
+ * @param request DescribeSiteMonitorStatisticsRequest
+ * @param runtime runtime options for this request RuntimeOptions
+ * @return DescribeSiteMonitorStatisticsResponse
+ */
 func (client *Client) DescribeSiteMonitorStatisticsWithOptions(request *DescribeSiteMonitorStatisticsRequest, runtime *util.RuntimeOptions) (_result *DescribeSiteMonitorStatisticsResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -47628,6 +48462,12 @@ func (client *Client) DescribeSiteMonitorStatisticsWithOptions(request *Describe
 	return _result, _err
 }
 
+/**
+ * This topic provides an example to show how to query the statistics of the `Availability` metric for a site monitoring task whose ID is `ef4cdc8b-9dc7-43e7-810e-f950e56c****`. The result indicates that the availability rate of the site is `100%`.
+ *
+ * @param request DescribeSiteMonitorStatisticsRequest
+ * @return DescribeSiteMonitorStatisticsResponse
+ */
 func (client *Client) DescribeSiteMonitorStatistics(request *DescribeSiteMonitorStatisticsRequest) (_result *DescribeSiteMonitorStatisticsResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &DescribeSiteMonitorStatisticsResponse{}
@@ -47724,7 +48564,7 @@ func (client *Client) DescribeSystemEventAttribute(request *DescribeSystemEventA
 }
 
 /**
- * The operation that you want to perform. Set the value to DescribeSystemEventCount.
+ * This topic provides an example on how to query the number of times that a system event occurred for Elastic Compute Service (`ECS`). The returned result indicates that the number of times that the specified system event occurred is 3.
  *
  * @param request DescribeSystemEventCountRequest
  * @param runtime runtime options for this request RuntimeOptions
@@ -47796,7 +48636,7 @@ func (client *Client) DescribeSystemEventCountWithOptions(request *DescribeSyste
 }
 
 /**
- * The operation that you want to perform. Set the value to DescribeSystemEventCount.
+ * This topic provides an example on how to query the number of times that a system event occurred for Elastic Compute Service (`ECS`). The returned result indicates that the number of times that the specified system event occurred is 3.
  *
  * @param request DescribeSystemEventCountRequest
  * @return DescribeSystemEventCountResponse
@@ -47974,7 +48814,7 @@ func (client *Client) DescribeTagKeyList(request *DescribeTagKeyListRequest) (_r
 }
 
 /**
- * The operation that you want to perform. Set the value to DescribeTagValueList.
+ * This topic provides an example of how to query the tag values corresponding to `tagKey1`. The return results are `tagValue1` and `tagValue2`.
  *
  * @param request DescribeTagValueListRequest
  * @param runtime runtime options for this request RuntimeOptions
@@ -48022,7 +48862,7 @@ func (client *Client) DescribeTagValueListWithOptions(request *DescribeTagValueL
 }
 
 /**
- * The operation that you want to perform. Set the value to DescribeTagValueList.
+ * This topic provides an example of how to query the tag values corresponding to `tagKey1`. The return results are `tagValue1` and `tagValue2`.
  *
  * @param request DescribeTagValueListRequest
  * @return DescribeTagValueListResponse
@@ -48571,9 +49411,8 @@ func (client *Client) EnableSiteMonitors(request *EnableSiteMonitorsRequest) (_r
 }
 
 /**
- * Indicates whether the call was successful. Valid values:
- * *   true: The call was successful.
- * *   false: The call failed.
+ * ## Prerequisites
+ * The Cloud Assistant client is installed on an ECS instance. For more information about how to install the Cloud Assistant client, see [Overview](~~64601~~).
  *
  * @param request InstallMonitoringAgentRequest
  * @param runtime runtime options for this request RuntimeOptions
@@ -48621,9 +49460,8 @@ func (client *Client) InstallMonitoringAgentWithOptions(request *InstallMonitori
 }
 
 /**
- * Indicates whether the call was successful. Valid values:
- * *   true: The call was successful.
- * *   false: The call failed.
+ * ## Prerequisites
+ * The Cloud Assistant client is installed on an ECS instance. For more information about how to install the Cloud Assistant client, see [Overview](~~64601~~).
  *
  * @param request InstallMonitoringAgentRequest
  * @return InstallMonitoringAgentResponse
@@ -48846,9 +49684,7 @@ func (client *Client) ModifyHostInfo(request *ModifyHostInfoRequest) (_result *M
 }
 
 /**
- * Indicates whether the call was successful. Valid values:
- * *   true: The call was successful.
- * *   false: The call failed.
+ * This topic provides an example on how to change the data retention period of the `aliyun` namespace to `cms.s1.2xlarge`. The response shows that the namespace is modified.
  *
  * @param request ModifyHybridMonitorNamespaceRequest
  * @param runtime runtime options for this request RuntimeOptions
@@ -48896,9 +49732,7 @@ func (client *Client) ModifyHybridMonitorNamespaceWithOptions(request *ModifyHyb
 }
 
 /**
- * Indicates whether the call was successful. Valid values:
- * *   true: The call was successful.
- * *   false: The call failed.
+ * This topic provides an example on how to change the data retention period of the `aliyun` namespace to `cms.s1.2xlarge`. The response shows that the namespace is modified.
  *
  * @param request ModifyHybridMonitorNamespaceRequest
  * @return ModifyHybridMonitorNamespaceResponse
@@ -48915,8 +49749,7 @@ func (client *Client) ModifyHybridMonitorNamespace(request *ModifyHybridMonitorN
 }
 
 /**
- * The Log Service projects.
- * Valid values of N: 1 to 25.
+ * In this example, a Logstore group named `Logstore_test` is modified. The Logstore of the `aliyun-project` project in the `cn-hangzhou` region is changed to `Logstore-aliyun-all`. The response shows that the Logstore group is modified.
  *
  * @param request ModifyHybridMonitorSLSGroupRequest
  * @param runtime runtime options for this request RuntimeOptions
@@ -48964,8 +49797,7 @@ func (client *Client) ModifyHybridMonitorSLSGroupWithOptions(request *ModifyHybr
 }
 
 /**
- * The Log Service projects.
- * Valid values of N: 1 to 25.
+ * In this example, a Logstore group named `Logstore_test` is modified. The Logstore of the `aliyun-project` project in the `cn-hangzhou` region is changed to `Logstore-aliyun-all`. The response shows that the Logstore group is modified.
  *
  * @param request ModifyHybridMonitorSLSGroupRequest
  * @return ModifyHybridMonitorSLSGroupResponse
@@ -49143,9 +49975,7 @@ func (client *Client) ModifyMetricRuleBlackList(request *ModifyMetricRuleBlackLi
 }
 
 /**
- * Indicates whether the call was successful. Valid values:
- * *   true: The call was successful.
- * *   false: The call failed.
+ * This topic provides an example on how to modify an alert template whose version is `1` and ID is `123456`. The alert level is changed to `Critical`. The statistical method is changed to `Average`. The alert threshold comparator is changed to `GreaterThanOrEqualToThreshold`. The alert threshold is changed to `90`. The number of alert retries is changed to `3`. The response shows that the alert template is modified.
  *
  * @param request ModifyMetricRuleTemplateRequest
  * @param runtime runtime options for this request RuntimeOptions
@@ -49201,9 +50031,7 @@ func (client *Client) ModifyMetricRuleTemplateWithOptions(request *ModifyMetricR
 }
 
 /**
- * Indicates whether the call was successful. Valid values:
- * *   true: The call was successful.
- * *   false: The call failed.
+ * This topic provides an example on how to modify an alert template whose version is `1` and ID is `123456`. The alert level is changed to `Critical`. The statistical method is changed to `Average`. The alert threshold comparator is changed to `GreaterThanOrEqualToThreshold`. The alert threshold is changed to `90`. The number of alert retries is changed to `3`. The response shows that the alert template is modified.
  *
  * @param request ModifyMetricRuleTemplateRequest
  * @return ModifyMetricRuleTemplateResponse
@@ -49512,7 +50340,7 @@ func (client *Client) PutContact(request *PutContactRequest) (_result *PutContac
 }
 
 /**
- * The operation that you want to perform. Set the value to PutContactGroup.
+ * This topic provides an example on how to create an alert contact group named `ECS_Group`.
  *
  * @param request PutContactGroupRequest
  * @param runtime runtime options for this request RuntimeOptions
@@ -49564,7 +50392,7 @@ func (client *Client) PutContactGroupWithOptions(request *PutContactGroupRequest
 }
 
 /**
- * The operation that you want to perform. Set the value to PutContactGroup.
+ * This topic provides an example on how to create an alert contact group named `ECS_Group`.
  *
  * @param request PutContactGroupRequest
  * @return PutContactGroupResponse
@@ -49625,7 +50453,7 @@ func (client *Client) PutCustomEvent(request *PutCustomEventRequest) (_result *P
 }
 
 /**
- * The operation that you want to perform. Set the value to PutCustomEventRule.
+ * Before you call this operation, call the PutCustomEvent operation to report the monitoring data of the custom event. For more information, see [PutCustomEvent](~~115012~~).
  *
  * @param request PutCustomEventRuleRequest
  * @param runtime runtime options for this request RuntimeOptions
@@ -49705,7 +50533,7 @@ func (client *Client) PutCustomEventRuleWithOptions(request *PutCustomEventRuleR
 }
 
 /**
- * The operation that you want to perform. Set the value to PutCustomEventRule.
+ * Before you call this operation, call the PutCustomEvent operation to report the monitoring data of the custom event. For more information, see [PutCustomEvent](~~115012~~).
  *
  * @param request PutCustomEventRuleRequest
  * @return PutCustomEventRuleResponse
@@ -49722,11 +50550,7 @@ func (client *Client) PutCustomEventRule(request *PutCustomEventRuleRequest) (_r
 }
 
 /**
- * The dimensions that specify the resources whose monitoring data you want to query. Valid values of N: 1 to 21.
- * Set the value to a collection of key-value pairs. Format:`{"Key":"Value"}`.
- * The key or value must be 1 to 64 bytes in length. Excessive characters are truncated.
- * The key or value can contain letters, digits, periods (.), hyphens (-), underscores (\\_), forward slashes (/), and backslashes (\\\\).
- * >  Dimensions must be formatted as a JSON string in a specified order.
+ * >  We recommend that you call the [PutHybridMonitorMetricData](~~383455~~) operation of Hybrid Cloud Monitoring to report monitoring data.
  *
  * @param request PutCustomMetricRequest
  * @param runtime runtime options for this request RuntimeOptions
@@ -49766,11 +50590,7 @@ func (client *Client) PutCustomMetricWithOptions(request *PutCustomMetricRequest
 }
 
 /**
- * The dimensions that specify the resources whose monitoring data you want to query. Valid values of N: 1 to 21.
- * Set the value to a collection of key-value pairs. Format:`{"Key":"Value"}`.
- * The key or value must be 1 to 64 bytes in length. Excessive characters are truncated.
- * The key or value can contain letters, digits, periods (.), hyphens (-), underscores (\\_), forward slashes (/), and backslashes (\\\\).
- * >  Dimensions must be formatted as a JSON string in a specified order.
+ * >  We recommend that you call the [PutHybridMonitorMetricData](~~383455~~) operation of Hybrid Cloud Monitoring to report monitoring data.
  *
  * @param request PutCustomMetricRequest
  * @return PutCustomMetricResponse
@@ -49787,7 +50607,7 @@ func (client *Client) PutCustomMetric(request *PutCustomMetricRequest) (_result 
 }
 
 /**
- * The operation that you want to perform. Set the value to PutCustomMetricRule.
+ * Before you call this operation, call the PutCustomMetric operation to report custom monitoring data. For more information, see [PutCustomMetric](~~115004~~).
  *
  * @param request PutCustomMetricRuleRequest
  * @param runtime runtime options for this request RuntimeOptions
@@ -49887,7 +50707,7 @@ func (client *Client) PutCustomMetricRuleWithOptions(request *PutCustomMetricRul
 }
 
 /**
- * The operation that you want to perform. Set the value to PutCustomMetricRule.
+ * Before you call this operation, call the PutCustomMetric operation to report custom monitoring data. For more information, see [PutCustomMetric](~~115004~~).
  *
  * @param request PutCustomMetricRuleRequest
  * @return PutCustomMetricRuleResponse
@@ -49904,7 +50724,8 @@ func (client *Client) PutCustomMetricRule(request *PutCustomMetricRuleRequest) (
 }
 
 /**
- * The ID of the application group to which the event-triggered alert rule belongs.
+ * If the specified rule name does not exist, an event-triggered alert rule is created. If the specified rule name exists, the specified event-triggered alert rule is modified.
+ * In this example, the `myRuleName` alert rule is created for the `ecs` cloud service.
  *
  * @param request PutEventRuleRequest
  * @param runtime runtime options for this request RuntimeOptions
@@ -49968,7 +50789,8 @@ func (client *Client) PutEventRuleWithOptions(request *PutEventRuleRequest, runt
 }
 
 /**
- * The ID of the application group to which the event-triggered alert rule belongs.
+ * If the specified rule name does not exist, an event-triggered alert rule is created. If the specified rule name exists, the specified event-triggered alert rule is modified.
+ * In this example, the `myRuleName` alert rule is created for the `ecs` cloud service.
  *
  * @param request PutEventRuleRequest
  * @return PutEventRuleResponse
@@ -50386,7 +51208,7 @@ func (client *Client) PutHybridMonitorMetricData(request *PutHybridMonitorMetric
 }
 
 /**
- * The name of the log field that is used for matching in the filter condition. Valid values of N: 1 to 10.
+ * In the example of this topic, the `cpu_total` log monitoring metric is created. The response shows that the log monitoring metric is created and the metric ID is `16****`.
  *
  * @param request PutLogMonitorRequest
  * @param runtime runtime options for this request RuntimeOptions
@@ -50474,7 +51296,7 @@ func (client *Client) PutLogMonitorWithOptions(request *PutLogMonitorRequest, ru
 }
 
 /**
- * The name of the log field that is used for matching in the filter condition. Valid values of N: 1 to 10.
+ * In the example of this topic, the `cpu_total` log monitoring metric is created. The response shows that the log monitoring metric is created and the metric ID is `16****`.
  *
  * @param request PutLogMonitorRequest
  * @return PutLogMonitorResponse
@@ -50491,9 +51313,8 @@ func (client *Client) PutLogMonitor(request *PutLogMonitorRequest) (_result *Put
 }
 
 /**
- * Indicates whether the call was successful. Valid values:
- * *   true: The call was successful.
- * *   false: The call failed.
+ * ## Limit
+ * This operation supports only Message Service (MNS) resources.
  *
  * @param request PutMetricRuleTargetsRequest
  * @param runtime runtime options for this request RuntimeOptions
@@ -50537,9 +51358,8 @@ func (client *Client) PutMetricRuleTargetsWithOptions(request *PutMetricRuleTarg
 }
 
 /**
- * Indicates whether the call was successful. Valid values:
- * *   true: The call was successful.
- * *   false: The call failed.
+ * ## Limit
+ * This operation supports only Message Service (MNS) resources.
  *
  * @param request PutMetricRuleTargetsRequest
  * @return PutMetricRuleTargetsResponse
@@ -50791,9 +51611,7 @@ func (client *Client) PutResourceMetricRule(request *PutResourceMetricRuleReques
 }
 
 /**
- * Indicates whether the call was successful. Valid values:
- * *   true: The call was successful.
- * *   false: The call failed.
+ * This topic provides an example on how to create a threshold-triggered alert rule for the `cpu_total` metric of the `i-uf6j91r34rnwawoo****` instance that belongs to Elastic Compute Service (ECS). The namespace of ECS is `acs_ecs_dashboard`. In this example, the alert contact group of the alert rule is `ECS_Group`, the name of the alert rule is `test123`, and the ID of the alert rule is `a151cd6023eacee2f0978e03863cc1697c89508****`. The statistical method for Critical-level alerts is `Average`, the comparison operator for Critical-level alerts is `GreaterThanOrEqualToThreshold`, the threshold for Critical-level alerts is `90`, and the consecutive number of times for which the metric value is measured before a Critical-level alert is triggered is `3`.
  *
  * @param request PutResourceMetricRulesRequest
  * @param runtime runtime options for this request RuntimeOptions
@@ -50833,9 +51651,7 @@ func (client *Client) PutResourceMetricRulesWithOptions(request *PutResourceMetr
 }
 
 /**
- * Indicates whether the call was successful. Valid values:
- * *   true: The call was successful.
- * *   false: The call failed.
+ * This topic provides an example on how to create a threshold-triggered alert rule for the `cpu_total` metric of the `i-uf6j91r34rnwawoo****` instance that belongs to Elastic Compute Service (ECS). The namespace of ECS is `acs_ecs_dashboard`. In this example, the alert contact group of the alert rule is `ECS_Group`, the name of the alert rule is `test123`, and the ID of the alert rule is `a151cd6023eacee2f0978e03863cc1697c89508****`. The statistical method for Critical-level alerts is `Average`, the comparison operator for Critical-level alerts is `GreaterThanOrEqualToThreshold`, the threshold for Critical-level alerts is `90`, and the consecutive number of times for which the metric value is measured before a Critical-level alert is triggered is `3`.
  *
  * @param request PutResourceMetricRulesRequest
  * @return PutResourceMetricRulesResponse
@@ -50900,8 +51716,7 @@ func (client *Client) RemoveTags(request *RemoveTagsRequest) (_result *RemoveTag
 }
 
 /**
- * The name of the cloud service.
- * >  For information about the system events supported by Cloud Monitor for Alibaba Cloud services, see [System events](~~167388~~).
+ * This operation is used to test whether a system event can be triggered as expected. You can call this operation to simulate a system event and check whether an expected response is returned after an alert is triggered by the system event.
  *
  * @param request SendDryRunSystemEventRequest
  * @param runtime runtime options for this request RuntimeOptions
@@ -50953,8 +51768,7 @@ func (client *Client) SendDryRunSystemEventWithOptions(request *SendDryRunSystem
 }
 
 /**
- * The name of the cloud service.
- * >  For information about the system events supported by Cloud Monitor for Alibaba Cloud services, see [System events](~~167388~~).
+ * This operation is used to test whether a system event can be triggered as expected. You can call this operation to simulate a system event and check whether an expected response is returned after an alert is triggered by the system event.
  *
  * @param request SendDryRunSystemEventRequest
  * @return SendDryRunSystemEventResponse
@@ -50971,7 +51785,7 @@ func (client *Client) SendDryRunSystemEvent(request *SendDryRunSystemEventReques
 }
 
 /**
- * The operation that you want to perform. Set the value to UninstallMonitoringAgent.
+ * >  This API operation is not applicable to ECS instances. To uninstall the agent from an ECS instance, see [Install and uninstall the Cloud Monitor agent](~~183482~~).
  *
  * @param request UninstallMonitoringAgentRequest
  * @param runtime runtime options for this request RuntimeOptions
@@ -51011,7 +51825,7 @@ func (client *Client) UninstallMonitoringAgentWithOptions(request *UninstallMoni
 }
 
 /**
- * The operation that you want to perform. Set the value to UninstallMonitoringAgent.
+ * >  This API operation is not applicable to ECS instances. To uninstall the agent from an ECS instance, see [Install and uninstall the Cloud Monitor agent](~~183482~~).
  *
  * @param request UninstallMonitoringAgentRequest
  * @return UninstallMonitoringAgentResponse
