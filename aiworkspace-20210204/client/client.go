@@ -1992,6 +1992,7 @@ type CreateWorkspaceResourceRequestResources struct {
 	EnvType      *string                                          `json:"EnvType,omitempty" xml:"EnvType,omitempty"`
 	GroupName    *string                                          `json:"GroupName,omitempty" xml:"GroupName,omitempty"`
 	IsDefault    *bool                                            `json:"IsDefault,omitempty" xml:"IsDefault,omitempty"`
+	Labels       []*CreateWorkspaceResourceRequestResourcesLabels `json:"Labels,omitempty" xml:"Labels,omitempty" type:"Repeated"`
 	Name         *string                                          `json:"Name,omitempty" xml:"Name,omitempty"`
 	ProductType  *string                                          `json:"ProductType,omitempty" xml:"ProductType,omitempty"`
 	Quotas       []*CreateWorkspaceResourceRequestResourcesQuotas `json:"Quotas,omitempty" xml:"Quotas,omitempty" type:"Repeated"`
@@ -2023,6 +2024,11 @@ func (s *CreateWorkspaceResourceRequestResources) SetIsDefault(v bool) *CreateWo
 	return s
 }
 
+func (s *CreateWorkspaceResourceRequestResources) SetLabels(v []*CreateWorkspaceResourceRequestResourcesLabels) *CreateWorkspaceResourceRequestResources {
+	s.Labels = v
+	return s
+}
+
 func (s *CreateWorkspaceResourceRequestResources) SetName(v string) *CreateWorkspaceResourceRequestResources {
 	s.Name = &v
 	return s
@@ -2050,6 +2056,29 @@ func (s *CreateWorkspaceResourceRequestResources) SetSpec(v map[string]interface
 
 func (s *CreateWorkspaceResourceRequestResources) SetWorkspaceId(v string) *CreateWorkspaceResourceRequestResources {
 	s.WorkspaceId = &v
+	return s
+}
+
+type CreateWorkspaceResourceRequestResourcesLabels struct {
+	Key   *string `json:"Key,omitempty" xml:"Key,omitempty"`
+	Value *string `json:"Value,omitempty" xml:"Value,omitempty"`
+}
+
+func (s CreateWorkspaceResourceRequestResourcesLabels) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateWorkspaceResourceRequestResourcesLabels) GoString() string {
+	return s.String()
+}
+
+func (s *CreateWorkspaceResourceRequestResourcesLabels) SetKey(v string) *CreateWorkspaceResourceRequestResourcesLabels {
+	s.Key = &v
+	return s
+}
+
+func (s *CreateWorkspaceResourceRequestResourcesLabels) SetValue(v string) *CreateWorkspaceResourceRequestResourcesLabels {
+	s.Value = &v
 	return s
 }
 
@@ -2647,8 +2676,10 @@ func (s *DeleteWorkspaceResponse) SetBody(v *DeleteWorkspaceResponseBody) *Delet
 
 type DeleteWorkspaceResourceRequest struct {
 	GroupName    *string `json:"GroupName,omitempty" xml:"GroupName,omitempty"`
+	Labels       *string `json:"Labels,omitempty" xml:"Labels,omitempty"`
 	Option       *string `json:"Option,omitempty" xml:"Option,omitempty"`
 	ProductType  *string `json:"ProductType,omitempty" xml:"ProductType,omitempty"`
+	ResourceIds  *string `json:"ResourceIds,omitempty" xml:"ResourceIds,omitempty"`
 	ResourceType *string `json:"ResourceType,omitempty" xml:"ResourceType,omitempty"`
 }
 
@@ -2665,6 +2696,11 @@ func (s *DeleteWorkspaceResourceRequest) SetGroupName(v string) *DeleteWorkspace
 	return s
 }
 
+func (s *DeleteWorkspaceResourceRequest) SetLabels(v string) *DeleteWorkspaceResourceRequest {
+	s.Labels = &v
+	return s
+}
+
 func (s *DeleteWorkspaceResourceRequest) SetOption(v string) *DeleteWorkspaceResourceRequest {
 	s.Option = &v
 	return s
@@ -2672,6 +2708,11 @@ func (s *DeleteWorkspaceResourceRequest) SetOption(v string) *DeleteWorkspaceRes
 
 func (s *DeleteWorkspaceResourceRequest) SetProductType(v string) *DeleteWorkspaceResourceRequest {
 	s.ProductType = &v
+	return s
+}
+
+func (s *DeleteWorkspaceResourceRequest) SetResourceIds(v string) *DeleteWorkspaceResourceRequest {
+	s.ResourceIds = &v
 	return s
 }
 
@@ -5587,13 +5628,16 @@ func (s *ListQuotasResponse) SetBody(v *ListQuotasResponseBody) *ListQuotasRespo
 
 type ListResourcesRequest struct {
 	GroupName     *string `json:"GroupName,omitempty" xml:"GroupName,omitempty"`
+	Labels        *string `json:"Labels,omitempty" xml:"Labels,omitempty"`
 	Option        *string `json:"Option,omitempty" xml:"Option,omitempty"`
 	PageNumber    *int64  `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
 	PageSize      *int32  `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
 	ProductTypes  *string `json:"ProductTypes,omitempty" xml:"ProductTypes,omitempty"`
+	QuotaIds      *string `json:"QuotaIds,omitempty" xml:"QuotaIds,omitempty"`
 	ResourceName  *string `json:"ResourceName,omitempty" xml:"ResourceName,omitempty"`
 	ResourceTypes *string `json:"ResourceTypes,omitempty" xml:"ResourceTypes,omitempty"`
 	Verbose       *bool   `json:"Verbose,omitempty" xml:"Verbose,omitempty"`
+	VerboseFields *string `json:"VerboseFields,omitempty" xml:"VerboseFields,omitempty"`
 	WorkspaceId   *string `json:"WorkspaceId,omitempty" xml:"WorkspaceId,omitempty"`
 }
 
@@ -5607,6 +5651,11 @@ func (s ListResourcesRequest) GoString() string {
 
 func (s *ListResourcesRequest) SetGroupName(v string) *ListResourcesRequest {
 	s.GroupName = &v
+	return s
+}
+
+func (s *ListResourcesRequest) SetLabels(v string) *ListResourcesRequest {
+	s.Labels = &v
 	return s
 }
 
@@ -5630,6 +5679,11 @@ func (s *ListResourcesRequest) SetProductTypes(v string) *ListResourcesRequest {
 	return s
 }
 
+func (s *ListResourcesRequest) SetQuotaIds(v string) *ListResourcesRequest {
+	s.QuotaIds = &v
+	return s
+}
+
 func (s *ListResourcesRequest) SetResourceName(v string) *ListResourcesRequest {
 	s.ResourceName = &v
 	return s
@@ -5642,6 +5696,11 @@ func (s *ListResourcesRequest) SetResourceTypes(v string) *ListResourcesRequest 
 
 func (s *ListResourcesRequest) SetVerbose(v bool) *ListResourcesRequest {
 	s.Verbose = &v
+	return s
+}
+
+func (s *ListResourcesRequest) SetVerboseFields(v string) *ListResourcesRequest {
+	s.VerboseFields = &v
 	return s
 }
 
@@ -5687,6 +5746,7 @@ type ListResourcesResponseBodyResources struct {
 	GroupName     *string                                       `json:"GroupName,omitempty" xml:"GroupName,omitempty"`
 	Id            *string                                       `json:"Id,omitempty" xml:"Id,omitempty"`
 	IsDefault     *bool                                         `json:"IsDefault,omitempty" xml:"IsDefault,omitempty"`
+	Labels        []*ListResourcesResponseBodyResourcesLabels   `json:"Labels,omitempty" xml:"Labels,omitempty" type:"Repeated"`
 	Name          *string                                       `json:"Name,omitempty" xml:"Name,omitempty"`
 	ProductType   *string                                       `json:"ProductType,omitempty" xml:"ProductType,omitempty"`
 	Quotas        []*ListResourcesResponseBodyResourcesQuotas   `json:"Quotas,omitempty" xml:"Quotas,omitempty" type:"Repeated"`
@@ -5735,6 +5795,11 @@ func (s *ListResourcesResponseBodyResources) SetId(v string) *ListResourcesRespo
 
 func (s *ListResourcesResponseBodyResources) SetIsDefault(v bool) *ListResourcesResponseBodyResources {
 	s.IsDefault = &v
+	return s
+}
+
+func (s *ListResourcesResponseBodyResources) SetLabels(v []*ListResourcesResponseBodyResourcesLabels) *ListResourcesResponseBodyResources {
+	s.Labels = v
 	return s
 }
 
@@ -5811,6 +5876,29 @@ func (s ListResourcesResponseBodyResourcesExecutor) GoString() string {
 
 func (s *ListResourcesResponseBodyResourcesExecutor) SetOwnerId(v string) *ListResourcesResponseBodyResourcesExecutor {
 	s.OwnerId = &v
+	return s
+}
+
+type ListResourcesResponseBodyResourcesLabels struct {
+	Key   *string `json:"Key,omitempty" xml:"Key,omitempty"`
+	Value *string `json:"Value,omitempty" xml:"Value,omitempty"`
+}
+
+func (s ListResourcesResponseBodyResourcesLabels) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListResourcesResponseBodyResourcesLabels) GoString() string {
+	return s.String()
+}
+
+func (s *ListResourcesResponseBodyResourcesLabels) SetKey(v string) *ListResourcesResponseBodyResourcesLabels {
+	s.Key = &v
+	return s
+}
+
+func (s *ListResourcesResponseBodyResourcesLabels) SetValue(v string) *ListResourcesResponseBodyResourcesLabels {
+	s.Value = &v
 	return s
 }
 
@@ -7076,10 +7164,13 @@ func (s *UpdateWorkspaceResponse) SetBody(v *UpdateWorkspaceResponseBody) *Updat
 }
 
 type UpdateWorkspaceResourceRequest struct {
-	GroupName    *string `json:"GroupName,omitempty" xml:"GroupName,omitempty"`
-	IsDefault    *bool   `json:"IsDefault,omitempty" xml:"IsDefault,omitempty"`
-	ProductType  *string `json:"ProductType,omitempty" xml:"ProductType,omitempty"`
-	ResourceType *string `json:"ResourceType,omitempty" xml:"ResourceType,omitempty"`
+	GroupName    *string                                 `json:"GroupName,omitempty" xml:"GroupName,omitempty"`
+	IsDefault    *bool                                   `json:"IsDefault,omitempty" xml:"IsDefault,omitempty"`
+	Labels       []*UpdateWorkspaceResourceRequestLabels `json:"Labels,omitempty" xml:"Labels,omitempty" type:"Repeated"`
+	ProductType  *string                                 `json:"ProductType,omitempty" xml:"ProductType,omitempty"`
+	ResourceIds  []*string                               `json:"ResourceIds,omitempty" xml:"ResourceIds,omitempty" type:"Repeated"`
+	ResourceType *string                                 `json:"ResourceType,omitempty" xml:"ResourceType,omitempty"`
+	Spec         map[string]interface{}                  `json:"Spec,omitempty" xml:"Spec,omitempty"`
 }
 
 func (s UpdateWorkspaceResourceRequest) String() string {
@@ -7100,13 +7191,51 @@ func (s *UpdateWorkspaceResourceRequest) SetIsDefault(v bool) *UpdateWorkspaceRe
 	return s
 }
 
+func (s *UpdateWorkspaceResourceRequest) SetLabels(v []*UpdateWorkspaceResourceRequestLabels) *UpdateWorkspaceResourceRequest {
+	s.Labels = v
+	return s
+}
+
 func (s *UpdateWorkspaceResourceRequest) SetProductType(v string) *UpdateWorkspaceResourceRequest {
 	s.ProductType = &v
 	return s
 }
 
+func (s *UpdateWorkspaceResourceRequest) SetResourceIds(v []*string) *UpdateWorkspaceResourceRequest {
+	s.ResourceIds = v
+	return s
+}
+
 func (s *UpdateWorkspaceResourceRequest) SetResourceType(v string) *UpdateWorkspaceResourceRequest {
 	s.ResourceType = &v
+	return s
+}
+
+func (s *UpdateWorkspaceResourceRequest) SetSpec(v map[string]interface{}) *UpdateWorkspaceResourceRequest {
+	s.Spec = v
+	return s
+}
+
+type UpdateWorkspaceResourceRequestLabels struct {
+	Key   *string `json:"Key,omitempty" xml:"Key,omitempty"`
+	Value *string `json:"Value,omitempty" xml:"Value,omitempty"`
+}
+
+func (s UpdateWorkspaceResourceRequestLabels) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UpdateWorkspaceResourceRequestLabels) GoString() string {
+	return s.String()
+}
+
+func (s *UpdateWorkspaceResourceRequestLabels) SetKey(v string) *UpdateWorkspaceResourceRequestLabels {
+	s.Key = &v
+	return s
+}
+
+func (s *UpdateWorkspaceResourceRequestLabels) SetValue(v string) *UpdateWorkspaceResourceRequestLabels {
+	s.Value = &v
 	return s
 }
 
@@ -8431,12 +8560,20 @@ func (client *Client) DeleteWorkspaceResourceWithOptions(WorkspaceId *string, re
 		query["GroupName"] = request.GroupName
 	}
 
+	if !tea.BoolValue(util.IsUnset(request.Labels)) {
+		query["Labels"] = request.Labels
+	}
+
 	if !tea.BoolValue(util.IsUnset(request.Option)) {
 		query["Option"] = request.Option
 	}
 
 	if !tea.BoolValue(util.IsUnset(request.ProductType)) {
 		query["ProductType"] = request.ProductType
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ResourceIds)) {
+		query["ResourceIds"] = request.ResourceIds
 	}
 
 	if !tea.BoolValue(util.IsUnset(request.ResourceType)) {
@@ -9589,6 +9726,10 @@ func (client *Client) ListResourcesWithOptions(request *ListResourcesRequest, he
 		query["GroupName"] = request.GroupName
 	}
 
+	if !tea.BoolValue(util.IsUnset(request.Labels)) {
+		query["Labels"] = request.Labels
+	}
+
 	if !tea.BoolValue(util.IsUnset(request.Option)) {
 		query["Option"] = request.Option
 	}
@@ -9605,6 +9746,10 @@ func (client *Client) ListResourcesWithOptions(request *ListResourcesRequest, he
 		query["ProductTypes"] = request.ProductTypes
 	}
 
+	if !tea.BoolValue(util.IsUnset(request.QuotaIds)) {
+		query["QuotaIds"] = request.QuotaIds
+	}
+
 	if !tea.BoolValue(util.IsUnset(request.ResourceName)) {
 		query["ResourceName"] = request.ResourceName
 	}
@@ -9615,6 +9760,10 @@ func (client *Client) ListResourcesWithOptions(request *ListResourcesRequest, he
 
 	if !tea.BoolValue(util.IsUnset(request.Verbose)) {
 		query["Verbose"] = request.Verbose
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.VerboseFields)) {
+		query["VerboseFields"] = request.VerboseFields
 	}
 
 	if !tea.BoolValue(util.IsUnset(request.WorkspaceId)) {
@@ -10399,12 +10548,24 @@ func (client *Client) UpdateWorkspaceResourceWithOptions(WorkspaceId *string, re
 		body["IsDefault"] = request.IsDefault
 	}
 
+	if !tea.BoolValue(util.IsUnset(request.Labels)) {
+		body["Labels"] = request.Labels
+	}
+
 	if !tea.BoolValue(util.IsUnset(request.ProductType)) {
 		body["ProductType"] = request.ProductType
 	}
 
+	if !tea.BoolValue(util.IsUnset(request.ResourceIds)) {
+		body["ResourceIds"] = request.ResourceIds
+	}
+
 	if !tea.BoolValue(util.IsUnset(request.ResourceType)) {
 		body["ResourceType"] = request.ResourceType
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Spec)) {
+		body["Spec"] = request.Spec
 	}
 
 	req := &openapi.OpenApiRequest{
