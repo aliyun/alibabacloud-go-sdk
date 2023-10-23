@@ -1630,6 +1630,29 @@ func (s *Project) SetStatus(v string) *Project {
 	return s
 }
 
+type ServiceStatus struct {
+	Enabled *bool   `json:"enabled,omitempty" xml:"enabled,omitempty"`
+	Status  *string `json:"status,omitempty" xml:"status,omitempty"`
+}
+
+func (s ServiceStatus) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ServiceStatus) GoString() string {
+	return s.String()
+}
+
+func (s *ServiceStatus) SetEnabled(v bool) *ServiceStatus {
+	s.Enabled = &v
+	return s
+}
+
+func (s *ServiceStatus) SetStatus(v string) *ServiceStatus {
+	s.Status = &v
+	return s
+}
+
 type Shard struct {
 	CreateTime        *int32  `json:"createTime,omitempty" xml:"createTime,omitempty"`
 	ExclusiveEndKey   *string `json:"exclusiveEndKey,omitempty" xml:"exclusiveEndKey,omitempty"`
@@ -3275,6 +3298,75 @@ func (s *CreateSavedSearchResponse) SetStatusCode(v int32) *CreateSavedSearchRes
 	return s
 }
 
+type CreateTicketRequest struct {
+	PlayAccessKeyId     *string `json:"playAccessKeyId,omitempty" xml:"playAccessKeyId,omitempty"`
+	PlayAccessKeySecret *string `json:"playAccessKeySecret,omitempty" xml:"playAccessKeySecret,omitempty"`
+}
+
+func (s CreateTicketRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateTicketRequest) GoString() string {
+	return s.String()
+}
+
+func (s *CreateTicketRequest) SetPlayAccessKeyId(v string) *CreateTicketRequest {
+	s.PlayAccessKeyId = &v
+	return s
+}
+
+func (s *CreateTicketRequest) SetPlayAccessKeySecret(v string) *CreateTicketRequest {
+	s.PlayAccessKeySecret = &v
+	return s
+}
+
+type CreateTicketResponseBody struct {
+	Ticket *string `json:"ticket,omitempty" xml:"ticket,omitempty"`
+}
+
+func (s CreateTicketResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateTicketResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *CreateTicketResponseBody) SetTicket(v string) *CreateTicketResponseBody {
+	s.Ticket = &v
+	return s
+}
+
+type CreateTicketResponse struct {
+	Headers    map[string]*string        `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                    `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *CreateTicketResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s CreateTicketResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateTicketResponse) GoString() string {
+	return s.String()
+}
+
+func (s *CreateTicketResponse) SetHeaders(v map[string]*string) *CreateTicketResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *CreateTicketResponse) SetStatusCode(v int32) *CreateTicketResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *CreateTicketResponse) SetBody(v *CreateTicketResponseBody) *CreateTicketResponse {
+	s.Body = v
+	return s
+}
+
 type DeleteAnnotationDataResponse struct {
 	Headers    map[string]*string `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
 	StatusCode *int32             `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
@@ -3341,6 +3433,75 @@ func (s *DeleteAnnotationLabelResponse) SetHeaders(v map[string]*string) *Delete
 
 func (s *DeleteAnnotationLabelResponse) SetStatusCode(v int32) *DeleteAnnotationLabelResponse {
 	s.StatusCode = &v
+	return s
+}
+
+type DeleteCollectionPolicyRequest struct {
+	DataCode    *string `json:"dataCode,omitempty" xml:"dataCode,omitempty"`
+	ProductCode *string `json:"productCode,omitempty" xml:"productCode,omitempty"`
+}
+
+func (s DeleteCollectionPolicyRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DeleteCollectionPolicyRequest) GoString() string {
+	return s.String()
+}
+
+func (s *DeleteCollectionPolicyRequest) SetDataCode(v string) *DeleteCollectionPolicyRequest {
+	s.DataCode = &v
+	return s
+}
+
+func (s *DeleteCollectionPolicyRequest) SetProductCode(v string) *DeleteCollectionPolicyRequest {
+	s.ProductCode = &v
+	return s
+}
+
+type DeleteCollectionPolicyResponseBody struct {
+	Message *string `json:"message,omitempty" xml:"message,omitempty"`
+}
+
+func (s DeleteCollectionPolicyResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DeleteCollectionPolicyResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *DeleteCollectionPolicyResponseBody) SetMessage(v string) *DeleteCollectionPolicyResponseBody {
+	s.Message = &v
+	return s
+}
+
+type DeleteCollectionPolicyResponse struct {
+	Headers    map[string]*string                  `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                              `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *DeleteCollectionPolicyResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s DeleteCollectionPolicyResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DeleteCollectionPolicyResponse) GoString() string {
+	return s.String()
+}
+
+func (s *DeleteCollectionPolicyResponse) SetHeaders(v map[string]*string) *DeleteCollectionPolicyResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *DeleteCollectionPolicyResponse) SetStatusCode(v int32) *DeleteCollectionPolicyResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *DeleteCollectionPolicyResponse) SetBody(v *DeleteCollectionPolicyResponseBody) *DeleteCollectionPolicyResponse {
+	s.Body = v
 	return s
 }
 
@@ -3939,6 +4100,227 @@ func (s *GetCheckPointResponseBody) SetConsumer(v string) *GetCheckPointResponse
 	return s
 }
 
+type GetCollectionPolicyRequest struct {
+	DataCode    *string `json:"dataCode,omitempty" xml:"dataCode,omitempty"`
+	ProductCode *string `json:"productCode,omitempty" xml:"productCode,omitempty"`
+}
+
+func (s GetCollectionPolicyRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetCollectionPolicyRequest) GoString() string {
+	return s.String()
+}
+
+func (s *GetCollectionPolicyRequest) SetDataCode(v string) *GetCollectionPolicyRequest {
+	s.DataCode = &v
+	return s
+}
+
+func (s *GetCollectionPolicyRequest) SetProductCode(v string) *GetCollectionPolicyRequest {
+	s.ProductCode = &v
+	return s
+}
+
+type GetCollectionPolicyResponseBody struct {
+	CollectionPolicy *GetCollectionPolicyResponseBodyCollectionPolicy `json:"collectionPolicy,omitempty" xml:"collectionPolicy,omitempty" type:"Struct"`
+}
+
+func (s GetCollectionPolicyResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetCollectionPolicyResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *GetCollectionPolicyResponseBody) SetCollectionPolicy(v *GetCollectionPolicyResponseBodyCollectionPolicy) *GetCollectionPolicyResponseBody {
+	s.CollectionPolicy = v
+	return s
+}
+
+type GetCollectionPolicyResponseBodyCollectionPolicy struct {
+	Attribute         *GetCollectionPolicyResponseBodyCollectionPolicyAttribute        `json:"attribute,omitempty" xml:"attribute,omitempty" type:"Struct"`
+	CentralizeConfig  *GetCollectionPolicyResponseBodyCollectionPolicyCentralizeConfig `json:"centralizeConfig,omitempty" xml:"centralizeConfig,omitempty" type:"Struct"`
+	CentralizeEnabled *bool                                                            `json:"centralizeEnabled,omitempty" xml:"centralizeEnabled,omitempty"`
+	DataCode          *string                                                          `json:"dataCode,omitempty" xml:"dataCode,omitempty"`
+	Enabled           *string                                                          `json:"enabled,omitempty" xml:"enabled,omitempty"`
+	PolicyConfig      *GetCollectionPolicyResponseBodyCollectionPolicyPolicyConfig     `json:"policyConfig,omitempty" xml:"policyConfig,omitempty" type:"Struct"`
+	PolicyName        *string                                                          `json:"policyName,omitempty" xml:"policyName,omitempty"`
+	ProductCode       *string                                                          `json:"productCode,omitempty" xml:"productCode,omitempty"`
+}
+
+func (s GetCollectionPolicyResponseBodyCollectionPolicy) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetCollectionPolicyResponseBodyCollectionPolicy) GoString() string {
+	return s.String()
+}
+
+func (s *GetCollectionPolicyResponseBodyCollectionPolicy) SetAttribute(v *GetCollectionPolicyResponseBodyCollectionPolicyAttribute) *GetCollectionPolicyResponseBodyCollectionPolicy {
+	s.Attribute = v
+	return s
+}
+
+func (s *GetCollectionPolicyResponseBodyCollectionPolicy) SetCentralizeConfig(v *GetCollectionPolicyResponseBodyCollectionPolicyCentralizeConfig) *GetCollectionPolicyResponseBodyCollectionPolicy {
+	s.CentralizeConfig = v
+	return s
+}
+
+func (s *GetCollectionPolicyResponseBodyCollectionPolicy) SetCentralizeEnabled(v bool) *GetCollectionPolicyResponseBodyCollectionPolicy {
+	s.CentralizeEnabled = &v
+	return s
+}
+
+func (s *GetCollectionPolicyResponseBodyCollectionPolicy) SetDataCode(v string) *GetCollectionPolicyResponseBodyCollectionPolicy {
+	s.DataCode = &v
+	return s
+}
+
+func (s *GetCollectionPolicyResponseBodyCollectionPolicy) SetEnabled(v string) *GetCollectionPolicyResponseBodyCollectionPolicy {
+	s.Enabled = &v
+	return s
+}
+
+func (s *GetCollectionPolicyResponseBodyCollectionPolicy) SetPolicyConfig(v *GetCollectionPolicyResponseBodyCollectionPolicyPolicyConfig) *GetCollectionPolicyResponseBodyCollectionPolicy {
+	s.PolicyConfig = v
+	return s
+}
+
+func (s *GetCollectionPolicyResponseBodyCollectionPolicy) SetPolicyName(v string) *GetCollectionPolicyResponseBodyCollectionPolicy {
+	s.PolicyName = &v
+	return s
+}
+
+func (s *GetCollectionPolicyResponseBodyCollectionPolicy) SetProductCode(v string) *GetCollectionPolicyResponseBodyCollectionPolicy {
+	s.ProductCode = &v
+	return s
+}
+
+type GetCollectionPolicyResponseBodyCollectionPolicyAttribute struct {
+	App         *string `json:"app,omitempty" xml:"app,omitempty"`
+	PolicyGroup *string `json:"policyGroup,omitempty" xml:"policyGroup,omitempty"`
+}
+
+func (s GetCollectionPolicyResponseBodyCollectionPolicyAttribute) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetCollectionPolicyResponseBodyCollectionPolicyAttribute) GoString() string {
+	return s.String()
+}
+
+func (s *GetCollectionPolicyResponseBodyCollectionPolicyAttribute) SetApp(v string) *GetCollectionPolicyResponseBodyCollectionPolicyAttribute {
+	s.App = &v
+	return s
+}
+
+func (s *GetCollectionPolicyResponseBodyCollectionPolicyAttribute) SetPolicyGroup(v string) *GetCollectionPolicyResponseBodyCollectionPolicyAttribute {
+	s.PolicyGroup = &v
+	return s
+}
+
+type GetCollectionPolicyResponseBodyCollectionPolicyCentralizeConfig struct {
+	DestLogstore *string `json:"destLogstore,omitempty" xml:"destLogstore,omitempty"`
+	DestProject  *string `json:"destProject,omitempty" xml:"destProject,omitempty"`
+	DestRegion   *string `json:"destRegion,omitempty" xml:"destRegion,omitempty"`
+	DestTTL      *int32  `json:"destTTL,omitempty" xml:"destTTL,omitempty"`
+}
+
+func (s GetCollectionPolicyResponseBodyCollectionPolicyCentralizeConfig) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetCollectionPolicyResponseBodyCollectionPolicyCentralizeConfig) GoString() string {
+	return s.String()
+}
+
+func (s *GetCollectionPolicyResponseBodyCollectionPolicyCentralizeConfig) SetDestLogstore(v string) *GetCollectionPolicyResponseBodyCollectionPolicyCentralizeConfig {
+	s.DestLogstore = &v
+	return s
+}
+
+func (s *GetCollectionPolicyResponseBodyCollectionPolicyCentralizeConfig) SetDestProject(v string) *GetCollectionPolicyResponseBodyCollectionPolicyCentralizeConfig {
+	s.DestProject = &v
+	return s
+}
+
+func (s *GetCollectionPolicyResponseBodyCollectionPolicyCentralizeConfig) SetDestRegion(v string) *GetCollectionPolicyResponseBodyCollectionPolicyCentralizeConfig {
+	s.DestRegion = &v
+	return s
+}
+
+func (s *GetCollectionPolicyResponseBodyCollectionPolicyCentralizeConfig) SetDestTTL(v int32) *GetCollectionPolicyResponseBodyCollectionPolicyCentralizeConfig {
+	s.DestTTL = &v
+	return s
+}
+
+type GetCollectionPolicyResponseBodyCollectionPolicyPolicyConfig struct {
+	InstanceIds  []*string              `json:"instanceIds,omitempty" xml:"instanceIds,omitempty" type:"Repeated"`
+	Regions      []*string              `json:"regions,omitempty" xml:"regions,omitempty" type:"Repeated"`
+	ResourceMode *string                `json:"resourceMode,omitempty" xml:"resourceMode,omitempty"`
+	ResourceTags map[string]interface{} `json:"resourceTags,omitempty" xml:"resourceTags,omitempty"`
+}
+
+func (s GetCollectionPolicyResponseBodyCollectionPolicyPolicyConfig) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetCollectionPolicyResponseBodyCollectionPolicyPolicyConfig) GoString() string {
+	return s.String()
+}
+
+func (s *GetCollectionPolicyResponseBodyCollectionPolicyPolicyConfig) SetInstanceIds(v []*string) *GetCollectionPolicyResponseBodyCollectionPolicyPolicyConfig {
+	s.InstanceIds = v
+	return s
+}
+
+func (s *GetCollectionPolicyResponseBodyCollectionPolicyPolicyConfig) SetRegions(v []*string) *GetCollectionPolicyResponseBodyCollectionPolicyPolicyConfig {
+	s.Regions = v
+	return s
+}
+
+func (s *GetCollectionPolicyResponseBodyCollectionPolicyPolicyConfig) SetResourceMode(v string) *GetCollectionPolicyResponseBodyCollectionPolicyPolicyConfig {
+	s.ResourceMode = &v
+	return s
+}
+
+func (s *GetCollectionPolicyResponseBodyCollectionPolicyPolicyConfig) SetResourceTags(v map[string]interface{}) *GetCollectionPolicyResponseBodyCollectionPolicyPolicyConfig {
+	s.ResourceTags = v
+	return s
+}
+
+type GetCollectionPolicyResponse struct {
+	Headers    map[string]*string               `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                           `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *GetCollectionPolicyResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s GetCollectionPolicyResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetCollectionPolicyResponse) GoString() string {
+	return s.String()
+}
+
+func (s *GetCollectionPolicyResponse) SetHeaders(v map[string]*string) *GetCollectionPolicyResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *GetCollectionPolicyResponse) SetStatusCode(v int32) *GetCollectionPolicyResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *GetCollectionPolicyResponse) SetBody(v *GetCollectionPolicyResponseBody) *GetCollectionPolicyResponse {
+	s.Body = v
+	return s
+}
+
 type GetConfigResponse struct {
 	Headers    map[string]*string `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
 	StatusCode *int32             `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
@@ -4528,6 +4910,52 @@ func (s *GetLogStoreResponse) SetStatusCode(v int32) *GetLogStoreResponse {
 }
 
 func (s *GetLogStoreResponse) SetBody(v *Logstore) *GetLogStoreResponse {
+	s.Body = v
+	return s
+}
+
+type GetLogStoreMeteringModeResponseBody struct {
+	MeteringMode *string `json:"meteringMode,omitempty" xml:"meteringMode,omitempty"`
+}
+
+func (s GetLogStoreMeteringModeResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetLogStoreMeteringModeResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *GetLogStoreMeteringModeResponseBody) SetMeteringMode(v string) *GetLogStoreMeteringModeResponseBody {
+	s.MeteringMode = &v
+	return s
+}
+
+type GetLogStoreMeteringModeResponse struct {
+	Headers    map[string]*string                   `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                               `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *GetLogStoreMeteringModeResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s GetLogStoreMeteringModeResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetLogStoreMeteringModeResponse) GoString() string {
+	return s.String()
+}
+
+func (s *GetLogStoreMeteringModeResponse) SetHeaders(v map[string]*string) *GetLogStoreMeteringModeResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *GetLogStoreMeteringModeResponse) SetStatusCode(v int32) *GetLogStoreMeteringModeResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *GetLogStoreMeteringModeResponse) SetBody(v *GetLogStoreMeteringModeResponseBody) *GetLogStoreMeteringModeResponse {
 	s.Body = v
 	return s
 }
@@ -5496,6 +5924,345 @@ func (s *ListAnnotationLabelsResponse) SetStatusCode(v int32) *ListAnnotationLab
 }
 
 func (s *ListAnnotationLabelsResponse) SetBody(v *ListAnnotationLabelsResponseBody) *ListAnnotationLabelsResponse {
+	s.Body = v
+	return s
+}
+
+type ListCollectionPoliciesRequest struct {
+	Attribute   *ListCollectionPoliciesRequestAttribute `json:"attribute,omitempty" xml:"attribute,omitempty" type:"Struct"`
+	DataCode    *string                                 `json:"dataCode,omitempty" xml:"dataCode,omitempty"`
+	InstanceId  *string                                 `json:"instanceId,omitempty" xml:"instanceId,omitempty"`
+	PageNum     *int32                                  `json:"pageNum,omitempty" xml:"pageNum,omitempty"`
+	PageSize    *int32                                  `json:"pageSize,omitempty" xml:"pageSize,omitempty"`
+	PolicyName  *string                                 `json:"policyName,omitempty" xml:"policyName,omitempty"`
+	ProductCode *string                                 `json:"productCode,omitempty" xml:"productCode,omitempty"`
+}
+
+func (s ListCollectionPoliciesRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListCollectionPoliciesRequest) GoString() string {
+	return s.String()
+}
+
+func (s *ListCollectionPoliciesRequest) SetAttribute(v *ListCollectionPoliciesRequestAttribute) *ListCollectionPoliciesRequest {
+	s.Attribute = v
+	return s
+}
+
+func (s *ListCollectionPoliciesRequest) SetDataCode(v string) *ListCollectionPoliciesRequest {
+	s.DataCode = &v
+	return s
+}
+
+func (s *ListCollectionPoliciesRequest) SetInstanceId(v string) *ListCollectionPoliciesRequest {
+	s.InstanceId = &v
+	return s
+}
+
+func (s *ListCollectionPoliciesRequest) SetPageNum(v int32) *ListCollectionPoliciesRequest {
+	s.PageNum = &v
+	return s
+}
+
+func (s *ListCollectionPoliciesRequest) SetPageSize(v int32) *ListCollectionPoliciesRequest {
+	s.PageSize = &v
+	return s
+}
+
+func (s *ListCollectionPoliciesRequest) SetPolicyName(v string) *ListCollectionPoliciesRequest {
+	s.PolicyName = &v
+	return s
+}
+
+func (s *ListCollectionPoliciesRequest) SetProductCode(v string) *ListCollectionPoliciesRequest {
+	s.ProductCode = &v
+	return s
+}
+
+type ListCollectionPoliciesRequestAttribute struct {
+	App         *string `json:"app,omitempty" xml:"app,omitempty"`
+	PolicyGroup *string `json:"policyGroup,omitempty" xml:"policyGroup,omitempty"`
+}
+
+func (s ListCollectionPoliciesRequestAttribute) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListCollectionPoliciesRequestAttribute) GoString() string {
+	return s.String()
+}
+
+func (s *ListCollectionPoliciesRequestAttribute) SetApp(v string) *ListCollectionPoliciesRequestAttribute {
+	s.App = &v
+	return s
+}
+
+func (s *ListCollectionPoliciesRequestAttribute) SetPolicyGroup(v string) *ListCollectionPoliciesRequestAttribute {
+	s.PolicyGroup = &v
+	return s
+}
+
+type ListCollectionPoliciesShrinkRequest struct {
+	AttributeShrink *string `json:"attribute,omitempty" xml:"attribute,omitempty"`
+	DataCode        *string `json:"dataCode,omitempty" xml:"dataCode,omitempty"`
+	InstanceId      *string `json:"instanceId,omitempty" xml:"instanceId,omitempty"`
+	PageNum         *int32  `json:"pageNum,omitempty" xml:"pageNum,omitempty"`
+	PageSize        *int32  `json:"pageSize,omitempty" xml:"pageSize,omitempty"`
+	PolicyName      *string `json:"policyName,omitempty" xml:"policyName,omitempty"`
+	ProductCode     *string `json:"productCode,omitempty" xml:"productCode,omitempty"`
+}
+
+func (s ListCollectionPoliciesShrinkRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListCollectionPoliciesShrinkRequest) GoString() string {
+	return s.String()
+}
+
+func (s *ListCollectionPoliciesShrinkRequest) SetAttributeShrink(v string) *ListCollectionPoliciesShrinkRequest {
+	s.AttributeShrink = &v
+	return s
+}
+
+func (s *ListCollectionPoliciesShrinkRequest) SetDataCode(v string) *ListCollectionPoliciesShrinkRequest {
+	s.DataCode = &v
+	return s
+}
+
+func (s *ListCollectionPoliciesShrinkRequest) SetInstanceId(v string) *ListCollectionPoliciesShrinkRequest {
+	s.InstanceId = &v
+	return s
+}
+
+func (s *ListCollectionPoliciesShrinkRequest) SetPageNum(v int32) *ListCollectionPoliciesShrinkRequest {
+	s.PageNum = &v
+	return s
+}
+
+func (s *ListCollectionPoliciesShrinkRequest) SetPageSize(v int32) *ListCollectionPoliciesShrinkRequest {
+	s.PageSize = &v
+	return s
+}
+
+func (s *ListCollectionPoliciesShrinkRequest) SetPolicyName(v string) *ListCollectionPoliciesShrinkRequest {
+	s.PolicyName = &v
+	return s
+}
+
+func (s *ListCollectionPoliciesShrinkRequest) SetProductCode(v string) *ListCollectionPoliciesShrinkRequest {
+	s.ProductCode = &v
+	return s
+}
+
+type ListCollectionPoliciesResponseBody struct {
+	CurrentCount *int32                                    `json:"currentCount,omitempty" xml:"currentCount,omitempty"`
+	Data         []*ListCollectionPoliciesResponseBodyData `json:"data,omitempty" xml:"data,omitempty" type:"Repeated"`
+	TotalCount   *int32                                    `json:"totalCount,omitempty" xml:"totalCount,omitempty"`
+}
+
+func (s ListCollectionPoliciesResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListCollectionPoliciesResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *ListCollectionPoliciesResponseBody) SetCurrentCount(v int32) *ListCollectionPoliciesResponseBody {
+	s.CurrentCount = &v
+	return s
+}
+
+func (s *ListCollectionPoliciesResponseBody) SetData(v []*ListCollectionPoliciesResponseBodyData) *ListCollectionPoliciesResponseBody {
+	s.Data = v
+	return s
+}
+
+func (s *ListCollectionPoliciesResponseBody) SetTotalCount(v int32) *ListCollectionPoliciesResponseBody {
+	s.TotalCount = &v
+	return s
+}
+
+type ListCollectionPoliciesResponseBodyData struct {
+	Attribute         *ListCollectionPoliciesResponseBodyDataAttribute        `json:"attribute,omitempty" xml:"attribute,omitempty" type:"Struct"`
+	CentralizeConfig  *ListCollectionPoliciesResponseBodyDataCentralizeConfig `json:"centralizeConfig,omitempty" xml:"centralizeConfig,omitempty" type:"Struct"`
+	CentralizeEnabled *bool                                                   `json:"centralizeEnabled,omitempty" xml:"centralizeEnabled,omitempty"`
+	DataCode          *string                                                 `json:"dataCode,omitempty" xml:"dataCode,omitempty"`
+	Enabled           *bool                                                   `json:"enabled,omitempty" xml:"enabled,omitempty"`
+	PolicyConfig      *ListCollectionPoliciesResponseBodyDataPolicyConfig     `json:"policyConfig,omitempty" xml:"policyConfig,omitempty" type:"Struct"`
+	PolicyName        *string                                                 `json:"policyName,omitempty" xml:"policyName,omitempty"`
+	ProductCode       *string                                                 `json:"productCode,omitempty" xml:"productCode,omitempty"`
+}
+
+func (s ListCollectionPoliciesResponseBodyData) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListCollectionPoliciesResponseBodyData) GoString() string {
+	return s.String()
+}
+
+func (s *ListCollectionPoliciesResponseBodyData) SetAttribute(v *ListCollectionPoliciesResponseBodyDataAttribute) *ListCollectionPoliciesResponseBodyData {
+	s.Attribute = v
+	return s
+}
+
+func (s *ListCollectionPoliciesResponseBodyData) SetCentralizeConfig(v *ListCollectionPoliciesResponseBodyDataCentralizeConfig) *ListCollectionPoliciesResponseBodyData {
+	s.CentralizeConfig = v
+	return s
+}
+
+func (s *ListCollectionPoliciesResponseBodyData) SetCentralizeEnabled(v bool) *ListCollectionPoliciesResponseBodyData {
+	s.CentralizeEnabled = &v
+	return s
+}
+
+func (s *ListCollectionPoliciesResponseBodyData) SetDataCode(v string) *ListCollectionPoliciesResponseBodyData {
+	s.DataCode = &v
+	return s
+}
+
+func (s *ListCollectionPoliciesResponseBodyData) SetEnabled(v bool) *ListCollectionPoliciesResponseBodyData {
+	s.Enabled = &v
+	return s
+}
+
+func (s *ListCollectionPoliciesResponseBodyData) SetPolicyConfig(v *ListCollectionPoliciesResponseBodyDataPolicyConfig) *ListCollectionPoliciesResponseBodyData {
+	s.PolicyConfig = v
+	return s
+}
+
+func (s *ListCollectionPoliciesResponseBodyData) SetPolicyName(v string) *ListCollectionPoliciesResponseBodyData {
+	s.PolicyName = &v
+	return s
+}
+
+func (s *ListCollectionPoliciesResponseBodyData) SetProductCode(v string) *ListCollectionPoliciesResponseBodyData {
+	s.ProductCode = &v
+	return s
+}
+
+type ListCollectionPoliciesResponseBodyDataAttribute struct {
+	App         *string `json:"app,omitempty" xml:"app,omitempty"`
+	PolicyGroup *string `json:"policyGroup,omitempty" xml:"policyGroup,omitempty"`
+}
+
+func (s ListCollectionPoliciesResponseBodyDataAttribute) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListCollectionPoliciesResponseBodyDataAttribute) GoString() string {
+	return s.String()
+}
+
+func (s *ListCollectionPoliciesResponseBodyDataAttribute) SetApp(v string) *ListCollectionPoliciesResponseBodyDataAttribute {
+	s.App = &v
+	return s
+}
+
+func (s *ListCollectionPoliciesResponseBodyDataAttribute) SetPolicyGroup(v string) *ListCollectionPoliciesResponseBodyDataAttribute {
+	s.PolicyGroup = &v
+	return s
+}
+
+type ListCollectionPoliciesResponseBodyDataCentralizeConfig struct {
+	DestLogstore *string `json:"destLogstore,omitempty" xml:"destLogstore,omitempty"`
+	DestProject  *string `json:"destProject,omitempty" xml:"destProject,omitempty"`
+	DestRegion   *string `json:"destRegion,omitempty" xml:"destRegion,omitempty"`
+	DestTTL      *int32  `json:"destTTL,omitempty" xml:"destTTL,omitempty"`
+}
+
+func (s ListCollectionPoliciesResponseBodyDataCentralizeConfig) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListCollectionPoliciesResponseBodyDataCentralizeConfig) GoString() string {
+	return s.String()
+}
+
+func (s *ListCollectionPoliciesResponseBodyDataCentralizeConfig) SetDestLogstore(v string) *ListCollectionPoliciesResponseBodyDataCentralizeConfig {
+	s.DestLogstore = &v
+	return s
+}
+
+func (s *ListCollectionPoliciesResponseBodyDataCentralizeConfig) SetDestProject(v string) *ListCollectionPoliciesResponseBodyDataCentralizeConfig {
+	s.DestProject = &v
+	return s
+}
+
+func (s *ListCollectionPoliciesResponseBodyDataCentralizeConfig) SetDestRegion(v string) *ListCollectionPoliciesResponseBodyDataCentralizeConfig {
+	s.DestRegion = &v
+	return s
+}
+
+func (s *ListCollectionPoliciesResponseBodyDataCentralizeConfig) SetDestTTL(v int32) *ListCollectionPoliciesResponseBodyDataCentralizeConfig {
+	s.DestTTL = &v
+	return s
+}
+
+type ListCollectionPoliciesResponseBodyDataPolicyConfig struct {
+	InstanceIds  []*string              `json:"instanceIds,omitempty" xml:"instanceIds,omitempty" type:"Repeated"`
+	Regions      []*string              `json:"regions,omitempty" xml:"regions,omitempty" type:"Repeated"`
+	ResourceMode *string                `json:"resourceMode,omitempty" xml:"resourceMode,omitempty"`
+	ResourceTags map[string]interface{} `json:"resourceTags,omitempty" xml:"resourceTags,omitempty"`
+}
+
+func (s ListCollectionPoliciesResponseBodyDataPolicyConfig) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListCollectionPoliciesResponseBodyDataPolicyConfig) GoString() string {
+	return s.String()
+}
+
+func (s *ListCollectionPoliciesResponseBodyDataPolicyConfig) SetInstanceIds(v []*string) *ListCollectionPoliciesResponseBodyDataPolicyConfig {
+	s.InstanceIds = v
+	return s
+}
+
+func (s *ListCollectionPoliciesResponseBodyDataPolicyConfig) SetRegions(v []*string) *ListCollectionPoliciesResponseBodyDataPolicyConfig {
+	s.Regions = v
+	return s
+}
+
+func (s *ListCollectionPoliciesResponseBodyDataPolicyConfig) SetResourceMode(v string) *ListCollectionPoliciesResponseBodyDataPolicyConfig {
+	s.ResourceMode = &v
+	return s
+}
+
+func (s *ListCollectionPoliciesResponseBodyDataPolicyConfig) SetResourceTags(v map[string]interface{}) *ListCollectionPoliciesResponseBodyDataPolicyConfig {
+	s.ResourceTags = v
+	return s
+}
+
+type ListCollectionPoliciesResponse struct {
+	Headers    map[string]*string                  `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                              `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *ListCollectionPoliciesResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s ListCollectionPoliciesResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListCollectionPoliciesResponse) GoString() string {
+	return s.String()
+}
+
+func (s *ListCollectionPoliciesResponse) SetHeaders(v map[string]*string) *ListCollectionPoliciesResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *ListCollectionPoliciesResponse) SetStatusCode(v int32) *ListCollectionPoliciesResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *ListCollectionPoliciesResponse) SetBody(v *ListCollectionPoliciesResponseBody) *ListCollectionPoliciesResponse {
 	s.Body = v
 	return s
 }
@@ -7609,6 +8376,46 @@ func (s *UpdateLogStoreResponse) SetStatusCode(v int32) *UpdateLogStoreResponse 
 	return s
 }
 
+type UpdateLogStoreMeteringModeRequest struct {
+	MeteringMode *string `json:"meteringMode,omitempty" xml:"meteringMode,omitempty"`
+}
+
+func (s UpdateLogStoreMeteringModeRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UpdateLogStoreMeteringModeRequest) GoString() string {
+	return s.String()
+}
+
+func (s *UpdateLogStoreMeteringModeRequest) SetMeteringMode(v string) *UpdateLogStoreMeteringModeRequest {
+	s.MeteringMode = &v
+	return s
+}
+
+type UpdateLogStoreMeteringModeResponse struct {
+	Headers    map[string]*string `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32             `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+}
+
+func (s UpdateLogStoreMeteringModeResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UpdateLogStoreMeteringModeResponse) GoString() string {
+	return s.String()
+}
+
+func (s *UpdateLogStoreMeteringModeResponse) SetHeaders(v map[string]*string) *UpdateLogStoreMeteringModeResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *UpdateLogStoreMeteringModeResponse) SetStatusCode(v int32) *UpdateLogStoreMeteringModeResponse {
+	s.StatusCode = &v
+	return s
+}
+
 type UpdateLoggingRequest struct {
 	LoggingDetails []*UpdateLoggingRequestLoggingDetails `json:"loggingDetails,omitempty" xml:"loggingDetails,omitempty" type:"Repeated"`
 	LoggingProject *string                               `json:"loggingProject,omitempty" xml:"loggingProject,omitempty"`
@@ -8484,6 +9291,204 @@ func (s *UpdateSavedSearchResponse) SetHeaders(v map[string]*string) *UpdateSave
 
 func (s *UpdateSavedSearchResponse) SetStatusCode(v int32) *UpdateSavedSearchResponse {
 	s.StatusCode = &v
+	return s
+}
+
+type UpsertCollectionPolicyRequest struct {
+	Attribute         *UpsertCollectionPolicyRequestAttribute        `json:"attribute,omitempty" xml:"attribute,omitempty" type:"Struct"`
+	CentralizeConfig  *UpsertCollectionPolicyRequestCentralizeConfig `json:"centralizeConfig,omitempty" xml:"centralizeConfig,omitempty" type:"Struct"`
+	CentralizeEnabled *bool                                          `json:"centralizeEnabled,omitempty" xml:"centralizeEnabled,omitempty"`
+	DataCode          *string                                        `json:"dataCode,omitempty" xml:"dataCode,omitempty"`
+	Enabled           *bool                                          `json:"enabled,omitempty" xml:"enabled,omitempty"`
+	PolicyConfig      *UpsertCollectionPolicyRequestPolicyConfig     `json:"policyConfig,omitempty" xml:"policyConfig,omitempty" type:"Struct"`
+	PolicyName        *string                                        `json:"policyName,omitempty" xml:"policyName,omitempty"`
+	ProductCode       *string                                        `json:"productCode,omitempty" xml:"productCode,omitempty"`
+}
+
+func (s UpsertCollectionPolicyRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UpsertCollectionPolicyRequest) GoString() string {
+	return s.String()
+}
+
+func (s *UpsertCollectionPolicyRequest) SetAttribute(v *UpsertCollectionPolicyRequestAttribute) *UpsertCollectionPolicyRequest {
+	s.Attribute = v
+	return s
+}
+
+func (s *UpsertCollectionPolicyRequest) SetCentralizeConfig(v *UpsertCollectionPolicyRequestCentralizeConfig) *UpsertCollectionPolicyRequest {
+	s.CentralizeConfig = v
+	return s
+}
+
+func (s *UpsertCollectionPolicyRequest) SetCentralizeEnabled(v bool) *UpsertCollectionPolicyRequest {
+	s.CentralizeEnabled = &v
+	return s
+}
+
+func (s *UpsertCollectionPolicyRequest) SetDataCode(v string) *UpsertCollectionPolicyRequest {
+	s.DataCode = &v
+	return s
+}
+
+func (s *UpsertCollectionPolicyRequest) SetEnabled(v bool) *UpsertCollectionPolicyRequest {
+	s.Enabled = &v
+	return s
+}
+
+func (s *UpsertCollectionPolicyRequest) SetPolicyConfig(v *UpsertCollectionPolicyRequestPolicyConfig) *UpsertCollectionPolicyRequest {
+	s.PolicyConfig = v
+	return s
+}
+
+func (s *UpsertCollectionPolicyRequest) SetPolicyName(v string) *UpsertCollectionPolicyRequest {
+	s.PolicyName = &v
+	return s
+}
+
+func (s *UpsertCollectionPolicyRequest) SetProductCode(v string) *UpsertCollectionPolicyRequest {
+	s.ProductCode = &v
+	return s
+}
+
+type UpsertCollectionPolicyRequestAttribute struct {
+	App         *string `json:"app,omitempty" xml:"app,omitempty"`
+	PolicyGroup *string `json:"policyGroup,omitempty" xml:"policyGroup,omitempty"`
+}
+
+func (s UpsertCollectionPolicyRequestAttribute) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UpsertCollectionPolicyRequestAttribute) GoString() string {
+	return s.String()
+}
+
+func (s *UpsertCollectionPolicyRequestAttribute) SetApp(v string) *UpsertCollectionPolicyRequestAttribute {
+	s.App = &v
+	return s
+}
+
+func (s *UpsertCollectionPolicyRequestAttribute) SetPolicyGroup(v string) *UpsertCollectionPolicyRequestAttribute {
+	s.PolicyGroup = &v
+	return s
+}
+
+type UpsertCollectionPolicyRequestCentralizeConfig struct {
+	DestLogstore *string `json:"destLogstore,omitempty" xml:"destLogstore,omitempty"`
+	DestProject  *string `json:"destProject,omitempty" xml:"destProject,omitempty"`
+	DestRegion   *string `json:"destRegion,omitempty" xml:"destRegion,omitempty"`
+	DestTTL      *int32  `json:"destTTL,omitempty" xml:"destTTL,omitempty"`
+}
+
+func (s UpsertCollectionPolicyRequestCentralizeConfig) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UpsertCollectionPolicyRequestCentralizeConfig) GoString() string {
+	return s.String()
+}
+
+func (s *UpsertCollectionPolicyRequestCentralizeConfig) SetDestLogstore(v string) *UpsertCollectionPolicyRequestCentralizeConfig {
+	s.DestLogstore = &v
+	return s
+}
+
+func (s *UpsertCollectionPolicyRequestCentralizeConfig) SetDestProject(v string) *UpsertCollectionPolicyRequestCentralizeConfig {
+	s.DestProject = &v
+	return s
+}
+
+func (s *UpsertCollectionPolicyRequestCentralizeConfig) SetDestRegion(v string) *UpsertCollectionPolicyRequestCentralizeConfig {
+	s.DestRegion = &v
+	return s
+}
+
+func (s *UpsertCollectionPolicyRequestCentralizeConfig) SetDestTTL(v int32) *UpsertCollectionPolicyRequestCentralizeConfig {
+	s.DestTTL = &v
+	return s
+}
+
+type UpsertCollectionPolicyRequestPolicyConfig struct {
+	InstanceIds  []*string              `json:"instanceIds,omitempty" xml:"instanceIds,omitempty" type:"Repeated"`
+	Regions      []*string              `json:"regions,omitempty" xml:"regions,omitempty" type:"Repeated"`
+	ResourceMode *string                `json:"resourceMode,omitempty" xml:"resourceMode,omitempty"`
+	ResourceTags map[string]interface{} `json:"resourceTags,omitempty" xml:"resourceTags,omitempty"`
+}
+
+func (s UpsertCollectionPolicyRequestPolicyConfig) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UpsertCollectionPolicyRequestPolicyConfig) GoString() string {
+	return s.String()
+}
+
+func (s *UpsertCollectionPolicyRequestPolicyConfig) SetInstanceIds(v []*string) *UpsertCollectionPolicyRequestPolicyConfig {
+	s.InstanceIds = v
+	return s
+}
+
+func (s *UpsertCollectionPolicyRequestPolicyConfig) SetRegions(v []*string) *UpsertCollectionPolicyRequestPolicyConfig {
+	s.Regions = v
+	return s
+}
+
+func (s *UpsertCollectionPolicyRequestPolicyConfig) SetResourceMode(v string) *UpsertCollectionPolicyRequestPolicyConfig {
+	s.ResourceMode = &v
+	return s
+}
+
+func (s *UpsertCollectionPolicyRequestPolicyConfig) SetResourceTags(v map[string]interface{}) *UpsertCollectionPolicyRequestPolicyConfig {
+	s.ResourceTags = v
+	return s
+}
+
+type UpsertCollectionPolicyResponseBody struct {
+	Message *string `json:"message,omitempty" xml:"message,omitempty"`
+}
+
+func (s UpsertCollectionPolicyResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UpsertCollectionPolicyResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *UpsertCollectionPolicyResponseBody) SetMessage(v string) *UpsertCollectionPolicyResponseBody {
+	s.Message = &v
+	return s
+}
+
+type UpsertCollectionPolicyResponse struct {
+	Headers    map[string]*string                  `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                              `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *UpsertCollectionPolicyResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s UpsertCollectionPolicyResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UpsertCollectionPolicyResponse) GoString() string {
+	return s.String()
+}
+
+func (s *UpsertCollectionPolicyResponse) SetHeaders(v map[string]*string) *UpsertCollectionPolicyResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *UpsertCollectionPolicyResponse) SetStatusCode(v int32) *UpsertCollectionPolicyResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *UpsertCollectionPolicyResponse) SetBody(v *UpsertCollectionPolicyResponseBody) *UpsertCollectionPolicyResponse {
+	s.Body = v
 	return s
 }
 
@@ -9644,6 +10649,56 @@ func (client *Client) CreateSavedSearch(project *string, request *CreateSavedSea
 	return _result, _err
 }
 
+func (client *Client) CreateTicketWithOptions(request *CreateTicketRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *CreateTicketResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	body := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.PlayAccessKeyId)) {
+		body["playAccessKeyId"] = request.PlayAccessKeyId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.PlayAccessKeySecret)) {
+		body["playAccessKeySecret"] = request.PlayAccessKeySecret
+	}
+
+	req := &openapi.OpenApiRequest{
+		Headers: headers,
+		Body:    openapiutil.ParseToMap(body),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("CreateTicket"),
+		Version:     tea.String("2020-12-30"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/tickets"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("ROA"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &CreateTicketResponse{}
+	_body, _err := client.Execute(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) CreateTicket(request *CreateTicketRequest) (_result *CreateTicketResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	headers := make(map[string]*string)
+	_result = &CreateTicketResponse{}
+	_body, _err := client.CreateTicketWithOptions(request, headers, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
 func (client *Client) DeleteAnnotationDataWithOptions(datasetId *string, annotationdataId *string, headers map[string]*string, runtime *util.RuntimeOptions) (_result *DeleteAnnotationDataResponse, _err error) {
 	req := &openapi.OpenApiRequest{
 		Headers: headers,
@@ -9745,6 +10800,56 @@ func (client *Client) DeleteAnnotationLabel(labelId *string) (_result *DeleteAnn
 	headers := make(map[string]*string)
 	_result = &DeleteAnnotationLabelResponse{}
 	_body, _err := client.DeleteAnnotationLabelWithOptions(labelId, headers, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) DeleteCollectionPolicyWithOptions(policyName *string, request *DeleteCollectionPolicyRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *DeleteCollectionPolicyResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.DataCode)) {
+		query["dataCode"] = request.DataCode
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ProductCode)) {
+		query["productCode"] = request.ProductCode
+	}
+
+	req := &openapi.OpenApiRequest{
+		Headers: headers,
+		Query:   openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("DeleteCollectionPolicy"),
+		Version:     tea.String("2020-12-30"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/collectionpolicy/" + tea.StringValue(policyName)),
+		Method:      tea.String("DELETE"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("ROA"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &DeleteCollectionPolicyResponse{}
+	_body, _err := client.Execute(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) DeleteCollectionPolicy(policyName *string, request *DeleteCollectionPolicyRequest) (_result *DeleteCollectionPolicyResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	headers := make(map[string]*string)
+	_result = &DeleteCollectionPolicyResponse{}
+	_body, _err := client.DeleteCollectionPolicyWithOptions(policyName, request, headers, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -10533,6 +11638,56 @@ func (client *Client) GetCheckPoint(project *string, logstore *string, consumerG
 	return _result, _err
 }
 
+func (client *Client) GetCollectionPolicyWithOptions(policyName *string, request *GetCollectionPolicyRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *GetCollectionPolicyResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.DataCode)) {
+		query["dataCode"] = request.DataCode
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ProductCode)) {
+		query["productCode"] = request.ProductCode
+	}
+
+	req := &openapi.OpenApiRequest{
+		Headers: headers,
+		Query:   openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("GetCollectionPolicy"),
+		Version:     tea.String("2020-12-30"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/collectionpolicy/" + tea.StringValue(policyName)),
+		Method:      tea.String("GET"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("ROA"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &GetCollectionPolicyResponse{}
+	_body, _err := client.Execute(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) GetCollectionPolicy(policyName *string, request *GetCollectionPolicyRequest) (_result *GetCollectionPolicyResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	headers := make(map[string]*string)
+	_result = &GetCollectionPolicyResponse{}
+	_body, _err := client.GetCollectionPolicyWithOptions(policyName, request, headers, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
 func (client *Client) GetConfigWithOptions(project *string, configName *string, headers map[string]*string, runtime *util.RuntimeOptions) (_result *GetConfigResponse, _err error) {
 	hostMap := make(map[string]*string)
 	hostMap["project"] = project
@@ -10945,6 +12100,45 @@ func (client *Client) GetLogStore(project *string, logstore *string) (_result *G
 	headers := make(map[string]*string)
 	_result = &GetLogStoreResponse{}
 	_body, _err := client.GetLogStoreWithOptions(project, logstore, headers, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) GetLogStoreMeteringModeWithOptions(project *string, logstore *string, headers map[string]*string, runtime *util.RuntimeOptions) (_result *GetLogStoreMeteringModeResponse, _err error) {
+	hostMap := make(map[string]*string)
+	hostMap["project"] = project
+	req := &openapi.OpenApiRequest{
+		HostMap: hostMap,
+		Headers: headers,
+	}
+	params := &openapi.Params{
+		Action:      tea.String("GetLogStoreMeteringMode"),
+		Version:     tea.String("2020-12-30"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/logstores/" + tea.StringValue(logstore) + "/meteringmode"),
+		Method:      tea.String("GET"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("ROA"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &GetLogStoreMeteringModeResponse{}
+	_body, _err := client.Execute(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) GetLogStoreMeteringMode(project *string, logstore *string) (_result *GetLogStoreMeteringModeResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	headers := make(map[string]*string)
+	_result = &GetLogStoreMeteringModeResponse{}
+	_body, _err := client.GetLogStoreMeteringModeWithOptions(project, logstore, headers, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -11622,6 +12816,82 @@ func (client *Client) ListAnnotationLabels(request *ListAnnotationLabelsRequest)
 	headers := make(map[string]*string)
 	_result = &ListAnnotationLabelsResponse{}
 	_body, _err := client.ListAnnotationLabelsWithOptions(request, headers, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) ListCollectionPoliciesWithOptions(tmpReq *ListCollectionPoliciesRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *ListCollectionPoliciesResponse, _err error) {
+	_err = util.ValidateModel(tmpReq)
+	if _err != nil {
+		return _result, _err
+	}
+	request := &ListCollectionPoliciesShrinkRequest{}
+	openapiutil.Convert(tmpReq, request)
+	if !tea.BoolValue(util.IsUnset(tmpReq.Attribute)) {
+		request.AttributeShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.Attribute, tea.String("attribute"), tea.String("json"))
+	}
+
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.AttributeShrink)) {
+		query["attribute"] = request.AttributeShrink
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.DataCode)) {
+		query["dataCode"] = request.DataCode
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.InstanceId)) {
+		query["instanceId"] = request.InstanceId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.PageNum)) {
+		query["pageNum"] = request.PageNum
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.PageSize)) {
+		query["pageSize"] = request.PageSize
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.PolicyName)) {
+		query["policyName"] = request.PolicyName
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ProductCode)) {
+		query["productCode"] = request.ProductCode
+	}
+
+	req := &openapi.OpenApiRequest{
+		Headers: headers,
+		Query:   openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("ListCollectionPolicies"),
+		Version:     tea.String("2020-12-30"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/collectionpolicy"),
+		Method:      tea.String("GET"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("ROA"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &ListCollectionPoliciesResponse{}
+	_body, _err := client.Execute(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) ListCollectionPolicies(request *ListCollectionPoliciesRequest) (_result *ListCollectionPoliciesResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	headers := make(map[string]*string)
+	_result = &ListCollectionPoliciesResponse{}
+	_body, _err := client.ListCollectionPoliciesWithOptions(request, headers, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -12827,7 +14097,7 @@ func (client *Client) UntagResourcesWithOptions(request *UntagResourcesRequest, 
 		AuthType:    tea.String("AK"),
 		Style:       tea.String("ROA"),
 		ReqBodyType: tea.String("json"),
-		BodyType:    tea.String("json"),
+		BodyType:    tea.String("none"),
 	}
 	_result = &UntagResourcesResponse{}
 	_body, _err := client.Execute(params, req, runtime)
@@ -13249,6 +14519,55 @@ func (client *Client) UpdateLogStore(project *string, logstore *string, request 
 	headers := make(map[string]*string)
 	_result = &UpdateLogStoreResponse{}
 	_body, _err := client.UpdateLogStoreWithOptions(project, logstore, request, headers, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) UpdateLogStoreMeteringModeWithOptions(project *string, logstore *string, request *UpdateLogStoreMeteringModeRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *UpdateLogStoreMeteringModeResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	hostMap := make(map[string]*string)
+	hostMap["project"] = project
+	body := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.MeteringMode)) {
+		body["meteringMode"] = request.MeteringMode
+	}
+
+	req := &openapi.OpenApiRequest{
+		HostMap: hostMap,
+		Headers: headers,
+		Body:    openapiutil.ParseToMap(body),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("UpdateLogStoreMeteringMode"),
+		Version:     tea.String("2020-12-30"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/logstores/" + tea.StringValue(logstore) + "/meteringmode"),
+		Method:      tea.String("PUT"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("ROA"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("none"),
+	}
+	_result = &UpdateLogStoreMeteringModeResponse{}
+	_body, _err := client.Execute(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) UpdateLogStoreMeteringMode(project *string, logstore *string, request *UpdateLogStoreMeteringModeRequest) (_result *UpdateLogStoreMeteringModeResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	headers := make(map[string]*string)
+	_result = &UpdateLogStoreMeteringModeResponse{}
+	_body, _err := client.UpdateLogStoreMeteringModeWithOptions(project, logstore, request, headers, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -13832,6 +15151,80 @@ func (client *Client) UpdateSavedSearch(project *string, savedsearchName *string
 	headers := make(map[string]*string)
 	_result = &UpdateSavedSearchResponse{}
 	_body, _err := client.UpdateSavedSearchWithOptions(project, savedsearchName, request, headers, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) UpsertCollectionPolicyWithOptions(request *UpsertCollectionPolicyRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *UpsertCollectionPolicyResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	body := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.Attribute)) {
+		body["attribute"] = request.Attribute
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.CentralizeConfig)) {
+		body["centralizeConfig"] = request.CentralizeConfig
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.CentralizeEnabled)) {
+		body["centralizeEnabled"] = request.CentralizeEnabled
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.DataCode)) {
+		body["dataCode"] = request.DataCode
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Enabled)) {
+		body["enabled"] = request.Enabled
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.PolicyConfig)) {
+		body["policyConfig"] = request.PolicyConfig
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.PolicyName)) {
+		body["policyName"] = request.PolicyName
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ProductCode)) {
+		body["productCode"] = request.ProductCode
+	}
+
+	req := &openapi.OpenApiRequest{
+		Headers: headers,
+		Body:    openapiutil.ParseToMap(body),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("UpsertCollectionPolicy"),
+		Version:     tea.String("2020-12-30"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/collectionpolicy"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("ROA"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &UpsertCollectionPolicyResponse{}
+	_body, _err := client.Execute(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) UpsertCollectionPolicy(request *UpsertCollectionPolicyRequest) (_result *UpsertCollectionPolicyResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	headers := make(map[string]*string)
+	_result = &UpsertCollectionPolicyResponse{}
+	_body, _err := client.UpsertCollectionPolicyWithOptions(request, headers, runtime)
 	if _err != nil {
 		return _result, _err
 	}
