@@ -13588,6 +13588,146 @@ func (s *DescribeDcdnDomainWebsocketTrafficDataResponse) SetBody(v *DescribeDcdn
 	return s
 }
 
+type DescribeDcdnDomainsBySourceRequest struct {
+	Sources *string `json:"Sources,omitempty" xml:"Sources,omitempty"`
+}
+
+func (s DescribeDcdnDomainsBySourceRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeDcdnDomainsBySourceRequest) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeDcdnDomainsBySourceRequest) SetSources(v string) *DescribeDcdnDomainsBySourceRequest {
+	s.Sources = &v
+	return s
+}
+
+type DescribeDcdnDomainsBySourceResponseBody struct {
+	DomainInfo []*DescribeDcdnDomainsBySourceResponseBodyDomainInfo `json:"DomainInfo,omitempty" xml:"DomainInfo,omitempty" type:"Repeated"`
+	RequestId  *string                                              `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+}
+
+func (s DescribeDcdnDomainsBySourceResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeDcdnDomainsBySourceResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeDcdnDomainsBySourceResponseBody) SetDomainInfo(v []*DescribeDcdnDomainsBySourceResponseBodyDomainInfo) *DescribeDcdnDomainsBySourceResponseBody {
+	s.DomainInfo = v
+	return s
+}
+
+func (s *DescribeDcdnDomainsBySourceResponseBody) SetRequestId(v string) *DescribeDcdnDomainsBySourceResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+type DescribeDcdnDomainsBySourceResponseBodyDomainInfo struct {
+	DomainList []*DescribeDcdnDomainsBySourceResponseBodyDomainInfoDomainList `json:"DomainList,omitempty" xml:"DomainList,omitempty" type:"Repeated"`
+	Source     *string                                                        `json:"Source,omitempty" xml:"Source,omitempty"`
+}
+
+func (s DescribeDcdnDomainsBySourceResponseBodyDomainInfo) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeDcdnDomainsBySourceResponseBodyDomainInfo) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeDcdnDomainsBySourceResponseBodyDomainInfo) SetDomainList(v []*DescribeDcdnDomainsBySourceResponseBodyDomainInfoDomainList) *DescribeDcdnDomainsBySourceResponseBodyDomainInfo {
+	s.DomainList = v
+	return s
+}
+
+func (s *DescribeDcdnDomainsBySourceResponseBodyDomainInfo) SetSource(v string) *DescribeDcdnDomainsBySourceResponseBodyDomainInfo {
+	s.Source = &v
+	return s
+}
+
+type DescribeDcdnDomainsBySourceResponseBodyDomainInfoDomainList struct {
+	CreateTime *string `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
+	// CNAME。
+	DomainCname *string `json:"DomainCname,omitempty" xml:"DomainCname,omitempty"`
+	DomainName  *string `json:"DomainName,omitempty" xml:"DomainName,omitempty"`
+	DomainType  *string `json:"DomainType,omitempty" xml:"DomainType,omitempty"`
+	Status      *string `json:"Status,omitempty" xml:"Status,omitempty"`
+	UpdateTime  *string `json:"UpdateTime,omitempty" xml:"UpdateTime,omitempty"`
+}
+
+func (s DescribeDcdnDomainsBySourceResponseBodyDomainInfoDomainList) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeDcdnDomainsBySourceResponseBodyDomainInfoDomainList) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeDcdnDomainsBySourceResponseBodyDomainInfoDomainList) SetCreateTime(v string) *DescribeDcdnDomainsBySourceResponseBodyDomainInfoDomainList {
+	s.CreateTime = &v
+	return s
+}
+
+func (s *DescribeDcdnDomainsBySourceResponseBodyDomainInfoDomainList) SetDomainCname(v string) *DescribeDcdnDomainsBySourceResponseBodyDomainInfoDomainList {
+	s.DomainCname = &v
+	return s
+}
+
+func (s *DescribeDcdnDomainsBySourceResponseBodyDomainInfoDomainList) SetDomainName(v string) *DescribeDcdnDomainsBySourceResponseBodyDomainInfoDomainList {
+	s.DomainName = &v
+	return s
+}
+
+func (s *DescribeDcdnDomainsBySourceResponseBodyDomainInfoDomainList) SetDomainType(v string) *DescribeDcdnDomainsBySourceResponseBodyDomainInfoDomainList {
+	s.DomainType = &v
+	return s
+}
+
+func (s *DescribeDcdnDomainsBySourceResponseBodyDomainInfoDomainList) SetStatus(v string) *DescribeDcdnDomainsBySourceResponseBodyDomainInfoDomainList {
+	s.Status = &v
+	return s
+}
+
+func (s *DescribeDcdnDomainsBySourceResponseBodyDomainInfoDomainList) SetUpdateTime(v string) *DescribeDcdnDomainsBySourceResponseBodyDomainInfoDomainList {
+	s.UpdateTime = &v
+	return s
+}
+
+type DescribeDcdnDomainsBySourceResponse struct {
+	Headers    map[string]*string                       `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                                   `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *DescribeDcdnDomainsBySourceResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s DescribeDcdnDomainsBySourceResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeDcdnDomainsBySourceResponse) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeDcdnDomainsBySourceResponse) SetHeaders(v map[string]*string) *DescribeDcdnDomainsBySourceResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *DescribeDcdnDomainsBySourceResponse) SetStatusCode(v int32) *DescribeDcdnDomainsBySourceResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *DescribeDcdnDomainsBySourceResponse) SetBody(v *DescribeDcdnDomainsBySourceResponseBody) *DescribeDcdnDomainsBySourceResponse {
+	s.Body = v
+	return s
+}
+
 type DescribeDcdnErUsageDataRequest struct {
 	// The end of the time range to query. Specify the time in the ISO 8601 standard in the yyyy-MM-ddTHH:mm:ssZ format. The time must be in UTC.
 	//
@@ -36291,6 +36431,50 @@ func (client *Client) DescribeDcdnDomainWebsocketTrafficData(request *DescribeDc
 	runtime := &util.RuntimeOptions{}
 	_result = &DescribeDcdnDomainWebsocketTrafficDataResponse{}
 	_body, _err := client.DescribeDcdnDomainWebsocketTrafficDataWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) DescribeDcdnDomainsBySourceWithOptions(request *DescribeDcdnDomainsBySourceRequest, runtime *util.RuntimeOptions) (_result *DescribeDcdnDomainsBySourceResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.Sources)) {
+		query["Sources"] = request.Sources
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("DescribeDcdnDomainsBySource"),
+		Version:     tea.String("2018-01-15"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &DescribeDcdnDomainsBySourceResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) DescribeDcdnDomainsBySource(request *DescribeDcdnDomainsBySourceRequest) (_result *DescribeDcdnDomainsBySourceResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &DescribeDcdnDomainsBySourceResponse{}
+	_body, _err := client.DescribeDcdnDomainsBySourceWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
