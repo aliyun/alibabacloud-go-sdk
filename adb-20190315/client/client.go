@@ -846,8 +846,9 @@ type CreateDBClusterRequest struct {
 	// A reserved parameter.
 	StorageResource *string `json:"StorageResource,omitempty" xml:"StorageResource,omitempty"`
 	// A reserved parameter.
-	StorageType *string                      `json:"StorageType,omitempty" xml:"StorageType,omitempty"`
-	Tag         []*CreateDBClusterRequestTag `json:"Tag,omitempty" xml:"Tag,omitempty" type:"Repeated"`
+	StorageType *string `json:"StorageType,omitempty" xml:"StorageType,omitempty"`
+	// The tags to add to the cluster.
+	Tag []*CreateDBClusterRequestTag `json:"Tag,omitempty" xml:"Tag,omitempty" type:"Repeated"`
 	// The subscription period of the subscription cluster.
 	//
 	// *   Valid values when Period is set to Year: 1, 2, 3, and 5 (integer)
@@ -1030,7 +1031,13 @@ func (s *CreateDBClusterRequest) SetZoneId(v string) *CreateDBClusterRequest {
 }
 
 type CreateDBClusterRequestTag struct {
-	Key   *string `json:"Key,omitempty" xml:"Key,omitempty"`
+	// The key of tag N to add to the cluster. You can use tags to filter clusters. Valid values of N: 1 to 20. The values that you specify for N must be unique and consecutive integers that start from 1. Each value of `Tag.N.Key` is paired with a value of `Tag.N.Value`.
+	//
+	// >  The tag key can be up to 64 characters in length and cannot start with `aliyun`, `acs:`, `http://`, or `https://`.
+	Key *string `json:"Key,omitempty" xml:"Key,omitempty"`
+	// The value of tag N to add to the cluster. You can use tags to filter clusters. Valid values of N: 1 to 20. The values that you specify for N must be unique and consecutive integers that start from 1. Each value of `Tag.N.Key` is paired with a value of `Tag.N.Value`.
+	//
+	// >  The tag value can be up to 64 characters in length and cannot start with `aliyun`, `acs:`, `http://`, or `https://`.
 	Value *string `json:"Value,omitempty" xml:"Value,omitempty"`
 }
 
@@ -6412,8 +6419,10 @@ type DescribeDBClusterPerformanceRequest struct {
 	Key                  *string `json:"Key,omitempty" xml:"Key,omitempty"`
 	OwnerAccount         *string `json:"OwnerAccount,omitempty" xml:"OwnerAccount,omitempty"`
 	OwnerId              *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
+	RegionId             *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 	ResourceOwnerAccount *string `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
 	ResourceOwnerId      *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
+	ResourcePools        *string `json:"ResourcePools,omitempty" xml:"ResourcePools,omitempty"`
 	// The start time of the query. Specify the time in the ISO 8601 standard in the *yyyy-MM-ddTHH:mmZ* format. The time must be in UTC.
 	StartTime *string `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
 }
@@ -6451,6 +6460,11 @@ func (s *DescribeDBClusterPerformanceRequest) SetOwnerId(v int64) *DescribeDBClu
 	return s
 }
 
+func (s *DescribeDBClusterPerformanceRequest) SetRegionId(v string) *DescribeDBClusterPerformanceRequest {
+	s.RegionId = &v
+	return s
+}
+
 func (s *DescribeDBClusterPerformanceRequest) SetResourceOwnerAccount(v string) *DescribeDBClusterPerformanceRequest {
 	s.ResourceOwnerAccount = &v
 	return s
@@ -6458,6 +6472,11 @@ func (s *DescribeDBClusterPerformanceRequest) SetResourceOwnerAccount(v string) 
 
 func (s *DescribeDBClusterPerformanceRequest) SetResourceOwnerId(v int64) *DescribeDBClusterPerformanceRequest {
 	s.ResourceOwnerId = &v
+	return s
+}
+
+func (s *DescribeDBClusterPerformanceRequest) SetResourcePools(v string) *DescribeDBClusterPerformanceRequest {
+	s.ResourcePools = &v
 	return s
 }
 
@@ -6547,6 +6566,7 @@ func (s *DescribeDBClusterPerformanceResponseBodyPerformances) SetUnit(v string)
 type DescribeDBClusterPerformanceResponseBodyPerformancesSeries struct {
 	// The name of the performance metric.
 	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	Tags *string `json:"Tags,omitempty" xml:"Tags,omitempty"`
 	// The values of the queried performance metrics.
 	Values []*string `json:"Values,omitempty" xml:"Values,omitempty" type:"Repeated"`
 }
@@ -6561,6 +6581,11 @@ func (s DescribeDBClusterPerformanceResponseBodyPerformancesSeries) GoString() s
 
 func (s *DescribeDBClusterPerformanceResponseBodyPerformancesSeries) SetName(v string) *DescribeDBClusterPerformanceResponseBodyPerformancesSeries {
 	s.Name = &v
+	return s
+}
+
+func (s *DescribeDBClusterPerformanceResponseBodyPerformancesSeries) SetTags(v string) *DescribeDBClusterPerformanceResponseBodyPerformancesSeries {
+	s.Tags = &v
 	return s
 }
 
@@ -11632,174 +11657,6 @@ func (s *DescribeRegionsResponse) SetStatusCode(v int32) *DescribeRegionsRespons
 }
 
 func (s *DescribeRegionsResponse) SetBody(v *DescribeRegionsResponseBody) *DescribeRegionsResponse {
-	s.Body = v
-	return s
-}
-
-type DescribeSQLPatternAttributeRequest struct {
-	// The cluster ID.
-	//
-	// > You can call the [DescribeDBClusters](~~129857~~) operation to query the information about all AnalyticDB for MySQL clusters within a region, including cluster IDs.
-	DBClusterId *string `json:"DBClusterId,omitempty" xml:"DBClusterId,omitempty"`
-	// The end of the time range to query. Specify the time in the ISO 8601 standard in the *yyyy-MM-ddTHH:mmZ* format. The time must be in UTC.
-	//
-	// > The end time must be later than the start time.
-	EndTime *string `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
-	// The language of file titles and error messages. Valid values:
-	//
-	// *   **zh**: simplified Chinese.
-	// *   **en**: English.
-	// *   **ja**: Japanese.
-	// *   **zh-tw**: traditional Chinese.
-	Lang *string `json:"Lang,omitempty" xml:"Lang,omitempty"`
-	// The SQL pattern ID.
-	//
-	// > You can call the [DescribeSQLPatterns](~~321868~~) operation to query the information about all SQL patterns in an AnalyticDB for MySQL cluster within a period of time, including SQL pattern IDs.
-	PatternId *int64 `json:"PatternId,omitempty" xml:"PatternId,omitempty"`
-	// The region ID of the cluster.
-	//
-	// > You can call the [DescribeRegions](~~143074~~) operation to query the most recent region list.
-	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	// The beginning of the time range to query. Specify the time in the ISO 8601 standard in the *yyyy-MM-ddTHH:mmZ* format. The time must be in UTC.
-	//
-	// > You can query the data only within the last 15 days.
-	StartTime *string `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
-}
-
-func (s DescribeSQLPatternAttributeRequest) String() string {
-	return tea.Prettify(s)
-}
-
-func (s DescribeSQLPatternAttributeRequest) GoString() string {
-	return s.String()
-}
-
-func (s *DescribeSQLPatternAttributeRequest) SetDBClusterId(v string) *DescribeSQLPatternAttributeRequest {
-	s.DBClusterId = &v
-	return s
-}
-
-func (s *DescribeSQLPatternAttributeRequest) SetEndTime(v string) *DescribeSQLPatternAttributeRequest {
-	s.EndTime = &v
-	return s
-}
-
-func (s *DescribeSQLPatternAttributeRequest) SetLang(v string) *DescribeSQLPatternAttributeRequest {
-	s.Lang = &v
-	return s
-}
-
-func (s *DescribeSQLPatternAttributeRequest) SetPatternId(v int64) *DescribeSQLPatternAttributeRequest {
-	s.PatternId = &v
-	return s
-}
-
-func (s *DescribeSQLPatternAttributeRequest) SetRegionId(v string) *DescribeSQLPatternAttributeRequest {
-	s.RegionId = &v
-	return s
-}
-
-func (s *DescribeSQLPatternAttributeRequest) SetStartTime(v string) *DescribeSQLPatternAttributeRequest {
-	s.StartTime = &v
-	return s
-}
-
-type DescribeSQLPatternAttributeResponseBody struct {
-	// The queried SQL pattern.
-	PatternDetail *DescribeSQLPatternAttributeResponseBodyPatternDetail `json:"PatternDetail,omitempty" xml:"PatternDetail,omitempty" type:"Struct"`
-	// The request ID.
-	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-}
-
-func (s DescribeSQLPatternAttributeResponseBody) String() string {
-	return tea.Prettify(s)
-}
-
-func (s DescribeSQLPatternAttributeResponseBody) GoString() string {
-	return s.String()
-}
-
-func (s *DescribeSQLPatternAttributeResponseBody) SetPatternDetail(v *DescribeSQLPatternAttributeResponseBodyPatternDetail) *DescribeSQLPatternAttributeResponseBody {
-	s.PatternDetail = v
-	return s
-}
-
-func (s *DescribeSQLPatternAttributeResponseBody) SetRequestId(v string) *DescribeSQLPatternAttributeResponseBody {
-	s.RequestId = &v
-	return s
-}
-
-type DescribeSQLPatternAttributeResponseBodyPatternDetail struct {
-	// The average used memory associated with the SQL pattern. Unit: MB.
-	AverageMemory *string `json:"AverageMemory,omitempty" xml:"AverageMemory,omitempty"`
-	// The average query duration associated with the SQL pattern. Unit: milliseconds.
-	AverageQueryTime *string `json:"AverageQueryTime,omitempty" xml:"AverageQueryTime,omitempty"`
-	// The number of queries.
-	QueryCount *int64 `json:"QueryCount,omitempty" xml:"QueryCount,omitempty"`
-	// The statement of the SQL pattern.
-	SQLPattern *string `json:"SQLPattern,omitempty" xml:"SQLPattern,omitempty"`
-	// The total query duration associated with the SQL pattern. Unit: milliseconds.
-	TotalQueryTime *string `json:"TotalQueryTime,omitempty" xml:"TotalQueryTime,omitempty"`
-}
-
-func (s DescribeSQLPatternAttributeResponseBodyPatternDetail) String() string {
-	return tea.Prettify(s)
-}
-
-func (s DescribeSQLPatternAttributeResponseBodyPatternDetail) GoString() string {
-	return s.String()
-}
-
-func (s *DescribeSQLPatternAttributeResponseBodyPatternDetail) SetAverageMemory(v string) *DescribeSQLPatternAttributeResponseBodyPatternDetail {
-	s.AverageMemory = &v
-	return s
-}
-
-func (s *DescribeSQLPatternAttributeResponseBodyPatternDetail) SetAverageQueryTime(v string) *DescribeSQLPatternAttributeResponseBodyPatternDetail {
-	s.AverageQueryTime = &v
-	return s
-}
-
-func (s *DescribeSQLPatternAttributeResponseBodyPatternDetail) SetQueryCount(v int64) *DescribeSQLPatternAttributeResponseBodyPatternDetail {
-	s.QueryCount = &v
-	return s
-}
-
-func (s *DescribeSQLPatternAttributeResponseBodyPatternDetail) SetSQLPattern(v string) *DescribeSQLPatternAttributeResponseBodyPatternDetail {
-	s.SQLPattern = &v
-	return s
-}
-
-func (s *DescribeSQLPatternAttributeResponseBodyPatternDetail) SetTotalQueryTime(v string) *DescribeSQLPatternAttributeResponseBodyPatternDetail {
-	s.TotalQueryTime = &v
-	return s
-}
-
-type DescribeSQLPatternAttributeResponse struct {
-	Headers    map[string]*string                       `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                                   `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *DescribeSQLPatternAttributeResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
-}
-
-func (s DescribeSQLPatternAttributeResponse) String() string {
-	return tea.Prettify(s)
-}
-
-func (s DescribeSQLPatternAttributeResponse) GoString() string {
-	return s.String()
-}
-
-func (s *DescribeSQLPatternAttributeResponse) SetHeaders(v map[string]*string) *DescribeSQLPatternAttributeResponse {
-	s.Headers = v
-	return s
-}
-
-func (s *DescribeSQLPatternAttributeResponse) SetStatusCode(v int32) *DescribeSQLPatternAttributeResponse {
-	s.StatusCode = &v
-	return s
-}
-
-func (s *DescribeSQLPatternAttributeResponse) SetBody(v *DescribeSQLPatternAttributeResponseBody) *DescribeSQLPatternAttributeResponse {
 	s.Body = v
 	return s
 }
@@ -21727,12 +21584,20 @@ func (client *Client) DescribeDBClusterPerformanceWithOptions(request *DescribeD
 		query["OwnerId"] = request.OwnerId
 	}
 
+	if !tea.BoolValue(util.IsUnset(request.RegionId)) {
+		query["RegionId"] = request.RegionId
+	}
+
 	if !tea.BoolValue(util.IsUnset(request.ResourceOwnerAccount)) {
 		query["ResourceOwnerAccount"] = request.ResourceOwnerAccount
 	}
 
 	if !tea.BoolValue(util.IsUnset(request.ResourceOwnerId)) {
 		query["ResourceOwnerId"] = request.ResourceOwnerId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ResourcePools)) {
+		query["ResourcePools"] = request.ResourcePools
 	}
 
 	if !tea.BoolValue(util.IsUnset(request.StartTime)) {
@@ -23334,70 +23199,6 @@ func (client *Client) DescribeRegions(request *DescribeRegionsRequest) (_result 
 	runtime := &util.RuntimeOptions{}
 	_result = &DescribeRegionsResponse{}
 	_body, _err := client.DescribeRegionsWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
-	return _result, _err
-}
-
-func (client *Client) DescribeSQLPatternAttributeWithOptions(request *DescribeSQLPatternAttributeRequest, runtime *util.RuntimeOptions) (_result *DescribeSQLPatternAttributeResponse, _err error) {
-	_err = util.ValidateModel(request)
-	if _err != nil {
-		return _result, _err
-	}
-	query := map[string]interface{}{}
-	if !tea.BoolValue(util.IsUnset(request.DBClusterId)) {
-		query["DBClusterId"] = request.DBClusterId
-	}
-
-	if !tea.BoolValue(util.IsUnset(request.EndTime)) {
-		query["EndTime"] = request.EndTime
-	}
-
-	if !tea.BoolValue(util.IsUnset(request.Lang)) {
-		query["Lang"] = request.Lang
-	}
-
-	if !tea.BoolValue(util.IsUnset(request.PatternId)) {
-		query["PatternId"] = request.PatternId
-	}
-
-	if !tea.BoolValue(util.IsUnset(request.RegionId)) {
-		query["RegionId"] = request.RegionId
-	}
-
-	if !tea.BoolValue(util.IsUnset(request.StartTime)) {
-		query["StartTime"] = request.StartTime
-	}
-
-	req := &openapi.OpenApiRequest{
-		Query: openapiutil.Query(query),
-	}
-	params := &openapi.Params{
-		Action:      tea.String("DescribeSQLPatternAttribute"),
-		Version:     tea.String("2019-03-15"),
-		Protocol:    tea.String("HTTPS"),
-		Pathname:    tea.String("/"),
-		Method:      tea.String("POST"),
-		AuthType:    tea.String("AK"),
-		Style:       tea.String("RPC"),
-		ReqBodyType: tea.String("formData"),
-		BodyType:    tea.String("json"),
-	}
-	_result = &DescribeSQLPatternAttributeResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
-}
-
-func (client *Client) DescribeSQLPatternAttribute(request *DescribeSQLPatternAttributeRequest) (_result *DescribeSQLPatternAttributeResponse, _err error) {
-	runtime := &util.RuntimeOptions{}
-	_result = &DescribeSQLPatternAttributeResponse{}
-	_body, _err := client.DescribeSQLPatternAttributeWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
