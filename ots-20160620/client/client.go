@@ -5,10 +5,10 @@
 package client
 
 import (
-	openapi "github.com/alibabacloud-go/darabonba-openapi/client"
+	openapi "github.com/alibabacloud-go/darabonba-openapi/v2/client"
 	endpointutil "github.com/alibabacloud-go/endpoint-util/service"
 	openapiutil "github.com/alibabacloud-go/openapi-util/service"
-	util "github.com/alibabacloud-go/tea-utils/service"
+	util "github.com/alibabacloud-go/tea-utils/v2/service"
 	"github.com/alibabacloud-go/tea/tea"
 )
 
@@ -95,8 +95,9 @@ func (s *BindInstance2VpcResponseBody) SetRequestId(v string) *BindInstance2VpcR
 }
 
 type BindInstance2VpcResponse struct {
-	Headers map[string]*string            `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *BindInstance2VpcResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string            `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                        `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *BindInstance2VpcResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
 }
 
 func (s BindInstance2VpcResponse) String() string {
@@ -109,6 +110,11 @@ func (s BindInstance2VpcResponse) GoString() string {
 
 func (s *BindInstance2VpcResponse) SetHeaders(v map[string]*string) *BindInstance2VpcResponse {
 	s.Headers = v
+	return s
+}
+
+func (s *BindInstance2VpcResponse) SetStatusCode(v int32) *BindInstance2VpcResponse {
+	s.StatusCode = &v
 	return s
 }
 
@@ -158,8 +164,9 @@ func (s *DeleteInstanceResponseBody) SetRequestId(v string) *DeleteInstanceRespo
 }
 
 type DeleteInstanceResponse struct {
-	Headers map[string]*string          `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *DeleteInstanceResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string          `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                      `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *DeleteInstanceResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
 }
 
 func (s DeleteInstanceResponse) String() string {
@@ -172,6 +179,11 @@ func (s DeleteInstanceResponse) GoString() string {
 
 func (s *DeleteInstanceResponse) SetHeaders(v map[string]*string) *DeleteInstanceResponse {
 	s.Headers = v
+	return s
+}
+
+func (s *DeleteInstanceResponse) SetStatusCode(v int32) *DeleteInstanceResponse {
+	s.StatusCode = &v
 	return s
 }
 
@@ -250,8 +262,9 @@ func (s *DeleteTagsResponseBody) SetRequestId(v string) *DeleteTagsResponseBody 
 }
 
 type DeleteTagsResponse struct {
-	Headers map[string]*string      `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *DeleteTagsResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string      `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                  `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *DeleteTagsResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
 }
 
 func (s DeleteTagsResponse) String() string {
@@ -264,6 +277,11 @@ func (s DeleteTagsResponse) GoString() string {
 
 func (s *DeleteTagsResponse) SetHeaders(v map[string]*string) *DeleteTagsResponse {
 	s.Headers = v
+	return s
+}
+
+func (s *DeleteTagsResponse) SetStatusCode(v int32) *DeleteTagsResponse {
+	s.StatusCode = &v
 	return s
 }
 
@@ -453,8 +471,9 @@ func (s *GetInstanceResponseBodyInstanceInfoTagInfosTagInfo) SetTagValue(v strin
 }
 
 type GetInstanceResponse struct {
-	Headers map[string]*string       `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *GetInstanceResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string       `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                   `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *GetInstanceResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
 }
 
 func (s GetInstanceResponse) String() string {
@@ -470,13 +489,17 @@ func (s *GetInstanceResponse) SetHeaders(v map[string]*string) *GetInstanceRespo
 	return s
 }
 
+func (s *GetInstanceResponse) SetStatusCode(v int32) *GetInstanceResponse {
+	s.StatusCode = &v
+	return s
+}
+
 func (s *GetInstanceResponse) SetBody(v *GetInstanceResponseBody) *GetInstanceResponse {
 	s.Body = v
 	return s
 }
 
 type GetOtsServiceStatusRequest struct {
-	// ownerId
 	OwnerId *int64 `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
 }
 
@@ -494,22 +517,14 @@ func (s *GetOtsServiceStatusRequest) SetOwnerId(v int64) *GetOtsServiceStatusReq
 }
 
 type GetOtsServiceStatusResponseBody struct {
-	// data
-	Data map[string]interface{} `json:"Data,omitempty" xml:"Data,omitempty"`
-	// dynamicCode
-	DynamicCode *string `json:"DynamicCode,omitempty" xml:"DynamicCode,omitempty"`
-	// dynamicMessage
+	Data           *bool   `json:"Data,omitempty" xml:"Data,omitempty"`
+	DynamicCode    *string `json:"DynamicCode,omitempty" xml:"DynamicCode,omitempty"`
 	DynamicMessage *string `json:"DynamicMessage,omitempty" xml:"DynamicMessage,omitempty"`
-	// errCode
-	ErrCode *string `json:"ErrCode,omitempty" xml:"ErrCode,omitempty"`
-	// httpStatusCode
-	HttpStatusCode *int32 `json:"HttpStatusCode,omitempty" xml:"HttpStatusCode,omitempty"`
-	// message
-	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
-	// requestId
-	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// success
-	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
+	ErrCode        *string `json:"ErrCode,omitempty" xml:"ErrCode,omitempty"`
+	HttpStatusCode *int32  `json:"HttpStatusCode,omitempty" xml:"HttpStatusCode,omitempty"`
+	Message        *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	RequestId      *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	Success        *bool   `json:"Success,omitempty" xml:"Success,omitempty"`
 }
 
 func (s GetOtsServiceStatusResponseBody) String() string {
@@ -520,8 +535,8 @@ func (s GetOtsServiceStatusResponseBody) GoString() string {
 	return s.String()
 }
 
-func (s *GetOtsServiceStatusResponseBody) SetData(v map[string]interface{}) *GetOtsServiceStatusResponseBody {
-	s.Data = v
+func (s *GetOtsServiceStatusResponseBody) SetData(v bool) *GetOtsServiceStatusResponseBody {
+	s.Data = &v
 	return s
 }
 
@@ -561,8 +576,9 @@ func (s *GetOtsServiceStatusResponseBody) SetSuccess(v bool) *GetOtsServiceStatu
 }
 
 type GetOtsServiceStatusResponse struct {
-	Headers map[string]*string               `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *GetOtsServiceStatusResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string               `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                           `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *GetOtsServiceStatusResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
 }
 
 func (s GetOtsServiceStatusResponse) String() string {
@@ -575,6 +591,11 @@ func (s GetOtsServiceStatusResponse) GoString() string {
 
 func (s *GetOtsServiceStatusResponse) SetHeaders(v map[string]*string) *GetOtsServiceStatusResponse {
 	s.Headers = v
+	return s
+}
+
+func (s *GetOtsServiceStatusResponse) SetStatusCode(v int32) *GetOtsServiceStatusResponse {
+	s.StatusCode = &v
 	return s
 }
 
@@ -671,8 +692,9 @@ func (s *InsertInstanceResponseBody) SetRequestId(v string) *InsertInstanceRespo
 }
 
 type InsertInstanceResponse struct {
-	Headers map[string]*string          `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *InsertInstanceResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string          `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                      `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *InsertInstanceResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
 }
 
 func (s InsertInstanceResponse) String() string {
@@ -685,6 +707,11 @@ func (s InsertInstanceResponse) GoString() string {
 
 func (s *InsertInstanceResponse) SetHeaders(v map[string]*string) *InsertInstanceResponse {
 	s.Headers = v
+	return s
+}
+
+func (s *InsertInstanceResponse) SetStatusCode(v int32) *InsertInstanceResponse {
+	s.StatusCode = &v
 	return s
 }
 
@@ -763,8 +790,9 @@ func (s *InsertTagsResponseBody) SetRequestId(v string) *InsertTagsResponseBody 
 }
 
 type InsertTagsResponse struct {
-	Headers map[string]*string      `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *InsertTagsResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string      `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                  `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *InsertTagsResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
 }
 
 func (s InsertTagsResponse) String() string {
@@ -777,6 +805,11 @@ func (s InsertTagsResponse) GoString() string {
 
 func (s *InsertTagsResponse) SetHeaders(v map[string]*string) *InsertTagsResponse {
 	s.Headers = v
+	return s
+}
+
+func (s *InsertTagsResponse) SetStatusCode(v int32) *InsertTagsResponse {
+	s.StatusCode = &v
 	return s
 }
 
@@ -803,8 +836,9 @@ func (s *ListClusterTypeRequest) SetResourceOwnerId(v int64) *ListClusterTypeReq
 }
 
 type ListClusterTypeResponseBody struct {
-	ClusterTypeInfos *ListClusterTypeResponseBodyClusterTypeInfos `json:"ClusterTypeInfos,omitempty" xml:"ClusterTypeInfos,omitempty" type:"Struct"`
-	RequestId        *string                                      `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	ClusterTypeDetailList *ListClusterTypeResponseBodyClusterTypeDetailList `json:"ClusterTypeDetailList,omitempty" xml:"ClusterTypeDetailList,omitempty" type:"Struct"`
+	ClusterTypeInfos      *ListClusterTypeResponseBodyClusterTypeInfos      `json:"ClusterTypeInfos,omitempty" xml:"ClusterTypeInfos,omitempty" type:"Struct"`
+	RequestId             *string                                           `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
 func (s ListClusterTypeResponseBody) String() string {
@@ -815,6 +849,11 @@ func (s ListClusterTypeResponseBody) GoString() string {
 	return s.String()
 }
 
+func (s *ListClusterTypeResponseBody) SetClusterTypeDetailList(v *ListClusterTypeResponseBodyClusterTypeDetailList) *ListClusterTypeResponseBody {
+	s.ClusterTypeDetailList = v
+	return s
+}
+
 func (s *ListClusterTypeResponseBody) SetClusterTypeInfos(v *ListClusterTypeResponseBodyClusterTypeInfos) *ListClusterTypeResponseBody {
 	s.ClusterTypeInfos = v
 	return s
@@ -822,6 +861,46 @@ func (s *ListClusterTypeResponseBody) SetClusterTypeInfos(v *ListClusterTypeResp
 
 func (s *ListClusterTypeResponseBody) SetRequestId(v string) *ListClusterTypeResponseBody {
 	s.RequestId = &v
+	return s
+}
+
+type ListClusterTypeResponseBodyClusterTypeDetailList struct {
+	ClusterTypeDetail []*ListClusterTypeResponseBodyClusterTypeDetailListClusterTypeDetail `json:"ClusterTypeDetail,omitempty" xml:"ClusterTypeDetail,omitempty" type:"Repeated"`
+}
+
+func (s ListClusterTypeResponseBodyClusterTypeDetailList) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListClusterTypeResponseBodyClusterTypeDetailList) GoString() string {
+	return s.String()
+}
+
+func (s *ListClusterTypeResponseBodyClusterTypeDetailList) SetClusterTypeDetail(v []*ListClusterTypeResponseBodyClusterTypeDetailListClusterTypeDetail) *ListClusterTypeResponseBodyClusterTypeDetailList {
+	s.ClusterTypeDetail = v
+	return s
+}
+
+type ListClusterTypeResponseBodyClusterTypeDetailListClusterTypeDetail struct {
+	ClusterType *string `json:"ClusterType,omitempty" xml:"ClusterType,omitempty"`
+	IsMultiAZ   *bool   `json:"IsMultiAZ,omitempty" xml:"IsMultiAZ,omitempty"`
+}
+
+func (s ListClusterTypeResponseBodyClusterTypeDetailListClusterTypeDetail) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListClusterTypeResponseBodyClusterTypeDetailListClusterTypeDetail) GoString() string {
+	return s.String()
+}
+
+func (s *ListClusterTypeResponseBodyClusterTypeDetailListClusterTypeDetail) SetClusterType(v string) *ListClusterTypeResponseBodyClusterTypeDetailListClusterTypeDetail {
+	s.ClusterType = &v
+	return s
+}
+
+func (s *ListClusterTypeResponseBodyClusterTypeDetailListClusterTypeDetail) SetIsMultiAZ(v bool) *ListClusterTypeResponseBodyClusterTypeDetailListClusterTypeDetail {
+	s.IsMultiAZ = &v
 	return s
 }
 
@@ -843,8 +922,9 @@ func (s *ListClusterTypeResponseBodyClusterTypeInfos) SetClusterType(v []*string
 }
 
 type ListClusterTypeResponse struct {
-	Headers map[string]*string           `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *ListClusterTypeResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string           `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                       `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *ListClusterTypeResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
 }
 
 func (s ListClusterTypeResponse) String() string {
@@ -857,6 +937,11 @@ func (s ListClusterTypeResponse) GoString() string {
 
 func (s *ListClusterTypeResponse) SetHeaders(v map[string]*string) *ListClusterTypeResponse {
 	s.Headers = v
+	return s
+}
+
+func (s *ListClusterTypeResponse) SetStatusCode(v int32) *ListClusterTypeResponse {
+	s.StatusCode = &v
 	return s
 }
 
@@ -1005,8 +1090,9 @@ func (s *ListInstanceResponseBodyInstanceInfosInstanceInfo) SetTimestamp(v strin
 }
 
 type ListInstanceResponse struct {
-	Headers map[string]*string        `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *ListInstanceResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string        `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                    `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *ListInstanceResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
 }
 
 func (s ListInstanceResponse) String() string {
@@ -1019,6 +1105,11 @@ func (s ListInstanceResponse) GoString() string {
 
 func (s *ListInstanceResponse) SetHeaders(v map[string]*string) *ListInstanceResponse {
 	s.Headers = v
+	return s
+}
+
+func (s *ListInstanceResponse) SetStatusCode(v int32) *ListInstanceResponse {
+	s.StatusCode = &v
 	return s
 }
 
@@ -1173,8 +1264,9 @@ func (s *ListTagsResponseBodyTagInfosTagInfo) SetTagValue(v string) *ListTagsRes
 }
 
 type ListTagsResponse struct {
-	Headers map[string]*string    `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *ListTagsResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string    `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *ListTagsResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
 }
 
 func (s ListTagsResponse) String() string {
@@ -1187,6 +1279,11 @@ func (s ListTagsResponse) GoString() string {
 
 func (s *ListTagsResponse) SetHeaders(v map[string]*string) *ListTagsResponse {
 	s.Headers = v
+	return s
+}
+
+func (s *ListTagsResponse) SetStatusCode(v int32) *ListTagsResponse {
+	s.StatusCode = &v
 	return s
 }
 
@@ -1336,8 +1433,9 @@ func (s *ListVpcInfoByInstanceResponseBodyVpcInfosVpcInfo) SetVpcId(v string) *L
 }
 
 type ListVpcInfoByInstanceResponse struct {
-	Headers map[string]*string                 `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *ListVpcInfoByInstanceResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                 `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                             `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *ListVpcInfoByInstanceResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
 }
 
 func (s ListVpcInfoByInstanceResponse) String() string {
@@ -1350,6 +1448,11 @@ func (s ListVpcInfoByInstanceResponse) GoString() string {
 
 func (s *ListVpcInfoByInstanceResponse) SetHeaders(v map[string]*string) *ListVpcInfoByInstanceResponse {
 	s.Headers = v
+	return s
+}
+
+func (s *ListVpcInfoByInstanceResponse) SetStatusCode(v int32) *ListVpcInfoByInstanceResponse {
+	s.StatusCode = &v
 	return s
 }
 
@@ -1528,8 +1631,9 @@ func (s *ListVpcInfoByVpcResponseBodyVpcInfosVpcInfo) SetRegionNo(v string) *Lis
 }
 
 type ListVpcInfoByVpcResponse struct {
-	Headers map[string]*string            `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *ListVpcInfoByVpcResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string            `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                        `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *ListVpcInfoByVpcResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
 }
 
 func (s ListVpcInfoByVpcResponse) String() string {
@@ -1542,6 +1646,11 @@ func (s ListVpcInfoByVpcResponse) GoString() string {
 
 func (s *ListVpcInfoByVpcResponse) SetHeaders(v map[string]*string) *ListVpcInfoByVpcResponse {
 	s.Headers = v
+	return s
+}
+
+func (s *ListVpcInfoByVpcResponse) SetStatusCode(v int32) *ListVpcInfoByVpcResponse {
+	s.StatusCode = &v
 	return s
 }
 
@@ -1574,8 +1683,9 @@ func (s *OpenOtsServiceResponseBody) SetRequestId(v string) *OpenOtsServiceRespo
 }
 
 type OpenOtsServiceResponse struct {
-	Headers map[string]*string          `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *OpenOtsServiceResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string          `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                      `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *OpenOtsServiceResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
 }
 
 func (s OpenOtsServiceResponse) String() string {
@@ -1588,6 +1698,11 @@ func (s OpenOtsServiceResponse) GoString() string {
 
 func (s *OpenOtsServiceResponse) SetHeaders(v map[string]*string) *OpenOtsServiceResponse {
 	s.Headers = v
+	return s
+}
+
+func (s *OpenOtsServiceResponse) SetStatusCode(v int32) *OpenOtsServiceResponse {
+	s.StatusCode = &v
 	return s
 }
 
@@ -1649,8 +1764,9 @@ func (s *UnbindInstance2VpcResponseBody) SetRequestId(v string) *UnbindInstance2
 }
 
 type UnbindInstance2VpcResponse struct {
-	Headers map[string]*string              `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *UnbindInstance2VpcResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string              `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                          `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *UnbindInstance2VpcResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
 }
 
 func (s UnbindInstance2VpcResponse) String() string {
@@ -1663,6 +1779,11 @@ func (s UnbindInstance2VpcResponse) GoString() string {
 
 func (s *UnbindInstance2VpcResponse) SetHeaders(v map[string]*string) *UnbindInstance2VpcResponse {
 	s.Headers = v
+	return s
+}
+
+func (s *UnbindInstance2VpcResponse) SetStatusCode(v int32) *UnbindInstance2VpcResponse {
+	s.StatusCode = &v
 	return s
 }
 
@@ -1718,8 +1839,9 @@ func (s *UpdateInstanceResponseBody) SetRequestId(v string) *UpdateInstanceRespo
 }
 
 type UpdateInstanceResponse struct {
-	Headers map[string]*string          `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *UpdateInstanceResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string          `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                      `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *UpdateInstanceResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
 }
 
 func (s UpdateInstanceResponse) String() string {
@@ -1732,6 +1854,11 @@ func (s UpdateInstanceResponse) GoString() string {
 
 func (s *UpdateInstanceResponse) SetHeaders(v map[string]*string) *UpdateInstanceResponse {
 	s.Headers = v
+	return s
+}
+
+func (s *UpdateInstanceResponse) SetStatusCode(v int32) *UpdateInstanceResponse {
+	s.StatusCode = &v
 	return s
 }
 
@@ -1793,16 +1920,36 @@ func (client *Client) BindInstance2VpcWithOptions(request *BindInstance2VpcReque
 		return _result, _err
 	}
 	query := map[string]interface{}{}
-	query["InstanceName"] = request.InstanceName
-	query["InstanceVpcName"] = request.InstanceVpcName
-	query["Network"] = request.Network
-	query["RegionNo"] = request.RegionNo
-	query["ResourceOwnerId"] = request.ResourceOwnerId
-	query["VirtualSwitchId"] = request.VirtualSwitchId
-	query["VpcId"] = request.VpcId
+	if !tea.BoolValue(util.IsUnset(request.InstanceName)) {
+		query["InstanceName"] = request.InstanceName
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.InstanceVpcName)) {
+		query["InstanceVpcName"] = request.InstanceVpcName
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Network)) {
+		query["Network"] = request.Network
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.RegionNo)) {
+		query["RegionNo"] = request.RegionNo
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ResourceOwnerId)) {
+		query["ResourceOwnerId"] = request.ResourceOwnerId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.VirtualSwitchId)) {
+		query["VirtualSwitchId"] = request.VirtualSwitchId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.VpcId)) {
+		query["VpcId"] = request.VpcId
+	}
+
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
-		Body:  util.ToMap(request),
 	}
 	params := &openapi.Params{
 		Action:      tea.String("BindInstance2Vpc"),
@@ -1812,7 +1959,7 @@ func (client *Client) BindInstance2VpcWithOptions(request *BindInstance2VpcReque
 		Method:      tea.String("POST"),
 		AuthType:    tea.String("AK"),
 		Style:       tea.String("RPC"),
-		ReqBodyType: tea.String("json"),
+		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
 	_result = &BindInstance2VpcResponse{}
@@ -1841,11 +1988,16 @@ func (client *Client) DeleteInstanceWithOptions(request *DeleteInstanceRequest, 
 		return _result, _err
 	}
 	query := map[string]interface{}{}
-	query["InstanceName"] = request.InstanceName
-	query["ResourceOwnerId"] = request.ResourceOwnerId
+	if !tea.BoolValue(util.IsUnset(request.InstanceName)) {
+		query["InstanceName"] = request.InstanceName
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ResourceOwnerId)) {
+		query["ResourceOwnerId"] = request.ResourceOwnerId
+	}
+
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
-		Body:  util.ToMap(request),
 	}
 	params := &openapi.Params{
 		Action:      tea.String("DeleteInstance"),
@@ -1855,7 +2007,7 @@ func (client *Client) DeleteInstanceWithOptions(request *DeleteInstanceRequest, 
 		Method:      tea.String("POST"),
 		AuthType:    tea.String("AK"),
 		Style:       tea.String("RPC"),
-		ReqBodyType: tea.String("json"),
+		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
 	_result = &DeleteInstanceResponse{}
@@ -1884,12 +2036,20 @@ func (client *Client) DeleteTagsWithOptions(request *DeleteTagsRequest, runtime 
 		return _result, _err
 	}
 	query := map[string]interface{}{}
-	query["InstanceName"] = request.InstanceName
-	query["ResourceOwnerId"] = request.ResourceOwnerId
-	query["TagInfo"] = request.TagInfo
+	if !tea.BoolValue(util.IsUnset(request.InstanceName)) {
+		query["InstanceName"] = request.InstanceName
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ResourceOwnerId)) {
+		query["ResourceOwnerId"] = request.ResourceOwnerId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.TagInfo)) {
+		query["TagInfo"] = request.TagInfo
+	}
+
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
-		Body:  util.ToMap(request),
 	}
 	params := &openapi.Params{
 		Action:      tea.String("DeleteTags"),
@@ -1899,7 +2059,7 @@ func (client *Client) DeleteTagsWithOptions(request *DeleteTagsRequest, runtime 
 		Method:      tea.String("POST"),
 		AuthType:    tea.String("AK"),
 		Style:       tea.String("RPC"),
-		ReqBodyType: tea.String("json"),
+		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
 	_result = &DeleteTagsResponse{}
@@ -1939,7 +2099,7 @@ func (client *Client) GetInstanceWithOptions(request *GetInstanceRequest, runtim
 		Method:      tea.String("GET"),
 		AuthType:    tea.String("AK"),
 		Style:       tea.String("RPC"),
-		ReqBodyType: tea.String("json"),
+		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
 	_result = &GetInstanceResponse{}
@@ -1979,7 +2139,7 @@ func (client *Client) GetOtsServiceStatusWithOptions(request *GetOtsServiceStatu
 		Method:      tea.String("GET"),
 		AuthType:    tea.String("AK"),
 		Style:       tea.String("RPC"),
-		ReqBodyType: tea.String("json"),
+		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
 	_result = &GetOtsServiceStatusResponse{}
@@ -2008,15 +2168,32 @@ func (client *Client) InsertInstanceWithOptions(request *InsertInstanceRequest, 
 		return _result, _err
 	}
 	query := map[string]interface{}{}
-	query["ClusterType"] = request.ClusterType
-	query["Description"] = request.Description
-	query["InstanceName"] = request.InstanceName
-	query["Network"] = request.Network
-	query["ResourceOwnerId"] = request.ResourceOwnerId
-	query["TagInfo"] = request.TagInfo
+	if !tea.BoolValue(util.IsUnset(request.ClusterType)) {
+		query["ClusterType"] = request.ClusterType
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Description)) {
+		query["Description"] = request.Description
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.InstanceName)) {
+		query["InstanceName"] = request.InstanceName
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Network)) {
+		query["Network"] = request.Network
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ResourceOwnerId)) {
+		query["ResourceOwnerId"] = request.ResourceOwnerId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.TagInfo)) {
+		query["TagInfo"] = request.TagInfo
+	}
+
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
-		Body:  util.ToMap(request),
 	}
 	params := &openapi.Params{
 		Action:      tea.String("InsertInstance"),
@@ -2026,7 +2203,7 @@ func (client *Client) InsertInstanceWithOptions(request *InsertInstanceRequest, 
 		Method:      tea.String("POST"),
 		AuthType:    tea.String("AK"),
 		Style:       tea.String("RPC"),
-		ReqBodyType: tea.String("json"),
+		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
 	_result = &InsertInstanceResponse{}
@@ -2055,12 +2232,20 @@ func (client *Client) InsertTagsWithOptions(request *InsertTagsRequest, runtime 
 		return _result, _err
 	}
 	query := map[string]interface{}{}
-	query["InstanceName"] = request.InstanceName
-	query["ResourceOwnerId"] = request.ResourceOwnerId
-	query["TagInfo"] = request.TagInfo
+	if !tea.BoolValue(util.IsUnset(request.InstanceName)) {
+		query["InstanceName"] = request.InstanceName
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ResourceOwnerId)) {
+		query["ResourceOwnerId"] = request.ResourceOwnerId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.TagInfo)) {
+		query["TagInfo"] = request.TagInfo
+	}
+
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
-		Body:  util.ToMap(request),
 	}
 	params := &openapi.Params{
 		Action:      tea.String("InsertTags"),
@@ -2070,7 +2255,7 @@ func (client *Client) InsertTagsWithOptions(request *InsertTagsRequest, runtime 
 		Method:      tea.String("POST"),
 		AuthType:    tea.String("AK"),
 		Style:       tea.String("RPC"),
-		ReqBodyType: tea.String("json"),
+		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
 	_result = &InsertTagsResponse{}
@@ -2110,7 +2295,7 @@ func (client *Client) ListClusterTypeWithOptions(request *ListClusterTypeRequest
 		Method:      tea.String("GET"),
 		AuthType:    tea.String("AK"),
 		Style:       tea.String("RPC"),
-		ReqBodyType: tea.String("json"),
+		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
 	_result = &ListClusterTypeResponse{}
@@ -2150,7 +2335,7 @@ func (client *Client) ListInstanceWithOptions(request *ListInstanceRequest, runt
 		Method:      tea.String("GET"),
 		AuthType:    tea.String("AK"),
 		Style:       tea.String("RPC"),
-		ReqBodyType: tea.String("json"),
+		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
 	_result = &ListInstanceResponse{}
@@ -2179,14 +2364,28 @@ func (client *Client) ListTagsWithOptions(request *ListTagsRequest, runtime *uti
 		return _result, _err
 	}
 	query := map[string]interface{}{}
-	query["InstanceName"] = request.InstanceName
-	query["PageNum"] = request.PageNum
-	query["PageSize"] = request.PageSize
-	query["ResourceOwnerId"] = request.ResourceOwnerId
-	query["TagInfo"] = request.TagInfo
+	if !tea.BoolValue(util.IsUnset(request.InstanceName)) {
+		query["InstanceName"] = request.InstanceName
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.PageNum)) {
+		query["PageNum"] = request.PageNum
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.PageSize)) {
+		query["PageSize"] = request.PageSize
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ResourceOwnerId)) {
+		query["ResourceOwnerId"] = request.ResourceOwnerId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.TagInfo)) {
+		query["TagInfo"] = request.TagInfo
+	}
+
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
-		Body:  util.ToMap(request),
 	}
 	params := &openapi.Params{
 		Action:      tea.String("ListTags"),
@@ -2196,7 +2395,7 @@ func (client *Client) ListTagsWithOptions(request *ListTagsRequest, runtime *uti
 		Method:      tea.String("POST"),
 		AuthType:    tea.String("AK"),
 		Style:       tea.String("RPC"),
-		ReqBodyType: tea.String("json"),
+		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
 	_result = &ListTagsResponse{}
@@ -2236,7 +2435,7 @@ func (client *Client) ListVpcInfoByInstanceWithOptions(request *ListVpcInfoByIns
 		Method:      tea.String("GET"),
 		AuthType:    tea.String("AK"),
 		Style:       tea.String("RPC"),
-		ReqBodyType: tea.String("json"),
+		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
 	_result = &ListVpcInfoByInstanceResponse{}
@@ -2276,7 +2475,7 @@ func (client *Client) ListVpcInfoByVpcWithOptions(request *ListVpcInfoByVpcReque
 		Method:      tea.String("GET"),
 		AuthType:    tea.String("AK"),
 		Style:       tea.String("RPC"),
-		ReqBodyType: tea.String("json"),
+		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
 	_result = &ListVpcInfoByVpcResponse{}
@@ -2309,7 +2508,7 @@ func (client *Client) OpenOtsServiceWithOptions(runtime *util.RuntimeOptions) (_
 		Method:      tea.String("POST"),
 		AuthType:    tea.String("AK"),
 		Style:       tea.String("RPC"),
-		ReqBodyType: tea.String("json"),
+		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
 	_result = &OpenOtsServiceResponse{}
@@ -2338,13 +2537,24 @@ func (client *Client) UnbindInstance2VpcWithOptions(request *UnbindInstance2VpcR
 		return _result, _err
 	}
 	query := map[string]interface{}{}
-	query["InstanceName"] = request.InstanceName
-	query["InstanceVpcName"] = request.InstanceVpcName
-	query["RegionNo"] = request.RegionNo
-	query["ResourceOwnerId"] = request.ResourceOwnerId
+	if !tea.BoolValue(util.IsUnset(request.InstanceName)) {
+		query["InstanceName"] = request.InstanceName
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.InstanceVpcName)) {
+		query["InstanceVpcName"] = request.InstanceVpcName
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.RegionNo)) {
+		query["RegionNo"] = request.RegionNo
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ResourceOwnerId)) {
+		query["ResourceOwnerId"] = request.ResourceOwnerId
+	}
+
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
-		Body:  util.ToMap(request),
 	}
 	params := &openapi.Params{
 		Action:      tea.String("UnbindInstance2Vpc"),
@@ -2354,7 +2564,7 @@ func (client *Client) UnbindInstance2VpcWithOptions(request *UnbindInstance2VpcR
 		Method:      tea.String("POST"),
 		AuthType:    tea.String("AK"),
 		Style:       tea.String("RPC"),
-		ReqBodyType: tea.String("json"),
+		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
 	_result = &UnbindInstance2VpcResponse{}
@@ -2383,12 +2593,20 @@ func (client *Client) UpdateInstanceWithOptions(request *UpdateInstanceRequest, 
 		return _result, _err
 	}
 	query := map[string]interface{}{}
-	query["InstanceName"] = request.InstanceName
-	query["Network"] = request.Network
-	query["ResourceOwnerId"] = request.ResourceOwnerId
+	if !tea.BoolValue(util.IsUnset(request.InstanceName)) {
+		query["InstanceName"] = request.InstanceName
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Network)) {
+		query["Network"] = request.Network
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ResourceOwnerId)) {
+		query["ResourceOwnerId"] = request.ResourceOwnerId
+	}
+
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
-		Body:  util.ToMap(request),
 	}
 	params := &openapi.Params{
 		Action:      tea.String("UpdateInstance"),
@@ -2398,7 +2616,7 @@ func (client *Client) UpdateInstanceWithOptions(request *UpdateInstanceRequest, 
 		Method:      tea.String("POST"),
 		AuthType:    tea.String("AK"),
 		Style:       tea.String("RPC"),
-		ReqBodyType: tea.String("json"),
+		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
 	_result = &UpdateInstanceResponse{}
