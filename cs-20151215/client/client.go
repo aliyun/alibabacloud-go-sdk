@@ -16,6 +16,7 @@ type Addon struct {
 	Config   *string `json:"config,omitempty" xml:"config,omitempty"`
 	Disabled *bool   `json:"disabled,omitempty" xml:"disabled,omitempty"`
 	Name     *string `json:"name,omitempty" xml:"name,omitempty"`
+	Version  *string `json:"version,omitempty" xml:"version,omitempty"`
 }
 
 func (s Addon) String() string {
@@ -38,6 +39,11 @@ func (s *Addon) SetDisabled(v bool) *Addon {
 
 func (s *Addon) SetName(v string) *Addon {
 	s.Name = &v
+	return s
+}
+
+func (s *Addon) SetVersion(v string) *Addon {
+	s.Version = &v
 	return s
 }
 
@@ -1317,10 +1323,31 @@ func (s *AttachInstancesResponse) SetBody(v *AttachInstancesResponseBody) *Attac
 }
 
 type AttachInstancesToNodePoolRequest struct {
-	FormatDisk       *bool     `json:"format_disk,omitempty" xml:"format_disk,omitempty"`
-	Instances        []*string `json:"instances,omitempty" xml:"instances,omitempty" type:"Repeated"`
-	KeepInstanceName *bool     `json:"keep_instance_name,omitempty" xml:"keep_instance_name,omitempty"`
-	Password         *string   `json:"password,omitempty" xml:"password,omitempty"`
+	// Specifies whether to store container data and images on data disks. Valid values:
+	//
+	// *   `true`: stores container data and images on data disks.
+	// *   `false`: does not store container data or images on data disks.
+	//
+	// Default value: `false`.
+	//
+	// How to mount a data disk:
+	//
+	// *   If the ECS instances are already mounted with data disks and the file system of the last data disk is not initialized, the system automatically formats this data disk to ext4 and mounts it to /var/lib/docker and /var/lib/kubelet.
+	// *   If no data disk is attached to the ECS instances, the system does not purchase a new data disk.
+	//
+	// > If you choose to store container data and images on a data disk and the data disk is already mounted to the ECS instance, the existing data on the data disk will be cleared. You can back up the disk to avoid data loss.
+	FormatDisk *bool `json:"format_disk,omitempty" xml:"format_disk,omitempty"`
+	// The IDs of the instances to be added.
+	Instances []*string `json:"instances,omitempty" xml:"instances,omitempty" type:"Repeated"`
+	// Specifies whether to retain the instance name. Valid values:
+	//
+	// *   `true`: retains the instance name.
+	// *   `false`: does not retain the instance name.
+	//
+	// Default value: `true`.
+	KeepInstanceName *bool `json:"keep_instance_name,omitempty" xml:"keep_instance_name,omitempty"`
+	// The SSH password that is used to log on to the instance.
+	Password *string `json:"password,omitempty" xml:"password,omitempty"`
 }
 
 func (s AttachInstancesToNodePoolRequest) String() string {
@@ -1352,8 +1379,10 @@ func (s *AttachInstancesToNodePoolRequest) SetPassword(v string) *AttachInstance
 }
 
 type AttachInstancesToNodePoolResponseBody struct {
+	// The request ID.
 	RequestId *string `json:"request_id,omitempty" xml:"request_id,omitempty"`
-	TaskId    *string `json:"task_id,omitempty" xml:"task_id,omitempty"`
+	// The task ID.
+	TaskId *string `json:"task_id,omitempty" xml:"task_id,omitempty"`
 }
 
 func (s AttachInstancesToNodePoolResponseBody) String() string {
@@ -6374,12 +6403,17 @@ type DescribeClusterNodePoolDetailResponseBodyManagement struct {
 	//
 	// *   `true`: Auto repair is enabled.
 	// *   `false`: Auto repair is disabled.
-	AutoRepair        *bool                                                                 `json:"auto_repair,omitempty" xml:"auto_repair,omitempty"`
-	AutoRepairPolicy  *DescribeClusterNodePoolDetailResponseBodyManagementAutoRepairPolicy  `json:"auto_repair_policy,omitempty" xml:"auto_repair_policy,omitempty" type:"Struct"`
-	AutoUpgrade       *bool                                                                 `json:"auto_upgrade,omitempty" xml:"auto_upgrade,omitempty"`
+	AutoRepair *bool `json:"auto_repair,omitempty" xml:"auto_repair,omitempty"`
+	// 自动修复节点策略。
+	AutoRepairPolicy *DescribeClusterNodePoolDetailResponseBodyManagementAutoRepairPolicy `json:"auto_repair_policy,omitempty" xml:"auto_repair_policy,omitempty" type:"Struct"`
+	// 是否自动升级。
+	AutoUpgrade *bool `json:"auto_upgrade,omitempty" xml:"auto_upgrade,omitempty"`
+	// 自动升级策略。
 	AutoUpgradePolicy *DescribeClusterNodePoolDetailResponseBodyManagementAutoUpgradePolicy `json:"auto_upgrade_policy,omitempty" xml:"auto_upgrade_policy,omitempty" type:"Struct"`
-	AutoVulFix        *bool                                                                 `json:"auto_vul_fix,omitempty" xml:"auto_vul_fix,omitempty"`
-	AutoVulFixPolicy  *DescribeClusterNodePoolDetailResponseBodyManagementAutoVulFixPolicy  `json:"auto_vul_fix_policy,omitempty" xml:"auto_vul_fix_policy,omitempty" type:"Struct"`
+	// 是否自动修复CVE。
+	AutoVulFix *bool `json:"auto_vul_fix,omitempty" xml:"auto_vul_fix,omitempty"`
+	// 自动修复CVE策略。
+	AutoVulFixPolicy *DescribeClusterNodePoolDetailResponseBodyManagementAutoVulFixPolicy `json:"auto_vul_fix_policy,omitempty" xml:"auto_vul_fix_policy,omitempty" type:"Struct"`
 	// Indicates whether the managed node pool feature is enabled. Valid values:
 	//
 	// *   `true`: The managed node pool feature is enabled.
@@ -6438,6 +6472,7 @@ func (s *DescribeClusterNodePoolDetailResponseBodyManagement) SetUpgradeConfig(v
 }
 
 type DescribeClusterNodePoolDetailResponseBodyManagementAutoRepairPolicy struct {
+	// 是否允许重启节点。
 	RestartNode *bool `json:"restart_node,omitempty" xml:"restart_node,omitempty"`
 }
 
@@ -6455,6 +6490,7 @@ func (s *DescribeClusterNodePoolDetailResponseBodyManagementAutoRepairPolicy) Se
 }
 
 type DescribeClusterNodePoolDetailResponseBodyManagementAutoUpgradePolicy struct {
+	// 是否允许自动升级kubelet。
 	AutoUpgradeKubelet *bool `json:"auto_upgrade_kubelet,omitempty" xml:"auto_upgrade_kubelet,omitempty"`
 }
 
@@ -6472,8 +6508,10 @@ func (s *DescribeClusterNodePoolDetailResponseBodyManagementAutoUpgradePolicy) S
 }
 
 type DescribeClusterNodePoolDetailResponseBodyManagementAutoVulFixPolicy struct {
-	RestartNode *bool   `json:"restart_node,omitempty" xml:"restart_node,omitempty"`
-	VulLevel    *string `json:"vul_level,omitempty" xml:"vul_level,omitempty"`
+	// 是否允许重启节点。
+	RestartNode *bool `json:"restart_node,omitempty" xml:"restart_node,omitempty"`
+	// 允许自动修复的漏洞级别，以逗号分隔。
+	VulLevel *string `json:"vul_level,omitempty" xml:"vul_level,omitempty"`
 }
 
 func (s DescribeClusterNodePoolDetailResponseBodyManagementAutoVulFixPolicy) String() string {
@@ -7427,12 +7465,17 @@ type DescribeClusterNodePoolsResponseBodyNodepoolsManagement struct {
 	//
 	// *   `true`: Auto repair is enabled.
 	// *   `false`: Auto repair is disabled.
-	AutoRepair        *bool                                                                     `json:"auto_repair,omitempty" xml:"auto_repair,omitempty"`
-	AutoRepairPolicy  *DescribeClusterNodePoolsResponseBodyNodepoolsManagementAutoRepairPolicy  `json:"auto_repair_policy,omitempty" xml:"auto_repair_policy,omitempty" type:"Struct"`
-	AutoUpgrade       *bool                                                                     `json:"auto_upgrade,omitempty" xml:"auto_upgrade,omitempty"`
+	AutoRepair *bool `json:"auto_repair,omitempty" xml:"auto_repair,omitempty"`
+	// 自动修复节点策略。
+	AutoRepairPolicy *DescribeClusterNodePoolsResponseBodyNodepoolsManagementAutoRepairPolicy `json:"auto_repair_policy,omitempty" xml:"auto_repair_policy,omitempty" type:"Struct"`
+	// 是否自动升级。
+	AutoUpgrade *bool `json:"auto_upgrade,omitempty" xml:"auto_upgrade,omitempty"`
+	// 自动升级策略。
 	AutoUpgradePolicy *DescribeClusterNodePoolsResponseBodyNodepoolsManagementAutoUpgradePolicy `json:"auto_upgrade_policy,omitempty" xml:"auto_upgrade_policy,omitempty" type:"Struct"`
-	AutoVulFix        *bool                                                                     `json:"auto_vul_fix,omitempty" xml:"auto_vul_fix,omitempty"`
-	AutoVulFixPolicy  *DescribeClusterNodePoolsResponseBodyNodepoolsManagementAutoVulFixPolicy  `json:"auto_vul_fix_policy,omitempty" xml:"auto_vul_fix_policy,omitempty" type:"Struct"`
+	// 是否自动修复CVE。
+	AutoVulFix *bool `json:"auto_vul_fix,omitempty" xml:"auto_vul_fix,omitempty"`
+	// 自动修复CVE策略。
+	AutoVulFixPolicy *DescribeClusterNodePoolsResponseBodyNodepoolsManagementAutoVulFixPolicy `json:"auto_vul_fix_policy,omitempty" xml:"auto_vul_fix_policy,omitempty" type:"Struct"`
 	// Indicates whether the managed node pool feature is enabled. Valid values:
 	//
 	// *   `true`: The managed node pool feature is enabled.
@@ -7491,6 +7534,7 @@ func (s *DescribeClusterNodePoolsResponseBodyNodepoolsManagement) SetUpgradeConf
 }
 
 type DescribeClusterNodePoolsResponseBodyNodepoolsManagementAutoRepairPolicy struct {
+	// 是否允许重启节点。
 	RestartNode *bool `json:"restart_node,omitempty" xml:"restart_node,omitempty"`
 }
 
@@ -7508,6 +7552,7 @@ func (s *DescribeClusterNodePoolsResponseBodyNodepoolsManagementAutoRepairPolicy
 }
 
 type DescribeClusterNodePoolsResponseBodyNodepoolsManagementAutoUpgradePolicy struct {
+	// 是否允许自动升级kubelet。
 	AutoUpgradeKubelet *bool `json:"auto_upgrade_kubelet,omitempty" xml:"auto_upgrade_kubelet,omitempty"`
 }
 
@@ -7525,8 +7570,10 @@ func (s *DescribeClusterNodePoolsResponseBodyNodepoolsManagementAutoUpgradePolic
 }
 
 type DescribeClusterNodePoolsResponseBodyNodepoolsManagementAutoVulFixPolicy struct {
-	RestartNode *bool   `json:"restart_node,omitempty" xml:"restart_node,omitempty"`
-	VulLevel    *string `json:"vul_level,omitempty" xml:"vul_level,omitempty"`
+	// 是否允许重启节点。
+	RestartNode *bool `json:"restart_node,omitempty" xml:"restart_node,omitempty"`
+	// 允许自动修复的漏洞级别，以逗号分隔。
+	VulLevel *string `json:"vul_level,omitempty" xml:"vul_level,omitempty"`
 }
 
 func (s DescribeClusterNodePoolsResponseBodyNodepoolsManagementAutoVulFixPolicy) String() string {
@@ -8550,8 +8597,8 @@ type DescribeClusterResourcesResponseBody struct {
 	//
 	// *   1: The resource is created by ACK.
 	// *   0: The resource is an existing resource.
-	AutoCreate   *int64                                            `json:"auto_create,omitempty" xml:"auto_create,omitempty"`
-	Dependencies *DescribeClusterResourcesResponseBodyDependencies `json:"dependencies,omitempty" xml:"dependencies,omitempty" type:"Struct"`
+	AutoCreate   *int64                                              `json:"auto_create,omitempty" xml:"auto_create,omitempty"`
+	Dependencies []*DescribeClusterResourcesResponseBodyDependencies `json:"dependencies,omitempty" xml:"dependencies,omitempty" type:"Repeated"`
 }
 
 func (s DescribeClusterResourcesResponseBody) String() string {
@@ -8597,18 +8644,15 @@ func (s *DescribeClusterResourcesResponseBody) SetAutoCreate(v int64) *DescribeC
 	return s
 }
 
-func (s *DescribeClusterResourcesResponseBody) SetDependencies(v *DescribeClusterResourcesResponseBodyDependencies) *DescribeClusterResourcesResponseBody {
+func (s *DescribeClusterResourcesResponseBody) SetDependencies(v []*DescribeClusterResourcesResponseBodyDependencies) *DescribeClusterResourcesResponseBody {
 	s.Dependencies = v
 	return s
 }
 
 type DescribeClusterResourcesResponseBodyDependencies struct {
-	// 依赖资源的集群ID。
-	ClusterId *string `json:"cluster_id,omitempty" xml:"cluster_id,omitempty"`
-	// 依赖资源类型。
+	ClusterId    *string `json:"cluster_id,omitempty" xml:"cluster_id,omitempty"`
 	ResourceType *string `json:"resource_type,omitempty" xml:"resource_type,omitempty"`
-	// 依赖资源实例ID。
-	InstanceId *string `json:"instance_id,omitempty" xml:"instance_id,omitempty"`
+	InstanceId   *string `json:"instance_id,omitempty" xml:"instance_id,omitempty"`
 }
 
 func (s DescribeClusterResourcesResponseBodyDependencies) String() string {
@@ -13085,9 +13129,12 @@ func (s *DescribeWorkflowsResponse) SetBody(v *DescribeWorkflowsResponseBody) *D
 }
 
 type EdgeClusterAddEdgeMachineRequest struct {
-	Expired    *int64  `json:"expired,omitempty" xml:"expired,omitempty"`
+	// The timeout period of sessions. Unit: seconds.
+	Expired *int64 `json:"expired,omitempty" xml:"expired,omitempty"`
+	// The node pool ID.
 	NodepoolId *string `json:"nodepool_id,omitempty" xml:"nodepool_id,omitempty"`
-	Options    *string `json:"options,omitempty" xml:"options,omitempty"`
+	// The options that you want to configure.
+	Options *string `json:"options,omitempty" xml:"options,omitempty"`
 }
 
 func (s EdgeClusterAddEdgeMachineRequest) String() string {
@@ -13116,7 +13163,7 @@ func (s *EdgeClusterAddEdgeMachineRequest) SetOptions(v string) *EdgeClusterAddE
 type EdgeClusterAddEdgeMachineResponseBody struct {
 	// The ID of the cloud-native box.
 	EdgeMachineId *string `json:"edge_machine_id,omitempty" xml:"edge_machine_id,omitempty"`
-	// The ID of the request.
+	// The request ID.
 	RequestId *string `json:"request_id,omitempty" xml:"request_id,omitempty"`
 }
 
@@ -13168,9 +13215,12 @@ func (s *EdgeClusterAddEdgeMachineResponse) SetBody(v *EdgeClusterAddEdgeMachine
 }
 
 type FixNodePoolVulsRequest struct {
-	Nodes         []*string                            `json:"nodes,omitempty" xml:"nodes,omitempty" type:"Repeated"`
+	// The names of the nodes to be patched.
+	Nodes []*string `json:"nodes,omitempty" xml:"nodes,omitempty" type:"Repeated"`
+	// The batch patching policy.
 	RolloutPolicy *FixNodePoolVulsRequestRolloutPolicy `json:"rollout_policy,omitempty" xml:"rollout_policy,omitempty" type:"Struct"`
-	Vuls          []*string                            `json:"vuls,omitempty" xml:"vuls,omitempty" type:"Repeated"`
+	// The list of vulnerabilities.
+	Vuls []*string `json:"vuls,omitempty" xml:"vuls,omitempty" type:"Repeated"`
 }
 
 func (s FixNodePoolVulsRequest) String() string {
@@ -13197,6 +13247,7 @@ func (s *FixNodePoolVulsRequest) SetVuls(v []*string) *FixNodePoolVulsRequest {
 }
 
 type FixNodePoolVulsRequestRolloutPolicy struct {
+	// The maximum number of nodes that can be patched in parallel. The minimum value is 1. The maximum value equals the number of nodes in the node pool.
 	MaxParallelism *int64 `json:"max_parallelism,omitempty" xml:"max_parallelism,omitempty"`
 }
 
@@ -13214,6 +13265,7 @@ func (s *FixNodePoolVulsRequestRolloutPolicy) SetMaxParallelism(v int64) *FixNod
 }
 
 type FixNodePoolVulsResponseBody struct {
+	// The ID of the CVE patching task.
 	TaskId *string `json:"task_id,omitempty" xml:"task_id,omitempty"`
 }
 
@@ -15913,6 +15965,82 @@ func (s *ResumeUpgradeClusterResponse) SetHeaders(v map[string]*string) *ResumeU
 
 func (s *ResumeUpgradeClusterResponse) SetStatusCode(v int32) *ResumeUpgradeClusterResponse {
 	s.StatusCode = &v
+	return s
+}
+
+type RunClusterCheckRequest struct {
+	Options map[string]*string `json:"options,omitempty" xml:"options,omitempty"`
+	Type    *string            `json:"type,omitempty" xml:"type,omitempty"`
+}
+
+func (s RunClusterCheckRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s RunClusterCheckRequest) GoString() string {
+	return s.String()
+}
+
+func (s *RunClusterCheckRequest) SetOptions(v map[string]*string) *RunClusterCheckRequest {
+	s.Options = v
+	return s
+}
+
+func (s *RunClusterCheckRequest) SetType(v string) *RunClusterCheckRequest {
+	s.Type = &v
+	return s
+}
+
+type RunClusterCheckResponseBody struct {
+	CheckId *string `json:"check_id,omitempty" xml:"check_id,omitempty"`
+	// Id of the request
+	RequestId *string `json:"request_id,omitempty" xml:"request_id,omitempty"`
+}
+
+func (s RunClusterCheckResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s RunClusterCheckResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *RunClusterCheckResponseBody) SetCheckId(v string) *RunClusterCheckResponseBody {
+	s.CheckId = &v
+	return s
+}
+
+func (s *RunClusterCheckResponseBody) SetRequestId(v string) *RunClusterCheckResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+type RunClusterCheckResponse struct {
+	Headers    map[string]*string           `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                       `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *RunClusterCheckResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s RunClusterCheckResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s RunClusterCheckResponse) GoString() string {
+	return s.String()
+}
+
+func (s *RunClusterCheckResponse) SetHeaders(v map[string]*string) *RunClusterCheckResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *RunClusterCheckResponse) SetStatusCode(v int32) *RunClusterCheckResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *RunClusterCheckResponse) SetBody(v *RunClusterCheckResponseBody) *RunClusterCheckResponse {
+	s.Body = v
 	return s
 }
 
@@ -21496,6 +21624,17 @@ func (client *Client) EdgeClusterAddEdgeMachine(clusterid *string, edgeMachineid
 	return _result, _err
 }
 
+/**
+ * 1.  The Common Vulnerabilities and Exposures (CVE) patching feature is developed based on Security Center. To use this feature, you must purchase the Security Center Ultimate Edition that supports Container Service for Kubernetes (ACK).
+ * 2.  ACK may need to restart nodes to patch certain vulnerabilities. ACK drains a node before the node restarts. Make sure that the ACK cluster has sufficient idle nodes to host the pods evicted from the trained nodes. For example, you can scale out a node pool before you patch vulnerabilities for the nodes in the node pool.
+ * 3.  Security Center ensures the compatibility of CVE patches. We recommend that you check the compatibility of a CVE patch with your application before you install the patch. You can pause or cancel a CVE patching task anytime.
+ * 4.  CVE patching is a progressive task that consists of multiple batches. After you pause or cancel a CVE patching task, ACK continues to process the dispatched batches. Only the batches that have not been dispatched are paused or canceled.
+ *
+ * @param request FixNodePoolVulsRequest
+ * @param headers map
+ * @param runtime runtime options for this request RuntimeOptions
+ * @return FixNodePoolVulsResponse
+ */
 func (client *Client) FixNodePoolVulsWithOptions(clusterId *string, nodepoolId *string, request *FixNodePoolVulsRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *FixNodePoolVulsResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -21538,6 +21677,15 @@ func (client *Client) FixNodePoolVulsWithOptions(clusterId *string, nodepoolId *
 	return _result, _err
 }
 
+/**
+ * 1.  The Common Vulnerabilities and Exposures (CVE) patching feature is developed based on Security Center. To use this feature, you must purchase the Security Center Ultimate Edition that supports Container Service for Kubernetes (ACK).
+ * 2.  ACK may need to restart nodes to patch certain vulnerabilities. ACK drains a node before the node restarts. Make sure that the ACK cluster has sufficient idle nodes to host the pods evicted from the trained nodes. For example, you can scale out a node pool before you patch vulnerabilities for the nodes in the node pool.
+ * 3.  Security Center ensures the compatibility of CVE patches. We recommend that you check the compatibility of a CVE patch with your application before you install the patch. You can pause or cancel a CVE patching task anytime.
+ * 4.  CVE patching is a progressive task that consists of multiple batches. After you pause or cancel a CVE patching task, ACK continues to process the dispatched batches. Only the batches that have not been dispatched are paused or canceled.
+ *
+ * @param request FixNodePoolVulsRequest
+ * @return FixNodePoolVulsResponse
+ */
 func (client *Client) FixNodePoolVuls(clusterId *string, nodepoolId *string, request *FixNodePoolVulsRequest) (_result *FixNodePoolVulsResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
@@ -22822,6 +22970,56 @@ func (client *Client) ResumeUpgradeCluster(ClusterId *string) (_result *ResumeUp
 	headers := make(map[string]*string)
 	_result = &ResumeUpgradeClusterResponse{}
 	_body, _err := client.ResumeUpgradeClusterWithOptions(ClusterId, headers, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) RunClusterCheckWithOptions(clusterId *string, request *RunClusterCheckRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *RunClusterCheckResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	body := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.Options)) {
+		body["options"] = request.Options
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Type)) {
+		body["type"] = request.Type
+	}
+
+	req := &openapi.OpenApiRequest{
+		Headers: headers,
+		Body:    openapiutil.ParseToMap(body),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("RunClusterCheck"),
+		Version:     tea.String("2015-12-15"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/clusters/%5Bcluster_id%5D/checks"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("ROA"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &RunClusterCheckResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) RunClusterCheck(clusterId *string, request *RunClusterCheckRequest) (_result *RunClusterCheckResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	headers := make(map[string]*string)
+	_result = &RunClusterCheckResponse{}
+	_body, _err := client.RunClusterCheckWithOptions(clusterId, request, headers, runtime)
 	if _err != nil {
 		return _result, _err
 	}
