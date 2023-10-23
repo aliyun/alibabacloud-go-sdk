@@ -76,9 +76,11 @@ func (s *AddAttendeeShrinkHeaders) SetAccountContextShrink(v string) *AddAttende
 }
 
 type AddAttendeeRequest struct {
-	AttendeesToAdd []*AddAttendeeRequestAttendeesToAdd `json:"AttendeesToAdd,omitempty" xml:"AttendeesToAdd,omitempty" type:"Repeated"`
-	CalendarId     *string                             `json:"CalendarId,omitempty" xml:"CalendarId,omitempty"`
-	EventId        *string                             `json:"EventId,omitempty" xml:"EventId,omitempty"`
+	AttendeesToAdd   []*AddAttendeeRequestAttendeesToAdd `json:"AttendeesToAdd,omitempty" xml:"AttendeesToAdd,omitempty" type:"Repeated"`
+	CalendarId       *string                             `json:"CalendarId,omitempty" xml:"CalendarId,omitempty"`
+	EventId          *string                             `json:"EventId,omitempty" xml:"EventId,omitempty"`
+	ChatNotification *bool                               `json:"chatNotification,omitempty" xml:"chatNotification,omitempty"`
+	PushNotification *bool                               `json:"pushNotification,omitempty" xml:"pushNotification,omitempty"`
 }
 
 func (s AddAttendeeRequest) String() string {
@@ -101,6 +103,16 @@ func (s *AddAttendeeRequest) SetCalendarId(v string) *AddAttendeeRequest {
 
 func (s *AddAttendeeRequest) SetEventId(v string) *AddAttendeeRequest {
 	s.EventId = &v
+	return s
+}
+
+func (s *AddAttendeeRequest) SetChatNotification(v bool) *AddAttendeeRequest {
+	s.ChatNotification = &v
+	return s
+}
+
+func (s *AddAttendeeRequest) SetPushNotification(v bool) *AddAttendeeRequest {
+	s.PushNotification = &v
 	return s
 }
 
@@ -131,6 +143,8 @@ type AddAttendeeShrinkRequest struct {
 	AttendeesToAddShrink *string `json:"AttendeesToAdd,omitempty" xml:"AttendeesToAdd,omitempty"`
 	CalendarId           *string `json:"CalendarId,omitempty" xml:"CalendarId,omitempty"`
 	EventId              *string `json:"EventId,omitempty" xml:"EventId,omitempty"`
+	ChatNotification     *bool   `json:"chatNotification,omitempty" xml:"chatNotification,omitempty"`
+	PushNotification     *bool   `json:"pushNotification,omitempty" xml:"pushNotification,omitempty"`
 }
 
 func (s AddAttendeeShrinkRequest) String() string {
@@ -153,6 +167,16 @@ func (s *AddAttendeeShrinkRequest) SetCalendarId(v string) *AddAttendeeShrinkReq
 
 func (s *AddAttendeeShrinkRequest) SetEventId(v string) *AddAttendeeShrinkRequest {
 	s.EventId = &v
+	return s
+}
+
+func (s *AddAttendeeShrinkRequest) SetChatNotification(v bool) *AddAttendeeShrinkRequest {
+	s.ChatNotification = &v
+	return s
+}
+
+func (s *AddAttendeeShrinkRequest) SetPushNotification(v bool) *AddAttendeeShrinkRequest {
+	s.PushNotification = &v
 	return s
 }
 
@@ -6792,8 +6816,9 @@ func (s *DeleteEventShrinkHeaders) SetAccountContextShrink(v string) *DeleteEven
 }
 
 type DeleteEventRequest struct {
-	CalendarId *string `json:"CalendarId,omitempty" xml:"CalendarId,omitempty"`
-	EventId    *string `json:"EventId,omitempty" xml:"EventId,omitempty"`
+	CalendarId       *string `json:"CalendarId,omitempty" xml:"CalendarId,omitempty"`
+	EventId          *string `json:"EventId,omitempty" xml:"EventId,omitempty"`
+	PushNotification *bool   `json:"pushNotification,omitempty" xml:"pushNotification,omitempty"`
 }
 
 func (s DeleteEventRequest) String() string {
@@ -6811,6 +6836,11 @@ func (s *DeleteEventRequest) SetCalendarId(v string) *DeleteEventRequest {
 
 func (s *DeleteEventRequest) SetEventId(v string) *DeleteEventRequest {
 	s.EventId = &v
+	return s
+}
+
+func (s *DeleteEventRequest) SetPushNotification(v bool) *DeleteEventRequest {
+	s.PushNotification = &v
 	return s
 }
 
@@ -30136,6 +30166,14 @@ func (client *Client) AddAttendeeWithOptions(tmpReq *AddAttendeeRequest, tmpHead
 		body["EventId"] = request.EventId
 	}
 
+	if !tea.BoolValue(util.IsUnset(request.ChatNotification)) {
+		body["chatNotification"] = request.ChatNotification
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.PushNotification)) {
+		body["pushNotification"] = request.PushNotification
+	}
+
 	realHeaders := make(map[string]*string)
 	if !tea.BoolValue(util.IsUnset(headers.CommonHeaders)) {
 		realHeaders = headers.CommonHeaders
@@ -32345,6 +32383,10 @@ func (client *Client) DeleteEventWithOptions(request *DeleteEventRequest, tmpHea
 
 	if !tea.BoolValue(util.IsUnset(request.EventId)) {
 		body["EventId"] = request.EventId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.PushNotification)) {
+		body["pushNotification"] = request.PushNotification
 	}
 
 	realHeaders := make(map[string]*string)
