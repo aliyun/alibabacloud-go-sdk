@@ -886,7 +886,7 @@ type Cluster struct {
 	PaymentType *string `json:"PaymentType,omitempty" xml:"PaymentType,omitempty"`
 	// 可用时间。
 	ReadyTime *int64 `json:"ReadyTime,omitempty" xml:"ReadyTime,omitempty"`
-	// 区域ID。
+	// 地域ID。
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 	// EMR发行版。
 	ReleaseVersion *string `json:"ReleaseVersion,omitempty" xml:"ReleaseVersion,omitempty"`
@@ -895,6 +895,8 @@ type Cluster struct {
 	// Kerberos安全模式。
 	SecurityMode      *string                   `json:"SecurityMode,omitempty" xml:"SecurityMode,omitempty"`
 	StateChangeReason *ClusterStateChangeReason `json:"StateChangeReason,omitempty" xml:"StateChangeReason,omitempty"`
+	// 集群状态，值同clusterState
+	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
 	// 预付费配置。
 	SubscriptionConfig *SubscriptionConfig `json:"SubscriptionConfig,omitempty" xml:"SubscriptionConfig,omitempty"`
 	// 集群标签。
@@ -991,6 +993,11 @@ func (s *Cluster) SetSecurityMode(v string) *Cluster {
 
 func (s *Cluster) SetStateChangeReason(v *ClusterStateChangeReason) *Cluster {
 	s.StateChangeReason = v
+	return s
+}
+
+func (s *Cluster) SetStatus(v string) *Cluster {
+	s.Status = &v
 	return s
 }
 
@@ -1134,6 +1141,16 @@ type ClusterSummary struct {
 	ResourceGroupId *string `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
 	// 失败原因。
 	StateChangeReason *ClusterStateChangeReason `json:"StateChangeReason,omitempty" xml:"StateChangeReason,omitempty"`
+	// 集群状态。取值范围：
+	// - STARTING：启动中。
+	// - START_FAILED：启动失败。
+	// - BOOTSTRAPPING：引导操作初始化。
+	// - RUNNING：运行中。
+	// - TERMINATING：终止中。
+	// - TERMINATED：已终止。
+	// - TERMINATED_WITH_ERRORS：发生异常导致终止。
+	// - TERMINATE_FAILED：终止失败。
+	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
 	// 标签列表。
 	Tags []*Tag `json:"Tags,omitempty" xml:"Tags,omitempty" type:"Repeated"`
 }
@@ -1208,6 +1225,11 @@ func (s *ClusterSummary) SetResourceGroupId(v string) *ClusterSummary {
 
 func (s *ClusterSummary) SetStateChangeReason(v *ClusterStateChangeReason) *ClusterSummary {
 	s.StateChangeReason = v
+	return s
+}
+
+func (s *ClusterSummary) SetStatus(v string) *ClusterSummary {
+	s.Status = &v
 	return s
 }
 
@@ -6305,7 +6327,7 @@ func (s *GetAutoScalingPolicyResponse) SetBody(v *GetAutoScalingPolicyResponseBo
 type GetClusterRequest struct {
 	// 集群ID。
 	ClusterId *string `json:"ClusterId,omitempty" xml:"ClusterId,omitempty"`
-	// 区域ID。
+	// 地域ID。
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 }
 
@@ -31851,11 +31873,9 @@ type RunApplicationActionRequest struct {
 	ComponentInstanceSelector *ComponentInstanceSelector `json:"ComponentInstanceSelector,omitempty" xml:"ComponentInstanceSelector,omitempty"`
 	// 描述。
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
-	// 运行失败策略。取值范围：
-	// - FAILED_BLOCK：失败后阻塞。
-	// - FAILED_CONTINUE：失败后继续。
+	// 运行策略。
 	ExecuteStrategy *string `json:"ExecuteStrategy,omitempty" xml:"ExecuteStrategy,omitempty"`
-	// 滚动执行间隔时间。
+	// 间隔时间。
 	Interval *int64 `json:"Interval,omitempty" xml:"Interval,omitempty"`
 	// 区域ID。
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
@@ -32589,13 +32609,6 @@ func (client *Client) DecreaseNodes(request *DecreaseNodesRequest) (_result *Dec
 	return _result, _err
 }
 
-/**
- * 删除集群。
- *
- * @param request DeleteClusterRequest
- * @param runtime runtime options for this request RuntimeOptions
- * @return DeleteClusterResponse
- */
 func (client *Client) DeleteClusterWithOptions(request *DeleteClusterRequest, runtime *util.RuntimeOptions) (_result *DeleteClusterResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -32633,12 +32646,6 @@ func (client *Client) DeleteClusterWithOptions(request *DeleteClusterRequest, ru
 	return _result, _err
 }
 
-/**
- * 删除集群。
- *
- * @param request DeleteClusterRequest
- * @return DeleteClusterResponse
- */
 func (client *Client) DeleteCluster(request *DeleteClusterRequest) (_result *DeleteClusterResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &DeleteClusterResponse{}
@@ -35889,6 +35896,13 @@ func (client *Client) RemoveAutoScalingPolicy(request *RemoveAutoScalingPolicyRe
 	return _result, _err
 }
 
+/**
+ * 执行应用操作。
+ *
+ * @param request RunApplicationActionRequest
+ * @param runtime runtime options for this request RuntimeOptions
+ * @return RunApplicationActionResponse
+ */
 func (client *Client) RunApplicationActionWithOptions(request *RunApplicationActionRequest, runtime *util.RuntimeOptions) (_result *RunApplicationActionResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -35954,6 +35968,12 @@ func (client *Client) RunApplicationActionWithOptions(request *RunApplicationAct
 	return _result, _err
 }
 
+/**
+ * 执行应用操作。
+ *
+ * @param request RunApplicationActionRequest
+ * @return RunApplicationActionResponse
+ */
 func (client *Client) RunApplicationAction(request *RunApplicationActionRequest) (_result *RunApplicationActionResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &RunApplicationActionResponse{}
@@ -35965,13 +35985,6 @@ func (client *Client) RunApplicationAction(request *RunApplicationActionRequest)
 	return _result, _err
 }
 
-/**
- * 给资源打标签。
- *
- * @param request TagResourcesRequest
- * @param runtime runtime options for this request RuntimeOptions
- * @return TagResourcesResponse
- */
 func (client *Client) TagResourcesWithOptions(request *TagResourcesRequest, runtime *util.RuntimeOptions) (_result *TagResourcesResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -36017,12 +36030,6 @@ func (client *Client) TagResourcesWithOptions(request *TagResourcesRequest, runt
 	return _result, _err
 }
 
-/**
- * 给资源打标签。
- *
- * @param request TagResourcesRequest
- * @return TagResourcesResponse
- */
 func (client *Client) TagResources(request *TagResourcesRequest) (_result *TagResourcesResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &TagResourcesResponse{}
