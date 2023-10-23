@@ -350,6 +350,7 @@ func (s *AddUserVpcAuthorizationResponse) SetBody(v *AddUserVpcAuthorizationResp
 }
 
 type AddZoneRequest struct {
+	ClientToken     *string `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
 	Lang            *string `json:"Lang,omitempty" xml:"Lang,omitempty"`
 	ProxyPattern    *string `json:"ProxyPattern,omitempty" xml:"ProxyPattern,omitempty"`
 	ResourceGroupId *string `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
@@ -364,6 +365,11 @@ func (s AddZoneRequest) String() string {
 
 func (s AddZoneRequest) GoString() string {
 	return s.String()
+}
+
+func (s *AddZoneRequest) SetClientToken(v string) *AddZoneRequest {
+	s.ClientToken = &v
+	return s
 }
 
 func (s *AddZoneRequest) SetLang(v string) *AddZoneRequest {
@@ -462,7 +468,9 @@ func (s *AddZoneResponse) SetBody(v *AddZoneResponseBody) *AddZoneResponse {
 }
 
 type AddZoneRecordRequest struct {
+	ClientToken  *string `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
 	Lang         *string `json:"Lang,omitempty" xml:"Lang,omitempty"`
+	Line         *string `json:"Line,omitempty" xml:"Line,omitempty"`
 	Priority     *int32  `json:"Priority,omitempty" xml:"Priority,omitempty"`
 	Remark       *string `json:"Remark,omitempty" xml:"Remark,omitempty"`
 	Rr           *string `json:"Rr,omitempty" xml:"Rr,omitempty"`
@@ -470,6 +478,7 @@ type AddZoneRecordRequest struct {
 	Type         *string `json:"Type,omitempty" xml:"Type,omitempty"`
 	UserClientIp *string `json:"UserClientIp,omitempty" xml:"UserClientIp,omitempty"`
 	Value        *string `json:"Value,omitempty" xml:"Value,omitempty"`
+	Weight       *int32  `json:"Weight,omitempty" xml:"Weight,omitempty"`
 	// Zone ID。
 	ZoneId *string `json:"ZoneId,omitempty" xml:"ZoneId,omitempty"`
 }
@@ -482,8 +491,18 @@ func (s AddZoneRecordRequest) GoString() string {
 	return s.String()
 }
 
+func (s *AddZoneRecordRequest) SetClientToken(v string) *AddZoneRecordRequest {
+	s.ClientToken = &v
+	return s
+}
+
 func (s *AddZoneRecordRequest) SetLang(v string) *AddZoneRecordRequest {
 	s.Lang = &v
+	return s
+}
+
+func (s *AddZoneRecordRequest) SetLine(v string) *AddZoneRecordRequest {
+	s.Line = &v
 	return s
 }
 
@@ -519,6 +538,11 @@ func (s *AddZoneRecordRequest) SetUserClientIp(v string) *AddZoneRecordRequest {
 
 func (s *AddZoneRecordRequest) SetValue(v string) *AddZoneRecordRequest {
 	s.Value = &v
+	return s
+}
+
+func (s *AddZoneRecordRequest) SetWeight(v int32) *AddZoneRecordRequest {
+	s.Weight = &v
 	return s
 }
 
@@ -691,6 +715,7 @@ func (s *BindResolverRuleVpcResponse) SetBody(v *BindResolverRuleVpcResponseBody
 }
 
 type BindZoneVpcRequest struct {
+	ClientToken  *string                   `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
 	Lang         *string                   `json:"Lang,omitempty" xml:"Lang,omitempty"`
 	UserClientIp *string                   `json:"UserClientIp,omitempty" xml:"UserClientIp,omitempty"`
 	Vpcs         []*BindZoneVpcRequestVpcs `json:"Vpcs,omitempty" xml:"Vpcs,omitempty" type:"Repeated"`
@@ -703,6 +728,11 @@ func (s BindZoneVpcRequest) String() string {
 
 func (s BindZoneVpcRequest) GoString() string {
 	return s.String()
+}
+
+func (s *BindZoneVpcRequest) SetClientToken(v string) *BindZoneVpcRequest {
+	s.ClientToken = &v
+	return s
 }
 
 func (s *BindZoneVpcRequest) SetLang(v string) *BindZoneVpcRequest {
@@ -1095,6 +1125,7 @@ func (s *DeleteUserVpcAuthorizationResponse) SetBody(v *DeleteUserVpcAuthorizati
 }
 
 type DeleteZoneRequest struct {
+	ClientToken  *string `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
 	Lang         *string `json:"Lang,omitempty" xml:"Lang,omitempty"`
 	UserClientIp *string `json:"UserClientIp,omitempty" xml:"UserClientIp,omitempty"`
 	// zone ID
@@ -1107,6 +1138,11 @@ func (s DeleteZoneRequest) String() string {
 
 func (s DeleteZoneRequest) GoString() string {
 	return s.String()
+}
+
+func (s *DeleteZoneRequest) SetClientToken(v string) *DeleteZoneRequest {
+	s.ClientToken = &v
+	return s
 }
 
 func (s *DeleteZoneRequest) SetLang(v string) *DeleteZoneRequest {
@@ -1178,6 +1214,7 @@ func (s *DeleteZoneResponse) SetBody(v *DeleteZoneResponseBody) *DeleteZoneRespo
 }
 
 type DeleteZoneRecordRequest struct {
+	ClientToken  *string `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
 	Lang         *string `json:"Lang,omitempty" xml:"Lang,omitempty"`
 	RecordId     *int64  `json:"RecordId,omitempty" xml:"RecordId,omitempty"`
 	UserClientIp *string `json:"UserClientIp,omitempty" xml:"UserClientIp,omitempty"`
@@ -1189,6 +1226,11 @@ func (s DeleteZoneRecordRequest) String() string {
 
 func (s DeleteZoneRecordRequest) GoString() string {
 	return s.String()
+}
+
+func (s *DeleteZoneRecordRequest) SetClientToken(v string) *DeleteZoneRecordRequest {
+	s.ClientToken = &v
+	return s
 }
 
 func (s *DeleteZoneRecordRequest) SetLang(v string) *DeleteZoneRecordRequest {
@@ -1388,15 +1430,18 @@ func (s *DescribeChangeLogsResponseBodyChangeLogs) SetChangeLog(v []*DescribeCha
 }
 
 type DescribeChangeLogsResponseBodyChangeLogsChangeLog struct {
-	Content       *string `json:"Content,omitempty" xml:"Content,omitempty"`
-	EntityId      *string `json:"EntityId,omitempty" xml:"EntityId,omitempty"`
-	EntityName    *string `json:"EntityName,omitempty" xml:"EntityName,omitempty"`
-	Id            *int64  `json:"Id,omitempty" xml:"Id,omitempty"`
-	OperAction    *string `json:"OperAction,omitempty" xml:"OperAction,omitempty"`
-	OperIp        *string `json:"OperIp,omitempty" xml:"OperIp,omitempty"`
-	OperObject    *string `json:"OperObject,omitempty" xml:"OperObject,omitempty"`
-	OperTime      *string `json:"OperTime,omitempty" xml:"OperTime,omitempty"`
-	OperTimestamp *int64  `json:"OperTimestamp,omitempty" xml:"OperTimestamp,omitempty"`
+	Content        *string `json:"Content,omitempty" xml:"Content,omitempty"`
+	CreatorId      *string `json:"CreatorId,omitempty" xml:"CreatorId,omitempty"`
+	CreatorSubType *string `json:"CreatorSubType,omitempty" xml:"CreatorSubType,omitempty"`
+	CreatorType    *string `json:"CreatorType,omitempty" xml:"CreatorType,omitempty"`
+	EntityId       *string `json:"EntityId,omitempty" xml:"EntityId,omitempty"`
+	EntityName     *string `json:"EntityName,omitempty" xml:"EntityName,omitempty"`
+	Id             *int64  `json:"Id,omitempty" xml:"Id,omitempty"`
+	OperAction     *string `json:"OperAction,omitempty" xml:"OperAction,omitempty"`
+	OperIp         *string `json:"OperIp,omitempty" xml:"OperIp,omitempty"`
+	OperObject     *string `json:"OperObject,omitempty" xml:"OperObject,omitempty"`
+	OperTime       *string `json:"OperTime,omitempty" xml:"OperTime,omitempty"`
+	OperTimestamp  *int64  `json:"OperTimestamp,omitempty" xml:"OperTimestamp,omitempty"`
 }
 
 func (s DescribeChangeLogsResponseBodyChangeLogsChangeLog) String() string {
@@ -1409,6 +1454,21 @@ func (s DescribeChangeLogsResponseBodyChangeLogsChangeLog) GoString() string {
 
 func (s *DescribeChangeLogsResponseBodyChangeLogsChangeLog) SetContent(v string) *DescribeChangeLogsResponseBodyChangeLogsChangeLog {
 	s.Content = &v
+	return s
+}
+
+func (s *DescribeChangeLogsResponseBodyChangeLogsChangeLog) SetCreatorId(v string) *DescribeChangeLogsResponseBodyChangeLogsChangeLog {
+	s.CreatorId = &v
+	return s
+}
+
+func (s *DescribeChangeLogsResponseBodyChangeLogsChangeLog) SetCreatorSubType(v string) *DescribeChangeLogsResponseBodyChangeLogsChangeLog {
+	s.CreatorSubType = &v
+	return s
+}
+
+func (s *DescribeChangeLogsResponseBodyChangeLogsChangeLog) SetCreatorType(v string) *DescribeChangeLogsResponseBodyChangeLogsChangeLog {
+	s.CreatorType = &v
 	return s
 }
 
@@ -1485,6 +1545,7 @@ type DescribeRegionsRequest struct {
 	AcceptLanguage   *string `json:"AcceptLanguage,omitempty" xml:"AcceptLanguage,omitempty"`
 	AuthorizedUserId *int64  `json:"AuthorizedUserId,omitempty" xml:"AuthorizedUserId,omitempty"`
 	Lang             *string `json:"Lang,omitempty" xml:"Lang,omitempty"`
+	Scene            *string `json:"Scene,omitempty" xml:"Scene,omitempty"`
 	UserClientIp     *string `json:"UserClientIp,omitempty" xml:"UserClientIp,omitempty"`
 	VpcType          *string `json:"VpcType,omitempty" xml:"VpcType,omitempty"`
 }
@@ -1509,6 +1570,11 @@ func (s *DescribeRegionsRequest) SetAuthorizedUserId(v int64) *DescribeRegionsRe
 
 func (s *DescribeRegionsRequest) SetLang(v string) *DescribeRegionsRequest {
 	s.Lang = &v
+	return s
+}
+
+func (s *DescribeRegionsRequest) SetScene(v string) *DescribeRegionsRequest {
+	s.Scene = &v
 	return s
 }
 
@@ -2428,9 +2494,10 @@ type DescribeResolverRuleResponseBodyBindVpcs struct {
 	RegionId   *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 	RegionName *string `json:"RegionName,omitempty" xml:"RegionName,omitempty"`
 	// Vpc ID
-	VpcId   *string `json:"VpcId,omitempty" xml:"VpcId,omitempty"`
-	VpcName *string `json:"VpcName,omitempty" xml:"VpcName,omitempty"`
-	VpcType *string `json:"VpcType,omitempty" xml:"VpcType,omitempty"`
+	VpcId     *string `json:"VpcId,omitempty" xml:"VpcId,omitempty"`
+	VpcName   *string `json:"VpcName,omitempty" xml:"VpcName,omitempty"`
+	VpcType   *string `json:"VpcType,omitempty" xml:"VpcType,omitempty"`
+	VpcUserId *string `json:"VpcUserId,omitempty" xml:"VpcUserId,omitempty"`
 }
 
 func (s DescribeResolverRuleResponseBodyBindVpcs) String() string {
@@ -2463,6 +2530,11 @@ func (s *DescribeResolverRuleResponseBodyBindVpcs) SetVpcName(v string) *Describ
 
 func (s *DescribeResolverRuleResponseBodyBindVpcs) SetVpcType(v string) *DescribeResolverRuleResponseBodyBindVpcs {
 	s.VpcType = &v
+	return s
+}
+
+func (s *DescribeResolverRuleResponseBodyBindVpcs) SetVpcUserId(v string) *DescribeResolverRuleResponseBodyBindVpcs {
+	s.VpcUserId = &v
 	return s
 }
 
@@ -2699,9 +2771,10 @@ type DescribeResolverRulesResponseBodyRulesBindVpcs struct {
 	RegionId   *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 	RegionName *string `json:"RegionName,omitempty" xml:"RegionName,omitempty"`
 	// VPC ID
-	VpcId   *string `json:"VpcId,omitempty" xml:"VpcId,omitempty"`
-	VpcName *string `json:"VpcName,omitempty" xml:"VpcName,omitempty"`
-	VpcType *string `json:"VpcType,omitempty" xml:"VpcType,omitempty"`
+	VpcId     *string `json:"VpcId,omitempty" xml:"VpcId,omitempty"`
+	VpcName   *string `json:"VpcName,omitempty" xml:"VpcName,omitempty"`
+	VpcType   *string `json:"VpcType,omitempty" xml:"VpcType,omitempty"`
+	VpcUserId *string `json:"VpcUserId,omitempty" xml:"VpcUserId,omitempty"`
 }
 
 func (s DescribeResolverRulesResponseBodyRulesBindVpcs) String() string {
@@ -2734,6 +2807,11 @@ func (s *DescribeResolverRulesResponseBodyRulesBindVpcs) SetVpcName(v string) *D
 
 func (s *DescribeResolverRulesResponseBodyRulesBindVpcs) SetVpcType(v string) *DescribeResolverRulesResponseBodyRulesBindVpcs {
 	s.VpcType = &v
+	return s
+}
+
+func (s *DescribeResolverRulesResponseBodyRulesBindVpcs) SetVpcUserId(v string) *DescribeResolverRulesResponseBodyRulesBindVpcs {
+	s.VpcUserId = &v
 	return s
 }
 
@@ -3374,6 +3452,8 @@ type DescribeUserVpcAuthorizationsResponseBodyUsers struct {
 	AuthType           *string `json:"AuthType,omitempty" xml:"AuthType,omitempty"`
 	AuthorizedAliyunId *string `json:"AuthorizedAliyunId,omitempty" xml:"AuthorizedAliyunId,omitempty"`
 	AuthorizedUserId   *int64  `json:"AuthorizedUserId,omitempty" xml:"AuthorizedUserId,omitempty"`
+	CreateTime         *string `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
+	CreateTimestamp    *int64  `json:"CreateTimestamp,omitempty" xml:"CreateTimestamp,omitempty"`
 }
 
 func (s DescribeUserVpcAuthorizationsResponseBodyUsers) String() string {
@@ -3396,6 +3476,16 @@ func (s *DescribeUserVpcAuthorizationsResponseBodyUsers) SetAuthorizedAliyunId(v
 
 func (s *DescribeUserVpcAuthorizationsResponseBodyUsers) SetAuthorizedUserId(v int64) *DescribeUserVpcAuthorizationsResponseBodyUsers {
 	s.AuthorizedUserId = &v
+	return s
+}
+
+func (s *DescribeUserVpcAuthorizationsResponseBodyUsers) SetCreateTime(v string) *DescribeUserVpcAuthorizationsResponseBodyUsers {
+	s.CreateTime = &v
+	return s
+}
+
+func (s *DescribeUserVpcAuthorizationsResponseBodyUsers) SetCreateTimestamp(v int64) *DescribeUserVpcAuthorizationsResponseBodyUsers {
+	s.CreateTimestamp = &v
 	return s
 }
 
@@ -3453,18 +3543,22 @@ func (s *DescribeZoneInfoRequest) SetZoneId(v string) *DescribeZoneInfoRequest {
 }
 
 type DescribeZoneInfoResponseBody struct {
-	BindVpcs        *DescribeZoneInfoResponseBodyBindVpcs `json:"BindVpcs,omitempty" xml:"BindVpcs,omitempty" type:"Struct"`
-	CreateTime      *string                               `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
-	CreateTimestamp *int64                                `json:"CreateTimestamp,omitempty" xml:"CreateTimestamp,omitempty"`
-	IsPtr           *bool                                 `json:"IsPtr,omitempty" xml:"IsPtr,omitempty"`
-	ProxyPattern    *string                               `json:"ProxyPattern,omitempty" xml:"ProxyPattern,omitempty"`
-	RecordCount     *int32                                `json:"RecordCount,omitempty" xml:"RecordCount,omitempty"`
-	Remark          *string                               `json:"Remark,omitempty" xml:"Remark,omitempty"`
-	RequestId       *string                               `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	ResourceGroupId *string                               `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
-	SlaveDns        *bool                                 `json:"SlaveDns,omitempty" xml:"SlaveDns,omitempty"`
-	UpdateTime      *string                               `json:"UpdateTime,omitempty" xml:"UpdateTime,omitempty"`
-	UpdateTimestamp *int64                                `json:"UpdateTimestamp,omitempty" xml:"UpdateTimestamp,omitempty"`
+	BindVpcs         *DescribeZoneInfoResponseBodyBindVpcs `json:"BindVpcs,omitempty" xml:"BindVpcs,omitempty" type:"Struct"`
+	CreateTime       *string                               `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
+	CreateTimestamp  *int64                                `json:"CreateTimestamp,omitempty" xml:"CreateTimestamp,omitempty"`
+	Creator          *string                               `json:"Creator,omitempty" xml:"Creator,omitempty"`
+	CreatorType      *string                               `json:"CreatorType,omitempty" xml:"CreatorType,omitempty"`
+	DnsGroup         *string                               `json:"DnsGroup,omitempty" xml:"DnsGroup,omitempty"`
+	DnsGroupChanging *bool                                 `json:"DnsGroupChanging,omitempty" xml:"DnsGroupChanging,omitempty"`
+	IsPtr            *bool                                 `json:"IsPtr,omitempty" xml:"IsPtr,omitempty"`
+	ProxyPattern     *string                               `json:"ProxyPattern,omitempty" xml:"ProxyPattern,omitempty"`
+	RecordCount      *int32                                `json:"RecordCount,omitempty" xml:"RecordCount,omitempty"`
+	Remark           *string                               `json:"Remark,omitempty" xml:"Remark,omitempty"`
+	RequestId        *string                               `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	ResourceGroupId  *string                               `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
+	SlaveDns         *bool                                 `json:"SlaveDns,omitempty" xml:"SlaveDns,omitempty"`
+	UpdateTime       *string                               `json:"UpdateTime,omitempty" xml:"UpdateTime,omitempty"`
+	UpdateTimestamp  *int64                                `json:"UpdateTimestamp,omitempty" xml:"UpdateTimestamp,omitempty"`
 	// Zone ID。
 	ZoneId   *string `json:"ZoneId,omitempty" xml:"ZoneId,omitempty"`
 	ZoneName *string `json:"ZoneName,omitempty" xml:"ZoneName,omitempty"`
@@ -3492,6 +3586,26 @@ func (s *DescribeZoneInfoResponseBody) SetCreateTime(v string) *DescribeZoneInfo
 
 func (s *DescribeZoneInfoResponseBody) SetCreateTimestamp(v int64) *DescribeZoneInfoResponseBody {
 	s.CreateTimestamp = &v
+	return s
+}
+
+func (s *DescribeZoneInfoResponseBody) SetCreator(v string) *DescribeZoneInfoResponseBody {
+	s.Creator = &v
+	return s
+}
+
+func (s *DescribeZoneInfoResponseBody) SetCreatorType(v string) *DescribeZoneInfoResponseBody {
+	s.CreatorType = &v
+	return s
+}
+
+func (s *DescribeZoneInfoResponseBody) SetDnsGroup(v string) *DescribeZoneInfoResponseBody {
+	s.DnsGroup = &v
+	return s
+}
+
+func (s *DescribeZoneInfoResponseBody) SetDnsGroupChanging(v bool) *DescribeZoneInfoResponseBody {
+	s.DnsGroupChanging = &v
 	return s
 }
 
@@ -3779,14 +3893,21 @@ func (s *DescribeZoneRecordsResponseBodyRecords) SetRecord(v []*DescribeZoneReco
 }
 
 type DescribeZoneRecordsResponseBodyRecordsRecord struct {
-	Priority *int32  `json:"Priority,omitempty" xml:"Priority,omitempty"`
-	RecordId *int64  `json:"RecordId,omitempty" xml:"RecordId,omitempty"`
-	Remark   *string `json:"Remark,omitempty" xml:"Remark,omitempty"`
-	Rr       *string `json:"Rr,omitempty" xml:"Rr,omitempty"`
-	Status   *string `json:"Status,omitempty" xml:"Status,omitempty"`
-	Ttl      *int32  `json:"Ttl,omitempty" xml:"Ttl,omitempty"`
-	Type     *string `json:"Type,omitempty" xml:"Type,omitempty"`
-	Value    *string `json:"Value,omitempty" xml:"Value,omitempty"`
+	CreateTime      *string `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
+	CreateTimestamp *int64  `json:"CreateTimestamp,omitempty" xml:"CreateTimestamp,omitempty"`
+	Line            *string `json:"Line,omitempty" xml:"Line,omitempty"`
+	Priority        *int32  `json:"Priority,omitempty" xml:"Priority,omitempty"`
+	RecordId        *int64  `json:"RecordId,omitempty" xml:"RecordId,omitempty"`
+	Remark          *string `json:"Remark,omitempty" xml:"Remark,omitempty"`
+	Rr              *string `json:"Rr,omitempty" xml:"Rr,omitempty"`
+	Status          *string `json:"Status,omitempty" xml:"Status,omitempty"`
+	Ttl             *int32  `json:"Ttl,omitempty" xml:"Ttl,omitempty"`
+	Type            *string `json:"Type,omitempty" xml:"Type,omitempty"`
+	UpdateTime      *string `json:"UpdateTime,omitempty" xml:"UpdateTime,omitempty"`
+	UpdateTimestamp *int64  `json:"UpdateTimestamp,omitempty" xml:"UpdateTimestamp,omitempty"`
+	Value           *string `json:"Value,omitempty" xml:"Value,omitempty"`
+	Weight          *int32  `json:"Weight,omitempty" xml:"Weight,omitempty"`
+	ZoneId          *string `json:"ZoneId,omitempty" xml:"ZoneId,omitempty"`
 }
 
 func (s DescribeZoneRecordsResponseBodyRecordsRecord) String() string {
@@ -3795,6 +3916,21 @@ func (s DescribeZoneRecordsResponseBodyRecordsRecord) String() string {
 
 func (s DescribeZoneRecordsResponseBodyRecordsRecord) GoString() string {
 	return s.String()
+}
+
+func (s *DescribeZoneRecordsResponseBodyRecordsRecord) SetCreateTime(v string) *DescribeZoneRecordsResponseBodyRecordsRecord {
+	s.CreateTime = &v
+	return s
+}
+
+func (s *DescribeZoneRecordsResponseBodyRecordsRecord) SetCreateTimestamp(v int64) *DescribeZoneRecordsResponseBodyRecordsRecord {
+	s.CreateTimestamp = &v
+	return s
+}
+
+func (s *DescribeZoneRecordsResponseBodyRecordsRecord) SetLine(v string) *DescribeZoneRecordsResponseBodyRecordsRecord {
+	s.Line = &v
+	return s
 }
 
 func (s *DescribeZoneRecordsResponseBodyRecordsRecord) SetPriority(v int32) *DescribeZoneRecordsResponseBodyRecordsRecord {
@@ -3832,8 +3968,28 @@ func (s *DescribeZoneRecordsResponseBodyRecordsRecord) SetType(v string) *Descri
 	return s
 }
 
+func (s *DescribeZoneRecordsResponseBodyRecordsRecord) SetUpdateTime(v string) *DescribeZoneRecordsResponseBodyRecordsRecord {
+	s.UpdateTime = &v
+	return s
+}
+
+func (s *DescribeZoneRecordsResponseBodyRecordsRecord) SetUpdateTimestamp(v int64) *DescribeZoneRecordsResponseBodyRecordsRecord {
+	s.UpdateTimestamp = &v
+	return s
+}
+
 func (s *DescribeZoneRecordsResponseBodyRecordsRecord) SetValue(v string) *DescribeZoneRecordsResponseBodyRecordsRecord {
 	s.Value = &v
+	return s
+}
+
+func (s *DescribeZoneRecordsResponseBodyRecordsRecord) SetWeight(v int32) *DescribeZoneRecordsResponseBodyRecordsRecord {
+	s.Weight = &v
+	return s
+}
+
+func (s *DescribeZoneRecordsResponseBodyRecordsRecord) SetZoneId(v string) *DescribeZoneRecordsResponseBodyRecordsRecord {
+	s.ZoneId = &v
 	return s
 }
 
@@ -3930,14 +4086,18 @@ func (s *DescribeZoneVpcTreeResponseBodyZones) SetZone(v []*DescribeZoneVpcTreeR
 }
 
 type DescribeZoneVpcTreeResponseBodyZonesZone struct {
-	CreateTime      *string                                       `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
-	CreateTimestamp *int64                                        `json:"CreateTimestamp,omitempty" xml:"CreateTimestamp,omitempty"`
-	IsPtr           *bool                                         `json:"IsPtr,omitempty" xml:"IsPtr,omitempty"`
-	RecordCount     *int32                                        `json:"RecordCount,omitempty" xml:"RecordCount,omitempty"`
-	Remark          *string                                       `json:"Remark,omitempty" xml:"Remark,omitempty"`
-	UpdateTime      *string                                       `json:"UpdateTime,omitempty" xml:"UpdateTime,omitempty"`
-	UpdateTimestamp *int64                                        `json:"UpdateTimestamp,omitempty" xml:"UpdateTimestamp,omitempty"`
-	Vpcs            *DescribeZoneVpcTreeResponseBodyZonesZoneVpcs `json:"Vpcs,omitempty" xml:"Vpcs,omitempty" type:"Struct"`
+	CreateTime       *string                                       `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
+	CreateTimestamp  *int64                                        `json:"CreateTimestamp,omitempty" xml:"CreateTimestamp,omitempty"`
+	Creator          *string                                       `json:"Creator,omitempty" xml:"Creator,omitempty"`
+	CreatorType      *string                                       `json:"CreatorType,omitempty" xml:"CreatorType,omitempty"`
+	DnsGroup         *string                                       `json:"DnsGroup,omitempty" xml:"DnsGroup,omitempty"`
+	DnsGroupChanging *bool                                         `json:"DnsGroupChanging,omitempty" xml:"DnsGroupChanging,omitempty"`
+	IsPtr            *bool                                         `json:"IsPtr,omitempty" xml:"IsPtr,omitempty"`
+	RecordCount      *int32                                        `json:"RecordCount,omitempty" xml:"RecordCount,omitempty"`
+	Remark           *string                                       `json:"Remark,omitempty" xml:"Remark,omitempty"`
+	UpdateTime       *string                                       `json:"UpdateTime,omitempty" xml:"UpdateTime,omitempty"`
+	UpdateTimestamp  *int64                                        `json:"UpdateTimestamp,omitempty" xml:"UpdateTimestamp,omitempty"`
+	Vpcs             *DescribeZoneVpcTreeResponseBodyZonesZoneVpcs `json:"Vpcs,omitempty" xml:"Vpcs,omitempty" type:"Struct"`
 	// Zone id
 	ZoneId   *string `json:"ZoneId,omitempty" xml:"ZoneId,omitempty"`
 	ZoneName *string `json:"ZoneName,omitempty" xml:"ZoneName,omitempty"`
@@ -3960,6 +4120,26 @@ func (s *DescribeZoneVpcTreeResponseBodyZonesZone) SetCreateTime(v string) *Desc
 
 func (s *DescribeZoneVpcTreeResponseBodyZonesZone) SetCreateTimestamp(v int64) *DescribeZoneVpcTreeResponseBodyZonesZone {
 	s.CreateTimestamp = &v
+	return s
+}
+
+func (s *DescribeZoneVpcTreeResponseBodyZonesZone) SetCreator(v string) *DescribeZoneVpcTreeResponseBodyZonesZone {
+	s.Creator = &v
+	return s
+}
+
+func (s *DescribeZoneVpcTreeResponseBodyZonesZone) SetCreatorType(v string) *DescribeZoneVpcTreeResponseBodyZonesZone {
+	s.CreatorType = &v
+	return s
+}
+
+func (s *DescribeZoneVpcTreeResponseBodyZonesZone) SetDnsGroup(v string) *DescribeZoneVpcTreeResponseBodyZonesZone {
+	s.DnsGroup = &v
+	return s
+}
+
+func (s *DescribeZoneVpcTreeResponseBodyZonesZone) SetDnsGroupChanging(v bool) *DescribeZoneVpcTreeResponseBodyZonesZone {
+	s.DnsGroupChanging = &v
 	return s
 }
 
@@ -4268,16 +4448,20 @@ func (s *DescribeZonesResponseBodyZones) SetZone(v []*DescribeZonesResponseBodyZ
 }
 
 type DescribeZonesResponseBodyZonesZone struct {
-	CreateTime      *string                                         `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
-	CreateTimestamp *int64                                          `json:"CreateTimestamp,omitempty" xml:"CreateTimestamp,omitempty"`
-	IsPtr           *bool                                           `json:"IsPtr,omitempty" xml:"IsPtr,omitempty"`
-	ProxyPattern    *string                                         `json:"ProxyPattern,omitempty" xml:"ProxyPattern,omitempty"`
-	RecordCount     *int32                                          `json:"RecordCount,omitempty" xml:"RecordCount,omitempty"`
-	Remark          *string                                         `json:"Remark,omitempty" xml:"Remark,omitempty"`
-	ResourceGroupId *string                                         `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
-	ResourceTags    *DescribeZonesResponseBodyZonesZoneResourceTags `json:"ResourceTags,omitempty" xml:"ResourceTags,omitempty" type:"Struct"`
-	UpdateTime      *string                                         `json:"UpdateTime,omitempty" xml:"UpdateTime,omitempty"`
-	UpdateTimestamp *int64                                          `json:"UpdateTimestamp,omitempty" xml:"UpdateTimestamp,omitempty"`
+	CreateTime       *string                                         `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
+	CreateTimestamp  *int64                                          `json:"CreateTimestamp,omitempty" xml:"CreateTimestamp,omitempty"`
+	Creator          *string                                         `json:"Creator,omitempty" xml:"Creator,omitempty"`
+	CreatorSubType   *string                                         `json:"CreatorSubType,omitempty" xml:"CreatorSubType,omitempty"`
+	DnsGroup         *string                                         `json:"DnsGroup,omitempty" xml:"DnsGroup,omitempty"`
+	DnsGroupChanging *bool                                           `json:"DnsGroupChanging,omitempty" xml:"DnsGroupChanging,omitempty"`
+	IsPtr            *bool                                           `json:"IsPtr,omitempty" xml:"IsPtr,omitempty"`
+	ProxyPattern     *string                                         `json:"ProxyPattern,omitempty" xml:"ProxyPattern,omitempty"`
+	RecordCount      *int32                                          `json:"RecordCount,omitempty" xml:"RecordCount,omitempty"`
+	Remark           *string                                         `json:"Remark,omitempty" xml:"Remark,omitempty"`
+	ResourceGroupId  *string                                         `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
+	ResourceTags     *DescribeZonesResponseBodyZonesZoneResourceTags `json:"ResourceTags,omitempty" xml:"ResourceTags,omitempty" type:"Struct"`
+	UpdateTime       *string                                         `json:"UpdateTime,omitempty" xml:"UpdateTime,omitempty"`
+	UpdateTimestamp  *int64                                          `json:"UpdateTimestamp,omitempty" xml:"UpdateTimestamp,omitempty"`
 	// zone ID。
 	ZoneId   *string `json:"ZoneId,omitempty" xml:"ZoneId,omitempty"`
 	ZoneName *string `json:"ZoneName,omitempty" xml:"ZoneName,omitempty"`
@@ -4300,6 +4484,26 @@ func (s *DescribeZonesResponseBodyZonesZone) SetCreateTime(v string) *DescribeZo
 
 func (s *DescribeZonesResponseBodyZonesZone) SetCreateTimestamp(v int64) *DescribeZonesResponseBodyZonesZone {
 	s.CreateTimestamp = &v
+	return s
+}
+
+func (s *DescribeZonesResponseBodyZonesZone) SetCreator(v string) *DescribeZonesResponseBodyZonesZone {
+	s.Creator = &v
+	return s
+}
+
+func (s *DescribeZonesResponseBodyZonesZone) SetCreatorSubType(v string) *DescribeZonesResponseBodyZonesZone {
+	s.CreatorSubType = &v
+	return s
+}
+
+func (s *DescribeZonesResponseBodyZonesZone) SetDnsGroup(v string) *DescribeZonesResponseBodyZonesZone {
+	s.DnsGroup = &v
+	return s
+}
+
+func (s *DescribeZonesResponseBodyZonesZone) SetDnsGroupChanging(v bool) *DescribeZonesResponseBodyZonesZone {
+	s.DnsGroupChanging = &v
 	return s
 }
 
@@ -4596,6 +4800,7 @@ func (s *ListTagResourcesResponse) SetBody(v *ListTagResourcesResponseBody) *Lis
 }
 
 type MoveResourceGroupRequest struct {
+	ClientToken        *string `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
 	Lang               *string `json:"Lang,omitempty" xml:"Lang,omitempty"`
 	NewResourceGroupId *string `json:"NewResourceGroupId,omitempty" xml:"NewResourceGroupId,omitempty"`
 	// Zone Id。
@@ -4608,6 +4813,11 @@ func (s MoveResourceGroupRequest) String() string {
 
 func (s MoveResourceGroupRequest) GoString() string {
 	return s.String()
+}
+
+func (s *MoveResourceGroupRequest) SetClientToken(v string) *MoveResourceGroupRequest {
+	s.ClientToken = &v
+	return s
 }
 
 func (s *MoveResourceGroupRequest) SetLang(v string) *MoveResourceGroupRequest {
@@ -4672,6 +4882,7 @@ func (s *MoveResourceGroupResponse) SetBody(v *MoveResourceGroupResponseBody) *M
 }
 
 type SetProxyPatternRequest struct {
+	ClientToken  *string `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
 	Lang         *string `json:"Lang,omitempty" xml:"Lang,omitempty"`
 	ProxyPattern *string `json:"ProxyPattern,omitempty" xml:"ProxyPattern,omitempty"`
 	UserClientIp *string `json:"UserClientIp,omitempty" xml:"UserClientIp,omitempty"`
@@ -4684,6 +4895,11 @@ func (s SetProxyPatternRequest) String() string {
 
 func (s SetProxyPatternRequest) GoString() string {
 	return s.String()
+}
+
+func (s *SetProxyPatternRequest) SetClientToken(v string) *SetProxyPatternRequest {
+	s.ClientToken = &v
+	return s
 }
 
 func (s *SetProxyPatternRequest) SetLang(v string) *SetProxyPatternRequest {
@@ -4759,6 +4975,7 @@ func (s *SetProxyPatternResponse) SetBody(v *SetProxyPatternResponseBody) *SetPr
 }
 
 type SetZoneRecordStatusRequest struct {
+	ClientToken  *string `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
 	Lang         *string `json:"Lang,omitempty" xml:"Lang,omitempty"`
 	RecordId     *int64  `json:"RecordId,omitempty" xml:"RecordId,omitempty"`
 	Status       *string `json:"Status,omitempty" xml:"Status,omitempty"`
@@ -4771,6 +4988,11 @@ func (s SetZoneRecordStatusRequest) String() string {
 
 func (s SetZoneRecordStatusRequest) GoString() string {
 	return s.String()
+}
+
+func (s *SetZoneRecordStatusRequest) SetClientToken(v string) *SetZoneRecordStatusRequest {
+	s.ClientToken = &v
+	return s
 }
 
 func (s *SetZoneRecordStatusRequest) SetLang(v string) *SetZoneRecordStatusRequest {
@@ -5049,9 +5271,10 @@ func (s *UntagResourcesResponse) SetBody(v *UntagResourcesResponseBody) *UntagRe
 }
 
 type UpdateRecordRemarkRequest struct {
-	Lang     *string `json:"Lang,omitempty" xml:"Lang,omitempty"`
-	RecordId *int64  `json:"RecordId,omitempty" xml:"RecordId,omitempty"`
-	Remark   *string `json:"Remark,omitempty" xml:"Remark,omitempty"`
+	ClientToken *string `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
+	Lang        *string `json:"Lang,omitempty" xml:"Lang,omitempty"`
+	RecordId    *int64  `json:"RecordId,omitempty" xml:"RecordId,omitempty"`
+	Remark      *string `json:"Remark,omitempty" xml:"Remark,omitempty"`
 }
 
 func (s UpdateRecordRemarkRequest) String() string {
@@ -5060,6 +5283,11 @@ func (s UpdateRecordRemarkRequest) String() string {
 
 func (s UpdateRecordRemarkRequest) GoString() string {
 	return s.String()
+}
+
+func (s *UpdateRecordRemarkRequest) SetClientToken(v string) *UpdateRecordRemarkRequest {
+	s.ClientToken = &v
+	return s
 }
 
 func (s *UpdateRecordRemarkRequest) SetLang(v string) *UpdateRecordRemarkRequest {
@@ -5460,7 +5688,9 @@ func (s *UpdateSyncEcsHostTaskResponse) SetBody(v *UpdateSyncEcsHostTaskResponse
 }
 
 type UpdateZoneRecordRequest struct {
+	ClientToken  *string `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
 	Lang         *string `json:"Lang,omitempty" xml:"Lang,omitempty"`
+	Line         *string `json:"Line,omitempty" xml:"Line,omitempty"`
 	Priority     *int32  `json:"Priority,omitempty" xml:"Priority,omitempty"`
 	RecordId     *int64  `json:"RecordId,omitempty" xml:"RecordId,omitempty"`
 	Rr           *string `json:"Rr,omitempty" xml:"Rr,omitempty"`
@@ -5468,6 +5698,7 @@ type UpdateZoneRecordRequest struct {
 	Type         *string `json:"Type,omitempty" xml:"Type,omitempty"`
 	UserClientIp *string `json:"UserClientIp,omitempty" xml:"UserClientIp,omitempty"`
 	Value        *string `json:"Value,omitempty" xml:"Value,omitempty"`
+	Weight       *int32  `json:"Weight,omitempty" xml:"Weight,omitempty"`
 }
 
 func (s UpdateZoneRecordRequest) String() string {
@@ -5478,8 +5709,18 @@ func (s UpdateZoneRecordRequest) GoString() string {
 	return s.String()
 }
 
+func (s *UpdateZoneRecordRequest) SetClientToken(v string) *UpdateZoneRecordRequest {
+	s.ClientToken = &v
+	return s
+}
+
 func (s *UpdateZoneRecordRequest) SetLang(v string) *UpdateZoneRecordRequest {
 	s.Lang = &v
+	return s
+}
+
+func (s *UpdateZoneRecordRequest) SetLine(v string) *UpdateZoneRecordRequest {
+	s.Line = &v
 	return s
 }
 
@@ -5515,6 +5756,11 @@ func (s *UpdateZoneRecordRequest) SetUserClientIp(v string) *UpdateZoneRecordReq
 
 func (s *UpdateZoneRecordRequest) SetValue(v string) *UpdateZoneRecordRequest {
 	s.Value = &v
+	return s
+}
+
+func (s *UpdateZoneRecordRequest) SetWeight(v int32) *UpdateZoneRecordRequest {
+	s.Weight = &v
 	return s
 }
 
@@ -5571,6 +5817,7 @@ func (s *UpdateZoneRecordResponse) SetBody(v *UpdateZoneRecordResponseBody) *Upd
 }
 
 type UpdateZoneRemarkRequest struct {
+	ClientToken  *string `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
 	Lang         *string `json:"Lang,omitempty" xml:"Lang,omitempty"`
 	Remark       *string `json:"Remark,omitempty" xml:"Remark,omitempty"`
 	UserClientIp *string `json:"UserClientIp,omitempty" xml:"UserClientIp,omitempty"`
@@ -5584,6 +5831,11 @@ func (s UpdateZoneRemarkRequest) String() string {
 
 func (s UpdateZoneRemarkRequest) GoString() string {
 	return s.String()
+}
+
+func (s *UpdateZoneRemarkRequest) SetClientToken(v string) *UpdateZoneRemarkRequest {
+	s.ClientToken = &v
+	return s
 }
 
 func (s *UpdateZoneRemarkRequest) SetLang(v string) *UpdateZoneRemarkRequest {
@@ -5896,6 +6148,10 @@ func (client *Client) AddZoneWithOptions(request *AddZoneRequest, runtime *util.
 		return _result, _err
 	}
 	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.ClientToken)) {
+		query["ClientToken"] = request.ClientToken
+	}
+
 	if !tea.BoolValue(util.IsUnset(request.Lang)) {
 		query["Lang"] = request.Lang
 	}
@@ -5960,8 +6216,16 @@ func (client *Client) AddZoneRecordWithOptions(request *AddZoneRecordRequest, ru
 		return _result, _err
 	}
 	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.ClientToken)) {
+		query["ClientToken"] = request.ClientToken
+	}
+
 	if !tea.BoolValue(util.IsUnset(request.Lang)) {
 		query["Lang"] = request.Lang
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Line)) {
+		query["Line"] = request.Line
 	}
 
 	if !tea.BoolValue(util.IsUnset(request.Priority)) {
@@ -5990,6 +6254,10 @@ func (client *Client) AddZoneRecordWithOptions(request *AddZoneRecordRequest, ru
 
 	if !tea.BoolValue(util.IsUnset(request.Value)) {
 		query["Value"] = request.Value
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Weight)) {
+		query["Weight"] = request.Weight
 	}
 
 	if !tea.BoolValue(util.IsUnset(request.ZoneId)) {
@@ -6088,6 +6356,10 @@ func (client *Client) BindZoneVpcWithOptions(request *BindZoneVpcRequest, runtim
 		return _result, _err
 	}
 	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.ClientToken)) {
+		query["ClientToken"] = request.ClientToken
+	}
+
 	if !tea.BoolValue(util.IsUnset(request.Lang)) {
 		query["Lang"] = request.Lang
 	}
@@ -6340,6 +6612,10 @@ func (client *Client) DeleteZoneWithOptions(request *DeleteZoneRequest, runtime 
 		return _result, _err
 	}
 	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.ClientToken)) {
+		query["ClientToken"] = request.ClientToken
+	}
+
 	if !tea.BoolValue(util.IsUnset(request.Lang)) {
 		query["Lang"] = request.Lang
 	}
@@ -6392,6 +6668,10 @@ func (client *Client) DeleteZoneRecordWithOptions(request *DeleteZoneRecordReque
 		return _result, _err
 	}
 	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.ClientToken)) {
+		query["ClientToken"] = request.ClientToken
+	}
+
 	if !tea.BoolValue(util.IsUnset(request.Lang)) {
 		query["Lang"] = request.Lang
 	}
@@ -6530,6 +6810,10 @@ func (client *Client) DescribeRegionsWithOptions(request *DescribeRegionsRequest
 
 	if !tea.BoolValue(util.IsUnset(request.Lang)) {
 		query["Lang"] = request.Lang
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Scene)) {
+		query["Scene"] = request.Scene
 	}
 
 	if !tea.BoolValue(util.IsUnset(request.UserClientIp)) {
@@ -7448,6 +7732,10 @@ func (client *Client) MoveResourceGroupWithOptions(request *MoveResourceGroupReq
 		return _result, _err
 	}
 	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.ClientToken)) {
+		query["ClientToken"] = request.ClientToken
+	}
+
 	if !tea.BoolValue(util.IsUnset(request.Lang)) {
 		query["Lang"] = request.Lang
 	}
@@ -7500,6 +7788,10 @@ func (client *Client) SetProxyPatternWithOptions(request *SetProxyPatternRequest
 		return _result, _err
 	}
 	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.ClientToken)) {
+		query["ClientToken"] = request.ClientToken
+	}
+
 	if !tea.BoolValue(util.IsUnset(request.Lang)) {
 		query["Lang"] = request.Lang
 	}
@@ -7556,6 +7848,10 @@ func (client *Client) SetZoneRecordStatusWithOptions(request *SetZoneRecordStatu
 		return _result, _err
 	}
 	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.ClientToken)) {
+		query["ClientToken"] = request.ClientToken
+	}
+
 	if !tea.BoolValue(util.IsUnset(request.Lang)) {
 		query["Lang"] = request.Lang
 	}
@@ -7732,6 +8028,10 @@ func (client *Client) UpdateRecordRemarkWithOptions(request *UpdateRecordRemarkR
 		return _result, _err
 	}
 	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.ClientToken)) {
+		query["ClientToken"] = request.ClientToken
+	}
+
 	if !tea.BoolValue(util.IsUnset(request.Lang)) {
 		query["Lang"] = request.Lang
 	}
@@ -7952,8 +8252,16 @@ func (client *Client) UpdateZoneRecordWithOptions(request *UpdateZoneRecordReque
 		return _result, _err
 	}
 	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.ClientToken)) {
+		query["ClientToken"] = request.ClientToken
+	}
+
 	if !tea.BoolValue(util.IsUnset(request.Lang)) {
 		query["Lang"] = request.Lang
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Line)) {
+		query["Line"] = request.Line
 	}
 
 	if !tea.BoolValue(util.IsUnset(request.Priority)) {
@@ -7982,6 +8290,10 @@ func (client *Client) UpdateZoneRecordWithOptions(request *UpdateZoneRecordReque
 
 	if !tea.BoolValue(util.IsUnset(request.Value)) {
 		query["Value"] = request.Value
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Weight)) {
+		query["Weight"] = request.Weight
 	}
 
 	req := &openapi.OpenApiRequest{
@@ -8024,6 +8336,10 @@ func (client *Client) UpdateZoneRemarkWithOptions(request *UpdateZoneRemarkReque
 		return _result, _err
 	}
 	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.ClientToken)) {
+		query["ClientToken"] = request.ClientToken
+	}
+
 	if !tea.BoolValue(util.IsUnset(request.Lang)) {
 		query["Lang"] = request.Lang
 	}

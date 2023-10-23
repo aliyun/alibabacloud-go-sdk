@@ -1,3 +1,6 @@
+2023-10-23 Version: v2.3.1
+- Generated golang 2018-01-01 for pvtz.
+
 2023-05-12 Version: v2.3.0
 - Upgrade pvtz sdk.
 
