@@ -11016,6 +11016,7 @@ func (s *GetFileBlobsResponseBody) SetSuccess(v bool) *GetFileBlobsResponseBody 
 
 type GetFileBlobsResponseBodyResult struct {
 	Content    *string `json:"content,omitempty" xml:"content,omitempty"`
+	Size       *int64  `json:"size,omitempty" xml:"size,omitempty"`
 	TotalLines *int32  `json:"totalLines,omitempty" xml:"totalLines,omitempty"`
 }
 
@@ -11029,6 +11030,11 @@ func (s GetFileBlobsResponseBodyResult) GoString() string {
 
 func (s *GetFileBlobsResponseBodyResult) SetContent(v string) *GetFileBlobsResponseBodyResult {
 	s.Content = &v
+	return s
+}
+
+func (s *GetFileBlobsResponseBodyResult) SetSize(v int64) *GetFileBlobsResponseBodyResult {
+	s.Size = &v
 	return s
 }
 
