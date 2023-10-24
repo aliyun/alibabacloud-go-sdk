@@ -48210,6 +48210,904 @@ func (s *InsureOrderPayResponse) SetBody(v *InsureOrderPayResponseBody) *InsureO
 	return s
 }
 
+type InsureOrderRefundHeaders struct {
+	CommonHeaders      map[string]*string `json:"commonHeaders,omitempty" xml:"commonHeaders,omitempty"`
+	XAcsBtripCorpToken *string            `json:"x-acs-btrip-corp-token,omitempty" xml:"x-acs-btrip-corp-token,omitempty"`
+}
+
+func (s InsureOrderRefundHeaders) String() string {
+	return tea.Prettify(s)
+}
+
+func (s InsureOrderRefundHeaders) GoString() string {
+	return s.String()
+}
+
+func (s *InsureOrderRefundHeaders) SetCommonHeaders(v map[string]*string) *InsureOrderRefundHeaders {
+	s.CommonHeaders = v
+	return s
+}
+
+func (s *InsureOrderRefundHeaders) SetXAcsBtripCorpToken(v string) *InsureOrderRefundHeaders {
+	s.XAcsBtripCorpToken = &v
+	return s
+}
+
+type InsureOrderRefundRequest struct {
+	BtripUserId    *string   `json:"btrip_user_id,omitempty" xml:"btrip_user_id,omitempty"`
+	BuyerName      *string   `json:"buyer_name,omitempty" xml:"buyer_name,omitempty"`
+	IsvName        *string   `json:"isv_name,omitempty" xml:"isv_name,omitempty"`
+	OutApplyId     *string   `json:"out_apply_id,omitempty" xml:"out_apply_id,omitempty"`
+	PolicyNoList   []*string `json:"policy_no_list,omitempty" xml:"policy_no_list,omitempty" type:"Repeated"`
+	SubInsOrderIds []*string `json:"sub_ins_order_ids,omitempty" xml:"sub_ins_order_ids,omitempty" type:"Repeated"`
+	SupplierCode   *string   `json:"supplier_code,omitempty" xml:"supplier_code,omitempty"`
+}
+
+func (s InsureOrderRefundRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s InsureOrderRefundRequest) GoString() string {
+	return s.String()
+}
+
+func (s *InsureOrderRefundRequest) SetBtripUserId(v string) *InsureOrderRefundRequest {
+	s.BtripUserId = &v
+	return s
+}
+
+func (s *InsureOrderRefundRequest) SetBuyerName(v string) *InsureOrderRefundRequest {
+	s.BuyerName = &v
+	return s
+}
+
+func (s *InsureOrderRefundRequest) SetIsvName(v string) *InsureOrderRefundRequest {
+	s.IsvName = &v
+	return s
+}
+
+func (s *InsureOrderRefundRequest) SetOutApplyId(v string) *InsureOrderRefundRequest {
+	s.OutApplyId = &v
+	return s
+}
+
+func (s *InsureOrderRefundRequest) SetPolicyNoList(v []*string) *InsureOrderRefundRequest {
+	s.PolicyNoList = v
+	return s
+}
+
+func (s *InsureOrderRefundRequest) SetSubInsOrderIds(v []*string) *InsureOrderRefundRequest {
+	s.SubInsOrderIds = v
+	return s
+}
+
+func (s *InsureOrderRefundRequest) SetSupplierCode(v string) *InsureOrderRefundRequest {
+	s.SupplierCode = &v
+	return s
+}
+
+type InsureOrderRefundShrinkRequest struct {
+	BtripUserId          *string `json:"btrip_user_id,omitempty" xml:"btrip_user_id,omitempty"`
+	BuyerName            *string `json:"buyer_name,omitempty" xml:"buyer_name,omitempty"`
+	IsvName              *string `json:"isv_name,omitempty" xml:"isv_name,omitempty"`
+	OutApplyId           *string `json:"out_apply_id,omitempty" xml:"out_apply_id,omitempty"`
+	PolicyNoListShrink   *string `json:"policy_no_list,omitempty" xml:"policy_no_list,omitempty"`
+	SubInsOrderIdsShrink *string `json:"sub_ins_order_ids,omitempty" xml:"sub_ins_order_ids,omitempty"`
+	SupplierCode         *string `json:"supplier_code,omitempty" xml:"supplier_code,omitempty"`
+}
+
+func (s InsureOrderRefundShrinkRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s InsureOrderRefundShrinkRequest) GoString() string {
+	return s.String()
+}
+
+func (s *InsureOrderRefundShrinkRequest) SetBtripUserId(v string) *InsureOrderRefundShrinkRequest {
+	s.BtripUserId = &v
+	return s
+}
+
+func (s *InsureOrderRefundShrinkRequest) SetBuyerName(v string) *InsureOrderRefundShrinkRequest {
+	s.BuyerName = &v
+	return s
+}
+
+func (s *InsureOrderRefundShrinkRequest) SetIsvName(v string) *InsureOrderRefundShrinkRequest {
+	s.IsvName = &v
+	return s
+}
+
+func (s *InsureOrderRefundShrinkRequest) SetOutApplyId(v string) *InsureOrderRefundShrinkRequest {
+	s.OutApplyId = &v
+	return s
+}
+
+func (s *InsureOrderRefundShrinkRequest) SetPolicyNoListShrink(v string) *InsureOrderRefundShrinkRequest {
+	s.PolicyNoListShrink = &v
+	return s
+}
+
+func (s *InsureOrderRefundShrinkRequest) SetSubInsOrderIdsShrink(v string) *InsureOrderRefundShrinkRequest {
+	s.SubInsOrderIdsShrink = &v
+	return s
+}
+
+func (s *InsureOrderRefundShrinkRequest) SetSupplierCode(v string) *InsureOrderRefundShrinkRequest {
+	s.SupplierCode = &v
+	return s
+}
+
+type InsureOrderRefundResponseBody struct {
+	Code      *string                              `json:"code,omitempty" xml:"code,omitempty"`
+	Message   *string                              `json:"message,omitempty" xml:"message,omitempty"`
+	Module    *InsureOrderRefundResponseBodyModule `json:"module,omitempty" xml:"module,omitempty" type:"Struct"`
+	RequestId *string                              `json:"requestId,omitempty" xml:"requestId,omitempty"`
+	Success   *bool                                `json:"success,omitempty" xml:"success,omitempty"`
+	TraceId   *string                              `json:"traceId,omitempty" xml:"traceId,omitempty"`
+}
+
+func (s InsureOrderRefundResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s InsureOrderRefundResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *InsureOrderRefundResponseBody) SetCode(v string) *InsureOrderRefundResponseBody {
+	s.Code = &v
+	return s
+}
+
+func (s *InsureOrderRefundResponseBody) SetMessage(v string) *InsureOrderRefundResponseBody {
+	s.Message = &v
+	return s
+}
+
+func (s *InsureOrderRefundResponseBody) SetModule(v *InsureOrderRefundResponseBodyModule) *InsureOrderRefundResponseBody {
+	s.Module = v
+	return s
+}
+
+func (s *InsureOrderRefundResponseBody) SetRequestId(v string) *InsureOrderRefundResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *InsureOrderRefundResponseBody) SetSuccess(v bool) *InsureOrderRefundResponseBody {
+	s.Success = &v
+	return s
+}
+
+func (s *InsureOrderRefundResponseBody) SetTraceId(v string) *InsureOrderRefundResponseBody {
+	s.TraceId = &v
+	return s
+}
+
+type InsureOrderRefundResponseBodyModule struct {
+	ApplyId       *string                                             `json:"apply_id,omitempty" xml:"apply_id,omitempty"`
+	InsOrderId    *string                                             `json:"ins_order_id,omitempty" xml:"ins_order_id,omitempty"`
+	InsRefundList []*InsureOrderRefundResponseBodyModuleInsRefundList `json:"ins_refund_list,omitempty" xml:"ins_refund_list,omitempty" type:"Repeated"`
+	OutApplyId    *string                                             `json:"out_apply_id,omitempty" xml:"out_apply_id,omitempty"`
+}
+
+func (s InsureOrderRefundResponseBodyModule) String() string {
+	return tea.Prettify(s)
+}
+
+func (s InsureOrderRefundResponseBodyModule) GoString() string {
+	return s.String()
+}
+
+func (s *InsureOrderRefundResponseBodyModule) SetApplyId(v string) *InsureOrderRefundResponseBodyModule {
+	s.ApplyId = &v
+	return s
+}
+
+func (s *InsureOrderRefundResponseBodyModule) SetInsOrderId(v string) *InsureOrderRefundResponseBodyModule {
+	s.InsOrderId = &v
+	return s
+}
+
+func (s *InsureOrderRefundResponseBodyModule) SetInsRefundList(v []*InsureOrderRefundResponseBodyModuleInsRefundList) *InsureOrderRefundResponseBodyModule {
+	s.InsRefundList = v
+	return s
+}
+
+func (s *InsureOrderRefundResponseBodyModule) SetOutApplyId(v string) *InsureOrderRefundResponseBodyModule {
+	s.OutApplyId = &v
+	return s
+}
+
+type InsureOrderRefundResponseBodyModuleInsRefundList struct {
+	PolicyRefundNo *string `json:"policy_refund_no,omitempty" xml:"policy_refund_no,omitempty"`
+	RefundStatus   *string `json:"refund_status,omitempty" xml:"refund_status,omitempty"`
+	SubInsOrderId  *string `json:"sub_ins_order_id,omitempty" xml:"sub_ins_order_id,omitempty"`
+}
+
+func (s InsureOrderRefundResponseBodyModuleInsRefundList) String() string {
+	return tea.Prettify(s)
+}
+
+func (s InsureOrderRefundResponseBodyModuleInsRefundList) GoString() string {
+	return s.String()
+}
+
+func (s *InsureOrderRefundResponseBodyModuleInsRefundList) SetPolicyRefundNo(v string) *InsureOrderRefundResponseBodyModuleInsRefundList {
+	s.PolicyRefundNo = &v
+	return s
+}
+
+func (s *InsureOrderRefundResponseBodyModuleInsRefundList) SetRefundStatus(v string) *InsureOrderRefundResponseBodyModuleInsRefundList {
+	s.RefundStatus = &v
+	return s
+}
+
+func (s *InsureOrderRefundResponseBodyModuleInsRefundList) SetSubInsOrderId(v string) *InsureOrderRefundResponseBodyModuleInsRefundList {
+	s.SubInsOrderId = &v
+	return s
+}
+
+type InsureOrderRefundResponse struct {
+	Headers    map[string]*string             `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                         `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *InsureOrderRefundResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s InsureOrderRefundResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s InsureOrderRefundResponse) GoString() string {
+	return s.String()
+}
+
+func (s *InsureOrderRefundResponse) SetHeaders(v map[string]*string) *InsureOrderRefundResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *InsureOrderRefundResponse) SetStatusCode(v int32) *InsureOrderRefundResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *InsureOrderRefundResponse) SetBody(v *InsureOrderRefundResponseBody) *InsureOrderRefundResponse {
+	s.Body = v
+	return s
+}
+
+type InsureOrderUrlDetailHeaders struct {
+	CommonHeaders      map[string]*string `json:"commonHeaders,omitempty" xml:"commonHeaders,omitempty"`
+	XAcsBtripCorpToken *string            `json:"x-acs-btrip-corp-token,omitempty" xml:"x-acs-btrip-corp-token,omitempty"`
+}
+
+func (s InsureOrderUrlDetailHeaders) String() string {
+	return tea.Prettify(s)
+}
+
+func (s InsureOrderUrlDetailHeaders) GoString() string {
+	return s.String()
+}
+
+func (s *InsureOrderUrlDetailHeaders) SetCommonHeaders(v map[string]*string) *InsureOrderUrlDetailHeaders {
+	s.CommonHeaders = v
+	return s
+}
+
+func (s *InsureOrderUrlDetailHeaders) SetXAcsBtripCorpToken(v string) *InsureOrderUrlDetailHeaders {
+	s.XAcsBtripCorpToken = &v
+	return s
+}
+
+type InsureOrderUrlDetailResponseBody struct {
+	Code      *string `json:"code,omitempty" xml:"code,omitempty"`
+	Message   *string `json:"message,omitempty" xml:"message,omitempty"`
+	Module    *string `json:"module,omitempty" xml:"module,omitempty"`
+	RequestId *string `json:"requestId,omitempty" xml:"requestId,omitempty"`
+	Success   *bool   `json:"success,omitempty" xml:"success,omitempty"`
+	TraceId   *string `json:"traceId,omitempty" xml:"traceId,omitempty"`
+}
+
+func (s InsureOrderUrlDetailResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s InsureOrderUrlDetailResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *InsureOrderUrlDetailResponseBody) SetCode(v string) *InsureOrderUrlDetailResponseBody {
+	s.Code = &v
+	return s
+}
+
+func (s *InsureOrderUrlDetailResponseBody) SetMessage(v string) *InsureOrderUrlDetailResponseBody {
+	s.Message = &v
+	return s
+}
+
+func (s *InsureOrderUrlDetailResponseBody) SetModule(v string) *InsureOrderUrlDetailResponseBody {
+	s.Module = &v
+	return s
+}
+
+func (s *InsureOrderUrlDetailResponseBody) SetRequestId(v string) *InsureOrderUrlDetailResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *InsureOrderUrlDetailResponseBody) SetSuccess(v bool) *InsureOrderUrlDetailResponseBody {
+	s.Success = &v
+	return s
+}
+
+func (s *InsureOrderUrlDetailResponseBody) SetTraceId(v string) *InsureOrderUrlDetailResponseBody {
+	s.TraceId = &v
+	return s
+}
+
+type InsureOrderUrlDetailResponse struct {
+	Headers    map[string]*string                `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                            `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *InsureOrderUrlDetailResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s InsureOrderUrlDetailResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s InsureOrderUrlDetailResponse) GoString() string {
+	return s.String()
+}
+
+func (s *InsureOrderUrlDetailResponse) SetHeaders(v map[string]*string) *InsureOrderUrlDetailResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *InsureOrderUrlDetailResponse) SetStatusCode(v int32) *InsureOrderUrlDetailResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *InsureOrderUrlDetailResponse) SetBody(v *InsureOrderUrlDetailResponseBody) *InsureOrderUrlDetailResponse {
+	s.Body = v
+	return s
+}
+
+type InsureRefundDetailHeaders struct {
+	CommonHeaders      map[string]*string `json:"commonHeaders,omitempty" xml:"commonHeaders,omitempty"`
+	XAcsBtripCorpToken *string            `json:"x-acs-btrip-corp-token,omitempty" xml:"x-acs-btrip-corp-token,omitempty"`
+}
+
+func (s InsureRefundDetailHeaders) String() string {
+	return tea.Prettify(s)
+}
+
+func (s InsureRefundDetailHeaders) GoString() string {
+	return s.String()
+}
+
+func (s *InsureRefundDetailHeaders) SetCommonHeaders(v map[string]*string) *InsureRefundDetailHeaders {
+	s.CommonHeaders = v
+	return s
+}
+
+func (s *InsureRefundDetailHeaders) SetXAcsBtripCorpToken(v string) *InsureRefundDetailHeaders {
+	s.XAcsBtripCorpToken = &v
+	return s
+}
+
+type InsureRefundDetailRequest struct {
+	ApplyId      *string `json:"apply_id,omitempty" xml:"apply_id,omitempty"`
+	BtripUserId  *string `json:"btrip_user_id,omitempty" xml:"btrip_user_id,omitempty"`
+	BuyerName    *string `json:"buyer_name,omitempty" xml:"buyer_name,omitempty"`
+	InsOrderId   *string `json:"ins_order_id,omitempty" xml:"ins_order_id,omitempty"`
+	IsvName      *string `json:"isv_name,omitempty" xml:"isv_name,omitempty"`
+	OutApplyId   *string `json:"out_apply_id,omitempty" xml:"out_apply_id,omitempty"`
+	SupplierCode *string `json:"supplier_code,omitempty" xml:"supplier_code,omitempty"`
+}
+
+func (s InsureRefundDetailRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s InsureRefundDetailRequest) GoString() string {
+	return s.String()
+}
+
+func (s *InsureRefundDetailRequest) SetApplyId(v string) *InsureRefundDetailRequest {
+	s.ApplyId = &v
+	return s
+}
+
+func (s *InsureRefundDetailRequest) SetBtripUserId(v string) *InsureRefundDetailRequest {
+	s.BtripUserId = &v
+	return s
+}
+
+func (s *InsureRefundDetailRequest) SetBuyerName(v string) *InsureRefundDetailRequest {
+	s.BuyerName = &v
+	return s
+}
+
+func (s *InsureRefundDetailRequest) SetInsOrderId(v string) *InsureRefundDetailRequest {
+	s.InsOrderId = &v
+	return s
+}
+
+func (s *InsureRefundDetailRequest) SetIsvName(v string) *InsureRefundDetailRequest {
+	s.IsvName = &v
+	return s
+}
+
+func (s *InsureRefundDetailRequest) SetOutApplyId(v string) *InsureRefundDetailRequest {
+	s.OutApplyId = &v
+	return s
+}
+
+func (s *InsureRefundDetailRequest) SetSupplierCode(v string) *InsureRefundDetailRequest {
+	s.SupplierCode = &v
+	return s
+}
+
+type InsureRefundDetailResponseBody struct {
+	Code      *string                               `json:"code,omitempty" xml:"code,omitempty"`
+	Message   *string                               `json:"message,omitempty" xml:"message,omitempty"`
+	Module    *InsureRefundDetailResponseBodyModule `json:"module,omitempty" xml:"module,omitempty" type:"Struct"`
+	RequestId *string                               `json:"requestId,omitempty" xml:"requestId,omitempty"`
+	Success   *bool                                 `json:"success,omitempty" xml:"success,omitempty"`
+	TraceId   *string                               `json:"traceId,omitempty" xml:"traceId,omitempty"`
+}
+
+func (s InsureRefundDetailResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s InsureRefundDetailResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *InsureRefundDetailResponseBody) SetCode(v string) *InsureRefundDetailResponseBody {
+	s.Code = &v
+	return s
+}
+
+func (s *InsureRefundDetailResponseBody) SetMessage(v string) *InsureRefundDetailResponseBody {
+	s.Message = &v
+	return s
+}
+
+func (s *InsureRefundDetailResponseBody) SetModule(v *InsureRefundDetailResponseBodyModule) *InsureRefundDetailResponseBody {
+	s.Module = v
+	return s
+}
+
+func (s *InsureRefundDetailResponseBody) SetRequestId(v string) *InsureRefundDetailResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *InsureRefundDetailResponseBody) SetSuccess(v bool) *InsureRefundDetailResponseBody {
+	s.Success = &v
+	return s
+}
+
+func (s *InsureRefundDetailResponseBody) SetTraceId(v string) *InsureRefundDetailResponseBody {
+	s.TraceId = &v
+	return s
+}
+
+type InsureRefundDetailResponseBodyModule struct {
+	ApplyId            *string                                                   `json:"apply_id,omitempty" xml:"apply_id,omitempty"`
+	GmtCreate          *string                                                   `json:"gmt_create,omitempty" xml:"gmt_create,omitempty"`
+	GmtModified        *string                                                   `json:"gmt_modified,omitempty" xml:"gmt_modified,omitempty"`
+	InsOrderId         *string                                                   `json:"ins_order_id,omitempty" xml:"ins_order_id,omitempty"`
+	InsureOrder        *InsureRefundDetailResponseBodyModuleInsureOrder          `json:"insure_order,omitempty" xml:"insure_order,omitempty" type:"Struct"`
+	OutApplyId         *string                                                   `json:"out_apply_id,omitempty" xml:"out_apply_id,omitempty"`
+	SubOrderRefundList []*InsureRefundDetailResponseBodyModuleSubOrderRefundList `json:"sub_order_refund_list,omitempty" xml:"sub_order_refund_list,omitempty" type:"Repeated"`
+}
+
+func (s InsureRefundDetailResponseBodyModule) String() string {
+	return tea.Prettify(s)
+}
+
+func (s InsureRefundDetailResponseBodyModule) GoString() string {
+	return s.String()
+}
+
+func (s *InsureRefundDetailResponseBodyModule) SetApplyId(v string) *InsureRefundDetailResponseBodyModule {
+	s.ApplyId = &v
+	return s
+}
+
+func (s *InsureRefundDetailResponseBodyModule) SetGmtCreate(v string) *InsureRefundDetailResponseBodyModule {
+	s.GmtCreate = &v
+	return s
+}
+
+func (s *InsureRefundDetailResponseBodyModule) SetGmtModified(v string) *InsureRefundDetailResponseBodyModule {
+	s.GmtModified = &v
+	return s
+}
+
+func (s *InsureRefundDetailResponseBodyModule) SetInsOrderId(v string) *InsureRefundDetailResponseBodyModule {
+	s.InsOrderId = &v
+	return s
+}
+
+func (s *InsureRefundDetailResponseBodyModule) SetInsureOrder(v *InsureRefundDetailResponseBodyModuleInsureOrder) *InsureRefundDetailResponseBodyModule {
+	s.InsureOrder = v
+	return s
+}
+
+func (s *InsureRefundDetailResponseBodyModule) SetOutApplyId(v string) *InsureRefundDetailResponseBodyModule {
+	s.OutApplyId = &v
+	return s
+}
+
+func (s *InsureRefundDetailResponseBodyModule) SetSubOrderRefundList(v []*InsureRefundDetailResponseBodyModuleSubOrderRefundList) *InsureRefundDetailResponseBodyModule {
+	s.SubOrderRefundList = v
+	return s
+}
+
+type InsureRefundDetailResponseBodyModuleInsureOrder struct {
+	Applicant     *InsureRefundDetailResponseBodyModuleInsureOrderApplicant `json:"applicant,omitempty" xml:"applicant,omitempty" type:"Struct"`
+	BizOrderId    *string                                                   `json:"biz_order_id,omitempty" xml:"biz_order_id,omitempty"`
+	BizType       *int32                                                    `json:"biz_type,omitempty" xml:"biz_type,omitempty"`
+	CloseTime     *string                                                   `json:"close_time,omitempty" xml:"close_time,omitempty"`
+	InsOrderId    *string                                                   `json:"ins_order_id,omitempty" xml:"ins_order_id,omitempty"`
+	OutInsOrderId *string                                                   `json:"out_ins_order_id,omitempty" xml:"out_ins_order_id,omitempty"`
+	PayTime       *string                                                   `json:"pay_time,omitempty" xml:"pay_time,omitempty"`
+	Price         *int64                                                    `json:"price,omitempty" xml:"price,omitempty"`
+	SettleType    *int32                                                    `json:"settle_type,omitempty" xml:"settle_type,omitempty"`
+	Status        *string                                                   `json:"status,omitempty" xml:"status,omitempty"`
+}
+
+func (s InsureRefundDetailResponseBodyModuleInsureOrder) String() string {
+	return tea.Prettify(s)
+}
+
+func (s InsureRefundDetailResponseBodyModuleInsureOrder) GoString() string {
+	return s.String()
+}
+
+func (s *InsureRefundDetailResponseBodyModuleInsureOrder) SetApplicant(v *InsureRefundDetailResponseBodyModuleInsureOrderApplicant) *InsureRefundDetailResponseBodyModuleInsureOrder {
+	s.Applicant = v
+	return s
+}
+
+func (s *InsureRefundDetailResponseBodyModuleInsureOrder) SetBizOrderId(v string) *InsureRefundDetailResponseBodyModuleInsureOrder {
+	s.BizOrderId = &v
+	return s
+}
+
+func (s *InsureRefundDetailResponseBodyModuleInsureOrder) SetBizType(v int32) *InsureRefundDetailResponseBodyModuleInsureOrder {
+	s.BizType = &v
+	return s
+}
+
+func (s *InsureRefundDetailResponseBodyModuleInsureOrder) SetCloseTime(v string) *InsureRefundDetailResponseBodyModuleInsureOrder {
+	s.CloseTime = &v
+	return s
+}
+
+func (s *InsureRefundDetailResponseBodyModuleInsureOrder) SetInsOrderId(v string) *InsureRefundDetailResponseBodyModuleInsureOrder {
+	s.InsOrderId = &v
+	return s
+}
+
+func (s *InsureRefundDetailResponseBodyModuleInsureOrder) SetOutInsOrderId(v string) *InsureRefundDetailResponseBodyModuleInsureOrder {
+	s.OutInsOrderId = &v
+	return s
+}
+
+func (s *InsureRefundDetailResponseBodyModuleInsureOrder) SetPayTime(v string) *InsureRefundDetailResponseBodyModuleInsureOrder {
+	s.PayTime = &v
+	return s
+}
+
+func (s *InsureRefundDetailResponseBodyModuleInsureOrder) SetPrice(v int64) *InsureRefundDetailResponseBodyModuleInsureOrder {
+	s.Price = &v
+	return s
+}
+
+func (s *InsureRefundDetailResponseBodyModuleInsureOrder) SetSettleType(v int32) *InsureRefundDetailResponseBodyModuleInsureOrder {
+	s.SettleType = &v
+	return s
+}
+
+func (s *InsureRefundDetailResponseBodyModuleInsureOrder) SetStatus(v string) *InsureRefundDetailResponseBodyModuleInsureOrder {
+	s.Status = &v
+	return s
+}
+
+type InsureRefundDetailResponseBodyModuleInsureOrderApplicant struct {
+	CertName *string `json:"cert_name,omitempty" xml:"cert_name,omitempty"`
+	CertNo   *string `json:"cert_no,omitempty" xml:"cert_no,omitempty"`
+	CertType *string `json:"cert_type,omitempty" xml:"cert_type,omitempty"`
+	Phone    *string `json:"phone,omitempty" xml:"phone,omitempty"`
+}
+
+func (s InsureRefundDetailResponseBodyModuleInsureOrderApplicant) String() string {
+	return tea.Prettify(s)
+}
+
+func (s InsureRefundDetailResponseBodyModuleInsureOrderApplicant) GoString() string {
+	return s.String()
+}
+
+func (s *InsureRefundDetailResponseBodyModuleInsureOrderApplicant) SetCertName(v string) *InsureRefundDetailResponseBodyModuleInsureOrderApplicant {
+	s.CertName = &v
+	return s
+}
+
+func (s *InsureRefundDetailResponseBodyModuleInsureOrderApplicant) SetCertNo(v string) *InsureRefundDetailResponseBodyModuleInsureOrderApplicant {
+	s.CertNo = &v
+	return s
+}
+
+func (s *InsureRefundDetailResponseBodyModuleInsureOrderApplicant) SetCertType(v string) *InsureRefundDetailResponseBodyModuleInsureOrderApplicant {
+	s.CertType = &v
+	return s
+}
+
+func (s *InsureRefundDetailResponseBodyModuleInsureOrderApplicant) SetPhone(v string) *InsureRefundDetailResponseBodyModuleInsureOrderApplicant {
+	s.Phone = &v
+	return s
+}
+
+type InsureRefundDetailResponseBodyModuleSubOrderRefundList struct {
+	EffectiveEndTime   *string                                                              `json:"effective_end_time,omitempty" xml:"effective_end_time,omitempty"`
+	EffectiveStartTime *string                                                              `json:"effective_start_time,omitempty" xml:"effective_start_time,omitempty"`
+	InsureSegment      *InsureRefundDetailResponseBodyModuleSubOrderRefundListInsureSegment `json:"insure_segment,omitempty" xml:"insure_segment,omitempty" type:"Struct"`
+	InsureTime         *string                                                              `json:"insure_time,omitempty" xml:"insure_time,omitempty"`
+	Insured            *InsureRefundDetailResponseBodyModuleSubOrderRefundListInsured       `json:"insured,omitempty" xml:"insured,omitempty" type:"Struct"`
+	OutSubInsOrderId   *string                                                              `json:"out_sub_ins_order_id,omitempty" xml:"out_sub_ins_order_id,omitempty"`
+	PolicyNo           *string                                                              `json:"policy_no,omitempty" xml:"policy_no,omitempty"`
+	PolicyRefundNo     *string                                                              `json:"policy_refund_no,omitempty" xml:"policy_refund_no,omitempty"`
+	Price              *int64                                                               `json:"price,omitempty" xml:"price,omitempty"`
+	ProductName        *string                                                              `json:"product_name,omitempty" xml:"product_name,omitempty"`
+	ProductNo          *string                                                              `json:"product_no,omitempty" xml:"product_no,omitempty"`
+	RefundStatus       *string                                                              `json:"refund_status,omitempty" xml:"refund_status,omitempty"`
+	RefundTime         *string                                                              `json:"refund_time,omitempty" xml:"refund_time,omitempty"`
+	Status             *string                                                              `json:"status,omitempty" xml:"status,omitempty"`
+	SubInsOrderId      *string                                                              `json:"sub_ins_order_id,omitempty" xml:"sub_ins_order_id,omitempty"`
+}
+
+func (s InsureRefundDetailResponseBodyModuleSubOrderRefundList) String() string {
+	return tea.Prettify(s)
+}
+
+func (s InsureRefundDetailResponseBodyModuleSubOrderRefundList) GoString() string {
+	return s.String()
+}
+
+func (s *InsureRefundDetailResponseBodyModuleSubOrderRefundList) SetEffectiveEndTime(v string) *InsureRefundDetailResponseBodyModuleSubOrderRefundList {
+	s.EffectiveEndTime = &v
+	return s
+}
+
+func (s *InsureRefundDetailResponseBodyModuleSubOrderRefundList) SetEffectiveStartTime(v string) *InsureRefundDetailResponseBodyModuleSubOrderRefundList {
+	s.EffectiveStartTime = &v
+	return s
+}
+
+func (s *InsureRefundDetailResponseBodyModuleSubOrderRefundList) SetInsureSegment(v *InsureRefundDetailResponseBodyModuleSubOrderRefundListInsureSegment) *InsureRefundDetailResponseBodyModuleSubOrderRefundList {
+	s.InsureSegment = v
+	return s
+}
+
+func (s *InsureRefundDetailResponseBodyModuleSubOrderRefundList) SetInsureTime(v string) *InsureRefundDetailResponseBodyModuleSubOrderRefundList {
+	s.InsureTime = &v
+	return s
+}
+
+func (s *InsureRefundDetailResponseBodyModuleSubOrderRefundList) SetInsured(v *InsureRefundDetailResponseBodyModuleSubOrderRefundListInsured) *InsureRefundDetailResponseBodyModuleSubOrderRefundList {
+	s.Insured = v
+	return s
+}
+
+func (s *InsureRefundDetailResponseBodyModuleSubOrderRefundList) SetOutSubInsOrderId(v string) *InsureRefundDetailResponseBodyModuleSubOrderRefundList {
+	s.OutSubInsOrderId = &v
+	return s
+}
+
+func (s *InsureRefundDetailResponseBodyModuleSubOrderRefundList) SetPolicyNo(v string) *InsureRefundDetailResponseBodyModuleSubOrderRefundList {
+	s.PolicyNo = &v
+	return s
+}
+
+func (s *InsureRefundDetailResponseBodyModuleSubOrderRefundList) SetPolicyRefundNo(v string) *InsureRefundDetailResponseBodyModuleSubOrderRefundList {
+	s.PolicyRefundNo = &v
+	return s
+}
+
+func (s *InsureRefundDetailResponseBodyModuleSubOrderRefundList) SetPrice(v int64) *InsureRefundDetailResponseBodyModuleSubOrderRefundList {
+	s.Price = &v
+	return s
+}
+
+func (s *InsureRefundDetailResponseBodyModuleSubOrderRefundList) SetProductName(v string) *InsureRefundDetailResponseBodyModuleSubOrderRefundList {
+	s.ProductName = &v
+	return s
+}
+
+func (s *InsureRefundDetailResponseBodyModuleSubOrderRefundList) SetProductNo(v string) *InsureRefundDetailResponseBodyModuleSubOrderRefundList {
+	s.ProductNo = &v
+	return s
+}
+
+func (s *InsureRefundDetailResponseBodyModuleSubOrderRefundList) SetRefundStatus(v string) *InsureRefundDetailResponseBodyModuleSubOrderRefundList {
+	s.RefundStatus = &v
+	return s
+}
+
+func (s *InsureRefundDetailResponseBodyModuleSubOrderRefundList) SetRefundTime(v string) *InsureRefundDetailResponseBodyModuleSubOrderRefundList {
+	s.RefundTime = &v
+	return s
+}
+
+func (s *InsureRefundDetailResponseBodyModuleSubOrderRefundList) SetStatus(v string) *InsureRefundDetailResponseBodyModuleSubOrderRefundList {
+	s.Status = &v
+	return s
+}
+
+func (s *InsureRefundDetailResponseBodyModuleSubOrderRefundList) SetSubInsOrderId(v string) *InsureRefundDetailResponseBodyModuleSubOrderRefundList {
+	s.SubInsOrderId = &v
+	return s
+}
+
+type InsureRefundDetailResponseBodyModuleSubOrderRefundListInsureSegment struct {
+	ArrAirportCode *string `json:"arr_airport_code,omitempty" xml:"arr_airport_code,omitempty"`
+	ArrCity        *string `json:"arr_city,omitempty" xml:"arr_city,omitempty"`
+	ArrCityCode    *string `json:"arr_city_code,omitempty" xml:"arr_city_code,omitempty"`
+	ArrTime        *string `json:"arr_time,omitempty" xml:"arr_time,omitempty"`
+	DepAirportCode *string `json:"dep_airport_code,omitempty" xml:"dep_airport_code,omitempty"`
+	DepCity        *string `json:"dep_city,omitempty" xml:"dep_city,omitempty"`
+	DepCityCode    *string `json:"dep_city_code,omitempty" xml:"dep_city_code,omitempty"`
+	DepTime        *string `json:"dep_time,omitempty" xml:"dep_time,omitempty"`
+	FlightNo       *string `json:"flight_no,omitempty" xml:"flight_no,omitempty"`
+}
+
+func (s InsureRefundDetailResponseBodyModuleSubOrderRefundListInsureSegment) String() string {
+	return tea.Prettify(s)
+}
+
+func (s InsureRefundDetailResponseBodyModuleSubOrderRefundListInsureSegment) GoString() string {
+	return s.String()
+}
+
+func (s *InsureRefundDetailResponseBodyModuleSubOrderRefundListInsureSegment) SetArrAirportCode(v string) *InsureRefundDetailResponseBodyModuleSubOrderRefundListInsureSegment {
+	s.ArrAirportCode = &v
+	return s
+}
+
+func (s *InsureRefundDetailResponseBodyModuleSubOrderRefundListInsureSegment) SetArrCity(v string) *InsureRefundDetailResponseBodyModuleSubOrderRefundListInsureSegment {
+	s.ArrCity = &v
+	return s
+}
+
+func (s *InsureRefundDetailResponseBodyModuleSubOrderRefundListInsureSegment) SetArrCityCode(v string) *InsureRefundDetailResponseBodyModuleSubOrderRefundListInsureSegment {
+	s.ArrCityCode = &v
+	return s
+}
+
+func (s *InsureRefundDetailResponseBodyModuleSubOrderRefundListInsureSegment) SetArrTime(v string) *InsureRefundDetailResponseBodyModuleSubOrderRefundListInsureSegment {
+	s.ArrTime = &v
+	return s
+}
+
+func (s *InsureRefundDetailResponseBodyModuleSubOrderRefundListInsureSegment) SetDepAirportCode(v string) *InsureRefundDetailResponseBodyModuleSubOrderRefundListInsureSegment {
+	s.DepAirportCode = &v
+	return s
+}
+
+func (s *InsureRefundDetailResponseBodyModuleSubOrderRefundListInsureSegment) SetDepCity(v string) *InsureRefundDetailResponseBodyModuleSubOrderRefundListInsureSegment {
+	s.DepCity = &v
+	return s
+}
+
+func (s *InsureRefundDetailResponseBodyModuleSubOrderRefundListInsureSegment) SetDepCityCode(v string) *InsureRefundDetailResponseBodyModuleSubOrderRefundListInsureSegment {
+	s.DepCityCode = &v
+	return s
+}
+
+func (s *InsureRefundDetailResponseBodyModuleSubOrderRefundListInsureSegment) SetDepTime(v string) *InsureRefundDetailResponseBodyModuleSubOrderRefundListInsureSegment {
+	s.DepTime = &v
+	return s
+}
+
+func (s *InsureRefundDetailResponseBodyModuleSubOrderRefundListInsureSegment) SetFlightNo(v string) *InsureRefundDetailResponseBodyModuleSubOrderRefundListInsureSegment {
+	s.FlightNo = &v
+	return s
+}
+
+type InsureRefundDetailResponseBodyModuleSubOrderRefundListInsured struct {
+	Birthday    *string `json:"birthday,omitempty" xml:"birthday,omitempty"`
+	BtripUserId *string `json:"btrip_user_id,omitempty" xml:"btrip_user_id,omitempty"`
+	CertName    *string `json:"cert_name,omitempty" xml:"cert_name,omitempty"`
+	CertNo      *string `json:"cert_no,omitempty" xml:"cert_no,omitempty"`
+	CertType    *string `json:"cert_type,omitempty" xml:"cert_type,omitempty"`
+	Gender      *string `json:"gender,omitempty" xml:"gender,omitempty"`
+	Phone       *string `json:"phone,omitempty" xml:"phone,omitempty"`
+}
+
+func (s InsureRefundDetailResponseBodyModuleSubOrderRefundListInsured) String() string {
+	return tea.Prettify(s)
+}
+
+func (s InsureRefundDetailResponseBodyModuleSubOrderRefundListInsured) GoString() string {
+	return s.String()
+}
+
+func (s *InsureRefundDetailResponseBodyModuleSubOrderRefundListInsured) SetBirthday(v string) *InsureRefundDetailResponseBodyModuleSubOrderRefundListInsured {
+	s.Birthday = &v
+	return s
+}
+
+func (s *InsureRefundDetailResponseBodyModuleSubOrderRefundListInsured) SetBtripUserId(v string) *InsureRefundDetailResponseBodyModuleSubOrderRefundListInsured {
+	s.BtripUserId = &v
+	return s
+}
+
+func (s *InsureRefundDetailResponseBodyModuleSubOrderRefundListInsured) SetCertName(v string) *InsureRefundDetailResponseBodyModuleSubOrderRefundListInsured {
+	s.CertName = &v
+	return s
+}
+
+func (s *InsureRefundDetailResponseBodyModuleSubOrderRefundListInsured) SetCertNo(v string) *InsureRefundDetailResponseBodyModuleSubOrderRefundListInsured {
+	s.CertNo = &v
+	return s
+}
+
+func (s *InsureRefundDetailResponseBodyModuleSubOrderRefundListInsured) SetCertType(v string) *InsureRefundDetailResponseBodyModuleSubOrderRefundListInsured {
+	s.CertType = &v
+	return s
+}
+
+func (s *InsureRefundDetailResponseBodyModuleSubOrderRefundListInsured) SetGender(v string) *InsureRefundDetailResponseBodyModuleSubOrderRefundListInsured {
+	s.Gender = &v
+	return s
+}
+
+func (s *InsureRefundDetailResponseBodyModuleSubOrderRefundListInsured) SetPhone(v string) *InsureRefundDetailResponseBodyModuleSubOrderRefundListInsured {
+	s.Phone = &v
+	return s
+}
+
+type InsureRefundDetailResponse struct {
+	Headers    map[string]*string              `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                          `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *InsureRefundDetailResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s InsureRefundDetailResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s InsureRefundDetailResponse) GoString() string {
+	return s.String()
+}
+
+func (s *InsureRefundDetailResponse) SetHeaders(v map[string]*string) *InsureRefundDetailResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *InsureRefundDetailResponse) SetStatusCode(v int32) *InsureRefundDetailResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *InsureRefundDetailResponse) SetBody(v *InsureRefundDetailResponseBody) *InsureRefundDetailResponse {
+	s.Body = v
+	return s
+}
+
 type InvoiceAddHeaders struct {
 	CommonHeaders        map[string]*string `json:"commonHeaders,omitempty" xml:"commonHeaders,omitempty"`
 	XAcsBtripSoCorpToken *string            `json:"x-acs-btrip-so-corp-token,omitempty" xml:"x-acs-btrip-so-corp-token,omitempty"`
@@ -67060,6 +67958,219 @@ func (client *Client) InsureOrderPay(insOrderId *string, request *InsureOrderPay
 	headers := &InsureOrderPayHeaders{}
 	_result = &InsureOrderPayResponse{}
 	_body, _err := client.InsureOrderPayWithOptions(insOrderId, request, headers, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) InsureOrderRefundWithOptions(insOrderId *string, tmpReq *InsureOrderRefundRequest, headers *InsureOrderRefundHeaders, runtime *util.RuntimeOptions) (_result *InsureOrderRefundResponse, _err error) {
+	_err = util.ValidateModel(tmpReq)
+	if _err != nil {
+		return _result, _err
+	}
+	request := &InsureOrderRefundShrinkRequest{}
+	openapiutil.Convert(tmpReq, request)
+	if !tea.BoolValue(util.IsUnset(tmpReq.PolicyNoList)) {
+		request.PolicyNoListShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.PolicyNoList, tea.String("policy_no_list"), tea.String("json"))
+	}
+
+	if !tea.BoolValue(util.IsUnset(tmpReq.SubInsOrderIds)) {
+		request.SubInsOrderIdsShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.SubInsOrderIds, tea.String("sub_ins_order_ids"), tea.String("json"))
+	}
+
+	body := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.BtripUserId)) {
+		body["btrip_user_id"] = request.BtripUserId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.BuyerName)) {
+		body["buyer_name"] = request.BuyerName
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.IsvName)) {
+		body["isv_name"] = request.IsvName
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.OutApplyId)) {
+		body["out_apply_id"] = request.OutApplyId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.PolicyNoListShrink)) {
+		body["policy_no_list"] = request.PolicyNoListShrink
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.SubInsOrderIdsShrink)) {
+		body["sub_ins_order_ids"] = request.SubInsOrderIdsShrink
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.SupplierCode)) {
+		body["supplier_code"] = request.SupplierCode
+	}
+
+	realHeaders := make(map[string]*string)
+	if !tea.BoolValue(util.IsUnset(headers.CommonHeaders)) {
+		realHeaders = headers.CommonHeaders
+	}
+
+	if !tea.BoolValue(util.IsUnset(headers.XAcsBtripCorpToken)) {
+		realHeaders["x-acs-btrip-corp-token"] = util.ToJSONString(headers.XAcsBtripCorpToken)
+	}
+
+	req := &openapi.OpenApiRequest{
+		Headers: realHeaders,
+		Body:    openapiutil.ParseToMap(body),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("InsureOrderRefund"),
+		Version:     tea.String("2022-05-20"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/dtb-flight/v1/insurances/" + tea.StringValue(openapiutil.GetEncodeParam(insOrderId)) + "/action/refund"),
+		Method:      tea.String("PUT"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("ROA"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &InsureOrderRefundResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) InsureOrderRefund(insOrderId *string, request *InsureOrderRefundRequest) (_result *InsureOrderRefundResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	headers := &InsureOrderRefundHeaders{}
+	_result = &InsureOrderRefundResponse{}
+	_body, _err := client.InsureOrderRefundWithOptions(insOrderId, request, headers, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) InsureOrderUrlDetailWithOptions(insOrderId *string, headers *InsureOrderUrlDetailHeaders, runtime *util.RuntimeOptions) (_result *InsureOrderUrlDetailResponse, _err error) {
+	realHeaders := make(map[string]*string)
+	if !tea.BoolValue(util.IsUnset(headers.CommonHeaders)) {
+		realHeaders = headers.CommonHeaders
+	}
+
+	if !tea.BoolValue(util.IsUnset(headers.XAcsBtripCorpToken)) {
+		realHeaders["x-acs-btrip-corp-token"] = util.ToJSONString(headers.XAcsBtripCorpToken)
+	}
+
+	req := &openapi.OpenApiRequest{
+		Headers: realHeaders,
+	}
+	params := &openapi.Params{
+		Action:      tea.String("InsureOrderUrlDetail"),
+		Version:     tea.String("2022-05-20"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/dtb-flight/v1/insurances/" + tea.StringValue(openapiutil.GetEncodeParam(insOrderId))),
+		Method:      tea.String("GET"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("ROA"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &InsureOrderUrlDetailResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) InsureOrderUrlDetail(insOrderId *string) (_result *InsureOrderUrlDetailResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	headers := &InsureOrderUrlDetailHeaders{}
+	_result = &InsureOrderUrlDetailResponse{}
+	_body, _err := client.InsureOrderUrlDetailWithOptions(insOrderId, headers, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) InsureRefundDetailWithOptions(request *InsureRefundDetailRequest, headers *InsureRefundDetailHeaders, runtime *util.RuntimeOptions) (_result *InsureRefundDetailResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.ApplyId)) {
+		query["apply_id"] = request.ApplyId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.BtripUserId)) {
+		query["btrip_user_id"] = request.BtripUserId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.BuyerName)) {
+		query["buyer_name"] = request.BuyerName
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.InsOrderId)) {
+		query["ins_order_id"] = request.InsOrderId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.IsvName)) {
+		query["isv_name"] = request.IsvName
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.OutApplyId)) {
+		query["out_apply_id"] = request.OutApplyId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.SupplierCode)) {
+		query["supplier_code"] = request.SupplierCode
+	}
+
+	realHeaders := make(map[string]*string)
+	if !tea.BoolValue(util.IsUnset(headers.CommonHeaders)) {
+		realHeaders = headers.CommonHeaders
+	}
+
+	if !tea.BoolValue(util.IsUnset(headers.XAcsBtripCorpToken)) {
+		realHeaders["x-acs-btrip-corp-token"] = util.ToJSONString(headers.XAcsBtripCorpToken)
+	}
+
+	req := &openapi.OpenApiRequest{
+		Headers: realHeaders,
+		Query:   openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("InsureRefundDetail"),
+		Version:     tea.String("2022-05-20"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/dtb-flight/v1/insurances/action/refund-detail"),
+		Method:      tea.String("GET"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("ROA"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &InsureRefundDetailResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) InsureRefundDetail(request *InsureRefundDetailRequest) (_result *InsureRefundDetailResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	headers := &InsureRefundDetailHeaders{}
+	_result = &InsureRefundDetailResponse{}
+	_body, _err := client.InsureRefundDetailWithOptions(request, headers, runtime)
 	if _err != nil {
 		return _result, _err
 	}
