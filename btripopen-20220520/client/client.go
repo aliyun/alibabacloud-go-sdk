@@ -46816,6 +46816,1400 @@ func (s *InsInvoiceScanQueryResponse) SetBody(v *InsInvoiceScanQueryResponseBody
 	return s
 }
 
+type InsureOrderApplyHeaders struct {
+	CommonHeaders      map[string]*string `json:"commonHeaders,omitempty" xml:"commonHeaders,omitempty"`
+	XAcsBtripCorpToken *string            `json:"x-acs-btrip-corp-token,omitempty" xml:"x-acs-btrip-corp-token,omitempty"`
+}
+
+func (s InsureOrderApplyHeaders) String() string {
+	return tea.Prettify(s)
+}
+
+func (s InsureOrderApplyHeaders) GoString() string {
+	return s.String()
+}
+
+func (s *InsureOrderApplyHeaders) SetCommonHeaders(v map[string]*string) *InsureOrderApplyHeaders {
+	s.CommonHeaders = v
+	return s
+}
+
+func (s *InsureOrderApplyHeaders) SetXAcsBtripCorpToken(v string) *InsureOrderApplyHeaders {
+	s.XAcsBtripCorpToken = &v
+	return s
+}
+
+type InsureOrderApplyRequest struct {
+	BtripUserId   *string `json:"btrip_user_id,omitempty" xml:"btrip_user_id,omitempty"`
+	BuyerName     *string `json:"buyer_name,omitempty" xml:"buyer_name,omitempty"`
+	InsOrderId    *string `json:"ins_order_id,omitempty" xml:"ins_order_id,omitempty"`
+	IsvName       *string `json:"isv_name,omitempty" xml:"isv_name,omitempty"`
+	OutOrderId    *string `json:"out_order_id,omitempty" xml:"out_order_id,omitempty"`
+	OutSubOrderId *string `json:"out_sub_order_id,omitempty" xml:"out_sub_order_id,omitempty"`
+	SupplierCode  *string `json:"supplier_code,omitempty" xml:"supplier_code,omitempty"`
+}
+
+func (s InsureOrderApplyRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s InsureOrderApplyRequest) GoString() string {
+	return s.String()
+}
+
+func (s *InsureOrderApplyRequest) SetBtripUserId(v string) *InsureOrderApplyRequest {
+	s.BtripUserId = &v
+	return s
+}
+
+func (s *InsureOrderApplyRequest) SetBuyerName(v string) *InsureOrderApplyRequest {
+	s.BuyerName = &v
+	return s
+}
+
+func (s *InsureOrderApplyRequest) SetInsOrderId(v string) *InsureOrderApplyRequest {
+	s.InsOrderId = &v
+	return s
+}
+
+func (s *InsureOrderApplyRequest) SetIsvName(v string) *InsureOrderApplyRequest {
+	s.IsvName = &v
+	return s
+}
+
+func (s *InsureOrderApplyRequest) SetOutOrderId(v string) *InsureOrderApplyRequest {
+	s.OutOrderId = &v
+	return s
+}
+
+func (s *InsureOrderApplyRequest) SetOutSubOrderId(v string) *InsureOrderApplyRequest {
+	s.OutSubOrderId = &v
+	return s
+}
+
+func (s *InsureOrderApplyRequest) SetSupplierCode(v string) *InsureOrderApplyRequest {
+	s.SupplierCode = &v
+	return s
+}
+
+type InsureOrderApplyResponseBody struct {
+	Code      *string                             `json:"code,omitempty" xml:"code,omitempty"`
+	Message   *string                             `json:"message,omitempty" xml:"message,omitempty"`
+	Module    *InsureOrderApplyResponseBodyModule `json:"module,omitempty" xml:"module,omitempty" type:"Struct"`
+	RequestId *string                             `json:"requestId,omitempty" xml:"requestId,omitempty"`
+	Success   *bool                               `json:"success,omitempty" xml:"success,omitempty"`
+	TraceId   *string                             `json:"traceId,omitempty" xml:"traceId,omitempty"`
+}
+
+func (s InsureOrderApplyResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s InsureOrderApplyResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *InsureOrderApplyResponseBody) SetCode(v string) *InsureOrderApplyResponseBody {
+	s.Code = &v
+	return s
+}
+
+func (s *InsureOrderApplyResponseBody) SetMessage(v string) *InsureOrderApplyResponseBody {
+	s.Message = &v
+	return s
+}
+
+func (s *InsureOrderApplyResponseBody) SetModule(v *InsureOrderApplyResponseBodyModule) *InsureOrderApplyResponseBody {
+	s.Module = v
+	return s
+}
+
+func (s *InsureOrderApplyResponseBody) SetRequestId(v string) *InsureOrderApplyResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *InsureOrderApplyResponseBody) SetSuccess(v bool) *InsureOrderApplyResponseBody {
+	s.Success = &v
+	return s
+}
+
+func (s *InsureOrderApplyResponseBody) SetTraceId(v string) *InsureOrderApplyResponseBody {
+	s.TraceId = &v
+	return s
+}
+
+type InsureOrderApplyResponseBodyModule struct {
+	InsOrderId         *string                                                 `json:"ins_order_id,omitempty" xml:"ins_order_id,omitempty"`
+	InsOrderPolicyList []*InsureOrderApplyResponseBodyModuleInsOrderPolicyList `json:"ins_order_policy_list,omitempty" xml:"ins_order_policy_list,omitempty" type:"Repeated"`
+}
+
+func (s InsureOrderApplyResponseBodyModule) String() string {
+	return tea.Prettify(s)
+}
+
+func (s InsureOrderApplyResponseBodyModule) GoString() string {
+	return s.String()
+}
+
+func (s *InsureOrderApplyResponseBodyModule) SetInsOrderId(v string) *InsureOrderApplyResponseBodyModule {
+	s.InsOrderId = &v
+	return s
+}
+
+func (s *InsureOrderApplyResponseBodyModule) SetInsOrderPolicyList(v []*InsureOrderApplyResponseBodyModuleInsOrderPolicyList) *InsureOrderApplyResponseBodyModule {
+	s.InsOrderPolicyList = v
+	return s
+}
+
+type InsureOrderApplyResponseBodyModuleInsOrderPolicyList struct {
+	OutSubInsOrderId *string `json:"out_sub_ins_order_id,omitempty" xml:"out_sub_ins_order_id,omitempty"`
+	PolicyNo         *string `json:"policy_no,omitempty" xml:"policy_no,omitempty"`
+	Status           *string `json:"status,omitempty" xml:"status,omitempty"`
+	SubInsOrderId    *string `json:"sub_ins_order_id,omitempty" xml:"sub_ins_order_id,omitempty"`
+}
+
+func (s InsureOrderApplyResponseBodyModuleInsOrderPolicyList) String() string {
+	return tea.Prettify(s)
+}
+
+func (s InsureOrderApplyResponseBodyModuleInsOrderPolicyList) GoString() string {
+	return s.String()
+}
+
+func (s *InsureOrderApplyResponseBodyModuleInsOrderPolicyList) SetOutSubInsOrderId(v string) *InsureOrderApplyResponseBodyModuleInsOrderPolicyList {
+	s.OutSubInsOrderId = &v
+	return s
+}
+
+func (s *InsureOrderApplyResponseBodyModuleInsOrderPolicyList) SetPolicyNo(v string) *InsureOrderApplyResponseBodyModuleInsOrderPolicyList {
+	s.PolicyNo = &v
+	return s
+}
+
+func (s *InsureOrderApplyResponseBodyModuleInsOrderPolicyList) SetStatus(v string) *InsureOrderApplyResponseBodyModuleInsOrderPolicyList {
+	s.Status = &v
+	return s
+}
+
+func (s *InsureOrderApplyResponseBodyModuleInsOrderPolicyList) SetSubInsOrderId(v string) *InsureOrderApplyResponseBodyModuleInsOrderPolicyList {
+	s.SubInsOrderId = &v
+	return s
+}
+
+type InsureOrderApplyResponse struct {
+	Headers    map[string]*string            `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                        `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *InsureOrderApplyResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s InsureOrderApplyResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s InsureOrderApplyResponse) GoString() string {
+	return s.String()
+}
+
+func (s *InsureOrderApplyResponse) SetHeaders(v map[string]*string) *InsureOrderApplyResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *InsureOrderApplyResponse) SetStatusCode(v int32) *InsureOrderApplyResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *InsureOrderApplyResponse) SetBody(v *InsureOrderApplyResponseBody) *InsureOrderApplyResponse {
+	s.Body = v
+	return s
+}
+
+type InsureOrderCancelHeaders struct {
+	CommonHeaders      map[string]*string `json:"commonHeaders,omitempty" xml:"commonHeaders,omitempty"`
+	XAcsBtripCorpToken *string            `json:"x-acs-btrip-corp-token,omitempty" xml:"x-acs-btrip-corp-token,omitempty"`
+}
+
+func (s InsureOrderCancelHeaders) String() string {
+	return tea.Prettify(s)
+}
+
+func (s InsureOrderCancelHeaders) GoString() string {
+	return s.String()
+}
+
+func (s *InsureOrderCancelHeaders) SetCommonHeaders(v map[string]*string) *InsureOrderCancelHeaders {
+	s.CommonHeaders = v
+	return s
+}
+
+func (s *InsureOrderCancelHeaders) SetXAcsBtripCorpToken(v string) *InsureOrderCancelHeaders {
+	s.XAcsBtripCorpToken = &v
+	return s
+}
+
+type InsureOrderCancelRequest struct {
+	BtripUserId  *string `json:"btrip_user_id,omitempty" xml:"btrip_user_id,omitempty"`
+	BuyerName    *string `json:"buyer_name,omitempty" xml:"buyer_name,omitempty"`
+	IsvName      *string `json:"isv_name,omitempty" xml:"isv_name,omitempty"`
+	SupplierCode *string `json:"supplier_code,omitempty" xml:"supplier_code,omitempty"`
+}
+
+func (s InsureOrderCancelRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s InsureOrderCancelRequest) GoString() string {
+	return s.String()
+}
+
+func (s *InsureOrderCancelRequest) SetBtripUserId(v string) *InsureOrderCancelRequest {
+	s.BtripUserId = &v
+	return s
+}
+
+func (s *InsureOrderCancelRequest) SetBuyerName(v string) *InsureOrderCancelRequest {
+	s.BuyerName = &v
+	return s
+}
+
+func (s *InsureOrderCancelRequest) SetIsvName(v string) *InsureOrderCancelRequest {
+	s.IsvName = &v
+	return s
+}
+
+func (s *InsureOrderCancelRequest) SetSupplierCode(v string) *InsureOrderCancelRequest {
+	s.SupplierCode = &v
+	return s
+}
+
+type InsureOrderCancelResponseBody struct {
+	Code      *string `json:"code,omitempty" xml:"code,omitempty"`
+	Message   *string `json:"message,omitempty" xml:"message,omitempty"`
+	RequestId *string `json:"requestId,omitempty" xml:"requestId,omitempty"`
+	Success   *bool   `json:"success,omitempty" xml:"success,omitempty"`
+	TraceId   *string `json:"traceId,omitempty" xml:"traceId,omitempty"`
+}
+
+func (s InsureOrderCancelResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s InsureOrderCancelResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *InsureOrderCancelResponseBody) SetCode(v string) *InsureOrderCancelResponseBody {
+	s.Code = &v
+	return s
+}
+
+func (s *InsureOrderCancelResponseBody) SetMessage(v string) *InsureOrderCancelResponseBody {
+	s.Message = &v
+	return s
+}
+
+func (s *InsureOrderCancelResponseBody) SetRequestId(v string) *InsureOrderCancelResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *InsureOrderCancelResponseBody) SetSuccess(v bool) *InsureOrderCancelResponseBody {
+	s.Success = &v
+	return s
+}
+
+func (s *InsureOrderCancelResponseBody) SetTraceId(v string) *InsureOrderCancelResponseBody {
+	s.TraceId = &v
+	return s
+}
+
+type InsureOrderCancelResponse struct {
+	Headers    map[string]*string             `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                         `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *InsureOrderCancelResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s InsureOrderCancelResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s InsureOrderCancelResponse) GoString() string {
+	return s.String()
+}
+
+func (s *InsureOrderCancelResponse) SetHeaders(v map[string]*string) *InsureOrderCancelResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *InsureOrderCancelResponse) SetStatusCode(v int32) *InsureOrderCancelResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *InsureOrderCancelResponse) SetBody(v *InsureOrderCancelResponseBody) *InsureOrderCancelResponse {
+	s.Body = v
+	return s
+}
+
+type InsureOrderCreateHeaders struct {
+	CommonHeaders      map[string]*string `json:"commonHeaders,omitempty" xml:"commonHeaders,omitempty"`
+	XAcsBtripCorpToken *string            `json:"x-acs-btrip-corp-token,omitempty" xml:"x-acs-btrip-corp-token,omitempty"`
+}
+
+func (s InsureOrderCreateHeaders) String() string {
+	return tea.Prettify(s)
+}
+
+func (s InsureOrderCreateHeaders) GoString() string {
+	return s.String()
+}
+
+func (s *InsureOrderCreateHeaders) SetCommonHeaders(v map[string]*string) *InsureOrderCreateHeaders {
+	s.CommonHeaders = v
+	return s
+}
+
+func (s *InsureOrderCreateHeaders) SetXAcsBtripCorpToken(v string) *InsureOrderCreateHeaders {
+	s.XAcsBtripCorpToken = &v
+	return s
+}
+
+type InsureOrderCreateRequest struct {
+	Applicant               *InsureOrderCreateRequestApplicant                 `json:"applicant,omitempty" xml:"applicant,omitempty" type:"Struct"`
+	BtripUserId             *string                                            `json:"btrip_user_id,omitempty" xml:"btrip_user_id,omitempty"`
+	BuyerName               *string                                            `json:"buyer_name,omitempty" xml:"buyer_name,omitempty"`
+	InsPersonAndSegmentList []*InsureOrderCreateRequestInsPersonAndSegmentList `json:"ins_person_and_segment_list,omitempty" xml:"ins_person_and_segment_list,omitempty" type:"Repeated"`
+	IsvName                 *string                                            `json:"isv_name,omitempty" xml:"isv_name,omitempty"`
+	OutInsOrderId           *string                                            `json:"out_ins_order_id,omitempty" xml:"out_ins_order_id,omitempty"`
+	OutOrderId              *string                                            `json:"out_order_id,omitempty" xml:"out_order_id,omitempty"`
+	OutSubOrderId           *string                                            `json:"out_sub_order_id,omitempty" xml:"out_sub_order_id,omitempty"`
+	SupplierCode            *string                                            `json:"supplier_code,omitempty" xml:"supplier_code,omitempty"`
+}
+
+func (s InsureOrderCreateRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s InsureOrderCreateRequest) GoString() string {
+	return s.String()
+}
+
+func (s *InsureOrderCreateRequest) SetApplicant(v *InsureOrderCreateRequestApplicant) *InsureOrderCreateRequest {
+	s.Applicant = v
+	return s
+}
+
+func (s *InsureOrderCreateRequest) SetBtripUserId(v string) *InsureOrderCreateRequest {
+	s.BtripUserId = &v
+	return s
+}
+
+func (s *InsureOrderCreateRequest) SetBuyerName(v string) *InsureOrderCreateRequest {
+	s.BuyerName = &v
+	return s
+}
+
+func (s *InsureOrderCreateRequest) SetInsPersonAndSegmentList(v []*InsureOrderCreateRequestInsPersonAndSegmentList) *InsureOrderCreateRequest {
+	s.InsPersonAndSegmentList = v
+	return s
+}
+
+func (s *InsureOrderCreateRequest) SetIsvName(v string) *InsureOrderCreateRequest {
+	s.IsvName = &v
+	return s
+}
+
+func (s *InsureOrderCreateRequest) SetOutInsOrderId(v string) *InsureOrderCreateRequest {
+	s.OutInsOrderId = &v
+	return s
+}
+
+func (s *InsureOrderCreateRequest) SetOutOrderId(v string) *InsureOrderCreateRequest {
+	s.OutOrderId = &v
+	return s
+}
+
+func (s *InsureOrderCreateRequest) SetOutSubOrderId(v string) *InsureOrderCreateRequest {
+	s.OutSubOrderId = &v
+	return s
+}
+
+func (s *InsureOrderCreateRequest) SetSupplierCode(v string) *InsureOrderCreateRequest {
+	s.SupplierCode = &v
+	return s
+}
+
+type InsureOrderCreateRequestApplicant struct {
+	Birthday    *string `json:"birthday,omitempty" xml:"birthday,omitempty"`
+	BtripUserId *string `json:"btrip_user_id,omitempty" xml:"btrip_user_id,omitempty"`
+	CertName    *string `json:"cert_name,omitempty" xml:"cert_name,omitempty"`
+	CertNo      *string `json:"cert_no,omitempty" xml:"cert_no,omitempty"`
+	CertType    *string `json:"cert_type,omitempty" xml:"cert_type,omitempty"`
+	Gender      *string `json:"gender,omitempty" xml:"gender,omitempty"`
+	Phone       *string `json:"phone,omitempty" xml:"phone,omitempty"`
+}
+
+func (s InsureOrderCreateRequestApplicant) String() string {
+	return tea.Prettify(s)
+}
+
+func (s InsureOrderCreateRequestApplicant) GoString() string {
+	return s.String()
+}
+
+func (s *InsureOrderCreateRequestApplicant) SetBirthday(v string) *InsureOrderCreateRequestApplicant {
+	s.Birthday = &v
+	return s
+}
+
+func (s *InsureOrderCreateRequestApplicant) SetBtripUserId(v string) *InsureOrderCreateRequestApplicant {
+	s.BtripUserId = &v
+	return s
+}
+
+func (s *InsureOrderCreateRequestApplicant) SetCertName(v string) *InsureOrderCreateRequestApplicant {
+	s.CertName = &v
+	return s
+}
+
+func (s *InsureOrderCreateRequestApplicant) SetCertNo(v string) *InsureOrderCreateRequestApplicant {
+	s.CertNo = &v
+	return s
+}
+
+func (s *InsureOrderCreateRequestApplicant) SetCertType(v string) *InsureOrderCreateRequestApplicant {
+	s.CertType = &v
+	return s
+}
+
+func (s *InsureOrderCreateRequestApplicant) SetGender(v string) *InsureOrderCreateRequestApplicant {
+	s.Gender = &v
+	return s
+}
+
+func (s *InsureOrderCreateRequestApplicant) SetPhone(v string) *InsureOrderCreateRequestApplicant {
+	s.Phone = &v
+	return s
+}
+
+type InsureOrderCreateRequestInsPersonAndSegmentList struct {
+	InsureSegment    *InsureOrderCreateRequestInsPersonAndSegmentListInsureSegment `json:"insure_segment,omitempty" xml:"insure_segment,omitempty" type:"Struct"`
+	Insured          *InsureOrderCreateRequestInsPersonAndSegmentListInsured       `json:"insured,omitempty" xml:"insured,omitempty" type:"Struct"`
+	OutSubInsOrderId *string                                                       `json:"out_sub_ins_order_id,omitempty" xml:"out_sub_ins_order_id,omitempty"`
+}
+
+func (s InsureOrderCreateRequestInsPersonAndSegmentList) String() string {
+	return tea.Prettify(s)
+}
+
+func (s InsureOrderCreateRequestInsPersonAndSegmentList) GoString() string {
+	return s.String()
+}
+
+func (s *InsureOrderCreateRequestInsPersonAndSegmentList) SetInsureSegment(v *InsureOrderCreateRequestInsPersonAndSegmentListInsureSegment) *InsureOrderCreateRequestInsPersonAndSegmentList {
+	s.InsureSegment = v
+	return s
+}
+
+func (s *InsureOrderCreateRequestInsPersonAndSegmentList) SetInsured(v *InsureOrderCreateRequestInsPersonAndSegmentListInsured) *InsureOrderCreateRequestInsPersonAndSegmentList {
+	s.Insured = v
+	return s
+}
+
+func (s *InsureOrderCreateRequestInsPersonAndSegmentList) SetOutSubInsOrderId(v string) *InsureOrderCreateRequestInsPersonAndSegmentList {
+	s.OutSubInsOrderId = &v
+	return s
+}
+
+type InsureOrderCreateRequestInsPersonAndSegmentListInsureSegment struct {
+	ArrAirportCode *string `json:"arr_airport_code,omitempty" xml:"arr_airport_code,omitempty"`
+	ArrCity        *string `json:"arr_city,omitempty" xml:"arr_city,omitempty"`
+	ArrCityCode    *string `json:"arr_city_code,omitempty" xml:"arr_city_code,omitempty"`
+	ArrTime        *string `json:"arr_time,omitempty" xml:"arr_time,omitempty"`
+	DepAirportCode *string `json:"dep_airport_code,omitempty" xml:"dep_airport_code,omitempty"`
+	DepCity        *string `json:"dep_city,omitempty" xml:"dep_city,omitempty"`
+	DepCityCode    *string `json:"dep_city_code,omitempty" xml:"dep_city_code,omitempty"`
+	DepTime        *string `json:"dep_time,omitempty" xml:"dep_time,omitempty"`
+	FlightNo       *string `json:"flight_no,omitempty" xml:"flight_no,omitempty"`
+}
+
+func (s InsureOrderCreateRequestInsPersonAndSegmentListInsureSegment) String() string {
+	return tea.Prettify(s)
+}
+
+func (s InsureOrderCreateRequestInsPersonAndSegmentListInsureSegment) GoString() string {
+	return s.String()
+}
+
+func (s *InsureOrderCreateRequestInsPersonAndSegmentListInsureSegment) SetArrAirportCode(v string) *InsureOrderCreateRequestInsPersonAndSegmentListInsureSegment {
+	s.ArrAirportCode = &v
+	return s
+}
+
+func (s *InsureOrderCreateRequestInsPersonAndSegmentListInsureSegment) SetArrCity(v string) *InsureOrderCreateRequestInsPersonAndSegmentListInsureSegment {
+	s.ArrCity = &v
+	return s
+}
+
+func (s *InsureOrderCreateRequestInsPersonAndSegmentListInsureSegment) SetArrCityCode(v string) *InsureOrderCreateRequestInsPersonAndSegmentListInsureSegment {
+	s.ArrCityCode = &v
+	return s
+}
+
+func (s *InsureOrderCreateRequestInsPersonAndSegmentListInsureSegment) SetArrTime(v string) *InsureOrderCreateRequestInsPersonAndSegmentListInsureSegment {
+	s.ArrTime = &v
+	return s
+}
+
+func (s *InsureOrderCreateRequestInsPersonAndSegmentListInsureSegment) SetDepAirportCode(v string) *InsureOrderCreateRequestInsPersonAndSegmentListInsureSegment {
+	s.DepAirportCode = &v
+	return s
+}
+
+func (s *InsureOrderCreateRequestInsPersonAndSegmentListInsureSegment) SetDepCity(v string) *InsureOrderCreateRequestInsPersonAndSegmentListInsureSegment {
+	s.DepCity = &v
+	return s
+}
+
+func (s *InsureOrderCreateRequestInsPersonAndSegmentListInsureSegment) SetDepCityCode(v string) *InsureOrderCreateRequestInsPersonAndSegmentListInsureSegment {
+	s.DepCityCode = &v
+	return s
+}
+
+func (s *InsureOrderCreateRequestInsPersonAndSegmentListInsureSegment) SetDepTime(v string) *InsureOrderCreateRequestInsPersonAndSegmentListInsureSegment {
+	s.DepTime = &v
+	return s
+}
+
+func (s *InsureOrderCreateRequestInsPersonAndSegmentListInsureSegment) SetFlightNo(v string) *InsureOrderCreateRequestInsPersonAndSegmentListInsureSegment {
+	s.FlightNo = &v
+	return s
+}
+
+type InsureOrderCreateRequestInsPersonAndSegmentListInsured struct {
+	Birthday    *string `json:"birthday,omitempty" xml:"birthday,omitempty"`
+	BtripUserId *string `json:"btrip_user_id,omitempty" xml:"btrip_user_id,omitempty"`
+	CertName    *string `json:"cert_name,omitempty" xml:"cert_name,omitempty"`
+	CertNo      *string `json:"cert_no,omitempty" xml:"cert_no,omitempty"`
+	CertType    *string `json:"cert_type,omitempty" xml:"cert_type,omitempty"`
+	Gender      *string `json:"gender,omitempty" xml:"gender,omitempty"`
+	Phone       *string `json:"phone,omitempty" xml:"phone,omitempty"`
+}
+
+func (s InsureOrderCreateRequestInsPersonAndSegmentListInsured) String() string {
+	return tea.Prettify(s)
+}
+
+func (s InsureOrderCreateRequestInsPersonAndSegmentListInsured) GoString() string {
+	return s.String()
+}
+
+func (s *InsureOrderCreateRequestInsPersonAndSegmentListInsured) SetBirthday(v string) *InsureOrderCreateRequestInsPersonAndSegmentListInsured {
+	s.Birthday = &v
+	return s
+}
+
+func (s *InsureOrderCreateRequestInsPersonAndSegmentListInsured) SetBtripUserId(v string) *InsureOrderCreateRequestInsPersonAndSegmentListInsured {
+	s.BtripUserId = &v
+	return s
+}
+
+func (s *InsureOrderCreateRequestInsPersonAndSegmentListInsured) SetCertName(v string) *InsureOrderCreateRequestInsPersonAndSegmentListInsured {
+	s.CertName = &v
+	return s
+}
+
+func (s *InsureOrderCreateRequestInsPersonAndSegmentListInsured) SetCertNo(v string) *InsureOrderCreateRequestInsPersonAndSegmentListInsured {
+	s.CertNo = &v
+	return s
+}
+
+func (s *InsureOrderCreateRequestInsPersonAndSegmentListInsured) SetCertType(v string) *InsureOrderCreateRequestInsPersonAndSegmentListInsured {
+	s.CertType = &v
+	return s
+}
+
+func (s *InsureOrderCreateRequestInsPersonAndSegmentListInsured) SetGender(v string) *InsureOrderCreateRequestInsPersonAndSegmentListInsured {
+	s.Gender = &v
+	return s
+}
+
+func (s *InsureOrderCreateRequestInsPersonAndSegmentListInsured) SetPhone(v string) *InsureOrderCreateRequestInsPersonAndSegmentListInsured {
+	s.Phone = &v
+	return s
+}
+
+type InsureOrderCreateShrinkRequest struct {
+	ApplicantShrink               *string `json:"applicant,omitempty" xml:"applicant,omitempty"`
+	BtripUserId                   *string `json:"btrip_user_id,omitempty" xml:"btrip_user_id,omitempty"`
+	BuyerName                     *string `json:"buyer_name,omitempty" xml:"buyer_name,omitempty"`
+	InsPersonAndSegmentListShrink *string `json:"ins_person_and_segment_list,omitempty" xml:"ins_person_and_segment_list,omitempty"`
+	IsvName                       *string `json:"isv_name,omitempty" xml:"isv_name,omitempty"`
+	OutInsOrderId                 *string `json:"out_ins_order_id,omitempty" xml:"out_ins_order_id,omitempty"`
+	OutOrderId                    *string `json:"out_order_id,omitempty" xml:"out_order_id,omitempty"`
+	OutSubOrderId                 *string `json:"out_sub_order_id,omitempty" xml:"out_sub_order_id,omitempty"`
+	SupplierCode                  *string `json:"supplier_code,omitempty" xml:"supplier_code,omitempty"`
+}
+
+func (s InsureOrderCreateShrinkRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s InsureOrderCreateShrinkRequest) GoString() string {
+	return s.String()
+}
+
+func (s *InsureOrderCreateShrinkRequest) SetApplicantShrink(v string) *InsureOrderCreateShrinkRequest {
+	s.ApplicantShrink = &v
+	return s
+}
+
+func (s *InsureOrderCreateShrinkRequest) SetBtripUserId(v string) *InsureOrderCreateShrinkRequest {
+	s.BtripUserId = &v
+	return s
+}
+
+func (s *InsureOrderCreateShrinkRequest) SetBuyerName(v string) *InsureOrderCreateShrinkRequest {
+	s.BuyerName = &v
+	return s
+}
+
+func (s *InsureOrderCreateShrinkRequest) SetInsPersonAndSegmentListShrink(v string) *InsureOrderCreateShrinkRequest {
+	s.InsPersonAndSegmentListShrink = &v
+	return s
+}
+
+func (s *InsureOrderCreateShrinkRequest) SetIsvName(v string) *InsureOrderCreateShrinkRequest {
+	s.IsvName = &v
+	return s
+}
+
+func (s *InsureOrderCreateShrinkRequest) SetOutInsOrderId(v string) *InsureOrderCreateShrinkRequest {
+	s.OutInsOrderId = &v
+	return s
+}
+
+func (s *InsureOrderCreateShrinkRequest) SetOutOrderId(v string) *InsureOrderCreateShrinkRequest {
+	s.OutOrderId = &v
+	return s
+}
+
+func (s *InsureOrderCreateShrinkRequest) SetOutSubOrderId(v string) *InsureOrderCreateShrinkRequest {
+	s.OutSubOrderId = &v
+	return s
+}
+
+func (s *InsureOrderCreateShrinkRequest) SetSupplierCode(v string) *InsureOrderCreateShrinkRequest {
+	s.SupplierCode = &v
+	return s
+}
+
+type InsureOrderCreateResponseBody struct {
+	Code      *string                              `json:"code,omitempty" xml:"code,omitempty"`
+	Message   *string                              `json:"message,omitempty" xml:"message,omitempty"`
+	Module    *InsureOrderCreateResponseBodyModule `json:"module,omitempty" xml:"module,omitempty" type:"Struct"`
+	RequestId *string                              `json:"requestId,omitempty" xml:"requestId,omitempty"`
+	Success   *bool                                `json:"success,omitempty" xml:"success,omitempty"`
+	TraceId   *string                              `json:"traceId,omitempty" xml:"traceId,omitempty"`
+}
+
+func (s InsureOrderCreateResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s InsureOrderCreateResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *InsureOrderCreateResponseBody) SetCode(v string) *InsureOrderCreateResponseBody {
+	s.Code = &v
+	return s
+}
+
+func (s *InsureOrderCreateResponseBody) SetMessage(v string) *InsureOrderCreateResponseBody {
+	s.Message = &v
+	return s
+}
+
+func (s *InsureOrderCreateResponseBody) SetModule(v *InsureOrderCreateResponseBodyModule) *InsureOrderCreateResponseBody {
+	s.Module = v
+	return s
+}
+
+func (s *InsureOrderCreateResponseBody) SetRequestId(v string) *InsureOrderCreateResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *InsureOrderCreateResponseBody) SetSuccess(v bool) *InsureOrderCreateResponseBody {
+	s.Success = &v
+	return s
+}
+
+func (s *InsureOrderCreateResponseBody) SetTraceId(v string) *InsureOrderCreateResponseBody {
+	s.TraceId = &v
+	return s
+}
+
+type InsureOrderCreateResponseBodyModule struct {
+	Copies                *int32                                                      `json:"copies,omitempty" xml:"copies,omitempty"`
+	InsureOrderDetailList []*InsureOrderCreateResponseBodyModuleInsureOrderDetailList `json:"insure_order_detail_list,omitempty" xml:"insure_order_detail_list,omitempty" type:"Repeated"`
+	InsureOrderId         *string                                                     `json:"insure_order_id,omitempty" xml:"insure_order_id,omitempty"`
+	Premium               *int64                                                      `json:"premium,omitempty" xml:"premium,omitempty"`
+}
+
+func (s InsureOrderCreateResponseBodyModule) String() string {
+	return tea.Prettify(s)
+}
+
+func (s InsureOrderCreateResponseBodyModule) GoString() string {
+	return s.String()
+}
+
+func (s *InsureOrderCreateResponseBodyModule) SetCopies(v int32) *InsureOrderCreateResponseBodyModule {
+	s.Copies = &v
+	return s
+}
+
+func (s *InsureOrderCreateResponseBodyModule) SetInsureOrderDetailList(v []*InsureOrderCreateResponseBodyModuleInsureOrderDetailList) *InsureOrderCreateResponseBodyModule {
+	s.InsureOrderDetailList = v
+	return s
+}
+
+func (s *InsureOrderCreateResponseBodyModule) SetInsureOrderId(v string) *InsureOrderCreateResponseBodyModule {
+	s.InsureOrderId = &v
+	return s
+}
+
+func (s *InsureOrderCreateResponseBodyModule) SetPremium(v int64) *InsureOrderCreateResponseBodyModule {
+	s.Premium = &v
+	return s
+}
+
+type InsureOrderCreateResponseBodyModuleInsureOrderDetailList struct {
+	OutSubInsOrderId *string `json:"out_sub_ins_order_id,omitempty" xml:"out_sub_ins_order_id,omitempty"`
+	PolicyNo         *string `json:"policy_no,omitempty" xml:"policy_no,omitempty"`
+	Status           *string `json:"status,omitempty" xml:"status,omitempty"`
+	SubInsOrderId    *string `json:"sub_ins_order_id,omitempty" xml:"sub_ins_order_id,omitempty"`
+}
+
+func (s InsureOrderCreateResponseBodyModuleInsureOrderDetailList) String() string {
+	return tea.Prettify(s)
+}
+
+func (s InsureOrderCreateResponseBodyModuleInsureOrderDetailList) GoString() string {
+	return s.String()
+}
+
+func (s *InsureOrderCreateResponseBodyModuleInsureOrderDetailList) SetOutSubInsOrderId(v string) *InsureOrderCreateResponseBodyModuleInsureOrderDetailList {
+	s.OutSubInsOrderId = &v
+	return s
+}
+
+func (s *InsureOrderCreateResponseBodyModuleInsureOrderDetailList) SetPolicyNo(v string) *InsureOrderCreateResponseBodyModuleInsureOrderDetailList {
+	s.PolicyNo = &v
+	return s
+}
+
+func (s *InsureOrderCreateResponseBodyModuleInsureOrderDetailList) SetStatus(v string) *InsureOrderCreateResponseBodyModuleInsureOrderDetailList {
+	s.Status = &v
+	return s
+}
+
+func (s *InsureOrderCreateResponseBodyModuleInsureOrderDetailList) SetSubInsOrderId(v string) *InsureOrderCreateResponseBodyModuleInsureOrderDetailList {
+	s.SubInsOrderId = &v
+	return s
+}
+
+type InsureOrderCreateResponse struct {
+	Headers    map[string]*string             `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                         `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *InsureOrderCreateResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s InsureOrderCreateResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s InsureOrderCreateResponse) GoString() string {
+	return s.String()
+}
+
+func (s *InsureOrderCreateResponse) SetHeaders(v map[string]*string) *InsureOrderCreateResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *InsureOrderCreateResponse) SetStatusCode(v int32) *InsureOrderCreateResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *InsureOrderCreateResponse) SetBody(v *InsureOrderCreateResponseBody) *InsureOrderCreateResponse {
+	s.Body = v
+	return s
+}
+
+type InsureOrderDetailHeaders struct {
+	CommonHeaders      map[string]*string `json:"commonHeaders,omitempty" xml:"commonHeaders,omitempty"`
+	XAcsBtripCorpToken *string            `json:"x-acs-btrip-corp-token,omitempty" xml:"x-acs-btrip-corp-token,omitempty"`
+}
+
+func (s InsureOrderDetailHeaders) String() string {
+	return tea.Prettify(s)
+}
+
+func (s InsureOrderDetailHeaders) GoString() string {
+	return s.String()
+}
+
+func (s *InsureOrderDetailHeaders) SetCommonHeaders(v map[string]*string) *InsureOrderDetailHeaders {
+	s.CommonHeaders = v
+	return s
+}
+
+func (s *InsureOrderDetailHeaders) SetXAcsBtripCorpToken(v string) *InsureOrderDetailHeaders {
+	s.XAcsBtripCorpToken = &v
+	return s
+}
+
+type InsureOrderDetailRequest struct {
+	BtripUserId  *string `json:"btrip_user_id,omitempty" xml:"btrip_user_id,omitempty"`
+	BuyerName    *string `json:"buyer_name,omitempty" xml:"buyer_name,omitempty"`
+	InsOrderId   *string `json:"ins_order_id,omitempty" xml:"ins_order_id,omitempty"`
+	IsvName      *string `json:"isv_name,omitempty" xml:"isv_name,omitempty"`
+	SupplierCode *string `json:"supplier_code,omitempty" xml:"supplier_code,omitempty"`
+}
+
+func (s InsureOrderDetailRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s InsureOrderDetailRequest) GoString() string {
+	return s.String()
+}
+
+func (s *InsureOrderDetailRequest) SetBtripUserId(v string) *InsureOrderDetailRequest {
+	s.BtripUserId = &v
+	return s
+}
+
+func (s *InsureOrderDetailRequest) SetBuyerName(v string) *InsureOrderDetailRequest {
+	s.BuyerName = &v
+	return s
+}
+
+func (s *InsureOrderDetailRequest) SetInsOrderId(v string) *InsureOrderDetailRequest {
+	s.InsOrderId = &v
+	return s
+}
+
+func (s *InsureOrderDetailRequest) SetIsvName(v string) *InsureOrderDetailRequest {
+	s.IsvName = &v
+	return s
+}
+
+func (s *InsureOrderDetailRequest) SetSupplierCode(v string) *InsureOrderDetailRequest {
+	s.SupplierCode = &v
+	return s
+}
+
+type InsureOrderDetailResponseBody struct {
+	Code      *string                              `json:"code,omitempty" xml:"code,omitempty"`
+	Message   *string                              `json:"message,omitempty" xml:"message,omitempty"`
+	Module    *InsureOrderDetailResponseBodyModule `json:"module,omitempty" xml:"module,omitempty" type:"Struct"`
+	RequestId *string                              `json:"requestId,omitempty" xml:"requestId,omitempty"`
+	Success   *bool                                `json:"success,omitempty" xml:"success,omitempty"`
+	TraceId   *string                              `json:"traceId,omitempty" xml:"traceId,omitempty"`
+}
+
+func (s InsureOrderDetailResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s InsureOrderDetailResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *InsureOrderDetailResponseBody) SetCode(v string) *InsureOrderDetailResponseBody {
+	s.Code = &v
+	return s
+}
+
+func (s *InsureOrderDetailResponseBody) SetMessage(v string) *InsureOrderDetailResponseBody {
+	s.Message = &v
+	return s
+}
+
+func (s *InsureOrderDetailResponseBody) SetModule(v *InsureOrderDetailResponseBodyModule) *InsureOrderDetailResponseBody {
+	s.Module = v
+	return s
+}
+
+func (s *InsureOrderDetailResponseBody) SetRequestId(v string) *InsureOrderDetailResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *InsureOrderDetailResponseBody) SetSuccess(v bool) *InsureOrderDetailResponseBody {
+	s.Success = &v
+	return s
+}
+
+func (s *InsureOrderDetailResponseBody) SetTraceId(v string) *InsureOrderDetailResponseBody {
+	s.TraceId = &v
+	return s
+}
+
+type InsureOrderDetailResponseBodyModule struct {
+	Applicant             *InsureOrderDetailResponseBodyModuleApplicant               `json:"applicant,omitempty" xml:"applicant,omitempty" type:"Struct"`
+	InsOrderId            *string                                                     `json:"ins_order_id,omitempty" xml:"ins_order_id,omitempty"`
+	InsureOrderDetailList []*InsureOrderDetailResponseBodyModuleInsureOrderDetailList `json:"insure_order_detail_list,omitempty" xml:"insure_order_detail_list,omitempty" type:"Repeated"`
+	Status                *string                                                     `json:"status,omitempty" xml:"status,omitempty"`
+}
+
+func (s InsureOrderDetailResponseBodyModule) String() string {
+	return tea.Prettify(s)
+}
+
+func (s InsureOrderDetailResponseBodyModule) GoString() string {
+	return s.String()
+}
+
+func (s *InsureOrderDetailResponseBodyModule) SetApplicant(v *InsureOrderDetailResponseBodyModuleApplicant) *InsureOrderDetailResponseBodyModule {
+	s.Applicant = v
+	return s
+}
+
+func (s *InsureOrderDetailResponseBodyModule) SetInsOrderId(v string) *InsureOrderDetailResponseBodyModule {
+	s.InsOrderId = &v
+	return s
+}
+
+func (s *InsureOrderDetailResponseBodyModule) SetInsureOrderDetailList(v []*InsureOrderDetailResponseBodyModuleInsureOrderDetailList) *InsureOrderDetailResponseBodyModule {
+	s.InsureOrderDetailList = v
+	return s
+}
+
+func (s *InsureOrderDetailResponseBodyModule) SetStatus(v string) *InsureOrderDetailResponseBodyModule {
+	s.Status = &v
+	return s
+}
+
+type InsureOrderDetailResponseBodyModuleApplicant struct {
+	CertName *string `json:"cert_name,omitempty" xml:"cert_name,omitempty"`
+	CertNo   *string `json:"cert_no,omitempty" xml:"cert_no,omitempty"`
+	CertType *string `json:"cert_type,omitempty" xml:"cert_type,omitempty"`
+	Phone    *string `json:"phone,omitempty" xml:"phone,omitempty"`
+}
+
+func (s InsureOrderDetailResponseBodyModuleApplicant) String() string {
+	return tea.Prettify(s)
+}
+
+func (s InsureOrderDetailResponseBodyModuleApplicant) GoString() string {
+	return s.String()
+}
+
+func (s *InsureOrderDetailResponseBodyModuleApplicant) SetCertName(v string) *InsureOrderDetailResponseBodyModuleApplicant {
+	s.CertName = &v
+	return s
+}
+
+func (s *InsureOrderDetailResponseBodyModuleApplicant) SetCertNo(v string) *InsureOrderDetailResponseBodyModuleApplicant {
+	s.CertNo = &v
+	return s
+}
+
+func (s *InsureOrderDetailResponseBodyModuleApplicant) SetCertType(v string) *InsureOrderDetailResponseBodyModuleApplicant {
+	s.CertType = &v
+	return s
+}
+
+func (s *InsureOrderDetailResponseBodyModuleApplicant) SetPhone(v string) *InsureOrderDetailResponseBodyModuleApplicant {
+	s.Phone = &v
+	return s
+}
+
+type InsureOrderDetailResponseBodyModuleInsureOrderDetailList struct {
+	EffectiveEndTime   *string                                                                `json:"effective_end_time,omitempty" xml:"effective_end_time,omitempty"`
+	EffectiveStartTime *string                                                                `json:"effective_start_time,omitempty" xml:"effective_start_time,omitempty"`
+	InsureSegment      *InsureOrderDetailResponseBodyModuleInsureOrderDetailListInsureSegment `json:"insure_segment,omitempty" xml:"insure_segment,omitempty" type:"Struct"`
+	InsureTime         *string                                                                `json:"insure_time,omitempty" xml:"insure_time,omitempty"`
+	Insured            *InsureOrderDetailResponseBodyModuleInsureOrderDetailListInsured       `json:"insured,omitempty" xml:"insured,omitempty" type:"Struct"`
+	OutSubInsOrderId   *string                                                                `json:"out_sub_ins_order_id,omitempty" xml:"out_sub_ins_order_id,omitempty"`
+	PolicyNo           *string                                                                `json:"policy_no,omitempty" xml:"policy_no,omitempty"`
+	Price              *int64                                                                 `json:"price,omitempty" xml:"price,omitempty"`
+	ProductName        *string                                                                `json:"product_name,omitempty" xml:"product_name,omitempty"`
+	ProductNo          *string                                                                `json:"product_no,omitempty" xml:"product_no,omitempty"`
+	Status             *string                                                                `json:"status,omitempty" xml:"status,omitempty"`
+	SubInsOrderId      *string                                                                `json:"sub_ins_order_id,omitempty" xml:"sub_ins_order_id,omitempty"`
+}
+
+func (s InsureOrderDetailResponseBodyModuleInsureOrderDetailList) String() string {
+	return tea.Prettify(s)
+}
+
+func (s InsureOrderDetailResponseBodyModuleInsureOrderDetailList) GoString() string {
+	return s.String()
+}
+
+func (s *InsureOrderDetailResponseBodyModuleInsureOrderDetailList) SetEffectiveEndTime(v string) *InsureOrderDetailResponseBodyModuleInsureOrderDetailList {
+	s.EffectiveEndTime = &v
+	return s
+}
+
+func (s *InsureOrderDetailResponseBodyModuleInsureOrderDetailList) SetEffectiveStartTime(v string) *InsureOrderDetailResponseBodyModuleInsureOrderDetailList {
+	s.EffectiveStartTime = &v
+	return s
+}
+
+func (s *InsureOrderDetailResponseBodyModuleInsureOrderDetailList) SetInsureSegment(v *InsureOrderDetailResponseBodyModuleInsureOrderDetailListInsureSegment) *InsureOrderDetailResponseBodyModuleInsureOrderDetailList {
+	s.InsureSegment = v
+	return s
+}
+
+func (s *InsureOrderDetailResponseBodyModuleInsureOrderDetailList) SetInsureTime(v string) *InsureOrderDetailResponseBodyModuleInsureOrderDetailList {
+	s.InsureTime = &v
+	return s
+}
+
+func (s *InsureOrderDetailResponseBodyModuleInsureOrderDetailList) SetInsured(v *InsureOrderDetailResponseBodyModuleInsureOrderDetailListInsured) *InsureOrderDetailResponseBodyModuleInsureOrderDetailList {
+	s.Insured = v
+	return s
+}
+
+func (s *InsureOrderDetailResponseBodyModuleInsureOrderDetailList) SetOutSubInsOrderId(v string) *InsureOrderDetailResponseBodyModuleInsureOrderDetailList {
+	s.OutSubInsOrderId = &v
+	return s
+}
+
+func (s *InsureOrderDetailResponseBodyModuleInsureOrderDetailList) SetPolicyNo(v string) *InsureOrderDetailResponseBodyModuleInsureOrderDetailList {
+	s.PolicyNo = &v
+	return s
+}
+
+func (s *InsureOrderDetailResponseBodyModuleInsureOrderDetailList) SetPrice(v int64) *InsureOrderDetailResponseBodyModuleInsureOrderDetailList {
+	s.Price = &v
+	return s
+}
+
+func (s *InsureOrderDetailResponseBodyModuleInsureOrderDetailList) SetProductName(v string) *InsureOrderDetailResponseBodyModuleInsureOrderDetailList {
+	s.ProductName = &v
+	return s
+}
+
+func (s *InsureOrderDetailResponseBodyModuleInsureOrderDetailList) SetProductNo(v string) *InsureOrderDetailResponseBodyModuleInsureOrderDetailList {
+	s.ProductNo = &v
+	return s
+}
+
+func (s *InsureOrderDetailResponseBodyModuleInsureOrderDetailList) SetStatus(v string) *InsureOrderDetailResponseBodyModuleInsureOrderDetailList {
+	s.Status = &v
+	return s
+}
+
+func (s *InsureOrderDetailResponseBodyModuleInsureOrderDetailList) SetSubInsOrderId(v string) *InsureOrderDetailResponseBodyModuleInsureOrderDetailList {
+	s.SubInsOrderId = &v
+	return s
+}
+
+type InsureOrderDetailResponseBodyModuleInsureOrderDetailListInsureSegment struct {
+	ArrAirportCode *string `json:"arr_airport_code,omitempty" xml:"arr_airport_code,omitempty"`
+	ArrCity        *string `json:"arr_city,omitempty" xml:"arr_city,omitempty"`
+	ArrCityCode    *string `json:"arr_city_code,omitempty" xml:"arr_city_code,omitempty"`
+	ArrTime        *string `json:"arr_time,omitempty" xml:"arr_time,omitempty"`
+	DepAirportCode *string `json:"dep_airport_code,omitempty" xml:"dep_airport_code,omitempty"`
+	DepCity        *string `json:"dep_city,omitempty" xml:"dep_city,omitempty"`
+	DepCityCode    *string `json:"dep_city_code,omitempty" xml:"dep_city_code,omitempty"`
+	DepTime        *string `json:"dep_time,omitempty" xml:"dep_time,omitempty"`
+	FlightNo       *string `json:"flight_no,omitempty" xml:"flight_no,omitempty"`
+}
+
+func (s InsureOrderDetailResponseBodyModuleInsureOrderDetailListInsureSegment) String() string {
+	return tea.Prettify(s)
+}
+
+func (s InsureOrderDetailResponseBodyModuleInsureOrderDetailListInsureSegment) GoString() string {
+	return s.String()
+}
+
+func (s *InsureOrderDetailResponseBodyModuleInsureOrderDetailListInsureSegment) SetArrAirportCode(v string) *InsureOrderDetailResponseBodyModuleInsureOrderDetailListInsureSegment {
+	s.ArrAirportCode = &v
+	return s
+}
+
+func (s *InsureOrderDetailResponseBodyModuleInsureOrderDetailListInsureSegment) SetArrCity(v string) *InsureOrderDetailResponseBodyModuleInsureOrderDetailListInsureSegment {
+	s.ArrCity = &v
+	return s
+}
+
+func (s *InsureOrderDetailResponseBodyModuleInsureOrderDetailListInsureSegment) SetArrCityCode(v string) *InsureOrderDetailResponseBodyModuleInsureOrderDetailListInsureSegment {
+	s.ArrCityCode = &v
+	return s
+}
+
+func (s *InsureOrderDetailResponseBodyModuleInsureOrderDetailListInsureSegment) SetArrTime(v string) *InsureOrderDetailResponseBodyModuleInsureOrderDetailListInsureSegment {
+	s.ArrTime = &v
+	return s
+}
+
+func (s *InsureOrderDetailResponseBodyModuleInsureOrderDetailListInsureSegment) SetDepAirportCode(v string) *InsureOrderDetailResponseBodyModuleInsureOrderDetailListInsureSegment {
+	s.DepAirportCode = &v
+	return s
+}
+
+func (s *InsureOrderDetailResponseBodyModuleInsureOrderDetailListInsureSegment) SetDepCity(v string) *InsureOrderDetailResponseBodyModuleInsureOrderDetailListInsureSegment {
+	s.DepCity = &v
+	return s
+}
+
+func (s *InsureOrderDetailResponseBodyModuleInsureOrderDetailListInsureSegment) SetDepCityCode(v string) *InsureOrderDetailResponseBodyModuleInsureOrderDetailListInsureSegment {
+	s.DepCityCode = &v
+	return s
+}
+
+func (s *InsureOrderDetailResponseBodyModuleInsureOrderDetailListInsureSegment) SetDepTime(v string) *InsureOrderDetailResponseBodyModuleInsureOrderDetailListInsureSegment {
+	s.DepTime = &v
+	return s
+}
+
+func (s *InsureOrderDetailResponseBodyModuleInsureOrderDetailListInsureSegment) SetFlightNo(v string) *InsureOrderDetailResponseBodyModuleInsureOrderDetailListInsureSegment {
+	s.FlightNo = &v
+	return s
+}
+
+type InsureOrderDetailResponseBodyModuleInsureOrderDetailListInsured struct {
+	Birthday    *string `json:"birthday,omitempty" xml:"birthday,omitempty"`
+	BtripUserId *string `json:"btrip_user_id,omitempty" xml:"btrip_user_id,omitempty"`
+	CertName    *string `json:"cert_name,omitempty" xml:"cert_name,omitempty"`
+	CertNo      *string `json:"cert_no,omitempty" xml:"cert_no,omitempty"`
+	CertType    *string `json:"cert_type,omitempty" xml:"cert_type,omitempty"`
+	Gender      *string `json:"gender,omitempty" xml:"gender,omitempty"`
+	Phone       *string `json:"phone,omitempty" xml:"phone,omitempty"`
+}
+
+func (s InsureOrderDetailResponseBodyModuleInsureOrderDetailListInsured) String() string {
+	return tea.Prettify(s)
+}
+
+func (s InsureOrderDetailResponseBodyModuleInsureOrderDetailListInsured) GoString() string {
+	return s.String()
+}
+
+func (s *InsureOrderDetailResponseBodyModuleInsureOrderDetailListInsured) SetBirthday(v string) *InsureOrderDetailResponseBodyModuleInsureOrderDetailListInsured {
+	s.Birthday = &v
+	return s
+}
+
+func (s *InsureOrderDetailResponseBodyModuleInsureOrderDetailListInsured) SetBtripUserId(v string) *InsureOrderDetailResponseBodyModuleInsureOrderDetailListInsured {
+	s.BtripUserId = &v
+	return s
+}
+
+func (s *InsureOrderDetailResponseBodyModuleInsureOrderDetailListInsured) SetCertName(v string) *InsureOrderDetailResponseBodyModuleInsureOrderDetailListInsured {
+	s.CertName = &v
+	return s
+}
+
+func (s *InsureOrderDetailResponseBodyModuleInsureOrderDetailListInsured) SetCertNo(v string) *InsureOrderDetailResponseBodyModuleInsureOrderDetailListInsured {
+	s.CertNo = &v
+	return s
+}
+
+func (s *InsureOrderDetailResponseBodyModuleInsureOrderDetailListInsured) SetCertType(v string) *InsureOrderDetailResponseBodyModuleInsureOrderDetailListInsured {
+	s.CertType = &v
+	return s
+}
+
+func (s *InsureOrderDetailResponseBodyModuleInsureOrderDetailListInsured) SetGender(v string) *InsureOrderDetailResponseBodyModuleInsureOrderDetailListInsured {
+	s.Gender = &v
+	return s
+}
+
+func (s *InsureOrderDetailResponseBodyModuleInsureOrderDetailListInsured) SetPhone(v string) *InsureOrderDetailResponseBodyModuleInsureOrderDetailListInsured {
+	s.Phone = &v
+	return s
+}
+
+type InsureOrderDetailResponse struct {
+	Headers    map[string]*string             `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                         `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *InsureOrderDetailResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s InsureOrderDetailResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s InsureOrderDetailResponse) GoString() string {
+	return s.String()
+}
+
+func (s *InsureOrderDetailResponse) SetHeaders(v map[string]*string) *InsureOrderDetailResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *InsureOrderDetailResponse) SetStatusCode(v int32) *InsureOrderDetailResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *InsureOrderDetailResponse) SetBody(v *InsureOrderDetailResponseBody) *InsureOrderDetailResponse {
+	s.Body = v
+	return s
+}
+
+type InsureOrderPayHeaders struct {
+	CommonHeaders      map[string]*string `json:"commonHeaders,omitempty" xml:"commonHeaders,omitempty"`
+	XAcsBtripCorpToken *string            `json:"x-acs-btrip-corp-token,omitempty" xml:"x-acs-btrip-corp-token,omitempty"`
+}
+
+func (s InsureOrderPayHeaders) String() string {
+	return tea.Prettify(s)
+}
+
+func (s InsureOrderPayHeaders) GoString() string {
+	return s.String()
+}
+
+func (s *InsureOrderPayHeaders) SetCommonHeaders(v map[string]*string) *InsureOrderPayHeaders {
+	s.CommonHeaders = v
+	return s
+}
+
+func (s *InsureOrderPayHeaders) SetXAcsBtripCorpToken(v string) *InsureOrderPayHeaders {
+	s.XAcsBtripCorpToken = &v
+	return s
+}
+
+type InsureOrderPayRequest struct {
+	BtripUserId   *string `json:"btrip_user_id,omitempty" xml:"btrip_user_id,omitempty"`
+	BuyerName     *string `json:"buyer_name,omitempty" xml:"buyer_name,omitempty"`
+	IsvName       *string `json:"isv_name,omitempty" xml:"isv_name,omitempty"`
+	OutOrderId    *string `json:"out_order_id,omitempty" xml:"out_order_id,omitempty"`
+	OutSubOrderId *string `json:"out_sub_order_id,omitempty" xml:"out_sub_order_id,omitempty"`
+	PaymentAmount *int64  `json:"payment_amount,omitempty" xml:"payment_amount,omitempty"`
+	SupplierCode  *string `json:"supplier_code,omitempty" xml:"supplier_code,omitempty"`
+}
+
+func (s InsureOrderPayRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s InsureOrderPayRequest) GoString() string {
+	return s.String()
+}
+
+func (s *InsureOrderPayRequest) SetBtripUserId(v string) *InsureOrderPayRequest {
+	s.BtripUserId = &v
+	return s
+}
+
+func (s *InsureOrderPayRequest) SetBuyerName(v string) *InsureOrderPayRequest {
+	s.BuyerName = &v
+	return s
+}
+
+func (s *InsureOrderPayRequest) SetIsvName(v string) *InsureOrderPayRequest {
+	s.IsvName = &v
+	return s
+}
+
+func (s *InsureOrderPayRequest) SetOutOrderId(v string) *InsureOrderPayRequest {
+	s.OutOrderId = &v
+	return s
+}
+
+func (s *InsureOrderPayRequest) SetOutSubOrderId(v string) *InsureOrderPayRequest {
+	s.OutSubOrderId = &v
+	return s
+}
+
+func (s *InsureOrderPayRequest) SetPaymentAmount(v int64) *InsureOrderPayRequest {
+	s.PaymentAmount = &v
+	return s
+}
+
+func (s *InsureOrderPayRequest) SetSupplierCode(v string) *InsureOrderPayRequest {
+	s.SupplierCode = &v
+	return s
+}
+
+type InsureOrderPayResponseBody struct {
+	Code      *string `json:"code,omitempty" xml:"code,omitempty"`
+	Message   *string `json:"message,omitempty" xml:"message,omitempty"`
+	RequestId *string `json:"requestId,omitempty" xml:"requestId,omitempty"`
+	Success   *bool   `json:"success,omitempty" xml:"success,omitempty"`
+	TraceId   *string `json:"traceId,omitempty" xml:"traceId,omitempty"`
+}
+
+func (s InsureOrderPayResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s InsureOrderPayResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *InsureOrderPayResponseBody) SetCode(v string) *InsureOrderPayResponseBody {
+	s.Code = &v
+	return s
+}
+
+func (s *InsureOrderPayResponseBody) SetMessage(v string) *InsureOrderPayResponseBody {
+	s.Message = &v
+	return s
+}
+
+func (s *InsureOrderPayResponseBody) SetRequestId(v string) *InsureOrderPayResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *InsureOrderPayResponseBody) SetSuccess(v bool) *InsureOrderPayResponseBody {
+	s.Success = &v
+	return s
+}
+
+func (s *InsureOrderPayResponseBody) SetTraceId(v string) *InsureOrderPayResponseBody {
+	s.TraceId = &v
+	return s
+}
+
+type InsureOrderPayResponse struct {
+	Headers    map[string]*string          `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                      `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *InsureOrderPayResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s InsureOrderPayResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s InsureOrderPayResponse) GoString() string {
+	return s.String()
+}
+
+func (s *InsureOrderPayResponse) SetHeaders(v map[string]*string) *InsureOrderPayResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *InsureOrderPayResponse) SetStatusCode(v int32) *InsureOrderPayResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *InsureOrderPayResponse) SetBody(v *InsureOrderPayResponseBody) *InsureOrderPayResponse {
+	s.Body = v
+	return s
+}
+
 type InvoiceAddHeaders struct {
 	CommonHeaders        map[string]*string `json:"commonHeaders,omitempty" xml:"commonHeaders,omitempty"`
 	XAcsBtripSoCorpToken *string            `json:"x-acs-btrip-so-corp-token,omitempty" xml:"x-acs-btrip-so-corp-token,omitempty"`
@@ -65273,6 +66667,399 @@ func (client *Client) InsInvoiceScanQuery(request *InsInvoiceScanQueryRequest) (
 	headers := &InsInvoiceScanQueryHeaders{}
 	_result = &InsInvoiceScanQueryResponse{}
 	_body, _err := client.InsInvoiceScanQueryWithOptions(request, headers, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) InsureOrderApplyWithOptions(request *InsureOrderApplyRequest, headers *InsureOrderApplyHeaders, runtime *util.RuntimeOptions) (_result *InsureOrderApplyResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	body := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.BtripUserId)) {
+		body["btrip_user_id"] = request.BtripUserId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.BuyerName)) {
+		body["buyer_name"] = request.BuyerName
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.InsOrderId)) {
+		body["ins_order_id"] = request.InsOrderId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.IsvName)) {
+		body["isv_name"] = request.IsvName
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.OutOrderId)) {
+		body["out_order_id"] = request.OutOrderId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.OutSubOrderId)) {
+		body["out_sub_order_id"] = request.OutSubOrderId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.SupplierCode)) {
+		body["supplier_code"] = request.SupplierCode
+	}
+
+	realHeaders := make(map[string]*string)
+	if !tea.BoolValue(util.IsUnset(headers.CommonHeaders)) {
+		realHeaders = headers.CommonHeaders
+	}
+
+	if !tea.BoolValue(util.IsUnset(headers.XAcsBtripCorpToken)) {
+		realHeaders["x-acs-btrip-corp-token"] = util.ToJSONString(headers.XAcsBtripCorpToken)
+	}
+
+	req := &openapi.OpenApiRequest{
+		Headers: realHeaders,
+		Body:    openapiutil.ParseToMap(body),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("InsureOrderApply"),
+		Version:     tea.String("2022-05-20"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/dtb-flight/v1/insurances/action/apply"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("ROA"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &InsureOrderApplyResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) InsureOrderApply(request *InsureOrderApplyRequest) (_result *InsureOrderApplyResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	headers := &InsureOrderApplyHeaders{}
+	_result = &InsureOrderApplyResponse{}
+	_body, _err := client.InsureOrderApplyWithOptions(request, headers, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) InsureOrderCancelWithOptions(insOrderId *string, request *InsureOrderCancelRequest, headers *InsureOrderCancelHeaders, runtime *util.RuntimeOptions) (_result *InsureOrderCancelResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.BtripUserId)) {
+		query["btrip_user_id"] = request.BtripUserId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.BuyerName)) {
+		query["buyer_name"] = request.BuyerName
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.IsvName)) {
+		query["isv_name"] = request.IsvName
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.SupplierCode)) {
+		query["supplier_code"] = request.SupplierCode
+	}
+
+	realHeaders := make(map[string]*string)
+	if !tea.BoolValue(util.IsUnset(headers.CommonHeaders)) {
+		realHeaders = headers.CommonHeaders
+	}
+
+	if !tea.BoolValue(util.IsUnset(headers.XAcsBtripCorpToken)) {
+		realHeaders["x-acs-btrip-corp-token"] = util.ToJSONString(headers.XAcsBtripCorpToken)
+	}
+
+	req := &openapi.OpenApiRequest{
+		Headers: realHeaders,
+		Query:   openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("InsureOrderCancel"),
+		Version:     tea.String("2022-05-20"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/dtb-flight/v1/insurances/" + tea.StringValue(openapiutil.GetEncodeParam(insOrderId)) + "/action/cancel"),
+		Method:      tea.String("DELETE"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("ROA"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &InsureOrderCancelResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) InsureOrderCancel(insOrderId *string, request *InsureOrderCancelRequest) (_result *InsureOrderCancelResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	headers := &InsureOrderCancelHeaders{}
+	_result = &InsureOrderCancelResponse{}
+	_body, _err := client.InsureOrderCancelWithOptions(insOrderId, request, headers, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) InsureOrderCreateWithOptions(tmpReq *InsureOrderCreateRequest, headers *InsureOrderCreateHeaders, runtime *util.RuntimeOptions) (_result *InsureOrderCreateResponse, _err error) {
+	_err = util.ValidateModel(tmpReq)
+	if _err != nil {
+		return _result, _err
+	}
+	request := &InsureOrderCreateShrinkRequest{}
+	openapiutil.Convert(tmpReq, request)
+	if !tea.BoolValue(util.IsUnset(tmpReq.Applicant)) {
+		request.ApplicantShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.Applicant, tea.String("applicant"), tea.String("json"))
+	}
+
+	if !tea.BoolValue(util.IsUnset(tmpReq.InsPersonAndSegmentList)) {
+		request.InsPersonAndSegmentListShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.InsPersonAndSegmentList, tea.String("ins_person_and_segment_list"), tea.String("json"))
+	}
+
+	body := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.ApplicantShrink)) {
+		body["applicant"] = request.ApplicantShrink
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.BtripUserId)) {
+		body["btrip_user_id"] = request.BtripUserId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.BuyerName)) {
+		body["buyer_name"] = request.BuyerName
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.InsPersonAndSegmentListShrink)) {
+		body["ins_person_and_segment_list"] = request.InsPersonAndSegmentListShrink
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.IsvName)) {
+		body["isv_name"] = request.IsvName
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.OutInsOrderId)) {
+		body["out_ins_order_id"] = request.OutInsOrderId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.OutOrderId)) {
+		body["out_order_id"] = request.OutOrderId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.OutSubOrderId)) {
+		body["out_sub_order_id"] = request.OutSubOrderId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.SupplierCode)) {
+		body["supplier_code"] = request.SupplierCode
+	}
+
+	realHeaders := make(map[string]*string)
+	if !tea.BoolValue(util.IsUnset(headers.CommonHeaders)) {
+		realHeaders = headers.CommonHeaders
+	}
+
+	if !tea.BoolValue(util.IsUnset(headers.XAcsBtripCorpToken)) {
+		realHeaders["x-acs-btrip-corp-token"] = util.ToJSONString(headers.XAcsBtripCorpToken)
+	}
+
+	req := &openapi.OpenApiRequest{
+		Headers: realHeaders,
+		Body:    openapiutil.ParseToMap(body),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("InsureOrderCreate"),
+		Version:     tea.String("2022-05-20"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/dtb-flight/v1/insurances/action/create"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("ROA"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &InsureOrderCreateResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) InsureOrderCreate(request *InsureOrderCreateRequest) (_result *InsureOrderCreateResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	headers := &InsureOrderCreateHeaders{}
+	_result = &InsureOrderCreateResponse{}
+	_body, _err := client.InsureOrderCreateWithOptions(request, headers, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) InsureOrderDetailWithOptions(request *InsureOrderDetailRequest, headers *InsureOrderDetailHeaders, runtime *util.RuntimeOptions) (_result *InsureOrderDetailResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.BtripUserId)) {
+		query["btrip_user_id"] = request.BtripUserId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.BuyerName)) {
+		query["buyer_name"] = request.BuyerName
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.InsOrderId)) {
+		query["ins_order_id"] = request.InsOrderId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.IsvName)) {
+		query["isv_name"] = request.IsvName
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.SupplierCode)) {
+		query["supplier_code"] = request.SupplierCode
+	}
+
+	realHeaders := make(map[string]*string)
+	if !tea.BoolValue(util.IsUnset(headers.CommonHeaders)) {
+		realHeaders = headers.CommonHeaders
+	}
+
+	if !tea.BoolValue(util.IsUnset(headers.XAcsBtripCorpToken)) {
+		realHeaders["x-acs-btrip-corp-token"] = util.ToJSONString(headers.XAcsBtripCorpToken)
+	}
+
+	req := &openapi.OpenApiRequest{
+		Headers: realHeaders,
+		Query:   openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("InsureOrderDetail"),
+		Version:     tea.String("2022-05-20"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/dtb-flight/v1/insurances/action/detail"),
+		Method:      tea.String("GET"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("ROA"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &InsureOrderDetailResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) InsureOrderDetail(request *InsureOrderDetailRequest) (_result *InsureOrderDetailResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	headers := &InsureOrderDetailHeaders{}
+	_result = &InsureOrderDetailResponse{}
+	_body, _err := client.InsureOrderDetailWithOptions(request, headers, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) InsureOrderPayWithOptions(insOrderId *string, request *InsureOrderPayRequest, headers *InsureOrderPayHeaders, runtime *util.RuntimeOptions) (_result *InsureOrderPayResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	body := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.BtripUserId)) {
+		body["btrip_user_id"] = request.BtripUserId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.BuyerName)) {
+		body["buyer_name"] = request.BuyerName
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.IsvName)) {
+		body["isv_name"] = request.IsvName
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.OutOrderId)) {
+		body["out_order_id"] = request.OutOrderId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.OutSubOrderId)) {
+		body["out_sub_order_id"] = request.OutSubOrderId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.PaymentAmount)) {
+		body["payment_amount"] = request.PaymentAmount
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.SupplierCode)) {
+		body["supplier_code"] = request.SupplierCode
+	}
+
+	realHeaders := make(map[string]*string)
+	if !tea.BoolValue(util.IsUnset(headers.CommonHeaders)) {
+		realHeaders = headers.CommonHeaders
+	}
+
+	if !tea.BoolValue(util.IsUnset(headers.XAcsBtripCorpToken)) {
+		realHeaders["x-acs-btrip-corp-token"] = util.ToJSONString(headers.XAcsBtripCorpToken)
+	}
+
+	req := &openapi.OpenApiRequest{
+		Headers: realHeaders,
+		Body:    openapiutil.ParseToMap(body),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("InsureOrderPay"),
+		Version:     tea.String("2022-05-20"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/dtb-flight/v1/insurances/" + tea.StringValue(openapiutil.GetEncodeParam(insOrderId)) + "/action/pay"),
+		Method:      tea.String("PUT"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("ROA"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &InsureOrderPayResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) InsureOrderPay(insOrderId *string, request *InsureOrderPayRequest) (_result *InsureOrderPayResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	headers := &InsureOrderPayHeaders{}
+	_result = &InsureOrderPayResponse{}
+	_body, _err := client.InsureOrderPayWithOptions(insOrderId, request, headers, runtime)
 	if _err != nil {
 		return _result, _err
 	}
