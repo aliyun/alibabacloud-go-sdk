@@ -121,12 +121,6 @@ func (s *AddAccessControlListEntryResponse) SetBody(v *AddAccessControlListEntry
 }
 
 type AddBackendServersRequest struct {
-	// The description of the backend server.
-	BackendServers *string `json:"BackendServers,omitempty" xml:"BackendServers,omitempty"`
-	// The ID of the CLB instance.
-	LoadBalancerId *string `json:"LoadBalancerId,omitempty" xml:"LoadBalancerId,omitempty"`
-	OwnerAccount   *string `json:"OwnerAccount,omitempty" xml:"OwnerAccount,omitempty"`
-	OwnerId        *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
 	// The list of backend servers that you want to add. Set the following parameters:
 	//
 	// *   **ServerId**: Required. This value must be a string. Enter the ID of an ECS instance, elastic network interface (ENI), or elastic container instance. If **ServerId** is set to the ID of an ENI or elastic container instance, **Type** is required.
@@ -156,6 +150,14 @@ type AddBackendServersRequest struct {
 	// *   Elastic container instance: `[{ "ServerId": "eci-xxxxxxxxx", "Weight": "100", "Type": "eci", "ServerIp": "192.168.**.**", "Port":"80","Description":"test-114" }]`
 	//
 	// >  The backend servers that you add to a CLB instance must be in the Running state. You can add at most 20 backend servers to a CLB instance in each request.
+	BackendServers *string `json:"BackendServers,omitempty" xml:"BackendServers,omitempty"`
+	// The ID of the CLB instance.
+	LoadBalancerId *string `json:"LoadBalancerId,omitempty" xml:"LoadBalancerId,omitempty"`
+	OwnerAccount   *string `json:"OwnerAccount,omitempty" xml:"OwnerAccount,omitempty"`
+	OwnerId        *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
+	// The ID of the region where the Classic Load Balancer (CLB) instance is deployed.
+	//
+	// You can call the [DescribeRegions](~~27584~~) operation to query the most recent region list.
 	RegionId             *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 	ResourceOwnerAccount *string `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
 	ResourceOwnerId      *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
@@ -205,15 +207,11 @@ func (s *AddBackendServersRequest) SetResourceOwnerId(v int64) *AddBackendServer
 }
 
 type AddBackendServersResponseBody struct {
-	// The ID of the request.
-	BackendServers *AddBackendServersResponseBodyBackendServers `json:"BackendServers,omitempty" xml:"BackendServers,omitempty" type:"Struct"`
-	// The type of the backend server. Valid values:
-	//
-	// *   **ecs** (default): an ECS instance
-	// *   **eni**: an ENI
-	// *   **eci**: an elastic container instance
-	LoadBalancerId *string `json:"LoadBalancerId,omitempty" xml:"LoadBalancerId,omitempty"`
 	// The list of backend servers.
+	BackendServers *AddBackendServersResponseBodyBackendServers `json:"BackendServers,omitempty" xml:"BackendServers,omitempty" type:"Struct"`
+	// The ID of the CLB instance.
+	LoadBalancerId *string `json:"LoadBalancerId,omitempty" xml:"LoadBalancerId,omitempty"`
+	// The ID of the request.
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -258,13 +256,21 @@ func (s *AddBackendServersResponseBodyBackendServers) SetBackendServer(v []*AddB
 }
 
 type AddBackendServersResponseBodyBackendServersBackendServer struct {
+	// The description of the backend server.
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
-	ServerId    *string `json:"ServerId,omitempty" xml:"ServerId,omitempty"`
-	// The ID of the region where the Classic Load Balancer (CLB) instance is deployed.
+	// The ID of the ECS instance, ENI, or elastic container instance.
+	ServerId *string `json:"ServerId,omitempty" xml:"ServerId,omitempty"`
+	// The type of the backend server. Valid values:
 	//
-	// You can call the [DescribeRegions](~~27584~~) operation to query the most recent region list.
+	// *   **ecs** (default): an ECS instance
+	// *   **eni**: an ENI
+	// *   **eci**: an elastic container instance
 	Type *string `json:"Type,omitempty" xml:"Type,omitempty"`
-	// Adds backend servers.
+	// The weight of the backend server.
+	//
+	// Valid values: **0 to 100**. Default value: **100**.
+	//
+	// If the value is set to **0**, no requests are forwarded to the backend server.
 	Weight *string `json:"Weight,omitempty" xml:"Weight,omitempty"`
 }
 
@@ -326,17 +332,22 @@ func (s *AddBackendServersResponse) SetBody(v *AddBackendServersResponseBody) *A
 }
 
 type AddListenerWhiteListItemRequest struct {
+	// The frontend port that is used by the CLB instance.
+	ListenerPort *int32 `json:"ListenerPort,omitempty" xml:"ListenerPort,omitempty"`
 	// The frontend protocol that is used by the CLB instance.
 	//
 	// >  This parameter is required when listeners that use different protocols listen on the same port.
-	ListenerPort     *int32  `json:"ListenerPort,omitempty" xml:"ListenerPort,omitempty"`
 	ListenerProtocol *string `json:"ListenerProtocol,omitempty" xml:"ListenerProtocol,omitempty"`
-	// The ID of the region where the Classic Load Balancer (CLB) instance is created.
-	//
-	// You can call the [DescribeRegions](~~36063~~) operation to query the most recent region list.
+	// The ID of the CLB instance.
 	LoadBalancerId *string `json:"LoadBalancerId,omitempty" xml:"LoadBalancerId,omitempty"`
 	OwnerAccount   *string `json:"OwnerAccount,omitempty" xml:"OwnerAccount,omitempty"`
 	OwnerId        *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
+	// The ID of the region where the Classic Load Balancer (CLB) instance is created.
+	//
+	// You can call the [DescribeRegions](~~36063~~) operation to query the most recent region list.
+	RegionId             *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	ResourceOwnerAccount *string `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
+	ResourceOwnerId      *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
 	// The IP addresses or CIDR blocks that you want to add to the whitelist.
 	//
 	// This parameter takes effect when the **AccessControlStatus** parameter of the listener is set to **open_white_list**.
@@ -344,10 +355,7 @@ type AddListenerWhiteListItemRequest struct {
 	// Separate multiple IP addresses or CIDR blocks with commas (,).
 	//
 	// You cannot enter **0.0.0.0** or **0.0.0.0/0**. To disable access control, you can call the [SetListenerAccessControlStatus](~~27599~~) operation to set the value of the **AccessControlStatus** parameter to **close**.
-	RegionId             *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	ResourceOwnerAccount *string `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
-	ResourceOwnerId      *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
-	SourceItems          *string `json:"SourceItems,omitempty" xml:"SourceItems,omitempty"`
+	SourceItems *string `json:"SourceItems,omitempty" xml:"SourceItems,omitempty"`
 }
 
 func (s AddListenerWhiteListItemRequest) String() string {
@@ -404,6 +412,7 @@ func (s *AddListenerWhiteListItemRequest) SetSourceItems(v string) *AddListenerW
 }
 
 type AddListenerWhiteListItemResponseBody struct {
+	// The ID of the request.
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -450,15 +459,17 @@ func (s *AddListenerWhiteListItemResponse) SetBody(v *AddListenerWhiteListItemRe
 }
 
 type AddTagsRequest struct {
-	// A list of tags to be added.
+	// The name of this action.
+	//
+	// Value: **AddTags**
 	LoadBalancerId *string `json:"LoadBalancerId,omitempty" xml:"LoadBalancerId,omitempty"`
 	OwnerAccount   *string `json:"OwnerAccount,omitempty" xml:"OwnerAccount,omitempty"`
 	OwnerId        *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
-	// The ID of the SLB instance.
+	// The ID of the region to which the SLB instance belongs.
 	RegionId             *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 	ResourceOwnerAccount *string `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
 	ResourceOwnerId      *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
-	// The ID of the request.
+	// The ID of the region to which the SLB instance belongs.
 	Tags *string `json:"Tags,omitempty" xml:"Tags,omitempty"`
 }
 
@@ -506,14 +517,7 @@ func (s *AddTagsRequest) SetTags(v string) *AddTagsRequest {
 }
 
 type AddTagsResponseBody struct {
-	// # Limits
-	//
-	// Before you call this API, note the following limits:
-	//
-	// *   You can add up to 10 tags to each SLB instance.
-	// *   You can add up to five pairs of tags at a time.
-	// *   All the tags and keys added to an SLB instance must be unique.
-	// *   If you add a tag of which the key is the same as that of an existing tag, but the value is different, the new tag overwrites the existing one.
+	// The ID of the SLB instance.
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -560,14 +564,6 @@ func (s *AddTagsResponse) SetBody(v *AddTagsResponseBody) *AddTagsResponse {
 }
 
 type AddVServerGroupBackendServersRequest struct {
-	// The ID of the server group.
-	BackendServers *string `json:"BackendServers,omitempty" xml:"BackendServers,omitempty"`
-	OwnerAccount   *string `json:"OwnerAccount,omitempty" xml:"OwnerAccount,omitempty"`
-	OwnerId        *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
-	// The ID of the server group.
-	RegionId             *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	ResourceOwnerAccount *string `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
-	ResourceOwnerId      *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
 	// The list of backend servers. You can specify up to 20 backend servers in each request.
 	//
 	// The following parameters are used to specify the backend servers:
@@ -592,6 +588,14 @@ type AddVServerGroupBackendServersRequest struct {
 	// *   ECS instance:`  [{ "ServerId": "i-xxxxxxxxx", "Weight": "100", "Type": "ecs", "Port": "80", "Description": "test-112" }]. `
 	// *   ENI:`  [{ "ServerId": "eni-xxxxxxxxx", "Weight": "100", "Type": "eni", "ServerIp": "192.168. **. **", "Port":"80","Description":"test-112" }] `
 	// *   ENI with multiple IP addresses:`  [{ "ServerId": "eni-xxxxxxxxx", "Weight": "100", "Type": "eni", "ServerIp": "192.168. **. **", "Port":"80","Description":"test-112" },{ "ServerId": "eni-xxxxxxxxx", "Weight": "100", "Type": "eni", "ServerIp": "172.166. **. **", "Port":"80","Description":"test-113" }] `
+	BackendServers *string `json:"BackendServers,omitempty" xml:"BackendServers,omitempty"`
+	OwnerAccount   *string `json:"OwnerAccount,omitempty" xml:"OwnerAccount,omitempty"`
+	OwnerId        *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
+	// The ID of the region where the Classic Load Balancer (CLB) instance is created.
+	RegionId             *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	ResourceOwnerAccount *string `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
+	ResourceOwnerId      *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
+	// The ID of the server group.
 	VServerGroupId *string `json:"VServerGroupId,omitempty" xml:"VServerGroupId,omitempty"`
 }
 
@@ -639,14 +643,11 @@ func (s *AddVServerGroupBackendServersRequest) SetVServerGroupId(v string) *AddV
 }
 
 type AddVServerGroupBackendServersResponseBody struct {
-	// The type of backend server. Valid values:
-	//
-	// *   **ecs**: an ECS instance. This is the default value.
-	// *   **eni**: an ENI.
-	BackendServers *AddVServerGroupBackendServersResponseBodyBackendServers `json:"BackendServers,omitempty" xml:"BackendServers,omitempty" type:"Struct"`
 	// The list of backend servers.
-	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	BackendServers *AddVServerGroupBackendServersResponseBodyBackendServers `json:"BackendServers,omitempty" xml:"BackendServers,omitempty" type:"Struct"`
 	// The ID of the request.
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The ID of the server group.
 	VServerGroupId *string `json:"VServerGroupId,omitempty" xml:"VServerGroupId,omitempty"`
 }
 
@@ -691,15 +692,18 @@ func (s *AddVServerGroupBackendServersResponseBodyBackendServers) SetBackendServ
 }
 
 type AddVServerGroupBackendServersResponseBodyBackendServersBackendServer struct {
-	// backend server
-	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
-	// The ID of the ECS instance or ENI.
-	Port *int32 `json:"Port,omitempty" xml:"Port,omitempty"`
-	// Adds backend servers to a specified server group.
-	ServerId *string `json:"ServerId,omitempty" xml:"ServerId,omitempty"`
-	// The weight of the backend server.
-	Type *string `json:"Type,omitempty" xml:"Type,omitempty"`
 	// The description of the server group.
+	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
+	// The port that is used by the backend server.
+	Port *int32 `json:"Port,omitempty" xml:"Port,omitempty"`
+	// The ID of the ECS instance or ENI.
+	ServerId *string `json:"ServerId,omitempty" xml:"ServerId,omitempty"`
+	// The type of backend server. Valid values:
+	//
+	// *   **ecs**: an ECS instance. This is the default value.
+	// *   **eni**: an ENI.
+	Type *string `json:"Type,omitempty" xml:"Type,omitempty"`
+	// The weight of the backend server.
 	Weight *int32 `json:"Weight,omitempty" xml:"Weight,omitempty"`
 }
 
@@ -766,19 +770,20 @@ func (s *AddVServerGroupBackendServersResponse) SetBody(v *AddVServerGroupBacken
 }
 
 type CreateAccessControlListRequest struct {
-	// The ID of the resource group to which the ACL belongs.
+	// The operation that you want to perform. Set the value to **CreateAccessControlList**.
 	AclName *string `json:"AclName,omitempty" xml:"AclName,omitempty"`
-	// The ID of the ACL.
+	// The ID of the region where you want to create the ACL.
 	AddressIPVersion *string `json:"AddressIPVersion,omitempty" xml:"AddressIPVersion,omitempty"`
 	OwnerAccount     *string `json:"OwnerAccount,omitempty" xml:"OwnerAccount,omitempty"`
 	OwnerId          *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
-	// The IP version. Valid values: **ipv4** and **ipv6**.
+	// The region ID.
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	// The ID of the request.
-	ResourceGroupId      *string                              `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
-	ResourceOwnerAccount *string                              `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
-	ResourceOwnerId      *int64                               `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
-	Tag                  []*CreateAccessControlListRequestTag `json:"Tag,omitempty" xml:"Tag,omitempty" type:"Repeated"`
+	// The name of the ACL. The name must be 1 to 80 characters in length, and can contain letters, digits, periods (.), hyphens (-), forward slashes (/), and underscores (\_). The name of the ACL that you create must be unique within each region.
+	ResourceGroupId      *string `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
+	ResourceOwnerAccount *string `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
+	ResourceOwnerId      *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
+	// The tags.
+	Tag []*CreateAccessControlListRequestTag `json:"Tag,omitempty" xml:"Tag,omitempty" type:"Repeated"`
 }
 
 func (s CreateAccessControlListRequest) String() string {
@@ -835,7 +840,13 @@ func (s *CreateAccessControlListRequest) SetTag(v []*CreateAccessControlListRequ
 }
 
 type CreateAccessControlListRequestTag struct {
-	Key   *string `json:"Key,omitempty" xml:"Key,omitempty"`
+	// The tag key of the bastion host. Valid values of N: **1 to 20**. The tag key cannot be an empty string.
+	//
+	// The tag key can be at most 64 characters in length, and cannot contain `http://` or `https://`. It must not start with `aliyun` or `acs:`.
+	Key *string `json:"Key,omitempty" xml:"Key,omitempty"`
+	// The tag value. You can specify at most 20 tag values. The tag value cannot be an empty string.
+	//
+	// The tag value must be 1 to 128 characters in length and cannot start with `acs:` or `aliyun`. It cannot contain `http://` or `https://`.
 	Value *string `json:"Value,omitempty" xml:"Value,omitempty"`
 }
 
@@ -858,12 +869,9 @@ func (s *CreateAccessControlListRequestTag) SetValue(v string) *CreateAccessCont
 }
 
 type CreateAccessControlListResponseBody struct {
-	// You can create multiple ACLs. Each ACL can contain one or more IP addresses or CIDR blocks. Before you create an ACL, take note of the following limits:
-	//
-	// *   An account can have a maximum of 50 ACLs in each region.
-	// *   You can add a maximum of 50 IP addresses or CIDR blocks at a time within an account.
-	// *   Each ACL can contain a maximum of 300 IP addresses or CIDR blocks.
-	AclId     *string `json:"AclId,omitempty" xml:"AclId,omitempty"`
+	// The IP version. Valid values: **ipv4** and **ipv6**.
+	AclId *string `json:"AclId,omitempty" xml:"AclId,omitempty"`
+	// The ID of the resource group to which the ACL belongs.
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -915,21 +923,21 @@ func (s *CreateAccessControlListResponse) SetBody(v *CreateAccessControlListResp
 }
 
 type CreateDomainExtensionRequest struct {
-	// The ID of the certificate used by the domain name.
-	Domain *string `json:"Domain,omitempty" xml:"Domain,omitempty"`
 	// The domain name to be created.
-	ListenerPort *int32 `json:"ListenerPort,omitempty" xml:"ListenerPort,omitempty"`
+	Domain *string `json:"Domain,omitempty" xml:"Domain,omitempty"`
 	// The frontend port of the HTTPS listener.
 	//
 	// Value range:** 1 to 65535**
+	ListenerPort *int32 `json:"ListenerPort,omitempty" xml:"ListenerPort,omitempty"`
+	// The ID of the SLB instance.
 	LoadBalancerId *string `json:"LoadBalancerId,omitempty" xml:"LoadBalancerId,omitempty"`
 	OwnerAccount   *string `json:"OwnerAccount,omitempty" xml:"OwnerAccount,omitempty"`
 	OwnerId        *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
-	// The ID of the SLB instance.
+	// The ID of the region to which the SLB instance belongs.
 	RegionId             *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 	ResourceOwnerAccount *string `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
 	ResourceOwnerId      *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
-	// The frontend port used by the SLB instance.
+	// The ID of the certificate used by the domain name.
 	ServerCertificateId *string `json:"ServerCertificateId,omitempty" xml:"ServerCertificateId,omitempty"`
 }
 
@@ -987,10 +995,11 @@ func (s *CreateDomainExtensionRequest) SetServerCertificateId(v string) *CreateD
 }
 
 type CreateDomainExtensionResponseBody struct {
-	DomainExtensionId *string `json:"DomainExtensionId,omitempty" xml:"DomainExtensionId,omitempty"`
-	// The ID of the request.
-	ListenerPort *int32 `json:"ListenerPort,omitempty" xml:"ListenerPort,omitempty"`
 	// The ID of the created domain name extension.
+	DomainExtensionId *string `json:"DomainExtensionId,omitempty" xml:"DomainExtensionId,omitempty"`
+	// The frontend port used by the SLB instance.
+	ListenerPort *int32 `json:"ListenerPort,omitempty" xml:"ListenerPort,omitempty"`
+	// The ID of the request.
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -1047,33 +1056,135 @@ func (s *CreateDomainExtensionResponse) SetBody(v *CreateDomainExtensionResponse
 }
 
 type CreateLoadBalancerRequest struct {
-	Address                      *string                         `json:"Address,omitempty" xml:"Address,omitempty"`
-	AddressIPVersion             *string                         `json:"AddressIPVersion,omitempty" xml:"AddressIPVersion,omitempty"`
-	AddressType                  *string                         `json:"AddressType,omitempty" xml:"AddressType,omitempty"`
-	AutoPay                      *bool                           `json:"AutoPay,omitempty" xml:"AutoPay,omitempty"`
-	Bandwidth                    *int32                          `json:"Bandwidth,omitempty" xml:"Bandwidth,omitempty"`
-	ClientToken                  *string                         `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
-	DeleteProtection             *string                         `json:"DeleteProtection,omitempty" xml:"DeleteProtection,omitempty"`
-	Duration                     *int32                          `json:"Duration,omitempty" xml:"Duration,omitempty"`
-	InstanceChargeType           *string                         `json:"InstanceChargeType,omitempty" xml:"InstanceChargeType,omitempty"`
-	InternetChargeType           *string                         `json:"InternetChargeType,omitempty" xml:"InternetChargeType,omitempty"`
-	LoadBalancerName             *string                         `json:"LoadBalancerName,omitempty" xml:"LoadBalancerName,omitempty"`
-	LoadBalancerSpec             *string                         `json:"LoadBalancerSpec,omitempty" xml:"LoadBalancerSpec,omitempty"`
-	MasterZoneId                 *string                         `json:"MasterZoneId,omitempty" xml:"MasterZoneId,omitempty"`
-	ModificationProtectionReason *string                         `json:"ModificationProtectionReason,omitempty" xml:"ModificationProtectionReason,omitempty"`
-	ModificationProtectionStatus *string                         `json:"ModificationProtectionStatus,omitempty" xml:"ModificationProtectionStatus,omitempty"`
-	OwnerAccount                 *string                         `json:"OwnerAccount,omitempty" xml:"OwnerAccount,omitempty"`
-	OwnerId                      *int64                          `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
-	PayType                      *string                         `json:"PayType,omitempty" xml:"PayType,omitempty"`
-	PricingCycle                 *string                         `json:"PricingCycle,omitempty" xml:"PricingCycle,omitempty"`
-	RegionId                     *string                         `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	ResourceGroupId              *string                         `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
-	ResourceOwnerAccount         *string                         `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
-	ResourceOwnerId              *int64                          `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
-	SlaveZoneId                  *string                         `json:"SlaveZoneId,omitempty" xml:"SlaveZoneId,omitempty"`
-	Tag                          []*CreateLoadBalancerRequestTag `json:"Tag,omitempty" xml:"Tag,omitempty" type:"Repeated"`
-	VSwitchId                    *string                         `json:"VSwitchId,omitempty" xml:"VSwitchId,omitempty"`
-	VpcId                        *string                         `json:"VpcId,omitempty" xml:"VpcId,omitempty"`
+	// The private IP address of the CLB instance. The private IP address must belong to the destination CIDR block of the vSwitch.
+	Address *string `json:"Address,omitempty" xml:"Address,omitempty"`
+	// The IP version that is used by the CLB instance. Valid values: **ipv4** and **ipv6**.
+	AddressIPVersion *string `json:"AddressIPVersion,omitempty" xml:"AddressIPVersion,omitempty"`
+	// The network type of the CLB instance. Valid values:
+	//
+	// *   **internet**: After an Internet-facing CLB instance is created, the system assigns a public IP address to the CLB instance. Then, the CLB instance can forward requests over the Internet.
+	// *   **intranet**: After an internal-facing CLB instance is created, the system assigns a private IP address to the CLB instance. Then, the CLB instance can forward requests only over the internal networks.
+	AddressType *string `json:"AddressType,omitempty" xml:"AddressType,omitempty"`
+	// Specifies whether to automatically pay for the subscription Internet-facing CLB instance. Valid values:
+	//
+	// *   **true**: automatically pays for the CLB instance. After you call this operation, the system automatically completes the payment and creates the CLB instance.
+	// *   **false** (default): After you call the operation, the order is created but the payment is not completed. You can view the pending order in the console. The CLB instance will not be created until you complete the payment.
+	//
+	// >  This parameter is supported only by subscription instances created on the Alibaba Cloud China site.
+	AutoPay *bool `json:"AutoPay,omitempty" xml:"AutoPay,omitempty"`
+	// The maximum bandwidth of the listener. Unit: Mbit/s.
+	//
+	// Valid values: **1** to **5120**. For a pay-by-bandwidth Internet-facing CLB instance, you can specify the maximum bandwidth of each listener. The sum of the maximum bandwidth of all listeners cannot exceed the maximum bandwidth of the CLB instance.
+	Bandwidth *int32 `json:"Bandwidth,omitempty" xml:"Bandwidth,omitempty"`
+	// The client token that is used to ensure the idempotence of the request.
+	//
+	// You can use the client to generate the token, but you must make sure that the token is unique among different requests.
+	//
+	// >  If you do not specify this parameter, the system uses the **request ID** as the **client token**. The **request ID** may be different for each request.
+	ClientToken *string `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
+	// Specifies whether to enable deletion protection for the CLB instance. Valid values:
+	//
+	// *   **on**
+	// *   **off**
+	DeleteProtection *string `json:"DeleteProtection,omitempty" xml:"DeleteProtection,omitempty"`
+	// The subscription duration of the Internet-facing CLB instance. Valid values:
+	//
+	// *   If **PricingCycle** is set to **month**, the valid values are **1 to 9**.
+	// *   If **PricingCycle** is set to **year**, the valid values are **1 to 5**.
+	//
+	// >  This parameter is supported only by subscription instances created on the Alibaba Cloud China site.
+	Duration *int32 `json:"Duration,omitempty" xml:"Duration,omitempty"`
+	// The metering method of the CLB instance. Valid values:
+	//
+	// *   **PayBySpec** (default)
+	// *   **PayByCLCU**
+	//
+	// >  This parameter is supported only by instances created on the Alibaba Cloud China site and only when **PayType** is set to **PayOnDemand**.
+	InstanceChargeType *string `json:"InstanceChargeType,omitempty" xml:"InstanceChargeType,omitempty"`
+	// The metering method of the Internet-facing CLB instance. Valid values:
+	//
+	// *   **paybytraffic** (default)
+	//
+	// > If you set the value to **paybytraffic**, you do not need to specify **Bandwidth**. Even if you specify **Bandwidth**, the value does not take effect.
+	//
+	// *   **paybybandwidth**: pay-by-bandwidth
+	//
+	// >  If you set **PayType** to **PayOnDemand** and set **InstanceChargeType** to **PayByCLCU**, you must set InternetChargeType to **paybytraffic**.
+	InternetChargeType *string `json:"InternetChargeType,omitempty" xml:"InternetChargeType,omitempty"`
+	// The CLB instance name.
+	//
+	// The name must be 1 to 80 characters in length, and can contain digits, periods (.), underscores (\_), and hyphens (-). It must start with a letter.
+	//
+	// If you do not specify this parameter, the system automatically assigns a name to the CLB instance.
+	LoadBalancerName *string `json:"LoadBalancerName,omitempty" xml:"LoadBalancerName,omitempty"`
+	// The specification of the CLB instance. Valid values:
+	//
+	// *   **slb.s1.small**
+	//
+	// *   **slb.s2.small**
+	//
+	// *   **slb.s2.medium**
+	//
+	// *   **slb.s3.small**
+	//
+	// *   **slb.s3.medium**
+	//
+	// *   **slb.s3.large**
+	//
+	//     **
+	//
+	//     **Note** If you do not specify this parameter, a shared-resource CLB instance is created. Shared-resource CLB instances are no longer available for purchase. Therefore, you must specify this parameter.
+	//
+	// If **InstanceChargeType** is set to **PayByCLCU**, this parameter is invalid and you do not need to specify this parameter.
+	LoadBalancerSpec *string `json:"LoadBalancerSpec,omitempty" xml:"LoadBalancerSpec,omitempty"`
+	// The ID of the primary zone to which the CLB instance belongs.
+	//
+	// You can call the [DescribeZone](~~DescribeZone~~) operation to query the primary and secondary zones in the region where you want to create the CLB instance.
+	MasterZoneId *string `json:"MasterZoneId,omitempty" xml:"MasterZoneId,omitempty"`
+	// The reason for enabling the configuration read-only mode. The reason must be 1 to 80 characters in length. It must start with a letter and can contain letters, digits, periods (.), underscores (\_), and hyphens (-).
+	//
+	// >  This parameter takes effect only when **ModificationProtectionStatus** is set to **ConsoleProtection**.
+	ModificationProtectionReason *string `json:"ModificationProtectionReason,omitempty" xml:"ModificationProtectionReason,omitempty"`
+	// Specifies whether to enable the configuration read-only mode. Valid values:
+	//
+	// *   **NonProtection**: disables the configuration read-only mode. After you disable the configuration read-only mode, the value of **ModificationProtectionReason** is cleared.
+	// *   **ConsoleProtection**: enables the configuration read-only mode.
+	//
+	// >  If you set this parameter to **ConsoleProtection**, you cannot modify instance configurations in the CLB console. However, you can modify instance configurations by calling API operations.
+	ModificationProtectionStatus *string `json:"ModificationProtectionStatus,omitempty" xml:"ModificationProtectionStatus,omitempty"`
+	OwnerAccount                 *string `json:"OwnerAccount,omitempty" xml:"OwnerAccount,omitempty"`
+	OwnerId                      *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
+	// The billing method of the CLB instance. Set the value to
+	//
+	// **PayOnDemand**, which specifies the pay-as-you-go billing method.
+	PayType *string `json:"PayType,omitempty" xml:"PayType,omitempty"`
+	// The billing cycle of the subscription Internet-facing CLB instance. Valid values:
+	//
+	// *   **month**
+	// *   **year**
+	//
+	// >  This parameter is supported only by subscription instances created on the Alibaba Cloud China site.
+	PricingCycle *string `json:"PricingCycle,omitempty" xml:"PricingCycle,omitempty"`
+	// The region ID of the CLB instance.
+	//
+	// You can call the [DescribeRegions](~~DescribeRegions~~) operation to query the most recent region list.
+	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	// The ID of the resource group.
+	ResourceGroupId      *string `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
+	ResourceOwnerAccount *string `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
+	ResourceOwnerId      *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
+	// The ID of the secondary zone to which the CLB instance belongs.
+	//
+	// You can call the [DescribeZone](~~DescribeZone~~) operation to query the primary and secondary zones in the region where you want to create the CLB instance.
+	SlaveZoneId *string `json:"SlaveZoneId,omitempty" xml:"SlaveZoneId,omitempty"`
+	// The tags.
+	Tag []*CreateLoadBalancerRequestTag `json:"Tag,omitempty" xml:"Tag,omitempty" type:"Repeated"`
+	// The ID of the vSwitch to which the CLB instance belongs.
+	//
+	// If you want to deploy the CLB instance in a VPC, this parameter is required. If this parameter is specified, **AddessType** is set to **intranet** by default.
+	VSwitchId *string `json:"VSwitchId,omitempty" xml:"VSwitchId,omitempty"`
+	// The ID of the virtual private cloud (VPC) to which the CLB instance belongs.
+	VpcId *string `json:"VpcId,omitempty" xml:"VpcId,omitempty"`
 }
 
 func (s CreateLoadBalancerRequest) String() string {
@@ -1220,7 +1331,13 @@ func (s *CreateLoadBalancerRequest) SetVpcId(v string) *CreateLoadBalancerReques
 }
 
 type CreateLoadBalancerRequestTag struct {
-	Key   *string `json:"Key,omitempty" xml:"Key,omitempty"`
+	// The tag key of the bastion host. Valid values of N: **1 to 20**. The tag key cannot be an empty string.
+	//
+	// The tag key can be at most 64 characters in length, and cannot contain `http://` or `https://`. It must not start with `aliyun` or `acs:`.
+	Key *string `json:"Key,omitempty" xml:"Key,omitempty"`
+	// The tag value. Valid values of N: **1 to 20**. The tag value can be an empty string.
+	//
+	// The tag value can be up to 128 characters in length and cannot start with `acs:` or `aliyun`. The tag value cannot contain `http://` or `https://`.
 	Value *string `json:"Value,omitempty" xml:"Value,omitempty"`
 }
 
@@ -1243,16 +1360,29 @@ func (s *CreateLoadBalancerRequestTag) SetValue(v string) *CreateLoadBalancerReq
 }
 
 type CreateLoadBalancerResponseBody struct {
-	Address          *string `json:"Address,omitempty" xml:"Address,omitempty"`
+	// The IP address that is allocated to the CLB instance.
+	Address *string `json:"Address,omitempty" xml:"Address,omitempty"`
+	// The IP version that is used by the CLB instance.
 	AddressIPVersion *string `json:"AddressIPVersion,omitempty" xml:"AddressIPVersion,omitempty"`
-	LoadBalancerId   *string `json:"LoadBalancerId,omitempty" xml:"LoadBalancerId,omitempty"`
+	// The CLB instance ID.
+	LoadBalancerId *string `json:"LoadBalancerId,omitempty" xml:"LoadBalancerId,omitempty"`
+	// The CLB instance name.
 	LoadBalancerName *string `json:"LoadBalancerName,omitempty" xml:"LoadBalancerName,omitempty"`
-	NetworkType      *string `json:"NetworkType,omitempty" xml:"NetworkType,omitempty"`
-	OrderId          *int64  `json:"OrderId,omitempty" xml:"OrderId,omitempty"`
-	RequestId        *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	ResourceGroupId  *string `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
-	VSwitchId        *string `json:"VSwitchId,omitempty" xml:"VSwitchId,omitempty"`
-	VpcId            *string `json:"VpcId,omitempty" xml:"VpcId,omitempty"`
+	// The network type of the CLB instance. Valid values:
+	//
+	// *   **vpc**
+	// *   **classic**
+	NetworkType *string `json:"NetworkType,omitempty" xml:"NetworkType,omitempty"`
+	// The order ID of the subscription CLB instance.
+	OrderId *int64 `json:"OrderId,omitempty" xml:"OrderId,omitempty"`
+	// The request ID.
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The ID of the resource group to which the CLB instance belongs.
+	ResourceGroupId *string `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
+	// The ID of the vSwitch to which the CLB instance belongs.
+	VSwitchId *string `json:"VSwitchId,omitempty" xml:"VSwitchId,omitempty"`
+	// The ID of the VPC to which the CLB instance belongs.
+	VpcId *string `json:"VpcId,omitempty" xml:"VpcId,omitempty"`
 }
 
 func (s CreateLoadBalancerResponseBody) String() string {
@@ -1343,136 +1473,15 @@ func (s *CreateLoadBalancerResponse) SetBody(v *CreateLoadBalancerResponseBody) 
 }
 
 type CreateLoadBalancerHTTPListenerRequest struct {
-	// The number of times that a healthy backend server must consecutively fail health checks before it is declared unhealthy. In this case, the health status is changed from **success** to **fail**.
+	// The ID of the network ACL that is associated with the listener.
 	//
-	// Valid values: **2** to **10**.
-	//
-	// >  This parameter takes effect only if the **HealthCheck** parameter is set to **on**.
+	// >  If **AclStatus** is set to **on**, this parameter is required.
 	AclId *string `json:"AclId,omitempty" xml:"AclId,omitempty"`
-	// The frontend port that is used by the CLB instance.
-	//
-	// Valid values: **1** to **65535**.
-	AclStatus *string `json:"AclStatus,omitempty" xml:"AclStatus,omitempty"`
-	// The interval between two consecutive health checks. Unit: seconds.
-	//
-	// Valid values: **1** to **50**.
-	//
-	// >  This parameter takes effect only if the **HealthCheck** parameter is set to **on**.
-	AclType *string `json:"AclType,omitempty" xml:"AclType,omitempty"`
-	// The ID of the vServer group.
-	BackendServerPort *int32 `json:"BackendServerPort,omitempty" xml:"BackendServerPort,omitempty"`
-	// The backend port that is used by the CLB instance.
-	//
-	// Valid values: **1** to **65535**.
-	//
-	// >  If the VServerGroupId parameter is not set, this parameter is required.
-	Bandwidth *int32 `json:"Bandwidth,omitempty" xml:"Bandwidth,omitempty"`
-	// Specifies whether to use the `SLB-IP` header to retrieve the virtual IP address (VIP) of the client. Valid values:
-	//
-	// *   **on**: yes
-	// *   **off** (default): no
-	Cookie *string `json:"Cookie,omitempty" xml:"Cookie,omitempty"`
-	// Specifies whether to enable HTTP-to-HTTPS redirection. Valid values:
-	//
-	// *   **on**: yes
-	// *   **off** (default): no
-	CookieTimeout *int32 `json:"CookieTimeout,omitempty" xml:"CookieTimeout,omitempty"`
-	// The timeout period of a request. Unit: seconds.
-	//
-	// Default value: **60**. Valid values: **1** to **180**.
-	//
-	// If no response is received from the backend server within the specified timeout period, CLB sends an `HTTP 504` error code to the client.
-	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
-	// The ID of the request.
-	ForwardPort *int32 `json:"ForwardPort,omitempty" xml:"ForwardPort,omitempty"`
-	// The number of times that an unhealthy backend server must consecutively pass health checks before it is declared healthy. In this case, the health status is changed from **fail** to **success**.
-	//
-	// Valid values: **2** to **10**.
-	//
-	// >  This parameter takes effect only if the **HealthCheck** parameter is set to **on**.
-	Gzip *string `json:"Gzip,omitempty" xml:"Gzip,omitempty"`
-	// The domain name that is used for health checks. Valid values:
-	//
-	// *   **$\_ip**: the private IP address of a backend server. If you do not set the HealthCheckDomain parameter or set the parameter to $\_ip, the CLB instance uses the private IP address of each backend server for health checks.
-	// *   **domain**: The domain name must be 1 to 80 characters in length and can contain letters, digits, periods (.), and hyphens (-).
-	//
-	// >  This parameter takes effect only if the **HealthCheck** parameter is set to **on**.
-	HealthCheck *string `json:"HealthCheck,omitempty" xml:"HealthCheck,omitempty"`
-	// The scheduling algorithm. Valid values:
-	//
-	// *   **wrr** (default): Backend servers with higher weights receive more requests than backend servers with lower weights.
-	// *   **rr**: Requests are distributed to backend servers in sequence.
-	HealthCheckConnectPort *int32 `json:"HealthCheckConnectPort,omitempty" xml:"HealthCheckConnectPort,omitempty"`
-	// Specifies whether to enable session persistence. Valid values:
-	//
-	// *   **on**: yes
-	// *   **off** (default): no
-	HealthCheckDomain *string `json:"HealthCheckDomain,omitempty" xml:"HealthCheckDomain,omitempty"`
 	// Specifies whether to enable access control. Valid values:
 	//
 	// *   **on**: yes
 	// *   **off** (default): no
-	HealthCheckHttpCode *string `json:"HealthCheckHttpCode,omitempty" xml:"HealthCheckHttpCode,omitempty"`
-	// The timeout period of a health check response. If a backend server, such as an Elastic Compute Service (ECS) instance, does not respond to a probe packet within the specified timeout period, the server fails the health check. Unit: seconds.
-	//
-	// Valid values: **1** to **300**.
-	//
-	// >
-	// *   If the value of the **HealthCheckTimeout** parameter is smaller than that of the **HealthCheckInterval** parameter, the timeout period specified by the **HealthCheckTimeout** parameter is ignored and the period of time specified by the **HealthCheckInterval** parameter is used as the timeout period.
-	// *   This parameter takes effect only if the **HealthCheck** parameter is set to **on**.
-	HealthCheckInterval *int32 `json:"HealthCheckInterval,omitempty" xml:"HealthCheckInterval,omitempty"`
-	// Specifies whether to enable the health check feature. Valid values:
-	//
-	// *   **on**: yes
-	// *   **off**: no
-	HealthCheckMethod *string `json:"HealthCheckMethod,omitempty" xml:"HealthCheckMethod,omitempty"`
-	// The maximum bandwidth of the listener. Unit: Mbit/s. Valid values:
-	//
-	// *   **-1**: If you set the value to -1, the bandwidth of the listener is unlimited.
-	// *   **1** to **5120**: The sum of bandwidth values that you specify for all listeners of the CLB instance cannot exceed the maximum bandwidth of the CLB instance.
-	//
-	// >  This parameter is available only in the Chinese mainland.
-	HealthCheckTimeout *int32 `json:"HealthCheckTimeout,omitempty" xml:"HealthCheckTimeout,omitempty"`
-	// The ID of the CLB instance.
-	HealthCheckURI *string `json:"HealthCheckURI,omitempty" xml:"HealthCheckURI,omitempty"`
-	// The health check method used in HTTP health checks. Valid values: **head** and **get**.
-	//
-	// >  This parameter takes effect only if the **HealthCheck** parameter is set to **on**.
-	HealthyThreshold *int32 `json:"HealthyThreshold,omitempty" xml:"HealthyThreshold,omitempty"`
-	// Creates an HTTP listener for a Classic Load Balancer (CLB) instance.
-	IdleTimeout *int32 `json:"IdleTimeout,omitempty" xml:"IdleTimeout,omitempty"`
-	// Specifies whether to use the `X-Forwarded-Proto` header to retrieve the listening protocol. Valid values:
-	//
-	// *   **on**: yes
-	// *   **off** (default): no
-	ListenerForward *string `json:"ListenerForward,omitempty" xml:"ListenerForward,omitempty"`
-	// The backend port that is used for health checks.
-	//
-	// Valid values: **1** to **65535**.
-	//
-	// >  This parameter takes effect only if the **HealthCheck** parameter is set to **on**.
-	ListenerPort *int32 `json:"ListenerPort,omitempty" xml:"ListenerPort,omitempty"`
-	// The ID of the region where the CLB instance is deployed.
-	//
-	// You can query the region ID from the [Regions and zones](~~40654~~) list or by calling the [DescribeRegions](~~27584~~) operation.
-	LoadBalancerId *string `json:"LoadBalancerId,omitempty" xml:"LoadBalancerId,omitempty"`
-	OwnerAccount   *string `json:"OwnerAccount,omitempty" xml:"OwnerAccount,omitempty"`
-	OwnerId        *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
-	// The HTTP status code for a successful health check. Separate multiple HTTP status codes with commas (,).
-	//
-	// Valid values: **http\_2xx** (default), **http\_3xx**, **http\_4xx**, and **http\_5xx**.
-	//
-	// >  This parameter takes effect only if the **HealthCheck** parameter is set to **on**.
-	RegionId             *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	RequestTimeout       *int32  `json:"RequestTimeout,omitempty" xml:"RequestTimeout,omitempty"`
-	ResourceOwnerAccount *string `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
-	ResourceOwnerId      *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
-	// The operation that you want to perform. Set the value to **CreateLoadBalancerHTTPListener**.
-	Scheduler *string `json:"Scheduler,omitempty" xml:"Scheduler,omitempty"`
-	// The ID of the network ACL that is associated with the listener.
-	//
-	// >  If **AclStatus** is set to **on**, this parameter is required.
-	StickySession *string `json:"StickySession,omitempty" xml:"StickySession,omitempty"`
+	AclStatus *string `json:"AclStatus,omitempty" xml:"AclStatus,omitempty"`
 	// The type of the network ACL. Valid values:
 	//
 	// *   **white**: a whitelist. Only requests from the IP addresses or CIDR blocks in the network ACL are forwarded. Whitelists apply to scenarios where you want to allow only specific IP addresses to access an application. Your service may be adversely affected if the whitelist is not properly configured. If a whitelist is configured, only requests from IP addresses that are added to the whitelist are forwarded by the listener.
@@ -1484,34 +1493,138 @@ type CreateLoadBalancerHTTPListenerRequest struct {
 	//     If a blacklist is configured for a listener but no IP address is added to the blacklist, the listener forwards all requests.
 	//
 	// >  If **AclStatus** is set to **on**, this parameter is required.
-	StickySessionType *string                                     `json:"StickySessionType,omitempty" xml:"StickySessionType,omitempty"`
-	Tag               []*CreateLoadBalancerHTTPListenerRequestTag `json:"Tag,omitempty" xml:"Tag,omitempty" type:"Repeated"`
-	// Specifies whether to use the `SLB-ID` header to retrieve the ID of the CLB instance. Valid values:
+	AclType *string `json:"AclType,omitempty" xml:"AclType,omitempty"`
+	// The backend port that is used by the CLB instance.
 	//
-	// *   **on**: yes
-	// *   **off** (default): no
-	UnhealthyThreshold *int32 `json:"UnhealthyThreshold,omitempty" xml:"UnhealthyThreshold,omitempty"`
-	// The name of the listener.
+	// Valid values: **1** to **65535**.
 	//
-	// The name must be 1 to 256 characters in length, and can contain letters, digits, hyphens (-), forward slashes (/), periods (.), and underscores (\_).
-	VServerGroupId *string `json:"VServerGroupId,omitempty" xml:"VServerGroupId,omitempty"`
-	// Specifies whether to use the `X-Forwarded-For` header to retrieve client IP addresses. Valid values:
+	// >  If the VServerGroupId parameter is not set, this parameter is required.
+	BackendServerPort *int32 `json:"BackendServerPort,omitempty" xml:"BackendServerPort,omitempty"`
+	// The maximum bandwidth of the listener. Unit: Mbit/s. Valid values:
 	//
-	// *   **on** (default): yes
-	// *   **off**: no
-	XForwardedFor *string `json:"XForwardedFor,omitempty" xml:"XForwardedFor,omitempty"`
-	// The timeout period of an idle connection. Unit: seconds.
+	// *   **-1**: If you set the value to -1, the bandwidth of the listener is unlimited.
+	// *   **1** to **5120**: The sum of bandwidth values that you specify for all listeners of the CLB instance cannot exceed the maximum bandwidth of the CLB instance.
 	//
-	// Default value: **15**. Valid values: **1** to **60**.
-	//
-	// If no request is received within the specified timeout period, SLB closes the connection. When a request is received, SLB establishes a new connection.
-	XForwardedFor_SLBID *string `json:"XForwardedFor_SLBID,omitempty" xml:"XForwardedFor_SLBID,omitempty"`
+	// >  This parameter is available only in the Chinese mainland.
+	Bandwidth *int32 `json:"Bandwidth,omitempty" xml:"Bandwidth,omitempty"`
 	// The cookie that is configured on the server.
 	//
 	// The cookie must be 1 to 200 characters in length and can contain only ASCII characters and digits. It cannot contain commas (,), semicolons (;), or space characters. It cannot start with a dollar sign ($).
 	//
 	// >  This parameter is required if the **StickySession** parameter is set to **on** and the **StickySessionType** parameter is set to **server**.
-	XForwardedFor_SLBIP *string `json:"XForwardedFor_SLBIP,omitempty" xml:"XForwardedFor_SLBIP,omitempty"`
+	Cookie *string `json:"Cookie,omitempty" xml:"Cookie,omitempty"`
+	// The timeout period of a cookie. Unit: seconds.
+	//
+	// Valid values: **1** to **86400**.
+	//
+	// >  If **StickySession** is set to **on** and **StickySessionType** is set to **insert**, this parameter is required.
+	CookieTimeout *int32 `json:"CookieTimeout,omitempty" xml:"CookieTimeout,omitempty"`
+	// The name of the listener.
+	//
+	// The name must be 1 to 256 characters in length, and can contain letters, digits, hyphens (-), forward slashes (/), periods (.), and underscores (\_).
+	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
+	// The listening port that is used to redirect HTTP requests to HTTPS.
+	ForwardPort *int32 `json:"ForwardPort,omitempty" xml:"ForwardPort,omitempty"`
+	// Specifies whether to enable `Gzip` compression to compress specific types of files. Valid values:
+	//
+	// *   **on** (default): yes
+	// *   **off**: no
+	Gzip *string `json:"Gzip,omitempty" xml:"Gzip,omitempty"`
+	// Specifies whether to enable the health check feature. Valid values:
+	//
+	// *   **on**: yes
+	// *   **off**: no
+	HealthCheck *string `json:"HealthCheck,omitempty" xml:"HealthCheck,omitempty"`
+	// The backend port that is used for health checks.
+	//
+	// Valid values: **1** to **65535**.
+	//
+	// >  This parameter takes effect only if the **HealthCheck** parameter is set to **on**.
+	HealthCheckConnectPort *int32 `json:"HealthCheckConnectPort,omitempty" xml:"HealthCheckConnectPort,omitempty"`
+	// The domain name that is used for health checks. Valid values:
+	//
+	// *   **$\_ip**: the private IP address of a backend server. If you do not set the HealthCheckDomain parameter or set the parameter to $\_ip, the CLB instance uses the private IP address of each backend server for health checks.
+	// *   **domain**: The domain name must be 1 to 80 characters in length and can contain letters, digits, periods (.), and hyphens (-).
+	//
+	// >  This parameter takes effect only if the **HealthCheck** parameter is set to **on**.
+	HealthCheckDomain *string `json:"HealthCheckDomain,omitempty" xml:"HealthCheckDomain,omitempty"`
+	// The HTTP status code for a successful health check. Separate multiple HTTP status codes with commas (,).
+	//
+	// Valid values: **http\_2xx** (default), **http\_3xx**, **http\_4xx**, and **http\_5xx**.
+	//
+	// >  This parameter takes effect only if the **HealthCheck** parameter is set to **on**.
+	HealthCheckHttpCode *string `json:"HealthCheckHttpCode,omitempty" xml:"HealthCheckHttpCode,omitempty"`
+	// The interval between two consecutive health checks. Unit: seconds.
+	//
+	// Valid values: **1** to **50**.
+	//
+	// >  This parameter takes effect only if the **HealthCheck** parameter is set to **on**.
+	HealthCheckInterval *int32 `json:"HealthCheckInterval,omitempty" xml:"HealthCheckInterval,omitempty"`
+	// The health check method used in HTTP health checks. Valid values: **head** and **get**.
+	//
+	// >  This parameter takes effect only if the **HealthCheck** parameter is set to **on**.
+	HealthCheckMethod *string `json:"HealthCheckMethod,omitempty" xml:"HealthCheckMethod,omitempty"`
+	// The timeout period of a health check response. If a backend server, such as an Elastic Compute Service (ECS) instance, does not respond to a probe packet within the specified timeout period, the server fails the health check. Unit: seconds.
+	//
+	// Valid values: **1** to **300**.
+	//
+	// >
+	// *   If the value of the **HealthCheckTimeout** parameter is smaller than that of the **HealthCheckInterval** parameter, the timeout period specified by the **HealthCheckTimeout** parameter is ignored and the period of time specified by the **HealthCheckInterval** parameter is used as the timeout period.
+	// *   This parameter takes effect only if the **HealthCheck** parameter is set to **on**.
+	HealthCheckTimeout *int32 `json:"HealthCheckTimeout,omitempty" xml:"HealthCheckTimeout,omitempty"`
+	// The URI that is used for health checks.
+	//
+	// The URI must be 1 to 80 characters in length, and can contain letters, digits, hyphens (-), forward slashes (/), periods (.), percent signs (%), question marks (?), number signs (#), and ampersands (&). The URI must start with a forward slash (/) but cannot be a single forward slash (/).
+	//
+	// >  This parameter takes effect only if the **HealthCheck** parameter is set to **on**.
+	HealthCheckURI *string `json:"HealthCheckURI,omitempty" xml:"HealthCheckURI,omitempty"`
+	// The number of times that an unhealthy backend server must consecutively pass health checks before it is declared healthy. In this case, the health status is changed from **fail** to **success**.
+	//
+	// Valid values: **2** to **10**.
+	//
+	// >  This parameter takes effect only if the **HealthCheck** parameter is set to **on**.
+	HealthyThreshold *int32 `json:"HealthyThreshold,omitempty" xml:"HealthyThreshold,omitempty"`
+	// The timeout period of an idle connection. Unit: seconds.
+	//
+	// Default value: **15**. Valid values: **1** to **60**.
+	//
+	// If no request is received within the specified timeout period, SLB closes the connection. When a request is received, SLB establishes a new connection.
+	IdleTimeout *int32 `json:"IdleTimeout,omitempty" xml:"IdleTimeout,omitempty"`
+	// Specifies whether to enable HTTP-to-HTTPS redirection. Valid values:
+	//
+	// *   **on**: yes
+	// *   **off** (default): no
+	ListenerForward *string `json:"ListenerForward,omitempty" xml:"ListenerForward,omitempty"`
+	// The frontend port that is used by the CLB instance.
+	//
+	// Valid values: **1** to **65535**.
+	ListenerPort *int32 `json:"ListenerPort,omitempty" xml:"ListenerPort,omitempty"`
+	// The ID of the CLB instance.
+	LoadBalancerId *string `json:"LoadBalancerId,omitempty" xml:"LoadBalancerId,omitempty"`
+	OwnerAccount   *string `json:"OwnerAccount,omitempty" xml:"OwnerAccount,omitempty"`
+	OwnerId        *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
+	// The ID of the region where the CLB instance is deployed.
+	//
+	// You can query the region ID from the [Regions and zones](~~40654~~) list or by calling the [DescribeRegions](~~27584~~) operation.
+	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	// The timeout period of a request. Unit: seconds.
+	//
+	// Default value: **60**. Valid values: **1** to **180**.
+	//
+	// If no response is received from the backend server within the specified timeout period, CLB sends an `HTTP 504` error code to the client.
+	RequestTimeout       *int32  `json:"RequestTimeout,omitempty" xml:"RequestTimeout,omitempty"`
+	ResourceOwnerAccount *string `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
+	ResourceOwnerId      *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
+	// The scheduling algorithm. Valid values:
+	//
+	// *   **wrr** (default): Backend servers with higher weights receive more requests than backend servers with lower weights.
+	// *   **rr**: Requests are distributed to backend servers in sequence.
+	Scheduler *string `json:"Scheduler,omitempty" xml:"Scheduler,omitempty"`
+	// Specifies whether to enable session persistence. Valid values:
+	//
+	// *   **on**: yes
+	// *   **off** (default): no
+	StickySession *string `json:"StickySession,omitempty" xml:"StickySession,omitempty"`
 	// The method that is used to handle a cookie. Valid values:
 	//
 	// *   **insert**: inserts a cookie.
@@ -1523,6 +1636,36 @@ type CreateLoadBalancerHTTPListenerRequest struct {
 	//     When CLB detects a user-defined cookie, it overwrites the original cookie with the user-defined cookie. The next request from the client carries the user-defined cookie, and the listener forwards this request to the recorded backend server.
 	//
 	// > This parameter is required if the **StickySession** parameter is set to **on**.
+	StickySessionType *string `json:"StickySessionType,omitempty" xml:"StickySessionType,omitempty"`
+	// The tags.
+	Tag []*CreateLoadBalancerHTTPListenerRequestTag `json:"Tag,omitempty" xml:"Tag,omitempty" type:"Repeated"`
+	// The number of times that a healthy backend server must consecutively fail health checks before it is declared unhealthy. In this case, the health status is changed from **success** to **fail**.
+	//
+	// Valid values: **2** to **10**.
+	//
+	// >  This parameter takes effect only if the **HealthCheck** parameter is set to **on**.
+	UnhealthyThreshold *int32 `json:"UnhealthyThreshold,omitempty" xml:"UnhealthyThreshold,omitempty"`
+	// The ID of the vServer group.
+	VServerGroupId *string `json:"VServerGroupId,omitempty" xml:"VServerGroupId,omitempty"`
+	// Specifies whether to use the `X-Forwarded-For` header to retrieve client IP addresses. Valid values:
+	//
+	// *   **on** (default): yes
+	// *   **off**: no
+	XForwardedFor *string `json:"XForwardedFor,omitempty" xml:"XForwardedFor,omitempty"`
+	// Specifies whether to use the `SLB-ID` header to retrieve the ID of the CLB instance. Valid values:
+	//
+	// *   **on**: yes
+	// *   **off** (default): no
+	XForwardedFor_SLBID *string `json:"XForwardedFor_SLBID,omitempty" xml:"XForwardedFor_SLBID,omitempty"`
+	// Specifies whether to use the `SLB-IP` header to retrieve the virtual IP address (VIP) of the client. Valid values:
+	//
+	// *   **on**: yes
+	// *   **off** (default): no
+	XForwardedFor_SLBIP *string `json:"XForwardedFor_SLBIP,omitempty" xml:"XForwardedFor_SLBIP,omitempty"`
+	// Specifies whether to use the `X-Forwarded-Proto` header to retrieve the listening protocol. Valid values:
+	//
+	// *   **on**: yes
+	// *   **off** (default): no
 	XForwardedFor_proto *string `json:"XForwardedFor_proto,omitempty" xml:"XForwardedFor_proto,omitempty"`
 }
 
@@ -1730,7 +1873,13 @@ func (s *CreateLoadBalancerHTTPListenerRequest) SetXForwardedFor_proto(v string)
 }
 
 type CreateLoadBalancerHTTPListenerRequestTag struct {
-	Key   *string `json:"Key,omitempty" xml:"Key,omitempty"`
+	// The tag key of the bastion host. Valid values of N: **1 to 20**. The tag key cannot be an empty string.
+	//
+	// The tag key can be at most 64 characters in length, and cannot contain `http://` or `https://`. It must not start with `aliyun` or `acs:`.
+	Key *string `json:"Key,omitempty" xml:"Key,omitempty"`
+	// The tag value. Valid values of N: **1 to 20**. The tag value can be an empty string.
+	//
+	// The tag value can be up to 128 characters in length and cannot start with `acs:` or `aliyun`. The tag value cannot contain `http://` or `https://`.
 	Value *string `json:"Value,omitempty" xml:"Value,omitempty"`
 }
 
@@ -1753,6 +1902,7 @@ func (s *CreateLoadBalancerHTTPListenerRequestTag) SetValue(v string) *CreateLoa
 }
 
 type CreateLoadBalancerHTTPListenerResponseBody struct {
+	// The ID of the request.
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -1799,69 +1949,104 @@ func (s *CreateLoadBalancerHTTPListenerResponse) SetBody(v *CreateLoadBalancerHT
 }
 
 type CreateLoadBalancerHTTPSListenerRequest struct {
-	// The number of times that a healthy backend server must consecutively fail health checks before it is declared unhealthy. In this case, the health status is changed from **success** to **fail**.
+	// The ID of the network access control list (ACL) that is associated with the listener.
 	//
-	// Valid values: **2** to **10**.
-	//
-	// >  This parameter takes effect only if the **HealthCheck** parameter is set to **on**.
+	// >  If **AclStatus** is set to **on**, this parameter is required.
 	AclId *string `json:"AclId,omitempty" xml:"AclId,omitempty"`
-	// The frontend port that is used by the CLB instance.
-	//
-	// Valid values: **1** to **65535**.
-	AclStatus *string `json:"AclStatus,omitempty" xml:"AclStatus,omitempty"`
-	// The interval between two consecutive health checks. Unit: seconds.
-	//
-	// Valid values: **1** to **50**.
-	//
-	// >  This parameter takes effect only if the **HealthCheck** parameter is set to **on**.
-	AclType *string `json:"AclType,omitempty" xml:"AclType,omitempty"`
-	// The ID of the server certificate.
-	BackendServerPort *int32 `json:"BackendServerPort,omitempty" xml:"BackendServerPort,omitempty"`
-	// The backend port that is used by the CLB instance. Valid values: **1** to **65535**.
-	//
-	// If the VServerGroupId parameter is not set, this parameter is required.
-	Bandwidth *int32 `json:"Bandwidth,omitempty" xml:"Bandwidth,omitempty"`
-	// Specifies whether to enable HTTP/2. Valid values:
-	//
-	// *   **on**: yes
-	// *   **off**: no
-	CACertificateId *string `json:"CACertificateId,omitempty" xml:"CACertificateId,omitempty"`
 	// Specifies whether to enable access control. Valid values:
 	//
 	// *   **on**: yes
 	// *   **off**: no
-	Cookie *string `json:"Cookie,omitempty" xml:"Cookie,omitempty"`
-	// Specifies whether to enable `Gzip` compression to compress specific types of files. Valid values:
+	AclStatus *string `json:"AclStatus,omitempty" xml:"AclStatus,omitempty"`
+	// The type of the network ACL. Valid values:
 	//
-	// *   **on**: yes
-	// *   **off**: no
-	CookieTimeout *int32 `json:"CookieTimeout,omitempty" xml:"CookieTimeout,omitempty"`
-	// The timeout period of a request. Valid values: **1 to 180**. Default value: **60**. Unit: seconds.
+	// *   **white**: a whitelist. Only requests from the IP addresses or CIDR blocks in the network ACL are forwarded. Whitelists apply to scenarios in which you want to allow only specific IP addresses to access an application. Your service may be adversely affected if the allowlist is not properly configured. After a whitelist is configured, only requests from IP addresses that are added to the whitelist are forwarded by the listener.
 	//
-	// If no response is received from a backend server within the specified timeout period, CLB returns the HTTP 504 status code to the client.
-	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
-	// Creates an HTTPS listener.
-	EnableHttp2 *string `json:"EnableHttp2,omitempty" xml:"EnableHttp2,omitempty"`
-	// The number of times that an unhealthy backend server must consecutively pass health checks before it is declared healthy. In this case, the health status is changed from **fail** to **success**.
+	//     If you enable a whitelist but do not add an IP address to the ACL, the listener forwards all requests.
 	//
-	// Valid values: **2** to **10**.
+	// *   **black**: a blacklist. All requests from the IP addresses or CIDR blocks in the network ACL are denied. The blacklist applies to scenarios in which you want to deny access from specific IP addresses to an application.
 	//
-	// >  This parameter takes effect only if the **HealthCheck** parameter is set to **on**.
-	Gzip *string `json:"Gzip,omitempty" xml:"Gzip,omitempty"`
-	// The ID of the server group.
-	HealthCheck *string `json:"HealthCheck,omitempty" xml:"HealthCheck,omitempty"`
+	//     If a blacklist is configured for a listener but no IP address is added to the blacklist, the listener forwards all requests.
+	//
+	// >  If **AclStatus** is set to **on**, this parameter is required.
+	AclType *string `json:"AclType,omitempty" xml:"AclType,omitempty"`
+	// The backend port that is used by the CLB instance. Valid values: **1** to **65535**.
+	//
+	// If the VServerGroupId parameter is not set, this parameter is required.
+	BackendServerPort *int32 `json:"BackendServerPort,omitempty" xml:"BackendServerPort,omitempty"`
 	// The maximum bandwidth of the listener. Unit: Mbit/s.
 	//
 	// Valid values: **-1** and **1** to **5120**.
 	//
 	// *   **-1**: For a pay-by-data-transfer Internet-facing CLB instance, you can set this parameter to **-1**. This way, the bandwidth of the listener is unlimited.
 	// *   **1** to **5120**: For a pay-by-bandwidth Internet-facing SLB instance, you can specify the bandwidth limit of each listener. The sum of bandwidth limits that you set for all listeners cannot exceed the bandwidth limit of the SLB instance.
-	HealthCheckConnectPort *int32 `json:"HealthCheckConnectPort,omitempty" xml:"HealthCheckConnectPort,omitempty"`
+	Bandwidth *int32 `json:"Bandwidth,omitempty" xml:"Bandwidth,omitempty"`
+	// The ID of the certification authority (CA) certificate.
+	//
+	// If both the CA certificate and the server certificate are uploaded, mutual authentication is used.
+	//
+	// If you upload only the server certificate, one-way authentication is used.
+	CACertificateId *string `json:"CACertificateId,omitempty" xml:"CACertificateId,omitempty"`
+	// The cookie that is configured on the server.
+	//
+	// The cookie must be 1 to 200 characters in length and can contain only ASCII characters and digits. It cannot contain commas (,), semicolons (;), or space characters. It cannot start with a dollar sign ($).
+	//
+	// >  This parameter is required if the **StickySession** parameter is set to **on** and the **StickySessionType** parameter is set to **server**.
+	Cookie *string `json:"Cookie,omitempty" xml:"Cookie,omitempty"`
+	// The timeout period of a cookie. Unit: seconds.
+	//
+	// Valid values: **1** to **86400**.
+	//
+	// >  If **StickySession** is set to **on** and **StickySessionType** is set to **insert**, this parameter is required.
+	CookieTimeout *int32 `json:"CookieTimeout,omitempty" xml:"CookieTimeout,omitempty"`
+	// The name of the listener.
+	//
+	// The name must be 1 to 256 characters in length and can contain letters, digits, hyphens (-), forward slashes (/), periods (.), and underscores (\_).
+	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
+	// Specifies whether to enable HTTP/2. Valid values:
+	//
+	// *   **on**: yes
+	// *   **off**: no
+	EnableHttp2 *string `json:"EnableHttp2,omitempty" xml:"EnableHttp2,omitempty"`
+	// Specifies whether to enable `Gzip` compression to compress specific types of files. Valid values:
+	//
+	// *   **on**: yes
+	// *   **off**: no
+	Gzip *string `json:"Gzip,omitempty" xml:"Gzip,omitempty"`
 	// Specifies whether to enable the health check feature. Valid values:
 	//
 	// *   **on**: yes
 	// *   **off**: no
+	HealthCheck *string `json:"HealthCheck,omitempty" xml:"HealthCheck,omitempty"`
+	// The port that is used for health checks.
+	//
+	// Valid values: **1** to **65535**.
+	//
+	// >  This parameter takes effect only if the **HealthCheck** parameter is set to **on**.
+	HealthCheckConnectPort *int32 `json:"HealthCheckConnectPort,omitempty" xml:"HealthCheckConnectPort,omitempty"`
+	// The domain name that is used for health checks. Valid values:
+	//
+	// *   **$\_ip**: the private IP address of a backend server. If you do not set the HealthCheckDomain parameter or set the parameter to $\_ip, the CLB instance uses the private IP address of each backend server for health checks.
+	// *   **domain**: The domain name must be 1 to 80 characters in length and can contain letters, digits, periods (.), and hyphens (-).
+	//
+	// >  This parameter takes effect only if the **HealthCheck** parameter is set to **on**.
 	HealthCheckDomain *string `json:"HealthCheckDomain,omitempty" xml:"HealthCheckDomain,omitempty"`
+	// The HTTP status code for a successful health check. Separate multiple HTTP status codes with commas (,).
+	//
+	// Valid values: **http\_2xx**, **http\_3xx**, **http\_4xx**, and **http\_5xx**.
+	//
+	// >  This parameter takes effect only if the **HealthCheck** parameter is set to **on**.
+	HealthCheckHttpCode *string `json:"HealthCheckHttpCode,omitempty" xml:"HealthCheckHttpCode,omitempty"`
+	// The interval between two consecutive health checks. Unit: seconds.
+	//
+	// Valid values: **1** to **50**.
+	//
+	// >  This parameter takes effect only if the **HealthCheck** parameter is set to **on**.
+	HealthCheckInterval *int32 `json:"HealthCheckInterval,omitempty" xml:"HealthCheckInterval,omitempty"`
+	// The health check method used in HTTP health checks. Valid values: **head** and **get**.
+	//
+	// >  This parameter takes effect only if the **HealthCheck** parameter is set to **on**.
+	HealthCheckMethod *string `json:"HealthCheckMethod,omitempty" xml:"HealthCheckMethod,omitempty"`
 	// The timeout period of a health check response. If a backend server, such as an Elastic Compute Service (ECS) instance, does not return a health check response within the specified timeout period, the server fails the health check. Unit: seconds.
 	//
 	// Valid values: **1** to **300**.
@@ -1869,59 +2054,65 @@ type CreateLoadBalancerHTTPSListenerRequest struct {
 	// >
 	// *   If the value of the **HealthCheckTimeout** parameter is smaller than that of the **HealthCheckInterval** parameter, the timeout period specified by the **HealthCheckTimeout** parameter is ignored and the period of time specified by the **HealthCheckInterval** parameter is used as the timeout period.
 	// *   This parameter takes effect only if the **HealthCheck** parameter is set to **on**.
-	HealthCheckHttpCode *string `json:"HealthCheckHttpCode,omitempty" xml:"HealthCheckHttpCode,omitempty"`
+	HealthCheckTimeout *int32 `json:"HealthCheckTimeout,omitempty" xml:"HealthCheckTimeout,omitempty"`
+	// The URI that is used for health checks.
+	//
+	// The URI must be 1 to 80 characters in length, and can contain letters, digits, and the following special characters: `-/.%?#&`. The URI must start with a forward slash (`/`), but cannot be a single forward slash (`/`).
+	//
+	// >  This parameter takes effect only if the **HealthCheck** parameter is set to **on**.
+	HealthCheckURI *string `json:"HealthCheckURI,omitempty" xml:"HealthCheckURI,omitempty"`
+	// The number of times that an unhealthy backend server must consecutively pass health checks before it is declared healthy. In this case, the health status is changed from **fail** to **success**.
+	//
+	// Valid values: **2** to **10**.
+	//
+	// >  This parameter takes effect only if the **HealthCheck** parameter is set to **on**.
+	HealthyThreshold *int32 `json:"HealthyThreshold,omitempty" xml:"HealthyThreshold,omitempty"`
+	// The timeout period of an idle connection. Valid values: **1 to 60**. Default value: **15**. Unit: seconds.
+	//
+	// If no request is received within the specified timeout period, CLB closes the connection. When a request is received, CLB establishes a new connection.
+	IdleTimeout *int32 `json:"IdleTimeout,omitempty" xml:"IdleTimeout,omitempty"`
+	// The frontend port that is used by the CLB instance.
+	//
+	// Valid values: **1** to **65535**.
+	ListenerPort *int32 `json:"ListenerPort,omitempty" xml:"ListenerPort,omitempty"`
+	// The ID of the CLB instance.
+	LoadBalancerId *string `json:"LoadBalancerId,omitempty" xml:"LoadBalancerId,omitempty"`
+	OwnerAccount   *string `json:"OwnerAccount,omitempty" xml:"OwnerAccount,omitempty"`
+	OwnerId        *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
+	// The region ID of the CLB instance.
+	//
+	// You can query the region ID from the [Regions and zones](~~40654~~) list or by calling the [DescribeRegions](~~25609~~) operation.
+	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	// The timeout period of a request. Valid values: **1 to 180**. Default value: **60**. Unit: seconds.
+	//
+	// If no response is received from a backend server within the specified timeout period, CLB returns the HTTP 504 status code to the client.
+	RequestTimeout       *int32  `json:"RequestTimeout,omitempty" xml:"RequestTimeout,omitempty"`
+	ResourceOwnerAccount *string `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
+	ResourceOwnerId      *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
 	// The scheduling algorithm. Valid values:
 	//
 	// *   **wrr**: Backend servers with higher weights receive more requests than those with lower weights.
 	// *   **rr**: Requests are distributed to backend servers in sequence.
-	HealthCheckInterval *int32 `json:"HealthCheckInterval,omitempty" xml:"HealthCheckInterval,omitempty"`
-	// The domain name that is used for health checks. Valid values:
-	//
-	// *   **$\_ip**: the private IP address of a backend server. If you do not set the HealthCheckDomain parameter or set the parameter to $\_ip, the CLB instance uses the private IP address of each backend server for health checks.
-	// *   **domain**: The domain name must be 1 to 80 characters in length and can contain letters, digits, periods (.), and hyphens (-).
-	//
-	// >  This parameter takes effect only if the **HealthCheck** parameter is set to **on**.
-	HealthCheckMethod *string `json:"HealthCheckMethod,omitempty" xml:"HealthCheckMethod,omitempty"`
-	// The ID of the certification authority (CA) certificate.
-	//
-	// If both the CA certificate and the server certificate are uploaded, mutual authentication is used.
-	//
-	// If you upload only the server certificate, one-way authentication is used.
-	HealthCheckTimeout *int32 `json:"HealthCheckTimeout,omitempty" xml:"HealthCheckTimeout,omitempty"`
+	Scheduler *string `json:"Scheduler,omitempty" xml:"Scheduler,omitempty"`
+	// The ID of the server certificate.
+	ServerCertificateId *string `json:"ServerCertificateId,omitempty" xml:"ServerCertificateId,omitempty"`
 	// Specifies whether to enable session persistence. Valid values:
 	//
 	// *   **on**: yes
 	// *   **off**: no
-	HealthCheckURI *string `json:"HealthCheckURI,omitempty" xml:"HealthCheckURI,omitempty"`
-	// The ID of the CLB instance.
-	HealthyThreshold *int32 `json:"HealthyThreshold,omitempty" xml:"HealthyThreshold,omitempty"`
-	// Specifies whether to use the `SLB-IP` header to retrieve the virtual IP address (VIP) of the client. Valid values:
+	StickySession *string `json:"StickySession,omitempty" xml:"StickySession,omitempty"`
+	// The method that is used to handle a cookie. Valid values: **insert** and **server**.
 	//
-	// *   **on**: yes
-	// *   **off**: no
-	IdleTimeout *int32 `json:"IdleTimeout,omitempty" xml:"IdleTimeout,omitempty"`
-	// The port that is used for health checks.
+	// *   **insert**: inserts a cookie.
 	//
-	// Valid values: **1** to **65535**.
+	//     CLB inserts a cookie (SERVERID) into the first HTTP or HTTPS response packet that is sent to a client. The next request from the client will contain this cookie, and the listener will distribute this request to the recorded backend server.
 	//
-	// >  This parameter takes effect only if the **HealthCheck** parameter is set to **on**.
-	ListenerPort *int32 `json:"ListenerPort,omitempty" xml:"ListenerPort,omitempty"`
-	// The region ID of the CLB instance.
+	// *   **server**: rewrites a cookie.
 	//
-	// You can query the region ID from the [Regions and zones](~~40654~~) list or by calling the [DescribeRegions](~~25609~~) operation.
-	LoadBalancerId *string `json:"LoadBalancerId,omitempty" xml:"LoadBalancerId,omitempty"`
-	OwnerAccount   *string `json:"OwnerAccount,omitempty" xml:"OwnerAccount,omitempty"`
-	OwnerId        *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
-	// The HTTP status code for a successful health check. Separate multiple HTTP status codes with commas (,).
+	//     When CLB detects a user-defined cookie, it overwrites the original cookie with the user-defined cookie. The next request from the client carries the user-defined cookie, and the listener will distribute the request to the recorded backend server.
 	//
-	// Valid values: **http\_2xx**, **http\_3xx**, **http\_4xx**, and **http\_5xx**.
-	//
-	// >  This parameter takes effect only if the **HealthCheck** parameter is set to **on**.
-	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	// The ID of the request.
-	RequestTimeout       *int32  `json:"RequestTimeout,omitempty" xml:"RequestTimeout,omitempty"`
-	ResourceOwnerAccount *string `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
-	ResourceOwnerId      *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
+	// >  This parameter is required if the **StickySession** parameter is set to **on**.
+	StickySessionType *string `json:"StickySessionType,omitempty" xml:"StickySessionType,omitempty"`
 	// The Transport Layer Security (TLS) security policy. Each security policy contains TLS protocol versions and cipher suites available for HTTPS.
 	//
 	// *   **tls_cipher_policy\_1\_0**:
@@ -1953,62 +2144,36 @@ type CreateLoadBalancerHTTPSListenerRequest struct {
 	//     Supported TLS versions: TLS 1.2 and TLS 1.3
 	//
 	//     Supported cipher suites: TLS_AES\_128\_GCM_SHA256, TLS_AES\_256\_GCM_SHA384, TLS_CHACHA20\_POLY1305\_SHA256, TLS_AES\_128\_CCM_SHA256, TLS_AES\_128\_CCM\_8\_SHA256, ECDHE-ECDSA-AES128-GCM-SHA256, ECDHE-ECDSA-AES256-GCM-SHA384, ECDHE-ECDSA-AES128-SHA256, ECDHE-ECDSA-AES256-SHA384, ECDHE-RSA-AES128-GCM-SHA256, ECDHE-RSA-AES256-GCM-SHA384, ECDHE-RSA-AES128-SHA256, ECDHE-RSA-AES256-SHA384, ECDHE-ECDSA-AES128-SHA, ECDHE-ECDSA-AES256-SHA, ECDHE-RSA-AES128-SHA, and ECDHE-RSA-AES256-SHA
-	Scheduler *string `json:"Scheduler,omitempty" xml:"Scheduler,omitempty"`
-	// The ID of the network access control list (ACL) that is associated with the listener.
+	TLSCipherPolicy *string `json:"TLSCipherPolicy,omitempty" xml:"TLSCipherPolicy,omitempty"`
+	// The tags.
+	Tag []*CreateLoadBalancerHTTPSListenerRequestTag `json:"Tag,omitempty" xml:"Tag,omitempty" type:"Repeated"`
+	// The number of times that a healthy backend server must consecutively fail health checks before it is declared unhealthy. In this case, the health status is changed from **success** to **fail**.
 	//
-	// >  If **AclStatus** is set to **on**, this parameter is required.
-	ServerCertificateId *string `json:"ServerCertificateId,omitempty" xml:"ServerCertificateId,omitempty"`
-	// The operation that you want to perform. Set the value to **CreateLoadBalancerHTTPSListener**.
-	StickySession *string `json:"StickySession,omitempty" xml:"StickySession,omitempty"`
-	// Specifies whether to use the `X-Forwarded-Proto` header to retrieve the listener protocol. Valid values:
-	//
-	// *   **on**: yes
-	// *   **off**: no
-	StickySessionType *string                                      `json:"StickySessionType,omitempty" xml:"StickySessionType,omitempty"`
-	TLSCipherPolicy   *string                                      `json:"TLSCipherPolicy,omitempty" xml:"TLSCipherPolicy,omitempty"`
-	Tag               []*CreateLoadBalancerHTTPSListenerRequestTag `json:"Tag,omitempty" xml:"Tag,omitempty" type:"Repeated"`
-	// The health check method used in HTTP health checks. Valid values: **head** and **get**.
+	// Valid values: **2** to **10**.
 	//
 	// >  This parameter takes effect only if the **HealthCheck** parameter is set to **on**.
 	UnhealthyThreshold *int32 `json:"UnhealthyThreshold,omitempty" xml:"UnhealthyThreshold,omitempty"`
-	// The type of the network ACL. Valid values:
-	//
-	// *   **white**: a whitelist. Only requests from the IP addresses or CIDR blocks in the network ACL are forwarded. Whitelists apply to scenarios in which you want to allow only specific IP addresses to access an application. Your service may be adversely affected if the allowlist is not properly configured. After a whitelist is configured, only requests from IP addresses that are added to the whitelist are forwarded by the listener.
-	//
-	//     If you enable a whitelist but do not add an IP address to the ACL, the listener forwards all requests.
-	//
-	// *   **black**: a blacklist. All requests from the IP addresses or CIDR blocks in the network ACL are denied. The blacklist applies to scenarios in which you want to deny access from specific IP addresses to an application.
-	//
-	//     If a blacklist is configured for a listener but no IP address is added to the blacklist, the listener forwards all requests.
-	//
-	// >  If **AclStatus** is set to **on**, this parameter is required.
+	// The ID of the server group.
 	VServerGroupId *string `json:"VServerGroupId,omitempty" xml:"VServerGroupId,omitempty"`
 	// Specifies whether to use the `X-Forwarded-For` header to retrieve client IP addresses. Valid values:
 	//
 	// *   **on**: yes
 	// *   **off**: no
 	XForwardedFor *string `json:"XForwardedFor,omitempty" xml:"XForwardedFor,omitempty"`
-	// The timeout period of an idle connection. Valid values: **1 to 60**. Default value: **15**. Unit: seconds.
+	// Specifies whether to use the `SLB-ID` header to retrieve the ID of the CLB instance. Valid values:
 	//
-	// If no request is received within the specified timeout period, CLB closes the connection. When a request is received, CLB establishes a new connection.
+	// *   **on**: yes
+	// *   **off**: no
 	XForwardedFor_SLBID *string `json:"XForwardedFor_SLBID,omitempty" xml:"XForwardedFor_SLBID,omitempty"`
-	// The cookie that is configured on the server.
+	// Specifies whether to use the `SLB-IP` header to retrieve the virtual IP address (VIP) of the client. Valid values:
 	//
-	// The cookie must be 1 to 200 characters in length and can contain only ASCII characters and digits. It cannot contain commas (,), semicolons (;), or space characters. It cannot start with a dollar sign ($).
-	//
-	// >  This parameter is required if the **StickySession** parameter is set to **on** and the **StickySessionType** parameter is set to **server**.
+	// *   **on**: yes
+	// *   **off**: no
 	XForwardedFor_SLBIP *string `json:"XForwardedFor_SLBIP,omitempty" xml:"XForwardedFor_SLBIP,omitempty"`
-	// The method that is used to handle a cookie. Valid values: **insert** and **server**.
+	// Specifies whether to use the `X-Forwarded-Proto` header to retrieve the listener protocol. Valid values:
 	//
-	// *   **insert**: inserts a cookie.
-	//
-	//     CLB inserts a cookie (SERVERID) into the first HTTP or HTTPS response packet that is sent to a client. The next request from the client will contain this cookie, and the listener will distribute this request to the recorded backend server.
-	//
-	// *   **server**: rewrites a cookie.
-	//
-	//     When CLB detects a user-defined cookie, it overwrites the original cookie with the user-defined cookie. The next request from the client carries the user-defined cookie, and the listener will distribute the request to the recorded backend server.
-	//
-	// >  This parameter is required if the **StickySession** parameter is set to **on**.
+	// *   **on**: yes
+	// *   **off**: no
 	XForwardedFor_proto *string `json:"XForwardedFor_proto,omitempty" xml:"XForwardedFor_proto,omitempty"`
 }
 
@@ -2226,7 +2391,9 @@ func (s *CreateLoadBalancerHTTPSListenerRequest) SetXForwardedFor_proto(v string
 }
 
 type CreateLoadBalancerHTTPSListenerRequestTag struct {
-	Key   *string `json:"Key,omitempty" xml:"Key,omitempty"`
+	// The tag key.
+	Key *string `json:"Key,omitempty" xml:"Key,omitempty"`
+	// The tag value.
 	Value *string `json:"Value,omitempty" xml:"Value,omitempty"`
 }
 
@@ -2249,6 +2416,7 @@ func (s *CreateLoadBalancerHTTPSListenerRequestTag) SetValue(v string) *CreateLo
 }
 
 type CreateLoadBalancerHTTPSListenerResponseBody struct {
+	// The ID of the request.
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -2295,104 +2463,15 @@ func (s *CreateLoadBalancerHTTPSListenerResponse) SetBody(v *CreateLoadBalancerH
 }
 
 type CreateLoadBalancerTCPListenerRequest struct {
-	// The HTTP status code for a successful health check. Separate multiple HTTP status codes with commas (,). Valid values:
-	//
-	// *   **http\_2xx**(default)
-	// *   **http\_3xx**
-	// *   **http\_4xx**
-	// *   **http\_5xx**
-	AclId *string `json:"AclId,omitempty" xml:"AclId,omitempty"`
 	// The ID of the network ACL that is associated with the listener.
 	//
 	// >  If **AclStatus** is set to **on**, this parameter is required.
-	AclStatus *string `json:"AclStatus,omitempty" xml:"AclStatus,omitempty"`
-	// The type of health checks. Valid values:
-	//
-	// *   **tcp** (default)
-	// *   **http**
-	AclType *string `json:"AclType,omitempty" xml:"AclType,omitempty"`
+	AclId *string `json:"AclId,omitempty" xml:"AclId,omitempty"`
 	// Specifies whether to enable access control. Valid values:
 	//
 	// *   **on**: yes
 	// *   **off** (default): no
-	BackendServerPort *int32 `json:"BackendServerPort,omitempty" xml:"BackendServerPort,omitempty"`
-	// The routing algorithm. Valid values:
-	//
-	// *   **wrr** (default): Backend servers with higher weights receive more requests than backend servers with lower weights.
-	// *   **rr**: Requests are distributed to backend servers in sequence.
-	// *   **sch**: specifies consistent hashing that is based on source IP addresses. Requests from the same source IP address are distributed to the same backend server.
-	// *   **tch**: specifies consistent hashing that is based on four factors: source IP address, destination IP address, source port, and destination port. Requests that contain the same information based on the four factors are distributed to the same backend server.
-	//
-	// >  Only high-performance CLB instances support the **sch** and **tch** consistent hashing algorithms.
-	Bandwidth *int32 `json:"Bandwidth,omitempty" xml:"Bandwidth,omitempty"`
-	// The timeout period of connection draining. Unit: seconds.
-	//
-	// Valid values: **10** to **900**.
-	//
-	// >  This parameter is required if **ConnectionDrain** is set to **on**.
-	ConnectionDrain *string `json:"ConnectionDrain,omitempty" xml:"ConnectionDrain,omitempty"`
-	// The ID of the request.
-	ConnectionDrainTimeout *int32 `json:"ConnectionDrainTimeout,omitempty" xml:"ConnectionDrainTimeout,omitempty"`
-	// The backend port used by the CLB instance.
-	//
-	// Valid values: **1** to **65535**.
-	//
-	// If the **VServerGroupId** parameter is not set, this parameter is required.
-	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
-	// The name of the listener.
-	//
-	// The name must be 1 to 256 characters in length, and can contain letters, digits, hyphens (-), forward slashes (/), periods (.), and underscores (\_).
-	EstablishedTimeout *int32 `json:"EstablishedTimeout,omitempty" xml:"EstablishedTimeout,omitempty"`
-	// The ID of the CLB instance.
-	HealthCheckConnectPort *int32 `json:"HealthCheckConnectPort,omitempty" xml:"HealthCheckConnectPort,omitempty"`
-	// The timeout period of a connection. Unit: seconds.
-	//
-	// Valid values: **10** to **900**.
-	HealthCheckConnectTimeout *int32 `json:"HealthCheckConnectTimeout,omitempty" xml:"HealthCheckConnectTimeout,omitempty"`
-	// Specifies whether to enable connection draining. Valid values:
-	//
-	// *   **on**: yes
-	// *   **off**: no
-	HealthCheckDomain *string `json:"HealthCheckDomain,omitempty" xml:"HealthCheckDomain,omitempty"`
-	// The timeout period of session persistence. Unit: seconds.
-	//
-	// Valid values: **0 to 3600**.
-	//
-	// Default value: **0**. If the default value is used, the system disables session persistence.
-	HealthCheckHttpCode *string `json:"HealthCheckHttpCode,omitempty" xml:"HealthCheckHttpCode,omitempty"`
-	HealthCheckSwitch   *string `json:"HealthCheckSwitch,omitempty" xml:"HealthCheckSwitch,omitempty"`
-	// The ID of the vServer group.
-	HealthCheckType *string `json:"HealthCheckType,omitempty" xml:"HealthCheckType,omitempty"`
-	// The frontend port used by the CLB instance.
-	//
-	// Valid values: **1** to **65535**.
-	HealthCheckURI *string `json:"HealthCheckURI,omitempty" xml:"HealthCheckURI,omitempty"`
-	// The domain name that you want to use for health checks. Valid values:
-	//
-	// *   **$\_ip**: the private IP address of a backend server. If you do not set the HealthCheckDomain parameter or set the parameter to $\_ip, the CLB instance uses the private IP address of each backend server for health checks.
-	// *   **domain**: The domain name must be 1 to 80 characters in length, and can contain letters, digits, periods (.), and hyphens (-).
-	HealthyThreshold *int32 `json:"HealthyThreshold,omitempty" xml:"HealthyThreshold,omitempty"`
-	// The ID of the primary/secondary server group.
-	//
-	// >  You cannot set both VServerGroupId and MasterSlaveServerGroupId.
-	ListenerPort *int32 `json:"ListenerPort,omitempty" xml:"ListenerPort,omitempty"`
-	// The maximum bandwidth of the listener. Unit: Mbit/s. Valid values:
-	//
-	// *   **-1**: For a pay-by-data-transfer Internet-facing CLB instance, this value can be set to -1, which specifies unlimited bandwidth.
-	// *   **1** to **5120**: For a pay-by-bandwidth Internet-facing CLB instance, you can specify the maximum bandwidth of each listener. The sum of the maximum bandwidth values that you set for all listeners cannot exceed the maximum bandwidth of the CLB instance.
-	LoadBalancerId *string `json:"LoadBalancerId,omitempty" xml:"LoadBalancerId,omitempty"`
-	// The number of times that an unhealthy backend server must consecutively pass health checks before it is declared healthy. In this case, the health status is changed from **fail** to **success**.
-	//
-	// Valid values: **2** to **10**.
-	MasterSlaveServerGroupId *string `json:"MasterSlaveServerGroupId,omitempty" xml:"MasterSlaveServerGroupId,omitempty"`
-	OwnerAccount             *string `json:"OwnerAccount,omitempty" xml:"OwnerAccount,omitempty"`
-	OwnerId                  *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
-	// Specifies whether to enable the health check feature. Valid values:
-	//
-	// *   **on** (default): yes
-	// *   **off**: no
-	PersistenceTimeout     *int32 `json:"PersistenceTimeout,omitempty" xml:"PersistenceTimeout,omitempty"`
-	ProxyProtocolV2Enabled *bool  `json:"ProxyProtocolV2Enabled,omitempty" xml:"ProxyProtocolV2Enabled,omitempty"`
+	AclStatus *string `json:"AclStatus,omitempty" xml:"AclStatus,omitempty"`
 	// The type of the ACL. Valid values:
 	//
 	// *   **white**: a whitelist. Only requests from the IP addresses or CIDR blocks in the network ACL are forwarded. Whitelists apply to scenarios where you want to allow only specific IP addresses to access an application.
@@ -2406,23 +2485,124 @@ type CreateLoadBalancerTCPListenerRequest struct {
 	//     If a blacklist is configured for a listener but no IP address is added to the blacklist, the listener forwards all requests.
 	//
 	// >  If **AclStatus** is set to **on**, this parameter is required.
-	RegionId             *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	ResourceOwnerAccount *string `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
-	ResourceOwnerId      *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
-	// The operation that you want to perform. Set the value to **CreateLoadBalancerTCPListener**.
-	Scheduler *string                                    `json:"Scheduler,omitempty" xml:"Scheduler,omitempty"`
-	Tag       []*CreateLoadBalancerTCPListenerRequestTag `json:"Tag,omitempty" xml:"Tag,omitempty" type:"Repeated"`
+	AclType *string `json:"AclType,omitempty" xml:"AclType,omitempty"`
+	// The backend port used by the CLB instance.
+	//
+	// Valid values: **1** to **65535**.
+	//
+	// If the **VServerGroupId** parameter is not set, this parameter is required.
+	BackendServerPort *int32 `json:"BackendServerPort,omitempty" xml:"BackendServerPort,omitempty"`
+	// The maximum bandwidth of the listener. Unit: Mbit/s. Valid values:
+	//
+	// *   **-1**: For a pay-by-data-transfer Internet-facing CLB instance, this value can be set to -1, which specifies unlimited bandwidth.
+	// *   **1** to **5120**: For a pay-by-bandwidth Internet-facing CLB instance, you can specify the maximum bandwidth of each listener. The sum of the maximum bandwidth values that you set for all listeners cannot exceed the maximum bandwidth of the CLB instance.
+	Bandwidth *int32 `json:"Bandwidth,omitempty" xml:"Bandwidth,omitempty"`
+	// Specifies whether to enable connection draining. Valid values:
+	//
+	// *   **on**: yes
+	// *   **off**: no
+	ConnectionDrain *string `json:"ConnectionDrain,omitempty" xml:"ConnectionDrain,omitempty"`
+	// The timeout period of connection draining. Unit: seconds.
+	//
+	// Valid values: **10** to **900**.
+	//
+	// >  This parameter is required if **ConnectionDrain** is set to **on**.
+	ConnectionDrainTimeout *int32 `json:"ConnectionDrainTimeout,omitempty" xml:"ConnectionDrainTimeout,omitempty"`
+	// The name of the listener.
+	//
+	// The name must be 1 to 256 characters in length, and can contain letters, digits, hyphens (-), forward slashes (/), periods (.), and underscores (\_).
+	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
+	// The timeout period of a connection. Unit: seconds.
+	//
+	// Valid values: **10** to **900**.
+	EstablishedTimeout *int32 `json:"EstablishedTimeout,omitempty" xml:"EstablishedTimeout,omitempty"`
 	// The port that is used for health checks.
 	//
 	// Valid values: **1** to **65535**.
 	//
 	// If this parameter is not set, the backend port specified by **BackendServerPort** is used for health checks.
-	UnhealthyThreshold *int32 `json:"UnhealthyThreshold,omitempty" xml:"UnhealthyThreshold,omitempty"`
+	HealthCheckConnectPort *int32 `json:"HealthCheckConnectPort,omitempty" xml:"HealthCheckConnectPort,omitempty"`
 	// The maximum timeout period of a health check response. Unit: seconds.
 	//
 	// Valid values: **1** to **300**.
 	//
 	// Default value: **5**.
+	HealthCheckConnectTimeout *int32 `json:"HealthCheckConnectTimeout,omitempty" xml:"HealthCheckConnectTimeout,omitempty"`
+	// The domain name that you want to use for health checks. Valid values:
+	//
+	// *   **$\_ip**: the private IP address of a backend server. If you do not set the HealthCheckDomain parameter or set the parameter to $\_ip, the CLB instance uses the private IP address of each backend server for health checks.
+	// *   **domain**: The domain name must be 1 to 80 characters in length, and can contain letters, digits, periods (.), and hyphens (-).
+	HealthCheckDomain *string `json:"HealthCheckDomain,omitempty" xml:"HealthCheckDomain,omitempty"`
+	// The HTTP status code for a successful health check. Separate multiple HTTP status codes with commas (,). Valid values:
+	//
+	// *   **http\_2xx**(default)
+	// *   **http\_3xx**
+	// *   **http\_4xx**
+	// *   **http\_5xx**
+	HealthCheckHttpCode *string `json:"HealthCheckHttpCode,omitempty" xml:"HealthCheckHttpCode,omitempty"`
+	// Specifies whether to enable the health check feature. Valid values:
+	//
+	// *   **on** (default): yes
+	// *   **off**: no
+	HealthCheckSwitch *string `json:"HealthCheckSwitch,omitempty" xml:"HealthCheckSwitch,omitempty"`
+	// The type of health checks. Valid values:
+	//
+	// *   **tcp** (default)
+	// *   **http**
+	HealthCheckType *string `json:"HealthCheckType,omitempty" xml:"HealthCheckType,omitempty"`
+	// The URI that is used for health checks. The URI must be 1 to 80 characters in length, and can contain only digits, letters, hyphens (-), forward slashes (/), periods (.), percent signs (%), number signs (#), and ampersands (&). The URI must start with a forward slash (/) but cannot be a single forward slash (/).
+	//
+	// You can set this parameter when the TCP listener requires HTTP health checks. If you do not set this parameter, TCP health checks are performed.
+	HealthCheckURI *string `json:"HealthCheckURI,omitempty" xml:"HealthCheckURI,omitempty"`
+	// The number of times that an unhealthy backend server must consecutively pass health checks before it is declared healthy. In this case, the health status is changed from **fail** to **success**.
+	//
+	// Valid values: **2** to **10**.
+	HealthyThreshold *int32 `json:"HealthyThreshold,omitempty" xml:"HealthyThreshold,omitempty"`
+	// The frontend port used by the CLB instance.
+	//
+	// Valid values: **1** to **65535**.
+	ListenerPort *int32 `json:"ListenerPort,omitempty" xml:"ListenerPort,omitempty"`
+	// The ID of the CLB instance.
+	LoadBalancerId *string `json:"LoadBalancerId,omitempty" xml:"LoadBalancerId,omitempty"`
+	// The ID of the primary/secondary server group.
+	//
+	// >  You cannot set both VServerGroupId and MasterSlaveServerGroupId.
+	MasterSlaveServerGroupId *string `json:"MasterSlaveServerGroupId,omitempty" xml:"MasterSlaveServerGroupId,omitempty"`
+	OwnerAccount             *string `json:"OwnerAccount,omitempty" xml:"OwnerAccount,omitempty"`
+	OwnerId                  *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
+	// The timeout period of session persistence. Unit: seconds.
+	//
+	// Valid values: **0 to 3600**.
+	//
+	// Default value: **0**. If the default value is used, the system disables session persistence.
+	PersistenceTimeout *int32 `json:"PersistenceTimeout,omitempty" xml:"PersistenceTimeout,omitempty"`
+	// Specifies whether to use the Proxy protocol to pass client IP addresses to backend servers. Valid values:
+	//
+	// *   **true**: yes
+	// *   **false** (default): no
+	ProxyProtocolV2Enabled *bool `json:"ProxyProtocolV2Enabled,omitempty" xml:"ProxyProtocolV2Enabled,omitempty"`
+	// The ID of the region where the Classic Load Balancer (CLB) instance is deployed.
+	//
+	// You can query the region ID from the [Regions and zones](~~40654~~) list or by calling the [DescribeRegions](~~25609~~) operation.
+	RegionId             *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	ResourceOwnerAccount *string `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
+	ResourceOwnerId      *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
+	// The routing algorithm. Valid values:
+	//
+	// *   **wrr** (default): Backend servers with higher weights receive more requests than backend servers with lower weights.
+	// *   **rr**: Requests are distributed to backend servers in sequence.
+	// *   **sch**: specifies consistent hashing that is based on source IP addresses. Requests from the same source IP address are distributed to the same backend server.
+	// *   **tch**: specifies consistent hashing that is based on four factors: source IP address, destination IP address, source port, and destination port. Requests that contain the same information based on the four factors are distributed to the same backend server.
+	//
+	// >  Only high-performance CLB instances support the **sch** and **tch** consistent hashing algorithms.
+	Scheduler *string `json:"Scheduler,omitempty" xml:"Scheduler,omitempty"`
+	// The tags.
+	Tag []*CreateLoadBalancerTCPListenerRequestTag `json:"Tag,omitempty" xml:"Tag,omitempty" type:"Repeated"`
+	// The number of times that a healthy backend server must consecutively fail health checks before it is declared unhealthy. In this case, the health status is changed from **success** to **fail**.
+	//
+	// Valid values: **2** to **10**.
+	UnhealthyThreshold *int32 `json:"UnhealthyThreshold,omitempty" xml:"UnhealthyThreshold,omitempty"`
+	// The ID of the vServer group.
 	VServerGroupId *string `json:"VServerGroupId,omitempty" xml:"VServerGroupId,omitempty"`
 	// The interval between two consecutive health checks. Unit: seconds.
 	//
@@ -2599,7 +2779,13 @@ func (s *CreateLoadBalancerTCPListenerRequest) SetHealthCheckInterval(v int32) *
 }
 
 type CreateLoadBalancerTCPListenerRequestTag struct {
-	Key   *string `json:"Key,omitempty" xml:"Key,omitempty"`
+	// The key of the tag. You can specify up to 20 tag keys. The tag key cannot be an empty string.
+	//
+	// The tag key must be 1 to 64 characters in length and cannot start with `aliyun` or `acs:`. It cannot contain `http://` or `https://`.
+	Key *string `json:"Key,omitempty" xml:"Key,omitempty"`
+	// The value of the tag. You can specify up to 20 tag values. The tag value can be an empty string.
+	//
+	// The tag value can be at most 128 characters in length and cannot start with `acs:` or `aliyun`. It cannot contain `http://` or `https://`.
 	Value *string `json:"Value,omitempty" xml:"Value,omitempty"`
 }
 
@@ -2622,6 +2808,7 @@ func (s *CreateLoadBalancerTCPListenerRequestTag) SetValue(v string) *CreateLoad
 }
 
 type CreateLoadBalancerTCPListenerResponseBody struct {
+	// The ID of the request.
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -2668,6 +2855,15 @@ func (s *CreateLoadBalancerTCPListenerResponse) SetBody(v *CreateLoadBalancerTCP
 }
 
 type CreateLoadBalancerUDPListenerRequest struct {
+	// The ID of the network ACL that is associated with the listener.
+	//
+	// If **AclStatus** is set to **on**, this parameter is required.
+	AclId *string `json:"AclId,omitempty" xml:"AclId,omitempty"`
+	// Specifies whether to enable access control. Valid values:
+	//
+	// *   **on**: yes
+	// *   **off** (default): no
+	AclStatus *string `json:"AclStatus,omitempty" xml:"AclStatus,omitempty"`
 	// The type of the network ACL. Valid values:
 	//
 	// *   **white**: a whitelist. Only requests from the IP addresses or CIDR blocks in the network ACL are forwarded. Whitelists apply to scenarios in which you want to allow only specific IP addresses to access an application. After a whitelist is configured, only IP addresses in the whitelist can access the CLB listener. Risks may arise if the whitelist is improperly set.
@@ -2679,78 +2875,63 @@ type CreateLoadBalancerUDPListenerRequest struct {
 	//     If a blacklist is configured for a listener but no IP address is added to the blacklist, the listener forwards all requests.
 	//
 	// If **AclStatus** is set to **on**, this parameter is required.
-	AclId *string `json:"AclId,omitempty" xml:"AclId,omitempty"`
+	AclType *string `json:"AclType,omitempty" xml:"AclType,omitempty"`
 	// The backend port used by the CLB instance.
 	//
 	// Valid values: **1** to **65535**.
 	//
 	// If the **VServerGroupId** parameter is not set, this parameter is required.
-	AclStatus *string `json:"AclStatus,omitempty" xml:"AclStatus,omitempty"`
-	// Specifies whether to use the Proxy protocol to pass client IP addresses to backend servers. Valid values:
-	//
-	// *   **true**: yes
-	// *   **false** (default): no
-	AclType *string `json:"AclType,omitempty" xml:"AclType,omitempty"`
-	// The response string for UDP listener health checks. The string must be 1 to 64 characters in length and can contain only letters and digits.
 	BackendServerPort *int32 `json:"BackendServerPort,omitempty" xml:"BackendServerPort,omitempty"`
-	// The frontend port used by the CLB instance.
-	//
-	// Valid values: **1** to **65535**.
-	Bandwidth *int32 `json:"Bandwidth,omitempty" xml:"Bandwidth,omitempty"`
-	// The ID of the vServer group.
-	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
-	// The name of the listener.
-	//
-	// The name must be 1 to 256 characters in length, and can contain letters, digits, hyphens (-), forward slashes (/), periods (.), and underscores (\_).
-	HealthCheckConnectPort *int32 `json:"HealthCheckConnectPort,omitempty" xml:"HealthCheckConnectPort,omitempty"`
 	// The maximum bandwidth of the listener. Unit: Mbit/s. Valid values:
 	//
 	// **-1**: For a pay-by-data-transfer Internet-facing CLB instance, you can set this parameter to **-1**. This way, the bandwidth of the listener is unlimited.
-	HealthCheckConnectTimeout *int32  `json:"HealthCheckConnectTimeout,omitempty" xml:"HealthCheckConnectTimeout,omitempty"`
-	HealthCheckSwitch         *string `json:"HealthCheckSwitch,omitempty" xml:"HealthCheckSwitch,omitempty"`
-	// Specifies whether to enable access control. Valid values:
+	Bandwidth *int32 `json:"Bandwidth,omitempty" xml:"Bandwidth,omitempty"`
+	// The name of the listener.
 	//
-	// *   **on**: yes
-	// *   **off** (default): no
-	HealthyThreshold *int32 `json:"HealthyThreshold,omitempty" xml:"HealthyThreshold,omitempty"`
-	// The ID of the CLB instance.
-	ListenerPort *int32 `json:"ListenerPort,omitempty" xml:"ListenerPort,omitempty"`
-	// Specifies whether to enable the health check feature. Valid values:
+	// The name must be 1 to 256 characters in length, and can contain letters, digits, hyphens (-), forward slashes (/), periods (.), and underscores (\_).
+	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
+	// The port that is used for health checks.
 	//
-	// *   **on** (default): yes
-	// *   **off**: no
-	LoadBalancerId *string `json:"LoadBalancerId,omitempty" xml:"LoadBalancerId,omitempty"`
-	// The ID of the network ACL that is associated with the listener.
+	// Valid values: **1** to **65535**.
 	//
-	// If **AclStatus** is set to **on**, this parameter is required.
-	MasterSlaveServerGroupId *string `json:"MasterSlaveServerGroupId,omitempty" xml:"MasterSlaveServerGroupId,omitempty"`
-	OwnerAccount             *string `json:"OwnerAccount,omitempty" xml:"OwnerAccount,omitempty"`
-	OwnerId                  *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
-	// The ID of the request.
-	ProxyProtocolV2Enabled *bool `json:"ProxyProtocolV2Enabled,omitempty" xml:"ProxyProtocolV2Enabled,omitempty"`
-	// The request string for UDP listener health checks. The string must be 1 to 64 characters in length and can contain only letters and digits.
-	RegionId             *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	ResourceOwnerAccount *string `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
-	ResourceOwnerId      *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
-	// The number of times that an unhealthy backend server must consecutively pass health checks before it is declared healthy. In this case, the health status is changed from **fail** to **success**.
-	//
-	// Valid values: **2** to **10**.
-	Scheduler *string                                    `json:"Scheduler,omitempty" xml:"Scheduler,omitempty"`
-	Tag       []*CreateLoadBalancerUDPListenerRequestTag `json:"Tag,omitempty" xml:"Tag,omitempty" type:"Repeated"`
-	// The ID of the region where the CLB instance is deployed.
-	UnhealthyThreshold *int32 `json:"UnhealthyThreshold,omitempty" xml:"UnhealthyThreshold,omitempty"`
-	// The operation that you want to perform. Set the value to **CreateLoadBalancerUDPListener**.
-	VServerGroupId *string `json:"VServerGroupId,omitempty" xml:"VServerGroupId,omitempty"`
+	// If this parameter is not set, the backend port specified by **BackendServerPort** is used for health checks.
+	HealthCheckConnectPort *int32 `json:"HealthCheckConnectPort,omitempty" xml:"HealthCheckConnectPort,omitempty"`
 	// The timeout period of a health check.
 	//
 	// If a backend server, such as an Elastic Compute Service (ECS) instance, does not respond to a probe packet within the specified timeout period, the server fails the health check. Unit: seconds.
 	//
 	// Valid values: **1** to **300**.
-	HealthCheckExp *string `json:"healthCheckExp,omitempty" xml:"healthCheckExp,omitempty"`
-	// The interval between two consecutive health checks. Unit: seconds.
+	HealthCheckConnectTimeout *int32 `json:"HealthCheckConnectTimeout,omitempty" xml:"HealthCheckConnectTimeout,omitempty"`
+	// Specifies whether to enable the health check feature. Valid values:
 	//
-	// Valid values: **1** to **50**.
-	HealthCheckInterval *int32 `json:"healthCheckInterval,omitempty" xml:"healthCheckInterval,omitempty"`
+	// *   **on** (default): yes
+	// *   **off**: no
+	HealthCheckSwitch *string `json:"HealthCheckSwitch,omitempty" xml:"HealthCheckSwitch,omitempty"`
+	// The number of times that an unhealthy backend server must consecutively pass health checks before it is declared healthy. In this case, the health status is changed from **fail** to **success**.
+	//
+	// Valid values: **2** to **10**.
+	HealthyThreshold *int32 `json:"HealthyThreshold,omitempty" xml:"HealthyThreshold,omitempty"`
+	// The frontend port used by the CLB instance.
+	//
+	// Valid values: **1** to **65535**.
+	ListenerPort *int32 `json:"ListenerPort,omitempty" xml:"ListenerPort,omitempty"`
+	// The ID of the CLB instance.
+	LoadBalancerId *string `json:"LoadBalancerId,omitempty" xml:"LoadBalancerId,omitempty"`
+	// The ID of the primary/secondary server group.
+	//
+	// >  You can set only one of the VServerGroupId and MasterSlaveServerGroupId parameters.
+	MasterSlaveServerGroupId *string `json:"MasterSlaveServerGroupId,omitempty" xml:"MasterSlaveServerGroupId,omitempty"`
+	OwnerAccount             *string `json:"OwnerAccount,omitempty" xml:"OwnerAccount,omitempty"`
+	OwnerId                  *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
+	// Specifies whether to use the Proxy protocol to pass client IP addresses to backend servers. Valid values:
+	//
+	// *   **true**: yes
+	// *   **false** (default): no
+	ProxyProtocolV2Enabled *bool `json:"ProxyProtocolV2Enabled,omitempty" xml:"ProxyProtocolV2Enabled,omitempty"`
+	// The ID of the region where the CLB instance is deployed.
+	RegionId             *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	ResourceOwnerAccount *string `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
+	ResourceOwnerId      *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
 	// The routing algorithm. Valid values:
 	//
 	// *   **wrr** (default): Backend servers with higher weights receive more requests than backend servers with lower weights.
@@ -2760,6 +2941,22 @@ type CreateLoadBalancerUDPListenerRequest struct {
 	// *   **qch**: specifies consistent hashing that is based on QUIC connection IDs. Requests that contain the same QUIC connection ID are distributed to the same backend server.
 	//
 	// Only high-performance CLB instances support the sch, tch, and qch consistent hashing algorithms.
+	Scheduler *string `json:"Scheduler,omitempty" xml:"Scheduler,omitempty"`
+	// The tags.
+	Tag []*CreateLoadBalancerUDPListenerRequestTag `json:"Tag,omitempty" xml:"Tag,omitempty" type:"Repeated"`
+	// The number of times that a healthy backend server must consecutively fail health checks before it is declared unhealthy. In this case, the health status is changed from **success** to **fail**.
+	//
+	// Valid values: **2** to **10**.
+	UnhealthyThreshold *int32 `json:"UnhealthyThreshold,omitempty" xml:"UnhealthyThreshold,omitempty"`
+	// The ID of the vServer group.
+	VServerGroupId *string `json:"VServerGroupId,omitempty" xml:"VServerGroupId,omitempty"`
+	// The response string for UDP listener health checks. The string must be 1 to 64 characters in length and can contain only letters and digits.
+	HealthCheckExp *string `json:"healthCheckExp,omitempty" xml:"healthCheckExp,omitempty"`
+	// The interval between two consecutive health checks. Unit: seconds.
+	//
+	// Valid values: **1** to **50**.
+	HealthCheckInterval *int32 `json:"healthCheckInterval,omitempty" xml:"healthCheckInterval,omitempty"`
+	// The request string for UDP listener health checks. The string must be 1 to 64 characters in length and can contain only letters and digits.
 	HealthCheckReq *string `json:"healthCheckReq,omitempty" xml:"healthCheckReq,omitempty"`
 }
 
@@ -2902,7 +3099,13 @@ func (s *CreateLoadBalancerUDPListenerRequest) SetHealthCheckReq(v string) *Crea
 }
 
 type CreateLoadBalancerUDPListenerRequestTag struct {
-	Key   *string `json:"Key,omitempty" xml:"Key,omitempty"`
+	// The key of the tag. You can specify up to 20 tag keys. The tag key cannot be an empty string.
+	//
+	// The tag key must be 1 to 64 characters in length and cannot start with `aliyun` or `acs:`. It cannot contain `http://` or `https://`.
+	Key *string `json:"Key,omitempty" xml:"Key,omitempty"`
+	// The tag value. Valid values of N: **1 to 20**. The tag value can be an empty string.
+	//
+	// The tag value can be up to 128 characters in length and cannot start with `acs:` or `aliyun`. The tag value cannot contain `http://` or `https://`.
 	Value *string `json:"Value,omitempty" xml:"Value,omitempty"`
 }
 
@@ -2925,6 +3128,7 @@ func (s *CreateLoadBalancerUDPListenerRequestTag) SetValue(v string) *CreateLoad
 }
 
 type CreateLoadBalancerUDPListenerResponseBody struct {
+	// The ID of the request.
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -2971,10 +3175,8 @@ func (s *CreateLoadBalancerUDPListenerResponse) SetBody(v *CreateLoadBalancerUDP
 }
 
 type CreateMasterSlaveServerGroupRequest struct {
-	// The name of the primary/secondary server group.
+	// The ID of the Classic Load Balancer (CLB) instance.
 	LoadBalancerId *string `json:"LoadBalancerId,omitempty" xml:"LoadBalancerId,omitempty"`
-	// The ID of the primary/secondary server group.
-	MasterSlaveBackendServers *string `json:"MasterSlaveBackendServers,omitempty" xml:"MasterSlaveBackendServers,omitempty"`
 	// The list of backend servers in the primary/secondary server group.
 	//
 	// The value of this parameter must be a STRING list in the JSON format. You can specify up to 20 elements in each request.
@@ -3014,10 +3216,12 @@ type CreateMasterSlaveServerGroupRequest struct {
 	//
 	// *   ENI: `[{ "ServerId": "eni-xxxxxxxxx", "Weight": "100", "Type": "eni", "Port":"80","ServerType":"Master","Description":"test-112" }, { "ServerId": "eni-xxxxxxxxx", "Weight": "100", "Type": "eni", "ServerIp": "192.168.**.**", "Port":"80","ServerType":"Slave","Description":"test-112" }]`
 	// *   ENI with multiple IP addresses: `[{ "ServerId": "eni-xxxxxxxxx", "Weight": "100", "Type": "eni","ServerIp": "192.168.**.**", "Port":"80","ServerType":"Master","Description":"test-112" }, { "ServerId": "eni-xxxxxxxxx", "Weight": "100", "Type": "eni","ServerIp": "192.168.**.**", "Port":"80","ServerType":"Slave","Description":"test-112" }]`
+	MasterSlaveBackendServers *string `json:"MasterSlaveBackendServers,omitempty" xml:"MasterSlaveBackendServers,omitempty"`
+	// The name of the primary/secondary server group.
 	MasterSlaveServerGroupName *string `json:"MasterSlaveServerGroupName,omitempty" xml:"MasterSlaveServerGroupName,omitempty"`
 	OwnerAccount               *string `json:"OwnerAccount,omitempty" xml:"OwnerAccount,omitempty"`
 	OwnerId                    *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
-	// The ID of the Classic Load Balancer (CLB) instance.
+	// The ID of the region where the CLB instance is deployed.
 	RegionId             *string                                   `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 	ResourceOwnerAccount *string                                   `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
 	ResourceOwnerId      *int64                                    `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
@@ -3101,14 +3305,11 @@ func (s *CreateMasterSlaveServerGroupRequestTag) SetValue(v string) *CreateMaste
 }
 
 type CreateMasterSlaveServerGroupResponseBody struct {
-	// The type of the backend server. Valid values:
-	//
-	// *   **ecs**: an ECS instance
-	// *   **eni**: an ENI
-	MasterSlaveBackendServers *CreateMasterSlaveServerGroupResponseBodyMasterSlaveBackendServers `json:"MasterSlaveBackendServers,omitempty" xml:"MasterSlaveBackendServers,omitempty" type:"Struct"`
-	// The ID of the request.
-	MasterSlaveServerGroupId *string `json:"MasterSlaveServerGroupId,omitempty" xml:"MasterSlaveServerGroupId,omitempty"`
 	// The list of backend servers in the primary/secondary server group.
+	MasterSlaveBackendServers *CreateMasterSlaveServerGroupResponseBodyMasterSlaveBackendServers `json:"MasterSlaveBackendServers,omitempty" xml:"MasterSlaveBackendServers,omitempty" type:"Struct"`
+	// The ID of the primary/secondary server group.
+	MasterSlaveServerGroupId *string `json:"MasterSlaveServerGroupId,omitempty" xml:"MasterSlaveServerGroupId,omitempty"`
+	// The ID of the request.
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -3153,19 +3354,22 @@ func (s *CreateMasterSlaveServerGroupResponseBodyMasterSlaveBackendServers) SetM
 }
 
 type CreateMasterSlaveServerGroupResponseBodyMasterSlaveBackendServersMasterSlaveBackendServer struct {
-	// The port number used by the backend server.
+	// The description of the primary/secondary server group.
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
-	// The ID of the ECS instance or ENI that is added.
+	// The port number used by the backend server.
 	Port *int32 `json:"Port,omitempty" xml:"Port,omitempty"`
+	// The ID of the ECS instance or ENI that is added.
+	ServerId *string `json:"ServerId,omitempty" xml:"ServerId,omitempty"`
 	// The type of the backend server.
 	//
 	// Valid values: **Master** and **Slave**.
-	ServerId *string `json:"ServerId,omitempty" xml:"ServerId,omitempty"`
-	// Creates a primary/secondary server group. A primary/secondary server group can contain only two Elastic Compute Service (ECS) instances: one of the ECS instances functions as the primary server and the other functions as the secondary server.
 	ServerType *string `json:"ServerType,omitempty" xml:"ServerType,omitempty"`
-	// The weight of the backend server.
+	// The type of the backend server. Valid values:
+	//
+	// *   **ecs**: an ECS instance
+	// *   **eni**: an ENI
 	Type *string `json:"Type,omitempty" xml:"Type,omitempty"`
-	// The description of the primary/secondary server group.
+	// The weight of the backend server.
 	Weight *int32 `json:"Weight,omitempty" xml:"Weight,omitempty"`
 }
 
@@ -3237,30 +3441,32 @@ func (s *CreateMasterSlaveServerGroupResponse) SetBody(v *CreateMasterSlaveServe
 }
 
 type CreateRulesRequest struct {
-	// The frontend protocol that is used by the SLB instance.
-	//
-	// >  This parameter is required when listeners that use different protocols listen on the same port.
-	ListenerPort *int32 `json:"ListenerPort,omitempty" xml:"ListenerPort,omitempty"`
-	// The forwarding rules to be created. A maximum of 10 forwarding rules can be specified in each request. Each forwarding rule contains the following parameters:
-	//
-	// *   **RuleName**: Required. The value must be of the STRING type. The name of the forwarding rule. The name must be 1 to 40 characters in length, and can contain only letters, digits, hyphens (-), forward slashes (/), periods (.),and underscores (\_). Forwarding rule names must be unique within each listener.
-	// *   **Domain**: Optional. The value must be of the STRING type. The domain name to be associated with the forwarding rule. You must specify at least this parameter or **Url**.
-	// *   **Url**: Optional. The URL to be specified in the forwarding rule. The value must be of the STRING type. The URL must be 1 to 80 characters in length, and can contain only letters, digits, hyphens (-), forward slashes (/), periods (.), percent signs (%), question marks (?), number signs (#), and ampersands (&). The URL must not be a single forward slash (/). However, it must start with a forward slash (/). You must specify at least the URL or **Domain**.
-	// *   **VServerGroupId**: Required. The value must be of the STRING type. The ID of the vServer group to be specified in the forwarding rule.
-	//
-	// >  You must specify at least `Domain` or `Url`. You can also specify both. The combination of `Domain` and `Url` must be unique within a listener.
-	ListenerProtocol *string `json:"ListenerProtocol,omitempty" xml:"ListenerProtocol,omitempty"`
-	// The frontend port that is used by the Server Load Balancer (SLB) instance.
+	// The frontend listener port that is used by the SLB instance.
 	//
 	// Valid values: **1 to 65535**.
+	ListenerPort *int32 `json:"ListenerPort,omitempty" xml:"ListenerPort,omitempty"`
+	// The frontend protocol that is used by the SLB instance.
+	//
+	// > This parameter is required if the same port is used by listeners that use different protocols.
+	ListenerProtocol *string `json:"ListenerProtocol,omitempty" xml:"ListenerProtocol,omitempty"`
+	// The ID of the SLB instance.
 	LoadBalancerId *string `json:"LoadBalancerId,omitempty" xml:"LoadBalancerId,omitempty"`
 	OwnerAccount   *string `json:"OwnerAccount,omitempty" xml:"OwnerAccount,omitempty"`
 	OwnerId        *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
-	// The ID of the SLB instance.
+	// The ID of the region where the Server Load Balancer (SLB) instance is deployed.
+	//
+	// You can call the [DescribeRegions](~~27584~~) operation to query the most recent region list.
 	RegionId             *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 	ResourceOwnerAccount *string `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
 	ResourceOwnerId      *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
-	// The ID of the request.
+	// The forwarding rules that you want to create. You can create up to 10 forwarding rules in each request. Each forwarding rule contains the following parameters:
+	//
+	// *   **RuleName**: Required. The value must be of the STRING type. The name of the forwarding rule. The name must be 1 to 40 characters in length, and can contain letters, digits, hyphens (-), forward slashes (/), periods (.), and underscores (\_). Forwarding rule names must be unique within the same listener.
+	// *   **Domain**: Optional. The value must be of the STRING type. The domain name that is associated with the forwarding rule. You must specify at least one of this parameter and **Url**.
+	// *   **Url**: Optional. The value must be of the STRING type. The URL must be 1 to 80 characters in length and can contain only letters, digits, hyphens (-), forward slashes (/), periods (.), percent signs (%), question marks (?), number signs (#), and ampersands (&). The URL cannot be a forward slash (/). However, the URL must start with a forward slash (/). You must specify at least one of this parameter and **Domain**.
+	// *   **VServerGroupId**: Required. The value must be of the STRING type. The ID of the vServer group that is associated with the forwarding rule.
+	//
+	// > You must specify at least one of `Domain` and `Url`. The combination of `Domain` and `Url` must be unique within the same listener.
 	RuleList *string `json:"RuleList,omitempty" xml:"RuleList,omitempty"`
 }
 
@@ -3318,9 +3524,9 @@ func (s *CreateRulesRequest) SetRuleList(v string) *CreateRulesRequest {
 }
 
 type CreateRulesResponseBody struct {
-	// The list of forwarding rules.
+	// The request ID.
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// The name of the forwarding rule.
+	// The forwarding rules.
 	Rules *CreateRulesResponseBodyRules `json:"Rules,omitempty" xml:"Rules,omitempty" type:"Struct"`
 }
 
@@ -3360,9 +3566,9 @@ func (s *CreateRulesResponseBodyRules) SetRule(v []*CreateRulesResponseBodyRules
 }
 
 type CreateRulesResponseBodyRulesRule struct {
-	// Creates forwarding rules for HTTP or HTTPS listeners.
+	// The forwarding rule ID.
 	RuleId *string `json:"RuleId,omitempty" xml:"RuleId,omitempty"`
-	// The ID of the forwarding rule.
+	// The name of the forwarding rule.
 	RuleName *string `json:"RuleName,omitempty" xml:"RuleName,omitempty"`
 }
 
@@ -3573,19 +3779,6 @@ func (s *CreateTLSCipherPolicyResponse) SetBody(v *CreateTLSCipherPolicyResponse
 }
 
 type CreateVServerGroupRequest struct {
-	// The ID of the vServer group.
-	BackendServers *string `json:"BackendServers,omitempty" xml:"BackendServers,omitempty"`
-	// The name of the vServer group.
-	//
-	// The name must be 1 to 80 characters in length, and can contain letters, digits, hyphens (-), forward slashes (/), periods (.),and underscores (\_).
-	LoadBalancerId *string `json:"LoadBalancerId,omitempty" xml:"LoadBalancerId,omitempty"`
-	OwnerAccount   *string `json:"OwnerAccount,omitempty" xml:"OwnerAccount,omitempty"`
-	OwnerId        *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
-	// The ID of the Server Load Balancer (SLB) instance.
-	RegionId             *string                         `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	ResourceOwnerAccount *string                         `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
-	ResourceOwnerId      *int64                          `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
-	Tag                  []*CreateVServerGroupRequestTag `json:"Tag,omitempty" xml:"Tag,omitempty" type:"Repeated"`
 	// The list of backend servers to be added.
 	//
 	// The value of this parameter must be a STRING list in the JSON format. You can specify up to 20 elements in each request.
@@ -3610,6 +3803,20 @@ type CreateVServerGroupRequest struct {
 	// *   ECS instance:`  [{ "ServerId": "i-xxxxxxxxx", "Weight": "100", "Type": "ecs", "Port": "80", "Description": "test-112" }]. `
 	// *   ENI:`  [{ "ServerId": "eni-xxxxxxxxx", "Weight": "100", "Type": "eni", "ServerIp": "192.168.**.**", "Port":"80","Description":"test-112" }] `
 	// *   ENI with multiple IP addresses:`  [{ "ServerId": "eni-xxxxxxxxx", "Weight": "100", "Type": "eni", "ServerIp": "192.168.**.**", "Port":"80","Description":"test-112" },{ "ServerId": "eni-xxxxxxxxx", "Weight": "100", "Type": "eni", "ServerIp": "172.166.**.**", "Port":"80","Description":"test-113" }] `
+	BackendServers *string `json:"BackendServers,omitempty" xml:"BackendServers,omitempty"`
+	// The ID of the Server Load Balancer (SLB) instance.
+	LoadBalancerId *string `json:"LoadBalancerId,omitempty" xml:"LoadBalancerId,omitempty"`
+	OwnerAccount   *string `json:"OwnerAccount,omitempty" xml:"OwnerAccount,omitempty"`
+	OwnerId        *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
+	// The ID of the region where the SLB instance is deployed.
+	RegionId             *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	ResourceOwnerAccount *string `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
+	ResourceOwnerId      *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
+	// 标签列表。
+	Tag []*CreateVServerGroupRequestTag `json:"Tag,omitempty" xml:"Tag,omitempty" type:"Repeated"`
+	// The name of the vServer group.
+	//
+	// The name must be 1 to 80 characters in length, and can contain letters, digits, hyphens (-), forward slashes (/), periods (.),and underscores (\_).
 	VServerGroupName *string `json:"VServerGroupName,omitempty" xml:"VServerGroupName,omitempty"`
 }
 
@@ -3667,7 +3874,12 @@ func (s *CreateVServerGroupRequest) SetVServerGroupName(v string) *CreateVServer
 }
 
 type CreateVServerGroupRequestTag struct {
-	Key   *string `json:"Key,omitempty" xml:"Key,omitempty"`
+	// 资源的标签键。N的取值范围：**1~20**。一旦输入该值，则不允许为空字符串。
+	//
+	// 最多支持64个字符，不能以`aliyun`和`acs:`开头，不能包含`http://`或者`https://`。
+	Key *string `json:"Key,omitempty" xml:"Key,omitempty"`
+	// 资源的标签值。N的取值范围：**1~20**。一旦输入该值，可以为空字符串。
+	// 最多支持128个字符，不能以`aliyun`和`acs:`开头，不能包含`http://`或者`https://`。
 	Value *string `json:"Value,omitempty" xml:"Value,omitempty"`
 }
 
@@ -3690,14 +3902,11 @@ func (s *CreateVServerGroupRequestTag) SetValue(v string) *CreateVServerGroupReq
 }
 
 type CreateVServerGroupResponseBody struct {
-	// The type of the backend server. Valid values:
-	//
-	// *   **ecs**: an ECS instance. This is the default value.
-	// *   **eni**: an ENI.
-	BackendServers *CreateVServerGroupResponseBodyBackendServers `json:"BackendServers,omitempty" xml:"BackendServers,omitempty" type:"Struct"`
 	// The list of backend servers.
-	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	BackendServers *CreateVServerGroupResponseBodyBackendServers `json:"BackendServers,omitempty" xml:"BackendServers,omitempty" type:"Struct"`
 	// The ID of the request.
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The ID of the vServer group.
 	VServerGroupId *string `json:"VServerGroupId,omitempty" xml:"VServerGroupId,omitempty"`
 }
 
@@ -3742,15 +3951,18 @@ func (s *CreateVServerGroupResponseBodyBackendServers) SetBackendServer(v []*Cre
 }
 
 type CreateVServerGroupResponseBodyBackendServersBackendServer struct {
-	// backend server
-	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
-	// The ID of the ECS instance or ENI.
-	Port *int32 `json:"Port,omitempty" xml:"Port,omitempty"`
-	// Creates a vServer group and adds backend servers to the vServer group.
-	ServerId *string `json:"ServerId,omitempty" xml:"ServerId,omitempty"`
-	// The weight of the backend server.
-	Type *string `json:"Type,omitempty" xml:"Type,omitempty"`
 	// The description of the vServer group.
+	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
+	// The port that is used by the backend server.
+	Port *int32 `json:"Port,omitempty" xml:"Port,omitempty"`
+	// The ID of the ECS instance or ENI.
+	ServerId *string `json:"ServerId,omitempty" xml:"ServerId,omitempty"`
+	// The type of the backend server. Valid values:
+	//
+	// *   **ecs**: an ECS instance. This is the default value.
+	// *   **eni**: an ENI.
+	Type *string `json:"Type,omitempty" xml:"Type,omitempty"`
+	// The weight of the backend server.
 	Weight *int32 `json:"Weight,omitempty" xml:"Weight,omitempty"`
 }
 
@@ -3817,11 +4029,13 @@ func (s *CreateVServerGroupResponse) SetBody(v *CreateVServerGroupResponseBody) 
 }
 
 type DeleteAccessControlListRequest struct {
-	// >  An access control list can be deleted only after it is disassociated from a listener.
+	// The ACL ID.
 	AclId        *string `json:"AclId,omitempty" xml:"AclId,omitempty"`
 	OwnerAccount *string `json:"OwnerAccount,omitempty" xml:"OwnerAccount,omitempty"`
 	OwnerId      *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
-	// The ID of the request.
+	// The region ID of the ACL.
+	//
+	// You can call the [DescribeRegions](~~27584~~) operation to query the most recent region list.
 	RegionId             *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 	ResourceOwnerAccount *string `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
 	ResourceOwnerId      *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
@@ -3866,6 +4080,7 @@ func (s *DeleteAccessControlListRequest) SetResourceOwnerId(v int64) *DeleteAcce
 }
 
 type DeleteAccessControlListResponseBody struct {
+	// The request ID.
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -3912,11 +4127,17 @@ func (s *DeleteAccessControlListResponse) SetBody(v *DeleteAccessControlListResp
 }
 
 type DeleteAccessLogsDownloadAttributeRequest struct {
-	LoadBalancerId         *string `json:"LoadBalancerId,omitempty" xml:"LoadBalancerId,omitempty"`
+	// The CLB instance ID.
+	LoadBalancerId *string `json:"LoadBalancerId,omitempty" xml:"LoadBalancerId,omitempty"`
+	// The access log forwarding rule. Parameters:
+	//
+	// *   **LogProject**: the name of the project of Log Service.
+	// *   **LogStore**: the name of the Logstore of Log Service.
+	// *   **LoadBalancerId**: the ID of the CLB instance.
 	LogsDownloadAttributes *string `json:"LogsDownloadAttributes,omitempty" xml:"LogsDownloadAttributes,omitempty"`
 	OwnerAccount           *string `json:"OwnerAccount,omitempty" xml:"OwnerAccount,omitempty"`
 	OwnerId                *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
-	// The operation that you want to perform. Set the value to **DeleteAccessLogsDownloadAttribute**.
+	// The region ID of the CLB instance.
 	RegionId             *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 	ResourceOwnerAccount *string `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
 	ResourceOwnerId      *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
@@ -3973,6 +4194,7 @@ func (s *DeleteAccessLogsDownloadAttributeRequest) SetTags(v string) *DeleteAcce
 }
 
 type DeleteAccessLogsDownloadAttributeResponseBody struct {
+	// The request ID.
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -4019,11 +4241,13 @@ func (s *DeleteAccessLogsDownloadAttributeResponse) SetBody(v *DeleteAccessLogsD
 }
 
 type DeleteCACertificateRequest struct {
-	// >  CA certificates in use cannot be deleted.
+	// The CA certificate ID.
 	CACertificateId *string `json:"CACertificateId,omitempty" xml:"CACertificateId,omitempty"`
 	OwnerAccount    *string `json:"OwnerAccount,omitempty" xml:"OwnerAccount,omitempty"`
 	OwnerId         *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
-	// The ID of the request.
+	// The region of the CA certificates.
+	//
+	// You can call the [DescribeRegions](~~27584~~) operation to query the most recent region list.
 	RegionId             *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 	ResourceOwnerAccount *string `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
 	ResourceOwnerId      *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
@@ -4068,6 +4292,7 @@ func (s *DeleteCACertificateRequest) SetResourceOwnerId(v int64) *DeleteCACertif
 }
 
 type DeleteCACertificateResponseBody struct {
+	// The request ID.
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -4114,11 +4339,11 @@ func (s *DeleteCACertificateResponse) SetBody(v *DeleteCACertificateResponseBody
 }
 
 type DeleteDomainExtensionRequest struct {
-	// The ID of the request.
+	// The ID of the domain name extension to be deleted.
 	DomainExtensionId *string `json:"DomainExtensionId,omitempty" xml:"DomainExtensionId,omitempty"`
 	OwnerAccount      *string `json:"OwnerAccount,omitempty" xml:"OwnerAccount,omitempty"`
 	OwnerId           *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
-	// The ID of the domain name extension to be deleted.
+	// The ID of the region to which the SLB instance belongs.
 	RegionId             *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 	ResourceOwnerAccount *string `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
 	ResourceOwnerId      *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
@@ -4163,6 +4388,7 @@ func (s *DeleteDomainExtensionRequest) SetResourceOwnerId(v int64) *DeleteDomain
 }
 
 type DeleteDomainExtensionResponseBody struct {
+	// The ID of the request.
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -4209,38 +4435,13 @@ func (s *DeleteDomainExtensionResponse) SetBody(v *DeleteDomainExtensionResponse
 }
 
 type DeleteLoadBalancerRequest struct {
-	// If the SLB instance that you want to delete has deletion protection enabled, the system reports an error in the following formats:
-	//
-	// *   JSON format
-	//
-	//     ```
-	//
-	//         {
-	//         "RequestId": "7B7AB375-1EA6-4A18-9D1C-F258F2D57638",
-	//         "HostId": "slb.aliyuncs.com",
-	//         "Code": "OperationDenied.DeleteProtectionIsOn",
-	//         "Message": "The loadbalancer can\"t be deleted due to DeleteProtection is enabled."
-	//          }
-	//
-	//     ```
-	//
-	// *   XML format
-	//
-	//     ```
-	//
-	//        <?xml version="1.0" encoding="UTF-8" ?>
-	//             <DeleteLoadBabalancerResponse>
-	//         <RequestId>7B7AB375-1EA6-4A18-9D1C-F258F2D57638</RequestId>
-	//         <HostId>slb.aliyuncs.com</HostId>
-	//         <Code>OperationDenied.DeleteProtectionIsOn</Code>
-	//         <Message>The loadbalancer can\"t be deleted due to DeleteProtection is enabled.</Message>
-	//            </DeleteLoadBabalancerResponse>
-	//
-	//     ```
+	// The SLB instance ID.
 	LoadBalancerId *string `json:"LoadBalancerId,omitempty" xml:"LoadBalancerId,omitempty"`
 	OwnerAccount   *string `json:"OwnerAccount,omitempty" xml:"OwnerAccount,omitempty"`
 	OwnerId        *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
-	// The ID of the request.
+	// The region ID of the SLB instance.
+	//
+	// You can call the [DescribeRegions](~~27584~~) operation to query the most recent region list.
 	RegionId             *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 	ResourceOwnerAccount *string `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
 	ResourceOwnerId      *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
@@ -4285,6 +4486,7 @@ func (s *DeleteLoadBalancerRequest) SetResourceOwnerId(v int64) *DeleteLoadBalan
 }
 
 type DeleteLoadBalancerResponseBody struct {
+	// The request ID.
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -4449,13 +4651,13 @@ func (s *DeleteLoadBalancerListenerResponse) SetBody(v *DeleteLoadBalancerListen
 }
 
 type DeleteMasterSlaveServerGroupRequest struct {
-	// The ID of the request.
-	MasterSlaveServerGroupId *string `json:"MasterSlaveServerGroupId,omitempty" xml:"MasterSlaveServerGroupId,omitempty"`
-	OwnerAccount             *string `json:"OwnerAccount,omitempty" xml:"OwnerAccount,omitempty"`
-	OwnerId                  *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
 	// The ID of the active/standby server group to be deleted.
 	//
 	// >  An active/standby server group in use cannot be deleted.
+	MasterSlaveServerGroupId *string `json:"MasterSlaveServerGroupId,omitempty" xml:"MasterSlaveServerGroupId,omitempty"`
+	OwnerAccount             *string `json:"OwnerAccount,omitempty" xml:"OwnerAccount,omitempty"`
+	OwnerId                  *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
+	// The ID of the region to which the associated Server Load Balancer (SLB) instance belongs.
 	RegionId             *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 	ResourceOwnerAccount *string `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
 	ResourceOwnerId      *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
@@ -4500,6 +4702,7 @@ func (s *DeleteMasterSlaveServerGroupRequest) SetResourceOwnerId(v int64) *Delet
 }
 
 type DeleteMasterSlaveServerGroupResponseBody struct {
+	// The ID of the request.
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -4548,13 +4751,15 @@ func (s *DeleteMasterSlaveServerGroupResponse) SetBody(v *DeleteMasterSlaveServe
 type DeleteRulesRequest struct {
 	OwnerAccount *string `json:"OwnerAccount,omitempty" xml:"OwnerAccount,omitempty"`
 	OwnerId      *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
-	// The ID of the request.
+	// The ID of the region where the Server Load Balancer (SLB) instance is deployed.
+	//
+	// You can call the [DescribeRegions](~~27584~~) operation to query region IDs.
 	RegionId             *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 	ResourceOwnerAccount *string `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
 	ResourceOwnerId      *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
-	// ## Limits
+	// The list of forwarding rules that you want to delete.
 	//
-	// The RuleIds parameter is required. You can specify up to 10 forwarding rules in each request.
+	// >  The RuleIds parameter is required. You can specify up to 10 forwarding rules in each request.
 	RuleIds *string `json:"RuleIds,omitempty" xml:"RuleIds,omitempty"`
 }
 
@@ -4597,6 +4802,7 @@ func (s *DeleteRulesRequest) SetRuleIds(v string) *DeleteRulesRequest {
 }
 
 type DeleteRulesResponseBody struct {
+	// The ID of the request.
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -4645,11 +4851,13 @@ func (s *DeleteRulesResponse) SetBody(v *DeleteRulesResponseBody) *DeleteRulesRe
 type DeleteServerCertificateRequest struct {
 	OwnerAccount *string `json:"OwnerAccount,omitempty" xml:"OwnerAccount,omitempty"`
 	OwnerId      *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
-	// The ID of the request.
+	// The region where the Server Load Balancer (SLB) instance is created.
+	//
+	// You can call the [DescribeRegions](~~27584~~) operation to query region IDs.
 	RegionId             *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 	ResourceOwnerAccount *string `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
 	ResourceOwnerId      *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
-	// >  You cannot delete server certificates that are in use.
+	// The ID of the server certificate.
 	ServerCertificateId *string `json:"ServerCertificateId,omitempty" xml:"ServerCertificateId,omitempty"`
 }
 
@@ -4692,6 +4900,7 @@ func (s *DeleteServerCertificateRequest) SetServerCertificateId(v string) *Delet
 }
 
 type DeleteServerCertificateResponseBody struct {
+	// The ID of the request.
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -4740,11 +4949,13 @@ func (s *DeleteServerCertificateResponse) SetBody(v *DeleteServerCertificateResp
 type DeleteTLSCipherPolicyRequest struct {
 	OwnerAccount *string `json:"OwnerAccount,omitempty" xml:"OwnerAccount,omitempty"`
 	OwnerId      *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
-	// The ID of the TLS policy.
+	// The ID of the region where the Classic Load Balancer (CLB) instance is created.
+	//
+	// You can call the [DescribeRegions](~~36063~~) operation to query the most recent region list.
 	RegionId             *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 	ResourceOwnerAccount *string `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
 	ResourceOwnerId      *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
-	// The ID of the request.
+	// The ID of the TLS policy.
 	TLSCipherPolicyId *string `json:"TLSCipherPolicyId,omitempty" xml:"TLSCipherPolicyId,omitempty"`
 }
 
@@ -4787,6 +4998,7 @@ func (s *DeleteTLSCipherPolicyRequest) SetTLSCipherPolicyId(v string) *DeleteTLS
 }
 
 type DeleteTLSCipherPolicyResponseBody struct {
+	// The ID of the request.
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -4931,12 +5143,18 @@ func (s *DeleteVServerGroupResponse) SetBody(v *DeleteVServerGroupResponseBody) 
 }
 
 type DescribeAccessControlListAttributeRequest struct {
+	// The remarks of the ACL entry.
+	//
+	// It must be 2 to 100 characters in length, and can contain letters, digits, underscores (\_), and hyphens (-). It must start with a letter.
 	AclEntryComment *string `json:"AclEntryComment,omitempty" xml:"AclEntryComment,omitempty"`
-	AclId           *string `json:"AclId,omitempty" xml:"AclId,omitempty"`
-	OwnerAccount    *string `json:"OwnerAccount,omitempty" xml:"OwnerAccount,omitempty"`
-	OwnerId         *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
-	Page            *int32  `json:"Page,omitempty" xml:"Page,omitempty"`
-	PageSize        *int32  `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	// The ID of the ACL.
+	AclId        *string `json:"AclId,omitempty" xml:"AclId,omitempty"`
+	OwnerAccount *string `json:"OwnerAccount,omitempty" xml:"OwnerAccount,omitempty"`
+	OwnerId      *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
+	// The page number.
+	Page *int32 `json:"Page,omitempty" xml:"Page,omitempty"`
+	// The number of entries returned on each page. Maximum value: **50**. Default value: **10**.
+	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
 	// The time when the network ACL was created. The time follows the `YYYY-MM-DDThh:mm:ssZ` format.
 	RegionId             *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 	ResourceOwnerAccount *string `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
@@ -4997,16 +5215,29 @@ func (s *DescribeAccessControlListAttributeRequest) SetResourceOwnerId(v int64) 
 }
 
 type DescribeAccessControlListAttributeResponseBody struct {
-	AclEntrys        *DescribeAccessControlListAttributeResponseBodyAclEntrys        `json:"AclEntrys,omitempty" xml:"AclEntrys,omitempty" type:"Struct"`
-	AclId            *string                                                         `json:"AclId,omitempty" xml:"AclId,omitempty"`
-	AclName          *string                                                         `json:"AclName,omitempty" xml:"AclName,omitempty"`
-	AddressIPVersion *string                                                         `json:"AddressIPVersion,omitempty" xml:"AddressIPVersion,omitempty"`
-	CreateTime       *string                                                         `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
+	// The IP entries that you want to remove from the network ACL. Valid values:
+	//
+	// *   **entry**: the IP address or CIDR block that you want to remove from the network ACL. Separate multiple IP addresses or CIDR blocks with commas (,).
+	// *   **comment**: the description of the network ACL.
+	AclEntrys *DescribeAccessControlListAttributeResponseBodyAclEntrys `json:"AclEntrys,omitempty" xml:"AclEntrys,omitempty" type:"Struct"`
+	// The ID of the network ACL.
+	AclId *string `json:"AclId,omitempty" xml:"AclId,omitempty"`
+	// The ACL name. The name must be 1 to 80 characters in length, and can contain letters, digits, periods (.), hyphens (-), forward slashes (/), and underscores (\_). The name of each ACL must be unique within a region. Fuzzy match is supported.
+	AclName *string `json:"AclName,omitempty" xml:"AclName,omitempty"`
+	// The IP version. Valid values: **ipv4** and **ipv6**.
+	AddressIPVersion *string `json:"AddressIPVersion,omitempty" xml:"AddressIPVersion,omitempty"`
+	// The time when the ACL was created. The time follows the `YYYY-MM-DDThh:mm:ssZ` format.
+	CreateTime *string `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
+	// The listeners that are associated with the network ACL.
 	RelatedListeners *DescribeAccessControlListAttributeResponseBodyRelatedListeners `json:"RelatedListeners,omitempty" xml:"RelatedListeners,omitempty" type:"Struct"`
-	RequestId        *string                                                         `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	ResourceGroupId  *string                                                         `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
-	Tags             *DescribeAccessControlListAttributeResponseBodyTags             `json:"Tags,omitempty" xml:"Tags,omitempty" type:"Struct"`
-	TotalAclEntry    *int32                                                          `json:"TotalAclEntry,omitempty" xml:"TotalAclEntry,omitempty"`
+	// The ID of the request.
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The resource group ID.
+	ResourceGroupId *string `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
+	// The tags.
+	Tags *DescribeAccessControlListAttributeResponseBodyTags `json:"Tags,omitempty" xml:"Tags,omitempty" type:"Struct"`
+	// The total number of access control entries.
+	TotalAclEntry *int32 `json:"TotalAclEntry,omitempty" xml:"TotalAclEntry,omitempty"`
 }
 
 func (s DescribeAccessControlListAttributeResponseBody) String() string {
@@ -5085,8 +5316,10 @@ func (s *DescribeAccessControlListAttributeResponseBodyAclEntrys) SetAclEntry(v 
 }
 
 type DescribeAccessControlListAttributeResponseBodyAclEntrysAclEntry struct {
+	// The description of the ACL entry.
 	AclEntryComment *string `json:"AclEntryComment,omitempty" xml:"AclEntryComment,omitempty"`
-	AclEntryIP      *string `json:"AclEntryIP,omitempty" xml:"AclEntryIP,omitempty"`
+	// The IP address specified in the ACL entry.
+	AclEntryIP *string `json:"AclEntryIP,omitempty" xml:"AclEntryIP,omitempty"`
 }
 
 func (s DescribeAccessControlListAttributeResponseBodyAclEntrysAclEntry) String() string {
@@ -5125,10 +5358,17 @@ func (s *DescribeAccessControlListAttributeResponseBodyRelatedListeners) SetRela
 }
 
 type DescribeAccessControlListAttributeResponseBodyRelatedListenersRelatedListener struct {
-	AclType        *string `json:"AclType,omitempty" xml:"AclType,omitempty"`
-	ListenerPort   *int32  `json:"ListenerPort,omitempty" xml:"ListenerPort,omitempty"`
+	// The type of ACL. Valid values:
+	//
+	// *   **black**
+	// *   **white**
+	AclType *string `json:"AclType,omitempty" xml:"AclType,omitempty"`
+	// The frontend port of the listener with which the ACL is associated.
+	ListenerPort *int32 `json:"ListenerPort,omitempty" xml:"ListenerPort,omitempty"`
+	// The CLB instance ID.
 	LoadBalancerId *string `json:"LoadBalancerId,omitempty" xml:"LoadBalancerId,omitempty"`
-	Protocol       *string `json:"Protocol,omitempty" xml:"Protocol,omitempty"`
+	// The type of protocol that the associated listener uses.
+	Protocol *string `json:"Protocol,omitempty" xml:"Protocol,omitempty"`
 }
 
 func (s DescribeAccessControlListAttributeResponseBodyRelatedListenersRelatedListener) String() string {
@@ -5177,7 +5417,9 @@ func (s *DescribeAccessControlListAttributeResponseBodyTags) SetTag(v []*Describ
 }
 
 type DescribeAccessControlListAttributeResponseBodyTagsTag struct {
-	TagKey   *string `json:"TagKey,omitempty" xml:"TagKey,omitempty"`
+	// The tag key.
+	TagKey *string `json:"TagKey,omitempty" xml:"TagKey,omitempty"`
+	// The tag value.
 	TagValue *string `json:"TagValue,omitempty" xml:"TagValue,omitempty"`
 }
 
@@ -5229,28 +5471,29 @@ func (s *DescribeAccessControlListAttributeResponse) SetBody(v *DescribeAccessCo
 }
 
 type DescribeAccessControlListsRequest struct {
-	// The name of the network ACL. The name of the network ACL. The name must be 1 to 80 characters in length, and can contain letters, digits, periods (.), hyphens (-), forward slashes (/), and underscores (\_). The name of the network ACL must be unique within each region. Fuzzy match is supported.
+	// The ACL name. The ACL name. The name must be 1 to 80 characters in length, and can contain letters, digits, periods (.), hyphens (-), forward slashes (/), and underscores (\_). The name of each ACL must be unique within a region. Fuzzy match is supported.
 	AclName *string `json:"AclName,omitempty" xml:"AclName,omitempty"`
-	// The IP version of the Classic Load Balancer (CLB) instance with which the network ACL is associated. Valid values:
+	// The IP version of the Classic Load Balancer (CLB) instance with which the ACL is associated. Valid values:
 	//
 	// *   **ipv4**
 	// *   **ipv6**
 	AddressIPVersion *string `json:"AddressIPVersion,omitempty" xml:"AddressIPVersion,omitempty"`
 	OwnerAccount     *string `json:"OwnerAccount,omitempty" xml:"OwnerAccount,omitempty"`
 	OwnerId          *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
-	// The page number. Default value: **1**.
+	// The number of the page to return. Default value: **1**.
 	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
 	// The number of entries to return on each page. Maximum value: **50**. Default value: **10**.
 	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	// The ID of the region where the ACL is created.
+	// The region ID of the ACL.
 	//
 	// You can call the [DescribeRegions](~~27584~~) operation to query the most recent region list.
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	// The ID of the resource group.
-	ResourceGroupId      *string                                 `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
-	ResourceOwnerAccount *string                                 `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
-	ResourceOwnerId      *int64                                  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
-	Tag                  []*DescribeAccessControlListsRequestTag `json:"Tag,omitempty" xml:"Tag,omitempty" type:"Repeated"`
+	// The resource group ID.
+	ResourceGroupId      *string `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
+	ResourceOwnerAccount *string `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
+	ResourceOwnerId      *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
+	// The tags.
+	Tag []*DescribeAccessControlListsRequestTag `json:"Tag,omitempty" xml:"Tag,omitempty" type:"Repeated"`
 }
 
 func (s DescribeAccessControlListsRequest) String() string {
@@ -5317,7 +5560,13 @@ func (s *DescribeAccessControlListsRequest) SetTag(v []*DescribeAccessControlLis
 }
 
 type DescribeAccessControlListsRequestTag struct {
-	Key   *string `json:"Key,omitempty" xml:"Key,omitempty"`
+	// The key of the tag. You can specify up to 20 tag keys. The tag key cannot be an empty string.
+	//
+	// The tag key must be 1 to 64 characters in length and cannot start with `aliyun` or `acs:`. It cannot contain `http://` or `https://`.
+	Key *string `json:"Key,omitempty" xml:"Key,omitempty"`
+	// The tag value. You can specify at most 20 tag values. The tag value cannot be an empty string.
+	//
+	// The tag value must be 1 to 128 characters in length and cannot start with `acs:` or `aliyun`. It cannot contain `http://` or `https://`.
 	Value *string `json:"Value,omitempty" xml:"Value,omitempty"`
 }
 
@@ -5340,9 +5589,9 @@ func (s *DescribeAccessControlListsRequestTag) SetValue(v string) *DescribeAcces
 }
 
 type DescribeAccessControlListsResponseBody struct {
-	// A list of network ACLs.
+	// A list of ACLs.
 	Acls *DescribeAccessControlListsResponseBodyAcls `json:"Acls,omitempty" xml:"Acls,omitempty" type:"Struct"`
-	// The number of network ACLs on the current page.
+	// The number of ACLs on the current page.
 	Count *int32 `json:"Count,omitempty" xml:"Count,omitempty"`
 	// The number of the returned page. Pages start from page **1**. Default value: **1**.
 	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
@@ -5350,7 +5599,7 @@ type DescribeAccessControlListsResponseBody struct {
 	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
 	// The request ID.
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// The number of network ACLs.
+	// The total number of ACLs.
 	TotalCount *int32 `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
 }
 
@@ -5412,13 +5661,13 @@ func (s *DescribeAccessControlListsResponseBodyAcls) SetAcl(v []*DescribeAccessC
 type DescribeAccessControlListsResponseBodyAclsAcl struct {
 	// The ACL ID.
 	AclId *string `json:"AclId,omitempty" xml:"AclId,omitempty"`
-	// The name of the ACL.
+	// The ACL name.
 	AclName *string `json:"AclName,omitempty" xml:"AclName,omitempty"`
-	// The IP version that is used by the associated CLB instance.
+	// The IP version that is used by the CLB instance associated with the ACL.
 	AddressIPVersion *string `json:"AddressIPVersion,omitempty" xml:"AddressIPVersion,omitempty"`
 	// The time when the CLB instance was created. The time follows the `YYYY-MM-DDThh:mm:ssZ` format.
 	CreateTime *string `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
-	// The ID of the resource group.
+	// The resource group ID.
 	ResourceGroupId *string `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
 	// The list of tags added to the network ACL. The value of this parameter must be a STRING list in the JSON format.
 	Tags *DescribeAccessControlListsResponseBodyAclsAclTags `json:"Tags,omitempty" xml:"Tags,omitempty" type:"Struct"`
@@ -5480,7 +5729,9 @@ func (s *DescribeAccessControlListsResponseBodyAclsAclTags) SetTag(v []*Describe
 }
 
 type DescribeAccessControlListsResponseBodyAclsAclTagsTag struct {
-	TagKey   *string `json:"TagKey,omitempty" xml:"TagKey,omitempty"`
+	// The tag key.
+	TagKey *string `json:"TagKey,omitempty" xml:"TagKey,omitempty"`
+	// The tag value.
 	TagValue *string `json:"TagValue,omitempty" xml:"TagValue,omitempty"`
 }
 
@@ -5532,23 +5783,25 @@ func (s *DescribeAccessControlListsResponse) SetBody(v *DescribeAccessControlLis
 }
 
 type DescribeAccessLogsDownloadAttributeRequest struct {
-	// The configuration of access logs.
+	// The CLB instance ID.
 	LoadBalancerId *string `json:"LoadBalancerId,omitempty" xml:"LoadBalancerId,omitempty"`
-	// The number of entries to return on each page. Maximum value: **50**. Default value: **10**.
+	// The type of access log. Set the value to **layer7**, which specifies Layer 7 access logs.
 	LogType      *string `json:"LogType,omitempty" xml:"LogType,omitempty"`
 	OwnerAccount *string `json:"OwnerAccount,omitempty" xml:"OwnerAccount,omitempty"`
 	OwnerId      *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
-	// The ID of the region where the CLB instance is deployed.
+	// The page number. Default value: **1**.
+	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
+	// The number of entries per page. Maximum value: **50**. Default value: **10**.
+	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	// The region ID of the CLB instance.
 	//
 	// You can call the [DescribeRegions](~~27584~~) operation to query the most recent region list.
-	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
-	// The name of the Logstore of Log Service.
-	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	// The operation that you want to perform. Set the value to **DescribeAccessLogsDownloadAttribute**.
 	RegionId             *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 	ResourceOwnerAccount *string `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
 	ResourceOwnerId      *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
-	// The number of the page to return. Default value: **1**.
+	// The tags that are added to the CLB instance. The tags must be key-value pairs that are contained in a JSON dictionary.
+	//
+	// You can specify up to 10 tags in each call.
 	Tags *string `json:"Tags,omitempty" xml:"Tags,omitempty"`
 }
 
@@ -5611,15 +5864,15 @@ func (s *DescribeAccessLogsDownloadAttributeRequest) SetTags(v string) *Describe
 }
 
 type DescribeAccessLogsDownloadAttributeResponseBody struct {
-	// The number of entries returned per page.
+	// The configuration of the access log.
 	LogsDownloadAttributes *DescribeAccessLogsDownloadAttributeResponseBodyLogsDownloadAttributes `json:"LogsDownloadAttributes,omitempty" xml:"LogsDownloadAttributes,omitempty" type:"Struct"`
-	// The type of access log. Set the value to **layer7**, which specifies Layer 7 access logs.
+	// The page number.
 	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
-	// The ID of the CLB instance.
+	// The number of entries per page.
 	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	// The page number of the returned page.
+	// The request ID.
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// The type of access log. Only **layer7** is returned, which indicates Layer 7 access logs.
+	// The total number of entries returned.
 	TotalCount *int32 `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
 }
 
@@ -5674,13 +5927,16 @@ func (s *DescribeAccessLogsDownloadAttributeResponseBodyLogsDownloadAttributes) 
 }
 
 type DescribeAccessLogsDownloadAttributeResponseBodyLogsDownloadAttributesLogsDownloadAttribute struct {
+	// The CLB instance ID.
 	LoadBalancerId *string `json:"LoadBalancerId,omitempty" xml:"LoadBalancerId,omitempty"`
-	// The name of the project of Log Service.
+	// The name of the Log Service project.
 	LogProject *string `json:"LogProject,omitempty" xml:"LogProject,omitempty"`
-	// The ID of the request.
+	// The name of the Logstore.
 	LogStore *string `json:"LogStore,omitempty" xml:"LogStore,omitempty"`
-	LogType  *string `json:"LogType,omitempty" xml:"LogType,omitempty"`
-	Region   *string `json:"Region,omitempty" xml:"Region,omitempty"`
+	// The type of access log. Only **layer7** is returned, which indicates Layer 7 access logs.
+	LogType *string `json:"LogType,omitempty" xml:"LogType,omitempty"`
+	// The region ID of the CLB instance.
+	Region *string `json:"Region,omitempty" xml:"Region,omitempty"`
 }
 
 func (s DescribeAccessLogsDownloadAttributeResponseBodyLogsDownloadAttributesLogsDownloadAttribute) String() string {
@@ -5746,15 +6002,23 @@ func (s *DescribeAccessLogsDownloadAttributeResponse) SetBody(v *DescribeAccessL
 }
 
 type DescribeAvailableResourceRequest struct {
-	// The zones and the supported resources.
+	// The type of the IP address.
+	//
+	// Valid values: **ipv4 and ipv6**.
 	AddressIPVersion *string `json:"AddressIPVersion,omitempty" xml:"AddressIPVersion,omitempty"`
-	// The ID of the request.
+	// The network type.
+	//
+	// Valid values: **vpc, classic-internet, and classic-intranet**.
+	//
+	// vpc: an internal Classic Load Balancer (CLB) instance that is deployed in a virtual private cloud (VPC).
+	//
+	// classic_internet: a public-facing CLB instance.
+	//
+	// classic_intranet: an internal CLB instance that is deployed in a classic network.
 	AddressType  *string `json:"AddressType,omitempty" xml:"AddressType,omitempty"`
 	OwnerAccount *string `json:"OwnerAccount,omitempty" xml:"OwnerAccount,omitempty"`
 	OwnerId      *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
-	// The type of IP address.
-	//
-	// Valid values: **ipv4 and ipv6**.
+	// The region ID.
 	RegionId             *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 	ResourceOwnerAccount *string `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
 	ResourceOwnerId      *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
@@ -5804,9 +6068,9 @@ func (s *DescribeAvailableResourceRequest) SetResourceOwnerId(v int64) *Describe
 }
 
 type DescribeAvailableResourceResponseBody struct {
-	// The primary zone.
+	// The zones and the supported resources.
 	AvailableResources *DescribeAvailableResourceResponseBodyAvailableResources `json:"AvailableResources,omitempty" xml:"AvailableResources,omitempty" type:"Struct"`
-	// The secondary zone.
+	// The request ID.
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -5846,15 +6110,11 @@ func (s *DescribeAvailableResourceResponseBodyAvailableResources) SetAvailableRe
 }
 
 type DescribeAvailableResourceResponseBodyAvailableResourcesAvailableResource struct {
-	// The type of network.
-	//
-	// Valid values: **vpc, classic-internet, and classic-intranet**.
+	// The primary zone.
 	MasterZoneId *string `json:"MasterZoneId,omitempty" xml:"MasterZoneId,omitempty"`
-	// The supported resources.
+	// The secondary zone.
 	SlaveZoneId *string `json:"SlaveZoneId,omitempty" xml:"SlaveZoneId,omitempty"`
-	// The type of IP address.
-	//
-	// Valid values: **ipv4 and ipv6**.
+	// The supported resources.
 	SupportResources *DescribeAvailableResourceResponseBodyAvailableResourcesAvailableResourceSupportResources `json:"SupportResources,omitempty" xml:"SupportResources,omitempty" type:"Struct"`
 }
 
@@ -5899,8 +6159,13 @@ func (s *DescribeAvailableResourceResponseBodyAvailableResourcesAvailableResourc
 }
 
 type DescribeAvailableResourceResponseBodyAvailableResourcesAvailableResourceSupportResourcesSupportResource struct {
+	// The type of the IP address.
+	//
+	// Valid values: **ipv4 and ipv6**.
 	AddressIPVersion *string `json:"AddressIPVersion,omitempty" xml:"AddressIPVersion,omitempty"`
-	// >  Only resources that are available for purchase and the corresponding zones are returned.
+	// The network type.
+	//
+	// Valid values: **vpc, classic-internet, and classic-intranet**.
 	AddressType *string `json:"AddressType,omitempty" xml:"AddressType,omitempty"`
 }
 
@@ -5952,19 +6217,20 @@ func (s *DescribeAvailableResourceResponse) SetBody(v *DescribeAvailableResource
 }
 
 type DescribeCACertificatesRequest struct {
-	// The ID of the resource group.
+	// The CA certificate ID.
 	CACertificateId *string `json:"CACertificateId,omitempty" xml:"CACertificateId,omitempty"`
 	OwnerAccount    *string `json:"OwnerAccount,omitempty" xml:"OwnerAccount,omitempty"`
 	OwnerId         *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
-	// The timestamp that indicates when the CA certificate expires. Unit: milliseconds.
+	// The region of the CA certificates.
 	//
-	// This value is a UNIX timestamp representing the number of milliseconds that have elapsed since the epoch time January 1, 1970, 00:00:00 UTC.
+	// You can call the [DescribeRegions](~~27584~~) operation to query the most recent region list.
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	// The ID of the resource group.
-	ResourceGroupId      *string                             `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
-	ResourceOwnerAccount *string                             `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
-	ResourceOwnerId      *int64                              `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
-	Tag                  []*DescribeCACertificatesRequestTag `json:"Tag,omitempty" xml:"Tag,omitempty" type:"Repeated"`
+	// The resource group ID.
+	ResourceGroupId      *string `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
+	ResourceOwnerAccount *string `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
+	ResourceOwnerId      *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
+	// The tags of the CA certificates.
+	Tag []*DescribeCACertificatesRequestTag `json:"Tag,omitempty" xml:"Tag,omitempty" type:"Repeated"`
 }
 
 func (s DescribeCACertificatesRequest) String() string {
@@ -6016,7 +6282,11 @@ func (s *DescribeCACertificatesRequest) SetTag(v []*DescribeCACertificatesReques
 }
 
 type DescribeCACertificatesRequestTag struct {
-	Key   *string `json:"Key,omitempty" xml:"Key,omitempty"`
+	// The key of tag N. Valid values of N: **1 to 20**. The tag key cannot be an empty string.
+	//
+	// The tag key can be up to 64 characters in length, and cannot contain `http://` or `https://`. It must not start with `aliyun` or `acs:`.
+	Key *string `json:"Key,omitempty" xml:"Key,omitempty"`
+	// The value of tag N. Valid values of N: **1 to 20**. The tag value can be an empty string. The tag value can be up to 128 characters in length, and cannot contain `http://` or `https://`. It must not start with `aliyun` or `acs:`.
 	Value *string `json:"Value,omitempty" xml:"Value,omitempty"`
 }
 
@@ -6039,9 +6309,9 @@ func (s *DescribeCACertificatesRequestTag) SetValue(v string) *DescribeCACertifi
 }
 
 type DescribeCACertificatesResponseBody struct {
-	// The fingerprint of the CA certificate.
+	// The information about the CA certificate.
 	CACertificates *DescribeCACertificatesResponseBodyCACertificates `json:"CACertificates,omitempty" xml:"CACertificates,omitempty" type:"Struct"`
-	// The operation that you want to perform. Set the value to **DescribeCACertificates**.
+	// The request ID.
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -6081,26 +6351,32 @@ func (s *DescribeCACertificatesResponseBodyCACertificates) SetCACertificate(v []
 }
 
 type DescribeCACertificatesResponseBodyCACertificatesCACertificate struct {
-	// The ID of the CA certificate.
-	CACertificateId   *string `json:"CACertificateId,omitempty" xml:"CACertificateId,omitempty"`
+	// The CA certificate ID.
+	CACertificateId *string `json:"CACertificateId,omitempty" xml:"CACertificateId,omitempty"`
+	// The CA certificate name.
 	CACertificateName *string `json:"CACertificateName,omitempty" xml:"CACertificateName,omitempty"`
-	CommonName        *string `json:"CommonName,omitempty" xml:"CommonName,omitempty"`
-	// The time when the CA certificate expires. The time is in the `YYYY-MM-DDThh:mm:ssZ` format.
+	// The domain name of the CA certificate.
+	CommonName *string `json:"CommonName,omitempty" xml:"CommonName,omitempty"`
+	// The time when the CA certificate was created. The time is in the `YYYY-MM-DDThh:mm:ssZ` format.
 	CreateTime *string `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
-	// The information about the CA certificate.
-	CreateTimeStamp *int64 `json:"CreateTimeStamp,omitempty" xml:"CreateTimeStamp,omitempty"`
-	// The region where the CA certificates are created.
+	// The timestamp when the CA certificate was created. Unit: milliseconds.
 	//
-	// You can call the [DescribeRegions](~~27584~~) operation to query the most recent region list.
+	// This value is a UNIX timestamp representing the number of milliseconds that have elapsed since the epoch time January 1, 1970, 00:00:00 UTC.
+	CreateTimeStamp *int64 `json:"CreateTimeStamp,omitempty" xml:"CreateTimeStamp,omitempty"`
+	// The time when the CA certificate expires. The time is in the `YYYY-MM-DDThh:mm:ssZ` format.
 	ExpireTime *string `json:"ExpireTime,omitempty" xml:"ExpireTime,omitempty"`
-	// The name of the CA certificate.
+	// The timestamp that indicates when the CA certificate expires. Unit: milliseconds.
+	//
+	// This value is a UNIX timestamp representing the number of milliseconds that have elapsed since the epoch time January 1, 1970, 00:00:00 UTC.
 	ExpireTimeStamp *int64 `json:"ExpireTimeStamp,omitempty" xml:"ExpireTimeStamp,omitempty"`
-	// The region where the CA certificate is created.
+	// The fingerprint of the CA certificate.
 	Fingerprint *string `json:"Fingerprint,omitempty" xml:"Fingerprint,omitempty"`
-	// The ID of the request.
-	RegionId        *string                                                            `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	ResourceGroupId *string                                                            `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
-	Tags            *DescribeCACertificatesResponseBodyCACertificatesCACertificateTags `json:"Tags,omitempty" xml:"Tags,omitempty" type:"Struct"`
+	// The region of the CA certificate.
+	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	// The resource group ID.
+	ResourceGroupId *string `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
+	// The tag.
+	Tags *DescribeCACertificatesResponseBodyCACertificatesCACertificateTags `json:"Tags,omitempty" xml:"Tags,omitempty" type:"Struct"`
 }
 
 func (s DescribeCACertificatesResponseBodyCACertificatesCACertificate) String() string {
@@ -6184,7 +6460,9 @@ func (s *DescribeCACertificatesResponseBodyCACertificatesCACertificateTags) SetT
 }
 
 type DescribeCACertificatesResponseBodyCACertificatesCACertificateTagsTag struct {
-	TagKey   *string `json:"TagKey,omitempty" xml:"TagKey,omitempty"`
+	// The tag key.
+	TagKey *string `json:"TagKey,omitempty" xml:"TagKey,omitempty"`
+	// The tag value.
 	TagValue *string `json:"TagValue,omitempty" xml:"TagValue,omitempty"`
 }
 
@@ -6236,11 +6514,11 @@ func (s *DescribeCACertificatesResponse) SetBody(v *DescribeCACertificatesRespon
 }
 
 type DescribeDomainExtensionAttributeRequest struct {
-	// The domain name.
+	// The ID of the additional certificate.
 	DomainExtensionId *string `json:"DomainExtensionId,omitempty" xml:"DomainExtensionId,omitempty"`
 	OwnerAccount      *string `json:"OwnerAccount,omitempty" xml:"OwnerAccount,omitempty"`
 	OwnerId           *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
-	// The ID of the additional certificate.
+	// The ID of the region where the Server Load Balancer (SLB) instance is deployed.
 	RegionId             *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 	ResourceOwnerAccount *string `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
 	ResourceOwnerId      *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
@@ -6285,16 +6563,17 @@ func (s *DescribeDomainExtensionAttributeRequest) SetResourceOwnerId(v int64) *D
 }
 
 type DescribeDomainExtensionAttributeResponseBody struct {
-	// The ID of the request.
-	Domain            *string `json:"Domain,omitempty" xml:"Domain,omitempty"`
-	DomainExtensionId *string `json:"DomainExtensionId,omitempty" xml:"DomainExtensionId,omitempty"`
-	// The ID of the server certificate that is used by the domain name.
-	ListenerPort *int32 `json:"ListenerPort,omitempty" xml:"ListenerPort,omitempty"`
-	// The frontend port of the HTTPS listener that is configured for the SLB instance. Valid values: **1** to **65535**.
-	LoadBalancerId *string `json:"LoadBalancerId,omitempty" xml:"LoadBalancerId,omitempty"`
-	// The ID of the SLB instance.
-	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The domain name.
+	Domain *string `json:"Domain,omitempty" xml:"Domain,omitempty"`
 	// The ID of the additional certificate.
+	DomainExtensionId *string `json:"DomainExtensionId,omitempty" xml:"DomainExtensionId,omitempty"`
+	// The frontend port of the HTTPS listener that is configured for the SLB instance. Valid values: **1** to **65535**.
+	ListenerPort *int32 `json:"ListenerPort,omitempty" xml:"ListenerPort,omitempty"`
+	// The ID of the SLB instance.
+	LoadBalancerId *string `json:"LoadBalancerId,omitempty" xml:"LoadBalancerId,omitempty"`
+	// The ID of the request.
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The ID of the server certificate that is used by the domain name.
 	ServerCertificateId *string `json:"ServerCertificateId,omitempty" xml:"ServerCertificateId,omitempty"`
 }
 
@@ -6366,15 +6645,15 @@ func (s *DescribeDomainExtensionAttributeResponse) SetBody(v *DescribeDomainExte
 }
 
 type DescribeDomainExtensionsRequest struct {
-	// The ID of the request.
-	DomainExtensionId *string `json:"DomainExtensionId,omitempty" xml:"DomainExtensionId,omitempty"`
 	// The ID of the additional certificate.
-	ListenerPort *int32 `json:"ListenerPort,omitempty" xml:"ListenerPort,omitempty"`
+	DomainExtensionId *string `json:"DomainExtensionId,omitempty" xml:"DomainExtensionId,omitempty"`
 	// The frontend port of the HTTPS listener that is configured for the Classic Load Balancer (CLB) instance. Valid values: **1 to 65535**.
+	ListenerPort *int32 `json:"ListenerPort,omitempty" xml:"ListenerPort,omitempty"`
+	// The ID of the CLB instance.
 	LoadBalancerId *string `json:"LoadBalancerId,omitempty" xml:"LoadBalancerId,omitempty"`
 	OwnerAccount   *string `json:"OwnerAccount,omitempty" xml:"OwnerAccount,omitempty"`
 	OwnerId        *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
-	// The ID of the CLB instance.
+	// The ID of the region where the CLB instance is deployed.
 	RegionId             *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 	ResourceOwnerAccount *string `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
 	ResourceOwnerId      *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
@@ -6429,9 +6708,9 @@ func (s *DescribeDomainExtensionsRequest) SetResourceOwnerId(v int64) *DescribeD
 }
 
 type DescribeDomainExtensionsResponseBody struct {
-	// The ID of the server certificate that is used by the domain name.
-	DomainExtensions *DescribeDomainExtensionsResponseBodyDomainExtensions `json:"DomainExtensions,omitempty" xml:"DomainExtensions,omitempty" type:"Struct"`
 	// The list of additional certificates.
+	DomainExtensions *DescribeDomainExtensionsResponseBodyDomainExtensions `json:"DomainExtensions,omitempty" xml:"DomainExtensions,omitempty" type:"Struct"`
+	// The ID of the request.
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -6471,11 +6750,11 @@ func (s *DescribeDomainExtensionsResponseBodyDomainExtensions) SetDomainExtensio
 }
 
 type DescribeDomainExtensionsResponseBodyDomainExtensionsDomainExtension struct {
-	// The ID of the additional certificate.
-	Domain *string `json:"Domain,omitempty" xml:"Domain,omitempty"`
-	// Queries additional certificates.
-	DomainExtensionId *string `json:"DomainExtensionId,omitempty" xml:"DomainExtensionId,omitempty"`
 	// The domain name.
+	Domain *string `json:"Domain,omitempty" xml:"Domain,omitempty"`
+	// The ID of the additional certificate.
+	DomainExtensionId *string `json:"DomainExtensionId,omitempty" xml:"DomainExtensionId,omitempty"`
+	// The ID of the server certificate that is used by the domain name.
 	ServerCertificateId *string `json:"ServerCertificateId,omitempty" xml:"ServerCertificateId,omitempty"`
 }
 
@@ -6532,19 +6811,19 @@ func (s *DescribeDomainExtensionsResponse) SetBody(v *DescribeDomainExtensionsRe
 }
 
 type DescribeHealthStatusRequest struct {
-	// The frontend protocol that is used by the CLB instance.
-	ListenerPort *int32 `json:"ListenerPort,omitempty" xml:"ListenerPort,omitempty"`
-	// The ID of the region where the CLB instance is deployed.
-	ListenerProtocol *string `json:"ListenerProtocol,omitempty" xml:"ListenerProtocol,omitempty"`
 	// The frontend port that is used by the CLB instance.
 	//
 	// Valid values: **1 to 65535**.
 	//
 	// >  If you do not specify this parameter, the health status of all ports is returned.
+	ListenerPort *int32 `json:"ListenerPort,omitempty" xml:"ListenerPort,omitempty"`
+	// The frontend protocol that is used by the CLB instance.
+	ListenerProtocol *string `json:"ListenerProtocol,omitempty" xml:"ListenerProtocol,omitempty"`
+	// The ID of the Classic Load Balancer (CLB) instance.
 	LoadBalancerId *string `json:"LoadBalancerId,omitempty" xml:"LoadBalancerId,omitempty"`
 	OwnerAccount   *string `json:"OwnerAccount,omitempty" xml:"OwnerAccount,omitempty"`
 	OwnerId        *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
-	// The ID of the request.
+	// The ID of the region where the CLB instance is deployed.
 	RegionId             *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 	ResourceOwnerAccount *string `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
 	ResourceOwnerId      *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
@@ -6599,13 +6878,9 @@ func (s *DescribeHealthStatusRequest) SetResourceOwnerId(v int64) *DescribeHealt
 }
 
 type DescribeHealthStatusResponseBody struct {
-	// The health status of the backend server. Valid values:
-	//
-	// *   **normal**: The backend server is healthy.
-	// *   **abnormal**: The backend server is unhealthy.
-	// *   **unavailable**: The health check is not complete.
-	BackendServers *DescribeHealthStatusResponseBodyBackendServers `json:"BackendServers,omitempty" xml:"BackendServers,omitempty" type:"Struct"`
 	// The list of backend servers.
+	BackendServers *DescribeHealthStatusResponseBodyBackendServers `json:"BackendServers,omitempty" xml:"BackendServers,omitempty" type:"Struct"`
+	// The ID of the request.
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -6645,17 +6920,21 @@ func (s *DescribeHealthStatusResponseBodyBackendServers) SetBackendServer(v []*D
 }
 
 type DescribeHealthStatusResponseBodyBackendServersBackendServer struct {
-	// The IP address of the ECS instance.
-	ListenerPort *int32 `json:"ListenerPort,omitempty" xml:"ListenerPort,omitempty"`
-	// The ID of the Elastic Compute Service (ECS) instance or elastic network interface (ENI).
-	Port *int32 `json:"Port,omitempty" xml:"Port,omitempty"`
 	// The frontend port that is used by the CLB instance.
-	Protocol *string `json:"Protocol,omitempty" xml:"Protocol,omitempty"`
-	// The frontend protocol that is used by the CLB instance.
-	ServerHealthStatus *string `json:"ServerHealthStatus,omitempty" xml:"ServerHealthStatus,omitempty"`
-	// Queries the health status of backend servers.
-	ServerId *string `json:"ServerId,omitempty" xml:"ServerId,omitempty"`
+	ListenerPort *int32 `json:"ListenerPort,omitempty" xml:"ListenerPort,omitempty"`
 	// The backend port that is used by the CLB instance.
+	Port *int32 `json:"Port,omitempty" xml:"Port,omitempty"`
+	// The frontend protocol that is used by the CLB instance.
+	Protocol *string `json:"Protocol,omitempty" xml:"Protocol,omitempty"`
+	// The health status of the backend server. Valid values:
+	//
+	// *   **normal**: The backend server is healthy.
+	// *   **abnormal**: The backend server is unhealthy.
+	// *   **unavailable**: The health check is not complete.
+	ServerHealthStatus *string `json:"ServerHealthStatus,omitempty" xml:"ServerHealthStatus,omitempty"`
+	// The ID of the Elastic Compute Service (ECS) instance or elastic network interface (ENI).
+	ServerId *string `json:"ServerId,omitempty" xml:"ServerId,omitempty"`
+	// The IP address of the ECS instance.
 	ServerIp *string `json:"ServerIp,omitempty" xml:"ServerIp,omitempty"`
 }
 
@@ -6729,13 +7008,13 @@ func (s *DescribeHealthStatusResponse) SetBody(v *DescribeHealthStatusResponseBo
 type DescribeHighDefinationMonitorRequest struct {
 	OwnerAccount *string `json:"OwnerAccount,omitempty" xml:"OwnerAccount,omitempty"`
 	OwnerId      *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
-	// The name of the Logstore of Log Service.
-	RegionId             *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	ResourceOwnerAccount *string `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
-	ResourceOwnerId      *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
 	// The ID of the region where you want to query the configuration of fine-grained monitoring.
 	//
 	// You can call the [DescribeRegions](~~27584~~) operation to query the most recent region list.
+	RegionId             *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	ResourceOwnerAccount *string `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
+	ResourceOwnerId      *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
+	// The tags of the logs. The tags must be key-value pairs that are contained in a JSON dictionary.
 	Tags *string `json:"Tags,omitempty" xml:"Tags,omitempty"`
 }
 
@@ -6778,12 +7057,17 @@ func (s *DescribeHighDefinationMonitorRequest) SetTags(v string) *DescribeHighDe
 }
 
 type DescribeHighDefinationMonitorResponseBody struct {
-	// The ID of the request.
+	// The name of the Log Service project.
 	LogProject *string `json:"LogProject,omitempty" xml:"LogProject,omitempty"`
-	LogStore   *string `json:"LogStore,omitempty" xml:"LogStore,omitempty"`
-	// The operation that you want to perform. Set the value to **DescribeHighDefinationMonitor**.
+	// The name of the Logstore.
+	LogStore *string `json:"LogStore,omitempty" xml:"LogStore,omitempty"`
+	// The request ID.
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	Success   *string `json:"Success,omitempty" xml:"Success,omitempty"`
+	// Indicates whether the call is successful. Valid values:
+	//
+	// *   **true**
+	// *   **false**
+	Success *string `json:"Success,omitempty" xml:"Success,omitempty"`
 }
 
 func (s DescribeHighDefinationMonitorResponseBody) String() string {
@@ -6844,19 +7128,21 @@ func (s *DescribeHighDefinationMonitorResponse) SetBody(v *DescribeHighDefinatio
 }
 
 type DescribeListenerAccessControlAttributeRequest struct {
-	// The region where the Classic Load Balancer (CLB) instance is created.
+	// The frontend port that is used by the CLB instance.
 	//
-	// You can query the region ID from the [Regions and zones](~~40654~~) list or by calling the [DescribeRegions](~~25609~~) operation.
+	// Valid values: **1 to 65535**.
 	ListenerPort *int32 `json:"ListenerPort,omitempty" xml:"ListenerPort,omitempty"`
-	// The IP addresses and CIDR blocks added to the whitelist.
+	// The frontend protocol that is used by the CLB instance.
+	//
+	// > This parameter is required if the same port is specified for listeners of different protocols.
 	ListenerProtocol *string `json:"ListenerProtocol,omitempty" xml:"ListenerProtocol,omitempty"`
-	// The ID of the request.
+	// The CLB instance ID.
 	LoadBalancerId *string `json:"LoadBalancerId,omitempty" xml:"LoadBalancerId,omitempty"`
 	OwnerAccount   *string `json:"OwnerAccount,omitempty" xml:"OwnerAccount,omitempty"`
 	OwnerId        *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
-	// The frontend protocol that is used by the CLB instance.
+	// The region where the Classic Load Balancer (CLB) instance is created.
 	//
-	// >  This parameter is required when listeners that use different protocols listen on the same port.
+	// You can query the region ID from the [Regions and zones](~~40654~~) list or by calling the [DescribeRegions](~~25609~~) operation.
 	RegionId             *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 	ResourceOwnerAccount *string `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
 	ResourceOwnerId      *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
@@ -6911,9 +7197,15 @@ func (s *DescribeListenerAccessControlAttributeRequest) SetResourceOwnerId(v int
 }
 
 type DescribeListenerAccessControlAttributeResponseBody struct {
+	// Indicates whether the whitelist is enabled. Valid values:
+	//
+	// *   **open_white_list**: the whitelist is enabled.
+	// *   **close**: the whitelist is disabled.
 	AccessControlStatus *string `json:"AccessControlStatus,omitempty" xml:"AccessControlStatus,omitempty"`
-	RequestId           *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	SourceItems         *string `json:"SourceItems,omitempty" xml:"SourceItems,omitempty"`
+	// The request ID.
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The queried ACLs.
+	SourceItems *string `json:"SourceItems,omitempty" xml:"SourceItems,omitempty"`
 }
 
 func (s DescribeListenerAccessControlAttributeResponseBody) String() string {
@@ -6969,9 +7261,13 @@ func (s *DescribeListenerAccessControlAttributeResponse) SetBody(v *DescribeList
 }
 
 type DescribeLoadBalancerAttributeRequest struct {
-	LoadBalancerId       *string `json:"LoadBalancerId,omitempty" xml:"LoadBalancerId,omitempty"`
-	OwnerAccount         *string `json:"OwnerAccount,omitempty" xml:"OwnerAccount,omitempty"`
-	OwnerId              *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
+	// The CLB instance ID.
+	LoadBalancerId *string `json:"LoadBalancerId,omitempty" xml:"LoadBalancerId,omitempty"`
+	OwnerAccount   *string `json:"OwnerAccount,omitempty" xml:"OwnerAccount,omitempty"`
+	OwnerId        *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
+	// The region ID of the CLB instance.
+	//
+	// You can call the [DescribeRegions](~~25609~~) operation to query the most recent region list.
 	RegionId             *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 	ResourceOwnerAccount *string `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
 	ResourceOwnerId      *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
@@ -7016,42 +7312,119 @@ func (s *DescribeLoadBalancerAttributeRequest) SetResourceOwnerId(v int64) *Desc
 }
 
 type DescribeLoadBalancerAttributeResponseBody struct {
-	Address                      *string                                                            `json:"Address,omitempty" xml:"Address,omitempty"`
-	AddressIPVersion             *string                                                            `json:"AddressIPVersion,omitempty" xml:"AddressIPVersion,omitempty"`
-	AddressType                  *string                                                            `json:"AddressType,omitempty" xml:"AddressType,omitempty"`
-	AutoReleaseTime              *int64                                                             `json:"AutoReleaseTime,omitempty" xml:"AutoReleaseTime,omitempty"`
-	BackendServers               *DescribeLoadBalancerAttributeResponseBodyBackendServers           `json:"BackendServers,omitempty" xml:"BackendServers,omitempty" type:"Struct"`
-	Bandwidth                    *int32                                                             `json:"Bandwidth,omitempty" xml:"Bandwidth,omitempty"`
-	CreateTime                   *string                                                            `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
-	CreateTimeStamp              *int64                                                             `json:"CreateTimeStamp,omitempty" xml:"CreateTimeStamp,omitempty"`
-	DeleteProtection             *string                                                            `json:"DeleteProtection,omitempty" xml:"DeleteProtection,omitempty"`
-	EndTime                      *string                                                            `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
-	EndTimeStamp                 *int64                                                             `json:"EndTimeStamp,omitempty" xml:"EndTimeStamp,omitempty"`
-	InstanceChargeType           *string                                                            `json:"InstanceChargeType,omitempty" xml:"InstanceChargeType,omitempty"`
-	InternetChargeType           *string                                                            `json:"InternetChargeType,omitempty" xml:"InternetChargeType,omitempty"`
-	ListenerPorts                *DescribeLoadBalancerAttributeResponseBodyListenerPorts            `json:"ListenerPorts,omitempty" xml:"ListenerPorts,omitempty" type:"Struct"`
-	ListenerPortsAndProtocal     *DescribeLoadBalancerAttributeResponseBodyListenerPortsAndProtocal `json:"ListenerPortsAndProtocal,omitempty" xml:"ListenerPortsAndProtocal,omitempty" type:"Struct"`
-	ListenerPortsAndProtocol     *DescribeLoadBalancerAttributeResponseBodyListenerPortsAndProtocol `json:"ListenerPortsAndProtocol,omitempty" xml:"ListenerPortsAndProtocol,omitempty" type:"Struct"`
-	LoadBalancerId               *string                                                            `json:"LoadBalancerId,omitempty" xml:"LoadBalancerId,omitempty"`
-	LoadBalancerName             *string                                                            `json:"LoadBalancerName,omitempty" xml:"LoadBalancerName,omitempty"`
-	LoadBalancerSpec             *string                                                            `json:"LoadBalancerSpec,omitempty" xml:"LoadBalancerSpec,omitempty"`
-	LoadBalancerStatus           *string                                                            `json:"LoadBalancerStatus,omitempty" xml:"LoadBalancerStatus,omitempty"`
-	MasterZoneId                 *string                                                            `json:"MasterZoneId,omitempty" xml:"MasterZoneId,omitempty"`
-	ModificationProtectionReason *string                                                            `json:"ModificationProtectionReason,omitempty" xml:"ModificationProtectionReason,omitempty"`
-	ModificationProtectionStatus *string                                                            `json:"ModificationProtectionStatus,omitempty" xml:"ModificationProtectionStatus,omitempty"`
-	NetworkType                  *string                                                            `json:"NetworkType,omitempty" xml:"NetworkType,omitempty"`
-	PayType                      *string                                                            `json:"PayType,omitempty" xml:"PayType,omitempty"`
-	RegionId                     *string                                                            `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	RegionIdAlias                *string                                                            `json:"RegionIdAlias,omitempty" xml:"RegionIdAlias,omitempty"`
-	RenewalCycUnit               *string                                                            `json:"RenewalCycUnit,omitempty" xml:"RenewalCycUnit,omitempty"`
-	RenewalDuration              *int32                                                             `json:"RenewalDuration,omitempty" xml:"RenewalDuration,omitempty"`
-	RenewalStatus                *string                                                            `json:"RenewalStatus,omitempty" xml:"RenewalStatus,omitempty"`
-	RequestId                    *string                                                            `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	ResourceGroupId              *string                                                            `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
-	SlaveZoneId                  *string                                                            `json:"SlaveZoneId,omitempty" xml:"SlaveZoneId,omitempty"`
-	Tags                         *DescribeLoadBalancerAttributeResponseBodyTags                     `json:"Tags,omitempty" xml:"Tags,omitempty" type:"Struct"`
-	VSwitchId                    *string                                                            `json:"VSwitchId,omitempty" xml:"VSwitchId,omitempty"`
-	VpcId                        *string                                                            `json:"VpcId,omitempty" xml:"VpcId,omitempty"`
+	// The service IP address of the CLB instance.
+	Address *string `json:"Address,omitempty" xml:"Address,omitempty"`
+	// The version of the IP address. Valid values: **ipv4** and **ipv6**.
+	AddressIPVersion *string `json:"AddressIPVersion,omitempty" xml:"AddressIPVersion,omitempty"`
+	// The address type of the CLB instance.
+	AddressType *string `json:"AddressType,omitempty" xml:"AddressType,omitempty"`
+	// The timestamp generated when the CLB instance is released.
+	AutoReleaseTime *int64 `json:"AutoReleaseTime,omitempty" xml:"AutoReleaseTime,omitempty"`
+	// The backend servers of the CLB instance.
+	BackendServers *DescribeLoadBalancerAttributeResponseBodyBackendServers `json:"BackendServers,omitempty" xml:"BackendServers,omitempty" type:"Struct"`
+	// The maximum bandwidth of the Internet-facing CLB instance that is billed on a pay-by-bandwidth basis.
+	Bandwidth *int32 `json:"Bandwidth,omitempty" xml:"Bandwidth,omitempty"`
+	// The time when the CLB instance was created. The time is in the `YYYY-MM-DDThh:mm:ssZ` format.
+	CreateTime *string `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
+	// The timestamp generated when the CA certificate is uploaded.
+	CreateTimeStamp *int64 `json:"CreateTimeStamp,omitempty" xml:"CreateTimeStamp,omitempty"`
+	// Indicates whether deletion protection is enabled for the CLB instance.
+	//
+	// Valid values: **on** and **off**.
+	DeleteProtection *string `json:"DeleteProtection,omitempty" xml:"DeleteProtection,omitempty"`
+	// The time when the CLB instance expires.
+	EndTime *string `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
+	// The timestamp that indicates the expiration time of the CLB instance.
+	EndTimeStamp *int64 `json:"EndTimeStamp,omitempty" xml:"EndTimeStamp,omitempty"`
+	// The metering method of the CLB instance. Valid values:
+	//
+	// *   **PayBySpec** (default)
+	// *   **PayByCLCU**
+	//
+	// > This parameter is available only on the China site and takes effect only when **PayType** is set to **PayOnDemand**.
+	InstanceChargeType *string `json:"InstanceChargeType,omitempty" xml:"InstanceChargeType,omitempty"`
+	// The metering method of the Internet-facing CLB instance. Valid values:
+	//
+	// *   **paybytraffic**
+	// *   **paybybandwidth**
+	InternetChargeType *string `json:"InternetChargeType,omitempty" xml:"InternetChargeType,omitempty"`
+	// The frontend port used by the CLB instance.
+	ListenerPorts *DescribeLoadBalancerAttributeResponseBodyListenerPorts `json:"ListenerPorts,omitempty" xml:"ListenerPorts,omitempty" type:"Struct"`
+	// The ports or protocols of the listeners.
+	ListenerPortsAndProtocal *DescribeLoadBalancerAttributeResponseBodyListenerPortsAndProtocal `json:"ListenerPortsAndProtocal,omitempty" xml:"ListenerPortsAndProtocal,omitempty" type:"Struct"`
+	// The ports or protocols of the listeners.
+	ListenerPortsAndProtocol *DescribeLoadBalancerAttributeResponseBodyListenerPortsAndProtocol `json:"ListenerPortsAndProtocol,omitempty" xml:"ListenerPortsAndProtocol,omitempty" type:"Struct"`
+	// The CLB instance ID.
+	LoadBalancerId *string `json:"LoadBalancerId,omitempty" xml:"LoadBalancerId,omitempty"`
+	// The name of the CLB instance.
+	LoadBalancerName *string `json:"LoadBalancerName,omitempty" xml:"LoadBalancerName,omitempty"`
+	// The specification of the CLB instance.
+	LoadBalancerSpec *string `json:"LoadBalancerSpec,omitempty" xml:"LoadBalancerSpec,omitempty"`
+	// The status of the CLB instance. Valid values:
+	//
+	// *   **inactive**: The CLB instance is disabled. CLB instances in the inactive state do not forward traffic.
+	// *   **active**: The CLB instance is running as expected. Newly created CLB instances are in the **active** state by default.
+	// *   **locked**: The CLB instance is locked. CLB instances may be locked due to overdue payments or other reasons.
+	LoadBalancerStatus *string `json:"LoadBalancerStatus,omitempty" xml:"LoadBalancerStatus,omitempty"`
+	// The ID of the primary zone to which the CLB instance belongs.
+	MasterZoneId *string `json:"MasterZoneId,omitempty" xml:"MasterZoneId,omitempty"`
+	// The reason why the configuration read-only mode is enabled. The value is 1 to 80 characters in length. It starts with a letter and can contain digits, periods (.), underscores (\_), and hyphens (-).
+	//
+	// >  This parameter is valid only when **ModificationProtectionStatus** is set to **ConsoleProtection**.
+	ModificationProtectionReason *string `json:"ModificationProtectionReason,omitempty" xml:"ModificationProtectionReason,omitempty"`
+	// Indicates whether the configuration read-only mode is enabled. Valid values:
+	//
+	// *   **NonProtection**: The configuration read-only mode is disabled. After you disable the configuration read-only mode, the value of **ModificationProtectionReason** is cleared.
+	// *   **ConsoleProtection**: The configuration read-only mode is enabled.
+	//
+	// >  If this parameter is set to **ConsoleProtection**, you cannot modify instance configurations in the CLB console. However, you can modify instance configurations by calling API operations.
+	ModificationProtectionStatus *string `json:"ModificationProtectionStatus,omitempty" xml:"ModificationProtectionStatus,omitempty"`
+	// The network type of the CLB instance.
+	NetworkType *string `json:"NetworkType,omitempty" xml:"NetworkType,omitempty"`
+	// The billing method of the CLB instance. Valid values:
+	//
+	// *   Only **PayOnDemand** may be returned, which indicates the pay-as-you-go billing method.
+	PayType *string `json:"PayType,omitempty" xml:"PayType,omitempty"`
+	// The region ID of the CLB instance.
+	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	// The alias of the region to which the CLB instance belongs.
+	RegionIdAlias *string `json:"RegionIdAlias,omitempty" xml:"RegionIdAlias,omitempty"`
+	// The auto-renewal cycle. Valid values: **Year** and **Month**. Default value: Month.
+	//
+	// >  This parameter is valid only if you create a subscription CLB instance on the Alibaba Cloud China site. In this case, **PayType** must be set to **PrePay** and **RenewalStatus** must be set to **AutoRenewal**.
+	RenewalCycUnit *string `json:"RenewalCycUnit,omitempty" xml:"RenewalCycUnit,omitempty"`
+	// The auto-renewal duration. This parameter is valid only if **RenewalStatus** is set to **AutoRenewal**.
+	//
+	// *   Valid values when **PeriodUnit** is set to **Year**: **1**, **2**, and **3**.
+	//
+	// *   Valid values when **PeriodUnit** is set to **Month**: **1**, **2**, **3**, and **6**.
+	//
+	// > This parameter is valid only when you create a subscription CLB instance on the Alibaba Cloud China site. In this case, the **PayType** parameter must be set to **PrePay**.
+	RenewalDuration *int32 `json:"RenewalDuration,omitempty" xml:"RenewalDuration,omitempty"`
+	// Indicates whether auto-renewal is enabled. Valid values:
+	//
+	// *   **AutoRenewal**: Auto-renewal is enabled.
+	//
+	// *   **Normal**: Auto-renewal is disabled. You must manually renew the CLB instance.
+	//
+	// *   **NotRenewal**: The CLB instance will not be renewed upon expiration. If this value is returned, the system does not send notifications until three days before the expiration date.
+	//
+	//     **
+	//
+	//     **Note** This parameter is valid only when you create a subscription CLB instance on the Alibaba Cloud China site. In this case, **PayType** must be set to **PrePay**.
+	RenewalStatus *string `json:"RenewalStatus,omitempty" xml:"RenewalStatus,omitempty"`
+	// The request ID.
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The resource group ID.
+	ResourceGroupId *string `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
+	// The ID of the secondary zone to which the CLB instance belongs.
+	SlaveZoneId *string `json:"SlaveZoneId,omitempty" xml:"SlaveZoneId,omitempty"`
+	// The tags.
+	Tags *DescribeLoadBalancerAttributeResponseBodyTags `json:"Tags,omitempty" xml:"Tags,omitempty" type:"Struct"`
+	// The ID of the vSwitch to which the internal-facing CLB instance belongs.
+	VSwitchId *string `json:"VSwitchId,omitempty" xml:"VSwitchId,omitempty"`
+	// The ID of the virtual private cloud (VPC) where the internal-facing CLB instance is deployed.
+	VpcId *string `json:"VpcId,omitempty" xml:"VpcId,omitempty"`
 }
 
 func (s DescribeLoadBalancerAttributeResponseBody) String() string {
@@ -7260,11 +7633,18 @@ func (s *DescribeLoadBalancerAttributeResponseBodyBackendServers) SetBackendServ
 }
 
 type DescribeLoadBalancerAttributeResponseBodyBackendServersBackendServer struct {
+	// The description of the backend server.
+	//
+	// > This parameter is not returned if Description is not set.
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
-	ServerId    *string `json:"ServerId,omitempty" xml:"ServerId,omitempty"`
-	ServerIp    *string `json:"ServerIp,omitempty" xml:"ServerIp,omitempty"`
-	Type        *string `json:"Type,omitempty" xml:"Type,omitempty"`
-	Weight      *int32  `json:"Weight,omitempty" xml:"Weight,omitempty"`
+	// The backend server ID.
+	ServerId *string `json:"ServerId,omitempty" xml:"ServerId,omitempty"`
+	// The ID of the elastic network interface (ENI) or elastic container instance.
+	ServerIp *string `json:"ServerIp,omitempty" xml:"ServerIp,omitempty"`
+	// The type of the backend server.
+	Type *string `json:"Type,omitempty" xml:"Type,omitempty"`
+	// The weight of the backend server.
+	Weight *int32 `json:"Weight,omitempty" xml:"Weight,omitempty"`
 }
 
 func (s DescribeLoadBalancerAttributeResponseBodyBackendServersBackendServer) String() string {
@@ -7335,7 +7715,9 @@ func (s *DescribeLoadBalancerAttributeResponseBodyListenerPortsAndProtocal) SetL
 }
 
 type DescribeLoadBalancerAttributeResponseBodyListenerPortsAndProtocalListenerPortAndProtocal struct {
-	ListenerPort     *int32  `json:"ListenerPort,omitempty" xml:"ListenerPort,omitempty"`
+	// The frontend port that is used by the CLB instance.
+	ListenerPort *int32 `json:"ListenerPort,omitempty" xml:"ListenerPort,omitempty"`
+	// The frontend protocol that is used by the CLB instance.
 	ListenerProtocal *string `json:"ListenerProtocal,omitempty" xml:"ListenerProtocal,omitempty"`
 }
 
@@ -7375,10 +7757,15 @@ func (s *DescribeLoadBalancerAttributeResponseBodyListenerPortsAndProtocol) SetL
 }
 
 type DescribeLoadBalancerAttributeResponseBodyListenerPortsAndProtocolListenerPortAndProtocol struct {
-	Description      *string `json:"Description,omitempty" xml:"Description,omitempty"`
-	ForwardPort      *int32  `json:"ForwardPort,omitempty" xml:"ForwardPort,omitempty"`
-	ListenerForward  *string `json:"ListenerForward,omitempty" xml:"ListenerForward,omitempty"`
-	ListenerPort     *int32  `json:"ListenerPort,omitempty" xml:"ListenerPort,omitempty"`
+	// Indicates whether the listener is enabled.
+	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
+	// The destination listening port to which requests are forwarded. The port must be open and use HTTPS.
+	ForwardPort *int32 `json:"ForwardPort,omitempty" xml:"ForwardPort,omitempty"`
+	// Indicates whether the listener is enabled.
+	ListenerForward *string `json:"ListenerForward,omitempty" xml:"ListenerForward,omitempty"`
+	// The frontend port that is used by the CLB instance.
+	ListenerPort *int32 `json:"ListenerPort,omitempty" xml:"ListenerPort,omitempty"`
+	// The frontend protocol that is used by the CLB instance.
 	ListenerProtocol *string `json:"ListenerProtocol,omitempty" xml:"ListenerProtocol,omitempty"`
 }
 
@@ -7433,7 +7820,13 @@ func (s *DescribeLoadBalancerAttributeResponseBodyTags) SetTag(v []*DescribeLoad
 }
 
 type DescribeLoadBalancerAttributeResponseBodyTagsTag struct {
-	TagKey   *string `json:"TagKey,omitempty" xml:"TagKey,omitempty"`
+	// The tag key. Valid values of N: **1** to **20**. The tag key cannot be an empty string.
+	//
+	// The tag key can be at most 64 characters in length, and cannot contain `http://` or `https://`. It must not start with `aliyun` or `acs:`.
+	TagKey *string `json:"TagKey,omitempty" xml:"TagKey,omitempty"`
+	// The tag value. Valid values of N: **1** to **20**. The tag value can be an empty string.
+	//
+	// The tag value can be up to 128 characters in length and cannot start with `acs:` or `aliyun`. The tag value cannot contain `http://` or `https://`.
 	TagValue *string `json:"TagValue,omitempty" xml:"TagValue,omitempty"`
 }
 
@@ -7485,19 +7878,17 @@ func (s *DescribeLoadBalancerAttributeResponse) SetBody(v *DescribeLoadBalancerA
 }
 
 type DescribeLoadBalancerHTTPListenerAttributeRequest struct {
-	// Indicates whether the listener is in the Secure state. Valid values:
+	// The frontend port that is used by the CLB instance.
 	//
-	// *   **on**: yes
-	// *   **off**: no
+	// Valid values: **1** to **65535**.
 	ListenerPort *int32 `json:"ListenerPort,omitempty" xml:"ListenerPort,omitempty"`
-	// The name of the forwarding rule.
+	// The CLB instance ID.
 	LoadBalancerId *string `json:"LoadBalancerId,omitempty" xml:"LoadBalancerId,omitempty"`
 	OwnerAccount   *string `json:"OwnerAccount,omitempty" xml:"OwnerAccount,omitempty"`
 	OwnerId        *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
-	// Indicates whether the `SLB-ID` header is used to retrieve the ID of the CLB instance. Valid values:
+	// The region ID of the CLB instance.
 	//
-	// *   **on**: yes
-	// *   **off**: no
+	// You can call the [DescribeRegions](~~25609~~) operation to query the most recent region list.
 	RegionId             *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 	ResourceOwnerAccount *string `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
 	ResourceOwnerId      *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
@@ -7547,94 +7938,121 @@ func (s *DescribeLoadBalancerHTTPListenerAttributeRequest) SetResourceOwnerId(v 
 }
 
 type DescribeLoadBalancerHTTPListenerAttributeResponseBody struct {
-	// The URI that is used for health checks.
+	// The ID of the network ACL that is associated with a listener.
 	//
-	// The URI must be 1 to 80 characters in length, and can contain only digits, letters, hyphens (-), forward slashes (/), periods (.), percent signs (%), question marks (?), number signs (#), and ampersands (&). The URI must start with a forward slash (/) but cannot be a single forward slash (/).
+	// > This parameter is returned when **AclStatus** is set to **on**.
 	AclId *string `json:"AclId,omitempty" xml:"AclId,omitempty"`
-	// The ID of the server group that is associated with the forwarding rule.
-	AclStatus *string `json:"AclStatus,omitempty" xml:"AclStatus,omitempty"`
-	// Indicates whether HTTP-to-HTTPS redirection is enabled. Valid values:
+	// Indicates whether access control is enabled. Valid values:
 	//
-	// *   **on**: yes
-	// *   **off**: no
+	// *   **on**
+	// *   **off**
+	AclStatus *string `json:"AclStatus,omitempty" xml:"AclStatus,omitempty"`
+	// The type of the ACL. Valid values:
+	//
+	// *   **white**: a whitelist. Only requests from the IP addresses or CIDR blocks in the ACL are forwarded. Whitelists apply to scenarios where you want to allow only specific IP addresses to access an application. Your service may be adversely affected if the whitelist is not properly configured. If a whitelist is configured, only requests from IP addresses that are added to the whitelist are forwarded by the listener.
+	//
+	// If you enable a whitelist but do not add an IP address to the ACL, the listener forwards all requests.
+	//
+	// *   **black**: a blacklist. All requests from the IP addresses or CIDR blocks in the network ACL are rejected. Blacklists apply to scenarios where you want to block access from specified IP addresses to an application.
+	//
+	// If a blacklist is configured for a listener but no IP address is added to the blacklist, the listener forwards all requests.
+	//
+	// > This parameter is required when **AclStatus** is set to **on**.
 	AclType *string `json:"AclType,omitempty" xml:"AclType,omitempty"`
-	// The frontend port that is used by the CLB instance.
+	// The backend port that is used by the CLB instance.
 	BackendServerPort *int32 `json:"BackendServerPort,omitempty" xml:"BackendServerPort,omitempty"`
 	// The maximum bandwidth of the listener. Unit: Mbit/s.
 	//
 	// *   **-1**: If -1 is returned, it indicates that the bandwidth of the listener is unlimited.
 	// *   **1 to 5120**: If a value from 1 to 5120 is returned, the value indicates the maximum bandwidth of the listener. The sum of the maximum bandwidth of all listeners added to a CLB instance does not exceed the maximum bandwidth of the CLB instance.
 	Bandwidth *int32 `json:"Bandwidth,omitempty" xml:"Bandwidth,omitempty"`
+	// The cookie that is configured on the server.
+	Cookie *string `json:"Cookie,omitempty" xml:"Cookie,omitempty"`
+	// The timeout period of a cookie. Unit: seconds.
+	CookieTimeout *int32 `json:"CookieTimeout,omitempty" xml:"CookieTimeout,omitempty"`
+	// The name of the listener.
+	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
+	// The listener port that is used to redirect HTTP requests to HTTPS.
+	//
+	// >  If the **ListenerForward** parameter is set to **off**, this parameter is not displayed.
+	ForwardPort *int32 `json:"ForwardPort,omitempty" xml:"ForwardPort,omitempty"`
+	// Indicates whether `Gzip` compression is enabled to compress specific types of files. Valid values:
+	//
+	// *   **on**
+	// *   **off**
+	Gzip *string `json:"Gzip,omitempty" xml:"Gzip,omitempty"`
+	// Indicates whether the health check feature is enabled. Valid values:
+	//
+	// *   **on**
+	// *   **off**
+	HealthCheck *string `json:"HealthCheck,omitempty" xml:"HealthCheck,omitempty"`
 	// The port that is used for health checks.
 	//
-	// >  This parameter takes effect only if the **HealthCheck** parameter is set to **on**.
-	Cookie *string `json:"Cookie,omitempty" xml:"Cookie,omitempty"`
-	// The listening port that is used to redirect HTTP requests to HTTPS.
-	//
-	// >  If the **ListenerForward** parameter is set to **off**, this parameter is not returned.
-	CookieTimeout *int32 `json:"CookieTimeout,omitempty" xml:"CookieTimeout,omitempty"`
-	// The number of times that a backend server must consecutively fail health checks before it is declared unhealthy.
-	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
-	// Indicates whether session persistence is enabled. Valid values:
-	//
-	// *   **on**: yes
-	// *   **off**: no
-	ForwardPort *int32 `json:"ForwardPort,omitempty" xml:"ForwardPort,omitempty"`
-	// Indicates whether the `SLB-IP` header is used to retrieve the virtual IP address requested by the client. Valid values:
-	//
-	// *   **on**: yes
-	// *   **off**: no
-	Gzip *string `json:"Gzip,omitempty" xml:"Gzip,omitempty"`
-	// The ID of the request.
-	HealthCheck *string `json:"HealthCheck,omitempty" xml:"HealthCheck,omitempty"`
-	// The domain name.
+	// > This parameter takes effect only when **HealthCheck** is set to **on**.
 	HealthCheckConnectPort *int32 `json:"HealthCheckConnectPort,omitempty" xml:"HealthCheckConnectPort,omitempty"`
-	// The list of forwarding rules.
+	// The domain name that you want to use for health checks.
 	HealthCheckDomain *string `json:"HealthCheckDomain,omitempty" xml:"HealthCheckDomain,omitempty"`
-	// Indicates whether the `X-Forwarded-Proto` header is used to retrieve the listening protocol. Valid values:
-	//
-	// *   **on**: yes
-	// *   **off**: no
+	// The HTTP status code for a successful health check.
 	HealthCheckHttpCode *string `json:"HealthCheckHttpCode,omitempty" xml:"HealthCheckHttpCode,omitempty"`
-	// The ID of the associated server group.
+	// The interval at which health checks are performed. Unit: seconds.
 	HealthCheckInterval *int32 `json:"HealthCheckInterval,omitempty" xml:"HealthCheckInterval,omitempty"`
-	// The number of times that a backend server must consecutively pass health checks before it is declared healthy.
+	// The health check method used by HTTP listeners. Valid values: **head** and **get**.
+	//
+	// > This parameter is returned when **HealthCheck** is set to **on**.
 	HealthCheckMethod *string `json:"HealthCheckMethod,omitempty" xml:"HealthCheckMethod,omitempty"`
-	// The cookie that is configured on the backend server.
+	// The timeout period of each health check. Unit: seconds.
 	HealthCheckTimeout *int32 `json:"HealthCheckTimeout,omitempty" xml:"HealthCheckTimeout,omitempty"`
-	// The domain name that is used for health checks.
+	// The URL path that is used for health checks.
+	//
+	// The URI must be 1 to 80 characters in length, and can contain only digits, letters, hyphens (-), forward slashes (/), periods (.), percent signs (%), question marks (?), number signs (#), and ampersands (&). The URI must start with a forward slash (/) but cannot be a single forward slash (/).
 	HealthCheckURI *string `json:"HealthCheckURI,omitempty" xml:"HealthCheckURI,omitempty"`
+	// The healthy threshold.
+	HealthyThreshold *int32 `json:"HealthyThreshold,omitempty" xml:"HealthyThreshold,omitempty"`
+	// The timeout period of an idle connection. Unit: seconds.
+	//
+	// Default value: **15**. Valid values: **1 to 60**.
+	//
+	// If no request is received within the specified timeout period, CLB closes the connection. When a request is received, CLB establishes a new connection.
+	IdleTimeout *int32 `json:"IdleTimeout,omitempty" xml:"IdleTimeout,omitempty"`
+	// Indicates whether HTTP-to-HTTPS redirection is enabled. Valid values:
+	//
+	// *   **on**
+	// *   **off**
+	ListenerForward *string `json:"ListenerForward,omitempty" xml:"ListenerForward,omitempty"`
+	// The frontend port that is used by the CLB instance.
+	ListenerPort *int32 `json:"ListenerPort,omitempty" xml:"ListenerPort,omitempty"`
+	// The CLB instance ID.
+	LoadBalancerId *string `json:"LoadBalancerId,omitempty" xml:"LoadBalancerId,omitempty"`
+	// The request ID.
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	// The timeout period of a request. Unit: seconds.
 	//
 	// Default value: **60**. Valid values: **1 to 180**.
 	//
 	// If no response is received from a backend server within the specified timeout period, CLB returns the HTTP 504 status code to the client.
-	HealthyThreshold *int32 `json:"HealthyThreshold,omitempty" xml:"HealthyThreshold,omitempty"`
-	// The health check method used in HTTP health checks. Valid values: **head** and **get**.
-	//
-	// >  This parameter is returned only if the **HealthCheck** parameter is set to **on**.
-	IdleTimeout *int32 `json:"IdleTimeout,omitempty" xml:"IdleTimeout,omitempty"`
-	// Indicates whether `Gzip` compression is enabled to compress specific types of files. Valid values:
-	//
-	// *   **on**: yes
-	// *   **off**: no
-	ListenerForward *string `json:"ListenerForward,omitempty" xml:"ListenerForward,omitempty"`
-	// The frontend port that is used by the CLB instance.
-	//
-	// Valid values: **1** to **65535**.
-	ListenerPort   *int32  `json:"ListenerPort,omitempty" xml:"ListenerPort,omitempty"`
-	LoadBalancerId *string `json:"LoadBalancerId,omitempty" xml:"LoadBalancerId,omitempty"`
-	// The operation that you want to perform. Set the value to **DescribeLoadBalancerHTTPListenerAttribute**.
-	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// The ID of the CLB instance.
 	RequestTimeout *int32 `json:"RequestTimeout,omitempty" xml:"RequestTimeout,omitempty"`
-	// Indicates whether the health check feature is enabled. Valid values:
-	//
-	// *   **on**: yes
-	// *   **off**: no
+	// The list of forwarding rules.
 	Rules *DescribeLoadBalancerHTTPListenerAttributeResponseBodyRules `json:"Rules,omitempty" xml:"Rules,omitempty" type:"Struct"`
-	// The timeout period of each health check. Unit: seconds.
+	// The routing algorithm. Valid values:
+	//
+	// *   **wrr**: Backend servers that have higher weights receive more requests than backend servers that have lower weights.
+	// *   \*\* rr\*\*: Requests are sequentially distributed to backend servers.
 	Scheduler *string `json:"Scheduler,omitempty" xml:"Scheduler,omitempty"`
+	// Indicates whether the listener is in the Secure state. Valid values:
+	//
+	// *   **on**
+	// *   **off**
+	SecurityStatus *string `json:"SecurityStatus,omitempty" xml:"SecurityStatus,omitempty"`
+	// The status of the listener. Valid values:
+	//
+	// *   **running**
+	// *   **stopped**
+	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
+	// Indicates whether session persistence is enabled. Valid values:
+	//
+	// *   **on**
+	// *   **off**
+	StickySession *string `json:"StickySession,omitempty" xml:"StickySession,omitempty"`
 	// The method that is used to handle a cookie.
 	//
 	// Valid values: **insert** and **server**.
@@ -7645,50 +8063,35 @@ type DescribeLoadBalancerHTTPListenerAttributeResponseBody struct {
 	//
 	// *   **server**: rewrites a cookie.
 	//
-	//     When CLB detects a user-defined cookie, it overwrites the original cookie with the user-defined cookie. The next request from the client carries the user-defined cookie, and the listener will distribute the request to the recorded backend server.
+	//     When CLB detects a user-defined cookie, it overwrites the original cookie with the user-defined cookie. The next request from the client carries the user-defined cookie, and the listener forwards this request to the recorded backend server.
 	//
-	// >  This parameter is returned if the **StickySession** parameter is set to **on**.
-	SecurityStatus *string `json:"SecurityStatus,omitempty" xml:"SecurityStatus,omitempty"`
-	// The region ID of the CLB instance.
-	//
-	// You can call the [DescribeRegions](~~25609~~) operation to query the most recent region list.
-	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
-	// The description of the HTTP listener.
-	StickySession *string `json:"StickySession,omitempty" xml:"StickySession,omitempty"`
+	// > This parameter is required when **StickySession** is set to **on**.
+	StickySessionType *string `json:"StickySessionType,omitempty" xml:"StickySessionType,omitempty"`
+	// The tags.
+	Tags *DescribeLoadBalancerHTTPListenerAttributeResponseBodyTags `json:"Tags,omitempty" xml:"Tags,omitempty" type:"Struct"`
+	// The unhealthy threshold.
+	UnhealthyThreshold *int32 `json:"UnhealthyThreshold,omitempty" xml:"UnhealthyThreshold,omitempty"`
+	// The ID of the associated server group.
+	VServerGroupId *string `json:"VServerGroupId,omitempty" xml:"VServerGroupId,omitempty"`
 	// Indicates whether the `X-Forwarded-For` header is used to preserve the real IP address of the client. Valid values:
 	//
-	// *   **on**: yes
-	// *   **off**: no
-	StickySessionType *string                                                    `json:"StickySessionType,omitempty" xml:"StickySessionType,omitempty"`
-	Tags              *DescribeLoadBalancerHTTPListenerAttributeResponseBodyTags `json:"Tags,omitempty" xml:"Tags,omitempty" type:"Struct"`
-	// The interval at which health checks are performed. Unit: seconds.
-	UnhealthyThreshold *int32 `json:"UnhealthyThreshold,omitempty" xml:"UnhealthyThreshold,omitempty"`
-	// The timeout period of an idle connection. Unit: seconds.
-	//
-	// Default value: **15**. Valid values: **1 to 60**.
-	//
-	// If no request is received within the specified timeout period, CLB closes the connection. When a request is received, CLB establishes a new connection.
-	VServerGroupId *string `json:"VServerGroupId,omitempty" xml:"VServerGroupId,omitempty"`
-	// Indicates whether access control is enabled. Valid values:
-	//
-	// *   **on**: yes
-	// *   **off**: no
+	// *   **on**
+	// *   **off**
 	XForwardedFor *string `json:"XForwardedFor,omitempty" xml:"XForwardedFor,omitempty"`
-	// The ID of the forwarding rule.
+	// Indicates whether the `SLB-ID` header is used to retrieve the ID of the CLB instance. Valid values:
+	//
+	// *   **on**
+	// *   **off**
 	XForwardedFor_SLBID *string `json:"XForwardedFor_SLBID,omitempty" xml:"XForwardedFor_SLBID,omitempty"`
-	// The timeout period of a cookie. Unit: seconds.
+	// Indicates whether the `SLB-IP` header is used to retrieve the virtual IP address requested by the client. Valid values:
+	//
+	// *   **on**
+	// *   **off**
 	XForwardedFor_SLBIP *string `json:"XForwardedFor_SLBIP,omitempty" xml:"XForwardedFor_SLBIP,omitempty"`
-	// The type of the ACL. Valid values:
+	// Indicates whether the `X-Forwarded-Proto` header is used to retrieve the listener protocol. Valid values:
 	//
-	// *   **white**: a whitelist. Only requests from the IP addresses or CIDR blocks in the network ACL are forwarded. Whitelists apply to scenarios where you want to allow only specific IP addresses to access an application. Your service may be adversely affected if the whitelist is not properly configured. After a whitelist is configured, only requests from IP addresses that are added to the whitelist are forwarded by the listener.
-	//
-	//     If you enable a whitelist but do not add an IP address to the ACL, the listener forwards all requests.
-	//
-	// *   **black**: a blacklist. All requests from the IP addresses or CIDR blocks in the ACL are rejected. Blacklists apply to scenarios where you want to block access from specified IP addresses to an application.
-	//
-	//     If a blacklist is configured for a listener but no IP address is added to the blacklist, the listener forwards all requests.
-	//
-	// >  If **AclStatus** is set to **on**, this parameter is returned.
+	// *   **on**
+	// *   **off**
 	XForwardedFor_proto *string `json:"XForwardedFor_proto,omitempty" xml:"XForwardedFor_proto,omitempty"`
 }
 
@@ -7908,16 +8311,15 @@ func (s *DescribeLoadBalancerHTTPListenerAttributeResponseBodyRules) SetRule(v [
 }
 
 type DescribeLoadBalancerHTTPListenerAttributeResponseBodyRulesRule struct {
-	// Queries the configuration of an HTTP listener of Classic Load Balancer (CLB).
-	Domain   *string `json:"Domain,omitempty" xml:"Domain,omitempty"`
-	RuleId   *string `json:"RuleId,omitempty" xml:"RuleId,omitempty"`
+	// The endpoint.
+	Domain *string `json:"Domain,omitempty" xml:"Domain,omitempty"`
+	// The ID of the forwarding rule.
+	RuleId *string `json:"RuleId,omitempty" xml:"RuleId,omitempty"`
+	// The name of the forwarding rule.
 	RuleName *string `json:"RuleName,omitempty" xml:"RuleName,omitempty"`
-	// The status of the listener. Valid values:
-	//
-	// *   **running**
-	// *   **stopped**
+	// The request path.
 	Url *string `json:"Url,omitempty" xml:"Url,omitempty"`
-	// The backend port that is used by the CLB instance.
+	// The ID of the server group that is associated with the forwarding rule.
 	VServerGroupId *string `json:"VServerGroupId,omitempty" xml:"VServerGroupId,omitempty"`
 }
 
@@ -7972,7 +8374,9 @@ func (s *DescribeLoadBalancerHTTPListenerAttributeResponseBodyTags) SetTag(v []*
 }
 
 type DescribeLoadBalancerHTTPListenerAttributeResponseBodyTagsTag struct {
-	TagKey   *string `json:"TagKey,omitempty" xml:"TagKey,omitempty"`
+	// The key of tag N. Valid values of N: **1** to **20**. The tag key cannot be an empty string. The tag key can be up to 64 characters in length, and cannot start with `aliyun` or `acs:`. The tag key cannot contain `http://` or `https://`.
+	TagKey *string `json:"TagKey,omitempty" xml:"TagKey,omitempty"`
+	// The value of tag N. Valid values of N: **1** to **20**. The tag value can be an empty string. The tag value can be up to 128 characters in length, and cannot start with `acs:`. The tag value cannot contain `http://` or `https://`.
 	TagValue *string `json:"TagValue,omitempty" xml:"TagValue,omitempty"`
 }
 
@@ -8024,9 +8428,11 @@ func (s *DescribeLoadBalancerHTTPListenerAttributeResponse) SetBody(v *DescribeL
 }
 
 type DescribeLoadBalancerHTTPSListenerAttributeRequest struct {
-	// The operation that you want to perform. Set the value to **DescribeLoadBalancerHTTPSListenerAttribute**.
+	// The frontend port that is used by the CLB instance.
+	//
+	// Valid values: **1** to **65535**.
 	ListenerPort *int32 `json:"ListenerPort,omitempty" xml:"ListenerPort,omitempty"`
-	// The domain name.
+	// The CLB instance ID.
 	LoadBalancerId *string `json:"LoadBalancerId,omitempty" xml:"LoadBalancerId,omitempty"`
 	OwnerAccount   *string `json:"OwnerAccount,omitempty" xml:"OwnerAccount,omitempty"`
 	OwnerId        *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
@@ -8080,66 +8486,126 @@ func (s *DescribeLoadBalancerHTTPSListenerAttributeRequest) SetResourceOwnerId(v
 }
 
 type DescribeLoadBalancerHTTPSListenerAttributeResponseBody struct {
-	// Indicates whether the `X-Forwarded-For` header is used to retrieve client IP addresses. Valid values:
+	// The ID of the network ACL that is associated with a listener.
 	//
-	// *   **on**: yes
-	// *   **off**: no
+	// > This parameter is required when **AclStatus** is set to **on**.
 	AclId *string `json:"AclId,omitempty" xml:"AclId,omitempty"`
+	// Indicates whether access control is enabled. Valid values:
+	//
+	// *   **on**
+	// *   **off**
+	AclStatus *string `json:"AclStatus,omitempty" xml:"AclStatus,omitempty"`
+	// The type of the access control list (ACL). Valid values:
+	//
+	// *   **white**: a whitelist. Only requests from the IP addresses or CIDR blocks in the ACL are forwarded. Whitelists apply to scenarios where you want to allow only specific IP addresses to access an application. Your service may be adversely affected if the whitelist is not properly configured. If a whitelist is configured, only requests from IP addresses that are added to the whitelist are forwarded by the listener.
+	//
+	// If you enable a whitelist but do not add an IP address to the ACL, the listener forwards all requests.
+	//
+	// *   **black**: a blacklist. All requests from the IP addresses or CIDR blocks in the network ACL are rejected. Blacklists apply to scenarios where you want to block access from specified IP addresses to an application.
+	//
+	// If a blacklist is configured for a listener but no IP address is added to the blacklist, the listener forwards all requests.
+	//
+	// > This parameter is required when **AclStatus** is set to **on**.
+	AclType *string `json:"AclType,omitempty" xml:"AclType,omitempty"`
+	// The backend port that is used by the CLB instance.
+	BackendServerPort *int32 `json:"BackendServerPort,omitempty" xml:"BackendServerPort,omitempty"`
+	// The maximum bandwidth of the listener. Unit: Mbit/s.
+	Bandwidth *int32 `json:"Bandwidth,omitempty" xml:"Bandwidth,omitempty"`
+	// The ID of the certification authority (CA) certificate.
+	CACertificateId *string `json:"CACertificateId,omitempty" xml:"CACertificateId,omitempty"`
+	// The cookie that is configured on the server.
+	Cookie *string `json:"Cookie,omitempty" xml:"Cookie,omitempty"`
+	// The timeout period of a cookie.
+	CookieTimeout *int32 `json:"CookieTimeout,omitempty" xml:"CookieTimeout,omitempty"`
+	// The name of the listener.
+	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
+	// A list of additional certificates.
+	DomainExtensions *DescribeLoadBalancerHTTPSListenerAttributeResponseBodyDomainExtensions `json:"DomainExtensions,omitempty" xml:"DomainExtensions,omitempty" type:"Struct"`
 	// Indicates whether `HTTP/2` is used. Valid values:
 	//
-	// *   **on**: yes
-	// *   **off**: no
-	AclStatus *string `json:"AclStatus,omitempty" xml:"AclStatus,omitempty"`
-	// The ID of the certification authority (CA) certificate.
-	AclType *string `json:"AclType,omitempty" xml:"AclType,omitempty"`
-	// The ID of the forwarding rule.
-	BackendServerPort *int32 `json:"BackendServerPort,omitempty" xml:"BackendServerPort,omitempty"`
-	// The number of times that a backend server must consecutively fail health checks before it is declared unhealthy.
-	Bandwidth *int32 `json:"Bandwidth,omitempty" xml:"Bandwidth,omitempty"`
-	// The ID of the server group that is associated with the forwarding rule.
-	CACertificateId *string `json:"CACertificateId,omitempty" xml:"CACertificateId,omitempty"`
+	// *   **on**
+	// *   **off**
+	EnableHttp2 *string `json:"EnableHttp2,omitempty" xml:"EnableHttp2,omitempty"`
+	// Indicates whether `Gzip` compression is enabled. Valid values:
+	//
+	// *   **on**
+	// *   **off**
+	Gzip *string `json:"Gzip,omitempty" xml:"Gzip,omitempty"`
+	// Indicates whether the health check feature is enabled. Valid values:
+	//
+	// *   **on**
+	// *   **off**
+	HealthCheck *string `json:"HealthCheck,omitempty" xml:"HealthCheck,omitempty"`
+	// The port that is used for health checks.
+	//
+	// > This parameter is required when **HealthCheck** is set to **on**.
+	HealthCheckConnectPort *int32 `json:"HealthCheckConnectPort,omitempty" xml:"HealthCheckConnectPort,omitempty"`
+	// The domain name that you want to use for health checks.
+	HealthCheckDomain *string `json:"HealthCheckDomain,omitempty" xml:"HealthCheckDomain,omitempty"`
+	// The HTTP status code for a successful health check.
+	HealthCheckHttpCode *string `json:"HealthCheckHttpCode,omitempty" xml:"HealthCheckHttpCode,omitempty"`
+	// The interval at which health checks are performed. Unit: seconds.
+	HealthCheckInterval *int32 `json:"HealthCheckInterval,omitempty" xml:"HealthCheckInterval,omitempty"`
+	// The health check method used by HTTP listeners. Valid values: **head** and **get**.
+	//
+	// > This parameter is available only when **HealthCheck** is set to **on**.
+	HealthCheckMethod *string `json:"HealthCheckMethod,omitempty" xml:"HealthCheckMethod,omitempty"`
+	// The maximum timeout period of a health check. Unit: seconds.
+	HealthCheckTimeout *int32 `json:"HealthCheckTimeout,omitempty" xml:"HealthCheckTimeout,omitempty"`
+	// The URL path that is used for health checks.
+	HealthCheckURI *string `json:"HealthCheckURI,omitempty" xml:"HealthCheckURI,omitempty"`
+	// The healthy threshold.
+	HealthyThreshold *int32 `json:"HealthyThreshold,omitempty" xml:"HealthyThreshold,omitempty"`
 	// The timeout period of an idle connection. Valid values: **1** to **60**. Default value: **15**. Unit: seconds.
 	//
 	// If no request is received within the specified timeout period, CLB closes the connection. When a request is received, CLB establishes a new connection.
-	Cookie *string `json:"Cookie,omitempty" xml:"Cookie,omitempty"`
-	// Indicates whether `Gzip` compression is enabled. Valid values:
+	IdleTimeout *int32 `json:"IdleTimeout,omitempty" xml:"IdleTimeout,omitempty"`
+	// The frontend port that is used by the CLB instance.
+	ListenerPort *int32 `json:"ListenerPort,omitempty" xml:"ListenerPort,omitempty"`
+	// The CLB instance ID.
+	LoadBalancerId *string `json:"LoadBalancerId,omitempty" xml:"LoadBalancerId,omitempty"`
+	// The request ID.
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The timeout period of a request. Valid values: **1** to **180**. Default value: **60**. Unit: seconds.
 	//
-	// *   **on**: yes
-	// *   **off**: no
-	CookieTimeout *int32 `json:"CookieTimeout,omitempty" xml:"CookieTimeout,omitempty"`
-	// Indicates whether the `XForwardedFor_ClientSrcPort` header is used to retrieve the client port. Valid values:
+	// If no response is received from a backend server within the specified timeout period, CLB returns the HTTP 504 status code to the client.
+	RequestTimeout *int32 `json:"RequestTimeout,omitempty" xml:"RequestTimeout,omitempty"`
+	// The list of forwarding rules that are associated with the listener.
+	Rules *DescribeLoadBalancerHTTPSListenerAttributeResponseBodyRules `json:"Rules,omitempty" xml:"Rules,omitempty" type:"Struct"`
+	// The routing algorithm. Valid values: **wrr** and **rr**.
 	//
-	// *   **on**: yes
-	// *   **off**: no
-	Description      *string                                                                 `json:"Description,omitempty" xml:"Description,omitempty"`
-	DomainExtensions *DescribeLoadBalancerHTTPSListenerAttributeResponseBodyDomainExtensions `json:"DomainExtensions,omitempty" xml:"DomainExtensions,omitempty" type:"Struct"`
-	// Indicates whether the `SLB-IP` header is used to retrieve the virtual IP address requested by the client. Valid values:
+	// *   **wrr**: Backend servers that have higher weights receive more requests than backend servers that have lower weights.
+	// *   **rr**: Requests are distributed to backend servers in sequence.
+	Scheduler *string `json:"Scheduler,omitempty" xml:"Scheduler,omitempty"`
+	// Indicates whether the listener is in the Secure state. Valid values:
 	//
-	// *   **on**: yes
-	// *   **off**: no
-	EnableHttp2 *string `json:"EnableHttp2,omitempty" xml:"EnableHttp2,omitempty"`
+	// *   **on**
+	// *   **off**
+	SecurityStatus *string `json:"SecurityStatus,omitempty" xml:"SecurityStatus,omitempty"`
 	// The ID of the server certificate.
-	Gzip *string `json:"Gzip,omitempty" xml:"Gzip,omitempty"`
-	// Indicates whether the `XForwardedFor_SLBPORT` header is used to retrieve the listening port. Valid values:
+	ServerCertificateId *string `json:"ServerCertificateId,omitempty" xml:"ServerCertificateId,omitempty"`
+	// The status of the listener. Valid values:
 	//
-	// *   **on**: yes
-	// *   **off**: no
-	HealthCheck *string `json:"HealthCheck,omitempty" xml:"HealthCheck,omitempty"`
+	// *   **running**
+	// *   **stopped**
+	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
 	// Indicates whether session persistence is enabled. Valid values:
 	//
-	// *   **on**: yes
-	// *   **off**: no
-	HealthCheckConnectPort *int32 `json:"HealthCheckConnectPort,omitempty" xml:"HealthCheckConnectPort,omitempty"`
-	// Indicates whether access control is enabled. Valid values:
+	// *   **on**
+	// *   **off**
+	StickySession *string `json:"StickySession,omitempty" xml:"StickySession,omitempty"`
+	// The method that is used to handle a cookie.
 	//
-	// *   **on**: yes
-	// *   **off**: no
-	HealthCheckDomain *string `json:"HealthCheckDomain,omitempty" xml:"HealthCheckDomain,omitempty"`
-	// Indicates whether the `X-Forwarded-Proto` header is used to retrieve the listening protocol. Valid values:
+	// Valid values: **insert** and **server**.
 	//
-	// *   **on**: yes
-	// *   **off**: no
-	HealthCheckHttpCode *string `json:"HealthCheckHttpCode,omitempty" xml:"HealthCheckHttpCode,omitempty"`
+	// *   **insert**: inserts a cookie.
+	//
+	//     CLB inserts a cookie (SERVERID) into the first HTTP or HTTPS response packet that is sent to a client. The next request from the client will contain this cookie, and the listener will distribute this request to the recorded backend server.
+	//
+	// *   **server**: rewrites a cookie.
+	//
+	//     When CLB detects a user-defined cookie, it overwrites the original cookie with the user-defined cookie. The next request from the client carries the user-defined cookie, and the listener will distribute the request to the recorded backend server.
+	StickySessionType *string `json:"StickySessionType,omitempty" xml:"StickySessionType,omitempty"`
 	// The Transport Layer Security (TLS) security policy for a high-performance CLB instance.
 	//
 	// Each security policy contains TLS protocol versions and cipher suites available for HTTPS. Valid values:
@@ -8173,107 +8639,62 @@ type DescribeLoadBalancerHTTPSListenerAttributeResponseBody struct {
 	//     Supported TLS versions: TLS 1.2 and TLS 1.3
 	//
 	//     Supported cipher suites: TLS_AES\_128\_GCM_SHA256, TLS_AES\_256\_GCM_SHA384, TLS_CHACHA20\_POLY1305\_SHA256, TLS_AES\_128\_CCM_SHA256, TLS_AES\_128\_CCM\_8\_SHA256, ECDHE-ECDSA-AES128-GCM-SHA256, ECDHE-ECDSA-AES256-GCM-SHA384, ECDHE-ECDSA-AES128-SHA256, ECDHE-ECDSA-AES256-SHA384, ECDHE-RSA-AES128-GCM-SHA256, ECDHE-RSA-AES256-GCM-SHA384, ECDHE-RSA-AES128-SHA256, ECDHE-RSA-AES256-SHA384, ECDHE-ECDSA-AES128-SHA, ECDHE-ECDSA-AES256-SHA, ECDHE-RSA-AES128-SHA, and ECDHE-RSA-AES256-SHA
-	HealthCheckInterval *int32 `json:"HealthCheckInterval,omitempty" xml:"HealthCheckInterval,omitempty"`
-	// The HTTP status codes that are used to determine whether the backend server passes the health check.
-	HealthCheckMethod *string `json:"HealthCheckMethod,omitempty" xml:"HealthCheckMethod,omitempty"`
-	// The cookie that is configured on the backend server.
-	HealthCheckTimeout *int32 `json:"HealthCheckTimeout,omitempty" xml:"HealthCheckTimeout,omitempty"`
-	// The timeout period of a cookie.
-	HealthCheckURI *string `json:"HealthCheckURI,omitempty" xml:"HealthCheckURI,omitempty"`
-	// The timeout period of a request. Valid values: **1** to **180**. Default value: **60**. Unit: seconds.
-	//
-	// If no response is received from a backend server within the specified timeout period, CLB returns the HTTP 504 status code to the client.
-	HealthyThreshold *int32 `json:"HealthyThreshold,omitempty" xml:"HealthyThreshold,omitempty"`
-	// The frontend port that is used by the CLB instance.
-	//
-	// Valid values: **1** to **65535**.
-	IdleTimeout *int32 `json:"IdleTimeout,omitempty" xml:"IdleTimeout,omitempty"`
-	// The timeout period of a health check response. Unit: seconds.
-	ListenerPort   *int32  `json:"ListenerPort,omitempty" xml:"ListenerPort,omitempty"`
-	LoadBalancerId *string `json:"LoadBalancerId,omitempty" xml:"LoadBalancerId,omitempty"`
-	// Indicates whether the `XForwardedFor_ClientCertIssuerDN` header is used to retrieve information about the authority that issues the client certificate. Valid values:
-	//
-	// *   **on**: yes
-	// *   **off**: no
-	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// The ID of the associated server group.
-	RequestTimeout *int32 `json:"RequestTimeout,omitempty" xml:"RequestTimeout,omitempty"`
-	// The ID of the request.
-	Rules *DescribeLoadBalancerHTTPSListenerAttributeResponseBodyRules `json:"Rules,omitempty" xml:"Rules,omitempty" type:"Struct"`
-	// The backend port that is used by the CLB instance.
-	Scheduler *string `json:"Scheduler,omitempty" xml:"Scheduler,omitempty"`
-	// The method that is used to handle a cookie.
-	//
-	// Valid values: **insert** and **server**.
-	//
-	// *   **insert**: inserts a cookie.
-	//
-	//     CLB inserts a cookie (SERVERID) into the first HTTP or HTTPS response packet that is sent to a client. The next request from the client will contain this cookie, and the listener will distribute this request to the recorded backend server.
-	//
-	// *   **server**: rewrites a cookie.
-	//
-	//     When CLB detects a user-defined cookie, it overwrites the original cookie with the user-defined cookie. The next request from the client carries the user-defined cookie, and the listener will distribute the request to the recorded backend server.
-	SecurityStatus *string `json:"SecurityStatus,omitempty" xml:"SecurityStatus,omitempty"`
-	// The domain name that is used for health checks.
-	ServerCertificateId *string `json:"ServerCertificateId,omitempty" xml:"ServerCertificateId,omitempty"`
-	// The ID of the network ACL that is associated with the listener.
-	//
-	// >  If **AclStatus** is set to **on**, this parameter is returned.
-	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
-	// The type of the ACL. Valid values:
-	//
-	// *   **white**: a whitelist. Only requests from the IP addresses or CIDR blocks in the network ACL are forwarded. Whitelists apply to scenarios where you want to allow only specific IP addresses to access an application. Your service may be adversely affected if the whitelist is not properly configured. After a whitelist is configured, only requests from IP addresses that are added to the whitelist are forwarded by the listener.
-	//
-	//     If you enable a whitelist but do not add an IP address to the ACL, the listener forwards all requests.
-	//
-	// *   **black**: a blacklist. All requests from the IP addresses or CIDR blocks in the ACL are rejected. Blacklists apply to scenarios where you want to block access from specified IP addresses to an application.
-	//
-	//     If a blacklist is configured for a listener but no IP address is added to the blacklist, the listener forwards all requests.
-	//
-	// >  If **AclStatus** is set to **on**, this parameter is returned.
-	StickySession *string `json:"StickySession,omitempty" xml:"StickySession,omitempty"`
-	// The number of times that a backend server must consecutively pass health checks before it is declared healthy.
-	StickySessionType *string `json:"StickySessionType,omitempty" xml:"StickySessionType,omitempty"`
-	// Indicates whether the `SLB-ID` header is used to retrieve the ID of the CLB instance. Valid values:
-	//
-	// *   **on**: yes
-	// *   **off**: no
-	TLSCipherPolicy *string                                                     `json:"TLSCipherPolicy,omitempty" xml:"TLSCipherPolicy,omitempty"`
-	Tags            *DescribeLoadBalancerHTTPSListenerAttributeResponseBodyTags `json:"Tags,omitempty" xml:"Tags,omitempty" type:"Struct"`
-	// The frontend port that is used by the CLB instance.
+	TLSCipherPolicy *string `json:"TLSCipherPolicy,omitempty" xml:"TLSCipherPolicy,omitempty"`
+	// The tags.
+	Tags *DescribeLoadBalancerHTTPSListenerAttributeResponseBodyTags `json:"Tags,omitempty" xml:"Tags,omitempty" type:"Struct"`
+	// The unhealthy threshold.
 	UnhealthyThreshold *int32 `json:"UnhealthyThreshold,omitempty" xml:"UnhealthyThreshold,omitempty"`
-	// The name of the forwarding rule.
+	// The ID of the associated server group.
 	VServerGroupId *string `json:"VServerGroupId,omitempty" xml:"VServerGroupId,omitempty"`
-	// The health check method used in HTTP health checks. Valid values: **head** and **get**.
+	// Indicates whether the `X-Forwarded-For` header is used to retrieve client IP addresses. Valid values:
 	//
-	// >  This parameter is returned only if the **HealthCheck** parameter is set to **on**.
+	// *   **on**
+	// *   **off**
 	XForwardedFor *string `json:"XForwardedFor,omitempty" xml:"XForwardedFor,omitempty"`
-	// The maximum bandwidth of the listener. Unit: Mbit/s.
+	// Indicates whether the `XForwardedFor_ClientCertClientVerify` header is used to retrieve the verification result of the client certificate. Valid values:
+	//
+	// *   **on**
+	// *   **off**
 	XForwardedFor_ClientCertClientVerify *string `json:"XForwardedFor_ClientCertClientVerify,omitempty" xml:"XForwardedFor_ClientCertClientVerify,omitempty"`
-	// The ID of the CLB instance.
-	XForwardedFor_ClientCertFingerprint *string `json:"XForwardedFor_ClientCertFingerprint,omitempty" xml:"XForwardedFor_ClientCertFingerprint,omitempty"`
-	// The URI that is used for health checks.
-	XForwardedFor_ClientCertIssuerDN *string `json:"XForwardedFor_ClientCertIssuerDN,omitempty" xml:"XForwardedFor_ClientCertIssuerDN,omitempty"`
-	// The interval between two consecutive health checks. Unit: seconds.
-	XForwardedFor_ClientCertSubjectDN *string `json:"XForwardedFor_ClientCertSubjectDN,omitempty" xml:"XForwardedFor_ClientCertSubjectDN,omitempty"`
-	// Indicates whether the listener is in the Secure state. Valid values:
-	//
-	// *   **on**: yes
-	// *   **off**: no
-	XForwardedFor_ClientSrcPort *string `json:"XForwardedFor_ClientSrcPort,omitempty" xml:"XForwardedFor_ClientSrcPort,omitempty"`
-	// The list of forwarding rules that are associated with the listener.
-	XForwardedFor_SLBID *string `json:"XForwardedFor_SLBID,omitempty" xml:"XForwardedFor_SLBID,omitempty"`
-	// Indicates whether the `XForwardedFor_ClientCertSubjectDN` header is used to retrieve information about the owner of the client certificate. Valid values:
-	//
-	// *   **on**: yes
-	// *   **off**: no
-	XForwardedFor_SLBIP *string `json:"XForwardedFor_SLBIP,omitempty" xml:"XForwardedFor_SLBIP,omitempty"`
-	// The description of the listener.
-	XForwardedFor_SLBPORT *string `json:"XForwardedFor_SLBPORT,omitempty" xml:"XForwardedFor_SLBPORT,omitempty"`
 	// Indicates whether the `XForwardedFor_ClientCertFingerprint` header is used to retrieve the fingerprint of the client certificate. Valid values:
 	//
-	// *   **on**: yes
-	// *   **off**: no
+	// *   **on**
+	// *   **off**
+	XForwardedFor_ClientCertFingerprint *string `json:"XForwardedFor_ClientCertFingerprint,omitempty" xml:"XForwardedFor_ClientCertFingerprint,omitempty"`
+	// Indicates whether the `XForwardedFor_ClientCertIssuerDN` header is used to retrieve information about the authority that issues the client certificate. Valid values:
+	//
+	// *   **on**
+	// *   **off**
+	XForwardedFor_ClientCertIssuerDN *string `json:"XForwardedFor_ClientCertIssuerDN,omitempty" xml:"XForwardedFor_ClientCertIssuerDN,omitempty"`
+	// Indicates whether the `XForwardedFor_ClientCertSubjectDN` header is used to retrieve information about the owner of the client certificate. Valid values:
+	//
+	// *   **on**
+	// *   **off**
+	XForwardedFor_ClientCertSubjectDN *string `json:"XForwardedFor_ClientCertSubjectDN,omitempty" xml:"XForwardedFor_ClientCertSubjectDN,omitempty"`
+	// Indicates whether the `XForwardedFor_ClientSrcPort` header is used to retrieve the client port. Valid values:
+	//
+	// *   **on**
+	// *   **off**
+	XForwardedFor_ClientSrcPort *string `json:"XForwardedFor_ClientSrcPort,omitempty" xml:"XForwardedFor_ClientSrcPort,omitempty"`
+	// Indicates whether the `SLB-ID` header is used to retrieve the ID of the ALB instance. Valid values:
+	//
+	// *   **on**
+	// *   **off**
+	XForwardedFor_SLBID *string `json:"XForwardedFor_SLBID,omitempty" xml:"XForwardedFor_SLBID,omitempty"`
+	// Indicates whether the `SLB-IP` header is used to retrieve the virtual IP address requested by the client. Valid values:
+	//
+	// *   **on**
+	// *   **off**
+	XForwardedFor_SLBIP *string `json:"XForwardedFor_SLBIP,omitempty" xml:"XForwardedFor_SLBIP,omitempty"`
+	// Indicates whether the `XForwardedFor_SLBPORT` header is used to retrieve the listening port. Valid values:
+	//
+	// *   **on**
+	// *   **off**
+	XForwardedFor_SLBPORT *string `json:"XForwardedFor_SLBPORT,omitempty" xml:"XForwardedFor_SLBPORT,omitempty"`
+	// Indicates whether the `X-Forwarded-Proto` header is used to retrieve the listener protocol. Valid values:
+	//
+	// *   **on**
+	// *   **off**
 	XForwardedFor_proto *string `json:"XForwardedFor_proto,omitempty" xml:"XForwardedFor_proto,omitempty"`
 }
 
@@ -8538,8 +8959,11 @@ func (s *DescribeLoadBalancerHTTPSListenerAttributeResponseBodyDomainExtensions)
 }
 
 type DescribeLoadBalancerHTTPSListenerAttributeResponseBodyDomainExtensionsDomainExtension struct {
-	Domain              *string `json:"Domain,omitempty" xml:"Domain,omitempty"`
-	DomainExtensionId   *string `json:"DomainExtensionId,omitempty" xml:"DomainExtensionId,omitempty"`
+	// The endpoint.
+	Domain *string `json:"Domain,omitempty" xml:"Domain,omitempty"`
+	// The ID of the additional domain name.
+	DomainExtensionId *string `json:"DomainExtensionId,omitempty" xml:"DomainExtensionId,omitempty"`
+	// The ID of the server certificate that is associated with the domain name.
 	ServerCertificateId *string `json:"ServerCertificateId,omitempty" xml:"ServerCertificateId,omitempty"`
 }
 
@@ -8584,19 +9008,15 @@ func (s *DescribeLoadBalancerHTTPSListenerAttributeResponseBodyRules) SetRule(v 
 }
 
 type DescribeLoadBalancerHTTPSListenerAttributeResponseBodyRulesRule struct {
-	// Queries the configurations of an HTTPS listener of Classic Load Balancer (CLB).
-	Domain   *string `json:"Domain,omitempty" xml:"Domain,omitempty"`
-	RuleId   *string `json:"RuleId,omitempty" xml:"RuleId,omitempty"`
+	// The endpoint.
+	Domain *string `json:"Domain,omitempty" xml:"Domain,omitempty"`
+	// The ID of the forwarding rule.
+	RuleId *string `json:"RuleId,omitempty" xml:"RuleId,omitempty"`
+	// The name of the forwarding rule.
 	RuleName *string `json:"RuleName,omitempty" xml:"RuleName,omitempty"`
-	// The status of the listener. Valid values:
-	//
-	// *   **running**: The listener is running.
-	// *   **stopped**: The listener is stopped.
+	// The request path.
 	Url *string `json:"Url,omitempty" xml:"Url,omitempty"`
-	// Indicates whether the health check feature is enabled. Valid values:
-	//
-	// *   **on**: yes
-	// *   **off**: no
+	// The ID of the server group that is associated with the forwarding rule.
 	VServerGroupId *string `json:"VServerGroupId,omitempty" xml:"VServerGroupId,omitempty"`
 }
 
@@ -8651,7 +9071,9 @@ func (s *DescribeLoadBalancerHTTPSListenerAttributeResponseBodyTags) SetTag(v []
 }
 
 type DescribeLoadBalancerHTTPSListenerAttributeResponseBodyTagsTag struct {
-	TagKey   *string `json:"TagKey,omitempty" xml:"TagKey,omitempty"`
+	// The key of tag N. Valid values of N: **1** to **20**. The tag key cannot be an empty string. The tag key can be up to 64 characters in length, and cannot start with `aliyun` or `acs:`. The tag key cannot contain `http://` or `https://`.
+	TagKey *string `json:"TagKey,omitempty" xml:"TagKey,omitempty"`
+	// The value of tag N. Valid values of N: **1** to **20**. The tag value can be an empty string. The tag value can be up to 128 characters in length, and cannot start with `acs:`. The tag value cannot contain `http://` or `https://`.
 	TagValue *string `json:"TagValue,omitempty" xml:"TagValue,omitempty"`
 }
 
@@ -8703,16 +9125,38 @@ func (s *DescribeLoadBalancerHTTPSListenerAttributeResponse) SetBody(v *Describe
 }
 
 type DescribeLoadBalancerListenersRequest struct {
-	ListenerProtocol     *string                                    `json:"ListenerProtocol,omitempty" xml:"ListenerProtocol,omitempty"`
-	LoadBalancerId       []*string                                  `json:"LoadBalancerId,omitempty" xml:"LoadBalancerId,omitempty" type:"Repeated"`
-	MaxResults           *int32                                     `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
-	NextToken            *string                                    `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
-	OwnerAccount         *string                                    `json:"OwnerAccount,omitempty" xml:"OwnerAccount,omitempty"`
-	OwnerId              *int64                                     `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
-	RegionId             *string                                    `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	ResourceOwnerAccount *string                                    `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
-	ResourceOwnerId      *int64                                     `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
-	Tag                  []*DescribeLoadBalancerListenersRequestTag `json:"Tag,omitempty" xml:"Tag,omitempty" type:"Repeated"`
+	Description  *string `json:"Description,omitempty" xml:"Description,omitempty"`
+	ListenerPort *int32  `json:"ListenerPort,omitempty" xml:"ListenerPort,omitempty"`
+	// The protocol used by the listener. Valid values:
+	//
+	// *   **tcp**
+	// *   **udp**
+	// *   **http**
+	// *   **https**
+	ListenerProtocol *string `json:"ListenerProtocol,omitempty" xml:"ListenerProtocol,omitempty"`
+	// The ID of the CLB instance. You can specify at most 10 IDs.
+	LoadBalancerId []*string `json:"LoadBalancerId,omitempty" xml:"LoadBalancerId,omitempty" type:"Repeated"`
+	// The number of entries to return on each page.
+	//
+	// Valid values: **1** to **100**. If you do not specify a value, the default value **20** is used.
+	MaxResults *int32 `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
+	// The token that is used for the next query. Valid values:
+	//
+	// *   If this is your first query and no subsequent queries are to be sent, ignore this parameter.
+	// *   If a subsequent query is to be sent, set the parameter to the value of NextToken that is returned from the last call.
+	NextToken    *string `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
+	OwnerAccount *string `json:"OwnerAccount,omitempty" xml:"OwnerAccount,omitempty"`
+	OwnerId      *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
+	// The ID of the region where the CLB instance is deployed.
+	//
+	// You can call the [DescribeRegions](~~DescribeRegions~~) operation to query the most recent region list.
+	//
+	// >  If the endpoint of the selected region is slb.aliyuncs.com, the `RegionId` parameter is required.
+	RegionId             *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	ResourceOwnerAccount *string `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
+	ResourceOwnerId      *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
+	// 标签列表。
+	Tag []*DescribeLoadBalancerListenersRequestTag `json:"Tag,omitempty" xml:"Tag,omitempty" type:"Repeated"`
 }
 
 func (s DescribeLoadBalancerListenersRequest) String() string {
@@ -8721,6 +9165,16 @@ func (s DescribeLoadBalancerListenersRequest) String() string {
 
 func (s DescribeLoadBalancerListenersRequest) GoString() string {
 	return s.String()
+}
+
+func (s *DescribeLoadBalancerListenersRequest) SetDescription(v string) *DescribeLoadBalancerListenersRequest {
+	s.Description = &v
+	return s
+}
+
+func (s *DescribeLoadBalancerListenersRequest) SetListenerPort(v int32) *DescribeLoadBalancerListenersRequest {
+	s.ListenerPort = &v
+	return s
 }
 
 func (s *DescribeLoadBalancerListenersRequest) SetListenerProtocol(v string) *DescribeLoadBalancerListenersRequest {
@@ -8774,7 +9228,12 @@ func (s *DescribeLoadBalancerListenersRequest) SetTag(v []*DescribeLoadBalancerL
 }
 
 type DescribeLoadBalancerListenersRequestTag struct {
-	Key   *string `json:"Key,omitempty" xml:"Key,omitempty"`
+	// 资源的标签键。N的取值范围：**1~20**。一旦输入该值，则不允许为空字符串。
+	//
+	// 最多支持64个字符，不能以`aliyun`和`acs:`开头，不能包含`http://`或者`https://`。
+	Key *string `json:"Key,omitempty" xml:"Key,omitempty"`
+	// 资源的标签值。N的取值范围：**1~20**。一旦输入该值，可以为空字符串。
+	// 最多支持128个字符，不能以`aliyun`和`acs:`开头，不能包含`http://`或者`https://`。
 	Value *string `json:"Value,omitempty" xml:"Value,omitempty"`
 }
 
@@ -8797,11 +9256,21 @@ func (s *DescribeLoadBalancerListenersRequestTag) SetValue(v string) *DescribeLo
 }
 
 type DescribeLoadBalancerListenersResponseBody struct {
-	Listeners  []*DescribeLoadBalancerListenersResponseBodyListeners `json:"Listeners,omitempty" xml:"Listeners,omitempty" type:"Repeated"`
-	MaxResults *int32                                                `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
-	NextToken  *string                                               `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
-	RequestId  *string                                               `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	TotalCount *int32                                                `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
+	// The list of listeners on the CLB instance.
+	//
+	// >  This parameter is not returned if no listener is created on the CLB instance.
+	Listeners []*DescribeLoadBalancerListenersResponseBodyListeners `json:"Listeners,omitempty" xml:"Listeners,omitempty" type:"Repeated"`
+	// The number of entries returned per page.
+	MaxResults *int32 `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
+	// The token that determines the start point of the query. Valid values:
+	//
+	// *   If **NextToken** is empty, it indicates that no subsequent query is to be sent.
+	// *   If a value is returned for **NextToken**, the value is the token that determines the start point of the next query.
+	NextToken *string `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
+	// The ID of the request.
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The total number of entries returned.
+	TotalCount *int32 `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
 }
 
 func (s DescribeLoadBalancerListenersResponseBody) String() string {
@@ -8838,23 +9307,62 @@ func (s *DescribeLoadBalancerListenersResponseBody) SetTotalCount(v int32) *Desc
 }
 
 type DescribeLoadBalancerListenersResponseBodyListeners struct {
-	AclId               *string                                                                `json:"AclId,omitempty" xml:"AclId,omitempty"`
-	AclStatus           *string                                                                `json:"AclStatus,omitempty" xml:"AclStatus,omitempty"`
-	AclType             *string                                                                `json:"AclType,omitempty" xml:"AclType,omitempty"`
-	BackendServerPort   *int32                                                                 `json:"BackendServerPort,omitempty" xml:"BackendServerPort,omitempty"`
-	Bandwidth           *int32                                                                 `json:"Bandwidth,omitempty" xml:"Bandwidth,omitempty"`
-	Description         *string                                                                `json:"Description,omitempty" xml:"Description,omitempty"`
-	HTTPListenerConfig  *DescribeLoadBalancerListenersResponseBodyListenersHTTPListenerConfig  `json:"HTTPListenerConfig,omitempty" xml:"HTTPListenerConfig,omitempty" type:"Struct"`
+	// The ID of the network ACL.
+	AclId *string `json:"AclId,omitempty" xml:"AclId,omitempty"`
+	// Indicates whether access control is enabled. Valid values:
+	//
+	// *   **on**: yes
+	// *   **off**: no
+	AclStatus *string `json:"AclStatus,omitempty" xml:"AclStatus,omitempty"`
+	// The type of the network access control list (ACL). Valid values:
+	//
+	// *   **white**: a whitelist. Only requests from the IP addresses or CIDR blocks in the network ACL are forwarded. Whitelists apply to scenarios in which you want to allow only specific IP addresses to access an application. Your service may be adversely affected if the whitelist is not properly configured. After a whitelist is configured, only requests from IP addresses that are added to the whitelist are forwarded by the listener.
+	//
+	// If you enable a whitelist but do not add an IP address to the whitelist, the listener forwards all requests.
+	//
+	// *   **black**: a blacklist. All requests from the IP addresses or CIDR blocks in the network ACL are denied. A blacklist applies to scenarios in which you want to deny access from specific IP addresses.
+	//
+	// If a blacklist is configured for a listener but no IP address is added to the blacklist, the listener forwards all requests.
+	AclType *string `json:"AclType,omitempty" xml:"AclType,omitempty"`
+	// The port of the backend server.
+	//
+	// >  This parameter takes effect when the `VServerGroupId` parameter and the `MasterSlaveServerGroupId` parameter are empty.
+	BackendServerPort *int32 `json:"BackendServerPort,omitempty" xml:"BackendServerPort,omitempty"`
+	// The maximum bandwidth of the listener. Unit: Mbit/s. Valid values:
+	//
+	// *   **-1**: If -1 is returned, it indicates that the bandwidth of the listener is unlimited.
+	// *   **1 to 5120**: If a value from 1 to 5120 is returned, the value indicates the maximum bandwidth of the listener. The sum of the maximum bandwidth of all listeners added to a CLB instance does not exceed the maximum bandwidth of the CLB instance.
+	Bandwidth *int32 `json:"Bandwidth,omitempty" xml:"Bandwidth,omitempty"`
+	// The description of the listener.
+	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
+	// The configuration of the HTTP listener.
+	HTTPListenerConfig *DescribeLoadBalancerListenersResponseBodyListenersHTTPListenerConfig `json:"HTTPListenerConfig,omitempty" xml:"HTTPListenerConfig,omitempty" type:"Struct"`
+	// The configuration of the HTTPS listener.
 	HTTPSListenerConfig *DescribeLoadBalancerListenersResponseBodyListenersHTTPSListenerConfig `json:"HTTPSListenerConfig,omitempty" xml:"HTTPSListenerConfig,omitempty" type:"Struct"`
-	ListenerPort        *int32                                                                 `json:"ListenerPort,omitempty" xml:"ListenerPort,omitempty"`
-	ListenerProtocol    *string                                                                `json:"ListenerProtocol,omitempty" xml:"ListenerProtocol,omitempty"`
-	LoadBalancerId      *string                                                                `json:"LoadBalancerId,omitempty" xml:"LoadBalancerId,omitempty"`
-	Scheduler           *string                                                                `json:"Scheduler,omitempty" xml:"Scheduler,omitempty"`
-	Status              *string                                                                `json:"Status,omitempty" xml:"Status,omitempty"`
-	TCPListenerConfig   *DescribeLoadBalancerListenersResponseBodyListenersTCPListenerConfig   `json:"TCPListenerConfig,omitempty" xml:"TCPListenerConfig,omitempty" type:"Struct"`
-	Tags                []*DescribeLoadBalancerListenersResponseBodyListenersTags              `json:"Tags,omitempty" xml:"Tags,omitempty" type:"Repeated"`
-	UDPListenerConfig   *DescribeLoadBalancerListenersResponseBodyListenersUDPListenerConfig   `json:"UDPListenerConfig,omitempty" xml:"UDPListenerConfig,omitempty" type:"Struct"`
-	VServerGroupId      *string                                                                `json:"VServerGroupId,omitempty" xml:"VServerGroupId,omitempty"`
+	// The listening port.
+	ListenerPort *int32 `json:"ListenerPort,omitempty" xml:"ListenerPort,omitempty"`
+	// The protocol used by the listener.
+	ListenerProtocol *string `json:"ListenerProtocol,omitempty" xml:"ListenerProtocol,omitempty"`
+	// The ID of the CLB instance.
+	LoadBalancerId *string `json:"LoadBalancerId,omitempty" xml:"LoadBalancerId,omitempty"`
+	// The scheduling algorithm. Valid values:
+	//
+	// *   **wrr**: Backend servers with higher weights receive more requests than those with lower weights.
+	// *   **rr**: Requests are distributed to backend servers in sequence.
+	Scheduler *string `json:"Scheduler,omitempty" xml:"Scheduler,omitempty"`
+	// The status of the listener. Valid values:
+	//
+	// *   **running**: The listener runs as expected.
+	// *   **stopped**: The listener is disabled.
+	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
+	// The configuration of the TCP listener.
+	TCPListenerConfig *DescribeLoadBalancerListenersResponseBodyListenersTCPListenerConfig `json:"TCPListenerConfig,omitempty" xml:"TCPListenerConfig,omitempty" type:"Struct"`
+	// 标签列表。
+	Tags []*DescribeLoadBalancerListenersResponseBodyListenersTags `json:"Tags,omitempty" xml:"Tags,omitempty" type:"Repeated"`
+	// The configuration of the UDP listener.
+	UDPListenerConfig *DescribeLoadBalancerListenersResponseBodyListenersUDPListenerConfig `json:"UDPListenerConfig,omitempty" xml:"UDPListenerConfig,omitempty" type:"Struct"`
+	// The ID of the vServer group that is associated with the listener.
+	VServerGroupId *string `json:"VServerGroupId,omitempty" xml:"VServerGroupId,omitempty"`
 }
 
 func (s DescribeLoadBalancerListenersResponseBodyListeners) String() string {
@@ -8951,33 +9459,107 @@ func (s *DescribeLoadBalancerListenersResponseBodyListeners) SetVServerGroupId(v
 }
 
 type DescribeLoadBalancerListenersResponseBodyListenersHTTPListenerConfig struct {
-	Cookie                      *string `json:"Cookie,omitempty" xml:"Cookie,omitempty"`
-	CookieTimeout               *int32  `json:"CookieTimeout,omitempty" xml:"CookieTimeout,omitempty"`
-	ForwardPort                 *int32  `json:"ForwardPort,omitempty" xml:"ForwardPort,omitempty"`
-	Gzip                        *string `json:"Gzip,omitempty" xml:"Gzip,omitempty"`
-	HealthCheck                 *string `json:"HealthCheck,omitempty" xml:"HealthCheck,omitempty"`
-	HealthCheckConnectPort      *int32  `json:"HealthCheckConnectPort,omitempty" xml:"HealthCheckConnectPort,omitempty"`
-	HealthCheckDomain           *string `json:"HealthCheckDomain,omitempty" xml:"HealthCheckDomain,omitempty"`
-	HealthCheckHttpCode         *string `json:"HealthCheckHttpCode,omitempty" xml:"HealthCheckHttpCode,omitempty"`
-	HealthCheckHttpVersion      *string `json:"HealthCheckHttpVersion,omitempty" xml:"HealthCheckHttpVersion,omitempty"`
-	HealthCheckInterval         *int32  `json:"HealthCheckInterval,omitempty" xml:"HealthCheckInterval,omitempty"`
-	HealthCheckMethod           *string `json:"HealthCheckMethod,omitempty" xml:"HealthCheckMethod,omitempty"`
-	HealthCheckTimeout          *int32  `json:"HealthCheckTimeout,omitempty" xml:"HealthCheckTimeout,omitempty"`
-	HealthCheckType             *string `json:"HealthCheckType,omitempty" xml:"HealthCheckType,omitempty"`
-	HealthCheckURI              *string `json:"HealthCheckURI,omitempty" xml:"HealthCheckURI,omitempty"`
-	HealthyThreshold            *int32  `json:"HealthyThreshold,omitempty" xml:"HealthyThreshold,omitempty"`
-	IdleTimeout                 *int32  `json:"IdleTimeout,omitempty" xml:"IdleTimeout,omitempty"`
-	ListenerForward             *string `json:"ListenerForward,omitempty" xml:"ListenerForward,omitempty"`
-	RequestTimeout              *int32  `json:"RequestTimeout,omitempty" xml:"RequestTimeout,omitempty"`
-	StickySession               *string `json:"StickySession,omitempty" xml:"StickySession,omitempty"`
-	StickySessionType           *string `json:"StickySessionType,omitempty" xml:"StickySessionType,omitempty"`
-	UnhealthyThreshold          *int32  `json:"UnhealthyThreshold,omitempty" xml:"UnhealthyThreshold,omitempty"`
-	XForwardedFor               *string `json:"XForwardedFor,omitempty" xml:"XForwardedFor,omitempty"`
+	// The cookie that is configured on the server.
+	Cookie *string `json:"Cookie,omitempty" xml:"Cookie,omitempty"`
+	// The timeout period of a cookie. Unit: seconds.
+	//
+	// Valid values: **1** to **86400**.
+	CookieTimeout *int32 `json:"CookieTimeout,omitempty" xml:"CookieTimeout,omitempty"`
+	// The listening port that is used to redirect HTTP requests to HTTPS.
+	//
+	// >  If the **ListenerForward** parameter is set to **off**, this parameter is not displayed.
+	ForwardPort *int32 `json:"ForwardPort,omitempty" xml:"ForwardPort,omitempty"`
+	// Indicates whether Gzip compression is enabled. Valid values:
+	//
+	// *   **on**: yes
+	// *   **off**: no
+	Gzip *string `json:"Gzip,omitempty" xml:"Gzip,omitempty"`
+	// Indicates whether the health check feature is enabled. Valid values:
+	//
+	// *   **on**: yes
+	// *   **off**: no
+	HealthCheck *string `json:"HealthCheck,omitempty" xml:"HealthCheck,omitempty"`
+	// The port that is used for health checks.
+	//
+	// >  This parameter takes effect when the **HealthCheck** parameter is set to **on**.
+	HealthCheckConnectPort *int32 `json:"HealthCheckConnectPort,omitempty" xml:"HealthCheckConnectPort,omitempty"`
+	// The domain name that is used for health checks.
+	HealthCheckDomain *string `json:"HealthCheckDomain,omitempty" xml:"HealthCheckDomain,omitempty"`
+	// The HTTP status codes that are used to determine whether the backend server passes the health check.
+	HealthCheckHttpCode *string `json:"HealthCheckHttpCode,omitempty" xml:"HealthCheckHttpCode,omitempty"`
+	// The HTTP version that is used for health checks.
+	HealthCheckHttpVersion *string `json:"HealthCheckHttpVersion,omitempty" xml:"HealthCheckHttpVersion,omitempty"`
+	// The interval at which health checks are performed. Unit: seconds.
+	HealthCheckInterval *int32 `json:"HealthCheckInterval,omitempty" xml:"HealthCheckInterval,omitempty"`
+	// The health check method. Valid values: **head** and **get**.
+	HealthCheckMethod *string `json:"HealthCheckMethod,omitempty" xml:"HealthCheckMethod,omitempty"`
+	// The maximum timeout period of a health check. Unit: seconds.
+	HealthCheckTimeout *int32 `json:"HealthCheckTimeout,omitempty" xml:"HealthCheckTimeout,omitempty"`
+	// The protocol that is used for health checks.
+	HealthCheckType *string `json:"HealthCheckType,omitempty" xml:"HealthCheckType,omitempty"`
+	// The URI that is used for health checks.
+	HealthCheckURI *string `json:"HealthCheckURI,omitempty" xml:"HealthCheckURI,omitempty"`
+	// The number of times that an unhealthy backend server must consecutively pass health checks before it is declared healthy. In this case, the health status is changed from **fail** to **success**.
+	//
+	// Valid values: **2** to **10**.
+	HealthyThreshold *int32 `json:"HealthyThreshold,omitempty" xml:"HealthyThreshold,omitempty"`
+	// The timeout period of an idle connection. Unit: seconds. Valid values: **1** to **60**.
+	//
+	// If no request is received within the specified timeout period, CLB closes the connection. When a request is received, CLB establishes a new connection.
+	IdleTimeout *int32 `json:"IdleTimeout,omitempty" xml:"IdleTimeout,omitempty"`
+	// Indicates whether HTTP-to-HTTPS redirection is enabled. Valid values:
+	//
+	// *   **on**: yes
+	// *   **off**: no
+	ListenerForward *string `json:"ListenerForward,omitempty" xml:"ListenerForward,omitempty"`
+	// The timeout period of a request. Unit: seconds. Valid values: **1** to **180**.
+	//
+	// If no response is received from a backend server during the request timeout period, CLB sends the `HTTP 504` status code to the client.
+	RequestTimeout *int32 `json:"RequestTimeout,omitempty" xml:"RequestTimeout,omitempty"`
+	// Indicates whether session persistence is enabled. Valid values:
+	//
+	// *   **on**: yes
+	// *   **off**: no
+	StickySession *string `json:"StickySession,omitempty" xml:"StickySession,omitempty"`
+	// The method that is used to handle a cookie. Valid values:
+	//
+	// *   **insert**: inserts a cookie. CLB inserts a cookie (SERVERID) into the first HTTP or HTTPS response that is sent to a client. The next request from the client contains this cookie, and the listener forwards this request to the recorded backend server.
+	// *   **server**: rewrites a cookie. When CLB detects a user-defined cookie, it overwrites the original cookie with the user-defined cookie. The next request from the client carries the user-defined cookie, and the listener will distribute the request to the recorded backend server.
+	StickySessionType *string `json:"StickySessionType,omitempty" xml:"StickySessionType,omitempty"`
+	// The number of times that a healthy backend server must consecutively fail health checks before it is declared unhealthy. In this case, the health status is changed from **success** to **fail**.
+	//
+	// Valid values: **2** to **10**.
+	UnhealthyThreshold *int32 `json:"UnhealthyThreshold,omitempty" xml:"UnhealthyThreshold,omitempty"`
+	// Indicates whether the `XForwardedFor` header is used to retrieve client IP addresses. Valid values:
+	//
+	// *   **on**: yes
+	// *   **off**: no
+	XForwardedFor *string `json:"XForwardedFor,omitempty" xml:"XForwardedFor,omitempty"`
+	// Indicates whether the `XForwardedFor_ClientSrcPort` header is used to retrieve the client port. Valid values:
+	//
+	// *   **on**: yes
+	// *   **off**: no
 	XForwardedFor_ClientSrcPort *string `json:"XForwardedFor_ClientSrcPort,omitempty" xml:"XForwardedFor_ClientSrcPort,omitempty"`
-	XForwardedFor_SLBID         *string `json:"XForwardedFor_SLBID,omitempty" xml:"XForwardedFor_SLBID,omitempty"`
-	XForwardedFor_SLBIP         *string `json:"XForwardedFor_SLBIP,omitempty" xml:"XForwardedFor_SLBIP,omitempty"`
-	XForwardedFor_SLBPORT       *string `json:"XForwardedFor_SLBPORT,omitempty" xml:"XForwardedFor_SLBPORT,omitempty"`
-	XForwardedFor_proto         *string `json:"XForwardedFor_proto,omitempty" xml:"XForwardedFor_proto,omitempty"`
+	// Indicates whether the `SLB-ID` header is used to retrieve the ID of the CLB instance. Valid values:
+	//
+	// *   **on**: yes
+	// *   **off**: no
+	XForwardedFor_SLBID *string `json:"XForwardedFor_SLBID,omitempty" xml:"XForwardedFor_SLBID,omitempty"`
+	// Indicates whether the `SLB-IP` header is used to retrieve the virtual IP address requested by the client. Valid values:
+	//
+	// *   **on**: yes
+	// *   **off**: no
+	XForwardedFor_SLBIP *string `json:"XForwardedFor_SLBIP,omitempty" xml:"XForwardedFor_SLBIP,omitempty"`
+	// Indicates whether the `XForwardedFor_SLBPORT` header is used to retrieve the listening port. Valid values:
+	//
+	// *   **on**: yes
+	// *   **off**: no
+	XForwardedFor_SLBPORT *string `json:"XForwardedFor_SLBPORT,omitempty" xml:"XForwardedFor_SLBPORT,omitempty"`
+	// Indicates whether the `X-Forwarded-Proto` header is used to retrieve the listening protocol. Valid values:
+	//
+	// *   **on**: yes
+	// *   **off**: no
+	XForwardedFor_proto *string `json:"XForwardedFor_proto,omitempty" xml:"XForwardedFor_proto,omitempty"`
 }
 
 func (s DescribeLoadBalancerListenersResponseBodyListenersHTTPListenerConfig) String() string {
@@ -9124,39 +9706,157 @@ func (s *DescribeLoadBalancerListenersResponseBodyListenersHTTPListenerConfig) S
 }
 
 type DescribeLoadBalancerListenersResponseBodyListenersHTTPSListenerConfig struct {
-	CACertificateId                      *string `json:"CACertificateId,omitempty" xml:"CACertificateId,omitempty"`
-	Cookie                               *string `json:"Cookie,omitempty" xml:"Cookie,omitempty"`
-	CookieTimeout                        *int32  `json:"CookieTimeout,omitempty" xml:"CookieTimeout,omitempty"`
-	EnableHttp2                          *string `json:"EnableHttp2,omitempty" xml:"EnableHttp2,omitempty"`
-	Gzip                                 *string `json:"Gzip,omitempty" xml:"Gzip,omitempty"`
-	HealthCheck                          *string `json:"HealthCheck,omitempty" xml:"HealthCheck,omitempty"`
-	HealthCheckConnectPort               *int32  `json:"HealthCheckConnectPort,omitempty" xml:"HealthCheckConnectPort,omitempty"`
-	HealthCheckDomain                    *string `json:"HealthCheckDomain,omitempty" xml:"HealthCheckDomain,omitempty"`
-	HealthCheckHttpCode                  *string `json:"HealthCheckHttpCode,omitempty" xml:"HealthCheckHttpCode,omitempty"`
-	HealthCheckHttpVersion               *string `json:"HealthCheckHttpVersion,omitempty" xml:"HealthCheckHttpVersion,omitempty"`
-	HealthCheckInterval                  *int32  `json:"HealthCheckInterval,omitempty" xml:"HealthCheckInterval,omitempty"`
-	HealthCheckMethod                    *string `json:"HealthCheckMethod,omitempty" xml:"HealthCheckMethod,omitempty"`
-	HealthCheckTimeout                   *int32  `json:"HealthCheckTimeout,omitempty" xml:"HealthCheckTimeout,omitempty"`
-	HealthCheckType                      *string `json:"HealthCheckType,omitempty" xml:"HealthCheckType,omitempty"`
-	HealthCheckURI                       *string `json:"HealthCheckURI,omitempty" xml:"HealthCheckURI,omitempty"`
-	HealthyThreshold                     *int32  `json:"HealthyThreshold,omitempty" xml:"HealthyThreshold,omitempty"`
-	IdleTimeout                          *int32  `json:"IdleTimeout,omitempty" xml:"IdleTimeout,omitempty"`
-	RequestTimeout                       *int32  `json:"RequestTimeout,omitempty" xml:"RequestTimeout,omitempty"`
-	ServerCertificateId                  *string `json:"ServerCertificateId,omitempty" xml:"ServerCertificateId,omitempty"`
-	StickySession                        *string `json:"StickySession,omitempty" xml:"StickySession,omitempty"`
-	StickySessionType                    *string `json:"StickySessionType,omitempty" xml:"StickySessionType,omitempty"`
-	TLSCipherPolicy                      *string `json:"TLSCipherPolicy,omitempty" xml:"TLSCipherPolicy,omitempty"`
-	UnhealthyThreshold                   *int32  `json:"UnhealthyThreshold,omitempty" xml:"UnhealthyThreshold,omitempty"`
-	XForwardedFor                        *string `json:"XForwardedFor,omitempty" xml:"XForwardedFor,omitempty"`
+	// The ID of the certificate authority (CA) certificate.
+	CACertificateId *string `json:"CACertificateId,omitempty" xml:"CACertificateId,omitempty"`
+	// The cookie that is configured on the server.
+	Cookie *string `json:"Cookie,omitempty" xml:"Cookie,omitempty"`
+	// The timeout period of a cookie. Unit: seconds.
+	//
+	// Valid values: **1** to **86400**.
+	CookieTimeout *int32 `json:"CookieTimeout,omitempty" xml:"CookieTimeout,omitempty"`
+	// Indicates whether `HTTP 2.0` is enabled. Valid values:
+	//
+	// *   **on**: yes
+	// *   **off**: no
+	EnableHttp2 *string `json:"EnableHttp2,omitempty" xml:"EnableHttp2,omitempty"`
+	// Indicates whether Gzip compression is enabled. Valid values:
+	//
+	// *   **on**: yes
+	// *   **off**: no
+	Gzip *string `json:"Gzip,omitempty" xml:"Gzip,omitempty"`
+	// Indicates whether the health check feature is enabled. Valid values:
+	//
+	// *   **on**: yes
+	// *   **off**: no
+	HealthCheck *string `json:"HealthCheck,omitempty" xml:"HealthCheck,omitempty"`
+	// The port that is used for health checks.
+	HealthCheckConnectPort *int32 `json:"HealthCheckConnectPort,omitempty" xml:"HealthCheckConnectPort,omitempty"`
+	// The domain name that is used for health checks.
+	HealthCheckDomain *string `json:"HealthCheckDomain,omitempty" xml:"HealthCheckDomain,omitempty"`
+	// The HTTP status codes that are used to determine whether the backend server passes the health check.
+	HealthCheckHttpCode *string `json:"HealthCheckHttpCode,omitempty" xml:"HealthCheckHttpCode,omitempty"`
+	// The HTTP version that is used for health checks.
+	HealthCheckHttpVersion *string `json:"HealthCheckHttpVersion,omitempty" xml:"HealthCheckHttpVersion,omitempty"`
+	// The interval at which health checks are performed. Unit: seconds.
+	HealthCheckInterval *int32 `json:"HealthCheckInterval,omitempty" xml:"HealthCheckInterval,omitempty"`
+	// The health check method.
+	HealthCheckMethod *string `json:"HealthCheckMethod,omitempty" xml:"HealthCheckMethod,omitempty"`
+	// The maximum timeout period of a health check. Unit: seconds.
+	HealthCheckTimeout *int32 `json:"HealthCheckTimeout,omitempty" xml:"HealthCheckTimeout,omitempty"`
+	// The protocol that is used for health checks.
+	HealthCheckType *string `json:"HealthCheckType,omitempty" xml:"HealthCheckType,omitempty"`
+	// The URI that is used for health checks.
+	HealthCheckURI *string `json:"HealthCheckURI,omitempty" xml:"HealthCheckURI,omitempty"`
+	// The number of times that an unhealthy backend server must consecutively pass health checks before it is declared healthy. In this case, the health status is changed from **fail** to **success**.
+	//
+	// Valid values: **2** to **10**.
+	HealthyThreshold *int32 `json:"HealthyThreshold,omitempty" xml:"HealthyThreshold,omitempty"`
+	// The timeout period of an idle connection. Unit: seconds. Valid values: **1** to **60**.
+	//
+	// If no request is received within the specified timeout period, CLB closes the connection. When a request is received, CLB establishes a new connection.
+	IdleTimeout *int32 `json:"IdleTimeout,omitempty" xml:"IdleTimeout,omitempty"`
+	// The request timeout period. Unit: seconds. Valid values: **1** to **180**.
+	//
+	// If no response is received from a backend server during the request timeout period, CLB sends the `HTTP 504` status code to the client.
+	RequestTimeout *int32 `json:"RequestTimeout,omitempty" xml:"RequestTimeout,omitempty"`
+	// The ID of the server certificate.
+	ServerCertificateId *string `json:"ServerCertificateId,omitempty" xml:"ServerCertificateId,omitempty"`
+	// Indicates whether session persistence is enabled. Valid values:
+	//
+	// *   **on**: yes
+	// *   **off**: no
+	StickySession *string `json:"StickySession,omitempty" xml:"StickySession,omitempty"`
+	// The method that is used to handle a cookie.
+	//
+	// *   **insert**: inserts a cookie. CLB inserts a cookie (SERVERID) into the first HTTP or HTTPS response that is sent to a client. The next request from the client contains this cookie, and the listener forwards this request to the recorded backend server.
+	// *   **server**: rewrites a cookie. When CLB detects a user-defined cookie, it overwrites the original cookie with the user-defined cookie. The next request from the client carries the user-defined cookie, and the listener will distribute the request to the recorded backend server.
+	StickySessionType *string `json:"StickySessionType,omitempty" xml:"StickySessionType,omitempty"`
+	// The Transport Layer Security (TLS) security policy. Each security policy contains TLS protocol versions and cipher suites available for HTTPS.
+	//
+	// *   **tls_cipher_policy\_1\_0**:
+	//
+	//     Supported TLS versions: TLS 1.0, TLS 1.1, and TLS 1.2
+	//
+	//     Supported cipher suites: ECDHE-RSA-AES128-GCM-SHA256, ECDHE-RSA-AES256-GCM-SHA384, ECDHE-RSA-AES128-SHA256, ECDHE-RSA-AES256-SHA384, AES128-GCM-SHA256, AES256-GCM-SHA384, AES128-SHA256, AES256-SHA256, ECDHE-RSA-AES128-SHA, ECDHE-RSA-AES256-SHA, AES128-SHA, AES256-SHA, and DES-CBC3-SHA
+	//
+	// *   **tls_cipher_policy\_1\_1**:
+	//
+	//     Supported TLS versions: TLS 1.1 and TLS 1.2
+	//
+	//     Supported cipher suites: ECDHE-RSA-AES128-GCM-SHA256, ECDHE-RSA-AES256-GCM-SHA384, ECDHE-RSA-AES128-SHA256, ECDHE-RSA-AES256-SHA384, AES128-GCM-SHA256, AES256-GCM-SHA384, AES128-SHA256, AES256-SHA256, ECDHE-RSA-AES128-SHA, ECDHE-RSA-AES256-SHA, AES128-SHA, AES256-SHA, and DES-CBC3-SHA
+	//
+	// *   **tls_cipher_policy\_1\_2**
+	//
+	//     Supported TLS version: TLS 1.2
+	//
+	//     Supported cipher suites: ECDHE-RSA-AES128-GCM-SHA256, ECDHE-RSA-AES256-GCM-SHA384, ECDHE-RSA-AES128-SHA256, ECDHE-RSA-AES256-SHA384, AES128-GCM-SHA256, AES256-GCM-SHA384, AES128-SHA256, AES256-SHA256, ECDHE-RSA-AES128-SHA, ECDHE-RSA-AES256-SHA, AES128-SHA, AES256-SHA, and DES-CBC3-SHA
+	//
+	// *   **tls_cipher_policy\_1\_2\_strict**
+	//
+	//     Supported TLS version: TLS 1.2
+	//
+	//     Supported cipher suites: ECDHE-RSA-AES128-GCM-SHA256, ECDHE-RSA-AES256-GCM-SHA384, ECDHE-RSA-AES128-SHA256, ECDHE-RSA-AES256-SHA384, ECDHE-RSA-AES128-SHA, and ECDHE-RSA-AES256-SHA
+	//
+	// *   **tls_cipher_policy\_1\_2\_strict_with\_1\_3**
+	//
+	//     Supported TLS versions: TLS 1.2 and TLS 1.3
+	//
+	//     Supported cipher suites: TLS_AES\_128\_GCM_SHA256, TLS_AES\_256\_GCM_SHA384, TLS_CHACHA20\_POLY1305\_SHA256, TLS_AES\_128\_CCM_SHA256, TLS_AES\_128\_CCM\_8\_SHA256, ECDHE-ECDSA-AES128-GCM-SHA256, ECDHE-ECDSA-AES256-GCM-SHA384, ECDHE-ECDSA-AES128-SHA256, ECDHE-ECDSA-AES256-SHA384, ECDHE-RSA-AES128-GCM-SHA256, ECDHE-RSA-AES256-GCM-SHA384, ECDHE-RSA-AES128-SHA256, ECDHE-RSA-AES256-SHA384, ECDHE-ECDSA-AES128-SHA, ECDHE-ECDSA-AES256-SHA, ECDHE-RSA-AES128-SHA, and ECDHE-RSA-AES256-SHA
+	TLSCipherPolicy *string `json:"TLSCipherPolicy,omitempty" xml:"TLSCipherPolicy,omitempty"`
+	// The number of times that a healthy backend server must consecutively fail health checks before it is declared unhealthy. In this case, the health status is changed from **success** to **fail**.
+	//
+	// Valid values: **2** to **10**.
+	UnhealthyThreshold *int32 `json:"UnhealthyThreshold,omitempty" xml:"UnhealthyThreshold,omitempty"`
+	// Indicates whether the `XForwardedFor` header is used to retrieve client IP addresses. Valid values:
+	//
+	// *   **on**: yes
+	// *   **off**: no
+	XForwardedFor *string `json:"XForwardedFor,omitempty" xml:"XForwardedFor,omitempty"`
+	// Indicates whether the `XForwardedFor_ClientCertClientVerify` header is used to retrieve the verification result of the client certificate. Valid values:
+	//
+	// *   **on**: yes
+	// *   **off**: no
 	XForwardedFor_ClientCertClientVerify *string `json:"XForwardedFor_ClientCertClientVerify,omitempty" xml:"XForwardedFor_ClientCertClientVerify,omitempty"`
-	XForwardedFor_ClientCertFingerprint  *string `json:"XForwardedFor_ClientCertFingerprint,omitempty" xml:"XForwardedFor_ClientCertFingerprint,omitempty"`
-	XForwardedFor_ClientCertIssuerDN     *string `json:"XForwardedFor_ClientCertIssuerDN,omitempty" xml:"XForwardedFor_ClientCertIssuerDN,omitempty"`
-	XForwardedFor_ClientCertSubjectDN    *string `json:"XForwardedFor_ClientCertSubjectDN,omitempty" xml:"XForwardedFor_ClientCertSubjectDN,omitempty"`
-	XForwardedFor_ClientSrcPort          *string `json:"XForwardedFor_ClientSrcPort,omitempty" xml:"XForwardedFor_ClientSrcPort,omitempty"`
-	XForwardedFor_SLBID                  *string `json:"XForwardedFor_SLBID,omitempty" xml:"XForwardedFor_SLBID,omitempty"`
-	XForwardedFor_SLBIP                  *string `json:"XForwardedFor_SLBIP,omitempty" xml:"XForwardedFor_SLBIP,omitempty"`
-	XForwardedFor_SLBPORT                *string `json:"XForwardedFor_SLBPORT,omitempty" xml:"XForwardedFor_SLBPORT,omitempty"`
-	XForwardedFor_proto                  *string `json:"XForwardedFor_proto,omitempty" xml:"XForwardedFor_proto,omitempty"`
+	// Indicates whether the `XForwardedFor_ClientCertFingerprint` header is used to retrieve the fingerprint of the client certificate. Valid values:
+	//
+	// *   **on**: yes
+	// *   **off**: no
+	XForwardedFor_ClientCertFingerprint *string `json:"XForwardedFor_ClientCertFingerprint,omitempty" xml:"XForwardedFor_ClientCertFingerprint,omitempty"`
+	// Indicates whether the `XForwardedFor_ClientCertIssuerDN` header is used to retrieve information about the authority that issues the client certificate. Valid values:
+	//
+	// *   **on**: yes
+	// *   **off**: no
+	XForwardedFor_ClientCertIssuerDN *string `json:"XForwardedFor_ClientCertIssuerDN,omitempty" xml:"XForwardedFor_ClientCertIssuerDN,omitempty"`
+	// Indicates whether the `XForwardedFor_ClientCertSubjectDN` header is used to retrieve information about the owner of the client certificate. Valid values:
+	//
+	// *   **on**: yes
+	// *   **off**: no
+	XForwardedFor_ClientCertSubjectDN *string `json:"XForwardedFor_ClientCertSubjectDN,omitempty" xml:"XForwardedFor_ClientCertSubjectDN,omitempty"`
+	// Indicates whether the `XForwardedFor_ClientSrcPort` header is used to retrieve the client port. Valid values:
+	//
+	// *   **on**: yes
+	// *   **off**: no
+	XForwardedFor_ClientSrcPort *string `json:"XForwardedFor_ClientSrcPort,omitempty" xml:"XForwardedFor_ClientSrcPort,omitempty"`
+	// Indicates whether the `SLB-ID` header is used to retrieve the ID of the CLB instance. Valid values:
+	//
+	// *   **on**: yes
+	// *   **off**: no
+	XForwardedFor_SLBID *string `json:"XForwardedFor_SLBID,omitempty" xml:"XForwardedFor_SLBID,omitempty"`
+	// Indicates whether the `SLB-IP` header is used to retrieve the virtual IP address requested by the client. Valid values:
+	//
+	// *   **on**: yes
+	// *   **off**: no
+	XForwardedFor_SLBIP *string `json:"XForwardedFor_SLBIP,omitempty" xml:"XForwardedFor_SLBIP,omitempty"`
+	// Indicates whether the `XForwardedFor_SLBPORT` header is used to retrieve the listening port. Valid values:
+	//
+	// *   **on**: yes
+	// *   **off**: no
+	XForwardedFor_SLBPORT *string `json:"XForwardedFor_SLBPORT,omitempty" xml:"XForwardedFor_SLBPORT,omitempty"`
+	// Indicates whether the `X-Forwarded-Proto` header is used to retrieve the listening protocol. Valid values:
+	//
+	// *   **on**: yes
+	// *   **off**: no
+	XForwardedFor_proto *string `json:"XForwardedFor_proto,omitempty" xml:"XForwardedFor_proto,omitempty"`
 }
 
 func (s DescribeLoadBalancerListenersResponseBodyListenersHTTPSListenerConfig) String() string {
@@ -9333,23 +10033,61 @@ func (s *DescribeLoadBalancerListenersResponseBodyListenersHTTPSListenerConfig) 
 }
 
 type DescribeLoadBalancerListenersResponseBodyListenersTCPListenerConfig struct {
-	ConnectionDrain           *string `json:"ConnectionDrain,omitempty" xml:"ConnectionDrain,omitempty"`
-	ConnectionDrainTimeout    *int32  `json:"ConnectionDrainTimeout,omitempty" xml:"ConnectionDrainTimeout,omitempty"`
-	EstablishedTimeout        *int32  `json:"EstablishedTimeout,omitempty" xml:"EstablishedTimeout,omitempty"`
-	HealthCheck               *string `json:"HealthCheck,omitempty" xml:"HealthCheck,omitempty"`
-	HealthCheckConnectPort    *int32  `json:"HealthCheckConnectPort,omitempty" xml:"HealthCheckConnectPort,omitempty"`
-	HealthCheckConnectTimeout *int32  `json:"HealthCheckConnectTimeout,omitempty" xml:"HealthCheckConnectTimeout,omitempty"`
-	HealthCheckDomain         *string `json:"HealthCheckDomain,omitempty" xml:"HealthCheckDomain,omitempty"`
-	HealthCheckHttpCode       *string `json:"HealthCheckHttpCode,omitempty" xml:"HealthCheckHttpCode,omitempty"`
-	HealthCheckInterval       *int32  `json:"HealthCheckInterval,omitempty" xml:"HealthCheckInterval,omitempty"`
-	HealthCheckMethod         *string `json:"HealthCheckMethod,omitempty" xml:"HealthCheckMethod,omitempty"`
-	HealthCheckType           *string `json:"HealthCheckType,omitempty" xml:"HealthCheckType,omitempty"`
-	HealthCheckURI            *string `json:"HealthCheckURI,omitempty" xml:"HealthCheckURI,omitempty"`
-	HealthyThreshold          *int32  `json:"HealthyThreshold,omitempty" xml:"HealthyThreshold,omitempty"`
-	MasterSlaveServerGroupId  *string `json:"MasterSlaveServerGroupId,omitempty" xml:"MasterSlaveServerGroupId,omitempty"`
-	PersistenceTimeout        *int32  `json:"PersistenceTimeout,omitempty" xml:"PersistenceTimeout,omitempty"`
-	ProxyProtocolV2Enabled    *string `json:"ProxyProtocolV2Enabled,omitempty" xml:"ProxyProtocolV2Enabled,omitempty"`
-	UnhealthyThreshold        *int32  `json:"UnhealthyThreshold,omitempty" xml:"UnhealthyThreshold,omitempty"`
+	// Indicates whether connection draining is enabled. Valid values:
+	//
+	// *   **on**: yes
+	// *   **off**: no
+	ConnectionDrain *string `json:"ConnectionDrain,omitempty" xml:"ConnectionDrain,omitempty"`
+	// The timeout period of connection draining. Unit: seconds.
+	//
+	// Value values: **10 to 900**.
+	ConnectionDrainTimeout *int32 `json:"ConnectionDrainTimeout,omitempty" xml:"ConnectionDrainTimeout,omitempty"`
+	// The timeout period of a connection. Unit: seconds.
+	EstablishedTimeout *int32 `json:"EstablishedTimeout,omitempty" xml:"EstablishedTimeout,omitempty"`
+	// Indicates whether the health check feature is enabled. Valid values:
+	//
+	// *   **on**: yes
+	// *   **off**: no
+	HealthCheck *string `json:"HealthCheck,omitempty" xml:"HealthCheck,omitempty"`
+	// The port that is used for health checks.
+	HealthCheckConnectPort *int32 `json:"HealthCheckConnectPort,omitempty" xml:"HealthCheckConnectPort,omitempty"`
+	// The timeout period of health checks. Unit: seconds.
+	//
+	// Valid values: **1** to **300**.
+	HealthCheckConnectTimeout *int32 `json:"HealthCheckConnectTimeout,omitempty" xml:"HealthCheckConnectTimeout,omitempty"`
+	// The domain name that is used for health checks.
+	HealthCheckDomain *string `json:"HealthCheckDomain,omitempty" xml:"HealthCheckDomain,omitempty"`
+	// The HTTP status codes that are used to determine whether the backend server passes the health check.
+	HealthCheckHttpCode *string `json:"HealthCheckHttpCode,omitempty" xml:"HealthCheckHttpCode,omitempty"`
+	// The interval between two consecutive health checks. Unit: seconds.
+	HealthCheckInterval *int32 `json:"HealthCheckInterval,omitempty" xml:"HealthCheckInterval,omitempty"`
+	// The health check method.
+	HealthCheckMethod *string `json:"HealthCheckMethod,omitempty" xml:"HealthCheckMethod,omitempty"`
+	// The protocol that is used for health checks.
+	HealthCheckType *string `json:"HealthCheckType,omitempty" xml:"HealthCheckType,omitempty"`
+	// The URI that is used for health checks.
+	HealthCheckURI *string `json:"HealthCheckURI,omitempty" xml:"HealthCheckURI,omitempty"`
+	// The number of times that an unhealthy backend server must consecutively pass health checks before it is declared healthy. In this case, the health status is changed from **fail** to **success**.
+	//
+	// Valid values: **2** to **10**.
+	HealthyThreshold *int32 `json:"HealthyThreshold,omitempty" xml:"HealthyThreshold,omitempty"`
+	// The ID of the primary/secondary server group that is associated with the listener.
+	MasterSlaveServerGroupId *string `json:"MasterSlaveServerGroupId,omitempty" xml:"MasterSlaveServerGroupId,omitempty"`
+	// Indicates whether session persistence is enabled. Unit: seconds.
+	//
+	// Valid values: **0** to **3600**.
+	//
+	// **0** indicates that session persistence is disabled.
+	PersistenceTimeout *int32 `json:"PersistenceTimeout,omitempty" xml:"PersistenceTimeout,omitempty"`
+	// Indicates whether the Proxy protocol is used to pass client IP addresses to backend servers. Valid values:
+	//
+	// *   **true**: yes
+	// *   **false**: no
+	ProxyProtocolV2Enabled *string `json:"ProxyProtocolV2Enabled,omitempty" xml:"ProxyProtocolV2Enabled,omitempty"`
+	// The number of times that a healthy backend server must consecutively fail health checks before it is declared unhealthy. In this case, the health status is changed from **success** to **fail**.
+	//
+	// Valid values: **2** to **10**.
+	UnhealthyThreshold *int32 `json:"UnhealthyThreshold,omitempty" xml:"UnhealthyThreshold,omitempty"`
 }
 
 func (s DescribeLoadBalancerListenersResponseBodyListenersTCPListenerConfig) String() string {
@@ -9446,7 +10184,9 @@ func (s *DescribeLoadBalancerListenersResponseBodyListenersTCPListenerConfig) Se
 }
 
 type DescribeLoadBalancerListenersResponseBodyListenersTags struct {
-	TagKey   *string `json:"TagKey,omitempty" xml:"TagKey,omitempty"`
+	// 资源的标签键。
+	TagKey *string `json:"TagKey,omitempty" xml:"TagKey,omitempty"`
+	// 资源的标签值。
 	TagValue *string `json:"TagValue,omitempty" xml:"TagValue,omitempty"`
 }
 
@@ -9469,18 +10209,41 @@ func (s *DescribeLoadBalancerListenersResponseBodyListenersTags) SetTagValue(v s
 }
 
 type DescribeLoadBalancerListenersResponseBodyListenersUDPListenerConfig struct {
-	ConnectionDrain           *string `json:"ConnectionDrain,omitempty" xml:"ConnectionDrain,omitempty"`
-	ConnectionDrainTimeout    *int32  `json:"ConnectionDrainTimeout,omitempty" xml:"ConnectionDrainTimeout,omitempty"`
-	HealthCheck               *string `json:"HealthCheck,omitempty" xml:"HealthCheck,omitempty"`
-	HealthCheckConnectPort    *int32  `json:"HealthCheckConnectPort,omitempty" xml:"HealthCheckConnectPort,omitempty"`
-	HealthCheckConnectTimeout *int32  `json:"HealthCheckConnectTimeout,omitempty" xml:"HealthCheckConnectTimeout,omitempty"`
-	HealthCheckExp            *string `json:"HealthCheckExp,omitempty" xml:"HealthCheckExp,omitempty"`
-	HealthCheckInterval       *int32  `json:"HealthCheckInterval,omitempty" xml:"HealthCheckInterval,omitempty"`
-	HealthCheckReq            *string `json:"HealthCheckReq,omitempty" xml:"HealthCheckReq,omitempty"`
-	HealthyThreshold          *int32  `json:"HealthyThreshold,omitempty" xml:"HealthyThreshold,omitempty"`
-	MasterSlaveServerGroupId  *string `json:"MasterSlaveServerGroupId,omitempty" xml:"MasterSlaveServerGroupId,omitempty"`
-	ProxyProtocolV2Enabled    *string `json:"ProxyProtocolV2Enabled,omitempty" xml:"ProxyProtocolV2Enabled,omitempty"`
-	UnhealthyThreshold        *int32  `json:"UnhealthyThreshold,omitempty" xml:"UnhealthyThreshold,omitempty"`
+	// Indicates whether connection draining is enabled. Valid values:
+	//
+	// *   **on**: yes
+	// *   **off**: no
+	ConnectionDrain *string `json:"ConnectionDrain,omitempty" xml:"ConnectionDrain,omitempty"`
+	// The timeout period of connection draining. Unit: seconds.
+	//
+	// Value values: **10 to 900**.
+	ConnectionDrainTimeout *int32 `json:"ConnectionDrainTimeout,omitempty" xml:"ConnectionDrainTimeout,omitempty"`
+	// Indicates whether the health check feature is enabled. Valid values:
+	//
+	// *   **on**: yes
+	// *   **off**: no
+	HealthCheck *string `json:"HealthCheck,omitempty" xml:"HealthCheck,omitempty"`
+	// The port that is used for health checks.
+	HealthCheckConnectPort *int32 `json:"HealthCheckConnectPort,omitempty" xml:"HealthCheckConnectPort,omitempty"`
+	// The timeout period for a health check response.
+	HealthCheckConnectTimeout *int32 `json:"HealthCheckConnectTimeout,omitempty" xml:"HealthCheckConnectTimeout,omitempty"`
+	// The response string for UDP listener health checks.
+	HealthCheckExp *string `json:"HealthCheckExp,omitempty" xml:"HealthCheckExp,omitempty"`
+	// The interval between two consecutive health checks. Unit: seconds.
+	HealthCheckInterval *int32 `json:"HealthCheckInterval,omitempty" xml:"HealthCheckInterval,omitempty"`
+	// The request string for UDP listener health checks.
+	HealthCheckReq *string `json:"HealthCheckReq,omitempty" xml:"HealthCheckReq,omitempty"`
+	// The number of times that a backend server must consecutively pass health checks before it is declared healthy.
+	HealthyThreshold *int32 `json:"HealthyThreshold,omitempty" xml:"HealthyThreshold,omitempty"`
+	// The ID of the primary/secondary server group that is associated with the listener.
+	MasterSlaveServerGroupId *string `json:"MasterSlaveServerGroupId,omitempty" xml:"MasterSlaveServerGroupId,omitempty"`
+	// Indicates whether the Proxy protocol is used to pass client IP addresses to backend servers. Valid values:
+	//
+	// *   **true**: yes
+	// *   **false**: no
+	ProxyProtocolV2Enabled *string `json:"ProxyProtocolV2Enabled,omitempty" xml:"ProxyProtocolV2Enabled,omitempty"`
+	// The number of times that a backend server must consecutively fail health checks before it is declared unhealthy.
+	UnhealthyThreshold *int32 `json:"UnhealthyThreshold,omitempty" xml:"UnhealthyThreshold,omitempty"`
 }
 
 func (s DescribeLoadBalancerListenersResponseBodyListenersUDPListenerConfig) String() string {
@@ -9581,9 +10344,11 @@ func (s *DescribeLoadBalancerListenersResponse) SetBody(v *DescribeLoadBalancerL
 }
 
 type DescribeLoadBalancerTCPListenerAttributeRequest struct {
-	// The operation that you want to perform. Set the value to **DescribeLoadBalancerTCPListenerAttribute**.
+	// The frontend port used by the CLB instance.
+	//
+	// Valid values: **1** to **65535**.
 	ListenerPort *int32 `json:"ListenerPort,omitempty" xml:"ListenerPort,omitempty"`
-	// The ID of the primary/secondary server group that is associated with the listener.
+	// The ID of the CLB instance.
 	LoadBalancerId *string `json:"LoadBalancerId,omitempty" xml:"LoadBalancerId,omitempty"`
 	OwnerAccount   *string `json:"OwnerAccount,omitempty" xml:"OwnerAccount,omitempty"`
 	OwnerId        *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
@@ -9639,75 +10404,15 @@ func (s *DescribeLoadBalancerTCPListenerAttributeRequest) SetResourceOwnerId(v i
 }
 
 type DescribeLoadBalancerTCPListenerAttributeResponseBody struct {
-	// The healthy threshold. The number of times that an unhealthy backend server must consecutively pass health checks before it is declared healthy. In this case, the health status is changed from **fail** to **success**. Valid values: **2** to **10**.
+	// The ID of the network ACL that is associated with the listener.
+	//
+	// If **AclStatus** is set to **on**, this parameter is returned.
 	AclId *string `json:"AclId,omitempty" xml:"AclId,omitempty"`
-	// The ID of the associated server group.
-	AclStatus *string `json:"AclStatus,omitempty" xml:"AclStatus,omitempty"`
-	// Indicates whether the Proxy protocol is used to pass client IP addresses to backend servers. Valid values:
-	//
-	// *   **true**: yes
-	// *   **false**: no
-	AclType *string `json:"AclType,omitempty" xml:"AclType,omitempty"`
-	// Indicates whether connection draining is enabled. If **ConnectionDrain** is set to **on**, the parameter is returned. Valid values:
-	//
-	// *   **on**: yes
-	// *   **off**: no
-	BackendServerPort *int32 `json:"BackendServerPort,omitempty" xml:"BackendServerPort,omitempty"`
-	// The ID of the CLB instance.
-	Bandwidth *int32 `json:"Bandwidth,omitempty" xml:"Bandwidth,omitempty"`
-	// Queries the configurations of a TCP listener of Classic Load Balancer (CLB).
-	ConnectionDrain *string `json:"ConnectionDrain,omitempty" xml:"ConnectionDrain,omitempty"`
-	// The frontend port used by the CLB instance.
-	ConnectionDrainTimeout *int32 `json:"ConnectionDrainTimeout,omitempty" xml:"ConnectionDrainTimeout,omitempty"`
 	// Indicates whether access control is enabled. Valid values:
 	//
 	// *   **on**: yes
 	// *   **off**: no
-	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
-	// Indicates whether the health check feature is enabled. Valid values:
-	//
-	// *   **on**: yes
-	// *   **off**: no
-	EstablishedTimeout *int32  `json:"EstablishedTimeout,omitempty" xml:"EstablishedTimeout,omitempty"`
-	HealthCheck        *string `json:"HealthCheck,omitempty" xml:"HealthCheck,omitempty"`
-	// The timeout period.
-	HealthCheckConnectPort *int32 `json:"HealthCheckConnectPort,omitempty" xml:"HealthCheckConnectPort,omitempty"`
-	// The backend port used by the CLB instance.
-	//
-	// >  If the listener is associated with a vServer group, this parameter is not returned.
-	HealthCheckConnectTimeout *int32 `json:"HealthCheckConnectTimeout,omitempty" xml:"HealthCheckConnectTimeout,omitempty"`
-	// The timeout period of connection draining. If **ConnectionDrain** is set to **on**, the parameter is returned.
-	//
-	// Valid values: 10 to 900. Unit: seconds.
-	HealthCheckDomain *string `json:"HealthCheckDomain,omitempty" xml:"HealthCheckDomain,omitempty"`
-	// The URL that is used for health checks. The URL must be 1 to 80 characters in length, and can contain letters, digits, hyphens (-), forward slashes (/), periods (.), percent signs (%), question marks (?), number signs (#), and ampersands (&). The URL is not a single forward slash (/) but it starts with a forward slash (/).
-	HealthCheckHttpCode *string `json:"HealthCheckHttpCode,omitempty" xml:"HealthCheckHttpCode,omitempty"`
-	// The health check method that is used by the TCP listener.
-	//
-	// Valid values: **tcp** and **http**.
-	HealthCheckInterval *int32  `json:"HealthCheckInterval,omitempty" xml:"HealthCheckInterval,omitempty"`
-	HealthCheckMethod   *string `json:"HealthCheckMethod,omitempty" xml:"HealthCheckMethod,omitempty"`
-	// Indicates whether the SynProxy feature of CLB is enabled for protection.
-	//
-	// We recommend that you use the default value of this parameter. Valid values:
-	//
-	// *   **enable**: yes
-	// *   **disable**: no
-	HealthCheckType *string `json:"HealthCheckType,omitempty" xml:"HealthCheckType,omitempty"`
-	// The description of the listener.
-	HealthCheckURI *string `json:"HealthCheckURI,omitempty" xml:"HealthCheckURI,omitempty"`
-	// The status of the listener. Valid values:
-	//
-	// *   **running**
-	// *   **stopped**
-	HealthyThreshold *int32 `json:"HealthyThreshold,omitempty" xml:"HealthyThreshold,omitempty"`
-	// The ID of the CLB instance.
-	ListenerPort   *int32  `json:"ListenerPort,omitempty" xml:"ListenerPort,omitempty"`
-	LoadBalancerId *string `json:"LoadBalancerId,omitempty" xml:"LoadBalancerId,omitempty"`
-	// The frontend port used by the CLB instance.
-	//
-	// Valid values: **1** to **65535**.
-	MasterSlaveServerGroupId *string `json:"MasterSlaveServerGroupId,omitempty" xml:"MasterSlaveServerGroupId,omitempty"`
+	AclStatus *string `json:"AclStatus,omitempty" xml:"AclStatus,omitempty"`
 	// The type of the ACL. Valid values:
 	//
 	// *   **white**: a whitelist. Only requests from the IP addresses or CIDR blocks in the network ACL are forwarded. Whitelists apply to scenarios in which you want to allow only specific IP addresses to access an application.
@@ -9721,29 +10426,96 @@ type DescribeLoadBalancerTCPListenerAttributeResponseBody struct {
 	//     If a blacklist is configured for a listener but no IP address is added to the blacklist, the listener forwards all requests.
 	//
 	// >  If **AclStatus** is set to **on**, this parameter is returned.
-	PersistenceTimeout *int32 `json:"PersistenceTimeout,omitempty" xml:"PersistenceTimeout,omitempty"`
-	// The timeout period of session persistence.
+	AclType *string `json:"AclType,omitempty" xml:"AclType,omitempty"`
+	// The backend port used by the CLB instance.
 	//
-	// Valid values: **0** to **3600**. Unit: seconds. Default value: **0**. If the default value is used, the system disables session persistence.
-	ProxyProtocolV2Enabled *bool `json:"ProxyProtocolV2Enabled,omitempty" xml:"ProxyProtocolV2Enabled,omitempty"`
-	// The interval between two consecutive health checks. Valid values: **1** to **50**. Unit: seconds.
-	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// The ID of the request.
-	Scheduler *string `json:"Scheduler,omitempty" xml:"Scheduler,omitempty"`
+	// >  If the listener is associated with a vServer group, this parameter is not returned.
+	BackendServerPort *int32 `json:"BackendServerPort,omitempty" xml:"BackendServerPort,omitempty"`
 	// The maximum bandwidth of the listener. Unit: Mbit/s. Valid values:
 	//
 	// *   **-1**: For a pay-by-data-transfer Internet-facing CLB instance, this parameter is set to -1. This indicates that the bandwidth of the listener is unlimited.
 	// *   **1** to **5120**: For a pay-by-bandwidth Internet-facing CLB instance, you can specify the maximum bandwidth of each listener. The sum of maximum bandwidth of all listeners cannot exceed the maximum bandwidth of the CLB instance.
-	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
+	Bandwidth *int32 `json:"Bandwidth,omitempty" xml:"Bandwidth,omitempty"`
+	// Indicates whether connection draining is enabled. If **ConnectionDrain** is set to **on**, the parameter is returned. Valid values:
+	//
+	// *   **on**: yes
+	// *   **off**: no
+	ConnectionDrain *string `json:"ConnectionDrain,omitempty" xml:"ConnectionDrain,omitempty"`
+	// The timeout period of connection draining. If **ConnectionDrain** is set to **on**, the parameter is returned.
+	//
+	// Valid values: 10 to 900. Unit: seconds.
+	ConnectionDrainTimeout *int32 `json:"ConnectionDrainTimeout,omitempty" xml:"ConnectionDrainTimeout,omitempty"`
+	// The description of the listener.
+	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
 	// The timeout period of a connection.
-	SynProxy *string                                                   `json:"SynProxy,omitempty" xml:"SynProxy,omitempty"`
-	Tags     *DescribeLoadBalancerTCPListenerAttributeResponseBodyTags `json:"Tags,omitempty" xml:"Tags,omitempty" type:"Struct"`
+	EstablishedTimeout *int32 `json:"EstablishedTimeout,omitempty" xml:"EstablishedTimeout,omitempty"`
+	// Indicates whether the health check feature is enabled. Valid values:
+	//
+	// *   **on**: yes
+	// *   **off**: no
+	HealthCheck *string `json:"HealthCheck,omitempty" xml:"HealthCheck,omitempty"`
+	// The port that is used for health checks. Valid values: **1** to **65535**. If this parameter is not set, the port specified by BackendServerPort is used for health checks.
+	HealthCheckConnectPort *int32 `json:"HealthCheckConnectPort,omitempty" xml:"HealthCheckConnectPort,omitempty"`
+	// The timeout period.
+	HealthCheckConnectTimeout *int32 `json:"HealthCheckConnectTimeout,omitempty" xml:"HealthCheckConnectTimeout,omitempty"`
 	// The domain name that is used for health checks. Valid values:
 	//
 	// *   **$\_ip**: the private IP addresses of backend servers. If you do not set the HealthCheckDomain parameter or set the parameter to $\_ip, the CLB instance uses the private IP address of each backend server for health checks.
 	// *   **domain**: The domain name is 1 to 80 characters in length, and can contain letters, digits, periods (.), and hyphens (-).
-	UnhealthyThreshold *int32 `json:"UnhealthyThreshold,omitempty" xml:"UnhealthyThreshold,omitempty"`
+	HealthCheckDomain *string `json:"HealthCheckDomain,omitempty" xml:"HealthCheckDomain,omitempty"`
+	// The HTTP status code for a successful health check.
+	HealthCheckHttpCode *string `json:"HealthCheckHttpCode,omitempty" xml:"HealthCheckHttpCode,omitempty"`
+	// The interval between two consecutive health checks. Valid values: **1** to **50**. Unit: seconds.
+	HealthCheckInterval *int32 `json:"HealthCheckInterval,omitempty" xml:"HealthCheckInterval,omitempty"`
+	// The health check method.
+	HealthCheckMethod *string `json:"HealthCheckMethod,omitempty" xml:"HealthCheckMethod,omitempty"`
+	// The health check method that is used by the TCP listener.
+	//
+	// Valid values: **tcp** and **http**.
+	HealthCheckType *string `json:"HealthCheckType,omitempty" xml:"HealthCheckType,omitempty"`
+	// The URL that is used for health checks. The URL must be 1 to 80 characters in length, and can contain letters, digits, hyphens (-), forward slashes (/), periods (.), percent signs (%), question marks (?), number signs (#), and ampersands (&). The URL is not a single forward slash (/) but it starts with a forward slash (/).
+	HealthCheckURI *string `json:"HealthCheckURI,omitempty" xml:"HealthCheckURI,omitempty"`
+	// The healthy threshold. The number of times that an unhealthy backend server must consecutively pass health checks before it is declared healthy. In this case, the health status is changed from **fail** to **success**. Valid values: **2** to **10**.
+	HealthyThreshold *int32 `json:"HealthyThreshold,omitempty" xml:"HealthyThreshold,omitempty"`
+	// The frontend port used by the CLB instance.
+	ListenerPort *int32 `json:"ListenerPort,omitempty" xml:"ListenerPort,omitempty"`
+	// The ID of the CLB instance.
+	LoadBalancerId *string `json:"LoadBalancerId,omitempty" xml:"LoadBalancerId,omitempty"`
+	// The ID of the primary/secondary server group that is associated with the listener.
+	MasterSlaveServerGroupId *string `json:"MasterSlaveServerGroupId,omitempty" xml:"MasterSlaveServerGroupId,omitempty"`
+	// The timeout period of session persistence.
+	//
+	// Valid values: **0** to **3600**. Unit: seconds. Default value: **0**. If the default value is used, the system disables session persistence.
+	PersistenceTimeout *int32 `json:"PersistenceTimeout,omitempty" xml:"PersistenceTimeout,omitempty"`
+	// Indicates whether the Proxy protocol is used to pass client IP addresses to backend servers. Valid values:
+	//
+	// *   **true**: yes
+	// *   **false**: no
+	ProxyProtocolV2Enabled *bool `json:"ProxyProtocolV2Enabled,omitempty" xml:"ProxyProtocolV2Enabled,omitempty"`
+	// The ID of the request.
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The scheduling algorithm.
+	//
+	// *   **wrr** (default): Backend servers with higher weights receive more requests than backend servers with lower weights.
+	// *   **rr**: Requests are distributed to backend servers in sequence.
+	Scheduler *string `json:"Scheduler,omitempty" xml:"Scheduler,omitempty"`
+	// The status of the listener. Valid values:
+	//
+	// *   **running**
+	// *   **stopped**
+	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
+	// Indicates whether the SynProxy feature of CLB is enabled for protection.
+	//
+	// We recommend that you use the default value of this parameter. Valid values:
+	//
+	// *   **enable**: yes
+	// *   **disable**: no
+	SynProxy *string `json:"SynProxy,omitempty" xml:"SynProxy,omitempty"`
+	// The tags.
+	Tags *DescribeLoadBalancerTCPListenerAttributeResponseBodyTags `json:"Tags,omitempty" xml:"Tags,omitempty" type:"Struct"`
 	// The unhealthy threshold. The number of times that a healthy backend server must consecutively fail health checks before it is declared unhealthy. In this case, the health status is changed from **success** to **fail**. Valid values: **2** to **10**.
+	UnhealthyThreshold *int32 `json:"UnhealthyThreshold,omitempty" xml:"UnhealthyThreshold,omitempty"`
+	// The ID of the associated server group.
 	VServerGroupId *string `json:"VServerGroupId,omitempty" xml:"VServerGroupId,omitempty"`
 }
 
@@ -9928,7 +10700,9 @@ func (s *DescribeLoadBalancerTCPListenerAttributeResponseBodyTags) SetTag(v []*D
 }
 
 type DescribeLoadBalancerTCPListenerAttributeResponseBodyTagsTag struct {
-	TagKey   *string `json:"TagKey,omitempty" xml:"TagKey,omitempty"`
+	// The tags.
+	TagKey *string `json:"TagKey,omitempty" xml:"TagKey,omitempty"`
+	// The tag value.
 	TagValue *string `json:"TagValue,omitempty" xml:"TagValue,omitempty"`
 }
 
@@ -9980,9 +10754,11 @@ func (s *DescribeLoadBalancerTCPListenerAttributeResponse) SetBody(v *DescribeLo
 }
 
 type DescribeLoadBalancerUDPListenerAttributeRequest struct {
-	// The operation that you want to perform. Set the value to **DescribeLoadBalancerUDPListenerAttribute**.
+	// The frontend port used by the CLB instance.
+	//
+	// Valid values: **1** to **65535**.
 	ListenerPort *int32 `json:"ListenerPort,omitempty" xml:"ListenerPort,omitempty"`
-	// The ID of the primary/secondary server group that is associated with the listener.
+	// The ID of the CLB instance.
 	LoadBalancerId *string `json:"LoadBalancerId,omitempty" xml:"LoadBalancerId,omitempty"`
 	OwnerAccount   *string `json:"OwnerAccount,omitempty" xml:"OwnerAccount,omitempty"`
 	OwnerId        *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
@@ -10036,45 +10812,10 @@ func (s *DescribeLoadBalancerUDPListenerAttributeRequest) SetResourceOwnerId(v i
 }
 
 type DescribeLoadBalancerUDPListenerAttributeResponseBody struct {
-	// The ID of the request.
+	// The ID of the network ACL.
 	AclId *string `json:"AclId,omitempty" xml:"AclId,omitempty"`
-	// The ID of the vServer group that is associated with the listener.
-	AclStatus *string `json:"AclStatus,omitempty" xml:"AclStatus,omitempty"`
-	// Indicates whether the Proxy protocol is used to pass client IP addresses to backend servers. Valid values:
-	//
-	// *   **true**: yes
-	// *   **false**: no
-	AclType *string `json:"AclType,omitempty" xml:"AclType,omitempty"`
-	// The frontend port used by the CLB instance.
-	//
-	// Valid values: **1** to **65535**.
-	BackendServerPort *int32 `json:"BackendServerPort,omitempty" xml:"BackendServerPort,omitempty"`
 	// Indicates whether access control is enabled. Valid values: **on** and **off**. Default value: off.
-	Bandwidth *int32 `json:"Bandwidth,omitempty" xml:"Bandwidth,omitempty"`
-	// The timeout period of a health check. If a backend Elastic Compute Service (ECS) instance does not return a health check response within the specified timeout period, the server fails the health check. Valid values: **1** to **300**. Unit: seconds.
-	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
-	HealthCheck *string `json:"HealthCheck,omitempty" xml:"HealthCheck,omitempty"`
-	// The interval between two consecutive health checks. Valid values: **1** to **50**. Unit: seconds.
-	HealthCheckConnectPort *int32 `json:"HealthCheckConnectPort,omitempty" xml:"HealthCheckConnectPort,omitempty"`
-	// The backend port used by the CLB instance.
-	//
-	// >  If the listener is associated with a vServer group, this parameter is not returned.
-	HealthCheckConnectTimeout *int32 `json:"HealthCheckConnectTimeout,omitempty" xml:"HealthCheckConnectTimeout,omitempty"`
-	// The healthy threshold. The number of times that an unhealthy backend server must consecutively pass health checks before it is declared healthy. In this case, the health status is changed from **fail** to **success**. Valid values: **2** to **10**.
-	HealthCheckExp *string `json:"HealthCheckExp,omitempty" xml:"HealthCheckExp,omitempty"`
-	// The description of the listener.
-	HealthCheckInterval *int32  `json:"HealthCheckInterval,omitempty" xml:"HealthCheckInterval,omitempty"`
-	HealthCheckReq      *string `json:"HealthCheckReq,omitempty" xml:"HealthCheckReq,omitempty"`
-	// The status of the listener. Valid values:
-	//
-	// *   **running**
-	// *   **stopped**
-	HealthyThreshold *int32 `json:"HealthyThreshold,omitempty" xml:"HealthyThreshold,omitempty"`
-	// The ID of the CLB instance.
-	ListenerPort   *int32  `json:"ListenerPort,omitempty" xml:"ListenerPort,omitempty"`
-	LoadBalancerId *string `json:"LoadBalancerId,omitempty" xml:"LoadBalancerId,omitempty"`
-	// The ID of the CLB instance.
-	MasterSlaveServerGroupId *string `json:"MasterSlaveServerGroupId,omitempty" xml:"MasterSlaveServerGroupId,omitempty"`
+	AclStatus *string `json:"AclStatus,omitempty" xml:"AclStatus,omitempty"`
 	// The type of the ACL. Valid values:
 	//
 	// *   **white**: a whitelist. Only requests from the IP addresses or CIDR blocks in the network ACL are forwarded. Whitelists apply to scenarios in which you want to allow only specified IP addresses to access an application.
@@ -10084,23 +10825,65 @@ type DescribeLoadBalancerUDPListenerAttributeResponseBody struct {
 	// *   **black**: a blacklist. All requests from the IP addresses or CIDR blocks in the network ACL are blocked. Blacklists apply to scenarios in which you want to deny access from specific IP addresses or CIDR blocks to an application.
 	//
 	//     If a blacklist is configured for a listener but no IP address is added to the blacklist, the listener forwards all requests.
-	ProxyProtocolV2Enabled *bool `json:"ProxyProtocolV2Enabled,omitempty" xml:"ProxyProtocolV2Enabled,omitempty"`
-	// The frontend port used by the CLB instance.
-	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// Indicates whether the health check feature is enabled. Valid values:
+	AclType *string `json:"AclType,omitempty" xml:"AclType,omitempty"`
+	// The backend port used by the CLB instance.
 	//
-	// *   **on**: yes
-	// *   **off**: no
-	Scheduler *string `json:"Scheduler,omitempty" xml:"Scheduler,omitempty"`
+	// >  If the listener is associated with a vServer group, this parameter is not returned.
+	BackendServerPort *int32 `json:"BackendServerPort,omitempty" xml:"BackendServerPort,omitempty"`
 	// The maximum bandwidth of the listener. Unit: Mbit/s. Valid values:
 	//
 	// *   **-1**: For a pay-by-data-transfer Internet-facing CLB instance, this parameter is set to -1. This indicates that the bandwidth of the listener is unlimited.
 	// *   **1** to **5120**: For a pay-by-bandwidth Internet-facing CLB instance, you can specify the maximum bandwidth of each listener. The sum of maximum bandwidth of all listeners cannot exceed the maximum bandwidth of the CLB instance.
-	Status *string                                                   `json:"Status,omitempty" xml:"Status,omitempty"`
-	Tags   *DescribeLoadBalancerUDPListenerAttributeResponseBodyTags `json:"Tags,omitempty" xml:"Tags,omitempty" type:"Struct"`
+	Bandwidth *int32 `json:"Bandwidth,omitempty" xml:"Bandwidth,omitempty"`
+	// The description of the listener.
+	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
+	// Indicates whether the health check feature is enabled. Valid values:
+	//
+	// *   **on**: yes
+	// *   **off**: no
+	HealthCheck *string `json:"HealthCheck,omitempty" xml:"HealthCheck,omitempty"`
+	// The port that is used for health checks. Valid values: **1** to **65535**. If this parameter is not set, the port specified by BackendServerPort is used for health checks.
+	//
+	// >  This parameter takes effect only when the **HealthCheck** parameter is set to **on**.
+	HealthCheckConnectPort *int32 `json:"HealthCheckConnectPort,omitempty" xml:"HealthCheckConnectPort,omitempty"`
+	// The timeout period of a health check. If a backend Elastic Compute Service (ECS) instance does not return a health check response within the specified timeout period, the server fails the health check. Valid values: **1** to **300**. Unit: seconds.
+	HealthCheckConnectTimeout *int32 `json:"HealthCheckConnectTimeout,omitempty" xml:"HealthCheckConnectTimeout,omitempty"`
 	// The response string for UDP listener health checks. The string is up to 64 characters in length, and can contain letters and digits.
-	UnhealthyThreshold *int32 `json:"UnhealthyThreshold,omitempty" xml:"UnhealthyThreshold,omitempty"`
+	HealthCheckExp *string `json:"HealthCheckExp,omitempty" xml:"HealthCheckExp,omitempty"`
+	// The interval between two consecutive health checks. Valid values: **1** to **50**. Unit: seconds.
+	HealthCheckInterval *int32 `json:"HealthCheckInterval,omitempty" xml:"HealthCheckInterval,omitempty"`
+	// The request string for UDP listener health checks. The string is up to 64 characters in length, and can contain letters and digits.
+	HealthCheckReq *string `json:"HealthCheckReq,omitempty" xml:"HealthCheckReq,omitempty"`
+	// The healthy threshold. The number of times that an unhealthy backend server must consecutively pass health checks before it is declared healthy. In this case, the health status is changed from **fail** to **success**. Valid values: **2** to **10**.
+	HealthyThreshold *int32 `json:"HealthyThreshold,omitempty" xml:"HealthyThreshold,omitempty"`
+	// The frontend port used by the CLB instance.
+	ListenerPort *int32 `json:"ListenerPort,omitempty" xml:"ListenerPort,omitempty"`
+	// The ID of the CLB instance.
+	LoadBalancerId *string `json:"LoadBalancerId,omitempty" xml:"LoadBalancerId,omitempty"`
+	// The ID of the primary/secondary server group that is associated with the listener.
+	MasterSlaveServerGroupId *string `json:"MasterSlaveServerGroupId,omitempty" xml:"MasterSlaveServerGroupId,omitempty"`
+	// Indicates whether the Proxy protocol is used to pass client IP addresses to backend servers. Valid values:
+	//
+	// *   **true**: yes
+	// *   **false**: no
+	ProxyProtocolV2Enabled *bool `json:"ProxyProtocolV2Enabled,omitempty" xml:"ProxyProtocolV2Enabled,omitempty"`
+	// The ID of the request.
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The scheduling algorithm. Valid values:
+	//
+	// *   **wrr** (default): Backend servers with higher weights receive more requests than backend servers with lower weights.
+	// *   **rr**: Requests are distributed to backend servers in sequence.
+	Scheduler *string `json:"Scheduler,omitempty" xml:"Scheduler,omitempty"`
+	// The status of the listener. Valid values:
+	//
+	// *   **running**
+	// *   **stopped**
+	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
+	// The tags.
+	Tags *DescribeLoadBalancerUDPListenerAttributeResponseBodyTags `json:"Tags,omitempty" xml:"Tags,omitempty" type:"Struct"`
 	// The unhealthy threshold. The number of times that a healthy backend server must consecutively fail health checks before it is declared unhealthy. In this case, the health status is changed from **success** to **fail**. Valid values: **2** to **10**.
+	UnhealthyThreshold *int32 `json:"UnhealthyThreshold,omitempty" xml:"UnhealthyThreshold,omitempty"`
+	// The ID of the vServer group that is associated with the listener.
 	VServerGroupId *string `json:"VServerGroupId,omitempty" xml:"VServerGroupId,omitempty"`
 }
 
@@ -10245,7 +11028,9 @@ func (s *DescribeLoadBalancerUDPListenerAttributeResponseBodyTags) SetTag(v []*D
 }
 
 type DescribeLoadBalancerUDPListenerAttributeResponseBodyTagsTag struct {
-	TagKey   *string `json:"TagKey,omitempty" xml:"TagKey,omitempty"`
+	// The tag key.
+	TagKey *string `json:"TagKey,omitempty" xml:"TagKey,omitempty"`
+	// The tag value.
 	TagValue *string `json:"TagValue,omitempty" xml:"TagValue,omitempty"`
 }
 
@@ -10365,8 +11150,9 @@ type DescribeLoadBalancersRequest struct {
 	// The ID of the secondary zone to which the CLB instance belongs.
 	//
 	// CLB instances on Alibaba Finance Cloud do not support cross-zone deployment.
-	SlaveZoneId *string                            `json:"SlaveZoneId,omitempty" xml:"SlaveZoneId,omitempty"`
-	Tag         []*DescribeLoadBalancersRequestTag `json:"Tag,omitempty" xml:"Tag,omitempty" type:"Repeated"`
+	SlaveZoneId *string `json:"SlaveZoneId,omitempty" xml:"SlaveZoneId,omitempty"`
+	// The tags.
+	Tag []*DescribeLoadBalancersRequestTag `json:"Tag,omitempty" xml:"Tag,omitempty" type:"Repeated"`
 	// The tags that are added to the CLB instance. The tags must be key-value pairs that are contained in a JSON dictionary.
 	//
 	// You can specify up to 10 tags in each call.
@@ -10511,7 +11297,13 @@ func (s *DescribeLoadBalancersRequest) SetVpcId(v string) *DescribeLoadBalancers
 }
 
 type DescribeLoadBalancersRequestTag struct {
-	Key   *string `json:"Key,omitempty" xml:"Key,omitempty"`
+	// The key of the tag. You can specify up to 20 tag keys. The tag key cannot be an empty string.
+	//
+	// The tag key must be 1 to 64 characters in length and cannot start with `aliyun` or `acs:`. It cannot contain `http://` or `https://`.
+	Key *string `json:"Key,omitempty" xml:"Key,omitempty"`
+	// The value of the tag. You can specify up to 20 tag values. The tag value can be an empty string.
+	//
+	// The tag value can be at most 128 characters in length and cannot start with `acs:` or `aliyun`. It cannot contain `http://` or `https://`.
 	Value *string `json:"Value,omitempty" xml:"Value,omitempty"`
 }
 
@@ -10897,11 +11689,11 @@ func (s *DescribeLoadBalancersResponse) SetBody(v *DescribeLoadBalancersResponse
 }
 
 type DescribeMasterSlaveServerGroupAttributeRequest struct {
-	// The operation that you want to perform. Set the value to **DescribeMasterSlaveServerGroupAttribute**.
+	// The ID of the primary/secondary server group.
 	MasterSlaveServerGroupId *string `json:"MasterSlaveServerGroupId,omitempty" xml:"MasterSlaveServerGroupId,omitempty"`
 	OwnerAccount             *string `json:"OwnerAccount,omitempty" xml:"OwnerAccount,omitempty"`
 	OwnerId                  *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
-	// The list of backend servers in the primary/secondary server group.
+	// The region ID of the Classic Load Balancer (CLB) instance.
 	RegionId             *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 	ResourceOwnerAccount *string `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
 	ResourceOwnerId      *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
@@ -10946,21 +11738,20 @@ func (s *DescribeMasterSlaveServerGroupAttributeRequest) SetResourceOwnerId(v in
 }
 
 type DescribeMasterSlaveServerGroupAttributeResponseBody struct {
+	// The time when the CLB instance was created. The time follows the `YYYY-MM-DDThh:mm:ssZ` format.
 	CreateTime *string `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
-	// The region ID of the Classic Load Balancer (CLB) instance.
-	LoadBalancerId *string `json:"LoadBalancerId,omitempty" xml:"LoadBalancerId,omitempty"`
 	// The ID of the associated CLB instance.
+	LoadBalancerId *string `json:"LoadBalancerId,omitempty" xml:"LoadBalancerId,omitempty"`
+	// The list of backend servers in the primary/secondary server group.
 	MasterSlaveBackendServers *DescribeMasterSlaveServerGroupAttributeResponseBodyMasterSlaveBackendServers `json:"MasterSlaveBackendServers,omitempty" xml:"MasterSlaveBackendServers,omitempty" type:"Struct"`
-	// The type of the backend server. Valid values:
-	//
-	// *   **ecs** (default): an Elastic Compute Service (ECS) instance
-	// *   **eni**: an elastic network interface (ENI)
+	// The ID of the primary/secondary server group.
 	MasterSlaveServerGroupId *string `json:"MasterSlaveServerGroupId,omitempty" xml:"MasterSlaveServerGroupId,omitempty"`
 	// The name of the primary/secondary server group.
 	MasterSlaveServerGroupName *string `json:"MasterSlaveServerGroupName,omitempty" xml:"MasterSlaveServerGroupName,omitempty"`
-	// The ID of the primary/secondary server group.
-	RequestId *string                                                  `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	Tags      *DescribeMasterSlaveServerGroupAttributeResponseBodyTags `json:"Tags,omitempty" xml:"Tags,omitempty" type:"Struct"`
+	// The ID of the request.
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The tag list.
+	Tags *DescribeMasterSlaveServerGroupAttributeResponseBodyTags `json:"Tags,omitempty" xml:"Tags,omitempty" type:"Struct"`
 }
 
 func (s DescribeMasterSlaveServerGroupAttributeResponseBody) String() string {
@@ -11024,14 +11815,20 @@ func (s *DescribeMasterSlaveServerGroupAttributeResponseBodyMasterSlaveBackendSe
 }
 
 type DescribeMasterSlaveServerGroupAttributeResponseBodyMasterSlaveBackendServersMasterSlaveBackendServer struct {
-	// The ID of the request.
+	// The description of the primary/secondary server group.
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
-	Port        *int32  `json:"Port,omitempty" xml:"Port,omitempty"`
-	ServerId    *string `json:"ServerId,omitempty" xml:"ServerId,omitempty"`
-	ServerType  *string `json:"ServerType,omitempty" xml:"ServerType,omitempty"`
-	// The weight of the backend server.
-	Type *string `json:"Type,omitempty" xml:"Type,omitempty"`
+	// The port used by the backend server.
+	Port *int32 `json:"Port,omitempty" xml:"Port,omitempty"`
+	// The ID of the ECS instance or ENI.
+	ServerId *string `json:"ServerId,omitempty" xml:"ServerId,omitempty"`
 	// The type of backend server. Valid values: **Master and Slave. Default value: Master.
+	ServerType *string `json:"ServerType,omitempty" xml:"ServerType,omitempty"`
+	// The type of the backend server. Valid values:
+	//
+	// *   **ecs** (default): an Elastic Compute Service (ECS) instance
+	// *   **eni**: an elastic network interface (ENI)
+	Type *string `json:"Type,omitempty" xml:"Type,omitempty"`
+	// The weight of the backend server.
 	Weight *int32 `json:"Weight,omitempty" xml:"Weight,omitempty"`
 }
 
@@ -11091,7 +11888,9 @@ func (s *DescribeMasterSlaveServerGroupAttributeResponseBodyTags) SetTag(v []*De
 }
 
 type DescribeMasterSlaveServerGroupAttributeResponseBodyTagsTag struct {
-	TagKey   *string `json:"TagKey,omitempty" xml:"TagKey,omitempty"`
+	// The tag key.
+	TagKey *string `json:"TagKey,omitempty" xml:"TagKey,omitempty"`
+	// The tag value.
 	TagValue *string `json:"TagValue,omitempty" xml:"TagValue,omitempty"`
 }
 
@@ -11143,17 +11942,22 @@ func (s *DescribeMasterSlaveServerGroupAttributeResponse) SetBody(v *DescribeMas
 }
 
 type DescribeMasterSlaveServerGroupsRequest struct {
-	// The list of backend servers in the primary/secondary server group.
+	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
+	// Specifies whether to return information about the associated listeners. Valid values:
+	//
+	// *   **true**: returns information about the associated listeners.
+	// *   **false**: does not return information about the associated listeners.
 	IncludeListener *bool `json:"IncludeListener,omitempty" xml:"IncludeListener,omitempty"`
-	// The ID of the primary/secondary server group.
+	// The ID of the CLB instance.
 	LoadBalancerId *string `json:"LoadBalancerId,omitempty" xml:"LoadBalancerId,omitempty"`
 	OwnerAccount   *string `json:"OwnerAccount,omitempty" xml:"OwnerAccount,omitempty"`
 	OwnerId        *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
-	// The listening port.
-	RegionId             *string                                      `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	ResourceOwnerAccount *string                                      `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
-	ResourceOwnerId      *int64                                       `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
-	Tag                  []*DescribeMasterSlaveServerGroupsRequestTag `json:"Tag,omitempty" xml:"Tag,omitempty" type:"Repeated"`
+	// The region ID of the Classic Load Balancer (CLB) instance.
+	RegionId             *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	ResourceOwnerAccount *string `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
+	ResourceOwnerId      *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
+	// The tags.
+	Tag []*DescribeMasterSlaveServerGroupsRequestTag `json:"Tag,omitempty" xml:"Tag,omitempty" type:"Repeated"`
 }
 
 func (s DescribeMasterSlaveServerGroupsRequest) String() string {
@@ -11162,6 +11966,11 @@ func (s DescribeMasterSlaveServerGroupsRequest) String() string {
 
 func (s DescribeMasterSlaveServerGroupsRequest) GoString() string {
 	return s.String()
+}
+
+func (s *DescribeMasterSlaveServerGroupsRequest) SetDescription(v string) *DescribeMasterSlaveServerGroupsRequest {
+	s.Description = &v
+	return s
 }
 
 func (s *DescribeMasterSlaveServerGroupsRequest) SetIncludeListener(v bool) *DescribeMasterSlaveServerGroupsRequest {
@@ -11205,7 +12014,13 @@ func (s *DescribeMasterSlaveServerGroupsRequest) SetTag(v []*DescribeMasterSlave
 }
 
 type DescribeMasterSlaveServerGroupsRequestTag struct {
-	Key   *string `json:"Key,omitempty" xml:"Key,omitempty"`
+	// The tag key. You can specify at most 20 tag keys.
+	//
+	// The tag key cannot be an empty string. The tag key must be 1 to 64 characters in length and cannot start with `aliyun` or `acs:`. It cannot contain `http://` or `https://`.
+	Key *string `json:"Key,omitempty" xml:"Key,omitempty"`
+	// The tag value. You can specify at most 20 tag values. The tag value cannot be an empty string.
+	//
+	// The tag value must be 1 to 128 characters in length and cannot start with `acs:` or `aliyun`. It cannot contain `http://` or `https://`.
 	Value *string `json:"Value,omitempty" xml:"Value,omitempty"`
 }
 
@@ -11228,9 +12043,9 @@ func (s *DescribeMasterSlaveServerGroupsRequestTag) SetValue(v string) *Describe
 }
 
 type DescribeMasterSlaveServerGroupsResponseBody struct {
-	// The associated resources.
+	// The list of backend servers in the primary/secondary server group.
 	MasterSlaveServerGroups *DescribeMasterSlaveServerGroupsResponseBodyMasterSlaveServerGroups `json:"MasterSlaveServerGroups,omitempty" xml:"MasterSlaveServerGroups,omitempty" type:"Struct"`
-	// The listening protocol.
+	// The ID of the request.
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -11270,14 +12085,16 @@ func (s *DescribeMasterSlaveServerGroupsResponseBodyMasterSlaveServerGroups) Set
 }
 
 type DescribeMasterSlaveServerGroupsResponseBodyMasterSlaveServerGroupsMasterSlaveServerGroup struct {
-	// The name of the primary/secondary server group.
+	// The associated resources.
 	AssociatedObjects *DescribeMasterSlaveServerGroupsResponseBodyMasterSlaveServerGroupsMasterSlaveServerGroupAssociatedObjects `json:"AssociatedObjects,omitempty" xml:"AssociatedObjects,omitempty" type:"Struct"`
-	CreateTime        *string                                                                                                    `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
-	// The ID of the request.
+	// The time when the CLB instance was created. The time follows the `YYYY-MM-DDThh:mm:ssZ` format.
+	CreateTime *string `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
+	// The ID of the primary/secondary server group.
 	MasterSlaveServerGroupId *string `json:"MasterSlaveServerGroupId,omitempty" xml:"MasterSlaveServerGroupId,omitempty"`
-	// The operation that you want to perform. Set the value to **DescribeMasterSlaveServerGroups**.
-	MasterSlaveServerGroupName *string                                                                                       `json:"MasterSlaveServerGroupName,omitempty" xml:"MasterSlaveServerGroupName,omitempty"`
-	Tags                       *DescribeMasterSlaveServerGroupsResponseBodyMasterSlaveServerGroupsMasterSlaveServerGroupTags `json:"Tags,omitempty" xml:"Tags,omitempty" type:"Struct"`
+	// The name of the primary/secondary server group.
+	MasterSlaveServerGroupName *string `json:"MasterSlaveServerGroupName,omitempty" xml:"MasterSlaveServerGroupName,omitempty"`
+	// The tag key.
+	Tags *DescribeMasterSlaveServerGroupsResponseBodyMasterSlaveServerGroupsMasterSlaveServerGroupTags `json:"Tags,omitempty" xml:"Tags,omitempty" type:"Struct"`
 }
 
 func (s DescribeMasterSlaveServerGroupsResponseBodyMasterSlaveServerGroupsMasterSlaveServerGroup) String() string {
@@ -11314,7 +12131,7 @@ func (s *DescribeMasterSlaveServerGroupsResponseBodyMasterSlaveServerGroupsMaste
 }
 
 type DescribeMasterSlaveServerGroupsResponseBodyMasterSlaveServerGroupsMasterSlaveServerGroupAssociatedObjects struct {
-	// Queries backend servers in a primary/secondary server group.
+	// The list of listeners.
 	Listeners *DescribeMasterSlaveServerGroupsResponseBodyMasterSlaveServerGroupsMasterSlaveServerGroupAssociatedObjectsListeners `json:"Listeners,omitempty" xml:"Listeners,omitempty" type:"Struct"`
 }
 
@@ -11349,7 +12166,9 @@ func (s *DescribeMasterSlaveServerGroupsResponseBodyMasterSlaveServerGroupsMaste
 }
 
 type DescribeMasterSlaveServerGroupsResponseBodyMasterSlaveServerGroupsMasterSlaveServerGroupAssociatedObjectsListenersListener struct {
-	Port     *int32  `json:"Port,omitempty" xml:"Port,omitempty"`
+	// The listening port.
+	Port *int32 `json:"Port,omitempty" xml:"Port,omitempty"`
+	// The listening protocol.
 	Protocol *string `json:"Protocol,omitempty" xml:"Protocol,omitempty"`
 }
 
@@ -11389,7 +12208,9 @@ func (s *DescribeMasterSlaveServerGroupsResponseBodyMasterSlaveServerGroupsMaste
 }
 
 type DescribeMasterSlaveServerGroupsResponseBodyMasterSlaveServerGroupsMasterSlaveServerGroupTagsTag struct {
-	TagKey   *string `json:"TagKey,omitempty" xml:"TagKey,omitempty"`
+	// The tag keys.
+	TagKey *string `json:"TagKey,omitempty" xml:"TagKey,omitempty"`
+	// The tag values.
 	TagValue *string `json:"TagValue,omitempty" xml:"TagValue,omitempty"`
 }
 
@@ -11441,13 +12262,15 @@ func (s *DescribeMasterSlaveServerGroupsResponse) SetBody(v *DescribeMasterSlave
 }
 
 type DescribeRegionsRequest struct {
-	// The ID of the region.
+	// The supported language. Valid values:
+	//
+	// *   zh-CN: Chinese
+	// *   en-US: English
+	// *   ja: Japanese
 	AcceptLanguage *string `json:"AcceptLanguage,omitempty" xml:"AcceptLanguage,omitempty"`
 	OwnerAccount   *string `json:"OwnerAccount,omitempty" xml:"OwnerAccount,omitempty"`
 	OwnerId        *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
-	// The operation that you want to perform.
-	//
-	// Set the value to **DescribeRegions**.
+	// The ID of the region.
 	RegionId             *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 	ResourceOwnerAccount *string `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
 	ResourceOwnerId      *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
@@ -11492,9 +12315,9 @@ func (s *DescribeRegionsRequest) SetResourceOwnerId(v int64) *DescribeRegionsReq
 }
 
 type DescribeRegionsResponseBody struct {
-	// The endpoint of the region.
-	Regions *DescribeRegionsResponseBodyRegions `json:"Regions,omitempty" xml:"Regions,omitempty" type:"Struct"`
 	// The list of regions.
+	Regions *DescribeRegionsResponseBodyRegions `json:"Regions,omitempty" xml:"Regions,omitempty" type:"Struct"`
+	// The ID of the request.
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -11534,11 +12357,11 @@ func (s *DescribeRegionsResponseBodyRegions) SetRegion(v []*DescribeRegionsRespo
 }
 
 type DescribeRegionsResponseBodyRegionsRegion struct {
-	// China (Beijing)
-	LocalName *string `json:"LocalName,omitempty" xml:"LocalName,omitempty"`
 	// The name of the region.
+	LocalName *string `json:"LocalName,omitempty" xml:"LocalName,omitempty"`
+	// The endpoint of the region.
 	RegionEndpoint *string `json:"RegionEndpoint,omitempty" xml:"RegionEndpoint,omitempty"`
-	// Queries regions.
+	// The ID of the region.
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 }
 
@@ -11597,15 +12420,13 @@ func (s *DescribeRegionsResponse) SetBody(v *DescribeRegionsResponseBody) *Descr
 type DescribeRuleAttributeRequest struct {
 	OwnerAccount *string `json:"OwnerAccount,omitempty" xml:"OwnerAccount,omitempty"`
 	OwnerId      *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
-	// The ID of the forwarding rule.
+	// The ID of the region where the Server Load Balancer (SLB) instance is deployed.
+	//
+	// You can call the [DescribeRegions](~~27584~~) operation to query the most recent region list.
 	RegionId             *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 	ResourceOwnerAccount *string `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
 	ResourceOwnerId      *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
-	// The HTTP status code that indicates a successful health check. Separate multiple HTTP status codes with commas (,). Default value: **http\_2xx**.
-	//
-	// Valid values: **http\_2xx**, **http\_3xx**, **http\_4xx**, and **http\_5xx**.
-	//
-	// >  If you set the **HealthCheck** parameter to **on**, this parameter is required.
+	// The ID of the forwarding rule.
 	RuleId *string `json:"RuleId,omitempty" xml:"RuleId,omitempty"`
 }
 
@@ -11648,108 +12469,113 @@ func (s *DescribeRuleAttributeRequest) SetRuleId(v string) *DescribeRuleAttribut
 }
 
 type DescribeRuleAttributeResponseBody struct {
-	// The ID of the SLB instance.
+	// The cookie to be configured on the backend server.
+	//
+	// The cookie must be 1 to 200 characters in length and can contain ASCII letters and digits. It cannot contain commas (,), semicolons (;), or whitespace characters. It cannot start with a dollar sign ($).
+	//
+	// If you set the **StickySession** parameter to **on** and the **StickySessionType** parameter to **server**, this parameter is required.
 	Cookie *string `json:"Cookie,omitempty" xml:"Cookie,omitempty"`
+	// The timeout period of a cookie.
+	//
+	// Valid values: **1 to 86400**. Unit: seconds.
+	//
+	// >  If you set the **StickySession** parameter to **on** and the **StickySessionType** parameter to **insert**, this parameter is required.
+	CookieTimeout *int32 `json:"CookieTimeout,omitempty" xml:"CookieTimeout,omitempty"`
+	// The domain name that is configured in the forwarding rule.
+	Domain *string `json:"Domain,omitempty" xml:"Domain,omitempty"`
+	// Specifies whether to enable health checks.
+	//
+	// Valid values: **on** and **off**.
+	//
+	// >  If you set the **ListenerSync** parameter to **off**, this parameter is required. If you set the parameter to **on**, the configuration of the listener is used.
+	HealthCheck *string `json:"HealthCheck,omitempty" xml:"HealthCheck,omitempty"`
+	// The port of the backend server that is used for health checks.
+	//
+	// Valid values: **1** to **65535**.
+	//
+	// >  If you set the **HealthCheck** parameter to **on**, this parameter is required. If you left this parameter empty and the **HealthCheck** parameter is set to **on**, the backend port configuration of the listener is used by default.
+	HealthCheckConnectPort *int32 `json:"HealthCheckConnectPort,omitempty" xml:"HealthCheckConnectPort,omitempty"`
 	// The domain name that is used for health checks. Valid values:
 	//
 	// *   **$\_ip**: The private IP address of the backend server. If the $\_ip parameter is set or the HealthCheckDomain parameter is not set, SLB uses the private IP addresses of backend servers as the domain names for health checks.
 	// *   **domain**: The domain name must be 1 to 80 characters in length. It can contain only letters, digits, periods (.),and hyphens (-).
 	//
 	// >  If you set the **HealthCheck** parameter to **on**, this parameter is required.
-	CookieTimeout *int32 `json:"CookieTimeout,omitempty" xml:"CookieTimeout,omitempty"`
-	// The cookie to be configured on the backend server.
+	HealthCheckDomain *string `json:"HealthCheckDomain,omitempty" xml:"HealthCheckDomain,omitempty"`
+	// The HTTP status code that indicates a successful health check. Separate multiple HTTP status codes with commas (,). Default value: **http\_2xx**.
 	//
-	// The cookie must be 1 to 200 characters in length and can contain ASCII letters and digits. It cannot contain commas (,), semicolons (;), or whitespace characters. It cannot start with a dollar sign ($).
+	// Valid values: **http\_2xx**, **http\_3xx**, **http\_4xx**, and **http\_5xx**.
 	//
-	// If you set the **StickySession** parameter to **on** and the **StickySessionType** parameter to **server**, this parameter is required.
-	Domain      *string `json:"Domain,omitempty" xml:"Domain,omitempty"`
-	HealthCheck *string `json:"HealthCheck,omitempty" xml:"HealthCheck,omitempty"`
-	// The scheduling algorithm. Valid values:
+	// >  If you set the **HealthCheck** parameter to **on**, this parameter is required.
+	HealthCheckHttpCode *string `json:"HealthCheckHttpCode,omitempty" xml:"HealthCheckHttpCode,omitempty"`
+	// The time interval between two consecutive health checks.
 	//
-	// *   **wrr** (default): Backend servers that have higher weights receive more requests than backend servers that have lower weights.
-	// *   **rr**: Requests are distributed to backend servers in sequence.
+	// Valid values: **1** to **50**. Unit: seconds.
 	//
-	// >  If you set the **ListenerSync** parameter to **off**, this parameter is required. If you set the parameter to **on**, the configuration of the listener is used.
-	HealthCheckConnectPort *int32 `json:"HealthCheckConnectPort,omitempty" xml:"HealthCheckConnectPort,omitempty"`
-	// The number of consecutive failed health checks that must occur before a healthy backend server is declared unhealthy. In this case, the health check state is changed from **success** to **fail**.
+	// >  If you set the **HealthCheck** parameter to **on**, this parameter is required.
+	HealthCheckInterval *int32 `json:"HealthCheckInterval,omitempty" xml:"HealthCheckInterval,omitempty"`
+	// The timeout period of a health check response. If a backend ECS instance does not send an expected response within the specified period of time, the ECS instance is considered unhealthy.
+	//
+	// Valid values: **1** to **300**. Unit: seconds.
+	//
+	// >  If the value of the **HealthCHeckTimeout** parameter is smaller than that of the **HealthCheckInterval** parameter, the value of the **HealthCHeckTimeout** parameter is ignored and the value of the **HealthCheckInterval** parameter is regarded as the waiting period. If you set the **HealthCheck** parameter to **on**, this parameter is required.
+	HealthCheckTimeout *int32 `json:"HealthCheckTimeout,omitempty" xml:"HealthCheckTimeout,omitempty"`
+	// The URI that is used for health checks.
+	//
+	// >  If you set the **HealthCheck** parameter to **on**, this parameter is required.
+	HealthCheckURI *string `json:"HealthCheckURI,omitempty" xml:"HealthCheckURI,omitempty"`
+	// The number of consecutive successful health checks that must occur before an unhealthy backend server is declared healthy. In this case, the health check state is changed from **fail** to **success**.
 	//
 	// Valid values: **2** to **10**.
 	//
 	// >  If you set the **HealthCheck** parameter to **on**, this parameter is required.
-	HealthCheckDomain *string `json:"HealthCheckDomain,omitempty" xml:"HealthCheckDomain,omitempty"`
-	// The ID of the vServer group that is associated with the forwarding rule.
-	HealthCheckHttpCode *string `json:"HealthCheckHttpCode,omitempty" xml:"HealthCheckHttpCode,omitempty"`
-	// The URL that is configured in the forwarding rule.
-	HealthCheckInterval *int32 `json:"HealthCheckInterval,omitempty" xml:"HealthCheckInterval,omitempty"`
+	HealthyThreshold *int32 `json:"HealthyThreshold,omitempty" xml:"HealthyThreshold,omitempty"`
+	// The listener port that is used by the SLB instance.
+	ListenerPort *string `json:"ListenerPort,omitempty" xml:"ListenerPort,omitempty"`
 	// Indicates whether the forwarding rule uses the scheduling algorithm, session persistence, and health check configurations of the listener.
 	//
 	// Valid values: **on** and **off**.
 	//
 	// *   **off**: does not use the configurations of the listener. You can customize health check and session persistence configurations for the forwarding rule.
 	// *   **on**: uses the configurations of the listener.
-	HealthCheckTimeout *int32 `json:"HealthCheckTimeout,omitempty" xml:"HealthCheckTimeout,omitempty"`
+	ListenerSync *string `json:"ListenerSync,omitempty" xml:"ListenerSync,omitempty"`
+	// The ID of the SLB instance.
+	LoadBalancerId *string `json:"LoadBalancerId,omitempty" xml:"LoadBalancerId,omitempty"`
+	// The ID of the request.
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The ID of the forwarding rule.
+	RuleId *string `json:"RuleId,omitempty" xml:"RuleId,omitempty"`
+	// The name of the forwarding rule.
+	RuleName *string `json:"RuleName,omitempty" xml:"RuleName,omitempty"`
+	// The scheduling algorithm. Valid values:
+	//
+	// *   **wrr** (default): Backend servers that have higher weights receive more requests than backend servers that have lower weights.
+	// *   **rr**: Requests are distributed to backend servers in sequence.
+	//
+	// >  If you set the **ListenerSync** parameter to **off**, this parameter is required. If you set the parameter to **on**, the configuration of the listener is used.
+	Scheduler *string `json:"Scheduler,omitempty" xml:"Scheduler,omitempty"`
+	// Indicates whether session persistence is enabled.
+	//
+	// Valid values: **on** and **off**.
+	//
+	// >  If you set the **ListenerSync** parameter to **off**, this parameter is required. If you set the parameter to **on**, the configuration of the listener is used.
+	StickySession *string `json:"StickySession,omitempty" xml:"StickySession,omitempty"`
 	// The method that is used to handle a cookie. Valid values:
 	//
 	// *   **insert**: inserts a cookie into the response. SLB inserts a cookie (SERVERID) into the first HTTP or HTTPS response packet that is sent to a client. The next request from the client will contain this cookie, and the listener will distribute this request to the recorded backend server.
 	// *   **server**: rewrites a cookie. When SLB detects a user-defined cookie, SLB overwrites the original cookie with the user-defined cookie. The next request from the client contains the user-defined cookie, and the listener distributes the request to the recorded backend server.
 	//
 	// >  If you set the **StickySession** parameter to **on**, this parameter is required.
-	HealthCheckURI *string `json:"HealthCheckURI,omitempty" xml:"HealthCheckURI,omitempty"`
-	// The timeout period of a cookie.
-	//
-	// Valid values: **1 to 86400**. Unit: seconds.
-	//
-	// >  If you set the **StickySession** parameter to **on** and the **StickySessionType** parameter to **insert**, this parameter is required.
-	HealthyThreshold *int32 `json:"HealthyThreshold,omitempty" xml:"HealthyThreshold,omitempty"`
-	// The time interval between two consecutive health checks.
-	//
-	// Valid values: **1** to **50**. Unit: seconds.
-	//
-	// >  If you set the **HealthCheck** parameter to **on**, this parameter is required.
-	ListenerPort *string `json:"ListenerPort,omitempty" xml:"ListenerPort,omitempty"`
-	// The number of consecutive successful health checks that must occur before an unhealthy backend server is declared healthy. In this case, the health check state is changed from **fail** to **success**.
+	StickySessionType *string `json:"StickySessionType,omitempty" xml:"StickySessionType,omitempty"`
+	// The number of consecutive failed health checks that must occur before a healthy backend server is declared unhealthy. In this case, the health check state is changed from **success** to **fail**.
 	//
 	// Valid values: **2** to **10**.
 	//
 	// >  If you set the **HealthCheck** parameter to **on**, this parameter is required.
-	ListenerSync *string `json:"ListenerSync,omitempty" xml:"ListenerSync,omitempty"`
-	// The listener port that is used by the SLB instance.
-	LoadBalancerId *string `json:"LoadBalancerId,omitempty" xml:"LoadBalancerId,omitempty"`
-	// The timeout period of a health check response. If a backend ECS instance does not send an expected response within the specified period of time, the ECS instance is considered unhealthy.
-	//
-	// Valid values: **1** to **300**. Unit: seconds.
-	//
-	// >  If the value of the **HealthCHeckTimeout** parameter is smaller than that of the **HealthCheckInterval** parameter, the value of the **HealthCHeckTimeout** parameter is ignored and the value of the **HealthCheckInterval** parameter is regarded as the waiting period. If you set the **HealthCheck** parameter to **on**, this parameter is required.
-	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// The port of the backend server that is used for health checks.
-	//
-	// Valid values: **1** to **65535**.
-	//
-	// >  If you set the **HealthCheck** parameter to **on**, this parameter is required. If you left this parameter empty and the **HealthCheck** parameter is set to **on**, the backend port configuration of the listener is used by default.
-	RuleId *string `json:"RuleId,omitempty" xml:"RuleId,omitempty"`
-	// The ID of the forwarding rule.
-	RuleName *string `json:"RuleName,omitempty" xml:"RuleName,omitempty"`
-	// The ID of the request.
-	Scheduler *string `json:"Scheduler,omitempty" xml:"Scheduler,omitempty"`
-	// Specifies whether to enable health checks.
-	//
-	// Valid values: **on** and **off**.
-	//
-	// >  If you set the **ListenerSync** parameter to **off**, this parameter is required. If you set the parameter to **on**, the configuration of the listener is used.
-	StickySession *string `json:"StickySession,omitempty" xml:"StickySession,omitempty"`
-	// The name of the forwarding rule.
-	StickySessionType *string `json:"StickySessionType,omitempty" xml:"StickySessionType,omitempty"`
-	// Indicates whether session persistence is enabled.
-	//
-	// Valid values: **on** and **off**.
-	//
-	// >  If you set the **ListenerSync** parameter to **off**, this parameter is required. If you set the parameter to **on**, the configuration of the listener is used.
 	UnhealthyThreshold *int32 `json:"UnhealthyThreshold,omitempty" xml:"UnhealthyThreshold,omitempty"`
-	// The URI that is used for health checks.
-	//
-	// >  If you set the **HealthCheck** parameter to **on**, this parameter is required.
+	// The URL that is configured in the forwarding rule.
 	Url *string `json:"Url,omitempty" xml:"Url,omitempty"`
-	// The domain name that is configured in the forwarding rule.
+	// The ID of the vServer group that is associated with the forwarding rule.
 	VServerGroupId *string `json:"VServerGroupId,omitempty" xml:"VServerGroupId,omitempty"`
 }
 
@@ -11906,19 +12732,21 @@ func (s *DescribeRuleAttributeResponse) SetBody(v *DescribeRuleAttributeResponse
 }
 
 type DescribeRulesRequest struct {
-	// The ID of the request.
-	ListenerPort *int32 `json:"ListenerPort,omitempty" xml:"ListenerPort,omitempty"`
 	// The frontend listener port that is used by the Server Load Balancer (SLB) instance.
 	//
 	// Valid values: **1 to 65535**.
-	ListenerProtocol *string `json:"ListenerProtocol,omitempty" xml:"ListenerProtocol,omitempty"`
+	ListenerPort *int32 `json:"ListenerPort,omitempty" xml:"ListenerPort,omitempty"`
 	// The frontend listener protocol that is used by the SLB instance.
 	//
 	// >  This parameter is required when listeners that use different protocols listen on the same port.
+	ListenerProtocol *string `json:"ListenerProtocol,omitempty" xml:"ListenerProtocol,omitempty"`
+	// The ID of the SLB instance.
 	LoadBalancerId *string `json:"LoadBalancerId,omitempty" xml:"LoadBalancerId,omitempty"`
 	OwnerAccount   *string `json:"OwnerAccount,omitempty" xml:"OwnerAccount,omitempty"`
 	OwnerId        *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
-	// The ID of the SLB instance.
+	// The ID of the region where the SLB instance is deployed.
+	//
+	// You can call the [DescribeRegions](~~27584~~) operation to query the most recent region list.
 	RegionId             *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 	ResourceOwnerAccount *string `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
 	ResourceOwnerId      *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
@@ -11973,13 +12801,9 @@ func (s *DescribeRulesRequest) SetResourceOwnerId(v int64) *DescribeRulesRequest
 }
 
 type DescribeRulesResponseBody struct {
-	// The list of forwarding rules.
+	// The ID of the request.
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// The HTTP status code that indicates a successful health check. Multiple HTTP status codes are separated by commas (,). Default value: **http\_2xx**.
-	//
-	// Valid values: **http\_2xx**, **http\_3xx**, **http\_4xx**, and **http\_5xx**.
-	//
-	// >  If you set the **HealthCheck** parameter to **on**, this parameter is required.
+	// The list of forwarding rules.
 	Rules *DescribeRulesResponseBodyRules `json:"Rules,omitempty" xml:"Rules,omitempty" type:"Struct"`
 }
 
@@ -12019,12 +12843,30 @@ func (s *DescribeRulesResponseBodyRules) SetRule(v []*DescribeRulesResponseBodyR
 }
 
 type DescribeRulesResponseBodyRulesRule struct {
-	// The time interval between two consecutive health checks.
+	// The cookie that is configured on the backend server.
 	//
-	// Valid values: **1 to 50**. Unit: seconds.
+	// The value must be 1 to 200 characters in length, and can contain only ASCII letters and digits. It cannot contain commas (,), semicolons (;), or spaces. It cannot start with a dollar sign ($).
 	//
-	// >  If you set the **HealthCheck** parameter to **on**, this parameter is required.
+	// >  If you set the **StickySession** parameter to **on** and the **StickySessionType** parameter to **server**, this parameter is required.
 	Cookie *string `json:"Cookie,omitempty" xml:"Cookie,omitempty"`
+	// The timeout period of a cookie. Valid values: **1 to 86400**. Unit: seconds.
+	//
+	// >  If you set the **StickySession** parameter to **on** and the **StickySessionType** parameter to **insert**, this parameter is required.
+	CookieTimeout *int32 `json:"CookieTimeout,omitempty" xml:"CookieTimeout,omitempty"`
+	// The requested domain name specified in the forwarding rule.
+	Domain *string `json:"Domain,omitempty" xml:"Domain,omitempty"`
+	// Indicates whether health checks are enabled.
+	//
+	// Valid values: **on** and **off**.
+	//
+	// >  If you set the **ListenerSync** parameter to **off**, this parameter is required. If you set the parameter to **on**, the configuration of the listener is used.
+	HealthCheck *string `json:"HealthCheck,omitempty" xml:"HealthCheck,omitempty"`
+	// The port of the backend server that is used for health check.
+	//
+	// Valid values: **1 to 65535**.
+	//
+	// >  If you set the **HealthCheck** parameter to **on**, this parameter is required. If you left this parameter empty and the **HealthCheck** parameter is set to **on**, the backend port configuration of the listener is used by default.
+	HealthCheckConnectPort *int32 `json:"HealthCheckConnectPort,omitempty" xml:"HealthCheckConnectPort,omitempty"`
 	// The domain name that is used for health checks. Valid values:
 	//
 	// *   **$\_ip**: The private IP address of the backend server.
@@ -12034,90 +12876,77 @@ type DescribeRulesResponseBodyRulesRule struct {
 	// *   **domain**: The domain name must be 1 to 80 characters in length. The domain name can contain only letters, digits, periods (.),and hyphens (-).
 	//
 	// >  If you set the **HealthCheck** parameter to **on**, this parameter is required.
-	CookieTimeout *int32 `json:"CookieTimeout,omitempty" xml:"CookieTimeout,omitempty"`
-	// The cookie that is configured on the backend server.
+	HealthCheckDomain *string `json:"HealthCheckDomain,omitempty" xml:"HealthCheckDomain,omitempty"`
+	// The HTTP status code that indicates a successful health check. Multiple HTTP status codes are separated by commas (,). Default value: **http\_2xx**.
 	//
-	// The value must be 1 to 200 characters in length, and can contain only ASCII letters and digits. It cannot contain commas (,), semicolons (;), or spaces. It cannot start with a dollar sign ($).
-	//
-	// >  If you set the **StickySession** parameter to **on** and the **StickySessionType** parameter to **server**, this parameter is required.
-	Domain      *string `json:"Domain,omitempty" xml:"Domain,omitempty"`
-	HealthCheck *string `json:"HealthCheck,omitempty" xml:"HealthCheck,omitempty"`
-	// The scheduling algorithm. Valid values:
-	//
-	// *   **wrr** (default): Backend servers that have higher weights receive more requests than backend servers that have lower weights.
-	// *   **rr**: Requests are distributed to backend servers in sequence.
-	//
-	// >  If you set the **ListenerSync** parameter to **off**, this parameter is required. If you set the parameter to **on**, the configuration of the listener is used.
-	HealthCheckConnectPort *int32 `json:"HealthCheckConnectPort,omitempty" xml:"HealthCheckConnectPort,omitempty"`
-	// Specifies the number of times that a healthy backend server must consecutively fail health checks before it is declared unhealthy (from **success** to **fail**).
-	//
-	// Valid values: **2 to 10**
+	// Valid values: **http\_2xx**, **http\_3xx**, **http\_4xx**, and **http\_5xx**.
 	//
 	// >  If you set the **HealthCheck** parameter to **on**, this parameter is required.
-	HealthCheckDomain *string `json:"HealthCheckDomain,omitempty" xml:"HealthCheckDomain,omitempty"`
-	// The ID of the destination vServer group specified in the forwarding rule.
 	HealthCheckHttpCode *string `json:"HealthCheckHttpCode,omitempty" xml:"HealthCheckHttpCode,omitempty"`
-	// The requested path specified in the forwarding rule.
+	// The time interval between two consecutive health checks.
+	//
+	// Valid values: **1 to 50**. Unit: seconds.
+	//
+	// >  If you set the **HealthCheck** parameter to **on**, this parameter is required.
 	HealthCheckInterval *int32 `json:"HealthCheckInterval,omitempty" xml:"HealthCheckInterval,omitempty"`
+	// The timeout period for a health check response. If the backend Elastic Compute Service (ECS) instance does not send an expected response within the specified period of time, the health check fails.
+	//
+	// Valid values: **1 to 300**. Unit: seconds.
+	//
+	// >  If the value of the **HealthCHeckTimeout** parameter is smaller than that of the **HealthCheckInterval** parameter, the value of the **HealthCHeckTimeout** parameter is ignored and the value of the **HealthCheckInterval** parameter is regarded as the waiting period. If you set the **HealthCheck** parameter to **on**, this parameter is required.
+	HealthCheckTimeout *int32 `json:"HealthCheckTimeout,omitempty" xml:"HealthCheckTimeout,omitempty"`
+	// The URI that is used for health checks.
+	//
+	// >  If you set the **HealthCheck** parameter to **on**, this parameter is required.
+	HealthCheckURI *string `json:"HealthCheckURI,omitempty" xml:"HealthCheckURI,omitempty"`
+	// Specifies the number of successful health checks that must be consecutively performed before a backend server can be declared healthy (from **fail** to **success**).
+	//
+	// Valid values: **2 to 10**.
+	//
+	// >  If you set the **HealthCheck** parameter to **on**, this parameter is required.
+	HealthyThreshold *int32 `json:"HealthyThreshold,omitempty" xml:"HealthyThreshold,omitempty"`
 	// Indicates whether the forwarding rule uses the scheduling algorithm, session persistence, and health check configurations of the listener.
 	//
 	// Valid values: **on** and **off**.
 	//
 	// *   **off**: does not use the configurations of the listener. You can customize health check and session persistence configurations for the forwarding rule.
 	// *   **on**: uses the configurations of the listener.
-	HealthCheckTimeout *int32 `json:"HealthCheckTimeout,omitempty" xml:"HealthCheckTimeout,omitempty"`
+	ListenerSync *string `json:"ListenerSync,omitempty" xml:"ListenerSync,omitempty"`
+	// The ID of the forwarding rule.
+	RuleId *string `json:"RuleId,omitempty" xml:"RuleId,omitempty"`
+	// The name of the forwarding rule. The name must be 1 to 80 characters in length, and can contain only letters, digits, hyphens (-), forward slashes (/), periods (.),and underscores (\_).
+	//
+	// >  The name of each forwarding rule must be unique within a listener.
+	RuleName *string `json:"RuleName,omitempty" xml:"RuleName,omitempty"`
+	// The scheduling algorithm. Valid values:
+	//
+	// *   **wrr** (default): Backend servers that have higher weights receive more requests than backend servers that have lower weights.
+	// *   **rr**: Requests are distributed to backend servers in sequence.
+	//
+	// >  If you set the **ListenerSync** parameter to **off**, this parameter is required. If you set the parameter to **on**, the configuration of the listener is used.
+	Scheduler *string `json:"Scheduler,omitempty" xml:"Scheduler,omitempty"`
+	// Specifies whether to enable session persistence.
+	//
+	// Valid values: **on** and **off**.
+	//
+	// >  If you set the **ListenerSync** parameter to **off**, this parameter is required. If you set the parameter to **on**, the configuration of the listener is used.
+	StickySession *string `json:"StickySession,omitempty" xml:"StickySession,omitempty"`
 	// The method that is used to handle a cookie. Valid values:
 	//
 	// *   **insert**: inserts a cookie into the response. SLB inserts a cookie (SERVERID) into the first HTTP or HTTPS response packet that is sent to a client. The next request from the client will contain this cookie, and the listener will distribute this request to the recorded backend server.
 	// *   **server**: rewrites a cookie. When SLB detects a user-defined cookie, SLB overwrites the original cookie with the user-defined cookie. The next request from the client contains the user-defined cookie, and the listener distributes the request to the recorded backend server.
 	//
 	// >  If you set the **StickySession** parameter to **on**, this parameter is required.
-	HealthCheckURI *string `json:"HealthCheckURI,omitempty" xml:"HealthCheckURI,omitempty"`
-	// The timeout period of a cookie. Valid values: **1 to 86400**. Unit: seconds.
-	//
-	// >  If you set the **StickySession** parameter to **on** and the **StickySessionType** parameter to **insert**, this parameter is required.
-	HealthyThreshold *int32 `json:"HealthyThreshold,omitempty" xml:"HealthyThreshold,omitempty"`
-	// Specifies the number of successful health checks that must be consecutively performed before a backend server can be declared healthy (from **fail** to **success**).
-	//
-	// Valid values: **2 to 10**.
-	//
-	// >  If you set the **HealthCheck** parameter to **on**, this parameter is required.
-	ListenerSync *string `json:"ListenerSync,omitempty" xml:"ListenerSync,omitempty"`
-	// The port of the backend server that is used for health check.
-	//
-	// Valid values: **1 to 65535**.
-	//
-	// >  If you set the **HealthCheck** parameter to **on**, this parameter is required. If you left this parameter empty and the **HealthCheck** parameter is set to **on**, the backend port configuration of the listener is used by default.
-	RuleId *string `json:"RuleId,omitempty" xml:"RuleId,omitempty"`
-	// The ID of the forwarding rule.
-	RuleName *string `json:"RuleName,omitempty" xml:"RuleName,omitempty"`
-	// The timeout period for a health check response. If the backend Elastic Compute Service (ECS) instance does not send an expected response within the specified period of time, the health check fails.
-	//
-	// Valid values: **1 to 300**. Unit: seconds.
-	//
-	// >  If the value of the **HealthCHeckTimeout** parameter is smaller than that of the **HealthCheckInterval** parameter, the value of the **HealthCHeckTimeout** parameter is ignored and the value of the **HealthCheckInterval** parameter is regarded as the waiting period. If you set the **HealthCheck** parameter to **on**, this parameter is required.
-	Scheduler *string `json:"Scheduler,omitempty" xml:"Scheduler,omitempty"`
-	// Indicates whether health checks are enabled.
-	//
-	// Valid values: **on** and **off**.
-	//
-	// >  If you set the **ListenerSync** parameter to **off**, this parameter is required. If you set the parameter to **on**, the configuration of the listener is used.
-	StickySession *string `json:"StickySession,omitempty" xml:"StickySession,omitempty"`
-	// The name of the forwarding rule. The name must be 1 to 80 characters in length, and can contain only letters, digits, hyphens (-), forward slashes (/), periods (.),and underscores (\_).
-	//
-	// >  The name of each forwarding rule must be unique within a listener.
 	StickySessionType *string `json:"StickySessionType,omitempty" xml:"StickySessionType,omitempty"`
-	// Specifies whether to enable session persistence.
+	// Specifies the number of times that a healthy backend server must consecutively fail health checks before it is declared unhealthy (from **success** to **fail**).
 	//
-	// Valid values: **on** and **off**.
-	//
-	// >  If you set the **ListenerSync** parameter to **off**, this parameter is required. If you set the parameter to **on**, the configuration of the listener is used.
-	UnhealthyThreshold *int32 `json:"UnhealthyThreshold,omitempty" xml:"UnhealthyThreshold,omitempty"`
-	// The URI that is used for health checks.
+	// Valid values: **2 to 10**
 	//
 	// >  If you set the **HealthCheck** parameter to **on**, this parameter is required.
+	UnhealthyThreshold *int32 `json:"UnhealthyThreshold,omitempty" xml:"UnhealthyThreshold,omitempty"`
+	// The requested path specified in the forwarding rule.
 	Url *string `json:"Url,omitempty" xml:"Url,omitempty"`
-	// The requested domain name specified in the forwarding rule.
+	// The ID of the destination vServer group specified in the forwarding rule.
 	VServerGroupId *string `json:"VServerGroupId,omitempty" xml:"VServerGroupId,omitempty"`
 }
 
@@ -12272,8 +13101,9 @@ type DescribeServerCertificatesRequest struct {
 	ResourceOwnerAccount *string `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
 	ResourceOwnerId      *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
 	// The ID of the server certificate.
-	ServerCertificateId *string                                 `json:"ServerCertificateId,omitempty" xml:"ServerCertificateId,omitempty"`
-	Tag                 []*DescribeServerCertificatesRequestTag `json:"Tag,omitempty" xml:"Tag,omitempty" type:"Repeated"`
+	ServerCertificateId *string `json:"ServerCertificateId,omitempty" xml:"ServerCertificateId,omitempty"`
+	// The tags.
+	Tag []*DescribeServerCertificatesRequestTag `json:"Tag,omitempty" xml:"Tag,omitempty" type:"Repeated"`
 }
 
 func (s DescribeServerCertificatesRequest) String() string {
@@ -12325,7 +13155,9 @@ func (s *DescribeServerCertificatesRequest) SetTag(v []*DescribeServerCertificat
 }
 
 type DescribeServerCertificatesRequestTag struct {
-	Key   *string `json:"Key,omitempty" xml:"Key,omitempty"`
+	// The tag key.
+	Key *string `json:"Key,omitempty" xml:"Key,omitempty"`
+	// The tag value.
 	Value *string `json:"Value,omitempty" xml:"Value,omitempty"`
 }
 
@@ -12421,7 +13253,8 @@ type DescribeServerCertificatesResponseBodyServerCertificatesServerCertificate s
 	ServerCertificateName *string `json:"ServerCertificateName,omitempty" xml:"ServerCertificateName,omitempty"`
 	// The list of alternative domain names of the server certificate. The alternative domain names are specified in the `Subject Alternative Name` field of the server certificate.
 	SubjectAlternativeNames *DescribeServerCertificatesResponseBodyServerCertificatesServerCertificateSubjectAlternativeNames `json:"SubjectAlternativeNames,omitempty" xml:"SubjectAlternativeNames,omitempty" type:"Struct"`
-	Tags                    *DescribeServerCertificatesResponseBodyServerCertificatesServerCertificateTags                    `json:"Tags,omitempty" xml:"Tags,omitempty" type:"Struct"`
+	// The tags.
+	Tags *DescribeServerCertificatesResponseBodyServerCertificatesServerCertificateTags `json:"Tags,omitempty" xml:"Tags,omitempty" type:"Struct"`
 }
 
 func (s DescribeServerCertificatesResponseBodyServerCertificatesServerCertificate) String() string {
@@ -12542,7 +13375,9 @@ func (s *DescribeServerCertificatesResponseBodyServerCertificatesServerCertifica
 }
 
 type DescribeServerCertificatesResponseBodyServerCertificatesServerCertificateTagsTag struct {
-	TagKey   *string `json:"TagKey,omitempty" xml:"TagKey,omitempty"`
+	// The tag keys of the resource.
+	TagKey *string `json:"TagKey,omitempty" xml:"TagKey,omitempty"`
+	// The tag value.
 	TagValue *string `json:"TagValue,omitempty" xml:"TagValue,omitempty"`
 }
 
@@ -12799,11 +13634,11 @@ func (s *DescribeTagsResponse) SetBody(v *DescribeTagsResponseBody) *DescribeTag
 type DescribeVServerGroupAttributeRequest struct {
 	OwnerAccount *string `json:"OwnerAccount,omitempty" xml:"OwnerAccount,omitempty"`
 	OwnerId      *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
-	// The ID of the vServer group.
+	// The region ID of the Classic Load Balancer (CLB) instance.
 	RegionId             *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 	ResourceOwnerAccount *string `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
 	ResourceOwnerId      *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
-	// The operation that you want to perform. Set the value to **DescribeVServerGroupAttribute**.
+	// The ID of the vServer group.
 	VServerGroupId *string `json:"VServerGroupId,omitempty" xml:"VServerGroupId,omitempty"`
 }
 
@@ -12846,17 +13681,19 @@ func (s *DescribeVServerGroupAttributeRequest) SetVServerGroupId(v string) *Desc
 }
 
 type DescribeVServerGroupAttributeResponseBody struct {
-	// The name of the vServer group.
+	// The list of backend servers.
 	BackendServers *DescribeVServerGroupAttributeResponseBodyBackendServers `json:"BackendServers,omitempty" xml:"BackendServers,omitempty" type:"Struct"`
-	CreateTime     *string                                                  `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
+	// The time when the CLB instance was created. The time follows the `YYYY-MM-DDThh:mm:ssZ` format.
+	CreateTime *string `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
 	// The ID of the CLB instance.
 	LoadBalancerId *string `json:"LoadBalancerId,omitempty" xml:"LoadBalancerId,omitempty"`
-	// The region ID of the Classic Load Balancer (CLB) instance.
-	RequestId *string                                        `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	Tags      *DescribeVServerGroupAttributeResponseBodyTags `json:"Tags,omitempty" xml:"Tags,omitempty" type:"Struct"`
-	// The port used by the backend server.
+	// The ID of the request.
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The tag list.
+	Tags *DescribeVServerGroupAttributeResponseBodyTags `json:"Tags,omitempty" xml:"Tags,omitempty" type:"Struct"`
+	// The ID of the vServer group.
 	VServerGroupId *string `json:"VServerGroupId,omitempty" xml:"VServerGroupId,omitempty"`
-	// The IP address of the ECS instance, ENI, or elastic container instance.
+	// The name of the vServer group.
 	VServerGroupName *string `json:"VServerGroupName,omitempty" xml:"VServerGroupName,omitempty"`
 }
 
@@ -12921,18 +13758,21 @@ func (s *DescribeVServerGroupAttributeResponseBodyBackendServers) SetBackendServ
 }
 
 type DescribeVServerGroupAttributeResponseBodyBackendServersBackendServer struct {
-	// The ID of the request.
+	// The description of the vServer group.
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
-	Port        *int32  `json:"Port,omitempty" xml:"Port,omitempty"`
-	ServerId    *string `json:"ServerId,omitempty" xml:"ServerId,omitempty"`
-	ServerIp    *string `json:"ServerIp,omitempty" xml:"ServerIp,omitempty"`
+	// The port used by the backend server.
+	Port *int32 `json:"Port,omitempty" xml:"Port,omitempty"`
+	// The ID of the ECS instance, ENI, or elastic container instance.
+	ServerId *string `json:"ServerId,omitempty" xml:"ServerId,omitempty"`
+	// The IP address of the ECS instance, ENI, or elastic container instance.
+	ServerIp *string `json:"ServerIp,omitempty" xml:"ServerIp,omitempty"`
 	// The type of the backend server. Valid values:
 	//
 	// *   **ecs** (default): an Elastic Compute Service (ECS) instance
 	// *   **eni**: an elastic network interface (ENI)
 	// *   **eci**: an elastic container instance
 	Type *string `json:"Type,omitempty" xml:"Type,omitempty"`
-	// The list of backend servers.
+	// The weight of the backend server.
 	Weight *int32 `json:"Weight,omitempty" xml:"Weight,omitempty"`
 }
 
@@ -12992,7 +13832,9 @@ func (s *DescribeVServerGroupAttributeResponseBodyTags) SetTag(v []*DescribeVSer
 }
 
 type DescribeVServerGroupAttributeResponseBodyTagsTag struct {
-	TagKey   *string `json:"TagKey,omitempty" xml:"TagKey,omitempty"`
+	// The tag key.
+	TagKey *string `json:"TagKey,omitempty" xml:"TagKey,omitempty"`
+	// The tag value.
 	TagValue *string `json:"TagValue,omitempty" xml:"TagValue,omitempty"`
 }
 
@@ -13044,21 +13886,29 @@ func (s *DescribeVServerGroupAttributeResponse) SetBody(v *DescribeVServerGroupA
 }
 
 type DescribeVServerGroupsRequest struct {
-	// The ID of the server group.
-	IncludeListener *bool `json:"IncludeListener,omitempty" xml:"IncludeListener,omitempty"`
-	// The region ID of the Classic Load Balancer (CLB) instance.
+	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
+	// Specifies whether to return information about the associated listeners. Valid values:
 	//
-	// You can call the [DescribeRegions](~~27584~~) operation to query the most recent region list.
+	// *   **true**: yes
+	// *   **false** (default): no
+	IncludeListener *bool `json:"IncludeListener,omitempty" xml:"IncludeListener,omitempty"`
+	// Specifies whether to return the forwarding rules associated with the vServer groups. Valid values:
+	//
+	// *   **true**: yes
+	// *   **false** (default): no
 	IncludeRule *bool `json:"IncludeRule,omitempty" xml:"IncludeRule,omitempty"`
-	// The operation that you want to perform. Set the value to **DescribeVServerGroups**.
+	// The ID of the CLB instance.
 	LoadBalancerId *string `json:"LoadBalancerId,omitempty" xml:"LoadBalancerId,omitempty"`
 	OwnerAccount   *string `json:"OwnerAccount,omitempty" xml:"OwnerAccount,omitempty"`
 	OwnerId        *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
-	// The items associated with the server groups.
-	RegionId             *string                            `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	ResourceOwnerAccount *string                            `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
-	ResourceOwnerId      *int64                             `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
-	Tag                  []*DescribeVServerGroupsRequestTag `json:"Tag,omitempty" xml:"Tag,omitempty" type:"Repeated"`
+	// The region ID of the Classic Load Balancer (CLB) instance.
+	//
+	// You can call the [DescribeRegions](~~27584~~) operation to query the most recent region list.
+	RegionId             *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	ResourceOwnerAccount *string `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
+	ResourceOwnerId      *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
+	// The tags.
+	Tag []*DescribeVServerGroupsRequestTag `json:"Tag,omitempty" xml:"Tag,omitempty" type:"Repeated"`
 }
 
 func (s DescribeVServerGroupsRequest) String() string {
@@ -13067,6 +13917,11 @@ func (s DescribeVServerGroupsRequest) String() string {
 
 func (s DescribeVServerGroupsRequest) GoString() string {
 	return s.String()
+}
+
+func (s *DescribeVServerGroupsRequest) SetDescription(v string) *DescribeVServerGroupsRequest {
+	s.Description = &v
+	return s
 }
 
 func (s *DescribeVServerGroupsRequest) SetIncludeListener(v bool) *DescribeVServerGroupsRequest {
@@ -13115,7 +13970,9 @@ func (s *DescribeVServerGroupsRequest) SetTag(v []*DescribeVServerGroupsRequestT
 }
 
 type DescribeVServerGroupsRequestTag struct {
-	Key   *string `json:"Key,omitempty" xml:"Key,omitempty"`
+	// The tag key.
+	Key *string `json:"Key,omitempty" xml:"Key,omitempty"`
+	// The tag value.
 	Value *string `json:"Value,omitempty" xml:"Value,omitempty"`
 }
 
@@ -13138,9 +13995,9 @@ func (s *DescribeVServerGroupsRequestTag) SetValue(v string) *DescribeVServerGro
 }
 
 type DescribeVServerGroupsResponseBody struct {
-	// The listening port.
+	// The ID of the request.
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// The name of the server group.
+	// The list of backend servers.
 	VServerGroups *DescribeVServerGroupsResponseBodyVServerGroups `json:"VServerGroups,omitempty" xml:"VServerGroups,omitempty" type:"Struct"`
 }
 
@@ -13180,17 +14037,19 @@ func (s *DescribeVServerGroupsResponseBodyVServerGroups) SetVServerGroup(v []*De
 }
 
 type DescribeVServerGroupsResponseBodyVServerGroupsVServerGroup struct {
-	// The ID of the request.
+	// The items associated with the server groups.
 	AssociatedObjects *DescribeVServerGroupsResponseBodyVServerGroupsVServerGroupAssociatedObjects `json:"AssociatedObjects,omitempty" xml:"AssociatedObjects,omitempty" type:"Struct"`
-	CreateTime        *string                                                                      `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
-	ServerCount       *int64                                                                       `json:"ServerCount,omitempty" xml:"ServerCount,omitempty"`
-	Tags              *DescribeVServerGroupsResponseBodyVServerGroupsVServerGroupTags              `json:"Tags,omitempty" xml:"Tags,omitempty" type:"Struct"`
-	// Specifies whether to return information about the associated listeners. Valid values:
+	// The time when the CLB instance was created. The time follows the `YYYY-MM-DDThh:mm:ssZ` format.
+	CreateTime *string `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
+	// The number of servers.
 	//
-	// *   **true**: yes
-	// *   **false** (default): no
+	// >  The feature corresponding to this parameter is not available by default. If you want to use this feature, [submit a ticket](https://ticket-intl.console.aliyun.com/#/ticket/createIndex).
+	ServerCount *int64 `json:"ServerCount,omitempty" xml:"ServerCount,omitempty"`
+	// The tags.
+	Tags *DescribeVServerGroupsResponseBodyVServerGroupsVServerGroupTags `json:"Tags,omitempty" xml:"Tags,omitempty" type:"Struct"`
+	// The ID of the server group.
 	VServerGroupId *string `json:"VServerGroupId,omitempty" xml:"VServerGroupId,omitempty"`
-	// The list of backend servers.
+	// The name of the server group.
 	VServerGroupName *string `json:"VServerGroupName,omitempty" xml:"VServerGroupName,omitempty"`
 }
 
@@ -13233,9 +14092,10 @@ func (s *DescribeVServerGroupsResponseBodyVServerGroupsVServerGroup) SetVServerG
 }
 
 type DescribeVServerGroupsResponseBodyVServerGroupsVServerGroupAssociatedObjects struct {
-	// Queries server groups of a Classic Load Balancer (CLB) instance.
+	// The list of listeners.
 	Listeners *DescribeVServerGroupsResponseBodyVServerGroupsVServerGroupAssociatedObjectsListeners `json:"Listeners,omitempty" xml:"Listeners,omitempty" type:"Struct"`
-	Rules     *DescribeVServerGroupsResponseBodyVServerGroupsVServerGroupAssociatedObjectsRules     `json:"Rules,omitempty" xml:"Rules,omitempty" type:"Struct"`
+	// The list of forwarding rules.
+	Rules *DescribeVServerGroupsResponseBodyVServerGroupsVServerGroupAssociatedObjectsRules `json:"Rules,omitempty" xml:"Rules,omitempty" type:"Struct"`
 }
 
 func (s DescribeVServerGroupsResponseBodyVServerGroupsVServerGroupAssociatedObjects) String() string {
@@ -13274,7 +14134,9 @@ func (s *DescribeVServerGroupsResponseBodyVServerGroupsVServerGroupAssociatedObj
 }
 
 type DescribeVServerGroupsResponseBodyVServerGroupsVServerGroupAssociatedObjectsListenersListener struct {
-	Port     *int32  `json:"Port,omitempty" xml:"Port,omitempty"`
+	// The listening port.
+	Port *int32 `json:"Port,omitempty" xml:"Port,omitempty"`
+	// The listening protocol. Valid values: **tcp**, **udp**, **http**, and **https**.
 	Protocol *string `json:"Protocol,omitempty" xml:"Protocol,omitempty"`
 }
 
@@ -13314,10 +14176,14 @@ func (s *DescribeVServerGroupsResponseBodyVServerGroupsVServerGroupAssociatedObj
 }
 
 type DescribeVServerGroupsResponseBodyVServerGroupsVServerGroupAssociatedObjectsRulesRule struct {
-	Domain   *string `json:"Domain,omitempty" xml:"Domain,omitempty"`
-	RuleId   *string `json:"RuleId,omitempty" xml:"RuleId,omitempty"`
+	// The requested domain name.
+	Domain *string `json:"Domain,omitempty" xml:"Domain,omitempty"`
+	// The ID of the forwarding rule.
+	RuleId *string `json:"RuleId,omitempty" xml:"RuleId,omitempty"`
+	// The name of the forwarding rule.
 	RuleName *string `json:"RuleName,omitempty" xml:"RuleName,omitempty"`
-	Url      *string `json:"Url,omitempty" xml:"Url,omitempty"`
+	// The request path.
+	Url *string `json:"Url,omitempty" xml:"Url,omitempty"`
 }
 
 func (s DescribeVServerGroupsResponseBodyVServerGroupsVServerGroupAssociatedObjectsRulesRule) String() string {
@@ -13366,7 +14232,9 @@ func (s *DescribeVServerGroupsResponseBodyVServerGroupsVServerGroupTags) SetTag(
 }
 
 type DescribeVServerGroupsResponseBodyVServerGroupsVServerGroupTagsTag struct {
-	TagKey   *string `json:"TagKey,omitempty" xml:"TagKey,omitempty"`
+	// The tag keys of the resource.
+	TagKey *string `json:"TagKey,omitempty" xml:"TagKey,omitempty"`
+	// The tag value.
 	TagValue *string `json:"TagValue,omitempty" xml:"TagValue,omitempty"`
 }
 
@@ -13418,12 +14286,16 @@ func (s *DescribeVServerGroupsResponse) SetBody(v *DescribeVServerGroupsResponse
 }
 
 type DescribeZonesRequest struct {
+	// The logon name of the RAM user.
 	OwnerAccount *string `json:"OwnerAccount,omitempty" xml:"OwnerAccount,omitempty"`
-	OwnerId      *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
-	// The ID of the request.
-	RegionId             *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	// The ID of the Alibaba Cloud account to which the VPC belongs.
+	OwnerId *int64 `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
+	// The region ID of the Server Load Balancer (SLB) instance.
+	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	// ResourceOwnerAccount
 	ResourceOwnerAccount *string `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
-	ResourceOwnerId      *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
+	// The ID of the asset owner.
+	ResourceOwnerId *int64 `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
 }
 
 func (s DescribeZonesRequest) String() string {
@@ -13460,9 +14332,9 @@ func (s *DescribeZonesRequest) SetResourceOwnerId(v int64) *DescribeZonesRequest
 }
 
 type DescribeZonesResponseBody struct {
-	// The list of zones.
+	// The request ID.
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// The ID of the zone.
+	// The zones.
 	Zones *DescribeZonesResponseBodyZones `json:"Zones,omitempty" xml:"Zones,omitempty" type:"Struct"`
 }
 
@@ -13502,11 +14374,11 @@ func (s *DescribeZonesResponseBodyZones) SetZone(v []*DescribeZonesResponseBodyZ
 }
 
 type DescribeZonesResponseBodyZonesZone struct {
-	// Hangzhou Zone B
-	LocalName *string `json:"LocalName,omitempty" xml:"LocalName,omitempty"`
-	// The ID of the secondary zone.
-	SlaveZones *DescribeZonesResponseBodyZonesZoneSlaveZones `json:"SlaveZones,omitempty" xml:"SlaveZones,omitempty" type:"Struct"`
 	// The name of the zone.
+	LocalName *string `json:"LocalName,omitempty" xml:"LocalName,omitempty"`
+	// The secondary zones.
+	SlaveZones *DescribeZonesResponseBodyZonesZoneSlaveZones `json:"SlaveZones,omitempty" xml:"SlaveZones,omitempty" type:"Struct"`
+	// The ID of the zone.
 	ZoneId *string `json:"ZoneId,omitempty" xml:"ZoneId,omitempty"`
 }
 
@@ -13551,9 +14423,9 @@ func (s *DescribeZonesResponseBodyZonesZoneSlaveZones) SetSlaveZone(v []*Describ
 }
 
 type DescribeZonesResponseBodyZonesZoneSlaveZonesSlaveZone struct {
-	// Hangzhou Zone G
-	LocalName *string `json:"LocalName,omitempty" xml:"LocalName,omitempty"`
 	// The name of the secondary zone.
+	LocalName *string `json:"LocalName,omitempty" xml:"LocalName,omitempty"`
+	// The ID of the secondary zone.
 	ZoneId *string `json:"ZoneId,omitempty" xml:"ZoneId,omitempty"`
 }
 
@@ -13605,17 +14477,19 @@ func (s *DescribeZonesResponse) SetBody(v *DescribeZonesResponseBody) *DescribeZ
 }
 
 type EnableHighDefinationMonitorRequest struct {
-	// The ID of the request.
+	// The name of the project of Log Service. The name must be 4 to 63 characters in length, and can contain digits and lowercase letters. It must start and end with a digit or a letter.
 	LogProject *string `json:"LogProject,omitempty" xml:"LogProject,omitempty"`
-	// The operation that you want to perform. Set the value to **EnableHighDefinationMonitor**.
+	// The name of the Logstore of Log Service. The name must be 2 to 64 characters in length and can contain digits, lowercase letters, hyphens (-) and underscores (\_). It must start and end with a digit or a letter.
 	LogStore     *string `json:"LogStore,omitempty" xml:"LogStore,omitempty"`
 	OwnerAccount *string `json:"OwnerAccount,omitempty" xml:"OwnerAccount,omitempty"`
 	OwnerId      *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
-	// The name of the Logstore of Log Service. The name must be 2 to 64 characters in length and can contain digits, lowercase letters, hyphens (-) and underscores (\_). It must start and end with a digit or a letter.
+	// The ID of the region where the Classic Load Balancer (CLB) instance is deployed.
+	//
+	// You can call the [DescribeRegions](~~27584~~) operation to query the most recent region list.
 	RegionId             *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 	ResourceOwnerAccount *string `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
 	ResourceOwnerId      *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
-	// The name of the project of Log Service. The name must be 4 to 63 characters in length, and can contain digits and lowercase letters. It must start and end with a digit or a letter.
+	// The tags of the logs. The tags must be key-value pairs that are contained in a JSON dictionary.
 	Tags *string `json:"Tags,omitempty" xml:"Tags,omitempty"`
 }
 
@@ -13668,8 +14542,13 @@ func (s *EnableHighDefinationMonitorRequest) SetTags(v string) *EnableHighDefina
 }
 
 type EnableHighDefinationMonitorResponseBody struct {
+	// The ID of the request.
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	Success   *string `json:"Success,omitempty" xml:"Success,omitempty"`
+	// Indicates whether the call is successful. Valid values:
+	//
+	// *   **true**: yes
+	// *   **false**: no
+	Success *string `json:"Success,omitempty" xml:"Success,omitempty"`
 }
 
 func (s EnableHighDefinationMonitorResponseBody) String() string {
@@ -13720,20 +14599,25 @@ func (s *EnableHighDefinationMonitorResponse) SetBody(v *EnableHighDefinationMon
 }
 
 type ListTLSCipherPoliciesRequest struct {
-	// The name of the TLS policy. The name must be 2 to 128 characters in length, and can contain letters, digits, periods (.), underscores (\_), and hyphens (-). The name must start with a letter.
-	IncludeListener *bool `json:"IncludeListener,omitempty" xml:"IncludeListener,omitempty"`
-	// The timestamp generated when the TLS policy is created.
-	MaxItems *int32 `json:"MaxItems,omitempty" xml:"MaxItems,omitempty"`
-	// The status of the TLS policy. Valid values:
+	// Specifies whether to return the information about the associated listeners. Valid values:
 	//
-	// *   **configuring**: The TLS policy is being configured.
-	// *   **normal**: The TLS policy works as expected.
+	// *   **true**: returns the information about the associated listeners.
+	// *   **false** (default): does not return the information about the associated listeners.
+	IncludeListener *bool `json:"IncludeListener,omitempty" xml:"IncludeListener,omitempty"`
+	// The maximum number of TLS policies to be queried in this call. Valid values: **1** to **100**. If you do not set this parameter, the default value **20** is used.
+	MaxItems *int32 `json:"MaxItems,omitempty" xml:"MaxItems,omitempty"`
+	// The name of the TLS policy. The name must be 2 to 128 characters in length, and can contain letters, digits, periods (.), underscores (\_), and hyphens (-). The name must start with a letter.
 	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
-	// The ID of the TLS policy.
+	// The token that is used for the next query. Valid values:
+	//
+	// *   If this is your first query or no next query is to be sent, ignore this parameter.
+	// *   If a next query is to be sent, set the value to the value of NextToken that is returned from the last call.
 	NextToken    *string `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
 	OwnerAccount *string `json:"OwnerAccount,omitempty" xml:"OwnerAccount,omitempty"`
 	OwnerId      *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
-	// The list of TLS policies.
+	// The ID of the region where the Classic Load Balancer (CLB) instance is deployed.
+	//
+	// You can call the [DescribeRegions](~~36063~~) operation to query the most recent region list.
 	RegionId             *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 	ResourceOwnerAccount *string `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
 	ResourceOwnerId      *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
@@ -13800,20 +14684,21 @@ func (s *ListTLSCipherPoliciesRequest) SetTLSCipherPolicyId(v string) *ListTLSCi
 }
 
 type ListTLSCipherPoliciesResponseBody struct {
-	// The maximum number of TLS policies to be queried in this call. Valid values: **1** to **100**. If you do not set this parameter, the default value **20** is used.
+	// Indicates whether the current page is the last page. Valid values:
+	//
+	// *   **true**: The current page is the last page.
+	// *   **false**: The current page is not the last page.
 	IsTruncated *bool `json:"IsTruncated,omitempty" xml:"IsTruncated,omitempty"`
-	// The operation that you want to perform. Set the value to **ListTLSCipherPolicies**.
-	NextToken *string `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
 	// The token that is used for the next query. Valid values:
 	//
-	// *   If this is your first query or no next query is to be sent, ignore this parameter.
-	// *   If a next query is to be sent, set the value to the value of NextToken that is returned from the last call.
+	// *   If **NextToken** is empty, it indicates that no next query is to be sent.
+	// *   If **NextToken** is not empty, the value indicates the token that is used for the next query.
+	NextToken *string `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
+	// The ID of the request.
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// The ID of the region where the Classic Load Balancer (CLB) instance is deployed.
-	//
-	// You can call the [DescribeRegions](~~36063~~) operation to query the most recent region list.
+	// The list of TLS policies.
 	TLSCipherPolicies []*ListTLSCipherPoliciesResponseBodyTLSCipherPolicies `json:"TLSCipherPolicies,omitempty" xml:"TLSCipherPolicies,omitempty" type:"Repeated"`
-	// The ID of the CLB instance.
+	// The total number of TLS policies returned.
 	TotalCount *int32 `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
 }
 
@@ -13851,28 +14736,59 @@ func (s *ListTLSCipherPoliciesResponseBody) SetTotalCount(v int32) *ListTLSCiphe
 }
 
 type ListTLSCipherPoliciesResponseBodyTLSCipherPolicies struct {
+	// The cipher suites supported by the TLS version.
+	//
+	// TLS 1.0 and TLS 1.1 support the following cipher suites:
+	//
+	// *   ECDHE-ECDSA-AES128-SHA
+	// *   ECDHE-ECDSA-AES256-SHA
+	// *   ECDHE-RSA-AES128-SHA
+	// *   ECDHE-RSA-AES256-SHA
+	// *   AES128-SHA AES256-SHA
+	// *   DES-CBC3-SHA
+	//
+	// TLS 1.2 supports the following cipher suites:
+	//
+	// *   ECDHE-ECDSA-AES128-SHA
+	// *   ECDHE-ECDSA-AES256-SHA
+	// *   ECDHE-RSA-AES128-SHA
+	// *   ECDHE-RSA-AES256-SHA
+	// *   AES128-SHA AES256-SHA
+	// *   DES-CBC3-SHA
+	// *   ECDHE-ECDSA-AES128-GCM-SHA256
+	// *   ECDHE-ECDSA-AES256-GCM-SHA384
+	// *   ECDHE-ECDSA-AES128-SHA256
+	// *   ECDHE-ECDSA-AES256-SHA384
+	// *   ECDHE-RSA-AES128-GCM-SHA256
+	// *   ECDHE-RSA-AES256-GCM-SHA384
+	// *   ECDHE-RSA-AES128-SHA256
+	// *   ECDHE-RSA-AES256-SHA384
+	// *   AES128-GCM-SHA256
+	// *   AES256-GCM-SHA384
+	// *   AES128-SHA256 AES256-SHA256
+	//
+	// TLS 1.3 supports the following cipher suites:
+	//
+	// *   TLS_AES\_128\_GCM_SHA256
+	// *   TLS_AES\_256\_GCM_SHA384
+	// *   TLS_CHACHA20\_POLY1305\_SHA256
+	// *   TLS_AES\_128\_CCM_SHA256
+	// *   TLS_AES\_128\_CCM\_8\_SHA256
 	Ciphers []*string `json:"Ciphers,omitempty" xml:"Ciphers,omitempty" type:"Repeated"`
-	// The listening port. Valid values: **1** to **65535**.
+	// The timestamp generated when the TLS policy is created.
 	CreateTime *int64 `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
-	// The listening protocol. Valid values:
-	//
-	// *   **TCP**
-	// *   **UDP**
-	// *   **HTTP**
-	// *   **HTTPS**
+	// The ID of the TLS policy.
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	// The list of associated listeners.
+	// The name of the TLS policy.
 	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
-	// Specifies whether to return the information about the associated listeners. Valid values:
-	//
-	// *   **true**: returns the information about the associated listeners.
-	// *   **false** (default): does not return the information about the associated listeners.
+	// The list of associated listeners.
 	RelateListeners []*ListTLSCipherPoliciesResponseBodyTLSCipherPoliciesRelateListeners `json:"RelateListeners,omitempty" xml:"RelateListeners,omitempty" type:"Repeated"`
-	// Indicates whether the current page is the last page. Valid values:
+	// The status of the TLS policy. Valid values:
 	//
-	// *   **true**: The current page is the last page.
-	// *   **false**: The current page is not the last page.
-	Status      *string   `json:"Status,omitempty" xml:"Status,omitempty"`
+	// *   **configuring**: The TLS policy is being configured.
+	// *   **normal**: The TLS policy works as expected.
+	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
+	// The version of the TLS protocol.
 	TLSVersions []*string `json:"TLSVersions,omitempty" xml:"TLSVersions,omitempty" type:"Repeated"`
 }
 
@@ -13920,10 +14836,16 @@ func (s *ListTLSCipherPoliciesResponseBodyTLSCipherPolicies) SetTLSVersions(v []
 }
 
 type ListTLSCipherPoliciesResponseBodyTLSCipherPoliciesRelateListeners struct {
+	// The ID of the CLB instance.
 	LoadBalancerId *string `json:"LoadBalancerId,omitempty" xml:"LoadBalancerId,omitempty"`
-	// The name of the TLS policy.
+	// The listening port. Valid values: **1** to **65535**.
 	Port *int32 `json:"Port,omitempty" xml:"Port,omitempty"`
-	// The ID of the request.
+	// The listening protocol. Valid values:
+	//
+	// *   **TCP**
+	// *   **UDP**
+	// *   **HTTP**
+	// *   **HTTPS**
 	Protocol *string `json:"Protocol,omitempty" xml:"Protocol,omitempty"`
 }
 
@@ -14208,13 +15130,15 @@ func (s *ListTagResourcesResponse) SetBody(v *ListTagResourcesResponseBody) *Lis
 }
 
 type ModifyHighDefinationMonitorRequest struct {
-	// The operation that you want to perform. Set the value to **ModifyHighDefinationMonitor**.
-	LogProject *string `json:"LogProject,omitempty" xml:"LogProject,omitempty"`
 	// The new name of the project of Log Service. The name must be 4 to 63 characters in length, and can contain digits and lowercase letters. It must start and end with a digit or a letter.
+	LogProject *string `json:"LogProject,omitempty" xml:"LogProject,omitempty"`
+	// The new name of the Logstore of Log Service. The name must be 2 to 64 characters in length and can contain digits, lowercase letters, hyphens (-) and underscores (\_). It must start and end with a digit or a letter.
 	LogStore     *string `json:"LogStore,omitempty" xml:"LogStore,omitempty"`
 	OwnerAccount *string `json:"OwnerAccount,omitempty" xml:"OwnerAccount,omitempty"`
 	OwnerId      *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
-	// The ID of the request.
+	// The ID of the region where the Classic Load Balancer (CLB) instance is deployed.
+	//
+	// You can call the [DescribeRegions](~~27584~~) operation to query the most recent region list.
 	RegionId             *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 	ResourceOwnerAccount *string `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
 	ResourceOwnerId      *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
@@ -14264,8 +15188,13 @@ func (s *ModifyHighDefinationMonitorRequest) SetResourceOwnerId(v int64) *Modify
 }
 
 type ModifyHighDefinationMonitorResponseBody struct {
+	// The ID of the request.
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	Success   *string `json:"Success,omitempty" xml:"Success,omitempty"`
+	// Indicates whether the call is successful. Valid values:
+	//
+	// *   **true**: yes
+	// *   **false**: no
+	Success *string `json:"Success,omitempty" xml:"Success,omitempty"`
 }
 
 func (s ModifyHighDefinationMonitorResponseBody) String() string {
@@ -14316,28 +15245,32 @@ func (s *ModifyHighDefinationMonitorResponse) SetBody(v *ModifyHighDefinationMon
 }
 
 type ModifyLoadBalancerInstanceChargeTypeRequest struct {
+	// The maximum bandwidth of the Internet-facing CLB instance that is billed on a pay-by-bandwidth basis.
+	//
+	// You do not need to set this parameter. The metering method of Internet data transfer for pay-by-LCU instances supports only pay-by-traffic.
 	Bandwidth *int32 `json:"Bandwidth,omitempty" xml:"Bandwidth,omitempty"`
-	// The specification of the CLB instance.
+	// The metering method of the instance after the change.
 	//
-	// You do not need to set this parameter. For pay-as-you-go CLB instances, you can only change the metering method from pay-by-specification to pay-by-LCU. You cannot change the metering method from pay-by-LCU to pay-by-specification.
+	// Valid value: **PayByCLCU**. Only pay-by-LCU is supported.
 	InstanceChargeType *string `json:"InstanceChargeType,omitempty" xml:"InstanceChargeType,omitempty"`
-	// The region ID of the CLB instance.
-	//
-	// You can call the [DescribeRegions](~~25609~~) operation to query the most recent region list.
-	InternetChargeType *string `json:"InternetChargeType,omitempty" xml:"InternetChargeType,omitempty"`
-	// The ID of the request.
-	LoadBalancerId   *string `json:"LoadBalancerId,omitempty" xml:"LoadBalancerId,omitempty"`
-	LoadBalancerSpec *string `json:"LoadBalancerSpec,omitempty" xml:"LoadBalancerSpec,omitempty"`
-	OwnerAccount     *string `json:"OwnerAccount,omitempty" xml:"OwnerAccount,omitempty"`
-	OwnerId          *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
 	// The metering method of Internet data transfer after the change.
 	//
 	// Valid value: **paybytraffic**.
 	//
-	// >
+	// > *   If the value of the **InstanceChargeType** parameter is set to **PayByCLCU**, only pay-by-data-transfer is supported.
+	// >*   When you change the metering method, the new metering method takes effect at 00:00:00 the next day.
+	InternetChargeType *string `json:"InternetChargeType,omitempty" xml:"InternetChargeType,omitempty"`
+	// The ID of the CLB instance.
+	LoadBalancerId *string `json:"LoadBalancerId,omitempty" xml:"LoadBalancerId,omitempty"`
+	// The specification of the CLB instance.
 	//
-	// *   If the value of the **InstanceChargeType** parameter is set to **PayByCLCU**, only pay-by-data-transfer is supported.
-	// *   When you change the metering method, the new metering method takes effect at 00:00:00 the next day.
+	// You do not need to set this parameter. For pay-as-you-go CLB instances, you can only change the metering method from pay-by-specification to pay-by-LCU. You cannot change the metering method from pay-by-LCU to pay-by-specification.
+	LoadBalancerSpec *string `json:"LoadBalancerSpec,omitempty" xml:"LoadBalancerSpec,omitempty"`
+	OwnerAccount     *string `json:"OwnerAccount,omitempty" xml:"OwnerAccount,omitempty"`
+	OwnerId          *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
+	// The region ID of the CLB instance.
+	//
+	// You can call the [DescribeRegions](~~25609~~) operation to query the most recent region list.
 	RegionId             *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 	ResourceOwnerAccount *string `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
 	ResourceOwnerId      *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
@@ -14402,6 +15335,7 @@ func (s *ModifyLoadBalancerInstanceChargeTypeRequest) SetResourceOwnerId(v int64
 }
 
 type ModifyLoadBalancerInstanceChargeTypeResponseBody struct {
+	// The ID of the request.
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -14583,24 +15517,29 @@ func (s *ModifyLoadBalancerInstanceSpecResponse) SetBody(v *ModifyLoadBalancerIn
 }
 
 type ModifyLoadBalancerInternetSpecRequest struct {
-	AutoPay *bool `json:"AutoPay,omitempty" xml:"AutoPay,omitempty"`
 	// Specifies whether to automatically pay the subscription fee of the Internet-facing CLB instance. Valid values:
 	//
 	// *   **true**: enables automatic payments. This is the default value.
 	// *   **false**: disables automatic payment. You must complete the payment in Order Center.
-	Bandwidth *int32 `json:"Bandwidth,omitempty" xml:"Bandwidth,omitempty"`
-	// The ID of the region where the CLB instance is deployed.
+	AutoPay *bool `json:"AutoPay,omitempty" xml:"AutoPay,omitempty"`
+	// The maximum bandwidth of the Internet-facing CLB instance that uses the pay-by-bandwidth metering method. Unit: Mbit/s.
 	//
-	// You can call the [DescribeRegions](~~27584~~) operation to query the most recent region list.
-	InternetChargeType *string `json:"InternetChargeType,omitempty" xml:"InternetChargeType,omitempty"`
-	// The ID of the request.
-	LoadBalancerId *string `json:"LoadBalancerId,omitempty" xml:"LoadBalancerId,omitempty"`
-	OwnerAccount   *string `json:"OwnerAccount,omitempty" xml:"OwnerAccount,omitempty"`
-	OwnerId        *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
+	// Valid values: **1 to 5000**. The maximum bandwidth varies based on the region where the CLB instance is created.****
+	//
+	// >  You do not need to specify this parameter if you set **InternetChargeType** to **paybytraffic** (pay-by-data-transfer).
+	Bandwidth *int32 `json:"Bandwidth,omitempty" xml:"Bandwidth,omitempty"`
 	// The metering method of the Internet-facing CLB instance. Valid values:
 	//
 	// *   **paybybandwidth**: pay-by-bandwidth
 	// *   **paybytraffic**: pay-by-data-transfer
+	InternetChargeType *string `json:"InternetChargeType,omitempty" xml:"InternetChargeType,omitempty"`
+	// The ID of the CLB instance.
+	LoadBalancerId *string `json:"LoadBalancerId,omitempty" xml:"LoadBalancerId,omitempty"`
+	OwnerAccount   *string `json:"OwnerAccount,omitempty" xml:"OwnerAccount,omitempty"`
+	OwnerId        *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
+	// The ID of the region where the CLB instance is deployed.
+	//
+	// You can call the [DescribeRegions](~~27584~~) operation to query the most recent region list.
 	RegionId             *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 	ResourceOwnerAccount *string `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
 	ResourceOwnerId      *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
@@ -14660,7 +15599,9 @@ func (s *ModifyLoadBalancerInternetSpecRequest) SetResourceOwnerId(v int64) *Mod
 }
 
 type ModifyLoadBalancerInternetSpecResponseBody struct {
-	OrderId   *int64  `json:"OrderId,omitempty" xml:"OrderId,omitempty"`
+	// The order ID of the subscription CLB instance.
+	OrderId *int64 `json:"OrderId,omitempty" xml:"OrderId,omitempty"`
+	// The ID of the request.
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -14863,37 +15804,6 @@ func (s *ModifyLoadBalancerPayTypeResponse) SetBody(v *ModifyLoadBalancerPayType
 }
 
 type ModifyVServerGroupBackendServersRequest struct {
-	// The ID of the request.
-	NewBackendServers *string `json:"NewBackendServers,omitempty" xml:"NewBackendServers,omitempty"`
-	// The ID of the vServer group.
-	OldBackendServers *string `json:"OldBackendServers,omitempty" xml:"OldBackendServers,omitempty"`
-	OwnerAccount      *string `json:"OwnerAccount,omitempty" xml:"OwnerAccount,omitempty"`
-	OwnerId           *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
-	// The list of backend servers that you want to replace in the vServer group. You can specify at most 20 backend servers for a vServer group in each call.
-	//
-	// *   **ServerId**: required. The ID of the Elastic Compute Service (ECS) instance or elastic network interface (ENI) that serves as a backend server. This parameter must be of the STRING type.
-	//
-	// *   **Port**: required. The port that is used by the backend server. This parameter must be of the INTEGER type. Valid values: **1 to 65535**.
-	//
-	// *   **Weight**: required. The weight of the backend server. This parameter must be of the INTEGER type. Valid values: **0 to 100**.
-	//
-	// *   **Description**: optional. The description of the backend server. This parameter must be of the STRING type. The description must be 1 to 80 characters in length, and can contain letters, digits, hyphens (-), forward slashes (/), periods (.),and underscores (\_).
-	//
-	// *   **Type**: the type of backend server. This parameter must be of the STRING type. Valid values:
-	//
-	//     *   **ecs**: an ECS instance. This is the default value.
-	//     *   **eni**: an ENI.
-	//
-	// *   **ServerIp**: the IP address of the ECS instance or ENI.
-	//
-	// Examples:
-	//
-	// *   An ECS instance: `[{ "ServerId": "i-xxxxxxxxx", "Weight": "100", "Type": "ecs", "Port":"80","Description":"test-112" }]`
-	// *   An ENI: `[{ "ServerId": "eni-xxxxxxxxx", "Weight": "100", "Type": "eni", "ServerIp": "192.168.**.**", "Port":"80","Description":"test-112" }]`
-	// *   An ENI with multiple IP addresses: `[{ "ServerId": "eni-xxxxxxxxx", "Weight": "100", "Type": "eni", "ServerIp": "192.168.**.**", "Port":"80","Description":"test-112" },{ "ServerId": "eni-xxxxxxxxx", "Weight": "100", "Type": "eni", "ServerIp": "172.166.**.**", "Port":"80","Description":"test-113" }]`
-	RegionId             *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	ResourceOwnerAccount *string `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
-	ResourceOwnerId      *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
 	// The list of new backend servers that you want to use to replace those in the vServer group. You can specify at most 20 backend servers for a vServer group in each call.
 	//
 	// *   **ServerId**: required. The ID of the ECS instance or ENI that serves as a backend server. This parameter must be of the STRING type.
@@ -14916,6 +15826,37 @@ type ModifyVServerGroupBackendServersRequest struct {
 	// *   An ECS instance: `[{ "ServerId": "i-xxxxxxxxx", "Weight": "100", "Type": "ecs", "Port":"80","Description":"test-112" }]`
 	// *   An ENI: `[{ "ServerId": "eni-xxxxxxxxx", "Weight": "100", "Type": "eni", "ServerIp": "192.168.**.**", "Port":"80","Description":"test-112" }]`
 	// *   An ENI with multiple IP addresses: `[{ "ServerId": "eni-xxxxxxxxx", "Weight": "100", "Type": "eni", "ServerIp": "192.168.**.**", "Port":"80","Description":"test-112" },{ "ServerId": "eni-xxxxxxxxx", "Weight": "100", "Type": "eni", "ServerIp": "172.166.**.**", "Port":"80","Description":"test-113" }]`
+	NewBackendServers *string `json:"NewBackendServers,omitempty" xml:"NewBackendServers,omitempty"`
+	// The list of backend servers that you want to replace in the vServer group. You can specify at most 20 backend servers for a vServer group in each call.
+	//
+	// *   **ServerId**: required. The ID of the Elastic Compute Service (ECS) instance or elastic network interface (ENI) that serves as a backend server. This parameter must be of the STRING type.
+	//
+	// *   **Port**: required. The port that is used by the backend server. This parameter must be of the INTEGER type. Valid values: **1 to 65535**.
+	//
+	// *   **Weight**: required. The weight of the backend server. This parameter must be of the INTEGER type. Valid values: **0 to 100**.
+	//
+	// *   **Description**: optional. The description of the backend server. This parameter must be of the STRING type. The description must be 1 to 80 characters in length, and can contain letters, digits, hyphens (-), forward slashes (/), periods (.),and underscores (\_).
+	//
+	// *   **Type**: the type of backend server. This parameter must be of the STRING type. Valid values:
+	//
+	//     *   **ecs**: an ECS instance. This is the default value.
+	//     *   **eni**: an ENI.
+	//
+	// *   **ServerIp**: the IP address of the ECS instance or ENI.
+	//
+	// Examples:
+	//
+	// *   An ECS instance: `[{ "ServerId": "i-xxxxxxxxx", "Weight": "100", "Type": "ecs", "Port":"80","Description":"test-112" }]`
+	// *   An ENI: `[{ "ServerId": "eni-xxxxxxxxx", "Weight": "100", "Type": "eni", "ServerIp": "192.168.**.**", "Port":"80","Description":"test-112" }]`
+	// *   An ENI with multiple IP addresses: `[{ "ServerId": "eni-xxxxxxxxx", "Weight": "100", "Type": "eni", "ServerIp": "192.168.**.**", "Port":"80","Description":"test-112" },{ "ServerId": "eni-xxxxxxxxx", "Weight": "100", "Type": "eni", "ServerIp": "172.166.**.**", "Port":"80","Description":"test-113" }]`
+	OldBackendServers *string `json:"OldBackendServers,omitempty" xml:"OldBackendServers,omitempty"`
+	OwnerAccount      *string `json:"OwnerAccount,omitempty" xml:"OwnerAccount,omitempty"`
+	OwnerId           *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
+	// The ID of the region where the Classic Load Balancer (CLB) instance is deployed.
+	RegionId             *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	ResourceOwnerAccount *string `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
+	ResourceOwnerId      *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
+	// The ID of the vServer group.
 	VServerGroupId *string `json:"VServerGroupId,omitempty" xml:"VServerGroupId,omitempty"`
 }
 
@@ -14968,14 +15909,11 @@ func (s *ModifyVServerGroupBackendServersRequest) SetVServerGroupId(v string) *M
 }
 
 type ModifyVServerGroupBackendServersResponseBody struct {
-	// The weight of the backend server.
-	BackendServers *ModifyVServerGroupBackendServersResponseBodyBackendServers `json:"BackendServers,omitempty" xml:"BackendServers,omitempty" type:"Struct"`
-	// The type of backend server. Valid values:
-	//
-	// *   **ecs**: an ECS instance. This is the default value.
-	// *   **eni**: an ENI.
-	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	// The list of backend servers.
+	BackendServers *ModifyVServerGroupBackendServersResponseBodyBackendServers `json:"BackendServers,omitempty" xml:"BackendServers,omitempty" type:"Struct"`
+	// The ID of the request.
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The ID of the vServer group.
 	VServerGroupId *string `json:"VServerGroupId,omitempty" xml:"VServerGroupId,omitempty"`
 }
 
@@ -15020,15 +15958,18 @@ func (s *ModifyVServerGroupBackendServersResponseBodyBackendServers) SetBackendS
 }
 
 type ModifyVServerGroupBackendServersResponseBodyBackendServersBackendServer struct {
-	// The port that is used by the backend server.
-	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
-	// You can call this operation to replace the backend servers in a specified vServer group. To modify the configurations of the backend servers, such as their weights, you can call the [SetVServerGroupAttribute](~~35217~~) operation.
-	Port *int32 `json:"Port,omitempty" xml:"Port,omitempty"`
-	// Replaces backend servers in a specified vServer group.
-	ServerId *string `json:"ServerId,omitempty" xml:"ServerId,omitempty"`
 	// The description of the backend server.
+	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
+	// The port that is used by the backend server.
+	Port *int32 `json:"Port,omitempty" xml:"Port,omitempty"`
+	// The ID of the ECS instance or ENI.
+	ServerId *string `json:"ServerId,omitempty" xml:"ServerId,omitempty"`
+	// The type of backend server. Valid values:
+	//
+	// *   **ecs**: an ECS instance. This is the default value.
+	// *   **eni**: an ENI.
 	Type *string `json:"Type,omitempty" xml:"Type,omitempty"`
-	// Backend server description
+	// The weight of the backend server.
 	Weight *int32 `json:"Weight,omitempty" xml:"Weight,omitempty"`
 }
 
@@ -15223,11 +16164,18 @@ func (s *MoveResourceGroupResponse) SetBody(v *MoveResourceGroupResponseBody) *M
 }
 
 type RemoveAccessControlListEntryRequest struct {
-	AclEntrys    *string `json:"AclEntrys,omitempty" xml:"AclEntrys,omitempty"`
+	// The IP entries that you want to remove from the network ACL. Valid values:
+	//
+	// *   **entry**: the IP address or CIDR block that you want to remove from the network ACL. Separate multiple IP addresses or CIDR blocks with commas (,).
+	// *   **comment**: the description of the network ACL.
+	AclEntrys *string `json:"AclEntrys,omitempty" xml:"AclEntrys,omitempty"`
+	// The ID of the network ACL.
 	AclId        *string `json:"AclId,omitempty" xml:"AclId,omitempty"`
 	OwnerAccount *string `json:"OwnerAccount,omitempty" xml:"OwnerAccount,omitempty"`
 	OwnerId      *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
-	// The ID of the network ACL.
+	// The ID of the region where the network ACL is created.
+	//
+	// You can call the [DescribeRegions](~~27584~~) operation to query the most recent region list.
 	RegionId             *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 	ResourceOwnerAccount *string `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
 	ResourceOwnerId      *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
@@ -15277,6 +16225,7 @@ func (s *RemoveAccessControlListEntryRequest) SetResourceOwnerId(v int64) *Remov
 }
 
 type RemoveAccessControlListEntryResponseBody struct {
+	// The ID of the request.
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -15323,13 +16272,30 @@ func (s *RemoveAccessControlListEntryResponse) SetBody(v *RemoveAccessControlLis
 }
 
 type RemoveBackendServersRequest struct {
-	// The ID of the request.
+	// The backend servers to be removed.
+	//
+	// *   **ServerId**: The IDs of the backend servers. Set the value to a string. This parameter is required.
+	//
+	// *   **Type**: The type of the backend server. Valid values:
+	//
+	//     *   **ecs** (default): an Elastic Compute Service (ECS) instance
+	//
+	//     <!---->
+	//
+	//     *   **eni**: an elastic network interface (ENI)
+	//
+	// *   **Weight**: the weight of the backend server. Valid values: **0** to **100**. Set the value to an integer.
+	//
+	// You can remove at most 20 backend servers in each call. Examples:
+	//
+	// *   Remove an ECS instance: `[{"ServerId":"i-bp1fq61enf4loa5i****", "Type": "ecs","Weight":"100"}]`
+	// *   Remove an ENI: `[{"ServerId":"eni-2ze1sdp5****","Type": "eni","Weight":"100"}]`
 	BackendServers *string `json:"BackendServers,omitempty" xml:"BackendServers,omitempty"`
 	// The ID of the CLB instance.
 	LoadBalancerId *string `json:"LoadBalancerId,omitempty" xml:"LoadBalancerId,omitempty"`
 	OwnerAccount   *string `json:"OwnerAccount,omitempty" xml:"OwnerAccount,omitempty"`
 	OwnerId        *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
-	// The ID of the CLB instance.
+	// The ID of the region where the CLB instance is deployed.
 	RegionId             *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 	ResourceOwnerAccount *string `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
 	ResourceOwnerId      *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
@@ -15379,14 +16345,11 @@ func (s *RemoveBackendServersRequest) SetResourceOwnerId(v int64) *RemoveBackend
 }
 
 type RemoveBackendServersResponseBody struct {
-	// The weight of the backend server. Valid values: **0 to 100**.
-	BackendServers *RemoveBackendServersResponseBodyBackendServers `json:"BackendServers,omitempty" xml:"BackendServers,omitempty" type:"Struct"`
 	// The list of backend servers.
+	BackendServers *RemoveBackendServersResponseBodyBackendServers `json:"BackendServers,omitempty" xml:"BackendServers,omitempty" type:"Struct"`
+	// The ID of the CLB instance.
 	LoadBalancerId *string `json:"LoadBalancerId,omitempty" xml:"LoadBalancerId,omitempty"`
-	// The type of the backend server. Valid values:
-	//
-	// *   **ecs**: an ECS instance
-	// *   **eni**: an ENI
+	// The ID of the request.
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -15431,13 +16394,16 @@ func (s *RemoveBackendServersResponseBodyBackendServers) SetBackendServer(v []*R
 }
 
 type RemoveBackendServersResponseBodyBackendServersBackendServer struct {
-	// >  If the backend servers that you want to remove are not in the server list of the Classic Load Balancer (CLB) instance, the request fails. However, the system does not report an error.
-	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
-	// Removes backend servers.
-	ServerId *string `json:"ServerId,omitempty" xml:"ServerId,omitempty"`
 	// The description of the server group.
-	Type *string `json:"Type,omitempty" xml:"Type,omitempty"`
+	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
 	// The ID of the backend server.
+	ServerId *string `json:"ServerId,omitempty" xml:"ServerId,omitempty"`
+	// The type of the backend server. Valid values:
+	//
+	// *   **ecs**: an ECS instance
+	// *   **eni**: an ENI
+	Type *string `json:"Type,omitempty" xml:"Type,omitempty"`
+	// The weight of the backend server. Valid values: **0 to 100**.
 	Weight *int32 `json:"Weight,omitempty" xml:"Weight,omitempty"`
 }
 
@@ -15499,24 +16465,26 @@ func (s *RemoveBackendServersResponse) SetBody(v *RemoveBackendServersResponseBo
 }
 
 type RemoveListenerWhiteListItemRequest struct {
+	// The listening port.
+	ListenerPort *int32 `json:"ListenerPort,omitempty" xml:"ListenerPort,omitempty"`
 	// The frontend protocol that is used by the CLB instance.
 	//
 	// >  This parameter is required when listeners that use different protocols listen on the same port.
-	ListenerPort     *int32  `json:"ListenerPort,omitempty" xml:"ListenerPort,omitempty"`
 	ListenerProtocol *string `json:"ListenerProtocol,omitempty" xml:"ListenerProtocol,omitempty"`
-	// The region where the Classic Load Balancer (CLB) instance is created.
-	//
-	// You can call the [DescribeRegions](~~27584~~) operation to query the most recent region list.
+	// The ID of the CLB instance.
 	LoadBalancerId *string `json:"LoadBalancerId,omitempty" xml:"LoadBalancerId,omitempty"`
 	OwnerAccount   *string `json:"OwnerAccount,omitempty" xml:"OwnerAccount,omitempty"`
 	OwnerId        *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
-	// The list of IP addresses or CIDR blocks that you want to remove from the whitelist. Separate multiple IP addresses or CIDR blocks with commas (,).
+	// The region where the Classic Load Balancer (CLB) instance is created.
 	//
-	// >  If all IP addresses are removed from the whitelist, the listener does not forward requests.
+	// You can call the [DescribeRegions](~~27584~~) operation to query the most recent region list.
 	RegionId             *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 	ResourceOwnerAccount *string `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
 	ResourceOwnerId      *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
-	SourceItems          *string `json:"SourceItems,omitempty" xml:"SourceItems,omitempty"`
+	// The list of IP addresses or CIDR blocks that you want to remove from the whitelist. Separate multiple IP addresses or CIDR blocks with commas (,).
+	//
+	// >  If all IP addresses are removed from the whitelist, the listener does not forward requests.
+	SourceItems *string `json:"SourceItems,omitempty" xml:"SourceItems,omitempty"`
 }
 
 func (s RemoveListenerWhiteListItemRequest) String() string {
@@ -15573,6 +16541,7 @@ func (s *RemoveListenerWhiteListItemRequest) SetSourceItems(v string) *RemoveLis
 }
 
 type RemoveListenerWhiteListItemResponseBody struct {
+	// The ID of the request.
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -15722,10 +16691,6 @@ func (s *RemoveTagsResponse) SetBody(v *RemoveTagsResponseBody) *RemoveTagsRespo
 }
 
 type RemoveVServerGroupBackendServersRequest struct {
-	// The ID of the request.
-	BackendServers *string `json:"BackendServers,omitempty" xml:"BackendServers,omitempty"`
-	OwnerAccount   *string `json:"OwnerAccount,omitempty" xml:"OwnerAccount,omitempty"`
-	OwnerId        *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
 	// The list of backend servers that you want to remove from the vServer group.
 	//
 	// You can specify at most 20 backend servers for a vServer group in each call.
@@ -15746,6 +16711,10 @@ type RemoveVServerGroupBackendServersRequest struct {
 	//     *   **eni**: an ENI.
 	//
 	// *   **ServerIp**: the IP address of the ECS instance or ENI.
+	BackendServers *string `json:"BackendServers,omitempty" xml:"BackendServers,omitempty"`
+	OwnerAccount   *string `json:"OwnerAccount,omitempty" xml:"OwnerAccount,omitempty"`
+	OwnerId        *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
+	// The ID of the region where the Classic Load Balancer (CLB) instance is deployed.
 	RegionId             *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 	ResourceOwnerAccount *string `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
 	ResourceOwnerId      *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
@@ -15797,14 +16766,11 @@ func (s *RemoveVServerGroupBackendServersRequest) SetVServerGroupId(v string) *R
 }
 
 type RemoveVServerGroupBackendServersResponseBody struct {
-	// The weight of the backend server.
-	BackendServers *RemoveVServerGroupBackendServersResponseBodyBackendServers `json:"BackendServers,omitempty" xml:"BackendServers,omitempty" type:"Struct"`
-	// The type of backend server. Valid values:
-	//
-	// *   **ecs**: an ECS instance
-	// *   **eni**: an ENI
-	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	// The list of backend servers.
+	BackendServers *RemoveVServerGroupBackendServersResponseBodyBackendServers `json:"BackendServers,omitempty" xml:"BackendServers,omitempty" type:"Struct"`
+	// The ID of the request.
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The ID of the vServer group.
 	VServerGroupId *string `json:"VServerGroupId,omitempty" xml:"VServerGroupId,omitempty"`
 }
 
@@ -15849,13 +16815,16 @@ func (s *RemoveVServerGroupBackendServersResponseBodyBackendServers) SetBackendS
 }
 
 type RemoveVServerGroupBackendServersResponseBodyBackendServersBackendServer struct {
-	// >  If one or more backend servers specified by the **BackendServers** parameter do not exist in the specified vServer group, these backend servers are ignored and no error message is returned.
-	Port *int32 `json:"Port,omitempty" xml:"Port,omitempty"`
-	// Removes one or more backend servers from a specified vServer group.
-	ServerId *string `json:"ServerId,omitempty" xml:"ServerId,omitempty"`
 	// The port that is used by the backend server.
-	Type *string `json:"Type,omitempty" xml:"Type,omitempty"`
+	Port *int32 `json:"Port,omitempty" xml:"Port,omitempty"`
 	// The ID of the ECS instance or ENI.
+	ServerId *string `json:"ServerId,omitempty" xml:"ServerId,omitempty"`
+	// The type of backend server. Valid values:
+	//
+	// *   **ecs**: an ECS instance
+	// *   **eni**: an ENI
+	Type *string `json:"Type,omitempty" xml:"Type,omitempty"`
+	// The weight of the backend server.
 	Weight *int32 `json:"Weight,omitempty" xml:"Weight,omitempty"`
 }
 
@@ -15917,11 +16886,15 @@ func (s *RemoveVServerGroupBackendServersResponse) SetBody(v *RemoveVServerGroup
 }
 
 type SetAccessControlListAttributeRequest struct {
-	AclId        *string `json:"AclId,omitempty" xml:"AclId,omitempty"`
+	// The ID of the network ACL.
+	AclId *string `json:"AclId,omitempty" xml:"AclId,omitempty"`
+	// The new name of the network ACL. The name must be 1 to 80 characters in length, and can contain only letters, digits, periods (.), hyphens (-), forward slashes (/), and underscores (\_). The name of the network ACL must be unique within each region.
 	AclName      *string `json:"AclName,omitempty" xml:"AclName,omitempty"`
 	OwnerAccount *string `json:"OwnerAccount,omitempty" xml:"OwnerAccount,omitempty"`
 	OwnerId      *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
-	// The ID of the network ACL.
+	// The ID of the region where the network ACL is created.
+	//
+	// You can call the [DescribeRegions](~~27584~~) operation to query the most recent region list.
 	RegionId             *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 	ResourceOwnerAccount *string `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
 	ResourceOwnerId      *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
@@ -15971,6 +16944,7 @@ func (s *SetAccessControlListAttributeRequest) SetResourceOwnerId(v int64) *SetA
 }
 
 type SetAccessControlListAttributeResponseBody struct {
+	// The ID of the request.
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -16017,18 +16991,25 @@ func (s *SetAccessControlListAttributeResponse) SetBody(v *SetAccessControlListA
 }
 
 type SetAccessLogsDownloadAttributeRequest struct {
-	// The tags that are added to the CLB instance. The tags must be key-value pairs that are contained in a JSON dictionary.
+	// The ID of the CLB instance.
+	LoadBalancerId *string `json:"LoadBalancerId,omitempty" xml:"LoadBalancerId,omitempty"`
+	// The access log forwarding rule. Parameters:
 	//
-	// You can specify up to 10 tags in each call.
-	LoadBalancerId         *string `json:"LoadBalancerId,omitempty" xml:"LoadBalancerId,omitempty"`
+	// *   **LogProject**: the name of the project.
+	// *   **LogStore**: the name of the Logstore.
+	// *   **LoadBalancerId**: the ID of the CLB instance.
 	LogsDownloadAttributes *string `json:"LogsDownloadAttributes,omitempty" xml:"LogsDownloadAttributes,omitempty"`
 	OwnerAccount           *string `json:"OwnerAccount,omitempty" xml:"OwnerAccount,omitempty"`
 	OwnerId                *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
-	// The ID of the request.
+	// The ID of the region where the CLB instance is deployed.
+	//
+	// You can call the [DescribeRegions](~~27584~~) operation to query the most recent region list.
 	RegionId             *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 	ResourceOwnerAccount *string `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
 	ResourceOwnerId      *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
-	// The operation that you want to perform. Set the value to **SetAccessLogsDownloadAttribute**.
+	// The tags that are added to the CLB instance. The tags must be key-value pairs that are contained in a JSON dictionary.
+	//
+	// You can specify up to 10 tags in each call.
 	Tags *string `json:"Tags,omitempty" xml:"Tags,omitempty"`
 }
 
@@ -16081,6 +17062,7 @@ func (s *SetAccessLogsDownloadAttributeRequest) SetTags(v string) *SetAccessLogs
 }
 
 type SetAccessLogsDownloadAttributeResponseBody struct {
+	// The ID of the request.
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -16127,12 +17109,6 @@ func (s *SetAccessLogsDownloadAttributeResponse) SetBody(v *SetAccessLogsDownloa
 }
 
 type SetBackendServersRequest struct {
-	// The description of the backend server.
-	BackendServers *string `json:"BackendServers,omitempty" xml:"BackendServers,omitempty"`
-	// The ID of the CLB instance.
-	LoadBalancerId *string `json:"LoadBalancerId,omitempty" xml:"LoadBalancerId,omitempty"`
-	OwnerAccount   *string `json:"OwnerAccount,omitempty" xml:"OwnerAccount,omitempty"`
-	OwnerId        *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
 	// The list of backend servers that you want to modify.
 	//
 	// The value of this parameter must be a STRING list in the JSON format. You can specify up to 20 elements in each request.
@@ -16160,6 +17136,12 @@ type SetBackendServersRequest struct {
 	//
 	// >
 	// *   The backend servers must be in the Running state. You can specify up to 20 backend servers in each request.
+	BackendServers *string `json:"BackendServers,omitempty" xml:"BackendServers,omitempty"`
+	// The ID of the CLB instance.
+	LoadBalancerId *string `json:"LoadBalancerId,omitempty" xml:"LoadBalancerId,omitempty"`
+	OwnerAccount   *string `json:"OwnerAccount,omitempty" xml:"OwnerAccount,omitempty"`
+	OwnerId        *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
+	// The region ID of the Classic Load Balancer (CLB) instance.
 	RegionId             *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 	ResourceOwnerAccount *string `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
 	ResourceOwnerId      *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
@@ -16209,14 +17191,11 @@ func (s *SetBackendServersRequest) SetResourceOwnerId(v int64) *SetBackendServer
 }
 
 type SetBackendServersResponseBody struct {
-	// The ID of the request.
-	BackendServers *SetBackendServersResponseBodyBackendServers `json:"BackendServers,omitempty" xml:"BackendServers,omitempty" type:"Struct"`
-	// The type of the backend server. Valid values:
-	//
-	// *   **ecs** (default): an ECS instance
-	// *   **eni**: an elastic network interface (ENI)
-	LoadBalancerId *string `json:"LoadBalancerId,omitempty" xml:"LoadBalancerId,omitempty"`
 	// The list of backend servers.
+	BackendServers *SetBackendServersResponseBodyBackendServers `json:"BackendServers,omitempty" xml:"BackendServers,omitempty" type:"Struct"`
+	// The ID of the CLB instance.
+	LoadBalancerId *string `json:"LoadBalancerId,omitempty" xml:"LoadBalancerId,omitempty"`
+	// The ID of the request.
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -16261,11 +17240,16 @@ func (s *SetBackendServersResponseBodyBackendServers) SetBackendServer(v []*SetB
 }
 
 type SetBackendServersResponseBodyBackendServersBackendServer struct {
+	// The description of the backend server.
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
-	ServerId    *string `json:"ServerId,omitempty" xml:"ServerId,omitempty"`
-	// The region ID of the Classic Load Balancer (CLB) instance.
+	// The ID of the server.
+	ServerId *string `json:"ServerId,omitempty" xml:"ServerId,omitempty"`
+	// The type of the backend server. Valid values:
+	//
+	// *   **ecs** (default): an ECS instance
+	// *   **eni**: an elastic network interface (ENI)
 	Type *string `json:"Type,omitempty" xml:"Type,omitempty"`
-	// Sets the weights of backend servers.
+	// The weight of the backend server.
 	Weight *string `json:"Weight,omitempty" xml:"Weight,omitempty"`
 }
 
@@ -16327,15 +17311,17 @@ func (s *SetBackendServersResponse) SetBody(v *SetBackendServersResponseBody) *S
 }
 
 type SetCACertificateNameRequest struct {
+	// The ID of the CA certificate.
+	CACertificateId *string `json:"CACertificateId,omitempty" xml:"CACertificateId,omitempty"`
 	// The name of the CA certificate.
 	//
 	// The name must be 1 to 80 characters in length and start with an English letter or a Chinese character. It can contain numbers, underscores (\_), periods (.), and hyphens (-).
-	CACertificateId *string `json:"CACertificateId,omitempty" xml:"CACertificateId,omitempty"`
-	// The ID of the request.
 	CACertificateName *string `json:"CACertificateName,omitempty" xml:"CACertificateName,omitempty"`
 	OwnerAccount      *string `json:"OwnerAccount,omitempty" xml:"OwnerAccount,omitempty"`
 	OwnerId           *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
-	// The ID of the CA certificate.
+	// The region to which the CA certificate belongs.
+	//
+	// To query the region ID, call [DescribeRegions](~~27584~~).
 	RegionId             *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 	ResourceOwnerAccount *string `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
 	ResourceOwnerId      *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
@@ -16385,6 +17371,7 @@ func (s *SetCACertificateNameRequest) SetResourceOwnerId(v int64) *SetCACertific
 }
 
 type SetCACertificateNameResponseBody struct {
+	// The ID of the request.
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -16431,15 +17418,15 @@ func (s *SetCACertificateNameResponse) SetBody(v *SetCACertificateNameResponseBo
 }
 
 type SetDomainExtensionAttributeRequest struct {
-	// The ID of the request.
+	// The ID of the domain name that is associated with the additional certificate to be replaced.
 	DomainExtensionId *string `json:"DomainExtensionId,omitempty" xml:"DomainExtensionId,omitempty"`
 	OwnerAccount      *string `json:"OwnerAccount,omitempty" xml:"OwnerAccount,omitempty"`
 	OwnerId           *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
-	// The ID of the new certificate.
+	// The ID of the region where the SLB instance is created.
 	RegionId             *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 	ResourceOwnerAccount *string `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
 	ResourceOwnerId      *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
-	// >  You cannot replace an additional certificate for a listener that is added to a shared-resource Server Load Balancer (SLB) instance.
+	// The ID of the new certificate.
 	ServerCertificateId *string `json:"ServerCertificateId,omitempty" xml:"ServerCertificateId,omitempty"`
 }
 
@@ -16487,6 +17474,7 @@ func (s *SetDomainExtensionAttributeRequest) SetServerCertificateId(v string) *S
 }
 
 type SetDomainExtensionAttributeResponseBody struct {
+	// The ID of the request.
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -16533,24 +17521,28 @@ func (s *SetDomainExtensionAttributeResponse) SetBody(v *SetDomainExtensionAttri
 }
 
 type SetListenerAccessControlStatusRequest struct {
-	AccessControlStatus *string `json:"AccessControlStatus,omitempty" xml:"AccessControlStatus,omitempty"`
-	// The frontend protocol that is used by the CLB instance.
-	//
-	// >  This parameter is required when listeners that use different protocols listen on the same port.
-	ListenerPort     *int32  `json:"ListenerPort,omitempty" xml:"ListenerPort,omitempty"`
-	ListenerProtocol *string `json:"ListenerProtocol,omitempty" xml:"ListenerProtocol,omitempty"`
-	// The region where the Classic Load Balancer (CLB) instance is created.
-	//
-	// You can call the [DescribeRegions](~~27584~~) operation to query the most recent region list.
-	LoadBalancerId *string `json:"LoadBalancerId,omitempty" xml:"LoadBalancerId,omitempty"`
-	OwnerAccount   *string `json:"OwnerAccount,omitempty" xml:"OwnerAccount,omitempty"`
-	OwnerId        *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
 	// Specifies whether to enable the whitelist. Valid values:
 	//
 	// *   **open_white_list**: enables the whitelist.
 	// *   **close**: disables the whitelist.
 	//
 	// >  After the whitelist is enabled, if no IP address is added to the whitelist, the CLB instance does not distribute network traffic.
+	AccessControlStatus *string `json:"AccessControlStatus,omitempty" xml:"AccessControlStatus,omitempty"`
+	// The frontend port that is used by the CLB instance.
+	//
+	// Valid values: **1 to 65535**.
+	ListenerPort *int32 `json:"ListenerPort,omitempty" xml:"ListenerPort,omitempty"`
+	// The frontend protocol that is used by the CLB instance.
+	//
+	// >  This parameter is required when listeners that use different protocols listen on the same port.
+	ListenerProtocol *string `json:"ListenerProtocol,omitempty" xml:"ListenerProtocol,omitempty"`
+	// The ID of the CLB instance.
+	LoadBalancerId *string `json:"LoadBalancerId,omitempty" xml:"LoadBalancerId,omitempty"`
+	OwnerAccount   *string `json:"OwnerAccount,omitempty" xml:"OwnerAccount,omitempty"`
+	OwnerId        *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
+	// The region where the Classic Load Balancer (CLB) instance is created.
+	//
+	// You can call the [DescribeRegions](~~27584~~) operation to query the most recent region list.
 	RegionId             *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 	ResourceOwnerAccount *string `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
 	ResourceOwnerId      *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
@@ -16610,6 +17602,7 @@ func (s *SetListenerAccessControlStatusRequest) SetResourceOwnerId(v int64) *Set
 }
 
 type SetListenerAccessControlStatusResponseBody struct {
+	// The ID of the request.
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -16656,17 +17649,17 @@ func (s *SetListenerAccessControlStatusResponse) SetBody(v *SetListenerAccessCon
 }
 
 type SetLoadBalancerDeleteProtectionRequest struct {
-	// The ID of the request.
-	DeleteProtection *string `json:"DeleteProtection,omitempty" xml:"DeleteProtection,omitempty"`
 	// Specify whether to enable or disable deletion protection for the SLB instance.
 	//
 	// Valid values: **on and off**.
+	DeleteProtection *string `json:"DeleteProtection,omitempty" xml:"DeleteProtection,omitempty"`
+	// The ID of the SLB instance.
 	LoadBalancerId *string `json:"LoadBalancerId,omitempty" xml:"LoadBalancerId,omitempty"`
 	OwnerAccount   *string `json:"OwnerAccount,omitempty" xml:"OwnerAccount,omitempty"`
 	OwnerId        *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
-	// The operation that you want to perform.
+	// The region where the SLB instance is deployed.
 	//
-	// Set the value to **SetLoadBalancerDeleteProtection**.
+	// You can call the [DescribeRegions](~~27584~~) operation to query region IDs.
 	RegionId             *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 	ResourceOwnerAccount *string `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
 	ResourceOwnerId      *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
@@ -16716,6 +17709,7 @@ func (s *SetLoadBalancerDeleteProtectionRequest) SetResourceOwnerId(v int64) *Se
 }
 
 type SetLoadBalancerDeleteProtectionResponseBody struct {
+	// The ID of the request.
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -16762,178 +17756,178 @@ func (s *SetLoadBalancerDeleteProtectionResponse) SetBody(v *SetLoadBalancerDele
 }
 
 type SetLoadBalancerHTTPListenerAttributeRequest struct {
+	// The ID of the access control list (ACL) that is associated with the listener.
+	//
+	// > This parameter is required when **AclStatus** is set to **on**.
+	AclId *string `json:"AclId,omitempty" xml:"AclId,omitempty"`
+	// Specifies whether to enable access control. Valid values:
+	//
+	// *   **on**
+	// *   **off**
+	AclStatus *string `json:"AclStatus,omitempty" xml:"AclStatus,omitempty"`
 	// The type of the ACL. Valid values:
 	//
-	// *   **white**: a whitelist. Only requests from the IP addresses or CIDR blocks in the network ACL are forwarded. Whitelists apply to scenarios where you want to allow only specific IP addresses to access an application. Risks may arise if the whitelist is improperly set. After the whitelist is set, only requests from IP addresses that are added to the whitelist are forwarded by the listener.
+	// *   **white**: a whitelist. Only requests from the IP addresses or CIDR blocks in the ACL are forwarded. Whitelists apply to scenarios where you want to allow only specific IP addresses to access an application. Risks may occur if a whitelist is improperly configured. If a whitelist is configured, only requests from IP addresses that are added to the whitelist are forwarded by the listener.
 	//
-	//     If the whitelist does not contain IP addresses, the CLB listener forwards all requests.
+	// If you enable a whitelist but do not add an IP address to the ACL, the listener forwards all requests.
 	//
 	// *   **black**: a blacklist. All requests from the IP addresses or CIDR blocks in the ACL are rejected. Blacklists apply to scenarios where you want to block access from specified IP addresses to an application.
 	//
-	//     If no IP address is added to the blacklist, the listener forwards all requests.
+	// If a blacklist is configured for a listener but no IP addresses are added to the blacklist, the listener forwards all requests.
 	//
-	// >  If **AclStatus** is set to **on**, this parameter is required.
-	AclId *string `json:"AclId,omitempty" xml:"AclId,omitempty"`
-	// The timeout period of an idle connection. Unit: seconds. Valid values: **1 to 60**. Default value: **15**.
-	//
-	// If no request is received within the specified timeout period, CLB closes the connection. When another request is received, CLB establishes a new connection.
-	AclStatus *string `json:"AclStatus,omitempty" xml:"AclStatus,omitempty"`
-	// Specifies whether to enable the access control feature. Valid values:
-	//
-	// *   **on**: yes
-	// *   **off**: no
+	// > This parameter takes effect when the value of **AclStatus** is set to **on**.
 	AclType *string `json:"AclType,omitempty" xml:"AclType,omitempty"`
-	// Specifies whether to use the `X-Forwarded-For` header to preserve the real IP address of the client. Valid values:
+	// The maximum bandwidth of the listener. Unit: Mbit/s. Set the value to
 	//
-	// *   **on** (default): yes
-	// *   **off**: no
+	// *   **-1**: For a pay-by-data-transfer Internet-facing CLB instance, this value specifies that the bandwidth of the listener is unlimited.
 	Bandwidth *int32 `json:"Bandwidth,omitempty" xml:"Bandwidth,omitempty"`
-	// Specifies whether to enable health checks. Valid values:
-	//
-	// *   **on**: yes
-	// *   **off**: no
-	Cookie *string `json:"Cookie,omitempty" xml:"Cookie,omitempty"`
 	// The cookie that is configured on the server.
 	//
 	// The cookie must be 1 to 200 characters in length, and can contain ASCII characters and digits. It cannot contain commas (,), semicolons (;), or spaces. It cannot start with a dollar sign ($).
 	//
-	// >  This parameter is required if the **StickySession** parameter is set to **on** and the **StickySessionType** parameter is set to **server**.
+	// > This parameter is required when **StickySession** is set to **on** and **StickySessionType** is set to **server**.
+	Cookie *string `json:"Cookie,omitempty" xml:"Cookie,omitempty"`
+	// The timeout period of a cookie.
+	//
+	// Valid values: **1** to **86400**. Unit: seconds.
+	//
+	// > This parameter is required when **StickySession** is set to **on** and **StickySessionType** is set to **insert**.
 	CookieTimeout *int32 `json:"CookieTimeout,omitempty" xml:"CookieTimeout,omitempty"`
-	// The ID of the request.
+	// The description of the listener.
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
-	// The ID of the access control list (ACL) to be associated with the listener.
+	// Specifies whether to enable `GZIP` compression to compress specific types of files. Valid values:
 	//
-	// >  If **AclStatus** is set to **on**, this parameter is required.
+	// *   **on**
+	// *   **off**
 	Gzip *string `json:"Gzip,omitempty" xml:"Gzip,omitempty"`
-	// The health check method used in HTTP health checks. Valid values: **head** and **get**.
+	// Specifies whether to enable the health check feature. Valid values:
 	//
-	// >  This parameter takes effect only if the **HealthCheck** parameter is set to **on**.
+	// *   **on**
+	// *   **off**
 	HealthCheck *string `json:"HealthCheck,omitempty" xml:"HealthCheck,omitempty"`
-	// The HTTP status code that indicates a successful health check. Separate HTTP status codes with commas (,).
-	//
-	// Valid values: **http\_2xx**, **http\_3xx**, **http\_4xx**, and **http\_5xx**.
-	//
-	// >  This parameter takes effect only when the **HealthCheck** parameter is set to **on**.
-	HealthCheckConnectPort *int32 `json:"HealthCheckConnectPort,omitempty" xml:"HealthCheckConnectPort,omitempty"`
-	// The uniform resource identifier (URI) that is used for health checks.
-	//
-	// The URI must be 1 to 80 characters in length, and can contain letters, digits, and the following characters: - / . % ? # & The URI must start with a forward slash (/) but cannot be a single forward slash (/).
-	//
-	// >  This parameter takes effect only if the **HealthCheck** parameter is set to **on**.
-	HealthCheckDomain *string `json:"HealthCheckDomain,omitempty" xml:"HealthCheckDomain,omitempty"`
-	// Specifies whether to use a vServer group. Valid values:
-	//
-	// *   **on**: yes
-	// *   **off**: no
-	HealthCheckHttpCode *string `json:"HealthCheckHttpCode,omitempty" xml:"HealthCheckHttpCode,omitempty"`
 	// The port that is used for health checks.
 	//
 	// Valid values: **1** to **65535**.
 	//
-	// >  This parameter takes effect only if the **HealthCheck** parameter is set to **on**.
-	HealthCheckInterval *int32 `json:"HealthCheckInterval,omitempty" xml:"HealthCheckInterval,omitempty"`
+	// > This parameter takes effect only if you set **HealthCheck** to **on**.
+	HealthCheckConnectPort *int32 `json:"HealthCheckConnectPort,omitempty" xml:"HealthCheckConnectPort,omitempty"`
 	// The domain name that is used for health checks. Valid values:
 	//
-	// *   **$\_ip**: the private IP address of a backend server. If **HealthCheckDomain** is set to **$\_ip** or is not set, CLB uses the private IP address of each backend server as the domain name for health checks.
-	// *   **domain**: The domain name must be 1 to 80 characters in length, and can contain letters, digits, periods (.),and hyphens (-).
+	// *   **$\_ip**: the private IP address of a backend server. If you specify \*\*$\_ip **or** ignore HealthCheckDomain\*\*, CLB uses the private IP addresses of backend servers as the health check domain names.
+	// *   **domain**: The domain name must be 1 to 80 characters in length, and can contain letters, digits, periods (.), and hyphens (-).
 	//
-	// >  This parameter takes effect only if the **HealthCheck** parameter is set to **on**.
-	HealthCheckMethod *string `json:"HealthCheckMethod,omitempty" xml:"HealthCheckMethod,omitempty"`
-	// The time interval between two consecutive health checks.
+	// > The parameter takes effect only if you set **HealthCheck** to **on**.
+	HealthCheckDomain *string `json:"HealthCheckDomain,omitempty" xml:"HealthCheckDomain,omitempty"`
+	// The HTTP status code for a successful health check. Separate multiple HTTP status codes with commas (,).
+	//
+	// Valid values: **http\_2xx**, **http\_3xx**, **http\_4xx**, and **http\_5xx**.
+	//
+	// >  The parameter takes effect only if you set **HealthCheck** to **on**.
+	HealthCheckHttpCode *string `json:"HealthCheckHttpCode,omitempty" xml:"HealthCheckHttpCode,omitempty"`
+	// The interval at which health checks are performed.
 	//
 	// Valid values: **1** to **50**. Unit: seconds.
 	//
-	// >  This parameter takes effect only when the **HealthCheck** parameter is set to **on**.
-	HealthCheckTimeout *int32 `json:"HealthCheckTimeout,omitempty" xml:"HealthCheckTimeout,omitempty"`
-	// The number of health checks that an unhealthy backend server must consecutively pass before it can be declared healthy (from **fail** to **success**).
+	// >  The parameter takes effect only if you set **HealthCheck** to **on**.
+	HealthCheckInterval *int32 `json:"HealthCheckInterval,omitempty" xml:"HealthCheckInterval,omitempty"`
+	// The health check method that is used in HTTP health checks. Valid values: **head** and **get**.
 	//
-	// Valid values: **2** to **10**.
-	//
-	// >  This parameter takes effect only when the **HealthCheck** parameter is set to **on**.
-	HealthCheckURI *string `json:"HealthCheckURI,omitempty" xml:"HealthCheckURI,omitempty"`
-	// The number of consecutive health check failures before a backend server is declared unhealthy (from **success** to **fail**).
-	//
-	// Valid values: **2** to **10**.
-	//
-	// >  This parameter takes effect only if the **HealthCheck** parameter is set to **on**.
-	HealthyThreshold *int32 `json:"HealthyThreshold,omitempty" xml:"HealthyThreshold,omitempty"`
-	// The timeout period of a request. Unit: seconds. Valid values: **1 to 180**. Default value: **60**.
-	//
-	// If no response is received from the backend server within the request timeout period, CLB returns an HTTP 504 error code to the client.
-	IdleTimeout *int32 `json:"IdleTimeout,omitempty" xml:"IdleTimeout,omitempty"`
-	// The maximum bandwidth of the listener. Unit: Mbit/s. Valid values:
-	//
-	// *   **-1**: For a pay-by-data-transfer Internet-facing CLB instance, you can set this parameter to **-1**. In this case, the bandwidth of the listener is unlimited.
-	ListenerPort *int32 `json:"ListenerPort,omitempty" xml:"ListenerPort,omitempty"`
-	// The frontend port that is used by the CLB instance.
-	//
-	// Valid values: **1** to **65535**.
-	LoadBalancerId *string `json:"LoadBalancerId,omitempty" xml:"LoadBalancerId,omitempty"`
-	OwnerAccount   *string `json:"OwnerAccount,omitempty" xml:"OwnerAccount,omitempty"`
-	OwnerId        *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
-	// The operation that you want to perform.
-	//
-	// Set the value to **SetLoadBalancerHTTPListenerAttribute**.
-	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	// The description of the listener.
-	RequestTimeout       *int32  `json:"RequestTimeout,omitempty" xml:"RequestTimeout,omitempty"`
-	ResourceOwnerAccount *string `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
-	ResourceOwnerId      *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
-	// Specifies whether to enable session persistence. Valid values:
-	//
-	// *   **on**: yes
-	// *   **off**: no
-	Scheduler *string `json:"Scheduler,omitempty" xml:"Scheduler,omitempty"`
-	// The method that is used to handle a cookie. Valid values:
-	//
-	// *   **insert**: inserts a cookie.
-	//
-	//     CLB inserts a cookie (SERVERID) into the first HTTP or HTTPS response packet that is sent to a client. The next request from the client will contain this cookie, and the listener will distribute this request to the recorded backend server.
-	//
-	// *   **server**: rewrites a cookie.
-	//
-	//     When CLB detects a user-defined cookie, it overwrites the original cookie with the user-defined cookie. The next request from the client will contain the user-defined cookie, and the listener will distribute this request to the recorded backend server.
-	//
-	// >This parameter is required if the **StickySession** parameter is set to **on**.
-	StickySession *string `json:"StickySession,omitempty" xml:"StickySession,omitempty"`
-	// The timeout period of the cookie. Unit: seconds.
-	//
-	// Valid values: **1** to **86400**.
-	//
-	// >  If **StickySession** is set to **on** and **StickySessionType** is set to **insert**, this parameter is required.
-	StickySessionType *string `json:"StickySessionType,omitempty" xml:"StickySessionType,omitempty"`
-	// The timeout period of a health check response. If a backend Elastic Compute Service (ECS) instance does not send an expected response within the specified period of time, the ECS instance is considered unhealthy. This parameter takes effect only when the **HealthCheck** parameter is set to **on**.
+	// > The parameter takes effect only if you set **HealthCheck** to **on**.
+	HealthCheckMethod *string `json:"HealthCheckMethod,omitempty" xml:"HealthCheckMethod,omitempty"`
+	// The timeout period of a health check response. If a backend server, such as an Elastic Compute Service (ECS) instance, does not respond to a probe packet within the specified timeout period, the server fails the health check. This parameter takes effect only if you set **HealthCheck** to **on**.
 	//
 	// Valid values: **1** to **300**. Unit: seconds.
 	//
-	// >  If the value of the **HealthCheckTimeout** parameter is smaller than that of the **HealthCheckInterval** parameter, the timeout period specified by the **HealthCheckTimeout** parameter is ignored and the period of time specified by the **HealthCheckInterval** parameter is used as the timeout period.
-	UnhealthyThreshold *int32 `json:"UnhealthyThreshold,omitempty" xml:"UnhealthyThreshold,omitempty"`
-	// The ID of the vServer group.
-	VServerGroup *string `json:"VServerGroup,omitempty" xml:"VServerGroup,omitempty"`
-	// Indicates whether to use the `SLB-IP` header to retrieve the virtual IP address (VIP) requested by the client. Valid values:
+	// > If the value of **HealthCheckTimeout** is smaller than the value of **HealthCheckInterval**, the value of **HealthCheckTimeout** becomes invalid and the value of **HealthCheckInterval** is used as the timeout period.
+	HealthCheckTimeout *int32 `json:"HealthCheckTimeout,omitempty" xml:"HealthCheckTimeout,omitempty"`
+	// The Uniform Resource Identifier (URI) that you want to use for health checks.
 	//
-	// *   **on**: yes
-	// *   **off**: no
-	VServerGroupId *string `json:"VServerGroupId,omitempty" xml:"VServerGroupId,omitempty"`
+	// The URI must be 1 to 80 characters in length, and can contain letters, digits, and the following characters: - / . % ? # & The URI must start with a forward slash (/) but cannot be a single forward slash (/).
+	//
+	// > The parameter takes effect only if you set **HealthCheck** to **on**.
+	HealthCheckURI *string `json:"HealthCheckURI,omitempty" xml:"HealthCheckURI,omitempty"`
+	// The number of times that an unhealthy backend server must consecutively pass health checks before it is declared healthy. In this case, the health status is changed from **fail** to **success**.
+	//
+	// Valid values: **2** to **10**.
+	//
+	// > The parameter takes effect only if you set **HealthCheck** to **on**.
+	HealthyThreshold *int32 `json:"HealthyThreshold,omitempty" xml:"HealthyThreshold,omitempty"`
+	// The timeout period of an idle connection. Unit: seconds. Valid values: **1 to 60**. Default value: **15**.
+	//
+	// If no request is received within the specified timeout period, CLB closes the connection. When a request is received, CLB establishes a new connection.
+	IdleTimeout *int32 `json:"IdleTimeout,omitempty" xml:"IdleTimeout,omitempty"`
+	// The frontend port that is used by the CLB instance.
+	//
+	// Valid values: **1** to **65535**.
+	ListenerPort *int32 `json:"ListenerPort,omitempty" xml:"ListenerPort,omitempty"`
+	// The CLB instance ID.
+	LoadBalancerId *string `json:"LoadBalancerId,omitempty" xml:"LoadBalancerId,omitempty"`
+	OwnerAccount   *string `json:"OwnerAccount,omitempty" xml:"OwnerAccount,omitempty"`
+	OwnerId        *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
+	// The region ID of the CLB instance.
+	//
+	// You can query the region ID from the [Regions and zones](~~27585~~) list or by calling the [DescribeRegions](~~27584~~) operation.
+	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	// The timeout period of a request. Unit: seconds. Valid values: **1 to 180**. Default value: **60**.
+	//
+	// If no response is received from the backend server within the request timeout period, CLB returns an HTTP 504 error code to the client.
+	RequestTimeout       *int32  `json:"RequestTimeout,omitempty" xml:"RequestTimeout,omitempty"`
+	ResourceOwnerAccount *string `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
+	ResourceOwnerId      *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
 	// The scheduling algorithm. Valid values:
 	//
 	// *   **wrr**: Backend servers that have higher weights receive more requests than backend servers that have lower weights.
 	// *   **rr**: Requests are distributed to backend servers in sequence.
-	XForwardedFor *string `json:"XForwardedFor,omitempty" xml:"XForwardedFor,omitempty"`
-	// Specifies whether to use the `X-Forwarded-Proto` header to retrieve the listener protocol. Valid values:
+	Scheduler *string `json:"Scheduler,omitempty" xml:"Scheduler,omitempty"`
+	// Specifies whether to enable session persistence. Valid values:
 	//
-	// *   **on**: yes
-	// *   **off**: no
-	XForwardedFor_SLBID *string `json:"XForwardedFor_SLBID,omitempty" xml:"XForwardedFor_SLBID,omitempty"`
+	// *   **on**
+	// *   **off**
+	StickySession *string `json:"StickySession,omitempty" xml:"StickySession,omitempty"`
+	// The method that is used to handle a cookie. Valid values:
+	//
+	// *   **insert**: inserts a cookie.
+	//
+	// CLB inserts a cookie (SERVERID) into the first HTTP or HTTPS response packet that is sent to a client. The next request from the client contains this cookie, and the listener distributes the request to the recorded backend server.
+	//
+	// *   **server**: rewrites a cookie.
+	//
+	// When CLB detects a user-defined cookie, CLB overwrites the original cookie with the user-defined cookie. The next request from the client carries the user-defined cookie, and the listener forwards the request to the recorded backend server.
+	//
+	// > This parameter is required when **StickySession** is set to **on**.
+	StickySessionType *string `json:"StickySessionType,omitempty" xml:"StickySessionType,omitempty"`
+	// The number of times that a healthy backend server must consecutively fail health checks before it is declared unhealthy. In this case, the health status is changed from **success** to **fail**.
+	//
+	// Valid values: **2** to **10**.
+	//
+	// > The parameter takes effect only if you set **HealthCheck** to **on**.
+	UnhealthyThreshold *int32 `json:"UnhealthyThreshold,omitempty" xml:"UnhealthyThreshold,omitempty"`
+	// Specifies whether to use a vServer group. Valid values:
+	//
+	// *   **on**
+	// *   **off**
+	VServerGroup *string `json:"VServerGroup,omitempty" xml:"VServerGroup,omitempty"`
+	// The ID of the vServer group.
+	VServerGroupId *string `json:"VServerGroupId,omitempty" xml:"VServerGroupId,omitempty"`
+	// Specifies whether to use the `X-Forwarded-For` header to preserve client IP addresses. Valid values:
+	//
+	// *   **on** (default)
+	// *   **off**
+	XForwardedFor *string `json:"XForwardedFor,omitempty" xml:"XForwardedFor,omitempty"`
 	// Specifies whether to use the `SLB-ID` header to retrieve the ID of the CLB instance. Valid values:
 	//
-	// *   **on**: yes
-	// *   **off**: no
-	XForwardedFor_SLBIP *string `json:"XForwardedFor_SLBIP,omitempty" xml:"XForwardedFor_SLBIP,omitempty"`
-	// Specifies whether to enable `Gzip` compression to compress specific types of files. Valid values:
+	// *   **on**
+	// *   **off**
+	XForwardedFor_SLBID *string `json:"XForwardedFor_SLBID,omitempty" xml:"XForwardedFor_SLBID,omitempty"`
+	// Specifies whether to use the `SLB-IP` header to retrieve the virtual IP address (VIP) requested by the client. Valid values:
 	//
-	// *   **on**: yes
-	// *   **off**: no
+	// *   **on**
+	// *   **off**
+	XForwardedFor_SLBIP *string `json:"XForwardedFor_SLBIP,omitempty" xml:"XForwardedFor_SLBIP,omitempty"`
+	// Specifies whether to use the `X-Forwarded-Proto` header to retrieve the listener protocol. Valid values:
+	//
+	// *   **on**
+	// *   **off**
 	XForwardedFor_proto *string `json:"XForwardedFor_proto,omitempty" xml:"XForwardedFor_proto,omitempty"`
 }
 
@@ -17126,10 +18120,7 @@ func (s *SetLoadBalancerHTTPListenerAttributeRequest) SetXForwardedFor_proto(v s
 }
 
 type SetLoadBalancerHTTPListenerAttributeResponseBody struct {
-	// ## Prerequisites
-	//
-	// *   A Classic Load Balancer (CLB) instance is created. For more information, see [CreateLoadBalancer](~~27577~~).
-	// *   An HTTP listener is created. For more information about how to create an HTTP listener, see [CreateLoadBalancerHTTPListener](~~27592~~).
+	// The request ID.
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -17176,42 +18167,15 @@ func (s *SetLoadBalancerHTTPListenerAttributeResponse) SetBody(v *SetLoadBalance
 }
 
 type SetLoadBalancerHTTPSListenerAttributeRequest struct {
+	// The ID of the network access control list (ACL) that you want to associate with the listener.
+	//
+	// If **AclStatus** is set to **on**, this parameter is required.
+	AclId *string `json:"AclId,omitempty" xml:"AclId,omitempty"`
 	// Specifies whether to enable access control. Valid values:
 	//
 	// *   **on**: enables access control
 	// *   **off**: disables access control
-	AclId *string `json:"AclId,omitempty" xml:"AclId,omitempty"`
-	// The timeout period of a request. Unit: seconds. Valid values: **1 to 180**. Default value: **60**.
-	//
-	// If no response is received from the backend server during the request timeout period, CLB sends an HTTP 504 error code to the client.
 	AclStatus *string `json:"AclStatus,omitempty" xml:"AclStatus,omitempty"`
-	// The timeout period of an idle connection. Unit: seconds. Valid values: **1 to 60**. Default value: **15**.
-	//
-	// If no request is received within the specified timeout period, CLB closes the connection. When another request is received, CLB establishes a new connection.
-	AclType *string `json:"AclType,omitempty" xml:"AclType,omitempty"`
-	// The scheduling algorithm. Valid values:
-	//
-	// *   **wrr**: Backend servers that have higher weights receive more requests than backend servers that have lower weights.
-	// *   **rr**: Requests are distributed to backend servers in sequence.
-	Bandwidth *int32 `json:"Bandwidth,omitempty" xml:"Bandwidth,omitempty"`
-	// The ID of the vServer group.
-	CACertificateId *string `json:"CACertificateId,omitempty" xml:"CACertificateId,omitempty"`
-	// The HTTP method that is used for health checks. Valid values: **head** and **get**.
-	//
-	// >  This parameter takes effect only when the **HealthCheck** parameter is set to **on**.
-	Cookie *string `json:"Cookie,omitempty" xml:"Cookie,omitempty"`
-	// Specifies whether to enable health checks. Valid values:
-	//
-	// *   **on**: yes
-	// *   **off**: no
-	CookieTimeout *int32 `json:"CookieTimeout,omitempty" xml:"CookieTimeout,omitempty"`
-	// ## Prerequisites
-	//
-	// *   A Classic Load Balancer (CLB) instance is created. For more information, see [CreateLoadBalancer](~~27577~~).
-	// *   An HTTPS listener is created. For more information about how to create an HTTPS listener, see [CreateLoadBalancerHTTPSListener](~~27593~~).
-	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
-	// The description of the listener.
-	EnableHttp2 *string `json:"EnableHttp2,omitempty" xml:"EnableHttp2,omitempty"`
 	// The type of network ACL. Valid values:
 	//
 	// *   **white**: a whitelist. Only requests from the IP addresses or CIDR blocks in the network ACL are forwarded. Whitelists apply to scenarios where you want to allow only specific IP addresses to access an application. Your business may be adversely affected if the whitelist is not set properly. After a whitelist is configured, only IP addresses in the whitelist can access the CLB listener.
@@ -17223,51 +18187,77 @@ type SetLoadBalancerHTTPSListenerAttributeRequest struct {
 	//     If no IP address is added to the blacklist, the listener forwards all requests.
 	//
 	// >  This parameter takes effect only when **AclStatus** is set to **on**.
+	AclType *string `json:"AclType,omitempty" xml:"AclType,omitempty"`
+	// The bandwidth limit of the listener. Unit: Mbit/s.
+	//
+	// Valid values: **-1** and **1** to **5120**.
+	//
+	// *   **-1**: If you set the value to -1, the bandwidth of the listener is unlimited.
+	// *   **1** to **5120**: If you set a value from 1 to 5120, the value that you specify equals the bandwidth limit of the listener. The sum of bandwidth limit values that you specify for all listeners of the CLB instance cannot exceed the bandwidth limit of the CLB instance.
+	Bandwidth *int32 `json:"Bandwidth,omitempty" xml:"Bandwidth,omitempty"`
+	// The ID of the CA certificate.
+	//
+	// *   If both the CA certificate and the server certificate are uploaded, mutual authentication is used.
+	// *   If you upload only the server certificate, one-way authentication is used.
+	CACertificateId *string `json:"CACertificateId,omitempty" xml:"CACertificateId,omitempty"`
+	// The cookie to be configured on the backend server.
+	//
+	// The cookie must be 1 to 200 characters in length, and can contain only ASCII characters and digits. It cannot contain commas (,), semicolons (;), or space characters. It cannot start with a dollar sign ($).
+	//
+	// >  This parameter is required if the **StickySession** parameter is set to **on** and the **StickySessionType** parameter is set to **server**.
+	Cookie *string `json:"Cookie,omitempty" xml:"Cookie,omitempty"`
+	// The timeout period of the cookie. Unit: seconds.
+	//
+	// Valid values: **1** to **86400**.
+	//
+	// >  This parameter is required if the **StickySession** parameter is set to **on** and the **StickySessionType** parameter is set to **insert**.
+	CookieTimeout *int32 `json:"CookieTimeout,omitempty" xml:"CookieTimeout,omitempty"`
+	// The description of the listener.
+	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
+	// Specifies whether to use `HTTP 2.0`. Valid values:
+	//
+	// *   **on**: yes
+	// *   **off**: no
+	EnableHttp2 *string `json:"EnableHttp2,omitempty" xml:"EnableHttp2,omitempty"`
+	// Specifies whether to enable `Gzip` compression to compress specific types of files. Valid values:
+	//
+	// *   **on**: yes
+	// *   **off**: no
 	Gzip *string `json:"Gzip,omitempty" xml:"Gzip,omitempty"`
+	// Specifies whether to enable health checks. Valid values:
+	//
+	// *   **on**: yes
+	// *   **off**: no
+	HealthCheck *string `json:"HealthCheck,omitempty" xml:"HealthCheck,omitempty"`
+	// The port that is used for health checks.
+	//
+	// Valid values: **1** to **65535**.
+	//
+	// >  This parameter takes effect only when the **HealthCheck** parameter is set to **on**.
+	HealthCheckConnectPort *int32 `json:"HealthCheckConnectPort,omitempty" xml:"HealthCheckConnectPort,omitempty"`
 	// The domain name that is used for health checks. Valid values:
 	//
 	// *   **$\_ip**: the private IP address of a backend server. If you do not set this parameter or set the parameter to $\_ip, the CLB instance uses the private IP address of each backend server as the domain name for health checks.
 	// *   **domain**: The domain name must be 1 to 80 characters in length, and can contain letters, digits, periods (.),and hyphens (-).
 	//
 	// >  This parameter takes effect only when the **HealthCheck** parameter is set to **on**.
-	HealthCheck *string `json:"HealthCheck,omitempty" xml:"HealthCheck,omitempty"`
-	// The ID of the server certificate.
-	HealthCheckConnectPort *int32 `json:"HealthCheckConnectPort,omitempty" xml:"HealthCheckConnectPort,omitempty"`
-	// The number of health checks that an unhealthy backend server must consecutively pass before it can be declared healthy (from **fail** to **success**).
-	//
-	// Valid values: **2** to **10**.
-	//
-	// >  This parameter takes effect only when the **HealthCheck** parameter is set to **on**.
 	HealthCheckDomain *string `json:"HealthCheckDomain,omitempty" xml:"HealthCheckDomain,omitempty"`
-	// The ID of the CA certificate.
-	//
-	// *   If both the CA certificate and the server certificate are uploaded, mutual authentication is used.
-	// *   If you upload only the server certificate, one-way authentication is used.
-	HealthCheckHttpCode *string `json:"HealthCheckHttpCode,omitempty" xml:"HealthCheckHttpCode,omitempty"`
 	// The HTTP status code of a successful health check. Separate multiple HTTP status codes with commas (,).
 	//
 	// Valid values: **http\_2xx**, **http\_3xx**, **http\_4xx**, and **http\_5xx**.
 	//
 	// >  This parameter takes effect only when the **HealthCheck** parameter is set to **on**.
-	HealthCheckInterval *int32 `json:"HealthCheckInterval,omitempty" xml:"HealthCheckInterval,omitempty"`
-	// The URL that is used for health checks.
+	HealthCheckHttpCode *string `json:"HealthCheckHttpCode,omitempty" xml:"HealthCheckHttpCode,omitempty"`
+	// The interval between two consecutive health checks. Unit: seconds.
 	//
-	// The URL must be 1 to 80 characters in length and can contain letters, digits, and the following characters: - / . % ? # &. The URL must not be a single forward slash (/) but it must start with a forward slash (/).
+	// Valid values: **1** to **50**.
+	//
+	// >  This parameter takes effect only when the **HealthCheck** parameter is set to **on**.
+	HealthCheckInterval *int32 `json:"HealthCheckInterval,omitempty" xml:"HealthCheckInterval,omitempty"`
+	// The HTTP method that is used for health checks. Valid values: **head** and **get**.
 	//
 	// >  This parameter takes effect only when the **HealthCheck** parameter is set to **on**.
 	HealthCheckMethod *string `json:"HealthCheckMethod,omitempty" xml:"HealthCheckMethod,omitempty"`
-	// The port that is used for health checks.
-	//
-	// Valid values: **1** to **65535**.
-	//
-	// >  This parameter takes effect only when the **HealthCheck** parameter is set to **on**.
-	HealthCheckTimeout *int32 `json:"HealthCheckTimeout,omitempty" xml:"HealthCheckTimeout,omitempty"`
-	// The number of health checks that a healthy backend server must consecutively fail before it can be declared unhealthy (from **success** to **fail**).
-	//
-	// Valid values: **2** to **10**.
-	//
-	// >  This parameter takes effect only when the **HealthCheck** parameter is set to **on**.
-	HealthCheckURI *string `json:"HealthCheckURI,omitempty" xml:"HealthCheckURI,omitempty"`
 	// The timeout period of a health check response. If a backend server does not respond within the specified timeout period, the health check fails. Unit: seconds.
 	//
 	// Valid values: **1** to **300**.
@@ -17275,28 +18265,65 @@ type SetLoadBalancerHTTPSListenerAttributeRequest struct {
 	// If the value of the **HealthCheckTimeout** parameter is smaller than that of the **HealthCheckInterval** parameter, the timeout period specified by the **HealthCheckTimeout** parameter is ignored and the period of time specified by the **HealthCheckInterval** parameter is used as the timeout period.
 	//
 	// >  This parameter takes effect only when the **HealthCheck** parameter is set to **on**.
+	HealthCheckTimeout *int32 `json:"HealthCheckTimeout,omitempty" xml:"HealthCheckTimeout,omitempty"`
+	// The URL that is used for health checks.
+	//
+	// The URL must be 1 to 80 characters in length and can contain letters, digits, and the following characters: - / . % ? # &. The URL must not be a single forward slash (/) but it must start with a forward slash (/).
+	//
+	// >  This parameter takes effect only when the **HealthCheck** parameter is set to **on**.
+	HealthCheckURI *string `json:"HealthCheckURI,omitempty" xml:"HealthCheckURI,omitempty"`
+	// The number of health checks that an unhealthy backend server must consecutively pass before it can be declared healthy (from **fail** to **success**).
+	//
+	// Valid values: **2** to **10**.
+	//
+	// >  This parameter takes effect only when the **HealthCheck** parameter is set to **on**.
 	HealthyThreshold *int32 `json:"HealthyThreshold,omitempty" xml:"HealthyThreshold,omitempty"`
-	// Specifies whether to use `HTTP 2.0`. Valid values:
+	// The timeout period of an idle connection. Unit: seconds. Valid values: **1 to 60**. Default value: **15**.
 	//
-	// *   **on**: yes
-	// *   **off**: no
+	// If no request is received within the specified timeout period, CLB closes the connection. When another request is received, CLB establishes a new connection.
 	IdleTimeout *int32 `json:"IdleTimeout,omitempty" xml:"IdleTimeout,omitempty"`
-	// Specifies whether to use the `X-Forwarded-For` header to retrieve client IP addresses. Valid values:
+	// The frontend port that is used by the CLB instance.
 	//
-	// *   **on**: yes
-	// *   **off**: no
+	// Valid values: **1** to **65535**.
 	ListenerPort *int32 `json:"ListenerPort,omitempty" xml:"ListenerPort,omitempty"`
-	// The bandwidth limit of the listener. Unit: Mbit/s.
-	//
-	// Valid values: **-1** and **1** to **5120**.
-	//
-	// *   **-1**: If you set the value to -1, the bandwidth of the listener is unlimited.
-	// *   **1** to **5120**: If you set a value from 1 to 5120, the value that you specify equals the bandwidth limit of the listener. The sum of bandwidth limit values that you specify for all listeners of the CLB instance cannot exceed the bandwidth limit of the CLB instance.
+	// The ID of the CLB instance.
 	LoadBalancerId *string `json:"LoadBalancerId,omitempty" xml:"LoadBalancerId,omitempty"`
 	OwnerAccount   *string `json:"OwnerAccount,omitempty" xml:"OwnerAccount,omitempty"`
 	OwnerId        *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
-	// The ID of the CLB instance.
+	// The ID of the region where the CLB instance is deployed.
+	//
+	// You can call the [DescribeRegions](~~25609~~) operation to query the most recent region list.
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	// The timeout period of a request. Unit: seconds. Valid values: **1 to 180**. Default value: **60**.
+	//
+	// If no response is received from the backend server during the request timeout period, CLB sends an HTTP 504 error code to the client.
+	RequestTimeout       *int32  `json:"RequestTimeout,omitempty" xml:"RequestTimeout,omitempty"`
+	ResourceOwnerAccount *string `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
+	ResourceOwnerId      *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
+	// The scheduling algorithm. Valid values:
+	//
+	// *   **wrr**: Backend servers that have higher weights receive more requests than backend servers that have lower weights.
+	// *   **rr**: Requests are distributed to backend servers in sequence.
+	Scheduler *string `json:"Scheduler,omitempty" xml:"Scheduler,omitempty"`
+	// The ID of the server certificate.
+	ServerCertificateId *string `json:"ServerCertificateId,omitempty" xml:"ServerCertificateId,omitempty"`
+	// Specifies whether to enable session persistence. Valid values:
+	//
+	// *   **on**: yes
+	// *   **off**: no
+	StickySession *string `json:"StickySession,omitempty" xml:"StickySession,omitempty"`
+	// The method that is used to handle a cookie. Valid values:
+	//
+	// *   **insert**: inserts a cookie.
+	//
+	//     CLB inserts a cookie (SERVERID) into the first HTTP or HTTPS response that is sent to a client. The next request from the client will contain this cookie, and the listener will distribute this request to the recorded backend server.
+	//
+	// *   **server**: rewrites a cookie.
+	//
+	//     When CLB detects a user-defined cookie, it overwrites the original cookie with the user-defined cookie. The next request from the client will contain the user-defined cookie, and the listener will distribute this request to the recorded backend server.
+	//
+	// >  This parameter is required if the **StickySession** parameter is set to **on**.
+	StickySessionType *string `json:"StickySessionType,omitempty" xml:"StickySessionType,omitempty"`
 	// The Transport Layer Security (TLS) security policy. Each security policy contains TLS protocol versions and cipher suites available for HTTPS.
 	//
 	// *   **tls_cipher_policy\_1\_0**:
@@ -17328,74 +18355,39 @@ type SetLoadBalancerHTTPSListenerAttributeRequest struct {
 	//     Supported TLS versions: TLS 1.2 and TLS 1.3
 	//
 	//     Supported cipher suites: TLS_AES\_128\_GCM_SHA256, TLS_AES\_256\_GCM_SHA384, TLS_CHACHA20\_POLY1305\_SHA256, TLS_AES\_128\_CCM_SHA256, TLS_AES\_128\_CCM\_8\_SHA256, ECDHE-ECDSA-AES128-GCM-SHA256, ECDHE-ECDSA-AES256-GCM-SHA384, ECDHE-ECDSA-AES128-SHA256, ECDHE-ECDSA-AES256-SHA384, ECDHE-RSA-AES128-GCM-SHA256, ECDHE-RSA-AES256-GCM-SHA384, ECDHE-RSA-AES128-SHA256, ECDHE-RSA-AES256-SHA384, ECDHE-ECDSA-AES128-SHA, ECDHE-ECDSA-AES256-SHA, ECDHE-RSA-AES128-SHA, and ECDHE-RSA-AES256-SHA
-	RequestTimeout       *int32  `json:"RequestTimeout,omitempty" xml:"RequestTimeout,omitempty"`
-	ResourceOwnerAccount *string `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
-	ResourceOwnerId      *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
-	// The method that is used to handle a cookie. Valid values:
+	TLSCipherPolicy *string `json:"TLSCipherPolicy,omitempty" xml:"TLSCipherPolicy,omitempty"`
+	// The number of health checks that a healthy backend server must consecutively fail before it can be declared unhealthy (from **success** to **fail**).
 	//
-	// *   **insert**: inserts a cookie.
+	// Valid values: **2** to **10**.
 	//
-	//     CLB inserts a cookie (SERVERID) into the first HTTP or HTTPS response that is sent to a client. The next request from the client will contain this cookie, and the listener will distribute this request to the recorded backend server.
-	//
-	// *   **server**: rewrites a cookie.
-	//
-	//     When CLB detects a user-defined cookie, it overwrites the original cookie with the user-defined cookie. The next request from the client will contain the user-defined cookie, and the listener will distribute this request to the recorded backend server.
-	//
-	// >  This parameter is required if the **StickySession** parameter is set to **on**.
-	Scheduler *string `json:"Scheduler,omitempty" xml:"Scheduler,omitempty"`
+	// >  This parameter takes effect only when the **HealthCheck** parameter is set to **on**.
+	UnhealthyThreshold *int32 `json:"UnhealthyThreshold,omitempty" xml:"UnhealthyThreshold,omitempty"`
 	// Specifies whether to use a vServer group. Valid values:
 	//
 	// *   **on**: yes
 	// *   **off**: no
-	ServerCertificateId *string `json:"ServerCertificateId,omitempty" xml:"ServerCertificateId,omitempty"`
-	// The timeout period of the cookie. Unit: seconds.
-	//
-	// Valid values: **1** to **86400**.
-	//
-	// >  This parameter is required if the **StickySession** parameter is set to **on** and the **StickySessionType** parameter is set to **insert**.
-	StickySession *string `json:"StickySession,omitempty" xml:"StickySession,omitempty"`
-	// The cookie to be configured on the backend server.
-	//
-	// The cookie must be 1 to 200 characters in length, and can contain only ASCII characters and digits. It cannot contain commas (,), semicolons (;), or space characters. It cannot start with a dollar sign ($).
-	//
-	// >  This parameter is required if the **StickySession** parameter is set to **on** and the **StickySessionType** parameter is set to **server**.
-	StickySessionType *string `json:"StickySessionType,omitempty" xml:"StickySessionType,omitempty"`
-	// The ID of the request.
-	TLSCipherPolicy *string `json:"TLSCipherPolicy,omitempty" xml:"TLSCipherPolicy,omitempty"`
-	// The interval between two consecutive health checks. Unit: seconds.
-	//
-	// Valid values: **1** to **50**.
-	//
-	// >  This parameter takes effect only when the **HealthCheck** parameter is set to **on**.
-	UnhealthyThreshold *int32 `json:"UnhealthyThreshold,omitempty" xml:"UnhealthyThreshold,omitempty"`
-	// Specifies whether to use the `SLB-IP` header to obtain the virtual IP address (VIP) requested by the client. Valid values:
-	//
-	// *   **on**: yes
-	// *   **off**: no
 	VServerGroup *string `json:"VServerGroup,omitempty" xml:"VServerGroup,omitempty"`
-	// Specifies whether to use the `SLB-ID` header to retrieve the ID of the CLB instance. Valid values:
-	//
-	// *   **on**: yes
-	// *   **off**: no
+	// The ID of the vServer group.
 	VServerGroupId *string `json:"VServerGroupId,omitempty" xml:"VServerGroupId,omitempty"`
-	// Specifies whether to enable session persistence. Valid values:
+	// Specifies whether to use the `X-Forwarded-For` header to retrieve client IP addresses. Valid values:
 	//
 	// *   **on**: yes
 	// *   **off**: no
 	XForwardedFor *string `json:"XForwardedFor,omitempty" xml:"XForwardedFor,omitempty"`
-	// Specifies whether to enable `Gzip` compression to compress specific types of files. Valid values:
+	// Specifies whether to use the `SLB-ID` header to retrieve the ID of the CLB instance. Valid values:
 	//
 	// *   **on**: yes
 	// *   **off**: no
 	XForwardedFor_SLBID *string `json:"XForwardedFor_SLBID,omitempty" xml:"XForwardedFor_SLBID,omitempty"`
-	// Specifies whether to use the `X-Forwarded-Proto` header to retrieve the listener protocol. Valid values:
+	// Specifies whether to use the `SLB-IP` header to obtain the virtual IP address (VIP) requested by the client. Valid values:
 	//
 	// *   **on**: yes
 	// *   **off**: no
 	XForwardedFor_SLBIP *string `json:"XForwardedFor_SLBIP,omitempty" xml:"XForwardedFor_SLBIP,omitempty"`
-	// The ID of the network access control list (ACL) that you want to associate with the listener.
+	// Specifies whether to use the `X-Forwarded-Proto` header to retrieve the listener protocol. Valid values:
 	//
-	// If **AclStatus** is set to **on**, this parameter is required.
+	// *   **on**: yes
+	// *   **off**: no
 	XForwardedFor_proto *string `json:"XForwardedFor_proto,omitempty" xml:"XForwardedFor_proto,omitempty"`
 }
 
@@ -17608,6 +18600,7 @@ func (s *SetLoadBalancerHTTPSListenerAttributeRequest) SetXForwardedFor_proto(v 
 }
 
 type SetLoadBalancerHTTPSListenerAttributeResponseBody struct {
+	// The ID of the request.
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -17992,119 +18985,15 @@ func (s *SetLoadBalancerStatusResponse) SetBody(v *SetLoadBalancerStatusResponse
 }
 
 type SetLoadBalancerTCPListenerAttributeRequest struct {
-	// The type of the health check. Valid values: **tcp** and **http**.
-	AclId *string `json:"AclId,omitempty" xml:"AclId,omitempty"`
-	// The ID of the primary/secondary server group.
-	//
-	// >  You can set only one of the VServerGroupId and MasterSlaveServerGroupId parameters.
-	AclStatus *string `json:"AclStatus,omitempty" xml:"AclStatus,omitempty"`
-	// Specifies whether to enable the SynProxy feature of CLB for protection. Valid values:
-	//
-	// *   **enable**: yes
-	// *   **disable**: no
-	//
-	// We recommend that you use the default value of this parameter.
-	AclType *string `json:"AclType,omitempty" xml:"AclType,omitempty"`
 	// The ID of the network access control list (ACL) that is associated with the listener.
 	//
 	// If **AclStatus** is set to **on**, this parameter is required.
-	Bandwidth *int32 `json:"Bandwidth,omitempty" xml:"Bandwidth,omitempty"`
-	// The name of the listener.
-	//
-	// The name must be 1 to 256 characters in length and can contain letters, digits, hyphens (-), forward slashes (/), periods (.), and underscores (\_).
-	ConnectionDrain *string `json:"ConnectionDrain,omitempty" xml:"ConnectionDrain,omitempty"`
-	// The ID of the request.
-	ConnectionDrainTimeout *int32 `json:"ConnectionDrainTimeout,omitempty" xml:"ConnectionDrainTimeout,omitempty"`
-	// The maximum bandwidth of the listener. Unit: Mbit/s. Valid values: **-1** and **1** to **5120**.
-	//
-	// *   **-1**: For a pay-by-data-transfer Internet-facing CLB instance, you can set this parameter to **-1**, which specifies unlimited bandwidth.
-	// *   **1** to **5120**: For a pay-by-bandwidth Internet-facing CLB instance, you can specify the maximum bandwidth of each listener. The sum of the maximum bandwidth values of all listeners cannot exceed the maximum bandwidth of the CLB instance.
-	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
-	// The timeout period of connection draining. This parameter is required if **ConnectionDrain** is set to **on**. Unit: seconds.
-	//
-	// Valid values: **10** to **900**.
-	EstablishedTimeout *int32 `json:"EstablishedTimeout,omitempty" xml:"EstablishedTimeout,omitempty"`
-	// The interval between two consecutive health checks. Unit: seconds.
-	//
-	// Valid values: **1** to **50**.
-	HealthCheckConnectPort *int32 `json:"HealthCheckConnectPort,omitempty" xml:"HealthCheckConnectPort,omitempty"`
-	// The URI that is used for health checks. The URI must be 1 to 80 characters in length, and can contain letters, digits, hyphens (-), forward slashes (/), periods (.), percent signs (%), question marks (?), number signs (#), and ampersands (&). The URI must start with a forward slash (/) but cannot be a single forward slash (/).
-	//
-	// You can set this parameter when the TCP listener requires HTTP health checks.
-	//
-	// If you do not set this parameter, TCP health checks are performed.
-	HealthCheckConnectTimeout *int32 `json:"HealthCheckConnectTimeout,omitempty" xml:"HealthCheckConnectTimeout,omitempty"`
-	// The ID of the CLB instance.
-	HealthCheckDomain *string `json:"HealthCheckDomain,omitempty" xml:"HealthCheckDomain,omitempty"`
+	AclId *string `json:"AclId,omitempty" xml:"AclId,omitempty"`
 	// Specifies whether to enable access control. Valid values:
 	//
 	// *   **on**: yes
 	// *   **off**: no
-	HealthCheckHttpCode *string `json:"HealthCheckHttpCode,omitempty" xml:"HealthCheckHttpCode,omitempty"`
-	// The number of times that an unhealthy backend server must consecutively pass health checks before it is declared healthy. In this case, the health status is changed from **fail** to **success**.
-	//
-	// Valid values: **2** to **10**.
-	HealthCheckInterval *int32  `json:"HealthCheckInterval,omitempty" xml:"HealthCheckInterval,omitempty"`
-	HealthCheckSwitch   *string `json:"HealthCheckSwitch,omitempty" xml:"HealthCheckSwitch,omitempty"`
-	// The frontend port used by the CLB instance.
-	//
-	// Valid values: **1** to **65535**.
-	HealthCheckType *string `json:"HealthCheckType,omitempty" xml:"HealthCheckType,omitempty"`
-	// The domain name that is used for health checks. You can set this parameter when the TCP listener requires HTTP health checks. If you do not set this parameter, TCP health checks are performed.
-	//
-	// *   **$\_ip**: the private IP addresses of the backend servers.
-	//
-	//     If you do not set the HealthCheckHost parameter or set the parameter to $SERVER_IP, the CLB instance uses the private IP addresses of backend servers for health checks.
-	//
-	// *   **domain**: The domain name is 1 to 80 characters in length, and can contain letters, digits, periods (.), and hyphens (-).
-	HealthCheckURI *string `json:"HealthCheckURI,omitempty" xml:"HealthCheckURI,omitempty"`
-	// Specifies whether to use the Proxy protocol to pass client IP addresses to backend servers. Valid values:
-	//
-	// *   **true**: yes
-	// *   **false**: no
-	HealthyThreshold *int32 `json:"HealthyThreshold,omitempty" xml:"HealthyThreshold,omitempty"`
-	// The ID of the vServer group.
-	ListenerPort *int32 `json:"ListenerPort,omitempty" xml:"ListenerPort,omitempty"`
-	// The scheduling algorithm. Valid values:
-	//
-	// *   **wrr**: Backend servers that have higher weights receive more requests than backend servers that have lower weights.
-	// *   **rr**: Requests are distributed to backend servers in sequence.
-	// *   **sch**: specifies consistent hashing that is based on source IP addresses. Requests from the same source IP address are distributed to the same backend server.
-	// *   **tch**: specifies consistent hashing that is based on four factors: source IP address, destination IP address, source port, and destination port. Requests that contain the same information based on the four factors are distributed to the same backend server.
-	//
-	// >
-	//
-	// *   Only high-performance CLB instances support the **sch** and **tch** algorithms.
-	// *   CLB does not support converting the **wrr** and **rr** algorithms to sch or tch. You cannot switch the hash algorithm from one to another.
-	LoadBalancerId *string `json:"LoadBalancerId,omitempty" xml:"LoadBalancerId,omitempty"`
-	// The number of times that a healthy backend server must consecutively fail health checks before it is declared unhealthy. In this case, the health status is changed from **success** to **fail**.
-	//
-	// Valid values: **2** to **10**.
-	MasterSlaveServerGroup *string `json:"MasterSlaveServerGroup,omitempty" xml:"MasterSlaveServerGroup,omitempty"`
-	// The port that is used for health checks. Valid values: **1** to **65535**.
-	//
-	// If you do not set this parameter, the port specified by the **BackendServerPort** parameter is used.
-	MasterSlaveServerGroupId *string `json:"MasterSlaveServerGroupId,omitempty" xml:"MasterSlaveServerGroupId,omitempty"`
-	OwnerAccount             *string `json:"OwnerAccount,omitempty" xml:"OwnerAccount,omitempty"`
-	OwnerId                  *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
-	// The operation that you want to perform. Set the value to **SetLoadBalancerTCPListenerAttribute**.
-	PersistenceTimeout     *int32 `json:"PersistenceTimeout,omitempty" xml:"PersistenceTimeout,omitempty"`
-	ProxyProtocolV2Enabled *bool  `json:"ProxyProtocolV2Enabled,omitempty" xml:"ProxyProtocolV2Enabled,omitempty"`
-	// Specifies whether to use a primary/secondary server group. Valid values:
-	//
-	// *   **on**: yes
-	// *   **off**: no
-	//
-	// You cannot set both **VserverGroup** and **MasterSlaveServerGroup** to **on**.
-	RegionId             *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	ResourceOwnerAccount *string `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
-	ResourceOwnerId      *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
-	// The timeout period of session persistence. Valid values: **0** to **3600**. Unit: seconds.
-	//
-	// Default value: **0**. If the default value is used, the system disables session persistence.
-	Scheduler *string `json:"Scheduler,omitempty" xml:"Scheduler,omitempty"`
-	// The timeout period of a connection. Unit: seconds. Valid values: **10** to **900**.
-	SynProxy *string `json:"SynProxy,omitempty" xml:"SynProxy,omitempty"`
+	AclStatus *string `json:"AclStatus,omitempty" xml:"AclStatus,omitempty"`
 	// The type of the network ACL. Valid values:
 	//
 	// *   **white**: a whitelist. Only requests from the IP addresses or CIDR blocks in the network ACL are forwarded. Whitelists apply to scenarios where you want to allow only specific IP addresses to access an application. Your service may be adversely affected if the allowlist is not properly configured. After a whitelist is configured, only requests from IP addresses that are added to the whitelist are forwarded by the listener.
@@ -18116,6 +19005,127 @@ type SetLoadBalancerTCPListenerAttributeRequest struct {
 	//     If a blacklist is configured for a listener but no IP address is added to the blacklist, the listener forwards all requests.
 	//
 	// >  If **AclStatus** is set to **on**, this parameter is required.
+	AclType *string `json:"AclType,omitempty" xml:"AclType,omitempty"`
+	// The maximum bandwidth of the listener. Unit: Mbit/s. Valid values: **-1** and **1** to **5120**.
+	//
+	// *   **-1**: For a pay-by-data-transfer Internet-facing CLB instance, you can set this parameter to **-1**, which specifies unlimited bandwidth.
+	// *   **1** to **5120**: For a pay-by-bandwidth Internet-facing CLB instance, you can specify the maximum bandwidth of each listener. The sum of the maximum bandwidth values of all listeners cannot exceed the maximum bandwidth of the CLB instance.
+	Bandwidth *int32 `json:"Bandwidth,omitempty" xml:"Bandwidth,omitempty"`
+	// Specifies whether to enable connection draining. Valid values:
+	//
+	// *   **on**: yes
+	// *   **off**: no
+	ConnectionDrain *string `json:"ConnectionDrain,omitempty" xml:"ConnectionDrain,omitempty"`
+	// The timeout period of connection draining. This parameter is required if **ConnectionDrain** is set to **on**. Unit: seconds.
+	//
+	// Valid values: **10** to **900**.
+	ConnectionDrainTimeout *int32 `json:"ConnectionDrainTimeout,omitempty" xml:"ConnectionDrainTimeout,omitempty"`
+	// The name of the listener.
+	//
+	// The name must be 1 to 256 characters in length and can contain letters, digits, hyphens (-), forward slashes (/), periods (.), and underscores (\_).
+	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
+	// The timeout period of a connection. Unit: seconds. Valid values: **10** to **900**.
+	EstablishedTimeout *int32 `json:"EstablishedTimeout,omitempty" xml:"EstablishedTimeout,omitempty"`
+	// The port that is used for health checks. Valid values: **1** to **65535**.
+	//
+	// If you do not set this parameter, the port specified by the **BackendServerPort** parameter is used.
+	HealthCheckConnectPort *int32 `json:"HealthCheckConnectPort,omitempty" xml:"HealthCheckConnectPort,omitempty"`
+	// The timeout period of a health check.
+	//
+	// If a backend ECS instance does not return a health check response within the specified timeout period, the server fails the health check.
+	//
+	// Valid values: **1** to **300**. Unit: seconds.
+	//
+	// >  If the value of the **HealthCheckConnectTimeout** parameter is smaller than that of the **HealthCheckInterval** parameter, the timeout period specified by the **HCTimeout** parameter is ignored and the period of time specified by the **HealthCheckInterval** parameter is used as the timeout period.
+	HealthCheckConnectTimeout *int32 `json:"HealthCheckConnectTimeout,omitempty" xml:"HealthCheckConnectTimeout,omitempty"`
+	// The domain name that is used for health checks. You can set this parameter when the TCP listener requires HTTP health checks. If you do not set this parameter, TCP health checks are performed.
+	//
+	// *   **$\_ip**: the private IP addresses of the backend servers.
+	//
+	//     If you do not set the HealthCheckHost parameter or set the parameter to $SERVER_IP, the CLB instance uses the private IP addresses of backend servers for health checks.
+	//
+	// *   **domain**: The domain name is 1 to 80 characters in length, and can contain letters, digits, periods (.), and hyphens (-).
+	HealthCheckDomain *string `json:"HealthCheckDomain,omitempty" xml:"HealthCheckDomain,omitempty"`
+	// The HTTP status code for a successful health check. Separate multiple HTTP status codes with commas (,).
+	//
+	// Valid values: **http\_2xx**, **http\_3xx**, **http\_4xx**, and **http\_5xx**.
+	HealthCheckHttpCode *string `json:"HealthCheckHttpCode,omitempty" xml:"HealthCheckHttpCode,omitempty"`
+	// The interval between two consecutive health checks. Unit: seconds.
+	//
+	// Valid values: **1** to **50**.
+	HealthCheckInterval *int32 `json:"HealthCheckInterval,omitempty" xml:"HealthCheckInterval,omitempty"`
+	// Specifies whether to enable the health check feature. Valid values:
+	//
+	// *   **on**: yes
+	// *   **off**: no
+	HealthCheckSwitch *string `json:"HealthCheckSwitch,omitempty" xml:"HealthCheckSwitch,omitempty"`
+	// The type of the health check. Valid values: **tcp** and **http**.
+	HealthCheckType *string `json:"HealthCheckType,omitempty" xml:"HealthCheckType,omitempty"`
+	// The URI that is used for health checks. The URI must be 1 to 80 characters in length, and can contain letters, digits, hyphens (-), forward slashes (/), periods (.), percent signs (%), question marks (?), number signs (#), and ampersands (&). The URI must start with a forward slash (/) but cannot be a single forward slash (/).
+	//
+	// You can set this parameter when the TCP listener requires HTTP health checks.
+	//
+	// If you do not set this parameter, TCP health checks are performed.
+	HealthCheckURI *string `json:"HealthCheckURI,omitempty" xml:"HealthCheckURI,omitempty"`
+	// The number of times that an unhealthy backend server must consecutively pass health checks before it is declared healthy. In this case, the health status is changed from **fail** to **success**.
+	//
+	// Valid values: **2** to **10**.
+	HealthyThreshold *int32 `json:"HealthyThreshold,omitempty" xml:"HealthyThreshold,omitempty"`
+	// The frontend port used by the CLB instance.
+	//
+	// Valid values: **1** to **65535**.
+	ListenerPort *int32 `json:"ListenerPort,omitempty" xml:"ListenerPort,omitempty"`
+	// The ID of the CLB instance.
+	LoadBalancerId *string `json:"LoadBalancerId,omitempty" xml:"LoadBalancerId,omitempty"`
+	// Specifies whether to use a primary/secondary server group. Valid values:
+	//
+	// *   **on**: yes
+	// *   **off**: no
+	//
+	// You cannot set both **VserverGroup** and **MasterSlaveServerGroup** to **on**.
+	MasterSlaveServerGroup *string `json:"MasterSlaveServerGroup,omitempty" xml:"MasterSlaveServerGroup,omitempty"`
+	// The ID of the primary/secondary server group.
+	//
+	// >  You can set only one of the VServerGroupId and MasterSlaveServerGroupId parameters.
+	MasterSlaveServerGroupId *string `json:"MasterSlaveServerGroupId,omitempty" xml:"MasterSlaveServerGroupId,omitempty"`
+	OwnerAccount             *string `json:"OwnerAccount,omitempty" xml:"OwnerAccount,omitempty"`
+	OwnerId                  *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
+	// The timeout period of session persistence. Valid values: **0** to **3600**. Unit: seconds.
+	//
+	// Default value: **0**. If the default value is used, the system disables session persistence.
+	PersistenceTimeout *int32 `json:"PersistenceTimeout,omitempty" xml:"PersistenceTimeout,omitempty"`
+	// Specifies whether to use the Proxy protocol to pass client IP addresses to backend servers. Valid values:
+	//
+	// *   **true**: yes
+	// *   **false**: no
+	ProxyProtocolV2Enabled *bool `json:"ProxyProtocolV2Enabled,omitempty" xml:"ProxyProtocolV2Enabled,omitempty"`
+	// The region ID of the CLB instance.
+	//
+	// You can query the region ID from the [Regions and zones](~~40654~~) list or by calling the [DescribeRegions](~~DescribeRegions~~) operation.
+	RegionId             *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	ResourceOwnerAccount *string `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
+	ResourceOwnerId      *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
+	// The scheduling algorithm. Valid values:
+	//
+	// *   **wrr**: Backend servers that have higher weights receive more requests than backend servers that have lower weights.
+	// *   **rr**: Requests are distributed to backend servers in sequence.
+	// *   **sch**: specifies consistent hashing that is based on source IP addresses. Requests from the same source IP address are distributed to the same backend server.
+	// *   **tch**: specifies consistent hashing that is based on four factors: source IP address, destination IP address, source port, and destination port. Requests that contain the same information based on the four factors are distributed to the same backend server.
+	//
+	// >
+	// *   Only high-performance CLB instances support the **sch** and **tch** algorithms.
+	// *   CLB does not support converting the **wrr** and **rr** algorithms to sch or tch. You cannot switch the hash algorithm from one to another.
+	Scheduler *string `json:"Scheduler,omitempty" xml:"Scheduler,omitempty"`
+	// Specifies whether to enable the SynProxy feature of CLB for protection. Valid values:
+	//
+	// *   **enable**: yes
+	// *   **disable**: no
+	//
+	// We recommend that you use the default value of this parameter.
+	SynProxy *string `json:"SynProxy,omitempty" xml:"SynProxy,omitempty"`
+	// The number of times that a healthy backend server must consecutively fail health checks before it is declared unhealthy. In this case, the health status is changed from **success** to **fail**.
+	//
+	// Valid values: **2** to **10**.
 	UnhealthyThreshold *int32 `json:"UnhealthyThreshold,omitempty" xml:"UnhealthyThreshold,omitempty"`
 	// Specifies whether to use a vServer group. Valid values:
 	//
@@ -18124,10 +19134,7 @@ type SetLoadBalancerTCPListenerAttributeRequest struct {
 	//
 	// >  You cannot set both **VserverGroup** and **MasterSlaveServerGroup** to **on**.
 	VServerGroup *string `json:"VServerGroup,omitempty" xml:"VServerGroup,omitempty"`
-	// Specifies whether to enable the health check feature. Valid values:
-	//
-	// *   **on**: yes
-	// *   **off**: no
+	// The ID of the vServer group.
 	VServerGroupId *string `json:"VServerGroupId,omitempty" xml:"VServerGroupId,omitempty"`
 }
 
@@ -18305,6 +19312,7 @@ func (s *SetLoadBalancerTCPListenerAttributeRequest) SetVServerGroupId(v string)
 }
 
 type SetLoadBalancerTCPListenerAttributeResponseBody struct {
+	// The ID of the request.
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -18351,28 +19359,89 @@ func (s *SetLoadBalancerTCPListenerAttributeResponse) SetBody(v *SetLoadBalancer
 }
 
 type SetLoadBalancerUDPListenerAttributeRequest struct {
-	// The name of the listener.
+	// The ID of the network access control list (ACL) that is associated with the listener.
 	//
-	// The name must be 1 to 256 characters in length and can contain letters, digits, hyphens (-), forward slashes (/), periods (.), and underscores (\_).
+	// >  If **AclStatus** is set to **on**, this parameter is required.
 	AclId *string `json:"AclId,omitempty" xml:"AclId,omitempty"`
-	// The ID of the vServer group.
-	AclStatus *string `json:"AclStatus,omitempty" xml:"AclStatus,omitempty"`
-	// The maximum bandwidth of the listener. Unit: Mbit/s. Valid values:
-	//
-	// *   **-1**: For a pay-by-data-transfer Internet-facing CLB instance, you can set this parameter to **-1**. This way, the bandwidth of the listener is unlimited.
-	// *   **1** to **5120**: For a pay-by-bandwidth Internet-facing CLB instance, you can specify the maximum bandwidth of each listener. The sum of bandwidth limits that you set for all listeners cannot exceed the maximum bandwidth of the CLB instance.
-	AclType *string `json:"AclType,omitempty" xml:"AclType,omitempty"`
-	// The frontend port used by the CLB instance.
-	//
-	// Valid values: **1** to **65535**.
-	Bandwidth *int32 `json:"Bandwidth,omitempty" xml:"Bandwidth,omitempty"`
-	// The ID of the request.
-	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
 	// Specifies whether to enable access control. Valid values:
 	//
 	// *   **on**: yes
 	// *   **off**: no
+	AclStatus *string `json:"AclStatus,omitempty" xml:"AclStatus,omitempty"`
+	// The type of the network ACL. Valid values:
+	//
+	// *   **white**: a whitelist. Only requests from the IP addresses or CIDR blocks in the network ACL are forwarded. Whitelists apply to scenarios where you want to allow only specific IP addresses to access an application. Your service may be adversely affected if the whitelist is not properly configured. After a whitelist is configured, only requests from IP addresses that are added to the whitelist are forwarded by the listener.
+	//
+	//     If you enable a whitelist but do not add an IP address to the ACL, the listener forwards all requests.
+	//
+	// *   **black**: a blacklist. All requests from the IP addresses or CIDR blocks in the network ACL are denied. Blacklists apply to scenarios where you want to block access from specified IP addresses to an application.
+	//
+	//     If a blacklist is configured for a listener but no IP address is added to the blacklist, the listener forwards all requests.
+	//
+	// >  If **AclStatus** is set to **on**, this parameter is required.
+	AclType *string `json:"AclType,omitempty" xml:"AclType,omitempty"`
+	// The maximum bandwidth of the listener. Unit: Mbit/s. Valid values:
+	//
+	// *   **-1**: For a pay-by-data-transfer Internet-facing CLB instance, you can set this parameter to **-1**. This way, the bandwidth of the listener is unlimited.
+	// *   **1** to **5120**: For a pay-by-bandwidth Internet-facing CLB instance, you can specify the maximum bandwidth of each listener. The sum of bandwidth limits that you set for all listeners cannot exceed the maximum bandwidth of the CLB instance.
+	Bandwidth *int32 `json:"Bandwidth,omitempty" xml:"Bandwidth,omitempty"`
+	// The name of the listener.
+	//
+	// The name must be 1 to 256 characters in length and can contain letters, digits, hyphens (-), forward slashes (/), periods (.), and underscores (\_).
+	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
+	// The port that is used for health checks.
+	//
+	// Valid values: **1** to **65535**.
 	HealthCheckConnectPort *int32 `json:"HealthCheckConnectPort,omitempty" xml:"HealthCheckConnectPort,omitempty"`
+	// The timeout period of a health check. If a backend server, such as an Elastic Compute Service (ECS) instance, does not return a health check response within the specified timeout period, the server fails the health check. Unit: seconds.
+	//
+	// Valid values: **1** to **300**.
+	//
+	// >  If the value of the **HealthCheckConnectTimeout** parameter is smaller than that of the **HealthCheckInterval** parameter, the timeout period specified by the **HealthCheckConnectTimeout** parameter is ignored and the period of time specified by the **HealthCheckInterval** parameter is used as the timeout period.
+	HealthCheckConnectTimeout *int32 `json:"HealthCheckConnectTimeout,omitempty" xml:"HealthCheckConnectTimeout,omitempty"`
+	// The interval at which health checks are performed. Unit: seconds.
+	//
+	// Valid values: **1** to **50**.
+	HealthCheckInterval *int32 `json:"HealthCheckInterval,omitempty" xml:"HealthCheckInterval,omitempty"`
+	// Specifies whether to enable the health check feature. Valid values:
+	//
+	// *   **on** (default): yes
+	// *   **off**: no
+	HealthCheckSwitch *string `json:"HealthCheckSwitch,omitempty" xml:"HealthCheckSwitch,omitempty"`
+	// The number of times that an unhealthy backend server must consecutively pass health checks before it can be declared healthy (from **fail** to **success**).
+	//
+	// Valid values: **1** to **10**.
+	HealthyThreshold *int32 `json:"HealthyThreshold,omitempty" xml:"HealthyThreshold,omitempty"`
+	// The frontend port used by the CLB instance.
+	//
+	// Valid values: **1** to **65535**.
+	ListenerPort *int32 `json:"ListenerPort,omitempty" xml:"ListenerPort,omitempty"`
+	// The ID of the CLB instance.
+	LoadBalancerId *string `json:"LoadBalancerId,omitempty" xml:"LoadBalancerId,omitempty"`
+	// Specifies whether to use a primary/secondary server group. Valid values:
+	//
+	// *   **on**: yes
+	// *   **off**: no
+	//
+	// >  You cannot set **VserverGroup** and **MasterSlaveServerGroup** both to **on**.
+	MasterSlaveServerGroup *string `json:"MasterSlaveServerGroup,omitempty" xml:"MasterSlaveServerGroup,omitempty"`
+	// The ID of the primary/secondary server group.
+	//
+	// >  You cannot specify both VServerGroupId and MasterSlaveServerGroupId.
+	MasterSlaveServerGroupId *string `json:"MasterSlaveServerGroupId,omitempty" xml:"MasterSlaveServerGroupId,omitempty"`
+	OwnerAccount             *string `json:"OwnerAccount,omitempty" xml:"OwnerAccount,omitempty"`
+	OwnerId                  *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
+	// Specifies whether to use the Proxy protocol to pass client IP addresses to backend servers. Valid values:
+	//
+	// *   **true**: yes
+	// *   **false** (default): no
+	ProxyProtocolV2Enabled *bool `json:"ProxyProtocolV2Enabled,omitempty" xml:"ProxyProtocolV2Enabled,omitempty"`
+	// The region ID of the CLB instance.
+	//
+	// You can call the [DescribeRegions](~~36063~~) operation to query the most recent region list.
+	RegionId             *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	ResourceOwnerAccount *string `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
+	ResourceOwnerId      *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
 	// The scheduling algorithm. Valid values:
 	//
 	// *   **wrr**: Backend servers with higher weights receive more requests than those with lower weights.
@@ -18388,80 +19457,25 @@ type SetLoadBalancerUDPListenerAttributeRequest struct {
 	// *   **qch**: specifies consistent hashing that is based on QUIC connection IDs. Requests that contain the same QUIC connection ID are distributed to the same backend server.
 	//
 	// >
-	//
 	// *   Only high-performance CLB instances support **sch**, **tch**, and **qch**.
 	// *   You cannot switch the algorithm used by a CLB instance from **wrr** or **rr** to consistent hashing or from consistent hashing to weighted round robin or round robin.
-	HealthCheckConnectTimeout *int32 `json:"HealthCheckConnectTimeout,omitempty" xml:"HealthCheckConnectTimeout,omitempty"`
-	// The request string for UDP listener health checks. The string must be 1 to 64 characters in length and can contain only letters and digits.
-	HealthCheckInterval *int32  `json:"HealthCheckInterval,omitempty" xml:"HealthCheckInterval,omitempty"`
-	HealthCheckSwitch   *string `json:"HealthCheckSwitch,omitempty" xml:"HealthCheckSwitch,omitempty"`
-	// The type of the network ACL. Valid values:
+	Scheduler *string `json:"Scheduler,omitempty" xml:"Scheduler,omitempty"`
+	// The number of times that a healthy backend server must consecutively fail health checks before it is declared unhealthy. In this case, the health status is changed from **success** to **fail**.
 	//
-	// *   **white**: a whitelist. Only requests from the IP addresses or CIDR blocks in the network ACL are forwarded. Whitelists apply to scenarios where you want to allow only specific IP addresses to access an application. Your service may be adversely affected if the whitelist is not properly configured. After a whitelist is configured, only requests from IP addresses that are added to the whitelist are forwarded by the listener.
-	//
-	//     If you enable a whitelist but do not add an IP address to the ACL, the listener forwards all requests.
-	//
-	// *   **black**: a blacklist. All requests from the IP addresses or CIDR blocks in the network ACL are denied. Blacklists apply to scenarios where you want to block access from specified IP addresses to an application.
-	//
-	//     If a blacklist is configured for a listener but no IP address is added to the blacklist, the listener forwards all requests.
-	//
-	// >  If **AclStatus** is set to **on**, this parameter is required.
-	HealthyThreshold *int32 `json:"HealthyThreshold,omitempty" xml:"HealthyThreshold,omitempty"`
+	// Valid values: **1** to **10**.
+	UnhealthyThreshold *int32 `json:"UnhealthyThreshold,omitempty" xml:"UnhealthyThreshold,omitempty"`
 	// Specifies whether to use a vServer group. Valid values:
 	//
 	// *   **on**: yes
 	// *   **off**: no
 	//
 	// >  You cannot set both **VserverGroup** and **MasterSlaveServerGroup** to **on**.
-	ListenerPort *int32 `json:"ListenerPort,omitempty" xml:"ListenerPort,omitempty"`
-	// The ID of the CLB instance.
-	LoadBalancerId *string `json:"LoadBalancerId,omitempty" xml:"LoadBalancerId,omitempty"`
-	// The ID of the network access control list (ACL) that is associated with the listener.
-	//
-	// >  If **AclStatus** is set to **on**, this parameter is required.
-	MasterSlaveServerGroup *string `json:"MasterSlaveServerGroup,omitempty" xml:"MasterSlaveServerGroup,omitempty"`
-	// Specifies whether to use a primary/secondary server group. Valid values:
-	//
-	// *   **on**: yes
-	// *   **off**: no
-	//
-	// >  You cannot set **VserverGroup** and **MasterSlaveServerGroup** both to **on**.
-	MasterSlaveServerGroupId *string `json:"MasterSlaveServerGroupId,omitempty" xml:"MasterSlaveServerGroupId,omitempty"`
-	OwnerAccount             *string `json:"OwnerAccount,omitempty" xml:"OwnerAccount,omitempty"`
-	OwnerId                  *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
-	ProxyProtocolV2Enabled   *bool   `json:"ProxyProtocolV2Enabled,omitempty" xml:"ProxyProtocolV2Enabled,omitempty"`
-	// The timeout period of a health check. If a backend server, such as an Elastic Compute Service (ECS) instance, does not return a health check response within the specified timeout period, the server fails the health check. Unit: seconds.
-	//
-	// Valid values: **1** to **300**.
-	//
-	// >  If the value of the **HealthCheckConnectTimeout** parameter is smaller than that of the **HealthCheckInterval** parameter, the timeout period specified by the **HealthCheckConnectTimeout** parameter is ignored and the period of time specified by the **HealthCheckInterval** parameter is used as the timeout period.
-	RegionId             *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	ResourceOwnerAccount *string `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
-	ResourceOwnerId      *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
-	// The number of times that a healthy backend server must consecutively fail health checks before it is declared unhealthy. In this case, the health status is changed from **success** to **fail**.
-	//
-	// Valid values: **1** to **10**.
-	Scheduler *string `json:"Scheduler,omitempty" xml:"Scheduler,omitempty"`
-	// The region ID of the CLB instance.
-	//
-	// You can call the [DescribeRegions](~~36063~~) operation to query the most recent region list.
-	UnhealthyThreshold *int32 `json:"UnhealthyThreshold,omitempty" xml:"UnhealthyThreshold,omitempty"`
-	// The port that is used for health checks.
-	//
-	// Valid values: **1** to **65535**.
 	VServerGroup *string `json:"VServerGroup,omitempty" xml:"VServerGroup,omitempty"`
-	// The operation that you want to perform. Set the value to
-	//
-	// **SetLoadBalancerUDPListenerAttribute**.
+	// The ID of the vServer group.
 	VServerGroupId *string `json:"VServerGroupId,omitempty" xml:"VServerGroupId,omitempty"`
-	// The number of times that an unhealthy backend server must consecutively pass health checks before it can be declared healthy (from **fail** to **success**).
-	//
-	// Valid values: **1** to **10**.
+	// The response string for UDP listener health checks. The string must be 1 to 64 characters in length and can contain only letters and digits.
 	HealthCheckExp *string `json:"healthCheckExp,omitempty" xml:"healthCheckExp,omitempty"`
-	// Specifies whether to enable the health check feature. Valid values:
-	//
-	// *   **on** (default): yes
-	// *   **off**: no
+	// The request string for UDP listener health checks. The string must be 1 to 64 characters in length and can contain only letters and digits.
 	HealthCheckReq *string `json:"healthCheckReq,omitempty" xml:"healthCheckReq,omitempty"`
 }
 
@@ -18604,6 +19618,7 @@ func (s *SetLoadBalancerUDPListenerAttributeRequest) SetHealthCheckReq(v string)
 }
 
 type SetLoadBalancerUDPListenerAttributeResponseBody struct {
+	// The ID of the request.
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -18650,27 +19665,51 @@ func (s *SetLoadBalancerUDPListenerAttributeResponse) SetBody(v *SetLoadBalancer
 }
 
 type SetRuleRequest struct {
+	// The cookie that is configured on the server.
+	//
+	// The cookie must be 1 to 200 characters in length and can contain only ASCII characters and digits. It cannot contain commas (,), semicolons (;), or space characters. It cannot start with a dollar sign ($).
+	//
+	// >  This parameter is required and takes effect if **StickySession** is set to **on** and **StickySessionType** is set to **server**.
+	Cookie *string `json:"Cookie,omitempty" xml:"Cookie,omitempty"`
+	// The timeout period of a cookie. Unit: seconds. Valid values: **1** to **86400**.
+	//
+	// >  This parameter is required and takes effect if **StickySession** is set to **on** and **StickySessionType** is set to **insert**.
+	CookieTimeout *int32 `json:"CookieTimeout,omitempty" xml:"CookieTimeout,omitempty"`
+	// Specifies whether to enable the health check feature. Valid values:
+	//
+	// *   **on**: yes
+	// *   **off**: no
+	//
+	// >  This parameter is required and takes effect if the **ListenerSync** parameter is set to **off**.
+	HealthCheck *string `json:"HealthCheck,omitempty" xml:"HealthCheck,omitempty"`
+	// The port that is used for health checks. Valid values: **1** to **65535**.
+	//
+	// >  This parameter takes effect when the **HealthCheck** parameter is set to **on**.
+	HealthCheckConnectPort *int32 `json:"HealthCheckConnectPort,omitempty" xml:"HealthCheckConnectPort,omitempty"`
+	// The domain name that is used for health checks. Valid values:
+	//
+	// *   **$\_ip**: the private IP address of a backend server. If you do not set this parameter or set the parameter to $\_ip, the SLB instance uses the private IP address of each backend server for health checks.
+	// *   **domain**: The domain name must be 1 to 80 characters in length, and can contain letters, digits, periods (.), and hyphens (-).
+	//
+	// >  This parameter takes effect if the **HealthCheck** parameter is set to **on**.
+	HealthCheckDomain *string `json:"HealthCheckDomain,omitempty" xml:"HealthCheckDomain,omitempty"`
+	// The HTTP status code for a successful health check. Multiple HTTP status codes are separated by commas (,).
+	//
+	// Valid values: **http\_2xx**, **http\_3xx**, **http\_4xx**, and **http\_5xx**.
+	//
+	// >  This parameter is required and takes effect if the **HealthCheck** parameter is set to **on**.
+	HealthCheckHttpCode *string `json:"HealthCheckHttpCode,omitempty" xml:"HealthCheckHttpCode,omitempty"`
 	// The interval between two consecutive health checks. Unit: seconds. Valid values: **1** to **50**.
 	//
 	// >  This parameter is required and takes effect if the **HealthCheck** parameter is set to **on**.
-	Cookie *string `json:"Cookie,omitempty" xml:"Cookie,omitempty"`
+	HealthCheckInterval *int32 `json:"HealthCheckInterval,omitempty" xml:"HealthCheckInterval,omitempty"`
 	// The timeout period of a health check response. If a backend server, such as an Elastic Compute Service (ECS) instance, does not return a health check response within the specified timeout period, the server fails the health check. Unit: seconds. Valid values: **1** to **300**.
 	//
 	// >  This parameter is required and takes effect if the **HealthCheck** parameter is set to **on**.
-	CookieTimeout *int32 `json:"CookieTimeout,omitempty" xml:"CookieTimeout,omitempty"`
-	// rsp-cige6****
-	HealthCheck            *string `json:"HealthCheck,omitempty" xml:"HealthCheck,omitempty"`
-	HealthCheckConnectPort *int32  `json:"HealthCheckConnectPort,omitempty" xml:"HealthCheckConnectPort,omitempty"`
-	// 80
-	HealthCheckDomain   *string `json:"HealthCheckDomain,omitempty" xml:"HealthCheckDomain,omitempty"`
-	HealthCheckHttpCode *string `json:"HealthCheckHttpCode,omitempty" xml:"HealthCheckHttpCode,omitempty"`
-	// The ID of the request.
-	HealthCheckInterval *int32 `json:"HealthCheckInterval,omitempty" xml:"HealthCheckInterval,omitempty"`
-	// wrr
 	HealthCheckTimeout *int32 `json:"HealthCheckTimeout,omitempty" xml:"HealthCheckTimeout,omitempty"`
-	// The name of the forwarding rule. The name must be 1 to 80 characters in length and can contain letters, digits, hyphens (-), forward slashes (/), periods (.), and underscores (\_).
+	// The URI that is used for health checks.
 	//
-	// >  Forwarding rule names must be unique within the same listener.
+	// >  This parameter is required and takes effect if the **HealthCheck** parameter is set to **on**.
 	HealthCheckURI *string `json:"HealthCheckURI,omitempty" xml:"HealthCheckURI,omitempty"`
 	// The number of times that an unhealthy backend server must consecutively pass health checks before it is declared healthy. In this case, the health status is changed from **fail** to **success**.
 	//
@@ -18678,46 +19717,58 @@ type SetRuleRequest struct {
 	//
 	// >  This parameter is required and takes effect if the **HealthCheck** parameter is set to **on**.
 	HealthyThreshold *int32 `json:"HealthyThreshold,omitempty" xml:"HealthyThreshold,omitempty"`
+	// Specifies whether to use the scheduling algorithm, session persistence, and health check configurations of the listener. Valid values:
+	//
+	// *   **on**: uses the configurations of the listener.
+	// *   **off**: does not use the configurations of the listener. You can customize the health check and session persistence configurations for the forwarding rule.
+	ListenerSync *string `json:"ListenerSync,omitempty" xml:"ListenerSync,omitempty"`
+	OwnerAccount *string `json:"OwnerAccount,omitempty" xml:"OwnerAccount,omitempty"`
+	OwnerId      *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
+	// The ID of the region where the Classic Load Balancer (CLB) instance is deployed.
+	//
+	// You can call the [DescribeRegions](~~27584~~) operation to query the most recent region list.
+	RegionId             *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	ResourceOwnerAccount *string `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
+	ResourceOwnerId      *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
+	// The ID of the forwarding rule.
+	RuleId *string `json:"RuleId,omitempty" xml:"RuleId,omitempty"`
+	// The name of the forwarding rule. The name must be 1 to 80 characters in length and can contain letters, digits, hyphens (-), forward slashes (/), periods (.), and underscores (\_).
+	//
+	// >  Forwarding rule names must be unique within the same listener.
+	RuleName *string `json:"RuleName,omitempty" xml:"RuleName,omitempty"`
 	// The scheduling algorithm. Valid values:
 	//
 	// *   **wrr**: Backend servers with higher weights receive more requests than those with lower weights.
 	// *   **rr**: Requests are distributed to backend servers in sequence.
 	//
 	// >  This parameter is required and takes effect if the **ListenerSync** parameter is set to **off**.
-	ListenerSync *string `json:"ListenerSync,omitempty" xml:"ListenerSync,omitempty"`
-	OwnerAccount *string `json:"OwnerAccount,omitempty" xml:"OwnerAccount,omitempty"`
-	OwnerId      *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
-	// Specifies whether to use the scheduling algorithm, session persistence, and health check configurations of the listener. Valid values:
-	//
-	// *   **on**: uses the configurations of the listener.
-	// *   **off**: does not use the configurations of the listener. You can customize the health check and session persistence configurations for the forwarding rule.
-	RegionId             *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	ResourceOwnerAccount *string `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
-	ResourceOwnerId      *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
-	// The HTTP status code for a successful health check. Multiple HTTP status codes are separated by commas (,).
-	//
-	// Valid values: **http\_2xx**, **http\_3xx**, **http\_4xx**, and **http\_5xx**.
-	//
-	// >  This parameter is required and takes effect if the **HealthCheck** parameter is set to **on**.
-	RuleId *string `json:"RuleId,omitempty" xml:"RuleId,omitempty"`
-	// Specifies whether to enable the health check feature. Valid values:
+	Scheduler *string `json:"Scheduler,omitempty" xml:"Scheduler,omitempty"`
+	// Specifies whether to enable session persistence. Valid values:
 	//
 	// *   **on**: yes
 	// *   **off**: no
 	//
-	// >  This parameter is required and takes effect if the **ListenerSync** parameter is set to **off**.
-	RuleName *string `json:"RuleName,omitempty" xml:"RuleName,omitempty"`
-	// insert
-	Scheduler *string `json:"Scheduler,omitempty" xml:"Scheduler,omitempty"`
-	// The timeout period of a cookie. Unit: seconds. Valid values: **1** to **86400**.
-	//
-	// >  This parameter is required and takes effect if **StickySession** is set to **on** and **StickySessionType** is set to **insert**.
+	// This parameter is required and takes effect if the **ListenerSync** parameter is set to **off**.
 	StickySession *string `json:"StickySession,omitempty" xml:"StickySession,omitempty"`
-	// rule-3ejhkt****
+	// The method that is used to handle a cookie. Valid values:
+	//
+	// *   **insert**: inserts a cookie.
+	//
+	//     CLB inserts the backend server ID as a cookie into the first HTTP or HTTPS response that is sent to a client. The next request from the client will contain this cookie, and the listener will distribute this request to the recorded backend server.
+	//
+	// *   **server**: rewrites a cookie.
+	//
+	//     When CLB detects a user-defined cookie, it overwrites the original cookie with the user-defined cookie. The next request from the client will contain the user-defined cookie, and the listener will distribute this request to the recorded backend server.
+	//
+	// >  This parameter is required and takes effect if the **StickySession** parameter is set to **on**.
 	StickySessionType *string `json:"StickySessionType,omitempty" xml:"StickySessionType,omitempty"`
-	// $_ip
+	// The number of times that a healthy backend server must consecutively fail health checks before it is declared unhealthy. In this case, the health status is changed from **success** to **fail**.
+	//
+	// Valid values: **2** to **10**.
+	//
+	// >  This parameter is required and takes effect if the **HealthCheck** parameter is set to **on**.
 	UnhealthyThreshold *int32 `json:"UnhealthyThreshold,omitempty" xml:"UnhealthyThreshold,omitempty"`
-	// off
+	// The ID of the vServer group that is associated with the forwarding rule.
 	VServerGroupId *string `json:"VServerGroupId,omitempty" xml:"VServerGroupId,omitempty"`
 }
 
@@ -18845,6 +19896,7 @@ func (s *SetRuleRequest) SetVServerGroupId(v string) *SetRuleRequest {
 }
 
 type SetRuleResponseBody struct {
+	// The ID of the request.
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -18893,15 +19945,17 @@ func (s *SetRuleResponse) SetBody(v *SetRuleResponseBody) *SetRuleResponse {
 type SetServerCertificateNameRequest struct {
 	OwnerAccount *string `json:"OwnerAccount,omitempty" xml:"OwnerAccount,omitempty"`
 	OwnerId      *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
-	// The ID of the server certificate.
+	// The ID of the region to which the Server Load Balancer (SLB) instance belongs.
+	//
+	// To query the region ID, call [DescribeRegions](~~27584~~).
 	RegionId             *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 	ResourceOwnerAccount *string `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
 	ResourceOwnerId      *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
+	// The ID of the server certificate.
+	ServerCertificateId *string `json:"ServerCertificateId,omitempty" xml:"ServerCertificateId,omitempty"`
 	// The name of the server certificate.
 	//
 	// The name must be 1 to 80 characters in length. It must start with an English letter. It can contain letters, numbers, periods (.), underscores (\_), and hyphens (-).
-	ServerCertificateId *string `json:"ServerCertificateId,omitempty" xml:"ServerCertificateId,omitempty"`
-	// The ID of the request.
 	ServerCertificateName *string `json:"ServerCertificateName,omitempty" xml:"ServerCertificateName,omitempty"`
 }
 
@@ -18949,6 +20003,7 @@ func (s *SetServerCertificateNameRequest) SetServerCertificateName(v string) *Se
 }
 
 type SetServerCertificateNameResponseBody struct {
+	// The ID of the request.
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -19160,14 +20215,6 @@ func (s *SetTLSCipherPolicyAttributeResponse) SetBody(v *SetTLSCipherPolicyAttri
 }
 
 type SetVServerGroupAttributeRequest struct {
-	// The name of the vServer group.
-	BackendServers *string `json:"BackendServers,omitempty" xml:"BackendServers,omitempty"`
-	OwnerAccount   *string `json:"OwnerAccount,omitempty" xml:"OwnerAccount,omitempty"`
-	OwnerId        *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
-	// The name of the vServer group. You can specify a custom name for the vServer group.
-	RegionId             *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	ResourceOwnerAccount *string `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
-	ResourceOwnerId      *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
 	// The list of backend servers in the vServer group. You can specify at most 20 backend servers for a vServer group in each call.
 	//
 	// *   **ServerId**: required. The ID of the Elastic Compute Service (ECS) instance or elastic network interface (ENI) that serves as a backend server. This parameter must be of the STRING type.
@@ -19190,8 +20237,16 @@ type SetVServerGroupAttributeRequest struct {
 	// *   An ECS instance: `[{ "ServerId": "i-xxxxxxxxx", "Weight": "100", "Type": "ecs", "Port":"80","Description":"test-112" }]`
 	// *   An ENI: `[{ "ServerId": "eni-xxxxxxxxx", "Weight": "100", "Type": "eni", "ServerIp": "192.168.**.**", "Port":"80","Description":"test-112" }]`
 	// *   An ENI with multiple IP addresses: `[{ "ServerId": "eni-xxxxxxxxx", "Weight": "100", "Type": "eni", "ServerIp": "192.168.**.**", "Port":"80","Description":"test-112" },{ "ServerId": "eni-xxxxxxxxx", "Weight": "100", "Type": "eni", "ServerIp": "172.166.**.**", "Port":"80","Description":"test-113" }]`
+	BackendServers *string `json:"BackendServers,omitempty" xml:"BackendServers,omitempty"`
+	OwnerAccount   *string `json:"OwnerAccount,omitempty" xml:"OwnerAccount,omitempty"`
+	OwnerId        *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
+	// The ID of the region where the Classic Load Balancer (CLB) instance is deployed. This parameter cannot be modified.
+	RegionId             *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	ResourceOwnerAccount *string `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
+	ResourceOwnerId      *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
+	// The ID of the vServer group. This parameter cannot be modified.
 	VServerGroupId *string `json:"VServerGroupId,omitempty" xml:"VServerGroupId,omitempty"`
-	// The ID of the vServer group.
+	// The name of the vServer group. You can specify a custom name for the vServer group.
 	VServerGroupName *string `json:"VServerGroupName,omitempty" xml:"VServerGroupName,omitempty"`
 }
 
@@ -19244,16 +20299,13 @@ func (s *SetVServerGroupAttributeRequest) SetVServerGroupName(v string) *SetVSer
 }
 
 type SetVServerGroupAttributeResponseBody struct {
-	// The weight of the backend server.
-	BackendServers *SetVServerGroupAttributeResponseBodyBackendServers `json:"BackendServers,omitempty" xml:"BackendServers,omitempty" type:"Struct"`
-	// The type of backend server. Valid values:
-	//
-	// *   **ecs**: an ECS instance
-	// *   **eni**: an ENI
-	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// The ID of the request.
-	VServerGroupId *string `json:"VServerGroupId,omitempty" xml:"VServerGroupId,omitempty"`
 	// The list of backend servers.
+	BackendServers *SetVServerGroupAttributeResponseBodyBackendServers `json:"BackendServers,omitempty" xml:"BackendServers,omitempty" type:"Struct"`
+	// The ID of the request.
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The ID of the vServer group.
+	VServerGroupId *string `json:"VServerGroupId,omitempty" xml:"VServerGroupId,omitempty"`
+	// The name of the vServer group.
 	VServerGroupName *string `json:"VServerGroupName,omitempty" xml:"VServerGroupName,omitempty"`
 }
 
@@ -19303,18 +20355,18 @@ func (s *SetVServerGroupAttributeResponseBodyBackendServers) SetBackendServer(v 
 }
 
 type SetVServerGroupAttributeResponseBodyBackendServersBackendServer struct {
-	// The port that is used by the backend server.
-	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
-	// This operation allows you to modify only the name of a vServer group and the weights of the backend servers in the vServer group.
-	//
-	// *   If you want to modify backend servers in a specified vServer group, call the [ModifyVServerGroupBackendServers](~~35220~~) operation.
-	// *   If you want to add backend servers to a specified vServer group, call the [AddVServerGroupBackendServers](~~35218~~) operation.
-	Port *int32 `json:"Port,omitempty" xml:"Port,omitempty"`
-	// Modifies the configurations of a vServer group.
-	ServerId *string `json:"ServerId,omitempty" xml:"ServerId,omitempty"`
 	// The description of the vServer group.
+	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
+	// The port that is used by the backend server.
+	Port *int32 `json:"Port,omitempty" xml:"Port,omitempty"`
+	// The ID of the ECS instance or ENI.
+	ServerId *string `json:"ServerId,omitempty" xml:"ServerId,omitempty"`
+	// The type of backend server. Valid values:
+	//
+	// *   **ecs**: an ECS instance
+	// *   **eni**: an ENI
 	Type *string `json:"Type,omitempty" xml:"Type,omitempty"`
-	// Backend server group description
+	// The weight of the backend server.
 	Weight *int32 `json:"Weight,omitempty" xml:"Weight,omitempty"`
 }
 
@@ -19381,21 +20433,21 @@ func (s *SetVServerGroupAttributeResponse) SetBody(v *SetVServerGroupAttributeRe
 }
 
 type StartLoadBalancerListenerRequest struct {
-	// The ID of the request.
-	ListenerPort *int32 `json:"ListenerPort,omitempty" xml:"ListenerPort,omitempty"`
-	// When you call this operation, note the following items:
+	// The listener port of the SLB instance.
 	//
-	// *   You can call the operation only when the listener is in the Stopped state.
-	// *   After the operation is called, the status of the listener changes to Starting.
-	// *   You cannot call this operation when the SLB instance to which the listener is bound is in the Locked state.
-	ListenerProtocol *string `json:"ListenerProtocol,omitempty" xml:"ListenerProtocol,omitempty"`
+	// Valid values: **1 to 65535**.
+	ListenerPort *int32 `json:"ListenerPort,omitempty" xml:"ListenerPort,omitempty"`
 	// The protocol used by the listener of the SLB instance.
 	//
 	// >  If different listeners use the same port, you must specify this parameter.
+	ListenerProtocol *string `json:"ListenerProtocol,omitempty" xml:"ListenerProtocol,omitempty"`
+	// The ID of the SLB instance.
 	LoadBalancerId *string `json:"LoadBalancerId,omitempty" xml:"LoadBalancerId,omitempty"`
 	OwnerAccount   *string `json:"OwnerAccount,omitempty" xml:"OwnerAccount,omitempty"`
 	OwnerId        *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
-	// The ID of the SLB instance.
+	// The region where the SLB instance is deployed.
+	//
+	// You can retrieve the region ID by calling the [DescribeRegions](~~27584~~) operation.
 	RegionId             *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 	ResourceOwnerAccount *string `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
 	ResourceOwnerId      *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
@@ -19450,6 +20502,7 @@ func (s *StartLoadBalancerListenerRequest) SetResourceOwnerId(v int64) *StartLoa
 }
 
 type StartLoadBalancerListenerResponseBody struct {
+	// The ID of the request.
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -19496,22 +20549,21 @@ func (s *StartLoadBalancerListenerResponse) SetBody(v *StartLoadBalancerListener
 }
 
 type StopLoadBalancerListenerRequest struct {
-	// The ID of the request.
+	// The frontend listening port used by the listener.
+	//
+	// Value range: **1 to 65535**
 	ListenerPort *int32 `json:"ListenerPort,omitempty" xml:"ListenerPort,omitempty"`
-	// Before you make this API call, note the following:
-	//
-	// *   After the API call is successfully made, the listener enters the stopped state.
-	// *   If the Server Load Balancer (SLB) instance to which the listener to be stopped belongs is in the locked state, this API call cannot be made.
-	//
-	// >  If you stop the listener, your services will be disrupted. Exercise caution when you perform this action.
-	ListenerProtocol *string `json:"ListenerProtocol,omitempty" xml:"ListenerProtocol,omitempty"`
 	// The frontend listening protocol used by the SLB instance.
 	//
 	// >  This parameter is required when listeners with different protocols use the same port.
+	ListenerProtocol *string `json:"ListenerProtocol,omitempty" xml:"ListenerProtocol,omitempty"`
+	// The ID of the SLB instance to which the listener belongs.
 	LoadBalancerId *string `json:"LoadBalancerId,omitempty" xml:"LoadBalancerId,omitempty"`
 	OwnerAccount   *string `json:"OwnerAccount,omitempty" xml:"OwnerAccount,omitempty"`
 	OwnerId        *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
-	// The ID of the SLB instance to which the listener belongs.
+	// The ID of the region to which the SLB instance belongs.
+	//
+	// To query the region ID, refer to the list of [regions and zones](~~40654~~) or call [DescribeRegions](~~25609~~).
 	RegionId             *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 	ResourceOwnerAccount *string `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
 	ResourceOwnerId      *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
@@ -19566,6 +20618,7 @@ func (s *StopLoadBalancerListenerRequest) SetResourceOwnerId(v int64) *StopLoadB
 }
 
 type StopLoadBalancerListenerResponseBody struct {
+	// The ID of the request.
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -19612,14 +20665,29 @@ func (s *StopLoadBalancerListenerResponse) SetBody(v *StopLoadBalancerListenerRe
 }
 
 type TagResourcesRequest struct {
-	OwnerAccount         *string                   `json:"OwnerAccount,omitempty" xml:"OwnerAccount,omitempty"`
-	OwnerId              *int64                    `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
-	RegionId             *string                   `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	ResourceId           []*string                 `json:"ResourceId,omitempty" xml:"ResourceId,omitempty" type:"Repeated"`
-	ResourceOwnerAccount *string                   `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
-	ResourceOwnerId      *int64                    `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
-	ResourceType         *string                   `json:"ResourceType,omitempty" xml:"ResourceType,omitempty"`
-	Tag                  []*TagResourcesRequestTag `json:"Tag,omitempty" xml:"Tag,omitempty" type:"Repeated"`
+	OwnerAccount *string `json:"OwnerAccount,omitempty" xml:"OwnerAccount,omitempty"`
+	OwnerId      *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
+	// The ID of the region where the Server Load Balancer (SLB) instance is created.
+	//
+	// You can call the [DescribeRegions](~~27584~~) operation to query the most recent region list.
+	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	// The resource ID. You can specify up to 20 IDs.
+	//
+	// >  The value of **ResourceId** of a **listener** is **LoadBalancerId\_ Listener protocol_Port**, where LoadBalancerId is the SLB instance ID and port is the listener port. Example: lb-bp1snb10sbml4mqty_http\_80.
+	ResourceId           []*string `json:"ResourceId,omitempty" xml:"ResourceId,omitempty" type:"Repeated"`
+	ResourceOwnerAccount *string   `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
+	ResourceOwnerId      *int64    `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
+	// The type of the resource. Valid values:
+	//
+	// *   **instance**: a Server Load Balancer (SLB) instance
+	// *   **certificate**: a certificate
+	// *   **acl**: an access control list (ACL)
+	// *   **listener**: a listener
+	// *   **vservergroup**: a vServer group
+	// *   **masterslaveservergroup**: a primary/secondary server group
+	ResourceType *string `json:"ResourceType,omitempty" xml:"ResourceType,omitempty"`
+	// The tags.
+	Tag []*TagResourcesRequestTag `json:"Tag,omitempty" xml:"Tag,omitempty" type:"Repeated"`
 }
 
 func (s TagResourcesRequest) String() string {
@@ -19671,7 +20739,13 @@ func (s *TagResourcesRequest) SetTag(v []*TagResourcesRequestTag) *TagResourcesR
 }
 
 type TagResourcesRequestTag struct {
-	Key   *string `json:"Key,omitempty" xml:"Key,omitempty"`
+	// The tag key. You can specify up to 20 tag keys. The tag key cannot be an empty string.
+	//
+	// The tag key must be 1 to 64 characters in length and cannot start with `aliyun` or `acs:`. The tag key cannot contain `http://` or `https://`.
+	Key *string `json:"Key,omitempty" xml:"Key,omitempty"`
+	// The tag value. You can specify up to 20 tag values. The tag value can be an empty string.
+	//
+	// The tag value can be up to 128 characters in length and cannot start with `acs:` or `aliyun`. It cannot contain `http://` or `https://`.
 	Value *string `json:"Value,omitempty" xml:"Value,omitempty"`
 }
 
@@ -19694,6 +20768,7 @@ func (s *TagResourcesRequestTag) SetValue(v string) *TagResourcesRequestTag {
 }
 
 type TagResourcesResponseBody struct {
+	// The ID of the request.
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -19869,19 +20944,24 @@ func (s *UntagResourcesResponse) SetBody(v *UntagResourcesResponseBody) *UntagRe
 }
 
 type UploadCACertificateRequest struct {
-	// The ID of the enterprise resource group.
+	// The name of this action.
+	//
+	// Value: **UploadCACertificate**
 	CACertificate *string `json:"CACertificate,omitempty" xml:"CACertificate,omitempty"`
-	// The timestamp generated when the CA certificate is uploaded.
+	// The ID of the region to which the CA certificate belongs.
+	//
+	// To query the region ID, call [DescribeRegions](~~27584~~).
 	CACertificateName *string `json:"CACertificateName,omitempty" xml:"CACertificateName,omitempty"`
 	OwnerAccount      *string `json:"OwnerAccount,omitempty" xml:"OwnerAccount,omitempty"`
 	OwnerId           *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
-	// The name of the CA certificate.
+	// The region id.
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	// The ID of the request.
-	ResourceGroupId      *string                          `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
-	ResourceOwnerAccount *string                          `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
-	ResourceOwnerId      *int64                           `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
-	Tag                  []*UploadCACertificateRequestTag `json:"Tag,omitempty" xml:"Tag,omitempty" type:"Repeated"`
+	// The content of the CA certificate to be uploaded.
+	ResourceGroupId      *string `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
+	ResourceOwnerAccount *string `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
+	ResourceOwnerId      *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
+	// The tags.
+	Tag []*UploadCACertificateRequestTag `json:"Tag,omitempty" xml:"Tag,omitempty" type:"Repeated"`
 }
 
 func (s UploadCACertificateRequest) String() string {
@@ -19938,7 +21018,13 @@ func (s *UploadCACertificateRequest) SetTag(v []*UploadCACertificateRequestTag) 
 }
 
 type UploadCACertificateRequestTag struct {
-	Key   *string `json:"Key,omitempty" xml:"Key,omitempty"`
+	// The tag key. You can specify at most 20 tag keys.
+	//
+	// The tag key cannot be an empty string. The tag key must be 1 to 64 characters in length and cannot start with `aliyun` or `acs:`. It cannot contain `http://` or `https://`.
+	Key *string `json:"Key,omitempty" xml:"Key,omitempty"`
+	// The tag value. Valid values of N: **1 to 20**. The tag value can be an empty string.
+	//
+	// The tag value can be up to 128 characters in length and cannot start with `acs:` or `aliyun`. The tag value cannot contain `http://` or `https://`.
 	Value *string `json:"Value,omitempty" xml:"Value,omitempty"`
 }
 
@@ -19961,24 +21047,25 @@ func (s *UploadCACertificateRequestTag) SetValue(v string) *UploadCACertificateR
 }
 
 type UploadCACertificateResponseBody struct {
-	CACertificateId *string `json:"CACertificateId,omitempty" xml:"CACertificateId,omitempty"`
-	// The ID of the CA certificate.
-	CACertificateName *string `json:"CACertificateName,omitempty" xml:"CACertificateName,omitempty"`
 	// The name of the CA certificate.
-	CommonName *string `json:"CommonName,omitempty" xml:"CommonName,omitempty"`
-	// The ID of the enterprise resource group.
-	CreateTime *string `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
-	// The time when the CA certificate expires.
-	CreateTimeStamp *int64 `json:"CreateTimeStamp,omitempty" xml:"CreateTimeStamp,omitempty"`
-	// The time when the CA certificate is uploaded.
-	ExpireTime *string `json:"ExpireTime,omitempty" xml:"ExpireTime,omitempty"`
-	// You can upload only one CA certificate at a time. After a CA certificate is uploaded, the certificate ID, name, and fingerprint are returned.
-	ExpireTimeStamp *int64 `json:"ExpireTimeStamp,omitempty" xml:"ExpireTimeStamp,omitempty"`
+	CACertificateId *string `json:"CACertificateId,omitempty" xml:"CACertificateId,omitempty"`
 	// The domain name of the CA certificate.
-	Fingerprint *string `json:"Fingerprint,omitempty" xml:"Fingerprint,omitempty"`
+	CACertificateName *string `json:"CACertificateName,omitempty" xml:"CACertificateName,omitempty"`
 	// The fingerprint of the CA certificate.
+	CommonName *string `json:"CommonName,omitempty" xml:"CommonName,omitempty"`
+	// The time when the CA certificate expires.
+	CreateTime *string `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
+	// The name of the CA certificate.
+	CreateTimeStamp *int64 `json:"CreateTimeStamp,omitempty" xml:"CreateTimeStamp,omitempty"`
+	// The timestamp generated when the CA certificate is uploaded.
+	ExpireTime *string `json:"ExpireTime,omitempty" xml:"ExpireTime,omitempty"`
+	// The ID of the enterprise resource group.
+	ExpireTimeStamp *int64 `json:"ExpireTimeStamp,omitempty" xml:"ExpireTimeStamp,omitempty"`
+	// The ID of the request.
+	Fingerprint *string `json:"Fingerprint,omitempty" xml:"Fingerprint,omitempty"`
+	// The ID of the enterprise resource group.
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// The timestamp generated when the CA certificate expires.
+	// The time when the CA certificate is uploaded.
 	ResourceGroupId *string `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
 }
 
@@ -20070,19 +21157,32 @@ func (s *UploadCACertificateResponse) SetBody(v *UploadCACertificateResponseBody
 }
 
 type UploadServerCertificateRequest struct {
-	AliCloudCertificateId       *string                              `json:"AliCloudCertificateId,omitempty" xml:"AliCloudCertificateId,omitempty"`
-	AliCloudCertificateName     *string                              `json:"AliCloudCertificateName,omitempty" xml:"AliCloudCertificateName,omitempty"`
-	AliCloudCertificateRegionId *string                              `json:"AliCloudCertificateRegionId,omitempty" xml:"AliCloudCertificateRegionId,omitempty"`
-	OwnerAccount                *string                              `json:"OwnerAccount,omitempty" xml:"OwnerAccount,omitempty"`
-	OwnerId                     *int64                               `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
-	PrivateKey                  *string                              `json:"PrivateKey,omitempty" xml:"PrivateKey,omitempty"`
-	RegionId                    *string                              `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	ResourceGroupId             *string                              `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
-	ResourceOwnerAccount        *string                              `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
-	ResourceOwnerId             *int64                               `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
-	ServerCertificate           *string                              `json:"ServerCertificate,omitempty" xml:"ServerCertificate,omitempty"`
-	ServerCertificateName       *string                              `json:"ServerCertificateName,omitempty" xml:"ServerCertificateName,omitempty"`
-	Tag                         []*UploadServerCertificateRequestTag `json:"Tag,omitempty" xml:"Tag,omitempty" type:"Repeated"`
+	// AliCloud certificate ID.
+	AliCloudCertificateId *string `json:"AliCloudCertificateId,omitempty" xml:"AliCloudCertificateId,omitempty"`
+	// AliCloud certificate name.
+	AliCloudCertificateName *string `json:"AliCloudCertificateName,omitempty" xml:"AliCloudCertificateName,omitempty"`
+	// The region ID of AliCloud certificate.
+	AliCloudCertificateRegionId *string `json:"AliCloudCertificateRegionId,omitempty" xml:"AliCloudCertificateRegionId,omitempty"`
+	OwnerAccount                *string `json:"OwnerAccount,omitempty" xml:"OwnerAccount,omitempty"`
+	OwnerId                     *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
+	// The private key of the certificate.
+	PrivateKey *string `json:"PrivateKey,omitempty" xml:"PrivateKey,omitempty"`
+	// The region ID of the CLB instance.
+	//
+	// You can call the [DescribeRegions](~~27584~~) operation to query the most recent region list.
+	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	// The resource group ID.
+	ResourceGroupId      *string `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
+	ResourceOwnerAccount *string `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
+	ResourceOwnerId      *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
+	// The server certificate to be uploaded.
+	ServerCertificate *string `json:"ServerCertificate,omitempty" xml:"ServerCertificate,omitempty"`
+	// The name of the server certificate.
+	//
+	// The name must be 1 to 80 characters in length. It must start with an English letter. It can contain letters, numbers, periods (.), underscores (\_), and hyphens (-).
+	ServerCertificateName *string `json:"ServerCertificateName,omitempty" xml:"ServerCertificateName,omitempty"`
+	// The tags.
+	Tag []*UploadServerCertificateRequestTag `json:"Tag,omitempty" xml:"Tag,omitempty" type:"Repeated"`
 }
 
 func (s UploadServerCertificateRequest) String() string {
@@ -20159,7 +21259,11 @@ func (s *UploadServerCertificateRequest) SetTag(v []*UploadServerCertificateRequ
 }
 
 type UploadServerCertificateRequestTag struct {
-	Key   *string `json:"Key,omitempty" xml:"Key,omitempty"`
+	// The key of tag N. Valid values of N: **1 to 20**. The tag key cannot be an empty string.
+	//
+	// The tag key can be up to 64 characters in length, and cannot contain `http://` or `https://`. The tag key cannot start with `aliyun` or `acs:`.
+	Key *string `json:"Key,omitempty" xml:"Key,omitempty"`
+	// The value of tag N. Valid values of N: **1 to 20**. The tag value can be an empty string. The tag value can be up to 128 characters in length and cannot contain `http://` or `https://`. The tag value cannot start with `aliyun` and `acs:`.
 	Value *string `json:"Value,omitempty" xml:"Value,omitempty"`
 }
 
@@ -20182,20 +21286,43 @@ func (s *UploadServerCertificateRequestTag) SetValue(v string) *UploadServerCert
 }
 
 type UploadServerCertificateResponseBody struct {
-	AliCloudCertificateId   *string                                                     `json:"AliCloudCertificateId,omitempty" xml:"AliCloudCertificateId,omitempty"`
-	AliCloudCertificateName *string                                                     `json:"AliCloudCertificateName,omitempty" xml:"AliCloudCertificateName,omitempty"`
-	CommonName              *string                                                     `json:"CommonName,omitempty" xml:"CommonName,omitempty"`
-	CreateTime              *string                                                     `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
-	CreateTimeStamp         *int64                                                      `json:"CreateTimeStamp,omitempty" xml:"CreateTimeStamp,omitempty"`
-	ExpireTime              *string                                                     `json:"ExpireTime,omitempty" xml:"ExpireTime,omitempty"`
-	ExpireTimeStamp         *int64                                                      `json:"ExpireTimeStamp,omitempty" xml:"ExpireTimeStamp,omitempty"`
-	Fingerprint             *string                                                     `json:"Fingerprint,omitempty" xml:"Fingerprint,omitempty"`
-	IsAliCloudCertificate   *int32                                                      `json:"IsAliCloudCertificate,omitempty" xml:"IsAliCloudCertificate,omitempty"`
-	RegionId                *string                                                     `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	RequestId               *string                                                     `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	ResourceGroupId         *string                                                     `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
-	ServerCertificateId     *string                                                     `json:"ServerCertificateId,omitempty" xml:"ServerCertificateId,omitempty"`
-	ServerCertificateName   *string                                                     `json:"ServerCertificateName,omitempty" xml:"ServerCertificateName,omitempty"`
+	// The AliCloud certificate ID.
+	AliCloudCertificateId *string `json:"AliCloudCertificateId,omitempty" xml:"AliCloudCertificateId,omitempty"`
+	// The AliCloud certificate name.
+	AliCloudCertificateName *string `json:"AliCloudCertificateName,omitempty" xml:"AliCloudCertificateName,omitempty"`
+	// The domain name of the CA certificate.
+	CommonName *string `json:"CommonName,omitempty" xml:"CommonName,omitempty"`
+	// The time when the CA certificate is uploaded.
+	CreateTime *string `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
+	// The timestamp generated when the CA certificate is uploaded.
+	CreateTimeStamp *int64 `json:"CreateTimeStamp,omitempty" xml:"CreateTimeStamp,omitempty"`
+	// The time when the CA certificate expires.
+	ExpireTime *string `json:"ExpireTime,omitempty" xml:"ExpireTime,omitempty"`
+	// The timestamp generated when the CA certificate expires.
+	ExpireTimeStamp *int64 `json:"ExpireTimeStamp,omitempty" xml:"ExpireTimeStamp,omitempty"`
+	// The fingerprint of the CA certificate.
+	Fingerprint *string `json:"Fingerprint,omitempty" xml:"Fingerprint,omitempty"`
+	// Indicates whether the certificate is provided by Alibaba Cloud Certificate Management Service. Valid values:
+	// - **0**: The certificate is not provided by Alibaba Cloud Certificate Management Service.
+	// - **1**: The certificate is provided by Alibaba Cloud Certificate Management Service.
+	IsAliCloudCertificate *int32 `json:"IsAliCloudCertificate,omitempty" xml:"IsAliCloudCertificate,omitempty"`
+	// The ID of the region where the Classic Load Balancer (CLB) instance is deployed.
+	//
+	// You can call the [DescribeRegions](~~27584~~) operation to query the most recent region list.
+	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	// The ID of the request.
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The resource group ID.
+	ResourceGroupId *string `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
+	// The ID of the server certificate.
+	ServerCertificateId *string `json:"ServerCertificateId,omitempty" xml:"ServerCertificateId,omitempty"`
+	// The name of the server certificate.
+	//
+	// The name must be 1 to 80 characters in length. It must start with an English letter. It can contain letters, numbers, periods (.), underscores (\_), and hyphens (-).
+	ServerCertificateName *string `json:"ServerCertificateName,omitempty" xml:"ServerCertificateName,omitempty"`
+	// The subject alternative names.
+	//
+	// A domain name list is supported. A maximum of 10 domain names are supported.
 	SubjectAlternativeNames *UploadServerCertificateResponseBodySubjectAlternativeNames `json:"SubjectAlternativeNames,omitempty" xml:"SubjectAlternativeNames,omitempty" type:"Struct"`
 }
 
@@ -20506,7 +21633,7 @@ func (client *Client) AddAccessControlListEntry(request *AddAccessControlListEnt
 }
 
 /**
- * The ID of the CLB instance.
+ * >  If multiple identical Elastic Compute Service (ECS) instances are specified in a request, only the first ECS instance is added. The other ECS instances are ignored. If the backend server that you add is the same as one of the existing backend servers that are already associated with the listener, an error message is returned.
  *
  * @param request AddBackendServersRequest
  * @param runtime runtime options for this request RuntimeOptions
@@ -20570,7 +21697,7 @@ func (client *Client) AddBackendServersWithOptions(request *AddBackendServersReq
 }
 
 /**
- * The ID of the CLB instance.
+ * >  If multiple identical Elastic Compute Service (ECS) instances are specified in a request, only the first ECS instance is added. The other ECS instances are ignored. If the backend server that you add is the same as one of the existing backend servers that are already associated with the listener, an error message is returned.
  *
  * @param request AddBackendServersRequest
  * @return AddBackendServersResponse
@@ -20663,8 +21790,12 @@ func (client *Client) AddListenerWhiteListItem(request *AddListenerWhiteListItem
 }
 
 /**
- * The name of this action.
- * Value: **AddTags**
+ * # Limits
+ * Before you call this API, note the following limits:
+ * *   You can add up to 10 tags to each SLB instance.
+ * *   You can add up to five pairs of tags at a time.
+ * *   All the tags and keys added to an SLB instance must be unique.
+ * *   If you add a tag of which the key is the same as that of an existing tag, but the value is different, the new tag overwrites the existing one.
  *
  * @param request AddTagsRequest
  * @param runtime runtime options for this request RuntimeOptions
@@ -20728,8 +21859,12 @@ func (client *Client) AddTagsWithOptions(request *AddTagsRequest, runtime *util.
 }
 
 /**
- * The name of this action.
- * Value: **AddTags**
+ * # Limits
+ * Before you call this API, note the following limits:
+ * *   You can add up to 10 tags to each SLB instance.
+ * *   You can add up to five pairs of tags at a time.
+ * *   All the tags and keys added to an SLB instance must be unique.
+ * *   If you add a tag of which the key is the same as that of an existing tag, but the value is different, the new tag overwrites the existing one.
  *
  * @param request AddTagsRequest
  * @return AddTagsResponse
@@ -20814,7 +21949,10 @@ func (client *Client) AddVServerGroupBackendServers(request *AddVServerGroupBack
 }
 
 /**
- * The ID of the region where you want to create the ACL.
+ * You can create multiple ACLs. Each ACL can contain one or more IP addresses or CIDR blocks. Before you create an ACL, take note of the following limits:
+ * *   An account can have a maximum of 50 ACLs in each region.
+ * *   You can add a maximum of 50 IP addresses or CIDR blocks at a time within an account.
+ * *   Each ACL can contain a maximum of 300 IP addresses or CIDR blocks.
  *
  * @param request CreateAccessControlListRequest
  * @param runtime runtime options for this request RuntimeOptions
@@ -20886,7 +22024,10 @@ func (client *Client) CreateAccessControlListWithOptions(request *CreateAccessCo
 }
 
 /**
- * The ID of the region where you want to create the ACL.
+ * You can create multiple ACLs. Each ACL can contain one or more IP addresses or CIDR blocks. Before you create an ACL, take note of the following limits:
+ * *   An account can have a maximum of 50 ACLs in each region.
+ * *   You can add a maximum of 50 IP addresses or CIDR blocks at a time within an account.
+ * *   Each ACL can contain a maximum of 300 IP addresses or CIDR blocks.
  *
  * @param request CreateAccessControlListRequest
  * @return CreateAccessControlListResponse
@@ -20979,7 +22120,9 @@ func (client *Client) CreateDomainExtension(request *CreateDomainExtensionReques
 }
 
 /**
- * The order ID of the subscription CLB instance.
+ * *   Before you create a CLB instance, call the [DescribeAvailableResource](~~DescribeAvailableResource~~) operation to query the resources available for purchase in the region where you want to create the CLB instance.
+ * *   After a CLB instance is created, you are charged for using the CLB instance.
+ * *   The pay-as-you-go billing method supports the pay-by-specification and pay-by-LCU metering methods.
  *
  * @param request CreateLoadBalancerRequest
  * @param runtime runtime options for this request RuntimeOptions
@@ -21123,7 +22266,9 @@ func (client *Client) CreateLoadBalancerWithOptions(request *CreateLoadBalancerR
 }
 
 /**
- * The order ID of the subscription CLB instance.
+ * *   Before you create a CLB instance, call the [DescribeAvailableResource](~~DescribeAvailableResource~~) operation to query the resources available for purchase in the region where you want to create the CLB instance.
+ * *   After a CLB instance is created, you are charged for using the CLB instance.
+ * *   The pay-as-you-go billing method supports the pay-by-specification and pay-by-LCU metering methods.
  *
  * @param request CreateLoadBalancerRequest
  * @return CreateLoadBalancerResponse
@@ -21140,9 +22285,9 @@ func (client *Client) CreateLoadBalancer(request *CreateLoadBalancerRequest) (_r
 }
 
 /**
- * The timeout period of a cookie. Unit: seconds.
- * Valid values: **1** to **86400**.
- * >  If **StickySession** is set to **on** and **StickySessionType** is set to **insert**, this parameter is required.
+ * A newly created listener is in the **stopped** state. After a listener is created, you can call the [StartLoadBalancerListener](~~StartLoadBalancerListener~~) operation to start the listener. After the listener is started, the listener can forward traffic to backend servers.
+ * ## Prerequisites
+ * A Classic Load Balancer (CLB) instance is created. For more information, see [CreateLoadBalancer](~~StartLoadBalancerListener~~).
  *
  * @param request CreateLoadBalancerHTTPListenerRequest
  * @param runtime runtime options for this request RuntimeOptions
@@ -21334,9 +22479,9 @@ func (client *Client) CreateLoadBalancerHTTPListenerWithOptions(request *CreateL
 }
 
 /**
- * The timeout period of a cookie. Unit: seconds.
- * Valid values: **1** to **86400**.
- * >  If **StickySession** is set to **on** and **StickySessionType** is set to **insert**, this parameter is required.
+ * A newly created listener is in the **stopped** state. After a listener is created, you can call the [StartLoadBalancerListener](~~StartLoadBalancerListener~~) operation to start the listener. After the listener is started, the listener can forward traffic to backend servers.
+ * ## Prerequisites
+ * A Classic Load Balancer (CLB) instance is created. For more information, see [CreateLoadBalancer](~~StartLoadBalancerListener~~).
  *
  * @param request CreateLoadBalancerHTTPListenerRequest
  * @return CreateLoadBalancerHTTPListenerResponse
@@ -21353,9 +22498,9 @@ func (client *Client) CreateLoadBalancerHTTPListener(request *CreateLoadBalancer
 }
 
 /**
- * The timeout period of a cookie. Unit: seconds.
- * Valid values: **1** to **86400**.
- * >  If **StickySession** is set to **on** and **StickySessionType** is set to **insert**, this parameter is required.
+ * A newly created listener is in the **stopped** state. After a listener is created, you can call the [StartLoadBalancerListener](~~27597~~) operation to start the listener. After the listener is started, the listener can forward traffic to backend servers.
+ * ## Prerequisites
+ * A Classic Load Balancer (CLB) instance is created. For more information, see [CreateLoadBalancer](https://www.alibabacloud.com/help/en/server-load-balancer/latest/createloadbalancer-2).
  *
  * @param request CreateLoadBalancerHTTPSListenerRequest
  * @param runtime runtime options for this request RuntimeOptions
@@ -21555,9 +22700,9 @@ func (client *Client) CreateLoadBalancerHTTPSListenerWithOptions(request *Create
 }
 
 /**
- * The timeout period of a cookie. Unit: seconds.
- * Valid values: **1** to **86400**.
- * >  If **StickySession** is set to **on** and **StickySessionType** is set to **insert**, this parameter is required.
+ * A newly created listener is in the **stopped** state. After a listener is created, you can call the [StartLoadBalancerListener](~~27597~~) operation to start the listener. After the listener is started, the listener can forward traffic to backend servers.
+ * ## Prerequisites
+ * A Classic Load Balancer (CLB) instance is created. For more information, see [CreateLoadBalancer](https://www.alibabacloud.com/help/en/server-load-balancer/latest/createloadbalancer-2).
  *
  * @param request CreateLoadBalancerHTTPSListenerRequest
  * @return CreateLoadBalancerHTTPSListenerResponse
@@ -21574,8 +22719,7 @@ func (client *Client) CreateLoadBalancerHTTPSListener(request *CreateLoadBalance
 }
 
 /**
- * The number of times that a healthy backend server must consecutively fail health checks before it is declared unhealthy. In this case, the health status is changed from **success** to **fail**.
- * Valid values: **2** to **10**.
+ * >  A newly created listener is in the **stopped** state. After a listener is created, you can call the [StartLoadBalancerListener](~~27597~~) operation to enable the listener to forward traffic to backend servers.
  *
  * @param request CreateLoadBalancerTCPListenerRequest
  * @param runtime runtime options for this request RuntimeOptions
@@ -21739,8 +22883,7 @@ func (client *Client) CreateLoadBalancerTCPListenerWithOptions(request *CreateLo
 }
 
 /**
- * The number of times that a healthy backend server must consecutively fail health checks before it is declared unhealthy. In this case, the health status is changed from **success** to **fail**.
- * Valid values: **2** to **10**.
+ * >  A newly created listener is in the **stopped** state. After a listener is created, you can call the [StartLoadBalancerListener](~~27597~~) operation to enable the listener to forward traffic to backend servers.
  *
  * @param request CreateLoadBalancerTCPListenerRequest
  * @return CreateLoadBalancerTCPListenerResponse
@@ -21757,9 +22900,8 @@ func (client *Client) CreateLoadBalancerTCPListener(request *CreateLoadBalancerT
 }
 
 /**
- * The port that is used for health checks.
- * Valid values: **1** to **65535**.
- * If this parameter is not set, the backend port specified by **BackendServerPort** is used for health checks.
+ * UDP listeners of Classic Load Balancer (CLB) instances in a classic network cannot pass client IP addresses to backend servers.
+ * >  A newly created listener is in the **stopped** state. After a listener is created, you can call the [StartLoadBalancerListener](~~27597~~) operation to enable the listener to forward traffic to backend servers.
  *
  * @param request CreateLoadBalancerUDPListenerRequest
  * @param runtime runtime options for this request RuntimeOptions
@@ -21899,9 +23041,8 @@ func (client *Client) CreateLoadBalancerUDPListenerWithOptions(request *CreateLo
 }
 
 /**
- * The port that is used for health checks.
- * Valid values: **1** to **65535**.
- * If this parameter is not set, the backend port specified by **BackendServerPort** is used for health checks.
+ * UDP listeners of Classic Load Balancer (CLB) instances in a classic network cannot pass client IP addresses to backend servers.
+ * >  A newly created listener is in the **stopped** state. After a listener is created, you can call the [StartLoadBalancerListener](~~27597~~) operation to enable the listener to forward traffic to backend servers.
  *
  * @param request CreateLoadBalancerUDPListenerRequest
  * @return CreateLoadBalancerUDPListenerResponse
@@ -22218,8 +23359,7 @@ func (client *Client) CreateVServerGroup(request *CreateVServerGroupRequest) (_r
 }
 
 /**
- * The ID of the region to which the access control list belongs.
- * To query the region ID, call [DescribeRegions](~~27584~~).
+ * You can delete an ACL only if it is not associated with a listener.
  *
  * @param request DeleteAccessControlListRequest
  * @param runtime runtime options for this request RuntimeOptions
@@ -22279,8 +23419,7 @@ func (client *Client) DeleteAccessControlListWithOptions(request *DeleteAccessCo
 }
 
 /**
- * The ID of the region to which the access control list belongs.
- * To query the region ID, call [DescribeRegions](~~27584~~).
+ * You can delete an ACL only if it is not associated with a listener.
  *
  * @param request DeleteAccessControlListRequest
  * @return DeleteAccessControlListResponse
@@ -22369,8 +23508,7 @@ func (client *Client) DeleteAccessLogsDownloadAttribute(request *DeleteAccessLog
 }
 
 /**
- * The region to which the CA certificate belongs.
- * To query the region ID, call [DescribeRegions](~~27584~~).
+ * You cannot delete a CA certificate that is in use.
  *
  * @param request DeleteCACertificateRequest
  * @param runtime runtime options for this request RuntimeOptions
@@ -22430,8 +23568,7 @@ func (client *Client) DeleteCACertificateWithOptions(request *DeleteCACertificat
 }
 
 /**
- * The region to which the CA certificate belongs.
- * To query the region ID, call [DescribeRegions](~~27584~~).
+ * You cannot delete a CA certificate that is in use.
  *
  * @param request DeleteCACertificateRequest
  * @return DeleteCACertificateResponse
@@ -22512,8 +23649,7 @@ func (client *Client) DeleteDomainExtension(request *DeleteDomainExtensionReques
 }
 
 /**
- * The operation that you want to perform.
- * Set the value to **DeleteLoadBalancer**.
+ * > The listeners and tags of the SLB instance are deleted along with the SLB instance.
  *
  * @param request DeleteLoadBalancerRequest
  * @param runtime runtime options for this request RuntimeOptions
@@ -22573,8 +23709,7 @@ func (client *Client) DeleteLoadBalancerWithOptions(request *DeleteLoadBalancerR
 }
 
 /**
- * The operation that you want to perform.
- * Set the value to **DeleteLoadBalancer**.
+ * > The listeners and tags of the SLB instance are deleted along with the SLB instance.
  *
  * @param request DeleteLoadBalancerRequest
  * @return DeleteLoadBalancerResponse
@@ -22740,8 +23875,8 @@ func (client *Client) DeleteMasterSlaveServerGroup(request *DeleteMasterSlaveSer
 }
 
 /**
- * The ID of the region where the Server Load Balancer (SLB) instance is deployed.
- * You can call the [DescribeRegions](~~27584~~) operation to query region IDs.
+ * ## Limits
+ * The RuleIds parameter is required. You can specify up to 10 forwarding rules in each request.
  *
  * @param request DeleteRulesRequest
  * @param runtime runtime options for this request RuntimeOptions
@@ -22801,8 +23936,8 @@ func (client *Client) DeleteRulesWithOptions(request *DeleteRulesRequest, runtim
 }
 
 /**
- * The ID of the region where the Server Load Balancer (SLB) instance is deployed.
- * You can call the [DescribeRegions](~~27584~~) operation to query region IDs.
+ * ## Limits
+ * The RuleIds parameter is required. You can specify up to 10 forwarding rules in each request.
  *
  * @param request DeleteRulesRequest
  * @return DeleteRulesResponse
@@ -22819,8 +23954,7 @@ func (client *Client) DeleteRules(request *DeleteRulesRequest) (_result *DeleteR
 }
 
 /**
- * The region where the Server Load Balancer (SLB) instance is created.
- * You can call the [DescribeRegions](~~27584~~) operation to query region IDs.
+ * >  You cannot delete server certificates that are in use.
  *
  * @param request DeleteServerCertificateRequest
  * @param runtime runtime options for this request RuntimeOptions
@@ -22880,8 +24014,7 @@ func (client *Client) DeleteServerCertificateWithOptions(request *DeleteServerCe
 }
 
 /**
- * The region where the Server Load Balancer (SLB) instance is created.
- * You can call the [DescribeRegions](~~27584~~) operation to query region IDs.
+ * >  You cannot delete server certificates that are in use.
  *
  * @param request DeleteServerCertificateRequest
  * @return DeleteServerCertificateResponse
@@ -23266,7 +24399,7 @@ func (client *Client) DescribeAccessLogsDownloadAttribute(request *DescribeAcces
 }
 
 /**
- * The ID of the region.
+ * > Only the available resources and zones are returned.
  *
  * @param request DescribeAvailableResourceRequest
  * @param runtime runtime options for this request RuntimeOptions
@@ -23330,7 +24463,7 @@ func (client *Client) DescribeAvailableResourceWithOptions(request *DescribeAvai
 }
 
 /**
- * The ID of the region.
+ * > Only the available resources and zones are returned.
  *
  * @param request DescribeAvailableResourceRequest
  * @return DescribeAvailableResourceResponse
@@ -23347,7 +24480,7 @@ func (client *Client) DescribeAvailableResource(request *DescribeAvailableResour
 }
 
 /**
- * The time when the CA certificate was created. The time is in the `YYYY-MM-DDThh:mm:ssZ` format.
+ * > To ensure data confidentiality, only the certificate fingerprint and name are returned. The certificate content is not returned.
  *
  * @param request DescribeCACertificatesRequest
  * @param runtime runtime options for this request RuntimeOptions
@@ -23415,7 +24548,7 @@ func (client *Client) DescribeCACertificatesWithOptions(request *DescribeCACerti
 }
 
 /**
- * The time when the CA certificate was created. The time is in the `YYYY-MM-DDThh:mm:ssZ` format.
+ * > To ensure data confidentiality, only the certificate fingerprint and name are returned. The certificate content is not returned.
  *
  * @param request DescribeCACertificatesRequest
  * @return DescribeCACertificatesResponse
@@ -23776,9 +24909,7 @@ func (client *Client) DescribeListenerAccessControlAttribute(request *DescribeLi
 }
 
 /**
- * The metering method of the CLB instance. Valid values:
- * *   **PayBySpec:** pay-by-specification.
- * *   **PayByCLCU:** pay-by-LCU.
+ * >  If backend servers are deployed in a vServer group, you can call the [DescribeVServerGroupAttribute](~~35224~~) operation to query the backend servers.
  *
  * @param request DescribeLoadBalancerAttributeRequest
  * @param runtime runtime options for this request RuntimeOptions
@@ -23838,9 +24969,7 @@ func (client *Client) DescribeLoadBalancerAttributeWithOptions(request *Describe
 }
 
 /**
- * The metering method of the CLB instance. Valid values:
- * *   **PayBySpec:** pay-by-specification.
- * *   **PayByCLCU:** pay-by-LCU.
+ * >  If backend servers are deployed in a vServer group, you can call the [DescribeVServerGroupAttribute](~~35224~~) operation to query the backend servers.
  *
  * @param request DescribeLoadBalancerAttributeRequest
  * @return DescribeLoadBalancerAttributeResponse
@@ -23857,7 +24986,8 @@ func (client *Client) DescribeLoadBalancerAttribute(request *DescribeLoadBalance
 }
 
 /**
- * The HTTP status codes that are used to determine whether the backend server passes the health check.
+ * *   A Classic Load Balancer (CLB) instance is created. For more information, see [CreateLoadBalancer](~~27577~~).
+ * *   An HTTP listener is created. For more information about how to create an HTTP listener, see [CreateLoadBalancerHTTPListener](~~27592~~).
  *
  * @param request DescribeLoadBalancerHTTPListenerAttributeRequest
  * @param runtime runtime options for this request RuntimeOptions
@@ -23921,7 +25051,8 @@ func (client *Client) DescribeLoadBalancerHTTPListenerAttributeWithOptions(reque
 }
 
 /**
- * The HTTP status codes that are used to determine whether the backend server passes the health check.
+ * *   A Classic Load Balancer (CLB) instance is created. For more information, see [CreateLoadBalancer](~~27577~~).
+ * *   An HTTP listener is created. For more information about how to create an HTTP listener, see [CreateLoadBalancerHTTPListener](~~27592~~).
  *
  * @param request DescribeLoadBalancerHTTPListenerAttributeRequest
  * @return DescribeLoadBalancerHTTPListenerAttributeResponse
@@ -23938,9 +25069,8 @@ func (client *Client) DescribeLoadBalancerHTTPListenerAttribute(request *Describ
 }
 
 /**
- * Indicates whether the `XForwardedFor_ClientCertClientVerify` header is used to retrieve the verification result of the client certificate. Valid values:
- * *   **on**: yes
- * *   **off**: no
+ * *   A Classic Load Balancer (CLB) instance is created. For more information, see [CreateLoadBalancer](~~27577~~).
+ * *   An HTTPS listener is created. For more information about how to create an HTTPS listener, see [CreateLoadBalancerHTTPSListener](~~27593~~).
  *
  * @param request DescribeLoadBalancerHTTPSListenerAttributeRequest
  * @param runtime runtime options for this request RuntimeOptions
@@ -24004,9 +25134,8 @@ func (client *Client) DescribeLoadBalancerHTTPSListenerAttributeWithOptions(requ
 }
 
 /**
- * Indicates whether the `XForwardedFor_ClientCertClientVerify` header is used to retrieve the verification result of the client certificate. Valid values:
- * *   **on**: yes
- * *   **off**: no
+ * *   A Classic Load Balancer (CLB) instance is created. For more information, see [CreateLoadBalancer](~~27577~~).
+ * *   An HTTPS listener is created. For more information about how to create an HTTPS listener, see [CreateLoadBalancerHTTPSListener](~~27593~~).
  *
  * @param request DescribeLoadBalancerHTTPSListenerAttributeRequest
  * @return DescribeLoadBalancerHTTPSListenerAttributeResponse
@@ -24023,9 +25152,12 @@ func (client *Client) DescribeLoadBalancerHTTPSListenerAttribute(request *Descri
 }
 
 /**
- * Indicates whether the Proxy protocol is used to pass client IP addresses to backend servers. Valid values:
- * *   **true**: yes
- * *   **false**: no
+ * *   A CLB instance is created. For more information, see [CreateLoadBalancer](~~2401685~~).
+ * *   One or more listeners are added to the CLB instance. For more information, see the following topics:
+ *     *   [CreateLoadBalancerUDPListener](~~CreateLoadBalancerUDPListener~~)
+ *     *   [CreateLoadBalancerTCPListener](~~CreateLoadBalancerTCPListener~~)
+ *     *   [CreateLoadBalancerHTTPListener](~~CreateLoadBalancerHTTPListener~~)
+ *     *   [CreateLoadBalancerHTTPSListener](~~CreateLoadBalancerHTTPSListener~~)
  *
  * @param request DescribeLoadBalancerListenersRequest
  * @param runtime runtime options for this request RuntimeOptions
@@ -24037,6 +25169,14 @@ func (client *Client) DescribeLoadBalancerListenersWithOptions(request *Describe
 		return _result, _err
 	}
 	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.Description)) {
+		query["Description"] = request.Description
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ListenerPort)) {
+		query["ListenerPort"] = request.ListenerPort
+	}
+
 	if !tea.BoolValue(util.IsUnset(request.ListenerProtocol)) {
 		query["ListenerProtocol"] = request.ListenerProtocol
 	}
@@ -24101,9 +25241,12 @@ func (client *Client) DescribeLoadBalancerListenersWithOptions(request *Describe
 }
 
 /**
- * Indicates whether the Proxy protocol is used to pass client IP addresses to backend servers. Valid values:
- * *   **true**: yes
- * *   **false**: no
+ * *   A CLB instance is created. For more information, see [CreateLoadBalancer](~~2401685~~).
+ * *   One or more listeners are added to the CLB instance. For more information, see the following topics:
+ *     *   [CreateLoadBalancerUDPListener](~~CreateLoadBalancerUDPListener~~)
+ *     *   [CreateLoadBalancerTCPListener](~~CreateLoadBalancerTCPListener~~)
+ *     *   [CreateLoadBalancerHTTPListener](~~CreateLoadBalancerHTTPListener~~)
+ *     *   [CreateLoadBalancerHTTPSListener](~~CreateLoadBalancerHTTPSListener~~)
  *
  * @param request DescribeLoadBalancerListenersRequest
  * @return DescribeLoadBalancerListenersResponse
@@ -24465,6 +25608,10 @@ func (client *Client) DescribeMasterSlaveServerGroupsWithOptions(request *Descri
 		return _result, _err
 	}
 	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.Description)) {
+		query["Description"] = request.Description
+	}
+
 	if !tea.BoolValue(util.IsUnset(request.IncludeListener)) {
 		query["IncludeListener"] = request.IncludeListener
 	}
@@ -24989,6 +26136,10 @@ func (client *Client) DescribeVServerGroupsWithOptions(request *DescribeVServerG
 		return _result, _err
 	}
 	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.Description)) {
+		query["Description"] = request.Description
+	}
+
 	if !tea.BoolValue(util.IsUnset(request.IncludeListener)) {
 		query["IncludeListener"] = request.IncludeListener
 	}
@@ -25435,7 +26586,8 @@ func (client *Client) ModifyHighDefinationMonitor(request *ModifyHighDefinationM
 }
 
 /**
- * The ID of the CLB instance.
+ * > *   For pay-as-you-go CLB instances, you can only change the metering method from pay-by-specification to pay-by-LCU. You cannot change the metering method from pay-by-LCU to pay-by-specification.
+ * >*   This operation can change the metering method of only one instance at a time.
  *
  * @param request ModifyLoadBalancerInstanceChargeTypeRequest
  * @param runtime runtime options for this request RuntimeOptions
@@ -25511,7 +26663,8 @@ func (client *Client) ModifyLoadBalancerInstanceChargeTypeWithOptions(request *M
 }
 
 /**
- * The ID of the CLB instance.
+ * > *   For pay-as-you-go CLB instances, you can only change the metering method from pay-by-specification to pay-by-LCU. You cannot change the metering method from pay-by-LCU to pay-by-specification.
+ * >*   This operation can change the metering method of only one instance at a time.
  *
  * @param request ModifyLoadBalancerInstanceChargeTypeRequest
  * @return ModifyLoadBalancerInstanceChargeTypeResponse
@@ -25600,7 +26753,9 @@ func (client *Client) ModifyLoadBalancerInstanceSpec(request *ModifyLoadBalancer
 }
 
 /**
- * The ID of the CLB instance.
+ * ## Description
+ * *   If you modify only the maximum bandwidth of a pay-by-bandwidth CLB instance, the new bandwidth immediately takes effect.
+ * *   If you modify the metering method (for example, switch from pay-by-bandwidth to pay-by-data-transfer), the new metering method and the other changes specified in the operation take effect at 00:00:00 the next day.
  *
  * @param request ModifyLoadBalancerInternetSpecRequest
  * @param runtime runtime options for this request RuntimeOptions
@@ -25672,7 +26827,9 @@ func (client *Client) ModifyLoadBalancerInternetSpecWithOptions(request *ModifyL
 }
 
 /**
- * The ID of the CLB instance.
+ * ## Description
+ * *   If you modify only the maximum bandwidth of a pay-by-bandwidth CLB instance, the new bandwidth immediately takes effect.
+ * *   If you modify the metering method (for example, switch from pay-by-bandwidth to pay-by-data-transfer), the new metering method and the other changes specified in the operation take effect at 00:00:00 the next day.
  *
  * @param request ModifyLoadBalancerInternetSpecRequest
  * @return ModifyLoadBalancerInternetSpecResponse
@@ -25769,7 +26926,7 @@ func (client *Client) ModifyLoadBalancerPayType(request *ModifyLoadBalancerPayTy
 }
 
 /**
- * The ID of the region where the Classic Load Balancer (CLB) instance is deployed.
+ * You can call this operation to replace the backend servers in a specified vServer group. To modify the configurations of the backend servers, such as their weights, you can call the [SetVServerGroupAttribute](~~35217~~) operation.
  *
  * @param request ModifyVServerGroupBackendServersRequest
  * @param runtime runtime options for this request RuntimeOptions
@@ -25837,7 +26994,7 @@ func (client *Client) ModifyVServerGroupBackendServersWithOptions(request *Modif
 }
 
 /**
- * The ID of the region where the Classic Load Balancer (CLB) instance is deployed.
+ * You can call this operation to replace the backend servers in a specified vServer group. To modify the configurations of the backend servers, such as their weights, you can call the [SetVServerGroupAttribute](~~35217~~) operation.
  *
  * @param request ModifyVServerGroupBackendServersRequest
  * @return ModifyVServerGroupBackendServersResponse
@@ -26002,8 +27159,7 @@ func (client *Client) RemoveAccessControlListEntry(request *RemoveAccessControlL
 }
 
 /**
- * The operation that you want to perform.
- * Set the value to **RemoveBackendServers**.
+ * >  If the backend servers that you want to remove are not in the server list of the Classic Load Balancer (CLB) instance, the request fails. However, the system does not report an error.
  *
  * @param request RemoveBackendServersRequest
  * @param runtime runtime options for this request RuntimeOptions
@@ -26067,8 +27223,7 @@ func (client *Client) RemoveBackendServersWithOptions(request *RemoveBackendServ
 }
 
 /**
- * The operation that you want to perform.
- * Set the value to **RemoveBackendServers**.
+ * >  If the backend servers that you want to remove are not in the server list of the Classic Load Balancer (CLB) instance, the request fails. However, the system does not report an error.
  *
  * @param request RemoveBackendServersRequest
  * @return RemoveBackendServersResponse
@@ -26229,7 +27384,7 @@ func (client *Client) RemoveTags(request *RemoveTagsRequest) (_result *RemoveTag
 }
 
 /**
- * The ID of the region where the Classic Load Balancer (CLB) instance is deployed.
+ * >  If one or more backend servers specified by the **BackendServers** parameter do not exist in the specified vServer group, these backend servers are ignored and no error message is returned.
  *
  * @param request RemoveVServerGroupBackendServersRequest
  * @param runtime runtime options for this request RuntimeOptions
@@ -26293,7 +27448,7 @@ func (client *Client) RemoveVServerGroupBackendServersWithOptions(request *Remov
 }
 
 /**
- * The ID of the region where the Classic Load Balancer (CLB) instance is deployed.
+ * >  If one or more backend servers specified by the **BackendServers** parameter do not exist in the specified vServer group, these backend servers are ignored and no error message is returned.
  *
  * @param request RemoveVServerGroupBackendServersRequest
  * @return RemoveVServerGroupBackendServersResponse
@@ -26586,7 +27741,7 @@ func (client *Client) SetCACertificateName(request *SetCACertificateNameRequest)
 }
 
 /**
- * The ID of the region where the SLB instance is created.
+ * >  You cannot replace an additional certificate for a listener that is added to a shared-resource Server Load Balancer (SLB) instance.
  *
  * @param request SetDomainExtensionAttributeRequest
  * @param runtime runtime options for this request RuntimeOptions
@@ -26650,7 +27805,7 @@ func (client *Client) SetDomainExtensionAttributeWithOptions(request *SetDomainE
 }
 
 /**
- * The ID of the region where the SLB instance is created.
+ * >  You cannot replace an additional certificate for a listener that is added to a shared-resource Server Load Balancer (SLB) instance.
  *
  * @param request SetDomainExtensionAttributeRequest
  * @return SetDomainExtensionAttributeResponse
@@ -26811,8 +27966,9 @@ func (client *Client) SetLoadBalancerDeleteProtection(request *SetLoadBalancerDe
 }
 
 /**
- * The ID of the region where the CLB instance is deployed.
- * You can query the region ID from the [Regions and zones](~~27585~~) list or by calling the [DescribeRegions](~~27584~~) operation.
+ * ### Prerequisites
+ * *   A Classic Load Balancer (CLB) instance is created. For more information, see [CreateLoadBalancer](~~27577~~).
+ * *   An HTTP listener is created. For more information about how to create an HTTP listener, see [CreateLoadBalancerHTTPListener](~~27592~~).
  *
  * @param request SetLoadBalancerHTTPListenerAttributeRequest
  * @param runtime runtime options for this request RuntimeOptions
@@ -26992,8 +28148,9 @@ func (client *Client) SetLoadBalancerHTTPListenerAttributeWithOptions(request *S
 }
 
 /**
- * The ID of the region where the CLB instance is deployed.
- * You can query the region ID from the [Regions and zones](~~27585~~) list or by calling the [DescribeRegions](~~27584~~) operation.
+ * ### Prerequisites
+ * *   A Classic Load Balancer (CLB) instance is created. For more information, see [CreateLoadBalancer](~~27577~~).
+ * *   An HTTP listener is created. For more information about how to create an HTTP listener, see [CreateLoadBalancerHTTPListener](~~27592~~).
  *
  * @param request SetLoadBalancerHTTPListenerAttributeRequest
  * @return SetLoadBalancerHTTPListenerAttributeResponse
@@ -27010,8 +28167,8 @@ func (client *Client) SetLoadBalancerHTTPListenerAttribute(request *SetLoadBalan
 }
 
 /**
- * The operation that you want to perform.
- * Set the value to **SetLoadBalancerHTTPSListenerAttribute**.
+ * *   A Classic Load Balancer (CLB) instance is created. For more information, see [CreateLoadBalancer](~~27577~~).
+ * *   An HTTPS listener is created. For more information about how to create an HTTPS listener, see [CreateLoadBalancerHTTPSListener](~~27593~~).
  *
  * @param request SetLoadBalancerHTTPSListenerAttributeRequest
  * @param runtime runtime options for this request RuntimeOptions
@@ -27207,8 +28364,8 @@ func (client *Client) SetLoadBalancerHTTPSListenerAttributeWithOptions(request *
 }
 
 /**
- * The operation that you want to perform.
- * Set the value to **SetLoadBalancerHTTPSListenerAttribute**.
+ * *   A Classic Load Balancer (CLB) instance is created. For more information, see [CreateLoadBalancer](~~27577~~).
+ * *   An HTTPS listener is created. For more information about how to create an HTTPS listener, see [CreateLoadBalancerHTTPSListener](~~27593~~).
  *
  * @param request SetLoadBalancerHTTPSListenerAttributeRequest
  * @return SetLoadBalancerHTTPSListenerAttributeResponse
@@ -27433,10 +28590,8 @@ func (client *Client) SetLoadBalancerStatus(request *SetLoadBalancerStatusReques
 }
 
 /**
- * The timeout period of a health check.
- * If a backend ECS instance does not return a health check response within the specified timeout period, the server fails the health check.
- * Valid values: **1** to **300**. Unit: seconds.
- * >  If the value of the **HealthCheckConnectTimeout** parameter is smaller than that of the **HealthCheckInterval** parameter, the timeout period specified by the **HCTimeout** parameter is ignored and the period of time specified by the **HealthCheckInterval** parameter is used as the timeout period.
+ * *   A CLB instance is created. For more information, see [CreateLoadBalancer](~~2401685~~).
+ * *   A TCP listener is created. For more information, see [CreateLoadBalancerTCPListener](~~CreateLoadBalancerTCPListener~~).
  *
  * @param request SetLoadBalancerTCPListenerAttributeRequest
  * @param runtime runtime options for this request RuntimeOptions
@@ -27604,10 +28759,8 @@ func (client *Client) SetLoadBalancerTCPListenerAttributeWithOptions(request *Se
 }
 
 /**
- * The timeout period of a health check.
- * If a backend ECS instance does not return a health check response within the specified timeout period, the server fails the health check.
- * Valid values: **1** to **300**. Unit: seconds.
- * >  If the value of the **HealthCheckConnectTimeout** parameter is smaller than that of the **HealthCheckInterval** parameter, the timeout period specified by the **HCTimeout** parameter is ignored and the period of time specified by the **HealthCheckInterval** parameter is used as the timeout period.
+ * *   A CLB instance is created. For more information, see [CreateLoadBalancer](~~2401685~~).
+ * *   A TCP listener is created. For more information, see [CreateLoadBalancerTCPListener](~~CreateLoadBalancerTCPListener~~).
  *
  * @param request SetLoadBalancerTCPListenerAttributeRequest
  * @return SetLoadBalancerTCPListenerAttributeResponse
@@ -27624,7 +28777,8 @@ func (client *Client) SetLoadBalancerTCPListenerAttribute(request *SetLoadBalanc
 }
 
 /**
- * The response string for UDP listener health checks. The string must be 1 to 64 characters in length and can contain only letters and digits.
+ * *   A Classic Load Balancer (CLB) instance is created. For more information, see [CreateLoadBalancer](~~27577~~).
+ * *   A UDP listener is created. For more information, see [CreateLoadBalancerUDPListener](~~27595~~).
  *
  * @param request SetLoadBalancerUDPListenerAttributeRequest
  * @param runtime runtime options for this request RuntimeOptions
@@ -27764,7 +28918,8 @@ func (client *Client) SetLoadBalancerUDPListenerAttributeWithOptions(request *Se
 }
 
 /**
- * The response string for UDP listener health checks. The string must be 1 to 64 characters in length and can contain only letters and digits.
+ * *   A Classic Load Balancer (CLB) instance is created. For more information, see [CreateLoadBalancer](~~27577~~).
+ * *   A UDP listener is created. For more information, see [CreateLoadBalancerUDPListener](~~27595~~).
  *
  * @param request SetLoadBalancerUDPListenerAttributeRequest
  * @return SetLoadBalancerUDPListenerAttributeResponse
@@ -28057,7 +29212,9 @@ func (client *Client) SetTLSCipherPolicyAttribute(request *SetTLSCipherPolicyAtt
 }
 
 /**
- * The ID of the region where the Classic Load Balancer (CLB) instance is deployed. This parameter cannot be modified.
+ * This operation allows you to modify only the name of a vServer group and the weights of the backend servers in the vServer group.
+ * *   If you want to modify backend servers in a specified vServer group, call the [ModifyVServerGroupBackendServers](~~35220~~) operation.
+ * *   If you want to add backend servers to a specified vServer group, call the [AddVServerGroupBackendServers](~~35218~~) operation.
  *
  * @param request SetVServerGroupAttributeRequest
  * @param runtime runtime options for this request RuntimeOptions
@@ -28125,7 +29282,9 @@ func (client *Client) SetVServerGroupAttributeWithOptions(request *SetVServerGro
 }
 
 /**
- * The ID of the region where the Classic Load Balancer (CLB) instance is deployed. This parameter cannot be modified.
+ * This operation allows you to modify only the name of a vServer group and the weights of the backend servers in the vServer group.
+ * *   If you want to modify backend servers in a specified vServer group, call the [ModifyVServerGroupBackendServers](~~35220~~) operation.
+ * *   If you want to add backend servers to a specified vServer group, call the [AddVServerGroupBackendServers](~~35218~~) operation.
  *
  * @param request SetVServerGroupAttributeRequest
  * @return SetVServerGroupAttributeResponse
@@ -28142,8 +29301,10 @@ func (client *Client) SetVServerGroupAttribute(request *SetVServerGroupAttribute
 }
 
 /**
- * The operation that you want to perform.
- * Set the value to **StartLoadBalancerListener**.
+ * When you call this operation, note the following items:
+ * *   You can call the operation only when the listener is in the Stopped state.
+ * *   After the operation is called, the status of the listener changes to Starting.
+ * *   You cannot call this operation when the SLB instance to which the listener is bound is in the Locked state.
  *
  * @param request StartLoadBalancerListenerRequest
  * @param runtime runtime options for this request RuntimeOptions
@@ -28211,8 +29372,10 @@ func (client *Client) StartLoadBalancerListenerWithOptions(request *StartLoadBal
 }
 
 /**
- * The operation that you want to perform.
- * Set the value to **StartLoadBalancerListener**.
+ * When you call this operation, note the following items:
+ * *   You can call the operation only when the listener is in the Stopped state.
+ * *   After the operation is called, the status of the listener changes to Starting.
+ * *   You cannot call this operation when the SLB instance to which the listener is bound is in the Locked state.
  *
  * @param request StartLoadBalancerListenerRequest
  * @return StartLoadBalancerListenerResponse
@@ -28229,8 +29392,10 @@ func (client *Client) StartLoadBalancerListener(request *StartLoadBalancerListen
 }
 
 /**
- * The name of this action.
- * Value: **StopLoadBalancerListener**
+ * Before you make this API call, note the following:
+ * *   After the API call is successfully made, the listener enters the stopped state.
+ * *   If the Server Load Balancer (SLB) instance to which the listener to be stopped belongs is in the locked state, this API call cannot be made.
+ * >  If you stop the listener, your services will be disrupted. Exercise caution when you perform this action.
  *
  * @param request StopLoadBalancerListenerRequest
  * @param runtime runtime options for this request RuntimeOptions
@@ -28298,8 +29463,10 @@ func (client *Client) StopLoadBalancerListenerWithOptions(request *StopLoadBalan
 }
 
 /**
- * The name of this action.
- * Value: **StopLoadBalancerListener**
+ * Before you make this API call, note the following:
+ * *   After the API call is successfully made, the listener enters the stopped state.
+ * *   If the Server Load Balancer (SLB) instance to which the listener to be stopped belongs is in the locked state, this API call cannot be made.
+ * >  If you stop the listener, your services will be disrupted. Exercise caution when you perform this action.
  *
  * @param request StopLoadBalancerListenerRequest
  * @return StopLoadBalancerListenerResponse
@@ -28316,7 +29483,7 @@ func (client *Client) StopLoadBalancerListener(request *StopLoadBalancerListener
 }
 
 /**
- * The ID of the request.
+ * >  You can add at most 20 tags to each instance. Before you add tags to a resource, Alibaba Cloud checks the number of existing tags of the resource. If the maximum number is reached, an error message is returned.
  *
  * @param request TagResourcesRequest
  * @param runtime runtime options for this request RuntimeOptions
@@ -28384,7 +29551,7 @@ func (client *Client) TagResourcesWithOptions(request *TagResourcesRequest, runt
 }
 
 /**
- * The ID of the request.
+ * >  You can add at most 20 tags to each instance. Before you add tags to a resource, Alibaba Cloud checks the number of existing tags of the resource. If the maximum number is reached, an error message is returned.
  *
  * @param request TagResourcesRequest
  * @return TagResourcesResponse
@@ -28477,8 +29644,7 @@ func (client *Client) UntagResources(request *UntagResourcesRequest) (_result *U
 }
 
 /**
- * The ID of the region to which the CA certificate belongs.
- * To query the region ID, call [DescribeRegions](~~27584~~).
+ * You can upload only one CA certificate at a time. After a CA certificate is uploaded, the certificate ID, name, and fingerprint are returned.
  *
  * @param request UploadCACertificateRequest
  * @param runtime runtime options for this request RuntimeOptions
@@ -28550,8 +29716,7 @@ func (client *Client) UploadCACertificateWithOptions(request *UploadCACertificat
 }
 
 /**
- * The ID of the region to which the CA certificate belongs.
- * To query the region ID, call [DescribeRegions](~~27584~~).
+ * You can upload only one CA certificate at a time. After a CA certificate is uploaded, the certificate ID, name, and fingerprint are returned.
  *
  * @param request UploadCACertificateRequest
  * @return UploadCACertificateResponse
@@ -28568,7 +29733,8 @@ func (client *Client) UploadCACertificate(request *UploadCACertificateRequest) (
 }
 
 /**
- * The alternative domain names of the server certificate.
+ * *   You can upload only one server certificate and its private key in each call.
+ * *   After a server certificate and its private key are uploaded, the fingerprints of all server certificates that belong to your Alibaba Cloud account are returned.
  *
  * @param request UploadServerCertificateRequest
  * @param runtime runtime options for this request RuntimeOptions
@@ -28656,7 +29822,8 @@ func (client *Client) UploadServerCertificateWithOptions(request *UploadServerCe
 }
 
 /**
- * The alternative domain names of the server certificate.
+ * *   You can upload only one server certificate and its private key in each call.
+ * *   After a server certificate and its private key are uploaded, the fingerprints of all server certificates that belong to your Alibaba Cloud account are returned.
  *
  * @param request UploadServerCertificateRequest
  * @return UploadServerCertificateResponse
