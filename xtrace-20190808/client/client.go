@@ -13,11 +13,16 @@ import (
 )
 
 type GetTagKeyRequest struct {
-	EndTime     *int64  `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
-	RegionId    *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	// The timestamp of the end time of the time range to query. The timestamp is accurate to milliseconds.
+	EndTime *int64 `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
+	// The ID of the region.
+	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	// The name of the application.
 	ServiceName *string `json:"ServiceName,omitempty" xml:"ServiceName,omitempty"`
-	SpanName    *string `json:"SpanName,omitempty" xml:"SpanName,omitempty"`
-	StartTime   *int64  `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
+	// The name of the span.
+	SpanName *string `json:"SpanName,omitempty" xml:"SpanName,omitempty"`
+	// The timestamp of the start time of the time range to query. The timestamp is accurate to milliseconds.
+	StartTime *int64 `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
 }
 
 func (s GetTagKeyRequest) String() string {
@@ -54,8 +59,10 @@ func (s *GetTagKeyRequest) SetStartTime(v int64) *GetTagKeyRequest {
 }
 
 type GetTagKeyResponseBody struct {
-	RequestId *string                       `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	TagKeys   *GetTagKeyResponseBodyTagKeys `json:"TagKeys,omitempty" xml:"TagKeys,omitempty" type:"Struct"`
+	// The ID of the request.
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The tag keys.
+	TagKeys *GetTagKeyResponseBodyTagKeys `json:"TagKeys,omitempty" xml:"TagKeys,omitempty" type:"Struct"`
 }
 
 func (s GetTagKeyResponseBody) String() string {
@@ -123,12 +130,18 @@ func (s *GetTagKeyResponse) SetBody(v *GetTagKeyResponseBody) *GetTagKeyResponse
 }
 
 type GetTagValRequest struct {
-	EndTime     *int64  `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
-	RegionId    *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	// The timestamp of the end time of the time range to query. The timestamp is accurate to milliseconds.
+	EndTime *int64 `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
+	// The ID of the region.
+	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	// The name of the application.
 	ServiceName *string `json:"ServiceName,omitempty" xml:"ServiceName,omitempty"`
-	SpanName    *string `json:"SpanName,omitempty" xml:"SpanName,omitempty"`
-	StartTime   *int64  `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
-	TagKey      *string `json:"TagKey,omitempty" xml:"TagKey,omitempty"`
+	// The name of the span.
+	SpanName *string `json:"SpanName,omitempty" xml:"SpanName,omitempty"`
+	// The timestamp of the start time of the time range to query. The timestamp is accurate to milliseconds.
+	StartTime *int64 `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
+	// The tag key.
+	TagKey *string `json:"TagKey,omitempty" xml:"TagKey,omitempty"`
 }
 
 func (s GetTagValRequest) String() string {
@@ -170,7 +183,9 @@ func (s *GetTagValRequest) SetTagKey(v string) *GetTagValRequest {
 }
 
 type GetTagValResponseBody struct {
-	RequestId *string                         `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The ID of the request.
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The tag values.
 	TagValues *GetTagValResponseBodyTagValues `json:"TagValues,omitempty" xml:"TagValues,omitempty" type:"Struct"`
 }
 
@@ -239,9 +254,12 @@ func (s *GetTagValResponse) SetBody(v *GetTagValResponseBody) *GetTagValResponse
 }
 
 type GetTraceRequest struct {
-	AppType  *string `json:"AppType,omitempty" xml:"AppType,omitempty"`
+	// The type of the application. You can set the value to **XTRACE** or leave this parameter unspecified.
+	AppType *string `json:"AppType,omitempty" xml:"AppType,omitempty"`
+	// The ID of the region.
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	TraceID  *string `json:"TraceID,omitempty" xml:"TraceID,omitempty"`
+	// The unique ID of the trace.
+	TraceID *string `json:"TraceID,omitempty" xml:"TraceID,omitempty"`
 }
 
 func (s GetTraceRequest) String() string {
@@ -268,8 +286,10 @@ func (s *GetTraceRequest) SetTraceID(v string) *GetTraceRequest {
 }
 
 type GetTraceResponseBody struct {
-	RequestId *string                    `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	Spans     *GetTraceResponseBodySpans `json:"Spans,omitempty" xml:"Spans,omitempty" type:"Struct"`
+	// The ID of the request.
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The details of the trace.
+	Spans *GetTraceResponseBodySpans `json:"Spans,omitempty" xml:"Spans,omitempty" type:"Struct"`
 }
 
 func (s GetTraceResponseBody) String() string {
@@ -308,19 +328,35 @@ func (s *GetTraceResponseBodySpans) SetSpan(v []*GetTraceResponseBodySpansSpan) 
 }
 
 type GetTraceResponseBodySpansSpan struct {
-	Duration      *int64                                     `json:"Duration,omitempty" xml:"Duration,omitempty"`
-	HaveStack     *bool                                      `json:"HaveStack,omitempty" xml:"HaveStack,omitempty"`
-	LogEventList  *GetTraceResponseBodySpansSpanLogEventList `json:"LogEventList,omitempty" xml:"LogEventList,omitempty" type:"Struct"`
-	OperationName *string                                    `json:"OperationName,omitempty" xml:"OperationName,omitempty"`
-	ParentSpanId  *string                                    `json:"ParentSpanId,omitempty" xml:"ParentSpanId,omitempty"`
-	ResultCode    *string                                    `json:"ResultCode,omitempty" xml:"ResultCode,omitempty"`
-	RpcId         *string                                    `json:"RpcId,omitempty" xml:"RpcId,omitempty"`
-	ServiceIp     *string                                    `json:"ServiceIp,omitempty" xml:"ServiceIp,omitempty"`
-	ServiceName   *string                                    `json:"ServiceName,omitempty" xml:"ServiceName,omitempty"`
-	SpanId        *string                                    `json:"SpanId,omitempty" xml:"SpanId,omitempty"`
-	TagEntryList  *GetTraceResponseBodySpansSpanTagEntryList `json:"TagEntryList,omitempty" xml:"TagEntryList,omitempty" type:"Struct"`
-	Timestamp     *int64                                     `json:"Timestamp,omitempty" xml:"Timestamp,omitempty"`
-	TraceID       *string                                    `json:"TraceID,omitempty" xml:"TraceID,omitempty"`
+	// The time used to call the trace. Unit: milliseconds.
+	Duration *int64 `json:"Duration,omitempty" xml:"Duration,omitempty"`
+	// Indicates whether the span has child spans. Valid values:
+	//
+	// - true: The span has child spans.
+	// - false: The span has no child spans.
+	HaveStack *bool `json:"HaveStack,omitempty" xml:"HaveStack,omitempty"`
+	// The log events in the trace.
+	LogEventList *GetTraceResponseBodySpansSpanLogEventList `json:"LogEventList,omitempty" xml:"LogEventList,omitempty" type:"Struct"`
+	// The name of the span.
+	OperationName *string `json:"OperationName,omitempty" xml:"OperationName,omitempty"`
+	// The ID of the parent span.
+	ParentSpanId *string `json:"ParentSpanId,omitempty" xml:"ParentSpanId,omitempty"`
+	// The status code.
+	ResultCode *string `json:"ResultCode,omitempty" xml:"ResultCode,omitempty"`
+	// The parent-child and sibling relationship between spans. For example, span 1.1 is the parent of span 1.1.1, and span 1.1.2 and span 1.1.1 are siblings.
+	RpcId *string `json:"RpcId,omitempty" xml:"RpcId,omitempty"`
+	// The IP address of the server where the span resides.
+	ServiceIp *string `json:"ServiceIp,omitempty" xml:"ServiceIp,omitempty"`
+	// The name of the application.
+	ServiceName *string `json:"ServiceName,omitempty" xml:"ServiceName,omitempty"`
+	// Span ID.
+	SpanId *string `json:"SpanId,omitempty" xml:"SpanId,omitempty"`
+	// The tags in the span.
+	TagEntryList *GetTraceResponseBodySpansSpanTagEntryList `json:"TagEntryList,omitempty" xml:"TagEntryList,omitempty" type:"Struct"`
+	// The timestamp when the span was generated. Unit: microseconds.
+	Timestamp *int64 `json:"Timestamp,omitempty" xml:"Timestamp,omitempty"`
+	// The unique ID of the trace.
+	TraceID *string `json:"TraceID,omitempty" xml:"TraceID,omitempty"`
 }
 
 func (s GetTraceResponseBodySpansSpan) String() string {
@@ -414,8 +450,10 @@ func (s *GetTraceResponseBodySpansSpanLogEventList) SetLogEvent(v []*GetTraceRes
 }
 
 type GetTraceResponseBodySpansSpanLogEventListLogEvent struct {
+	// The tags in the log event.
 	TagEntryList *GetTraceResponseBodySpansSpanLogEventListLogEventTagEntryList `json:"TagEntryList,omitempty" xml:"TagEntryList,omitempty" type:"Struct"`
-	Timestamp    *int64                                                         `json:"Timestamp,omitempty" xml:"Timestamp,omitempty"`
+	// The timestamp when the log event was generated.
+	Timestamp *int64 `json:"Timestamp,omitempty" xml:"Timestamp,omitempty"`
 }
 
 func (s GetTraceResponseBodySpansSpanLogEventListLogEvent) String() string {
@@ -454,7 +492,9 @@ func (s *GetTraceResponseBodySpansSpanLogEventListLogEventTagEntryList) SetTagEn
 }
 
 type GetTraceResponseBodySpansSpanLogEventListLogEventTagEntryListTagEntry struct {
-	Key   *string `json:"Key,omitempty" xml:"Key,omitempty"`
+	// The tag key in the log event.
+	Key *string `json:"Key,omitempty" xml:"Key,omitempty"`
+	// The tag value in the log event.
 	Value *string `json:"Value,omitempty" xml:"Value,omitempty"`
 }
 
@@ -494,7 +534,9 @@ func (s *GetTraceResponseBodySpansSpanTagEntryList) SetTagEntry(v []*GetTraceRes
 }
 
 type GetTraceResponseBodySpansSpanTagEntryListTagEntry struct {
-	Key   *string `json:"Key,omitempty" xml:"Key,omitempty"`
+	// The tag key in the span.
+	Key *string `json:"Key,omitempty" xml:"Key,omitempty"`
+	// The tag value in the span.
 	Value *string `json:"Value,omitempty" xml:"Value,omitempty"`
 }
 
@@ -546,10 +588,14 @@ func (s *GetTraceResponse) SetBody(v *GetTraceResponseBody) *GetTraceResponse {
 }
 
 type ListIpOrHostsRequest struct {
-	EndTime     *int64  `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
-	RegionId    *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	// The timestamp of the end time of the time range to query. The timestamp is accurate to milliseconds.
+	EndTime *int64 `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
+	// The ID of the region.
+	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	// The name of the application. If you do not set this parameter, the IP addresses of all applications in the specified region are returned.
 	ServiceName *string `json:"ServiceName,omitempty" xml:"ServiceName,omitempty"`
-	StartTime   *int64  `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
+	// The timestamp of the start time of the time range to query. The timestamp is accurate to milliseconds.
+	StartTime *int64 `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
 }
 
 func (s ListIpOrHostsRequest) String() string {
@@ -581,8 +627,10 @@ func (s *ListIpOrHostsRequest) SetStartTime(v int64) *ListIpOrHostsRequest {
 }
 
 type ListIpOrHostsResponseBody struct {
-	IpNames   *ListIpOrHostsResponseBodyIpNames `json:"IpNames,omitempty" xml:"IpNames,omitempty" type:"Struct"`
-	RequestId *string                           `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The IP addresses.
+	IpNames *ListIpOrHostsResponseBodyIpNames `json:"IpNames,omitempty" xml:"IpNames,omitempty" type:"Struct"`
+	// The ID of the request.
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
 func (s ListIpOrHostsResponseBody) String() string {
@@ -650,7 +698,9 @@ func (s *ListIpOrHostsResponse) SetBody(v *ListIpOrHostsResponseBody) *ListIpOrH
 }
 
 type ListServicesRequest struct {
-	AppType  *string `json:"AppType,omitempty" xml:"AppType,omitempty"`
+	// The type of the application. You can set the value to **XTRACE** or leave this parameter unspecified.
+	AppType *string `json:"AppType,omitempty" xml:"AppType,omitempty"`
+	// The ID of the region.
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 }
 
@@ -673,8 +723,10 @@ func (s *ListServicesRequest) SetRegionId(v string) *ListServicesRequest {
 }
 
 type ListServicesResponseBody struct {
-	RequestId *string                           `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	Services  *ListServicesResponseBodyServices `json:"Services,omitempty" xml:"Services,omitempty" type:"Struct"`
+	// The ID of the region.
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The applications.
+	Services *ListServicesResponseBodyServices `json:"Services,omitempty" xml:"Services,omitempty" type:"Struct"`
 }
 
 func (s ListServicesResponseBody) String() string {
@@ -713,8 +765,11 @@ func (s *ListServicesResponseBodyServices) SetService(v []*ListServicesResponseB
 }
 
 type ListServicesResponseBodyServicesService struct {
-	Pid         *string `json:"Pid,omitempty" xml:"Pid,omitempty"`
-	RegionId    *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	// The ID of the application.
+	Pid *string `json:"Pid,omitempty" xml:"Pid,omitempty"`
+	// The ID of the region.
+	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	// The name of the application.
 	ServiceName *string `json:"ServiceName,omitempty" xml:"ServiceName,omitempty"`
 }
 
@@ -771,10 +826,14 @@ func (s *ListServicesResponse) SetBody(v *ListServicesResponseBody) *ListService
 }
 
 type ListSpanNamesRequest struct {
-	EndTime     *int64  `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
-	RegionId    *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	// The timestamp of the end time of the time range to query. The timestamp is accurate to milliseconds.
+	EndTime *int64 `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
+	// The ID of the region.
+	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	// The name of the application.
 	ServiceName *string `json:"ServiceName,omitempty" xml:"ServiceName,omitempty"`
-	StartTime   *int64  `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
+	// The timestamp of the start time of the time range to query. The timestamp is accurate to milliseconds.
+	StartTime *int64 `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
 }
 
 func (s ListSpanNamesRequest) String() string {
@@ -806,7 +865,9 @@ func (s *ListSpanNamesRequest) SetStartTime(v int64) *ListSpanNamesRequest {
 }
 
 type ListSpanNamesResponseBody struct {
-	RequestId *string                             `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The ID of the request.
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The span names.
 	SpanNames *ListSpanNamesResponseBodySpanNames `json:"SpanNames,omitempty" xml:"SpanNames,omitempty" type:"Struct"`
 }
 
@@ -874,18 +935,106 @@ func (s *ListSpanNamesResponse) SetBody(v *ListSpanNamesResponseBody) *ListSpanN
 	return s
 }
 
+type OpenXtraceServiceRequest struct {
+	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+}
+
+func (s OpenXtraceServiceRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s OpenXtraceServiceRequest) GoString() string {
+	return s.String()
+}
+
+func (s *OpenXtraceServiceRequest) SetRegionId(v string) *OpenXtraceServiceRequest {
+	s.RegionId = &v
+	return s
+}
+
+type OpenXtraceServiceResponseBody struct {
+	OrderId   *string `json:"OrderId,omitempty" xml:"OrderId,omitempty"`
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+}
+
+func (s OpenXtraceServiceResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s OpenXtraceServiceResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *OpenXtraceServiceResponseBody) SetOrderId(v string) *OpenXtraceServiceResponseBody {
+	s.OrderId = &v
+	return s
+}
+
+func (s *OpenXtraceServiceResponseBody) SetRequestId(v string) *OpenXtraceServiceResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+type OpenXtraceServiceResponse struct {
+	Headers    map[string]*string             `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                         `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *OpenXtraceServiceResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s OpenXtraceServiceResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s OpenXtraceServiceResponse) GoString() string {
+	return s.String()
+}
+
+func (s *OpenXtraceServiceResponse) SetHeaders(v map[string]*string) *OpenXtraceServiceResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *OpenXtraceServiceResponse) SetStatusCode(v int32) *OpenXtraceServiceResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *OpenXtraceServiceResponse) SetBody(v *OpenXtraceServiceResponseBody) *OpenXtraceServiceResponse {
+	s.Body = v
+	return s
+}
+
 type QueryMetricRequest struct {
-	Dimensions    []*string                    `json:"Dimensions,omitempty" xml:"Dimensions,omitempty" type:"Repeated"`
-	EndTime       *int64                       `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
-	Filters       []*QueryMetricRequestFilters `json:"Filters,omitempty" xml:"Filters,omitempty" type:"Repeated"`
-	IntervalInSec *int32                       `json:"IntervalInSec,omitempty" xml:"IntervalInSec,omitempty"`
-	Limit         *int32                       `json:"Limit,omitempty" xml:"Limit,omitempty"`
-	Measures      []*string                    `json:"Measures,omitempty" xml:"Measures,omitempty" type:"Repeated"`
-	Metric        *string                      `json:"Metric,omitempty" xml:"Metric,omitempty"`
-	Order         *string                      `json:"Order,omitempty" xml:"Order,omitempty"`
-	OrderBy       *string                      `json:"OrderBy,omitempty" xml:"OrderBy,omitempty"`
-	ProxyUserId   *string                      `json:"ProxyUserId,omitempty" xml:"ProxyUserId,omitempty"`
-	StartTime     *int64                       `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
+	// The dimensions of the metric that you want to query.
+	Dimensions []*string `json:"Dimensions,omitempty" xml:"Dimensions,omitempty" type:"Repeated"`
+	// The timestamp of the end time of the time range to query. The timestamp is accurate to milliseconds.
+	EndTime *int64 `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
+	// The filter conditions.
+	Filters []*QueryMetricRequestFilters `json:"Filters,omitempty" xml:"Filters,omitempty" type:"Repeated"`
+	// The time interval at which you want to query metric data. Unit: milliseconds. Minimum value: 60000.
+	//
+	// > If you set this parameter to 2147483647, all data in the specified time interval is returned.
+	IntervalInSec *int32 `json:"IntervalInSec,omitempty" xml:"IntervalInSec,omitempty"`
+	// The maximum number of entries that you want to return.
+	Limit *int32 `json:"Limit,omitempty" xml:"Limit,omitempty"`
+	// The measures of the metric that you want to query.
+	Measures []*string `json:"Measures,omitempty" xml:"Measures,omitempty" type:"Repeated"`
+	// The name of the metric. Valid values:
+	//
+	// - `appstat.incall`: trace statistics
+	// - `appstat.sql`: SQL statistics
+	Metric *string `json:"Metric,omitempty" xml:"Metric,omitempty"`
+	// The order in which you want to sort the returned entries. Valid values:
+	//
+	// - ASC: ascending order
+	// - DESC: descending order
+	Order *string `json:"Order,omitempty" xml:"Order,omitempty"`
+	// The field based on which you want to sort the returned entries.
+	OrderBy *string `json:"OrderBy,omitempty" xml:"OrderBy,omitempty"`
+	// The ID of the proxy user.
+	ProxyUserId *string `json:"ProxyUserId,omitempty" xml:"ProxyUserId,omitempty"`
+	// The timestamp of the start time of the time range to query. The timestamp is accurate to milliseconds.
+	StartTime *int64 `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
 }
 
 func (s QueryMetricRequest) String() string {
@@ -952,7 +1101,9 @@ func (s *QueryMetricRequest) SetStartTime(v int64) *QueryMetricRequest {
 }
 
 type QueryMetricRequestFilters struct {
-	Key   *string `json:"Key,omitempty" xml:"Key,omitempty"`
+	// The key of the field that you want to use to filter the returned entries.
+	Key *string `json:"Key,omitempty" xml:"Key,omitempty"`
+	// The value of the field that you want to use to filter the returned entries.
 	Value *string `json:"Value,omitempty" xml:"Value,omitempty"`
 }
 
@@ -975,7 +1126,9 @@ func (s *QueryMetricRequestFilters) SetValue(v string) *QueryMetricRequestFilter
 }
 
 type QueryMetricResponseBody struct {
-	Data      *string `json:"Data,omitempty" xml:"Data,omitempty"`
+	// The returned statistics.
+	Data *string `json:"Data,omitempty" xml:"Data,omitempty"`
+	// The ID of the request.
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -1027,18 +1180,33 @@ func (s *QueryMetricResponse) SetBody(v *QueryMetricResponseBody) *QueryMetricRe
 }
 
 type SearchTracesRequest struct {
-	AppType       *string                   `json:"AppType,omitempty" xml:"AppType,omitempty"`
-	EndTime       *int64                    `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
-	MinDuration   *int64                    `json:"MinDuration,omitempty" xml:"MinDuration,omitempty"`
-	OperationName *string                   `json:"OperationName,omitempty" xml:"OperationName,omitempty"`
-	PageNumber    *int32                    `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
-	PageSize      *int32                    `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	RegionId      *string                   `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	Reverse       *bool                     `json:"Reverse,omitempty" xml:"Reverse,omitempty"`
-	ServiceIp     *string                   `json:"ServiceIp,omitempty" xml:"ServiceIp,omitempty"`
-	ServiceName   *string                   `json:"ServiceName,omitempty" xml:"ServiceName,omitempty"`
-	StartTime     *int64                    `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
-	Tag           []*SearchTracesRequestTag `json:"Tag,omitempty" xml:"Tag,omitempty" type:"Repeated"`
+	// The type of the application. You can set the value to **XTRACE** or leave this parameter unspecified.
+	AppType *string `json:"AppType,omitempty" xml:"AppType,omitempty"`
+	// The timestamp of the end time of the time range to query. The timestamp is accurate to milliseconds.
+	EndTime *int64 `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
+	// The time more than which is used to call the trace. Unit: milliseconds. For example, a value of 100 specifies to return the traces that more than 100 milliseconds are used to call.
+	MinDuration *int64 `json:"MinDuration,omitempty" xml:"MinDuration,omitempty"`
+	// The name of the span.
+	OperationName *string `json:"OperationName,omitempty" xml:"OperationName,omitempty"`
+	// The number of the page to return. For example, a value of 5 indicates page 5.
+	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
+	// The number of entries to return on each page.
+	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	// The ID of the region.
+	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	// Specifies whether to sort the query results in chronological order or reverse chronological order. Default value: false. Valid values:
+	//
+	// - true: reverse chronological order
+	// - false: chronological order
+	Reverse *bool `json:"Reverse,omitempty" xml:"Reverse,omitempty"`
+	// The IP address that corresponds to the span.
+	ServiceIp *string `json:"ServiceIp,omitempty" xml:"ServiceIp,omitempty"`
+	// The name of the application.
+	ServiceName *string `json:"ServiceName,omitempty" xml:"ServiceName,omitempty"`
+	// The timestamp of the start time of the time range to query. The timestamp is accurate to milliseconds.
+	StartTime *int64 `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
+	// The list of the tags.
+	Tag []*SearchTracesRequestTag `json:"Tag,omitempty" xml:"Tag,omitempty" type:"Repeated"`
 }
 
 func (s SearchTracesRequest) String() string {
@@ -1110,7 +1278,9 @@ func (s *SearchTracesRequest) SetTag(v []*SearchTracesRequestTag) *SearchTracesR
 }
 
 type SearchTracesRequestTag struct {
-	Key   *string `json:"Key,omitempty" xml:"Key,omitempty"`
+	// The key of the tag.
+	Key *string `json:"Key,omitempty" xml:"Key,omitempty"`
+	// The value of the tag.
 	Value *string `json:"Value,omitempty" xml:"Value,omitempty"`
 }
 
@@ -1133,8 +1303,10 @@ func (s *SearchTracesRequestTag) SetValue(v string) *SearchTracesRequestTag {
 }
 
 type SearchTracesResponseBody struct {
-	PageBean  *SearchTracesResponseBodyPageBean `json:"PageBean,omitempty" xml:"PageBean,omitempty" type:"Struct"`
-	RequestId *string                           `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The information about the returned page.
+	PageBean *SearchTracesResponseBodyPageBean `json:"PageBean,omitempty" xml:"PageBean,omitempty" type:"Struct"`
+	// The ID of the request.
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
 func (s SearchTracesResponseBody) String() string {
@@ -1156,9 +1328,13 @@ func (s *SearchTracesResponseBody) SetRequestId(v string) *SearchTracesResponseB
 }
 
 type SearchTracesResponseBodyPageBean struct {
-	PageNumber *int32                                      `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
-	PageSize   *int32                                      `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	TotalCount *int64                                      `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
+	// The page number of the returned page.
+	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
+	// The number of entries returned per page.
+	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	// The total number of entries returned.
+	TotalCount *int64 `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
+	// The information about the trace.
 	TraceInfos *SearchTracesResponseBodyPageBeanTraceInfos `json:"TraceInfos,omitempty" xml:"TraceInfos,omitempty" type:"Struct"`
 }
 
@@ -1208,13 +1384,20 @@ func (s *SearchTracesResponseBodyPageBeanTraceInfos) SetTraceInfo(v []*SearchTra
 }
 
 type SearchTracesResponseBodyPageBeanTraceInfosTraceInfo struct {
-	Duration      *int64                 `json:"Duration,omitempty" xml:"Duration,omitempty"`
-	OperationName *string                `json:"OperationName,omitempty" xml:"OperationName,omitempty"`
-	ServiceIp     *string                `json:"ServiceIp,omitempty" xml:"ServiceIp,omitempty"`
-	ServiceName   *string                `json:"ServiceName,omitempty" xml:"ServiceName,omitempty"`
-	TagMap        map[string]interface{} `json:"TagMap,omitempty" xml:"TagMap,omitempty"`
-	Timestamp     *int64                 `json:"Timestamp,omitempty" xml:"Timestamp,omitempty"`
-	TraceID       *string                `json:"TraceID,omitempty" xml:"TraceID,omitempty"`
+	// The time used to call the trace. Unit: milliseconds.
+	Duration *int64 `json:"Duration,omitempty" xml:"Duration,omitempty"`
+	// The name of the span.
+	OperationName *string `json:"OperationName,omitempty" xml:"OperationName,omitempty"`
+	// The IP address of the server where the span resides.
+	ServiceIp *string `json:"ServiceIp,omitempty" xml:"ServiceIp,omitempty"`
+	// The name of the application.
+	ServiceName *string `json:"ServiceName,omitempty" xml:"ServiceName,omitempty"`
+	// The map of tags.
+	TagMap map[string]interface{} `json:"TagMap,omitempty" xml:"TagMap,omitempty"`
+	// The time when the span was generated. Unit: microseconds.
+	Timestamp *int64 `json:"Timestamp,omitempty" xml:"Timestamp,omitempty"`
+	// The ID of the trace.
+	TraceID *string `json:"TraceID,omitempty" xml:"TraceID,omitempty"`
 }
 
 func (s SearchTracesResponseBodyPageBeanTraceInfosTraceInfo) String() string {
@@ -1665,6 +1848,50 @@ func (client *Client) ListSpanNames(request *ListSpanNamesRequest) (_result *Lis
 	runtime := &util.RuntimeOptions{}
 	_result = &ListSpanNamesResponse{}
 	_body, _err := client.ListSpanNamesWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) OpenXtraceServiceWithOptions(request *OpenXtraceServiceRequest, runtime *util.RuntimeOptions) (_result *OpenXtraceServiceResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.RegionId)) {
+		query["RegionId"] = request.RegionId
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("OpenXtraceService"),
+		Version:     tea.String("2019-08-08"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &OpenXtraceServiceResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) OpenXtraceService(request *OpenXtraceServiceRequest) (_result *OpenXtraceServiceResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &OpenXtraceServiceResponse{}
+	_body, _err := client.OpenXtraceServiceWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
