@@ -733,6 +733,175 @@ func (s *CreateSlotResponse) SetBody(v *CreateSlotResponseBody) *CreateSlotRespo
 	return s
 }
 
+type CreateSlotsRequest struct {
+	DryRun *bool                      `json:"DryRun,omitempty" xml:"DryRun,omitempty"`
+	Slots  []*CreateSlotsRequestSlots `json:"Slots,omitempty" xml:"Slots,omitempty" type:"Repeated"`
+}
+
+func (s CreateSlotsRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateSlotsRequest) GoString() string {
+	return s.String()
+}
+
+func (s *CreateSlotsRequest) SetDryRun(v bool) *CreateSlotsRequest {
+	s.DryRun = &v
+	return s
+}
+
+func (s *CreateSlotsRequest) SetSlots(v []*CreateSlotsRequestSlots) *CreateSlotsRequest {
+	s.Slots = v
+	return s
+}
+
+type CreateSlotsRequestSlots struct {
+	Capacity    *string                        `json:"Capacity,omitempty" xml:"Capacity,omitempty"`
+	Description *string                        `json:"Description,omitempty" xml:"Description,omitempty"`
+	EndpointIds *string                        `json:"EndpointIds,omitempty" xml:"EndpointIds,omitempty"`
+	InstanceId  *string                        `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	LifeCycle   *SlotLifeCycle                 `json:"LifeCycle,omitempty" xml:"LifeCycle,omitempty"`
+	Name        *string                        `json:"Name,omitempty" xml:"Name,omitempty"`
+	StorageType *string                        `json:"StorageType,omitempty" xml:"StorageType,omitempty"`
+	StorageUri  *string                        `json:"StorageUri,omitempty" xml:"StorageUri,omitempty"`
+	Tags        []*CreateSlotsRequestSlotsTags `json:"Tags,omitempty" xml:"Tags,omitempty" type:"Repeated"`
+}
+
+func (s CreateSlotsRequestSlots) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateSlotsRequestSlots) GoString() string {
+	return s.String()
+}
+
+func (s *CreateSlotsRequestSlots) SetCapacity(v string) *CreateSlotsRequestSlots {
+	s.Capacity = &v
+	return s
+}
+
+func (s *CreateSlotsRequestSlots) SetDescription(v string) *CreateSlotsRequestSlots {
+	s.Description = &v
+	return s
+}
+
+func (s *CreateSlotsRequestSlots) SetEndpointIds(v string) *CreateSlotsRequestSlots {
+	s.EndpointIds = &v
+	return s
+}
+
+func (s *CreateSlotsRequestSlots) SetInstanceId(v string) *CreateSlotsRequestSlots {
+	s.InstanceId = &v
+	return s
+}
+
+func (s *CreateSlotsRequestSlots) SetLifeCycle(v *SlotLifeCycle) *CreateSlotsRequestSlots {
+	s.LifeCycle = v
+	return s
+}
+
+func (s *CreateSlotsRequestSlots) SetName(v string) *CreateSlotsRequestSlots {
+	s.Name = &v
+	return s
+}
+
+func (s *CreateSlotsRequestSlots) SetStorageType(v string) *CreateSlotsRequestSlots {
+	s.StorageType = &v
+	return s
+}
+
+func (s *CreateSlotsRequestSlots) SetStorageUri(v string) *CreateSlotsRequestSlots {
+	s.StorageUri = &v
+	return s
+}
+
+func (s *CreateSlotsRequestSlots) SetTags(v []*CreateSlotsRequestSlotsTags) *CreateSlotsRequestSlots {
+	s.Tags = v
+	return s
+}
+
+type CreateSlotsRequestSlotsTags struct {
+	Key   *string `json:"Key,omitempty" xml:"Key,omitempty"`
+	Value *string `json:"Value,omitempty" xml:"Value,omitempty"`
+}
+
+func (s CreateSlotsRequestSlotsTags) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateSlotsRequestSlotsTags) GoString() string {
+	return s.String()
+}
+
+func (s *CreateSlotsRequestSlotsTags) SetKey(v string) *CreateSlotsRequestSlotsTags {
+	s.Key = &v
+	return s
+}
+
+func (s *CreateSlotsRequestSlotsTags) SetValue(v string) *CreateSlotsRequestSlotsTags {
+	s.Value = &v
+	return s
+}
+
+type CreateSlotsResponseBody struct {
+	RequestId *string            `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	SlotIds   *string            `json:"SlotIds,omitempty" xml:"SlotIds,omitempty"`
+	Summary   map[string]*string `json:"Summary,omitempty" xml:"Summary,omitempty"`
+}
+
+func (s CreateSlotsResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateSlotsResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *CreateSlotsResponseBody) SetRequestId(v string) *CreateSlotsResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *CreateSlotsResponseBody) SetSlotIds(v string) *CreateSlotsResponseBody {
+	s.SlotIds = &v
+	return s
+}
+
+func (s *CreateSlotsResponseBody) SetSummary(v map[string]*string) *CreateSlotsResponseBody {
+	s.Summary = v
+	return s
+}
+
+type CreateSlotsResponse struct {
+	Headers    map[string]*string       `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                   `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *CreateSlotsResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s CreateSlotsResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateSlotsResponse) GoString() string {
+	return s.String()
+}
+
+func (s *CreateSlotsResponse) SetHeaders(v map[string]*string) *CreateSlotsResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *CreateSlotsResponse) SetStatusCode(v int32) *CreateSlotsResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *CreateSlotsResponse) SetBody(v *CreateSlotsResponseBody) *CreateSlotsResponse {
+	s.Body = v
+	return s
+}
+
 type CreateTagRequest struct {
 	Key          *string `json:"Key,omitempty" xml:"Key,omitempty"`
 	ResourceId   *string `json:"ResourceId,omitempty" xml:"ResourceId,omitempty"`
@@ -1320,23 +1489,27 @@ func (s *DescribeEndpointResponse) SetBody(v *DescribeEndpointResponseBody) *Des
 }
 
 type DescribeInstanceResponseBody struct {
-	Capacity        *string                             `json:"Capacity,omitempty" xml:"Capacity,omitempty"`
-	Description     *string                             `json:"Description,omitempty" xml:"Description,omitempty"`
-	GmtCreateTime   *string                             `json:"GmtCreateTime,omitempty" xml:"GmtCreateTime,omitempty"`
-	GmtModifiedTime *string                             `json:"GmtModifiedTime,omitempty" xml:"GmtModifiedTime,omitempty"`
-	MaxEndpoint     *int32                              `json:"MaxEndpoint,omitempty" xml:"MaxEndpoint,omitempty"`
-	MaxSlot         *int32                              `json:"MaxSlot,omitempty" xml:"MaxSlot,omitempty"`
-	Name            *string                             `json:"Name,omitempty" xml:"Name,omitempty"`
-	OwnerId         *string                             `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
-	PaymentType     *string                             `json:"PaymentType,omitempty" xml:"PaymentType,omitempty"`
-	ProviderType    *string                             `json:"ProviderType,omitempty" xml:"ProviderType,omitempty"`
-	RequestId       *string                             `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	Status          *InstanceStatus                     `json:"Status,omitempty" xml:"Status,omitempty"`
-	StorageType     *string                             `json:"StorageType,omitempty" xml:"StorageType,omitempty"`
-	Tags            []*DescribeInstanceResponseBodyTags `json:"Tags,omitempty" xml:"Tags,omitempty" type:"Repeated"`
-	Type            *string                             `json:"Type,omitempty" xml:"Type,omitempty"`
-	UserId          *string                             `json:"UserId,omitempty" xml:"UserId,omitempty"`
-	Uuid            *string                             `json:"Uuid,omitempty" xml:"Uuid,omitempty"`
+	Capacity        *string `json:"Capacity,omitempty" xml:"Capacity,omitempty"`
+	Description     *string `json:"Description,omitempty" xml:"Description,omitempty"`
+	GmtCreateTime   *string `json:"GmtCreateTime,omitempty" xml:"GmtCreateTime,omitempty"`
+	GmtModifiedTime *string `json:"GmtModifiedTime,omitempty" xml:"GmtModifiedTime,omitempty"`
+	IoType          *string `json:"IoType,omitempty" xml:"IoType,omitempty"`
+	// 数据集加速实例的最大挂载点个数。
+	MaxEndpoint *int32  `json:"MaxEndpoint,omitempty" xml:"MaxEndpoint,omitempty"`
+	MaxSlot     *int32  `json:"MaxSlot,omitempty" xml:"MaxSlot,omitempty"`
+	Name        *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	OwnerId     *string `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
+	PaymentType *string `json:"PaymentType,omitempty" xml:"PaymentType,omitempty"`
+	// 数据集加速实例的资源提供者类型。
+	ProviderType *string         `json:"ProviderType,omitempty" xml:"ProviderType,omitempty"`
+	RequestId    *string         `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	Status       *InstanceStatus `json:"Status,omitempty" xml:"Status,omitempty"`
+	// 数据集加速实例的存储类型。
+	StorageType *string                             `json:"StorageType,omitempty" xml:"StorageType,omitempty"`
+	Tags        []*DescribeInstanceResponseBodyTags `json:"Tags,omitempty" xml:"Tags,omitempty" type:"Repeated"`
+	Type        *string                             `json:"Type,omitempty" xml:"Type,omitempty"`
+	UserId      *string                             `json:"UserId,omitempty" xml:"UserId,omitempty"`
+	Uuid        *string                             `json:"Uuid,omitempty" xml:"Uuid,omitempty"`
 }
 
 func (s DescribeInstanceResponseBody) String() string {
@@ -1364,6 +1537,11 @@ func (s *DescribeInstanceResponseBody) SetGmtCreateTime(v string) *DescribeInsta
 
 func (s *DescribeInstanceResponseBody) SetGmtModifiedTime(v string) *DescribeInstanceResponseBody {
 	s.GmtModifiedTime = &v
+	return s
+}
+
+func (s *DescribeInstanceResponseBody) SetIoType(v string) *DescribeInstanceResponseBody {
+	s.IoType = &v
 	return s
 }
 
@@ -2138,6 +2316,7 @@ type ListInstancesResponseBodyInstances struct {
 	Description     *string `json:"Description,omitempty" xml:"Description,omitempty"`
 	GmtCreateTime   *string `json:"GmtCreateTime,omitempty" xml:"GmtCreateTime,omitempty"`
 	GmtModifiedTime *string `json:"GmtModifiedTime,omitempty" xml:"GmtModifiedTime,omitempty"`
+	IoType          *string `json:"IoType,omitempty" xml:"IoType,omitempty"`
 	// 数据集加速实例的最大挂载点个数。
 	MaxEndpoint *int32  `json:"MaxEndpoint,omitempty" xml:"MaxEndpoint,omitempty"`
 	MaxSlot     *int32  `json:"MaxSlot,omitempty" xml:"MaxSlot,omitempty"`
@@ -2180,6 +2359,11 @@ func (s *ListInstancesResponseBodyInstances) SetGmtCreateTime(v string) *ListIns
 
 func (s *ListInstancesResponseBodyInstances) SetGmtModifiedTime(v string) *ListInstancesResponseBodyInstances {
 	s.GmtModifiedTime = &v
+	return s
+}
+
+func (s *ListInstancesResponseBodyInstances) SetIoType(v string) *ListInstancesResponseBodyInstances {
+	s.IoType = &v
 	return s
 }
 
@@ -3183,6 +3367,52 @@ func (s *QueryStatisticResponse) SetBody(v *QueryStatisticResponseBody) *QuerySt
 	return s
 }
 
+type ReloadSlotResponseBody struct {
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+}
+
+func (s ReloadSlotResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ReloadSlotResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *ReloadSlotResponseBody) SetRequestId(v string) *ReloadSlotResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+type ReloadSlotResponse struct {
+	Headers    map[string]*string      `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                  `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *ReloadSlotResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s ReloadSlotResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ReloadSlotResponse) GoString() string {
+	return s.String()
+}
+
+func (s *ReloadSlotResponse) SetHeaders(v map[string]*string) *ReloadSlotResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *ReloadSlotResponse) SetStatusCode(v int32) *ReloadSlotResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *ReloadSlotResponse) SetBody(v *ReloadSlotResponseBody) *ReloadSlotResponse {
+	s.Body = v
+	return s
+}
+
 type StopSlotResponseBody struct {
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
@@ -3774,6 +4004,56 @@ func (client *Client) CreateSlot(request *CreateSlotRequest) (_result *CreateSlo
 	headers := make(map[string]*string)
 	_result = &CreateSlotResponse{}
 	_body, _err := client.CreateSlotWithOptions(request, headers, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) CreateSlotsWithOptions(request *CreateSlotsRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *CreateSlotsResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	body := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.DryRun)) {
+		body["DryRun"] = request.DryRun
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Slots)) {
+		body["Slots"] = request.Slots
+	}
+
+	req := &openapi.OpenApiRequest{
+		Headers: headers,
+		Body:    openapiutil.ParseToMap(body),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("CreateSlots"),
+		Version:     tea.String("2022-08-01"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/api/v1/batch/slots/create"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("ROA"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &CreateSlotsResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) CreateSlots(request *CreateSlotsRequest) (_result *CreateSlotsResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	headers := make(map[string]*string)
+	_result = &CreateSlotsResponse{}
+	_body, _err := client.CreateSlotsWithOptions(request, headers, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -4744,6 +5024,42 @@ func (client *Client) QueryStatistic(request *QueryStatisticRequest) (_result *Q
 	headers := make(map[string]*string)
 	_result = &QueryStatisticResponse{}
 	_body, _err := client.QueryStatisticWithOptions(request, headers, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) ReloadSlotWithOptions(SlotId *string, headers map[string]*string, runtime *util.RuntimeOptions) (_result *ReloadSlotResponse, _err error) {
+	req := &openapi.OpenApiRequest{
+		Headers: headers,
+	}
+	params := &openapi.Params{
+		Action:      tea.String("ReloadSlot"),
+		Version:     tea.String("2022-08-01"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/api/v1/slots/" + tea.StringValue(openapiutil.GetEncodeParam(SlotId)) + "/action/reload"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("ROA"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &ReloadSlotResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) ReloadSlot(SlotId *string) (_result *ReloadSlotResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	headers := make(map[string]*string)
+	_result = &ReloadSlotResponse{}
+	_body, _err := client.ReloadSlotWithOptions(SlotId, headers, runtime)
 	if _err != nil {
 		return _result, _err
 	}
