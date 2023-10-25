@@ -3118,6 +3118,7 @@ type UpgradeDBInstanceEngineVersionRequest struct {
 	EngineVersion   *string `json:"EngineVersion,omitempty" xml:"EngineVersion,omitempty"`
 	RegionId        *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 	ResourceOwnerId *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
+	SwitchTimeMode  *string `json:"SwitchTimeMode,omitempty" xml:"SwitchTimeMode,omitempty"`
 }
 
 func (s UpgradeDBInstanceEngineVersionRequest) String() string {
@@ -3145,6 +3146,11 @@ func (s *UpgradeDBInstanceEngineVersionRequest) SetRegionId(v string) *UpgradeDB
 
 func (s *UpgradeDBInstanceEngineVersionRequest) SetResourceOwnerId(v int64) *UpgradeDBInstanceEngineVersionRequest {
 	s.ResourceOwnerId = &v
+	return s
+}
+
+func (s *UpgradeDBInstanceEngineVersionRequest) SetSwitchTimeMode(v string) *UpgradeDBInstanceEngineVersionRequest {
+	s.SwitchTimeMode = &v
 	return s
 }
 
