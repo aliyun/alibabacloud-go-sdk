@@ -334,6 +334,7 @@ type GrafanaWorkspaceAccount struct {
 	AliyunUserName *string                    `json:"aliyunUserName,omitempty" xml:"aliyunUserName,omitempty"`
 	GmtCreate      *float32                   `json:"gmtCreate,omitempty" xml:"gmtCreate,omitempty"`
 	Orgs           []*GrafanaWorkspaceUserOrg `json:"orgs,omitempty" xml:"orgs,omitempty" type:"Repeated"`
+	Type           *string                    `json:"type,omitempty" xml:"type,omitempty"`
 }
 
 func (s GrafanaWorkspaceAccount) String() string {
@@ -371,6 +372,11 @@ func (s *GrafanaWorkspaceAccount) SetGmtCreate(v float32) *GrafanaWorkspaceAccou
 
 func (s *GrafanaWorkspaceAccount) SetOrgs(v []*GrafanaWorkspaceUserOrg) *GrafanaWorkspaceAccount {
 	s.Orgs = v
+	return s
+}
+
+func (s *GrafanaWorkspaceAccount) SetType(v string) *GrafanaWorkspaceAccount {
+	s.Type = &v
 	return s
 }
 
@@ -3806,10 +3812,10 @@ func (s *CloseAlarmResponse) SetBody(v *CloseAlarmResponseBody) *CloseAlarmRespo
 type ConfigAppRequest struct {
 	// The process identifier (PID) of the application. Separate multiple PIDs with commas (,).
 	AppIds *string `json:"AppIds,omitempty" xml:"AppIds,omitempty"`
-	// Specifies whether to turn on or turn off the main switch of the ARMS agent. The monitoring stops after the switch is turned off. If you do not specify this parameter, the main switch status of the ARMS agent is queried.
+	// Specifies whether to turn on or off the main switch of the ARMS agent. The monitoring stops after the switch is turned off. If you do not specify this parameter, the main switch status of the ARMS agent is queried.
 	//
-	// *   `true`
-	// *   `false`
+	// *   `true`: turns on the switch
+	// *   `false`: turns off the switch
 	Enable *string `json:"Enable,omitempty" xml:"Enable,omitempty"`
 	// The region ID.
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
@@ -3846,7 +3852,7 @@ func (s *ConfigAppRequest) SetType(v string) *ConfigAppRequest {
 }
 
 type ConfigAppResponseBody struct {
-	// The result of turning on or turning off the main switch of the ARMS agent or the main switch status of the ARMS agent.
+	// The result of turning on or off the main switch of the ARMS agent or the main switch status of the ARMS agent. Indicates whether the request was successful. Valid values: success failed The main switch status of the ARMS agent. Valid values: true false
 	Data *string `json:"Data,omitempty" xml:"Data,omitempty"`
 	// The request ID.
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
@@ -4236,6 +4242,593 @@ func (s *CreateDispatchRuleResponse) SetStatusCode(v int32) *CreateDispatchRuleR
 }
 
 func (s *CreateDispatchRuleResponse) SetBody(v *CreateDispatchRuleResponseBody) *CreateDispatchRuleResponse {
+	s.Body = v
+	return s
+}
+
+type CreateEnvCustomJobRequest struct {
+	// Locale: zh | en.
+	// The default value is zh.
+	AliyunLang *string `json:"AliyunLang,omitempty" xml:"AliyunLang,omitempty"`
+	// Customize the Job\"s yaml configuration string.
+	ConfigYaml *string `json:"ConfigYaml,omitempty" xml:"ConfigYaml,omitempty"`
+	// Customize job name.
+	CustomJobName *string `json:"CustomJobName,omitempty" xml:"CustomJobName,omitempty"`
+	// Environment instance ID.
+	EnvironmentId *string `json:"EnvironmentId,omitempty" xml:"EnvironmentId,omitempty"`
+	// The region ID.
+	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+}
+
+func (s CreateEnvCustomJobRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateEnvCustomJobRequest) GoString() string {
+	return s.String()
+}
+
+func (s *CreateEnvCustomJobRequest) SetAliyunLang(v string) *CreateEnvCustomJobRequest {
+	s.AliyunLang = &v
+	return s
+}
+
+func (s *CreateEnvCustomJobRequest) SetConfigYaml(v string) *CreateEnvCustomJobRequest {
+	s.ConfigYaml = &v
+	return s
+}
+
+func (s *CreateEnvCustomJobRequest) SetCustomJobName(v string) *CreateEnvCustomJobRequest {
+	s.CustomJobName = &v
+	return s
+}
+
+func (s *CreateEnvCustomJobRequest) SetEnvironmentId(v string) *CreateEnvCustomJobRequest {
+	s.EnvironmentId = &v
+	return s
+}
+
+func (s *CreateEnvCustomJobRequest) SetRegionId(v string) *CreateEnvCustomJobRequest {
+	s.RegionId = &v
+	return s
+}
+
+type CreateEnvCustomJobResponseBody struct {
+	// The status code. The status code 200 indicates that the request was successful.
+	Code *int32 `json:"Code,omitempty" xml:"Code,omitempty"`
+	// The struct returned.
+	Data *string `json:"Data,omitempty" xml:"Data,omitempty"`
+	// The message returned.
+	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// Id of the request
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+}
+
+func (s CreateEnvCustomJobResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateEnvCustomJobResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *CreateEnvCustomJobResponseBody) SetCode(v int32) *CreateEnvCustomJobResponseBody {
+	s.Code = &v
+	return s
+}
+
+func (s *CreateEnvCustomJobResponseBody) SetData(v string) *CreateEnvCustomJobResponseBody {
+	s.Data = &v
+	return s
+}
+
+func (s *CreateEnvCustomJobResponseBody) SetMessage(v string) *CreateEnvCustomJobResponseBody {
+	s.Message = &v
+	return s
+}
+
+func (s *CreateEnvCustomJobResponseBody) SetRequestId(v string) *CreateEnvCustomJobResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+type CreateEnvCustomJobResponse struct {
+	Headers    map[string]*string              `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                          `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *CreateEnvCustomJobResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s CreateEnvCustomJobResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateEnvCustomJobResponse) GoString() string {
+	return s.String()
+}
+
+func (s *CreateEnvCustomJobResponse) SetHeaders(v map[string]*string) *CreateEnvCustomJobResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *CreateEnvCustomJobResponse) SetStatusCode(v int32) *CreateEnvCustomJobResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *CreateEnvCustomJobResponse) SetBody(v *CreateEnvCustomJobResponseBody) *CreateEnvCustomJobResponse {
+	s.Body = v
+	return s
+}
+
+type CreateEnvPodMonitorRequest struct {
+	// Locale, default is Chinese zh | en.
+	AliyunLang *string `json:"AliyunLang,omitempty" xml:"AliyunLang,omitempty"`
+	// PodMonitor\"s yaml configuration string.
+	ConfigYaml *string `json:"ConfigYaml,omitempty" xml:"ConfigYaml,omitempty"`
+	// Trial run: Check whether the format is legal and whether it can match targets.
+	DryRun *bool `json:"DryRun,omitempty" xml:"DryRun,omitempty"`
+	// Environment instance ID.
+	EnvironmentId *string `json:"EnvironmentId,omitempty" xml:"EnvironmentId,omitempty"`
+	// The region ID.
+	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+}
+
+func (s CreateEnvPodMonitorRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateEnvPodMonitorRequest) GoString() string {
+	return s.String()
+}
+
+func (s *CreateEnvPodMonitorRequest) SetAliyunLang(v string) *CreateEnvPodMonitorRequest {
+	s.AliyunLang = &v
+	return s
+}
+
+func (s *CreateEnvPodMonitorRequest) SetConfigYaml(v string) *CreateEnvPodMonitorRequest {
+	s.ConfigYaml = &v
+	return s
+}
+
+func (s *CreateEnvPodMonitorRequest) SetDryRun(v bool) *CreateEnvPodMonitorRequest {
+	s.DryRun = &v
+	return s
+}
+
+func (s *CreateEnvPodMonitorRequest) SetEnvironmentId(v string) *CreateEnvPodMonitorRequest {
+	s.EnvironmentId = &v
+	return s
+}
+
+func (s *CreateEnvPodMonitorRequest) SetRegionId(v string) *CreateEnvPodMonitorRequest {
+	s.RegionId = &v
+	return s
+}
+
+type CreateEnvPodMonitorResponseBody struct {
+	// The status code. The status code 200 indicates that the request was successful.
+	Code *int32 `json:"Code,omitempty" xml:"Code,omitempty"`
+	// The returned information.
+	Data *CreateEnvPodMonitorResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
+	// The returned message.
+	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// Id of the request
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+}
+
+func (s CreateEnvPodMonitorResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateEnvPodMonitorResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *CreateEnvPodMonitorResponseBody) SetCode(v int32) *CreateEnvPodMonitorResponseBody {
+	s.Code = &v
+	return s
+}
+
+func (s *CreateEnvPodMonitorResponseBody) SetData(v *CreateEnvPodMonitorResponseBodyData) *CreateEnvPodMonitorResponseBody {
+	s.Data = v
+	return s
+}
+
+func (s *CreateEnvPodMonitorResponseBody) SetMessage(v string) *CreateEnvPodMonitorResponseBody {
+	s.Message = &v
+	return s
+}
+
+func (s *CreateEnvPodMonitorResponseBody) SetRequestId(v string) *CreateEnvPodMonitorResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+type CreateEnvPodMonitorResponseBodyData struct {
+	// target matching prompt information.
+	MatchedMsg *string `json:"MatchedMsg,omitempty" xml:"MatchedMsg,omitempty"`
+	// The number of matched targets.
+	MatchedTargetCount *string `json:"MatchedTargetCount,omitempty" xml:"MatchedTargetCount,omitempty"`
+	// The namespace.
+	Namespace *string `json:"Namespace,omitempty" xml:"Namespace,omitempty"`
+	// Successfully created podMonitor name.
+	PodMonitorName *string `json:"PodMonitorName,omitempty" xml:"PodMonitorName,omitempty"`
+}
+
+func (s CreateEnvPodMonitorResponseBodyData) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateEnvPodMonitorResponseBodyData) GoString() string {
+	return s.String()
+}
+
+func (s *CreateEnvPodMonitorResponseBodyData) SetMatchedMsg(v string) *CreateEnvPodMonitorResponseBodyData {
+	s.MatchedMsg = &v
+	return s
+}
+
+func (s *CreateEnvPodMonitorResponseBodyData) SetMatchedTargetCount(v string) *CreateEnvPodMonitorResponseBodyData {
+	s.MatchedTargetCount = &v
+	return s
+}
+
+func (s *CreateEnvPodMonitorResponseBodyData) SetNamespace(v string) *CreateEnvPodMonitorResponseBodyData {
+	s.Namespace = &v
+	return s
+}
+
+func (s *CreateEnvPodMonitorResponseBodyData) SetPodMonitorName(v string) *CreateEnvPodMonitorResponseBodyData {
+	s.PodMonitorName = &v
+	return s
+}
+
+type CreateEnvPodMonitorResponse struct {
+	Headers    map[string]*string               `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                           `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *CreateEnvPodMonitorResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s CreateEnvPodMonitorResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateEnvPodMonitorResponse) GoString() string {
+	return s.String()
+}
+
+func (s *CreateEnvPodMonitorResponse) SetHeaders(v map[string]*string) *CreateEnvPodMonitorResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *CreateEnvPodMonitorResponse) SetStatusCode(v int32) *CreateEnvPodMonitorResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *CreateEnvPodMonitorResponse) SetBody(v *CreateEnvPodMonitorResponseBody) *CreateEnvPodMonitorResponse {
+	s.Body = v
+	return s
+}
+
+type CreateEnvServiceMonitorRequest struct {
+	// Locale, default is Chinese zh | en.
+	AliyunLang *string `json:"AliyunLang,omitempty" xml:"AliyunLang,omitempty"`
+	// ServiceMonitor\"s yaml configuration string.
+	ConfigYaml *string `json:"ConfigYaml,omitempty" xml:"ConfigYaml,omitempty"`
+	// Trial run: Check whether the format is legal and whether it can match targets.
+	DryRun *bool `json:"DryRun,omitempty" xml:"DryRun,omitempty"`
+	// Environment instance ID.
+	EnvironmentId *string `json:"EnvironmentId,omitempty" xml:"EnvironmentId,omitempty"`
+	// The ID of the region.
+	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+}
+
+func (s CreateEnvServiceMonitorRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateEnvServiceMonitorRequest) GoString() string {
+	return s.String()
+}
+
+func (s *CreateEnvServiceMonitorRequest) SetAliyunLang(v string) *CreateEnvServiceMonitorRequest {
+	s.AliyunLang = &v
+	return s
+}
+
+func (s *CreateEnvServiceMonitorRequest) SetConfigYaml(v string) *CreateEnvServiceMonitorRequest {
+	s.ConfigYaml = &v
+	return s
+}
+
+func (s *CreateEnvServiceMonitorRequest) SetDryRun(v bool) *CreateEnvServiceMonitorRequest {
+	s.DryRun = &v
+	return s
+}
+
+func (s *CreateEnvServiceMonitorRequest) SetEnvironmentId(v string) *CreateEnvServiceMonitorRequest {
+	s.EnvironmentId = &v
+	return s
+}
+
+func (s *CreateEnvServiceMonitorRequest) SetRegionId(v string) *CreateEnvServiceMonitorRequest {
+	s.RegionId = &v
+	return s
+}
+
+type CreateEnvServiceMonitorResponseBody struct {
+	// The status code.
+	Code *int32 `json:"Code,omitempty" xml:"Code,omitempty"`
+	// The returned struct.
+	Data *CreateEnvServiceMonitorResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
+	// The message returned.
+	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// Id of the request
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+}
+
+func (s CreateEnvServiceMonitorResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateEnvServiceMonitorResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *CreateEnvServiceMonitorResponseBody) SetCode(v int32) *CreateEnvServiceMonitorResponseBody {
+	s.Code = &v
+	return s
+}
+
+func (s *CreateEnvServiceMonitorResponseBody) SetData(v *CreateEnvServiceMonitorResponseBodyData) *CreateEnvServiceMonitorResponseBody {
+	s.Data = v
+	return s
+}
+
+func (s *CreateEnvServiceMonitorResponseBody) SetMessage(v string) *CreateEnvServiceMonitorResponseBody {
+	s.Message = &v
+	return s
+}
+
+func (s *CreateEnvServiceMonitorResponseBody) SetRequestId(v string) *CreateEnvServiceMonitorResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+type CreateEnvServiceMonitorResponseBodyData struct {
+	// target matching prompt information.
+	MatchedMsg *string `json:"MatchedMsg,omitempty" xml:"MatchedMsg,omitempty"`
+	// The number of matched targets.
+	MatchedTargetCount *int32 `json:"MatchedTargetCount,omitempty" xml:"MatchedTargetCount,omitempty"`
+	// The namespace.
+	Namespace *string `json:"Namespace,omitempty" xml:"Namespace,omitempty"`
+	// The name of the serviceMonitor successfully created.
+	ServiceMonitorName *string `json:"ServiceMonitorName,omitempty" xml:"ServiceMonitorName,omitempty"`
+}
+
+func (s CreateEnvServiceMonitorResponseBodyData) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateEnvServiceMonitorResponseBodyData) GoString() string {
+	return s.String()
+}
+
+func (s *CreateEnvServiceMonitorResponseBodyData) SetMatchedMsg(v string) *CreateEnvServiceMonitorResponseBodyData {
+	s.MatchedMsg = &v
+	return s
+}
+
+func (s *CreateEnvServiceMonitorResponseBodyData) SetMatchedTargetCount(v int32) *CreateEnvServiceMonitorResponseBodyData {
+	s.MatchedTargetCount = &v
+	return s
+}
+
+func (s *CreateEnvServiceMonitorResponseBodyData) SetNamespace(v string) *CreateEnvServiceMonitorResponseBodyData {
+	s.Namespace = &v
+	return s
+}
+
+func (s *CreateEnvServiceMonitorResponseBodyData) SetServiceMonitorName(v string) *CreateEnvServiceMonitorResponseBodyData {
+	s.ServiceMonitorName = &v
+	return s
+}
+
+type CreateEnvServiceMonitorResponse struct {
+	Headers    map[string]*string                   `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                               `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *CreateEnvServiceMonitorResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s CreateEnvServiceMonitorResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateEnvServiceMonitorResponse) GoString() string {
+	return s.String()
+}
+
+func (s *CreateEnvServiceMonitorResponse) SetHeaders(v map[string]*string) *CreateEnvServiceMonitorResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *CreateEnvServiceMonitorResponse) SetStatusCode(v int32) *CreateEnvServiceMonitorResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *CreateEnvServiceMonitorResponse) SetBody(v *CreateEnvServiceMonitorResponseBody) *CreateEnvServiceMonitorResponse {
+	s.Body = v
+	return s
+}
+
+type CreateEnvironmentRequest struct {
+	// Locale, the default is Chinese zh | en.
+	AliyunLang *string `json:"AliyunLang,omitempty" xml:"AliyunLang,omitempty"`
+	// Resource instance ID bound to the environment, including container instance ID or VpcId.
+	BindResourceId *string `json:"BindResourceId,omitempty" xml:"BindResourceId,omitempty"`
+	// Environment name.
+	EnvironmentName *string `json:"EnvironmentName,omitempty" xml:"EnvironmentName,omitempty"`
+	// Environment subtypes:
+	// - CS: Currently supports ACK.
+	// - ECS: ECS is currently supported.
+	// - Cloud: Currently supports Cloud.
+	EnvironmentSubType *string `json:"EnvironmentSubType,omitempty" xml:"EnvironmentSubType,omitempty"`
+	// Environment type:
+	// - CS: Container Service.
+	// - ECS.
+	// - Cloud: cloud service.
+	EnvironmentType *string `json:"EnvironmentType,omitempty" xml:"EnvironmentType,omitempty"`
+	// The region ID.
+	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	// The ID of the resource group.
+	ResourceGroupId *string `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
+	// The list of tags.
+	Tags []*CreateEnvironmentRequestTags `json:"Tags,omitempty" xml:"Tags,omitempty" type:"Repeated"`
+}
+
+func (s CreateEnvironmentRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateEnvironmentRequest) GoString() string {
+	return s.String()
+}
+
+func (s *CreateEnvironmentRequest) SetAliyunLang(v string) *CreateEnvironmentRequest {
+	s.AliyunLang = &v
+	return s
+}
+
+func (s *CreateEnvironmentRequest) SetBindResourceId(v string) *CreateEnvironmentRequest {
+	s.BindResourceId = &v
+	return s
+}
+
+func (s *CreateEnvironmentRequest) SetEnvironmentName(v string) *CreateEnvironmentRequest {
+	s.EnvironmentName = &v
+	return s
+}
+
+func (s *CreateEnvironmentRequest) SetEnvironmentSubType(v string) *CreateEnvironmentRequest {
+	s.EnvironmentSubType = &v
+	return s
+}
+
+func (s *CreateEnvironmentRequest) SetEnvironmentType(v string) *CreateEnvironmentRequest {
+	s.EnvironmentType = &v
+	return s
+}
+
+func (s *CreateEnvironmentRequest) SetRegionId(v string) *CreateEnvironmentRequest {
+	s.RegionId = &v
+	return s
+}
+
+func (s *CreateEnvironmentRequest) SetResourceGroupId(v string) *CreateEnvironmentRequest {
+	s.ResourceGroupId = &v
+	return s
+}
+
+func (s *CreateEnvironmentRequest) SetTags(v []*CreateEnvironmentRequestTags) *CreateEnvironmentRequest {
+	s.Tags = v
+	return s
+}
+
+type CreateEnvironmentRequestTags struct {
+	// The tag key.
+	Key *string `json:"Key,omitempty" xml:"Key,omitempty"`
+	// The tag value.
+	Value *string `json:"Value,omitempty" xml:"Value,omitempty"`
+}
+
+func (s CreateEnvironmentRequestTags) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateEnvironmentRequestTags) GoString() string {
+	return s.String()
+}
+
+func (s *CreateEnvironmentRequestTags) SetKey(v string) *CreateEnvironmentRequestTags {
+	s.Key = &v
+	return s
+}
+
+func (s *CreateEnvironmentRequestTags) SetValue(v string) *CreateEnvironmentRequestTags {
+	s.Value = &v
+	return s
+}
+
+type CreateEnvironmentResponseBody struct {
+	// The status code returned.
+	Code *int32 `json:"Code,omitempty" xml:"Code,omitempty"`
+	// The data returned.
+	Data *string `json:"Data,omitempty" xml:"Data,omitempty"`
+	// The message returned.
+	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// Id of the request
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+}
+
+func (s CreateEnvironmentResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateEnvironmentResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *CreateEnvironmentResponseBody) SetCode(v int32) *CreateEnvironmentResponseBody {
+	s.Code = &v
+	return s
+}
+
+func (s *CreateEnvironmentResponseBody) SetData(v string) *CreateEnvironmentResponseBody {
+	s.Data = &v
+	return s
+}
+
+func (s *CreateEnvironmentResponseBody) SetMessage(v string) *CreateEnvironmentResponseBody {
+	s.Message = &v
+	return s
+}
+
+func (s *CreateEnvironmentResponseBody) SetRequestId(v string) *CreateEnvironmentResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+type CreateEnvironmentResponse struct {
+	Headers    map[string]*string             `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                         `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *CreateEnvironmentResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s CreateEnvironmentResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateEnvironmentResponse) GoString() string {
+	return s.String()
+}
+
+func (s *CreateEnvironmentResponse) SetHeaders(v map[string]*string) *CreateEnvironmentResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *CreateEnvironmentResponse) SetStatusCode(v int32) *CreateEnvironmentResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *CreateEnvironmentResponse) SetBody(v *CreateEnvironmentResponseBody) *CreateEnvironmentResponse {
 	s.Body = v
 	return s
 }
@@ -4778,6 +5371,7 @@ type CreateOrUpdateAlertRuleResponseBodyAlertRule struct {
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
 	// The metric type of the Application Monitoring or Browser Monitoring alert rule.
 	MetricsType *string `json:"MetricsType,omitempty" xml:"MetricsType,omitempty"`
+	NotifyMode  *string `json:"NotifyMode,omitempty" xml:"NotifyMode,omitempty"`
 	// The name of the notification policy.
 	NotifyStrategy *string `json:"NotifyStrategy,omitempty" xml:"NotifyStrategy,omitempty"`
 	// The process ID (PID) that was associated with the Application Monitoring or Browser Monitoring alert rule.
@@ -4888,6 +5482,11 @@ func (s *CreateOrUpdateAlertRuleResponseBodyAlertRule) SetMessage(v string) *Cre
 
 func (s *CreateOrUpdateAlertRuleResponseBodyAlertRule) SetMetricsType(v string) *CreateOrUpdateAlertRuleResponseBodyAlertRule {
 	s.MetricsType = &v
+	return s
+}
+
+func (s *CreateOrUpdateAlertRuleResponseBodyAlertRule) SetNotifyMode(v string) *CreateOrUpdateAlertRuleResponseBodyAlertRule {
+	s.NotifyMode = &v
 	return s
 }
 
@@ -8967,9 +9566,12 @@ func (s *CreateTimingSyntheticTaskRequestAvailableAssertions) SetType(v string) 
 }
 
 type CreateTimingSyntheticTaskRequestCommonSetting struct {
-	CustomHost     *CreateTimingSyntheticTaskRequestCommonSettingCustomHost `json:"CustomHost,omitempty" xml:"CustomHost,omitempty" type:"Struct"`
-	IpType         *int32                                                   `json:"IpType,omitempty" xml:"IpType,omitempty"`
-	MonitorSamples *int32                                                   `json:"MonitorSamples,omitempty" xml:"MonitorSamples,omitempty"`
+	CustomHost      *CreateTimingSyntheticTaskRequestCommonSettingCustomHost `json:"CustomHost,omitempty" xml:"CustomHost,omitempty" type:"Struct"`
+	IpType          *int32                                                   `json:"IpType,omitempty" xml:"IpType,omitempty"`
+	IsOpenTrace     *bool                                                    `json:"IsOpenTrace,omitempty" xml:"IsOpenTrace,omitempty"`
+	MonitorSamples  *int32                                                   `json:"MonitorSamples,omitempty" xml:"MonitorSamples,omitempty"`
+	TraceClientType *int32                                                   `json:"TraceClientType,omitempty" xml:"TraceClientType,omitempty"`
+	XtraceRegion    *string                                                  `json:"XtraceRegion,omitempty" xml:"XtraceRegion,omitempty"`
 }
 
 func (s CreateTimingSyntheticTaskRequestCommonSetting) String() string {
@@ -8990,8 +9592,23 @@ func (s *CreateTimingSyntheticTaskRequestCommonSetting) SetIpType(v int32) *Crea
 	return s
 }
 
+func (s *CreateTimingSyntheticTaskRequestCommonSetting) SetIsOpenTrace(v bool) *CreateTimingSyntheticTaskRequestCommonSetting {
+	s.IsOpenTrace = &v
+	return s
+}
+
 func (s *CreateTimingSyntheticTaskRequestCommonSetting) SetMonitorSamples(v int32) *CreateTimingSyntheticTaskRequestCommonSetting {
 	s.MonitorSamples = &v
+	return s
+}
+
+func (s *CreateTimingSyntheticTaskRequestCommonSetting) SetTraceClientType(v int32) *CreateTimingSyntheticTaskRequestCommonSetting {
+	s.TraceClientType = &v
+	return s
+}
+
+func (s *CreateTimingSyntheticTaskRequestCommonSetting) SetXtraceRegion(v string) *CreateTimingSyntheticTaskRequestCommonSetting {
+	s.XtraceRegion = &v
 	return s
 }
 
@@ -10786,6 +11403,513 @@ func (s *DeleteDispatchRuleResponse) SetStatusCode(v int32) *DeleteDispatchRuleR
 }
 
 func (s *DeleteDispatchRuleResponse) SetBody(v *DeleteDispatchRuleResponseBody) *DeleteDispatchRuleResponse {
+	s.Body = v
+	return s
+}
+
+type DeleteEnvCustomJobRequest struct {
+	// Custom job name.
+	CustomJobName *string `json:"CustomJobName,omitempty" xml:"CustomJobName,omitempty"`
+	// Environment ID.
+	EnvironmentId *string `json:"EnvironmentId,omitempty" xml:"EnvironmentId,omitempty"`
+	// The region ID.
+	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+}
+
+func (s DeleteEnvCustomJobRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DeleteEnvCustomJobRequest) GoString() string {
+	return s.String()
+}
+
+func (s *DeleteEnvCustomJobRequest) SetCustomJobName(v string) *DeleteEnvCustomJobRequest {
+	s.CustomJobName = &v
+	return s
+}
+
+func (s *DeleteEnvCustomJobRequest) SetEnvironmentId(v string) *DeleteEnvCustomJobRequest {
+	s.EnvironmentId = &v
+	return s
+}
+
+func (s *DeleteEnvCustomJobRequest) SetRegionId(v string) *DeleteEnvCustomJobRequest {
+	s.RegionId = &v
+	return s
+}
+
+type DeleteEnvCustomJobResponseBody struct {
+	// The status code. The status code 200 indicates that the request was successful.
+	Code *int32 `json:"Code,omitempty" xml:"Code,omitempty"`
+	// The returned result.
+	Data *string `json:"Data,omitempty" xml:"Data,omitempty"`
+	// The returned message.
+	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// Id of the request
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+}
+
+func (s DeleteEnvCustomJobResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DeleteEnvCustomJobResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *DeleteEnvCustomJobResponseBody) SetCode(v int32) *DeleteEnvCustomJobResponseBody {
+	s.Code = &v
+	return s
+}
+
+func (s *DeleteEnvCustomJobResponseBody) SetData(v string) *DeleteEnvCustomJobResponseBody {
+	s.Data = &v
+	return s
+}
+
+func (s *DeleteEnvCustomJobResponseBody) SetMessage(v string) *DeleteEnvCustomJobResponseBody {
+	s.Message = &v
+	return s
+}
+
+func (s *DeleteEnvCustomJobResponseBody) SetRequestId(v string) *DeleteEnvCustomJobResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+type DeleteEnvCustomJobResponse struct {
+	Headers    map[string]*string              `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                          `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *DeleteEnvCustomJobResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s DeleteEnvCustomJobResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DeleteEnvCustomJobResponse) GoString() string {
+	return s.String()
+}
+
+func (s *DeleteEnvCustomJobResponse) SetHeaders(v map[string]*string) *DeleteEnvCustomJobResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *DeleteEnvCustomJobResponse) SetStatusCode(v int32) *DeleteEnvCustomJobResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *DeleteEnvCustomJobResponse) SetBody(v *DeleteEnvCustomJobResponseBody) *DeleteEnvCustomJobResponse {
+	s.Body = v
+	return s
+}
+
+type DeleteEnvPodMonitorRequest struct {
+	// Environment instance ID.
+	EnvironmentId *string `json:"EnvironmentId,omitempty" xml:"EnvironmentId,omitempty"`
+	// The namespace where podMonitor is located
+	Namespace *string `json:"Namespace,omitempty" xml:"Namespace,omitempty"`
+	// PodMonitor name.
+	PodMonitorName *string `json:"PodMonitorName,omitempty" xml:"PodMonitorName,omitempty"`
+	// The region ID.
+	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+}
+
+func (s DeleteEnvPodMonitorRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DeleteEnvPodMonitorRequest) GoString() string {
+	return s.String()
+}
+
+func (s *DeleteEnvPodMonitorRequest) SetEnvironmentId(v string) *DeleteEnvPodMonitorRequest {
+	s.EnvironmentId = &v
+	return s
+}
+
+func (s *DeleteEnvPodMonitorRequest) SetNamespace(v string) *DeleteEnvPodMonitorRequest {
+	s.Namespace = &v
+	return s
+}
+
+func (s *DeleteEnvPodMonitorRequest) SetPodMonitorName(v string) *DeleteEnvPodMonitorRequest {
+	s.PodMonitorName = &v
+	return s
+}
+
+func (s *DeleteEnvPodMonitorRequest) SetRegionId(v string) *DeleteEnvPodMonitorRequest {
+	s.RegionId = &v
+	return s
+}
+
+type DeleteEnvPodMonitorResponseBody struct {
+	// The status code. The status code 200 indicates that the request was successful.
+	Code *int32 `json:"Code,omitempty" xml:"Code,omitempty"`
+	// The data returned.
+	Data *string `json:"Data,omitempty" xml:"Data,omitempty"`
+	// The returned message.
+	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// Id of the request
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+}
+
+func (s DeleteEnvPodMonitorResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DeleteEnvPodMonitorResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *DeleteEnvPodMonitorResponseBody) SetCode(v int32) *DeleteEnvPodMonitorResponseBody {
+	s.Code = &v
+	return s
+}
+
+func (s *DeleteEnvPodMonitorResponseBody) SetData(v string) *DeleteEnvPodMonitorResponseBody {
+	s.Data = &v
+	return s
+}
+
+func (s *DeleteEnvPodMonitorResponseBody) SetMessage(v string) *DeleteEnvPodMonitorResponseBody {
+	s.Message = &v
+	return s
+}
+
+func (s *DeleteEnvPodMonitorResponseBody) SetRequestId(v string) *DeleteEnvPodMonitorResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+type DeleteEnvPodMonitorResponse struct {
+	Headers    map[string]*string               `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                           `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *DeleteEnvPodMonitorResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s DeleteEnvPodMonitorResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DeleteEnvPodMonitorResponse) GoString() string {
+	return s.String()
+}
+
+func (s *DeleteEnvPodMonitorResponse) SetHeaders(v map[string]*string) *DeleteEnvPodMonitorResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *DeleteEnvPodMonitorResponse) SetStatusCode(v int32) *DeleteEnvPodMonitorResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *DeleteEnvPodMonitorResponse) SetBody(v *DeleteEnvPodMonitorResponseBody) *DeleteEnvPodMonitorResponse {
+	s.Body = v
+	return s
+}
+
+type DeleteEnvServiceMonitorRequest struct {
+	// Environment instance ID.
+	EnvironmentId *string `json:"EnvironmentId,omitempty" xml:"EnvironmentId,omitempty"`
+	// The name of the namespace.
+	Namespace *string `json:"Namespace,omitempty" xml:"Namespace,omitempty"`
+	// The ID of the region.
+	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	// ServiceMonitor name.
+	ServiceMonitorName *string `json:"ServiceMonitorName,omitempty" xml:"ServiceMonitorName,omitempty"`
+}
+
+func (s DeleteEnvServiceMonitorRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DeleteEnvServiceMonitorRequest) GoString() string {
+	return s.String()
+}
+
+func (s *DeleteEnvServiceMonitorRequest) SetEnvironmentId(v string) *DeleteEnvServiceMonitorRequest {
+	s.EnvironmentId = &v
+	return s
+}
+
+func (s *DeleteEnvServiceMonitorRequest) SetNamespace(v string) *DeleteEnvServiceMonitorRequest {
+	s.Namespace = &v
+	return s
+}
+
+func (s *DeleteEnvServiceMonitorRequest) SetRegionId(v string) *DeleteEnvServiceMonitorRequest {
+	s.RegionId = &v
+	return s
+}
+
+func (s *DeleteEnvServiceMonitorRequest) SetServiceMonitorName(v string) *DeleteEnvServiceMonitorRequest {
+	s.ServiceMonitorName = &v
+	return s
+}
+
+type DeleteEnvServiceMonitorResponseBody struct {
+	// The status code or error code.
+	Code *int32 `json:"Code,omitempty" xml:"Code,omitempty"`
+	// The returned data.
+	Data *string `json:"Data,omitempty" xml:"Data,omitempty"`
+	// The returned message.
+	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// Id of the request
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+}
+
+func (s DeleteEnvServiceMonitorResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DeleteEnvServiceMonitorResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *DeleteEnvServiceMonitorResponseBody) SetCode(v int32) *DeleteEnvServiceMonitorResponseBody {
+	s.Code = &v
+	return s
+}
+
+func (s *DeleteEnvServiceMonitorResponseBody) SetData(v string) *DeleteEnvServiceMonitorResponseBody {
+	s.Data = &v
+	return s
+}
+
+func (s *DeleteEnvServiceMonitorResponseBody) SetMessage(v string) *DeleteEnvServiceMonitorResponseBody {
+	s.Message = &v
+	return s
+}
+
+func (s *DeleteEnvServiceMonitorResponseBody) SetRequestId(v string) *DeleteEnvServiceMonitorResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+type DeleteEnvServiceMonitorResponse struct {
+	Headers    map[string]*string                   `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                               `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *DeleteEnvServiceMonitorResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s DeleteEnvServiceMonitorResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DeleteEnvServiceMonitorResponse) GoString() string {
+	return s.String()
+}
+
+func (s *DeleteEnvServiceMonitorResponse) SetHeaders(v map[string]*string) *DeleteEnvServiceMonitorResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *DeleteEnvServiceMonitorResponse) SetStatusCode(v int32) *DeleteEnvServiceMonitorResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *DeleteEnvServiceMonitorResponse) SetBody(v *DeleteEnvServiceMonitorResponseBody) *DeleteEnvServiceMonitorResponse {
+	s.Body = v
+	return s
+}
+
+type DeleteEnvironmentRequest struct {
+	// Environment instance ID.
+	EnvironmentId *string `json:"EnvironmentId,omitempty" xml:"EnvironmentId,omitempty"`
+	// The ID of the region.
+	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+}
+
+func (s DeleteEnvironmentRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DeleteEnvironmentRequest) GoString() string {
+	return s.String()
+}
+
+func (s *DeleteEnvironmentRequest) SetEnvironmentId(v string) *DeleteEnvironmentRequest {
+	s.EnvironmentId = &v
+	return s
+}
+
+func (s *DeleteEnvironmentRequest) SetRegionId(v string) *DeleteEnvironmentRequest {
+	s.RegionId = &v
+	return s
+}
+
+type DeleteEnvironmentResponseBody struct {
+	// The status code. The status code 200 indicates that the request was successful.
+	Code *int32 `json:"Code,omitempty" xml:"Code,omitempty"`
+	// The returned information.
+	Data *string `json:"Data,omitempty" xml:"Data,omitempty"`
+	// The returned message.
+	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// Id of the request
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+}
+
+func (s DeleteEnvironmentResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DeleteEnvironmentResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *DeleteEnvironmentResponseBody) SetCode(v int32) *DeleteEnvironmentResponseBody {
+	s.Code = &v
+	return s
+}
+
+func (s *DeleteEnvironmentResponseBody) SetData(v string) *DeleteEnvironmentResponseBody {
+	s.Data = &v
+	return s
+}
+
+func (s *DeleteEnvironmentResponseBody) SetMessage(v string) *DeleteEnvironmentResponseBody {
+	s.Message = &v
+	return s
+}
+
+func (s *DeleteEnvironmentResponseBody) SetRequestId(v string) *DeleteEnvironmentResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+type DeleteEnvironmentResponse struct {
+	Headers    map[string]*string             `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                         `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *DeleteEnvironmentResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s DeleteEnvironmentResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DeleteEnvironmentResponse) GoString() string {
+	return s.String()
+}
+
+func (s *DeleteEnvironmentResponse) SetHeaders(v map[string]*string) *DeleteEnvironmentResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *DeleteEnvironmentResponse) SetStatusCode(v int32) *DeleteEnvironmentResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *DeleteEnvironmentResponse) SetBody(v *DeleteEnvironmentResponseBody) *DeleteEnvironmentResponse {
+	s.Body = v
+	return s
+}
+
+type DeleteEnvironmentFeatureRequest struct {
+	EnvironmentId *string `json:"EnvironmentId,omitempty" xml:"EnvironmentId,omitempty"`
+	FeatureName   *string `json:"FeatureName,omitempty" xml:"FeatureName,omitempty"`
+	RegionId      *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+}
+
+func (s DeleteEnvironmentFeatureRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DeleteEnvironmentFeatureRequest) GoString() string {
+	return s.String()
+}
+
+func (s *DeleteEnvironmentFeatureRequest) SetEnvironmentId(v string) *DeleteEnvironmentFeatureRequest {
+	s.EnvironmentId = &v
+	return s
+}
+
+func (s *DeleteEnvironmentFeatureRequest) SetFeatureName(v string) *DeleteEnvironmentFeatureRequest {
+	s.FeatureName = &v
+	return s
+}
+
+func (s *DeleteEnvironmentFeatureRequest) SetRegionId(v string) *DeleteEnvironmentFeatureRequest {
+	s.RegionId = &v
+	return s
+}
+
+type DeleteEnvironmentFeatureResponseBody struct {
+	Code    *int32  `json:"Code,omitempty" xml:"Code,omitempty"`
+	Data    *string `json:"Data,omitempty" xml:"Data,omitempty"`
+	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// Id of the request
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	Success   *bool   `json:"Success,omitempty" xml:"Success,omitempty"`
+}
+
+func (s DeleteEnvironmentFeatureResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DeleteEnvironmentFeatureResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *DeleteEnvironmentFeatureResponseBody) SetCode(v int32) *DeleteEnvironmentFeatureResponseBody {
+	s.Code = &v
+	return s
+}
+
+func (s *DeleteEnvironmentFeatureResponseBody) SetData(v string) *DeleteEnvironmentFeatureResponseBody {
+	s.Data = &v
+	return s
+}
+
+func (s *DeleteEnvironmentFeatureResponseBody) SetMessage(v string) *DeleteEnvironmentFeatureResponseBody {
+	s.Message = &v
+	return s
+}
+
+func (s *DeleteEnvironmentFeatureResponseBody) SetRequestId(v string) *DeleteEnvironmentFeatureResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *DeleteEnvironmentFeatureResponseBody) SetSuccess(v bool) *DeleteEnvironmentFeatureResponseBody {
+	s.Success = &v
+	return s
+}
+
+type DeleteEnvironmentFeatureResponse struct {
+	Headers    map[string]*string                    `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                                `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *DeleteEnvironmentFeatureResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s DeleteEnvironmentFeatureResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DeleteEnvironmentFeatureResponse) GoString() string {
+	return s.String()
+}
+
+func (s *DeleteEnvironmentFeatureResponse) SetHeaders(v map[string]*string) *DeleteEnvironmentFeatureResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *DeleteEnvironmentFeatureResponse) SetStatusCode(v int32) *DeleteEnvironmentFeatureResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *DeleteEnvironmentFeatureResponse) SetBody(v *DeleteEnvironmentFeatureResponseBody) *DeleteEnvironmentFeatureResponse {
 	s.Body = v
 	return s
 }
@@ -13447,6 +14571,755 @@ func (s *DescribeDispatchRuleResponse) SetStatusCode(v int32) *DescribeDispatchR
 }
 
 func (s *DescribeDispatchRuleResponse) SetBody(v *DescribeDispatchRuleResponseBody) *DescribeDispatchRuleResponse {
+	s.Body = v
+	return s
+}
+
+type DescribeEnvCustomJobRequest struct {
+	// Custom job name.
+	CustomJobName *string `json:"CustomJobName,omitempty" xml:"CustomJobName,omitempty"`
+	// Whether to return the encrypted yaml string.
+	EncryptYaml *bool `json:"EncryptYaml,omitempty" xml:"EncryptYaml,omitempty"`
+	// Environment instance ID.
+	EnvironmentId *string `json:"EnvironmentId,omitempty" xml:"EnvironmentId,omitempty"`
+	// The region ID.
+	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+}
+
+func (s DescribeEnvCustomJobRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeEnvCustomJobRequest) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeEnvCustomJobRequest) SetCustomJobName(v string) *DescribeEnvCustomJobRequest {
+	s.CustomJobName = &v
+	return s
+}
+
+func (s *DescribeEnvCustomJobRequest) SetEncryptYaml(v bool) *DescribeEnvCustomJobRequest {
+	s.EncryptYaml = &v
+	return s
+}
+
+func (s *DescribeEnvCustomJobRequest) SetEnvironmentId(v string) *DescribeEnvCustomJobRequest {
+	s.EnvironmentId = &v
+	return s
+}
+
+func (s *DescribeEnvCustomJobRequest) SetRegionId(v string) *DescribeEnvCustomJobRequest {
+	s.RegionId = &v
+	return s
+}
+
+type DescribeEnvCustomJobResponseBody struct {
+	// The status code. The status code 200 indicates that the request was successful.
+	Code *int32 `json:"Code,omitempty" xml:"Code,omitempty"`
+	// The returned struct.
+	Data *DescribeEnvCustomJobResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
+	// The returned message.
+	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// Id of the request
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+}
+
+func (s DescribeEnvCustomJobResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeEnvCustomJobResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeEnvCustomJobResponseBody) SetCode(v int32) *DescribeEnvCustomJobResponseBody {
+	s.Code = &v
+	return s
+}
+
+func (s *DescribeEnvCustomJobResponseBody) SetData(v *DescribeEnvCustomJobResponseBodyData) *DescribeEnvCustomJobResponseBody {
+	s.Data = v
+	return s
+}
+
+func (s *DescribeEnvCustomJobResponseBody) SetMessage(v string) *DescribeEnvCustomJobResponseBody {
+	s.Message = &v
+	return s
+}
+
+func (s *DescribeEnvCustomJobResponseBody) SetRequestId(v string) *DescribeEnvCustomJobResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+type DescribeEnvCustomJobResponseBodyData struct {
+	// If the request parameter encryptYaml is true, the base64-encoded yaml string is returned. Otherwise, the plaintext yaml string is returned.
+	ConfigYaml *string `json:"ConfigYaml,omitempty" xml:"ConfigYaml,omitempty"`
+	// Custom job name.
+	CustomJobName *string `json:"CustomJobName,omitempty" xml:"CustomJobName,omitempty"`
+	// Environment instance ID.
+	EnvironmentId *string `json:"EnvironmentId,omitempty" xml:"EnvironmentId,omitempty"`
+	// The region ID.
+	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	// Status: run, stop.
+	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
+}
+
+func (s DescribeEnvCustomJobResponseBodyData) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeEnvCustomJobResponseBodyData) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeEnvCustomJobResponseBodyData) SetConfigYaml(v string) *DescribeEnvCustomJobResponseBodyData {
+	s.ConfigYaml = &v
+	return s
+}
+
+func (s *DescribeEnvCustomJobResponseBodyData) SetCustomJobName(v string) *DescribeEnvCustomJobResponseBodyData {
+	s.CustomJobName = &v
+	return s
+}
+
+func (s *DescribeEnvCustomJobResponseBodyData) SetEnvironmentId(v string) *DescribeEnvCustomJobResponseBodyData {
+	s.EnvironmentId = &v
+	return s
+}
+
+func (s *DescribeEnvCustomJobResponseBodyData) SetRegionId(v string) *DescribeEnvCustomJobResponseBodyData {
+	s.RegionId = &v
+	return s
+}
+
+func (s *DescribeEnvCustomJobResponseBodyData) SetStatus(v string) *DescribeEnvCustomJobResponseBodyData {
+	s.Status = &v
+	return s
+}
+
+type DescribeEnvCustomJobResponse struct {
+	Headers    map[string]*string                `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                            `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *DescribeEnvCustomJobResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s DescribeEnvCustomJobResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeEnvCustomJobResponse) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeEnvCustomJobResponse) SetHeaders(v map[string]*string) *DescribeEnvCustomJobResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *DescribeEnvCustomJobResponse) SetStatusCode(v int32) *DescribeEnvCustomJobResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *DescribeEnvCustomJobResponse) SetBody(v *DescribeEnvCustomJobResponseBody) *DescribeEnvCustomJobResponse {
+	s.Body = v
+	return s
+}
+
+type DescribeEnvPodMonitorRequest struct {
+	// Environment instance ID.
+	EnvironmentId *string `json:"EnvironmentId,omitempty" xml:"EnvironmentId,omitempty"`
+	// The namespace where podMonitor is located.
+	Namespace *string `json:"Namespace,omitempty" xml:"Namespace,omitempty"`
+	// PodMonitor name.
+	PodMonitorName *string `json:"PodMonitorName,omitempty" xml:"PodMonitorName,omitempty"`
+	// The ID of the region.
+	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+}
+
+func (s DescribeEnvPodMonitorRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeEnvPodMonitorRequest) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeEnvPodMonitorRequest) SetEnvironmentId(v string) *DescribeEnvPodMonitorRequest {
+	s.EnvironmentId = &v
+	return s
+}
+
+func (s *DescribeEnvPodMonitorRequest) SetNamespace(v string) *DescribeEnvPodMonitorRequest {
+	s.Namespace = &v
+	return s
+}
+
+func (s *DescribeEnvPodMonitorRequest) SetPodMonitorName(v string) *DescribeEnvPodMonitorRequest {
+	s.PodMonitorName = &v
+	return s
+}
+
+func (s *DescribeEnvPodMonitorRequest) SetRegionId(v string) *DescribeEnvPodMonitorRequest {
+	s.RegionId = &v
+	return s
+}
+
+type DescribeEnvPodMonitorResponseBody struct {
+	// The response code. The status code 200 indicates that the request was successful.
+	Code *int32 `json:"Code,omitempty" xml:"Code,omitempty"`
+	// The returned struct.
+	Data *DescribeEnvPodMonitorResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
+	// The message returned.
+	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// Id of the request
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+}
+
+func (s DescribeEnvPodMonitorResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeEnvPodMonitorResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeEnvPodMonitorResponseBody) SetCode(v int32) *DescribeEnvPodMonitorResponseBody {
+	s.Code = &v
+	return s
+}
+
+func (s *DescribeEnvPodMonitorResponseBody) SetData(v *DescribeEnvPodMonitorResponseBodyData) *DescribeEnvPodMonitorResponseBody {
+	s.Data = v
+	return s
+}
+
+func (s *DescribeEnvPodMonitorResponseBody) SetMessage(v string) *DescribeEnvPodMonitorResponseBody {
+	s.Message = &v
+	return s
+}
+
+func (s *DescribeEnvPodMonitorResponseBody) SetRequestId(v string) *DescribeEnvPodMonitorResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+type DescribeEnvPodMonitorResponseBodyData struct {
+	// PodMonitor\"s yaml configuration string.
+	ConfigYaml *string `json:"ConfigYaml,omitempty" xml:"ConfigYaml,omitempty"`
+	// Environment instance ID.
+	EnvironmentId *string `json:"EnvironmentId,omitempty" xml:"EnvironmentId,omitempty"`
+	// The namespace.
+	Namespace *string `json:"Namespace,omitempty" xml:"Namespace,omitempty"`
+	// PodMonitor name.
+	PodMonitorName *string `json:"PodMonitorName,omitempty" xml:"PodMonitorName,omitempty"`
+	// The region ID.
+	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	// Status: run, stop.
+	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
+}
+
+func (s DescribeEnvPodMonitorResponseBodyData) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeEnvPodMonitorResponseBodyData) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeEnvPodMonitorResponseBodyData) SetConfigYaml(v string) *DescribeEnvPodMonitorResponseBodyData {
+	s.ConfigYaml = &v
+	return s
+}
+
+func (s *DescribeEnvPodMonitorResponseBodyData) SetEnvironmentId(v string) *DescribeEnvPodMonitorResponseBodyData {
+	s.EnvironmentId = &v
+	return s
+}
+
+func (s *DescribeEnvPodMonitorResponseBodyData) SetNamespace(v string) *DescribeEnvPodMonitorResponseBodyData {
+	s.Namespace = &v
+	return s
+}
+
+func (s *DescribeEnvPodMonitorResponseBodyData) SetPodMonitorName(v string) *DescribeEnvPodMonitorResponseBodyData {
+	s.PodMonitorName = &v
+	return s
+}
+
+func (s *DescribeEnvPodMonitorResponseBodyData) SetRegionId(v string) *DescribeEnvPodMonitorResponseBodyData {
+	s.RegionId = &v
+	return s
+}
+
+func (s *DescribeEnvPodMonitorResponseBodyData) SetStatus(v string) *DescribeEnvPodMonitorResponseBodyData {
+	s.Status = &v
+	return s
+}
+
+type DescribeEnvPodMonitorResponse struct {
+	Headers    map[string]*string                 `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                             `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *DescribeEnvPodMonitorResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s DescribeEnvPodMonitorResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeEnvPodMonitorResponse) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeEnvPodMonitorResponse) SetHeaders(v map[string]*string) *DescribeEnvPodMonitorResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *DescribeEnvPodMonitorResponse) SetStatusCode(v int32) *DescribeEnvPodMonitorResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *DescribeEnvPodMonitorResponse) SetBody(v *DescribeEnvPodMonitorResponseBody) *DescribeEnvPodMonitorResponse {
+	s.Body = v
+	return s
+}
+
+type DescribeEnvServiceMonitorRequest struct {
+	// Environment instance ID.
+	EnvironmentId *string `json:"EnvironmentId,omitempty" xml:"EnvironmentId,omitempty"`
+	// The name of the namespace.
+	Namespace *string `json:"Namespace,omitempty" xml:"Namespace,omitempty"`
+	// The region ID.
+	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	// ServiceMonitor name.
+	ServiceMonitorName *string `json:"ServiceMonitorName,omitempty" xml:"ServiceMonitorName,omitempty"`
+}
+
+func (s DescribeEnvServiceMonitorRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeEnvServiceMonitorRequest) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeEnvServiceMonitorRequest) SetEnvironmentId(v string) *DescribeEnvServiceMonitorRequest {
+	s.EnvironmentId = &v
+	return s
+}
+
+func (s *DescribeEnvServiceMonitorRequest) SetNamespace(v string) *DescribeEnvServiceMonitorRequest {
+	s.Namespace = &v
+	return s
+}
+
+func (s *DescribeEnvServiceMonitorRequest) SetRegionId(v string) *DescribeEnvServiceMonitorRequest {
+	s.RegionId = &v
+	return s
+}
+
+func (s *DescribeEnvServiceMonitorRequest) SetServiceMonitorName(v string) *DescribeEnvServiceMonitorRequest {
+	s.ServiceMonitorName = &v
+	return s
+}
+
+type DescribeEnvServiceMonitorResponseBody struct {
+	// The status code. The status code 200 indicates that the request was successful.
+	Code *int32 `json:"Code,omitempty" xml:"Code,omitempty"`
+	// The returned struct.
+	Data *DescribeEnvServiceMonitorResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
+	// The returned message.
+	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// Id of the request
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+}
+
+func (s DescribeEnvServiceMonitorResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeEnvServiceMonitorResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeEnvServiceMonitorResponseBody) SetCode(v int32) *DescribeEnvServiceMonitorResponseBody {
+	s.Code = &v
+	return s
+}
+
+func (s *DescribeEnvServiceMonitorResponseBody) SetData(v *DescribeEnvServiceMonitorResponseBodyData) *DescribeEnvServiceMonitorResponseBody {
+	s.Data = v
+	return s
+}
+
+func (s *DescribeEnvServiceMonitorResponseBody) SetMessage(v string) *DescribeEnvServiceMonitorResponseBody {
+	s.Message = &v
+	return s
+}
+
+func (s *DescribeEnvServiceMonitorResponseBody) SetRequestId(v string) *DescribeEnvServiceMonitorResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+type DescribeEnvServiceMonitorResponseBodyData struct {
+	// ServiceMonitor\"s yaml configuration string.
+	ConfigYaml *string `json:"ConfigYaml,omitempty" xml:"ConfigYaml,omitempty"`
+	// Environment instance ID.
+	EnvironmentId *string `json:"EnvironmentId,omitempty" xml:"EnvironmentId,omitempty"`
+	// The namespace.
+	Namespace *string `json:"Namespace,omitempty" xml:"Namespace,omitempty"`
+	// The region ID.
+	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	// ServiceMonitor name.
+	ServiceMonitorName *string `json:"ServiceMonitorName,omitempty" xml:"ServiceMonitorName,omitempty"`
+	// Status: run, stop.
+	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
+}
+
+func (s DescribeEnvServiceMonitorResponseBodyData) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeEnvServiceMonitorResponseBodyData) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeEnvServiceMonitorResponseBodyData) SetConfigYaml(v string) *DescribeEnvServiceMonitorResponseBodyData {
+	s.ConfigYaml = &v
+	return s
+}
+
+func (s *DescribeEnvServiceMonitorResponseBodyData) SetEnvironmentId(v string) *DescribeEnvServiceMonitorResponseBodyData {
+	s.EnvironmentId = &v
+	return s
+}
+
+func (s *DescribeEnvServiceMonitorResponseBodyData) SetNamespace(v string) *DescribeEnvServiceMonitorResponseBodyData {
+	s.Namespace = &v
+	return s
+}
+
+func (s *DescribeEnvServiceMonitorResponseBodyData) SetRegionId(v string) *DescribeEnvServiceMonitorResponseBodyData {
+	s.RegionId = &v
+	return s
+}
+
+func (s *DescribeEnvServiceMonitorResponseBodyData) SetServiceMonitorName(v string) *DescribeEnvServiceMonitorResponseBodyData {
+	s.ServiceMonitorName = &v
+	return s
+}
+
+func (s *DescribeEnvServiceMonitorResponseBodyData) SetStatus(v string) *DescribeEnvServiceMonitorResponseBodyData {
+	s.Status = &v
+	return s
+}
+
+type DescribeEnvServiceMonitorResponse struct {
+	Headers    map[string]*string                     `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                                 `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *DescribeEnvServiceMonitorResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s DescribeEnvServiceMonitorResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeEnvServiceMonitorResponse) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeEnvServiceMonitorResponse) SetHeaders(v map[string]*string) *DescribeEnvServiceMonitorResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *DescribeEnvServiceMonitorResponse) SetStatusCode(v int32) *DescribeEnvServiceMonitorResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *DescribeEnvServiceMonitorResponse) SetBody(v *DescribeEnvServiceMonitorResponseBody) *DescribeEnvServiceMonitorResponse {
+	s.Body = v
+	return s
+}
+
+type DescribeEnvironmentRequest struct {
+	// Environment instance ID.
+	EnvironmentId *string `json:"EnvironmentId,omitempty" xml:"EnvironmentId,omitempty"`
+	// The region ID.
+	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+}
+
+func (s DescribeEnvironmentRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeEnvironmentRequest) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeEnvironmentRequest) SetEnvironmentId(v string) *DescribeEnvironmentRequest {
+	s.EnvironmentId = &v
+	return s
+}
+
+func (s *DescribeEnvironmentRequest) SetRegionId(v string) *DescribeEnvironmentRequest {
+	s.RegionId = &v
+	return s
+}
+
+type DescribeEnvironmentResponseBody struct {
+	// The status code or error code.
+	Code *int32 `json:"Code,omitempty" xml:"Code,omitempty"`
+	// The returned struct.
+	Data *DescribeEnvironmentResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
+	// The returned message.
+	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// Id of the request
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+}
+
+func (s DescribeEnvironmentResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeEnvironmentResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeEnvironmentResponseBody) SetCode(v int32) *DescribeEnvironmentResponseBody {
+	s.Code = &v
+	return s
+}
+
+func (s *DescribeEnvironmentResponseBody) SetData(v *DescribeEnvironmentResponseBodyData) *DescribeEnvironmentResponseBody {
+	s.Data = v
+	return s
+}
+
+func (s *DescribeEnvironmentResponseBody) SetMessage(v string) *DescribeEnvironmentResponseBody {
+	s.Message = &v
+	return s
+}
+
+func (s *DescribeEnvironmentResponseBody) SetRequestId(v string) *DescribeEnvironmentResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+type DescribeEnvironmentResponseBodyData struct {
+	// Resource instance ID bound to the environment, including container instance ID or VpcId.
+	BindResourceId *string `json:"BindResourceId,omitempty" xml:"BindResourceId,omitempty"`
+	// Profile of bound resources.
+	BindResourceProfile *string `json:"BindResourceProfile,omitempty" xml:"BindResourceProfile,omitempty"`
+	// The state of the bound resource.
+	BindResourceStatus *string `json:"BindResourceStatus,omitempty" xml:"BindResourceStatus,omitempty"`
+	// The storage duration of bound resources (days).
+	BindResourceStoreDuration *string `json:"BindResourceStoreDuration,omitempty" xml:"BindResourceStoreDuration,omitempty"`
+	// The bound resource type.
+	BindResourceType *string `json:"BindResourceType,omitempty" xml:"BindResourceType,omitempty"`
+	// Bind the network segment of the vpc.
+	BindVpcCidr *string `json:"BindVpcCidr,omitempty" xml:"BindVpcCidr,omitempty"`
+	// Environment instance ID.
+	EnvironmentId *string `json:"EnvironmentId,omitempty" xml:"EnvironmentId,omitempty"`
+	// Environment name.
+	EnvironmentName *string `json:"EnvironmentName,omitempty" xml:"EnvironmentName,omitempty"`
+	// Environment type:
+	// - CS: Container Service.
+	// - ECS.
+	// - Cloud: cloud service.
+	EnvironmentType *string `json:"EnvironmentType,omitempty" xml:"EnvironmentType,omitempty"`
+	// Grafana data source name.
+	GrafaDataSourceName *string `json:"GrafaDataSourceName,omitempty" xml:"GrafaDataSourceName,omitempty"`
+	// Grafana data source unique ID.
+	GrafanaDatasourceUid *string `json:"GrafanaDatasourceUid,omitempty" xml:"GrafanaDatasourceUid,omitempty"`
+	// Grafana directory name.
+	GrafanaFolderTitle *string `json:"GrafanaFolderTitle,omitempty" xml:"GrafanaFolderTitle,omitempty"`
+	// Grafana directory unique ID.
+	GrafanaFolderUid *string `json:"GrafanaFolderUid,omitempty" xml:"GrafanaFolderUid,omitempty"`
+	// Grafana directory URL.
+	GrafanaFolderUrl *string `json:"GrafanaFolderUrl,omitempty" xml:"GrafanaFolderUrl,omitempty"`
+	// The bound prometheus instance ID.
+	PrometheusInstanceId *string `json:"PrometheusInstanceId,omitempty" xml:"PrometheusInstanceId,omitempty"`
+	// The name of the bound prometheus instance.
+	PrometheusInstanceName *string `json:"PrometheusInstanceName,omitempty" xml:"PrometheusInstanceName,omitempty"`
+	// The region ID.
+	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	// The ID of the resource group.
+	ResourceGroupId *string `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
+	// The tags.
+	Tags []*DescribeEnvironmentResponseBodyDataTags `json:"Tags,omitempty" xml:"Tags,omitempty" type:"Repeated"`
+	// UserId.
+	UserId *string `json:"UserId,omitempty" xml:"UserId,omitempty"`
+	VpcId  *string `json:"VpcId,omitempty" xml:"VpcId,omitempty"`
+}
+
+func (s DescribeEnvironmentResponseBodyData) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeEnvironmentResponseBodyData) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeEnvironmentResponseBodyData) SetBindResourceId(v string) *DescribeEnvironmentResponseBodyData {
+	s.BindResourceId = &v
+	return s
+}
+
+func (s *DescribeEnvironmentResponseBodyData) SetBindResourceProfile(v string) *DescribeEnvironmentResponseBodyData {
+	s.BindResourceProfile = &v
+	return s
+}
+
+func (s *DescribeEnvironmentResponseBodyData) SetBindResourceStatus(v string) *DescribeEnvironmentResponseBodyData {
+	s.BindResourceStatus = &v
+	return s
+}
+
+func (s *DescribeEnvironmentResponseBodyData) SetBindResourceStoreDuration(v string) *DescribeEnvironmentResponseBodyData {
+	s.BindResourceStoreDuration = &v
+	return s
+}
+
+func (s *DescribeEnvironmentResponseBodyData) SetBindResourceType(v string) *DescribeEnvironmentResponseBodyData {
+	s.BindResourceType = &v
+	return s
+}
+
+func (s *DescribeEnvironmentResponseBodyData) SetBindVpcCidr(v string) *DescribeEnvironmentResponseBodyData {
+	s.BindVpcCidr = &v
+	return s
+}
+
+func (s *DescribeEnvironmentResponseBodyData) SetEnvironmentId(v string) *DescribeEnvironmentResponseBodyData {
+	s.EnvironmentId = &v
+	return s
+}
+
+func (s *DescribeEnvironmentResponseBodyData) SetEnvironmentName(v string) *DescribeEnvironmentResponseBodyData {
+	s.EnvironmentName = &v
+	return s
+}
+
+func (s *DescribeEnvironmentResponseBodyData) SetEnvironmentType(v string) *DescribeEnvironmentResponseBodyData {
+	s.EnvironmentType = &v
+	return s
+}
+
+func (s *DescribeEnvironmentResponseBodyData) SetGrafaDataSourceName(v string) *DescribeEnvironmentResponseBodyData {
+	s.GrafaDataSourceName = &v
+	return s
+}
+
+func (s *DescribeEnvironmentResponseBodyData) SetGrafanaDatasourceUid(v string) *DescribeEnvironmentResponseBodyData {
+	s.GrafanaDatasourceUid = &v
+	return s
+}
+
+func (s *DescribeEnvironmentResponseBodyData) SetGrafanaFolderTitle(v string) *DescribeEnvironmentResponseBodyData {
+	s.GrafanaFolderTitle = &v
+	return s
+}
+
+func (s *DescribeEnvironmentResponseBodyData) SetGrafanaFolderUid(v string) *DescribeEnvironmentResponseBodyData {
+	s.GrafanaFolderUid = &v
+	return s
+}
+
+func (s *DescribeEnvironmentResponseBodyData) SetGrafanaFolderUrl(v string) *DescribeEnvironmentResponseBodyData {
+	s.GrafanaFolderUrl = &v
+	return s
+}
+
+func (s *DescribeEnvironmentResponseBodyData) SetPrometheusInstanceId(v string) *DescribeEnvironmentResponseBodyData {
+	s.PrometheusInstanceId = &v
+	return s
+}
+
+func (s *DescribeEnvironmentResponseBodyData) SetPrometheusInstanceName(v string) *DescribeEnvironmentResponseBodyData {
+	s.PrometheusInstanceName = &v
+	return s
+}
+
+func (s *DescribeEnvironmentResponseBodyData) SetRegionId(v string) *DescribeEnvironmentResponseBodyData {
+	s.RegionId = &v
+	return s
+}
+
+func (s *DescribeEnvironmentResponseBodyData) SetResourceGroupId(v string) *DescribeEnvironmentResponseBodyData {
+	s.ResourceGroupId = &v
+	return s
+}
+
+func (s *DescribeEnvironmentResponseBodyData) SetTags(v []*DescribeEnvironmentResponseBodyDataTags) *DescribeEnvironmentResponseBodyData {
+	s.Tags = v
+	return s
+}
+
+func (s *DescribeEnvironmentResponseBodyData) SetUserId(v string) *DescribeEnvironmentResponseBodyData {
+	s.UserId = &v
+	return s
+}
+
+func (s *DescribeEnvironmentResponseBodyData) SetVpcId(v string) *DescribeEnvironmentResponseBodyData {
+	s.VpcId = &v
+	return s
+}
+
+type DescribeEnvironmentResponseBodyDataTags struct {
+	Key   *string `json:"Key,omitempty" xml:"Key,omitempty"`
+	Value *string `json:"Value,omitempty" xml:"Value,omitempty"`
+}
+
+func (s DescribeEnvironmentResponseBodyDataTags) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeEnvironmentResponseBodyDataTags) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeEnvironmentResponseBodyDataTags) SetKey(v string) *DescribeEnvironmentResponseBodyDataTags {
+	s.Key = &v
+	return s
+}
+
+func (s *DescribeEnvironmentResponseBodyDataTags) SetValue(v string) *DescribeEnvironmentResponseBodyDataTags {
+	s.Value = &v
+	return s
+}
+
+type DescribeEnvironmentResponse struct {
+	Headers    map[string]*string               `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                           `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *DescribeEnvironmentResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s DescribeEnvironmentResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeEnvironmentResponse) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeEnvironmentResponse) SetHeaders(v map[string]*string) *DescribeEnvironmentResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *DescribeEnvironmentResponse) SetStatusCode(v int32) *DescribeEnvironmentResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *DescribeEnvironmentResponse) SetBody(v *DescribeEnvironmentResponseBody) *DescribeEnvironmentResponse {
 	s.Body = v
 	return s
 }
@@ -20394,9 +22267,12 @@ func (s *GetTimingSyntheticTaskResponseBodyDataAvailableAssertions) SetType(v st
 }
 
 type GetTimingSyntheticTaskResponseBodyDataCommonSetting struct {
-	CustomHost     *GetTimingSyntheticTaskResponseBodyDataCommonSettingCustomHost `json:"CustomHost,omitempty" xml:"CustomHost,omitempty" type:"Struct"`
-	IpType         *int32                                                         `json:"IpType,omitempty" xml:"IpType,omitempty"`
-	MonitorSamples *int32                                                         `json:"MonitorSamples,omitempty" xml:"MonitorSamples,omitempty"`
+	CustomHost      *GetTimingSyntheticTaskResponseBodyDataCommonSettingCustomHost `json:"CustomHost,omitempty" xml:"CustomHost,omitempty" type:"Struct"`
+	IpType          *int32                                                         `json:"IpType,omitempty" xml:"IpType,omitempty"`
+	IsOpenTrace     *bool                                                          `json:"IsOpenTrace,omitempty" xml:"IsOpenTrace,omitempty"`
+	MonitorSamples  *int32                                                         `json:"MonitorSamples,omitempty" xml:"MonitorSamples,omitempty"`
+	TraceClientType *int32                                                         `json:"TraceClientType,omitempty" xml:"TraceClientType,omitempty"`
+	XtraceRegion    *string                                                        `json:"XtraceRegion,omitempty" xml:"XtraceRegion,omitempty"`
 }
 
 func (s GetTimingSyntheticTaskResponseBodyDataCommonSetting) String() string {
@@ -20417,8 +22293,23 @@ func (s *GetTimingSyntheticTaskResponseBodyDataCommonSetting) SetIpType(v int32)
 	return s
 }
 
+func (s *GetTimingSyntheticTaskResponseBodyDataCommonSetting) SetIsOpenTrace(v bool) *GetTimingSyntheticTaskResponseBodyDataCommonSetting {
+	s.IsOpenTrace = &v
+	return s
+}
+
 func (s *GetTimingSyntheticTaskResponseBodyDataCommonSetting) SetMonitorSamples(v int32) *GetTimingSyntheticTaskResponseBodyDataCommonSetting {
 	s.MonitorSamples = &v
+	return s
+}
+
+func (s *GetTimingSyntheticTaskResponseBodyDataCommonSetting) SetTraceClientType(v int32) *GetTimingSyntheticTaskResponseBodyDataCommonSetting {
+	s.TraceClientType = &v
+	return s
+}
+
+func (s *GetTimingSyntheticTaskResponseBodyDataCommonSetting) SetXtraceRegion(v string) *GetTimingSyntheticTaskResponseBodyDataCommonSetting {
+	s.XtraceRegion = &v
 	return s
 }
 
@@ -21247,28 +23138,67 @@ type GetTraceResponseBodySpans struct {
 	RpcId *string `json:"RpcId,omitempty" xml:"RpcId,omitempty"`
 	// The type of the remote procedure call (RPC) mode.
 	//
-	// *   0: HTTP entry
-	// *   25: HTTP call
-	// *   1: High-speed Service Framework (HSF) call
-	// *   2: HSF provision
-	// *   40: on-premises API call
-	// *   60: MySQL call
-	// *   62: Oracle call
-	// *   63: PostgreSQL call
-	// *   70: Redis call
-	// *   4: Taobao Distributed Data Layer (TDDL) call
-	// *   5: Tair call
-	// *   13: MetaQ message sending
-	// *   252: MetaQ message receiving
-	// *   3: notification sending
-	// *   254: notification receiving
-	// *   7: Apache Dubbo call
-	// *   8: Apache Dubbo provision
-	// *   19: SOFARPC call
-	// *   18: SOFARPC provision
-	// *   11: Distributed Service Framework (DSF) call
-	// *   12: DSF provision
-	// *   \-1: unknown call
+	// - 0 http
+	// - 25 http_client
+	// - 1 hsf_client
+	// - 2 hsf
+	// - 40 local
+	// - 41 async
+	// - 52 DB2
+	// - 53 Informix
+	// - 54 SequoiaDB
+	// - 55 Gbase
+	// - 56 GaussDB
+	// - 57 KingBase
+	// - 58 infuxdb
+	// - 59 clickhouse
+	// - 60 mysql
+	// - 61 mysql
+	// - 62 oracle
+	// - 63 postgresql
+	// - 64 mongodb
+	// - 65 ppas
+	// - 66 sqlserver
+	// - 67 mariadb
+	// - 68 dmdb
+	// - 69 oceanbase
+	// - 70 redis
+	// - 71 memcached
+	// - 72 elasticsearch
+	// - 73 kudu
+	// - 4 tddl
+	// - 5 tair
+	// - 13 mq_client
+	// - 252 mq
+	// - 23 kafka_client
+	// - 256 kafka
+	// - 3 notify_client
+	// - 254 notify
+	// - 7 dubbo_client
+	// - 8 dubbo
+	// - 11 dsf_client
+	// - 12 dsf
+	// - 9 grpc
+	// - 10 grpc_client
+	// - 16 thrift
+	// - 17 thrift_client
+	// - 18 sofa
+	// - 19 sofa_client
+	// - -1 unknown
+	// - 98 user_method
+	// - 100 root
+	// - 101 client
+	// - 102 server
+	// - 103 producer
+	// - 104 consumer
+	// - 105 db
+	// - 106 xtrace_other
+	// - 1301 schedulerx
+	// - 1302 XXL_Job
+	// - 1303 Spring_Scheduled
+	// - 1304 Quartz
+	// - 1305 ElasticJob
+	// - 1308 Jdk_Timer
 	RpcType *int32 `json:"RpcType,omitempty" xml:"RpcType,omitempty"`
 	// The IP address of the host where the application resides.
 	ServiceIp *string `json:"ServiceIp,omitempty" xml:"ServiceIp,omitempty"`
@@ -21853,6 +23783,106 @@ func (s *ImportAppAlertRulesResponse) SetStatusCode(v int32) *ImportAppAlertRule
 }
 
 func (s *ImportAppAlertRulesResponse) SetBody(v *ImportAppAlertRulesResponseBody) *ImportAppAlertRulesResponse {
+	s.Body = v
+	return s
+}
+
+type InitEnvironmentRequest struct {
+	// Locale, the default is Chinese zh.
+	AliyunLang *string `json:"AliyunLang,omitempty" xml:"AliyunLang,omitempty"`
+	// Environment ID.
+	EnvironmentId *string `json:"EnvironmentId,omitempty" xml:"EnvironmentId,omitempty"`
+	// The region ID.
+	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+}
+
+func (s InitEnvironmentRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s InitEnvironmentRequest) GoString() string {
+	return s.String()
+}
+
+func (s *InitEnvironmentRequest) SetAliyunLang(v string) *InitEnvironmentRequest {
+	s.AliyunLang = &v
+	return s
+}
+
+func (s *InitEnvironmentRequest) SetEnvironmentId(v string) *InitEnvironmentRequest {
+	s.EnvironmentId = &v
+	return s
+}
+
+func (s *InitEnvironmentRequest) SetRegionId(v string) *InitEnvironmentRequest {
+	s.RegionId = &v
+	return s
+}
+
+type InitEnvironmentResponseBody struct {
+	// The status code.
+	Code *int32 `json:"Code,omitempty" xml:"Code,omitempty"`
+	// The data returned.
+	Data *string `json:"Data,omitempty" xml:"Data,omitempty"`
+	// The message returned.
+	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// Id of the request
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+}
+
+func (s InitEnvironmentResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s InitEnvironmentResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *InitEnvironmentResponseBody) SetCode(v int32) *InitEnvironmentResponseBody {
+	s.Code = &v
+	return s
+}
+
+func (s *InitEnvironmentResponseBody) SetData(v string) *InitEnvironmentResponseBody {
+	s.Data = &v
+	return s
+}
+
+func (s *InitEnvironmentResponseBody) SetMessage(v string) *InitEnvironmentResponseBody {
+	s.Message = &v
+	return s
+}
+
+func (s *InitEnvironmentResponseBody) SetRequestId(v string) *InitEnvironmentResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+type InitEnvironmentResponse struct {
+	Headers    map[string]*string           `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                       `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *InitEnvironmentResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s InitEnvironmentResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s InitEnvironmentResponse) GoString() string {
+	return s.String()
+}
+
+func (s *InitEnvironmentResponse) SetHeaders(v map[string]*string) *InitEnvironmentResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *InitEnvironmentResponse) SetStatusCode(v int32) *InitEnvironmentResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *InitEnvironmentResponse) SetBody(v *InitEnvironmentResponseBody) *InitEnvironmentResponse {
 	s.Body = v
 	return s
 }
@@ -24270,6 +26300,687 @@ func (s *ListDispatchRuleResponse) SetBody(v *ListDispatchRuleResponseBody) *Lis
 	return s
 }
 
+type ListEnvCustomJobsRequest struct {
+	// Whether to return encrypted yaml.
+	EncryptYaml *bool `json:"EncryptYaml,omitempty" xml:"EncryptYaml,omitempty"`
+	// Environment instance ID.
+	EnvironmentId *string `json:"EnvironmentId,omitempty" xml:"EnvironmentId,omitempty"`
+	// The region ID.
+	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+}
+
+func (s ListEnvCustomJobsRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListEnvCustomJobsRequest) GoString() string {
+	return s.String()
+}
+
+func (s *ListEnvCustomJobsRequest) SetEncryptYaml(v bool) *ListEnvCustomJobsRequest {
+	s.EncryptYaml = &v
+	return s
+}
+
+func (s *ListEnvCustomJobsRequest) SetEnvironmentId(v string) *ListEnvCustomJobsRequest {
+	s.EnvironmentId = &v
+	return s
+}
+
+func (s *ListEnvCustomJobsRequest) SetRegionId(v string) *ListEnvCustomJobsRequest {
+	s.RegionId = &v
+	return s
+}
+
+type ListEnvCustomJobsResponseBody struct {
+	// The response code. The status code 200 indicates that the request was successful.
+	Code *int32 `json:"Code,omitempty" xml:"Code,omitempty"`
+	// The returned information.
+	Data []*ListEnvCustomJobsResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Repeated"`
+	// The returned message.
+	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// Id of the request
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+}
+
+func (s ListEnvCustomJobsResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListEnvCustomJobsResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *ListEnvCustomJobsResponseBody) SetCode(v int32) *ListEnvCustomJobsResponseBody {
+	s.Code = &v
+	return s
+}
+
+func (s *ListEnvCustomJobsResponseBody) SetData(v []*ListEnvCustomJobsResponseBodyData) *ListEnvCustomJobsResponseBody {
+	s.Data = v
+	return s
+}
+
+func (s *ListEnvCustomJobsResponseBody) SetMessage(v string) *ListEnvCustomJobsResponseBody {
+	s.Message = &v
+	return s
+}
+
+func (s *ListEnvCustomJobsResponseBody) SetRequestId(v string) *ListEnvCustomJobsResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+type ListEnvCustomJobsResponseBodyData struct {
+	// The attributed component name.
+	AddonName *string `json:"AddonName,omitempty" xml:"AddonName,omitempty"`
+	// The attributed component instance name.
+	AddonReleaseName *string `json:"AddonReleaseName,omitempty" xml:"AddonReleaseName,omitempty"`
+	// The attributed component version.
+	AddonVersion *string `json:"AddonVersion,omitempty" xml:"AddonVersion,omitempty"`
+	// If the request parameter encryptYaml is true, the base64-encoded yaml string is returned. Otherwise, the plaintext yaml string is returned.
+	ConfigYaml *string `json:"ConfigYaml,omitempty" xml:"ConfigYaml,omitempty"`
+	// Creation time (timestamp).
+	CreationTimestamp *string `json:"CreationTimestamp,omitempty" xml:"CreationTimestamp,omitempty"`
+	// Custom job name.
+	CustomJobName *string `json:"CustomJobName,omitempty" xml:"CustomJobName,omitempty"`
+	// Environment instance ID.
+	EnvironmentId *string `json:"EnvironmentId,omitempty" xml:"EnvironmentId,omitempty"`
+	// The region ID.
+	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	// scrape configuration.
+	ScrapeConfigs []*ListEnvCustomJobsResponseBodyDataScrapeConfigs `json:"ScrapeConfigs,omitempty" xml:"ScrapeConfigs,omitempty" type:"Repeated"`
+	// state.
+	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
+}
+
+func (s ListEnvCustomJobsResponseBodyData) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListEnvCustomJobsResponseBodyData) GoString() string {
+	return s.String()
+}
+
+func (s *ListEnvCustomJobsResponseBodyData) SetAddonName(v string) *ListEnvCustomJobsResponseBodyData {
+	s.AddonName = &v
+	return s
+}
+
+func (s *ListEnvCustomJobsResponseBodyData) SetAddonReleaseName(v string) *ListEnvCustomJobsResponseBodyData {
+	s.AddonReleaseName = &v
+	return s
+}
+
+func (s *ListEnvCustomJobsResponseBodyData) SetAddonVersion(v string) *ListEnvCustomJobsResponseBodyData {
+	s.AddonVersion = &v
+	return s
+}
+
+func (s *ListEnvCustomJobsResponseBodyData) SetConfigYaml(v string) *ListEnvCustomJobsResponseBodyData {
+	s.ConfigYaml = &v
+	return s
+}
+
+func (s *ListEnvCustomJobsResponseBodyData) SetCreationTimestamp(v string) *ListEnvCustomJobsResponseBodyData {
+	s.CreationTimestamp = &v
+	return s
+}
+
+func (s *ListEnvCustomJobsResponseBodyData) SetCustomJobName(v string) *ListEnvCustomJobsResponseBodyData {
+	s.CustomJobName = &v
+	return s
+}
+
+func (s *ListEnvCustomJobsResponseBodyData) SetEnvironmentId(v string) *ListEnvCustomJobsResponseBodyData {
+	s.EnvironmentId = &v
+	return s
+}
+
+func (s *ListEnvCustomJobsResponseBodyData) SetRegionId(v string) *ListEnvCustomJobsResponseBodyData {
+	s.RegionId = &v
+	return s
+}
+
+func (s *ListEnvCustomJobsResponseBodyData) SetScrapeConfigs(v []*ListEnvCustomJobsResponseBodyDataScrapeConfigs) *ListEnvCustomJobsResponseBodyData {
+	s.ScrapeConfigs = v
+	return s
+}
+
+func (s *ListEnvCustomJobsResponseBodyData) SetStatus(v string) *ListEnvCustomJobsResponseBodyData {
+	s.Status = &v
+	return s
+}
+
+type ListEnvCustomJobsResponseBodyDataScrapeConfigs struct {
+	// Job name.
+	JobName *string `json:"JobName,omitempty" xml:"JobName,omitempty"`
+	// scrape the path of the metric.
+	MetricsPath *string `json:"MetricsPath,omitempty" xml:"MetricsPath,omitempty"`
+	// List of service discovery methods.
+	ScrapeDiscoverys []*string `json:"ScrapeDiscoverys,omitempty" xml:"ScrapeDiscoverys,omitempty" type:"Repeated"`
+	// scrape interval.
+	ScrapeInterval *string `json:"ScrapeInterval,omitempty" xml:"ScrapeInterval,omitempty"`
+}
+
+func (s ListEnvCustomJobsResponseBodyDataScrapeConfigs) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListEnvCustomJobsResponseBodyDataScrapeConfigs) GoString() string {
+	return s.String()
+}
+
+func (s *ListEnvCustomJobsResponseBodyDataScrapeConfigs) SetJobName(v string) *ListEnvCustomJobsResponseBodyDataScrapeConfigs {
+	s.JobName = &v
+	return s
+}
+
+func (s *ListEnvCustomJobsResponseBodyDataScrapeConfigs) SetMetricsPath(v string) *ListEnvCustomJobsResponseBodyDataScrapeConfigs {
+	s.MetricsPath = &v
+	return s
+}
+
+func (s *ListEnvCustomJobsResponseBodyDataScrapeConfigs) SetScrapeDiscoverys(v []*string) *ListEnvCustomJobsResponseBodyDataScrapeConfigs {
+	s.ScrapeDiscoverys = v
+	return s
+}
+
+func (s *ListEnvCustomJobsResponseBodyDataScrapeConfigs) SetScrapeInterval(v string) *ListEnvCustomJobsResponseBodyDataScrapeConfigs {
+	s.ScrapeInterval = &v
+	return s
+}
+
+type ListEnvCustomJobsResponse struct {
+	Headers    map[string]*string             `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                         `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *ListEnvCustomJobsResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s ListEnvCustomJobsResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListEnvCustomJobsResponse) GoString() string {
+	return s.String()
+}
+
+func (s *ListEnvCustomJobsResponse) SetHeaders(v map[string]*string) *ListEnvCustomJobsResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *ListEnvCustomJobsResponse) SetStatusCode(v int32) *ListEnvCustomJobsResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *ListEnvCustomJobsResponse) SetBody(v *ListEnvCustomJobsResponseBody) *ListEnvCustomJobsResponse {
+	s.Body = v
+	return s
+}
+
+type ListEnvPodMonitorsRequest struct {
+	// Environment ID.
+	EnvironmentId *string `json:"EnvironmentId,omitempty" xml:"EnvironmentId,omitempty"`
+	// The region ID.
+	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+}
+
+func (s ListEnvPodMonitorsRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListEnvPodMonitorsRequest) GoString() string {
+	return s.String()
+}
+
+func (s *ListEnvPodMonitorsRequest) SetEnvironmentId(v string) *ListEnvPodMonitorsRequest {
+	s.EnvironmentId = &v
+	return s
+}
+
+func (s *ListEnvPodMonitorsRequest) SetRegionId(v string) *ListEnvPodMonitorsRequest {
+	s.RegionId = &v
+	return s
+}
+
+type ListEnvPodMonitorsResponseBody struct {
+	// The status code. The status code 200 indicates that the request was successful.
+	Code *int32 `json:"Code,omitempty" xml:"Code,omitempty"`
+	// The returned struct.
+	Data []*ListEnvPodMonitorsResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Repeated"`
+	// The returned message.
+	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// Id of the request
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+}
+
+func (s ListEnvPodMonitorsResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListEnvPodMonitorsResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *ListEnvPodMonitorsResponseBody) SetCode(v int32) *ListEnvPodMonitorsResponseBody {
+	s.Code = &v
+	return s
+}
+
+func (s *ListEnvPodMonitorsResponseBody) SetData(v []*ListEnvPodMonitorsResponseBodyData) *ListEnvPodMonitorsResponseBody {
+	s.Data = v
+	return s
+}
+
+func (s *ListEnvPodMonitorsResponseBody) SetMessage(v string) *ListEnvPodMonitorsResponseBody {
+	s.Message = &v
+	return s
+}
+
+func (s *ListEnvPodMonitorsResponseBody) SetRequestId(v string) *ListEnvPodMonitorsResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+type ListEnvPodMonitorsResponseBodyData struct {
+	// addon name.
+	AddonName *string `json:"AddonName,omitempty" xml:"AddonName,omitempty"`
+	// addon release name.
+	AddonReleaseName *string `json:"AddonReleaseName,omitempty" xml:"AddonReleaseName,omitempty"`
+	// addon version.
+	AddonVersion *string `json:"AddonVersion,omitempty" xml:"AddonVersion,omitempty"`
+	// yaml configuration string.
+	ConfigYaml *string `json:"ConfigYaml,omitempty" xml:"ConfigYaml,omitempty"`
+	// Creation time (timestamp).
+	CreationTimestamp *string `json:"CreationTimestamp,omitempty" xml:"CreationTimestamp,omitempty"`
+	// List of endpoints for podmonitor.
+	Endpoints []*ListEnvPodMonitorsResponseBodyDataEndpoints `json:"Endpoints,omitempty" xml:"Endpoints,omitempty" type:"Repeated"`
+	// Environment ID.
+	EnvironmentId *string `json:"EnvironmentId,omitempty" xml:"EnvironmentId,omitempty"`
+	// The namespace.
+	Namespace *string `json:"Namespace,omitempty" xml:"Namespace,omitempty"`
+	// PodMonitor name.
+	PodMonitorName *string `json:"PodMonitorName,omitempty" xml:"PodMonitorName,omitempty"`
+	// The region ID.
+	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	// state.
+	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
+}
+
+func (s ListEnvPodMonitorsResponseBodyData) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListEnvPodMonitorsResponseBodyData) GoString() string {
+	return s.String()
+}
+
+func (s *ListEnvPodMonitorsResponseBodyData) SetAddonName(v string) *ListEnvPodMonitorsResponseBodyData {
+	s.AddonName = &v
+	return s
+}
+
+func (s *ListEnvPodMonitorsResponseBodyData) SetAddonReleaseName(v string) *ListEnvPodMonitorsResponseBodyData {
+	s.AddonReleaseName = &v
+	return s
+}
+
+func (s *ListEnvPodMonitorsResponseBodyData) SetAddonVersion(v string) *ListEnvPodMonitorsResponseBodyData {
+	s.AddonVersion = &v
+	return s
+}
+
+func (s *ListEnvPodMonitorsResponseBodyData) SetConfigYaml(v string) *ListEnvPodMonitorsResponseBodyData {
+	s.ConfigYaml = &v
+	return s
+}
+
+func (s *ListEnvPodMonitorsResponseBodyData) SetCreationTimestamp(v string) *ListEnvPodMonitorsResponseBodyData {
+	s.CreationTimestamp = &v
+	return s
+}
+
+func (s *ListEnvPodMonitorsResponseBodyData) SetEndpoints(v []*ListEnvPodMonitorsResponseBodyDataEndpoints) *ListEnvPodMonitorsResponseBodyData {
+	s.Endpoints = v
+	return s
+}
+
+func (s *ListEnvPodMonitorsResponseBodyData) SetEnvironmentId(v string) *ListEnvPodMonitorsResponseBodyData {
+	s.EnvironmentId = &v
+	return s
+}
+
+func (s *ListEnvPodMonitorsResponseBodyData) SetNamespace(v string) *ListEnvPodMonitorsResponseBodyData {
+	s.Namespace = &v
+	return s
+}
+
+func (s *ListEnvPodMonitorsResponseBodyData) SetPodMonitorName(v string) *ListEnvPodMonitorsResponseBodyData {
+	s.PodMonitorName = &v
+	return s
+}
+
+func (s *ListEnvPodMonitorsResponseBodyData) SetRegionId(v string) *ListEnvPodMonitorsResponseBodyData {
+	s.RegionId = &v
+	return s
+}
+
+func (s *ListEnvPodMonitorsResponseBodyData) SetStatus(v string) *ListEnvPodMonitorsResponseBodyData {
+	s.Status = &v
+	return s
+}
+
+type ListEnvPodMonitorsResponseBodyDataEndpoints struct {
+	// scrape interval.
+	Interval *string `json:"Interval,omitempty" xml:"Interval,omitempty"`
+	// The number of targets (pods) matched by PodMonitor.Endpoint.
+	MatchedTargetCount *int32 `json:"MatchedTargetCount,omitempty" xml:"MatchedTargetCount,omitempty"`
+	// metric path.
+	Path *string `json:"Path,omitempty" xml:"Path,omitempty"`
+	// External port.
+	Port *string `json:"Port,omitempty" xml:"Port,omitempty"`
+	// Destination port.
+	TargetPort *int32 `json:"TargetPort,omitempty" xml:"TargetPort,omitempty"`
+}
+
+func (s ListEnvPodMonitorsResponseBodyDataEndpoints) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListEnvPodMonitorsResponseBodyDataEndpoints) GoString() string {
+	return s.String()
+}
+
+func (s *ListEnvPodMonitorsResponseBodyDataEndpoints) SetInterval(v string) *ListEnvPodMonitorsResponseBodyDataEndpoints {
+	s.Interval = &v
+	return s
+}
+
+func (s *ListEnvPodMonitorsResponseBodyDataEndpoints) SetMatchedTargetCount(v int32) *ListEnvPodMonitorsResponseBodyDataEndpoints {
+	s.MatchedTargetCount = &v
+	return s
+}
+
+func (s *ListEnvPodMonitorsResponseBodyDataEndpoints) SetPath(v string) *ListEnvPodMonitorsResponseBodyDataEndpoints {
+	s.Path = &v
+	return s
+}
+
+func (s *ListEnvPodMonitorsResponseBodyDataEndpoints) SetPort(v string) *ListEnvPodMonitorsResponseBodyDataEndpoints {
+	s.Port = &v
+	return s
+}
+
+func (s *ListEnvPodMonitorsResponseBodyDataEndpoints) SetTargetPort(v int32) *ListEnvPodMonitorsResponseBodyDataEndpoints {
+	s.TargetPort = &v
+	return s
+}
+
+type ListEnvPodMonitorsResponse struct {
+	Headers    map[string]*string              `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                          `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *ListEnvPodMonitorsResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s ListEnvPodMonitorsResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListEnvPodMonitorsResponse) GoString() string {
+	return s.String()
+}
+
+func (s *ListEnvPodMonitorsResponse) SetHeaders(v map[string]*string) *ListEnvPodMonitorsResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *ListEnvPodMonitorsResponse) SetStatusCode(v int32) *ListEnvPodMonitorsResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *ListEnvPodMonitorsResponse) SetBody(v *ListEnvPodMonitorsResponseBody) *ListEnvPodMonitorsResponse {
+	s.Body = v
+	return s
+}
+
+type ListEnvServiceMonitorsRequest struct {
+	// Environment ID.
+	EnvironmentId *string `json:"EnvironmentId,omitempty" xml:"EnvironmentId,omitempty"`
+	// The region ID.
+	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+}
+
+func (s ListEnvServiceMonitorsRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListEnvServiceMonitorsRequest) GoString() string {
+	return s.String()
+}
+
+func (s *ListEnvServiceMonitorsRequest) SetEnvironmentId(v string) *ListEnvServiceMonitorsRequest {
+	s.EnvironmentId = &v
+	return s
+}
+
+func (s *ListEnvServiceMonitorsRequest) SetRegionId(v string) *ListEnvServiceMonitorsRequest {
+	s.RegionId = &v
+	return s
+}
+
+type ListEnvServiceMonitorsResponseBody struct {
+	// The status code. The status code 200 indicates that the request was successful.
+	Code *int32 `json:"Code,omitempty" xml:"Code,omitempty"`
+	// The returned struct.
+	Data []*ListEnvServiceMonitorsResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Repeated"`
+	// The returned message.
+	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// Id of the request
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+}
+
+func (s ListEnvServiceMonitorsResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListEnvServiceMonitorsResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *ListEnvServiceMonitorsResponseBody) SetCode(v int32) *ListEnvServiceMonitorsResponseBody {
+	s.Code = &v
+	return s
+}
+
+func (s *ListEnvServiceMonitorsResponseBody) SetData(v []*ListEnvServiceMonitorsResponseBodyData) *ListEnvServiceMonitorsResponseBody {
+	s.Data = v
+	return s
+}
+
+func (s *ListEnvServiceMonitorsResponseBody) SetMessage(v string) *ListEnvServiceMonitorsResponseBody {
+	s.Message = &v
+	return s
+}
+
+func (s *ListEnvServiceMonitorsResponseBody) SetRequestId(v string) *ListEnvServiceMonitorsResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+type ListEnvServiceMonitorsResponseBodyData struct {
+	// addon name.
+	AddonName *string `json:"AddonName,omitempty" xml:"AddonName,omitempty"`
+	// addon release name.
+	AddonReleaseName *string `json:"AddonReleaseName,omitempty" xml:"AddonReleaseName,omitempty"`
+	// addon version.
+	AddonVersion *string `json:"AddonVersion,omitempty" xml:"AddonVersion,omitempty"`
+	// yaml configuration string.
+	ConfigYaml *string `json:"ConfigYaml,omitempty" xml:"ConfigYaml,omitempty"`
+	// Creation time (timestamp).
+	CreationTimestamp *string `json:"CreationTimestamp,omitempty" xml:"CreationTimestamp,omitempty"`
+	// List of endpoints for ServiceMonitor.
+	Endpoints []*ListEnvServiceMonitorsResponseBodyDataEndpoints `json:"Endpoints,omitempty" xml:"Endpoints,omitempty" type:"Repeated"`
+	// Environment ID.
+	EnvironmentId *string `json:"EnvironmentId,omitempty" xml:"EnvironmentId,omitempty"`
+	// The number of matching services.
+	MatchedServiceCount *int32 `json:"MatchedServiceCount,omitempty" xml:"MatchedServiceCount,omitempty"`
+	// The namespace.
+	Namespace *string `json:"Namespace,omitempty" xml:"Namespace,omitempty"`
+	// The region ID.
+	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	// ServiceMonitor name.
+	ServiceMonitorName *string `json:"ServiceMonitorName,omitempty" xml:"ServiceMonitorName,omitempty"`
+	// status.
+	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
+}
+
+func (s ListEnvServiceMonitorsResponseBodyData) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListEnvServiceMonitorsResponseBodyData) GoString() string {
+	return s.String()
+}
+
+func (s *ListEnvServiceMonitorsResponseBodyData) SetAddonName(v string) *ListEnvServiceMonitorsResponseBodyData {
+	s.AddonName = &v
+	return s
+}
+
+func (s *ListEnvServiceMonitorsResponseBodyData) SetAddonReleaseName(v string) *ListEnvServiceMonitorsResponseBodyData {
+	s.AddonReleaseName = &v
+	return s
+}
+
+func (s *ListEnvServiceMonitorsResponseBodyData) SetAddonVersion(v string) *ListEnvServiceMonitorsResponseBodyData {
+	s.AddonVersion = &v
+	return s
+}
+
+func (s *ListEnvServiceMonitorsResponseBodyData) SetConfigYaml(v string) *ListEnvServiceMonitorsResponseBodyData {
+	s.ConfigYaml = &v
+	return s
+}
+
+func (s *ListEnvServiceMonitorsResponseBodyData) SetCreationTimestamp(v string) *ListEnvServiceMonitorsResponseBodyData {
+	s.CreationTimestamp = &v
+	return s
+}
+
+func (s *ListEnvServiceMonitorsResponseBodyData) SetEndpoints(v []*ListEnvServiceMonitorsResponseBodyDataEndpoints) *ListEnvServiceMonitorsResponseBodyData {
+	s.Endpoints = v
+	return s
+}
+
+func (s *ListEnvServiceMonitorsResponseBodyData) SetEnvironmentId(v string) *ListEnvServiceMonitorsResponseBodyData {
+	s.EnvironmentId = &v
+	return s
+}
+
+func (s *ListEnvServiceMonitorsResponseBodyData) SetMatchedServiceCount(v int32) *ListEnvServiceMonitorsResponseBodyData {
+	s.MatchedServiceCount = &v
+	return s
+}
+
+func (s *ListEnvServiceMonitorsResponseBodyData) SetNamespace(v string) *ListEnvServiceMonitorsResponseBodyData {
+	s.Namespace = &v
+	return s
+}
+
+func (s *ListEnvServiceMonitorsResponseBodyData) SetRegionId(v string) *ListEnvServiceMonitorsResponseBodyData {
+	s.RegionId = &v
+	return s
+}
+
+func (s *ListEnvServiceMonitorsResponseBodyData) SetServiceMonitorName(v string) *ListEnvServiceMonitorsResponseBodyData {
+	s.ServiceMonitorName = &v
+	return s
+}
+
+func (s *ListEnvServiceMonitorsResponseBodyData) SetStatus(v string) *ListEnvServiceMonitorsResponseBodyData {
+	s.Status = &v
+	return s
+}
+
+type ListEnvServiceMonitorsResponseBodyDataEndpoints struct {
+	// scrape interval.
+	Interval *string `json:"Interval,omitempty" xml:"Interval,omitempty"`
+	// The number of targets matched by servcieMonitor.Endpoint.
+	MatchedTargetCount *int32 `json:"MatchedTargetCount,omitempty" xml:"MatchedTargetCount,omitempty"`
+	// metric path.
+	Path *string `json:"Path,omitempty" xml:"Path,omitempty"`
+	// External port.
+	Port *string `json:"Port,omitempty" xml:"Port,omitempty"`
+	// Destination port.
+	TargetPort *int32 `json:"TargetPort,omitempty" xml:"TargetPort,omitempty"`
+}
+
+func (s ListEnvServiceMonitorsResponseBodyDataEndpoints) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListEnvServiceMonitorsResponseBodyDataEndpoints) GoString() string {
+	return s.String()
+}
+
+func (s *ListEnvServiceMonitorsResponseBodyDataEndpoints) SetInterval(v string) *ListEnvServiceMonitorsResponseBodyDataEndpoints {
+	s.Interval = &v
+	return s
+}
+
+func (s *ListEnvServiceMonitorsResponseBodyDataEndpoints) SetMatchedTargetCount(v int32) *ListEnvServiceMonitorsResponseBodyDataEndpoints {
+	s.MatchedTargetCount = &v
+	return s
+}
+
+func (s *ListEnvServiceMonitorsResponseBodyDataEndpoints) SetPath(v string) *ListEnvServiceMonitorsResponseBodyDataEndpoints {
+	s.Path = &v
+	return s
+}
+
+func (s *ListEnvServiceMonitorsResponseBodyDataEndpoints) SetPort(v string) *ListEnvServiceMonitorsResponseBodyDataEndpoints {
+	s.Port = &v
+	return s
+}
+
+func (s *ListEnvServiceMonitorsResponseBodyDataEndpoints) SetTargetPort(v int32) *ListEnvServiceMonitorsResponseBodyDataEndpoints {
+	s.TargetPort = &v
+	return s
+}
+
+type ListEnvServiceMonitorsResponse struct {
+	Headers    map[string]*string                  `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                              `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *ListEnvServiceMonitorsResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s ListEnvServiceMonitorsResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListEnvServiceMonitorsResponse) GoString() string {
+	return s.String()
+}
+
+func (s *ListEnvServiceMonitorsResponse) SetHeaders(v map[string]*string) *ListEnvServiceMonitorsResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *ListEnvServiceMonitorsResponse) SetStatusCode(v int32) *ListEnvServiceMonitorsResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *ListEnvServiceMonitorsResponse) SetBody(v *ListEnvServiceMonitorsResponseBody) *ListEnvServiceMonitorsResponse {
+	s.Body = v
+	return s
+}
+
 type ListEscalationPoliciesRequest struct {
 	// The name of the escalation policy.
 	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
@@ -24577,6 +27288,175 @@ func (s *ListEventBridgeIntegrationsResponse) SetBody(v *ListEventBridgeIntegrat
 	return s
 }
 
+type ListGrafanaWorkspaceRequest struct {
+	AliyunLang      *string                            `json:"AliyunLang,omitempty" xml:"AliyunLang,omitempty"`
+	RegionId        *string                            `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	ResourceGroupId *string                            `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
+	Tags            []*ListGrafanaWorkspaceRequestTags `json:"Tags,omitempty" xml:"Tags,omitempty" type:"Repeated"`
+}
+
+func (s ListGrafanaWorkspaceRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListGrafanaWorkspaceRequest) GoString() string {
+	return s.String()
+}
+
+func (s *ListGrafanaWorkspaceRequest) SetAliyunLang(v string) *ListGrafanaWorkspaceRequest {
+	s.AliyunLang = &v
+	return s
+}
+
+func (s *ListGrafanaWorkspaceRequest) SetRegionId(v string) *ListGrafanaWorkspaceRequest {
+	s.RegionId = &v
+	return s
+}
+
+func (s *ListGrafanaWorkspaceRequest) SetResourceGroupId(v string) *ListGrafanaWorkspaceRequest {
+	s.ResourceGroupId = &v
+	return s
+}
+
+func (s *ListGrafanaWorkspaceRequest) SetTags(v []*ListGrafanaWorkspaceRequestTags) *ListGrafanaWorkspaceRequest {
+	s.Tags = v
+	return s
+}
+
+type ListGrafanaWorkspaceRequestTags struct {
+	Key   *string `json:"Key,omitempty" xml:"Key,omitempty"`
+	Value *string `json:"Value,omitempty" xml:"Value,omitempty"`
+}
+
+func (s ListGrafanaWorkspaceRequestTags) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListGrafanaWorkspaceRequestTags) GoString() string {
+	return s.String()
+}
+
+func (s *ListGrafanaWorkspaceRequestTags) SetKey(v string) *ListGrafanaWorkspaceRequestTags {
+	s.Key = &v
+	return s
+}
+
+func (s *ListGrafanaWorkspaceRequestTags) SetValue(v string) *ListGrafanaWorkspaceRequestTags {
+	s.Value = &v
+	return s
+}
+
+type ListGrafanaWorkspaceShrinkRequest struct {
+	AliyunLang      *string `json:"AliyunLang,omitempty" xml:"AliyunLang,omitempty"`
+	RegionId        *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	ResourceGroupId *string `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
+	TagsShrink      *string `json:"Tags,omitempty" xml:"Tags,omitempty"`
+}
+
+func (s ListGrafanaWorkspaceShrinkRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListGrafanaWorkspaceShrinkRequest) GoString() string {
+	return s.String()
+}
+
+func (s *ListGrafanaWorkspaceShrinkRequest) SetAliyunLang(v string) *ListGrafanaWorkspaceShrinkRequest {
+	s.AliyunLang = &v
+	return s
+}
+
+func (s *ListGrafanaWorkspaceShrinkRequest) SetRegionId(v string) *ListGrafanaWorkspaceShrinkRequest {
+	s.RegionId = &v
+	return s
+}
+
+func (s *ListGrafanaWorkspaceShrinkRequest) SetResourceGroupId(v string) *ListGrafanaWorkspaceShrinkRequest {
+	s.ResourceGroupId = &v
+	return s
+}
+
+func (s *ListGrafanaWorkspaceShrinkRequest) SetTagsShrink(v string) *ListGrafanaWorkspaceShrinkRequest {
+	s.TagsShrink = &v
+	return s
+}
+
+type ListGrafanaWorkspaceResponseBody struct {
+	Code      *int32              `json:"Code,omitempty" xml:"Code,omitempty"`
+	Data      []*GrafanaWorkspace `json:"Data,omitempty" xml:"Data,omitempty" type:"Repeated"`
+	Message   *string             `json:"Message,omitempty" xml:"Message,omitempty"`
+	RequestId *string             `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	Success   *bool               `json:"Success,omitempty" xml:"Success,omitempty"`
+	TraceId   *string             `json:"TraceId,omitempty" xml:"TraceId,omitempty"`
+}
+
+func (s ListGrafanaWorkspaceResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListGrafanaWorkspaceResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *ListGrafanaWorkspaceResponseBody) SetCode(v int32) *ListGrafanaWorkspaceResponseBody {
+	s.Code = &v
+	return s
+}
+
+func (s *ListGrafanaWorkspaceResponseBody) SetData(v []*GrafanaWorkspace) *ListGrafanaWorkspaceResponseBody {
+	s.Data = v
+	return s
+}
+
+func (s *ListGrafanaWorkspaceResponseBody) SetMessage(v string) *ListGrafanaWorkspaceResponseBody {
+	s.Message = &v
+	return s
+}
+
+func (s *ListGrafanaWorkspaceResponseBody) SetRequestId(v string) *ListGrafanaWorkspaceResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *ListGrafanaWorkspaceResponseBody) SetSuccess(v bool) *ListGrafanaWorkspaceResponseBody {
+	s.Success = &v
+	return s
+}
+
+func (s *ListGrafanaWorkspaceResponseBody) SetTraceId(v string) *ListGrafanaWorkspaceResponseBody {
+	s.TraceId = &v
+	return s
+}
+
+type ListGrafanaWorkspaceResponse struct {
+	Headers    map[string]*string                `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                            `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *ListGrafanaWorkspaceResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s ListGrafanaWorkspaceResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListGrafanaWorkspaceResponse) GoString() string {
+	return s.String()
+}
+
+func (s *ListGrafanaWorkspaceResponse) SetHeaders(v map[string]*string) *ListGrafanaWorkspaceResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *ListGrafanaWorkspaceResponse) SetStatusCode(v int32) *ListGrafanaWorkspaceResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *ListGrafanaWorkspaceResponse) SetBody(v *ListGrafanaWorkspaceResponseBody) *ListGrafanaWorkspaceResponse {
+	s.Body = v
+	return s
+}
+
 type ListInsightsEventsRequest struct {
 	// The details of the event.
 	EndTime *string `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
@@ -24661,7 +27541,8 @@ type ListInsightsEventsResponseBodyInsightsEvents struct {
 	// Queries the abnormal Insights events within a specified period of time.
 	Level *string `json:"Level,omitempty" xml:"Level,omitempty"`
 	// auditing
-	Pid *string `json:"Pid,omitempty" xml:"Pid,omitempty"`
+	Pid       *string `json:"Pid,omitempty" xml:"Pid,omitempty"`
+	ProblemId *string `json:"ProblemId,omitempty" xml:"ProblemId,omitempty"`
 	// The overall response time of the \[HTTP] service of the application \[sd] spikes at \[2022-07-27 10:57:00]
 	Title *string `json:"Title,omitempty" xml:"Title,omitempty"`
 	// The time at which the event occurred. The value is a timestamp.
@@ -24693,6 +27574,11 @@ func (s *ListInsightsEventsResponseBodyInsightsEvents) SetLevel(v string) *ListI
 
 func (s *ListInsightsEventsResponseBodyInsightsEvents) SetPid(v string) *ListInsightsEventsResponseBodyInsightsEvents {
 	s.Pid = &v
+	return s
+}
+
+func (s *ListInsightsEventsResponseBodyInsightsEvents) SetProblemId(v string) *ListInsightsEventsResponseBodyInsightsEvents {
+	s.ProblemId = &v
 	return s
 }
 
@@ -29806,6 +32692,106 @@ func (s *RemoveSourcesFromPrometheusGlobalViewResponse) SetBody(v *RemoveSources
 	return s
 }
 
+type RestartEnvironmentFeatureRequest struct {
+	EnvironmentId *string `json:"EnvironmentId,omitempty" xml:"EnvironmentId,omitempty"`
+	FeatureName   *string `json:"FeatureName,omitempty" xml:"FeatureName,omitempty"`
+	RegionId      *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+}
+
+func (s RestartEnvironmentFeatureRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s RestartEnvironmentFeatureRequest) GoString() string {
+	return s.String()
+}
+
+func (s *RestartEnvironmentFeatureRequest) SetEnvironmentId(v string) *RestartEnvironmentFeatureRequest {
+	s.EnvironmentId = &v
+	return s
+}
+
+func (s *RestartEnvironmentFeatureRequest) SetFeatureName(v string) *RestartEnvironmentFeatureRequest {
+	s.FeatureName = &v
+	return s
+}
+
+func (s *RestartEnvironmentFeatureRequest) SetRegionId(v string) *RestartEnvironmentFeatureRequest {
+	s.RegionId = &v
+	return s
+}
+
+type RestartEnvironmentFeatureResponseBody struct {
+	Code    *int32  `json:"Code,omitempty" xml:"Code,omitempty"`
+	Data    *string `json:"Data,omitempty" xml:"Data,omitempty"`
+	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// Id of the request
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	Success   *bool   `json:"Success,omitempty" xml:"Success,omitempty"`
+}
+
+func (s RestartEnvironmentFeatureResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s RestartEnvironmentFeatureResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *RestartEnvironmentFeatureResponseBody) SetCode(v int32) *RestartEnvironmentFeatureResponseBody {
+	s.Code = &v
+	return s
+}
+
+func (s *RestartEnvironmentFeatureResponseBody) SetData(v string) *RestartEnvironmentFeatureResponseBody {
+	s.Data = &v
+	return s
+}
+
+func (s *RestartEnvironmentFeatureResponseBody) SetMessage(v string) *RestartEnvironmentFeatureResponseBody {
+	s.Message = &v
+	return s
+}
+
+func (s *RestartEnvironmentFeatureResponseBody) SetRequestId(v string) *RestartEnvironmentFeatureResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *RestartEnvironmentFeatureResponseBody) SetSuccess(v bool) *RestartEnvironmentFeatureResponseBody {
+	s.Success = &v
+	return s
+}
+
+type RestartEnvironmentFeatureResponse struct {
+	Headers    map[string]*string                     `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                                 `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *RestartEnvironmentFeatureResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s RestartEnvironmentFeatureResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s RestartEnvironmentFeatureResponse) GoString() string {
+	return s.String()
+}
+
+func (s *RestartEnvironmentFeatureResponse) SetHeaders(v map[string]*string) *RestartEnvironmentFeatureResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *RestartEnvironmentFeatureResponse) SetStatusCode(v int32) *RestartEnvironmentFeatureResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *RestartEnvironmentFeatureResponse) SetBody(v *RestartEnvironmentFeatureResponseBody) *RestartEnvironmentFeatureResponse {
+	s.Body = v
+	return s
+}
+
 type SaveTraceAppConfigRequest struct {
 	// The ID of the application.
 	//
@@ -34754,6 +37740,540 @@ func (s *UpdateDispatchRuleResponse) SetBody(v *UpdateDispatchRuleResponseBody) 
 	return s
 }
 
+type UpdateEnvCustomJobRequest struct {
+	// Locale, the default is Chinese zh | en.
+	AliyunLang *string `json:"AliyunLang,omitempty" xml:"AliyunLang,omitempty"`
+	// yaml configuration string.
+	ConfigYaml *string `json:"ConfigYaml,omitempty" xml:"ConfigYaml,omitempty"`
+	// Custom job name.
+	CustomJobName *string `json:"CustomJobName,omitempty" xml:"CustomJobName,omitempty"`
+	// Environment ID.
+	EnvironmentId *string `json:"EnvironmentId,omitempty" xml:"EnvironmentId,omitempty"`
+	// The region ID.
+	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	// Custom task status: run or stop.
+	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
+}
+
+func (s UpdateEnvCustomJobRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UpdateEnvCustomJobRequest) GoString() string {
+	return s.String()
+}
+
+func (s *UpdateEnvCustomJobRequest) SetAliyunLang(v string) *UpdateEnvCustomJobRequest {
+	s.AliyunLang = &v
+	return s
+}
+
+func (s *UpdateEnvCustomJobRequest) SetConfigYaml(v string) *UpdateEnvCustomJobRequest {
+	s.ConfigYaml = &v
+	return s
+}
+
+func (s *UpdateEnvCustomJobRequest) SetCustomJobName(v string) *UpdateEnvCustomJobRequest {
+	s.CustomJobName = &v
+	return s
+}
+
+func (s *UpdateEnvCustomJobRequest) SetEnvironmentId(v string) *UpdateEnvCustomJobRequest {
+	s.EnvironmentId = &v
+	return s
+}
+
+func (s *UpdateEnvCustomJobRequest) SetRegionId(v string) *UpdateEnvCustomJobRequest {
+	s.RegionId = &v
+	return s
+}
+
+func (s *UpdateEnvCustomJobRequest) SetStatus(v string) *UpdateEnvCustomJobRequest {
+	s.Status = &v
+	return s
+}
+
+type UpdateEnvCustomJobResponseBody struct {
+	// The status code. The status code 200 indicates that the request was successful.
+	Code *int32 `json:"Code,omitempty" xml:"Code,omitempty"`
+	// Operation results.
+	Data *string `json:"Data,omitempty" xml:"Data,omitempty"`
+	// The returned message.
+	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// Id of the request
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+}
+
+func (s UpdateEnvCustomJobResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UpdateEnvCustomJobResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *UpdateEnvCustomJobResponseBody) SetCode(v int32) *UpdateEnvCustomJobResponseBody {
+	s.Code = &v
+	return s
+}
+
+func (s *UpdateEnvCustomJobResponseBody) SetData(v string) *UpdateEnvCustomJobResponseBody {
+	s.Data = &v
+	return s
+}
+
+func (s *UpdateEnvCustomJobResponseBody) SetMessage(v string) *UpdateEnvCustomJobResponseBody {
+	s.Message = &v
+	return s
+}
+
+func (s *UpdateEnvCustomJobResponseBody) SetRequestId(v string) *UpdateEnvCustomJobResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+type UpdateEnvCustomJobResponse struct {
+	Headers    map[string]*string              `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                          `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *UpdateEnvCustomJobResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s UpdateEnvCustomJobResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UpdateEnvCustomJobResponse) GoString() string {
+	return s.String()
+}
+
+func (s *UpdateEnvCustomJobResponse) SetHeaders(v map[string]*string) *UpdateEnvCustomJobResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *UpdateEnvCustomJobResponse) SetStatusCode(v int32) *UpdateEnvCustomJobResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *UpdateEnvCustomJobResponse) SetBody(v *UpdateEnvCustomJobResponseBody) *UpdateEnvCustomJobResponse {
+	s.Body = v
+	return s
+}
+
+type UpdateEnvPodMonitorRequest struct {
+	// Locale, the default is Chinese zh | en.
+	AliyunLang *string `json:"AliyunLang,omitempty" xml:"AliyunLang,omitempty"`
+	// yaml configuration string.
+	ConfigYaml *string `json:"ConfigYaml,omitempty" xml:"ConfigYaml,omitempty"`
+	// Trial run: Check whether the format is legal and whether it can match targets.
+	DryRun *bool `json:"DryRun,omitempty" xml:"DryRun,omitempty"`
+	// Environment ID.
+	EnvironmentId *string `json:"EnvironmentId,omitempty" xml:"EnvironmentId,omitempty"`
+	// The namespace where podMonitor is located.
+	Namespace *string `json:"Namespace,omitempty" xml:"Namespace,omitempty"`
+	// PodMonitor name.
+	PodMonitorName *string `json:"PodMonitorName,omitempty" xml:"PodMonitorName,omitempty"`
+	// The ID of the region.
+	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+}
+
+func (s UpdateEnvPodMonitorRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UpdateEnvPodMonitorRequest) GoString() string {
+	return s.String()
+}
+
+func (s *UpdateEnvPodMonitorRequest) SetAliyunLang(v string) *UpdateEnvPodMonitorRequest {
+	s.AliyunLang = &v
+	return s
+}
+
+func (s *UpdateEnvPodMonitorRequest) SetConfigYaml(v string) *UpdateEnvPodMonitorRequest {
+	s.ConfigYaml = &v
+	return s
+}
+
+func (s *UpdateEnvPodMonitorRequest) SetDryRun(v bool) *UpdateEnvPodMonitorRequest {
+	s.DryRun = &v
+	return s
+}
+
+func (s *UpdateEnvPodMonitorRequest) SetEnvironmentId(v string) *UpdateEnvPodMonitorRequest {
+	s.EnvironmentId = &v
+	return s
+}
+
+func (s *UpdateEnvPodMonitorRequest) SetNamespace(v string) *UpdateEnvPodMonitorRequest {
+	s.Namespace = &v
+	return s
+}
+
+func (s *UpdateEnvPodMonitorRequest) SetPodMonitorName(v string) *UpdateEnvPodMonitorRequest {
+	s.PodMonitorName = &v
+	return s
+}
+
+func (s *UpdateEnvPodMonitorRequest) SetRegionId(v string) *UpdateEnvPodMonitorRequest {
+	s.RegionId = &v
+	return s
+}
+
+type UpdateEnvPodMonitorResponseBody struct {
+	// The status code. The status code 200 indicates that the request was successful. If another status code is returned, the request failed.
+	Code *int32 `json:"Code,omitempty" xml:"Code,omitempty"`
+	// The returned struct.
+	Data *UpdateEnvPodMonitorResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
+	// The message returned.
+	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// ID of the request.
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+}
+
+func (s UpdateEnvPodMonitorResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UpdateEnvPodMonitorResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *UpdateEnvPodMonitorResponseBody) SetCode(v int32) *UpdateEnvPodMonitorResponseBody {
+	s.Code = &v
+	return s
+}
+
+func (s *UpdateEnvPodMonitorResponseBody) SetData(v *UpdateEnvPodMonitorResponseBodyData) *UpdateEnvPodMonitorResponseBody {
+	s.Data = v
+	return s
+}
+
+func (s *UpdateEnvPodMonitorResponseBody) SetMessage(v string) *UpdateEnvPodMonitorResponseBody {
+	s.Message = &v
+	return s
+}
+
+func (s *UpdateEnvPodMonitorResponseBody) SetRequestId(v string) *UpdateEnvPodMonitorResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+type UpdateEnvPodMonitorResponseBodyData struct {
+	// Target matching prompt information.
+	MatchedMsg *string `json:"MatchedMsg,omitempty" xml:"MatchedMsg,omitempty"`
+	// The number of matched targets.
+	MatchedTargetCount *string `json:"MatchedTargetCount,omitempty" xml:"MatchedTargetCount,omitempty"`
+}
+
+func (s UpdateEnvPodMonitorResponseBodyData) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UpdateEnvPodMonitorResponseBodyData) GoString() string {
+	return s.String()
+}
+
+func (s *UpdateEnvPodMonitorResponseBodyData) SetMatchedMsg(v string) *UpdateEnvPodMonitorResponseBodyData {
+	s.MatchedMsg = &v
+	return s
+}
+
+func (s *UpdateEnvPodMonitorResponseBodyData) SetMatchedTargetCount(v string) *UpdateEnvPodMonitorResponseBodyData {
+	s.MatchedTargetCount = &v
+	return s
+}
+
+type UpdateEnvPodMonitorResponse struct {
+	Headers    map[string]*string               `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                           `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *UpdateEnvPodMonitorResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s UpdateEnvPodMonitorResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UpdateEnvPodMonitorResponse) GoString() string {
+	return s.String()
+}
+
+func (s *UpdateEnvPodMonitorResponse) SetHeaders(v map[string]*string) *UpdateEnvPodMonitorResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *UpdateEnvPodMonitorResponse) SetStatusCode(v int32) *UpdateEnvPodMonitorResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *UpdateEnvPodMonitorResponse) SetBody(v *UpdateEnvPodMonitorResponseBody) *UpdateEnvPodMonitorResponse {
+	s.Body = v
+	return s
+}
+
+type UpdateEnvServiceMonitorRequest struct {
+	// Locale, the default is Chinese zh | en.
+	AliyunLang *string `json:"AliyunLang,omitempty" xml:"AliyunLang,omitempty"`
+	// yaml configuration string.
+	ConfigYaml *string `json:"ConfigYaml,omitempty" xml:"ConfigYaml,omitempty"`
+	// Trial run: Check whether the format is legal and whether it can match targets.
+	DryRun *bool `json:"DryRun,omitempty" xml:"DryRun,omitempty"`
+	// Environment ID.
+	EnvironmentId *string `json:"EnvironmentId,omitempty" xml:"EnvironmentId,omitempty"`
+	// The namespace where serviceMonitor is located.
+	Namespace *string `json:"Namespace,omitempty" xml:"Namespace,omitempty"`
+	// The region ID.
+	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	// ServiceMonitor name.
+	ServiceMonitorName *string `json:"ServiceMonitorName,omitempty" xml:"ServiceMonitorName,omitempty"`
+}
+
+func (s UpdateEnvServiceMonitorRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UpdateEnvServiceMonitorRequest) GoString() string {
+	return s.String()
+}
+
+func (s *UpdateEnvServiceMonitorRequest) SetAliyunLang(v string) *UpdateEnvServiceMonitorRequest {
+	s.AliyunLang = &v
+	return s
+}
+
+func (s *UpdateEnvServiceMonitorRequest) SetConfigYaml(v string) *UpdateEnvServiceMonitorRequest {
+	s.ConfigYaml = &v
+	return s
+}
+
+func (s *UpdateEnvServiceMonitorRequest) SetDryRun(v bool) *UpdateEnvServiceMonitorRequest {
+	s.DryRun = &v
+	return s
+}
+
+func (s *UpdateEnvServiceMonitorRequest) SetEnvironmentId(v string) *UpdateEnvServiceMonitorRequest {
+	s.EnvironmentId = &v
+	return s
+}
+
+func (s *UpdateEnvServiceMonitorRequest) SetNamespace(v string) *UpdateEnvServiceMonitorRequest {
+	s.Namespace = &v
+	return s
+}
+
+func (s *UpdateEnvServiceMonitorRequest) SetRegionId(v string) *UpdateEnvServiceMonitorRequest {
+	s.RegionId = &v
+	return s
+}
+
+func (s *UpdateEnvServiceMonitorRequest) SetServiceMonitorName(v string) *UpdateEnvServiceMonitorRequest {
+	s.ServiceMonitorName = &v
+	return s
+}
+
+type UpdateEnvServiceMonitorResponseBody struct {
+	// The status code. The status code 200 indicates that the request was successful.
+	Code *int32 `json:"Code,omitempty" xml:"Code,omitempty"`
+	// The struct returned.
+	Data *UpdateEnvServiceMonitorResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
+	// The message returned.
+	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// Id of the request
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+}
+
+func (s UpdateEnvServiceMonitorResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UpdateEnvServiceMonitorResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *UpdateEnvServiceMonitorResponseBody) SetCode(v int32) *UpdateEnvServiceMonitorResponseBody {
+	s.Code = &v
+	return s
+}
+
+func (s *UpdateEnvServiceMonitorResponseBody) SetData(v *UpdateEnvServiceMonitorResponseBodyData) *UpdateEnvServiceMonitorResponseBody {
+	s.Data = v
+	return s
+}
+
+func (s *UpdateEnvServiceMonitorResponseBody) SetMessage(v string) *UpdateEnvServiceMonitorResponseBody {
+	s.Message = &v
+	return s
+}
+
+func (s *UpdateEnvServiceMonitorResponseBody) SetRequestId(v string) *UpdateEnvServiceMonitorResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+type UpdateEnvServiceMonitorResponseBodyData struct {
+	// Target matching prompt information.
+	MatchedMsg *string `json:"MatchedMsg,omitempty" xml:"MatchedMsg,omitempty"`
+	// The number of matched targets.
+	MatchedTargetCount *string `json:"MatchedTargetCount,omitempty" xml:"MatchedTargetCount,omitempty"`
+}
+
+func (s UpdateEnvServiceMonitorResponseBodyData) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UpdateEnvServiceMonitorResponseBodyData) GoString() string {
+	return s.String()
+}
+
+func (s *UpdateEnvServiceMonitorResponseBodyData) SetMatchedMsg(v string) *UpdateEnvServiceMonitorResponseBodyData {
+	s.MatchedMsg = &v
+	return s
+}
+
+func (s *UpdateEnvServiceMonitorResponseBodyData) SetMatchedTargetCount(v string) *UpdateEnvServiceMonitorResponseBodyData {
+	s.MatchedTargetCount = &v
+	return s
+}
+
+type UpdateEnvServiceMonitorResponse struct {
+	Headers    map[string]*string                   `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                               `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *UpdateEnvServiceMonitorResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s UpdateEnvServiceMonitorResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UpdateEnvServiceMonitorResponse) GoString() string {
+	return s.String()
+}
+
+func (s *UpdateEnvServiceMonitorResponse) SetHeaders(v map[string]*string) *UpdateEnvServiceMonitorResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *UpdateEnvServiceMonitorResponse) SetStatusCode(v int32) *UpdateEnvServiceMonitorResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *UpdateEnvServiceMonitorResponse) SetBody(v *UpdateEnvServiceMonitorResponseBody) *UpdateEnvServiceMonitorResponse {
+	s.Body = v
+	return s
+}
+
+type UpdateEnvironmentRequest struct {
+	// Locale, the default is Chinese zh | en.
+	AliyunLang *string `json:"AliyunLang,omitempty" xml:"AliyunLang,omitempty"`
+	// Environment ID.
+	EnvironmentId *string `json:"EnvironmentId,omitempty" xml:"EnvironmentId,omitempty"`
+	// Environment name.
+	EnvironmentName *string `json:"EnvironmentName,omitempty" xml:"EnvironmentName,omitempty"`
+	// The region ID.
+	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+}
+
+func (s UpdateEnvironmentRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UpdateEnvironmentRequest) GoString() string {
+	return s.String()
+}
+
+func (s *UpdateEnvironmentRequest) SetAliyunLang(v string) *UpdateEnvironmentRequest {
+	s.AliyunLang = &v
+	return s
+}
+
+func (s *UpdateEnvironmentRequest) SetEnvironmentId(v string) *UpdateEnvironmentRequest {
+	s.EnvironmentId = &v
+	return s
+}
+
+func (s *UpdateEnvironmentRequest) SetEnvironmentName(v string) *UpdateEnvironmentRequest {
+	s.EnvironmentName = &v
+	return s
+}
+
+func (s *UpdateEnvironmentRequest) SetRegionId(v string) *UpdateEnvironmentRequest {
+	s.RegionId = &v
+	return s
+}
+
+type UpdateEnvironmentResponseBody struct {
+	// The status code or error code.
+	Code *int32 `json:"Code,omitempty" xml:"Code,omitempty"`
+	// The data returned.
+	Data *string `json:"Data,omitempty" xml:"Data,omitempty"`
+	// The message returned.
+	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// Id of the request
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+}
+
+func (s UpdateEnvironmentResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UpdateEnvironmentResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *UpdateEnvironmentResponseBody) SetCode(v int32) *UpdateEnvironmentResponseBody {
+	s.Code = &v
+	return s
+}
+
+func (s *UpdateEnvironmentResponseBody) SetData(v string) *UpdateEnvironmentResponseBody {
+	s.Data = &v
+	return s
+}
+
+func (s *UpdateEnvironmentResponseBody) SetMessage(v string) *UpdateEnvironmentResponseBody {
+	s.Message = &v
+	return s
+}
+
+func (s *UpdateEnvironmentResponseBody) SetRequestId(v string) *UpdateEnvironmentResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+type UpdateEnvironmentResponse struct {
+	Headers    map[string]*string             `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                         `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *UpdateEnvironmentResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s UpdateEnvironmentResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UpdateEnvironmentResponse) GoString() string {
+	return s.String()
+}
+
+func (s *UpdateEnvironmentResponse) SetHeaders(v map[string]*string) *UpdateEnvironmentResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *UpdateEnvironmentResponse) SetStatusCode(v int32) *UpdateEnvironmentResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *UpdateEnvironmentResponse) SetBody(v *UpdateEnvironmentResponseBody) *UpdateEnvironmentResponse {
+	s.Body = v
+	return s
+}
+
 type UpdateIntegrationRequest struct {
 	// Specifies whether to automatically clear alert events. Valid values:
 	//
@@ -36184,9 +39704,12 @@ func (s *UpdateTimingSyntheticTaskRequestAvailableAssertions) SetType(v string) 
 }
 
 type UpdateTimingSyntheticTaskRequestCommonSetting struct {
-	CustomHost     *UpdateTimingSyntheticTaskRequestCommonSettingCustomHost `json:"CustomHost,omitempty" xml:"CustomHost,omitempty" type:"Struct"`
-	IpType         *int32                                                   `json:"IpType,omitempty" xml:"IpType,omitempty"`
-	MonitorSamples *int32                                                   `json:"MonitorSamples,omitempty" xml:"MonitorSamples,omitempty"`
+	CustomHost      *UpdateTimingSyntheticTaskRequestCommonSettingCustomHost `json:"CustomHost,omitempty" xml:"CustomHost,omitempty" type:"Struct"`
+	IpType          *int32                                                   `json:"IpType,omitempty" xml:"IpType,omitempty"`
+	IsOpenTrace     *bool                                                    `json:"IsOpenTrace,omitempty" xml:"IsOpenTrace,omitempty"`
+	MonitorSamples  *int32                                                   `json:"MonitorSamples,omitempty" xml:"MonitorSamples,omitempty"`
+	TraceClientType *int32                                                   `json:"TraceClientType,omitempty" xml:"TraceClientType,omitempty"`
+	XtraceRegion    *string                                                  `json:"XtraceRegion,omitempty" xml:"XtraceRegion,omitempty"`
 }
 
 func (s UpdateTimingSyntheticTaskRequestCommonSetting) String() string {
@@ -36207,8 +39730,23 @@ func (s *UpdateTimingSyntheticTaskRequestCommonSetting) SetIpType(v int32) *Upda
 	return s
 }
 
+func (s *UpdateTimingSyntheticTaskRequestCommonSetting) SetIsOpenTrace(v bool) *UpdateTimingSyntheticTaskRequestCommonSetting {
+	s.IsOpenTrace = &v
+	return s
+}
+
 func (s *UpdateTimingSyntheticTaskRequestCommonSetting) SetMonitorSamples(v int32) *UpdateTimingSyntheticTaskRequestCommonSetting {
 	s.MonitorSamples = &v
+	return s
+}
+
+func (s *UpdateTimingSyntheticTaskRequestCommonSetting) SetTraceClientType(v int32) *UpdateTimingSyntheticTaskRequestCommonSetting {
+	s.TraceClientType = &v
+	return s
+}
+
+func (s *UpdateTimingSyntheticTaskRequestCommonSetting) SetXtraceRegion(v string) *UpdateTimingSyntheticTaskRequestCommonSetting {
+	s.XtraceRegion = &v
 	return s
 }
 
@@ -38665,6 +42203,264 @@ func (client *Client) CreateDispatchRule(request *CreateDispatchRuleRequest) (_r
 	return _result, _err
 }
 
+func (client *Client) CreateEnvCustomJobWithOptions(request *CreateEnvCustomJobRequest, runtime *util.RuntimeOptions) (_result *CreateEnvCustomJobResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.AliyunLang)) {
+		query["AliyunLang"] = request.AliyunLang
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.CustomJobName)) {
+		query["CustomJobName"] = request.CustomJobName
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.EnvironmentId)) {
+		query["EnvironmentId"] = request.EnvironmentId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.RegionId)) {
+		query["RegionId"] = request.RegionId
+	}
+
+	body := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.ConfigYaml)) {
+		body["ConfigYaml"] = request.ConfigYaml
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+		Body:  openapiutil.ParseToMap(body),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("CreateEnvCustomJob"),
+		Version:     tea.String("2019-08-08"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &CreateEnvCustomJobResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) CreateEnvCustomJob(request *CreateEnvCustomJobRequest) (_result *CreateEnvCustomJobResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &CreateEnvCustomJobResponse{}
+	_body, _err := client.CreateEnvCustomJobWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) CreateEnvPodMonitorWithOptions(request *CreateEnvPodMonitorRequest, runtime *util.RuntimeOptions) (_result *CreateEnvPodMonitorResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.AliyunLang)) {
+		query["AliyunLang"] = request.AliyunLang
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.DryRun)) {
+		query["DryRun"] = request.DryRun
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.EnvironmentId)) {
+		query["EnvironmentId"] = request.EnvironmentId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.RegionId)) {
+		query["RegionId"] = request.RegionId
+	}
+
+	body := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.ConfigYaml)) {
+		body["ConfigYaml"] = request.ConfigYaml
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+		Body:  openapiutil.ParseToMap(body),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("CreateEnvPodMonitor"),
+		Version:     tea.String("2019-08-08"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &CreateEnvPodMonitorResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) CreateEnvPodMonitor(request *CreateEnvPodMonitorRequest) (_result *CreateEnvPodMonitorResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &CreateEnvPodMonitorResponse{}
+	_body, _err := client.CreateEnvPodMonitorWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) CreateEnvServiceMonitorWithOptions(request *CreateEnvServiceMonitorRequest, runtime *util.RuntimeOptions) (_result *CreateEnvServiceMonitorResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.AliyunLang)) {
+		query["AliyunLang"] = request.AliyunLang
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.DryRun)) {
+		query["DryRun"] = request.DryRun
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.EnvironmentId)) {
+		query["EnvironmentId"] = request.EnvironmentId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.RegionId)) {
+		query["RegionId"] = request.RegionId
+	}
+
+	body := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.ConfigYaml)) {
+		body["ConfigYaml"] = request.ConfigYaml
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+		Body:  openapiutil.ParseToMap(body),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("CreateEnvServiceMonitor"),
+		Version:     tea.String("2019-08-08"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &CreateEnvServiceMonitorResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) CreateEnvServiceMonitor(request *CreateEnvServiceMonitorRequest) (_result *CreateEnvServiceMonitorResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &CreateEnvServiceMonitorResponse{}
+	_body, _err := client.CreateEnvServiceMonitorWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) CreateEnvironmentWithOptions(request *CreateEnvironmentRequest, runtime *util.RuntimeOptions) (_result *CreateEnvironmentResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.AliyunLang)) {
+		query["AliyunLang"] = request.AliyunLang
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.BindResourceId)) {
+		query["BindResourceId"] = request.BindResourceId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.EnvironmentName)) {
+		query["EnvironmentName"] = request.EnvironmentName
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.EnvironmentSubType)) {
+		query["EnvironmentSubType"] = request.EnvironmentSubType
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.EnvironmentType)) {
+		query["EnvironmentType"] = request.EnvironmentType
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.RegionId)) {
+		query["RegionId"] = request.RegionId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ResourceGroupId)) {
+		query["ResourceGroupId"] = request.ResourceGroupId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Tags)) {
+		query["Tags"] = request.Tags
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("CreateEnvironment"),
+		Version:     tea.String("2019-08-08"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &CreateEnvironmentResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) CreateEnvironment(request *CreateEnvironmentRequest) (_result *CreateEnvironmentResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &CreateEnvironmentResponse{}
+	_body, _err := client.CreateEnvironmentWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
 func (client *Client) CreateIntegrationWithOptions(request *CreateIntegrationRequest, runtime *util.RuntimeOptions) (_result *CreateIntegrationResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -40470,6 +44266,270 @@ func (client *Client) DeleteDispatchRule(request *DeleteDispatchRuleRequest) (_r
 	return _result, _err
 }
 
+func (client *Client) DeleteEnvCustomJobWithOptions(request *DeleteEnvCustomJobRequest, runtime *util.RuntimeOptions) (_result *DeleteEnvCustomJobResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.CustomJobName)) {
+		query["CustomJobName"] = request.CustomJobName
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.EnvironmentId)) {
+		query["EnvironmentId"] = request.EnvironmentId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.RegionId)) {
+		query["RegionId"] = request.RegionId
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("DeleteEnvCustomJob"),
+		Version:     tea.String("2019-08-08"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &DeleteEnvCustomJobResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) DeleteEnvCustomJob(request *DeleteEnvCustomJobRequest) (_result *DeleteEnvCustomJobResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &DeleteEnvCustomJobResponse{}
+	_body, _err := client.DeleteEnvCustomJobWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) DeleteEnvPodMonitorWithOptions(request *DeleteEnvPodMonitorRequest, runtime *util.RuntimeOptions) (_result *DeleteEnvPodMonitorResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.EnvironmentId)) {
+		query["EnvironmentId"] = request.EnvironmentId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Namespace)) {
+		query["Namespace"] = request.Namespace
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.PodMonitorName)) {
+		query["PodMonitorName"] = request.PodMonitorName
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.RegionId)) {
+		query["RegionId"] = request.RegionId
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("DeleteEnvPodMonitor"),
+		Version:     tea.String("2019-08-08"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &DeleteEnvPodMonitorResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) DeleteEnvPodMonitor(request *DeleteEnvPodMonitorRequest) (_result *DeleteEnvPodMonitorResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &DeleteEnvPodMonitorResponse{}
+	_body, _err := client.DeleteEnvPodMonitorWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) DeleteEnvServiceMonitorWithOptions(request *DeleteEnvServiceMonitorRequest, runtime *util.RuntimeOptions) (_result *DeleteEnvServiceMonitorResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.EnvironmentId)) {
+		query["EnvironmentId"] = request.EnvironmentId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Namespace)) {
+		query["Namespace"] = request.Namespace
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.RegionId)) {
+		query["RegionId"] = request.RegionId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ServiceMonitorName)) {
+		query["ServiceMonitorName"] = request.ServiceMonitorName
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("DeleteEnvServiceMonitor"),
+		Version:     tea.String("2019-08-08"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &DeleteEnvServiceMonitorResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) DeleteEnvServiceMonitor(request *DeleteEnvServiceMonitorRequest) (_result *DeleteEnvServiceMonitorResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &DeleteEnvServiceMonitorResponse{}
+	_body, _err := client.DeleteEnvServiceMonitorWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) DeleteEnvironmentWithOptions(request *DeleteEnvironmentRequest, runtime *util.RuntimeOptions) (_result *DeleteEnvironmentResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.EnvironmentId)) {
+		query["EnvironmentId"] = request.EnvironmentId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.RegionId)) {
+		query["RegionId"] = request.RegionId
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("DeleteEnvironment"),
+		Version:     tea.String("2019-08-08"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &DeleteEnvironmentResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) DeleteEnvironment(request *DeleteEnvironmentRequest) (_result *DeleteEnvironmentResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &DeleteEnvironmentResponse{}
+	_body, _err := client.DeleteEnvironmentWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) DeleteEnvironmentFeatureWithOptions(request *DeleteEnvironmentFeatureRequest, runtime *util.RuntimeOptions) (_result *DeleteEnvironmentFeatureResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.EnvironmentId)) {
+		query["EnvironmentId"] = request.EnvironmentId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.FeatureName)) {
+		query["FeatureName"] = request.FeatureName
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.RegionId)) {
+		query["RegionId"] = request.RegionId
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("DeleteEnvironmentFeature"),
+		Version:     tea.String("2019-08-08"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &DeleteEnvironmentFeatureResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) DeleteEnvironmentFeature(request *DeleteEnvironmentFeatureRequest) (_result *DeleteEnvironmentFeatureResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &DeleteEnvironmentFeatureResponse{}
+	_body, _err := client.DeleteEnvironmentFeatureWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
 func (client *Client) DeleteEventBridgeIntegrationWithOptions(request *DeleteEventBridgeIntegrationRequest, runtime *util.RuntimeOptions) (_result *DeleteEventBridgeIntegrationResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -41601,6 +45661,222 @@ func (client *Client) DescribeDispatchRule(request *DescribeDispatchRuleRequest)
 	runtime := &util.RuntimeOptions{}
 	_result = &DescribeDispatchRuleResponse{}
 	_body, _err := client.DescribeDispatchRuleWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) DescribeEnvCustomJobWithOptions(request *DescribeEnvCustomJobRequest, runtime *util.RuntimeOptions) (_result *DescribeEnvCustomJobResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.CustomJobName)) {
+		query["CustomJobName"] = request.CustomJobName
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.EncryptYaml)) {
+		query["EncryptYaml"] = request.EncryptYaml
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.EnvironmentId)) {
+		query["EnvironmentId"] = request.EnvironmentId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.RegionId)) {
+		query["RegionId"] = request.RegionId
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("DescribeEnvCustomJob"),
+		Version:     tea.String("2019-08-08"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &DescribeEnvCustomJobResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) DescribeEnvCustomJob(request *DescribeEnvCustomJobRequest) (_result *DescribeEnvCustomJobResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &DescribeEnvCustomJobResponse{}
+	_body, _err := client.DescribeEnvCustomJobWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) DescribeEnvPodMonitorWithOptions(request *DescribeEnvPodMonitorRequest, runtime *util.RuntimeOptions) (_result *DescribeEnvPodMonitorResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.EnvironmentId)) {
+		query["EnvironmentId"] = request.EnvironmentId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Namespace)) {
+		query["Namespace"] = request.Namespace
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.PodMonitorName)) {
+		query["PodMonitorName"] = request.PodMonitorName
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.RegionId)) {
+		query["RegionId"] = request.RegionId
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("DescribeEnvPodMonitor"),
+		Version:     tea.String("2019-08-08"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &DescribeEnvPodMonitorResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) DescribeEnvPodMonitor(request *DescribeEnvPodMonitorRequest) (_result *DescribeEnvPodMonitorResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &DescribeEnvPodMonitorResponse{}
+	_body, _err := client.DescribeEnvPodMonitorWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) DescribeEnvServiceMonitorWithOptions(request *DescribeEnvServiceMonitorRequest, runtime *util.RuntimeOptions) (_result *DescribeEnvServiceMonitorResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.EnvironmentId)) {
+		query["EnvironmentId"] = request.EnvironmentId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Namespace)) {
+		query["Namespace"] = request.Namespace
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.RegionId)) {
+		query["RegionId"] = request.RegionId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ServiceMonitorName)) {
+		query["ServiceMonitorName"] = request.ServiceMonitorName
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("DescribeEnvServiceMonitor"),
+		Version:     tea.String("2019-08-08"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &DescribeEnvServiceMonitorResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) DescribeEnvServiceMonitor(request *DescribeEnvServiceMonitorRequest) (_result *DescribeEnvServiceMonitorResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &DescribeEnvServiceMonitorResponse{}
+	_body, _err := client.DescribeEnvServiceMonitorWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) DescribeEnvironmentWithOptions(request *DescribeEnvironmentRequest, runtime *util.RuntimeOptions) (_result *DescribeEnvironmentResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.EnvironmentId)) {
+		query["EnvironmentId"] = request.EnvironmentId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.RegionId)) {
+		query["RegionId"] = request.RegionId
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("DescribeEnvironment"),
+		Version:     tea.String("2019-08-08"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &DescribeEnvironmentResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) DescribeEnvironment(request *DescribeEnvironmentRequest) (_result *DescribeEnvironmentResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &DescribeEnvironmentResponse{}
+	_body, _err := client.DescribeEnvironmentWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -43585,6 +47861,58 @@ func (client *Client) ImportAppAlertRules(request *ImportAppAlertRulesRequest) (
 	return _result, _err
 }
 
+func (client *Client) InitEnvironmentWithOptions(request *InitEnvironmentRequest, runtime *util.RuntimeOptions) (_result *InitEnvironmentResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.AliyunLang)) {
+		query["AliyunLang"] = request.AliyunLang
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.EnvironmentId)) {
+		query["EnvironmentId"] = request.EnvironmentId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.RegionId)) {
+		query["RegionId"] = request.RegionId
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("InitEnvironment"),
+		Version:     tea.String("2019-08-08"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &InitEnvironmentResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) InitEnvironment(request *InitEnvironmentRequest) (_result *InitEnvironmentResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &InitEnvironmentResponse{}
+	_body, _err := client.InitEnvironmentWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
 func (client *Client) InstallCmsExporterWithOptions(request *InstallCmsExporterRequest, runtime *util.RuntimeOptions) (_result *InstallCmsExporterResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -44259,6 +48587,154 @@ func (client *Client) ListDispatchRule(request *ListDispatchRuleRequest) (_resul
 	return _result, _err
 }
 
+func (client *Client) ListEnvCustomJobsWithOptions(request *ListEnvCustomJobsRequest, runtime *util.RuntimeOptions) (_result *ListEnvCustomJobsResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.EncryptYaml)) {
+		query["EncryptYaml"] = request.EncryptYaml
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.EnvironmentId)) {
+		query["EnvironmentId"] = request.EnvironmentId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.RegionId)) {
+		query["RegionId"] = request.RegionId
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("ListEnvCustomJobs"),
+		Version:     tea.String("2019-08-08"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &ListEnvCustomJobsResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) ListEnvCustomJobs(request *ListEnvCustomJobsRequest) (_result *ListEnvCustomJobsResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &ListEnvCustomJobsResponse{}
+	_body, _err := client.ListEnvCustomJobsWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) ListEnvPodMonitorsWithOptions(request *ListEnvPodMonitorsRequest, runtime *util.RuntimeOptions) (_result *ListEnvPodMonitorsResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.EnvironmentId)) {
+		query["EnvironmentId"] = request.EnvironmentId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.RegionId)) {
+		query["RegionId"] = request.RegionId
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("ListEnvPodMonitors"),
+		Version:     tea.String("2019-08-08"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &ListEnvPodMonitorsResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) ListEnvPodMonitors(request *ListEnvPodMonitorsRequest) (_result *ListEnvPodMonitorsResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &ListEnvPodMonitorsResponse{}
+	_body, _err := client.ListEnvPodMonitorsWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) ListEnvServiceMonitorsWithOptions(request *ListEnvServiceMonitorsRequest, runtime *util.RuntimeOptions) (_result *ListEnvServiceMonitorsResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.EnvironmentId)) {
+		query["EnvironmentId"] = request.EnvironmentId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.RegionId)) {
+		query["RegionId"] = request.RegionId
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("ListEnvServiceMonitors"),
+		Version:     tea.String("2019-08-08"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &ListEnvServiceMonitorsResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) ListEnvServiceMonitors(request *ListEnvServiceMonitorsRequest) (_result *ListEnvServiceMonitorsResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &ListEnvServiceMonitorsResponse{}
+	_body, _err := client.ListEnvServiceMonitorsWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
 func (client *Client) ListEscalationPoliciesWithOptions(request *ListEscalationPoliciesRequest, runtime *util.RuntimeOptions) (_result *ListEscalationPoliciesResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -44332,6 +48808,68 @@ func (client *Client) ListEventBridgeIntegrations(request *ListEventBridgeIntegr
 	runtime := &util.RuntimeOptions{}
 	_result = &ListEventBridgeIntegrationsResponse{}
 	_body, _err := client.ListEventBridgeIntegrationsWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) ListGrafanaWorkspaceWithOptions(tmpReq *ListGrafanaWorkspaceRequest, runtime *util.RuntimeOptions) (_result *ListGrafanaWorkspaceResponse, _err error) {
+	_err = util.ValidateModel(tmpReq)
+	if _err != nil {
+		return _result, _err
+	}
+	request := &ListGrafanaWorkspaceShrinkRequest{}
+	openapiutil.Convert(tmpReq, request)
+	if !tea.BoolValue(util.IsUnset(tmpReq.Tags)) {
+		request.TagsShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.Tags, tea.String("Tags"), tea.String("json"))
+	}
+
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.AliyunLang)) {
+		query["AliyunLang"] = request.AliyunLang
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.RegionId)) {
+		query["RegionId"] = request.RegionId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ResourceGroupId)) {
+		query["ResourceGroupId"] = request.ResourceGroupId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.TagsShrink)) {
+		query["Tags"] = request.TagsShrink
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("ListGrafanaWorkspace"),
+		Version:     tea.String("2019-08-08"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &ListGrafanaWorkspaceResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) ListGrafanaWorkspace(request *ListGrafanaWorkspaceRequest) (_result *ListGrafanaWorkspaceResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &ListGrafanaWorkspaceResponse{}
+	_body, _err := client.ListGrafanaWorkspaceWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -45936,6 +50474,58 @@ func (client *Client) RemoveSourcesFromPrometheusGlobalView(request *RemoveSourc
 	runtime := &util.RuntimeOptions{}
 	_result = &RemoveSourcesFromPrometheusGlobalViewResponse{}
 	_body, _err := client.RemoveSourcesFromPrometheusGlobalViewWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) RestartEnvironmentFeatureWithOptions(request *RestartEnvironmentFeatureRequest, runtime *util.RuntimeOptions) (_result *RestartEnvironmentFeatureResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.EnvironmentId)) {
+		query["EnvironmentId"] = request.EnvironmentId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.FeatureName)) {
+		query["FeatureName"] = request.FeatureName
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.RegionId)) {
+		query["RegionId"] = request.RegionId
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("RestartEnvironmentFeature"),
+		Version:     tea.String("2019-08-08"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &RestartEnvironmentFeatureResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) RestartEnvironmentFeature(request *RestartEnvironmentFeatureRequest) (_result *RestartEnvironmentFeatureResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &RestartEnvironmentFeatureResponse{}
+	_body, _err := client.RestartEnvironmentFeatureWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -47685,6 +52275,268 @@ func (client *Client) UpdateDispatchRule(request *UpdateDispatchRuleRequest) (_r
 	runtime := &util.RuntimeOptions{}
 	_result = &UpdateDispatchRuleResponse{}
 	_body, _err := client.UpdateDispatchRuleWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) UpdateEnvCustomJobWithOptions(request *UpdateEnvCustomJobRequest, runtime *util.RuntimeOptions) (_result *UpdateEnvCustomJobResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.AliyunLang)) {
+		query["AliyunLang"] = request.AliyunLang
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.CustomJobName)) {
+		query["CustomJobName"] = request.CustomJobName
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.EnvironmentId)) {
+		query["EnvironmentId"] = request.EnvironmentId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.RegionId)) {
+		query["RegionId"] = request.RegionId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Status)) {
+		query["Status"] = request.Status
+	}
+
+	body := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.ConfigYaml)) {
+		body["ConfigYaml"] = request.ConfigYaml
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+		Body:  openapiutil.ParseToMap(body),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("UpdateEnvCustomJob"),
+		Version:     tea.String("2019-08-08"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &UpdateEnvCustomJobResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) UpdateEnvCustomJob(request *UpdateEnvCustomJobRequest) (_result *UpdateEnvCustomJobResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &UpdateEnvCustomJobResponse{}
+	_body, _err := client.UpdateEnvCustomJobWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) UpdateEnvPodMonitorWithOptions(request *UpdateEnvPodMonitorRequest, runtime *util.RuntimeOptions) (_result *UpdateEnvPodMonitorResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.AliyunLang)) {
+		query["AliyunLang"] = request.AliyunLang
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.DryRun)) {
+		query["DryRun"] = request.DryRun
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.EnvironmentId)) {
+		query["EnvironmentId"] = request.EnvironmentId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Namespace)) {
+		query["Namespace"] = request.Namespace
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.PodMonitorName)) {
+		query["PodMonitorName"] = request.PodMonitorName
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.RegionId)) {
+		query["RegionId"] = request.RegionId
+	}
+
+	body := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.ConfigYaml)) {
+		body["ConfigYaml"] = request.ConfigYaml
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+		Body:  openapiutil.ParseToMap(body),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("UpdateEnvPodMonitor"),
+		Version:     tea.String("2019-08-08"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &UpdateEnvPodMonitorResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) UpdateEnvPodMonitor(request *UpdateEnvPodMonitorRequest) (_result *UpdateEnvPodMonitorResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &UpdateEnvPodMonitorResponse{}
+	_body, _err := client.UpdateEnvPodMonitorWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) UpdateEnvServiceMonitorWithOptions(request *UpdateEnvServiceMonitorRequest, runtime *util.RuntimeOptions) (_result *UpdateEnvServiceMonitorResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.AliyunLang)) {
+		query["AliyunLang"] = request.AliyunLang
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.DryRun)) {
+		query["DryRun"] = request.DryRun
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.EnvironmentId)) {
+		query["EnvironmentId"] = request.EnvironmentId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Namespace)) {
+		query["Namespace"] = request.Namespace
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.RegionId)) {
+		query["RegionId"] = request.RegionId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ServiceMonitorName)) {
+		query["ServiceMonitorName"] = request.ServiceMonitorName
+	}
+
+	body := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.ConfigYaml)) {
+		body["ConfigYaml"] = request.ConfigYaml
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+		Body:  openapiutil.ParseToMap(body),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("UpdateEnvServiceMonitor"),
+		Version:     tea.String("2019-08-08"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &UpdateEnvServiceMonitorResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) UpdateEnvServiceMonitor(request *UpdateEnvServiceMonitorRequest) (_result *UpdateEnvServiceMonitorResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &UpdateEnvServiceMonitorResponse{}
+	_body, _err := client.UpdateEnvServiceMonitorWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) UpdateEnvironmentWithOptions(request *UpdateEnvironmentRequest, runtime *util.RuntimeOptions) (_result *UpdateEnvironmentResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.AliyunLang)) {
+		query["AliyunLang"] = request.AliyunLang
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.EnvironmentId)) {
+		query["EnvironmentId"] = request.EnvironmentId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.EnvironmentName)) {
+		query["EnvironmentName"] = request.EnvironmentName
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.RegionId)) {
+		query["RegionId"] = request.RegionId
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("UpdateEnvironment"),
+		Version:     tea.String("2019-08-08"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &UpdateEnvironmentResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) UpdateEnvironment(request *UpdateEnvironmentRequest) (_result *UpdateEnvironmentResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &UpdateEnvironmentResponse{}
+	_body, _err := client.UpdateEnvironmentWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
