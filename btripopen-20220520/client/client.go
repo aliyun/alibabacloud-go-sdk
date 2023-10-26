@@ -4014,11 +4014,12 @@ func (s *ApplyAddHeaders) SetXAcsBtripSoCorpToken(v string) *ApplyAddHeaders {
 }
 
 type ApplyAddRequest struct {
-	Budget      *int64  `json:"budget,omitempty" xml:"budget,omitempty"`
-	BudgetMerge *int32  `json:"budget_merge,omitempty" xml:"budget_merge,omitempty"`
-	CorpName    *string `json:"corp_name,omitempty" xml:"corp_name,omitempty"`
-	DepartId    *string `json:"depart_id,omitempty" xml:"depart_id,omitempty"`
-	DepartName  *string `json:"depart_name,omitempty" xml:"depart_name,omitempty"`
+	Budget      *int64                  `json:"budget,omitempty" xml:"budget,omitempty"`
+	BudgetMerge *int32                  `json:"budget_merge,omitempty" xml:"budget_merge,omitempty"`
+	CarRule     *ApplyAddRequestCarRule `json:"car_rule,omitempty" xml:"car_rule,omitempty" type:"Struct"`
+	CorpName    *string                 `json:"corp_name,omitempty" xml:"corp_name,omitempty"`
+	DepartId    *string                 `json:"depart_id,omitempty" xml:"depart_id,omitempty"`
+	DepartName  *string                 `json:"depart_name,omitempty" xml:"depart_name,omitempty"`
 	// 可将补充描述传入此字段，账单中将会体现此字段的值。可以用于企业的统计和对账
 	ExtendField               *string                                  `json:"extend_field,omitempty" xml:"extend_field,omitempty"`
 	ExternalTravelerList      []*ApplyAddRequestExternalTravelerList   `json:"external_traveler_list,omitempty" xml:"external_traveler_list,omitempty" type:"Repeated"`
@@ -4065,6 +4066,11 @@ func (s *ApplyAddRequest) SetBudget(v int64) *ApplyAddRequest {
 
 func (s *ApplyAddRequest) SetBudgetMerge(v int32) *ApplyAddRequest {
 	s.BudgetMerge = &v
+	return s
+}
+
+func (s *ApplyAddRequest) SetCarRule(v *ApplyAddRequestCarRule) *ApplyAddRequest {
+	s.CarRule = v
 	return s
 }
 
@@ -4220,6 +4226,29 @@ func (s *ApplyAddRequest) SetUserName(v string) *ApplyAddRequest {
 
 func (s *ApplyAddRequest) SetVehicleBudget(v int64) *ApplyAddRequest {
 	s.VehicleBudget = &v
+	return s
+}
+
+type ApplyAddRequestCarRule struct {
+	ScenarioTemplateId   *string `json:"scenario_template_id,omitempty" xml:"scenario_template_id,omitempty"`
+	ScenarioTemplateName *string `json:"scenario_template_name,omitempty" xml:"scenario_template_name,omitempty"`
+}
+
+func (s ApplyAddRequestCarRule) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ApplyAddRequestCarRule) GoString() string {
+	return s.String()
+}
+
+func (s *ApplyAddRequestCarRule) SetScenarioTemplateId(v string) *ApplyAddRequestCarRule {
+	s.ScenarioTemplateId = &v
+	return s
+}
+
+func (s *ApplyAddRequestCarRule) SetScenarioTemplateName(v string) *ApplyAddRequestCarRule {
+	s.ScenarioTemplateName = &v
 	return s
 }
 
@@ -4624,6 +4653,7 @@ func (s *ApplyAddRequestTravelerList) SetUserName(v string) *ApplyAddRequestTrav
 
 type ApplyAddRequestTravelerStandard struct {
 	BusinessDiscount          *int32                                       `json:"business_discount,omitempty" xml:"business_discount,omitempty"`
+	CarCitySet                []*ApplyAddRequestTravelerStandardCarCitySet `json:"car_city_set,omitempty" xml:"car_city_set,omitempty" type:"Repeated"`
 	EconomyDiscount           *int32                                       `json:"economy_discount,omitempty" xml:"economy_discount,omitempty"`
 	FirstDiscount             *int32                                       `json:"first_discount,omitempty" xml:"first_discount,omitempty"`
 	FlightCabins              *string                                      `json:"flight_cabins,omitempty" xml:"flight_cabins,omitempty"`
@@ -4645,6 +4675,11 @@ func (s ApplyAddRequestTravelerStandard) GoString() string {
 
 func (s *ApplyAddRequestTravelerStandard) SetBusinessDiscount(v int32) *ApplyAddRequestTravelerStandard {
 	s.BusinessDiscount = &v
+	return s
+}
+
+func (s *ApplyAddRequestTravelerStandard) SetCarCitySet(v []*ApplyAddRequestTravelerStandardCarCitySet) *ApplyAddRequestTravelerStandard {
+	s.CarCitySet = v
 	return s
 }
 
@@ -4693,6 +4728,29 @@ func (s *ApplyAddRequestTravelerStandard) SetUserId(v string) *ApplyAddRequestTr
 	return s
 }
 
+type ApplyAddRequestTravelerStandardCarCitySet struct {
+	CityCode *string `json:"city_code,omitempty" xml:"city_code,omitempty"`
+	CityName *string `json:"city_name,omitempty" xml:"city_name,omitempty"`
+}
+
+func (s ApplyAddRequestTravelerStandardCarCitySet) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ApplyAddRequestTravelerStandardCarCitySet) GoString() string {
+	return s.String()
+}
+
+func (s *ApplyAddRequestTravelerStandardCarCitySet) SetCityCode(v string) *ApplyAddRequestTravelerStandardCarCitySet {
+	s.CityCode = &v
+	return s
+}
+
+func (s *ApplyAddRequestTravelerStandardCarCitySet) SetCityName(v string) *ApplyAddRequestTravelerStandardCarCitySet {
+	s.CityName = &v
+	return s
+}
+
 type ApplyAddRequestTravelerStandardHotelCitys struct {
 	CityCode *string `json:"city_code,omitempty" xml:"city_code,omitempty"`
 	CityName *string `json:"city_name,omitempty" xml:"city_name,omitempty"`
@@ -4723,11 +4781,12 @@ func (s *ApplyAddRequestTravelerStandardHotelCitys) SetFee(v int64) *ApplyAddReq
 }
 
 type ApplyAddShrinkRequest struct {
-	Budget      *int64  `json:"budget,omitempty" xml:"budget,omitempty"`
-	BudgetMerge *int32  `json:"budget_merge,omitempty" xml:"budget_merge,omitempty"`
-	CorpName    *string `json:"corp_name,omitempty" xml:"corp_name,omitempty"`
-	DepartId    *string `json:"depart_id,omitempty" xml:"depart_id,omitempty"`
-	DepartName  *string `json:"depart_name,omitempty" xml:"depart_name,omitempty"`
+	Budget        *int64  `json:"budget,omitempty" xml:"budget,omitempty"`
+	BudgetMerge   *int32  `json:"budget_merge,omitempty" xml:"budget_merge,omitempty"`
+	CarRuleShrink *string `json:"car_rule,omitempty" xml:"car_rule,omitempty"`
+	CorpName      *string `json:"corp_name,omitempty" xml:"corp_name,omitempty"`
+	DepartId      *string `json:"depart_id,omitempty" xml:"depart_id,omitempty"`
+	DepartName    *string `json:"depart_name,omitempty" xml:"depart_name,omitempty"`
 	// 可将补充描述传入此字段，账单中将会体现此字段的值。可以用于企业的统计和对账
 	ExtendField                    *string `json:"extend_field,omitempty" xml:"extend_field,omitempty"`
 	ExternalTravelerListShrink     *string `json:"external_traveler_list,omitempty" xml:"external_traveler_list,omitempty"`
@@ -4774,6 +4833,11 @@ func (s *ApplyAddShrinkRequest) SetBudget(v int64) *ApplyAddShrinkRequest {
 
 func (s *ApplyAddShrinkRequest) SetBudgetMerge(v int32) *ApplyAddShrinkRequest {
 	s.BudgetMerge = &v
+	return s
+}
+
+func (s *ApplyAddShrinkRequest) SetCarRuleShrink(v string) *ApplyAddShrinkRequest {
+	s.CarRuleShrink = &v
 	return s
 }
 
@@ -5607,6 +5671,7 @@ func (s *ApplyListQueryResponseBody) SetTraceId(v string) *ApplyListQueryRespons
 type ApplyListQueryResponseBodyModuleList struct {
 	ApplyShowId          *string                                                     `json:"apply_show_id,omitempty" xml:"apply_show_id,omitempty"`
 	ApproverList         []*ApplyListQueryResponseBodyModuleListApproverList         `json:"approver_list,omitempty" xml:"approver_list,omitempty" type:"Repeated"`
+	CarRule              *ApplyListQueryResponseBodyModuleListCarRule                `json:"car_rule,omitempty" xml:"car_rule,omitempty" type:"Struct"`
 	CorpId               *string                                                     `json:"corp_id,omitempty" xml:"corp_id,omitempty"`
 	CorpName             *string                                                     `json:"corp_name,omitempty" xml:"corp_name,omitempty"`
 	DepartId             *string                                                     `json:"depart_id,omitempty" xml:"depart_id,omitempty"`
@@ -5649,6 +5714,11 @@ func (s *ApplyListQueryResponseBodyModuleList) SetApplyShowId(v string) *ApplyLi
 
 func (s *ApplyListQueryResponseBodyModuleList) SetApproverList(v []*ApplyListQueryResponseBodyModuleListApproverList) *ApplyListQueryResponseBodyModuleList {
 	s.ApproverList = v
+	return s
+}
+
+func (s *ApplyListQueryResponseBodyModuleList) SetCarRule(v *ApplyListQueryResponseBodyModuleListCarRule) *ApplyListQueryResponseBodyModuleList {
+	s.CarRule = v
 	return s
 }
 
@@ -5830,6 +5900,29 @@ func (s *ApplyListQueryResponseBodyModuleListApproverList) SetUserName(v string)
 	return s
 }
 
+type ApplyListQueryResponseBodyModuleListCarRule struct {
+	ScenarioTemplateId   *string `json:"scenario_template_id,omitempty" xml:"scenario_template_id,omitempty"`
+	ScenarioTemplateName *string `json:"scenario_template_name,omitempty" xml:"scenario_template_name,omitempty"`
+}
+
+func (s ApplyListQueryResponseBodyModuleListCarRule) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ApplyListQueryResponseBodyModuleListCarRule) GoString() string {
+	return s.String()
+}
+
+func (s *ApplyListQueryResponseBodyModuleListCarRule) SetScenarioTemplateId(v string) *ApplyListQueryResponseBodyModuleListCarRule {
+	s.ScenarioTemplateId = &v
+	return s
+}
+
+func (s *ApplyListQueryResponseBodyModuleListCarRule) SetScenarioTemplateName(v string) *ApplyListQueryResponseBodyModuleListCarRule {
+	s.ScenarioTemplateName = &v
+	return s
+}
+
 type ApplyListQueryResponseBodyModuleListExternalTravelerList struct {
 	UserName *string `json:"user_name,omitempty" xml:"user_name,omitempty"`
 }
@@ -6008,9 +6101,10 @@ func (s *ApplyListQueryResponseBodyModuleListItinerarySetList) SetTrafficType(v 
 }
 
 type ApplyListQueryResponseBodyModuleListTravelerList struct {
-	JobNo    *string `json:"job_no,omitempty" xml:"job_no,omitempty"`
-	UserId   *string `json:"user_id,omitempty" xml:"user_id,omitempty"`
-	UserName *string `json:"user_name,omitempty" xml:"user_name,omitempty"`
+	CarCitySet []*ApplyListQueryResponseBodyModuleListTravelerListCarCitySet `json:"car_city_set,omitempty" xml:"car_city_set,omitempty" type:"Repeated"`
+	JobNo      *string                                                       `json:"job_no,omitempty" xml:"job_no,omitempty"`
+	UserId     *string                                                       `json:"user_id,omitempty" xml:"user_id,omitempty"`
+	UserName   *string                                                       `json:"user_name,omitempty" xml:"user_name,omitempty"`
 }
 
 func (s ApplyListQueryResponseBodyModuleListTravelerList) String() string {
@@ -6019,6 +6113,11 @@ func (s ApplyListQueryResponseBodyModuleListTravelerList) String() string {
 
 func (s ApplyListQueryResponseBodyModuleListTravelerList) GoString() string {
 	return s.String()
+}
+
+func (s *ApplyListQueryResponseBodyModuleListTravelerList) SetCarCitySet(v []*ApplyListQueryResponseBodyModuleListTravelerListCarCitySet) *ApplyListQueryResponseBodyModuleListTravelerList {
+	s.CarCitySet = v
+	return s
 }
 
 func (s *ApplyListQueryResponseBodyModuleListTravelerList) SetJobNo(v string) *ApplyListQueryResponseBodyModuleListTravelerList {
@@ -6033,6 +6132,29 @@ func (s *ApplyListQueryResponseBodyModuleListTravelerList) SetUserId(v string) *
 
 func (s *ApplyListQueryResponseBodyModuleListTravelerList) SetUserName(v string) *ApplyListQueryResponseBodyModuleListTravelerList {
 	s.UserName = &v
+	return s
+}
+
+type ApplyListQueryResponseBodyModuleListTravelerListCarCitySet struct {
+	CityCode *string `json:"city_code,omitempty" xml:"city_code,omitempty"`
+	CityName *string `json:"city_name,omitempty" xml:"city_name,omitempty"`
+}
+
+func (s ApplyListQueryResponseBodyModuleListTravelerListCarCitySet) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ApplyListQueryResponseBodyModuleListTravelerListCarCitySet) GoString() string {
+	return s.String()
+}
+
+func (s *ApplyListQueryResponseBodyModuleListTravelerListCarCitySet) SetCityCode(v string) *ApplyListQueryResponseBodyModuleListTravelerListCarCitySet {
+	s.CityCode = &v
+	return s
+}
+
+func (s *ApplyListQueryResponseBodyModuleListTravelerListCarCitySet) SetCityName(v string) *ApplyListQueryResponseBodyModuleListTravelerListCarCitySet {
+	s.CityName = &v
 	return s
 }
 
@@ -6089,11 +6211,12 @@ func (s *ApplyModifyHeaders) SetXAcsBtripSoCorpToken(v string) *ApplyModifyHeade
 }
 
 type ApplyModifyRequest struct {
-	Budget      *int64  `json:"budget,omitempty" xml:"budget,omitempty"`
-	BudgetMerge *int32  `json:"budget_merge,omitempty" xml:"budget_merge,omitempty"`
-	CorpName    *string `json:"corp_name,omitempty" xml:"corp_name,omitempty"`
-	DepartId    *string `json:"depart_id,omitempty" xml:"depart_id,omitempty"`
-	DepartName  *string `json:"depart_name,omitempty" xml:"depart_name,omitempty"`
+	Budget      *int64                     `json:"budget,omitempty" xml:"budget,omitempty"`
+	BudgetMerge *int32                     `json:"budget_merge,omitempty" xml:"budget_merge,omitempty"`
+	CarRule     *ApplyModifyRequestCarRule `json:"car_rule,omitempty" xml:"car_rule,omitempty" type:"Struct"`
+	CorpName    *string                    `json:"corp_name,omitempty" xml:"corp_name,omitempty"`
+	DepartId    *string                    `json:"depart_id,omitempty" xml:"depart_id,omitempty"`
+	DepartName  *string                    `json:"depart_name,omitempty" xml:"depart_name,omitempty"`
 	// 可将补充描述传入此字段，账单中将会体现此字段的值。可以用于企业的统计和对账
 	ExtendField              *string                                     `json:"extend_field,omitempty" xml:"extend_field,omitempty"`
 	ExternalTravelerList     []*ApplyModifyRequestExternalTravelerList   `json:"external_traveler_list,omitempty" xml:"external_traveler_list,omitempty" type:"Repeated"`
@@ -6139,6 +6262,11 @@ func (s *ApplyModifyRequest) SetBudget(v int64) *ApplyModifyRequest {
 
 func (s *ApplyModifyRequest) SetBudgetMerge(v int32) *ApplyModifyRequest {
 	s.BudgetMerge = &v
+	return s
+}
+
+func (s *ApplyModifyRequest) SetCarRule(v *ApplyModifyRequestCarRule) *ApplyModifyRequest {
+	s.CarRule = v
 	return s
 }
 
@@ -6284,6 +6412,29 @@ func (s *ApplyModifyRequest) SetUserName(v string) *ApplyModifyRequest {
 
 func (s *ApplyModifyRequest) SetVehicleBudget(v int64) *ApplyModifyRequest {
 	s.VehicleBudget = &v
+	return s
+}
+
+type ApplyModifyRequestCarRule struct {
+	ScenarioTemplateId   *string `json:"scenario_template_id,omitempty" xml:"scenario_template_id,omitempty"`
+	ScenarioTemplateName *string `json:"scenario_template_name,omitempty" xml:"scenario_template_name,omitempty"`
+}
+
+func (s ApplyModifyRequestCarRule) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ApplyModifyRequestCarRule) GoString() string {
+	return s.String()
+}
+
+func (s *ApplyModifyRequestCarRule) SetScenarioTemplateId(v string) *ApplyModifyRequestCarRule {
+	s.ScenarioTemplateId = &v
+	return s
+}
+
+func (s *ApplyModifyRequestCarRule) SetScenarioTemplateName(v string) *ApplyModifyRequestCarRule {
+	s.ScenarioTemplateName = &v
 	return s
 }
 
@@ -6683,6 +6834,7 @@ func (s *ApplyModifyRequestTravelerList) SetUserName(v string) *ApplyModifyReque
 
 type ApplyModifyRequestTravelerStandard struct {
 	BusinessDiscount *int32                                          `json:"business_discount,omitempty" xml:"business_discount,omitempty"`
+	CarCitySet       []*ApplyModifyRequestTravelerStandardCarCitySet `json:"car_city_set,omitempty" xml:"car_city_set,omitempty" type:"Repeated"`
 	EconomyDiscount  *int32                                          `json:"economy_discount,omitempty" xml:"economy_discount,omitempty"`
 	FirstDiscount    *int32                                          `json:"first_discount,omitempty" xml:"first_discount,omitempty"`
 	FlightCabins     *string                                         `json:"flight_cabins,omitempty" xml:"flight_cabins,omitempty"`
@@ -6704,6 +6856,11 @@ func (s ApplyModifyRequestTravelerStandard) GoString() string {
 
 func (s *ApplyModifyRequestTravelerStandard) SetBusinessDiscount(v int32) *ApplyModifyRequestTravelerStandard {
 	s.BusinessDiscount = &v
+	return s
+}
+
+func (s *ApplyModifyRequestTravelerStandard) SetCarCitySet(v []*ApplyModifyRequestTravelerStandardCarCitySet) *ApplyModifyRequestTravelerStandard {
+	s.CarCitySet = v
 	return s
 }
 
@@ -6747,6 +6904,29 @@ func (s *ApplyModifyRequestTravelerStandard) SetUserId(v string) *ApplyModifyReq
 	return s
 }
 
+type ApplyModifyRequestTravelerStandardCarCitySet struct {
+	CityCode *string `json:"city_code,omitempty" xml:"city_code,omitempty"`
+	CityName *string `json:"city_name,omitempty" xml:"city_name,omitempty"`
+}
+
+func (s ApplyModifyRequestTravelerStandardCarCitySet) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ApplyModifyRequestTravelerStandardCarCitySet) GoString() string {
+	return s.String()
+}
+
+func (s *ApplyModifyRequestTravelerStandardCarCitySet) SetCityCode(v string) *ApplyModifyRequestTravelerStandardCarCitySet {
+	s.CityCode = &v
+	return s
+}
+
+func (s *ApplyModifyRequestTravelerStandardCarCitySet) SetCityName(v string) *ApplyModifyRequestTravelerStandardCarCitySet {
+	s.CityName = &v
+	return s
+}
+
 type ApplyModifyRequestTravelerStandardHotelCitys struct {
 	CityCode *string `json:"city_code,omitempty" xml:"city_code,omitempty"`
 	CityName *string `json:"city_name,omitempty" xml:"city_name,omitempty"`
@@ -6777,11 +6957,12 @@ func (s *ApplyModifyRequestTravelerStandardHotelCitys) SetFee(v int64) *ApplyMod
 }
 
 type ApplyModifyShrinkRequest struct {
-	Budget      *int64  `json:"budget,omitempty" xml:"budget,omitempty"`
-	BudgetMerge *int32  `json:"budget_merge,omitempty" xml:"budget_merge,omitempty"`
-	CorpName    *string `json:"corp_name,omitempty" xml:"corp_name,omitempty"`
-	DepartId    *string `json:"depart_id,omitempty" xml:"depart_id,omitempty"`
-	DepartName  *string `json:"depart_name,omitempty" xml:"depart_name,omitempty"`
+	Budget        *int64  `json:"budget,omitempty" xml:"budget,omitempty"`
+	BudgetMerge   *int32  `json:"budget_merge,omitempty" xml:"budget_merge,omitempty"`
+	CarRuleShrink *string `json:"car_rule,omitempty" xml:"car_rule,omitempty"`
+	CorpName      *string `json:"corp_name,omitempty" xml:"corp_name,omitempty"`
+	DepartId      *string `json:"depart_id,omitempty" xml:"depart_id,omitempty"`
+	DepartName    *string `json:"depart_name,omitempty" xml:"depart_name,omitempty"`
 	// 可将补充描述传入此字段，账单中将会体现此字段的值。可以用于企业的统计和对账
 	ExtendField                    *string `json:"extend_field,omitempty" xml:"extend_field,omitempty"`
 	ExternalTravelerListShrink     *string `json:"external_traveler_list,omitempty" xml:"external_traveler_list,omitempty"`
@@ -6827,6 +7008,11 @@ func (s *ApplyModifyShrinkRequest) SetBudget(v int64) *ApplyModifyShrinkRequest 
 
 func (s *ApplyModifyShrinkRequest) SetBudgetMerge(v int32) *ApplyModifyShrinkRequest {
 	s.BudgetMerge = &v
+	return s
+}
+
+func (s *ApplyModifyShrinkRequest) SetCarRuleShrink(v string) *ApplyModifyShrinkRequest {
+	s.CarRuleShrink = &v
 	return s
 }
 
@@ -7197,6 +7383,7 @@ type ApplyQueryResponseBodyModule struct {
 	ApproverList []*ApplyQueryResponseBodyModuleApproverList `json:"approver_list,omitempty" xml:"approver_list,omitempty" type:"Repeated"`
 	Budget       *int64                                      `json:"budget,omitempty" xml:"budget,omitempty"`
 	BudgetMerge  *int32                                      `json:"budget_merge,omitempty" xml:"budget_merge,omitempty"`
+	CarRule      *ApplyQueryResponseBodyModuleCarRule        `json:"car_rule,omitempty" xml:"car_rule,omitempty" type:"Struct"`
 	CorpId       *string                                     `json:"corp_id,omitempty" xml:"corp_id,omitempty"`
 	CorpName     *string                                     `json:"corp_name,omitempty" xml:"corp_name,omitempty"`
 	DepartId     *string                                     `json:"depart_id,omitempty" xml:"depart_id,omitempty"`
@@ -7256,6 +7443,11 @@ func (s *ApplyQueryResponseBodyModule) SetBudget(v int64) *ApplyQueryResponseBod
 
 func (s *ApplyQueryResponseBodyModule) SetBudgetMerge(v int32) *ApplyQueryResponseBodyModule {
 	s.BudgetMerge = &v
+	return s
+}
+
+func (s *ApplyQueryResponseBodyModule) SetCarRule(v *ApplyQueryResponseBodyModuleCarRule) *ApplyQueryResponseBodyModule {
+	s.CarRule = v
 	return s
 }
 
@@ -7464,6 +7656,29 @@ func (s *ApplyQueryResponseBodyModuleApproverList) SetUserId(v string) *ApplyQue
 
 func (s *ApplyQueryResponseBodyModuleApproverList) SetUserName(v string) *ApplyQueryResponseBodyModuleApproverList {
 	s.UserName = &v
+	return s
+}
+
+type ApplyQueryResponseBodyModuleCarRule struct {
+	ScenarioTemplateId   *string `json:"scenario_template_id,omitempty" xml:"scenario_template_id,omitempty"`
+	ScenarioTemplateName *string `json:"scenario_template_name,omitempty" xml:"scenario_template_name,omitempty"`
+}
+
+func (s ApplyQueryResponseBodyModuleCarRule) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ApplyQueryResponseBodyModuleCarRule) GoString() string {
+	return s.String()
+}
+
+func (s *ApplyQueryResponseBodyModuleCarRule) SetScenarioTemplateId(v string) *ApplyQueryResponseBodyModuleCarRule {
+	s.ScenarioTemplateId = &v
+	return s
+}
+
+func (s *ApplyQueryResponseBodyModuleCarRule) SetScenarioTemplateName(v string) *ApplyQueryResponseBodyModuleCarRule {
+	s.ScenarioTemplateName = &v
 	return s
 }
 
@@ -7804,6 +8019,7 @@ func (s *ApplyQueryResponseBodyModuleItinerarySetListItineraryTravelStandard) Se
 
 type ApplyQueryResponseBodyModuleTravelerList struct {
 	BusinessDiscount       *int32                                                `json:"business_discount,omitempty" xml:"business_discount,omitempty"`
+	CarCitySet             []*ApplyQueryResponseBodyModuleTravelerListCarCitySet `json:"car_city_set,omitempty" xml:"car_city_set,omitempty" type:"Repeated"`
 	EconomyDiscount        *int32                                                `json:"economy_discount,omitempty" xml:"economy_discount,omitempty"`
 	FirstDiscount          *int32                                                `json:"first_discount,omitempty" xml:"first_discount,omitempty"`
 	FlightCabins           *string                                               `json:"flight_cabins,omitempty" xml:"flight_cabins,omitempty"`
@@ -7825,6 +8041,11 @@ func (s ApplyQueryResponseBodyModuleTravelerList) GoString() string {
 
 func (s *ApplyQueryResponseBodyModuleTravelerList) SetBusinessDiscount(v int32) *ApplyQueryResponseBodyModuleTravelerList {
 	s.BusinessDiscount = &v
+	return s
+}
+
+func (s *ApplyQueryResponseBodyModuleTravelerList) SetCarCitySet(v []*ApplyQueryResponseBodyModuleTravelerListCarCitySet) *ApplyQueryResponseBodyModuleTravelerList {
+	s.CarCitySet = v
 	return s
 }
 
@@ -7870,6 +8091,29 @@ func (s *ApplyQueryResponseBodyModuleTravelerList) SetUserId(v string) *ApplyQue
 
 func (s *ApplyQueryResponseBodyModuleTravelerList) SetUserName(v string) *ApplyQueryResponseBodyModuleTravelerList {
 	s.UserName = &v
+	return s
+}
+
+type ApplyQueryResponseBodyModuleTravelerListCarCitySet struct {
+	CityCode *string `json:"city_code,omitempty" xml:"city_code,omitempty"`
+	CityName *string `json:"city_name,omitempty" xml:"city_name,omitempty"`
+}
+
+func (s ApplyQueryResponseBodyModuleTravelerListCarCitySet) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ApplyQueryResponseBodyModuleTravelerListCarCitySet) GoString() string {
+	return s.String()
+}
+
+func (s *ApplyQueryResponseBodyModuleTravelerListCarCitySet) SetCityCode(v string) *ApplyQueryResponseBodyModuleTravelerListCarCitySet {
+	s.CityCode = &v
+	return s
+}
+
+func (s *ApplyQueryResponseBodyModuleTravelerListCarCitySet) SetCityName(v string) *ApplyQueryResponseBodyModuleTravelerListCarCitySet {
+	s.CityName = &v
 	return s
 }
 
@@ -8095,21 +8339,23 @@ func (s *CarApplyAddHeaders) SetXAcsBtripSoCorpToken(v string) *CarApplyAddHeade
 }
 
 type CarApplyAddRequest struct {
-	Cause                 *string `json:"cause,omitempty" xml:"cause,omitempty"`
-	City                  *string `json:"city,omitempty" xml:"city,omitempty"`
-	Date                  *string `json:"date,omitempty" xml:"date,omitempty"`
-	FinishedDate          *string `json:"finished_date,omitempty" xml:"finished_date,omitempty"`
-	ProjectCode           *string `json:"project_code,omitempty" xml:"project_code,omitempty"`
-	ProjectName           *string `json:"project_name,omitempty" xml:"project_name,omitempty"`
-	Status                *int32  `json:"status,omitempty" xml:"status,omitempty"`
-	ThirdPartApplyId      *string `json:"third_part_apply_id,omitempty" xml:"third_part_apply_id,omitempty"`
-	ThirdPartCostCenterId *string `json:"third_part_cost_center_id,omitempty" xml:"third_part_cost_center_id,omitempty"`
-	ThirdPartInvoiceId    *string `json:"third_part_invoice_id,omitempty" xml:"third_part_invoice_id,omitempty"`
-	TimesTotal            *int32  `json:"times_total,omitempty" xml:"times_total,omitempty"`
-	TimesType             *int32  `json:"times_type,omitempty" xml:"times_type,omitempty"`
-	TimesUsed             *int32  `json:"times_used,omitempty" xml:"times_used,omitempty"`
-	Title                 *string `json:"title,omitempty" xml:"title,omitempty"`
-	UserId                *string `json:"user_id,omitempty" xml:"user_id,omitempty"`
+	Cause                 *string                               `json:"cause,omitempty" xml:"cause,omitempty"`
+	City                  *string                               `json:"city,omitempty" xml:"city,omitempty"`
+	CityCodeSet           *string                               `json:"city_code_set,omitempty" xml:"city_code_set,omitempty"`
+	Date                  *string                               `json:"date,omitempty" xml:"date,omitempty"`
+	FinishedDate          *string                               `json:"finished_date,omitempty" xml:"finished_date,omitempty"`
+	ProjectCode           *string                               `json:"project_code,omitempty" xml:"project_code,omitempty"`
+	ProjectName           *string                               `json:"project_name,omitempty" xml:"project_name,omitempty"`
+	Status                *int32                                `json:"status,omitempty" xml:"status,omitempty"`
+	ThirdPartApplyId      *string                               `json:"third_part_apply_id,omitempty" xml:"third_part_apply_id,omitempty"`
+	ThirdPartCostCenterId *string                               `json:"third_part_cost_center_id,omitempty" xml:"third_part_cost_center_id,omitempty"`
+	ThirdPartInvoiceId    *string                               `json:"third_part_invoice_id,omitempty" xml:"third_part_invoice_id,omitempty"`
+	TimesTotal            *int32                                `json:"times_total,omitempty" xml:"times_total,omitempty"`
+	TimesType             *int32                                `json:"times_type,omitempty" xml:"times_type,omitempty"`
+	TimesUsed             *int32                                `json:"times_used,omitempty" xml:"times_used,omitempty"`
+	Title                 *string                               `json:"title,omitempty" xml:"title,omitempty"`
+	TravelerStandard      []*CarApplyAddRequestTravelerStandard `json:"traveler_standard,omitempty" xml:"traveler_standard,omitempty" type:"Repeated"`
+	UserId                *string                               `json:"user_id,omitempty" xml:"user_id,omitempty"`
 }
 
 func (s CarApplyAddRequest) String() string {
@@ -8127,6 +8373,11 @@ func (s *CarApplyAddRequest) SetCause(v string) *CarApplyAddRequest {
 
 func (s *CarApplyAddRequest) SetCity(v string) *CarApplyAddRequest {
 	s.City = &v
+	return s
+}
+
+func (s *CarApplyAddRequest) SetCityCodeSet(v string) *CarApplyAddRequest {
+	s.CityCodeSet = &v
 	return s
 }
 
@@ -8190,7 +8441,171 @@ func (s *CarApplyAddRequest) SetTitle(v string) *CarApplyAddRequest {
 	return s
 }
 
+func (s *CarApplyAddRequest) SetTravelerStandard(v []*CarApplyAddRequestTravelerStandard) *CarApplyAddRequest {
+	s.TravelerStandard = v
+	return s
+}
+
 func (s *CarApplyAddRequest) SetUserId(v string) *CarApplyAddRequest {
+	s.UserId = &v
+	return s
+}
+
+type CarApplyAddRequestTravelerStandard struct {
+	CarCitySet []*CarApplyAddRequestTravelerStandardCarCitySet `json:"car_city_set,omitempty" xml:"car_city_set,omitempty" type:"Repeated"`
+	UserId     *string                                         `json:"user_id,omitempty" xml:"user_id,omitempty"`
+}
+
+func (s CarApplyAddRequestTravelerStandard) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CarApplyAddRequestTravelerStandard) GoString() string {
+	return s.String()
+}
+
+func (s *CarApplyAddRequestTravelerStandard) SetCarCitySet(v []*CarApplyAddRequestTravelerStandardCarCitySet) *CarApplyAddRequestTravelerStandard {
+	s.CarCitySet = v
+	return s
+}
+
+func (s *CarApplyAddRequestTravelerStandard) SetUserId(v string) *CarApplyAddRequestTravelerStandard {
+	s.UserId = &v
+	return s
+}
+
+type CarApplyAddRequestTravelerStandardCarCitySet struct {
+	CityCode *string `json:"city_code,omitempty" xml:"city_code,omitempty"`
+	CityName *string `json:"city_name,omitempty" xml:"city_name,omitempty"`
+}
+
+func (s CarApplyAddRequestTravelerStandardCarCitySet) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CarApplyAddRequestTravelerStandardCarCitySet) GoString() string {
+	return s.String()
+}
+
+func (s *CarApplyAddRequestTravelerStandardCarCitySet) SetCityCode(v string) *CarApplyAddRequestTravelerStandardCarCitySet {
+	s.CityCode = &v
+	return s
+}
+
+func (s *CarApplyAddRequestTravelerStandardCarCitySet) SetCityName(v string) *CarApplyAddRequestTravelerStandardCarCitySet {
+	s.CityName = &v
+	return s
+}
+
+type CarApplyAddShrinkRequest struct {
+	Cause                  *string `json:"cause,omitempty" xml:"cause,omitempty"`
+	City                   *string `json:"city,omitempty" xml:"city,omitempty"`
+	CityCodeSet            *string `json:"city_code_set,omitempty" xml:"city_code_set,omitempty"`
+	Date                   *string `json:"date,omitempty" xml:"date,omitempty"`
+	FinishedDate           *string `json:"finished_date,omitempty" xml:"finished_date,omitempty"`
+	ProjectCode            *string `json:"project_code,omitempty" xml:"project_code,omitempty"`
+	ProjectName            *string `json:"project_name,omitempty" xml:"project_name,omitempty"`
+	Status                 *int32  `json:"status,omitempty" xml:"status,omitempty"`
+	ThirdPartApplyId       *string `json:"third_part_apply_id,omitempty" xml:"third_part_apply_id,omitempty"`
+	ThirdPartCostCenterId  *string `json:"third_part_cost_center_id,omitempty" xml:"third_part_cost_center_id,omitempty"`
+	ThirdPartInvoiceId     *string `json:"third_part_invoice_id,omitempty" xml:"third_part_invoice_id,omitempty"`
+	TimesTotal             *int32  `json:"times_total,omitempty" xml:"times_total,omitempty"`
+	TimesType              *int32  `json:"times_type,omitempty" xml:"times_type,omitempty"`
+	TimesUsed              *int32  `json:"times_used,omitempty" xml:"times_used,omitempty"`
+	Title                  *string `json:"title,omitempty" xml:"title,omitempty"`
+	TravelerStandardShrink *string `json:"traveler_standard,omitempty" xml:"traveler_standard,omitempty"`
+	UserId                 *string `json:"user_id,omitempty" xml:"user_id,omitempty"`
+}
+
+func (s CarApplyAddShrinkRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CarApplyAddShrinkRequest) GoString() string {
+	return s.String()
+}
+
+func (s *CarApplyAddShrinkRequest) SetCause(v string) *CarApplyAddShrinkRequest {
+	s.Cause = &v
+	return s
+}
+
+func (s *CarApplyAddShrinkRequest) SetCity(v string) *CarApplyAddShrinkRequest {
+	s.City = &v
+	return s
+}
+
+func (s *CarApplyAddShrinkRequest) SetCityCodeSet(v string) *CarApplyAddShrinkRequest {
+	s.CityCodeSet = &v
+	return s
+}
+
+func (s *CarApplyAddShrinkRequest) SetDate(v string) *CarApplyAddShrinkRequest {
+	s.Date = &v
+	return s
+}
+
+func (s *CarApplyAddShrinkRequest) SetFinishedDate(v string) *CarApplyAddShrinkRequest {
+	s.FinishedDate = &v
+	return s
+}
+
+func (s *CarApplyAddShrinkRequest) SetProjectCode(v string) *CarApplyAddShrinkRequest {
+	s.ProjectCode = &v
+	return s
+}
+
+func (s *CarApplyAddShrinkRequest) SetProjectName(v string) *CarApplyAddShrinkRequest {
+	s.ProjectName = &v
+	return s
+}
+
+func (s *CarApplyAddShrinkRequest) SetStatus(v int32) *CarApplyAddShrinkRequest {
+	s.Status = &v
+	return s
+}
+
+func (s *CarApplyAddShrinkRequest) SetThirdPartApplyId(v string) *CarApplyAddShrinkRequest {
+	s.ThirdPartApplyId = &v
+	return s
+}
+
+func (s *CarApplyAddShrinkRequest) SetThirdPartCostCenterId(v string) *CarApplyAddShrinkRequest {
+	s.ThirdPartCostCenterId = &v
+	return s
+}
+
+func (s *CarApplyAddShrinkRequest) SetThirdPartInvoiceId(v string) *CarApplyAddShrinkRequest {
+	s.ThirdPartInvoiceId = &v
+	return s
+}
+
+func (s *CarApplyAddShrinkRequest) SetTimesTotal(v int32) *CarApplyAddShrinkRequest {
+	s.TimesTotal = &v
+	return s
+}
+
+func (s *CarApplyAddShrinkRequest) SetTimesType(v int32) *CarApplyAddShrinkRequest {
+	s.TimesType = &v
+	return s
+}
+
+func (s *CarApplyAddShrinkRequest) SetTimesUsed(v int32) *CarApplyAddShrinkRequest {
+	s.TimesUsed = &v
+	return s
+}
+
+func (s *CarApplyAddShrinkRequest) SetTitle(v string) *CarApplyAddShrinkRequest {
+	s.Title = &v
+	return s
+}
+
+func (s *CarApplyAddShrinkRequest) SetTravelerStandardShrink(v string) *CarApplyAddShrinkRequest {
+	s.TravelerStandardShrink = &v
+	return s
+}
+
+func (s *CarApplyAddShrinkRequest) SetUserId(v string) *CarApplyAddShrinkRequest {
 	s.UserId = &v
 	return s
 }
@@ -8536,19 +8951,20 @@ func (s *CarApplyQueryResponseBody) SetTraceId(v string) *CarApplyQueryResponseB
 }
 
 type CarApplyQueryResponseBodyApplyList struct {
-	ApproverList  []*CarApplyQueryResponseBodyApplyListApproverList  `json:"approver_list,omitempty" xml:"approver_list,omitempty" type:"Repeated"`
-	DepartId      *string                                            `json:"depart_id,omitempty" xml:"depart_id,omitempty"`
-	DepartName    *string                                            `json:"depart_name,omitempty" xml:"depart_name,omitempty"`
-	GmtCreate     *string                                            `json:"gmt_create,omitempty" xml:"gmt_create,omitempty"`
-	GmtModified   *string                                            `json:"gmt_modified,omitempty" xml:"gmt_modified,omitempty"`
-	ItineraryList []*CarApplyQueryResponseBodyApplyListItineraryList `json:"itinerary_list,omitempty" xml:"itinerary_list,omitempty" type:"Repeated"`
-	Status        *int32                                             `json:"status,omitempty" xml:"status,omitempty"`
-	StatusDesc    *string                                            `json:"status_desc,omitempty" xml:"status_desc,omitempty"`
-	ThirdpartId   *string                                            `json:"thirdpart_id,omitempty" xml:"thirdpart_id,omitempty"`
-	TripCause     *string                                            `json:"trip_cause,omitempty" xml:"trip_cause,omitempty"`
-	TripTitle     *string                                            `json:"trip_title,omitempty" xml:"trip_title,omitempty"`
-	UserId        *string                                            `json:"user_id,omitempty" xml:"user_id,omitempty"`
-	UserName      *string                                            `json:"user_name,omitempty" xml:"user_name,omitempty"`
+	ApproverList     []*CarApplyQueryResponseBodyApplyListApproverList     `json:"approver_list,omitempty" xml:"approver_list,omitempty" type:"Repeated"`
+	DepartId         *string                                               `json:"depart_id,omitempty" xml:"depart_id,omitempty"`
+	DepartName       *string                                               `json:"depart_name,omitempty" xml:"depart_name,omitempty"`
+	GmtCreate        *string                                               `json:"gmt_create,omitempty" xml:"gmt_create,omitempty"`
+	GmtModified      *string                                               `json:"gmt_modified,omitempty" xml:"gmt_modified,omitempty"`
+	ItineraryList    []*CarApplyQueryResponseBodyApplyListItineraryList    `json:"itinerary_list,omitempty" xml:"itinerary_list,omitempty" type:"Repeated"`
+	Status           *int32                                                `json:"status,omitempty" xml:"status,omitempty"`
+	StatusDesc       *string                                               `json:"status_desc,omitempty" xml:"status_desc,omitempty"`
+	ThirdpartId      *string                                               `json:"thirdpart_id,omitempty" xml:"thirdpart_id,omitempty"`
+	TravelerStandard []*CarApplyQueryResponseBodyApplyListTravelerStandard `json:"traveler_standard,omitempty" xml:"traveler_standard,omitempty" type:"Repeated"`
+	TripCause        *string                                               `json:"trip_cause,omitempty" xml:"trip_cause,omitempty"`
+	TripTitle        *string                                               `json:"trip_title,omitempty" xml:"trip_title,omitempty"`
+	UserId           *string                                               `json:"user_id,omitempty" xml:"user_id,omitempty"`
+	UserName         *string                                               `json:"user_name,omitempty" xml:"user_name,omitempty"`
 }
 
 func (s CarApplyQueryResponseBodyApplyList) String() string {
@@ -8601,6 +9017,11 @@ func (s *CarApplyQueryResponseBodyApplyList) SetStatusDesc(v string) *CarApplyQu
 
 func (s *CarApplyQueryResponseBodyApplyList) SetThirdpartId(v string) *CarApplyQueryResponseBodyApplyList {
 	s.ThirdpartId = &v
+	return s
+}
+
+func (s *CarApplyQueryResponseBodyApplyList) SetTravelerStandard(v []*CarApplyQueryResponseBodyApplyListTravelerStandard) *CarApplyQueryResponseBodyApplyList {
+	s.TravelerStandard = v
 	return s
 }
 
@@ -8769,6 +9190,52 @@ func (s *CarApplyQueryResponseBodyApplyListItineraryList) SetProjectTitle(v stri
 
 func (s *CarApplyQueryResponseBodyApplyListItineraryList) SetTrafficType(v int32) *CarApplyQueryResponseBodyApplyListItineraryList {
 	s.TrafficType = &v
+	return s
+}
+
+type CarApplyQueryResponseBodyApplyListTravelerStandard struct {
+	CarCitySet []*CarApplyQueryResponseBodyApplyListTravelerStandardCarCitySet `json:"car_city_set,omitempty" xml:"car_city_set,omitempty" type:"Repeated"`
+	UserId     *string                                                         `json:"user_id,omitempty" xml:"user_id,omitempty"`
+}
+
+func (s CarApplyQueryResponseBodyApplyListTravelerStandard) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CarApplyQueryResponseBodyApplyListTravelerStandard) GoString() string {
+	return s.String()
+}
+
+func (s *CarApplyQueryResponseBodyApplyListTravelerStandard) SetCarCitySet(v []*CarApplyQueryResponseBodyApplyListTravelerStandardCarCitySet) *CarApplyQueryResponseBodyApplyListTravelerStandard {
+	s.CarCitySet = v
+	return s
+}
+
+func (s *CarApplyQueryResponseBodyApplyListTravelerStandard) SetUserId(v string) *CarApplyQueryResponseBodyApplyListTravelerStandard {
+	s.UserId = &v
+	return s
+}
+
+type CarApplyQueryResponseBodyApplyListTravelerStandardCarCitySet struct {
+	CityCode *string `json:"city_code,omitempty" xml:"city_code,omitempty"`
+	CityName *string `json:"city_name,omitempty" xml:"city_name,omitempty"`
+}
+
+func (s CarApplyQueryResponseBodyApplyListTravelerStandardCarCitySet) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CarApplyQueryResponseBodyApplyListTravelerStandardCarCitySet) GoString() string {
+	return s.String()
+}
+
+func (s *CarApplyQueryResponseBodyApplyListTravelerStandardCarCitySet) SetCityCode(v string) *CarApplyQueryResponseBodyApplyListTravelerStandardCarCitySet {
+	s.CityCode = &v
+	return s
+}
+
+func (s *CarApplyQueryResponseBodyApplyListTravelerStandardCarCitySet) SetCityName(v string) *CarApplyQueryResponseBodyApplyListTravelerStandardCarCitySet {
+	s.CityName = &v
 	return s
 }
 
@@ -60830,6 +61297,10 @@ func (client *Client) ApplyAddWithOptions(tmpReq *ApplyAddRequest, headers *Appl
 	}
 	request := &ApplyAddShrinkRequest{}
 	openapiutil.Convert(tmpReq, request)
+	if !tea.BoolValue(util.IsUnset(tmpReq.CarRule)) {
+		request.CarRuleShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.CarRule, tea.String("car_rule"), tea.String("json"))
+	}
+
 	if !tea.BoolValue(util.IsUnset(tmpReq.ExternalTravelerList)) {
 		request.ExternalTravelerListShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.ExternalTravelerList, tea.String("external_traveler_list"), tea.String("json"))
 	}
@@ -60865,6 +61336,10 @@ func (client *Client) ApplyAddWithOptions(tmpReq *ApplyAddRequest, headers *Appl
 
 	if !tea.BoolValue(util.IsUnset(request.BudgetMerge)) {
 		body["budget_merge"] = request.BudgetMerge
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.CarRuleShrink)) {
+		body["car_rule"] = request.CarRuleShrink
 	}
 
 	if !tea.BoolValue(util.IsUnset(request.CorpName)) {
@@ -61286,6 +61761,10 @@ func (client *Client) ApplyModifyWithOptions(tmpReq *ApplyModifyRequest, headers
 	}
 	request := &ApplyModifyShrinkRequest{}
 	openapiutil.Convert(tmpReq, request)
+	if !tea.BoolValue(util.IsUnset(tmpReq.CarRule)) {
+		request.CarRuleShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.CarRule, tea.String("car_rule"), tea.String("json"))
+	}
+
 	if !tea.BoolValue(util.IsUnset(tmpReq.ExternalTravelerList)) {
 		request.ExternalTravelerListShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.ExternalTravelerList, tea.String("external_traveler_list"), tea.String("json"))
 	}
@@ -61321,6 +61800,10 @@ func (client *Client) ApplyModifyWithOptions(tmpReq *ApplyModifyRequest, headers
 
 	if !tea.BoolValue(util.IsUnset(request.BudgetMerge)) {
 		body["budget_merge"] = request.BudgetMerge
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.CarRuleShrink)) {
+		body["car_rule"] = request.CarRuleShrink
 	}
 
 	if !tea.BoolValue(util.IsUnset(request.CorpName)) {
@@ -61630,11 +62113,17 @@ func (client *Client) BtripBillInfoAdjust(request *BtripBillInfoAdjustRequest) (
 	return _result, _err
 }
 
-func (client *Client) CarApplyAddWithOptions(request *CarApplyAddRequest, headers *CarApplyAddHeaders, runtime *util.RuntimeOptions) (_result *CarApplyAddResponse, _err error) {
-	_err = util.ValidateModel(request)
+func (client *Client) CarApplyAddWithOptions(tmpReq *CarApplyAddRequest, headers *CarApplyAddHeaders, runtime *util.RuntimeOptions) (_result *CarApplyAddResponse, _err error) {
+	_err = util.ValidateModel(tmpReq)
 	if _err != nil {
 		return _result, _err
 	}
+	request := &CarApplyAddShrinkRequest{}
+	openapiutil.Convert(tmpReq, request)
+	if !tea.BoolValue(util.IsUnset(tmpReq.TravelerStandard)) {
+		request.TravelerStandardShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.TravelerStandard, tea.String("traveler_standard"), tea.String("json"))
+	}
+
 	body := map[string]interface{}{}
 	if !tea.BoolValue(util.IsUnset(request.Cause)) {
 		body["cause"] = request.Cause
@@ -61642,6 +62131,10 @@ func (client *Client) CarApplyAddWithOptions(request *CarApplyAddRequest, header
 
 	if !tea.BoolValue(util.IsUnset(request.City)) {
 		body["city"] = request.City
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.CityCodeSet)) {
+		body["city_code_set"] = request.CityCodeSet
 	}
 
 	if !tea.BoolValue(util.IsUnset(request.Date)) {
@@ -61690,6 +62183,10 @@ func (client *Client) CarApplyAddWithOptions(request *CarApplyAddRequest, header
 
 	if !tea.BoolValue(util.IsUnset(request.Title)) {
 		body["title"] = request.Title
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.TravelerStandardShrink)) {
+		body["traveler_standard"] = request.TravelerStandardShrink
 	}
 
 	if !tea.BoolValue(util.IsUnset(request.UserId)) {
