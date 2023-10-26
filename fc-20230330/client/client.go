@@ -556,6 +556,7 @@ type CustomContainerConfig struct {
 	HealthCheckConfig *CustomHealthCheckConfig `json:"healthCheckConfig,omitempty" xml:"healthCheckConfig,omitempty"`
 	Image             *string                  `json:"image,omitempty" xml:"image,omitempty"`
 	Port              *int32                   `json:"port,omitempty" xml:"port,omitempty"`
+	ResolvedImageUri  *string                  `json:"resolvedImageUri,omitempty" xml:"resolvedImageUri,omitempty"`
 }
 
 func (s CustomContainerConfig) String() string {
@@ -603,6 +604,11 @@ func (s *CustomContainerConfig) SetImage(v string) *CustomContainerConfig {
 
 func (s *CustomContainerConfig) SetPort(v int32) *CustomContainerConfig {
 	s.Port = &v
+	return s
+}
+
+func (s *CustomContainerConfig) SetResolvedImageUri(v string) *CustomContainerConfig {
+	s.ResolvedImageUri = &v
 	return s
 }
 
@@ -916,35 +922,41 @@ func (s *Error) SetRequestId(v string) *Error {
 }
 
 type Function struct {
-	CodeChecksum            *string                  `json:"codeChecksum,omitempty" xml:"codeChecksum,omitempty"`
-	CodeSize                *int64                   `json:"codeSize,omitempty" xml:"codeSize,omitempty"`
-	Cpu                     *float32                 `json:"cpu,omitempty" xml:"cpu,omitempty"`
-	CreatedTime             *string                  `json:"createdTime,omitempty" xml:"createdTime,omitempty"`
-	CustomContainerConfig   *CustomContainerConfig   `json:"customContainerConfig,omitempty" xml:"customContainerConfig,omitempty"`
-	CustomDNS               *CustomDNS               `json:"customDNS,omitempty" xml:"customDNS,omitempty"`
-	CustomRuntimeConfig     *CustomRuntimeConfig     `json:"customRuntimeConfig,omitempty" xml:"customRuntimeConfig,omitempty"`
-	Description             *string                  `json:"description,omitempty" xml:"description,omitempty"`
-	DiskSize                *int32                   `json:"diskSize,omitempty" xml:"diskSize,omitempty"`
-	EnvironmentVariables    map[string]*string       `json:"environmentVariables" xml:"environmentVariables"`
-	FunctionArn             *string                  `json:"functionArn,omitempty" xml:"functionArn,omitempty"`
-	FunctionId              *string                  `json:"functionId,omitempty" xml:"functionId,omitempty"`
-	FunctionName            *string                  `json:"functionName,omitempty" xml:"functionName,omitempty"`
-	GpuConfig               *GPUConfig               `json:"gpuConfig,omitempty" xml:"gpuConfig,omitempty"`
-	Handler                 *string                  `json:"handler,omitempty" xml:"handler,omitempty"`
-	InstanceConcurrency     *int32                   `json:"instanceConcurrency,omitempty" xml:"instanceConcurrency,omitempty"`
-	InstanceLifecycleConfig *InstanceLifecycleConfig `json:"instanceLifecycleConfig,omitempty" xml:"instanceLifecycleConfig,omitempty"`
-	InternetAccess          *bool                    `json:"internetAccess,omitempty" xml:"internetAccess,omitempty"`
-	LastModifiedTime        *string                  `json:"lastModifiedTime,omitempty" xml:"lastModifiedTime,omitempty"`
-	Layers                  []*FunctionLayer         `json:"layers" xml:"layers" type:"Repeated"`
-	LogConfig               *LogConfig               `json:"logConfig,omitempty" xml:"logConfig,omitempty"`
-	MemorySize              *int32                   `json:"memorySize,omitempty" xml:"memorySize,omitempty"`
-	NasConfig               *NASConfig               `json:"nasConfig,omitempty" xml:"nasConfig,omitempty"`
-	OssMountConfig          *OSSMountConfig          `json:"ossMountConfig,omitempty" xml:"ossMountConfig,omitempty"`
-	Role                    *string                  `json:"role,omitempty" xml:"role,omitempty"`
-	Runtime                 *string                  `json:"runtime,omitempty" xml:"runtime,omitempty"`
-	Timeout                 *int32                   `json:"timeout,omitempty" xml:"timeout,omitempty"`
-	TracingConfig           *TracingConfig           `json:"tracingConfig,omitempty" xml:"tracingConfig,omitempty"`
-	VpcConfig               *VPCConfig               `json:"vpcConfig,omitempty" xml:"vpcConfig,omitempty"`
+	CodeChecksum               *string                  `json:"codeChecksum,omitempty" xml:"codeChecksum,omitempty"`
+	CodeSize                   *int64                   `json:"codeSize,omitempty" xml:"codeSize,omitempty"`
+	Cpu                        *float32                 `json:"cpu,omitempty" xml:"cpu,omitempty"`
+	CreatedTime                *string                  `json:"createdTime,omitempty" xml:"createdTime,omitempty"`
+	CustomContainerConfig      *CustomContainerConfig   `json:"customContainerConfig,omitempty" xml:"customContainerConfig,omitempty"`
+	CustomDNS                  *CustomDNS               `json:"customDNS,omitempty" xml:"customDNS,omitempty"`
+	CustomRuntimeConfig        *CustomRuntimeConfig     `json:"customRuntimeConfig,omitempty" xml:"customRuntimeConfig,omitempty"`
+	Description                *string                  `json:"description,omitempty" xml:"description,omitempty"`
+	DiskSize                   *int32                   `json:"diskSize,omitempty" xml:"diskSize,omitempty"`
+	EnvironmentVariables       map[string]*string       `json:"environmentVariables" xml:"environmentVariables"`
+	FunctionArn                *string                  `json:"functionArn,omitempty" xml:"functionArn,omitempty"`
+	FunctionId                 *string                  `json:"functionId,omitempty" xml:"functionId,omitempty"`
+	FunctionName               *string                  `json:"functionName,omitempty" xml:"functionName,omitempty"`
+	GpuConfig                  *GPUConfig               `json:"gpuConfig,omitempty" xml:"gpuConfig,omitempty"`
+	Handler                    *string                  `json:"handler,omitempty" xml:"handler,omitempty"`
+	InstanceConcurrency        *int32                   `json:"instanceConcurrency,omitempty" xml:"instanceConcurrency,omitempty"`
+	InstanceLifecycleConfig    *InstanceLifecycleConfig `json:"instanceLifecycleConfig,omitempty" xml:"instanceLifecycleConfig,omitempty"`
+	InternetAccess             *bool                    `json:"internetAccess,omitempty" xml:"internetAccess,omitempty"`
+	LastModifiedTime           *string                  `json:"lastModifiedTime,omitempty" xml:"lastModifiedTime,omitempty"`
+	LastUpdateStatus           *string                  `json:"lastUpdateStatus,omitempty" xml:"lastUpdateStatus,omitempty"`
+	LastUpdateStatusReason     *string                  `json:"lastUpdateStatusReason,omitempty" xml:"lastUpdateStatusReason,omitempty"`
+	LastUpdateStatusReasonCode *string                  `json:"lastUpdateStatusReasonCode,omitempty" xml:"lastUpdateStatusReasonCode,omitempty"`
+	Layers                     []*FunctionLayer         `json:"layers" xml:"layers" type:"Repeated"`
+	LogConfig                  *LogConfig               `json:"logConfig,omitempty" xml:"logConfig,omitempty"`
+	MemorySize                 *int32                   `json:"memorySize,omitempty" xml:"memorySize,omitempty"`
+	NasConfig                  *NASConfig               `json:"nasConfig,omitempty" xml:"nasConfig,omitempty"`
+	OssMountConfig             *OSSMountConfig          `json:"ossMountConfig,omitempty" xml:"ossMountConfig,omitempty"`
+	Role                       *string                  `json:"role,omitempty" xml:"role,omitempty"`
+	Runtime                    *string                  `json:"runtime,omitempty" xml:"runtime,omitempty"`
+	State                      *string                  `json:"state,omitempty" xml:"state,omitempty"`
+	StateReason                *string                  `json:"stateReason,omitempty" xml:"stateReason,omitempty"`
+	StateReasonCode            *string                  `json:"stateReasonCode,omitempty" xml:"stateReasonCode,omitempty"`
+	Timeout                    *int32                   `json:"timeout,omitempty" xml:"timeout,omitempty"`
+	TracingConfig              *TracingConfig           `json:"tracingConfig,omitempty" xml:"tracingConfig,omitempty"`
+	VpcConfig                  *VPCConfig               `json:"vpcConfig,omitempty" xml:"vpcConfig,omitempty"`
 }
 
 func (s Function) String() string {
@@ -1050,6 +1062,21 @@ func (s *Function) SetLastModifiedTime(v string) *Function {
 	return s
 }
 
+func (s *Function) SetLastUpdateStatus(v string) *Function {
+	s.LastUpdateStatus = &v
+	return s
+}
+
+func (s *Function) SetLastUpdateStatusReason(v string) *Function {
+	s.LastUpdateStatusReason = &v
+	return s
+}
+
+func (s *Function) SetLastUpdateStatusReasonCode(v string) *Function {
+	s.LastUpdateStatusReasonCode = &v
+	return s
+}
+
 func (s *Function) SetLayers(v []*FunctionLayer) *Function {
 	s.Layers = v
 	return s
@@ -1082,6 +1109,21 @@ func (s *Function) SetRole(v string) *Function {
 
 func (s *Function) SetRuntime(v string) *Function {
 	s.Runtime = &v
+	return s
+}
+
+func (s *Function) SetState(v string) *Function {
+	s.State = &v
+	return s
+}
+
+func (s *Function) SetStateReason(v string) *Function {
+	s.StateReason = &v
+	return s
+}
+
+func (s *Function) SetStateReasonCode(v string) *Function {
+	s.StateReasonCode = &v
 	return s
 }
 
