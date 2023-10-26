@@ -13,14 +13,27 @@ import (
 )
 
 type CreateFlowRequest struct {
-	Definition              *string `json:"Definition,omitempty" xml:"Definition,omitempty"`
-	Description             *string `json:"Description,omitempty" xml:"Description,omitempty"`
-	ExecutionMode           *string `json:"ExecutionMode,omitempty" xml:"ExecutionMode,omitempty"`
+	// The definition of the flow. The definition must comply with the Flow Definition Language (FDL) syntax.
+	Definition *string `json:"Definition,omitempty" xml:"Definition,omitempty"`
+	// The description of the flow.
+	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
+	// The execution mode or the enumeration type. Valid values: Express and Standard. The value Standard indicates an empty string.
+	ExecutionMode *string `json:"ExecutionMode,omitempty" xml:"ExecutionMode,omitempty"`
+	// The path of the external storage.
 	ExternalStorageLocation *string `json:"ExternalStorageLocation,omitempty" xml:"ExternalStorageLocation,omitempty"`
-	Name                    *string `json:"Name,omitempty" xml:"Name,omitempty"`
-	RequestId               *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	RoleArn                 *string `json:"RoleArn,omitempty" xml:"RoleArn,omitempty"`
-	Type                    *string `json:"Type,omitempty" xml:"Type,omitempty"`
+	// The name of the flow. The name is unique within the region and cannot be modified after the flow is created. Configure this parameter based on the following rules:
+	//
+	// *   The name can contain letters, digits, underscores (\_), and hyphens (-).
+	// *   The name must start with a letter or an underscore (\_).
+	// *   The name is case-sensitive.
+	// *   The name must be 1 to 128 characters in length.
+	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// The request ID. If you specify this parameter, the system uses this value as the ID of the request. If you do not specify this parameter, the system generates a value at random.
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The Alibaba Cloud resource name (ARN) of the specified Resource Access Management (RAM) role that Serverless Workflow assumes to invoke resources when the task is executed.
+	RoleArn *string `json:"RoleArn,omitempty" xml:"RoleArn,omitempty"`
+	// The type of the flow. Valid value: **FDL**.
+	Type *string `json:"Type,omitempty" xml:"Type,omitempty"`
 }
 
 func (s CreateFlowRequest) String() string {
@@ -72,16 +85,26 @@ func (s *CreateFlowRequest) SetType(v string) *CreateFlowRequest {
 }
 
 type CreateFlowResponseBody struct {
-	CreatedTime      *string `json:"CreatedTime,omitempty" xml:"CreatedTime,omitempty"`
-	Definition       *string `json:"Definition,omitempty" xml:"Definition,omitempty"`
-	Description      *string `json:"Description,omitempty" xml:"Description,omitempty"`
-	ExecutionMode    *string `json:"ExecutionMode,omitempty" xml:"ExecutionMode,omitempty"`
-	Id               *string `json:"Id,omitempty" xml:"Id,omitempty"`
+	// The time when the flow was created.
+	CreatedTime *string `json:"CreatedTime,omitempty" xml:"CreatedTime,omitempty"`
+	// The definition of the flow.
+	Definition *string `json:"Definition,omitempty" xml:"Definition,omitempty"`
+	// The description of the flow.
+	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
+	// The execution mode or the enumeration type. Valid values: Express and Standard. The value Standard indicates an empty string.
+	ExecutionMode *string `json:"ExecutionMode,omitempty" xml:"ExecutionMode,omitempty"`
+	// The unique ID of the flow.
+	Id *string `json:"Id,omitempty" xml:"Id,omitempty"`
+	// The time when the flow was last modified.
 	LastModifiedTime *string `json:"LastModifiedTime,omitempty" xml:"LastModifiedTime,omitempty"`
-	Name             *string `json:"Name,omitempty" xml:"Name,omitempty"`
-	RequestId        *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	RoleArn          *string `json:"RoleArn,omitempty" xml:"RoleArn,omitempty"`
-	Type             *string `json:"Type,omitempty" xml:"Type,omitempty"`
+	// The name of the flow.
+	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// The request ID. Each time an `HTTP status code` is returned, Serverless Workflow returns a value for the parameter.
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The ARN of the RAM role.
+	RoleArn *string `json:"RoleArn,omitempty" xml:"RoleArn,omitempty"`
+	// The type of the flow.
+	Type *string `json:"Type,omitempty" xml:"Type,omitempty"`
 }
 
 func (s CreateFlowResponseBody) String() string {
@@ -172,13 +195,28 @@ func (s *CreateFlowResponse) SetBody(v *CreateFlowResponseBody) *CreateFlowRespo
 }
 
 type CreateScheduleRequest struct {
+	// The CRON expression.
 	CronExpression *string `json:"CronExpression,omitempty" xml:"CronExpression,omitempty"`
-	Description    *string `json:"Description,omitempty" xml:"Description,omitempty"`
-	Enable         *bool   `json:"Enable,omitempty" xml:"Enable,omitempty"`
-	FlowName       *string `json:"FlowName,omitempty" xml:"FlowName,omitempty"`
-	Payload        *string `json:"Payload,omitempty" xml:"Payload,omitempty"`
-	RequestId      *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	ScheduleName   *string `json:"ScheduleName,omitempty" xml:"ScheduleName,omitempty"`
+	// The description of the time-based schedule.
+	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
+	// Specifies whether to enable the time-based schedule. Valid values:
+	//
+	// *   **true**
+	// *   **false**
+	Enable *bool `json:"Enable,omitempty" xml:"Enable,omitempty"`
+	// The name of the flow that is bound to the time-based schedule.
+	FlowName *string `json:"FlowName,omitempty" xml:"FlowName,omitempty"`
+	// The trigger message of the time-based schedule. Specify the value in the JSON format.
+	Payload *string `json:"Payload,omitempty" xml:"Payload,omitempty"`
+	// The request ID. If you specify this parameter, the system uses this value as the ID of the request. If you do not specify this parameter, the system generates a value at random.
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The name of the time-based schedule. Configure this parameter based on the following rules:
+	//
+	// *   The name can contain letters, digits, underscores (\_), and hyphens (-).
+	// *   The name must start with a letter or an underscore (\_).
+	// *   The name is case-sensitive.
+	// *   The name must be 1 to 128 characters in length.
+	ScheduleName *string `json:"ScheduleName,omitempty" xml:"ScheduleName,omitempty"`
 }
 
 func (s CreateScheduleRequest) String() string {
@@ -225,15 +263,24 @@ func (s *CreateScheduleRequest) SetScheduleName(v string) *CreateScheduleRequest
 }
 
 type CreateScheduleResponseBody struct {
-	CreatedTime      *string `json:"CreatedTime,omitempty" xml:"CreatedTime,omitempty"`
-	CronExpression   *string `json:"CronExpression,omitempty" xml:"CronExpression,omitempty"`
-	Description      *string `json:"Description,omitempty" xml:"Description,omitempty"`
-	Enable           *bool   `json:"Enable,omitempty" xml:"Enable,omitempty"`
+	// The time when the time-based schedule was created.
+	CreatedTime *string `json:"CreatedTime,omitempty" xml:"CreatedTime,omitempty"`
+	// The CRON expression.
+	CronExpression *string `json:"CronExpression,omitempty" xml:"CronExpression,omitempty"`
+	// The description of the time-based schedule.
+	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
+	// Indicates whether the time-based schedule is enabled.
+	Enable *bool `json:"Enable,omitempty" xml:"Enable,omitempty"`
+	// The time when the time-based schedule was last modified.
 	LastModifiedTime *string `json:"LastModifiedTime,omitempty" xml:"LastModifiedTime,omitempty"`
-	Payload          *string `json:"Payload,omitempty" xml:"Payload,omitempty"`
-	RequestId        *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	ScheduleId       *string `json:"ScheduleId,omitempty" xml:"ScheduleId,omitempty"`
-	ScheduleName     *string `json:"ScheduleName,omitempty" xml:"ScheduleName,omitempty"`
+	// The trigger message of the time-based schedule.
+	Payload *string `json:"Payload,omitempty" xml:"Payload,omitempty"`
+	// The request ID.
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The ID of the time-based schedule.
+	ScheduleId *string `json:"ScheduleId,omitempty" xml:"ScheduleId,omitempty"`
+	// The name of the time-based schedule.
+	ScheduleName *string `json:"ScheduleName,omitempty" xml:"ScheduleName,omitempty"`
 }
 
 func (s CreateScheduleResponseBody) String() string {
@@ -319,7 +366,9 @@ func (s *CreateScheduleResponse) SetBody(v *CreateScheduleResponseBody) *CreateS
 }
 
 type DeleteFlowRequest struct {
-	Name      *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// The name of the flow. The name can contain letters, digits, underscores (\_), and hyphens (-) only. It cannot start with a digit or a hyphen (-). It must be 1 to 128 characters in length.
+	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// The request ID. If you specify this parameter, the system uses this value as the ID of the request. If you do not specify this parameter, the system generates a value at random.
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -342,6 +391,7 @@ func (s *DeleteFlowRequest) SetRequestId(v string) *DeleteFlowRequest {
 }
 
 type DeleteFlowResponseBody struct {
+	// The request ID.
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -388,8 +438,21 @@ func (s *DeleteFlowResponse) SetBody(v *DeleteFlowResponseBody) *DeleteFlowRespo
 }
 
 type DeleteScheduleRequest struct {
-	FlowName     *string `json:"FlowName,omitempty" xml:"FlowName,omitempty"`
-	RequestId    *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The name of the flow that is associated with the time-based schedule. The name is unique within the region and cannot be modified after the time-based schedule is created. Configure this parameter based on the following rules:
+	//
+	// *   The name can contain letters, digits, underscores (\_), and hyphens (-).
+	// *   The name must start with a letter or an underscore (\_).
+	// *   The name is case-sensitive.
+	// *   The name must be 1 to 128 characters in length.
+	FlowName *string `json:"FlowName,omitempty" xml:"FlowName,omitempty"`
+	// The request ID. If you specify this parameter, the system uses this value as the ID of the request. If you do not specify this parameter, the system generates a value at random.
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The name of the time-based schedule. Configure this parameter based on the following rules:
+	//
+	// *   The name can contain letters, digits, underscores (\_), and hyphens (-).
+	// *   The name must start with a letter or an underscore (\_).
+	// *   The name is case-sensitive.
+	// *   The name must be 1 to 128 characters in length.
 	ScheduleName *string `json:"ScheduleName,omitempty" xml:"ScheduleName,omitempty"`
 }
 
@@ -417,6 +480,7 @@ func (s *DeleteScheduleRequest) SetScheduleName(v string) *DeleteScheduleRequest
 }
 
 type DeleteScheduleResponseBody struct {
+	// The request ID.
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -463,10 +527,27 @@ func (s *DeleteScheduleResponse) SetBody(v *DeleteScheduleResponseBody) *DeleteS
 }
 
 type DescribeExecutionRequest struct {
-	ExecutionName   *string `json:"ExecutionName,omitempty" xml:"ExecutionName,omitempty"`
-	FlowName        *string `json:"FlowName,omitempty" xml:"FlowName,omitempty"`
-	RequestId       *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	WaitTimeSeconds *int32  `json:"WaitTimeSeconds,omitempty" xml:"WaitTimeSeconds,omitempty"`
+	// The name of the execution, which is unique within a flow. Configure this parameter based on the following rules:
+	//
+	// *   The name can contain letters, digits, underscores (\_), and hyphens (-).
+	// *   The name must start with a letter or an underscore (\_).
+	// *   The name is case-sensitive.
+	// *   The name must be 1 to 128 characters in length.
+	ExecutionName *string `json:"ExecutionName,omitempty" xml:"ExecutionName,omitempty"`
+	// The name of the flow. The name is unique within the region and cannot be modified after the flow is created. Configure this parameter based on the following rules:
+	//
+	// *   The name can contain letters, digits, underscores (\_), and hyphens (-).
+	// *   The name must start with a letter or an underscore (\_).
+	// *   The name is case-sensitive.
+	// *   The name must be 1 to 128 characters in length.
+	FlowName *string `json:"FlowName,omitempty" xml:"FlowName,omitempty"`
+	// The request ID. If you specify this parameter, the system uses this value as the ID of the request. If you do not specify this parameter, the system generates a value at random.
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The maximum period of time for long polling waits. Valid values: 0 to 60. Unit: seconds. Configure this parameter based on the following rules:
+	//
+	// *   If the value is 0, the system immediately returns the current execution status.
+	// *   If the value is greater than 0, the long polling request waits until the execution ends or the specified period elapses.
+	WaitTimeSeconds *int32 `json:"WaitTimeSeconds,omitempty" xml:"WaitTimeSeconds,omitempty"`
 }
 
 func (s DescribeExecutionRequest) String() string {
@@ -498,15 +579,30 @@ func (s *DescribeExecutionRequest) SetWaitTimeSeconds(v int32) *DescribeExecutio
 }
 
 type DescribeExecutionResponseBody struct {
+	// The definition of the flow.
 	FlowDefinition *string `json:"FlowDefinition,omitempty" xml:"FlowDefinition,omitempty"`
-	FlowName       *string `json:"FlowName,omitempty" xml:"FlowName,omitempty"`
-	Input          *string `json:"Input,omitempty" xml:"Input,omitempty"`
-	Name           *string `json:"Name,omitempty" xml:"Name,omitempty"`
-	Output         *string `json:"Output,omitempty" xml:"Output,omitempty"`
-	RequestId      *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	StartedTime    *string `json:"StartedTime,omitempty" xml:"StartedTime,omitempty"`
-	Status         *string `json:"Status,omitempty" xml:"Status,omitempty"`
-	StoppedTime    *string `json:"StoppedTime,omitempty" xml:"StoppedTime,omitempty"`
+	// The name of the flow.
+	FlowName *string `json:"FlowName,omitempty" xml:"FlowName,omitempty"`
+	// The input of the execution, which is in the JSON format.
+	Input *string `json:"Input,omitempty" xml:"Input,omitempty"`
+	// The name of the execution.
+	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// The execution result, which is in the JSON format.
+	Output *string `json:"Output,omitempty" xml:"Output,omitempty"`
+	// The request ID.
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The time when the execution started.
+	StartedTime *string `json:"StartedTime,omitempty" xml:"StartedTime,omitempty"`
+	// The execution state. Valid values:
+	//
+	// *   **Running**
+	// *   **Stopped**
+	// *   **Succeeded**
+	// *   **Failed**
+	// *   **TimedOut**
+	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
+	// The time when the execution stopped.
+	StoppedTime *string `json:"StoppedTime,omitempty" xml:"StoppedTime,omitempty"`
 }
 
 func (s DescribeExecutionResponseBody) String() string {
@@ -592,7 +688,9 @@ func (s *DescribeExecutionResponse) SetBody(v *DescribeExecutionResponseBody) *D
 }
 
 type DescribeFlowRequest struct {
-	Name      *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// The name of the flow.
+	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// The request ID. If you specify this parameter, the system uses this value as the ID of the request. If you do not specify this parameter, the system generates a value at random.
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -615,16 +713,26 @@ func (s *DescribeFlowRequest) SetRequestId(v string) *DescribeFlowRequest {
 }
 
 type DescribeFlowResponseBody struct {
-	CreatedTime      *string `json:"CreatedTime,omitempty" xml:"CreatedTime,omitempty"`
-	Definition       *string `json:"Definition,omitempty" xml:"Definition,omitempty"`
-	Description      *string `json:"Description,omitempty" xml:"Description,omitempty"`
-	ExecutionMode    *string `json:"ExecutionMode,omitempty" xml:"ExecutionMode,omitempty"`
-	Id               *string `json:"Id,omitempty" xml:"Id,omitempty"`
+	// The time when the flow was created.
+	CreatedTime *string `json:"CreatedTime,omitempty" xml:"CreatedTime,omitempty"`
+	// The definition of the flow. The definition must comply with the Flow Definition Language (FDL) syntax.
+	Definition *string `json:"Definition,omitempty" xml:"Definition,omitempty"`
+	// The description of the flow.
+	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
+	// The execution mode or the enumeration type. Valid values: Express and Standard. The value Standard indicates an empty string.
+	ExecutionMode *string `json:"ExecutionMode,omitempty" xml:"ExecutionMode,omitempty"`
+	// The unique ID of the flow.
+	Id *string `json:"Id,omitempty" xml:"Id,omitempty"`
+	// The time when the flow was last modified.
 	LastModifiedTime *string `json:"LastModifiedTime,omitempty" xml:"LastModifiedTime,omitempty"`
-	Name             *string `json:"Name,omitempty" xml:"Name,omitempty"`
-	RequestId        *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	RoleArn          *string `json:"RoleArn,omitempty" xml:"RoleArn,omitempty"`
-	Type             *string `json:"Type,omitempty" xml:"Type,omitempty"`
+	// The name of the flow.
+	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// The request ID.
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The Alibaba Cloud Resource Name (ARN) of the RAM role.
+	RoleArn *string `json:"RoleArn,omitempty" xml:"RoleArn,omitempty"`
+	// The type of the flow. Valid value: **FDL**.
+	Type *string `json:"Type,omitempty" xml:"Type,omitempty"`
 }
 
 func (s DescribeFlowResponseBody) String() string {
@@ -715,8 +823,21 @@ func (s *DescribeFlowResponse) SetBody(v *DescribeFlowResponseBody) *DescribeFlo
 }
 
 type DescribeScheduleRequest struct {
-	FlowName     *string `json:"FlowName,omitempty" xml:"FlowName,omitempty"`
-	RequestId    *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The name of the flow that is associated with the time-based schedule. The name is unique within the region and cannot be modified after the time-based schedule is created. Configure this parameter based on the following rules:
+	//
+	// *   The name can contain letters, digits, underscores (\_), and hyphens (-).
+	// *   The name must start with a letter or an underscore (\_).
+	// *   The name is case-sensitive.
+	// *   The name must be 1 to 128 characters in length.
+	FlowName *string `json:"FlowName,omitempty" xml:"FlowName,omitempty"`
+	// The request ID. If you specify this parameter, the system uses this value as the ID of the request. If you do not specify this parameter, the system generates a value at random.
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The name of the time-based schedule. Configure this parameter based on the following rules:
+	//
+	// *   The name can contain letters, digits, underscores (\_), and hyphens (-).
+	// *   The name must start with a letter or an underscore (\_).
+	// *   The name is case-sensitive.
+	// *   The name must be 1 to 128 characters in length.
 	ScheduleName *string `json:"ScheduleName,omitempty" xml:"ScheduleName,omitempty"`
 }
 
@@ -744,15 +865,27 @@ func (s *DescribeScheduleRequest) SetScheduleName(v string) *DescribeScheduleReq
 }
 
 type DescribeScheduleResponseBody struct {
-	CreatedTime      *string `json:"CreatedTime,omitempty" xml:"CreatedTime,omitempty"`
-	CronExpression   *string `json:"CronExpression,omitempty" xml:"CronExpression,omitempty"`
-	Description      *string `json:"Description,omitempty" xml:"Description,omitempty"`
-	Enable           *bool   `json:"Enable,omitempty" xml:"Enable,omitempty"`
+	// The time when the time-based schedule was created.
+	CreatedTime *string `json:"CreatedTime,omitempty" xml:"CreatedTime,omitempty"`
+	// The CRON expression.
+	CronExpression *string `json:"CronExpression,omitempty" xml:"CronExpression,omitempty"`
+	// The description of the time-based schedule.
+	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
+	// Indicates whether the time-based schedule is enabled. Valid values:
+	//
+	// *   **true**
+	// *   **false**
+	Enable *bool `json:"Enable,omitempty" xml:"Enable,omitempty"`
+	// The time when the time-based schedule was last modified.
 	LastModifiedTime *string `json:"LastModifiedTime,omitempty" xml:"LastModifiedTime,omitempty"`
-	Payload          *string `json:"Payload,omitempty" xml:"Payload,omitempty"`
-	RequestId        *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	ScheduleId       *string `json:"ScheduleId,omitempty" xml:"ScheduleId,omitempty"`
-	ScheduleName     *string `json:"ScheduleName,omitempty" xml:"ScheduleName,omitempty"`
+	// The trigger message of the time-based schedule.
+	Payload *string `json:"Payload,omitempty" xml:"Payload,omitempty"`
+	// The request ID.
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The ID of the time-based schedule.
+	ScheduleId *string `json:"ScheduleId,omitempty" xml:"ScheduleId,omitempty"`
+	// The name of the time-based schedule.
+	ScheduleName *string `json:"ScheduleName,omitempty" xml:"ScheduleName,omitempty"`
 }
 
 func (s DescribeScheduleResponseBody) String() string {
@@ -838,11 +971,26 @@ func (s *DescribeScheduleResponse) SetBody(v *DescribeScheduleResponseBody) *Des
 }
 
 type GetExecutionHistoryRequest struct {
+	// The name of the execution, which is unique within a flow. Configure this parameter based on the following rules:
+	//
+	// *   The name can contain letters, digits, underscores (\_), and hyphens (-).
+	// *   The name must start with a letter or an underscore (\_).
+	// *   The name is case-sensitive.
+	// *   The name must be 1 to 128 characters in length.
 	ExecutionName *string `json:"ExecutionName,omitempty" xml:"ExecutionName,omitempty"`
-	FlowName      *string `json:"FlowName,omitempty" xml:"FlowName,omitempty"`
-	Limit         *int32  `json:"Limit,omitempty" xml:"Limit,omitempty"`
-	NextToken     *string `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
-	RequestId     *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The name of the flow. The name is unique within the region and cannot be modified after the flow is created. Configure this parameter based on the following rules:
+	//
+	// *   The name can contain letters, digits, underscores (\_), and hyphens (-).
+	// *   The name must start with a letter or an underscore (\_).
+	// *   The name is case-sensitive.
+	// *   The name must be 1 to 128 characters in length.
+	FlowName *string `json:"FlowName,omitempty" xml:"FlowName,omitempty"`
+	// The maximum number of steps to be queried. Valid values: 1 to 1000.
+	Limit *int32 `json:"Limit,omitempty" xml:"Limit,omitempty"`
+	// The name of the event to start the query. You can obtain the value from the response data.
+	NextToken *string `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
+	// The request ID. If you specify this parameter, the system uses this value as the ID of the request. If you do not specify this parameter, the system generates a value at random.
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
 func (s GetExecutionHistoryRequest) String() string {
@@ -879,9 +1027,12 @@ func (s *GetExecutionHistoryRequest) SetRequestId(v string) *GetExecutionHistory
 }
 
 type GetExecutionHistoryResponseBody struct {
-	Events    []*GetExecutionHistoryResponseBodyEvents `json:"Events,omitempty" xml:"Events,omitempty" type:"Repeated"`
-	NextToken *string                                  `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
-	RequestId *string                                  `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The events.
+	Events []*GetExecutionHistoryResponseBodyEvents `json:"Events,omitempty" xml:"Events,omitempty" type:"Repeated"`
+	// You do not need to specify this parameter for the first request. The returned value of **ScheduleEventId** is used as the token for the next query. No value is returned for the last query.
+	NextToken *string `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
+	// The request ID.
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
 func (s GetExecutionHistoryResponseBody) String() string {
@@ -908,12 +1059,40 @@ func (s *GetExecutionHistoryResponseBody) SetRequestId(v string) *GetExecutionHi
 }
 
 type GetExecutionHistoryResponseBodyEvents struct {
-	EventDetail     *string `json:"EventDetail,omitempty" xml:"EventDetail,omitempty"`
-	EventId         *int64  `json:"EventId,omitempty" xml:"EventId,omitempty"`
-	ScheduleEventId *int64  `json:"ScheduleEventId,omitempty" xml:"ScheduleEventId,omitempty"`
-	StepName        *string `json:"StepName,omitempty" xml:"StepName,omitempty"`
-	Time            *string `json:"Time,omitempty" xml:"Time,omitempty"`
-	Type            *string `json:"Type,omitempty" xml:"Type,omitempty"`
+	// The details about the execution step.
+	EventDetail *string `json:"EventDetail,omitempty" xml:"EventDetail,omitempty"`
+	// The ID of the execution step.
+	EventId *int64 `json:"EventId,omitempty" xml:"EventId,omitempty"`
+	// The ID of the scheduling step.
+	ScheduleEventId *int64 `json:"ScheduleEventId,omitempty" xml:"ScheduleEventId,omitempty"`
+	// The name of the execution step.
+	StepName *string `json:"StepName,omitempty" xml:"StepName,omitempty"`
+	// The time when the event was updated.
+	Time *string `json:"Time,omitempty" xml:"Time,omitempty"`
+	// The type of the execution step. Valid values:
+	//
+	// *   **StepEntered**
+	// *   **StepStarted**
+	// *   **StepSucceeded**
+	// *   **StepFailed**
+	// *   **StepExited**
+	// *   **BranchEntered**
+	// *   **BranchExited**
+	// *   **IterationEntered**
+	// *   **IterationExited**
+	// *   **TaskScheduled**
+	// *   **TaskStarted**
+	// *   **TaskSubmitted**
+	// *   **TaskSubmitFailed**
+	// *   **TaskSucceeded**
+	// *   **TaskFailed**
+	// *   **TaskTimedOut**
+	// *   **ExecutionStarted**
+	// *   **ExecutionStopped**
+	// *   **ExecutionSucceeded**
+	// *   **ExecutionFailed**
+	// *   **ExecutionTimedOut**
+	Type *string `json:"Type,omitempty" xml:"Type,omitempty"`
 }
 
 func (s GetExecutionHistoryResponseBodyEvents) String() string {
@@ -984,14 +1163,33 @@ func (s *GetExecutionHistoryResponse) SetBody(v *GetExecutionHistoryResponseBody
 }
 
 type ListExecutionsRequest struct {
+	// The name prefix of the execution.
 	ExecutionNamePrefix *string `json:"ExecutionNamePrefix,omitempty" xml:"ExecutionNamePrefix,omitempty"`
-	FlowName            *string `json:"FlowName,omitempty" xml:"FlowName,omitempty"`
-	Limit               *int32  `json:"Limit,omitempty" xml:"Limit,omitempty"`
-	NextToken           *string `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
-	RequestId           *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	StartedTimeBegin    *string `json:"StartedTimeBegin,omitempty" xml:"StartedTimeBegin,omitempty"`
-	StartedTimeEnd      *string `json:"StartedTimeEnd,omitempty" xml:"StartedTimeEnd,omitempty"`
-	Status              *string `json:"Status,omitempty" xml:"Status,omitempty"`
+	// The name of the flow. The name is unique within the region and cannot be modified after the flow is created. Configure this parameter based on the following rules:
+	//
+	// *   The name can contain letters, digits, underscores (\_), and hyphens (-).
+	// *   The name must start with a letter or an underscore (\_).
+	// *   The name is case-sensitive.
+	// *   The name must be 1 to 128 characters in length.
+	FlowName *string `json:"FlowName,omitempty" xml:"FlowName,omitempty"`
+	// The maximum number of executions to be queried. Valid values: 1 to 100.
+	Limit *int32 `json:"Limit,omitempty" xml:"Limit,omitempty"`
+	// The name of the execution to start the query. You can obtain the value from the response data. You do not need to specify this parameter for the first request.
+	NextToken *string `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
+	// The request ID. If you specify this parameter, the system uses this value as the ID of the request. If you do not specify this parameter, the system generates a value at random.
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The beginning of the time range to query executions. Specify the value in the UTC RFC3339 format.
+	StartedTimeBegin *string `json:"StartedTimeBegin,omitempty" xml:"StartedTimeBegin,omitempty"`
+	// The end of the time range to query executions. Specify the value in the UTC RFC3339 format.
+	StartedTimeEnd *string `json:"StartedTimeEnd,omitempty" xml:"StartedTimeEnd,omitempty"`
+	// The state of the execution that you want to filter. Valid values:
+	//
+	// *   **Running**
+	// *   **Stopped**
+	// *   **Succeeded**
+	// *   **Failed**
+	// *   **TimedOut**
+	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
 }
 
 func (s ListExecutionsRequest) String() string {
@@ -1043,9 +1241,12 @@ func (s *ListExecutionsRequest) SetStatus(v string) *ListExecutionsRequest {
 }
 
 type ListExecutionsResponseBody struct {
+	// The queried executions.
 	Executions []*ListExecutionsResponseBodyExecutions `json:"Executions,omitempty" xml:"Executions,omitempty" type:"Repeated"`
-	NextToken  *string                                 `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
-	RequestId  *string                                 `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The start key for the next query. This parameter is not returned if all results have been returned.
+	NextToken *string `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
+	// The request ID.
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
 func (s ListExecutionsResponseBody) String() string {
@@ -1072,14 +1273,22 @@ func (s *ListExecutionsResponseBody) SetRequestId(v string) *ListExecutionsRespo
 }
 
 type ListExecutionsResponseBodyExecutions struct {
+	// The definition of the flow.
 	FlowDefinition *string `json:"FlowDefinition,omitempty" xml:"FlowDefinition,omitempty"`
-	FlowName       *string `json:"FlowName,omitempty" xml:"FlowName,omitempty"`
-	Input          *string `json:"Input,omitempty" xml:"Input,omitempty"`
-	Name           *string `json:"Name,omitempty" xml:"Name,omitempty"`
-	Output         *string `json:"Output,omitempty" xml:"Output,omitempty"`
-	StartedTime    *string `json:"StartedTime,omitempty" xml:"StartedTime,omitempty"`
-	Status         *string `json:"Status,omitempty" xml:"Status,omitempty"`
-	StoppedTime    *string `json:"StoppedTime,omitempty" xml:"StoppedTime,omitempty"`
+	// The name of the flow.
+	FlowName *string `json:"FlowName,omitempty" xml:"FlowName,omitempty"`
+	// The input of the execution, which is in the JSON format.
+	Input *string `json:"Input,omitempty" xml:"Input,omitempty"`
+	// The name of the execution.
+	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// The execution result, which is in the JSON format.
+	Output *string `json:"Output,omitempty" xml:"Output,omitempty"`
+	// The time when the execution started.
+	StartedTime *string `json:"StartedTime,omitempty" xml:"StartedTime,omitempty"`
+	// The state of the execution.
+	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
+	// The time when the execution stopped.
+	StoppedTime *string `json:"StoppedTime,omitempty" xml:"StoppedTime,omitempty"`
 }
 
 func (s ListExecutionsResponseBodyExecutions) String() string {
@@ -1160,8 +1369,11 @@ func (s *ListExecutionsResponse) SetBody(v *ListExecutionsResponseBody) *ListExe
 }
 
 type ListFlowsRequest struct {
-	Limit     *int32  `json:"Limit,omitempty" xml:"Limit,omitempty"`
+	// The number of flows to be queried. Valid values: 1 to 1000.
+	Limit *int32 `json:"Limit,omitempty" xml:"Limit,omitempty"`
+	// The token to start the query.
 	NextToken *string `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
+	// The request ID. If you specify this parameter, the system uses this value as the ID of the request. If you do not specify this parameter, the system generates a value at random.
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -1189,9 +1401,12 @@ func (s *ListFlowsRequest) SetRequestId(v string) *ListFlowsRequest {
 }
 
 type ListFlowsResponseBody struct {
-	Flows     []*ListFlowsResponseBodyFlows `json:"Flows,omitempty" xml:"Flows,omitempty" type:"Repeated"`
-	NextToken *string                       `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
-	RequestId *string                       `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The details of flows.
+	Flows []*ListFlowsResponseBodyFlows `json:"Flows,omitempty" xml:"Flows,omitempty" type:"Repeated"`
+	// The start key for the next query. This parameter is not returned if all results have been returned.
+	NextToken *string `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
+	// The request ID.
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
 func (s ListFlowsResponseBody) String() string {
@@ -1218,15 +1433,24 @@ func (s *ListFlowsResponseBody) SetRequestId(v string) *ListFlowsResponseBody {
 }
 
 type ListFlowsResponseBodyFlows struct {
-	CreatedTime      *string `json:"CreatedTime,omitempty" xml:"CreatedTime,omitempty"`
-	Definition       *string `json:"Definition,omitempty" xml:"Definition,omitempty"`
-	Description      *string `json:"Description,omitempty" xml:"Description,omitempty"`
-	ExecutionMode    *string `json:"ExecutionMode,omitempty" xml:"ExecutionMode,omitempty"`
-	Id               *string `json:"Id,omitempty" xml:"Id,omitempty"`
+	// The time when the flow was created.
+	CreatedTime *string `json:"CreatedTime,omitempty" xml:"CreatedTime,omitempty"`
+	// The definition of the flow. The definition must comply with the Flow Definition Language (FDL) syntax.
+	Definition *string `json:"Definition,omitempty" xml:"Definition,omitempty"`
+	// The description of the flow.
+	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
+	// The execution mode or the enumeration type. Valid values: Express and Standard. The value Standard indicates an empty string.
+	ExecutionMode *string `json:"ExecutionMode,omitempty" xml:"ExecutionMode,omitempty"`
+	// The unique ID of the flow.
+	Id *string `json:"Id,omitempty" xml:"Id,omitempty"`
+	// The time when the flow was last modified.
 	LastModifiedTime *string `json:"LastModifiedTime,omitempty" xml:"LastModifiedTime,omitempty"`
-	Name             *string `json:"Name,omitempty" xml:"Name,omitempty"`
-	RoleArn          *string `json:"RoleArn,omitempty" xml:"RoleArn,omitempty"`
-	Type             *string `json:"Type,omitempty" xml:"Type,omitempty"`
+	// The name of the flow.
+	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// The Alibaba Cloud Resource Name (ARN) of the Resource Access Management (RAM) role.
+	RoleArn *string `json:"RoleArn,omitempty" xml:"RoleArn,omitempty"`
+	// The type of the flow.
+	Type *string `json:"Type,omitempty" xml:"Type,omitempty"`
 }
 
 func (s ListFlowsResponseBodyFlows) String() string {
@@ -1312,9 +1536,18 @@ func (s *ListFlowsResponse) SetBody(v *ListFlowsResponseBody) *ListFlowsResponse
 }
 
 type ListSchedulesRequest struct {
-	FlowName  *string `json:"FlowName,omitempty" xml:"FlowName,omitempty"`
-	Limit     *int32  `json:"Limit,omitempty" xml:"Limit,omitempty"`
+	// The name of the flow that is associated with the time-based schedule. The name is unique within the region and cannot be modified after the time-based schedule is created. Configure this parameter based on the following rules:
+	//
+	// *   The name can contain letters, digits, underscores (\_), and hyphens (-).
+	// *   The name must start with a letter or an underscore (\_).
+	// *   The name is case-sensitive.
+	// *   The name must be 1 to 128 characters in length.
+	FlowName *string `json:"FlowName,omitempty" xml:"FlowName,omitempty"`
+	// The number of schedules to be queried. Valid values: 1 to 1000.
+	Limit *int32 `json:"Limit,omitempty" xml:"Limit,omitempty"`
+	// For the first query, you do not need to specify this parameter. The system uses the value of the **FlowName** parameter as the value of the **NextToken** parameter. When the query ends, no value is returned for this parameter.
 	NextToken *string `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
+	// The request ID. If you specify this parameter, the system uses this value as the ID of the request. If you do not specify this parameter, the system generates a value at random.
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -1347,8 +1580,11 @@ func (s *ListSchedulesRequest) SetRequestId(v string) *ListSchedulesRequest {
 }
 
 type ListSchedulesResponseBody struct {
-	NextToken *string                               `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
-	RequestId *string                               `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The token for the next query.
+	NextToken *string `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
+	// The request ID.
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The time-based schedules that are queried.
 	Schedules []*ListSchedulesResponseBodySchedules `json:"Schedules,omitempty" xml:"Schedules,omitempty" type:"Repeated"`
 }
 
@@ -1376,14 +1612,25 @@ func (s *ListSchedulesResponseBody) SetSchedules(v []*ListSchedulesResponseBodyS
 }
 
 type ListSchedulesResponseBodySchedules struct {
-	CreatedTime      *string `json:"CreatedTime,omitempty" xml:"CreatedTime,omitempty"`
-	CronExpression   *string `json:"CronExpression,omitempty" xml:"CronExpression,omitempty"`
-	Description      *string `json:"Description,omitempty" xml:"Description,omitempty"`
-	Enable           *bool   `json:"Enable,omitempty" xml:"Enable,omitempty"`
+	// The time when the time-based schedule was created.
+	CreatedTime *string `json:"CreatedTime,omitempty" xml:"CreatedTime,omitempty"`
+	// The CRON expression of the scheduled task.
+	CronExpression *string `json:"CronExpression,omitempty" xml:"CronExpression,omitempty"`
+	// The description of the time-based schedule.
+	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
+	// Indicates whether the time-based schedule is enabled. Valid values:
+	//
+	// *   **true**
+	// *   **false**
+	Enable *bool `json:"Enable,omitempty" xml:"Enable,omitempty"`
+	// The time when the time-based schedule was last modified.
 	LastModifiedTime *string `json:"LastModifiedTime,omitempty" xml:"LastModifiedTime,omitempty"`
-	Payload          *string `json:"Payload,omitempty" xml:"Payload,omitempty"`
-	ScheduleId       *string `json:"ScheduleId,omitempty" xml:"ScheduleId,omitempty"`
-	ScheduleName     *string `json:"ScheduleName,omitempty" xml:"ScheduleName,omitempty"`
+	// The trigger message of the time-based schedule.
+	Payload *string `json:"Payload,omitempty" xml:"Payload,omitempty"`
+	// The ID of the time-based schedule.
+	ScheduleId *string `json:"ScheduleId,omitempty" xml:"ScheduleId,omitempty"`
+	// The name of the time-based schedule.
+	ScheduleName *string `json:"ScheduleName,omitempty" xml:"ScheduleName,omitempty"`
 }
 
 func (s ListSchedulesResponseBodySchedules) String() string {
@@ -1464,9 +1711,13 @@ func (s *ListSchedulesResponse) SetBody(v *ListSchedulesResponseBody) *ListSched
 }
 
 type ReportTaskFailedRequest struct {
-	Cause     *string `json:"Cause,omitempty" xml:"Cause,omitempty"`
-	Error     *string `json:"Error,omitempty" xml:"Error,omitempty"`
+	// The cause of the failure. The value must be 1 to 4,096 characters in length.
+	Cause *string `json:"Cause,omitempty" xml:"Cause,omitempty"`
+	// The error code for the failed task. The value must be 1 to 128 characters in length.
+	Error *string `json:"Error,omitempty" xml:"Error,omitempty"`
+	// The request ID. If you specify this parameter, the system uses this value as the ID of the request. If you do not specify this parameter, the system generates a value at random.
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The token of the specified task that you want to report. If this parameter appears in **waitforCallback** mode, the parameter is passed to the called service, such as Message Service (MNS) or Function Compute. For MNS, the value of this parameter can be obtained from a message. For Function Compute, the value of this parameter can be obtained from an event.
 	TaskToken *string `json:"TaskToken,omitempty" xml:"TaskToken,omitempty"`
 }
 
@@ -1499,7 +1750,9 @@ func (s *ReportTaskFailedRequest) SetTaskToken(v string) *ReportTaskFailedReques
 }
 
 type ReportTaskFailedResponseBody struct {
-	EventId   *int64  `json:"EventId,omitempty" xml:"EventId,omitempty"`
+	// The ID of the event.
+	EventId *int64 `json:"EventId,omitempty" xml:"EventId,omitempty"`
+	// The request ID.
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -1551,8 +1804,11 @@ func (s *ReportTaskFailedResponse) SetBody(v *ReportTaskFailedResponseBody) *Rep
 }
 
 type ReportTaskSucceededRequest struct {
-	Output    *string `json:"Output,omitempty" xml:"Output,omitempty"`
+	// The output information of the task whose execution success you want to report.
+	Output *string `json:"Output,omitempty" xml:"Output,omitempty"`
+	// The request ID. If you specify this parameter, the system uses this value as the ID of the request. If you do not specify this parameter, the system generates a value at random.
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The token of the task whose execution success you want to report. If this parameter appears in **waitforCallback** mode, the parameter is passed to the called service, such as Message Service (MNS) or Function Compute. For MNS, the value of this parameter can be obtained from the message. For Function Compute, the value of this parameter can be obtained from the event.
 	TaskToken *string `json:"TaskToken,omitempty" xml:"TaskToken,omitempty"`
 }
 
@@ -1580,7 +1836,9 @@ func (s *ReportTaskSucceededRequest) SetTaskToken(v string) *ReportTaskSucceeded
 }
 
 type ReportTaskSucceededResponseBody struct {
-	EventId   *int64  `json:"EventId,omitempty" xml:"EventId,omitempty"`
+	// The ID of the event.
+	EventId *int64 `json:"EventId,omitempty" xml:"EventId,omitempty"`
+	// The request ID.
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -1632,11 +1890,26 @@ func (s *ReportTaskSucceededResponse) SetBody(v *ReportTaskSucceededResponseBody
 }
 
 type StartExecutionRequest struct {
+	// Specifies that the **TaskToken**-related tasks are called back after the execution in the flow ends.
 	CallbackFnFTaskToken *string `json:"CallbackFnFTaskToken,omitempty" xml:"CallbackFnFTaskToken,omitempty"`
-	ExecutionName        *string `json:"ExecutionName,omitempty" xml:"ExecutionName,omitempty"`
-	FlowName             *string `json:"FlowName,omitempty" xml:"FlowName,omitempty"`
-	Input                *string `json:"Input,omitempty" xml:"Input,omitempty"`
-	RequestId            *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The name of the execution, which is unique within a flow. Configure this parameter based on the following rules:
+	//
+	// *   The name can contain letters, digits, underscores (\_), and hyphens (-).
+	// *   The name must start with a letter or an underscore (\_).
+	// *   The name is case-sensitive.
+	// *   The name must be 1 to 128 characters in length.
+	ExecutionName *string `json:"ExecutionName,omitempty" xml:"ExecutionName,omitempty"`
+	// The name of the flow you want to start to execute. The name is unique within the region and cannot be modified after the flow is created. Configure this parameter based on the following rules:
+	//
+	// *   The name can contain letters, digits, underscores (\_), and hyphens (-).
+	// *   The name must start with a letter or an underscore (\_).
+	// *   The name is case-sensitive.
+	// *   The name must be 1 to 128 characters in length.
+	FlowName *string `json:"FlowName,omitempty" xml:"FlowName,omitempty"`
+	// The input of the execution, which is in the JSON format.
+	Input *string `json:"Input,omitempty" xml:"Input,omitempty"`
+	// The request ID. If you specify this parameter, the system uses this value as the ID of the request. If you do not specify this parameter, the system generates a value at random.
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
 func (s StartExecutionRequest) String() string {
@@ -1673,15 +1946,30 @@ func (s *StartExecutionRequest) SetRequestId(v string) *StartExecutionRequest {
 }
 
 type StartExecutionResponseBody struct {
+	// The definition of the flow.
 	FlowDefinition *string `json:"FlowDefinition,omitempty" xml:"FlowDefinition,omitempty"`
-	FlowName       *string `json:"FlowName,omitempty" xml:"FlowName,omitempty"`
-	Input          *string `json:"Input,omitempty" xml:"Input,omitempty"`
-	Name           *string `json:"Name,omitempty" xml:"Name,omitempty"`
-	Output         *string `json:"Output,omitempty" xml:"Output,omitempty"`
-	RequestId      *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	StartedTime    *string `json:"StartedTime,omitempty" xml:"StartedTime,omitempty"`
-	Status         *string `json:"Status,omitempty" xml:"Status,omitempty"`
-	StoppedTime    *string `json:"StoppedTime,omitempty" xml:"StoppedTime,omitempty"`
+	// The name of the flow.
+	FlowName *string `json:"FlowName,omitempty" xml:"FlowName,omitempty"`
+	// The input of the execution, which is in the JSON format.
+	Input *string `json:"Input,omitempty" xml:"Input,omitempty"`
+	// The name of the execution.
+	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// The execution result, which is in the JSON format.
+	Output *string `json:"Output,omitempty" xml:"Output,omitempty"`
+	// The request ID.
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The time when the execution started.
+	StartedTime *string `json:"StartedTime,omitempty" xml:"StartedTime,omitempty"`
+	// The execution state. Valid values:
+	//
+	// *   **Running**
+	// *   **Stopped**
+	// *   **Succeeded**
+	// *   **Failed**
+	// *   **TimedOut**
+	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
+	// The time when the execution stopped.
+	StoppedTime *string `json:"StoppedTime,omitempty" xml:"StoppedTime,omitempty"`
 }
 
 func (s StartExecutionResponseBody) String() string {
@@ -1766,12 +2054,156 @@ func (s *StartExecutionResponse) SetBody(v *StartExecutionResponseBody) *StartEx
 	return s
 }
 
-type StopExecutionRequest struct {
-	Cause         *string `json:"Cause,omitempty" xml:"Cause,omitempty"`
-	Error         *string `json:"Error,omitempty" xml:"Error,omitempty"`
+type StartSyncExecutionRequest struct {
 	ExecutionName *string `json:"ExecutionName,omitempty" xml:"ExecutionName,omitempty"`
 	FlowName      *string `json:"FlowName,omitempty" xml:"FlowName,omitempty"`
+	Input         *string `json:"Input,omitempty" xml:"Input,omitempty"`
 	RequestId     *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+}
+
+func (s StartSyncExecutionRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s StartSyncExecutionRequest) GoString() string {
+	return s.String()
+}
+
+func (s *StartSyncExecutionRequest) SetExecutionName(v string) *StartSyncExecutionRequest {
+	s.ExecutionName = &v
+	return s
+}
+
+func (s *StartSyncExecutionRequest) SetFlowName(v string) *StartSyncExecutionRequest {
+	s.FlowName = &v
+	return s
+}
+
+func (s *StartSyncExecutionRequest) SetInput(v string) *StartSyncExecutionRequest {
+	s.Input = &v
+	return s
+}
+
+func (s *StartSyncExecutionRequest) SetRequestId(v string) *StartSyncExecutionRequest {
+	s.RequestId = &v
+	return s
+}
+
+type StartSyncExecutionResponseBody struct {
+	ErrorCode    *string `json:"ErrorCode,omitempty" xml:"ErrorCode,omitempty"`
+	ErrorMessage *string `json:"ErrorMessage,omitempty" xml:"ErrorMessage,omitempty"`
+	FlowName     *string `json:"FlowName,omitempty" xml:"FlowName,omitempty"`
+	Name         *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	Output       *string `json:"Output,omitempty" xml:"Output,omitempty"`
+	RequestId    *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	StartedTime  *string `json:"StartedTime,omitempty" xml:"StartedTime,omitempty"`
+	Status       *string `json:"Status,omitempty" xml:"Status,omitempty"`
+	StoppedTime  *string `json:"StoppedTime,omitempty" xml:"StoppedTime,omitempty"`
+}
+
+func (s StartSyncExecutionResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s StartSyncExecutionResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *StartSyncExecutionResponseBody) SetErrorCode(v string) *StartSyncExecutionResponseBody {
+	s.ErrorCode = &v
+	return s
+}
+
+func (s *StartSyncExecutionResponseBody) SetErrorMessage(v string) *StartSyncExecutionResponseBody {
+	s.ErrorMessage = &v
+	return s
+}
+
+func (s *StartSyncExecutionResponseBody) SetFlowName(v string) *StartSyncExecutionResponseBody {
+	s.FlowName = &v
+	return s
+}
+
+func (s *StartSyncExecutionResponseBody) SetName(v string) *StartSyncExecutionResponseBody {
+	s.Name = &v
+	return s
+}
+
+func (s *StartSyncExecutionResponseBody) SetOutput(v string) *StartSyncExecutionResponseBody {
+	s.Output = &v
+	return s
+}
+
+func (s *StartSyncExecutionResponseBody) SetRequestId(v string) *StartSyncExecutionResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *StartSyncExecutionResponseBody) SetStartedTime(v string) *StartSyncExecutionResponseBody {
+	s.StartedTime = &v
+	return s
+}
+
+func (s *StartSyncExecutionResponseBody) SetStatus(v string) *StartSyncExecutionResponseBody {
+	s.Status = &v
+	return s
+}
+
+func (s *StartSyncExecutionResponseBody) SetStoppedTime(v string) *StartSyncExecutionResponseBody {
+	s.StoppedTime = &v
+	return s
+}
+
+type StartSyncExecutionResponse struct {
+	Headers    map[string]*string              `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                          `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *StartSyncExecutionResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s StartSyncExecutionResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s StartSyncExecutionResponse) GoString() string {
+	return s.String()
+}
+
+func (s *StartSyncExecutionResponse) SetHeaders(v map[string]*string) *StartSyncExecutionResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *StartSyncExecutionResponse) SetStatusCode(v int32) *StartSyncExecutionResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *StartSyncExecutionResponse) SetBody(v *StartSyncExecutionResponseBody) *StartSyncExecutionResponse {
+	s.Body = v
+	return s
+}
+
+type StopExecutionRequest struct {
+	// The reason for stopping the execution. The value must be 1 to 4,096 characters in length.
+	Cause *string `json:"Cause,omitempty" xml:"Cause,omitempty"`
+	// The error for stopping the execution. The value must be 1 to 128 characters in length.
+	Error *string `json:"Error,omitempty" xml:"Error,omitempty"`
+	// The name of the execution that you want to stop. You can call the **ListExecutions** operation to obtain the value of this parameter. The name is unique in a flow. Configure this parameter based on the following rules:
+	//
+	// *   The name can contain letters, digits, underscores (\_), and hyphens (-).
+	// *   The name must start with a letter or an underscore (\_).
+	// *   The name is case-sensitive.
+	// *   The name must be 1 to 128 characters in length.
+	ExecutionName *string `json:"ExecutionName,omitempty" xml:"ExecutionName,omitempty"`
+	// The name of the flow that you want to stop. You can call the **ListFlows** operation to obtain the value of this parameter. The name is unique within the region and cannot be modified after the flow is created. Configure this parameter based on the following rules:
+	//
+	// *   The name can contain letters, digits, underscores (\_), and hyphens (-).
+	// *   The name must start with a letter or an underscore (\_).
+	// *   The name is case-sensitive.
+	// *   The name must be 1 to 128 characters in length.
+	FlowName *string `json:"FlowName,omitempty" xml:"FlowName,omitempty"`
+	// The request ID. If you specify this parameter, the system uses this value as the ID of the request. If you do not specify this parameter, the system generates a value at random.
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
 func (s StopExecutionRequest) String() string {
@@ -1808,15 +2240,30 @@ func (s *StopExecutionRequest) SetRequestId(v string) *StopExecutionRequest {
 }
 
 type StopExecutionResponseBody struct {
+	// The definition of the flow.
 	FlowDefinition *string `json:"FlowDefinition,omitempty" xml:"FlowDefinition,omitempty"`
-	FlowName       *string `json:"FlowName,omitempty" xml:"FlowName,omitempty"`
-	Input          *string `json:"Input,omitempty" xml:"Input,omitempty"`
-	Name           *string `json:"Name,omitempty" xml:"Name,omitempty"`
-	Output         *string `json:"Output,omitempty" xml:"Output,omitempty"`
-	RequestId      *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	StartedTime    *string `json:"StartedTime,omitempty" xml:"StartedTime,omitempty"`
-	Status         *string `json:"Status,omitempty" xml:"Status,omitempty"`
-	StoppedTime    *string `json:"StoppedTime,omitempty" xml:"StoppedTime,omitempty"`
+	// The name of the flow.
+	FlowName *string `json:"FlowName,omitempty" xml:"FlowName,omitempty"`
+	// The input of the execution, which is in the JSON format.
+	Input *string `json:"Input,omitempty" xml:"Input,omitempty"`
+	// The name of the execution.
+	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// The execution result, which is in the JSON format.
+	Output *string `json:"Output,omitempty" xml:"Output,omitempty"`
+	// The request ID.
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The time when the execution started.
+	StartedTime *string `json:"StartedTime,omitempty" xml:"StartedTime,omitempty"`
+	// The execution state. Valid values:
+	//
+	// *   **Running**
+	// *   **Stopped**
+	// *   **Succeeded**
+	// *   **Failed**
+	// *   **TimedOut**
+	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
+	// The time when the execution stopped.
+	StoppedTime *string `json:"StoppedTime,omitempty" xml:"StoppedTime,omitempty"`
 }
 
 func (s StopExecutionResponseBody) String() string {
@@ -1902,12 +2349,23 @@ func (s *StopExecutionResponse) SetBody(v *StopExecutionResponseBody) *StopExecu
 }
 
 type UpdateFlowRequest struct {
-	Definition  *string `json:"Definition,omitempty" xml:"Definition,omitempty"`
+	// The definition of the flow. The definition must comply with the Flow Definition Language (FDL) syntax.
+	Definition *string `json:"Definition,omitempty" xml:"Definition,omitempty"`
+	// The description of the flow.
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
-	Name        *string `json:"Name,omitempty" xml:"Name,omitempty"`
-	RequestId   *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	RoleArn     *string `json:"RoleArn,omitempty" xml:"RoleArn,omitempty"`
-	Type        *string `json:"Type,omitempty" xml:"Type,omitempty"`
+	// The name of the flow. The name is unique within the region and cannot be modified after the time-based schedule is created. Configure this parameter based on the following rules:
+	//
+	// *   The name can contain letters, digits, underscores (\_), and hyphens (-).
+	// *   The name must start with a letter or an underscore (\_).
+	// *   The name is case-sensitive.
+	// *   The name must be 1 to 128 characters in length.
+	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// The request ID. If you specify this parameter, the system uses this value as the ID of the request. If you do not specify this parameter, the system generates a value at random.
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The Alibaba Cloud resource name (ARN) of the specified Resource Access Management (RAM) role that Serverless Workflow assumes to invoke resources when the task is executed.
+	RoleArn *string `json:"RoleArn,omitempty" xml:"RoleArn,omitempty"`
+	// The type of the flow. Valid value: **FDL**.
+	Type *string `json:"Type,omitempty" xml:"Type,omitempty"`
 }
 
 func (s UpdateFlowRequest) String() string {
@@ -1949,16 +2407,26 @@ func (s *UpdateFlowRequest) SetType(v string) *UpdateFlowRequest {
 }
 
 type UpdateFlowResponseBody struct {
-	CreatedTime             *string `json:"CreatedTime,omitempty" xml:"CreatedTime,omitempty"`
-	Definition              *string `json:"Definition,omitempty" xml:"Definition,omitempty"`
-	Description             *string `json:"Description,omitempty" xml:"Description,omitempty"`
+	// The time when the flow was created.
+	CreatedTime *string `json:"CreatedTime,omitempty" xml:"CreatedTime,omitempty"`
+	// The definition of the flow.
+	Definition *string `json:"Definition,omitempty" xml:"Definition,omitempty"`
+	// The description of the flow.
+	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
+	// The path of the external storage.
 	ExternalStorageLocation *string `json:"ExternalStorageLocation,omitempty" xml:"ExternalStorageLocation,omitempty"`
-	Id                      *string `json:"Id,omitempty" xml:"Id,omitempty"`
-	LastModifiedTime        *string `json:"LastModifiedTime,omitempty" xml:"LastModifiedTime,omitempty"`
-	Name                    *string `json:"Name,omitempty" xml:"Name,omitempty"`
-	RequestId               *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	RoleArn                 *string `json:"RoleArn,omitempty" xml:"RoleArn,omitempty"`
-	Type                    *string `json:"Type,omitempty" xml:"Type,omitempty"`
+	// The unique ID of the flow.
+	Id *string `json:"Id,omitempty" xml:"Id,omitempty"`
+	// The time when the flow was last modified.
+	LastModifiedTime *string `json:"LastModifiedTime,omitempty" xml:"LastModifiedTime,omitempty"`
+	// The name of the flow.
+	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// The request ID.
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The ARN of the RAM role.
+	RoleArn *string `json:"RoleArn,omitempty" xml:"RoleArn,omitempty"`
+	// The type of the flow.
+	Type *string `json:"Type,omitempty" xml:"Type,omitempty"`
 }
 
 func (s UpdateFlowResponseBody) String() string {
@@ -2049,13 +2517,33 @@ func (s *UpdateFlowResponse) SetBody(v *UpdateFlowResponseBody) *UpdateFlowRespo
 }
 
 type UpdateScheduleRequest struct {
+	// The CRON expression.
 	CronExpression *string `json:"CronExpression,omitempty" xml:"CronExpression,omitempty"`
-	Description    *string `json:"Description,omitempty" xml:"Description,omitempty"`
-	Enable         *bool   `json:"Enable,omitempty" xml:"Enable,omitempty"`
-	FlowName       *string `json:"FlowName,omitempty" xml:"FlowName,omitempty"`
-	Payload        *string `json:"Payload,omitempty" xml:"Payload,omitempty"`
-	RequestId      *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	ScheduleName   *string `json:"ScheduleName,omitempty" xml:"ScheduleName,omitempty"`
+	// The description of the time-based schedule.
+	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
+	// Specifies whether to enable the time-based schedule. Valid values:
+	//
+	// *   **true**
+	// *   **false**
+	Enable *bool `json:"Enable,omitempty" xml:"Enable,omitempty"`
+	// The name of the flow that is associated with the time-based schedule. The name is unique within the region and cannot be modified after the time-based schedule is created. Configure this parameter based on the following rules:
+	//
+	// *   The name can contain letters, digits, underscores (\_), and hyphens (-).
+	// *   The name must start with a letter or an underscore (\_).
+	// *   The name is case-sensitive.
+	// *   The name must be 1 to 128 characters in length.
+	FlowName *string `json:"FlowName,omitempty" xml:"FlowName,omitempty"`
+	// The trigger message of the time-based schedule. It must be in the JSON format.
+	Payload *string `json:"Payload,omitempty" xml:"Payload,omitempty"`
+	// The request ID. If you specify this parameter, the system uses this value as the ID of the request. If you do not specify this parameter, the system generates a value at random.
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The name of the time-based schedule. Configure this parameter based on the following rules:
+	//
+	// *   The name can contain letters, digits, underscores (\_), and hyphens (-).
+	// *   The name must start with a letter or an underscore (\_).
+	// *   The name is case-sensitive.
+	// *   The name must be 1 to 128 characters in length.
+	ScheduleName *string `json:"ScheduleName,omitempty" xml:"ScheduleName,omitempty"`
 }
 
 func (s UpdateScheduleRequest) String() string {
@@ -2102,15 +2590,27 @@ func (s *UpdateScheduleRequest) SetScheduleName(v string) *UpdateScheduleRequest
 }
 
 type UpdateScheduleResponseBody struct {
-	CreatedTime      *string `json:"CreatedTime,omitempty" xml:"CreatedTime,omitempty"`
-	CronExpression   *string `json:"CronExpression,omitempty" xml:"CronExpression,omitempty"`
-	Description      *string `json:"Description,omitempty" xml:"Description,omitempty"`
-	Enable           *bool   `json:"Enable,omitempty" xml:"Enable,omitempty"`
+	// The time when the time-based schedule was created.
+	CreatedTime *string `json:"CreatedTime,omitempty" xml:"CreatedTime,omitempty"`
+	// The CRON expression.
+	CronExpression *string `json:"CronExpression,omitempty" xml:"CronExpression,omitempty"`
+	// The description of the time-based schedule.
+	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
+	// Indicates whether the time-based schedule is enabled. Valid values:
+	//
+	// *   **true**
+	// *   **false**
+	Enable *bool `json:"Enable,omitempty" xml:"Enable,omitempty"`
+	// The time when the time-based schedule was last updated.
 	LastModifiedTime *string `json:"LastModifiedTime,omitempty" xml:"LastModifiedTime,omitempty"`
-	Payload          *string `json:"Payload,omitempty" xml:"Payload,omitempty"`
-	RequestId        *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	ScheduleId       *string `json:"ScheduleId,omitempty" xml:"ScheduleId,omitempty"`
-	ScheduleName     *string `json:"ScheduleName,omitempty" xml:"ScheduleName,omitempty"`
+	// The trigger message of the time-based schedule.
+	Payload *string `json:"Payload,omitempty" xml:"Payload,omitempty"`
+	// The request ID.
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The ID of the time-based schedule.
+	ScheduleId *string `json:"ScheduleId,omitempty" xml:"ScheduleId,omitempty"`
+	// The name of the time-based schedule.
+	ScheduleName *string `json:"ScheduleName,omitempty" xml:"ScheduleName,omitempty"`
 }
 
 func (s UpdateScheduleResponseBody) String() string {
@@ -2249,6 +2749,15 @@ func (client *Client) GetEndpoint(productId *string, regionId *string, endpointR
 	return _result, _err
 }
 
+/**
+ * ## [](#)Usage notes
+ * *   The number of flows that each user can create is restricted by resources. For more information, see [Limits](~~122093~~). If you want to create more flows, submit a ticket.
+ * *   At the user level, flows are distinguished by name. The name of a flow within one account must be unique.
+ *
+ * @param request CreateFlowRequest
+ * @param runtime runtime options for this request RuntimeOptions
+ * @return CreateFlowResponse
+ */
 func (client *Client) CreateFlowWithOptions(request *CreateFlowRequest, runtime *util.RuntimeOptions) (_result *CreateFlowResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -2312,6 +2821,14 @@ func (client *Client) CreateFlowWithOptions(request *CreateFlowRequest, runtime 
 	return _result, _err
 }
 
+/**
+ * ## [](#)Usage notes
+ * *   The number of flows that each user can create is restricted by resources. For more information, see [Limits](~~122093~~). If you want to create more flows, submit a ticket.
+ * *   At the user level, flows are distinguished by name. The name of a flow within one account must be unique.
+ *
+ * @param request CreateFlowRequest
+ * @return CreateFlowResponse
+ */
 func (client *Client) CreateFlow(request *CreateFlowRequest) (_result *CreateFlowResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &CreateFlowResponse{}
@@ -2393,6 +2910,14 @@ func (client *Client) CreateSchedule(request *CreateScheduleRequest) (_result *C
 	return _result, _err
 }
 
+/**
+ * ## [](#)Usage notes
+ * A delete operation is asynchronous. If this operation is successful, the system returns a successful response. If an existing flow is pending to be deleted, a new flow of the same name will not be affected by the existing one. After you delete a flow, you cannot query its historical executions. All executions in progress will stop after their most recent steps are complete.
+ *
+ * @param request DeleteFlowRequest
+ * @param runtime runtime options for this request RuntimeOptions
+ * @return DeleteFlowResponse
+ */
 func (client *Client) DeleteFlowWithOptions(request *DeleteFlowRequest, runtime *util.RuntimeOptions) (_result *DeleteFlowResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -2422,6 +2947,13 @@ func (client *Client) DeleteFlowWithOptions(request *DeleteFlowRequest, runtime 
 	return _result, _err
 }
 
+/**
+ * ## [](#)Usage notes
+ * A delete operation is asynchronous. If this operation is successful, the system returns a successful response. If an existing flow is pending to be deleted, a new flow of the same name will not be affected by the existing one. After you delete a flow, you cannot query its historical executions. All executions in progress will stop after their most recent steps are complete.
+ *
+ * @param request DeleteFlowRequest
+ * @return DeleteFlowResponse
+ */
 func (client *Client) DeleteFlow(request *DeleteFlowRequest) (_result *DeleteFlowResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &DeleteFlowResponse{}
@@ -2633,6 +3165,14 @@ func (client *Client) GetExecutionHistory(request *GetExecutionHistoryRequest) (
 	return _result, _err
 }
 
+/**
+ * ## [](#)Usage notes
+ * After you delete a flow, you cannot query its historical executions, even if you create a flow of the same name.
+ *
+ * @param request ListExecutionsRequest
+ * @param runtime runtime options for this request RuntimeOptions
+ * @return ListExecutionsResponse
+ */
 func (client *Client) ListExecutionsWithOptions(request *ListExecutionsRequest, runtime *util.RuntimeOptions) (_result *ListExecutionsResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -2662,6 +3202,13 @@ func (client *Client) ListExecutionsWithOptions(request *ListExecutionsRequest, 
 	return _result, _err
 }
 
+/**
+ * ## [](#)Usage notes
+ * After you delete a flow, you cannot query its historical executions, even if you create a flow of the same name.
+ *
+ * @param request ListExecutionsRequest
+ * @return ListExecutionsResponse
+ */
 func (client *Client) ListExecutions(request *ListExecutionsRequest) (_result *ListExecutionsResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &ListExecutionsResponse{}
@@ -2753,6 +3300,14 @@ func (client *Client) ListSchedules(request *ListSchedulesRequest) (_result *Lis
 	return _result, _err
 }
 
+/**
+ * ## [](#)Usage notes
+ * You can use this operation to call back the task step of `pattern: waitForCallback`, which indicates that the current task fails to be executed.
+ *
+ * @param request ReportTaskFailedRequest
+ * @param runtime runtime options for this request RuntimeOptions
+ * @return ReportTaskFailedResponse
+ */
 func (client *Client) ReportTaskFailedWithOptions(request *ReportTaskFailedRequest, runtime *util.RuntimeOptions) (_result *ReportTaskFailedResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -2800,6 +3355,13 @@ func (client *Client) ReportTaskFailedWithOptions(request *ReportTaskFailedReque
 	return _result, _err
 }
 
+/**
+ * ## [](#)Usage notes
+ * You can use this operation to call back the task step of `pattern: waitForCallback`, which indicates that the current task fails to be executed.
+ *
+ * @param request ReportTaskFailedRequest
+ * @return ReportTaskFailedResponse
+ */
 func (client *Client) ReportTaskFailed(request *ReportTaskFailedRequest) (_result *ReportTaskFailedResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &ReportTaskFailedResponse{}
@@ -2811,6 +3373,14 @@ func (client *Client) ReportTaskFailed(request *ReportTaskFailedRequest) (_resul
 	return _result, _err
 }
 
+/**
+ * ## [](#)Usage notes
+ * You can use this operation to call back the task step of `pattern: waitForCallback`, which indicates that the current task is successfully executed.
+ *
+ * @param request ReportTaskSucceededRequest
+ * @param runtime runtime options for this request RuntimeOptions
+ * @return ReportTaskSucceededResponse
+ */
 func (client *Client) ReportTaskSucceededWithOptions(request *ReportTaskSucceededRequest, runtime *util.RuntimeOptions) (_result *ReportTaskSucceededResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -2854,6 +3424,13 @@ func (client *Client) ReportTaskSucceededWithOptions(request *ReportTaskSucceede
 	return _result, _err
 }
 
+/**
+ * ## [](#)Usage notes
+ * You can use this operation to call back the task step of `pattern: waitForCallback`, which indicates that the current task is successfully executed.
+ *
+ * @param request ReportTaskSucceededRequest
+ * @return ReportTaskSucceededResponse
+ */
 func (client *Client) ReportTaskSucceeded(request *ReportTaskSucceededRequest) (_result *ReportTaskSucceededResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &ReportTaskSucceededResponse{}
@@ -2865,6 +3442,18 @@ func (client *Client) ReportTaskSucceeded(request *ReportTaskSucceededRequest) (
 	return _result, _err
 }
 
+/**
+ * ## [](#)Usage notes
+ * *   The flow is created.
+ * *   If you do not specify an execution, the system automatically generates an execution and starts the execution.
+ * *   If an ongoing execution has the same name as that of the execution to be started, the system directly returns the ongoing execution.
+ * *   If the ongoing execution with the same name has ended (succeeded or failed), the `ExecutionAlreadyExists` error is returned.
+ * *   If no execution with the same name exists, the system starts a new execution.
+ *
+ * @param request StartExecutionRequest
+ * @param runtime runtime options for this request RuntimeOptions
+ * @return StartExecutionResponse
+ */
 func (client *Client) StartExecutionWithOptions(request *StartExecutionRequest, runtime *util.RuntimeOptions) (_result *StartExecutionResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -2916,6 +3505,17 @@ func (client *Client) StartExecutionWithOptions(request *StartExecutionRequest, 
 	return _result, _err
 }
 
+/**
+ * ## [](#)Usage notes
+ * *   The flow is created.
+ * *   If you do not specify an execution, the system automatically generates an execution and starts the execution.
+ * *   If an ongoing execution has the same name as that of the execution to be started, the system directly returns the ongoing execution.
+ * *   If the ongoing execution with the same name has ended (succeeded or failed), the `ExecutionAlreadyExists` error is returned.
+ * *   If no execution with the same name exists, the system starts a new execution.
+ *
+ * @param request StartExecutionRequest
+ * @return StartExecutionResponse
+ */
 func (client *Client) StartExecution(request *StartExecutionRequest) (_result *StartExecutionResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &StartExecutionResponse{}
@@ -2927,6 +3527,72 @@ func (client *Client) StartExecution(request *StartExecutionRequest) (_result *S
 	return _result, _err
 }
 
+func (client *Client) StartSyncExecutionWithOptions(request *StartSyncExecutionRequest, runtime *util.RuntimeOptions) (_result *StartSyncExecutionResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.RequestId)) {
+		query["RequestId"] = request.RequestId
+	}
+
+	body := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.ExecutionName)) {
+		body["ExecutionName"] = request.ExecutionName
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.FlowName)) {
+		body["FlowName"] = request.FlowName
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Input)) {
+		body["Input"] = request.Input
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+		Body:  openapiutil.ParseToMap(body),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("StartSyncExecution"),
+		Version:     tea.String("2019-03-15"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &StartSyncExecutionResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) StartSyncExecution(request *StartSyncExecutionRequest) (_result *StartSyncExecutionResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &StartSyncExecutionResponse{}
+	_body, _err := client.StartSyncExecutionWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+/**
+ * ## [](#)Usage notes
+ * The flow must be in progress.
+ *
+ * @param request StopExecutionRequest
+ * @param runtime runtime options for this request RuntimeOptions
+ * @return StopExecutionResponse
+ */
 func (client *Client) StopExecutionWithOptions(request *StopExecutionRequest, runtime *util.RuntimeOptions) (_result *StopExecutionResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -2978,6 +3644,13 @@ func (client *Client) StopExecutionWithOptions(request *StopExecutionRequest, ru
 	return _result, _err
 }
 
+/**
+ * ## [](#)Usage notes
+ * The flow must be in progress.
+ *
+ * @param request StopExecutionRequest
+ * @return StopExecutionResponse
+ */
 func (client *Client) StopExecution(request *StopExecutionRequest) (_result *StopExecutionResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &StopExecutionResponse{}
