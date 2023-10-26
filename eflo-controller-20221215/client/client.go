@@ -214,6 +214,8 @@ func (s *CreateClusterRequestComponentsComponentConfig) SetNodeUnits(v []interfa
 type CreateClusterRequestNetworks struct {
 	IpAllocationPolicy []*CreateClusterRequestNetworksIpAllocationPolicy `json:"IpAllocationPolicy,omitempty" xml:"IpAllocationPolicy,omitempty" type:"Repeated"`
 	NewVpdInfo         *CreateClusterRequestNetworksNewVpdInfo           `json:"NewVpdInfo,omitempty" xml:"NewVpdInfo,omitempty" type:"Struct"`
+	SecurityGroupId    *string                                           `json:"SecurityGroupId,omitempty" xml:"SecurityGroupId,omitempty"`
+	VSwitchZoneId      *string                                           `json:"VSwitchZoneId,omitempty" xml:"VSwitchZoneId,omitempty"`
 	// 复用VPD信息
 	VpdInfo *CreateClusterRequestNetworksVpdInfo `json:"VpdInfo,omitempty" xml:"VpdInfo,omitempty" type:"Struct"`
 }
@@ -233,6 +235,16 @@ func (s *CreateClusterRequestNetworks) SetIpAllocationPolicy(v []*CreateClusterR
 
 func (s *CreateClusterRequestNetworks) SetNewVpdInfo(v *CreateClusterRequestNetworksNewVpdInfo) *CreateClusterRequestNetworks {
 	s.NewVpdInfo = v
+	return s
+}
+
+func (s *CreateClusterRequestNetworks) SetSecurityGroupId(v string) *CreateClusterRequestNetworks {
+	s.SecurityGroupId = &v
+	return s
+}
+
+func (s *CreateClusterRequestNetworks) SetVSwitchZoneId(v string) *CreateClusterRequestNetworks {
+	s.VSwitchZoneId = &v
 	return s
 }
 
@@ -1653,6 +1665,7 @@ type ExtendClusterRequest struct {
 	IgnoreFailedNodeTasks *bool                                     `json:"IgnoreFailedNodeTasks,omitempty" xml:"IgnoreFailedNodeTasks,omitempty"`
 	IpAllocationPolicy    []*ExtendClusterRequestIpAllocationPolicy `json:"IpAllocationPolicy,omitempty" xml:"IpAllocationPolicy,omitempty" type:"Repeated"`
 	NodeGroups            []*ExtendClusterRequestNodeGroups         `json:"NodeGroups,omitempty" xml:"NodeGroups,omitempty" type:"Repeated"`
+	VSwitchZoneId         *string                                   `json:"VSwitchZoneId,omitempty" xml:"VSwitchZoneId,omitempty"`
 	VpdSubnets            []*string                                 `json:"VpdSubnets,omitempty" xml:"VpdSubnets,omitempty" type:"Repeated"`
 }
 
@@ -1681,6 +1694,11 @@ func (s *ExtendClusterRequest) SetIpAllocationPolicy(v []*ExtendClusterRequestIp
 
 func (s *ExtendClusterRequest) SetNodeGroups(v []*ExtendClusterRequestNodeGroups) *ExtendClusterRequest {
 	s.NodeGroups = v
+	return s
+}
+
+func (s *ExtendClusterRequest) SetVSwitchZoneId(v string) *ExtendClusterRequest {
+	s.VSwitchZoneId = &v
 	return s
 }
 
@@ -1860,6 +1878,7 @@ type ExtendClusterRequestNodeGroups struct {
 	NodeGroupId *string                                `json:"NodeGroupId,omitempty" xml:"NodeGroupId,omitempty"`
 	Nodes       []*ExtendClusterRequestNodeGroupsNodes `json:"Nodes,omitempty" xml:"Nodes,omitempty" type:"Repeated"`
 	UserData    *string                                `json:"UserData,omitempty" xml:"UserData,omitempty"`
+	ZoneId      *string                                `json:"ZoneId,omitempty" xml:"ZoneId,omitempty"`
 }
 
 func (s ExtendClusterRequestNodeGroups) String() string {
@@ -1882,6 +1901,11 @@ func (s *ExtendClusterRequestNodeGroups) SetNodes(v []*ExtendClusterRequestNodeG
 
 func (s *ExtendClusterRequestNodeGroups) SetUserData(v string) *ExtendClusterRequestNodeGroups {
 	s.UserData = &v
+	return s
+}
+
+func (s *ExtendClusterRequestNodeGroups) SetZoneId(v string) *ExtendClusterRequestNodeGroups {
+	s.ZoneId = &v
 	return s
 }
 
@@ -1931,6 +1955,7 @@ type ExtendClusterShrinkRequest struct {
 	IgnoreFailedNodeTasks    *bool   `json:"IgnoreFailedNodeTasks,omitempty" xml:"IgnoreFailedNodeTasks,omitempty"`
 	IpAllocationPolicyShrink *string `json:"IpAllocationPolicy,omitempty" xml:"IpAllocationPolicy,omitempty"`
 	NodeGroupsShrink         *string `json:"NodeGroups,omitempty" xml:"NodeGroups,omitempty"`
+	VSwitchZoneId            *string `json:"VSwitchZoneId,omitempty" xml:"VSwitchZoneId,omitempty"`
 	VpdSubnetsShrink         *string `json:"VpdSubnets,omitempty" xml:"VpdSubnets,omitempty"`
 }
 
@@ -1959,6 +1984,11 @@ func (s *ExtendClusterShrinkRequest) SetIpAllocationPolicyShrink(v string) *Exte
 
 func (s *ExtendClusterShrinkRequest) SetNodeGroupsShrink(v string) *ExtendClusterShrinkRequest {
 	s.NodeGroupsShrink = &v
+	return s
+}
+
+func (s *ExtendClusterShrinkRequest) SetVSwitchZoneId(v string) *ExtendClusterShrinkRequest {
+	s.VSwitchZoneId = &v
 	return s
 }
 
@@ -3848,6 +3878,10 @@ func (client *Client) ExtendClusterWithOptions(tmpReq *ExtendClusterRequest, run
 
 	if !tea.BoolValue(util.IsUnset(request.NodeGroupsShrink)) {
 		body["NodeGroups"] = request.NodeGroupsShrink
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.VSwitchZoneId)) {
+		body["VSwitchZoneId"] = request.VSwitchZoneId
 	}
 
 	if !tea.BoolValue(util.IsUnset(request.VpdSubnetsShrink)) {
